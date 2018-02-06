@@ -1280,5 +1280,64 @@
         "Required Mobile Command Vehicles": "1",
         "Max. Patients": "15",
         "Patient Specializations": "General Internal"
+    },
+    "155": {
+        "name": "Fire in Hospital",
+        "Average credits": "6000",
+        "Required Firetrucks": "10",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Heavy Rescue Vehicles": "2",
+        "Required Water Tankers": "1",
+        "Required Mobile Command Vehicles": "1",
+        "Required Mobile Air Vehicles": "1",
+        "Required Platform Trucks": "3",
+        "Max. Patients": "25",
+        "Patient Specializations": "General Internal",
+        "Probability that a patient has to be transported": "50"
+    },
+    "156": {
+        "name": "Turbulence Injury",
+        "Required Rescue Stations": "3",
+        "Max. Patients": "4",
+        "Patient Specializations": "Traumatology",
+        "Minimum patient number": "1",
+        "Probability that a patient has to be transported": "40"
+    },
+    "157": {
+        "name": "Turbulence Injury",
+        "Required Rescue Stations": "3",
+        "Max. Patients": "4",
+        "Patient Specializations": "Traumatology",
+        "Minimum patient number": "1",
+        "Probability that a patient has to be transported": "40"
+    },
+    "158": {
+        "name": "Accident Involving a Bus",
+        "Average credits": "1000",
+        "Required Firetrucks": "2",
+        "Required Heavy Rescue Vehicles": "1",
+        "Max. Patients": "12",
+        "Patient Specializations": "General Internal",
+        "Probability that a patient has to be transported": "50"
+    },
+    "159": {
+        "name": "Serious Accident Involving a Bus",
+        "Average credits": "2000",
+        "Required Firetrucks": "4",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Platform Trucks": "1",
+        "Required Heavy Rescue Vehicles": "2",
+        "Required Police Cars": "2",
+        "Max. Patients": "12",
+        "Patient Specializations": "General Surgeon",
+        "Probability that a patient has to be transported": "80"
+    },
+    "160": {
+        "name": "Lost Child",
+        "Average credits": "700",
+        "Required Police Cars": "3",
+        "Max. Patients": "1",
+        "Patient Specializations": "General Internal",
+        "Probability that a patient has to be transported": "75"
     }
 }
