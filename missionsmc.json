@@ -1,0 +1,1284 @@
+{
+    "0": {
+        "name": "Bin fire",
+        "Average credits": "110",
+        "Required Firetrucks": "1"
+    },
+    "1": {
+        "name": "Container fire",
+        "Average credits": "170",
+        "Required Firetrucks": "1"
+    },
+    "2": {
+        "name": "Burning car",
+        "Average credits": "370",
+        "Required Firetrucks": "1",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/26", "Garage fire"],
+            ["https://www.missionchief.com/einsaetze/16", "Caravan fire"],
+            ["https://www.missionchief.com/einsaetze/19", "Burning trailer"]
+        ]
+    },
+    "3": {
+        "name": "Burning motorbike",
+        "Average credits": "340",
+        "Required Firetrucks": "1",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/26", "Garage fire"]
+        ]
+    },
+    "4": {
+        "name": "Burning grass",
+        "Average credits": "200",
+        "Required Firetrucks": "1",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/14", "Little field fire"]
+        ]
+    },
+    "5": {
+        "name": "Room fire",
+        "Average credits": "1400",
+        "Required Firetrucks": "2",
+        "Required Platform Trucks": "1",
+        "Probability of Platform Truck being required": "30",
+        "Max. Patients": "1",
+        "Probability of NEF": "0",
+        "Patient Specializations": "General Internal",
+        "Probability that a patient has to be transported": "50",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/88", "Building Collapse"]
+        ]
+    },
+    "6": {
+        "name": "Garden shed fire",
+        "Average credits": "600",
+        "Required Firetrucks": "2"
+    },
+    "7": {
+        "name": "Burning leaves",
+        "Average credits": "210",
+        "Required Firetrucks": "1",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/14", "Little field fire"]
+        ]
+    },
+    "8": {
+        "name": "Bulk trash fire",
+        "Average credits": "220",
+        "Required Firetrucks": "1",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/20", "Basement fire"],
+            ["https://www.missionchief.com/einsaetze/22", "Roof fire"],
+            ["https://www.missionchief.com/einsaetze/99", "Commercial Fire"],
+            ["https://www.missionchief.com/einsaetze/87", "Industrial Fire"],
+            ["https://www.missionchief.com/einsaetze/6", "Garden shed fire"]
+        ]
+    },
+    "9": {
+        "name": "Bale of straw fire",
+        "Average credits": "250",
+        "Required Firetrucks": "1",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/14", "Little field fire"],
+            ["https://www.missionchief.com/einsaetze/6", "Garden shed fire"]
+        ]
+    },
+    "10": {
+        "name": "Tractor fire",
+        "Average credits": "600",
+        "Required Firetrucks": "1",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/29", "Harvester fire"]
+        ]
+    },
+    "11": {
+        "name": "Burning callbox",
+        "Average credits": "240",
+        "Required Firetrucks": "1"
+    },
+    "12": {
+        "name": "Tree on the road",
+        "Average credits": "310",
+        "Required Firetrucks": "1",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/25", "Road accident"]
+        ]
+    },
+    "13": {
+        "name": "Burning truck",
+        "Average credits": "980",
+        "Required Firetrucks": "2"
+    },
+    "14": {
+        "name": "Little field fire",
+        "Average credits": "1000",
+        "Required Firetrucks": "2",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/15", "Little wildfire"]
+        ]
+    },
+    "15": {
+        "name": "Little wildfire",
+        "Average credits": "1010",
+        "Required Firetrucks": "1"
+    },
+    "16": {
+        "name": "Caravan fire",
+        "Average credits": "1100",
+        "Required Firetrucks": "2"
+    },
+    "17": {
+        "name": "Mailbox on fire",
+        "Average credits": "340",
+        "Required Firetrucks": "1"
+    },
+    "18": {
+        "name": "Brush pile",
+        "Average credits": "700",
+        "Required Firetrucks": "1"
+    },
+    "19": {
+        "name": "Burning trailer",
+        "Average credits": "650",
+        "Required Firetrucks": "1"
+    },
+    "20": {
+        "name": "Basement fire",
+        "Average credits": "2500",
+        "Required Battalion Chief Vehicles": "1",
+        "Probability of Battalion Chief Unit being required": "90",
+        "Required Firetrucks": "3",
+        "Max. Patients": "2",
+        "Patient Specializations": "General Internal"
+    },
+    "21": {
+        "name": "Chimney fire",
+        "Average credits": "2400",
+        "Required Platform Trucks": "1",
+        "Probability of Platform Truck being required": "100",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Firetrucks": "1",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/22", "Roof fire"]
+        ]
+    },
+    "22": {
+        "name": "Roof fire",
+        "Average credits": "2700",
+        "Required Platform Trucks": "1",
+        "Probability of Platform Truck being required": "100",
+        "Required Firetrucks": "3",
+        "Required Battalion Chief Vehicles": "1",
+        "Probability of Battalion Chief Unit being required": "50",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/87", "Industrial Fire"],
+            ["https://www.missionchief.com/einsaetze/99", "Commercial Fire"]
+        ]
+    },
+    "23": {
+        "name": "Grease Fire",
+        "Average credits": "1200",
+        "Required Firetrucks": "1",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/99", "Commercial Fire"]
+        ]
+    },
+    "24": {
+        "name": "Burning bus shelter",
+        "Average credits": "900",
+        "Required Firetrucks": "1"
+    },
+    "25": {
+        "name": "Road accident",
+        "Average credits": "1000",
+        "Required Firetrucks": "1",
+        "Max. Patients": "1",
+        "Probability of NEF": "0",
+        "Probability that a patient has to be transported": "40",
+        "Patient Specializations": "Traumatology",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/24", "Burning bus shelter"],
+            ["https://www.missionchief.com/einsaetze/2", "Burning car"],
+            ["https://www.missionchief.com/einsaetze/47", "Dangerous goods truck accident"],
+            ["https://www.missionchief.com/einsaetze/98", "Unknown Tanker Spill"]
+        ]
+    },
+    "26": {
+        "name": "Garage fire",
+        "Average credits": "1400",
+        "Required Firetrucks": "2"
+    },
+    "27": {
+        "name": "Gas Leak",
+        "Average credits": "400",
+        "Required Firetrucks": "1",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/25", "Road accident"],
+            ["https://www.missionchief.com/einsaetze/47", "Dangerous goods truck accident"]
+        ]
+    },
+    "28": {
+        "name": "Fireplace fire",
+        "Average credits": "1310",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Platform Trucks": "1",
+        "Required Firetrucks": "1"
+    },
+    "29": {
+        "name": "Harvester fire",
+        "Average credits": "1200",
+        "Required Firetrucks": "2"
+    },
+    "30": {
+        "name": "Wastebin fire",
+        "Average credits": "110",
+        "Required Firetrucks": "1",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/13", "Burning truck"]
+        ]
+    },
+    "31": {
+        "name": "Wastebin fire",
+        "Average credits": "110",
+        "Required Firetrucks": "1"
+    },
+    "32": {
+        "name": "Wastebin fire",
+        "Average credits": "110",
+        "Required Firetrucks": "1"
+    },
+    "33": {
+        "name": "Wastebin fire",
+        "Average credits": "110",
+        "Required Firetrucks": "1"
+    },
+    "34": {
+        "name": "Alcoholic intoxication",
+        "Required Rescue Stations": "1",
+        "Required Police Cars": "1",
+        "Max. Patients": "1",
+        "Patient Specializations": "General Internal",
+        "Minimum patient number": "1"
+    },
+    "35": {
+        "name": "Nosebleed",
+        "Required Rescue Stations": "1",
+        "Max. Patients": "1",
+        "Patient Specializations": "General Surgeon",
+        "Minimum patient number": "1"
+    },
+    "36": {
+        "name": "Cardiac infarction",
+        "Required Rescue Stations": "3",
+        "Max. Patients": "1",
+        "Minimum patient number": "1",
+        "Patient Specializations": "Cardiology",
+        "Probability of NEF": "0",
+        "Probability that a patient has to be transported": "100"
+    },
+    "37": {
+        "name": "Acute asthma",
+        "Required Rescue Stations": "3",
+        "Max. Patients": "1",
+        "Patient Specializations": "General Internal",
+        "Minimum patient number": "1",
+        "Probability of NEF": "0",
+        "Probability that a patient has to be transported": "50"
+    },
+    "38": {
+        "name": "Seizure",
+        "Required Rescue Stations": "3",
+        "Max. Patients": "1",
+        "Patient Specializations": "Neurology",
+        "Minimum patient number": "1",
+        "Probability of NEF": "0",
+        "Probability that a patient has to be transported": "50"
+    },
+    "39": {
+        "name": "Fever",
+        "Required Rescue Stations": "3",
+        "Max. Patients": "1",
+        "Patient Specializations": "General Internal",
+        "Minimum patient number": "1",
+        "Probability of NEF": "0",
+        "Probability that a patient has to be transported": "90"
+    },
+    "40": {
+        "name": "Fallen person",
+        "Required Rescue Stations": "1",
+        "Max. Patients": "1",
+        "Patient Specializations": "Traumatology",
+        "Minimum patient number": "1",
+        "Probability of NEF": "0",
+        "Probability that a patient has to be transported": "30"
+    },
+    "41": {
+        "name": "Major fire",
+        "Average credits": "10210",
+        "Required Firetrucks": "10",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Mobile Command Vehicles": "1",
+        "Required Platform Trucks": "2",
+        "Required Water Tankers": "1",
+        "Required Mobile Air Vehicles": "1",
+        "Required Heavy Rescue Vehicles": "2",
+        "Just as dressing application": "Yes"
+    },
+    "42": {
+        "name": "Manhole Fire",
+        "Average credits": "210",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Firetrucks": "2"
+    },
+    "43": {
+        "name": "Diabetic problems",
+        "Required Rescue Stations": "1",
+        "Max. Patients": "1",
+        "Patient Specializations": "General Internal",
+        "Minimum patient number": "1",
+        "Probability of NEF": "0",
+        "Probability that a patient has to be transported": "50"
+    },
+    "44": {
+        "name": "Burning machine",
+        "Average credits": "2470",
+        "Required Firetrucks": "3",
+        "Required Heavy Rescue Vehicles": "1",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Water Tankers": "1",
+        "Probability of Water Tanker being required": "30",
+        "Required Mobile Air Vehicles": "1",
+        "Probability of Mobile Air being required": "20"
+    },
+    "45": {
+        "name": "Burning locomotive",
+        "Place": "Goods station",
+        "Required Firetrucks": "4",
+        "Required Water Tankers": "1",
+        "Required Mobile Air Vehicles": "1",
+        "Probability of Mobile Air being required": "30",
+        "Required Heavy Rescue Vehicles": "1",
+        "Probability of Heavy Rescue being required": "50",
+        "Required Battalion Chief Vehicles": "1",
+        "Probability that a patient has to be transported": "40",
+        "Max. Patients": "1",
+        "Patient Specializations": "General Surgeon"
+    },
+    "46": {
+        "name": "Gas station fire",
+        "Average credits": "3920",
+        "Required Heavy Rescue Vehicles": "2",
+        "Probability of Heavy Rescue being required": "30",
+        "Required Firetrucks": "4",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Mobile Command Vehicles": "1",
+        "Required Platform Trucks": "1",
+        "Required Mobile Air Vehicles": "1",
+        "Probability of Mobile Air being required": "30",
+        "Required HAZMAT Vehicles": "1",
+        "Probability of HAZMAT being required": "70"
+    },
+    "47": {
+        "name": "Dangerous goods truck accident",
+        "Average credits": "2200",
+        "Required Firetrucks": "3",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Heavy Rescue Vehicles": "1",
+        "Probability of Heavy Rescue being required": "50",
+        "Required HAZMAT Vehicles": "1",
+        "Max. Patients": "1",
+        "Patient Specializations": "Traumatology"
+    },
+    "48": {
+        "name": "Shoplifting",
+        "Average credits": "100",
+        "Required Police Cars": "1",
+        "Maximum Number of Prisoners": "1"
+    },
+    "49": {
+        "name": "Shoplifting",
+        "Average credits": "100",
+        "Required Police Cars": "1",
+        "Maximum Number of Prisoners": "1"
+    },
+    "50": {
+        "name": "Parked car accident",
+        "Average credits": "120",
+        "Required Police Cars": "1"
+    },
+    "51": {
+        "name": "Parked car accident",
+        "Average credits": "120",
+        "Required Police Cars": "1"
+    },
+    "52": {
+        "name": "Metal burglary",
+        "Average credits": "150",
+        "Required Police Cars": "1",
+        "Maximum Number of Prisoners": "1"
+    },
+    "53": {
+        "name": "Pickpocketing",
+        "Average credits": "150",
+        "Required Police Cars": "1",
+        "Maximum Number of Prisoners": "1"
+    },
+    "54": {
+        "name": "Fare dodger",
+        "Average credits": "120",
+        "Required Police Cars": "1"
+    },
+    "55": {
+        "name": "Fare dodger",
+        "Average credits": "120",
+        "Required Police Cars": "1"
+    },
+    "56": {
+        "name": "Fare dodger",
+        "Average credits": "120",
+        "Required Police Cars": "1"
+    },
+    "57": {
+        "name": "Fare dodger",
+        "Average credits": "120",
+        "Required Police Cars": "1"
+    },
+    "58": {
+        "name": "Parked car accident",
+        "Average credits": "120",
+        "Required Police Cars": "1"
+    },
+    "59": {
+        "name": "Brawl",
+        "Average credits": "700",
+        "Required Police Cars": "3",
+        "Max. Patients": "3",
+        "Patient Specializations": "Traumatology",
+        "Maximum Number of Prisoners": "2",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/90", "Officer Down"]
+        ]
+    },
+    "60": {
+        "name": "Rioter",
+        "Average credits": "500",
+        "Required Police Cars": "2",
+        "Maximum Number of Prisoners": "1",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/59", "Brawl"],
+            ["https://www.missionchief.com/einsaetze/90", "Officer Down"]
+        ]
+    },
+    "61": {
+        "name": "Unannounced demonstration",
+        "Average credits": "10020",
+        "Required Police Cars": "7",
+        "Just as dressing application": "Yes"
+    },
+    "62": {
+        "name": "Pile-up",
+        "Average credits": "10010",
+        "Required Firetrucks": "10",
+        "Required Heavy Rescue Vehicles": "5",
+        "Required Battalion Chief Vehicles": "2",
+        "Required HAZMAT Vehicles": "2",
+        "Just as dressing application": "Yes",
+        "Max. Patients": "12",
+        "Patient Specializations": "Traumatology",
+        "Minimum patient number": "10"
+    },
+    "63": {
+        "name": "Burning bogle",
+        "Average credits": "350",
+        "Required Firetrucks": "1",
+        "Runs only from": "Mon, 30 Oct 2017 00:00:00 +0000",
+        "Runs only up until": "Mon, 06 Nov 2017 23:59:00 +0000"
+    },
+    "64": {
+        "name": "Burning pumpkin field",
+        "Average credits": "850",
+        "Required Firetrucks": "2",
+        "Runs only from": "Mon, 30 Oct 2017 00:00:00 +0000",
+        "Runs only up until": "Mon, 06 Nov 2017 23:59:00 +0000"
+    },
+    "65": {
+        "name": "Pumpkin soup overcooked",
+        "Average credits": "1500",
+        "Required Firetrucks": "2",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Mobile Air Vehicles": "1",
+        "Probability of Mobile Air being required": "50",
+        "Max. Patients": "1",
+        "Patient Specializations": "Neurology",
+        "Runs only from": "Mon, 30 Oct 2017 00:00:00 +0000",
+        "Runs only up until": "Mon, 06 Nov 2017 23:59:00 +0000"
+    },
+    "66": {
+        "name": "Witch in tree",
+        "Average credits": "900",
+        "Required Platform Trucks": "1",
+        "Required Firetrucks": "1",
+        "Max. Patients": "1",
+        "Probability that a patient has to be transported": "50",
+        "Patient Specializations": "Traumatology",
+        "Runs only from": "Mon, 30 Oct 2017 00:00:00 +0000",
+        "Runs only up until": "Mon, 06 Nov 2017 23:59:00 +0000"
+    },
+    "67": {
+        "name": "Zombie bite",
+        "Required Rescue Stations": "1",
+        "Max. Patients": "1",
+        "Probability that a patient has to be transported": "100",
+        "Patient Specializations": "Neurology",
+        "Runs only from": "Tue, 28 Oct 2014 00:00:00 +0000",
+        "Runs only up until": "Tue, 04 Nov 2014 23:59:00 +0000"
+    },
+    "68": {
+        "name": "Erupted Monster",
+        "Average credits": "1600",
+        "Required Police Cars": "4",
+        "Runs only from": "Mon, 30 Oct 2017 00:00:00 +0000",
+        "Runs only up until": "Mon, 06 Nov 2017 23:59:00 +0000"
+    },
+    "69": {
+        "name": "Pumpkin stolen",
+        "Average credits": "100",
+        "Required Police Cars": "1",
+        "Runs only from": "Mon, 30 Oct 2017 00:00:00 +0000",
+        "Runs only up until": "Mon, 06 Nov 2017 23:59:00 +0000"
+    },
+    "70": {
+        "name": "Frankenstein sighted",
+        "Average credits": "550",
+        "Required Police Cars": "3",
+        "Runs only from": "Mon, 30 Oct 2017 00:00:00 +0000",
+        "Runs only up until": "Mon, 06 Nov 2017 23:59:00 +0000"
+    },
+    "71": {
+        "name": "candy theft",
+        "Average credits": "100",
+        "Required Police Cars": "1",
+        "Runs only from": "Mon, 30 Oct 2017 00:00:00 +0000",
+        "Runs only up until": "Mon, 06 Nov 2017 23:59:00 +0000"
+    },
+    "72": {
+        "name": "Person check",
+        "Average credits": "100",
+        "Required Police Cars": "1",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/90", "Officer Down"]
+        ],
+        "Maximum Number of Prisoners": "1"
+    },
+    "73": {
+        "name": "Obstruction of traffic",
+        "Average credits": "80",
+        "Required Police Cars": "1"
+    },
+    "74": {
+        "name": "Theft of property from vehicles",
+        "Average credits": "150",
+        "Required Police Cars": "1"
+    },
+    "75": {
+        "name": "Tree on bikeway",
+        "Average credits": "310",
+        "Required Firetrucks": "1"
+    },
+    "76": {
+        "name": "Burning substation",
+        "Average credits": "1900",
+        "Required Firetrucks": "2",
+        "Required Battalion Chief Vehicles": "1"
+    },
+    "77": {
+        "name": "Burning substation",
+        "Average credits": "2000",
+        "Required Firetrucks": "2",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Police Cars": "1"
+    },
+    "78": {
+        "name": "Person under tree",
+        "Average credits": "1000",
+        "Required Firetrucks": "1",
+        "Minimum patient number": "1",
+        "Max. Patients": "1",
+        "Patient Specializations": "Traumatology",
+        "Probability that a patient has to be transported": "100"
+    },
+    "79": {
+        "name": "Theft at christmas market",
+        "Average credits": "300",
+        "Required Police Cars": "1",
+        "Runs only from": "Sun, 26 Nov 2017 00:00:00 +0000",
+        "Runs only up until": "Mon, 25 Dec 2017 00:00:00 +0000"
+    },
+    "80": {
+        "name": "Burning christmas market stall",
+        "Average credits": "610",
+        "Required Firetrucks": "1",
+        "Runs only from": "Sun, 26 Nov 2017 00:00:00 +0000",
+        "Runs only up until": "Mon, 25 Dec 2017 00:00:00 +0000",
+        "Max. Patients": "1",
+        "Patient Specializations": "General Internal"
+    },
+    "81": {
+        "name": "Fire at christmas market",
+        "Average credits": "310",
+        "Required Firetrucks": "1",
+        "Runs only from": "Sun, 26 Nov 2017 00:00:00 +0000",
+        "Runs only up until": "Mon, 25 Dec 2017 00:00:00 +0000",
+        "Max. Patients": "1",
+        "Patient Specializations": "General Internal"
+    },
+    "82": {
+        "name": "Traffic accident - ice",
+        "Average credits": "1410",
+        "Required Heavy Rescue Vehicles": "1",
+        "Probability of Heavy Rescue being required": "100",
+        "Required Firetrucks": "1",
+        "Runs only from": "Sun, 26 Nov 2017 00:00:00 +0000",
+        "Runs only up until": "Mon, 25 Dec 2017 00:00:00 +0000",
+        "Max. Patients": "3",
+        "Patient Specializations": "Traumatology"
+    },
+    "83": {
+        "name": "Burning christmas tree",
+        "Average credits": "870",
+        "Required Firetrucks": "1",
+        "Runs only from": "Sun, 26 Nov 2017 00:00:00 +0000",
+        "Runs only up until": "Mon, 25 Dec 2017 00:00:00 +0000"
+    },
+    "84": {
+        "name": "Burning advent wreath",
+        "Average credits": "800",
+        "Required Firetrucks": "1",
+        "Runs only from": "Sun, 26 Nov 2017 00:00:00 +0000",
+        "Runs only up until": "Mon, 25 Dec 2017 00:00:00 +0000"
+    },
+    "85": {
+        "name": "Brawl at christmas market",
+        "Average credits": "600",
+        "Required Police Cars": "2",
+        "Max. Patients": "2",
+        "Patient Specializations": "Traumatology",
+        "Runs only from": "Sun, 26 Nov 2017 00:00:00 +0000",
+        "Runs only up until": "Mon, 25 Dec 2017 00:00:00 +0000"
+    },
+    "86": {
+        "name": "MVA Rollover",
+        "Average credits": "3000",
+        "Required Police Cars": "2",
+        "Required Firetrucks": "3",
+        "Required Heavy Rescue Vehicles": "1",
+        "Required Platform Trucks": "1",
+        "Required Battalion Chief Vehicles": "2",
+        "Max. Patients": "4",
+        "Patient Specializations": "General Internal",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/25", "Road accident"]
+        ]
+    },
+    "87": {
+        "name": "Industrial Fire",
+        "Average credits": "5300",
+        "Required Firetrucks": "5",
+        "Required Platform Trucks": "2",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Mobile Command Vehicles": "1",
+        "Required HAZMAT Vehicles": "1",
+        "Max. Patients": "4",
+        "Patient Specializations": "General Surgeon"
+    },
+    "88": {
+        "name": "Building Collapse",
+        "Average credits": "7300",
+        "Required Firetrucks": "2",
+        "Required Platform Trucks": "2",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Mobile Command Vehicles": "1",
+        "Required Heavy Rescue Vehicles": "2",
+        "Max. Patients": "2",
+        "Patient Specializations": "General Surgeon"
+    },
+    "89": {
+        "name": "Trench Rescue",
+        "Average credits": "2500",
+        "Required Police Cars": "1",
+        "Required Firetrucks": "3",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Heavy Rescue Vehicles": "2",
+        "Max. Patients": "4",
+        "Minimum patient number": "2",
+        "Patient Specializations": "General Surgeon"
+    },
+    "90": {
+        "name": "Officer Down",
+        "Average credits": "1500",
+        "Required Police Cars": "6",
+        "Max. Patients": "1",
+        "Minimum patient number": "1",
+        "Patient Specializations": "General Surgeon"
+    },
+    "91": {
+        "name": "Concert",
+        "Average credits": "4400",
+        "Required Firetrucks": "2",
+        "Required Ambulances": "1",
+        "Required Police Cars": "7",
+        "Duration": "3 hours"
+    },
+    "92": {
+        "name": "Soccer Game",
+        "Average credits": "3400",
+        "Required Firetrucks": "1",
+        "Required Ambulances": "2",
+        "Required Police Cars": "3",
+        "Duration": "2 hours"
+    },
+    "93": {
+        "name": "Baseball Game",
+        "Average credits": "4400",
+        "Required Firetrucks": "1",
+        "Required Ambulances": "2",
+        "Required Police Cars": "2",
+        "Duration": "3 hours"
+    },
+    "94": {
+        "name": "Prisoner Escape",
+        "Average credits": "4000",
+        "Required K-9 Units": "1",
+        "Required Police Cars": "10",
+        "Required Police Helicopters": "1",
+        "Maximum Number of Prisoners": "1"
+    },
+    "95": {
+        "name": "Fleeing Suspect",
+        "Average credits": "3000",
+        "Required Police Cars": "5",
+        "Required Police Helicopters": "1",
+        "Maximum Number of Prisoners": "1"
+    },
+    "96": {
+        "name": "Missing Person",
+        "Average credits": "4500",
+        "Required Police Cars": "5",
+        "Required Firetrucks": "2",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Police Helicopters": "1",
+        "Max. Patients": "1",
+        "Patient Specializations": "General Internal"
+    },
+    "97": {
+        "name": "Warrant Standby",
+        "Average credits": "2000",
+        "Required Police Cars": "3",
+        "Required Police Helicopters": "1",
+        "Maximum Number of Prisoners": "1",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/90", "Officer Down"]
+        ]
+    },
+    "98": {
+        "name": "Unknown Tanker Spill",
+        "Average credits": "5300",
+        "Required Firetrucks": "4",
+        "Required Heavy Rescue Vehicles": "2",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Mobile Command Vehicles": "1",
+        "Required Police Cars": "3",
+        "Required HAZMAT Vehicles": "2"
+    },
+    "99": {
+        "name": "Commercial Fire",
+        "Average credits": "4000",
+        "Required Firetrucks": "6",
+        "Required Platform Trucks": "2",
+        "Required Heavy Rescue Vehicles": "2",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Mobile Command Vehicles": "1",
+        "Required Police Cars": "2",
+        "Max. Patients": "4",
+        "Probability that a patient has to be transported": "25",
+        "Patient Specializations": "General Internal"
+    },
+    "100": {
+        "name": "Animal Attack",
+        "Average credits": "300",
+        "Required Police Cars": "1",
+        "Max. Patients": "1",
+        "Minimum patient number": "1",
+        "Patient Specializations": "Traumatology",
+        "Probability that a patient has to be transported": "60",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/90", "Officer Down"]
+        ]
+    },
+    "101": {
+        "name": "Unknown Tanker Spill",
+        "Average credits": "4300",
+        "Required Firetrucks": "4",
+        "Required Heavy Rescue Vehicles": "2",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Mobile Command Vehicles": "1",
+        "Required Police Cars": "3",
+        "Required HAZMAT Vehicles": "1"
+    },
+    "102": {
+        "name": "High Rise Fire",
+        "Average credits": "4000",
+        "Required Firetrucks": "5",
+        "Required Platform Trucks": "2",
+        "Required Heavy Rescue Vehicles": "1",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Mobile Air Vehicles": "2",
+        "Probability of Mobile Air being required": "50",
+        "Required Water Tankers": "1",
+        "Required Mobile Command Vehicles": "1",
+        "Minimum patient number": "4",
+        "Max. Patients": "7",
+        "Probability that a patient has to be transported": "50",
+        "Patient Specializations": "General Internal"
+    },
+    "103": {
+        "name": "Domestic Dispute",
+        "Average credits": "300",
+        "Required Police Cars": "2",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/90", "Officer Down"]
+        ]
+    },
+    "104": {
+        "name": "Hostage Taken",
+        "Average credits": "2000",
+        "Required Police Cars": "4",
+        "Required SWAT Cars": "2",
+        "Max. Patients": "2",
+        "Minimum patient number": "1",
+        "Patient Specializations": "General Surgeon"
+    },
+    "105": {
+        "name": "Active Shooter",
+        "Average credits": "2800",
+        "Required Police Cars": "4",
+        "Required SWAT Cars": "4",
+        "Required Police Helicopters": "1",
+        "Max. Patients": "10",
+        "Minimum patient number": "1",
+        "Patient Specializations": "General Surgeon"
+    },
+    "106": {
+        "name": "High-Risk Warrant",
+        "Average credits": "1400",
+        "Required SWAT Cars": "3",
+        "Required Police Cars": "1"
+    },
+    "107": {
+        "name": "Drug Warrant",
+        "Average credits": "1000",
+        "Required SWAT Cars": "1",
+        "Required Police Cars": "1"
+    },
+    "108": {
+        "name": "Anaphylaxis",
+        "Required Rescue Stations": "2",
+        "Max. Patients": "1",
+        "Patient Specializations": "General Internal",
+        "Minimum patient number": "1",
+        "Probability of NEF": "0",
+        "Probability that a patient has to be transported": "70"
+    },
+    "109": {
+        "name": "Noise Complaint",
+        "Requirement of Police Stations": "1",
+        "Required Police Cars": "1"
+    },
+    "110": {
+        "name": "Residential Fire",
+        "Required Rescue Stations": "2",
+        "Required Police Cars": "2",
+        "Required Firetrucks": "3",
+        "Required Platform Trucks": "1",
+        "Required Battalion Chief Vehicles": "1",
+        "Max. Patients": "4",
+        "Patient Specializations": "General Surgeon",
+        "Probability of NEF": "0",
+        "Probability that a patient has to be transported": "50"
+    },
+    "111": {
+        "name": "Stabbing",
+        "Average credits": "1500",
+        "Required Police Cars": "5",
+        "Max. Patients": "6",
+        "Minimum patient number": "1",
+        "Patient Specializations": "General Surgeon"
+    },
+    "112": {
+        "name": "Bomb Explosion",
+        "Average credits": "14000",
+        "Required Firetrucks": "6",
+        "Required Platform Trucks": "2",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Mobile Command Vehicles": "1",
+        "Required Heavy Rescue Vehicles": "2",
+        "Required Police Helicopters": "1",
+        "Required Police Cars": "14",
+        "Required SWAT Cars": "4",
+        "Just as dressing application": "Yes"
+    },
+    "113": {
+        "name": "Smoke in Cabin",
+        "Average credits": "1200",
+        "Required Firetrucks": "2",
+        "Required ARFF": "1"
+    },
+    "114": {
+        "name": "Smoke in Cabin",
+        "Average credits": "1200",
+        "Required Firetrucks": "2",
+        "Required ARFF": "1"
+    },
+    "115": {
+        "name": "Braking Overheat",
+        "Average credits": "900",
+        "Required ARFF": "1",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Firetrucks": "1"
+    },
+    "116": {
+        "name": "Braking Overheat",
+        "Average credits": "900",
+        "Required ARFF": "1",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Firetrucks": "1"
+    },
+    "117": {
+        "name": "Engine Fire",
+        "Average credits": "1200",
+        "Required ARFF": "2",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Firetrucks": "1"
+    },
+    "118": {
+        "name": "Engine Fire",
+        "Average credits": "1900",
+        "Required ARFF": "3",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Firetrucks": "1"
+    },
+    "119": {
+        "name": "Food Poisoning",
+        "Required Rescue Stations": "1",
+        "Max. Patients": "1",
+        "Patient Specializations": "General Surgeon",
+        "Minimum patient number": "1"
+    },
+    "120": {
+        "name": "Large Aircraft Crash",
+        "Average credits": "6000",
+        "Required ARFF": "4",
+        "Required Firetrucks": "3",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Police Cars": "5",
+        "Max. Patients": "25",
+        "Minimum patient number": "1",
+        "Patient Specializations": "General Internal"
+    },
+    "121": {
+        "name": "Aircraft Hijack",
+        "Average credits": "5000",
+        "Required Police Cars": "10",
+        "Required SWAT Cars": "4",
+        "Required Battalion Chief Vehicles": "1",
+        "Max. Patients": "10",
+        "Minimum patient number": "1",
+        "Patient Specializations": "General Surgeon"
+    },
+    "122": {
+        "name": "Carbon Monoxide Alarm",
+        "Average credits": "100",
+        "Required Firetrucks": "1"
+    },
+    "123": {
+        "name": "Bank Robbery",
+        "Average credits": "1600",
+        "Required Police Cars": "6",
+        "Required SWAT Cars": "2"
+    },
+    "124": {
+        "name": "Shooting",
+        "Average credits": "1750",
+        "Required Police Cars": "7",
+        "Max. Patients": "6",
+        "Minimum patient number": "1",
+        "Patient Specializations": "Traumatology"
+    },
+    "125": {
+        "name": "Vehicle Accident - Entrapment",
+        "Average credits": "1500",
+        "Required Firetrucks": "2",
+        "Required Heavy Rescue Vehicles": "2",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Police Cars": "2",
+        "Max. Patients": "4",
+        "Probability that a patient has to be transported": "95",
+        "Patient Specializations": "Traumatology"
+    },
+    "126": {
+        "name": "Overdose",
+        "Required Rescue Stations": "2",
+        "Required Police Cars": "1",
+        "Max. Patients": "1",
+        "Patient Specializations": "General Internal",
+        "Minimum patient number": "1"
+    },
+    "127": {
+        "name": "Fire in an Office Building",
+        "Required Fire Stations": "15",
+        "Required Firetrucks": "10",
+        "Required Platform Trucks": "4",
+        "Required Heavy Rescue Vehicles": "2",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Mobile Command Vehicles": "1",
+        "Required Police Cars": "3",
+        "Required Mobile Air Vehicles": "1",
+        "Probability of Mobile Air being required": "50",
+        "Required Water Tankers": "1",
+        "Max. Patients": "4",
+        "Patient Specializations": "General Internal"
+    },
+    "128": {
+        "name": "Aggressive Passenger",
+        "Average credits": "600",
+        "Required Police Cars": "1",
+        "Maximum Number of Prisoners": "1"
+    },
+    "129": {
+        "name": "Aggressive Passenger",
+        "Average credits": "600",
+        "Required Police Cars": "1",
+        "Maximum Number of Prisoners": "1"
+    },
+    "130": {
+        "name": "Powerline Down",
+        "Required Fire Stations": "1",
+        "Required Firetrucks": "1"
+    },
+    "131": {
+        "name": "Parole Violation",
+        "Requirement of Police Stations": "1",
+        "Required Police Cars": "1",
+        "Maximum Number of Prisoners": "1"
+    },
+    "132": {
+        "name": "Allergic Reaction",
+        "Required Rescue Stations": "1",
+        "Max. Patients": "1",
+        "Patient Specializations": "Cardiology",
+        "Probability that a patient has to be transported": "30",
+        "Minimum patient number": "1"
+    },
+    "133": {
+        "name": "Stolen Credit Card",
+        "Requirement of Police Stations": "1",
+        "Required Police Cars": "1",
+        "Maximum Number of Prisoners": "1"
+    },
+    "134": {
+        "name": "Search of a vehicle",
+        "Requirement of Police Stations": "6",
+        "Required Police Cars": "2",
+        "Required K-9 Units": "1"
+    },
+    "135": {
+        "name": "Small Violent Protest",
+        "Requirement of Police Stations": "6",
+        "Required Police Cars": "4",
+        "Required K-9 Units": "1",
+        "Maximum Number of Prisoners": "2",
+        "Max. Patients": "3",
+        "Patient Specializations": "Traumatology",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/136", "Medium Violent Protest"]
+        ]
+    },
+    "136": {
+        "name": "Medium Violent Protest",
+        "Requirement of Police Stations": "7",
+        "Required Police Cars": "7",
+        "Required K-9 Units": "1",
+        "Required Police Helicopters": "1",
+        "Maximum Number of Prisoners": "4",
+        "Max. Patients": "5",
+        "Patient Specializations": "Traumatology"
+    },
+    "137": {
+        "name": "Drug Deal",
+        "Requirement of Police Stations": "6",
+        "Required Police Cars": "4",
+        "Required K-9 Units": "1",
+        "Maximum Number of Prisoners": "2"
+    },
+    "138": {
+        "name": "Smoke Investigation",
+        "Average credits": "700",
+        "Required Firetrucks": "1",
+        "Required Platform Trucks": "1",
+        "Required Battalion Chief Vehicles": "1",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/110", "Residential Fire"]
+        ]
+    },
+    "139": {
+        "name": "Drug Lab Fire",
+        "Average credits": "3000",
+        "Required Firetrucks": "4",
+        "Required Platform Trucks": "2",
+        "Required Battalion Chief Vehicles": "2",
+        "Required HAZMAT Vehicles": "2",
+        "Required Police Cars": "4",
+        "Maximum Number of Prisoners": "5",
+        "Minimum patient number": "1",
+        "Max. Patients": "10",
+        "Patient Specializations": "General Internal"
+    },
+    "140": {
+        "name": "Gas Station Robbery",
+        "Requirement of Police Stations": "8",
+        "Required Police Cars": "4",
+        "Required Police Helicopters": "1",
+        "Required SWAT Cars": "2",
+        "Maximum Number of Prisoners": "3"
+    },
+    "141": {
+        "name": "Elevator Rescue",
+        "Average credits": "400",
+        "Required Firetrucks": "1"
+    },
+    "142": {
+        "name": "Warehouse Fire",
+        "Average credits": "10000",
+        "Required Firetrucks": "10",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Mobile Command Vehicles": "1",
+        "Required Platform Trucks": "4",
+        "Required Heavy Rescue Vehicles": "4",
+        "Required Water Tankers": "3",
+        "Required Mobile Air Vehicles": "4",
+        "Required Police Cars": "2",
+        "Max. Patients": "2",
+        "Patient Specializations": "General Internal"
+    },
+    "143": {
+        "name": "Assassination Threat",
+        "Average credits": "4400",
+        "Required Police Cars": "5",
+        "Required SWAT Cars": "2",
+        "Duration": "3 hours"
+    },
+    "144": {
+        "name": "Truck in House Wall",
+        "Average credits": "4400",
+        "Required Firetrucks": "3",
+        "Required Heavy Rescue Vehicles": "1",
+        "Max. Patients": "3",
+        "Patient Specializations": "Traumatology"
+    },
+    "145": {
+        "name": "Burning Garbage Truck",
+        "Average credits": "600",
+        "Required Firetrucks": "2"
+    },
+    "146": {
+        "name": "Child Birth",
+        "Required Rescue Stations": "1",
+        "Max. Patients": "1",
+        "Patient Specializations": "Gynecology",
+        "Minimum patient number": "1"
+    },
+    "147": {
+        "name": "Keys Locked in Vehicle",
+        "Average credits": "300",
+        "Required Police Cars": "1"
+    },
+    "148": {
+        "name": "Stuck Climber",
+        "Average credits": "650",
+        "Required Firetrucks": "1",
+        "Required Heavy Rescue Vehicles": "1",
+        "Required Platform Trucks": "1",
+        "Probability of Platform Truck being required": "50",
+        "Max. Patients": "1",
+        "Minimum patient number": "1",
+        "Patient Specializations": "General Internal"
+    },
+    "149": {
+        "name": "Smoke Detector Check",
+        "Average credits": "400",
+        "Required Firetrucks": "1",
+        "Duration": "15 minutes"
+    },
+    "150": {
+        "name": "Freight Train Derailment",
+        "Average credits": "10000",
+        "Required Firetrucks": "10",
+        "Required Platform Trucks": "4",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Heavy Rescue Vehicles": "4",
+        "Required Mobile Air Vehicles": "2",
+        "Required HAZMAT Vehicles": "2",
+        "Required Mobile Command Vehicles": "1",
+        "Required Police Cars": "2",
+        "Max. Patients": "4",
+        "Patient Specializations": "Traumatology"
+    },
+    "151": {
+        "name": "Freight Train Derailment",
+        "Average credits": "10000",
+        "Required Firetrucks": "10",
+        "Required Platform Trucks": "4",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Heavy Rescue Vehicles": "4",
+        "Required Mobile Air Vehicles": "2",
+        "Required HAZMAT Vehicles": "2",
+        "Required Mobile Command Vehicles": "1",
+        "Required Police Cars": "2",
+        "Max. Patients": "4",
+        "Patient Specializations": "Traumatology"
+    },
+    "152": {
+        "name": "Freight Train Derailment",
+        "Average credits": "10000",
+        "Required Firetrucks": "10",
+        "Required Platform Trucks": "4",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Heavy Rescue Vehicles": "4",
+        "Required Mobile Air Vehicles": "2",
+        "Required HAZMAT Vehicles": "2",
+        "Required Mobile Command Vehicles": "1",
+        "Required Police Cars": "2",
+        "Max. Patients": "4",
+        "Patient Specializations": "Traumatology"
+    },
+    "153": {
+        "name": "Barn Fire",
+        "Average credits": "1800",
+        "Required Firetrucks": "6",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Platform Trucks": "1",
+        "Required Mobile Air Vehicles": "1",
+        "Required Water Tankers": "1"
+    },
+    "154": {
+        "name": "Chlorine leak",
+        "Average credits": "3500",
+        "Required Firetrucks": "3",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Heavy Rescue Vehicles": "1",
+        "Required HAZMAT Vehicles": "1",
+        "Required Mobile Command Vehicles": "1",
+        "Max. Patients": "15",
+        "Patient Specializations": "General Internal"
+    }
+}
