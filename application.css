@@ -6263,4 +6263,8 @@
                                                                 }#
                                                             important_messages_success {
                                                                 position: fixed;width: 100 % ;top: 0;left: 0;z - index: 9000;display: none
+                                                            }.vehicle_type h3 {
+                                                                margin: 0 0 10 px 0
+                                                            }.vehicle_type.alert {
+                                                                margin - bottom: 5 px
                                                             }
