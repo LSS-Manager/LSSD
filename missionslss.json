@@ -3584,5 +3584,22 @@
         "Benötigte MzKW": "1",
         "Benötigte MTW-TZ": "1",
         "Dauer": "2 Stunden"
+    },
+    "347": {
+        "name": "Helikopter in Baum",
+        "Credits im Durchschnitt": "6000",
+        "Benötigte Löschfahrzeuge": "6",
+        "Benötigte Drehleitern": "1",
+        "Benötigte ELW 1": "2",
+        "Benötigte ELW 2": "1",
+        "Benötigte Rüstwagen": "2",
+        "Benötigte GW-Öl": "1",
+        "Benötigte GW-Höhenrettung": "1",
+        "GW-Höhenrettung Anforderungswahrscheinlichkeit": "50",
+        "Benötigte Streifenwagen": "3",
+        "Benötigte Feuerwehrkräne (FwK)": "1",
+        "Maximale Patientenanzahl": "4",
+        "Fachrichtung für Patienten": "Unfallchirurgie",
+        "NEF Anforderungswahrscheinlichkeit": "75"
     }
 }
