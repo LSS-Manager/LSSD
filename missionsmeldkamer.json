@@ -2466,5 +2466,14 @@
         "Maximale patiënten aantal": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "10",
         "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
+    },
+    "283": {
+        "name": "Val van paard",
+        "Benodigd aantal Ambulancestandplaatsen": "10",
+        "Maximale patiënten aantal": "1",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde",
+        "MMT-Arts benodigd waarschijnlijkheid": "10"
     }
 }
