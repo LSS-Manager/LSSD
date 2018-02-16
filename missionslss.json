@@ -3601,5 +3601,28 @@
         "Maximale Patientenanzahl": "4",
         "Fachrichtung für Patienten": "Unfallchirurgie",
         "NEF Anforderungswahrscheinlichkeit": "75"
+    },
+    "348": {
+        "name": "Explosion in Biogasanlage",
+        "Credits im Durchschnitt": "10000",
+        "Benötigte Löschfahrzeuge": "20",
+        "Benötigte Drehleitern": "2",
+        "Benötigte Rüstwagen": "4",
+        "Benötigte GW-A": "2",
+        "Benötigte GW-Mess": "1",
+        "Benötigte GW-Öl": "1",
+        "Benötigte GW L 2 Wasser": "2",
+        "Benötigte ELW 1": "4",
+        "Benötigte ELW 2": "2",
+        "Benötigte Streifenwagen": "3",
+        "BRmG R": "1",
+        "LKW K 9": "1",
+        "Benötigte MzKW": "1",
+        "Benötigte GKW": "1",
+        "Benötigte MTW-TZ": "1",
+        "Maximale Patientenanzahl": "2",
+        "Fachrichtung für Patienten": "Unfallchirurgie",
+        "NEF Anforderungswahrscheinlichkeit": "25",
+        "RTH Anforderungswahrscheinlichkeit": "10"
     }
 }
