@@ -1339,5 +1339,11 @@
         "Max. Patients": "1",
         "Patient Specializations": "General Internal",
         "Probability that a patient has to be transported": "75"
+    },
+    "161": {
+        "name": "DUI Checkpoint",
+        "Average credits": "3500",
+        "Required Police Cars": "6",
+        "Duration": "3 hours"
     }
 }

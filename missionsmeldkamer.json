@@ -2475,5 +2475,10 @@
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
         "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde",
         "MMT-Arts benodigd waarschijnlijkheid": "10"
+    },
+    "284": {
+        "name": "Gevaarlijk rijgedrag",
+        "Gemiddeld aantal Credits": "500",
+        "Benodigde politieauto's": "1"
     }
 }
