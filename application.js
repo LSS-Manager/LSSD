@@ -730,7 +730,7 @@ function vehicleDriveReal(t) {
                 longitude: e.longitude,
                 app_icon_path_normal: e.app_icon_path_normal,
                 app_icon_path_sonderrechte: e.app_icon_path_sonderrechte
-            }) : (e.setLatLng([current_lat, current_lng]), mapIsVisible([current_lat, current_lng]) ? (1 == e.performance_invisible && (e.performance_invisible = !1, e.addTo(map)), vehicle_label ? e.openTooltip() : e.closeTooltip()) : (n = 1e3, e.closeTooltip(), map.removeLayer(e), e.performance_invisible = !0), new_position = null))
+            }) : ((isNaN(current_lat) || isNaN(current_lng)) && (console.log([current_lat, current_lng]), console.log(e.vehicle_id), console.log(e.current_step)), e.setLatLng([current_lat, current_lng]), mapIsVisible([current_lat, current_lng]) ? (1 == e.performance_invisible && (e.performance_invisible = !1, e.addTo(map)), vehicle_label ? e.openTooltip() : e.closeTooltip()) : (n = 1e3, e.closeTooltip(), map.removeLayer(e), e.performance_invisible = !0), new_position = null))
         } else e.current_step++;
         setTimeout(function() {
             vehicleDriveReal(t)
