@@ -41,12 +41,12 @@ function mission_participation_add(t) {
 
 function vehicleDistance(t, e, i, n, s, o, a) {
     return o > 0 ? (vehicleDistanceDraw(e, i, t, o), !0) : 1 != t ? (url = "https://www.leitstellenspiel.de/osrmroute/viaroute?loc=" + e + "," + i + "&loc=" + n + "," + s, $.get(url, function(o) {
-        if (200 != o.status) return vehicleDistanceLeitstellenspiel(t, e, i, n, s, a), !0;
-        var r = 1.1;
-        ("undefined" == typeof a || 1 == a) && (r = .8);
+        if ("undefined" != typeof o.code && "Ok" == o.code && (0 == o.routes[0].distance ? o.status = -1 : (o.route_summary = {}, o.route_summary.total_time = o.routes[0].duration, o.status = 200)), 200 != o.status) return vehicleDistanceLeitstellenspiel(t, e, i, n, s, a), !0;
+        var r = TIME_MODIFIER_NORMAL;
+        ("undefined" == typeof a || 1 == a) && (r = TIME_MODIFIER_SONDERRECHTE);
         var l = Math.round(o.route_summary.total_time * r),
             h = vehicleDistanceDirectTimeToObject(20, e, i, n, s, a);
-        l > h && (l = vehicleDistanceDirectTimeToObject(40, e, i, n, s, a)), vehicleDistanceDraw(e, i, t, l), reload_table()
+        l > h && (l = vehicleDistanceDirectTimeToObject(30, e, i, n, s, a)), vehicleDistanceDraw(e, i, t, l), reload_table()
     }), !0) : (vehicleDistanceDirect(190, t, e, i, n, s, a), void 0)
 }
 
@@ -59,8 +59,8 @@ function vehicleDistanceLeitstellenspiel(direct_move, source_latitude, source_lo
 function vehicleDistanceDirectTimeToObject(t, e, i, n, s, o) {
     var a = distance(e, i, n, s) / 1e3;
     .1 > a && (a = .1);
-    var r = 1.1;
-    return ("undefined" == typeof o || 1 == o) && (r = .8), Math.round(60 * (a / (t / 60)) * r)
+    var r = TIME_MODIFIER_NORMAL;
+    return ("undefined" == typeof o || 1 == o) && (r = TIME_MODIFIER_SONDERRECHTE), Math.round(60 * (a / (t / 60)) * r)
 }
 
 function vehicleDistanceDraw(t, e, i, n) {
@@ -18991,6 +18991,8 @@ var map, alliance_building_show, geocoder, directionsService, building_eval_unlo
     mapViewExpanded = !1,
     mapViewExpandedWindow = !1,
     alliance_chat_ban_countdown_timer, mission_overview_timer, mission_overview_last_count, buildingVehicleGraphicCache = {};
+const TIME_MODIFIER_SONDERRECHTE = .8,
+    TIME_MODIFIER_NORMAL = 1.1;
 ! function() {
     "use strict";
     var t = new Image,
