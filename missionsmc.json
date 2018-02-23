@@ -1345,5 +1345,27 @@
         "Average credits": "3500",
         "Required Police Cars": "6",
         "Duration": "3 hours"
+    },
+    "162": {
+        "name": "Light Aircraft Crash (Airfield)",
+        "Average credits": "2000",
+        "Required Firetrucks": "1",
+        "Required ARFF": "2",
+        "Max. Patients": "4",
+        "Patient Specializations": "Traumatology",
+        "Probability that a patient has to be transported": "60"
+    },
+    "163": {
+        "name": "Light Aircraft Crash",
+        "Average credits": "4000",
+        "Required Firetrucks": "4",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Heavy Rescue Vehicles": "1",
+        "Required Water Tankers": "1",
+        "Required HAZMAT Vehicles": "1",
+        "Required Mobile Command Vehicles": "1",
+        "Max. Patients": "4",
+        "Patient Specializations": "Traumatology",
+        "Probability that a patient has to be transported": "60"
     }
 }

@@ -3624,5 +3624,32 @@
         "Fachrichtung für Patienten": "Unfallchirurgie",
         "NEF Anforderungswahrscheinlichkeit": "25",
         "RTH Anforderungswahrscheinlichkeit": "10"
+    },
+    "349": {
+        "name": "Brandgeruch",
+        "Credits im Durchschnitt": "100",
+        "Benötigte Löschfahrzeuge": "1",
+        "Ausbreitungsmöglichkeiten": [
+            ["https://www.leitstellenspiel.de/einsaetze/2", "Brennender PKW"],
+            ["https://www.leitstellenspiel.de/einsaetze/6", "Gartenlaubenbrand"],
+            ["https://www.leitstellenspiel.de/einsaetze/8", "Sperrmüllbrand"],
+            ["https://www.leitstellenspiel.de/einsaetze/9", "Strohballen Brand"],
+            ["https://www.leitstellenspiel.de/einsaetze/5", "Zimmerbrand"],
+            ["https://www.leitstellenspiel.de/einsaetze/11", "Brennende Telefonzelle"],
+            ["https://www.leitstellenspiel.de/einsaetze/13", "Brennender LKW"],
+            ["https://www.leitstellenspiel.de/einsaetze/20", "Kellerbrand"],
+            ["https://www.leitstellenspiel.de/einsaetze/21", "Schornsteinbrand"],
+            ["https://www.leitstellenspiel.de/einsaetze/22", "Dachstuhlbrand"],
+            ["https://www.leitstellenspiel.de/einsaetze/26", "Brand im Supermarkt"],
+            ["https://www.leitstellenspiel.de/einsaetze/28", "Garagenbrand"],
+            ["https://www.leitstellenspiel.de/einsaetze/32", "Kaminbrand"],
+            ["https://www.leitstellenspiel.de/einsaetze/76", "Küchenbrand"],
+            ["https://www.leitstellenspiel.de/einsaetze/102", "Feuer in Einfamilienhaus"],
+            ["https://www.leitstellenspiel.de/einsaetze/103", "Feuer in Einfamilienhaus"],
+            ["https://www.leitstellenspiel.de/einsaetze/104", "Feuer in Einfamilienhaus"],
+            ["https://www.leitstellenspiel.de/einsaetze/105", "Feuer in Einfamilienhaus"],
+            ["https://www.leitstellenspiel.de/einsaetze/213", "Gasexplosion"],
+            ["https://www.leitstellenspiel.de/einsaetze/214", "Bürobrand"]
+        ]
     }
 }

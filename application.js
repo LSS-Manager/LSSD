@@ -1168,7 +1168,7 @@ function bigMapWindowPositionRestore() {
 }
 
 function bigMapWindowPositionRestoreWindow(t, e) {
-    "number" == typeof e[0] && e[0] > 100 && t.css("width", e[0] + "px"), "number" == typeof e[1] && e[1] > 10 && t.css("height", e[1] + "px"), "number" == typeof e[2] && e[2] < window.innerWidth && e[2] >= 0 && t.css("left", e[2] + "px"), "number" == typeof e[3] && (e[3] < window.innerHeight && e[3] > $("#col_navbar_holder").height() - 5 ? t.css("top", e[3] + "px") : t.css("top", $("#col_navbar_holder").height() + "px")), "boolean" == typeof e[4] && e[4] && t.addClass("fadeIn animated")
+    "number" == typeof e[0] && e[0] > 100 && t.css("width", e[0] + "px"), "number" == typeof e[1] && e[1] > 20 && t.css("height", e[1] + "px"), "number" == typeof e[2] && e[2] < window.innerWidth && e[2] >= 0 && t.css("left", e[2] + "px"), "number" == typeof e[3] && (e[3] < window.innerHeight && e[3] > $("#col_navbar_holder").height() - 5 ? t.css("top", e[3] + "px") : t.css("top", $("#col_navbar_holder").height() + "px")), "boolean" == typeof e[4] && e[4] && t.addClass("fadeIn animated")
 }
 
 function bigMapWindowPositionGet(t) {
