@@ -183,14 +183,14 @@
     "26": {
         "name": "Brand in supermarkt",
         "Gemiddeld aantal Credits": "3510",
-        "Benodigde politieauto's": "1",
         "Benodigde tankautospuiten": "3",
+        "Benodigde redvoertuigen": "1",
         "Benodigde OvD-B's": "1",
+        "Benodigde slangenwagens": "1",
+        "Slangenwagen benodigd waarschijnlijkheid": "20",
         "Benodigde HOVD's": "1",
         "HOVD benodigd waarschijnlijkheid": "50",
-        "Benodigde redvoertuigen": "1",
-        "Benodigde slangenwagens": "1",
-        "Slangenwagen benodigd waarschijnlijkheid": "30"
+        "Benodigde politieauto's": "1"
     },
     "27": {
         "name": "Persoon aangereden",
@@ -251,10 +251,10 @@
     "34": {
         "name": "Brand in supermarkt",
         "Gemiddeld aantal Credits": "2100",
-        "Benodigde politieauto's": "1",
         "Benodigde tankautospuiten": "2",
+        "Benodigde redvoertuigen": "1",
         "Benodigde OvD-B's": "1",
-        "Benodigde redvoertuigen": "1"
+        "Benodigde politieauto's": "1"
     },
     "35": {
         "name": "Brand in ziekenhuis",
@@ -2480,5 +2480,12 @@
         "name": "Gevaarlijk rijgedrag",
         "Gemiddeld aantal Credits": "500",
         "Benodigde politieauto's": "1"
+    },
+    "285": {
+        "name": "Brand in supermarkt",
+        "Gemiddeld aantal Credits": "1400",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde redvoertuigen": "1",
+        "Hoogwerker benodigd waarschijnlijkheid": "10"
     }
 }
