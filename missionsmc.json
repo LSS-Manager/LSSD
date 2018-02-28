@@ -1363,7 +1363,7 @@
         "Required Heavy Rescue Vehicles": "1",
         "Required Water Tankers": "1",
         "Required HAZMAT Vehicles": "1",
-        "Required Mobile Command Vehicles": "1",
+        "Probability of HAZMAT being required": "50",
         "Max. Patients": "4",
         "Patient Specializations": "Traumatology",
         "Probability that a patient has to be transported": "60"
