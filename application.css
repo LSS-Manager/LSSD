@@ -4946,11 +4946,11 @@
                             body.dark {
                                 background - color: #505050;color:# fff
                             }
-                            body.dark.building_list_caption {
-                                background - color: #323232}body.dark .mission_patient{background-color:# 323232
+                            body.dark.dropdown - menu a {
+                                color: #000}body.dark .building_list_caption{background-color:# 323232
                             }
-                            body.dark.vehicle_search {
-                                background - color: #cecece;
+                            body.dark.mission_patient {
+                                background - color: #323232}body.dark .vehicle_search{background-color:# cecece;
                                 border - radius: 2 px
                             }
                             body.dark.leaflet - label small {
