@@ -3651,5 +3651,30 @@
             ["https://www.leitstellenspiel.de/einsaetze/213", "Gasexplosion"],
             ["https://www.leitstellenspiel.de/einsaetze/214", "Bürobrand"]
         ]
+    },
+    "350": {
+        "name": "Flughafenbrand",
+        "Credits im Durchschnitt": "17000",
+        "Benötigte Löschfahrzeuge": "40",
+        "Benötigte Flugfeldlöschfahrzeuge": "6",
+        "Benötigte Drehleitern": "8",
+        "Benötigte Rüstwagen": "6",
+        "Benötigte Streifenwagen": "10",
+        "Benötigte GW-Mess": "3",
+        "Benötigte GW-A": "2",
+        "Benötigte GW L 2 Wasser": "4",
+        "BRmG R": "2",
+        "LKW K 9": "2",
+        "Benötigte MzKW": "2",
+        "Benötigte GKW": "2",
+        "Benötigte MTW-TZ": "2",
+        "Benötigte ELW 1": "6",
+        "Benötigte ELW 2": "2",
+        "Benötigte Polizeihubschrauber": "2",
+        "Nur als Verbandseinsatz": "Ja",
+        "Maximale Patientenanzahl": "100",
+        "NEF Anforderungswahrscheinlichkeit": "50",
+        "Fachrichtung für Patienten": "Allgemeine Innere",
+        "Mindest Patientenanzahl": "10"
     }
 }
