@@ -1367,5 +1367,12 @@
         "Max. Patients": "4",
         "Patient Specializations": "Traumatology",
         "Probability that a patient has to be transported": "60"
+    },
+    "164": {
+        "name": "Cable theft",
+        "Average credits": "550",
+        "Required Police Cars": "3",
+        "Required K-9 Units": "1",
+        "Maximum Number of Prisoners": "2"
     }
 }

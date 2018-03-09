@@ -2487,5 +2487,14 @@
         "Benodigde tankautospuiten": "1",
         "Benodigde redvoertuigen": "1",
         "Hoogwerker benodigd waarschijnlijkheid": "10"
+    },
+    "286": {
+        "name": "Kind vast in boom",
+        "Gemiddeld aantal Credits": "340",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde redvoertuigen": "1",
+        "Hoogwerker benodigd waarschijnlijkheid": "80",
+        "Maximale patiënten aantal": "1",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
     }
 }
