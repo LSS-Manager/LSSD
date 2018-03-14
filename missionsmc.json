@@ -1374,5 +1374,53 @@
         "Required Police Cars": "3",
         "Required K-9 Units": "1",
         "Maximum Number of Prisoners": "2"
+    },
+    "165": {
+        "name": "Drowning",
+        "Average credits": "1250",
+        "Required Boots": "1",
+        "Required Firetrucks": "1",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Heavy Rescue Vehicles": "1",
+        "Max. Patients": "2",
+        "Probability that a patient has to be transported": "80",
+        "Patient Specializations": "Traumatology",
+        "Minimum patient number": "1"
+    },
+    "166": {
+        "name": "Drowning",
+        "Average credits": "1250",
+        "Required Boots": "1",
+        "Required Firetrucks": "1",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Heavy Rescue Vehicles": "1",
+        "Max. Patients": "2",
+        "Probability that a patient has to be transported": "80",
+        "Patient Specializations": "Traumatology",
+        "Minimum patient number": "1"
+    },
+    "167": {
+        "name": "Car in river",
+        "Average credits": "1400",
+        "Required Boots": "1",
+        "Required Firetrucks": "2",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Heavy Rescue Vehicles": "1",
+        "Max. Patients": "2",
+        "Probability that a patient has to be transported": "20",
+        "Patient Specializations": "General Internal",
+        "Minimum patient number": "1"
+    },
+    "168": {
+        "name": "Car in lake",
+        "Average credits": "1400",
+        "Required Boots": "1",
+        "Required Firetrucks": "2",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Heavy Rescue Vehicles": "1",
+        "Max. Patients": "2",
+        "Probability that a patient has to be transported": "20",
+        "Patient Specializations": "General Internal",
+        "Minimum patient number": "1"
     }
 }
