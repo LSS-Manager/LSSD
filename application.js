@@ -1548,6 +1548,7 @@ function hideVehicleBuildingHelpText(t) {
             successfully_updated: "Alarm and Response Regulations successfully updated.",
             vehicles: {
                 ab_atemschutz_only: "\nAB respirator",
+                ab_einsatzleitung_only: null,
                 ab_gefahrgut_only: null,
                 ab_oel_only: null,
                 ab_ruest: "AB Setup",
@@ -1556,7 +1557,7 @@ function hideVehicleBuildingHelpText(t) {
                 ambulance: "Ambulance",
                 arff: "ARFF Crash Tender",
                 battalion_chief_unit: "Battalion chief unit",
-                boot: null,
+                boot: "Boats (General)",
                 dekon_p: null,
                 division_chief_unit: "Mobile command vehicle",
                 elw1_or_elw2: null,
@@ -1757,6 +1758,7 @@ function hideVehicleBuildingHelpText(t) {
             successfully_updated: "Alarm und AusrÃ¼ckeordnung erfolgreich gespeichert.",
             vehicles: {
                 ab_atemschutz_only: "AB-Atemschutz",
+                ab_einsatzleitung_only: "AB-Einsatzleitung",
                 ab_gefahrgut_only: "AB-Gefahrgut",
                 ab_oel_only: "AB-Ã–l",
                 ab_ruest: "AB RÃ¼st",
@@ -1768,7 +1770,7 @@ function hideVehicleBuildingHelpText(t) {
                 boot: "Boote (Allgemein)",
                 dekon_p: "Dekon-P oder AB-Dekon-P",
                 division_chief_unit: "Einsatzleitfahrzeuge 2",
-                elw1_or_elw2: "ELW 1 oder ELW 2",
+                elw1_or_elw2: "ELW 1, ELW 2 oder AB-Einsatzleitung",
                 elw3: "ELW 3",
                 elw_airport: null,
                 emergency_ambulance: "Notarzteinsatzfahrzeug oder Rettungshubschrauber",
@@ -1966,6 +1968,7 @@ function hideVehicleBuildingHelpText(t) {
             successfully_updated: "Alarm en uitrukregels succesvol opgeslagen.",
             vehicles: {
                 ab_atemschutz_only: "Adembeschermingshaakarmbak",
+                ab_einsatzleitung_only: null,
                 ab_gefahrgut_only: null,
                 ab_oel_only: "Haakarmbak Milieu",
                 ab_ruest: "Haakarmbak Hulpverlening",
@@ -2175,6 +2178,7 @@ function hideVehicleBuildingHelpText(t) {
             successfully_updated: "Ð¢Ð¸Ð¿ Ð²Ñ‹Ð·Ð¾Ð²Ð° Ð¸ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð¾ Ñ€ÐµÐ°Ð³Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð¾Ð±Ð½Ð¾Ð²Ð»ÐµÐ½Ñ‹.",
             vehicles: {
                 ab_atemschutz_only: null,
+                ab_einsatzleitung_only: null,
                 ab_gefahrgut_only: null,
                 ab_oel_only: null,
                 ab_ruest: null,
@@ -2462,6 +2466,7 @@ function hideVehicleBuildingHelpText(t) {
             successfully_updated: null,
             vehicles: {
                 ab_atemschutz_only: null,
+                ab_einsatzleitung_only: null,
                 ab_gefahrgut_only: null,
                 ab_oel_only: null,
                 ab_ruest: null,
@@ -19010,6 +19015,7 @@ const TIME_MODIFIER_SONDERRECHTE = .8,
         return missing
     }
     "undefined" != typeof L && (L.Icon.Default.imagePath = "/leaflet/images/"), aao_types = [
+        ["ab_einsatzleitung_only", I18n.t("intervention_order.vehicles.ab_einsatzleitung_only")],
         ["gw_gefahrgut_only", I18n.t("intervention_order.vehicles.gw_gefahrgut_only")],
         ["ab_gefahrgut_only", I18n.t("intervention_order.vehicles.ab_gefahrgut_only")],
         ["thw_tauchkraftwagen_or_gw_taucher", I18n.t("intervention_order.vehicles.thw_tauchkraftwagen_or_gw_taucher")],
