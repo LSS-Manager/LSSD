@@ -3676,5 +3676,19 @@
         "NEF Anforderungswahrscheinlichkeit": "50",
         "Fachrichtung für Patienten": "Allgemeine Innere",
         "Mindest Patientenanzahl": "10"
+    },
+    "351": {
+        "name": "Brand im Terminal",
+        "Credits im Durchschnitt": "4000",
+        "Benötigte Löschfahrzeuge": "6",
+        "Benötigte Drehleitern": "2",
+        "Benötigte GW-A": "1",
+        "Benötigte GW-Mess": "1",
+        "Benötigte ELW 1": "2",
+        "Benötigte ELW 2": "1",
+        "Benötigte Streifenwagen": "2",
+        "Maximale Patientenanzahl": "10",
+        "NEF Anforderungswahrscheinlichkeit": "50",
+        "Fachrichtung für Patienten": "Allgemeine Innere"
     }
 }
