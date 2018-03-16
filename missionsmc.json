@@ -1422,5 +1422,56 @@
         "Probability that a patient has to be transported": "20",
         "Patient Specializations": "General Internal",
         "Minimum patient number": "1"
+    },
+    "169": {
+        "name": "Small flooding",
+        "Average credits": "550",
+        "Required Firetrucks": "2",
+        "Max. Patients": "1",
+        "Probability that a patient has to be transported": "40",
+        "Patient Specializations": "General Internal",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/170", "Medium flooding"]
+        ]
+    },
+    "170": {
+        "name": "Medium flooding",
+        "Average credits": "1550",
+        "Required Firetrucks": "4",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Boots": "1",
+        "Max. Patients": "3",
+        "Probability that a patient has to be transported": "40",
+        "Patient Specializations": "General Internal",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/171", "Large flooding"]
+        ]
+    },
+    "171": {
+        "name": "Large flooding",
+        "Average credits": "2500",
+        "Required Firetrucks": "6",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Heavy Rescue Vehicles": "1",
+        "Required Boots": "2",
+        "Max. Patients": "6",
+        "Probability that a patient has to be transported": "40",
+        "Patient Specializations": "General Internal",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/172", "Giant flooding"]
+        ]
+    },
+    "172": {
+        "name": "Giant flooding",
+        "Average credits": "2500",
+        "Required Firetrucks": "8",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Mobile Command Vehicles": "1",
+        "Required Police Cars": "3",
+        "Required Heavy Rescue Vehicles": "2",
+        "Required Boots": "2",
+        "Max. Patients": "10",
+        "Probability that a patient has to be transported": "40",
+        "Patient Specializations": "General Internal"
     }
 }

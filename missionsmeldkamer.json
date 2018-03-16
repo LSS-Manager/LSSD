@@ -2496,5 +2496,66 @@
         "Hoogwerker benodigd waarschijnlijkheid": "80",
         "Maximale patiënten aantal": "1",
         "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
+    },
+    "287": {
+        "name": "Brand in magazijn",
+        "Gemiddeld aantal Credits": "350",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde redvoertuigen": "1",
+        "Hoogwerker benodigd waarschijnlijkheid": "20"
+    },
+    "288": {
+        "name": "Brand in magazijn",
+        "Gemiddeld aantal Credits": "1750",
+        "Benodigde tankautospuiten": "2",
+        "Benodigde redvoertuigen": "1",
+        "Benodigde OvD-B's": "1"
+    },
+    "289": {
+        "name": "Brand in magazijn",
+        "Gemiddeld aantal Credits": "2150",
+        "Benodigde tankautospuiten": "3",
+        "Benodigde redvoertuigen": "1",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Adembeschermingsvoertuigen": "1",
+        "Adembeschermingsvoertuig benodigd waarschijnlijkheid": "20",
+        "Benodigde slangenwagens": "1",
+        "Slangenwagen benodigd waarschijnlijkheid": "40",
+        "Benodigde HOVD's": "1",
+        "HOVD benodigd waarschijnlijkheid": "50",
+        "Benodigde politieauto's": "1"
+    },
+    "290": {
+        "name": "Brand in magazijn",
+        "Gemiddeld aantal Credits": "3000",
+        "Benodigde tankautospuiten": "4",
+        "Benodigde redvoertuigen": "2",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Adembeschermingsvoertuigen": "1",
+        "Benodigde slangenwagens": "1",
+        "Benodigde Waarschuwings- en Verkenningsdienst voertuigen": "1",
+        "Waarschuwings- en Verkenningsdienst voertuigen benodigd waarschijnlijkheid": "50",
+        "Benodigde Adviseurs Gevaarlijke Stoffen": "1",
+        "Aantal Adviseurs Gevaarlijke Stoffen benodigd waarschijnlijkheid": "50",
+        "Benodigde HOVD's": "1",
+        "Benodigde Commandowagen": "1",
+        "Benodigde politieauto's": "2"
+    },
+    "291": {
+        "name": "Brand in magazijn",
+        "Gemiddeld aantal Credits": "4200",
+        "Benodigde tankautospuiten": "8",
+        "Benodigde redvoertuigen": "2",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Benodigde OvD-B's": "2",
+        "Benodigde Adembeschermingsvoertuigen": "1",
+        "Benodigde slangenwagens": "2",
+        "Benodigde Waarschuwings- en Verkenningsdienst voertuigen": "2",
+        "Waarschuwings- en Verkenningsdienst voertuigen benodigd waarschijnlijkheid": "50",
+        "Benodigde Adviseurs Gevaarlijke Stoffen": "1",
+        "Benodigde HOVD's": "1",
+        "Benodigde Commandowagen": "1",
+        "Benodigde politieauto's": "2"
     }
 }
