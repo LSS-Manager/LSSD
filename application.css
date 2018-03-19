@@ -5270,10 +5270,14 @@
                                                             background - image: url(/images/progressbar - green - background.png);
                                                             background - repeat: repeat - x
                                                         }.progress - striped - inner {
-                                                            position: absolute;z - index: 1;width: 200 % ;height: 20 px;background - repeat: repeat;background - size: 40 px 40 px;background - image: url(/images/progressbar - stripe.png)
+                                                            height: 100 %
                                                         }.progress - striped - inner - active {
-                                                            -webkit - animation: progress - bar - stripes - inner 2 s linear infinite; - o - animation: progress - bar - stripes - inner 2 s linear infinite;
-                                                            animation: progress - bar - stripes - inner 2 s linear infinite
+                                                            background - repeat: repeat - x;
+                                                            background - size: 40 px 75 % ;
+                                                            background - image: url(/images/progressbar - arrow.gif);
+                                                            background - position: center
+                                                        }.patient_progress.progress - striped - inner - active {
+                                                            background - size: 40 px 100 %
                                                         }
                                                         @ - webkit - keyframes progress - bar - stripes - inner {
                                                             from {
