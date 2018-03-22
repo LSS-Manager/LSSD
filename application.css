@@ -5272,11 +5272,7 @@
                                                         }.progress - striped - inner {
                                                             height: 100 %
                                                         }.progress - striped - inner - active {
-                                                            opacity: 0.4;
-															 background - repeat: repeat - x;
-															 background - size: 40 px 75 % ;
-															 background - image: url(/images/progressbar - arrow.gif);
-															 background - position: center
+                                                            opacity: 0.4;background - repeat: repeat - x;background - size: 40 px 75 % ;background - image: url(/images/progressbar - arrow.gif);background - position: center
                                                         }.patient_progress.progress - striped - inner - active {
                                                             background - size: 40 px 100 %
                                                         }
