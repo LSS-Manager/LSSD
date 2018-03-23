@@ -2846,16 +2846,16 @@
         "Credits im Durchschnitt": "100",
         "Benötigte Streifenwagen": "1",
         "Maximale Anzahl an Gefangene": "1",
-        "Tritt nur ab dem Datum auf": "Freitag, 31. März 2017, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Sonntag, 16. April 2017, 23:59 Uhr"
+        "Tritt nur ab dem Datum auf": "Mittwoch, 14. März 2018, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Montag, 02. April 2018, 23:59 Uhr"
     },
     "285": {
         "name": "Pinsel aus Werkstatt entwendet",
         "Credits im Durchschnitt": "150",
         "Benötigte Streifenwagen": "1",
         "Maximale Anzahl an Gefangene": "1",
-        "Tritt nur ab dem Datum auf": "Freitag, 31. März 2017, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Sonntag, 16. April 2017, 23:59 Uhr"
+        "Tritt nur ab dem Datum auf": "Mittwoch, 14. März 2018, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Montag, 02. April 2018, 23:59 Uhr"
     },
     "286": {
         "name": "Eingestürzter Hasenbau",
@@ -2865,8 +2865,8 @@
         "BRmG R": "1",
         "LKW K 9": "1",
         "Benötigte Streifenwagen": "2",
-        "Tritt nur ab dem Datum auf": "Freitag, 31. März 2017, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Sonntag, 16. April 2017, 23:59 Uhr"
+        "Tritt nur ab dem Datum auf": "Mittwoch, 14. März 2018, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Montag, 02. April 2018, 23:59 Uhr"
     },
     "287": {
         "name": "Angefahrener Osterhase",
@@ -2876,29 +2876,29 @@
         "Maximale Patientenanzahl": "1",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "38",
         "Fachrichtung für Patienten": "Unfallchirurgie",
-        "Tritt nur ab dem Datum auf": "Freitag, 31. März 2017, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Sonntag, 16. April 2017, 23:59 Uhr"
+        "Tritt nur ab dem Datum auf": "Mittwoch, 14. März 2018, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Montag, 02. April 2018, 23:59 Uhr"
     },
     "288": {
         "name": "Brennendes Osternest",
         "Credits im Durchschnitt": "110",
         "Benötigte Löschfahrzeuge": "1",
-        "Tritt nur ab dem Datum auf": "Freitag, 31. März 2017, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Sonntag, 16. April 2017, 23:59 Uhr"
+        "Tritt nur ab dem Datum auf": "Mittwoch, 14. März 2018, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Montag, 02. April 2018, 23:59 Uhr"
     },
     "289": {
         "name": "Schokoladenspur auf Strasse",
         "Credits im Durchschnitt": "400",
         "Benötigte Löschfahrzeuge": "1",
-        "Tritt nur ab dem Datum auf": "Freitag, 31. März 2017, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Sonntag, 16. April 2017, 23:59 Uhr"
+        "Tritt nur ab dem Datum auf": "Mittwoch, 14. März 2018, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Montag, 02. April 2018, 23:59 Uhr"
     },
     "290": {
         "name": "Eierkocherbrand",
         "Credits im Durchschnitt": "800",
         "Benötigte Löschfahrzeuge": "2",
-        "Tritt nur ab dem Datum auf": "Freitag, 31. März 2017, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Sonntag, 16. April 2017, 23:59 Uhr"
+        "Tritt nur ab dem Datum auf": "Mittwoch, 14. März 2018, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Montag, 02. April 2018, 23:59 Uhr"
     },
     "291": {
         "name": "Hasentreffen in Ostereistedt",
@@ -2910,8 +2910,8 @@
         "Benötigte RTW": "4",
         "Benötigte Löschfahrzeuge": "2",
         "Dauer": "2 Stunden",
-        "Tritt nur ab dem Datum auf": "Freitag, 31. März 2017, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Sonntag, 16. April 2017, 23:59 Uhr"
+        "Tritt nur ab dem Datum auf": "Mittwoch, 14. März 2018, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Montag, 02. April 2018, 23:59 Uhr"
     },
     "292": {
         "name": "Tankbetrug",
@@ -3672,7 +3672,7 @@
         "Benötigte ELW 2": "2",
         "Benötigte Polizeihubschrauber": "2",
         "Nur als Verbandseinsatz": "Ja",
-        "Maximale Patientenanzahl": "100",
+        "Maximale Patientenanzahl": "20",
         "NEF Anforderungswahrscheinlichkeit": "50",
         "Fachrichtung für Patienten": "Allgemeine Innere",
         "Mindest Patientenanzahl": "10"

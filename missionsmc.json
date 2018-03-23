@@ -1473,5 +1473,31 @@
         "Max. Patients": "10",
         "Probability that a patient has to be transported": "40",
         "Patient Specializations": "General Internal"
+    },
+    "173": {
+        "name": "Light aircraft crash in water",
+        "Average credits": "3000",
+        "Required Firetrucks": "3",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Heavy Rescue Vehicles": "1",
+        "Required HAZMAT Vehicles": "1",
+        "Probability of HAZMAT being required": "50",
+        "Required Boats": "1",
+        "Max. Patients": "1",
+        "Probability that a patient has to be transported": "60",
+        "Patient Specializations": "Traumatology"
+    },
+    "174": {
+        "name": "Light aircraft crash in water",
+        "Average credits": "3000",
+        "Required Firetrucks": "3",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Heavy Rescue Vehicles": "1",
+        "Required HAZMAT Vehicles": "1",
+        "Probability of HAZMAT being required": "50",
+        "Required Boats": "1",
+        "Max. Patients": "1",
+        "Probability that a patient has to be transported": "60",
+        "Patient Specializations": "Traumatology"
     }
 }

@@ -2557,5 +2557,31 @@
         "Benodigde HOVD's": "1",
         "Benodigde Commandowagen": "1",
         "Benodigde politieauto's": "2"
+    },
+    "292": {
+        "name": "Ongeval met trein en vrachtwagen",
+        "Gemiddeld aantal Credits": "1575",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "80",
+        "Benodigde OvD-B's": "1",
+        "Benodigde politieauto's": "1",
+        "Maximale patiënten aantal": "1",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "50",
+        "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
+    },
+    "293": {
+        "name": "Ongeval met trein en vrachtwagen",
+        "Gemiddeld aantal Credits": "2450",
+        "Benodigde tankautospuiten": "2",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Benodigde OvD-B's": "1",
+        "Benodigde politieauto's": "2",
+        "Maximale patiënten aantal": "2",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
+        "Gespecialiseerde afdeling voor patiënten": "Traumatologie",
+        "MMT-Arts benodigd waarschijnlijkheid": "100"
     }
 }

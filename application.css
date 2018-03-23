@@ -5415,6 +5415,9 @@
                                                                 }.silvesterbar {
                                                                     background - image: url(/images/silvesterbar.png);
                                                                     background - size: auto 100 %
+                                                                }.osterbar {
+                                                                    background - image: url(/images/osterbar.gif);
+                                                                    background - size: auto 100 %
                                                                 }.missionAward {
                                                                     height: 37 px;width: 37 px
                                                                 }.ui - helper - hidden {
