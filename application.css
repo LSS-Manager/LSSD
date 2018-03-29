@@ -4766,7 +4766,7 @@
                     }.building_list_fms_1 {
                         background - color: #5a97f3;color:white}.building_list_fms_2{background-color:# 77 dc81;
                         color: black
-                    }.building_list_fms_3 {
+                    }.building_list_fms_3, .building_list_fms_9 {
                         background - color: #f3d470;
                         color: black
                     }.building_list_fms_4 {
@@ -6271,4 +6271,8 @@
                                                                 margin: 0 0 10 px 0
                                                             }.vehicle_type.alert {
                                                                 margin - bottom: 5 px
+                                                            }.mission_list_patient_icon {
+                                                                margin - right: 5 px;
+                                                                width: 20 px;
+                                                                height: 20 px
                                                             }

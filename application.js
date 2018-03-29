@@ -90,11 +90,14 @@ function missionAlarmTrailerCheck(t) {
         if ($("input.vehicle_checkbox[fms=2][trailer_vehicle_id=" + $(this).val() + "]").length >= 1) t = !0;
         else if ("1" == $(this).attr("tractive_random")) {
             var i = jQuery.parseJSON($(this).attr("possible_tractive")),
-                n = $(this).attr("building_id");
-            $.each(i, function(i, s) {
-                t || $(".vehicle_checkbox[building_id=" + n + "][vehicle_type_id=" + s + "][fms=2][trailer_vehicle_id=0]").each(function() {
+                n = "[building_id=" + $(this).attr("building_id") + "]",
+                s = $(this).attr("tractive_building_random");
+            $.each(i, function(i, o) {
+                t || ($(".vehicle_checkbox" + n + "[vehicle_type_id=" + o + "][fms=2][trailer_vehicle_id=0]").each(function() {
                     t || (t = !0, $(".vehicle_checkbox[value=" + $(this).val() + "]").attr("trailer_vehicle_id", e))
-                })
+                }), t || "1" != s || $(".vehicle_checkbox[vehicle_type_id=" + o + "][fms=2][trailer_vehicle_id=0]").each(function() {
+                    t || (t = !0, $(".vehicle_checkbox[value=" + $(this).val() + "]").attr("trailer_vehicle_id", e))
+                }))
             })
         } else $(".vehicle_checkbox[value=" + $(this).attr("tractive_vehicle_id") + "]").attr("trailer_vehicle_id", e)
     }), $("input.vehicle_checkbox[trailer=1][fms=2]" + ("undefined" != typeof t ? "[building_id=" + t + "]" : "")).each(function() {
@@ -103,9 +106,10 @@ function missionAlarmTrailerCheck(t) {
         if (!e) {
             if ($(this).val(), "1" == $(this).attr("tractive_random")) {
                 var i = jQuery.parseJSON($(this).attr("possible_tractive")),
-                    n = $(this).attr("building_id");
+                    n = "[building_id=" + $(this).attr("building_id") + "]",
+                    s = $(this).attr("tractive_building_random");
                 $.each(i, function(e, i) {
-                    t || $(".vehicle_checkbox[building_id=" + n + "][vehicle_type_id=" + i + "][fms=2][trailer_vehicle_id=0]").length >= 1 && (t = !0)
+                    t || ($(".vehicle_checkbox" + n + "[vehicle_type_id=" + i + "][fms=2][trailer_vehicle_id=0]").length >= 1 && (t = !0), t || "1" != s || $(".vehicle_checkbox[vehicle_type_id=" + i + "][fms=2][trailer_vehicle_id=0]").length >= 1 && (t = !0))
                 })
             } else $("#vehicle_checkbox_" + $(this).attr("tractive_vehicle_id") + "[fms=2][trailer_vehicle_id=0]").length >= 1 && (t = !0);
             t ? ($(".vehicle_not_tractive_message_" + $(this).val()).css("display", "none"), $(this).attr("disabled", !1)) : ($(this).attr("disabled", !0), $(".vehicle_not_tractive_message_" + $(this).val()).css("display", "inline"))
@@ -437,7 +441,15 @@ function missionScrollUpdate() {
     })
 }
 
+function patientMarkerAddCombined(t) {
+    var e = "<div class='col-md-12' id='mission_patient_summary_" + t.mission_id + "'>";
+    e += "<img src='/images/icons8-dizzy_person_2.svg' class='mission_list_patient_icon'><strong>", e += t.count, e = e + " " + I18n.t("javascript.patient") + "</strong>", t.untouched > 0 && (e = e + " - " + t.untouched, e = e + " " + I18n.t("javascript.patient_untouched") + "</strong>"), $.each(t.errors, function(t, i) {
+        e = e + "<div class='alert alert-danger'><strong>" + i + "x</strong> " + t + "</div>"
+    }), e += "</div>", missionMarkerBulkAdd ? ("undefined" == typeof patientBulkCache[t.mission_id] && (patientBulkCache[t.mission_id] = {}), patientBulkCache[t.mission_id][0] = e) : $("#mission_patients_" + t.mission_id).html(e)
+}
+
 function patientMarkerAdd(t) {
+    $("#mission_patient_summary_" + t.mission_id).hide();
     var e = "progress  patient_progress",
         i = "progress-striped-inner ";
     if (t.miliseconds_by_percent > 0 && (e = "progress patient_progress", i = "progress-striped-inner progress-striped-inner-active-resource-safe "), $("#patient_" + t.id).length > 0) patientTimerDelete(t.id), $("#patient_bar_outer_" + t.id).attr("class", e), $("#patient_bar_striper_" + t.id).attr("class", i), $("#patient_bar_" + t.id).css("width", t.live_current_value + "%"), t.missing_text ? ($("#patients_missing_" + t.id).html(t.missing_text), $("#patients_missing_" + t.id).attr("class", "alert alert-danger")) : ($("#patients_missing_" + t.id).html(""), $("#patients_missing_" + t.id).attr("class", "")), t.target_percent <= 0 ? $("#patient_bar_" + t.id).removeClass("progress-bar-warning").addClass("progress-bar-danger") : $("#patient_bar_" + t.id).removeClass("progress-bar-danger").addClass("progress-bar-warning");
@@ -610,7 +622,7 @@ function missionDelete(t) {
 function vehicleMarkerAdd(t) {
     t.building_id = t.b, t.caption = t.c, t.vehicle_type_id = t.t;
     var e = "";
-    1 == t.fms_real ? e = I18n.t("fms.ready_traveling") : 2 == t.fms_real ? e = I18n.t("fms.ready_home") : 3 == t.fms_real ? e = I18n.t("fms.going") : 4 == t.fms_real ? e = I18n.t("fms.on_place") : 5 == t.fms_real ? e = I18n.t("fms.on_destination") : 6 == t.fms_real ? e = I18n.t("fms.not_ready") : 7 == t.fms_real ? e = I18n.t("fms.patient_transported") : 8 == t.fms_real ? e = I18n.t("fms.on_destination") : 0 == t.fms_real && (e = "Notruf");
+    1 == t.fms_real ? e = I18n.t("fms.ready_traveling") : 2 == t.fms_real ? e = I18n.t("fms.ready_home") : 3 == t.fms_real ? e = I18n.t("fms.going") : 4 == t.fms_real ? e = I18n.t("fms.on_place") : 5 == t.fms_real ? e = I18n.t("fms.on_destination") : 6 == t.fms_real ? e = I18n.t("fms.not_ready") : 7 == t.fms_real ? e = I18n.t("fms.patient_transported") : 8 == t.fms_real ? e = I18n.t("fms.on_destination") : 9 == t.fms_real ? e = I18n.t("fms.waiting_for_vehicle") : 0 == t.fms_real && (e = "Notruf");
     var i = '<img src="/images/icons8-location_off.svg" class="vehicle_search" vehicle_id="' + t.id + '"><span title="' + e + '" class=" building_list_fms building_list_fms_' + t.fms_real + '">' + t.fms + "</span>  " + '<a href="/vehicles/' + t.id + '" class="label label-default vehicle_building_list_button lightbox-open" id="vehicle_button_' + t.id + '" vehicle_type_id="' + t.vehicle_type_id + '">' + t.caption + "</a>";
     if ((3 == t.fms_real || 4 == t.fms_real) && (i += '<a href="/vehicles/' + t.id + '/backalarm" class="btn btn-default btn-xs backalarm">' + I18n.t("javascript.backalarm") + "</a>", t.back_alarm), $("#vehicle_overview_vehicle_" + t.id).html(t.fms).attr("class", "building_list_fms building_list_fms_" + t.fms_real).attr("title", e), "undefined" == typeof L) return !0;
     if ($("#vehicle_list_" + t.id).length > 0) $("#vehicle_list_" + t.id).html(i);
@@ -1467,6 +1479,8 @@ function hideVehicleBuildingHelpText(t) {
             mission_start_in: "Starts in:",
             not_found_map: "The vehicle hasn't been found on the map",
             now: "Now",
+            patient: null,
+            patient_untouched: null,
             poi_delete: "Are you sure you want to delete the POI: %{caption}?",
             reload: "Reload",
             secounds: "sec.",
@@ -1520,7 +1534,8 @@ function hideVehicleBuildingHelpText(t) {
             prisoner_transported: "Transporting Prisoner",
             ready_home: "Available in Quarters",
             ready_traveling: "Clear and Available",
-            talking_wish: "Transport Request"
+            talking_wish: "Transport Request",
+            waiting_for_vehicle: null
         },
         intervention_order: {
             back: "Back",
@@ -1678,6 +1693,8 @@ function hideVehicleBuildingHelpText(t) {
             mission_start_in: "Beginn in:",
             not_found_map: "Das Fahrzeug wurde auf der Karte nicht gefunden",
             now: "Sofort",
+            patient: "Patienten",
+            patient_untouched: "unbehandelte Patienten",
             poi_delete: 'Wirklich den POI: "%{caption}" lÃ¶schen?',
             reload: "Neuladen",
             secounds: "Sek.",
@@ -1731,7 +1748,8 @@ function hideVehicleBuildingHelpText(t) {
             prisoner_transported: "Gefangenen aufgenommen",
             ready_home: "Einsatzbereit auf Wache",
             ready_traveling: "Einsatzbereit Ã¼ber Funk",
-            talking_wish: "Sprechwunsch"
+            talking_wish: "Sprechwunsch",
+            waiting_for_vehicle: "Warte auf Zugfahrzeug"
         },
         intervention_order: {
             back: "ZurÃ¼ck",
@@ -1889,6 +1907,8 @@ function hideVehicleBuildingHelpText(t) {
             mission_start_in: "Begint in:",
             not_found_map: "Het voertuig is niet gevonden op de kaart",
             now: "Nu",
+            patient: null,
+            patient_untouched: null,
             poi_delete: 'Weet je zeker dat je dit Point of Interest: "%{caption}" wilt verwijderen?',
             reload: "Refresh",
             secounds: "seconden",
@@ -1942,7 +1962,8 @@ function hideVehicleBuildingHelpText(t) {
             prisoner_transported: "Transport met arrestant",
             ready_home: "Op post",
             ready_traveling: "Beschikbaar",
-            talking_wish: "Aanvraag spraakcontact"
+            talking_wish: "Aanvraag spraakcontact",
+            waiting_for_vehicle: "Wachten op trekkend voertuig."
         },
         intervention_order: {
             back: "Terug",
@@ -2100,6 +2121,8 @@ function hideVehicleBuildingHelpText(t) {
             mission_start_in: null,
             not_found_map: "Ð¢Ñ€Ð°Ð½ÑÐ¿Ð¾Ñ€Ñ‚Ð½Ð¾Ðµ ÑÑ€ÐµÐ´ÑÑ‚Ð²Ð¾ Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½Ð¾ Ð½Ð° ÐºÐ°Ñ€Ñ‚Ðµ",
             now: "Ð¡ÐµÐ¹Ñ‡Ð°Ñ",
+            patient: null,
+            patient_untouched: null,
             poi_delete: 'Ð’Ñ‹ ÑƒÐ²ÐµÑ€ÐµÐ½Ñ‹, Ñ‡Ñ‚Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ "%{caption}"?',
             reload: "ÐŸÐµÑ€ÐµÐ·Ð°Ð³Ñ€ÑƒÐ·ÐºÐ°",
             secounds: "ÑÐµÐº.",
@@ -2153,7 +2176,8 @@ function hideVehicleBuildingHelpText(t) {
             prisoner_transported: "Ð—Ð°ÐºÐ»ÑŽÑ‡ÐµÐ½Ð½Ñ‹Ð¹ Ð´Ð¾ÑÑ‚Ð°Ð²Ð»ÐµÐ½",
             ready_home: "Ð“Ð¾Ñ‚Ð¾Ð²Ð½Ð¾ÑÑ‚ÑŒ Ðº Ð²Ñ‹ÐµÐ·Ð´Ñƒ",
             ready_traveling: "Ð Ð°Ð´Ð¸Ð¾ÑÐ¸Ð³Ð½Ð°Ð» Ð¾ Ð³Ð¾Ñ‚Ð¾Ð²Ð½Ð¾ÑÑ‚Ð¸",
-            talking_wish: "ÐŸÑ€Ð¾ÑÑŒÐ±Ð° Ð¾ Ð¿ÐµÑ€ÐµÐ²Ð¾Ð·ÐºÐµ"
+            talking_wish: "ÐŸÑ€Ð¾ÑÑŒÐ±Ð° Ð¾ Ð¿ÐµÑ€ÐµÐ²Ð¾Ð·ÐºÐµ",
+            waiting_for_vehicle: null
         },
         intervention_order: {
             back: "ÐÐ°Ð·Ð°Ð´",
@@ -2389,6 +2413,8 @@ function hideVehicleBuildingHelpText(t) {
             mission_start_in: null,
             not_found_map: null,
             now: null,
+            patient: null,
+            patient_untouched: null,
             poi_delete: null,
             reload: null,
             secounds: null,
@@ -2442,7 +2468,8 @@ function hideVehicleBuildingHelpText(t) {
             prisoner_transported: null,
             ready_home: null,
             ready_traveling: null,
-            talking_wish: null
+            talking_wish: null,
+            waiting_for_vehicle: null
         },
         intervention_order: {
             back: null,
