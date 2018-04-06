@@ -1479,8 +1479,8 @@ function hideVehicleBuildingHelpText(t) {
             mission_start_in: "Starts in:",
             not_found_map: "The vehicle hasn't been found on the map",
             now: "Now",
-            patient: null,
-            patient_untouched: null,
+            patient: "Patient",
+            patient_untouched: "Untreated patients",
             poi_delete: "Are you sure you want to delete the POI: %{caption}?",
             reload: "Reload",
             secounds: "sec.",
@@ -1907,8 +1907,8 @@ function hideVehicleBuildingHelpText(t) {
             mission_start_in: "Begint in:",
             not_found_map: "Het voertuig is niet gevonden op de kaart",
             now: "Nu",
-            patient: null,
-            patient_untouched: null,
+            patient: "PatiÃ«nten",
+            patient_untouched: "onbehandelde patiÃ«nten",
             poi_delete: 'Weet je zeker dat je dit Point of Interest: "%{caption}" wilt verwijderen?',
             reload: "Refresh",
             secounds: "seconden",
@@ -19160,7 +19160,9 @@ const TIME_MODIFIER_SONDERRECHTE = .8,
         return newsNew(!1), $.ajax({
             url: "/news/gelesen",
             cache: !1
-        }), mobile_bridge_use ? (lightboxOpen($(this).attr("href")), !1) : void 0
+        }), mobile_bridge_use && "de" != I18n.locale ? (lightboxOpen($(this).attr("href")), !1) : void 0
+    }), $("#newspage_facebook").click(function() {
+        return mobile_bridge_use && "de" == I18n.locale ? (lightboxOpen($(this).attr("href")), !1) : void 0
     }), $("#missions-panel-body").scroll(function() {
         clearTimeout($.data(this, "scrollTimer")), $.data(this, "scrollTimer", setTimeout(function() {
             progressBarScrollUpdate()

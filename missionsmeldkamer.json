@@ -2583,5 +2583,17 @@
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie",
         "MMT-Arts benodigd waarschijnlijkheid": "100"
+    },
+    "294": {
+        "name": "Overlast jeugd",
+        "Gemiddeld aantal Credits": "550",
+        "Benodigde politieauto's": "1",
+        "Benodigde tankautospuiten": "1"
+    },
+    "295": {
+        "name": "Overlast zwervers",
+        "Gemiddeld aantal Credits": "450",
+        "Benodigde politieauto's": "1",
+        "Benodigde tankautospuiten": "1"
     }
 }

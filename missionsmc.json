@@ -1476,8 +1476,8 @@
     },
     "173": {
         "name": "Light aircraft crash in water",
-        "Average credits": "3000",
-        "Required Firetrucks": "3",
+        "Average credits": "4000",
+        "Required Firetrucks": "4",
         "Required Battalion Chief Vehicles": "1",
         "Required Heavy Rescue Vehicles": "1",
         "Required HAZMAT Vehicles": "1",
@@ -1489,8 +1489,8 @@
     },
     "174": {
         "name": "Light aircraft crash in water",
-        "Average credits": "3000",
-        "Required Firetrucks": "3",
+        "Average credits": "4000",
+        "Required Firetrucks": "4",
         "Required Battalion Chief Vehicles": "1",
         "Required Heavy Rescue Vehicles": "1",
         "Required HAZMAT Vehicles": "1",
@@ -1498,6 +1498,21 @@
         "Required Boats": "1",
         "Max. Patients": "1",
         "Probability that a patient has to be transported": "60",
+        "Patient Specializations": "Traumatology"
+    },
+    "175": {
+        "name": "Bridge collapse",
+        "Average credits": "7000",
+        "Required Firetrucks": "5",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Platform Trucks": "1",
+        "Required Heavy Rescue Vehicles": "2",
+        "Required Mobile Air Vehicles": "1",
+        "Required Mobile Command Vehicles": "1",
+        "Required Police Cars": "2",
+        "Required Boats": "2",
+        "Max. Patients": "20",
+        "Probability that a patient has to be transported": "50",
         "Patient Specializations": "Traumatology"
     }
 }
