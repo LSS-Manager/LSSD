@@ -3690,5 +3690,22 @@
         "Maximale Patientenanzahl": "10",
         "NEF Anforderungswahrscheinlichkeit": "50",
         "Fachrichtung für Patienten": "Allgemeine Innere"
+    },
+    "352": {
+        "name": "Brand in Mehrfamilienhaus",
+        "Credits im Durchschnitt": "7500",
+        "Benötigte Löschfahrzeuge": "12",
+        "Benötigte Drehleitern": "3",
+        "Benötigte GW-A": "1",
+        "Benötigte GW-Mess": "1",
+        "Benötigte Rüstwagen": "1",
+        "Benötigte GW L 2 Wasser": "1",
+        "Benötigte ELW 1": "3",
+        "Benötigte ELW 2": "1",
+        "Benötigte Streifenwagen": "4",
+        "Maximale Patientenanzahl": "10",
+        "NEF Anforderungswahrscheinlichkeit": "50",
+        "RTH Anforderungswahrscheinlichkeit": "25",
+        "Fachrichtung für Patienten": "Allgemeine Innere"
     }
 }
