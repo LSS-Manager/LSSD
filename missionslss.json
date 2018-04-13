@@ -3707,5 +3707,13 @@
         "NEF Anforderungswahrscheinlichkeit": "50",
         "RTH Anforderungswahrscheinlichkeit": "25",
         "Fachrichtung für Patienten": "Allgemeine Innere"
+    },
+    "353": {
+        "name": "Großkontrolle Betäubungsmittel",
+        "Credits im Durchschnitt": "4500",
+        "Benötigte GruKw": "3",
+        "Benötigte leBefKw": "1",
+        "Benötigte FüKw": "3",
+        "Dauer": "2 Stunden"
     }
 }
