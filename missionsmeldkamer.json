@@ -2587,13 +2587,46 @@
     "294": {
         "name": "Overlast jeugd",
         "Gemiddeld aantal Credits": "550",
-        "Benodigde politieauto's": "1",
-        "Benodigde tankautospuiten": "1"
+        "Benodigde politieauto's": "1"
     },
     "295": {
         "name": "Overlast zwervers",
         "Gemiddeld aantal Credits": "450",
+        "Benodigde politieauto's": "1"
+    },
+    "296": {
+        "name": "Brand in museum",
+        "Gemiddeld aantal Credits": "900",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde redvoertuigen": "1",
+        "Hoogwerker benodigd waarschijnlijkheid": "70"
+    },
+    "297": {
+        "name": "Brand in museum",
+        "Gemiddeld aantal Credits": "1500",
+        "Benodigde tankautospuiten": "2",
+        "Benodigde redvoertuigen": "1",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Adembeschermingsvoertuigen": "1",
+        "Adembeschermingsvoertuig benodigd waarschijnlijkheid": "10",
+        "Benodigde politieauto's": "1"
+    },
+    "298": {
+        "name": "Brand in museum",
+        "Gemiddeld aantal Credits": "2200",
+        "Benodigde tankautospuiten": "3",
+        "Benodigde redvoertuigen": "1",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Adembeschermingsvoertuigen": "1",
+        "Adembeschermingsvoertuig benodigd waarschijnlijkheid": "50",
+        "Benodigde slangenwagens": "1",
+        "Slangenwagen benodigd waarschijnlijkheid": "20",
+        "Benodigde HOVD's": "1",
+        "HOVD benodigd waarschijnlijkheid": "50",
+        "Benodigde Commandowagen": "1",
+        "Commandowagen benodigdheid": "50",
         "Benodigde politieauto's": "1",
-        "Benodigde tankautospuiten": "1"
+        "Maximale patiënten aantal": "1",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
     }
 }
