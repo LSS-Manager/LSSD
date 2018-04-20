@@ -375,8 +375,8 @@
         "Required Platform Trucks": "1",
         "Required Mobile Air Vehicles": "1",
         "Probability of Mobile Air being required": "30",
-        "Required HAZMAT Vehicles": "1",
-        "Probability of HAZMAT being required": "70"
+        "Required HazMat Vehicles": "1",
+        "Probability of HazMat Vehicle being required": "70"
     },
     "47": {
         "name": "Dangerous goods truck accident",
@@ -385,7 +385,7 @@
         "Required Battalion Chief Vehicles": "1",
         "Required Heavy Rescue Vehicles": "1",
         "Probability of Heavy Rescue being required": "50",
-        "Required HAZMAT Vehicles": "1",
+        "Required HazMat Vehicles": "1",
         "Max. Patients": "1",
         "Patient Specializations": "Traumatology"
     },
@@ -481,7 +481,7 @@
         "Required Firetrucks": "10",
         "Required Heavy Rescue Vehicles": "5",
         "Required Battalion Chief Vehicles": "2",
-        "Required HAZMAT Vehicles": "2",
+        "Required HazMat Vehicles": "2",
         "Just as dressing application": "Yes",
         "Max. Patients": "12",
         "Patient Specializations": "Traumatology",
@@ -687,7 +687,7 @@
         "Required Platform Trucks": "2",
         "Required Battalion Chief Vehicles": "2",
         "Required Mobile Command Vehicles": "1",
-        "Required HAZMAT Vehicles": "1",
+        "Required HazMat Vehicles": "1",
         "Max. Patients": "4",
         "Patient Specializations": "General Surgeon"
     },
@@ -788,7 +788,7 @@
         "Required Battalion Chief Vehicles": "2",
         "Required Mobile Command Vehicles": "1",
         "Required Police Cars": "3",
-        "Required HAZMAT Vehicles": "2"
+        "Required HazMat Vehicles": "2"
     },
     "99": {
         "name": "Commercial Fire",
@@ -823,7 +823,7 @@
         "Required Battalion Chief Vehicles": "2",
         "Required Mobile Command Vehicles": "1",
         "Required Police Cars": "3",
-        "Required HAZMAT Vehicles": "1"
+        "Required HazMat Vehicles": "1"
     },
     "102": {
         "name": "High Rise Fire",
@@ -1136,7 +1136,7 @@
         "Required Firetrucks": "4",
         "Required Platform Trucks": "2",
         "Required Battalion Chief Vehicles": "2",
-        "Required HAZMAT Vehicles": "2",
+        "Required HazMat Vehicles": "2",
         "Required Police Cars": "4",
         "Maximum Number of Prisoners": "5",
         "Minimum patient number": "1",
@@ -1227,7 +1227,7 @@
         "Required Battalion Chief Vehicles": "2",
         "Required Heavy Rescue Vehicles": "4",
         "Required Mobile Air Vehicles": "2",
-        "Required HAZMAT Vehicles": "2",
+        "Required HazMat Vehicles": "2",
         "Required Mobile Command Vehicles": "1",
         "Required Police Cars": "2",
         "Max. Patients": "4",
@@ -1241,7 +1241,7 @@
         "Required Battalion Chief Vehicles": "2",
         "Required Heavy Rescue Vehicles": "4",
         "Required Mobile Air Vehicles": "2",
-        "Required HAZMAT Vehicles": "2",
+        "Required HazMat Vehicles": "2",
         "Required Mobile Command Vehicles": "1",
         "Required Police Cars": "2",
         "Max. Patients": "4",
@@ -1255,7 +1255,7 @@
         "Required Battalion Chief Vehicles": "2",
         "Required Heavy Rescue Vehicles": "4",
         "Required Mobile Air Vehicles": "2",
-        "Required HAZMAT Vehicles": "2",
+        "Required HazMat Vehicles": "2",
         "Required Mobile Command Vehicles": "1",
         "Required Police Cars": "2",
         "Max. Patients": "4",
@@ -1276,7 +1276,7 @@
         "Required Firetrucks": "3",
         "Required Battalion Chief Vehicles": "1",
         "Required Heavy Rescue Vehicles": "1",
-        "Required HAZMAT Vehicles": "1",
+        "Required HazMat Vehicles": "1",
         "Required Mobile Command Vehicles": "1",
         "Max. Patients": "15",
         "Patient Specializations": "General Internal"
@@ -1362,8 +1362,8 @@
         "Required Battalion Chief Vehicles": "1",
         "Required Heavy Rescue Vehicles": "1",
         "Required Water Tankers": "1",
-        "Required HAZMAT Vehicles": "1",
-        "Probability of HAZMAT being required": "50",
+        "Required HazMat Vehicles": "1",
+        "Probability of HazMat Vehicle being required": "50",
         "Max. Patients": "4",
         "Patient Specializations": "Traumatology",
         "Probability that a patient has to be transported": "60"
@@ -1480,8 +1480,8 @@
         "Required Firetrucks": "4",
         "Required Battalion Chief Vehicles": "1",
         "Required Heavy Rescue Vehicles": "1",
-        "Required HAZMAT Vehicles": "1",
-        "Probability of HAZMAT being required": "50",
+        "Required HazMat Vehicles": "1",
+        "Probability of HazMat Vehicle being required": "50",
         "Required Boats": "1",
         "Max. Patients": "1",
         "Probability that a patient has to be transported": "60",
@@ -1493,8 +1493,8 @@
         "Required Firetrucks": "4",
         "Required Battalion Chief Vehicles": "1",
         "Required Heavy Rescue Vehicles": "1",
-        "Required HAZMAT Vehicles": "1",
-        "Probability of HAZMAT being required": "50",
+        "Required HazMat Vehicles": "1",
+        "Probability of HazMat Vehicle being required": "50",
         "Required Boats": "1",
         "Max. Patients": "1",
         "Probability that a patient has to be transported": "60",
@@ -1538,5 +1538,19 @@
         "Patient Specializations": "Traumatology",
         "Minimum patient number": "1",
         "Probability that a patient has to be transported": "100"
+    },
+    "179": {
+        "name": "Burst water main",
+        "Average credits": "1200",
+        "Required Firetrucks": "3",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Heavy Rescue Vehicles": "2",
+        "Required Police Cars": "1",
+        "Max. Patients": "4",
+        "Probability that a patient has to be transported": "25",
+        "Patient Specializations": "General Internal",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/170", "Medium flooding"]
+        ]
     }
 }
