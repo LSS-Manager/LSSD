@@ -2628,5 +2628,28 @@
         "Benodigde politieauto's": "1",
         "Maximale patiënten aantal": "1",
         "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
+    },
+    "299": {
+        "name": "Brandend plezierjacht",
+        "Gemiddeld aantal Credits": "900",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde Waterongevallenvoertuigen": "1",
+        "Waterongevallenvoertuigen benodigd waarschijnlijkheid": "10",
+        "Benodigde waterongevallenaanhangers": "1",
+        "Waterongevallenaanhangers benodigd waarschijnlijkheid": "70",
+        "Benodigde politieauto's": "1"
+    },
+    "300": {
+        "name": "Brandend plezierjacht",
+        "Gemiddeld aantal Credits": "1450",
+        "Benodigde tankautospuiten": "2",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Waterongevallenvoertuigen": "1",
+        "Waterongevallenvoertuigen benodigd waarschijnlijkheid": "40",
+        "Benodigde waterongevallenaanhangers": "1",
+        "Benodigde politieauto's": "1",
+        "Maximale patiënten aantal": "2",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "50",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
     }
 }
