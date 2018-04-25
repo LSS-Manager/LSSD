@@ -1,0 +1,46 @@
+LSS:
+
+0 = Feuerwache
+1 = Feuerwehrschule
+2 = Rettungswache
+3 = Rettungsschule
+4 = Krankenhaus
+5 = Rettungshubschrauber-Station
+7 = Leitstelle
+6 = Polizeiwache
+8 = Polizeischule
+9 = THW
+10 = THW Bundesschule
+11 = Bereitschaftspolizei
+12 = Schnelleinsatzgruppe (SEG)
+13 = Polizeihubschrauberstation
+14 = Bereitstellungsraum
+15 = Wasserrettung
+
+MC:
+
+0 = Fire Station
+1 = Dispatch Center
+2 = Hospital
+3 = Ambulance Station
+4 = Fire Academy
+5 = Police Station
+6 = Helicopter station
+7 = Police Academy
+8 = Police Aviation
+9 = Staging Area
+
+MEL:
+
+0 = Brandweerpost
+1 = Meldkamer
+2 = Ziekenhuis
+3 = Ambulance standplaats
+4 = Brandweeracademie
+5 = Politiebureau
+6 = MMT Standplaats
+7 = Universiteit Faculteit Geneeskunde
+8 = Politieacademie 
+9 = Politiehelikopter standplaats
+10 = Uitgangsstelling (UGS)
+11 = Politie hoofdbureau
