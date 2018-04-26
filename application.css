@@ -4817,8 +4817,11 @@
                     }
                     body.koenigstag.navbar -
                         default {
-                            background - color: #e75104
+                            background - image: url(/images/koningsdagbar.png);background - size: auto 100 % ;background - color: #e75104
                         }
+                    body.koenigstag.navbar - nav {
+                        background - color: rgba(1, 1, 1, 0.2)
+                    }
                     body.dodenherdenking.navbar -
                         default {
                             background - color: #000000}.navbar-default a{text-shadow:none !important}.navbar-default .dropdown-menu{background-image:none;background-color:# c9302c;text - shadow: none;color: #fff

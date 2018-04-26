@@ -340,7 +340,7 @@ function buildingMarkerAdd(t) {
     if ($.each(building_markers_cache, function(i, n) {
             n.id == t.id && (e = !0)
         }), "undefined" != typeof t.vgi && "" != t.vgi && null != t.vgi && (buildingVehicleGraphicCache[t.id] = t.vgi), e) return !0;
-    if (t.user_id == user_id ? building_marker_image = t.icon : t.building_type == BUILDING_TYPE_FEUERWEHRSCHULE ? building_marker_image = "/images/building_fireschool_other.png" : t.building_type == BUILDING_TYPE_FEUERWACHE ? building_marker_image = "/images/building_fire_other.png" : t.building_type == BUILDING_TYPE_RETTUNGSWACHE ? building_marker_image = "/images/building_rettungswache_other.png" : t.building_type == BUILDING_TYPE_RETTUNGSSCHULE ? building_marker_image = "/images/building_rettungsschule_other.png" : t.building_type == BUILDING_TYPE_HOSPITAL ? building_marker_image = "/images/building_hospital_other.png" : t.building_type == BUILDING_TYPE_NOTARZTHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : t.building_type == BUILDING_TYPE_POLIZEIHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : t.building_type == BUILDING_TYPE_POLIZEIWACHE || t.building_type == BUILDING_TYPE_POLIZEIZELLE ? building_marker_image = "/images/building_polizeiwache_other.png" : t.building_type == BUILDING_TYPE_LEITSTELLE ? building_marker_image = "/images/building_leitstelle_other.png" : t.building_type == BUILDING_TYPE_POLIZEISCHULE ? building_marker_image = "/images/building_polizeischule_other.png" : t.building_type == BUILDING_TYPE_THW ? building_marker_image = "/images/building_thw_other.png" : t.building_type == BUILDING_TYPE_THW_BUNDESSCHULE ? building_marker_image = "/images/building_thw_school_other.png" : t.building_type == BUILDING_TYPE_BEREITSCHAFTSPOLIZEI ? building_marker_image = "/images/building_bereitschaftspolizei_other.png" : t.building_type == BUILDING_TYPE_SEG ? building_marker_image = "/images/building_seg_other.png" : t.building_type == BUILDING_TYPE_BEREITSTELLUNGSRAUM ? building_marker_image = "/images/building_bereitstellungsraum_other.png" : t.building_type == BUILDING_TYPE_WASSERRETTUNG && (building_marker_image = "/images/building_wasserwacht_other.png"), t.building_marker_image = building_marker_image, t.user_id == user_id) {
+    if (t.user_id == user_id ? building_marker_image = t.icon : t.building_type == BUILDING_TYPE_FEUERWEHRSCHULE ? building_marker_image = "/images/building_fireschool_other.png" : t.building_type == BUILDING_TYPE_FEUERWACHE ? building_marker_image = "/images/building_fire_other.png" : t.building_type == BUILDING_TYPE_RETTUNGSWACHE ? building_marker_image = "/images/building_rettungswache_other.png" : t.building_type == BUILDING_TYPE_RETTUNGSSCHULE ? building_marker_image = "/images/building_rettungsschule_other.png" : t.building_type == BUILDING_TYPE_HOSPITAL ? building_marker_image = "/images/building_hospital_other.png" : t.building_type == BUILDING_TYPE_NOTARZTHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : t.building_type == BUILDING_TYPE_POLIZEIHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : t.building_type == BUILDING_TYPE_POLIZEIWACHE || t.building_type == BUILDING_TYPE_POLIZEIZELLE ? building_marker_image = "/images/building_polizeiwache_other.png" : t.building_type == BUILDING_TYPE_LEITSTELLE ? building_marker_image = "/images/building_leitstelle_other.png" : t.building_type == BUILDING_TYPE_POLIZEISCHULE ? building_marker_image = "/images/building_polizeischule_other.png" : t.building_type == BUILDING_TYPE_THW ? building_marker_image = "/images/building_thw_other.png" : t.building_type == BUILDING_TYPE_THW_BUNDESSCHULE ? building_marker_image = "/images/building_thw_school_other.png" : t.building_type == BUILDING_TYPE_BEREITSCHAFTSPOLIZEI ? building_marker_image = "/images/building_bereitschaftspolizei_other.png" : t.building_type == BUILDING_TYPE_POLIZEISONDEREINHEITEN ? building_marker_image = "/images/building_polizeisondereinheiten_other.png" : t.building_type == BUILDING_TYPE_SEG ? building_marker_image = "/images/building_seg_other.png" : t.building_type == BUILDING_TYPE_BEREITSTELLUNGSRAUM ? building_marker_image = "/images/building_bereitstellungsraum_other.png" : t.building_type == BUILDING_TYPE_WASSERRETTUNG && (building_marker_image = "/images/building_wasserwacht_other.png"), t.building_marker_image = building_marker_image, t.user_id == user_id) {
         var i = "<li  class='building_list_li' building_type_id='" + t.building_type + "' leitstelle_building_id=" + t.lbid + "'><div class='building_list_caption' id='building_list_caption_" + t.id + "' >" + t.detail_button + "<img class='building_marker_image' building_id='" + t.id + "' src='" + building_marker_image + "'>" + "<a href='' class='map_position_mover' data-latitude='" + t.latitude + "' data-longitude='" + t.longitude + "'>" + t.name + "</a>";
         0 == t.show_vehicles_at_startpage && (i += hideVehicleBuildingHelpText(t.id)), i += "</div>";
         var n = "";
@@ -1611,6 +1611,8 @@ function hideVehicleBuildingHelpText(t) {
                 lf_only: "Fire Trucks",
                 long_distance_ambulance: "\nAmbulances",
                 mask_service_unit: "Mobile Air Unit",
+                mek_mtf: null,
+                mek_zf: null,
                 mtw: "MTW",
                 mzb: "Multi-Purpose Boat",
                 naw: null,
@@ -1629,6 +1631,8 @@ function hideVehicleBuildingHelpText(t) {
                 rth_only: "Helicopter",
                 schlauchwagen: "Water Tanker",
                 seg_elw: null,
+                sek_mtf: null,
+                sek_zf: null,
                 swat: "SWAT",
                 thw_anh_mzab: null,
                 thw_anh_mzb: null,
@@ -1825,6 +1829,8 @@ function hideVehicleBuildingHelpText(t) {
                 lf_only: "LÃ¶schfahrzeuge",
                 long_distance_ambulance: "Krankentransportwagen",
                 mask_service_unit: "GW-A oder AB-Atemschutz",
+                mek_mtf: "MEK - MTF",
+                mek_zf: "MEK - ZF",
                 mtw: "MTW",
                 mzb: "Mehrzweckboot",
                 naw: "NAW",
@@ -1843,6 +1849,8 @@ function hideVehicleBuildingHelpText(t) {
                 rth_only: "Rettungshubschrauber",
                 schlauchwagen: "Schlauchwagen oder AB-Schlauch",
                 seg_elw: "ELW 1 (SEG)",
+                sek_mtf: "SEK - MTF",
+                sek_zf: "SEK - ZF",
                 swat: null,
                 thw_anh_mzab: "Anh MzAB",
                 thw_anh_mzb: "Anh MzB",
@@ -2039,6 +2047,8 @@ function hideVehicleBuildingHelpText(t) {
                 lf_only: null,
                 long_distance_ambulance: "Zorgambulance",
                 mask_service_unit: "Adembeschermingsvoertuig of haakarmbak",
+                mek_mtf: null,
+                mek_zf: null,
                 mtw: "Dienstauto / Dienstbus brandweer",
                 mzb: null,
                 naw: null,
@@ -2057,6 +2067,8 @@ function hideVehicleBuildingHelpText(t) {
                 rth_only: "Lifeliner",
                 schlauchwagen: "Slangenwagen / Tankwagen of Watertransportsysteem-haakarmbak",
                 seg_elw: null,
+                sek_mtf: null,
+                sek_zf: null,
                 swat: null,
                 thw_anh_mzab: null,
                 thw_anh_mzb: null,
@@ -2253,6 +2265,8 @@ function hideVehicleBuildingHelpText(t) {
                 lf_only: null,
                 long_distance_ambulance: "ÐœÐ°ÑˆÐ¸Ð½Ð° ÑÐºÐ¾Ñ€Ð¾Ð¹ Ð¿Ð¾Ð¼Ð¾Ñ‰Ð¸",
                 mask_service_unit: null,
+                mek_mtf: null,
+                mek_zf: null,
                 mtw: "ÐÐ²Ñ‚Ð¾Ð¼Ð¾Ð±Ð¸Ð»ÑŒ Ð´Ð»Ñ Ð¿ÐµÑ€ÐµÐ²Ð¾Ð·ÐºÐ¸ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹",
                 mzb: null,
                 naw: null,
@@ -2271,6 +2285,8 @@ function hideVehicleBuildingHelpText(t) {
                 rth_only: "Ð¡Ð¿Ð°ÑÐ°Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¹ Ð²ÐµÑ€Ñ‚Ð¾Ð»ÐµÑ‚",
                 schlauchwagen: "ÐŸÐ¾Ð¶Ð°Ñ€Ð½Ñ‹Ð¹ Ñ€ÑƒÐºÐ°Ð²Ð½Ñ‹Ð¹ Ð°Ð²Ñ‚Ð¾Ð¼Ð¾Ð±Ð¸Ð»ÑŒ",
                 seg_elw: null,
+                sek_mtf: null,
+                sek_zf: null,
                 swat: null,
                 thw_anh_mzab: null,
                 thw_anh_mzb: null,
@@ -2545,6 +2561,8 @@ function hideVehicleBuildingHelpText(t) {
                 lf_only: null,
                 long_distance_ambulance: null,
                 mask_service_unit: null,
+                mek_mtf: null,
+                mek_zf: null,
                 mtw: null,
                 mzb: null,
                 naw: null,
@@ -2563,6 +2581,8 @@ function hideVehicleBuildingHelpText(t) {
                 rth_only: null,
                 schlauchwagen: null,
                 seg_elw: null,
+                sek_mtf: null,
+                sek_zf: null,
                 swat: null,
                 thw_anh_mzab: null,
                 thw_anh_mzb: null,
@@ -19047,6 +19067,10 @@ const TIME_MODIFIER_SONDERRECHTE = .8,
         return missing
     }
     "undefined" != typeof L && (L.Icon.Default.imagePath = "/leaflet/images/"), aao_types = [
+        ["mek_mtf", I18n.t("intervention_order.vehicles.mek_mtf")],
+        ["sek_zf", I18n.t("intervention_order.vehicles.sek_zf")],
+        ["sek_mtf", I18n.t("intervention_order.vehicles.sek_mtf")],
+        ["mek_zf", I18n.t("intervention_order.vehicles.mek_zf")],
         ["elw2_or_ab_elw", I18n.t("intervention_order.vehicles.elw2_or_ab_elw")],
         ["ab_einsatzleitung_only", I18n.t("intervention_order.vehicles.ab_einsatzleitung_only")],
         ["gw_gefahrgut_only", I18n.t("intervention_order.vehicles.gw_gefahrgut_only")],
