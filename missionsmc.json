@@ -1552,5 +1552,17 @@
         "Expandable Missions": [
             ["https://www.missionchief.com/einsaetze/170", "Medium flooding"]
         ]
+    },
+    "180": {
+        "name": "Shots fired at Officer",
+        "Average credits": "4100",
+        "Required Police Cars": "8",
+        "Required Police Helicopters": "1",
+        "Required K-9 Units": "2",
+        "Required SWAT Cars": "1",
+        "Max. Patients": "2",
+        "Minimum patient number": "1",
+        "Probability that a patient has to be transported": "100",
+        "Patient Specializations": "Traumatology"
     }
 }

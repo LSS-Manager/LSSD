@@ -1886,7 +1886,10 @@
         "Benötigte GruKw": "6",
         "Benötigte leBefKw": "2",
         "Benötigte GefKw": "1",
-        "Maximale Anzahl an Gefangene": "5"
+        "Maximale Anzahl an Gefangene": "5",
+        "Ausbreitungsmöglichkeiten": [
+            ["https://www.leitstellenspiel.de/einsaetze/358", "Banküberfall"]
+        ]
     },
     "201": {
         "name": "Fußball Bundesliga-Spiel",
@@ -3747,5 +3750,39 @@
         "Maximale Anzahl an Gefangene": "1",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Unfallchirurgie"
+    },
+    "357": {
+        "name": "Bank: Stiller Alarm",
+        "Credits im Durchschnitt": "500",
+        "Benötigte Streifenwagen": "2",
+        "Ausbreitungsmöglichkeiten": [
+            ["https://www.leitstellenspiel.de/einsaetze/358", "Banküberfall"]
+        ]
+    },
+    "358": {
+        "name": "Banküberfall",
+        "Credits im Durchschnitt": "4000",
+        "Benötigte Streifenwagen": "8",
+        "Benötigte Polizeihubschrauber": "1",
+        "Benötigte SEK-Fahrzeuge": "4",
+        "Benötigte FüKw": "1",
+        "Maximale Patientenanzahl": "4",
+        "Fachrichtung für Patienten": "Allgemeine Chirurgie",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "80",
+        "NEF Anforderungswahrscheinlichkeit": "40",
+        "RTH Anforderungswahrscheinlichkeit": "5",
+        "Maximale Anzahl an Gefangene": "5"
+    },
+    "359": {
+        "name": "Geplante Razzia - Verdächtiger flüchtig",
+        "Credits im Durchschnitt": "9000",
+        "Benötigte Polizeihubschrauber": "1",
+        "Benötigte Streifenwagen": "5",
+        "Benötigte GruKw": "6",
+        "Benötigte leBefKw": "2",
+        "Benötigte GefKw": "1",
+        "Benötigte FüKw": "1",
+        "Benötigte MEK-Fahrzeuge": "4",
+        "Maximale Anzahl an Gefangene": "5"
     }
 }
