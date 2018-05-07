@@ -37,6 +37,7 @@ LSS:
 34 = Flughafen (groß): Vorfeld / Standplätze
 35 = Flughafen (groß): Parkhaus
 36 = Biogasanlage
+37 = Bank
 
 MC:
 

@@ -16,6 +16,9 @@ LSS:
 13 = Polizeihubschrauberstation
 14 = Bereitstellungsraum
 15 = Wasserrettung
+16 = Verbandzellen
+17 = Polizei-Sondereinheiten
+
 
 MC:
 
@@ -29,6 +32,8 @@ MC:
 7 = Police Academy
 8 = Police Aviation
 9 = Staging Area
+10 = Alliance-Jail
+
 
 MEL:
 
@@ -44,3 +49,4 @@ MEL:
 9 = Politiehelikopter standplaats
 10 = Uitgangsstelling (UGS)
 11 = Politie hoofdbureau
+12 = TeamCellen
