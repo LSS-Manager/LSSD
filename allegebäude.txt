@@ -33,6 +33,8 @@ MC:
 8 = Police Aviation
 9 = Staging Area
 10 = Alliance-Jail
+11 = Fire boat dock
+12 = Rescue boat dock
 
 
 MEL:
