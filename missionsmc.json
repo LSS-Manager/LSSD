@@ -1564,5 +1564,31 @@
         "Minimum patient number": "1",
         "Probability that a patient has to be transported": "100",
         "Patient Specializations": "Traumatology"
+    },
+    "181": {
+        "name": "School fire",
+        "Average credits": "6000",
+        "Required Firetrucks": "5",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Platform Trucks": "1",
+        "Required Heavy Rescue Vehicles": "1",
+        "Required Water Tankers": "1",
+        "Probability of Water Tanker being required": "25",
+        "Required Mobile Air Vehicles": "1",
+        "Probability of Mobile Air being required": "50",
+        "Required Mobile Command Vehicles": "1",
+        "Probability of Mobile Command Vehicle being required": "20",
+        "Max. Patients": "6",
+        "Probability that a patient has to be transported": "50",
+        "Patient Specializations": "General Internal"
+    },
+    "182": {
+        "name": "Cafeteria fire",
+        "Average credits": "1300",
+        "Required Firetrucks": "3",
+        "Required Battalion Chief Vehicles": "1",
+        "Max. Patients": "2",
+        "Probability that a patient has to be transported": "50",
+        "Patient Specializations": "General Internal"
     }
 }

@@ -2656,5 +2656,34 @@
         "name": "Inbraakalarm",
         "Gemiddeld aantal Credits": "750",
         "Benodigde politieauto's": "2"
+    },
+    "302": {
+        "name": "Brand in kantoorgebouw",
+        "Gemiddeld aantal Credits": "850",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde redvoertuigen": "1",
+        "Hoogwerker benodigd waarschijnlijkheid": "20"
+    },
+    "303": {
+        "name": "Brand in kantoorgebouw",
+        "Gemiddeld aantal Credits": "1650",
+        "Benodigde tankautospuiten": "2",
+        "Benodigde redvoertuigen": "1",
+        "Hoogwerker benodigd waarschijnlijkheid": "80",
+        "Benodigde OvD-B's": "1"
+    },
+    "304": {
+        "name": "Brand in kantoorgebouw",
+        "Gemiddeld aantal Credits": "2400",
+        "Benodigde tankautospuiten": "3",
+        "Benodigde redvoertuigen": "1",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Adembeschermingsvoertuigen": "1",
+        "Adembeschermingsvoertuig benodigd waarschijnlijkheid": "10",
+        "Benodigde slangenwagens": "1",
+        "Slangenwagen benodigd waarschijnlijkheid": "20",
+        "Benodigde HOVD's": "1",
+        "HOVD benodigd waarschijnlijkheid": "50",
+        "Benodigde politieauto's": "1"
     }
 }
