@@ -2685,5 +2685,47 @@
         "Benodigde HOVD's": "1",
         "HOVD benodigd waarschijnlijkheid": "50",
         "Benodigde politieauto's": "1"
+    },
+    "305": {
+        "name": "Verkeersongeval met touringcar",
+        "Gemiddeld aantal Credits": "1450",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "50",
+        "Benodigde OvD-B's": "1",
+        "Benodigde politieauto's": "2",
+        "Maximale patiënten aantal": "6",
+        "Minimale aantal slachtoffers": "3",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
+        "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
+    },
+    "306": {
+        "name": "Verkeersongeval met touringcar",
+        "Gemiddeld aantal Credits": "2100",
+        "Benodigde tankautospuiten": "2",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Benodigde OvD-B's": "1",
+        "Benodigde HOVD's": "1",
+        "HOVD benodigd waarschijnlijkheid": "50",
+        "Benodigde politieauto's": "3",
+        "Maximale patiënten aantal": "8",
+        "Minimale aantal slachtoffers": "5",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
+        "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
+    },
+    "307": {
+        "name": "Verkeersongeval met touringcar",
+        "Gemiddeld aantal Credits": "3250",
+        "Benodigde tankautospuiten": "3",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Benodigde OvD-B's": "1",
+        "Benodigde HOVD's": "1",
+        "Benodigde Commandowagen": "1",
+        "Benodigde politieauto's": "4",
+        "Benodigde Officiers van Dienst Politie": "1",
+        "Maximale patiënten aantal": "10",
+        "Minimale aantal slachtoffers": "7",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
+        "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
     }
 }

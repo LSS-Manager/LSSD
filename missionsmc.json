@@ -1590,5 +1590,13 @@
         "Max. Patients": "2",
         "Probability that a patient has to be transported": "50",
         "Patient Specializations": "General Internal"
+    },
+    "183": {
+        "name": "Fire in fast food restaurant",
+        "Average credits": "1850",
+        "Required Firetrucks": "5",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Platform Trucks": "1",
+        "Required Mobile Air Vehicles": "1"
     }
 }
