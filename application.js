@@ -1532,10 +1532,10 @@ function hideVehicleBuildingHelpText(t) {
             on_place: "On Scene",
             patient_transported: "Transporting Patient",
             prisoner_transported: "Transporting Prisoner",
-            ready_home: "Available in Quarters",
+            ready_home: "Available at Station",
             ready_traveling: "Clear and Available",
             talking_wish: "Transport Request",
-            waiting_for_vehicle: null
+            waiting_for_vehicle: "Awaiting vehicle to tow"
         },
         intervention_order: {
             back: "Back",
@@ -1544,10 +1544,17 @@ function hideVehicleBuildingHelpText(t) {
             column: "Column",
             column_number: "Column number",
             column_number_hint: "If a column number is given, the Alarm and Response entry will be displayed in the corresponding column on the alert page.",
-            create_intervention_order: "Create an Alarm and Response Regulation",
+            create_intervention_order: "Create new Alarm and Response Regulation",
             "delete": "Delete",
             description: "Name",
             edit: "Edit",
+            "export": {
+                "export": "Export",
+                "import": "Import",
+                import_done: "The selected entries have been imported and written to your Alarm and Response plan .",
+                saved: "Alarm and Response Regulations Exports",
+                saved_text: "Your Alarm and Response Regulation has been prepared for export. Via the link another player can import the Alarm and Response Regulation. If you change your Alarm and Response Regualtion in the meantime, this change will automatically be applied in the export."
+            },
             hotkey_hint: "Choose a hotkey for this vehicle selection. Press at your window mission: ALT + your hotkey (or at Firefox: ALT + SHIFT + your hotkey or at mac os: ctrl + alt + your hotkey) to choose your vehicle selection.",
             intervention_order: "Edit Alarm and Response Regulations",
             name: "Name",
@@ -1562,25 +1569,26 @@ function hideVehicleBuildingHelpText(t) {
             successfully_deleted: "Alarm and Response Regulation deleted",
             successfully_updated: "Alarm and Response Regulations successfully updated.",
             vehicles: {
-                ab_atemschutz_only: "\nAB respirator",
-                ab_einsatzleitung_only: null,
-                ab_gefahrgut_only: null,
-                ab_oel_only: null,
-                ab_ruest: "AB Setup",
+                ab_atemschutz_only: "SCBA-Module",
+                ab_einsatzleitung_only: "Command-Module",
+                ab_gefahrgut_only: "HazMat-Module",
+                ab_oel_only: "Oil spill-Module",
+                ab_ruest: "Tech/Rescue-Module",
                 ab_ruest_rw: null,
-                abl2wasser_only: "AB-Hose Layer",
+                abl2wasser_only: "Hose-Supply-Module",
                 ambulance: "Ambulance",
-                arff: "ARFF Crash Tender",
-                battalion_chief_unit: "Battalion chief unit",
+                arff: "ARFF (Airport Fire Truck)",
+                battalion_chief_unit: "Battalion Chief unit",
                 boot: "Boats (General)",
                 dekon_p: null,
-                division_chief_unit: "Mobile command vehicle",
-                elw1_or_elw2: null,
+                division_chief_unit: "Mobile Command Vehicle",
+                elw1_or_elw2: "Battalion Chief Unit, Mobile Command Vehicle or Mobile Command-Module ",
                 elw2_or_ab_elw: null,
                 elw3: null,
                 elw_airport: null,
                 emergency_ambulance: "Emergency ambulance or Helicopter",
                 fire_truck: "Firetrucks",
+                fireboat: "Large Fireboat",
                 fly_car: "Fly-Car",
                 fukw: null,
                 fwk: null,
@@ -1627,6 +1635,7 @@ function hideVehicleBuildingHelpText(t) {
                 polizeihubschrauber: "Police helicopter",
                 rescue_vehicle: "Heavy rescue vehicle",
                 rescue_vehicle_only: "Heavy Rescue",
+                rescueboat: "Large Rescue Boat",
                 rettungstreppe: null,
                 rth_only: "Helicopter",
                 schlauchwagen: "Water Tanker",
@@ -1766,6 +1775,13 @@ function hideVehicleBuildingHelpText(t) {
             "delete": "LÃ¶schen",
             description: "Bezeichnung",
             edit: "Bearbeiten",
+            "export": {
+                "export": "Exportieren",
+                "import": "Importieren",
+                import_done: "Die gewÃ¤hlten EintrÃ¤ge wurde importiert und in deine AAO geschrieben. ",
+                saved: "AAO-Exportiert",
+                saved_text: "Deine AAO wurde fÃ¼r den Export vorbereitet. Ãœber den Link kann ein anderer Spieler die AAO bei sich importieren. Solltest du deine AAO in der Zwischenzeit verÃ¤ndern, so wird diese Ã„nderung auch im Export automatisch Ã¼bernommen. "
+            },
             hotkey_hint: "WÃ¤hle einen Tastencode fÃ¼r diese Auswahl an Fahrzeugen. Im Alarmierungsfenster kannst du dann mit ALT + Taste deiner Wahl (bzw. im Firefox: ALT + SHIFT + Taste deiner Wahl - bzw. unter Mac OS: CTRL + ALT + Taste deiner Wahl) direkt diese Fahrzeugauswahl aufrufen. ",
             intervention_order: "Alarm und AusrÃ¼ckeordnung bearbeiten",
             name: "Name",
@@ -1799,6 +1815,7 @@ function hideVehicleBuildingHelpText(t) {
                 elw_airport: null,
                 emergency_ambulance: "Notarzteinsatzfahrzeug oder Rettungshubschrauber",
                 fire_truck: "LÃ¶schfahrzeuge oder TanklÃ¶schfahrzeuge",
+                fireboat: null,
                 fly_car: null,
                 fukw: "FÃ¼Kw (FÃ¼hrungskraftwagen)",
                 fwk: "Feuerwehrkran",
@@ -1845,6 +1862,7 @@ function hideVehicleBuildingHelpText(t) {
                 polizeihubschrauber: "Polizeihubschrauber",
                 rescue_vehicle: "RÃ¼stwagen oder HLF",
                 rescue_vehicle_only: "RÃ¼stwagen",
+                rescueboat: null,
                 rettungstreppe: "Rettungstreppe",
                 rth_only: "Rettungshubschrauber",
                 schlauchwagen: "Schlauchwagen oder AB-Schlauch",
@@ -1984,6 +2002,13 @@ function hideVehicleBuildingHelpText(t) {
             "delete": "Verwijderen",
             description: "Beschrijving",
             edit: "Bewerken",
+            "export": {
+                "export": "Exporteren",
+                "import": "Importeren",
+                import_done: "De gekozen input wordt geÃ¯mporteerd en jouw eigen A&U worden overschreven.",
+                saved: "A&U-GeÃ«xporteerd ",
+                saved_text: "Jouw A&U worden voor export voorbereid. Met de link kunnen andere spelers de A&U importeren. Wanneer je tussentijds je eigen A&U regels veranderd, zullen deze veranderingen automatisch in de export worden meegenomen."
+            },
             hotkey_hint: "Kies een letter voor deze inzet. In het alarmeringsscherm kun je dan met ALT + Letter naar keuze snel een keuze maken. (In Firefox: ALT + SHIFT + Letter naar keuze, Op Mac OS: CTRL + ALT + Letter)",
             intervention_order: "Alarm en Uitrukregels aanpassen",
             name: "Naam",
@@ -2017,6 +2042,7 @@ function hideVehicleBuildingHelpText(t) {
                 elw_airport: "Airport Fire Officer / On Scene Commander",
                 emergency_ambulance: "MMT-Auto of Lifeliner",
                 fire_truck: "Tankautospuit",
+                fireboat: null,
                 fly_car: null,
                 fukw: "Hondenbrigade",
                 fwk: null,
@@ -2063,6 +2089,7 @@ function hideVehicleBuildingHelpText(t) {
                 polizeihubschrauber: "Politiehelikopter",
                 rescue_vehicle: "Hulpverleningsvoertuig",
                 rescue_vehicle_only: "Hulpverleningsvoertuig",
+                rescueboat: null,
                 rettungstreppe: null,
                 rth_only: "Lifeliner",
                 schlauchwagen: "Slangenwagen / Tankwagen of Watertransportsysteem-haakarmbak",
@@ -2202,6 +2229,13 @@ function hideVehicleBuildingHelpText(t) {
             "delete": "Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ",
             description: "ÐžÐ¿Ð¸ÑÐ°Ð½Ð¸Ðµ",
             edit: "Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ",
+            "export": {
+                "export": null,
+                "import": null,
+                import_done: null,
+                saved: null,
+                saved_text: null
+            },
             hotkey_hint: "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Â«Ð³Ð¾Ñ€ÑÑ‡ÑƒÑŽÂ» ÐºÐ»Ð°Ð²Ð¸ÑˆÑƒ Ð´Ð»Ñ Ð±Ñ‹ÑÑ‚Ñ€Ð¾Ð³Ð¾ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð° Ðº ÑÑ‚Ð¾Ð¼Ñƒ Ñ‚Ñ€Ð°Ð½ÑÐ¿Ð¾Ñ€Ñ‚Ð½Ð¾Ð¼Ñƒ ÑÑ€ÐµÐ´ÑÑ‚Ð²Ñƒ. Ð¢Ð¾Ð³Ð´Ð° Ð² Ð¾ÐºÐ½Ðµ Ð¼Ð¸ÑÑÐ¸Ð¸ Ð²Ñ‹ ÑÐ¼Ð¾Ð¶ÐµÑ‚Ðµ Ð½Ð°Ð¶Ð°Ñ‚ÑŒ ÐºÐ»Ð°Ð²Ð¸ÑˆÑƒ ALT+ ÐºÐ»Ð°Ð²Ð¸ÑˆÑƒ Ð±Ñ‹ÑÑ‚Ñ€Ð¾Ð³Ð¾ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð° (Ð² Firefox ALT + SHIFT + ÐºÐ»Ð°Ð²Ð¸ÑˆÑƒ Ð±Ñ‹ÑÑ‚Ñ€Ð¾Ð³Ð¾ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð°, Ð½Ð° Mac OS: Ctrl + Alt + ÐºÐ»Ð°Ð²Ð¸ÑˆÑƒ Ð±Ñ‹ÑÑ‚Ñ€Ð¾Ð³Ð¾ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð°), Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð±Ñ‹ÑÑ‚Ñ€Ð¾ Ð²Ñ‹Ð±Ñ€Ð°Ñ‚ÑŒ ÑÑ‚Ð¾ Ñ‚Ñ€Ð°Ð½ÑÐ¿Ð¾Ñ€Ñ‚Ð½Ð¾Ðµ ÑÑ€ÐµÐ´ÑÑ‚Ð²Ð¾.",
             intervention_order: "Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ñ‚Ð¸Ð¿ Ð²Ñ‹Ð·Ð¾Ð²Ð° Ð¸ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð¾ Ñ€ÐµÐ°Ð³Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ",
             name: "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ",
@@ -2235,6 +2269,7 @@ function hideVehicleBuildingHelpText(t) {
                 elw_airport: null,
                 emergency_ambulance: "ÐÐ²Ñ‚Ð¾Ð¼Ð¾Ð±Ð¸Ð»ÑŒ Ð¸Ð»Ð¸ Ð²ÐµÑ€Ñ‚Ð¾Ð»Ñ‘Ñ‚ ÑÐºÑÑ‚Ñ€ÐµÐ½Ð½Ð¾Ð¹ Ð¼ÐµÐ´Ð¸Ñ†Ð¸Ð½ÑÐºÐ¾Ð¹ Ð¿Ð¾Ð¼Ð¾Ñ‰Ð¸",
                 fire_truck: "ÐŸÐ¾Ð¶Ð°Ñ€Ð½Ñ‹Ð¹ Ð°Ð²Ñ‚Ð¾Ð¼Ð¾Ð±Ð¸Ð»ÑŒ",
+                fireboat: null,
                 fly_car: null,
                 fukw: null,
                 fwk: null,
@@ -2281,6 +2316,7 @@ function hideVehicleBuildingHelpText(t) {
                 polizeihubschrauber: null,
                 rescue_vehicle: "Ð¢ÑÐ¶ÐµÐ»Ð°Ñ ÑÐ¿Ð°ÑÐ°Ñ‚ÐµÐ»ÑŒÐ½Ð°Ñ Ð¼Ð°ÑˆÐ¸Ð½Ð°",
                 rescue_vehicle_only: null,
+                rescueboat: null,
                 rettungstreppe: null,
                 rth_only: "Ð¡Ð¿Ð°ÑÐ°Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¹ Ð²ÐµÑ€Ñ‚Ð¾Ð»ÐµÑ‚",
                 schlauchwagen: "ÐŸÐ¾Ð¶Ð°Ñ€Ð½Ñ‹Ð¹ Ñ€ÑƒÐºÐ°Ð²Ð½Ñ‹Ð¹ Ð°Ð²Ñ‚Ð¾Ð¼Ð¾Ð±Ð¸Ð»ÑŒ",
@@ -2498,6 +2534,13 @@ function hideVehicleBuildingHelpText(t) {
             "delete": null,
             description: null,
             edit: null,
+            "export": {
+                "export": null,
+                "import": null,
+                import_done: null,
+                saved: null,
+                saved_text: null
+            },
             hotkey_hint: null,
             intervention_order: null,
             name: null,
@@ -2531,6 +2574,7 @@ function hideVehicleBuildingHelpText(t) {
                 elw_airport: null,
                 emergency_ambulance: null,
                 fire_truck: null,
+                fireboat: null,
                 fly_car: null,
                 fukw: null,
                 fwk: null,
@@ -2577,6 +2621,7 @@ function hideVehicleBuildingHelpText(t) {
                 polizeihubschrauber: null,
                 rescue_vehicle: null,
                 rescue_vehicle_only: null,
+                rescueboat: null,
                 rettungstreppe: null,
                 rth_only: null,
                 schlauchwagen: null,
@@ -2845,7 +2890,7 @@ function hideVehicleBuildingHelpText(t) {
             }
         }
 
-        function L(t, e, i, n) {
+        function M(t, e, i, n) {
             function s(r) {
                 var l;
                 return o[r] = !0, ce.each(t[r] || [], function(t, r) {
@@ -2858,7 +2903,7 @@ function hideVehicleBuildingHelpText(t) {
             return s(e.dataTypes[0]) || !o["*"] && s("*")
         }
 
-        function M(t, i) {
+        function L(t, i) {
             var n, s, o = ce.ajaxSettings.flatOptions || {};
             for (s in i) i[s] !== e && ((o[s] ? t : n || (n = {}))[s] = i[s]);
             return n && ce.extend(!0, t, n), t
@@ -2933,8 +2978,8 @@ function hideVehicleBuildingHelpText(t) {
 
         function B() {
             return setTimeout(function() {
-                Qi = e
-            }), Qi = ce.now()
+                Ji = e
+            }), Ji = ce.now()
         }
 
         function F(t, e, i) {
@@ -2950,7 +2995,7 @@ function hideVehicleBuildingHelpText(t) {
                 }),
                 l = function() {
                     if (s) return !1;
-                    for (var e = Qi || B(), i = Math.max(0, h.startTime + h.duration - e), n = i / h.duration || 0, o = 1 - n, a = 0, l = h.tweens.length; l > a; a++) h.tweens[a].run(o);
+                    for (var e = Ji || B(), i = Math.max(0, h.startTime + h.duration - e), n = i / h.duration || 0, o = 1 - n, a = 0, l = h.tweens.length; l > a; a++) h.tweens[a].run(o);
                     return r.notifyWith(t, [h, o, i]), 1 > o && l ? i : (r.resolveWith(t, [h]), !1)
                 },
                 h = r.promise({
@@ -2961,7 +3006,7 @@ function hideVehicleBuildingHelpText(t) {
                     }, i),
                     originalProperties: e,
                     originalOptions: i,
-                    startTime: Qi || B(),
+                    startTime: Ji || B(),
                     duration: i.duration,
                     tweens: [],
                     createTween: function(e, i) {
@@ -3047,8 +3092,8 @@ function hideVehicleBuildingHelpText(t) {
             Y = t.location,
             K = t.document,
             X = K.documentElement,
-            Q = t.jQuery,
-            J = t.$,
+            J = t.jQuery,
+            Q = t.$,
             te = {},
             ee = [],
             ie = "1.10.0",
@@ -3158,7 +3203,7 @@ function hideVehicleBuildingHelpText(t) {
             }, ce.extend({
                 expando: "jQuery" + (ie + Math.random()).replace(/\D/g, ""),
                 noConflict: function(e) {
-                    return t.$ === ce && (t.$ = J), e && t.jQuery === ce && (t.jQuery = Q), ce
+                    return t.$ === ce && (t.$ = Q), e && t.jQuery === ce && (t.jQuery = J), ce
                 },
                 isReady: !1,
                 readyWait: 1,
@@ -3445,7 +3490,7 @@ function hideVehicleBuildingHelpText(t) {
 
                 function u(t, e) {
                     var i = e && t,
-                        n = i && 1 === t.nodeType && 1 === e.nodeType && (~e.sourceIndex || J) - (~t.sourceIndex || J);
+                        n = i && 1 === t.nodeType && 1 === e.nodeType && (~e.sourceIndex || Q) - (~t.sourceIndex || Q);
                     if (n) return n;
                     if (i)
                         for (; i = i.nextSibling;)
@@ -3560,7 +3605,7 @@ function hideVehicleBuildingHelpText(t) {
                         }, a, !0), h = _(function(t) {
                             return ae.call(e, t) > -1
                         }, a, !0), c = [function(t, i, n) {
-                            return !o && (n || i !== M) || ((e = i).nodeType ? l(t, i, n) : h(t, i, n))
+                            return !o && (n || i !== L) || ((e = i).nodeType ? l(t, i, n) : h(t, i, n))
                         }]; s > r; r++)
                         if (i = S.relative[t[r].type]) c = [_(v(c), i)];
                         else {
@@ -3585,10 +3630,10 @@ function hideVehicleBuildingHelpText(t) {
                                 g = "0",
                                 _ = o && [],
                                 v = null != c,
-                                b = M,
+                                b = L,
                                 w = o || a && S.find.TAG("*", c && r.parentNode || r),
                                 x = V += null == b ? 1 : Math.random() || .1;
-                            for (v && (M = r !== z && r, A = n); null != (u = w[g]); g++) {
+                            for (v && (L = r !== z && r, A = n); null != (u = w[g]); g++) {
                                 if (a && u) {
                                     for (d = 0; p = t[d++];)
                                         if (p(u, r, l)) {
@@ -3608,7 +3653,7 @@ function hideVehicleBuildingHelpText(t) {
                                 }
                                 se.apply(h, f), v && !o && f.length > 0 && m + e.length > 1 && i.uniqueSort(h)
                             }
-                            return v && (V = x, M = b), _
+                            return v && (V = x, L = b), _
                         };
                     return s ? o(r) : r
                 }
@@ -3631,11 +3676,11 @@ function hideVehicleBuildingHelpText(t) {
                                 break
                             }
                     }
-                    return L(t, h)(n, e, !B, i, _e.test(t)), i
+                    return M(t, h)(n, e, !B, i, _e.test(t)), i
                 }
 
                 function T() {}
-                var D, E, A, S, P, I, L, M, N, O, z, $, B, F, R, U, H, W = "sizzle" + -new Date,
+                var D, E, A, S, P, I, M, L, N, O, z, $, B, F, R, U, H, W = "sizzle" + -new Date,
                     j = t.document,
                     V = 0,
                     Z = 0,
@@ -3646,8 +3691,8 @@ function hideVehicleBuildingHelpText(t) {
                     X = function() {
                         return 0
                     },
-                    Q = typeof e,
-                    J = 1 << 31,
+                    J = typeof e,
+                    Q = 1 << 31,
                     te = {}.hasOwnProperty,
                     ee = [],
                     ie = ee.pop,
@@ -3720,7 +3765,7 @@ function hideVehicleBuildingHelpText(t) {
                     }), E.getById = a(function(t) {
                         return $.appendChild(t).id = W, !e.getElementsByName || !e.getElementsByName(W).length
                     }), E.getById ? (S.find.ID = function(t, e) {
-                        if (typeof e.getElementById !== Q && B) {
+                        if (typeof e.getElementById !== J && B) {
                             var i = e.getElementById(t);
                             return i && i.parentNode ? [i] : []
                         }
@@ -3732,11 +3777,11 @@ function hideVehicleBuildingHelpText(t) {
                     }) : (delete S.find.ID, S.filter.ID = function(t) {
                         var e = t.replace(Ee, Ae);
                         return function(t) {
-                            var i = typeof t.getAttributeNode !== Q && t.getAttributeNode("id");
+                            var i = typeof t.getAttributeNode !== J && t.getAttributeNode("id");
                             return i && i.value === e
                         }
                     }), S.find.TAG = E.getElementsByTagName ? function(t, e) {
-                        return typeof e.getElementsByTagName !== Q ? e.getElementsByTagName(t) : void 0
+                        return typeof e.getElementsByTagName !== J ? e.getElementsByTagName(t) : void 0
                     } : function(t, e) {
                         var i, n = [],
                             s = 0,
@@ -3747,7 +3792,7 @@ function hideVehicleBuildingHelpText(t) {
                         }
                         return o
                     }, S.find.CLASS = E.getElementsByClassName && function(t, e) {
-                        return typeof e.getElementsByClassName !== Q && B ? e.getElementsByClassName(t) : void 0
+                        return typeof e.getElementsByClassName !== J && B ? e.getElementsByClassName(t) : void 0
                     }, R = [], F = [], (E.qsa = n(e.querySelectorAll)) && (a(function(t) {
                         t.innerHTML = "<select><option selected=''></option></select>", t.querySelectorAll("[selected]").length || F.push("\\[" + le + "*(?:value|" + re + ")"), t.querySelectorAll(":checked").length || F.push(":checked")
                     }), a(function(t) {
@@ -3868,7 +3913,7 @@ function hideVehicleBuildingHelpText(t) {
                         CLASS: function(t) {
                             var e = q[t + " "];
                             return e || (e = new RegExp("(^|" + le + ")" + t + "(" + le + "|$)")) && q(t, function(t) {
-                                return e.test("string" == typeof t.className && t.className || typeof t.getAttribute !== Q && t.getAttribute("class") || "")
+                                return e.test("string" == typeof t.className && t.className || typeof t.getAttribute !== J && t.getAttribute("class") || "")
                             })
                         },
                         ATTR: function(t, e, n) {
@@ -3924,7 +3969,7 @@ function hideVehicleBuildingHelpText(t) {
                         not: o(function(t) {
                             var e = [],
                                 i = [],
-                                n = L(t.replace(fe, "$1"));
+                                n = M(t.replace(fe, "$1"));
                             return n[W] ? o(function(t, e, i, s) {
                                 for (var o, a = n(t, null, s, []), r = t.length; r--;)(o = a[r]) && (t[r] = !(e[r] = o))
                             }) : function(t, s, o) {
@@ -4033,7 +4078,7 @@ function hideVehicleBuildingHelpText(t) {
                         submit: !0,
                         reset: !0
                     }) S.pseudos[D] = p(D);
-                L = i.compile = function(t, e) {
+                M = i.compile = function(t, e) {
                     var i, n = [],
                         s = [],
                         o = Y[t + " "];
@@ -4308,8 +4353,8 @@ function hideVehicleBuildingHelpText(t) {
         });
         var Ae, Se, Pe = /[\t\r\n\f]/g,
             Ie = /\r/g,
-            Le = /^(?:input|select|textarea|button|object)$/i,
-            Me = /^(?:a|area)$/i,
+            Me = /^(?:input|select|textarea|button|object)$/i,
+            Le = /^(?:a|area)$/i,
             Ne = /^(?:checked|selected)$/i,
             Oe = ce.support.getSetAttribute,
             ze = ce.support.input;
@@ -4445,7 +4490,7 @@ function hideVehicleBuildingHelpText(t) {
                 tabIndex: {
                     get: function(t) {
                         var e = ce.find.attr(t, "tabindex");
-                        return e ? parseInt(e, 10) : Le.test(t.nodeName) || Me.test(t.nodeName) && t.href ? 0 : -1
+                        return e ? parseInt(e, 10) : Me.test(t.nodeName) || Le.test(t.nodeName) && t.href ? 0 : -1
                     }
                 }
             }
@@ -4924,8 +4969,8 @@ function hideVehicleBuildingHelpText(t) {
             Ye = /^\s+/,
             Ke = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/gi,
             Xe = /<([\w:]+)/,
-            Qe = /<tbody/i,
-            Je = /<|&#?\w+;/,
+            Je = /<tbody/i,
+            Qe = /<|&#?\w+;/,
             ti = /<(?:script|style|link)/i,
             ei = /^(?:checkbox|radio)$/i,
             ii = /checked\s*(?:[^=]|=\s*.checked.)/i,
@@ -5069,10 +5114,10 @@ function hideVehicleBuildingHelpText(t) {
                 for (var s, o, a, r, l, h, c, u = t.length, d = p(e), f = [], m = 0; u > m; m++)
                     if (o = t[m], o || 0 === o)
                         if ("object" === ce.type(o)) ce.merge(f, o.nodeType ? [o] : o);
-                        else if (Je.test(o)) {
+                        else if (Qe.test(o)) {
                     for (r = r || d.appendChild(e.createElement("div")), l = (Xe.exec(o) || ["", ""])[1].toLowerCase(), c = ai[l] || ai._default, r.innerHTML = c[1] + o.replace(Ke, "<$1></$2>") + c[2], s = c[0]; s--;) r = r.lastChild;
                     if (!ce.support.leadingWhitespace && Ye.test(o) && f.push(e.createTextNode(Ye.exec(o)[0])), !ce.support.tbody)
-                        for (o = "table" !== l || Qe.test(o) ? "<table>" !== c[1] || Qe.test(o) ? 0 : r : r.firstChild, s = o && o.childNodes.length; s--;) ce.nodeName(h = o.childNodes[s], "tbody") && !h.childNodes.length && o.removeChild(h);
+                        for (o = "table" !== l || Je.test(o) ? "<table>" !== c[1] || Je.test(o) ? 0 : r : r.firstChild, s = o && o.childNodes.length; s--;) ce.nodeName(h = o.childNodes[s], "tbody") && !h.childNodes.length && o.removeChild(h);
                     for (ce.merge(f, r.childNodes), r.textContent = ""; r.firstChild;) r.removeChild(r.firstChild);
                     r = d.lastChild
                 } else f.push(e.createTextNode(o));
@@ -5347,8 +5392,8 @@ function hideVehicleBuildingHelpText(t) {
                 return 1 === arguments.length ? this.off(t, "**") : this.off(e, t || "**", i)
             }
         });
-        var Pi, Ii, Li = ce.now(),
-            Mi = /\?/,
+        var Pi, Ii, Mi = ce.now(),
+            Li = /\?/,
             Ni = /#.*$/,
             Oi = /([?&])_=[^&]*/,
             zi = /^(.*?):[ \t]*([^\r\n]*)\r?$/gm,
@@ -5424,7 +5469,7 @@ function hideVehicleBuildingHelpText(t) {
                 }
             },
             ajaxSetup: function(t, e) {
-                return e ? M(M(t, ce.ajaxSettings), e) : M(ce.ajaxSettings, t)
+                return e ? L(L(t, ce.ajaxSettings), e) : L(ce.ajaxSettings, t)
             },
             ajaxPrefilter: I(Hi),
             ajaxTransport: I(Wi),
@@ -5478,8 +5523,8 @@ function hideVehicleBuildingHelpText(t) {
                             return c && c.abort(e), n(0, e), this
                         }
                     };
-                if (m.promise(x).complete = g.add, x.success = x.done, x.error = x.fail, d.url = ((t || d.url || Ii) + "").replace(Ni, "").replace(Fi, Pi[1] + "//"), d.type = i.method || i.type || d.method || d.type, d.dataTypes = ce.trim(d.dataType || "*").toLowerCase().match(de) || [""], null == d.crossDomain && (s = Ri.exec(d.url.toLowerCase()), d.crossDomain = !(!s || s[1] === Pi[1] && s[2] === Pi[2] && (s[3] || ("http:" === s[1] ? "80" : "443")) === (Pi[3] || ("http:" === Pi[1] ? "80" : "443")))), d.data && d.processData && "string" != typeof d.data && (d.data = ce.param(d.data, d.traditional)), L(Hi, d, i, x), 2 === b) return x;
-                h = d.global, h && 0 === ce.active++ && ce.event.trigger("ajaxStart"), d.type = d.type.toUpperCase(), d.hasContent = !Bi.test(d.type), a = d.url, d.hasContent || (d.data && (a = d.url += (Mi.test(a) ? "&" : "?") + d.data, delete d.data), d.cache === !1 && (d.url = Oi.test(a) ? a.replace(Oi, "$1_=" + Li++) : a + (Mi.test(a) ? "&" : "?") + "_=" + Li++)), d.ifModified && (ce.lastModified[a] && x.setRequestHeader("If-Modified-Since", ce.lastModified[a]), ce.etag[a] && x.setRequestHeader("If-None-Match", ce.etag[a])), (d.data && d.hasContent && d.contentType !== !1 || i.contentType) && x.setRequestHeader("Content-Type", d.contentType), x.setRequestHeader("Accept", d.dataTypes[0] && d.accepts[d.dataTypes[0]] ? d.accepts[d.dataTypes[0]] + ("*" !== d.dataTypes[0] ? ", " + ji + "; q=0.01" : "") : d.accepts["*"]);
+                if (m.promise(x).complete = g.add, x.success = x.done, x.error = x.fail, d.url = ((t || d.url || Ii) + "").replace(Ni, "").replace(Fi, Pi[1] + "//"), d.type = i.method || i.type || d.method || d.type, d.dataTypes = ce.trim(d.dataType || "*").toLowerCase().match(de) || [""], null == d.crossDomain && (s = Ri.exec(d.url.toLowerCase()), d.crossDomain = !(!s || s[1] === Pi[1] && s[2] === Pi[2] && (s[3] || ("http:" === s[1] ? "80" : "443")) === (Pi[3] || ("http:" === Pi[1] ? "80" : "443")))), d.data && d.processData && "string" != typeof d.data && (d.data = ce.param(d.data, d.traditional)), M(Hi, d, i, x), 2 === b) return x;
+                h = d.global, h && 0 === ce.active++ && ce.event.trigger("ajaxStart"), d.type = d.type.toUpperCase(), d.hasContent = !Bi.test(d.type), a = d.url, d.hasContent || (d.data && (a = d.url += (Li.test(a) ? "&" : "?") + d.data, delete d.data), d.cache === !1 && (d.url = Oi.test(a) ? a.replace(Oi, "$1_=" + Mi++) : a + (Li.test(a) ? "&" : "?") + "_=" + Mi++)), d.ifModified && (ce.lastModified[a] && x.setRequestHeader("If-Modified-Since", ce.lastModified[a]), ce.etag[a] && x.setRequestHeader("If-None-Match", ce.etag[a])), (d.data && d.hasContent && d.contentType !== !1 || i.contentType) && x.setRequestHeader("Content-Type", d.contentType), x.setRequestHeader("Accept", d.dataTypes[0] && d.accepts[d.dataTypes[0]] ? d.accepts[d.dataTypes[0]] + ("*" !== d.dataTypes[0] ? ", " + ji + "; q=0.01" : "") : d.accepts["*"]);
                 for (o in d.headers) x.setRequestHeader(o, d.headers[o]);
                 if (d.beforeSend && (d.beforeSend.call(p, x, d) === !1 || 2 === b)) return x.abort();
                 w = "abort";
@@ -5488,7 +5533,7 @@ function hideVehicleBuildingHelpText(t) {
                         error: 1,
                         complete: 1
                     }) x[o](d[o]);
-                if (c = L(Wi, d, i, x)) {
+                if (c = M(Wi, d, i, x)) {
                     x.readyState = 1, h && f.trigger("ajaxSend", [x, d]), d.async && d.timeout > 0 && (l = setTimeout(function() {
                         x.abort("timeout")
                     }, d.timeout));
@@ -5551,12 +5596,12 @@ function hideVehicleBuildingHelpText(t) {
         ce.ajaxSetup({
             jsonp: "callback",
             jsonpCallback: function() {
-                var t = Zi.pop() || ce.expando + "_" + Li++;
+                var t = Zi.pop() || ce.expando + "_" + Mi++;
                 return this[t] = !0, t
             }
         }), ce.ajaxPrefilter("json jsonp", function(i, n, s) {
             var o, a, r, l = i.jsonp !== !1 && (qi.test(i.url) ? "url" : "string" == typeof i.data && !(i.contentType || "").indexOf("application/x-www-form-urlencoded") && qi.test(i.data) && "data");
-            return l || "jsonp" === i.dataTypes[0] ? (o = i.jsonpCallback = ce.isFunction(i.jsonpCallback) ? i.jsonpCallback() : i.jsonpCallback, l ? i[l] = i[l].replace(qi, "$1" + o) : i.jsonp !== !1 && (i.url += (Mi.test(i.url) ? "&" : "?") + i.jsonp + "=" + o), i.converters["script json"] = function() {
+            return l || "jsonp" === i.dataTypes[0] ? (o = i.jsonpCallback = ce.isFunction(i.jsonpCallback) ? i.jsonpCallback() : i.jsonpCallback, l ? i[l] = i[l].replace(qi, "$1" + o) : i.jsonp !== !1 && (i.url += (Li.test(i.url) ? "&" : "?") + i.jsonp + "=" + o), i.converters["script json"] = function() {
                 return r || ce.error(o + " was not called"), r[0]
             }, i.dataTypes[0] = "json", a = t[o], t[o] = function() {
                 r = arguments
@@ -5609,7 +5654,7 @@ function hideVehicleBuildingHelpText(t) {
                 }
             }
         });
-        var Qi, Ji, tn = /^(?:toggle|show|hide)$/,
+        var Ji, Qi, tn = /^(?:toggle|show|hide)$/,
             en = new RegExp("^(?:([+-])=|)(" + ue + ")([a-z%]*)$", "i"),
             nn = /queueHooks$/,
             sn = [H],
@@ -5751,14 +5796,14 @@ function hideVehicleBuildingHelpText(t) {
         }, ce.timers = [], ce.fx = W.prototype.init, ce.fx.tick = function() {
             var t, i = ce.timers,
                 n = 0;
-            for (Qi = ce.now(); n < i.length; n++) t = i[n], t() || i[n] !== t || i.splice(n--, 1);
-            i.length || ce.fx.stop(), Qi = e
+            for (Ji = ce.now(); n < i.length; n++) t = i[n], t() || i[n] !== t || i.splice(n--, 1);
+            i.length || ce.fx.stop(), Ji = e
         }, ce.fx.timer = function(t) {
             t() && ce.timers.push(t) && ce.fx.start()
         }, ce.fx.interval = 13, ce.fx.start = function() {
-            Ji || (Ji = setInterval(ce.fx.tick, ce.fx.interval))
+            Qi || (Qi = setInterval(ce.fx.tick, ce.fx.interval))
         }, ce.fx.stop = function() {
-            clearInterval(Ji), Ji = null
+            clearInterval(Qi), Qi = null
         }, ce.fx.speeds = {
             slow: 600,
             fast: 200,
@@ -9587,7 +9632,7 @@ function hideVehicleBuildingHelpText(t) {
                 })
             },
             _generateHTML: function(t) {
-                var e, i, n, s, o, a, r, l, h, c, u, d, p, f, m, g, _, v, y, b, w, x, k, C, T, D, E, A, S, P, I, L, M, N, O, z, $, B, F, R = new Date,
+                var e, i, n, s, o, a, r, l, h, c, u, d, p, f, m, g, _, v, y, b, w, x, k, C, T, D, E, A, S, P, I, M, L, N, O, z, $, B, F, R = new Date,
                     U = this._daylightSavingAdjust(new Date(R.getFullYear(), R.getMonth(), R.getDate())),
                     H = this._get(t, "isRTL"),
                     W = this._get(t, "showButtonPanel"),
@@ -9599,14 +9644,14 @@ function hideVehicleBuildingHelpText(t) {
                     Y = 1 !== Z[0] || 1 !== Z[1],
                     K = this._daylightSavingAdjust(t.currentDay ? new Date(t.currentYear, t.currentMonth, t.currentDay) : new Date(9999, 9, 9)),
                     X = this._getMinMaxDate(t, "min"),
-                    Q = this._getMinMaxDate(t, "max"),
-                    J = t.drawMonth - q,
+                    J = this._getMinMaxDate(t, "max"),
+                    Q = t.drawMonth - q,
                     te = t.drawYear;
-                if (0 > J && (J += 12, te--), Q)
-                    for (e = this._daylightSavingAdjust(new Date(Q.getFullYear(), Q.getMonth() - Z[0] * Z[1] + 1, Q.getDate())), e = X && X > e ? X : e; this._daylightSavingAdjust(new Date(te, J, 1)) > e;) J--, 0 > J && (J = 11, te--);
-                for (t.drawMonth = J, t.drawYear = te, i = this._get(t, "prevText"), i = V ? this.formatDate(i, this._daylightSavingAdjust(new Date(te, J - G, 1)), this._getFormatConfig(t)) : i, n = this._canAdjustMonth(t, -1, te, J) ? "<a class='ui-datepicker-prev ui-corner-all' data-handler='prev' data-event='click' title='" + i + "'><span class='ui-icon ui-icon-circle-triangle-" + (H ? "e" : "w") + "'>" + i + "</span></a>" : j ? "" : "<a class='ui-datepicker-prev ui-corner-all ui-state-disabled' title='" + i + "'><span class='ui-icon ui-icon-circle-triangle-" + (H ? "e" : "w") + "'>" + i + "</span></a>", s = this._get(t, "nextText"), s = V ? this.formatDate(s, this._daylightSavingAdjust(new Date(te, J + G, 1)), this._getFormatConfig(t)) : s, o = this._canAdjustMonth(t, 1, te, J) ? "<a class='ui-datepicker-next ui-corner-all' data-handler='next' data-event='click' title='" + s + "'><span class='ui-icon ui-icon-circle-triangle-" + (H ? "w" : "e") + "'>" + s + "</span></a>" : j ? "" : "<a class='ui-datepicker-next ui-corner-all ui-state-disabled' title='" + s + "'><span class='ui-icon ui-icon-circle-triangle-" + (H ? "w" : "e") + "'>" + s + "</span></a>", a = this._get(t, "currentText"), r = this._get(t, "gotoCurrent") && t.currentDay ? K : U, a = V ? this.formatDate(a, r, this._getFormatConfig(t)) : a, l = t.inline ? "" : "<button type='button' class='ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all' data-handler='hide' data-event='click'>" + this._get(t, "closeText") + "</button>", h = W ? "<div class='ui-datepicker-buttonpane ui-widget-content'>" + (H ? l : "") + (this._isInRange(t, r) ? "<button type='button' class='ui-datepicker-current ui-state-default ui-priority-secondary ui-corner-all' data-handler='today' data-event='click'>" + a + "</button>" : "") + (H ? "" : l) + "</div>" : "", c = parseInt(this._get(t, "firstDay"), 10), c = isNaN(c) ? 0 : c, u = this._get(t, "showWeek"), d = this._get(t, "dayNames"), p = this._get(t, "dayNamesMin"), f = this._get(t, "monthNames"), m = this._get(t, "monthNamesShort"), g = this._get(t, "beforeShowDay"), _ = this._get(t, "showOtherMonths"), v = this._get(t, "selectOtherMonths"), y = this._getDefaultDate(t), b = "", x = 0; x < Z[0]; x++) {
+                if (0 > Q && (Q += 12, te--), J)
+                    for (e = this._daylightSavingAdjust(new Date(J.getFullYear(), J.getMonth() - Z[0] * Z[1] + 1, J.getDate())), e = X && X > e ? X : e; this._daylightSavingAdjust(new Date(te, Q, 1)) > e;) Q--, 0 > Q && (Q = 11, te--);
+                for (t.drawMonth = Q, t.drawYear = te, i = this._get(t, "prevText"), i = V ? this.formatDate(i, this._daylightSavingAdjust(new Date(te, Q - G, 1)), this._getFormatConfig(t)) : i, n = this._canAdjustMonth(t, -1, te, Q) ? "<a class='ui-datepicker-prev ui-corner-all' data-handler='prev' data-event='click' title='" + i + "'><span class='ui-icon ui-icon-circle-triangle-" + (H ? "e" : "w") + "'>" + i + "</span></a>" : j ? "" : "<a class='ui-datepicker-prev ui-corner-all ui-state-disabled' title='" + i + "'><span class='ui-icon ui-icon-circle-triangle-" + (H ? "e" : "w") + "'>" + i + "</span></a>", s = this._get(t, "nextText"), s = V ? this.formatDate(s, this._daylightSavingAdjust(new Date(te, Q + G, 1)), this._getFormatConfig(t)) : s, o = this._canAdjustMonth(t, 1, te, Q) ? "<a class='ui-datepicker-next ui-corner-all' data-handler='next' data-event='click' title='" + s + "'><span class='ui-icon ui-icon-circle-triangle-" + (H ? "w" : "e") + "'>" + s + "</span></a>" : j ? "" : "<a class='ui-datepicker-next ui-corner-all ui-state-disabled' title='" + s + "'><span class='ui-icon ui-icon-circle-triangle-" + (H ? "w" : "e") + "'>" + s + "</span></a>", a = this._get(t, "currentText"), r = this._get(t, "gotoCurrent") && t.currentDay ? K : U, a = V ? this.formatDate(a, r, this._getFormatConfig(t)) : a, l = t.inline ? "" : "<button type='button' class='ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all' data-handler='hide' data-event='click'>" + this._get(t, "closeText") + "</button>", h = W ? "<div class='ui-datepicker-buttonpane ui-widget-content'>" + (H ? l : "") + (this._isInRange(t, r) ? "<button type='button' class='ui-datepicker-current ui-state-default ui-priority-secondary ui-corner-all' data-handler='today' data-event='click'>" + a + "</button>" : "") + (H ? "" : l) + "</div>" : "", c = parseInt(this._get(t, "firstDay"), 10), c = isNaN(c) ? 0 : c, u = this._get(t, "showWeek"), d = this._get(t, "dayNames"), p = this._get(t, "dayNamesMin"), f = this._get(t, "monthNames"), m = this._get(t, "monthNamesShort"), g = this._get(t, "beforeShowDay"), _ = this._get(t, "showOtherMonths"), v = this._get(t, "selectOtherMonths"), y = this._getDefaultDate(t), b = "", x = 0; x < Z[0]; x++) {
                     for (k = "", this.maxRows = 4, C = 0; C < Z[1]; C++) {
-                        if (T = this._daylightSavingAdjust(new Date(te, J, t.selectedDay)), D = " ui-corner-all", E = "", Y) {
+                        if (T = this._daylightSavingAdjust(new Date(te, Q, t.selectedDay)), D = " ui-corner-all", E = "", Y) {
                             if (E += "<div class='ui-datepicker-group", Z[1] > 1) switch (C) {
                                 case 0:
                                     E += " ui-datepicker-group-first", D = " ui-corner-" + (H ? "right" : "left");
@@ -9619,12 +9664,12 @@ function hideVehicleBuildingHelpText(t) {
                             }
                             E += "'>"
                         }
-                        for (E += "<div class='ui-datepicker-header ui-widget-header ui-helper-clearfix" + D + "'>" + (/all|left/.test(D) && 0 === x ? H ? o : n : "") + (/all|right/.test(D) && 0 === x ? H ? n : o : "") + this._generateMonthYearHeader(t, J, te, X, Q, x > 0 || C > 0, f, m) + "</div><table class='ui-datepicker-calendar'><thead>" + "<tr>", A = u ? "<th class='ui-datepicker-week-col'>" + this._get(t, "weekHeader") + "</th>" : "", w = 0; 7 > w; w++) S = (w + c) % 7, A += "<th scope='col'" + ((w + c + 6) % 7 >= 5 ? " class='ui-datepicker-week-end'" : "") + ">" + "<span title='" + d[S] + "'>" + p[S] + "</span></th>";
-                        for (E += A + "</tr></thead><tbody>", P = this._getDaysInMonth(te, J), te === t.selectedYear && J === t.selectedMonth && (t.selectedDay = Math.min(t.selectedDay, P)), I = (this._getFirstDayOfMonth(te, J) - c + 7) % 7, L = Math.ceil((I + P) / 7), M = Y ? this.maxRows > L ? this.maxRows : L : L, this.maxRows = M, N = this._daylightSavingAdjust(new Date(te, J, 1 - I)), O = 0; M > O; O++) {
-                            for (E += "<tr>", z = u ? "<td class='ui-datepicker-week-col'>" + this._get(t, "calculateWeek")(N) + "</td>" : "", w = 0; 7 > w; w++) $ = g ? g.apply(t.input ? t.input[0] : null, [N]) : [!0, ""], B = N.getMonth() !== J, F = B && !v || !$[0] || X && X > N || Q && N > Q, z += "<td class='" + ((w + c + 6) % 7 >= 5 ? " ui-datepicker-week-end" : "") + (B ? " ui-datepicker-other-month" : "") + (N.getTime() === T.getTime() && J === t.selectedMonth && t._keyEvent || y.getTime() === N.getTime() && y.getTime() === T.getTime() ? " " + this._dayOverClass : "") + (F ? " " + this._unselectableClass + " ui-state-disabled" : "") + (B && !_ ? "" : " " + $[1] + (N.getTime() === K.getTime() ? " " + this._currentClass : "") + (N.getTime() === U.getTime() ? " ui-datepicker-today" : "")) + "'" + (B && !_ || !$[2] ? "" : " title='" + $[2].replace(/'/g, "&#39;") + "'") + (F ? "" : " data-handler='selectDay' data-event='click' data-month='" + N.getMonth() + "' data-year='" + N.getFullYear() + "'") + ">" + (B && !_ ? "&#xa0;" : F ? "<span class='ui-state-default'>" + N.getDate() + "</span>" : "<a class='ui-state-default" + (N.getTime() === U.getTime() ? " ui-state-highlight" : "") + (N.getTime() === K.getTime() ? " ui-state-active" : "") + (B ? " ui-priority-secondary" : "") + "' href='#'>" + N.getDate() + "</a>") + "</td>", N.setDate(N.getDate() + 1), N = this._daylightSavingAdjust(N);
+                        for (E += "<div class='ui-datepicker-header ui-widget-header ui-helper-clearfix" + D + "'>" + (/all|left/.test(D) && 0 === x ? H ? o : n : "") + (/all|right/.test(D) && 0 === x ? H ? n : o : "") + this._generateMonthYearHeader(t, Q, te, X, J, x > 0 || C > 0, f, m) + "</div><table class='ui-datepicker-calendar'><thead>" + "<tr>", A = u ? "<th class='ui-datepicker-week-col'>" + this._get(t, "weekHeader") + "</th>" : "", w = 0; 7 > w; w++) S = (w + c) % 7, A += "<th scope='col'" + ((w + c + 6) % 7 >= 5 ? " class='ui-datepicker-week-end'" : "") + ">" + "<span title='" + d[S] + "'>" + p[S] + "</span></th>";
+                        for (E += A + "</tr></thead><tbody>", P = this._getDaysInMonth(te, Q), te === t.selectedYear && Q === t.selectedMonth && (t.selectedDay = Math.min(t.selectedDay, P)), I = (this._getFirstDayOfMonth(te, Q) - c + 7) % 7, M = Math.ceil((I + P) / 7), L = Y ? this.maxRows > M ? this.maxRows : M : M, this.maxRows = L, N = this._daylightSavingAdjust(new Date(te, Q, 1 - I)), O = 0; L > O; O++) {
+                            for (E += "<tr>", z = u ? "<td class='ui-datepicker-week-col'>" + this._get(t, "calculateWeek")(N) + "</td>" : "", w = 0; 7 > w; w++) $ = g ? g.apply(t.input ? t.input[0] : null, [N]) : [!0, ""], B = N.getMonth() !== Q, F = B && !v || !$[0] || X && X > N || J && N > J, z += "<td class='" + ((w + c + 6) % 7 >= 5 ? " ui-datepicker-week-end" : "") + (B ? " ui-datepicker-other-month" : "") + (N.getTime() === T.getTime() && Q === t.selectedMonth && t._keyEvent || y.getTime() === N.getTime() && y.getTime() === T.getTime() ? " " + this._dayOverClass : "") + (F ? " " + this._unselectableClass + " ui-state-disabled" : "") + (B && !_ ? "" : " " + $[1] + (N.getTime() === K.getTime() ? " " + this._currentClass : "") + (N.getTime() === U.getTime() ? " ui-datepicker-today" : "")) + "'" + (B && !_ || !$[2] ? "" : " title='" + $[2].replace(/'/g, "&#39;") + "'") + (F ? "" : " data-handler='selectDay' data-event='click' data-month='" + N.getMonth() + "' data-year='" + N.getFullYear() + "'") + ">" + (B && !_ ? "&#xa0;" : F ? "<span class='ui-state-default'>" + N.getDate() + "</span>" : "<a class='ui-state-default" + (N.getTime() === U.getTime() ? " ui-state-highlight" : "") + (N.getTime() === K.getTime() ? " ui-state-active" : "") + (B ? " ui-priority-secondary" : "") + "' href='#'>" + N.getDate() + "</a>") + "</td>", N.setDate(N.getDate() + 1), N = this._daylightSavingAdjust(N);
                             E += z + "</tr>"
                         }
-                        J++, J > 11 && (J = 0, te++), E += "</tbody></table>" + (Y ? "</div>" + (Z[0] > 0 && C === Z[1] - 1 ? "<div class='ui-datepicker-row-break'></div>" : "") : ""), k += E
+                        Q++, Q > 11 && (Q = 0, te++), E += "</tbody></table>" + (Y ? "</div>" + (Z[0] > 0 && C === Z[1] - 1 ? "<div class='ui-datepicker-row-break'></div>" : "") : ""), k += E
                     }
                     b += k
                 }
@@ -13293,11 +13338,11 @@ function hideVehicleBuildingHelpText(t) {
                         S = A + a.width(),
                         P = i === !0 ? E : D,
                         I = i === !0 ? D : E,
-                        L = i === !0 ? S : A,
-                        M = i === !0 ? A : S;
-                    if ("both" === s) return !!p && x >= I && P >= w && C >= M && L >= k;
+                        M = i === !0 ? S : A,
+                        L = i === !0 ? A : S;
+                    if ("both" === s) return !!p && x >= I && P >= w && C >= L && M >= k;
                     if ("vertical" === s) return !!p && x >= I && P >= w;
-                    if ("horizontal" === s) return !!p && C >= M && L >= k
+                    if ("horizontal" === s) return !!p && C >= L && M >= k
                 }
             }
         }
@@ -19067,6 +19112,8 @@ const TIME_MODIFIER_SONDERRECHTE = .8,
         return missing
     }
     "undefined" != typeof L && (L.Icon.Default.imagePath = "/leaflet/images/"), aao_types = [
+        ["rescueboat", I18n.t("intervention_order.vehicles.rescueboat")],
+        ["fireboat", I18n.t("intervention_order.vehicles.fireboat")],
         ["mek_mtf", I18n.t("intervention_order.vehicles.mek_mtf")],
         ["sek_zf", I18n.t("intervention_order.vehicles.sek_zf")],
         ["sek_mtf", I18n.t("intervention_order.vehicles.sek_mtf")],
