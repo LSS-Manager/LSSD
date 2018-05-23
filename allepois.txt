@@ -75,7 +75,7 @@ MC:
 31 = Bank
 32 = Warehouse
 33 = Bridge
-
+34 = Fast Food Restaurant
 
 MEL:
 
