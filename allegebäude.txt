@@ -6,8 +6,8 @@ LSS:
 3 = Rettungsschule
 4 = Krankenhaus
 5 = Rettungshubschrauber-Station
-7 = Leitstelle
 6 = Polizeiwache
+7 = Leitstelle
 8 = Polizeischule
 9 = THW
 10 = THW Bundesschule
