@@ -1117,46 +1117,47 @@
     },
     "141": {
         "name": "Natuurbrand",
-        "Gemiddeld aantal Credits": "750",
+        "Gemiddeld aantal Credits": "1000",
         "Benodigde tankautospuiten": "3",
         "Benodigde OvD-B's": "1",
+        "Benodigde slangenwagens": "1",
         "Benodigde HOVD's": "1",
-        "Benodigde Commandowagen": "1",
-        "Commandowagen benodigdheid": "10",
-        "Benodigde slangenwagens": "1"
+        "HOVD benodigd waarschijnlijkheid": "50"
     },
     "142": {
         "name": "Natuurbrand",
-        "Gemiddeld aantal Credits": "1200",
+        "Gemiddeld aantal Credits": "1750",
         "Benodigde tankautospuiten": "4",
-        "Benodigde OvD-B's": "1",
-        "Benodigde HOVD's": "1",
-        "Benodigde Commandowagen": "1",
-        "Benodigde slangenwagens": "2",
         "Benodigde hulpverleningsvoertuigen": "1",
-        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "50"
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "50",
+        "Benodigde OvD-B's": "1",
+        "Benodigde slangenwagens": "2",
+        "Benodigde HOVD's": "1"
     },
     "143": {
         "name": "Natuurbrand",
-        "Gemiddeld aantal Credits": "3500",
+        "Gemiddeld aantal Credits": "4000",
         "Benodigde tankautospuiten": "8",
+        "Benodigde hulpverleningsvoertuigen": "1",
         "Benodigde OvD-B's": "2",
+        "Benodigde Adembeschermingsvoertuigen": "1",
+        "Adembeschermingsvoertuig benodigd waarschijnlijkheid": "20",
+        "Benodigde slangenwagens": "2",
         "Benodigde HOVD's": "1",
         "Benodigde Commandowagen": "1",
-        "Benodigde slangenwagens": "2",
-        "Benodigde hulpverleningsvoertuigen": "1"
+        "Commandowagen benodigdheid": "50"
     },
     "144": {
         "name": "Natuurbrand",
-        "Gemiddeld aantal Credits": "7000",
+        "Gemiddeld aantal Credits": "8000",
         "Benodigde tankautospuiten": "12",
-        "Benodigde OvD-B's": "3",
-        "Benodigde HOVD's": "2",
-        "Benodigde Commandowagen": "1",
-        "Benodigde slangenwagens": "3",
         "Benodigde hulpverleningsvoertuigen": "2",
+        "Benodigde OvD-B's": "3",
         "Benodigde Adembeschermingsvoertuigen": "1",
-        "Adembeschermingsvoertuig benodigd waarschijnlijkheid": "20"
+        "Adembeschermingsvoertuig benodigd waarschijnlijkheid": "50",
+        "Benodigde slangenwagens": "3",
+        "Benodigde HOVD's": "2",
+        "Benodigde Commandowagen": "1"
     },
     "145": {
         "name": "Natuurbrand",
@@ -2727,5 +2728,30 @@
         "Minimale aantal slachtoffers": "7",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
+    },
+    "308": {
+        "name": "Natuurbrand",
+        "Gemiddeld aantal Credits": "11500",
+        "Benodigde tankautospuiten": "16",
+        "Benodigde hulpverleningsvoertuigen": "3",
+        "Benodigde OvD-B's": "4",
+        "Benodigde Adembeschermingsvoertuigen": "1",
+        "Adembeschermingsvoertuig benodigd waarschijnlijkheid": "80",
+        "Benodigde slangenwagens": "4",
+        "Benodigde HOVD's": "2",
+        "Benodigde Commandowagen": "1",
+        "Benodigde politieauto's": "3"
+    },
+    "309": {
+        "name": "Natuurbrand",
+        "Gemiddeld aantal Credits": "18750",
+        "Benodigde tankautospuiten": "24",
+        "Benodigde hulpverleningsvoertuigen": "4",
+        "Benodigde OvD-B's": "6",
+        "Benodigde Adembeschermingsvoertuigen": "1",
+        "Benodigde slangenwagens": "6",
+        "Benodigde HOVD's": "3",
+        "Benodigde Commandowagen": "2",
+        "Benodigde politieauto's": "5"
     }
 }

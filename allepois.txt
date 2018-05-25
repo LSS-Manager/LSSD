@@ -38,6 +38,8 @@ LSS:
 35 = Flughafen (groß): Parkhaus
 36 = Biogasanlage
 37 = Bank
+38 = Kirche
+
 
 MC:
 
