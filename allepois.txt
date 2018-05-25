@@ -76,6 +76,7 @@ MC:
 32 = Warehouse
 33 = Bridge
 34 = Fast Food Restaurant
+35 = Cargo Port
 
 MEL:
 
