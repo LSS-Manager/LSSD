@@ -2753,5 +2753,24 @@
         "Benodigde HOVD's": "3",
         "Benodigde Commandowagen": "2",
         "Benodigde politieauto's": "5"
+    },
+    "310": {
+        "name": "Verkeersongeval met scooter en fietser",
+        "Gemiddeld aantal Credits": "750",
+        "Benodigde politieauto's": "1",
+        "Maximale patiënten aantal": "2",
+        "Minimale aantal slachtoffers": "1",
+        "MMT-Arts benodigd waarschijnlijkheid": "50",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
+        "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
+    },
+    "311": {
+        "name": "Verkeersongeval met fietser en fietser",
+        "Gemiddeld aantal Credits": "650",
+        "Benodigde politieauto's": "1",
+        "Maximale patiënten aantal": "2",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "80",
+        "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
     }
 }
