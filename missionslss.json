@@ -3871,5 +3871,23 @@
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "60",
         "NEF Anforderungswahrscheinlichkeit": "40",
         "RTH Anforderungswahrscheinlichkeit": "20"
+    },
+    "369": {
+        "name": "Austritt Kohlenmonoxid",
+        "Credits im Durchschnitt": "1800",
+        "Benötigte Löschfahrzeuge": "2",
+        "Benötigte Drehleitern": "1",
+        "Drehleiter Anforderungswahrscheinlichkeit": "10",
+        "Benötigte Rüstwagen": "1",
+        "Rüstwagen Anforderungswahrscheinlichkeit": "30",
+        "Benötigte GW-Mess": "1",
+        "GW-Mess Anforderungswahrscheinlichkeit": "50",
+        "Benötigte ELW 1": "1",
+        "Benötigte Streifenwagen": "1",
+        "Maximale Patientenanzahl": "2",
+        "Fachrichtung für Patienten": "Allgemeine Innere",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "60",
+        "NEF Anforderungswahrscheinlichkeit": "40",
+        "RTH Anforderungswahrscheinlichkeit": "20"
     }
 }

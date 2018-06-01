@@ -79,6 +79,9 @@ MC:
 33 = Bridge
 34 = Fast Food Restaurant
 35 = Cargo Port
+36 = Recycling Centre
+37 = High rise
+
 
 MEL:
 
