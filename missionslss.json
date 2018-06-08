@@ -3889,5 +3889,17 @@
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "60",
         "NEF Anforderungswahrscheinlichkeit": "40",
         "RTH Anforderungswahrscheinlichkeit": "20"
+    },
+    "370": {
+        "name": "Geisterfahrer",
+        "Credits im Durchschnitt": "1000",
+        "Benötigte Streifenwagen": "4",
+        "Ausbreitungsmöglichkeiten": [
+            ["https://www.leitstellenspiel.de/einsaetze/83", "Gefahrgut-LKW verunglückt"],
+            ["https://www.leitstellenspiel.de/einsaetze/89", "LKW Auffahrunfall"],
+            ["https://www.leitstellenspiel.de/einsaetze/125", "Verkehrsunfall"],
+            ["https://www.leitstellenspiel.de/einsaetze/126", "Verkehrsunfall"],
+            ["https://www.leitstellenspiel.de/einsaetze/127", "Verkehrsunfall"]
+        ]
     }
 }

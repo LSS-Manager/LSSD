@@ -122,7 +122,7 @@ function mapExpand(t) {
 }
 
 function mapViewOnly() {
-    $("#navbar-mobile-footer").hide(), $("#navbar-mobile-footer").removeClass("visible-xs"), $("#col_navbar_holder").hide(), $("#map_outer").removeClass("col-sm-8"), $("#map_outer").addClass("col-sm-12"), $("#level_upgrade_hint").hide(), $("#bigMapMenu").hide(), $("#map").height($(window).height()).width($(window).width()), map.invalidateSize()
+    $("#navbar-mobile-footer").hide(), $("#navbar-mobile-footer").removeClass("visible-xs"), $("#col_navbar_holder").hide(), $("#map_outer").removeClass("col-sm-8"), $("#map_outer").addClass("col-sm-12"), $("#level_upgrade_hint").hide(), $("#bigMapMenu").hide(), $("#map").height($(window).height()).width($(window).width()), "undefined" == typeof mapkit && map.invalidateSize()
 }
 
 function mapViewDesignBigMap() {
@@ -130,15 +130,15 @@ function mapViewDesignBigMap() {
 }
 
 function mapViewResize() {
-    $("#map").height($(window).height()).width($(window).width()), map.invalidateSize()
+    $("#map").height($(window).height()).width($(window).width()), "undefined" == typeof mapkit && map.invalidateSize()
 }
 
 function mapViewResizeDesignBigMap() {
-    $("#map").height($(window).height() - parseInt($("#col_navbar_holder").height())).width($(window).width()), $("#map_outer").height($(window).height() - parseInt($("#col_navbar_holder").height())).width($(window).width()), map.invalidateSize()
+    $("#map").height($(window).height() - parseInt($("#col_navbar_holder").height())).width($(window).width()), $("#map_outer").height($(window).height() - parseInt($("#col_navbar_holder").height())).width($(window).width()), "undefined" == typeof mapkit && map.invalidateSize()
 }
 
 function mapViewRestore() {
-    mapViewExpanded && ($("#map_outer").show(), $("#map").show(), $("#map_adress_search").show(), $("#restore_map").hide(), $("#radio_outer").addClass("col-sm-4"), $("#radio_outer").removeClass("col-sm-12"), mapViewExpanded = !1, map.invalidateSize(), mapViewExpandedWindow.close())
+    mapViewExpanded && ($("#map_outer").show(), $("#map").show(), $("#map_adress_search").show(), $("#restore_map").hide(), $("#radio_outer").addClass("col-sm-4"), $("#radio_outer").removeClass("col-sm-12"), mapViewExpanded = !1, "undefined" == typeof mapkit && map.invalidateSize(), mapViewExpandedWindow.close())
 }
 
 function vehicleSelectionReset() {
@@ -169,7 +169,7 @@ function vehicleSearch(t) {
     if (mapViewExpanded) return mapViewExpandedWindow.vehicleSearch(t);
     var e = !1;
     $.each(mission_vehicles, function(i, n) {
-        !n.vehicle_marker_deleted && n.visible && n.vehicle_id == t && (e = !0, map.setView([n.latitude, n.longitude]))
+        !n.vehicle_marker_deleted && n.visible && n.vehicle_id == t && (e = !0, "undefined" != typeof mapkit ? map.setCenterAnimated(new mapkit.Coordinate(n.latitude, n.longitude), !0) : map.setView([n.latitude, n.longitude]))
     }), e || alert(I18n.t("javascript.not_found_map"))
 }
 
@@ -198,6 +198,7 @@ function mapMoveToSearch() {
 }
 
 function mapIsVisible(t) {
+    if ("undefined" != typeof mapkit) return !0;
     var e = map.getBounds();
     return e.contains(t)
 }
@@ -315,7 +316,7 @@ function building_load_alliance_app(min_lat, max_lat, min_lng, max_lng) {
 }
 
 function building_maps_redraw() {
-    visibles = new Array, building_markers_new = new Array, $.each(building_markers, function(t, e) {
+    visibles = new Array, building_markers_new = new Array, "undefined" == typeof mapkit && $.each(building_markers, function(t, e) {
         mapIsVisible(e.getLatLng()) ? (visibles.push(e.building_id), building_markers_new.push(e)) : map.removeLayer(e)
     }), building_markers = building_markers_new, $.each(building_markers_cache, function(t, e) {
         -1 == $.inArray(e.id, visibles) && mapIsVisible([e.latitude, e.longitude]) && building_maps_draw(e)
@@ -324,15 +325,26 @@ function building_maps_redraw() {
 
 function building_maps_draw(t) {
     var e = 5e3;
-    "undefined" != typeof t.user_id && "undefined" != typeof user_id && user_id != t.user_id && (e = 1e3);
-    var i = L.marker([t.latitude, t.longitude], {
-        zIndexOffset: e,
-        title: t.name,
-        icon: icon_empty
-    }).bindTooltip(t.name).addTo(map);
-    i.building_id = t.id, "undefined" != typeof t.opacity && i.setOpacity(t.opacity), iconMapGenerate(t.building_marker_image, i), i.on("click", function() {
-        lightboxOpen("/buildings/" + t.id)
-    }), building_markers.push(i)
+    if ("undefined" != typeof t.user_id && "undefined" != typeof user_id && user_id != t.user_id && (e = 1e3), "undefined" != typeof mapkit) {
+        var i = new mapkit.ImageAnnotation(new mapkit.Coordinate(t.latitude, t.longitude), {
+            url: {
+                1: t.building_marker_image
+            }
+        });
+        i.title = t.name, i.addEventListener("select", function() {
+            lightboxOpen("/buildings/" + t.id)
+        }), map.addAnnotation(i)
+    } else {
+        var i = L.marker([t.latitude, t.longitude], {
+            zIndexOffset: e,
+            title: t.name,
+            icon: icon_empty
+        }).bindTooltip(t.name).addTo(map);
+        "undefined" != typeof t.opacity && i.setOpacity(t.opacity), iconMapGenerate(t.building_marker_image, i), i.on("click", function() {
+            lightboxOpen("/buildings/" + t.id)
+        })
+    }
+    i.building_id = t.id, building_markers.push(i)
 }
 
 function buildingMarkerAdd(t) {
@@ -350,8 +362,13 @@ function buildingMarkerAdd(t) {
 }
 
 function spliceLatLngs(t, e) {
-    var i = t.getLatLngs();
-    i.splice(0, e), t.setLatLngs(i)
+    if ("undefined" != typeof mapkit) {
+        var i = t.points;
+        i.splice(0, e), t.points = i
+    } else {
+        var i = t.getLatLngs();
+        i.splice(0, e), t.setLatLngs(i)
+    }
 }
 
 function buildingMarkerBulkContentCacheDraw() {
@@ -530,19 +547,33 @@ function missionMarkerAdd(t) {
     }
     var g = !1;
     if ($.each(mission_markers, function(e, i) {
-            i.mission_id == t.id && (i.setIcon(icon_empty), i.setOpacity(1), i.vehicle_state = t.vehicle_state, i.setTooltipContent(a), iconMapGenerate(s, i), g = !0)
+            i.mission_id == t.id && ("undefined" != typeof mapkit ? (i.url = {
+                1: s
+            }, i.opacity = 1, i.title = t.caption, i.subtitle = t.address) : (i.setIcon(icon_empty), i.setOpacity(1), iconMapGenerate(s, i), i.setTooltipContent(a)), i.vehicle_state = t.vehicle_state, g = !0)
         }), !g && "undefined" != typeof L) {
-        var _ = L.marker([t.latitude, t.longitude], {
-            zIndexOffset: 1e4,
-            title: t.name,
-            icon: icon_empty
-        }).bindTooltip(a, {
-            permanent: mission_label,
-            opacity: 1
-        });
-        "undefined" != typeof map && _.addTo(map), iconMapGenerate(s, _), _.mission_id = t.id, _.user_id = t.user_id, _.vehicle_state = t.vehicle_state, _.krankentransport = t.kt, _.sicherheitswache = t.sw, _.involved = !0, _.on("click", function() {
-            $("#alarm_button_" + t.id).click()
-        }), mission_markers.push(_)
+        if ("undefined" != typeof mapkit) {
+            var _ = new mapkit.ImageAnnotation(new mapkit.Coordinate(t.latitude, t.longitude), {
+                url: {
+                    1: s
+                }
+            });
+            _.title = t.caption, _.subtitle = t.address, map.addAnnotation(_), _.addEventListener("select", function() {
+                $("#alarm_button_" + t.id).click()
+            })
+        } else {
+            var _ = L.marker([t.latitude, t.longitude], {
+                zIndexOffset: 1e4,
+                title: t.name,
+                icon: icon_empty
+            }).bindTooltip(a, {
+                permanent: mission_label,
+                opacity: 1
+            });
+            "undefined" != typeof map && _.addTo(map), iconMapGenerate(s, _), _.on("click", function() {
+                $("#alarm_button_" + t.id).click()
+            })
+        }
+        _.mission_id = t.id, _.user_id = t.user_id, _.vehicle_state = t.vehicle_state, _.krankentransport = t.kt, _.sicherheitswache = t.sw, _.involved = !0, mission_markers.push(_)
     }
     n && $("#mission_" + t.id).hide(), t.date_end > 0 && missionTimerStart(t), missionSelectionUpdateButtons(), t.live_current_value <= 0 && missionFinish(t), missionMarkerBulkAdd || progressBarScrollUpdate()
 }
@@ -671,9 +702,21 @@ function vehicleDriveAdd(params) {
     }
     if (("undefined" == typeof route_show || 1 == route_show) && "undefined" != typeof routes[params.rh]) {
         var lineArray = [];
-        jQuery.each(routes[params.rh], function(t, e) {
-            lineArray.push([e[0], e[1]])
-        }), params.polyline = L.polyline(lineArray, {
+        if (jQuery.each(routes[params.rh], function(t, e) {
+                lineArray.push([e[0], e[1]])
+            }), "undefined" != typeof mapkit) {
+            var coords = lineArray.map(function(t) {
+                    return new mapkit.Coordinate(t[0], t[1])
+                }),
+                style = new mapkit.Style({
+                    lineWidth: 2,
+                    lineJoin: "round",
+                    strokeColor: "#FF0000"
+                });
+            params.polyline = new mapkit.PolylineOverlay(coords, {
+                style: style
+            }), map.addOverlay(params.polyline)
+        } else params.polyline = L.polyline(lineArray, {
             color: "red",
             opacity: 1,
             weight: 3
@@ -697,26 +740,47 @@ function vehicleCreateOnMap(t, e) {
         "undefined" != typeof vehicle_graphics_sorted[i] && "undefined" != typeof vehicle_graphics_sorted[i][e.vtid] && null != vehicle_graphics_sorted[i][e.vtid] && (e["in"] = vehicle_graphics_sorted[i][e.vtid][0], e.isr = vehicle_graphics_sorted[i][e.vtid][1], e.apng_sonderrechte = vehicle_graphics_sorted[i][e.vtid][2])
     } else "undefined" != typeof vehicle_graphics[e.vtid] && null != vehicle_graphics[e.vtid] && (e["in"] = vehicle_graphics[e.vtid][0], e.isr = vehicle_graphics[e.vtid][1], e.apng_sonderrechte = vehicle_graphics[e.vtid][2]);
     if (null == t) {
-        var t = L.marker([0, 0], {
-            title: e.name,
-            icon: icon_empty
-        }).addTo(map);
-        iconMapVehicleGenerate(e["in"], e.isr, t), t.on("click", function() {
-            "undefined" == typeof user_id ? $("#signup_from").effect("highlight", {}, 500) : lightboxOpen("/vehicles/" + e.id)
-        }), t.visible = !1, t.apng_sonderrechte = "undefined" != typeof e.apng_sonderrechte && "true" == e.apng_sonderrechte && apng_supported ? !0 : !1, t.vehicle_marker_deleted = !1, mission_vehicles.push(t), setInterval(function() {
+        if ("undefined" != typeof mapkit) {
+            var t = new mapkit.ImageAnnotation(new mapkit.Coordinate(0, 0), {
+                url: {
+                    1: e["in"]
+                }
+            });
+            t.icon_normal = e["in"], t.icon_sonderrechte = e.isr, map.addAnnotation(t), t.addEventListener("select", function() {
+                "undefined" == typeof user_id ? $("#signup_from").effect("highlight", {}, 500) : lightboxOpen("/vehicles/" + e.id)
+            })
+        } else {
+            var t = L.marker([0, 0], {
+                title: e.name,
+                icon: icon_empty
+            }).addTo(map);
+            iconMapVehicleGenerate(e["in"], e.isr, t), t.on("click", function() {
+                "undefined" == typeof user_id ? $("#signup_from").effect("highlight", {}, 500) : lightboxOpen("/vehicles/" + e.id)
+            })
+        }
+        t.visible = !1, t.apng_sonderrechte = "undefined" != typeof e.apng_sonderrechte && "true" == e.apng_sonderrechte && apng_supported ? !0 : !1, t.vehicle_marker_deleted = !1, mission_vehicles.push(t), setInterval(function() {
             vehicleSonderrechte(t)
         }, 1e3)
     }
     t.title = "undefined" == typeof user_id || e.user_id == user_id ? e.caption : "[" + I18n.t("map.alliance") + "] " + e.caption, e.dd < 0 && (e.dd = 0);
     var n = new Date;
-    t.url_arrive = "/vehicles/" + e.id + "/arrive", t.setIcon(icon_empty), t.user_id = e.user_id, t.sonderrechte = e.sr, t.rh = e.rh, t.polyline = e.polyline, t.current_step = 0, t.timer_steps = n.getTime() - 1e3 * e.dd, t.vehicle_id = e.id, t.bindTooltip("<span class='vehicleMarkerLabelFms building_list_fms_" + e.fms_real + "'>" + e.fms + "</span>" + t.title, {
+    t.url_arrive = "/vehicles/" + e.id + "/arrive", "undefined" == typeof mapkit && t.setIcon(icon_empty), t.user_id = e.user_id, t.sonderrechte = e.sr, t.rh = e.rh, t.polyline = e.polyline, t.current_step = 0, t.timer_steps = n.getTime() - 1e3 * e.dd, t.vehicle_id = e.id, "undefined" == typeof mapkit ? t.bindTooltip("<span class='vehicleMarkerLabelFms building_list_fms_" + e.fms_real + "'>" + e.fms + "</span>" + t.title, {
         permanent: vehicle_label,
         opacity: 1
-    }), 4 == mobile_version && (-1 !== String(e["in"]).indexOf("//") ? (t.app_icon_path_normal = e["in"], t.app_icon_path_sonderrechte = e.isr) : (t.app_icon_path_normal = currentHostname() + e["in"], t.app_icon_path_sonderrechte = currentHostname() + e.isr)), t.visible || (t.visible = !0, t.setOpacity(1), vehicle_markers.push(t), vehicle_marker_id = vehicle_markers.length - 1, vehicleDriveReal(vehicle_marker_id))
+    }) : t.title = t.title, 4 == mobile_version && (-1 !== String(e["in"]).indexOf("//") ? (t.app_icon_path_normal = e["in"], t.app_icon_path_sonderrechte = e.isr) : (t.app_icon_path_normal = currentHostname() + e["in"], t.app_icon_path_sonderrechte = currentHostname() + e.isr)), t.visible || (t.visible = !0, "undefined" == typeof mapkit && t.setOpacity(1), vehicle_markers.push(t), vehicle_marker_id = vehicle_markers.length - 1, vehicleDriveReal(vehicle_marker_id))
 }
 
 function vehicleSonderrechte(t) {
-    mapIsVisible(t.getLatLng()) && "undefined" != typeof t.icon_normal && "undefined" != typeof t.icon_sonderrechte && (1 == t.sonderrechte ? "undefined" != typeof t.apng_sonderrechte && t.apng_sonderrechte ? 1 != t.sonderrechte_status && (t.setIcon(t.icon_sonderrechte), t.sonderrechte_status = 1) : "undefined" != typeof t.sonderrechte_status && 1 == t.sonderrechte_status ? (t.setIcon(t.icon_normal), t.sonderrechte_status = 0) : (t.setIcon(t.icon_sonderrechte), t.sonderrechte_status = 1) : "undefined" != typeof t.sonderrechte_status && 1 == t.sonderrechte_status && (t.setIcon(t.icon_normal), t.sonderrechte_status = 0))
+    var e = [];
+    e = "undefined" != typeof mapkit ? t.coordinate : t.getLatLng(), mapIsVisible(e) && "undefined" != typeof t.icon_normal && "undefined" != typeof t.icon_sonderrechte && (1 == t.sonderrechte ? "undefined" != typeof t.apng_sonderrechte && t.apng_sonderrechte ? 1 != t.sonderrechte_status && ("undefined" != typeof mapkit ? t.url = {
+        1: t.icon_sonderrechte
+    } : t.setIcon(t.icon_sonderrechte), t.sonderrechte_status = 1) : "undefined" != typeof t.sonderrechte_status && 1 == t.sonderrechte_status ? ("undefined" != typeof mapkit ? t.url = {
+        1: t.icon_normal
+    } : t.setIcon(t.icon_normal), t.sonderrechte_status = 0) : ("undefined" != typeof mapkit ? t.url = {
+        1: t.icon_sonderrechte
+    } : t.setIcon(t.icon_sonderrechte), t.sonderrechte_status = 1) : "undefined" != typeof t.sonderrechte_status && 1 == t.sonderrechte_status && ("undefined" != typeof mapkit ? t.url = {
+        1: t.icon_normal
+    } : t.setIcon(t.icon_normal), t.sonderrechte_status = 0))
 }
 
 function vehicleDriveReal(t) {
@@ -745,7 +809,7 @@ function vehicleDriveReal(t) {
                 longitude: e.longitude,
                 app_icon_path_normal: e.app_icon_path_normal,
                 app_icon_path_sonderrechte: e.app_icon_path_sonderrechte
-            }) : ((isNaN(current_lat) || isNaN(current_lng)) && (console.log([current_lat, current_lng]), console.log(e.vehicle_id), console.log(e.current_step)), e.setLatLng([current_lat, current_lng]), mapIsVisible([current_lat, current_lng]) ? (1 == e.performance_invisible && (e.performance_invisible = !1, e.addTo(map)), vehicle_label ? e.openTooltip() : e.closeTooltip()) : (n = 1e3, e.closeTooltip(), map.removeLayer(e), e.performance_invisible = !0), new_position = null))
+            }) : ((isNaN(current_lat) || isNaN(current_lng)) && (console.log([current_lat, current_lng]), console.log(e.vehicle_id), console.log(e.current_step)), "undefined" != typeof mapkit ? e.coordinate = new mapkit.Coordinate(current_lat, current_lng) : e.setLatLng([current_lat, current_lng]), mapIsVisible([current_lat, current_lng]) ? (1 == e.performance_invisible && (e.performance_invisible = !1, e.addTo(map)), "undefined" == typeof mapkit ? vehicle_label ? e.openTooltip() : e.closeTooltip() : e.calloutEnabled = vehicle_label ? !0 : !1) : (n = 1e3, e.closeTooltip(), map.removeLayer(e), e.performance_invisible = !0), new_position = null))
         } else e.current_step++;
         setTimeout(function() {
             vehicleDriveReal(t)
@@ -858,7 +922,7 @@ function formatTime(t, e) {
 }
 
 function vehicleArrive(t) {
-    "undefined" != typeof t.polyline && map.removeLayer(t.polyline), map.removeLayer(t), t.vehicle_marker_deleted = !0, 1 == mobile_bridge_use && 4 == mobile_version && mobileBridgeAdd("vehicle_remove", {
+    "undefined" != typeof t.polyline && ("undefined" != typeof mapkit ? map.removeOverlay(t.polyline) : map.removeLayer(t.polyline)), "undefined" != typeof mapkit ? map.removeAnnotation(t) : map.removeLayer(t), t.vehicle_marker_deleted = !0, 1 == mobile_bridge_use && 4 == mobile_version && mobileBridgeAdd("vehicle_remove", {
         id: t.vehicle_id
     })
 }
@@ -19306,56 +19370,64 @@ const TIME_MODIFIER_SONDERRECHTE = .8,
         if (1 == mobile_bridge_use || 0 == mouse_over_disable_inactive_elements) return !0;
         var t = $(this).attr("vehicle_id");
         $.each(mission_markers, function(t, e) {
-            e.setOpacity(.2), e.closeTooltip()
+            "undefined" != typeof mapkit ? (e.opacity = .2, e.selected = !1) : (e.setOpacity(.2), e.closeTooltip())
         }), $.each(vehicle_markers, function(e, i) {
-            if (i.visible && i.vehicle_id != t) i.setOpacity(.2), i.closeTooltip();
+            if (i.visible && i.vehicle_id != t) "undefined" != typeof mapkit ? (i.opacity = .2, i.selected = !1) : (i.setOpacity(.2), i.closeTooltip());
             else if (i.vehicle_id == t && !i.vehicle_marker_deleted) {
-                target_marker && (map.removeLayer(target_marker), target_marker = !1);
+                target_marker && ("undefined" != typeof mapkit ? map.removeAnnotation(target_marker) : map.removeLayer(target_marker), target_marker = !1);
                 var n = routes[i.rh][routes[i.rh].length - 1];
-                target_marker = L.marker([n[0], n[1]], {
+                "undefined" != typeof mapkit ? (target_marker = new mapkit.ImageAnnotation(new mapkit.Coordinate(n[0], n[1]), {
+                    url: {
+                        1: "/images/direction_down.png"
+                    }
+                }), target_marker.title = "Ziel", map.addAnnotation(target_marker)) : (target_marker = L.marker([n[0], n[1]], {
                     title: "Ziel",
                     icon: icon_empty
-                }).addTo(map), iconMapGenerate("/images/direction_down.png", target_marker)
+                }).addTo(map), iconMapGenerate("/images/direction_down.png", target_marker))
             }
         }), $.each(building_markers_cache, function(t, e) {
             e.opacity = .2
         }), $.each(building_markers, function(t, e) {
-            e.setOpacity(.2)
+            "undefined" != typeof mapkit ? e.opacity = .2 : e.setOpacity(.2)
         })
     }), $("body").on("mouseleave", ".building_list_vehicle_element", function() {
-        return 1 == mobile_bridge_use || 0 == mouse_over_disable_inactive_elements ? !0 : (target_marker && (map.removeLayer(target_marker), target_marker = !1), $.each(vehicle_markers, function(t, e) {
-            e.visible && e.setOpacity(1)
+        return 1 == mobile_bridge_use || 0 == mouse_over_disable_inactive_elements ? !0 : (target_marker && ("undefined" != typeof mapkit ? map.removeAnnotation(target_marker) : map.removeLayer(target_marker), target_marker = !1), $.each(vehicle_markers, function(t, e) {
+            e.visible && ("undefined" != typeof mapkit ? e.opacity = 1 : e.setOpacity(1))
         }), $.each(mission_markers, function(t, e) {
-            e.setOpacity(1), mission_label ? e.openTooltip() : e.closeTooltip()
+            "undefined" != typeof mapkit ? e.opacity = 1 : (e.setOpacity(1), mission_label ? e.openTooltip() : e.closeTooltip())
         }), $.each(building_markers_cache, function(t, e) {
             e.opacity = 1
         }), $.each(building_markers, function(t, e) {
-            e.setOpacity(1)
+            "undefined" != typeof mapkit ? e.opacity = 1 : e.setOpacity(1)
         }), void 0)
     }), $("body").on("mouseenter", ".missionSideBarEntry", function() {
         if (1 == mobile_bridge_use || 0 == mouse_over_disable_inactive_elements) return !0;
         var t = $(this).attr("mission_id");
         $.each(mission_markers, function(e, i) {
-            i.mission_id != t ? (i.setOpacity(.2), i.closeTooltip()) : i.openTooltip()
+            i.mission_id != t ? "undefined" != typeof mapkit ? i.opacity = .2 : (i.setOpacity(.2), i.closeTooltip()) : "undefined" == typeof mapkit && i.openTooltip()
         }), vehicle_label_backup = vehicle_label, vehicle_label = !1, $.each(vehicle_markers, function(t, e) {
-            e.visible && (e.setOpacity(.2), e.closeTooltip())
+            e.visible && ("undefined" != typeof mapkit ? (e.opacity = .2, e.selected = !1) : (e.setOpacity(.2), e.closeTooltip()))
         }), $.each(building_markers_cache, function(t, e) {
             e.opacity = .2
         }), $.each(building_markers, function(t, e) {
-            e.setOpacity(.2)
-        }), "null" != $(this).attr("target_latitude") && (target_marker && (map.removeLayer(target_marker), target_marker = !1), target_marker = L.marker([$(this).attr("target_latitude"), $(this).attr("target_longitude")], {
+            "undefined" != typeof mapkit ? e.opacity = .2 : e.setOpacity(.2)
+        }), "null" != $(this).attr("target_latitude") && (target_marker && ("undefined" != typeof mapkit ? map.removeAnnotation(target_marker) : map.removeLayer(target_marker), target_marker = !1), "undefined" != typeof mapkit ? (target_marker = new mapkit.ImageAnnotation(new mapkit.Coordinate($(this).attr("target_latitude"), $(this).attr("target_longitude")), {
+            url: {
+                1: "/images/direction_down.png"
+            }
+        }), target_marker.title = "Ziel", map.addAnnotation(target_marker)) : (target_marker = L.marker([$(this).attr("target_latitude"), $(this).attr("target_longitude")], {
             title: "Ziel",
             icon: icon_empty
-        }).addTo(map), iconMapGenerate("/images/direction_down.png", target_marker))
+        }).addTo(map), iconMapGenerate("/images/direction_down.png", target_marker)))
     }), $("body").on("mouseleave", ".missionSideBarEntry", function() {
-        return 1 == mobile_bridge_use || 0 == mouse_over_disable_inactive_elements ? !0 : (target_marker && (map.removeLayer(target_marker), target_marker = !1), vehicle_label = vehicle_label_backup, $.each(vehicle_markers, function(t, e) {
-            e.visible && (e.setOpacity(1), vehicle_label ? e.openTooltip() : e.closeTooltip())
+        return 1 == mobile_bridge_use || 0 == mouse_over_disable_inactive_elements ? !0 : (target_marker && ("undefined" != typeof mapkit ? map.removeAnnotation(target_marker) : map.removeLayer(target_marker), target_marker = !1), vehicle_label = vehicle_label_backup, $.each(vehicle_markers, function(t, e) {
+            e.visible && ("undefined" != typeof mapkit ? e.opacity = 1 : (e.setOpacity(1), vehicle_label ? e.openTooltip() : e.closeTooltip()))
         }), $.each(mission_markers, function(t, e) {
-            e.setOpacity(1), mission_label ? e.openTooltip() : e.closeTooltip()
+            "undefined" != typeof mapkit ? e.opacity = 1 : (e.setOpacity(1), mission_label ? e.openTooltip() : e.closeTooltip())
         }), $.each(building_markers_cache, function(t, e) {
             e.opacity = 1
         }), $.each(building_markers, function(t, e) {
-            e.setOpacity(1)
+            "undefined" != typeof mapkit ? e.opacity = 1 : e.setOpacity(1)
         }), void 0)
     }), $("#buildings").on("submit", "form.ajax", function(event) {
         return buildingResetContentPossible = !1, building_eval_unload && (eval(building_eval_unload), building_eval_unload = null), $.ajax({
@@ -19422,7 +19494,7 @@ const TIME_MODIFIER_SONDERRECHTE = .8,
     }), $("body").on("click", ".radio_message_close", function() {
         return $(".radio_message_vehicle_" + $(this).attr("vehicle_id")).remove(), !1
     }), $("body").on("click", ".map_position_mover", function() {
-        return "undefined" == typeof $(this).attr("target_latitude") || "null" == $(this).attr("target_latitude") ? mapViewExpanded ? mapViewExpandedWindow.map.setView([$(this).data("latitude"), $(this).data("longitude")]) : map.setView([$(this).data("latitude"), $(this).data("longitude")]) : mapViewExpanded ? mapViewExpandedWindow.map.fitBounds([
+        return "undefined" == typeof $(this).attr("target_latitude") || "null" == $(this).attr("target_latitude") ? mapViewExpanded ? mapViewExpandedWindow.map.setView([$(this).data("latitude"), $(this).data("longitude")]) : "undefined" != typeof mapkit ? map.setCenterAnimated(new mapkit.Coordinate($(this).data("latitude"), $(this).data("longitude")), !0) : map.setView([$(this).data("latitude"), $(this).data("longitude")]) : mapViewExpanded ? mapViewExpandedWindow.map.fitBounds([
             [$(this).data("latitude"), $(this).data("longitude")],
             [$(this).attr("target_latitude"), $(this).attr("target_longitude")]
         ]) : map.fitBounds([
