@@ -1640,5 +1640,18 @@
         "Max. Patients": "2",
         "Probability that a patient has to be transported": "20",
         "Patient Specializations": "General Internal"
+    },
+    "187": {
+        "name": "Kidnaping",
+        "Average credits": "2000",
+        "Required Police Cars": "4",
+        "Required Police Helicopters": "1",
+        "Required K-9 Units": "1",
+        "Max. Patients": "1",
+        "Probability that a patient has to be transported": "80",
+        "Patient Specializations": "General Internal",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/104", "Hostage Taken"]
+        ]
     }
 }

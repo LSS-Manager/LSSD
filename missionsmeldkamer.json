@@ -2772,5 +2772,24 @@
         "Minimale aantal slachtoffers": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "80",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
+    },
+    "312": {
+        "name": "Lekkende goederenwagon",
+        "Gemiddeld aantal Credits": "4000",
+        "Benodigde tankautospuiten": "2",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Waarschuwings- en Verkenningsdienst voertuigen": "1",
+        "Waarschuwings- en Verkenningsdienst voertuigen benodigd waarschijnlijkheid": "70",
+        "Benodigde Adviseurs Gevaarlijke Stoffen": "1",
+        "Benodigde HOVD's": "1",
+        "HOVD benodigd waarschijnlijkheid": "80",
+        "Benodigde Commandowagen": "1",
+        "Commandowagen benodigdheid": "50",
+        "Benodigde politieauto's": "1",
+        "Maximale patiënten aantal": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
+        "MMT-Arts benodigd waarschijnlijkheid": "50",
+        "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
     }
 }
