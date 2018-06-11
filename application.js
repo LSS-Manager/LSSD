@@ -222,7 +222,7 @@ function buildingResetContentWhenPossible() {
 
 function buildingMarkerReset() {
     leitstelle_latitude = !1, leitstelle_longitude = !1, $.each(building_markers, function(t, e) {
-        map.removeLayer(e)
+        "undefined" == typeof mapkit ? map.removeLayer(e) : map.removeAnnotation(e)
     }), $.each(building_timers, function(t, e) {
         window.clearTimeout(e)
     }), mobile_bridge_use && mobileBridgeAdd("building_remove_all", {}), building_markers = Array(), building_markers_cache = Array()
@@ -275,13 +275,13 @@ function missionPositionMarkerAdd(t) {
 
 function missionPositionMarkerDelete(t) {
     $.each(mission_poi_markers, function(e, i) {
-        i.id == t && map.removeLayer(i)
+        i.id == t && ("undefined" == typeof mapkit ? map.removeLayer(i) : map.removeAnnotation(i))
     })
 }
 
 function missionPositionMarkerDeleteAll() {
     $.each(mission_poi_markers, function(t, e) {
-        map.removeLayer(e)
+        "undefined" == typeof mapkit ? map.removeLayer(e) : map.removeAnnotation(e)
     }), mission_poi_markers = Array()
 }
 
@@ -310,7 +310,7 @@ function building_load_alliance() {
 }
 
 function building_load_alliance_app(min_lat, max_lat, min_lng, max_lng) {
-    return alliance_building_show ? ($.get("/building_alliance/" + min_lat.toString().replace(".", "o") + "/" + min_lng.toString().replace(".", "o") + "/" + max_lat.toString().replace(".", "o") + "/" + max_lng.toString().replace(".", "o"), function(data) {
+    return "undefined" != typeof mapkit ? !0 : alliance_building_show ? ($.get("/building_alliance/" + min_lat.toString().replace(".", "o") + "/" + min_lng.toString().replace(".", "o") + "/" + max_lat.toString().replace(".", "o") + "/" + max_lng.toString().replace(".", "o"), function(data) {
         eval(data), building_maps_redraw()
     }), void 0) : !0
 }
@@ -427,7 +427,7 @@ function missionMarkerBlukDraw() {
 
 function missionMarkerReset() {
     $.each(mission_markers, function(t, e) {
-        map.removeLayer(e)
+        "undefined" == typeof mapkit ? map.removeLayer(e) : map.removeAnnotation(e)
     }), mission_markers = Array(), $.each(mission_timers, function(t, e) {
         window.clearInterval(e.timer)
     }), $.each(patient_timers, function() {
@@ -649,7 +649,7 @@ function missionDelete(t) {
     }), $("#mission_" + t).hide(), missionTimerDelete(t);
     var e = [];
     $.each(mission_markers, function(i, n) {
-        n.mission_id == t ? n.remove() : e.push(n)
+        n.mission_id == t ? "undefined" == typeof mapkit ? n.remove() : map.removeAnnotation(n) : e.push(n)
     }), mission_markers = e, missionSelectionUpdateButtons()
 }
 
@@ -693,7 +693,7 @@ function vehicleDriveAdd(params) {
     if (!show_vehicle && 0 == mobile_bridge_use) return !0;
     var vehicle_marker = null;
     if ($.each(mission_vehicles, function(t, e) {
-            e.vehicle_id == params.id && (map.removeLayer(e), mission_vehicles[t].vehicle_marker_deleted = !0, ("undefined" == typeof route_show || 1 == route_show) && "undefined" != typeof e.polyline && map.removeLayer(e.polyline))
+            e.vehicle_id == params.id && ("undefined" == typeof mapkit ? map.removeLayer(e) : map.removeAnnotation(e), mission_vehicles[t].vehicle_marker_deleted = !0, ("undefined" == typeof route_show || 1 == route_show) && "undefined" != typeof e.polyline && ("undefined" == typeof mapkit ? map.removeLayer(e.polyline) : map.removeOverlay(e.polyline)))
         }), "undefined" == typeof routes[params.rh]) {
         if ("-1" == params.s) return $.get("/vehicles/" + params.id + "/routing", function(data) {
             eval(data)
@@ -19159,8 +19159,8 @@ var map, alliance_building_show, geocoder, directionsService, building_eval_unlo
     buildingMarkerBulkContentCache = [],
     mapViewExpanded = !1,
     mapViewExpandedWindow = !1,
-    alliance_chat_ban_countdown_timer, mission_overview_timer, mission_overview_last_count, buildingVehicleGraphicCache = {};
-const TIME_MODIFIER_SONDERRECHTE = .8,
+    alliance_chat_ban_countdown_timer, mission_overview_timer, mission_overview_last_count, buildingVehicleGraphicCache = {},
+    TIME_MODIFIER_SONDERRECHTE = .8,
     TIME_MODIFIER_NORMAL = 1.1;
 ! function() {
     "use strict";
@@ -19411,7 +19411,7 @@ const TIME_MODIFIER_SONDERRECHTE = .8,
             e.opacity = .2
         }), $.each(building_markers, function(t, e) {
             "undefined" != typeof mapkit ? e.opacity = .2 : e.setOpacity(.2)
-        }), "null" != $(this).attr("target_latitude") && (target_marker && ("undefined" != typeof mapkit ? map.removeAnnotation(target_marker) : map.removeLayer(target_marker), target_marker = !1), "undefined" != typeof mapkit ? (target_marker = new mapkit.ImageAnnotation(new mapkit.Coordinate($(this).attr("target_latitude"), $(this).attr("target_longitude")), {
+        }), "null" != $(this).attr("target_latitude") && (target_marker && ("undefined" != typeof mapkit ? map.removeAnnotation(target_marker) : map.removeLayer(target_marker), target_marker = !1), "undefined" != typeof mapkit ? (target_marker = new mapkit.ImageAnnotation(new mapkit.Coordinate(parseFloat($(this).attr("target_latitude")), parseFloat($(this).attr("target_longitude"))), {
             url: {
                 1: "/images/direction_down.png"
             }
@@ -19494,13 +19494,27 @@ const TIME_MODIFIER_SONDERRECHTE = .8,
     }), $("body").on("click", ".radio_message_close", function() {
         return $(".radio_message_vehicle_" + $(this).attr("vehicle_id")).remove(), !1
     }), $("body").on("click", ".map_position_mover", function() {
-        return "undefined" == typeof $(this).attr("target_latitude") || "null" == $(this).attr("target_latitude") ? mapViewExpanded ? mapViewExpandedWindow.map.setView([$(this).data("latitude"), $(this).data("longitude")]) : "undefined" != typeof mapkit ? map.setCenterAnimated(new mapkit.Coordinate($(this).data("latitude"), $(this).data("longitude")), !0) : map.setView([$(this).data("latitude"), $(this).data("longitude")]) : mapViewExpanded ? mapViewExpandedWindow.map.fitBounds([
+        if ("undefined" == typeof $(this).attr("target_latitude") || "null" == $(this).attr("target_latitude")) mapViewExpanded ? mapViewExpandedWindow.map.setView([$(this).data("latitude"), $(this).data("longitude")]) : "undefined" != typeof mapkit ? map.setCenterAnimated(new mapkit.Coordinate($(this).data("latitude"), $(this).data("longitude")), !0) : map.setView([$(this).data("latitude"), $(this).data("longitude")]);
+        else if (mapViewExpanded) mapViewExpandedWindow.map.fitBounds([
             [$(this).data("latitude"), $(this).data("longitude")],
             [$(this).attr("target_latitude"), $(this).attr("target_longitude")]
-        ]) : map.fitBounds([
+        ]);
+        else if ("undefined" == typeof mapkit) map.fitBounds([
             [$(this).data("latitude"), $(this).data("longitude")],
             [$(this).attr("target_latitude"), $(this).attr("target_longitude")]
-        ]), !1
+        ]);
+        else {
+            var t = parseFloat($(this).data("latitude")) - parseFloat($(this).attr("target_latitude")),
+                e = parseFloat($(this).data("latitude")) - parseFloat($(this).attr("target_latitude")),
+                i = parseFloat($(this).attr("target_latitude")) + t / 2,
+                n = parseFloat($(this).attr("target_longitude")) + e / 2;
+            0 > t && (t = -1 * t), 0 > e && (e = -1 * e);
+            var s = new mapkit.Coordinate(i, n),
+                o = new mapkit.CoordinateSpan(t + .05, e + .05),
+                a = new mapkit.CoordinateRegion(s, o);
+            map.setRegionAnimated(a, !0)
+        }
+        return !1
     })
 }), Date.now || (Date.now = function() {
     return (new Date).getTime()
