@@ -6281,4 +6281,6 @@
                                                             }#
                                                             personal_hire_overtake_counter {
                                                                 position: fixed;bottom: 0;right: 0;font - size: 15 px
+                                                            }.mapkit - marker {
+                                                                cursor: pointer
                                                             }
