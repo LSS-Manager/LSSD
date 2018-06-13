@@ -1600,8 +1600,8 @@
         "Required Mobile Air Vehicles": "1"
     },
     "184": {
-        "name": "Containership fire",
-        "Average credits": "4500",
+        "name": "Container Ship Fire",
+        "Average credits": "10000",
         "Required Firetrucks": "4",
         "Required Battalion Chief Vehicles": "1",
         "Required Platform Trucks": "1",
@@ -1617,7 +1617,7 @@
     },
     "185": {
         "name": "Dock Crane fire",
-        "Average credits": "2000",
+        "Average credits": "6000",
         "Required Firetrucks": "3",
         "Required Battalion Chief Vehicles": "1",
         "Required Platform Trucks": "1",
