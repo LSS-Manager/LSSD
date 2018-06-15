@@ -1653,5 +1653,19 @@
         "Expandable Missions": [
             ["https://www.missionchief.com/einsaetze/104", "Hostage Taken"]
         ]
+    },
+    "188": {
+        "name": "Cruise ship sinking",
+        "Average credits": "15000",
+        "Required Firetrucks": "7",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Heavy Rescue Vehicles": "2",
+        "Required Mobile Command Vehicles": "1",
+        "Required Boats": "2",
+        "Required large fire boats": "1",
+        "Required large rescue boats": "1",
+        "Max. Patients": "20",
+        "Probability that a patient has to be transported": "50",
+        "Patient Specializations": "General Internal"
     }
 }

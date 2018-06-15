@@ -2791,5 +2791,44 @@
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
         "MMT-Arts benodigd waarschijnlijkheid": "50",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
+    },
+    "313": {
+        "name": "Brand in passagierstrein",
+        "Gemiddeld aantal Credits": "1000",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde politieauto's": "1"
+    },
+    "314": {
+        "name": "Brand in passagierstrein",
+        "Gemiddeld aantal Credits": "2100",
+        "Benodigde tankautospuiten": "2",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "10",
+        "Benodigde OvD-B's": "1",
+        "Benodigde politieauto's": "2",
+        "Maximale patiënten aantal": "2",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "50",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
+    },
+    "315": {
+        "name": "Brand in passagierstrein",
+        "Gemiddeld aantal Credits": "3250",
+        "Benodigde tankautospuiten": "3",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "50",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Adembeschermingsvoertuigen": "1",
+        "Adembeschermingsvoertuig benodigd waarschijnlijkheid": "10",
+        "Benodigde slangenwagens": "1",
+        "Slangenwagen benodigd waarschijnlijkheid": "20",
+        "Benodigde HOVD's": "1",
+        "Benodigde Commandowagen": "1",
+        "Benodigde politieauto's": "3",
+        "Benodigde Officiers van Dienst Politie": "1",
+        "Maximale patiënten aantal": "4",
+        "Minimale aantal slachtoffers": "2",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
     }
 }

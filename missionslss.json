@@ -3901,5 +3901,24 @@
             ["https://www.leitstellenspiel.de/einsaetze/126", "Verkehrsunfall"],
             ["https://www.leitstellenspiel.de/einsaetze/127", "Verkehrsunfall"]
         ]
+    },
+    "371": {
+        "name": "Fußball aufpumpen",
+        "Credits im Durchschnitt": "300",
+        "Benötigte Löschfahrzeuge": "1"
+    },
+    "372": {
+        "name": "Mannschaftsbus in Halteverbot abgestellt",
+        "Credits im Durchschnitt": "300",
+        "Benötigte Streifenwagen": "1"
+    },
+    "373": {
+        "name": "Behandlung nach Schwalbe",
+        "Vorraussetzung an Rettungswachen": "1",
+        "Maximale Patientenanzahl": "1",
+        "Fachrichtung für Patienten": "Allgemeine Chirurgie",
+        "Mindest Patientenanzahl": "1",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "0",
+        "NEF Anforderungswahrscheinlichkeit": "0"
     }
 }
