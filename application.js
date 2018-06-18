@@ -198,9 +198,15 @@ function mapMoveToSearch() {
 }
 
 function mapIsVisible(t) {
-    if ("undefined" != typeof mapkit) return !0;
-    var e = map.getBounds();
-    return e.contains(t)
+    if ("undefined" != typeof mapkit) {
+        var e = parseFloat(map.region.center.latitude) - parseFloat(map.region.span.latitudeDelta),
+            i = parseFloat(map.region.center.latitude) + parseFloat(map.region.span.latitudeDelta),
+            n = parseFloat(map.region.center.longitude) - parseFloat(map.region.span.longitudeDelta),
+            s = parseFloat(map.region.center.longitude) + parseFloat(map.region.span.longitudeDelta);
+        return e <= t[0] && i >= t[0] && n <= t[1] && s >= t[1] ? !0 : !1
+    }
+    var o = map.getBounds();
+    return o.contains(t)
 }
 
 function buildingLoadContent(url) {
@@ -310,12 +316,19 @@ function map_moved() {
 
 function building_load_alliance() {
     if (!alliance_building_show) return !0;
-    var bounds = map.getBounds(),
-        min_lat = 0,
-        max_lat = 0,
-        min_lng = 0,
-        max_lng = 0;
-    bounds.getNorth() < bounds.getSouth() ? (min_lat = bounds.getNorth(), max_lat = bounds.getSouth()) : (max_lat = bounds.getNorth(), min_lat = bounds.getSouth()), bounds.getWest() < bounds.getEast() ? (min_lng = bounds.getWest(), max_lng = bounds.getEast()) : (max_lng = bounds.getWest(), min_lng = bounds.getEast()), $.get("/building_alliance/" + min_lat.toString().replace(".", "o") + "/" + min_lng.toString().replace(".", "o") + "/" + max_lat.toString().replace(".", "o") + "/" + max_lng.toString().replace(".", "o"), function(data) {
+    if ("undefined" != typeof mapkit) var min_lat = parseFloat(map.region.center.latitude) - parseFloat(map.region.span.latitudeDelta),
+        max_lat = parseFloat(map.region.center.latitude) + parseFloat(map.region.span.latitudeDelta),
+        min_lng = parseFloat(map.region.center.longitude) - parseFloat(map.region.span.longitudeDelta),
+        max_lng = parseFloat(map.region.center.longitude) + parseFloat(map.region.span.longitudeDelta);
+    else {
+        var bounds = map.getBounds(),
+            min_lat = 0,
+            max_lat = 0,
+            min_lng = 0,
+            max_lng = 0;
+        bounds.getNorth() < bounds.getSouth() ? (min_lat = bounds.getNorth(), max_lat = bounds.getSouth()) : (max_lat = bounds.getNorth(), min_lat = bounds.getSouth()), bounds.getWest() < bounds.getEast() ? (min_lng = bounds.getWest(), max_lng = bounds.getEast()) : (max_lng = bounds.getWest(), min_lng = bounds.getEast())
+    }
+    $.get("/building_alliance/" + min_lat.toString().replace(".", "o") + "/" + min_lng.toString().replace(".", "o") + "/" + max_lat.toString().replace(".", "o") + "/" + max_lng.toString().replace(".", "o"), function(data) {
         eval(data), building_maps_redraw()
     })
 }
@@ -334,7 +347,7 @@ function building_maps_redraw() {
             var n = e.coordinate;
             i = [n.latitude, n.longitude]
         }
-        mapIsVisible(i) ? (visibles.push(e.building_id), building_markers_new.push(e)) : map.removeLayer(e)
+        mapIsVisible(i) ? (visibles.push(e.building_id), building_markers_new.push(e)) : "undefined" == typeof mapkit ? map.removeLayer(e) : map.removeAnnotation(e)
     }), building_markers = building_markers_new, $.each(building_markers_cache, function(t, e) {
         -1 == $.inArray(e.id, visibles) && mapIsVisible([e.latitude, e.longitude]) && building_maps_draw(e)
     })
@@ -819,7 +832,7 @@ function vehicleDriveReal(t) {
                 }
             while (offset_step >= 100 && "undefined" != typeof routes[e.rh][e.current_step + 1]);
             ("undefined" == typeof route_show || 1 == route_show) && "undefined" !=
-            typeof e.polyline && s > 0 && spliceLatLngs(e.polyline, s), "undefined" != typeof routes[e.rh][e.current_step] && "undefined" != typeof routes[e.rh][e.current_step + 1] && (start_lat = routes[e.rh][e.current_step][0], start_lng = routes[e.rh][e.current_step][1], end_lat = routes[e.rh][e.current_step + 1][0], end_lng = routes[e.rh][e.current_step + 1][1], offset_step = 100 * ((i.getTime() - e.timer_steps) / (1e3 * routes[e.rh][e.current_step][2])), diff_jb = end_lat - start_lat, diff_kb = end_lng - start_lng, current_lat = start_lat + diff_jb * (offset_step / 100), current_lng = start_lng + diff_kb * (offset_step / 100), e.latitude = current_lat, e.longitude = current_lng, 1 == mobile_bridge_use && 4 == mobile_version ? mobileBridgeAdd("vehicle_move", {
+            typeof e.polyline && s > 0 && ("undefined" == typeof e.delete_step_counter_cache && (e.delete_step_counter_cache = 0), "undefined" == typeof e.latitude || mapIsVisible([e.latitude, e.longitude]) ? (spliceLatLngs(e.polyline, s + e.delete_step_counter_cache), e.delete_step_counter_cache = 0) : e.delete_step_counter_cache = e.delete_step_counter_cache + s), "undefined" != typeof routes[e.rh][e.current_step] && "undefined" != typeof routes[e.rh][e.current_step + 1] && (start_lat = routes[e.rh][e.current_step][0], start_lng = routes[e.rh][e.current_step][1], end_lat = routes[e.rh][e.current_step + 1][0], end_lng = routes[e.rh][e.current_step + 1][1], offset_step = 100 * ((i.getTime() - e.timer_steps) / (1e3 * routes[e.rh][e.current_step][2])), diff_jb = end_lat - start_lat, diff_kb = end_lng - start_lng, current_lat = start_lat + diff_jb * (offset_step / 100), current_lng = start_lng + diff_kb * (offset_step / 100), e.latitude = current_lat, e.longitude = current_lng, 1 == mobile_bridge_use && 4 == mobile_version ? mobileBridgeAdd("vehicle_move", {
                 id: e.vehicle_id,
                 title: e.title,
                 sonderrechte: e.sonderrechte,
@@ -827,7 +840,7 @@ function vehicleDriveReal(t) {
                 longitude: e.longitude,
                 app_icon_path_normal: e.app_icon_path_normal,
                 app_icon_path_sonderrechte: e.app_icon_path_sonderrechte
-            }) : ((isNaN(current_lat) || isNaN(current_lng)) && (console.log([current_lat, current_lng]), console.log(e.vehicle_id), console.log(e.current_step)), "undefined" != typeof mapkit ? e.coordinate = new mapkit.Coordinate(current_lat, current_lng) : e.setLatLng([current_lat, current_lng]), mapIsVisible([current_lat, current_lng]) ? (1 == e.performance_invisible && (e.performance_invisible = !1, e.addTo(map)), "undefined" == typeof mapkit && (vehicle_label ? e.openTooltip() : e.closeTooltip())) : (n = 1e3, e.closeTooltip(), map.removeLayer(e), e.performance_invisible = !0), new_position = null))
+            }) : ((isNaN(current_lat) || isNaN(current_lng)) && (console.log([current_lat, current_lng]), console.log(e.vehicle_id), console.log(e.current_step)), mapIsVisible([current_lat, current_lng]) && ("undefined" != typeof mapkit ? e.coordinate = new mapkit.Coordinate(current_lat, current_lng) : e.setLatLng([current_lat, current_lng])), mapIsVisible([current_lat, current_lng]) ? (1 == e.performance_invisible && (e.performance_invisible = !1, "undefined" == typeof mapkit ? e.addTo(map) : map.addAnnotation(e)), "undefined" == typeof mapkit && (vehicle_label ? e.openTooltip() : e.closeTooltip())) : (n = 1e3, "undefined" == typeof mapkit ? (e.closeTooltip(), map.removeLayer(e)) : 0 == e.performance_invisible && map.removeAnnotation(e), e.performance_invisible = !0), new_position = null))
         } else e.current_step++;
         setTimeout(function() {
             vehicleDriveReal(t)
@@ -3061,13 +3074,13 @@ function hideVehicleBuildingHelpText(t) {
             } catch (e) {}
         }
 
-        function B() {
+        function F() {
             return setTimeout(function() {
                 Ji = e
             }), Ji = ce.now()
         }
 
-        function F(t, e, i) {
+        function B(t, e, i) {
             for (var n, s = (on[e] || []).concat(on["*"]), o = 0, a = s.length; a > o; o++)
                 if (n = s[o].call(i, e, t)) return n
         }
@@ -3080,7 +3093,7 @@ function hideVehicleBuildingHelpText(t) {
                 }),
                 l = function() {
                     if (s) return !1;
-                    for (var e = Ji || B(), i = Math.max(0, h.startTime + h.duration - e), n = i / h.duration || 0, o = 1 - n, a = 0, l = h.tweens.length; l > a; a++) h.tweens[a].run(o);
+                    for (var e = Ji || F(), i = Math.max(0, h.startTime + h.duration - e), n = i / h.duration || 0, o = 1 - n, a = 0, l = h.tweens.length; l > a; a++) h.tweens[a].run(o);
                     return r.notifyWith(t, [h, o, i]), 1 > o && l ? i : (r.resolveWith(t, [h]), !1)
                 },
                 h = r.promise({
@@ -3091,7 +3104,7 @@ function hideVehicleBuildingHelpText(t) {
                     }, i),
                     originalProperties: e,
                     originalOptions: i,
-                    startTime: Ji || B(),
+                    startTime: Ji || F(),
                     duration: i.duration,
                     tweens: [],
                     createTween: function(e, i) {
@@ -3109,7 +3122,7 @@ function hideVehicleBuildingHelpText(t) {
                 c = h.props;
             for (U(c, h.opts.specialEasing); a > o; o++)
                 if (n = sn[o].call(h, t, c, h.opts)) return n;
-            return ce.map(c, F, h), ce.isFunction(h.opts.start) && h.opts.start.call(t, h), ce.fx.timer(ce.extend(l, {
+            return ce.map(c, B, h), ce.isFunction(h.opts.start) && h.opts.start.call(t, h), ce.fx.timer(ce.extend(l, {
                 elem: t,
                 anim: h,
                 queue: h.opts.queue
@@ -3153,7 +3166,7 @@ function hideVehicleBuildingHelpText(t) {
                     ce._removeData(t, "fxshow");
                     for (e in c) ce.style(t, e, c[e])
                 });
-                for (n in c) a = F(d ? p[n] : 0, n, h), n in p || (p[n] = a.start, d && (a.end = a.start, a.start = "width" === n || "height" === n ? 1 : 0))
+                for (n in c) a = B(d ? p[n] : 0, n, h), n in p || (p[n] = a.start, d && (a.end = a.start, a.start = "width" === n || "height" === n ? 1 : 0))
             }
         }
 
@@ -3502,7 +3515,7 @@ function hideVehicleBuildingHelpText(t) {
                     var s, o, a, r, l, h, c, u, d, p;
                     if ((e ? e.ownerDocument || e : j) !== z && O(e), e = e || z, i = i || [], !t || "string" != typeof t) return i;
                     if (1 !== (r = e.nodeType) && 9 !== r) return [];
-                    if (B && !n) {
+                    if (F && !n) {
                         if (s = ke.exec(t))
                             if (a = s[1]) {
                                 if (9 === r) {
@@ -3513,7 +3526,7 @@ function hideVehicleBuildingHelpText(t) {
                                 if (s[2]) return se.apply(i, e.getElementsByTagName(t)), i;
                                 if ((a = s[3]) && A.getElementsByClassName && e.getElementsByClassName) return se.apply(i, e.getElementsByClassName(a)), i
                             }
-                        if (A.qsa && (!F || !F.test(t))) {
+                        if (A.qsa && (!B || !B.test(t))) {
                             if (u = c = W, d = e, p = 9 === r && t, 1 === r && "object" !== e.nodeName.toLowerCase()) {
                                 for (h = m(t), (c = e.getAttribute("id")) ? u = c.replace(De, "\\$&") : e.setAttribute("id", u), u = "[id='" + u + "'] ", l = h.length; l--;) h[l] = u + g(h[l]);
                                 d = _e.test(t) && e.parentNode || e, p = h.join(",")
@@ -3751,7 +3764,7 @@ function hideVehicleBuildingHelpText(t) {
                 function C(t, e, i, n) {
                     var s, o, a, r, l, h = m(t);
                     if (!n && 1 === h.length) {
-                        if (o = h[0] = h[0].slice(0), o.length > 2 && "ID" === (a = o[0]).type && A.getById && 9 === e.nodeType && B && S.relative[o[1].type]) {
+                        if (o = h[0] = h[0].slice(0), o.length > 2 && "ID" === (a = o[0]).type && A.getById && 9 === e.nodeType && F && S.relative[o[1].type]) {
                             if (e = (S.find.ID(a.matches[0].replace(Ae, Ee), e) || [])[0], !e) return i;
                             t = t.slice(o.shift().value.length)
                         }
@@ -3761,11 +3774,11 @@ function hideVehicleBuildingHelpText(t) {
                                 break
                             }
                     }
-                    return M(t, h)(n, e, !B, i, _e.test(t)), i
+                    return M(t, h)(n, e, !F, i, _e.test(t)), i
                 }
 
                 function T() {}
-                var D, A, E, S, P, I, M, L, N, O, z, $, B, F, R, U, H, W = "sizzle" + -new Date,
+                var D, A, E, S, P, I, M, L, N, O, z, $, F, B, R, U, H, W = "sizzle" + -new Date,
                     j = t.document,
                     V = 0,
                     Z = 0,
@@ -3839,7 +3852,7 @@ function hideVehicleBuildingHelpText(t) {
                     return e ? "HTML" !== e.nodeName : !1
                 }, A = i.support = {}, O = i.setDocument = function(t) {
                     var e = t ? t.ownerDocument || t : j;
-                    return e !== z && 9 === e.nodeType && e.documentElement ? (z = e, $ = e.documentElement, B = !I(e), A.attributes = a(function(t) {
+                    return e !== z && 9 === e.nodeType && e.documentElement ? (z = e, $ = e.documentElement, F = !I(e), A.attributes = a(function(t) {
                         return t.innerHTML = "<a href='#'></a>", r("type|href|height|width", h, "#" === t.firstChild.getAttribute("href")), r(re, l, null == t.getAttribute("disabled")), t.className = "i", !t.getAttribute("className")
                     }), A.input = a(function(t) {
                         return t.innerHTML = "<input>", t.firstChild.setAttribute("value", ""), "" === t.firstChild.getAttribute("value")
@@ -3850,7 +3863,7 @@ function hideVehicleBuildingHelpText(t) {
                     }), A.getById = a(function(t) {
                         return $.appendChild(t).id = W, !e.getElementsByName || !e.getElementsByName(W).length
                     }), A.getById ? (S.find.ID = function(t, e) {
-                        if (typeof e.getElementById !== J && B) {
+                        if (typeof e.getElementById !== J && F) {
                             var i = e.getElementById(t);
                             return i && i.parentNode ? [i] : []
                         }
@@ -3877,15 +3890,15 @@ function hideVehicleBuildingHelpText(t) {
                         }
                         return o
                     }, S.find.CLASS = A.getElementsByClassName && function(t, e) {
-                        return typeof e.getElementsByClassName !== J && B ? e.getElementsByClassName(t) : void 0
-                    }, R = [], F = [], (A.qsa = n(e.querySelectorAll)) && (a(function(t) {
-                        t.innerHTML = "<select><option selected=''></option></select>", t.querySelectorAll("[selected]").length || F.push("\\[" + le + "*(?:value|" + re + ")"), t.querySelectorAll(":checked").length || F.push(":checked")
+                        return typeof e.getElementsByClassName !== J && F ? e.getElementsByClassName(t) : void 0
+                    }, R = [], B = [], (A.qsa = n(e.querySelectorAll)) && (a(function(t) {
+                        t.innerHTML = "<select><option selected=''></option></select>", t.querySelectorAll("[selected]").length || B.push("\\[" + le + "*(?:value|" + re + ")"), t.querySelectorAll(":checked").length || B.push(":checked")
                     }), a(function(t) {
                         var i = e.createElement("input");
-                        i.setAttribute("type", "hidden"), t.appendChild(i).setAttribute("t", ""), t.querySelectorAll("[t^='']").length && F.push("[*^$]=" + le + "*(?:''|\"\")"), t.querySelectorAll(":enabled").length || F.push(":enabled", ":disabled"), t.querySelectorAll("*,:x"), F.push(",.*:")
+                        i.setAttribute("type", "hidden"), t.appendChild(i).setAttribute("t", ""), t.querySelectorAll("[t^='']").length && B.push("[*^$]=" + le + "*(?:''|\"\")"), t.querySelectorAll(":enabled").length || B.push(":enabled", ":disabled"), t.querySelectorAll("*,:x"), B.push(",.*:")
                     })), (A.matchesSelector = n(U = $.webkitMatchesSelector || $.mozMatchesSelector || $.oMatchesSelector || $.msMatchesSelector)) && a(function(t) {
                         A.disconnectedMatch = U.call(t, "div"), U.call(t, "[s!='']:x"), R.push("!=", pe)
-                    }), F = F.length && new RegExp(F.join("|")), R = R.length && new RegExp(R.join("|")), H = n($.contains) || $.compareDocumentPosition ? function(t, e) {
+                    }), B = B.length && new RegExp(B.join("|")), R = R.length && new RegExp(R.join("|")), H = n($.contains) || $.compareDocumentPosition ? function(t, e) {
                         var i = 9 === t.nodeType ? t.documentElement : t,
                             n = e && e.parentNode;
                         return t === n || !(!n || 1 !== n.nodeType || !(i.contains ? i.contains(n) : t.compareDocumentPosition && 16 & t.compareDocumentPosition(n)))
@@ -3917,7 +3930,7 @@ function hideVehicleBuildingHelpText(t) {
                 }, i.matches = function(t, e) {
                     return i(t, null, null, e)
                 }, i.matchesSelector = function(t, e) {
-                    if ((t.ownerDocument || t) !== z && O(t), e = e.replace(ve, "='$1']"), !(!A.matchesSelector || !B || R && R.test(e) || F && F.test(e))) try {
+                    if ((t.ownerDocument || t) !== z && O(t), e = e.replace(ve, "='$1']"), !(!A.matchesSelector || !F || R && R.test(e) || B && B.test(e))) try {
                         var n = U.call(t, e);
                         if (n || A.disconnectedMatch || t.document && 11 !== t.document.nodeType) return n
                     } catch (s) {}
@@ -3927,8 +3940,8 @@ function hideVehicleBuildingHelpText(t) {
                 }, i.attr = function(t, i) {
                     (t.ownerDocument || t) !== z && O(t);
                     var n = S.attrHandle[i.toLowerCase()],
-                        s = n && te.call(S.attrHandle, i.toLowerCase()) ? n(t, i, !B) : e;
-                    return s === e ? A.attributes || !B ? t.getAttribute(i) : (s = t.getAttributeNode(i)) && s.specified ? s.value : null : s
+                        s = n && te.call(S.attrHandle, i.toLowerCase()) ? n(t, i, !F) : e;
+                    return s === e ? A.attributes || !F ? t.getAttribute(i) : (s = t.getAttributeNode(i)) && s.specified ? s.value : null : s
                 }, i.error = function(t) {
                     throw new Error("Syntax error, unrecognized expression: " + t)
                 }, i.uniqueSort = function(t) {
@@ -4076,7 +4089,7 @@ function hideVehicleBuildingHelpText(t) {
                                 function(e) {
                                     var i;
                                     do
-                                        if (i = B ? e.lang : e.getAttribute("xml:lang") || e.getAttribute("lang")) return i = i.toLowerCase(), i === t || 0 === i.indexOf(t + "-"); while ((e = e.parentNode) && 1 === e.nodeType);
+                                        if (i = F ? e.lang : e.getAttribute("xml:lang") || e.getAttribute("lang")) return i = i.toLowerCase(), i === t || 0 === i.indexOf(t + "-"); while ((e = e.parentNode) && 1 === e.nodeType);
                                     return !1
                                 }
                         }),
@@ -4650,8 +4663,8 @@ function hideVehicleBuildingHelpText(t) {
             })
         });
         var $e = /^(?:input|select|textarea)$/i,
-            Be = /^key/,
-            Fe = /^(?:mouse|contextmenu)|click/,
+            Fe = /^key/,
+            Be = /^(?:mouse|contextmenu)|click/,
             Re = /^(?:focusinfocus|focusoutblur)$/,
             Ue = /^([^.]*)(?:\.(.+)|)$/;
         ce.event = {
@@ -4744,7 +4757,7 @@ function hideVehicleBuildingHelpText(t) {
                 var e, i, n, s = t.type,
                     o = t,
                     a = this.fixHooks[s];
-                for (a || (this.fixHooks[s] = a = Fe.test(s) ? this.mouseHooks : Be.test(s) ? this.keyHooks : {}), n = a.props ? this.props.concat(a.props) : this.props, t = new ce.Event(o), e = n.length; e--;) i = n[e], t[i] = o[i];
+                for (a || (this.fixHooks[s] = a = Be.test(s) ? this.mouseHooks : Fe.test(s) ? this.keyHooks : {}), n = a.props ? this.props.concat(a.props) : this.props, t = new ce.Event(o), e = n.length; e--;) i = n[e], t[i] = o[i];
                 return t.target || (t.target = o.srcElement || K), 3 === t.target.nodeType && (t.target = t.target.parentNode), t.metaKey = !!t.metaKey, a.filter ? a.filter(t, o) : t
             },
             props: "altKey bubbles cancelable ctrlKey currentTarget eventPhase metaKey relatedTarget shiftKey target timeStamp view which".split(" "),
@@ -5483,8 +5496,8 @@ function hideVehicleBuildingHelpText(t) {
             Oi = /([?&])_=[^&]*/,
             zi = /^(.*?):[ \t]*([^\r\n]*)\r?$/gm,
             $i = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
-            Bi = /^(?:GET|HEAD)$/,
-            Fi = /^\/\//,
+            Fi = /^(?:GET|HEAD)$/,
+            Bi = /^\/\//,
             Ri = /^([\w.+-]+:)(?:\/\/([^\/?#:]*)(?::(\d+)|)|)/,
             Ui = ce.fn.load,
             Hi = {},
@@ -5608,8 +5621,8 @@ function hideVehicleBuildingHelpText(t) {
                             return c && c.abort(e), n(0, e), this
                         }
                     };
-                if (m.promise(x).complete = g.add, x.success = x.done, x.error = x.fail, d.url = ((t || d.url || Ii) + "").replace(Ni, "").replace(Fi, Pi[1] + "//"), d.type = i.method || i.type || d.method || d.type, d.dataTypes = ce.trim(d.dataType || "*").toLowerCase().match(de) || [""], null == d.crossDomain && (s = Ri.exec(d.url.toLowerCase()), d.crossDomain = !(!s || s[1] === Pi[1] && s[2] === Pi[2] && (s[3] || ("http:" === s[1] ? "80" : "443")) === (Pi[3] || ("http:" === Pi[1] ? "80" : "443")))), d.data && d.processData && "string" != typeof d.data && (d.data = ce.param(d.data, d.traditional)), M(Hi, d, i, x), 2 === b) return x;
-                h = d.global, h && 0 === ce.active++ && ce.event.trigger("ajaxStart"), d.type = d.type.toUpperCase(), d.hasContent = !Bi.test(d.type), a = d.url, d.hasContent || (d.data && (a = d.url += (Li.test(a) ? "&" : "?") + d.data, delete d.data), d.cache === !1 && (d.url = Oi.test(a) ? a.replace(Oi, "$1_=" + Mi++) : a + (Li.test(a) ? "&" : "?") + "_=" + Mi++)), d.ifModified && (ce.lastModified[a] && x.setRequestHeader("If-Modified-Since", ce.lastModified[a]), ce.etag[a] && x.setRequestHeader("If-None-Match", ce.etag[a])), (d.data && d.hasContent && d.contentType !== !1 || i.contentType) && x.setRequestHeader("Content-Type", d.contentType), x.setRequestHeader("Accept", d.dataTypes[0] && d.accepts[d.dataTypes[0]] ? d.accepts[d.dataTypes[0]] + ("*" !== d.dataTypes[0] ? ", " + ji + "; q=0.01" : "") : d.accepts["*"]);
+                if (m.promise(x).complete = g.add, x.success = x.done, x.error = x.fail, d.url = ((t || d.url || Ii) + "").replace(Ni, "").replace(Bi, Pi[1] + "//"), d.type = i.method || i.type || d.method || d.type, d.dataTypes = ce.trim(d.dataType || "*").toLowerCase().match(de) || [""], null == d.crossDomain && (s = Ri.exec(d.url.toLowerCase()), d.crossDomain = !(!s || s[1] === Pi[1] && s[2] === Pi[2] && (s[3] || ("http:" === s[1] ? "80" : "443")) === (Pi[3] || ("http:" === Pi[1] ? "80" : "443")))), d.data && d.processData && "string" != typeof d.data && (d.data = ce.param(d.data, d.traditional)), M(Hi, d, i, x), 2 === b) return x;
+                h = d.global, h && 0 === ce.active++ && ce.event.trigger("ajaxStart"), d.type = d.type.toUpperCase(), d.hasContent = !Fi.test(d.type), a = d.url, d.hasContent || (d.data && (a = d.url += (Li.test(a) ? "&" : "?") + d.data, delete d.data), d.cache === !1 && (d.url = Oi.test(a) ? a.replace(Oi, "$1_=" + Mi++) : a + (Li.test(a) ? "&" : "?") + "_=" + Mi++)), d.ifModified && (ce.lastModified[a] && x.setRequestHeader("If-Modified-Since", ce.lastModified[a]), ce.etag[a] && x.setRequestHeader("If-None-Match", ce.etag[a])), (d.data && d.hasContent && d.contentType !== !1 || i.contentType) && x.setRequestHeader("Content-Type", d.contentType), x.setRequestHeader("Accept", d.dataTypes[0] && d.accepts[d.dataTypes[0]] ? d.accepts[d.dataTypes[0]] + ("*" !== d.dataTypes[0] ? ", " + ji + "; q=0.01" : "") : d.accepts["*"]);
                 for (o in d.headers) x.setRequestHeader(o, d.headers[o]);
                 if (d.beforeSend && (d.beforeSend.call(p, x, d) === !1 || 2 === b)) return x.abort();
                 w = "abort";
@@ -9717,7 +9730,7 @@ function hideVehicleBuildingHelpText(t) {
                 })
             },
             _generateHTML: function(t) {
-                var e, i, n, s, o, a, r, l, h, c, u, d, p, f, m, g, _, v, y, b, w, x, k, C, T, D, A, E, S, P, I, M, L, N, O, z, $, B, F, R = new Date,
+                var e, i, n, s, o, a, r, l, h, c, u, d, p, f, m, g, _, v, y, b, w, x, k, C, T, D, A, E, S, P, I, M, L, N, O, z, $, F, B, R = new Date,
                     U = this._daylightSavingAdjust(new Date(R.getFullYear(), R.getMonth(), R.getDate())),
                     H = this._get(t, "isRTL"),
                     W = this._get(t, "showButtonPanel"),
@@ -9751,7 +9764,7 @@ function hideVehicleBuildingHelpText(t) {
                         }
                         for (A += "<div class='ui-datepicker-header ui-widget-header ui-helper-clearfix" + D + "'>" + (/all|left/.test(D) && 0 === x ? H ? o : n : "") + (/all|right/.test(D) && 0 === x ? H ? n : o : "") + this._generateMonthYearHeader(t, Q, te, X, J, x > 0 || C > 0, f, m) + "</div><table class='ui-datepicker-calendar'><thead>" + "<tr>", E = u ? "<th class='ui-datepicker-week-col'>" + this._get(t, "weekHeader") + "</th>" : "", w = 0; 7 > w; w++) S = (w + c) % 7, E += "<th scope='col'" + ((w + c + 6) % 7 >= 5 ? " class='ui-datepicker-week-end'" : "") + ">" + "<span title='" + d[S] + "'>" + p[S] + "</span></th>";
                         for (A += E + "</tr></thead><tbody>", P = this._getDaysInMonth(te, Q), te === t.selectedYear && Q === t.selectedMonth && (t.selectedDay = Math.min(t.selectedDay, P)), I = (this._getFirstDayOfMonth(te, Q) - c + 7) % 7, M = Math.ceil((I + P) / 7), L = Y ? this.maxRows > M ? this.maxRows : M : M, this.maxRows = L, N = this._daylightSavingAdjust(new Date(te, Q, 1 - I)), O = 0; L > O; O++) {
-                            for (A += "<tr>", z = u ? "<td class='ui-datepicker-week-col'>" + this._get(t, "calculateWeek")(N) + "</td>" : "", w = 0; 7 > w; w++) $ = g ? g.apply(t.input ? t.input[0] : null, [N]) : [!0, ""], B = N.getMonth() !== Q, F = B && !v || !$[0] || X && X > N || J && N > J, z += "<td class='" + ((w + c + 6) % 7 >= 5 ? " ui-datepicker-week-end" : "") + (B ? " ui-datepicker-other-month" : "") + (N.getTime() === T.getTime() && Q === t.selectedMonth && t._keyEvent || y.getTime() === N.getTime() && y.getTime() === T.getTime() ? " " + this._dayOverClass : "") + (F ? " " + this._unselectableClass + " ui-state-disabled" : "") + (B && !_ ? "" : " " + $[1] + (N.getTime() === K.getTime() ? " " + this._currentClass : "") + (N.getTime() === U.getTime() ? " ui-datepicker-today" : "")) + "'" + (B && !_ || !$[2] ? "" : " title='" + $[2].replace(/'/g, "&#39;") + "'") + (F ? "" : " data-handler='selectDay' data-event='click' data-month='" + N.getMonth() + "' data-year='" + N.getFullYear() + "'") + ">" + (B && !_ ? "&#xa0;" : F ? "<span class='ui-state-default'>" + N.getDate() + "</span>" : "<a class='ui-state-default" + (N.getTime() === U.getTime() ? " ui-state-highlight" : "") + (N.getTime() === K.getTime() ? " ui-state-active" : "") + (B ? " ui-priority-secondary" : "") + "' href='#'>" + N.getDate() + "</a>") + "</td>", N.setDate(N.getDate() + 1), N = this._daylightSavingAdjust(N);
+                            for (A += "<tr>", z = u ? "<td class='ui-datepicker-week-col'>" + this._get(t, "calculateWeek")(N) + "</td>" : "", w = 0; 7 > w; w++) $ = g ? g.apply(t.input ? t.input[0] : null, [N]) : [!0, ""], F = N.getMonth() !== Q, B = F && !v || !$[0] || X && X > N || J && N > J, z += "<td class='" + ((w + c + 6) % 7 >= 5 ? " ui-datepicker-week-end" : "") + (F ? " ui-datepicker-other-month" : "") + (N.getTime() === T.getTime() && Q === t.selectedMonth && t._keyEvent || y.getTime() === N.getTime() && y.getTime() === T.getTime() ? " " + this._dayOverClass : "") + (B ? " " + this._unselectableClass + " ui-state-disabled" : "") + (F && !_ ? "" : " " + $[1] + (N.getTime() === K.getTime() ? " " + this._currentClass : "") + (N.getTime() === U.getTime() ? " ui-datepicker-today" : "")) + "'" + (F && !_ || !$[2] ? "" : " title='" + $[2].replace(/'/g, "&#39;") + "'") + (B ? "" : " data-handler='selectDay' data-event='click' data-month='" + N.getMonth() + "' data-year='" + N.getFullYear() + "'") + ">" + (F && !_ ? "&#xa0;" : B ? "<span class='ui-state-default'>" + N.getDate() + "</span>" : "<a class='ui-state-default" + (N.getTime() === U.getTime() ? " ui-state-highlight" : "") + (N.getTime() === K.getTime() ? " ui-state-active" : "") + (F ? " ui-priority-secondary" : "") + "' href='#'>" + N.getDate() + "</a>") + "</td>", N.setDate(N.getDate() + 1), N = this._daylightSavingAdjust(N);
                             A += z + "</tr>"
                         }
                         Q++, Q > 11 && (Q = 0, te++), A += "</tbody></table>" + (Y ? "</div>" + (Z[0] > 0 && C === Z[1] - 1 ? "<div class='ui-datepicker-row-break'></div>" : "") : ""), k += A
