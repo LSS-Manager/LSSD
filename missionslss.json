@@ -3920,5 +3920,24 @@
         "Mindest Patientenanzahl": "1",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "0",
         "NEF Anforderungswahrscheinlichkeit": "0"
+    },
+    "374": {
+        "name": "Prellung nach Lattenpraller",
+        "Vorraussetzung an Rettungswachen": "1",
+        "Maximale Patientenanzahl": "1",
+        "Fachrichtung für Patienten": "Allgemeine Chirurgie",
+        "Mindest Patientenanzahl": "1",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "0",
+        "NEF Anforderungswahrscheinlichkeit": "0"
+    },
+    "375": {
+        "name": "Tor gefallen",
+        "Credits im Durchschnitt": "300",
+        "Benötigte Löschfahrzeuge": "1"
+    },
+    "376": {
+        "name": "Pokal geklaut",
+        "Credits im Durchschnitt": "600",
+        "Benötigte Streifenwagen": "2"
     }
 }

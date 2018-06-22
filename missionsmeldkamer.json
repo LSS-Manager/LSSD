@@ -2830,5 +2830,19 @@
         "Minimale aantal slachtoffers": "2",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
         "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
+    },
+    "316": {
+        "name": "Bedreiging met vuurwapen",
+        "Gemiddeld aantal Credits": "1100",
+        "Benodigde politieauto's": "2",
+        "Benodigde tankautospuiten": "1",
+        "Maximaal aantal gevangenen": "1"
+    },
+    "317": {
+        "name": "Bedreiging met vuurwapen",
+        "Gemiddeld aantal Credits": "2000",
+        "Benodigde politieauto's": "4",
+        "Benodigde tankautospuiten": "1",
+        "Maximaal aantal gevangenen": "1"
     }
 }

@@ -803,7 +803,7 @@ function vehicleCreateOnMap(t, e) {
 
 function vehicleSonderrechte(t) {
     var e = [];
-    e = "undefined" != typeof mapkit ? t.coordinate : t.getLatLng(), mapIsVisible(e) && "undefined" != typeof t.icon_normal && "undefined" != typeof t.icon_sonderrechte && (1 == t.sonderrechte ? "undefined" != typeof t.apng_sonderrechte && t.apng_sonderrechte ? 1 != t.sonderrechte_status && ("undefined" != typeof mapkit ? t.url = {
+    "undefined" != typeof mapkit ? (coordinate = t.coordinate, e[0] = coordinate.latitude, e[1] = coordinate.longitude) : e = t.getLatLng(), mapIsVisible(e) && "undefined" != typeof t.icon_normal && "undefined" != typeof t.icon_sonderrechte && (1 == t.sonderrechte ? "undefined" != typeof t.apng_sonderrechte && t.apng_sonderrechte ? 1 != t.sonderrechte_status && ("undefined" != typeof mapkit ? t.url = {
         1: t.icon_sonderrechte
     } : t.setIcon(t.icon_sonderrechte), t.sonderrechte_status = 1) : "undefined" != typeof t.sonderrechte_status && 1 == t.sonderrechte_status ? ("undefined" != typeof mapkit ? t.url = {
         1: t.icon_normal
@@ -19547,7 +19547,12 @@ var map, alliance_building_show, geocoder, directionsService, building_eval_unlo
         }
         return !1
     })
-}), Date.now || (Date.now = function() {
+});
+var mapKitFactoryVehicleAnnotation = function(t, e) {
+    var i = document.createElement("img");
+    return i.src = e.url[1], i
+};
+Date.now || (Date.now = function() {
     return (new Date).getTime()
 });
 var current_state = "register";
