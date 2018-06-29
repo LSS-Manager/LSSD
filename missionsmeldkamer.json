@@ -2835,14 +2835,51 @@
         "name": "Bedreiging met vuurwapen",
         "Gemiddeld aantal Credits": "1100",
         "Benodigde politieauto's": "2",
-        "Benodigde tankautospuiten": "1",
         "Maximaal aantal gevangenen": "1"
     },
     "317": {
         "name": "Bedreiging met vuurwapen",
         "Gemiddeld aantal Credits": "2000",
         "Benodigde politieauto's": "4",
-        "Benodigde tankautospuiten": "1",
         "Maximaal aantal gevangenen": "1"
+    },
+    "318": {
+        "name": "Brand op binnenvaartschip",
+        "Gemiddeld aantal Credits": "1450",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde waterongevallenaanhangers": "1",
+        "Waterongevallenaanhangers benodigd waarschijnlijkheid": "20"
+    },
+    "319": {
+        "name": "Brand op binnenvaartschip",
+        "Gemiddeld aantal Credits": "3100",
+        "Benodigde tankautospuiten": "2",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Waterongevallenvoertuigen": "1",
+        "Waterongevallenvoertuigen benodigd waarschijnlijkheid": "10",
+        "Benodigde waterongevallenaanhangers": "1",
+        "Maximale patiënten aantal": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "70",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
+    },
+    "320": {
+        "name": "Brand op binnenvaartschip",
+        "Gemiddeld aantal Credits": "4750",
+        "Benodigde tankautospuiten": "3",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "20",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Adembeschermingsvoertuigen": "1",
+        "Adembeschermingsvoertuig benodigd waarschijnlijkheid": "10",
+        "Benodigde Adviseurs Gevaarlijke Stoffen": "1",
+        "Aantal Adviseurs Gevaarlijke Stoffen benodigd waarschijnlijkheid": "10",
+        "Benodigde HOVD's": "1",
+        "HOVD benodigd waarschijnlijkheid": "50",
+        "Benodigde Waterongevallenvoertuigen": "1",
+        "Waterongevallenvoertuigen benodigd waarschijnlijkheid": "20",
+        "Benodigde waterongevallenaanhangers": "2",
+        "Maximale patiënten aantal": "2",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "90",
+        "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
     }
 }

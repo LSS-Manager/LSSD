@@ -117,6 +117,10 @@ function missionAlarmTrailerCheck(t) {
     }), !0
 }
 
+function mapkitDeselectAnnotation() {
+    map.selectedAnnotation = null
+}
+
 function mapExpand(t) {
     mapViewExpandedWindow = window.open("/?mapview=true", "mapWindow", "width=600,height=400,status=yes,scrollbars=yes,resizable=yes"), t ? $("#map").hide() : $("#map_outer").hide(), $("#map_adress_search").hide(), mapViewExpanded = !0, $("#restore_map").show(), $("#arrow_location_select").hide(), $("#radio_outer").removeClass("col-sm-4"), $("#radio_outer").addClass("col-sm-12")
 }
@@ -362,7 +366,7 @@ function building_maps_draw(t) {
             }
         });
         i.title = t.name, i.addEventListener("select", function() {
-            lightboxOpen("/buildings/" + t.id)
+            lightboxOpen("/buildings/" + t.id), setTimeout(mapkitDeselectAnnotation, 1e3)
         }), map.addAnnotation(i), i.element.className = "mapkit-marker"
     } else {
         var i = L.marker([t.latitude, t.longitude], {
@@ -589,7 +593,7 @@ function missionMarkerAdd(t) {
                 }
             });
             _.title = t.caption, _.subtitle = t.address, map.addAnnotation(_), _.element.className = "mapkit-marker", _.addEventListener("select", function() {
-                $("#alarm_button_" + t.id).click()
+                $("#alarm_button_" + t.id).click(), setTimeout(mapkitDeselectAnnotation, 1e3)
             })
         } else {
             var _ = L.marker([t.latitude, t.longitude], {
@@ -778,7 +782,7 @@ function vehicleCreateOnMap(t, e) {
                 }
             });
             t.icon_normal = e["in"], t.icon_sonderrechte = e.isr, map.addAnnotation(t), t.element.className = "mapkit-marker", t.addEventListener("select", function() {
-                "undefined" == typeof user_id ? $("#signup_from").effect("highlight", {}, 500) : lightboxOpen("/vehicles/" + e.id)
+                "undefined" == typeof user_id ? $("#signup_from").effect("highlight", {}, 500) : lightboxOpen("/vehicles/" + e.id), setTimeout(mapkitDeselectAnnotation, 1e3)
             })
         } else {
             var t = L.marker([0, 0], {

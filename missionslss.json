@@ -3939,5 +3939,15 @@
         "name": "Pokal geklaut",
         "Credits im Durchschnitt": "600",
         "Benötigte Streifenwagen": "2"
+    },
+    "377": {
+        "name": "Überzuckerung",
+        "Vorraussetzung an Rettungswachen": "3",
+        "Maximale Patientenanzahl": "1",
+        "Fachrichtung für Patienten": "Allgemeine Innere",
+        "Mindest Patientenanzahl": "1",
+        "NEF Anforderungswahrscheinlichkeit": "30",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "60",
+        "Tragehilfe Anforderungswahrscheinlichkeit": "20"
     }
 }

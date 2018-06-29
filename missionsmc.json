@@ -1700,5 +1700,21 @@
         "Max. Patients": "6",
         "Probability that a patient has to be transported": "40",
         "Patient Specializations": "General Internal"
+    },
+    "192": {
+        "name": "Traffic accident with train",
+        "Average credits": "3000",
+        "Required Firetrucks": "3",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Heavy Rescue Vehicles": "2",
+        "Required Police Cars": "2",
+        "Max. Patients": "4",
+        "Probability that a patient has to be transported": "70",
+        "Patient Specializations": "Traumatology",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/150", "Freight Train Derailment"],
+            ["https://www.missionchief.com/einsaetze/151", "Freight Train Derailment"],
+            ["https://www.missionchief.com/einsaetze/152", "Freight Train Derailment"]
+        ]
     }
 }
