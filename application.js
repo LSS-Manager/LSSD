@@ -122,7 +122,7 @@ function mapkitDeselectAnnotation() {
 }
 
 function mapExpand(t) {
-    mapViewExpandedWindow = window.open("/?mapview=true", "mapWindow", "width=600,height=400,status=yes,scrollbars=yes,resizable=yes"), t ? $("#map").hide() : $("#map_outer").hide(), $("#map_adress_search").hide(), mapViewExpanded = !0, $("#restore_map").show(), $("#arrow_location_select").hide(), $("#radio_outer").removeClass("col-sm-4"), $("#radio_outer").addClass("col-sm-12")
+    mapViewExpandedWindow = window.open("/?mapview=true", "mapWindow", "width=600,height=400,status=yes,scrollbars=yes,resizable=yes"), t ? $("#map").hide() : $("#map_outer").hide(), $("#map_expand_button").hide(), $("#map_adress_search").hide(), mapViewExpanded = !0, $("#restore_map").show(), $("#arrow_location_select").hide(), $("#radio_outer").removeClass("col-sm-4"), $("#radio_outer").addClass("col-sm-12")
 }
 
 function mapViewOnly() {
@@ -142,7 +142,7 @@ function mapViewResizeDesignBigMap() {
 }
 
 function mapViewRestore() {
-    mapViewExpanded && ($("#map_outer").show(), $("#map").show(), $("#map_adress_search").show(), $("#restore_map").hide(), $("#radio_outer").addClass("col-sm-4"), $("#radio_outer").removeClass("col-sm-12"), mapViewExpanded = !1, "undefined" == typeof mapkit && map.invalidateSize(), mapViewExpandedWindow.close())
+    mapViewExpanded && ($("#map_outer").show(), $("#map").show(), $("#map_adress_search").show(), $("#map_expand_button").show(), $("#restore_map").hide(), $("#radio_outer").addClass("col-sm-4"), $("#radio_outer").removeClass("col-sm-12"), mapViewExpanded = !1, "undefined" == typeof mapkit && map.invalidateSize(), mapViewExpandedWindow.close())
 }
 
 function vehicleSelectionReset() {
