@@ -1716,5 +1716,11 @@
             ["https://www.missionchief.com/einsaetze/151", "Freight Train Derailment"],
             ["https://www.missionchief.com/einsaetze/152", "Freight Train Derailment"]
         ]
+    },
+    "193": {
+        "name": "Animal Rescue",
+        "Average credits": "900",
+        "Required Firetrucks": "1",
+        "Required Heavy Rescue Vehicles": "1"
     }
 }

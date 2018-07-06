@@ -83,6 +83,7 @@ MC:
 37 = High rise
 38 = Cruise ship dock
 39 = Marina
+40 = Rail Crossing
 
 
 MEL:

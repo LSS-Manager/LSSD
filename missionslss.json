@@ -3949,5 +3949,12 @@
         "NEF Anforderungswahrscheinlichkeit": "30",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "60",
         "Tragehilfe Anforderungswahrscheinlichkeit": "20"
+    },
+    "378": {
+        "name": "Observation",
+        "Credits im Durchschnitt": "4400",
+        "Benötigte MEK-Fahrzeuge": "4",
+        "Benötigte FüKw": "1",
+        "Dauer": "2 Stunden"
     }
 }
