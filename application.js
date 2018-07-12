@@ -8632,7 +8632,7 @@ function hideVehicleBuildingHelpText(t) {
                     return {
                         menu: "menuitem",
                         listbox: "option"
-                    }[this.options.role]
+                    } [this.options.role]
                 },
                 _setOption: function(t, e) {
                     "icons" === t && this.element.find(".ui-menu-icon").removeClass(this.options.icons.submenu).addClass(e.submenu), "disabled" === t && this.element.toggleClass("ui-state-disabled", !!e).attr("aria-disabled", e), this._super(t, e)
