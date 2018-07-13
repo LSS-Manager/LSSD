@@ -1205,7 +1205,6 @@
         "LF Anforderungswahrscheinlichkeit": "10",
         "Benötigte Streifenwagen": "1",
         "Maximale Patientenanzahl": "1",
-        "possible_patient_chance": "10",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "10",
         "Fachrichtung für Patienten": "Unfallchirurgie",
         "Ausbreitungsmöglichkeiten": [
@@ -3956,5 +3955,45 @@
         "Benötigte MEK-Fahrzeuge": "4",
         "Benötigte FüKw": "1",
         "Dauer": "2 Stunden"
+    },
+    "379": {
+        "name": "PKW im Gleisbett",
+        "Credits im Durchschnitt": "900",
+        "Benötigte Löschfahrzeuge": "3",
+        "Benötigte Feuerwehrkräne (FwK)": "1",
+        "FwK Anforderungswahrscheinlichkeit": "20",
+        "Benötigte ELW 1": "1",
+        "Benötigte Rüstwagen": "1",
+        "Benötigte Streifenwagen": "1"
+    },
+    "380": {
+        "name": "PKW im Gleisbett",
+        "Credits im Durchschnitt": "900",
+        "Benötigte Löschfahrzeuge": "3",
+        "Benötigte Feuerwehrkräne (FwK)": "1",
+        "FwK Anforderungswahrscheinlichkeit": "20",
+        "Benötigte ELW 1": "1",
+        "Benötigte Rüstwagen": "1",
+        "Benötigte Streifenwagen": "1"
+    },
+    "381": {
+        "name": "PKW im Gleisbett",
+        "Credits im Durchschnitt": "900",
+        "Benötigte Löschfahrzeuge": "3",
+        "Benötigte Feuerwehrkräne (FwK)": "1",
+        "FwK Anforderungswahrscheinlichkeit": "20",
+        "Benötigte ELW 1": "1",
+        "Benötigte Rüstwagen": "1",
+        "Benötigte Streifenwagen": "1"
+    },
+    "382": {
+        "name": "PKW im Gleisbett",
+        "Credits im Durchschnitt": "900",
+        "Benötigte Löschfahrzeuge": "3",
+        "Benötigte Feuerwehrkräne (FwK)": "1",
+        "FwK Anforderungswahrscheinlichkeit": "20",
+        "Benötigte ELW 1": "1",
+        "Benötigte Rüstwagen": "1",
+        "Benötigte Streifenwagen": "1"
     }
 }

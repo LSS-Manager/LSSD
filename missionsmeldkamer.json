@@ -2894,5 +2894,34 @@
         "Benodigde OvD-B's": "1",
         "Benodigde slangenwagens": "1",
         "Slangenwagen benodigd waarschijnlijkheid": "50"
+    },
+    "323": {
+        "name": "Verkeersongeval met motorfiets",
+        "Gemiddeld aantal Credits": "750",
+        "Benodigde politieauto's": "2",
+        "Maximale patiënten aantal": "1",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
+        "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
+    },
+    "324": {
+        "name": "Verkeersongeval met personenauto en motorfiets",
+        "Gemiddeld aantal Credits": "900",
+        "Benodigde politieauto's": "2",
+        "Maximale patiënten aantal": "1",
+        "Minimale aantal slachtoffers": "1",
+        "MMT-Arts benodigd waarschijnlijkheid": "50",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "80",
+        "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
+    },
+    "325": {
+        "name": "Verkeersongeval met fietser en motorfiets",
+        "Gemiddeld aantal Credits": "1100",
+        "Benodigde politieauto's": "2",
+        "Maximale patiënten aantal": "2",
+        "Minimale aantal slachtoffers": "1",
+        "MMT-Arts benodigd waarschijnlijkheid": "70",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
+        "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
     }
 }
