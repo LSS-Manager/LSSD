@@ -3904,12 +3904,14 @@
     "371": {
         "name": "Fußball aufpumpen",
         "Credits im Durchschnitt": "300",
-        "Benötigte Löschfahrzeuge": "1"
+        "Benötigte Löschfahrzeuge": "1",
+        "Tritt nur bis zu dem Datum auf": "Montag, 16. Juli 2018, 23:59 Uhr"
     },
     "372": {
         "name": "Mannschaftsbus in Halteverbot abgestellt",
         "Credits im Durchschnitt": "300",
-        "Benötigte Streifenwagen": "1"
+        "Benötigte Streifenwagen": "1",
+        "Tritt nur bis zu dem Datum auf": "Montag, 16. Juli 2018, 23:59 Uhr"
     },
     "373": {
         "name": "Behandlung nach Schwalbe",
@@ -3918,7 +3920,8 @@
         "Fachrichtung für Patienten": "Allgemeine Chirurgie",
         "Mindest Patientenanzahl": "1",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "0",
-        "NEF Anforderungswahrscheinlichkeit": "0"
+        "NEF Anforderungswahrscheinlichkeit": "0",
+        "Tritt nur bis zu dem Datum auf": "Montag, 16. Juli 2018, 23:59 Uhr"
     },
     "374": {
         "name": "Prellung nach Lattenpraller",
@@ -3927,17 +3930,20 @@
         "Fachrichtung für Patienten": "Allgemeine Chirurgie",
         "Mindest Patientenanzahl": "1",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "0",
-        "NEF Anforderungswahrscheinlichkeit": "0"
+        "NEF Anforderungswahrscheinlichkeit": "0",
+        "Tritt nur bis zu dem Datum auf": "Montag, 16. Juli 2018, 23:59 Uhr"
     },
     "375": {
         "name": "Tor gefallen",
         "Credits im Durchschnitt": "300",
-        "Benötigte Löschfahrzeuge": "1"
+        "Benötigte Löschfahrzeuge": "1",
+        "Tritt nur bis zu dem Datum auf": "Montag, 16. Juli 2018, 23:59 Uhr"
     },
     "376": {
         "name": "Pokal geklaut",
         "Credits im Durchschnitt": "600",
-        "Benötigte Streifenwagen": "2"
+        "Benötigte Streifenwagen": "2",
+        "Tritt nur bis zu dem Datum auf": "Montag, 16. Juli 2018, 23:59 Uhr"
     },
     "377": {
         "name": "Überzuckerung",
