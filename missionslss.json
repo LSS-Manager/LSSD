@@ -4001,5 +4001,15 @@
         "Benötigte ELW 1": "1",
         "Benötigte Rüstwagen": "1",
         "Benötigte Streifenwagen": "1"
+    },
+    "383": {
+        "name": "Kind in PKW eingeschlossen",
+        "Credits im Durchschnitt": "600",
+        "Benötigte Streifenwagen": "1",
+        "Maximale Patientenanzahl": "1",
+        "Mindest Patientenanzahl": "1",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "30",
+        "NEF Anforderungswahrscheinlichkeit": "20",
+        "Fachrichtung für Patienten": "Allgemeine Innere"
     }
 }
