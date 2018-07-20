@@ -1737,5 +1737,14 @@
         "Max. Patients": "14",
         "Probability that a patient has to be transported": "25",
         "Patient Specializations": "General Internal"
+    },
+    "195": {
+        "name": "Single vehicle fire in tunnel",
+        "Average credits": "1500",
+        "Required Firetrucks": "3",
+        "Required Battalion Chief Vehicles": "1",
+        "Max. Patients": "4",
+        "Probability that a patient has to be transported": "60",
+        "Patient Specializations": "General Internal"
     }
 }
