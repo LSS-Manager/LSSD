@@ -1648,6 +1648,8 @@ function hideVehicleBuildingHelpText(t) {
             column_number_hint: "If a column number is given, the Alarm and Response entry will be displayed in the corresponding column on the alert page.",
             create_intervention_order: "Create new Alarm and Response Regulation",
             "delete": "Delete",
+            delete_all: "Delete Alarm and Response Regulations completely",
+            delete_all_confirm: "Are you sure you want to delete the whole alarm and response regulation? Existing exported entries are no longer available!",
             description: "Name",
             edit: "Edit",
             "export": {
@@ -1709,6 +1711,7 @@ function hideVehicleBuildingHelpText(t) {
                 gw_san: null,
                 gw_taucher: null,
                 gw_wasserrettung: "Water Retention",
+                gw_werkfeuerwehr: null,
                 gwl2wasser_only: "Hose Vehicle",
                 hlf_only: null,
                 hlf_or_rw_and_lf: null,
@@ -1758,7 +1761,10 @@ function hideVehicleBuildingHelpText(t) {
                 thw_tauchkraftwagen: "Dive Team",
                 thw_tauchkraftwagen_or_gw_taucher: null,
                 tlf_only: "Tanker Truck",
+                tm50: null,
+                turboloescher: null,
                 turntable_ladder: "Platform trucks",
+                ulf: null,
                 wasserwerfer: null
             }
         }
@@ -1875,6 +1881,8 @@ function hideVehicleBuildingHelpText(t) {
             column_number_hint: "Wenn eine Spaltennummer vergeben wird, dann wird der AAO-Eintrag in der entsprechenden Spalte bei der Alarmierung angezeigt.",
             create_intervention_order: "Neue Alarm und AusrÃ¼ckeordnung anlegen",
             "delete": "LÃ¶schen",
+            delete_all: "AAO komplett lÃ¶schen",
+            delete_all_confirm: "Wirklich die komplette AAO lÃ¶schen? Auch bestehende exportierte EintrÃ¤ge, sind anschlieÃŸend nicht mehr verfÃ¼gbar!",
             description: "Bezeichnung",
             edit: "Bearbeiten",
             "export": {
@@ -1936,6 +1944,7 @@ function hideVehicleBuildingHelpText(t) {
                 gw_san: "GW-San",
                 gw_taucher: "GW-Taucher",
                 gw_wasserrettung: "GW-Wasserrettung",
+                gw_werkfeuerwehr: "GW-Werkfeuerwehr",
                 gwl2wasser_only: "Schlauchwagen",
                 hlf_only: "HLF",
                 hlf_or_rw_and_lf: "HLF oder RW und LF",
@@ -1985,7 +1994,10 @@ function hideVehicleBuildingHelpText(t) {
                 thw_tauchkraftwagen: "Tauchkraftwagen",
                 thw_tauchkraftwagen_or_gw_taucher: "Tauchkraftwagen oder GW-Taucher",
                 tlf_only: "TanklÃ¶schfahrzeuge",
+                tm50: "TM 50",
+                turboloescher: "TurbolÃ¶scher",
                 turntable_ladder: "Drehleitern",
+                ulf: "ULF mit LÃ¶scharm",
                 wasserwerfer: "Wasserwerfer"
             }
         }
@@ -2102,6 +2114,8 @@ function hideVehicleBuildingHelpText(t) {
             column_number_hint: "Wanneer je een kolomnummer invult wordt het deze Alarm en Uitrukregel in de bijbehorende kolom in de alarmeringsscherm geplaatst.",
             create_intervention_order: "Nieuwe Alarm en Uitrukregel aanmaken",
             "delete": "Verwijderen",
+            delete_all: "Alarm en Uitrukregels compleet verwijderen",
+            delete_all_confirm: "Weet je zeker dat je de Alarm en Uitrukregels wilt verwijderen? Ook de geÃ«xporteerde variant wordt niet meer beschikbaar.",
             description: "Beschrijving",
             edit: "Bewerken",
             "export": {
@@ -2163,6 +2177,7 @@ function hideVehicleBuildingHelpText(t) {
                 gw_san: null,
                 gw_taucher: "Waterongevallenvoertuig",
                 gw_wasserrettung: null,
+                gw_werkfeuerwehr: null,
                 gwl2wasser_only: "Alleen Slangenwagen / Tankwagen",
                 hlf_only: null,
                 hlf_or_rw_and_lf: null,
@@ -2212,7 +2227,10 @@ function hideVehicleBuildingHelpText(t) {
                 thw_tauchkraftwagen: null,
                 thw_tauchkraftwagen_or_gw_taucher: null,
                 tlf_only: null,
+                tm50: null,
+                turboloescher: null,
                 turntable_ladder: "Redvoertuig",
+                ulf: null,
                 wasserwerfer: null
             }
         }
@@ -2329,6 +2347,8 @@ function hideVehicleBuildingHelpText(t) {
             column_number_hint: "Ð•ÑÐ»Ð¸ ÑƒÐºÐ°Ð·Ð°Ñ‚ÑŒ Ð½Ð¾Ð¼ÐµÑ€ ÑÑ‚Ð¾Ð»Ð±Ñ†Ð°, Ñ‚Ð¾ Ñ‚Ð¸Ð¿ Ð²Ñ‹Ð·Ð¾Ð²Ð° Ð¸ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð¾ Ñ€ÐµÐ°Ð³Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð·ÑÑ‚ÑÑ Ð² ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰ÐµÐ¼ ÑÑ‚Ð¾Ð»Ð±Ñ†Ðµ Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ Ð²Ñ‹Ð·Ð¾Ð²Ð°.",
             create_intervention_order: "Ð¡Ð¾Ð·Ð´Ð°Ñ‚ÑŒ Ð½Ð¾Ð²Ñ‹Ð¹ Ñ‚Ð¸Ð¿ Ð²Ñ‹Ð·Ð¾Ð²Ð° Ð¸ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð¾ Ñ€ÐµÐ°Ð³Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ",
             "delete": "Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ",
+            delete_all: null,
+            delete_all_confirm: null,
             description: "ÐžÐ¿Ð¸ÑÐ°Ð½Ð¸Ðµ",
             edit: "Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ",
             "export": {
@@ -2390,6 +2410,7 @@ function hideVehicleBuildingHelpText(t) {
                 gw_san: null,
                 gw_taucher: null,
                 gw_wasserrettung: null,
+                gw_werkfeuerwehr: null,
                 gwl2wasser_only: null,
                 hlf_only: null,
                 hlf_or_rw_and_lf: null,
@@ -2439,7 +2460,10 @@ function hideVehicleBuildingHelpText(t) {
                 thw_tauchkraftwagen: null,
                 thw_tauchkraftwagen_or_gw_taucher: null,
                 tlf_only: null,
+                tm50: null,
+                turboloescher: null,
                 turntable_ladder: "ÐŸÐ¾Ð¶Ð°Ñ€Ð½Ð°Ñ Ð°Ð²Ñ‚Ð¾Ð»ÐµÑÑ‚Ð½Ð¸Ñ†Ð°",
+                ulf: null,
                 wasserwerfer: null
             }
         }
@@ -2634,6 +2658,8 @@ function hideVehicleBuildingHelpText(t) {
             column_number_hint: null,
             create_intervention_order: null,
             "delete": null,
+            delete_all: null,
+            delete_all_confirm: null,
             description: null,
             edit: null,
             "export": {
@@ -2695,6 +2721,7 @@ function hideVehicleBuildingHelpText(t) {
                 gw_san: null,
                 gw_taucher: null,
                 gw_wasserrettung: null,
+                gw_werkfeuerwehr: null,
                 gwl2wasser_only: null,
                 hlf_only: null,
                 hlf_or_rw_and_lf: null,
@@ -2744,7 +2771,10 @@ function hideVehicleBuildingHelpText(t) {
                 thw_tauchkraftwagen: null,
                 thw_tauchkraftwagen_or_gw_taucher: null,
                 tlf_only: null,
+                tm50: null,
+                turboloescher: null,
                 turntable_ladder: null,
+                ulf: null,
                 wasserwerfer: null
             }
         }
@@ -2972,17 +3002,17 @@ function hideVehicleBuildingHelpText(t) {
             return i.remove(), n
         }
 
-        function P(t, e, i, n) {
+        function I(t, e, i, n) {
             var s;
             if (ce.isArray(e)) ce.each(e, function(e, s) {
-                i || Di.test(t) ? n(t, s) : P(t + "[" + ("object" == typeof s ? e : "") + "]", s, i, n)
+                i || Di.test(t) ? n(t, s) : I(t + "[" + ("object" == typeof s ? e : "") + "]", s, i, n)
             });
             else if (i || "object" !== ce.type(e)) n(t, e);
             else
-                for (s in e) P(t + "[" + s + "]", e[s], i, n)
+                for (s in e) I(t + "[" + s + "]", e[s], i, n)
         }
 
-        function I(t) {
+        function P(t) {
             return function(e, i) {
                 "string" != typeof e && (i = e, e = "*");
                 var n, s = 0,
@@ -3782,7 +3812,7 @@ function hideVehicleBuildingHelpText(t) {
                 }
 
                 function T() {}
-                var D, A, E, S, P, I, M, L, N, O, z, $, F, B, R, U, H, W = "sizzle" + -new Date,
+                var D, A, E, S, I, P, M, L, N, O, z, $, F, B, R, U, H, W = "sizzle" + -new Date,
                     j = t.document,
                     V = 0,
                     Z = 0,
@@ -3851,12 +3881,12 @@ function hideVehicleBuildingHelpText(t) {
                         }
                     }
                 }
-                I = i.isXML = function(t) {
+                P = i.isXML = function(t) {
                     var e = t && (t.ownerDocument || t).documentElement;
                     return e ? "HTML" !== e.nodeName : !1
                 }, A = i.support = {}, O = i.setDocument = function(t) {
                     var e = t ? t.ownerDocument || t : j;
-                    return e !== z && 9 === e.nodeType && e.documentElement ? (z = e, $ = e.documentElement, F = !I(e), A.attributes = a(function(t) {
+                    return e !== z && 9 === e.nodeType && e.documentElement ? (z = e, $ = e.documentElement, F = !P(e), A.attributes = a(function(t) {
                         return t.innerHTML = "<a href='#'></a>", r("type|href|height|width", h, "#" === t.firstChild.getAttribute("href")), r(re, l, null == t.getAttribute("disabled")), t.className = "i", !t.getAttribute("className")
                     }), A.input = a(function(t) {
                         return t.innerHTML = "<input>", t.firstChild.setAttribute("value", ""), "" === t.firstChild.getAttribute("value")
@@ -3957,17 +3987,17 @@ function hideVehicleBuildingHelpText(t) {
                         for (; n--;) t.splice(i[n], 1)
                     }
                     return t
-                }, P = i.getText = function(t) {
+                }, I = i.getText = function(t) {
                     var e, i = "",
                         n = 0,
                         s = t.nodeType;
                     if (s) {
                         if (1 === s || 9 === s || 11 === s) {
                             if ("string" == typeof t.textContent) return t.textContent;
-                            for (t = t.firstChild; t; t = t.nextSibling) i += P(t)
+                            for (t = t.firstChild; t; t = t.nextSibling) i += I(t)
                         } else if (3 === s || 4 === s) return t.nodeValue
                     } else
-                        for (; e = t[n]; n++) i += P(e);
+                        for (; e = t[n]; n++) i += I(e);
                     return i
                 }, S = i.selectors = {
                     cacheLength: 50,
@@ -4085,7 +4115,7 @@ function hideVehicleBuildingHelpText(t) {
                         }),
                         contains: o(function(t) {
                             return function(e) {
-                                return (e.textContent || e.innerText || P(e)).indexOf(t) > -1
+                                return (e.textContent || e.innerText || I(e)).indexOf(t) > -1
                             }
                         }),
                         lang: o(function(t) {
@@ -4453,8 +4483,8 @@ function hideVehicleBuildingHelpText(t) {
                 return l(), o.promise(i)
             }
         });
-        var Ee, Se, Pe = /[\t\r\n\f]/g,
-            Ie = /\r/g,
+        var Ee, Se, Ie = /[\t\r\n\f]/g,
+            Pe = /\r/g,
             Me = /^(?:input|select|textarea|button|object)$/i,
             Le = /^(?:a|area)$/i,
             Ne = /^(?:checked|selected)$/i,
@@ -4488,7 +4518,7 @@ function hideVehicleBuildingHelpText(t) {
                 });
                 if (l)
                     for (e = (t || "").match(de) || []; r > a; a++)
-                        if (i = this[a], n = 1 === i.nodeType && (i.className ? (" " + i.className + " ").replace(Pe, " ") : " ")) {
+                        if (i = this[a], n = 1 === i.nodeType && (i.className ? (" " + i.className + " ").replace(Ie, " ") : " ")) {
                             for (o = 0; s = e[o++];) n.indexOf(" " + s + " ") < 0 && (n += s + " ");
                             i.className = ce.trim(n)
                         }
@@ -4503,7 +4533,7 @@ function hideVehicleBuildingHelpText(t) {
                 });
                 if (l)
                     for (e = (t || "").match(de) || []; r > a; a++)
-                        if (i = this[a], n = 1 === i.nodeType && (i.className ? (" " + i.className + " ").replace(Pe, " ") : "")) {
+                        if (i = this[a], n = 1 === i.nodeType && (i.className ? (" " + i.className + " ").replace(Ie, " ") : "")) {
                             for (o = 0; s = e[o++];)
                                 for (; n.indexOf(" " + s + " ") >= 0;) n = n.replace(" " + s + " ", " ");
                             i.className = t ? ce.trim(n) : ""
@@ -4523,7 +4553,7 @@ function hideVehicleBuildingHelpText(t) {
             },
             hasClass: function(t) {
                 for (var e = " " + t + " ", i = 0, n = this.length; n > i; i++)
-                    if (1 === this[i].nodeType && (" " + this[i].className + " ").replace(Pe, " ").indexOf(e) >= 0) return !0;
+                    if (1 === this[i].nodeType && (" " + this[i].className + " ").replace(Ie, " ").indexOf(e) >= 0) return !0;
                 return !1
             },
             val: function(t) {
@@ -4534,7 +4564,7 @@ function hideVehicleBuildingHelpText(t) {
                             return null == t ? "" : t + ""
                         })), n = ce.valHooks[this.type] || ce.valHooks[this.nodeName.toLowerCase()], n && "set" in n && n.set(this, o, "value") !== e || (this.value = o))
                     });
-                    if (o) return n = ce.valHooks[o.type] || ce.valHooks[o.nodeName.toLowerCase()], n && "get" in n && (i = n.get(o, "value")) !== e ? i : (i = o.value, "string" == typeof i ? i.replace(Ie, "") : null == i ? "" : i)
+                    if (o) return n = ce.valHooks[o.type] || ce.valHooks[o.nodeName.toLowerCase()], n && "get" in n && (i = n.get(o, "value")) !== e ? i : (i = o.value, "string" == typeof i ? i.replace(Pe, "") : null == i ? "" : i)
                 }
             }
         }), ce.extend({
@@ -5471,7 +5501,7 @@ function hideVehicleBuildingHelpText(t) {
                 o(this.name, this.value)
             });
             else
-                for (n in t) P(n, t[n], i, o);
+                for (n in t) I(n, t[n], i, o);
             return s.join("&").replace(Ti, "+")
         }, ce.each("blur focus focusin focusout load resize scroll unload click dblclick mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave change select submit keydown keypress keyup error contextmenu".split(" "), function(t, e) {
             ce.fn[e] = function(t, i) {
@@ -5494,7 +5524,7 @@ function hideVehicleBuildingHelpText(t) {
                 return 1 === arguments.length ? this.off(t, "**") : this.off(e, t || "**", i)
             }
         });
-        var Pi, Ii, Mi = ce.now(),
+        var Ii, Pi, Mi = ce.now(),
             Li = /\?/,
             Ni = /#.*$/,
             Oi = /([?&])_=[^&]*/,
@@ -5508,11 +5538,11 @@ function hideVehicleBuildingHelpText(t) {
             Wi = {},
             ji = "*/".concat("*");
         try {
-            Ii = Y.href
+            Pi = Y.href
         } catch (Vi) {
-            Ii = K.createElement("a"), Ii.href = "", Ii = Ii.href
+            Pi = K.createElement("a"), Pi.href = "", Pi = Pi.href
         }
-        Pi = Ri.exec(Ii.toLowerCase()) || [], ce.fn.load = function(t, i, n) {
+        Ii = Ri.exec(Pi.toLowerCase()) || [], ce.fn.load = function(t, i, n) {
             if ("string" != typeof t && Ui) return Ui.apply(this, arguments);
             var s, o, a, r = this,
                 l = t.indexOf(" ");
@@ -5535,9 +5565,9 @@ function hideVehicleBuildingHelpText(t) {
             lastModified: {},
             etag: {},
             ajaxSettings: {
-                url: Ii,
+                url: Pi,
                 type: "GET",
-                isLocal: $i.test(Pi[1]),
+                isLocal: $i.test(Ii[1]),
                 global: !0,
                 processData: !0,
                 async: !0,
@@ -5573,8 +5603,8 @@ function hideVehicleBuildingHelpText(t) {
             ajaxSetup: function(t, e) {
                 return e ? L(L(t, ce.ajaxSettings), e) : L(ce.ajaxSettings, t)
             },
-            ajaxPrefilter: I(Hi),
-            ajaxTransport: I(Wi),
+            ajaxPrefilter: P(Hi),
+            ajaxTransport: P(Wi),
             ajax: function(t, i) {
                 function n(t, i, n, s) {
                     var o, u, v, y, w, k = i;
@@ -5625,7 +5655,7 @@ function hideVehicleBuildingHelpText(t) {
                             return c && c.abort(e), n(0, e), this
                         }
                     };
-                if (m.promise(x).complete = g.add, x.success = x.done, x.error = x.fail, d.url = ((t || d.url || Ii) + "").replace(Ni, "").replace(Bi, Pi[1] + "//"), d.type = i.method || i.type || d.method || d.type, d.dataTypes = ce.trim(d.dataType || "*").toLowerCase().match(de) || [""], null == d.crossDomain && (s = Ri.exec(d.url.toLowerCase()), d.crossDomain = !(!s || s[1] === Pi[1] && s[2] === Pi[2] && (s[3] || ("http:" === s[1] ? "80" : "443")) === (Pi[3] || ("http:" === Pi[1] ? "80" : "443")))), d.data && d.processData && "string" != typeof d.data && (d.data = ce.param(d.data, d.traditional)), M(Hi, d, i, x), 2 === b) return x;
+                if (m.promise(x).complete = g.add, x.success = x.done, x.error = x.fail, d.url = ((t || d.url || Pi) + "").replace(Ni, "").replace(Bi, Ii[1] + "//"), d.type = i.method || i.type || d.method || d.type, d.dataTypes = ce.trim(d.dataType || "*").toLowerCase().match(de) || [""], null == d.crossDomain && (s = Ri.exec(d.url.toLowerCase()), d.crossDomain = !(!s || s[1] === Ii[1] && s[2] === Ii[2] && (s[3] || ("http:" === s[1] ? "80" : "443")) === (Ii[3] || ("http:" === Ii[1] ? "80" : "443")))), d.data && d.processData && "string" != typeof d.data && (d.data = ce.param(d.data, d.traditional)), M(Hi, d, i, x), 2 === b) return x;
                 h = d.global, h && 0 === ce.active++ && ce.event.trigger("ajaxStart"), d.type = d.type.toUpperCase(), d.hasContent = !Fi.test(d.type), a = d.url, d.hasContent || (d.data && (a = d.url += (Li.test(a) ? "&" : "?") + d.data, delete d.data), d.cache === !1 && (d.url = Oi.test(a) ? a.replace(Oi, "$1_=" + Mi++) : a + (Li.test(a) ? "&" : "?") + "_=" + Mi++)), d.ifModified && (ce.lastModified[a] && x.setRequestHeader("If-Modified-Since", ce.lastModified[a]), ce.etag[a] && x.setRequestHeader("If-None-Match", ce.etag[a])), (d.data && d.hasContent && d.contentType !== !1 || i.contentType) && x.setRequestHeader("Content-Type", d.contentType), x.setRequestHeader("Accept", d.dataTypes[0] && d.accepts[d.dataTypes[0]] ? d.accepts[d.dataTypes[0]] + ("*" !== d.dataTypes[0] ? ", " + ji + "; q=0.01" : "") : d.accepts["*"]);
                 for (o in d.headers) x.setRequestHeader(o, d.headers[o]);
                 if (d.beforeSend && (d.beforeSend.call(p, x, d) === !1 || 2 === b)) return x.abort();
@@ -9734,7 +9764,7 @@ function hideVehicleBuildingHelpText(t) {
                 })
             },
             _generateHTML: function(t) {
-                var e, i, n, s, o, a, r, l, h, c, u, d, p, f, m, g, _, v, y, b, w, x, k, C, T, D, A, E, S, P, I, M, L, N, O, z, $, F, B, R = new Date,
+                var e, i, n, s, o, a, r, l, h, c, u, d, p, f, m, g, _, v, y, b, w, x, k, C, T, D, A, E, S, I, P, M, L, N, O, z, $, F, B, R = new Date,
                     U = this._daylightSavingAdjust(new Date(R.getFullYear(), R.getMonth(), R.getDate())),
                     H = this._get(t, "isRTL"),
                     W = this._get(t, "showButtonPanel"),
@@ -9767,7 +9797,7 @@ function hideVehicleBuildingHelpText(t) {
                             A += "'>"
                         }
                         for (A += "<div class='ui-datepicker-header ui-widget-header ui-helper-clearfix" + D + "'>" + (/all|left/.test(D) && 0 === x ? H ? o : n : "") + (/all|right/.test(D) && 0 === x ? H ? n : o : "") + this._generateMonthYearHeader(t, Q, te, X, J, x > 0 || C > 0, f, m) + "</div><table class='ui-datepicker-calendar'><thead>" + "<tr>", E = u ? "<th class='ui-datepicker-week-col'>" + this._get(t, "weekHeader") + "</th>" : "", w = 0; 7 > w; w++) S = (w + c) % 7, E += "<th scope='col'" + ((w + c + 6) % 7 >= 5 ? " class='ui-datepicker-week-end'" : "") + ">" + "<span title='" + d[S] + "'>" + p[S] + "</span></th>";
-                        for (A += E + "</tr></thead><tbody>", P = this._getDaysInMonth(te, Q), te === t.selectedYear && Q === t.selectedMonth && (t.selectedDay = Math.min(t.selectedDay, P)), I = (this._getFirstDayOfMonth(te, Q) - c + 7) % 7, M = Math.ceil((I + P) / 7), L = Y ? this.maxRows > M ? this.maxRows : M : M, this.maxRows = L, N = this._daylightSavingAdjust(new Date(te, Q, 1 - I)), O = 0; L > O; O++) {
+                        for (A += E + "</tr></thead><tbody>", I = this._getDaysInMonth(te, Q), te === t.selectedYear && Q === t.selectedMonth && (t.selectedDay = Math.min(t.selectedDay, I)), P = (this._getFirstDayOfMonth(te, Q) - c + 7) % 7, M = Math.ceil((P + I) / 7), L = Y ? this.maxRows > M ? this.maxRows : M : M, this.maxRows = L, N = this._daylightSavingAdjust(new Date(te, Q, 1 - P)), O = 0; L > O; O++) {
                             for (A += "<tr>", z = u ? "<td class='ui-datepicker-week-col'>" + this._get(t, "calculateWeek")(N) + "</td>" : "", w = 0; 7 > w; w++) $ = g ? g.apply(t.input ? t.input[0] : null, [N]) : [!0, ""], F = N.getMonth() !== Q, B = F && !v || !$[0] || X && X > N || J && N > J, z += "<td class='" + ((w + c + 6) % 7 >= 5 ? " ui-datepicker-week-end" : "") + (F ? " ui-datepicker-other-month" : "") + (N.getTime() === T.getTime() && Q === t.selectedMonth && t._keyEvent || y.getTime() === N.getTime() && y.getTime() === T.getTime() ? " " + this._dayOverClass : "") + (B ? " " + this._unselectableClass + " ui-state-disabled" : "") + (F && !_ ? "" : " " + $[1] + (N.getTime() === K.getTime() ? " " + this._currentClass : "") + (N.getTime() === U.getTime() ? " ui-datepicker-today" : "")) + "'" + (F && !_ || !$[2] ? "" : " title='" + $[2].replace(/'/g, "&#39;") + "'") + (B ? "" : " data-handler='selectDay' data-event='click' data-month='" + N.getMonth() + "' data-year='" + N.getFullYear() + "'") + ">" + (F && !_ ? "&#xa0;" : B ? "<span class='ui-state-default'>" + N.getDate() + "</span>" : "<a class='ui-state-default" + (N.getTime() === U.getTime() ? " ui-state-highlight" : "") + (N.getTime() === K.getTime() ? " ui-state-active" : "") + (F ? " ui-priority-secondary" : "") + "' href='#'>" + N.getDate() + "</a>") + "</td>", N.setDate(N.getDate() + 1), N = this._daylightSavingAdjust(N);
                             A += z + "</tr>"
                         }
@@ -13438,12 +13468,12 @@ function hideVehicleBuildingHelpText(t) {
                         A = D + a.height(),
                         E = T.left,
                         S = E + a.width(),
-                        P = i === !0 ? A : D,
-                        I = i === !0 ? D : A,
+                        I = i === !0 ? A : D,
+                        P = i === !0 ? D : A,
                         M = i === !0 ? S : E,
                         L = i === !0 ? E : S;
-                    if ("both" === s) return !!p && x >= I && P >= w && C >= L && M >= k;
-                    if ("vertical" === s) return !!p && x >= I && P >= w;
+                    if ("both" === s) return !!p && x >= P && I >= w && C >= L && M >= k;
+                    if ("vertical" === s) return !!p && x >= P && I >= w;
                     if ("horizontal" === s) return !!p && C >= L && M >= k
                 }
             }
@@ -19214,6 +19244,10 @@ var map, alliance_building_show, geocoder, directionsService, building_eval_unlo
         return missing
     }
     "undefined" != typeof L && (L.Icon.Default.imagePath = "/leaflet/images/"), aao_types = [
+        ["gw_werkfeuerwehr", I18n.t("intervention_order.vehicles.gw_werkfeuerwehr")],
+        ["ulf", I18n.t("intervention_order.vehicles.ulf")],
+        ["tm50", I18n.t("intervention_order.vehicles.tm50")],
+        ["turboloescher", I18n.t("intervention_order.vehicles.turboloescher")],
         ["rescueboat", I18n.t("intervention_order.vehicles.rescueboat")],
         ["fireboat", I18n.t("intervention_order.vehicles.fireboat")],
         ["mek_mtf", I18n.t("intervention_order.vehicles.mek_mtf")],
