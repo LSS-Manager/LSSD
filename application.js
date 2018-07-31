@@ -1686,6 +1686,7 @@ function hideVehicleBuildingHelpText(t) {
                 boot: "Boats (General)",
                 dekon_p: null,
                 division_chief_unit: "Mobile Command Vehicle",
+                dlk_or_tm50: null,
                 elw1_or_elw2: "Battalion Chief Unit, Mobile Command Vehicle or Mobile Command-Module ",
                 elw2_or_ab_elw: null,
                 elw3: null,
@@ -1919,6 +1920,7 @@ function hideVehicleBuildingHelpText(t) {
                 boot: "Boote (Allgemein)",
                 dekon_p: "Dekon-P oder AB-Dekon-P",
                 division_chief_unit: "Einsatzleitfahrzeuge 2",
+                dlk_or_tm50: "DLK oder TM 50",
                 elw1_or_elw2: "ELW 1, ELW 2 oder AB-Einsatzleitung",
                 elw2_or_ab_elw: "ELW 2 oder AB-Einsatzleitung",
                 elw3: "ELW 3",
@@ -2152,6 +2154,7 @@ function hideVehicleBuildingHelpText(t) {
                 boot: "WOA (Water ongeval aanhanger)",
                 dekon_p: null,
                 division_chief_unit: "Hoofdofficier van Dienst - Brandweer",
+                dlk_or_tm50: null,
                 elw1_or_elw2: null,
                 elw2_or_ab_elw: null,
                 elw3: "Commandovoertuig of haakarmbak",
@@ -2385,6 +2388,7 @@ function hideVehicleBuildingHelpText(t) {
                 boot: null,
                 dekon_p: null,
                 division_chief_unit: "ÐÐ²Ñ‚Ð¾Ð¼Ð¾Ð±Ð¸Ð»ÑŒ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð¸Ñ€Ð° Ð¾Ñ‚Ð´ÐµÐ»ÐµÐ½Ð¸Ñ",
+                dlk_or_tm50: null,
                 elw1_or_elw2: null,
                 elw2_or_ab_elw: null,
                 elw3: null,
@@ -2696,6 +2700,7 @@ function hideVehicleBuildingHelpText(t) {
                 boot: null,
                 dekon_p: null,
                 division_chief_unit: null,
+                dlk_or_tm50: null,
                 elw1_or_elw2: null,
                 elw2_or_ab_elw: null,
                 elw3: null,
@@ -19244,6 +19249,7 @@ var map, alliance_building_show, geocoder, directionsService, building_eval_unlo
         return missing
     }
     "undefined" != typeof L && (L.Icon.Default.imagePath = "/leaflet/images/"), aao_types = [
+        ["dlk_or_tm50", I18n.t("intervention_order.vehicles.dlk_or_tm50")],
         ["gw_werkfeuerwehr", I18n.t("intervention_order.vehicles.gw_werkfeuerwehr")],
         ["ulf", I18n.t("intervention_order.vehicles.ulf")],
         ["tm50", I18n.t("intervention_order.vehicles.tm50")],
