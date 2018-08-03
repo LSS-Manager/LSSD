@@ -39,7 +39,7 @@ LSS:
 36 = Biogasanlage
 37 = Bank
 38 = Kirche
-
+39 = Chemiepark
 
 MC:
 

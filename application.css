@@ -37,7 +37,7 @@ dfn {
     font - style: italic
 }
 h1 {
-    margin: .67e m 0;font - size: 2e m
+    margin: .67 em 0;font - size: 2 em
 }
 mark {
     color: #000;background:# ff0
@@ -49,10 +49,10 @@ sub, sup {
     position: relative;font - size: 75 % ;line - height: 0;vertical - align: baseline
 }
 sup {
-    top: -.5e m
+    top: -.5 em
 }
 sub {
-    bottom: -.25e m
+    bottom: -.25 em
 }
 img {
     border: 0
@@ -61,7 +61,7 @@ svg: not(: root) {
     overflow: hidden
 }
 figure {
-    margin: 1e m 40 px
+    margin: 1 em 40 px
 }
 hr {
     height: 0; - webkit - box - sizing: content - box; - moz - box - sizing: content - box;box - sizing: content - box
@@ -71,7 +71,7 @@ pre {
 }
 code, kbd, pre, samp {
     font - family: monospace, monospace;
-    font - size: 1e m
+    font - size: 1 em
 }
 button, input, optgroup, select, textarea {
     margin: 0;font: inherit;color: inherit
@@ -111,7 +111,7 @@ input[type = search]::-webkit - search - cancel - button, input[type = search]::
     -webkit - appearance: none
 }
 fieldset {
-    padding: .35e m .625e m .75e m;margin: 0 2 px;border: 1 px solid silver
+    padding: .35 em .625 em .75 em;margin: 0 2 px;border: 1 px solid silver
 }
 legend {
     padding: 0;border: 0
@@ -2218,7 +2218,7 @@ select[multiple].input - group - sm > .form - control, select[multiple].input - 
 }.pager.disabled > a, .pager.disabled > a: focus, .pager.disabled > a: hover, .pager.disabled > span {
     color: #777;cursor:not-allowed;background-color:# fff
 }.label {
-    display: inline;padding: .2e m .6e m .3e m;font - size: 75 % ;font - weight: 700;line - height: 1;color: #fff;text - align: center;white - space: nowrap;vertical - align: baseline;border - radius: .25e m
+    display: inline;padding: .2 em .6 em .3 em;font - size: 75 % ;font - weight: 700;line - height: 1;color: #fff;text - align: center;white - space: nowrap;vertical - align: baseline;border - radius: .25 em
 }
 a.label: focus, a.label: hover {
         color: #fff;text - decoration: none;cursor: pointer
@@ -4758,9 +4758,9 @@ lightbox_background {
     }.vehicle_building_list_button {
         font - size: 12 px;
         margin - right: 5 px;
-        padding: .2e m .6e m .3e m
+        padding: .2 em .6 em .3 em
     }.building_list_fms {
-        display: inline;padding: .2e m .6e m .3e m;font - weight: 700;font - size: 12 px;line - height: 1;color: #fff;text - align: center;white - space: nowrap;vertical - align: baseline;border - radius: .25e m;margin - right: 5 px
+        display: inline;padding: .2 em .6 em .3 em;font - weight: 700;font - size: 12 px;line - height: 1;color: #fff;text - align: center;white - space: nowrap;vertical - align: baseline;border - radius: .25 em;margin - right: 5 px
     }.building_list_caption.map_position_mover {
         margin - left: 5 px
     }.building_list_fms_1 {
@@ -4794,8 +4794,7 @@ lightbox_background {
     }.building_list_fms_5 {
         background - color: #ff0000;
         color: white;
-        background - image: url(/images/fms
-            5 _background.gif)
+        background - image: url(/images/fms5_background.gif)
     }.building_list_fms_6 {
         background - color: black;
         color: white
@@ -5158,8 +5157,7 @@ lightbox_background {
                                 }.vehicle_overview.list - group {
                                     margin: 0 0 10 px 0
                                 }.search_input_field {
-                                    background - image: url(/images/search_
-                                        5 a5753.svg);
+                                    background - image: url(/images/search_5a5753.svg);
                                     background - repeat: no - repeat;
                                     background - size: auto 100 % ;
                                     padding - left: 25 px
@@ -5444,15 +5442,15 @@ lightbox_background {
                                                 }.ui - state - disabled {
                                                     cursor: default !important;pointer - events: none
                                                 }.ui - icon {
-                                                    display: inline - block;vertical - align: middle;margin - top: -0.25e m;position: relative;text - indent: -99999 px;overflow: hidden;background - repeat: no - repeat
+                                                    display: inline - block;vertical - align: middle;margin - top: -0.25 em;position: relative;text - indent: -99999 px;overflow: hidden;background - repeat: no - repeat
                                                 }.ui - widget - icon - block {
                                                     left: 50 % ;margin - left: -8 px;display: block
                                                 }.ui - widget - overlay {
                                                     position: fixed;top: 0;left: 0;width: 100 % ;height: 100 %
                                                 }.ui - accordion.ui - accordion - header {
-                                                    display: block;cursor: pointer;position: relative;margin: 2 px 0 0 0;padding: .5e m .5e m .5e m .7e m;font - size: 100 %
+                                                    display: block;cursor: pointer;position: relative;margin: 2 px 0 0 0;padding: .5 em .5 em .5 em .7 em;font - size: 100 %
                                                 }.ui - accordion.ui - accordion - content {
-                                                    padding: 1e m 2.2e m;border - top: 0;overflow: auto
+                                                    padding: 1 em 2.2 em;border - top: 0;overflow: auto
                                                 }.ui - autocomplete {
                                                     position: absolute;top: 0;left: 0;cursor: default
                                                 }.ui - menu {
@@ -5466,7 +5464,7 @@ lightbox_background {
                                                 }.ui - menu.ui - menu - item {
                                                     margin: 0;cursor: pointer;list - style - image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7")
                                                 }.ui - menu.ui - menu - item - wrapper {
-                                                    position: relative;padding: 3 px 1e m 3 px .4e m
+                                                    position: relative;padding: 3 px 1 em 3 px .4 em
                                                 }.ui - menu.ui - menu - divider {
                                                     margin: 5 px 0;height: 0;font - size: 0;line - height: 0;border - width: 1 px 0 0 0
                                                 }.ui - menu.ui - state - focus,
@@ -5475,13 +5473,13 @@ lightbox_background {
                                                 }.ui - menu - icons {
                                                     position: relative
                                                 }.ui - menu - icons.ui - menu - item - wrapper {
-                                                    padding - left: 2e m
+                                                    padding - left: 2 em
                                                 }.ui - menu.ui - icon {
-                                                    position: absolute;top: 0;bottom: 0;left: .2e m;margin: auto 0
+                                                    position: absolute;top: 0;bottom: 0;left: .2 em;margin: auto 0
                                                 }.ui - menu.ui - menu - icon {
                                                     left: auto;right: 0
                                                 }.ui - button {
-                                                    padding: .4e m 1e m;display: inline - block;position: relative;line - height: normal;margin - right: .1e m;cursor: pointer;vertical - align: middle;text - align: center; - webkit - user - select: none; - moz - user - select: none; - ms - user - select: none;user - select: none;overflow: visible
+                                                    padding: .4 em 1 em;display: inline - block;position: relative;line - height: normal;margin - right: .1 em;cursor: pointer;vertical - align: middle;text - align: center; - webkit - user - select: none; - moz - user - select: none; - ms - user - select: none;user - select: none;overflow: visible
                                                 }.ui - button,
                                                 .ui - button: link,
                                                 .ui - button: visited,
@@ -5489,17 +5487,17 @@ lightbox_background {
                                                 .ui - button: active {
                                                     text - decoration: none
                                                 }.ui - button - icon - only {
-                                                    width: 2e m;box - sizing: border - box;text - indent: -9999 px;white - space: nowrap
+                                                    width: 2 em;box - sizing: border - box;text - indent: -9999 px;white - space: nowrap
                                                 }
                                                 input.ui - button.ui - button - icon - only {
                                                     text - indent: 0
                                                 }.ui - button - icon - only.ui - icon {
                                                     position: absolute;top: 50 % ;left: 50 % ;margin - top: -8 px;margin - left: -8 px
                                                 }.ui - button.ui - icon - notext.ui - icon {
-                                                    padding: 0;width: 2.1e m;height: 2.1e m;text - indent: -9999 px;white - space: nowrap
+                                                    padding: 0;width: 2.1 em;height: 2.1 em;text - indent: -9999 px;white - space: nowrap
                                                 }
                                                 input.ui - button.ui - icon - notext.ui - icon {
-                                                    width: auto;height: auto;text - indent: 0;white - space: normal;padding: .4e m 1e m
+                                                    width: auto;height: auto;text - indent: 0;white - space: normal;padding: .4 em 1 em
                                                 }
                                                 input.ui - button::-moz - focus - inner,
                                                 button.ui - button::-moz - focus - inner {
@@ -5517,7 +5515,7 @@ lightbox_background {
                                                 }.ui - controlgroup - vertical.ui - controlgroup - item {
                                                     box - sizing: border - box
                                                 }.ui - controlgroup.ui - controlgroup - label {
-                                                    padding: .4e m 1e m
+                                                    padding: .4 em 1 em
                                                 }.ui - controlgroup.ui - controlgroup - label span {
                                                     font - size: 80 %
                                                 }.ui - controlgroup - horizontal.ui - controlgroup - label + .ui - controlgroup - item {
@@ -5534,10 +5532,10 @@ lightbox_background {
                                                     border - top - style: solid
                                                 }.ui - checkboxradio - label.ui - icon - background {
                                                     box - shadow: inset 1 px 1 px 1 px# ccc;
-                                                    border - radius: .12e m;
+                                                    border - radius: .12 em;
                                                     border: none
                                                 }.ui - checkboxradio - radio - label.ui - icon - background {
-                                                    width: 16 px;height: 16 px;border - radius: 1e m;overflow: visible;border: none
+                                                    width: 16 px;height: 16 px;border - radius: 1 em;overflow: visible;border: none
                                                 }.ui - checkboxradio - radio - label.ui - checkboxradio - checked.ui - icon,
                                                 .ui - checkboxradio - radio - label.ui - checkboxradio - checked: hover.ui - icon {
                                                     background - image: none;
@@ -5548,12 +5546,12 @@ lightbox_background {
                                                 }.ui - checkboxradio - disabled {
                                                     pointer - events: none
                                                 }.ui - datepicker {
-                                                    width: 17e m;padding: .2e m .2e m 0;display: none
+                                                    width: 17 em;padding: .2 em .2 em 0;display: none
                                                 }.ui - datepicker.ui - datepicker - header {
-                                                    position: relative;padding: .2e m 0
+                                                    position: relative;padding: .2 em 0
                                                 }.ui - datepicker.ui - datepicker - prev,
                                                 .ui - datepicker.ui - datepicker - next {
-                                                    position: absolute;top: 2 px;width: 1.8e m;height: 1.8e m
+                                                    position: absolute;top: 2 px;width: 1.8 em;height: 1.8 em
                                                 }.ui - datepicker.ui - datepicker - prev - hover,
                                                 .ui - datepicker.ui - datepicker - next - hover {
                                                     top: 1 px
@@ -5569,31 +5567,31 @@ lightbox_background {
                                                 .ui - datepicker.ui - datepicker - next span {
                                                     display: block;position: absolute;left: 50 % ;margin - left: -8 px;top: 50 % ;margin - top: -8 px
                                                 }.ui - datepicker.ui - datepicker - title {
-                                                    margin: 0 2.3e m;line - height: 1.8e m;text - align: center
+                                                    margin: 0 2.3 em;line - height: 1.8 em;text - align: center
                                                 }.ui - datepicker.ui - datepicker - title select {
-                                                    font - size: 1e m;
+                                                    font - size: 1 em;
                                                     margin: 1 px 0
                                                 }.ui - datepicker select.ui - datepicker - month,
                                                 .ui - datepicker select.ui - datepicker - year {
                                                     width: 45 %
                                                 }.ui - datepicker table {
-                                                    width: 100 % ;font - size: .9e m;border - collapse: collapse;margin: 0 0 .4e m
+                                                    width: 100 % ;font - size: .9 em;border - collapse: collapse;margin: 0 0 .4 em
                                                 }.ui - datepicker th {
-                                                    padding: .7e m .3e m;text - align: center;font - weight: bold;border: 0
+                                                    padding: .7 em .3 em;text - align: center;font - weight: bold;border: 0
                                                 }.ui - datepicker td {
                                                     border: 0;padding: 1 px
                                                 }.ui - datepicker td span,
                                                 .ui - datepicker td a {
-                                                    display: block;padding: .2e m;text - align: right;text - decoration: none
+                                                    display: block;padding: .2 em;text - align: right;text - decoration: none
                                                 }.ui - datepicker.ui - datepicker - buttonpane {
                                                     background - image: none;
-                                                    margin: .7e m 0 0 0;
-                                                    padding: 0 .2e m;
+                                                    margin: .7 em 0 0 0;
+                                                    padding: 0 .2 em;
                                                     border - left: 0;
                                                     border - right: 0;
                                                     border - bottom: 0
                                                 }.ui - datepicker.ui - datepicker - buttonpane button {
-                                                    float: right;margin: .5e m .2e m .4e m;cursor: pointer;padding: .2e m .6e m .3e m .6e m;width: auto;overflow: visible
+                                                    float: right;margin: .5 em .2 em .4 em;cursor: pointer;padding: .2 em .6 em .3 em .6 em;width: auto;overflow: visible
                                                 }.ui - datepicker.ui - datepicker - buttonpane button.ui - datepicker - current {
                                                     float: left
                                                 }.ui - datepicker.ui - datepicker - multi {
@@ -5601,7 +5599,7 @@ lightbox_background {
                                                 }.ui - datepicker - multi.ui - datepicker - group {
                                                     float: left
                                                 }.ui - datepicker - multi.ui - datepicker - group table {
-                                                    width: 95 % ;margin: 0 auto .4e m
+                                                    width: 95 % ;margin: 0 auto .4 em
                                                 }.ui - datepicker - multi - 2.ui - datepicker - group {
                                                     width: 50 %
                                                 }.ui - datepicker - multi - 3.ui - datepicker - group {
@@ -5638,27 +5636,27 @@ lightbox_background {
                                                     border - right - width: 0;
                                                     border - left - width: 1 px
                                                 }.ui - datepicker.ui - icon {
-                                                    display: block;text - indent: -99999 px;overflow: hidden;background - repeat: no - repeat;left: .5e m;top: .3e m
+                                                    display: block;text - indent: -99999 px;overflow: hidden;background - repeat: no - repeat;left: .5 em;top: .3 em
                                                 }.ui - dialog {
-                                                    position: absolute;top: 0;left: 0;padding: .2e m;outline: 0
+                                                    position: absolute;top: 0;left: 0;padding: .2 em;outline: 0
                                                 }.ui - dialog.ui - dialog - titlebar {
-                                                    padding: .4e m 1e m;position: relative
+                                                    padding: .4 em 1 em;position: relative
                                                 }.ui - dialog.ui - dialog - title {
-                                                    float: left;margin: .1e m 0;white - space: nowrap;width: 90 % ;overflow: hidden;text - overflow: ellipsis
+                                                    float: left;margin: .1 em 0;white - space: nowrap;width: 90 % ;overflow: hidden;text - overflow: ellipsis
                                                 }.ui - dialog.ui - dialog - titlebar - close {
-                                                    position: absolute;right: .3e m;top: 50 % ;width: 20 px;margin: -10 px 0 0 0;padding: 1 px;height: 20 px
+                                                    position: absolute;right: .3 em;top: 50 % ;width: 20 px;margin: -10 px 0 0 0;padding: 1 px;height: 20 px
                                                 }.ui - dialog.ui - dialog - content {
-                                                    position: relative;border: 0;padding: .5e m 1e m;background: none;overflow: auto
+                                                    position: relative;border: 0;padding: .5 em 1 em;background: none;overflow: auto
                                                 }.ui - dialog.ui - dialog - buttonpane {
                                                     text - align: left;
                                                     border - width: 1 px 0 0 0;
                                                     background - image: none;
-                                                    margin - top: .5e m;
-                                                    padding: .3e m 1e m .5e m .4e m
+                                                    margin - top: .5 em;
+                                                    padding: .3 em 1 em .5 em .4 em
                                                 }.ui - dialog.ui - dialog - buttonpane.ui - dialog - buttonset {
                                                     float: right
                                                 }.ui - dialog.ui - dialog - buttonpane button {
-                                                    margin: .5e m .4e m .5e m 0;cursor: pointer
+                                                    margin: .5 em .4 em .5 em 0;cursor: pointer
                                                 }.ui - dialog.ui - resizable - n {
                                                     height: 5 px;top: 0
                                                 }.ui - dialog.ui - resizable - e {
@@ -5709,7 +5707,7 @@ lightbox_background {
                                                 }.ui - resizable - ne {
                                                     cursor: ne - resize;width: 9 px;height: 9 px;right: -5 px;top: -5 px
                                                 }.ui - progressbar {
-                                                    height: 2e m;text - align: left;overflow: hidden
+                                                    height: 2 em;text - align: left;overflow: hidden
                                                 }.ui - progressbar.ui - progressbar - value {
                                                     margin: -1 px;height: 100 %
                                                 }.ui - progressbar.ui - progressbar - overlay {
@@ -5726,11 +5724,11 @@ lightbox_background {
                                                 }.ui - selectmenu - menu.ui - menu {
                                                     overflow: auto;overflow - x: hidden;padding - bottom: 1 px
                                                 }.ui - selectmenu - menu.ui - menu.ui - selectmenu - optgroup {
-                                                    font - size: 1e m;
+                                                    font - size: 1 em;
                                                     font - weight: bold;
                                                     line - height: 1.5;
-                                                    padding: 2 px 0.4e m;
-                                                    margin: 0.5e m 0 0 0;
+                                                    padding: 2 px 0.4 em;
+                                                    margin: 0.5 em 0 0 0;
                                                     height: auto;
                                                     border: 0
                                                 }.ui - selectmenu - open {
@@ -5740,22 +5738,22 @@ lightbox_background {
                                                 }.ui - selectmenu - button.ui - button {
                                                     text - align: left;
                                                     white - space: nowrap;
-                                                    width: 14e m
+                                                    width: 14 em
                                                 }.ui - selectmenu - icon.ui - icon {
                                                     float: right;margin - top: 0
                                                 }.ui - slider {
                                                     position: relative;text - align: left
                                                 }.ui - slider.ui - slider - handle {
-                                                    position: absolute;z - index: 2;width: 1.2e m;height: 1.2e m;cursor: default; - ms - touch - action: none;touch - action: none
+                                                    position: absolute;z - index: 2;width: 1.2 em;height: 1.2 em;cursor: default; - ms - touch - action: none;touch - action: none
                                                 }.ui - slider.ui - slider - range {
-                                                    position: absolute;z - index: 1;font - size: .7e m;display: block;border: 0;background - position: 0 0
+                                                    position: absolute;z - index: 1;font - size: .7 em;display: block;border: 0;background - position: 0 0
                                                 }.ui - slider.ui - state - disabled.ui - slider - handle,
                                                 .ui - slider.ui - state - disabled.ui - slider - range {
                                                     filter: inherit
                                                 }.ui - slider - horizontal {
-                                                    height: .8e m
+                                                    height: .8 em
                                                 }.ui - slider - horizontal.ui - slider - handle {
-                                                    top: -0.3e m;margin - left: -0.6e m
+                                                    top: -0.3 em;margin - left: -0.6 em
                                                 }.ui - slider - horizontal.ui - slider - range {
                                                     top: 0;height: 100 %
                                                 }.ui - slider - horizontal.ui - slider - range - min {
@@ -5763,9 +5761,9 @@ lightbox_background {
                                                 }.ui - slider - horizontal.ui - slider - range - max {
                                                     right: 0
                                                 }.ui - slider - vertical {
-                                                    width: .8e m;height: 100 px
+                                                    width: .8 em;height: 100 px
                                                 }.ui - slider - vertical.ui - slider - handle {
-                                                    left: -0.3e m;margin - left: 0;margin - bottom: -0.6e m
+                                                    left: -0.3 em;margin - left: 0;margin - bottom: -0.6 em
                                                 }.ui - slider - vertical.ui - slider - range {
                                                     left: 0;width: 100 %
                                                 }.ui - slider - vertical.ui - slider - range - min {
@@ -5778,9 +5776,9 @@ lightbox_background {
                                                 }.ui - spinner {
                                                     position: relative;display: inline - block;overflow: hidden;padding: 0;vertical - align: middle
                                                 }.ui - spinner - input {
-                                                    border: none;background: none;color: inherit;padding: .222e m 0;margin: .2e m 0;vertical - align: middle;margin - left: .4e m;margin - right: 2e m
+                                                    border: none;background: none;color: inherit;padding: .222 em 0;margin: .2 em 0;vertical - align: middle;margin - left: .4 em;margin - right: 2 em
                                                 }.ui - spinner - button {
-                                                    width: 1.6e m;height: 50 % ;font - size: .5e m;padding: 0;margin: 0;text - align: center;position: absolute;cursor: default;display: block;overflow: hidden;right: 0
+                                                    width: 1.6 em;height: 50 % ;font - size: .5 em;padding: 0;margin: 0;text - align: center;position: absolute;cursor: default;display: block;overflow: hidden;right: 0
                                                 }.ui - spinner a.ui - spinner - button {
                                                     border - top - style: none;
                                                     border - bottom - style: none;
@@ -5790,20 +5788,20 @@ lightbox_background {
                                                 }.ui - spinner - down {
                                                     bottom: 0
                                                 }.ui - tabs {
-                                                    position: relative;padding: .2e m
+                                                    position: relative;padding: .2 em
                                                 }.ui - tabs.ui - tabs - nav {
-                                                    margin: 0;padding: .2e m .2e m 0
+                                                    margin: 0;padding: .2 em .2 em 0
                                                 }.ui - tabs.ui - tabs - nav li {
                                                     list - style: none;
                                                     float: left;
                                                     position: relative;
                                                     top: 0;
-                                                    margin: 1 px .2e m 0 0;
+                                                    margin: 1 px .2 em 0 0;
                                                     border - bottom - width: 0;
                                                     padding: 0;
                                                     white - space: nowrap
                                                 }.ui - tabs.ui - tabs - nav.ui - tabs - anchor {
-                                                    float: left;padding: .5e m 1e m;text - decoration: none
+                                                    float: left;padding: .5 em 1 em;text - decoration: none
                                                 }.ui - tabs.ui - tabs - nav li.ui - tabs - active {
                                                     margin - bottom: -1 px;
                                                     padding - bottom: 1 px
@@ -5814,7 +5812,7 @@ lightbox_background {
                                                 }.ui - tabs - collapsible.ui - tabs - nav li.ui - tabs - active.ui - tabs - anchor {
                                                     cursor: pointer
                                                 }.ui - tabs.ui - tabs - panel {
-                                                    display: block;border - width: 0;padding: 1e m 1.4e m;background: none
+                                                    display: block;border - width: 0;padding: 1 em 1.4 em;background: none
                                                 }.ui - tooltip {
                                                     padding: 8 px;position: absolute;z - index: 9999;max - width: 300 px
                                                 }
@@ -5822,15 +5820,15 @@ lightbox_background {
                                                     border - width: 2 px
                                                 }.ui - widget {
                                                     font - family: Arial, Helvetica, sans - serif;
-                                                    font - size: 1e m
+                                                    font - size: 1 em
                                                 }.ui - widget.ui - widget {
-                                                    font - size: 1e m
+                                                    font - size: 1 em
                                                 }.ui - widget input,
                                                 .ui - widget select,
                                                 .ui - widget textarea,
                                                 .ui - widget button {
                                                     font - family: Arial, Helvetica, sans - serif;
-                                                    font - size: 1e m
+                                                    font - size: 1 em
                                                 }.ui - widget.ui - widget - content {
                                                     border: 1 px solid# c5c5c5
                                                 }.ui - widget - content {
@@ -5857,7 +5855,7 @@ lightbox_background {
                                                 .ui - button: focus {
                                                     border: 1 px solid# cccccc;background: #ededed;font - weight: normal;color: #2b2b2b}.ui-state-hover a,.ui-state-hover a:hover,.ui-state-hover a:link,.ui-state-hover a:visited,.ui-state-focus a,.ui-state-focus a:hover,.ui-state-focus a:link,.ui-state-focus a:visited,a.ui-button:hover,a.ui-button:focus{color:# 2 b2b2b;text - decoration: none
                                                 }.ui - visual - focus {
-                                                    box - shadow: 0 0 3 px 1 px #5e9ed6}.ui-state-active,.ui-widget-content .ui-state-active,.ui-widget-header .ui-state-active,a.ui-button:active,.ui-button:active,.ui-button.ui-state-active:hover{border:1px solid # 003e ff;
+                                                    box - shadow: 0 0 3 px 1 px #5e9ed6}.ui-state-active,.ui-widget-content .ui-state-active,.ui-widget-header .ui-state-active,a.ui-button:active,.ui-button:active,.ui-button.ui-state-active:hover{border:1px solid # 003 eff;
                                                     background: #007fff;font-weight:normal;color:# ffffff
                                                 }.ui - icon - background,
                                                 .ui - state - active.ui - icon - background {
