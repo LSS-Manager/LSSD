@@ -4011,5 +4011,15 @@
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "30",
         "NEF Anforderungswahrscheinlichkeit": "20",
         "Fachrichtung für Patienten": "Allgemeine Innere"
+    },
+    "384": {
+        "name": "Brennende Ballenpresse",
+        "Credits im Durchschnitt": "1100",
+        "Benötigte Löschfahrzeuge": "2",
+        "Ausbreitungsmöglichkeiten": [
+            ["https://www.leitstellenspiel.de/einsaetze/131", "Mittlerer Feldbrand"],
+            ["https://www.leitstellenspiel.de/einsaetze/132", "Großer Feldbrand"],
+            ["https://www.leitstellenspiel.de/einsaetze/133", "Großer Feldbrand"]
+        ]
     }
 }

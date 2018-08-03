@@ -30,7 +30,7 @@
     "5": {
         "name": "Brand in woonkamer",
         "Gemiddeld aantal Credits": "1400",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Benodigde tankautospuiten": "2",
         "Benodigde OvD-B's": "1",
         "Benodigde redvoertuigen": "1",
@@ -128,7 +128,7 @@
     "20": {
         "name": "Brand in kelder",
         "Gemiddeld aantal Credits": "1800",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Benodigde OvD-B's": "1",
         "Benodigde HOVD's": "1",
         "HOVD benodigd waarschijnlijkheid": "50",
@@ -148,7 +148,7 @@
     "22": {
         "name": "Brandend dak",
         "Gemiddeld aantal Credits": "2700",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Benodigde redvoertuigen": "1",
         "Hoogwerker benodigd waarschijnlijkheid": "100",
         "Benodigde tankautospuiten": "3",
@@ -171,7 +171,7 @@
     "25": {
         "name": "Verkeersongeval met beknelling",
         "Gemiddeld aantal Credits": "1000",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Benodigde hulpverleningsvoertuigen": "1",
         "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "10",
         "Benodigde OvD-B's": "1",
@@ -190,7 +190,7 @@
         "Slangenwagen benodigd waarschijnlijkheid": "20",
         "Benodigde HOVD's": "1",
         "HOVD benodigd waarschijnlijkheid": "50",
-        "Benodigde politieauto's": "1"
+        "Benodigde noodhulpeenheden": "1"
     },
     "27": {
         "name": "Persoon aangereden",
@@ -222,7 +222,7 @@
         "HOVD benodigd waarschijnlijkheid": "70",
         "Benodigde slangenwagens": "1",
         "Slangenwagen benodigd waarschijnlijkheid": "20",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximale patiënten aantal": "1",
         "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
     },
@@ -259,7 +259,7 @@
         "Benodigde tankautospuiten": "2",
         "Benodigde redvoertuigen": "1",
         "Benodigde OvD-B's": "1",
-        "Benodigde politieauto's": "1"
+        "Benodigde noodhulpeenheden": "1"
     },
     "35": {
         "name": "Brand in ziekenhuis",
@@ -332,7 +332,7 @@
         "Waarschuwings- en Verkenningsdienst voertuigen benodigd waarschijnlijkheid": "50",
         "Benodigde Adviseurs Gevaarlijke Stoffen": "1",
         "Aantal Adviseurs Gevaarlijke Stoffen benodigd waarschijnlijkheid": "50",
-        "Benodigde politieauto's": "2"
+        "Benodigde noodhulpeenheden": "2"
     },
     "43": {
         "name": "Kettingbotsing",
@@ -341,7 +341,7 @@
         "Benodigde hulpverleningsvoertuigen": "3",
         "Benodigde OvD-B's": "3",
         "Benodigde HOVD's": "2",
-        "Benodigde politieauto's": "5",
+        "Benodigde noodhulpeenheden": "5",
         "Alleen als grote inzet": "Ja",
         "Maximale patiënten aantal": "12",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie",
@@ -560,31 +560,31 @@
     "70": {
         "name": "Winkeldiefstal",
         "Gemiddeld aantal Credits": "200",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximaal aantal gevangenen": "1"
     },
     "71": {
         "name": "Winkeldiefstal",
         "Gemiddeld aantal Credits": "200",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximaal aantal gevangenen": "1"
     },
     "72": {
         "name": "Winkeldiefstal",
         "Gemiddeld aantal Credits": "200",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximaal aantal gevangenen": "1"
     },
     "73": {
         "name": "Tasjesdief",
         "Gemiddeld aantal Credits": "200",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximaal aantal gevangenen": "1"
     },
     "74": {
         "name": "Huiselijk geweld",
         "Gemiddeld aantal Credits": "750",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximaal aantal gevangenen": "2",
         "Maximale patiënten aantal": "1",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
@@ -592,7 +592,7 @@
     "75": {
         "name": "Bestuurder onder invloed",
         "Gemiddeld aantal Credits": "300",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximaal aantal gevangenen": "1"
     },
     "76": {
@@ -603,7 +603,7 @@
         "Benodigde HOVD's": "1",
         "HOVD benodigd waarschijnlijkheid": "10",
         "Benodigde hulpverleningsvoertuigen": "1",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Minimale aantal slachtoffers": "1",
         "Maximale patiënten aantal": "5",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie",
@@ -616,7 +616,7 @@
         "Benodigde OvD-B's": "1",
         "Benodigde hulpverleningsvoertuigen": "1",
         "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "80",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Minimale aantal slachtoffers": "1",
         "Maximale patiënten aantal": "2",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie",
@@ -650,13 +650,13 @@
     "81": {
         "name": "Verward persoon",
         "Gemiddeld aantal Credits": "200",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximaal aantal gevangenen": "1"
     },
     "82": {
         "name": "Vrachtwagen gekanteld",
         "Gemiddeld aantal Credits": "1000",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Benodigde OvD-B's": "1",
         "Benodigde hulpverleningsvoertuigen": "1",
         "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "70",
@@ -685,7 +685,7 @@
     "85": {
         "name": "Aanrijding voetganger (> 30km/h)",
         "Benodigde aantal politiebureaus": "3",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximale patiënten aantal": "1",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie",
         "Minimale aantal slachtoffers": "1",
@@ -695,7 +695,7 @@
     "86": {
         "name": "Aanrijding door trein",
         "Benodigde aantal politiebureaus": "3",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximale patiënten aantal": "1",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie",
         "Minimale aantal slachtoffers": "1",
@@ -821,7 +821,7 @@
         "Aantal Adviseurs Gevaarlijke Stoffen benodigd waarschijnlijkheid": "10",
         "Benodigde OvD-B's": "1",
         "OvD-B benodigd waarschijnlijkheid": "50",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Benodigde tankautospuiten": "1",
         "Maximale patiënten aantal": "2",
         "Gespecialiseerde afdeling voor patiënten": "Interne Geneeskunde"
@@ -865,7 +865,7 @@
     "107": {
         "name": "Persoon bekneld in machine",
         "Gemiddeld aantal Credits": "540",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Benodigde OvD-B's": "1",
         "Benodigde hulpverleningsvoertuigen": "1",
         "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "80",
@@ -878,7 +878,7 @@
     "108": {
         "name": "Ongeval met trein en personenauto",
         "Gemiddeld aantal Credits": "1240",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Benodigde OvD-B's": "1",
         "Benodigde hulpverleningsvoertuigen": "1",
         "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "90",
@@ -890,7 +890,7 @@
     "109": {
         "name": "Ongeval met trein en persoon",
         "Gemiddeld aantal Credits": "740",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Benodigde OvD-B's": "1",
         "Benodigde hulpverleningsvoertuigen": "1",
         "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "80",
@@ -920,13 +920,13 @@
     "112": {
         "name": "Overval winkel",
         "Gemiddeld aantal Credits": "400",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Maximaal aantal gevangenen": "1"
     },
     "113": {
         "name": "Overval winkel",
         "Gemiddeld aantal Credits": "1000",
-        "Benodigde politieauto's": "3",
+        "Benodigde noodhulpeenheden": "3",
         "Maximaal aantal gevangenen": "1"
     },
     "114": {
@@ -941,7 +941,7 @@
         "Benodigde tankautospuiten": "2",
         "Benodigde OvD-B's": "1",
         "Benodigde redvoertuigen": "1",
-        "Benodigde politieauto's": "1"
+        "Benodigde noodhulpeenheden": "1"
     },
     "116": {
         "name": "Voetbalwedstrijd",
@@ -962,20 +962,20 @@
     "118": {
         "name": "Hardloopevenement",
         "Gemiddeld aantal Credits": "3700",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Benodigde Ambulances": "3",
         "Duur": "4 uur"
     },
     "119": {
         "name": "Begeleiding orkest",
         "Gemiddeld aantal Credits": "2000",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Duur": "1 uur"
     },
     "120": {
         "name": "Begeleiding wielrenners",
         "Gemiddeld aantal Credits": "4000",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Benodigde Ambulances": "2",
         "Duur": "2 uur"
     },
@@ -989,25 +989,25 @@
     "122": {
         "name": "Overval winkel",
         "Gemiddeld aantal Credits": "4000",
-        "Benodigde politieauto's": "5",
+        "Benodigde noodhulpeenheden": "5",
         "Benodigde politie helikopters": "1"
     },
     "123": {
         "name": "Overval winkel",
         "Gemiddeld aantal Credits": "4000",
-        "Benodigde politieauto's": "5",
+        "Benodigde noodhulpeenheden": "5",
         "Benodigde politie helikopters": "1"
     },
     "124": {
         "name": "Achtervolging personenauto",
         "Gemiddeld aantal Credits": "4000",
-        "Benodigde politieauto's": "4",
+        "Benodigde noodhulpeenheden": "4",
         "Benodigde politie helikopters": "1"
     },
     "125": {
         "name": "Vermist persoon",
         "Gemiddeld aantal Credits": "3500",
-        "Benodigde politieauto's": "3",
+        "Benodigde noodhulpeenheden": "3",
         "Benodigde politie helikopters": "1",
         "Eind datum": "do 06 nov 2014 23:59:00 +00:00"
     },
@@ -1047,7 +1047,7 @@
     "130": {
         "name": "Brand in cafetaria",
         "Gemiddeld aantal Credits": "1400",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Benodigde tankautospuiten": "2",
         "Benodigde redvoertuigen": "1",
         "Hoogwerker benodigd waarschijnlijkheid": "50",
@@ -1056,7 +1056,7 @@
     "131": {
         "name": "Brand in cafetaria",
         "Gemiddeld aantal Credits": "1700",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Benodigde tankautospuiten": "3",
         "Benodigde redvoertuigen": "1",
         "Benodigde OvD-B's": "1",
@@ -1214,35 +1214,35 @@
     "150": {
         "name": "Monster uitgebroken",
         "Gemiddeld aantal Credits": "1600",
-        "Benodigde politieauto's": "4",
+        "Benodigde noodhulpeenheden": "4",
         "Start datum": "ma 30 okt 2017 00:00:00 +00:00",
         "Eind datum": "ma 06 nov 2017 23:59:00 +00:00"
     },
     "151": {
         "name": "Gestolen pompoenen",
         "Gemiddeld aantal Credits": "100",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Start datum": "ma 30 okt 2017 00:00:00 +00:00",
         "Eind datum": "ma 06 nov 2017 23:59:00 +00:00"
     },
     "152": {
         "name": "Frankenstein gespot",
         "Gemiddeld aantal Credits": "550",
-        "Benodigde politieauto's": "3",
+        "Benodigde noodhulpeenheden": "3",
         "Start datum": "ma 30 okt 2017 00:00:00 +00:00",
         "Eind datum": "ma 06 nov 2017 23:59:00 +00:00"
     },
     "153": {
         "name": "Snoep diefstal",
         "Gemiddeld aantal Credits": "100",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Start datum": "ma 30 okt 2017 00:00:00 +00:00",
         "Eind datum": "ma 06 nov 2017 23:59:00 +00:00"
     },
     "154": {
         "name": "Horrorclown gespot",
         "Gemiddeld aantal Credits": "600",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Maximaal aantal gevangenen": "1",
         "Start datum": "ma 30 okt 2017 00:00:00 +00:00",
         "Eind datum": "ma 06 nov 2017 23:59:00 +00:00"
@@ -1332,7 +1332,7 @@
     "163": {
         "name": "Piet bestolen",
         "Gemiddeld aantal Credits": "500",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Start datum": "vrij 24 nov 2017 12:00:00 +00:00",
         "Eind datum": "di 05 dec 2017 23:59:00 +00:00"
     },
@@ -1358,14 +1358,14 @@
     "166": {
         "name": "Demonstratie zwarte piet",
         "Gemiddeld aantal Credits": "1200",
-        "Benodigde politieauto's": "4",
+        "Benodigde noodhulpeenheden": "4",
         "Start datum": "vrij 24 nov 2017 12:00:00 +00:00",
         "Eind datum": "di 05 dec 2017 23:59:00 +00:00"
     },
     "167": {
         "name": "Schoenen dief",
         "Gemiddeld aantal Credits": "200",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Start datum": "vrij 24 nov 2017 12:00:00 +00:00",
         "Eind datum": "di 05 dec 2017 23:59:00 +00:00"
     },
@@ -1398,7 +1398,7 @@
         "Benodigde tankautospuiten": "1",
         "Benodigde OvD-B's": "1",
         "OvD-B benodigd waarschijnlijkheid": "40",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximale patiënten aantal": "1",
         "Minimale aantal slachtoffers": "1",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie",
@@ -1419,7 +1419,7 @@
     "173": {
         "name": "Ruzie op de kerstmarkt",
         "Gemiddeld aantal Credits": "1000",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Maximaal aantal gevangenen": "2",
         "Start datum": "woe 06 dec 2017 00:00:00 +00:00",
         "Eind datum": "ma 25 dec 2017 00:00:00 +00:00"
@@ -1427,7 +1427,7 @@
     "174": {
         "name": "Diefstal op de kerstmarkt",
         "Gemiddeld aantal Credits": "200",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Maximaal aantal gevangenen": "1",
         "Start datum": "woe 06 dec 2017 00:00:00 +00:00",
         "Eind datum": "ma 25 dec 2017 00:00:00 +00:00"
@@ -1462,7 +1462,7 @@
     "178": {
         "name": "Donkere dagen offensief",
         "Gemiddeld aantal Credits": "600",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Start datum": "woe 06 dec 2017 00:00:00 +00:00",
         "Eind datum": "ma 25 dec 2017 00:00:00 +00:00"
     },
@@ -1481,12 +1481,12 @@
         "Gemiddeld aantal Credits": "1000",
         "Benodigde tankautospuiten": "1",
         "Benodigde Waterongevallenvoertuigen": "1",
-        "Benodigde politieauto's": "2"
+        "Benodigde noodhulpeenheden": "2"
     },
     "181": {
         "name": "Verkeersongeval met beknelling",
         "Gemiddeld aantal Credits": "1600",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Benodigde Waterongevallenvoertuigen": "1",
         "Waterongevallenvoertuigen benodigd waarschijnlijkheid": "20",
         "Benodigde tankautospuiten": "1",
@@ -1500,7 +1500,7 @@
     "182": {
         "name": "Personenauto in sloot",
         "Gemiddeld aantal Credits": "1400",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Benodigde Waterongevallenvoertuigen": "1",
         "Waterongevallenvoertuigen benodigd waarschijnlijkheid": "80",
         "Benodigde hulpverleningsvoertuigen": "1",
@@ -1533,7 +1533,7 @@
         "Benodigde tankautospuiten": "1",
         "Benodigde OvD-B's": "1",
         "Benodigde Waterongevallenvoertuigen": "1",
-        "Benodigde politieauto's": "1"
+        "Benodigde noodhulpeenheden": "1"
     },
     "186": {
         "name": "Parkeergarage onder water",
@@ -1625,7 +1625,7 @@
     "199": {
         "name": "Inbraak in woning",
         "Gemiddeld aantal Credits": "800",
-        "Benodigde politieauto's": "3",
+        "Benodigde noodhulpeenheden": "3",
         "Benodigde Officiers van Dienst Politie": "1",
         "Officier van Dienst Politie benodigd waarschijnlijkheid": "50",
         "Maximaal aantal gevangenen": "1"
@@ -1633,7 +1633,7 @@
     "200": {
         "name": "Drugslab aangetroffen",
         "Gemiddeld aantal Credits": "800",
-        "Benodigde politieauto's": "4",
+        "Benodigde noodhulpeenheden": "4",
         "Benodigde Officiers van Dienst Politie": "1",
         "Benodigde tankautospuiten": "1",
         "Benodigde OvD-B's": "1",
@@ -1643,7 +1643,7 @@
     "201": {
         "name": "Vechtpartij in café",
         "Gemiddeld aantal Credits": "850",
-        "Benodigde politieauto's": "4",
+        "Benodigde noodhulpeenheden": "4",
         "Benodigde Officiers van Dienst Politie": "1",
         "Officier van Dienst Politie benodigd waarschijnlijkheid": "50",
         "Maximale patiënten aantal": "1",
@@ -1653,7 +1653,7 @@
     "202": {
         "name": "Steekincident",
         "Gemiddeld aantal Credits": "1500",
-        "Benodigde politieauto's": "5",
+        "Benodigde noodhulpeenheden": "5",
         "Benodigde Officiers van Dienst Politie": "1",
         "Maximale patiënten aantal": "1",
         "Minimale aantal slachtoffers": "1",
@@ -1665,7 +1665,7 @@
     "203": {
         "name": "Verkeersongeval met gevaarlijke stoffen",
         "Gemiddeld aantal Credits": "1000",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Benodigde tankautospuiten": "1",
         "Benodigde OvD-B's": "1",
         "Benodigde hulpverleningsvoertuigen": "1",
@@ -1680,7 +1680,7 @@
     "204": {
         "name": "Verkeersongeval met gevaarlijke stoffen",
         "Gemiddeld aantal Credits": "1600",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Benodigde tankautospuiten": "1",
         "Benodigde OvD-B's": "1",
         "Benodigde hulpverleningsvoertuigen": "1",
@@ -1706,7 +1706,7 @@
         "Benodigde Waterongevallenvoertuigen": "2",
         "Benodigde waterongevallenaanhangers": "1",
         "Waterongevallenaanhangers benodigd waarschijnlijkheid": "50",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximale patiënten aantal": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
         "Gespecialiseerde afdeling voor patiënten": "Interne Geneeskunde"
@@ -1720,7 +1720,7 @@
         "Benodigde OvD-B's": "1",
         "Benodigde Waterongevallenvoertuigen": "2",
         "Benodigde waterongevallenaanhangers": "1",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximale patiënten aantal": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
         "Gespecialiseerde afdeling voor patiënten": "Interne Geneeskunde"
@@ -1737,7 +1737,7 @@
         "Benodigde Waterongevallenvoertuigen": "1",
         "Benodigde waterongevallenaanhangers": "1",
         "Waterongevallenaanhangers benodigd waarschijnlijkheid": "10",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Maximale patiënten aantal": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100"
     },
@@ -1753,7 +1753,7 @@
         "Benodigde Waterongevallenvoertuigen": "2",
         "Benodigde waterongevallenaanhangers": "1",
         "Waterongevallenaanhangers benodigd waarschijnlijkheid": "50",
-        "Benodigde politieauto's": "3",
+        "Benodigde noodhulpeenheden": "3",
         "Maximale patiënten aantal": "3",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "90"
     },
@@ -1768,7 +1768,7 @@
         "Benodigde OvD-B's": "1",
         "Benodigde Waterongevallenvoertuigen": "1",
         "Benodigde waterongevallenaanhangers": "1",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Maximale patiënten aantal": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "90",
         "Gespecialiseerde afdeling voor patiënten": "Interne Geneeskunde"
@@ -1784,7 +1784,7 @@
         "Benodigde OvD-B's": "1",
         "Benodigde Waterongevallenvoertuigen": "2",
         "Benodigde waterongevallenaanhangers": "1",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Maximale patiënten aantal": "2",
         "Minimale aantal slachtoffers": "2",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "90",
@@ -1805,7 +1805,7 @@
         "Commandowagen benodigdheid": "50",
         "Benodigde Waterongevallenvoertuigen": "3",
         "Benodigde waterongevallenaanhangers": "2",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Maximale patiënten aantal": "4",
         "Minimale aantal slachtoffers": "3",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "90",
@@ -1819,7 +1819,7 @@
         "Benodigde Waterongevallenvoertuigen": "1",
         "Benodigde waterongevallenaanhangers": "1",
         "Waterongevallenaanhangers benodigd waarschijnlijkheid": "80",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximale patiënten aantal": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
         "Gespecialiseerde afdeling voor patiënten": "Interne Geneeskunde"
@@ -1833,7 +1833,7 @@
         "Benodigde OvD-B's": "1",
         "Benodigde Waterongevallenvoertuigen": "2",
         "Benodigde waterongevallenaanhangers": "2",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximale patiënten aantal": "2",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
         "Gespecialiseerde afdeling voor patiënten": "Interne Geneeskunde"
@@ -1868,13 +1868,13 @@
     "217": {
         "name": "Plofkraak",
         "Gemiddeld aantal Credits": "620",
-        "Benodigde politieauto's": "5",
+        "Benodigde noodhulpeenheden": "5",
         "Benodigde Officiers van Dienst Politie": "1"
     },
     "218": {
         "name": "Plofkraak",
         "Gemiddeld aantal Credits": "1100",
-        "Benodigde politieauto's": "5",
+        "Benodigde noodhulpeenheden": "5",
         "Benodigde politie helikopters": "1",
         "Benodigde Officiers van Dienst Politie": "1",
         "Benodigde tankautospuiten": "1",
@@ -1895,14 +1895,14 @@
         "Benodigde tankautospuiten": "2",
         "Benodigde hulpverleningsvoertuigen": "1",
         "Benodigde redvoertuigen": "1",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Benodigde Ambulances": "1",
         "Duur": "2 uur"
     },
     "221": {
         "name": "Inval in woning",
         "Gemiddeld aantal Credits": "800",
-        "Benodigde politieauto's": "3",
+        "Benodigde noodhulpeenheden": "3",
         "Benodigde Officiers van Dienst Politie": "1",
         "Officier van Dienst Politie benodigd waarschijnlijkheid": "50",
         "Maximaal aantal gevangenen": "1"
@@ -1910,7 +1910,7 @@
     "222": {
         "name": "Inbraak in woning",
         "Gemiddeld aantal Credits": "1000",
-        "Benodigde politieauto's": "4",
+        "Benodigde noodhulpeenheden": "4",
         "Benodigde Officiers van Dienst Politie": "1",
         "Officier van Dienst Politie benodigd waarschijnlijkheid": "50",
         "Benodigde politie helikopters": "1",
@@ -1944,13 +1944,13 @@
     "227": {
         "name": "Assistentie treinconducteur",
         "Benodigde aantal politiebureaus": "2",
-        "Benodigde politieauto's": "3",
+        "Benodigde noodhulpeenheden": "3",
         "Maximaal aantal gevangenen": "1"
     },
     "228": {
         "name": "Assistentie treinconducteur",
         "Benodigde aantal politiebureaus": "2",
-        "Benodigde politieauto's": "3",
+        "Benodigde noodhulpeenheden": "3",
         "Maximaal aantal gevangenen": "2"
     },
     "229": {
@@ -1969,7 +1969,7 @@
         "Waarschuwings- en Verkenningsdienst voertuigen benodigd waarschijnlijkheid": "10",
         "Benodigde Adviseurs Gevaarlijke Stoffen": "1",
         "Aantal Adviseurs Gevaarlijke Stoffen benodigd waarschijnlijkheid": "10",
-        "Benodigde politieauto's": "1"
+        "Benodigde noodhulpeenheden": "1"
     },
     "230": {
         "name": "Onwelwording",
@@ -1981,12 +1981,12 @@
     "231": {
         "name": "Vernieling bushokje",
         "Gemiddeld aantal Credits": "800",
-        "Benodigde politieauto's": "1"
+        "Benodigde noodhulpeenheden": "1"
     },
     "232": {
         "name": "Buspassagier weigert te betalen",
         "Gemiddeld aantal Credits": "800",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximaal aantal gevangenen": "1"
     },
     "233": {
@@ -2008,7 +2008,7 @@
         "Benodigde OvD-B's": "3",
         "Benodigde HOVD's": "2",
         "Benodigde Commandowagen": "2",
-        "Benodigde politieauto's": "14",
+        "Benodigde noodhulpeenheden": "14",
         "Alleen als grote inzet": "Ja",
         "Maximale patiënten aantal": "86",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie",
@@ -2019,7 +2019,7 @@
     "235": {
         "name": "Overdosis drugs",
         "Benodigd aantal Ambulancestandplaatsen": "1",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximale patiënten aantal": "1",
         "Gespecialiseerde afdeling voor patiënten": "Interne Geneeskunde",
         "Minimale aantal slachtoffers": "1"
@@ -2027,7 +2027,7 @@
     "236": {
         "name": "Schietincident",
         "Gemiddeld aantal Credits": "1500",
-        "Benodigde politieauto's": "5",
+        "Benodigde noodhulpeenheden": "5",
         "Benodigde Officiers van Dienst Politie": "1",
         "Maximale patiënten aantal": "2",
         "Minimale aantal slachtoffers": "1",
@@ -2044,7 +2044,7 @@
         "Benodigde OvD-B's": "1",
         "Benodigde Adembeschermingsvoertuigen": "1",
         "Adembeschermingsvoertuig benodigd waarschijnlijkheid": "10",
-        "Benodigde politieauto's": "1"
+        "Benodigde noodhulpeenheden": "1"
     },
     "238": {
         "name": "Brand in werkplaats",
@@ -2075,7 +2075,7 @@
         "Benodigde Waterongevallenvoertuigen": "1",
         "Benodigde waterongevallenaanhangers": "1",
         "Waterongevallenaanhangers benodigd waarschijnlijkheid": "80",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximale patiënten aantal": "1",
         "Minimale aantal slachtoffers": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
@@ -2090,7 +2090,7 @@
         "Benodigde OvD-B's": "1",
         "Benodigde Waterongevallenvoertuigen": "2",
         "Benodigde waterongevallenaanhangers": "1",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximale patiënten aantal": "1",
         "Minimale aantal slachtoffers": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
@@ -2099,7 +2099,7 @@
     "243": {
         "name": "Verdachte situatie",
         "Gemiddeld aantal Credits": "750",
-        "Benodigde politieauto's": "2"
+        "Benodigde noodhulpeenheden": "2"
     },
     "244": {
         "name": "Persoon van podium gevallen",
@@ -2112,7 +2112,7 @@
     "245": {
         "name": "Ontruimen kraakpand",
         "Gemiddeld aantal Credits": "3500",
-        "Benodigde politieauto's": "4",
+        "Benodigde noodhulpeenheden": "4",
         "Benodigde Officiers van Dienst Politie": "1",
         "Benodigde ME Groepsvoertuig": "3",
         "Benodigde ME Commandovoertuigen": "1",
@@ -2121,12 +2121,12 @@
     "246": {
         "name": "Persoon vermist",
         "Gemiddeld aantal Credits": "600",
-        "Benodigde politieauto's": "4"
+        "Benodigde noodhulpeenheden": "4"
     },
     "247": {
         "name": "Persoon vermist",
         "Gemiddeld aantal Credits": "1200",
-        "Benodigde politieauto's": "5",
+        "Benodigde noodhulpeenheden": "5",
         "Benodigde Officiers van Dienst Politie": "1",
         "Benodigde ME Groepsvoertuig": "3",
         "Benodigde ME Commandovoertuigen": "1"
@@ -2134,7 +2134,7 @@
     "248": {
         "name": "Persoon vermist",
         "Gemiddeld aantal Credits": "2200",
-        "Benodigde politieauto's": "3",
+        "Benodigde noodhulpeenheden": "3",
         "Benodigde ME Groepsvoertuig": "3",
         "Benodigde ME Commandovoertuigen": "1",
         "Benodigde politie helikopters": "1"
@@ -2142,13 +2142,13 @@
     "249": {
         "name": "Straatroof",
         "Gemiddeld aantal Credits": "2700",
-        "Benodigde politieauto's": "3",
+        "Benodigde noodhulpeenheden": "3",
         "Benodigde politie helikopters": "1"
     },
     "250": {
         "name": "Opnemen aangifte inbraak",
         "Gemiddeld aantal Credits": "300",
-        "Benodigde politieauto's": "1"
+        "Benodigde noodhulpeenheden": "1"
     },
     "251": {
         "name": "Vrachtwagen te water",
@@ -2160,7 +2160,7 @@
         "Benodigde Waterongevallenvoertuigen": "1",
         "Benodigde waterongevallenaanhangers": "1",
         "Waterongevallenaanhangers benodigd waarschijnlijkheid": "20",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximale patiënten aantal": "1",
         "Minimale aantal slachtoffers": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
@@ -2175,7 +2175,7 @@
         "Benodigde Waterongevallenvoertuigen": "2",
         "Benodigde waterongevallenaanhangers": "1",
         "Waterongevallenaanhangers benodigd waarschijnlijkheid": "60",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Maximale patiënten aantal": "1",
         "Minimale aantal slachtoffers": "1",
         "MMT-Arts benodigd waarschijnlijkheid": "100",
@@ -2188,7 +2188,7 @@
         "Benodigde tankautospuiten": "1",
         "Benodigde Waterongevallenvoertuigen": "1",
         "Benodigde waterongevallenaanhangers": "1",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Start datum": "vrij 24 nov 2017 12:00:00 +00:00",
         "Eind datum": "di 05 dec 2017 23:59:00 +00:00"
     },
@@ -2214,12 +2214,12 @@
     "256": {
         "name": "Geluidsoverlast",
         "Gemiddeld aantal Credits": "400",
-        "Benodigde politieauto's": "1"
+        "Benodigde noodhulpeenheden": "1"
     },
     "257": {
         "name": "Auto-inbraak",
         "Gemiddeld aantal Credits": "500",
-        "Benodigde politieauto's": "1"
+        "Benodigde noodhulpeenheden": "1"
     },
     "258": {
         "name": "Brand in flatwoning",
@@ -2234,7 +2234,7 @@
         "Benodigde tankautospuiten": "2",
         "Benodigde redvoertuigen": "1",
         "Benodigde OvD-B's": "1",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximale patiënten aantal": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "50",
         "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
@@ -2255,7 +2255,7 @@
     "262": {
         "name": "Burenruzie",
         "Gemiddeld aantal Credits": "430",
-        "Benodigde politieauto's": "1"
+        "Benodigde noodhulpeenheden": "1"
     },
     "263": {
         "name": "Brandende personenauto in parkeergarage",
@@ -2269,7 +2269,7 @@
         "Benodigde redvoertuigen": "1",
         "Hoogwerker benodigd waarschijnlijkheid": "20",
         "Benodigde OvD-B's": "1",
-        "Benodigde politieauto's": "1"
+        "Benodigde noodhulpeenheden": "1"
     },
     "265": {
         "name": "Vliegtuig met hydraulisch probleem",
@@ -2304,7 +2304,7 @@
         "Benodigde Commandowagen": "1",
         "Crashtender": "2",
         "AFO/OSC benodigd": "1",
-        "Benodigde politieauto's": "5",
+        "Benodigde noodhulpeenheden": "5",
         "Benodigde Officiers van Dienst Politie": "1",
         "Maximale patiënten aantal": "4",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "10",
@@ -2322,7 +2322,7 @@
         "Benodigde Commandowagen": "1",
         "Crashtender": "2",
         "AFO/OSC benodigd": "1",
-        "Benodigde politieauto's": "5",
+        "Benodigde noodhulpeenheden": "5",
         "Benodigde Officiers van Dienst Politie": "1"
     },
     "270": {
@@ -2331,7 +2331,7 @@
         "Benodigde OvD-B's": "1",
         "Crashtender": "2",
         "AFO/OSC benodigd": "1",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Benodigde tankautospuiten": "1",
         "Maximale patiënten aantal": "3",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "10",
@@ -2352,7 +2352,7 @@
         "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "50",
         "Benodigde OvD-B's": "1",
         "Crashtender": "1",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Maximale patiënten aantal": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "20",
         "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
@@ -2365,7 +2365,7 @@
         "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "80",
         "Benodigde OvD-B's": "1",
         "Crashtender": "1",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Maximale patiënten aantal": "2",
         "Minimale aantal slachtoffers": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
@@ -2382,7 +2382,7 @@
         "Benodigde Commandowagen": "1",
         "Commandowagen benodigdheid": "20",
         "Crashtender": "1",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Benodigde Officiers van Dienst Politie": "1",
         "Officier van Dienst Politie benodigd waarschijnlijkheid": "20",
         "Maximale patiënten aantal": "4",
@@ -2397,7 +2397,7 @@
         "Benodigde OvD-B's": "1",
         "OvD-B benodigd waarschijnlijkheid": "10",
         "Crashtender": "1",
-        "Benodigde politieauto's": "1"
+        "Benodigde noodhulpeenheden": "1"
     },
     "276": {
         "name": "Brandend klein vliegtuig",
@@ -2407,7 +2407,7 @@
         "Benodigde HOVD's": "1",
         "HOVD benodigd waarschijnlijkheid": "10",
         "Crashtender": "1",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Benodigde Officiers van Dienst Politie": "1",
         "Officier van Dienst Politie benodigd waarschijnlijkheid": "10"
     },
@@ -2430,7 +2430,7 @@
     "279": {
         "name": "Bedreiging",
         "Gemiddeld aantal Credits": "750",
-        "Benodigde politieauto's": "2"
+        "Benodigde noodhulpeenheden": "2"
     },
     "280": {
         "name": "Brand in garagebedrijf",
@@ -2451,7 +2451,7 @@
         "Slangenwagen benodigd waarschijnlijkheid": "50",
         "Benodigde HOVD's": "1",
         "HOVD benodigd waarschijnlijkheid": "50",
-        "Benodigde politieauto's": "1"
+        "Benodigde noodhulpeenheden": "1"
     },
     "282": {
         "name": "Brand in garagebedrijf",
@@ -2468,7 +2468,7 @@
         "Aantal Adviseurs Gevaarlijke Stoffen benodigd waarschijnlijkheid": "50",
         "Benodigde HOVD's": "1",
         "Benodigde Commandowagen": "1",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximale patiënten aantal": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "10",
         "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
@@ -2485,7 +2485,7 @@
     "284": {
         "name": "Gevaarlijk rijgedrag",
         "Gemiddeld aantal Credits": "500",
-        "Benodigde politieauto's": "1"
+        "Benodigde noodhulpeenheden": "1"
     },
     "285": {
         "name": "Brand in supermarkt",
@@ -2529,7 +2529,7 @@
         "Slangenwagen benodigd waarschijnlijkheid": "40",
         "Benodigde HOVD's": "1",
         "HOVD benodigd waarschijnlijkheid": "50",
-        "Benodigde politieauto's": "1"
+        "Benodigde noodhulpeenheden": "1"
     },
     "290": {
         "name": "Brand in magazijn",
@@ -2546,7 +2546,7 @@
         "Aantal Adviseurs Gevaarlijke Stoffen benodigd waarschijnlijkheid": "50",
         "Benodigde HOVD's": "1",
         "Benodigde Commandowagen": "1",
-        "Benodigde politieauto's": "2"
+        "Benodigde noodhulpeenheden": "2"
     },
     "291": {
         "name": "Brand in magazijn",
@@ -2562,7 +2562,7 @@
         "Benodigde Adviseurs Gevaarlijke Stoffen": "1",
         "Benodigde HOVD's": "1",
         "Benodigde Commandowagen": "1",
-        "Benodigde politieauto's": "2"
+        "Benodigde noodhulpeenheden": "2"
     },
     "292": {
         "name": "Ongeval met trein en vrachtwagen",
@@ -2571,7 +2571,7 @@
         "Benodigde hulpverleningsvoertuigen": "1",
         "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "80",
         "Benodigde OvD-B's": "1",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximale patiënten aantal": "1",
         "Minimale aantal slachtoffers": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "50",
@@ -2583,7 +2583,7 @@
         "Benodigde tankautospuiten": "2",
         "Benodigde hulpverleningsvoertuigen": "1",
         "Benodigde OvD-B's": "1",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Maximale patiënten aantal": "2",
         "Minimale aantal slachtoffers": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
@@ -2593,12 +2593,12 @@
     "294": {
         "name": "Overlast jeugd",
         "Gemiddeld aantal Credits": "550",
-        "Benodigde politieauto's": "1"
+        "Benodigde noodhulpeenheden": "1"
     },
     "295": {
         "name": "Overlast zwervers",
         "Gemiddeld aantal Credits": "450",
-        "Benodigde politieauto's": "1"
+        "Benodigde noodhulpeenheden": "1"
     },
     "296": {
         "name": "Brand in museum",
@@ -2615,7 +2615,7 @@
         "Benodigde OvD-B's": "1",
         "Benodigde Adembeschermingsvoertuigen": "1",
         "Adembeschermingsvoertuig benodigd waarschijnlijkheid": "10",
-        "Benodigde politieauto's": "1"
+        "Benodigde noodhulpeenheden": "1"
     },
     "298": {
         "name": "Brand in museum",
@@ -2631,7 +2631,7 @@
         "HOVD benodigd waarschijnlijkheid": "50",
         "Benodigde Commandowagen": "1",
         "Commandowagen benodigdheid": "50",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximale patiënten aantal": "1",
         "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
     },
@@ -2643,7 +2643,7 @@
         "Waterongevallenvoertuigen benodigd waarschijnlijkheid": "10",
         "Benodigde waterongevallenaanhangers": "1",
         "Waterongevallenaanhangers benodigd waarschijnlijkheid": "70",
-        "Benodigde politieauto's": "1"
+        "Benodigde noodhulpeenheden": "1"
     },
     "300": {
         "name": "Brandend plezierjacht",
@@ -2653,7 +2653,7 @@
         "Benodigde Waterongevallenvoertuigen": "1",
         "Waterongevallenvoertuigen benodigd waarschijnlijkheid": "40",
         "Benodigde waterongevallenaanhangers": "1",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximale patiënten aantal": "2",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "50",
         "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
@@ -2661,7 +2661,7 @@
     "301": {
         "name": "Inbraakalarm",
         "Gemiddeld aantal Credits": "750",
-        "Benodigde politieauto's": "2"
+        "Benodigde noodhulpeenheden": "2"
     },
     "302": {
         "name": "Brand in kantoorgebouw",
@@ -2690,7 +2690,7 @@
         "Slangenwagen benodigd waarschijnlijkheid": "20",
         "Benodigde HOVD's": "1",
         "HOVD benodigd waarschijnlijkheid": "50",
-        "Benodigde politieauto's": "1"
+        "Benodigde noodhulpeenheden": "1"
     },
     "305": {
         "name": "Verkeersongeval met touringcar",
@@ -2699,7 +2699,7 @@
         "Benodigde hulpverleningsvoertuigen": "1",
         "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "50",
         "Benodigde OvD-B's": "1",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Maximale patiënten aantal": "6",
         "Minimale aantal slachtoffers": "3",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
@@ -2713,7 +2713,7 @@
         "Benodigde OvD-B's": "1",
         "Benodigde HOVD's": "1",
         "HOVD benodigd waarschijnlijkheid": "50",
-        "Benodigde politieauto's": "3",
+        "Benodigde noodhulpeenheden": "3",
         "Maximale patiënten aantal": "8",
         "Minimale aantal slachtoffers": "5",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
@@ -2727,7 +2727,7 @@
         "Benodigde OvD-B's": "1",
         "Benodigde HOVD's": "1",
         "Benodigde Commandowagen": "1",
-        "Benodigde politieauto's": "4",
+        "Benodigde noodhulpeenheden": "4",
         "Benodigde Officiers van Dienst Politie": "1",
         "Maximale patiënten aantal": "10",
         "Minimale aantal slachtoffers": "7",
@@ -2745,7 +2745,7 @@
         "Benodigde slangenwagens": "4",
         "Benodigde HOVD's": "2",
         "Benodigde Commandowagen": "1",
-        "Benodigde politieauto's": "3"
+        "Benodigde noodhulpeenheden": "3"
     },
     "309": {
         "name": "Natuurbrand",
@@ -2757,12 +2757,12 @@
         "Benodigde slangenwagens": "6",
         "Benodigde HOVD's": "3",
         "Benodigde Commandowagen": "2",
-        "Benodigde politieauto's": "5"
+        "Benodigde noodhulpeenheden": "5"
     },
     "310": {
         "name": "Verkeersongeval met scooter en fietser",
         "Gemiddeld aantal Credits": "750",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximale patiënten aantal": "2",
         "Minimale aantal slachtoffers": "1",
         "MMT-Arts benodigd waarschijnlijkheid": "50",
@@ -2772,7 +2772,7 @@
     "311": {
         "name": "Verkeersongeval met fietser en fietser",
         "Gemiddeld aantal Credits": "650",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximale patiënten aantal": "2",
         "Minimale aantal slachtoffers": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "80",
@@ -2791,7 +2791,7 @@
         "HOVD benodigd waarschijnlijkheid": "80",
         "Benodigde Commandowagen": "1",
         "Commandowagen benodigdheid": "50",
-        "Benodigde politieauto's": "1",
+        "Benodigde noodhulpeenheden": "1",
         "Maximale patiënten aantal": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
         "MMT-Arts benodigd waarschijnlijkheid": "50",
@@ -2801,7 +2801,7 @@
         "name": "Brand in passagierstrein",
         "Gemiddeld aantal Credits": "1000",
         "Benodigde tankautospuiten": "1",
-        "Benodigde politieauto's": "1"
+        "Benodigde noodhulpeenheden": "1"
     },
     "314": {
         "name": "Brand in passagierstrein",
@@ -2810,7 +2810,7 @@
         "Benodigde hulpverleningsvoertuigen": "1",
         "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "10",
         "Benodigde OvD-B's": "1",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Maximale patiënten aantal": "2",
         "Minimale aantal slachtoffers": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "50",
@@ -2829,7 +2829,7 @@
         "Slangenwagen benodigd waarschijnlijkheid": "20",
         "Benodigde HOVD's": "1",
         "Benodigde Commandowagen": "1",
-        "Benodigde politieauto's": "3",
+        "Benodigde noodhulpeenheden": "3",
         "Benodigde Officiers van Dienst Politie": "1",
         "Maximale patiënten aantal": "4",
         "Minimale aantal slachtoffers": "2",
@@ -2839,13 +2839,13 @@
     "316": {
         "name": "Bedreiging met vuurwapen",
         "Gemiddeld aantal Credits": "1100",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Maximaal aantal gevangenen": "1"
     },
     "317": {
         "name": "Bedreiging met vuurwapen",
         "Gemiddeld aantal Credits": "2000",
-        "Benodigde politieauto's": "4",
+        "Benodigde noodhulpeenheden": "4",
         "Maximaal aantal gevangenen": "1"
     },
     "318": {
@@ -2903,7 +2903,7 @@
     "323": {
         "name": "Verkeersongeval met motorfiets",
         "Gemiddeld aantal Credits": "750",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Maximale patiënten aantal": "1",
         "Minimale aantal slachtoffers": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
@@ -2912,7 +2912,7 @@
     "324": {
         "name": "Verkeersongeval met personenauto en motorfiets",
         "Gemiddeld aantal Credits": "900",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Maximale patiënten aantal": "1",
         "Minimale aantal slachtoffers": "1",
         "MMT-Arts benodigd waarschijnlijkheid": "50",
@@ -2922,7 +2922,7 @@
     "325": {
         "name": "Verkeersongeval met fietser en motorfiets",
         "Gemiddeld aantal Credits": "1100",
-        "Benodigde politieauto's": "2",
+        "Benodigde noodhulpeenheden": "2",
         "Maximale patiënten aantal": "2",
         "Minimale aantal slachtoffers": "1",
         "MMT-Arts benodigd waarschijnlijkheid": "70",
@@ -2946,7 +2946,7 @@
         "Aantal Adviseurs Gevaarlijke Stoffen benodigd waarschijnlijkheid": "20",
         "Benodigde HOVD's": "1",
         "HOVD benodigd waarschijnlijkheid": "70",
-        "Benodigde politieauto's": "1"
+        "Benodigde noodhulpeenheden": "1"
     },
     "327": {
         "name": "Brand in landbouwschuur",
@@ -2964,6 +2964,24 @@
         "Benodigde HOVD's": "1",
         "Benodigde Commandowagen": "1",
         "Commandowagen benodigdheid": "50",
-        "Benodigde politieauto's": "2"
+        "Benodigde noodhulpeenheden": "2"
+    },
+    "328": {
+        "name": "Persoon onwel na mixen mest",
+        "Gemiddeld aantal Credits": "700",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "20",
+        "Benodigde OvD-B's": "1",
+        "OvD-B benodigd waarschijnlijkheid": "50",
+        "Benodigde Waarschuwings- en Verkenningsdienst voertuigen": "1",
+        "Waarschuwings- en Verkenningsdienst voertuigen benodigd waarschijnlijkheid": "10",
+        "Benodigde Adviseurs Gevaarlijke Stoffen": "1",
+        "Aantal Adviseurs Gevaarlijke Stoffen benodigd waarschijnlijkheid": "50",
+        "Benodigde noodhulpeenheden": "1",
+        "Maximale patiënten aantal": "2",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
+        "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
     }
 }
