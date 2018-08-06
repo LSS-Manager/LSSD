@@ -4021,5 +4021,22 @@
             ["https://www.leitstellenspiel.de/einsaetze/132", "Großer Feldbrand"],
             ["https://www.leitstellenspiel.de/einsaetze/133", "Großer Feldbrand"]
         ]
+    },
+    "385": {
+        "name": "Unfall beim Umpumpen von Flüssigkeiten",
+        "Credits im Durchschnitt": "5100",
+        "Benötigte GW-Mess": "1",
+        "Benötigte GW-Gefahrgut": "1",
+        "Benötigte ELW 2": "1",
+        "Benötigte ELW 1": "1",
+        "Benötigte GW-A": "1",
+        "Benötigte GW-Öl": "1",
+        "Benötigte GW-Werkfeuerwehr": "1",
+        "Benötigte Teleskopmasten": "1",
+        "Benötigte Löschfahrzeuge": "4",
+        "Maximale Patientenanzahl": "3",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "30",
+        "NEF Anforderungswahrscheinlichkeit": "20",
+        "Fachrichtung für Patienten": "Allgemeine Innere"
     }
 }

@@ -1716,6 +1716,7 @@ function hideVehicleBuildingHelpText(t) {
                 gwl2wasser_only: "Hose Vehicle",
                 hlf_only: null,
                 hlf_or_rw_and_lf: null,
+                hondengeleider: null,
                 k9: "K-9 Unit",
                 kdow_lna: null,
                 kdow_orgl: null,
@@ -1950,6 +1951,7 @@ function hideVehicleBuildingHelpText(t) {
                 gwl2wasser_only: "Schlauchwagen",
                 hlf_only: "HLF",
                 hlf_or_rw_and_lf: "HLF oder RW und LF",
+                hondengeleider: null,
                 k9: null,
                 kdow_lna: "KdoW-LNA",
                 kdow_orgl: "KdoW-OrgL",
@@ -2184,6 +2186,7 @@ function hideVehicleBuildingHelpText(t) {
                 gwl2wasser_only: "Alleen Slangenwagen / Tankwagen",
                 hlf_only: null,
                 hlf_or_rw_and_lf: null,
+                hondengeleider: "Hondengeleider",
                 k9: null,
                 kdow_lna: null,
                 kdow_orgl: "Officier van Dienst Geneeskunde",
@@ -2418,6 +2421,7 @@ function hideVehicleBuildingHelpText(t) {
                 gwl2wasser_only: null,
                 hlf_only: null,
                 hlf_or_rw_and_lf: null,
+                hondengeleider: null,
                 k9: null,
                 kdow_lna: null,
                 kdow_orgl: null,
@@ -2730,6 +2734,7 @@ function hideVehicleBuildingHelpText(t) {
                 gwl2wasser_only: null,
                 hlf_only: null,
                 hlf_or_rw_and_lf: null,
+                hondengeleider: null,
                 k9: null,
                 kdow_lna: null,
                 kdow_orgl: null,
@@ -19249,6 +19254,7 @@ var map, alliance_building_show, geocoder, directionsService, building_eval_unlo
         return missing
     }
     "undefined" != typeof L && (L.Icon.Default.imagePath = "/leaflet/images/"), aao_types = [
+        ["hondengeleider", I18n.t("intervention_order.vehicles.hondengeleider")],
         ["dlk_or_tm50", I18n.t("intervention_order.vehicles.dlk_or_tm50")],
         ["gw_werkfeuerwehr", I18n.t("intervention_order.vehicles.gw_werkfeuerwehr")],
         ["ulf", I18n.t("intervention_order.vehicles.ulf")],
