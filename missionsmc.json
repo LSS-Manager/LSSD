@@ -1754,5 +1754,26 @@
         "Expandable Missions": [
             ["https://www.missionchief.com/einsaetze/110", "Residential Fire"]
         ]
+    },
+    "197": {
+        "name": "Small boat fire",
+        "Average credits": "1250",
+        "Required Firetrucks": "3",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Boats": "1"
+    },
+    "198": {
+        "name": "Small boat fire",
+        "Average credits": "1250",
+        "Required Firetrucks": "3",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Boats": "1"
+    },
+    "199": {
+        "name": "Small boat fire",
+        "Average credits": "1250",
+        "Required Firetrucks": "3",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Boats": "1"
     }
 }

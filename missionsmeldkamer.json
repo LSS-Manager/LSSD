@@ -2983,5 +2983,75 @@
         "Minimale aantal slachtoffers": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
+    },
+    "329": {
+        "name": "Verwaarloosde hond in woning",
+        "Gemiddeld aantal Credits": "350",
+        "Benodigde Hondengeleider": "1",
+        "Benodigde noodhulpeenheden": "1"
+    },
+    "330": {
+        "name": "Vechtpartij in café",
+        "Gemiddeld aantal Credits": "2250",
+        "Benodigde noodhulpeenheden": "5",
+        "Benodigde Officiers van Dienst Politie": "1",
+        "Officier van Dienst Politie benodigd waarschijnlijkheid": "50",
+        "Benodigde Hondengeleider": "1",
+        "Maximale patiënten aantal": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "50",
+        "Gespecialiseerde afdeling voor patiënten": "Traumatologie",
+        "Maximaal aantal gevangenen": "2"
+    },
+    "331": {
+        "name": "Inbraak in bedrijfspand",
+        "Gemiddeld aantal Credits": "1500",
+        "Benodigde noodhulpeenheden": "2",
+        "Benodigde Hondengeleider": "1",
+        "Maximaal aantal gevangenen": "1"
+    },
+    "332": {
+        "name": "Inbraak in bedrijfspand",
+        "Gemiddeld aantal Credits": "1500",
+        "Benodigde noodhulpeenheden": "2",
+        "Benodigde Hondengeleider": "1",
+        "Maximaal aantal gevangenen": "1"
+    },
+    "333": {
+        "name": "Inbraak in bedrijfspand",
+        "Gemiddeld aantal Credits": "2000",
+        "Benodigde noodhulpeenheden": "3",
+        "Benodigde Hondengeleider": "1",
+        "Benodigde politie helikopters": "1",
+        "Maximaal aantal gevangenen": "1"
+    },
+    "334": {
+        "name": "Brand in schoolgebouw",
+        "Gemiddeld aantal Credits": "850",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde redvoertuigen": "1",
+        "Hoogwerker benodigd waarschijnlijkheid": "20"
+    },
+    "335": {
+        "name": "Brand in schoolgebouw",
+        "Gemiddeld aantal Credits": "1750",
+        "Benodigde tankautospuiten": "2",
+        "Benodigde redvoertuigen": "1",
+        "Hoogwerker benodigd waarschijnlijkheid": "80",
+        "Benodigde OvD-B's": "1",
+        "Benodigde noodhulpeenheden": "1"
+    },
+    "336": {
+        "name": "Brand in schoolgebouw",
+        "Gemiddeld aantal Credits": "2850",
+        "Benodigde tankautospuiten": "3",
+        "Benodigde redvoertuigen": "1",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Adembeschermingsvoertuigen": "1",
+        "Adembeschermingsvoertuig benodigd waarschijnlijkheid": "10",
+        "Benodigde slangenwagens": "1",
+        "Slangenwagen benodigd waarschijnlijkheid": "20",
+        "Benodigde HOVD's": "1",
+        "HOVD benodigd waarschijnlijkheid": "50",
+        "Benodigde noodhulpeenheden": "1"
     }
 }
