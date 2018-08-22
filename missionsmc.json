@@ -1775,5 +1775,22 @@
         "Required Firetrucks": "3",
         "Required Battalion Chief Vehicles": "1",
         "Required Boats": "1"
+    },
+    "200": {
+        "name": "Person with a weapon",
+        "Average credits": "2500",
+        "Required Police Cars": "4",
+        "Required K-9 Units": "1",
+        "Required SWAT Personnel": "1",
+        "Maximum Number of Prisoners": "1"
+    },
+    "201": {
+        "name": "VIP appearance",
+        "Average credits": "4000",
+        "Required Police Cars": "6",
+        "Required Police Helicopters": "1",
+        "Required K-9 Units": "2",
+        "Duration": "30 minutes",
+        "Required SWAT Personnel": "18"
     }
 }

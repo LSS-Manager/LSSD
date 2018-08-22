@@ -583,11 +583,9 @@
     },
     "74": {
         "name": "Huiselijk geweld",
-        "Gemiddeld aantal Credits": "750",
+        "Gemiddeld aantal Credits": "500",
         "Benodigde noodhulpeenheden": "1",
-        "Maximaal aantal gevangenen": "2",
-        "Maximale patiënten aantal": "1",
-        "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
+        "Maximaal aantal gevangenen": "1"
     },
     "75": {
         "name": "Bestuurder onder invloed",
@@ -3053,5 +3051,24 @@
         "Benodigde HOVD's": "1",
         "HOVD benodigd waarschijnlijkheid": "50",
         "Benodigde noodhulpeenheden": "1"
+    },
+    "337": {
+        "name": "Huiselijk geweld",
+        "Gemiddeld aantal Credits": "1000",
+        "Benodigde noodhulpeenheden": "2",
+        "Maximale patiënten aantal": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "50",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde",
+        "Maximaal aantal gevangenen": "1"
+    },
+    "338": {
+        "name": "Huiselijk geweld",
+        "Gemiddeld aantal Credits": "1550",
+        "Benodigde noodhulpeenheden": "2",
+        "Benodigde Hondengeleider": "1",
+        "Maximale patiënten aantal": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "50",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde",
+        "Maximaal aantal gevangenen": "2"
     }
 }

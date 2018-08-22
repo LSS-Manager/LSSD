@@ -4112,5 +4112,14 @@
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "50",
         "NEF Anforderungswahrscheinlichkeit": "10",
         "Fachrichtung für Patienten": "Allgemeine Innere"
+    },
+    "390": {
+        "name": "Sicherheitslandung",
+        "Credits im Durchschnitt": "1000",
+        "Benötigte Löschfahrzeuge": "1",
+        "Benötigte ELW 1": "1",
+        "Benötigte Flugfeldlöschfahrzeuge": "2",
+        "Benötigte RTW": "1",
+        "Benötigte Rettungstreppen": "1"
     }
 }
