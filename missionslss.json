@@ -4040,7 +4040,7 @@
         "Fachrichtung für Patienten": "Allgemeine Innere"
     },
     "386": {
-        "name": "Ammoniak austritt",
+        "name": "Ammoniakaustritt",
         "Credits im Durchschnitt": "5500",
         "Benötigte GW-Mess": "1",
         "Benötigte GW-Gefahrgut": "1",
@@ -4121,5 +4121,14 @@
         "Benötigte Flugfeldlöschfahrzeuge": "2",
         "Benötigte RTW": "1",
         "Benötigte Rettungstreppen": "1"
+    },
+    "391": {
+        "name": "Vergiftung",
+        "Vorraussetzung an Rettungswachen": "3",
+        "Mindest Patientenanzahl": "1",
+        "Maximale Patientenanzahl": "1",
+        "NEF Anforderungswahrscheinlichkeit": "60",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "90",
+        "Fachrichtung für Patienten": "Allgemeine Innere"
     }
 }

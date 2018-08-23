@@ -3070,5 +3070,35 @@
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "50",
         "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde",
         "Maximaal aantal gevangenen": "2"
+    },
+    "339": {
+        "name": "Lekkende LPG installatie",
+        "Gemiddeld aantal Credits": "1150",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "60",
+        "Benodigde OvD-B's": "1",
+        "OvD-B benodigd waarschijnlijkheid": "80",
+        "Benodigde Waarschuwings- en Verkenningsdienst voertuigen": "1",
+        "Waarschuwings- en Verkenningsdienst voertuigen benodigd waarschijnlijkheid": "10",
+        "Benodigde Adviseurs Gevaarlijke Stoffen": "1",
+        "Aantal Adviseurs Gevaarlijke Stoffen benodigd waarschijnlijkheid": "10",
+        "Benodigde noodhulpeenheden": "1"
+    },
+    "340": {
+        "name": "Lekkende LPG installatie",
+        "Gemiddeld aantal Credits": "2500",
+        "Benodigde tankautospuiten": "2",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Waarschuwings- en Verkenningsdienst voertuigen": "1",
+        "Waarschuwings- en Verkenningsdienst voertuigen benodigd waarschijnlijkheid": "30",
+        "Benodigde Adviseurs Gevaarlijke Stoffen": "1",
+        "Aantal Adviseurs Gevaarlijke Stoffen benodigd waarschijnlijkheid": "20",
+        "Benodigde HOVD's": "1",
+        "HOVD benodigd waarschijnlijkheid": "10",
+        "Benodigde Commandowagen": "1",
+        "Commandowagen benodigdheid": "10",
+        "Benodigde noodhulpeenheden": "2"
     }
 }
