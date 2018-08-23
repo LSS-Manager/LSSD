@@ -114,7 +114,8 @@
         "Average credits": "1000",
         "Required Firetrucks": "2",
         "Expandable Missions": [
-            ["https://www.missionchief.com/einsaetze/15", "Little wildfire"]
+            ["https://www.missionchief.com/einsaetze/15", "Little wildfire"],
+            ["https://www.missionchief.com/einsaetze/202", "Large Field Fire"]
         ]
     },
     "15": {
@@ -1781,7 +1782,6 @@
         "Average credits": "2500",
         "Required Police Cars": "4",
         "Required K-9 Units": "1",
-        "Required SWAT Personnel": "1",
         "Maximum Number of Prisoners": "1"
     },
     "201": {
@@ -1792,5 +1792,12 @@
         "Required K-9 Units": "2",
         "Duration": "30 minutes",
         "Required SWAT Personnel": "18"
+    },
+    "202": {
+        "name": "Large Field Fire",
+        "Average credits": "3000",
+        "Required Firetrucks": "5",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Water Tankers": "1"
     }
 }
