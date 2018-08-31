@@ -1799,5 +1799,10 @@
         "Required Firetrucks": "5",
         "Required Battalion Chief Vehicles": "1",
         "Required Water Tankers": "1"
+    },
+    "203": {
+        "name": "Natural gas odor",
+        "Average credits": "400",
+        "Required Firetrucks": "1"
     }
 }

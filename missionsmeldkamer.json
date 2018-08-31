@@ -3100,5 +3100,30 @@
         "Benodigde Commandowagen": "1",
         "Commandowagen benodigdheid": "10",
         "Benodigde noodhulpeenheden": "2"
+    },
+    "341": {
+        "name": "Nacontrole brand",
+        "Gemiddeld aantal Credits": "500",
+        "Benodigde tankautospuiten": "1",
+        "Uitbreidingsmogelijkheid": [
+            ["https://www.meldkamerspel.com/einsaetze/130", "Brand in cafetaria"]
+        ]
+    },
+    "342": {
+        "name": "Nacontrole brand",
+        "Gemiddeld aantal Credits": "500",
+        "Benodigde tankautospuiten": "1",
+        "Uitbreidingsmogelijkheid": [
+            ["https://www.meldkamerspel.com/einsaetze/297", "Brand in museum"]
+        ]
+    },
+    "343": {
+        "name": "Nacontrole brand",
+        "Gemiddeld aantal Credits": "500",
+        "Benodigde tankautospuiten": "1",
+        "Uitbreidingsmogelijkheid": [
+            ["https://www.meldkamerspel.com/einsaetze/60", "Brand in slaapkamer"],
+            ["https://www.meldkamerspel.com/einsaetze/114", "Brandend dak"]
+        ]
     }
 }
