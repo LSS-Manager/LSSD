@@ -4130,5 +4130,17 @@
         "NEF Anforderungswahrscheinlichkeit": "60",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "90",
         "Fachrichtung für Patienten": "Allgemeine Innere"
+    },
+    "392": {
+        "name": "Person durch Hubmaschine eingeklemmt",
+        "Credits im Durchschnitt": "1900",
+        "Benötigte Löschfahrzeuge": "2",
+        "Benötigte Rüstwagen": "1",
+        "Benötigte ELW 1": "1",
+        "Mindest Patientenanzahl": "1",
+        "Maximale Patientenanzahl": "1",
+        "Fachrichtung für Patienten": "Unfallchirurgie",
+        "NEF Anforderungswahrscheinlichkeit": "50",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "100"
     }
 }
