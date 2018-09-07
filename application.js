@@ -845,8 +845,7 @@ function vehicleDriveReal(e) {
                         r = 1e3 * routes[t.rh][t.current_step][2],
                         a = s - r;
                     t.current_step++, t.timer_steps = i.getTime() - a, o += 1
-                }
-            while (offset_step >= 100 && "undefined" != typeof routes[t.rh][t.current_step + 1]);
+                } while (offset_step >= 100 && "undefined" != typeof routes[t.rh][t.current_step + 1]);
             ("undefined" == typeof route_show || 1 == route_show) && "undefined" !=
             typeof t.polyline && o > 0 && ("undefined" == typeof t.delete_step_counter_cache && (t.delete_step_counter_cache = 0), "undefined" == typeof t.latitude || mapIsVisible([t.latitude, t.longitude]) ? (spliceLatLngs(t.polyline, o + t.delete_step_counter_cache), t.delete_step_counter_cache = 0) : t.delete_step_counter_cache = t.delete_step_counter_cache + o), "undefined" != typeof routes[t.rh][t.current_step] && "undefined" != typeof routes[t.rh][t.current_step + 1] && (start_lat = routes[t.rh][t.current_step][0], start_lng = routes[t.rh][t.current_step][1], end_lat = routes[t.rh][t.current_step + 1][0], end_lng = routes[t.rh][t.current_step + 1][1], offset_step = 100 * ((i.getTime() - t.timer_steps) / (1e3 * routes[t.rh][t.current_step][2])), diff_jb = end_lat - start_lat, diff_kb = end_lng - start_lng, current_lat = start_lat + diff_jb * (offset_step / 100), current_lng = start_lng + diff_kb * (offset_step / 100), t.latitude = current_lat, t.longitude = current_lng, 1 == mobile_bridge_use && 4 == mobile_version ? mobileBridgeAdd("vehicle_move", {
                 id: t.vehicle_id,
@@ -1423,8 +1422,7 @@ function hideVehicleBuildingHelpText(e) {
             if (i = s.shift(), n = e.split(this.defaultSeparator), o = this.translations[i]) {
                 for (; n.length && (o = o[n.shift()], void 0 !== o && null !== o););
                 if (void 0 !== o && null !== o) return o
-            }
-        return this.isSet(t.defaultValue) ? t.defaultValue : void 0
+            } return this.isSet(t.defaultValue) ? t.defaultValue : void 0
     }, t.meridian = function() {
         var e = this.lookup("time"),
             t = this.lookup("date");
@@ -1462,8 +1460,7 @@ function hideVehicleBuildingHelpText(e) {
             if (r = s.shift(), this.isSet(n[r])) {
                 a = n[r];
                 break
-            }
-        return i.count = String(e), this.interpolate(a, i)
+            } return i.count = String(e), this.interpolate(a, i)
     }, t.missingTranslation = function(e, t) {
         if ("guess" == this.missingBehaviour) {
             var i = e.split(".").slice(-1)[0];
@@ -3081,8 +3078,7 @@ function hideVehicleBuildingHelpText(e) {
                     if (l[a] && l[a].test(s)) {
                         c.unshift(a);
                         break
-                    }
-            if (c[0] in n) r = c[0];
+                    } if (c[0] in n) r = c[0];
             else {
                 for (a in n) {
                     if (!c[0] || e.converters[a + " " + c[0]]) {
@@ -3110,8 +3106,7 @@ function hideVehicleBuildingHelpText(e) {
                         if (a = o.split(" "), a[1] === s && (r = c[l + " " + a[0]] || c["* " + a[0]])) {
                             r === !0 ? r = c[o] : c[o] !== !0 && (s = a[0], u.unshift(a[1]));
                             break
-                        }
-                if (r !== !0)
+                        } if (r !== !0)
                     if (r && e["throws"]) t = r(t);
                     else try {
                         t = r(t)
@@ -3223,8 +3218,7 @@ function hideVehicleBuildingHelpText(e) {
                 if (o = t[n], en.exec(o)) {
                     if (delete t[n], s = s || "toggle" === o, o === (d ? "hide" : "show")) continue;
                     u[n] = p && p[n] || ut.style(e, n)
-                }
-            if (!ut.isEmptyObject(u)) {
+                } if (!ut.isEmptyObject(u)) {
                 p ? "hidden" in p && (d = p.hidden) : p = ut._data(e, "fxshow", {}), s && (p.hidden = !d), d ? ut(e).show() : c.done(function() {
                     ut(e).hide()
                 }), c.done(function() {
@@ -3591,8 +3585,7 @@ function hideVehicleBuildingHelpText(e) {
                             } else {
                                 if (o[2]) return ot.apply(i, t.getElementsByTagName(e)), i;
                                 if ((r = o[3]) && E.getElementsByClassName && t.getElementsByClassName) return ot.apply(i, t.getElementsByClassName(r)), i
-                            }
-                        if (E.qsa && (!F || !F.test(e))) {
+                            } if (E.qsa && (!F || !F.test(e))) {
                             if (h = u = U, d = t, p = 9 === a && e, 1 === a && "object" !== t.nodeName.toLowerCase()) {
                                 for (c = m(e), (u = t.getAttribute("id")) ? h = u.replace(Dt, "\\$&") : t.setAttribute("id", h), h = "[id='" + h + "'] ", l = c.length; l--;) c[l] = h + g(c[l]);
                                 d = _t.test(e) && t.parentNode || t, p = c.join(",")
@@ -3780,8 +3773,7 @@ function hideVehicleBuildingHelpText(e) {
                                 })).replace(ft, "$1"), i, n > a && w(e.slice(a, n)), o > n && w(e = e.slice(n)), o > n && g(e))
                             }
                             u.push(i)
-                        }
-                    return v(u)
+                        } return v(u)
                 }
 
                 function x(e, t) {
@@ -3803,8 +3795,7 @@ function hideVehicleBuildingHelpText(e) {
                                         if (p(h, a, l)) {
                                             c.push(h);
                                             break
-                                        }
-                                    v && (V = x, S = ++n)
+                                        } v && (V = x, S = ++n)
                                 }
                                 o && ((h = !p && h) && m--, s && _.push(h))
                             }
@@ -4263,8 +4254,7 @@ function hideVehicleBuildingHelpText(e) {
                         if (c[a].apply(t[0], t[1]) === !1 && e.stopOnFalse) {
                             o = !1;
                             break
-                        }
-                    i = !1, c && (u ? u.length && h(u.shift()) : o ? c = [] : d.disable())
+                        } i = !1, c && (u ? u.length && h(u.shift()) : o ? c = [] : d.disable())
                 },
                 d = {
                     add: function() {
@@ -4553,8 +4543,7 @@ function hideVehicleBuildingHelpText(e) {
                         if (i = this[r], n = 1 === i.nodeType && (i.className ? (" " + i.className + " ").replace(It, " ") : " ")) {
                             for (s = 0; o = t[s++];) n.indexOf(" " + o + " ") < 0 && (n += o + " ");
                             i.className = ut.trim(n)
-                        }
-                return this
+                        } return this
             },
             removeClass: function(e) {
                 var t, i, n, o, s, r = 0,
@@ -4569,8 +4558,7 @@ function hideVehicleBuildingHelpText(e) {
                             for (s = 0; o = t[s++];)
                                 for (; n.indexOf(" " + o + " ") >= 0;) n = n.replace(" " + o + " ", " ");
                             i.className = e ? ut.trim(n) : ""
-                        }
-                return this
+                        } return this
             },
             toggleClass: function(e, t) {
                 var i = typeof e,
@@ -4613,8 +4601,7 @@ function hideVehicleBuildingHelpText(e) {
                             if (i = n[l], !(!i.selected && l !== o || (ut.support.optDisabled ? i.disabled : null !== i.getAttribute("disabled")) || i.parentNode.disabled && ut.nodeName(i.parentNode, "optgroup"))) {
                                 if (t = ut(i).val(), s) return t;
                                 r.push(t)
-                            }
-                        return r
+                            } return r
                     },
                     set: function(e, t) {
                         for (var i, n, o = e.options, s = ut.makeArray(t), r = o.length; r--;) n = o[r], (n.selected = ut.inArray(ut(n).val(), s) >= 0) && (i = !0);
@@ -4812,8 +4799,7 @@ function hideVehicleBuildingHelpText(e) {
                                 elem: c,
                                 handlers: s
                             })
-                        }
-                return l < i.length && a.push({
+                        } return l < i.length && a.push({
                     elem: this,
                     handlers: i.slice(l)
                 }), a
@@ -5054,8 +5040,7 @@ function hideVehicleBuildingHelpText(e) {
                         if (i.nodeType < 11 && (r ? r.index(i) > -1 : 1 === i.nodeType && ut.find.matchesSelector(i, e))) {
                             i = s.push(i);
                             break
-                        }
-                return this.pushStack(s.length > 1 ? ut.unique(s) : s)
+                        } return this.pushStack(s.length > 1 ? ut.unique(s) : s)
             },
             index: function(e) {
                 return e ? "string" == typeof e ? ut.inArray(this[0], ut(e)) : ut.inArray(e.jquery ? e[0] : e, this) : this[0] && this[0].parentNode ? this.first().prevAll().length : -1
@@ -6426,8 +6411,7 @@ function hideVehicleBuildingHelpText(e) {
                     } else {
                         if (1 === arguments.length) return void 0 === this.options[t] ? null : this.options[t];
                         r[t] = i
-                    }
-                return this._setOptions(r), this
+                    } return this._setOptions(r), this
             },
             _setOptions: function(e) {
                 var t;
@@ -7314,8 +7298,7 @@ function hideVehicleBuildingHelpText(e) {
                                 if (a[o] === s[n].element[0]) {
                                     s[n].proportions().height = 0;
                                     continue e
-                                }
-                            s[n].visible = "none" !== s[n].element.css("display"), s[n].visible && ("mousedown" === r && s[n]._activate.call(s[n], i), s[n].offset = s[n].element.offset(), s[n].proportions({
+                                } s[n].visible = "none" !== s[n].element.css("display"), s[n].visible && ("mousedown" === r && s[n]._activate.call(s[n], i), s[n].offset = s[n].element.offset(), s[n].proportions({
                                 width: s[n].element[0].offsetWidth,
                                 height: s[n].element[0].offsetHeight
                             }))
@@ -8031,8 +8014,7 @@ function hideVehicleBuildingHelpText(e) {
                             if (this.direction = 1 === s ? "down" : "up", "pointer" !== this.options.tolerance && !this._intersectsWithSides(n)) break;
                             this._rearrange(t, n), this._trigger("change", t, this._uiHash());
                             break
-                        }
-                    return this._contactContainers(t), e.ui.ddmanager && e.ui.ddmanager.drag(this, t), this._trigger("sort", t, this._uiHash()), this.lastPositionAbs = this.positionAbs, !1
+                        } return this._contactContainers(t), e.ui.ddmanager && e.ui.ddmanager.drag(this, t), this._trigger("sort", t, this._uiHash()), this.lastPositionAbs = this.positionAbs, !1
                 },
                 _mouseStop: function(t, i) {
                     if (t) {
@@ -9858,8 +9840,7 @@ function hideVehicleBuildingHelpText(e) {
                                 return isNaN(t) ? d : t
                             }, f = p(h[0]), m = Math.max(f, p(h[1] || "")), f = n ? Math.max(f, n.getFullYear()) : f, m = o ? Math.min(m, o.getFullYear()) : m, e.yearshtml += "<select class='ui-datepicker-year' data-handler='selectYear' data-event='change'>"; m >= f; f++) e.yearshtml += "<option value='" + f + "'" + (f === i ? " selected='selected'" : "") + ">" + f + "</option>";
                         e.yearshtml += "</select>", b += e.yearshtml, e.yearshtml = null
-                    }
-                return b += this._get(e, "yearSuffix"), v && (b += (!s && g && _ ? "" : "&#xa0;") + y), b += "</div>"
+                    } return b += this._get(e, "yearSuffix"), v && (b += (!s && g && _ ? "" : "&#xa0;") + y), b += "</div>"
             },
             _adjustInstDate: function(e, t, i) {
                 var n = e.drawYear + ("Y" === i ? t : 0),
@@ -12830,10 +12811,8 @@ function hideVehicleBuildingHelpText(e) {
                                 else {
                                     for (g.cache[h].row.push(d), u = 0; r > u; ++u) "undefined" != typeof _[u] ? (a = o(n, d[0].cells[u], u), l = _[u].format(a, n, d[0].cells[u], u), p.push(l), "numeric" === (_[u].type || "").toLowerCase() && (v[u] = Math.max(Math.abs(l) || 0, v[u] || 0))) : g.debug && t("No parser found for cell:", d[0].cells[u], "does it have a header?");
                                     p.push(g.cache[h].normalized.length), g.cache[h].normalized.push(p)
-                                }
-                            g.cache[h].colMax = v
-                        }
-                    g.showProcessing && k.isProcessing(n), g.debug && i("Building cache for " + s + " rows", f)
+                                } g.cache[h].colMax = v
+                        } g.showProcessing && k.isProcessing(n), g.debug && i("Building cache for " + s + " rows", f)
                 }
 
                 function l(t, o) {
@@ -12849,8 +12828,7 @@ function hideVehicleBuildingHelpText(e) {
                                 if (m = r[h][l], y.push(s[m]), !_.appender || _.pager && (!_.pager.removeRows || !v.pager_removeRows) && !_.pager.ajax)
                                     for (f = s[m].length, d = 0; f > d; d++) u.append(s[m][d]);
                             k.processTbody(t, u, !1)
-                        }
-                    _.appender && _.appender(t, y), _.debug && i("Rebuilt table", g), o || _.appender || k.applyWidget(t), t.isUpdating && _.$table.trigger("updateComplete", t)
+                        } _.appender && _.appender(t, y), _.debug && i("Rebuilt table", g), o || _.appender || k.applyWidget(t), t.isUpdating && _.$table.trigger("updateComplete", t)
                 }
 
                 function c(t) {
@@ -12864,8 +12842,7 @@ function hideVehicleBuildingHelpText(e) {
                                 if ("undefined" == typeof f[l][o]) {
                                     d = o;
                                     break
-                                }
-                            for (m[c] = d, g = Math.max(d, g), e(r).attr({
+                                } for (m[c] = d, g = Math.max(d, g), e(r).attr({
                                     "data-column": d
                                 }), o = l; l + u > o; o++)
                                 for ("undefined" == typeof f[o] && (f[o] = []), p = f[o], s = d; d + h > s; s++) p[s] = "x"
@@ -16481,8 +16458,7 @@ function hideVehicleBuildingHelpText(e) {
                         if (t = this._tiles[e], t.current && !t.active) {
                             var n = t.coords;
                             this._retainParent(n.x, n.y, n.z, n.z - 5) || this._retainChildren(n.x, n.y, n.z, n.z + 2)
-                        }
-                    for (e in this._tiles) this._tiles[e].retain || this._removeTile(e)
+                        } for (e in this._tiles) this._tiles[e].retain || this._removeTile(e)
                 }
             },
             _removeTilesAtZoom: function(e) {
@@ -22621,8 +22597,7 @@ function(e) {
                     var s = "scewys" + e[o],
                         r = "scesrc" + e[o];
                     i || (gi[s] = gi[s] || [], gi[s].push(t)), n || (gi[r] = gi[r] || [], gi[r].push(t)), "valuechanged" === e[o] && (ui.hasHandler = !0)
-                }
-            return mi
+                } return mi
         }, mi.unbind = function(e, t, i, n) {
             e = e.split(" ");
             for (var s = e.length; s--;) ht(t) && (i || o(gi["scewys" + e[s]] || [], t), n || o(gi["scesrc" + e[s]] || [], t));
@@ -24527,8 +24502,7 @@ function(e) {
                     var s = "scewys" + e[o],
                         r = "scesrc" + e[o];
                     i || (gi[s] = gi[s] || [], gi[s].push(t)), n || (gi[r] = gi[r] || [], gi[r].push(t)), "valuechanged" === e[o] && (ui.hasHandler = !0)
-                }
-            return mi
+                } return mi
         }, mi.unbind = function(e, t, i, n) {
             e = e.split(" ");
             for (var s = e.length; s--;) ht(t) && (i || o(gi["scewys" + e[s]] || [], t), n || o(gi["scesrc" + e[s]] || [], t));
@@ -25612,8 +25586,7 @@ function(e) {
                         c = i, l = h(s.val, !0)
                     }
                     c && !u ? (f.push("<div>"), u = !0) : !c && u && (f.push("</div>\n"), u = !1), f.push(l)
-                }
-            return u && f.push("</div>\n"), f.join("")
+                } return u && f.push("</div>\n"), f.join("")
         }
 
         function g(e) {
@@ -25664,8 +25637,7 @@ function(e) {
                     if (n = r[o].type, (t = e.match(r[o].regex)) && t[0]) {
                         s.push(i(n, t[0])), e = e.substr(t[0].length);
                         continue e
-                    }
-                e.length && s.push(i(S, e)), e = ""
+                    } e.length && s.push(i(S, e)), e = ""
             }
             return s
         }, x.parse = function(e, t) {

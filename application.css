@@ -6280,6 +6280,54 @@ lightbox_background {
                                                 position: fixed;bottom: 0;right: 0;font - size: 15 px
                                             }.mapkit - marker {
                                                 cursor: pointer
+                                            }.navbar - landingpage_1 {
+                                                background - color: #101010;border:0}.ladingpage_1_title_bar{background-color:# 323 c42;
+                                                color: #ffffff;
+                                                margin: 0 px - 15 px 0 - 15 px;
+                                                text - align: center;
+                                                padding: 10 px
+                                            }.ladingpage_1_map {
+                                                margin: 0 - 15 px;height: 400 px
+                                            }.landingpage_1_signup_form {
+                                                position: absolute;padding: 20 px;width: 350 px;background - color: rgba(16, 16, 16, 0.8);display: block;color: white;left: 50 % ;margin: -500 px 0 0 - 175 px;border - radius: 4 px;border: 1 px solid white;z - index: 20
+                                            }.landingpage_1_feuerwehrmann {
+                                                z - index: 10;
+                                                position: absolute;
+                                                width: 450 px;
+                                                display: block;
+                                                left: 50 % ;
+                                                margin: -500 px 0 0 - 20 px
+                                            }.landingpage_1_feuerwehrmann_flammen {
+                                                z - index: 15;
+                                                position: absolute;
+                                                width: 450 px;
+                                                display: block;
+                                                left: 50 % ;
+                                                margin: -400 px 0 0 30 px
+                                            }.landingpage_1_signup_form h2 {
+                                                margin - top: 0;
+                                                margin - bottom: 20 px;
+                                                font - size: 23 px;
+                                                text - align: center
+                                            }.landingpage_1_signup_form.input - group - addon {
+                                                background - color: white
+                                            }.landingpage_1_signup_form.btn {
+                                                margin - top: 15 px
+                                            }.landingpage_1_signup_form.input - group - addon label {
+                                                width: 80 px
+                                            }.landingpage_1_text_block {
+                                                color: #646464;margin:10px auto 0 auto;max-width:1000px}.landingpage_1_text_block img{margin:0 10px;border:1px solid # 646464
+                                            }.landingpage_1_footer {
+                                                margin: 20 px - 15 px 0 - 15 px;padding: 10 px;background - color: #323c42;color:# ffffff
+                                            }.landingpage_1_footer a {
+                                                color: #ffffff
+                                            }.landingpage_1_icon_row_holder {
+                                                margin: 0 - 15 px 30 px - 15 px;color: #f0f0f0;background - color: #323c42;padding:10px 0}.landingpage_1_icon_row{max-width:1000px;margin:0 auto}.landingpage_1_icon_holder{background-color:# c9302c;padding: 10 px;display: block;border - radius: 10 px;float: left;margin - right: 10 px
+                                            }.ladingpage_1_icon_text {
+                                                font - weight: bold;
+                                                margin - top: 5 px
+                                            }.landingpage_1_icon {
+                                                width: 30 px;height: 30 px
                                             }
                                             /*
                                              * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)

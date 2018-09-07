@@ -1804,5 +1804,19 @@
         "name": "Natural gas odor",
         "Average credits": "400",
         "Required Firetrucks": "1"
+    },
+    "204": {
+        "name": "Ammonia Leak (Gas Alarm System)",
+        "Average credits": "5000",
+        "Required Firetrucks": "4",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Heavy Rescue Vehicles": "1",
+        "Required Mobile Air Vehicles": "1",
+        "Required HazMat Vehicles": "1",
+        "Required Mobile Command Vehicles": "1",
+        "Required Police Cars": "3",
+        "Max. Patients": "10",
+        "Patient Specializations": "General Internal",
+        "Probability that a patient has to be transported": "50"
     }
 }
