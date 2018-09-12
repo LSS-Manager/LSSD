@@ -4142,5 +4142,17 @@
         "Fachrichtung für Patienten": "Unfallchirurgie",
         "NEF Anforderungswahrscheinlichkeit": "50",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "100"
+    },
+    "393": {
+        "name": "Einsturzgefährdeter Balkon",
+        "Credits im Durchschnitt": "3000",
+        "Benötigte Löschfahrzeuge": "2",
+        "Benötigte Rüstwagen": "1",
+        "Benötigte ELW 1": "1",
+        "Benötigte Drehleitern": "1",
+        "Benötigte Feuerwehrkräne (FwK)": "1",
+        "FwK Anforderungswahrscheinlichkeit": "25",
+        "Benötigte Streifenwagen": "1",
+        "Benötigte GKW": "1"
     }
 }

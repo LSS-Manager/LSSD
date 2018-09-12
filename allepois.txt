@@ -40,6 +40,8 @@ LSS:
 37 = Bank
 38 = Kirche
 39 = Chemiepark
+40 = Industrie-Allgemein
+41 = Automobilindustrie
 
 MC:
 
