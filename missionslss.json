@@ -4154,5 +4154,22 @@
         "FwK Anforderungswahrscheinlichkeit": "25",
         "Benötigte Streifenwagen": "1",
         "Benötigte GKW": "1"
+    },
+    "394": {
+        "name": "LKW auf Stauende",
+        "Credits im Durchschnitt": "3000",
+        "Benötigte Löschfahrzeuge": "5",
+        "Benötigte ELW 1": "1",
+        "Benötigte Rüstwagen": "1",
+        "Benötigte GW-Öl": "1",
+        "GW-Öl Anforderungswahrscheinlichkeit": "25",
+        "Benötigte GW-Gefahrgut": "1",
+        "GW-Gefahrgut Anforderungswahrscheinlichkeit": "30",
+        "Benötigte Streifenwagen": "4",
+        "Maximale Patientenanzahl": "4",
+        "Mindest Patientenanzahl": "1",
+        "Fachrichtung für Patienten": "Unfallchirurgie",
+        "NEF Anforderungswahrscheinlichkeit": "80",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "90"
     }
 }

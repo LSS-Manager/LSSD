@@ -1746,7 +1746,10 @@
         "Required Battalion Chief Vehicles": "1",
         "Max. Patients": "4",
         "Probability that a patient has to be transported": "60",
-        "Patient Specializations": "General Internal"
+        "Patient Specializations": "General Internal",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/205", "Multiple vehicle fire in tunnel"]
+        ]
     },
     "196": {
         "name": "Kitchen Fire",
@@ -1818,5 +1821,20 @@
         "Max. Patients": "10",
         "Patient Specializations": "General Internal",
         "Probability that a patient has to be transported": "50"
+    },
+    "205": {
+        "name": "Multiple vehicle fire in tunnel",
+        "Average credits": "5000",
+        "Required Firetrucks": "6",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Heavy Rescue Vehicles": "1",
+        "Required Water Tankers": "1",
+        "Probability of Water Tanker being required": "40",
+        "Required Mobile Air Vehicles": "1",
+        "Probability of Mobile Air being required": "25",
+        "Required Mobile Command Vehicles": "1",
+        "Max. Patients": "8",
+        "Probability that a patient has to be transported": "60",
+        "Patient Specializations": "General Internal"
     }
 }
