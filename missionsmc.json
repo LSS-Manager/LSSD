@@ -1836,5 +1836,10 @@
         "Max. Patients": "8",
         "Probability that a patient has to be transported": "60",
         "Patient Specializations": "General Internal"
+    },
+    "206": {
+        "name": "Transformer fire",
+        "Average credits": "800",
+        "Required Firetrucks": "2"
     }
 }

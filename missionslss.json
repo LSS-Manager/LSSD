@@ -4191,5 +4191,12 @@
         "Benötigte GW-Werkfeuerwehr": "1",
         "Benötigte GW-A": "1",
         "GW-A Anforderungswahrscheinlichkeit": "10"
+    },
+    "397": {
+        "name": "Schnittwunde",
+        "Vorraussetzung an Rettungswachen": "1",
+        "Maximale Patientenanzahl": "1",
+        "Fachrichtung für Patienten": "Allgemeine Innere",
+        "Mindest Patientenanzahl": "1"
     }
 }
