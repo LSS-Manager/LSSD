@@ -5252,7 +5252,7 @@ lightbox_background {
                                     }.alert - danger a {
                                         color: #a94442;text - decoration: underline
                                     }.alert - success a {
-                                        color: #3c763d;text-decoration:underline}.alert-danger a.btn-success,.alert-success a.btn-success{color:white;text-decoration:none}body.dark .alert-success a,body.dark .alert-danger a{color:white;text-decoration:underline}@media (max-width: 767px){.nav-tabs li a{padding:7px 7px;margin-right:0px}}# col_right,
+                                        color: #3c763d;text-decoration:underline}.alert-danger a.btn-success,.alert-success a.btn-success,.alert-danger a.btn-default,.alert-success a.btn-default{color:white;text-decoration:none}.alert-danger a.btn-default,.alert-success a.btn-default{color:black;text-decoration:none}body.dark .alert-success a,body.dark .alert-danger a{color:white;text-decoration:underline}body.dark .alert-success a.btn-default{text-decoration:none}@media (max-width: 767px){.nav-tabs li a{padding:7px 7px;margin-right:0px}}# col_right,
                                         #col_left {
                                             padding: 5 px
                                         }#
@@ -6290,6 +6290,8 @@ lightbox_background {
                                                 margin: 0 - 15 px;height: 400 px
                                             }.landingpage_1_signup_form {
                                                 position: absolute;padding: 20 px;width: 350 px;background - color: rgba(16, 16, 16, 0.8);display: block;color: white;left: 50 % ;margin: -500 px 0 0 - 175 px;border - radius: 4 px;border: 1 px solid white;z - index: 20
+                                            }.landingpage_2_signup_form {
+                                                margin: -400 px 0 0 - 175 px
                                             }.landingpage_1_feuerwehrmann {
                                                 z - index: 10;
                                                 position: absolute;
@@ -6328,6 +6330,8 @@ lightbox_background {
                                                 margin - top: 5 px
                                             }.landingpage_1_icon {
                                                 width: 30 px;height: 30 px
+                                            }.mission_vehicle_label {
+                                                display: block;width: 100 % ;margin - bottom: 0
                                             }
                                             /*
                                              * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)

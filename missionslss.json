@@ -4196,7 +4196,26 @@
         "name": "Schnittwunde",
         "Vorraussetzung an Rettungswachen": "1",
         "Maximale Patientenanzahl": "1",
-        "Fachrichtung für Patienten": "Allgemeine Innere",
+        "Fachrichtung für Patienten": "Allgemeine Chirurgie",
         "Mindest Patientenanzahl": "1"
+    },
+    "398": {
+        "name": "Brennende Absauganlage",
+        "Credits im Durchschnitt": "3200",
+        "Benötigte Löschfahrzeuge": "4",
+        "Benötigte ELW 1": "1",
+        "Benötigte Rüstwagen": "1",
+        "Benötigte GW-Werkfeuerwehr": "1",
+        "Benötigte Teleskopmasten": "1",
+        "Benötigte GW-A": "1",
+        "GW-A Anforderungswahrscheinlichkeit": "20"
+    },
+    "399": {
+        "name": "Brand in Kabelkanal",
+        "Credits im Durchschnitt": "2700",
+        "Benötigte Löschfahrzeuge": "3",
+        "Benötigte Rüstwagen": "1",
+        "Benötigte ELW 1": "1",
+        "Benötigte GW-Werkfeuerwehr": "1"
     }
 }
