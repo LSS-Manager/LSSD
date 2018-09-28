@@ -2067,7 +2067,7 @@
     },
     "241": {
         "name": "Zwemmer vermist",
-        "Gemiddeld aantal Credits": "900",
+        "Gemiddeld aantal Credits": "1150",
         "Benodigde tankautospuiten": "1",
         "Benodigde OvD-B's": "1",
         "Benodigde Waterongevallenvoertuigen": "1",
@@ -2075,24 +2075,20 @@
         "Waterongevallenaanhangers benodigd waarschijnlijkheid": "80",
         "Benodigde noodhulpeenheden": "1",
         "Maximale patiënten aantal": "1",
-        "Minimale aantal slachtoffers": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
         "Gespecialiseerde afdeling voor patiënten": "Interne Geneeskunde"
     },
     "242": {
-        "name": "Zwemmer vermist",
-        "Gemiddeld aantal Credits": "1200",
+        "name": "Verlaten kleding langs waterkant",
+        "Gemiddeld aantal Credits": "900",
         "Benodigde tankautospuiten": "1",
-        "Benodigde redvoertuigen": "1",
-        "Hoogwerker benodigd waarschijnlijkheid": "10",
         "Benodigde OvD-B's": "1",
-        "Benodigde Waterongevallenvoertuigen": "2",
-        "Benodigde waterongevallenaanhangers": "1",
+        "Benodigde Waterongevallenvoertuigen": "1",
         "Benodigde noodhulpeenheden": "1",
-        "Maximale patiënten aantal": "1",
-        "Minimale aantal slachtoffers": "1",
-        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
-        "Gespecialiseerde afdeling voor patiënten": "Interne Geneeskunde"
+        "Uitbreidingsmogelijkheid": [
+            ["https://www.meldkamerspel.com/einsaetze/241", "Zwemmer vermist"],
+            ["https://www.meldkamerspel.com/einsaetze/348", "Zwemmer vermist"]
+        ]
     },
     "243": {
         "name": "Verdachte situatie",
@@ -3193,5 +3189,37 @@
         "Benodigde Commandowagen": "1",
         "Benodigde noodhulpeenheden": "5",
         "Alleen als grote inzet": "Ja"
+    },
+    "348": {
+        "name": "Zwemmer vermist",
+        "Gemiddeld aantal Credits": "1750",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde redvoertuigen": "1",
+        "Hoogwerker benodigd waarschijnlijkheid": "10",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "10",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Waterongevallenvoertuigen": "2",
+        "Benodigde waterongevallenaanhangers": "1",
+        "Benodigde noodhulpeenheden": "2",
+        "Maximale patiënten aantal": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
+        "Gespecialiseerde afdeling voor patiënten": "Interne Geneeskunde"
+    },
+    "349": {
+        "name": "Zwemmer vermist",
+        "Gemiddeld aantal Credits": "3150",
+        "Benodigde tankautospuiten": "2",
+        "Benodigde redvoertuigen": "1",
+        "Hoogwerker benodigd waarschijnlijkheid": "40",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "40",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Waterongevallenvoertuigen": "3",
+        "Benodigde waterongevallenaanhangers": "2",
+        "Benodigde noodhulpeenheden": "2",
+        "Maximale patiënten aantal": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
+        "Gespecialiseerde afdeling voor patiënten": "Interne Geneeskunde"
     }
 }

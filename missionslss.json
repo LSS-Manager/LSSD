@@ -4217,5 +4217,29 @@
         "Benötigte Rüstwagen": "1",
         "Benötigte ELW 1": "1",
         "Benötigte GW-Werkfeuerwehr": "1"
+    },
+    "400": {
+        "name": "Brand in Lackiererei",
+        "Credits im Durchschnitt": "5050",
+        "Benötigte Löschfahrzeuge": "7",
+        "Benötigte ELW 1": "2",
+        "Benötigte ELW 2": "1",
+        "Benötigte Rüstwagen": "1",
+        "Benötigte GW-Werkfeuerwehr": "1",
+        "Benötigte Teleskopmasten": "1",
+        "Benötigte ULF mit Löscharm": "1",
+        "Benötigte GW-A": "1"
+    },
+    "401": {
+        "name": "Umgestürzter Gabelstapler",
+        "Credits im Durchschnitt": "1600",
+        "Benötigte Löschfahrzeuge": "2",
+        "Benötigte GW-Werkfeuerwehr": "1",
+        "Benötigte ELW 1": "1",
+        "Mindest Patientenanzahl": "1",
+        "Maximale Patientenanzahl": "1",
+        "Fachrichtung für Patienten": "Unfallchirurgie",
+        "NEF Anforderungswahrscheinlichkeit": "80",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "100"
     }
 }

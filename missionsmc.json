@@ -1841,5 +1841,10 @@
         "name": "Transformer fire",
         "Average credits": "800",
         "Required Firetrucks": "2"
+    },
+    "207": {
+        "name": "Caller Hangup",
+        "Average credits": "600",
+        "Required Police Cars": "1"
     }
 }
