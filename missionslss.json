@@ -4241,5 +4241,59 @@
         "Fachrichtung für Patienten": "Unfallchirurgie",
         "NEF Anforderungswahrscheinlichkeit": "80",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "100"
+    },
+    "402": {
+        "name": "Brennender PKW",
+        "Credits im Durchschnitt": "400",
+        "Benötigte Löschfahrzeuge": "1"
+    },
+    "403": {
+        "name": "Mülleimerbrand",
+        "Credits im Durchschnitt": "110",
+        "Benötigte Löschfahrzeuge": "1"
+    },
+    "404": {
+        "name": "Mülleimerbrand",
+        "Credits im Durchschnitt": "110",
+        "Benötigte Löschfahrzeuge": "1"
+    },
+    "405": {
+        "name": "Brennender LKW",
+        "Credits im Durchschnitt": "980",
+        "Benötigte Löschfahrzeuge": "2"
+    },
+    "406": {
+        "name": "Brennender LKW",
+        "Credits im Durchschnitt": "980",
+        "Benötigte Löschfahrzeuge": "2"
+    },
+    "407": {
+        "name": "Brennende Filteranlage",
+        "Credits im Durchschnitt": "3700",
+        "Benötigte Löschfahrzeuge": "6",
+        "Benötigte ELW 1": "2",
+        "Benötigte ELW 2": "1",
+        "Benötigte Drehleitern": "1",
+        "Benötigte Rüstwagen": "1",
+        "Benötigte GW-Werkfeuerwehr": "1",
+        "Benötigte GW-A": "1"
+    },
+    "408": {
+        "name": "Rauchentwicklung an Förderband",
+        "Credits im Durchschnitt": "400",
+        "Benötigte Löschfahrzeuge": "1",
+        "Ausbreitungsmöglichkeiten": [
+            ["https://www.leitstellenspiel.de/einsaetze/396", "Maschinenbrand in Produktionshalle"]
+        ]
+    },
+    "409": {
+        "name": "Brennender LKW",
+        "Credits im Durchschnitt": "980",
+        "Benötigte Löschfahrzeuge": "2"
+    },
+    "410": {
+        "name": "Mülleimerbrand",
+        "Credits im Durchschnitt": "110",
+        "Benötigte Löschfahrzeuge": "1"
     }
 }

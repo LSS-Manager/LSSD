@@ -95,6 +95,10 @@ function allianceChat(e) {
     "true" == e.alliance_admin ? i += "label label-info" : "true" == e.alliance_coadmin && (i += "label label-default"), audio_chat && 1 != e.ignore_audio && user_id != e.user_id && play("chat_message"), i = i + "'>" + e.username + ":</a></span>", e.mission_id && (i = i + "<a href='/missions/" + e.mission_id + "' class='lightbox-open'><span class='glyphicon glyphicon-bell'></span>", "undefined" != typeof e.mission_caption && e.mission_caption && (i = i + "[" + e.mission_caption + "]"), i += "</a> "), i = i + " " + e.message + "</li>", $("#mission_chat_messages").prepend(i), !$("body").hasClass("bigMap") || missionMarkerBulkAdd || $("#chat_outer").hasClass("fadeIn") || $("#bigMapMenuChatButton").addClass("bigMapMenuButtonGreen")
 }
 
+function missionWindowHasUpdate(e) {
+    $("#mission_bar_holder_" + e).addClass("col-xs-3 col-md-6"), $("#mission_reload_request_" + e).show()
+}
+
 function missionAlarmTrailerCheck(e) {
     return $("input.vehicle_checkbox[trailer=1][fms=2]" + ("undefined" != typeof e ? "[building_id=" + e + "]" : "") + ":checked").each(function() {
         var e = !1,

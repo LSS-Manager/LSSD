@@ -5182,7 +5182,11 @@ lightbox_background {
                                     background - color: #5cb85c}.badge-thw{background-color:# 337 ab7
                                 }.mission_header_info.progress {
                                     margin - bottom: 5 px;
+                                    height: 23 px
+                                }.mission_header_info_progress {
                                     margin - right: 20 px
+                                }.mission_header_info_progress.col - xs - 6, .mission_header_info_progress.col - xs - 9, .mission_header_info_progress.col - xs - 3, .mission_header_info_progress.col - md - 3 {
+                                    padding: 0 2 px
                                 }#
                                 amount_of_people {
                                     font - size: 10 px;
