@@ -3221,5 +3221,19 @@
         "Maximale patiënten aantal": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
         "Gespecialiseerde afdeling voor patiënten": "Interne Geneeskunde"
+    },
+    "350": {
+        "name": "Insluiping in woning",
+        "Gemiddeld aantal Credits": "2350",
+        "Benodigde noodhulpeenheden": "3",
+        "Benodigde Hondengeleider": "1",
+        "Maximaal aantal gevangenen": "1"
+    },
+    "351": {
+        "name": "Inbraakalarm woning",
+        "Gemiddeld aantal Credits": "1500",
+        "Benodigde noodhulpeenheden": "2",
+        "Benodigde Hondengeleider": "1",
+        "Maximaal aantal gevangenen": "1"
     }
 }

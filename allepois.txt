@@ -88,6 +88,8 @@ MC:
 40 = Rail Crossing
 41 = Tunnel
 42 = Cold Storage Warehouse
+43 = Power Plant
+
 
 MEL:
 

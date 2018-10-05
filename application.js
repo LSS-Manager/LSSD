@@ -90,9 +90,11 @@ function vehicleDistanceDirect(e, t, i, n, o, s, r) {
 }
 
 function allianceChat(e) {
-    var t = ""; - 1 != e.message.toUpperCase().indexOf("@" + username.toUpperCase()) && (t = "chatToSelf", !$("body").hasClass("bigMap") || missionMarkerBulkAdd || $("#chat_outer").hasClass("fadeIn") || $("#bigMapMenuChatButton").addClass("bigMapMenuButtonBlack"));
-    var i = "<li class='" + t + "'><span class='mission_chat_message_username' title='" + e.date_hidden + "'>[" + e.date + "] <img username='" + e.username + "' class='alliance_chat_copy_username' src='/images/icons8-reply.svg'> <a href='/profile/" + e.user_id + "' class='lightbox-open ";
-    "true" == e.alliance_admin ? i += "label label-info" : "true" == e.alliance_coadmin && (i += "label label-default"), audio_chat && 1 != e.ignore_audio && user_id != e.user_id && play("chat_message"), i = i + "'>" + e.username + ":</a></span>", e.mission_id && (i = i + "<a href='/missions/" + e.mission_id + "' class='lightbox-open'><span class='glyphicon glyphicon-bell'></span>", "undefined" != typeof e.mission_caption && e.mission_caption && (i = i + "[" + e.mission_caption + "]"), i += "</a> "), i = i + " " + e.message + "</li>", $("#mission_chat_messages").prepend(i), !$("body").hasClass("bigMap") || missionMarkerBulkAdd || $("#chat_outer").hasClass("fadeIn") || $("#bigMapMenuChatButton").addClass("bigMapMenuButtonGreen")
+    var t = "",
+        i = !1;
+    (-1 != e.message.toUpperCase().indexOf("@" + username.toUpperCase()) || -1 != e.message.toUpperCase().indexOf("@all ".toUpperCase()) || -1 != e.message.toUpperCase().indexOf("@all:".toUpperCase()) || -1 != e.message.toUpperCase().indexOf("@admin".toUpperCase()) && (alliance_admin || alliance_coadmin)) && (t = "chatToSelf", audio_chat_highlight && 1 != e.ignore_audio && user_id != e.user_id && !i && (play("chat_message_highlight"), i = !0), !$("body").hasClass("bigMap") || missionMarkerBulkAdd || $("#chat_outer").hasClass("fadeIn") || $("#bigMapMenuChatButton").addClass("bigMapMenuButtonBlack"));
+    var n = "<li class='" + t + "'><span class='mission_chat_message_username' title='" + e.date_hidden + "'>[" + e.date + "] <img username='" + e.username + "' class='alliance_chat_copy_username' src='/images/icons8-reply.svg'> <a href='/profile/" + e.user_id + "' class='lightbox-open ";
+    "true" == e.alliance_admin ? n += "label label-info" : "true" == e.alliance_coadmin && (n += "label label-default"), audio_chat && 1 != e.ignore_audio && user_id != e.user_id && !i && (play("chat_message"), i = !0), n = n + "'>" + e.username + ":</a></span>", e.mission_id && (n = n + "<a href='/missions/" + e.mission_id + "' class='lightbox-open'><span class='glyphicon glyphicon-bell'></span>", "undefined" != typeof e.mission_caption && e.mission_caption && (n = n + "[" + e.mission_caption + "]"), n += "</a> "), n = n + " " + e.message + "</li>", $("#mission_chat_messages").prepend(n), !$("body").hasClass("bigMap") || missionMarkerBulkAdd || $("#chat_outer").hasClass("fadeIn") || $("#bigMapMenuChatButton").addClass("bigMapMenuButtonGreen")
 }
 
 function missionWindowHasUpdate(e) {
@@ -1090,7 +1092,12 @@ function isLoggedIn() {
 }
 
 function mobileShow(e) {
-    "account" == e ? mobileBridgeAdd("account_show", {}) : ($(".overview_outer").hide(), $("#" + e + "_outer").show(), $(".mobile-navbar-selector").addClass("btn-default").removeClass("btn-success"), $(".mobile-navbar-selector[target_element=" + e + "]").removeClass("btn-default").addClass("btn-success"), progressBarScrollUpdate())
+    if ("account" == e) mobileBridgeAdd("account_show", {});
+    else {
+        $(".overview_outer").hide(), $("#" + e + "_outer").show(), $(".mobile-navbar-selector").addClass("btn-default").removeClass("btn-success"), $(".mobile-navbar-selector[target_element=" + e + "]").removeClass("btn-default").addClass("btn-success"), progressBarScrollUpdate();
+        var t = $(window).height() - $("#main_navbar").outerHeight(!0) - $("#navbar-mobile-footer").outerHeight();
+        "map" == e && ($("#map").height(t), "undefined" == typeof mapkit && map.invalidateSize()), "missions" == e && $("#missions-panel-body").height(t - $(".missions-panel-head").outerHeight(!0)), "buildings" == e && ($("#building_panel_body").css("max-height", "initial"), $("#building_panel_body").css("padding-bottom", "15px"), $("#building_panel_body").height(t - $("#building_panel_heading").outerHeight(!0) - 50)), "chat" == e && ($("#chat_panel_body").css("max-height", "initial"), $("#chat_panel_body").css("padding-bottom", "15px"), $("#chat_panel_body").height(t - $("#chat_panel_heading").outerHeight(!0) - 50)), "radio" == e && ($("#radio_panel_body").css("max-height", "initial"), $("#radio_panel_body").css("padding-bottom", "15px"), $("#radio_panel_body").height(t - $("#radio_panel_heading").outerHeight(!0) - 50))
+    }
 }
 
 function mobileBridgeRequest() {
@@ -19210,6 +19217,7 @@ var map, alliance_building_show, geocoder, directionsService, building_eval_unlo
     vehicle_label_backup = !0,
     audio = !1,
     audio_chat = !1,
+    audio_chat_highlight = !1,
     iframe_lightbox_number = 1,
     leitstelle_latitude = !1,
     leitstelle_longitude = !1,
@@ -19554,6 +19562,13 @@ var map, alliance_building_show, geocoder, directionsService, building_eval_unlo
         }), !1
     }), $("#audio_chat_switch").click(function() {
         return $("#current_audio_chat").html(I18n.t("common.loading")), $.ajax({
+            url: $(this).attr("href"),
+            cache: !1
+        }).success(function(e) {
+            $("#ajax_temp").html(e)
+        }), !1
+    }), $("#audio_chat_highlight_switch").click(function() {
+        return $("#current_audio_chat_highlight").html(I18n.t("common.loading")), $.ajax({
             url: $(this).attr("href"),
             cache: !1
         }).success(function(e) {

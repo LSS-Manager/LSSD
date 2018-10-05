@@ -1846,5 +1846,21 @@
         "name": "Caller Hangup",
         "Average credits": "600",
         "Required Police Cars": "1"
+    },
+    "208": {
+        "name": "Power Plant fire",
+        "Average credits": "14500",
+        "Required Firetrucks": "8",
+        "Required Battalion Chief Vehicles": "4",
+        "Required Platform Trucks": "3",
+        "Required Heavy Rescue Vehicles": "4",
+        "Required Water Tankers": "2",
+        "Required Mobile Air Vehicles": "2",
+        "Required HazMat Vehicles": "1",
+        "Required Mobile Command Vehicles": "1",
+        "Required Police Cars": "4",
+        "Max. Patients": "10",
+        "Probability that a patient has to be transported": "60",
+        "Patient Specializations": "General Internal"
     }
 }

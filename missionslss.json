@@ -4295,5 +4295,22 @@
         "name": "Mülleimerbrand",
         "Credits im Durchschnitt": "110",
         "Benötigte Löschfahrzeuge": "1"
+    },
+    "411": {
+        "name": "Heißluftballon in Hochspannungsmast",
+        "Credits im Durchschnitt": "5900",
+        "Benötigte Löschfahrzeuge": "6",
+        "Benötigte Drehleitern": "1",
+        "Benötigte Rüstwagen": "2",
+        "Benötigte ELW 2": "1",
+        "Benötigte ELW 1": "2",
+        "Benötigte GW-Höhenrettung": "1",
+        "Benötigte Polizeihubschrauber": "1",
+        "Benötigte Streifenwagen": "2",
+        "Benötigte GKW": "2",
+        "Maximale Patientenanzahl": "6",
+        "Fachrichtung für Patienten": "Allgemeine Innere",
+        "Mindest Patientenanzahl": "1",
+        "NEF Anforderungswahrscheinlichkeit": "50"
     }
 }
