@@ -5031,7 +5031,10 @@ lightbox_background {
                 background - color: #000000;color:# ffffff
             }
             body.dark tr {
-                background - color: #323232}body.dark .table-striped>tbody>tr:nth-of-type(odd){background-color:# 505050
+                background - color: #323232}.table-striped>tbody>tr:nth-of-type(even){background-color:# ffffff
+            }
+            body.dark.table - striped > tbody > tr: nth - of -type(odd) {
+                background - color: #505050}body.dark .table-striped>tbody>tr:nth-of-type(even){background-color:# 323232
             }
             body.dark tr a {
                 color: #fff
