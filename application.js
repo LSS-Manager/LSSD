@@ -92,8 +92,8 @@ function vehicleDistanceDirect(e, t, i, n, o, s, r) {
 function allianceChat(e) {
     var t = "",
         i = !1;
-    (-1 != e.message.toUpperCase().indexOf("@" + username.toUpperCase()) || -1 != e.message.toUpperCase().indexOf("@all ".toUpperCase()) || -1 != e.message.toUpperCase().indexOf("@all:".toUpperCase()) || -1 != e.message.toUpperCase().indexOf("@admin".toUpperCase()) && (alliance_admin || alliance_coadmin)) && (t = "chatToSelf", audio_chat_highlight && 1 != e.ignore_audio && user_id != e.user_id && !i && (play("chat_message_highlight"), i = !0), !$("body").hasClass("bigMap") || missionMarkerBulkAdd || $("#chat_outer").hasClass("fadeIn") || $("#bigMapMenuChatButton").addClass("bigMapMenuButtonBlack"));
-    var n = "<li class='" + t + "'><span class='mission_chat_message_username' title='" + e.date_hidden + "'>[" + e.date + "] <img username='" + e.username + "' class='alliance_chat_copy_username' src='/images/icons8-reply.svg'> <a href='/profile/" + e.user_id + "' class='lightbox-open ";
+    (-1 != e.message.toUpperCase().indexOf("@" + username.toUpperCase()) || -1 != e.message.toUpperCase().indexOf("@all ".toUpperCase()) || -1 != e.message.toUpperCase().indexOf("@all:".toUpperCase()) || -1 != e.message.toUpperCase().indexOf("@admin".toUpperCase()) && (alliance_admin || alliance_coadmin) || "0" != e.whisper) && (t = "chatToSelf", "0" != e.whisper && (t = "chatWhisper", splitMessage = e.message.split(" "), splitMessage[0] = "<img username='" + splitMessage[0] + "' class='alliance_chat_private_username' src='/images/icons8-privacy.svg'><a href='/profile/" + e.whisper + "' class='lightbox-open label label-warning'>" + splitMessage[0] + "</a>", e.message = splitMessage.join(" ")), audio_chat_highlight && 1 != e.ignore_audio && user_id != e.user_id && !i && (play("chat_message_highlight"), i = !0), !$("body").hasClass("bigMap") || missionMarkerBulkAdd || $("#chat_outer").hasClass("fadeIn") || $("#bigMapMenuChatButton").addClass("bigMapMenuButtonBlack"));
+    var n = "<li class='" + t + "'><span class='mission_chat_message_username' title='" + e.date_hidden + "'>[" + e.date + "] <img username='" + e.username + "' class='alliance_chat_copy_username' src='/images/icons8-reply.svg'> <img username='" + e.username + "' class='alliance_chat_private_username' src='/images/icons8-privacy.svg'> <a href='/profile/" + e.user_id + "' class='lightbox-open ";
     "true" == e.alliance_admin ? n += "label label-info" : "true" == e.alliance_coadmin && (n += "label label-default"), audio_chat && 1 != e.ignore_audio && user_id != e.user_id && !i && (play("chat_message"), i = !0), n = n + "'>" + e.username + ":</a></span>", e.mission_id && (n = n + "<a href='/missions/" + e.mission_id + "' class='lightbox-open'><span class='glyphicon glyphicon-bell'></span>", "undefined" != typeof e.mission_caption && e.mission_caption && (n = n + "[" + e.mission_caption + "]"), n += "</a> "), n = n + " " + e.message + "</li>", $("#mission_chat_messages").prepend(n), !$("body").hasClass("bigMap") || missionMarkerBulkAdd || $("#chat_outer").hasClass("fadeIn") || $("#bigMapMenuChatButton").addClass("bigMapMenuButtonGreen")
 }
 
@@ -1612,6 +1612,7 @@ function hideVehicleBuildingHelpText(e) {
             start_username: "Starter:",
             to_mission: "View Mission",
             understand: "Acknowledge",
+            user_not_found: "The player was not found.",
             vehicles_not_visible: "Vehicles not visible. "
         },
         map: {
@@ -1850,6 +1851,7 @@ function hideVehicleBuildingHelpText(e) {
             start_username: "Gestartet von:",
             to_mission: "Zum Einsatz",
             understand: "Verstanden",
+            user_not_found: "Der Spieler wurde nicht gefunden. ",
             vehicles_not_visible: "Fahrzeuge ausgeblendet."
         },
         map: {
@@ -2088,6 +2090,7 @@ function hideVehicleBuildingHelpText(e) {
             start_username: "Gestart door:",
             to_mission: "Naar incident",
             understand: "Begrepen",
+            user_not_found: "De speler is niet gevonden.",
             vehicles_not_visible: "Voertuig verborgen."
         },
         map: {
@@ -2326,6 +2329,7 @@ function hideVehicleBuildingHelpText(e) {
             start_username: null,
             to_mission: null,
             understand: null,
+            user_not_found: null,
             vehicles_not_visible: "Ð¢Ñ€Ð°Ð½ÑÐ¿Ð¾Ñ€Ñ‚Ð½Ð¾Ðµ ÑÑ€ÐµÐ´ÑÑ‚Ð²Ð¾ ÑÐºÑ€Ñ‹Ñ‚Ð¾."
         },
         map: {
@@ -2642,6 +2646,7 @@ function hideVehicleBuildingHelpText(e) {
             start_username: null,
             to_mission: null,
             understand: null,
+            user_not_found: null,
             vehicles_not_visible: null
         },
         map: {
@@ -19393,6 +19398,8 @@ var map, alliance_building_show, geocoder, directionsService, building_eval_unlo
         })
     }), $("#chat_panel_body").on("click", ".alliance_chat_copy_username", function() {
         $("#alliance_chat_message").val($("#alliance_chat_message").val() + "@" + $(this).attr("username") + " "), $("#alliance_chat_message").focus()
+    }), $("#chat_panel_body").on("click", ".alliance_chat_private_username", function() {
+        $("#alliance_chat_message").val("/w " + $(this).attr("username") + " "), $("#alliance_chat_message").focus()
     }), $("#news").click(function() {
         return newsNew(!1), $.ajax({
             url: "/news/gelesen",
@@ -19452,7 +19459,9 @@ var map, alliance_building_show, geocoder, directionsService, building_eval_unlo
             data: $(this).serialize(),
             cache: !1,
             type: "POST",
-            success: function() {},
+            success: function(e) {
+                "usernotfound" == e && alert(I18n.t("javascript.user_not_found"))
+            },
             error: function(e) {
                 alert(e)
             }
