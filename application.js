@@ -249,7 +249,7 @@ function buildingResetContentWhenPossible() {
 }
 
 function buildingMarkerReset() {
-    leitstelle_latitude = !1, leitstelle_longitude = !1, $.each(building_markers, function(e, t) {
+    leitstelle_latitude = !1, leitstelle_longitude = !1, leitstelles = [], $.each(building_markers, function(e, t) {
         "undefined" == typeof mapkit ? map.removeLayer(t) : map.removeAnnotation(t)
     }), $.each(building_timers, function(e, t) {
         window.clearTimeout(t)
@@ -408,7 +408,7 @@ function buildingMarkerAdd(e) {
         var i = "<li  class='building_list_li' building_type_id='" + e.building_type + "' leitstelle_building_id=" + e.lbid + "'><div class='building_list_caption' id='building_list_caption_" + e.id + "' >" + e.detail_button + "<img class='building_marker_image' building_id='" + e.id + "' src='" + building_marker_image + "'>" + "<a href='' class='map_position_mover' data-latitude='" + e.latitude + "' data-longitude='" + e.longitude + "'>" + e.name + "</a>";
         0 == e.show_vehicles_at_startpage && (i += hideVehicleBuildingHelpText(e.id)), i += "</div>";
         var n = "";
-        "undefined" != typeof buildingVehicleCache[e.id] && (n = buildingVehicleCache[e.id].join(""), buildingVehicleCache[e.id] = []), i = i + "<ul id='vehicle_building_" + e.id + "' class='building_list_vehicles' ", 0 == e.show_vehicles_at_startpage && (i += "style='display: none' "), i = i + ">" + n + "</ul></li>", 7 == e.building_type && (leitstelle_latitude = e.latitude, leitstelle_longitude = e.longitude), buildingMarkerBulkContentCache.push(i)
+        "undefined" != typeof buildingVehicleCache[e.id] && (n = buildingVehicleCache[e.id].join(""), buildingVehicleCache[e.id] = []), i = i + "<ul id='vehicle_building_" + e.id + "' class='building_list_vehicles' ", 0 == e.show_vehicles_at_startpage && (i += "style='display: none' "), i = i + ">" + n + "</ul></li>", 7 == e.building_type && (leitstelle_latitude = e.latitude, leitstelle_longitude = e.longitude, leitstelles.push([e.latitude, e.longitude])), buildingMarkerBulkContentCache.push(i)
     }
     1 == mobile_bridge_use && 4 == mobile_version && (e.app_icon_path = -1 !== String(building_marker_image).indexOf("//") ? building_marker_image : currentHostname() + building_marker_image, mobileBridgeAdd("building_add", e)), building_markers_cache.push(e)
 }
@@ -541,13 +541,21 @@ function prisonerMarkerAdd(e) {
     }
 }
 
+function leiststelleMinDistance(e, t) {
+    var i = -1;
+    return $.each(leitstelles, function(n, o) {
+        var s = Math.round(distance(o[0], o[1], e, t));
+        (-1 == i || i > s) && (i = s)
+    }), i
+}
+
 function missionMarkerDistanceUpdate() {
     $.each(mission_markers, function(e, t) {
         if (user_id != t.user_id) {
             var i = 0,
                 n = 0,
                 o = 0;
-            "undefined" == typeof mapkit ? (position = t.getLatLng(), n = position.lat, o = position.lng) : (position = t.coordinate, n = position.latitude, o = position.longitude), 0 != leitstelle_latitude && (i = Math.round(distance(leitstelle_latitude, leitstelle_longitude, n, o))), alliance_mission_distance !== !1 && i > alliance_mission_distance ? $("#mission_" + t.mission_id).hide() : $("#mission_" + t.mission_id).show()
+            "undefined" == typeof mapkit ? (position = t.getLatLng(), n = position.lat, o = position.lng) : (position = t.coordinate, n = position.latitude, o = position.longitude), 0 != leitstelle_latitude && (i = leiststelleMinDistance(n, o)), alliance_mission_distance !== !1 && i > alliance_mission_distance ? $("#mission_" + t.mission_id).hide() : $("#mission_" + t.mission_id).show()
         }
     })
 }
@@ -572,11 +580,11 @@ function missionMarkerAdd(e) {
     var t = "progress-striped-inner",
         i = 0,
         n = !1;
-    0 != leitstelle_latitude && (i = Math.round(distance(leitstelle_latitude, leitstelle_longitude, e.latitude, e.longitude))), e.date_end > 0 && (t = "progress-striped-inner progress-striped-inner-active-resource-safe");
+    e.date_end > 0 && (t = "progress-striped-inner progress-striped-inner-active-resource-safe");
     var o = "";
     o = "undefined" != typeof mission_graphics[e.mtid] && null != mission_graphics[e.mtid] && "undefined" != typeof mission_graphics[e.mtid][e.vehicle_state] && "" != mission_graphics[e.mtid][e.vehicle_state] ? mission_graphics[e.mtid][e.vehicle_state] : "/images/" + e.icon + ".png";
     var s = "red";
-    1 == e.vehicle_state && (s = "yellow"), 2 == e.vehicle_state && (s = "green"), e.user_id != user_id && (e.caption = null == e.user_id ? "[" + I18n.t("map.alliance_event") + "] " + e.caption : "[" + I18n.t("map.alliance") + "] " + e.caption, alliance_mission_distance !== !1 && i > alliance_mission_distance && (n = !0)), 1 == mobile_bridge_use && (4 == mobile_version && (e.app_icon_path = -1 !== String(o).indexOf("//") ? o : currentHostname() + o), mobileBridgeAdd("mission", e));
+    1 == e.vehicle_state && (s = "yellow"), 2 == e.vehicle_state && (s = "green"), e.user_id != user_id && (0 != leitstelle_latitude && (i = leiststelleMinDistance(e.latitude, e.longitude)), e.caption = null == e.user_id ? "[" + I18n.t("map.alliance_event") + "] " + e.caption : "[" + I18n.t("map.alliance") + "] " + e.caption, alliance_mission_distance !== !1 && i > alliance_mission_distance && (n = !0)), 1 == mobile_bridge_use && (4 == mobile_version && (e.app_icon_path = -1 !== String(o).indexOf("//") ? o : currentHostname() + o), mobileBridgeAdd("mission", e));
     var r = e.caption;
     "" != e.captionOld && (r = "<small id='mission_old_caption_" + e.id + "'><s>" + e.captionOld + "</s></small> " + r), "" != e.address && (r = r + ", <small  id='mission_address_" + e.id + "'>" + e.address + "</small>");
     var a = 0;
@@ -19226,6 +19234,7 @@ var map, alliance_building_show, geocoder, directionsService, building_eval_unlo
     iframe_lightbox_number = 1,
     leitstelle_latitude = !1,
     leitstelle_longitude = !1,
+    leitstelles = [],
     alliance_mission_distance = !1,
     mobile_bridge_content = Array(),
     mobile_bridge_use = !1,

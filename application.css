@@ -4889,7 +4889,7 @@ lightbox_background {
             background - color: #d84f4b;
             color: white
         }.chatWhisper {
-            background - color: #656565;font-style:italic;color:white}# missions ul, #buildings ul, #mission_list_krankentransporte ul, #mission_list_krankentransporte ul, #radio ul, #alliance_chat ul {
+            background - color: #656565;font-style:italic;color:white}.chatWhisper a{color:white}# missions ul, #buildings ul, #mission_list_krankentransporte ul, #mission_list_krankentransporte ul, #radio ul, #alliance_chat ul {
                     list - style: none;
                     margin - left: 0;
                     padding - left: 0 px

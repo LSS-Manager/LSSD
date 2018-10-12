@@ -888,7 +888,7 @@
     },
     "99": {
         "name": "Flugzeug abgestürzt",
-        "Vorraussetzung an Feuerwachen": "99999999",
+        "Credits im Durchschnitt": "17000",
         "Benötigte Löschfahrzeuge": "22",
         "Benötigte GW-A": "1",
         "GW-A Anforderungswahrscheinlichkeit": "45",
@@ -1394,7 +1394,7 @@
     },
     "147": {
         "name": "Krankentransport",
-        "Vorraussetzung an Feuerwachen": "99999999999",
+        "": "",
         "Maximale Patientenanzahl": "1",
         "Mindest Patientenanzahl": "1",
         "NEF Anforderungswahrscheinlichkeit": "0",
@@ -4312,5 +4312,45 @@
         "Fachrichtung für Patienten": "Allgemeine Innere",
         "Mindest Patientenanzahl": "1",
         "NEF Anforderungswahrscheinlichkeit": "50"
+    },
+    "412": {
+        "name": "Verpuffung",
+        "Credits im Durchschnitt": "3000",
+        "Benötigte Löschfahrzeuge": "6",
+        "Benötigte Rüstwagen": "1",
+        "Benötigte ELW 1": "1",
+        "Benötigte GW-Werkfeuerwehr": "1",
+        "Benötigte ELW 2": "1",
+        "ELW 2 Anforderungswahrscheinlichkeit": "25",
+        "Benötigte GW-A": "1",
+        "GW-A Anforderungswahrscheinlichkeit": "40",
+        "Benötigte ULF mit Löscharm": "1",
+        "Benötigte Teleskopmasten": "1"
+    },
+    "413": {
+        "name": "Verpuffung",
+        "Credits im Durchschnitt": "2500",
+        "Benötigte Löschfahrzeuge": "6",
+        "Benötigte Rüstwagen": "1",
+        "Benötigte ELW 1": "1",
+        "Benötigte GW-Werkfeuerwehr": "1",
+        "Benötigte ELW 2": "1",
+        "ELW 2 Anforderungswahrscheinlichkeit": "25",
+        "Benötigte GW-A": "1",
+        "GW-A Anforderungswahrscheinlichkeit": "40"
+    },
+    "414": {
+        "name": "Verpuffung",
+        "Credits im Durchschnitt": "3000",
+        "Benötigte Löschfahrzeuge": "6",
+        "Benötigte Rüstwagen": "1",
+        "Benötigte ELW 1": "1",
+        "Benötigte GW-Werkfeuerwehr": "1",
+        "Benötigte ELW 2": "1",
+        "ELW 2 Anforderungswahrscheinlichkeit": "25",
+        "Benötigte GW-A": "1",
+        "GW-A Anforderungswahrscheinlichkeit": "40",
+        "Benötigte ULF mit Löscharm": "1",
+        "Benötigte Teleskopmasten": "1"
     }
 }
