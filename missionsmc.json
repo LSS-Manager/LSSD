@@ -1862,5 +1862,29 @@
         "Max. Patients": "10",
         "Probability that a patient has to be transported": "60",
         "Patient Specializations": "General Internal"
+    },
+    "209": {
+        "name": "Factory fire minor",
+        "Average credits": "2000",
+        "Required Firetrucks": "4",
+        "Required Battalion Chief Vehicles": "2",
+        "Max. Patients": "3",
+        "Probability that a patient has to be transported": "30",
+        "Patient Specializations": "General Internal"
+    },
+    "210": {
+        "name": "Factory fire major",
+        "Average credits": "9000",
+        "Required Firetrucks": "8",
+        "Required Battalion Chief Vehicles": "4",
+        "Required Platform Trucks": "2",
+        "Required Heavy Rescue Vehicles": "2",
+        "Required Water Tankers": "1",
+        "Required Mobile Air Vehicles": "1",
+        "Required Mobile Command Vehicles": "1",
+        "Required Police Cars": "2",
+        "Max. Patients": "7",
+        "Probability that a patient has to be transported": "30",
+        "Patient Specializations": "General Internal"
     }
 }
