@@ -356,7 +356,7 @@ function building_load_alliance() {
 }
 
 function building_load_alliance_app(min_lat, max_lat, min_lng, max_lng) {
-    return "undefined" != typeof mapkit ? !0 : alliance_building_show ? ($.get("/building_alliance/" + min_lat.toString().replace(".", "o") + "/" + min_lng.toString().replace(".", "o") + "/" + max_lat.toString().replace(".", "o") + "/" + max_lng.toString().replace(".", "o"), function(data) {
+    return alliance_building_show ? ($.get("/building_alliance/" + min_lat.toString().replace(".", "o") + "/" + min_lng.toString().replace(".", "o") + "/" + max_lat.toString().replace(".", "o") + "/" + max_lng.toString().replace(".", "o"), function(data) {
         eval(data), building_maps_redraw()
     }), void 0) : !0
 }
@@ -410,7 +410,7 @@ function buildingMarkerAdd(e) {
         var n = "";
         "undefined" != typeof buildingVehicleCache[e.id] && (n = buildingVehicleCache[e.id].join(""), buildingVehicleCache[e.id] = []), i = i + "<ul id='vehicle_building_" + e.id + "' class='building_list_vehicles' ", 0 == e.show_vehicles_at_startpage && (i += "style='display: none' "), i = i + ">" + n + "</ul></li>", 7 == e.building_type && (leitstelle_latitude = e.latitude, leitstelle_longitude = e.longitude, leitstelles.push([e.latitude, e.longitude])), buildingMarkerBulkContentCache.push(i)
     }
-    1 == mobile_bridge_use && 4 == mobile_version && (e.app_icon_path = -1 !== String(building_marker_image).indexOf("//") ? building_marker_image : currentHostname() + building_marker_image, mobileBridgeAdd("building_add", e)), building_markers_cache.push(e)
+    1 == mobile_bridge_use && 4 == mobile_version && (e.name = e.name.replace("%", ""), e.app_icon_path = -1 !== String(building_marker_image).indexOf("//") ? building_marker_image : currentHostname() + building_marker_image, mobileBridgeAdd("building_add", e)), building_markers_cache.push(e)
 }
 
 function spliceLatLngs(e, t) {
@@ -1103,7 +1103,7 @@ function mobileShow(e) {
     if ("account" == e) mobileBridgeAdd("account_show", {});
     else {
         $(".overview_outer").hide(), $("#" + e + "_outer").show(), $(".mobile-navbar-selector").addClass("btn-default").removeClass("btn-success"), $(".mobile-navbar-selector[target_element=" + e + "]").removeClass("btn-default").addClass("btn-success"), progressBarScrollUpdate();
-        var t = $(window).height() - $("#main_navbar").outerHeight(!0) - $("#navbar-mobile-footer").outerHeight();
+        var t = $(window).height() - 71 - $("#navbar-mobile-footer").outerHeight();
         "map" == e && ($("#map").height(t), "undefined" == typeof mapkit && map.invalidateSize()), "missions" == e && $("#missions-panel-body").height(t - $(".missions-panel-head").outerHeight(!0)), "buildings" == e && ($("#building_panel_body").css("max-height", "initial"), $("#building_panel_body").css("padding-bottom", "15px"), $("#building_panel_body").height(t - $("#building_panel_heading").outerHeight(!0) - 50)), "chat" == e && ($("#chat_panel_body").css("max-height", "initial"), $("#chat_panel_body").css("padding-bottom", "15px"), $("#chat_panel_body").height(t - $("#chat_panel_heading").outerHeight(!0) - 50)), "radio" == e && ($("#radio_panel_body").css("max-height", "initial"), $("#radio_panel_body").css("padding-bottom", "15px"), $("#radio_panel_body").height(t - $("#radio_panel_heading").outerHeight(!0) - 50))
     }
 }

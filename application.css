@@ -6298,6 +6298,8 @@ lightbox_background {
                                                         margin: 0 - 15 px;height: 400 px
                                                     }.landingpage_1_signup_form {
                                                         position: absolute;padding: 20 px;width: 350 px;background - color: rgba(16, 16, 16, 0.8);display: block;color: white;left: 50 % ;margin: -500 px 0 0 - 175 px;border - radius: 4 px;border: 1 px solid white;z - index: 20
+                                                    }.landingpage_3_signup_form {
+                                                        position: absolute;display: block;left: 50 % ;width: 250 px;margin: -450 px 0 0 - 125 px;z - index: 20
                                                     }.landingpage_2_signup_form {
                                                         margin: -400 px 0 0 - 175 px
                                                     }.landingpage_1_feuerwehrmann {
@@ -6314,6 +6316,13 @@ lightbox_background {
                                                         display: block;
                                                         left: 50 % ;
                                                         margin: -400 px 0 0 30 px
+                                                    }.landingpage_3_feuerwehrmann {
+                                                        z - index: 10;
+                                                        position: absolute;
+                                                        width: 300 px;
+                                                        display: block;
+                                                        left: 50 % ;
+                                                        margin: -500 px 0 0 - 150 px
                                                     }.landingpage_1_signup_form h2 {
                                                         margin - top: 0;
                                                         margin - bottom: 20 px;
