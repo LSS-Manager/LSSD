@@ -1886,5 +1886,13 @@
         "Max. Patients": "7",
         "Probability that a patient has to be transported": "30",
         "Patient Specializations": "General Internal"
+    },
+    "211": {
+        "name": "Multiple vehicles on fire",
+        "Average credits": "3500",
+        "Required Firetrucks": "5",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Water Tankers": "1",
+        "Probability of Water Tanker being required": "20"
     }
 }

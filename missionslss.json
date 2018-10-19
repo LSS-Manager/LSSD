@@ -4352,5 +4352,37 @@
         "GW-A Anforderungswahrscheinlichkeit": "40",
         "Benötigte ULF mit Löscharm": "1",
         "Benötigte Teleskopmasten": "1"
+    },
+    "415": {
+        "name": "Jäger verletzt Passant durch Schuss",
+        "Credits im Durchschnitt": "200",
+        "Benötigte Streifenwagen": "1",
+        "Maximale Patientenanzahl": "1",
+        "Mindest Patientenanzahl": "1",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "100",
+        "NEF Anforderungswahrscheinlichkeit": "50",
+        "RTH Anforderungswahrscheinlichkeit": "10",
+        "Tragehilfe Anforderungswahrscheinlichkeit": "20",
+        "Fachrichtung für Patienten": "Unfallchirurgie"
+    },
+    "416": {
+        "name": "Jäger stürzt von Hochsitz",
+        "Vorraussetzung an Rettungswachen": "1",
+        "Maximale Patientenanzahl": "1",
+        "Mindest Patientenanzahl": "1",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "50",
+        "NEF Anforderungswahrscheinlichkeit": "10",
+        "Tragehilfe Anforderungswahrscheinlichkeit": "40",
+        "Fachrichtung für Patienten": "Unfallchirurgie"
+    },
+    "417": {
+        "name": "Jäger durch Wildtier Verletzt",
+        "Vorraussetzung an Rettungswachen": "1",
+        "Maximale Patientenanzahl": "1",
+        "Mindest Patientenanzahl": "1",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "50",
+        "NEF Anforderungswahrscheinlichkeit": "10",
+        "Tragehilfe Anforderungswahrscheinlichkeit": "20",
+        "Fachrichtung für Patienten": "Unfallchirurgie"
     }
 }
