@@ -88,7 +88,10 @@
     "14": {
         "name": "Heidebrand",
         "Gemiddeld aantal Credits": "1000",
-        "Benodigde tankautospuiten": "2"
+        "Benodigde tankautospuiten": "2",
+        "Benodigde OvD-B's": "1",
+        "Benodigde slangenwagens": "1",
+        "Slangenwagen benodigd waarschijnlijkheid": "20"
     },
     "15": {
         "name": "Bosbrand",
@@ -1028,17 +1031,16 @@
     },
     "128": {
         "name": "Heidebrand",
-        "Gemiddeld aantal Credits": "200",
+        "Gemiddeld aantal Credits": "400",
         "Benodigde tankautospuiten": "1",
         "Benodigde slangenwagens": "1",
         "Slangenwagen benodigd waarschijnlijkheid": "10"
     },
     "129": {
         "name": "Heidebrand",
-        "Gemiddeld aantal Credits": "1000",
-        "Benodigde tankautospuiten": "4",
+        "Gemiddeld aantal Credits": "1950",
+        "Benodigde tankautospuiten": "3",
         "Benodigde OvD-B's": "1",
-        "Benodigde HOVD's": "1",
         "Benodigde slangenwagens": "1"
     },
     "130": {
@@ -3273,5 +3275,31 @@
         "Minimale aantal slachtoffers": "4",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "20",
         "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
+    },
+    "355": {
+        "name": "Heidebrand",
+        "Gemiddeld aantal Credits": "3000",
+        "Benodigde tankautospuiten": "4",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "20",
+        "Benodigde OvD-B's": "1",
+        "Benodigde slangenwagens": "2",
+        "Benodigde HOVD's": "1",
+        "HOVD benodigd waarschijnlijkheid": "50"
+    },
+    "356": {
+        "name": "Heidebrand",
+        "Gemiddeld aantal Credits": "7200",
+        "Benodigde tankautospuiten": "8",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "80",
+        "Benodigde OvD-B's": "2",
+        "Benodigde Adembeschermingsvoertuigen": "1",
+        "Adembeschermingsvoertuig benodigd waarschijnlijkheid": "20",
+        "Benodigde slangenwagens": "4",
+        "Benodigde HOVD's": "1",
+        "HOVD benodigd waarschijnlijkheid": "80",
+        "Benodigde Commandowagen": "1",
+        "Commandowagen benodigdheid": "80"
     }
 }
