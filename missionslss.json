@@ -1030,15 +1030,15 @@
         "name": "Brennende Vogelscheuche",
         "Credits im Durchschnitt": "350",
         "Benötigte Löschfahrzeuge": "1",
-        "Tritt nur ab dem Datum auf": "Montag, 30. Oktober 2017, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Montag, 06. November 2017, 23:59 Uhr"
+        "Tritt nur ab dem Datum auf": "Montag, 29. Oktober 2018, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Sonntag, 04. November 2018, 23:59 Uhr"
     },
     "112": {
         "name": "Brennendes Kürbisfeld",
         "Credits im Durchschnitt": "850",
         "Benötigte Löschfahrzeuge": "2",
-        "Tritt nur ab dem Datum auf": "Montag, 30. Oktober 2017, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Montag, 06. November 2017, 23:59 Uhr"
+        "Tritt nur ab dem Datum auf": "Montag, 29. Oktober 2018, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Sonntag, 04. November 2018, 23:59 Uhr"
     },
     "113": {
         "name": "Kürbissuppe übergekocht",
@@ -1049,8 +1049,8 @@
         "GW-A Anforderungswahrscheinlichkeit": "50",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Neurologie",
-        "Tritt nur ab dem Datum auf": "Montag, 30. Oktober 2017, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Montag, 06. November 2017, 23:59 Uhr"
+        "Tritt nur ab dem Datum auf": "Montag, 29. Oktober 2018, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Sonntag, 04. November 2018, 23:59 Uhr"
     },
     "114": {
         "name": "Hexe hängt in Baum",
@@ -1060,8 +1060,8 @@
         "Maximale Patientenanzahl": "1",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "50",
         "Fachrichtung für Patienten": "Unfallchirurgie",
-        "Tritt nur ab dem Datum auf": "Montag, 30. Oktober 2017, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Montag, 06. November 2017, 23:59 Uhr"
+        "Tritt nur ab dem Datum auf": "Montag, 29. Oktober 2018, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Sonntag, 04. November 2018, 23:59 Uhr"
     },
     "115": {
         "name": "Zombiebiss",
@@ -1076,29 +1076,29 @@
         "name": "Monster ausgebrochen",
         "Credits im Durchschnitt": "1600",
         "Benötigte Streifenwagen": "4",
-        "Tritt nur ab dem Datum auf": "Montag, 30. Oktober 2017, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Montag, 06. November 2017, 23:59 Uhr"
+        "Tritt nur ab dem Datum auf": "Montag, 29. Oktober 2018, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Sonntag, 04. November 2018, 23:59 Uhr"
     },
     "117": {
         "name": "Kürbisse geklaut",
         "Credits im Durchschnitt": "100",
         "Benötigte Streifenwagen": "1",
-        "Tritt nur ab dem Datum auf": "Montag, 30. Oktober 2017, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Montag, 06. November 2017, 23:59 Uhr"
+        "Tritt nur ab dem Datum auf": "Montag, 29. Oktober 2018, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Sonntag, 04. November 2018, 23:59 Uhr"
     },
     "118": {
         "name": "Frankenstein gesichtet",
         "Credits im Durchschnitt": "550",
         "Benötigte Streifenwagen": "3",
-        "Tritt nur ab dem Datum auf": "Montag, 30. Oktober 2017, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Montag, 06. November 2017, 23:59 Uhr"
+        "Tritt nur ab dem Datum auf": "Montag, 29. Oktober 2018, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Sonntag, 04. November 2018, 23:59 Uhr"
     },
     "119": {
         "name": "Süßigkeitendiebstahl",
         "Credits im Durchschnitt": "100",
         "Benötigte Streifenwagen": "1",
-        "Tritt nur ab dem Datum auf": "Montag, 30. Oktober 2017, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Montag, 06. November 2017, 23:59 Uhr"
+        "Tritt nur ab dem Datum auf": "Montag, 29. Oktober 2018, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Sonntag, 04. November 2018, 23:59 Uhr"
     },
     "120": {
         "name": "LKW umgestürzt",
@@ -4376,7 +4376,7 @@
         "Fachrichtung für Patienten": "Unfallchirurgie"
     },
     "417": {
-        "name": "Jäger durch Wildtier Verletzt",
+        "name": "Jäger durch Wildtier verletzt",
         "Vorraussetzung an Rettungswachen": "1",
         "Maximale Patientenanzahl": "1",
         "Mindest Patientenanzahl": "1",

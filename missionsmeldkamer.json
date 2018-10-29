@@ -1180,16 +1180,16 @@
         "name": "Brandende vogelverschrikker",
         "Gemiddeld aantal Credits": "350",
         "Benodigde tankautospuiten": "1",
-        "Start datum": "ma 30 okt 2017 00:00:00 +00:00",
-        "Eind datum": "ma 06 nov 2017 23:59:00 +00:00"
+        "Start datum": "ma 29 okt 2018 00:00:00 +00:00",
+        "Eind datum": "zo 04 nov 2018 23:59:00 +00:00"
     },
     "147": {
         "name": "Brandend pompoenveld",
         "Gemiddeld aantal Credits": "850",
         "Benodigde tankautospuiten": "2",
         "Benodigde OvD-B's": "1",
-        "Start datum": "ma 30 okt 2017 00:00:00 +00:00",
-        "Eind datum": "ma 06 nov 2017 23:59:00 +00:00"
+        "Start datum": "ma 29 okt 2018 00:00:00 +00:00",
+        "Eind datum": "zo 04 nov 2018 23:59:00 +00:00"
     },
     "148": {
         "name": "Overkookte pompoensoep",
@@ -1197,8 +1197,8 @@
         "Benodigde tankautospuiten": "1",
         "Maximale patiënten aantal": "1",
         "Gespecialiseerde afdeling voor patiënten": "Neurologie",
-        "Start datum": "ma 30 okt 2017 00:00:00 +00:00",
-        "Eind datum": "ma 06 nov 2017 23:59:00 +00:00"
+        "Start datum": "ma 29 okt 2018 00:00:00 +00:00",
+        "Eind datum": "zo 04 nov 2018 23:59:00 +00:00"
     },
     "149": {
         "name": "Heks vast in boom",
@@ -1208,44 +1208,44 @@
         "Maximale patiënten aantal": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "80",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie",
-        "Start datum": "ma 30 okt 2017 00:00:00 +00:00",
-        "Eind datum": "ma 06 nov 2017 23:59:00 +00:00"
+        "Start datum": "ma 29 okt 2018 00:00:00 +00:00",
+        "Eind datum": "zo 04 nov 2018 23:59:00 +00:00"
     },
     "150": {
         "name": "Monster uitgebroken",
         "Gemiddeld aantal Credits": "1600",
         "Benodigde noodhulpeenheden": "4",
-        "Start datum": "ma 30 okt 2017 00:00:00 +00:00",
-        "Eind datum": "ma 06 nov 2017 23:59:00 +00:00"
+        "Start datum": "ma 29 okt 2018 00:00:00 +00:00",
+        "Eind datum": "zo 04 nov 2018 23:59:00 +00:00"
     },
     "151": {
         "name": "Gestolen pompoenen",
         "Gemiddeld aantal Credits": "100",
         "Benodigde noodhulpeenheden": "1",
-        "Start datum": "ma 30 okt 2017 00:00:00 +00:00",
-        "Eind datum": "ma 06 nov 2017 23:59:00 +00:00"
+        "Start datum": "ma 29 okt 2018 00:00:00 +00:00",
+        "Eind datum": "zo 04 nov 2018 23:59:00 +00:00"
     },
     "152": {
         "name": "Frankenstein gespot",
         "Gemiddeld aantal Credits": "550",
         "Benodigde noodhulpeenheden": "3",
-        "Start datum": "ma 30 okt 2017 00:00:00 +00:00",
-        "Eind datum": "ma 06 nov 2017 23:59:00 +00:00"
+        "Start datum": "ma 29 okt 2018 00:00:00 +00:00",
+        "Eind datum": "zo 04 nov 2018 23:59:00 +00:00"
     },
     "153": {
         "name": "Snoep diefstal",
         "Gemiddeld aantal Credits": "100",
         "Benodigde noodhulpeenheden": "1",
-        "Start datum": "ma 30 okt 2017 00:00:00 +00:00",
-        "Eind datum": "ma 06 nov 2017 23:59:00 +00:00"
+        "Start datum": "ma 29 okt 2018 00:00:00 +00:00",
+        "Eind datum": "zo 04 nov 2018 23:59:00 +00:00"
     },
     "154": {
         "name": "Horrorclown gespot",
         "Gemiddeld aantal Credits": "600",
         "Benodigde noodhulpeenheden": "2",
         "Maximaal aantal gevangenen": "1",
-        "Start datum": "ma 30 okt 2017 00:00:00 +00:00",
-        "Eind datum": "ma 06 nov 2017 23:59:00 +00:00"
+        "Start datum": "ma 29 okt 2018 00:00:00 +00:00",
+        "Eind datum": "zo 04 nov 2018 23:59:00 +00:00"
     },
     "155": {
         "name": "Gaslekkage",
