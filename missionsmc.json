@@ -492,15 +492,15 @@
         "name": "Burning bogle",
         "Average credits": "350",
         "Required Firetrucks": "1",
-        "Runs only from": "Mon, 30 Oct 2017 00:00:00 +0000",
-        "Runs only up until": "Mon, 06 Nov 2017 23:59:00 +0000"
+        "Runs only from": "Mon, 29 Oct 2018 00:00:00 +0000",
+        "Runs only up until": "Sun, 04 Nov 2018 23:59:00 +0000"
     },
     "64": {
         "name": "Burning pumpkin field",
         "Average credits": "850",
         "Required Firetrucks": "2",
-        "Runs only from": "Mon, 30 Oct 2017 00:00:00 +0000",
-        "Runs only up until": "Mon, 06 Nov 2017 23:59:00 +0000"
+        "Runs only from": "Mon, 29 Oct 2018 00:00:00 +0000",
+        "Runs only up until": "Sun, 04 Nov 2018 23:59:00 +0000"
     },
     "65": {
         "name": "Pumpkin soup overcooked",
@@ -511,8 +511,8 @@
         "Probability of Mobile Air being required": "50",
         "Max. Patients": "1",
         "Patient Specializations": "Neurology",
-        "Runs only from": "Mon, 30 Oct 2017 00:00:00 +0000",
-        "Runs only up until": "Mon, 06 Nov 2017 23:59:00 +0000"
+        "Runs only from": "Mon, 29 Oct 2018 00:00:00 +0000",
+        "Runs only up until": "Sun, 04 Nov 2018 23:59:00 +0000"
     },
     "66": {
         "name": "Witch in tree",
@@ -522,8 +522,8 @@
         "Max. Patients": "1",
         "Probability that a patient has to be transported": "50",
         "Patient Specializations": "Traumatology",
-        "Runs only from": "Mon, 30 Oct 2017 00:00:00 +0000",
-        "Runs only up until": "Mon, 06 Nov 2017 23:59:00 +0000"
+        "Runs only from": "Mon, 29 Oct 2018 00:00:00 +0000",
+        "Runs only up until": "Sun, 04 Nov 2018 23:59:00 +0000"
     },
     "67": {
         "name": "Zombie bite",
@@ -538,29 +538,29 @@
         "name": "Erupted Monster",
         "Average credits": "1600",
         "Required Police Cars": "4",
-        "Runs only from": "Mon, 30 Oct 2017 00:00:00 +0000",
-        "Runs only up until": "Mon, 06 Nov 2017 23:59:00 +0000"
+        "Runs only from": "Mon, 29 Oct 2018 00:00:00 +0000",
+        "Runs only up until": "Sun, 04 Nov 2018 23:59:00 +0000"
     },
     "69": {
         "name": "Pumpkin stolen",
         "Average credits": "100",
         "Required Police Cars": "1",
-        "Runs only from": "Mon, 30 Oct 2017 00:00:00 +0000",
-        "Runs only up until": "Mon, 06 Nov 2017 23:59:00 +0000"
+        "Runs only from": "Mon, 29 Oct 2018 00:00:00 +0000",
+        "Runs only up until": "Sun, 04 Nov 2018 23:59:00 +0000"
     },
     "70": {
         "name": "Frankenstein sighted",
         "Average credits": "550",
         "Required Police Cars": "3",
-        "Runs only from": "Mon, 30 Oct 2017 00:00:00 +0000",
-        "Runs only up until": "Mon, 06 Nov 2017 23:59:00 +0000"
+        "Runs only from": "Mon, 29 Oct 2018 00:00:00 +0000",
+        "Runs only up until": "Sun, 04 Nov 2018 23:59:00 +0000"
     },
     "71": {
         "name": "candy theft",
         "Average credits": "100",
         "Required Police Cars": "1",
-        "Runs only from": "Mon, 30 Oct 2017 00:00:00 +0000",
-        "Runs only up until": "Mon, 06 Nov 2017 23:59:00 +0000"
+        "Runs only from": "Mon, 29 Oct 2018 00:00:00 +0000",
+        "Runs only up until": "Sun, 04 Nov 2018 23:59:00 +0000"
     },
     "72": {
         "name": "Person check",
