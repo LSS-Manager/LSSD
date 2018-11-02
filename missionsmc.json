@@ -1894,5 +1894,26 @@
         "Required Battalion Chief Vehicles": "1",
         "Required Water Tankers": "1",
         "Probability of Water Tanker being required": "20"
+    },
+    "212": {
+        "name": "Fire on farm medium",
+        "Average credits": "6000",
+        "Required Firetrucks": "8",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Platform Trucks": "1",
+        "Required Water Tankers": "2",
+        "Required Mobile Command Vehicles": "1",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/213", "Fire on farm large"]
+        ]
+    },
+    "213": {
+        "name": "Fire on farm large",
+        "Average credits": "11000",
+        "Required Firetrucks": "10",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Platform Trucks": "2",
+        "Required Water Tankers": "3",
+        "Required Mobile Command Vehicles": "1"
     }
 }

@@ -4384,5 +4384,17 @@
         "NEF Anforderungswahrscheinlichkeit": "10",
         "Tragehilfe Anforderungswahrscheinlichkeit": "20",
         "Fachrichtung für Patienten": "Unfallchirurgie"
+    },
+    "418": {
+        "name": "Absicherung Pannen-LKW",
+        "Credits im Durchschnitt": "400",
+        "Benötigte Streifenwagen": "1",
+        "Ausbreitungsmöglichkeiten": [
+            ["https://www.leitstellenspiel.de/einsaetze/89", "LKW Auffahrunfall"],
+            ["https://www.leitstellenspiel.de/einsaetze/120", "LKW umgestürzt"],
+            ["https://www.leitstellenspiel.de/einsaetze/121", "LKW umgestürzt"],
+            ["https://www.leitstellenspiel.de/einsaetze/394", "LKW auf Stauende"],
+            ["https://www.leitstellenspiel.de/einsaetze/13", "Brennender LKW"]
+        ]
     }
 }

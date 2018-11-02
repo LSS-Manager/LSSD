@@ -3301,5 +3301,17 @@
         "HOVD benodigd waarschijnlijkheid": "80",
         "Benodigde Commandowagen": "1",
         "Commandowagen benodigdheid": "80"
+    },
+    "357": {
+        "name": "Natuurbrand",
+        "Gemiddeld aantal Credits": "22500",
+        "Benodigde tankautospuiten": "32",
+        "Benodigde hulpverleningsvoertuigen": "4",
+        "Benodigde OvD-B's": "8",
+        "Benodigde Adembeschermingsvoertuigen": "2",
+        "Benodigde slangenwagens": "10",
+        "Benodigde HOVD's": "3",
+        "Benodigde Commandowagen": "2",
+        "Benodigde noodhulpeenheden": "8"
     }
 }
