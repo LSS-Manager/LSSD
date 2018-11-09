@@ -4396,5 +4396,23 @@
             ["https://www.leitstellenspiel.de/einsaetze/394", "LKW auf Stauende"],
             ["https://www.leitstellenspiel.de/einsaetze/13", "Brennender LKW"]
         ]
+    },
+    "419": {
+        "name": "Austritt Flüssiggas",
+        "Credits im Durchschnitt": "4500",
+        "Benötigte Löschfahrzeuge": "6",
+        "Benötigte Rüstwagen": "3",
+        "Benötigte ELW 1": "2",
+        "Benötigte ELW 2": "1",
+        "Benötigte GW L 2 Wasser": "1",
+        "Benötigte GW-Werkfeuerwehr": "1",
+        "Benötigte GW-A": "2",
+        "Benötigte Drehleitern": "2",
+        "Benötigte GW-Mess": "1",
+        "Benötigte Streifenwagen": "2",
+        "Maximale Patientenanzahl": "5",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "50",
+        "NEF Anforderungswahrscheinlichkeit": "60",
+        "Fachrichtung für Patienten": "Allgemeine Innere"
     }
 }

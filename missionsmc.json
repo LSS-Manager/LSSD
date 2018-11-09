@@ -1915,5 +1915,16 @@
         "Required Platform Trucks": "2",
         "Required Water Tankers": "3",
         "Required Mobile Command Vehicles": "1"
+    },
+    "214": {
+        "name": "Scrapyard fire",
+        "Average credits": "5000",
+        "Required Firetrucks": "6",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Platform Trucks": "2",
+        "Required Heavy Rescue Vehicles": "2",
+        "Required Water Tankers": "2",
+        "Required Mobile Command Vehicles": "1",
+        "Required Police Cars": "2"
     }
 }

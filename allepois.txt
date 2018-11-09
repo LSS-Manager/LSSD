@@ -90,6 +90,7 @@ MC:
 42 = Cold Storage Warehouse
 43 = Power Plant
 44 = Factory
+45 = Scrap yard
 
 MEL:
 

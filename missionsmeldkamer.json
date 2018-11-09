@@ -3313,5 +3313,21 @@
         "Benodigde HOVD's": "3",
         "Benodigde Commandowagen": "2",
         "Benodigde noodhulpeenheden": "8"
+    },
+    "358": {
+        "name": "Hoge bloedruk",
+        "Benodigd aantal Ambulancestandplaatsen": "1",
+        "Maximale patiënten aantal": "1",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "60",
+        "Gespecialiseerde afdeling voor patiënten": "Cardiologie"
+    },
+    "359": {
+        "name": "Lage bloedruk",
+        "Benodigd aantal Ambulancestandplaatsen": "1",
+        "Maximale patiënten aantal": "1",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "60",
+        "Gespecialiseerde afdeling voor patiënten": "Cardiologie"
     }
 }
