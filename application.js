@@ -788,6 +788,7 @@ function vehicleDriveAdd(params) {
 
 function vehicle_image_reload() {
     $(".vehicle_image_reload").each(function() {
+        if ("false" == $(this).attr("image_replace_allowed")) return !0;
         if ("undefined" != typeof $(this).attr("vehicle_graphic_id") && "" != $(this).attr("vehicle_graphic_id")) {
             var e = $(this).attr("vehicle_graphic_id");
             "undefined" != typeof vehicle_graphics_sorted[e] && "undefined" != typeof vehicle_graphics_sorted[e][$(this).attr("vehicle_type_id")] && null != vehicle_graphics_sorted[e][$(this).attr("vehicle_type_id")] && $(this).attr("src", vehicle_graphics_sorted[e][$(this).attr("vehicle_type_id")][0])
@@ -796,10 +797,11 @@ function vehicle_image_reload() {
 }
 
 function vehicleCreateOnMap(e, t) {
-    if ("undefined" != typeof buildingVehicleGraphicCache[t.b]) {
-        var i = buildingVehicleGraphicCache[t.b];
-        "undefined" != typeof vehicle_graphics_sorted[i] && "undefined" != typeof vehicle_graphics_sorted[i][t.vtid] && null != vehicle_graphics_sorted[i][t.vtid] && (t["in"] = vehicle_graphics_sorted[i][t.vtid][0], t.isr = vehicle_graphics_sorted[i][t.vtid][1], t.apng_sonderrechte = vehicle_graphics_sorted[i][t.vtid][2])
-    } else "undefined" != typeof vehicle_graphics[t.vtid] && null != vehicle_graphics[t.vtid] && (t["in"] = vehicle_graphics[t.vtid][0], t.isr = vehicle_graphics[t.vtid][1], t.apng_sonderrechte = vehicle_graphics[t.vtid][2]);
+    if ("true" == t.ioverwrite)
+        if ("undefined" != typeof buildingVehicleGraphicCache[t.b]) {
+            var i = buildingVehicleGraphicCache[t.b];
+            "undefined" != typeof vehicle_graphics_sorted[i] && "undefined" != typeof vehicle_graphics_sorted[i][t.vtid] && null != vehicle_graphics_sorted[i][t.vtid] && (t["in"] = vehicle_graphics_sorted[i][t.vtid][0], t.isr = vehicle_graphics_sorted[i][t.vtid][1], t.apng_sonderrechte = vehicle_graphics_sorted[i][t.vtid][2])
+        } else "undefined" != typeof vehicle_graphics[t.vtid] && null != vehicle_graphics[t.vtid] && (t["in"] = vehicle_graphics[t.vtid][0], t.isr = vehicle_graphics[t.vtid][1], t.apng_sonderrechte = vehicle_graphics[t.vtid][2]);
     if (null == e) {
         if ("undefined" != typeof mapkit) {
             var e = new mapkit.ImageAnnotation(new mapkit.Coordinate(0, 0), {

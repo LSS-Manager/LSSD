@@ -1926,5 +1926,10 @@
         "Required Water Tankers": "2",
         "Required Mobile Command Vehicles": "1",
         "Required Police Cars": "2"
+    },
+    "215": {
+        "name": "Animal rescue from drain",
+        "Average credits": "275",
+        "Required Firetrucks": "1"
     }
 }

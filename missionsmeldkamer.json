@@ -1306,8 +1306,8 @@
         "name": "Brandende cadeautjes",
         "Gemiddeld aantal Credits": "550",
         "Benodigde tankautospuiten": "1",
-        "Start datum": "vrij 24 nov 2017 12:00:00 +00:00",
-        "Eind datum": "di 05 dec 2017 23:59:00 +00:00"
+        "Start datum": "za 17 nov 2018 00:00:00 +00:00",
+        "Eind datum": "woe 05 dec 2018 23:59:00 +00:00"
     },
     "161": {
         "name": "Sinterklaas van dak gegleden",
@@ -1316,8 +1316,8 @@
         "Minimale aantal slachtoffers": "1",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
-        "Start datum": "vrij 24 nov 2017 12:00:00 +00:00",
-        "Eind datum": "di 05 dec 2017 23:59:00 +00:00"
+        "Start datum": "za 17 nov 2018 00:00:00 +00:00",
+        "Eind datum": "woe 05 dec 2018 23:59:00 +00:00"
     },
     "162": {
         "name": "Pepernoot op hoofd",
@@ -1326,15 +1326,15 @@
         "Minimale aantal slachtoffers": "1",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "50",
-        "Start datum": "vrij 24 nov 2017 12:00:00 +00:00",
-        "Eind datum": "di 05 dec 2017 23:59:00 +00:00"
+        "Start datum": "za 17 nov 2018 00:00:00 +00:00",
+        "Eind datum": "woe 05 dec 2018 23:59:00 +00:00"
     },
     "163": {
         "name": "Piet bestolen",
         "Gemiddeld aantal Credits": "500",
         "Benodigde noodhulpeenheden": "1",
-        "Start datum": "vrij 24 nov 2017 12:00:00 +00:00",
-        "Eind datum": "di 05 dec 2017 23:59:00 +00:00"
+        "Start datum": "za 17 nov 2018 00:00:00 +00:00",
+        "Eind datum": "woe 05 dec 2018 23:59:00 +00:00"
     },
     "164": {
         "name": "Kind geschrokken",
@@ -1342,8 +1342,8 @@
         "Maximale patiënten aantal": "1",
         "Minimale aantal slachtoffers": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "0",
-        "Start datum": "vrij 24 nov 2017 12:00:00 +00:00",
-        "Eind datum": "di 05 dec 2017 23:59:00 +00:00"
+        "Start datum": "za 17 nov 2018 00:00:00 +00:00",
+        "Eind datum": "woe 05 dec 2018 23:59:00 +00:00"
     },
     "165": {
         "name": "Piet klem in schoorsteen",
@@ -1352,22 +1352,22 @@
         "Benodigde redvoertuigen": "1",
         "Maximale patiënten aantal": "1",
         "Minimale aantal slachtoffers": "1",
-        "Start datum": "vrij 24 nov 2017 12:00:00 +00:00",
-        "Eind datum": "di 05 dec 2017 23:59:00 +00:00"
+        "Start datum": "za 17 nov 2018 00:00:00 +00:00",
+        "Eind datum": "woe 05 dec 2018 23:59:00 +00:00"
     },
     "166": {
         "name": "Demonstratie zwarte piet",
         "Gemiddeld aantal Credits": "1200",
         "Benodigde noodhulpeenheden": "4",
-        "Start datum": "vrij 24 nov 2017 12:00:00 +00:00",
-        "Eind datum": "di 05 dec 2017 23:59:00 +00:00"
+        "Start datum": "za 17 nov 2018 00:00:00 +00:00",
+        "Eind datum": "woe 05 dec 2018 23:59:00 +00:00"
     },
     "167": {
         "name": "Schoenen dief",
         "Gemiddeld aantal Credits": "200",
         "Benodigde noodhulpeenheden": "1",
-        "Start datum": "vrij 24 nov 2017 12:00:00 +00:00",
-        "Eind datum": "di 05 dec 2017 23:59:00 +00:00"
+        "Start datum": "za 17 nov 2018 00:00:00 +00:00",
+        "Eind datum": "woe 05 dec 2018 23:59:00 +00:00"
     },
     "168": {
         "name": "Verstikking in pepernoot",
@@ -1375,8 +1375,8 @@
         "Maximale patiënten aantal": "1",
         "Minimale aantal slachtoffers": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "80",
-        "Start datum": "vrij 24 nov 2017 12:00:00 +00:00",
-        "Eind datum": "di 05 dec 2017 23:59:00 +00:00"
+        "Start datum": "za 17 nov 2018 00:00:00 +00:00",
+        "Eind datum": "woe 05 dec 2018 23:59:00 +00:00"
     },
     "169": {
         "name": "Brandende kerstboom",
@@ -3315,7 +3315,7 @@
         "Benodigde noodhulpeenheden": "8"
     },
     "358": {
-        "name": "Hoge bloedruk",
+        "name": "Hoge bloeddruk",
         "Benodigd aantal Ambulancestandplaatsen": "1",
         "Maximale patiënten aantal": "1",
         "Minimale aantal slachtoffers": "1",
@@ -3323,11 +3323,46 @@
         "Gespecialiseerde afdeling voor patiënten": "Cardiologie"
     },
     "359": {
-        "name": "Lage bloedruk",
+        "name": "Lage bloeddruk",
         "Benodigd aantal Ambulancestandplaatsen": "1",
         "Maximale patiënten aantal": "1",
         "Minimale aantal slachtoffers": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "60",
         "Gespecialiseerde afdeling voor patiënten": "Cardiologie"
+    },
+    "360": {
+        "name": "Brand in bovenwoning",
+        "Gemiddeld aantal Credits": "300",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde redvoertuigen": "1",
+        "Hoogwerker benodigd waarschijnlijkheid": "40"
+    },
+    "361": {
+        "name": "Brand in bovenwoning",
+        "Gemiddeld aantal Credits": "1150",
+        "Benodigde tankautospuiten": "2",
+        "Benodigde redvoertuigen": "1",
+        "Hoogwerker benodigd waarschijnlijkheid": "60",
+        "Benodigde OvD-B's": "1",
+        "Benodigde noodhulpeenheden": "1",
+        "Maximale patiënten aantal": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "50",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
+    },
+    "362": {
+        "name": "Brand in flatwoning",
+        "Gemiddeld aantal Credits": "2350",
+        "Benodigde tankautospuiten": "3",
+        "Benodigde redvoertuigen": "1",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Adembeschermingsvoertuigen": "1",
+        "Adembeschermingsvoertuig benodigd waarschijnlijkheid": "10",
+        "Benodigde HOVD's": "1",
+        "HOVD benodigd waarschijnlijkheid": "50",
+        "Benodigde noodhulpeenheden": "2",
+        "Maximale patiënten aantal": "6",
+        "Minimale aantal slachtoffers": "3",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "50",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
     }
 }

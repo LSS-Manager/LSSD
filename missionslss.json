@@ -4414,5 +4414,12 @@
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "50",
         "NEF Anforderungswahrscheinlichkeit": "60",
         "Fachrichtung für Patienten": "Allgemeine Innere"
+    },
+    "420": {
+        "name": "Schlechter Allgemeinzustand",
+        "Vorraussetzung an Rettungswachen": "1",
+        "Maximale Patientenanzahl": "1",
+        "Fachrichtung für Patienten": "Allgemeine Innere",
+        "Mindest Patientenanzahl": "1"
     }
 }
