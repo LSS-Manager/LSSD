@@ -462,8 +462,8 @@
         "name": "Brand auf Weihnachtsmarkt",
         "Credits im Durchschnitt": "310",
         "Benötigte Löschfahrzeuge": "1",
-        "Tritt nur ab dem Datum auf": "Sonntag, 26. November 2017, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Montag, 25. Dezember 2017, 00:00 Uhr",
+        "Tritt nur ab dem Datum auf": "Freitag, 23. November 2018, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Dienstag, 25. Dezember 2018, 00:00 Uhr",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Allgemeine Innere",
         "NEF Anforderungswahrscheinlichkeit": "10"
@@ -474,8 +474,8 @@
         "Benötigte Rüstwagen": "1",
         "Rüstwagen Anforderungswahrscheinlichkeit": "100",
         "Benötigte Löschfahrzeuge": "1",
-        "Tritt nur ab dem Datum auf": "Sonntag, 26. November 2017, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Montag, 25. Dezember 2017, 00:00 Uhr",
+        "Tritt nur ab dem Datum auf": "Montag, 26. November 2018, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Dienstag, 25. Dezember 2018, 00:00 Uhr",
         "Maximale Patientenanzahl": "3",
         "Fachrichtung für Patienten": "Unfallchirurgie"
     },
@@ -485,8 +485,8 @@
         "Maximale Patientenanzahl": "1",
         "Mindest Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Unfallchirurgie",
-        "Tritt nur ab dem Datum auf": "Montag, 27. November 2017, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Montag, 25. Dezember 2017, 00:00 Uhr",
+        "Tritt nur ab dem Datum auf": "Montag, 26. November 2018, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Dienstag, 25. Dezember 2018, 00:00 Uhr",
         "NEF Anforderungswahrscheinlichkeit": "40",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "20"
     },
@@ -494,8 +494,8 @@
         "name": "Brennender Tannenbaum",
         "Credits im Durchschnitt": "870",
         "Benötigte Löschfahrzeuge": "1",
-        "Tritt nur ab dem Datum auf": "Sonntag, 26. November 2017, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Montag, 25. Dezember 2017, 00:00 Uhr"
+        "Tritt nur ab dem Datum auf": "Freitag, 23. November 2018, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Dienstag, 25. Dezember 2018, 00:00 Uhr"
     },
     "56": {
         "name": "Betrunkene Person auf Weihnachtsmarkt",
@@ -503,8 +503,8 @@
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Allgemeine Innere",
         "Mindest Patientenanzahl": "1",
-        "Tritt nur ab dem Datum auf": "Montag, 27. November 2017, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Montag, 25. Dezember 2017, 00:00 Uhr"
+        "Tritt nur ab dem Datum auf": "Freitag, 23. November 2018, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Dienstag, 25. Dezember 2018, 00:00 Uhr"
     },
     "57": {
         "name": "Gestürzter Fußgänger",
@@ -1221,8 +1221,8 @@
         "name": "Brennender Adventskranz",
         "Credits im Durchschnitt": "800",
         "Benötigte Löschfahrzeuge": "1",
-        "Tritt nur ab dem Datum auf": "Sonntag, 26. November 2017, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Montag, 25. Dezember 2017, 00:00 Uhr"
+        "Tritt nur ab dem Datum auf": "Freitag, 23. November 2018, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Dienstag, 25. Dezember 2018, 00:00 Uhr"
     },
     "130": {
         "name": "Rangelei auf Weihnachtsmarkt",
@@ -1230,8 +1230,8 @@
         "Benötigte Streifenwagen": "2",
         "Maximale Patientenanzahl": "2",
         "Fachrichtung für Patienten": "Unfallchirurgie",
-        "Tritt nur ab dem Datum auf": "Sonntag, 26. November 2017, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Montag, 25. Dezember 2017, 00:00 Uhr"
+        "Tritt nur ab dem Datum auf": "Freitag, 23. November 2018, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Dienstag, 25. Dezember 2018, 00:00 Uhr"
     },
     "131": {
         "name": "Mittlerer Feldbrand",
@@ -1904,15 +1904,15 @@
         "name": "Diebstahl auf Weihnachtsmarkt",
         "Credits im Durchschnitt": "300",
         "Benötigte Streifenwagen": "1",
-        "Tritt nur ab dem Datum auf": "Sonntag, 26. November 2017, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Montag, 25. Dezember 2017, 00:00 Uhr"
+        "Tritt nur ab dem Datum auf": "Freitag, 23. November 2018, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Dienstag, 25. Dezember 2018, 00:00 Uhr"
     },
     "203": {
         "name": "Brennende Weihnachtsmarktbude",
         "Credits im Durchschnitt": "610",
         "Benötigte Löschfahrzeuge": "2",
-        "Tritt nur ab dem Datum auf": "Sonntag, 26. November 2017, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Montag, 25. Dezember 2017, 00:00 Uhr",
+        "Tritt nur ab dem Datum auf": "Freitag, 23. November 2018, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Dienstag, 25. Dezember 2018, 00:00 Uhr",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Allgemeine Innere",
         "NEF Anforderungswahrscheinlichkeit": "10"

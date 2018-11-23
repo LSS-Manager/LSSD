@@ -269,7 +269,7 @@
         "Minimum patient number": "1"
     },
     "36": {
-        "name": "Cardiac infarction",
+        "name": "Chest Pains",
         "Required Rescue Stations": "3",
         "Max. Patients": "1",
         "Minimum patient number": "1",
@@ -1931,5 +1931,14 @@
         "name": "Animal rescue from drain",
         "Average credits": "275",
         "Required Firetrucks": "1"
+    },
+    "216": {
+        "name": "Home Invasion",
+        "Average credits": "1250",
+        "Required Police Cars": "4",
+        "Required Police Helicopters": "1",
+        "Required K-9 Units": "1",
+        "Required SWAT Personnel": "4",
+        "Maximum Number of Prisoners": "2"
     }
 }
