@@ -1940,5 +1940,18 @@
         "Required K-9 Units": "1",
         "Required SWAT Personnel": "4",
         "Maximum Number of Prisoners": "2"
+    },
+    "217": {
+        "name": "Museum Fire",
+        "Average credits": "7500",
+        "Required Firetrucks": "6",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Platform Trucks": "2",
+        "Required Heavy Rescue Vehicles": "4",
+        "Required Water Tankers": "1",
+        "Probability of Water Tanker being required": "20",
+        "Required Mobile Air Vehicles": "2",
+        "Required Mobile Command Vehicles": "1",
+        "Required Police Cars": "2"
     }
 }

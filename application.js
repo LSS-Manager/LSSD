@@ -16,9 +16,9 @@ function successfullMessage(e) {
 function aao_check(e, t, i) {
     return i > 0 && $(aao_source_element + " input[" + e + "|=1]").each(function() {
         if (i > 0) {
-            var e = [];
-            if ("" != t.attr("building_ids")) var e = jQuery.parseJSON(t.attr("building_ids"));
-            (e.length <= 0 || e.indexOf(parseInt($(this).attr("building_id"))) >= 0) && !$(this).is(":checked") && !$(this).is(":disabled") && $(this).attr("ignore_aao") <= 0 && (i -= 1)
+            var n = [];
+            if ("" != t.attr("building_ids")) var n = jQuery.parseJSON(t.attr("building_ids"));
+            (n.length <= 0 || n.indexOf(parseInt($(this).attr("building_id"))) >= 0) && !$(this).is(":checked") && !$(this).is(":disabled") && $(this).attr("ignore_aao") <= 0 && ($(this).attr("vehicle_type_ignore_default_aao") <= 0 || -1 !== e.indexOf("custom_")) && (i -= 1)
         }
     }), i > 0 ? !1 : !0
 }
@@ -27,11 +27,11 @@ function aaoNextAvailable(e, t) {
     var i = -1;
     return $(aao_source_element + " input[" + e + "|=1]").each(function() {
         if (-1 == i) {
-            var e = [];
-            if ("" != t.attr("building_ids")) var e = jQuery.parseJSON(t.attr("building_ids"));
-            if ((e.length <= 0 || e.indexOf(parseInt($(this).attr("building_id"))) >= 0) && !$(this).prop("checked") && !$(this).prop("disabled") && $(this).attr("ignore_aao") <= 0) {
-                var n = $(this).val();
-                i = parseInt($("#vehicle_sort_" + n).attr("sortvalue"))
+            var n = [];
+            if ("" != t.attr("building_ids")) var n = jQuery.parseJSON(t.attr("building_ids"));
+            if ((n.length <= 0 || n.indexOf(parseInt($(this).attr("building_id"))) >= 0) && !$(this).prop("checked") && !$(this).prop("disabled") && $(this).attr("ignore_aao") <= 0 && ($(this).attr("vehicle_type_ignore_default_aao") <= 0 || -1 !== e.indexOf("custom_"))) {
+                var o = $(this).val();
+                i = parseInt($("#vehicle_sort_" + o).attr("sortvalue"))
             }
         }
     }), i
@@ -42,7 +42,7 @@ function aao(e, t, i, n) {
         if (n > 0) {
             var i = [];
             if ("" != t.attr("building_ids")) var i = jQuery.parseJSON(t.attr("building_ids"));
-            (i.length <= 0 || i.indexOf(parseInt($(this).attr("building_id"))) >= 0) && !$(this).prop("checked") && !$(this).prop("disabled") && $(this).attr("ignore_aao") <= 0 && ("grtw0" == e && $("#vehicle_mode_" + $(this).val() + "_0").prop("checked", !0).change(), "grtw1" == e && $("#vehicle_mode_" + $(this).val() + "_1").prop("checked", !0).change(), n -= 1, $(this).prop("checked", !0), $(this).change())
+            (i.length <= 0 || i.indexOf(parseInt($(this).attr("building_id"))) >= 0) && !$(this).prop("checked") && !$(this).prop("disabled") && $(this).attr("ignore_aao") <= 0 && ($(this).attr("vehicle_type_ignore_default_aao") <= 0 || -1 !== e.indexOf("custom_")) && ("grtw0" == e && $("#vehicle_mode_" + $(this).val() + "_0").prop("checked", !0).change(), "grtw1" == e && $("#vehicle_mode_" + $(this).val() + "_1").prop("checked", !0).change(), n -= 1, $(this).prop("checked", !0), $(this).change())
         }
     }), n > 0 ? I18n.t("javascript.missed_vehicle") + " " + n + " " + i + ". " : ""
 }
@@ -1253,20 +1253,30 @@ function vehicle_group_available(vehicle_group_id) {
 
 function aao_available(e) {
     var t = !0;
-    $("#available_aao_" + e).hasClass("label-success") || ($.each(aao_types, function(i, n) {
-        if ("hlf_or_rw_and_lf" == n[0]) {
-            var o = $("#aao_" + e).attr(n[0]);
-            aao_check("hlf_only", $("#aao_" + e), o) || (aao_check("rw_only", $("#aao_" + e), o) || (t = !1), aao_check("lf_only", $("#aao_" + e), o) || (t = !1))
-        } else if ("naw_or_rtw_and_nef" == n[0] || "naw_or_rtw_and_nef_or_rth" == n[0]) {
-            var s = "nef";
-            "naw_or_rtw_and_nef" == n[0] && (s = "nef_only");
-            var o = $("#aao_" + e).attr(n[0]);
-            aao_check("naw", $("#aao_" + e), o) || (aao_check(s, $("#aao_" + e), o) || (t = !1), aao_check("rtw", $("#aao_" + e), o) || (t = !1))
-        } else {
-            var o = $("#aao_" + e).attr(n[0]);
-            aao_check(n[0], $("#aao_" + e), o) || (t = !1)
+    if (!$("#available_aao_" + e).hasClass("label-success")) {
+        $.each(aao_types, function(i, n) {
+            if ("hlf_or_rw_and_lf" == n[0]) {
+                var o = $("#aao_" + e).attr(n[0]);
+                aao_check("hlf_only", $("#aao_" + e), o) || (aao_check("rw_only", $("#aao_" + e), o) || (t = !1), aao_check("lf_only", $("#aao_" + e), o) || (t = !1))
+            } else if ("naw_or_rtw_and_nef" == n[0] || "naw_or_rtw_and_nef_or_rth" == n[0]) {
+                var s = "nef";
+                "naw_or_rtw_and_nef" == n[0] && (s = "nef_only");
+                var o = $("#aao_" + e).attr(n[0]);
+                aao_check("naw", $("#aao_" + e), o) || (aao_check(s, $("#aao_" + e), o) || (t = !1), aao_check("rtw", $("#aao_" + e), o) || (t = !1))
+            } else {
+                var o = $("#aao_" + e).attr(n[0]);
+                aao_check(n[0], $("#aao_" + e), o) || (t = !1)
+            }
+        });
+        var i = $("#aao_" + e).attr("custom");
+        if ("" != i) {
+            var n = jQuery.parseJSON(i);
+            $.each(n, function(i, n) {
+                aao_check("custom_" + md5(i), $("#aao_" + e), n) || (t = !1)
+            })
         }
-    }), t ? ($("#available_aao_" + e).attr("class", "label label-success"), $("#available_aao_" + e).html("<span class='glyphicon glyphicon-ok' aria-hidden='true'></span>")) : ($("#available_aao_" + e).html("<span class=' glyphicon glyphicon-remove' aria-hidden='true'></span>"), $("#available_aao_" + e).attr("class", "label label-danger")))
+        t ? ($("#available_aao_" + e).attr("class", "label label-success"), $("#available_aao_" + e).html("<span class='glyphicon glyphicon-ok' aria-hidden='true'></span>")) : ($("#available_aao_" + e).html("<span class=' glyphicon glyphicon-remove' aria-hidden='true'></span>"), $("#available_aao_" + e).attr("class", "label label-danger"))
+    }
 }
 
 function unix_timestamp() {
@@ -19216,7 +19226,108 @@ function hideVehicleBuildingHelpText(e) {
         }), o.control.layers = function(e, t, i) {
             return new o.Control.Layers(e, t, i)
         }
-    }(window, document);
+    }(window, document), ! function(e) {
+        "use strict";
+
+        function t(e, t) {
+            var i = (65535 & e) + (65535 & t);
+            return (e >> 16) + (t >> 16) + (i >> 16) << 16 | 65535 & i
+        }
+
+        function i(e, t) {
+            return e << t | e >>> 32 - t
+        }
+
+        function n(e, n, o, s, r, a) {
+            return t(i(t(t(n, e), t(s, a)), r), o)
+        }
+
+        function o(e, t, i, o, s, r, a) {
+            return n(t & i | ~t & o, e, t, s, r, a)
+        }
+
+        function s(e, t, i, o, s, r, a) {
+            return n(t & o | i & ~o, e, t, s, r, a)
+        }
+
+        function r(e, t, i, o, s, r, a) {
+            return n(t ^ i ^ o, e, t, s, r, a)
+        }
+
+        function a(e, t, i, o, s, r, a) {
+            return n(i ^ (t | ~o), e, t, s, r, a)
+        }
+
+        function l(e, i) {
+            e[i >> 5] |= 128 << i % 32, e[14 + (i + 64 >>> 9 << 4)] = i;
+            var n, l, c, u, h, d = 1732584193,
+                p = -271733879,
+                f = -1732584194,
+                m = 271733878;
+            for (n = 0; n < e.length; n += 16) l = d, c = p, u = f, h = m, p = a(p = a(p = a(p = a(p = r(p = r(p = r(p = r(p = s(p = s(p = s(p = s(p = o(p = o(p = o(p = o(p, f = o(f, m = o(m, d = o(d, p, f, m, e[n], 7, -680876936), p, f, e[n + 1], 12, -389564586), d, p, e[n + 2], 17, 606105819), m, d, e[n + 3], 22, -1044525330), f = o(f, m = o(m, d = o(d, p, f, m, e[n + 4], 7, -176418897), p, f, e[n + 5], 12, 1200080426), d, p, e[n + 6], 17, -1473231341), m, d, e[n + 7], 22, -45705983), f = o(f, m = o(m, d = o(d, p, f, m, e[n + 8], 7, 1770035416), p, f, e[n + 9], 12, -1958414417), d, p, e[n + 10], 17, -42063), m, d, e[n + 11], 22, -1990404162), f = o(f, m = o(m, d = o(d, p, f, m, e[n + 12], 7, 1804603682), p, f, e[n + 13], 12, -40341101), d, p, e[n + 14], 17, -1502002290), m, d, e[n + 15], 22, 1236535329), f = s(f, m = s(m, d = s(d, p, f, m, e[n + 1], 5, -165796510), p, f, e[n + 6], 9, -1069501632), d, p, e[n + 11], 14, 643717713), m, d, e[n], 20, -373897302), f = s(f, m = s(m, d = s(d, p, f, m, e[n + 5], 5, -701558691), p, f, e[n + 10], 9, 38016083), d, p, e[n + 15], 14, -660478335), m, d, e[n + 4], 20, -405537848), f = s(f, m = s(m, d = s(d, p, f, m, e[n + 9], 5, 568446438), p, f, e[n + 14], 9, -1019803690), d, p, e[n + 3], 14, -187363961), m, d, e[n + 8], 20, 1163531501), f = s(f, m = s(m, d = s(d, p, f, m, e[n + 13], 5, -1444681467), p, f, e[n + 2], 9, -51403784), d, p, e[n + 7], 14, 1735328473), m, d, e[n + 12], 20, -1926607734), f = r(f, m = r(m, d = r(d, p, f, m, e[n + 5], 4, -378558), p, f, e[n + 8], 11, -2022574463), d, p, e[n + 11], 16, 1839030562), m, d, e[n + 14], 23, -35309556), f = r(f, m = r(m, d = r(d, p, f, m, e[n + 1], 4, -1530992060), p, f, e[n + 4], 11, 1272893353), d, p, e[n + 7], 16, -155497632), m, d, e[n + 10], 23, -1094730640), f = r(f, m = r(m, d = r(d, p, f, m, e[n + 13], 4, 681279174), p, f, e[n], 11, -358537222), d, p, e[n + 3], 16, -722521979), m, d, e[n + 6], 23, 76029189), f = r(f, m = r(m, d = r(d, p, f, m, e[n + 9], 4, -640364487), p, f, e[n + 12], 11, -421815835), d, p, e[n + 15], 16, 530742520), m, d, e[n + 2], 23, -995338651), f = a(f, m = a(m, d = a(d, p, f, m, e[n], 6, -198630844), p, f, e[n + 7], 10, 1126891415), d, p, e[n + 14], 15, -1416354905), m, d, e[n + 5], 21, -57434055), f = a(f, m = a(m, d = a(d, p, f, m, e[n + 12], 6, 1700485571), p, f, e[n + 3], 10, -1894986606), d, p, e[n + 10], 15, -1051523), m, d, e[n + 1], 21, -2054922799), f = a(f, m = a(m, d = a(d, p, f, m, e[n + 8], 6, 1873313359), p, f, e[n + 15], 10, -30611744), d, p, e[n + 6], 15, -1560198380), m, d, e[n + 13], 21, 1309151649), f = a(f, m = a(m, d = a(d, p, f, m, e[n + 4], 6, -145523070), p, f, e[n + 11], 10, -1120210379), d, p, e[n + 2], 15, 718787259), m, d, e[n + 9], 21, -343485551), d = t(d, l), p = t(p, c), f = t(f, u), m = t(m, h);
+            return [d, p, f, m]
+        }
+
+        function c(e) {
+            var t, i = "",
+                n = 32 * e.length;
+            for (t = 0; n > t; t += 8) i += String.fromCharCode(255 & e[t >> 5] >>> t % 32);
+            return i
+        }
+
+        function u(e) {
+            var t, i = [];
+            for (i[(e.length >> 2) - 1] = void 0, t = 0; t < i.length; t += 1) i[t] = 0;
+            var n = 8 * e.length;
+            for (t = 0; n > t; t += 8) i[t >> 5] |= (255 & e.charCodeAt(t / 8)) << t % 32;
+            return i
+        }
+
+        function h(e) {
+            return c(l(u(e), 8 * e.length))
+        }
+
+        function d(e, t) {
+            var i, n, o = u(e),
+                s = [],
+                r = [];
+            for (s[15] = r[15] = void 0, o.length > 16 && (o = l(o, 8 * e.length)), i = 0; 16 > i; i += 1) s[i] = 909522486 ^ o[i], r[i] = 1549556828 ^ o[i];
+            return n = l(s.concat(u(t)), 512 + 8 * t.length), c(l(r.concat(n), 640))
+        }
+
+        function p(e) {
+            var t, i, n = "";
+            for (i = 0; i < e.length; i += 1) t = e.charCodeAt(i), n += "0123456789abcdef".charAt(15 & t >>> 4) + "0123456789abcdef".charAt(15 & t);
+            return n
+        }
+
+        function f(e) {
+            return unescape(encodeURIComponent(e))
+        }
+
+        function m(e) {
+            return h(f(e))
+        }
+
+        function g(e) {
+            return p(m(e))
+        }
+
+        function _(e, t) {
+            return d(f(e), f(t))
+        }
+
+        function v(e, t) {
+            return p(_(e, t))
+        }
+
+        function b(e, t, i) {
+            return t ? i ? _(t, e) : v(t, e) : i ? m(e) : g(e)
+        }
+        "function" == typeof define && define.amd ? define(function() {
+            return b
+        }) : "object" == typeof module && module.exports ? module.exports = b : e.md5 = b
+    }(this);
 var map, alliance_building_show, geocoder, directionsService, building_eval_unload, building_markers = Array(),
     building_markers_cache = Array(),
     mission_poi_markers = Array(),
@@ -19439,7 +19550,7 @@ var map, alliance_building_show, geocoder, directionsService, building_eval_unlo
     }), $(".aao").click(function() {
         var e = "",
             t = $(this);
-        return "true" == t.attr("reset") && vehicleSelectionReset(), $.each(aao_types, function(i, n) {
+        "true" == t.attr("reset") && vehicleSelectionReset(), $.each(aao_types, function(i, n) {
             if ("naw_or_rtw_and_nef" == n[0] || "naw_or_rtw_and_nef_or_rth" == n[0]) {
                 var o = "nef";
                 "naw_or_rtw_and_nef" == n[0] && (o = "nef_only");
@@ -19452,7 +19563,15 @@ var map, alliance_building_show, geocoder, directionsService, building_eval_unlo
                 var s = t.attr(n[0]);
                 e += aao(n[0], t, n[1], s)
             }
-        }), "" != e && ("undefined" != typeof pressedKeys && (pressedKeys = {}), alert(e)), !1
+        });
+        var i = t.attr("custom");
+        if ("" != i) {
+            var n = jQuery.parseJSON(i);
+            $.each(n, function(i, n) {
+                e += aao("custom_" + md5(i), t, i, n)
+            })
+        }
+        return "" != e && ("undefined" != typeof pressedKeys && (pressedKeys = {}), alert(e)), !1
     }), $(".vehicle_group").click(function() {
         var missing = [],
             vehicle_group_id = $(this).attr("vehicle_group_id"),

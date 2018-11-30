@@ -3413,5 +3413,16 @@
         "Minimale aantal slachtoffers": "8",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "50",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
+    },
+    "366": {
+        "name": "Personen op dak school",
+        "Gemiddeld aantal Credits": "550",
+        "Benodigde noodhulpeenheden": "1",
+        "Maximaal aantal gevangenen": "1"
+    },
+    "367": {
+        "name": "Gestolen scooter gevonden",
+        "Gemiddeld aantal Credits": "400",
+        "Benodigde noodhulpeenheden": "1"
     }
 }
