@@ -612,15 +612,15 @@
         "name": "Theft at christmas market",
         "Average credits": "300",
         "Required Police Cars": "1",
-        "Runs only from": "Sun, 26 Nov 2017 00:00:00 +0000",
-        "Runs only up until": "Mon, 25 Dec 2017 00:00:00 +0000"
+        "Runs only from": "Mon, 26 Nov 2018 00:00:00 +0000",
+        "Runs only up until": "Tue, 25 Dec 2018 00:00:00 +0000"
     },
     "80": {
         "name": "Burning christmas market stall",
         "Average credits": "610",
         "Required Firetrucks": "1",
-        "Runs only from": "Sun, 26 Nov 2017 00:00:00 +0000",
-        "Runs only up until": "Mon, 25 Dec 2017 00:00:00 +0000",
+        "Runs only from": "Mon, 26 Nov 2018 00:00:00 +0000",
+        "Runs only up until": "Tue, 25 Dec 2018 00:00:00 +0000",
         "Max. Patients": "1",
         "Patient Specializations": "General Internal"
     },
@@ -628,8 +628,8 @@
         "name": "Fire at christmas market",
         "Average credits": "310",
         "Required Firetrucks": "1",
-        "Runs only from": "Sun, 26 Nov 2017 00:00:00 +0000",
-        "Runs only up until": "Mon, 25 Dec 2017 00:00:00 +0000",
+        "Runs only from": "Mon, 26 Nov 2018 00:00:00 +0000",
+        "Runs only up until": "Tue, 25 Dec 2018 00:00:00 +0000",
         "Max. Patients": "1",
         "Patient Specializations": "General Internal"
     },
@@ -639,8 +639,8 @@
         "Required Heavy Rescue Vehicles": "1",
         "Probability of Heavy Rescue being required": "100",
         "Required Firetrucks": "1",
-        "Runs only from": "Sun, 26 Nov 2017 00:00:00 +0000",
-        "Runs only up until": "Mon, 25 Dec 2017 00:00:00 +0000",
+        "Runs only from": "Mon, 26 Nov 2018 00:00:00 +0000",
+        "Runs only up until": "Tue, 25 Dec 2018 00:00:00 +0000",
         "Max. Patients": "3",
         "Patient Specializations": "Traumatology"
     },
@@ -648,15 +648,15 @@
         "name": "Burning christmas tree",
         "Average credits": "870",
         "Required Firetrucks": "1",
-        "Runs only from": "Sun, 26 Nov 2017 00:00:00 +0000",
-        "Runs only up until": "Mon, 25 Dec 2017 00:00:00 +0000"
+        "Runs only from": "Mon, 26 Nov 2018 00:00:00 +0000",
+        "Runs only up until": "Tue, 25 Dec 2018 00:00:00 +0000"
     },
     "84": {
         "name": "Burning advent wreath",
         "Average credits": "800",
         "Required Firetrucks": "1",
-        "Runs only from": "Sun, 26 Nov 2017 00:00:00 +0000",
-        "Runs only up until": "Mon, 25 Dec 2017 00:00:00 +0000"
+        "Runs only from": "Mon, 26 Nov 2018 00:00:00 +0000",
+        "Runs only up until": "Tue, 25 Dec 2018 00:00:00 +0000"
     },
     "85": {
         "name": "Brawl at christmas market",
@@ -664,8 +664,8 @@
         "Required Police Cars": "2",
         "Max. Patients": "2",
         "Patient Specializations": "Traumatology",
-        "Runs only from": "Sun, 26 Nov 2017 00:00:00 +0000",
-        "Runs only up until": "Mon, 25 Dec 2017 00:00:00 +0000"
+        "Runs only from": "Mon, 26 Nov 2018 00:00:00 +0000",
+        "Runs only up until": "Tue, 25 Dec 2018 00:00:00 +0000"
     },
     "86": {
         "name": "MVA Rollover",

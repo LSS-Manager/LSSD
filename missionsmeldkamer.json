@@ -1382,15 +1382,15 @@
         "name": "Brandende kerstboom",
         "Gemiddeld aantal Credits": "550",
         "Benodigde tankautospuiten": "1",
-        "Start datum": "woe 06 dec 2017 00:00:00 +00:00",
-        "Eind datum": "ma 25 dec 2017 00:00:00 +00:00"
+        "Start datum": "do 06 dec 2018 00:00:00 +00:00",
+        "Eind datum": "di 25 dec 2018 00:00:00 +00:00"
     },
     "170": {
         "name": "Brandende kerstboom",
         "Gemiddeld aantal Credits": "550",
         "Benodigde tankautospuiten": "1",
-        "Start datum": "woe 06 dec 2017 00:00:00 +00:00",
-        "Eind datum": "ma 25 dec 2017 00:00:00 +00:00"
+        "Start datum": "do 06 dec 2018 00:00:00 +00:00",
+        "Eind datum": "di 25 dec 2018 00:00:00 +00:00"
     },
     "171": {
         "name": "Verkeersongeval door gladheid",
@@ -1403,8 +1403,8 @@
         "Minimale aantal slachtoffers": "1",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
-        "Start datum": "woe 06 dec 2017 00:00:00 +00:00",
-        "Eind datum": "ma 25 dec 2017 00:00:00 +00:00"
+        "Start datum": "do 06 dec 2018 00:00:00 +00:00",
+        "Eind datum": "di 25 dec 2018 00:00:00 +00:00"
     },
     "172": {
         "name": "Gevallen kerstman",
@@ -1413,31 +1413,31 @@
         "Minimale aantal slachtoffers": "1",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
-        "Start datum": "woe 06 dec 2017 00:00:00 +00:00",
-        "Eind datum": "ma 25 dec 2017 00:00:00 +00:00"
+        "Start datum": "do 06 dec 2018 00:00:00 +00:00",
+        "Eind datum": "di 25 dec 2018 00:00:00 +00:00"
     },
     "173": {
         "name": "Ruzie op de kerstmarkt",
         "Gemiddeld aantal Credits": "1000",
         "Benodigde noodhulpeenheden": "2",
         "Maximaal aantal gevangenen": "2",
-        "Start datum": "woe 06 dec 2017 00:00:00 +00:00",
-        "Eind datum": "ma 25 dec 2017 00:00:00 +00:00"
+        "Start datum": "do 06 dec 2018 00:00:00 +00:00",
+        "Eind datum": "di 25 dec 2018 00:00:00 +00:00"
     },
     "174": {
         "name": "Diefstal op de kerstmarkt",
         "Gemiddeld aantal Credits": "200",
         "Benodigde noodhulpeenheden": "2",
         "Maximaal aantal gevangenen": "1",
-        "Start datum": "woe 06 dec 2017 00:00:00 +00:00",
-        "Eind datum": "ma 25 dec 2017 00:00:00 +00:00"
+        "Start datum": "do 06 dec 2018 00:00:00 +00:00",
+        "Eind datum": "di 25 dec 2018 00:00:00 +00:00"
     },
     "175": {
         "name": "Brandende kerstmarktkraam",
         "Gemiddeld aantal Credits": "600",
         "Benodigde tankautospuiten": "1",
-        "Start datum": "woe 06 dec 2017 00:00:00 +00:00",
-        "Eind datum": "ma 25 dec 2017 00:00:00 +00:00"
+        "Start datum": "do 06 dec 2018 00:00:00 +00:00",
+        "Eind datum": "di 25 dec 2018 00:00:00 +00:00"
     },
     "176": {
         "name": "Gevallen schaatser",
@@ -1446,8 +1446,8 @@
         "Minimale aantal slachtoffers": "1",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "60",
-        "Start datum": "woe 06 dec 2017 00:00:00 +00:00",
-        "Eind datum": "ma 25 dec 2017 00:00:00 +00:00"
+        "Start datum": "do 06 dec 2018 00:00:00 +00:00",
+        "Eind datum": "di 25 dec 2018 00:00:00 +00:00"
     },
     "177": {
         "name": "Gevallen persoon door gladheid",
@@ -1456,15 +1456,15 @@
         "Minimale aantal slachtoffers": "1",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "60",
-        "Start datum": "woe 06 dec 2017 00:00:00 +00:00",
-        "Eind datum": "ma 25 dec 2017 00:00:00 +00:00"
+        "Start datum": "do 06 dec 2018 00:00:00 +00:00",
+        "Eind datum": "di 25 dec 2018 00:00:00 +00:00"
     },
     "178": {
         "name": "Donkere dagen offensief",
         "Gemiddeld aantal Credits": "600",
         "Benodigde noodhulpeenheden": "2",
-        "Start datum": "woe 06 dec 2017 00:00:00 +00:00",
-        "Eind datum": "ma 25 dec 2017 00:00:00 +00:00"
+        "Start datum": "do 06 dec 2018 00:00:00 +00:00",
+        "Eind datum": "di 25 dec 2018 00:00:00 +00:00"
     },
     "179": {
         "name": "Snijwond door gebroken kerstbal",
@@ -1473,8 +1473,8 @@
         "Minimale aantal slachtoffers": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "20",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie",
-        "Start datum": "woe 06 dec 2017 00:00:00 +00:00",
-        "Eind datum": "ma 25 dec 2017 00:00:00 +00:00"
+        "Start datum": "do 06 dec 2018 00:00:00 +00:00",
+        "Eind datum": "di 25 dec 2018 00:00:00 +00:00"
     },
     "180": {
         "name": "Bergen object uit water voor politie",
@@ -2185,8 +2185,8 @@
         "Benodigde Waterongevallenvoertuigen": "1",
         "Benodigde waterongevallenaanhangers": "1",
         "Benodigde noodhulpeenheden": "1",
-        "Start datum": "vrij 24 nov 2017 12:00:00 +00:00",
-        "Eind datum": "di 05 dec 2017 23:59:00 +00:00"
+        "Start datum": "za 24 nov 2018 12:00:00 +00:00",
+        "Eind datum": "woe 05 dec 2018 23:59:00 +00:00"
     },
     "254": {
         "name": "Brandende goederenwagon",
@@ -3424,5 +3424,38 @@
         "name": "Gestolen scooter gevonden",
         "Gemiddeld aantal Credits": "400",
         "Benodigde noodhulpeenheden": "1"
+    },
+    "368": {
+        "name": "Verkeersongeval met vrachtwagen en fietser",
+        "Gemiddeld aantal Credits": "1000",
+        "Benodigde noodhulpeenheden": "2",
+        "Maximale patiënten aantal": "1",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
+        "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
+    },
+    "369": {
+        "name": "Verkeersongeval met vrachtwagen en fietser",
+        "Gemiddeld aantal Credits": "1150",
+        "Benodigde noodhulpeenheden": "2",
+        "Maximale patiënten aantal": "1",
+        "Minimale aantal slachtoffers": "1",
+        "MMT-Arts benodigd waarschijnlijkheid": "100",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
+        "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
+    },
+    "370": {
+        "name": "Verkeersongeval met vrachtwagen en fietser",
+        "Gemiddeld aantal Credits": "1200",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "80",
+        "Benodigde OvD-B's": "1",
+        "Benodigde noodhulpeenheden": "2",
+        "Maximale patiënten aantal": "1",
+        "Minimale aantal slachtoffers": "1",
+        "MMT-Arts benodigd waarschijnlijkheid": "100",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
+        "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
     }
 }

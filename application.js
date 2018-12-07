@@ -8749,7 +8749,8 @@ function hideVehicleBuildingHelpText(e) {
                     }, this.delay))
                 },
                 _open: function(t) {
-                    var i = e.extend({ of: this.active
+                    var i = e.extend({
+                        of: this.active
                     }, this.options.position);
                     clearTimeout(this.timer), this.element.find(".ui-menu").not(t.parents(".ui-menu")).hide().attr("aria-hidden", "true"), t.show().removeAttr("aria-hidden").attr("aria-expanded", "true").position(i)
                 },
@@ -9042,7 +9043,8 @@ function hideVehicleBuildingHelpText(e) {
                 },
                 _suggest: function(t) {
                     var i = this.menu.element.empty();
-                    this._renderMenu(i, t), this.isNewMenu = !0, this.menu.refresh(), i.show(), this._resizeMenu(), i.position(e.extend({ of: this.element
+                    this._renderMenu(i, t), this.isNewMenu = !0, this.menu.refresh(), i.show(), this._resizeMenu(), i.position(e.extend({
+                        of: this.element
                     }, this.options.position)), this.options.autoFocus && this.menu.next()
                 },
                 _resizeMenu: function() {
@@ -10443,7 +10445,8 @@ function hideVehicleBuildingHelpText(e) {
                 this.options.disabled || (this.menuItems ? (this.menu.find(".ui-state-focus").removeClass("ui-state-focus"), this.menuInstance.focus(null, this._getSelectedItem())) : this._refreshMenu(), this.isOpen = !0, this._toggleAttr(), this._resizeMenu(), this._position(), this._on(this.document, this._documentClick), this._trigger("open", e))
             },
             _position: function() {
-                this.menuWrap.position(e.extend({ of: this.button
+                this.menuWrap.position(e.extend({
+                    of: this.button
                 }, this.options.position))
             },
             close: function(e) {
@@ -11476,7 +11479,8 @@ function hideVehicleBuildingHelpText(e) {
                     if (s = this._find(i)) return s.tooltip.find(".ui-tooltip-content").html(n), void 0;
                     i.is("[title]") && (t && "mouseover" === t.type ? i.attr("title", "") : i.removeAttr("title")), s = this._tooltip(i), r = s.tooltip, this._addDescribedBy(i, r.attr("id")), r.find(".ui-tooltip-content").html(n), this.liveRegion.children().hide(), n.clone ? (l = n.clone(), l.removeAttr("id").find("[id]").removeAttr("id")) : l = n, e("<div>").html(l).appendTo(this.liveRegion), this.options.track && t && /^mouse/.test(t.type) ? (this._on(this.document, {
                         mousemove: o
-                    }), o(t)) : r.position(e.extend({ of: i
+                    }), o(t)) : r.position(e.extend({
+                        of: i
                     }, this.options.position)), r.hide(), this._show(r, this.options.show), this.options.show && this.options.show.delay && (a = this.delayedShow = setInterval(function() {
                         r.is(":visible") && (o(c.of), clearInterval(a))
                     }, e.fx.interval)), this._trigger("open", t, {

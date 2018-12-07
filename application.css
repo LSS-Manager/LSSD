@@ -129,7 +129,8 @@ table {
 td, th {
     padding: 0
 } /* Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
-@media print {*,: after,: before {
+@media print {
+    *,: after,: before {
         color: #000 !important;text-shadow:none !important;background:0 0 !important;-webkit-box-shadow:none !important;box-shadow:none !important}a,a:visited{text-decoration:underline}a[href]:after{content:" (" attr(href) ")"}abbr[title]:after{content:" (" attr(title) ")"}a[href^= "javascript:"]: after, a[href ^= "#"]: after {
         content: ""
     }
@@ -673,7 +674,8 @@ td, th {
         content: "\e259"
     }.glyphicon - menu - up: before {
         content: "\e260"
-    }*{-webkit - box - sizing: border - box; - moz - box - sizing: border - box;box - sizing: border - box
+    }*{
+        -webkit - box - sizing: border - box; - moz - box - sizing: border - box;box - sizing: border - box
     }: after,: before {
         -webkit - box - sizing: border - box; - moz - box - sizing: border - box;
         box - sizing: border - box
@@ -819,7 +821,8 @@ dt {
 dd {
     margin - left: 0
 }
-@media(min - width: 768 px) {.dl - horizontal dt {
+@media(min - width: 768 px) {
+    .dl - horizontal dt {
         float: left;width: 160 px;overflow: hidden;clear: left;text - align: right;text - overflow: ellipsis;white - space: nowrap
     }.dl - horizontal dd {
         margin - left: 180 px
@@ -863,15 +866,18 @@ pre code {
     margin - right: auto;
     margin - left: auto
 }
-@media(min - width: 768 px) {.container {
+@media(min - width: 768 px) {
+    .container {
         width: 750 px
     }
 }
-@media(min - width: 992 px) {.container {
+@media(min - width: 992 px) {
+    .container {
         width: 970 px
     }
 }
-@media(min - width: 1200 px) {.container {
+@media(min - width: 1200 px) {
+    .container {
         width: 1170 px
     }
 }.container - fluid {
@@ -989,7 +995,8 @@ pre code {
 }.col - xs - offset - 0 {
     margin - left: 0
 }
-@media(min - width: 768 px) {.col - sm - 1, .col - sm - 10, .col - sm - 11, .col - sm - 12, .col - sm - 2, .col - sm - 3, .col - sm - 4, .col - sm - 5, .col - sm - 6, .col - sm - 7, .col - sm - 8, .col - sm - 9 {
+@media(min - width: 768 px) {
+    .col - sm - 1, .col - sm - 10, .col - sm - 11, .col - sm - 12, .col - sm - 2, .col - sm - 3, .col - sm - 4, .col - sm - 5, .col - sm - 6, .col - sm - 7, .col - sm - 8, .col - sm - 9 {
         float: left
     }.col - sm - 12 {
         width: 100 %
@@ -1095,7 +1102,8 @@ pre code {
         margin - left: 0
     }
 }
-@media(min - width: 992 px) {.col - md - 1, .col - md - 10, .col - md - 11, .col - md - 12, .col - md - 2, .col - md - 3, .col - md - 4, .col - md - 5, .col - md - 6, .col - md - 7, .col - md - 8, .col - md - 9 {
+@media(min - width: 992 px) {
+    .col - md - 1, .col - md - 10, .col - md - 11, .col - md - 12, .col - md - 2, .col - md - 3, .col - md - 4, .col - md - 5, .col - md - 6, .col - md - 7, .col - md - 8, .col - md - 9 {
         float: left
     }.col - md - 12 {
         width: 100 %
@@ -1201,7 +1209,8 @@ pre code {
         margin - left: 0
     }
 }
-@media(min - width: 1200 px) {.col - lg - 1, .col - lg - 10, .col - lg - 11, .col - lg - 12, .col - lg - 2, .col - lg - 3, .col - lg - 4, .col - lg - 5, .col - lg - 6, .col - lg - 7, .col - lg - 8, .col - lg - 9 {
+@media(min - width: 1200 px) {
+    .col - lg - 1, .col - lg - 10, .col - lg - 11, .col - lg - 12, .col - lg - 2, .col - lg - 3, .col - lg - 4, .col - lg - 5, .col - lg - 6, .col - lg - 7, .col - lg - 8, .col - lg - 9 {
         float: left
     }.col - lg - 12 {
         width: 100 %
@@ -1365,7 +1374,8 @@ table td[class *= col - ], table th[class *= col - ] {
     min - height: .01 % ;
     overflow - x: auto
 }
-@media screen and(max - width: 767 px) {.table - responsive {
+@media screen and(max - width: 767 px) {
+    .table - responsive {
         width: 100 % ;margin - bottom: 15 px;overflow - y: hidden; - ms - overflow - style: -ms - autohiding - scrollbar;border: 1 px solid# ddd
     }.table - responsive > .table {
         margin - bottom: 0
@@ -1567,7 +1577,8 @@ select[multiple].input - lg, textarea.input - lg {
     margin - right: -15 px;
     margin - left: -15 px
 }
-@media(min - width: 768 px) {.form - horizontal.control - label {
+@media(min - width: 768 px) {
+    .form - horizontal.control - label {
         padding - top: 7 px;
         margin - bottom: 0;
         text - align: right
@@ -1575,12 +1586,14 @@ select[multiple].input - lg, textarea.input - lg {
 }.form - horizontal.has - feedback.form - control - feedback {
     right: 15 px
 }
-@media(min - width: 768 px) {.form - horizontal.form - group - lg.control - label {
+@media(min - width: 768 px) {
+    .form - horizontal.form - group - lg.control - label {
         padding - top: 11 px;
         font - size: 18 px
     }
 }
-@media(min - width: 768 px) {.form - horizontal.form - group - sm.control - label {
+@media(min - width: 768 px) {
+    .form - horizontal.form - group - sm.control - label {
         padding - top: 6 px;
         font - size: 12 px
     }
@@ -1849,7 +1862,8 @@ select[multiple].input - group - sm > .form - control, select[multiple].input - 
 }.nav - tabs.nav - justified > .dropdown.dropdown - menu {
     top: auto;left: auto
 }
-@media(min - width: 768 px) {.nav - tabs.nav - justified > li {
+@media(min - width: 768 px) {
+    .nav - tabs.nav - justified > li {
         display: table - cell;width: 1 %
     }.nav - tabs.nav - justified > li > a {
         margin - bottom: 0
@@ -1860,7 +1874,8 @@ select[multiple].input - group - sm > .form - control, select[multiple].input - 
 }.nav - tabs.nav - justified > .active > a, .nav - tabs.nav - justified > .active > a: focus, .nav - tabs.nav - justified > .active > a: hover {
     border: 1 px solid# ddd
 }
-@media(min - width: 768 px) {.nav - tabs.nav - justified > li > a {
+@media(min - width: 768 px) {
+    .nav - tabs.nav - justified > li > a {
         border - bottom: 1 px solid# ddd;
         border - radius: 4 px 4 px 0 0
     }.nav - tabs.nav - justified > .active > a, .nav - tabs.nav - justified > .active > a: focus, .nav - tabs.nav - justified > .active > a: hover {
@@ -1875,7 +1890,8 @@ select[multiple].input - group - sm > .form - control, select[multiple].input - 
 }.nav - pills > li.active > a, .nav - pills > li.active > a: focus, .nav - pills > li.active > a: hover {
     color: #fff;background - color: #337ab7}.nav-stacked>li{float:none}.nav-stacked>li+li{margin-top:2px;margin-left:0}.nav-justified{width:100%}.nav-justified>li{float:none}.nav-justified>li>a{margin-bottom:5px;text-align:center}.nav-justified>.dropdown .dropdown-menu{top:auto;left:auto}@media (min-width: 768px){.nav-justified>li{display:table-cell;width:1%}.nav-justified>li>a{margin-bottom:0}}.nav-tabs-justified{border-bottom:0}.nav-tabs-justified>li>a{margin-right:0;border-radius:4px}.nav-tabs-justified>.active>a,.nav-tabs-justified>.active>a:focus,.nav-tabs-justified>.active>a:hover{border:1px solid # ddd
 }
-@media(min - width: 768 px) {.nav - tabs - justified > li > a {
+@media(min - width: 768 px) {
+    .nav - tabs - justified > li > a {
         border - bottom: 1 px solid# ddd;
         border - radius: 4 px 4 px 0 0
     }.nav - tabs - justified > .active > a, .nav - tabs - justified > .active > a: focus, .nav - tabs - justified > .active > a: hover {
@@ -1892,11 +1908,13 @@ select[multiple].input - group - sm > .form - control, select[multiple].input - 
 }.navbar {
     position: relative;min - height: 50 px;margin - bottom: 20 px;border: 1 px solid transparent
 }
-@media(min - width: 768 px) {.navbar {
+@media(min - width: 768 px) {
+    .navbar {
         border - radius: 4 px
     }
 }
-@media(min - width: 768 px) {.navbar - header {
+@media(min - width: 768 px) {
+    .navbar - header {
         float: left
     }
 }.navbar - collapse {
@@ -1908,7 +1926,8 @@ select[multiple].input - group - sm > .form - control, select[multiple].input - 
 }.navbar - collapse.in {
     overflow - y: auto
 }
-@media(min - width: 768 px) {.navbar - collapse {
+@media(min - width: 768 px) {
+    .navbar - collapse {
         width: auto;border - top: 0; - webkit - box - shadow: none;box - shadow: none
     }.navbar - collapse.collapse {
         display: block!important;height: auto!important;padding - bottom: 0;overflow: visible!important
@@ -1921,14 +1940,16 @@ select[multiple].input - group - sm > .form - control, select[multiple].input - 
 }.navbar - fixed - bottom.navbar - collapse, .navbar - fixed - top.navbar - collapse {
     max - height: 340 px
 }
-@media(max - device - width: 480 px) and(orientation: landscape) {.navbar - fixed - bottom.navbar - collapse, .navbar - fixed - top.navbar - collapse {
+@media(max - device - width: 480 px) and(orientation: landscape) {
+    .navbar - fixed - bottom.navbar - collapse, .navbar - fixed - top.navbar - collapse {
         max - height: 200 px
     }
 }.container - fluid > .navbar - collapse, .container - fluid > .navbar - header, .container > .navbar - collapse, .container > .navbar - header {
     margin - right: -15 px;
     margin - left: -15 px
 }
-@media(min - width: 768 px) {.container - fluid > .navbar - collapse, .container - fluid > .navbar - header, .container > .navbar - collapse, .container > .navbar - header {
+@media(min - width: 768 px) {
+    .container - fluid > .navbar - collapse, .container - fluid > .navbar - header, .container > .navbar - collapse, .container > .navbar - header {
         margin - right: 0;
         margin - left: 0
     }
@@ -1936,13 +1957,15 @@ select[multiple].input - group - sm > .form - control, select[multiple].input - 
     z - index: 1000;
     border - width: 0 0 1 px
 }
-@media(min - width: 768 px) {.navbar - static - top {
+@media(min - width: 768 px) {
+    .navbar - static - top {
         border - radius: 0
     }
 }.navbar - fixed - bottom, .navbar - fixed - top {
     position: fixed;right: 0;left: 0;z - index: 1030
 }
-@media(min - width: 768 px) {.navbar - fixed - bottom, .navbar - fixed - top {
+@media(min - width: 768 px) {
+    .navbar - fixed - bottom, .navbar - fixed - top {
         border - radius: 0
     }
 }.navbar - fixed - top {
@@ -1956,7 +1979,8 @@ select[multiple].input - group - sm > .form - control, select[multiple].input - 
 }.navbar - brand > img {
     display: block
 }
-@media(min - width: 768 px) {.navbar > .container.navbar - brand, .navbar > .container - fluid.navbar - brand {
+@media(min - width: 768 px) {
+    .navbar > .container.navbar - brand, .navbar > .container - fluid.navbar - brand {
         margin - left: -15 px
     }
 }.navbar - toggle {
@@ -1968,7 +1992,8 @@ select[multiple].input - group - sm > .form - control, select[multiple].input - 
 }.navbar - toggle.icon - bar + .icon - bar {
     margin - top: 4 px
 }
-@media(min - width: 768 px) {.navbar - toggle {
+@media(min - width: 768 px) {
+    .navbar - toggle {
         display: none
     }
 }.navbar - nav {
@@ -1978,7 +2003,8 @@ select[multiple].input - group - sm > .form - control, select[multiple].input - 
     padding - bottom: 10 px;
     line - height: 20 px
 }
-@media(max - width: 767 px) {.navbar - nav.open.dropdown - menu {
+@media(max - width: 767 px) {
+    .navbar - nav.open.dropdown - menu {
         position: static;float: none;width: auto;margin - top: 0;background - color: transparent;border: 0; - webkit - box - shadow: none;box - shadow: none
     }.navbar - nav.open.dropdown - menu.dropdown - header, .navbar - nav.open.dropdown - menu > li > a {
         padding: 5 px 15 px 5 px 25 px
@@ -1988,7 +2014,8 @@ select[multiple].input - group - sm > .form - control, select[multiple].input - 
         background - image: none
     }
 }
-@media(min - width: 768 px) {.navbar - nav {
+@media(min - width: 768 px) {
+    .navbar - nav {
         float: left;margin: 0
     }.navbar - nav > li {
         float: left
@@ -2001,7 +2028,8 @@ select[multiple].input - group - sm > .form - control, select[multiple].input - 
     0 1 px 0 rgba(255, 255, 255, 0.1);box - shadow: inset 0 1 px 0 rgba(255, 255, 255, 0.1),
     0 1 px 0 rgba(255, 255, 255, 0.1)
 }
-@media(min - width: 768 px) {.navbar - form.form - group {
+@media(min - width: 768 px) {
+    .navbar - form.form - group {
         display: inline - block;margin - bottom: 0;vertical - align: middle
     }.navbar - form.form - control {
         display: inline - block;width: auto;vertical - align: middle
@@ -2026,13 +2054,15 @@ select[multiple].input - group - sm > .form - control, select[multiple].input - 
         top: 0
     }
 }
-@media(max - width: 767 px) {.navbar - form.form - group {
+@media(max - width: 767 px) {
+    .navbar - form.form - group {
         margin - bottom: 5 px
     }.navbar - form.form - group: last - child {
         margin - bottom: 0
     }
 }
-@media(min - width: 768 px) {.navbar - form {
+@media(min - width: 768 px) {
+    .navbar - form {
         width: auto;padding - top: 0;padding - bottom: 0;margin - right: 0;margin - left: 0;border: 0; - webkit - box - shadow: none;box - shadow: none
     }
 }.navbar - nav > li > .dropdown - menu {
@@ -2058,11 +2088,13 @@ select[multiple].input - group - sm > .form - control, select[multiple].input - 
     margin - top: 15 px;
     margin - bottom: 15 px
 }
-@media(min - width: 768 px) {.navbar - text {
+@media(min - width: 768 px) {
+    .navbar - text {
         float: left;margin - right: 15 px;margin - left: 15 px
     }
 }
-@media(min - width: 768 px) {.navbar - left {
+@media(min - width: 768 px) {
+        .navbar - left {
             float: left!important
         }.navbar - right {
             float: right!important;margin - right: -15 px
@@ -2103,7 +2135,8 @@ select[multiple].input - group - sm > .form - control, select[multiple].input - 
     default.navbar - nav > .open > a: hover {
         color: #555;background-color:# e7e7e7
     }
-@media(max - width: 767 px) {.navbar -
+@media(max - width: 767 px) {
+        .navbar -
             default.navbar - nav.open.dropdown - menu > li > a {
                 color: #777}.navbar-default .navbar-nav .open .dropdown-menu>li>a:focus,.navbar-default .navbar-nav .open .dropdown-menu>li>a:hover{color:# 333;background - color: transparent
             }.navbar -
@@ -2274,7 +2307,8 @@ a.label: focus, a.label: hover {
     }.jumbotron.container {
         max - width: 100 %
     }
-@media screen and(min - width: 768 px) {.jumbotron {
+@media screen and(min - width: 768 px) {
+    .jumbotron {
         padding - top: 48 px;
         padding - bottom: 48 px
     }.container.jumbotron, .container - fluid.jumbotron {
@@ -2672,7 +2706,8 @@ button.close {
 }.modal - scrollbar - measure {
     position: absolute;top: -9999 px;width: 50 px;height: 50 px;overflow: scroll
 }
-@media(min - width: 768 px) {.modal - dialog {
+@media(min - width: 768 px) {
+    .modal - dialog {
         width: 600 px;margin: 30 px auto
     }.modal - content {
         -webkit - box - shadow: 0 5 px 15 px rgba(0, 0, 0, 0.5);
@@ -2681,7 +2716,8 @@ button.close {
         width: 300 px
     }
 }
-@media(min - width: 992 px) {.modal - lg {
+@media(min - width: 992 px) {
+    .modal - lg {
         width: 900 px
     }
 }.tooltip {
@@ -2748,7 +2784,8 @@ button.close {
 }.carousel - inner > .item > a > img, .carousel - inner > .item > img {
     line - height: 1
 }
-@media all and(transform - 3 d), (-webkit - transform - 3 d) {.carousel - inner > .item {
+@media all and(transform - 3 d), (-webkit - transform - 3 d) {
+    .carousel - inner > .item {
         -webkit - transition: -webkit - transform .6 s ease - in -out; - o - transition: -o - transform .6 s ease - in -out;
         transition: transform .6 s ease - in -out; - webkit - backface - visibility: hidden;
         backface - visibility: hidden; - webkit - perspective: 1000 px;
@@ -2812,7 +2849,8 @@ button.close {
 }.carousel - caption.btn {
     text - shadow: none
 }
-@media screen and(min - width: 768 px) {.carousel - control.glyphicon - chevron - left, .carousel - control.glyphicon - chevron - right, .carousel - control.icon - next, .carousel - control.icon - prev {
+@media screen and(min - width: 768 px) {
+    .carousel - control.glyphicon - chevron - left, .carousel - control.glyphicon - chevron - right, .carousel - control.icon - next, .carousel - control.icon - prev {
         width: 30 px;height: 30 px;margin - top: -10 px;font - size: 30 px
     }.carousel - control.glyphicon - chevron - left, .carousel - control.icon - prev {
         margin - left: -10 px
@@ -2853,7 +2891,8 @@ button.close {
 }.visible - lg - block, .visible - lg - inline, .visible - lg - inline - block, .visible - md - block, .visible - md - inline, .visible - md - inline - block, .visible - sm - block, .visible - sm - inline, .visible - sm - inline - block, .visible - xs - block, .visible - xs - inline, .visible - xs - inline - block {
     display: none!important
 }
-@media(max - width: 767 px) {.visible - xs {
+@media(max - width: 767 px) {
+    .visible - xs {
         display: block!important
     }
     table.visible - xs {
@@ -2866,19 +2905,23 @@ button.close {
         display: table - cell!important
     }
 }
-@media(max - width: 767 px) {.visible - xs - block {
+@media(max - width: 767 px) {
+    .visible - xs - block {
         display: block!important
     }
 }
-@media(max - width: 767 px) {.visible - xs - inline {
+@media(max - width: 767 px) {
+    .visible - xs - inline {
         display: inline!important
     }
 }
-@media(max - width: 767 px) {.visible - xs - inline - block {
+@media(max - width: 767 px) {
+    .visible - xs - inline - block {
         display: inline - block!important
     }
 }
-@media(min - width: 768 px) and(max - width: 991 px) {.visible - sm {
+@media(min - width: 768 px) and(max - width: 991 px) {
+    .visible - sm {
         display: block!important
     }
     table.visible - sm {
@@ -2891,19 +2934,23 @@ button.close {
         display: table - cell!important
     }
 }
-@media(min - width: 768 px) and(max - width: 991 px) {.visible - sm - block {
+@media(min - width: 768 px) and(max - width: 991 px) {
+    .visible - sm - block {
         display: block!important
     }
 }
-@media(min - width: 768 px) and(max - width: 991 px) {.visible - sm - inline {
+@media(min - width: 768 px) and(max - width: 991 px) {
+    .visible - sm - inline {
         display: inline!important
     }
 }
-@media(min - width: 768 px) and(max - width: 991 px) {.visible - sm - inline - block {
+@media(min - width: 768 px) and(max - width: 991 px) {
+    .visible - sm - inline - block {
         display: inline - block!important
     }
 }
-@media(min - width: 992 px) and(max - width: 1199 px) {.visible - md {
+@media(min - width: 992 px) and(max - width: 1199 px) {
+    .visible - md {
         display: block!important
     }
     table.visible - md {
@@ -2916,19 +2963,23 @@ button.close {
         display: table - cell!important
     }
 }
-@media(min - width: 992 px) and(max - width: 1199 px) {.visible - md - block {
+@media(min - width: 992 px) and(max - width: 1199 px) {
+    .visible - md - block {
         display: block!important
     }
 }
-@media(min - width: 992 px) and(max - width: 1199 px) {.visible - md - inline {
+@media(min - width: 992 px) and(max - width: 1199 px) {
+    .visible - md - inline {
         display: inline!important
     }
 }
-@media(min - width: 992 px) and(max - width: 1199 px) {.visible - md - inline - block {
+@media(min - width: 992 px) and(max - width: 1199 px) {
+    .visible - md - inline - block {
         display: inline - block!important
     }
 }
-@media(min - width: 1200 px) {.visible - lg {
+@media(min - width: 1200 px) {
+    .visible - lg {
         display: block!important
     }
     table.visible - lg {
@@ -2941,37 +2992,45 @@ button.close {
         display: table - cell!important
     }
 }
-@media(min - width: 1200 px) {.visible - lg - block {
+@media(min - width: 1200 px) {
+    .visible - lg - block {
         display: block!important
     }
 }
-@media(min - width: 1200 px) {.visible - lg - inline {
+@media(min - width: 1200 px) {
+    .visible - lg - inline {
         display: inline!important
     }
 }
-@media(min - width: 1200 px) {.visible - lg - inline - block {
+@media(min - width: 1200 px) {
+    .visible - lg - inline - block {
         display: inline - block!important
     }
 }
-@media(max - width: 767 px) {.hidden - xs {
+@media(max - width: 767 px) {
+    .hidden - xs {
         display: none!important
     }
 }
-@media(min - width: 768 px) and(max - width: 991 px) {.hidden - sm {
+@media(min - width: 768 px) and(max - width: 991 px) {
+    .hidden - sm {
         display: none!important
     }
 }
-@media(min - width: 992 px) and(max - width: 1199 px) {.hidden - md {
+@media(min - width: 992 px) and(max - width: 1199 px) {
+    .hidden - md {
         display: none!important
     }
 }
-@media(min - width: 1200 px) {.hidden - lg {
+@media(min - width: 1200 px) {
+    .hidden - lg {
         display: none!important
     }
 }.visible - print {
     display: none!important
 }
-@media print {.visible - print {
+@media print {
+    .visible - print {
         display: block!important
     }
     table.visible - print {
@@ -2986,23 +3045,27 @@ button.close {
 }.visible - print - block {
     display: none!important
 }
-@media print {.visible - print - block {
+@media print {
+    .visible - print - block {
         display: block!important
     }
 }.visible - print - inline {
     display: none!important
 }
-@media print {.visible - print - inline {
+@media print {
+    .visible - print - inline {
         display: inline!important
     }
 }.visible - print - inline - block {
     display: none!important
 }
-@media print {.visible - print - inline - block {
+@media print {
+    .visible - print - inline - block {
         display: inline - block!important
     }
 }
-@media print {.hidden - print {
+@media print {
+    .hidden - print {
         display: none!important
     }
 }
@@ -3182,7 +3245,8 @@ background - repeat: repeat - x
     }.navbar - fixed - bottom, .navbar - fixed - top, .navbar - static - top {
         border - radius: 0
     }
-@media(max - width: 767 px) {.navbar.navbar - nav.open.dropdown - menu > .active > a, .navbar.navbar - nav.open.dropdown - menu > .active > a: focus, .navbar.navbar - nav.open.dropdown - menu > .active > a: hover {
+@media(max - width: 767 px) {
+    .navbar.navbar - nav.open.dropdown - menu > .active > a, .navbar.navbar - nav.open.dropdown - menu > .active > a: focus, .navbar.navbar - nav.open.dropdown - menu > .active > a: hover {
         color: #fff;background - image: -webkit - linear - gradient(top, #337ab7 0, # 2e6 da4 100 % );background - image: -o - linear - gradient(top, #337ab7 0, # 2e6 da4 100 % );background - image: -webkit - gradient(linear, left top, left bottom, from(#337ab7), to(# 2e6 da4));background - image: linear - gradient(to bottom, #337ab7 0, # 2e6 da4 100 % );filter: progid: DXImageTransform.Microsoft.gradient(startColorstr = '#ff337ab7', endColorstr = '#ff2e6da4', GradientType = 0);background - repeat: repeat - x
     }
 }.alert {
@@ -5101,7 +5165,8 @@ lightbox_background {
                                     navbar - main - collapse {
                                         margin - right: 15 px
                                     }
-                                    @media(max - width: 767 px) {#
+                                    @media(max - width: 767 px) {
+                                        #
                                         navbar - main - collapse.visible - xs {
                                             display: inline!important
                                         }#

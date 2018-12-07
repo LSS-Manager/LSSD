@@ -4433,5 +4433,10 @@
         "Fachrichtung für Patienten": "Unfallchirurgie",
         "NEF Anforderungswahrscheinlichkeit": "40",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "80"
+    },
+    "422": {
+        "name": "Sachbeschädigung an PKW",
+        "Credits im Durchschnitt": "400",
+        "Benötigte Streifenwagen": "1"
     }
 }
