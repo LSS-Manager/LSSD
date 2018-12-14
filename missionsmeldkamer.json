@@ -3457,5 +3457,58 @@
         "MMT-Arts benodigd waarschijnlijkheid": "100",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
+    },
+    "371": {
+        "name": "Verlaten slee langs waterkant",
+        "Gemiddeld aantal Credits": "1200",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Waterongevallenvoertuigen": "1",
+        "Benodigde noodhulpeenheden": "1",
+        "Maximale patiënten aantal": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "50",
+        "Gespecialiseerde afdeling voor patiënten": "Interne Geneeskunde",
+        "Start datum": "do 06 dec 2018 00:00:00 +00:00",
+        "Eind datum": "di 25 dec 2018 00:00:00 +00:00"
+    },
+    "372": {
+        "name": "Brandende kerststal",
+        "Gemiddeld aantal Credits": "600",
+        "Benodigde tankautospuiten": "1",
+        "Start datum": "do 06 dec 2018 00:00:00 +00:00",
+        "Eind datum": "di 25 dec 2018 00:00:00 +00:00"
+    },
+    "373": {
+        "name": "Brandwonden door gourmetstel",
+        "Benodigd aantal Ambulancestandplaatsen": "1",
+        "Maximale patiënten aantal": "1",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "20",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde",
+        "Start datum": "do 06 dec 2018 00:00:00 +00:00",
+        "Eind datum": "di 25 dec 2018 00:00:00 +00:00"
+    },
+    "374": {
+        "name": "Geluidsoverlast door kerstmuziek",
+        "Gemiddeld aantal Credits": "500",
+        "Benodigde noodhulpeenheden": "1",
+        "Start datum": "do 06 dec 2018 00:00:00 +00:00",
+        "Eind datum": "di 25 dec 2018 00:00:00 +00:00"
+    },
+    "375": {
+        "name": "Persoon bekneld onder kerstpakketten",
+        "Gemiddeld aantal Credits": "1000",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "20",
+        "Benodigde OvD-B's": "1",
+        "OvD-B benodigd waarschijnlijkheid": "80",
+        "Benodigde noodhulpeenheden": "1",
+        "Maximale patiënten aantal": "1",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "50",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde",
+        "Start datum": "do 06 dec 2018 00:00:00 +00:00",
+        "Eind datum": "di 25 dec 2018 00:00:00 +00:00"
     }
 }

@@ -1953,5 +1953,53 @@
         "Required Mobile Air Vehicles": "2",
         "Required Mobile Command Vehicles": "1",
         "Required Police Cars": "2"
+    },
+    "218": {
+        "name": "Cardiac Arrest",
+        "Required Rescue Stations": "1",
+        "Max. Patients": "1",
+        "Patient Specializations": "Traumatology",
+        "Minimum patient number": "1",
+        "Probability that a patient has to be transported": "100"
+    },
+    "219": {
+        "name": "Respiratory Arrest",
+        "Required Rescue Stations": "1",
+        "Max. Patients": "1",
+        "Patient Specializations": "Traumatology",
+        "Minimum patient number": "1",
+        "Probability that a patient has to be transported": "100"
+    },
+    "220": {
+        "name": "Difficulty Breathing",
+        "Required Rescue Stations": "1",
+        "Max. Patients": "1",
+        "Patient Specializations": "Traumatology",
+        "Minimum patient number": "1",
+        "Probability that a patient has to be transported": "100"
+    },
+    "221": {
+        "name": "Difficulty Breathing",
+        "Required Rescue Stations": "1",
+        "Max. Patients": "1",
+        "Patient Specializations": "General Internal",
+        "Minimum patient number": "1",
+        "Probability that a patient has to be transported": "100"
+    },
+    "222": {
+        "name": "Difficulty Breathing",
+        "Required Rescue Stations": "1",
+        "Max. Patients": "1",
+        "Patient Specializations": "General Internal",
+        "Minimum patient number": "1",
+        "Probability that a patient has to be transported": "60"
+    },
+    "223": {
+        "name": "Back Pain",
+        "Required Rescue Stations": "1",
+        "Max. Patients": "1",
+        "Patient Specializations": "General Internal",
+        "Minimum patient number": "1",
+        "Probability that a patient has to be transported": "90"
     }
 }
