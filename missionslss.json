@@ -1317,8 +1317,8 @@
         "ELW 2 Anforderungswahrscheinlichkeit": "30",
         "Benötigte Drehleitern": "1",
         "Drehleiter Anforderungswahrscheinlichkeit": "10",
-        "Benötigte Streifenwagen": "3",
         "Durchschnittliche min. Personalanzahl (Feuerwehr)": "80",
+        "Benötigte Streifenwagen": "3",
         "Maximale Patientenanzahl": "1",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "50",
         "Fachrichtung für Patienten": "Allgemeine Innere"
@@ -2083,10 +2083,10 @@
         "Dekon P Anforderungswahrscheinlichkeit": "10",
         "Benötigte Streifenwagen": "4",
         "Benötigte GKW": "1",
-        "Benötigte MTW-TZ": "1",
         "BRmG R": "1",
         "LKW K 9": "1",
         "Anhänger Drucklufterzeugung": "1",
+        "Benötigte MTW-TZ": "1",
         "Benötigte MzKW": "1",
         "Mindest Patientenanzahl": "0",
         "Maximale Patientenanzahl": "10",
@@ -4483,5 +4483,32 @@
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "50",
         "NEF Anforderungswahrscheinlichkeit": "10",
         "Fachrichtung für Patienten": "Allgemeine Innere"
+    },
+    "425": {
+        "name": "Verstauchter Knöchel",
+        "Vorraussetzung an Rettungswachen": "1",
+        "Mindest Patientenanzahl": "1",
+        "Maximale Patientenanzahl": "1",
+        "NEF Anforderungswahrscheinlichkeit": "0",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "25",
+        "Fachrichtung für Patienten": "Unfallchirurgie"
+    },
+    "426": {
+        "name": "Gebrochenes Bein",
+        "Vorraussetzung an Rettungswachen": "3",
+        "Mindest Patientenanzahl": "1",
+        "Maximale Patientenanzahl": "1",
+        "NEF Anforderungswahrscheinlichkeit": "75",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "100",
+        "Fachrichtung für Patienten": "Unfallchirurgie"
+    },
+    "427": {
+        "name": "Gebrochener Arm",
+        "Vorraussetzung an Rettungswachen": "3",
+        "Mindest Patientenanzahl": "1",
+        "Maximale Patientenanzahl": "1",
+        "NEF Anforderungswahrscheinlichkeit": "75",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "100",
+        "Fachrichtung für Patienten": "Unfallchirurgie"
     }
 }

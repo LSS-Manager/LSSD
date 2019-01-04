@@ -3544,5 +3544,37 @@
         "Maximale patiënten aantal": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
         "Gespecialiseerde afdeling voor patiënten": "Interne Geneeskunde"
+    },
+    "378": {
+        "name": "Vreemde lucht in winkelcentrum",
+        "Gemiddeld aantal Credits": "1950",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "50",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Adviseurs Gevaarlijke Stoffen": "1",
+        "Aantal Adviseurs Gevaarlijke Stoffen benodigd waarschijnlijkheid": "50",
+        "Benodigde noodhulpeenheden": "2",
+        "Maximale patiënten aantal": "10",
+        "Minimale aantal slachtoffers": "6",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "40",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
+    },
+    "379": {
+        "name": "Vreemde lucht in winkelcentrum",
+        "Gemiddeld aantal Credits": "4000",
+        "Benodigde tankautospuiten": "2",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Waarschuwings- en Verkenningsdienst voertuigen": "1",
+        "Waarschuwings- en Verkenningsdienst voertuigen benodigd waarschijnlijkheid": "20",
+        "Benodigde Adviseurs Gevaarlijke Stoffen": "1",
+        "Benodigde HOVD's": "1",
+        "Benodigde Commandowagen": "1",
+        "Benodigde noodhulpeenheden": "4",
+        "Maximale patiënten aantal": "18",
+        "Minimale aantal slachtoffers": "12",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "40",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
     }
 }
