@@ -983,7 +983,7 @@
         "Required Battalion Chief Vehicles": "2",
         "Required Police Cars": "5",
         "Max. Patients": "25",
-        "Minimum patient number": "1",
+        "Minimum patient number": "5",
         "Patient Specializations": "General Internal"
     },
     "121": {
@@ -1349,7 +1349,7 @@
     },
     "162": {
         "name": "Light Aircraft Crash (Airfield)",
-        "Average credits": "2000",
+        "Average credits": "2500",
         "Required Firetrucks": "1",
         "Required ARFF": "2",
         "Max. Patients": "4",
@@ -2009,5 +2009,25 @@
         "Required K-9 Units": "1",
         "Required Police Helicopters": "1",
         "Maximum Number of Prisoners": "2"
+    },
+    "225": {
+        "name": "Landing Gear failure",
+        "Average credits": "3000",
+        "Required ARFF": "3",
+        "Required Firetrucks": "1",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Heavy Rescue Vehicles": "1",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/120", "Large Aircraft Crash"]
+        ]
+    },
+    "226": {
+        "name": "Landing Gear failure",
+        "Average credits": "2000",
+        "Required ARFF": "2",
+        "Required Firetrucks": "1",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/162", "Light Aircraft Crash (Airfield)"]
+        ]
     }
 }

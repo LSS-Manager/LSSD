@@ -42,6 +42,7 @@ LSS:
 39 = Chemiepark
 40 = Industrie-Allgemein
 41 = Automobilindustrie
+42 = Müllverbrennungsanlage
 
 MC:
 
@@ -130,3 +131,21 @@ MEL:
 33 = Vliegveld (groot): Terminal
 34 = Vliegveld (groot): Platform / Gate
 35 = Vliegveld (groot): Parkeergarage
+36 = Parkeergarage
+37 = Verzorgingshuis
+38 = Manege
+39 = Hotel
+40 = Restaurant
+41 = Bankkantoor
+42 = Sporthal
+43 = Camping
+44 = Gevangenis
+45 = Asielzoekerscentrum
+46 = Afvalverwerker
+47 = Kerkgebouw
+48 = Bouwmarkt
+49 = Transformatorhuisje
+50 = Industrieterrein
+51 = Bedrijventerrein
+52 = Haventerrein
+53 = Bouwterrein
