@@ -3576,5 +3576,29 @@
         "Minimale aantal slachtoffers": "12",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "40",
         "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
+    },
+    "380": {
+        "name": "Epileptische aanval",
+        "Benodigd aantal Ambulancestandplaatsen": "1",
+        "Maximale patiënten aantal": "1",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "85",
+        "Gespecialiseerde afdeling voor patiënten": "Neurologie"
+    },
+    "381": {
+        "name": "Hevige bloeding",
+        "Benodigd aantal Ambulancestandplaatsen": "1",
+        "Maximale patiënten aantal": "1",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "50",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
+    },
+    "382": {
+        "name": "Suikertekort",
+        "Benodigd aantal Ambulancestandplaatsen": "1",
+        "Maximale patiënten aantal": "1",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "25",
+        "Gespecialiseerde afdeling voor patiënten": "Interne Geneeskunde"
     }
 }

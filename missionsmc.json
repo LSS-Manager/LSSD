@@ -2029,5 +2029,42 @@
         "Expandable Missions": [
             ["https://www.missionchief.com/einsaetze/162", "Light Aircraft Crash (Airfield)"]
         ]
+    },
+    "227": {
+        "name": "Airport Terminal Collapse (Small)",
+        "Average credits": "5000",
+        "Required Firetrucks": "4",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Heavy Rescue Vehicles": "1",
+        "Required Mobile Command Vehicles": "1",
+        "Max. Patients": "10",
+        "Patient Specializations": "Traumatology",
+        "Probability that a patient has to be transported": "50"
+    },
+    "228": {
+        "name": "Airport Terminal Collapse (Large)",
+        "Average credits": "7000",
+        "Required Firetrucks": "8",
+        "Required Battalion Chief Vehicles": "4",
+        "Required Platform Trucks": "1",
+        "Required Heavy Rescue Vehicles": "4",
+        "Required Mobile Command Vehicles": "1",
+        "Required Police Cars": "2",
+        "Max. Patients": "20",
+        "Patient Specializations": "Traumatology",
+        "Probability that a patient has to be transported": "50"
+    },
+    "229": {
+        "name": "Airport Terminal Collapse (Major)",
+        "Average credits": "11000",
+        "Required Firetrucks": "12",
+        "Required Battalion Chief Vehicles": "6",
+        "Required Platform Trucks": "2",
+        "Required Heavy Rescue Vehicles": "6",
+        "Required Mobile Command Vehicles": "1",
+        "Required Police Cars": "6",
+        "Max. Patients": "40",
+        "Patient Specializations": "Traumatology",
+        "Probability that a patient has to be transported": "50"
     }
 }
