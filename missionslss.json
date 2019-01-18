@@ -4524,5 +4524,26 @@
         "Benötigte GW-Höhenrettung": "1",
         "GW-Höhenrettung Anforderungswahrscheinlichkeit": "5",
         "Tritt nur bis zu dem Datum auf": "Freitag, 01. März 2019, 00:00 Uhr"
+    },
+    "429": {
+        "name": "Staubexplosion",
+        "Credits im Durchschnitt": "3100",
+        "Benötigte Löschfahrzeuge": "5",
+        "Benötigte ELW 1": "1",
+        "Benötigte Drehleitern": "1",
+        "Drehleiter Anforderungswahrscheinlichkeit": "70",
+        "Benötigte GW-A": "1",
+        "GW-A Anforderungswahrscheinlichkeit": "50",
+        "Benötigte GW L 2 Wasser": "1",
+        "Benötigte Rüstwagen": "1",
+        "Rüstwagen Anforderungswahrscheinlichkeit": "40",
+        "Benötigte GKW": "1",
+        "Benötigte MTW-TZ": "1",
+        "BRmG R": "1",
+        "Benötigte Streifenwagen": "2",
+        "Maximale Patientenanzahl": "5",
+        "NEF Anforderungswahrscheinlichkeit": "40",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "70",
+        "Fachrichtung für Patienten": "Allgemeine Innere"
     }
 }

@@ -2066,5 +2066,34 @@
         "Max. Patients": "40",
         "Patient Specializations": "Traumatology",
         "Probability that a patient has to be transported": "50"
+    },
+    "230": {
+        "name": "Hazardous materials truck fire in tunnel",
+        "Average credits": "6500",
+        "Required Firetrucks": "5",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Heavy Rescue Vehicles": "1",
+        "Required Water Tankers": "1",
+        "Required Mobile Air Vehicles": "1",
+        "Required HazMat Vehicles": "1",
+        "Required Mobile Command Vehicles": "1",
+        "Required Police Cars": "4",
+        "Max. Patients": "10",
+        "Patient Specializations": "General Internal",
+        "Probability that a patient has to be transported": "30"
+    },
+    "231": {
+        "name": "Hazardous materials truck fire",
+        "Average credits": "4000",
+        "Required Firetrucks": "5",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Heavy Rescue Vehicles": "1",
+        "Required Water Tankers": "1",
+        "Required HazMat Vehicles": "1",
+        "Required Mobile Command Vehicles": "1",
+        "Required Police Cars": "2",
+        "Max. Patients": "4",
+        "Patient Specializations": "General Internal",
+        "Probability that a patient has to be transported": "30"
     }
 }
