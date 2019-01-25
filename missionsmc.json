@@ -46,7 +46,7 @@
         "Patient Specializations": "General Internal",
         "Probability that a patient has to be transported": "50",
         "Expandable Missions": [
-            ["https://www.missionchief.com/einsaetze/88", "Building Collapse"]
+            ["https://www.missionchief.com/einsaetze/88", "Partial Building Collapse"]
         ]
     },
     "6": {
@@ -693,12 +693,11 @@
         "Patient Specializations": "General Surgeon"
     },
     "88": {
-        "name": "Building Collapse",
+        "name": "Partial Building Collapse",
         "Average credits": "7300",
         "Required Firetrucks": "2",
         "Required Platform Trucks": "2",
         "Required Battalion Chief Vehicles": "2",
-        "Required Mobile Command Vehicles": "1",
         "Required Heavy Rescue Vehicles": "2",
         "Max. Patients": "2",
         "Patient Specializations": "General Surgeon"
@@ -2076,7 +2075,6 @@
         "Required Water Tankers": "1",
         "Required Mobile Air Vehicles": "1",
         "Required HazMat Vehicles": "1",
-        "Required Mobile Command Vehicles": "1",
         "Required Police Cars": "4",
         "Max. Patients": "10",
         "Patient Specializations": "General Internal",
@@ -2090,10 +2088,21 @@
         "Required Heavy Rescue Vehicles": "1",
         "Required Water Tankers": "1",
         "Required HazMat Vehicles": "1",
-        "Required Mobile Command Vehicles": "1",
         "Required Police Cars": "2",
         "Max. Patients": "4",
         "Patient Specializations": "General Internal",
         "Probability that a patient has to be transported": "30"
+    },
+    "232": {
+        "name": "Full  Building Collapse",
+        "Average credits": "10000",
+        "Required Firetrucks": "6",
+        "Required Platform Trucks": "2",
+        "Required Battalion Chief Vehicles": "4",
+        "Required Mobile Command Vehicles": "1",
+        "Required Heavy Rescue Vehicles": "4",
+        "Required Police Cars": "2",
+        "Max. Patients": "10",
+        "Patient Specializations": "Traumatology"
     }
 }

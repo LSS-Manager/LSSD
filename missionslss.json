@@ -4545,5 +4545,24 @@
         "NEF Anforderungswahrscheinlichkeit": "40",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "70",
         "Fachrichtung für Patienten": "Allgemeine Innere"
+    },
+    "430": {
+        "name": "Ammoniak Austritt in Eishalle",
+        "Credits im Durchschnitt": "7000",
+        "Benötigte Löschfahrzeuge": "15",
+        "Benötigte ELW 1": "3",
+        "Benötigte ELW 2": "1",
+        "Benötigte Dekon-P": "2",
+        "Benötigte GW-Mess": "2",
+        "Benötigte GW-Gefahrgut": "2",
+        "Benötigte GW-A": "1",
+        "Benötigte Drehleitern": "1",
+        "Benötigte GW L 2 Wasser": "2",
+        "Benötigte Rüstwagen": "4",
+        "Benötigte Streifenwagen": "8",
+        "Maximale Patientenanzahl": "20",
+        "NEF Anforderungswahrscheinlichkeit": "35",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "30",
+        "Fachrichtung für Patienten": "Allgemeine Innere"
     }
 }
