@@ -18,7 +18,7 @@ LSS:
 15 = Wasserrettung
 16 = Verbandzellen
 17 = Polizei-Sondereinheiten
-
+18 = Feuwehrwache (Kleinwache)
 
 MC:
 
@@ -47,7 +47,7 @@ MEL:
 5 = Politiebureau
 6 = MMT Standplaats
 7 = Universiteit Faculteit Geneeskunde
-8 = Politieacademie 
+8 = Politieacademie
 9 = Politiehelikopter standplaats
 10 = Uitgangsstelling (UGS)
 11 = Politie hoofdbureau

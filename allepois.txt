@@ -43,6 +43,7 @@ LSS:
 40 = Industrie-Allgemein
 41 = Automobilindustrie
 42 = Müllverbrennungsanlage
+43 = Eishalle
 
 MC:
 
