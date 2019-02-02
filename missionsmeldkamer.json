@@ -3683,5 +3683,54 @@
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie",
         "MMT-Arts benodigd waarschijnlijkheid": "50"
+    },
+    "390": {
+        "name": "Brand bij afvalverwerker",
+        "Gemiddeld aantal Credits": "800",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde redvoertuigen": "1",
+        "Hoogwerker benodigd waarschijnlijkheid": "20"
+    },
+    "391": {
+        "name": "Brand bij afvalverwerker",
+        "Gemiddeld aantal Credits": "1500",
+        "Benodigde tankautospuiten": "2",
+        "Benodigde redvoertuigen": "1",
+        "Hoogwerker benodigd waarschijnlijkheid": "50",
+        "Benodigde OvD-B's": "1",
+        "Benodigde slangenwagens": "1",
+        "Slangenwagen benodigd waarschijnlijkheid": "20"
+    },
+    "392": {
+        "name": "Brand bij afvalverwerker",
+        "Gemiddeld aantal Credits": "2600",
+        "Benodigde tankautospuiten": "3",
+        "Benodigde redvoertuigen": "1",
+        "Benodigde OvD-B's": "1",
+        "Benodigde slangenwagens": "1",
+        "Slangenwagen benodigd waarschijnlijkheid": "80",
+        "Benodigde Waarschuwings- en Verkenningsdienst voertuigen": "1",
+        "Waarschuwings- en Verkenningsdienst voertuigen benodigd waarschijnlijkheid": "20",
+        "Benodigde Adviseurs Gevaarlijke Stoffen": "1",
+        "Aantal Adviseurs Gevaarlijke Stoffen benodigd waarschijnlijkheid": "60",
+        "Benodigde HOVD's": "1",
+        "HOVD benodigd waarschijnlijkheid": "50"
+    },
+    "393": {
+        "name": "Brand bij afvalverwerker",
+        "Gemiddeld aantal Credits": "4800",
+        "Benodigde tankautospuiten": "4",
+        "Benodigde redvoertuigen": "2",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "20",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Adembeschermingsvoertuigen": "1",
+        "Adembeschermingsvoertuig benodigd waarschijnlijkheid": "50",
+        "Benodigde slangenwagens": "2",
+        "Benodigde Waarschuwings- en Verkenningsdienst voertuigen": "1",
+        "Waarschuwings- en Verkenningsdienst voertuigen benodigd waarschijnlijkheid": "60",
+        "Benodigde Adviseurs Gevaarlijke Stoffen": "1",
+        "Benodigde HOVD's": "1",
+        "Benodigde noodhulpeenheden": "1"
     }
 }
