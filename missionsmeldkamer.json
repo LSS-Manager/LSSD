@@ -3732,5 +3732,37 @@
         "Benodigde Adviseurs Gevaarlijke Stoffen": "1",
         "Benodigde HOVD's": "1",
         "Benodigde noodhulpeenheden": "1"
+    },
+    "394": {
+        "name": "Brand bij afvalverwerker",
+        "Gemiddeld aantal Credits": "6800",
+        "Benodigde tankautospuiten": "8",
+        "Benodigde redvoertuigen": "2",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "20",
+        "Benodigde OvD-B's": "2",
+        "Benodigde Adembeschermingsvoertuigen": "1",
+        "Benodigde slangenwagens": "3",
+        "Benodigde Waarschuwings- en Verkenningsdienst voertuigen": "1",
+        "Benodigde Adviseurs Gevaarlijke Stoffen": "1",
+        "Benodigde HOVD's": "1",
+        "Benodigde Commandowagen": "1",
+        "Benodigde noodhulpeenheden": "2"
+    },
+    "395": {
+        "name": "Brand bij afvalverwerker",
+        "Gemiddeld aantal Credits": "9500",
+        "Benodigde tankautospuiten": "12",
+        "Benodigde redvoertuigen": "3",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "40",
+        "Benodigde OvD-B's": "2",
+        "Benodigde Adembeschermingsvoertuigen": "1",
+        "Benodigde slangenwagens": "4",
+        "Benodigde Waarschuwings- en Verkenningsdienst voertuigen": "1",
+        "Benodigde Adviseurs Gevaarlijke Stoffen": "1",
+        "Benodigde HOVD's": "1",
+        "Benodigde Commandowagen": "1",
+        "Benodigde noodhulpeenheden": "2"
     }
 }

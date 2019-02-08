@@ -6360,7 +6360,7 @@ lightbox_background {
                                                         text - align: center;
                                                         padding: 10 px
                                                     }.ladingpage_1_map {
-                                                        margin: 0 - 15 px;height: 400 px
+                                                        margin: 0 - 15 px;height: 400 px;z - index: 1
                                                     }.landingpage_1_signup_form {
                                                         position: absolute;padding: 20 px;width: 350 px;background - color: rgba(16, 16, 16, 0.8);display: block;color: white;left: 50 % ;margin: -500 px 0 0 - 175 px;border - radius: 4 px;border: 1 px solid white;z - index: 20
                                                     }.landingpage_3_signup_form {
@@ -6394,11 +6394,12 @@ lightbox_background {
                                                         font - size: 23 px;
                                                         text - align: center
                                                     }.landingpage_1_signup_form.input - group - addon {
-                                                        background - color: white
+                                                        background - color: white;
+                                                        padding: 0 px
                                                     }.landingpage_1_signup_form.btn {
                                                         margin - top: 15 px
                                                     }.landingpage_1_signup_form.input - group - addon label {
-                                                        width: 80 px
+                                                        width: 120 px
                                                     }.landingpage_1_text_block {
                                                         color: #646464;margin:10px auto 0 auto;max-width:1000px}.landingpage_1_text_block img{margin:0 10px;border:1px solid # 646464
                                                     }.landingpage_1_footer {

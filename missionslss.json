@@ -4576,5 +4576,21 @@
         "NEF Anforderungswahrscheinlichkeit": "20",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "60",
         "Fachrichtung für Patienten": "Allgemeine Innere"
+    },
+    "432": {
+        "name": "Fassadenbrand",
+        "Credits im Durchschnitt": "1700",
+        "Benötigte Löschfahrzeuge": "2",
+        "Benötigte ELW 1": "1",
+        "Benötigte Drehleitern": "1",
+        "Benötigte Rüstwagen": "1",
+        "Benötigte Streifenwagen": "2",
+        "Maximale Patientenanzahl": "2",
+        "NEF Anforderungswahrscheinlichkeit": "10",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "10",
+        "Fachrichtung für Patienten": "Allgemeine Innere",
+        "Ausbreitungsmöglichkeiten": [
+            ["https://www.leitstellenspiel.de/einsaetze/352", "Brand in Mehrfamilienhaus"]
+        ]
     }
 }

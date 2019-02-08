@@ -2140,5 +2140,11 @@
         "Minimum patient number": "1",
         "Patient Specializations": "Traumatology",
         "Probability that a patient has to be transported": "90"
+    },
+    "236": {
+        "name": "Electrical fire on subway tracks",
+        "Average credits": "1200",
+        "Required Firetrucks": "3",
+        "Required Battalion Chief Vehicles": "1"
     }
 }
