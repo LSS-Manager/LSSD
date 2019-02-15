@@ -1133,7 +1133,7 @@ function mobileBridgeAdd(e, t) {
 }
 
 function checkDesign(e) {
-    1 != e && 4 != e || $("body").hasClass("dark") ? 1 != e && 4 != e && $("body").hasClass("dark") && $("body").removeClass("dark", 500) : $("body").addClass("dark", 500), 2 != e || $("body").hasClass("bright") ? 2 != e && $("body").hasClass("bright") && $("body").removeClass("bright", 500) : $("body").addClass("bright", 500)
+    1 != e && 4 != e || $("body").hasClass("dark") ? 1 != e && 4 != e && $("body").hasClass("dark") && ($("body").removeClass("dark", 500), "undefined" != typeof mapkit && (map.colorScheme = mapkit.Map.ColorSchemes.Light)) : ($("body").addClass("dark", 500), "undefined" != typeof mapkit && (map.colorScheme = mapkit.Map.ColorSchemes.Dark)), 2 != e || $("body").hasClass("bright") ? 2 != e && $("body").hasClass("bright") && $("body").removeClass("bright", 500) : ($("body").addClass("bright", 500), "undefined" != typeof mapkit && (map.colorScheme = mapkit.Map.ColorSchemes.Light))
 }
 
 function tellParent(e) {

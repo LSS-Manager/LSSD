@@ -2146,5 +2146,11 @@
         "Average credits": "1200",
         "Required Firetrucks": "3",
         "Required Battalion Chief Vehicles": "1"
+    },
+    "237": {
+        "name": "ALPR Checkpoint",
+        "Average credits": "4000",
+        "Required Police Cars": "4",
+        "Duration": "1 hour"
     }
 }

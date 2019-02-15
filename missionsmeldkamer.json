@@ -3764,5 +3764,48 @@
         "Benodigde HOVD's": "1",
         "Benodigde Commandowagen": "1",
         "Benodigde noodhulpeenheden": "2"
+    },
+    "396": {
+        "name": "Lekkende LPG installatie",
+        "Gemiddeld aantal Credits": "2600",
+        "Benodigde tankautospuiten": "2",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Waarschuwings- en Verkenningsdienst voertuigen": "1",
+        "Waarschuwings- en Verkenningsdienst voertuigen benodigd waarschijnlijkheid": "50",
+        "Benodigde Adviseurs Gevaarlijke Stoffen": "1",
+        "Aantal Adviseurs Gevaarlijke Stoffen benodigd waarschijnlijkheid": "50",
+        "Benodigde HOVD's": "1",
+        "Benodigde Commandowagen": "1",
+        "Benodigde noodhulpeenheden": "2"
+    },
+    "397": {
+        "name": "Gaslekkage",
+        "Gemiddeld aantal Credits": "1200",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "50",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Adviseurs Gevaarlijke Stoffen": "1",
+        "Aantal Adviseurs Gevaarlijke Stoffen benodigd waarschijnlijkheid": "20",
+        "Benodigde HOVD's": "1",
+        "Benodigde Commandowagen": "1",
+        "Benodigde noodhulpeenheden": "2"
+    },
+    "398": {
+        "name": "Vreemde lucht in kantoorgebouw",
+        "Gemiddeld aantal Credits": "1750",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "60",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Adviseurs Gevaarlijke Stoffen": "1",
+        "Benodigde HOVD's": "1",
+        "Benodigde Commandowagen": "1",
+        "Benodigde noodhulpeenheden": "1",
+        "Maximale patiënten aantal": "6",
+        "Minimale aantal slachtoffers": "3",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "40",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
     }
 }
