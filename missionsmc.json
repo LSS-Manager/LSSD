@@ -2152,5 +2152,30 @@
         "Average credits": "4000",
         "Required Police Cars": "4",
         "Duration": "1 hour"
+    },
+    "238": {
+        "name": "Bulk hazardous storage tank leak (Small)",
+        "Average credits": "4000",
+        "Required Firetrucks": "2",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Heavy Rescue Vehicles": "1",
+        "Required HazMat Vehicles": "1",
+        "Required Police Cars": "1",
+        "Max. Patients": "5",
+        "Patient Specializations": "General Internal",
+        "Probability that a patient has to be transported": "40"
+    },
+    "239": {
+        "name": "Bulk hazardous storage tank leak (Large)",
+        "Average credits": "6000",
+        "Required Firetrucks": "4",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Heavy Rescue Vehicles": "1",
+        "Required Mobile Air Vehicles": "1",
+        "Required HazMat Vehicles": "1",
+        "Required Police Cars": "2",
+        "Max. Patients": "10",
+        "Patient Specializations": "General Internal",
+        "Probability that a patient has to be transported": "40"
     }
 }

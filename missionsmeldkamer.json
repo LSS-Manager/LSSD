@@ -3807,5 +3807,31 @@
         "Minimale aantal slachtoffers": "3",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "40",
         "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
+    },
+    "399": {
+        "name": "Inbraakalarm bedrijfspand",
+        "Gemiddeld aantal Credits": "1850",
+        "Benodigde noodhulpeenheden": "2",
+        "Benodigde Hondengeleider": "1",
+        "Uitbreidingsmogelijkheid": [
+            ["https://www.meldkamerspel.com/einsaetze/333", "Inbraak in bedrijfspand"]
+        ]
+    },
+    "400": {
+        "name": "Inbraakalarm bedrijfspand",
+        "Gemiddeld aantal Credits": "1850",
+        "Benodigde noodhulpeenheden": "2",
+        "Benodigde Hondengeleider": "1",
+        "Uitbreidingsmogelijkheid": [
+            ["https://www.meldkamerspel.com/einsaetze/333", "Inbraak in bedrijfspand"]
+        ]
+    },
+    "401": {
+        "name": "Overvalalarm supermarkt",
+        "Gemiddeld aantal Credits": "2250",
+        "Benodigde noodhulpeenheden": "3",
+        "Uitbreidingsmogelijkheid": [
+            ["https://www.meldkamerspel.com/einsaetze/123", "Overval winkel"]
+        ]
     }
 }

@@ -174,7 +174,11 @@ function radioMessage(e) {
         alliance_message = !1, e.user_id != user_id && (alliance_message = !0, e.fms_text = "[" + I18n.t("map.alliance") + "] " + e.fms_text);
         var t = "",
             i = "";
-        "" != e.additionalText && (e.fms_text = e.additionalText, e.fms = 5, e.fms_real = 5, "nl" == I18n.locale && (e.fms = 7), t = "<a href='#' class='btn btn-xs btn-success radio_message_close' vehicle_id='" + e.id + "'>" + I18n.t("javascript.understand") + "</a> "), 5 == e.fms_real ? (target = "radio_messages_important", e.user_id == user_id && $("body").hasClass("bigMap") && !$("#radio_outer").hasClass("fadeIn") && $("#bigMapMenuRadioButton").addClass("bigMapMenuButtonGreen")) : target = "radio_messages", $(".radio_message_vehicle_" + e.id).remove(), "" != e.mission_id && e.mission_id > 0 && (i = "<a href='/missions/" + e.mission_id + "' class='btn btn-xs btn-default lightbox-open'>" + I18n.t("javascript.to_mission") + "</a> "), $("#" + target).prepend("<li " + (alliance_message && alliance_ignore_fms ? "style='display:none'" : "") + " class='radio_message_vehicle_" + e.id + " " + (alliance_message ? "radio_message_alliance" : "") + "'><span title='" + e.fms_text + "' class='building_list_fms building_list_fms_" + e.fms_real + "' >" + e.fms + "</span><img src='/images/icons8-location_off.svg' class='vehicle_search ' vehicle_id='" + e.id + "'> <a href='/vehicles/" + e.id + "' class='btn btn-xs btn-default lightbox-open'>" + e.caption + "</a> " + i + t + e.fms_text + "</li>"), alliance_message && alliance_ignore_fms || (audio && 5 == e.fms_real ? "de" == I18n.locale ? play("fms5") : play("doorbell") : audio && play("funk"))
+        if ("" != e.additionalText && (e.fms_text = e.additionalText, e.fms = 5, e.fms_real = 5, "nl" == I18n.locale && (e.fms = 7), t = "<a href='#' class='btn btn-xs btn-success radio_message_close' vehicle_id='" + e.id + "'>" + I18n.t("javascript.understand") + "</a> "), 5 == e.fms_real ? (target = "radio_messages_important", e.user_id == user_id && $("body").hasClass("bigMap") && !$("#radio_outer").hasClass("fadeIn") && $("#bigMapMenuRadioButton").addClass("bigMapMenuButtonGreen")) : target = "radio_messages", $(".radio_message_vehicle_" + e.id).remove(), "" != e.mission_id && e.mission_id > 0 && (i = "<a href='/missions/" + e.mission_id + "' class='btn btn-xs btn-default lightbox-open'>" + I18n.t("javascript.to_mission") + "</a> "), "" != e.target_building_id && e.target_building_id > 0) {
+            var n = buildingCaption(e.target_building_id);
+            n || (n = I18n.t("javascript.to_building")), i = "<a href='/buildings/" + e.target_building_id + "' class='btn btn-xs btn-default lightbox-open'>" + n + "</a> "
+        }
+        $("#" + target).prepend("<li " + (alliance_message && alliance_ignore_fms ? "style='display:none'" : "") + " class='radio_message_vehicle_" + e.id + " " + (alliance_message ? "radio_message_alliance" : "") + "'><span title='" + e.fms_text + "' class='building_list_fms building_list_fms_" + e.fms_real + "' >" + e.fms + "</span><img src='/images/icons8-location_off.svg' class='vehicle_search ' vehicle_id='" + e.id + "'> <a href='/vehicles/" + e.id + "' class='btn btn-xs btn-default lightbox-open'>" + e.caption + "</a> " + i + t + e.fms_text + "</li>"), alliance_message && alliance_ignore_fms || (audio && 5 == e.fms_real ? "de" == I18n.locale ? play("fms5") : play("doorbell") : audio && play("funk"))
     } else if ("sicherheitswache" == e.type) {
         if (message = "", target = "radio_messages", e.user_id != user_id) return !0;
         message = e.success ? '<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + message + I18n.t("javascript.sicherheitswache_success", {
@@ -399,12 +403,19 @@ function building_maps_draw(e) {
     i.building_id = e.id, building_markers.push(i)
 }
 
+function buildingCaption(e) {
+    var t = !1;
+    return $.each(building_markers_cache, function(i, n) {
+        n.id == e && (t = n.name)
+    }), t
+}
+
 function buildingMarkerAdd(e) {
     var t = !1;
     if ($.each(building_markers_cache, function(i, n) {
             n.id == e.id && (t = !0)
         }), "undefined" != typeof e.vgi && "" != e.vgi && null != e.vgi && (buildingVehicleGraphicCache[e.id] = e.vgi), t) return !0;
-    if (e.user_id == user_id ? building_marker_image = e.icon : e.building_type == BUILDING_TYPE_FEUERWEHRSCHULE ? building_marker_image = "/images/building_fireschool_other.png" : e.building_type == BUILDING_TYPE_FEUERWACHE ? building_marker_image = "/images/building_fire_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSWACHE ? building_marker_image = "/images/building_rettungswache_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSSCHULE ? building_marker_image = "/images/building_rettungsschule_other.png" : e.building_type == BUILDING_TYPE_HOSPITAL ? building_marker_image = "/images/building_hospital_other.png" : e.building_type == BUILDING_TYPE_NOTARZTHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIWACHE || e.building_type == BUILDING_TYPE_POLIZEIZELLE ? building_marker_image = "/images/building_polizeiwache_other.png" : e.building_type == BUILDING_TYPE_LEITSTELLE ? building_marker_image = "/images/building_leitstelle_other.png" : e.building_type == BUILDING_TYPE_POLIZEISCHULE ? building_marker_image = "/images/building_polizeischule_other.png" : e.building_type == BUILDING_TYPE_THW ? building_marker_image = "/images/building_thw_other.png" : e.building_type == BUILDING_TYPE_THW_BUNDESSCHULE ? building_marker_image = "/images/building_thw_school_other.png" : e.building_type == BUILDING_TYPE_BEREITSCHAFTSPOLIZEI ? building_marker_image = "/images/building_bereitschaftspolizei_other.png" : e.building_type == BUILDING_TYPE_POLIZEISONDEREINHEITEN ? building_marker_image = "/images/building_polizeisondereinheiten_other.png" : e.building_type == BUILDING_TYPE_SEG ? building_marker_image = "/images/building_seg_other.png" : e.building_type == BUILDING_TYPE_BEREITSTELLUNGSRAUM ? building_marker_image = "/images/building_bereitstellungsraum_other.png" : e.building_type == BUILDING_TYPE_WASSERRETTUNG ? building_marker_image = "/images/building_wasserwacht_other.png" : e.building_type == BUILDING_TYPE_FIRE_BOAT_DOCK ? building_marker_image = "/images/building_fire_boat_dock_other.png" : e.building_type == BUILDING_TYPE_RESCUE_BOAT_DOCK && (building_marker_image = "/images/building_rescue_boat_dock_other.png"), e.building_marker_image = building_marker_image, e.user_id == user_id) {
+    if (e.user_id == user_id ? building_marker_image = e.icon : e.building_type == BUILDING_TYPE_FEUERWEHRSCHULE ? building_marker_image = "/images/building_fireschool_other.png" : e.building_type == BUILDING_TYPE_FEUERWACHE ? building_marker_image = "/images/building_fire_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSWACHE ? building_marker_image = "/images/building_rettungswache_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSSCHULE ? building_marker_image = "/images/building_rettungsschule_other.png" : e.building_type == BUILDING_TYPE_CLINIC ? building_marker_image = "/images/building_clinic_other.png" : e.building_type == BUILDING_TYPE_HOSPITAL ? building_marker_image = "/images/building_hospital_other.png" : e.building_type == BUILDING_TYPE_NOTARZTHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIWACHE || e.building_type == BUILDING_TYPE_POLIZEIZELLE ? building_marker_image = "/images/building_polizeiwache_other.png" : e.building_type == BUILDING_TYPE_LEITSTELLE ? building_marker_image = "/images/building_leitstelle_other.png" : e.building_type == BUILDING_TYPE_POLIZEISCHULE ? building_marker_image = "/images/building_polizeischule_other.png" : e.building_type == BUILDING_TYPE_THW ? building_marker_image = "/images/building_thw_other.png" : e.building_type == BUILDING_TYPE_THW_BUNDESSCHULE ? building_marker_image = "/images/building_thw_school_other.png" : e.building_type == BUILDING_TYPE_BEREITSCHAFTSPOLIZEI ? building_marker_image = "/images/building_bereitschaftspolizei_other.png" : e.building_type == BUILDING_TYPE_POLIZEISONDEREINHEITEN ? building_marker_image = "/images/building_polizeisondereinheiten_other.png" : e.building_type == BUILDING_TYPE_SEG ? building_marker_image = "/images/building_seg_other.png" : e.building_type == BUILDING_TYPE_BEREITSTELLUNGSRAUM ? building_marker_image = "/images/building_bereitstellungsraum_other.png" : e.building_type == BUILDING_TYPE_WASSERRETTUNG ? building_marker_image = "/images/building_wasserwacht_other.png" : e.building_type == BUILDING_TYPE_FIRE_BOAT_DOCK ? building_marker_image = "/images/building_fire_boat_dock_other.png" : e.building_type == BUILDING_TYPE_RESCUE_BOAT_DOCK && (building_marker_image = "/images/building_rescue_boat_dock_other.png"), e.building_marker_image = building_marker_image, e.user_id == user_id) {
         var i = "<li  class='building_list_li' building_type_id='" + e.building_type + "' leitstelle_building_id=" + e.lbid + "'><div class='building_list_caption' id='building_list_caption_" + e.id + "' >" + e.detail_button + "<img class='building_marker_image' building_id='" + e.id + "' src='" + building_marker_image + "'>" + "<a href='' class='map_position_mover' data-latitude='" + e.latitude + "' data-longitude='" + e.longitude + "'>" + e.name + "</a>";
         0 == e.show_vehicles_at_startpage && (i += hideVehicleBuildingHelpText(e.id)), i += "</div>";
         var n = "";
@@ -1634,6 +1645,7 @@ function hideVehicleBuildingHelpText(e) {
             sicherheitswache_success: 'The security guard "%{caption}" has been successfully carried out. Receive %{credits} Credits.',
             start_in: "Start in: ",
             start_username: "Starter:",
+            to_building: "View Building",
             to_mission: "View Mission",
             understand: "Acknowledge",
             user_not_found: "The player was not found.",
@@ -1873,6 +1885,7 @@ function hideVehicleBuildingHelpText(e) {
             sicherheitswache_success: 'Die Sicherheitswache "%{caption}" wurde erfolgreich durchgefÃ¼hrt. Du erhÃ¤ltst %{credits} Credits.',
             start_in: "AusrÃ¼cken in: ",
             start_username: "Gestartet von:",
+            to_building: "Zum GebÃ¤ude",
             to_mission: "Zum Einsatz",
             understand: "Verstanden",
             user_not_found: "Der Spieler wurde nicht gefunden. ",
@@ -2112,6 +2125,7 @@ function hideVehicleBuildingHelpText(e) {
             sicherheitswache_success: 'Het evenement "%{caption}" werd succesvol doorlopen. Je hebt %{credits} Credits gekregen.',
             start_in: "Uitrukken in:",
             start_username: "Gestart door:",
+            to_building: "Naar post",
             to_mission: "Naar incident",
             understand: "Begrepen",
             user_not_found: "De speler is niet gevonden.",
@@ -2351,6 +2365,7 @@ function hideVehicleBuildingHelpText(e) {
             sicherheitswache_success: null,
             start_in: null,
             start_username: null,
+            to_building: null,
             to_mission: null,
             understand: null,
             user_not_found: null,
@@ -2668,6 +2683,7 @@ function hideVehicleBuildingHelpText(e) {
             sicherheitswache_success: null,
             start_in: null,
             start_username: null,
+            to_building: null,
             to_mission: null,
             understand: null,
             user_not_found: null,
@@ -2937,7 +2953,7 @@ function hideVehicleBuildingHelpText(e) {
 
         function u() {
             try {
-                return G.activeElement
+                return K.activeElement
             } catch (e) {}
         }
 
@@ -3065,7 +3081,7 @@ function hideVehicleBuildingHelpText(e) {
         }
 
         function A(e) {
-            var t = G,
+            var t = K,
                 i = yi[e];
             return i || (i = D(e, t), "none" !== i && i || (ci = (ci || ut("<iframe frameborder='0' width='0' height='0'/>").css("cssText", "display:block !important")).appendTo(t.documentElement), t = (ci[0].contentWindow || ci[0].contentDocument).document, t.write("<!doctype html><html><body>"), t.close(), i = D(e, t), ci.detach()), yi[e] = i), i
         }
@@ -3292,9 +3308,9 @@ function hideVehicleBuildingHelpText(e) {
             return ut.isWindow(e) ? e : 9 === e.nodeType ? e.defaultView || e.parentWindow : !1
         }
         var q, Z, Y = typeof t,
-            K = e.location,
-            G = e.document,
-            X = G.documentElement,
+            G = e.location,
+            K = e.document,
+            X = K.documentElement,
             Q = e.jQuery,
             J = e.$,
             et = {},
@@ -3325,10 +3341,10 @@ function hideVehicleBuildingHelpText(e) {
                 return t.toUpperCase()
             },
             kt = function(e) {
-                (G.addEventListener || "load" === e.type || "complete" === G.readyState) && (Ct(), ut.ready())
+                (K.addEventListener || "load" === e.type || "complete" === K.readyState) && (Ct(), ut.ready())
             },
             Ct = function() {
-                G.addEventListener ? (G.removeEventListener("DOMContentLoaded", kt, !1), e.removeEventListener("load", kt, !1)) : (G.detachEvent("onreadystatechange", kt), e.detachEvent("onload", kt))
+                K.addEventListener ? (K.removeEventListener("DOMContentLoaded", kt, !1), e.removeEventListener("load", kt, !1)) : (K.detachEvent("onreadystatechange", kt), e.detachEvent("onload", kt))
             };
         ut.fn = ut.prototype = {
                 jquery: it,
@@ -3339,15 +3355,15 @@ function hideVehicleBuildingHelpText(e) {
                     if ("string" == typeof e) {
                         if (s = "<" === e.charAt(0) && ">" === e.charAt(e.length - 1) && e.length >= 3 ? [null, e, null] : ft.exec(e), !s || !s[1] && i) return !i || i.jquery ? (i || n).find(e) : this.constructor(i).find(e);
                         if (s[1]) {
-                            if (i = i instanceof ut ? i[0] : i, ut.merge(this, ut.parseHTML(s[1], i && i.nodeType ? i.ownerDocument || i : G, !0)), mt.test(s[1]) && ut.isPlainObject(i))
+                            if (i = i instanceof ut ? i[0] : i, ut.merge(this, ut.parseHTML(s[1], i && i.nodeType ? i.ownerDocument || i : K, !0)), mt.test(s[1]) && ut.isPlainObject(i))
                                 for (s in i) ut.isFunction(this[s]) ? this[s](i[s]) : this.attr(s, i[s]);
                             return this
                         }
-                        if (o = G.getElementById(s[2]), o && o.parentNode) {
+                        if (o = K.getElementById(s[2]), o && o.parentNode) {
                             if (o.id !== s[2]) return n.find(e);
                             this.length = 1, this[0] = o
                         }
-                        return this.context = G, this.selector = e, this
+                        return this.context = K, this.selector = e, this
                     }
                     return e.nodeType ? (this.context = this[0] = e, this.length = 1, this) : ut.isFunction(e) ? n.ready(e) : (e.selector !== t && (this.selector = e.selector, this.context = e.context), ut.makeArray(e, this))
                 },
@@ -3415,8 +3431,8 @@ function hideVehicleBuildingHelpText(e) {
                 },
                 ready: function(e) {
                     if (e === !0 ? !--ut.readyWait : !ut.isReady) {
-                        if (!G.body) return setTimeout(ut.ready);
-                        ut.isReady = !0, e !== !0 && --ut.readyWait > 0 || (q.resolveWith(G, [ut]), ut.fn.trigger && ut(G).trigger("ready").off("ready"))
+                        if (!K.body) return setTimeout(ut.ready);
+                        ut.isReady = !0, e !== !0 && --ut.readyWait > 0 || (q.resolveWith(K, [ut]), ut.fn.trigger && ut(K).trigger("ready").off("ready"))
                     }
                 },
                 isFunction: function(e) {
@@ -3457,7 +3473,7 @@ function hideVehicleBuildingHelpText(e) {
                 },
                 parseHTML: function(e, t, i) {
                     if (!e || "string" != typeof e) return null;
-                    "boolean" == typeof t && (i = t, t = !1), t = t || G;
+                    "boolean" == typeof t && (i = t, t = !1), t = t || K;
                     var n = mt.exec(e),
                         s = !i && [];
                     return n ? [t.createElement(n[1])] : (n = ut.buildFragment([e], t, s), s && ut(s).remove(), ut.merge([], n.childNodes))
@@ -3582,13 +3598,13 @@ function hideVehicleBuildingHelpText(e) {
                 }
             }), ut.ready.promise = function(t) {
                 if (!q)
-                    if (q = ut.Deferred(), "complete" === G.readyState) setTimeout(ut.ready);
-                    else if (G.addEventListener) G.addEventListener("DOMContentLoaded", kt, !1), e.addEventListener("load", kt, !1);
+                    if (q = ut.Deferred(), "complete" === K.readyState) setTimeout(ut.ready);
+                    else if (K.addEventListener) K.addEventListener("DOMContentLoaded", kt, !1), e.addEventListener("load", kt, !1);
                 else {
-                    G.attachEvent("onreadystatechange", kt), e.attachEvent("onload", kt);
+                    K.attachEvent("onreadystatechange", kt), e.attachEvent("onload", kt);
                     var i = !1;
                     try {
-                        i = null == e.frameElement && G.documentElement
+                        i = null == e.frameElement && K.documentElement
                     } catch (n) {}
                     i && i.doScroll && function s() {
                         if (!ut.isReady) {
@@ -3604,7 +3620,7 @@ function hideVehicleBuildingHelpText(e) {
                 return q.promise(t)
             }, ut.each("Boolean Number String Function Array Date RegExp Object Error".split(" "), function(e, t) {
                 et["[object " + t + "]"] = t.toLowerCase()
-            }), Z = ut(G),
+            }), Z = ut(K),
             /*!
              * Sizzle CSS Selector Engine v1.9.4-pre
              * http://sizzlejs.com/
@@ -3886,8 +3902,8 @@ function hideVehicleBuildingHelpText(e) {
                     q = 0,
                     Z = s(),
                     Y = s(),
-                    K = s(),
-                    G = !1,
+                    G = s(),
+                    K = !1,
                     X = function() {
                         return 0
                     },
@@ -4012,7 +4028,7 @@ function hideVehicleBuildingHelpText(e) {
                     }, E.sortDetached = r(function(e) {
                         return 1 & e.compareDocumentPosition(t.createElement("div"))
                     }), X = O.compareDocumentPosition ? function(e, i) {
-                        if (e === i) return G = !0, 0;
+                        if (e === i) return K = !0, 0;
                         var n = i.compareDocumentPosition && e.compareDocumentPosition && e.compareDocumentPosition(i);
                         return n ? 1 & n || !E.sortDetached && i.compareDocumentPosition(e) === n ? e === t || j(U, e) ? -1 : i === t || j(U, i) ? 1 : $ ? rt.call($, e) - rt.call($, i) : 0 : 4 & n ? -1 : 1 : e.compareDocumentPosition ? -1 : 1
                     } : function(e, i) {
@@ -4021,7 +4037,7 @@ function hideVehicleBuildingHelpText(e) {
                             r = i.parentNode,
                             a = [e],
                             l = [i];
-                        if (e === i) return G = !0, 0;
+                        if (e === i) return K = !0, 0;
                         if (!o || !r) return e === t ? -1 : i === t ? 1 : o ? -1 : r ? 1 : $ ? rt.call($, e) - rt.call($, i) : 0;
                         if (o === r) return h(e, i);
                         for (n = e; n = n.parentNode;) a.unshift(n);
@@ -4050,7 +4066,7 @@ function hideVehicleBuildingHelpText(e) {
                     var t, i = [],
                         n = 0,
                         s = 0;
-                    if (G = !E.detectDuplicates, $ = !E.sortStable && e.slice(0), e.sort(X), G) {
+                    if (K = !E.detectDuplicates, $ = !E.sortStable && e.slice(0), e.sort(X), K) {
                         for (; t = e[s++];) t === e[s] && (n = i.push(s));
                         for (; n--;) e.splice(i[n], 1)
                     }
@@ -4281,13 +4297,13 @@ function hideVehicleBuildingHelpText(e) {
                 P = i.compile = function(e, t) {
                     var i, n = [],
                         s = [],
-                        o = K[e + " "];
+                        o = G[e + " "];
                     if (!o) {
                         for (t || (t = m(e)), i = t.length; i--;) o = w(t[i]), o[W] ? n.push(o) : s.push(o);
-                        o = K(e, x(s, n))
+                        o = G(e, x(s, n))
                     }
                     return o
-                }, D.pseudos.nth = D.pseudos.eq, T.prototype = D.filters = D.pseudos, D.setFilters = new T, E.sortStable = W.split("").sort(X).join("") === W, L(), [0, 0].sort(X), E.detectDuplicates = G, ut.find = i, ut.expr = i.selectors, ut.expr[":"] = ut.expr.pseudos, ut.unique = i.uniqueSort, ut.text = i.getText, ut.isXMLDoc = i.isXML, ut.contains = i.contains
+                }, D.pseudos.nth = D.pseudos.eq, T.prototype = D.filters = D.pseudos, D.setFilters = new T, E.sortStable = W.split("").sort(X).join("") === W, L(), [0, 0].sort(X), E.detectDuplicates = K, ut.find = i, ut.expr = i.selectors, ut.expr[":"] = ut.expr.pseudos, ut.unique = i.uniqueSort, ut.text = i.getText, ut.isXMLDoc = i.isXML, ut.contains = i.contains
             }(e);
         var Tt = {};
         ut.Callbacks = function(e) {
@@ -4408,15 +4424,15 @@ function hideVehicleBuildingHelpText(e) {
                 return a || l.resolveWith(n, o), l.promise()
             }
         }), ut.support = function(t) {
-            var i, n, s, o, r, a, l, c, u, h = G.createElement("div");
+            var i, n, s, o, r, a, l, c, u, h = K.createElement("div");
             if (h.setAttribute("className", "t"), h.innerHTML = "  <link/><table></table><a href='/a'>a</a><input type='checkbox'/>", i = h.getElementsByTagName("*") || [], n = h.getElementsByTagName("a")[0], !n || !n.style || !i.length) return t;
-            o = G.createElement("select"), a = o.appendChild(G.createElement("option")), s = h.getElementsByTagName("input")[0], n.style.cssText = "top:1px;float:left;opacity:.5", t.getSetAttribute = "t" !== h.className, t.leadingWhitespace = 3 === h.firstChild.nodeType, t.tbody = !h.getElementsByTagName("tbody").length, t.htmlSerialize = !!h.getElementsByTagName("link").length, t.style = /top/.test(n.getAttribute("style")), t.hrefNormalized = "/a" === n.getAttribute("href"), t.opacity = /^0.5/.test(n.style.opacity), t.cssFloat = !!n.style.cssFloat, t.checkOn = !!s.value, t.optSelected = a.selected, t.enctype = !!G.createElement("form").enctype, t.html5Clone = "<:nav></:nav>" !== G.createElement("nav").cloneNode(!0).outerHTML, t.inlineBlockNeedsLayout = !1, t.shrinkWrapBlocks = !1, t.pixelPosition = !1, t.deleteExpando = !0, t.noCloneEvent = !0, t.reliableMarginRight = !0, t.boxSizingReliable = !0, s.checked = !0, t.noCloneChecked = s.cloneNode(!0).checked, o.disabled = !0, t.optDisabled = !a.disabled;
+            o = K.createElement("select"), a = o.appendChild(K.createElement("option")), s = h.getElementsByTagName("input")[0], n.style.cssText = "top:1px;float:left;opacity:.5", t.getSetAttribute = "t" !== h.className, t.leadingWhitespace = 3 === h.firstChild.nodeType, t.tbody = !h.getElementsByTagName("tbody").length, t.htmlSerialize = !!h.getElementsByTagName("link").length, t.style = /top/.test(n.getAttribute("style")), t.hrefNormalized = "/a" === n.getAttribute("href"), t.opacity = /^0.5/.test(n.style.opacity), t.cssFloat = !!n.style.cssFloat, t.checkOn = !!s.value, t.optSelected = a.selected, t.enctype = !!K.createElement("form").enctype, t.html5Clone = "<:nav></:nav>" !== K.createElement("nav").cloneNode(!0).outerHTML, t.inlineBlockNeedsLayout = !1, t.shrinkWrapBlocks = !1, t.pixelPosition = !1, t.deleteExpando = !0, t.noCloneEvent = !0, t.reliableMarginRight = !0, t.boxSizingReliable = !0, s.checked = !0, t.noCloneChecked = s.cloneNode(!0).checked, o.disabled = !0, t.optDisabled = !a.disabled;
             try {
                 delete h.test
             } catch (d) {
                 t.deleteExpando = !1
             }
-            s = G.createElement("input"), s.setAttribute("value", ""), t.input = "" === s.getAttribute("value"), s.value = "t", s.setAttribute("type", "radio"), t.radioValue = "t" === s.value, s.setAttribute("checked", "t"), s.setAttribute("name", "t"), r = G.createDocumentFragment(), r.appendChild(s), t.appendChecked = s.checked, t.checkClone = r.cloneNode(!0).cloneNode(!0).lastChild.checked, h.attachEvent && (h.attachEvent("onclick", function() {
+            s = K.createElement("input"), s.setAttribute("value", ""), t.input = "" === s.getAttribute("value"), s.value = "t", s.setAttribute("type", "radio"), t.radioValue = "t" === s.value, s.setAttribute("checked", "t"), s.setAttribute("name", "t"), r = K.createDocumentFragment(), r.appendChild(s), t.appendChecked = s.checked, t.checkClone = r.cloneNode(!0).cloneNode(!0).lastChild.checked, h.attachEvent && (h.attachEvent("onclick", function() {
                 t.noCloneEvent = !1
             }), h.cloneNode(!0).click());
             for (u in {
@@ -4428,14 +4444,14 @@ function hideVehicleBuildingHelpText(e) {
             for (u in ut(t)) break;
             return t.ownLast = "0" !== u, ut(function() {
                 var i, n, s, o = "padding:0;margin:0;border:0;display:block;box-sizing:content-box;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;",
-                    r = G.getElementsByTagName("body")[0];
-                r && (i = G.createElement("div"), i.style.cssText = "border:0;width:0;height:0;position:absolute;top:0;left:-9999px;margin-top:1px", r.appendChild(i).appendChild(h), h.innerHTML = "<table><tr><td></td><td>t</td></tr></table>", s = h.getElementsByTagName("td"), s[0].style.cssText = "padding:0;margin:0;border:0;display:none", c = 0 === s[0].offsetHeight, s[0].style.display = "", s[1].style.display = "none", t.reliableHiddenOffsets = c && 0 === s[0].offsetHeight, h.innerHTML = "", h.style.cssText = "box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;padding:1px;border:1px;display:block;width:4px;margin-top:1%;position:absolute;top:1%;", ut.swap(r, null != r.style.zoom ? {
+                    r = K.getElementsByTagName("body")[0];
+                r && (i = K.createElement("div"), i.style.cssText = "border:0;width:0;height:0;position:absolute;top:0;left:-9999px;margin-top:1px", r.appendChild(i).appendChild(h), h.innerHTML = "<table><tr><td></td><td>t</td></tr></table>", s = h.getElementsByTagName("td"), s[0].style.cssText = "padding:0;margin:0;border:0;display:none", c = 0 === s[0].offsetHeight, s[0].style.display = "", s[1].style.display = "none", t.reliableHiddenOffsets = c && 0 === s[0].offsetHeight, h.innerHTML = "", h.style.cssText = "box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;padding:1px;border:1px;display:block;width:4px;margin-top:1%;position:absolute;top:1%;", ut.swap(r, null != r.style.zoom ? {
                     zoom: 1
                 } : {}, function() {
                     t.boxSizing = 4 === h.offsetWidth
                 }), e.getComputedStyle && (t.pixelPosition = "1%" !== (e.getComputedStyle(h, null) || {}).top, t.boxSizingReliable = "4px" === (e.getComputedStyle(h, null) || {
                     width: "4px"
-                }).width, n = h.appendChild(G.createElement("div")), n.style.cssText = h.style.cssText = o, n.style.marginRight = n.style.width = "0", h.style.width = "1px", t.reliableMarginRight = !parseFloat((e.getComputedStyle(n, null) || {}).marginRight)), typeof h.style.zoom !== Y && (h.innerHTML = "", h.style.cssText = o + "width:1px;padding:1px;display:inline;zoom:1", t.inlineBlockNeedsLayout = 3 === h.offsetWidth, h.style.display = "block", h.innerHTML = "<div></div>", h.firstChild.style.width = "5px", t.shrinkWrapBlocks = 3 !== h.offsetWidth, t.inlineBlockNeedsLayout && (r.style.zoom = 1)), r.removeChild(i), i = h = s = n = null)
+                }).width, n = h.appendChild(K.createElement("div")), n.style.cssText = h.style.cssText = o, n.style.marginRight = n.style.width = "0", h.style.width = "1px", t.reliableMarginRight = !parseFloat((e.getComputedStyle(n, null) || {}).marginRight)), typeof h.style.zoom !== Y && (h.innerHTML = "", h.style.cssText = o + "width:1px;padding:1px;display:inline;zoom:1", t.inlineBlockNeedsLayout = 3 === h.offsetWidth, h.style.display = "block", h.innerHTML = "<div></div>", h.firstChild.style.width = "5px", t.shrinkWrapBlocks = 3 !== h.offsetWidth, t.inlineBlockNeedsLayout && (r.style.zoom = 1)), r.removeChild(i), i = h = s = n = null)
             }), i = o = r = a = n = s = null, t
         }({});
         var St = /(?:\{[\s\S]*\}|\[[\s\S]*\])$/,
@@ -4798,13 +4814,13 @@ function hideVehicleBuildingHelpText(e) {
                 }
             },
             trigger: function(i, n, s, o) {
-                var r, a, l, c, u, h, d, p = [s || G],
+                var r, a, l, c, u, h, d, p = [s || K],
                     f = lt.call(i, "type") ? i.type : i,
                     m = lt.call(i, "namespace") ? i.namespace.split(".") : [];
-                if (l = h = s = s || G, 3 !== s.nodeType && 8 !== s.nodeType && !Bt.test(f + ut.event.triggered) && (f.indexOf(".") >= 0 && (m = f.split("."), f = m.shift(), m.sort()), a = f.indexOf(":") < 0 && "on" + f, i = i[ut.expando] ? i : new ut.Event(f, "object" == typeof i && i), i.isTrigger = o ? 2 : 3, i.namespace = m.join("."), i.namespace_re = i.namespace ? new RegExp("(^|\\.)" + m.join("\\.(?:.*\\.|)") + "(\\.|$)") : null, i.result = t, i.target || (i.target = s), n = null == n ? [i] : ut.makeArray(n, [i]), u = ut.event.special[f] || {}, o || !u.trigger || u.trigger.apply(s, n) !== !1)) {
+                if (l = h = s = s || K, 3 !== s.nodeType && 8 !== s.nodeType && !Bt.test(f + ut.event.triggered) && (f.indexOf(".") >= 0 && (m = f.split("."), f = m.shift(), m.sort()), a = f.indexOf(":") < 0 && "on" + f, i = i[ut.expando] ? i : new ut.Event(f, "object" == typeof i && i), i.isTrigger = o ? 2 : 3, i.namespace = m.join("."), i.namespace_re = i.namespace ? new RegExp("(^|\\.)" + m.join("\\.(?:.*\\.|)") + "(\\.|$)") : null, i.result = t, i.target || (i.target = s), n = null == n ? [i] : ut.makeArray(n, [i]), u = ut.event.special[f] || {}, o || !u.trigger || u.trigger.apply(s, n) !== !1)) {
                     if (!o && !u.noBubble && !ut.isWindow(s)) {
                         for (c = u.delegateType || f, Bt.test(c + f) || (l = l.parentNode); l; l = l.parentNode) p.push(l), h = l;
-                        h === (s.ownerDocument || G) && p.push(h.defaultView || h.parentWindow || e)
+                        h === (s.ownerDocument || K) && p.push(h.defaultView || h.parentWindow || e)
                     }
                     for (d = 0;
                         (l = p[d++]) && !i.isPropagationStopped();) i.type = d > 1 ? c : u.bindType || f, r = (ut._data(l, "events") || {})[i.type] && ut._data(l, "handle"), r && r.apply(l, n), r = a && l[a], r && ut.acceptData(l) && r.apply && r.apply(l, n) === !1 && i.preventDefault();
@@ -4855,7 +4871,7 @@ function hideVehicleBuildingHelpText(e) {
                     o = e,
                     r = this.fixHooks[s];
                 for (r || (this.fixHooks[s] = r = Ft.test(s) ? this.mouseHooks : Rt.test(s) ? this.keyHooks : {}), n = r.props ? this.props.concat(r.props) : this.props, e = new ut.Event(o), t = n.length; t--;) i = n[t], e[i] = o[i];
-                return e.target || (e.target = o.srcElement || G), 3 === e.target.nodeType && (e.target = e.target.parentNode), e.metaKey = !!e.metaKey, r.filter ? r.filter(e, o) : e
+                return e.target || (e.target = o.srcElement || K), 3 === e.target.nodeType && (e.target = e.target.parentNode), e.metaKey = !!e.metaKey, r.filter ? r.filter(e, o) : e
             },
             props: "altKey bubbles cancelable ctrlKey currentTarget eventPhase metaKey relatedTarget shiftKey target timeStamp view which".split(" "),
             fixHooks: {},
@@ -4870,7 +4886,7 @@ function hideVehicleBuildingHelpText(e) {
                 filter: function(e, i) {
                     var n, s, o, r = i.button,
                         a = i.fromElement;
-                    return null == e.pageX && null != i.clientX && (s = e.target.ownerDocument || G, o = s.documentElement, n = s.body, e.pageX = i.clientX + (o && o.scrollLeft || n && n.scrollLeft || 0) - (o && o.clientLeft || n && n.clientLeft || 0), e.pageY = i.clientY + (o && o.scrollTop || n && n.scrollTop || 0) - (o && o.clientTop || n && n.clientTop || 0)), !e.relatedTarget && a && (e.relatedTarget = a === e.target ? i.toElement : a), e.which || r === t || (e.which = 1 & r ? 1 : 2 & r ? 3 : 4 & r ? 2 : 0), e
+                    return null == e.pageX && null != i.clientX && (s = e.target.ownerDocument || K, o = s.documentElement, n = s.body, e.pageX = i.clientX + (o && o.scrollLeft || n && n.scrollLeft || 0) - (o && o.clientLeft || n && n.clientLeft || 0), e.pageY = i.clientY + (o && o.scrollTop || n && n.scrollTop || 0) - (o && o.clientTop || n && n.clientTop || 0)), !e.relatedTarget && a && (e.relatedTarget = a === e.target ? i.toElement : a), e.which || r === t || (e.which = 1 & r ? 1 : 2 & r ? 3 : 4 & r ? 2 : 0), e
                 }
             },
             special: {
@@ -4913,7 +4929,7 @@ function hideVehicleBuildingHelpText(e) {
                 });
                 n ? ut.event.trigger(s, null, t) : ut.event.dispatch.call(t, s), s.isDefaultPrevented() && i.preventDefault()
             }
-        }, ut.removeEvent = G.removeEventListener ? function(e, t, i) {
+        }, ut.removeEvent = K.removeEventListener ? function(e, t, i) {
             e.removeEventListener && e.removeEventListener(t, i, !1)
         } : function(e, t, i) {
             var n = "on" + t;
@@ -4995,10 +5011,10 @@ function hideVehicleBuildingHelpText(e) {
                 };
             ut.event.special[t] = {
                 setup: function() {
-                    0 === i++ && G.addEventListener(e, n, !0)
+                    0 === i++ && K.addEventListener(e, n, !0)
                 },
                 teardown: function() {
-                    0 === --i && G.removeEventListener(e, n, !0)
+                    0 === --i && K.removeEventListener(e, n, !0)
                 }
             }
         }), ut.fn.extend({
@@ -5160,8 +5176,8 @@ function hideVehicleBuildingHelpText(e) {
         var qt = "abbr|article|aside|audio|bdi|canvas|data|datalist|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|summary|time|video",
             Zt = / jQuery\d+="(?:null|\d+)"/g,
             Yt = new RegExp("<(?:" + qt + ")[\\s/>]", "i"),
-            Kt = /^\s+/,
-            Gt = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/gi,
+            Gt = /^\s+/,
+            Kt = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/gi,
             Xt = /<([\w:]+)/,
             Qt = /<tbody/i,
             Jt = /<|&#?\w+;/,
@@ -5182,12 +5198,12 @@ function hideVehicleBuildingHelpText(e) {
                 td: [3, "<table><tbody><tr>", "</tr></tbody></table>"],
                 _default: ut.support.htmlSerialize ? [0, "", ""] : [1, "X<div>", "</div>"]
             },
-            ai = p(G),
-            li = ai.appendChild(G.createElement("div"));
+            ai = p(K),
+            li = ai.appendChild(K.createElement("div"));
         ri.optgroup = ri.option, ri.tbody = ri.tfoot = ri.colgroup = ri.caption = ri.thead, ri.th = ri.td, ut.fn.extend({
             text: function(e) {
                 return ut.access(this, function(e) {
-                    return e === t ? ut.text(this) : this.empty().append((this[0] && this[0].ownerDocument || G).createTextNode(e))
+                    return e === t ? ut.text(this) : this.empty().append((this[0] && this[0].ownerDocument || K).createTextNode(e))
                 }, null, e, arguments.length)
             },
             append: function() {
@@ -5238,8 +5254,8 @@ function hideVehicleBuildingHelpText(e) {
                         n = 0,
                         s = this.length;
                     if (e === t) return 1 === i.nodeType ? i.innerHTML.replace(Zt, "") : t;
-                    if (!("string" != typeof e || ei.test(e) || !ut.support.htmlSerialize && Yt.test(e) || !ut.support.leadingWhitespace && Kt.test(e) || ri[(Xt.exec(e) || ["", ""])[1].toLowerCase()])) {
-                        e = e.replace(Gt, "<$1></$2>");
+                    if (!("string" != typeof e || ei.test(e) || !ut.support.htmlSerialize && Yt.test(e) || !ut.support.leadingWhitespace && Gt.test(e) || ri[(Xt.exec(e) || ["", ""])[1].toLowerCase()])) {
+                        e = e.replace(Kt, "<$1></$2>");
                         try {
                             for (; s > n; n++) i = this[n] || {}, 1 === i.nodeType && (ut.cleanData(y(i, !1)), i.innerHTML = e);
                             i = 0
@@ -5309,8 +5325,8 @@ function hideVehicleBuildingHelpText(e) {
                     if (o = e[m], o || 0 === o)
                         if ("object" === ut.type(o)) ut.merge(f, o.nodeType ? [o] : o);
                         else if (Jt.test(o)) {
-                    for (a = a || d.appendChild(t.createElement("div")), l = (Xt.exec(o) || ["", ""])[1].toLowerCase(), u = ri[l] || ri._default, a.innerHTML = u[1] + o.replace(Gt, "<$1></$2>") + u[2], s = u[0]; s--;) a = a.lastChild;
-                    if (!ut.support.leadingWhitespace && Kt.test(o) && f.push(t.createTextNode(Kt.exec(o)[0])), !ut.support.tbody)
+                    for (a = a || d.appendChild(t.createElement("div")), l = (Xt.exec(o) || ["", ""])[1].toLowerCase(), u = ri[l] || ri._default, a.innerHTML = u[1] + o.replace(Kt, "<$1></$2>") + u[2], s = u[0]; s--;) a = a.lastChild;
+                    if (!ut.support.leadingWhitespace && Gt.test(o) && f.push(t.createTextNode(Gt.exec(o)[0])), !ut.support.tbody)
                         for (o = "table" !== l || Qt.test(o) ? "<table>" !== u[1] || Qt.test(o) ? 0 : a : a.firstChild, s = o && o.childNodes.length; s--;) ut.nodeName(c = o.childNodes[s], "tbody") && !c.childNodes.length && o.removeChild(c);
                     for (ut.merge(f, a.childNodes), a.textContent = ""; a.firstChild;) a.removeChild(a.firstChild);
                     a = d.lastChild
@@ -5465,7 +5481,7 @@ function hideVehicleBuildingHelpText(e) {
                 l = a ? a.getPropertyValue(i) || a[i] : t,
                 c = e.style;
             return a && ("" !== l || ut.contains(e.ownerDocument, e) || (l = ut.style(e, i)), vi.test(l) && gi.test(i) && (s = c.width, o = c.minWidth, r = c.maxWidth, c.minWidth = c.maxWidth = c.width = l, l = a.width, c.width = s, c.minWidth = o, c.maxWidth = r)), l
-        }) : G.documentElement.currentStyle && (ui = function(e) {
+        }) : K.documentElement.currentStyle && (ui = function(e) {
             return e.currentStyle
         }, hi = function(e, i, n) {
             var s, o, r, a = n || ui(e),
@@ -5600,9 +5616,9 @@ function hideVehicleBuildingHelpText(e) {
             Wi = {},
             Ui = "*/".concat("*");
         try {
-            Mi = K.href
+            Mi = G.href
         } catch (Vi) {
-            Mi = G.createElement("a"), Mi.href = "", Mi = Mi.href
+            Mi = K.createElement("a"), Mi.href = "", Mi = Mi.href
         }
         Ii = Bi.exec(Mi.toLowerCase()) || [], ut.fn.load = function(e, i, n) {
             if ("string" != typeof e && Hi) return Hi.apply(this, arguments);
@@ -5772,10 +5788,10 @@ function hideVehicleBuildingHelpText(e) {
             e.cache === t && (e.cache = !1), e.crossDomain && (e.type = "GET", e.global = !1)
         }), ut.ajaxTransport("script", function(e) {
             if (e.crossDomain) {
-                var i, n = G.head || ut("head")[0] || G.documentElement;
+                var i, n = K.head || ut("head")[0] || K.documentElement;
                 return {
                     send: function(t, s) {
-                        i = G.createElement("script"), i.async = !0, e.scriptCharset && (i.charset = e.scriptCharset), i.src = e.url, i.onload = i.onreadystatechange = function(e, t) {
+                        i = K.createElement("script"), i.async = !0, e.scriptCharset && (i.charset = e.scriptCharset), i.src = e.url, i.onload = i.onreadystatechange = function(e, t) {
                             (t || !i.readyState || /loaded|complete/.test(i.readyState)) && (i.onload = i.onreadystatechange = null, i.parentNode && i.parentNode.removeChild(i), i = null, t || s(200, "success"))
                         }, n.insertBefore(i, n.firstChild)
                     },
@@ -5803,14 +5819,14 @@ function hideVehicleBuildingHelpText(e) {
                 e[o] = r, i[o] && (i.jsonpCallback = n.jsonpCallback, qi.push(o)), a && ut.isFunction(r) && r(a[0]), a = r = t
             }), "script") : void 0
         });
-        var Yi, Ki, Gi = 0,
+        var Yi, Gi, Ki = 0,
             Xi = e.ActiveXObject && function() {
                 var e;
                 for (e in Yi) Yi[e](t, !0)
             };
         ut.ajaxSettings.xhr = e.ActiveXObject ? function() {
             return !this.isLocal && z() || O()
-        } : z, Ki = ut.ajaxSettings.xhr(), ut.support.cors = !!Ki && "withCredentials" in Ki, Ki = ut.support.ajax = !!Ki, Ki && ut.ajaxTransport(function(i) {
+        } : z, Gi = ut.ajaxSettings.xhr(), ut.support.cors = !!Gi && "withCredentials" in Gi, Gi = ut.support.ajax = !!Gi, Gi && ut.ajaxTransport(function(i) {
             if (!i.crossDomain || ut.support.cors) {
                 var n;
                 return {
@@ -5840,7 +5856,7 @@ function hideVehicleBuildingHelpText(e) {
                                 s || o(-1, p)
                             }
                             h && o(a, u, h, c)
-                        }, i.async ? 4 === l.readyState ? setTimeout(n) : (r = ++Gi, Xi && (Yi || (Yi = {}, ut(e).unload(Xi)), Yi[r] = n), l.onreadystatechange = n) : n()
+                        }, i.async ? 4 === l.readyState ? setTimeout(n) : (r = ++Ki, Xi && (Yi || (Yi = {}, ut(e).unload(Xi)), Yi[r] = n), l.onreadystatechange = n) : n()
                     },
                     abort: function() {
                         n && n(t, !0)
@@ -9834,17 +9850,17 @@ function hideVehicleBuildingHelpText(e) {
                     q = this._getNumberOfMonths(e),
                     Z = this._get(e, "showCurrentAtPos"),
                     Y = this._get(e, "stepMonths"),
-                    K = 1 !== q[0] || 1 !== q[1],
-                    G = this._daylightSavingAdjust(e.currentDay ? new Date(e.currentYear, e.currentMonth, e.currentDay) : new Date(9999, 9, 9)),
+                    G = 1 !== q[0] || 1 !== q[1],
+                    K = this._daylightSavingAdjust(e.currentDay ? new Date(e.currentYear, e.currentMonth, e.currentDay) : new Date(9999, 9, 9)),
                     X = this._getMinMaxDate(e, "min"),
                     Q = this._getMinMaxDate(e, "max"),
                     J = e.drawMonth - Z,
                     et = e.drawYear;
                 if (0 > J && (J += 12, et--), Q)
                     for (t = this._daylightSavingAdjust(new Date(Q.getFullYear(), Q.getMonth() - q[0] * q[1] + 1, Q.getDate())), t = X && X > t ? X : t; this._daylightSavingAdjust(new Date(et, J, 1)) > t;) J--, 0 > J && (J = 11, et--);
-                for (e.drawMonth = J, e.drawYear = et, i = this._get(e, "prevText"), i = V ? this.formatDate(i, this._daylightSavingAdjust(new Date(et, J - Y, 1)), this._getFormatConfig(e)) : i, n = this._canAdjustMonth(e, -1, et, J) ? "<a class='ui-datepicker-prev ui-corner-all' data-handler='prev' data-event='click' title='" + i + "'><span class='ui-icon ui-icon-circle-triangle-" + (j ? "e" : "w") + "'>" + i + "</span></a>" : U ? "" : "<a class='ui-datepicker-prev ui-corner-all ui-state-disabled' title='" + i + "'><span class='ui-icon ui-icon-circle-triangle-" + (j ? "e" : "w") + "'>" + i + "</span></a>", s = this._get(e, "nextText"), s = V ? this.formatDate(s, this._daylightSavingAdjust(new Date(et, J + Y, 1)), this._getFormatConfig(e)) : s, o = this._canAdjustMonth(e, 1, et, J) ? "<a class='ui-datepicker-next ui-corner-all' data-handler='next' data-event='click' title='" + s + "'><span class='ui-icon ui-icon-circle-triangle-" + (j ? "w" : "e") + "'>" + s + "</span></a>" : U ? "" : "<a class='ui-datepicker-next ui-corner-all ui-state-disabled' title='" + s + "'><span class='ui-icon ui-icon-circle-triangle-" + (j ? "w" : "e") + "'>" + s + "</span></a>", r = this._get(e, "currentText"), a = this._get(e, "gotoCurrent") && e.currentDay ? G : H, r = V ? this.formatDate(r, a, this._getFormatConfig(e)) : r, l = e.inline ? "" : "<button type='button' class='ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all' data-handler='hide' data-event='click'>" + this._get(e, "closeText") + "</button>", c = W ? "<div class='ui-datepicker-buttonpane ui-widget-content'>" + (j ? l : "") + (this._isInRange(e, a) ? "<button type='button' class='ui-datepicker-current ui-state-default ui-priority-secondary ui-corner-all' data-handler='today' data-event='click'>" + r + "</button>" : "") + (j ? "" : l) + "</div>" : "", u = parseInt(this._get(e, "firstDay"), 10), u = isNaN(u) ? 0 : u, h = this._get(e, "showWeek"), d = this._get(e, "dayNames"), p = this._get(e, "dayNamesMin"), f = this._get(e, "monthNames"), m = this._get(e, "monthNamesShort"), g = this._get(e, "beforeShowDay"), _ = this._get(e, "showOtherMonths"), v = this._get(e, "selectOtherMonths"), b = this._getDefaultDate(e), y = "", x = 0; x < q[0]; x++) {
+                for (e.drawMonth = J, e.drawYear = et, i = this._get(e, "prevText"), i = V ? this.formatDate(i, this._daylightSavingAdjust(new Date(et, J - Y, 1)), this._getFormatConfig(e)) : i, n = this._canAdjustMonth(e, -1, et, J) ? "<a class='ui-datepicker-prev ui-corner-all' data-handler='prev' data-event='click' title='" + i + "'><span class='ui-icon ui-icon-circle-triangle-" + (j ? "e" : "w") + "'>" + i + "</span></a>" : U ? "" : "<a class='ui-datepicker-prev ui-corner-all ui-state-disabled' title='" + i + "'><span class='ui-icon ui-icon-circle-triangle-" + (j ? "e" : "w") + "'>" + i + "</span></a>", s = this._get(e, "nextText"), s = V ? this.formatDate(s, this._daylightSavingAdjust(new Date(et, J + Y, 1)), this._getFormatConfig(e)) : s, o = this._canAdjustMonth(e, 1, et, J) ? "<a class='ui-datepicker-next ui-corner-all' data-handler='next' data-event='click' title='" + s + "'><span class='ui-icon ui-icon-circle-triangle-" + (j ? "w" : "e") + "'>" + s + "</span></a>" : U ? "" : "<a class='ui-datepicker-next ui-corner-all ui-state-disabled' title='" + s + "'><span class='ui-icon ui-icon-circle-triangle-" + (j ? "w" : "e") + "'>" + s + "</span></a>", r = this._get(e, "currentText"), a = this._get(e, "gotoCurrent") && e.currentDay ? K : H, r = V ? this.formatDate(r, a, this._getFormatConfig(e)) : r, l = e.inline ? "" : "<button type='button' class='ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all' data-handler='hide' data-event='click'>" + this._get(e, "closeText") + "</button>", c = W ? "<div class='ui-datepicker-buttonpane ui-widget-content'>" + (j ? l : "") + (this._isInRange(e, a) ? "<button type='button' class='ui-datepicker-current ui-state-default ui-priority-secondary ui-corner-all' data-handler='today' data-event='click'>" + r + "</button>" : "") + (j ? "" : l) + "</div>" : "", u = parseInt(this._get(e, "firstDay"), 10), u = isNaN(u) ? 0 : u, h = this._get(e, "showWeek"), d = this._get(e, "dayNames"), p = this._get(e, "dayNamesMin"), f = this._get(e, "monthNames"), m = this._get(e, "monthNamesShort"), g = this._get(e, "beforeShowDay"), _ = this._get(e, "showOtherMonths"), v = this._get(e, "selectOtherMonths"), b = this._getDefaultDate(e), y = "", x = 0; x < q[0]; x++) {
                     for (k = "", this.maxRows = 4, C = 0; C < q[1]; C++) {
-                        if (T = this._daylightSavingAdjust(new Date(et, J, e.selectedDay)), S = " ui-corner-all", E = "", K) {
+                        if (T = this._daylightSavingAdjust(new Date(et, J, e.selectedDay)), S = " ui-corner-all", E = "", G) {
                             if (E += "<div class='ui-datepicker-group", q[1] > 1) switch (C) {
                                 case 0:
                                     E += " ui-datepicker-group-first", S = " ui-corner-" + (j ? "right" : "left");
@@ -9858,11 +9874,11 @@ function hideVehicleBuildingHelpText(e) {
                             E += "'>"
                         }
                         for (E += "<div class='ui-datepicker-header ui-widget-header ui-helper-clearfix" + S + "'>" + (/all|left/.test(S) && 0 === x ? j ? o : n : "") + (/all|right/.test(S) && 0 === x ? j ? n : o : "") + this._generateMonthYearHeader(e, J, et, X, Q, x > 0 || C > 0, f, m) + "</div><table class='ui-datepicker-calendar'><thead>" + "<tr>", A = h ? "<th class='ui-datepicker-week-col'>" + this._get(e, "weekHeader") + "</th>" : "", w = 0; 7 > w; w++) D = (w + u) % 7, A += "<th scope='col'" + ((w + u + 6) % 7 >= 5 ? " class='ui-datepicker-week-end'" : "") + ">" + "<span title='" + d[D] + "'>" + p[D] + "</span></th>";
-                        for (E += A + "</tr></thead><tbody>", I = this._getDaysInMonth(et, J), et === e.selectedYear && J === e.selectedMonth && (e.selectedDay = Math.min(e.selectedDay, I)), M = (this._getFirstDayOfMonth(et, J) - u + 7) % 7, P = Math.ceil((M + I) / 7), N = K ? this.maxRows > P ? this.maxRows : P : P, this.maxRows = N, $ = this._daylightSavingAdjust(new Date(et, J, 1 - M)), L = 0; N > L; L++) {
-                            for (E += "<tr>", z = h ? "<td class='ui-datepicker-week-col'>" + this._get(e, "calculateWeek")($) + "</td>" : "", w = 0; 7 > w; w++) O = g ? g.apply(e.input ? e.input[0] : null, [$]) : [!0, ""], R = $.getMonth() !== J, F = R && !v || !O[0] || X && X > $ || Q && $ > Q, z += "<td class='" + ((w + u + 6) % 7 >= 5 ? " ui-datepicker-week-end" : "") + (R ? " ui-datepicker-other-month" : "") + ($.getTime() === T.getTime() && J === e.selectedMonth && e._keyEvent || b.getTime() === $.getTime() && b.getTime() === T.getTime() ? " " + this._dayOverClass : "") + (F ? " " + this._unselectableClass + " ui-state-disabled" : "") + (R && !_ ? "" : " " + O[1] + ($.getTime() === G.getTime() ? " " + this._currentClass : "") + ($.getTime() === H.getTime() ? " ui-datepicker-today" : "")) + "'" + (R && !_ || !O[2] ? "" : " title='" + O[2].replace(/'/g, "&#39;") + "'") + (F ? "" : " data-handler='selectDay' data-event='click' data-month='" + $.getMonth() + "' data-year='" + $.getFullYear() + "'") + ">" + (R && !_ ? "&#xa0;" : F ? "<span class='ui-state-default'>" + $.getDate() + "</span>" : "<a class='ui-state-default" + ($.getTime() === H.getTime() ? " ui-state-highlight" : "") + ($.getTime() === G.getTime() ? " ui-state-active" : "") + (R ? " ui-priority-secondary" : "") + "' href='#'>" + $.getDate() + "</a>") + "</td>", $.setDate($.getDate() + 1), $ = this._daylightSavingAdjust($);
+                        for (E += A + "</tr></thead><tbody>", I = this._getDaysInMonth(et, J), et === e.selectedYear && J === e.selectedMonth && (e.selectedDay = Math.min(e.selectedDay, I)), M = (this._getFirstDayOfMonth(et, J) - u + 7) % 7, P = Math.ceil((M + I) / 7), N = G ? this.maxRows > P ? this.maxRows : P : P, this.maxRows = N, $ = this._daylightSavingAdjust(new Date(et, J, 1 - M)), L = 0; N > L; L++) {
+                            for (E += "<tr>", z = h ? "<td class='ui-datepicker-week-col'>" + this._get(e, "calculateWeek")($) + "</td>" : "", w = 0; 7 > w; w++) O = g ? g.apply(e.input ? e.input[0] : null, [$]) : [!0, ""], R = $.getMonth() !== J, F = R && !v || !O[0] || X && X > $ || Q && $ > Q, z += "<td class='" + ((w + u + 6) % 7 >= 5 ? " ui-datepicker-week-end" : "") + (R ? " ui-datepicker-other-month" : "") + ($.getTime() === T.getTime() && J === e.selectedMonth && e._keyEvent || b.getTime() === $.getTime() && b.getTime() === T.getTime() ? " " + this._dayOverClass : "") + (F ? " " + this._unselectableClass + " ui-state-disabled" : "") + (R && !_ ? "" : " " + O[1] + ($.getTime() === K.getTime() ? " " + this._currentClass : "") + ($.getTime() === H.getTime() ? " ui-datepicker-today" : "")) + "'" + (R && !_ || !O[2] ? "" : " title='" + O[2].replace(/'/g, "&#39;") + "'") + (F ? "" : " data-handler='selectDay' data-event='click' data-month='" + $.getMonth() + "' data-year='" + $.getFullYear() + "'") + ">" + (R && !_ ? "&#xa0;" : F ? "<span class='ui-state-default'>" + $.getDate() + "</span>" : "<a class='ui-state-default" + ($.getTime() === H.getTime() ? " ui-state-highlight" : "") + ($.getTime() === K.getTime() ? " ui-state-active" : "") + (R ? " ui-priority-secondary" : "") + "' href='#'>" + $.getDate() + "</a>") + "</td>", $.setDate($.getDate() + 1), $ = this._daylightSavingAdjust($);
                             E += z + "</tr>"
                         }
-                        J++, J > 11 && (J = 0, et++), E += "</tbody></table>" + (K ? "</div>" + (q[0] > 0 && C === q[1] - 1 ? "<div class='ui-datepicker-row-break'></div>" : "") : ""), k += E
+                        J++, J > 11 && (J = 0, et++), E += "</tbody></table>" + (G ? "</div>" + (q[0] > 0 && C === q[1] - 1 ? "<div class='ui-datepicker-row-break'></div>" : "") : ""), k += E
                     }
                     y += k
                 }
@@ -15103,11 +15119,11 @@ function hideVehicleBuildingHelpText(e) {
             t && t.removeChild(e)
         }
 
-        function K(e) {
+        function G(e) {
             for (; e.firstChild;) e.removeChild(e.firstChild)
         }
 
-        function G(e) {
+        function K(e) {
             var t = e.parentNode;
             t && t.lastChild !== e && t.appendChild(e)
         }
@@ -15404,7 +15420,7 @@ function hideVehicleBuildingHelpText(e) {
                     return i = u(a), c ? c(e, i) : new Jn(i);
                 case "MultiPoint":
                     for (s = 0, o = a.length; o > s; s++) i = u(a[s]), l.push(c ? c(e, i) : new Jn(i));
-                    return new Kn(l);
+                    return new Gn(l);
                 case "LineString":
                 case "MultiLineString":
                     return n = Vt(a, "LineString" === r.type ? 0 : 1, u), new ns(n, t);
@@ -15420,7 +15436,7 @@ function hideVehicleBuildingHelpText(e) {
                         }, t);
                         h && l.push(h)
                     }
-                    return new Kn(l);
+                    return new Gn(l);
                 default:
                     throw new Error("Invalid GeoJSON object.")
             }
@@ -15447,10 +15463,10 @@ function hideVehicleBuildingHelpText(e) {
         function Yt(e, i) {
             return e.feature ? t({}, e.feature, {
                 geometry: i
-            }) : Kt(i)
+            }) : Gt(i)
         }
 
-        function Kt(e) {
+        function Gt(e) {
             return "Feature" === e.type || "FeatureCollection" === e.type ? e : {
                 type: "Feature",
                 properties: {},
@@ -15458,7 +15474,7 @@ function hideVehicleBuildingHelpText(e) {
             }
         }
 
-        function Gt(e, t) {
+        function Kt(e, t) {
             return new os(e, t)
         }
 
@@ -15467,7 +15483,7 @@ function hideVehicleBuildingHelpText(e) {
         }
 
         function Qt(e) {
-            return Gi ? new vs(e) : null
+            return Ki ? new vs(e) : null
         }
 
         function Jt(e) {
@@ -15992,8 +16008,8 @@ function hideVehicleBuildingHelpText(e) {
             qi = !window.L_NO_TOUCH && (Vi || "ontouchstart" in window || window.DocumentTouch && document instanceof window.DocumentTouch),
             Zi = Hi && Ii,
             Yi = Hi && Pi,
-            Ki = (window.devicePixelRatio || window.screen.deviceXDPI / window.screen.logicalXDPI) > 1,
-            Gi = !!document.createElement("canvas").getContext,
+            Gi = (window.devicePixelRatio || window.screen.deviceXDPI / window.screen.logicalXDPI) > 1,
+            Ki = !!document.createElement("canvas").getContext,
             Xi = !(!document.createElementNS || !I("svg").createSVGRect),
             Qi = !Xi && function() {
                 try {
@@ -16032,8 +16048,8 @@ function hideVehicleBuildingHelpText(e) {
                 touch: qi,
                 mobileOpera: Zi,
                 mobileGecko: Yi,
-                retina: Ki,
-                canvas: Gi,
+                retina: Gi,
+                canvas: Ki,
                 svg: Xi,
                 vml: Qi
             }),
@@ -16075,8 +16091,8 @@ function hideVehicleBuildingHelpText(e) {
                 getStyle: q,
                 create: Z,
                 remove: Y,
-                empty: K,
-                toFront: G,
+                empty: G,
+                toFront: K,
                 toBack: X,
                 hasClass: Q,
                 addClass: J,
@@ -16532,7 +16548,7 @@ function hideVehicleBuildingHelpText(e) {
                 },
                 _initLayout: function() {
                     var e = this._container;
-                    this._fadeAnimated = this.options.fadeAnimation && Bi, J(e, "leaflet-container" + (qi ? " leaflet-touch" : "") + (Ki ? " leaflet-retina" : "") + (ki ? " leaflet-oldie" : "") + (Ni ? " leaflet-safari" : "") + (this._fadeAnimated ? " leaflet-fade-anim" : ""));
+                    this._fadeAnimated = this.options.fadeAnimation && Bi, J(e, "leaflet-container" + (qi ? " leaflet-touch" : "") + (Gi ? " leaflet-retina" : "") + (ki ? " leaflet-oldie" : "") + (Ni ? " leaflet-safari" : "") + (this._fadeAnimated ? " leaflet-fade-anim" : ""));
                     var t = q(e, "position");
                     "absolute" !== t && "relative" !== t && "fixed" !== t && (e.style.position = "relative"), this._initPanes(), this._initControlPos && this._initControlPos()
                 },
@@ -16885,7 +16901,7 @@ function hideVehicleBuildingHelpText(e) {
                 },
                 _update: function() {
                     if (!this._container) return this;
-                    K(this._baseLayersList), K(this._overlaysList), this._layerControlInputs = [];
+                    G(this._baseLayersList), G(this._overlaysList), this._layerControlInputs = [];
                     var e, t, i, n, s = 0;
                     for (i = 0; i < this._layers.length; i++) n = this._layers[i], this._addItem(n), t = t || n.overlay, e = e || !n.overlay, s += n.overlay ? 0 : 1;
                     return this.options.hideSingleBase && (e = e && s > 1, this._baseLayersList.style.display = e ? "" : "none"), this._separator.style.display = t && e ? "" : "none", this
@@ -17357,7 +17373,7 @@ function hideVehicleBuildingHelpText(e) {
                     return n(e)
                 }
             }),
-            Kn = Yn.extend({
+            Gn = Yn.extend({
                 addLayer: function(e) {
                     return this.hasLayer(e) ? this : (e.addEventParent(this), Yn.prototype.addLayer.call(this, e), this.fire("layeradd", {
                         layer: e
@@ -17386,7 +17402,7 @@ function hideVehicleBuildingHelpText(e) {
                     return e
                 }
             }),
-            Gn = v.extend({
+            Kn = v.extend({
                 options: {
                     popupAnchor: [0, 0],
                     tooltipAnchor: [0, 0]
@@ -17421,10 +17437,10 @@ function hideVehicleBuildingHelpText(e) {
                     return t = t || document.createElement("img"), t.src = e, t
                 },
                 _getIconUrl: function(e) {
-                    return Ki && this.options[e + "RetinaUrl"] || this.options[e + "Url"]
+                    return Gi && this.options[e + "RetinaUrl"] || this.options[e + "Url"]
                 }
             }),
-            Xn = Gn.extend({
+            Xn = Kn.extend({
                 options: {
                     iconUrl: "marker-icon.png",
                     iconRetinaUrl: "marker-icon-2x.png",
@@ -17436,7 +17452,7 @@ function hideVehicleBuildingHelpText(e) {
                     shadowSize: [41, 41]
                 },
                 _getIconUrl: function(e) {
-                    return Xn.imagePath || (Xn.imagePath = this._detectIconPath()), (this.options.imagePath || Xn.imagePath) + Gn.prototype._getIconUrl.call(this, e)
+                    return Xn.imagePath || (Xn.imagePath = this._detectIconPath()), (this.options.imagePath || Xn.imagePath) + Kn.prototype._getIconUrl.call(this, e)
                 },
                 _detectIconPath: function() {
                     var e = Z("div", "leaflet-default-icon-path", document.body),
@@ -17896,7 +17912,7 @@ function hideVehicleBuildingHelpText(e) {
                     return c || ns.prototype._containsPoint.call(this, e, !0)
                 }
             }),
-            os = Kn.extend({
+            os = Gn.extend({
                 initialize: function(e, t) {
                     u(this, t), this._layers = {}, e && this.addData(e)
                 },
@@ -17909,7 +17925,7 @@ function hideVehicleBuildingHelpText(e) {
                     var o = this.options;
                     if (o.filter && !o.filter(e)) return this;
                     var r = Wt(e, o);
-                    return r ? (r.feature = Kt(e), r.defaultOptions = r.options, this.resetStyle(r), o.onEachFeature && o.onEachFeature(e, r), this.addLayer(r)) : this
+                    return r ? (r.feature = Gt(e), r.defaultOptions = r.options, this.resetStyle(r), o.onEachFeature && o.onEachFeature(e, r), this.addLayer(r)) : this
                 },
                 resetStyle: function(e) {
                     return e.options = t({}, e.defaultOptions), this._setLayerStyle(e, this.options.style), this
@@ -17970,7 +17986,7 @@ function hideVehicleBuildingHelpText(e) {
                         var s = t.toGeoJSON(e);
                         if (i) n.push(s.geometry);
                         else {
-                            var o = Kt(s);
+                            var o = Gt(s);
                             "FeatureCollection" === o.type ? n.push.apply(n, o.features) : n.push(o)
                         }
                     }
@@ -17983,7 +17999,7 @@ function hideVehicleBuildingHelpText(e) {
                 }
             }
         });
-        var as = Gt,
+        var as = Kt,
             ls = Zn.extend({
                 options: {
                     opacity: 1,
@@ -18010,7 +18026,7 @@ function hideVehicleBuildingHelpText(e) {
                     return e.opacity && this.setOpacity(e.opacity), this
                 },
                 bringToFront: function() {
-                    return this._map && G(this._image), this
+                    return this._map && K(this._image), this
                 },
                 bringToBack: function() {
                     return this._map && X(this._image), this
@@ -18129,7 +18145,7 @@ function hideVehicleBuildingHelpText(e) {
                     return !!this._map && this._map.hasLayer(this)
                 },
                 bringToFront: function() {
-                    return this._map && G(this._container), this
+                    return this._map && K(this._container), this
                 },
                 bringToBack: function() {
                     return this._map && X(this._container), this
@@ -18277,7 +18293,7 @@ function hideVehicleBuildingHelpText(e) {
                 }), this._popupHandlersAdded = !1, this._popup = null), this
             },
             openPopup: function(e, t) {
-                if (e instanceof Zn || (t = e, e = this), e instanceof Kn)
+                if (e instanceof Zn || (t = e, e = this), e instanceof Gn)
                     for (var i in this._layers) {
                         e = this._layers[i];
                         break
@@ -18399,7 +18415,7 @@ function hideVehicleBuildingHelpText(e) {
                 }
             },
             openTooltip: function(e, t) {
-                if (e instanceof Zn || (t = e, e = this), e instanceof Kn)
+                if (e instanceof Zn || (t = e, e = this), e instanceof Gn)
                     for (var i in this._layers) {
                         e = this._layers[i];
                         break
@@ -18430,7 +18446,7 @@ function hideVehicleBuildingHelpText(e) {
                 this._tooltip.options.sticky && e.originalEvent && (t = this._map.mouseEventToContainerPoint(e.originalEvent), i = this._map.containerPointToLayerPoint(t), n = this._map.layerPointToLatLng(i)), this._tooltip.setLatLng(n)
             }
         });
-        var ps = Gn.extend({
+        var ps = Kn.extend({
             options: {
                 iconSize: [12, 12],
                 html: !1,
@@ -18450,7 +18466,7 @@ function hideVehicleBuildingHelpText(e) {
                 return null
             }
         });
-        Gn.Default = Xn;
+        Kn.Default = Xn;
         var fs = Zn.extend({
                 options: {
                     tileSize: 256,
@@ -18482,7 +18498,7 @@ function hideVehicleBuildingHelpText(e) {
                     this._removeAllTiles(), Y(this._container), e._removeZoomLimit(this), this._container = null, this._tileZoom = void 0
                 },
                 bringToFront: function() {
-                    return this._map && (G(this._container), this._setAutoZIndex(Math.max)), this
+                    return this._map && (K(this._container), this._setAutoZIndex(Math.max)), this
                 },
                 bringToBack: function() {
                     return this._map && (X(this._container), this._setAutoZIndex(Math.min)), this
@@ -18784,7 +18800,7 @@ function hideVehicleBuildingHelpText(e) {
                     crossOrigin: !1
                 },
                 initialize: function(e, t) {
-                    this._url = e, (t = u(this, t)).detectRetina && Ki && t.maxZoom > 0 && (t.tileSize = Math.floor(t.tileSize / 2), t.zoomReverse ? (t.zoomOffset--, t.minZoom++) : (t.zoomOffset++, t.maxZoom--), t.minZoom = Math.max(0, t.minZoom)), "string" == typeof t.subdomains && (t.subdomains = t.subdomains.split("")), Si || this.on("tileunload", this._onTileRemove)
+                    this._url = e, (t = u(this, t)).detectRetina && Gi && t.maxZoom > 0 && (t.tileSize = Math.floor(t.tileSize / 2), t.zoomReverse ? (t.zoomOffset--, t.minZoom++) : (t.zoomOffset++, t.maxZoom--), t.minZoom = Math.max(0, t.minZoom)), "string" == typeof t.subdomains && (t.subdomains = t.subdomains.split("")), Si || this.on("tileunload", this._onTileRemove)
                 },
                 setUrl: function(e, t) {
                     return this._url === e && void 0 === t && (t = !0), this._url = e, t || this.redraw(), this
@@ -18795,7 +18811,7 @@ function hideVehicleBuildingHelpText(e) {
                 },
                 getTileUrl: function(e) {
                     var i = {
-                        r: Ki ? "@2x" : "",
+                        r: Gi ? "@2x" : "",
                         s: this._getSubdomain(e),
                         x: e.x,
                         y: e.y,
@@ -18858,7 +18874,7 @@ function hideVehicleBuildingHelpText(e) {
                     this._url = e;
                     var n = t({}, this.defaultWmsParams);
                     for (var s in i) s in this.options || (n[s] = i[s]);
-                    var o = (i = u(this, i)).detectRetina && Ki ? 2 : 1,
+                    var o = (i = u(this, i)).detectRetina && Gi ? 2 : 1,
                         r = this.getTileSize();
                     n.width = r.x * o, n.height = r.y * o, this.wmsParams = n
                 },
@@ -18970,8 +18986,8 @@ function hideVehicleBuildingHelpText(e) {
                         var e = this._bounds,
                             t = this._container,
                             i = e.getSize(),
-                            n = Ki ? 2 : 1;
-                        at(t, e.min), t.width = n * i.x, t.height = n * i.y, t.style.width = i.x + "px", t.style.height = i.y + "px", Ki && this._ctx.scale(2, 2), this._ctx.translate(-e.min.x, -e.min.y), this.fire("update")
+                            n = Gi ? 2 : 1;
+                        at(t, e.min), t.width = n * i.x, t.height = n * i.y, t.style.width = i.x + "px", t.style.height = i.y + "px", Gi && this._ctx.scale(2, 2), this._ctx.translate(-e.min.x, -e.min.y), this.fire("update")
                     }
                 },
                 _reset: function() {
@@ -19154,7 +19170,7 @@ function hideVehicleBuildingHelpText(e) {
                     e._path.v = t
                 },
                 _bringToFront: function(e) {
-                    G(e._container)
+                    K(e._container)
                 },
                 _bringToBack: function(e) {
                     X(e._container)
@@ -19216,7 +19232,7 @@ function hideVehicleBuildingHelpText(e) {
                     e._path.setAttribute("d", t)
                 },
                 _bringToFront: function(e) {
-                    G(e._path)
+                    K(e._path)
                 },
                 _bringToBack: function(e) {
                     X(e._path)
@@ -19249,7 +19265,7 @@ function hideVehicleBuildingHelpText(e) {
                 return e = T(e), [e.getSouthWest(), e.getNorthWest(), e.getNorthEast(), e.getSouthEast()]
             }
         });
-        xs.create = ws, xs.pointsToPath = M, os.geometryToLayer = Wt, os.coordsToLatLng = Ut, os.coordsToLatLngs = Vt, os.latLngToCoords = qt, os.latLngsToCoords = Zt, os.getFeature = Yt, os.asFeature = Kt, Tn.mergeOptions({
+        xs.create = ws, xs.pointsToPath = M, os.geometryToLayer = Wt, os.coordsToLatLng = Ut, os.coordsToLatLngs = Vt, os.latLngToCoords = qt, os.latLngsToCoords = Zt, os.getFeature = Yt, os.asFeature = Gt, Tn.mergeOptions({
             boxZoom: !0
         });
         var Cs = Pn.extend({
@@ -19635,10 +19651,10 @@ function hideVehicleBuildingHelpText(e) {
                 this._moved && this._zooming ? (this._zooming = !1, _(this._animRequest), gt(document, "touchmove", this._onTouchMove), gt(document, "touchend", this._onTouchEnd), this._map.options.zoomAnimation ? this._map._animateZoom(this._center, this._map._limitZoom(this._zoom), !0, this._map.options.zoomSnap) : this._map._resetView(this._center, this._map._limitZoom(this._zoom))) : this._zooming = !1
             }
         });
-        Tn.addInitHook("addHandler", "touchZoom", Is), Tn.BoxZoom = Cs, Tn.DoubleClickZoom = Ts, Tn.Drag = Ss, Tn.Keyboard = Es, Tn.ScrollWheelZoom = As, Tn.Tap = Ds, Tn.TouchZoom = Is, Object.freeze = ei, e.version = "1.4.0+HEAD.3337f36", e.Control = Sn, e.control = En, e.Browser = Ji, e.Evented = hi, e.Mixin = $n, e.Util = ci, e.Class = v, e.Handler = Pn, e.extend = t, e.bind = i, e.stamp = n, e.setOptions = u, e.DomEvent = kn, e.DomUtil = bn, e.PosAnimation = Cn, e.Draggable = Rn, e.LineUtil = Fn, e.PolyUtil = Bn, e.Point = y, e.point = w, e.Bounds = x, e.bounds = k, e.Transformation = A, e.transformation = D, e.Projection = Wn, e.LatLng = S, e.latLng = E, e.LatLngBounds = C, e.latLngBounds = T, e.CRS = pi, e.GeoJSON = os, e.geoJSON = Gt, e.geoJson = as, e.Layer = Zn, e.LayerGroup = Yn, e.layerGroup = function(e, t) {
+        Tn.addInitHook("addHandler", "touchZoom", Is), Tn.BoxZoom = Cs, Tn.DoubleClickZoom = Ts, Tn.Drag = Ss, Tn.Keyboard = Es, Tn.ScrollWheelZoom = As, Tn.Tap = Ds, Tn.TouchZoom = Is, Object.freeze = ei, e.version = "1.4.0+HEAD.3337f36", e.Control = Sn, e.control = En, e.Browser = Ji, e.Evented = hi, e.Mixin = $n, e.Util = ci, e.Class = v, e.Handler = Pn, e.extend = t, e.bind = i, e.stamp = n, e.setOptions = u, e.DomEvent = kn, e.DomUtil = bn, e.PosAnimation = Cn, e.Draggable = Rn, e.LineUtil = Fn, e.PolyUtil = Bn, e.Point = y, e.point = w, e.Bounds = x, e.bounds = k, e.Transformation = A, e.transformation = D, e.Projection = Wn, e.LatLng = S, e.latLng = E, e.LatLngBounds = C, e.latLngBounds = T, e.CRS = pi, e.GeoJSON = os, e.geoJSON = Kt, e.geoJson = as, e.Layer = Zn, e.LayerGroup = Yn, e.layerGroup = function(e, t) {
             return new Yn(e, t)
-        }, e.FeatureGroup = Kn, e.featureGroup = function(e) {
-            return new Kn(e)
+        }, e.FeatureGroup = Gn, e.featureGroup = function(e) {
+            return new Gn(e)
         }, e.ImageOverlay = ls, e.imageOverlay = function(e, t, i) {
             return new ls(e, t, i)
         }, e.VideoOverlay = cs, e.videoOverlay = function(e, t, i) {
@@ -19647,8 +19663,8 @@ function hideVehicleBuildingHelpText(e) {
             return new hs(e, t)
         }, e.Tooltip = ds, e.tooltip = function(e, t) {
             return new ds(e, t)
-        }, e.Icon = Gn, e.icon = function(e) {
-            return new Gn(e)
+        }, e.Icon = Kn, e.icon = function(e) {
+            return new Kn(e)
         }, e.DivIcon = ps, e.divIcon = function(e) {
             return new ps(e)
         }, e.Marker = Jn, e.marker = function(e, t) {
@@ -22520,7 +22536,7 @@ function(e) {
         return i.setStartBefore(e), i.setEndAfter(t), i.extractContents()
     }
 
-    function K(e) {
+    function G(e) {
         for (var t = 0, i = 0; e;) t += e.offsetLeft, i += e.offsetTop, e = e.offsetParent;
         return {
             left: t,
@@ -22528,7 +22544,7 @@ function(e) {
         }
     }
 
-    function G(e, t) {
+    function K(e, t) {
         var i, n, s = e.style;
         if (pt[t] || (pt[t] = L(t)), t = pt[t], n = s[t], "textAlign" === t) {
             if (i = s.direction, n = n || y(e, t), y(e.parentNode, t) === n || "block" !== y(e, "display") || x(e, "hr,th")) return "";
@@ -22538,7 +22554,7 @@ function(e) {
     }
 
     function X(e, t, i) {
-        var n = G(e, t);
+        var n = K(e, t);
         return n ? !i || n === i || Array.isArray(i) && i.indexOf(n) > -1 : !1
     }
 
@@ -22801,7 +22817,7 @@ function(e) {
     }
 
     function lt(e, t) {
-        var i, r, l, g, k, C, S, L, z, R, W, V, q, Y, G, X, Q, et, it, dt, pt, _t, bt, yt, Ct, Tt, St, At, Dt, It, zt, Ot, Rt, Ft, Bt, Ht, jt, Wt, Ut, Vt, qt, Zt, Yt, Kt, Gt, Xt, Qt, Jt, ei, ti, ii, ni, si, oi, ri, ai, li, ci, ui, hi, di, pi, fi, mi = this,
+        var i, r, l, g, k, C, S, L, z, R, W, V, q, Y, K, X, Q, et, it, dt, pt, _t, bt, yt, Ct, Tt, St, At, Dt, It, zt, Ot, Rt, Ft, Bt, Ht, jt, Wt, Ut, Vt, qt, Zt, Yt, Gt, Kt, Xt, Qt, Jt, ei, ti, ii, ni, si, oi, ri, ai, li, ci, ui, hi, di, pi, fi, mi = this,
             gi = {},
             _i = [],
             vi = [],
@@ -22817,13 +22833,13 @@ function(e) {
             var t = lt.formats[xi.format];
             i = t ? new t : {}, "init" in i && i.init.call(mi), Ot(), Wt(), Ft(), zt(), Bt(), Ht(), kt || mi.toggleSourceMode(), ti();
             var n = function() {
-                f(Mt, "load", n), xi.autofocus && ri(), fi(), ni(), G.call("ready"), "onReady" in i && i.onReady.call(mi)
+                f(Mt, "load", n), xi.autofocus && ri(), fi(), ni(), K.call("ready"), "onReady" in i && i.onReady.call(mi)
             };
             p(Mt, "load", n), "complete" === Pt.readyState && n()
         }, Ot = function() {
             var e = xi.plugins;
-            e = e ? e.toString().split(",") : [], G = new nt(mi), e.forEach(function(e) {
-                G.register(e.trim())
+            e = e ? e.toString().split(",") : [], K = new nt(mi), e.forEach(function(e) {
+                K.register(e.trim())
             })
         }, Rt = function() {
             var e;
@@ -22851,11 +22867,11 @@ function(e) {
                 i = "compositionstart compositionend",
                 n = "keydown keyup keypress focus blur contextmenu",
                 s = "onselectionchange" in S ? "selectionchange" : "keyup focus blur contextmenu mouseup touchend click";
-            p(Pt, "click", Jt), t && (p(t, "reset", Kt), p(t, "submit", mi.updateOriginal, gt)), p(C, "keypress", Yt), p(C, "keydown", qt), p(C, "keydown", Zt), p(C, "keyup", ni), p(C, "blur", hi), p(C, "keyup", di), p(C, "paste", Ut), p(C, i, Xt), p(C, s, si), p(C, n, Qt), xi.emoticonsCompat && Mt.getSelection && p(C, "keyup", li), p(C, "blur", function() {
+            p(Pt, "click", Jt), t && (p(t, "reset", Gt), p(t, "submit", mi.updateOriginal, gt)), p(C, "keypress", Yt), p(C, "keydown", qt), p(C, "keydown", Zt), p(C, "keyup", ni), p(C, "blur", hi), p(C, "keyup", di), p(C, "paste", Ut), p(C, i, Xt), p(C, s, si), p(C, n, Qt), xi.emoticonsCompat && Mt.getSelection && p(C, "keyup", li), p(C, "blur", function() {
                 mi.val() || A(C, "placeholder")
             }), p(C, "focus", function() {
                 D(C, "placeholder")
-            }), p(L, "blur", hi), p(L, "keyup", di), p(L, "keydown", qt), p(L, i, Xt), p(L, n, Qt), p(S, "mousedown", Gt), p(S, s, si), p(S, "beforedeactivate keyup mouseup", It), p(S, "keyup", ni), p(S, "focus", function() {
+            }), p(L, "blur", hi), p(L, "keyup", di), p(L, "keydown", qt), p(L, i, Xt), p(L, n, Qt), p(S, "mousedown", Kt), p(S, s, si), p(S, "beforedeactivate keyup mouseup", It), p(S, "keyup", ni), p(S, "focus", function() {
                 R = null
             }), p(r, "selectionchanged", oi), p(r, "selectionchanged", ti), p(r, "selectionchanged valuechanged nodechanged pasteraw paste", Qt)
         }, Ft = function() {
@@ -22988,10 +23004,10 @@ function(e) {
                 t || -1 === _t.max || (a = Math.min(a, _t.max)), mi.height(Math.ceil(Math.max(a, _t.min)))
             }
         }, mi.destroy = function() {
-            if (G) {
-                G.destroy(), Y = null, R = null, G = null, z && u(z), f(Pt, "click", Jt);
+            if (K) {
+                K.destroy(), Y = null, R = null, K = null, z && u(z), f(Pt, "click", Jt);
                 var t = e.form;
-                t && (f(t, "reset", Kt), f(t, "submit", mi.updateOriginal)), u(L), u(l), u(r), delete e._sceditor, v(e), e.required = dt
+                t && (f(t, "reset", Gt), f(t, "submit", mi.updateOriginal)), u(L), u(l), u(r), delete e._sceditor, v(e), e.required = dt
             }
         }, mi.createDropDown = function(e, t, i, s) {
             var l, c = "sceditor-" + t;
@@ -23047,16 +23063,16 @@ function(e) {
             }
         }, Vt = function(e) {
             var t = a("div", {}, S);
-            G.call("pasteRaw", e), N(r, "pasteraw", e), e.html ? (t.innerHTML = e.html, U(t)) : t.innerHTML = J(e.text || "");
+            K.call("pasteRaw", e), N(r, "pasteraw", e), e.html ? (t.innerHTML = e.html, U(t)) : t.innerHTML = J(e.text || "");
             var n = {
                 val: t.innerHTML
             };
-            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, S, X)), G.call("paste", n), N(r, "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, X)), G.call("pasteHtml", n), mi.wysiwygEditorInsertHtml(n.val, null, !0)
+            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, S, X)), K.call("paste", n), N(r, "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, X)), K.call("pasteHtml", n), mi.wysiwygEditorInsertHtml(n.val, null, !0)
         }, mi.closeDropDown = function(e) {
             z && (u(z), z = null), e === !0 && mi.focus()
         }, mi.wysiwygEditorInsertHtml = function(e, t, i) {
             var n, s, o, r = P(g);
-            mi.focus(), (i || !c(Q, "code")) && (Y.insertHTML(e, t), Y.saveRange(), At(), n = d(C, "#sceditor-end-marker")[0], v(n), s = C.scrollTop, o = K(n).top + 1.5 * n.offsetHeight - r, _(n), (o > s || s > o + r) && (C.scrollTop = o), ui(!1), Y.restoreRange(), ni())
+            mi.focus(), (i || !c(Q, "code")) && (Y.insertHTML(e, t), Y.saveRange(), At(), n = d(C, "#sceditor-end-marker")[0], v(n), s = C.scrollTop, o = G(n).top + 1.5 * n.offsetHeight - r, _(n), (o > s || s > o + r) && (C.scrollTop = o), ui(!1), Y.restoreRange(), ni())
         }, mi.wysiwygEditorInsertText = function(e, t) {
             mi.wysiwygEditorInsertHtml(J(e), J(t))
         }, mi.insertText = function(e, t) {
@@ -23189,9 +23205,9 @@ function(e) {
                 }
                 return 3 === e.nodeType && !/^\s*$/.test(e.nodeValue) || x(e, "br") ? !1 : void 0
             })
-        }, Kt = function() {
-            mi.val(e.value)
         }, Gt = function() {
+            mi.val(e.value)
+        }, Kt = function() {
             mi.closeDropDown(), R = null
         }, mi._ = function() {
             var e, t = arguments;
@@ -23199,7 +23215,7 @@ function(e) {
                 return t[n - 0 + 1] !== e ? t[n - 0 + 1] : "{" + n + "}"
             })
         }, Qt = function(e) {
-            G && G.call(e.type + "Event", e, mi);
+            K && K.call(e.type + "Event", e, mi);
             var t = (e.target === L ? "scesrc" : "scewys") + e.type;
             gi[t] && gi[t].forEach(function(t) {
                 t.call(mi, e)
@@ -23394,7 +23410,7 @@ function(e) {
         }, mi.clearBlockFormatting = function(e) {
             return e = e || ci(), !e || x(e, "body") ? mi : (Y.saveRange(), e.className = "", R = null, m(e, "style", ""), x(e, "p,div,td") || B(e, "p"), Y.restoreRange(), mi)
         }, ui = function(e) {
-            if (G && (G.hasHandler("valuechangedEvent") || ui.hasHandler)) {
+            if (K && (K.hasHandler("valuechangedEvent") || ui.hasHandler)) {
                 var t, i = mi.sourceMode(),
                     n = !i && Y.hasSelection();
                 W = !1, e = e !== !1 && !S.getElementById("sceditor-start-marker"), V && (clearTimeout(V), V = !1), n && e && Y.saveRange(), t = i ? L.value : C.innerHTML, t !== ui.lastVal && (ui.lastVal = t, N(r, "valuechanged", {
@@ -24070,8 +24086,8 @@ function(e) {
                 getSibling: q,
                 removeWhiteSpace: Z,
                 extractContents: Y,
-                getOffset: K,
-                getStyle: G,
+                getOffset: G,
+                getStyle: K,
                 hasStyle: X
             },
             locale: lt.locale,
@@ -24425,7 +24441,7 @@ function(e) {
         return i.setStartBefore(e), i.setEndAfter(t), i.extractContents()
     }
 
-    function K(e) {
+    function G(e) {
         for (var t = 0, i = 0; e;) t += e.offsetLeft, i += e.offsetTop, e = e.offsetParent;
         return {
             left: t,
@@ -24433,7 +24449,7 @@ function(e) {
         }
     }
 
-    function G(e, t) {
+    function K(e, t) {
         var i, n, s = e.style;
         if (pt[t] || (pt[t] = L(t)), t = pt[t], n = s[t], "textAlign" === t) {
             if (i = s.direction, n = n || y(e, t), y(e.parentNode, t) === n || "block" !== y(e, "display") || x(e, "hr,th")) return "";
@@ -24443,7 +24459,7 @@ function(e) {
     }
 
     function X(e, t, i) {
-        var n = G(e, t);
+        var n = K(e, t);
         return n ? !i || n === i || Array.isArray(i) && i.indexOf(n) > -1 : !1
     }
 
@@ -24706,7 +24722,7 @@ function(e) {
     }
 
     function lt(e, t) {
-        var i, r, l, g, k, C, S, L, z, R, W, V, q, Y, G, X, Q, et, it, dt, pt, _t, bt, yt, Ct, Tt, St, At, Dt, It, zt, Ot, Rt, Ft, Bt, Ht, jt, Wt, Ut, Vt, qt, Zt, Yt, Kt, Gt, Xt, Qt, Jt, ei, ti, ii, ni, si, oi, ri, ai, li, ci, ui, hi, di, pi, fi, mi = this,
+        var i, r, l, g, k, C, S, L, z, R, W, V, q, Y, K, X, Q, et, it, dt, pt, _t, bt, yt, Ct, Tt, St, At, Dt, It, zt, Ot, Rt, Ft, Bt, Ht, jt, Wt, Ut, Vt, qt, Zt, Yt, Gt, Kt, Xt, Qt, Jt, ei, ti, ii, ni, si, oi, ri, ai, li, ci, ui, hi, di, pi, fi, mi = this,
             gi = {},
             _i = [],
             vi = [],
@@ -24722,13 +24738,13 @@ function(e) {
             var t = lt.formats[xi.format];
             i = t ? new t : {}, "init" in i && i.init.call(mi), Ot(), Wt(), Ft(), zt(), Bt(), Ht(), kt || mi.toggleSourceMode(), ti();
             var n = function() {
-                f(Mt, "load", n), xi.autofocus && ri(), fi(), ni(), G.call("ready"), "onReady" in i && i.onReady.call(mi)
+                f(Mt, "load", n), xi.autofocus && ri(), fi(), ni(), K.call("ready"), "onReady" in i && i.onReady.call(mi)
             };
             p(Mt, "load", n), "complete" === Pt.readyState && n()
         }, Ot = function() {
             var e = xi.plugins;
-            e = e ? e.toString().split(",") : [], G = new nt(mi), e.forEach(function(e) {
-                G.register(e.trim())
+            e = e ? e.toString().split(",") : [], K = new nt(mi), e.forEach(function(e) {
+                K.register(e.trim())
             })
         }, Rt = function() {
             var e;
@@ -24756,11 +24772,11 @@ function(e) {
                 i = "compositionstart compositionend",
                 n = "keydown keyup keypress focus blur contextmenu",
                 s = "onselectionchange" in S ? "selectionchange" : "keyup focus blur contextmenu mouseup touchend click";
-            p(Pt, "click", Jt), t && (p(t, "reset", Kt), p(t, "submit", mi.updateOriginal, gt)), p(C, "keypress", Yt), p(C, "keydown", qt), p(C, "keydown", Zt), p(C, "keyup", ni), p(C, "blur", hi), p(C, "keyup", di), p(C, "paste", Ut), p(C, i, Xt), p(C, s, si), p(C, n, Qt), xi.emoticonsCompat && Mt.getSelection && p(C, "keyup", li), p(C, "blur", function() {
+            p(Pt, "click", Jt), t && (p(t, "reset", Gt), p(t, "submit", mi.updateOriginal, gt)), p(C, "keypress", Yt), p(C, "keydown", qt), p(C, "keydown", Zt), p(C, "keyup", ni), p(C, "blur", hi), p(C, "keyup", di), p(C, "paste", Ut), p(C, i, Xt), p(C, s, si), p(C, n, Qt), xi.emoticonsCompat && Mt.getSelection && p(C, "keyup", li), p(C, "blur", function() {
                 mi.val() || A(C, "placeholder")
             }), p(C, "focus", function() {
                 D(C, "placeholder")
-            }), p(L, "blur", hi), p(L, "keyup", di), p(L, "keydown", qt), p(L, i, Xt), p(L, n, Qt), p(S, "mousedown", Gt), p(S, s, si), p(S, "beforedeactivate keyup mouseup", It), p(S, "keyup", ni), p(S, "focus", function() {
+            }), p(L, "blur", hi), p(L, "keyup", di), p(L, "keydown", qt), p(L, i, Xt), p(L, n, Qt), p(S, "mousedown", Kt), p(S, s, si), p(S, "beforedeactivate keyup mouseup", It), p(S, "keyup", ni), p(S, "focus", function() {
                 R = null
             }), p(r, "selectionchanged", oi), p(r, "selectionchanged", ti), p(r, "selectionchanged valuechanged nodechanged pasteraw paste", Qt)
         }, Ft = function() {
@@ -24893,10 +24909,10 @@ function(e) {
                 t || -1 === _t.max || (a = Math.min(a, _t.max)), mi.height(Math.ceil(Math.max(a, _t.min)))
             }
         }, mi.destroy = function() {
-            if (G) {
-                G.destroy(), Y = null, R = null, G = null, z && u(z), f(Pt, "click", Jt);
+            if (K) {
+                K.destroy(), Y = null, R = null, K = null, z && u(z), f(Pt, "click", Jt);
                 var t = e.form;
-                t && (f(t, "reset", Kt), f(t, "submit", mi.updateOriginal)), u(L), u(l), u(r), delete e._sceditor, v(e), e.required = dt
+                t && (f(t, "reset", Gt), f(t, "submit", mi.updateOriginal)), u(L), u(l), u(r), delete e._sceditor, v(e), e.required = dt
             }
         }, mi.createDropDown = function(e, t, i, s) {
             var l, c = "sceditor-" + t;
@@ -24952,16 +24968,16 @@ function(e) {
             }
         }, Vt = function(e) {
             var t = a("div", {}, S);
-            G.call("pasteRaw", e), N(r, "pasteraw", e), e.html ? (t.innerHTML = e.html, U(t)) : t.innerHTML = J(e.text || "");
+            K.call("pasteRaw", e), N(r, "pasteraw", e), e.html ? (t.innerHTML = e.html, U(t)) : t.innerHTML = J(e.text || "");
             var n = {
                 val: t.innerHTML
             };
-            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, S, X)), G.call("paste", n), N(r, "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, X)), G.call("pasteHtml", n), mi.wysiwygEditorInsertHtml(n.val, null, !0)
+            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, S, X)), K.call("paste", n), N(r, "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, X)), K.call("pasteHtml", n), mi.wysiwygEditorInsertHtml(n.val, null, !0)
         }, mi.closeDropDown = function(e) {
             z && (u(z), z = null), e === !0 && mi.focus()
         }, mi.wysiwygEditorInsertHtml = function(e, t, i) {
             var n, s, o, r = P(g);
-            mi.focus(), (i || !c(Q, "code")) && (Y.insertHTML(e, t), Y.saveRange(), At(), n = d(C, "#sceditor-end-marker")[0], v(n), s = C.scrollTop, o = K(n).top + 1.5 * n.offsetHeight - r, _(n), (o > s || s > o + r) && (C.scrollTop = o), ui(!1), Y.restoreRange(), ni())
+            mi.focus(), (i || !c(Q, "code")) && (Y.insertHTML(e, t), Y.saveRange(), At(), n = d(C, "#sceditor-end-marker")[0], v(n), s = C.scrollTop, o = G(n).top + 1.5 * n.offsetHeight - r, _(n), (o > s || s > o + r) && (C.scrollTop = o), ui(!1), Y.restoreRange(), ni())
         }, mi.wysiwygEditorInsertText = function(e, t) {
             mi.wysiwygEditorInsertHtml(J(e), J(t))
         }, mi.insertText = function(e, t) {
@@ -25094,9 +25110,9 @@ function(e) {
                 }
                 return 3 === e.nodeType && !/^\s*$/.test(e.nodeValue) || x(e, "br") ? !1 : void 0
             })
-        }, Kt = function() {
-            mi.val(e.value)
         }, Gt = function() {
+            mi.val(e.value)
+        }, Kt = function() {
             mi.closeDropDown(), R = null
         }, mi._ = function() {
             var e, t = arguments;
@@ -25104,7 +25120,7 @@ function(e) {
                 return t[n - 0 + 1] !== e ? t[n - 0 + 1] : "{" + n + "}"
             })
         }, Qt = function(e) {
-            G && G.call(e.type + "Event", e, mi);
+            K && K.call(e.type + "Event", e, mi);
             var t = (e.target === L ? "scesrc" : "scewys") + e.type;
             gi[t] && gi[t].forEach(function(t) {
                 t.call(mi, e)
@@ -25299,7 +25315,7 @@ function(e) {
         }, mi.clearBlockFormatting = function(e) {
             return e = e || ci(), !e || x(e, "body") ? mi : (Y.saveRange(), e.className = "", R = null, m(e, "style", ""), x(e, "p,div,td") || B(e, "p"), Y.restoreRange(), mi)
         }, ui = function(e) {
-            if (G && (G.hasHandler("valuechangedEvent") || ui.hasHandler)) {
+            if (K && (K.hasHandler("valuechangedEvent") || ui.hasHandler)) {
                 var t, i = mi.sourceMode(),
                     n = !i && Y.hasSelection();
                 W = !1, e = e !== !1 && !S.getElementById("sceditor-start-marker"), V && (clearTimeout(V), V = !1), n && e && Y.saveRange(), t = i ? L.value : C.innerHTML, t !== ui.lastVal && (ui.lastVal = t, N(r, "valuechanged", {
@@ -25975,8 +25991,8 @@ function(e) {
                 getSibling: q,
                 removeWhiteSpace: Z,
                 extractContents: Y,
-                getOffset: K,
-                getStyle: G,
+                getOffset: G,
+                getStyle: K,
                 hasStyle: X
             },
             locale: lt.locale,
