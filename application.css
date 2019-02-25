@@ -5224,7 +5224,7 @@ lightbox_background {
                                             width: 100 %
                                         }.vehicle_overview.list - group {
                                             margin: 0 0 10 px 0
-                                        }.search_input_field {
+                                        }.search_input_field, #search_input_field_missions {
                                             background - image: url(/images/search_5a5753.svg);
                                             background - repeat: no - repeat;
                                             background - size: auto 100 % ;
@@ -6415,21 +6415,25 @@ lightbox_background {
                                                         width: 30 px;height: 30 px
                                                     }.mission_vehicle_label {
                                                         display: block;width: 100 % ;margin - bottom: 0
+                                                    }.searchHelperInvisble, .mission_alliance_distance_hide, .mission_deleted {
+                                                        display: none
+                                                    }#
+                                                    search_input_field_missions {
+                                                        width: 100 % ;font - size: 12 px
                                                     }
-                                                    /*
-                                                     * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
-                                                     *
-                                                     * Copyright 2013-2017 bootstrap-select
-                                                     * Licensed under MIT (https://github.com/silviomoreto/bootstrap-select/blob/master/LICENSE)
-                                                     */
-                                                    select.bs - select - hidden, select.selectpicker {
-                                                        display: none!important
-                                                    }.bootstrap - select {
-                                                        width: 220 px\ 9
-                                                    }.bootstrap - select > .dropdown - toggle {
-                                                        width: 100 % ;padding - right: 25 px;z - index: 1
-                                                    }.bootstrap - select > .dropdown - toggle.bs - placeholder, .bootstrap - select > .dropdown - toggle.bs - placeholder: active, .bootstrap - select > .dropdown - toggle.bs - placeholder: focus, .bootstrap - select > .dropdown - toggle.bs - placeholder: hover {
-                                                        color: #999}.bootstrap-select>select{position:absolute !important;bottom:0;left:50%;display:block !important;width:0.5px !important;height:100% !important;padding:0 !important;opacity:0 !important;border:none}.bootstrap-select>select.mobile-device{top:0;left:0;display:block !important;width:100% !important;z-index:2}.error .bootstrap-select .dropdown-toggle,.has-error .bootstrap-select .dropdown-toggle{border-color:# b94a48
+                                                    body.bigMap# search_input_field_missions {
+                                                        color: #333}/*
+* Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
+*
+* Copyright 2013-2017 bootstrap-select
+* Licensed under MIT (https://github.com/silviomoreto/bootstrap-select/blob/master/LICENSE)
+*/select.bs-select-hidden,select.selectpicker{display:none !important}.bootstrap-select{width:220px\9}.bootstrap-select>.dropdown-toggle{width:100%;padding-right:25px;z-index:1}.bootstrap-select>.dropdown-toggle.bs-placeholder,.bootstrap-select>.dropdown-toggle.bs-placeholder:active,.bootstrap-select>.dropdown-toggle.bs-placeholder:focus,.bootstrap-select>.dropdown-toggle.bs-placeholder:hover{color:# 999
+                                                    }.bootstrap - select > select {
+                                                        position: absolute!important;bottom: 0;left: 50 % ;display: block!important;width: 0.5 px!important;height: 100 % !important;padding: 0!important;opacity: 0!important;border: none
+                                                    }.bootstrap - select > select.mobile - device {
+                                                        top: 0;left: 0;display: block!important;width: 100 % !important;z - index: 2
+                                                    }.error.bootstrap - select.dropdown - toggle, .has - error.bootstrap - select.dropdown - toggle {
+                                                        border - color: #b94a48
                                                     }.bootstrap - select.fit - width {
                                                         width: auto!important
                                                     }.bootstrap - select: not([class *= col - ]): not([class *= form - control]): not(.input - group - btn) {
