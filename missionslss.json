@@ -4653,5 +4653,24 @@
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "30",
         "NEF Anforderungswahrscheinlichkeit": "20",
         "Fachrichtung für Patienten": "Allgemeine Innere"
+    },
+    "436": {
+        "name": "Verschmutze Fahrbahn",
+        "Credits im Durchschnitt": "400",
+        "Benötigte Streifenwagen": "1",
+        "Benötigte Löschfahrzeuge": "1",
+        "Ausbreitungsmöglichkeiten": [
+            ["https://www.leitstellenspiel.de/einsaetze/25", "Verkehrsunfall"],
+            ["https://www.leitstellenspiel.de/einsaetze/120", "LKW umgestürzt"],
+            ["https://www.leitstellenspiel.de/einsaetze/121", "LKW umgestürzt"],
+            ["https://www.leitstellenspiel.de/einsaetze/123", "Verkehrsunfall"],
+            ["https://www.leitstellenspiel.de/einsaetze/124", "Verkehrsunfall"],
+            ["https://www.leitstellenspiel.de/einsaetze/125", "Verkehrsunfall"],
+            ["https://www.leitstellenspiel.de/einsaetze/126", "Verkehrsunfall"],
+            ["https://www.leitstellenspiel.de/einsaetze/127", "Verkehrsunfall"],
+            ["https://www.leitstellenspiel.de/einsaetze/178", "Gefahrgut-LKW verunglückt"],
+            ["https://www.leitstellenspiel.de/einsaetze/238", "Verkehrsunfall mit Linienbus"],
+            ["https://www.leitstellenspiel.de/einsaetze/239", "Verkehrsunfall mit Linienbus"]
+        ]
     }
 }

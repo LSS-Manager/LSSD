@@ -3833,5 +3833,47 @@
         "Uitbreidingsmogelijkheid": [
             ["https://www.meldkamerspel.com/einsaetze/123", "Overval winkel"]
         ]
+    },
+    "402": {
+        "name": "Persoon van laadklep gevallen",
+        "Benodigd aantal Ambulancestandplaatsen": "1",
+        "Maximale patiënten aantal": "1",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "50",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
+    },
+    "403": {
+        "name": "Persoon van laadklep gevallen",
+        "Benodigd aantal Ambulancestandplaatsen": "1",
+        "Maximale patiënten aantal": "1",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "50",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
+    },
+    "404": {
+        "name": "Persoon van laadklep gevallen",
+        "Benodigd aantal Ambulancestandplaatsen": "1",
+        "Maximale patiënten aantal": "1",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "50",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
+    },
+    "405": {
+        "name": "Motorrijder gevallen",
+        "Gemiddeld aantal Credits": "150",
+        "Benodigde noodhulpeenheden": "1",
+        "Maximale patiënten aantal": "1",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
+    },
+    "406": {
+        "name": "Persoon van dak gevallen",
+        "Benodigd aantal Ambulancestandplaatsen": "10",
+        "Maximale patiënten aantal": "1",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
+        "MMT-Arts benodigd waarschijnlijkheid": "100",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
     }
 }

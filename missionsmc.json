@@ -2177,5 +2177,35 @@
         "Max. Patients": "10",
         "Patient Specializations": "General Internal",
         "Probability that a patient has to be transported": "40"
+    },
+    "240": {
+        "name": "Fire in Subway station",
+        "Average credits": "3000",
+        "Required Firetrucks": "4",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Heavy Rescue Vehicles": "1",
+        "Required Mobile Air Vehicles": "1",
+        "Probability of Mobile Air being required": "10",
+        "Required Water Tankers": "1",
+        "Probability of Water Tanker being required": "10",
+        "Required Police Cars": "2",
+        "Max. Patients": "4",
+        "Patient Specializations": "General Internal",
+        "Probability that a patient has to be transported": "30"
+    },
+    "241": {
+        "name": "Fire in Subway station (Large)",
+        "Average credits": "7000",
+        "Required Firetrucks": "8",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Heavy Rescue Vehicles": "2",
+        "Required Mobile Air Vehicles": "2",
+        "Required Water Tankers": "1",
+        "Required Police Cars": "4",
+        "Required HazMat Vehicles": "1",
+        "Required Mobile Command Vehicles": "1",
+        "Max. Patients": "10",
+        "Patient Specializations": "General Internal",
+        "Probability that a patient has to be transported": "30"
     }
 }
