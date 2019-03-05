@@ -4925,7 +4925,7 @@ lightbox_background {
             max - height: 80 vh
         }#
     missions - panel - body {
-        height: 528 px;overflow - x: hidden;overflow - y: scroll;margin - bottom: 10 px;padding: 0 20 px 0 0
+        height: 497 px;overflow - x: hidden;overflow - y: scroll;margin - bottom: 10 px;padding: 0 20 px 0 0
     }#
     missions - panel - body.panel - body {
         padding: 5 px
@@ -4973,6 +4973,7 @@ lightbox_background {
                         padding - bottom: 150 px
                     }#
                     mission_replies {
+                        padding - left: 10 px;
                         max - height: 150 px;
                         overflow: auto
                     }.panel -
@@ -6419,10 +6420,10 @@ lightbox_background {
                                                         display: none
                                                     }#
                                                     search_input_field_missions {
-                                                        margin: 5 px 0;width: 100 % ;font - size: 12 px
+                                                        margin: 5 px 0;width: 100 % ;font - size: 12 px;border: 1 px solid# ccc;border - radius: 4 px
                                                     }
                                                     body.bigMap# search_input_field_missions {
-                                                        color: #333}/*
+                                                        color: #333}.mobile-navbar-selector{margin:4px 0;padding:10px 0;width:58px}/*
 * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
 *
 * Copyright 2013-2017 bootstrap-select
