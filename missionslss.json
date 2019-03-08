@@ -4655,7 +4655,7 @@
         "Fachrichtung für Patienten": "Allgemeine Innere"
     },
     "436": {
-        "name": "Verschmutze Fahrbahn",
+        "name": "Verschmutzte Fahrbahn",
         "Credits im Durchschnitt": "400",
         "Benötigte Streifenwagen": "1",
         "Benötigte Löschfahrzeuge": "1",
@@ -4672,5 +4672,14 @@
             ["https://www.leitstellenspiel.de/einsaetze/238", "Verkehrsunfall mit Linienbus"],
             ["https://www.leitstellenspiel.de/einsaetze/239", "Verkehrsunfall mit Linienbus"]
         ]
+    },
+    "437": {
+        "name": "Taxi - Stiller Alarm",
+        "Credits im Durchschnitt": "400",
+        "Benötigte Streifenwagen": "2",
+        "Maximale Patientenanzahl": "1",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "30",
+        "NEF Anforderungswahrscheinlichkeit": "20",
+        "Fachrichtung für Patienten": "Allgemeine Innere"
     }
 }

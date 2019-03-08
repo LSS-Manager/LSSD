@@ -3875,5 +3875,43 @@
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
         "MMT-Arts benodigd waarschijnlijkheid": "100",
         "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
+    },
+    "407": {
+        "name": "Nacontrole brand",
+        "Gemiddeld aantal Credits": "500",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde redvoertuigen": "1",
+        "Hoogwerker benodigd waarschijnlijkheid": "20"
+    },
+    "408": {
+        "name": "Brand in kerkgebouw",
+        "Gemiddeld aantal Credits": "800",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde redvoertuigen": "1",
+        "Hoogwerker benodigd waarschijnlijkheid": "40"
+    },
+    "409": {
+        "name": "Brand in kerkgebouw",
+        "Gemiddeld aantal Credits": "1500",
+        "Benodigde tankautospuiten": "2",
+        "Benodigde redvoertuigen": "1",
+        "Benodigde OvD-B's": "1"
+    },
+    "410": {
+        "name": "Brand in kerkgebouw",
+        "Gemiddeld aantal Credits": "2500",
+        "Benodigde tankautospuiten": "3",
+        "Benodigde redvoertuigen": "2",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Adembeschermingsvoertuigen": "1",
+        "Adembeschermingsvoertuig benodigd waarschijnlijkheid": "40",
+        "Benodigde slangenwagens": "1",
+        "Slangenwagen benodigd waarschijnlijkheid": "40",
+        "Benodigde HOVD's": "1",
+        "HOVD benodigd waarschijnlijkheid": "50",
+        "Benodigde noodhulpeenheden": "1",
+        "Maximale patiënten aantal": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "40",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
     }
 }

@@ -2207,5 +2207,15 @@
         "Max. Patients": "10",
         "Patient Specializations": "General Internal",
         "Probability that a patient has to be transported": "30"
+    },
+    "242": {
+        "name": "Truck Rear-Ended with Entrapment",
+        "Average credits": "1250",
+        "Required Firetrucks": "3",
+        "Required Heavy Rescue Vehicles": "1",
+        "Required Police Cars": "1",
+        "Max. Patients": "2",
+        "Patient Specializations": "Traumatology",
+        "Probability that a patient has to be transported": "70"
     }
 }
