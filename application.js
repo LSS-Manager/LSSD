@@ -22,13 +22,23 @@ function successfullMessage(e) {
 }
 
 function aao_check(e, t, i) {
-    return i > 0 && $(aao_source_element + " input[" + e + "|=1]").each(function() {
-        if (i > 0) {
-            var n = [];
-            if ("" != t.attr("building_ids")) var n = jQuery.parseJSON(t.attr("building_ids"));
-            (n.length <= 0 || n.indexOf(parseInt($(this).attr("building_id"))) >= 0) && !$(this).is(":checked") && !$(this).is(":disabled") && $(this).attr("ignore_aao") <= 0 && ($(this).attr("vehicle_type_ignore_default_aao") <= 0 || -1 !== e.indexOf("custom_")) && (i -= 1)
-        }
-    }), i > 0 ? !1 : !0
+    var n = -3;
+    if (i > 0) {
+        n = 0;
+        var s = $(aao_source_element + " input").filter(function() {
+            return $(this).attr(e) > 0
+        });
+        s.each(function() {
+            if (i > 0) {
+                var s = [];
+                if ("" != t.attr("building_ids")) var s = jQuery.parseJSON(t.attr("building_ids"));
+                (s.length <= 0 || s.indexOf(parseInt($(this).attr("building_id"))) >= 0) && !$(this).is(":checked") && !$(this).is(":disabled") && $(this).attr("ignore_aao") <= 0 && ($(this).attr("vehicle_type_ignore_default_aao") <= 0 || -1 !== e.indexOf("custom_")) && (i -= "wasser_amount" == e || "wasser_amount_tlf" == e ? $(this).attr(e) : 1), 0 >= i && (n = $("#vehicle_sort_" + $(this).val()).attr("timevalue"))
+            }
+        })
+    }
+    return i > 0 ? !1 : {
+        max_time: n
+    }
 }
 
 function aaoNextAvailable(e, t) {
@@ -46,13 +56,19 @@ function aaoNextAvailable(e, t) {
 }
 
 function aao(e, t, i, n) {
-    return n > 0 && $(aao_source_element + " input[" + e + "|=1]").each(function() {
-        if (n > 0) {
-            var i = [];
-            if ("" != t.attr("building_ids")) var i = jQuery.parseJSON(t.attr("building_ids"));
-            (i.length <= 0 || i.indexOf(parseInt($(this).attr("building_id"))) >= 0) && !$(this).prop("checked") && !$(this).prop("disabled") && $(this).attr("ignore_aao") <= 0 && ($(this).attr("vehicle_type_ignore_default_aao") <= 0 || -1 !== e.indexOf("custom_")) && ("grtw0" == e && $("#vehicle_mode_" + $(this).val() + "_0").prop("checked", !0).change(), "grtw1" == e && $("#vehicle_mode_" + $(this).val() + "_1").prop("checked", !0).change(), n -= 1, $(this).prop("checked", !0), $(this).change())
-        }
-    }), n > 0 ? I18n.t("javascript.missed_vehicle") + " " + n + " " + i + ". " : ""
+    if (n > 0) {
+        var s = $(aao_source_element + " input").filter(function() {
+            return $(this).attr(e) > 0
+        });
+        s.each(function() {
+            if (n > 0) {
+                var i = [];
+                if ("" != t.attr("building_ids")) var i = jQuery.parseJSON(t.attr("building_ids"));
+                (i.length <= 0 || i.indexOf(parseInt($(this).attr("building_id"))) >= 0) && !$(this).prop("checked") && !$(this).prop("disabled") && $(this).attr("ignore_aao") <= 0 && ($(this).attr("vehicle_type_ignore_default_aao") <= 0 || -1 !== e.indexOf("custom_")) && ("grtw0" == e && $("#vehicle_mode_" + $(this).val() + "_0").prop("checked", !0).change(), "grtw1" == e && $("#vehicle_mode_" + $(this).val() + "_1").prop("checked", !0).change(), n -= "wasser_amount" == e || "wasser_amount_tlf" == e ? $(this).attr(e) : 1, $(this).prop("checked", !0), $(this).change())
+            }
+        })
+    }
+    return n > 0 ? I18n.t("javascript.missed_vehicle") + " " + n + " " + i + ". " : ""
 }
 
 function mission_participation_add(e) {
@@ -88,7 +104,7 @@ function vehicleDistanceDraw(e, t, i, n) {
         var e = parseInt($(this).attr("start_delay"));
         isNaN(e) && (e = 0);
         var t = n + e;
-        $(this).html(formatTimeDescription(t, !0)), $(this).attr("sortValue", t)
+        $(this).html(formatTimeDescription(t, !0)), $(this).attr("sortValue", t).attr("timevalue", t)
     })
 }
 
@@ -891,7 +907,7 @@ function vehicleDriveReal(e) {
                 longitude: t.longitude,
                 app_icon_path_normal: t.app_icon_path_normal,
                 app_icon_path_sonderrechte: t.app_icon_path_sonderrechte
-            }) : ((isNaN(current_lat) || isNaN(current_lng)) && (console.log([current_lat, current_lng]), console.log(t.vehicle_id), console.log(t.current_step)), mapIsVisible([current_lat, current_lng]) && ("undefined" != typeof mapkit ? t.coordinate = new mapkit.Coordinate(current_lat, current_lng) : t.setLatLng([current_lat, current_lng])), mapIsVisible([current_lat, current_lng]) ? (1 == t.performance_invisible && (t.performance_invisible = !1, "undefined" == typeof mapkit ? t.addTo(map) : map.addAnnotation(t)), "undefined" == typeof mapkit && (vehicle_label ? t.openTooltip() : t.closeTooltip())) : (n = 1e3, "undefined" == typeof mapkit ? (t.closeTooltip(), map.removeLayer(t)) : 0 == t.performance_invisible && map.removeAnnotation(t), t.performance_invisible = !0), new_position = null))
+            }) : (isNaN(current_lat) || isNaN(current_lng), mapIsVisible([current_lat, current_lng]) && ("undefined" != typeof mapkit ? t.coordinate = new mapkit.Coordinate(current_lat, current_lng) : t.setLatLng([current_lat, current_lng])), mapIsVisible([current_lat, current_lng]) ? (1 == t.performance_invisible && (t.performance_invisible = !1, "undefined" == typeof mapkit ? t.addTo(map) : map.addAnnotation(t)), "undefined" == typeof mapkit && (vehicle_label ? t.openTooltip() : t.closeTooltip())) : (n = 1e3, "undefined" == typeof mapkit ? (t.closeTooltip(), map.removeLayer(t)) : 0 == t.performance_invisible && map.removeAnnotation(t), t.performance_invisible = !0), new_position = null))
         } else t.current_step++;
         setTimeout(function() {
             vehicleDriveReal(e)
@@ -1263,39 +1279,70 @@ function buildingSelectionLoad() {
     }))
 }
 
-function vehicle_group_available(vehicle_group_id) {
+function vehicle_group_available(vehicle_group_id, calculate_time) {
     var all_ok = !0,
+        max_time = -1,
         vehicle_ids = eval($("#vehicle_group_" + vehicle_group_id).attr("vehicles"));
-    "undefined" != typeof vehicle_ids && $.each(vehicle_ids, function(e, t) {
-        ($("#vehicle_checkbox_" + t[0]).length <= 0 || $("#vehicle_checkbox_" + t[0]).is(":disabled")) && (all_ok = !1)
-    }), all_ok ? ($("#available_" + vehicle_group_id).attr("class", "label label-success"), $("#available_" + vehicle_group_id).html("<span class='glyphicon glyphicon-ok' aria-hidden='true'></span>")) : ($("#available_" + vehicle_group_id).html("<span class=' glyphicon glyphicon-remove' aria-hidden='true'></span>"), $("#available_" + vehicle_group_id).attr("class", "label label-danger"))
-}
-
-function aao_available(e) {
-    var t = !0;
-    if (!$("#available_aao_" + e).hasClass("label-success")) {
-        $.each(aao_types, function(i, n) {
-            if ("hlf_or_rw_and_lf" == n[0]) {
-                var s = $("#aao_" + e).attr(n[0]);
-                aao_check("hlf_only", $("#aao_" + e), s) || (aao_check("rw_only", $("#aao_" + e), s) || (t = !1), aao_check("lf_only", $("#aao_" + e), s) || (t = !1))
-            } else if ("naw_or_rtw_and_nef" == n[0] || "naw_or_rtw_and_nef_or_rth" == n[0]) {
-                var o = "nef";
-                "naw_or_rtw_and_nef" == n[0] && (o = "nef_only");
-                var s = $("#aao_" + e).attr(n[0]);
-                aao_check("naw", $("#aao_" + e), s) || (aao_check(o, $("#aao_" + e), s) || (t = !1), aao_check("rtw", $("#aao_" + e), s) || (t = !1))
-            } else {
-                var s = $("#aao_" + e).attr(n[0]);
-                aao_check(n[0], $("#aao_" + e), s) || (t = !1)
-            }
-        });
-        var i = $("#aao_" + e).attr("custom");
-        if ("" != i) {
-            var n = jQuery.parseJSON(i);
-            $.each(n, function(i, n) {
-                aao_check("custom_" + md5(i), $("#aao_" + e), n) || (t = !1)
+    "undefined" == typeof calculate_time && (calculate_time = !1), "undefined" != typeof vehicle_ids && $.each(vehicle_ids, function(e, t) {
+        if ($("#vehicle_checkbox_" + t[0]).length <= 0 || $("#vehicle_checkbox_" + t[0]).is(":disabled")) all_ok = !1;
+        else {
+            var i = $("#vehicle_sort_" + t[0]).attr("timevalue");
+            max_time = aao_maxtime(max_time, {
+                max_time: i
             })
         }
-        t ? ($("#available_aao_" + e).attr("class", "label label-success"), $("#available_aao_" + e).html("<span class='glyphicon glyphicon-ok' aria-hidden='true'></span>")) : ($("#available_aao_" + e).html("<span class=' glyphicon glyphicon-remove' aria-hidden='true'></span>"), $("#available_aao_" + e).attr("class", "label label-danger"))
+    }), max_time > 0 && all_ok ? $("#vehicle_group_timer_" + vehicle_group_id).html(formatTime(max_time)) : $("#vehicle_group_timer_" + vehicle_group_id).html("-"), all_ok ? ($("#available_" + vehicle_group_id).attr("class", "label label-success"), $("#available_" + vehicle_group_id).html("<span class='glyphicon glyphicon-ok' aria-hidden='true'></span>")) : ($("#available_" + vehicle_group_id).html("<span class=' glyphicon glyphicon-remove' aria-hidden='true'></span>"), $("#available_" + vehicle_group_id).attr("class", "label label-danger"))
+}
+
+function aao_maxtime(e, t) {
+    if (!t) return e;
+    if (-2 == e) return -2;
+    if ("undefined" == typeof t.max_time) return -2;
+    var i = parseInt(t.max_time);
+    return i > e || -1 == e && i >= 0 ? i : e
+}
+
+function aao_available(e, t) {
+    var i = !0,
+        n = -1;
+    if ("undefined" == typeof t && (t = !1), t || !$("#available_aao_" + e).hasClass("label-success")) {
+        $.each(aao_types, function(t, s) {
+            if ("hlf_or_rw_and_lf" == s[0]) {
+                var o = $("#aao_" + e).attr(s[0]),
+                    r = aao_check("hlf_only", $("#aao_" + e), o);
+                if (r) n = aao_maxtime(n, r);
+                else {
+                    var a = aao_check("rw_only", $("#aao_" + e), o),
+                        l = aao_check("lf_only", $("#aao_" + e), o);
+                    a || (i = !1), l || (i = !1), n = aao_maxtime(n, a), n = aao_maxtime(n, l)
+                }
+            } else if ("naw_or_rtw_and_nef" == s[0] || "naw_or_rtw_and_nef_or_rth" == s[0]) {
+                var c = "nef";
+                "naw_or_rtw_and_nef" == s[0] && (c = "nef_only");
+                var o = $("#aao_" + e).attr(s[0]),
+                    r = aao_check("naw", $("#aao_" + e), o);
+                if (r) n = aao_maxtime(n, r);
+                else {
+                    var r = aao_check(c, $("#aao_" + e), o);
+                    n = aao_maxtime(n, r), r || (i = !1);
+                    var r = aao_check("rtw", $("#aao_" + e), o);
+                    n = aao_maxtime(n, r), r || (i = !1)
+                }
+            } else {
+                var o = $("#aao_" + e).attr(s[0]),
+                    r = aao_check(s[0], $("#aao_" + e), o);
+                n = aao_maxtime(n, r), r || (i = !1)
+            }
+        });
+        var s = $("#aao_" + e).attr("custom");
+        if ("" != s) {
+            var o = jQuery.parseJSON(s);
+            $.each(o, function(t, s) {
+                var o = aao_check("custom_" + md5(t), $("#aao_" + e), s);
+                n = aao_maxtime(n, o), o || (i = !1)
+            })
+        }
+        n > 0 && i ? $("#aao_timer_" + e).html(formatTime(n)) : $("#aao_timer_" + e).html("-"), i ? ($("#available_aao_" + e).attr("class", "label label-success"), $("#available_aao_" + e).html("<span class='glyphicon glyphicon-ok' aria-hidden='true'></span>")) : ($("#available_aao_" + e).html("<span class=' glyphicon glyphicon-remove' aria-hidden='true'></span>"), $("#available_aao_" + e).attr("class", "label label-danger"))
     }
 }
 
@@ -1687,7 +1734,7 @@ function hideVehicleBuildingHelpText(e) {
             no_ambulance_missions: "There are no ambulance missions. Ambulance missions can only occur when you have an ambulance and a hospital.",
             no_emergency_missions: "There are no emergency missions available. An emergency mission can occur after you made your first station.",
             no_radio_messages: "You didn't receive any radio messages.",
-            radio_messages: "Radio Messages",
+            radio_messages: "Radio",
             restore_map: "Restore Map",
             show_informations: "Green = The missions are shown in the list. Red = The missions aren't shown.",
             sicherheitswache: "Planned Appearances",
@@ -1836,7 +1883,9 @@ function hideVehicleBuildingHelpText(e) {
                 turboloescher: null,
                 turntable_ladder: "Platform trucks",
                 ulf: null,
-                wasserwerfer: null
+                wasserwerfer: null,
+                water_amount: null,
+                water_amount_tlf: null
             }
         }
     }, I18n.translations.de = {
@@ -1927,7 +1976,7 @@ function hideVehicleBuildingHelpText(e) {
             no_ambulance_missions: "Es liegen keine Krankentransporte vor. Krankentransporte kÃ¶nnen auftreten, sobald Du einen KTW und ein Krankenhaus besitzt.",
             no_emergency_missions: "Es liegen keine NotfalleinsÃ¤tze vor. NotfalleinsÃ¤tze kÃ¶nnen ab der ersten Wache auftreten.",
             no_radio_messages: "Es sind keine FunksprÃ¼che eingegangen.",
-            radio_messages: "FunksprÃ¼che",
+            radio_messages: "Funk",
             restore_map: "Karte wiederherstellen",
             show_informations: "GrÃ¼n = Die EinsÃ¤tze werden in der Leiste angezeigt. Rot = Die EinsÃ¤tze werden nicht angezeigt.",
             sicherheitswache: "Geplante EinsÃ¤tze",
@@ -2076,7 +2125,9 @@ function hideVehicleBuildingHelpText(e) {
                 turboloescher: "TurbolÃ¶scher",
                 turntable_ladder: "Drehleitern",
                 ulf: "ULF mit LÃ¶scharm",
-                wasserwerfer: "Wasserwerfer"
+                wasserwerfer: "Wasserwerfer",
+                water_amount: "Liter Wasser",
+                water_amount_tlf: "Liter Wasser - Nur TLF"
             }
         }
     }, I18n.translations.nl = {
@@ -2167,7 +2218,7 @@ function hideVehicleBuildingHelpText(e) {
             no_ambulance_missions: "Er kan nog geen besteld vervoer plaatsvinden zonder een ziekenhuis en een zorgambulance.",
             no_emergency_missions: "Er hebben zich nog geen incidenten plaatsgevonden. Incidenten kunnen vanaf je eerste post plaatsvinden.",
             no_radio_messages: "Je hebt nog geen statusmeldingen ontvangen.",
-            radio_messages: "Statusmeldingen",
+            radio_messages: "Status",
             restore_map: "Kaart terugzetten",
             show_informations: "Groen = Inzet wordt in de lijst weergegeven. Rood = Inzet wordt niet weergegeven.",
             sicherheitswache: "Geplande inzetten",
@@ -2316,7 +2367,9 @@ function hideVehicleBuildingHelpText(e) {
                 turboloescher: null,
                 turntable_ladder: "Redvoertuig",
                 ulf: null,
-                wasserwerfer: null
+                wasserwerfer: null,
+                water_amount: null,
+                water_amount_tlf: null
             }
         }
     }, I18n.translations.ru = {
@@ -2556,7 +2609,9 @@ function hideVehicleBuildingHelpText(e) {
                 turboloescher: null,
                 turntable_ladder: "ÐŸÐ¾Ð¶Ð°Ñ€Ð½Ð°Ñ Ð°Ð²Ñ‚Ð¾Ð»ÐµÑÑ‚Ð½Ð¸Ñ†Ð°",
                 ulf: null,
-                wasserwerfer: null
+                wasserwerfer: null,
+                water_amount: null,
+                water_amount_tlf: null
             }
         }
     }, I18n.translations["en-US"] = {
@@ -2874,7 +2929,9 @@ function hideVehicleBuildingHelpText(e) {
                 turboloescher: null,
                 turntable_ladder: null,
                 ulf: null,
-                wasserwerfer: null
+                wasserwerfer: null,
+                water_amount: null,
+                water_amount_tlf: null
             }
         }
     },
@@ -3092,23 +3149,23 @@ function hideVehicleBuildingHelpText(e) {
         function A(e) {
             var t = K,
                 i = yi[e];
-            return i || (i = D(e, t), "none" !== i && i || (ci = (ci || ut("<iframe frameborder='0' width='0' height='0'/>").css("cssText", "display:block !important")).appendTo(t.documentElement), t = (ci[0].contentWindow || ci[0].contentDocument).document, t.write("<!doctype html><html><body>"), t.close(), i = D(e, t), ci.detach()), yi[e] = i), i
+            return i || (i = I(e, t), "none" !== i && i || (ci = (ci || ut("<iframe frameborder='0' width='0' height='0'/>").css("cssText", "display:block !important")).appendTo(t.documentElement), t = (ci[0].contentWindow || ci[0].contentDocument).document, t.write("<!doctype html><html><body>"), t.close(), i = I(e, t), ci.detach()), yi[e] = i), i
         }
 
-        function D(e, t) {
+        function I(e, t) {
             var i = ut(t.createElement(e)).appendTo(t.body),
                 n = ut.css(i[0], "display");
             return i.remove(), n
         }
 
-        function I(e, t, i, n) {
+        function D(e, t, i, n) {
             var s;
             if (ut.isArray(t)) ut.each(t, function(t, s) {
-                i || Si.test(e) ? n(e, s) : I(e + "[" + ("object" == typeof s ? t : "") + "]", s, i, n)
+                i || Si.test(e) ? n(e, s) : D(e + "[" + ("object" == typeof s ? t : "") + "]", s, i, n)
             });
             else if (i || "object" !== ut.type(t)) n(e, t);
             else
-                for (s in t) I(e + "[" + s + "]", t[s], i, n)
+                for (s in t) D(e + "[" + s + "]", t[s], i, n)
         }
 
         function M(e) {
@@ -3676,7 +3733,7 @@ function hideVehicleBuildingHelpText(e) {
 
                 function s() {
                     function e(i, n) {
-                        return t.push(i += " ") > D.cacheLength && delete e[t.shift()], e[i] = n
+                        return t.push(i += " ") > I.cacheLength && delete e[t.shift()], e[i] = n
                     }
                     var t = [];
                     return e
@@ -3699,7 +3756,7 @@ function hideVehicleBuildingHelpText(e) {
 
                 function a(e, t, i) {
                     e = e.split("|");
-                    for (var n, s = e.length, o = i ? null : t; s--;)(n = D.attrHandle[e[s]]) && n !== t || (D.attrHandle[e[s]] = o)
+                    for (var n, s = e.length, o = i ? null : t; s--;)(n = I.attrHandle[e[s]]) && n !== t || (I.attrHandle[e[s]] = o)
                 }
 
                 function l(e, t) {
@@ -3750,12 +3807,12 @@ function hideVehicleBuildingHelpText(e) {
                 function m(e, t) {
                     var n, s, o, r, a, l, c, u = Y[e + " "];
                     if (u) return t ? 0 : u.slice(0);
-                    for (a = e, l = [], c = D.preFilter; a;) {
+                    for (a = e, l = [], c = I.preFilter; a;) {
                         (!n || (s = mt.exec(a))) && (s && (a = a.slice(s[0].length) || a), l.push(o = [])), n = !1, (s = gt.exec(a)) && (n = s.shift(), o.push({
                             value: n,
                             type: s[0].replace(ft, " ")
                         }), a = a.slice(n.length));
-                        for (r in D.filter) !(s = wt[r].exec(a)) || c[r] && !(s = c[r](s)) || (n = s.shift(), o.push({
+                        for (r in I.filter) !(s = wt[r].exec(a)) || c[r] && !(s = c[r](s)) || (n = s.shift(), o.push({
                             value: n,
                             type: r,
                             matches: s
@@ -3827,17 +3884,17 @@ function hideVehicleBuildingHelpText(e) {
                 }
 
                 function w(e) {
-                    for (var t, i, n, s = e.length, o = D.relative[e[0].type], r = o || D.relative[" "], a = o ? 1 : 0, l = _(function(e) {
+                    for (var t, i, n, s = e.length, o = I.relative[e[0].type], r = o || I.relative[" "], a = o ? 1 : 0, l = _(function(e) {
                             return e === t
                         }, r, !0), c = _(function(e) {
                             return rt.call(t, e) > -1
                         }, r, !0), u = [function(e, i, n) {
                             return !o && (n || i !== N) || ((t = i).nodeType ? l(e, i, n) : c(e, i, n))
                         }]; s > a; a++)
-                        if (i = D.relative[e[a].type]) u = [_(v(u), i)];
+                        if (i = I.relative[e[a].type]) u = [_(v(u), i)];
                         else {
-                            if (i = D.filter[e[a].type].apply(null, e[a].matches), i[W]) {
-                                for (n = ++a; s > n && !D.relative[e[n].type]; n++);
+                            if (i = I.filter[e[a].type].apply(null, e[a].matches), i[W]) {
+                                for (n = ++a; s > n && !I.relative[e[n].type]; n++);
                                 return y(a > 1 && v(u), a > 1 && g(e.slice(0, a - 1).concat({
                                     value: " " === e[a - 2].type ? "*" : ""
                                 })).replace(ft, "$1"), i, n > a && w(e.slice(a, n)), s > n && w(e = e.slice(n)), s > n && g(e))
@@ -3857,7 +3914,7 @@ function hideVehicleBuildingHelpText(e) {
                                 _ = o && [],
                                 v = null != u,
                                 y = N,
-                                w = o || r && D.find.TAG("*", u && a.parentNode || a),
+                                w = o || r && I.find.TAG("*", u && a.parentNode || a),
                                 x = V += null == y ? 1 : Math.random() || .1;
                             for (v && (N = a !== z && a, A = n); null != (h = w[g]); g++) {
                                 if (r && h) {
@@ -3891,12 +3948,12 @@ function hideVehicleBuildingHelpText(e) {
                 function C(e, t, i, n) {
                     var s, o, r, a, l, c = m(e);
                     if (!n && 1 === c.length) {
-                        if (o = c[0] = c[0].slice(0), o.length > 2 && "ID" === (r = o[0]).type && E.getById && 9 === t.nodeType && R && D.relative[o[1].type]) {
-                            if (t = (D.find.ID(r.matches[0].replace(Et, At), t) || [])[0], !t) return i;
+                        if (o = c[0] = c[0].slice(0), o.length > 2 && "ID" === (r = o[0]).type && E.getById && 9 === t.nodeType && R && I.relative[o[1].type]) {
+                            if (t = (I.find.ID(r.matches[0].replace(Et, At), t) || [])[0], !t) return i;
                             e = e.slice(o.shift().value.length)
                         }
-                        for (s = wt.needsContext.test(e) ? 0 : o.length; s-- && (r = o[s], !D.relative[a = r.type]);)
-                            if ((l = D.find[a]) && (n = l(r.matches[0].replace(Et, At), _t.test(o[0].type) && t.parentNode || t))) {
+                        for (s = wt.needsContext.test(e) ? 0 : o.length; s-- && (r = o[s], !I.relative[a = r.type]);)
+                            if ((l = I.find[a]) && (n = l(r.matches[0].replace(Et, At), _t.test(o[0].type) && t.parentNode || t))) {
                                 if (o.splice(s, 1), e = n.length && g(o), !e) return st.apply(i, n), i;
                                 break
                             }
@@ -3905,7 +3962,7 @@ function hideVehicleBuildingHelpText(e) {
                 }
 
                 function T() {}
-                var S, E, A, D, I, M, P, N, $, L, z, O, R, F, B, H, j, W = "sizzle" + -new Date,
+                var S, E, A, I, D, M, P, N, $, L, z, O, R, F, B, H, j, W = "sizzle" + -new Date,
                     U = e.document,
                     V = 0,
                     q = 0,
@@ -3964,7 +4021,7 @@ function hideVehicleBuildingHelpText(e) {
                     };
                 try {
                     st.apply(tt = ot.call(U.childNodes), U.childNodes), tt[U.childNodes.length].nodeType
-                } catch (Dt) {
+                } catch (It) {
                     st = {
                         apply: tt.length ? function(e, t) {
                             nt.apply(e, ot.call(t))
@@ -3989,23 +4046,23 @@ function hideVehicleBuildingHelpText(e) {
                         return e.innerHTML = "<div class='a'></div><div class='a i'></div>", e.firstChild.className = "i", 2 === e.getElementsByClassName("i").length
                     }), E.getById = r(function(e) {
                         return O.appendChild(e).id = W, !t.getElementsByName || !t.getElementsByName(W).length
-                    }), E.getById ? (D.find.ID = function(e, t) {
+                    }), E.getById ? (I.find.ID = function(e, t) {
                         if (typeof t.getElementById !== Q && R) {
                             var i = t.getElementById(e);
                             return i && i.parentNode ? [i] : []
                         }
-                    }, D.filter.ID = function(e) {
+                    }, I.filter.ID = function(e) {
                         var t = e.replace(Et, At);
                         return function(e) {
                             return e.getAttribute("id") === t
                         }
-                    }) : (delete D.find.ID, D.filter.ID = function(e) {
+                    }) : (delete I.find.ID, I.filter.ID = function(e) {
                         var t = e.replace(Et, At);
                         return function(e) {
                             var i = typeof e.getAttributeNode !== Q && e.getAttributeNode("id");
                             return i && i.value === t
                         }
-                    }), D.find.TAG = E.getElementsByTagName ? function(e, t) {
+                    }), I.find.TAG = E.getElementsByTagName ? function(e, t) {
                         return typeof t.getElementsByTagName !== Q ? t.getElementsByTagName(e) : void 0
                     } : function(e, t) {
                         var i, n = [],
@@ -4016,7 +4073,7 @@ function hideVehicleBuildingHelpText(e) {
                             return n
                         }
                         return o
-                    }, D.find.CLASS = E.getElementsByClassName && function(e, t) {
+                    }, I.find.CLASS = E.getElementsByClassName && function(e, t) {
                         return typeof t.getElementsByClassName !== Q && R ? t.getElementsByClassName(e) : void 0
                     }, B = [], F = [], (E.qsa = n(t.querySelectorAll)) && (r(function(e) {
                         e.innerHTML = "<select><option selected=''></option></select>", e.querySelectorAll("[selected]").length || F.push("\\[" + lt + "*(?:value|" + at + ")"), e.querySelectorAll(":checked").length || F.push(":checked")
@@ -4066,8 +4123,8 @@ function hideVehicleBuildingHelpText(e) {
                     return (e.ownerDocument || e) !== z && L(e), j(e, t)
                 }, i.attr = function(e, i) {
                     (e.ownerDocument || e) !== z && L(e);
-                    var n = D.attrHandle[i.toLowerCase()],
-                        s = n && et.call(D.attrHandle, i.toLowerCase()) ? n(e, i, !R) : t;
+                    var n = I.attrHandle[i.toLowerCase()],
+                        s = n && et.call(I.attrHandle, i.toLowerCase()) ? n(e, i, !R) : t;
                     return s === t ? E.attributes || !R ? e.getAttribute(i) : (s = e.getAttributeNode(i)) && s.specified ? s.value : null : s
                 }, i.error = function(e) {
                     throw new Error("Syntax error, unrecognized expression: " + e)
@@ -4080,19 +4137,19 @@ function hideVehicleBuildingHelpText(e) {
                         for (; n--;) e.splice(i[n], 1)
                     }
                     return e
-                }, I = i.getText = function(e) {
+                }, D = i.getText = function(e) {
                     var t, i = "",
                         n = 0,
                         s = e.nodeType;
                     if (s) {
                         if (1 === s || 9 === s || 11 === s) {
                             if ("string" == typeof e.textContent) return e.textContent;
-                            for (e = e.firstChild; e; e = e.nextSibling) i += I(e)
+                            for (e = e.firstChild; e; e = e.nextSibling) i += D(e)
                         } else if (3 === s || 4 === s) return e.nodeValue
                     } else
-                        for (; t = e[n]; n++) i += I(t);
+                        for (; t = e[n]; n++) i += D(t);
                     return i
-                }, D = i.selectors = {
+                }, I = i.selectors = {
                     cacheLength: 50,
                     createPseudo: o,
                     match: wt,
@@ -4182,8 +4239,8 @@ function hideVehicleBuildingHelpText(e) {
                             }
                         },
                         PSEUDO: function(e, t) {
-                            var n, s = D.pseudos[e] || D.setFilters[e.toLowerCase()] || i.error("unsupported pseudo: " + e);
-                            return s[W] ? s(t) : s.length > 1 ? (n = [e, e, "", t], D.setFilters.hasOwnProperty(e.toLowerCase()) ? o(function(e, i) {
+                            var n, s = I.pseudos[e] || I.setFilters[e.toLowerCase()] || i.error("unsupported pseudo: " + e);
+                            return s[W] ? s(t) : s.length > 1 ? (n = [e, e, "", t], I.setFilters.hasOwnProperty(e.toLowerCase()) ? o(function(e, i) {
                                 for (var n, o = s(e, t), r = o.length; r--;) n = rt.call(e, o[r]), e[n] = !(i[n] = o[r])
                             }) : function(e) {
                                 return s(e, 0, n)
@@ -4208,7 +4265,7 @@ function hideVehicleBuildingHelpText(e) {
                         }),
                         contains: o(function(e) {
                             return function(t) {
-                                return (t.textContent || t.innerText || I(t)).indexOf(e) > -1
+                                return (t.textContent || t.innerText || D(t)).indexOf(e) > -1
                             }
                         }),
                         lang: o(function(e) {
@@ -4249,7 +4306,7 @@ function hideVehicleBuildingHelpText(e) {
                             return !0
                         },
                         parent: function(e) {
-                            return !D.pseudos.empty(e)
+                            return !I.pseudos.empty(e)
                         },
                         header: function(e) {
                             return Tt.test(e.nodeName)
@@ -4298,11 +4355,11 @@ function hideVehicleBuildingHelpText(e) {
                         file: !0,
                         password: !0,
                         image: !0
-                    }) D.pseudos[S] = d(S);
+                    }) I.pseudos[S] = d(S);
                 for (S in {
                         submit: !0,
                         reset: !0
-                    }) D.pseudos[S] = p(S);
+                    }) I.pseudos[S] = p(S);
                 P = i.compile = function(e, t) {
                     var i, n = [],
                         s = [],
@@ -4312,7 +4369,7 @@ function hideVehicleBuildingHelpText(e) {
                         o = G(e, x(s, n))
                     }
                     return o
-                }, D.pseudos.nth = D.pseudos.eq, T.prototype = D.filters = D.pseudos, D.setFilters = new T, E.sortStable = W.split("").sort(X).join("") === W, L(), [0, 0].sort(X), E.detectDuplicates = K, ut.find = i, ut.expr = i.selectors, ut.expr[":"] = ut.expr.pseudos, ut.unique = i.uniqueSort, ut.text = i.getText, ut.isXMLDoc = i.isXML, ut.contains = i.contains
+                }, I.pseudos.nth = I.pseudos.eq, T.prototype = I.filters = I.pseudos, I.setFilters = new T, E.sortStable = W.split("").sort(X).join("") === W, L(), [0, 0].sort(X), E.detectDuplicates = K, ut.find = i, ut.expr = i.selectors, ut.expr[":"] = ut.expr.pseudos, ut.unique = i.uniqueSort, ut.text = i.getText, ut.isXMLDoc = i.isXML, ut.contains = i.contains
             }(e);
         var Tt = {};
         ut.Callbacks = function(e) {
@@ -4575,7 +4632,7 @@ function hideVehicleBuildingHelpText(e) {
                 return l(), o.promise(i)
             }
         });
-        var At, Dt, It = /[\t\r\n\f]/g,
+        var At, It, Dt = /[\t\r\n\f]/g,
             Mt = /\r/g,
             Pt = /^(?:input|select|textarea|button|object)$/i,
             Nt = /^(?:a|area)$/i,
@@ -4610,7 +4667,7 @@ function hideVehicleBuildingHelpText(e) {
                 });
                 if (l)
                     for (t = (e || "").match(dt) || []; a > r; r++)
-                        if (i = this[r], n = 1 === i.nodeType && (i.className ? (" " + i.className + " ").replace(It, " ") : " ")) {
+                        if (i = this[r], n = 1 === i.nodeType && (i.className ? (" " + i.className + " ").replace(Dt, " ") : " ")) {
                             for (o = 0; s = t[o++];) n.indexOf(" " + s + " ") < 0 && (n += s + " ");
                             i.className = ut.trim(n)
                         } return this
@@ -4624,7 +4681,7 @@ function hideVehicleBuildingHelpText(e) {
                 });
                 if (l)
                     for (t = (e || "").match(dt) || []; a > r; r++)
-                        if (i = this[r], n = 1 === i.nodeType && (i.className ? (" " + i.className + " ").replace(It, " ") : "")) {
+                        if (i = this[r], n = 1 === i.nodeType && (i.className ? (" " + i.className + " ").replace(Dt, " ") : "")) {
                             for (o = 0; s = t[o++];)
                                 for (; n.indexOf(" " + s + " ") >= 0;) n = n.replace(" " + s + " ", " ");
                             i.className = e ? ut.trim(n) : ""
@@ -4643,7 +4700,7 @@ function hideVehicleBuildingHelpText(e) {
             },
             hasClass: function(e) {
                 for (var t = " " + e + " ", i = 0, n = this.length; n > i; i++)
-                    if (1 === this[i].nodeType && (" " + this[i].className + " ").replace(It, " ").indexOf(t) >= 0) return !0;
+                    if (1 === this[i].nodeType && (" " + this[i].className + " ").replace(Dt, " ").indexOf(t) >= 0) return !0;
                 return !1
             },
             val: function(e) {
@@ -4681,7 +4738,7 @@ function hideVehicleBuildingHelpText(e) {
             },
             attr: function(e, i, n) {
                 var s, o, r = e.nodeType;
-                if (e && 3 !== r && 8 !== r && 2 !== r) return typeof e.getAttribute === Y ? ut.prop(e, i, n) : (1 === r && ut.isXMLDoc(e) || (i = i.toLowerCase(), s = ut.attrHooks[i] || (ut.expr.match.bool.test(i) ? Dt : At)), n === t ? s && "get" in s && null !== (o = s.get(e, i)) ? o : (o = ut.find.attr(e, i), null == o ? t : o) : null !== n ? s && "set" in s && (o = s.set(e, n, i)) !== t ? o : (e.setAttribute(i, n + ""), n) : (ut.removeAttr(e, i), void 0))
+                if (e && 3 !== r && 8 !== r && 2 !== r) return typeof e.getAttribute === Y ? ut.prop(e, i, n) : (1 === r && ut.isXMLDoc(e) || (i = i.toLowerCase(), s = ut.attrHooks[i] || (ut.expr.match.bool.test(i) ? It : At)), n === t ? s && "get" in s && null !== (o = s.get(e, i)) ? o : (o = ut.find.attr(e, i), null == o ? t : o) : null !== n ? s && "set" in s && (o = s.set(e, n, i)) !== t ? o : (e.setAttribute(i, n + ""), n) : (ut.removeAttr(e, i), void 0))
             },
             removeAttr: function(e, t) {
                 var i, n, s = 0,
@@ -4715,7 +4772,7 @@ function hideVehicleBuildingHelpText(e) {
                     }
                 }
             }
-        }), Dt = {
+        }), It = {
             set: function(e, t, i) {
                 return t === !1 ? ut.removeAttr(e, i) : zt && Lt || !$t.test(i) ? e.setAttribute(!Lt && ut.propFix[i] || i, i) : e[ut.camelCase("default-" + i)] = e[i] = !0, i
             }
@@ -5554,7 +5611,7 @@ function hideVehicleBuildingHelpText(e) {
             Si = /\[\]$/,
             Ei = /\r?\n/g,
             Ai = /^(?:submit|button|image|reset|file)$/i,
-            Di = /^(?:input|select|textarea|keygen)/i;
+            Ii = /^(?:input|select|textarea|keygen)/i;
         ut.fn.extend({
             serialize: function() {
                 return ut.param(this.serializeArray())
@@ -5565,7 +5622,7 @@ function hideVehicleBuildingHelpText(e) {
                     return e ? ut.makeArray(e) : this
                 }).filter(function() {
                     var e = this.type;
-                    return this.name && !ut(this).is(":disabled") && Di.test(this.nodeName) && !Ai.test(e) && (this.checked || !ti.test(e))
+                    return this.name && !ut(this).is(":disabled") && Ii.test(this.nodeName) && !Ai.test(e) && (this.checked || !ti.test(e))
                 }).map(function(e, t) {
                     var i = ut(this).val();
                     return null == i ? null : ut.isArray(i) ? ut.map(i, function(e) {
@@ -5588,7 +5645,7 @@ function hideVehicleBuildingHelpText(e) {
                 o(this.name, this.value)
             });
             else
-                for (n in e) I(n, e[n], i, o);
+                for (n in e) D(n, e[n], i, o);
             return s.join("&").replace(Ti, "+")
         }, ut.each("blur focus focusin focusout load resize scroll unload click dblclick mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave change select submit keydown keypress keyup error contextmenu".split(" "), function(e, t) {
             ut.fn[t] = function(e, i) {
@@ -5611,7 +5668,7 @@ function hideVehicleBuildingHelpText(e) {
                 return 1 === arguments.length ? this.off(e, "**") : this.off(t, e || "**", i)
             }
         });
-        var Ii, Mi, Pi = ut.now(),
+        var Di, Mi, Pi = ut.now(),
             Ni = /\?/,
             $i = /#.*$/,
             Li = /([?&])_=[^&]*/,
@@ -5629,7 +5686,7 @@ function hideVehicleBuildingHelpText(e) {
         } catch (Vi) {
             Mi = K.createElement("a"), Mi.href = "", Mi = Mi.href
         }
-        Ii = Bi.exec(Mi.toLowerCase()) || [], ut.fn.load = function(e, i, n) {
+        Di = Bi.exec(Mi.toLowerCase()) || [], ut.fn.load = function(e, i, n) {
             if ("string" != typeof e && Hi) return Hi.apply(this, arguments);
             var s, o, r, a = this,
                 l = e.indexOf(" ");
@@ -5654,7 +5711,7 @@ function hideVehicleBuildingHelpText(e) {
             ajaxSettings: {
                 url: Mi,
                 type: "GET",
-                isLocal: Oi.test(Ii[1]),
+                isLocal: Oi.test(Di[1]),
                 global: !0,
                 processData: !0,
                 async: !0,
@@ -5742,7 +5799,7 @@ function hideVehicleBuildingHelpText(e) {
                             return u && u.abort(t), n(0, t), this
                         }
                     };
-                if (m.promise(x).complete = g.add, x.success = x.done, x.error = x.fail, d.url = ((e || d.url || Mi) + "").replace($i, "").replace(Fi, Ii[1] + "//"), d.type = i.method || i.type || d.method || d.type, d.dataTypes = ut.trim(d.dataType || "*").toLowerCase().match(dt) || [""], null == d.crossDomain && (s = Bi.exec(d.url.toLowerCase()), d.crossDomain = !(!s || s[1] === Ii[1] && s[2] === Ii[2] && (s[3] || ("http:" === s[1] ? "80" : "443")) === (Ii[3] || ("http:" === Ii[1] ? "80" : "443")))), d.data && d.processData && "string" != typeof d.data && (d.data = ut.param(d.data, d.traditional)), P(ji, d, i, x), 2 === y) return x;
+                if (m.promise(x).complete = g.add, x.success = x.done, x.error = x.fail, d.url = ((e || d.url || Mi) + "").replace($i, "").replace(Fi, Di[1] + "//"), d.type = i.method || i.type || d.method || d.type, d.dataTypes = ut.trim(d.dataType || "*").toLowerCase().match(dt) || [""], null == d.crossDomain && (s = Bi.exec(d.url.toLowerCase()), d.crossDomain = !(!s || s[1] === Di[1] && s[2] === Di[2] && (s[3] || ("http:" === s[1] ? "80" : "443")) === (Di[3] || ("http:" === Di[1] ? "80" : "443")))), d.data && d.processData && "string" != typeof d.data && (d.data = ut.param(d.data, d.traditional)), P(ji, d, i, x), 2 === y) return x;
                 c = d.global, c && 0 === ut.active++ && ut.event.trigger("ajaxStart"), d.type = d.type.toUpperCase(), d.hasContent = !Ri.test(d.type), r = d.url, d.hasContent || (d.data && (r = d.url += (Ni.test(r) ? "&" : "?") + d.data, delete d.data), d.cache === !1 && (d.url = Li.test(r) ? r.replace(Li, "$1_=" + Pi++) : r + (Ni.test(r) ? "&" : "?") + "_=" + Pi++)), d.ifModified && (ut.lastModified[r] && x.setRequestHeader("If-Modified-Since", ut.lastModified[r]), ut.etag[r] && x.setRequestHeader("If-None-Match", ut.etag[r])), (d.data && d.hasContent && d.contentType !== !1 || i.contentType) && x.setRequestHeader("Content-Type", d.contentType), x.setRequestHeader("Accept", d.dataTypes[0] && d.accepts[d.dataTypes[0]] ? d.accepts[d.dataTypes[0]] + ("*" !== d.dataTypes[0] ? ", " + Ui + "; q=0.01" : "") : d.accepts["*"]);
                 for (o in d.headers) x.setRequestHeader(o, d.headers[o]);
                 if (d.beforeSend && (d.beforeSend.call(p, x, d) === !1 || 2 === y)) return x.abort();
@@ -9850,7 +9907,7 @@ function hideVehicleBuildingHelpText(e) {
                 })
             },
             _generateHTML: function(e) {
-                var t, i, n, s, o, r, a, l, c, u, h, d, p, f, m, g, _, v, b, y, w, x, k, C, T, S, E, A, D, I, M, P, N, $, L, z, O, R, F, B = new Date,
+                var t, i, n, s, o, r, a, l, c, u, h, d, p, f, m, g, _, v, b, y, w, x, k, C, T, S, E, A, I, D, M, P, N, $, L, z, O, R, F, B = new Date,
                     H = this._daylightSavingAdjust(new Date(B.getFullYear(), B.getMonth(), B.getDate())),
                     j = this._get(e, "isRTL"),
                     W = this._get(e, "showButtonPanel"),
@@ -9882,8 +9939,8 @@ function hideVehicleBuildingHelpText(e) {
                             }
                             E += "'>"
                         }
-                        for (E += "<div class='ui-datepicker-header ui-widget-header ui-helper-clearfix" + S + "'>" + (/all|left/.test(S) && 0 === x ? j ? o : n : "") + (/all|right/.test(S) && 0 === x ? j ? n : o : "") + this._generateMonthYearHeader(e, J, et, X, Q, x > 0 || C > 0, f, m) + "</div><table class='ui-datepicker-calendar'><thead>" + "<tr>", A = h ? "<th class='ui-datepicker-week-col'>" + this._get(e, "weekHeader") + "</th>" : "", w = 0; 7 > w; w++) D = (w + u) % 7, A += "<th scope='col'" + ((w + u + 6) % 7 >= 5 ? " class='ui-datepicker-week-end'" : "") + ">" + "<span title='" + d[D] + "'>" + p[D] + "</span></th>";
-                        for (E += A + "</tr></thead><tbody>", I = this._getDaysInMonth(et, J), et === e.selectedYear && J === e.selectedMonth && (e.selectedDay = Math.min(e.selectedDay, I)), M = (this._getFirstDayOfMonth(et, J) - u + 7) % 7, P = Math.ceil((M + I) / 7), N = G ? this.maxRows > P ? this.maxRows : P : P, this.maxRows = N, $ = this._daylightSavingAdjust(new Date(et, J, 1 - M)), L = 0; N > L; L++) {
+                        for (E += "<div class='ui-datepicker-header ui-widget-header ui-helper-clearfix" + S + "'>" + (/all|left/.test(S) && 0 === x ? j ? o : n : "") + (/all|right/.test(S) && 0 === x ? j ? n : o : "") + this._generateMonthYearHeader(e, J, et, X, Q, x > 0 || C > 0, f, m) + "</div><table class='ui-datepicker-calendar'><thead>" + "<tr>", A = h ? "<th class='ui-datepicker-week-col'>" + this._get(e, "weekHeader") + "</th>" : "", w = 0; 7 > w; w++) I = (w + u) % 7, A += "<th scope='col'" + ((w + u + 6) % 7 >= 5 ? " class='ui-datepicker-week-end'" : "") + ">" + "<span title='" + d[I] + "'>" + p[I] + "</span></th>";
+                        for (E += A + "</tr></thead><tbody>", D = this._getDaysInMonth(et, J), et === e.selectedYear && J === e.selectedMonth && (e.selectedDay = Math.min(e.selectedDay, D)), M = (this._getFirstDayOfMonth(et, J) - u + 7) % 7, P = Math.ceil((M + D) / 7), N = G ? this.maxRows > P ? this.maxRows : P : P, this.maxRows = N, $ = this._daylightSavingAdjust(new Date(et, J, 1 - M)), L = 0; N > L; L++) {
                             for (E += "<tr>", z = h ? "<td class='ui-datepicker-week-col'>" + this._get(e, "calculateWeek")($) + "</td>" : "", w = 0; 7 > w; w++) O = g ? g.apply(e.input ? e.input[0] : null, [$]) : [!0, ""], R = $.getMonth() !== J, F = R && !v || !O[0] || X && X > $ || Q && $ > Q, z += "<td class='" + ((w + u + 6) % 7 >= 5 ? " ui-datepicker-week-end" : "") + (R ? " ui-datepicker-other-month" : "") + ($.getTime() === T.getTime() && J === e.selectedMonth && e._keyEvent || b.getTime() === $.getTime() && b.getTime() === T.getTime() ? " " + this._dayOverClass : "") + (F ? " " + this._unselectableClass + " ui-state-disabled" : "") + (R && !_ ? "" : " " + O[1] + ($.getTime() === K.getTime() ? " " + this._currentClass : "") + ($.getTime() === H.getTime() ? " ui-datepicker-today" : "")) + "'" + (R && !_ || !O[2] ? "" : " title='" + O[2].replace(/'/g, "&#39;") + "'") + (F ? "" : " data-handler='selectDay' data-event='click' data-month='" + $.getMonth() + "' data-year='" + $.getFullYear() + "'") + ">" + (R && !_ ? "&#xa0;" : F ? "<span class='ui-state-default'>" + $.getDate() + "</span>" : "<a class='ui-state-default" + ($.getTime() === H.getTime() ? " ui-state-highlight" : "") + ($.getTime() === K.getTime() ? " ui-state-active" : "") + (R ? " ui-priority-secondary" : "") + "' href='#'>" + $.getDate() + "</a>") + "</td>", $.setDate($.getDate() + 1), $ = this._daylightSavingAdjust($);
                             E += z + "</tr>"
                         }
@@ -13550,13 +13607,13 @@ function hideVehicleBuildingHelpText(e) {
                         S = T.top,
                         E = S + r.height(),
                         A = T.left,
-                        D = A + r.width(),
-                        I = i === !0 ? E : S,
+                        I = A + r.width(),
+                        D = i === !0 ? E : S,
                         M = i === !0 ? S : E,
-                        P = i === !0 ? D : A,
-                        N = i === !0 ? A : D;
-                    if ("both" === s) return !!p && x >= M && I >= w && C >= N && P >= k;
-                    if ("vertical" === s) return !!p && x >= M && I >= w;
+                        P = i === !0 ? I : A,
+                        N = i === !0 ? A : I;
+                    if ("both" === s) return !!p && x >= M && D >= w && C >= N && P >= k;
+                    if ("vertical" === s) return !!p && x >= M && D >= w;
                     if ("horizontal" === s) return !!p && C >= N && P >= k
                 }
             }
@@ -14995,11 +15052,11 @@ function hideVehicleBuildingHelpText(e) {
             return si(e) ? (this._a = e[0], this._b = e[1], this._c = e[2], void(this._d = e[3])) : (this._a = e, this._b = t, this._c = i, this._d = n, void 0)
         }
 
-        function D(e, t, i, n) {
+        function I(e, t, i, n) {
             return new A(e, t, i, n)
         }
 
-        function I(e) {
+        function D(e) {
             return document.createElementNS("http://www.w3.org/2000/svg", e)
         }
 
@@ -15264,7 +15321,7 @@ function hideVehicleBuildingHelpText(e) {
             Vi && 0 === t.indexOf("touch") ? N(e, t, r, o) : !qi || "dblclick" !== t || !W || Vi && Mi ? "addEventListener" in e ? "mousewheel" === t ? e.addEventListener("onwheel" in e ? "wheel" : "mousewheel", r, !1) : "mouseenter" === t || "mouseleave" === t ? (r = function(t) {
                 t = t || window.event, At(e, t) && a(t)
             }, e.addEventListener("mouseenter" === t ? "mouseover" : "mouseout", r, !1)) : ("click" === t && Si && (r = function(e) {
-                Dt(e, a)
+                It(e, a)
             }), e.addEventListener(t, r, !1)) : "attachEvent" in e && e.attachEvent("on" + t, r) : W(e, r, o), e[yn] = e[yn] || {}, e[yn][o] = r
         }
 
@@ -15325,13 +15382,13 @@ function hideVehicleBuildingHelpText(e) {
             return i !== e
         }
 
-        function Dt(e, t) {
+        function It(e, t) {
             var i = e.timeStamp || e.originalEvent && e.originalEvent.timeStamp,
                 n = vn && i - vn;
             n && n > 100 && 500 > n || e.target._simulatedClick && !e._simulated ? kt(e) : (vn = i, t(e))
         }
 
-        function It(e, t) {
+        function Dt(e, t) {
             if (!t || !e.length) return e.slice();
             var i = t * t;
             return e = $t(e, i), e = Pt(e, i)
@@ -15983,7 +16040,7 @@ function hideVehicleBuildingHelpText(e) {
                 projection: mi,
                 transformation: function() {
                     var e = .5 / (Math.PI * mi.R);
-                    return D(e, .5, -e, .5)
+                    return I(e, .5, -e, .5)
                 }()
             }),
             yi = t({}, bi, {
@@ -15997,10 +16054,10 @@ function hideVehicleBuildingHelpText(e) {
             Si = P("android"),
             Ei = P("android 2") || P("android 3"),
             Ai = parseInt(/WebKit\/([0-9]+)|$/.exec(navigator.userAgent)[1], 10),
-            Di = Si && P("Google") && 537 > Ai && !("AudioNode" in window),
-            Ii = !!window.opera,
+            Ii = Si && P("Google") && 537 > Ai && !("AudioNode" in window),
+            Di = !!window.opera,
             Mi = P("chrome"),
-            Pi = P("gecko") && !Ti && !Ii && !xi,
+            Pi = P("gecko") && !Ti && !Di && !xi,
             Ni = !Mi && P("safari"),
             $i = P("phantom"),
             Li = "OTransition" in wi,
@@ -16015,11 +16072,11 @@ function hideVehicleBuildingHelpText(e) {
             Ui = !window.PointerEvent && window.MSPointerEvent,
             Vi = !(!window.PointerEvent && !Ui),
             qi = !window.L_NO_TOUCH && (Vi || "ontouchstart" in window || window.DocumentTouch && document instanceof window.DocumentTouch),
-            Zi = Hi && Ii,
+            Zi = Hi && Di,
             Yi = Hi && Pi,
             Gi = (window.devicePixelRatio || window.screen.deviceXDPI / window.screen.logicalXDPI) > 1,
             Ki = !!document.createElement("canvas").getContext,
-            Xi = !(!document.createElementNS || !I("svg").createSVGRect),
+            Xi = !(!document.createElementNS || !D("svg").createSVGRect),
             Qi = !Xi && function() {
                 try {
                     var e = document.createElement("div");
@@ -16037,8 +16094,8 @@ function hideVehicleBuildingHelpText(e) {
                 webkit: Ti,
                 android: Si,
                 android23: Ei,
-                androidStock: Di,
-                opera: Ii,
+                androidStock: Ii,
+                opera: Di,
                 chrome: Mi,
                 gecko: Pi,
                 safari: Ni,
@@ -16958,7 +17015,7 @@ function hideVehicleBuildingHelpText(e) {
                     return this.collapse()
                 }
             }),
-            Dn = Sn.extend({
+            In = Sn.extend({
                 options: {
                     position: "topleft",
                     zoomInText: "+",
@@ -17000,9 +17057,9 @@ function hideVehicleBuildingHelpText(e) {
         Tn.mergeOptions({
             zoomControl: !0
         }), Tn.addInitHook(function() {
-            this.options.zoomControl && (this.zoomControl = new Dn, this.addControl(this.zoomControl))
+            this.options.zoomControl && (this.zoomControl = new In, this.addControl(this.zoomControl))
         });
-        var In = Sn.extend({
+        var Dn = Sn.extend({
                 options: {
                     position: "bottomleft",
                     maxWidth: 100,
@@ -17082,12 +17139,12 @@ function hideVehicleBuildingHelpText(e) {
             attributionControl: !0
         }), Tn.addInitHook(function() {
             this.options.attributionControl && (new Mn).addTo(this)
-        }), Sn.Layers = An, Sn.Zoom = Dn, Sn.Scale = In, Sn.Attribution = Mn, En.layers = function(e, t, i) {
+        }), Sn.Layers = An, Sn.Zoom = In, Sn.Scale = Dn, Sn.Attribution = Mn, En.layers = function(e, t, i) {
             return new An(e, t, i)
         }, En.zoom = function(e) {
-            return new Dn(e)
-        }, En.scale = function(e) {
             return new In(e)
+        }, En.scale = function(e) {
+            return new Dn(e)
         }, En.attribution = function(e) {
             return new Mn(e)
         };
@@ -17172,7 +17229,7 @@ function hideVehicleBuildingHelpText(e) {
                 }
             }),
             Fn = (Object.freeze || Object)({
-                simplify: It,
+                simplify: Dt,
                 pointToSegmentDistance: Mt,
                 closestPointOnSegment: function(e, t, i) {
                     return Ft(e, t, i)
@@ -17225,17 +17282,17 @@ function hideVehicleBuildingHelpText(e) {
                 projection: jn,
                 transformation: function() {
                     var e = .5 / (Math.PI * jn.R);
-                    return D(e, .5, -e, .5)
+                    return I(e, .5, -e, .5)
                 }()
             }),
             Vn = t({}, fi, {
                 code: "EPSG:4326",
                 projection: Hn,
-                transformation: D(1 / 180, 1, -1 / 180, .5)
+                transformation: I(1 / 180, 1, -1 / 180, .5)
             }),
             qn = t({}, pi, {
                 projection: Hn,
-                transformation: D(1, 0, -1, 0),
+                transformation: I(1, 0, -1, 0),
                 scale: function(e) {
                     return Math.pow(2, e)
                 },
@@ -17857,7 +17914,7 @@ function hideVehicleBuildingHelpText(e) {
                         }
                 },
                 _simplifyPoints: function() {
-                    for (var e = this._parts, t = this.options.smoothFactor, i = 0, n = e.length; n > i; i++) e[i] = It(e[i], t)
+                    for (var e = this._parts, t = this.options.smoothFactor, i = 0, n = e.length; n > i; i++) e[i] = Dt(e[i], t)
                 },
                 _update: function() {
                     this._map && (this._clipPoints(), this._simplifyPoints(), this._updatePath())
@@ -18859,7 +18916,7 @@ function hideVehicleBuildingHelpText(e) {
                 },
                 _removeTile: function(e) {
                     var t = this._tiles[e];
-                    return t ? (Di || t.el.setAttribute("src", oi), fs.prototype._removeTile.call(this, e)) : void 0
+                    return t ? (Ii || t.el.setAttribute("src", oi), fs.prototype._removeTile.call(this, e)) : void 0
                 },
                 _tileReady: function(e, t, i) {
                     return !this._map || i && i.getAttribute("src") === oi ? void 0 : fs.prototype._tileReady.call(this, e, t, i)
@@ -19185,7 +19242,7 @@ function hideVehicleBuildingHelpText(e) {
                     X(e._container)
                 }
             },
-            ws = Qi ? bs : I,
+            ws = Qi ? bs : D,
             xs = _s.extend({
                 getEvents: function() {
                     var e = _s.prototype.getEvents.call(this);
@@ -19574,7 +19631,7 @@ function hideVehicleBuildingHelpText(e) {
             tap: !0,
             tapTolerance: 15
         });
-        var Ds = Pn.extend({
+        var Is = Pn.extend({
             addHooks: function() {
                 mt(this._map._container, "touchstart", this._onDown, this)
             },
@@ -19616,11 +19673,11 @@ function hideVehicleBuildingHelpText(e) {
                 i._simulated = !0, t.target._simulatedClick = !0, i.initMouseEvent(e, !0, !0, window, 1, t.screenX, t.screenY, t.clientX, t.clientY, !1, !1, !1, !1, 0, null), t.target.dispatchEvent(i)
             }
         });
-        qi && !Vi && Tn.addInitHook("addHandler", "tap", Ds), Tn.mergeOptions({
+        qi && !Vi && Tn.addInitHook("addHandler", "tap", Is), Tn.mergeOptions({
             touchZoom: qi && !Ei,
             bounceAtZoomLimits: !0
         });
-        var Is = Pn.extend({
+        var Ds = Pn.extend({
             addHooks: function() {
                 J(this._map._container, "leaflet-touch-zoom"), mt(this._map._container, "touchstart", this._onTouchStart, this)
             },
@@ -19660,7 +19717,7 @@ function hideVehicleBuildingHelpText(e) {
                 this._moved && this._zooming ? (this._zooming = !1, _(this._animRequest), gt(document, "touchmove", this._onTouchMove), gt(document, "touchend", this._onTouchEnd), this._map.options.zoomAnimation ? this._map._animateZoom(this._center, this._map._limitZoom(this._zoom), !0, this._map.options.zoomSnap) : this._map._resetView(this._center, this._map._limitZoom(this._zoom))) : this._zooming = !1
             }
         });
-        Tn.addInitHook("addHandler", "touchZoom", Is), Tn.BoxZoom = Cs, Tn.DoubleClickZoom = Ts, Tn.Drag = Ss, Tn.Keyboard = Es, Tn.ScrollWheelZoom = As, Tn.Tap = Ds, Tn.TouchZoom = Is, Object.freeze = ei, e.version = "1.4.0+HEAD.3337f36", e.Control = Sn, e.control = En, e.Browser = Ji, e.Evented = hi, e.Mixin = $n, e.Util = ci, e.Class = v, e.Handler = Pn, e.extend = t, e.bind = i, e.stamp = n, e.setOptions = u, e.DomEvent = kn, e.DomUtil = bn, e.PosAnimation = Cn, e.Draggable = Rn, e.LineUtil = Fn, e.PolyUtil = Bn, e.Point = y, e.point = w, e.Bounds = x, e.bounds = k, e.Transformation = A, e.transformation = D, e.Projection = Wn, e.LatLng = S, e.latLng = E, e.LatLngBounds = C, e.latLngBounds = T, e.CRS = pi, e.GeoJSON = os, e.geoJSON = Kt, e.geoJson = as, e.Layer = Zn, e.LayerGroup = Yn, e.layerGroup = function(e, t) {
+        Tn.addInitHook("addHandler", "touchZoom", Ds), Tn.BoxZoom = Cs, Tn.DoubleClickZoom = Ts, Tn.Drag = Ss, Tn.Keyboard = Es, Tn.ScrollWheelZoom = As, Tn.Tap = Is, Tn.TouchZoom = Ds, Object.freeze = ei, e.version = "1.4.0+HEAD.3337f36", e.Control = Sn, e.control = En, e.Browser = Ji, e.Evented = hi, e.Mixin = $n, e.Util = ci, e.Class = v, e.Handler = Pn, e.extend = t, e.bind = i, e.stamp = n, e.setOptions = u, e.DomEvent = kn, e.DomUtil = bn, e.PosAnimation = Cn, e.Draggable = Rn, e.LineUtil = Fn, e.PolyUtil = Bn, e.Point = y, e.point = w, e.Bounds = x, e.bounds = k, e.Transformation = A, e.transformation = I, e.Projection = Wn, e.LatLng = S, e.latLng = E, e.LatLngBounds = C, e.latLngBounds = T, e.CRS = pi, e.GeoJSON = os, e.geoJSON = Kt, e.geoJson = as, e.Layer = Zn, e.LayerGroup = Yn, e.layerGroup = function(e, t) {
             return new Yn(e, t)
         }, e.FeatureGroup = Gn, e.featureGroup = function(e) {
             return new Gn(e)
@@ -19871,6 +19928,8 @@ var map, alliance_building_show, geocoder, directionsService, building_eval_unlo
         return missing
     }
     "undefined" != typeof L && (L.Icon.Default.imagePath = "/leaflet/images/"), aao_types = [
+        ["wasser_amount", I18n.t("intervention_order.vehicles.water_amount")],
+        ["wasser_amount_tlf", I18n.t("intervention_order.vehicles.water_amount_tlf")],
         ["swat_suv", I18n.t("intervention_order.vehicles.swat_suv")],
         ["hems", I18n.t("intervention_order.vehicles.hems")],
         ["swat_armored_vehicle", I18n.t("intervention_order.vehicles.swat_armored_vehicle")],
@@ -20044,7 +20103,7 @@ var map, alliance_building_show, geocoder, directionsService, building_eval_unlo
                 e += aao("custom_" + md5(i), t, i, n)
             })
         }
-        return "" != e && ("undefined" != typeof pressedKeys && (pressedKeys = {}), alert(e)), !1
+        return "" != e ? ("undefined" != typeof pressedKeys && (pressedKeys = {}), alert(e)) : aao_available(t.attr("aao_id"), !0), !1
     }), $(".vehicle_group").click(function() {
         var missing = [],
             vehicle_group_id = $(this).attr("vehicle_group_id"),
@@ -22398,13 +22457,13 @@ function(e) {
         i.indexOf(t) < 0 && i.push(t), e.className = i.join(" ")
     }
 
-    function D(e, t) {
+    function I(e, t) {
         var i = S(e);
         s(i, t), e.className = i.join(" ")
     }
 
-    function I(e, t, i) {
-        i = ut(i) ? !E(e, t) : i, i ? A(e, t) : D(e, t)
+    function D(e, t, i) {
+        i = ut(i) ? !E(e, t) : i, i ? A(e, t) : I(e, t)
     }
 
     function M(e, t) {
@@ -22735,7 +22794,7 @@ function(e) {
         }, l.selectRange = function(t) {
             var i, n = e.getSelection(),
                 o = t.endContainer;
-            if (!Dt && t.collapsed && o && !j(o, !0)) {
+            if (!It && t.collapsed && o && !j(o, !0)) {
                 for (i = o.lastChild; i && x(i, ".sceditor-ignore");) i = i.previousSibling;
                 if (x(i, "br")) {
                     var r = s.createRange();
@@ -22750,10 +22809,10 @@ function(e) {
             return i && n && t ? (e = i.nextSibling === n, t = s.createRange(), t.setStartBefore(i), t.setEndAfter(n), e && t.collapse(!0), l.selectRange(t), l.removeMarkers(), void 0) : !1
         }, l.selectOuterText = function(e, t) {
             var i, n, s = l.cloneSelected();
-            return s ? (s.collapse(!1), i = It(s, !0, e), n = It(s, !1, t), s.setStart(i.node, i.offset), s.setEnd(n.node, n.offset), l.selectRange(s), void 0) : !1
+            return s ? (s.collapse(!1), i = Dt(s, !0, e), n = Dt(s, !1, t), s.setStart(i.node, i.offset), s.setEnd(n.node, n.offset), l.selectRange(s), void 0) : !1
         }, l.getOuterText = function(e, t) {
             var i = l.cloneSelected();
-            return i ? (i.collapse(!e), It(i, e, t).text) : ""
+            return i ? (i.collapse(!e), Dt(i, e, t).text) : ""
         }, l.replaceKeyword = function(e, t, i, n, s, o) {
             i || e.sort(function(e, t) {
                 return e[0].length - t[0].length
@@ -22828,7 +22887,7 @@ function(e) {
     }
 
     function lt(e, t) {
-        var i, r, l, g, k, C, S, L, z, R, W, V, q, Y, K, X, Q, et, it, dt, pt, _t, bt, yt, Ct, Tt, St, At, Dt, It, zt, Ot, Rt, Ft, Bt, Ht, jt, Wt, Ut, Vt, qt, Zt, Yt, Gt, Kt, Xt, Qt, Jt, ei, ti, ii, ni, si, oi, ri, ai, li, ci, ui, hi, di, pi, fi, mi = this,
+        var i, r, l, g, k, C, S, L, z, R, W, V, q, Y, K, X, Q, et, it, dt, pt, _t, bt, yt, Ct, Tt, St, At, It, Dt, zt, Ot, Rt, Ft, Bt, Ht, jt, Wt, Ut, Vt, qt, Zt, Yt, Gt, Kt, Xt, Qt, Jt, ei, ti, ii, ni, si, oi, ri, ai, li, ci, ui, hi, di, pi, fi, mi = this,
             gi = {},
             _i = [],
             vi = [],
@@ -22881,8 +22940,8 @@ function(e) {
             p(Pt, "click", Jt), t && (p(t, "reset", Gt), p(t, "submit", mi.updateOriginal, gt)), p(C, "keypress", Yt), p(C, "keydown", qt), p(C, "keydown", Zt), p(C, "keyup", ni), p(C, "blur", hi), p(C, "keyup", di), p(C, "paste", Ut), p(C, i, Xt), p(C, s, si), p(C, n, Qt), xi.emoticonsCompat && Mt.getSelection && p(C, "keyup", li), p(C, "blur", function() {
                 mi.val() || A(C, "placeholder")
             }), p(C, "focus", function() {
-                D(C, "placeholder")
-            }), p(L, "blur", hi), p(L, "keyup", di), p(L, "keydown", qt), p(L, i, Xt), p(L, n, Qt), p(S, "mousedown", Kt), p(S, s, si), p(S, "beforedeactivate keyup mouseup", It), p(S, "keyup", ni), p(S, "focus", function() {
+                I(C, "placeholder")
+            }), p(L, "blur", hi), p(L, "keyup", di), p(L, "keydown", qt), p(L, i, Xt), p(L, n, Qt), p(S, "mousedown", Kt), p(S, s, si), p(S, "beforedeactivate keyup mouseup", Dt), p(S, "keyup", ni), p(S, "focus", function() {
                 R = null
             }), p(r, "selectionchanged", oi), p(r, "selectionchanged", ti), p(r, "selectionchanged valuechanged nodechanged pasteraw paste", Qt)
         }, Ft = function() {
@@ -22905,8 +22964,8 @@ function(e) {
                             var l = Tt.create(s);
                             l && (T(Tt.create(s), o.firstChild), A(o, "has-icon"))
                         }
-                        o._sceTxtMode = !!a.txtExec, o._sceWysiwygMode = !!a.exec, I(o, "disabled", !a.exec), p(o, "click", function(e) {
-                            E(o, "disabled") || Dt(o, a), ti(), e.preventDefault()
+                        o._sceTxtMode = !!a.txtExec, o._sceWysiwygMode = !!a.exec, D(o, "disabled", !a.exec), p(o, "click", function(e) {
+                            E(o, "disabled") || It(o, a), ti(), e.preventDefault()
                         }), p(o, "mousedown", function(e) {
                             mi.closeDropDown(), e.preventDefault()
                         }), a.tooltip && m(o, "title", mi._(a.tooltip) + (r ? " (" + r + ")" : "")), r && mi.addShortcut(r, s), a.state ? vi.push({
@@ -22944,7 +23003,7 @@ function(e) {
                         r = S ? w - (b - m) : w + (b - m);
                     n > 0 && r > n && (r = n), i > 0 && i > r && (r = i), xi.resizeWidth || (r = !1), t > 0 && o > t && (o = t), e > 0 && e > o && (o = e), xi.resizeHeight || (o = !1), (r || o) && mi.dimensions(r, o), s.preventDefault()
                 }, o = function(e) {
-                    T && (T = !1, _(c), D(r, "resizing"), f(Pt, u, s), f(Pt, d, o), e.preventDefault())
+                    T && (T = !1, _(c), I(r, "resizing"), f(Pt, u, s), f(Pt, d, o), e.preventDefault())
                 }, Tt && Tt.create) {
                 var E = Tt.create("grip");
                 E && (h(l, E), A(l, "has-icon"))
@@ -22977,11 +23036,11 @@ function(e) {
             return "boolean" != typeof e ? !L.readonly : (C.contentEditable = !e, L.readonly = !e, ei(e), mi)
         }, mi.rtl = function(e) {
             var t = e ? "rtl" : "ltr";
-            return "boolean" != typeof e ? "rtl" === m(L, "dir") : (m(C, "dir", t), m(L, "dir", t), D(r, "rtl"), D(r, "ltr"), A(r, t), Tt && Tt.rtl && Tt.rtl(e), mi)
+            return "boolean" != typeof e ? "rtl" === m(L, "dir") : (m(C, "dir", t), m(L, "dir", t), I(r, "rtl"), I(r, "ltr"), A(r, t), Tt && Tt.rtl && Tt.rtl(e), mi)
         }, ei = function(e) {
             var t = mi.inSourceMode() ? "_sceTxtMode" : "_sceWysiwygMode";
             o(yi, function(i, n) {
-                I(n, "disabled", e || !n[t])
+                D(n, "disabled", e || !n[t])
             })
         }, mi.width = function(e, t) {
             return e || 0 === e ? (mi.dimensions(e, null, t), mi) : M(r)
@@ -22994,7 +23053,7 @@ function(e) {
             return e || 0 === e ? (mi.dimensions(null, e, t), mi) : P(r)
         }, mi.maximize = function(e) {
             var t = "sceditor-maximize";
-            return ut(e) ? E(r, t) : (e = !!e, e && (yt = Mt.pageYOffset), I(Pt.documentElement, t, e), I(Pt.body, t, e), I(r, t, e), mi.width(e ? "100%" : xi.width, !1), mi.height(e ? "100%" : xi.height, !1), e || Mt.scrollTo(0, yt), fi(), mi)
+            return ut(e) ? E(r, t) : (e = !!e, e && (yt = Mt.pageYOffset), D(Pt.documentElement, t, e), D(Pt.body, t, e), D(r, t, e), mi.width(e ? "100%" : xi.width, !1), mi.height(e ? "100%" : xi.height, !1), e || Mt.scrollTo(0, yt), fi(), mi)
         }, fi = function() {
             xi.autoExpand && !bt && (bt = setTimeout(mi.expandToContent, 200))
         }, mi.expandToContent = function(t) {
@@ -23133,12 +23192,12 @@ function(e) {
             return "boolean" != typeof e ? t : ((t && !e || !t && e) && mi.toggleSourceMode(), mi)
         }, mi.toggleSourceMode = function() {
             var e = mi.inSourceMode();
-            (kt || !e) && (e || (Y.saveRange(), Y.clear()), mi.blur(), e ? mi.setWysiwygEditorValue(mi.getSourceEditorValue()) : mi.setSourceEditorValue(mi.getWysiwygEditorValue()), R = null, b(L), b(g), I(r, "wysiwygMode", e), I(r, "sourceMode", !e), ei(), ti())
+            (kt || !e) && (e || (Y.saveRange(), Y.clear()), mi.blur(), e ? mi.setWysiwygEditorValue(mi.getSourceEditorValue()) : mi.setSourceEditorValue(mi.getWysiwygEditorValue()), R = null, b(L), b(g), D(r, "wysiwygMode", e), D(r, "sourceMode", !e), ei(), ti())
         }, ii = function() {
             return L.focus(), L.value.substring(L.selectionStart, L.selectionEnd)
-        }, Dt = function(e, t) {
+        }, It = function(e, t) {
             mi.inSourceMode() ? t.txtExec && (Array.isArray(t.txtExec) ? mi.sourceEditorInsertText.apply(mi, t.txtExec) : t.txtExec.call(mi, e, ii())) : t.exec && (ht(t.exec) ? t.exec.call(mi, e) : mi.execCommand(t.exec, t.hasOwnProperty("execParam") ? t.execParam : null))
-        }, It = function() {
+        }, Dt = function() {
             Nt && (R = Y.selectedRange())
         }, mi.execCommand = function(e, t) {
             var i = !1,
@@ -23178,7 +23237,7 @@ function(e) {
                 n = S,
                 s = mi.sourceMode();
             if (mi.readOnly()) return o(d(l, i), function(e, t) {
-                D(t, i)
+                I(t, i)
             }), void 0;
             s || (t = Y.parentNode(), e = Y.getFirstBlockParent(t));
             for (var r = 0; r < vi.length; r++) {
@@ -23191,7 +23250,7 @@ function(e) {
                         a = n.queryCommandEnabled(u) ? 0 : -1, a > -1 && (a = n.queryCommandState(u) ? 1 : 0)
                     } catch (p) {}
                 } else h || (a = u.call(mi, t, e));
-                I(c, "disabled", h || 0 > a), I(c, i, a > 0)
+                D(c, "disabled", h || 0 > a), D(c, i, a > 0)
             }
             Tt && Tt.update && Tt.update(s, t, e)
         }, Yt = function(e) {
@@ -23400,7 +23459,7 @@ function(e) {
             (e.ctrlKey || e.metaKey) && t.push("ctrl"), e.altKey && t.push("alt"), e.shiftKey && (t.push("shift"), s[o] ? r = s[o] : i[r] && (r = i[r])), r && (16 > o || o > 18) && t.push(r), t = t.join("+"), bi[t] && bi[t].call(mi) === !1 && (e.stopPropagation(), e.preventDefault())
         }, mi.addShortcut = function(e, t) {
             return e = e.toLowerCase(), bi[e] = ct(t) ? function() {
-                return Dt(yi[t], mi.commands[t]), !1
+                return It(yi[t], mi.commands[t]), !1
             } : t, mi
         }, mi.removeShortcut = function(e) {
             return delete bi[e.toLowerCase()], mi
@@ -24023,8 +24082,8 @@ function(e) {
         },
         At = {};
     nt.plugins = At;
-    var Dt = yt && 11 > yt,
-        It = function(e, t, i) {
+    var It = yt && 11 > yt,
+        Dt = function(e, t, i) {
             var n, s, o, r, a, l = "",
                 c = e.startContainer,
                 u = e.startOffset;
@@ -24303,13 +24362,13 @@ function(e) {
         i.indexOf(t) < 0 && i.push(t), e.className = i.join(" ")
     }
 
-    function D(e, t) {
+    function I(e, t) {
         var i = S(e);
         s(i, t), e.className = i.join(" ")
     }
 
-    function I(e, t, i) {
-        i = ut(i) ? !E(e, t) : i, i ? A(e, t) : D(e, t)
+    function D(e, t, i) {
+        i = ut(i) ? !E(e, t) : i, i ? A(e, t) : I(e, t)
     }
 
     function M(e, t) {
@@ -24640,7 +24699,7 @@ function(e) {
         }, l.selectRange = function(t) {
             var i, n = e.getSelection(),
                 o = t.endContainer;
-            if (!Dt && t.collapsed && o && !j(o, !0)) {
+            if (!It && t.collapsed && o && !j(o, !0)) {
                 for (i = o.lastChild; i && x(i, ".sceditor-ignore");) i = i.previousSibling;
                 if (x(i, "br")) {
                     var r = s.createRange();
@@ -24655,10 +24714,10 @@ function(e) {
             return i && n && t ? (e = i.nextSibling === n, t = s.createRange(), t.setStartBefore(i), t.setEndAfter(n), e && t.collapse(!0), l.selectRange(t), l.removeMarkers(), void 0) : !1
         }, l.selectOuterText = function(e, t) {
             var i, n, s = l.cloneSelected();
-            return s ? (s.collapse(!1), i = It(s, !0, e), n = It(s, !1, t), s.setStart(i.node, i.offset), s.setEnd(n.node, n.offset), l.selectRange(s), void 0) : !1
+            return s ? (s.collapse(!1), i = Dt(s, !0, e), n = Dt(s, !1, t), s.setStart(i.node, i.offset), s.setEnd(n.node, n.offset), l.selectRange(s), void 0) : !1
         }, l.getOuterText = function(e, t) {
             var i = l.cloneSelected();
-            return i ? (i.collapse(!e), It(i, e, t).text) : ""
+            return i ? (i.collapse(!e), Dt(i, e, t).text) : ""
         }, l.replaceKeyword = function(e, t, i, n, s, o) {
             i || e.sort(function(e, t) {
                 return e[0].length - t[0].length
@@ -24733,7 +24792,7 @@ function(e) {
     }
 
     function lt(e, t) {
-        var i, r, l, g, k, C, S, L, z, R, W, V, q, Y, K, X, Q, et, it, dt, pt, _t, bt, yt, Ct, Tt, St, At, Dt, It, zt, Ot, Rt, Ft, Bt, Ht, jt, Wt, Ut, Vt, qt, Zt, Yt, Gt, Kt, Xt, Qt, Jt, ei, ti, ii, ni, si, oi, ri, ai, li, ci, ui, hi, di, pi, fi, mi = this,
+        var i, r, l, g, k, C, S, L, z, R, W, V, q, Y, K, X, Q, et, it, dt, pt, _t, bt, yt, Ct, Tt, St, At, It, Dt, zt, Ot, Rt, Ft, Bt, Ht, jt, Wt, Ut, Vt, qt, Zt, Yt, Gt, Kt, Xt, Qt, Jt, ei, ti, ii, ni, si, oi, ri, ai, li, ci, ui, hi, di, pi, fi, mi = this,
             gi = {},
             _i = [],
             vi = [],
@@ -24786,8 +24845,8 @@ function(e) {
             p(Pt, "click", Jt), t && (p(t, "reset", Gt), p(t, "submit", mi.updateOriginal, gt)), p(C, "keypress", Yt), p(C, "keydown", qt), p(C, "keydown", Zt), p(C, "keyup", ni), p(C, "blur", hi), p(C, "keyup", di), p(C, "paste", Ut), p(C, i, Xt), p(C, s, si), p(C, n, Qt), xi.emoticonsCompat && Mt.getSelection && p(C, "keyup", li), p(C, "blur", function() {
                 mi.val() || A(C, "placeholder")
             }), p(C, "focus", function() {
-                D(C, "placeholder")
-            }), p(L, "blur", hi), p(L, "keyup", di), p(L, "keydown", qt), p(L, i, Xt), p(L, n, Qt), p(S, "mousedown", Kt), p(S, s, si), p(S, "beforedeactivate keyup mouseup", It), p(S, "keyup", ni), p(S, "focus", function() {
+                I(C, "placeholder")
+            }), p(L, "blur", hi), p(L, "keyup", di), p(L, "keydown", qt), p(L, i, Xt), p(L, n, Qt), p(S, "mousedown", Kt), p(S, s, si), p(S, "beforedeactivate keyup mouseup", Dt), p(S, "keyup", ni), p(S, "focus", function() {
                 R = null
             }), p(r, "selectionchanged", oi), p(r, "selectionchanged", ti), p(r, "selectionchanged valuechanged nodechanged pasteraw paste", Qt)
         }, Ft = function() {
@@ -24810,8 +24869,8 @@ function(e) {
                             var l = Tt.create(s);
                             l && (T(Tt.create(s), o.firstChild), A(o, "has-icon"))
                         }
-                        o._sceTxtMode = !!a.txtExec, o._sceWysiwygMode = !!a.exec, I(o, "disabled", !a.exec), p(o, "click", function(e) {
-                            E(o, "disabled") || Dt(o, a), ti(), e.preventDefault()
+                        o._sceTxtMode = !!a.txtExec, o._sceWysiwygMode = !!a.exec, D(o, "disabled", !a.exec), p(o, "click", function(e) {
+                            E(o, "disabled") || It(o, a), ti(), e.preventDefault()
                         }), p(o, "mousedown", function(e) {
                             mi.closeDropDown(), e.preventDefault()
                         }), a.tooltip && m(o, "title", mi._(a.tooltip) + (r ? " (" + r + ")" : "")), r && mi.addShortcut(r, s), a.state ? vi.push({
@@ -24849,7 +24908,7 @@ function(e) {
                         r = S ? w - (b - m) : w + (b - m);
                     n > 0 && r > n && (r = n), i > 0 && i > r && (r = i), xi.resizeWidth || (r = !1), t > 0 && o > t && (o = t), e > 0 && e > o && (o = e), xi.resizeHeight || (o = !1), (r || o) && mi.dimensions(r, o), s.preventDefault()
                 }, o = function(e) {
-                    T && (T = !1, _(c), D(r, "resizing"), f(Pt, u, s), f(Pt, d, o), e.preventDefault())
+                    T && (T = !1, _(c), I(r, "resizing"), f(Pt, u, s), f(Pt, d, o), e.preventDefault())
                 }, Tt && Tt.create) {
                 var E = Tt.create("grip");
                 E && (h(l, E), A(l, "has-icon"))
@@ -24882,11 +24941,11 @@ function(e) {
             return "boolean" != typeof e ? !L.readonly : (C.contentEditable = !e, L.readonly = !e, ei(e), mi)
         }, mi.rtl = function(e) {
             var t = e ? "rtl" : "ltr";
-            return "boolean" != typeof e ? "rtl" === m(L, "dir") : (m(C, "dir", t), m(L, "dir", t), D(r, "rtl"), D(r, "ltr"), A(r, t), Tt && Tt.rtl && Tt.rtl(e), mi)
+            return "boolean" != typeof e ? "rtl" === m(L, "dir") : (m(C, "dir", t), m(L, "dir", t), I(r, "rtl"), I(r, "ltr"), A(r, t), Tt && Tt.rtl && Tt.rtl(e), mi)
         }, ei = function(e) {
             var t = mi.inSourceMode() ? "_sceTxtMode" : "_sceWysiwygMode";
             o(yi, function(i, n) {
-                I(n, "disabled", e || !n[t])
+                D(n, "disabled", e || !n[t])
             })
         }, mi.width = function(e, t) {
             return e || 0 === e ? (mi.dimensions(e, null, t), mi) : M(r)
@@ -24899,7 +24958,7 @@ function(e) {
             return e || 0 === e ? (mi.dimensions(null, e, t), mi) : P(r)
         }, mi.maximize = function(e) {
             var t = "sceditor-maximize";
-            return ut(e) ? E(r, t) : (e = !!e, e && (yt = Mt.pageYOffset), I(Pt.documentElement, t, e), I(Pt.body, t, e), I(r, t, e), mi.width(e ? "100%" : xi.width, !1), mi.height(e ? "100%" : xi.height, !1), e || Mt.scrollTo(0, yt), fi(), mi)
+            return ut(e) ? E(r, t) : (e = !!e, e && (yt = Mt.pageYOffset), D(Pt.documentElement, t, e), D(Pt.body, t, e), D(r, t, e), mi.width(e ? "100%" : xi.width, !1), mi.height(e ? "100%" : xi.height, !1), e || Mt.scrollTo(0, yt), fi(), mi)
         }, fi = function() {
             xi.autoExpand && !bt && (bt = setTimeout(mi.expandToContent, 200))
         }, mi.expandToContent = function(t) {
@@ -25038,12 +25097,12 @@ function(e) {
             return "boolean" != typeof e ? t : ((t && !e || !t && e) && mi.toggleSourceMode(), mi)
         }, mi.toggleSourceMode = function() {
             var e = mi.inSourceMode();
-            (kt || !e) && (e || (Y.saveRange(), Y.clear()), mi.blur(), e ? mi.setWysiwygEditorValue(mi.getSourceEditorValue()) : mi.setSourceEditorValue(mi.getWysiwygEditorValue()), R = null, b(L), b(g), I(r, "wysiwygMode", e), I(r, "sourceMode", !e), ei(), ti())
+            (kt || !e) && (e || (Y.saveRange(), Y.clear()), mi.blur(), e ? mi.setWysiwygEditorValue(mi.getSourceEditorValue()) : mi.setSourceEditorValue(mi.getWysiwygEditorValue()), R = null, b(L), b(g), D(r, "wysiwygMode", e), D(r, "sourceMode", !e), ei(), ti())
         }, ii = function() {
             return L.focus(), L.value.substring(L.selectionStart, L.selectionEnd)
-        }, Dt = function(e, t) {
+        }, It = function(e, t) {
             mi.inSourceMode() ? t.txtExec && (Array.isArray(t.txtExec) ? mi.sourceEditorInsertText.apply(mi, t.txtExec) : t.txtExec.call(mi, e, ii())) : t.exec && (ht(t.exec) ? t.exec.call(mi, e) : mi.execCommand(t.exec, t.hasOwnProperty("execParam") ? t.execParam : null))
-        }, It = function() {
+        }, Dt = function() {
             Nt && (R = Y.selectedRange())
         }, mi.execCommand = function(e, t) {
             var i = !1,
@@ -25083,7 +25142,7 @@ function(e) {
                 n = S,
                 s = mi.sourceMode();
             if (mi.readOnly()) return o(d(l, i), function(e, t) {
-                D(t, i)
+                I(t, i)
             }), void 0;
             s || (t = Y.parentNode(), e = Y.getFirstBlockParent(t));
             for (var r = 0; r < vi.length; r++) {
@@ -25096,7 +25155,7 @@ function(e) {
                         a = n.queryCommandEnabled(u) ? 0 : -1, a > -1 && (a = n.queryCommandState(u) ? 1 : 0)
                     } catch (p) {}
                 } else h || (a = u.call(mi, t, e));
-                I(c, "disabled", h || 0 > a), I(c, i, a > 0)
+                D(c, "disabled", h || 0 > a), D(c, i, a > 0)
             }
             Tt && Tt.update && Tt.update(s, t, e)
         }, Yt = function(e) {
@@ -25305,7 +25364,7 @@ function(e) {
             (e.ctrlKey || e.metaKey) && t.push("ctrl"), e.altKey && t.push("alt"), e.shiftKey && (t.push("shift"), s[o] ? r = s[o] : i[r] && (r = i[r])), r && (16 > o || o > 18) && t.push(r), t = t.join("+"), bi[t] && bi[t].call(mi) === !1 && (e.stopPropagation(), e.preventDefault())
         }, mi.addShortcut = function(e, t) {
             return e = e.toLowerCase(), bi[e] = ct(t) ? function() {
-                return Dt(yi[t], mi.commands[t]), !1
+                return It(yi[t], mi.commands[t]), !1
             } : t, mi
         }, mi.removeShortcut = function(e) {
             return delete bi[e.toLowerCase()], mi
@@ -25928,8 +25987,8 @@ function(e) {
         },
         At = {};
     nt.plugins = At;
-    var Dt = yt && 11 > yt,
-        It = function(e, t, i) {
+    var It = yt && 11 > yt,
+        Dt = function(e, t, i) {
             var n, s, o, r, a, l = "",
                 c = e.startContainer,
                 u = e.startOffset;
@@ -26103,7 +26162,7 @@ function(e) {
         function i(e, t) {
             var i, n, s, a = /\[([^\]\s=]+)(?:([^\]]+))?\]/,
                 l = /\[\/([^\[\]]+)\]/;
-            return e === E && (i = t.match(a)) && (s = y(i[1]), i[2] && (i[2] = i[2].trim()) && (n = o(i[2]))), e === I && (i = t.match(l)) && (s = y(i[1])), e === D && (s = "#newline"), s && (e !== E && e !== I || S[s]) || (e = A, s = "#"), new r(e, s, t, n)
+            return e === E && (i = t.match(a)) && (s = y(i[1]), i[2] && (i[2] = i[2].trim()) && (n = o(i[2]))), e === D && (i = t.match(l)) && (s = y(i[1])), e === I && (s = "#newline"), s && (e !== E && e !== D || S[s]) || (e = A, s = "#"), new r(e, s, t, n)
         }
 
         function o(e) {
@@ -26134,11 +26193,11 @@ function(e) {
                     d() ? d().children.push(e) : u.push(e)
                 }, f = function(e) {
                     return d() && (i = S[d().name]) && i.closedBy && i.closedBy.indexOf(e) > -1
-                }; t = e.shift();) switch (r = e[0], c(d(), t) || t.type === I && d() && t.name === d().name || (t.name = "#", t.type = A), t.type) {
+                }; t = e.shift();) switch (r = e[0], c(d(), t) || t.type === D && d() && t.name === d().name || (t.name = "#", t.type = A), t.type) {
                 case E:
-                    f(t.name) && h.pop(), p(t), i = S[t.name], i && !i.isSelfClosing && (i.closedBy || l(t.name, I, e)) ? h.push(t) : i && i.isSelfClosing || (t.type = A);
+                    f(t.name) && h.pop(), p(t), i = S[t.name], i && !i.isSelfClosing && (i.closedBy || l(t.name, D, e)) ? h.push(t) : i && i.isSelfClosing || (t.type = A);
                     break;
-                case I:
+                case D:
                     if (d() && t.name !== d().name && f("/" + t.name) && h.pop(), d() && t.name === d().name) d().closing = t, h.pop();
                     else if (l(t.name, E, h)) {
                         for (; n = h.pop();) {
@@ -26148,12 +26207,12 @@ function(e) {
                             }
                             s = n.clone(), a.length && s.children.push(b(a)), a.push(s)
                         }
-                        for (r && r.type === D && (i = S[t.name], i && i.isInline === !1 && (p(r), e.shift())), p(b(a)), o = a.length; o--;) h.push(a[o]);
+                        for (r && r.type === I && (i = S[t.name], i && i.isInline === !1 && (p(r), e.shift())), p(b(a)), o = a.length; o--;) h.push(a[o]);
                         a.length = 0
                     } else t.type = A, p(t);
                     break;
-                case D:
-                    d() && r && f((r.type === I ? "/" : "") + r.name) && (r.type !== I || r.name !== d().name) && (i = S[d().name], i && i.breakAfter ? h.pop() : i && i.isInline === !1 && x.opts.breakAfterBlock && i.breakAfter !== !1 && h.pop()), p(t);
+                case I:
+                    d() && r && f((r.type === D ? "/" : "") + r.name) && (r.type !== D || r.name !== d().name) && (i = S[d().name], i && i.breakAfter ? h.pop() : i && i.isInline === !1 && x.opts.breakAfterBlock && i.breakAfter !== !1 && h.pop()), p(t);
                     break;
                 default:
                     p(t)
@@ -26166,7 +26225,7 @@ function(e) {
             t && (r = S[t.name]);
             for (var p = h; p--;)
                 if (n = e[p])
-                    if (n.type === D) {
+                    if (n.type === I) {
                         if (s = p > 0 ? e[p - 1] : null, o = h - 1 > p ? e[p + 1] : null, u = !1, !i && r && r.isSelfClosing !== !0 && (s ? l || o || (r.isInline === !1 && x.opts.breakEndBlock && r.breakEnd !== !1 && (u = !0), r.breakEnd && (u = !0), l = u) : (r.isInline === !1 && x.opts.breakStartBlock && r.breakStart !== !1 && (u = !0), r.breakStart && (u = !0))), s && s.type === E && (a = S[s.name]) && (i ? a.isInline === !1 && (u = !0) : (a.isInline === !1 && x.opts.breakAfterBlock && a.breakAfter !== !1 && (u = !0), a.breakAfter && (u = !0))), !i && !c && o && o.type === E && (a = S[o.name]) && (a.isInline === !1 && x.opts.breakBeforeBlock && a.breakBefore !== !1 && (u = !0), a.breakBefore && (u = !0), c = u, u)) {
                             e.splice(p, 1);
                             continue
@@ -26190,7 +26249,7 @@ function(e) {
                         if (a = l.indexOf(r), a > -1) {
                             u.children.splice(0, 1), l.splice(a + 1, 0, s, u);
                             var f = u.children[0];
-                            return f && f.type === D && (h(s) || (u.children.splice(0, 1), l.splice(a + 2, 0, f))), void 0
+                            return f && f.type === I && (h(s) || (u.children.splice(0, 1), l.splice(a + 2, 0, f))), void 0
                         }
                     }
                     t.push(s), p(s.children, t, i || h(s), n), t.pop()
@@ -26201,7 +26260,7 @@ function(e) {
             for (var t, i, n = function(e) {
                     for (var t = e.length; t--;) {
                         var i = e[t].type;
-                        if (i === E || i === I) return !1;
+                        if (i === E || i === D) return !1;
                         if (i === A && /\S|\u00A0/.test(e[t].val)) return !1
                     }
                     return !0
@@ -26216,7 +26275,7 @@ function(e) {
                 if (o = e.shift()) {
                     if (o.type === E) p = o.children[o.children.length - 1] || {}, r = S[o.name], c = i && d(r), a = m(o.children, !1), r && r.html ? (d(r) || !d(S[p.name]) || r.isPreFormatted || r.skipLastLineBreak || w || (a += "<br />"), n(r.html) ? l = r.html.call(x, o, o.attrs, a) : (o.attrs["0"] = a, l = t(r.html, o.attrs))) : l = o.val + a + (o.closing ? o.closing.val : "");
                     else {
-                        if (o.type === D) {
+                        if (o.type === I) {
                             if (!i) {
                                 f.push("<br />");
                                 continue
@@ -26264,13 +26323,13 @@ function(e) {
                     type: A,
                     regex: /^([^\[\r\n]+|\[)/
                 }, {
-                    type: D,
+                    type: I,
                     regex: /^(\r\n|\r|\n)/
                 }, {
                     type: E,
                     regex: /^\[[^\[\]]+\]/
                 }, {
-                    type: I,
+                    type: D,
                     regex: /^\[\/[^\[\]]+\]/
                 }];
             e: for (; e.length;) {
@@ -26871,8 +26930,8 @@ function(e) {
         },
         E = "open",
         A = "content",
-        D = "newline",
-        I = "close";
+        I = "newline",
+        D = "close";
     r.prototype = {
         clone: function() {
             var e = this;
