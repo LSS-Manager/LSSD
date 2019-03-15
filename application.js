@@ -1307,31 +1307,55 @@ function aao_available(e, t) {
         n = -1;
     if ("undefined" == typeof t && (t = !1), t || !$("#available_aao_" + e).hasClass("label-success")) {
         $.each(aao_types, function(t, s) {
-            if ("hlf_or_rw_and_lf" == s[0]) {
-                var o = $("#aao_" + e).attr(s[0]),
-                    r = aao_check("hlf_only", $("#aao_" + e), o);
-                if (r) n = aao_maxtime(n, r);
-                else {
-                    var a = aao_check("rw_only", $("#aao_" + e), o),
+            var o = $("#aao_" + e).attr(s[0]);
+            if (o > 0)
+                if ("hlf_or_rw_and_lf" == s[0]) {
+                    var r = aao_check("hlf_only", $("#aao_" + e), o),
+                        a = aao_check("rw_only", $("#aao_" + e), o),
                         l = aao_check("lf_only", $("#aao_" + e), o);
-                    a || (i = !1), l || (i = !1), n = aao_maxtime(n, a), n = aao_maxtime(n, l)
-                }
-            } else if ("naw_or_rtw_and_nef" == s[0] || "naw_or_rtw_and_nef_or_rth" == s[0]) {
-                var c = "nef";
-                "naw_or_rtw_and_nef" == s[0] && (c = "nef_only");
-                var o = $("#aao_" + e).attr(s[0]),
-                    r = aao_check("naw", $("#aao_" + e), o);
-                if (r) n = aao_maxtime(n, r);
-                else {
-                    var r = aao_check(c, $("#aao_" + e), o);
-                    n = aao_maxtime(n, r), r || (i = !1);
-                    var r = aao_check("rtw", $("#aao_" + e), o);
-                    n = aao_maxtime(n, r), r || (i = !1)
-                }
+                    if ((r || a) && l) {
+                        if (r && a && l) {
+                            var c = aao_maxtime(-1, r),
+                                u = aao_maxtime(-1, a),
+                                h = aao_maxtime(-1, l);
+                            u >= c || h >= c ? n = aao_maxtime(n, r) : (n = aao_maxtime(n, a), n = aao_maxtime(n, l))
+                        }
+                        if (!r && a && l) {
+                            var u = aao_maxtime(-1, a),
+                                h = aao_maxtime(-1, l);
+                            n = aao_maxtime(n, a), n = aao_maxtime(n, l)
+                        }
+                        if (r && (!a || !l)) {
+                            var c = aao_maxtime(-1, r);
+                            n = aao_maxtime(n, r)
+                        }
+                    } else i = !1
+                } else if ("naw_or_rtw_and_nef" == s[0] || "naw_or_rtw_and_nef_or_rth" == s[0]) {
+                var d = "nef";
+                "naw_or_rtw_and_nef" == s[0] && (d = "nef_only");
+                var r = aao_check("naw", $("#aao_" + e), o),
+                    a = aao_check(d, $("#aao_" + e), o),
+                    l = aao_check("rtw", $("#aao_" + e), o);
+                if ((r || a) && l) {
+                    if (r && a && l) {
+                        var c = aao_maxtime(-1, r),
+                            u = aao_maxtime(-1, a),
+                            h = aao_maxtime(-1, l);
+                        u >= c || h >= c ? n = aao_maxtime(n, r) : (n = aao_maxtime(n, a), n = aao_maxtime(n, l))
+                    }
+                    if (!r && a && l) {
+                        var u = aao_maxtime(-1, a),
+                            h = aao_maxtime(-1, l);
+                        n = aao_maxtime(n, a), n = aao_maxtime(n, l)
+                    }
+                    if (r && (!a || !l)) {
+                        var c = aao_maxtime(-1, r);
+                        n = aao_maxtime(n, r)
+                    }
+                } else i = !1
             } else {
-                var o = $("#aao_" + e).attr(s[0]),
-                    r = aao_check(s[0], $("#aao_" + e), o);
-                n = aao_maxtime(n, r), r || (i = !1)
+                var p = aao_check(s[0], $("#aao_" + e), o);
+                n = aao_maxtime(n, p), p || (i = !1)
             }
         });
         var s = $("#aao_" + e).attr("custom");

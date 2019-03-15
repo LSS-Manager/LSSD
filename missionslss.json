@@ -4681,5 +4681,20 @@
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "30",
         "NEF Anforderungswahrscheinlichkeit": "20",
         "Fachrichtung für Patienten": "Allgemeine Innere"
+    },
+    "438": {
+        "name": "PKW in Zapfsäule",
+        "Credits im Durchschnitt": "2000",
+        "Benötigte Streifenwagen": "2",
+        "Benötigte Löschfahrzeuge": "3",
+        "Benötigte Rüstwagen": "1",
+        "Benötigte ELW 1": "1",
+        "Benötigte GW-Öl": "1",
+        "Benötigte GW-Gefahrgut": "1",
+        "GW-Gefahrgut Anforderungswahrscheinlichkeit": "10",
+        "Maximale Patientenanzahl": "2",
+        "NEF Anforderungswahrscheinlichkeit": "10",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "30",
+        "Fachrichtung für Patienten": "Unfallchirurgie"
     }
 }

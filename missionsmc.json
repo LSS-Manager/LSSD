@@ -2217,5 +2217,17 @@
         "Max. Patients": "2",
         "Patient Specializations": "Traumatology",
         "Probability that a patient has to be transported": "70"
+    },
+    "243": {
+        "name": "Attempted Hommicide",
+        "Average credits": "1000",
+        "Required Police Cars": "6",
+        "Required K-9 Units": "1",
+        "Required SWAT Personnel": "6",
+        "Maximum Number of Prisoners": "1",
+        "Max. Patients": "1",
+        "Minimum patient number": "1",
+        "Probability that a patient has to be transported": "100",
+        "Patient Specializations": "Traumatology"
     }
 }
