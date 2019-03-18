@@ -442,8 +442,8 @@ function buildingMarkerAdd(e) {
     if (e.user_id == user_id ? building_marker_image = e.icon : e.building_type == BUILDING_TYPE_FEUERWEHRSCHULE ? building_marker_image = "/images/building_fireschool_other.png" : e.building_type == BUILDING_TYPE_FEUERWACHE ? building_marker_image = "/images/building_fire_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSWACHE ? building_marker_image = "/images/building_rettungswache_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSSCHULE ? building_marker_image = "/images/building_rettungsschule_other.png" : e.building_type == BUILDING_TYPE_CLINIC ? building_marker_image = "/images/building_clinic_other.png" : e.building_type == BUILDING_TYPE_HOSPITAL ? building_marker_image = "/images/building_hospital_other.png" : e.building_type == BUILDING_TYPE_NOTARZTHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIWACHE || e.building_type == BUILDING_TYPE_POLIZEIZELLE ? building_marker_image = "/images/building_polizeiwache_other.png" : e.building_type == BUILDING_TYPE_LEITSTELLE ? building_marker_image = "/images/building_leitstelle_other.png" : e.building_type == BUILDING_TYPE_POLIZEISCHULE ? building_marker_image = "/images/building_polizeischule_other.png" : e.building_type == BUILDING_TYPE_THW ? building_marker_image = "/images/building_thw_other.png" : e.building_type == BUILDING_TYPE_THW_BUNDESSCHULE ? building_marker_image = "/images/building_thw_school_other.png" : e.building_type == BUILDING_TYPE_BEREITSCHAFTSPOLIZEI ? building_marker_image = "/images/building_bereitschaftspolizei_other.png" : e.building_type == BUILDING_TYPE_POLIZEISONDEREINHEITEN ? building_marker_image = "/images/building_polizeisondereinheiten_other.png" : e.building_type == BUILDING_TYPE_SEG ? building_marker_image = "/images/building_seg_other.png" : e.building_type == BUILDING_TYPE_BEREITSTELLUNGSRAUM ? building_marker_image = "/images/building_bereitstellungsraum_other.png" : e.building_type == BUILDING_TYPE_WASSERRETTUNG ? building_marker_image = "/images/building_wasserwacht_other.png" : e.building_type == BUILDING_TYPE_FIRE_BOAT_DOCK ? building_marker_image = "/images/building_fire_boat_dock_other.png" : e.building_type == BUILDING_TYPE_RESCUE_BOAT_DOCK && (building_marker_image = "/images/building_rescue_boat_dock_other.png"), e.building_marker_image = building_marker_image, e.user_id == user_id) {
         var i = "<li  class='building_list_li' building_type_id='" + e.building_type + "' leitstelle_building_id='" + e.lbid + "'><div class='building_list_caption' id='building_list_caption_" + e.id + "' >" + e.detail_button + "<img class='building_marker_image' building_id='" + e.id + "' src='" + building_marker_image + "'>" + "<a href='' class='map_position_mover' data-latitude='" + e.latitude + "' data-longitude='" + e.longitude + "'>" + e.name + "</a>";
         0 == e.show_vehicles_at_startpage && (i += hideVehicleBuildingHelpText(e.id)), i += "</div>";
-        var n = "";
-        "undefined" != typeof buildingVehicleCache[e.id] && (n = buildingVehicleCache[e.id].join(""), buildingVehicleCache[e.id] = []), i = i + "<ul id='vehicle_building_" + e.id + "' class='building_list_vehicles' ", 0 == e.show_vehicles_at_startpage && (i += "style='display: none' "), i = i + ">" + n + "</ul></li>", 7 == e.building_type && (leitstelle_latitude = e.latitude, leitstelle_longitude = e.longitude, leitstelles.push([e.latitude, e.longitude])), buildingMarkerBulkContentCache.push(i)
+        var n = "<li>" + I18n.t("common.loading") + "</li>";
+        "undefined" != typeof buildingVehicleCache[e.id] && (n = buildingVehicleCache[e.id].join(""), buildingVehicleCache[e.id] = []), i = i + "<ul id='vehicle_building_" + e.id + "' class='building_list_vehicles' data-vehicles-loaded='0' data-building_id='" + e.id + "' ", 0 == e.show_vehicles_at_startpage && (i += "style='display: none' "), i = i + ">" + n + "</ul></li>", 7 == e.building_type && (leitstelle_latitude = e.latitude, leitstelle_longitude = e.longitude, leitstelles.push([e.latitude, e.longitude])), buildingMarkerBulkContentCache.push(i)
     }
     1 == mobile_bridge_use && 4 == mobile_version && (e.name = e.name.replace("%", ""), e.app_icon_path = -1 !== String(building_marker_image).indexOf("//") ? building_marker_image : currentHostname() + building_marker_image, mobileBridgeAdd("building_add", e)), building_markers_cache.push(e)
 }
@@ -459,7 +459,7 @@ function spliceLatLngs(e, t) {
 }
 
 function buildingMarkerBulkContentCacheDraw() {
-    $("#building_list").append(buildingMarkerBulkContentCache.join("")), buildingMarkerBulkContentCache = []
+    $("#building_list").append(buildingMarkerBulkContentCache.join("")), buildingMarkerBulkContentCache = [], buildingsVehicleLoadVisible()
 }
 
 function currentHostname() {
@@ -520,6 +520,21 @@ function missionMarkerReset() {
     }), $.each(patient_timers, function() {
         patient_timers = []
     }), mission_timers = Array()
+}
+
+function buildingsVehicleLoadVisible() {
+    var e = $("#building_panel_body").offset().top - 3 * $("#building_panel_body").height(),
+        t = $("#building_panel_body").offset().top + 3 * $("#building_panel_body").height();
+    $("#building_panel_body").is(":visible") && $(".building_list_vehicles:visible").each(function() {
+        var i = $(this).offset().top;
+        i > e && t > i && "0" == $(this).data("vehicles-loaded") && ($(this).data("vehicles-loaded", "1"), buildingsVehicleLoad($(this).data("building_id")))
+    })
+}
+
+function buildingsVehicleLoad(building_id) {
+    $.get("/buildings/" + building_id + "/vehiclesMap", function(data) {
+        buildingVehicleCache[building_id] = [], eval(data), vehicleContent = "", "undefined" != typeof buildingVehicleCache[building_id] && (vehicleContent = buildingVehicleCache[building_id].join(""), buildingVehicleCache[building_id] = []), $("#vehicle_building_" + building_id).html(vehicleContent)
+    })
 }
 
 function progressBarScrollUpdate() {
@@ -1248,11 +1263,11 @@ function buildingSelectionOnly(e) {
     var t = ["building_selection_wasserrettung", "building_selection_feuerwehr", "building_selection_rettung", "building_selection_polizei", "building_selection_schule", "building_selection_leitstelle", "building_selection_thw"];
     $.each(t, function(t, i) {
         e.attr("id") == i ? buildingSelectionActive($("#" + i)) : buildingSelectionDeactive($("#" + i))
-    })
+    }), buildingSelectionSave(), buildingsVehicleLoadVisible()
 }
 
 function buildingSelection(e) {
-    e.hasClass("btn-success") ? buildingSelectionDeactive(e) : buildingSelectionActive(e), buildingSelectionSave()
+    e.hasClass("btn-success") ? buildingSelectionDeactive(e) : buildingSelectionActive(e), buildingSelectionSave(), buildingsVehicleLoadVisible()
 }
 
 function buildingSelectionActive(button) {
@@ -1276,7 +1291,7 @@ function buildingSelectionSave() {
 function buildingSelectionLoad() {
     deactive_selection_string = $.cookie("deactive_selection"), deactive_selection_string && (deactive_selection = deactive_selection_string.split(","), $.each(deactive_selection, function(e, t) {
         buildingSelectionDeactive($("#" + t))
-    }))
+    })), buildingsVehicleLoadVisible()
 }
 
 function vehicle_group_available(vehicle_group_id, calculate_time) {
@@ -1415,7 +1430,7 @@ function bigMapWindowPositionRestore() {
         var t = JSON.parse(e);
         bigMapWindowPositionRestoreWindow($("#missions_outer"), t.m), bigMapWindowPositionRestoreWindow($("#buildings_outer"), t.b), bigMapWindowPositionRestoreWindow($("#chat_outer"), t.c), bigMapWindowPositionRestoreWindow($("#radio_outer"), t.r)
     }
-    bigMapWindowSizeChanged()
+    bigMapWindowSizeChanged(), buildingsVehicleLoadVisible()
 }
 
 function bigMapWindowPositionRestoreWindow(e, t) {
@@ -1431,7 +1446,7 @@ function bigMapMenuOpenClose(e) {
 }
 
 function bigMapMenuOpen(e) {
-    $("body").hasClass("bigMap") && (e.addClass("animated fadeIn").removeClass("fadeOut"), bigMapWindowInfront(e), bigMapWindowSizeChanged())
+    $("body").hasClass("bigMap") && (e.addClass("animated fadeIn").removeClass("fadeOut"), bigMapWindowInfront(e), bigMapWindowSizeChanged()), buildingsVehicleLoadVisible()
 }
 
 function bigMapMenuClose(e) {
@@ -20095,6 +20110,10 @@ var map, alliance_building_show, geocoder, directionsService, building_eval_unlo
         }, 400)), missionScrollUpdateWait || (missionScrollUpdateWait = !0, setTimeout(function() {
             missionScrollUpdate(), missionScrollUpdateWait = !1
         }, 300))
+    }), $("#building_panel_body").scroll(function() {
+        clearTimeout($.data(this, "scrollTimerBuildings")), $.data(this, "scrollTimerBuildings", setTimeout(function() {
+            buildingsVehicleLoadVisible()
+        }, 200))
     }), $("#bigMapMenuMissionButton").click(function() {
         bigMapMenuOpenClose($("#missions_outer")), progressBarScrollUpdate()
     }), $("#bigMapMenuBuildingButton").click(function() {
