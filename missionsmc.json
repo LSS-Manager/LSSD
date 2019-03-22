@@ -2229,5 +2229,21 @@
         "Minimum patient number": "1",
         "Probability that a patient has to be transported": "100",
         "Patient Specializations": "Traumatology"
+    },
+    "244": {
+        "name": "Fare dodger",
+        "Average credits": "120",
+        "Required Police Cars": "1"
+    },
+    "245": {
+        "name": "Medical emergency on crane",
+        "Average credits": "950",
+        "Required Firetrucks": "1",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Heavy Rescue Vehicles": "2",
+        "Max. Patients": "1",
+        "Patient Specializations": "General Internal",
+        "Minimum patient number": "1",
+        "Probability that a patient has to be transported": "60"
     }
 }

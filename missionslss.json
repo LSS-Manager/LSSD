@@ -4696,5 +4696,27 @@
         "NEF Anforderungswahrscheinlichkeit": "10",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "30",
         "Fachrichtung für Patienten": "Unfallchirurgie"
+    },
+    "439": {
+        "name": "Einsturz Parkhaus",
+        "Credits im Durchschnitt": "8000",
+        "Benötigte Löschfahrzeuge": "18",
+        "Benötigte Rüstwagen": "2",
+        "Benötigte GW L 2 Wasser": "1",
+        "Benötigte Streifenwagen": "10",
+        "Benötigte Drehleitern": "3",
+        "Benötigte Feuerwehrkräne (FwK)": "2",
+        "Benötigte ELW 1": "5",
+        "Benötigte ELW 2": "2",
+        "Benötigte GKW": "2",
+        "Benötigte MTW-TZ": "2",
+        "BRmG R": "2",
+        "LKW K 9": "2",
+        "Benötigte MzKW": "2",
+        "Maximale Patientenanzahl": "10",
+        "NEF Anforderungswahrscheinlichkeit": "50",
+        "RTH Anforderungswahrscheinlichkeit": "10",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "70",
+        "Fachrichtung für Patienten": "Unfallchirurgie"
     }
 }

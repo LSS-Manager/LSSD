@@ -3966,5 +3966,31 @@
         "Maximale patiënten aantal": "4",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "40",
         "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
+    },
+    "414": {
+        "name": "Brand in transformatorhuisje",
+        "Gemiddeld aantal Credits": "800",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde OvD-B's": "1",
+        "OvD-B benodigd waarschijnlijkheid": "10"
+    },
+    "415": {
+        "name": "Brand in transformatorhuisje",
+        "Gemiddeld aantal Credits": "1800",
+        "Benodigde tankautospuiten": "2",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "10",
+        "Benodigde OvD-B's": "1"
+    },
+    "416": {
+        "name": "Brand in transformatorhuisje",
+        "Gemiddeld aantal Credits": "3000",
+        "Benodigde tankautospuiten": "2",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "20",
+        "Benodigde OvD-B's": "1",
+        "Benodigde HOVD's": "1",
+        "Benodigde Commandowagen": "1",
+        "Benodigde noodhulpeenheden": "2"
     }
 }

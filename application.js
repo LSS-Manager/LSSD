@@ -121,6 +121,33 @@ function allianceChat(e) {
     "true" == e.alliance_admin ? n += "label label-info" : "true" == e.alliance_coadmin && (n += "label label-default"), audio_chat && 1 != e.ignore_audio && user_id != e.user_id && !i && (play("chat_message"), i = !0), n = n + "'>" + e.username + ":</a></span>", e.mission_id && (n = n + "<a href='/missions/" + e.mission_id + "' class='lightbox-open'><span class='glyphicon glyphicon-bell'></span>", "undefined" != typeof e.mission_caption && e.mission_caption && (n = n + "[" + e.mission_caption + "]"), n += "</a> "), n = n + " " + e.message + "</li>", $("#mission_chat_messages").prepend(n), !$("body").hasClass("bigMap") || missionMarkerBulkAdd || $("#chat_outer").hasClass("fadeIn") || $("#bigMapMenuChatButton").addClass("bigMapMenuButtonGreen")
 }
 
+function waterCalculatorSetPercent(e, t, i) {
+    var n = 100 - i;
+    t > n && (t = n), t > 0 ? e.css("width", t + "%").show() : e.css("width", "0%").hide()
+}
+
+function waterCalculator(e) {
+    var t = 0;
+    $(".progress-bar-mission-window-water").each(function() {
+        t = $(this).data("need_water")
+    });
+    var i = $("#mission_water_bar_at_mission_" + e).data("water-has"),
+        n = 25 * $("#mission_water_bar_at_mission_" + e).data("water-schlauchwagen") / 100;
+    i += i * n;
+    var s = parseInt(100 * (i / t));
+    waterCalculatorSetPercent($("#mission_water_bar_at_mission_" + e), s, 0);
+    var o = $("#mission_water_bar_driving_" + e).data("water-has"),
+        r = 25 * $("#mission_water_bar_driving_" + e).data("water-schlauchwagen") / 100;
+    o = o + o * (r + n) + i * r;
+    var a = parseInt(100 * (o / t));
+    waterCalculatorSetPercent($("#mission_water_bar_driving_" + e), a, s);
+    var l = $("#mission_water_bar_selected_" + e).data("water-has"),
+        c = 25 * $("#mission_water_bar_selected_" + e).data("water-schlauchwagen") / 100;
+    l = l + l * (c + r + n) + i * c + o * c;
+    var u = parseInt(100 * (l / t));
+    waterCalculatorSetPercent($("#mission_water_bar_selected_" + e), u, a + s)
+}
+
 function missionWindowHasUpdate(e) {
     $("#mission_bar_holder_" + e).addClass("col-xs-3 col-md-6"), $("#mission_reload_request_" + e).show()
 }
@@ -523,6 +550,7 @@ function missionMarkerReset() {
 }
 
 function buildingsVehicleLoadVisible() {
+    if ($("#building_panel_body").length <= 0) return !0;
     var e = $("#building_panel_body").offset().top - 3 * $("#building_panel_body").height(),
         t = $("#building_panel_body").offset().top + 3 * $("#building_panel_body").height();
     $("#building_panel_body").is(":visible") && $(".building_list_vehicles:visible").each(function() {
@@ -1465,7 +1493,7 @@ function bigMapWindowInfront(e) {
 
 function toggleVehicleBuilding(e) {
     var t = 0;
-    $("#vehicle_building_" + e).is(":visible") ? ($("#building_list_caption_" + e).append(hideVehicleBuildingHelpText(e)), $("#vehicle_building_" + e).hide()) : ($("#hidden_vehicle_list_caption_" + e).remove(), $("#vehicle_building_" + e).show(), t = 1), $.ajax({
+    $("#vehicle_building_" + e).is(":visible") ? ($("#building_list_caption_" + e).append(hideVehicleBuildingHelpText(e)), $("#vehicle_building_" + e).hide()) : ($("#hidden_vehicle_list_caption_" + e).remove(), $("#vehicle_building_" + e).show(), t = 1), buildingsVehicleLoadVisible(), $.ajax({
         type: "POST",
         url: "/buildings/" + e + "/showVehiclesAtStartpage",
         data: {
