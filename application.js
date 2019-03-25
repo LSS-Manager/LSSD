@@ -1225,7 +1225,7 @@ function missionSelectionOnly(e) {
     var t = ["mission_select_emergency", "mission_select_krankentransport", "mission_select_alliance", "mission_select_alliance_event", "mission_select_sicherheitswache"];
     $.each(t, function(t, i) {
         e.attr("id") == i ? missionSelectionActive($("#" + i)) : missionSelectionDeactive($("#" + i))
-    })
+    }), missionSelectionSave()
 }
 
 function missionSelectionUpdateButtons() {
@@ -1265,7 +1265,7 @@ function missionSelectionSave() {
 
 function missionSelectionLoad() {
     deactive_selection_string = $.cookie("deactive_m_selection"), deactive_selection_string && (deactive_selection = deactive_selection_string.split(","), $.each(deactive_selection, function(e, t) {
-        buildingSelectionDeactive($("#" + t))
+        missionSelectionDeactive($("#" + t))
     }))
 }
 
