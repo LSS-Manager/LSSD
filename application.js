@@ -799,7 +799,7 @@ function vehicleMarkerAdd(e) {
     1 == e.fms_real ? t = I18n.t("fms.ready_traveling") : 2 == e.fms_real ? t = I18n.t("fms.ready_home") : 3 == e.fms_real ? t = I18n.t("fms.going") : 4 == e.fms_real ? t = I18n.t("fms.on_place") : 5 == e.fms_real ? t = I18n.t("fms.on_destination") : 6 == e.fms_real ? t = I18n.t("fms.not_ready") : 7 == e.fms_real ? t = I18n.t("fms.patient_transported") : 8 == e.fms_real ? t = I18n.t("fms.on_destination") : 9 == e.fms_real ? t = I18n.t("fms.waiting_for_vehicle") : 0 == e.fms_real && (t = "Notruf");
     var i = '<img src="/images/icons8-location_off.svg" class="vehicle_search" vehicle_id="' + e.id + '"><span title="' + t + '" class=" building_list_fms building_list_fms_' + e.fms_real + '">' + e.fms + "</span>  " + '<a href="/vehicles/' + e.id + '" class="label label-default vehicle_building_list_button lightbox-open" id="vehicle_button_' + e.id + '" vehicle_type_id="' + e.vehicle_type_id + '">' + e.caption + "</a>";
     if ((3 == e.fms_real || 4 == e.fms_real) && (i += '<a href="/vehicles/' + e.id + '/backalarm" class="btn btn-default btn-xs backalarm">' + I18n.t("javascript.backalarm") + "</a>", e.back_alarm), $("#vehicle_overview_vehicle_" + e.id).html(e.fms).attr("class", "building_list_fms building_list_fms_" + e.fms_real).attr("title", t), "undefined" == typeof L) return !0;
-    if ($("#vehicle_list_" + e.id).length > 0) $("#vehicle_list_" + e.id).html(i);
+    if ($("#vehicle_list_" + e.id).length > 0 && ("undefined" == typeof e.bulkInsert || !e.bulkInsert)) $("#vehicle_list_" + e.id).html(i);
     else {
         var n = '<li class="building_list_vehicle_element" vehicle_id="' + e.id + '" id="vehicle_list_' + e.id + '">';
         n += i, n += "</li>", "undefined" != typeof e.bulkInsert && e.bulkInsert ? ("undefined" == typeof buildingVehicleCache[e.building_id] && (buildingVehicleCache[e.building_id] = []), buildingVehicleCache[e.building_id].push(n)) : $("#vehicle_building_" + e.building_id).append(n)
@@ -20138,10 +20138,6 @@ var map, alliance_building_show, geocoder, directionsService, building_eval_unlo
         }, 400)), missionScrollUpdateWait || (missionScrollUpdateWait = !0, setTimeout(function() {
             missionScrollUpdate(), missionScrollUpdateWait = !1
         }, 300))
-    }), $("#building_panel_body").scroll(function() {
-        clearTimeout($.data(this, "scrollTimerBuildings")), $.data(this, "scrollTimerBuildings", setTimeout(function() {
-            buildingsVehicleLoadVisible()
-        }, 200))
     }), $("#bigMapMenuMissionButton").click(function() {
         bigMapMenuOpenClose($("#missions_outer")), progressBarScrollUpdate()
     }), $("#bigMapMenuBuildingButton").click(function() {
