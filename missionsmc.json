@@ -2253,5 +2253,22 @@
         "Minimum patient number": "1",
         "Probability of NEF": "0",
         "Probability that a patient has to be transported": "0"
+    },
+    "247": {
+        "name": "Possible Sepsis",
+        "Required Rescue Stations": "1",
+        "Max. Patients": "1",
+        "Minimum patient number": "1",
+        "Patient Specializations": "General Internal",
+        "Probability that a patient has to be transported": "100"
+    },
+    "248": {
+        "name": "Mental health concern",
+        "Required Rescue Stations": "1",
+        "Required Police Cars": "1",
+        "Max. Patients": "1",
+        "Minimum patient number": "1",
+        "Patient Specializations": "General Surgeon",
+        "Probability that a patient has to be transported": "80"
     }
 }

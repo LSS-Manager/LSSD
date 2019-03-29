@@ -124,6 +124,7 @@
     "15": {
         "name": "Kleiner Waldbrand",
         "Credits im Durchschnitt": "1010",
+        "Wasserbedarf": "800",
         "Benötigte Löschfahrzeuge": "1",
         "Ausbreitungsmöglichkeiten": [
             ["https://www.leitstellenspiel.de/einsaetze/134", "Großer Waldbrand"],
@@ -1236,12 +1237,13 @@
     "131": {
         "name": "Mittlerer Feldbrand",
         "Credits im Durchschnitt": "2000",
-        "Benötigte Löschfahrzeuge": "3",
+        "Wasserbedarf": "8000",
         "Benötigte GW L 2 Wasser": "1",
         "GW-L2-Wasser Anforderungswahrscheinlichkeit": "20",
         "Benötigte ELW 1": "1",
         "ELW 1 Anforderungswahrscheinlichkeit": "50",
         "Durchschnittliche min. Personalanzahl (Feuerwehr)": "25",
+        "Benötigte Löschfahrzeuge": "1",
         "Ausbreitungsmöglichkeiten": [
             ["https://www.leitstellenspiel.de/einsaetze/132", "Großer Feldbrand"],
             ["https://www.leitstellenspiel.de/einsaetze/133", "Großer Feldbrand"]
@@ -1250,19 +1252,21 @@
     "132": {
         "name": "Großer Feldbrand",
         "Credits im Durchschnitt": "5000",
-        "Benötigte Löschfahrzeuge": "5",
+        "Wasserbedarf": "13000",
         "Benötigte GW L 2 Wasser": "1",
         "Benötigte ELW 1": "1",
-        "Durchschnittliche min. Personalanzahl (Feuerwehr)": "40"
+        "Durchschnittliche min. Personalanzahl (Feuerwehr)": "40",
+        "Benötigte Löschfahrzeuge": "1"
     },
     "133": {
         "name": "Großer Feldbrand",
         "Credits im Durchschnitt": "5100",
-        "Benötigte Löschfahrzeuge": "5",
+        "Wasserbedarf": "13000",
         "Benötigte GW L 2 Wasser": "1",
         "Benötigte ELW 1": "1",
         "Durchschnittliche min. Personalanzahl (Feuerwehr)": "40",
-        "Benötigte Streifenwagen": "1"
+        "Benötigte Streifenwagen": "1",
+        "Benötigte Löschfahrzeuge": "1"
     },
     "134": {
         "name": "Großer Waldbrand",
@@ -4718,5 +4722,15 @@
         "RTH Anforderungswahrscheinlichkeit": "10",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "70",
         "Fachrichtung für Patienten": "Unfallchirurgie"
+    },
+    "440": {
+        "name": "Akute Atemnot",
+        "Vorraussetzung an Rettungswachen": "3",
+        "Maximale Patientenanzahl": "1",
+        "Mindest Patientenanzahl": "1",
+        "Fachrichtung für Patienten": "Allgemeine Innere",
+        "NEF Anforderungswahrscheinlichkeit": "80",
+        "Tragehilfe Anforderungswahrscheinlichkeit": "10",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "90"
     }
 }

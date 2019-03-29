@@ -135,17 +135,17 @@ function waterCalculator(e) {
         n = 25 * $("#mission_water_bar_at_mission_" + e).data("water-schlauchwagen") / 100;
     i += i * n;
     var s = parseInt(100 * (i / t));
-    waterCalculatorSetPercent($("#mission_water_bar_at_mission_" + e), s, 0);
+    waterCalculatorSetPercent($("#mission_water_bar_at_mission_" + e), s, 0), $("#mission_water_bar_at_mission_" + e).html("Einsatzstelle: " + number_format(parseInt(i)) + " l.");
     var o = $("#mission_water_bar_driving_" + e).data("water-has"),
         r = 25 * $("#mission_water_bar_driving_" + e).data("water-schlauchwagen") / 100;
     o = o + o * (r + n) + i * r;
     var a = parseInt(100 * (o / t));
-    waterCalculatorSetPercent($("#mission_water_bar_driving_" + e), a, s);
+    waterCalculatorSetPercent($("#mission_water_bar_driving_" + e), a, s), $("#mission_water_bar_driving_" + e).html("Anfahrt: " + number_format(parseInt(o)) + " l.");
     var l = $("#mission_water_bar_selected_" + e).data("water-has"),
         c = 25 * $("#mission_water_bar_selected_" + e).data("water-schlauchwagen") / 100;
     l = l + l * (c + r + n) + i * c + o * c;
     var u = parseInt(100 * (l / t));
-    waterCalculatorSetPercent($("#mission_water_bar_selected_" + e), u, a + s)
+    waterCalculatorSetPercent($("#mission_water_bar_selected_" + e), u, a + s), $("#mission_water_bar_selected_" + e).html("AusgewÃ¤hlt: " + number_format(parseInt(l)) + " l."), u + a + s >= 100 ? ($("#mission_water_bar_selected_" + e).addClass("progress-bar-success").removeClass("progress-bar-danger"), $("#mission_water_progress_" + e).addClass("progress-glow-success").removeClass("progress-glow-danger")) : ($("#mission_water_bar_selected_" + e).addClass("progress-bar-danger").removeClass("progress-bar-success"), $("#mission_water_progress_" + e).addClass("progress-glow-danger").removeClass("progress-glow-success")), waterCalculatorSetPercent($("#mission_water_bar_missing_" + e), 100, u + a + s), $("#mission_water_bar_missing_" + e).html("Fehlen: " + number_format(parseInt(t) - (parseInt(l) + parseInt(o) + parseInt(i))) + " l.")
 }
 
 function missionWindowHasUpdate(e) {
