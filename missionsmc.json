@@ -2245,5 +2245,13 @@
         "Patient Specializations": "General Internal",
         "Minimum patient number": "1",
         "Probability that a patient has to be transported": "60"
+    },
+    "246": {
+        "name": "Patient Transfer",
+        "": "",
+        "Max. Patients": "1",
+        "Minimum patient number": "1",
+        "Probability of NEF": "0",
+        "Probability that a patient has to be transported": "0"
     }
 }
