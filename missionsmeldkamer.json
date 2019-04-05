@@ -4034,5 +4034,33 @@
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie",
         "MMT-Arts benodigd waarschijnlijkheid": "100"
+    },
+    "421": {
+        "name": "Overvalalarm bankkantoor",
+        "Gemiddeld aantal Credits": "2200",
+        "Benodigde noodhulpeenheden": "3"
+    },
+    "422": {
+        "name": "Overval bankkantoor",
+        "Gemiddeld aantal Credits": "2200",
+        "Benodigde noodhulpeenheden": "3",
+        "Maximaal aantal gevangenen": "1"
+    },
+    "423": {
+        "name": "Overval bankkantoor",
+        "Gemiddeld aantal Credits": "4100",
+        "Benodigde noodhulpeenheden": "4",
+        "Benodigde Officiers van Dienst Politie": "1",
+        "Benodigde Hondengeleider": "1",
+        "Maximaal aantal gevangenen": "2"
+    },
+    "424": {
+        "name": "Overval bankkantoor",
+        "Gemiddeld aantal Credits": "4500",
+        "Benodigde noodhulpeenheden": "5",
+        "Benodigde Officiers van Dienst Politie": "1",
+        "Benodigde Hondengeleider": "1",
+        "Benodigde politie helikopters": "1",
+        "Maximaal aantal gevangenen": "2"
     }
 }

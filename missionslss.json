@@ -4732,5 +4732,18 @@
         "NEF Anforderungswahrscheinlichkeit": "80",
         "Tragehilfe Anforderungswahrscheinlichkeit": "10",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "90"
+    },
+    "441": {
+        "name": "Brennende Waldhütte",
+        "Credits im Durchschnitt": "1600",
+        "Wasserbedarf": "4000",
+        "Benötigte ELW 1": "1",
+        "Benötigte Rüstwagen": "1",
+        "Durchschnittliche min. Personalanzahl (Feuerwehr)": "10",
+        "Benötigte Löschfahrzeuge": "1",
+        "Ausbreitungsmöglichkeiten": [
+            ["https://www.leitstellenspiel.de/einsaetze/134", "Großer Waldbrand"],
+            ["https://www.leitstellenspiel.de/einsaetze/135", "Großer Waldbrand"]
+        ]
     }
 }
