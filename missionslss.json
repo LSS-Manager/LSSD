@@ -1852,38 +1852,38 @@
     },
     "195": {
         "name": "Schwerpunkteinsatz Tageswohnungseinbrüche",
-        "Credits im Durchschnitt": "1000",
+        "Vorraussetzung an Bereitschaftspolizeiwache": "1",
         "Benötigte GruKw": "3",
         "Benötigte leBefKw": "1"
     },
     "196": {
         "name": "Schwerpunkteinsatz Verkehrsüberwachung",
-        "Credits im Durchschnitt": "1000",
+        "Vorraussetzung an Bereitschaftspolizeiwache": "1",
         "Benötigte GruKw": "3",
         "Benötigte leBefKw": "1"
     },
     "197": {
         "name": "Präsenzeinsatz Volksfest",
-        "Credits im Durchschnitt": "2000",
+        "Vorraussetzung an Bereitschaftspolizeiwache": "1",
         "Benötigte GruKw": "3",
         "Benötigte leBefKw": "1"
     },
     "198": {
         "name": "Jugendschutzkontrolle in Diskothek",
-        "Credits im Durchschnitt": "2500",
+        "Vorraussetzung an Bereitschaftspolizeiwache": "1",
         "Benötigte Streifenwagen": "2",
         "Benötigte GruKw": "3",
         "Benötigte leBefKw": "1"
     },
     "199": {
         "name": "Geländedurchsuchung nach Beweismittel",
-        "Credits im Durchschnitt": "750",
+        "Vorraussetzung an Bereitschaftspolizeiwache": "1",
         "Benötigte GruKw": "3",
         "Benötigte leBefKw": "1"
     },
     "200": {
         "name": "Geplante Razzia",
-        "Credits im Durchschnitt": "5500",
+        "Vorraussetzung an Bereitschaftspolizeiwache": "1",
         "Benötigte Streifenwagen": "2",
         "Streifenwagen Anforderungswahrscheinlichkeit": "100",
         "Benötigte GruKw": "6",
@@ -1896,7 +1896,7 @@
     },
     "201": {
         "name": "Fußball Bundesliga-Spiel",
-        "Credits im Durchschnitt": "9000",
+        "Vorraussetzung an Bereitschaftspolizeiwache": "1",
         "Benötigte GruKw": "9",
         "Benötigte leBefKw": "3",
         "Benötigte FüKw": "1",
@@ -2855,16 +2855,16 @@
         "Credits im Durchschnitt": "100",
         "Benötigte Streifenwagen": "1",
         "Maximale Anzahl an Gefangene": "1",
-        "Tritt nur ab dem Datum auf": "Mittwoch, 14. März 2018, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Montag, 02. April 2018, 23:59 Uhr"
+        "Tritt nur ab dem Datum auf": "Donnerstag, 11. April 2019, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Montag, 22. April 2019, 23:59 Uhr"
     },
     "285": {
         "name": "Pinsel aus Werkstatt entwendet",
         "Credits im Durchschnitt": "150",
         "Benötigte Streifenwagen": "1",
         "Maximale Anzahl an Gefangene": "1",
-        "Tritt nur ab dem Datum auf": "Mittwoch, 14. März 2018, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Montag, 02. April 2018, 23:59 Uhr"
+        "Tritt nur ab dem Datum auf": "Donnerstag, 11. April 2019, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Montag, 22. April 2019, 23:59 Uhr"
     },
     "286": {
         "name": "Eingestürzter Hasenbau",
@@ -2874,8 +2874,8 @@
         "BRmG R": "1",
         "LKW K 9": "1",
         "Benötigte Streifenwagen": "2",
-        "Tritt nur ab dem Datum auf": "Mittwoch, 14. März 2018, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Montag, 02. April 2018, 23:59 Uhr"
+        "Tritt nur ab dem Datum auf": "Donnerstag, 11. April 2019, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Montag, 22. April 2019, 23:59 Uhr"
     },
     "287": {
         "name": "Angefahrener Osterhase",
@@ -2885,29 +2885,29 @@
         "Maximale Patientenanzahl": "1",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "38",
         "Fachrichtung für Patienten": "Unfallchirurgie",
-        "Tritt nur ab dem Datum auf": "Mittwoch, 14. März 2018, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Montag, 02. April 2018, 23:59 Uhr"
+        "Tritt nur ab dem Datum auf": "Donnerstag, 11. April 2019, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Montag, 22. April 2019, 23:59 Uhr"
     },
     "288": {
         "name": "Brennendes Osternest",
         "Credits im Durchschnitt": "110",
         "Benötigte Löschfahrzeuge": "1",
-        "Tritt nur ab dem Datum auf": "Mittwoch, 14. März 2018, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Montag, 02. April 2018, 23:59 Uhr"
+        "Tritt nur ab dem Datum auf": "Donnerstag, 11. April 2019, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Montag, 22. April 2019, 23:59 Uhr"
     },
     "289": {
         "name": "Schokoladenspur auf Strasse",
         "Credits im Durchschnitt": "400",
         "Benötigte Löschfahrzeuge": "1",
-        "Tritt nur ab dem Datum auf": "Mittwoch, 14. März 2018, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Montag, 02. April 2018, 23:59 Uhr"
+        "Tritt nur ab dem Datum auf": "Donnerstag, 11. April 2019, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Montag, 22. April 2019, 23:59 Uhr"
     },
     "290": {
         "name": "Eierkocherbrand",
         "Credits im Durchschnitt": "800",
         "Benötigte Löschfahrzeuge": "2",
-        "Tritt nur ab dem Datum auf": "Mittwoch, 14. März 2018, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Montag, 02. April 2018, 23:59 Uhr"
+        "Tritt nur ab dem Datum auf": "Donnerstag, 11. April 2019, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Montag, 22. April 2019, 23:59 Uhr"
     },
     "291": {
         "name": "Hasentreffen in Ostereistedt",
@@ -2919,8 +2919,8 @@
         "Benötigte RTW": "4",
         "Benötigte Löschfahrzeuge": "2",
         "Dauer": "2 Stunden",
-        "Tritt nur ab dem Datum auf": "Mittwoch, 14. März 2018, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Montag, 02. April 2018, 23:59 Uhr"
+        "Tritt nur ab dem Datum auf": "Donnerstag, 11. April 2019, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Montag, 22. April 2019, 23:59 Uhr"
     },
     "292": {
         "name": "Tankbetrug",
@@ -4745,5 +4745,53 @@
             ["https://www.leitstellenspiel.de/einsaetze/134", "Großer Waldbrand"],
             ["https://www.leitstellenspiel.de/einsaetze/135", "Großer Waldbrand"]
         ]
+    },
+    "442": {
+        "name": "Osterei in Wasser",
+        "Credits im Durchschnitt": "1000",
+        "Benötigte Boote": "1",
+        "Tritt nur ab dem Datum auf": "Donnerstag, 11. April 2019, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Montag, 22. April 2019, 23:59 Uhr"
+    },
+    "443": {
+        "name": "Osterei-LKW umgestürzt",
+        "Credits im Durchschnitt": "2200",
+        "Benötigte Löschfahrzeuge": "2",
+        "Benötigte Rüstwagen": "1",
+        "Benötigte ELW 1": "1",
+        "Benötigte Feuerwehrkräne (FwK)": "1",
+        "FwK Anforderungswahrscheinlichkeit": "75",
+        "Mindest Patientenanzahl": "1",
+        "Maximale Patientenanzahl": "2",
+        "NEF Anforderungswahrscheinlichkeit": "50",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "50",
+        "Fachrichtung für Patienten": "Unfallchirurgie",
+        "Tritt nur ab dem Datum auf": "Donnerstag, 11. April 2019, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Montag, 22. April 2019, 23:59 Uhr"
+    },
+    "444": {
+        "name": "Schwerpunkteinsatz Osterei suche",
+        "Vorraussetzung an Bereitschaftspolizeiwache": "1",
+        "Benötigte GruKw": "3",
+        "Benötigte leBefKw": "1",
+        "Tritt nur ab dem Datum auf": "Donnerstag, 11. April 2019, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Montag, 22. April 2019, 23:59 Uhr"
+    },
+    "445": {
+        "name": "Ei rollt in Schlangenlinien",
+        "Credits im Durchschnitt": "400",
+        "Benötigte Streifenwagen": "1",
+        "Tritt nur ab dem Datum auf": "Donnerstag, 11. April 2019, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Montag, 22. April 2019, 23:59 Uhr"
+    },
+    "446": {
+        "name": "Osterhase auf Kran",
+        "Credits im Durchschnitt": "2000",
+        "Benötigte GW-Höhenrettung": "1",
+        "Benötigte ELW 1": "1",
+        "Benötigte Streifenwagen": "1",
+        "Benötigte Löschfahrzeuge": "1",
+        "Tritt nur ab dem Datum auf": "Donnerstag, 11. April 2019, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Montag, 22. April 2019, 23:59 Uhr"
     }
 }

@@ -4062,5 +4062,34 @@
         "Benodigde Hondengeleider": "1",
         "Benodigde politie helikopters": "1",
         "Maximaal aantal gevangenen": "2"
+    },
+    "425": {
+        "name": "Brand in bouwmarkt",
+        "Gemiddeld aantal Credits": "850",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde redvoertuigen": "1",
+        "Hoogwerker benodigd waarschijnlijkheid": "20"
+    },
+    "426": {
+        "name": "Brand in bouwmarkt",
+        "Gemiddeld aantal Credits": "1550",
+        "Benodigde tankautospuiten": "2",
+        "Benodigde redvoertuigen": "1",
+        "Hoogwerker benodigd waarschijnlijkheid": "80",
+        "Benodigde OvD-B's": "1"
+    },
+    "427": {
+        "name": "Brand in bouwmarkt",
+        "Gemiddeld aantal Credits": "2500",
+        "Benodigde tankautospuiten": "3",
+        "Benodigde redvoertuigen": "1",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Adembeschermingsvoertuigen": "1",
+        "Adembeschermingsvoertuig benodigd waarschijnlijkheid": "20",
+        "Benodigde slangenwagens": "1",
+        "Slangenwagen benodigd waarschijnlijkheid": "40",
+        "Benodigde HOVD's": "1",
+        "HOVD benodigd waarschijnlijkheid": "50",
+        "Benodigde noodhulpeenheden": "1"
     }
 }
