@@ -116,7 +116,9 @@
     "14": {
         "name": "Kleiner Feldbrand",
         "Credits im Durchschnitt": "1000",
-        "Benötigte Löschfahrzeuge": "2",
+        "Wasserbedarf": "2000",
+        "Durchschnittliche min. Personalanzahl (Feuerwehr)": "9",
+        "Benötigte Löschfahrzeuge": "1",
         "Ausbreitungsmöglichkeiten": [
             ["https://www.leitstellenspiel.de/einsaetze/131", "Mittlerer Feldbrand"]
         ]
@@ -1271,10 +1273,12 @@
     "134": {
         "name": "Großer Waldbrand",
         "Credits im Durchschnitt": "4000",
-        "Benötigte Löschfahrzeuge": "3",
+        "Wasserbedarf": "8000",
+        "Durchschnittliche min. Personalanzahl (Feuerwehr)": "18",
         "Benötigte GW L 2 Wasser": "1",
         "GW-L2-Wasser Anforderungswahrscheinlichkeit": "70",
         "Benötigte ELW 1": "1",
+        "Benötigte Löschfahrzeuge": "1",
         "Ausbreitungsmöglichkeiten": [
             ["https://www.leitstellenspiel.de/einsaetze/136", "Großfeuer im Wald"],
             ["https://www.leitstellenspiel.de/einsaetze/137", "Großfeuer im Wald"]
@@ -1283,11 +1287,13 @@
     "135": {
         "name": "Großer Waldbrand",
         "Credits im Durchschnitt": "4100",
-        "Benötigte Löschfahrzeuge": "3",
+        "Wasserbedarf": "8500",
+        "Durchschnittliche min. Personalanzahl (Feuerwehr)": "18",
         "Benötigte GW L 2 Wasser": "1",
         "GW-L2-Wasser Anforderungswahrscheinlichkeit": "70",
         "Benötigte ELW 1": "1",
         "Benötigte Streifenwagen": "1",
+        "Benötigte Löschfahrzeuge": "1",
         "Ausbreitungsmöglichkeiten": [
             ["https://www.leitstellenspiel.de/einsaetze/136", "Großfeuer im Wald"],
             ["https://www.leitstellenspiel.de/einsaetze/137", "Großfeuer im Wald"]
@@ -1296,7 +1302,7 @@
     "136": {
         "name": "Großfeuer im Wald",
         "Credits im Durchschnitt": "8000",
-        "Benötigte Löschfahrzeuge": "10",
+        "Wasserbedarf": "25000",
         "Benötigte GW L 2 Wasser": "1",
         "Benötigte ELW 1": "2",
         "Benötigte GW-A": "1",
@@ -1306,6 +1312,7 @@
         "Drehleiter Anforderungswahrscheinlichkeit": "10",
         "Benötigte Streifenwagen": "1",
         "Durchschnittliche min. Personalanzahl (Feuerwehr)": "80",
+        "Benötigte Löschfahrzeuge": "1",
         "Maximale Patientenanzahl": "1",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "50",
         "Fachrichtung für Patienten": "Allgemeine Innere"
@@ -1313,7 +1320,7 @@
     "137": {
         "name": "Großfeuer im Wald",
         "Credits im Durchschnitt": "8100",
-        "Benötigte Löschfahrzeuge": "10",
+        "Wasserbedarf": "25000",
         "Benötigte GW L 2 Wasser": "1",
         "Benötigte ELW 1": "2",
         "Benötigte GW-A": "1",
@@ -1323,6 +1330,7 @@
         "Drehleiter Anforderungswahrscheinlichkeit": "10",
         "Durchschnittliche min. Personalanzahl (Feuerwehr)": "80",
         "Benötigte Streifenwagen": "3",
+        "Benötigte Löschfahrzeuge": "1",
         "Maximale Patientenanzahl": "1",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "50",
         "Fachrichtung für Patienten": "Allgemeine Innere"
@@ -1330,34 +1338,40 @@
     "138": {
         "name": "Flächenbrand",
         "Credits im Durchschnitt": "1500",
-        "Benötigte Löschfahrzeuge": "2"
+        "Wasserbedarf": "3000",
+        "Durchschnittliche min. Personalanzahl (Feuerwehr)": "9",
+        "Benötigte Löschfahrzeuge": "1"
     },
     "139": {
         "name": "Flächenbrand",
         "Credits im Durchschnitt": "3500",
-        "Benötigte Löschfahrzeuge": "4",
+        "Wasserbedarf": "8000",
+        "Durchschnittliche min. Personalanzahl (Feuerwehr)": "30",
         "Benötigte GW L 2 Wasser": "1",
         "GW-L2-Wasser Anforderungswahrscheinlichkeit": "20",
         "Benötigte ELW 1": "1",
         "ELW 1 Anforderungswahrscheinlichkeit": "20",
-        "Durchschnittliche min. Personalanzahl (Feuerwehr)": "30"
+        "Benötigte Löschfahrzeuge": "1"
     },
     "140": {
         "name": "Flächenbrand",
         "Credits im Durchschnitt": "1600",
-        "Benötigte Löschfahrzeuge": "2",
-        "Benötigte Streifenwagen": "2"
+        "Wasserbedarf": "3000",
+        "Durchschnittliche min. Personalanzahl (Feuerwehr)": "9",
+        "Benötigte Streifenwagen": "2",
+        "Benötigte Löschfahrzeuge": "1"
     },
     "141": {
         "name": "Flächenbrand",
         "Credits im Durchschnitt": "3600",
-        "Benötigte Löschfahrzeuge": "4",
+        "Wasserbedarf": "8000",
+        "Durchschnittliche min. Personalanzahl (Feuerwehr)": "30",
         "Benötigte GW L 2 Wasser": "1",
         "GW-L2-Wasser Anforderungswahrscheinlichkeit": "20",
         "Benötigte ELW 1": "1",
         "ELW 1 Anforderungswahrscheinlichkeit": "20",
-        "Durchschnittliche min. Personalanzahl (Feuerwehr)": "30",
-        "Benötigte Streifenwagen": "2"
+        "Benötigte Streifenwagen": "2",
+        "Benötigte Löschfahrzeuge": "1"
     },
     "142": {
         "name": "Feuer auf Balkon",
@@ -1924,7 +1938,8 @@
     "204": {
         "name": "Scheunenbrand",
         "Credits im Durchschnitt": "3500",
-        "Benötigte Löschfahrzeuge": "6",
+        "Wasserbedarf": "14000",
+        "Durchschnittliche min. Personalanzahl (Feuerwehr)": "30",
         "Benötigte ELW 1": "1",
         "ELW 1 Anforderungswahrscheinlichkeit": "100",
         "Benötigte Drehleitern": "1",
@@ -1933,7 +1948,7 @@
         "GW-A Anforderungswahrscheinlichkeit": "25",
         "Benötigte GW L 2 Wasser": "1",
         "GW-L2-Wasser Anforderungswahrscheinlichkeit": "60",
-        "Durchschnittliche min. Personalanzahl (Feuerwehr)": "30",
+        "Benötigte Löschfahrzeuge": "1",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Unfallchirurgie",
         "Ausbreitungsmöglichkeiten": [
@@ -4770,7 +4785,7 @@
         "Tritt nur bis zu dem Datum auf": "Montag, 22. April 2019, 23:59 Uhr"
     },
     "444": {
-        "name": "Schwerpunkteinsatz Osterei suche",
+        "name": "Schwerpunkteinsatz Ostereiersuche",
         "Vorraussetzung an Bereitschaftspolizeiwache": "1",
         "Benötigte GruKw": "3",
         "Benötigte leBefKw": "1",
