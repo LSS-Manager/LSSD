@@ -1378,7 +1378,10 @@
         "Credits im Durchschnitt": "1500",
         "Benötigte Löschfahrzeuge": "2",
         "Benötigte Drehleitern": "1",
-        "Drehleiter Anforderungswahrscheinlichkeit": "30"
+        "Drehleiter Anforderungswahrscheinlichkeit": "30",
+        "Ausbreitungsmöglichkeiten": [
+            ["https://www.leitstellenspiel.de/einsaetze/447", "Eingestürzter Balkon"]
+        ]
     },
     "143": {
         "name": "Brennende Papiercontainer",
@@ -2664,7 +2667,10 @@
         "Benötigte Drehleitern": "1",
         "Drehleiter Anforderungswahrscheinlichkeit": "30",
         "Tritt nur ab dem Datum auf": "Freitag, 28. Dezember 2018, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Donnerstag, 03. Januar 2019, 23:59 Uhr"
+        "Tritt nur bis zu dem Datum auf": "Donnerstag, 03. Januar 2019, 23:59 Uhr",
+        "Ausbreitungsmöglichkeiten": [
+            ["https://www.leitstellenspiel.de/einsaetze/447", "Eingestürzter Balkon"]
+        ]
     },
     "265": {
         "name": "Brennende Papiercontainer durch Feuerwerkskörper",
@@ -4175,7 +4181,10 @@
         "Benötigte Feuerwehrkräne (FwK)": "1",
         "FwK Anforderungswahrscheinlichkeit": "25",
         "Benötigte Streifenwagen": "1",
-        "Benötigte GKW": "1"
+        "Benötigte GKW": "1",
+        "Ausbreitungsmöglichkeiten": [
+            ["https://www.leitstellenspiel.de/einsaetze/447", "Eingestürzter Balkon"]
+        ]
     },
     "394": {
         "name": "LKW auf Stauende",
@@ -4808,5 +4817,23 @@
         "Benötigte Löschfahrzeuge": "1",
         "Tritt nur ab dem Datum auf": "Donnerstag, 11. April 2019, 00:00 Uhr",
         "Tritt nur bis zu dem Datum auf": "Montag, 22. April 2019, 23:59 Uhr"
+    },
+    "447": {
+        "name": "Eingestürzter Balkon",
+        "Credits im Durchschnitt": "3000",
+        "Benötigte Löschfahrzeuge": "3",
+        "Benötigte Rüstwagen": "1",
+        "Benötigte ELW 1": "1",
+        "Benötigte Drehleitern": "1",
+        "Benötigte Feuerwehrkräne (FwK)": "1",
+        "FwK Anforderungswahrscheinlichkeit": "40",
+        "Benötigte Streifenwagen": "2",
+        "Benötigte GKW": "1",
+        "Benötigte MzKW": "1",
+        "Benötigte MTW-TZ": "1",
+        "Maximale Patientenanzahl": "5",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "50",
+        "NEF Anforderungswahrscheinlichkeit": "30",
+        "Fachrichtung für Patienten": "Unfallchirurgie"
     }
 }

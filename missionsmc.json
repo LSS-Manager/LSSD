@@ -2321,5 +2321,63 @@
         "Patient Specializations": "General Internal",
         "Minimum patient number": "1",
         "Probability that a patient has to be transported": "100"
+    },
+    "253": {
+        "name": "Hotel fire small",
+        "Average credits": "3000",
+        "Required Firetrucks": "4",
+        "Max. Patients": "6",
+        "Patient Specializations": "General Internal",
+        "Probability that a patient has to be transported": "40",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/254", "Hotel fire medium"]
+        ]
+    },
+    "254": {
+        "name": "Hotel fire medium",
+        "Average credits": "5000",
+        "Required Firetrucks": "6",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Platform Trucks": "1",
+        "Max. Patients": "10",
+        "Patient Specializations": "General Internal",
+        "Probability that a patient has to be transported": "40",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/255", "Hotel fire large"]
+        ]
+    },
+    "255": {
+        "name": "Hotel fire large",
+        "Average credits": "8000",
+        "Required Firetrucks": "8",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Platform Trucks": "1",
+        "Required Heavy Rescue Vehicles": "1",
+        "Required Water Tankers": "1",
+        "Probability of Water Tanker being required": "10",
+        "Required Mobile Air Vehicles": "1",
+        "Probability of Mobile Air being required": "30",
+        "Required Police Cars": "3",
+        "Max. Patients": "20",
+        "Patient Specializations": "General Internal",
+        "Probability that a patient has to be transported": "40",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/256", "Hotel fire major"]
+        ]
+    },
+    "256": {
+        "name": "Hotel fire major",
+        "Average credits": "12000",
+        "Required Firetrucks": "14",
+        "Required Battalion Chief Vehicles": "4",
+        "Required Platform Trucks": "2",
+        "Required Heavy Rescue Vehicles": "2",
+        "Required Water Tankers": "1",
+        "Required Mobile Air Vehicles": "1",
+        "Required Mobile Command Vehicles": "1",
+        "Required Police Cars": "6",
+        "Max. Patients": "50",
+        "Patient Specializations": "General Internal",
+        "Probability that a patient has to be transported": "40"
     }
 }

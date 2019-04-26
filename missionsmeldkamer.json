@@ -4091,5 +4091,40 @@
         "Benodigde HOVD's": "1",
         "HOVD benodigd waarschijnlijkheid": "50",
         "Benodigde noodhulpeenheden": "1"
+    },
+    "428": {
+        "name": "Brand in bouwmarkt",
+        "Gemiddeld aantal Credits": "4850",
+        "Benodigde tankautospuiten": "4",
+        "Benodigde redvoertuigen": "2",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "20",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Adembeschermingsvoertuigen": "1",
+        "Adembeschermingsvoertuig benodigd waarschijnlijkheid": "80",
+        "Benodigde slangenwagens": "1",
+        "Benodigde Waarschuwings- en Verkenningsdienst voertuigen": "1",
+        "Waarschuwings- en Verkenningsdienst voertuigen benodigd waarschijnlijkheid": "20",
+        "Benodigde HOVD's": "1",
+        "Benodigde Commandowagen": "1",
+        "Benodigde noodhulpeenheden": "2"
+    },
+    "429": {
+        "name": "Brand in bouwmarkt",
+        "Gemiddeld aantal Credits": "6850",
+        "Benodigde tankautospuiten": "8",
+        "Benodigde redvoertuigen": "3",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "40",
+        "Benodigde OvD-B's": "2",
+        "Benodigde Adembeschermingsvoertuigen": "1",
+        "Benodigde slangenwagens": "2",
+        "Benodigde Waarschuwings- en Verkenningsdienst voertuigen": "2",
+        "Waarschuwings- en Verkenningsdienst voertuigen benodigd waarschijnlijkheid": "50",
+        "Benodigde Adviseurs Gevaarlijke Stoffen": "1",
+        "Aantal Adviseurs Gevaarlijke Stoffen benodigd waarschijnlijkheid": "50",
+        "Benodigde HOVD's": "1",
+        "Benodigde Commandowagen": "1",
+        "Benodigde noodhulpeenheden": "2"
     }
 }
