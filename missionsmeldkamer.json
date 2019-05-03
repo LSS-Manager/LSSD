@@ -4126,5 +4126,40 @@
         "Benodigde HOVD's": "1",
         "Benodigde Commandowagen": "1",
         "Benodigde noodhulpeenheden": "2"
+    },
+    "430": {
+        "name": "Persoon bekneld tussen containers",
+        "Benodigd aantal Ambulancestandplaatsen": "1",
+        "Maximale patiënten aantal": "1",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
+        "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
+    },
+    "431": {
+        "name": "Persoon bekneld tussen containers",
+        "Gemiddeld aantal Credits": "950",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "60",
+        "Benodigde OvD-B's": "1",
+        "Benodigde noodhulpeenheden": "1",
+        "Maximale patiënten aantal": "1",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
+        "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
+    },
+    "432": {
+        "name": "Persoon bekneld onder heftruck",
+        "Gemiddeld aantal Credits": "1050",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "60",
+        "Benodigde OvD-B's": "1",
+        "Benodigde noodhulpeenheden": "1",
+        "Maximale patiënten aantal": "1",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
+        "Gespecialiseerde afdeling voor patiënten": "Traumatologie",
+        "MMT-Arts benodigd waarschijnlijkheid": "100"
     }
 }

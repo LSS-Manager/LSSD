@@ -320,7 +320,7 @@ function iconAnchorCalculate(e) {
 function eventAnnounce(e) {
     if (window.clearTimeout(eventTimer), e.end_in > 0) {
         eventRunning = !0;
-        var t = "<div class='alert alert-info'>" + e.running_text + " " + I18n.t("javascript.finish_in") + " " + formatTime(e.end_in);
+        var t = "<div class='alert alert-info'>" + e.running_text + " " + I18n.t("javascript.finish_in") + " " + formatTime(e.end_in) + ".";
         null != e.start_username && (t = t + " " + I18n.t("javascript.start_username") + " " + e.start_username), t += "</div>", $("#eventInfo").html(t)
     }
     e.end_in = e.end_in - 1, e.start_in = e.start_in - 1, e.end_in > 0 ? eventTimer = window.setTimeout(function() {

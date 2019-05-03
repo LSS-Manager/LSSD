@@ -2379,5 +2379,26 @@
         "Max. Patients": "50",
         "Patient Specializations": "General Internal",
         "Probability that a patient has to be transported": "40"
+    },
+    "257": {
+        "name": "Attempted Hommicide",
+        "Average credits": "2000",
+        "Required Police Cars": "6",
+        "Required K-9 Units": "1",
+        "Required SWAT Personnel": "6",
+        "Maximum Number of Prisoners": "1",
+        "Max. Patients": "1",
+        "Patient Specializations": "Traumatology",
+        "Probability that a patient has to be transported": "10"
+    },
+    "258": {
+        "name": "Attempted Hommicide",
+        "Average credits": "2100",
+        "Required Police Cars": "6",
+        "Required K-9 Units": "1",
+        "Maximum Number of Prisoners": "1",
+        "Max. Patients": "1",
+        "Patient Specializations": "Traumatology",
+        "Probability that a patient has to be transported": "10"
     }
 }
