@@ -21,6 +21,18 @@ function successfullMessage(e) {
     }, 2e3)
 }
 
+function aao_building_check(e, t) {
+    if (e.length <= 0) return !0;
+    if (t.attr("building_id").indexOf("_") >= 0) {
+        var i = t.attr("building_id").split("_"),
+            n = !1;
+        return $.each(i, function(t, i) {
+            e.indexOf(parseInt(i)) >= 0 && (n = !0)
+        }), n
+    }
+    return e.indexOf(parseInt(t.attr("building_id"))) >= 0 ? !0 : !1
+}
+
 function aao_check(e, t, i) {
     var n = -3;
     if (i > 0) {
@@ -32,7 +44,7 @@ function aao_check(e, t, i) {
             if (i > 0) {
                 var s = [];
                 if ("" != t.attr("building_ids")) var s = jQuery.parseJSON(t.attr("building_ids"));
-                (s.length <= 0 || s.indexOf(parseInt($(this).attr("building_id"))) >= 0) && !$(this).is(":checked") && !$(this).is(":disabled") && $(this).attr("ignore_aao") <= 0 && ($(this).attr("vehicle_type_ignore_default_aao") <= 0 || -1 !== e.indexOf("custom_")) && (i -= "wasser_amount" == e || "wasser_amount_tlf" == e ? $(this).attr(e) : 1), 0 >= i && (n = $("#vehicle_sort_" + $(this).val()).attr("timevalue"))
+                aao_building_check(s, $(this)) && !$(this).is(":checked") && !$(this).is(":disabled") && $(this).attr("ignore_aao") <= 0 && ($(this).attr("vehicle_type_ignore_default_aao") <= 0 || -1 !== e.indexOf("custom_")) && (i -= "wasser_amount" == e || "wasser_amount_tlf" == e ? $(this).attr(e) : 1), 0 >= i && (n = $("#vehicle_sort_" + $(this).val()).attr("timevalue"))
             }
         })
     }
@@ -47,7 +59,7 @@ function aaoNextAvailable(e, t) {
         if (-1 == i) {
             var n = [];
             if ("" != t.attr("building_ids")) var n = jQuery.parseJSON(t.attr("building_ids"));
-            if ((n.length <= 0 || n.indexOf(parseInt($(this).attr("building_id"))) >= 0) && !$(this).prop("checked") && !$(this).prop("disabled") && $(this).attr("ignore_aao") <= 0 && ($(this).attr("vehicle_type_ignore_default_aao") <= 0 || -1 !== e.indexOf("custom_"))) {
+            if (aao_building_check(n, $(this)) && !$(this).prop("checked") && !$(this).prop("disabled") && $(this).attr("ignore_aao") <= 0 && ($(this).attr("vehicle_type_ignore_default_aao") <= 0 || -1 !== e.indexOf("custom_"))) {
                 var s = $(this).val();
                 i = parseInt($("#vehicle_sort_" + s).attr("sortvalue"))
             }
@@ -64,7 +76,7 @@ function aao(e, t, i, n) {
             if (n > 0) {
                 var i = [];
                 if ("" != t.attr("building_ids")) var i = jQuery.parseJSON(t.attr("building_ids"));
-                (i.length <= 0 || i.indexOf(parseInt($(this).attr("building_id"))) >= 0) && !$(this).prop("checked") && !$(this).prop("disabled") && $(this).attr("ignore_aao") <= 0 && ($(this).attr("vehicle_type_ignore_default_aao") <= 0 || -1 !== e.indexOf("custom_")) && ("grtw0" == e && $("#vehicle_mode_" + $(this).val() + "_0").prop("checked", !0).change(), "grtw1" == e && $("#vehicle_mode_" + $(this).val() + "_1").prop("checked", !0).change(), n -= "wasser_amount" == e || "wasser_amount_tlf" == e ? $(this).attr(e) : 1, $(this).prop("checked", !0), $(this).change())
+                aao_building_check(i, $(this)) && !$(this).prop("checked") && !$(this).prop("disabled") && $(this).attr("ignore_aao") <= 0 && ($(this).attr("vehicle_type_ignore_default_aao") <= 0 || -1 !== e.indexOf("custom_")) && ("grtw0" == e && $("#vehicle_mode_" + $(this).val() + "_0").prop("checked", !0).change(), "grtw1" == e && $("#vehicle_mode_" + $(this).val() + "_1").prop("checked", !0).change(), n -= "wasser_amount" == e || "wasser_amount_tlf" == e ? $(this).attr(e) : 1, $(this).prop("checked", !0), $(this).change())
             }
         })
     }
