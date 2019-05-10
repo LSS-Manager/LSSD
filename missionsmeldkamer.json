@@ -4161,5 +4161,51 @@
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
         "Gespecialiseerde afdeling voor patiënten": "Traumatologie",
         "MMT-Arts benodigd waarschijnlijkheid": "100"
+    },
+    "433": {
+        "name": "Lekkende tankwagen",
+        "Gemiddeld aantal Credits": "1200",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "80",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Waarschuwings- en Verkenningsdienst voertuigen": "1",
+        "Waarschuwings- en Verkenningsdienst voertuigen benodigd waarschijnlijkheid": "10",
+        "Benodigde Adviseurs Gevaarlijke Stoffen": "1",
+        "Aantal Adviseurs Gevaarlijke Stoffen benodigd waarschijnlijkheid": "50",
+        "Benodigde noodhulpeenheden": "1",
+        "Maximale patiënten aantal": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "50",
+        "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
+    },
+    "434": {
+        "name": "Lekkende tankwagen",
+        "Gemiddeld aantal Credits": "3800",
+        "Benodigde tankautospuiten": "2",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Waarschuwings- en Verkenningsdienst voertuigen": "1",
+        "Waarschuwings- en Verkenningsdienst voertuigen benodigd waarschijnlijkheid": "60",
+        "Benodigde Adviseurs Gevaarlijke Stoffen": "1",
+        "Benodigde noodhulpeenheden": "2",
+        "Maximale patiënten aantal": "2",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "50",
+        "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
+    },
+    "435": {
+        "name": "Lekkende tankwagen",
+        "Gemiddeld aantal Credits": "4000",
+        "Benodigde tankautospuiten": "2",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Waarschuwings- en Verkenningsdienst voertuigen": "1",
+        "Benodigde Adviseurs Gevaarlijke Stoffen": "1",
+        "Benodigde HOVD's": "1",
+        "Benodigde Commandowagen": "1",
+        "Benodigde noodhulpeenheden": "3",
+        "Benodigde Officiers van Dienst Politie": "1",
+        "Maximale patiënten aantal": "4",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "50",
+        "Gespecialiseerde afdeling voor patiënten": "Traumatologie"
     }
 }

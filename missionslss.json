@@ -385,7 +385,7 @@
     },
     "44": {
         "name": "Alkoholintoxikation",
-        "Vorraussetzung an Rettungswachen": "1",
+        "Voraussetzung an Rettungswachen": "1",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Allgemeine Innere",
         "Mindest Patientenanzahl": "1",
@@ -393,14 +393,14 @@
     },
     "45": {
         "name": "Nasenbluten unstillbar",
-        "Vorraussetzung an Rettungswachen": "1",
+        "Voraussetzung an Rettungswachen": "1",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Allgemeine Chirurgie",
         "Mindest Patientenanzahl": "1"
     },
     "46": {
         "name": "Herzinfarkt",
-        "Vorraussetzung an Rettungswachen": "3",
+        "Voraussetzung an Rettungswachen": "3",
         "Maximale Patientenanzahl": "1",
         "Mindest Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Kardiologie",
@@ -410,7 +410,7 @@
     },
     "47": {
         "name": "akuter Asthma-Anfall",
-        "Vorraussetzung an Rettungswachen": "3",
+        "Voraussetzung an Rettungswachen": "3",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Allgemeine Innere",
         "Mindest Patientenanzahl": "1",
@@ -419,7 +419,7 @@
     },
     "48": {
         "name": "Krampfanfall",
-        "Vorraussetzung an Rettungswachen": "3",
+        "Voraussetzung an Rettungswachen": "3",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Neurologie",
         "Mindest Patientenanzahl": "1",
@@ -429,7 +429,7 @@
     },
     "49": {
         "name": "Fieber",
-        "Vorraussetzung an Rettungswachen": "3",
+        "Voraussetzung an Rettungswachen": "3",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Allgemeine Innere",
         "Mindest Patientenanzahl": "1",
@@ -439,7 +439,7 @@
     },
     "50": {
         "name": "Gestürzte Person",
-        "Vorraussetzung an Rettungswachen": "1",
+        "Voraussetzung an Rettungswachen": "1",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Unfallchirurgie",
         "Mindest Patientenanzahl": "1",
@@ -484,7 +484,7 @@
     },
     "54": {
         "name": "Personenschaden durch Verbrennung",
-        "Vorraussetzung an Rettungswachen": "3",
+        "Voraussetzung an Rettungswachen": "3",
         "Maximale Patientenanzahl": "1",
         "Mindest Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Unfallchirurgie",
@@ -502,7 +502,7 @@
     },
     "56": {
         "name": "Betrunkene Person auf Weihnachtsmarkt",
-        "Vorraussetzung an Rettungswachen": "1",
+        "Voraussetzung an Rettungswachen": "1",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Allgemeine Innere",
         "Mindest Patientenanzahl": "1",
@@ -511,7 +511,7 @@
     },
     "57": {
         "name": "Gestürzter Fußgänger",
-        "Vorraussetzung an Rettungswachen": "1",
+        "Voraussetzung an Rettungswachen": "1",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Unfallchirurgie",
         "Mindest Patientenanzahl": "1",
@@ -519,7 +519,7 @@
     },
     "58": {
         "name": "Gestürzter Radfahrer",
-        "Vorraussetzung an Rettungswachen": "1",
+        "Voraussetzung an Rettungswachen": "1",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Unfallchirurgie",
         "Mindest Patientenanzahl": "1",
@@ -771,7 +771,7 @@
     },
     "87": {
         "name": "Kleinflugzeug abgestürzt",
-        "Vorraussetzung an Feuerwachen": "6",
+        "Voraussetzung an Feuerwachen": "6",
         "Benötigte Löschfahrzeuge": "3",
         "Benötigte ELW 1": "1",
         "Benötigte ELW 2": "1",
@@ -824,7 +824,7 @@
     },
     "92": {
         "name": "Schlaganfall",
-        "Vorraussetzung an Rettungswachen": "3",
+        "Voraussetzung an Rettungswachen": "3",
         "Mindest Patientenanzahl": "1",
         "Maximale Patientenanzahl": "1",
         "NEF Anforderungswahrscheinlichkeit": "45",
@@ -1001,7 +1001,7 @@
     },
     "108": {
         "name": "Schwangere in Notsituation",
-        "Vorraussetzung an Rettungswachen": "5",
+        "Voraussetzung an Rettungswachen": "5",
         "Mindest Patientenanzahl": "1",
         "Maximale Patientenanzahl": "1",
         "NEF Anforderungswahrscheinlichkeit": "100",
@@ -1011,7 +1011,7 @@
     },
     "109": {
         "name": "Beginnende Geburt",
-        "Vorraussetzung an Rettungswachen": "5",
+        "Voraussetzung an Rettungswachen": "5",
         "Mindest Patientenanzahl": "1",
         "Maximale Patientenanzahl": "1",
         "NEF Anforderungswahrscheinlichkeit": "95",
@@ -1021,7 +1021,7 @@
     },
     "110": {
         "name": "Vaginale Blutung",
-        "Vorraussetzung an Rettungswachen": "5",
+        "Voraussetzung an Rettungswachen": "5",
         "Mindest Patientenanzahl": "1",
         "Maximale Patientenanzahl": "1",
         "Tragehilfe Anforderungswahrscheinlichkeit": "10",
@@ -1068,7 +1068,7 @@
     },
     "115": {
         "name": "Zombiebiss",
-        "Vorraussetzung an Rettungswachen": "1",
+        "Voraussetzung an Rettungswachen": "1",
         "Maximale Patientenanzahl": "1",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "100",
         "Fachrichtung für Patienten": "Neurologie",
@@ -1170,8 +1170,8 @@
         "Credits im Durchschnitt": "1700",
         "Benötigte Streifenwagen": "1",
         "Benötigte Rüstwagen": "1",
-        "Rüstwagen Anforderungswahrscheinlichkeit": "50",
         "Benötigte Löschfahrzeuge": "1",
+        "Rüstwagen Anforderungswahrscheinlichkeit": "50",
         "Mindest Patientenanzahl": "2",
         "Maximale Patientenanzahl": "3",
         "NEF Anforderungswahrscheinlichkeit": "50",
@@ -1475,7 +1475,7 @@
     },
     "155": {
         "name": "Akuter Harnstau",
-        "Vorraussetzung an Rettungswachen": "7",
+        "Voraussetzung an Rettungswachen": "7",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Urologie",
         "Mindest Patientenanzahl": "1",
@@ -1485,7 +1485,7 @@
     },
     "156": {
         "name": "Harnleiter Blutung",
-        "Vorraussetzung an Rettungswachen": "7",
+        "Voraussetzung an Rettungswachen": "7",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Urologie",
         "Mindest Patientenanzahl": "1",
@@ -1495,7 +1495,7 @@
     },
     "157": {
         "name": "Herzrhythmusstörungen",
-        "Vorraussetzung an Rettungswachen": "7",
+        "Voraussetzung an Rettungswachen": "7",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Kardiologie",
         "Mindest Patientenanzahl": "1",
@@ -1545,7 +1545,7 @@
     },
     "164": {
         "name": "Kopfplatzwunde",
-        "Vorraussetzung an Rettungswachen": "1",
+        "Voraussetzung an Rettungswachen": "1",
         "Maximale Patientenanzahl": "1",
         "Mindest Patientenanzahl": "1",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "90",
@@ -1554,7 +1554,7 @@
     },
     "165": {
         "name": "Gehirnerschütterung",
-        "Vorraussetzung an Rettungswachen": "5",
+        "Voraussetzung an Rettungswachen": "5",
         "Maximale Patientenanzahl": "1",
         "Mindest Patientenanzahl": "1",
         "NEF Anforderungswahrscheinlichkeit": "20",
@@ -1708,7 +1708,7 @@
     },
     "179": {
         "name": "Schädelverletzung",
-        "Vorraussetzung an Rettungswachen": "9",
+        "Voraussetzung an Rettungswachen": "9",
         "Maximale Patientenanzahl": "1",
         "Mindest Patientenanzahl": "1",
         "Tragehilfe Anforderungswahrscheinlichkeit": "5",
@@ -1718,7 +1718,7 @@
     },
     "180": {
         "name": "Wirbelsäulenverletzung",
-        "Vorraussetzung an Rettungswachen": "9",
+        "Voraussetzung an Rettungswachen": "9",
         "Maximale Patientenanzahl": "1",
         "Mindest Patientenanzahl": "1",
         "Tragehilfe Anforderungswahrscheinlichkeit": "5",
@@ -1729,7 +1729,7 @@
     },
     "181": {
         "name": "Sturz aus Höhe",
-        "Vorraussetzung an Rettungswachen": "9",
+        "Voraussetzung an Rettungswachen": "9",
         "Maximale Patientenanzahl": "1",
         "Mindest Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Neurochirurgie",
@@ -1739,7 +1739,7 @@
     },
     "182": {
         "name": "Sturz aus Höhe",
-        "Vorraussetzung an Rettungswachen": "9",
+        "Voraussetzung an Rettungswachen": "9",
         "Maximale Patientenanzahl": "1",
         "Mindest Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Unfallchirurgie",
@@ -1748,7 +1748,7 @@
     },
     "183": {
         "name": "Sonnenstich",
-        "Vorraussetzung an Rettungswachen": "2",
+        "Voraussetzung an Rettungswachen": "2",
         "Maximale Patientenanzahl": "1",
         "Mindest Patientenanzahl": "1",
         "Tragehilfe Anforderungswahrscheinlichkeit": "5",
@@ -1759,7 +1759,7 @@
     },
     "184": {
         "name": "Hitzschlag",
-        "Vorraussetzung an Rettungswachen": "4",
+        "Voraussetzung an Rettungswachen": "4",
         "Maximale Patientenanzahl": "1",
         "Mindest Patientenanzahl": "1",
         "Tragehilfe Anforderungswahrscheinlichkeit": "2",
@@ -1770,7 +1770,7 @@
     },
     "185": {
         "name": "Hitzekrampf",
-        "Vorraussetzung an Rettungswachen": "4",
+        "Voraussetzung an Rettungswachen": "4",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Allgemeine Innere",
         "Mindest Patientenanzahl": "1",
@@ -1869,38 +1869,38 @@
     },
     "195": {
         "name": "Schwerpunkteinsatz Tageswohnungseinbrüche",
-        "Vorraussetzung an Bereitschaftspolizeiwache": "1",
+        "Voraussetzung an Bereitschaftspolizeiwache": "1",
         "Benötigte GruKw": "3",
         "Benötigte leBefKw": "1"
     },
     "196": {
         "name": "Schwerpunkteinsatz Verkehrsüberwachung",
-        "Vorraussetzung an Bereitschaftspolizeiwache": "1",
+        "Voraussetzung an Bereitschaftspolizeiwache": "1",
         "Benötigte GruKw": "3",
         "Benötigte leBefKw": "1"
     },
     "197": {
         "name": "Präsenzeinsatz Volksfest",
-        "Vorraussetzung an Bereitschaftspolizeiwache": "1",
+        "Voraussetzung an Bereitschaftspolizeiwache": "1",
         "Benötigte GruKw": "3",
         "Benötigte leBefKw": "1"
     },
     "198": {
         "name": "Jugendschutzkontrolle in Diskothek",
-        "Vorraussetzung an Bereitschaftspolizeiwache": "1",
+        "Voraussetzung an Bereitschaftspolizeiwache": "1",
         "Benötigte Streifenwagen": "2",
         "Benötigte GruKw": "3",
         "Benötigte leBefKw": "1"
     },
     "199": {
         "name": "Geländedurchsuchung nach Beweismittel",
-        "Vorraussetzung an Bereitschaftspolizeiwache": "1",
+        "Voraussetzung an Bereitschaftspolizeiwache": "1",
         "Benötigte GruKw": "3",
         "Benötigte leBefKw": "1"
     },
     "200": {
         "name": "Geplante Razzia",
-        "Vorraussetzung an Bereitschaftspolizeiwache": "1",
+        "Voraussetzung an Bereitschaftspolizeiwache": "1",
         "Benötigte Streifenwagen": "2",
         "Streifenwagen Anforderungswahrscheinlichkeit": "100",
         "Benötigte GruKw": "6",
@@ -1913,7 +1913,7 @@
     },
     "201": {
         "name": "Fußball Bundesliga-Spiel",
-        "Vorraussetzung an Bereitschaftspolizeiwache": "1",
+        "Voraussetzung an Bereitschaftspolizeiwache": "1",
         "Benötigte GruKw": "9",
         "Benötigte leBefKw": "3",
         "Benötigte FüKw": "1",
@@ -2061,7 +2061,7 @@
     },
     "210": {
         "name": "Unfall mit Motorsäge",
-        "Vorraussetzung an Rettungswachen": "4",
+        "Voraussetzung an Rettungswachen": "4",
         "Mindest Patientenanzahl": "1",
         "Maximale Patientenanzahl": "1",
         "NEF Anforderungswahrscheinlichkeit": "95",
@@ -2070,7 +2070,7 @@
     },
     "211": {
         "name": "Unterzuckerung",
-        "Vorraussetzung an Rettungswachen": "3",
+        "Voraussetzung an Rettungswachen": "3",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Allgemeine Innere",
         "Mindest Patientenanzahl": "1",
@@ -2080,7 +2080,7 @@
     },
     "212": {
         "name": "Akute Bauchschmerzen",
-        "Vorraussetzung an Rettungswachen": "3",
+        "Voraussetzung an Rettungswachen": "3",
         "Maximale Patientenanzahl": "1",
         "Mindest Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Allgemeine Chirurgie",
@@ -2758,7 +2758,7 @@
     },
     "274": {
         "name": "Bewusstlose Person",
-        "Vorraussetzung an Rettungswachen": "4",
+        "Voraussetzung an Rettungswachen": "4",
         "Mindest Patientenanzahl": "1",
         "Maximale Patientenanzahl": "1",
         "NEF Anforderungswahrscheinlichkeit": "90",
@@ -2836,7 +2836,7 @@
     },
     "281": {
         "name": "Stromschlag",
-        "Vorraussetzung an Rettungswachen": "9",
+        "Voraussetzung an Rettungswachen": "9",
         "Maximale Patientenanzahl": "1",
         "Mindest Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Allgemeine Innere",
@@ -2847,7 +2847,7 @@
     },
     "282": {
         "name": "Geplatzte Wasserleitung",
-        "Vorraussetzung an Feuerwachen": "3",
+        "Voraussetzung an Feuerwachen": "3",
         "Benötigte Löschfahrzeuge": "2",
         "Benötigte Rüstwagen": "1",
         "Rüstwagen Anforderungswahrscheinlichkeit": "20",
@@ -2951,7 +2951,7 @@
     },
     "293": {
         "name": "Bluthochdruck",
-        "Vorraussetzung an Rettungswachen": "3",
+        "Voraussetzung an Rettungswachen": "3",
         "Maximale Patientenanzahl": "1",
         "Mindest Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Kardiologie",
@@ -2991,7 +2991,7 @@
     },
     "297": {
         "name": "Arbeitsunfall im Garten",
-        "Vorraussetzung an Rettungswachen": "1",
+        "Voraussetzung an Rettungswachen": "1",
         "Maximale Patientenanzahl": "1",
         "Mindest Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Unfallchirurgie",
@@ -3195,7 +3195,7 @@
     },
     "312": {
         "name": "Verunglückter Fallschirmspringer",
-        "Vorraussetzung an Rettungswachen": "5",
+        "Voraussetzung an Rettungswachen": "5",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Unfallchirurgie",
         "Mindest Patientenanzahl": "1",
@@ -3401,7 +3401,7 @@
     },
     "326": {
         "name": "Handverletzung durch Feuerwerkskörper",
-        "Vorraussetzung an Rettungswachen": "3",
+        "Voraussetzung an Rettungswachen": "3",
         "Maximale Patientenanzahl": "1",
         "Mindest Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Unfallchirurgie",
@@ -3537,7 +3537,7 @@
     },
     "339": {
         "name": "Herzinfarkt",
-        "Vorraussetzung an Rettungswachen": "3",
+        "Voraussetzung an Rettungswachen": "3",
         "Maximale Patientenanzahl": "1",
         "Mindest Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Kardiologie",
@@ -3547,7 +3547,7 @@
     },
     "340": {
         "name": "akuter Asthma-Anfall",
-        "Vorraussetzung an Rettungswachen": "3",
+        "Voraussetzung an Rettungswachen": "3",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Allgemeine Innere",
         "Mindest Patientenanzahl": "1",
@@ -3556,7 +3556,7 @@
     },
     "341": {
         "name": "Krampfanfall",
-        "Vorraussetzung an Rettungswachen": "3",
+        "Voraussetzung an Rettungswachen": "3",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Neurologie",
         "Mindest Patientenanzahl": "1",
@@ -3748,7 +3748,7 @@
     },
     "354": {
         "name": "Grillunfall",
-        "Vorraussetzung an Rettungswachen": "4",
+        "Voraussetzung an Rettungswachen": "4",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Allgemeine Innere",
         "Mindest Patientenanzahl": "1",
@@ -3940,7 +3940,7 @@
     },
     "373": {
         "name": "Behandlung nach Schwalbe",
-        "Vorraussetzung an Rettungswachen": "1",
+        "Voraussetzung an Rettungswachen": "1",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Allgemeine Chirurgie",
         "Mindest Patientenanzahl": "1",
@@ -3950,7 +3950,7 @@
     },
     "374": {
         "name": "Prellung nach Lattenpraller",
-        "Vorraussetzung an Rettungswachen": "1",
+        "Voraussetzung an Rettungswachen": "1",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Allgemeine Chirurgie",
         "Mindest Patientenanzahl": "1",
@@ -3972,7 +3972,7 @@
     },
     "377": {
         "name": "Überzuckerung",
-        "Vorraussetzung an Rettungswachen": "3",
+        "Voraussetzung an Rettungswachen": "3",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Allgemeine Innere",
         "Mindest Patientenanzahl": "1",
@@ -4152,7 +4152,7 @@
     },
     "391": {
         "name": "Vergiftung",
-        "Vorraussetzung an Rettungswachen": "3",
+        "Voraussetzung an Rettungswachen": "3",
         "Mindest Patientenanzahl": "1",
         "Maximale Patientenanzahl": "1",
         "NEF Anforderungswahrscheinlichkeit": "60",
@@ -4225,7 +4225,7 @@
     },
     "397": {
         "name": "Schnittwunde",
-        "Vorraussetzung an Rettungswachen": "1",
+        "Voraussetzung an Rettungswachen": "1",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Allgemeine Chirurgie",
         "Mindest Patientenanzahl": "1"
@@ -4398,7 +4398,7 @@
     },
     "416": {
         "name": "Jäger stürzt von Hochsitz",
-        "Vorraussetzung an Rettungswachen": "1",
+        "Voraussetzung an Rettungswachen": "1",
         "Maximale Patientenanzahl": "1",
         "Mindest Patientenanzahl": "1",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "50",
@@ -4408,7 +4408,7 @@
     },
     "417": {
         "name": "Jäger durch Wildtier verletzt",
-        "Vorraussetzung an Rettungswachen": "1",
+        "Voraussetzung an Rettungswachen": "1",
         "Maximale Patientenanzahl": "1",
         "Mindest Patientenanzahl": "1",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "50",
@@ -4448,7 +4448,7 @@
     },
     "420": {
         "name": "Schlechter Allgemeinzustand",
-        "Vorraussetzung an Rettungswachen": "1",
+        "Voraussetzung an Rettungswachen": "1",
         "Maximale Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Allgemeine Innere",
         "Mindest Patientenanzahl": "1"
@@ -4517,7 +4517,7 @@
     },
     "425": {
         "name": "Verstauchter Knöchel",
-        "Vorraussetzung an Rettungswachen": "1",
+        "Voraussetzung an Rettungswachen": "1",
         "Mindest Patientenanzahl": "1",
         "Maximale Patientenanzahl": "1",
         "NEF Anforderungswahrscheinlichkeit": "0",
@@ -4526,7 +4526,7 @@
     },
     "426": {
         "name": "Gebrochenes Bein",
-        "Vorraussetzung an Rettungswachen": "3",
+        "Voraussetzung an Rettungswachen": "3",
         "Mindest Patientenanzahl": "1",
         "Maximale Patientenanzahl": "1",
         "NEF Anforderungswahrscheinlichkeit": "75",
@@ -4535,7 +4535,7 @@
     },
     "427": {
         "name": "Gebrochener Arm",
-        "Vorraussetzung an Rettungswachen": "3",
+        "Voraussetzung an Rettungswachen": "3",
         "Mindest Patientenanzahl": "1",
         "Maximale Patientenanzahl": "1",
         "NEF Anforderungswahrscheinlichkeit": "75",
@@ -4598,7 +4598,7 @@
     },
     "431": {
         "name": "Kreislaufkollaps",
-        "Vorraussetzung an Rettungswachen": "1",
+        "Voraussetzung an Rettungswachen": "1",
         "Mindest Patientenanzahl": "1",
         "Maximale Patientenanzahl": "1",
         "NEF Anforderungswahrscheinlichkeit": "20",
@@ -4749,7 +4749,7 @@
     },
     "440": {
         "name": "Akute Atemnot",
-        "Vorraussetzung an Rettungswachen": "3",
+        "Voraussetzung an Rettungswachen": "3",
         "Maximale Patientenanzahl": "1",
         "Mindest Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Allgemeine Innere",
@@ -4795,7 +4795,7 @@
     },
     "444": {
         "name": "Schwerpunkteinsatz Ostereiersuche",
-        "Vorraussetzung an Bereitschaftspolizeiwache": "1",
+        "Voraussetzung an Bereitschaftspolizeiwache": "1",
         "Benötigte GruKw": "3",
         "Benötigte leBefKw": "1",
         "Tritt nur ab dem Datum auf": "Donnerstag, 11. April 2019, 00:00 Uhr",
@@ -4835,5 +4835,10 @@
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "50",
         "NEF Anforderungswahrscheinlichkeit": "30",
         "Fachrichtung für Patienten": "Unfallchirurgie"
+    },
+    "448": {
+        "name": "Ermittlungen nach Unfallflucht",
+        "Credits im Durchschnitt": "100",
+        "Benötigte Streifenwagen": "1"
     }
 }
