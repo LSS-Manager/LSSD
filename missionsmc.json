@@ -2433,5 +2433,26 @@
         "Max. Patients": "2",
         "Patient Specializations": "General Internal",
         "Maximum Number of Prisoners": "3"
+    },
+    "262": {
+        "name": "Damaged Roof",
+        "Average credits": "450",
+        "Required Firetrucks": "1",
+        "Required Platform Trucks": "1",
+        "Probability of Platform Truck being required": "50"
+    },
+    "263": {
+        "name": "Unsafe Cladding",
+        "Average credits": "450",
+        "Required Firetrucks": "1",
+        "Required Platform Trucks": "1",
+        "Probability of Platform Truck being required": "50"
+    },
+    "264": {
+        "name": "Unsafe Scaffolding",
+        "Average credits": "450",
+        "Required Firetrucks": "1",
+        "Required Platform Trucks": "1",
+        "Probability of Platform Truck being required": "50"
     }
 }
