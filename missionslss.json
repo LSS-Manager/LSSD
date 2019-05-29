@@ -788,8 +788,8 @@
         "name": "Brennender Bollerwagen",
         "Credits im Durchschnitt": "500",
         "Benötigte Löschfahrzeuge": "1",
-        "Tritt nur ab dem Datum auf": "Dienstag, 08. Mai 2018, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Freitag, 11. Mai 2018, 00:00 Uhr"
+        "Tritt nur ab dem Datum auf": "Mittwoch, 29. Mai 2019, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Freitag, 31. Mai 2019, 00:00 Uhr"
     },
     "89": {
         "name": "LKW Auffahrunfall",
@@ -2154,36 +2154,36 @@
         "name": "Brennender Bollerwagen",
         "Credits im Durchschnitt": "500",
         "Benötigte Löschfahrzeuge": "1",
-        "Tritt nur ab dem Datum auf": "Dienstag, 08. Mai 2018, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Freitag, 11. Mai 2018, 00:00 Uhr"
+        "Tritt nur ab dem Datum auf": "Mittwoch, 29. Mai 2019, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Freitag, 31. Mai 2019, 00:00 Uhr"
     },
     "217": {
         "name": "Brennender Bollerwagen",
         "Credits im Durchschnitt": "500",
         "Benötigte Löschfahrzeuge": "1",
-        "Tritt nur ab dem Datum auf": "Dienstag, 08. Mai 2018, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Freitag, 11. Mai 2018, 00:00 Uhr"
+        "Tritt nur ab dem Datum auf": "Mittwoch, 29. Mai 2019, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Freitag, 31. Mai 2019, 00:00 Uhr"
     },
     "218": {
         "name": "Brennender Bollerwagen",
         "Credits im Durchschnitt": "500",
         "Benötigte Löschfahrzeuge": "1",
-        "Tritt nur ab dem Datum auf": "Dienstag, 08. Mai 2018, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Freitag, 11. Mai 2018, 00:00 Uhr"
+        "Tritt nur ab dem Datum auf": "Mittwoch, 29. Mai 2019, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Freitag, 31. Mai 2019, 00:00 Uhr"
     },
     "219": {
         "name": "Brennender Bollerwagen",
         "Credits im Durchschnitt": "500",
         "Benötigte Löschfahrzeuge": "1",
-        "Tritt nur ab dem Datum auf": "Dienstag, 08. Mai 2018, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Freitag, 11. Mai 2018, 00:00 Uhr"
+        "Tritt nur ab dem Datum auf": "Mittwoch, 29. Mai 2019, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Freitag, 31. Mai 2019, 00:00 Uhr"
     },
     "220": {
         "name": "Brennender Bollerwagen",
         "Credits im Durchschnitt": "500",
         "Benötigte Löschfahrzeuge": "1",
-        "Tritt nur ab dem Datum auf": "Dienstag, 08. Mai 2018, 00:00 Uhr",
-        "Tritt nur bis zu dem Datum auf": "Freitag, 11. Mai 2018, 00:00 Uhr"
+        "Tritt nur ab dem Datum auf": "Mittwoch, 29. Mai 2019, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Freitag, 31. Mai 2019, 00:00 Uhr"
     },
     "221": {
         "name": "Zugunglück (Groß)",
@@ -4888,5 +4888,47 @@
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "50",
         "NEF Anforderungswahrscheinlichkeit": "50",
         "Fachrichtung für Patienten": "Allgemeine Innere"
+    },
+    "452": {
+        "name": "Brennender Bollerwagen",
+        "Credits im Durchschnitt": "500",
+        "Benötigte Löschfahrzeuge": "1",
+        "Tritt nur ab dem Datum auf": "Mittwoch, 29. Mai 2019, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Freitag, 31. Mai 2019, 00:00 Uhr"
+    },
+    "453": {
+        "name": "Brennender Bollerwagen",
+        "Credits im Durchschnitt": "500",
+        "Benötigte Löschfahrzeuge": "1",
+        "Tritt nur ab dem Datum auf": "Mittwoch, 29. Mai 2019, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Freitag, 31. Mai 2019, 00:00 Uhr"
+    },
+    "454": {
+        "name": "Brennender Bollerwagen",
+        "Credits im Durchschnitt": "500",
+        "Benötigte Löschfahrzeuge": "1",
+        "Tritt nur ab dem Datum auf": "Mittwoch, 29. Mai 2019, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Freitag, 31. Mai 2019, 00:00 Uhr"
+    },
+    "455": {
+        "name": "Brennender Bollerwagen",
+        "Credits im Durchschnitt": "500",
+        "Benötigte Löschfahrzeuge": "1",
+        "Tritt nur ab dem Datum auf": "Mittwoch, 29. Mai 2019, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Freitag, 31. Mai 2019, 00:00 Uhr"
+    },
+    "456": {
+        "name": "Brennender Bollerwagen",
+        "Credits im Durchschnitt": "500",
+        "Benötigte Löschfahrzeuge": "1",
+        "Tritt nur ab dem Datum auf": "Mittwoch, 29. Mai 2019, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Freitag, 31. Mai 2019, 00:00 Uhr"
+    },
+    "457": {
+        "name": "Brennender Bollerwagen",
+        "Credits im Durchschnitt": "500",
+        "Benötigte Löschfahrzeuge": "1",
+        "Tritt nur ab dem Datum auf": "Mittwoch, 29. Mai 2019, 00:00 Uhr",
+        "Tritt nur bis zu dem Datum auf": "Freitag, 31. Mai 2019, 00:00 Uhr"
     }
 }
