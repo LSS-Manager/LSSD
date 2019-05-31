@@ -2454,5 +2454,16 @@
         "Required Firetrucks": "1",
         "Required Platform Trucks": "1",
         "Probability of Platform Truck being required": "50"
+    },
+    "265": {
+        "name": "Sports hall fire",
+        "Average credits": "2000",
+        "Required Firetrucks": "5",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Platform Trucks": "1",
+        "Required Mobile Air Vehicles": "1",
+        "Max. Patients": "4",
+        "Patient Specializations": "General Internal",
+        "Probability that a patient has to be transported": "50"
     }
 }

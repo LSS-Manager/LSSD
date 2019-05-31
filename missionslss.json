@@ -4930,5 +4930,13 @@
         "Benötigte Löschfahrzeuge": "1",
         "Tritt nur ab dem Datum auf": "Mittwoch, 29. Mai 2019, 00:00 Uhr",
         "Tritt nur bis zu dem Datum auf": "Freitag, 31. Mai 2019, 00:00 Uhr"
+    },
+    "458": {
+        "name": "Schwerlastkontrolle",
+        "Credits im Durchschnitt": "4000",
+        "Benötigte Streifenwagen": "3",
+        "Benötigte GruKw": "3",
+        "Benötigte leBefKw": "1",
+        "Dauer": "2 Stunden"
     }
 }
