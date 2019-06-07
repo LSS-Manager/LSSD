@@ -95,10 +95,10 @@ MC:
 45 = Scrap yard
 46 = Subway station
 47 = Small chemical storage tank
-48 = Large chemical storage tank,
+48 = Large chemical storage tank
 49 = Hotel
 50 = Bar
-
+51 = Landfill site
 
 MEL:
 

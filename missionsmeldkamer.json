@@ -4311,5 +4311,37 @@
         "Maximale patiënten aantal": "2",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "50",
         "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
+    },
+    "443": {
+        "name": "Brand in hotel",
+        "Gemiddeld aantal Credits": "750",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde redvoertuigen": "1",
+        "Hoogwerker benodigd waarschijnlijkheid": "20"
+    },
+    "444": {
+        "name": "Brand in hotel",
+        "Gemiddeld aantal Credits": "1550",
+        "Benodigde tankautospuiten": "2",
+        "Benodigde redvoertuigen": "1",
+        "Hoogwerker benodigd waarschijnlijkheid": "40",
+        "Benodigde OvD-B's": "1"
+    },
+    "445": {
+        "name": "Brand in hotel",
+        "Gemiddeld aantal Credits": "2500",
+        "Benodigde tankautospuiten": "3",
+        "Benodigde redvoertuigen": "1",
+        "Hoogwerker benodigd waarschijnlijkheid": "80",
+        "Benodigde OvD-B's": "1",
+        "Benodigde Adembeschermingsvoertuigen": "1",
+        "Adembeschermingsvoertuig benodigd waarschijnlijkheid": "10",
+        "Benodigde HOVD's": "1",
+        "HOVD benodigd waarschijnlijkheid": "50",
+        "Benodigde noodhulpeenheden": "2",
+        "Maximale patiënten aantal": "6",
+        "Minimale aantal slachtoffers": "2",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "40",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
     }
 }
