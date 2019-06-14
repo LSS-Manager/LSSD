@@ -2474,5 +2474,32 @@
         "Required Platform Trucks": "1",
         "Required Water Tankers": "1",
         "Probability of Water Tanker being required": "30"
-    }
+    },
+    "267": {
+        "name": "Arm caught in industrial machine",
+        "Average credits": "800",
+        "Required Firetrucks": "1",
+        "Required Heavy Rescue Vehicles": "1",
+        "Minimum patient number": "1",
+        "Max. Patients": "1",
+        "Patient Specializations": "Traumatology",
+        "Probability that a patient has to be transported": "90"
+    },
+    "268": {
+        "name": "Person trapped under machine",
+        "Average credits": "1100",
+        "Required Firetrucks": "2",
+        "Required Heavy Rescue Vehicles": "2",
+        "Minimum patient number": "1",
+        "Max. Patients": "1",
+        "Patient Specializations": "Traumatology",
+        "Probability that a patient has to be transported": "100"
+    },
+    "269": {
+        "name": "Transient Ischemic Attack",
+        "Required Rescue Stations": "1",
+        "Max. Patients": "1",
+        "Minimum patient number": "1",
+        "Patient Specializations": "Neurosurgery",
+       
 }
