@@ -2501,5 +2501,29 @@
         "Max. Patients": "1",
         "Minimum patient number": "1",
         "Patient Specializations": "Neurosurgery",
-       
-}
+
+    },
+    "270": {
+        "name": "Vehicle fire in parking garage",
+        "Average credits": "1000",
+        "Required Firetrucks": "2",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/271", "Large parking garage fire"]
+        ]
+    },
+    "271": {
+        "name": "Large parking garage fire",
+        "Average credits": "6000",
+        "Required Firetrucks": "8",
+        "Required Battalion Chief Vehicles": "2",
+        "Required Platform Trucks": "1",
+        "Required Heavy Rescue Vehicles": "2",
+        "Required Water Tankers": "1",
+        "Probability of Water Tanker being required": "5",
+        "Required Mobile Air Vehicles": "1",
+        "Required HazMat Vehicles": "1",
+        "Required Police Cars": "2",
+        "Max. Patients": "6",
+        "Patient Specializations": "General Internal",
+        "Probability that a patient has to be transported": "40"
+    }

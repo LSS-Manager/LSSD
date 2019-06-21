@@ -125,6 +125,10 @@ function vehicleDistanceDirect(e, t, i, n, s, o, r) {
     vehicleDistanceDraw(i, n, t, a), reload_table()
 }
 
+function allianceChatHeaderInfo(e) {
+    $("#alliance_chat_header_info").html(e), e.length > 0 ? $("#alliance_chat_header_info").show() : $("#alliance_chat_header_info").hide()
+}
+
 function allianceChat(e) {
     var t = "",
         i = !1;
@@ -1914,7 +1918,7 @@ function hideVehicleBuildingHelpText(e) {
                 hondengeleider: null,
                 k9: "K-9 Unit",
                 kdow_lna: null,
-                kdow_orgl: null,
+                kdow_orgl: "EMS Chief",
                 ktw_b: null,
                 ktw_or_rtw: null,
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
@@ -2020,7 +2024,7 @@ function hideVehicleBuildingHelpText(e) {
             poi_delete: 'Wirklich den POI: "%{caption}" lÃ¶schen?',
             reload: "Neuladen",
             secounds: "Sek.",
-            sicherheitswache_error: 'Die Sicherheitswache "%{caption}" wurde nicht erfolgreich durchgefÃ¼hrt, weil nicht alle Vorraussetzungen erfÃ¼llt waren.',
+            sicherheitswache_error: 'Die Sicherheitswache "%{caption}" wurde nicht erfolgreich durchgefÃ¼hrt, weil nicht alle Voraussetzung erfÃ¼llt waren.',
             sicherheitswache_success: 'Die Sicherheitswache "%{caption}" wurde erfolgreich durchgefÃ¼hrt. Du erhÃ¤ltst %{credits} Credits.',
             start_in: "AusrÃ¼cken in: ",
             start_username: "Gestartet von:",
@@ -2372,7 +2376,7 @@ function hideVehicleBuildingHelpText(e) {
                 emergency_ambulance: "MMT-Auto of Lifeliner",
                 fire_truck: "Tankautospuit",
                 fireboat: null,
-                fly_car: null,
+                fly_car: "Rapid Responder",
                 fukw: "Hondenbrigade",
                 fwk: null,
                 gefkw: "Gevangenen transport",

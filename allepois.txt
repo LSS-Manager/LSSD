@@ -99,6 +99,7 @@ MC:
 49 = Hotel
 50 = Bar
 51 = Landfill site
+52 = Parking Garage
 
 MEL:
 

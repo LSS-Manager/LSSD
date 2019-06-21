@@ -4377,5 +4377,29 @@
         "Minimale aantal slachtoffers": "6",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "40",
         "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
+    },
+    "448": {
+        "name": "Suikertekort",
+        "Benodigd aantal Ambulancestandplaatsen": "1",
+        "Maximale patiënten aantal": "1",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
+        "Gespecialiseerde afdeling voor patiënten": "Neurochirurgie"
+    },
+    "449": {
+        "name": "Val van skateboard",
+        "Benodigd aantal Ambulancestandplaatsen": "1",
+        "Maximale patiënten aantal": "1",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "40",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
+    },
+    "450": {
+        "name": "Open botbreuk",
+        "Benodigd aantal Ambulancestandplaatsen": "1",
+        "Maximale patiënten aantal": "1",
+        "Minimale aantal slachtoffers": "1",
+        "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
+        "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
     }
 }
