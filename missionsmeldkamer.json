@@ -4401,5 +4401,38 @@
         "Minimale aantal slachtoffers": "1",
         "Waarschijnlijkheid dat een patiënt getransporteerd moet worden": "100",
         "Gespecialiseerde afdeling voor patiënten": "Algemene Heelkunde"
+    },
+    "451": {
+        "name": "Zwaan met gebroken poot",
+        "Gemiddeld aantal Credits": "400",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde waterongevallenaanhangers": "1",
+        "Waterongevallenaanhangers benodigd waarschijnlijkheid": "10"
+    },
+    "452": {
+        "name": "Vogel vast in schoorsteen",
+        "Gemiddeld aantal Credits": "350",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde redvoertuigen": "1",
+        "Hoogwerker benodigd waarschijnlijkheid": "40",
+        "Benodigde hulpverleningsvoertuigen": "1",
+        "Hulpverleningsvoertuigen benodigd waarschijnlijkheid": "20"
+    },
+    "453": {
+        "name": "Vissen met zuurstoftekort",
+        "Gemiddeld aantal Credits": "300",
+        "Benodigde tankautospuiten": "1"
+    },
+    "454": {
+        "name": "Kat op dak",
+        "Gemiddeld aantal Credits": "320",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde redvoertuigen": "1",
+        "Hoogwerker benodigd waarschijnlijkheid": "10"
+    },
+    "455": {
+        "name": "Ree vast in hek",
+        "Gemiddeld aantal Credits": "300",
+        "Benodigde tankautospuiten": "1"
     }
 }

@@ -1755,7 +1755,7 @@
         "Fachrichtung für Patienten": "Allgemeine Innere",
         "NEF Anforderungswahrscheinlichkeit": "0",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "10",
-        "Tritt nur bis zu dem Datum auf": "Montag, 01. Oktober 2018, 00:00 Uhr"
+        "Tritt nur bis zu dem Datum auf": "Dienstag, 01. Oktober 2019, 00:00 Uhr"
     },
     "184": {
         "name": "Hitzschlag",
@@ -1766,7 +1766,7 @@
         "Fachrichtung für Patienten": "Allgemeine Innere",
         "NEF Anforderungswahrscheinlichkeit": "40",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "60",
-        "Tritt nur bis zu dem Datum auf": "Montag, 01. Oktober 2018, 00:00 Uhr"
+        "Tritt nur bis zu dem Datum auf": "Dienstag, 01. Oktober 2019, 00:00 Uhr"
     },
     "185": {
         "name": "Hitzekrampf",
@@ -1776,7 +1776,7 @@
         "Mindest Patientenanzahl": "1",
         "NEF Anforderungswahrscheinlichkeit": "80",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "50",
-        "Tritt nur bis zu dem Datum auf": "Montag, 01. Oktober 2018, 00:00 Uhr"
+        "Tritt nur bis zu dem Datum auf": "Dienstag, 01. Oktober 2019, 00:00 Uhr"
     },
     "186": {
         "name": "Lagerhallenbrand",
@@ -1801,7 +1801,10 @@
         "Mindest Patientenanzahl": "1",
         "Fachrichtung für Patienten": "Allgemeine Innere",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "65",
-        "NEF Anforderungswahrscheinlichkeit": "20"
+        "NEF Anforderungswahrscheinlichkeit": "20",
+        "Ausbreitungsmöglichkeiten": [
+            ["https://www.leitstellenspiel.de/einsaetze/462", "Großfeuer in Lagerhalle"]
+        ]
     },
     "187": {
         "name": "Feuer im Lagerraum",
@@ -3930,13 +3933,13 @@
         "name": "Fußball aufpumpen",
         "Credits im Durchschnitt": "300",
         "Benötigte Löschfahrzeuge": "1",
-        "Tritt nur bis zu dem Datum auf": "Montag, 16. Juli 2018, 23:59 Uhr"
+        "Tritt nur bis zu dem Datum auf": "Sonntag, 07. Juli 2019, 23:59 Uhr"
     },
     "372": {
         "name": "Mannschaftsbus in Halteverbot abgestellt",
         "Credits im Durchschnitt": "300",
         "Benötigte Streifenwagen": "1",
-        "Tritt nur bis zu dem Datum auf": "Montag, 16. Juli 2018, 23:59 Uhr"
+        "Tritt nur bis zu dem Datum auf": "Sonntag, 07. Juli 2019, 23:59 Uhr"
     },
     "373": {
         "name": "Behandlung nach Schwalbe",
@@ -3946,7 +3949,7 @@
         "Mindest Patientenanzahl": "1",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "0",
         "NEF Anforderungswahrscheinlichkeit": "0",
-        "Tritt nur bis zu dem Datum auf": "Montag, 16. Juli 2018, 23:59 Uhr"
+        "Tritt nur bis zu dem Datum auf": "Sonntag, 07. Juli 2019, 23:59 Uhr"
     },
     "374": {
         "name": "Prellung nach Lattenpraller",
@@ -3956,19 +3959,19 @@
         "Mindest Patientenanzahl": "1",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "0",
         "NEF Anforderungswahrscheinlichkeit": "0",
-        "Tritt nur bis zu dem Datum auf": "Montag, 16. Juli 2018, 23:59 Uhr"
+        "Tritt nur bis zu dem Datum auf": "Sonntag, 07. Juli 2019, 23:59 Uhr"
     },
     "375": {
         "name": "Tor gefallen",
         "Credits im Durchschnitt": "300",
         "Benötigte Löschfahrzeuge": "1",
-        "Tritt nur bis zu dem Datum auf": "Montag, 16. Juli 2018, 23:59 Uhr"
+        "Tritt nur bis zu dem Datum auf": "Sonntag, 07. Juli 2019, 23:59 Uhr"
     },
     "376": {
         "name": "Pokal geklaut",
         "Credits im Durchschnitt": "600",
         "Benötigte Streifenwagen": "2",
-        "Tritt nur bis zu dem Datum auf": "Montag, 16. Juli 2018, 23:59 Uhr"
+        "Tritt nur bis zu dem Datum auf": "Sonntag, 07. Juli 2019, 23:59 Uhr"
     },
     "377": {
         "name": "Überzuckerung",
@@ -4976,5 +4979,31 @@
         "NEF Anforderungswahrscheinlichkeit": "10",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "50",
         "Tritt nur bis zu dem Datum auf": "Dienstag, 01. Oktober 2019, 00:00 Uhr"
+    },
+    "462": {
+        "name": "Großfeuer in Lagerhalle",
+        "Credits im Durchschnitt": "12000",
+        "Benötigte Löschfahrzeuge": "18",
+        "Benötigte Drehleitern": "6",
+        "Benötigte GW-A": "2",
+        "Benötigte GW-Mess": "3",
+        "Benötigte GW-Gefahrgut": "2",
+        "Benötigte GW-Höhenrettung": "1",
+        "GW-Höhenrettung Anforderungswahrscheinlichkeit": "10",
+        "Benötigte Streifenwagen": "6",
+        "Benötigte ELW 1": "5",
+        "Benötigte ELW 2": "4",
+        "Benötigte GW L 2 Wasser": "2",
+        "Benötigte Feuerwehrkräne (FwK)": "1",
+        "Benötigte Rüstwagen": "4",
+        "BRmG R": "1",
+        "LKW K 9": "1",
+        "Benötigte MzKW": "1",
+        "Benötigte GKW": "1",
+        "Benötigte MTW-TZ": "1",
+        "Maximale Patientenanzahl": "10",
+        "Fachrichtung für Patienten": "Allgemeine Innere",
+        "NEF Anforderungswahrscheinlichkeit": "30",
+        "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "20"
     }
 }

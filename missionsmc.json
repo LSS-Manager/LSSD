@@ -2501,7 +2501,7 @@
         "Max. Patients": "1",
         "Minimum patient number": "1",
         "Patient Specializations": "Neurosurgery",
-
+        "Probability that a patient has to be transported": "70"
     },
     "270": {
         "name": "Vehicle fire in parking garage",
@@ -2526,4 +2526,13 @@
         "Max. Patients": "6",
         "Patient Specializations": "General Internal",
         "Probability that a patient has to be transported": "40"
+    },
+    "272": {
+        "name": "Museum robbery",
+        "Average credits": "1000",
+        "Required Police Cars": "4",
+        "Required K-9 Units": "1",
+        "Required SWAT Personnel": "6",
+        "Maximum Number of Prisoners": "3"
     }
+}
