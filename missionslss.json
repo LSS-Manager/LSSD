@@ -5005,5 +5005,16 @@
         "Fachrichtung für Patienten": "Allgemeine Innere",
         "NEF Anforderungswahrscheinlichkeit": "30",
         "Wahrscheinlichkeit, dass ein Patient transportiert werden muss": "20"
+    },
+    "463": {
+        "name": "Gesprengter Geldautomat",
+        "Credits im Durchschnitt": "1260",
+        "Benötigte Streifenwagen": "2",
+        "Benötigte Löschfahrzeuge": "1",
+        "Benötigte Rüstwagen": "1",
+        "Rüstwagen Anforderungswahrscheinlichkeit": "40",
+        "Ausbreitungsmöglichkeiten": [
+            ["https://www.leitstellenspiel.de/einsaetze/433", "Großfeuer in Bank"]
+        ]
     }
 }

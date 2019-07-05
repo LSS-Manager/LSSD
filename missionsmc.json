@@ -2534,5 +2534,37 @@
         "Required K-9 Units": "1",
         "Required SWAT Personnel": "6",
         "Maximum Number of Prisoners": "3"
+    },
+    "273": {
+        "name": "Natural Gas explosion",
+        "Average credits": "5000",
+        "Required Firetrucks": "4",
+        "Required Battalion Chief Vehicles": "1",
+        "Required Heavy Rescue Vehicles": "2",
+        "Max. Patients": "10",
+        "Patient Specializations": "Traumatology",
+        "Probability that a patient has to be transported": "70",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/232", "Full  Building Collapse"],
+            ["https://www.missionchief.com/einsaetze/88", "Partial Building Collapse"]
+        ]
+    },
+    "274": {
+        "name": "Large Natural Gas explosion",
+        "Average credits": "10000",
+        "Required Firetrucks": "8",
+        "Required Battalion Chief Vehicles": "4",
+        "Required Platform Trucks": "1",
+        "Required Heavy Rescue Vehicles": "4",
+        "Required HazMat Vehicles": "1",
+        "Required Mobile Command Vehicles": "2",
+        "Required Police Cars": "2",
+        "Max. Patients": "20",
+        "Patient Specializations": "Traumatology",
+        "Probability that a patient has to be transported": "70",
+        "Expandable Missions": [
+            ["https://www.missionchief.com/einsaetze/232", "Full  Building Collapse"],
+            ["https://www.missionchief.com/einsaetze/88", "Partial Building Collapse"]
+        ]
     }
 }

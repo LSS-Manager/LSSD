@@ -1879,6 +1879,7 @@ function hideVehicleBuildingHelpText(e) {
                 ab_ruest_rw: null,
                 abl2wasser_only: "Hose-Supply-Module",
                 ambulance: "ALS ambulance",
+                ambulance_or_rapid_responder: null,
                 arff: "ARFF (Airport Fire Truck)",
                 battalion_chief_unit: "Battalion Chief unit",
                 boot: "Boats (General)",
@@ -2121,6 +2122,7 @@ function hideVehicleBuildingHelpText(e) {
                 ab_ruest_rw: "AB RÃ¼st oder RÃ¼stwagen oder HLF",
                 abl2wasser_only: "AB-Schlauch",
                 ambulance: "Rettungswagen",
+                ambulance_or_rapid_responder: null,
                 arff: "FlugfeldlÃ¶schfahrzeug",
                 battalion_chief_unit: "Einsatzleitfahrzeuge 1",
                 boot: "Boote (Allgemein)",
@@ -2363,6 +2365,7 @@ function hideVehicleBuildingHelpText(e) {
                 ab_ruest_rw: "Hulpverleningsvoertuig of HVH",
                 abl2wasser_only: "Watertransportsysteem-haakarmbak",
                 ambulance: "Ambulance",
+                ambulance_or_rapid_responder: "Ambulance of Rapid Responder",
                 arff: "Crashtender",
                 battalion_chief_unit: "Officier van Dienst Brandweer",
                 boot: "WOA (Water ongeval aanhanger)",
@@ -2605,6 +2608,7 @@ function hideVehicleBuildingHelpText(e) {
                 ab_ruest_rw: null,
                 abl2wasser_only: null,
                 ambulance: "Ð¡ÐºÐ¾Ñ€Ð°Ñ Ð¿Ð¾Ð¼Ð¾Ñ‰ÑŒ",
+                ambulance_or_rapid_responder: null,
                 arff: null,
                 battalion_chief_unit: "ÐÐ²Ñ‚Ð¾Ð¼Ð¾Ð±Ð¸Ð»ÑŒ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð¸Ñ€Ð° Ð±Ð°Ñ‚Ð°Ð»ÑŒÐ¾Ð½Ð°",
                 boot: null,
@@ -2925,6 +2929,7 @@ function hideVehicleBuildingHelpText(e) {
                 ab_ruest_rw: null,
                 abl2wasser_only: null,
                 ambulance: null,
+                ambulance_or_rapid_responder: null,
                 arff: null,
                 battalion_chief_unit: null,
                 boot: null,
@@ -20013,6 +20018,7 @@ var map, alliance_building_show, geocoder, directionsService, building_eval_unlo
         return missing
     }
     "undefined" != typeof L && (L.Icon.Default.imagePath = "/leaflet/images/"), aao_types = [
+        ["ambulance_or_rapid_responder", I18n.t("intervention_order.vehicles.ambulance_or_rapid_responder")],
         ["wasser_amount", I18n.t("intervention_order.vehicles.water_amount")],
         ["wasser_amount_tlf", I18n.t("intervention_order.vehicles.water_amount_tlf")],
         ["swat_suv", I18n.t("intervention_order.vehicles.swat_suv")],

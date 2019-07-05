@@ -4434,5 +4434,34 @@
         "name": "Ree vast in hek",
         "Gemiddeld aantal Credits": "300",
         "Benodigde tankautospuiten": "1"
+    },
+    "456": {
+        "name": "Brand in manege",
+        "Gemiddeld aantal Credits": "800",
+        "Benodigde tankautospuiten": "1",
+        "Benodigde redvoertuigen": "1",
+        "Hoogwerker benodigd waarschijnlijkheid": "10",
+        "Benodigde slangenwagens": "1",
+        "Slangenwagen benodigd waarschijnlijkheid": "20"
+    },
+    "457": {
+        "name": "Brand in manege",
+        "Gemiddeld aantal Credits": "1950",
+        "Benodigde tankautospuiten": "2",
+        "Benodigde redvoertuigen": "1",
+        "Hoogwerker benodigd waarschijnlijkheid": "50",
+        "Benodigde OvD-B's": "1",
+        "Benodigde slangenwagens": "1",
+        "Slangenwagen benodigd waarschijnlijkheid": "60"
+    },
+    "458": {
+        "name": "Brand in manege",
+        "Gemiddeld aantal Credits": "2750",
+        "Benodigde tankautospuiten": "3",
+        "Benodigde redvoertuigen": "1",
+        "Benodigde OvD-B's": "1",
+        "Benodigde slangenwagens": "1",
+        "Benodigde HOVD's": "1",
+        "HOVD benodigd waarschijnlijkheid": "50"
     }
 }
