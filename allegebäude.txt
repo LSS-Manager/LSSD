@@ -19,6 +19,7 @@ LSS:
 16 = Verbandzellen
 17 = Polizei-Sondereinheiten
 18 = Feuwehrwache (Kleinwache)
+19 = Polizeiwache (Kleinwache)
 
 MC:
 
