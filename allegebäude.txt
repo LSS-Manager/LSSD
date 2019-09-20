@@ -22,6 +22,13 @@ LSS:
 19 = Polizeiwache (Kleinwache)
 20 = Rettungswache (Kleinwache)
 
+MC UK:
+
+0= Firehouse
+2= Rescue station
+4= Hospital
+7= Dispatch Center
+
 MC:
 
 0 = Fire Station

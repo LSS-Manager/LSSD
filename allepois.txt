@@ -45,6 +45,63 @@ LSS:
 42 = Müllverbrennungsanlage
 43 = Eishalle
 
+MC UK=
+
+0 = Park
+1 = Lake
+2 = Hospital
+3 = Forest
+4 = Bus stop
+5 = Tram stop
+6 = Train station (regional traffic)
+7 = Train station (regional traffic and long-distance travel)
+8 = Goods station
+9 = Supermarket (small)
+10 = Supermarket (big)
+11 = Gas station
+12 = School
+13 = Museum
+14 = Mall
+15 = Car workshop
+16 = Highway exit
+17 = Christmas market
+18 = Storehouse
+19 = Discotheque
+20 = Stadium
+21 = Farm
+22 = Office building
+23 = Swimming bath
+24 = Railroad Crossing
+25 = Theater
+26 = Fairground
+27 = River
+28 = Small Airport (Runway)
+29 = Large Airport (Runway)
+30 = Airport Terminal
+31 = Bank
+32 = Warehouse
+33 = Bridge
+34 = Fast Food Restaurant
+35 = Cargo Port
+36 = Recycling Centre
+37 = High rise
+38 = Cruise ship dock
+39 = Marina
+40 = Rail Crossing
+41 = Tunnel
+42 = Cold Storage Warehouse
+43 = Power Plant
+44 = Factory
+45 = Scrap yard
+46 = Subway station
+47 = Small chemical storage tank
+48 = Large chemical storage tank
+49 = Hotel
+50 = Bar
+51 = Landfill site
+52 = Parking Garage
+
+
 MC:
 
 0 = Park
