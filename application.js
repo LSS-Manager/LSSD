@@ -2257,6 +2257,9 @@ function deleteMissionPosition(e) {
                         general: "GroÃŸartig, du bist auf dem Weg ein hervorragender Einsatzleiter zu werden! Hier hast du %{coins} Coins als Starthilfe! </br> Dein Leitstellenspiel-Team"
                     }
                 }
+            },
+            rewards: {
+                log: "Belohnung fÃ¼r das Beenden des Tutorials."
             }
         }
     }, I18n.translations.en_US = {
@@ -2518,87 +2521,90 @@ function deleteMissionPosition(e) {
             }
         },
         tutorial: {
-            commons: {
-                prev: "Prev",
-                next: "Next",
-                end: "End",
-                collect: "Collect"
-            },
             beginner: {
                 building: {
                     browser: {
-                        welcome: "Hello, welcome to MissionChief!  I will teach you some lessons to help you start off your emergency services career well!",
-                        pick_location: "First pick a location to start! Type the name of the location you want to start in into the search bar or find it on the map yourself! What about your hometown?",
                         build_building: {
-                            new_building: 'Click on "New building"!',
-                            select_position: "Move the blue marker where you want to build your first station!",
-                            select_building: "First choose the type of building you want to start with, we highly suggest you to start with fire services! In any case starting with a small station is advised!",
                             add_name: 'Second give your new station a name! Make it recognisable and scalable! E.g. "Fire station #0001". When you are done, please click "Next"!',
-                            build_with_credits: "Now build your building with credits!"
-                        }
+                            build_with_credits: "Now build your building with credits!",
+                            new_building: 'Click on "New building"!',
+                            select_building: "First choose the type of building you want to start with, we highly suggest you to start with fire services! In any case starting with a small station is advised!",
+                            select_position: "Move the blue marker where you want to build your first station!"
+                        },
+                        pick_location: "First pick a location to start! Type the name of the location you want to start in into the search bar or find it on the map yourself! What about your hometown?",
+                        welcome: "Hello, welcome to MissionChief!  I will teach you some lessons to help you start off your emergency services career well!"
                     },
                     mobile: {
-                        welcome: "Hello, welcome to MissionChief!  I will teach you some lessons to help you start off your emergency services career well!",
                         build_building: {
-                            new_building: 'First we will pick a location to start and build your first building! <br /> <br /> To do that click on "New building"!',
-                            select_building: "First choose the type of building you want to start with, we highly suggest you to start with fire services! In any case starting with a small station is advised!",
                             add_name: 'Second give your new station a name! Make it recognisable and scalable! E.g. "Fire station #0001". When you are done, please click "Next"!',
-                            build_with_credits: "Now build your building with credits!"
-                        }
+                            build_with_credits: "Now build your building with credits!",
+                            new_building: 'First we will pick a location to start and build your first building! <br /> <br /> To do that click on "New building"!',
+                            select_building: "First choose the type of building you want to start with, we highly suggest you to start with fire services! In any case starting with a small station is advised!"
+                        },
+                        welcome: "Hello, welcome to MissionChief!  I will teach you some lessons to help you start off your emergency services career well!"
                     }
                 },
                 mission: {
-                    overview: {
-                        browser: {
-                            first_mission: "Great, you've built your first building! See, the first missions were reported to you!",
-                            dispatch_button: 'Now we want to learn how to deal with incidents. Open the dispatch menu by clicking on a "dispatch"-button!'
-                        },
-                        mobile: {
-                            first_mission: "Great, you've built your first building! See, the first missions were reported to you!",
-                            dispatch_button: 'Now we want to learn how to deal with incidents. Open the dispatch menu by clicking on a "dispatch"-button!'
-                        }
-                    },
                     detail: {
                         browser: {
                             dispatch_menu: "This is the dispatch menu. From here you send your units to missions!",
-                            dispatch_menu_vehicle_list: "This is the list of your available vehicles. You select the vehicles here. Now select your vehicle by clicking on it!",
                             dispatch_menu_buttons: 'These are your two dispatch buttons! The first one: "Dispatch" sends the selected units to the mission. The second one does the same as the first one but goes to the next mission. Click the first button for now.',
-                            dispatch_menu_mission_specific: "Here you can see more information about the mission, which units are responding to the call and which are already at the site",
                             dispatch_menu_mission_general: "Here you can see the general mission information, that means the name, address, icon of the mission. The little man-icon appears and replaces a small star, on missions which you already participated in.",
-                            dispatch_menu_mission_progress: "Here you can see how much progress has been made to deal with this mission as well as the number of staff on site and the time left to deal with the mission!"
+                            dispatch_menu_mission_progress: "Here you can see how much progress has been made to deal with this mission as well as the number of staff on site and the time left to deal with the mission!",
+                            dispatch_menu_mission_specific: "Here you can see more information about the mission, which units are responding to the call and which are already at the site",
+                            dispatch_menu_vehicle_list: "This is the list of your available vehicles. You select the vehicles here. Now select your vehicle by clicking on it!"
                         },
                         mobile: {
                             dispatch_menu: "This is the dispatch menu. From here you send your units to missions!",
-                            dispatch_menu_vehicle_list: "This is the list of your available vehicles. You select the vehicles here. Now select your vehicle by clicking on it!",
                             dispatch_menu_buttons: 'These are your two dispatch buttons! The first one: "Dispatch" sends the selected units to the mission. The second one does the same as the first one but goes to the next mission. Click the first button for now.',
-                            dispatch_menu_mission_specific: "Here you can see more information about the mission, which units are responding to the call and which are already at the site",
                             dispatch_menu_mission_general: "Here you can see the general mission information, that means the name, address, icon of the mission. The little man-icon appears and replaces a small star, on missions which you already participated in.",
-                            dispatch_menu_mission_progress: "Here you can see how much progress has been made to deal with this mission as well as the number of staff on site and the time left to deal with the mission!"
+                            dispatch_menu_mission_progress: "Here you can see how much progress has been made to deal with this mission as well as the number of staff on site and the time left to deal with the mission!",
+                            dispatch_menu_mission_specific: "Here you can see more information about the mission, which units are responding to the call and which are already at the site",
+                            dispatch_menu_vehicle_list: "This is the list of your available vehicles. You select the vehicles here. Now select your vehicle by clicking on it!"
                         }
-                    }
-                },
-                tips: {
-                    browser: {
-                        general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
-                        join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
-                        contact: "If you have questions you can consult the in game FAQ or visit the game forums or our facebook page!",
-                        summary: "These are the basics of Mission Chief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
                     },
-                    mobile: {
-                        general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
-                        join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
-                        contact: "If you have questions you can consult the in game FAQ or visit the game forums or our facebook page!",
-                        summary: "These are the basics of Mission Chief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
+                    overview: {
+                        browser: {
+                            dispatch_button: 'Now we want to learn how to deal with incidents. Open the dispatch menu by clicking on a "dispatch"-button!',
+                            first_mission: "Great, you've built your first building! See, the first missions were reported to you!"
+                        },
+                        mobile: {
+                            dispatch_button: 'Now we want to learn how to deal with incidents. Open the dispatch menu by clicking on a "dispatch"-button!',
+                            first_mission: "Great, you've built your first building! See, the first missions were reported to you!"
+                        }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Great, you are on your way to becoming an awesome Missionchief! Here are %{coins} Coins. to help you get started! </br> Your MissionChief-team"
+                        general: "Great, you are on your way to becoming an awesome Missionchief! Here are %{coins} Coins. to help yo get started! </br> Your MissionChief-team"
                     },
                     mobile: {
-                        general: "Great, you are on your way to becoming an awesome Missionchief! Here are %{coins} Coins. to help you get started! </br> Your MissionChief-team"
+                        general: "Great, you are on your way to becoming an awesome Missionchief! Here are %{coins} Coins. to help yo get started! </br> Your MissionChief-team"
+                    }
+                },
+                tips: {
+                    browser: {
+                        contact: "If you have questions you can consult the in game FAQ or visit the game forums or our facebook page!",
+                        general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
+                        join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
+                        summary: "These are the basics of Mission Chief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
+                    },
+                    mobile: {
+                        contact: "If you have questions you can consult the in game FAQ or visit the game forums or our facebook page!",
+                        general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
+                        join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
+                        summary: "These are the basics of Mission Chief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
                     }
                 }
+            },
+            commons: {
+                collect: "Collect",
+                end: "End",
+                next: "Next",
+                prev: "Prev"
+            },
+            rewards: {
+                log: "Reward for finishing the tutorial."
             }
         }
     }, I18n.translations.en_GB = {
@@ -2937,6 +2943,9 @@ function deleteMissionPosition(e) {
                         general: "Great, you are on your way to becoming an awesome Missionchief! Here are %{coins} Coins. to help you get started! </br> Your MissionChief-team"
                     }
                 }
+            },
+            rewards: {
+                log: "Reward for finishing the tutorial."
             }
         }
     }, I18n.translations.nl_NL = {
@@ -3276,6 +3285,9 @@ function deleteMissionPosition(e) {
                         general: "Goed zo, je bent op weg om een geweldige meldkamerbestuurder te worden! Hier heb je %{coins} munten om je op weg te helpen. </br> Het team van Meldkamerspel"
                     }
                 }
+            },
+            rewards: {
+                log: "Beloning voor het voltooien van de tutorial."
             }
         }
     }, I18n.translations.es_ES = {
@@ -3530,77 +3542,57 @@ function deleteMissionPosition(e) {
             }
         },
         tutorial: {
-            commons: {
-                prev: "Ant.",
-                next: "Sig.",
-                end: "Fin",
-                collect: "Recoger"
-            },
             beginner: {
                 building: {
                     browser: {
-                        welcome: "Â¡Hola! Te damos la bienvenida a Centro de Mando.  Â¡Te voy a enseÃ±ar algunos conceptos bÃ¡sicos para que puedas comenzar tu carrera como operador con buen pie!",
-                        pick_location: "Para comenzar, elige una ubicaciÃ³n. Puedes escribir su nombre en la barra de bÃºsqueda o mover el mapa hasta llegar a ella. Â¿QuÃ© te parece si vamos a tu hogar?",
                         build_building: {
-                            new_building: "Haz clic en Â«Nuevo edificioÂ».",
-                            select_position: "Mueve el marcador azul al lugar donde quieres construir tu primera instalaciÃ³n.",
-                            select_building: "Lo primero es elegir el tipo de edificio con el que quieres comenzar. Â¡Te recomendamos que escojas un parque de bomberos! En cualquier caso, lo mejor es comenzar con una instalaciÃ³n pequeÃ±a.",
                             add_name: "Â¡El segundo paso es bautizarla! Dale un nombre reconocible y escalable, Como Â«Parque de bomberos #0001Â». Cuando acabes, haz clic en Sig.",
-                            build_with_credits: "Ahora, construye tu edificio con crÃ©ditos."
-                        }
+                            build_with_credits: "Ahora, construye tu edificio con crÃ©ditos.",
+                            new_building: "Haz clic en Â«Nuevo edificioÂ».",
+                            select_building: "Lo primero es elegir el tipo de edificio con el que quieres comenzar. Â¡Te recomendamos que escojas un parque de bomberos! En cualquier caso, lo mejor es comenzar con una instalaciÃ³n pequeÃ±a.",
+                            select_position: "Mueve el marcador azul al lugar donde quieres construir tu primera instalaciÃ³n."
+                        },
+                        pick_location: "Para comenzar, elige una ubicaciÃ³n. Puedes escribir su nombre en la barra de bÃºsqueda o mover el mapa hasta llegar a ella. Â¿QuÃ© te parece si vamos a tu hogar?",
+                        welcome: "Â¡Hola! Te damos la bienvenida a Centro de Mando.  Â¡Te voy a enseÃ±ar algunos conceptos bÃ¡sicos para que puedas comenzar tu carrera como operador con buen pie!"
                     },
                     mobile: {
-                        welcome: "Â¡Hola! Te damos la bienvenida a Centro de Mando.  Â¡Te voy a enseÃ±ar algunos conceptos bÃ¡sicos para que puedas comenzar tu carrera como operador con buen pie!",
                         build_building: {
-                            new_building: "Comenzaremos eligiendo una ubicaciÃ³n para tu primer edificio. <br /> <br /> Haz clic en Â«Nuevo edificioÂ».",
-                            select_building: "Lo primero es elegir el tipo de edificio con el que quieres comenzar. Â¡Te recomendamos que escojas un parque de bomberos! En cualquier caso, lo mejor es comenzar con una instalaciÃ³n pequeÃ±a.",
                             add_name: "Â¡El segundo paso es bautizarla! Dale un nombre reconocible y escalable, Como Â«Parque de bomberos #0001Â». Cuando acabes, haz clic en Sig.",
-                            build_with_credits: "Ahora, construye tu edificio con crÃ©ditos."
-                        }
+                            build_with_credits: "Ahora, construye tu edificio con crÃ©ditos.",
+                            new_building: "Comenzaremos eligiendo una ubicaciÃ³n para tu primer edificio. <br /> <br /> Haz clic en Â«Nuevo edificioÂ».",
+                            select_building: "Lo primero es elegir el tipo de edificio con el que quieres comenzar. Â¡Te recomendamos que escojas un parque de bomberos! En cualquier caso, lo mejor es comenzar con una instalaciÃ³n pequeÃ±a."
+                        },
+                        welcome: "Â¡Hola! Te damos la bienvenida a Centro de Mando.  Â¡Te voy a enseÃ±ar algunos conceptos bÃ¡sicos para que puedas comenzar tu carrera como operador con buen pie!"
                     }
                 },
                 mission: {
-                    overview: {
-                        browser: {
-                            first_mission: "Â¡Genial! Tu primer edificio ya estÃ¡ construido. Â¿Ves? Ya estÃ¡s recibiendo avisos de emergencias.",
-                            dispatch_button: "Ahora, aprendamos cÃ³mo lidiar con incidentes. Haz clic en un botÃ³n Â«enviarÂ» para abrir el menÃº."
-                        },
-                        mobile: {
-                            first_mission: "Â¡Genial! Tu primer edificio ya estÃ¡ construido. Â¿Ves? Ya estÃ¡s recibiendo avisos de emergencias.",
-                            dispatch_button: "Ahora, aprendamos cÃ³mo lidiar con incidentes. Haz clic en un botÃ³n Â«enviarÂ» para abrir el menÃº."
-                        }
-                    },
                     detail: {
                         browser: {
                             dispatch_menu: "Desde este menÃº Puedes enviar a tus unidades a misiones.",
-                            dispatch_menu_vehicle_list: "Esta es la lista de vehÃ­culos que tienes disponibles. AquÃ­ puedes seleccionarlos. Elige el vehÃ­culo que quieras enviar y haz clic sobre Ã©l.",
                             dispatch_menu_buttons: "Hay dos botones para enviar el vehÃ­culo: El primero, Â«EnviarÂ», dirige a las unidades seleccionadas a la misiÃ³n. El segundo tambiÃ©n hace esto, pero despuÃ©s pasa a la siguiente misiÃ³n. Por ahora, haz clic en el primer botÃ³n.",
-                            dispatch_menu_mission_specific: "AquÃ­ puedes ver mÃ¡s informaciÃ³n sobre la misiÃ³n, quÃ© unidades estÃ¡n respondiendo a la emergencia y cuÃ¡les han llegado ya allÃ­.",
                             dispatch_menu_mission_general: "AquÃ­ puedes ver informaciÃ³n general de la misiÃ³n, como su nombre, direcciÃ³n e icono. En las misiones en las que ya estÃ©s participando aparecerÃ¡ un pequeÃ±o sÃ­mbolo de una persona en lugar de la estrella.",
-                            dispatch_menu_mission_progress: "AquÃ­ puedes ver el progreso de la misiÃ³n, asÃ­ como el personal en el lugar del incidente y el tiempo restante."
+                            dispatch_menu_mission_progress: "AquÃ­ puedes ver el progreso de la misiÃ³n, asÃ­ como el personal en el lugar del incidente y el tiempo restante.",
+                            dispatch_menu_mission_specific: "AquÃ­ puedes ver mÃ¡s informaciÃ³n sobre la misiÃ³n, quÃ© unidades estÃ¡n respondiendo a la emergencia y cuÃ¡les han llegado ya allÃ­.",
+                            dispatch_menu_vehicle_list: "Esta es la lista de vehÃ­culos que tienes disponibles. AquÃ­ puedes seleccionarlos. Elige el vehÃ­culo que quieras enviar y haz clic sobre Ã©l."
                         },
                         mobile: {
                             dispatch_menu: "Desde este menÃº Puedes enviar a tus unidades a misiones.",
-                            dispatch_menu_vehicle_list: "Esta es la lista de vehÃ­culos que tienes disponibles. AquÃ­ puedes seleccionarlos. Elige el vehÃ­culo que quieras enviar y haz clic sobre Ã©l.",
                             dispatch_menu_buttons: "Hay dos botones para enviar el vehÃ­culo: El primero, Â«EnviarÂ», dirige a las unidades seleccionadas a la misiÃ³n. El segundo tambiÃ©n hace esto, pero despuÃ©s pasa a la siguiente misiÃ³n. Por ahora, haz clic en el primer botÃ³n.",
-                            dispatch_menu_mission_specific: "AquÃ­ puedes ver mÃ¡s informaciÃ³n sobre la misiÃ³n, quÃ© unidades estÃ¡n respondiendo a la emergencia y cuÃ¡les han llegado ya allÃ­.",
                             dispatch_menu_mission_general: "AquÃ­ puedes ver informaciÃ³n general de la misiÃ³n, como su nombre, direcciÃ³n e icono. En las misiones en las que ya estÃ©s participando aparecerÃ¡ un pequeÃ±o sÃ­mbolo de una persona en lugar de la estrella.",
-                            dispatch_menu_mission_progress: "AquÃ­ puedes ver el progreso de la misiÃ³n, asÃ­ como el personal en el lugar del incidente y el tiempo restante."
+                            dispatch_menu_mission_progress: "AquÃ­ puedes ver el progreso de la misiÃ³n, asÃ­ como el personal en el lugar del incidente y el tiempo restante.",
+                            dispatch_menu_mission_specific: "AquÃ­ puedes ver mÃ¡s informaciÃ³n sobre la misiÃ³n, quÃ© unidades estÃ¡n respondiendo a la emergencia y cuÃ¡les han llegado ya allÃ­.",
+                            dispatch_menu_vehicle_list: "Esta es la lista de vehÃ­culos que tienes disponibles. AquÃ­ puedes seleccionarlos. Elige el vehÃ­culo que quieras enviar y haz clic sobre Ã©l."
                         }
-                    }
-                },
-                tips: {
-                    browser: {
-                        general: "Te recomendamos que tu siguiente paso sea construir una centralita y despuÃ©s, en cuanto sea posible, nuevas instalaciones, ya que el nÃºmero mÃ¡ximo de misiones es igual al nÃºmero mÃ¡ximo de instalaciones del mismo tipo (comisarÃ­as, parques de bomberos o de ambulancias...) mÃ¡s 1. Por ejemplo: 5 parques de bomberos y 3 de ambulancias permiten tener 6 misiones disponibles.",
-                        join_alliance: "AdemÃ¡s, unirse a una alianza es de gran ayuda, especialmente al principio.",
-                        contact: "Si tienes alguna pregunta, puedes consultar el FAQ y visitar el foro del juego y nuestra pÃ¡gina de Facebook.",
-                        summary: "Â¡Ya conoces lo fundamental de Centro de Mando! Completar misiones, ganar crÃ©ditos, comprar mÃ¡s unidades y vuelta a empezar. Â¡DiviÃ©rtete! </br> El equipo de Centro de Mando"
                     },
-                    mobile: {
-                        general: "Te recomendamos que tu siguiente paso sea construir una centralita y despuÃ©s, en cuanto sea posible, nuevas instalaciones, ya que el nÃºmero mÃ¡ximo de misiones es igual al nÃºmero mÃ¡ximo de instalaciones del mismo tipo (comisarÃ­as, parques de bomberos o de ambulancias...) mÃ¡s 1. Por ejemplo: 5 parques de bomberos y 3 de ambulancias permiten tener 6 misiones disponibles.",
-                        join_alliance: "AdemÃ¡s, unirse a una alianza es de gran ayuda, especialmente al principio.",
-                        contact: "Si tienes alguna pregunta, puedes consultar el FAQ y visitar el foro del juego y nuestra pÃ¡gina de Facebook.",
-                        summary: "Â¡Ya conoces lo fundamental de Centro de Mando! Completar misiones, ganar crÃ©ditos, comprar mÃ¡s unidades y vuelta a empezar. Â¡DiviÃ©rtete! </br> El equipo de Centro de Mando"
+                    overview: {
+                        browser: {
+                            dispatch_button: "Ahora, aprendamos cÃ³mo lidiar con incidentes. Haz clic en un botÃ³n Â«enviarÂ» para abrir el menÃº.",
+                            first_mission: "Â¡Genial! Tu primer edificio ya estÃ¡ construido. Â¿Ves? Ya estÃ¡s recibiendo avisos de emergencias."
+                        },
+                        mobile: {
+                            dispatch_button: "Ahora, aprendamos cÃ³mo lidiar con incidentes. Haz clic en un botÃ³n Â«enviarÂ» para abrir el menÃº.",
+                            first_mission: "Â¡Genial! Tu primer edificio ya estÃ¡ construido. Â¿Ves? Ya estÃ¡s recibiendo avisos de emergencias."
+                        }
                     }
                 },
                 rewards: {
@@ -3610,7 +3602,30 @@ function deleteMissionPosition(e) {
                     mobile: {
                         general: "Â¡Genial! Sigue asÃ­ y te convertirÃ¡s en un gran operador. Â¡AquÃ­ tienes %{coins} monedas para ayudarte a arrancar! </br> El equipo de Centro de Mando"
                     }
+                },
+                tips: {
+                    browser: {
+                        contact: "Si tienes alguna pregunta, puedes consultar el FAQ y visitar el foro del juego y nuestra pÃ¡gina de Facebook.",
+                        general: "Te recomendamos que tu siguiente paso sea construir una centralita y despuÃ©s, en cuanto sea posible, nuevas instalaciones, ya que el nÃºmero mÃ¡ximo de misiones es igual al nÃºmero mÃ¡ximo de instalaciones del mismo tipo (comisarÃ­as, parques de bomberos o de ambulancias...) mÃ¡s 1. Por ejemplo: 5 parques de bomberos y 3 de ambulancias permiten tener 6 misiones disponibles.",
+                        join_alliance: "AdemÃ¡s, unirse a una alianza es de gran ayuda, especialmente al principio.",
+                        summary: "Â¡Ya conoces lo fundamental de Centro de Mando! Completar misiones, ganar crÃ©ditos, comprar mÃ¡s unidades y vuelta a empezar. Â¡DiviÃ©rtete! </br> El equipo de Centro de Mando"
+                    },
+                    mobile: {
+                        contact: "Si tienes alguna pregunta, puedes consultar el FAQ y visitar el foro del juego y nuestra pÃ¡gina de Facebook.",
+                        general: "Te recomendamos que tu siguiente paso sea construir una centralita y despuÃ©s, en cuanto sea posible, nuevas instalaciones, ya que el nÃºmero mÃ¡ximo de misiones es igual al nÃºmero mÃ¡ximo de instalaciones del mismo tipo (comisarÃ­as, parques de bomberos o de ambulancias...) mÃ¡s 1. Por ejemplo: 5 parques de bomberos y 3 de ambulancias permiten tener 6 misiones disponibles.",
+                        join_alliance: "AdemÃ¡s, unirse a una alianza es de gran ayuda, especialmente al principio.",
+                        summary: "Â¡Ya conoces lo fundamental de Centro de Mando! Completar misiones, ganar crÃ©ditos, comprar mÃ¡s unidades y vuelta a empezar. Â¡DiviÃ©rtete! </br> El equipo de Centro de Mando"
+                    }
                 }
+            },
+            commons: {
+                collect: "Recoger",
+                end: "Fin",
+                next: "Sig.",
+                prev: "Ant."
+            },
+            rewards: {
+                log: "Recompensa por completar el tutorial."
             }
         }
     }, I18n.translations.en_AU = {
@@ -4286,6 +4301,9 @@ function deleteMissionPosition(e) {
                         general: "Toppen, du bÃ¶rjar fÃ¥ full koll pÃ¥ hur man skÃ¶ter en larmcentral! HÃ¤r fÃ¥r du %{coins} mynt att komma igÃ¥ng med! </br>Teamet pÃ¥ Larmcentralen-spelet"
                     }
                 }
+            },
+            rewards: {
+                log: "BelÃ¶ning fÃ¶r att ha klarat handledningen."
             }
         }
     }, I18n.translations.pl_PL = {
@@ -4960,6 +4978,9 @@ function deleteMissionPosition(e) {
                         general: "Fantastico, stai per diventare un eccezionale Capomissione! Ecco %{coins} monete per aiutarti a partire! </br> Il team di Operatore 112"
                     }
                 }
+            },
+            rewards: {
+                log: "Ricompensa per aver completato il tutorial."
             }
         }
     }, I18n.translations.fr_FR = {
@@ -5297,6 +5318,9 @@ function deleteMissionPosition(e) {
                         general: "Parfait, vous Ãªtes bien parti pour devenir un OpÃ©rateurÂ 112 de talentÂ ! Voici %{coins}Â piÃ¨ces pour vous aider Ã  dÃ©marrerÂ ! </br> L'Ã©quipe d'OpÃ©rateurÂ 112"
                     }
                 }
+            },
+            rewards: {
+                log: "RÃ©compense pour avoir terminÃ© le didacticiel."
             }
         }
     }, I18n.translations.ru_RU = {
@@ -5635,6 +5659,9 @@ function deleteMissionPosition(e) {
                         general: "ÐžÑ‚Ð»Ð¸Ñ‡Ð½Ð¾, ÑÐºÐ¾Ñ€Ð¾ Ð²Ñ‹ ÑÑ‚Ð°Ð½ÐµÑ‚Ðµ Ð½Ð°ÑÑ‚Ð¾ÑÑ‰Ð¸Ð¼ Ð¼Ð°ÑÑ‚ÐµÑ€Ð¾Ð¼ Â«Ð”Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ 112Â»! Ð”ÐµÑ€Ð¶Ð¸Ñ‚Ðµ Ð¼Ð¾Ð½ÐµÑ‚Ñ‹ Ð´Ð»Ñ Ð½Ð°Ñ‡Ð°Ð»Ð°: %{coins}! </br> ÐšÐ¾Ð¼Ð°Ð½Ð´Ð° Â«Ð”Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ 112Â»"
                     }
                 }
+            },
+            rewards: {
+                log: "ÐÐ°Ð³Ñ€Ð°Ð´Ð° Ð·Ð° Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð¸Ðµ Ð¾Ð±ÑƒÑ‡ÐµÐ½Ð¸Ñ."
             }
         }
     }, I18n.translations.da_DK = {
@@ -5969,6 +5996,9 @@ function deleteMissionPosition(e) {
                 end: "Afslut",
                 next: "NÃ¦ste",
                 prev: "Forrige"
+            },
+            rewards: {
+                log: "BelÃ¸nning for at afslutte gennemgangen."
             }
         }
     }, I18n.translations.nb_NO = {
@@ -6640,6 +6670,9 @@ function deleteMissionPosition(e) {
                 end: "Konec",
                 next: "DalÅ¡Ã­",
                 prev: "PÅ™edchozÃ­"
+            },
+            rewards: {
+                log: "OdmÄ›na za dokonÄenÃ­ vÃ½uky."
             }
         }
     }, I18n.translations.tr_TR = {
@@ -6974,6 +7007,9 @@ function deleteMissionPosition(e) {
                 end: "Bitir",
                 next: "Sonraki",
                 prev: "Ã–nceki"
+            },
+            rewards: {
+                log: "EÄŸitimi tamamlama Ã¶dÃ¼lÃ¼."
             }
         }
     }, I18n.translations.pt_PT = {
@@ -7643,6 +7679,9 @@ function deleteMissionPosition(e) {
                 end: "Fim",
                 next: "PrÃ³ximo",
                 prev: "Anterior"
+            },
+            rewards: {
+                log: "Recompensa por completar o tutorial."
             }
         }
     }, I18n.translations.uk_UA = {
@@ -8316,6 +8355,9 @@ function deleteMissionPosition(e) {
                 end: "Finalizar",
                 next: "Siguiente",
                 prev: "Anterior"
+            },
+            rewards: {
+                log: "Recompensa por completar el tutorial."
             }
         }
     }, I18n.translations.ja_JP = {
@@ -8645,6 +8687,9 @@ function deleteMissionPosition(e) {
                 end: "çµ‚äº†",
                 next: "æ¬¡ã¸",
                 prev: "å‰ã¸"
+            },
+            rewards: {
+                log: "ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«å®Œäº†ã®å ±é…¬ã§ã™ã€‚"
             }
         }
     }, I18n.translations.ko_KR = {
@@ -8980,6 +9025,9 @@ function deleteMissionPosition(e) {
                 end: "ë§ˆì§€ë§‰",
                 next: "ë‹¤ìŒ",
                 prev: "ì´ì „"
+            },
+            rewards: {
+                log: "íŠœí† ë¦¬ì–¼ ì™„ë£Œì— ëŒ€í•œ ë³´ìƒ."
             }
         }
     }, I18n.translations.ro_RO = {
@@ -9315,6 +9363,9 @@ function deleteMissionPosition(e) {
                 end: "SfÃ¢rÈ™it",
                 next: "Urm.",
                 prev: "Ant."
+            },
+            rewards: {
+                log: "RecompensÄƒ pentru terminarea tutorialului."
             }
         }
     }, I18n.translations.fi_FI = {
@@ -9650,6 +9701,9 @@ function deleteMissionPosition(e) {
                 end: "Loppu",
                 next: "Edell.",
                 prev: "Seur."
+            },
+            rewards: {
+                log: "Palkinto opetuspelin pelaamisesta loppuun."
             }
         }
     }, I18n.translations.sk_SK = {
@@ -9985,6 +10039,9 @@ function deleteMissionPosition(e) {
                 end: "Koniec",
                 next: "ÄŽalej",
                 prev: "Dozadu"
+            },
+            rewards: {
+                log: "Odmena za dokonÄenie nÃ¡cviku."
             }
         }
     },
