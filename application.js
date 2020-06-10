@@ -439,7 +439,7 @@ function buildingMarkerAdd(e) {
     if ($.each(building_markers_cache, function(i, n) {
             n.id == e.id && (t = !0)
         }), "undefined" != typeof e.vgi && "" != e.vgi && null != e.vgi && (buildingVehicleGraphicCache[e.id] = e.vgi), t) return !0;
-    if (e.user_id == user_id ? building_marker_image = e.icon : e.building_type == BUILDING_TYPE_FEUERWEHRSCHULE ? building_marker_image = "/images/building_fireschool_other.png" : e.building_type == BUILDING_TYPE_FEUERWACHE ? building_marker_image = "/images/building_fire_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSWACHE ? building_marker_image = "/images/building_rettungswache_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSSCHULE ? building_marker_image = "/images/building_rettungsschule_other.png" : e.building_type == BUILDING_TYPE_CLINIC ? building_marker_image = "/images/building_clinic_other.png" : e.building_type == BUILDING_TYPE_HOSPITAL ? building_marker_image = "/images/building_hospital_other.png" : e.building_type == BUILDING_TYPE_NOTARZTHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIWACHE || e.building_type == BUILDING_TYPE_POLIZEIZELLE ? building_marker_image = "/images/building_polizeiwache_other.png" : e.building_type == BUILDING_TYPE_LEITSTELLE ? building_marker_image = "/images/building_leitstelle_other.png" : e.building_type == BUILDING_TYPE_POLIZEISCHULE ? building_marker_image = "/images/building_polizeischule_other.png" : e.building_type == BUILDING_TYPE_THW ? building_marker_image = "/images/building_thw_other.png" : e.building_type == BUILDING_TYPE_THW_BUNDESSCHULE ? building_marker_image = "/images/building_thw_school_other.png" : e.building_type == BUILDING_TYPE_BEREITSCHAFTSPOLIZEI ? building_marker_image = "/images/building_bereitschaftspolizei_other.png" : e.building_type == BUILDING_TYPE_POLIZEISONDEREINHEITEN ? building_marker_image = "/images/building_polizeisondereinheiten_other.png" : e.building_type == BUILDING_TYPE_SEG ? building_marker_image = "/images/building_seg_other.png" : e.building_type == BUILDING_TYPE_BEREITSTELLUNGSRAUM ? building_marker_image = "/images/building_bereitstellungsraum_other.png" : e.building_type == BUILDING_TYPE_WASSERRETTUNG ? building_marker_image = "/images/building_wasserwacht_other.png" : e.building_type == BUILDING_TYPE_FIRE_BOAT_DOCK ? building_marker_image = "/images/building_fire_boat_dock_other.png" : e.building_type == BUILDING_TYPE_RESCUE_BOAT_DOCK ? building_marker_image = "/images/building_rescue_boat_dock_other.png" : e.building_type == BUILDING_TYPE_RESCUE_DOG_UNIT && (building_marker_image = "/images/building_rescue_dog_unit_other.png"), e.building_marker_image = building_marker_image, e.user_id == user_id) {
+    if (e.user_id == user_id ? building_marker_image = e.icon : e.building_type == BUILDING_TYPE_FEUERWEHRSCHULE ? building_marker_image = "/images/building_fireschool_other.png" : e.building_type == BUILDING_TYPE_FEUERWACHE ? building_marker_image = "/images/building_fire_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSWACHE ? building_marker_image = "/images/building_rettungswache_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSSCHULE ? building_marker_image = "/images/building_rettungsschule_other.png" : e.building_type == BUILDING_TYPE_CLINIC ? building_marker_image = "/images/building_clinic_other.png" : e.building_type == BUILDING_TYPE_HOSPITAL ? building_marker_image = "/images/building_hospital_other.png" : e.building_type == BUILDING_TYPE_NOTARZTHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIWACHE || e.building_type == BUILDING_TYPE_POLIZEIZELLE ? building_marker_image = "/images/building_polizeiwache_other.png" : e.building_type == BUILDING_TYPE_LEITSTELLE ? building_marker_image = "/images/building_leitstelle_other.png" : e.building_type == BUILDING_TYPE_POLIZEISCHULE ? building_marker_image = "/images/building_polizeischule_other.png" : e.building_type == BUILDING_TYPE_THW ? building_marker_image = "/images/building_thw_other.png" : e.building_type == BUILDING_TYPE_THW_BUNDESSCHULE ? building_marker_image = "/images/building_thw_school_other.png" : e.building_type == BUILDING_TYPE_BEREITSCHAFTSPOLIZEI ? building_marker_image = "/images/building_bereitschaftspolizei_other.png" : e.building_type == BUILDING_TYPE_POLIZEISONDEREINHEITEN ? building_marker_image = "/images/building_polizeisondereinheiten_other.png" : e.building_type == BUILDING_TYPE_SEG ? building_marker_image = "/images/building_seg_other.png" : e.building_type == BUILDING_TYPE_BEREITSTELLUNGSRAUM ? building_marker_image = "/images/building_bereitstellungsraum_other.png" : e.building_type == BUILDING_TYPE_WASSERRETTUNG ? building_marker_image = "/images/building_wasserwacht_other.png" : e.building_type == BUILDING_TYPE_FIRE_BOAT_DOCK ? building_marker_image = "/images/building_fire_boat_dock_other.png" : e.building_type == BUILDING_TYPE_RESCUE_BOAT_DOCK ? building_marker_image = "/images/building_rescue_boat_dock_other.png" : e.building_type == BUILDING_TYPE_RESCUE_DOG_UNIT ? building_marker_image = "/images/building_rescue_dog_unit_other.png" : e.building_type == BUILDING_TYPE_FIRE_AVIATION_STATION && (building_marker_image = "/images/building_fire_aviation_station_other.png"), e.building_marker_image = building_marker_image, e.user_id == user_id) {
         var i = "<li  class='building_list_li' building_type_id='" + e.building_type + "' leitstelle_building_id='" + e.lbid + "'><div class='building_list_caption' id='building_list_caption_" + e.id + "' >" + e.detail_button + "<img class='building_marker_image' building_id='" + e.id + "' src='" + building_marker_image + "'>" + "<a href='' class='map_position_mover' data-latitude='" + e.latitude + "' data-longitude='" + e.longitude + "'>" + e.name + "</a>";
         0 == e.show_vehicles_at_startpage && (i += hideVehicleBuildingHelpText(e.id)), i += "</div>";
         var n = "<li>" + I18n.t("common.loading") + "</li>";
@@ -1569,6 +1569,29 @@ function openExternalTelegramURL(e) {
     })
 }
 
+function setupTimer(e) {
+    if (e.$timer.length) {
+        var t = new Date(e.$timer.data("end-time"));
+        if (isDateValid(t)) var i = setInterval(function() {
+            var n = Date.now() <= t;
+            n ? updateTimer({
+                $timer: e.$timer,
+                endTime: t
+            }) : (clearInterval(i), e.onTimerEnd())
+        }, 1e3)
+    }
+}
+
+function updateTimer(e) {
+    var t = e.endTime - Date.now(),
+        i = getFormattedDuration(t);
+    e.$timer.text(i)
+}
+
+function isDateValid(e) {
+    return e instanceof Date && !isNaN(e)
+}
+
 function leafletMissionPositionMarkerAdd(e) {
     var t = L.icon({
         iconUrl: "/images/letter_p.png",
@@ -2417,6 +2440,7 @@ function deleteMissionPosition(e) {
                 ab_ruest: "Tech/Rescue-Module",
                 ab_ruest_rw: "",
                 abl2wasser_only: "Hose-Supply-Module",
+                air_tanker: "Air tanker",
                 ambulance: "ALS ambulance",
                 ambulance_or_rapid_responder: "",
                 arff: "ARFF (Airport Fire Truck)",
@@ -2425,10 +2449,13 @@ function deleteMissionPosition(e) {
                 at_o: "",
                 battalion_chief_unit: "Battalion Chief unit",
                 boot: "Boats (General)",
+                brush_vehicle: "Wildland fire vehicle",
                 brush_truck: "Wildland fire engine",
                 brush_truck_1: "Type 3 engine",
                 brush_truck_2: "Type 5 engine",
                 brush_truck_3: "Type 7 engine",
+                brush_truck_4: "Type 4 engine",
+                brush_truck_5: "Type 6 engine",
                 dekon_p: "",
                 division_chief_unit: "Mobile Command Vehicle",
                 dlk_or_tm50: "",
@@ -2437,6 +2464,7 @@ function deleteMissionPosition(e) {
                 elw3: "",
                 elw_airport: "",
                 emergency_ambulance: "Emergency ambulance or Helicopter",
+                fire_aviation: "Fire aviation",
                 fire_truck: "Firetrucks",
                 fireboat: "Large Fireboat",
                 fly_car: "Fly-Car",
@@ -2459,6 +2487,7 @@ function deleteMissionPosition(e) {
                 gw_wasserrettung: "Water Retention",
                 gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Hose Vehicle",
+                heavy_air_tanker: "Heavy air tanker",
                 hems: "HEMS",
                 hlf_only: "",
                 hlf_or_rw_and_lf: "",
@@ -2517,7 +2546,8 @@ function deleteMissionPosition(e) {
                 ulf: "",
                 wasserwerfer: "",
                 water_amount: "",
-                water_amount_tlf: ""
+                water_amount_tlf: "",
+                water_drop_helicopter: "Water drop helicopter"
             }
         },
         tutorial: {
@@ -2576,10 +2606,10 @@ function deleteMissionPosition(e) {
                 },
                 rewards: {
                     browser: {
-                        general: "Great, you are on your way to becoming an awesome Missionchief! Here are %{coins} Coins. to help yo get started! </br> Your MissionChief-team"
+                        general: "Great, you are on your way to becoming an awesome Missionchief! Here are %{coins} Coins. to help you get started! </br> Your MissionChief-team"
                     },
                     mobile: {
-                        general: "Great, you are on your way to becoming an awesome Missionchief! Here are %{coins} Coins. to help yo get started! </br> Your MissionChief-team"
+                        general: "Great, you are on your way to becoming an awesome Missionchief! Here are %{coins} Coins. to help you get started! </br> Your MissionChief-team"
                     }
                 },
                 tips: {
@@ -9777,8 +9807,8 @@ function deleteMissionPosition(e) {
             alliance_chat_banned: "MomentÃ¡lne mÃ¡te zakÃ¡zanÃ½ alianÄnÃ½ chat.",
             alliance_chat_banned_admin: "ZÃ¡kaz od:",
             alliance_chat_banned_timeleft: "ZostÃ¡vajÃºci Äas:",
-            alliance_chat_radio_off: "AlianÄnÃ© rÃ¡dio: Vyp.",
-            alliance_chat_radio_on: "AlianÄnÃ© rÃ¡dio: Zap.",
+            alliance_chat_radio_off: "AlianÄnÃ¡ vysielaÄka: Vyp.",
+            alliance_chat_radio_on: "AlianÄnÃ¡ vysielaÄka: Zap.",
             alliance_event: "UdalosÅ¥",
             alliance_missions: "Misie aliancie",
             alliance_missions_event: "UdalosÅ¥",
@@ -9802,7 +9832,7 @@ function deleteMissionPosition(e) {
             no_ambulance_missions: "MomentÃ¡lne nie sÃº Å¾iadne zÃ¡chrannÃ© misie. ZÃ¡chrannÃ© misie sa mÃ´Å¾u vyskytnÃºÅ¥ iba v prÃ­pade, Å¾e mÃ¡te sanitnÃ© vozidlo a nemocnicu.",
             no_emergency_missions: "MomentÃ¡lne nie sÃº Å¾iadne nÃºdzovÃ© misie. NÃºdzovÃ¡ misia sa mÃ´Å¾e vyskytnÃºÅ¥ iba v prÃ­pade, Å¾e vybudujete prvÃº stanicu.",
             no_radio_messages: "Nedostali ste Å¾iadne rÃ¡diovÃ© sprÃ¡vy.",
-            radio_messages: "RÃ¡dio",
+            radio_messages: "VysielaÄka",
             restore_map: "ObnoviÅ¥ mapu",
             show_informations: "ZelenÃ¡ = Misie sÃº zobrazenÃ© v zozname. ÄŒervenÃ¡ = Misie nie sÃº zobrazenÃ©.",
             sicherheitswache: "PlÃ¡novanÃ© vÃ½skyty",
@@ -27223,10 +27253,17 @@ var map, alliance_building_show, geocoder, directionsService, building_eval_unlo
         ["at_c", I18n.t("intervention_order.vehicles.at_c")],
         ["at_o", I18n.t("intervention_order.vehicles.at_o")],
         ["at_m", I18n.t("intervention_order.vehicles.at_m")],
+        ["brush_vehicle", I18n.t("intervention_order.vehicles.brush_vehicle")],
         ["brush_truck", I18n.t("intervention_order.vehicles.brush_truck")],
         ["brush_truck_1", I18n.t("intervention_order.vehicles.brush_truck_1")],
         ["brush_truck_2", I18n.t("intervention_order.vehicles.brush_truck_2")],
         ["brush_truck_3", I18n.t("intervention_order.vehicles.brush_truck_3")],
+        ["brush_truck_4", I18n.t("intervention_order.vehicles.brush_truck_4")],
+        ["brush_truck_5", I18n.t("intervention_order.vehicles.brush_truck_5")],
+        ["fire_aviation", I18n.t("intervention_order.vehicles.fire_aviation")],
+        ["water_drop_helicopter", I18n.t("intervention_order.vehicles.water_drop_helicopter")],
+        ["air_tanker", I18n.t("intervention_order.vehicles.air_tanker")],
+        ["heavy_air_tanker", I18n.t("intervention_order.vehicles.heavy_air_tanker")],
         ["spokesman", I18n.t("intervention_order.vehicles.spokesman")],
         ["rescue_dogs", I18n.t("intervention_order.vehicles.rescue_dogs")]
     ], $("#restore_map").click(function() {
@@ -27497,6 +27534,16 @@ var map, alliance_building_show, geocoder, directionsService, building_eval_unlo
             map.setRegionAnimated(s, !0)
         }
         return !1
+    }), setupTimer({
+        $timer: $(".credit-modifier-event .timer"),
+        onTimerEnd: function() {
+            $(".credit-modifier-event").remove()
+        }
+    }), setupTimer({
+        $timer: $(".coin-reduction-event .timer"),
+        onTimerEnd: function() {
+            $(".coin-reduction-event").remove()
+        }
     })
 });
 var mapKitFactoryVehicleAnnotation = function(e, t) {

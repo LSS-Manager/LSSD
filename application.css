@@ -4971,6 +4971,13 @@ background - repeat: repeat - x
                 default.navbar - text {
                     color: #fff
                 }.navbar -
+                default.navbar - text.timer - event {
+                    margin - top: 8 px;
+                    margin - bottom: 0 px
+                }.navbar -
+                default.timer {
+                    font - size: 12 px
+                }.navbar -
                 default.navbar - toggle.icon - bar {
                     background - color: #fff
                 }.nav - tabs > li.active > a, .nav - tabs > li.active > a: focus, .nav - tabs > li.active > a: hover {
@@ -5705,11 +5712,11 @@ background - repeat: repeat - x
                                                         float: left
                                                     }.ui - datepicker - multi.ui - datepicker - group table {
                                                         width: 95 % ;margin: 0 auto .4 em
-                                                    }.ui - datepicker - multi - 2. ui - datepicker - group {
+                                                    }.ui - datepicker - multi - 2.ui - datepicker - group {
                                                         width: 50 %
-                                                    }.ui - datepicker - multi - 3. ui - datepicker - group {
+                                                    }.ui - datepicker - multi - 3.ui - datepicker - group {
                                                         width: 33.3 %
-                                                    }.ui - datepicker - multi - 4. ui - datepicker - group {
+                                                    }.ui - datepicker - multi - 4.ui - datepicker - group {
                                                         width: 25 %
                                                     }.ui - datepicker - multi.ui - datepicker - group - last.ui - datepicker - header,
                                                     .ui - datepicker - multi.ui - datepicker - group - middle.ui - datepicker - header {
