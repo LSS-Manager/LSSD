@@ -1032,7 +1032,9 @@ function coinsUpdate(e) {
         value: number_format(e)
     });
     var t = I18n.t("javascript.coins") + ": " + number_format(e);
-    if (sale_count_down > Date.now()) t += "<div id='sale_countdown' />", $("#coins_top").addClass("saleHighlight"), 0 === $("#sale_countdown_mobile").length && $(".navbar-header").append("<div id='sale_countdown_mobile' />"), updateSaleCountDown(), $("#coins_top").html(t);
+    if (sale_count_down > Date.now()) t += "<div id='sale_countdown' />", $("#coins_top").addClass("saleHighlight"), 0 === $("#sale_countdown_mobile").length && ($(".navbar-header").append("<div id='sale_countdown_mobile' />"), $("#sale_countdown_mobile").on("click", function() {
+        mobileBridgeAdd("coins_window", {})
+    })), updateSaleCountDown(), $("#coins_top").html(t);
     else {
         var i = $("#coins_top").html();
         $("#coins_top").html(t), "" != i && i != t && highlightElement($("#coins_top"))
@@ -2163,7 +2165,9 @@ function deleteMissionPosition(e) {
                 ovd_p: null,
                 police_car: "Funkstreifenwagen",
                 polizeihubschrauber: "Polizeihubschrauber",
-                rescue_dogs: "Rettungshundestaffel",
+                rescue_dogs: "AnhÃ¤nger Hundetransport oder Rettungshundefahrzeug",
+                rescue_dogs_seg: "Rettungshundefahrzeug",
+                rescue_dogs_thw: "AnhÃ¤nger Hundetransport",
                 rescue_vehicle: "RÃ¼stwagen oder HLF",
                 rescue_vehicle_only: "RÃ¼stwagen",
                 rescueboat: null,
@@ -2800,6 +2804,7 @@ function deleteMissionPosition(e) {
                 at_o: "",
                 battalion_chief_unit: "Fire Officer",
                 boot: "Boats (General)",
+                coresponder: "Co-Responder Vehicle",
                 dekon_p: null,
                 division_chief_unit: "Incident Command and Control Unit",
                 dlk_or_tm50: null,
@@ -2834,9 +2839,10 @@ function deleteMissionPosition(e) {
                 hlf_only: "Rescue Pump",
                 hlf_or_rw_and_lf: "Rescue Pump or Rescue Support Unit and Fire engine",
                 hondengeleider: null,
+                joint_response_unit: "Joint Response Unit",
                 k9: "Dog Support Unit (DSU)",
                 kdow_lna: null,
-                kdow_orgl: "EMS Chief",
+                kdow_orgl: "Operational Team Leader",
                 ktw_b: null,
                 ktw_or_rtw: null,
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
@@ -4510,7 +4516,7 @@ function deleteMissionPosition(e) {
                 fireboat: "DuÅ¼a Å‚Ã³dÅº straÅ¼acka",
                 fly_car: "SamochÃ³d szefa brygady",
                 fukw: null,
-                fwk: null,
+                fwk: "DÅºwig SP",
                 gefkw: null,
                 gkw: "SamochÃ³d kwatermistrzowski",
                 grtw: "Jednostka do zdarzeÅ„ masowych",
@@ -4524,7 +4530,7 @@ function deleteMissionPosition(e) {
                 gw_messtechnik: "GW-Messtechnik",
                 gw_oel_only: null,
                 gw_san: null,
-                gw_taucher: null,
+                gw_taucher: "SamochÃ³d SLRw",
                 gw_wasserrettung: "Ratownictwo wodne",
                 gw_werkfeuerwehr: null,
                 gwl2wasser_only: "SamochÃ³d wÄ™Å¼owy",
@@ -27265,7 +27271,11 @@ var map, alliance_building_show, geocoder, directionsService, building_eval_unlo
         ["air_tanker", I18n.t("intervention_order.vehicles.air_tanker")],
         ["heavy_air_tanker", I18n.t("intervention_order.vehicles.heavy_air_tanker")],
         ["spokesman", I18n.t("intervention_order.vehicles.spokesman")],
-        ["rescue_dogs", I18n.t("intervention_order.vehicles.rescue_dogs")]
+        ["rescue_dogs", I18n.t("intervention_order.vehicles.rescue_dogs")],
+        ["rescue_dogs_seg", I18n.t("intervention_order.vehicles.rescue_dogs_seg")],
+        ["rescue_dogs_thw", I18n.t("intervention_order.vehicles.rescue_dogs_thw")],
+        ["coresponder", I18n.t("intervention_order.vehicles.coresponder")],
+        ["joint_response_unit", I18n.t("intervention_order.vehicles.joint_response_unit")]
     ], $("#restore_map").click(function() {
         mapViewRestore()
     }), $("#coins_top").click(function() {
