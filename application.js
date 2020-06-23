@@ -2207,7 +2207,10 @@ function deleteMissionPosition(e) {
                 prev: "ZurÃ¼ck",
                 next: "Weiter",
                 end: "Ende",
-                collect: "Einsammeln"
+                collect: "Einsammeln",
+                skip_hint: "MÃ¶chtest du das Tutorial wirklich abbrechen? Es kann spÃ¤ter nicht noch einmal abgerufen werden. Du wirst keine Belohnung fÃ¼r den Abschluss des Tutorials erhalten.",
+                skip: "Ja",
+                "continue": "Nein"
             },
             beginner: {
                 building: {
@@ -2375,7 +2378,7 @@ function deleteMissionPosition(e) {
             join_alliance_infos: "If you are in an alliance, other players can freely give you missions.",
             map: "Map",
             map_filters: {
-                map_filters: "Points of Interest (POIs)",
+                map_filters: "Map filters list",
                 mission_positions: "Points of Interest (POIs)"
             },
             message: "Message",
@@ -2633,9 +2636,12 @@ function deleteMissionPosition(e) {
             },
             commons: {
                 collect: "Collect",
+                "continue": "No",
                 end: "End",
                 next: "Next",
-                prev: "Prev"
+                prev: "Prev",
+                skip: "Yes",
+                skip_hint: "Do you really want to cancel the tutorial? It can't be accessed at any later time. You will not be eligible for the tutorial completion reward."
             },
             rewards: {
                 log: "Reward for finishing the tutorial."
@@ -2902,7 +2908,10 @@ function deleteMissionPosition(e) {
                 prev: "Prev",
                 next: "Next",
                 end: "End",
-                collect: "Collect"
+                collect: "Collect",
+                skip_hint: "Do you really want to cancel the tutorial? It can't be accessed at any later time. You will not be eligible for the tutorial completion reward.",
+                skip: !0,
+                "continue": !1
             },
             beginner: {
                 building: {
@@ -3244,7 +3253,10 @@ function deleteMissionPosition(e) {
                 prev: "Vorige",
                 next: "Volgende",
                 end: "BeÃ«indigen",
-                collect: "Ophalen"
+                collect: "Ophalen",
+                skip_hint: "Wil je de tutorial echt stoppen? Je kunt hem later niet opnieuw openen. Je komt dan niet meer in aanmerking voor beloningen voor het voltooien van de tutorial.",
+                skip: "Ja",
+                "continue": "Nee"
             },
             beginner: {
                 building: {
@@ -3412,7 +3424,7 @@ function deleteMissionPosition(e) {
             join_alliance_infos: "Si estÃ¡s en una alianza, otros jugadores podrÃ¡n ofrecerte misiones.",
             map: "Mapa",
             map_filters: {
-                map_filters: "Puntos de interÃ©s (PI)",
+                map_filters: "Lista de filtros de mapa",
                 mission_positions: "Puntos de interÃ©s (PI)"
             },
             message: "Mensaje",
@@ -3656,9 +3668,12 @@ function deleteMissionPosition(e) {
             },
             commons: {
                 collect: "Recoger",
+                "continue": "No",
                 end: "Fin",
                 next: "Sig.",
-                prev: "Ant."
+                prev: "Ant.",
+                skip: "SÃ­",
+                skip_hint: "Â¿Seguro que quieres saltarte el tutorial? DespuÃ©s, no podrÃ¡s acceder a Ã©l.No podrÃ¡s recibir la recompensa por completar el tutorial."
             },
             rewards: {
                 log: "Recompensa por completar el tutorial."
@@ -3750,7 +3765,7 @@ function deleteMissionPosition(e) {
             join_alliance_infos: "If you are in an alliance, other players can freely give you missions.",
             map: "Map",
             map_filters: {
-                map_filters: "Points of Interest (POIs)",
+                map_filters: "Map filters list",
                 mission_positions: "Points of Interest (POIs)"
             },
             message: "Message",
@@ -3994,9 +4009,12 @@ function deleteMissionPosition(e) {
             },
             commons: {
                 collect: "Collect",
+                "continue": "No",
                 end: "End",
                 next: "Next",
-                prev: "Prev"
+                prev: "Prev",
+                skip: "Yes",
+                skip_hint: "Do you really want to cancel the tutorial? It can't be accessed at any later time. You will not be eligible for the tutorial completion reward."
             },
             rewards: {
                 log: "Reward for finishing the tutorial."
@@ -4260,7 +4278,10 @@ function deleteMissionPosition(e) {
                 prev: "FÃ¶regÃ¥ende",
                 next: "NÃ¤sta",
                 end: "Avsluta",
-                collect: "HÃ¤mta"
+                collect: "HÃ¤mta",
+                skip_hint: "Vill du verkligen avbryta handledningen? Du kommer inte Ã¥t den senare. I sÃ¥ fall fÃ¥r du ingen belÃ¶ning fÃ¶r att ha klarat av handledningen.",
+                skip: "Ja",
+                "continue": "Nej"
             },
             beginner: {
                 building: {
@@ -4600,7 +4621,10 @@ function deleteMissionPosition(e) {
                 prev: "Wstecz",
                 next: "Dalej",
                 end: "ZakoÅ„cz",
-                collect: "Odbierz"
+                collect: "Odbierz",
+                skip_hint: "Czy na pewno chcesz pominÄ…Ä‡ samouczek? PamiÄ™taj, Å¼e nie bÄ™dzie on pÃ³Åºniej dostÄ™pny. W ten sposÃ³b tracisz szansÄ™ na uzyskanie nagrody za ukoÅ„czenie samouczka.",
+                skip: "Tak",
+                "continue": "Nie"
             },
             beginner: {
                 building: {
@@ -4937,7 +4961,10 @@ function deleteMissionPosition(e) {
                 prev: "Prec",
                 next: "Succ",
                 end: "Fine",
-                collect: "Raccogli"
+                collect: "Raccogli",
+                skip_hint: "Vuoi davvero saltare il tutorial? Non sarÃ  piÃ¹ accessibile in seguito. Non potrai qualificarti per il premio di completamento tutorial.",
+                skip: "SÃ¬",
+                "continue": !1
             },
             beginner: {
                 building: {
@@ -5277,7 +5304,10 @@ function deleteMissionPosition(e) {
                 prev: "PrÃ©c.",
                 next: "Suiv.",
                 end: "Fin",
-                collect: "RÃ©cupÃ©rer"
+                collect: "RÃ©cupÃ©rer",
+                skip_hint: "Veux-tu vraiment passer le didacticiel ? Tu ne pourras pas y accÃ©der par la suite. Tu renonceras ainsi Ã  la rÃ©compense offerte pour avoir terminÃ© le didacticiel.",
+                skip: "Oui",
+                "continue": "Non"
             },
             beginner: {
                 building: {
@@ -5618,7 +5648,10 @@ function deleteMissionPosition(e) {
                 prev: "ÐÐ°Ð·Ð°Ð´",
                 next: "Ð”Ð°Ð»ÐµÐµ",
                 end: "ÐšÐ¾Ð½ÐµÑ†",
-                collect: "ÐŸÐ¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ"
+                collect: "ÐŸÐ¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ",
+                skip_hint: "Ð’Ñ‹ ÑƒÐ²ÐµÑ€ÐµÐ½Ñ‹, Ñ‡Ñ‚Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¿Ñ€Ð¾Ð¿ÑƒÑÑ‚Ð¸Ñ‚ÑŒ Ð¾Ð±ÑƒÑ‡ÐµÐ½Ð¸Ðµ? Ð’Ñ‹ Ð±Ð¾Ð»ÑŒÑˆÐµ Ð½Ðµ ÑÐ¼Ð¾Ð¶ÐµÑ‚Ðµ Ðº Ð½ÐµÐ¼Ñƒ Ð²ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ. Ð’Ñ‹ Ð½Ðµ ÑÐ¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ Ð½Ð°Ð³Ñ€Ð°Ð´Ñƒ Ð·Ð° Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð¸Ðµ Ð¾Ð±ÑƒÑ‡ÐµÐ½Ð¸Ñ.",
+                skip: "Ð”Ð°",
+                "continue": "ÐÐµÑ‚"
             },
             beginner: {
                 building: {
@@ -5785,7 +5818,7 @@ function deleteMissionPosition(e) {
             join_alliance_infos: "Hvis du er i en alliance, kan andre spillere give dig missioner.",
             map: "Kort",
             map_filters: {
-                map_filters: "Interessepunkter (POI)",
+                map_filters: "Liste over kortfiltre",
                 mission_positions: "Interessepunkter (POI)"
             },
             message: "Meddelelse",
@@ -6029,9 +6062,12 @@ function deleteMissionPosition(e) {
             },
             commons: {
                 collect: "Hent",
+                "continue": "Nej",
                 end: "Afslut",
                 next: "NÃ¦ste",
-                prev: "Forrige"
+                prev: "Forrige",
+                skip: "Ja",
+                skip_hint: "Vil du virkelig afbryde introduktionen? Du kan ikke vende tilbage til den senere. Du kvalificerer dig ikke til belÃ¸nningen for at gennemfÃ¸re introduktionen."
             },
             rewards: {
                 log: "BelÃ¸nning for at afslutte gennemgangen."
@@ -6122,7 +6158,7 @@ function deleteMissionPosition(e) {
             join_alliance_infos: "Hvis du er i en allianse, kan andre spillere gi deg oppdrag.",
             map: "Kart",
             map_filters: {
-                map_filters: "Interessepunkt",
+                map_filters: "Kartfilterliste",
                 mission_positions: "Interessepunkt"
             },
             message: "Melding",
@@ -6366,9 +6402,12 @@ function deleteMissionPosition(e) {
             },
             commons: {
                 collect: "Hent",
+                "continue": "Nei",
                 end: "Slutt",
                 next: "Neste",
-                prev: "Forrige"
+                prev: "Forrige",
+                skip: "Ja",
+                skip_hint: "Vil du avslutte veiledningen? Den vil ikke vÃ¦re tilgjengelig senere. Du vil ikke fÃ¥ belÃ¸nningen for fullfÃ¸rt veiledning."
             },
             rewards: {
                 log: "BelÃ¸nning for Ã¥ fullfÃ¸re veiledningen."
@@ -6459,7 +6498,7 @@ function deleteMissionPosition(e) {
             join_alliance_infos: "V alianci vÃ¡m ostatnÃ­ hrÃ¡Äi mÅ¯Å¾ou dÃ¡vat mise.",
             map: "Mapa",
             map_filters: {
-                map_filters: "Body zÃ¡jmu (BZ)",
+                map_filters: "Seznam filtrÅ¯ mapy",
                 mission_positions: "Body zÃ¡jmu (BZ)"
             },
             message: "ZprÃ¡va",
@@ -6703,9 +6742,12 @@ function deleteMissionPosition(e) {
             },
             commons: {
                 collect: "Sebrat",
+                "continue": "Ne",
                 end: "Konec",
                 next: "DalÅ¡Ã­",
-                prev: "PÅ™edchozÃ­"
+                prev: "PÅ™edchozÃ­",
+                skip: "Ano",
+                skip_hint: "Opravdu chcete vÃ½uku zruÅ¡it? PozdÄ›ji uÅ¾ se k nÃ­ nedostanete. Nedostanete odmÄ›nu za dokonÄenÃ­ vÃ½uky."
             },
             rewards: {
                 log: "OdmÄ›na za dokonÄenÃ­ vÃ½uky."
@@ -6796,7 +6838,7 @@ function deleteMissionPosition(e) {
             join_alliance_infos: "Bir birlikteysen diÄŸer oyuncular sana istedikleri gibi gÃ¶revler verebilirler.",
             map: "Harita",
             map_filters: {
-                map_filters: "Ä°lgi AlanlarÄ± (POI'ler)",
+                map_filters: "Harita filtreleri listesi",
                 mission_positions: "Ä°lgi AlanlarÄ± (POI'ler)"
             },
             message: "Mesaj",
@@ -7040,9 +7082,12 @@ function deleteMissionPosition(e) {
             },
             commons: {
                 collect: "Topla",
+                "continue": "HayÄ±r",
                 end: "Bitir",
                 next: "Sonraki",
-                prev: "Ã–nceki"
+                prev: "Ã–nceki",
+                skip: "Evet",
+                skip_hint: "EÄŸitimi gerÃ§ekten iptal etmek istiyor musun? Daha sonra eriÅŸmek mÃ¼mkÃ¼n olmayacak. EÄŸitim tamamlama Ã¶dÃ¼lÃ¼ alamayacaksÄ±n."
             },
             rewards: {
                 log: "EÄŸitimi tamamlama Ã¶dÃ¼lÃ¼."
@@ -7131,7 +7176,7 @@ function deleteMissionPosition(e) {
             join_alliance_infos: "Se vocÃª estiver em uma alianÃ§a, outros jogadores podem lhe dar missÃµes livremente.",
             map: "Mapa",
             map_filters: {
-                map_filters: "Pontos de interesse (PDI)",
+                map_filters: "Lista de filtros do mapa",
                 mission_positions: "Pontos de interesse (PDI)"
             },
             message: "Mensagem",
@@ -7375,9 +7420,12 @@ function deleteMissionPosition(e) {
             },
             commons: {
                 collect: "Recolher",
+                "continue": "NÃ£o",
                 end: "Fim",
                 next: "Seguinte",
-                prev: "Anterior"
+                prev: "Anterior",
+                skip: "Sim",
+                skip_hint: "Realmente desejas cancelar o tutorial? NÃ£o serÃ¡ possÃ­vel acedÃª-lo mais tarde. NÃ£o serÃ¡s elegÃ­vel para a recompensa de finalizaÃ§Ã£o do tutorial."
             },
             rewards: {
                 log: "Recompensa por completar o tutorial."
@@ -7468,7 +7516,7 @@ function deleteMissionPosition(e) {
             join_alliance_infos: "Se vocÃª estiver em uma alianÃ§a, outros jogadores podem lhe dar missÃµes livremente.",
             map: "Mapa",
             map_filters: {
-                map_filters: "Pontos de interesse (PDI)",
+                map_filters: "Lista de filtros do mapa",
                 mission_positions: "Pontos de interesse (PDI)"
             },
             message: "Mensagem",
@@ -7712,9 +7760,12 @@ function deleteMissionPosition(e) {
             },
             commons: {
                 collect: "Coletar",
+                "continue": "NÃ£o",
                 end: "Fim",
                 next: "PrÃ³ximo",
-                prev: "Anterior"
+                prev: "Anterior",
+                skip: "Sim",
+                skip_hint: "Realmente desejas cancelar o tutorial? NÃ£o serÃ¡ possÃ­vel acedÃª-lo mais tarde. NÃ£o serÃ¡s elegÃ­vel para a recompensa de finalizaÃ§Ã£o do tutorial."
             },
             rewards: {
                 log: "Recompensa por completar o tutorial."
@@ -7806,7 +7857,7 @@ function deleteMissionPosition(e) {
             join_alliance_infos: "Ð¯ÐºÑ‰Ð¾ Ð²Ð¸ Ð¿ÐµÑ€ÐµÐ±ÑƒÐ²Ð°Ñ”Ñ‚Ðµ Ð² Ð°Ð»ÑŒÑÐ½ÑÑ–, Ñ–Ð½ÑˆÑ– Ð³Ñ€Ð°Ð²Ñ†Ñ– Ð¼Ð¾Ð¶ÑƒÑ‚ÑŒ Ð²Ñ–Ð»ÑŒÐ½Ð¾ Ð´Ð°Ð²Ð°Ñ‚Ð¸ Ð²Ð°Ð¼ Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ.",
             map: "ÐšÐ°Ñ€Ñ‚Ð°",
             map_filters: {
-                map_filters: "Ð’Ð°Ð¶Ð»Ð¸Ð²Ñ– Ñ‚Ð¾Ñ‡ÐºÐ¸ (Ð’Ð¢)",
+                map_filters: "Ð¡Ð¿Ð¸ÑÐ¾Ðº Ñ„Ñ–Ð»ÑŒÑ‚Ñ€Ñ–Ð² ÐºÐ°Ñ€Ñ‚Ð¸",
                 mission_positions: "Ð’Ð°Ð¶Ð»Ð¸Ð²Ñ– Ñ‚Ð¾Ñ‡ÐºÐ¸ (Ð’Ð¢)"
             },
             message: "ÐŸÐ¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ",
@@ -8050,9 +8101,12 @@ function deleteMissionPosition(e) {
             },
             commons: {
                 collect: "Ð’Ð·ÑÑ‚Ð¸",
+                "continue": "ÐÑ–",
                 end: "ÐšÑ–Ð½ÐµÑ†ÑŒ",
                 next: "Ð”Ð°Ð»Ñ–",
-                prev: "ÐÐ°Ð·Ð°Ð´"
+                prev: "ÐÐ°Ð·Ð°Ð´",
+                skip: "Ð¢Ð°Ðº",
+                skip_hint: "Ð”Ñ–Ð¹ÑÐ½Ð¾ ÑÐºÐ°ÑÑƒÐ²Ð°Ñ‚Ð¸ Ð½Ð°Ð²Ñ‡Ð°Ð½Ð½Ñ? ÐŸÐµÑ€ÐµÐ¹Ñ‚Ð¸ Ð´Ð¾ Ð½ÑŒÐ¾Ð³Ð¾ Ð¿Ñ–Ð·Ð½Ñ–ÑˆÐµ Ð½Ðµ Ð±ÑƒÐ´Ðµ Ð¼Ð¾Ð¶Ð»Ð¸Ð²Ð¾ÑÑ‚Ñ–. Ð’Ð¸ Ð½Ðµ Ð¼Ð°Ñ‚Ð¸Ð¼ÐµÑ‚Ðµ Ð¿Ñ€Ð°Ð²Ð° Ð½Ð° Ð½Ð°Ð³Ð¾Ñ€Ð¾Ð´Ñƒ Ð·Ð° Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð½Ñ Ð½Ð°Ð²Ñ‡Ð°Ð½Ð½Ñ."
             },
             rewards: {
                 log: "ÐÐ°Ð³Ð¾Ñ€Ð¾Ð´Ð° Ð·Ð° Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð½Ñ Ð½Ð°Ð²Ñ‡Ð°Ð½Ð½Ñ."
@@ -8144,7 +8198,7 @@ function deleteMissionPosition(e) {
             join_alliance_infos: "Si estÃ¡s en una alianza, otros jugadores podrÃ¡n ofrecerte misiones.",
             map: "Mapa",
             map_filters: {
-                map_filters: "Puntos de interÃ©s (PI)",
+                map_filters: "Lista de filtros de mapa",
                 mission_positions: "Puntos de interÃ©s (PI)"
             },
             message: "Mensaje",
@@ -8388,9 +8442,12 @@ function deleteMissionPosition(e) {
             },
             commons: {
                 collect: "Recoger",
+                "continue": "No",
                 end: "Finalizar",
                 next: "Siguiente",
-                prev: "Anterior"
+                prev: "Anterior",
+                skip: "SÃ­",
+                skip_hint: "Â¿Seguro que quieres saltarte el tutorial? DespuÃ©s, no podrÃ¡s acceder a Ã©l.No podrÃ¡s recibir la recompensa por completar el tutorial."
             },
             rewards: {
                 log: "Recompensa por completar el tutorial."
@@ -8482,7 +8539,7 @@ function deleteMissionPosition(e) {
             join_alliance_infos: "ã‚¢ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ã«æ‰€å±žã—ã¦ã„ã‚Œã°ã€ä»–ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒã‚ãªãŸã¸è‡ªç”±ã«ãƒŸãƒƒã‚·ãƒ§ãƒ³ã‚’å‰²ã‚Šå½“ã¦ã‚‰ã‚Œã¾ã™ã€‚",
             map: "ãƒžãƒƒãƒ—",
             map_filters: {
-                map_filters: "åˆ°ç€åœ°ç‚¹ï¼ˆPOIï¼‰",
+                map_filters: "ãƒžãƒƒãƒ—ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼ã®ä¸€è¦§",
                 mission_positions: "åˆ°ç€åœ°ç‚¹ï¼ˆPOIï¼‰"
             },
             message: "ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸",
@@ -8720,9 +8777,12 @@ function deleteMissionPosition(e) {
             },
             commons: {
                 collect: "ç²å¾—",
+                "continue": "ã„ã„ãˆ",
                 end: "çµ‚äº†",
                 next: "æ¬¡ã¸",
-                prev: "å‰ã¸"
+                prev: "å‰ã¸",
+                skip: "ã¯ã„",
+                skip_hint: "ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«ã¯é£›ã°ã™ã¨å¾Œã§è¦‹ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“ã€ã‚¹ã‚­ãƒƒãƒ—ã—ã¦ã‚‚ã„ã„ã§ã™ã‹ï¼Ÿãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«å®Œäº†å ±é…¬ãŒå—ã‘å–ã‚Œãªããªã‚Šã¾ã™ã€‚"
             },
             rewards: {
                 log: "ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«å®Œäº†ã®å ±é…¬ã§ã™ã€‚"
@@ -8814,7 +8874,7 @@ function deleteMissionPosition(e) {
             join_alliance_infos: "ë™ë§¹ì— ì†Œì†ëœ ìƒíƒœë¼ë©´ ë‹¤ë¥¸ í”Œë ˆì´ì–´ë¡œë¶€í„° ìž„ë¬´ë¥¼ ìžìœ ë¡­ê²Œ ë°›ì„ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.",
             map: "ì§€ë„",
             map_filters: {
-                map_filters: "ê´€ì‹¬ ì§€ì—­(POI)",
+                map_filters: "ì§€ë„ í•„í„° ëª©ë¡",
                 mission_positions: "ê´€ì‹¬ ì§€ì—­(POI)"
             },
             message: "ë©”ì‹œì§€",
@@ -9058,9 +9118,12 @@ function deleteMissionPosition(e) {
             },
             commons: {
                 collect: "ìˆ˜ì§‘",
+                "continue": "ì•„ë‹ˆìš”",
                 end: "ë§ˆì§€ë§‰",
                 next: "ë‹¤ìŒ",
-                prev: "ì´ì „"
+                prev: "ì´ì „",
+                skip: "ì˜ˆ",
+                skip_hint: "ì •ë§ íŠœí† ë¦¬ì–¼ì„ ì·¨ì†Œí• ê¹Œìš”? ì´í›„ ë‹¤ì‹œ í™•ì¸í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.íŠœí† ë¦¬ì–¼ ì™„ë£Œ ë³´ìƒ ìžê²©ì„ ë°›ì§€ ëª»í•˜ê²Œ ë©ë‹ˆë‹¤."
             },
             rewards: {
                 log: "íŠœí† ë¦¬ì–¼ ì™„ë£Œì— ëŒ€í•œ ë³´ìƒ."
@@ -9152,7 +9215,7 @@ function deleteMissionPosition(e) {
             join_alliance_infos: "DacÄƒ faci parte dintr-o alianÈ›Äƒ, alÈ›i jucÄƒtori Ã®È›i pot Ã®ncredinÈ›a misiuni dacÄƒ doresc.",
             map: "HartÄƒ",
             map_filters: {
-                map_filters: "Puncte de interes",
+                map_filters: "Lista filtrelor de hartÄƒ",
                 mission_positions: "Puncte de interes"
             },
             message: "Mesaj",
@@ -9396,9 +9459,12 @@ function deleteMissionPosition(e) {
             },
             commons: {
                 collect: "ColecteazÄƒ",
+                "continue": "Nu",
                 end: "SfÃ¢rÈ™it",
                 next: "Urm.",
-                prev: "Ant."
+                prev: "Ant.",
+                skip: "Da",
+                skip_hint: "EÈ™ti sigur cÄƒ vrei sÄƒ anulezi tutorialul? Acesta nu poate fi accesat mai tÃ¢rziu. Nu vei fi eligibil pentru recompensa de finalizare a tutorialului."
             },
             rewards: {
                 log: "RecompensÄƒ pentru terminarea tutorialului."
@@ -9490,7 +9556,7 @@ function deleteMissionPosition(e) {
             join_alliance_infos: "Jos kuulut johonkin liittoutumaan, muut pelaajat voivat antaa sinulle tehtÃ¤viÃ¤.",
             map: "Kartta",
             map_filters: {
-                map_filters: "Kohdepisteet",
+                map_filters: "Karttasuodatinlista",
                 mission_positions: "Kohdepisteet"
             },
             message: "Viesti",
@@ -9734,9 +9800,12 @@ function deleteMissionPosition(e) {
             },
             commons: {
                 collect: "KerÃ¤Ã¤",
+                "continue": "Ei",
                 end: "Loppu",
                 next: "Edell.",
-                prev: "Seur."
+                prev: "Seur.",
+                skip: "KyllÃ¤",
+                skip_hint: "Haluatko varmasti peruuttaa opetuspelin? Siihen ei voi palata myÃ¶hemmin. Et saa opetuspelin suorituspalkintoa."
             },
             rewards: {
                 log: "Palkinto opetuspelin pelaamisesta loppuun."
@@ -9828,7 +9897,7 @@ function deleteMissionPosition(e) {
             join_alliance_infos: "Ak ste v aliancii, ostatnÃ­ hrÃ¡Äi vÃ¡m mÃ´Å¾u zadarmo dÃ¡vaÅ¥ misie.",
             map: "Mapa",
             map_filters: {
-                map_filters: "Body zÃ¡ujmu (POI)",
+                map_filters: "Zoznam filtrov mapy",
                 mission_positions: "Body zÃ¡ujmu (POI)"
             },
             message: "SprÃ¡va",
@@ -10072,9 +10141,12 @@ function deleteMissionPosition(e) {
             },
             commons: {
                 collect: "VyzdvihnÃºÅ¥",
+                "continue": "Nie",
                 end: "Koniec",
                 next: "ÄŽalej",
-                prev: "Dozadu"
+                prev: "Dozadu",
+                skip: "Ãno",
+                skip_hint: "Naozaj chcete zruÅ¡iÅ¥ nÃ¡cvik? NeskÃ´r ho uÅ¾ nebudete mÃ´cÅ¥ spustiÅ¥. Nebudete maÅ¥ nÃ¡rok na odmenu za absolvovanie nÃ¡cviku."
             },
             rewards: {
                 log: "Odmena za dokonÄenie nÃ¡cviku."
@@ -35200,7 +35272,7 @@ var tutorial = function() {
             tutorial.continue_tutorial && (tutorial.current_step = e.current_step), tutorial.coin_rewards = e.coin_rewards, tutorial.load_config(e.tutorial_identifier, tutorial.tutorialConfigLoadedHandler)
         },
         tutorialConfigLoadedHandler: function(e) {
-            tutorial.setCurrentTourConfig(e), registerTutorial(this.tutorialView)
+            tutorial.setCurrentTourConfig(e), registerTutorial(this.tutorialView), tutorial.append_close_tutorial_modal()
         },
         load_config: function(e, t) {
             $.ajax({
@@ -35280,6 +35352,12 @@ var tutorial = function() {
         },
         setLightBoxCloseListener: function(e) {
             this.lightBoxCloseListener = e
+        },
+        append_close_tutorial_modal: function() {
+            $("body").append('<div id ="close_tutorial_modal" class="modal fade" tabindex="-1" role="dialog">\n  <div class="modal-dialog modal-sm" role="document">\n    <div class="modal-content">\n      <div class="modal-body">\n        <p>' + I18n.t("tutorial.commons.skip_hint") + "</p>\n" + "      </div>\n" + '      <div class="modal-footer">\n' + '        <button type="button" class="btn btn-primary" data-dismiss="modal">' + I18n.t("tutorial.commons.continue") + "</button>\n" + '        <button type="button" class="btn btn-danger" onclick=\'tutorial.close_tutorial()\'>' + I18n.t("tutorial.commons.skip") + "</button>\n" + "      </div>\n" + "    </div><!-- /.modal-content -->\n" + "  </div><!-- /.modal-dialog -->\n" + "</div><!-- /.modal -->")
+        },
+        close_tutorial: function() {
+            $("#close_tutorial_modal").modal("hide"), this.current_tour.end()
         }
     }
 }();

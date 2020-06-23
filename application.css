@@ -6563,6 +6563,9 @@ background - repeat: repeat - x
                                                 }.btn - close: before {
                                                     content: "X"
                                                 }
+                                                #close_tutorial_modal {
+                                                    z - index: 1200
+                                                }
                                                 /*
                                                  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
                                                  *
