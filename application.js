@@ -4247,7 +4247,7 @@ function deleteMissionPosition(e) {
             secounds: "sek",
             sicherheitswache_error: "Vakten %{caption} lyckades inte eftersom kriterierna inte uppfyllts.",
             sicherheitswache_success: "Vakten %{caption} har lyckats. FÃ¥ %{credits} krediter.",
-            start_in: "BÃ¶rjar pÃ¥: ",
+            start_in: "Ã…ker om: ",
             start_username: "BÃ¶rjar:",
             time_left: "Tid kvar:",
             to_building: "Visa byggnad",
@@ -7557,9 +7557,9 @@ function deleteMissionPosition(e) {
                 mission_positions: "Pontos de interesse (PDI)",
                 police_copter_station_missions: "AviaÃ§Ã£o policial",
                 police_school_missions: "Academia de polÃ­cia",
-                police_small_missions: "Delegacia de polÃ­cia (estaÃ§Ã£o pequena)",
+                police_small_missions: "Esquadra de PolÃ­cia",
                 police_special_forces: "Unidade Especial de PolÃ­cia",
-                police_station_missions: "Delegacia de polÃ­cia",
+                police_station_missions: "Esquadra de PolÃ­cia (Pequena)",
                 prison_missions: "PresÃ­dio",
                 rapid_deployment_group: "Grupo de InstalaÃ§Ã£o RÃ¡pida (SEG)",
                 rescue_copter_station_missions: "Centro de meios aÃ©reos",
@@ -7590,7 +7590,7 @@ function deleteMissionPosition(e) {
             on_destination: "No destino do transporte",
             on_place: "No local",
             patient_transported: "Transportando paciente",
-            prisoner_transported: "Transportando detento",
+            prisoner_transported: "A transportar detido.",
             ready_home: "DisponÃ­vel na estaÃ§Ã£o",
             ready_traveling: "Livre e disponÃ­vel",
             talking_wish: "SolicitaÃ§Ã£o de transporte",
@@ -7639,13 +7639,13 @@ function deleteMissionPosition(e) {
                 abl2wasser_only: "MÃ³dulo de fornecimento de mangueiras",
                 ambulance: "AmbulÃ¢ncia de SAV",
                 ambulance_or_rapid_responder: "",
-                arff: "Defesa Civil (caminhÃ£o de bombeiro para aeroportos)",
-                battalion_chief_unit: "Viatura de batalhÃ£o",
+                arff: "VeÃ­culo de Combate Especial",
+                battalion_chief_unit: "VeÃ­culo de Comando",
                 boot: "Barcos (geral)",
                 dekon_p: "",
                 division_chief_unit: "Viatura de comando mÃ³vel",
                 dlk_or_tm50: "",
-                elw1_or_elw2: "Viatura de batalhÃ£o, viatura de comando mÃ³vel ou mÃ³dulo de comando mÃ³vel ",
+                elw1_or_elw2: "VeÃ­culo de Comando, VeÃ­culo de comando mÃ³vel ou mÃ³dulo de comando mÃ³vel",
                 elw2_or_ab_elw: "",
                 elw3: "",
                 elw_airport: "",
@@ -7656,7 +7656,7 @@ function deleteMissionPosition(e) {
                 fukw: "",
                 fwk: "",
                 gefkw: "",
-                gkw: "CaminhÃ£o utilitÃ¡rio",
+                gkw: "VeÃ­culo de LogÃ­stica",
                 grtw: "Unidade para incidentes com mÃºltiplas vÃ­timas",
                 grtw0: "",
                 grtw1: "",
@@ -7699,12 +7699,12 @@ function deleteMissionPosition(e) {
                 ovd_p: "",
                 police_car: "Carro de patrulha",
                 polizeihubschrauber: "HelicÃ³ptero de polÃ­cia",
-                rescue_vehicle: "VeÃ­culo de resgate pesado",
+                rescue_vehicle: "VeÃ­culo de Desencarceramento",
                 rescue_vehicle_only: "Resgate pesado",
                 rescueboat: "Barco de resgate grande",
                 rettungstreppe: "",
                 rth_only: "Heli INEM",
-                schlauchwagen: "CaminhÃ£o pipa",
+                schlauchwagen: "VeÃ­culo Tanque",
                 seg_elw: "",
                 sek_mtf: "",
                 sek_zf: "",
@@ -7723,10 +7723,10 @@ function deleteMissionPosition(e) {
                 thw_mzkw: "Mehrzweckkraftwagen (MzKW)",
                 thw_tauchkraftwagen: "Equipe de mergulho",
                 thw_tauchkraftwagen_or_gw_taucher: "",
-                tlf_only: "CaminhÃ£o tanque",
+                tlf_only: "VeÃ­culo Tanque de Grande Capacidade",
                 tm50: "",
                 turboloescher: "",
-                turntable_ladder: "CaminhÃ£o plataforma",
+                turntable_ladder: "Veiculo Escada",
                 ulf: "",
                 wasserwerfer: "",
                 water_amount: "",
@@ -11025,13 +11025,13 @@ function deleteMissionPosition(e) {
             return o(t.dataTypes[0]) || !s["*"] && o("*")
         }
 
-        function j(e, i) {
+        function P(e, i) {
             var n, o, s = ut.ajaxSettings.flatOptions || {};
             for (o in i) i[o] !== t && ((s[o] ? e : n || (n = {}))[o] = i[o]);
             return n && ut.extend(!0, e, n), e
         }
 
-        function P(e, i, n) {
+        function j(e, i, n) {
             for (var o, s, a, r, l = e.contents, c = e.dataTypes;
                 "*" === c[0];) c.shift(), s === t && (s = e.mimeType || i.getResponseHeader("Content-Type"));
             if (s)
@@ -11723,7 +11723,7 @@ function deleteMissionPosition(e) {
                         }, a, !0), c = g(function(e) {
                             return at.call(t, e) > -1
                         }, a, !0), u = [function(e, i, n) {
-                            return !s && (n || i !== j) || ((t = i).nodeType ? l(e, i, n) : c(e, i, n))
+                            return !s && (n || i !== P) || ((t = i).nodeType ? l(e, i, n) : c(e, i, n))
                         }]; o > r; r++)
                         if (i = E.relative[e[r].type]) u = [g(v(u), i)];
                         else {
@@ -11747,10 +11747,10 @@ function deleteMissionPosition(e) {
                                 _ = "0",
                                 g = s && [],
                                 v = null != u,
-                                y = j,
+                                y = P,
                                 w = s || a && E.find.TAG("*", u && r.parentNode || r),
                                 k = q += null == y ? 1 : Math.random() || .1;
-                            for (v && (j = r !== L && r, A = n); null != (d = w[_]); _++) {
+                            for (v && (P = r !== L && r, A = n); null != (d = w[_]); _++) {
                                 if (a && d) {
                                     for (h = 0; p = e[h++];)
                                         if (p(d, r, l)) {
@@ -11769,7 +11769,7 @@ function deleteMissionPosition(e) {
                                 }
                                 ot.apply(c, m), v && !s && m.length > 0 && f + t.length > 1 && i.uniqueSort(c)
                             }
-                            return v && (q = k, j = y), g
+                            return v && (q = k, P = y), g
                         };
                     return o ? s(r) : r
                 }
@@ -11796,7 +11796,7 @@ function deleteMissionPosition(e) {
                 }
 
                 function T() {}
-                var z, S, A, E, D, M, I, j, P, N, L, O, R, $, F, B, H, W = "sizzle" + -new Date,
+                var z, S, A, E, D, M, I, P, j, N, L, O, R, $, F, B, H, W = "sizzle" + -new Date,
                     V = e.document,
                     q = 0,
                     U = 0,
@@ -11930,7 +11930,7 @@ function deleteMissionPosition(e) {
                     }), Q = O.compareDocumentPosition ? function(e, i) {
                         if (e === i) return Y = !0, 0;
                         var n = i.compareDocumentPosition && e.compareDocumentPosition && e.compareDocumentPosition(i);
-                        return n ? 1 & n || !S.sortDetached && i.compareDocumentPosition(e) === n ? e === t || H(V, e) ? -1 : i === t || H(V, i) ? 1 : P ? at.call(P, e) - at.call(P, i) : 0 : 4 & n ? -1 : 1 : e.compareDocumentPosition ? -1 : 1
+                        return n ? 1 & n || !S.sortDetached && i.compareDocumentPosition(e) === n ? e === t || H(V, e) ? -1 : i === t || H(V, i) ? 1 : j ? at.call(j, e) - at.call(j, i) : 0 : 4 & n ? -1 : 1 : e.compareDocumentPosition ? -1 : 1
                     } : function(e, i) {
                         var n, o = 0,
                             s = e.parentNode,
@@ -11938,7 +11938,7 @@ function deleteMissionPosition(e) {
                             r = [e],
                             l = [i];
                         if (e === i) return Y = !0, 0;
-                        if (!s || !a) return e === t ? -1 : i === t ? 1 : s ? -1 : a ? 1 : P ? at.call(P, e) - at.call(P, i) : 0;
+                        if (!s || !a) return e === t ? -1 : i === t ? 1 : s ? -1 : a ? 1 : j ? at.call(j, e) - at.call(j, i) : 0;
                         if (s === a) return d(e, i);
                         for (n = e; n = n.parentNode;) r.unshift(n);
                         for (n = i; n = n.parentNode;) l.unshift(n);
@@ -11966,7 +11966,7 @@ function deleteMissionPosition(e) {
                     var t, i = [],
                         n = 0,
                         o = 0;
-                    if (Y = !S.detectDuplicates, P = !S.sortStable && e.slice(0), e.sort(Q), Y) {
+                    if (Y = !S.detectDuplicates, j = !S.sortStable && e.slice(0), e.sort(Q), Y) {
                         for (; t = e[o++];) t === e[o] && (n = i.push(o));
                         for (; n--;) e.splice(i[n], 1)
                     }
@@ -12469,8 +12469,8 @@ function deleteMissionPosition(e) {
         var At, Et, Dt = /[\t\r\n\f]/g,
             Mt = /\r/g,
             It = /^(?:input|select|textarea|button|object)$/i,
-            jt = /^(?:a|area)$/i,
-            Pt = /^(?:checked|selected)$/i,
+            Pt = /^(?:a|area)$/i,
+            jt = /^(?:checked|selected)$/i,
             Nt = ut.support.getSetAttribute,
             Lt = ut.support.input;
         ut.fn.extend({
@@ -12578,7 +12578,7 @@ function deleteMissionPosition(e) {
                 var i, n, o = 0,
                     s = t && t.match(ht);
                 if (s && 1 === e.nodeType)
-                    for (; i = s[o++];) n = ut.propFix[i] || i, ut.expr.match.bool.test(i) ? Lt && Nt || !Pt.test(i) ? e[n] = !1 : e[ut.camelCase("default-" + i)] = e[n] = !1 : ut.attr(e, i, ""), e.removeAttribute(Nt ? i : n)
+                    for (; i = s[o++];) n = ut.propFix[i] || i, ut.expr.match.bool.test(i) ? Lt && Nt || !jt.test(i) ? e[n] = !1 : e[ut.camelCase("default-" + i)] = e[n] = !1 : ut.attr(e, i, ""), e.removeAttribute(Nt ? i : n)
             },
             attrHooks: {
                 type: {
@@ -12602,17 +12602,17 @@ function deleteMissionPosition(e) {
                 tabIndex: {
                     get: function(e) {
                         var t = ut.find.attr(e, "tabindex");
-                        return t ? parseInt(t, 10) : It.test(e.nodeName) || jt.test(e.nodeName) && e.href ? 0 : -1
+                        return t ? parseInt(t, 10) : It.test(e.nodeName) || Pt.test(e.nodeName) && e.href ? 0 : -1
                     }
                 }
             }
         }), Et = {
             set: function(e, t, i) {
-                return t === !1 ? ut.removeAttr(e, i) : Lt && Nt || !Pt.test(i) ? e.setAttribute(!Nt && ut.propFix[i] || i, i) : e[ut.camelCase("default-" + i)] = e[i] = !0, i
+                return t === !1 ? ut.removeAttr(e, i) : Lt && Nt || !jt.test(i) ? e.setAttribute(!Nt && ut.propFix[i] || i, i) : e[ut.camelCase("default-" + i)] = e[i] = !0, i
             }
         }, ut.each(ut.expr.match.bool.source.match(/\w+/g), function(e, i) {
             var n = ut.expr.attrHandle[i] || ut.find.attr;
-            ut.expr.attrHandle[i] = Lt && Nt || !Pt.test(i) ? function(e, i, o) {
+            ut.expr.attrHandle[i] = Lt && Nt || !jt.test(i) ? function(e, i, o) {
                 var s = ut.expr.attrHandle[i],
                     a = o ? t : (ut.expr.attrHandle[i] = t) != n(e, i, o) ? i.toLowerCase() : null;
                 return ut.expr.attrHandle[i] = s, a
@@ -13503,8 +13503,8 @@ function deleteMissionPosition(e) {
             }
         });
         var Di, Mi, Ii = ut.now(),
-            ji = /\?/,
-            Pi = /#.*$/,
+            Pi = /\?/,
+            ji = /#.*$/,
             Ni = /([?&])_=[^&]*/,
             Li = /^(.*?):[ \t]*([^\r\n]*)\r?$/gm,
             Oi = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
@@ -13579,14 +13579,14 @@ function deleteMissionPosition(e) {
                 }
             },
             ajaxSetup: function(e, t) {
-                return t ? j(j(e, ut.ajaxSettings), t) : j(ut.ajaxSettings, e)
+                return t ? P(P(e, ut.ajaxSettings), t) : P(ut.ajaxSettings, e)
             },
             ajaxPrefilter: M(Hi),
             ajaxTransport: M(Wi),
             ajax: function(e, i) {
                 function n(e, i, n, o) {
                     var s, d, v, b, w, x = i;
-                    2 !== y && (y = 2, l && clearTimeout(l), u = t, r = o || "", k.readyState = e > 0 ? 4 : 0, s = e >= 200 && 300 > e || 304 === e, n && (b = P(h, k, n)), b = N(h, b, k, s), s ? (h.ifModified && (w = k.getResponseHeader("Last-Modified"), w && (ut.lastModified[a] = w), w = k.getResponseHeader("etag"), w && (ut.etag[a] = w)), 204 === e || "HEAD" === h.type ? x = "nocontent" : 304 === e ? x = "notmodified" : (x = b.state, d = b.data, v = b.error, s = !v)) : (v = x, (e || !x) && (x = "error", 0 > e && (e = 0))), k.status = e, k.statusText = (i || x) + "", s ? f.resolveWith(p, [d, x, k]) : f.rejectWith(p, [k, x, v]), k.statusCode(g), g = t, c && m.trigger(s ? "ajaxSuccess" : "ajaxError", [k, h, s ? d : v]), _.fireWith(p, [k, x]), c && (m.trigger("ajaxComplete", [k, h]), --ut.active || ut.event.trigger("ajaxStop")))
+                    2 !== y && (y = 2, l && clearTimeout(l), u = t, r = o || "", k.readyState = e > 0 ? 4 : 0, s = e >= 200 && 300 > e || 304 === e, n && (b = j(h, k, n)), b = N(h, b, k, s), s ? (h.ifModified && (w = k.getResponseHeader("Last-Modified"), w && (ut.lastModified[a] = w), w = k.getResponseHeader("etag"), w && (ut.etag[a] = w)), 204 === e || "HEAD" === h.type ? x = "nocontent" : 304 === e ? x = "notmodified" : (x = b.state, d = b.data, v = b.error, s = !v)) : (v = x, (e || !x) && (x = "error", 0 > e && (e = 0))), k.status = e, k.statusText = (i || x) + "", s ? f.resolveWith(p, [d, x, k]) : f.rejectWith(p, [k, x, v]), k.statusCode(g), g = t, c && m.trigger(s ? "ajaxSuccess" : "ajaxError", [k, h, s ? d : v]), _.fireWith(p, [k, x]), c && (m.trigger("ajaxComplete", [k, h]), --ut.active || ut.event.trigger("ajaxStop")))
                 }
                 "object" == typeof e && (i = e, e = t), i = i || {};
                 var o, s, a, r, l, c, u, d, h = ut.ajaxSetup({}, i),
@@ -13633,8 +13633,8 @@ function deleteMissionPosition(e) {
                             return u && u.abort(t), n(0, t), this
                         }
                     };
-                if (f.promise(k).complete = _.add, k.success = k.done, k.error = k.fail, h.url = ((e || h.url || Mi) + "").replace(Pi, "").replace($i, Di[1] + "//"), h.type = i.method || i.type || h.method || h.type, h.dataTypes = ut.trim(h.dataType || "*").toLowerCase().match(ht) || [""], null == h.crossDomain && (o = Fi.exec(h.url.toLowerCase()), h.crossDomain = !(!o || o[1] === Di[1] && o[2] === Di[2] && (o[3] || ("http:" === o[1] ? "80" : "443")) === (Di[3] || ("http:" === Di[1] ? "80" : "443")))), h.data && h.processData && "string" != typeof h.data && (h.data = ut.param(h.data, h.traditional)), I(Hi, h, i, k), 2 === y) return k;
-                c = h.global, c && 0 === ut.active++ && ut.event.trigger("ajaxStart"), h.type = h.type.toUpperCase(), h.hasContent = !Ri.test(h.type), a = h.url, h.hasContent || (h.data && (a = h.url += (ji.test(a) ? "&" : "?") + h.data, delete h.data), h.cache === !1 && (h.url = Ni.test(a) ? a.replace(Ni, "$1_=" + Ii++) : a + (ji.test(a) ? "&" : "?") + "_=" + Ii++)), h.ifModified && (ut.lastModified[a] && k.setRequestHeader("If-Modified-Since", ut.lastModified[a]), ut.etag[a] && k.setRequestHeader("If-None-Match", ut.etag[a])), (h.data && h.hasContent && h.contentType !== !1 || i.contentType) && k.setRequestHeader("Content-Type", h.contentType), k.setRequestHeader("Accept", h.dataTypes[0] && h.accepts[h.dataTypes[0]] ? h.accepts[h.dataTypes[0]] + ("*" !== h.dataTypes[0] ? ", " + Vi + "; q=0.01" : "") : h.accepts["*"]);
+                if (f.promise(k).complete = _.add, k.success = k.done, k.error = k.fail, h.url = ((e || h.url || Mi) + "").replace(ji, "").replace($i, Di[1] + "//"), h.type = i.method || i.type || h.method || h.type, h.dataTypes = ut.trim(h.dataType || "*").toLowerCase().match(ht) || [""], null == h.crossDomain && (o = Fi.exec(h.url.toLowerCase()), h.crossDomain = !(!o || o[1] === Di[1] && o[2] === Di[2] && (o[3] || ("http:" === o[1] ? "80" : "443")) === (Di[3] || ("http:" === Di[1] ? "80" : "443")))), h.data && h.processData && "string" != typeof h.data && (h.data = ut.param(h.data, h.traditional)), I(Hi, h, i, k), 2 === y) return k;
+                c = h.global, c && 0 === ut.active++ && ut.event.trigger("ajaxStart"), h.type = h.type.toUpperCase(), h.hasContent = !Ri.test(h.type), a = h.url, h.hasContent || (h.data && (a = h.url += (Pi.test(a) ? "&" : "?") + h.data, delete h.data), h.cache === !1 && (h.url = Ni.test(a) ? a.replace(Ni, "$1_=" + Ii++) : a + (Pi.test(a) ? "&" : "?") + "_=" + Ii++)), h.ifModified && (ut.lastModified[a] && k.setRequestHeader("If-Modified-Since", ut.lastModified[a]), ut.etag[a] && k.setRequestHeader("If-None-Match", ut.etag[a])), (h.data && h.hasContent && h.contentType !== !1 || i.contentType) && k.setRequestHeader("Content-Type", h.contentType), k.setRequestHeader("Accept", h.dataTypes[0] && h.accepts[h.dataTypes[0]] ? h.accepts[h.dataTypes[0]] + ("*" !== h.dataTypes[0] ? ", " + Vi + "; q=0.01" : "") : h.accepts["*"]);
                 for (s in h.headers) k.setRequestHeader(s, h.headers[s]);
                 if (h.beforeSend && (h.beforeSend.call(p, k, h) === !1 || 2 === y)) return k.abort();
                 w = "abort";
@@ -13711,7 +13711,7 @@ function deleteMissionPosition(e) {
             }
         }), ut.ajaxPrefilter("json jsonp", function(i, n, o) {
             var s, a, r, l = i.jsonp !== !1 && (Zi.test(i.url) ? "url" : "string" == typeof i.data && !(i.contentType || "").indexOf("application/x-www-form-urlencoded") && Zi.test(i.data) && "data");
-            return l || "jsonp" === i.dataTypes[0] ? (s = i.jsonpCallback = ut.isFunction(i.jsonpCallback) ? i.jsonpCallback() : i.jsonpCallback, l ? i[l] = i[l].replace(Zi, "$1" + s) : i.jsonp !== !1 && (i.url += (ji.test(i.url) ? "&" : "?") + i.jsonp + "=" + s), i.converters["script json"] = function() {
+            return l || "jsonp" === i.dataTypes[0] ? (s = i.jsonpCallback = ut.isFunction(i.jsonpCallback) ? i.jsonpCallback() : i.jsonpCallback, l ? i[l] = i[l].replace(Zi, "$1" + s) : i.jsonp !== !1 && (i.url += (Pi.test(i.url) ? "&" : "?") + i.jsonp + "=" + s), i.converters["script json"] = function() {
                 return r || ut.error(s + " was not called"), r[0]
             }, i.dataTypes[0] = "json", a = e[s], e[s] = function() {
                 r = arguments
@@ -17741,7 +17741,7 @@ function deleteMissionPosition(e) {
                 })
             },
             _generateHTML: function(e) {
-                var t, i, n, o, s, a, r, l, c, u, d, h, p, m, f, _, g, v, b, y, w, k, x, C, T, z, S, A, E, D, M, I, j, P, N, L, O, R, $, F = new Date,
+                var t, i, n, o, s, a, r, l, c, u, d, h, p, m, f, _, g, v, b, y, w, k, x, C, T, z, S, A, E, D, M, I, P, j, N, L, O, R, $, F = new Date,
                     B = this._daylightSavingAdjust(new Date(F.getFullYear(), F.getMonth(), F.getDate())),
                     H = this._get(e, "isRTL"),
                     W = this._get(e, "showButtonPanel"),
@@ -17774,8 +17774,8 @@ function deleteMissionPosition(e) {
                             S += "'>"
                         }
                         for (S += "<div class='ui-datepicker-header ui-widget-header ui-helper-clearfix" + z + "'>" + (/all|left/.test(z) && 0 === k ? H ? s : n : "") + (/all|right/.test(z) && 0 === k ? H ? n : s : "") + this._generateMonthYearHeader(e, X, et, Q, J, k > 0 || C > 0, m, f) + "</div><table class='ui-datepicker-calendar'><thead>" + "<tr>", A = d ? "<th class='ui-datepicker-week-col'>" + this._get(e, "weekHeader") + "</th>" : "", w = 0; 7 > w; w++) E = (w + u) % 7, A += "<th scope='col'" + ((w + u + 6) % 7 >= 5 ? " class='ui-datepicker-week-end'" : "") + ">" + "<span title='" + h[E] + "'>" + p[E] + "</span></th>";
-                        for (S += A + "</tr></thead><tbody>", D = this._getDaysInMonth(et, X), et === e.selectedYear && X === e.selectedMonth && (e.selectedDay = Math.min(e.selectedDay, D)), M = (this._getFirstDayOfMonth(et, X) - u + 7) % 7, I = Math.ceil((M + D) / 7), j = G ? this.maxRows > I ? this.maxRows : I : I, this.maxRows = j, P = this._daylightSavingAdjust(new Date(et, X, 1 - M)), N = 0; j > N; N++) {
-                            for (S += "<tr>", L = d ? "<td class='ui-datepicker-week-col'>" + this._get(e, "calculateWeek")(P) + "</td>" : "", w = 0; 7 > w; w++) O = _ ? _.apply(e.input ? e.input[0] : null, [P]) : [!0, ""], R = P.getMonth() !== X, $ = R && !v || !O[0] || Q && Q > P || J && P > J, L += "<td class='" + ((w + u + 6) % 7 >= 5 ? " ui-datepicker-week-end" : "") + (R ? " ui-datepicker-other-month" : "") + (P.getTime() === T.getTime() && X === e.selectedMonth && e._keyEvent || b.getTime() === P.getTime() && b.getTime() === T.getTime() ? " " + this._dayOverClass : "") + ($ ? " " + this._unselectableClass + " ui-state-disabled" : "") + (R && !g ? "" : " " + O[1] + (P.getTime() === Y.getTime() ? " " + this._currentClass : "") + (P.getTime() === B.getTime() ? " ui-datepicker-today" : "")) + "'" + (R && !g || !O[2] ? "" : " title='" + O[2].replace(/'/g, "&#39;") + "'") + ($ ? "" : " data-handler='selectDay' data-event='click' data-month='" + P.getMonth() + "' data-year='" + P.getFullYear() + "'") + ">" + (R && !g ? "&#xa0;" : $ ? "<span class='ui-state-default'>" + P.getDate() + "</span>" : "<a class='ui-state-default" + (P.getTime() === B.getTime() ? " ui-state-highlight" : "") + (P.getTime() === Y.getTime() ? " ui-state-active" : "") + (R ? " ui-priority-secondary" : "") + "' href='#'>" + P.getDate() + "</a>") + "</td>", P.setDate(P.getDate() + 1), P = this._daylightSavingAdjust(P);
+                        for (S += A + "</tr></thead><tbody>", D = this._getDaysInMonth(et, X), et === e.selectedYear && X === e.selectedMonth && (e.selectedDay = Math.min(e.selectedDay, D)), M = (this._getFirstDayOfMonth(et, X) - u + 7) % 7, I = Math.ceil((M + D) / 7), P = G ? this.maxRows > I ? this.maxRows : I : I, this.maxRows = P, j = this._daylightSavingAdjust(new Date(et, X, 1 - M)), N = 0; P > N; N++) {
+                            for (S += "<tr>", L = d ? "<td class='ui-datepicker-week-col'>" + this._get(e, "calculateWeek")(j) + "</td>" : "", w = 0; 7 > w; w++) O = _ ? _.apply(e.input ? e.input[0] : null, [j]) : [!0, ""], R = j.getMonth() !== X, $ = R && !v || !O[0] || Q && Q > j || J && j > J, L += "<td class='" + ((w + u + 6) % 7 >= 5 ? " ui-datepicker-week-end" : "") + (R ? " ui-datepicker-other-month" : "") + (j.getTime() === T.getTime() && X === e.selectedMonth && e._keyEvent || b.getTime() === j.getTime() && b.getTime() === T.getTime() ? " " + this._dayOverClass : "") + ($ ? " " + this._unselectableClass + " ui-state-disabled" : "") + (R && !g ? "" : " " + O[1] + (j.getTime() === Y.getTime() ? " " + this._currentClass : "") + (j.getTime() === B.getTime() ? " ui-datepicker-today" : "")) + "'" + (R && !g || !O[2] ? "" : " title='" + O[2].replace(/'/g, "&#39;") + "'") + ($ ? "" : " data-handler='selectDay' data-event='click' data-month='" + j.getMonth() + "' data-year='" + j.getFullYear() + "'") + ">" + (R && !g ? "&#xa0;" : $ ? "<span class='ui-state-default'>" + j.getDate() + "</span>" : "<a class='ui-state-default" + (j.getTime() === B.getTime() ? " ui-state-highlight" : "") + (j.getTime() === Y.getTime() ? " ui-state-active" : "") + (R ? " ui-priority-secondary" : "") + "' href='#'>" + j.getDate() + "</a>") + "</td>", j.setDate(j.getDate() + 1), j = this._daylightSavingAdjust(j);
                             S += L + "</tr>"
                         }
                         X++, X > 11 && (X = 0, et++), S += "</tbody></table>" + (G ? "</div>" + (U[0] > 0 && C === U[1] - 1 ? "<div class='ui-datepicker-row-break'></div>" : "") : ""), x += S
@@ -21379,10 +21379,10 @@ function deleteMissionPosition(e) {
                         D = i === !0 ? S : z,
                         M = i === !0 ? z : S,
                         I = i === !0 ? E : A,
-                        j = i === !0 ? A : E;
-                    if ("both" === o) return !!p && k >= M && D >= w && C >= j && I >= x;
+                        P = i === !0 ? A : E;
+                    if ("both" === o) return !!p && k >= M && D >= w && C >= P && I >= x;
                     if ("vertical" === o) return !!p && k >= M && D >= w;
-                    if ("horizontal" === o) return !!p && C >= j && I >= x
+                    if ("horizontal" === o) return !!p && C >= P && I >= x
                 }
             }
         }
@@ -22986,11 +22986,11 @@ function deleteMissionPosition(e) {
             return navigator.userAgent.toLowerCase().indexOf(e) >= 0
         }
 
-        function j(e, t, i, n) {
+        function P(e, t, i, n) {
             return "touchstart" === t ? N(e, i, n) : "touchmove" === t ? B(e, i, n) : "touchend" === t && H(e, i, n), this
         }
 
-        function P(e, t, i) {
+        function j(e, t, i) {
             var n = e["_leaflet_" + t + i];
             return "touchstart" === t ? e.removeEventListener(en, n, !1) : "touchmove" === t ? e.removeEventListener(tn, n, !1) : "touchend" === t && (e.removeEventListener(nn, n, !1), e.removeEventListener(on, n, !1)), this
         }
@@ -23231,7 +23231,7 @@ function deleteMissionPosition(e) {
                     return i.call(o || e, t || window.event)
                 },
                 r = a;
-            qi && 0 === t.indexOf("touch") ? j(e, t, a, s) : !Ui || "dblclick" !== t || !W || qi && Mi ? "addEventListener" in e ? "mousewheel" === t ? e.addEventListener("onwheel" in e ? "wheel" : "mousewheel", a, !1) : "mouseenter" === t || "mouseleave" === t ? (a = function(t) {
+            qi && 0 === t.indexOf("touch") ? P(e, t, a, s) : !Ui || "dblclick" !== t || !W || qi && Mi ? "addEventListener" in e ? "mousewheel" === t ? e.addEventListener("onwheel" in e ? "wheel" : "mousewheel", a, !1) : "mouseenter" === t || "mouseleave" === t ? (a = function(t) {
                 t = t || window.event, At(e, t) && r(t)
             }, e.addEventListener("mouseenter" === t ? "mouseover" : "mouseout", a, !1)) : ("click" === t && zi && (a = function(e) {
                 Et(e, r)
@@ -23241,7 +23241,7 @@ function deleteMissionPosition(e) {
         function vt(e, t, i, o) {
             var s = t + n(i) + (o ? "_" + n(o) : ""),
                 a = e[yn] && e[yn][s];
-            return a ? (qi && 0 === t.indexOf("touch") ? P(e, t, s) : !Ui || "dblclick" !== t || !V || qi && Mi ? "removeEventListener" in e ? "mousewheel" === t ? e.removeEventListener("onwheel" in e ? "wheel" : "mousewheel", a, !1) : e.removeEventListener("mouseenter" === t ? "mouseover" : "mouseleave" === t ? "mouseout" : t, a, !1) : "detachEvent" in e && e.detachEvent("on" + t, a) : V(e, s), e[yn][s] = null, void 0) : this
+            return a ? (qi && 0 === t.indexOf("touch") ? j(e, t, s) : !Ui || "dblclick" !== t || !V || qi && Mi ? "removeEventListener" in e ? "mousewheel" === t ? e.removeEventListener("onwheel" in e ? "wheel" : "mousewheel", a, !1) : e.removeEventListener("mouseenter" === t ? "mouseover" : "mouseleave" === t ? "mouseout" : t, a, !1) : "detachEvent" in e && e.detachEvent("on" + t, a) : V(e, s), e[yn][s] = null, void 0) : this
         }
 
         function bt(e) {
@@ -23304,7 +23304,7 @@ function deleteMissionPosition(e) {
         function Dt(e, t) {
             if (!t || !e.length) return e.slice();
             var i = t * t;
-            return e = Pt(e, i), e = It(e, i)
+            return e = jt(e, i), e = It(e, i)
         }
 
         function Mt(e, t, i) {
@@ -23314,27 +23314,27 @@ function deleteMissionPosition(e) {
         function It(e, t) {
             var i = e.length,
                 n = new(typeof Uint8Array != void 0 + "" ? Uint8Array : Array)(i);
-            n[0] = n[i - 1] = 1, jt(e, n, t, 0, i - 1);
+            n[0] = n[i - 1] = 1, Pt(e, n, t, 0, i - 1);
             var o, s = [];
             for (o = 0; i > o; o++) n[o] && s.push(e[o]);
             return s
         }
 
-        function jt(e, t, i, n, o) {
+        function Pt(e, t, i, n, o) {
             var s, a, r, l = 0;
             for (a = n + 1; o - 1 >= a; a++)(r = $t(e[a], e[n], e[o], !0)) > l && (s = a, l = r);
-            l > i && (t[s] = 1, jt(e, t, i, n, s), jt(e, t, i, s, o))
+            l > i && (t[s] = 1, Pt(e, t, i, n, s), Pt(e, t, i, s, o))
         }
 
-        function Pt(e, t) {
+        function jt(e, t) {
             for (var i = [e[0]], n = 1, o = 0, s = e.length; s > n; n++) Rt(e[n], e[o]) > t && (i.push(e[n]), o = n);
             return s - 1 > o && i.push(e[s - 1]), i
         }
 
         function Nt(e, t, i, n, o) {
-            var s, a, r, l = n ? jn : Ot(e, i),
+            var s, a, r, l = n ? Pn : Ot(e, i),
                 c = Ot(t, i);
-            for (jn = c;;) {
+            for (Pn = c;;) {
                 if (!(l | c)) return [e, t];
                 if (l & c) return !1;
                 r = Ot(a = Lt(e, t, s = l || c, i, o), i), s === l ? (e = a, l = r) : (t = a, c = r)
@@ -23971,14 +23971,14 @@ function deleteMissionPosition(e) {
             Di = !!window.opera,
             Mi = I("chrome"),
             Ii = I("gecko") && !Ti && !Di && !ki,
-            ji = !Mi && I("safari"),
-            Pi = I("phantom"),
+            Pi = !Mi && I("safari"),
+            ji = I("phantom"),
             Ni = "OTransition" in wi,
             Li = 0 === navigator.platform.indexOf("Win"),
             Oi = ki && "transition" in wi,
             Ri = "WebKitCSSMatrix" in window && "m11" in new window.WebKitCSSMatrix && !Si,
             $i = "MozPerspective" in wi,
-            Fi = !window.L_DISABLE_3D && (Oi || Ri || $i) && !Ni && !Pi,
+            Fi = !window.L_DISABLE_3D && (Oi || Ri || $i) && !Ni && !ji,
             Bi = "undefined" != typeof orientation || I("mobile"),
             Hi = Bi && Ti,
             Wi = Bi && Ri,
@@ -24011,8 +24011,8 @@ function deleteMissionPosition(e) {
                 opera: Di,
                 chrome: Mi,
                 gecko: Ii,
-                safari: ji,
-                phantom: Pi,
+                safari: Pi,
+                phantom: ji,
                 opera12: Ni,
                 win: Li,
                 ie3d: Oi,
@@ -24527,7 +24527,7 @@ function deleteMissionPosition(e) {
                 },
                 _initLayout: function() {
                     var e = this._container;
-                    this._fadeAnimated = this.options.fadeAnimation && Fi, X(e, "leaflet-container" + (Ui ? " leaflet-touch" : "") + (Gi ? " leaflet-retina" : "") + (xi ? " leaflet-oldie" : "") + (ji ? " leaflet-safari" : "") + (this._fadeAnimated ? " leaflet-fade-anim" : ""));
+                    this._fadeAnimated = this.options.fadeAnimation && Fi, X(e, "leaflet-container" + (Ui ? " leaflet-touch" : "") + (Gi ? " leaflet-retina" : "") + (xi ? " leaflet-oldie" : "") + (Pi ? " leaflet-safari" : "") + (this._fadeAnimated ? " leaflet-fade-anim" : ""));
                     var t = U(e, "position");
                     "absolute" !== t && "relative" !== t && "fixed" !== t && (e.style.position = "relative"), this._initPanes(), this._initControlPos && this._initControlPos()
                 },
@@ -25078,7 +25078,7 @@ function deleteMissionPosition(e) {
         In.addTo = function(e, t) {
             return e.addHandler(t, this), this
         };
-        var jn, Pn = {
+        var Pn, jn = {
                 Events: ui
             },
             Nn = Ui ? "touchstart mousedown" : "mousedown",
@@ -27630,7 +27630,7 @@ function deleteMissionPosition(e) {
                 this._moved && this._zooming ? (this._zooming = !1, g(this._animRequest), _t(document, "touchmove", this._onTouchMove), _t(document, "touchend", this._onTouchEnd), this._map.options.zoomAnimation ? this._map._animateZoom(this._center, this._map._limitZoom(this._zoom), !0, this._map.options.zoomSnap) : this._map._resetView(this._center, this._map._limitZoom(this._zoom))) : this._zooming = !1
             }
         });
-        Tn.addInitHook("addHandler", "touchZoom", Mo), Tn.BoxZoom = To, Tn.DoubleClickZoom = zo, Tn.Drag = So, Tn.Keyboard = Ao, Tn.ScrollWheelZoom = Eo, Tn.Tap = Do, Tn.TouchZoom = Mo, Object.freeze = ei, e.version = "1.4.0+HEAD.3337f36", e.Control = zn, e.control = Sn, e.Browser = Xi, e.Evented = di, e.Mixin = Pn, e.Util = ci, e.Class = v, e.Handler = In, e.extend = t, e.bind = i, e.stamp = n, e.setOptions = u, e.DomEvent = xn, e.DomUtil = bn, e.PosAnimation = Cn, e.Draggable = Rn, e.LineUtil = $n, e.PolyUtil = Fn, e.Point = y, e.point = w, e.Bounds = k, e.bounds = x, e.Transformation = A, e.transformation = E, e.Projection = Wn, e.LatLng = z, e.latLng = S, e.LatLngBounds = C, e.latLngBounds = T, e.CRS = pi, e.GeoJSON = so, e.geoJSON = Yt, e.geoJson = ro, e.Layer = Zn, e.LayerGroup = Kn, e.layerGroup = function(e, t) {
+        Tn.addInitHook("addHandler", "touchZoom", Mo), Tn.BoxZoom = To, Tn.DoubleClickZoom = zo, Tn.Drag = So, Tn.Keyboard = Ao, Tn.ScrollWheelZoom = Eo, Tn.Tap = Do, Tn.TouchZoom = Mo, Object.freeze = ei, e.version = "1.4.0+HEAD.3337f36", e.Control = zn, e.control = Sn, e.Browser = Xi, e.Evented = di, e.Mixin = jn, e.Util = ci, e.Class = v, e.Handler = In, e.extend = t, e.bind = i, e.stamp = n, e.setOptions = u, e.DomEvent = xn, e.DomUtil = bn, e.PosAnimation = Cn, e.Draggable = Rn, e.LineUtil = $n, e.PolyUtil = Fn, e.Point = y, e.point = w, e.Bounds = k, e.bounds = x, e.Transformation = A, e.transformation = E, e.Projection = Wn, e.LatLng = z, e.latLng = S, e.LatLngBounds = C, e.latLngBounds = T, e.CRS = pi, e.GeoJSON = so, e.geoJSON = Yt, e.geoJson = ro, e.Layer = Zn, e.LayerGroup = Kn, e.layerGroup = function(e, t) {
             return new Kn(e, t)
         }, e.FeatureGroup = Gn, e.featureGroup = function(e) {
             return new Gn(e)
@@ -30413,7 +30413,7 @@ function(e) {
     }
 
     function b(e) {
-        P(e) ? g(e) : v(e)
+        j(e) ? g(e) : v(e)
     }
 
     function y(e, t, i) {
@@ -30500,7 +30500,7 @@ function(e) {
         y(e, "height", t)
     }
 
-    function j(e, t, i) {
+    function P(e, t, i) {
         var n;
         dt(window.CustomEvent) ? n = new CustomEvent(t, {
             bubbles: !0,
@@ -30509,7 +30509,7 @@ function(e) {
         }) : (n = e.ownerDocument.createEvent("CustomEvent"), n.initCustomEvent(t, !0, !0, i)), e.dispatchEvent(n)
     }
 
-    function P(e) {
+    function j(e) {
         return !!e.getClientRects().length
     }
 
@@ -30913,7 +30913,7 @@ function(e) {
         fi.opts.emoticons = t.emoticons || vt.emoticons, zt = function() {
             e._sceditor = fi, ki.locale && "en" !== ki.locale && Rt(), a = r("div", {
                 className: "sceditor-container"
-            }), T(a, e), y(a, "z-index", ki.zIndex), jt && A(a, "ie ie" + jt), ht = e.required, e.required = !1;
+            }), T(a, e), y(a, "z-index", ki.zIndex), Pt && A(a, "ie ie" + Pt), ht = e.required, e.required = !1;
             var t = lt.formats[ki.format];
             i = t ? new t : {}, "init" in i && i.init.call(fi), Ot(), Wt(), $t(), Lt(), Ft(), Bt(), xt || fi.toggleSourceMode(), ti();
             var n = function() {
@@ -30933,13 +30933,13 @@ function(e) {
                 frameborder: 0,
                 allowfullscreen: !0
             }), ki.startInSourceMode ? (A(a, "sourceMode"), g(_)) : (A(a, "wysiwygMode"), g(N)), ki.spellcheck || f(a, "spellcheck", "false"), "https:" === Mt.location.protocol && f(_, "src", "javascript:false"), d(a, _), d(a, N), fi.dimensions(ki.width || M(e), ki.height || I(e));
-            var t = jt ? "ie ie" + jt : "";
+            var t = Pt ? "ie ie" + Pt : "";
             t += kt ? " ios" : "", z = _.contentDocument, z.open(), z.write(tt("html", {
                 attrs: ' class="' + t + '"',
                 spellcheck: ki.spellcheck ? "" : 'spellcheck="false"',
                 charset: ki.charset,
                 style: ki.style
-            })), z.close(), C = z.body, x = _.contentWindow, fi.readOnly(!!ki.readOnly), (kt || wt || jt) && (I(C, "100%"), jt || p(C, "touchend", fi.focus));
+            })), z.close(), C = z.body, x = _.contentWindow, fi.readOnly(!!ki.readOnly), (kt || wt || Pt) && (I(C, "100%"), Pt || p(C, "touchend", fi.focus));
             var i = f(e, "tabindex");
             f(N, "tabindex", i), f(_, "tabindex", i), K = new ot(x), g(e), fi.val(e.value);
             var n = ki.placeholder || f(e, "placeholder");
@@ -31040,10 +31040,10 @@ function(e) {
         }, ai = function() {
             var e, t, i = C.firstChild,
                 n = !!ki.autofocusEnd;
-            if (P(a)) {
+            if (j(a)) {
                 if (fi.sourceMode()) return t = n ? N.value.length : 0, N.setSelectionRange(t, t), void 0;
                 if (Z(C), n)
-                    for ((i = C.lastChild) || (i = r("p", {}, z), d(C, i)); i.lastChild;) i = i.lastChild, !Pt && k(i, "br") && i.previousSibling && (i = i.previousSibling);
+                    for ((i = C.lastChild) || (i = r("p", {}, z), d(C, i)); i.lastChild;) i = i.lastChild, !jt && k(i, "br") && i.previousSibling && (i = i.previousSibling);
                 e = z.createRange(), B(i) ? e.selectNodeContents(i) : (e.setStartBefore(i), n && e.setStartAfter(i)), e.collapse(!n), K.selectRange(e), et = e, n && (C.scrollTop = C.scrollHeight), fi.focus()
             }
         }, fi.readOnly = function(e) {
@@ -31114,7 +31114,7 @@ function(e) {
         }, Xt = function(e) {
             3 !== e.which && L && !e.defaultPrevented && (pi(), fi.closeDropDown())
         }, Vt = function(e) {
-            var t = jt || wt,
+            var t = Pt || wt,
                 i = C,
                 n = e.clipboardData,
                 o = function(e) {
@@ -31147,11 +31147,11 @@ function(e) {
             }
         }, qt = function(e) {
             var t = r("div", {}, z);
-            Y.call("pasteRaw", e), j(a, "pasteraw", e), e.html ? (t.innerHTML = e.html, V(t)) : t.innerHTML = X(e.text || "");
+            Y.call("pasteRaw", e), P(a, "pasteraw", e), e.html ? (t.innerHTML = e.html, V(t)) : t.innerHTML = X(e.text || "");
             var n = {
                 val: t.innerHTML
             };
-            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, z, Q)), Y.call("paste", n), j(a, "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, Q)), Y.call("pasteHtml", n), fi.wysiwygEditorInsertHtml(n.val, null, !0)
+            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, z, Q)), Y.call("paste", n), P(a, "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, Q)), Y.call("pasteHtml", n), fi.wysiwygEditorInsertHtml(n.val, null, !0)
         }, fi.closeDropDown = function(e) {
             L && (u(L), L = null), e === !0 && fi.focus()
         }, fi.wysiwygEditorInsertHtml = function(e, t, i) {
@@ -31192,7 +31192,7 @@ function(e) {
             var t = N.value;
             return e !== !1 && "toHtml" in i && (t = i.toHtml(t)), t
         }, fi.setWysiwygEditorValue = function(e) {
-            e || (e = "<p>" + (jt ? "" : "<br />") + "</p>"), C.innerHTML = e, At(), ni(), ui(), mi()
+            e || (e = "<p>" + (Pt ? "" : "<br />") + "</p>"), C.innerHTML = e, At(), ni(), ui(), mi()
         }, fi.setSourceEditorValue = function(e) {
             N.value = e, ui()
         }, fi.updateOriginal = function() {
@@ -31212,7 +31212,7 @@ function(e) {
         }, Et = function(e, t) {
             fi.inSourceMode() ? t.txtExec && (Array.isArray(t.txtExec) ? fi.sourceEditorInsertText.apply(fi, t.txtExec) : t.txtExec.call(fi, e, ii())) : t.exec && (dt(t.exec) ? t.exec.call(fi, e) : fi.execCommand(t.exec, t.hasOwnProperty("execParam") ? t.execParam : null))
         }, Dt = function() {
-            jt && (R = K.selectedRange())
+            Pt && (R = K.selectedRange())
         }, fi.execCommand = function(e, t) {
             var i = !1,
                 n = fi.commands[e];
@@ -31231,14 +31231,14 @@ function(e) {
                         for (t && e.nodeType !== ft && (e = e.childNodes[t]); e && e.parentNode !== C;) e = e.parentNode;
                         e && H(e, !0) && (K.saveRange(), rt(C, z), K.restoreRange())
                     }
-                    j(a, "selectionchanged")
+                    P(a, "selectionchanged")
                 }
                 it = !1
             }
             it || (it = !0, "onselectionchange" in z ? e() : setTimeout(e, 100))
         }, si = function() {
             var e, t = K.parentNode();
-            Q !== t && (e = Q, Q = t, J = K.getFirstBlockParent(t), j(a, "nodechanged", {
+            Q !== t && (e = Q, Q = t, J = K.getFirstBlockParent(t), P(a, "nodechanged", {
                 oldNode: e,
                 newNode: Q
             }))
@@ -31273,7 +31273,7 @@ function(e) {
                 if (!k(J, t) && $(J)) {
                     R = null;
                     var i = r("br", {}, z);
-                    if (K.insertNode(i), !Pt) {
+                    if (K.insertNode(i), !jt) {
                         var n = i.parentNode,
                             o = n.lastChild;
                         o && o.nodeType === ft && "" === o.nodeValue && (u(o), o = n.lastChild), !H(n, !0) && o === i && H(i.previousSibling) && K.insertHTML("<br>")
@@ -31285,7 +31285,7 @@ function(e) {
             O(C, function(e) {
                 if (e.nodeType === mt && !/inline/.test(y(e, "display")) && !k(e, ".sceditor-nlf") && $(e)) {
                     var t = r("p", {}, z);
-                    return t.className = "sceditor-nlf", t.innerHTML = Pt ? "" : "<br />", d(C, t), !1
+                    return t.className = "sceditor-nlf", t.innerHTML = jt ? "" : "<br />", d(C, t), !1
                 }
                 return 3 === e.nodeType && !/^\s*$/.test(e.nodeValue) || k(e, "br") ? !1 : void 0
             })
@@ -31324,7 +31324,7 @@ function(e) {
             else {
                 if (h(z, ":focus").length) return;
                 var n, o = K.selectedRange();
-                et || ai(), !Pt && o && 1 === o.endOffset && o.collapsed && (n = o.endContainer, n && 1 === n.childNodes.length && k(n.firstChild, "br") && (o.setStartBefore(n.firstChild), o.collapse(!0), K.selectRange(o))), x.focus(), C.focus(), R && (K.selectRange(R), R = null)
+                et || ai(), !jt && o && 1 === o.endOffset && o.collapsed && (n = o.endContainer, n && 1 === n.childNodes.length && k(n.firstChild, "br") && (o.setStartBefore(n.firstChild), o.collapse(!0), K.selectRange(o))), x.focus(), C.focus(), R && (K.selectRange(R), R = null)
             }
             return ti(), fi
         }, fi.keyDown = function(e, t, i) {
@@ -31497,7 +31497,7 @@ function(e) {
             if (Y && (Y.hasHandler("valuechangedEvent") || ui.hasHandler)) {
                 var t, i = fi.sourceMode(),
                     n = !i && K.hasSelection();
-                W = !1, e = e !== !1 && !z.getElementById("sceditor-start-marker"), q && (clearTimeout(q), q = !1), n && e && K.saveRange(), t = i ? N.value : C.innerHTML, t !== ui.lastVal && (ui.lastVal = t, j(a, "valuechanged", {
+                W = !1, e = e !== !1 && !z.getElementById("sceditor-start-marker"), q && (clearTimeout(q), q = !1), n && e && K.saveRange(), t = i ? N.value : C.innerHTML, t !== ui.lastVal && (ui.lastVal = t, P(a, "valuechanged", {
                     rawValue: i ? fi.val() : t
                 })), n && e && K.removeMarkers()
             }
@@ -32110,8 +32110,8 @@ function(e) {
         },
         Mt = window,
         It = document,
-        jt = yt,
-        Pt = jt && 11 > jt,
+        Pt = yt,
+        jt = Pt && 11 > Pt,
         Nt = /^image\/(p?jpe?g|gif|png|bmp)$/i;
     lt.locale = {}, lt.formats = {}, lt.icons = {}, lt.command = {
             get: function(e) {
@@ -32318,7 +32318,7 @@ function(e) {
     }
 
     function b(e) {
-        P(e) ? g(e) : v(e)
+        j(e) ? g(e) : v(e)
     }
 
     function y(e, t, i) {
@@ -32405,7 +32405,7 @@ function(e) {
         y(e, "height", t)
     }
 
-    function j(e, t, i) {
+    function P(e, t, i) {
         var n;
         dt(window.CustomEvent) ? n = new CustomEvent(t, {
             bubbles: !0,
@@ -32414,7 +32414,7 @@ function(e) {
         }) : (n = e.ownerDocument.createEvent("CustomEvent"), n.initCustomEvent(t, !0, !0, i)), e.dispatchEvent(n)
     }
 
-    function P(e) {
+    function j(e) {
         return !!e.getClientRects().length
     }
 
@@ -32818,7 +32818,7 @@ function(e) {
         fi.opts.emoticons = t.emoticons || vt.emoticons, zt = function() {
             e._sceditor = fi, ki.locale && "en" !== ki.locale && Rt(), a = r("div", {
                 className: "sceditor-container"
-            }), T(a, e), y(a, "z-index", ki.zIndex), jt && A(a, "ie ie" + jt), ht = e.required, e.required = !1;
+            }), T(a, e), y(a, "z-index", ki.zIndex), Pt && A(a, "ie ie" + Pt), ht = e.required, e.required = !1;
             var t = lt.formats[ki.format];
             i = t ? new t : {}, "init" in i && i.init.call(fi), Ot(), Wt(), $t(), Lt(), Ft(), Bt(), xt || fi.toggleSourceMode(), ti();
             var n = function() {
@@ -32838,13 +32838,13 @@ function(e) {
                 frameborder: 0,
                 allowfullscreen: !0
             }), ki.startInSourceMode ? (A(a, "sourceMode"), g(_)) : (A(a, "wysiwygMode"), g(N)), ki.spellcheck || f(a, "spellcheck", "false"), "https:" === Mt.location.protocol && f(_, "src", "javascript:false"), d(a, _), d(a, N), fi.dimensions(ki.width || M(e), ki.height || I(e));
-            var t = jt ? "ie ie" + jt : "";
+            var t = Pt ? "ie ie" + Pt : "";
             t += kt ? " ios" : "", z = _.contentDocument, z.open(), z.write(tt("html", {
                 attrs: ' class="' + t + '"',
                 spellcheck: ki.spellcheck ? "" : 'spellcheck="false"',
                 charset: ki.charset,
                 style: ki.style
-            })), z.close(), C = z.body, x = _.contentWindow, fi.readOnly(!!ki.readOnly), (kt || wt || jt) && (I(C, "100%"), jt || p(C, "touchend", fi.focus));
+            })), z.close(), C = z.body, x = _.contentWindow, fi.readOnly(!!ki.readOnly), (kt || wt || Pt) && (I(C, "100%"), Pt || p(C, "touchend", fi.focus));
             var i = f(e, "tabindex");
             f(N, "tabindex", i), f(_, "tabindex", i), K = new ot(x), g(e), fi.val(e.value);
             var n = ki.placeholder || f(e, "placeholder");
@@ -32945,10 +32945,10 @@ function(e) {
         }, ai = function() {
             var e, t, i = C.firstChild,
                 n = !!ki.autofocusEnd;
-            if (P(a)) {
+            if (j(a)) {
                 if (fi.sourceMode()) return t = n ? N.value.length : 0, N.setSelectionRange(t, t), void 0;
                 if (Z(C), n)
-                    for ((i = C.lastChild) || (i = r("p", {}, z), d(C, i)); i.lastChild;) i = i.lastChild, !Pt && k(i, "br") && i.previousSibling && (i = i.previousSibling);
+                    for ((i = C.lastChild) || (i = r("p", {}, z), d(C, i)); i.lastChild;) i = i.lastChild, !jt && k(i, "br") && i.previousSibling && (i = i.previousSibling);
                 e = z.createRange(), B(i) ? e.selectNodeContents(i) : (e.setStartBefore(i), n && e.setStartAfter(i)), e.collapse(!n), K.selectRange(e), et = e, n && (C.scrollTop = C.scrollHeight), fi.focus()
             }
         }, fi.readOnly = function(e) {
@@ -33019,7 +33019,7 @@ function(e) {
         }, Xt = function(e) {
             3 !== e.which && L && !e.defaultPrevented && (pi(), fi.closeDropDown())
         }, Vt = function(e) {
-            var t = jt || wt,
+            var t = Pt || wt,
                 i = C,
                 n = e.clipboardData,
                 o = function(e) {
@@ -33052,11 +33052,11 @@ function(e) {
             }
         }, qt = function(e) {
             var t = r("div", {}, z);
-            Y.call("pasteRaw", e), j(a, "pasteraw", e), e.html ? (t.innerHTML = e.html, V(t)) : t.innerHTML = X(e.text || "");
+            Y.call("pasteRaw", e), P(a, "pasteraw", e), e.html ? (t.innerHTML = e.html, V(t)) : t.innerHTML = X(e.text || "");
             var n = {
                 val: t.innerHTML
             };
-            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, z, Q)), Y.call("paste", n), j(a, "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, Q)), Y.call("pasteHtml", n), fi.wysiwygEditorInsertHtml(n.val, null, !0)
+            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, z, Q)), Y.call("paste", n), P(a, "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, Q)), Y.call("pasteHtml", n), fi.wysiwygEditorInsertHtml(n.val, null, !0)
         }, fi.closeDropDown = function(e) {
             L && (u(L), L = null), e === !0 && fi.focus()
         }, fi.wysiwygEditorInsertHtml = function(e, t, i) {
@@ -33097,7 +33097,7 @@ function(e) {
             var t = N.value;
             return e !== !1 && "toHtml" in i && (t = i.toHtml(t)), t
         }, fi.setWysiwygEditorValue = function(e) {
-            e || (e = "<p>" + (jt ? "" : "<br />") + "</p>"), C.innerHTML = e, At(), ni(), ui(), mi()
+            e || (e = "<p>" + (Pt ? "" : "<br />") + "</p>"), C.innerHTML = e, At(), ni(), ui(), mi()
         }, fi.setSourceEditorValue = function(e) {
             N.value = e, ui()
         }, fi.updateOriginal = function() {
@@ -33117,7 +33117,7 @@ function(e) {
         }, Et = function(e, t) {
             fi.inSourceMode() ? t.txtExec && (Array.isArray(t.txtExec) ? fi.sourceEditorInsertText.apply(fi, t.txtExec) : t.txtExec.call(fi, e, ii())) : t.exec && (dt(t.exec) ? t.exec.call(fi, e) : fi.execCommand(t.exec, t.hasOwnProperty("execParam") ? t.execParam : null))
         }, Dt = function() {
-            jt && (R = K.selectedRange())
+            Pt && (R = K.selectedRange())
         }, fi.execCommand = function(e, t) {
             var i = !1,
                 n = fi.commands[e];
@@ -33136,14 +33136,14 @@ function(e) {
                         for (t && e.nodeType !== ft && (e = e.childNodes[t]); e && e.parentNode !== C;) e = e.parentNode;
                         e && H(e, !0) && (K.saveRange(), rt(C, z), K.restoreRange())
                     }
-                    j(a, "selectionchanged")
+                    P(a, "selectionchanged")
                 }
                 it = !1
             }
             it || (it = !0, "onselectionchange" in z ? e() : setTimeout(e, 100))
         }, si = function() {
             var e, t = K.parentNode();
-            Q !== t && (e = Q, Q = t, J = K.getFirstBlockParent(t), j(a, "nodechanged", {
+            Q !== t && (e = Q, Q = t, J = K.getFirstBlockParent(t), P(a, "nodechanged", {
                 oldNode: e,
                 newNode: Q
             }))
@@ -33178,7 +33178,7 @@ function(e) {
                 if (!k(J, t) && $(J)) {
                     R = null;
                     var i = r("br", {}, z);
-                    if (K.insertNode(i), !Pt) {
+                    if (K.insertNode(i), !jt) {
                         var n = i.parentNode,
                             o = n.lastChild;
                         o && o.nodeType === ft && "" === o.nodeValue && (u(o), o = n.lastChild), !H(n, !0) && o === i && H(i.previousSibling) && K.insertHTML("<br>")
@@ -33190,7 +33190,7 @@ function(e) {
             O(C, function(e) {
                 if (e.nodeType === mt && !/inline/.test(y(e, "display")) && !k(e, ".sceditor-nlf") && $(e)) {
                     var t = r("p", {}, z);
-                    return t.className = "sceditor-nlf", t.innerHTML = Pt ? "" : "<br />", d(C, t), !1
+                    return t.className = "sceditor-nlf", t.innerHTML = jt ? "" : "<br />", d(C, t), !1
                 }
                 return 3 === e.nodeType && !/^\s*$/.test(e.nodeValue) || k(e, "br") ? !1 : void 0
             })
@@ -33229,7 +33229,7 @@ function(e) {
             else {
                 if (h(z, ":focus").length) return;
                 var n, o = K.selectedRange();
-                et || ai(), !Pt && o && 1 === o.endOffset && o.collapsed && (n = o.endContainer, n && 1 === n.childNodes.length && k(n.firstChild, "br") && (o.setStartBefore(n.firstChild), o.collapse(!0), K.selectRange(o))), x.focus(), C.focus(), R && (K.selectRange(R), R = null)
+                et || ai(), !jt && o && 1 === o.endOffset && o.collapsed && (n = o.endContainer, n && 1 === n.childNodes.length && k(n.firstChild, "br") && (o.setStartBefore(n.firstChild), o.collapse(!0), K.selectRange(o))), x.focus(), C.focus(), R && (K.selectRange(R), R = null)
             }
             return ti(), fi
         }, fi.keyDown = function(e, t, i) {
@@ -33402,7 +33402,7 @@ function(e) {
             if (Y && (Y.hasHandler("valuechangedEvent") || ui.hasHandler)) {
                 var t, i = fi.sourceMode(),
                     n = !i && K.hasSelection();
-                W = !1, e = e !== !1 && !z.getElementById("sceditor-start-marker"), q && (clearTimeout(q), q = !1), n && e && K.saveRange(), t = i ? N.value : C.innerHTML, t !== ui.lastVal && (ui.lastVal = t, j(a, "valuechanged", {
+                W = !1, e = e !== !1 && !z.getElementById("sceditor-start-marker"), q && (clearTimeout(q), q = !1), n && e && K.saveRange(), t = i ? N.value : C.innerHTML, t !== ui.lastVal && (ui.lastVal = t, P(a, "valuechanged", {
                     rawValue: i ? fi.val() : t
                 })), n && e && K.removeMarkers()
             }
@@ -34015,8 +34015,8 @@ function(e) {
         },
         Mt = window,
         It = document,
-        jt = yt,
-        Pt = jt && 11 > jt,
+        Pt = yt,
+        jt = Pt && 11 > Pt,
         Nt = /^image\/(p?jpe?g|gif|png|bmp)$/i;
     lt.locale = {}, lt.formats = {}, lt.icons = {}, lt.command = {
             get: function(e) {
