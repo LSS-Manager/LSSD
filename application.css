@@ -5142,12 +5142,16 @@ background - repeat: repeat - x
                         color: #fff!important
                     }
                     body.dark.btn - success {
-                        color: #fff!important
+                        color: #fff!important;
+                        background - image: linear - gradient(to bottom, #5cb85c 0, # 419641 100 % );
+                        background - image: -webkit - gradient(linear, left top, left bottom, from(#5cb85c), to(# 419641));
+                        background - image: -webkit - linear - gradient(top, #5cb85c 0, # 419641 100 % );
+                        border - color: #3e8f3e
                     }
-                    body.dark.alert - info {
-                        background - color: #3498db;border-color:# 3498 db;
-                        color: #ffffff;
-                        background - image: none
+                    body.dark .alert-info {
+                      background-color:# 3498 db;
+                      border - color: #3498db;
+                      color:# ffffff;background - image: none
                     }
                     body.dark.alert - info a {
                         color: #fff
