@@ -163,7 +163,7 @@ function waterCalculator(e) {
         d = 25 * $("#mission_water_bar_selected_" + e).data("water-schlauchwagen") / 100;
     u = u + u * (d + r + n) + o * d + l * d;
     var h = parseInt(100 * (u / t));
-    waterCalculatorSetPercent($("#mission_water_bar_selected_" + e), h, c + s), $("#mission_water_bar_selected_" + e).html("AusgewĂ¤hlt: " + number_format(parseInt(u)) + " l."), h + c + s >= 100 ? ($("#mission_water_bar_selected_" + e).addClass("progress-bar-success").removeClass("progress-bar-danger"), $("#mission_water_progress_" + e).addClass("progress-glow-success").removeClass("progress-glow-danger")) : ($("#mission_water_bar_selected_" + e).addClass("progress-bar-danger").removeClass("progress-bar-success"), $("#mission_water_progress_" + e).addClass("progress-glow-danger").removeClass("progress-glow-success")), waterCalculatorSetPercent($("#mission_water_bar_missing_" + e), 100, h + c + s), $("#mission_water_bar_missing_" + e).html("Fehlen: " + number_format(parseInt(t) - (parseInt(u) + parseInt(a) + parseInt(i))) + " l.")
+    waterCalculatorSetPercent($("#mission_water_bar_selected_" + e), h, c + s), $("#mission_water_bar_selected_" + e).html("AusgewÃ¤hlt: " + number_format(parseInt(u)) + " l."), h + c + s >= 100 ? ($("#mission_water_bar_selected_" + e).addClass("progress-bar-success").removeClass("progress-bar-danger"), $("#mission_water_progress_" + e).addClass("progress-glow-success").removeClass("progress-glow-danger")) : ($("#mission_water_bar_selected_" + e).addClass("progress-bar-danger").removeClass("progress-bar-success"), $("#mission_water_progress_" + e).addClass("progress-glow-danger").removeClass("progress-glow-success")), waterCalculatorSetPercent($("#mission_water_bar_missing_" + e), 100, h + c + s), $("#mission_water_bar_missing_" + e).html("Fehlen: " + number_format(parseInt(t) - (parseInt(u) + parseInt(a) + parseInt(i))) + " l.")
 }
 
 function missionWindowHasUpdate(e) {
@@ -415,11 +415,12 @@ function building_maps_draw(e) {
             lightboxOpen("/buildings/" + e.id), setTimeout(mapkitDeselectAnnotation, 1e3)
         }), map.addAnnotation(i), i.element.className = "mapkit-marker"
     } else {
+        map_layer = map_filters_service.getFilterLayerByBuildingParams(e);
         var i = L.marker([e.latitude, e.longitude], {
             zIndexOffset: t,
             title: e.name,
             icon: icon_empty
-        }).bindTooltip(e.name).addTo(map);
+        }).bindTooltip(e.name).addTo(map_layer);
         "undefined" != typeof e.opacity && i.setOpacity(e.opacity), iconMapGenerate(e.building_marker_image, i), i.on("click", function() {
             lightboxOpen("/buildings/" + e.id)
         })
@@ -436,16 +437,18 @@ function buildingCaption(e) {
 
 function buildingMarkerAdd(e) {
     var t = !1;
-    if ($.each(building_markers_cache, function(i, n) {
-            n.id == e.id && (t = !0)
-        }), "undefined" != typeof e.vgi && "" != e.vgi && null != e.vgi && (buildingVehicleGraphicCache[e.id] = e.vgi), t) return !0;
-    if (e.user_id == user_id ? building_marker_image = e.icon : e.building_type == BUILDING_TYPE_FEUERWEHRSCHULE ? building_marker_image = "/images/building_fireschool_other.png" : e.building_type == BUILDING_TYPE_FEUERWACHE ? building_marker_image = "/images/building_fire_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSWACHE ? building_marker_image = "/images/building_rettungswache_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSSCHULE ? building_marker_image = "/images/building_rettungsschule_other.png" : e.building_type == BUILDING_TYPE_CLINIC ? building_marker_image = "/images/building_clinic_other.png" : e.building_type == BUILDING_TYPE_HOSPITAL ? building_marker_image = "/images/building_hospital_other.png" : e.building_type == BUILDING_TYPE_NOTARZTHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIWACHE || e.building_type == BUILDING_TYPE_POLIZEIZELLE ? building_marker_image = "/images/building_polizeiwache_other.png" : e.building_type == BUILDING_TYPE_LEITSTELLE ? building_marker_image = "/images/building_leitstelle_other.png" : e.building_type == BUILDING_TYPE_POLIZEISCHULE ? building_marker_image = "/images/building_polizeischule_other.png" : e.building_type == BUILDING_TYPE_THW ? building_marker_image = "/images/building_thw_other.png" : e.building_type == BUILDING_TYPE_THW_BUNDESSCHULE ? building_marker_image = "/images/building_thw_school_other.png" : e.building_type == BUILDING_TYPE_BEREITSCHAFTSPOLIZEI ? building_marker_image = "/images/building_bereitschaftspolizei_other.png" : e.building_type == BUILDING_TYPE_POLIZEISONDEREINHEITEN ? building_marker_image = "/images/building_polizeisondereinheiten_other.png" : e.building_type == BUILDING_TYPE_SEG ? building_marker_image = "/images/building_seg_other.png" : e.building_type == BUILDING_TYPE_BEREITSTELLUNGSRAUM ? building_marker_image = "/images/building_bereitstellungsraum_other.png" : e.building_type == BUILDING_TYPE_WASSERRETTUNG ? building_marker_image = "/images/building_wasserwacht_other.png" : e.building_type == BUILDING_TYPE_FIRE_BOAT_DOCK ? building_marker_image = "/images/building_fire_boat_dock_other.png" : e.building_type == BUILDING_TYPE_RESCUE_BOAT_DOCK ? building_marker_image = "/images/building_rescue_boat_dock_other.png" : e.building_type == BUILDING_TYPE_RESCUE_DOG_UNIT ? building_marker_image = "/images/building_rescue_dog_unit_other.png" : e.building_type == BUILDING_TYPE_FIRE_AVIATION_STATION && (building_marker_image = "/images/building_fire_aviation_station_other.png"), e.building_marker_image = building_marker_image, e.user_id == user_id) {
-        var i = "<li  class='building_list_li' building_type_id='" + e.building_type + "' leitstelle_building_id='" + e.lbid + "'><div class='building_list_caption' id='building_list_caption_" + e.id + "' >" + e.detail_button + "<img class='building_marker_image' building_id='" + e.id + "' src='" + building_marker_image + "'>" + "<a href='' class='map_position_mover' data-latitude='" + e.latitude + "' data-longitude='" + e.longitude + "'>" + e.name + "</a>";
-        0 == e.show_vehicles_at_startpage && (i += hideVehicleBuildingHelpText(e.id)), i += "</div>";
-        var n = "<li>" + I18n.t("common.loading") + "</li>";
-        "undefined" != typeof buildingVehicleCache[e.id] && (n = buildingVehicleCache[e.id].join(""), buildingVehicleCache[e.id] = []), i = i + "<ul id='vehicle_building_" + e.id + "' class='building_list_vehicles' data-vehicles-loaded='0' data-building_id='" + e.id + "' ", 0 == e.show_vehicles_at_startpage && (i += "style='display: none' "), i = i + ">" + n + "</ul></li>", 7 == e.building_type && (leitstelle_latitude = e.latitude, leitstelle_longitude = e.longitude, leitstelles.push([e.latitude, e.longitude])), buildingMarkerBulkContentCache.push(i)
+    return $.each(building_markers_cache, function(i, n) {
+        n.id == e.id && (t = !0)
+    }), "undefined" != typeof e.vgi && "" != e.vgi && null != e.vgi && (buildingVehicleGraphicCache[e.id] = e.vgi), t ? !0 : (e.user_id == user_id ? building_marker_image = e.icon : e.building_type == BUILDING_TYPE_FEUERWEHRSCHULE ? building_marker_image = "/images/building_fireschool_other.png" : e.building_type == BUILDING_TYPE_FEUERWACHE ? building_marker_image = "/images/building_fire_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSWACHE ? building_marker_image = "/images/building_rettungswache_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSSCHULE ? building_marker_image = "/images/building_rettungsschule_other.png" : e.building_type == BUILDING_TYPE_CLINIC ? building_marker_image = "/images/building_clinic_other.png" : e.building_type == BUILDING_TYPE_HOSPITAL ? building_marker_image = "/images/building_hospital_other.png" : e.building_type == BUILDING_TYPE_NOTARZTHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIWACHE || e.building_type == BUILDING_TYPE_POLIZEIZELLE ? building_marker_image = "/images/building_polizeiwache_other.png" : e.building_type == BUILDING_TYPE_LEITSTELLE ? building_marker_image = "/images/building_leitstelle_other.png" : e.building_type == BUILDING_TYPE_POLIZEISCHULE ? building_marker_image = "/images/building_polizeischule_other.png" : e.building_type == BUILDING_TYPE_THW ? building_marker_image = "/images/building_thw_other.png" : e.building_type == BUILDING_TYPE_THW_BUNDESSCHULE ? building_marker_image = "/images/building_thw_school_other.png" : e.building_type == BUILDING_TYPE_BEREITSCHAFTSPOLIZEI ? building_marker_image = "/images/building_bereitschaftspolizei_other.png" : e.building_type == BUILDING_TYPE_POLIZEISONDEREINHEITEN ? building_marker_image = "/images/building_polizeisondereinheiten_other.png" : e.building_type == BUILDING_TYPE_SEG ? building_marker_image = "/images/building_seg_other.png" : e.building_type == BUILDING_TYPE_BEREITSTELLUNGSRAUM ? building_marker_image = "/images/building_bereitstellungsraum_other.png" : e.building_type == BUILDING_TYPE_WASSERRETTUNG ? building_marker_image = "/images/building_wasserwacht_other.png" : e.building_type == BUILDING_TYPE_FIRE_BOAT_DOCK ? building_marker_image = "/images/building_fire_boat_dock_other.png" : e.building_type == BUILDING_TYPE_RESCUE_BOAT_DOCK ? building_marker_image = "/images/building_rescue_boat_dock_other.png" : e.building_type == BUILDING_TYPE_RESCUE_DOG_UNIT ? building_marker_image = "/images/building_rescue_dog_unit_other.png" : e.building_type == BUILDING_TYPE_FIRE_AVIATION_STATION && (building_marker_image = "/images/building_fire_aviation_station_other.png"), e.building_marker_image = building_marker_image, 0 == mobile_bridge_use && constructBuildingListElement(e), 1 == mobile_bridge_use && 4 == mobile_version && (e.name = e.name.replace("%", ""), e.app_icon_path = -1 !== String(building_marker_image).indexOf("//") ? building_marker_image : currentHostname() + building_marker_image, mobileBridgeAdd("building_add", e)), building_markers_cache.push(e), void 0)
+}
+
+function constructBuildingListElement(e) {
+    if (e.user_id == user_id) {
+        var t = "<li  class='building_list_li' building_type_id='" + e.building_type + "' leitstelle_building_id='" + e.lbid + "'><div class='building_list_caption' id='building_list_caption_" + e.id + "' >" + e.detail_button + "<img class='building_marker_image' building_id='" + e.id + "' src='" + building_marker_image + "'>" + "<a href='' class='map_position_mover' data-latitude='" + e.latitude + "' data-longitude='" + e.longitude + "'>" + e.name + "</a>";
+        0 == e.show_vehicles_at_startpage && (t += hideVehicleBuildingHelpText(e.id)), t += "</div>";
+        var i = "<li>" + I18n.t("common.loading") + "</li>";
+        "undefined" != typeof buildingVehicleCache[e.id] && (i = buildingVehicleCache[e.id].join(""), buildingVehicleCache[e.id] = []), t = t + "<ul id='vehicle_building_" + e.id + "' class='building_list_vehicles' data-vehicles-loaded='0' data-building_id='" + e.id + "' ", 0 == e.show_vehicles_at_startpage && (t += "style='display: none' "), t = t + ">" + i + "</ul></li>", 7 == e.building_type && (leitstelle_latitude = e.latitude, leitstelle_longitude = e.longitude, leitstelles.push([e.latitude, e.longitude])), buildingMarkerBulkContentCache.push(t)
     }
-    1 == mobile_bridge_use && 4 == mobile_version && (e.name = e.name.replace("%", ""), e.app_icon_path = -1 !== String(building_marker_image).indexOf("//") ? building_marker_image : currentHostname() + building_marker_image, mobileBridgeAdd("building_add", e)), building_markers_cache.push(e)
 }
 
 function spliceLatLngs(e, t) {
@@ -636,7 +639,7 @@ function missionMarkerAdd(e) {
     var s = "";
     s = "undefined" != typeof mission_graphics[e.mtid] && null != mission_graphics[e.mtid] && "undefined" != typeof mission_graphics[e.mtid][e.vehicle_state] && "" != mission_graphics[e.mtid][e.vehicle_state] ? mission_graphics[e.mtid][e.vehicle_state] : "/images/" + e.icon + ".png";
     var a = "red";
-    1 == e.vehicle_state && (a = "yellow"), 2 == e.vehicle_state && (a = "green"), e.user_id != user_id && (0 != leitstelle_latitude && (i = leiststelleMinDistance(e.latitude, e.longitude)), null == e.user_id ? (e.caption = "[" + I18n.t("map.alliance_event") + "] " + e.caption, o = o + " " + I18n.t("map.alliance_event")) : (e.caption = "[" + I18n.t("map.alliance") + "] " + e.caption, o = o + " " + I18n.t("map.alliance")), alliance_mission_distance !== !1 && i > alliance_mission_distance && (n = !0)), 1 == mobile_bridge_use && (4 == mobile_version && (e.app_icon_path = -1 !== String(s).indexOf("//") ? s : currentHostname() + s), mobileBridgeAdd("mission", e));
+    1 == e.vehicle_state && (a = "yellow"), 2 == e.vehicle_state && (a = "green"), e.user_id != user_id && (0 != leitstelle_latitude && (i = leiststelleMinDistance(e.latitude, e.longitude)), null == e.user_id ? (e.caption = "[" + I18n.t("map.alliance_event") + "] " + e.caption, o = o + " " + I18n.t("map.alliance_event")) : (e.caption = "[" + I18n.t("map.alliance") + "] " + e.caption, o = o + " " + I18n.t("map.alliance")), alliance_mission_distance !== !1 && i > alliance_mission_distance && (n = !0)), 1 == mobile_bridge_use && currentMarkerTypeFilterTurnedOn(e.filter_id) && (4 == mobile_version && (e.app_icon_path = -1 !== String(s).indexOf("//") ? s : currentHostname() + s), mobileBridgeAdd("mission", e));
     var r = e.caption;
     "" != e.captionOld && (r = "<small id='mission_old_caption_" + e.id + "'><s>" + e.captionOld + "</s></small> " + r), "" != e.address && (r = r + ", <small  id='mission_address_" + e.id + "'>" + e.address + "</small>", o = o + " " + e.address);
     var l = 0;
@@ -682,7 +685,7 @@ function missionMarkerAdd(e) {
                 permanent: mission_label,
                 opacity: 1
             });
-            "undefined" != typeof map && v.addTo(map), iconMapGenerate(s, v), v.on("click", function() {
+            "undefined" != typeof map && v.addTo(map_filters_service.getFilterLayerByMissionParams(e)), iconMapGenerate(s, v), v.on("click", function() {
                 $("#alarm_button_" + e.id).click()
             })
         }
@@ -1594,126 +1597,6 @@ function isDateValid(e) {
     return e instanceof Date && !isNaN(e)
 }
 
-function leafletMissionPositionMarkerAdd(e) {
-    var t = L.icon({
-        iconUrl: "/images/letter_p.png",
-        iconSize: [32, 37],
-        iconAnchor: iconAnchorCalculate([32, 37])
-    });
-    marker = L.marker([e.latitude, e.longitude], {
-        icon: t
-    });
-    var i = function(t) {
-        confirm(I18n.t("javascript.poi_delete", {
-            caption: e.caption
-        })) && (leafletMissionPositionMarkerDelete(t.target._leaflet_id), $.ajax({
-            url: "/mission_positions/" + e.id,
-            type: "POST",
-            data: {
-                _method: "delete"
-            },
-            cache: !1
-        }))
-    };
-    marker.on("click", i), marker.id = e.id, marker.addTo(pois_layer_group)
-}
-
-function leafletMissionPositionMarkerDelete(e) {
-    pois_layer_group.removeLayer(e)
-}
-
-function onOverlayChanged(e) {
-    e.layer == pois_layer_group && $.ajax({
-        type: "PUT",
-        url: "/profile_settings",
-        data: {
-            map_filters: [{
-                checked: "overlayadd" == e.type,
-                filter_id: "pois"
-            }]
-        },
-        cache: !1
-    })
-}
-
-function mapkitMissionPositionMarkerAdd(e) {
-    var t = function() {
-        confirm(I18n.t("javascript.poi_delete", {
-            caption: e.caption
-        })) && (mapkitMissionPositionMarkerDelete(e.id), $.ajax({
-            url: "/mission_positions/" + e.id,
-            type: "POST",
-            data: {
-                _method: "delete"
-            },
-            cache: !1
-        }))
-    };
-    if ("undefined" != typeof mapkit) {
-        var i = new mapkit.ImageAnnotation(new mapkit.Coordinate(e.latitude, e.longitude), {
-            url: {
-                1: "/images/letter_p.png"
-            }
-        });
-        i.title = e.caption, i.addEventListener("select", t), map.addAnnotation(i), i.element.className = "mapkit-marker"
-    }
-    i.id = e.id, mission_poi_markers.push(i)
-}
-
-function mapkitMissionPositionMarkerDelete(e) {
-    $.each(mission_poi_markers, function(t, i) {
-        i.id == e && map.removeAnnotation(i)
-    })
-}
-
-function mapkitMissionPositionMarkerDeleteAll() {
-    $.each(mission_poi_markers, function(e, t) {
-        map.removeAnnotation(t)
-    }), mission_poi_markers = Array()
-}
-
-function getMapFilterOptions() {
-    $.ajax({
-        type: "GET",
-        url: "/profile_settings",
-        cache: !1,
-        success: function(e) {
-            map_filter_options = {}, translated_map_filters = e.profile_settings.text, map_filter_options[translated_map_filters] = e.profile_settings.map_filters, mobileBridgeAdd("map_filter_options", map_filter_options)
-        }
-    })
-}
-
-function updateMapFilterOptions(e) {
-    $.ajax({
-        type: "PUT",
-        url: "/profile_settings",
-        data: {
-            map_filters: Object.values(e)[0]
-        },
-        cache: !1,
-        success: function() {
-            pois_filter = Object.values(e)[0][0], pois_filter && (cleared_filters = Array(), pois_filter.checked || cleared_filters.push(pois_filter.filter_id), clearMap(cleared_filters), pois_filter.checked && missionPositionMarkerAddAll())
-        }
-    })
-}
-
-function clearMap(e) {
-    1 == mobile_bridge_use && mobileBridgeAdd("clear_map", {
-        cleared_filters: e
-    })
-}
-
-function missionPositionMarkerAddAll() {
-    $.ajax({
-        type: "GET",
-        url: "/mission_positions",
-        cache: !1,
-        success: function(e) {
-            1 == mobile_bridge_use && mobileBridgeAdd("poi", e.mission_positions)
-        }
-    })
-}
-
 function missionPositionMarkerAdd(e) {
     1 == mobile_bridge_use && mobileBridgeAdd("poi", [e])
 }
@@ -1736,6 +1619,57 @@ function deleteMissionPosition(e) {
             missionPositionMarkerDelete(e)
         }
     })
+}
+
+function initMapFiltersCollection(e) {
+    mobile_map_filters_collection = e
+}
+
+function getMapFilterOptions() {
+    return map_filter_options = {}, $.ajax({
+        type: "GET",
+        url: "/map_filters",
+        cache: !1,
+        success: function(e) {
+            $.each(e, function(e, t) {
+                map_filters_section_lable = t.section_lable, map_filter_options[map_filters_section_lable] = t.filters
+            }), mobileBridgeAdd("map_filter_options", map_filter_options)
+        }
+    }), map_filter_options
+}
+
+function updateMapFilterOptions(e) {
+    map_filters = Object.values(e).reduce(function(e, t) {
+        return e.concat(t)
+    }, []), $.ajax({
+        type: "PUT",
+        url: "/map_filters/update_collection",
+        data: {
+            map_filters: map_filters
+        },
+        cache: !1,
+        success: function(e) {
+            1 == mobile_bridge_use && (clearMap(e.cleared_map_filters), e.buildings.length > 0 && $.each(e.buildings, function(e, t) {
+                mobileBridgeAdd("building_add", t)
+            }), e.missions.length > 0 && $.each(e.missions, function(e, t) {
+                mobileBridgeAdd("mission", t)
+            }), e.pois.length > 0 && $.each(e.pois, function(e, t) {
+                missionPositionMarkerAdd(t)
+            }))
+        }
+    })
+}
+
+function clearMap(e) {
+    1 == mobile_bridge_use && mobileBridgeAdd("clear_map", {
+        cleared_filters: e
+    })
+}
+
+function currentMarkerTypeFilterTurnedOn(e) {
+    return filter_checked = mobile_map_filters_collection.find(function(t) {
+        return t.filter_id === e
+    }).checked, "undefined" !== filter_checked ? filter_checked : !0
 }! function(e) {
     "undefined" != typeof module && module.exports ? module.exports = e(this) : "function" == typeof define && define.amd ? define("i18n", function(t) {
         return function() {
@@ -1947,21 +1881,21 @@ function deleteMissionPosition(e) {
     }, t.t = t.translate, t.l = t.localize, t.p = t.pluralize, t
 }), I18n.translations || (I18n.translations = {}), I18n.translations.de_DE = {
         common: {
-            add: "HinzufĂĽgen",
-            back: "ZurĂĽck",
+            add: "HinzufÃ¼gen",
+            back: "ZurÃ¼ck",
             cancel: "Abbrechen",
-            change_saved: "Ă„nderung gespeichert",
-            coins_spend: "MĂ¶chtest Du wirklich Coins dafĂĽr ausgeben?",
-            congratulations: "GlĂĽckwunsch!",
+            change_saved: "Ã„nderung gespeichert",
+            coins_spend: "MÃ¶chtest Du wirklich Coins dafÃ¼r ausgeben?",
+            congratulations: "GlÃ¼ckwunsch!",
             content: "Inhalt",
             copy: "Kopieren",
             credits: "Credits",
-            "delete": "LĂ¶schen",
+            "delete": "LÃ¶schen",
             details: "Details",
             edit: "Bearbeiten",
             error: "Fehler",
             is_offline: "%{user} ist offline.",
-            is_offline_long: "%{user}Â ist bereits lĂ¤nger offline.",
+            is_offline_long: "%{user}Â ist bereits lÃ¤nger offline.",
             is_online: "%{user} ist online.",
             loading: "Lade...",
             name: "Name",
@@ -1978,7 +1912,7 @@ function deleteMissionPosition(e) {
         javascript: {
             alarm: "Alarm",
             arrival: "Ankunft",
-            backalarm: "RĂĽckalarmieren",
+            backalarm: "RÃ¼ckalarmieren",
             coins: "Coins",
             credits: "Credits",
             days: "Tage",
@@ -1994,17 +1928,17 @@ function deleteMissionPosition(e) {
             now: "Sofort",
             patient: "Patienten",
             patient_untouched: "unbehandelte Patienten",
-            poi_delete: 'Wirklich den POI: "%{caption}" lĂ¶schen?',
+            poi_delete: 'Wirklich den POI: "%{caption}" lÃ¶schen?',
             reload: "Neuladen",
             sale: "Sale",
             sale_ended: "Sonderangebote beendet",
             secounds: "Sek.",
-            sicherheitswache_error: 'Die Sicherheitswache "%{caption}" wurde nicht erfolgreich durchgefĂĽhrt, weil nicht alle Voraussetzung erfĂĽllt waren.',
-            sicherheitswache_success: 'Die Sicherheitswache "%{caption}" wurde erfolgreich durchgefĂĽhrt. Du erhĂ¤ltst %{credits} Credits.',
-            start_in: "AusrĂĽcken in: ",
+            sicherheitswache_error: 'Die Sicherheitswache "%{caption}" wurde nicht erfolgreich durchgefÃ¼hrt, weil nicht alle Voraussetzung erfÃ¼llt waren.',
+            sicherheitswache_success: 'Die Sicherheitswache "%{caption}" wurde erfolgreich durchgefÃ¼hrt. Du erhÃ¤ltst %{credits} Credits.',
+            start_in: "AusrÃ¼cken in: ",
             start_username: "Gestartet von:",
             time_left: "Verbleibende Zeit:",
-            to_building: "Zum GebĂ¤ude",
+            to_building: "Zum GebÃ¤ude",
             to_mission: "Zum Einsatz",
             understand: "Verstanden",
             user_not_found: "Der Spieler wurde nicht gefunden. ",
@@ -2019,21 +1953,21 @@ function deleteMissionPosition(e) {
             alliance_chat_radio_off: "Verbandsfunk: Aus",
             alliance_chat_radio_on: "Verbandsfunk: An",
             alliance_event: "Event",
-            alliance_missions: "VerbandseinsĂ¤tze",
+            alliance_missions: "VerbandseinsÃ¤tze",
             alliance_missions_event: "Event",
             ambulance: "Krankentransporte",
             challenges: "",
             chat_history: "Chatverlauf",
-            congratulations: "Herzlichen GlĂĽckwunsch! Du kannst jetzt befĂ¶rdert werden.",
+            congratulations: "Herzlichen GlÃ¼ckwunsch! Du kannst jetzt befÃ¶rdert werden.",
             create_alliance_event: "Verbands-Event starten",
-            create_alliance_operation: "Verbands-GroĂźeinsatz erstellen",
-            emergency: "NotfĂ¤lle",
-            join_alliance_infos: "Wenn du in einem Verband bist, kĂ¶nnen andere Spieler dir EinsĂ¤tze freigeben.",
+            create_alliance_operation: "Verbands-GroÃŸeinsatz erstellen",
+            emergency: "NotfÃ¤lle",
+            join_alliance_infos: "Wenn du in einem Verband bist, kÃ¶nnen andere Spieler dir EinsÃ¤tze freigeben.",
             map: "Karte",
             map_filters: {
-                all_buildings: "GebĂ¤ude",
-                all_missions: "EinsĂ¤tze",
-                alliance_buildings: "GebĂ¤ude von Verbandsmitgliedern",
+                all_buildings: "GebÃ¤ude",
+                all_missions: "EinsÃ¤tze",
+                alliance_buildings: "GebÃ¤ude von Verbandsmitgliedern",
                 alliance_members: "Mitglieder",
                 alliance_missions: "Vom Verband geteilt",
                 ambulance_station_missions: "Rettungswache",
@@ -2051,28 +1985,28 @@ function deleteMissionPosition(e) {
                 police_small_missions: "Polizeiwache (Kleinwache)",
                 police_special_forces: "Polizei-Sondereinheiten",
                 police_station_missions: "Polizeiwache",
-                prison_missions: "Polizeizellen (Nur fĂĽr den Verband)",
+                prison_missions: "Polizeizellen (Nur fÃ¼r den Verband)",
                 rapid_deployment_group: "Schnelleinsatzgruppe (SEG)",
                 rescue_copter_station_missions: "Rettungshubschrauber-Station",
                 riot_police: "Bereitschaftspolizei",
                 staging_area_missions: "Bereitstellungsraum",
                 technical_aid_organization: "THW",
                 technical_aid_organization_school: "THW Bundesschule",
-                user_buildings: "Meine GebĂ¤ude",
-                user_missions: "Meine EinsĂ¤tze",
+                user_buildings: "Meine GebÃ¤ude",
+                user_missions: "Meine EinsÃ¤tze",
                 water_watch: "Wasserrettung"
             },
             message: "Nachricht",
-            mission: "EinsĂ¤tze",
-            no_alliance_chat_impossible: "Du bist in keinem Verband. Der Chat ist nur innerhalb eines Verbandes mĂ¶glich.",
-            no_alliance_missions: "Es liegen keine VerbandseinsĂ¤tze vor. ",
-            no_ambulance_missions: "Es liegen keine Krankentransporte vor. Krankentransporte kĂ¶nnen auftreten, sobald Du einen KTW und ein Krankenhaus besitzt.",
-            no_emergency_missions: "Es liegen keine NotfalleinsĂ¤tze vor. NotfalleinsĂ¤tze kĂ¶nnen ab der ersten Wache auftreten.",
-            no_radio_messages: "Es sind keine FunksprĂĽche eingegangen.",
+            mission: "EinsÃ¤tze",
+            no_alliance_chat_impossible: "Du bist in keinem Verband. Der Chat ist nur innerhalb eines Verbandes mÃ¶glich.",
+            no_alliance_missions: "Es liegen keine VerbandseinsÃ¤tze vor. ",
+            no_ambulance_missions: "Es liegen keine Krankentransporte vor. Krankentransporte kÃ¶nnen auftreten, sobald Du einen KTW und ein Krankenhaus besitzt.",
+            no_emergency_missions: "Es liegen keine NotfalleinsÃ¤tze vor. NotfalleinsÃ¤tze kÃ¶nnen ab der ersten Wache auftreten.",
+            no_radio_messages: "Es sind keine FunksprÃ¼che eingegangen.",
             radio_messages: "Funk",
             restore_map: "Karte wiederherstellen",
-            show_informations: "GrĂĽn = Die EinsĂ¤tze werden in der Leiste angezeigt. Rot = Die EinsĂ¤tze werden nicht angezeigt.",
-            sicherheitswache: "Geplante EinsĂ¤tze",
+            show_informations: "GrÃ¼n = Die EinsÃ¤tze werden in der Leiste angezeigt. Rot = Die EinsÃ¤tze werden nicht angezeigt.",
+            sicherheitswache: "Geplante EinsÃ¤tze",
             transport: "Transporte"
         },
         fms: {
@@ -2083,54 +2017,54 @@ function deleteMissionPosition(e) {
             patient_transported: "Patient aufgenommen",
             prisoner_transported: "Gefangenen aufgenommen",
             ready_home: "Einsatzbereit auf Wache",
-            ready_traveling: "Einsatzbereit ĂĽber Funk",
+            ready_traveling: "Einsatzbereit Ã¼ber Funk",
             talking_wish: "Sprechwunsch",
             waiting_for_vehicle: "Warte auf Zugfahrzeug"
         },
         intervention_order: {
-            back: "ZurĂĽck",
+            back: "ZurÃ¼ck",
             category: "Kategorie",
             colour: "Farbe",
             column: "Spalte",
             column_number: "Spaltennummer",
             column_number_hint: "Wenn eine Spaltennummer vergeben wird, dann wird der AAO-Eintrag in der entsprechenden Spalte bei der Alarmierung angezeigt.",
-            create_intervention_order: "Neue Alarm und AusrĂĽckeordnung anlegen",
-            "delete": "LĂ¶schen",
-            delete_all: "AAO komplett lĂ¶schen",
-            delete_all_confirm: "Wirklich die komplette AAO lĂ¶schen? Auch bestehende exportierte EintrĂ¤ge, sind anschlieĂźend nicht mehr verfĂĽgbar!",
+            create_intervention_order: "Neue Alarm und AusrÃ¼ckeordnung anlegen",
+            "delete": "LÃ¶schen",
+            delete_all: "AAO komplett lÃ¶schen",
+            delete_all_confirm: "Wirklich die komplette AAO lÃ¶schen? Auch bestehende exportierte EintrÃ¤ge, sind anschlieÃŸend nicht mehr verfÃ¼gbar!",
             description: "Bezeichnung",
             edit: "Bearbeiten",
             "export": {
                 "export": "Exportieren",
                 "import": "Importieren",
-                import_done: "Die gewĂ¤hlten EintrĂ¤ge wurde importiert und in deine AAO geschrieben. ",
+                import_done: "Die gewÃ¤hlten EintrÃ¤ge wurde importiert und in deine AAO geschrieben. ",
                 saved: "AAO-Exportiert",
-                saved_text: "Deine AAO wurde fĂĽr den Export vorbereitet. Ăśber den Link kann ein anderer Spieler die AAO bei sich importieren. Solltest du deine AAO in der Zwischenzeit verĂ¤ndern, so wird diese Ă„nderung auch im Export automatisch ĂĽbernommen. "
+                saved_text: "Deine AAO wurde fÃ¼r den Export vorbereitet. Ãœber den Link kann ein anderer Spieler die AAO bei sich importieren. Solltest du deine AAO in der Zwischenzeit verÃ¤ndern, so wird diese Ã„nderung auch im Export automatisch Ã¼bernommen. "
             },
-            hotkey_hint: "WĂ¤hle einen Tastencode fĂĽr diese Auswahl an Fahrzeugen. Im Alarmierungsfenster kannst du dann mit ALT + Taste deiner Wahl (bzw. im Firefox: ALT + SHIFT + Taste deiner Wahl - bzw. unter Mac OS: CTRL + ALT + Taste deiner Wahl) direkt diese Fahrzeugauswahl aufrufen. ",
-            intervention_order: "Alarm und AusrĂĽckeordnung bearbeiten",
+            hotkey_hint: "WÃ¤hle einen Tastencode fÃ¼r diese Auswahl an Fahrzeugen. Im Alarmierungsfenster kannst du dann mit ALT + Taste deiner Wahl (bzw. im Firefox: ALT + SHIFT + Taste deiner Wahl - bzw. unter Mac OS: CTRL + ALT + Taste deiner Wahl) direkt diese Fahrzeugauswahl aufrufen. ",
+            intervention_order: "Alarm und AusrÃ¼ckeordnung bearbeiten",
             name: "Name",
-            no_intervention_created: "Du hast noch keine Alarm und AusrĂĽckeordnung angelegt.",
+            no_intervention_created: "Du hast noch keine Alarm und AusrÃ¼ckeordnung angelegt.",
             options: "Optionen",
-            reset: "Bisherige Auswahl im Alarmierungsfenster zurĂĽcksetzen",
-            reset_hint: "Wenn man sich bei der Fahrzeugauswahl im Alarmierenfenster verklickt hat, kann man mithilfe dieses Buttons seine bisherige Auswahl wieder zurĂĽcksetzen. ",
+            reset: "Bisherige Auswahl im Alarmierungsfenster zurÃ¼cksetzen",
+            reset_hint: "Wenn man sich bei der Fahrzeugauswahl im Alarmierenfenster verklickt hat, kann man mithilfe dieses Buttons seine bisherige Auswahl wieder zurÃ¼cksetzen. ",
             save: "Speichern",
             station: "Wache",
-            station_hint: "Wenn ein GebĂ¤ude gewĂ¤hlt wurde, werden nur Fahrzeuge des entsprechenden GebĂ¤udes ausgewĂ¤hlt.",
-            successfully_created: "Alarm und AusrĂĽckeordnung erfolgreich angelegt.",
-            successfully_deleted: "Alarm und AusrĂĽckeordnung gelĂ¶scht",
-            successfully_updated: "Alarm und AusrĂĽckeordnung erfolgreich gespeichert.",
+            station_hint: "Wenn ein GebÃ¤ude gewÃ¤hlt wurde, werden nur Fahrzeuge des entsprechenden GebÃ¤udes ausgewÃ¤hlt.",
+            successfully_created: "Alarm und AusrÃ¼ckeordnung erfolgreich angelegt.",
+            successfully_deleted: "Alarm und AusrÃ¼ckeordnung gelÃ¶scht",
+            successfully_updated: "Alarm und AusrÃ¼ckeordnung erfolgreich gespeichert.",
             vehicles: {
                 ab_atemschutz_only: "AB-Atemschutz",
                 ab_einsatzleitung_only: "AB-Einsatzleitung",
                 ab_gefahrgut_only: "AB-Gefahrgut",
-                ab_oel_only: "AB-Ă–l",
-                ab_ruest: "AB RĂĽst",
-                ab_ruest_rw: "AB RĂĽst oder RĂĽstwagen oder HLF",
+                ab_oel_only: "AB-Ã–l",
+                ab_ruest: "AB RÃ¼st",
+                ab_ruest_rw: "AB RÃ¼st oder RÃ¼stwagen oder HLF",
                 abl2wasser_only: "AB-Schlauch",
                 ambulance: "Rettungswagen",
                 ambulance_or_rapid_responder: "",
-                arff: "FlugfeldlĂ¶schfahrzeug",
+                arff: "FlugfeldlÃ¶schfahrzeug",
                 battalion_chief_unit: "Einsatzleitfahrzeuge 1",
                 boot: "Boote (Allgemein)",
                 dekon_p: "Dekon-P oder AB-Dekon-P",
@@ -2141,13 +2075,13 @@ function deleteMissionPosition(e) {
                 elw3: "ELW 3",
                 elw_airport: "",
                 emergency_ambulance: "Notarzteinsatzfahrzeug oder Rettungshubschrauber",
-                fire_truck: "LĂ¶schfahrzeuge oder TanklĂ¶schfahrzeuge",
+                fire_truck: "LÃ¶schfahrzeuge oder TanklÃ¶schfahrzeuge",
                 fireboat: "",
                 fly_car: "",
-                fukw: "FĂĽKw (FĂĽhrungskraftwagen)",
+                fukw: "FÃ¼Kw (FÃ¼hrungskraftwagen)",
                 fwk: "Feuerwehrkran",
                 gefkw: "GefKw (Gefangenenkraftwagen)",
-                gkw: "GerĂ¤tekraftwagen (GKW)",
+                gkw: "GerÃ¤tekraftwagen (GKW)",
                 grtw: "GRTW",
                 grtw0: "GRTW (7 Patienten - ohne Notarzt)",
                 grtw1: "GRTW (3 Patienten - inkl. Notarzt)",
@@ -2155,9 +2089,9 @@ function deleteMissionPosition(e) {
                 gw_atemschutz_only: "GW-A",
                 gw_gefahrgut: "GW-Gefahrgut oder AB-Gefahrgut",
                 gw_gefahrgut_only: "GW-Gefahrgut",
-                gw_hoehenrettung: "GW-HĂ¶henrettung",
+                gw_hoehenrettung: "GW-HÃ¶henrettung",
                 gw_messtechnik: "GW-Messtechnik",
-                gw_oel_only: "GW-Ă–l",
+                gw_oel_only: "GW-Ã–l",
                 gw_san: "GW-San",
                 gw_taucher: "GW-Taucher",
                 gw_wasserrettung: "GW-Wasserrettung",
@@ -2173,7 +2107,7 @@ function deleteMissionPosition(e) {
                 ktw_b: "KTW Typ B",
                 ktw_or_rtw: "KTW oder RTW",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
-                lf_only: "LĂ¶schfahrzeuge",
+                lf_only: "LÃ¶schfahrzeuge",
                 long_distance_ambulance: "Krankentransportwagen",
                 mask_service_unit: "GW-A oder AB-Atemschutz",
                 mek_mtf: "MEK - MTF",
@@ -2184,17 +2118,17 @@ function deleteMissionPosition(e) {
                 naw_or_rtw_and_nef: "NAW oder NEF+RTW",
                 naw_or_rtw_and_nef_or_rth: "NAW oder NEF/RTH+RTW",
                 nef_only: "Notarzteinsatzfahrzeug",
-                oil_unit: "GW-Ă–l oder AB-Ă–l",
+                oil_unit: "GW-Ã–l oder AB-Ã–l",
                 only_ab_dekon_p: "AB-Dekon-P ",
                 only_dekon_p: "Dekon-P",
                 ovd_p: "",
                 police_car: "Funkstreifenwagen",
                 polizeihubschrauber: "Polizeihubschrauber",
-                rescue_dogs: "AnhĂ¤nger Hundetransport oder Rettungshundefahrzeug",
+                rescue_dogs: "AnhÃ¤nger Hundetransport oder Rettungshundefahrzeug",
                 rescue_dogs_seg: "Rettungshundefahrzeug",
-                rescue_dogs_thw: "AnhĂ¤nger Hundetransport",
-                rescue_vehicle: "RĂĽstwagen oder HLF",
-                rescue_vehicle_only: "RĂĽstwagen",
+                rescue_dogs_thw: "AnhÃ¤nger Hundetransport",
+                rescue_vehicle: "RÃ¼stwagen oder HLF",
+                rescue_vehicle_only: "RÃ¼stwagen",
                 rescueboat: "",
                 rettungstreppe: "Rettungstreppe",
                 rth_only: "Rettungshubschrauber",
@@ -2208,8 +2142,8 @@ function deleteMissionPosition(e) {
                 thw_anh_mzab: "Anh MzAB",
                 thw_anh_mzb: "Anh MzB",
                 thw_anh_schlb: "Anh SchlB",
-                thw_brmg_r: "Radlader groĂź (BRmG R)",
-                thw_dle: "AnhĂ¤nger Drucklufterzeugung (Anh DLE)",
+                thw_brmg_r: "Radlader groÃŸ (BRmG R)",
+                thw_dle: "AnhÃ¤nger Drucklufterzeugung (Anh DLE)",
                 thw_lkw: "Lastkraftwagen-Kipper 9 t (LKW K 9)",
                 thw_lkw_7_lkr_19_tm: "LKW 7 Lkr 19 tm",
                 thw_mlw5: "Mannschaftslastwagen Typ V (MLW 5)",
@@ -2217,11 +2151,11 @@ function deleteMissionPosition(e) {
                 thw_mzkw: "Mehrzweckkraftwagen (MzKW)",
                 thw_tauchkraftwagen: "Tauchkraftwagen",
                 thw_tauchkraftwagen_or_gw_taucher: "Tauchkraftwagen oder GW-Taucher",
-                tlf_only: "TanklĂ¶schfahrzeuge",
+                tlf_only: "TanklÃ¶schfahrzeuge",
                 tm50: "TM 50",
-                turboloescher: "TurbolĂ¶scher",
+                turboloescher: "TurbolÃ¶scher",
                 turntable_ladder: "Drehleitern",
-                ulf: "ULF mit LĂ¶scharm",
+                ulf: "ULF mit LÃ¶scharm",
                 wasserwerfer: "Wasserwerfer",
                 water_amount: "Liter Wasser",
                 water_amount_tlf: "Liter Wasser - Nur TLF"
@@ -2232,21 +2166,21 @@ function deleteMissionPosition(e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: 'Nun gibst du deinem GebĂ¤ude einen Namen! Dieser sollte erkennbar und erweiterbar sein! Z.B. "Feuerwache #0001". Wenn du damit fertig bist, klicke auf "Weiter"!',
-                            build_with_credits: "Baue jetzt dein GebĂ¤ude mit Credits!",
-                            new_building: 'Klicke auf "Neues GebĂ¤ude"!',
-                            select_building: "Zuerst suchst du den Typen des GebĂ¤udes aus, mit dem du starten mĂ¶chtest. Wir empfehlen dir, mit Feuerwachen zu beginnen! In jedem Fall ist es ratsam, mit einer kleinen Station zu starten!",
-                            select_position: "Schiebe die blaue Markierung dorthin, wo du deine erste Station bauen mĂ¶chtest!"
+                            add_name: 'Nun gibst du deinem GebÃ¤ude einen Namen! Dieser sollte erkennbar und erweiterbar sein! Z.B. "Feuerwache #0001". Wenn du damit fertig bist, klicke auf "Weiter"!',
+                            build_with_credits: "Baue jetzt dein GebÃ¤ude mit Credits!",
+                            new_building: 'Klicke auf "Neues GebÃ¤ude"!',
+                            select_building: "Zuerst suchst du den Typen des GebÃ¤udes aus, mit dem du starten mÃ¶chtest. Wir empfehlen dir, mit Feuerwachen zu beginnen! In jedem Fall ist es ratsam, mit einer kleinen Station zu starten!",
+                            select_position: "Schiebe die blaue Markierung dorthin, wo du deine erste Station bauen mÃ¶chtest!"
                         },
-                        pick_location: "Suche dir zuerst einen Ort zum Anfangen aus! Tippen den Names des Ortes in die Suchleiste ein oder wĂ¤hle ihn direkt auf der Karte aus! Wie wĂ¤re es mit deiner Heimat?",
+                        pick_location: "Suche dir zuerst einen Ort zum Anfangen aus! Tippen den Names des Ortes in die Suchleiste ein oder wÃ¤hle ihn direkt auf der Karte aus! Wie wÃ¤re es mit deiner Heimat?",
                         welcome: "Hallo, willkommen beim Leitstellenspiel!  Ich werde dir einige Lektionen erteilen, damit du einen guten Start in deine Karriere in der Leitstelle hast!"
                     },
                     mobile: {
                         build_building: {
-                            add_name: 'Nun gibst du deinem GebĂ¤ude einen Namen! Dieser sollte erkennbar und erweiterbar sein! Z.B. "Feuerwache #0001". Wenn du damit fertig bist, klicke auf "Weiter"!',
-                            build_with_credits: "Baue jetzt dein GebĂ¤ude mit Credits!",
-                            new_building: 'Zuerst suchen wir uns einen Ort fĂĽr dein neues GebĂ¤ude! <br /> <br /> Dazu klickst du auf "Neues GebĂ¤ude"!',
-                            select_building: "Jetzt suchst du den Typen des GebĂ¤udes aus, mit dem du starten mĂ¶chtest. Wir empfehlen dir, mit Feuerwachen zu beginnen! In jedem Fall ist es ratsam, mit einer kleinen Station zu starten!"
+                            add_name: 'Nun gibst du deinem GebÃ¤ude einen Namen! Dieser sollte erkennbar und erweiterbar sein! Z.B. "Feuerwache #0001". Wenn du damit fertig bist, klicke auf "Weiter"!',
+                            build_with_credits: "Baue jetzt dein GebÃ¤ude mit Credits!",
+                            new_building: 'Zuerst suchen wir uns einen Ort fÃ¼r dein neues GebÃ¤ude! <br /> <br /> Dazu klickst du auf "Neues GebÃ¤ude"!',
+                            select_building: "Jetzt suchst du den Typen des GebÃ¤udes aus, mit dem du starten mÃ¶chtest. Wir empfehlen dir, mit Feuerwachen zu beginnen! In jedem Fall ist es ratsam, mit einer kleinen Station zu starten!"
                         },
                         welcome: "Hallo, willkommen beim Leitstellenspiel!  Ich werde dir einige Lektionen erteilen, damit du einen guten Start in deine Karriere in der Leitstelle hast!"
                     }
@@ -2254,53 +2188,53 @@ function deleteMissionPosition(e) {
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Dies ist das Alarmierungsfenster. Von hier aus kannst du Fahrzeuge zu EinsĂ¤tzen schicken!",
-                            dispatch_menu_buttons: 'Dies sind deine beiden Alarmierungsbuttons! Der erste "Alarm"-Button schickt die ausgewĂ¤hlten Fahrzeuge zum Einsatz. Der zweite tut das gleiche wie der erste, wechselt aber auch zum nĂ¤chsten Einsatz. Klicke jetzt den ersten Button.',
-                            dispatch_menu_mission_general: "Hier siehst du generelle Informationen zum Einsatz, wie Name, Adresse und Icon. Das Icon mit dem kleinen MĂ¤nnchen erscheint und ersetzt den kleinen Stern bei EinsĂ¤tzen an denen du bereits teilgeommen hast.",
-                            dispatch_menu_mission_progress: "Hier siehst du wie weit der Einsatz bereits fortgeschritten ist, wie viele EinsatzkrĂ¤fte vor Ort sind und wie viel Zeit verbleibt um den Einsazu abzuschlieĂźen!",
-                            dispatch_menu_mission_specific: "Hier erhĂ¤ltst du mehr Informationen zum Einsatz, z.B. welche Fahrzeuge auf den Ruf antworten und welche bereits am Einsatzort sind.",
-                            dispatch_menu_vehicle_list: "Hier siehst du die Liste deiner verfĂĽgbaren Fahrzeuge. Du kannst hier ein Fahrzeug auswĂ¤hlen, indem du es anklickst!"
+                            dispatch_menu: "Dies ist das Alarmierungsfenster. Von hier aus kannst du Fahrzeuge zu EinsÃ¤tzen schicken!",
+                            dispatch_menu_buttons: 'Dies sind deine beiden Alarmierungsbuttons! Der erste "Alarm"-Button schickt die ausgewÃ¤hlten Fahrzeuge zum Einsatz. Der zweite tut das gleiche wie der erste, wechselt aber auch zum nÃ¤chsten Einsatz. Klicke jetzt den ersten Button.',
+                            dispatch_menu_mission_general: "Hier siehst du generelle Informationen zum Einsatz, wie Name, Adresse und Icon. Das Icon mit dem kleinen MÃ¤nnchen erscheint und ersetzt den kleinen Stern bei EinsÃ¤tzen an denen du bereits teilgeommen hast.",
+                            dispatch_menu_mission_progress: "Hier siehst du wie weit der Einsatz bereits fortgeschritten ist, wie viele EinsatzkrÃ¤fte vor Ort sind und wie viel Zeit verbleibt um den Einsazu abzuschlieÃŸen!",
+                            dispatch_menu_mission_specific: "Hier erhÃ¤ltst du mehr Informationen zum Einsatz, z.B. welche Fahrzeuge auf den Ruf antworten und welche bereits am Einsatzort sind.",
+                            dispatch_menu_vehicle_list: "Hier siehst du die Liste deiner verfÃ¼gbaren Fahrzeuge. Du kannst hier ein Fahrzeug auswÃ¤hlen, indem du es anklickst!"
                         },
                         mobile: {
-                            dispatch_menu: "Dies ist das Alarmierungsfenster. Von hier aus kannst du Fahrzeuge zu EinsĂ¤tzen schicken!",
-                            dispatch_menu_buttons: 'Dies sind deine beiden Alarmierungsbuttons! Der erste "Alarm"-Button schickt die ausgewĂ¤hlten Fahrzeuge zum Einsatz. Der zweite tut das gleiche wie der erste, wechselt aber auch zum nĂ¤chsten Einsatz. Klicke jetzt den ersten Button.',
-                            dispatch_menu_mission_general: "Hier siehst du generelle Informationen zum Einsatz, wie Name, Adresse und Icon. Das Icon mit dem kleinen MĂ¤nnchen erscheint und ersetzt den kleinen Stern bei EinsĂ¤tzen an denen du bereits teilgeommen hast.",
-                            dispatch_menu_mission_progress: "Hier siehst du wie weit der Einsatz bereits fortgeschritten ist, wie viele EinsatzkrĂ¤fte vor Ort sind und wie viel Zeit verbleibt um den Einsazu abzuschlieĂźen!",
-                            dispatch_menu_mission_specific: "Hier erhĂ¤ltst du mehr Informationen zum Einsatz, z.B. welche Fahrzeuge auf den Ruf antworten und welche bereits am Einsatzort sind.",
-                            dispatch_menu_vehicle_list: "Hier siehst du die Liste deiner verfĂĽgbaren Fahrzeuge. Du kannst hier ein Fahrzeug auswĂ¤hlen, indem du es anklickst!"
+                            dispatch_menu: "Dies ist das Alarmierungsfenster. Von hier aus kannst du Fahrzeuge zu EinsÃ¤tzen schicken!",
+                            dispatch_menu_buttons: 'Dies sind deine beiden Alarmierungsbuttons! Der erste "Alarm"-Button schickt die ausgewÃ¤hlten Fahrzeuge zum Einsatz. Der zweite tut das gleiche wie der erste, wechselt aber auch zum nÃ¤chsten Einsatz. Klicke jetzt den ersten Button.',
+                            dispatch_menu_mission_general: "Hier siehst du generelle Informationen zum Einsatz, wie Name, Adresse und Icon. Das Icon mit dem kleinen MÃ¤nnchen erscheint und ersetzt den kleinen Stern bei EinsÃ¤tzen an denen du bereits teilgeommen hast.",
+                            dispatch_menu_mission_progress: "Hier siehst du wie weit der Einsatz bereits fortgeschritten ist, wie viele EinsatzkrÃ¤fte vor Ort sind und wie viel Zeit verbleibt um den Einsazu abzuschlieÃŸen!",
+                            dispatch_menu_mission_specific: "Hier erhÃ¤ltst du mehr Informationen zum Einsatz, z.B. welche Fahrzeuge auf den Ruf antworten und welche bereits am Einsatzort sind.",
+                            dispatch_menu_vehicle_list: "Hier siehst du die Liste deiner verfÃ¼gbaren Fahrzeuge. Du kannst hier ein Fahrzeug auswÃ¤hlen, indem du es anklickst!"
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: 'Jetzt schauen wir uns an, wie man mit diesen VorfĂ¤llen umgeht. Ă–ffne das Alarmierungsfenster, indem du auf einen  "Alarm"-Button klickst!',
-                            first_mission: "Super, du hast dein ersten GebĂ¤ude gebaut! Schau, die ersten Missionen wurden dir bereits gemeldet!"
+                            dispatch_button: 'Jetzt schauen wir uns an, wie man mit diesen VorfÃ¤llen umgeht. Ã–ffne das Alarmierungsfenster, indem du auf einen  "Alarm"-Button klickst!',
+                            first_mission: "Super, du hast dein ersten GebÃ¤ude gebaut! Schau, die ersten Missionen wurden dir bereits gemeldet!"
                         },
                         mobile: {
-                            dispatch_button: 'Jetzt schauen wir uns an, wie man mit diesen VorfĂ¤llen umgeht. Ă–ffne das Alarmierungsfenster, indem du auf einen  "Alarm"-Button klickst!',
-                            first_mission: "Super, du hast dein ersten GebĂ¤ude gebaut! Schau, die ersten Missionen wurden dir bereits gemeldet!"
+                            dispatch_button: 'Jetzt schauen wir uns an, wie man mit diesen VorfÃ¤llen umgeht. Ã–ffne das Alarmierungsfenster, indem du auf einen  "Alarm"-Button klickst!',
+                            first_mission: "Super, du hast dein ersten GebÃ¤ude gebaut! Schau, die ersten Missionen wurden dir bereits gemeldet!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "GroĂźartig, du bist auf dem Weg ein hervorragender Einsatzleiter zu werden! Hier hast du %{coins} Coins als Starthilfe! </br> Dein Leitstellenspiel-Team"
+                        general: "GroÃŸartig, du bist auf dem Weg ein hervorragender Einsatzleiter zu werden! Hier hast du %{coins} Coins als Starthilfe! </br> Dein Leitstellenspiel-Team"
                     },
                     mobile: {
-                        general: "GroĂźartig, du bist auf dem Weg ein hervorragender Einsatzleiter zu werden! Hier hast du %{coins} Coins als Starthilfe! </br> Dein Leitstellenspiel-Team"
+                        general: "GroÃŸartig, du bist auf dem Weg ein hervorragender Einsatzleiter zu werden! Hier hast du %{coins} Coins als Starthilfe! </br> Dein Leitstellenspiel-Team"
                     }
                 },
                 tips: {
                     browser: {
                         contact: "Wenn du Fragen hast kannst du dir unsere FAQ ansehen und das Forum oder unsere Facebook-Seite besuchen!",
-                        general: "Als nĂ¤chstes empfehlen wir dir, eine Leitstelle zu bauen. AuĂźerdem solltest du weitere Stationen bauen, denn die maximale Anzahl an EinstĂ¤zen bestimmt sich aus der hĂ¶chsten Anzahl aller Stationen eines bestimmten Typs (Polizei, Feuerwehr, Rettungsdienst) plus 1; z.B. 5 Feuerwachen und 3 KrankenhĂ¤user = 6 Missionen.",
-                        join_alliance: "DarĂĽber hinaus empfehlen wir dir, einem Verband beizutreten. Dies wird sehr hilfreich fĂĽr dich sein, besonders am Anfang.",
-                        summary: "Das waren die Grundlagen vom Leitstellenspiel! Beende EinsĂ¤tze, sammle Credits, kaufe mehr Fahrzeuge, und dann das Ganze nochmal. Viel SpaĂź beim Spielen! </br> Dein Leitstellenspiel-Team"
+                        general: "Als nÃ¤chstes empfehlen wir dir, eine Leitstelle zu bauen. AuÃŸerdem solltest du weitere Stationen bauen, denn die maximale Anzahl an EinstÃ¤zen bestimmt sich aus der hÃ¶chsten Anzahl aller Stationen eines bestimmten Typs (Polizei, Feuerwehr, Rettungsdienst) plus 1; z.B. 5 Feuerwachen und 3 KrankenhÃ¤user = 6 Missionen.",
+                        join_alliance: "DarÃ¼ber hinaus empfehlen wir dir, einem Verband beizutreten. Dies wird sehr hilfreich fÃ¼r dich sein, besonders am Anfang.",
+                        summary: "Das waren die Grundlagen vom Leitstellenspiel! Beende EinsÃ¤tze, sammle Credits, kaufe mehr Fahrzeuge, und dann das Ganze nochmal. Viel SpaÃŸ beim Spielen! </br> Dein Leitstellenspiel-Team"
                     },
                     mobile: {
                         contact: "Wenn du Fragen hast kannst du dir unsere FAQ ansehen und das Forum oder unsere Facebook-Seite besuchen!",
-                        general: "Als nĂ¤chstes empfehlen wir dir, eine Leitstelle zu bauen. AuĂźerdem solltest du weitere Stationen bauen, denn die maximale Anzahl an EinstĂ¤zen bestimmt sich aus der hĂ¶chsten Anzahl aller Stationen eines bestimmten Typs (Polizei, Feuerwehr, Rettungsdienst) plus 1; z.B. 5 Feuerwachen und 3 KrankenhĂ¤user = 6 Missionen.",
-                        join_alliance: "DarĂĽber hinaus empfehlen wir dir, einem Verband beizutreten. Dies wird sehr hilfreich fĂĽr dich sein, besonders am Anfang.",
-                        summary: "Das waren die Grundlagen vom Leitstellenspiel! Beende EinsĂ¤tze, sammle Credits, kaufe mehr Fahrzeuge, und dann das Ganze nochmal. Viel SpaĂź beim Spielen! </br> Dein Leitstellenspiel-Team"
+                        general: "Als nÃ¤chstes empfehlen wir dir, eine Leitstelle zu bauen. AuÃŸerdem solltest du weitere Stationen bauen, denn die maximale Anzahl an EinstÃ¤zen bestimmt sich aus der hÃ¶chsten Anzahl aller Stationen eines bestimmten Typs (Polizei, Feuerwehr, Rettungsdienst) plus 1; z.B. 5 Feuerwachen und 3 KrankenhÃ¤user = 6 Missionen.",
+                        join_alliance: "DarÃ¼ber hinaus empfehlen wir dir, einem Verband beizutreten. Dies wird sehr hilfreich fÃ¼r dich sein, besonders am Anfang.",
+                        summary: "Das waren die Grundlagen vom Leitstellenspiel! Beende EinsÃ¤tze, sammle Credits, kaufe mehr Fahrzeuge, und dann das Ganze nochmal. Viel SpaÃŸ beim Spielen! </br> Dein Leitstellenspiel-Team"
                     }
                 }
             },
@@ -2309,12 +2243,12 @@ function deleteMissionPosition(e) {
                 "continue": "Nein",
                 end: "Ende",
                 next: "Weiter",
-                prev: "ZurĂĽck",
+                prev: "ZurÃ¼ck",
                 skip: "Ja",
-                skip_hint: "MĂ¶chtest du das Tutorial wirklich abbrechen? Es kann spĂ¤ter nicht noch einmal abgerufen werden. Du wirst keine Belohnung fĂĽr den Abschluss des Tutorials erhalten."
+                skip_hint: "MÃ¶chtest du das Tutorial wirklich abbrechen? Es kann spÃ¤ter nicht noch einmal abgerufen werden. Du wirst keine Belohnung fÃ¼r den Abschluss des Tutorials erhalten."
             },
             rewards: {
-                log: "Belohnung fĂĽr das Beenden des Tutorials."
+                log: "Belohnung fÃ¼r das Beenden des Tutorials."
             }
         }
     }, I18n.translations.en_US = {
@@ -2541,7 +2475,7 @@ function deleteMissionPosition(e) {
                 gw_atemschutz_only: "",
                 gw_gefahrgut: "HazMat",
                 gw_gefahrgut_only: "",
-                gw_hoehenrettung: "GW-HĂ¶henrettung",
+                gw_hoehenrettung: "GW-HÃ¶henrettung",
                 gw_messtechnik: "GW-Messtechnik",
                 gw_oel_only: "",
                 gw_san: "",
@@ -2573,7 +2507,7 @@ function deleteMissionPosition(e) {
                 naw_or_rtw_and_nef: "",
                 naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Ambulance",
-                oil_unit: "GW-Ă–l",
+                oil_unit: "GW-Ã–l",
                 only_ab_dekon_p: "",
                 only_dekon_p: "",
                 ovd_p: "",
@@ -2919,7 +2853,7 @@ function deleteMissionPosition(e) {
                 gw_atemschutz_only: "",
                 gw_gefahrgut: "HazMat Unit",
                 gw_gefahrgut_only: "",
-                gw_hoehenrettung: "GW-HĂ¶henrettung",
+                gw_hoehenrettung: "GW-HÃ¶henrettung",
                 gw_messtechnik: "GW-Messtechnik",
                 gw_oel_only: "",
                 gw_san: "",
@@ -2949,7 +2883,7 @@ function deleteMissionPosition(e) {
                 naw_or_rtw_and_nef: "",
                 naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Ambulance",
-                oil_unit: "GW-Ă–l",
+                oil_unit: "GW-Ã–l",
                 only_ab_dekon_p: "",
                 only_dekon_p: "",
                 ovd_p: "",
@@ -3088,7 +3022,7 @@ function deleteMissionPosition(e) {
             coins_spend: "Weet je zeker dat je Coins uitgeeft? ",
             congratulations: "Gefeliciteerd! ",
             content: "Inhoud",
-            copy: "kopiĂ«ren",
+            copy: "kopiÃ«ren",
             credits: "Credits",
             "delete": "Verwijderen",
             details: "Details",
@@ -3126,8 +3060,8 @@ function deleteMissionPosition(e) {
             mission_start_in: "Begint in:",
             not_found_map: "Het voertuig is niet gevonden op de kaart",
             now: "Nu",
-            patient: "PatiĂ«nten",
-            patient_untouched: "onbehandelde patiĂ«nten",
+            patient: "PatiÃ«nten",
+            patient_untouched: "onbehandelde patiÃ«nten",
             poi_delete: 'Weet je zeker dat je dit Point of Interest: "%{caption}" wilt verwijderen?',
             reload: "Refresh",
             sale: "Sale",
@@ -3214,7 +3148,7 @@ function deleteMissionPosition(e) {
             not_ready: "Niet beschikbaar",
             on_destination: "Aanvraag spraakcontact",
             on_place: "Ter plaatse",
-            patient_transported: "Vertrokken met patiĂ«nt",
+            patient_transported: "Vertrokken met patiÃ«nt",
             prisoner_transported: "Transport met arrestant",
             ready_home: "Op post",
             ready_traveling: "Beschikbaar",
@@ -3231,14 +3165,14 @@ function deleteMissionPosition(e) {
             create_intervention_order: "Nieuwe Alarm en Uitrukregel aanmaken",
             "delete": "Verwijderen",
             delete_all: "Alarm en Uitrukregels compleet verwijderen",
-            delete_all_confirm: "Weet je zeker dat je de Alarm en Uitrukregels wilt verwijderen? Ook de geĂ«xporteerde variant wordt niet meer beschikbaar.",
+            delete_all_confirm: "Weet je zeker dat je de Alarm en Uitrukregels wilt verwijderen? Ook de geÃ«xporteerde variant wordt niet meer beschikbaar.",
             description: "Beschrijving",
             edit: "Bewerken",
             "export": {
                 "export": "Exporteren",
                 "import": "Importeren",
-                import_done: "De gekozen input wordt geĂŻmporteerd en jouw eigen A&U worden overschreven.",
-                saved: "A&U-GeĂ«xporteerd ",
+                import_done: "De gekozen input wordt geÃ¯mporteerd en jouw eigen A&U worden overschreven.",
+                saved: "A&U-GeÃ«xporteerd ",
                 saved_text: "Jouw A&U worden voor export voorbereid. Met de link kunnen andere spelers de A&U importeren. Wanneer je tussentijds je eigen A&U regels veranderd, zullen deze veranderingen automatisch in de export worden meegenomen."
             },
             hotkey_hint: "Kies een letter voor deze inzet. In het alarmeringsscherm kun je dan met ALT + Letter naar keuze snel een keuze maken. (In Firefox: ALT + SHIFT + Letter naar keuze, Op Mac OS: CTRL + ALT + Letter)",
@@ -3376,7 +3310,7 @@ function deleteMissionPosition(e) {
                             select_position: "Zet de blauwe markering neer waar je je eerste station wil bouwen."
                         },
                         pick_location: "Kies eerst een locatie om te beginnen. Typ de naam van de locatie waar je wil beginnen in de zoekbalk of zoek zelf op de kaart. Je kunt bijvoorbeeld je woonplaats kiezen.",
-                        welcome: "Hallo, welkom bij Meldkamerspel!  Ik zal je het een en ander leren om je te helpen je carriĂ¨re bij de hulpdiensten goed te beginnen."
+                        welcome: "Hallo, welkom bij Meldkamerspel!  Ik zal je het een en ander leren om je te helpen je carriÃ¨re bij de hulpdiensten goed te beginnen."
                     },
                     mobile: {
                         build_building: {
@@ -3385,7 +3319,7 @@ function deleteMissionPosition(e) {
                             new_building: "Eerst kiezen we een locatie om te beginnen en bouwen we je eerste gebouw. <br /> <br /> Om dat te doen, klik je op 'Nieuw gebouw'.",
                             select_building: "Kies eerst het type gebouw waar je mee wil beginnen. We raden je aan om te beginnen met de brandweer. Het is in ieder geval een goed idee om te beginnen met een klein station."
                         },
-                        welcome: "Hallo, welkom bij Meldkamerspel!  Ik zal je het een en ander leren om je te helpen je carriĂ¨re bij de hulpdiensten goed te beginnen."
+                        welcome: "Hallo, welkom bij Meldkamerspel!  Ik zal je het een en ander leren om je te helpen je carriÃ¨re bij de hulpdiensten goed te beginnen."
                     }
                 },
                 mission: {
@@ -3444,7 +3378,7 @@ function deleteMissionPosition(e) {
             commons: {
                 collect: "Ophalen",
                 "continue": "Nee",
-                end: "BeĂ«indigen",
+                end: "BeÃ«indigen",
                 next: "Volgende",
                 prev: "Vorige",
                 skip: "Ja",
@@ -3456,28 +3390,28 @@ function deleteMissionPosition(e) {
         }
     }, I18n.translations.es_ES = {
         common: {
-            add: "AĂ±adir",
-            back: "AtrĂˇs",
+            add: "AÃ±adir",
+            back: "AtrÃ¡s",
             cancel: "Cancelar",
             change_saved: "Cambios guardados",
-            coins_spend: "ÂżSeguro que quieres gastar estas monedas?",
-            congratulations: "ÂˇEnhorabuena!",
+            coins_spend: "Â¿Seguro que quieres gastar estas monedas?",
+            congratulations: "Â¡Enhorabuena!",
             content: "Contenido",
             copy: "Copiar",
-            credits: "CrĂ©ditos",
+            credits: "CrÃ©ditos",
             "delete": "Eliminar",
             details: "Detalles",
             edit: "Editar",
             error: "Error",
-            is_offline: "%{user} no estĂˇ conectado.",
+            is_offline: "%{user} no estÃ¡ conectado.",
             is_offline_long: "%{user} no se ha conectado desde hace mucho tiempo",
-            is_online: "%{user} estĂˇ conectado.",
+            is_online: "%{user} estÃ¡ conectado.",
             loading: "Cargando...",
             name: "Nombre",
             none: "Nada",
             of: "de",
             off: "No",
-            on: "SĂ­",
+            on: "SÃ­",
             save: "Guardar",
             search: "Buscar",
             show: "Mostrar",
@@ -3489,8 +3423,8 @@ function deleteMissionPosition(e) {
             arrival: "Llegada",
             backalarm: "Cancelar",
             coins: "Monedas",
-            credits: "CrĂ©ditos",
-            days: "dĂ­as",
+            credits: "CrÃ©ditos",
+            days: "dÃ­as",
             few_seconds: "en pocos segundos",
             finish_in: "Termina en:",
             hours: "H",
@@ -3499,45 +3433,45 @@ function deleteMissionPosition(e) {
             minutes: "min.",
             missed_vehicle: "Falta:",
             mission_start_in: "Comienza en:",
-            not_found_map: "No se ha encontrado el vehĂ­culo en el mapa",
+            not_found_map: "No se ha encontrado el vehÃ­culo en el mapa",
             now: "Ahora",
             patient: "Paciente",
             patient_untouched: "Pacientes no tratados",
-            poi_delete: "ÂżSeguro que quieres eliminar el PI %{caption}?",
+            poi_delete: "Â¿Seguro que quieres eliminar el PI %{caption}?",
             reload: "Recargar",
             sale: "Rebajas",
             sale_ended: "Oferta finalizada",
             secounds: "seg.",
-            sicherheitswache_error: "El guardia de seguridad %{caption} no ha completado su misiĂłn, ya que no se han cumplido todos los criterios.",
-            sicherheitswache_success: "El guardia de seguridad %{caption} ha completado su misiĂłn. Recibes %{credits} crĂ©ditos.",
+            sicherheitswache_error: "El guardia de seguridad %{caption} no ha completado su misiÃ³n, ya que no se han cumplido todos los criterios.",
+            sicherheitswache_success: "El guardia de seguridad %{caption} ha completado su misiÃ³n. Recibes %{credits} crÃ©ditos.",
             start_in: "Comienza en: ",
             start_username: "Usuario:",
             time_left: "Tiempo restante:",
             to_building: "Ver edificio",
-            to_mission: "Ver misiĂłn",
+            to_mission: "Ver misiÃ³n",
             understand: "Recibido",
             user_not_found: "No se ha encontrado al jugador.",
-            vehicles_not_visible: "Los vehĂ­culos no estĂˇn visibles. "
+            vehicles_not_visible: "Los vehÃ­culos no estÃ¡n visibles. "
         },
         map: {
             alliance: "Alianza",
             alliance_chat: "Chat",
             alliance_chat_banned: "Tienes prohibido entrar al chat de la alianza.",
-            alliance_chat_banned_admin: "ProhibiciĂłn emitida por:",
+            alliance_chat_banned_admin: "ProhibiciÃ³n emitida por:",
             alliance_chat_banned_timeleft: "Tiempo restante:",
             alliance_chat_radio_off: "Radio de la alianza: No",
-            alliance_chat_radio_on: "Radio de la alianza: SĂ­",
+            alliance_chat_radio_on: "Radio de la alianza: SÃ­",
             alliance_event: "Evento",
             alliance_missions: "Misiones de alianza",
             alliance_missions_event: "Evento",
             ambulance: "Ambulancia",
             challenges: "",
             chat_history: "Historial de chat",
-            congratulations: "ÂˇEnhorabuena! Puedes ascender.",
+            congratulations: "Â¡Enhorabuena! Puedes ascender.",
             create_alliance_event: "Comenzar evento de alianza",
-            create_alliance_operation: "Crea una misiĂłn de alianza a gran escala",
+            create_alliance_operation: "Crea una misiÃ³n de alianza a gran escala",
             emergency: "Emergencia",
-            join_alliance_infos: "Si estĂˇs en una alianza, otros jugadores podrĂˇn ofrecerte misiones.",
+            join_alliance_infos: "Si estÃ¡s en una alianza, otros jugadores podrÃ¡n ofrecerte misiones.",
             map: "Mapa",
             map_filters: {
                 all_buildings: "Edificios",
@@ -3546,41 +3480,41 @@ function deleteMissionPosition(e) {
                 alliance_members: "Miembros",
                 alliance_missions: "Compartido por la alianza",
                 ambulance_station_missions: "Parque de ambulancias",
-                ambulance_station_small_missions: "Parque de ambulancias (pequeĂ±o)",
-                clinic_missions: "ClĂ­nica",
+                ambulance_station_small_missions: "Parque de ambulancias (pequeÃ±o)",
+                clinic_missions: "ClÃ­nica",
                 dispatch_center_missions: "Centralita",
                 fire_school_missions: "Academia de bomberos",
                 firehouse_missions: "Parque de bomberos",
-                firehouse_small_missions: "Parque de bomberos (pequeĂ±o)",
+                firehouse_small_missions: "Parque de bomberos (pequeÃ±o)",
                 hospital_missions: "Hospital",
                 map_filters: "Lista de filtros de mapa",
-                mission_positions: "Puntos de interĂ©s (PI)",
+                mission_positions: "Puntos de interÃ©s (PI)",
                 police_copter_station_missions: "Helipuerto policial",
-                police_school_missions: "Academia de policĂ­a",
-                police_small_missions: "ComisarĂ­a de policĂ­a (pequeĂ±o)",
-                police_special_forces: "Fuerzas especiales de la policĂ­a",
-                police_station_missions: "ComisarĂ­a de policĂ­a",
-                prison_missions: "PrisiĂłn",
-                rapid_deployment_group: "Grupo de preparaciĂłn rĂˇpida (GPR)",
-                rescue_copter_station_missions: "Helipuerto mĂ©dico",
-                riot_police: "PolicĂ­a antidisturbios",
-                staging_area_missions: "Zona de preparaciĂłn",
+                police_school_missions: "Academia de policÃ­a",
+                police_small_missions: "ComisarÃ­a de policÃ­a (pequeÃ±o)",
+                police_special_forces: "Fuerzas especiales de la policÃ­a",
+                police_station_missions: "ComisarÃ­a de policÃ­a",
+                prison_missions: "PrisiÃ³n",
+                rapid_deployment_group: "Grupo de preparaciÃ³n rÃ¡pida (GPR)",
+                rescue_copter_station_missions: "Helipuerto mÃ©dico",
+                riot_police: "PolicÃ­a antidisturbios",
+                staging_area_missions: "Zona de preparaciÃ³n",
                 technical_aid_organization: "SAT",
                 technical_aid_organization_school: "Academia SAT",
                 user_buildings: "Mis edificios",
                 user_missions: "Mis misiones",
-                water_watch: "Rescate acuĂˇtico"
+                water_watch: "Rescate acuÃ¡tico"
             },
             message: "Mensaje",
-            mission: "MisiĂłn",
-            no_alliance_chat_impossible: "No estĂˇs en una alianza.",
+            mission: "MisiÃ³n",
+            no_alliance_chat_impossible: "No estÃ¡s en una alianza.",
             no_alliance_missions: "No hay misiones de alianza.",
-            no_ambulance_missions: "No hay misiones de ambulancia. Solo habrĂˇ misiones de ambulancia cuando tengas una ambulancia y un hospital.",
-            no_emergency_missions: "No hay misiones de emergencia disponibles. Solo habrĂˇ misiones de emergencia despuĂ©s de que construyas tu primera instalaciĂłn.",
+            no_ambulance_missions: "No hay misiones de ambulancia. Solo habrÃ¡ misiones de ambulancia cuando tengas una ambulancia y un hospital.",
+            no_emergency_missions: "No hay misiones de emergencia disponibles. Solo habrÃ¡ misiones de emergencia despuÃ©s de que construyas tu primera instalaciÃ³n.",
             no_radio_messages: "No has recibido mensajes de radio.",
             radio_messages: "Radio",
             restore_map: "Restaurar mapa",
-            show_informations: "Verde: las misiones se mostrarĂˇn en la lista. Rojo: las misiones no se mostrarĂˇn.",
+            show_informations: "Verde: las misiones se mostrarÃ¡n en la lista. Rojo: las misiones no se mostrarÃ¡n.",
             sicherheitswache: "Misones planificadas",
             transport: "Transporte"
         },
@@ -3591,125 +3525,125 @@ function deleteMissionPosition(e) {
             on_place: "Presente",
             patient_transported: "Transportando paciente",
             prisoner_transported: "Transportando preso",
-            ready_home: "Disponible en la instalaciĂłn",
+            ready_home: "Disponible en la instalaciÃ³n",
             ready_traveling: "Listo y disponible",
-            talking_wish: "PeticiĂłn de transporte",
+            talking_wish: "PeticiÃ³n de transporte",
             waiting_for_vehicle: "Esperando a remolque"
         },
         intervention_order: {
-            back: "AtrĂˇs",
-            category: "CategorĂ­a",
+            back: "AtrÃ¡s",
+            category: "CategorÃ­a",
             colour: "Color",
             column: "Columna",
-            column_number: "N.Âş de columna",
-            column_number_hint: "Si hay un nĂşmero de columna, la entrada en las normas de alerta y respuesta se mostrarĂˇ en la columna correspondiente de la pĂˇgina de la alerta.",
+            column_number: "N.Âº de columna",
+            column_number_hint: "Si hay un nÃºmero de columna, la entrada en las normas de alerta y respuesta se mostrarÃ¡ en la columna correspondiente de la pÃ¡gina de la alerta.",
             create_intervention_order: "Crear nueva norma de alerta y respuesta",
             "delete": "Eliminar",
             delete_all: "Eliminar todas las normas de alerta y respuesta",
-            delete_all_confirm: "ÂżSeguro que quieres eliminar todas las normas de alerta y respuesta? ÂˇLas entradas exportadas existentes ya no estĂˇn disponibles!",
+            delete_all_confirm: "Â¿Seguro que quieres eliminar todas las normas de alerta y respuesta? Â¡Las entradas exportadas existentes ya no estÃ¡n disponibles!",
             description: "Nombre",
             edit: "Editar",
             "export": {
                 "export": "Exportar",
                 "import": "Importar",
-                import_done: "Las entradas seleccionadas se han importado y aĂ±adido a tu plan de alerta y respuesta.",
+                import_done: "Las entradas seleccionadas se han importado y aÃ±adido a tu plan de alerta y respuesta.",
                 saved: "Exportar las normas de alerta y respuesta",
-                saved_text: "Las normas de alerta y respuesta estĂˇn preparadas para ser exportadas. Mediante el enlace, otro jugador podrĂˇ importarlas. Mientras tanto, si cambias alguna norma, el cambio se aplicarĂˇ automĂˇticamente a lo exportado."
+                saved_text: "Las normas de alerta y respuesta estÃ¡n preparadas para ser exportadas. Mediante el enlace, otro jugador podrÃ¡ importarlas. Mientras tanto, si cambias alguna norma, el cambio se aplicarÃ¡ automÃ¡ticamente a lo exportado."
             },
-            hotkey_hint: "Elije una tecla para esta selecciĂłn de vehĂ­culos. En la ventana de la misiĂłn, pulsa ALT + tu tecla (ALT + SHIFT + tu tecla en Firefox o CTRL + ALT + tu tecla en MacOS) para seleccionarla.",
+            hotkey_hint: "Elije una tecla para esta selecciÃ³n de vehÃ­culos. En la ventana de la misiÃ³n, pulsa ALT + tu tecla (ALT + SHIFT + tu tecla en Firefox o CTRL + ALT + tu tecla en MacOS) para seleccionarla.",
             intervention_order: "Editar normas de alerta y respuesta",
             name: "Nombre",
-            no_intervention_created: "TodavĂ­a no has creado ninguna norma de alerta y respuesta.",
+            no_intervention_created: "TodavÃ­a no has creado ninguna norma de alerta y respuesta.",
             options: "Opciones",
-            reset: "Restablece la selecciĂłn anterior en la ventana de alertas.",
-            reset_hint: "Si has seleccionado el vehĂ­culo en la ventana de respuesta, puedes usar este botĂłn para restablecer.",
+            reset: "Restablece la selecciÃ³n anterior en la ventana de alertas.",
+            reset_hint: "Si has seleccionado el vehÃ­culo en la ventana de respuesta, puedes usar este botÃ³n para restablecer.",
             save: "Guardar",
-            station: "InstalaciĂłn",
-            station_hint: "Si hay un edificio seleccionado, solo se seleccionarĂˇn los vehĂ­culos de ese edificio.",
+            station: "InstalaciÃ³n",
+            station_hint: "Si hay un edificio seleccionado, solo se seleccionarÃ¡n los vehÃ­culos de ese edificio.",
             successfully_created: "Norma de alerta y respuesta creada correctamente.",
             successfully_deleted: "Norma de alerta y respuesta eliminada",
             successfully_updated: "Norma de alerta y respuesta actualizada correctamente.",
             vehicles: {
-                ab_atemschutz_only: "MĂłdulo ERA",
-                ab_einsatzleitung_only: "MĂłdulo de mando",
-                ab_gefahrgut_only: "MĂłdulo Hazmat",
-                ab_oel_only: "MĂłdulo de vertido de crudo",
-                ab_ruest: "MĂłdulo tecnolĂłgico de rescate",
+                ab_atemschutz_only: "MÃ³dulo ERA",
+                ab_einsatzleitung_only: "MÃ³dulo de mando",
+                ab_gefahrgut_only: "MÃ³dulo Hazmat",
+                ab_oel_only: "MÃ³dulo de vertido de crudo",
+                ab_ruest: "MÃ³dulo tecnolÃ³gico de rescate",
                 ab_ruest_rw: "",
-                abl2wasser_only: "MĂłdulo de mangueras",
-                ambulance: "UVI mĂłvil",
+                abl2wasser_only: "MÃ³dulo de mangueras",
+                ambulance: "UVI mÃ³vil",
                 ambulance_or_rapid_responder: "",
-                arff: "CBA (CamiĂłn de bomberos de aeropuerto)",
+                arff: "CBA (CamiÃ³n de bomberos de aeropuerto)",
                 battalion_chief_unit: "Unidad de Mando y Comunicaciones",
                 boot: "Botes (general)",
                 dekon_p: "",
                 division_chief_unit: "Unidad de mando",
                 dlk_or_tm50: "",
-                elw1_or_elw2: "Unidad de Mando y Comunicaciones, unidad de mando o mĂłdulo de mando mĂłvil ",
-                elw2_or_ab_elw: "Bomba de Rescate o Unidad de Apoyo de Rescate y CamiĂłn de Bomberos",
+                elw1_or_elw2: "Unidad de Mando y Comunicaciones, unidad de mando o mÃ³dulo de mando mÃ³vil ",
+                elw2_or_ab_elw: "Bomba de Rescate o Unidad de Apoyo de Rescate y CamiÃ³n de Bomberos",
                 elw3: "",
                 elw_airport: "",
-                emergency_ambulance: "Ambulancia o HelicĂłptero",
+                emergency_ambulance: "Ambulancia o HelicÃ³ptero",
                 fire_truck: "Camiones de bomberos",
                 fireboat: "Barco de bomberos grande",
                 fly_car: "Coche volador",
                 fukw: "",
                 fwk: "",
                 gefkw: "",
-                gkw: "CamiĂłn de usos mĂşltiples",
-                grtw: "Unidad para mĂşltiples vĂ­ctimas",
+                gkw: "CamiÃ³n de usos mÃºltiples",
+                grtw: "Unidad para mÃºltiples vÃ­ctimas",
                 grtw0: "",
                 grtw1: "",
                 grukw: "",
                 gw_atemschutz_only: "",
                 gw_gefahrgut: "Hazmat",
                 gw_gefahrgut_only: "",
-                gw_hoehenrettung: "CamiĂłn de rescate en altura",
-                gw_messtechnik: "CamiĂłn de mediciĂłn",
+                gw_hoehenrettung: "CamiÃ³n de rescate en altura",
+                gw_messtechnik: "CamiÃ³n de mediciÃ³n",
                 gw_oel_only: "",
                 gw_san: "",
                 gw_taucher: "",
-                gw_wasserrettung: "RetenciĂłn de agua",
+                gw_wasserrettung: "RetenciÃ³n de agua",
                 gw_werkfeuerwehr: "",
-                gwl2wasser_only: "VehĂ­culo con manguera",
+                gwl2wasser_only: "VehÃ­culo con manguera",
                 hems: "HEMS",
-                hlf_only: "VehĂ­culo de rescate",
-                hlf_or_rw_and_lf: "VehĂ­culo de rescate o vehĂ­culo de rescate pesado y camiĂłn de bomberos",
+                hlf_only: "VehÃ­culo de rescate",
+                hlf_or_rw_and_lf: "VehÃ­culo de rescate o vehÃ­culo de rescate pesado y camiÃ³n de bomberos",
                 hondengeleider: "",
                 k9: "Unidad canina",
                 kdow_lna: "",
                 kdow_orgl: "Jefe de emergencias",
                 ktw_b: "",
                 ktw_or_rtw: "",
-                lebefkw: "VehĂ­culo de mando ligero (leBefKw)",
+                lebefkw: "VehÃ­culo de mando ligero (leBefKw)",
                 lf_only: "Camiones de bomberos",
                 long_distance_ambulance: "Ambulancia SVB",
-                mask_service_unit: "Unidad aĂ©rea",
+                mask_service_unit: "Unidad aÃ©rea",
                 mek_mtf: "",
                 mek_zf: "",
-                mtw: "CamiĂłn de transporte",
+                mtw: "CamiÃ³n de transporte",
                 mzb: "Barco multiusos",
                 naw: "",
                 naw_or_rtw_and_nef: "",
                 naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Ambulancia",
-                oil_unit: "CamiĂłn para fuegos de aceite",
+                oil_unit: "CamiÃ³n para fuegos de aceite",
                 only_ab_dekon_p: "",
                 only_dekon_p: "",
                 ovd_p: "",
                 police_car: "Coche patrulla",
-                polizeihubschrauber: "HelicĂłptero de policĂ­a",
-                rescue_vehicle: "Furgones de Ăštiles Varios",
-                rescue_vehicle_only: "FurgĂłn de Ăštiles Varios",
+                polizeihubschrauber: "HelicÃ³ptero de policÃ­a",
+                rescue_vehicle: "Furgones de Ãštiles Varios",
+                rescue_vehicle_only: "FurgÃ³n de Ãštiles Varios",
                 rescueboat: "Barco de rescate grande",
                 rettungstreppe: "",
                 rth_only: "HEMS",
-                schlauchwagen: "CamiĂłn cisterna",
+                schlauchwagen: "CamiÃ³n cisterna",
                 seg_elw: "",
                 sek_mtf: "",
                 sek_zf: "",
                 swat: "Fuerzas especiales (GEO)",
-                swat_armored_vehicle: "VehĂ­culo blindado de los GEO",
+                swat_armored_vehicle: "VehÃ­culo blindado de los GEO",
                 swat_suv: "Todoterreno de los GEO",
                 thw_anh_mzab: "",
                 thw_anh_mzb: "",
@@ -3719,14 +3653,14 @@ function deleteMissionPosition(e) {
                 thw_lkw: "",
                 thw_lkw_7_lkr_19_tm: "",
                 thw_mlw5: "",
-                thw_mtw: "CamiĂłn de transporte tĂ©cnico",
-                thw_mzkw: "VehĂ­culo multiusos",
+                thw_mtw: "CamiÃ³n de transporte tÃ©cnico",
+                thw_mzkw: "VehÃ­culo multiusos",
                 thw_tauchkraftwagen: "Equipo de buceo",
                 thw_tauchkraftwagen_or_gw_taucher: "",
-                tlf_only: "CamiĂłn cisterna",
+                tlf_only: "CamiÃ³n cisterna",
                 tm50: "",
                 turboloescher: "",
-                turntable_ladder: "CamiĂłn AE",
+                turntable_ladder: "CamiÃ³n AE",
                 ulf: "",
                 wasserwerfer: "",
                 water_amount: "",
@@ -3738,75 +3672,75 @@ function deleteMissionPosition(e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: "ÂˇEl segundo paso es bautizarla! Dale un nombre reconocible y escalable, Como Â«Parque de bomberos #0001Â». Cuando acabes, haz clic en Sig.",
-                            build_with_credits: "Ahora, construye tu edificio con crĂ©ditos.",
+                            add_name: "Â¡El segundo paso es bautizarla! Dale un nombre reconocible y escalable, Como Â«Parque de bomberos #0001Â». Cuando acabes, haz clic en Sig.",
+                            build_with_credits: "Ahora, construye tu edificio con crÃ©ditos.",
                             new_building: "Haz clic en Â«Nuevo edificioÂ».",
-                            select_building: "Lo primero es elegir el tipo de edificio con el que quieres comenzar. ÂˇTe recomendamos que escojas un parque de bomberos! En cualquier caso, lo mejor es comenzar con una instalaciĂłn pequeĂ±a.",
-                            select_position: "Mueve el marcador azul al lugar donde quieres construir tu primera instalaciĂłn."
+                            select_building: "Lo primero es elegir el tipo de edificio con el que quieres comenzar. Â¡Te recomendamos que escojas un parque de bomberos! En cualquier caso, lo mejor es comenzar con una instalaciÃ³n pequeÃ±a.",
+                            select_position: "Mueve el marcador azul al lugar donde quieres construir tu primera instalaciÃ³n."
                         },
-                        pick_location: "Para comenzar, elige una ubicaciĂłn. Puedes escribir su nombre en la barra de bĂşsqueda o mover el mapa hasta llegar a ella. ÂżQuĂ© te parece si vamos a tu hogar?",
-                        welcome: "ÂˇHola! Te damos la bienvenida a Centro de Mando.  ÂˇTe voy a enseĂ±ar algunos conceptos bĂˇsicos para que puedas comenzar tu carrera como operador con buen pie!"
+                        pick_location: "Para comenzar, elige una ubicaciÃ³n. Puedes escribir su nombre en la barra de bÃºsqueda o mover el mapa hasta llegar a ella. Â¿QuÃ© te parece si vamos a tu hogar?",
+                        welcome: "Â¡Hola! Te damos la bienvenida a Centro de Mando.  Â¡Te voy a enseÃ±ar algunos conceptos bÃ¡sicos para que puedas comenzar tu carrera como operador con buen pie!"
                     },
                     mobile: {
                         build_building: {
-                            add_name: "ÂˇEl segundo paso es bautizarla! Dale un nombre reconocible y escalable, Como Â«Parque de bomberos #0001Â». Cuando acabes, haz clic en Sig.",
-                            build_with_credits: "Ahora, construye tu edificio con crĂ©ditos.",
-                            new_building: "Comenzaremos eligiendo una ubicaciĂłn para tu primer edificio. <br /> <br /> Haz clic en Â«Nuevo edificioÂ».",
-                            select_building: "Lo primero es elegir el tipo de edificio con el que quieres comenzar. ÂˇTe recomendamos que escojas un parque de bomberos! En cualquier caso, lo mejor es comenzar con una instalaciĂłn pequeĂ±a."
+                            add_name: "Â¡El segundo paso es bautizarla! Dale un nombre reconocible y escalable, Como Â«Parque de bomberos #0001Â». Cuando acabes, haz clic en Sig.",
+                            build_with_credits: "Ahora, construye tu edificio con crÃ©ditos.",
+                            new_building: "Comenzaremos eligiendo una ubicaciÃ³n para tu primer edificio. <br /> <br /> Haz clic en Â«Nuevo edificioÂ».",
+                            select_building: "Lo primero es elegir el tipo de edificio con el que quieres comenzar. Â¡Te recomendamos que escojas un parque de bomberos! En cualquier caso, lo mejor es comenzar con una instalaciÃ³n pequeÃ±a."
                         },
-                        welcome: "ÂˇHola! Te damos la bienvenida a Centro de Mando.  ÂˇTe voy a enseĂ±ar algunos conceptos bĂˇsicos para que puedas comenzar tu carrera como operador con buen pie!"
+                        welcome: "Â¡Hola! Te damos la bienvenida a Centro de Mando.  Â¡Te voy a enseÃ±ar algunos conceptos bÃ¡sicos para que puedas comenzar tu carrera como operador con buen pie!"
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Desde este menĂş Puedes enviar a tus unidades a misiones.",
-                            dispatch_menu_buttons: "Hay dos botones para enviar el vehĂ­culo: El primero, Â«EnviarÂ», dirige a las unidades seleccionadas a la misiĂłn. El segundo tambiĂ©n hace esto, pero despuĂ©s pasa a la siguiente misiĂłn. Por ahora, haz clic en el primer botĂłn.",
-                            dispatch_menu_mission_general: "AquĂ­ puedes ver informaciĂłn general de la misiĂłn, como su nombre, direcciĂłn e icono. En las misiones en las que ya estĂ©s participando aparecerĂˇ un pequeĂ±o sĂ­mbolo de una persona en lugar de la estrella.",
-                            dispatch_menu_mission_progress: "AquĂ­ puedes ver el progreso de la misiĂłn, asĂ­ como el personal en el lugar del incidente y el tiempo restante.",
-                            dispatch_menu_mission_specific: "AquĂ­ puedes ver mĂˇs informaciĂłn sobre la misiĂłn, quĂ© unidades estĂˇn respondiendo a la emergencia y cuĂˇles han llegado ya allĂ­.",
-                            dispatch_menu_vehicle_list: "Esta es la lista de vehĂ­culos que tienes disponibles. AquĂ­ puedes seleccionarlos. Elige el vehĂ­culo que quieras enviar y haz clic sobre Ă©l."
+                            dispatch_menu: "Desde este menÃº Puedes enviar a tus unidades a misiones.",
+                            dispatch_menu_buttons: "Hay dos botones para enviar el vehÃ­culo: El primero, Â«EnviarÂ», dirige a las unidades seleccionadas a la misiÃ³n. El segundo tambiÃ©n hace esto, pero despuÃ©s pasa a la siguiente misiÃ³n. Por ahora, haz clic en el primer botÃ³n.",
+                            dispatch_menu_mission_general: "AquÃ­ puedes ver informaciÃ³n general de la misiÃ³n, como su nombre, direcciÃ³n e icono. En las misiones en las que ya estÃ©s participando aparecerÃ¡ un pequeÃ±o sÃ­mbolo de una persona en lugar de la estrella.",
+                            dispatch_menu_mission_progress: "AquÃ­ puedes ver el progreso de la misiÃ³n, asÃ­ como el personal en el lugar del incidente y el tiempo restante.",
+                            dispatch_menu_mission_specific: "AquÃ­ puedes ver mÃ¡s informaciÃ³n sobre la misiÃ³n, quÃ© unidades estÃ¡n respondiendo a la emergencia y cuÃ¡les han llegado ya allÃ­.",
+                            dispatch_menu_vehicle_list: "Esta es la lista de vehÃ­culos que tienes disponibles. AquÃ­ puedes seleccionarlos. Elige el vehÃ­culo que quieras enviar y haz clic sobre Ã©l."
                         },
                         mobile: {
-                            dispatch_menu: "Desde este menĂş Puedes enviar a tus unidades a misiones.",
-                            dispatch_menu_buttons: "Hay dos botones para enviar el vehĂ­culo: El primero, Â«EnviarÂ», dirige a las unidades seleccionadas a la misiĂłn. El segundo tambiĂ©n hace esto, pero despuĂ©s pasa a la siguiente misiĂłn. Por ahora, haz clic en el primer botĂłn.",
-                            dispatch_menu_mission_general: "AquĂ­ puedes ver informaciĂłn general de la misiĂłn, como su nombre, direcciĂłn e icono. En las misiones en las que ya estĂ©s participando aparecerĂˇ un pequeĂ±o sĂ­mbolo de una persona en lugar de la estrella.",
-                            dispatch_menu_mission_progress: "AquĂ­ puedes ver el progreso de la misiĂłn, asĂ­ como el personal en el lugar del incidente y el tiempo restante.",
-                            dispatch_menu_mission_specific: "AquĂ­ puedes ver mĂˇs informaciĂłn sobre la misiĂłn, quĂ© unidades estĂˇn respondiendo a la emergencia y cuĂˇles han llegado ya allĂ­.",
-                            dispatch_menu_vehicle_list: "Esta es la lista de vehĂ­culos que tienes disponibles. AquĂ­ puedes seleccionarlos. Elige el vehĂ­culo que quieras enviar y haz clic sobre Ă©l."
+                            dispatch_menu: "Desde este menÃº Puedes enviar a tus unidades a misiones.",
+                            dispatch_menu_buttons: "Hay dos botones para enviar el vehÃ­culo: El primero, Â«EnviarÂ», dirige a las unidades seleccionadas a la misiÃ³n. El segundo tambiÃ©n hace esto, pero despuÃ©s pasa a la siguiente misiÃ³n. Por ahora, haz clic en el primer botÃ³n.",
+                            dispatch_menu_mission_general: "AquÃ­ puedes ver informaciÃ³n general de la misiÃ³n, como su nombre, direcciÃ³n e icono. En las misiones en las que ya estÃ©s participando aparecerÃ¡ un pequeÃ±o sÃ­mbolo de una persona en lugar de la estrella.",
+                            dispatch_menu_mission_progress: "AquÃ­ puedes ver el progreso de la misiÃ³n, asÃ­ como el personal en el lugar del incidente y el tiempo restante.",
+                            dispatch_menu_mission_specific: "AquÃ­ puedes ver mÃ¡s informaciÃ³n sobre la misiÃ³n, quÃ© unidades estÃ¡n respondiendo a la emergencia y cuÃ¡les han llegado ya allÃ­.",
+                            dispatch_menu_vehicle_list: "Esta es la lista de vehÃ­culos que tienes disponibles. AquÃ­ puedes seleccionarlos. Elige el vehÃ­culo que quieras enviar y haz clic sobre Ã©l."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "Ahora, aprendamos cĂłmo lidiar con incidentes. Haz clic en un botĂłn Â«enviarÂ» para abrir el menĂş.",
-                            first_mission: "ÂˇGenial! Tu primer edificio ya estĂˇ construido. ÂżVes? Ya estĂˇs recibiendo avisos de emergencias."
+                            dispatch_button: "Ahora, aprendamos cÃ³mo lidiar con incidentes. Haz clic en un botÃ³n Â«enviarÂ» para abrir el menÃº.",
+                            first_mission: "Â¡Genial! Tu primer edificio ya estÃ¡ construido. Â¿Ves? Ya estÃ¡s recibiendo avisos de emergencias."
                         },
                         mobile: {
-                            dispatch_button: "Ahora, aprendamos cĂłmo lidiar con incidentes. Haz clic en un botĂłn Â«enviarÂ» para abrir el menĂş.",
-                            first_mission: "ÂˇGenial! Tu primer edificio ya estĂˇ construido. ÂżVes? Ya estĂˇs recibiendo avisos de emergencias."
+                            dispatch_button: "Ahora, aprendamos cÃ³mo lidiar con incidentes. Haz clic en un botÃ³n Â«enviarÂ» para abrir el menÃº.",
+                            first_mission: "Â¡Genial! Tu primer edificio ya estÃ¡ construido. Â¿Ves? Ya estÃ¡s recibiendo avisos de emergencias."
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "ÂˇGenial! Sigue asĂ­ y te convertirĂˇs en un gran operador. ÂˇAquĂ­ tienes %{coins} monedas para ayudarte a arrancar! </br> El equipo de Centro de Mando"
+                        general: "Â¡Genial! Sigue asÃ­ y te convertirÃ¡s en un gran operador. Â¡AquÃ­ tienes %{coins} monedas para ayudarte a arrancar! </br> El equipo de Centro de Mando"
                     },
                     mobile: {
-                        general: "ÂˇGenial! Sigue asĂ­ y te convertirĂˇs en un gran operador. ÂˇAquĂ­ tienes %{coins} monedas para ayudarte a arrancar! </br> El equipo de Centro de Mando"
+                        general: "Â¡Genial! Sigue asÃ­ y te convertirÃ¡s en un gran operador. Â¡AquÃ­ tienes %{coins} monedas para ayudarte a arrancar! </br> El equipo de Centro de Mando"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Si tienes alguna pregunta, puedes consultar el FAQ y visitar el foro del juego y nuestra pĂˇgina de Facebook.",
-                        general: "Te recomendamos que tu siguiente paso sea construir una centralita y despuĂ©s, en cuanto sea posible, nuevas instalaciones, ya que el nĂşmero mĂˇximo de misiones es igual al nĂşmero mĂˇximo de instalaciones del mismo tipo (comisarĂ­as, parques de bomberos o de ambulancias...) mĂˇs 1. Por ejemplo: 5 parques de bomberos y 3 de ambulancias permiten tener 6 misiones disponibles.",
-                        join_alliance: "AdemĂˇs, unirse a una alianza es de gran ayuda, especialmente al principio.",
-                        summary: "ÂˇYa conoces lo fundamental de Centro de Mando! Completar misiones, ganar crĂ©ditos, comprar mĂˇs unidades y vuelta a empezar. ÂˇDiviĂ©rtete! </br> El equipo de Centro de Mando"
+                        contact: "Si tienes alguna pregunta, puedes consultar el FAQ y visitar el foro del juego y nuestra pÃ¡gina de Facebook.",
+                        general: "Te recomendamos que tu siguiente paso sea construir una centralita y despuÃ©s, en cuanto sea posible, nuevas instalaciones, ya que el nÃºmero mÃ¡ximo de misiones es igual al nÃºmero mÃ¡ximo de instalaciones del mismo tipo (comisarÃ­as, parques de bomberos o de ambulancias...) mÃ¡s 1. Por ejemplo: 5 parques de bomberos y 3 de ambulancias permiten tener 6 misiones disponibles.",
+                        join_alliance: "AdemÃ¡s, unirse a una alianza es de gran ayuda, especialmente al principio.",
+                        summary: "Â¡Ya conoces lo fundamental de Centro de Mando! Completar misiones, ganar crÃ©ditos, comprar mÃ¡s unidades y vuelta a empezar. Â¡DiviÃ©rtete! </br> El equipo de Centro de Mando"
                     },
                     mobile: {
-                        contact: "Si tienes alguna pregunta, puedes consultar el FAQ y visitar el foro del juego y nuestra pĂˇgina de Facebook.",
-                        general: "Te recomendamos que tu siguiente paso sea construir una centralita y despuĂ©s, en cuanto sea posible, nuevas instalaciones, ya que el nĂşmero mĂˇximo de misiones es igual al nĂşmero mĂˇximo de instalaciones del mismo tipo (comisarĂ­as, parques de bomberos o de ambulancias...) mĂˇs 1. Por ejemplo: 5 parques de bomberos y 3 de ambulancias permiten tener 6 misiones disponibles.",
-                        join_alliance: "AdemĂˇs, unirse a una alianza es de gran ayuda, especialmente al principio.",
-                        summary: "ÂˇYa conoces lo fundamental de Centro de Mando! Completar misiones, ganar crĂ©ditos, comprar mĂˇs unidades y vuelta a empezar. ÂˇDiviĂ©rtete! </br> El equipo de Centro de Mando"
+                        contact: "Si tienes alguna pregunta, puedes consultar el FAQ y visitar el foro del juego y nuestra pÃ¡gina de Facebook.",
+                        general: "Te recomendamos que tu siguiente paso sea construir una centralita y despuÃ©s, en cuanto sea posible, nuevas instalaciones, ya que el nÃºmero mÃ¡ximo de misiones es igual al nÃºmero mÃ¡ximo de instalaciones del mismo tipo (comisarÃ­as, parques de bomberos o de ambulancias...) mÃ¡s 1. Por ejemplo: 5 parques de bomberos y 3 de ambulancias permiten tener 6 misiones disponibles.",
+                        join_alliance: "AdemÃ¡s, unirse a una alianza es de gran ayuda, especialmente al principio.",
+                        summary: "Â¡Ya conoces lo fundamental de Centro de Mando! Completar misiones, ganar crÃ©ditos, comprar mÃ¡s unidades y vuelta a empezar. Â¡DiviÃ©rtete! </br> El equipo de Centro de Mando"
                     }
                 }
             },
@@ -3816,8 +3750,8 @@ function deleteMissionPosition(e) {
                 end: "Fin",
                 next: "Sig.",
                 prev: "Ant.",
-                skip: "SĂ­",
-                skip_hint: "ÂżSeguro que quieres saltarte el tutorial? DespuĂ©s, no podrĂˇs acceder a Ă©l.No podrĂˇs recibir la recompensa por completar el tutorial."
+                skip: "SÃ­",
+                skip_hint: "Â¿Seguro que quieres saltarte el tutorial? DespuÃ©s, no podrÃ¡s acceder a Ã©l.No podrÃ¡s recibir la recompensa por completar el tutorial."
             },
             rewards: {
                 log: "Recompensa por completar el tutorial."
@@ -4033,7 +3967,7 @@ function deleteMissionPosition(e) {
                 gw_atemschutz_only: "",
                 gw_gefahrgut: "HAZMAT Unit",
                 gw_gefahrgut_only: "",
-                gw_hoehenrettung: "GW-HĂ¶henrettung",
+                gw_hoehenrettung: "GW-HÃ¶henrettung",
                 gw_messtechnik: "GW-Messtechnik",
                 gw_oel_only: "",
                 gw_san: "",
@@ -4062,7 +3996,7 @@ function deleteMissionPosition(e) {
                 naw_or_rtw_and_nef: "",
                 naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Ambulance",
-                oil_unit: "GW-Ă–l",
+                oil_unit: "GW-Ã–l",
                 only_ab_dekon_p: "",
                 only_dekon_p: "",
                 ovd_p: "",
@@ -4194,31 +4128,31 @@ function deleteMissionPosition(e) {
         }
     }, I18n.translations.sv_SE = {
         common: {
-            add: "LĂ¤gg till",
+            add: "LÃ¤gg till",
             back: "Tillbaka",
             cancel: "Avbryt",
-            change_saved: "Ă„ndringar sparade",
+            change_saved: "Ã„ndringar sparade",
             coins_spend: "Vill du verkligen spendera dina mynt?",
             congratulations: "Grattis!",
-            content: "InnehĂĄll",
+            content: "InnehÃ¥ll",
             credits: "Krediter",
             "delete": "Ta bort",
             details: "Detaljer",
             edit: "Redigera",
             error: "Fel",
-            is_offline: "%{user} Ă¤r offline.",
-            is_offline_long: "LĂ¤nge: %{user} Ă¤r offline",
-            is_online: "%{user} Ă¤r online.",
+            is_offline: "%{user} Ã¤r offline.",
+            is_offline_long: "LÃ¤nge: %{user} Ã¤r offline",
+            is_online: "%{user} Ã¤r online.",
             loading: "Laddar â€¦",
             name: "Namn",
             none: "Ingen",
             of: "av",
             off: "Av",
-            on: "PĂĄ",
+            on: "PÃ¥",
             save: "Spara",
-            search: "SĂ¶k",
+            search: "SÃ¶k",
             show: "Visa",
-            user_not_found: "AnvĂ¤ndaren kunde inte hittas",
+            user_not_found: "AnvÃ¤ndaren kunde inte hittas",
             wrong_key: "Fel kod"
         },
         javascript: {
@@ -4228,27 +4162,27 @@ function deleteMissionPosition(e) {
             coins: "Mynt",
             credits: "Krediter",
             days: "dagar",
-            few_seconds: "om nĂĄgra sekunder",
+            few_seconds: "om nÃ¥gra sekunder",
             finish_in: "Avsluta om:",
             hours: "tim",
             location_not_found: "Kunde inte hittas",
             messages: "Meddelanden",
             minutes: "min",
             missed_vehicle: "Det saknar:",
-            mission_start_in: "BĂ¶rjar om:",
-            not_found_map: "Fordonet kunde inte hittas pĂĄ kartan",
+            mission_start_in: "BÃ¶rjar om:",
+            not_found_map: "Fordonet kunde inte hittas pÃ¥ kartan",
             now: "Nu",
             patient: "Patient",
             patient_untouched: "Obehandlade patienter",
             poi_delete: "Vill du verkligen ta bort intressepunkten %{caption}?",
             reload: "Ladda om",
             sale: "Sale",
-            sale_ended: "Rean Ă¤r slut",
+            sale_ended: "Rean Ã¤r slut",
             secounds: "sek",
             sicherheitswache_error: "Vakten %{caption} lyckades inte eftersom kriterierna inte uppfyllts.",
-            sicherheitswache_success: "Vakten %{caption} har lyckats. FĂĄ %{credits} krediter.",
-            start_in: "Ă…ker om: ",
-            start_username: "BĂ¶rjar:",
+            sicherheitswache_success: "Vakten %{caption} har lyckats. FÃ¥ %{credits} krediter.",
+            start_in: "Ã…ker om: ",
+            start_username: "BÃ¶rjar:",
             time_left: "Tid kvar:",
             to_building: "Visa byggnad",
             to_mission: "Visa uppdrag",
@@ -4259,11 +4193,11 @@ function deleteMissionPosition(e) {
         map: {
             alliance: "Allians",
             alliance_chat: "Chatt",
-            alliance_chat_banned: "Du Ă¤r bannlyst frĂĄn allianschatten.",
+            alliance_chat_banned: "Du Ã¤r bannlyst frÃ¥n allianschatten.",
             alliance_chat_banned_admin: "Bannad av:",
             alliance_chat_banned_timeleft: "Tid kvar:",
             alliance_chat_radio_off: "Alliansradio: Av",
-            alliance_chat_radio_on: "Alliansradio: PĂĄ",
+            alliance_chat_radio_on: "Alliansradio: PÃ¥",
             alliance_event: "Evenemang",
             alliance_missions: "Alliansuppdrag",
             alliance_missions_event: "Evenemang",
@@ -4273,7 +4207,7 @@ function deleteMissionPosition(e) {
             create_alliance_event: "Starta evenemang",
             create_alliance_operation: "Skapa ett storskaligt uppdrag",
             emergency: "Akut",
-            join_alliance_infos: "Om du Ă¤r med i en allians kan andra spelare ge dig uppdrag.",
+            join_alliance_infos: "Om du Ã¤r med i en allians kan andra spelare ge dig uppdrag.",
             map: "Karta",
             map_filters: {
                 all_buildings: "Byggnader",
@@ -4296,119 +4230,119 @@ function deleteMissionPosition(e) {
                 police_small_missions: "Polisstation (liten)",
                 police_special_forces: "Insatsstyrka",
                 police_station_missions: "Polisstation",
-                prison_missions: "FĂ¤ngelse",
+                prison_missions: "FÃ¤ngelse",
                 rapid_deployment_group: "Snabb installationsgrupp (SEG)",
                 rescue_copter_station_missions: "Ambulanshelikopterstation",
                 riot_police: "Kravallpolis",
-                staging_area_missions: "UppsamlingsomrĂĄde",
+                staging_area_missions: "UppsamlingsomrÃ¥de",
                 technical_aid_organization: "MSB",
-                technical_aid_organization_school: "TrĂ¤ningscentrum",
+                technical_aid_organization_school: "TrÃ¤ningscentrum",
                 user_buildings: "Mina byggnader",
                 user_missions: "Mina uppdrag",
-                water_watch: "VattenrĂ¤ddning"
+                water_watch: "VattenrÃ¤ddning"
             },
             message: "Meddelande",
             mission: "Uppdrag",
-            no_alliance_chat_impossible: "Du Ă¤r inte med i en allians.",
+            no_alliance_chat_impossible: "Du Ã¤r inte med i en allians.",
             no_alliance_missions: "Det finns inga alliansuppdrag just nu.",
-            no_ambulance_missions: "Det finns inga ambulansuppdrag just nu. Ambulansuppdrag kan bara intrĂ¤ffa nĂ¤r du har en ambulans och ett sjukhus.",
-            no_emergency_missions: "Det finns inga akutuppdrag just nu. Ett akutuppdrag kan intrĂ¤ffa efter att du gjort din fĂ¶rsta station.",
+            no_ambulance_missions: "Det finns inga ambulansuppdrag just nu. Ambulansuppdrag kan bara intrÃ¤ffa nÃ¤r du har en ambulans och ett sjukhus.",
+            no_emergency_missions: "Det finns inga akutuppdrag just nu. Ett akutuppdrag kan intrÃ¤ffa efter att du gjort din fÃ¶rsta station.",
             no_radio_messages: "Du har inga radiomeddelanden.",
             radio_messages: "Radio",
-            restore_map: "Ă…terstĂ¤ll karta",
-            show_informations: "GrĂ¶nt = Uppdragen visas i listan. RĂ¶tt = Uppdragen visas inte.",
+            restore_map: "Ã…terstÃ¤ll karta",
+            show_informations: "GrÃ¶nt = Uppdragen visas i listan. RÃ¶tt = Uppdragen visas inte.",
             sicherheitswache: "Planerade uppdrag",
             transport: "Transport"
         },
         fms: {
-            going: "PĂĄ uppdrag",
-            not_ready: "Inte i tjĂ¤nst",
-            on_destination: "PĂĄ transportmĂĄlet",
-            on_place: "PĂĄ platsen",
+            going: "PÃ¥ uppdrag",
+            not_ready: "Inte i tjÃ¤nst",
+            on_destination: "PÃ¥ transportmÃ¥let",
+            on_place: "PÃ¥ platsen",
             patient_transported: "Transporterar patient",
-            prisoner_transported: "Transporterar fĂĄnge",
-            ready_home: "TillgĂ¤nglig pĂĄ stationen",
-            ready_traveling: "TillgĂ¤nglig",
-            talking_wish: "TransportbegĂ¤ran",
-            waiting_for_vehicle: "InvĂ¤ntar fordon att bĂ¤rga"
+            prisoner_transported: "Transporterar fÃ¥nge",
+            ready_home: "TillgÃ¤nglig pÃ¥ stationen",
+            ready_traveling: "TillgÃ¤nglig",
+            talking_wish: "TransportbegÃ¤ran",
+            waiting_for_vehicle: "InvÃ¤ntar fordon att bÃ¤rga"
         },
         intervention_order: {
             back: "Tillbaka",
             category: "Kategori",
-            colour: "FĂ¤rg",
+            colour: "FÃ¤rg",
             column: "Kolumn",
             column_number: "Kolumnnummer",
-            column_number_hint: "Om du anger ett kolumnnummer kommer utryckningsinformationen visas i den kolumnen pĂĄ larmsidan.",
-            create_intervention_order: "Skapa ett nytt utryckningsfĂ¶rfarande",
+            column_number_hint: "Om du anger ett kolumnnummer kommer utryckningsinformationen visas i den kolumnen pÃ¥ larmsidan.",
+            create_intervention_order: "Skapa ett nytt utryckningsfÃ¶rfarande",
             "delete": "Ta bort",
-            delete_all: "Ta bort utryckningsfĂ¶rfarande",
-            delete_all_confirm: "Vill du verkligen ta bort hela utryckningsfĂ¶rfarandet? Befintliga exporterade inlĂ¤gg fĂ¶rsvinner ocksĂĄ!",
+            delete_all: "Ta bort utryckningsfÃ¶rfarande",
+            delete_all_confirm: "Vill du verkligen ta bort hela utryckningsfÃ¶rfarandet? Befintliga exporterade inlÃ¤gg fÃ¶rsvinner ocksÃ¥!",
             description: "Namn",
             edit: "Redigera",
             "export": {
                 "export": "Exportera",
                 "import": "Importera",
-                import_done: "De valda inlĂ¤ggen har importerats och skrivits in i ditt utryckningsfĂ¶rfarande.",
-                saved: "Exporterade utryckningsfĂ¶rfaranden",
-                saved_text: "Ditt utryckningsfĂ¶rfarande har fĂ¶rberetts fĂ¶r exportering. Med lĂ¤nken kan en annan spelare importera utryckningsfĂ¶rfarandet. Om du Ă¤ndrar utryckningsfĂ¶rfarandet kommer exporten ocksĂĄ att Ă¤ndras."
+                import_done: "De valda inlÃ¤ggen har importerats och skrivits in i ditt utryckningsfÃ¶rfarande.",
+                saved: "Exporterade utryckningsfÃ¶rfaranden",
+                saved_text: "Ditt utryckningsfÃ¶rfarande har fÃ¶rberetts fÃ¶r exportering. Med lÃ¤nken kan en annan spelare importera utryckningsfÃ¶rfarandet. Om du Ã¤ndrar utryckningsfÃ¶rfarandet kommer exporten ocksÃ¥ att Ã¤ndras."
             },
-            hotkey_hint: "VĂ¤lj en snabbtangent fĂ¶r det hĂ¤r fordonsvalet. Tryck i uppdragsfĂ¶nstret: Alt + snabbtangenten (eller i Firefox: Alt + Skift + snabbtangenten, eller i Mac OS: Cmd + Alt + snabbtangenten) fĂ¶r att vĂ¤lja fordon.",
-            intervention_order: "Ă„ndra utryckningsfĂ¶rfarande",
+            hotkey_hint: "VÃ¤lj en snabbtangent fÃ¶r det hÃ¤r fordonsvalet. Tryck i uppdragsfÃ¶nstret: Alt + snabbtangenten (eller i Firefox: Alt + Skift + snabbtangenten, eller i Mac OS: Cmd + Alt + snabbtangenten) fÃ¶r att vÃ¤lja fordon.",
+            intervention_order: "Ã„ndra utryckningsfÃ¶rfarande",
             name: "Namn",
-            no_intervention_created: "Du har inte skapat nĂĄgot utryckningsfĂ¶rfarande Ă¤n.",
+            no_intervention_created: "Du har inte skapat nÃ¥got utryckningsfÃ¶rfarande Ã¤n.",
             options: "Alternativ",
-            reset: "Ă…terstĂ¤ll fĂ¶rra valet i larmfĂ¶nstret.",
-            reset_hint: "Om du har valt fordonet i utsĂ¤ndningsfĂ¶nstret kan du anvĂ¤nda den hĂ¤r knappen fĂ¶r att ĂĄterstĂ¤lla det.",
+            reset: "Ã…terstÃ¤ll fÃ¶rra valet i larmfÃ¶nstret.",
+            reset_hint: "Om du har valt fordonet i utsÃ¤ndningsfÃ¶nstret kan du anvÃ¤nda den hÃ¤r knappen fÃ¶r att Ã¥terstÃ¤lla det.",
             save: "Spara",
             station: "Station",
-            station_hint: "NĂ¤r du valt en byggnad kommer bara fordon som motsvarar byggnaden att vĂ¤ljas.",
-            successfully_created: "UtryckningsfĂ¶rfarandet har skapats.",
-            successfully_deleted: "UtryckningsfĂ¶rfarandet har tagits bort",
-            successfully_updated: "UtryckningsfĂ¶rfarandet har uppdaterats.",
+            station_hint: "NÃ¤r du valt en byggnad kommer bara fordon som motsvarar byggnaden att vÃ¤ljas.",
+            successfully_created: "UtryckningsfÃ¶rfarandet har skapats.",
+            successfully_deleted: "UtryckningsfÃ¶rfarandet har tagits bort",
+            successfully_updated: "UtryckningsfÃ¶rfarandet har uppdaterats.",
             vehicles: {
                 ab_atemschutz_only: "Andningsskydd-modul",
                 ab_einsatzleitung_only: "Kommando-modul",
                 ab_gefahrgut_only: "Farligt gods-modul",
-                ab_oel_only: "OljelĂ¤cka-modul",
-                ab_ruest: "Teknik/rĂ¤ddning-modul",
+                ab_oel_only: "OljelÃ¤cka-modul",
+                ab_ruest: "Teknik/rÃ¤ddning-modul",
                 abl2wasser_only: "Slang-modul",
                 ambulance: "Ambulans",
                 arff: "Flygplansbrandbil",
-                battalion_chief_unit: "BrandbefĂ¤l",
-                boot: "BĂĄtar (allmĂ¤nt)",
-                division_chief_unit: "RĂ¤ddningsledning",
-                elw1_or_elw2: "BrandbefĂ¤l eller Ledningsfordon",
-                elw2_or_ab_elw: "RĂ¤ddningspump eller stĂ¶denhet och brandbil",
+                battalion_chief_unit: "BrandbefÃ¤l",
+                boot: "BÃ¥tar (allmÃ¤nt)",
+                division_chief_unit: "RÃ¤ddningsledning",
+                elw1_or_elw2: "BrandbefÃ¤l eller Ledningsfordon",
+                elw2_or_ab_elw: "RÃ¤ddningspump eller stÃ¶denhet och brandbil",
                 emergency_ambulance: "Ambulans eller Helikopter",
-                fire_truck: "SlĂ¤ckbilar",
-                fireboat: "Stor brandbĂĄt",
+                fire_truck: "SlÃ¤ckbilar",
+                fireboat: "Stor brandbÃ¥t",
                 fly_car: "Flygbil",
                 gkw: "Jeep",
                 grtw: "Ambulansbuss",
                 gw_gefahrgut: "Kemskyddsenhet",
-                gw_hoehenrettung: "ReprĂ¤ddning",
-                gw_messtechnik: "MĂ¤tteknik",
+                gw_hoehenrettung: "ReprÃ¤ddning",
+                gw_messtechnik: "MÃ¤tteknik",
                 gw_taucher: "Dykbil",
-                gw_wasserrettung: "VattenrĂ¤ddning",
+                gw_wasserrettung: "VattenrÃ¤ddning",
                 gwl2wasser_only: "Slangfordon",
                 hems: "Ambulanshelikopter",
-                hlf_only: "RĂ¤ddningsbil",
-                hlf_or_rw_and_lf: "RĂ¤ddningsbil eller tyngre rĂ¤ddningsbil och brandbil",
+                hlf_only: "RÃ¤ddningsbil",
+                hlf_or_rw_and_lf: "RÃ¤ddningsbil eller tyngre rÃ¤ddningsbil och brandbil",
                 k9: "Hundenhet",
                 kdow_orgl: "Ambulanschef",
-                lebefkw: "LĂ¤tt kommandofordon",
-                lf_only: "SlĂ¤ckbilar",
+                lebefkw: "LÃ¤tt kommandofordon",
+                lf_only: "SlÃ¤ckbilar",
                 long_distance_ambulance: "Enkel ambulans",
                 mask_service_unit: "Mobil luftenhet",
                 mtw: "MTW",
-                mzb: "FlerfunktionsbĂĄt",
+                mzb: "FlerfunktionsbÃ¥t",
                 nef_only: "Ambulans",
                 oil_unit: "Oljeenhet",
                 police_car: "Radiobil",
                 polizeihubschrauber: "Polishelikopter",
-                rescue_vehicle: "LastvĂ¤xlare",
-                rescue_vehicle_only: "LastvĂ¤xlare",
-                rescueboat: "Stor rĂ¤ddningsbĂĄt",
+                rescue_vehicle: "LastvÃ¤xlare",
+                rescue_vehicle_only: "LastvÃ¤xlare",
+                rescueboat: "Stor rÃ¤ddningsbÃ¥t",
                 rth_only: "Ambulanshelikopter",
                 schlauchwagen: "Tankbil",
                 swat: "Insatsfordon",
@@ -4426,89 +4360,89 @@ function deleteMissionPosition(e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: 'Efter det fĂĄr du ge stationen ett namn. GĂ¶r det lĂ¤tt att kĂ¤nna igen, och fĂ¶rsĂ¶k att hitta pĂĄ nĂĄgot du kan bygga vidare pĂĄ. Exempelvis "Brandstation nr 0001". Klicka pĂĄ NĂ¤sta nĂ¤r du Ă¤r klar.',
-                            build_with_credits: "Nu fĂĄr du bygga byggnaden fĂ¶r krediter!",
-                            new_building: "Klicka pĂĄ Ny byggnad.",
-                            select_building: "Du fĂĄr vĂ¤lja vad fĂ¶r sorts byggnad du vill bĂ¶rja med. Vi rekommenderar att bĂ¶rja med en brandstation! Oavsett vad du vĂ¤ljer Ă¤r det bĂ¤st att bĂ¶rja med en liten station.",
-                            select_position: "Flytta den blĂĄ markĂ¶ren till platsen dĂ¤r du vill bygga din fĂ¶rsta central."
+                            add_name: 'Efter det fÃ¥r du ge stationen ett namn. GÃ¶r det lÃ¤tt att kÃ¤nna igen, och fÃ¶rsÃ¶k att hitta pÃ¥ nÃ¥got du kan bygga vidare pÃ¥. Exempelvis "Brandstation nr 0001". Klicka pÃ¥ NÃ¤sta nÃ¤r du Ã¤r klar.',
+                            build_with_credits: "Nu fÃ¥r du bygga byggnaden fÃ¶r krediter!",
+                            new_building: "Klicka pÃ¥ Ny byggnad.",
+                            select_building: "Du fÃ¥r vÃ¤lja vad fÃ¶r sorts byggnad du vill bÃ¶rja med. Vi rekommenderar att bÃ¶rja med en brandstation! Oavsett vad du vÃ¤ljer Ã¤r det bÃ¤st att bÃ¶rja med en liten station.",
+                            select_position: "Flytta den blÃ¥ markÃ¶ren till platsen dÃ¤r du vill bygga din fÃ¶rsta central."
                         },
-                        pick_location: "BĂ¶rja med att vĂ¤lja en plats! Skriv in namnet pĂĄ platsen dĂ¤r du vill bĂ¶rja i sĂ¶kfĂ¤ltet, eller leta upp den pĂĄ kartan. Kanske din hemstad?",
-                        welcome: "Hej och vĂ¤lkommen till Larmcentralen-spelet!  Jag ska lĂ¤ra dig nĂĄgra saker sĂĄ du fĂĄr en flygande start pĂĄ nĂ¶dutryckningskarriĂ¤ren."
+                        pick_location: "BÃ¶rja med att vÃ¤lja en plats! Skriv in namnet pÃ¥ platsen dÃ¤r du vill bÃ¶rja i sÃ¶kfÃ¤ltet, eller leta upp den pÃ¥ kartan. Kanske din hemstad?",
+                        welcome: "Hej och vÃ¤lkommen till Larmcentralen-spelet!  Jag ska lÃ¤ra dig nÃ¥gra saker sÃ¥ du fÃ¥r en flygande start pÃ¥ nÃ¶dutryckningskarriÃ¤ren."
                     },
                     mobile: {
                         build_building: {
-                            add_name: 'Efter det fĂĄr du ge stationen ett namn. GĂ¶r det lĂ¤tt att kĂ¤nna igen, och fĂ¶rsĂ¶k att hitta pĂĄ nĂĄgot du kan bygga vidare pĂĄ. Exempelvis "Brandstation nr 0001". Klicka pĂĄ NĂ¤sta nĂ¤r du Ă¤r klar.',
-                            build_with_credits: "Nu fĂĄr du bygga byggnaden fĂ¶r krediter!",
-                            new_building: "FĂ¶rst vĂ¤ljer vi en plats dĂ¤r du kan bygga din fĂ¶rsta byggnad. <br /><br />FĂ¶r att gĂ¶ra det klickar du pĂĄ Ny byggnad.",
-                            select_building: "Du fĂĄr vĂ¤lja vad fĂ¶r sorts byggnad du vill bĂ¶rja med. Vi rekommenderar att bĂ¶rja med en brandstation! Oavsett vad du vĂ¤ljer Ă¤r det bĂ¤st att bĂ¶rja med en liten station."
+                            add_name: 'Efter det fÃ¥r du ge stationen ett namn. GÃ¶r det lÃ¤tt att kÃ¤nna igen, och fÃ¶rsÃ¶k att hitta pÃ¥ nÃ¥got du kan bygga vidare pÃ¥. Exempelvis "Brandstation nr 0001". Klicka pÃ¥ NÃ¤sta nÃ¤r du Ã¤r klar.',
+                            build_with_credits: "Nu fÃ¥r du bygga byggnaden fÃ¶r krediter!",
+                            new_building: "FÃ¶rst vÃ¤ljer vi en plats dÃ¤r du kan bygga din fÃ¶rsta byggnad. <br /><br />FÃ¶r att gÃ¶ra det klickar du pÃ¥ Ny byggnad.",
+                            select_building: "Du fÃ¥r vÃ¤lja vad fÃ¶r sorts byggnad du vill bÃ¶rja med. Vi rekommenderar att bÃ¶rja med en brandstation! Oavsett vad du vÃ¤ljer Ã¤r det bÃ¤st att bÃ¶rja med en liten station."
                         },
-                        welcome: "Hej och vĂ¤lkommen till Larmcentralen-spelet!  Jag ska lĂ¤ra dig nĂĄgra saker sĂĄ du fĂĄr en flygande start pĂĄ nĂ¶dutryckningskarriĂ¤ren."
+                        welcome: "Hej och vÃ¤lkommen till Larmcentralen-spelet!  Jag ska lÃ¤ra dig nÃ¥gra saker sÃ¥ du fÃ¥r en flygande start pÃ¥ nÃ¶dutryckningskarriÃ¤ren."
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Det hĂ¤r Ă¤r larmcentralsmenyn. HĂ¤rifrĂĄn kan du skicka ut fordon pĂĄ uppdrag!",
-                            dispatch_menu_buttons: "De hĂ¤r tvĂĄ knapparna sĂ¤tter igĂĄng uppdraget. Den fĂ¶rsta, Skicka ut, skickar ut de valda fordonen till uppdraget. Den andra gĂ¶r samma sak, men gĂĄr sedan vidare till nĂ¤sta uppdrag. Du kan trycka pĂĄ den fĂ¶rsta.",
-                            dispatch_menu_mission_general: "HĂ¤r ser du allmĂ¤n information om uppdraget: namn, adress och uppdragsikon. Ikonen med den lilla mannen dyker upp och ersĂ¤tter stjĂ¤rnan i uppdrag du redan deltagit i.",
-                            dispatch_menu_mission_progress: "HĂ¤r kan du se dina framsteg i uppdraget, hur mycket personal du har pĂĄ plats och hur lĂĄng tid som ĂĄterstĂĄr!",
-                            dispatch_menu_mission_specific: "HĂ¤r ser du mer information om uppdraget, vilka fordon som besvarar anropet och vilka som redan befinner sig pĂĄ platsen.",
-                            dispatch_menu_vehicle_list: "I den hĂ¤r listan ser du dina tillgĂ¤ngliga fordon. Det Ă¤r hĂ¤rifrĂĄn du vĂ¤ljer dina fordon. Klicka pĂĄ ett fĂ¶r att vĂ¤lja det!"
+                            dispatch_menu: "Det hÃ¤r Ã¤r larmcentralsmenyn. HÃ¤rifrÃ¥n kan du skicka ut fordon pÃ¥ uppdrag!",
+                            dispatch_menu_buttons: "De hÃ¤r tvÃ¥ knapparna sÃ¤tter igÃ¥ng uppdraget. Den fÃ¶rsta, Skicka ut, skickar ut de valda fordonen till uppdraget. Den andra gÃ¶r samma sak, men gÃ¥r sedan vidare till nÃ¤sta uppdrag. Du kan trycka pÃ¥ den fÃ¶rsta.",
+                            dispatch_menu_mission_general: "HÃ¤r ser du allmÃ¤n information om uppdraget: namn, adress och uppdragsikon. Ikonen med den lilla mannen dyker upp och ersÃ¤tter stjÃ¤rnan i uppdrag du redan deltagit i.",
+                            dispatch_menu_mission_progress: "HÃ¤r kan du se dina framsteg i uppdraget, hur mycket personal du har pÃ¥ plats och hur lÃ¥ng tid som Ã¥terstÃ¥r!",
+                            dispatch_menu_mission_specific: "HÃ¤r ser du mer information om uppdraget, vilka fordon som besvarar anropet och vilka som redan befinner sig pÃ¥ platsen.",
+                            dispatch_menu_vehicle_list: "I den hÃ¤r listan ser du dina tillgÃ¤ngliga fordon. Det Ã¤r hÃ¤rifrÃ¥n du vÃ¤ljer dina fordon. Klicka pÃ¥ ett fÃ¶r att vÃ¤lja det!"
                         },
                         mobile: {
-                            dispatch_menu: "Det hĂ¤r Ă¤r larmcentralsmenyn. HĂ¤rifrĂĄn kan du skicka ut fordon pĂĄ uppdrag!",
-                            dispatch_menu_buttons: "De hĂ¤r tvĂĄ knapparna sĂ¤tter igĂĄng uppdraget. Den fĂ¶rsta, Skicka ut, skickar ut de valda fordonen till uppdraget. Den andra gĂ¶r samma sak, men gĂĄr sedan vidare till nĂ¤sta uppdrag. Du kan trycka pĂĄ den fĂ¶rsta.",
-                            dispatch_menu_mission_general: "HĂ¤r ser du allmĂ¤n information om uppdraget: namn, adress och uppdragsikon. Ikonen med den lilla mannen dyker upp och ersĂ¤tter stjĂ¤rnan i uppdrag du redan deltagit i.",
-                            dispatch_menu_mission_progress: "HĂ¤r kan du se dina framsteg i uppdraget, hur mycket personal du har pĂĄ plats och hur lĂĄng tid som ĂĄterstĂĄr!",
-                            dispatch_menu_mission_specific: "HĂ¤r ser du mer information om uppdraget, vilka fordon som besvarar anropet och vilka som redan befinner sig pĂĄ platsen.",
-                            dispatch_menu_vehicle_list: "I den hĂ¤r listan ser du dina tillgĂ¤ngliga fordon. Det Ă¤r hĂ¤rifrĂĄn du vĂ¤ljer dina fordon. Klicka pĂĄ ett fĂ¶r att vĂ¤lja det!"
+                            dispatch_menu: "Det hÃ¤r Ã¤r larmcentralsmenyn. HÃ¤rifrÃ¥n kan du skicka ut fordon pÃ¥ uppdrag!",
+                            dispatch_menu_buttons: "De hÃ¤r tvÃ¥ knapparna sÃ¤tter igÃ¥ng uppdraget. Den fÃ¶rsta, Skicka ut, skickar ut de valda fordonen till uppdraget. Den andra gÃ¶r samma sak, men gÃ¥r sedan vidare till nÃ¤sta uppdrag. Du kan trycka pÃ¥ den fÃ¶rsta.",
+                            dispatch_menu_mission_general: "HÃ¤r ser du allmÃ¤n information om uppdraget: namn, adress och uppdragsikon. Ikonen med den lilla mannen dyker upp och ersÃ¤tter stjÃ¤rnan i uppdrag du redan deltagit i.",
+                            dispatch_menu_mission_progress: "HÃ¤r kan du se dina framsteg i uppdraget, hur mycket personal du har pÃ¥ plats och hur lÃ¥ng tid som Ã¥terstÃ¥r!",
+                            dispatch_menu_mission_specific: "HÃ¤r ser du mer information om uppdraget, vilka fordon som besvarar anropet och vilka som redan befinner sig pÃ¥ platsen.",
+                            dispatch_menu_vehicle_list: "I den hÃ¤r listan ser du dina tillgÃ¤ngliga fordon. Det Ã¤r hÃ¤rifrÃ¥n du vÃ¤ljer dina fordon. Klicka pÃ¥ ett fÃ¶r att vÃ¤lja det!"
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "Nu ska vi lĂ¤ra oss hur man tar hand om rapporter. Ă–ppna larmcentralsmenyn genom att trycka pĂĄ Larmcentral.",
-                            first_mission: "Toppen, du har byggt din fĂ¶rsta byggnad! Titta, du har fĂĄtt in dina fĂ¶rsta uppdrag!"
+                            dispatch_button: "Nu ska vi lÃ¤ra oss hur man tar hand om rapporter. Ã–ppna larmcentralsmenyn genom att trycka pÃ¥ Larmcentral.",
+                            first_mission: "Toppen, du har byggt din fÃ¶rsta byggnad! Titta, du har fÃ¥tt in dina fÃ¶rsta uppdrag!"
                         },
                         mobile: {
-                            dispatch_button: "Nu ska vi lĂ¤ra oss hur man tar hand om rapporter. Ă–ppna larmcentralsmenyn genom att trycka pĂĄ Larmcentral.",
-                            first_mission: "Toppen, du har byggt din fĂ¶rsta byggnad! Titta, du har fĂĄtt in dina fĂ¶rsta uppdrag!"
+                            dispatch_button: "Nu ska vi lÃ¤ra oss hur man tar hand om rapporter. Ã–ppna larmcentralsmenyn genom att trycka pÃ¥ Larmcentral.",
+                            first_mission: "Toppen, du har byggt din fÃ¶rsta byggnad! Titta, du har fÃ¥tt in dina fÃ¶rsta uppdrag!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Toppen, du bĂ¶rjar fĂĄ full koll pĂĄ hur man skĂ¶ter en larmcentral! HĂ¤r fĂĄr du %{coins} mynt att komma igĂĄng med! </br>Teamet pĂĄ Larmcentralen-spelet"
+                        general: "Toppen, du bÃ¶rjar fÃ¥ full koll pÃ¥ hur man skÃ¶ter en larmcentral! HÃ¤r fÃ¥r du %{coins} mynt att komma igÃ¥ng med! </br>Teamet pÃ¥ Larmcentralen-spelet"
                     },
                     mobile: {
-                        general: "Toppen, du bĂ¶rjar fĂĄ full koll pĂĄ hur man skĂ¶ter en larmcentral! HĂ¤r fĂĄr du %{coins} mynt att komma igĂĄng med! </br>Teamet pĂĄ Larmcentralen-spelet"
+                        general: "Toppen, du bÃ¶rjar fÃ¥ full koll pÃ¥ hur man skÃ¶ter en larmcentral! HÃ¤r fÃ¥r du %{coins} mynt att komma igÃ¥ng med! </br>Teamet pÃ¥ Larmcentralen-spelet"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Om du har frĂĄgor kan du vĂ¤nda dig till avsnittet FrĂĄgor och svar i spelet, spelets forum eller vĂĄr Facebook-sida!",
-                        general: "Efter det hĂ¤r rekommenderar jag att du bygger en larmcentral fĂ¶ljt av nya stationer, fĂ¶r det maximala antalet uppdrag Ă¤r lika med det hĂ¶gsta antalet stationer av samma typ (polis-, brand- eller ambulansstation) plus 1. Om du har 5 brandstationer och 3 ambulansstationer innebĂ¤r det alltsĂĄ att du kan ha 6 uppdrag.",
-                        join_alliance: "Det kan Ă¤ven ge stora fĂ¶rdelar att gĂĄ med i en allians, sĂ¤rskilt tidigt i spelet, sĂĄ det rekommenderas ocksĂĄ.",
-                        summary: "Det hĂ¤r Ă¤r grunderna i Larmcentralen-spelet! Klara uppdrag, tjĂ¤na krediter, kĂ¶p fler fordon, upprepa. Ha sĂĄ kul! </br>Teamet pĂĄ Larmcentralen-spelet"
+                        contact: "Om du har frÃ¥gor kan du vÃ¤nda dig till avsnittet FrÃ¥gor och svar i spelet, spelets forum eller vÃ¥r Facebook-sida!",
+                        general: "Efter det hÃ¤r rekommenderar jag att du bygger en larmcentral fÃ¶ljt av nya stationer, fÃ¶r det maximala antalet uppdrag Ã¤r lika med det hÃ¶gsta antalet stationer av samma typ (polis-, brand- eller ambulansstation) plus 1. Om du har 5 brandstationer och 3 ambulansstationer innebÃ¤r det alltsÃ¥ att du kan ha 6 uppdrag.",
+                        join_alliance: "Det kan Ã¤ven ge stora fÃ¶rdelar att gÃ¥ med i en allians, sÃ¤rskilt tidigt i spelet, sÃ¥ det rekommenderas ocksÃ¥.",
+                        summary: "Det hÃ¤r Ã¤r grunderna i Larmcentralen-spelet! Klara uppdrag, tjÃ¤na krediter, kÃ¶p fler fordon, upprepa. Ha sÃ¥ kul! </br>Teamet pÃ¥ Larmcentralen-spelet"
                     },
                     mobile: {
-                        contact: "Om du har frĂĄgor kan du vĂ¤nda dig till avsnittet FrĂĄgor och svar i spelet, spelets forum eller vĂĄr Facebook-sida!",
-                        general: "Efter det hĂ¤r rekommenderar jag att du bygger en larmcentral fĂ¶ljt av nya stationer, fĂ¶r det maximala antalet uppdrag Ă¤r lika med det hĂ¶gsta antalet stationer av samma typ (polis-, brand- eller ambulansstation) plus 1. Om du har 5 brandstationer och 3 ambulansstationer innebĂ¤r det alltsĂĄ att du kan ha 6 uppdrag.",
-                        join_alliance: "Det kan Ă¤ven ge stora fĂ¶rdelar att gĂĄ med i en allians, sĂ¤rskilt tidigt i spelet, sĂĄ det rekommenderas ocksĂĄ.",
-                        summary: "Det hĂ¤r Ă¤r grunderna i Larmcentralen-spelet! Klara uppdrag, tjĂ¤na krediter, kĂ¶p fler fordon, upprepa. Ha sĂĄ kul! </br>Teamet pĂĄ Larmcentralen-spelet"
+                        contact: "Om du har frÃ¥gor kan du vÃ¤nda dig till avsnittet FrÃ¥gor och svar i spelet, spelets forum eller vÃ¥r Facebook-sida!",
+                        general: "Efter det hÃ¤r rekommenderar jag att du bygger en larmcentral fÃ¶ljt av nya stationer, fÃ¶r det maximala antalet uppdrag Ã¤r lika med det hÃ¶gsta antalet stationer av samma typ (polis-, brand- eller ambulansstation) plus 1. Om du har 5 brandstationer och 3 ambulansstationer innebÃ¤r det alltsÃ¥ att du kan ha 6 uppdrag.",
+                        join_alliance: "Det kan Ã¤ven ge stora fÃ¶rdelar att gÃ¥ med i en allians, sÃ¤rskilt tidigt i spelet, sÃ¥ det rekommenderas ocksÃ¥.",
+                        summary: "Det hÃ¤r Ã¤r grunderna i Larmcentralen-spelet! Klara uppdrag, tjÃ¤na krediter, kÃ¶p fler fordon, upprepa. Ha sÃ¥ kul! </br>Teamet pÃ¥ Larmcentralen-spelet"
                     }
                 }
             },
             commons: {
-                collect: "HĂ¤mta",
+                collect: "HÃ¤mta",
                 "continue": "Nej",
                 end: "Avsluta",
-                next: "NĂ¤sta",
-                prev: "FĂ¶regĂĄende",
+                next: "NÃ¤sta",
+                prev: "FÃ¶regÃ¥ende",
                 skip: "Ja",
-                skip_hint: "Vill du verkligen avbryta handledningen? Du kommer inte ĂĄt den senare. I sĂĄ fall fĂĄr du ingen belĂ¶ning fĂ¶r att ha klarat av handledningen."
+                skip_hint: "Vill du verkligen avbryta handledningen? Du kommer inte Ã¥t den senare. I sÃ¥ fall fÃ¥r du ingen belÃ¶ning fÃ¶r att ha klarat av handledningen."
             },
             rewards: {
-                log: "BelĂ¶ning fĂ¶r att ha klarat handledningen."
+                log: "BelÃ¶ning fÃ¶r att ha klarat handledningen."
             }
         }
     }, I18n.translations.pl_PL = {
@@ -4519,12 +4453,12 @@ function deleteMissionPosition(e) {
             change_saved: "Zapisano zmiany",
             coins_spend: "Czy na pewno chcesz wydaÄ‡ monety?",
             congratulations: "Gratulacje!",
-            content: "ZawartoĹ›Ä‡",
+            content: "ZawartoÅ›Ä‡",
             credits: "Kredyty",
-            "delete": "UsuĹ„",
-            details: "SzczegĂłĹ‚y",
+            "delete": "UsuÅ„",
+            details: "SzczegÃ³Å‚y",
             edit: "Edytuj",
-            error: "BĹ‚Ä…d",
+            error: "BÅ‚Ä…d",
             is_offline: "%{user} jest offline.",
             is_offline_long: "Od dawna: %{user} jest offline",
             is_online: "%{user} jest online.",
@@ -4532,16 +4466,16 @@ function deleteMissionPosition(e) {
             name: "Nazwa",
             none: "Brak",
             of: "z",
-            off: "WyĹ‚.",
-            on: "WĹ‚.",
+            off: "WyÅ‚.",
+            on: "WÅ‚.",
             save: "Zapisz",
             search: "Wyszukaj",
-            show: "PokaĹĽ",
-            user_not_found: "Nie znaleziono uĹĽytkownika",
-            wrong_key: "NieprawidĹ‚owy klawisz"
+            show: "PokaÅ¼",
+            user_not_found: "Nie znaleziono uÅ¼ytkownika",
+            wrong_key: "NieprawidÅ‚owy klawisz"
         },
         javascript: {
-            alarm: "WyĹ›lij",
+            alarm: "WyÅ›lij",
             arrival: "Przybycie",
             backalarm: "Anuluj",
             coins: "Monety",
@@ -4551,7 +4485,7 @@ function deleteMissionPosition(e) {
             finish_in: "Koniec za:",
             hours: "Godz.",
             location_not_found: "Nie znaleziono",
-            messages: "WiadomoĹ›ci",
+            messages: "WiadomoÅ›ci",
             minutes: "min",
             missed_vehicle: "Brakuje:",
             mission_start_in: "PoczÄ…tek za:",
@@ -4560,82 +4494,82 @@ function deleteMissionPosition(e) {
             patient: "Pacjent",
             patient_untouched: "Pacjenci bez opieki",
             poi_delete: "Czy na pewno chcesz usunÄ…Ä‡ UM: %{caption}?",
-            reload: "OdĹ›wieĹĽ",
-            sale: "WyprzedaĹĽ",
-            sale_ended: "Promocja zakoĹ„czona",
+            reload: "OdÅ›wieÅ¼",
+            sale: "WyprzedaÅ¼",
+            sale_ended: "Promocja zakoÅ„czona",
             secounds: "s",
-            sicherheitswache_error: "Zabezpieczenie â€ž%{caption}â€ť nie byĹ‚o skuteczne, poniewaĹĽ nie speĹ‚niono wszystkich kryteriĂłw.",
-            sicherheitswache_success: "Zabezpieczenie â€ž%{caption}â€ť zadziaĹ‚aĹ‚o. Otrzymaj %{credits} kredytĂłw(-y).",
+            sicherheitswache_error: "Zabezpieczenie â€ž%{caption}â€ nie byÅ‚o skuteczne, poniewaÅ¼ nie speÅ‚niono wszystkich kryteriÃ³w.",
+            sicherheitswache_success: "Zabezpieczenie â€ž%{caption}â€ zadziaÅ‚aÅ‚o. Otrzymaj %{credits} kredytÃ³w(-y).",
             start_in: "PoczÄ…tek za: ",
             start_username: "Inicjator:",
-            time_left: "PozostaĹ‚o czasu:",
-            to_building: "PokaĹĽ budynek",
-            to_mission: "PokaĹĽ misjÄ™",
-            understand: "PotwierdĹş",
+            time_left: "PozostaÅ‚o czasu:",
+            to_building: "PokaÅ¼ budynek",
+            to_mission: "PokaÅ¼ misjÄ™",
+            understand: "PotwierdÅº",
             user_not_found: "Nie znaleziono gracza.",
             vehicles_not_visible: "Pojazdy nie sÄ… widoczne. "
         },
         map: {
             alliance: "Sojusz",
             alliance_chat: "Czat",
-            alliance_chat_banned: "Obecnie jest na ciebie naĹ‚oĹĽona blokada czatu sojuszu.",
+            alliance_chat_banned: "Obecnie jest na ciebie naÅ‚oÅ¼ona blokada czatu sojuszu.",
             alliance_chat_banned_admin: "Zablokowano przez:",
-            alliance_chat_banned_timeleft: "PozostaĹ‚y czas:",
-            alliance_chat_radio_off: "Radio sojuszu: WyĹ‚.",
-            alliance_chat_radio_on: "Radio sojuszu: WĹ‚.",
+            alliance_chat_banned_timeleft: "PozostaÅ‚y czas:",
+            alliance_chat_radio_off: "Radio sojuszu: WyÅ‚.",
+            alliance_chat_radio_on: "Radio sojuszu: WÅ‚.",
             alliance_event: "Wydarzenie",
             alliance_missions: "Misje sojuszu",
             alliance_missions_event: "Wydarzenie",
             ambulance: "Ambulans",
             challenges: "",
             chat_history: "Historia czatu",
-            congratulations: "Gratulacje! MoĹĽesz teraz otrzymaÄ‡ awans.",
+            congratulations: "Gratulacje! MoÅ¼esz teraz otrzymaÄ‡ awans.",
             create_alliance_event: "Rozpocznij wydarzenie sojuszu",
-            create_alliance_operation: "UtwĂłrz misjÄ™ sojuszu na duĹĽÄ… skalÄ™",
+            create_alliance_operation: "UtwÃ³rz misjÄ™ sojuszu na duÅ¼Ä… skalÄ™",
             emergency: "Sytuacja wyjÄ…tkowa",
-            join_alliance_infos: "JeĹ›li naleĹĽysz do sojuszu, inni gracze mogÄ… ci wyznaczaÄ‡ misje bez ograniczeĹ„.",
+            join_alliance_infos: "JeÅ›li naleÅ¼ysz do sojuszu, inni gracze mogÄ… ci wyznaczaÄ‡ misje bez ograniczeÅ„.",
             map: "Mapa",
             map_filters: {
                 all_buildings: "Budynki",
                 all_missions: "Misje",
                 alliance_buildings: "Budynki sojuszu",
-                alliance_members: "CzĹ‚onkowie",
+                alliance_members: "CzÅ‚onkowie",
                 alliance_missions: "Dzielone przez sojusz",
                 ambulance_station_missions: "Stacja Pogotowia Ratunkowego",
                 ambulance_station_small_missions: "Podstacja Pogotowia Ratunkowego",
                 clinic_missions: "Klinika",
                 dispatch_center_missions: "Centrum Powiadamiania Ratunkowego",
-                fire_school_missions: "SzkoĹ‚a PoĹĽarnicza",
-                firehouse_missions: "Jednostka Ratowniczo-GaĹ›nicza",
+                fire_school_missions: "SzkoÅ‚a PoÅ¼arnicza",
+                firehouse_missions: "Jednostka Ratowniczo-GaÅ›nicza",
                 firehouse_small_missions: "Remiza",
                 hospital_missions: "Szpital",
-                map_filters: "UĹĽyteczne Miejsca (UM)",
-                mission_positions: "UĹĽyteczne Miejsca (UM)",
+                map_filters: "UÅ¼yteczne Miejsca (UM)",
+                mission_positions: "UÅ¼yteczne Miejsca (UM)",
                 police_copter_station_missions: "Lotnictwo policyjne",
-                police_school_missions: "SzkoĹ‚a Policyjna",
+                police_school_missions: "SzkoÅ‚a Policyjna",
                 police_small_missions: "Posterunek Policji",
                 police_special_forces: "Jednostki specjalne policji",
                 police_station_missions: "Komenda Policji",
-                prison_missions: "ZakĹ‚ad Karny",
-                rapid_deployment_group: "Grupa szybkiego montaĹĽu (SEG)",
+                prison_missions: "ZakÅ‚ad Karny",
+                rapid_deployment_group: "Grupa szybkiego montaÅ¼u (SEG)",
                 rescue_copter_station_missions: "Baza HEMS",
-                riot_police: "OddziaĹ‚y Prewencji",
-                staging_area_missions: "Miejsce koncentracji SiĹ‚ i ĹšrodkĂłw",
+                riot_police: "OddziaÅ‚y Prewencji",
+                staging_area_missions: "Miejsce koncentracji SiÅ‚ i ÅšrodkÃ³w",
                 technical_aid_organization: "THW",
                 technical_aid_organization_school: "THW Bundesschule",
                 user_buildings: "Moje budynki",
                 user_missions: "Moje misje",
                 water_watch: "Ratownictwo wodne"
             },
-            message: "WiadomoĹ›Ä‡",
+            message: "WiadomoÅ›Ä‡",
             mission: "Misja",
-            no_alliance_chat_impossible: "Nie naleĹĽysz do sojuszu.",
+            no_alliance_chat_impossible: "Nie naleÅ¼ysz do sojuszu.",
             no_alliance_missions: "W tej chwili nie ma misji sojuszu.",
-            no_ambulance_missions: "Brak misji dla ambulansĂłw. Misje dla ambulansĂłw pojawiajÄ… siÄ™ tylko, gdy masz ambulans i szpital.",
-            no_emergency_missions: "Brak misji z sytuacjÄ… wyjÄ…tkowÄ…. Misja z sytuacjÄ… wyjÄ…tkowÄ… moĹĽe siÄ™ pojawiÄ‡, gdy wybudujesz pierwszy posterunek.",
-            no_radio_messages: "Nie otrzymano wiadomoĹ›ci drogÄ… radiowÄ….",
+            no_ambulance_missions: "Brak misji dla ambulansÃ³w. Misje dla ambulansÃ³w pojawiajÄ… siÄ™ tylko, gdy masz ambulans i szpital.",
+            no_emergency_missions: "Brak misji z sytuacjÄ… wyjÄ…tkowÄ…. Misja z sytuacjÄ… wyjÄ…tkowÄ… moÅ¼e siÄ™ pojawiÄ‡, gdy wybudujesz pierwszy posterunek.",
+            no_radio_messages: "Nie otrzymano wiadomoÅ›ci drogÄ… radiowÄ….",
             radio_messages: "Radio",
-            restore_map: "PrzywrĂłÄ‡ mapÄ™",
+            restore_map: "PrzywrÃ³Ä‡ mapÄ™",
             show_informations: "Zielony = misje sÄ… pokazywane. Czerwony = misje nie sÄ… pokazywane.",
             sicherheitswache: "Planowane misje",
             transport: "Transport"
@@ -4646,10 +4580,10 @@ function deleteMissionPosition(e) {
             on_destination: "W miejscu docelowym transportu",
             on_place: "Na miejscu",
             patient_transported: "Transportuje pacjenta",
-            prisoner_transported: "Transportuje wiÄ™Ĺşnia",
+            prisoner_transported: "Transportuje wiÄ™Åºnia",
             ready_home: "DostÄ™pne na posterunku",
             ready_traveling: "DostÄ™pne",
-            talking_wish: "Ĺ»Ä…danie transportu",
+            talking_wish: "Å»Ä…danie transportu",
             waiting_for_vehicle: "Czeka na pojazd do holowania"
         },
         intervention_order: {
@@ -4658,93 +4592,93 @@ function deleteMissionPosition(e) {
             colour: "Kolor",
             column: "Kolumna",
             column_number: "Numer kolumny",
-            column_number_hint: "JeĹ›li podano numer kolumny, zasada reagowania bÄ™dzie wyĹ›wietlana w analogicznej kolumnie na stronie wezwania.",
-            create_intervention_order: "UtwĂłrz nowÄ… zasadÄ™ reagowania",
-            "delete": "UsuĹ„",
-            delete_all: "UsuĹ„ wszystkie zasady reagowania",
-            delete_all_confirm: "Czy na pewno chcesz usunÄ…Ä‡ caĹ‚Ä… zasadÄ™ reagowania? IstniejÄ…ce wyeksportowane wersje przestaĹ‚y byÄ‡ dostÄ™pne!",
+            column_number_hint: "JeÅ›li podano numer kolumny, zasada reagowania bÄ™dzie wyÅ›wietlana w analogicznej kolumnie na stronie wezwania.",
+            create_intervention_order: "UtwÃ³rz nowÄ… zasadÄ™ reagowania",
+            "delete": "UsuÅ„",
+            delete_all: "UsuÅ„ wszystkie zasady reagowania",
+            delete_all_confirm: "Czy na pewno chcesz usunÄ…Ä‡ caÅ‚Ä… zasadÄ™ reagowania? IstniejÄ…ce wyeksportowane wersje przestaÅ‚y byÄ‡ dostÄ™pne!",
             description: "Nazwa",
             edit: "Edytuj",
             "export": {
                 "export": "Eksportuj",
                 "import": "Importuj",
-                import_done: "Wybrane wpisy zostaĹ‚y zaimportowane i wprowadzone do twojej zasady reagowania.",
+                import_done: "Wybrane wpisy zostaÅ‚y zaimportowane i wprowadzone do twojej zasady reagowania.",
                 saved: "Wyeksportowane zasady reagowania",
-                saved_text: "Zasada reagowania zostaĹ‚a przygotowana do eksportu. Za pomocÄ… tego linku moĹĽesz zaimportowaÄ‡ zasadÄ™ reagowania. JeĹ›li w miÄ™dzyczasie zmienisz zasadÄ™ reagowania, zostanie ona automatycznie uwzglÄ™dniona w eksporcie."
+                saved_text: "Zasada reagowania zostaÅ‚a przygotowana do eksportu. Za pomocÄ… tego linku moÅ¼esz zaimportowaÄ‡ zasadÄ™ reagowania. JeÅ›li w miÄ™dzyczasie zmienisz zasadÄ™ reagowania, zostanie ona automatycznie uwzglÄ™dniona w eksporcie."
             },
-            hotkey_hint: "Wybierz skrĂłt dla tego zestawu pojazdĂłw. NaciĹ›nij w oknie misji: ALT + skrĂłt (lub w przeglÄ…darce Firefox: ALT + SHIFT + skrĂłt lub w systemie macOS: Ctrl + Alt + skrĂłt), aby wybraÄ‡ zestaw pojazdĂłw.",
+            hotkey_hint: "Wybierz skrÃ³t dla tego zestawu pojazdÃ³w. NaciÅ›nij w oknie misji: ALT + skrÃ³t (lub w przeglÄ…darce Firefox: ALT + SHIFT + skrÃ³t lub w systemie macOS: Ctrl + Alt + skrÃ³t), aby wybraÄ‡ zestaw pojazdÃ³w.",
             intervention_order: "Edytuj zasady reagowania",
             name: "Nazwa",
-            no_intervention_created: "Nie utworzono ĹĽadnych zasad reagowania.",
+            no_intervention_created: "Nie utworzono Å¼adnych zasad reagowania.",
             options: "Opcje",
-            reset: "WyczyĹ›Ä‡ poprzedni wybĂłr w oknie wezwania.",
-            reset_hint: "JeĹ›li w oknie wezwania zostaĹ‚ wybrany pojazd, moĹĽesz uĹĽyÄ‡ tego przycisku, aby zresetowaÄ‡ wybĂłr.",
+            reset: "WyczyÅ›Ä‡ poprzedni wybÃ³r w oknie wezwania.",
+            reset_hint: "JeÅ›li w oknie wezwania zostaÅ‚ wybrany pojazd, moÅ¼esz uÅ¼yÄ‡ tego przycisku, aby zresetowaÄ‡ wybÃ³r.",
             save: "Zapisz",
             station: "Posterunek",
-            station_hint: "Po wybraniu budynku zajÄ™te zostanÄ… tylko pojazdy, ktĂłre sÄ… do niego przypisane.",
+            station_hint: "Po wybraniu budynku zajÄ™te zostanÄ… tylko pojazdy, ktÃ³re sÄ… do niego przypisane.",
             successfully_created: "Utworzono zasadÄ™ reagowania.",
             successfully_deleted: "UsuniÄ™to zasadÄ™ reagowania",
             successfully_updated: "Zaktualizowano zasadÄ™ reagowania.",
             vehicles: {
-                ab_atemschutz_only: "ModuĹ‚ aparatu oddechowego",
-                ab_einsatzleitung_only: "ModuĹ‚ dowodzenia",
-                ab_gefahrgut_only: "ModuĹ‚ Rchem",
-                ab_oel_only: "ModuĹ‚ do sprzÄ…tania oleju",
-                ab_ruest: "ModuĹ‚ ratownictwa technicznego",
+                ab_atemschutz_only: "ModuÅ‚ aparatu oddechowego",
+                ab_einsatzleitung_only: "ModuÅ‚ dowodzenia",
+                ab_gefahrgut_only: "ModuÅ‚ Rchem",
+                ab_oel_only: "ModuÅ‚ do sprzÄ…tania oleju",
+                ab_ruest: "ModuÅ‚ ratownictwa technicznego",
                 ab_ruest_rw: "",
-                abl2wasser_only: "ModuĹ‚ wÄ™ĹĽowy",
+                abl2wasser_only: "ModuÅ‚ wÄ™Å¼owy",
                 ambulance: "Ambulans specjalistyczny",
                 ambulance_or_rapid_responder: "",
-                arff: "SP LSP (samochĂłd poĹĽarniczy lotniskowej straĹĽy poĹĽarnej)",
-                battalion_chief_unit: "SamochĂłd Oficera Operacyjnego",
-                boot: "Ĺodzie (ogĂłlne)",
+                arff: "SP LSP (samochÃ³d poÅ¼arniczy lotniskowej straÅ¼y poÅ¼arnej)",
+                battalion_chief_unit: "SamochÃ³d Oficera Operacyjnego",
+                boot: "Åodzie (ogÃ³lne)",
                 dekon_p: "",
-                division_chief_unit: "SamochĂłd dowodzenia i Ĺ‚Ä…cznoĹ›ci",
+                division_chief_unit: "SamochÃ³d dowodzenia i Å‚Ä…cznoÅ›ci",
                 dlk_or_tm50: "",
-                elw1_or_elw2: "SamochĂłd Oficera Operacyjnego, SamochĂłd dowodzenia i Ĺ‚Ä…cznoĹ›ci",
+                elw1_or_elw2: "SamochÃ³d Oficera Operacyjnego, SamochÃ³d dowodzenia i Å‚Ä…cznoÅ›ci",
                 elw2_or_ab_elw: "",
                 elw3: "",
                 elw_airport: "",
-                emergency_ambulance: "Ambulans lub Ĺ›migĹ‚owiec LPR",
-                fire_truck: "Samochody poĹĽarnicze",
-                fireboat: "DuĹĽa Ĺ‚ĂłdĹş straĹĽacka",
-                fly_car: "SamochĂłd szefa brygady",
+                emergency_ambulance: "Ambulans lub Å›migÅ‚owiec LPR",
+                fire_truck: "Samochody poÅ¼arnicze",
+                fireboat: "DuÅ¼a Å‚Ã³dÅº straÅ¼acka",
+                fly_car: "SamochÃ³d szefa brygady",
                 fukw: "",
-                fwk: "DĹşwig SP",
+                fwk: "DÅºwig SP",
                 gefkw: "",
-                gkw: "SamochĂłd kwatermistrzowski",
-                grtw: "Jednostka do zdarzeĹ„ masowych",
+                gkw: "SamochÃ³d kwatermistrzowski",
+                grtw: "Jednostka do zdarzeÅ„ masowych",
                 grtw0: "",
                 grtw1: "",
                 grukw: "",
                 gw_atemschutz_only: "",
                 gw_gefahrgut: "Ratownictwo chemiczne",
                 gw_gefahrgut_only: "",
-                gw_hoehenrettung: "GW-HĂ¶henrettung",
+                gw_hoehenrettung: "GW-HÃ¶henrettung",
                 gw_messtechnik: "GW-Messtechnik",
                 gw_oel_only: "",
                 gw_san: "",
-                gw_taucher: "SamochĂłd SLRw",
+                gw_taucher: "SamochÃ³d SLRw",
                 gw_wasserrettung: "Ratownictwo wodne",
                 gw_werkfeuerwehr: "",
-                gwl2wasser_only: "SamochĂłd wÄ™ĹĽowy",
-                hems: "ĹšmigĹ‚owiec LPR",
+                gwl2wasser_only: "SamochÃ³d wÄ™Å¼owy",
+                hems: "ÅšmigÅ‚owiec LPR",
                 hlf_only: "GBARt",
-                hlf_or_rw_and_lf: "GBARt lub samochĂłd ratownictwa technicznego oraz samochĂłd gaĹ›niczy",
+                hlf_or_rw_and_lf: "GBARt lub samochÃ³d ratownictwa technicznego oraz samochÃ³d gaÅ›niczy",
                 hondengeleider: "",
                 k9: "Jednostka z psami",
                 kdow_lna: "",
-                kdow_orgl: "Szef sĹ‚uĹĽb ratownictwa medycznego",
+                kdow_orgl: "Szef sÅ‚uÅ¼b ratownictwa medycznego",
                 ktw_b: "",
                 ktw_or_rtw: "",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
-                lf_only: "Samochody poĹĽarnicze",
+                lf_only: "Samochody poÅ¼arnicze",
                 long_distance_ambulance: "Ambulans podstawowy",
                 mask_service_unit: "SPGaz",
                 mek_mtf: "",
                 mek_zf: "",
                 mtw: "MTW",
-                mzb: "ĹĂłdĹş wielozadaniowa",
+                mzb: "ÅÃ³dÅº wielozadaniowa",
                 naw: "",
                 naw_or_rtw_and_nef: "",
                 naw_or_rtw_and_nef_or_rth: "",
@@ -4753,13 +4687,13 @@ function deleteMissionPosition(e) {
                 only_ab_dekon_p: "",
                 only_dekon_p: "",
                 ovd_p: "",
-                police_car: "RadiowĂłz",
+                police_car: "RadiowÃ³z",
                 polizeihubschrauber: "Helikopter Policyjny",
-                rescue_vehicle: "SamochĂłd Ratownictwa Technicznego",
-                rescue_vehicle_only: "SamochĂłd Ratownictwa Technicznego",
-                rescueboat: "DuĹĽa Ĺ‚ĂłdĹş ratownicza",
+                rescue_vehicle: "SamochÃ³d Ratownictwa Technicznego",
+                rescue_vehicle_only: "SamochÃ³d Ratownictwa Technicznego",
+                rescueboat: "DuÅ¼a Å‚Ã³dÅº ratownicza",
                 rettungstreppe: "",
-                rth_only: "ĹšmigĹ‚owiec",
+                rth_only: "ÅšmigÅ‚owiec",
                 schlauchwagen: "Cysterna z wodÄ…",
                 seg_elw: "",
                 sek_mtf: "",
@@ -4777,12 +4711,12 @@ function deleteMissionPosition(e) {
                 thw_mlw5: "",
                 thw_mtw: "Mannschaftstransportwagen Technischer Zug (MTW-TZ - THW)",
                 thw_mzkw: "Mehrzweckkraftwagen (MzKW)",
-                thw_tauchkraftwagen: "ZespĂłĹ‚ nurkĂłw",
+                thw_tauchkraftwagen: "ZespÃ³Å‚ nurkÃ³w",
                 thw_tauchkraftwagen_or_gw_taucher: "",
-                tlf_only: "SamochĂłd dla ratownictwa wodno-nurkowego",
+                tlf_only: "SamochÃ³d dla ratownictwa wodno-nurkowego",
                 tm50: "",
                 turboloescher: "",
-                turntable_ladder: "SP wysokoĹ›ciowy",
+                turntable_ladder: "SP wysokoÅ›ciowy",
                 ulf: "",
                 wasserwerfer: "",
                 water_amount: "",
@@ -4794,89 +4728,89 @@ function deleteMissionPosition(e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: "Teraz musisz nazwaÄ‡ swĂłj posterunek! Nazwa musi byÄ‡ rozpoznawalna i skalowalna! Np.: â€žPosterunek straĹĽy poĹĽarnej #0001â€ť. Gdy skoĹ„czysz, kliknij opcjÄ™ Dalej!",
-                            build_with_credits: "Teraz wznieĹ› budynek za kredyty!",
+                            add_name: "Teraz musisz nazwaÄ‡ swÃ³j posterunek! Nazwa musi byÄ‡ rozpoznawalna i skalowalna! Np.: â€žPosterunek straÅ¼y poÅ¼arnej #0001â€. Gdy skoÅ„czysz, kliknij opcjÄ™ Dalej!",
+                            build_with_credits: "Teraz wznieÅ› budynek za kredyty!",
                             new_building: "Kliknij opcjÄ™ Nowy budynek!",
-                            select_building: "Wybierz rodzaj budynku, od ktĂłrego chcesz zaczÄ…Ä‡, sugerujemy wybĂłr straĹĽy poĹĽarnej! W kaĹĽdym wypadku najlepiej zaczÄ…Ä‡ od maĹ‚ego posterunku!",
-                            select_position: "PrzesuĹ„ bĹ‚Ä™kitny znacznik w miejsce, w ktĂłrym chcesz zbudowaÄ‡ pierwszy posterunek!"
+                            select_building: "Wybierz rodzaj budynku, od ktÃ³rego chcesz zaczÄ…Ä‡, sugerujemy wybÃ³r straÅ¼y poÅ¼arnej! W kaÅ¼dym wypadku najlepiej zaczÄ…Ä‡ od maÅ‚ego posterunku!",
+                            select_position: "PrzesuÅ„ bÅ‚Ä™kitny znacznik w miejsce, w ktÃ³rym chcesz zbudowaÄ‡ pierwszy posterunek!"
                         },
-                        pick_location: "Najpierw wybierz miejsce poczÄ…tkowe! W pasku wyszukiwania wpisz nazwÄ™ miejsca, w ktĂłrym masz ochotÄ™ rozpoczÄ…Ä‡ grÄ™, bÄ…dĹş zlokalizuj je na mapie osobiĹ›cie! MoĹĽe chcesz wybraÄ‡ swoje rodzinne miasto?",
-                        welcome: "Witaj w grze Operator ratunkowy!  PomoĹĽemy Ci dobrze rozpoczÄ…Ä‡ karierÄ™ w sĹ‚uĹĽbach ratowniczych!"
+                        pick_location: "Najpierw wybierz miejsce poczÄ…tkowe! W pasku wyszukiwania wpisz nazwÄ™ miejsca, w ktÃ³rym masz ochotÄ™ rozpoczÄ…Ä‡ grÄ™, bÄ…dÅº zlokalizuj je na mapie osobiÅ›cie! MoÅ¼e chcesz wybraÄ‡ swoje rodzinne miasto?",
+                        welcome: "Witaj w grze Operator ratunkowy!  PomoÅ¼emy Ci dobrze rozpoczÄ…Ä‡ karierÄ™ w sÅ‚uÅ¼bach ratowniczych!"
                     },
                     mobile: {
                         build_building: {
-                            add_name: "Teraz musisz nazwaÄ‡ swĂłj posterunek! Nazwa musi byÄ‡ rozpoznawalna i skalowalna! Np.: â€žPosterunek straĹĽy poĹĽarnej #0001â€ť. Gdy skoĹ„czysz, kliknij opcjÄ™ Dalej!",
-                            build_with_credits: "Teraz wznieĹ› budynek za kredyty!",
-                            new_building: "Najpierw wybierz miejsce poczÄ…tkowe i wznieĹ› swĂłj pierwszy budynek! <br /> <br /> W tym celu wybierz opcjÄ™ Nowy budynek!",
-                            select_building: "Wybierz rodzaj budynku, od ktĂłrego chcesz zaczÄ…Ä‡, sugerujemy wybĂłr straĹĽy poĹĽarnej! W kaĹĽdym wypadku najlepiej zaczÄ…Ä‡ od maĹ‚ego posterunku!"
+                            add_name: "Teraz musisz nazwaÄ‡ swÃ³j posterunek! Nazwa musi byÄ‡ rozpoznawalna i skalowalna! Np.: â€žPosterunek straÅ¼y poÅ¼arnej #0001â€. Gdy skoÅ„czysz, kliknij opcjÄ™ Dalej!",
+                            build_with_credits: "Teraz wznieÅ› budynek za kredyty!",
+                            new_building: "Najpierw wybierz miejsce poczÄ…tkowe i wznieÅ› swÃ³j pierwszy budynek! <br /> <br /> W tym celu wybierz opcjÄ™ Nowy budynek!",
+                            select_building: "Wybierz rodzaj budynku, od ktÃ³rego chcesz zaczÄ…Ä‡, sugerujemy wybÃ³r straÅ¼y poÅ¼arnej! W kaÅ¼dym wypadku najlepiej zaczÄ…Ä‡ od maÅ‚ego posterunku!"
                         },
-                        welcome: "Witaj w grze Operator ratunkowy!  PomoĹĽemy Ci dobrze rozpoczÄ…Ä‡ karierÄ™ w sĹ‚uĹĽbach ratowniczych!"
+                        welcome: "Witaj w grze Operator ratunkowy!  PomoÅ¼emy Ci dobrze rozpoczÄ…Ä‡ karierÄ™ w sÅ‚uÅ¼bach ratowniczych!"
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "To menu wezwania. MoĹĽesz tu wysyĹ‚aÄ‡ swoje jednostki na misje!",
-                            dispatch_menu_buttons: "To dwa przyciski wysyĹ‚ania na wezwanie. Pierwszy: Opcja WyĹ›lij posyĹ‚a wybrane jednostki na misjÄ™. Drugi przycisk wydaje to samo polecenie i przenosi do nastÄ™pnej misji. Na razie kliknij pierwszy przycisk.",
-                            dispatch_menu_mission_general: "Tutaj znajdujÄ… siÄ™ ogĂłlne informacje o misji, czyli nazwa, adres i ikona misji. JeĹ›li na misjÄ™ zostaĹ‚a wysĹ‚ana jednostka, gwiazdkÄ™ zastÄ™puje ikona przestawiajÄ…ca postaÄ‡.",
-                            dispatch_menu_mission_progress: "Tutaj moĹĽna sprawdziÄ‡ postÄ™py w wykonywaniu misji oraz liczbÄ™ personelu na miejscu i czas pozostaĹ‚y do wykonania misji!",
-                            dispatch_menu_mission_specific: "Tutaj znajdujÄ… siÄ™ szczegĂłĹ‚owe informacje o misji, w tym jednostki, ktĂłre jÄ… wykonujÄ… i te, ktĂłre sÄ… juĹĽ na miejscu.",
-                            dispatch_menu_vehicle_list: "To lista dostÄ™pnych pojazdĂłw. Tutaj wybierasz pojazdy. Wybierz pojazd, klikajÄ…c go!"
+                            dispatch_menu: "To menu wezwania. MoÅ¼esz tu wysyÅ‚aÄ‡ swoje jednostki na misje!",
+                            dispatch_menu_buttons: "To dwa przyciski wysyÅ‚ania na wezwanie. Pierwszy: Opcja WyÅ›lij posyÅ‚a wybrane jednostki na misjÄ™. Drugi przycisk wydaje to samo polecenie i przenosi do nastÄ™pnej misji. Na razie kliknij pierwszy przycisk.",
+                            dispatch_menu_mission_general: "Tutaj znajdujÄ… siÄ™ ogÃ³lne informacje o misji, czyli nazwa, adres i ikona misji. JeÅ›li na misjÄ™ zostaÅ‚a wysÅ‚ana jednostka, gwiazdkÄ™ zastÄ™puje ikona przestawiajÄ…ca postaÄ‡.",
+                            dispatch_menu_mission_progress: "Tutaj moÅ¼na sprawdziÄ‡ postÄ™py w wykonywaniu misji oraz liczbÄ™ personelu na miejscu i czas pozostaÅ‚y do wykonania misji!",
+                            dispatch_menu_mission_specific: "Tutaj znajdujÄ… siÄ™ szczegÃ³Å‚owe informacje o misji, w tym jednostki, ktÃ³re jÄ… wykonujÄ… i te, ktÃ³re sÄ… juÅ¼ na miejscu.",
+                            dispatch_menu_vehicle_list: "To lista dostÄ™pnych pojazdÃ³w. Tutaj wybierasz pojazdy. Wybierz pojazd, klikajÄ…c go!"
                         },
                         mobile: {
-                            dispatch_menu: "To menu wezwania. MoĹĽesz tu wysyĹ‚aÄ‡ swoje jednostki na misje!",
-                            dispatch_menu_buttons: "To dwa przyciski wysyĹ‚ania na wezwanie. Pierwszy: Opcja WyĹ›lij posyĹ‚a wybrane jednostki na misjÄ™. Drugi przycisk wydaje to samo polecenie i przenosi do nastÄ™pnej misji. Na razie kliknij pierwszy przycisk.",
-                            dispatch_menu_mission_general: "Tutaj znajdujÄ… siÄ™ ogĂłlne informacje o misji, czyli nazwa, adres i ikona misji. JeĹ›li na misjÄ™ zostaĹ‚a wysĹ‚ana jednostka, gwiazdkÄ™ zastÄ™puje ikona przestawiajÄ…ca postaÄ‡.",
-                            dispatch_menu_mission_progress: "Tutaj moĹĽna sprawdziÄ‡ postÄ™py w wykonywaniu misji oraz liczbÄ™ personelu na miejscu i czas pozostaĹ‚y do wykonania misji!",
-                            dispatch_menu_mission_specific: "Tutaj znajdujÄ… siÄ™ szczegĂłĹ‚owe informacje o misji, w tym jednostki, ktĂłre jÄ… wykonujÄ… i te, ktĂłre sÄ… juĹĽ na miejscu.",
-                            dispatch_menu_vehicle_list: "To lista dostÄ™pnych pojazdĂłw. Tutaj wybierasz pojazdy. Wybierz pojazd, klikajÄ…c go!"
+                            dispatch_menu: "To menu wezwania. MoÅ¼esz tu wysyÅ‚aÄ‡ swoje jednostki na misje!",
+                            dispatch_menu_buttons: "To dwa przyciski wysyÅ‚ania na wezwanie. Pierwszy: Opcja WyÅ›lij posyÅ‚a wybrane jednostki na misjÄ™. Drugi przycisk wydaje to samo polecenie i przenosi do nastÄ™pnej misji. Na razie kliknij pierwszy przycisk.",
+                            dispatch_menu_mission_general: "Tutaj znajdujÄ… siÄ™ ogÃ³lne informacje o misji, czyli nazwa, adres i ikona misji. JeÅ›li na misjÄ™ zostaÅ‚a wysÅ‚ana jednostka, gwiazdkÄ™ zastÄ™puje ikona przestawiajÄ…ca postaÄ‡.",
+                            dispatch_menu_mission_progress: "Tutaj moÅ¼na sprawdziÄ‡ postÄ™py w wykonywaniu misji oraz liczbÄ™ personelu na miejscu i czas pozostaÅ‚y do wykonania misji!",
+                            dispatch_menu_mission_specific: "Tutaj znajdujÄ… siÄ™ szczegÃ³Å‚owe informacje o misji, w tym jednostki, ktÃ³re jÄ… wykonujÄ… i te, ktÃ³re sÄ… juÅ¼ na miejscu.",
+                            dispatch_menu_vehicle_list: "To lista dostÄ™pnych pojazdÃ³w. Tutaj wybierasz pojazdy. Wybierz pojazd, klikajÄ…c go!"
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "Teraz nauczymy siÄ™, jak reagowaÄ‡ na wydarzenia. OtwĂłrz menu wezwaĹ„, klikajÄ…c przycisk WyĹ›lij!",
-                            first_mission: "Ĺšwietnie, masz juĹĽ pierwszy budynek! PrzyszĹ‚y zgĹ‚oszenia pierwszych misji!"
+                            dispatch_button: "Teraz nauczymy siÄ™, jak reagowaÄ‡ na wydarzenia. OtwÃ³rz menu wezwaÅ„, klikajÄ…c przycisk WyÅ›lij!",
+                            first_mission: "Åšwietnie, masz juÅ¼ pierwszy budynek! PrzyszÅ‚y zgÅ‚oszenia pierwszych misji!"
                         },
                         mobile: {
-                            dispatch_button: "Teraz nauczymy siÄ™, jak reagowaÄ‡ na wydarzenia. OtwĂłrz menu wezwaĹ„, klikajÄ…c przycisk WyĹ›lij!",
-                            first_mission: "Ĺšwietnie, masz juĹĽ pierwszy budynek! PrzyszĹ‚y zgĹ‚oszenia pierwszych misji!"
+                            dispatch_button: "Teraz nauczymy siÄ™, jak reagowaÄ‡ na wydarzenia. OtwÃ³rz menu wezwaÅ„, klikajÄ…c przycisk WyÅ›lij!",
+                            first_mission: "Åšwietnie, masz juÅ¼ pierwszy budynek! PrzyszÅ‚y zgÅ‚oszenia pierwszych misji!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Doskonale, wkrĂłtce osiÄ…gniesz mistrzostwo w grze Operator ratunkowy! Oto %{coins} Monet, ktĂłre pomogÄ… Ci na poczÄ…tek! </br> ZespĂłĹ‚ gry Operator ratunkowy"
+                        general: "Doskonale, wkrÃ³tce osiÄ…gniesz mistrzostwo w grze Operator ratunkowy! Oto %{coins} Monet, ktÃ³re pomogÄ… Ci na poczÄ…tek! </br> ZespÃ³Å‚ gry Operator ratunkowy"
                     },
                     mobile: {
-                        general: "Doskonale, wkrĂłtce osiÄ…gniesz mistrzostwo w grze Operator ratunkowy! Oto %{coins} Monet, ktĂłre pomogÄ… Ci na poczÄ…tek! </br> ZespĂłĹ‚ gry Operator ratunkowy"
+                        general: "Doskonale, wkrÃ³tce osiÄ…gniesz mistrzostwo w grze Operator ratunkowy! Oto %{coins} Monet, ktÃ³re pomogÄ… Ci na poczÄ…tek! </br> ZespÃ³Å‚ gry Operator ratunkowy"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "W przypadku niejasnoĹ›ci warto odwiedziÄ‡ dziaĹ‚ czÄ™sto zadawanych pytaĹ„, forum gry lub naszÄ… stronÄ™ na Facebooku!",
-                        general: "NastÄ™pnymi zalecanymi krokami sÄ… budowa centrum powiadamiania ratunkowego oraz jak najszybsze wzniesienie nowych posterunkĂłw, poniewaĹĽ maksymalna liczba misji jest rĂłwna najwyĹĽszej liczbie posterunkĂłw jednego typu (policji, straĹĽy poĹĽarnej, pogotowia ratunkowego) plus 1, np. przy 5 posterunkach straĹĽy poĹĽarnej i 3 pogotowia ratunkowego dostÄ™pnych jest 6 misji.",
-                        join_alliance: "Bardzo pomocne jest rĂłwnieĹĽ doĹ‚Ä…czenie do sojuszu, zwĹ‚aszcza na poczÄ…tku gry, dlatego zalecamy rĂłwnieĹĽ ten krok.",
-                        summary: "Oto podstawy gry Operator ratunkowy! Wykonuj misje, zdobywaj kredyty, kupuj kolejne jednostki, powtarzaj proces. MiĹ‚ej gry! </br> ZespĂłĹ‚ gry Operator ratunkowy"
+                        contact: "W przypadku niejasnoÅ›ci warto odwiedziÄ‡ dziaÅ‚ czÄ™sto zadawanych pytaÅ„, forum gry lub naszÄ… stronÄ™ na Facebooku!",
+                        general: "NastÄ™pnymi zalecanymi krokami sÄ… budowa centrum powiadamiania ratunkowego oraz jak najszybsze wzniesienie nowych posterunkÃ³w, poniewaÅ¼ maksymalna liczba misji jest rÃ³wna najwyÅ¼szej liczbie posterunkÃ³w jednego typu (policji, straÅ¼y poÅ¼arnej, pogotowia ratunkowego) plus 1, np. przy 5 posterunkach straÅ¼y poÅ¼arnej i 3 pogotowia ratunkowego dostÄ™pnych jest 6 misji.",
+                        join_alliance: "Bardzo pomocne jest rÃ³wnieÅ¼ doÅ‚Ä…czenie do sojuszu, zwÅ‚aszcza na poczÄ…tku gry, dlatego zalecamy rÃ³wnieÅ¼ ten krok.",
+                        summary: "Oto podstawy gry Operator ratunkowy! Wykonuj misje, zdobywaj kredyty, kupuj kolejne jednostki, powtarzaj proces. MiÅ‚ej gry! </br> ZespÃ³Å‚ gry Operator ratunkowy"
                     },
                     mobile: {
-                        contact: "W przypadku niejasnoĹ›ci warto odwiedziÄ‡ dziaĹ‚ czÄ™sto zadawanych pytaĹ„, forum gry lub naszÄ… stronÄ™ na Facebooku!",
-                        general: "NastÄ™pnymi zalecanymi krokami sÄ… budowa centrum powiadamiania ratunkowego oraz jak najszybsze wzniesienie nowych posterunkĂłw, poniewaĹĽ maksymalna liczba misji jest rĂłwna najwyĹĽszej liczbie posterunkĂłw jednego typu (policji, straĹĽy poĹĽarnej, pogotowia ratunkowego) plus 1, np. przy 5 posterunkach straĹĽy poĹĽarnej i 3 pogotowia ratunkowego dostÄ™pnych jest 6 misji.",
-                        join_alliance: "Bardzo pomocne jest rĂłwnieĹĽ doĹ‚Ä…czenie do sojuszu, zwĹ‚aszcza na poczÄ…tku gry, dlatego zalecamy rĂłwnieĹĽ ten krok.",
-                        summary: "Oto podstawy gry Operator ratunkowy! Wykonuj misje, zdobywaj kredyty, kupuj kolejne jednostki, powtarzaj proces. MiĹ‚ej gry! </br> ZespĂłĹ‚ gry Operator ratunkowy"
+                        contact: "W przypadku niejasnoÅ›ci warto odwiedziÄ‡ dziaÅ‚ czÄ™sto zadawanych pytaÅ„, forum gry lub naszÄ… stronÄ™ na Facebooku!",
+                        general: "NastÄ™pnymi zalecanymi krokami sÄ… budowa centrum powiadamiania ratunkowego oraz jak najszybsze wzniesienie nowych posterunkÃ³w, poniewaÅ¼ maksymalna liczba misji jest rÃ³wna najwyÅ¼szej liczbie posterunkÃ³w jednego typu (policji, straÅ¼y poÅ¼arnej, pogotowia ratunkowego) plus 1, np. przy 5 posterunkach straÅ¼y poÅ¼arnej i 3 pogotowia ratunkowego dostÄ™pnych jest 6 misji.",
+                        join_alliance: "Bardzo pomocne jest rÃ³wnieÅ¼ doÅ‚Ä…czenie do sojuszu, zwÅ‚aszcza na poczÄ…tku gry, dlatego zalecamy rÃ³wnieÅ¼ ten krok.",
+                        summary: "Oto podstawy gry Operator ratunkowy! Wykonuj misje, zdobywaj kredyty, kupuj kolejne jednostki, powtarzaj proces. MiÅ‚ej gry! </br> ZespÃ³Å‚ gry Operator ratunkowy"
                     }
                 }
             },
             commons: {
                 collect: "Odbierz",
                 "continue": "Nie",
-                end: "ZakoĹ„cz",
+                end: "ZakoÅ„cz",
                 next: "Dalej",
                 prev: "Wstecz",
                 skip: "Tak",
-                skip_hint: "Czy na pewno chcesz pominÄ…Ä‡ samouczek? PamiÄ™taj, ĹĽe nie bÄ™dzie on pĂłĹşniej dostÄ™pny. W ten sposĂłb tracisz szansÄ™ na uzyskanie nagrody za ukoĹ„czenie samouczka."
+                skip_hint: "Czy na pewno chcesz pominÄ…Ä‡ samouczek? PamiÄ™taj, Å¼e nie bÄ™dzie on pÃ³Åºniej dostÄ™pny. W ten sposÃ³b tracisz szansÄ™ na uzyskanie nagrody za ukoÅ„czenie samouczka."
             },
             rewards: {
-                log: "Nagroda za ukoĹ„czenie samouczka."
+                log: "Nagroda za ukoÅ„czenie samouczka."
             }
         }
     }, I18n.translations.it_IT = {
@@ -4893,9 +4827,9 @@ function deleteMissionPosition(e) {
             details: "Dettagli",
             edit: "Modifica",
             error: "Errore",
-            is_offline: "%{user} non Ă¨ in linea.",
-            is_offline_long: "Ora estesa: %{user} Ă¨ offline",
-            is_online: "%{user} Ă¨ online.",
+            is_offline: "%{user} non Ã¨ in linea.",
+            is_offline_long: "Ora estesa: %{user} Ã¨ offline",
+            is_online: "%{user} Ã¨ online.",
             loading: "Caricamento...",
             name: "Nome",
             none: "Nessuno",
@@ -4923,7 +4857,7 @@ function deleteMissionPosition(e) {
             minutes: "min.",
             missed_vehicle: "Manca:",
             mission_start_in: "Inizia tra:",
-            not_found_map: "Il veicolo non Ă¨ stato trovato sulla mappa",
+            not_found_map: "Il veicolo non Ã¨ stato trovato sulla mappa",
             now: "Adesso",
             patient: "Paziente",
             patient_untouched: "Pazienti non trattati",
@@ -4932,15 +4866,15 @@ function deleteMissionPosition(e) {
             sale: "Sale",
             sale_ended: "Vendita terminata",
             secounds: "sec.",
-            sicherheitswache_error: 'La guardia di sicurezza "%{caption}" non Ă¨ stata completata, perchĂ© non tutti i criteri sono stati soddisfatti.',
-            sicherheitswache_success: 'La guardia di sicurezza "%{caption}" Ă¨ stata completata. Ricevi %{credits} crediti.',
+            sicherheitswache_error: 'La guardia di sicurezza "%{caption}" non Ã¨ stata completata, perchÃ© non tutti i criteri sono stati soddisfatti.',
+            sicherheitswache_success: 'La guardia di sicurezza "%{caption}" Ã¨ stata completata. Ricevi %{credits} crediti.',
             start_in: "Inizia tra: ",
             start_username: "Avviatore:",
             time_left: "Tempo rimanente:",
             to_building: "Visualizza edificio",
             to_mission: "Visualizza missione",
             understand: "Conferma",
-            user_not_found: "Il giocatore non Ă¨ stato trovato.",
+            user_not_found: "Il giocatore non Ã¨ stato trovato.",
             vehicles_not_visible: "Veicoli non visibili. "
         },
         map: {
@@ -5000,7 +4934,7 @@ function deleteMissionPosition(e) {
             no_alliance_chat_impossible: "Non fai parte di alcuna alleanza.",
             no_alliance_missions: "Al momento non ci sono missioni dell'alleanza.",
             no_ambulance_missions: "Nessuna missione delle ambulanze. Le missioni delle ambulanze possono verificarsi solo quando si dispone di un'ambulanza e di un ospedale.",
-            no_emergency_missions: "Non ci sono missioni di emergenza disponibili. Una missione di emergenza puĂ˛ verificarsi dopo aver creato la prima stazione.",
+            no_emergency_missions: "Non ci sono missioni di emergenza disponibili. Una missione di emergenza puÃ² verificarsi dopo aver creato la prima stazione.",
             no_radio_messages: "Nessun messaggio radio ricevuto.",
             radio_messages: "Radio",
             restore_map: "Ripristina mappa",
@@ -5026,11 +4960,11 @@ function deleteMissionPosition(e) {
             colour: "Colore",
             column: "Colonna",
             column_number: "Numero di colonna",
-            column_number_hint: "Se viene fornito un numero di colonna, la voce Allarme e risposta verrĂ  visualizzata nella colonna corrispondente nella pagina di avviso.",
+            column_number_hint: "Se viene fornito un numero di colonna, la voce Allarme e risposta verrÃ  visualizzata nella colonna corrispondente nella pagina di avviso.",
             create_intervention_order: "Crea nuova regola di allarme e risposta",
             "delete": "Elimina",
             delete_all: "Elimina completamente le regole di allarme e risposta",
-            delete_all_confirm: "Vuoi davvero eliminare tutte le regole di allarme e risposta? Le voci esportate esistenti non sono piĂą disponibili!",
+            delete_all_confirm: "Vuoi davvero eliminare tutte le regole di allarme e risposta? Le voci esportate esistenti non sono piÃ¹ disponibili!",
             description: "Nome",
             edit: "Modifica",
             "export": {
@@ -5038,7 +4972,7 @@ function deleteMissionPosition(e) {
                 "import": "Importa",
                 import_done: "Le voci selezionate sono state importate e scritte nel piano di allarme e risposta.",
                 saved: "Esportazioni regole di allarme e risposta",
-                saved_text: "La regola di allarme e risposta Ă¨ pronta per l'esportazione. Tramite il link un altro giocatore puĂ˛ importare la regola di allarme e risposta. Se nel frattempo modifichi una regola di allarme e risposta, tale modifica verrĂ  automaticamente applicata nell'esportazione."
+                saved_text: "La regola di allarme e risposta Ã¨ pronta per l'esportazione. Tramite il link un altro giocatore puÃ² importare la regola di allarme e risposta. Se nel frattempo modifichi una regola di allarme e risposta, tale modifica verrÃ  automaticamente applicata nell'esportazione."
             },
             hotkey_hint: "Scegli un tasto di scelta rapida per questa selezione di veicoli. Premi durante la missione su Windows: ALT + tasto di scelta rapida (o su Firefox: ALT + SHIFT + tasto di scelta rapida oppure su Mac OS: ctrl + alt + tasto di scelta rapida) per scegliere la tua selezione di veicoli.",
             intervention_order: "Modifica le regole di allarme e risposta",
@@ -5081,14 +5015,14 @@ function deleteMissionPosition(e) {
                 fwk: "AG",
                 gefkw: "",
                 gkw: "Furgone generico",
-                grtw: "UnitĂ  antistrage",
+                grtw: "UnitÃ  antistrage",
                 grtw0: "",
                 grtw1: "",
                 grukw: "",
                 gw_atemschutz_only: "",
                 gw_gefahrgut: "N.B.C.R.",
                 gw_gefahrgut_only: "",
-                gw_hoehenrettung: "GW-HĂ¶henrettung",
+                gw_hoehenrettung: "GW-HÃ¶henrettung",
                 gw_messtechnik: "GW-Messtechnik",
                 gw_oel_only: "",
                 gw_san: "",
@@ -5100,7 +5034,7 @@ function deleteMissionPosition(e) {
                 hlf_only: "Autopompa",
                 hlf_or_rw_and_lf: "Autopompa oppure Polisoccorso e Autobotte",
                 hondengeleider: "",
-                k9: "UnitĂ  cinofila antidroga",
+                k9: "UnitÃ  cinofila antidroga",
                 kdow_lna: "",
                 kdow_orgl: "Capo EMS",
                 ktw_b: "",
@@ -5117,7 +5051,7 @@ function deleteMissionPosition(e) {
                 naw_or_rtw_and_nef: "",
                 naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Ambulanza",
-                oil_unit: "GW-Ă–l",
+                oil_unit: "GW-Ã–l",
                 only_ab_dekon_p: "",
                 only_dekon_p: "",
                 ovd_p: "",
@@ -5132,7 +5066,7 @@ function deleteMissionPosition(e) {
                 seg_elw: "",
                 sek_mtf: "",
                 sek_zf: "",
-                swat: "UnitĂ  speciali",
+                swat: "UnitÃ  speciali",
                 swat_armored_vehicle: "Veicolo Antisommossa",
                 swat_suv: "UOPI Suv",
                 thw_anh_mzab: "",
@@ -5168,8 +5102,8 @@ function deleteMissionPosition(e) {
                             select_building: "Per prima cosa scegli il tipo di edificio con cui vuoi cominciare; ti consiglio vivamente di iniziare con i vigili del fuoco. In ogni caso, sarebbe meglio iniziare con una stazione di piccole dimensioni.",
                             select_position: "Sposta il segnalino blu dove desideri costruire la tua prima stazione."
                         },
-                        pick_location: "Per prima cosa, scegli una posizione. Digita nella barra di ricerca il nome del luogo da cui vuoi iniziare oppure trovalo sulla mappa. Che ne dici della tua cittĂ  natale?",
-                        welcome: "Ciao, ti do il benvenuto in Operatore 112!  Ti insegnerĂ˛ un po' di cose per aiutarti a partire alla grande con la tua carriera nei servizi di emergenza."
+                        pick_location: "Per prima cosa, scegli una posizione. Digita nella barra di ricerca il nome del luogo da cui vuoi iniziare oppure trovalo sulla mappa. Che ne dici della tua cittÃ  natale?",
+                        welcome: "Ciao, ti do il benvenuto in Operatore 112!  Ti insegnerÃ² un po' di cose per aiutarti a partire alla grande con la tua carriera nei servizi di emergenza."
                     },
                     mobile: {
                         build_building: {
@@ -5178,26 +5112,26 @@ function deleteMissionPosition(e) {
                             new_building: 'Per prima cosa, scegliamo una posizione dove costruiremo il primo edificio. <br /> <br /> Per fare questo, fai clic su "Nuovo edificio".',
                             select_building: "Per prima cosa scegli il tipo di edificio con cui vuoi cominciare; ti consiglio vivamente di iniziare con i vigili del fuoco. In ogni caso, sarebbe meglio iniziare con una stazione di piccole dimensioni."
                         },
-                        welcome: "Ciao, ti do il benvenuto in Operatore 112!  Ti insegnerĂ˛ un po' di cose per aiutarti a partire alla grande con la tua carriera nei servizi di emergenza."
+                        welcome: "Ciao, ti do il benvenuto in Operatore 112!  Ti insegnerÃ² un po' di cose per aiutarti a partire alla grande con la tua carriera nei servizi di emergenza."
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Questo Ă¨ il menu di assegnazione. Da qui potrai inviare le tue unitĂ  in missione.",
-                            dispatch_menu_buttons: 'Questi sono i due pulsanti per l\'assegnazione. Il primo pulsante: "Assegna" invia in missione le unitĂ  selezionate. Il secondo fa la stessa cosa del primo pulsante ma passa alla missione successiva. Per adesso, fai clic sul primo pulsante.',
-                            dispatch_menu_mission_general: "Qui puoi visualizzare le informazioni generali della missione, ovvero nome, indirizzo, icona della missione. Nelle missioni a cui hai giĂ  preso parte, l'icona a forma di piccola stella viene sostituita da un'icona a forma di omino.",
-                            dispatch_menu_mission_progress: "Qui puoi vedere i progressi giĂ  fatti in una missione, il numero di persone operative sul posto e il tempo rimasto per occuparti della missione.",
-                            dispatch_menu_mission_specific: "Qui trovi maggiori informazioni sulla missione, sulle unitĂ  che rispondono alla chiamata e su quelle che si trovano giĂ  sul posto.",
-                            dispatch_menu_vehicle_list: "Questa Ă¨ la lista dei mezzi a tua disposizione. Qui puoi selezionare i veicoli. Seleziona un veicolo facendo clic su di esso."
+                            dispatch_menu: "Questo Ã¨ il menu di assegnazione. Da qui potrai inviare le tue unitÃ  in missione.",
+                            dispatch_menu_buttons: 'Questi sono i due pulsanti per l\'assegnazione. Il primo pulsante: "Assegna" invia in missione le unitÃ  selezionate. Il secondo fa la stessa cosa del primo pulsante ma passa alla missione successiva. Per adesso, fai clic sul primo pulsante.',
+                            dispatch_menu_mission_general: "Qui puoi visualizzare le informazioni generali della missione, ovvero nome, indirizzo, icona della missione. Nelle missioni a cui hai giÃ  preso parte, l'icona a forma di piccola stella viene sostituita da un'icona a forma di omino.",
+                            dispatch_menu_mission_progress: "Qui puoi vedere i progressi giÃ  fatti in una missione, il numero di persone operative sul posto e il tempo rimasto per occuparti della missione.",
+                            dispatch_menu_mission_specific: "Qui trovi maggiori informazioni sulla missione, sulle unitÃ  che rispondono alla chiamata e su quelle che si trovano giÃ  sul posto.",
+                            dispatch_menu_vehicle_list: "Questa Ã¨ la lista dei mezzi a tua disposizione. Qui puoi selezionare i veicoli. Seleziona un veicolo facendo clic su di esso."
                         },
                         mobile: {
-                            dispatch_menu: "Questo Ă¨ il menu di assegnazione. Da qui potrai inviare le tue unitĂ  in missione.",
-                            dispatch_menu_buttons: 'Questi sono i due pulsanti per l\'assegnazione. Il primo pulsante: "Assegna" invia in missione le unitĂ  selezionate. Il secondo fa la stessa cosa del primo pulsante ma passa alla missione successiva. Per adesso, fai clic sul primo pulsante.',
-                            dispatch_menu_mission_general: "Qui puoi visualizzare le informazioni generali della missione, ovvero nome, indirizzo, icona della missione. Nelle missioni a cui hai giĂ  preso parte, l'icona a forma di piccola stella viene sostituita da un'icona a forma di omino.",
-                            dispatch_menu_mission_progress: "Qui puoi vedere i progressi giĂ  fatti in una missione, il numero di persone operative sul posto e il tempo rimasto per occuparti della missione.",
-                            dispatch_menu_mission_specific: "Qui trovi maggiori informazioni sulla missione, sulle unitĂ  che rispondono alla chiamata e su quelle che si trovano giĂ  sul posto.",
-                            dispatch_menu_vehicle_list: "Questa Ă¨ la lista dei mezzi a tua disposizione. Qui puoi selezionare i veicoli. Seleziona un veicolo facendo clic su di esso."
+                            dispatch_menu: "Questo Ã¨ il menu di assegnazione. Da qui potrai inviare le tue unitÃ  in missione.",
+                            dispatch_menu_buttons: 'Questi sono i due pulsanti per l\'assegnazione. Il primo pulsante: "Assegna" invia in missione le unitÃ  selezionate. Il secondo fa la stessa cosa del primo pulsante ma passa alla missione successiva. Per adesso, fai clic sul primo pulsante.',
+                            dispatch_menu_mission_general: "Qui puoi visualizzare le informazioni generali della missione, ovvero nome, indirizzo, icona della missione. Nelle missioni a cui hai giÃ  preso parte, l'icona a forma di piccola stella viene sostituita da un'icona a forma di omino.",
+                            dispatch_menu_mission_progress: "Qui puoi vedere i progressi giÃ  fatti in una missione, il numero di persone operative sul posto e il tempo rimasto per occuparti della missione.",
+                            dispatch_menu_mission_specific: "Qui trovi maggiori informazioni sulla missione, sulle unitÃ  che rispondono alla chiamata e su quelle che si trovano giÃ  sul posto.",
+                            dispatch_menu_vehicle_list: "Questa Ã¨ la lista dei mezzi a tua disposizione. Qui puoi selezionare i veicoli. Seleziona un veicolo facendo clic su di esso."
                         }
                     },
                     overview: {
@@ -5222,15 +5156,15 @@ function deleteMissionPosition(e) {
                 tips: {
                     browser: {
                         contact: "Se hai domande puoi consultare le FAQ del gioco oppure visitarne i forum o la nostra pagina di Facebook.",
-                        general: "Come passo successivo ti consiglio di costruire una centrale operativa e poi, appena possibile, delle nuove stazioni. Il numero massimo di missioni Ă¨ uguale al numero piĂą alto di una delle stazioni di tipo diverso (polizia, vigili del fuoco, ambulanza) piĂą 1; per esempio: 5 stazioni dei vigili del fuoco e 3 di ambulanze = 6 missioni.",
-                        join_alliance: "Inoltre, ti consiglio di unirti a un'alleanza perchĂ©, soprattutto all'inizio, questo potrebbe esserti di grande aiuto.",
-                        summary: "Queste sono le nozioni di base di Operatore 112. Completa missioni, ottieni crediti, acquista altre unitĂ  e ricomincia. Divertiti a giocare! </br> Il team di Operatore 112"
+                        general: "Come passo successivo ti consiglio di costruire una centrale operativa e poi, appena possibile, delle nuove stazioni. Il numero massimo di missioni Ã¨ uguale al numero piÃ¹ alto di una delle stazioni di tipo diverso (polizia, vigili del fuoco, ambulanza) piÃ¹ 1; per esempio: 5 stazioni dei vigili del fuoco e 3 di ambulanze = 6 missioni.",
+                        join_alliance: "Inoltre, ti consiglio di unirti a un'alleanza perchÃ©, soprattutto all'inizio, questo potrebbe esserti di grande aiuto.",
+                        summary: "Queste sono le nozioni di base di Operatore 112. Completa missioni, ottieni crediti, acquista altre unitÃ  e ricomincia. Divertiti a giocare! </br> Il team di Operatore 112"
                     },
                     mobile: {
                         contact: "Se hai domande puoi consultare le FAQ del gioco oppure visitarne i forum o la nostra pagina di Facebook.",
-                        general: "Come passo successivo ti consiglio di costruire una centrale operativa e poi, appena possibile, delle nuove stazioni. Il numero massimo di missioni Ă¨ uguale al numero piĂą alto di una delle stazioni di tipo diverso (polizia, vigili del fuoco, ambulanza) piĂą 1; per esempio: 5 stazioni dei vigili del fuoco e 3 di ambulanze = 6 missioni.",
-                        join_alliance: "Inoltre, ti consiglio di unirti a un'alleanza perchĂ©, soprattutto all'inizio, questo potrebbe esserti di grande aiuto.",
-                        summary: "Queste sono le nozioni di base di Operatore 112. Completa missioni, ottieni crediti, acquista altre unitĂ  e ricomincia. Divertiti a giocare! </br> Il team di Operatore 112"
+                        general: "Come passo successivo ti consiglio di costruire una centrale operativa e poi, appena possibile, delle nuove stazioni. Il numero massimo di missioni Ã¨ uguale al numero piÃ¹ alto di una delle stazioni di tipo diverso (polizia, vigili del fuoco, ambulanza) piÃ¹ 1; per esempio: 5 stazioni dei vigili del fuoco e 3 di ambulanze = 6 missioni.",
+                        join_alliance: "Inoltre, ti consiglio di unirti a un'alleanza perchÃ©, soprattutto all'inizio, questo potrebbe esserti di grande aiuto.",
+                        summary: "Queste sono le nozioni di base di Operatore 112. Completa missioni, ottieni crediti, acquista altre unitÃ  e ricomincia. Divertiti a giocare! </br> Il team di Operatore 112"
                     }
                 }
             },
@@ -5240,8 +5174,8 @@ function deleteMissionPosition(e) {
                 end: "Fine",
                 next: "Succ",
                 prev: "Prec",
-                skip: "SĂ¬",
-                skip_hint: "Vuoi davvero saltare il tutorial? Non sarĂ  piĂą accessibile in seguito. Non potrai qualificarti per il premio di completamento tutorial."
+                skip: "SÃ¬",
+                skip_hint: "Vuoi davvero saltare il tutorial? Non sarÃ  piÃ¹ accessibile in seguito. Non potrai qualificarti per il premio di completamento tutorial."
             },
             rewards: {
                 log: "Ricompensa per aver completato il tutorial."
@@ -5252,18 +5186,18 @@ function deleteMissionPosition(e) {
             add: "Ajouter",
             back: "Retour",
             cancel: "Annuler",
-            change_saved: "Modifications enregistrĂ©es",
-            coins_spend: "Voulez-vous vraiment dĂ©penser ces piĂ¨cesÂ ?",
-            congratulations: "FĂ©licitationsÂ !",
+            change_saved: "Modifications enregistrÃ©es",
+            coins_spend: "Voulez-vous vraiment dÃ©penser ces piÃ¨cesÂ ?",
+            congratulations: "FÃ©licitationsÂ !",
             content: "Contenu",
             copy: "Copier",
-            credits: "CrĂ©dits",
+            credits: "CrÃ©dits",
             "delete": "Supprimer",
-            details: "DĂ©tails",
+            details: "DÃ©tails",
             edit: "Modifier",
             error: "Erreur",
             is_offline: "%{user} est hors ligne.",
-            is_offline_long: "PĂ©riode prolongĂ©eÂ : %{user} est hors ligne",
+            is_offline_long: "PÃ©riode prolongÃ©eÂ : %{user} est hors ligne",
             is_online: "%{user} est en ligne.",
             loading: "Chargement...",
             name: "Nom",
@@ -5275,14 +5209,14 @@ function deleteMissionPosition(e) {
             search: "Rechercher",
             show: "Afficher",
             user_not_found: "Utilisateur introuvable",
-            wrong_key: "ClĂ© invalide"
+            wrong_key: "ClÃ© invalide"
         },
         javascript: {
-            alarm: "DĂ©ployer",
-            arrival: "ArrivĂ©e",
+            alarm: "DÃ©ployer",
+            arrival: "ArrivÃ©e",
             backalarm: "Annuler",
-            coins: "PiĂ¨ces",
-            credits: "CrĂ©dits",
+            coins: "PiÃ¨ces",
+            credits: "CrÃ©dits",
             days: "jours",
             few_seconds: "dans quelques secondes",
             finish_in: "Terminer dansÂ :",
@@ -5292,170 +5226,170 @@ function deleteMissionPosition(e) {
             minutes: "min",
             missed_vehicle: "Il manqueÂ :",
             mission_start_in: "Commence dansÂ :",
-            not_found_map: "Impossible de trouver le vĂ©hicule sur la carte",
+            not_found_map: "Impossible de trouver le vÃ©hicule sur la carte",
             now: "Maintenant",
             patient: "Patient",
-            patient_untouched: "Patients non traitĂ©s",
-            poi_delete: "Voulez-vous vraiment supprimer ce point dâ€™intĂ©rĂŞtÂ : %{caption}Â ?",
+            patient_untouched: "Patients non traitÃ©s",
+            poi_delete: "Voulez-vous vraiment supprimer ce point dâ€™intÃ©rÃªtÂ : %{caption}Â ?",
             reload: "Recharger",
             sale: "Soldes",
-            sale_ended: "Fin de lâ€™offre spĂ©ciale",
+            sale_ended: "Fin de lâ€™offre spÃ©ciale",
             secounds: "sec.",
-            sicherheitswache_error: "Le garde de sĂ©curitĂ© Â«Â %{caption}Â Â» a Ă©chouĂ© dans sa mission, car il ne rĂ©pondait pas Ă  tous les critĂ¨res.",
-            sicherheitswache_success: "Le garde de sĂ©curitĂ© Â«Â %{caption}Â Â» a rempli son objectif. Recevoir %{credits}Â crĂ©dits.",
+            sicherheitswache_error: "Le garde de sÃ©curitÃ© Â«Â %{caption}Â Â» a Ã©chouÃ© dans sa mission, car il ne rÃ©pondait pas Ã  tous les critÃ¨res.",
+            sicherheitswache_success: "Le garde de sÃ©curitÃ© Â«Â %{caption}Â Â» a rempli son objectif. Recevoir %{credits}Â crÃ©dits.",
             start_in: "Commencer dansÂ : ",
             start_username: "InitiateurÂ :",
             time_left: "Temps restant:",
-            to_building: "Afficher le bĂ˘timent",
+            to_building: "Afficher le bÃ¢timent",
             to_mission: "Afficher la mission",
-            understand: "Bien reĂ§u",
+            understand: "Bien reÃ§u",
             user_not_found: "Impossible de trouver le joueur.",
-            vehicles_not_visible: "Les vĂ©hicules ne sont pas visibles. "
+            vehicles_not_visible: "Les vÃ©hicules ne sont pas visibles. "
         },
         map: {
             alliance: "Alliance",
             alliance_chat: "Salon",
             alliance_chat_banned: "Il vous est actuellement interdit de discuter dans le salon de lâ€™alliance.",
-            alliance_chat_banned_admin: "Interdiction Ă©mise parÂ :",
+            alliance_chat_banned_admin: "Interdiction Ã©mise parÂ :",
             alliance_chat_banned_timeleft: "Temps restantÂ :",
             alliance_chat_radio_off: "Radio de lâ€™allianceÂ : OFF",
             alliance_chat_radio_on: "Radio de lâ€™allianceÂ : ON",
-            alliance_event: "Ă‰vĂ¨nement",
+            alliance_event: "Ã‰vÃ¨nement",
             alliance_missions: "Missions dâ€™alliance",
-            alliance_missions_event: "Ă‰vĂ¨nement",
+            alliance_missions_event: "Ã‰vÃ¨nement",
             ambulance: "Ambulance",
             challenges: "",
             chat_history: "Historique du salon",
-            congratulations: "FĂ©licitationsÂ ! Vous avez dĂ©sormais accĂ¨s Ă  une promotion.",
-            create_alliance_event: "Lancer lâ€™Ă©vĂ¨nement dâ€™alliance",
-            create_alliance_operation: "CrĂ©er une mission dâ€™alliance majeure",
+            congratulations: "FÃ©licitationsÂ ! Vous avez dÃ©sormais accÃ¨s Ã  une promotion.",
+            create_alliance_event: "Lancer lâ€™Ã©vÃ¨nement dâ€™alliance",
+            create_alliance_operation: "CrÃ©er une mission dâ€™alliance majeure",
             emergency: "Urgence",
-            join_alliance_infos: "Si vous appartenez Ă  une alliance, les autres joueurs peuvent vous confier des missions.",
+            join_alliance_infos: "Si vous appartenez Ã  une alliance, les autres joueurs peuvent vous confier des missions.",
             map: "Carte",
             map_filters: {
-                all_buildings: "BĂ˘timents",
+                all_buildings: "BÃ¢timents",
                 all_missions: "Missions",
-                alliance_buildings: "BĂ˘timents dâ€™alliance",
+                alliance_buildings: "BÃ¢timents dâ€™alliance",
                 alliance_members: "Membres",
-                alliance_missions: "PartagĂ©es par lâ€™alliance",
+                alliance_missions: "PartagÃ©es par lâ€™alliance",
                 ambulance_station_missions: "Poste Ambulancier",
                 ambulance_station_small_missions: "Poste Ambulancier (petit)",
                 clinic_missions: "Clinic",
                 dispatch_center_missions: "Centre de Traitement des Appels",
-                fire_school_missions: "Centre de Formation DĂ©partemental",
+                fire_school_missions: "Centre de Formation DÃ©partemental",
                 firehouse_missions: "Centre de secours",
-                firehouse_small_missions: "Centre de PremiĂ¨re Intervention",
+                firehouse_small_missions: "Centre de PremiÃ¨re Intervention",
                 hospital_missions: "Centre Hospitalier",
-                map_filters: "Points d'intĂ©rĂŞt (PI)",
-                mission_positions: "Points d'intĂ©rĂŞt (PI)",
-                police_copter_station_missions: "Forces aĂ©riennes de la Gendarmerie nationale",
+                map_filters: "Points d'intÃ©rÃªt (PI)",
+                mission_positions: "Points d'intÃ©rÃªt (PI)",
+                police_copter_station_missions: "Forces aÃ©riennes de la Gendarmerie nationale",
                 police_school_missions: "Ecole de police",
                 police_small_missions: "Police Municipale",
                 police_special_forces: "Police special forces",
                 police_station_missions: "Gendarmerie",
                 prison_missions: "Prison",
-                rapid_deployment_group: "Groupe Ă  configuration rapide (GCR)",
-                rescue_copter_station_missions: "Groupement d'hĂ©licoptĂ¨res de la SĂ©curitĂ© Civile",
-                riot_police: "Brigade anti-Ă©meutes",
+                rapid_deployment_group: "Groupe Ã  configuration rapide (GCR)",
+                rescue_copter_station_missions: "Groupement d'hÃ©licoptÃ¨res de la SÃ©curitÃ© Civile",
+                riot_police: "Brigade anti-Ã©meutes",
                 staging_area_missions: "Centre de Regroupement des Moyens",
                 technical_aid_organization: "Protection civile",
-                technical_aid_organization_school: "Ă‰cole de protection civile",
-                user_buildings: "Mes bĂ˘timents",
+                technical_aid_organization_school: "Ã‰cole de protection civile",
+                user_buildings: "Mes bÃ¢timents",
                 user_missions: "Mes missions",
                 water_watch: "Secours nautique"
             },
             message: "Message",
             mission: "Mission",
-            no_alliance_chat_impossible: "Vous nâ€™appartenez Ă  aucune alliance.",
-            no_alliance_missions: "Aucune mission dâ€™alliance Ă  afficher.",
-            no_ambulance_missions: "Aucune mission dâ€™ambulance Ă  afficher. Les missions dâ€™ambulance nĂ©cessitent dâ€™avoir une ambulance et un hĂ´pital.",
-            no_emergency_missions: "Aucune mission dâ€™urgence Ă  afficher. Vous pouvez recevoir des missions dâ€™urgence dĂ¨s lors que vous avez construit votre premier poste.",
-            no_radio_messages: "Vous nâ€™avez reĂ§u aucun message radio.",
+            no_alliance_chat_impossible: "Vous nâ€™appartenez Ã  aucune alliance.",
+            no_alliance_missions: "Aucune mission dâ€™alliance Ã  afficher.",
+            no_ambulance_missions: "Aucune mission dâ€™ambulance Ã  afficher. Les missions dâ€™ambulance nÃ©cessitent dâ€™avoir une ambulance et un hÃ´pital.",
+            no_emergency_missions: "Aucune mission dâ€™urgence Ã  afficher. Vous pouvez recevoir des missions dâ€™urgence dÃ¨s lors que vous avez construit votre premier poste.",
+            no_radio_messages: "Vous nâ€™avez reÃ§u aucun message radio.",
             radio_messages: "Radio",
             restore_map: "Restaurer la carte",
             show_informations: "Vert = les missions sâ€™affichent dans la liste. Rouge = les missions ne sâ€™affichent pas.",
-            sicherheitswache: "Missions prĂ©vues",
+            sicherheitswache: "Missions prÃ©vues",
             transport: "Transport"
         },
         fms: {
             going: "En intervention",
             not_ready: "Hors service",
-            on_destination: "Ă€ la destination de transport",
+            on_destination: "Ã€ la destination de transport",
             on_place: "Sur les lieux",
             patient_transported: "Transporte le patient",
             prisoner_transported: "Transporte le prisonnier",
             ready_home: "Disponible au poste",
-            ready_traveling: "PrĂŞt et opĂ©rationnel",
+            ready_traveling: "PrÃªt et opÃ©rationnel",
             talking_wish: "Demande de transport",
-            waiting_for_vehicle: "En attente du vĂ©hicule Ă  remorquer"
+            waiting_for_vehicle: "En attente du vÃ©hicule Ã  remorquer"
         },
         intervention_order: {
             back: "Retour",
-            category: "CatĂ©gorie",
+            category: "CatÃ©gorie",
             colour: "Couleur",
             column: "Colonne",
-            column_number: "NumĂ©ro de colonne",
-            column_number_hint: "Si un numĂ©ro de colonne est indiquĂ©, lâ€™entrĂ©e de la RĂ©gulation dâ€™alertes et dâ€™interventions sâ€™affichera dans la colonne correspondante sur la page dâ€™alertes.",
-            create_intervention_order: "CrĂ©er une nouvelle RĂ©gulation dâ€™alertes et dâ€™interventions",
+            column_number: "NumÃ©ro de colonne",
+            column_number_hint: "Si un numÃ©ro de colonne est indiquÃ©, lâ€™entrÃ©e de la RÃ©gulation dâ€™alertes et dâ€™interventions sâ€™affichera dans la colonne correspondante sur la page dâ€™alertes.",
+            create_intervention_order: "CrÃ©er une nouvelle RÃ©gulation dâ€™alertes et dâ€™interventions",
             "delete": "Supprimer",
-            delete_all: "Supprimer les RĂ©gulations dâ€™alertes et dâ€™interventions",
-            delete_all_confirm: "Voulez-vous vraiment supprimer toute RĂ©gulation dâ€™alertes et dâ€™interventionsÂ ? Les entrĂ©es existantes exportĂ©es ne sont plus disponiblesÂ !",
+            delete_all: "Supprimer les RÃ©gulations dâ€™alertes et dâ€™interventions",
+            delete_all_confirm: "Voulez-vous vraiment supprimer toute RÃ©gulation dâ€™alertes et dâ€™interventionsÂ ? Les entrÃ©es existantes exportÃ©es ne sont plus disponiblesÂ !",
             description: "Nom",
             edit: "Modifier",
             "export": {
                 "export": "Exporter",
                 "import": "Importer",
-                import_done: "Les entrĂ©es sĂ©lectionnĂ©es ont Ă©tĂ© importĂ©es et incorporĂ©es Ă  votre RĂ©gulation dâ€™alertes et dâ€™interventions.",
-                saved: "Exportations des RĂ©gulations dâ€™alertes et dâ€™interventions",
-                saved_text: "Votre RĂ©gulation dâ€™alertes et dâ€™interventions est prĂŞte Ă  lâ€™exportation. GrĂ˘ce Ă  ce lien, un autre joueur peut importer cette RĂ©gulation dâ€™alertes et dâ€™interventions. Si dâ€™ici lĂ  vous modifiez votre RĂ©gulation dâ€™alertes et dâ€™interventions, ce changement sera automatiquement appliquĂ© Ă  lâ€™exportation."
+                import_done: "Les entrÃ©es sÃ©lectionnÃ©es ont Ã©tÃ© importÃ©es et incorporÃ©es Ã  votre RÃ©gulation dâ€™alertes et dâ€™interventions.",
+                saved: "Exportations des RÃ©gulations dâ€™alertes et dâ€™interventions",
+                saved_text: "Votre RÃ©gulation dâ€™alertes et dâ€™interventions est prÃªte Ã  lâ€™exportation. GrÃ¢ce Ã  ce lien, un autre joueur peut importer cette RÃ©gulation dâ€™alertes et dâ€™interventions. Si dâ€™ici lÃ  vous modifiez votre RÃ©gulation dâ€™alertes et dâ€™interventions, ce changement sera automatiquement appliquÃ© Ã  lâ€™exportation."
             },
-            hotkey_hint: "Choisissez un raccourci pour cette sĂ©lection de vĂ©hicules. Dans votre fenĂŞtre de mission, appuyez surÂ : ALT + votre raccourci (ou sur FirefoxÂ : ALT + Shift + votre raccourci, ou sur Mac OSÂ : CTRL + ALT + votre raccourci) pour choisir votre sĂ©lection de vĂ©hicules.",
-            intervention_order: "Modifier les RĂ©gulations dâ€™alertes et dâ€™interventions",
+            hotkey_hint: "Choisissez un raccourci pour cette sÃ©lection de vÃ©hicules. Dans votre fenÃªtre de mission, appuyez surÂ : ALT + votre raccourci (ou sur FirefoxÂ : ALT + Shift + votre raccourci, ou sur Mac OSÂ : CTRL + ALT + votre raccourci) pour choisir votre sÃ©lection de vÃ©hicules.",
+            intervention_order: "Modifier les RÃ©gulations dâ€™alertes et dâ€™interventions",
             name: "Nom",
-            no_intervention_created: "Vous nâ€™avez crĂ©Ă© aucune RĂ©gulation dâ€™alertes et dâ€™interventions Ă  lâ€™heure actuelle.",
+            no_intervention_created: "Vous nâ€™avez crÃ©Ã© aucune RÃ©gulation dâ€™alertes et dâ€™interventions Ã  lâ€™heure actuelle.",
             options: "Options",
-            reset: "RĂ©initialisez la sĂ©lection prĂ©cĂ©dente dans la fenĂŞtre dâ€™alertes.",
-            reset_hint: "Si vous avez sĂ©lectionnĂ© le vĂ©hicule dans la fenĂŞtre de dĂ©ploiement, vous pouvez utiliser ce bouton pour la rĂ©initialiser.",
+            reset: "RÃ©initialisez la sÃ©lection prÃ©cÃ©dente dans la fenÃªtre dâ€™alertes.",
+            reset_hint: "Si vous avez sÃ©lectionnÃ© le vÃ©hicule dans la fenÃªtre de dÃ©ploiement, vous pouvez utiliser ce bouton pour la rÃ©initialiser.",
             save: "Enregistrer",
             station: "Poste",
-            station_hint: "Quand un bĂ˘timent est sĂ©lectionnĂ©, seuls les vĂ©hicules dĂ©pendant de celui-ci le sont Ă©galement.",
-            successfully_created: "RĂ©gulation dâ€™alertes et dâ€™interventions crĂ©Ă©e.",
-            successfully_deleted: "RĂ©gulation dâ€™alertes et dâ€™interventions supprimĂ©e",
-            successfully_updated: "RĂ©gulations dâ€™alertes et dâ€™interventions mises Ă  jour.",
+            station_hint: "Quand un bÃ¢timent est sÃ©lectionnÃ©, seuls les vÃ©hicules dÃ©pendant de celui-ci le sont Ã©galement.",
+            successfully_created: "RÃ©gulation dâ€™alertes et dâ€™interventions crÃ©Ã©e.",
+            successfully_deleted: "RÃ©gulation dâ€™alertes et dâ€™interventions supprimÃ©e",
+            successfully_updated: "RÃ©gulations dâ€™alertes et dâ€™interventions mises Ã  jour.",
             vehicles: {
                 ab_atemschutz_only: "Module ARI",
                 ab_einsatzleitung_only: "Module de commandement",
                 ab_gefahrgut_only: "Module risques chimiques",
-                ab_oel_only: "Module marĂ©e noire",
+                ab_oel_only: "Module marÃ©e noire",
                 ab_ruest: "Module tech/sauvetage",
                 ab_ruest_rw: "",
-                abl2wasser_only: "Module approv. lance Ă  eau",
+                abl2wasser_only: "Module approv. lance Ã  eau",
                 ambulance: "Ambulance UMH",
                 ambulance_or_rapid_responder: "",
-                arff: "VIA (fourgon dâ€™incendie dâ€™aĂ©roport)",
+                arff: "VIA (fourgon dâ€™incendie dâ€™aÃ©roport)",
                 battalion_chief_unit: "Chef de groupe",
-                boot: "Bateaux (gĂ©nĂ©raux)",
+                boot: "Bateaux (gÃ©nÃ©raux)",
                 dekon_p: "",
-                division_chief_unit: "VĂ©hicule poste de commandement",
+                division_chief_unit: "VÃ©hicule poste de commandement",
                 dlk_or_tm50: "",
                 elw1_or_elw2: "Chef de groupe, poste de commandement ou module de commandement ",
-                elw2_or_ab_elw: "Pompe de secours ou unitĂ© de secours en renfort et vĂ©hicule d'incendie",
+                elw2_or_ab_elw: "Pompe de secours ou unitÃ© de secours en renfort et vÃ©hicule d'incendie",
                 elw3: "",
                 elw_airport: "",
-                emergency_ambulance: "Ambulance dâ€™urgence ou hĂ©licoptĂ¨re",
+                emergency_ambulance: "Ambulance dâ€™urgence ou hÃ©licoptÃ¨re",
                 fire_truck: "Fourgons dâ€™incendie",
                 fireboat: "Grand bateau dâ€™incendie",
                 fly_car: "VRM",
                 fukw: "",
                 fwk: "",
                 gefkw: "",
-                gkw: "VĂ©hicule Tout Usage",
-                grtw: "UnitĂ© accidents majeurs",
+                gkw: "VÃ©hicule Tout Usage",
+                grtw: "UnitÃ© accidents majeurs",
                 grtw0: "",
                 grtw1: "",
                 grukw: "",
                 gw_atemschutz_only: "",
-                gw_gefahrgut: "VĂ©hicules risques chimiques",
+                gw_gefahrgut: "VÃ©hicules risques chimiques",
                 gw_gefahrgut_only: "",
                 gw_hoehenrettung: "VGRIMP",
                 gw_messtechnik: "GW-M",
@@ -5464,10 +5398,10 @@ function deleteMissionPosition(e) {
                 gw_taucher: "",
                 gw_wasserrettung: "VPL",
                 gw_werkfeuerwehr: "",
-                gwl2wasser_only: "VĂ©hicule Ă  lance",
+                gwl2wasser_only: "VÃ©hicule Ã  lance",
                 hems: "Services dâ€™urgence",
-                hlf_only: "VĂ©hicule de secours",
-                hlf_or_rw_and_lf: "VĂ©hicule de secours ou vĂ©hicule de secours lourd et vĂ©hicule d'incendie",
+                hlf_only: "VÃ©hicule de secours",
+                hlf_or_rw_and_lf: "VÃ©hicule de secours ou vÃ©hicule de secours lourd et vÃ©hicule d'incendie",
                 hondengeleider: "",
                 k9: "Brigade canine",
                 kdow_lna: "",
@@ -5477,7 +5411,7 @@ function deleteMissionPosition(e) {
                 lebefkw: "Camionnette de police",
                 lf_only: "Fourgons dâ€™incendie",
                 long_distance_ambulance: "Ambulance RCP",
-                mask_service_unit: "VĂ©hicule d'Assistance Respiratoire",
+                mask_service_unit: "VÃ©hicule d'Assistance Respiratoire",
                 mek_mtf: "",
                 mek_zf: "",
                 mtw: "VSAV",
@@ -5491,18 +5425,18 @@ function deleteMissionPosition(e) {
                 only_dekon_p: "",
                 ovd_p: "",
                 police_car: "Voiture de patrouille",
-                polizeihubschrauber: "HĂ©licoptĂ¨re de police",
-                rescue_vehicle: "VĂ©hicule de secours routier",
+                polizeihubschrauber: "HÃ©licoptÃ¨re de police",
+                rescue_vehicle: "VÃ©hicule de secours routier",
                 rescue_vehicle_only: "Secours routier",
                 rescueboat: "Grand bateau de sauvetage",
                 rettungstreppe: "",
-                rth_only: "HĂ©licoptĂ¨re",
+                rth_only: "HÃ©licoptÃ¨re",
                 schlauchwagen: "Camion-citerne",
                 seg_elw: "",
                 sek_mtf: "",
                 sek_zf: "",
                 swat: "SWAT",
-                swat_armored_vehicle: "VĂ©hicule renforcĂ© du SWAT",
+                swat_armored_vehicle: "VÃ©hicule renforcÃ© du SWAT",
                 swat_suv: "SUV du SWAT",
                 thw_anh_mzab: "",
                 thw_anh_mzb: "",
@@ -5514,12 +5448,12 @@ function deleteMissionPosition(e) {
                 thw_mlw5: "",
                 thw_mtw: "Fourgon de la protection civile",
                 thw_mzkw: "Camion de la protection civile",
-                thw_tauchkraftwagen: "Ă‰quipe de plongĂ©e",
+                thw_tauchkraftwagen: "Ã‰quipe de plongÃ©e",
                 thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "Camion-citerne",
                 tm50: "",
                 turboloescher: "",
-                turntable_ladder: "Moyen ElĂ©vateur AĂ©rien",
+                turntable_ladder: "Moyen ElÃ©vateur AÃ©rien",
                 ulf: "",
                 wasserwerfer: "",
                 water_amount: "",
@@ -5531,348 +5465,348 @@ function deleteMissionPosition(e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: "Ensuite, donnez un nom Ă  votre posteÂ ! Il faut qu'il soit identifiable et Ă©volutif. Par exempleÂ : Â«Â Caserne de pompiers nÂ°1Â Â». Cliquez sur Â«Â Suiv.Â Â» lorsque vous avez terminĂ©Â !",
-                            build_with_credits: "Construisez maintenant votre bĂ˘timent Ă  l'aide de crĂ©ditsÂ !",
-                            new_building: "Cliquez sur Â«Â Nouveau bĂ˘timentÂ Â»Â !",
-                            select_building: "Choisissez d'abord le type de bĂ˘timent avec lequel vous voulez dĂ©buter. Nous vous recommandons de dĂ©marrer avec une caserne de pompiers. Dans tous les cas, nous vous conseillons un petit posteÂ !",
-                            select_position: "DĂ©placez le marqueur bleu oĂą vous voulez construire votre premier posteÂ !"
+                            add_name: "Ensuite, donnez un nom Ã  votre posteÂ ! Il faut qu'il soit identifiable et Ã©volutif. Par exempleÂ : Â«Â Caserne de pompiers nÂ°1Â Â». Cliquez sur Â«Â Suiv.Â Â» lorsque vous avez terminÃ©Â !",
+                            build_with_credits: "Construisez maintenant votre bÃ¢timent Ã  l'aide de crÃ©ditsÂ !",
+                            new_building: "Cliquez sur Â«Â Nouveau bÃ¢timentÂ Â»Â !",
+                            select_building: "Choisissez d'abord le type de bÃ¢timent avec lequel vous voulez dÃ©buter. Nous vous recommandons de dÃ©marrer avec une caserne de pompiers. Dans tous les cas, nous vous conseillons un petit posteÂ !",
+                            select_position: "DÃ©placez le marqueur bleu oÃ¹ vous voulez construire votre premier posteÂ !"
                         },
-                        pick_location: "Tout d'abord, choisissez un endroit oĂą dĂ©marrer. Indiquez le nom du lieu depuis lequel vous voulez commencer dans la barre de recherche ou directement sur la carte. Que diriez-vous de la ville oĂą vous rĂ©sidezÂ ?",
-                        welcome: "Bonjour, et bienvenue sur OpĂ©rateurÂ 112Â !  Je vais vous aider Ă  bien dĂ©marrer votre carriĂ¨re dans les services d'urgenceÂ !"
+                        pick_location: "Tout d'abord, choisissez un endroit oÃ¹ dÃ©marrer. Indiquez le nom du lieu depuis lequel vous voulez commencer dans la barre de recherche ou directement sur la carte. Que diriez-vous de la ville oÃ¹ vous rÃ©sidezÂ ?",
+                        welcome: "Bonjour, et bienvenue sur OpÃ©rateurÂ 112Â !  Je vais vous aider Ã  bien dÃ©marrer votre carriÃ¨re dans les services d'urgenceÂ !"
                     },
                     mobile: {
                         build_building: {
-                            add_name: "Ensuite, donnez un nom Ă  votre posteÂ ! Il faut qu'il soit identifiable et Ă©volutif. Par exempleÂ : Â«Â Caserne de pompiers nÂ°1Â Â». Cliquez sur Â«Â Suiv.Â Â» lorsque vous avez terminĂ©Â !",
-                            build_with_credits: "Construisez maintenant votre bĂ˘timent Ă  l'aide de crĂ©ditsÂ !",
-                            new_building: "Nous allons d'abord choisir un emplacement pour commencer et construire votre premier bĂ˘timentÂ ! <br /> <br /> Pour cela, cliquez sur Â«Â Nouveau bĂ˘timentÂ Â».",
-                            select_building: "Choisissez d'abord le type de bĂ˘timent avec lequel vous voulez dĂ©buter. Nous vous recommandons de dĂ©marrer avec une caserne de pompiers. Dans tous les cas, nous vous conseillons un petit posteÂ !"
+                            add_name: "Ensuite, donnez un nom Ã  votre posteÂ ! Il faut qu'il soit identifiable et Ã©volutif. Par exempleÂ : Â«Â Caserne de pompiers nÂ°1Â Â». Cliquez sur Â«Â Suiv.Â Â» lorsque vous avez terminÃ©Â !",
+                            build_with_credits: "Construisez maintenant votre bÃ¢timent Ã  l'aide de crÃ©ditsÂ !",
+                            new_building: "Nous allons d'abord choisir un emplacement pour commencer et construire votre premier bÃ¢timentÂ ! <br /> <br /> Pour cela, cliquez sur Â«Â Nouveau bÃ¢timentÂ Â».",
+                            select_building: "Choisissez d'abord le type de bÃ¢timent avec lequel vous voulez dÃ©buter. Nous vous recommandons de dÃ©marrer avec une caserne de pompiers. Dans tous les cas, nous vous conseillons un petit posteÂ !"
                         },
-                        welcome: "Bonjour, et bienvenue sur OpĂ©rateurÂ 112Â !  Je vais vous aider Ă  bien dĂ©marrer votre carriĂ¨re dans les services d'urgenceÂ !"
+                        welcome: "Bonjour, et bienvenue sur OpÃ©rateurÂ 112Â !  Je vais vous aider Ã  bien dÃ©marrer votre carriÃ¨re dans les services d'urgenceÂ !"
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Voici le menu de dĂ©ploiement. Vous pouvez d'ici envoyer vos unitĂ©s en missionÂ !",
-                            dispatch_menu_buttons: "Ce sont vos deux boutons de dĂ©ploiementÂ ! Le premier Â«Â DĂ©ployerÂ Â» envoie les unitĂ©s sĂ©lectionnĂ©es pour la mission. Le second fait la mĂŞme chose que le premier, mais pour la mission suivante. Pour l'instant, cliquez sur le premier bouton.",
-                            dispatch_menu_mission_general: "Ici sont affichĂ©es les informations gĂ©nĂ©rales de mission, c'est-Ă -dire le nom, l'adresse et l'icĂ´ne de la mission. La petite icĂ´ne en forme de silhouette apparaĂ®t et remplace l'Ă©toile pour les missions auxquelles vous participez dĂ©jĂ .",
+                            dispatch_menu: "Voici le menu de dÃ©ploiement. Vous pouvez d'ici envoyer vos unitÃ©s en missionÂ !",
+                            dispatch_menu_buttons: "Ce sont vos deux boutons de dÃ©ploiementÂ ! Le premier Â«Â DÃ©ployerÂ Â» envoie les unitÃ©s sÃ©lectionnÃ©es pour la mission. Le second fait la mÃªme chose que le premier, mais pour la mission suivante. Pour l'instant, cliquez sur le premier bouton.",
+                            dispatch_menu_mission_general: "Ici sont affichÃ©es les informations gÃ©nÃ©rales de mission, c'est-Ã -dire le nom, l'adresse et l'icÃ´ne de la mission. La petite icÃ´ne en forme de silhouette apparaÃ®t et remplace l'Ã©toile pour les missions auxquelles vous participez dÃ©jÃ .",
                             dispatch_menu_mission_progress: "Vous pouvez voir ici votre progression sur cette mission, le personnel sur site ainsi que le temps restant pour accomplir la missionÂ !",
-                            dispatch_menu_mission_specific: "Vous pouvez consulter ici plus d'informations sur la mission, voir quelles unitĂ©s rĂ©pondent Ă  l'appel, et quelles sont celles qui sont dĂ©jĂ  sur site.",
-                            dispatch_menu_vehicle_list: "Voici la liste de vos vĂ©hicules disponibles. Vous pouvez sĂ©lectionner les vĂ©hicules d'ici. SĂ©lectionnez votre vĂ©hicule en cliquant dessusÂ !"
+                            dispatch_menu_mission_specific: "Vous pouvez consulter ici plus d'informations sur la mission, voir quelles unitÃ©s rÃ©pondent Ã  l'appel, et quelles sont celles qui sont dÃ©jÃ  sur site.",
+                            dispatch_menu_vehicle_list: "Voici la liste de vos vÃ©hicules disponibles. Vous pouvez sÃ©lectionner les vÃ©hicules d'ici. SÃ©lectionnez votre vÃ©hicule en cliquant dessusÂ !"
                         },
                         mobile: {
-                            dispatch_menu: "Voici le menu de dĂ©ploiement. Vous pouvez d'ici envoyer vos unitĂ©s en missionÂ !",
-                            dispatch_menu_buttons: "Ce sont vos deux boutons de dĂ©ploiementÂ ! Le premier Â«Â DĂ©ployerÂ Â» envoie les unitĂ©s sĂ©lectionnĂ©es pour la mission. Le second fait la mĂŞme chose que le premier, mais pour la mission suivante. Pour l'instant, cliquez sur le premier bouton.",
-                            dispatch_menu_mission_general: "Ici sont affichĂ©es les informations gĂ©nĂ©rales de mission, c'est-Ă -dire le nom, l'adresse et l'icĂ´ne de la mission. La petite icĂ´ne en forme de silhouette apparaĂ®t et remplace l'Ă©toile pour les missions auxquelles vous participez dĂ©jĂ .",
+                            dispatch_menu: "Voici le menu de dÃ©ploiement. Vous pouvez d'ici envoyer vos unitÃ©s en missionÂ !",
+                            dispatch_menu_buttons: "Ce sont vos deux boutons de dÃ©ploiementÂ ! Le premier Â«Â DÃ©ployerÂ Â» envoie les unitÃ©s sÃ©lectionnÃ©es pour la mission. Le second fait la mÃªme chose que le premier, mais pour la mission suivante. Pour l'instant, cliquez sur le premier bouton.",
+                            dispatch_menu_mission_general: "Ici sont affichÃ©es les informations gÃ©nÃ©rales de mission, c'est-Ã -dire le nom, l'adresse et l'icÃ´ne de la mission. La petite icÃ´ne en forme de silhouette apparaÃ®t et remplace l'Ã©toile pour les missions auxquelles vous participez dÃ©jÃ .",
                             dispatch_menu_mission_progress: "Vous pouvez voir ici votre progression sur cette mission, le personnel sur site ainsi que le temps restant pour accomplir la missionÂ !",
-                            dispatch_menu_mission_specific: "Vous pouvez consulter ici plus d'informations sur la mission, voir quelles unitĂ©s rĂ©pondent Ă  l'appel, et quelles sont celles qui sont dĂ©jĂ  sur site.",
-                            dispatch_menu_vehicle_list: "Voici la liste de vos vĂ©hicules disponibles. Vous pouvez sĂ©lectionner les vĂ©hicules d'ici. SĂ©lectionnez votre vĂ©hicule en cliquant dessusÂ !"
+                            dispatch_menu_mission_specific: "Vous pouvez consulter ici plus d'informations sur la mission, voir quelles unitÃ©s rÃ©pondent Ã  l'appel, et quelles sont celles qui sont dÃ©jÃ  sur site.",
+                            dispatch_menu_vehicle_list: "Voici la liste de vos vÃ©hicules disponibles. Vous pouvez sÃ©lectionner les vÃ©hicules d'ici. SÃ©lectionnez votre vÃ©hicule en cliquant dessusÂ !"
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "Il vous faut maintenant apprendre Ă  gĂ©rer les incidents. Ouvrez le menu de dĂ©ploiement en cliquant sur le bouton Â«Â DĂ©ployerÂ Â»Â !",
-                            first_mission: "Parfait, vous avez construit votre premier bĂ˘timentÂ ! Regardez, on commence dĂ©jĂ  Ă  vous signaler des missionsÂ !"
+                            dispatch_button: "Il vous faut maintenant apprendre Ã  gÃ©rer les incidents. Ouvrez le menu de dÃ©ploiement en cliquant sur le bouton Â«Â DÃ©ployerÂ Â»Â !",
+                            first_mission: "Parfait, vous avez construit votre premier bÃ¢timentÂ ! Regardez, on commence dÃ©jÃ  Ã  vous signaler des missionsÂ !"
                         },
                         mobile: {
-                            dispatch_button: "Il vous faut maintenant apprendre Ă  gĂ©rer les incidents. Ouvrez le menu de dĂ©ploiement en cliquant sur le bouton Â«Â DĂ©ployerÂ Â»Â !",
-                            first_mission: "Parfait, vous avez construit votre premier bĂ˘timentÂ ! Regardez, on commence dĂ©jĂ  Ă  vous signaler des missionsÂ !"
+                            dispatch_button: "Il vous faut maintenant apprendre Ã  gÃ©rer les incidents. Ouvrez le menu de dÃ©ploiement en cliquant sur le bouton Â«Â DÃ©ployerÂ Â»Â !",
+                            first_mission: "Parfait, vous avez construit votre premier bÃ¢timentÂ ! Regardez, on commence dÃ©jÃ  Ã  vous signaler des missionsÂ !"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Parfait, vous ĂŞtes bien parti pour devenir un OpĂ©rateurÂ 112 de talentÂ ! Voici %{coins}Â piĂ¨ces pour vous aider Ă  dĂ©marrerÂ ! </br> L'Ă©quipe d'OpĂ©rateurÂ 112"
+                        general: "Parfait, vous Ãªtes bien parti pour devenir un OpÃ©rateurÂ 112 de talentÂ ! Voici %{coins}Â piÃ¨ces pour vous aider Ã  dÃ©marrerÂ ! </br> L'Ã©quipe d'OpÃ©rateurÂ 112"
                     },
                     mobile: {
-                        general: "Parfait, vous ĂŞtes bien parti pour devenir un OpĂ©rateurÂ 112 de talentÂ ! Voici %{coins}Â piĂ¨ces pour vous aider Ă  dĂ©marrerÂ ! </br> L'Ă©quipe d'OpĂ©rateurÂ 112"
+                        general: "Parfait, vous Ãªtes bien parti pour devenir un OpÃ©rateurÂ 112 de talentÂ ! Voici %{coins}Â piÃ¨ces pour vous aider Ã  dÃ©marrerÂ ! </br> L'Ã©quipe d'OpÃ©rateurÂ 112"
                     }
                 },
                 tips: {
                     browser: {
                         contact: "Si vous avez des questions, vous pouvez consulter la FAQ du jeu, visiter les forums du jeu ou notre page FacebookÂ !",
-                        general: "Nous vous recommandons pour l'Ă©tape suivante de construire un centre de secours et, dĂ¨s que possible, de nouveaux postes puisque le nombre de missions maximum Ă©quivaut au plus grand nombre de postes d'un genre (police, pompiers, ambulance) plus 1. Par exemple, 5Â casernes de pompiers et 3Â postes ambulanciers = 6Â missions.",
-                        join_alliance: "De plus, nous vous recommandons de rejoindre une alliance, ce qui peut grandement vous aider, surtout au dĂ©but.",
-                        summary: "Voici les bases d'OpĂ©rateurÂ 112Â ! Accomplissez des missions, recevez des crĂ©dits, achetez plus d'unitĂ©s, recommencez. Amusez-vous bienÂ ! </br> L'Ă©quipe d'OpĂ©rateurÂ 112"
+                        general: "Nous vous recommandons pour l'Ã©tape suivante de construire un centre de secours et, dÃ¨s que possible, de nouveaux postes puisque le nombre de missions maximum Ã©quivaut au plus grand nombre de postes d'un genre (police, pompiers, ambulance) plus 1. Par exemple, 5Â casernes de pompiers et 3Â postes ambulanciers = 6Â missions.",
+                        join_alliance: "De plus, nous vous recommandons de rejoindre une alliance, ce qui peut grandement vous aider, surtout au dÃ©but.",
+                        summary: "Voici les bases d'OpÃ©rateurÂ 112Â ! Accomplissez des missions, recevez des crÃ©dits, achetez plus d'unitÃ©s, recommencez. Amusez-vous bienÂ ! </br> L'Ã©quipe d'OpÃ©rateurÂ 112"
                     },
                     mobile: {
                         contact: "Si vous avez des questions, vous pouvez consulter la FAQ du jeu, visiter les forums du jeu ou notre page FacebookÂ !",
-                        general: "Nous vous recommandons pour l'Ă©tape suivante de construire un centre de secours et, dĂ¨s que possible, de nouveaux postes puisque le nombre de missions maximum Ă©quivaut au plus grand nombre de postes d'un genre (police, pompiers, ambulance) plus 1. Par exemple, 5Â casernes de pompiers et 3Â postes ambulanciers = 6Â missions.",
-                        join_alliance: "De plus, nous vous recommandons de rejoindre une alliance, ce qui peut grandement vous aider, surtout au dĂ©but.",
-                        summary: "Voici les bases d'OpĂ©rateurÂ 112Â ! Accomplissez des missions, recevez des crĂ©dits, achetez plus d'unitĂ©s, recommencez. Amusez-vous bienÂ ! </br> L'Ă©quipe d'OpĂ©rateurÂ 112"
+                        general: "Nous vous recommandons pour l'Ã©tape suivante de construire un centre de secours et, dÃ¨s que possible, de nouveaux postes puisque le nombre de missions maximum Ã©quivaut au plus grand nombre de postes d'un genre (police, pompiers, ambulance) plus 1. Par exemple, 5Â casernes de pompiers et 3Â postes ambulanciers = 6Â missions.",
+                        join_alliance: "De plus, nous vous recommandons de rejoindre une alliance, ce qui peut grandement vous aider, surtout au dÃ©but.",
+                        summary: "Voici les bases d'OpÃ©rateurÂ 112Â ! Accomplissez des missions, recevez des crÃ©dits, achetez plus d'unitÃ©s, recommencez. Amusez-vous bienÂ ! </br> L'Ã©quipe d'OpÃ©rateurÂ 112"
                     }
                 }
             },
             commons: {
-                collect: "RĂ©cupĂ©rer",
+                collect: "RÃ©cupÃ©rer",
                 "continue": "Non",
                 end: "Fin",
                 next: "Suiv.",
-                prev: "PrĂ©c.",
+                prev: "PrÃ©c.",
                 skip: "Oui",
-                skip_hint: "Veux-tu vraiment passer le didacticiel ? Tu ne pourras pas y accĂ©der par la suite. Tu renonceras ainsi Ă  la rĂ©compense offerte pour avoir terminĂ© le didacticiel."
+                skip_hint: "Veux-tu vraiment passer le didacticiel ? Tu ne pourras pas y accÃ©der par la suite. Tu renonceras ainsi Ã  la rÃ©compense offerte pour avoir terminÃ© le didacticiel."
             },
             rewards: {
-                log: "RĂ©compense pour avoir terminĂ© le didacticiel."
+                log: "RÃ©compense pour avoir terminÃ© le didacticiel."
             }
         }
     }, I18n.translations.ru_RU = {
         common: {
-            add: "Đ”ĐľĐ±Đ°Đ˛Đ¸Ń‚ŃŚ",
-            back: "ĐťĐ°Đ·Đ°Đ´",
-            cancel: "ĐžŃ‚ĐĽĐµĐ˝Đ¸Ń‚ŃŚ",
-            change_saved: "ĐĐ·ĐĽĐµĐ˝ĐµĐ˝Đ¸ŃŹ ŃĐľŃ…Ń€Đ°Đ˝ĐµĐ˝Ń‹",
-            coins_spend: "Đ’Ń‹ Đ´ĐµĐąŃŃ‚Đ˛Đ¸Ń‚ĐµĐ»ŃŚĐ˝Đľ Ń…ĐľŃ‚Đ¸Ń‚Đµ ĐżĐľŃ‚Ń€Đ°Ń‚Đ¸Ń‚ŃŚ ŃŤŃ‚Đ¸ ĐĽĐľĐ˝ĐµŃ‚Ń‹?",
-            congratulations: "ĐźĐľĐ·Đ´Ń€Đ°Đ˛Đ»ŃŹĐµĐĽ!",
-            content: "ĐˇĐľĐ´ĐµŃ€Đ¶Đ¸ĐĽĐľĐµ",
-            copy: "ĐˇĐşĐľĐżĐ¸Ń€ĐľĐ˛Đ°Ń‚ŃŚ",
-            credits: "ĐšŃ€ĐµĐ´Đ¸Ń‚Ń‹",
-            "delete": "ĐŁĐ´Đ°Đ»Đ¸Ń‚ŃŚ",
-            details: "ĐźĐľĐ´Ń€ĐľĐ±Đ˝ĐľŃŃ‚Đ¸",
-            edit: "Đ ĐµĐ´Đ°ĐşŃ‚Đ¸Ń€ĐľĐ˛Đ°Ń‚ŃŚ",
-            error: "ĐžŃĐ¸Đ±ĐşĐ°",
-            is_offline: "%{user} Đ˝Đµ Đ˛ ŃĐµŃ‚Đ¸.",
-            is_offline_long: "Đ”Đ°Đ˛Đ˝Đľ: %{user} Đ˝Đµ Đ˛ ŃĐµŃ‚Đ¸",
-            is_online: "%{user} Đ˛ ŃĐµŃ‚Đ¸.",
-            loading: "Đ—Đ°ĐłŃ€ŃĐ¶Đ°ĐµŃ‚ŃŃŹ...",
-            name: "ĐťĐ°Đ·Đ˛Đ°Đ˝Đ¸Đµ",
-            none: "ĐťĐ¸ ĐľĐ´Đ¸Đ˝",
-            of: "Đ¸Đ·",
-            off: "Đ’Ń‹ĐşĐ»",
-            on: "Đ’ĐşĐ»",
-            save: "ĐˇĐľŃ…Ń€Đ°Đ˝Đ¸Ń‚ŃŚ",
-            search: "ĐŃĐşĐ°Ń‚ŃŚ",
-            show: "ĐźĐľĐşĐ°Đ·Đ°Ń‚ŃŚ",
-            user_not_found: "ĐźĐľĐ»ŃŚĐ·ĐľĐ˛Đ°Ń‚ĐµĐ»ŃŚ Đ˝Đµ Đ˝Đ°ĐąĐ´ĐµĐ˝",
-            wrong_key: "ĐťĐµĐ˛ĐµŃ€Đ˝Đ°ŃŹ ĐşĐ»Đ°Đ˛Đ¸ŃĐ°"
+            add: "Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ",
+            back: "ÐÐ°Ð·Ð°Ð´",
+            cancel: "ÐžÑ‚Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ",
+            change_saved: "Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ñ‹",
+            coins_spend: "Ð’Ñ‹ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¿Ð¾Ñ‚Ñ€Ð°Ñ‚Ð¸Ñ‚ÑŒ ÑÑ‚Ð¸ Ð¼Ð¾Ð½ÐµÑ‚Ñ‹?",
+            congratulations: "ÐŸÐ¾Ð·Ð´Ñ€Ð°Ð²Ð»ÑÐµÐ¼!",
+            content: "Ð¡Ð¾Ð´ÐµÑ€Ð¶Ð¸Ð¼Ð¾Ðµ",
+            copy: "Ð¡ÐºÐ¾Ð¿Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ",
+            credits: "ÐšÑ€ÐµÐ´Ð¸Ñ‚Ñ‹",
+            "delete": "Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ",
+            details: "ÐŸÐ¾Ð´Ñ€Ð¾Ð±Ð½Ð¾ÑÑ‚Ð¸",
+            edit: "Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ",
+            error: "ÐžÑˆÐ¸Ð±ÐºÐ°",
+            is_offline: "%{user} Ð½Ðµ Ð² ÑÐµÑ‚Ð¸.",
+            is_offline_long: "Ð”Ð°Ð²Ð½Ð¾: %{user} Ð½Ðµ Ð² ÑÐµÑ‚Ð¸",
+            is_online: "%{user} Ð² ÑÐµÑ‚Ð¸.",
+            loading: "Ð—Ð°Ð³Ñ€ÑƒÐ¶Ð°ÐµÑ‚ÑÑ...",
+            name: "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ",
+            none: "ÐÐ¸ Ð¾Ð´Ð¸Ð½",
+            of: "Ð¸Ð·",
+            off: "Ð’Ñ‹ÐºÐ»",
+            on: "Ð’ÐºÐ»",
+            save: "Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ",
+            search: "Ð˜ÑÐºÐ°Ñ‚ÑŒ",
+            show: "ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ",
+            user_not_found: "ÐŸÐ¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½",
+            wrong_key: "ÐÐµÐ²ÐµÑ€Ð½Ð°Ñ ÐºÐ»Ð°Ð²Ð¸ÑˆÐ°"
         },
         javascript: {
-            alarm: "ĐžŃ‚ĐżŃ€Đ°Đ˛Đ¸Ń‚ŃŚ",
-            arrival: "ĐźŃ€Đ¸Đ±Ń‹Ń‚Đ¸Đµ",
-            backalarm: "ĐžŃ‚ĐĽĐµĐ˝Đ¸Ń‚ŃŚ",
-            coins: "ĐśĐľĐ˝ĐµŃ‚Ń‹",
-            credits: "ĐšŃ€ĐµĐ´Đ¸Ń‚Ń‹",
-            days: "Đ´Đ˝.",
-            few_seconds: "Ń‡ĐµŃ€ĐµĐ· Đ˝ĐµŃĐşĐľĐ»ŃŚĐşĐľ ŃĐµĐşŃĐ˝Đ´",
-            finish_in: "Đ—Đ°ĐşĐľĐ˝Ń‡Đ¸Ń‚ŃŚ Ń‡ĐµŃ€ĐµĐ·:",
-            hours: "Đ§",
-            location_not_found: "ĐťĐµ Đ˝Đ°ĐąĐ´ĐµĐ˝Đľ",
-            messages: "ĐˇĐľĐľĐ±Ń‰ĐµĐ˝Đ¸ŃŹ",
-            minutes: "ĐĽĐ¸Đ˝.",
-            missed_vehicle: "ĐťĐµ Ń…Đ˛Đ°Ń‚Đ°ĐµŃ‚:",
-            mission_start_in: "ĐťĐ°Ń‡Đ¸Đ˝Đ°ĐµŃ‚ŃŃŹ Ń‡ĐµŃ€ĐµĐ·:",
-            not_found_map: "ĐśĐ°ŃĐ¸Đ˝Đ° Đ˝Đµ ĐľĐ±Đ˝Đ°Ń€ŃĐ¶ĐµĐ˝Đ° Đ˝Đ° ĐşĐ°Ń€Ń‚Đµ",
-            now: "ĐˇĐµĐąŃ‡Đ°Ń",
-            patient: "ĐźĐ°Ń†Đ¸ĐµĐ˝Ń‚",
-            patient_untouched: "ĐťĐµ ĐżĐľĐ»ŃŃ‡Đ¸Đ˛ŃĐ¸Đµ ĐżĐľĐĽĐľŃ‰Đ¸ ĐżĐ°Ń†Đ¸ĐµĐ˝Ń‚Ń‹",
-            poi_delete: "Đ’Ń‹ ŃĐ˛ĐµŃ€ĐµĐ˝Ń‹, Ń‡Ń‚Đľ Ń…ĐľŃ‚Đ¸Ń‚Đµ ŃĐ´Đ°Đ»Đ¸Ń‚ŃŚ ŃŤŃ‚Ń Đ˛Đ°Đ¶Đ˝ŃŃŽ Ń‚ĐľŃ‡ĐşŃ: %{caption}?",
-            reload: "Đ—Đ°ĐłŃ€ŃĐ·Đ¸Ń‚ŃŚ ĐżĐľĐ˛Ń‚ĐľŃ€Đ˝Đľ",
-            sale: "Đ Đ°ŃĐżŃ€ĐľĐ´Đ°Đ¶Đ°",
-            sale_ended: "ĐĐşŃ†Đ¸ŃŹ Đ·Đ°Đ˛ĐµŃ€ŃĐµĐ˝Đ°",
-            secounds: "ŃĐµĐş.",
-            sicherheitswache_error: "CĐľŃ‚Ń€ŃĐ´Đ˝Đ¸Đş ĐľŃ…Ń€Đ°Đ˝Ń‹ Â«%{caption}Â» Đ˝Đµ Đ´ĐľĐ±Đ¸Đ»ŃŃŹ ŃŃĐżĐµŃ…Đ°, ĐżĐľŃ‚ĐľĐĽŃ Ń‡Ń‚Đľ Đ˝Đµ Đ˛ŃĐµ ĐşŃ€Đ¸Ń‚ĐµŃ€Đ¸Đ¸ ŃĐ´ĐľĐ˛Đ»ĐµŃ‚Đ˛ĐľŃ€ĐµĐ˝Ń‹.",
-            sicherheitswache_success: "CĐľŃ‚Ń€ŃĐ´Đ˝Đ¸Đş ĐľŃ…Ń€Đ°Đ˝Ń‹ Â«%{caption}Â» ŃŃĐżĐµŃĐ˝Đľ Đ˛Ń‹Đ˛ĐµĐ´ĐµĐ˝. ĐźĐľĐ»ŃŃ‡Đ¸Ń‚Đµ ĐşŃ€ĐµĐ´Đ¸Ń‚Ń‹ (%{credits}).",
-            start_in: "ĐťĐ°Ń‡Đ°Ń‚ŃŚ Ń‡ĐµŃ€ĐµĐ·: ",
-            start_username: "ĐťĐ°Ń‡Đ¸Đ˝Đ°ĐµŃ‚:",
-            time_left: "ĐžŃŃ‚Đ°Đ»ĐľŃŃŚ:",
-            to_building: "ĐˇĐĽĐľŃ‚Ń€ĐµŃ‚ŃŚ Đ·Đ´Đ°Đ˝Đ¸Đµ",
-            to_mission: "ĐˇĐĽĐľŃ‚Ń€ĐµŃ‚ŃŚ Đ·Đ°Đ´Đ°Đ˝Đ¸Đµ",
-            understand: "ĐźĐľĐ´Ń‚Đ˛ĐµŃ€Đ´Đ¸Ń‚ŃŚ",
-            user_not_found: "ĐĐłŃ€ĐľĐş Đ˝Đµ Đ˝Đ°ĐąĐ´ĐµĐ˝.",
-            vehicles_not_visible: "ĐśĐ°ŃĐ¸Đ˝Ń‹ Đ˝Đµ Đ˛Đ¸Đ´Đ˝Ń‹. "
+            alarm: "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ",
+            arrival: "ÐŸÑ€Ð¸Ð±Ñ‹Ñ‚Ð¸Ðµ",
+            backalarm: "ÐžÑ‚Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ",
+            coins: "ÐœÐ¾Ð½ÐµÑ‚Ñ‹",
+            credits: "ÐšÑ€ÐµÐ´Ð¸Ñ‚Ñ‹",
+            days: "Ð´Ð½.",
+            few_seconds: "Ñ‡ÐµÑ€ÐµÐ· Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ ÑÐµÐºÑƒÐ½Ð´",
+            finish_in: "Ð—Ð°ÐºÐ¾Ð½Ñ‡Ð¸Ñ‚ÑŒ Ñ‡ÐµÑ€ÐµÐ·:",
+            hours: "Ð§",
+            location_not_found: "ÐÐµ Ð½Ð°Ð¹Ð´ÐµÐ½Ð¾",
+            messages: "Ð¡Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ",
+            minutes: "Ð¼Ð¸Ð½.",
+            missed_vehicle: "ÐÐµ Ñ…Ð²Ð°Ñ‚Ð°ÐµÑ‚:",
+            mission_start_in: "ÐÐ°Ñ‡Ð¸Ð½Ð°ÐµÑ‚ÑÑ Ñ‡ÐµÑ€ÐµÐ·:",
+            not_found_map: "ÐœÐ°ÑˆÐ¸Ð½Ð° Ð½Ðµ Ð¾Ð±Ð½Ð°Ñ€ÑƒÐ¶ÐµÐ½Ð° Ð½Ð° ÐºÐ°Ñ€Ñ‚Ðµ",
+            now: "Ð¡ÐµÐ¹Ñ‡Ð°Ñ",
+            patient: "ÐŸÐ°Ñ†Ð¸ÐµÐ½Ñ‚",
+            patient_untouched: "ÐÐµ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ð²ÑˆÐ¸Ðµ Ð¿Ð¾Ð¼Ð¾Ñ‰Ð¸ Ð¿Ð°Ñ†Ð¸ÐµÐ½Ñ‚Ñ‹",
+            poi_delete: "Ð’Ñ‹ ÑƒÐ²ÐµÑ€ÐµÐ½Ñ‹, Ñ‡Ñ‚Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ ÑÑ‚Ñƒ Ð²Ð°Ð¶Ð½ÑƒÑŽ Ñ‚Ð¾Ñ‡ÐºÑƒ: %{caption}?",
+            reload: "Ð—Ð°Ð³Ñ€ÑƒÐ·Ð¸Ñ‚ÑŒ Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€Ð½Ð¾",
+            sale: "Ð Ð°ÑÐ¿Ñ€Ð¾Ð´Ð°Ð¶Ð°",
+            sale_ended: "ÐÐºÑ†Ð¸Ñ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð°",
+            secounds: "ÑÐµÐº.",
+            sicherheitswache_error: "CÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸Ðº Ð¾Ñ…Ñ€Ð°Ð½Ñ‹ Â«%{caption}Â» Ð½Ðµ Ð´Ð¾Ð±Ð¸Ð»ÑÑ ÑƒÑÐ¿ÐµÑ…Ð°, Ð¿Ð¾Ñ‚Ð¾Ð¼Ñƒ Ñ‡Ñ‚Ð¾ Ð½Ðµ Ð²ÑÐµ ÐºÑ€Ð¸Ñ‚ÐµÑ€Ð¸Ð¸ ÑƒÐ´Ð¾Ð²Ð»ÐµÑ‚Ð²Ð¾Ñ€ÐµÐ½Ñ‹.",
+            sicherheitswache_success: "CÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸Ðº Ð¾Ñ…Ñ€Ð°Ð½Ñ‹ Â«%{caption}Â» ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð²Ñ‹Ð²ÐµÐ´ÐµÐ½. ÐŸÐ¾Ð»ÑƒÑ‡Ð¸Ñ‚Ðµ ÐºÑ€ÐµÐ´Ð¸Ñ‚Ñ‹ (%{credits}).",
+            start_in: "ÐÐ°Ñ‡Ð°Ñ‚ÑŒ Ñ‡ÐµÑ€ÐµÐ·: ",
+            start_username: "ÐÐ°Ñ‡Ð¸Ð½Ð°ÐµÑ‚:",
+            time_left: "ÐžÑÑ‚Ð°Ð»Ð¾ÑÑŒ:",
+            to_building: "Ð¡Ð¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ Ð·Ð´Ð°Ð½Ð¸Ðµ",
+            to_mission: "Ð¡Ð¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ Ð·Ð°Ð´Ð°Ð½Ð¸Ðµ",
+            understand: "ÐŸÐ¾Ð´Ñ‚Ð²ÐµÑ€Ð´Ð¸Ñ‚ÑŒ",
+            user_not_found: "Ð˜Ð³Ñ€Ð¾Ðº Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½.",
+            vehicles_not_visible: "ÐœÐ°ÑˆÐ¸Ð½Ñ‹ Ð½Ðµ Ð²Ð¸Ð´Ð½Ñ‹. "
         },
         map: {
-            alliance: "ĐĐ»ŃŚŃŹĐ˝Ń",
-            alliance_chat: "Đ§Đ°Ń‚",
-            alliance_chat_banned: "Đ’ Đ˝Đ°ŃŃ‚ĐľŃŹŃ‰ĐµĐµ Đ˛Ń€ĐµĐĽŃŹ Đ˛Ń‹ Đ»Đ¸ŃĐµĐ˝Ń‹ Đ´ĐľŃŃ‚ŃĐżĐ° Đş Ń‡Đ°Ń‚Ń Đ°Đ»ŃŚŃŹĐ˝ŃĐ°.",
-            alliance_chat_banned_admin: "Đ—Đ°Đ±Đ»ĐľĐşĐ¸Ń€ĐľĐ˛Đ°Đ»:",
-            alliance_chat_banned_timeleft: "ĐžŃŃ‚Đ°Đ»ĐľŃŃŚ Đ˛Ń€ĐµĐĽĐµĐ˝Đ¸:",
-            alliance_chat_radio_off: "Đ Đ°Đ´Đ¸Đľ Đ°Đ»ŃŚŃŹĐ˝ŃĐ°: Đ’Ń‹ĐşĐ»",
-            alliance_chat_radio_on: "Đ Đ°Đ´Đ¸Đľ Đ°Đ»ŃŚŃŹĐ˝ŃĐ°: Đ’ĐşĐ»",
-            alliance_event: "ĐˇĐľĐ±Ń‹Ń‚Đ¸Đµ",
-            alliance_missions: "Đ—Đ°Đ´Đ°Đ˝Đ¸ŃŹ Đ°Đ»ŃŚŃŹĐ˝ŃĐ°",
-            alliance_missions_event: "ĐˇĐľĐ±Ń‹Ń‚Đ¸Đµ",
-            ambulance: "ĐˇĐşĐľŃ€Đ°ŃŹ ĐżĐľĐĽĐľŃ‰ŃŚ",
+            alliance: "ÐÐ»ÑŒÑÐ½Ñ",
+            alliance_chat: "Ð§Ð°Ñ‚",
+            alliance_chat_banned: "Ð’ Ð½Ð°ÑÑ‚Ð¾ÑÑ‰ÐµÐµ Ð²Ñ€ÐµÐ¼Ñ Ð²Ñ‹ Ð»Ð¸ÑˆÐµÐ½Ñ‹ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð° Ðº Ñ‡Ð°Ñ‚Ñƒ Ð°Ð»ÑŒÑÐ½ÑÐ°.",
+            alliance_chat_banned_admin: "Ð—Ð°Ð±Ð»Ð¾ÐºÐ¸Ñ€Ð¾Ð²Ð°Ð»:",
+            alliance_chat_banned_timeleft: "ÐžÑÑ‚Ð°Ð»Ð¾ÑÑŒ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð¸:",
+            alliance_chat_radio_off: "Ð Ð°Ð´Ð¸Ð¾ Ð°Ð»ÑŒÑÐ½ÑÐ°: Ð’Ñ‹ÐºÐ»",
+            alliance_chat_radio_on: "Ð Ð°Ð´Ð¸Ð¾ Ð°Ð»ÑŒÑÐ½ÑÐ°: Ð’ÐºÐ»",
+            alliance_event: "Ð¡Ð¾Ð±Ñ‹Ñ‚Ð¸Ðµ",
+            alliance_missions: "Ð—Ð°Ð´Ð°Ð½Ð¸Ñ Ð°Ð»ÑŒÑÐ½ÑÐ°",
+            alliance_missions_event: "Ð¡Ð¾Ð±Ñ‹Ñ‚Ð¸Ðµ",
+            ambulance: "Ð¡ÐºÐ¾Ñ€Ð°Ñ Ð¿Ð¾Ð¼Ð¾Ñ‰ÑŒ",
             challenges: "",
-            chat_history: "ĐŃŃ‚ĐľŃ€Đ¸ŃŹ Ń‡Đ°Ń‚Đ°",
-            congratulations: "ĐźĐľĐ·Đ´Ń€Đ°Đ˛Đ»ŃŹĐµĐĽ! Đ˘ĐµĐżĐµŃ€ŃŚ Đ˛Ń‹ ĐĽĐľĐ¶ĐµŃ‚Đµ ĐżĐľĐ»ŃŃ‡Đ¸Ń‚ŃŚ ĐżĐľĐ˛Ń‹ŃĐµĐ˝Đ¸Đµ.",
-            create_alliance_event: "ĐťĐ°Ń‡Đ°Ń‚ŃŚ ŃĐľĐ±Ń‹Ń‚Đ¸Đµ Đ°Đ»ŃŚŃŹĐ˝ŃĐ°",
-            create_alliance_operation: "ĐˇĐľĐ·Đ´Đ°ĐąŃ‚Đµ ĐşŃ€ŃĐżĐ˝ĐľĐĽĐ°ŃŃŃ‚Đ°Đ±Đ˝ĐľĐµ Đ·Đ°Đ´Đ°Đ˝Đ¸Đµ Đ°Đ»ŃŚŃŹĐ˝ŃĐ°",
-            emergency: "Đ§Ń€ĐµĐ·Đ˛Ń‹Ń‡Đ°ĐąĐ˝Đ°ŃŹ ŃĐ¸Ń‚ŃĐ°Ń†Đ¸ŃŹ",
-            join_alliance_infos: "Đ•ŃĐ»Đ¸ Đ˛Ń‹ ŃĐľŃŃ‚ĐľĐ¸Ń‚Đµ Đ˛ Đ°Đ»ŃŚŃŹĐ˝ŃĐµ, Đ´Ń€ŃĐłĐ¸Đµ Đ¸ĐłŃ€ĐľĐşĐ¸ ĐĽĐľĐłŃŃ‚ ŃĐ˛ĐľĐ±ĐľĐ´Đ˝Đľ Đ´Đ°Đ˛Đ°Ń‚ŃŚ Đ˛Đ°ĐĽ Đ·Đ°Đ´Đ°Đ˝Đ¸ŃŹ.",
-            map: "ĐšĐ°Ń€Ń‚Đ°",
+            chat_history: "Ð˜ÑÑ‚Ð¾Ñ€Ð¸Ñ Ñ‡Ð°Ñ‚Ð°",
+            congratulations: "ÐŸÐ¾Ð·Ð´Ñ€Ð°Ð²Ð»ÑÐµÐ¼! Ð¢ÐµÐ¿ÐµÑ€ÑŒ Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ Ð¿Ð¾Ð²Ñ‹ÑˆÐµÐ½Ð¸Ðµ.",
+            create_alliance_event: "ÐÐ°Ñ‡Ð°Ñ‚ÑŒ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ðµ Ð°Ð»ÑŒÑÐ½ÑÐ°",
+            create_alliance_operation: "Ð¡Ð¾Ð·Ð´Ð°Ð¹Ñ‚Ðµ ÐºÑ€ÑƒÐ¿Ð½Ð¾Ð¼Ð°ÑÑˆÑ‚Ð°Ð±Ð½Ð¾Ðµ Ð·Ð°Ð´Ð°Ð½Ð¸Ðµ Ð°Ð»ÑŒÑÐ½ÑÐ°",
+            emergency: "Ð§Ñ€ÐµÐ·Ð²Ñ‹Ñ‡Ð°Ð¹Ð½Ð°Ñ ÑÐ¸Ñ‚ÑƒÐ°Ñ†Ð¸Ñ",
+            join_alliance_infos: "Ð•ÑÐ»Ð¸ Ð²Ñ‹ ÑÐ¾ÑÑ‚Ð¾Ð¸Ñ‚Ðµ Ð² Ð°Ð»ÑŒÑÐ½ÑÐµ, Ð´Ñ€ÑƒÐ³Ð¸Ðµ Ð¸Ð³Ñ€Ð¾ÐºÐ¸ Ð¼Ð¾Ð³ÑƒÑ‚ ÑÐ²Ð¾Ð±Ð¾Ð´Ð½Ð¾ Ð´Ð°Ð²Ð°Ñ‚ÑŒ Ð²Ð°Ð¼ Ð·Ð°Ð´Ð°Ð½Ð¸Ñ.",
+            map: "ÐšÐ°Ñ€Ñ‚Ð°",
             map_filters: {
-                all_buildings: "Đ—Đ´Đ°Đ˝Đ¸ŃŹ",
-                all_missions: "Đ—Đ°Đ´Đ°Đ˝Đ¸ŃŹ",
-                alliance_buildings: "Đ—Đ´Đ°Đ˝Đ¸ŃŹ Đ°Đ»ŃŚŃŹĐ˝ŃĐ°",
-                alliance_members: "ĐŁŃ‡Đ°ŃŃ‚Đ˝Đ¸ĐşĐ¸",
-                alliance_missions: "ĐˇĐľĐ˛ĐĽĐµŃŃ‚Đ˝Đľ Ń Đ°Đ»ŃŚŃŹĐ˝ŃĐľĐĽ",
-                ambulance_station_missions: "ĐˇŃ‚Đ°Đ˝Ń†Đ¸ŃŹ ŃĐşĐľŃ€ĐľĐą ĐżĐľĐĽĐľŃ‰Đ¸",
-                ambulance_station_small_missions: "ĐˇŃ‚Đ°Đ˝Ń†Đ¸ŃŹ ŃĐşĐľŃ€ĐľĐą ĐżĐľĐĽĐľŃ‰Đ¸ (ĐĽĐ°Đ»Đ°ŃŹ)",
-                clinic_missions: "ĐšĐ»Đ¸Đ˝Đ¸ĐşĐ°",
-                dispatch_center_missions: "Đ”Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ŃĐşĐ¸Đą ĐżŃĐ˝ĐşŃ‚",
-                fire_school_missions: "ĐĐşĐ°Đ´ĐµĐĽĐ¸ŃŹ ĐżĐľĐ¶Đ°Ń€Đ˝ĐľĐą ŃĐ»ŃĐ¶Đ±Ń‹",
-                firehouse_missions: "ĐźĐľĐ¶Đ°Ń€Đ˝Đ°ŃŹ ŃŃ‚Đ°Đ˝Ń†Đ¸ŃŹ",
-                firehouse_small_missions: "ĐźĐľĐ¶Đ°Ń€Đ˝Đ°ŃŹ ŃŃ‚Đ°Đ˝Ń†Đ¸ŃŹ (ĐĽĐ°Đ»Đ°ŃŹ)",
-                hospital_missions: "Đ‘ĐľĐ»ŃŚĐ˝Đ¸Ń†Đ°",
-                map_filters: "Đ’Đ°Đ¶Đ˝Ń‹Đµ Ń‚ĐľŃ‡ĐşĐ¸",
-                mission_positions: "Đ’Đ°Đ¶Đ˝Ń‹Đµ Ń‚ĐľŃ‡ĐşĐ¸",
-                police_copter_station_missions: "ĐźĐľĐ»Đ¸Ń†ĐµĐąŃĐşĐ°ŃŹ Đ°Đ˛Đ¸Đ°Ń†Đ¸ŃŹ",
-                police_school_missions: "ĐĐşĐ°Đ´ĐµĐĽĐ¸ŃŹ ĐżĐľĐ»Đ¸Ń†Đ¸Đ¸",
-                police_small_missions: "ĐźĐľĐ»Đ¸Ń†ĐµĐąŃĐşĐ¸Đą ŃŃ‡Đ°ŃŃ‚ĐľĐş (ĐĽĐ°Đ»Ń‹Đą)",
-                police_special_forces: "ĐźĐľĐ»Đ¸Ń†ĐµĐąŃĐşĐ¸Đµ ĐľŃ‚Ń€ŃŹĐ´Ń‹ ŃĐżĐµŃ†. Đ˝Đ°Đ·Đ˝Đ°Ń‡ĐµĐ˝Đ¸ŃŹ",
-                police_station_missions: "ĐźĐľĐ»Đ¸Ń†ĐµĐąŃĐşĐ¸Đą ŃŃ‡Đ°ŃŃ‚ĐľĐş",
-                prison_missions: "Đ˘ŃŽŃ€ŃŚĐĽĐ°",
-                rapid_deployment_group: "Đ“Ń€ŃĐżĐżĐ° Đ±Ń‹ŃŃ‚Ń€ĐľĐłĐľ Ń€Đ°Đ·Đ˛Ń‘Ń€Ń‚Ń‹Đ˛Đ°Đ˝Đ¸ŃŹ",
-                rescue_copter_station_missions: "ĐˇŃ‚Đ°Đ˝Ń†Đ¸ŃŹ Đ˛ĐµŃ€Ń‚ĐľĐ»Ń‘Ń‚ĐľĐ˛ ŃĐşĐľŃ€ĐľĐą ĐżĐľĐĽĐľŃ‰Đ¸",
-                riot_police: "ĐˇĐżĐµŃ†Đ˝Đ°Đ· ĐżĐľĐ»Đ¸Ń†Đ¸Đ¸",
-                staging_area_missions: "ĐźŃĐ˝ĐşŃ‚ ŃĐ±ĐľŃ€Đ°",
-                technical_aid_organization: "ĐśĐ§Đˇ",
-                technical_aid_organization_school: "Đ’Ń‹ŃŃĐ°ŃŹ ŃĐşĐľĐ»Đ° ĐśĐ§Đˇ",
-                user_buildings: "ĐśĐľĐ¸ Đ·Đ´Đ°Đ˝Đ¸ŃŹ",
-                user_missions: "ĐśĐľĐ¸ Đ·Đ°Đ´Đ°Đ˝Đ¸ŃŹ",
-                water_watch: "ĐžĐˇĐ’ĐžĐ”"
+                all_buildings: "Ð—Ð´Ð°Ð½Ð¸Ñ",
+                all_missions: "Ð—Ð°Ð´Ð°Ð½Ð¸Ñ",
+                alliance_buildings: "Ð—Ð´Ð°Ð½Ð¸Ñ Ð°Ð»ÑŒÑÐ½ÑÐ°",
+                alliance_members: "Ð£Ñ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¸",
+                alliance_missions: "Ð¡Ð¾Ð²Ð¼ÐµÑÑ‚Ð½Ð¾ Ñ Ð°Ð»ÑŒÑÐ½ÑÐ¾Ð¼",
+                ambulance_station_missions: "Ð¡Ñ‚Ð°Ð½Ñ†Ð¸Ñ ÑÐºÐ¾Ñ€Ð¾Ð¹ Ð¿Ð¾Ð¼Ð¾Ñ‰Ð¸",
+                ambulance_station_small_missions: "Ð¡Ñ‚Ð°Ð½Ñ†Ð¸Ñ ÑÐºÐ¾Ñ€Ð¾Ð¹ Ð¿Ð¾Ð¼Ð¾Ñ‰Ð¸ (Ð¼Ð°Ð»Ð°Ñ)",
+                clinic_missions: "ÐšÐ»Ð¸Ð½Ð¸ÐºÐ°",
+                dispatch_center_missions: "Ð”Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ÑÐºÐ¸Ð¹ Ð¿ÑƒÐ½ÐºÑ‚",
+                fire_school_missions: "ÐÐºÐ°Ð´ÐµÐ¼Ð¸Ñ Ð¿Ð¾Ð¶Ð°Ñ€Ð½Ð¾Ð¹ ÑÐ»ÑƒÐ¶Ð±Ñ‹",
+                firehouse_missions: "ÐŸÐ¾Ð¶Ð°Ñ€Ð½Ð°Ñ ÑÑ‚Ð°Ð½Ñ†Ð¸Ñ",
+                firehouse_small_missions: "ÐŸÐ¾Ð¶Ð°Ñ€Ð½Ð°Ñ ÑÑ‚Ð°Ð½Ñ†Ð¸Ñ (Ð¼Ð°Ð»Ð°Ñ)",
+                hospital_missions: "Ð‘Ð¾Ð»ÑŒÐ½Ð¸Ñ†Ð°",
+                map_filters: "Ð’Ð°Ð¶Ð½Ñ‹Ðµ Ñ‚Ð¾Ñ‡ÐºÐ¸",
+                mission_positions: "Ð’Ð°Ð¶Ð½Ñ‹Ðµ Ñ‚Ð¾Ñ‡ÐºÐ¸",
+                police_copter_station_missions: "ÐŸÐ¾Ð»Ð¸Ñ†ÐµÐ¹ÑÐºÐ°Ñ Ð°Ð²Ð¸Ð°Ñ†Ð¸Ñ",
+                police_school_missions: "ÐÐºÐ°Ð´ÐµÐ¼Ð¸Ñ Ð¿Ð¾Ð»Ð¸Ñ†Ð¸Ð¸",
+                police_small_missions: "ÐŸÐ¾Ð»Ð¸Ñ†ÐµÐ¹ÑÐºÐ¸Ð¹ ÑƒÑ‡Ð°ÑÑ‚Ð¾Ðº (Ð¼Ð°Ð»Ñ‹Ð¹)",
+                police_special_forces: "ÐŸÐ¾Ð»Ð¸Ñ†ÐµÐ¹ÑÐºÐ¸Ðµ Ð¾Ñ‚Ñ€ÑÐ´Ñ‹ ÑÐ¿ÐµÑ†. Ð½Ð°Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ",
+                police_station_missions: "ÐŸÐ¾Ð»Ð¸Ñ†ÐµÐ¹ÑÐºÐ¸Ð¹ ÑƒÑ‡Ð°ÑÑ‚Ð¾Ðº",
+                prison_missions: "Ð¢ÑŽÑ€ÑŒÐ¼Ð°",
+                rapid_deployment_group: "Ð“Ñ€ÑƒÐ¿Ð¿Ð° Ð±Ñ‹ÑÑ‚Ñ€Ð¾Ð³Ð¾ Ñ€Ð°Ð·Ð²Ñ‘Ñ€Ñ‚Ñ‹Ð²Ð°Ð½Ð¸Ñ",
+                rescue_copter_station_missions: "Ð¡Ñ‚Ð°Ð½Ñ†Ð¸Ñ Ð²ÐµÑ€Ñ‚Ð¾Ð»Ñ‘Ñ‚Ð¾Ð² ÑÐºÐ¾Ñ€Ð¾Ð¹ Ð¿Ð¾Ð¼Ð¾Ñ‰Ð¸",
+                riot_police: "Ð¡Ð¿ÐµÑ†Ð½Ð°Ð· Ð¿Ð¾Ð»Ð¸Ñ†Ð¸Ð¸",
+                staging_area_missions: "ÐŸÑƒÐ½ÐºÑ‚ ÑÐ±Ð¾Ñ€Ð°",
+                technical_aid_organization: "ÐœÐ§Ð¡",
+                technical_aid_organization_school: "Ð’Ñ‹ÑÑˆÐ°Ñ ÑˆÐºÐ¾Ð»Ð° ÐœÐ§Ð¡",
+                user_buildings: "ÐœÐ¾Ð¸ Ð·Ð´Ð°Ð½Ð¸Ñ",
+                user_missions: "ÐœÐ¾Ð¸ Ð·Ð°Ð´Ð°Ð½Ð¸Ñ",
+                water_watch: "ÐžÐ¡Ð’ÐžÐ”"
             },
-            message: "ĐˇĐľĐľĐ±Ń‰ĐµĐ˝Đ¸Đµ",
-            mission: "Đ—Đ°Đ´Đ°Đ˝Đ¸Đµ",
-            no_alliance_chat_impossible: "Đ’Ń‹ Đ˝Đµ ŃĐľŃŃ‚ĐľĐ¸Ń‚Đµ Đ˛ Đ°Đ»ŃŚŃŹĐ˝ŃĐµ.",
-            no_alliance_missions: "Đ’ Đ˝Đ°ŃŃ‚ĐľŃŹŃ‰ĐµĐµ Đ˛Ń€ĐµĐĽŃŹ Đ·Đ°Đ´Đ°Đ˝Đ¸Đą Đ°Đ»ŃŚŃŹĐ˝ŃĐ° Đ˝ĐµŃ‚.",
-            no_ambulance_missions: "Đ—Đ°Đ´Đ°Đ˝Đ¸Đą ŃĐşĐľŃ€ĐľĐą ĐżĐľĐĽĐľŃ‰Đ¸ Đ˝ĐµŃ‚. Đ—Đ°Đ´Đ°Đ˝Đ¸ŃŹ ŃĐşĐľŃ€ĐľĐą ĐżĐľĐĽĐľŃ‰Đ¸ ĐĽĐľĐłŃŃ‚ ĐżĐľŃŹĐ˛Đ»ŃŹŃ‚ŃŚŃŃŹ Ń‚ĐľĐ»ŃŚĐşĐľ Ń‚ĐľĐłĐ´Đ°, ĐşĐľĐłĐ´Đ° Ń Đ˛Đ°Ń ĐµŃŃ‚ŃŚ ŃĐşĐľŃ€Đ°ŃŹ ĐżĐľĐĽĐľŃ‰ŃŚ Đ¸ Đ±ĐľĐ»ŃŚĐ˝Đ¸Ń†Đ°.",
-            no_emergency_missions: "ĐťĐµŃ‚ Đ´ĐľŃŃ‚ŃĐżĐ˝Ń‹Ń… Đ·Đ°Đ´Đ°Đ˝Đ¸Đą Đ§Đˇ. Đ—Đ°Đ´Đ°Đ˝Đ¸Đµ Đ§Đˇ ĐĽĐľĐ¶ĐµŃ‚ ĐżĐľŃŹĐ˛Đ¸Ń‚ŃŚŃŃŹ Ń‚ĐľĐ»ŃŚĐşĐľ Ń‚ĐľĐłĐ´Đ°, ĐşĐľĐłĐ´Đ° Đ˛Ń‹ ĐżĐľŃŃ‚Ń€ĐľĐ¸Ń‚Đµ ŃĐ˛ĐľŃŽ ĐżĐµŃ€Đ˛ŃŃŽ ŃŃ‚Đ°Đ˝Ń†Đ¸ŃŽ.",
-            no_radio_messages: "Đ’Ń‹ Đ˝Đµ ĐżĐľĐ»ŃŃ‡Đ°Đ»Đ¸ ŃĐľĐľĐ±Ń‰ĐµĐ˝Đ¸Đą ĐżĐľ Ń€Đ°Đ´Đ¸Đľ.",
-            radio_messages: "Đ Đ°Đ´Đ¸Đľ",
-            restore_map: "Đ’ĐľŃŃŃ‚Đ°Đ˝ĐľĐ˛Đ¸Ń‚ŃŚ ĐşĐ°Ń€Ń‚Ń",
-            show_informations: "Đ—ĐµĐ»Ń‘Đ˝Ń‹Đą = Đ·Đ°Đ´Đ°Đ˝Đ¸ŃŹ ĐľŃ‚ĐľĐ±Ń€Đ°Đ¶Đ°ŃŽŃ‚ŃŃŹ Đ˛ ŃĐżĐ¸ŃĐşĐµ. ĐšŃ€Đ°ŃĐ˝Ń‹Đą = Đ·Đ°Đ´Đ°Đ˝Đ¸ŃŹ Đ˝Đµ ĐľŃ‚ĐľĐ±Ń€Đ°Đ¶Đ°ŃŽŃ‚ŃŃŹ.",
-            sicherheitswache: "Đ—Đ°ĐżĐ»Đ°Đ˝Đ¸Ń€ĐľĐ˛Đ°Đ˝Đ˝Ń‹Đµ Đ·Đ°Đ´Đ°Đ˝Đ¸ŃŹ",
-            transport: "Đ˘Ń€Đ°Đ˝ŃĐżĐľŃ€Ń‚"
+            message: "Ð¡Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ",
+            mission: "Ð—Ð°Ð´Ð°Ð½Ð¸Ðµ",
+            no_alliance_chat_impossible: "Ð’Ñ‹ Ð½Ðµ ÑÐ¾ÑÑ‚Ð¾Ð¸Ñ‚Ðµ Ð² Ð°Ð»ÑŒÑÐ½ÑÐµ.",
+            no_alliance_missions: "Ð’ Ð½Ð°ÑÑ‚Ð¾ÑÑ‰ÐµÐµ Ð²Ñ€ÐµÐ¼Ñ Ð·Ð°Ð´Ð°Ð½Ð¸Ð¹ Ð°Ð»ÑŒÑÐ½ÑÐ° Ð½ÐµÑ‚.",
+            no_ambulance_missions: "Ð—Ð°Ð´Ð°Ð½Ð¸Ð¹ ÑÐºÐ¾Ñ€Ð¾Ð¹ Ð¿Ð¾Ð¼Ð¾Ñ‰Ð¸ Ð½ÐµÑ‚. Ð—Ð°Ð´Ð°Ð½Ð¸Ñ ÑÐºÐ¾Ñ€Ð¾Ð¹ Ð¿Ð¾Ð¼Ð¾Ñ‰Ð¸ Ð¼Ð¾Ð³ÑƒÑ‚ Ð¿Ð¾ÑÐ²Ð»ÑÑ‚ÑŒÑÑ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ‚Ð¾Ð³Ð´Ð°, ÐºÐ¾Ð³Ð´Ð° Ñƒ Ð²Ð°Ñ ÐµÑÑ‚ÑŒ ÑÐºÐ¾Ñ€Ð°Ñ Ð¿Ð¾Ð¼Ð¾Ñ‰ÑŒ Ð¸ Ð±Ð¾Ð»ÑŒÐ½Ð¸Ñ†Ð°.",
+            no_emergency_missions: "ÐÐµÑ‚ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ñ… Ð·Ð°Ð´Ð°Ð½Ð¸Ð¹ Ð§Ð¡. Ð—Ð°Ð´Ð°Ð½Ð¸Ðµ Ð§Ð¡ Ð¼Ð¾Ð¶ÐµÑ‚ Ð¿Ð¾ÑÐ²Ð¸Ñ‚ÑŒÑÑ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ‚Ð¾Ð³Ð´Ð°, ÐºÐ¾Ð³Ð´Ð° Ð²Ñ‹ Ð¿Ð¾ÑÑ‚Ñ€Ð¾Ð¸Ñ‚Ðµ ÑÐ²Ð¾ÑŽ Ð¿ÐµÑ€Ð²ÑƒÑŽ ÑÑ‚Ð°Ð½Ñ†Ð¸ÑŽ.",
+            no_radio_messages: "Ð’Ñ‹ Ð½Ðµ Ð¿Ð¾Ð»ÑƒÑ‡Ð°Ð»Ð¸ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ð¹ Ð¿Ð¾ Ñ€Ð°Ð´Ð¸Ð¾.",
+            radio_messages: "Ð Ð°Ð´Ð¸Ð¾",
+            restore_map: "Ð’Ð¾ÑÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ ÐºÐ°Ñ€Ñ‚Ñƒ",
+            show_informations: "Ð—ÐµÐ»Ñ‘Ð½Ñ‹Ð¹ = Ð·Ð°Ð´Ð°Ð½Ð¸Ñ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶Ð°ÑŽÑ‚ÑÑ Ð² ÑÐ¿Ð¸ÑÐºÐµ. ÐšÑ€Ð°ÑÐ½Ñ‹Ð¹ = Ð·Ð°Ð´Ð°Ð½Ð¸Ñ Ð½Ðµ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶Ð°ÑŽÑ‚ÑÑ.",
+            sicherheitswache: "Ð—Ð°Ð¿Ð»Ð°Ð½Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ðµ Ð·Ð°Ð´Ð°Ð½Ð¸Ñ",
+            transport: "Ð¢Ñ€Ð°Ð½ÑÐ¿Ð¾Ñ€Ñ‚"
         },
         fms: {
-            going: "Đ’Ń‹ĐµĐ·Đ¶Đ°ĐµŃ‚",
-            not_ready: "ĐťĐµ Ń€Đ°Đ±ĐľŃ‚Đ°ĐµŃ‚",
-            on_destination: "Đ’ ĐżŃĐ˝ĐşŃ‚Đµ Đ˝Đ°Đ·Đ˝Đ°Ń‡ĐµĐ˝Đ¸ŃŹ ĐżĐµŃ€ĐµĐ˛ĐľĐ·ĐşĐ¸",
-            on_place: "ĐťĐ° ĐĽĐµŃŃ‚Đµ",
-            patient_transported: "ĐźĐµŃ€ĐµĐ˛ĐľĐ·Đ¸Ń‚ ĐżĐ°Ń†Đ¸ĐµĐ˝Ń‚Đ°",
-            prisoner_transported: "ĐźĐµŃ€ĐµĐ˛ĐľĐ·Đ¸Ń‚ Đ·Đ°ĐşĐ»ŃŽŃ‡Ń‘Đ˝Đ˝ĐľĐłĐľ",
-            ready_home: "Đ”ĐľŃŃ‚ŃĐżĐ˝Đľ Đ˝Đ° ŃŃ‚Đ°Đ˝Ń†Đ¸Đ¸",
-            ready_traveling: "ĐťĐµ Đ¸ĐĽĐµĐµŃ‚ Đ·Đ°Đ´Đ°Đ˝Đ¸Đą Đ¸ Đ´ĐľŃŃ‚ŃĐżĐ˝Đľ",
-            talking_wish: "Đ—Đ°ŃŹĐ˛ĐşĐ° Đ˝Đ° ĐżĐµŃ€ĐµĐ˛ĐľĐ·ĐşŃ",
-            waiting_for_vehicle: "ĐžĐ¶Đ¸Đ´Đ°ĐµŃ‚ ĐĽĐ°ŃĐ¸Đ˝Ń Đ´Đ»ŃŹ Đ±ŃĐşŃĐ¸Ń€ĐľĐ˛ĐşĐ¸"
+            going: "Ð’Ñ‹ÐµÐ·Ð¶Ð°ÐµÑ‚",
+            not_ready: "ÐÐµ Ñ€Ð°Ð±Ð¾Ñ‚Ð°ÐµÑ‚",
+            on_destination: "Ð’ Ð¿ÑƒÐ½ÐºÑ‚Ðµ Ð½Ð°Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ Ð¿ÐµÑ€ÐµÐ²Ð¾Ð·ÐºÐ¸",
+            on_place: "ÐÐ° Ð¼ÐµÑÑ‚Ðµ",
+            patient_transported: "ÐŸÐµÑ€ÐµÐ²Ð¾Ð·Ð¸Ñ‚ Ð¿Ð°Ñ†Ð¸ÐµÐ½Ñ‚Ð°",
+            prisoner_transported: "ÐŸÐµÑ€ÐµÐ²Ð¾Ð·Ð¸Ñ‚ Ð·Ð°ÐºÐ»ÑŽÑ‡Ñ‘Ð½Ð½Ð¾Ð³Ð¾",
+            ready_home: "Ð”Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ Ð½Ð° ÑÑ‚Ð°Ð½Ñ†Ð¸Ð¸",
+            ready_traveling: "ÐÐµ Ð¸Ð¼ÐµÐµÑ‚ Ð·Ð°Ð´Ð°Ð½Ð¸Ð¹ Ð¸ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾",
+            talking_wish: "Ð—Ð°ÑÐ²ÐºÐ° Ð½Ð° Ð¿ÐµÑ€ÐµÐ²Ð¾Ð·ÐºÑƒ",
+            waiting_for_vehicle: "ÐžÐ¶Ð¸Ð´Ð°ÐµÑ‚ Ð¼Ð°ÑˆÐ¸Ð½Ñƒ Ð´Ð»Ñ Ð±ÑƒÐºÑÐ¸Ñ€Ð¾Ð²ÐºÐ¸"
         },
         intervention_order: {
-            back: "ĐťĐ°Đ·Đ°Đ´",
-            category: "ĐšĐ°Ń‚ĐµĐłĐľŃ€Đ¸ŃŹ",
-            colour: "Đ¦Đ˛ĐµŃ‚",
-            column: "ĐˇŃ‚ĐľĐ»Đ±ĐµŃ†",
-            column_number: "ĐťĐľĐĽĐµŃ€ ŃŃ‚ĐľĐ»Đ±Ń†Đ°",
-            column_number_hint: "Đ•ŃĐ»Đ¸ Đ·Đ°Đ´Đ°Đ˝ Đ˝ĐľĐĽĐµŃ€ ŃŃ‚ĐľĐ»Đ±Ń†Đ°, Đ˛ ŃĐľĐľŃ‚Đ˛ĐµŃ‚ŃŃ‚Đ˛ŃŃŽŃ‰ĐµĐą ĐşĐľĐ»ĐľĐ˝ĐşĐµ Đ˝Đ° ŃŃ‚Ń€Đ°Đ˝Đ¸Ń†Đµ Ń‚Ń€ĐµĐ˛ĐľĐłĐ¸ Đ±ŃĐ´ĐµŃ‚ ĐľŃ‚ĐľĐ±Ń€Đ°Đ¶Đ°Ń‚ŃŚŃŃŹ Đ·Đ°ĐżĐ¸ŃŃŚ ĐĐĐ .",
-            create_intervention_order: "ĐˇĐľĐ·Đ´Đ°Ń‚ŃŚ Đ˝ĐľĐ˛ĐľĐµ ĐżŃ€Đ°Đ˛Đ¸Đ»Đľ ĐĐĐ ",
-            "delete": "ĐŁĐ´Đ°Đ»Đ¸Ń‚ŃŚ",
-            delete_all: "ĐźĐľĐ»Đ˝ĐľŃŃ‚ŃŚŃŽ ŃĐ´Đ°Đ»Đ¸Ń‚ŃŚ ĐżŃ€Đ°Đ˛Đ¸Đ»Đ° ĐĐĐ ",
-            delete_all_confirm: "Đ’Ń‹ ŃĐ˛ĐµŃ€ĐµĐ˝Ń‹, Ń‡Ń‚Đľ Ń…ĐľŃ‚Đ¸Ń‚Đµ ŃĐ´Đ°Đ»Đ¸Ń‚ŃŚ ĐżŃ€Đ°Đ˛Đ¸Đ»Đľ ĐĐĐ  Ń†ĐµĐ»Đ¸ĐşĐľĐĽ? ĐˇŃŃ‰ĐµŃŃ‚Đ˛ŃŃŽŃ‰Đ¸Đµ ŃŤĐşŃĐżĐľŃ€Ń‚Đ¸Ń€ĐľĐ˛Đ°Đ˝Đ˝Ń‹Đµ Đ·Đ°ĐżĐ¸ŃĐ¸ Đ±ĐľĐ»ĐµĐµ Đ˝ĐµĐ´ĐľŃŃ‚ŃĐżĐ˝Ń‹!",
-            description: "ĐťĐ°Đ·Đ˛Đ°Đ˝Đ¸Đµ",
-            edit: "Đ ĐµĐ´Đ°ĐşŃ‚Đ¸Ń€ĐľĐ˛Đ°Ń‚ŃŚ",
+            back: "ÐÐ°Ð·Ð°Ð´",
+            category: "ÐšÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ñ",
+            colour: "Ð¦Ð²ÐµÑ‚",
+            column: "Ð¡Ñ‚Ð¾Ð»Ð±ÐµÑ†",
+            column_number: "ÐÐ¾Ð¼ÐµÑ€ ÑÑ‚Ð¾Ð»Ð±Ñ†Ð°",
+            column_number_hint: "Ð•ÑÐ»Ð¸ Ð·Ð°Ð´Ð°Ð½ Ð½Ð¾Ð¼ÐµÑ€ ÑÑ‚Ð¾Ð»Ð±Ñ†Ð°, Ð² ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰ÐµÐ¹ ÐºÐ¾Ð»Ð¾Ð½ÐºÐµ Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ Ñ‚Ñ€ÐµÐ²Ð¾Ð³Ð¸ Ð±ÑƒÐ´ÐµÑ‚ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶Ð°Ñ‚ÑŒÑÑ Ð·Ð°Ð¿Ð¸ÑÑŒ Ð˜Ð˜Ð .",
+            create_intervention_order: "Ð¡Ð¾Ð·Ð´Ð°Ñ‚ÑŒ Ð½Ð¾Ð²Ð¾Ðµ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð¾ Ð˜Ð˜Ð ",
+            "delete": "Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ",
+            delete_all: "ÐŸÐ¾Ð»Ð½Ð¾ÑÑ‚ÑŒÑŽ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð° Ð˜Ð˜Ð ",
+            delete_all_confirm: "Ð’Ñ‹ ÑƒÐ²ÐµÑ€ÐµÐ½Ñ‹, Ñ‡Ñ‚Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð¾ Ð˜Ð˜Ð  Ñ†ÐµÐ»Ð¸ÐºÐ¾Ð¼? Ð¡ÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ðµ ÑÐºÑÐ¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ðµ Ð·Ð°Ð¿Ð¸ÑÐ¸ Ð±Ð¾Ð»ÐµÐµ Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹!",
+            description: "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ",
+            edit: "Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ",
             "export": {
-                "export": "Đ­ĐşŃĐżĐľŃ€Ń‚Đ¸Ń€ĐľĐ˛Đ°Ń‚ŃŚ",
-                "import": "ĐĐĽĐżĐľŃ€Ń‚Đ¸Ń€ĐľĐ˛Đ°Ń‚ŃŚ",
-                import_done: "Đ’Ń‹Đ±Ń€Đ°Đ˝Đ˝Ń‹Đµ Đ·Đ°ĐżĐ¸ŃĐ¸ Đ¸ĐĽĐżĐľŃ€Ń‚Đ¸Ń€ĐľĐ˛Đ°Đ˝Ń‹ Đ¸ Đ´ĐľĐ±Đ°Đ˛Đ»ĐµĐ˝Ń‹ Đ˛ Đ˛Đ°Ń ĐżĐ»Đ°Đ˝ ĐĐĐ .",
-                saved: "Đ­ĐşŃĐżĐľŃ€Ń‚ ĐżŃ€Đ°Đ˛Đ¸Đ» ĐĐĐ ",
-                saved_text: "ĐźŃ€Đ°Đ˛Đ¸Đ»Đľ ĐĐĐ  ĐżĐľĐ´ĐłĐľŃ‚ĐľĐ˛Đ»ĐµĐ˝Đľ Đş ŃŤĐşŃĐżĐľŃ€Ń‚Ń. Đ”Ń€ŃĐłĐľĐą Đ¸ĐłŃ€ĐľĐş ŃĐĽĐľĐ¶ĐµŃ‚ Đ¸ĐĽĐżĐľŃ€Ń‚Đ¸Ń€ĐľĐ˛Đ°Ń‚ŃŚ ĐżŃ€Đ°Đ˛Đ¸Đ»Đľ ĐĐĐ , Đ˛ĐľŃĐżĐľĐ»ŃŚĐ·ĐľĐ˛Đ°Đ˛ŃĐ¸ŃŃŚ ŃŤŃ‚ĐľĐą ŃŃŃ‹Đ»ĐşĐľĐą. Đ•ŃĐ»Đ¸ Đ˛ ŃŤŃ‚ĐľĐĽ Đ˛Ń€ĐµĐĽŃŹ Đ˛Ń‹ Đ¸Đ·ĐĽĐµĐ˝Đ¸Ń‚Đµ ŃĐ˛ĐľŃ‘ ĐżŃ€Đ°Đ˛Đ¸Đ»Đľ ĐĐĐ , Đ¸Đ·ĐĽĐµĐ˝ĐµĐ˝Đ¸ŃŹ Đ±ŃĐ´ŃŃ‚ Đ°Đ˛Ń‚ĐľĐĽĐ°Ń‚Đ¸Ń‡ĐµŃĐşĐ¸ ĐżŃ€Đ¸ĐĽĐµĐ˝ĐµĐ˝Ń‹ Đş ŃŤĐşŃĐżĐľŃ€Ń‚Đ¸Ń€ŃĐµĐĽĐľĐĽŃ ĐżŃ€Đ°Đ˛Đ¸Đ»Ń."
+                "export": "Ð­ÐºÑÐ¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ",
+                "import": "Ð˜Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ",
+                import_done: "Ð’Ñ‹Ð±Ñ€Ð°Ð½Ð½Ñ‹Ðµ Ð·Ð°Ð¿Ð¸ÑÐ¸ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹ Ð¸ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ñ‹ Ð² Ð²Ð°Ñˆ Ð¿Ð»Ð°Ð½ Ð˜Ð˜Ð .",
+                saved: "Ð­ÐºÑÐ¿Ð¾Ñ€Ñ‚ Ð¿Ñ€Ð°Ð²Ð¸Ð» Ð˜Ð˜Ð ",
+                saved_text: "ÐŸÑ€Ð°Ð²Ð¸Ð»Ð¾ Ð˜Ð˜Ð  Ð¿Ð¾Ð´Ð³Ð¾Ñ‚Ð¾Ð²Ð»ÐµÐ½Ð¾ Ðº ÑÐºÑÐ¿Ð¾Ñ€Ñ‚Ñƒ. Ð”Ñ€ÑƒÐ³Ð¾Ð¹ Ð¸Ð³Ñ€Ð¾Ðº ÑÐ¼Ð¾Ð¶ÐµÑ‚ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð¾ Ð˜Ð˜Ð , Ð²Ð¾ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð²ÑˆÐ¸ÑÑŒ ÑÑ‚Ð¾Ð¹ ÑÑÑ‹Ð»ÐºÐ¾Ð¹. Ð•ÑÐ»Ð¸ Ð² ÑÑ‚Ð¾Ð¼ Ð²Ñ€ÐµÐ¼Ñ Ð²Ñ‹ Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚Ðµ ÑÐ²Ð¾Ñ‘ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð¾ Ð˜Ð˜Ð , Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ Ð±ÑƒÐ´ÑƒÑ‚ Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸ Ð¿Ñ€Ð¸Ð¼ÐµÐ½ÐµÐ½Ñ‹ Ðº ÑÐºÑÐ¿Ð¾Ñ€Ñ‚Ð¸Ñ€ÑƒÐµÐ¼Ð¾Ð¼Ñƒ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ñƒ."
             },
-            hotkey_hint: "Đ’Ń‹Đ±ĐµŃ€Đ¸Ń‚Đµ ĐłĐľŃ€ŃŹŃ‡ŃŃŽ ĐşĐ»Đ°Đ˛Đ¸ŃŃ Đ´Đ»ŃŹ Đ˛Ń‹Đ´ĐµĐ»ĐµĐ˝Đ¸ŃŹ ŃŤŃ‚ĐľĐą ĐĽĐ°ŃĐ¸Đ˝Ń‹. ĐťĐ°Đ¶ĐĽĐ¸Ń‚Đµ Đ˛ ĐľĐşĐ˝Đµ Đ·Đ°Đ´Đ°Đ˝Đ¸ŃŹ: ALT + ĐłĐľŃ€ŃŹŃ‡Đ°ŃŹ ĐşĐ»Đ°Đ˛Đ¸ŃĐ° (Đ¸Đ»Đ¸ Đ˛ Firefox: ALT + SHIFT + ĐłĐľŃ€ŃŹŃ‡Đ°ŃŹ ĐşĐ»Đ°Đ˛Đ¸ŃĐ°, Đ¸Đ»Đ¸ Đ˛ mac os: ctrl + alt + ĐłĐľŃ€ŃŹŃ‡Đ°ŃŹ ĐşĐ»Đ°Đ˛Đ¸ŃĐ°), Ń‡Ń‚ĐľĐ±Ń‹ Đ˛Ń‹Đ´ĐµĐ»Đ¸Ń‚ŃŚ Đ˛Ń‹Đ±Ń€Đ°Đ˝Đ˝ŃŃŽ ĐĽĐ°ŃĐ¸Đ˝Ń.",
-            intervention_order: "Đ ĐµĐ´Đ°ĐşŃ‚Đ¸Ń€ĐľĐ˛Đ°Ń‚ŃŚ ĐżŃ€Đ°Đ˛Đ¸Đ»Đ° ĐĐĐ ",
-            name: "ĐťĐ°Đ·Đ˛Đ°Đ˝Đ¸Đµ",
-            no_intervention_created: "Đ’Ń‹ ĐżĐľĐşĐ° Đ˝Đµ ŃĐľĐ·Đ´Đ°Đ»Đ¸ ĐżŃ€Đ°Đ˛Đ¸Đ» ĐĐĐ .",
-            options: "ĐźĐ°Ń€Đ°ĐĽĐµŃ‚Ń€Ń‹",
-            reset: "ĐˇĐ±Ń€ĐľŃŃŚŃ‚Đµ ĐżŃ€ĐµĐ´Ń‹Đ´ŃŃ‰ĐµĐµ Đ˛Ń‹Đ´ĐµĐ»ĐµĐ˝Đ¸Đµ Đ˛ ĐľĐşĐ˝Đµ Ń‚Ń€ĐµĐ˛ĐľĐłĐ¸.",
-            reset_hint: "Đ•ŃĐ»Đ¸ Đ˛ ĐľĐşĐ˝Đµ ĐľŃ‚ĐżŃ€Đ°Đ˛ĐşĐ¸ Đ˛Ń‹ Đ˛Ń‹Đ´ĐµĐ»Đ¸Đ»Đ¸ ĐĽĐ°ŃĐ¸Đ˝Ń, ŃŤŃ‚Ń ĐşĐ˝ĐľĐżĐşŃ ĐĽĐľĐ¶Đ˝Đľ Đ¸ŃĐżĐľĐ»ŃŚĐ·ĐľĐ˛Đ°Ń‚ŃŚ Đ´Đ»ŃŹ ŃĐ±Ń€ĐľŃĐ°.",
-            save: "ĐˇĐľŃ…Ń€Đ°Đ˝Đ¸Ń‚ŃŚ",
-            station: "ĐˇŃ‚Đ°Đ˝Ń†Đ¸ŃŹ",
-            station_hint: "ĐźŃ€Đ¸ Đ˛Ń‹Đ±ĐľŃ€Đµ Đ·Đ´Đ°Đ˝Đ¸ŃŹ, Đ±ŃĐ´ŃŃ‚ Đ˛Ń‹Đ´ĐµĐ»ĐµĐ˝Ń‹ Ń‚ĐľĐ»ŃŚĐşĐľ ĐĽĐ°ŃĐ¸Đ˝Ń‹ ŃĐľĐľŃ‚Đ˛ĐµŃ‚ŃŃ‚Đ˛ŃŃŽŃ‰ĐµĐłĐľ Đ·Đ´Đ°Đ˝Đ¸ŃŹ.",
-            successfully_created: "ĐźŃ€Đ°Đ˛Đ¸Đ»Đľ ĐĐĐ  ŃŃĐżĐµŃĐ˝Đľ ŃĐľĐ·Đ´Đ°Đ˝Đľ.",
-            successfully_deleted: "ĐźŃ€Đ°Đ˛Đ¸Đ»Đľ ĐĐĐ  ŃĐ´Đ°Đ»ĐµĐ˝Đľ",
-            successfully_updated: "ĐźŃ€Đ°Đ˛Đ¸Đ»Đ° ĐĐĐ  ŃŃĐżĐµŃĐ˝Đľ ĐľĐ±Đ˝ĐľĐ˛Đ»ĐµĐ˝Ń‹.",
+            hotkey_hint: "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð³Ð¾Ñ€ÑÑ‡ÑƒÑŽ ÐºÐ»Ð°Ð²Ð¸ÑˆÑƒ Ð´Ð»Ñ Ð²Ñ‹Ð´ÐµÐ»ÐµÐ½Ð¸Ñ ÑÑ‚Ð¾Ð¹ Ð¼Ð°ÑˆÐ¸Ð½Ñ‹. ÐÐ°Ð¶Ð¼Ð¸Ñ‚Ðµ Ð² Ð¾ÐºÐ½Ðµ Ð·Ð°Ð´Ð°Ð½Ð¸Ñ: ALT + Ð³Ð¾Ñ€ÑÑ‡Ð°Ñ ÐºÐ»Ð°Ð²Ð¸ÑˆÐ° (Ð¸Ð»Ð¸ Ð² Firefox: ALT + SHIFT + Ð³Ð¾Ñ€ÑÑ‡Ð°Ñ ÐºÐ»Ð°Ð²Ð¸ÑˆÐ°, Ð¸Ð»Ð¸ Ð² mac os: ctrl + alt + Ð³Ð¾Ñ€ÑÑ‡Ð°Ñ ÐºÐ»Ð°Ð²Ð¸ÑˆÐ°), Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð²Ñ‹Ð´ÐµÐ»Ð¸Ñ‚ÑŒ Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð½ÑƒÑŽ Ð¼Ð°ÑˆÐ¸Ð½Ñƒ.",
+            intervention_order: "Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð° Ð˜Ð˜Ð ",
+            name: "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ",
+            no_intervention_created: "Ð’Ñ‹ Ð¿Ð¾ÐºÐ° Ð½Ðµ ÑÐ¾Ð·Ð´Ð°Ð»Ð¸ Ð¿Ñ€Ð°Ð²Ð¸Ð» Ð˜Ð˜Ð .",
+            options: "ÐŸÐ°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ñ‹",
+            reset: "Ð¡Ð±Ñ€Ð¾ÑÑŒÑ‚Ðµ Ð¿Ñ€ÐµÐ´Ñ‹Ð´ÑƒÑ‰ÐµÐµ Ð²Ñ‹Ð´ÐµÐ»ÐµÐ½Ð¸Ðµ Ð² Ð¾ÐºÐ½Ðµ Ñ‚Ñ€ÐµÐ²Ð¾Ð³Ð¸.",
+            reset_hint: "Ð•ÑÐ»Ð¸ Ð² Ð¾ÐºÐ½Ðµ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸ Ð²Ñ‹ Ð²Ñ‹Ð´ÐµÐ»Ð¸Ð»Ð¸ Ð¼Ð°ÑˆÐ¸Ð½Ñƒ, ÑÑ‚Ñƒ ÐºÐ½Ð¾Ð¿ÐºÑƒ Ð¼Ð¾Ð¶Ð½Ð¾ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ Ð´Ð»Ñ ÑÐ±Ñ€Ð¾ÑÐ°.",
+            save: "Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ",
+            station: "Ð¡Ñ‚Ð°Ð½Ñ†Ð¸Ñ",
+            station_hint: "ÐŸÑ€Ð¸ Ð²Ñ‹Ð±Ð¾Ñ€Ðµ Ð·Ð´Ð°Ð½Ð¸Ñ, Ð±ÑƒÐ´ÑƒÑ‚ Ð²Ñ‹Ð´ÐµÐ»ÐµÐ½Ñ‹ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð¼Ð°ÑˆÐ¸Ð½Ñ‹ ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰ÐµÐ³Ð¾ Ð·Ð´Ð°Ð½Ð¸Ñ.",
+            successfully_created: "ÐŸÑ€Ð°Ð²Ð¸Ð»Ð¾ Ð˜Ð˜Ð  ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ ÑÐ¾Ð·Ð´Ð°Ð½Ð¾.",
+            successfully_deleted: "ÐŸÑ€Ð°Ð²Ð¸Ð»Ð¾ Ð˜Ð˜Ð  ÑƒÐ´Ð°Ð»ÐµÐ½Ð¾",
+            successfully_updated: "ÐŸÑ€Ð°Ð²Ð¸Ð»Ð° Ð˜Ð˜Ð  ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð¾Ð±Ð½Ð¾Ð²Ð»ÐµÐ½Ñ‹.",
             vehicles: {
-                ab_atemschutz_only: "ĐśĐľĐ´ŃĐ»ŃŚ Đ´Ń‹Ń…Đ°Ń‚ĐµĐ»ŃŚĐ˝Ń‹Ń… Đ°ĐżĐżĐ°Ń€Đ°Ń‚ĐľĐ˛",
-                ab_einsatzleitung_only: "ĐśĐľĐ´ŃĐ»ŃŚ ŃĐżŃ€Đ°Đ˛Đ»ĐµĐ˝Đ¸ŃŹ",
-                ab_gefahrgut_only: "ĐśĐľĐ´ŃĐ»ŃŚ ĐľĐ±ĐµĐ·Đ˛Ń€ĐµĐ¶Đ¸Đ˛Đ°Đ˝Đ¸ŃŹ",
-                ab_oel_only: "ĐśĐľĐ´ŃĐ»ŃŚ Ń€Đ°Đ·Đ»Đ¸Đ˛Đ° Đ˝ĐµŃ„Ń‚Đ¸",
-                ab_ruest: "Đ˘ĐµŃ…Đ˝ĐľĐ»ĐľĐłĐ¸Ń‡ĐµŃĐşĐ¸Đą ĐĽĐľĐ´ŃĐ»ŃŚ/ĐĽĐľĐ´ŃĐ»ŃŚ ŃĐżĐ°ŃĐµĐ˝Đ¸ŃŹ",
+                ab_atemschutz_only: "ÐœÐ¾Ð´ÑƒÐ»ÑŒ Ð´Ñ‹Ñ…Ð°Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… Ð°Ð¿Ð¿Ð°Ñ€Ð°Ñ‚Ð¾Ð²",
+                ab_einsatzleitung_only: "ÐœÐ¾Ð´ÑƒÐ»ÑŒ ÑƒÐ¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ñ",
+                ab_gefahrgut_only: "ÐœÐ¾Ð´ÑƒÐ»ÑŒ Ð¾Ð±ÐµÐ·Ð²Ñ€ÐµÐ¶Ð¸Ð²Ð°Ð½Ð¸Ñ",
+                ab_oel_only: "ÐœÐ¾Ð´ÑƒÐ»ÑŒ Ñ€Ð°Ð·Ð»Ð¸Ð²Ð° Ð½ÐµÑ„Ñ‚Ð¸",
+                ab_ruest: "Ð¢ÐµÑ…Ð½Ð¾Ð»Ð¾Ð³Ð¸Ñ‡ÐµÑÐºÐ¸Ð¹ Ð¼Ð¾Ð´ÑƒÐ»ÑŒ/Ð¼Ð¾Ð´ÑƒÐ»ÑŒ ÑÐ¿Ð°ÑÐµÐ½Ð¸Ñ",
                 ab_ruest_rw: "",
-                abl2wasser_only: "ĐśĐľĐ´ŃĐ»ŃŚ ĐżĐľĐ´Đ°Ń‡Đ¸ ŃĐ»Đ°Đ˝ĐłĐ°",
-                ambulance: "Đ ĐµĐ°Đ˝Đ¸ĐĽĐľĐ±Đ¸Đ»ŃŚ",
+                abl2wasser_only: "ÐœÐ¾Ð´ÑƒÐ»ÑŒ Ð¿Ð¾Ð´Ð°Ñ‡Ð¸ ÑˆÐ»Ð°Ð½Ð³Ð°",
+                ambulance: "Ð ÐµÐ°Ð½Ð¸Ð¼Ð¾Ð±Ð¸Ð»ÑŒ",
                 ambulance_or_rapid_responder: "",
-                arff: "ĐĐźĐˇĐ  (ĐżĐľĐ¶Đ°Ń€Đ˝Đ°ŃŹ ĐĽĐ°ŃĐ¸Đ˝Đ° Đ°ŃŤŃ€ĐľĐżĐľŃ€Ń‚Đ°)",
-                battalion_chief_unit: "ĐźĐľĐ´Ń€Đ°Đ·Đ´ĐµĐ»ĐµĐ˝Đ¸Đµ ĐşĐľĐĽĐ°Đ˝Đ´Đ¸Ń€Đ° Đ±Đ°Ń‚Đ°Đ»ŃŚĐľĐ˝Đ°",
-                boot: "ĐˇŃĐ´Đ° (ĐľĐ±Ń‰ĐµĐµ)",
+                arff: "ÐÐŸÐ¡Ð  (Ð¿Ð¾Ð¶Ð°Ñ€Ð½Ð°Ñ Ð¼Ð°ÑˆÐ¸Ð½Ð° Ð°ÑÑ€Ð¾Ð¿Ð¾Ñ€Ñ‚Ð°)",
+                battalion_chief_unit: "ÐŸÐ¾Ð´Ñ€Ð°Ð·Ð´ÐµÐ»ÐµÐ½Ð¸Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð¸Ñ€Ð° Ð±Ð°Ñ‚Ð°Ð»ÑŒÐ¾Ð½Ð°",
+                boot: "Ð¡ÑƒÐ´Ð° (Ð¾Ð±Ñ‰ÐµÐµ)",
                 dekon_p: "",
-                division_chief_unit: "ĐśĐľĐ±Đ¸Đ»ŃŚĐ˝Ń‹Đą ĐşĐľĐĽĐ°Đ˝Đ´Đ˝Ń‹Đą ĐżŃĐ˝ĐşŃ‚",
+                division_chief_unit: "ÐœÐ¾Ð±Ð¸Ð»ÑŒÐ½Ñ‹Ð¹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ð¹ Ð¿ÑƒÐ½ÐºÑ‚",
                 dlk_or_tm50: "",
-                elw1_or_elw2: "ĐźĐľĐ´Ń€Đ°Đ·Đ´ĐµĐ»ĐµĐ˝Đ¸Đµ ĐşĐľĐĽĐ°Đ˝Đ´Đ¸Ń€Đ° Đ±Đ°Ń‚Đ°Đ»ŃŚĐľĐ˝Đ°, ĐĽĐľĐ±Đ¸Đ»ŃŚĐ˝Ń‹Đą ĐşĐľĐĽĐ°Đ˝Đ´Đ˝Ń‹Đą ĐżŃĐ˝ĐşŃ‚ Đ¸Đ»Đ¸ ĐĽĐľĐ±Đ¸Đ»ŃŚĐ˝Ń‹Đą ĐĽĐľĐ´ŃĐ»ŃŚ ŃĐżŃ€Đ°Đ˛Đ»ĐµĐ˝Đ¸ŃŹ ",
-                elw2_or_ab_elw: "ĐťĐ°ŃĐľŃ Đ¸Đ»Đ¸ Đ˛ŃĐżĐľĐĽĐľĐłĐ°Ń‚ĐµĐ»ŃŚĐ˝ĐľĐµ ŃĐżĐ°ŃĐ°Ń‚ĐµĐ»ŃŚĐ˝ĐľĐµ ĐżĐľĐ´Ń€Đ°Đ·Đ´ĐµĐ»ĐµĐ˝Đ¸Đµ",
+                elw1_or_elw2: "ÐŸÐ¾Ð´Ñ€Ð°Ð·Ð´ÐµÐ»ÐµÐ½Ð¸Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð¸Ñ€Ð° Ð±Ð°Ñ‚Ð°Ð»ÑŒÐ¾Ð½Ð°, Ð¼Ð¾Ð±Ð¸Ð»ÑŒÐ½Ñ‹Ð¹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ð¹ Ð¿ÑƒÐ½ÐºÑ‚ Ð¸Ð»Ð¸ Ð¼Ð¾Ð±Ð¸Ð»ÑŒÐ½Ñ‹Ð¹ Ð¼Ð¾Ð´ÑƒÐ»ÑŒ ÑƒÐ¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ñ ",
+                elw2_or_ab_elw: "ÐÐ°ÑÐ¾Ñ Ð¸Ð»Ð¸ Ð²ÑÐ¿Ð¾Ð¼Ð¾Ð³Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾Ðµ ÑÐ¿Ð°ÑÐ°Ñ‚ÐµÐ»ÑŒÐ½Ð¾Ðµ Ð¿Ð¾Ð´Ñ€Ð°Ð·Ð´ÐµÐ»ÐµÐ½Ð¸Ðµ",
                 elw3: "",
                 elw_airport: "",
-                emergency_ambulance: "ĐśĐ°ŃĐ¸Đ˝Đ° ŃĐşĐľŃ€ĐľĐą ĐżĐľĐĽĐľŃ‰Đ¸ ĐĐ›Đ Đ˛ĐµŃ€Ń‚ĐľĐ»ĐµŃ‚",
-                fire_truck: "ĐźĐľĐ¶Đ°Ń€Đ˝Ń‹Đµ ĐĽĐ°ŃĐ¸Đ˝Ń‹",
-                fireboat: "Đ‘ĐľĐ»ŃŚŃĐľĐą ĐżĐľĐ¶Đ°Ń€Đ˝Ń‹Đą ĐşĐ°Ń‚ĐµŃ€",
+                emergency_ambulance: "ÐœÐ°ÑˆÐ¸Ð½Ð° ÑÐºÐ¾Ñ€Ð¾Ð¹ Ð¿Ð¾Ð¼Ð¾Ñ‰Ð¸ Ð˜Ð›Ð˜ Ð²ÐµÑ€Ñ‚Ð¾Ð»ÐµÑ‚",
+                fire_truck: "ÐŸÐ¾Ð¶Ð°Ñ€Ð½Ñ‹Ðµ Ð¼Ð°ÑˆÐ¸Ð½Ñ‹",
+                fireboat: "Ð‘Ð¾Ð»ÑŒÑˆÐ¾Ð¹ Ð¿Ð¾Ð¶Ð°Ñ€Ð½Ñ‹Ð¹ ÐºÐ°Ñ‚ÐµÑ€",
                 fly_car: "Fly-Car",
                 fukw: "",
                 fwk: "",
                 gefkw: "",
-                gkw: "Đ“Ń€ŃĐ·ĐľĐ˛ĐľĐą Đ°Đ˛Ń‚ĐľĐĽĐľĐ±Đ¸Đ»ŃŚ",
-                grtw: "ĐźĐľĐ´Ń€Đ°Đ·Đ´ĐµĐ»ĐµĐ˝Đ¸Đµ ĐżĐľ Ń€Đ°Đ±ĐľŃ‚Đµ Ń Đ±ĐľĐ»ŃŚŃĐ¸ĐĽ Ń‡Đ¸ŃĐ»ĐľĐĽ ĐżĐľŃŃ‚Ń€Đ°Đ´Đ°Đ˛ŃĐ¸Ń…",
+                gkw: "Ð“Ñ€ÑƒÐ·Ð¾Ð²Ð¾Ð¹ Ð°Ð²Ñ‚Ð¾Ð¼Ð¾Ð±Ð¸Ð»ÑŒ",
+                grtw: "ÐŸÐ¾Ð´Ñ€Ð°Ð·Ð´ÐµÐ»ÐµÐ½Ð¸Ðµ Ð¿Ð¾ Ñ€Ð°Ð±Ð¾Ñ‚Ðµ Ñ Ð±Ð¾Ð»ÑŒÑˆÐ¸Ð¼ Ñ‡Ð¸ÑÐ»Ð¾Ð¼ Ð¿Ð¾ÑÑ‚Ñ€Ð°Ð´Ð°Ð²ÑˆÐ¸Ñ…",
                 grtw0: "",
                 grtw1: "",
                 grukw: "",
                 gw_atemschutz_only: "",
-                gw_gefahrgut: "ĐžĐ±ĐµĐ·Đ˛Ń€ĐµĐ¶Đ¸Đ˛Đ°Đ˝Đ¸Đµ",
+                gw_gefahrgut: "ÐžÐ±ÐµÐ·Ð²Ñ€ÐµÐ¶Ð¸Ð²Ð°Ð½Ð¸Ðµ",
                 gw_gefahrgut_only: "",
-                gw_hoehenrettung: "ĐĐ˛Ń‚ĐľĐĽĐľĐ±Đ¸Đ»ŃŚ Ń Đ»ĐµŃŃ‚Đ˝Đ¸Ń†ĐµĐą",
-                gw_messtechnik: "ĐśĐµŃ‚Ń€ĐľĐ»ĐľĐłĐ¸Ń‡ĐµŃĐşĐ¸Đą Đ°Đ˛Ń‚ĐľĐĽĐľĐ±Đ¸Đ»ŃŚ",
+                gw_hoehenrettung: "ÐÐ²Ñ‚Ð¾Ð¼Ð¾Ð±Ð¸Ð»ÑŒ Ñ Ð»ÐµÑÑ‚Ð½Ð¸Ñ†ÐµÐ¹",
+                gw_messtechnik: "ÐœÐµÑ‚Ñ€Ð¾Ð»Ð¾Ð³Ð¸Ñ‡ÐµÑÐºÐ¸Ð¹ Ð°Ð²Ñ‚Ð¾Ð¼Ð¾Ð±Ð¸Ð»ÑŒ",
                 gw_oel_only: "",
                 gw_san: "",
                 gw_taucher: "",
-                gw_wasserrettung: "Đ’Đ»Đ°ĐłĐľŃĐ´ĐµŃ€Đ¶Đ°Đ˝Đ¸Đµ",
+                gw_wasserrettung: "Ð’Ð»Ð°Ð³Ð¾ÑƒÐ´ÐµÑ€Ð¶Ð°Ð½Ð¸Ðµ",
                 gw_werkfeuerwehr: "",
-                gwl2wasser_only: "ĐśĐ°ŃĐ¸Đ˝Đ° Ń Đ±Ń€Đ°Đ˝Đ´ŃĐżĐľĐąĐ˝Ń‚ĐľĐĽ",
-                hems: "Đ’ĐµŃ€Ń‚ĐľĐ»Ń‘Ń‚ Đ˝ĐµĐľŃ‚Đ»ĐľĐ¶Đ˝ĐľĐą ĐĽĐµĐ´Đ¸Ń†Đ¸Đ˝ŃĐşĐľĐą ĐżĐľĐĽĐľŃ‰Đ¸",
-                hlf_only: "ĐźĐˇĐ",
-                hlf_or_rw_and_lf: "ĐˇĐżĐ°ŃĐ°Ń‚ĐµĐ»Đ¸ Đ¸Đ»Đ¸ Ń‚ŃŹĐ¶Ń‘Đ»Ń‹Đµ ŃĐżĐ°ŃĐ°Ń‚ĐµĐ»Đ¸ Đ¸ ĐżĐľĐ¶Đ°Ń€Đ˝Ń‹Đą Đ°Đ˛Ń‚ĐľĐĽĐľĐ±Đ¸Đ»ŃŚ",
+                gwl2wasser_only: "ÐœÐ°ÑˆÐ¸Ð½Ð° Ñ Ð±Ñ€Ð°Ð½Ð´ÑÐ¿Ð¾Ð¹Ð½Ñ‚Ð¾Ð¼",
+                hems: "Ð’ÐµÑ€Ñ‚Ð¾Ð»Ñ‘Ñ‚ Ð½ÐµÐ¾Ñ‚Ð»Ð¾Ð¶Ð½Ð¾Ð¹ Ð¼ÐµÐ´Ð¸Ñ†Ð¸Ð½ÑÐºÐ¾Ð¹ Ð¿Ð¾Ð¼Ð¾Ñ‰Ð¸",
+                hlf_only: "ÐŸÐ¡Ð",
+                hlf_or_rw_and_lf: "Ð¡Ð¿Ð°ÑÐ°Ñ‚ÐµÐ»Ð¸ Ð¸Ð»Ð¸ Ñ‚ÑÐ¶Ñ‘Ð»Ñ‹Ðµ ÑÐ¿Ð°ÑÐ°Ñ‚ÐµÐ»Ð¸ Ð¸ Ð¿Ð¾Ð¶Ð°Ñ€Ð½Ñ‹Ð¹ Ð°Ð²Ñ‚Ð¾Ð¼Ð¾Ð±Ð¸Ð»ÑŒ",
                 hondengeleider: "",
-                k9: "ĐźĐľĐ´Ń€Đ°Đ·Đ´ĐµĐ»ĐµĐ˝Đ¸Đµ ĐşĐ¸Đ˝ĐľĐ»ĐľĐłĐľĐ˛",
+                k9: "ÐŸÐ¾Ð´Ñ€Ð°Ð·Ð´ÐµÐ»ÐµÐ½Ð¸Ðµ ÐºÐ¸Ð½Ð¾Ð»Ð¾Ð³Ð¾Ð²",
                 kdow_lna: "",
-                kdow_orgl: "Đ“Đ»Đ°Đ˛Đ° ŃĐşĐľŃ€ĐľĐą",
+                kdow_orgl: "Ð“Ð»Ð°Ð²Ð° ÑÐºÐ¾Ñ€Ð¾Ð¹",
                 ktw_b: "",
                 ktw_or_rtw: "",
-                lebefkw: "ĐžĐ±Đ»ĐµĐłŃ‡ĐµĐ˝Đ˝Ń‹Đą ĐşĐľĐĽĐ°Đ˝Đ´Đ˝Ń‹Đą ĐżŃĐ˝ĐşŃ‚",
-                lf_only: "ĐźĐľĐ¶Đ°Ń€Đ˝Ń‹Đµ ĐĽĐ°ŃĐ¸Đ˝Ń‹",
-                long_distance_ambulance: "Đ ĐµĐ°Đ˝Đ¸ĐĽĐľĐ±Đ¸Đ»ŃŚ",
-                mask_service_unit: "ĐśĐľĐ±Đ¸Đ»ŃŚĐ˝ĐľĐµ Đ˛ĐľĐ·Đ´ŃŃĐ˝ĐľĐµ ĐżĐľĐ´Ń€Đ°Đ·Đ´ĐµĐ»ĐµĐ˝Đ¸Đµ",
+                lebefkw: "ÐžÐ±Ð»ÐµÐ³Ñ‡ÐµÐ½Ð½Ñ‹Ð¹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ð¹ Ð¿ÑƒÐ½ÐºÑ‚",
+                lf_only: "ÐŸÐ¾Ð¶Ð°Ñ€Ð½Ñ‹Ðµ Ð¼Ð°ÑˆÐ¸Ð½Ñ‹",
+                long_distance_ambulance: "Ð ÐµÐ°Ð½Ð¸Ð¼Ð¾Ð±Ð¸Ð»ÑŒ",
+                mask_service_unit: "ÐœÐ¾Ð±Ð¸Ð»ÑŒÐ½Ð¾Ðµ Ð²Ð¾Ð·Ð´ÑƒÑˆÐ½Ð¾Ðµ Ð¿Ð¾Ð´Ñ€Ð°Ð·Ð´ÐµÐ»ÐµÐ½Ð¸Ðµ",
                 mek_mtf: "",
                 mek_zf: "",
-                mtw: "Đ˘Ń€Đ°Đ˝ŃĐżĐľŃ€Ń‚Ń‘Ń€",
-                mzb: "ĐśĐ˝ĐľĐłĐľŃ†ĐµĐ»ĐµĐ˛ĐľĐµ ŃŃĐ´Đ˝Đľ",
+                mtw: "Ð¢Ñ€Ð°Ð½ÑÐ¿Ð¾Ñ€Ñ‚Ñ‘Ñ€",
+                mzb: "ÐœÐ½Ð¾Ð³Ð¾Ñ†ÐµÐ»ÐµÐ²Ð¾Ðµ ÑÑƒÐ´Ð½Ð¾",
                 naw: "",
                 naw_or_rtw_and_nef: "",
                 naw_or_rtw_and_nef_or_rth: "",
-                nef_only: "ĐˇĐşĐľŃ€Đ°ŃŹ ĐżĐľĐĽĐľŃ‰ŃŚ",
-                oil_unit: "ĐśĐ°ŃĐ»ĐľŃĐ´Đ°Đ»Đ¸Ń‚ĐµĐ»ŃŚ",
+                nef_only: "Ð¡ÐºÐ¾Ñ€Ð°Ñ Ð¿Ð¾Ð¼Ð¾Ñ‰ÑŒ",
+                oil_unit: "ÐœÐ°ÑÐ»Ð¾ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÐµÐ»ÑŒ",
                 only_ab_dekon_p: "",
                 only_dekon_p: "",
                 ovd_p: "",
-                police_car: "ĐźĐ°Ń‚Ń€ŃĐ»ŃŚĐ˝Ń‹Đą Đ°Đ˛Ń‚ĐľĐĽĐľĐ±Đ¸Đ»ŃŚ",
-                polizeihubschrauber: "ĐźĐľĐ»Đ¸Ń†ĐµĐąŃĐşĐ¸Đą Đ˛ĐµŃ€Ń‚ĐľĐ»Ń‘Ń‚",
-                rescue_vehicle: "ĐśĐ°ŃĐ¸Đ˝Đ° Đ´Đ»ŃŹ ŃĐżĐ°ŃĐ°Ń‚ĐµĐ»ŃŚĐ˝Ń‹Ń… Ń€Đ°Đ±ĐľŃ‚ Đ˛ Ń‚ŃŹĐ¶Ń‘Đ»Ń‹Ń… ŃŃĐ»ĐľĐ˛Đ¸ŃŹŃ…",
-                rescue_vehicle_only: "ĐźĐľĐ´Ń€Đ°Đ·Đ´ĐµĐ»ĐµĐ˝Đ¸Đµ ŃĐżĐ°ŃĐ°Ń‚ĐµĐ»ĐµĐą Đ˛ Ń‚ŃŹĐ¶Ń‘Đ»Ń‹Ń… ŃŃĐ»ĐľĐ˛Đ¸ŃŹŃ…",
-                rescueboat: "Đ‘ĐľĐ»ŃŚŃĐľĐµ ŃĐżĐ°ŃĐ°Ń‚ĐµĐ»ŃŚĐ˝ĐľĐµ ŃŃĐ´Đ˝Đľ",
+                police_car: "ÐŸÐ°Ñ‚Ñ€ÑƒÐ»ÑŒÐ½Ñ‹Ð¹ Ð°Ð²Ñ‚Ð¾Ð¼Ð¾Ð±Ð¸Ð»ÑŒ",
+                polizeihubschrauber: "ÐŸÐ¾Ð»Ð¸Ñ†ÐµÐ¹ÑÐºÐ¸Ð¹ Ð²ÐµÑ€Ñ‚Ð¾Ð»Ñ‘Ñ‚",
+                rescue_vehicle: "ÐœÐ°ÑˆÐ¸Ð½Ð° Ð´Ð»Ñ ÑÐ¿Ð°ÑÐ°Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… Ñ€Ð°Ð±Ð¾Ñ‚ Ð² Ñ‚ÑÐ¶Ñ‘Ð»Ñ‹Ñ… ÑƒÑÐ»Ð¾Ð²Ð¸ÑÑ…",
+                rescue_vehicle_only: "ÐŸÐ¾Ð´Ñ€Ð°Ð·Ð´ÐµÐ»ÐµÐ½Ð¸Ðµ ÑÐ¿Ð°ÑÐ°Ñ‚ÐµÐ»ÐµÐ¹ Ð² Ñ‚ÑÐ¶Ñ‘Ð»Ñ‹Ñ… ÑƒÑÐ»Ð¾Ð²Ð¸ÑÑ…",
+                rescueboat: "Ð‘Ð¾Ð»ÑŒÑˆÐ¾Ðµ ÑÐ¿Ð°ÑÐ°Ñ‚ÐµÐ»ÑŒÐ½Ð¾Ðµ ÑÑƒÐ´Ð½Ð¾",
                 rettungstreppe: "",
-                rth_only: "ĐśĐµĐ´Đ¸Ń†Đ¸Đ˝ŃĐşĐ¸Đą Đ˛ĐµŃ€Ń‚ĐľĐ»Ń‘Ń‚",
-                schlauchwagen: "Đ¦Đ¸ŃŃ‚ĐµŃ€Đ˝Đ° Ń Đ˛ĐľĐ´ĐľĐą",
+                rth_only: "ÐœÐµÐ´Ð¸Ñ†Ð¸Ð½ÑÐºÐ¸Ð¹ Ð²ÐµÑ€Ñ‚Ð¾Ð»Ñ‘Ñ‚",
+                schlauchwagen: "Ð¦Ð¸ÑÑ‚ÐµÑ€Ð½Ð° Ñ Ð²Ð¾Ð´Ð¾Ð¹",
                 seg_elw: "",
                 sek_mtf: "",
                 sek_zf: "",
-                swat: "ĐˇĐżĐµŃ†Đ˝Đ°Đ·",
-                swat_armored_vehicle: "Đ‘Ń€ĐľĐ˝ĐµĐĽĐľĐ±Đ¸Đ»ŃŚ ŃĐżĐµŃ†Đ˝Đ°Đ·Đ°",
-                swat_suv: "Đ’Đ˝ĐµĐ´ĐľŃ€ĐľĐ¶Đ˝Đ¸Đş ŃĐżĐµŃ†Đ˝Đ°Đ·Đ°",
+                swat: "Ð¡Ð¿ÐµÑ†Ð½Ð°Ð·",
+                swat_armored_vehicle: "Ð‘Ñ€Ð¾Ð½ÐµÐ¼Ð¾Ð±Ð¸Ð»ÑŒ ÑÐ¿ÐµÑ†Ð½Ð°Ð·Ð°",
+                swat_suv: "Ð’Ð½ÐµÐ´Ð¾Ñ€Ð¾Ð¶Ð½Ð¸Ðº ÑÐ¿ÐµÑ†Ð½Ð°Ð·Ð°",
                 thw_anh_mzab: "",
                 thw_anh_mzb: "",
                 thw_anh_schlb: "",
@@ -5881,14 +5815,14 @@ function deleteMissionPosition(e) {
                 thw_lkw: "",
                 thw_lkw_7_lkr_19_tm: "",
                 thw_mlw5: "",
-                thw_mtw: "ĐĐ˛Ń‚ĐľĐĽĐľĐ±Đ¸Đ»ŃŚ Ń‚ĐµŃ…Đ˝Đ¸Ń‡ĐµŃĐşĐľĐą ŃĐ»ŃĐ¶Đ±Ń‹ (ĐĐ˘Đˇ - ĐśĐ§Đˇ)",
-                thw_mzkw: "Đ“Ń€ŃĐ·ĐľĐ˛Đ¸Đş Ń Đ±ĐľŃ€Ń‚ĐľĐĽ ĐżĐľĐ´ŃŠĐµĐĽĐ˝Đ¸ĐşĐľĐĽ (Đ“Ń€Đ‘Đź)",
-                thw_tauchkraftwagen: "ĐšĐľĐĽĐ°Đ˝Đ´Đ° Đ˛ĐľĐ´ĐľĐ»Đ°Đ·ĐľĐ˛",
+                thw_mtw: "ÐÐ²Ñ‚Ð¾Ð¼Ð¾Ð±Ð¸Ð»ÑŒ Ñ‚ÐµÑ…Ð½Ð¸Ñ‡ÐµÑÐºÐ¾Ð¹ ÑÐ»ÑƒÐ¶Ð±Ñ‹ (ÐÐ¢Ð¡ - ÐœÐ§Ð¡)",
+                thw_mzkw: "Ð“Ñ€ÑƒÐ·Ð¾Ð²Ð¸Ðº Ñ Ð±Ð¾Ñ€Ñ‚Ð¾Ð¼ Ð¿Ð¾Ð´ÑŠÐµÐ¼Ð½Ð¸ÐºÐ¾Ð¼ (Ð“Ñ€Ð‘ÐŸ)",
+                thw_tauchkraftwagen: "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð° Ð²Ð¾Ð´Ð¾Ð»Ð°Ð·Ð¾Ð²",
                 thw_tauchkraftwagen_or_gw_taucher: "",
-                tlf_only: "ĐśĐ°ŃĐ¸Đ˝Đ° Đ˛ĐľĐ´ĐľĐ»Đ°Đ·ĐľĐ˛",
+                tlf_only: "ÐœÐ°ÑˆÐ¸Ð½Ð° Ð²Ð¾Ð´Ð¾Ð»Ð°Ð·Ð¾Ð²",
                 tm50: "",
                 turboloescher: "",
-                turntable_ladder: "ĐźĐ»Đ°Ń‚Ń„ĐľŃ€ĐĽŃ‹",
+                turntable_ladder: "ÐŸÐ»Ð°Ñ‚Ñ„Ð¾Ñ€Ð¼Ñ‹",
                 ulf: "",
                 wasserwerfer: "",
                 water_amount: "",
@@ -5900,154 +5834,154 @@ function deleteMissionPosition(e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: "Đ˘ĐµĐżĐµŃ€ŃŚ Đ˝Đ°Đ·ĐľĐ˛Đ¸Ń‚Đµ ŃĐ˛ĐľŃŽ Đ˝ĐľĐ˛ŃŃŽ ŃŃ‚Đ°Đ˝Ń†Đ¸ŃŽ! Đ’Ń‹Đ±ĐµŃ€Đ¸Ń‚Đµ ŃĐ·Đ˝Đ°Đ˛Đ°ĐµĐĽĐľĐµ Đ¸ Đ˝Đµ ĐľŃ‡ĐµĐ˝ŃŚ Đ´Đ»Đ¸Đ˝Đ˝ĐľĐµ Đ˝Đ°Đ·Đ˛Đ°Đ˝Đ¸Đµ! ĐťĐ°ĐżŃ€Đ¸ĐĽĐµŃ€, Â«ĐźĐľĐ¶Đ°Ń€Đ˝Đ°ŃŹ ŃŃ‚Đ°Đ˝Ń†Đ¸ŃŹ â„–0001Â». ĐšĐľĐłĐ´Đ° Đ·Đ°ĐşĐľĐ˝Ń‡Đ¸Ń‚Đµ, Đ˝Đ°Đ¶ĐĽĐ¸Ń‚Đµ Â«Đ”Đ°Đ»ĐµĐµÂ»!",
-                            build_with_credits: "Đ˘ĐµĐżĐµŃ€ŃŚ ĐżĐľŃŃ‚Ń€ĐľĐąŃ‚Đµ Đ·Đ´Đ°Đ˝Đ¸Đµ Đ·Đ° ĐşŃ€ĐµĐ´Đ¸Ń‚Ń‹!",
-                            new_building: "Đ©Ń‘Đ»ĐşĐ˝Đ¸Ń‚Đµ ĐşĐ˝ĐľĐżĐşŃ Â«ĐťĐľĐ˛ĐľĐµ Đ·Đ´Đ°Đ˝Đ¸ĐµÂ»!",
-                            select_building: "ĐˇĐżĐµŃ€Đ˛Đ° Đ˛Ń‹Đ±ĐµŃ€Đ¸Ń‚Đµ Ń‚Đ¸Đż Đ·Đ´Đ°Đ˝Đ¸ŃŹ. ĐźŃ€ĐµĐ´Đ»Đ°ĐłĐ°ĐµĐĽ Đ˝Đ°Ń‡Đ°Ń‚ŃŚ Ń ĐżĐľĐ¶Đ°Ń€Đ˝ĐľĐą Ń‡Đ°ŃŃ‚Đ¸! Đ˘Đ°Đş Đ¸Đ»Đ¸ Đ¸Đ˝Đ°Ń‡Đµ, Đ˝Đľ Ń€ĐµĐşĐľĐĽĐµĐ˝Đ´ŃĐµĐĽ Đ˝Đ°Ń‡Đ°Ń‚ŃŚ Ń Đ˝ĐµĐ±ĐľĐ»ŃŚŃĐľĐą ŃŃ‚Đ°Đ˝Ń†Đ¸Đ¸!",
-                            select_position: "ĐźĐµŃ€ĐµĐĽĐµŃŃ‚Đ¸Ń‚Đµ ŃĐ¸Đ˝ŃŽŃŽ ĐĽĐµŃ‚ĐşŃ Ń‚ŃĐ´Đ°, ĐłĐ´Đµ Ń…ĐľŃ‚Đ¸Ń‚Đµ ĐżĐľŃŃ‚Ń€ĐľĐ¸Ń‚ŃŚ ŃĐ˛ĐľŃŽ ĐżĐµŃ€Đ˛ŃŃŽ ŃŃ‚Đ°Đ˝Ń†Đ¸ŃŽ!"
+                            add_name: "Ð¢ÐµÐ¿ÐµÑ€ÑŒ Ð½Ð°Ð·Ð¾Ð²Ð¸Ñ‚Ðµ ÑÐ²Ð¾ÑŽ Ð½Ð¾Ð²ÑƒÑŽ ÑÑ‚Ð°Ð½Ñ†Ð¸ÑŽ! Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ ÑƒÐ·Ð½Ð°Ð²Ð°ÐµÐ¼Ð¾Ðµ Ð¸ Ð½Ðµ Ð¾Ñ‡ÐµÐ½ÑŒ Ð´Ð»Ð¸Ð½Ð½Ð¾Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ! ÐÐ°Ð¿Ñ€Ð¸Ð¼ÐµÑ€, Â«ÐŸÐ¾Ð¶Ð°Ñ€Ð½Ð°Ñ ÑÑ‚Ð°Ð½Ñ†Ð¸Ñ â„–0001Â». ÐšÐ¾Ð³Ð´Ð° Ð·Ð°ÐºÐ¾Ð½Ñ‡Ð¸Ñ‚Ðµ, Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ Â«Ð”Ð°Ð»ÐµÐµÂ»!",
+                            build_with_credits: "Ð¢ÐµÐ¿ÐµÑ€ÑŒ Ð¿Ð¾ÑÑ‚Ñ€Ð¾Ð¹Ñ‚Ðµ Ð·Ð´Ð°Ð½Ð¸Ðµ Ð·Ð° ÐºÑ€ÐµÐ´Ð¸Ñ‚Ñ‹!",
+                            new_building: "Ð©Ñ‘Ð»ÐºÐ½Ð¸Ñ‚Ðµ ÐºÐ½Ð¾Ð¿ÐºÑƒ Â«ÐÐ¾Ð²Ð¾Ðµ Ð·Ð´Ð°Ð½Ð¸ÐµÂ»!",
+                            select_building: "Ð¡Ð¿ÐµÑ€Ð²Ð° Ð²Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ñ‚Ð¸Ð¿ Ð·Ð´Ð°Ð½Ð¸Ñ. ÐŸÑ€ÐµÐ´Ð»Ð°Ð³Ð°ÐµÐ¼ Ð½Ð°Ñ‡Ð°Ñ‚ÑŒ Ñ Ð¿Ð¾Ð¶Ð°Ñ€Ð½Ð¾Ð¹ Ñ‡Ð°ÑÑ‚Ð¸! Ð¢Ð°Ðº Ð¸Ð»Ð¸ Ð¸Ð½Ð°Ñ‡Ðµ, Ð½Ð¾ Ñ€ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÐµÐ¼ Ð½Ð°Ñ‡Ð°Ñ‚ÑŒ Ñ Ð½ÐµÐ±Ð¾Ð»ÑŒÑˆÐ¾Ð¹ ÑÑ‚Ð°Ð½Ñ†Ð¸Ð¸!",
+                            select_position: "ÐŸÐµÑ€ÐµÐ¼ÐµÑÑ‚Ð¸Ñ‚Ðµ ÑÐ¸Ð½ÑŽÑŽ Ð¼ÐµÑ‚ÐºÑƒ Ñ‚ÑƒÐ´Ð°, Ð³Ð´Ðµ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¿Ð¾ÑÑ‚Ñ€Ð¾Ð¸Ñ‚ÑŒ ÑÐ²Ð¾ÑŽ Ð¿ÐµÑ€Ð²ÑƒÑŽ ÑÑ‚Ð°Ð½Ñ†Ð¸ÑŽ!"
                         },
-                        pick_location: "ĐźĐµŃ€Đ˛Ń‹ĐĽ Đ´ĐµĐ»ĐľĐĽ Đ´Đ°Đ˛Đ°ĐąŃ‚Đµ Đ˛Ń‹Đ±ĐµŃ€ĐµĐĽ ĐĽĐµŃŃ‚Đľ, ĐľŃ‚ĐşŃĐ´Đ° Đ˛Ń‹ Đ˝Đ°Ń‡Đ˝ĐµŃ‚Đµ ŃĐ˛ĐľĐą ĐżŃŃ‚ŃŚ! Đ’Đ˛ĐµĐ´Đ¸Ń‚Đµ Đ˝Đ°Đ·Đ˛Đ°Đ˝Đ¸Đµ ĐĽĐµŃŃ‚Đ° Đ˛ ĐżĐľĐ¸ŃĐşĐľĐ˛ŃŃŽ ŃŃ‚Ń€ĐľĐşŃ Đ¸Đ»Đ¸ ŃĐ°ĐĽĐľŃŃ‚ĐľŃŹŃ‚ĐµĐ»ŃŚĐ˝Đľ Đ˝Đ°ĐąĐ´Đ¸Ń‚Đµ ĐµĐłĐľ Đ˝Đ° ĐşĐ°Ń€Ń‚Đµ! ĐšĐ°Đş Đ˝Đ°ŃŃ‡ĐµŃ‚ Đ˛Đ°ŃĐµĐłĐľ Ń€ĐľĐ´Đ˝ĐľĐłĐľ ĐłĐľŃ€ĐľĐ´Đ°?",
-                        welcome: "Đ”ĐľĐ±Ń€Đľ ĐżĐľĐ¶Đ°Đ»ĐľĐ˛Đ°Ń‚ŃŚ Đ˛ Â«Đ”Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ 112Â»!  ĐŻ ĐżŃ€ĐµĐżĐľĐ´Đ°ĐĽ Đ˛Đ°ĐĽ Đ˝ĐµŃĐşĐľĐ»ŃŚĐşĐľ ŃŃ€ĐľĐşĐľĐ˛, ĐşĐľŃ‚ĐľŃ€Ń‹Đµ ĐżĐľĐĽĐľĐłŃŃ‚ Đ˝Đ°Ń‡Đ°Ń‚ŃŚ ĐşĐ°Ń€ŃŚĐµŃ€Ń ŃĐżĐ°ŃĐ°Ń‚ĐµĐ»ŃŹ!"
+                        pick_location: "ÐŸÐµÑ€Ð²Ñ‹Ð¼ Ð´ÐµÐ»Ð¾Ð¼ Ð´Ð°Ð²Ð°Ð¹Ñ‚Ðµ Ð²Ñ‹Ð±ÐµÑ€ÐµÐ¼ Ð¼ÐµÑÑ‚Ð¾, Ð¾Ñ‚ÐºÑƒÐ´Ð° Ð²Ñ‹ Ð½Ð°Ñ‡Ð½ÐµÑ‚Ðµ ÑÐ²Ð¾Ð¹ Ð¿ÑƒÑ‚ÑŒ! Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð¼ÐµÑÑ‚Ð° Ð² Ð¿Ð¾Ð¸ÑÐºÐ¾Ð²ÑƒÑŽ ÑÑ‚Ñ€Ð¾ÐºÑƒ Ð¸Ð»Ð¸ ÑÐ°Ð¼Ð¾ÑÑ‚Ð¾ÑÑ‚ÐµÐ»ÑŒÐ½Ð¾ Ð½Ð°Ð¹Ð´Ð¸Ñ‚Ðµ ÐµÐ³Ð¾ Ð½Ð° ÐºÐ°Ñ€Ñ‚Ðµ! ÐšÐ°Ðº Ð½Ð°ÑÑ‡ÐµÑ‚ Ð²Ð°ÑˆÐµÐ³Ð¾ Ñ€Ð¾Ð´Ð½Ð¾Ð³Ð¾ Ð³Ð¾Ñ€Ð¾Ð´Ð°?",
+                        welcome: "Ð”Ð¾Ð±Ñ€Ð¾ Ð¿Ð¾Ð¶Ð°Ð»Ð¾Ð²Ð°Ñ‚ÑŒ Ð² Â«Ð”Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ 112Â»!  Ð¯ Ð¿Ñ€ÐµÐ¿Ð¾Ð´Ð°Ð¼ Ð²Ð°Ð¼ Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ ÑƒÑ€Ð¾ÐºÐ¾Ð², ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð¿Ð¾Ð¼Ð¾Ð³ÑƒÑ‚ Ð½Ð°Ñ‡Ð°Ñ‚ÑŒ ÐºÐ°Ñ€ÑŒÐµÑ€Ñƒ ÑÐ¿Ð°ÑÐ°Ñ‚ÐµÐ»Ñ!"
                     },
                     mobile: {
                         build_building: {
-                            add_name: "Đ˘ĐµĐżĐµŃ€ŃŚ Đ˝Đ°Đ·ĐľĐ˛Đ¸Ń‚Đµ ŃĐ˛ĐľŃŽ Đ˝ĐľĐ˛ŃŃŽ ŃŃ‚Đ°Đ˝Ń†Đ¸ŃŽ! Đ’Ń‹Đ±ĐµŃ€Đ¸Ń‚Đµ ŃĐ·Đ˝Đ°Đ˛Đ°ĐµĐĽĐľĐµ Đ¸ Đ˝Đµ ĐľŃ‡ĐµĐ˝ŃŚ Đ´Đ»Đ¸Đ˝Đ˝ĐľĐµ Đ˝Đ°Đ·Đ˛Đ°Đ˝Đ¸Đµ! ĐťĐ°ĐżŃ€Đ¸ĐĽĐµŃ€, Â«ĐźĐľĐ¶Đ°Ń€Đ˝Đ°ŃŹ ŃŃ‚Đ°Đ˝Ń†Đ¸ŃŹ â„–0001Â». ĐšĐľĐłĐ´Đ° Đ·Đ°ĐşĐľĐ˝Ń‡Đ¸Ń‚Đµ, Đ˝Đ°Đ¶ĐĽĐ¸Ń‚Đµ Â«Đ”Đ°Đ»ĐµĐµÂ»!",
-                            build_with_credits: "Đ˘ĐµĐżĐµŃ€ŃŚ ĐżĐľŃŃ‚Ń€ĐľĐąŃ‚Đµ Đ·Đ´Đ°Đ˝Đ¸Đµ Đ·Đ° ĐşŃ€ĐµĐ´Đ¸Ń‚Ń‹!",
-                            new_building: "ĐˇĐżĐµŃ€Đ˛Đ° Đ´Đ°Đ˛Đ°ĐąŃ‚Đµ Đ˛Ń‹Đ±ĐµŃ€ĐµĐĽ ĐĽĐµŃŃ‚Đľ, ĐľŃ‚ĐşŃĐ´Đ° Đ˛Ń‹ Đ˝Đ°Ń‡Đ˝ĐµŃ‚Đµ ŃĐ˛ĐľĐą ĐżŃŃ‚ŃŚ, Đ¸ ĐżĐľŃŃ‚Ń€ĐľĐ¸ĐĽ Ń‚Đ°ĐĽ Đ˛Đ°ŃĐµ ĐżĐµŃ€Đ˛ĐľĐµ Đ·Đ´Đ°Đ˝Đ¸Đµ! <br /> <br /> Đ”Đ»ŃŹ ŃŤŃ‚ĐľĐłĐľ Ń‰Ń‘Đ»ĐşĐ˝Đ¸Ń‚Đµ ĐşĐ˝ĐľĐżĐşŃ Â«ĐťĐľĐ˛ĐľĐµ Đ·Đ´Đ°Đ˝Đ¸ĐµÂ»!",
-                            select_building: "ĐˇĐżĐµŃ€Đ˛Đ° Đ˛Ń‹Đ±ĐµŃ€Đ¸Ń‚Đµ Ń‚Đ¸Đż Đ·Đ´Đ°Đ˝Đ¸ŃŹ. ĐźŃ€ĐµĐ´Đ»Đ°ĐłĐ°ĐµĐĽ Đ˝Đ°Ń‡Đ°Ń‚ŃŚ Ń ĐżĐľĐ¶Đ°Ń€Đ˝ĐľĐą Ń‡Đ°ŃŃ‚Đ¸! Đ˘Đ°Đş Đ¸Đ»Đ¸ Đ¸Đ˝Đ°Ń‡Đµ, Đ˝Đľ Ń€ĐµĐşĐľĐĽĐµĐ˝Đ´ŃĐµĐĽ Đ˝Đ°Ń‡Đ°Ń‚ŃŚ Ń Đ˝ĐµĐ±ĐľĐ»ŃŚŃĐľĐą ŃŃ‚Đ°Đ˝Ń†Đ¸Đ¸!"
+                            add_name: "Ð¢ÐµÐ¿ÐµÑ€ÑŒ Ð½Ð°Ð·Ð¾Ð²Ð¸Ñ‚Ðµ ÑÐ²Ð¾ÑŽ Ð½Ð¾Ð²ÑƒÑŽ ÑÑ‚Ð°Ð½Ñ†Ð¸ÑŽ! Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ ÑƒÐ·Ð½Ð°Ð²Ð°ÐµÐ¼Ð¾Ðµ Ð¸ Ð½Ðµ Ð¾Ñ‡ÐµÐ½ÑŒ Ð´Ð»Ð¸Ð½Ð½Ð¾Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ! ÐÐ°Ð¿Ñ€Ð¸Ð¼ÐµÑ€, Â«ÐŸÐ¾Ð¶Ð°Ñ€Ð½Ð°Ñ ÑÑ‚Ð°Ð½Ñ†Ð¸Ñ â„–0001Â». ÐšÐ¾Ð³Ð´Ð° Ð·Ð°ÐºÐ¾Ð½Ñ‡Ð¸Ñ‚Ðµ, Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ Â«Ð”Ð°Ð»ÐµÐµÂ»!",
+                            build_with_credits: "Ð¢ÐµÐ¿ÐµÑ€ÑŒ Ð¿Ð¾ÑÑ‚Ñ€Ð¾Ð¹Ñ‚Ðµ Ð·Ð´Ð°Ð½Ð¸Ðµ Ð·Ð° ÐºÑ€ÐµÐ´Ð¸Ñ‚Ñ‹!",
+                            new_building: "Ð¡Ð¿ÐµÑ€Ð²Ð° Ð´Ð°Ð²Ð°Ð¹Ñ‚Ðµ Ð²Ñ‹Ð±ÐµÑ€ÐµÐ¼ Ð¼ÐµÑÑ‚Ð¾, Ð¾Ñ‚ÐºÑƒÐ´Ð° Ð²Ñ‹ Ð½Ð°Ñ‡Ð½ÐµÑ‚Ðµ ÑÐ²Ð¾Ð¹ Ð¿ÑƒÑ‚ÑŒ, Ð¸ Ð¿Ð¾ÑÑ‚Ñ€Ð¾Ð¸Ð¼ Ñ‚Ð°Ð¼ Ð²Ð°ÑˆÐµ Ð¿ÐµÑ€Ð²Ð¾Ðµ Ð·Ð´Ð°Ð½Ð¸Ðµ! <br /> <br /> Ð”Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ‰Ñ‘Ð»ÐºÐ½Ð¸Ñ‚Ðµ ÐºÐ½Ð¾Ð¿ÐºÑƒ Â«ÐÐ¾Ð²Ð¾Ðµ Ð·Ð´Ð°Ð½Ð¸ÐµÂ»!",
+                            select_building: "Ð¡Ð¿ÐµÑ€Ð²Ð° Ð²Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ñ‚Ð¸Ð¿ Ð·Ð´Ð°Ð½Ð¸Ñ. ÐŸÑ€ÐµÐ´Ð»Ð°Ð³Ð°ÐµÐ¼ Ð½Ð°Ñ‡Ð°Ñ‚ÑŒ Ñ Ð¿Ð¾Ð¶Ð°Ñ€Ð½Ð¾Ð¹ Ñ‡Ð°ÑÑ‚Ð¸! Ð¢Ð°Ðº Ð¸Ð»Ð¸ Ð¸Ð½Ð°Ñ‡Ðµ, Ð½Ð¾ Ñ€ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÐµÐ¼ Ð½Ð°Ñ‡Ð°Ñ‚ÑŒ Ñ Ð½ÐµÐ±Ð¾Ð»ÑŒÑˆÐ¾Ð¹ ÑÑ‚Ð°Ð½Ñ†Ð¸Ð¸!"
                         },
-                        welcome: "Đ”ĐľĐ±Ń€Đľ ĐżĐľĐ¶Đ°Đ»ĐľĐ˛Đ°Ń‚ŃŚ Đ˛ Â«Đ”Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ 112Â»!  ĐŻ ĐżŃ€ĐµĐżĐľĐ´Đ°ĐĽ Đ˛Đ°ĐĽ Đ˝ĐµŃĐşĐľĐ»ŃŚĐşĐľ ŃŃ€ĐľĐşĐľĐ˛, ĐşĐľŃ‚ĐľŃ€Ń‹Đµ ĐżĐľĐĽĐľĐłŃŃ‚ Đ˝Đ°Ń‡Đ°Ń‚ŃŚ ĐşĐ°Ń€ŃŚĐµŃ€Ń ŃĐżĐ°ŃĐ°Ń‚ĐµĐ»ŃŹ!"
+                        welcome: "Ð”Ð¾Ð±Ñ€Ð¾ Ð¿Ð¾Ð¶Ð°Ð»Ð¾Ð²Ð°Ñ‚ÑŒ Ð² Â«Ð”Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ 112Â»!  Ð¯ Ð¿Ñ€ÐµÐ¿Ð¾Ð´Ð°Ð¼ Ð²Ð°Ð¼ Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ ÑƒÑ€Ð¾ÐºÐ¾Ð², ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð¿Ð¾Ð¼Ð¾Ð³ÑƒÑ‚ Ð½Ð°Ñ‡Ð°Ñ‚ÑŒ ÐºÐ°Ñ€ÑŒÐµÑ€Ñƒ ÑÐ¿Ð°ÑÐ°Ñ‚ÐµÐ»Ñ!"
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Đ­Ń‚Đľ ĐĽĐµĐ˝ŃŽ ĐľŃ‚ĐżŃ€Đ°Đ˛ĐşĐ¸. Đˇ ĐµĐłĐľ ĐżĐľĐĽĐľŃ‰ŃŚŃŽ Đ˛Ń‹ ĐĽĐľĐ¶ĐµŃ‚Đµ ĐľŃ‚ĐżŃ€Đ°Đ˛Đ»ŃŹŃ‚ŃŚ ĐżĐľĐ´Ń€Đ°Đ·Đ´ĐµĐ»ĐµĐ˝Đ¸ŃŹ Đ˝Đ° Đ·Đ°Đ´Đ°Đ˝Đ¸ŃŹ!",
-                            dispatch_menu_buttons: "Đ­Ń‚Đľ Đ´Đ˛Đµ ĐşĐ˝ĐľĐżĐşĐ¸ ĐľŃ‚ĐżŃ€Đ°Đ˛ĐşĐ¸. ĐźĐµŃ€Đ˛Đ°ŃŹ ĐşĐ˝ĐľĐżĐşĐ°, Â«ĐžŃ‚ĐżŃ€Đ°Đ˛Đ¸Ń‚ŃŚÂ», ĐľŃ‚ĐżŃ€Đ°Đ˛Đ»ŃŹĐµŃ‚ Đ˛Ń‹Đ±Ń€Đ°Đ˝Đ˝Ń‹Đµ ĐżĐľĐ´Ń€Đ°Đ·Đ´ĐµĐ»ĐµĐ˝Đ¸ŃŹ Đ˝Đ° Đ·Đ°Đ´Đ°Đ˝Đ¸Đµ. Đ’Ń‚ĐľŃ€Đ°ŃŹ Đ´ĐµĐ»Đ°ĐµŃ‚ Ń‚Đľ Đ¶Đµ ŃĐ°ĐĽĐľĐµ, Đ˝Đľ Ń ĐżĐµŃ€ĐµŃ…ĐľĐ´ĐľĐĽ Đş ŃĐ»ĐµĐ´ŃŃŽŃ‰ĐµĐĽŃ Đ·Đ°Đ´Đ°Đ˝Đ¸ŃŽ. Đ©Ń‘Đ»ĐşĐ˝Đ¸Ń‚Đµ ĐżĐµŃ€Đ˛ŃŃŽ ĐşĐ˝ĐľĐżĐşŃ.",
-                            dispatch_menu_mission_general: "Đ—Đ´ĐµŃŃŚ ĐżŃ€Đ¸Đ˛ĐµĐ´ĐµĐ˝Đ° ĐľĐ±Ń‰Đ°ŃŹ Đ¸Đ˝Ń„ĐľŃ€ĐĽĐ°Ń†Đ¸ŃŹ Đľ Đ·Đ°Đ´Đ°Đ˝Đ¸Đ¸: Đ˝Đ°Đ·Đ˛Đ°Đ˝Đ¸Đµ, Đ°Đ´Ń€ĐµŃ Đ¸ Đ·Đ˝Đ°Ń‡ĐľĐş. Đ—Đ°Đ´Đ°Đ˝Đ¸ŃŹ, ĐşĐľŃ‚ĐľŃ€Ń‹Đµ Đ˛Ń‹ ŃĐ¶Đµ Đ˛Ń‹ĐżĐľĐ»Đ˝ŃŹĐµŃ‚Đµ, ĐľŃ‚ĐĽĐµŃ‡ĐµĐ˝Ń‹ Đ·Đ˝Đ°Ń‡ĐşĐľĐĽ Ń‡ĐµĐ»ĐľĐ˛ĐµŃ‡ĐşĐ°, Đ° Đ˝Đµ Đ·Đ˛ĐµĐ·Đ´ĐľŃ‡ĐşĐľĐą.",
-                            dispatch_menu_mission_progress: "Đ—Đ´ĐµŃŃŚ ĐĽĐľĐ¶Đ˝Đľ ŃĐ·Đ˝Đ°Ń‚ŃŚ ĐżŃ€ĐľĐłŃ€ĐµŃŃ Đ˛Ń‹ĐżĐľĐ»Đ˝ĐµĐ˝Đ¸ŃŹ Đ·Đ°Đ´Đ°Đ˝Đ¸ŃŹ, ĐşĐľĐ»Đ¸Ń‡ĐµŃŃ‚Đ˛Đľ ŃĐľŃ‚Ń€ŃĐ´Đ˝Đ¸ĐşĐľĐ˛ Đ˝Đ° ĐĽĐµŃŃ‚Đµ Đ¸Đ˝Ń†Đ¸Đ´ĐµĐ˝Ń‚Đ° Đ¸ Đ˛Ń€ĐµĐĽŃŹ Đ´Đľ Đ·Đ°Đ˛ĐµŃ€ŃĐµĐ˝Đ¸ŃŹ Đ·Đ°Đ´Đ°Đ˝Đ¸ŃŹ.",
-                            dispatch_menu_mission_specific: "Đ—Đ´ĐµŃŃŚ ĐżŃ€ĐµĐ´ŃŃ‚Đ°Đ˛Đ»ĐµĐ˝Đ° ĐżĐľĐ´Ń€ĐľĐ±Đ˝Đ°ŃŹ Đ¸Đ˝Ń„ĐľŃ€ĐĽĐ°Ń†Đ¸ŃŹ Đľ Đ·Đ°Đ´Đ°Đ˝Đ¸Đ¸, Đ° Ń‚Đ°ĐşĐ¶Đµ ĐľĐ± ĐľŃ‚ĐżŃ€Đ°Đ˛Đ»ĐµĐ˝Đ˝Ń‹Ń… Đ˝Đ° Đ˛Ń‹Đ·ĐľĐ˛ Đ¸ ŃĐ¶Đµ Đ˝Đ°Ń…ĐľĐ´ŃŹŃ‰Đ¸Ń…ŃŃŹ Đ˝Đ° ĐĽĐµŃŃ‚Đµ ĐżĐľĐ´Ń€Đ°Đ·Đ´ĐµĐ»ĐµĐ˝Đ¸ŃŹŃ….",
-                            dispatch_menu_vehicle_list: "Đ­Ń‚Đľ ŃĐżĐ¸ŃĐľĐş Đ´ĐľŃŃ‚ŃĐżĐ˝Ń‹Ń… ĐĽĐ°ŃĐ¸Đ˝. Đ—Đ´ĐµŃŃŚ ĐĽĐľĐ¶Đ˝Đľ Đ˛Ń‹Đ±Ń€Đ°Ń‚ŃŚ ĐĽĐ°ŃĐ¸Đ˝Ń‹. Đ’Ń‹Đ±ĐµŃ€Đ¸Ń‚Đµ ĐĽĐ°ŃĐ¸Đ˝Ń, Ń‰Ń‘Đ»ĐşĐ˝ŃĐ˛ ĐµŃ‘!"
+                            dispatch_menu: "Ð­Ñ‚Ð¾ Ð¼ÐµÐ½ÑŽ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸. Ð¡ ÐµÐ³Ð¾ Ð¿Ð¾Ð¼Ð¾Ñ‰ÑŒÑŽ Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚ÑŒ Ð¿Ð¾Ð´Ñ€Ð°Ð·Ð´ÐµÐ»ÐµÐ½Ð¸Ñ Ð½Ð° Ð·Ð°Ð´Ð°Ð½Ð¸Ñ!",
+                            dispatch_menu_buttons: "Ð­Ñ‚Ð¾ Ð´Ð²Ðµ ÐºÐ½Ð¾Ð¿ÐºÐ¸ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸. ÐŸÐµÑ€Ð²Ð°Ñ ÐºÐ½Ð¾Ð¿ÐºÐ°, Â«ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒÂ», Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÐµÑ‚ Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð½Ñ‹Ðµ Ð¿Ð¾Ð´Ñ€Ð°Ð·Ð´ÐµÐ»ÐµÐ½Ð¸Ñ Ð½Ð° Ð·Ð°Ð´Ð°Ð½Ð¸Ðµ. Ð’Ñ‚Ð¾Ñ€Ð°Ñ Ð´ÐµÐ»Ð°ÐµÑ‚ Ñ‚Ð¾ Ð¶Ðµ ÑÐ°Ð¼Ð¾Ðµ, Ð½Ð¾ Ñ Ð¿ÐµÑ€ÐµÑ…Ð¾Ð´Ð¾Ð¼ Ðº ÑÐ»ÐµÐ´ÑƒÑŽÑ‰ÐµÐ¼Ñƒ Ð·Ð°Ð´Ð°Ð½Ð¸ÑŽ. Ð©Ñ‘Ð»ÐºÐ½Ð¸Ñ‚Ðµ Ð¿ÐµÑ€Ð²ÑƒÑŽ ÐºÐ½Ð¾Ð¿ÐºÑƒ.",
+                            dispatch_menu_mission_general: "Ð—Ð´ÐµÑÑŒ Ð¿Ñ€Ð¸Ð²ÐµÐ´ÐµÐ½Ð° Ð¾Ð±Ñ‰Ð°Ñ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ Ð¾ Ð·Ð°Ð´Ð°Ð½Ð¸Ð¸: Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ, Ð°Ð´Ñ€ÐµÑ Ð¸ Ð·Ð½Ð°Ñ‡Ð¾Ðº. Ð—Ð°Ð´Ð°Ð½Ð¸Ñ, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð²Ñ‹ ÑƒÐ¶Ðµ Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÑÐµÑ‚Ðµ, Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ñ‹ Ð·Ð½Ð°Ñ‡ÐºÐ¾Ð¼ Ñ‡ÐµÐ»Ð¾Ð²ÐµÑ‡ÐºÐ°, Ð° Ð½Ðµ Ð·Ð²ÐµÐ·Ð´Ð¾Ñ‡ÐºÐ¾Ð¹.",
+                            dispatch_menu_mission_progress: "Ð—Ð´ÐµÑÑŒ Ð¼Ð¾Ð¶Ð½Ð¾ ÑƒÐ·Ð½Ð°Ñ‚ÑŒ Ð¿Ñ€Ð¾Ð³Ñ€ÐµÑÑ Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ñ Ð·Ð°Ð´Ð°Ð½Ð¸Ñ, ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ¾Ð² Ð½Ð° Ð¼ÐµÑÑ‚Ðµ Ð¸Ð½Ñ†Ð¸Ð´ÐµÐ½Ñ‚Ð° Ð¸ Ð²Ñ€ÐµÐ¼Ñ Ð´Ð¾ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð¸Ñ Ð·Ð°Ð´Ð°Ð½Ð¸Ñ.",
+                            dispatch_menu_mission_specific: "Ð—Ð´ÐµÑÑŒ Ð¿Ñ€ÐµÐ´ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð° Ð¿Ð¾Ð´Ñ€Ð¾Ð±Ð½Ð°Ñ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ Ð¾ Ð·Ð°Ð´Ð°Ð½Ð¸Ð¸, Ð° Ñ‚Ð°ÐºÐ¶Ðµ Ð¾Ð± Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð½Ñ‹Ñ… Ð½Ð° Ð²Ñ‹Ð·Ð¾Ð² Ð¸ ÑƒÐ¶Ðµ Ð½Ð°Ñ…Ð¾Ð´ÑÑ‰Ð¸Ñ…ÑÑ Ð½Ð° Ð¼ÐµÑÑ‚Ðµ Ð¿Ð¾Ð´Ñ€Ð°Ð·Ð´ÐµÐ»ÐµÐ½Ð¸ÑÑ….",
+                            dispatch_menu_vehicle_list: "Ð­Ñ‚Ð¾ ÑÐ¿Ð¸ÑÐ¾Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ñ… Ð¼Ð°ÑˆÐ¸Ð½. Ð—Ð´ÐµÑÑŒ Ð¼Ð¾Ð¶Ð½Ð¾ Ð²Ñ‹Ð±Ñ€Ð°Ñ‚ÑŒ Ð¼Ð°ÑˆÐ¸Ð½Ñ‹. Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð¼Ð°ÑˆÐ¸Ð½Ñƒ, Ñ‰Ñ‘Ð»ÐºÐ½ÑƒÐ² ÐµÑ‘!"
                         },
                         mobile: {
-                            dispatch_menu: "Đ­Ń‚Đľ ĐĽĐµĐ˝ŃŽ ĐľŃ‚ĐżŃ€Đ°Đ˛ĐşĐ¸. Đˇ ĐµĐłĐľ ĐżĐľĐĽĐľŃ‰ŃŚŃŽ Đ˛Ń‹ ĐĽĐľĐ¶ĐµŃ‚Đµ ĐľŃ‚ĐżŃ€Đ°Đ˛Đ»ŃŹŃ‚ŃŚ ĐżĐľĐ´Ń€Đ°Đ·Đ´ĐµĐ»ĐµĐ˝Đ¸ŃŹ Đ˝Đ° Đ·Đ°Đ´Đ°Đ˝Đ¸ŃŹ!",
-                            dispatch_menu_buttons: "Đ­Ń‚Đľ Đ´Đ˛Đµ ĐşĐ˝ĐľĐżĐşĐ¸ ĐľŃ‚ĐżŃ€Đ°Đ˛ĐşĐ¸. ĐźĐµŃ€Đ˛Đ°ŃŹ ĐşĐ˝ĐľĐżĐşĐ°, Â«ĐžŃ‚ĐżŃ€Đ°Đ˛Đ¸Ń‚ŃŚÂ», ĐľŃ‚ĐżŃ€Đ°Đ˛Đ»ŃŹĐµŃ‚ Đ˛Ń‹Đ±Ń€Đ°Đ˝Đ˝Ń‹Đµ ĐżĐľĐ´Ń€Đ°Đ·Đ´ĐµĐ»ĐµĐ˝Đ¸ŃŹ Đ˝Đ° Đ·Đ°Đ´Đ°Đ˝Đ¸Đµ. Đ’Ń‚ĐľŃ€Đ°ŃŹ Đ´ĐµĐ»Đ°ĐµŃ‚ Ń‚Đľ Đ¶Đµ ŃĐ°ĐĽĐľĐµ, Đ˝Đľ Ń ĐżĐµŃ€ĐµŃ…ĐľĐ´ĐľĐĽ Đş ŃĐ»ĐµĐ´ŃŃŽŃ‰ĐµĐĽŃ Đ·Đ°Đ´Đ°Đ˝Đ¸ŃŽ. Đ©Ń‘Đ»ĐşĐ˝Đ¸Ń‚Đµ ĐżĐµŃ€Đ˛ŃŃŽ ĐşĐ˝ĐľĐżĐşŃ.",
-                            dispatch_menu_mission_general: "Đ—Đ´ĐµŃŃŚ ĐżŃ€Đ¸Đ˛ĐµĐ´ĐµĐ˝Đ° ĐľĐ±Ń‰Đ°ŃŹ Đ¸Đ˝Ń„ĐľŃ€ĐĽĐ°Ń†Đ¸ŃŹ Đľ Đ·Đ°Đ´Đ°Đ˝Đ¸Đ¸: Đ˝Đ°Đ·Đ˛Đ°Đ˝Đ¸Đµ, Đ°Đ´Ń€ĐµŃ Đ¸ Đ·Đ˝Đ°Ń‡ĐľĐş. Đ—Đ°Đ´Đ°Đ˝Đ¸ŃŹ, ĐşĐľŃ‚ĐľŃ€Ń‹Đµ Đ˛Ń‹ ŃĐ¶Đµ Đ˛Ń‹ĐżĐľĐ»Đ˝ŃŹĐµŃ‚Đµ, ĐľŃ‚ĐĽĐµŃ‡ĐµĐ˝Ń‹ Đ·Đ˝Đ°Ń‡ĐşĐľĐĽ Ń‡ĐµĐ»ĐľĐ˛ĐµŃ‡ĐşĐ°, Đ° Đ˝Đµ Đ·Đ˛ĐµĐ·Đ´ĐľŃ‡ĐşĐľĐą.",
-                            dispatch_menu_mission_progress: "Đ—Đ´ĐµŃŃŚ ĐĽĐľĐ¶Đ˝Đľ ŃĐ·Đ˝Đ°Ń‚ŃŚ ĐżŃ€ĐľĐłŃ€ĐµŃŃ Đ˛Ń‹ĐżĐľĐ»Đ˝ĐµĐ˝Đ¸ŃŹ Đ·Đ°Đ´Đ°Đ˝Đ¸ŃŹ, ĐşĐľĐ»Đ¸Ń‡ĐµŃŃ‚Đ˛Đľ ŃĐľŃ‚Ń€ŃĐ´Đ˝Đ¸ĐşĐľĐ˛ Đ˝Đ° ĐĽĐµŃŃ‚Đµ Đ¸Đ˝Ń†Đ¸Đ´ĐµĐ˝Ń‚Đ° Đ¸ Đ˛Ń€ĐµĐĽŃŹ Đ´Đľ Đ·Đ°Đ˛ĐµŃ€ŃĐµĐ˝Đ¸ŃŹ Đ·Đ°Đ´Đ°Đ˝Đ¸ŃŹ.",
-                            dispatch_menu_mission_specific: "Đ—Đ´ĐµŃŃŚ ĐżŃ€ĐµĐ´ŃŃ‚Đ°Đ˛Đ»ĐµĐ˝Đ° ĐżĐľĐ´Ń€ĐľĐ±Đ˝Đ°ŃŹ Đ¸Đ˝Ń„ĐľŃ€ĐĽĐ°Ń†Đ¸ŃŹ Đľ Đ·Đ°Đ´Đ°Đ˝Đ¸Đ¸, Đ° Ń‚Đ°ĐşĐ¶Đµ ĐľĐ± ĐľŃ‚ĐżŃ€Đ°Đ˛Đ»ĐµĐ˝Đ˝Ń‹Ń… Đ˝Đ° Đ˛Ń‹Đ·ĐľĐ˛ Đ¸ ŃĐ¶Đµ Đ˝Đ°Ń…ĐľĐ´ŃŹŃ‰Đ¸Ń…ŃŃŹ Đ˝Đ° ĐĽĐµŃŃ‚Đµ ĐżĐľĐ´Ń€Đ°Đ·Đ´ĐµĐ»ĐµĐ˝Đ¸ŃŹŃ….",
-                            dispatch_menu_vehicle_list: "Đ­Ń‚Đľ ŃĐżĐ¸ŃĐľĐş Đ´ĐľŃŃ‚ŃĐżĐ˝Ń‹Ń… ĐĽĐ°ŃĐ¸Đ˝. Đ—Đ´ĐµŃŃŚ ĐĽĐľĐ¶Đ˝Đľ Đ˛Ń‹Đ±Ń€Đ°Ń‚ŃŚ ĐĽĐ°ŃĐ¸Đ˝Ń‹. Đ’Ń‹Đ±ĐµŃ€Đ¸Ń‚Đµ ĐĽĐ°ŃĐ¸Đ˝Ń, Ń‰Ń‘Đ»ĐşĐ˝ŃĐ˛ ĐµŃ‘!"
+                            dispatch_menu: "Ð­Ñ‚Ð¾ Ð¼ÐµÐ½ÑŽ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸. Ð¡ ÐµÐ³Ð¾ Ð¿Ð¾Ð¼Ð¾Ñ‰ÑŒÑŽ Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚ÑŒ Ð¿Ð¾Ð´Ñ€Ð°Ð·Ð´ÐµÐ»ÐµÐ½Ð¸Ñ Ð½Ð° Ð·Ð°Ð´Ð°Ð½Ð¸Ñ!",
+                            dispatch_menu_buttons: "Ð­Ñ‚Ð¾ Ð´Ð²Ðµ ÐºÐ½Ð¾Ð¿ÐºÐ¸ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸. ÐŸÐµÑ€Ð²Ð°Ñ ÐºÐ½Ð¾Ð¿ÐºÐ°, Â«ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒÂ», Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÐµÑ‚ Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð½Ñ‹Ðµ Ð¿Ð¾Ð´Ñ€Ð°Ð·Ð´ÐµÐ»ÐµÐ½Ð¸Ñ Ð½Ð° Ð·Ð°Ð´Ð°Ð½Ð¸Ðµ. Ð’Ñ‚Ð¾Ñ€Ð°Ñ Ð´ÐµÐ»Ð°ÐµÑ‚ Ñ‚Ð¾ Ð¶Ðµ ÑÐ°Ð¼Ð¾Ðµ, Ð½Ð¾ Ñ Ð¿ÐµÑ€ÐµÑ…Ð¾Ð´Ð¾Ð¼ Ðº ÑÐ»ÐµÐ´ÑƒÑŽÑ‰ÐµÐ¼Ñƒ Ð·Ð°Ð´Ð°Ð½Ð¸ÑŽ. Ð©Ñ‘Ð»ÐºÐ½Ð¸Ñ‚Ðµ Ð¿ÐµÑ€Ð²ÑƒÑŽ ÐºÐ½Ð¾Ð¿ÐºÑƒ.",
+                            dispatch_menu_mission_general: "Ð—Ð´ÐµÑÑŒ Ð¿Ñ€Ð¸Ð²ÐµÐ´ÐµÐ½Ð° Ð¾Ð±Ñ‰Ð°Ñ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ Ð¾ Ð·Ð°Ð´Ð°Ð½Ð¸Ð¸: Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ, Ð°Ð´Ñ€ÐµÑ Ð¸ Ð·Ð½Ð°Ñ‡Ð¾Ðº. Ð—Ð°Ð´Ð°Ð½Ð¸Ñ, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð²Ñ‹ ÑƒÐ¶Ðµ Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÑÐµÑ‚Ðµ, Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ñ‹ Ð·Ð½Ð°Ñ‡ÐºÐ¾Ð¼ Ñ‡ÐµÐ»Ð¾Ð²ÐµÑ‡ÐºÐ°, Ð° Ð½Ðµ Ð·Ð²ÐµÐ·Ð´Ð¾Ñ‡ÐºÐ¾Ð¹.",
+                            dispatch_menu_mission_progress: "Ð—Ð´ÐµÑÑŒ Ð¼Ð¾Ð¶Ð½Ð¾ ÑƒÐ·Ð½Ð°Ñ‚ÑŒ Ð¿Ñ€Ð¾Ð³Ñ€ÐµÑÑ Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ñ Ð·Ð°Ð´Ð°Ð½Ð¸Ñ, ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ¾Ð² Ð½Ð° Ð¼ÐµÑÑ‚Ðµ Ð¸Ð½Ñ†Ð¸Ð´ÐµÐ½Ñ‚Ð° Ð¸ Ð²Ñ€ÐµÐ¼Ñ Ð´Ð¾ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð¸Ñ Ð·Ð°Ð´Ð°Ð½Ð¸Ñ.",
+                            dispatch_menu_mission_specific: "Ð—Ð´ÐµÑÑŒ Ð¿Ñ€ÐµÐ´ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð° Ð¿Ð¾Ð´Ñ€Ð¾Ð±Ð½Ð°Ñ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ Ð¾ Ð·Ð°Ð´Ð°Ð½Ð¸Ð¸, Ð° Ñ‚Ð°ÐºÐ¶Ðµ Ð¾Ð± Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð½Ñ‹Ñ… Ð½Ð° Ð²Ñ‹Ð·Ð¾Ð² Ð¸ ÑƒÐ¶Ðµ Ð½Ð°Ñ…Ð¾Ð´ÑÑ‰Ð¸Ñ…ÑÑ Ð½Ð° Ð¼ÐµÑÑ‚Ðµ Ð¿Ð¾Ð´Ñ€Ð°Ð·Ð´ÐµÐ»ÐµÐ½Ð¸ÑÑ….",
+                            dispatch_menu_vehicle_list: "Ð­Ñ‚Ð¾ ÑÐ¿Ð¸ÑÐ¾Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ñ… Ð¼Ð°ÑˆÐ¸Ð½. Ð—Ð´ÐµÑÑŒ Ð¼Ð¾Ð¶Ð½Ð¾ Ð²Ñ‹Ð±Ñ€Ð°Ñ‚ÑŒ Ð¼Ð°ÑˆÐ¸Ð½Ñ‹. Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð¼Ð°ÑˆÐ¸Ð½Ñƒ, Ñ‰Ñ‘Ð»ÐºÐ½ÑƒÐ² ÐµÑ‘!"
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "Đ˘ĐµĐżĐµŃ€ŃŚ Đ´Đ°Đ˛Đ°ĐąŃ‚Đµ Đ˝Đ°ŃŃ‡Đ¸ĐĽŃŃŹ Ń€Đ°Đ·Đ±Đ¸Ń€Đ°Ń‚ŃŚŃŃŹ Ń ĐżŃ€ĐľĐ¸ŃŃĐµŃŃ‚Đ˛Đ¸ŃŹĐĽĐ¸. ĐžŃ‚ĐşŃ€ĐľĐąŃ‚Đµ ĐĽĐµĐ˝ŃŽ ĐľŃ‚ĐżŃ€Đ°Đ˛ĐşĐ¸, Ń‰Ń‘Đ»ĐşĐ˝ŃĐ˛ ĐżĐľ ĐşĐ˝ĐľĐżĐşĐµ Â«ĐžŃ‚ĐżŃ€Đ°Đ˛Đ¸Ń‚ŃŚÂ»!",
-                            first_mission: "ĐžŃ‚Đ»Đ¸Ń‡Đ˝Đľ, Đ˛Ń‹ ĐżĐľŃŃ‚Ń€ĐľĐ¸Đ»Đ¸ ŃĐ˛ĐľŃ‘ ĐżĐµŃ€Đ˛ĐľĐµ Đ·Đ´Đ°Đ˝Đ¸Đµ! ĐˇĐĽĐľŃ‚Ń€Đ¸Ń‚Đµ, ŃĐ¶Đµ ĐżĐľŃŃ‚ŃĐżĐ¸Đ»Đ¸ ĐżĐµŃ€Đ˛Ń‹Đµ Đ·Đ°Đ´Đ°Đ˝Đ¸ŃŹ Đ´Đ»ŃŹ Đ˛Đ°Ń!"
+                            dispatch_button: "Ð¢ÐµÐ¿ÐµÑ€ÑŒ Ð´Ð°Ð²Ð°Ð¹Ñ‚Ðµ Ð½Ð°ÑƒÑ‡Ð¸Ð¼ÑÑ Ñ€Ð°Ð·Ð±Ð¸Ñ€Ð°Ñ‚ÑŒÑÑ Ñ Ð¿Ñ€Ð¾Ð¸ÑÑˆÐµÑÑ‚Ð²Ð¸ÑÐ¼Ð¸. ÐžÑ‚ÐºÑ€Ð¾Ð¹Ñ‚Ðµ Ð¼ÐµÐ½ÑŽ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸, Ñ‰Ñ‘Ð»ÐºÐ½ÑƒÐ² Ð¿Ð¾ ÐºÐ½Ð¾Ð¿ÐºÐµ Â«ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒÂ»!",
+                            first_mission: "ÐžÑ‚Ð»Ð¸Ñ‡Ð½Ð¾, Ð²Ñ‹ Ð¿Ð¾ÑÑ‚Ñ€Ð¾Ð¸Ð»Ð¸ ÑÐ²Ð¾Ñ‘ Ð¿ÐµÑ€Ð²Ð¾Ðµ Ð·Ð´Ð°Ð½Ð¸Ðµ! Ð¡Ð¼Ð¾Ñ‚Ñ€Ð¸Ñ‚Ðµ, ÑƒÐ¶Ðµ Ð¿Ð¾ÑÑ‚ÑƒÐ¿Ð¸Ð»Ð¸ Ð¿ÐµÑ€Ð²Ñ‹Ðµ Ð·Ð°Ð´Ð°Ð½Ð¸Ñ Ð´Ð»Ñ Ð²Ð°Ñ!"
                         },
                         mobile: {
-                            dispatch_button: "Đ˘ĐµĐżĐµŃ€ŃŚ Đ´Đ°Đ˛Đ°ĐąŃ‚Đµ Đ˝Đ°ŃŃ‡Đ¸ĐĽŃŃŹ Ń€Đ°Đ·Đ±Đ¸Ń€Đ°Ń‚ŃŚŃŃŹ Ń ĐżŃ€ĐľĐ¸ŃŃĐµŃŃ‚Đ˛Đ¸ŃŹĐĽĐ¸. ĐžŃ‚ĐşŃ€ĐľĐąŃ‚Đµ ĐĽĐµĐ˝ŃŽ ĐľŃ‚ĐżŃ€Đ°Đ˛ĐşĐ¸, Ń‰Ń‘Đ»ĐşĐ˝ŃĐ˛ ĐżĐľ ĐşĐ˝ĐľĐżĐşĐµ Â«ĐžŃ‚ĐżŃ€Đ°Đ˛Đ¸Ń‚ŃŚÂ»!",
-                            first_mission: "ĐžŃ‚Đ»Đ¸Ń‡Đ˝Đľ, Đ˛Ń‹ ĐżĐľŃŃ‚Ń€ĐľĐ¸Đ»Đ¸ ŃĐ˛ĐľŃ‘ ĐżĐµŃ€Đ˛ĐľĐµ Đ·Đ´Đ°Đ˝Đ¸Đµ! ĐˇĐĽĐľŃ‚Ń€Đ¸Ń‚Đµ, ŃĐ¶Đµ ĐżĐľŃŃ‚ŃĐżĐ¸Đ»Đ¸ ĐżĐµŃ€Đ˛Ń‹Đµ Đ·Đ°Đ´Đ°Đ˝Đ¸ŃŹ Đ´Đ»ŃŹ Đ˛Đ°Ń!"
+                            dispatch_button: "Ð¢ÐµÐ¿ÐµÑ€ÑŒ Ð´Ð°Ð²Ð°Ð¹Ñ‚Ðµ Ð½Ð°ÑƒÑ‡Ð¸Ð¼ÑÑ Ñ€Ð°Ð·Ð±Ð¸Ñ€Ð°Ñ‚ÑŒÑÑ Ñ Ð¿Ñ€Ð¾Ð¸ÑÑˆÐµÑÑ‚Ð²Ð¸ÑÐ¼Ð¸. ÐžÑ‚ÐºÑ€Ð¾Ð¹Ñ‚Ðµ Ð¼ÐµÐ½ÑŽ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸, Ñ‰Ñ‘Ð»ÐºÐ½ÑƒÐ² Ð¿Ð¾ ÐºÐ½Ð¾Ð¿ÐºÐµ Â«ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒÂ»!",
+                            first_mission: "ÐžÑ‚Ð»Ð¸Ñ‡Ð½Ð¾, Ð²Ñ‹ Ð¿Ð¾ÑÑ‚Ñ€Ð¾Ð¸Ð»Ð¸ ÑÐ²Ð¾Ñ‘ Ð¿ÐµÑ€Ð²Ð¾Ðµ Ð·Ð´Ð°Ð½Ð¸Ðµ! Ð¡Ð¼Ð¾Ñ‚Ñ€Ð¸Ñ‚Ðµ, ÑƒÐ¶Ðµ Ð¿Ð¾ÑÑ‚ÑƒÐ¿Ð¸Ð»Ð¸ Ð¿ÐµÑ€Ð²Ñ‹Ðµ Ð·Ð°Ð´Ð°Ð½Ð¸Ñ Ð´Ð»Ñ Ð²Ð°Ñ!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "ĐžŃ‚Đ»Đ¸Ń‡Đ˝Đľ, ŃĐşĐľŃ€Đľ Đ˛Ń‹ ŃŃ‚Đ°Đ˝ĐµŃ‚Đµ Đ˝Đ°ŃŃ‚ĐľŃŹŃ‰Đ¸ĐĽ ĐĽĐ°ŃŃ‚ĐµŃ€ĐľĐĽ Â«Đ”Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ 112Â»! Đ”ĐµŃ€Đ¶Đ¸Ń‚Đµ ĐĽĐľĐ˝ĐµŃ‚Ń‹ Đ´Đ»ŃŹ Đ˝Đ°Ń‡Đ°Đ»Đ°: %{coins}! </br> ĐšĐľĐĽĐ°Đ˝Đ´Đ° Â«Đ”Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ 112Â»"
+                        general: "ÐžÑ‚Ð»Ð¸Ñ‡Ð½Ð¾, ÑÐºÐ¾Ñ€Ð¾ Ð²Ñ‹ ÑÑ‚Ð°Ð½ÐµÑ‚Ðµ Ð½Ð°ÑÑ‚Ð¾ÑÑ‰Ð¸Ð¼ Ð¼Ð°ÑÑ‚ÐµÑ€Ð¾Ð¼ Â«Ð”Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ 112Â»! Ð”ÐµÑ€Ð¶Ð¸Ñ‚Ðµ Ð¼Ð¾Ð½ÐµÑ‚Ñ‹ Ð´Ð»Ñ Ð½Ð°Ñ‡Ð°Ð»Ð°: %{coins}! </br> ÐšÐ¾Ð¼Ð°Ð½Ð´Ð° Â«Ð”Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ 112Â»"
                     },
                     mobile: {
-                        general: "ĐžŃ‚Đ»Đ¸Ń‡Đ˝Đľ, ŃĐşĐľŃ€Đľ Đ˛Ń‹ ŃŃ‚Đ°Đ˝ĐµŃ‚Đµ Đ˝Đ°ŃŃ‚ĐľŃŹŃ‰Đ¸ĐĽ ĐĽĐ°ŃŃ‚ĐµŃ€ĐľĐĽ Â«Đ”Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ 112Â»! Đ”ĐµŃ€Đ¶Đ¸Ń‚Đµ ĐĽĐľĐ˝ĐµŃ‚Ń‹ Đ´Đ»ŃŹ Đ˝Đ°Ń‡Đ°Đ»Đ°: %{coins}! </br> ĐšĐľĐĽĐ°Đ˝Đ´Đ° Â«Đ”Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ 112Â»"
+                        general: "ÐžÑ‚Ð»Ð¸Ñ‡Ð½Ð¾, ÑÐºÐ¾Ñ€Ð¾ Ð²Ñ‹ ÑÑ‚Ð°Ð½ÐµÑ‚Ðµ Ð½Ð°ÑÑ‚Ð¾ÑÑ‰Ð¸Ð¼ Ð¼Ð°ÑÑ‚ÐµÑ€Ð¾Ð¼ Â«Ð”Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ 112Â»! Ð”ÐµÑ€Ð¶Ð¸Ñ‚Ðµ Ð¼Ð¾Ð½ÐµÑ‚Ñ‹ Ð´Ð»Ñ Ð½Ð°Ñ‡Ð°Ð»Ð°: %{coins}! </br> ÐšÐ¾Ð¼Ð°Ð½Ð´Ð° Â«Ð”Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ 112Â»"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Đ•ŃĐ»Đ¸ Ń Đ˛Đ°Ń ĐľŃŃ‚Đ°Đ»Đ¸ŃŃŚ Đ˛ĐľĐżŃ€ĐľŃŃ‹, ĐľĐ·Đ˝Đ°ĐşĐľĐĽŃŚŃ‚ĐµŃŃŚ Ń Đ§ĐĐ’Đž Đ¸Đ»Đ¸ Đ·Đ°ĐłĐ»ŃŹĐ˝Đ¸Ń‚Đµ Đ˝Đ° Ń„ĐľŃ€ŃĐĽŃ‹ Đ¸ĐłŃ€Ń‹ Đ¸Đ»Đ¸ Đ˝Đ° Đ˝Đ°ŃŃ ŃŃ‚Ń€Đ°Đ˝Đ¸Ń‡ĐşŃ Facebook!",
-                        general: "ĐˇĐ»ĐµĐ´ŃŃŽŃ‰Đ¸ĐĽ ŃĐ°ĐłĐľĐĽ Ń€ĐµĐşĐľĐĽĐµĐ˝Đ´ŃĐµĐĽ Đ˛ĐľĐ·Đ˛ĐµŃŃ‚Đ¸ Đ´Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ŃĐşĐ¸Đą ĐżŃĐ˝ĐşŃ‚, Đ° Đ·Đ°Ń‚ĐµĐĽ Đ˝Đ°Ń‡Đ°Ń‚ŃŚ ŃŃ‚Ń€ĐľĐ¸Ń‚ĐµĐ»ŃŚŃŃ‚Đ˛Đľ Đ˝ĐľĐ˛Ń‹Ń… ŃŃ‚Đ°Đ˝Ń†Đ¸Đą, ĐżĐľŃĐşĐľĐ»ŃŚĐşŃ ĐĽĐ°ĐşŃĐ¸ĐĽĐ°Đ»ŃŚĐ˝ĐľĐµ ĐşĐľĐ»Đ¸Ń‡ĐµŃŃ‚Đ˛Đľ Đ·Đ°Đ´Đ°Đ˝Đ¸Đą Đ˝Đ° ĐľĐ´Đ˝Đľ Đ±ĐľĐ»ŃŚŃĐµ ĐşĐľĐ»Đ¸Ń‡ĐµŃŃ‚Đ˛Đ° ŃŃ‚Đ°Đ˝Ń†Đ¸Đą ŃĐ°ĐĽĐľĐłĐľ Ń€Đ°ŃĐżŃ€ĐľŃŃ‚Ń€Đ°Đ˝ĐµĐ˝Đ˝ĐľĐłĐľ Ń‚Đ¸ĐżĐ° (ĐżĐľĐ»Đ¸Ń†Đ¸ŃŹ, ĐżĐľĐ¶Đ°Ń€Đ˝Ń‹Đµ, ŃĐşĐľŃ€Đ°ŃŹ ĐżĐľĐĽĐľŃ‰ŃŚ). ĐťĐ°ĐżŃ€Đ¸ĐĽĐµŃ€, ĐżŃ€Đ¸ ĐżŃŹŃ‚Đ¸ ĐżĐľĐ¶Đ°Ń€Đ˝Ń‹Ń… ŃŃ‚Đ°Đ˝Ń†Đ¸ŃŹŃ… Đ¸ Ń‚Ń€Ń‘Ń… ŃŃ‚Đ°Đ˝Ń†Đ¸ŃŹŃ… ŃĐşĐľŃ€ĐľĐą ĐżĐľĐĽĐľŃ‰Đ¸ Đ˛Đ°ĐĽ Đ±ŃĐ´ĐµŃ‚ Đ´ĐľŃŃ‚ŃĐżĐ˝Đľ ŃĐµŃŃ‚ŃŚ Đ·Đ°Đ´Đ°Đ˝Đ¸Đą.",
-                        join_alliance: "ĐśŃ‹ Ń‚Đ°ĐşĐ¶Đµ Ń€ĐµĐşĐľĐĽĐµĐ˝Đ´ŃĐµĐĽ Đ˛ŃŃ‚ŃĐżĐ¸Ń‚ŃŚ Đ˛ Đ°Đ»ŃŚŃŹĐ˝Ń, Ń‚Đ°Đş ĐşĐ°Đş ŃŤŃ‚Đľ ĐĽĐľĐ¶ĐµŃ‚ Đ·Đ´ĐľŃ€ĐľĐ˛Đľ Đ˛Đ°ĐĽ ĐżĐľĐĽĐľŃ‡ŃŚ, ĐľŃĐľĐ±ĐµĐ˝Đ˝Đľ ĐżĐľ Đ˝Đ°Ń‡Đ°Đ»Ń.",
-                        summary: "Đ˘ĐµĐżĐµŃ€ŃŚ Đ˛Ń‹ Đ·Đ˝Đ°ĐµŃ‚Đµ ĐľŃĐ˝ĐľĐ˛Ń‹ Đ¸ĐłŃ€Ń‹ Đ˛ Â«Đ”Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ 112Â»! Đ’Ń‹ĐżĐľĐ»Đ˝ŃŹĐąŃ‚Đµ Đ·Đ°Đ´Đ°Đ˝Đ¸ŃŹ, ĐżĐľĐ»ŃŃ‡Đ°ĐąŃ‚Đµ ĐşŃ€ĐµĐ´Đ¸Ń‚Ń‹ Đ¸ ĐżĐľĐşŃĐżĐ°ĐąŃ‚Đµ Đ˝ĐľĐ˛Ń‹Đµ ĐżĐľĐ´Ń€Đ°Đ·Đ´ĐµĐ»ĐµĐ˝Đ¸ŃŹ. Đ’ĐµŃŃ‘Đ»ĐľĐą Đ¸ĐłŃ€Ń‹! </br> ĐšĐľĐĽĐ°Đ˝Đ´Đ° Â«Đ”Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ 112Â»"
+                        contact: "Ð•ÑÐ»Ð¸ Ñƒ Ð²Ð°Ñ Ð¾ÑÑ‚Ð°Ð»Ð¸ÑÑŒ Ð²Ð¾Ð¿Ñ€Ð¾ÑÑ‹, Ð¾Ð·Ð½Ð°ÐºÐ¾Ð¼ÑŒÑ‚ÐµÑÑŒ Ñ Ð§ÐÐ’Ðž Ð¸Ð»Ð¸ Ð·Ð°Ð³Ð»ÑÐ½Ð¸Ñ‚Ðµ Ð½Ð° Ñ„Ð¾Ñ€ÑƒÐ¼Ñ‹ Ð¸Ð³Ñ€Ñ‹ Ð¸Ð»Ð¸ Ð½Ð° Ð½Ð°ÑˆÑƒ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ‡ÐºÑƒ Facebook!",
+                        general: "Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ð¼ ÑˆÐ°Ð³Ð¾Ð¼ Ñ€ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÐµÐ¼ Ð²Ð¾Ð·Ð²ÐµÑÑ‚Ð¸ Ð´Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ÑÐºÐ¸Ð¹ Ð¿ÑƒÐ½ÐºÑ‚, Ð° Ð·Ð°Ñ‚ÐµÐ¼ Ð½Ð°Ñ‡Ð°Ñ‚ÑŒ ÑÑ‚Ñ€Ð¾Ð¸Ñ‚ÐµÐ»ÑŒÑÑ‚Ð²Ð¾ Ð½Ð¾Ð²Ñ‹Ñ… ÑÑ‚Ð°Ð½Ñ†Ð¸Ð¹, Ð¿Ð¾ÑÐºÐ¾Ð»ÑŒÐºÑƒ Ð¼Ð°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð·Ð°Ð´Ð°Ð½Ð¸Ð¹ Ð½Ð° Ð¾Ð´Ð½Ð¾ Ð±Ð¾Ð»ÑŒÑˆÐµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð° ÑÑ‚Ð°Ð½Ñ†Ð¸Ð¹ ÑÐ°Ð¼Ð¾Ð³Ð¾ Ñ€Ð°ÑÐ¿Ñ€Ð¾ÑÑ‚Ñ€Ð°Ð½ÐµÐ½Ð½Ð¾Ð³Ð¾ Ñ‚Ð¸Ð¿Ð° (Ð¿Ð¾Ð»Ð¸Ñ†Ð¸Ñ, Ð¿Ð¾Ð¶Ð°Ñ€Ð½Ñ‹Ðµ, ÑÐºÐ¾Ñ€Ð°Ñ Ð¿Ð¾Ð¼Ð¾Ñ‰ÑŒ). ÐÐ°Ð¿Ñ€Ð¸Ð¼ÐµÑ€, Ð¿Ñ€Ð¸ Ð¿ÑÑ‚Ð¸ Ð¿Ð¾Ð¶Ð°Ñ€Ð½Ñ‹Ñ… ÑÑ‚Ð°Ð½Ñ†Ð¸ÑÑ… Ð¸ Ñ‚Ñ€Ñ‘Ñ… ÑÑ‚Ð°Ð½Ñ†Ð¸ÑÑ… ÑÐºÐ¾Ñ€Ð¾Ð¹ Ð¿Ð¾Ð¼Ð¾Ñ‰Ð¸ Ð²Ð°Ð¼ Ð±ÑƒÐ´ÐµÑ‚ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ ÑˆÐµÑÑ‚ÑŒ Ð·Ð°Ð´Ð°Ð½Ð¸Ð¹.",
+                        join_alliance: "ÐœÑ‹ Ñ‚Ð°ÐºÐ¶Ðµ Ñ€ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÐµÐ¼ Ð²ÑÑ‚ÑƒÐ¿Ð¸Ñ‚ÑŒ Ð² Ð°Ð»ÑŒÑÐ½Ñ, Ñ‚Ð°Ðº ÐºÐ°Ðº ÑÑ‚Ð¾ Ð¼Ð¾Ð¶ÐµÑ‚ Ð·Ð´Ð¾Ñ€Ð¾Ð²Ð¾ Ð²Ð°Ð¼ Ð¿Ð¾Ð¼Ð¾Ñ‡ÑŒ, Ð¾ÑÐ¾Ð±ÐµÐ½Ð½Ð¾ Ð¿Ð¾ Ð½Ð°Ñ‡Ð°Ð»Ñƒ.",
+                        summary: "Ð¢ÐµÐ¿ÐµÑ€ÑŒ Ð²Ñ‹ Ð·Ð½Ð°ÐµÑ‚Ðµ Ð¾ÑÐ½Ð¾Ð²Ñ‹ Ð¸Ð³Ñ€Ñ‹ Ð² Â«Ð”Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ 112Â»! Ð’Ñ‹Ð¿Ð¾Ð»Ð½ÑÐ¹Ñ‚Ðµ Ð·Ð°Ð´Ð°Ð½Ð¸Ñ, Ð¿Ð¾Ð»ÑƒÑ‡Ð°Ð¹Ñ‚Ðµ ÐºÑ€ÐµÐ´Ð¸Ñ‚Ñ‹ Ð¸ Ð¿Ð¾ÐºÑƒÐ¿Ð°Ð¹Ñ‚Ðµ Ð½Ð¾Ð²Ñ‹Ðµ Ð¿Ð¾Ð´Ñ€Ð°Ð·Ð´ÐµÐ»ÐµÐ½Ð¸Ñ. Ð’ÐµÑÑ‘Ð»Ð¾Ð¹ Ð¸Ð³Ñ€Ñ‹! </br> ÐšÐ¾Ð¼Ð°Ð½Ð´Ð° Â«Ð”Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ 112Â»"
                     },
                     mobile: {
-                        contact: "Đ•ŃĐ»Đ¸ Ń Đ˛Đ°Ń ĐľŃŃ‚Đ°Đ»Đ¸ŃŃŚ Đ˛ĐľĐżŃ€ĐľŃŃ‹, ĐľĐ·Đ˝Đ°ĐşĐľĐĽŃŚŃ‚ĐµŃŃŚ Ń Đ§ĐĐ’Đž Đ¸Đ»Đ¸ Đ·Đ°ĐłĐ»ŃŹĐ˝Đ¸Ń‚Đµ Đ˝Đ° Ń„ĐľŃ€ŃĐĽŃ‹ Đ¸ĐłŃ€Ń‹ Đ¸Đ»Đ¸ Đ˝Đ° Đ˝Đ°ŃŃ ŃŃ‚Ń€Đ°Đ˝Đ¸Ń‡ĐşŃ Facebook!",
-                        general: "ĐˇĐ»ĐµĐ´ŃŃŽŃ‰Đ¸ĐĽ ŃĐ°ĐłĐľĐĽ Ń€ĐµĐşĐľĐĽĐµĐ˝Đ´ŃĐµĐĽ Đ˛ĐľĐ·Đ˛ĐµŃŃ‚Đ¸ Đ´Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ŃĐşĐ¸Đą ĐżŃĐ˝ĐşŃ‚, Đ° Đ·Đ°Ń‚ĐµĐĽ Đ˝Đ°Ń‡Đ°Ń‚ŃŚ ŃŃ‚Ń€ĐľĐ¸Ń‚ĐµĐ»ŃŚŃŃ‚Đ˛Đľ Đ˝ĐľĐ˛Ń‹Ń… ŃŃ‚Đ°Đ˝Ń†Đ¸Đą, ĐżĐľŃĐşĐľĐ»ŃŚĐşŃ ĐĽĐ°ĐşŃĐ¸ĐĽĐ°Đ»ŃŚĐ˝ĐľĐµ ĐşĐľĐ»Đ¸Ń‡ĐµŃŃ‚Đ˛Đľ Đ·Đ°Đ´Đ°Đ˝Đ¸Đą Đ˝Đ° ĐľĐ´Đ˝Đľ Đ±ĐľĐ»ŃŚŃĐµ ĐşĐľĐ»Đ¸Ń‡ĐµŃŃ‚Đ˛Đ° ŃŃ‚Đ°Đ˝Ń†Đ¸Đą ŃĐ°ĐĽĐľĐłĐľ Ń€Đ°ŃĐżŃ€ĐľŃŃ‚Ń€Đ°Đ˝ĐµĐ˝Đ˝ĐľĐłĐľ Ń‚Đ¸ĐżĐ° (ĐżĐľĐ»Đ¸Ń†Đ¸ŃŹ, ĐżĐľĐ¶Đ°Ń€Đ˝Ń‹Đµ, ŃĐşĐľŃ€Đ°ŃŹ ĐżĐľĐĽĐľŃ‰ŃŚ). ĐťĐ°ĐżŃ€Đ¸ĐĽĐµŃ€, ĐżŃ€Đ¸ ĐżŃŹŃ‚Đ¸ ĐżĐľĐ¶Đ°Ń€Đ˝Ń‹Ń… ŃŃ‚Đ°Đ˝Ń†Đ¸ŃŹŃ… Đ¸ Ń‚Ń€Ń‘Ń… ŃŃ‚Đ°Đ˝Ń†Đ¸ŃŹŃ… ŃĐşĐľŃ€ĐľĐą ĐżĐľĐĽĐľŃ‰Đ¸ Đ˛Đ°ĐĽ Đ±ŃĐ´ĐµŃ‚ Đ´ĐľŃŃ‚ŃĐżĐ˝Đľ ŃĐµŃŃ‚ŃŚ Đ·Đ°Đ´Đ°Đ˝Đ¸Đą.",
-                        join_alliance: "ĐśŃ‹ Ń‚Đ°ĐşĐ¶Đµ Ń€ĐµĐşĐľĐĽĐµĐ˝Đ´ŃĐµĐĽ Đ˛ŃŃ‚ŃĐżĐ¸Ń‚ŃŚ Đ˛ Đ°Đ»ŃŚŃŹĐ˝Ń, Ń‚Đ°Đş ĐşĐ°Đş ŃŤŃ‚Đľ ĐĽĐľĐ¶ĐµŃ‚ Đ·Đ´ĐľŃ€ĐľĐ˛Đľ Đ˛Đ°ĐĽ ĐżĐľĐĽĐľŃ‡ŃŚ, ĐľŃĐľĐ±ĐµĐ˝Đ˝Đľ ĐżĐľ Đ˝Đ°Ń‡Đ°Đ»Ń.",
-                        summary: "Đ˘ĐµĐżĐµŃ€ŃŚ Đ˛Ń‹ Đ·Đ˝Đ°ĐµŃ‚Đµ ĐľŃĐ˝ĐľĐ˛Ń‹ Đ¸ĐłŃ€Ń‹ Đ˛ Â«Đ”Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ 112Â»! Đ’Ń‹ĐżĐľĐ»Đ˝ŃŹĐąŃ‚Đµ Đ·Đ°Đ´Đ°Đ˝Đ¸ŃŹ, ĐżĐľĐ»ŃŃ‡Đ°ĐąŃ‚Đµ ĐşŃ€ĐµĐ´Đ¸Ń‚Ń‹ Đ¸ ĐżĐľĐşŃĐżĐ°ĐąŃ‚Đµ Đ˝ĐľĐ˛Ń‹Đµ ĐżĐľĐ´Ń€Đ°Đ·Đ´ĐµĐ»ĐµĐ˝Đ¸ŃŹ. Đ’ĐµŃŃ‘Đ»ĐľĐą Đ¸ĐłŃ€Ń‹! </br> ĐšĐľĐĽĐ°Đ˝Đ´Đ° Â«Đ”Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ 112Â»"
+                        contact: "Ð•ÑÐ»Ð¸ Ñƒ Ð²Ð°Ñ Ð¾ÑÑ‚Ð°Ð»Ð¸ÑÑŒ Ð²Ð¾Ð¿Ñ€Ð¾ÑÑ‹, Ð¾Ð·Ð½Ð°ÐºÐ¾Ð¼ÑŒÑ‚ÐµÑÑŒ Ñ Ð§ÐÐ’Ðž Ð¸Ð»Ð¸ Ð·Ð°Ð³Ð»ÑÐ½Ð¸Ñ‚Ðµ Ð½Ð° Ñ„Ð¾Ñ€ÑƒÐ¼Ñ‹ Ð¸Ð³Ñ€Ñ‹ Ð¸Ð»Ð¸ Ð½Ð° Ð½Ð°ÑˆÑƒ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ‡ÐºÑƒ Facebook!",
+                        general: "Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ð¼ ÑˆÐ°Ð³Ð¾Ð¼ Ñ€ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÐµÐ¼ Ð²Ð¾Ð·Ð²ÐµÑÑ‚Ð¸ Ð´Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ÑÐºÐ¸Ð¹ Ð¿ÑƒÐ½ÐºÑ‚, Ð° Ð·Ð°Ñ‚ÐµÐ¼ Ð½Ð°Ñ‡Ð°Ñ‚ÑŒ ÑÑ‚Ñ€Ð¾Ð¸Ñ‚ÐµÐ»ÑŒÑÑ‚Ð²Ð¾ Ð½Ð¾Ð²Ñ‹Ñ… ÑÑ‚Ð°Ð½Ñ†Ð¸Ð¹, Ð¿Ð¾ÑÐºÐ¾Ð»ÑŒÐºÑƒ Ð¼Ð°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð·Ð°Ð´Ð°Ð½Ð¸Ð¹ Ð½Ð° Ð¾Ð´Ð½Ð¾ Ð±Ð¾Ð»ÑŒÑˆÐµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð° ÑÑ‚Ð°Ð½Ñ†Ð¸Ð¹ ÑÐ°Ð¼Ð¾Ð³Ð¾ Ñ€Ð°ÑÐ¿Ñ€Ð¾ÑÑ‚Ñ€Ð°Ð½ÐµÐ½Ð½Ð¾Ð³Ð¾ Ñ‚Ð¸Ð¿Ð° (Ð¿Ð¾Ð»Ð¸Ñ†Ð¸Ñ, Ð¿Ð¾Ð¶Ð°Ñ€Ð½Ñ‹Ðµ, ÑÐºÐ¾Ñ€Ð°Ñ Ð¿Ð¾Ð¼Ð¾Ñ‰ÑŒ). ÐÐ°Ð¿Ñ€Ð¸Ð¼ÐµÑ€, Ð¿Ñ€Ð¸ Ð¿ÑÑ‚Ð¸ Ð¿Ð¾Ð¶Ð°Ñ€Ð½Ñ‹Ñ… ÑÑ‚Ð°Ð½Ñ†Ð¸ÑÑ… Ð¸ Ñ‚Ñ€Ñ‘Ñ… ÑÑ‚Ð°Ð½Ñ†Ð¸ÑÑ… ÑÐºÐ¾Ñ€Ð¾Ð¹ Ð¿Ð¾Ð¼Ð¾Ñ‰Ð¸ Ð²Ð°Ð¼ Ð±ÑƒÐ´ÐµÑ‚ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ ÑˆÐµÑÑ‚ÑŒ Ð·Ð°Ð´Ð°Ð½Ð¸Ð¹.",
+                        join_alliance: "ÐœÑ‹ Ñ‚Ð°ÐºÐ¶Ðµ Ñ€ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÐµÐ¼ Ð²ÑÑ‚ÑƒÐ¿Ð¸Ñ‚ÑŒ Ð² Ð°Ð»ÑŒÑÐ½Ñ, Ñ‚Ð°Ðº ÐºÐ°Ðº ÑÑ‚Ð¾ Ð¼Ð¾Ð¶ÐµÑ‚ Ð·Ð´Ð¾Ñ€Ð¾Ð²Ð¾ Ð²Ð°Ð¼ Ð¿Ð¾Ð¼Ð¾Ñ‡ÑŒ, Ð¾ÑÐ¾Ð±ÐµÐ½Ð½Ð¾ Ð¿Ð¾ Ð½Ð°Ñ‡Ð°Ð»Ñƒ.",
+                        summary: "Ð¢ÐµÐ¿ÐµÑ€ÑŒ Ð²Ñ‹ Ð·Ð½Ð°ÐµÑ‚Ðµ Ð¾ÑÐ½Ð¾Ð²Ñ‹ Ð¸Ð³Ñ€Ñ‹ Ð² Â«Ð”Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ 112Â»! Ð’Ñ‹Ð¿Ð¾Ð»Ð½ÑÐ¹Ñ‚Ðµ Ð·Ð°Ð´Ð°Ð½Ð¸Ñ, Ð¿Ð¾Ð»ÑƒÑ‡Ð°Ð¹Ñ‚Ðµ ÐºÑ€ÐµÐ´Ð¸Ñ‚Ñ‹ Ð¸ Ð¿Ð¾ÐºÑƒÐ¿Ð°Ð¹Ñ‚Ðµ Ð½Ð¾Ð²Ñ‹Ðµ Ð¿Ð¾Ð´Ñ€Ð°Ð·Ð´ÐµÐ»ÐµÐ½Ð¸Ñ. Ð’ÐµÑÑ‘Ð»Ð¾Ð¹ Ð¸Ð³Ñ€Ñ‹! </br> ÐšÐ¾Ð¼Ð°Ð½Ð´Ð° Â«Ð”Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ 112Â»"
                     }
                 }
             },
             commons: {
-                collect: "ĐźĐľĐ»ŃŃ‡Đ¸Ń‚ŃŚ",
-                "continue": "ĐťĐµŃ‚",
-                end: "ĐšĐľĐ˝ĐµŃ†",
-                next: "Đ”Đ°Đ»ĐµĐµ",
-                prev: "ĐťĐ°Đ·Đ°Đ´",
-                skip: "Đ”Đ°",
-                skip_hint: "Đ’Ń‹ ŃĐ˛ĐµŃ€ĐµĐ˝Ń‹, Ń‡Ń‚Đľ Ń…ĐľŃ‚Đ¸Ń‚Đµ ĐżŃ€ĐľĐżŃŃŃ‚Đ¸Ń‚ŃŚ ĐľĐ±ŃŃ‡ĐµĐ˝Đ¸Đµ? Đ’Ń‹ Đ±ĐľĐ»ŃŚŃĐµ Đ˝Đµ ŃĐĽĐľĐ¶ĐµŃ‚Đµ Đş Đ˝ĐµĐĽŃ Đ˛ĐµŃ€Đ˝ŃŃ‚ŃŚŃŃŹ. Đ’Ń‹ Đ˝Đµ ŃĐĽĐľĐ¶ĐµŃ‚Đµ ĐżĐľĐ»ŃŃ‡Đ¸Ń‚ŃŚ Đ˝Đ°ĐłŃ€Đ°Đ´Ń Đ·Đ° Đ·Đ°Đ˛ĐµŃ€ŃĐµĐ˝Đ¸Đµ ĐľĐ±ŃŃ‡ĐµĐ˝Đ¸ŃŹ."
+                collect: "ÐŸÐ¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ",
+                "continue": "ÐÐµÑ‚",
+                end: "ÐšÐ¾Ð½ÐµÑ†",
+                next: "Ð”Ð°Ð»ÐµÐµ",
+                prev: "ÐÐ°Ð·Ð°Ð´",
+                skip: "Ð”Ð°",
+                skip_hint: "Ð’Ñ‹ ÑƒÐ²ÐµÑ€ÐµÐ½Ñ‹, Ñ‡Ñ‚Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¿Ñ€Ð¾Ð¿ÑƒÑÑ‚Ð¸Ñ‚ÑŒ Ð¾Ð±ÑƒÑ‡ÐµÐ½Ð¸Ðµ? Ð’Ñ‹ Ð±Ð¾Ð»ÑŒÑˆÐµ Ð½Ðµ ÑÐ¼Ð¾Ð¶ÐµÑ‚Ðµ Ðº Ð½ÐµÐ¼Ñƒ Ð²ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ. Ð’Ñ‹ Ð½Ðµ ÑÐ¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ Ð½Ð°Ð³Ñ€Ð°Ð´Ñƒ Ð·Ð° Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð¸Ðµ Ð¾Ð±ÑƒÑ‡ÐµÐ½Ð¸Ñ."
             },
             rewards: {
-                log: "ĐťĐ°ĐłŃ€Đ°Đ´Đ° Đ·Đ° Đ·Đ°Đ˛ĐµŃ€ŃĐµĐ˝Đ¸Đµ ĐľĐ±ŃŃ‡ĐµĐ˝Đ¸ŃŹ."
+                log: "ÐÐ°Ð³Ñ€Ð°Ð´Ð° Ð·Ð° Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð¸Ðµ Ð¾Ð±ÑƒÑ‡ÐµÐ½Ð¸Ñ."
             }
         }
     }, I18n.translations.da_DK = {
         common: {
-            add: "TilfĂ¸j",
+            add: "TilfÃ¸j",
             back: "Tilbage",
-            cancel: "AnnullĂ©r",
-            change_saved: "Ă†ndringer gemt",
-            coins_spend: "Er du sikker pĂĄ, at du vil bruge disse mĂ¸nter?",
+            cancel: "AnnullÃ©r",
+            change_saved: "Ã†ndringer gemt",
+            coins_spend: "Er du sikker pÃ¥, at du vil bruge disse mÃ¸nter?",
             congratulations: "Tillykke!",
             content: "Indhold",
             credits: "Kreditter",
             "delete": "Slet",
             details: "Detaljer",
-            edit: "RedigĂ©r",
+            edit: "RedigÃ©r",
             error: "Fejl",
             is_offline: "%{user} er offline.",
             is_offline_long: "Lang tid: %{user} er offline",
             is_online: "%{user} er online.",
-            loading: "IndlĂ¦ser ...",
+            loading: "IndlÃ¦ser ...",
             name: "Navn",
             none: "Ingen",
             of: "af",
             off: "Fra",
             on: "Til",
             save: "Gem",
-            search: "SĂ¸g",
+            search: "SÃ¸g",
             show: "Vis",
             user_not_found: "Bruger ikke fundet",
-            wrong_key: "Forkert nĂ¸gle"
+            wrong_key: "Forkert nÃ¸gle"
         },
         javascript: {
             alarm: "Send ud",
             arrival: "Ankomst",
-            backalarm: "AnnullĂ©r",
-            coins: "MĂ¸nter",
+            backalarm: "AnnullÃ©r",
+            coins: "MÃ¸nter",
             credits: "Kreditter",
             days: "dage",
-            few_seconds: "om fĂĄ sekunder",
-            finish_in: "FĂ¦rdig om:",
+            few_seconds: "om fÃ¥ sekunder",
+            finish_in: "FÃ¦rdig om:",
             hours: "T",
             location_not_found: "Ikke fundet",
             messages: "Meddelelser",
             minutes: "min.",
             missed_vehicle: "Mangler:",
             mission_start_in: "Begynder om:",
-            not_found_map: "KĂ¸retĂ¸jet blev ikke fundet pĂĄ kortet",
+            not_found_map: "KÃ¸retÃ¸jet blev ikke fundet pÃ¥ kortet",
             now: "Nu",
             patient: "Patient",
             patient_untouched: "Ubehandlede patienter",
-            poi_delete: "Er du sikker pĂĄ, at du vil slette interessepunktet: %{caption}?",
-            reload: "GenindlĂ¦s",
+            poi_delete: "Er du sikker pÃ¥, at du vil slette interessepunktet: %{caption}?",
+            reload: "GenindlÃ¦s",
             sale: "Sale",
             sale_ended: "Udsalg forbi ",
             secounds: "sek.",
             sicherheitswache_error: 'Sikkerhedsvagten "%{caption}" lykkedes ikke, da ikke alle kriterier blev opfyldt.',
-            sicherheitswache_success: 'Sikkerhedsvagten "%{caption}" er blevet gennemfĂ¸rt. Modtag %{credits} kreditter.',
+            sicherheitswache_success: 'Sikkerhedsvagten "%{caption}" er blevet gennemfÃ¸rt. Modtag %{credits} kreditter.',
             start_in: "Begynder om: ",
             start_username: "Begynder:",
             time_left: "Tid tilbage:",
             to_building: "Se bygning",
             to_mission: "Se mission",
-            understand: "ForstĂĄet",
+            understand: "ForstÃ¥et",
             user_not_found: "Spilleren blev ikke fundet",
-            vehicles_not_visible: "KĂ¸retĂ¸jer ikke synlige. "
+            vehicles_not_visible: "KÃ¸retÃ¸jer ikke synlige. "
         },
         map: {
             alliance: "Alliance",
@@ -6064,7 +5998,7 @@ function deleteMissionPosition(e) {
             challenges: "",
             chat_history: "Chat-historik",
             congratulations: "Tillykke! Du kan nu blive forfremmet.",
-            create_alliance_event: "PĂĄbegynd alliancebegivenhed",
+            create_alliance_event: "PÃ¥begynd alliancebegivenhed",
             create_alliance_operation: "Opret en stor alliancemission",
             emergency: "Krisesituation",
             join_alliance_infos: "Hvis du er i en alliance, kan andre spillere give dig missioner.",
@@ -6090,11 +6024,11 @@ function deleteMissionPosition(e) {
                 police_small_missions: "Politistation (lille station)",
                 police_special_forces: "Politiets specialstyrke",
                 police_station_missions: "Politistation",
-                prison_missions: "StatsfĂ¦ngsel",
+                prison_missions: "StatsfÃ¦ngsel",
                 rapid_deployment_group: "Akut indsatsgruppe (AIG)",
                 rescue_copter_station_missions: "Rednings Helikopter Station",
                 riot_police: "Uropoliti",
-                staging_area_missions: "OpstillingsomrĂĄde",
+                staging_area_missions: "OpstillingsomrÃ¥de",
                 technical_aid_organization: "Beredskabskorps",
                 technical_aid_organization_school: "THW Bundesschule",
                 user_buildings: "Mine bygninger",
@@ -6105,12 +6039,12 @@ function deleteMissionPosition(e) {
             mission: "Mission",
             no_alliance_chat_impossible: "Du er ikke i en alliance.",
             no_alliance_missions: "Der er ingen alliancemissioner lige nu",
-            no_ambulance_missions: "Der er ingen ambulancemissioner. Der er kun ambulancemissioner, nĂĄr du har en ambulance og et hospital.",
-            no_emergency_missions: "Der er ingen tilgĂ¦ngelige krisemissioner. Der kan opstĂĄ krisemissioner, nĂĄr du har oprettet din fĂ¸rste station.",
+            no_ambulance_missions: "Der er ingen ambulancemissioner. Der er kun ambulancemissioner, nÃ¥r du har en ambulance og et hospital.",
+            no_emergency_missions: "Der er ingen tilgÃ¦ngelige krisemissioner. Der kan opstÃ¥ krisemissioner, nÃ¥r du har oprettet din fÃ¸rste station.",
             no_radio_messages: "Du har ikke modtaget radiomeddelelser.",
             radio_messages: "Radio",
             restore_map: "Gendan kort",
-            show_informations: "GrĂ¸n = Missionerne vises pĂĄ listen. RĂ¸d = Missionerne vises ikke.",
+            show_informations: "GrÃ¸n = Missionerne vises pÃ¥ listen. RÃ¸d = Missionerne vises ikke.",
             sicherheitswache: "Planlagte indsatser",
             transport: "Transport"
         },
@@ -6118,49 +6052,49 @@ function deleteMissionPosition(e) {
             going: "Rykker ud",
             not_ready: "Ude af drift",
             on_destination: "Ved transportdestinationen",
-            on_place: "PĂĄ ulykkestedet",
+            on_place: "PÃ¥ ulykkestedet",
             patient_transported: "Transporterer patient",
             prisoner_transported: "Transporterer fange",
-            ready_home: "TilgĂ¦ngelig ved station",
+            ready_home: "TilgÃ¦ngelig ved station",
             ready_traveling: "Fri og ledig",
             talking_wish: "Transportanmodning",
-            waiting_for_vehicle: "Venter pĂĄ bugseringskĂ¸retĂ¸j"
+            waiting_for_vehicle: "Venter pÃ¥ bugseringskÃ¸retÃ¸j"
         },
         intervention_order: {
             back: "Tilbage",
             category: "Kategori",
             colour: "Farve",
-            column: "SĂ¸jle",
-            column_number: "SĂ¸jletal",
-            column_number_hint: "Hvis et sĂ¸jletal er angivet, vises alarm og beredskab i den tilsvarende sĂ¸jle pĂĄ varslingssiden.",
+            column: "SÃ¸jle",
+            column_number: "SÃ¸jletal",
+            column_number_hint: "Hvis et sÃ¸jletal er angivet, vises alarm og beredskab i den tilsvarende sÃ¸jle pÃ¥ varslingssiden.",
             create_intervention_order: "Opret ny alarm- og beredskabsregulering",
             "delete": "Slet",
             delete_all: "Slet alarm- og beredskabsregulering helt",
-            delete_all_confirm: "Er du sikker pĂĄ, at du vil slette hele alarm- og beredskabsreguleringen? Tidligere eksporterede indlĂ¦g er ikke tilgĂ¦ngelige!",
+            delete_all_confirm: "Er du sikker pÃ¥, at du vil slette hele alarm- og beredskabsreguleringen? Tidligere eksporterede indlÃ¦g er ikke tilgÃ¦ngelige!",
             description: "Navn",
-            edit: "RedigĂ©r",
+            edit: "RedigÃ©r",
             "export": {
-                "export": "EksportĂ©r",
-                "import": "ImportĂ©r",
-                import_done: "De valgte indlĂ¦g er blevet importeret og skrevet pĂĄ din alarm- og beredskabsplan.",
+                "export": "EksportÃ©r",
+                "import": "ImportÃ©r",
+                import_done: "De valgte indlÃ¦g er blevet importeret og skrevet pÃ¥ din alarm- og beredskabsplan.",
                 saved: "Alarm- og beredskabsreguleringer â€“ eksport",
-                saved_text: "Dine alarm- og beredskabsreguleringer er klar til eksport. Med linket kan en anden spiller importere alarm- og beredskabsreguleringerne. Hvis du i mellemtiden Ă¦ndrer dine alarm- og beredskabsreguleringer, bliver denne Ă¦ndring automatisk brugt i eksporten."
+                saved_text: "Dine alarm- og beredskabsreguleringer er klar til eksport. Med linket kan en anden spiller importere alarm- og beredskabsreguleringerne. Hvis du i mellemtiden Ã¦ndrer dine alarm- og beredskabsreguleringer, bliver denne Ã¦ndring automatisk brugt i eksporten."
             },
-            hotkey_hint: "VĂ¦lg en genvejstast for dette kĂ¸retĂ¸jsvalg. Tryk fĂ¸lgende i dit missionsvindue: ALT + din genvejstast (eller med Firefox: ALT + SHIFT + din genvejstast eller pĂĄ Mac OS: CTRL + ALT + din genvejstast) for at vĂ¦lge kĂ¸retĂ¸j(er).",
-            intervention_order: "RedigĂ©r alarm- og beredskabsreguleringer",
+            hotkey_hint: "VÃ¦lg en genvejstast for dette kÃ¸retÃ¸jsvalg. Tryk fÃ¸lgende i dit missionsvindue: ALT + din genvejstast (eller med Firefox: ALT + SHIFT + din genvejstast eller pÃ¥ Mac OS: CTRL + ALT + din genvejstast) for at vÃ¦lge kÃ¸retÃ¸j(er).",
+            intervention_order: "RedigÃ©r alarm- og beredskabsreguleringer",
             name: "Navn",
             no_intervention_created: "Du har ikke redigeret alarm- og beredskabsreguleringer endnu.",
             options: "Indstillinger",
             reset: "Nulstil forrige valg i alarmvinduet.",
-            reset_hint: "Hvis du har valgt et kĂ¸retĂ¸j i udsendelsesvinduet, kan du bruge denne knap til at nulstille.",
+            reset_hint: "Hvis du har valgt et kÃ¸retÃ¸j i udsendelsesvinduet, kan du bruge denne knap til at nulstille.",
             save: "Gem",
             station: "Station",
-            station_hint: "NĂĄr du har valgt en bygning, bliver kun kĂ¸retĂ¸jer fra bygningen valgt.",
+            station_hint: "NÃ¥r du har valgt en bygning, bliver kun kÃ¸retÃ¸jer fra bygningen valgt.",
             successfully_created: "Alarm- og beredskabsregulering oprettet.",
             successfully_deleted: "Alarm- og beredskabsregulering slettet",
             successfully_updated: "Alarm- og beredskabsregulering opdateret.",
             vehicles: {
-                ab_atemschutz_only: "RĂ¸gdykkermodul",
+                ab_atemschutz_only: "RÃ¸gdykkermodul",
                 ab_einsatzleitung_only: "Kommandomodul",
                 ab_gefahrgut_only: "Gift- og kemikaliemodul",
                 ab_oel_only: "Olieudslipmodul",
@@ -6171,9 +6105,9 @@ function deleteMissionPosition(e) {
                 ambulance_or_rapid_responder: "",
                 arff: "ARFF (lufthavnsbrandbil)",
                 battalion_chief_unit: "Indsatsleder",
-                boot: "BĂĄde (generelt)",
+                boot: "BÃ¥de (generelt)",
                 dekon_p: "",
-                division_chief_unit: "Mobilkommando-kĂ¸retĂ¸j",
+                division_chief_unit: "Mobilkommando-kÃ¸retÃ¸j",
                 dlk_or_tm50: "",
                 elw1_or_elw2: "Indsatsleder eller Ledelses- og kommunikationsmodul",
                 elw2_or_ab_elw: "",
@@ -6181,7 +6115,7 @@ function deleteMissionPosition(e) {
                 elw_airport: "",
                 emergency_ambulance: "Ambulance eller Rednings Helikopter",
                 fire_truck: "Brandbiler",
-                fireboat: "Stor brandbĂĄd",
+                fireboat: "Stor brandbÃ¥d",
                 fly_car: "Flyvebil",
                 fukw: "",
                 fwk: "",
@@ -6194,17 +6128,17 @@ function deleteMissionPosition(e) {
                 gw_atemschutz_only: "",
                 gw_gefahrgut: "Gift og kemikalie-enhed",
                 gw_gefahrgut_only: "",
-                gw_hoehenrettung: "GW-HĂ¶henrettung",
+                gw_hoehenrettung: "GW-HÃ¶henrettung",
                 gw_messtechnik: "GW-Messtechnik",
                 gw_oel_only: "",
                 gw_san: "",
                 gw_taucher: "Dykkerbil",
                 gw_wasserrettung: "Kystlivredderbil",
                 gw_werkfeuerwehr: "",
-                gwl2wasser_only: "BrandslangekĂ¸retĂ¸j",
+                gwl2wasser_only: "BrandslangekÃ¸retÃ¸j",
                 hems: "Rednings Helikopter",
-                hlf_only: "SpecialsprĂ¸jte",
-                hlf_or_rw_and_lf: "SpecialsprĂ¸jte eller Tung Redningsvogn og AutosprĂ¸jte",
+                hlf_only: "SpecialsprÃ¸jte",
+                hlf_or_rw_and_lf: "SpecialsprÃ¸jte eller Tung Redningsvogn og AutosprÃ¸jte",
                 hondengeleider: "",
                 k9: "Hundepatrulje",
                 kdow_lna: "",
@@ -6218,20 +6152,20 @@ function deleteMissionPosition(e) {
                 mek_mtf: "",
                 mek_zf: "",
                 mtw: "Mandskabstransport",
-                mzb: "BĂĄdtrailer",
+                mzb: "BÃ¥dtrailer",
                 naw: "",
                 naw_or_rtw_and_nef: "",
                 naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Ambulance",
-                oil_unit: "GW-Ă–l",
+                oil_unit: "GW-Ã–l",
                 only_ab_dekon_p: "",
                 only_dekon_p: "",
                 ovd_p: "",
                 police_car: "Patruljebil",
                 polizeihubschrauber: "Politihelikopter",
-                rescue_vehicle: "Tungt redningskĂ¸retĂ¸j",
+                rescue_vehicle: "Tungt redningskÃ¸retÃ¸j",
                 rescue_vehicle_only: "Tung redning",
-                rescueboat: "Stor redningsbĂĄd",
+                rescueboat: "Stor redningsbÃ¥d",
                 rettungstreppe: "",
                 rth_only: "Rednings Helikopter",
                 schlauchwagen: "Vandtankvogn",
@@ -6268,75 +6202,75 @@ function deleteMissionPosition(e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: 'DernĂ¦st skal du navngive din station! GĂ¸r den genkendelig og skalerbar! F.eks. "Brandstation #0001". NĂĄr du er fĂ¦rdig, sĂĄ tryk "NĂ¦ste"!',
+                            add_name: 'DernÃ¦st skal du navngive din station! GÃ¸r den genkendelig og skalerbar! F.eks. "Brandstation #0001". NÃ¥r du er fÃ¦rdig, sÃ¥ tryk "NÃ¦ste"!',
                             build_with_credits: "Byg derefter din bygning med kreditter!",
-                            new_building: 'Klik pĂĄ "Ny bygning"!',
-                            select_building: "VĂ¦lg fĂ¸rst den type bygning, du vil starte med. Vi anbefaler, at du starter med brandtjeneste! I hvert fald anbefales det, at man starter med en lille station!",
-                            select_position: "Flyt den blĂĄ markĂ¸r til der, hvor du gerne vil bygge din fĂ¸rste station!"
+                            new_building: 'Klik pÃ¥ "Ny bygning"!',
+                            select_building: "VÃ¦lg fÃ¸rst den type bygning, du vil starte med. Vi anbefaler, at du starter med brandtjeneste! I hvert fald anbefales det, at man starter med en lille station!",
+                            select_position: "Flyt den blÃ¥ markÃ¸r til der, hvor du gerne vil bygge din fÃ¸rste station!"
                         },
-                        pick_location: "VĂ¦lg fĂ¸rst et sted at starte! Indtast navnet pĂĄ stedet, hvor du gerne vil starte, pĂĄ sĂ¸gebjĂ¦lken, eller find det selv pĂĄ kortet! Hvad med din hjemby?",
-                        welcome: "Hej, velkommen til Alarmcentral-spil!  Jeg vil give dig lidt vejledning, sĂĄ du kan fĂĄ en ordentlig start pĂĄ din redningstjeneste-karierre!"
+                        pick_location: "VÃ¦lg fÃ¸rst et sted at starte! Indtast navnet pÃ¥ stedet, hvor du gerne vil starte, pÃ¥ sÃ¸gebjÃ¦lken, eller find det selv pÃ¥ kortet! Hvad med din hjemby?",
+                        welcome: "Hej, velkommen til Alarmcentral-spil!  Jeg vil give dig lidt vejledning, sÃ¥ du kan fÃ¥ en ordentlig start pÃ¥ din redningstjeneste-karierre!"
                     },
                     mobile: {
                         build_building: {
-                            add_name: 'DernĂ¦st skal du navngive din station! GĂ¸r den genkendelig og skalerbar! F.eks. "Brandstation #0001". NĂĄr du er fĂ¦rdig, sĂĄ tryk "NĂ¦ste"!',
+                            add_name: 'DernÃ¦st skal du navngive din station! GÃ¸r den genkendelig og skalerbar! F.eks. "Brandstation #0001". NÃ¥r du er fÃ¦rdig, sÃ¥ tryk "NÃ¦ste"!',
                             build_with_credits: "Byg derefter din bygning med kreditter!",
-                            new_building: 'FĂ¸rst vĂ¦lger vi et sted at begynde at bygge din fĂ¸rste bygning! <br /> <br /> For at gĂ¸re det, skal du klikke pĂĄ "Ny bygning"!',
-                            select_building: "VĂ¦lg fĂ¸rst den type bygning, du vil starte med. Vi anbefaler, at du starter med brandtjeneste! I hvert fald anbefales det, at man starter med en lille station!"
+                            new_building: 'FÃ¸rst vÃ¦lger vi et sted at begynde at bygge din fÃ¸rste bygning! <br /> <br /> For at gÃ¸re det, skal du klikke pÃ¥ "Ny bygning"!',
+                            select_building: "VÃ¦lg fÃ¸rst den type bygning, du vil starte med. Vi anbefaler, at du starter med brandtjeneste! I hvert fald anbefales det, at man starter med en lille station!"
                         },
-                        welcome: "Hej, velkommen til Alarmcentral-spil!  Jeg vil give dig lidt vejledning, sĂĄ du kan fĂĄ en ordentlig start pĂĄ din redningstjeneste-karierre!"
+                        welcome: "Hej, velkommen til Alarmcentral-spil!  Jeg vil give dig lidt vejledning, sÃ¥ du kan fÃ¥ en ordentlig start pÃ¥ din redningstjeneste-karierre!"
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Dette er udsend-menuen. Herfra sender du dine enheder pĂĄ missioner!",
-                            dispatch_menu_buttons: 'Disse er dine to "udsend"-knapper! Den fĂ¸rste: "Udsend" sender de valgte enheder pĂĄ missionen. Den anden gĂ¸r det samme som den fĂ¸rste, men gĂ¦lder for den nĂ¦ste mission. Klik pĂĄ den fĂ¸rste nu.',
-                            dispatch_menu_mission_general: "Her kan du se generel information om missionen, sĂĄ som missionens navn, adresse og ikon. Ikonet med den lille mand dukker op og erstatter en lille stjerne, nĂĄr det er missioner, du allerede har deltaget i.",
-                            dispatch_menu_mission_progress: "Her kan du se, hvor mange fremskridt, der er sket med at hĂĄndtere missionen, antallet af personale pĂĄ stedet, samt den tid, der resterer til at hĂĄndtere missionen!",
-                            dispatch_menu_mission_specific: "Her kan du se mere information om missionen. Hvilke enheder, der reagerer pĂĄ opkaldet, og hvilke, der allerede er nĂĄet frem",
-                            dispatch_menu_vehicle_list: "Dette er en liste over tilgĂ¦ngelige kĂ¸retĂ¸jer. Du vĂ¦lger kĂ¸retĂ¸jerne her. VĂ¦lg nu dine kĂ¸retĂ¸jer ved at klikke pĂĄ den!"
+                            dispatch_menu: "Dette er udsend-menuen. Herfra sender du dine enheder pÃ¥ missioner!",
+                            dispatch_menu_buttons: 'Disse er dine to "udsend"-knapper! Den fÃ¸rste: "Udsend" sender de valgte enheder pÃ¥ missionen. Den anden gÃ¸r det samme som den fÃ¸rste, men gÃ¦lder for den nÃ¦ste mission. Klik pÃ¥ den fÃ¸rste nu.',
+                            dispatch_menu_mission_general: "Her kan du se generel information om missionen, sÃ¥ som missionens navn, adresse og ikon. Ikonet med den lille mand dukker op og erstatter en lille stjerne, nÃ¥r det er missioner, du allerede har deltaget i.",
+                            dispatch_menu_mission_progress: "Her kan du se, hvor mange fremskridt, der er sket med at hÃ¥ndtere missionen, antallet af personale pÃ¥ stedet, samt den tid, der resterer til at hÃ¥ndtere missionen!",
+                            dispatch_menu_mission_specific: "Her kan du se mere information om missionen. Hvilke enheder, der reagerer pÃ¥ opkaldet, og hvilke, der allerede er nÃ¥et frem",
+                            dispatch_menu_vehicle_list: "Dette er en liste over tilgÃ¦ngelige kÃ¸retÃ¸jer. Du vÃ¦lger kÃ¸retÃ¸jerne her. VÃ¦lg nu dine kÃ¸retÃ¸jer ved at klikke pÃ¥ den!"
                         },
                         mobile: {
-                            dispatch_menu: "Dette er udsend-menuen. Herfra sender du dine enheder pĂĄ missioner!",
-                            dispatch_menu_buttons: 'Disse er dine to "udsend"-knapper! Den fĂ¸rste: "Udsend" sender de valgte enheder pĂĄ missionen. Den anden gĂ¸r det samme som den fĂ¸rste, men gĂ¦lder for den nĂ¦ste mission. Klik pĂĄ den fĂ¸rste nu.',
-                            dispatch_menu_mission_general: "Her kan du se generel information om missionen, sĂĄ som missionens navn, adresse og ikon. Ikonet med den lille mand dukker op og erstatter en lille stjerne, nĂĄr det er missioner, du allerede har deltaget i.",
-                            dispatch_menu_mission_progress: "Her kan du se, hvor mange fremskridt, der er sket med at hĂĄndtere missionen, antallet af personale pĂĄ stedet, samt den tid, der resterer til at hĂĄndtere missionen!",
-                            dispatch_menu_mission_specific: "Her kan du se mere information om missionen. Hvilke enheder, der reagerer pĂĄ opkaldet, og hvilke, der allerede er nĂĄet frem",
-                            dispatch_menu_vehicle_list: "Dette er en liste over tilgĂ¦ngelige kĂ¸retĂ¸jer. Du vĂ¦lger kĂ¸retĂ¸jerne her. VĂ¦lg nu dine kĂ¸retĂ¸jer ved at klikke pĂĄ den!"
+                            dispatch_menu: "Dette er udsend-menuen. Herfra sender du dine enheder pÃ¥ missioner!",
+                            dispatch_menu_buttons: 'Disse er dine to "udsend"-knapper! Den fÃ¸rste: "Udsend" sender de valgte enheder pÃ¥ missionen. Den anden gÃ¸r det samme som den fÃ¸rste, men gÃ¦lder for den nÃ¦ste mission. Klik pÃ¥ den fÃ¸rste nu.',
+                            dispatch_menu_mission_general: "Her kan du se generel information om missionen, sÃ¥ som missionens navn, adresse og ikon. Ikonet med den lille mand dukker op og erstatter en lille stjerne, nÃ¥r det er missioner, du allerede har deltaget i.",
+                            dispatch_menu_mission_progress: "Her kan du se, hvor mange fremskridt, der er sket med at hÃ¥ndtere missionen, antallet af personale pÃ¥ stedet, samt den tid, der resterer til at hÃ¥ndtere missionen!",
+                            dispatch_menu_mission_specific: "Her kan du se mere information om missionen. Hvilke enheder, der reagerer pÃ¥ opkaldet, og hvilke, der allerede er nÃ¥et frem",
+                            dispatch_menu_vehicle_list: "Dette er en liste over tilgÃ¦ngelige kÃ¸retÃ¸jer. Du vÃ¦lger kÃ¸retÃ¸jerne her. VÃ¦lg nu dine kÃ¸retÃ¸jer ved at klikke pÃ¥ den!"
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: 'Nu skal vi lĂ¦re, hvordan vi tager os af hĂ¦ndelser. Ă…bn udsendelsesmenuen ved at klikke pĂĄ "udsend"-knappen!',
-                            first_mission: "Glimrende, du har bygget din fĂ¸rste bygning. Se, de fĂ¸rste missioner blev indberettet til dig!"
+                            dispatch_button: 'Nu skal vi lÃ¦re, hvordan vi tager os af hÃ¦ndelser. Ã…bn udsendelsesmenuen ved at klikke pÃ¥ "udsend"-knappen!',
+                            first_mission: "Glimrende, du har bygget din fÃ¸rste bygning. Se, de fÃ¸rste missioner blev indberettet til dig!"
                         },
                         mobile: {
-                            dispatch_button: 'Nu skal vi lĂ¦re, hvordan vi tager os af hĂ¦ndelser. Ă…bn udsendelsesmenuen ved at klikke pĂĄ "udsend"-knappen!',
-                            first_mission: "Glimrende, du har bygget din fĂ¸rste bygning. Se, de fĂ¸rste missioner blev indberettet til dig!"
+                            dispatch_button: 'Nu skal vi lÃ¦re, hvordan vi tager os af hÃ¦ndelser. Ã…bn udsendelsesmenuen ved at klikke pÃ¥ "udsend"-knappen!',
+                            first_mission: "Glimrende, du har bygget din fÃ¸rste bygning. Se, de fÃ¸rste missioner blev indberettet til dig!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Glimrende - du er pĂĄ vej til at blive alletiders til Alarmcentral-spil! Her er %{coins} mĂ¸nter til at fĂĄ dig i gang! </br> Dit Alarmcentral-spil-hold"
+                        general: "Glimrende - du er pÃ¥ vej til at blive alletiders til Alarmcentral-spil! Her er %{coins} mÃ¸nter til at fÃ¥ dig i gang! </br> Dit Alarmcentral-spil-hold"
                     },
                     mobile: {
-                        general: "Glimrende - du er pĂĄ vej til at blive alletiders til Alarmcentral-spil! Her er %{coins} mĂ¸nter til at fĂĄ dig i gang! </br> Dit Alarmcentralspil-hold"
+                        general: "Glimrende - du er pÃ¥ vej til at blive alletiders til Alarmcentral-spil! Her er %{coins} mÃ¸nter til at fÃ¥ dig i gang! </br> Dit Alarmcentralspil-hold"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Hvis du har spĂ¸rgsmĂĄl, kan du tjekke SpĂ¸rgsmĂĄl og svar i spillet eller besĂ¸ge spilforummer pĂĄ vores Facebook-side!",
-                        general: "Som et nĂ¦ste skridt vil vi anbefale, at du bygger en alarmcentral, og dernĂ¦st - sĂĄ snart som muligt - nye stationer, da det maksimale antal missioner er lig med det hĂ¸jeste antal af enhver slags station (politi-, brand-, og ambulance-) plus 1; f.eks. 5 brand- og 3 ambulancestationer = 6 missioner.",
-                        join_alliance: "Det ville ogsĂĄ hjĂ¦lpe dig enormt, isĂ¦r i starten, sĂĄ det anbefales ogsĂĄ.",
-                        summary: "Dette er den grundlĂ¦ggende viden i Alarmcentral-spil! FuldfĂ¸r missioner, fĂĄ kreditter, kĂ¸b flere enheder, gentag. God fornĂ¸jelse! </br> Dit Alarmcentral-spil-hold"
+                        contact: "Hvis du har spÃ¸rgsmÃ¥l, kan du tjekke SpÃ¸rgsmÃ¥l og svar i spillet eller besÃ¸ge spilforummer pÃ¥ vores Facebook-side!",
+                        general: "Som et nÃ¦ste skridt vil vi anbefale, at du bygger en alarmcentral, og dernÃ¦st - sÃ¥ snart som muligt - nye stationer, da det maksimale antal missioner er lig med det hÃ¸jeste antal af enhver slags station (politi-, brand-, og ambulance-) plus 1; f.eks. 5 brand- og 3 ambulancestationer = 6 missioner.",
+                        join_alliance: "Det ville ogsÃ¥ hjÃ¦lpe dig enormt, isÃ¦r i starten, sÃ¥ det anbefales ogsÃ¥.",
+                        summary: "Dette er den grundlÃ¦ggende viden i Alarmcentral-spil! FuldfÃ¸r missioner, fÃ¥ kreditter, kÃ¸b flere enheder, gentag. God fornÃ¸jelse! </br> Dit Alarmcentral-spil-hold"
                     },
                     mobile: {
-                        contact: "Hvis du har spĂ¸rgsmĂĄl, kan du tjekke SpĂ¸rgsmĂĄl og svar i spillet eller besĂ¸ge spilforummer pĂĄ vores Facebook-side!",
-                        general: "Som et nĂ¦ste skridt vil vi anbefale, at du bygger en alarmcentral, og dernĂ¦st - sĂĄ snart som muligt - nye stationer, da det maksimale antal missioner er lig med det hĂ¸jeste antal af enhver slags station (politi-, brand-, og ambulance-) plus 1; f.eks. 5 brand- og 3 ambulancestationer = 6 missioner.",
-                        join_alliance: "Det ville ogsĂĄ hjĂ¦lpe dig enormt, isĂ¦r i starten, sĂĄ det anbefales ogsĂĄ.",
-                        summary: "Dette er den grundlĂ¦ggende viden i Alarmcentral-spil! FuldfĂ¸r missioner, fĂĄ kreditter, kĂ¸b flere enheder, gentag. God fornĂ¸jelse! </br> Dit Alarmcentral-spil-hold"
+                        contact: "Hvis du har spÃ¸rgsmÃ¥l, kan du tjekke SpÃ¸rgsmÃ¥l og svar i spillet eller besÃ¸ge spilforummer pÃ¥ vores Facebook-side!",
+                        general: "Som et nÃ¦ste skridt vil vi anbefale, at du bygger en alarmcentral, og dernÃ¦st - sÃ¥ snart som muligt - nye stationer, da det maksimale antal missioner er lig med det hÃ¸jeste antal af enhver slags station (politi-, brand-, og ambulance-) plus 1; f.eks. 5 brand- og 3 ambulancestationer = 6 missioner.",
+                        join_alliance: "Det ville ogsÃ¥ hjÃ¦lpe dig enormt, isÃ¦r i starten, sÃ¥ det anbefales ogsÃ¥.",
+                        summary: "Dette er den grundlÃ¦ggende viden i Alarmcentral-spil! FuldfÃ¸r missioner, fÃ¥ kreditter, kÃ¸b flere enheder, gentag. God fornÃ¸jelse! </br> Dit Alarmcentral-spil-hold"
                     }
                 }
             },
@@ -6344,13 +6278,13 @@ function deleteMissionPosition(e) {
                 collect: "Hent",
                 "continue": "Nej",
                 end: "Afslut",
-                next: "NĂ¦ste",
+                next: "NÃ¦ste",
                 prev: "Forrige",
                 skip: "Ja",
-                skip_hint: "Vil du virkelig afbryde introduktionen? Du kan ikke vende tilbage til den senere. Du kvalificerer dig ikke til belĂ¸nningen for at gennemfĂ¸re introduktionen."
+                skip_hint: "Vil du virkelig afbryde introduktionen? Du kan ikke vende tilbage til den senere. Du kvalificerer dig ikke til belÃ¸nningen for at gennemfÃ¸re introduktionen."
             },
             rewards: {
-                log: "BelĂ¸nning for at afslutte gennemgangen."
+                log: "BelÃ¸nning for at afslutte gennemgangen."
             }
         }
     }, I18n.translations.nb_NO = {
@@ -6359,7 +6293,7 @@ function deleteMissionPosition(e) {
             back: "Tilbake",
             cancel: "Avbryt",
             change_saved: "Endringer lagret",
-            coins_spend: "Er du sikker pĂĄ at du vil bruke disse myntene?",
+            coins_spend: "Er du sikker pÃ¥ at du vil bruke disse myntene?",
             congratulations: "Gratulerer!",
             content: "Innhold",
             credits: "Kreditter",
@@ -6375,12 +6309,12 @@ function deleteMissionPosition(e) {
             none: "Ingen",
             of: "av",
             off: "Av",
-            on: "PĂĄ",
+            on: "PÃ¥",
             save: "Lagre",
-            search: "SĂ¸k",
+            search: "SÃ¸k",
             show: "Vis",
             user_not_found: "Brukeren ble ikke funnet",
-            wrong_key: "Feil nĂ¸kkel"
+            wrong_key: "Feil nÃ¸kkel"
         },
         javascript: {
             alarm: "Send ut",
@@ -6389,28 +6323,28 @@ function deleteMissionPosition(e) {
             coins: "Mynter",
             credits: "Kreditter",
             days: "dager",
-            few_seconds: "om fĂĄ sekunder",
-            finish_in: "FullfĂ¸r om:",
+            few_seconds: "om fÃ¥ sekunder",
+            finish_in: "FullfÃ¸r om:",
             hours: "T",
             location_not_found: "Ikke funnet",
             messages: "Meldinger",
             minutes: "min.",
             missed_vehicle: "Mangler:",
             mission_start_in: "Starter om:",
-            not_found_map: "Fremkomstmiddelet ble ikke funnet pĂĄ kartet",
-            now: "NĂĄ",
+            not_found_map: "Fremkomstmiddelet ble ikke funnet pÃ¥ kartet",
+            now: "NÃ¥",
             patient: "Pasient",
             patient_untouched: "Ubehandlede pasienter",
-            poi_delete: "Er du sikker pĂĄ at du vil slette interessepunktet %{caption}?",
-            reload: "Last inn pĂĄ nytt",
+            poi_delete: "Er du sikker pÃ¥ at du vil slette interessepunktet %{caption}?",
+            reload: "Last inn pÃ¥ nytt",
             sale: "Salg",
             sale_ended: "Salg avsluttet",
             secounds: "sek.",
             sicherheitswache_error: "Sikkerhetsvakten %{caption} lyktes ikke, for ikke alle kriteriene ble innfridd.",
-            sicherheitswache_success: "Sikkerhetsvakten %{caption} lyktes. FĂĄ %{credits} kreditter.",
+            sicherheitswache_success: "Sikkerhetsvakten %{caption} lyktes. FÃ¥ %{credits} kreditter.",
             start_in: "Starter om: ",
             start_username: "Starter:",
-            time_left: "GjenstĂĄende tid:",
+            time_left: "GjenstÃ¥ende tid:",
             to_building: "Vis bygning",
             to_mission: "Vis oppdrag",
             understand: "Bekreft",
@@ -6422,19 +6356,19 @@ function deleteMissionPosition(e) {
             alliance_chat: "Chat",
             alliance_chat_banned: "Du er utestengt fra alliansechatten.",
             alliance_chat_banned_admin: "Utestengt av:",
-            alliance_chat_banned_timeleft: "GjenvĂ¦rende tid:",
+            alliance_chat_banned_timeleft: "GjenvÃ¦rende tid:",
             alliance_chat_radio_off: "Allianseradio: Av",
-            alliance_chat_radio_on: "Allianseradio: PĂĄ",
+            alliance_chat_radio_on: "Allianseradio: PÃ¥",
             alliance_event: "Hendelse",
             alliance_missions: "Allianseoppdrag",
             alliance_missions_event: "Hendelse",
             ambulance: "Ambulanse",
             challenges: "",
             chat_history: "Chatlogg",
-            congratulations: "Gratulerer! Du kan nĂĄ forfremmes.",
+            congratulations: "Gratulerer! Du kan nÃ¥ forfremmes.",
             create_alliance_event: "Start alliansehendelse",
             create_alliance_operation: "Lag et allianseoppdrag i stor skala",
-            emergency: "NĂ¸dssituasjon",
+            emergency: "NÃ¸dssituasjon",
             join_alliance_infos: "Hvis du er i en allianse, kan andre spillere gi deg oppdrag.",
             map: "Kart",
             map_filters: {
@@ -6446,7 +6380,7 @@ function deleteMissionPosition(e) {
                 ambulance_station_missions: "Ambulansestasjon",
                 ambulance_station_small_missions: "Ambulansestasjon (liten)",
                 clinic_missions: "Klinikk",
-                dispatch_center_missions: "NĂ¸detatssenter",
+                dispatch_center_missions: "NÃ¸detatssenter",
                 fire_school_missions: "Brannskole",
                 firehouse_missions: "Brannstasjon",
                 firehouse_small_missions: "Brannstasjon (liten)",
@@ -6461,7 +6395,7 @@ function deleteMissionPosition(e) {
                 prison_missions: "Fengsel",
                 rapid_deployment_group: "Rask oppsettsgruppe (SEG)",
                 rescue_copter_station_missions: "Luftambulansestasjon",
-                riot_police: "OpprĂ¸rspoliti",
+                riot_police: "OpprÃ¸rspoliti",
                 staging_area_missions: "Oppstillingsplass",
                 technical_aid_organization: "THW",
                 technical_aid_organization_school: "THW Bundesschule",
@@ -6472,13 +6406,13 @@ function deleteMissionPosition(e) {
             message: "Melding",
             mission: "Oppdrag",
             no_alliance_chat_impossible: "Du er ikke i en allianse.",
-            no_alliance_missions: "Du har for Ă¸yeblikket ingen allianseoppdrag.",
-            no_ambulance_missions: "Du har ingen ambulanseoppdrag. Du kan bare fĂĄ ambulanseoppdrag nĂĄr du har en ambulanse og et sykehus.",
-            no_emergency_missions: "Du har ingen nĂ¸doppdrag. Du kan fĂĄ nĂ¸doppdrag etter at du bygger din fĂ¸rste stasjon.",
-            no_radio_messages: "Du har ikke fĂĄtt noen radiomeldinger.",
+            no_alliance_missions: "Du har for Ã¸yeblikket ingen allianseoppdrag.",
+            no_ambulance_missions: "Du har ingen ambulanseoppdrag. Du kan bare fÃ¥ ambulanseoppdrag nÃ¥r du har en ambulanse og et sykehus.",
+            no_emergency_missions: "Du har ingen nÃ¸doppdrag. Du kan fÃ¥ nÃ¸doppdrag etter at du bygger din fÃ¸rste stasjon.",
+            no_radio_messages: "Du har ikke fÃ¥tt noen radiomeldinger.",
             radio_messages: "Radio",
             restore_map: "Gjenopprett kart",
-            show_informations: "GrĂ¸nn = oppdragene vises pĂĄ listen. RĂ¸d = oppdragene vises ikke.",
+            show_informations: "GrÃ¸nn = oppdragene vises pÃ¥ listen. RÃ¸d = oppdragene vises ikke.",
             sicherheitswache: "Planlagte visninger",
             transport: "Transport"
         },
@@ -6486,13 +6420,13 @@ function deleteMissionPosition(e) {
             going: "Rykker ut",
             not_ready: "Ikke klar",
             on_destination: "Framme ved destinasjonen",
-            on_place: "PĂĄ ĂĄstedet",
+            on_place: "PÃ¥ Ã¥stedet",
             patient_transported: "Transporterer pasient",
             prisoner_transported: "Transporterer innsatt",
-            ready_home: "Tilgjengelig pĂĄ stasjon",
+            ready_home: "Tilgjengelig pÃ¥ stasjon",
             ready_traveling: "Klar og tilgjengelig",
-            talking_wish: "TransportforespĂ¸rsel",
-            waiting_for_vehicle: "Venter pĂĄ at bil taues"
+            talking_wish: "TransportforespÃ¸rsel",
+            waiting_for_vehicle: "Venter pÃ¥ at bil taues"
         },
         intervention_order: {
             back: "Tilbake",
@@ -6500,30 +6434,30 @@ function deleteMissionPosition(e) {
             colour: "Farge",
             column: "Kolonne",
             column_number: "Kolonnenummer",
-            column_number_hint: "Hvis et kolonnenummer oppgis, vil Alarm og respons-oppfĂ¸ringen vises i den tilsvarende kolonnen pĂĄ varselsiden.",
+            column_number_hint: "Hvis et kolonnenummer oppgis, vil Alarm og respons-oppfÃ¸ringen vises i den tilsvarende kolonnen pÃ¥ varselsiden.",
             create_intervention_order: "Opprett ny Alarm og respons-regulering",
             "delete": "Slett",
             delete_all: "Slett Alarm og respons-regulering",
-            delete_all_confirm: "Er du sikker pĂĄ at du vil slette hele Alarm og respons-regulering? Eksisterende eksporterte oppfĂ¸ringer er ikke lenger tilgjengelige!",
+            delete_all_confirm: "Er du sikker pÃ¥ at du vil slette hele Alarm og respons-regulering? Eksisterende eksporterte oppfÃ¸ringer er ikke lenger tilgjengelige!",
             description: "Navn",
             edit: "Rediger",
             "export": {
                 "export": "Eksporter",
                 "import": "Importer",
-                import_done: "De valgte oppfĂ¸ringene ble importer og skrevet over til Alarm og respons-planen.",
+                import_done: "De valgte oppfÃ¸ringene ble importer og skrevet over til Alarm og respons-planen.",
                 saved: "Eksport av Alarm og respons-reguleringer",
                 saved_text: "Alarm og respons-reguleringen er klargjort for eksport. Via koblingen kan andre spillere importere Alarm og respons-reguleringen. Hvis du i mellomtiden endrer Alarm og respons-reguleringen, reflekteres endringene i automatisk i eksporten."
             },
-            hotkey_hint: "Velg en snarvei for dette fremkomstmiddelvalget. Oppgi i oppdragsvinduet: ALT + snarveien (eller i Firefox: ALT + SHIFT + snarveien, eller pĂĄ mac os: ctrl + alt + snarveien) for ĂĄ velge fremkomstmiddelvalget.",
+            hotkey_hint: "Velg en snarvei for dette fremkomstmiddelvalget. Oppgi i oppdragsvinduet: ALT + snarveien (eller i Firefox: ALT + SHIFT + snarveien, eller pÃ¥ mac os: ctrl + alt + snarveien) for Ã¥ velge fremkomstmiddelvalget.",
             intervention_order: "Rediger Alarm og respons-reguleringer",
             name: "Navn",
-            no_intervention_created: "Du har ikke opprettet noen Alarm og respons-regulering ennĂĄ.",
+            no_intervention_created: "Du har ikke opprettet noen Alarm og respons-regulering ennÃ¥.",
             options: "Alternativer",
             reset: "Tilbakestill forrige valg i alarmvinduet.",
-            reset_hint: "Hvis du har valgt fremkomstmiddelet i utrykningsvinduet, kan du bruke denne knappen til ĂĄ tilbakestille det.",
+            reset_hint: "Hvis du har valgt fremkomstmiddelet i utrykningsvinduet, kan du bruke denne knappen til Ã¥ tilbakestille det.",
             save: "Spar",
             station: "Stasjon",
-            station_hint: "NĂĄr en bygning er valgt, kan bare fremkomstmidler av tilsvarende bygning velges.",
+            station_hint: "NÃ¥r en bygning er valgt, kan bare fremkomstmidler av tilsvarende bygning velges.",
             successfully_created: "Alarm og respons-regulering ble opprettet.",
             successfully_deleted: "Alarm og respons-regulering ble slettet.",
             successfully_updated: "Alarm og respons-regulering ble oppdatert.",
@@ -6539,17 +6473,17 @@ function deleteMissionPosition(e) {
                 ambulance_or_rapid_responder: "",
                 arff: "Flyplassbrannbil",
                 battalion_chief_unit: "Utrykningsleder brann",
-                boot: "BĂĄt",
+                boot: "BÃ¥t",
                 dekon_p: "",
                 division_chief_unit: "Innsatsleder brann",
                 dlk_or_tm50: "",
-                elw1_or_elw2: "Innsatsleder brann eller innsatsstĂ¸ttebil",
+                elw1_or_elw2: "Innsatsleder brann eller innsatsstÃ¸ttebil",
                 elw2_or_ab_elw: "",
                 elw3: "",
                 elw_airport: "",
                 emergency_ambulance: "Ambulanse eller luftambulanse",
                 fire_truck: "Brannbil",
-                fireboat: "BrannbĂĄt",
+                fireboat: "BrannbÃ¥t",
                 fly_car: "Akuttbil",
                 fukw: "",
                 fwk: "",
@@ -6559,10 +6493,10 @@ function deleteMissionPosition(e) {
                 grtw0: "",
                 grtw1: "",
                 grukw: "",
-                gw_atemschutz_only: "RĂ¸ykdykkerbil",
+                gw_atemschutz_only: "RÃ¸ykdykkerbil",
                 gw_gefahrgut: "CBRNe-enhet",
                 gw_gefahrgut_only: "",
-                gw_hoehenrettung: "HĂ¸ydeberedskap",
+                gw_hoehenrettung: "HÃ¸ydeberedskap",
                 gw_messtechnik: "GW-Messtechnik",
                 gw_oel_only: "",
                 gw_san: "",
@@ -6582,11 +6516,11 @@ function deleteMissionPosition(e) {
                 lebefkw: "Innsatsleder politi",
                 lf_only: "Brannbil",
                 long_distance_ambulance: "Transportambulanse",
-                mask_service_unit: "RĂ¸ykdykkerbil",
+                mask_service_unit: "RÃ¸ykdykkerbil",
                 mek_mtf: "",
                 mek_zf: "",
                 mtw: "MTW",
-                mzb: "Lett brannbĂĄt",
+                mzb: "Lett brannbÃ¥t",
                 naw: "",
                 naw_or_rtw_and_nef: "",
                 naw_or_rtw_and_nef_or_rth: "",
@@ -6599,7 +6533,7 @@ function deleteMissionPosition(e) {
                 polizeihubschrauber: "Politihelikopter",
                 rescue_vehicle: "Redningsbil",
                 rescue_vehicle_only: "Redningsbil",
-                rescueboat: "AmbulansebĂĄt",
+                rescueboat: "AmbulansebÃ¥t",
                 rettungstreppe: "",
                 rth_only: "Luftambulanse",
                 schlauchwagen: "Tankbil",
@@ -6607,8 +6541,8 @@ function deleteMissionPosition(e) {
                 sek_mtf: "",
                 sek_zf: "",
                 swat: "Delta",
-                swat_armored_vehicle: "Pansret kjĂ¸retĂ¸y",
-                swat_suv: "Delta kjĂ¸retĂ¸y",
+                swat_armored_vehicle: "Pansret kjÃ¸retÃ¸y",
+                swat_suv: "Delta kjÃ¸retÃ¸y",
                 thw_anh_mzab: "",
                 thw_anh_mzb: "",
                 thw_anh_schlb: "",
@@ -6624,7 +6558,7 @@ function deleteMissionPosition(e) {
                 tlf_only: "Tankbil",
                 tm50: "",
                 turboloescher: "",
-                turntable_ladder: "HĂ¸yderedskap",
+                turntable_ladder: "HÃ¸yderedskap",
                 ulf: "",
                 wasserwerfer: "",
                 water_amount: "",
@@ -6636,75 +6570,75 @@ function deleteMissionPosition(e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: "SĂĄ gir du stasjonen et navn. GjĂ¸r det gjenkjennelig og skalerbart! F.eks. Â«Brannstasjon nr. 0001Â». NĂĄr du er ferdig, klikker du pĂĄ Â«NesteÂ»!",
+                            add_name: "SÃ¥ gir du stasjonen et navn. GjÃ¸r det gjenkjennelig og skalerbart! F.eks. Â«Brannstasjon nr. 0001Â». NÃ¥r du er ferdig, klikker du pÃ¥ Â«NesteÂ»!",
                             build_with_credits: "Bygg bygningen din med kreditter!",
-                            new_building: "Klikk pĂĄ Â«Ny bygningÂ»!",
-                            select_building: "Velg fĂ¸rst bygningstypen du vil begynne med, vi anbefaler deg ĂĄ begynne med brannvesenet! Det er ogsĂĄ lurt ĂĄ begynne med en liten stasjon.",
-                            select_position: "Flytt den blĂĄ markĂ¸ren dit du vil bygge den fĂ¸rste stasjonen din!"
+                            new_building: "Klikk pÃ¥ Â«Ny bygningÂ»!",
+                            select_building: "Velg fÃ¸rst bygningstypen du vil begynne med, vi anbefaler deg Ã¥ begynne med brannvesenet! Det er ogsÃ¥ lurt Ã¥ begynne med en liten stasjon.",
+                            select_position: "Flytt den blÃ¥ markÃ¸ren dit du vil bygge den fÃ¸rste stasjonen din!"
                         },
-                        pick_location: "Velg fĂ¸rst et sted ĂĄ begynne! Skriv inn navnet der du vil begynne, eller finn det selv pĂĄ kartet! Hva med hjembyen din?",
-                        welcome: "Hei og velkommen til NĂ¸dsentralspillet!  Jeg skal lĂ¦re deg hvordan du fĂĄr en pangstart i nĂ¸detatenes verden!"
+                        pick_location: "Velg fÃ¸rst et sted Ã¥ begynne! Skriv inn navnet der du vil begynne, eller finn det selv pÃ¥ kartet! Hva med hjembyen din?",
+                        welcome: "Hei og velkommen til NÃ¸dsentralspillet!  Jeg skal lÃ¦re deg hvordan du fÃ¥r en pangstart i nÃ¸detatenes verden!"
                     },
                     mobile: {
                         build_building: {
-                            add_name: "SĂĄ gir du stasjonen et navn. GjĂ¸r det gjenkjennelig og skalerbart! F.eks. Â«Brannstasjon nr. 0001Â». NĂĄr du er ferdig, klikker du pĂĄ Â«NesteÂ»!",
+                            add_name: "SÃ¥ gir du stasjonen et navn. GjÃ¸r det gjenkjennelig og skalerbart! F.eks. Â«Brannstasjon nr. 0001Â». NÃ¥r du er ferdig, klikker du pÃ¥ Â«NesteÂ»!",
                             build_with_credits: "Bygg bygningen din med kreditter!",
-                            new_building: "FĂ¸rst velger vi et sted ĂĄ begynne og bygge vĂĄr fĂ¸rste bygning. <br /> <br />For ĂĄ gjĂ¸re det klikker du pĂĄ Â«Ny bygningÂ»!",
-                            select_building: "Velg fĂ¸rst bygningstypen du vil begynne med, vi anbefaler deg ĂĄ begynne med brannvesenet! Det er ogsĂĄ lurt ĂĄ begynne med en liten stasjon."
+                            new_building: "FÃ¸rst velger vi et sted Ã¥ begynne og bygge vÃ¥r fÃ¸rste bygning. <br /> <br />For Ã¥ gjÃ¸re det klikker du pÃ¥ Â«Ny bygningÂ»!",
+                            select_building: "Velg fÃ¸rst bygningstypen du vil begynne med, vi anbefaler deg Ã¥ begynne med brannvesenet! Det er ogsÃ¥ lurt Ã¥ begynne med en liten stasjon."
                         },
-                        welcome: "Hei og velkommen til NĂ¸dsentralspillet!  Jeg skal lĂ¦re deg hvordan du fĂĄr en pangstart i nĂ¸detatenes verden!"
+                        welcome: "Hei og velkommen til NÃ¸dsentralspillet!  Jeg skal lÃ¦re deg hvordan du fÃ¥r en pangstart i nÃ¸detatenes verden!"
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Dette er nĂ¸dedatsmenyen. Her i fra kan du sende enhetene dine ut pĂĄ oppdrag!",
-                            dispatch_menu_buttons: "Dette er dine to nĂ¸detatsknapper. Den fĂ¸rste: Â«NĂ¸detatÂ» sender de valgte enhetene ut pĂĄ oppdraget. Den andre gjĂ¸r det samme som den fĂ¸rste, men gĂĄr ut pĂĄ neste oppdrag. Klikk pĂĄ den fĂ¸rste knappen.",
-                            dispatch_menu_mission_general: "Her kan du se generell oppdragsinfo, altsĂĄ navnet, adressen og oppdragsikonet. Ikonet av den lille mannen dukker opp og erstatter en liten stjerne pĂĄ oppdrag du allerede deltar pĂĄ.",
-                            dispatch_menu_mission_progress: "Her kan du se hvor mye framdrift som er gjort pĂĄ oppdraget, samt antallet personell pĂĄ stedet og hvor mye tid du har igjen.",
-                            dispatch_menu_mission_specific: "Her kan du se info om oppdraget, hvilke enheter som svarer pĂĄ nĂ¸danropet og hvem som allerede er pĂĄ stedet.",
-                            dispatch_menu_vehicle_list: "Dette er listen over dine tilgjengelige fremkomstmidler. Velg fremkomstmidler her. Velg fremkomstmiddelet ved ĂĄ klikke pĂĄ det."
+                            dispatch_menu: "Dette er nÃ¸dedatsmenyen. Her i fra kan du sende enhetene dine ut pÃ¥ oppdrag!",
+                            dispatch_menu_buttons: "Dette er dine to nÃ¸detatsknapper. Den fÃ¸rste: Â«NÃ¸detatÂ» sender de valgte enhetene ut pÃ¥ oppdraget. Den andre gjÃ¸r det samme som den fÃ¸rste, men gÃ¥r ut pÃ¥ neste oppdrag. Klikk pÃ¥ den fÃ¸rste knappen.",
+                            dispatch_menu_mission_general: "Her kan du se generell oppdragsinfo, altsÃ¥ navnet, adressen og oppdragsikonet. Ikonet av den lille mannen dukker opp og erstatter en liten stjerne pÃ¥ oppdrag du allerede deltar pÃ¥.",
+                            dispatch_menu_mission_progress: "Her kan du se hvor mye framdrift som er gjort pÃ¥ oppdraget, samt antallet personell pÃ¥ stedet og hvor mye tid du har igjen.",
+                            dispatch_menu_mission_specific: "Her kan du se info om oppdraget, hvilke enheter som svarer pÃ¥ nÃ¸danropet og hvem som allerede er pÃ¥ stedet.",
+                            dispatch_menu_vehicle_list: "Dette er listen over dine tilgjengelige fremkomstmidler. Velg fremkomstmidler her. Velg fremkomstmiddelet ved Ã¥ klikke pÃ¥ det."
                         },
                         mobile: {
-                            dispatch_menu: "Dette er nĂ¸dedatsmenyen. Her i fra kan du sende enhetene dine ut pĂĄ oppdrag!",
-                            dispatch_menu_buttons: "Dette er dine to nĂ¸detatsknapper. Den fĂ¸rste: Â«NĂ¸detatÂ» sender de valgte enhetene ut pĂĄ oppdraget. Den andre gjĂ¸r det samme som den fĂ¸rste, men gĂĄr ut pĂĄ neste oppdrag. Klikk pĂĄ den fĂ¸rste knappen.",
-                            dispatch_menu_mission_general: "Her kan du se generell oppdragsinfo, altsĂĄ navnet, adressen og oppdragsikonet. Ikonet av den lille mannen dukker opp og erstatter en liten stjerne pĂĄ oppdrag du allerede deltar pĂĄ.",
-                            dispatch_menu_mission_progress: "Her kan du se hvor mye framdrift som er gjort pĂĄ oppdraget, samt antallet personell pĂĄ stedet og hvor mye tid du har igjen.",
-                            dispatch_menu_mission_specific: "Her kan du se info om oppdraget, hvilke enheter som svarer pĂĄ nĂ¸danropet og hvem som allerede er pĂĄ stedet.",
-                            dispatch_menu_vehicle_list: "Dette er listen over dine tilgjengelige fremkomstmidler. Velg fremkomstmidler her. Velg fremkomstmiddelet ved ĂĄ klikke pĂĄ det."
+                            dispatch_menu: "Dette er nÃ¸dedatsmenyen. Her i fra kan du sende enhetene dine ut pÃ¥ oppdrag!",
+                            dispatch_menu_buttons: "Dette er dine to nÃ¸detatsknapper. Den fÃ¸rste: Â«NÃ¸detatÂ» sender de valgte enhetene ut pÃ¥ oppdraget. Den andre gjÃ¸r det samme som den fÃ¸rste, men gÃ¥r ut pÃ¥ neste oppdrag. Klikk pÃ¥ den fÃ¸rste knappen.",
+                            dispatch_menu_mission_general: "Her kan du se generell oppdragsinfo, altsÃ¥ navnet, adressen og oppdragsikonet. Ikonet av den lille mannen dukker opp og erstatter en liten stjerne pÃ¥ oppdrag du allerede deltar pÃ¥.",
+                            dispatch_menu_mission_progress: "Her kan du se hvor mye framdrift som er gjort pÃ¥ oppdraget, samt antallet personell pÃ¥ stedet og hvor mye tid du har igjen.",
+                            dispatch_menu_mission_specific: "Her kan du se info om oppdraget, hvilke enheter som svarer pÃ¥ nÃ¸danropet og hvem som allerede er pÃ¥ stedet.",
+                            dispatch_menu_vehicle_list: "Dette er listen over dine tilgjengelige fremkomstmidler. Velg fremkomstmidler her. Velg fremkomstmiddelet ved Ã¥ klikke pÃ¥ det."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "NĂĄ skal vi lĂ¦re ĂĄ hĂĄndtere ulykker. Ă…pne nĂ¸detatsmenyen ved ĂĄ klikke pĂĄ en nĂ¸detatsknapp.",
-                            first_mission: "Flott, du har bygget din fĂ¸rste bygning! Se, de fĂ¸rste oppdragene ble meldt inn til deg!"
+                            dispatch_button: "NÃ¥ skal vi lÃ¦re Ã¥ hÃ¥ndtere ulykker. Ã…pne nÃ¸detatsmenyen ved Ã¥ klikke pÃ¥ en nÃ¸detatsknapp.",
+                            first_mission: "Flott, du har bygget din fÃ¸rste bygning! Se, de fÃ¸rste oppdragene ble meldt inn til deg!"
                         },
                         mobile: {
-                            dispatch_button: "NĂĄ skal vi lĂ¦re ĂĄ hĂĄndtere ulykker. Ă…pne nĂ¸detatsmenyen ved ĂĄ klikke pĂĄ en nĂ¸detatsknapp.",
-                            first_mission: "Flott, du har bygget din fĂ¸rste bygning! Se, de fĂ¸rste oppdragene ble meldt inn til deg!"
+                            dispatch_button: "NÃ¥ skal vi lÃ¦re Ã¥ hÃ¥ndtere ulykker. Ã…pne nÃ¸detatsmenyen ved Ã¥ klikke pÃ¥ en nÃ¸detatsknapp.",
+                            first_mission: "Flott, du har bygget din fÃ¸rste bygning! Se, de fÃ¸rste oppdragene ble meldt inn til deg!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Flott, nĂĄ er du pĂĄ vei til ĂĄ bli en god nĂ¸dsentralleder! Her fĂĄr du %{coins} mynter for ĂĄ komme i gang! </br> NĂ¸dsentralspillet-teamet"
+                        general: "Flott, nÃ¥ er du pÃ¥ vei til Ã¥ bli en god nÃ¸dsentralleder! Her fÃ¥r du %{coins} mynter for Ã¥ komme i gang! </br> NÃ¸dsentralspillet-teamet"
                     },
                     mobile: {
-                        general: "Flott, nĂĄ er du pĂĄ vei til ĂĄ bli en god nĂ¸dsentralleder! Her fĂĄr du %{coins} mynter for ĂĄ komme i gang! </br> NĂ¸dsentralspillet-teamet"
+                        general: "Flott, nÃ¥ er du pÃ¥ vei til Ã¥ bli en god nÃ¸dsentralleder! Her fÃ¥r du %{coins} mynter for Ã¥ komme i gang! </br> NÃ¸dsentralspillet-teamet"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Hvis du har spĂ¸rsmĂĄl, kan du sjekke med spillets Vanlige spĂ¸rsmĂĄl eller gĂĄ til spillforumet eller Facebook-siden vĂĄr.",
-                        general: "I neste trinn anbefaler vi deg ĂĄ bygge et nĂ¸detatssenter og sĂĄ snart som mulig nye stasjoner, siden maks antall oppdrag er lik det hĂ¸yeste antallet stasjoner av en stasjonstype (politi, brann, ambulanse) pluss 1. F.eks. 5 brannstasjoner og 3 ambulansestasjoner = 6 oppdrag.",
-                        join_alliance: "Det er ogsĂĄ nyttig ĂĄ bli med i allianser, spesielt i begynnelsen, sĂĄ det anbefales ogsĂĄ.",
-                        summary: "Dette er det grunnleggende i NĂ¸dsentralspillet! UtfĂ¸r oppdrag, fĂĄ kreditter, kjĂ¸p flere enheter og gjenta. Kos deg med spillingen! </br> NĂ¸dsentralspillet-teamet"
+                        contact: "Hvis du har spÃ¸rsmÃ¥l, kan du sjekke med spillets Vanlige spÃ¸rsmÃ¥l eller gÃ¥ til spillforumet eller Facebook-siden vÃ¥r.",
+                        general: "I neste trinn anbefaler vi deg Ã¥ bygge et nÃ¸detatssenter og sÃ¥ snart som mulig nye stasjoner, siden maks antall oppdrag er lik det hÃ¸yeste antallet stasjoner av en stasjonstype (politi, brann, ambulanse) pluss 1. F.eks. 5 brannstasjoner og 3 ambulansestasjoner = 6 oppdrag.",
+                        join_alliance: "Det er ogsÃ¥ nyttig Ã¥ bli med i allianser, spesielt i begynnelsen, sÃ¥ det anbefales ogsÃ¥.",
+                        summary: "Dette er det grunnleggende i NÃ¸dsentralspillet! UtfÃ¸r oppdrag, fÃ¥ kreditter, kjÃ¸p flere enheter og gjenta. Kos deg med spillingen! </br> NÃ¸dsentralspillet-teamet"
                     },
                     mobile: {
-                        contact: "Hvis du har spĂ¸rsmĂĄl, kan du sjekke med spillets Vanlige spĂ¸rsmĂĄl eller gĂĄ til spillforumet eller Facebook-siden vĂĄr.",
-                        general: "I neste trinn anbefaler vi deg ĂĄ bygge et nĂ¸detatssenter og sĂĄ snart som mulig nye stasjoner, siden maks antall oppdrag er lik det hĂ¸yeste antallet stasjoner av en stasjonstype (politi, brann, ambulanse) pluss 1. F.eks. 5 brannstasjoner og 3 ambulansestasjoner = 6 oppdrag.",
-                        join_alliance: "Det er ogsĂĄ nyttig ĂĄ bli med i allianser, spesielt i begynnelsen, sĂĄ det anbefales ogsĂĄ.",
-                        summary: "Dette er det grunnleggende i NĂ¸dsentralspillet! UtfĂ¸r oppdrag, fĂĄ kreditter, kjĂ¸p flere enheter og gjenta. Kos deg med spillingen! </br> NĂ¸dsentralspillet-teamet"
+                        contact: "Hvis du har spÃ¸rsmÃ¥l, kan du sjekke med spillets Vanlige spÃ¸rsmÃ¥l eller gÃ¥ til spillforumet eller Facebook-siden vÃ¥r.",
+                        general: "I neste trinn anbefaler vi deg Ã¥ bygge et nÃ¸detatssenter og sÃ¥ snart som mulig nye stasjoner, siden maks antall oppdrag er lik det hÃ¸yeste antallet stasjoner av en stasjonstype (politi, brann, ambulanse) pluss 1. F.eks. 5 brannstasjoner og 3 ambulansestasjoner = 6 oppdrag.",
+                        join_alliance: "Det er ogsÃ¥ nyttig Ã¥ bli med i allianser, spesielt i begynnelsen, sÃ¥ det anbefales ogsÃ¥.",
+                        summary: "Dette er det grunnleggende i NÃ¸dsentralspillet! UtfÃ¸r oppdrag, fÃ¥ kreditter, kjÃ¸p flere enheter og gjenta. Kos deg med spillingen! </br> NÃ¸dsentralspillet-teamet"
                     }
                 }
             },
@@ -6715,20 +6649,20 @@ function deleteMissionPosition(e) {
                 next: "Neste",
                 prev: "Forrige",
                 skip: "Ja",
-                skip_hint: "Vil du avslutte veiledningen? Den vil ikke vĂ¦re tilgjengelig senere. Du vil ikke fĂĄ belĂ¸nningen for fullfĂ¸rt veiledning."
+                skip_hint: "Vil du avslutte veiledningen? Den vil ikke vÃ¦re tilgjengelig senere. Du vil ikke fÃ¥ belÃ¸nningen for fullfÃ¸rt veiledning."
             },
             rewards: {
-                log: "BelĂ¸nning for ĂĄ fullfĂ¸re veiledningen."
+                log: "BelÃ¸nning for Ã¥ fullfÃ¸re veiledningen."
             }
         }
     }, I18n.translations.cs_CZ = {
         common: {
-            add: "PĹ™idat",
+            add: "PÅ™idat",
             back: "ZpÄ›t",
-            cancel: "ZruĹˇit",
-            change_saved: "ZmÄ›ny uloĹľeny",
+            cancel: "ZruÅ¡it",
+            change_saved: "ZmÄ›ny uloÅ¾eny",
             coins_spend: "Opravdu chcete mince utratit?",
-            congratulations: "BlahopĹ™ejeme!",
+            congratulations: "BlahopÅ™ejeme!",
             content: "Obsah",
             credits: "Kredity",
             "delete": "Odstranit",
@@ -6736,246 +6670,246 @@ function deleteMissionPosition(e) {
             edit: "Upravit",
             error: "Chyba",
             is_offline: "%{user} je offline.",
-            is_offline_long: "%{user} je uĹľ dlouho offline",
+            is_offline_long: "%{user} je uÅ¾ dlouho offline",
             is_online: "%{user} je online.",
-            loading: "NaÄŤĂ­tĂˇnĂ­â€¦",
-            name: "NĂˇzev",
+            loading: "NaÄÃ­tÃ¡nÃ­â€¦",
+            name: "NÃ¡zev",
             none: "Nic",
             of: "z",
             off: "Vyp.",
             on: "Zap.",
-            save: "UloĹľit",
+            save: "UloÅ¾it",
             search: "Hledat",
             show: "Zobrazit",
-            user_not_found: "UĹľivatel nenalezen",
-            wrong_key: "NesprĂˇvnĂˇ klĂˇvesa"
+            user_not_found: "UÅ¾ivatel nenalezen",
+            wrong_key: "NesprÃ¡vnÃ¡ klÃ¡vesa"
         },
         javascript: {
-            alarm: "VĂ˝jezd",
-            arrival: "PĹ™Ă­jezd",
-            backalarm: "ZruĹˇit",
+            alarm: "VÃ½jezd",
+            arrival: "PÅ™Ã­jezd",
+            backalarm: "ZruÅ¡it",
             coins: "Mince",
             credits: "Kredity",
             days: "d",
-            few_seconds: "za pĂˇr sekund",
+            few_seconds: "za pÃ¡r sekund",
             finish_in: "Konec za:",
             hours: "h",
             location_not_found: "Nenalezeno",
-            messages: "ZprĂˇvy",
+            messages: "ZprÃ¡vy",
             minutes: "min",
-            missed_vehicle: "ChybĂ­:",
-            mission_start_in: "ZaÄŤne za:",
+            missed_vehicle: "ChybÃ­:",
+            mission_start_in: "ZaÄne za:",
             not_found_map: "Vozidlo nebylo nalezeno nikde na mapÄ›",
-            now: "TeÄŹ",
+            now: "TeÄ",
             patient: "Pacient",
-            patient_untouched: "NeoĹˇetĹ™enĂ­ pacienti",
-            poi_delete: "Opravdu chcete odstranit bod zĂˇjmu: %{caption}?",
+            patient_untouched: "NeoÅ¡etÅ™enÃ­ pacienti",
+            poi_delete: "Opravdu chcete odstranit bod zÃ¡jmu: %{caption}?",
             reload: "Obnovit",
             sale: "Prodej",
-            sale_ended: "Prodej ukonÄŤen",
+            sale_ended: "Prodej ukonÄen",
             secounds: "s",
-            sicherheitswache_error: "HlĂ­dka %{caption} nebyla ĂşspÄ›ĹˇnĂˇ, protoĹľe nebyla splnÄ›na vĹˇechna kritĂ©ria.",
-            sicherheitswache_success: "HlĂ­dka %{caption} byla ĂşspÄ›ĹˇnĂˇ. ZĂ­skĂˇte %{credits} kreditĹŻ.",
-            start_in: "ZaÄŤĂˇtek za: ",
-            start_username: "ZahĂˇjil uĹľivatel:",
-            time_left: "ZbĂ˝vajĂ­cĂ­ ÄŤas:",
+            sicherheitswache_error: "HlÃ­dka %{caption} nebyla ÃºspÄ›Å¡nÃ¡, protoÅ¾e nebyla splnÄ›na vÅ¡echna kritÃ©ria.",
+            sicherheitswache_success: "HlÃ­dka %{caption} byla ÃºspÄ›Å¡nÃ¡. ZÃ­skÃ¡te %{credits} kreditÅ¯.",
+            start_in: "ZaÄÃ¡tek za: ",
+            start_username: "ZahÃ¡jil uÅ¾ivatel:",
+            time_left: "ZbÃ½vajÃ­cÃ­ Äas:",
             to_building: "Zobrazit budovu",
             to_mission: "Zobrazit misi",
             understand: "OK",
-            user_not_found: "HrĂˇÄŤ nebyl nalezen.",
+            user_not_found: "HrÃ¡Ä nebyl nalezen.",
             vehicles_not_visible: "Vozidla nejsou vidÄ›t. "
         },
         map: {
             alliance: "Aliance",
             alliance_chat: "Chat",
-            alliance_chat_banned: "Z alianÄŤnĂ­ho chatu jste aktuĂˇlnÄ› vypovÄ›zeni.",
-            alliance_chat_banned_admin: "Ban od hrĂˇÄŤe:",
-            alliance_chat_banned_timeleft: "ZbĂ˝vajĂ­cĂ­ ÄŤas:",
-            alliance_chat_radio_off: "AlianÄŤnĂ­ vysĂ­laÄŤka: Vyp.",
-            alliance_chat_radio_on: "AlianÄŤnĂ­ vysĂ­laÄŤka: Zap.",
+            alliance_chat_banned: "Z alianÄnÃ­ho chatu jste aktuÃ¡lnÄ› vypovÄ›zeni.",
+            alliance_chat_banned_admin: "Ban od hrÃ¡Äe:",
+            alliance_chat_banned_timeleft: "ZbÃ½vajÃ­cÃ­ Äas:",
+            alliance_chat_radio_off: "AlianÄnÃ­ vysÃ­laÄka: Vyp.",
+            alliance_chat_radio_on: "AlianÄnÃ­ vysÃ­laÄka: Zap.",
             alliance_event: "Akce",
-            alliance_missions: "AlianÄŤnĂ­ mise",
+            alliance_missions: "AlianÄnÃ­ mise",
             alliance_missions_event: "Akce",
             ambulance: "Sanitka",
-            challenges: "VĂ˝zvy",
+            challenges: "VÃ½zvy",
             chat_history: "Historie chatu",
-            congratulations: "BlahopĹ™ejeme! NynĂ­ mĹŻĹľete povĂ˝Ĺˇit.",
-            create_alliance_event: "ZahĂˇjit alianÄŤnĂ­ akci",
-            create_alliance_operation: "VytvoĹ™it velkou alianÄŤnĂ­ misi",
+            congratulations: "BlahopÅ™ejeme! NynÃ­ mÅ¯Å¾ete povÃ½Å¡it.",
+            create_alliance_event: "ZahÃ¡jit alianÄnÃ­ akci",
+            create_alliance_operation: "VytvoÅ™it velkou alianÄnÃ­ misi",
             emergency: "Stav nouze",
-            join_alliance_infos: "V alianci vĂˇm ostatnĂ­ hrĂˇÄŤi mĹŻĹľou dĂˇvat mise.",
+            join_alliance_infos: "V alianci vÃ¡m ostatnÃ­ hrÃ¡Äi mÅ¯Å¾ou dÃ¡vat mise.",
             map: "Mapa",
             map_filters: {
                 all_buildings: "Budovy",
                 all_missions: "Mise",
-                alliance_buildings: "AlianÄŤnĂ­ budovy",
-                alliance_members: "ÄŚlenovĂ©",
-                alliance_missions: "SdĂ­leno aliancĂ­",
-                ambulance_station_missions: "VĂ˝jezdovĂˇ zĂˇkladna zĂˇchrannĂ© sluĹľby",
-                ambulance_station_small_missions: "VĂ˝jezdovĂˇ zĂˇkladna zĂˇchrannĂ© sluĹľby (malĂˇ)",
+                alliance_buildings: "AlianÄnÃ­ budovy",
+                alliance_members: "ÄŒlenovÃ©",
+                alliance_missions: "SdÃ­leno aliancÃ­",
+                ambulance_station_missions: "VÃ½jezdovÃ¡ zÃ¡kladna zÃ¡chrannÃ© sluÅ¾by",
+                ambulance_station_small_missions: "VÃ½jezdovÃ¡ zÃ¡kladna zÃ¡chrannÃ© sluÅ¾by (malÃ¡)",
                 clinic_missions: "Klinika",
-                dispatch_center_missions: "OperaÄŤnĂ­ stĹ™edisko",
-                fire_school_missions: "Ĺ kolnĂ­ a vĂ˝cvikovĂ© zaĹ™Ă­zenĂ­ HZS",
-                firehouse_missions: "PoĹľĂˇrnĂ­ stanice",
-                firehouse_small_missions: "PoĹľĂˇrnĂ­ stanice (malĂˇ)",
+                dispatch_center_missions: "OperaÄnÃ­ stÅ™edisko",
+                fire_school_missions: "Å kolnÃ­ a vÃ½cvikovÃ© zaÅ™Ã­zenÃ­ HZS",
+                firehouse_missions: "PoÅ¾Ã¡rnÃ­ stanice",
+                firehouse_small_missions: "PoÅ¾Ã¡rnÃ­ stanice (malÃ¡)",
                 hospital_missions: "Nemocnice",
-                map_filters: "Seznam filtrĹŻ mapy",
-                mission_positions: "Body zĂˇjmu (BZ)",
-                police_copter_station_missions: "ZĂˇkladna LeteckĂ© sluĹľby PÄŚR",
-                police_school_missions: "PolicejnĂ­ Akademie",
-                police_small_missions: "ObvodnĂ­ oddÄ›lenĂ­ Policie (malĂ©)",
-                police_special_forces: "SpeciĂˇlnĂ­ policejnĂ­ jednotky",
-                police_station_missions: "ObvodnĂ­ oddÄ›lenĂ­ Policie",
-                prison_missions: "PolicejnĂ­ cela",
-                rapid_deployment_group: "KrizovĂ˝ tĂ˝m",
-                rescue_copter_station_missions: "ZĂˇkladna LeteckĂ© zĂˇchrannĂ© sluĹľby",
-                riot_police: "PoĹ™ĂˇdkovĂˇ jednotka",
-                staging_area_missions: "PĹ™Ă­pravnĂˇ oblast",
-                technical_aid_organization: "TechnickĂˇ pomoc",
-                technical_aid_organization_school: "Ĺ kola technickĂ© pomoci",
+                map_filters: "Seznam filtrÅ¯ mapy",
+                mission_positions: "Body zÃ¡jmu (BZ)",
+                police_copter_station_missions: "ZÃ¡kladna LeteckÃ© sluÅ¾by PÄŒR",
+                police_school_missions: "PolicejnÃ­ Akademie",
+                police_small_missions: "ObvodnÃ­ oddÄ›lenÃ­ Policie (malÃ©)",
+                police_special_forces: "SpeciÃ¡lnÃ­ policejnÃ­ jednotky",
+                police_station_missions: "ObvodnÃ­ oddÄ›lenÃ­ Policie",
+                prison_missions: "PolicejnÃ­ cela",
+                rapid_deployment_group: "KrizovÃ½ tÃ½m",
+                rescue_copter_station_missions: "ZÃ¡kladna LeteckÃ© zÃ¡chrannÃ© sluÅ¾by",
+                riot_police: "PoÅ™Ã¡dkovÃ¡ jednotka",
+                staging_area_missions: "PÅ™Ã­pravnÃ¡ oblast",
+                technical_aid_organization: "TechnickÃ¡ pomoc",
+                technical_aid_organization_school: "Å kola technickÃ© pomoci",
                 user_buildings: "Moje budovy",
                 user_missions: "Moje mise",
-                water_watch: "VodnĂ­ zĂˇchrannĂˇ sluĹľba"
+                water_watch: "VodnÃ­ zÃ¡chrannÃ¡ sluÅ¾ba"
             },
-            message: "ZprĂˇva",
+            message: "ZprÃ¡va",
             mission: "Mise",
-            no_alliance_chat_impossible: "Nejste v ĹľĂˇdnĂ© alianci.",
-            no_alliance_missions: "K dispozici nejsou ĹľĂˇdnĂ© alianÄŤnĂ­ mise.",
-            no_ambulance_missions: "Mise zĂˇchrannĂ© sluĹľby nejsou k dispozici. ObjevĂ­ se, aĹľ kdyĹľ budete mĂ­t zĂˇchrannou sluĹľbu a nemocnici.",
-            no_emergency_missions: "NouzovĂ© mise nejsou k dispozici. ObjevĂ­ se, aĹľ postavĂ­te prvnĂ­ stanici.",
-            no_radio_messages: "Na vysĂ­laÄŤku vĂˇm nepĹ™iĹˇly ĹľĂˇdnĂ© zprĂˇvy.",
-            radio_messages: "VysĂ­laÄŤka",
+            no_alliance_chat_impossible: "Nejste v Å¾Ã¡dnÃ© alianci.",
+            no_alliance_missions: "K dispozici nejsou Å¾Ã¡dnÃ© alianÄnÃ­ mise.",
+            no_ambulance_missions: "Mise zÃ¡chrannÃ© sluÅ¾by nejsou k dispozici. ObjevÃ­ se, aÅ¾ kdyÅ¾ budete mÃ­t zÃ¡chrannou sluÅ¾bu a nemocnici.",
+            no_emergency_missions: "NouzovÃ© mise nejsou k dispozici. ObjevÃ­ se, aÅ¾ postavÃ­te prvnÃ­ stanici.",
+            no_radio_messages: "Na vysÃ­laÄku vÃ¡m nepÅ™iÅ¡ly Å¾Ã¡dnÃ© zprÃ¡vy.",
+            radio_messages: "VysÃ­laÄka",
             restore_map: "Obnovit mapu",
-            show_informations: "ZelenĂˇ = Mise budou zobrazeny v seznamu. ÄŚervenĂˇ = Mise nebudou zobrazeny.",
-            sicherheitswache: "PlĂˇnovanĂ© mise",
-            transport: "PĹ™evoz"
+            show_informations: "ZelenÃ¡ = Mise budou zobrazeny v seznamu. ÄŒervenÃ¡ = Mise nebudou zobrazeny.",
+            sicherheitswache: "PlÃ¡novanÃ© mise",
+            transport: "PÅ™evoz"
         },
         fms: {
             going: "Na cestÄ›",
             not_ready: "Mimo provoz",
-            on_destination: "Na mĂ­stÄ›",
-            on_place: "Na mĂ­stÄ›",
-            patient_transported: "PĹ™evoz pacienta",
-            prisoner_transported: "PĹ™evoz vÄ›znÄ›",
+            on_destination: "Na mÃ­stÄ›",
+            on_place: "Na mÃ­stÄ›",
+            patient_transported: "PÅ™evoz pacienta",
+            prisoner_transported: "PÅ™evoz vÄ›znÄ›",
             ready_home: "K dispozici",
             ready_traveling: "K dispozici (na cestÄ›)",
-            talking_wish: "Ĺ˝Ăˇdost o pĹ™evoz",
-            waiting_for_vehicle: "ÄŚekĂˇnĂ­ na odtah"
+            talking_wish: "Å½Ã¡dost o pÅ™evoz",
+            waiting_for_vehicle: "ÄŒekÃ¡nÃ­ na odtah"
         },
         intervention_order: {
             back: "ZpÄ›t",
             category: "Kategorie",
             colour: "Barva",
             column: "Sloupec",
-            column_number: "ÄŚĂ­slo sloupce",
-            column_number_hint: "KdyĹľ zadĂˇte ÄŤĂ­slo sloupce, pravidlo nouzovĂ©ho vĂ˝jezdu se zobrazĂ­ v pĹ™Ă­sluĹˇnĂ©m sloupci na strĂˇnce nouzovĂ© situace.",
-            create_intervention_order: "VytvoĹ™it novĂ© pravidlo nouzovĂ©ho vĂ˝jezdu",
+            column_number: "ÄŒÃ­slo sloupce",
+            column_number_hint: "KdyÅ¾ zadÃ¡te ÄÃ­slo sloupce, pravidlo nouzovÃ©ho vÃ½jezdu se zobrazÃ­ v pÅ™Ã­sluÅ¡nÃ©m sloupci na strÃ¡nce nouzovÃ© situace.",
+            create_intervention_order: "VytvoÅ™it novÃ© pravidlo nouzovÃ©ho vÃ½jezdu",
             "delete": "Odstranit",
-            delete_all: "Odstranit vĹˇechna pravidla nouzovĂ˝ch vĂ˝jezdĹŻ",
-            delete_all_confirm: "Opravdu chcete odstranit vĹˇechna pravidla? ExportovanĂ© poloĹľky uĹľ nejsou k dispozici!",
-            description: "NĂˇzev",
+            delete_all: "Odstranit vÅ¡echna pravidla nouzovÃ½ch vÃ½jezdÅ¯",
+            delete_all_confirm: "Opravdu chcete odstranit vÅ¡echna pravidla? ExportovanÃ© poloÅ¾ky uÅ¾ nejsou k dispozici!",
+            description: "NÃ¡zev",
             edit: "Upravit",
             "export": {
                 "export": "Exportovat",
                 "import": "Importovat",
-                import_done: "VybranĂ© poloĹľky byly importovĂˇny a zaneseny do plĂˇnu nouzovĂ˝ch vĂ˝jezdĹŻ.",
-                saved: "Export pravidel nouzovĂ˝ch vĂ˝jezdĹŻ",
-                saved_text: "Pravidlo nouzovĂ©ho vĂ˝jezdu je pĹ™ipravenĂ© k exportu. OstatnĂ­ hrĂˇÄŤi mohou pravidlo importovat pomocĂ­ odkazu. Pokud mezitĂ­m pravidlo zmÄ›nĂ­te, zmÄ›na se automaticky promĂ­tne i do exportu."
+                import_done: "VybranÃ© poloÅ¾ky byly importovÃ¡ny a zaneseny do plÃ¡nu nouzovÃ½ch vÃ½jezdÅ¯.",
+                saved: "Export pravidel nouzovÃ½ch vÃ½jezdÅ¯",
+                saved_text: "Pravidlo nouzovÃ©ho vÃ½jezdu je pÅ™ipravenÃ© k exportu. OstatnÃ­ hrÃ¡Äi mohou pravidlo importovat pomocÃ­ odkazu. Pokud mezitÃ­m pravidlo zmÄ›nÃ­te, zmÄ›na se automaticky promÃ­tne i do exportu."
             },
-            hotkey_hint: "PĹ™iĹ™aÄŹte tomuto vĂ˝bÄ›ru klĂˇvesu. V oknÄ› s misĂ­ stisknÄ›te: ALT + klĂˇvesa (nebo ve Firefoxu: ALT + SHIFT + klĂˇvesa, nebo na Mac OS: CTRL + ALT + klĂˇvesa), a tĂ­m proveÄŹte pĹ™ednastavenĂ˝ vĂ˝bÄ›r vozidel.",
-            intervention_order: "Upravit pravidla nouzovĂ˝ch vĂ˝jezdĹŻ",
-            name: "NĂˇzev",
-            no_intervention_created: "ZatĂ­m jste nevytvoĹ™ili ĹľĂˇdnĂ© pravidlo nouzovĂ©ho vĂ˝jezdu.",
-            options: "MoĹľnosti",
-            reset: "Vymazat pĹ™edchozĂ­ vĂ˝bÄ›r v oknÄ› nouzovĂ© situace.",
-            reset_hint: "Pokud jste uĹľ v dispeÄŤerskĂ©m oknÄ› vybrali vozidlo, mĹŻĹľete pomocĂ­ tohoto tlaÄŤĂ­tka vĂ˝bÄ›r zruĹˇit.",
-            save: "UloĹľit",
+            hotkey_hint: "PÅ™iÅ™aÄte tomuto vÃ½bÄ›ru klÃ¡vesu. V oknÄ› s misÃ­ stisknÄ›te: ALT + klÃ¡vesa (nebo ve Firefoxu: ALT + SHIFT + klÃ¡vesa, nebo na Mac OS: CTRL + ALT + klÃ¡vesa), a tÃ­m proveÄte pÅ™ednastavenÃ½ vÃ½bÄ›r vozidel.",
+            intervention_order: "Upravit pravidla nouzovÃ½ch vÃ½jezdÅ¯",
+            name: "NÃ¡zev",
+            no_intervention_created: "ZatÃ­m jste nevytvoÅ™ili Å¾Ã¡dnÃ© pravidlo nouzovÃ©ho vÃ½jezdu.",
+            options: "MoÅ¾nosti",
+            reset: "Vymazat pÅ™edchozÃ­ vÃ½bÄ›r v oknÄ› nouzovÃ© situace.",
+            reset_hint: "Pokud jste uÅ¾ v dispeÄerskÃ©m oknÄ› vybrali vozidlo, mÅ¯Å¾ete pomocÃ­ tohoto tlaÄÃ­tka vÃ½bÄ›r zruÅ¡it.",
+            save: "UloÅ¾it",
             station: "Stanice",
-            station_hint: "KdyĹľ je vybrĂˇna nÄ›kterĂˇ budova, oznaÄŤĂ­ se pouze jejĂ­ vozidla.",
-            successfully_created: "Pravidlo nouzovĂ©ho vĂ˝jezdu bylo ĂşspÄ›ĹˇnÄ› vytvoĹ™eno.",
-            successfully_deleted: "Pravidlo nouzovĂ©ho vĂ˝jezdu odstranÄ›no",
-            successfully_updated: "Pravidlo nouzovĂ©ho vĂ˝jezdu bylo ĂşspÄ›ĹˇnÄ› aktualizovĂˇno.",
+            station_hint: "KdyÅ¾ je vybrÃ¡na nÄ›kterÃ¡ budova, oznaÄÃ­ se pouze jejÃ­ vozidla.",
+            successfully_created: "Pravidlo nouzovÃ©ho vÃ½jezdu bylo ÃºspÄ›Å¡nÄ› vytvoÅ™eno.",
+            successfully_deleted: "Pravidlo nouzovÃ©ho vÃ½jezdu odstranÄ›no",
+            successfully_updated: "Pravidlo nouzovÃ©ho vÃ½jezdu bylo ÃºspÄ›Å¡nÄ› aktualizovÃ¡no.",
             vehicles: {
-                ab_atemschutz_only: "Modul s dĂ˝chacĂ­mi pĹ™Ă­stroji",
-                ab_einsatzleitung_only: "VelitelskĂ˝ modul",
-                ab_gefahrgut_only: "Modul pro prĂˇci s nebezpeÄŤnĂ˝mi lĂˇtkami",
-                ab_oel_only: "Modul pro likvidaci uniklĂ© ropy",
-                ab_ruest: "Technicko-zĂˇchranĂˇĹ™skĂ˝ modul",
+                ab_atemschutz_only: "Modul s dÃ½chacÃ­mi pÅ™Ã­stroji",
+                ab_einsatzleitung_only: "VelitelskÃ½ modul",
+                ab_gefahrgut_only: "Modul pro prÃ¡ci s nebezpeÄnÃ½mi lÃ¡tkami",
+                ab_oel_only: "Modul pro likvidaci uniklÃ© ropy",
+                ab_ruest: "Technicko-zÃ¡chranÃ¡Å™skÃ½ modul",
                 ab_ruest_rw: "",
                 abl2wasser_only: "Modul s hadicemi",
                 ambulance: "Sanitka RZP",
                 ambulance_or_rapid_responder: "",
-                arff: "LetiĹˇtnĂ­ speciĂˇl",
-                battalion_chief_unit: "VelitelskĂ˝ automobil",
+                arff: "LetiÅ¡tnÃ­ speciÃ¡l",
+                battalion_chief_unit: "VelitelskÃ½ automobil",
                 boot: "LodÄ› (obecnÄ›)",
                 dekon_p: "",
-                division_chief_unit: "VelitelskĂ© vozidlo",
+                division_chief_unit: "VelitelskÃ© vozidlo",
                 dlk_or_tm50: "",
                 elw1_or_elw2: "VEA nebo MOS",
-                elw2_or_ab_elw: "MOS nebo Ĺ™Ă­zenĂ­ provozu",
+                elw2_or_ab_elw: "MOS nebo Å™Ã­zenÃ­ provozu",
                 elw3: "",
                 elw_airport: "",
-                emergency_ambulance: "Sanitka nebo vrtulnĂ­k",
-                fire_truck: "HasiÄŤskĂ© vozy",
-                fireboat: "VelkĂˇ hasiÄŤskĂˇ loÄŹ",
-                fly_car: "LĂ©kaĹ™skĂ© vozidlo RV",
+                emergency_ambulance: "Sanitka nebo vrtulnÃ­k",
+                fire_truck: "HasiÄskÃ© vozy",
+                fireboat: "VelkÃ¡ hasiÄskÃ¡ loÄ",
+                fly_car: "LÃ©kaÅ™skÃ© vozidlo RV",
                 fukw: "",
                 fwk: "",
                 gefkw: "",
-                gkw: "UĹľitkovĂ˝ vĹŻz",
-                grtw: "Jednotka pro hromadnĂˇ neĹˇtÄ›stĂ­",
+                gkw: "UÅ¾itkovÃ½ vÅ¯z",
+                grtw: "Jednotka pro hromadnÃ¡ neÅ¡tÄ›stÃ­",
                 grtw0: "",
                 grtw1: "",
                 grukw: "",
                 gw_atemschutz_only: "",
-                gw_gefahrgut: "NebezpeÄŤnĂ© lĂˇtky",
+                gw_gefahrgut: "NebezpeÄnÃ© lÃ¡tky",
                 gw_gefahrgut_only: "",
-                gw_hoehenrettung: "VĂ˝ĹˇkovĂˇ jednotka",
-                gw_messtechnik: "DetekÄŤnĂ­ jednotka",
+                gw_hoehenrettung: "VÃ½Å¡kovÃ¡ jednotka",
+                gw_messtechnik: "DetekÄnÃ­ jednotka",
                 gw_oel_only: "",
                 gw_san: "",
                 gw_taucher: "",
-                gw_wasserrettung: "VodnĂ­ zĂˇchrannĂˇ sluĹľba",
+                gw_wasserrettung: "VodnÃ­ zÃ¡chrannÃ¡ sluÅ¾ba",
                 gw_werkfeuerwehr: "",
-                gwl2wasser_only: "Vozidlo s hadicĂ­",
+                gwl2wasser_only: "Vozidlo s hadicÃ­",
                 hems: "LZS",
                 hlf_only: "",
                 hlf_or_rw_and_lf: "",
                 hondengeleider: "",
-                k9: "Vozidlo KynologĹŻ PÄŚR",
+                k9: "Vozidlo KynologÅ¯ PÄŒR",
                 kdow_lna: "",
                 kdow_orgl: "Velitel ZZS",
                 ktw_b: "",
                 ktw_or_rtw: "",
-                lebefkw: "LehÄŤĂ­ velitelskĂ© vozidlo",
-                lf_only: "HasiÄŤskĂ© vozy",
+                lebefkw: "LehÄÃ­ velitelskÃ© vozidlo",
+                lf_only: "HasiÄskÃ© vozy",
                 long_distance_ambulance: "Sanitka DZS",
-                mask_service_unit: "Jednotka s dĂ˝chacĂ­mi pĹ™Ă­stroji",
+                mask_service_unit: "Jednotka s dÃ½chacÃ­mi pÅ™Ã­stroji",
                 mek_mtf: "",
                 mek_zf: "",
-                mtw: "TransportnĂ­ tĂ˝movĂ˝ vĹŻz",
-                mzb: "VĂ­ceĂşÄŤelovĂˇ loÄŹ",
+                mtw: "TransportnÃ­ tÃ½movÃ½ vÅ¯z",
+                mzb: "VÃ­ceÃºÄelovÃ¡ loÄ",
                 naw: "",
                 naw_or_rtw_and_nef: "",
                 naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Sanitka",
-                oil_unit: "RopnĂˇ jednotka",
+                oil_unit: "RopnÃ¡ jednotka",
                 only_ab_dekon_p: "",
                 only_dekon_p: "",
                 ovd_p: "",
-                police_car: "HlĂ­dkovĂ˝ vĹŻz",
-                polizeihubschrauber: "PolicejnĂ­ vrtulnĂ­k",
-                rescue_vehicle: "TechnickĂ˝ automobil",
-                rescue_vehicle_only: "TÄ›ĹľkĂˇ zĂˇchranĂˇĹ™skĂˇ jednotka",
-                rescueboat: "VelkĂˇ zĂˇchranĂˇĹ™skĂˇ loÄŹ",
+                police_car: "HlÃ­dkovÃ½ vÅ¯z",
+                polizeihubschrauber: "PolicejnÃ­ vrtulnÃ­k",
+                rescue_vehicle: "TechnickÃ½ automobil",
+                rescue_vehicle_only: "TÄ›Å¾kÃ¡ zÃ¡chranÃ¡Å™skÃ¡ jednotka",
+                rescueboat: "VelkÃ¡ zÃ¡chranÃ¡Å™skÃ¡ loÄ",
                 rettungstreppe: "",
-                rth_only: "VrtulnĂ­k LZS",
-                schlauchwagen: "KombinovanĂ˝ hasĂ­cĂ­ automobil",
+                rth_only: "VrtulnÃ­k LZS",
+                schlauchwagen: "KombinovanÃ½ hasÃ­cÃ­ automobil",
                 seg_elw: "",
                 sek_mtf: "",
                 sek_zf: "",
                 swat: "URNA",
-                swat_armored_vehicle: "ObrnÄ›nĂ© vozidlo URNA",
+                swat_armored_vehicle: "ObrnÄ›nÃ© vozidlo URNA",
                 swat_suv: "URNA SUV",
                 thw_anh_mzab: "",
                 thw_anh_mzb: "",
@@ -6985,11 +6919,11 @@ function deleteMissionPosition(e) {
                 thw_lkw: "",
                 thw_lkw_7_lkr_19_tm: "",
                 thw_mlw5: "",
-                thw_mtw: "TransportnĂ­ vĹŻz technikĹŻ",
-                thw_mzkw: "VĂ­ceĂşÄŤelovĂ© vozidlo",
-                thw_tauchkraftwagen: "PotĂˇpÄ›ÄŤskĂ˝ tĂ˝m",
+                thw_mtw: "TransportnÃ­ vÅ¯z technikÅ¯",
+                thw_mzkw: "VÃ­ceÃºÄelovÃ© vozidlo",
+                thw_tauchkraftwagen: "PotÃ¡pÄ›ÄskÃ½ tÃ½m",
                 thw_tauchkraftwagen_or_gw_taucher: "",
-                tlf_only: "VĹŻz s cisternou",
+                tlf_only: "VÅ¯z s cisternou",
                 tm50: "",
                 turboloescher: "",
                 turntable_ladder: "AZ nebo AP",
@@ -6997,7 +6931,7 @@ function deleteMissionPosition(e) {
                 wasserwerfer: "",
                 water_amount: "",
                 water_amount_tlf: "",
-                gwa: "ProtiplynovĂ˝ automobil"
+                gwa: "ProtiplynovÃ½ automobil"
             }
         },
         tutorial: {
@@ -7005,75 +6939,75 @@ function deleteMissionPosition(e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: "DĂˇl svou novou stanici pojmenujte. NĂˇzev by mÄ›l bĂ˝t rozpoznatelnĂ˝ a ĹˇkĂˇlovatelnĂ˝. NapĹ™. â€žHasiÄŤskĂˇ stanice 1â€ś. AĹľ bude hotovo, kliknÄ›te na moĹľnost â€žDalĹˇĂ­â€ś.",
-                            build_with_credits: "TeÄŹ si budovu postavte za kredity.",
-                            new_building: "KliknÄ›te na moĹľnost â€žNovĂˇ budovaâ€ś.",
-                            select_building: "NejdĹ™Ă­v si vyberte typ budovy, se kterou chcete zaÄŤĂ­t. DoporuÄŤujeme zaÄŤĂ­t s hasiÄŤskou stanicĂ­. V kaĹľdĂ©m pĹ™Ă­padÄ› doporuÄŤujeme zaÄŤĂ­nat s malou stanicĂ­.",
-                            select_position: "PĹ™esuĹte modrĂ˝ ukazatel na mĂ­sto, kde chcete postavit svou prvnĂ­ stanici."
+                            add_name: "DÃ¡l svou novou stanici pojmenujte. NÃ¡zev by mÄ›l bÃ½t rozpoznatelnÃ½ a Å¡kÃ¡lovatelnÃ½. NapÅ™. â€žHasiÄskÃ¡ stanice 1â€œ. AÅ¾ bude hotovo, kliknÄ›te na moÅ¾nost â€žDalÅ¡Ã­â€œ.",
+                            build_with_credits: "TeÄ si budovu postavte za kredity.",
+                            new_building: "KliknÄ›te na moÅ¾nost â€žNovÃ¡ budovaâ€œ.",
+                            select_building: "NejdÅ™Ã­v si vyberte typ budovy, se kterou chcete zaÄÃ­t. DoporuÄujeme zaÄÃ­t s hasiÄskou stanicÃ­. V kaÅ¾dÃ©m pÅ™Ã­padÄ› doporuÄujeme zaÄÃ­nat s malou stanicÃ­.",
+                            select_position: "PÅ™esuÅˆte modrÃ½ ukazatel na mÃ­sto, kde chcete postavit svou prvnÃ­ stanici."
                         },
-                        pick_location: "NejdĹ™Ă­v si vyberte mĂ­sto, kde chcete zaÄŤĂ­t. Do vyhledĂˇvacĂ­ho panelu napiĹˇte nĂˇzev mĂ­sta, ve kterĂ©m chcete zaÄŤĂ­t, pĹ™Ă­padnÄ› mĂ­sto najdÄ›te na mapÄ›. Co takhle mÄ›sto, ve kterĂ©m bydlĂ­te?",
-                        welcome: "ZdravĂ­me! VĂ­tejte ve hĹ™e OperaÄŤnĂ­ stĹ™edisko!  V nÄ›kolika lekcĂ­ch vĂˇs nauÄŤĂ­m, jak sprĂˇvnÄ› odstartovat kariĂ©ru v zĂˇchrannĂ˝ch sluĹľbĂˇch."
+                        pick_location: "NejdÅ™Ã­v si vyberte mÃ­sto, kde chcete zaÄÃ­t. Do vyhledÃ¡vacÃ­ho panelu napiÅ¡te nÃ¡zev mÃ­sta, ve kterÃ©m chcete zaÄÃ­t, pÅ™Ã­padnÄ› mÃ­sto najdÄ›te na mapÄ›. Co takhle mÄ›sto, ve kterÃ©m bydlÃ­te?",
+                        welcome: "ZdravÃ­me! VÃ­tejte ve hÅ™e OperaÄnÃ­ stÅ™edisko!  V nÄ›kolika lekcÃ­ch vÃ¡s nauÄÃ­m, jak sprÃ¡vnÄ› odstartovat kariÃ©ru v zÃ¡chrannÃ½ch sluÅ¾bÃ¡ch."
                     },
                     mobile: {
                         build_building: {
-                            add_name: "DĂˇl svou novou stanici pojmenujte. NĂˇzev by mÄ›l bĂ˝t rozpoznatelnĂ˝ a ĹˇkĂˇlovatelnĂ˝. NapĹ™. â€žHasiÄŤskĂˇ stanice 1â€ś. AĹľ bude hotovo, kliknÄ›te na moĹľnost â€žDalĹˇĂ­â€ś.",
-                            build_with_credits: "TeÄŹ si budovu postavte za kredity.",
-                            new_building: "NejdĹ™Ă­v vybereme poÄŤĂˇteÄŤnĂ­ mĂ­sto a postavĂ­me prvnĂ­ budovu. <br /> <br /> ProveÄŹte to kliknutĂ­m na moĹľnost â€žNovĂˇ budovaâ€ś.",
-                            select_building: "NejdĹ™Ă­v si vyberte typ budovy, se kterou chcete zaÄŤĂ­t. DoporuÄŤujeme zaÄŤĂ­t s hasiÄŤskou stanicĂ­. V kaĹľdĂ©m pĹ™Ă­padÄ› doporuÄŤujeme zaÄŤĂ­nat s malou stanicĂ­."
+                            add_name: "DÃ¡l svou novou stanici pojmenujte. NÃ¡zev by mÄ›l bÃ½t rozpoznatelnÃ½ a Å¡kÃ¡lovatelnÃ½. NapÅ™. â€žHasiÄskÃ¡ stanice 1â€œ. AÅ¾ bude hotovo, kliknÄ›te na moÅ¾nost â€žDalÅ¡Ã­â€œ.",
+                            build_with_credits: "TeÄ si budovu postavte za kredity.",
+                            new_building: "NejdÅ™Ã­v vybereme poÄÃ¡teÄnÃ­ mÃ­sto a postavÃ­me prvnÃ­ budovu. <br /> <br /> ProveÄte to kliknutÃ­m na moÅ¾nost â€žNovÃ¡ budovaâ€œ.",
+                            select_building: "NejdÅ™Ã­v si vyberte typ budovy, se kterou chcete zaÄÃ­t. DoporuÄujeme zaÄÃ­t s hasiÄskou stanicÃ­. V kaÅ¾dÃ©m pÅ™Ã­padÄ› doporuÄujeme zaÄÃ­nat s malou stanicÃ­."
                         },
-                        welcome: "ZdravĂ­me! VĂ­tejte ve hĹ™e OperaÄŤnĂ­ stĹ™edisko!  V nÄ›kolika lekcĂ­ch vĂˇs nauÄŤĂ­m, jak sprĂˇvnÄ› odstartovat kariĂ©ru v zĂˇchrannĂ˝ch sluĹľbĂˇch."
+                        welcome: "ZdravÃ­me! VÃ­tejte ve hÅ™e OperaÄnÃ­ stÅ™edisko!  V nÄ›kolika lekcÃ­ch vÃ¡s nauÄÃ­m, jak sprÃ¡vnÄ› odstartovat kariÃ©ru v zÃ¡chrannÃ½ch sluÅ¾bÃ¡ch."
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Toto je nabĂ­dka vĂ˝jezdĹŻ. Odtud na mise posĂ­lĂˇte jednotky.",
-                            dispatch_menu_buttons: "Toto jsou dvÄ› vĂ˝jezdnĂ­ tlaÄŤĂ­tka. PrvnĂ­: â€žVĂ˝jezdâ€ś vyĹˇle vybranĂ© jednotky na misi. DruhĂ© dÄ›lĂˇ to samĂ© jako prvnĂ­, ale pĹ™esune vĂˇs takĂ© na dalĹˇĂ­ misi. ProzatĂ­m kliknÄ›te na prvnĂ­ tlaÄŤĂ­tko.",
-                            dispatch_menu_mission_general: "DozvĂ­te se zde obecnĂ© informace o misi, ÄŤili nĂˇzev, adresu a ikonu mise. U misĂ­, kterĂ© jste uĹľ zaÄŤali Ĺ™eĹˇit, se objevĂ­ ikonka ÄŤlovÄ›ka, kterĂˇ nahradĂ­ hvÄ›zdiÄŤku.",
-                            dispatch_menu_mission_progress: "DozvĂ­te se zde, kolik pokroku se na misi udÄ›lalo, a takĂ© poÄŤet zĂˇchranĂˇĹ™ĹŻ na mĂ­stÄ›. Uveden je takĂ© ÄŤas zbĂ˝vajĂ­cĂ­ do splnÄ›nĂ­ mise.",
-                            dispatch_menu_mission_specific: "Tady se dozvĂ­te dalĹˇĂ­ podrobnosti o misi, kterĂ© jednotky vyjedou a kterĂ© uĹľ jsou na mĂ­stÄ›.",
-                            dispatch_menu_vehicle_list: "Toto je seznam vaĹˇich dostupnĂ˝ch vozidel. Vozidla vybĂ­rĂˇte zde. TeÄŹ vyberte vozidlo tak, Ĺľe na nÄ›j kliknete."
+                            dispatch_menu: "Toto je nabÃ­dka vÃ½jezdÅ¯. Odtud na mise posÃ­lÃ¡te jednotky.",
+                            dispatch_menu_buttons: "Toto jsou dvÄ› vÃ½jezdnÃ­ tlaÄÃ­tka. PrvnÃ­: â€žVÃ½jezdâ€œ vyÅ¡le vybranÃ© jednotky na misi. DruhÃ© dÄ›lÃ¡ to samÃ© jako prvnÃ­, ale pÅ™esune vÃ¡s takÃ© na dalÅ¡Ã­ misi. ProzatÃ­m kliknÄ›te na prvnÃ­ tlaÄÃ­tko.",
+                            dispatch_menu_mission_general: "DozvÃ­te se zde obecnÃ© informace o misi, Äili nÃ¡zev, adresu a ikonu mise. U misÃ­, kterÃ© jste uÅ¾ zaÄali Å™eÅ¡it, se objevÃ­ ikonka ÄlovÄ›ka, kterÃ¡ nahradÃ­ hvÄ›zdiÄku.",
+                            dispatch_menu_mission_progress: "DozvÃ­te se zde, kolik pokroku se na misi udÄ›lalo, a takÃ© poÄet zÃ¡chranÃ¡Å™Å¯ na mÃ­stÄ›. Uveden je takÃ© Äas zbÃ½vajÃ­cÃ­ do splnÄ›nÃ­ mise.",
+                            dispatch_menu_mission_specific: "Tady se dozvÃ­te dalÅ¡Ã­ podrobnosti o misi, kterÃ© jednotky vyjedou a kterÃ© uÅ¾ jsou na mÃ­stÄ›.",
+                            dispatch_menu_vehicle_list: "Toto je seznam vaÅ¡ich dostupnÃ½ch vozidel. Vozidla vybÃ­rÃ¡te zde. TeÄ vyberte vozidlo tak, Å¾e na nÄ›j kliknete."
                         },
                         mobile: {
-                            dispatch_menu: "Toto je nabĂ­dka vĂ˝jezdĹŻ. Odtud na mise posĂ­lĂˇte jednotky.",
-                            dispatch_menu_buttons: "Toto jsou dvÄ› vĂ˝jezdnĂ­ tlaÄŤĂ­tka. PrvnĂ­: â€žVĂ˝jezdâ€ś vyĹˇle vybranĂ© jednotky na misi. DruhĂ© dÄ›lĂˇ to samĂ© jako prvnĂ­, ale pĹ™esune vĂˇs takĂ© na dalĹˇĂ­ misi. ProzatĂ­m kliknÄ›te na prvnĂ­ tlaÄŤĂ­tko.",
-                            dispatch_menu_mission_general: "DozvĂ­te se zde obecnĂ© informace o misi, ÄŤili nĂˇzev, adresu a ikonu mise. U misĂ­, kterĂ© jste uĹľ zaÄŤali Ĺ™eĹˇit, se objevĂ­ ikonka ÄŤlovÄ›ka, kterĂˇ nahradĂ­ hvÄ›zdiÄŤku.",
-                            dispatch_menu_mission_progress: "DozvĂ­te se zde, kolik pokroku se na misi udÄ›lalo, a takĂ© poÄŤet zĂˇchranĂˇĹ™ĹŻ na mĂ­stÄ›. Uveden je takĂ© ÄŤas zbĂ˝vajĂ­cĂ­ do splnÄ›nĂ­ mise.",
-                            dispatch_menu_mission_specific: "Tady se dozvĂ­te dalĹˇĂ­ podrobnosti o misi, kterĂ© jednotky vyjedou a kterĂ© uĹľ jsou na mĂ­stÄ›.",
-                            dispatch_menu_vehicle_list: "Toto je seznam vaĹˇich dostupnĂ˝ch vozidel. Vozidla vybĂ­rĂˇte zde. TeÄŹ vyberte vozidlo tak, Ĺľe na nÄ›j kliknete."
+                            dispatch_menu: "Toto je nabÃ­dka vÃ½jezdÅ¯. Odtud na mise posÃ­lÃ¡te jednotky.",
+                            dispatch_menu_buttons: "Toto jsou dvÄ› vÃ½jezdnÃ­ tlaÄÃ­tka. PrvnÃ­: â€žVÃ½jezdâ€œ vyÅ¡le vybranÃ© jednotky na misi. DruhÃ© dÄ›lÃ¡ to samÃ© jako prvnÃ­, ale pÅ™esune vÃ¡s takÃ© na dalÅ¡Ã­ misi. ProzatÃ­m kliknÄ›te na prvnÃ­ tlaÄÃ­tko.",
+                            dispatch_menu_mission_general: "DozvÃ­te se zde obecnÃ© informace o misi, Äili nÃ¡zev, adresu a ikonu mise. U misÃ­, kterÃ© jste uÅ¾ zaÄali Å™eÅ¡it, se objevÃ­ ikonka ÄlovÄ›ka, kterÃ¡ nahradÃ­ hvÄ›zdiÄku.",
+                            dispatch_menu_mission_progress: "DozvÃ­te se zde, kolik pokroku se na misi udÄ›lalo, a takÃ© poÄet zÃ¡chranÃ¡Å™Å¯ na mÃ­stÄ›. Uveden je takÃ© Äas zbÃ½vajÃ­cÃ­ do splnÄ›nÃ­ mise.",
+                            dispatch_menu_mission_specific: "Tady se dozvÃ­te dalÅ¡Ã­ podrobnosti o misi, kterÃ© jednotky vyjedou a kterÃ© uÅ¾ jsou na mÃ­stÄ›.",
+                            dispatch_menu_vehicle_list: "Toto je seznam vaÅ¡ich dostupnÃ½ch vozidel. Vozidla vybÃ­rÃ¡te zde. TeÄ vyberte vozidlo tak, Å¾e na nÄ›j kliknete."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "TeÄŹ se nauÄŤĂ­me, jak se vypoĹ™Ăˇdat s nehodami. KliknutĂ­m na tlaÄŤĂ­tko â€žVĂ˝jezdâ€ś otevĹ™ete nabĂ­dku vĂ˝jezdĹŻ.",
-                            first_mission: "VĂ˝bornÄ›! Postavili jste svou vĹŻbec prvnĂ­ budovu! PodĂ­vejte, uĹľ se vĂˇm hlĂˇsĂ­ prvnĂ­ mise."
+                            dispatch_button: "TeÄ se nauÄÃ­me, jak se vypoÅ™Ã¡dat s nehodami. KliknutÃ­m na tlaÄÃ­tko â€žVÃ½jezdâ€œ otevÅ™ete nabÃ­dku vÃ½jezdÅ¯.",
+                            first_mission: "VÃ½bornÄ›! Postavili jste svou vÅ¯bec prvnÃ­ budovu! PodÃ­vejte, uÅ¾ se vÃ¡m hlÃ¡sÃ­ prvnÃ­ mise."
                         },
                         mobile: {
-                            dispatch_button: "TeÄŹ se nauÄŤĂ­me, jak se vypoĹ™Ăˇdat s nehodami. KliknutĂ­m na tlaÄŤĂ­tko â€žVĂ˝jezdâ€ś otevĹ™ete nabĂ­dku vĂ˝jezdĹŻ.",
-                            first_mission: "VĂ˝bornÄ›! Postavili jste svou vĹŻbec prvnĂ­ budovu! PodĂ­vejte, uĹľ se vĂˇm hlĂˇsĂ­ prvnĂ­ mise."
+                            dispatch_button: "TeÄ se nauÄÃ­me, jak se vypoÅ™Ã¡dat s nehodami. KliknutÃ­m na tlaÄÃ­tko â€žVÃ½jezdâ€œ otevÅ™ete nabÃ­dku vÃ½jezdÅ¯.",
+                            first_mission: "VÃ½bornÄ›! Postavili jste svou vÅ¯bec prvnÃ­ budovu! PodÃ­vejte, uÅ¾ se vÃ¡m hlÃ¡sÃ­ prvnÃ­ mise."
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "VĂ˝bornÄ›! Jste na tĂ© nejlepĹˇĂ­ cestÄ› stĂˇt se ĂşĹľasnĂ˝m vedoucĂ­m operaÄŤnĂ­ho stĹ™ediska. Zde mĂˇte %{coins} mincĂ­ na zaÄŤĂˇtek. </br> VĂˇĹˇ tĂ˝m hry OperaÄŤnĂ­ stĹ™edisko"
+                        general: "VÃ½bornÄ›! Jste na tÃ© nejlepÅ¡Ã­ cestÄ› stÃ¡t se ÃºÅ¾asnÃ½m vedoucÃ­m operaÄnÃ­ho stÅ™ediska. Zde mÃ¡te %{coins} mincÃ­ na zaÄÃ¡tek. </br> VÃ¡Å¡ tÃ½m hry OperaÄnÃ­ stÅ™edisko"
                     },
                     mobile: {
-                        general: "VĂ˝bornÄ›! Jste na tĂ© nejlepĹˇĂ­ cestÄ› stĂˇt se ĂşĹľasnĂ˝m vedoucĂ­m operaÄŤnĂ­ho stĹ™ediska. Zde mĂˇte %{coins} mincĂ­ na zaÄŤĂˇtek. </br> VĂˇĹˇ tĂ˝m hry OperaÄŤnĂ­ stĹ™edisko"
+                        general: "VÃ½bornÄ›! Jste na tÃ© nejlepÅ¡Ã­ cestÄ› stÃ¡t se ÃºÅ¾asnÃ½m vedoucÃ­m operaÄnÃ­ho stÅ™ediska. Zde mÃ¡te %{coins} mincÃ­ na zaÄÃ¡tek. </br> VÃ¡Å¡ tÃ½m hry OperaÄnÃ­ stÅ™edisko"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Pokud mĂˇte nÄ›jakĂ© dotazy, mĹŻĹľete se podĂ­vat do ÄŤastĂ˝ch dotazĹŻ o hĹ™e, pĹ™Ă­padnÄ› navĹˇtivte naĹˇe hernĂ­ fĂłrum nebo strĂˇnku na Facebooku.",
-                        general: "V dalĹˇĂ­m kroku bychom vĂˇm doporuÄŤili postavit dispeÄŤink a potĂ© co nejrychleji dalĹˇĂ­ stanice, jelikoĹľ maximĂˇlnĂ­ poÄŤet misĂ­ se rovnĂˇ maximĂˇlnĂ­mu poÄŤtu stanic rĹŻznĂ©ho typu (policie, hasiÄŤi, zĂˇchranka) plus 1. Tedy napĹ™. 5 hasiÄŤskĂ˝ch stanic a 3 stanice zĂˇchranky = 6 misĂ­.",
-                        join_alliance: "PĹ™idat se k alianci by vĂˇm rovnÄ›Ĺľ mohlo velice pomoct, hlavnÄ› na zaÄŤĂˇtku. TakĹľe to takĂ© doporuÄŤujeme.",
-                        summary: "Toto jsou zĂˇklady hry OperaÄŤnĂ­ stĹ™edisko! PlĹte mise, zĂ­skĂˇvejte kredity, nakupujte dalĹˇĂ­ jednotky. Postup opakujte. PĹ™Ă­jemnou zĂˇbavu pĹ™i hranĂ­! </br> VĂˇĹˇ tĂ˝m hry OperaÄŤnĂ­ stĹ™edisko"
+                        contact: "Pokud mÃ¡te nÄ›jakÃ© dotazy, mÅ¯Å¾ete se podÃ­vat do ÄastÃ½ch dotazÅ¯ o hÅ™e, pÅ™Ã­padnÄ› navÅ¡tivte naÅ¡e hernÃ­ fÃ³rum nebo strÃ¡nku na Facebooku.",
+                        general: "V dalÅ¡Ã­m kroku bychom vÃ¡m doporuÄili postavit dispeÄink a potÃ© co nejrychleji dalÅ¡Ã­ stanice, jelikoÅ¾ maximÃ¡lnÃ­ poÄet misÃ­ se rovnÃ¡ maximÃ¡lnÃ­mu poÄtu stanic rÅ¯znÃ©ho typu (policie, hasiÄi, zÃ¡chranka) plus 1. Tedy napÅ™. 5 hasiÄskÃ½ch stanic a 3 stanice zÃ¡chranky = 6 misÃ­.",
+                        join_alliance: "PÅ™idat se k alianci by vÃ¡m rovnÄ›Å¾ mohlo velice pomoct, hlavnÄ› na zaÄÃ¡tku. TakÅ¾e to takÃ© doporuÄujeme.",
+                        summary: "Toto jsou zÃ¡klady hry OperaÄnÃ­ stÅ™edisko! PlÅˆte mise, zÃ­skÃ¡vejte kredity, nakupujte dalÅ¡Ã­ jednotky. Postup opakujte. PÅ™Ã­jemnou zÃ¡bavu pÅ™i hranÃ­! </br> VÃ¡Å¡ tÃ½m hry OperaÄnÃ­ stÅ™edisko"
                     },
                     mobile: {
-                        contact: "Pokud mĂˇte nÄ›jakĂ© dotazy, mĹŻĹľete se podĂ­vat do ÄŤastĂ˝ch dotazĹŻ o hĹ™e, pĹ™Ă­padnÄ› navĹˇtivte naĹˇe hernĂ­ fĂłrum nebo strĂˇnku na Facebooku.",
-                        general: "V dalĹˇĂ­m kroku bychom vĂˇm doporuÄŤili postavit dispeÄŤink a potĂ© co nejrychleji dalĹˇĂ­ stanice, jelikoĹľ maximĂˇlnĂ­ poÄŤet misĂ­ se rovnĂˇ maximĂˇlnĂ­mu poÄŤtu stanic rĹŻznĂ©ho typu (policie, hasiÄŤi, zĂˇchranka) plus 1. Tedy napĹ™. 5 hasiÄŤskĂ˝ch stanic a 3 stanice zĂˇchranky = 6 misĂ­.",
-                        join_alliance: "PĹ™idat se k alianci by vĂˇm rovnÄ›Ĺľ mohlo velice pomoct, hlavnÄ› na zaÄŤĂˇtku. TakĹľe to takĂ© doporuÄŤujeme.",
-                        summary: "Toto jsou zĂˇklady hry OperaÄŤnĂ­ stĹ™edisko! PlĹte mise, zĂ­skĂˇvejte kredity, nakupujte dalĹˇĂ­ jednotky. Postup opakujte. PĹ™Ă­jemnou zĂˇbavu pĹ™i hranĂ­! </br> VĂˇĹˇ tĂ˝m hry OperaÄŤnĂ­ stĹ™edisko"
+                        contact: "Pokud mÃ¡te nÄ›jakÃ© dotazy, mÅ¯Å¾ete se podÃ­vat do ÄastÃ½ch dotazÅ¯ o hÅ™e, pÅ™Ã­padnÄ› navÅ¡tivte naÅ¡e hernÃ­ fÃ³rum nebo strÃ¡nku na Facebooku.",
+                        general: "V dalÅ¡Ã­m kroku bychom vÃ¡m doporuÄili postavit dispeÄink a potÃ© co nejrychleji dalÅ¡Ã­ stanice, jelikoÅ¾ maximÃ¡lnÃ­ poÄet misÃ­ se rovnÃ¡ maximÃ¡lnÃ­mu poÄtu stanic rÅ¯znÃ©ho typu (policie, hasiÄi, zÃ¡chranka) plus 1. Tedy napÅ™. 5 hasiÄskÃ½ch stanic a 3 stanice zÃ¡chranky = 6 misÃ­.",
+                        join_alliance: "PÅ™idat se k alianci by vÃ¡m rovnÄ›Å¾ mohlo velice pomoct, hlavnÄ› na zaÄÃ¡tku. TakÅ¾e to takÃ© doporuÄujeme.",
+                        summary: "Toto jsou zÃ¡klady hry OperaÄnÃ­ stÅ™edisko! PlÅˆte mise, zÃ­skÃ¡vejte kredity, nakupujte dalÅ¡Ã­ jednotky. Postup opakujte. PÅ™Ã­jemnou zÃ¡bavu pÅ™i hranÃ­! </br> VÃ¡Å¡ tÃ½m hry OperaÄnÃ­ stÅ™edisko"
                     }
                 }
             },
@@ -7081,13 +7015,13 @@ function deleteMissionPosition(e) {
                 collect: "Sebrat",
                 "continue": "Ne",
                 end: "Konec",
-                next: "DalĹˇĂ­",
-                prev: "PĹ™edchozĂ­",
+                next: "DalÅ¡Ã­",
+                prev: "PÅ™edchozÃ­",
                 skip: "Ano",
-                skip_hint: "Opravdu chcete vĂ˝uku zruĹˇit? PozdÄ›ji uĹľ se k nĂ­ nedostanete. Nedostanete odmÄ›nu za dokonÄŤenĂ­ vĂ˝uky."
+                skip_hint: "Opravdu chcete vÃ½uku zruÅ¡it? PozdÄ›ji uÅ¾ se k nÃ­ nedostanete. Nedostanete odmÄ›nu za dokonÄenÃ­ vÃ½uky."
             },
             rewards: {
-                log: "OdmÄ›na za dokonÄŤenĂ­ vĂ˝uky."
+                log: "OdmÄ›na za dokonÄenÃ­ vÃ½uky."
             }
         }
     }, I18n.translations.tr_TR = {
@@ -7095,183 +7029,183 @@ function deleteMissionPosition(e) {
             add: "Ekle",
             back: "Geri",
             cancel: "Ä°ptal et",
-            change_saved: "DeÄźiĹźiklikler kaydedildi",
-            coins_spend: "GerĂ§ekten bu altÄ±nlarÄ± harcamak istiyor musun?",
+            change_saved: "DeÄŸiÅŸiklikler kaydedildi",
+            coins_spend: "GerÃ§ekten bu altÄ±nlarÄ± harcamak istiyor musun?",
             congratulations: "Tebrikler!",
-            content: "Ä°Ă§erik",
+            content: "Ä°Ã§erik",
             credits: "Krediler",
             "delete": "Sil",
             details: "AyrÄ±ntÄ±lar",
-            edit: "DĂĽzenle",
+            edit: "DÃ¼zenle",
             error: "Hata",
-            is_offline: "%{user} Ă§evrim dÄ±ĹźÄ±.",
-            is_offline_long: "Uzun sĂĽre: %{user} Ă§evrim dÄ±ĹźÄ±",
-            is_online: "%{user} Ă§evrim iĂ§i.",
-            loading: "YĂĽkleniyor...",
+            is_offline: "%{user} Ã§evrim dÄ±ÅŸÄ±.",
+            is_offline_long: "Uzun sÃ¼re: %{user} Ã§evrim dÄ±ÅŸÄ±",
+            is_online: "%{user} Ã§evrim iÃ§i.",
+            loading: "YÃ¼kleniyor...",
             name: "Ad",
             none: "Yok",
             of: "/",
             off: "KapalÄ±",
-            on: "AĂ§Ä±k",
+            on: "AÃ§Ä±k",
             save: "Kaydet",
             search: "Ara",
-            show: "GĂ¶ster",
+            show: "GÃ¶ster",
             user_not_found: "KullanÄ±cÄ± bulunmadÄ±",
-            wrong_key: "YanlÄ±Ĺź tuĹź"
+            wrong_key: "YanlÄ±ÅŸ tuÅŸ"
         },
         javascript: {
             alarm: "Sevk Et",
-            arrival: "VarÄ±Ĺź",
+            arrival: "VarÄ±ÅŸ",
             backalarm: "Ä°ptal et",
             coins: "AltÄ±n",
             credits: "Krediler",
-            days: "gĂĽn",
-            few_seconds: "birkaĂ§ saniyede",
+            days: "gÃ¼n",
+            few_seconds: "birkaÃ§ saniyede",
             finish_in: "Bitir:",
             hours: "S",
             location_not_found: "BulunmadÄ±",
             messages: "Mesajlar",
             minutes: "dk.",
             missed_vehicle: "Eksik:",
-            mission_start_in: "BaĹźlÄ±yor:",
-            not_found_map: "AraĂ§ haritada bulunamadÄ±",
-            now: "Ĺžimdi",
+            mission_start_in: "BaÅŸlÄ±yor:",
+            not_found_map: "AraÃ§ haritada bulunamadÄ±",
+            now: "Åžimdi",
             patient: "Hasta",
             patient_untouched: "Tedavi edilmeyen hastalar",
-            poi_delete: "%{caption} Ä°lgili AlanÄ±nÄ± silmek istediÄźinden emin misin?",
-            reload: "Yeniden yĂĽkle",
-            sale: "SatÄ±Ĺź",
+            poi_delete: "%{caption} Ä°lgili AlanÄ±nÄ± silmek istediÄŸinden emin misin?",
+            reload: "Yeniden yÃ¼kle",
+            sale: "SatÄ±ÅŸ",
             sale_ended: "Ä°ndirim sona erdi.",
             secounds: "sn.",
-            sicherheitswache_error: 'TĂĽm kriterler saÄźlanmadÄ±ÄźÄ± iĂ§in gĂĽvenlik korumasÄ± "%{caption}" baĹźarÄ±lÄ± olamadÄ±.',
-            sicherheitswache_success: 'GĂĽvenlik korumasÄ± "%{caption}" baĹźarÄ±yla gerĂ§ekleĹźtirildi. %{credits} Kredi al.',
-            start_in: "BaĹźlÄ±yor: ",
-            start_username: "BaĹźlatan:",
-            time_left: "Kalan sĂĽre:",
-            to_building: "YapÄ±yÄ± GĂ¶rĂĽntĂĽle",
-            to_mission: "GĂ¶revi GĂ¶rĂĽntĂĽle",
+            sicherheitswache_error: 'TÃ¼m kriterler saÄŸlanmadÄ±ÄŸÄ± iÃ§in gÃ¼venlik korumasÄ± "%{caption}" baÅŸarÄ±lÄ± olamadÄ±.',
+            sicherheitswache_success: 'GÃ¼venlik korumasÄ± "%{caption}" baÅŸarÄ±yla gerÃ§ekleÅŸtirildi. %{credits} Kredi al.',
+            start_in: "BaÅŸlÄ±yor: ",
+            start_username: "BaÅŸlatan:",
+            time_left: "Kalan sÃ¼re:",
+            to_building: "YapÄ±yÄ± GÃ¶rÃ¼ntÃ¼le",
+            to_mission: "GÃ¶revi GÃ¶rÃ¼ntÃ¼le",
             understand: "Onayla",
             user_not_found: "Oyuncu bulunamadÄ±.",
-            vehicles_not_visible: "AraĂ§lar gĂ¶rĂĽnmĂĽyor. "
+            vehicles_not_visible: "AraÃ§lar gÃ¶rÃ¼nmÃ¼yor. "
         },
         map: {
             alliance: "Birlik",
             alliance_chat: "Sohbet",
-            alliance_chat_banned: "Ĺžu anda birlik sohbetinde yasaklÄ±sÄ±n.",
+            alliance_chat_banned: "Åžu anda birlik sohbetinde yasaklÄ±sÄ±n.",
             alliance_chat_banned_admin: "Yasaklayan:",
-            alliance_chat_banned_timeleft: "Kalan sĂĽre:",
+            alliance_chat_banned_timeleft: "Kalan sÃ¼re:",
             alliance_chat_radio_off: "Birlik Radyosu: KapalÄ±",
-            alliance_chat_radio_on: "Birlik Radyosu: AĂ§Ä±k",
+            alliance_chat_radio_on: "Birlik Radyosu: AÃ§Ä±k",
             alliance_event: "Etkinlik",
-            alliance_missions: "Birlik GĂ¶revleri",
+            alliance_missions: "Birlik GÃ¶revleri",
             alliance_missions_event: "Etkinlik",
             ambulance: "Ambulans",
             challenges: "",
-            chat_history: "Sohbet GeĂ§miĹźi",
+            chat_history: "Sohbet GeÃ§miÅŸi",
             congratulations: "Tebrikler! ArtÄ±k terfi alabilirsin.",
-            create_alliance_event: "Birlik etkinliÄźi baĹźlat",
-            create_alliance_operation: "BĂĽyĂĽk Ă¶lĂ§ekli bir birlik gĂ¶revi oluĹźtur",
+            create_alliance_event: "Birlik etkinliÄŸi baÅŸlat",
+            create_alliance_operation: "BÃ¼yÃ¼k Ã¶lÃ§ekli bir birlik gÃ¶revi oluÅŸtur",
             emergency: "Acil Durum",
-            join_alliance_infos: "Bir birlikteysen diÄźer oyuncular sana istedikleri gibi gĂ¶revler verebilirler.",
+            join_alliance_infos: "Bir birlikteysen diÄŸer oyuncular sana istedikleri gibi gÃ¶revler verebilirler.",
             map: "Harita",
             map_filters: {
                 all_buildings: "YapÄ±lar",
-                all_missions: "GĂ¶revler",
+                all_missions: "GÃ¶revler",
                 alliance_buildings: "Birlik YapÄ±larÄ±",
-                alliance_members: "Ăśyeler",
-                alliance_missions: "Birlik PaylaĹźÄ±mlarÄ±",
+                alliance_members: "Ãœyeler",
+                alliance_missions: "Birlik PaylaÅŸÄ±mlarÄ±",
                 ambulance_station_missions: "Ambulans Ä°stasyonu",
-                ambulance_station_small_missions: "Ambulans istasyonu (KĂĽĂ§ĂĽk istasyon)",
+                ambulance_station_small_missions: "Ambulans istasyonu (KÃ¼Ã§Ã¼k istasyon)",
                 clinic_missions: "Klinik",
                 dispatch_center_missions: "Sevk Merkezi",
                 fire_school_missions: "Ä°tfaiye Akademisi",
                 firehouse_missions: "Ä°tfaiye Ä°stasyonu",
-                firehouse_small_missions: "Ä°tfaiye Ä°stasyonu (KĂĽĂ§ĂĽk)",
+                firehouse_small_missions: "Ä°tfaiye Ä°stasyonu (KÃ¼Ã§Ã¼k)",
                 hospital_missions: "Hastane",
                 map_filters: "Harita filtreleri listesi",
                 mission_positions: "Ä°lgi AlanlarÄ± (POI'ler)",
                 police_copter_station_missions: "Polis helikopter heliportu",
                 police_school_missions: "Polis akademisi",
-                police_small_missions: "Polis Karakolu (KĂĽĂ§ĂĽk karakol)",
-                police_special_forces: "Polis Ă¶zel harekat",
+                police_small_missions: "Polis Karakolu (KÃ¼Ã§Ã¼k karakol)",
+                police_special_forces: "Polis Ã¶zel harekat",
                 police_station_missions: "Polis Karakolu",
                 prison_missions: "Hapishane",
                 rapid_deployment_group: "HÄ±zlÄ± Kurulum Grubu (SEG)",
                 rescue_copter_station_missions: "TÄ±bbi Helikopter Ä°stasyonu",
-                riot_police: "Ă‡evik Kuvvet",
+                riot_police: "Ã‡evik Kuvvet",
                 staging_area_missions: "Toplanma AlanÄ±",
                 technical_aid_organization: "THW",
                 technical_aid_organization_school: "THW Bundesschule",
                 user_buildings: "YapÄ±larÄ±m",
-                user_missions: "GĂ¶revlerim",
+                user_missions: "GÃ¶revlerim",
                 water_watch: "Su Kurtarma"
             },
             message: "Mesaj",
-            mission: "GĂ¶rev",
-            no_alliance_chat_impossible: "Bir birlikte deÄźilsin.",
-            no_alliance_missions: "Ĺžu anda hiĂ§bir birlik gĂ¶revi yok.",
-            no_ambulance_missions: "HiĂ§bir ambulans gĂ¶revi yok. Ambulans gĂ¶revlerini sadece bir ambulansa ve bir hastaneye sahip olduÄźunda yapabilirsin.",
-            no_emergency_missions: "Ĺžu anda hiĂ§bir acil durum gĂ¶revi yok. Ä°lk istasyonunu yaptÄ±ktan sonra bir acil durum gĂ¶revi alabilirsin.",
-            no_radio_messages: "HiĂ§bir radyo mesajÄ± almadÄ±n.",
+            mission: "GÃ¶rev",
+            no_alliance_chat_impossible: "Bir birlikte deÄŸilsin.",
+            no_alliance_missions: "Åžu anda hiÃ§bir birlik gÃ¶revi yok.",
+            no_ambulance_missions: "HiÃ§bir ambulans gÃ¶revi yok. Ambulans gÃ¶revlerini sadece bir ambulansa ve bir hastaneye sahip olduÄŸunda yapabilirsin.",
+            no_emergency_missions: "Åžu anda hiÃ§bir acil durum gÃ¶revi yok. Ä°lk istasyonunu yaptÄ±ktan sonra bir acil durum gÃ¶revi alabilirsin.",
+            no_radio_messages: "HiÃ§bir radyo mesajÄ± almadÄ±n.",
             radio_messages: "Radyo",
-            restore_map: "HaritayÄ± Geri YĂĽkle",
-            show_informations: "YeĹźil = GĂ¶revler liste iĂ§inde gĂ¶sterilir. KÄ±rmÄ±zÄ± = GĂ¶revler gĂ¶sterilmez.",
-            sicherheitswache: "Planlanan GĂ¶sterimler",
+            restore_map: "HaritayÄ± Geri YÃ¼kle",
+            show_informations: "YeÅŸil = GÃ¶revler liste iÃ§inde gÃ¶sterilir. KÄ±rmÄ±zÄ± = GÃ¶revler gÃ¶sterilmez.",
+            sicherheitswache: "Planlanan GÃ¶sterimler",
             transport: "Nakil"
         },
         fms: {
-            going: "MĂĽdahale ediyor",
-            not_ready: "Hizmet DÄ±ĹźÄ±",
-            on_destination: "Nakil varÄ±Ĺź noktasÄ±nda",
+            going: "MÃ¼dahale ediyor",
+            not_ready: "Hizmet DÄ±ÅŸÄ±",
+            on_destination: "Nakil varÄ±ÅŸ noktasÄ±nda",
             on_place: "Olay Yerinde",
             patient_transported: "Hasta Nakil Ediliyor",
             prisoner_transported: "Mahkum Nakil Ediliyor",
             ready_home: "Ä°stasyonda HazÄ±r",
-            ready_traveling: "BoĹźta ve KullanÄ±labilir",
+            ready_traveling: "BoÅŸta ve KullanÄ±labilir",
             talking_wish: "Nakil Talebi",
-            waiting_for_vehicle: "AraĂ§ tarafÄ±ndan Ă§ekilmeyi bekliyor"
+            waiting_for_vehicle: "AraÃ§ tarafÄ±ndan Ã§ekilmeyi bekliyor"
         },
         intervention_order: {
             back: "Geri",
             category: "Kategori",
             colour: "Renk",
-            column: "SĂĽtun",
-            column_number: "SĂĽtun sayÄ±sÄ±",
-            column_number_hint: "Bir sĂĽtun sayÄ±sÄ± verildiyse Alarm ve MĂĽdahale girdisi, alarm sayfasÄ±ndaki ilgili sĂĽtunda gĂ¶rĂĽntĂĽlenecektir.",
-            create_intervention_order: "Yeni Alarm ve MĂĽdahale DĂĽzenlemesi oluĹźtur",
+            column: "SÃ¼tun",
+            column_number: "SÃ¼tun sayÄ±sÄ±",
+            column_number_hint: "Bir sÃ¼tun sayÄ±sÄ± verildiyse Alarm ve MÃ¼dahale girdisi, alarm sayfasÄ±ndaki ilgili sÃ¼tunda gÃ¶rÃ¼ntÃ¼lenecektir.",
+            create_intervention_order: "Yeni Alarm ve MÃ¼dahale DÃ¼zenlemesi oluÅŸtur",
             "delete": "Sil",
-            delete_all: "Alarm ve MĂĽdahale DĂĽzenlemelerini tamamen sil",
-            delete_all_confirm: "TĂĽm alarm ve mĂĽdahale dĂĽzenlemesini silmek istediÄźinden emin misin? Daha Ă¶nceden dÄ±Ĺźa aktarÄ±lmÄ±Ĺź girdiler artÄ±k kullanÄ±lamaz!",
+            delete_all: "Alarm ve MÃ¼dahale DÃ¼zenlemelerini tamamen sil",
+            delete_all_confirm: "TÃ¼m alarm ve mÃ¼dahale dÃ¼zenlemesini silmek istediÄŸinden emin misin? Daha Ã¶nceden dÄ±ÅŸa aktarÄ±lmÄ±ÅŸ girdiler artÄ±k kullanÄ±lamaz!",
             description: "Ad",
-            edit: "DĂĽzenle",
+            edit: "DÃ¼zenle",
             "export": {
-                "export": "DÄ±Ĺźa aktar",
-                "import": "Ä°Ă§e aktar",
-                import_done: "SeĂ§ili girdiler iĂ§e aktarÄ±ldÄ± ve Alarm ve MĂĽdahale planÄ±na kaydedildi.",
-                saved: "Alarm ve MĂĽdahale DĂĽzenlemelerinin DÄ±Ĺźa AktarÄ±mlarÄ±",
-                saved_text: "Alarm ve MĂĽdahale DĂĽzenlemesi dÄ±Ĺźa aktarÄ±m iĂ§in hazÄ±rlandÄ±. Bu baÄźlantÄ± ile baĹźka bir oyuncu Alarm ve MĂĽdahale DĂĽzenlemesini iĂ§e aktarabilir. Bu esnada Alarm ve MĂĽdahale DĂĽzenlemesini deÄźiĹźtirirsen bu deÄźiĹźiklik dÄ±Ĺźa aktarÄ±mda otomatik olarak uygulanacak."
+                "export": "DÄ±ÅŸa aktar",
+                "import": "Ä°Ã§e aktar",
+                import_done: "SeÃ§ili girdiler iÃ§e aktarÄ±ldÄ± ve Alarm ve MÃ¼dahale planÄ±na kaydedildi.",
+                saved: "Alarm ve MÃ¼dahale DÃ¼zenlemelerinin DÄ±ÅŸa AktarÄ±mlarÄ±",
+                saved_text: "Alarm ve MÃ¼dahale DÃ¼zenlemesi dÄ±ÅŸa aktarÄ±m iÃ§in hazÄ±rlandÄ±. Bu baÄŸlantÄ± ile baÅŸka bir oyuncu Alarm ve MÃ¼dahale DÃ¼zenlemesini iÃ§e aktarabilir. Bu esnada Alarm ve MÃ¼dahale DÃ¼zenlemesini deÄŸiÅŸtirirsen bu deÄŸiÅŸiklik dÄ±ÅŸa aktarÄ±mda otomatik olarak uygulanacak."
             },
-            hotkey_hint: "Bu araĂ§ seĂ§imi iĂ§in bir kÄ±sayol tuĹźu seĂ§. Pencerendeki gĂ¶reve bas: ALT + kÄ±sayol tuĹźun (veya Firefox'ta: ALT + SHIFT + kÄ±sayol tuĹźun veya Mac iĹźletim sisteminde: ctrl + alt + kÄ±sayol tuĹźun) ile araĂ§ seĂ§imini yap.",
-            intervention_order: "Alarm ve MĂĽdahale DĂĽzenlemelerini dĂĽzenle",
+            hotkey_hint: "Bu araÃ§ seÃ§imi iÃ§in bir kÄ±sayol tuÅŸu seÃ§. Pencerendeki gÃ¶reve bas: ALT + kÄ±sayol tuÅŸun (veya Firefox'ta: ALT + SHIFT + kÄ±sayol tuÅŸun veya Mac iÅŸletim sisteminde: ctrl + alt + kÄ±sayol tuÅŸun) ile araÃ§ seÃ§imini yap.",
+            intervention_order: "Alarm ve MÃ¼dahale DÃ¼zenlemelerini dÃ¼zenle",
             name: "Ad",
-            no_intervention_created: "HenĂĽz hiĂ§bir Alarm ve MĂĽdahale DĂĽzenlemesi oluĹźturmadÄ±n.",
-            options: "SeĂ§enekler",
-            reset: "Ă–nceki seĂ§imi alarm penceresinde sÄ±fÄ±rla.",
-            reset_hint: "AracÄ± sevk penceresinde seĂ§tiysen onu sÄ±fÄ±rlamak iĂ§in bu tuĹźu kullanabilirsin.",
+            no_intervention_created: "HenÃ¼z hiÃ§bir Alarm ve MÃ¼dahale DÃ¼zenlemesi oluÅŸturmadÄ±n.",
+            options: "SeÃ§enekler",
+            reset: "Ã–nceki seÃ§imi alarm penceresinde sÄ±fÄ±rla.",
+            reset_hint: "AracÄ± sevk penceresinde seÃ§tiysen onu sÄ±fÄ±rlamak iÃ§in bu tuÅŸu kullanabilirsin.",
             save: "Kaydet",
             station: "Ä°stasyon",
-            station_hint: "Bir yapÄ± seĂ§ildiÄźinde sadece ilgili yapÄ±ya ait araĂ§lar seĂ§ilecektir.",
-            successfully_created: "Alarm ve MĂĽdahale DĂĽzenlemesi baĹźarÄ±yla oluĹźturuldu.",
-            successfully_deleted: "Alarm ve MĂĽdahale DĂĽzenlemesi silindi",
-            successfully_updated: "Alarm ve MĂĽdahale DĂĽzenlemesi baĹźarÄ±yla gĂĽncellendi.",
+            station_hint: "Bir yapÄ± seÃ§ildiÄŸinde sadece ilgili yapÄ±ya ait araÃ§lar seÃ§ilecektir.",
+            successfully_created: "Alarm ve MÃ¼dahale DÃ¼zenlemesi baÅŸarÄ±yla oluÅŸturuldu.",
+            successfully_deleted: "Alarm ve MÃ¼dahale DÃ¼zenlemesi silindi",
+            successfully_updated: "Alarm ve MÃ¼dahale DÃ¼zenlemesi baÅŸarÄ±yla gÃ¼ncellendi.",
             vehicles: {
-                ab_atemschutz_only: "SCBA ModĂĽlĂĽ",
-                ab_einsatzleitung_only: "Komuta ModĂĽlĂĽ",
-                ab_gefahrgut_only: "Tehlikeli Madde ModĂĽlĂĽ",
-                ab_oel_only: "YaÄź SÄ±zÄ±ntÄ±sÄ± ModĂĽlĂĽ",
-                ab_ruest: "Teknik/Kurtarma ModĂĽlĂĽ",
+                ab_atemschutz_only: "SCBA ModÃ¼lÃ¼",
+                ab_einsatzleitung_only: "Komuta ModÃ¼lÃ¼",
+                ab_gefahrgut_only: "Tehlikeli Madde ModÃ¼lÃ¼",
+                ab_oel_only: "YaÄŸ SÄ±zÄ±ntÄ±sÄ± ModÃ¼lÃ¼",
+                ab_ruest: "Teknik/Kurtarma ModÃ¼lÃ¼",
                 ab_ruest_rw: "",
-                abl2wasser_only: "Hortumla Besleme ModĂĽlĂĽ",
+                abl2wasser_only: "Hortumla Besleme ModÃ¼lÃ¼",
                 ambulance: "ALS ambulansÄ±",
                 ambulance_or_rapid_responder: "",
                 arff: "ARFF (HavalimanÄ± Ä°tfaiye AracÄ±)",
@@ -7280,14 +7214,14 @@ function deleteMissionPosition(e) {
                 dekon_p: "",
                 division_chief_unit: "Mobil Komuta AracÄ±",
                 dlk_or_tm50: "",
-                elw1_or_elw2: "Tabur Amiri Birimi, Mobil Komuta AracÄ± veya Mobil Komuta ModĂĽlĂĽ ",
+                elw1_or_elw2: "Tabur Amiri Birimi, Mobil Komuta AracÄ± veya Mobil Komuta ModÃ¼lÃ¼ ",
                 elw2_or_ab_elw: "",
                 elw3: "",
                 elw_airport: "",
                 emergency_ambulance: "Acil durum ambulansÄ± veya Helikopteri",
-                fire_truck: "Ä°tfaiye AraĂ§larÄ±",
-                fireboat: "BĂĽyĂĽk Ä°tfaiye BotlarÄ±",
-                fly_car: "UĂ§an Araba",
+                fire_truck: "Ä°tfaiye AraÃ§larÄ±",
+                fireboat: "BÃ¼yÃ¼k Ä°tfaiye BotlarÄ±",
+                fly_car: "UÃ§an Araba",
                 fukw: "",
                 fwk: "",
                 gefkw: "",
@@ -7299,14 +7233,14 @@ function deleteMissionPosition(e) {
                 gw_atemschutz_only: "",
                 gw_gefahrgut: "Tehlikeli Madde",
                 gw_gefahrgut_only: "",
-                gw_hoehenrettung: "GW-HĂ¶henrettung",
+                gw_hoehenrettung: "GW-HÃ¶henrettung",
                 gw_messtechnik: "GW-Messtechnik",
                 gw_oel_only: "",
                 gw_san: "",
                 gw_taucher: "",
                 gw_wasserrettung: "Su Toplama",
                 gw_werkfeuerwehr: "",
-                gwl2wasser_only: "Hortumlu AraĂ§",
+                gwl2wasser_only: "Hortumlu AraÃ§",
                 hems: "HÄ±zÄ±r Acil Helikopteri",
                 hlf_only: "",
                 hlf_or_rw_and_lf: "",
@@ -7317,35 +7251,35 @@ function deleteMissionPosition(e) {
                 ktw_b: "",
                 ktw_or_rtw: "",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
-                lf_only: "Ä°tfaiye AraĂ§larÄ±",
+                lf_only: "Ä°tfaiye AraÃ§larÄ±",
                 long_distance_ambulance: "BLS ambulansÄ±",
                 mask_service_unit: "Mobil Hava Birimi",
                 mek_mtf: "",
                 mek_zf: "",
                 mtw: "MTW",
-                mzb: "Ă‡ok AmaĂ§lÄ± Bot",
+                mzb: "Ã‡ok AmaÃ§lÄ± Bot",
                 naw: "",
                 naw_or_rtw_and_nef: "",
                 naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Ambulans",
-                oil_unit: "GW-Ă–l",
+                oil_unit: "GW-Ã–l",
                 only_ab_dekon_p: "",
                 only_dekon_p: "",
                 ovd_p: "",
                 police_car: "Devriye arabasÄ±",
                 polizeihubschrauber: "Polis helikopteri",
-                rescue_vehicle: "BĂĽyĂĽk kurtarma aracÄ±",
-                rescue_vehicle_only: "BĂĽyĂĽk Kurtarma",
-                rescueboat: "BĂĽyĂĽk Kurtarma Botu",
+                rescue_vehicle: "BÃ¼yÃ¼k kurtarma aracÄ±",
+                rescue_vehicle_only: "BÃ¼yÃ¼k Kurtarma",
+                rescueboat: "BÃ¼yÃ¼k Kurtarma Botu",
                 rettungstreppe: "",
                 rth_only: "Helikopter",
                 schlauchwagen: "Su Tankeri",
                 seg_elw: "",
                 sek_mtf: "",
                 sek_zf: "",
-                swat: "PĂ–H",
-                swat_armored_vehicle: "PĂ–H ZÄ±rhlÄ± AracÄ±",
-                swat_suv: "PĂ–H SUV",
+                swat: "PÃ–H",
+                swat_armored_vehicle: "PÃ–H ZÄ±rhlÄ± AracÄ±",
+                swat_suv: "PÃ–H SUV",
                 thw_anh_mzab: "",
                 thw_anh_mzb: "",
                 thw_anh_schlb: "",
@@ -7356,7 +7290,7 @@ function deleteMissionPosition(e) {
                 thw_mlw5: "",
                 thw_mtw: "Mannschaftstransportwagen Technischer Zug (MTW-TZ - THW)",
                 thw_mzkw: "Mehrzweckkraftwagen (MzKW)",
-                thw_tauchkraftwagen: "DalÄ±Ĺź Ekibi",
+                thw_tauchkraftwagen: "DalÄ±ÅŸ Ekibi",
                 thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "Tanker",
                 tm50: "",
@@ -7373,75 +7307,75 @@ function deleteMissionPosition(e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: 'Ä°kinci adÄ±mda yeni istasyonuna bir isim ver! Farkedilebilir ve Ă¶lĂ§eklenebilir olsun! Ă–r. "Ä°tfaiye istasyonu no. 0001". Ä°Ĺźin bittiÄźinde lĂĽtfen "Ä°leri" Ă¶gesine tÄ±kla!',
-                            build_with_credits: "Ĺžimdi binanÄ± kredilerinle inĹźa et!",
-                            new_building: '"Yeni bina" Ă¶gesine tÄ±kla!',
-                            select_building: "Ă–ncelikle baĹźlamak istediÄźin bina tipini seĂ§, itfaiye ile baĹźlamanÄ± Ĺźiddetle tavsiye ederiz! Her durumda kĂĽĂ§ĂĽk bir istasyonla baĹźlaman daha iyi olur!",
-                            select_position: "Mavi iĹźaretĂ§iyi ilk istasyonunu inĹźa etmek istediÄźin yere taĹźÄ±!"
+                            add_name: 'Ä°kinci adÄ±mda yeni istasyonuna bir isim ver! Farkedilebilir ve Ã¶lÃ§eklenebilir olsun! Ã–r. "Ä°tfaiye istasyonu no. 0001". Ä°ÅŸin bittiÄŸinde lÃ¼tfen "Ä°leri" Ã¶gesine tÄ±kla!',
+                            build_with_credits: "Åžimdi binanÄ± kredilerinle inÅŸa et!",
+                            new_building: '"Yeni bina" Ã¶gesine tÄ±kla!',
+                            select_building: "Ã–ncelikle baÅŸlamak istediÄŸin bina tipini seÃ§, itfaiye ile baÅŸlamanÄ± ÅŸiddetle tavsiye ederiz! Her durumda kÃ¼Ã§Ã¼k bir istasyonla baÅŸlaman daha iyi olur!",
+                            select_position: "Mavi iÅŸaretÃ§iyi ilk istasyonunu inÅŸa etmek istediÄŸin yere taÅŸÄ±!"
                         },
-                        pick_location: "BaĹźlamak iĂ§in Ă¶nce bir konum seĂ§! BaĹźlamak istediÄźin konumun adÄ±nÄ± arama Ă§ubuÄźuna yaz veya haritada kendin bul! Memleketine ne dersin?",
-                        welcome: "Merhaba, 112 Merkez'e hoĹź geldin!  Acil servis kariyerine gĂĽzel bir baĹźlangÄ±Ă§ yapmana yardÄ±mcÄ± olacak bazÄ± tĂĽyolar vereceÄźim sana!"
+                        pick_location: "BaÅŸlamak iÃ§in Ã¶nce bir konum seÃ§! BaÅŸlamak istediÄŸin konumun adÄ±nÄ± arama Ã§ubuÄŸuna yaz veya haritada kendin bul! Memleketine ne dersin?",
+                        welcome: "Merhaba, 112 Merkez'e hoÅŸ geldin!  Acil servis kariyerine gÃ¼zel bir baÅŸlangÄ±Ã§ yapmana yardÄ±mcÄ± olacak bazÄ± tÃ¼yolar vereceÄŸim sana!"
                     },
                     mobile: {
                         build_building: {
-                            add_name: 'Ä°kinci adÄ±mda yeni istasyonuna bir isim ver! Farkedilebilir ve Ă¶lĂ§eklenebilir olsun! Ă–r. "Ä°tfaiye istasyonu no. 0001". Ä°Ĺźin bittiÄźinde lĂĽtfen "Ä°leri" Ă¶gesine tÄ±kla!',
-                            build_with_credits: "Ĺžimdi binanÄ± kredilerinle inĹźa et!",
-                            new_building: 'BaĹźlamak iĂ§in Ă¶nce bir konum seĂ§ecek ve ilk binanÄ± inĹźa edeceÄźiz! <br /> <br /> Bunun iĂ§in "Yeni bina" Ă¶gesine tÄ±kla!',
-                            select_building: "Ă–ncelikle baĹźlamak istediÄźin bina tipini seĂ§, itfaiye ile baĹźlamanÄ± Ĺźiddetle tavsiye ederiz! Her durumda kĂĽĂ§ĂĽk bir istasyonla baĹźlaman daha iyi olur!"
+                            add_name: 'Ä°kinci adÄ±mda yeni istasyonuna bir isim ver! Farkedilebilir ve Ã¶lÃ§eklenebilir olsun! Ã–r. "Ä°tfaiye istasyonu no. 0001". Ä°ÅŸin bittiÄŸinde lÃ¼tfen "Ä°leri" Ã¶gesine tÄ±kla!',
+                            build_with_credits: "Åžimdi binanÄ± kredilerinle inÅŸa et!",
+                            new_building: 'BaÅŸlamak iÃ§in Ã¶nce bir konum seÃ§ecek ve ilk binanÄ± inÅŸa edeceÄŸiz! <br /> <br /> Bunun iÃ§in "Yeni bina" Ã¶gesine tÄ±kla!',
+                            select_building: "Ã–ncelikle baÅŸlamak istediÄŸin bina tipini seÃ§, itfaiye ile baÅŸlamanÄ± ÅŸiddetle tavsiye ederiz! Her durumda kÃ¼Ã§Ã¼k bir istasyonla baÅŸlaman daha iyi olur!"
                         },
-                        welcome: "Merhaba, 112 Merkez'e hoĹź geldin!  Acil servis kariyerine gĂĽzel bir baĹźlangÄ±Ă§ yapmana yardÄ±mcÄ± olacak bazÄ± tĂĽyolar vereceÄźim sana!"
+                        welcome: "Merhaba, 112 Merkez'e hoÅŸ geldin!  Acil servis kariyerine gÃ¼zel bir baÅŸlangÄ±Ã§ yapmana yardÄ±mcÄ± olacak bazÄ± tÃ¼yolar vereceÄŸim sana!"
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Bu sevk etme menĂĽsĂĽdĂĽr. Buradan birliklerini gĂ¶revlere gĂ¶nderirsin!",
-                            dispatch_menu_buttons: 'Bunlar ise senin iĂ§in iki sevk dĂĽÄźmesi! Ä°lki: "Sevk et" seĂ§ilen birimleri gĂ¶reve gĂ¶nderir. Ä°kincisi birinciyle aynÄ± Ĺźeyi yapar, ancak bir sonraki gĂ¶reve gider. Ĺžimdilik ilk dĂĽÄźmeye tÄ±kla.',
-                            dispatch_menu_mission_general: "Burada gĂ¶revin adÄ±, adresi ve simgesi gibi genel gĂ¶rev bilgilerini gĂ¶rebilirsin. Daha Ă¶nce katÄ±ldÄ±ÄźÄ±n gĂ¶revlerde, kĂĽĂ§ĂĽk yÄ±ldÄ±zÄ±n yerini kĂĽĂ§ĂĽk adam simgesi alÄ±r.",
-                            dispatch_menu_mission_progress: "Burada bu gĂ¶revle baĹźa Ă§Ä±kmak iĂ§in ne kadar ilerleme kaydedildiÄźini, ayrÄ±ca sahadaki personel sayÄ±sÄ±nÄ± ve gĂ¶revin ĂĽstesinden gelmek iĂ§in kalan sĂĽreyi gĂ¶rebilirsin!",
-                            dispatch_menu_mission_specific: "Burada, hangi birimlerin Ă§aÄźrÄ±ya yanÄ±t verdiÄźi ve hangilerinin Ă§oktan sahada olduÄźu gibi gĂ¶rev hakkÄ±nda daha fazla bilgi gĂ¶rebilirsin.",
-                            dispatch_menu_vehicle_list: "Bu, mevcut araĂ§larÄ±nÄ±n listesidir. Burada araĂ§larÄ± seĂ§ersin. Ĺžimdi ĂĽzerine tÄ±klayarak aracÄ±nÄ± seĂ§!"
+                            dispatch_menu: "Bu sevk etme menÃ¼sÃ¼dÃ¼r. Buradan birliklerini gÃ¶revlere gÃ¶nderirsin!",
+                            dispatch_menu_buttons: 'Bunlar ise senin iÃ§in iki sevk dÃ¼ÄŸmesi! Ä°lki: "Sevk et" seÃ§ilen birimleri gÃ¶reve gÃ¶nderir. Ä°kincisi birinciyle aynÄ± ÅŸeyi yapar, ancak bir sonraki gÃ¶reve gider. Åžimdilik ilk dÃ¼ÄŸmeye tÄ±kla.',
+                            dispatch_menu_mission_general: "Burada gÃ¶revin adÄ±, adresi ve simgesi gibi genel gÃ¶rev bilgilerini gÃ¶rebilirsin. Daha Ã¶nce katÄ±ldÄ±ÄŸÄ±n gÃ¶revlerde, kÃ¼Ã§Ã¼k yÄ±ldÄ±zÄ±n yerini kÃ¼Ã§Ã¼k adam simgesi alÄ±r.",
+                            dispatch_menu_mission_progress: "Burada bu gÃ¶revle baÅŸa Ã§Ä±kmak iÃ§in ne kadar ilerleme kaydedildiÄŸini, ayrÄ±ca sahadaki personel sayÄ±sÄ±nÄ± ve gÃ¶revin Ã¼stesinden gelmek iÃ§in kalan sÃ¼reyi gÃ¶rebilirsin!",
+                            dispatch_menu_mission_specific: "Burada, hangi birimlerin Ã§aÄŸrÄ±ya yanÄ±t verdiÄŸi ve hangilerinin Ã§oktan sahada olduÄŸu gibi gÃ¶rev hakkÄ±nda daha fazla bilgi gÃ¶rebilirsin.",
+                            dispatch_menu_vehicle_list: "Bu, mevcut araÃ§larÄ±nÄ±n listesidir. Burada araÃ§larÄ± seÃ§ersin. Åžimdi Ã¼zerine tÄ±klayarak aracÄ±nÄ± seÃ§!"
                         },
                         mobile: {
-                            dispatch_menu: "Bu sevk etme menĂĽsĂĽdĂĽr. Buradan birliklerini gĂ¶revlere gĂ¶nderirsin!",
-                            dispatch_menu_buttons: 'Bunlar ise senin iĂ§in iki sevk dĂĽÄźmesi! Ä°lki: "Sevk et" seĂ§ilen birimleri gĂ¶reve gĂ¶nderir. Ä°kincisi birinciyle aynÄ± Ĺźeyi yapar, ancak bir sonraki gĂ¶reve gider. Ĺžimdilik ilk dĂĽÄźmeye tÄ±kla.',
-                            dispatch_menu_mission_general: "Burada gĂ¶revin adÄ±, adresi ve simgesi gibi genel gĂ¶rev bilgilerini gĂ¶rebilirsin. Daha Ă¶nce katÄ±ldÄ±ÄźÄ±n gĂ¶revlerde, kĂĽĂ§ĂĽk yÄ±ldÄ±zÄ±n yerini kĂĽĂ§ĂĽk adam simgesi alÄ±r.",
-                            dispatch_menu_mission_progress: "Burada bu gĂ¶revle baĹźa Ă§Ä±kmak iĂ§in ne kadar ilerleme kaydedildiÄźini, ayrÄ±ca sahadaki personel sayÄ±sÄ±nÄ± ve gĂ¶revin ĂĽstesinden gelmek iĂ§in kalan sĂĽreyi gĂ¶rebilirsin!",
-                            dispatch_menu_mission_specific: "Burada, hangi birimlerin Ă§aÄźrÄ±ya yanÄ±t verdiÄźi ve hangilerinin Ă§oktan sahada olduÄźu gibi gĂ¶rev hakkÄ±nda daha fazla bilgi gĂ¶rebilirsin.",
-                            dispatch_menu_vehicle_list: "Bu, mevcut araĂ§larÄ±nÄ±n listesidir. Burada araĂ§larÄ± seĂ§ersin. Ĺžimdi ĂĽzerine tÄ±klayarak aracÄ±nÄ± seĂ§!"
+                            dispatch_menu: "Bu sevk etme menÃ¼sÃ¼dÃ¼r. Buradan birliklerini gÃ¶revlere gÃ¶nderirsin!",
+                            dispatch_menu_buttons: 'Bunlar ise senin iÃ§in iki sevk dÃ¼ÄŸmesi! Ä°lki: "Sevk et" seÃ§ilen birimleri gÃ¶reve gÃ¶nderir. Ä°kincisi birinciyle aynÄ± ÅŸeyi yapar, ancak bir sonraki gÃ¶reve gider. Åžimdilik ilk dÃ¼ÄŸmeye tÄ±kla.',
+                            dispatch_menu_mission_general: "Burada gÃ¶revin adÄ±, adresi ve simgesi gibi genel gÃ¶rev bilgilerini gÃ¶rebilirsin. Daha Ã¶nce katÄ±ldÄ±ÄŸÄ±n gÃ¶revlerde, kÃ¼Ã§Ã¼k yÄ±ldÄ±zÄ±n yerini kÃ¼Ã§Ã¼k adam simgesi alÄ±r.",
+                            dispatch_menu_mission_progress: "Burada bu gÃ¶revle baÅŸa Ã§Ä±kmak iÃ§in ne kadar ilerleme kaydedildiÄŸini, ayrÄ±ca sahadaki personel sayÄ±sÄ±nÄ± ve gÃ¶revin Ã¼stesinden gelmek iÃ§in kalan sÃ¼reyi gÃ¶rebilirsin!",
+                            dispatch_menu_mission_specific: "Burada, hangi birimlerin Ã§aÄŸrÄ±ya yanÄ±t verdiÄŸi ve hangilerinin Ã§oktan sahada olduÄŸu gibi gÃ¶rev hakkÄ±nda daha fazla bilgi gÃ¶rebilirsin.",
+                            dispatch_menu_vehicle_list: "Bu, mevcut araÃ§larÄ±nÄ±n listesidir. Burada araÃ§larÄ± seÃ§ersin. Åžimdi Ã¼zerine tÄ±klayarak aracÄ±nÄ± seÃ§!"
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: 'Ĺžimdi olaylarla nasÄ±l baĹźa Ă§Ä±kacaÄźÄ±mÄ±zÄ± Ă¶Äźrenelim. Bir "sevk et" dĂĽÄźmesine tÄ±klayarak sevk etme menĂĽsĂĽnĂĽ aĂ§!',
-                            first_mission: "Harika, ilk binanÄ± inĹźa ettin! Bak, ilk gĂ¶revler geldi bile!"
+                            dispatch_button: 'Åžimdi olaylarla nasÄ±l baÅŸa Ã§Ä±kacaÄŸÄ±mÄ±zÄ± Ã¶ÄŸrenelim. Bir "sevk et" dÃ¼ÄŸmesine tÄ±klayarak sevk etme menÃ¼sÃ¼nÃ¼ aÃ§!',
+                            first_mission: "Harika, ilk binanÄ± inÅŸa ettin! Bak, ilk gÃ¶revler geldi bile!"
                         },
                         mobile: {
-                            dispatch_button: 'Ĺžimdi olaylarla nasÄ±l baĹźa Ă§Ä±kacaÄźÄ±mÄ±zÄ± Ă¶Äźrenelim. Bir "sevk et" dĂĽÄźmesine tÄ±klayarak sevk etme menĂĽsĂĽnĂĽ aĂ§!',
-                            first_mission: "Harika, ilk binanÄ± inĹźa ettin! Bak, ilk gĂ¶revler geldi bile!"
+                            dispatch_button: 'Åžimdi olaylarla nasÄ±l baÅŸa Ã§Ä±kacaÄŸÄ±mÄ±zÄ± Ã¶ÄŸrenelim. Bir "sevk et" dÃ¼ÄŸmesine tÄ±klayarak sevk etme menÃ¼sÃ¼nÃ¼ aÃ§!',
+                            first_mission: "Harika, ilk binanÄ± inÅŸa ettin! Bak, ilk gÃ¶revler geldi bile!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Harika, mĂĽkemmel bir 112 Merkezi olma yolundasÄ±n! Ä°Ĺźte sana baĹźlamana yardÄ±mcÄ± olmak iĂ§in %{coins} AltÄ±n! </br> 112 Merkez ekibin"
+                        general: "Harika, mÃ¼kemmel bir 112 Merkezi olma yolundasÄ±n! Ä°ÅŸte sana baÅŸlamana yardÄ±mcÄ± olmak iÃ§in %{coins} AltÄ±n! </br> 112 Merkez ekibin"
                     },
                     mobile: {
-                        general: "Harika, mĂĽkemmel bir 112 Merkezi olma yolundasÄ±n! Ä°Ĺźte sana baĹźlamana yardÄ±mcÄ± olmak iĂ§in %{coins} AltÄ±n! </br> 112 Merkez ekibin"
+                        general: "Harika, mÃ¼kemmel bir 112 Merkezi olma yolundasÄ±n! Ä°ÅŸte sana baÅŸlamana yardÄ±mcÄ± olmak iÃ§in %{coins} AltÄ±n! </br> 112 Merkez ekibin"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "SorularÄ±n varsa oyun iĂ§i SSS bĂ¶lĂĽmĂĽne baĹźvurabilir veya oyun forumlarÄ±nÄ± veya facebook sayfamÄ±zÄ± ziyaret edebilirsin!",
-                        general: "Bir sonraki adÄ±m olarak, bir sevk merkezi ve sonra mĂĽmkĂĽn olan en kÄ±sa sĂĽrede yeni istasyonlar inĹźa etmeni Ă¶neririz, Ă§ĂĽnkĂĽ maksimum gĂ¶rev sayÄ±sÄ± farklÄ± tipteki istasyonlardan (polis, itfaiye, ambulans) en fazla olanÄ±n 1 fazlasÄ±na eĹźittir; Ă¶r. 5 itfaiye ve 3 ambulans istasyonu = 6 gĂ¶rev demektir.",
-                        join_alliance: "AyrÄ±ca, bir ittifaka katÄ±lmak Ă¶zellikle baĹźlangÄ±Ă§ta sana Ă§ok yardÄ±mcÄ± olacaktÄ±r, bu yĂĽzden bunu da tavsiye ederiz.",
-                        summary: "Ä°Ĺźte bunlar 112 Merkez'in temel Ă¶zellikleri! GĂ¶revleri yerine getir, kredi al, daha fazla birim satÄ±n al ve bunlarÄ± tekrarla. Oyunda iyi eÄźlenceler! </br> 112 Merkez ekibin"
+                        contact: "SorularÄ±n varsa oyun iÃ§i SSS bÃ¶lÃ¼mÃ¼ne baÅŸvurabilir veya oyun forumlarÄ±nÄ± veya facebook sayfamÄ±zÄ± ziyaret edebilirsin!",
+                        general: "Bir sonraki adÄ±m olarak, bir sevk merkezi ve sonra mÃ¼mkÃ¼n olan en kÄ±sa sÃ¼rede yeni istasyonlar inÅŸa etmeni Ã¶neririz, Ã§Ã¼nkÃ¼ maksimum gÃ¶rev sayÄ±sÄ± farklÄ± tipteki istasyonlardan (polis, itfaiye, ambulans) en fazla olanÄ±n 1 fazlasÄ±na eÅŸittir; Ã¶r. 5 itfaiye ve 3 ambulans istasyonu = 6 gÃ¶rev demektir.",
+                        join_alliance: "AyrÄ±ca, bir ittifaka katÄ±lmak Ã¶zellikle baÅŸlangÄ±Ã§ta sana Ã§ok yardÄ±mcÄ± olacaktÄ±r, bu yÃ¼zden bunu da tavsiye ederiz.",
+                        summary: "Ä°ÅŸte bunlar 112 Merkez'in temel Ã¶zellikleri! GÃ¶revleri yerine getir, kredi al, daha fazla birim satÄ±n al ve bunlarÄ± tekrarla. Oyunda iyi eÄŸlenceler! </br> 112 Merkez ekibin"
                     },
                     mobile: {
-                        contact: "SorularÄ±n varsa oyun iĂ§i SSS bĂ¶lĂĽmĂĽne baĹźvurabilir veya oyun forumlarÄ±nÄ± veya facebook sayfamÄ±zÄ± ziyaret edebilirsin!",
-                        general: "Bir sonraki adÄ±m olarak, bir sevk merkezi ve sonra mĂĽmkĂĽn olan en kÄ±sa sĂĽrede yeni istasyonlar inĹźa etmeni Ă¶neririz, Ă§ĂĽnkĂĽ maksimum gĂ¶rev sayÄ±sÄ± farklÄ± tipteki istasyonlardan (polis, itfaiye, ambulans) en fazla olanÄ±n 1 fazlasÄ±na eĹźittir; Ă¶r. 5 itfaiye ve 3 ambulans istasyonu = 6 gĂ¶rev demektir.",
-                        join_alliance: "AyrÄ±ca, bir ittifaka katÄ±lmak Ă¶zellikle baĹźlangÄ±Ă§ta sana Ă§ok yardÄ±mcÄ± olacaktÄ±r, bu yĂĽzden bunu da tavsiye ederiz.",
-                        summary: "Ä°Ĺźte bunlar 112 Merkez'in temel Ă¶zellikleri! GĂ¶revleri yerine getir, kredi al, daha fazla birim satÄ±n al ve bunlarÄ± tekrarla. Oyunda iyi eÄźlenceler! </br> 112 Merkez ekibin"
+                        contact: "SorularÄ±n varsa oyun iÃ§i SSS bÃ¶lÃ¼mÃ¼ne baÅŸvurabilir veya oyun forumlarÄ±nÄ± veya facebook sayfamÄ±zÄ± ziyaret edebilirsin!",
+                        general: "Bir sonraki adÄ±m olarak, bir sevk merkezi ve sonra mÃ¼mkÃ¼n olan en kÄ±sa sÃ¼rede yeni istasyonlar inÅŸa etmeni Ã¶neririz, Ã§Ã¼nkÃ¼ maksimum gÃ¶rev sayÄ±sÄ± farklÄ± tipteki istasyonlardan (polis, itfaiye, ambulans) en fazla olanÄ±n 1 fazlasÄ±na eÅŸittir; Ã¶r. 5 itfaiye ve 3 ambulans istasyonu = 6 gÃ¶rev demektir.",
+                        join_alliance: "AyrÄ±ca, bir ittifaka katÄ±lmak Ã¶zellikle baÅŸlangÄ±Ã§ta sana Ã§ok yardÄ±mcÄ± olacaktÄ±r, bu yÃ¼zden bunu da tavsiye ederiz.",
+                        summary: "Ä°ÅŸte bunlar 112 Merkez'in temel Ã¶zellikleri! GÃ¶revleri yerine getir, kredi al, daha fazla birim satÄ±n al ve bunlarÄ± tekrarla. Oyunda iyi eÄŸlenceler! </br> 112 Merkez ekibin"
                     }
                 }
             },
@@ -7450,12 +7384,12 @@ function deleteMissionPosition(e) {
                 "continue": "HayÄ±r",
                 end: "Bitir",
                 next: "Sonraki",
-                prev: "Ă–nceki",
+                prev: "Ã–nceki",
                 skip: "Evet",
-                skip_hint: "EÄźitimi gerĂ§ekten iptal etmek istiyor musun? Daha sonra eriĹźmek mĂĽmkĂĽn olmayacak. EÄźitim tamamlama Ă¶dĂĽlĂĽ alamayacaksÄ±n."
+                skip_hint: "EÄŸitimi gerÃ§ekten iptal etmek istiyor musun? Daha sonra eriÅŸmek mÃ¼mkÃ¼n olmayacak. EÄŸitim tamamlama Ã¶dÃ¼lÃ¼ alamayacaksÄ±n."
             },
             rewards: {
-                log: "EÄźitimi tamamlama Ă¶dĂĽlĂĽ."
+                log: "EÄŸitimi tamamlama Ã¶dÃ¼lÃ¼."
             }
         }
     }, I18n.translations.pt_PT = {
@@ -7463,18 +7397,18 @@ function deleteMissionPosition(e) {
             add: "Adicionar",
             back: "Voltar",
             cancel: "Cancelar",
-            change_saved: "AlteraĂ§Ăµes salvas",
+            change_saved: "AlteraÃ§Ãµes salvas",
             coins_spend: "Deseja mesmo gastar estas moedas?",
-            congratulations: "ParabĂ©ns!",
-            content: "ConteĂşdo",
-            credits: "CrĂ©ditos",
+            congratulations: "ParabÃ©ns!",
+            content: "ConteÃºdo",
+            credits: "CrÃ©ditos",
             "delete": "Apagar",
             details: "Detalhes",
             edit: "Editar",
             error: "Erro",
-            is_offline: "%{user} estĂˇ offline.",
-            is_offline_long: "Tempo: %{user} estĂˇ offline",
-            is_online: "%{user} estĂˇ online.",
+            is_offline: "%{user} estÃ¡ offline.",
+            is_offline_long: "Tempo: %{user} estÃ¡ offline",
+            is_online: "%{user} estÃ¡ online.",
             loading: "Carregando...",
             name: "Nome",
             none: "Nenhum",
@@ -7484,7 +7418,7 @@ function deleteMissionPosition(e) {
             save: "Salvar",
             search: "Buscar",
             show: "Exibir",
-            user_not_found: "UsuĂˇrio nĂŁo encontrado",
+            user_not_found: "UsuÃ¡rio nÃ£o encontrado",
             wrong_key: "Chave errada"
         },
         javascript: {
@@ -7492,63 +7426,63 @@ function deleteMissionPosition(e) {
             arrival: "Chegada",
             backalarm: "Cancelar",
             coins: "Moedas",
-            credits: "CrĂ©ditos",
+            credits: "CrÃ©ditos",
             days: "dias",
             few_seconds: "em alguns segundos",
             finish_in: "Finaliza em:",
             hours: "H",
-            location_not_found: "NĂŁo encontrado",
+            location_not_found: "NÃ£o encontrado",
             messages: "Mensagens",
             minutes: "min.",
             missed_vehicle: "Falta:",
-            mission_start_in: "ComeĂ§a em:",
-            not_found_map: "O veĂ­culo nĂŁo foi encontrado no mapa",
+            mission_start_in: "ComeÃ§a em:",
+            not_found_map: "O veÃ­culo nÃ£o foi encontrado no mapa",
             now: "Agora",
             patient: "Paciente",
-            patient_untouched: "Pacientes nĂŁo tratados",
+            patient_untouched: "Pacientes nÃ£o tratados",
             poi_delete: "Tem certeza de que quer apagar o PDI: %{caption}?",
             reload: "Recarregar",
             secounds: "seg.",
-            sicherheitswache_error: 'A guarda de seguranĂ§a "%{caption}" nĂŁo teve ĂŞxito porque nem todos os critĂ©rios foram atendidos.',
-            sicherheitswache_success: 'A guarda de seguranĂ§a "%{caption}" foi realizada com sucesso. Receber %{credits} crĂ©ditos.',
-            start_in: "ComeĂ§ar em: ",
+            sicherheitswache_error: 'A guarda de seguranÃ§a "%{caption}" nÃ£o teve Ãªxito porque nem todos os critÃ©rios foram atendidos.',
+            sicherheitswache_success: 'A guarda de seguranÃ§a "%{caption}" foi realizada com sucesso. Receber %{credits} crÃ©ditos.',
+            start_in: "ComeÃ§ar em: ",
             start_username: "Iniciante:",
             time_left: "Tempo restante:",
-            to_building: "Ver edifĂ­cio",
-            to_mission: "Ver missĂŁo",
+            to_building: "Ver edifÃ­cio",
+            to_mission: "Ver missÃ£o",
             understand: "Reconhecer",
-            user_not_found: "O jogador nĂŁo foi encontrado.",
-            vehicles_not_visible: "VeĂ­culos nĂŁo visĂ­veis. "
+            user_not_found: "O jogador nÃ£o foi encontrado.",
+            vehicles_not_visible: "VeÃ­culos nÃ£o visÃ­veis. "
         },
         map: {
-            alliance: "AlianĂ§a",
+            alliance: "AlianÃ§a",
             alliance_chat: "Chat",
-            alliance_chat_banned: "VocĂŞ estĂˇ banido do chat da alianĂ§a no momento.",
+            alliance_chat_banned: "VocÃª estÃ¡ banido do chat da alianÃ§a no momento.",
             alliance_chat_banned_admin: "Banido por:",
             alliance_chat_banned_timeleft: "Tempo restante:",
-            alliance_chat_radio_off: "RĂˇdio da alianĂ§a: Desligado",
-            alliance_chat_radio_on: "RĂˇdio da alianĂ§a: Ligado",
+            alliance_chat_radio_off: "RÃ¡dio da alianÃ§a: Desligado",
+            alliance_chat_radio_on: "RÃ¡dio da alianÃ§a: Ligado",
             alliance_event: "Evento",
-            alliance_missions: "MissĂµes da alianĂ§a",
+            alliance_missions: "MissÃµes da alianÃ§a",
             alliance_missions_event: "Evento",
-            ambulance: "AmbulĂ˘ncia",
+            ambulance: "AmbulÃ¢ncia",
             challenges: "",
-            chat_history: "HistĂłrico do chat",
-            congratulations: "ParabĂ©ns! Agora vocĂŞ pode ser promovido.",
-            create_alliance_event: "Iniciar evento de alianĂ§a",
-            create_alliance_operation: "Crie uma missĂŁo de alianĂ§a de larga escala",
-            emergency: "EmergĂŞncia",
-            join_alliance_infos: "Se vocĂŞ estiver em uma alianĂ§a, outros jogadores podem lhe dar missĂµes livremente.",
+            chat_history: "HistÃ³rico do chat",
+            congratulations: "ParabÃ©ns! Agora vocÃª pode ser promovido.",
+            create_alliance_event: "Iniciar evento de alianÃ§a",
+            create_alliance_operation: "Crie uma missÃ£o de alianÃ§a de larga escala",
+            emergency: "EmergÃªncia",
+            join_alliance_infos: "Se vocÃª estiver em uma alianÃ§a, outros jogadores podem lhe dar missÃµes livremente.",
             map: "Mapa",
             map_filters: {
-                all_buildings: "EdifĂ­cios",
-                all_missions: "MissĂµes",
-                alliance_buildings: "EdifĂ­cios da alianĂ§a",
+                all_buildings: "EdifÃ­cios",
+                all_missions: "MissÃµes",
+                alliance_buildings: "EdifÃ­cios da alianÃ§a",
                 alliance_members: "Membros",
-                alliance_missions: "Partilhado pela alianĂ§a",
-                ambulance_station_missions: "EstaĂ§ĂŁo de ambulĂ˘ncia",
-                ambulance_station_small_missions: "EstaĂ§ĂŁo de ambulĂ˘ncia (estaĂ§ĂŁo pequena)",
-                clinic_missions: "ClĂ­nica",
+                alliance_missions: "Partilhado pela alianÃ§a",
+                ambulance_station_missions: "EstaÃ§Ã£o de ambulÃ¢ncia",
+                ambulance_station_small_missions: "EstaÃ§Ã£o de ambulÃ¢ncia (estaÃ§Ã£o pequena)",
+                clinic_missions: "ClÃ­nica",
                 dispatch_center_missions: "Central de Despacho",
                 fire_school_missions: "Academia de bombeiros",
                 firehouse_missions: "Unidade do corpo de bombeiros",
@@ -7556,123 +7490,123 @@ function deleteMissionPosition(e) {
                 hospital_missions: "Hospital",
                 map_filters: "Lista de filtros do mapa",
                 mission_positions: "Pontos de interesse (PDI)",
-                police_copter_station_missions: "AviaĂ§ĂŁo policial",
-                police_school_missions: "Academia de polĂ­cia",
-                police_small_missions: "Esquadra de PolĂ­cia (Pequena)",
-                police_special_forces: "Unidade Especial de PolĂ­cia",
-                police_station_missions: "Esquadra de PolĂ­cia",
-                prison_missions: "PrisĂŁo",
-                rapid_deployment_group: "Grupo de InstalaĂ§ĂŁo RĂˇpida (SEG)",
-                rescue_copter_station_missions: "Centro de meios aĂ©reos",
+                police_copter_station_missions: "AviaÃ§Ã£o policial",
+                police_school_missions: "Academia de polÃ­cia",
+                police_small_missions: "Esquadra de PolÃ­cia (Pequena)",
+                police_special_forces: "Unidade Especial de PolÃ­cia",
+                police_station_missions: "Esquadra de PolÃ­cia",
+                prison_missions: "PrisÃ£o",
+                rapid_deployment_group: "Grupo de InstalaÃ§Ã£o RÃ¡pida (SEG)",
+                rescue_copter_station_missions: "Centro de meios aÃ©reos",
                 riot_police: "Tropa de choque",
-                staging_area_missions: "Ărea de concentraĂ§ĂŁo",
+                staging_area_missions: "Ãrea de concentraÃ§Ã£o",
                 technical_aid_organization: "THW",
                 technical_aid_organization_school: "THW Bundesschule",
-                user_buildings: "Os meus edifĂ­cios",
-                user_missions: "As minhas missĂµes",
-                water_watch: "Resgate aquĂˇtico"
+                user_buildings: "Os meus edifÃ­cios",
+                user_missions: "As minhas missÃµes",
+                water_watch: "Resgate aquÃ¡tico"
             },
             message: "Mensagem",
-            mission: "MissĂŁo",
-            no_alliance_chat_impossible: "VocĂŞ nĂŁo estĂˇ em uma alianĂ§a.",
-            no_alliance_missions: "NĂŁo hĂˇ missĂµes de alianĂ§a no momento.",
-            no_ambulance_missions: "NĂŁo hĂˇ missĂµes de ambulĂ˘ncia. VocĂŞ sĂł pode participar de missĂµes de ambulĂ˘ncia quando tiver uma ambulĂ˘ncia e um hospital.",
-            no_emergency_missions: "NĂŁo hĂˇ missĂµes de emergĂŞncia disponĂ­veis. VocĂŞ pode participar de uma missĂŁo de emergĂŞncia depois que construir o seu primeiro corpo de bombeiros.",
-            no_radio_messages: "VocĂŞ nĂŁo recebeu mensagens de rĂˇdio.",
-            radio_messages: "RĂˇdio",
+            mission: "MissÃ£o",
+            no_alliance_chat_impossible: "VocÃª nÃ£o estÃ¡ em uma alianÃ§a.",
+            no_alliance_missions: "NÃ£o hÃ¡ missÃµes de alianÃ§a no momento.",
+            no_ambulance_missions: "NÃ£o hÃ¡ missÃµes de ambulÃ¢ncia. VocÃª sÃ³ pode participar de missÃµes de ambulÃ¢ncia quando tiver uma ambulÃ¢ncia e um hospital.",
+            no_emergency_missions: "NÃ£o hÃ¡ missÃµes de emergÃªncia disponÃ­veis. VocÃª pode participar de uma missÃ£o de emergÃªncia depois que construir o seu primeiro corpo de bombeiros.",
+            no_radio_messages: "VocÃª nÃ£o recebeu mensagens de rÃ¡dio.",
+            radio_messages: "RÃ¡dio",
             restore_map: "Restaurar mapa",
-            show_informations: "Verde = As missĂµes sĂŁo exibidas na lista. Vermelho = As missĂµes nĂŁo sĂŁo exibidas.",
-            sicherheitswache: "MissĂµes planejadas",
+            show_informations: "Verde = As missÃµes sÃ£o exibidas na lista. Vermelho = As missÃµes nÃ£o sÃ£o exibidas.",
+            sicherheitswache: "MissÃµes planejadas",
             transport: "Transporte"
         },
         fms: {
             going: "Respondendo",
-            not_ready: "Fora de serviĂ§o",
+            not_ready: "Fora de serviÃ§o",
             on_destination: "No destino do transporte",
             on_place: "No local",
             patient_transported: "Transportando paciente",
             prisoner_transported: "A transportar detido.",
-            ready_home: "DisponĂ­vel na estaĂ§ĂŁo",
-            ready_traveling: "Livre e disponĂ­vel",
-            talking_wish: "SolicitaĂ§ĂŁo de transporte",
-            waiting_for_vehicle: "Aguardando veĂ­culo para rebocar"
+            ready_home: "DisponÃ­vel na estaÃ§Ã£o",
+            ready_traveling: "Livre e disponÃ­vel",
+            talking_wish: "SolicitaÃ§Ã£o de transporte",
+            waiting_for_vehicle: "Aguardando veÃ­culo para rebocar"
         },
         intervention_order: {
             back: "Voltar",
             category: "Categoria",
             colour: "Cor",
             column: "Coluna",
-            column_number: "NĂşmero de coluna",
-            column_number_hint: "Se um nĂşmero de coluna for informado, a entrada de Alarme e Resposta serĂˇ exibida na coluna correspondente na pĂˇgina de alerta.",
+            column_number: "NÃºmero de coluna",
+            column_number_hint: "Se um nÃºmero de coluna for informado, a entrada de Alarme e Resposta serÃ¡ exibida na coluna correspondente na pÃ¡gina de alerta.",
             create_intervention_order: "Criar novo Regulamento de Alarme e Resposta",
             "delete": "Apagar",
             delete_all: "Apagar Regulamentos de Alarme e Resposta completamente",
-            delete_all_confirm: "Tem certeza de que quer apagar totalmente o regulamento de alarme e resposta? As entradas exportadas existentes nĂŁo estĂŁo mais disponĂ­veis!",
+            delete_all_confirm: "Tem certeza de que quer apagar totalmente o regulamento de alarme e resposta? As entradas exportadas existentes nÃ£o estÃ£o mais disponÃ­veis!",
             description: "Nome",
             edit: "Editar",
             "export": {
                 "export": "Exportar",
                 "import": "Importar",
                 import_done: "As entradas selecionadas foram importadas e escritas no seu plano de Alarme e Resposta.",
-                saved: "ExportaĂ§Ăµes de Regulamentos de Alarme e Resposta",
-                saved_text: "Seu Regulamento de Alarme e Resposta foi preparado para exportaĂ§ĂŁo. Por meio do link, outro jogador pode importar o Regulamento de Alarme e Resposta. Se vocĂŞ alterar seu Regulamento de Alarme e Resposta neste intervalo, essa alteraĂ§ĂŁo serĂˇ automaticamente aplicada Ă  exportaĂ§ĂŁo."
+                saved: "ExportaÃ§Ãµes de Regulamentos de Alarme e Resposta",
+                saved_text: "Seu Regulamento de Alarme e Resposta foi preparado para exportaÃ§Ã£o. Por meio do link, outro jogador pode importar o Regulamento de Alarme e Resposta. Se vocÃª alterar seu Regulamento de Alarme e Resposta neste intervalo, essa alteraÃ§Ã£o serÃ¡ automaticamente aplicada Ã  exportaÃ§Ã£o."
             },
-            hotkey_hint: "Escolha uma tecla de atalho para selecionar este veĂ­culo. Pressione na sua janela de missĂŁo: ALT + sua tecla de atalho (ou no Firefox: ALT + SHIFT + sua tecla de atalho, ou no mac os: ctrl + alt + sua tecla de atalho) para escolher a seleĂ§ĂŁo do seu veĂ­culo.",
+            hotkey_hint: "Escolha uma tecla de atalho para selecionar este veÃ­culo. Pressione na sua janela de missÃ£o: ALT + sua tecla de atalho (ou no Firefox: ALT + SHIFT + sua tecla de atalho, ou no mac os: ctrl + alt + sua tecla de atalho) para escolher a seleÃ§Ã£o do seu veÃ­culo.",
             intervention_order: "Editar Regulamentos de Alarme e Resposta",
             name: "Nome",
-            no_intervention_created: "VocĂŞ ainda nĂŁo criou um Regulamento de Alarme e Resposta.",
-            options: "OpĂ§Ăµes",
-            reset: "Redefina a seleĂ§ĂŁo anterior na janela de alarme.",
-            reset_hint: "Se vocĂŞ selecionou o veĂ­culo na janela de despacho, pode usar este botĂŁo para redefinir.",
+            no_intervention_created: "VocÃª ainda nÃ£o criou um Regulamento de Alarme e Resposta.",
+            options: "OpÃ§Ãµes",
+            reset: "Redefina a seleÃ§Ã£o anterior na janela de alarme.",
+            reset_hint: "Se vocÃª selecionou o veÃ­culo na janela de despacho, pode usar este botÃ£o para redefinir.",
             save: "Salvar",
-            station: "EstaĂ§ĂŁo",
-            station_hint: "Quando um edifĂ­cio Ă© selecionado, somente veĂ­culos do edifĂ­cio correspondente serĂŁo selecionados.",
-            successfully_created: "Regulamento de Alarme e Resposta criado com ĂŞxito.",
+            station: "EstaÃ§Ã£o",
+            station_hint: "Quando um edifÃ­cio Ã© selecionado, somente veÃ­culos do edifÃ­cio correspondente serÃ£o selecionados.",
+            successfully_created: "Regulamento de Alarme e Resposta criado com Ãªxito.",
             successfully_deleted: "Regulamento de Alarme e Resposta apagado",
-            successfully_updated: "Regulamento de Alarme e Resposta atualizado com ĂŞxito.",
+            successfully_updated: "Regulamento de Alarme e Resposta atualizado com Ãªxito.",
             vehicles: {
-                ab_atemschutz_only: "MĂłdulo SCBA",
-                ab_einsatzleitung_only: "MĂłdulo de comando",
-                ab_gefahrgut_only: "MĂłdulo de PP",
-                ab_oel_only: "MĂłdulo de derramamento de Ăłleo",
-                ab_ruest: "MĂłdulo de resgate tĂ©cnico",
+                ab_atemschutz_only: "MÃ³dulo SCBA",
+                ab_einsatzleitung_only: "MÃ³dulo de comando",
+                ab_gefahrgut_only: "MÃ³dulo de PP",
+                ab_oel_only: "MÃ³dulo de derramamento de Ã³leo",
+                ab_ruest: "MÃ³dulo de resgate tÃ©cnico",
                 ab_ruest_rw: "",
-                abl2wasser_only: "MĂłdulo de fornecimento de mangueiras",
-                ambulance: "AmbulĂ˘ncia de SAV",
+                abl2wasser_only: "MÃ³dulo de fornecimento de mangueiras",
+                ambulance: "AmbulÃ¢ncia de SAV",
                 ambulance_or_rapid_responder: "",
-                arff: "VeĂ­culo de Combate Especial",
-                battalion_chief_unit: "VeĂ­culo de Comando",
+                arff: "VeÃ­culo de Combate Especial",
+                battalion_chief_unit: "VeÃ­culo de Comando",
                 boot: "Barcos (geral)",
                 dekon_p: "",
-                division_chief_unit: "VeĂ­culo de Comando e ComunicaĂ§Ăµes",
+                division_chief_unit: "VeÃ­culo de Comando e ComunicaÃ§Ãµes",
                 dlk_or_tm50: "",
-                elw1_or_elw2: "VeĂ­culo de Comando, VeĂ­culo de Comando e ComunicaĂ§Ăµes ou MĂłdulo de Comando e ComunicaĂ§Ăµes",
+                elw1_or_elw2: "VeÃ­culo de Comando, VeÃ­culo de Comando e ComunicaÃ§Ãµes ou MÃ³dulo de Comando e ComunicaÃ§Ãµes",
                 elw2_or_ab_elw: "",
                 elw3: "",
                 elw_airport: "",
-                emergency_ambulance: "AmbulĂ˘ncia ou helicĂłptero",
-                fire_truck: "CaminhĂµes de bombeiro",
-                fireboat: "Barco de combate a incĂŞndio grande",
+                emergency_ambulance: "AmbulÃ¢ncia ou helicÃ³ptero",
+                fire_truck: "CaminhÃµes de bombeiro",
+                fireboat: "Barco de combate a incÃªndio grande",
                 fly_car: "Fly-Car",
                 fukw: "",
                 fwk: "",
                 gefkw: "",
-                gkw: "VeĂ­culo de LogĂ­stica",
-                grtw: "Unidade para incidentes com mĂşltiplas vĂ­timas",
+                gkw: "VeÃ­culo de LogÃ­stica",
+                grtw: "Unidade para incidentes com mÃºltiplas vÃ­timas",
                 grtw0: "",
                 grtw1: "",
                 grukw: "",
                 gw_atemschutz_only: "",
-                gw_gefahrgut: "MatĂ©rias Perigosas",
+                gw_gefahrgut: "MatÃ©rias Perigosas",
                 gw_gefahrgut_only: "",
-                gw_hoehenrettung: "GW-HĂ¶henrettung",
+                gw_hoehenrettung: "GW-HÃ¶henrettung",
                 gw_messtechnik: "GW-Messtechnik",
                 gw_oel_only: "",
                 gw_san: "",
                 gw_taucher: "",
-                gw_wasserrettung: "RetenĂ§ĂŁo de Ăˇgua",
+                gw_wasserrettung: "RetenÃ§Ã£o de Ã¡gua",
                 gw_werkfeuerwehr: "",
-                gwl2wasser_only: "VeĂ­culo com mangueira",
+                gwl2wasser_only: "VeÃ­culo com mangueira",
                 hems: "Heli INEM",
                 hlf_only: "",
                 hlf_or_rw_and_lf: "",
@@ -7683,9 +7617,9 @@ function deleteMissionPosition(e) {
                 ktw_b: "",
                 ktw_or_rtw: "",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
-                lf_only: "CaminhĂµes de bombeiro",
-                long_distance_ambulance: "AmbulĂ˘ncia de SBV",
-                mask_service_unit: "Unidade aĂ©rea mĂłvel",
+                lf_only: "CaminhÃµes de bombeiro",
+                long_distance_ambulance: "AmbulÃ¢ncia de SBV",
+                mask_service_unit: "Unidade aÃ©rea mÃ³vel",
                 mek_mtf: "",
                 mek_zf: "",
                 mtw: "MTW",
@@ -7693,24 +7627,24 @@ function deleteMissionPosition(e) {
                 naw: "",
                 naw_or_rtw_and_nef: "",
                 naw_or_rtw_and_nef_or_rth: "",
-                nef_only: "AmbulĂ˘ncia",
-                oil_unit: "GW-Ă–l",
+                nef_only: "AmbulÃ¢ncia",
+                oil_unit: "GW-Ã–l",
                 only_ab_dekon_p: "",
                 only_dekon_p: "",
                 ovd_p: "",
                 police_car: "Carro de Patrulha",
-                polizeihubschrauber: "HelicĂłptero de polĂ­cia",
-                rescue_vehicle: "VeĂ­culo de Desencarceramento",
+                polizeihubschrauber: "HelicÃ³ptero de polÃ­cia",
+                rescue_vehicle: "VeÃ­culo de Desencarceramento",
                 rescue_vehicle_only: "Resgate pesado",
                 rescueboat: "Barco de resgate grande",
                 rettungstreppe: "",
                 rth_only: "Heli INEM",
-                schlauchwagen: "VeĂ­culo Tanque",
+                schlauchwagen: "VeÃ­culo Tanque",
                 seg_elw: "",
                 sek_mtf: "",
                 sek_zf: "",
                 swat: "SWAT",
-                swat_armored_vehicle: "VeĂ­culo blindado da SWAT",
+                swat_armored_vehicle: "VeÃ­culo blindado da SWAT",
                 swat_suv: "SUV da SWAT",
                 thw_anh_mzab: "",
                 thw_anh_mzb: "",
@@ -7724,7 +7658,7 @@ function deleteMissionPosition(e) {
                 thw_mzkw: "Mehrzweckkraftwagen (MzKW)",
                 thw_tauchkraftwagen: "Equipe de mergulho",
                 thw_tauchkraftwagen_or_gw_taucher: "",
-                tlf_only: "VeĂ­culo Tanque de Grande Capacidade",
+                tlf_only: "VeÃ­culo Tanque de Grande Capacidade",
                 tm50: "",
                 turboloescher: "",
                 turntable_ladder: "Veiculo Escada",
@@ -7739,86 +7673,86 @@ function deleteMissionPosition(e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: 'A seguir, dĂˇ um nome Ă  tua nova estaĂ§ĂŁo! Escolhe algo que seja reconhecĂ­vel e expansĂ­vel! Por ex. Â«Bombeiros #0001". Quando terminares, clica em Â«SeguinteÂ»!',
-                            build_with_credits: "Agora, constrĂłi o teu edifĂ­cio com crĂ©ditos!",
-                            new_building: "Clica em Â«Novo EdifĂ­cioÂ»!",
-                            select_building: "Primeiro, escolhe o tipo de edifĂ­cio com que desejas comeĂ§ar. Recomendamos vivamente que comeces pelos bombeiros! De qualquer forma, recomendamos que comeces com uma pequena estaĂ§ĂŁo!",
-                            select_position: "Move o marcador azul para onde desejas construir a tua primeira estaĂ§ĂŁo!"
+                            add_name: 'A seguir, dÃ¡ um nome Ã  tua nova estaÃ§Ã£o! Escolhe algo que seja reconhecÃ­vel e expansÃ­vel! Por ex. Â«Bombeiros #0001". Quando terminares, clica em Â«SeguinteÂ»!',
+                            build_with_credits: "Agora, constrÃ³i o teu edifÃ­cio com crÃ©ditos!",
+                            new_building: "Clica em Â«Novo EdifÃ­cioÂ»!",
+                            select_building: "Primeiro, escolhe o tipo de edifÃ­cio com que desejas comeÃ§ar. Recomendamos vivamente que comeces pelos bombeiros! De qualquer forma, recomendamos que comeces com uma pequena estaÃ§Ã£o!",
+                            select_position: "Move o marcador azul para onde desejas construir a tua primeira estaÃ§Ã£o!"
                         },
-                        pick_location: "Primeiro, escolhe um local para comeĂ§ar! Introduz o nome da localizaĂ§ĂŁo onde desejas comeĂ§ar na barra de pesquisa ou encontra-a no mapa por ti mesmo! Que tal a tua cidade natal?",
-                        welcome: "OlĂˇ, bem vindo ao Jogo Operador 112!  Vou dar-te algumas instruĂ§Ăµes para te ajudar a comeĂ§ares bem a tua carreira nos serviĂ§os de emergĂŞncia!"
+                        pick_location: "Primeiro, escolhe um local para comeÃ§ar! Introduz o nome da localizaÃ§Ã£o onde desejas comeÃ§ar na barra de pesquisa ou encontra-a no mapa por ti mesmo! Que tal a tua cidade natal?",
+                        welcome: "OlÃ¡, bem vindo ao Jogo Operador 112!  Vou dar-te algumas instruÃ§Ãµes para te ajudar a comeÃ§ares bem a tua carreira nos serviÃ§os de emergÃªncia!"
                     },
                     mobile: {
                         build_building: {
-                            add_name: 'A seguir, dĂˇ um nome Ă  tua nova estaĂ§ĂŁo! Escolhe algo que seja reconhecĂ­vel e expansĂ­vel! Por ex. Â«Bombeiros #0001". Quando terminares, clica em Â«SeguinteÂ»!',
-                            build_with_credits: "Agora, constrĂłi o teu edifĂ­cio com crĂ©ditos!",
-                            new_building: "Primeiro, vamos escolher um local para comeĂ§ares e construires o teu primeiro edifĂ­cio! <br /> <br /> Para fazĂŞ-lo, clica em Â«Novo edifĂ­cioÂ»!",
-                            select_building: "Primeiro, escolhe o tipo de edifĂ­cio com que desejas comeĂ§ar. Recomendamos vivamente que comeces pelos bombeiros! De qualquer forma, recomendamos que comeces com uma pequena estaĂ§ĂŁo!"
+                            add_name: 'A seguir, dÃ¡ um nome Ã  tua nova estaÃ§Ã£o! Escolhe algo que seja reconhecÃ­vel e expansÃ­vel! Por ex. Â«Bombeiros #0001". Quando terminares, clica em Â«SeguinteÂ»!',
+                            build_with_credits: "Agora, constrÃ³i o teu edifÃ­cio com crÃ©ditos!",
+                            new_building: "Primeiro, vamos escolher um local para comeÃ§ares e construires o teu primeiro edifÃ­cio! <br /> <br /> Para fazÃª-lo, clica em Â«Novo edifÃ­cioÂ»!",
+                            select_building: "Primeiro, escolhe o tipo de edifÃ­cio com que desejas comeÃ§ar. Recomendamos vivamente que comeces pelos bombeiros! De qualquer forma, recomendamos que comeces com uma pequena estaÃ§Ã£o!"
                         },
-                        welcome: "OlĂˇ, bem vindo ao Jogo Operador 112!  Vou dar-te algumas instruĂ§Ăµes para te ajudar a comeĂ§ares bem a tua carreira nos serviĂ§os de emergĂŞncia!"
+                        welcome: "OlÃ¡, bem vindo ao Jogo Operador 112!  Vou dar-te algumas instruÃ§Ãµes para te ajudar a comeÃ§ares bem a tua carreira nos serviÃ§os de emergÃªncia!"
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Este Ă© o menu de operaĂ§ĂŁo. A partir daqui envias as tuas unidades em missĂµes!",
-                            dispatch_menu_buttons: "Estes sĂŁo os teus dois botĂµes de operaĂ§ĂŁo! O primeiro: Â«EnviarÂ» envia as unidades selecionadas para a missĂŁo. O segundo botĂŁo faz a mesma coisa que o primeiro, mas passa para a missĂŁo seguinte. Por agora, clica no primeiro botĂŁo.",
-                            dispatch_menu_mission_general: "Aqui podes ver as informaĂ§Ăµes gerais da missĂŁo, ou seja, o nome, a morada e o Ă­cone da missĂŁo. O pequeno Ă­cone do boneco aparece e substitui uma pequena estrela nas missĂµes em que jĂˇ participaste.",
-                            dispatch_menu_mission_progress: "Aqui podes ver quanto progresso jĂˇ foi feito para lidar com esta missĂŁo, assim como o nĂşmero de elementos no local e o tempo restante para cumprir a missĂŁo!",
-                            dispatch_menu_mission_specific: "Aqui podes ver mais informaĂ§ĂŁo sobre a missĂŁo, que unidades estĂŁo a responder Ă  chamada e quais as jĂˇ se encontram no local.",
-                            dispatch_menu_vehicle_list: "Esta Ă© a lista dos teus veĂ­culos disponĂ­veis. Selecionas dentre estes veĂ­culos. Agora, clica e seleciona o teu veĂ­culo!"
+                            dispatch_menu: "Este Ã© o menu de operaÃ§Ã£o. A partir daqui envias as tuas unidades em missÃµes!",
+                            dispatch_menu_buttons: "Estes sÃ£o os teus dois botÃµes de operaÃ§Ã£o! O primeiro: Â«EnviarÂ» envia as unidades selecionadas para a missÃ£o. O segundo botÃ£o faz a mesma coisa que o primeiro, mas passa para a missÃ£o seguinte. Por agora, clica no primeiro botÃ£o.",
+                            dispatch_menu_mission_general: "Aqui podes ver as informaÃ§Ãµes gerais da missÃ£o, ou seja, o nome, a morada e o Ã­cone da missÃ£o. O pequeno Ã­cone do boneco aparece e substitui uma pequena estrela nas missÃµes em que jÃ¡ participaste.",
+                            dispatch_menu_mission_progress: "Aqui podes ver quanto progresso jÃ¡ foi feito para lidar com esta missÃ£o, assim como o nÃºmero de elementos no local e o tempo restante para cumprir a missÃ£o!",
+                            dispatch_menu_mission_specific: "Aqui podes ver mais informaÃ§Ã£o sobre a missÃ£o, que unidades estÃ£o a responder Ã  chamada e quais as jÃ¡ se encontram no local.",
+                            dispatch_menu_vehicle_list: "Esta Ã© a lista dos teus veÃ­culos disponÃ­veis. Selecionas dentre estes veÃ­culos. Agora, clica e seleciona o teu veÃ­culo!"
                         },
                         mobile: {
-                            dispatch_menu: "Este Ă© o menu de operaĂ§ĂŁo. A partir daqui envias as tuas unidades em missĂµes!",
-                            dispatch_menu_buttons: "Estes sĂŁo os teus dois botĂµes de operaĂ§ĂŁo! O primeiro: Â«EnviarÂ» envia as unidades selecionadas para a missĂŁo. O segundo botĂŁo faz a mesma coisa que o primeiro, mas passa para a missĂŁo seguinte. Por agora, clica no primeiro botĂŁo.",
-                            dispatch_menu_mission_general: "Aqui podes ver as informaĂ§Ăµes gerais da missĂŁo, ou seja, o nome, a morada e o Ă­cone da missĂŁo. O pequeno Ă­cone do boneco aparece e substitui uma pequena estrela nas missĂµes em que jĂˇ participaste.",
-                            dispatch_menu_mission_progress: "Aqui podes ver quanto progresso jĂˇ foi feito para lidar com esta missĂŁo, assim como o nĂşmero de elementos no local e o tempo restante para cumprir a missĂŁo!",
-                            dispatch_menu_mission_specific: "Aqui podes ver mais informaĂ§ĂŁo sobre a missĂŁo, que unidades estĂŁo a responder Ă  chamada e quais as jĂˇ se encontram no local.",
-                            dispatch_menu_vehicle_list: "Esta Ă© a lista dos teus veĂ­culos disponĂ­veis. Selecionas dentre estes veĂ­culos. Agora, clica e seleciona o teu veĂ­culo!"
+                            dispatch_menu: "Este Ã© o menu de operaÃ§Ã£o. A partir daqui envias as tuas unidades em missÃµes!",
+                            dispatch_menu_buttons: "Estes sÃ£o os teus dois botÃµes de operaÃ§Ã£o! O primeiro: Â«EnviarÂ» envia as unidades selecionadas para a missÃ£o. O segundo botÃ£o faz a mesma coisa que o primeiro, mas passa para a missÃ£o seguinte. Por agora, clica no primeiro botÃ£o.",
+                            dispatch_menu_mission_general: "Aqui podes ver as informaÃ§Ãµes gerais da missÃ£o, ou seja, o nome, a morada e o Ã­cone da missÃ£o. O pequeno Ã­cone do boneco aparece e substitui uma pequena estrela nas missÃµes em que jÃ¡ participaste.",
+                            dispatch_menu_mission_progress: "Aqui podes ver quanto progresso jÃ¡ foi feito para lidar com esta missÃ£o, assim como o nÃºmero de elementos no local e o tempo restante para cumprir a missÃ£o!",
+                            dispatch_menu_mission_specific: "Aqui podes ver mais informaÃ§Ã£o sobre a missÃ£o, que unidades estÃ£o a responder Ã  chamada e quais as jÃ¡ se encontram no local.",
+                            dispatch_menu_vehicle_list: "Esta Ã© a lista dos teus veÃ­culos disponÃ­veis. Selecionas dentre estes veÃ­culos. Agora, clica e seleciona o teu veÃ­culo!"
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "Agora iremos aprender como lidar com incidentes. Abre o menu do operador clicando num botĂŁo Â«operaĂ§ĂŁoÂ»!",
-                            first_mission: "FantĂˇstico, construĂ­ste o teu primeiro edifĂ­cio! VĂŞs, comunicaram-te as primeiras missĂµes!"
+                            dispatch_button: "Agora iremos aprender como lidar com incidentes. Abre o menu do operador clicando num botÃ£o Â«operaÃ§Ã£oÂ»!",
+                            first_mission: "FantÃ¡stico, construÃ­ste o teu primeiro edifÃ­cio! VÃªs, comunicaram-te as primeiras missÃµes!"
                         },
                         mobile: {
-                            dispatch_button: "Agora iremos aprender como lidar com incidentes. Abre o menu do operador clicando num botĂŁo Â«operaĂ§ĂŁoÂ»!",
-                            first_mission: "FantĂˇstico, construĂ­ste o teu primeiro edifĂ­cio! VĂŞs, comunicaram-te as primeiras missĂµes!"
+                            dispatch_button: "Agora iremos aprender como lidar com incidentes. Abre o menu do operador clicando num botÃ£o Â«operaÃ§Ã£oÂ»!",
+                            first_mission: "FantÃ¡stico, construÃ­ste o teu primeiro edifÃ­cio! VÃªs, comunicaram-te as primeiras missÃµes!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Muito bem, estĂˇs a caminho de te tornares um fantĂˇstico Operador 112! Aqui tens %{coins} Moedas para um apoio inicial! </br> A tua Equipa do Jogo Operador 112"
+                        general: "Muito bem, estÃ¡s a caminho de te tornares um fantÃ¡stico Operador 112! Aqui tens %{coins} Moedas para um apoio inicial! </br> A tua Equipa do Jogo Operador 112"
                     },
                     mobile: {
-                        general: "Muito bem, estĂˇs a caminho de te tornares um fantĂˇstico Operador 112! Aqui tens %{coins} Moedas para um apoio inicial! </br> A tua Equipa do Jogo Operador 112"
+                        general: "Muito bem, estÃ¡s a caminho de te tornares um fantÃ¡stico Operador 112! Aqui tens %{coins} Moedas para um apoio inicial! </br> A tua Equipa do Jogo Operador 112"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Se tiveres questĂµes, podes consultar as Perguntas Frequentes do jogo ou visitar os fĂłruns do jogo ou a nossa pĂˇgina do Facebook!",
-                        general: "Para o prĂłximo passo, recomendamos que construas um centro de operaĂ§Ăµes e a seguir, assim que possĂ­vel, novas estaĂ§Ăµes, jĂˇ que o nĂşmero mĂˇximo de missĂµes corresponde ao maior nĂşmero de quaisquer estaĂ§Ăµes de um tipo diferente (polĂ­cia, bombeiros, ambulĂ˘ncias) mais 1; por exemplo, 5 bombeiros e 3 estaĂ§Ăµes de ambulĂ˘ncias = 6 missĂµes.",
-                        join_alliance: "Adicionalmente, seria muito vantajoso para ti entrares numa alianĂ§a, especialmente no inĂ­cio, por isso tambĂ©m recomendamos que o faĂ§as.",
-                        summary: "Isto Ă© o bĂˇsico do Jogo Operador 112! Completa missĂµes, ganha crĂ©ditos, compra mais unidades, faz tudo outra vez. Diverte-te a jogar! </br> A tua Equipa do Jogo Operador 112"
+                        contact: "Se tiveres questÃµes, podes consultar as Perguntas Frequentes do jogo ou visitar os fÃ³runs do jogo ou a nossa pÃ¡gina do Facebook!",
+                        general: "Para o prÃ³ximo passo, recomendamos que construas um centro de operaÃ§Ãµes e a seguir, assim que possÃ­vel, novas estaÃ§Ãµes, jÃ¡ que o nÃºmero mÃ¡ximo de missÃµes corresponde ao maior nÃºmero de quaisquer estaÃ§Ãµes de um tipo diferente (polÃ­cia, bombeiros, ambulÃ¢ncias) mais 1; por exemplo, 5 bombeiros e 3 estaÃ§Ãµes de ambulÃ¢ncias = 6 missÃµes.",
+                        join_alliance: "Adicionalmente, seria muito vantajoso para ti entrares numa alianÃ§a, especialmente no inÃ­cio, por isso tambÃ©m recomendamos que o faÃ§as.",
+                        summary: "Isto Ã© o bÃ¡sico do Jogo Operador 112! Completa missÃµes, ganha crÃ©ditos, compra mais unidades, faz tudo outra vez. Diverte-te a jogar! </br> A tua Equipa do Jogo Operador 112"
                     },
                     mobile: {
-                        contact: "Se tiveres questĂµes, podes consultar as Perguntas Frequentes do jogo ou visitar os fĂłruns do jogo ou a nossa pĂˇgina do Facebook!",
-                        general: "Para o prĂłximo passo, recomendamos que construas um centro de operaĂ§Ăµes e a seguir, assim que possĂ­vel, novas estaĂ§Ăµes, jĂˇ que o nĂşmero mĂˇximo de missĂµes corresponde ao maior nĂşmero de quaisquer estaĂ§Ăµes de um tipo diferente (polĂ­cia, bombeiros, ambulĂ˘ncias) mais 1; por exemplo, 5 bombeiros e 3 estaĂ§Ăµes de ambulĂ˘ncias = 6 missĂµes.",
-                        join_alliance: "Adicionalmente, seria muito vantajoso para ti entrares numa alianĂ§a, especialmente no inĂ­cio, por isso tambĂ©m recomendamos que o faĂ§as.",
-                        summary: "Isto Ă© o bĂˇsico do Jogo Operador 112! Completa missĂµes, ganha crĂ©ditos, compra mais unidades, faz tudo outra vez. Diverte-te a jogar! </br> A tua Equipa do Jogo Operador 112"
+                        contact: "Se tiveres questÃµes, podes consultar as Perguntas Frequentes do jogo ou visitar os fÃ³runs do jogo ou a nossa pÃ¡gina do Facebook!",
+                        general: "Para o prÃ³ximo passo, recomendamos que construas um centro de operaÃ§Ãµes e a seguir, assim que possÃ­vel, novas estaÃ§Ãµes, jÃ¡ que o nÃºmero mÃ¡ximo de missÃµes corresponde ao maior nÃºmero de quaisquer estaÃ§Ãµes de um tipo diferente (polÃ­cia, bombeiros, ambulÃ¢ncias) mais 1; por exemplo, 5 bombeiros e 3 estaÃ§Ãµes de ambulÃ¢ncias = 6 missÃµes.",
+                        join_alliance: "Adicionalmente, seria muito vantajoso para ti entrares numa alianÃ§a, especialmente no inÃ­cio, por isso tambÃ©m recomendamos que o faÃ§as.",
+                        summary: "Isto Ã© o bÃ¡sico do Jogo Operador 112! Completa missÃµes, ganha crÃ©ditos, compra mais unidades, faz tudo outra vez. Diverte-te a jogar! </br> A tua Equipa do Jogo Operador 112"
                     }
                 }
             },
             commons: {
                 collect: "Recolher",
-                "continue": "NĂŁo",
+                "continue": "NÃ£o",
                 end: "Fim",
                 next: "Seguinte",
                 prev: "Anterior",
                 skip: "Sim",
-                skip_hint: "Realmente desejas cancelar o tutorial? NĂŁo serĂˇ possĂ­vel acedĂŞ-lo mais tarde. NĂŁo serĂˇs elegĂ­vel para a recompensa de finalizaĂ§ĂŁo do tutorial."
+                skip_hint: "Realmente desejas cancelar o tutorial? NÃ£o serÃ¡ possÃ­vel acedÃª-lo mais tarde. NÃ£o serÃ¡s elegÃ­vel para a recompensa de finalizaÃ§Ã£o do tutorial."
             },
             rewards: {
                 log: "Recompensa por completar o tutorial."
@@ -7829,18 +7763,18 @@ function deleteMissionPosition(e) {
             add: "Adicionar",
             back: "Voltar",
             cancel: "Cancelar",
-            change_saved: "AlteraĂ§Ăµes salvas",
+            change_saved: "AlteraÃ§Ãµes salvas",
             coins_spend: "Deseja mesmo gastar estas moedas?",
-            congratulations: "ParabĂ©ns!",
-            content: "ConteĂşdo",
-            credits: "CrĂ©ditos",
+            congratulations: "ParabÃ©ns!",
+            content: "ConteÃºdo",
+            credits: "CrÃ©ditos",
             "delete": "Apagar",
             details: "Detalhes",
             edit: "Editar",
             error: "Erro",
-            is_offline: "%{user} estĂˇ offline.",
-            is_offline_long: "Tempo: %{user} estĂˇ offline",
-            is_online: "%{user} estĂˇ online.",
+            is_offline: "%{user} estÃ¡ offline.",
+            is_offline_long: "Tempo: %{user} estÃ¡ offline",
+            is_online: "%{user} estÃ¡ online.",
             loading: "Carregando...",
             name: "Nome",
             none: "Nenhum",
@@ -7850,7 +7784,7 @@ function deleteMissionPosition(e) {
             save: "Salvar",
             search: "Buscar",
             show: "Exibir",
-            user_not_found: "UsuĂˇrio nĂŁo encontrado",
+            user_not_found: "UsuÃ¡rio nÃ£o encontrado",
             wrong_key: "Chave errada"
         },
         javascript: {
@@ -7858,65 +7792,65 @@ function deleteMissionPosition(e) {
             arrival: "Chegada",
             backalarm: "Cancelar",
             coins: "Moedas",
-            credits: "CrĂ©ditos",
+            credits: "CrÃ©ditos",
             days: "dias",
             few_seconds: "em alguns segundos",
             finish_in: "Finaliza em:",
             hours: "H",
-            location_not_found: "NĂŁo encontrado",
+            location_not_found: "NÃ£o encontrado",
             messages: "Mensagens",
             minutes: "min.",
             missed_vehicle: "Falta:",
-            mission_start_in: "ComeĂ§a em:",
-            not_found_map: "O veĂ­culo nĂŁo foi encontrado no mapa",
+            mission_start_in: "ComeÃ§a em:",
+            not_found_map: "O veÃ­culo nÃ£o foi encontrado no mapa",
             now: "Agora",
             patient: "Paciente",
-            patient_untouched: "Pacientes nĂŁo tratados",
+            patient_untouched: "Pacientes nÃ£o tratados",
             poi_delete: "Tem certeza de que quer apagar o PDI: %{caption}?",
             reload: "Recarregar",
-            sale: "PromoĂ§Ăµes",
-            sale_ended: "Fin de lâ€™offre spĂ©ciale",
+            sale: "PromoÃ§Ãµes",
+            sale_ended: "Fin de lâ€™offre spÃ©ciale",
             secounds: "seg.",
-            sicherheitswache_error: 'A guarda de seguranĂ§a "%{caption}" nĂŁo teve ĂŞxito porque nem todos os critĂ©rios foram atendidos.',
-            sicherheitswache_success: 'A guarda de seguranĂ§a "%{caption}" foi realizada com sucesso. Receber %{credits} crĂ©ditos.',
-            start_in: "ComeĂ§ar em: ",
+            sicherheitswache_error: 'A guarda de seguranÃ§a "%{caption}" nÃ£o teve Ãªxito porque nem todos os critÃ©rios foram atendidos.',
+            sicherheitswache_success: 'A guarda de seguranÃ§a "%{caption}" foi realizada com sucesso. Receber %{credits} crÃ©ditos.',
+            start_in: "ComeÃ§ar em: ",
             start_username: "Iniciante:",
             time_left: "Tempo restante:",
-            to_building: "Ver edifĂ­cio",
-            to_mission: "Ver missĂŁo",
+            to_building: "Ver edifÃ­cio",
+            to_mission: "Ver missÃ£o",
             understand: "Reconhecer",
-            user_not_found: "O jogador nĂŁo foi encontrado.",
-            vehicles_not_visible: "VeĂ­culos nĂŁo visĂ­veis. "
+            user_not_found: "O jogador nÃ£o foi encontrado.",
+            vehicles_not_visible: "VeÃ­culos nÃ£o visÃ­veis. "
         },
         map: {
-            alliance: "AlianĂ§a",
+            alliance: "AlianÃ§a",
             alliance_chat: "Chat",
-            alliance_chat_banned: "VocĂŞ estĂˇ banido do chat da alianĂ§a no momento.",
+            alliance_chat_banned: "VocÃª estÃ¡ banido do chat da alianÃ§a no momento.",
             alliance_chat_banned_admin: "Banido por:",
             alliance_chat_banned_timeleft: "Tempo restante:",
-            alliance_chat_radio_off: "RĂˇdio da alianĂ§a: Desligado",
-            alliance_chat_radio_on: "RĂˇdio da alianĂ§a: Ligado",
+            alliance_chat_radio_off: "RÃ¡dio da alianÃ§a: Desligado",
+            alliance_chat_radio_on: "RÃ¡dio da alianÃ§a: Ligado",
             alliance_event: "Evento",
-            alliance_missions: "MissĂµes da alianĂ§a",
+            alliance_missions: "MissÃµes da alianÃ§a",
             alliance_missions_event: "Evento",
-            ambulance: "AmbulĂ˘ncia",
+            ambulance: "AmbulÃ¢ncia",
             challenges: "",
-            chat_history: "HistĂłrico do chat",
-            congratulations: "ParabĂ©ns! Agora vocĂŞ pode ser promovido.",
-            create_alliance_event: "Iniciar evento de alianĂ§a",
-            create_alliance_operation: "Crie uma missĂŁo de alianĂ§a de larga escala",
-            emergency: "EmergĂŞncia",
-            join_alliance_infos: "Se vocĂŞ estiver em uma alianĂ§a, outros jogadores podem lhe dar missĂµes livremente.",
+            chat_history: "HistÃ³rico do chat",
+            congratulations: "ParabÃ©ns! Agora vocÃª pode ser promovido.",
+            create_alliance_event: "Iniciar evento de alianÃ§a",
+            create_alliance_operation: "Crie uma missÃ£o de alianÃ§a de larga escala",
+            emergency: "EmergÃªncia",
+            join_alliance_infos: "Se vocÃª estiver em uma alianÃ§a, outros jogadores podem lhe dar missÃµes livremente.",
             map: "Mapa",
             map_filters: {
-                all_buildings: "EdifĂ­cios",
-                all_missions: "MissĂµes",
-                alliance_buildings: "EdifĂ­cios da alianĂ§a",
+                all_buildings: "EdifÃ­cios",
+                all_missions: "MissÃµes",
+                alliance_buildings: "EdifÃ­cios da alianÃ§a",
                 alliance_members: "Membros",
-                alliance_missions: "Partilhado pela alianĂ§a",
+                alliance_missions: "Partilhado pela alianÃ§a",
                 ambulance_station_missions: "Bases do SAMU",
                 ambulance_station_small_missions: "Bases do SAMU (pequena)",
-                clinic_missions: "ClĂ­nica",
+                clinic_missions: "ClÃ­nica",
                 dispatch_center_missions: "Central de Despacho",
                 fire_school_missions: "Academia de bombeiros militar",
                 firehouse_missions: "Unidade de bombeiros militar",
@@ -7924,136 +7858,136 @@ function deleteMissionPosition(e) {
                 hospital_missions: "Hospital",
                 map_filters: "Lista de filtros do mapa",
                 mission_positions: "Pontos de interesse (PDI)",
-                police_copter_station_missions: "AviaĂ§ĂŁo policial",
-                police_school_missions: "Academia de polĂ­cia militar",
-                police_small_missions: "Delegacias de polĂ­cia militar (pequena)",
-                police_special_forces: "Unidade Especial de PolĂ­cia",
-                police_station_missions: "Delegacias de polĂ­cia militar",
-                prison_missions: "PresĂ­dio",
-                rapid_deployment_group: "Grupo de InstalaĂ§ĂŁo RĂˇpida (SEG)",
-                rescue_copter_station_missions: "EstaĂ§ĂŁo de helicĂłptero mĂ©dico",
+                police_copter_station_missions: "AviaÃ§Ã£o policial",
+                police_school_missions: "Academia de polÃ­cia militar",
+                police_small_missions: "Delegacias de polÃ­cia militar (pequena)",
+                police_special_forces: "Unidade Especial de PolÃ­cia",
+                police_station_missions: "Delegacias de polÃ­cia militar",
+                prison_missions: "PresÃ­dio",
+                rapid_deployment_group: "Grupo de InstalaÃ§Ã£o RÃ¡pida (SEG)",
+                rescue_copter_station_missions: "EstaÃ§Ã£o de helicÃ³ptero mÃ©dico",
                 riot_police: "Tropa de choque",
-                staging_area_missions: "Ărea de concentraĂ§ĂŁo",
+                staging_area_missions: "Ãrea de concentraÃ§Ã£o",
                 technical_aid_organization: "THW",
                 technical_aid_organization_school: "THW Bundesschule",
-                user_buildings: "Os meus edifĂ­cios",
-                user_missions: "As minhas missĂµes",
-                water_watch: "Resgate aquĂˇtico"
+                user_buildings: "Os meus edifÃ­cios",
+                user_missions: "As minhas missÃµes",
+                water_watch: "Resgate aquÃ¡tico"
             },
             message: "Mensagem",
-            mission: "MissĂŁo",
-            no_alliance_chat_impossible: "VocĂŞ nĂŁo estĂˇ em uma alianĂ§a.",
-            no_alliance_missions: "NĂŁo hĂˇ missĂµes de alianĂ§a no momento.",
-            no_ambulance_missions: "NĂŁo hĂˇ missĂµes de ambulĂ˘ncia. VocĂŞ sĂł pode participar de missĂµes de ambulĂ˘ncia quando tiver uma ambulĂ˘ncia e um hospital.",
-            no_emergency_missions: "NĂŁo hĂˇ missĂµes de emergĂŞncia disponĂ­veis. VocĂŞ pode participar de uma missĂŁo de emergĂŞncia depois que construir o seu primeiro corpo de bombeiros.",
-            no_radio_messages: "VocĂŞ nĂŁo recebeu mensagens de rĂˇdio.",
-            radio_messages: "RĂˇdio",
+            mission: "MissÃ£o",
+            no_alliance_chat_impossible: "VocÃª nÃ£o estÃ¡ em uma alianÃ§a.",
+            no_alliance_missions: "NÃ£o hÃ¡ missÃµes de alianÃ§a no momento.",
+            no_ambulance_missions: "NÃ£o hÃ¡ missÃµes de ambulÃ¢ncia. VocÃª sÃ³ pode participar de missÃµes de ambulÃ¢ncia quando tiver uma ambulÃ¢ncia e um hospital.",
+            no_emergency_missions: "NÃ£o hÃ¡ missÃµes de emergÃªncia disponÃ­veis. VocÃª pode participar de uma missÃ£o de emergÃªncia depois que construir o seu primeiro corpo de bombeiros.",
+            no_radio_messages: "VocÃª nÃ£o recebeu mensagens de rÃ¡dio.",
+            radio_messages: "RÃ¡dio",
             restore_map: "Restaurar mapa",
-            show_informations: "Verde = As missĂµes sĂŁo exibidas na lista. Vermelho = As missĂµes nĂŁo sĂŁo exibidas.",
-            sicherheitswache: "MissĂµes planejadas",
+            show_informations: "Verde = As missÃµes sÃ£o exibidas na lista. Vermelho = As missÃµes nÃ£o sÃ£o exibidas.",
+            sicherheitswache: "MissÃµes planejadas",
             transport: "Transporte"
         },
         fms: {
             going: "Respondendo",
-            not_ready: "Fora de serviĂ§o",
+            not_ready: "Fora de serviÃ§o",
             on_destination: "No destino do transporte",
             on_place: "No local",
             patient_transported: "Transportando paciente",
             prisoner_transported: "Transportando detento",
-            ready_home: "DisponĂ­vel na estaĂ§ĂŁo",
-            ready_traveling: "Livre e disponĂ­vel",
-            talking_wish: "SolicitaĂ§ĂŁo de transporte",
-            waiting_for_vehicle: "Aguardando veĂ­culo para rebocar"
+            ready_home: "DisponÃ­vel na estaÃ§Ã£o",
+            ready_traveling: "Livre e disponÃ­vel",
+            talking_wish: "SolicitaÃ§Ã£o de transporte",
+            waiting_for_vehicle: "Aguardando veÃ­culo para rebocar"
         },
         intervention_order: {
             back: "Voltar",
             category: "Categoria",
             colour: "Cor",
             column: "Coluna",
-            column_number: "NĂşmero de coluna",
-            column_number_hint: "Se um nĂşmero de coluna for informado, a entrada de Alarme e Resposta serĂˇ exibida na coluna correspondente na pĂˇgina de alerta.",
+            column_number: "NÃºmero de coluna",
+            column_number_hint: "Se um nÃºmero de coluna for informado, a entrada de Alarme e Resposta serÃ¡ exibida na coluna correspondente na pÃ¡gina de alerta.",
             create_intervention_order: "Criar novo Regulamento de Alarme e Resposta",
             "delete": "Apagar",
             delete_all: "Apagar Regulamentos de Alarme e Resposta completamente",
-            delete_all_confirm: "Tem certeza de que quer apagar totalmente o regulamento de alarme e resposta? As entradas exportadas existentes nĂŁo estĂŁo mais disponĂ­veis!",
+            delete_all_confirm: "Tem certeza de que quer apagar totalmente o regulamento de alarme e resposta? As entradas exportadas existentes nÃ£o estÃ£o mais disponÃ­veis!",
             description: "Nome",
             edit: "Editar",
             "export": {
                 "export": "Exportar",
                 "import": "Importar",
                 import_done: "As entradas selecionadas foram importadas e escritas no seu plano de Alarme e Resposta.",
-                saved: "ExportaĂ§Ăµes de Regulamentos de Alarme e Resposta",
-                saved_text: "Seu Regulamento de Alarme e Resposta foi preparado para exportaĂ§ĂŁo. Por meio do link, outro jogador pode importar o Regulamento de Alarme e Resposta. Se vocĂŞ alterar seu Regulamento de Alarme e Resposta neste intervalo, essa alteraĂ§ĂŁo serĂˇ automaticamente aplicada Ă  exportaĂ§ĂŁo."
+                saved: "ExportaÃ§Ãµes de Regulamentos de Alarme e Resposta",
+                saved_text: "Seu Regulamento de Alarme e Resposta foi preparado para exportaÃ§Ã£o. Por meio do link, outro jogador pode importar o Regulamento de Alarme e Resposta. Se vocÃª alterar seu Regulamento de Alarme e Resposta neste intervalo, essa alteraÃ§Ã£o serÃ¡ automaticamente aplicada Ã  exportaÃ§Ã£o."
             },
-            hotkey_hint: "Escolha uma tecla de atalho para selecionar este veĂ­culo. Pressione na sua janela de missĂŁo: ALT + sua tecla de atalho (ou no Firefox: ALT + SHIFT + sua tecla de atalho, ou no mac os: ctrl + alt + sua tecla de atalho) para escolher a seleĂ§ĂŁo do seu veĂ­culo.",
+            hotkey_hint: "Escolha uma tecla de atalho para selecionar este veÃ­culo. Pressione na sua janela de missÃ£o: ALT + sua tecla de atalho (ou no Firefox: ALT + SHIFT + sua tecla de atalho, ou no mac os: ctrl + alt + sua tecla de atalho) para escolher a seleÃ§Ã£o do seu veÃ­culo.",
             intervention_order: "Editar Regulamentos de Alarme e Resposta",
             name: "Nome",
-            no_intervention_created: "VocĂŞ ainda nĂŁo criou um Regulamento de Alarme e Resposta.",
-            options: "OpĂ§Ăµes",
-            reset: "Redefina a seleĂ§ĂŁo anterior na janela de alarme.",
-            reset_hint: "Se vocĂŞ selecionou o veĂ­culo na janela de despacho, pode usar este botĂŁo para redefinir.",
+            no_intervention_created: "VocÃª ainda nÃ£o criou um Regulamento de Alarme e Resposta.",
+            options: "OpÃ§Ãµes",
+            reset: "Redefina a seleÃ§Ã£o anterior na janela de alarme.",
+            reset_hint: "Se vocÃª selecionou o veÃ­culo na janela de despacho, pode usar este botÃ£o para redefinir.",
             save: "Salvar",
-            station: "EstaĂ§ĂŁo",
-            station_hint: "Quando um edifĂ­cio Ă© selecionado, somente veĂ­culos do edifĂ­cio correspondente serĂŁo selecionados.",
-            successfully_created: "Regulamento de Alarme e Resposta criado com ĂŞxito.",
+            station: "EstaÃ§Ã£o",
+            station_hint: "Quando um edifÃ­cio Ã© selecionado, somente veÃ­culos do edifÃ­cio correspondente serÃ£o selecionados.",
+            successfully_created: "Regulamento de Alarme e Resposta criado com Ãªxito.",
             successfully_deleted: "Regulamento de Alarme e Resposta apagado",
-            successfully_updated: "Regulamento de Alarme e Resposta atualizado com ĂŞxito.",
+            successfully_updated: "Regulamento de Alarme e Resposta atualizado com Ãªxito.",
             vehicles: {
-                ab_atemschutz_only: "MĂłdulo SCBA",
-                ab_einsatzleitung_only: "MĂłdulo de comando",
-                ab_gefahrgut_only: "MĂłdulo de PP",
-                ab_oel_only: "MĂłdulo de derramamento de Ăłleo",
-                ab_ruest: "MĂłdulo de resgate tĂ©cnico",
+                ab_atemschutz_only: "MÃ³dulo SCBA",
+                ab_einsatzleitung_only: "MÃ³dulo de comando",
+                ab_gefahrgut_only: "MÃ³dulo de PP",
+                ab_oel_only: "MÃ³dulo de derramamento de Ã³leo",
+                ab_ruest: "MÃ³dulo de resgate tÃ©cnico",
                 ab_ruest_rw: "",
-                abl2wasser_only: "MĂłdulo de fornecimento de mangueiras",
-                ambulance: "AmbulĂ˘ncia de SAV",
+                abl2wasser_only: "MÃ³dulo de fornecimento de mangueiras",
+                ambulance: "AmbulÃ¢ncia de SAV",
                 ambulance_or_rapid_responder: "",
-                arff: "Defesa Civil (caminhĂŁo de bombeiro para aeroportos)",
-                battalion_chief_unit: "Viatura de batalhĂŁo",
+                arff: "Defesa Civil (caminhÃ£o de bombeiro para aeroportos)",
+                battalion_chief_unit: "Viatura de batalhÃ£o",
                 boot: "Barcos (geral)",
                 dekon_p: "",
-                division_chief_unit: "Viatura de comando mĂłvel",
+                division_chief_unit: "Viatura de comando mÃ³vel",
                 dlk_or_tm50: "",
-                elw1_or_elw2: "Viatura de batalhĂŁo, viatura de comando mĂłvel ou mĂłdulo de comando mĂłvel ",
+                elw1_or_elw2: "Viatura de batalhÃ£o, viatura de comando mÃ³vel ou mÃ³dulo de comando mÃ³vel ",
                 elw2_or_ab_elw: "",
                 elw3: "",
                 elw_airport: "",
-                emergency_ambulance: "AmbulĂ˘ncia de emergĂŞncia ou helicĂłptero",
-                fire_truck: "CaminhĂµes de bombeiro",
-                fireboat: "Barco de combate a incĂŞndio grande",
+                emergency_ambulance: "AmbulÃ¢ncia de emergÃªncia ou helicÃ³ptero",
+                fire_truck: "CaminhÃµes de bombeiro",
+                fireboat: "Barco de combate a incÃªndio grande",
                 fly_car: "Fly-Car",
                 fukw: "",
                 fwk: "",
                 gefkw: "",
-                gkw: "CaminhĂŁo utilitĂˇrio",
-                grtw: "Unidade para incidentes com mĂşltiplas vĂ­timas",
+                gkw: "CaminhÃ£o utilitÃ¡rio",
+                grtw: "Unidade para incidentes com mÃºltiplas vÃ­timas",
                 grtw0: "",
                 grtw1: "",
                 grukw: "",
                 gw_atemschutz_only: "",
                 gw_gefahrgut: "Produtos Perigosos",
                 gw_gefahrgut_only: "",
-                gw_hoehenrettung: "GW-HĂ¶henrettung",
+                gw_hoehenrettung: "GW-HÃ¶henrettung",
                 gw_messtechnik: "GW-Messtechnik",
                 gw_oel_only: "",
                 gw_san: "",
                 gw_taucher: "",
-                gw_wasserrettung: "RetenĂ§ĂŁo de Ăˇgua",
+                gw_wasserrettung: "RetenÃ§Ã£o de Ã¡gua",
                 gw_werkfeuerwehr: "",
-                gwl2wasser_only: "VeĂ­culo com mangueira",
+                gwl2wasser_only: "VeÃ­culo com mangueira",
                 hems: "HEMS",
                 hlf_only: "",
                 hlf_or_rw_and_lf: "",
                 hondengeleider: "",
-                k9: "Unidade de AĂ§Ăµes com CĂŁes",
+                k9: "Unidade de AÃ§Ãµes com CÃ£es",
                 kdow_lna: "",
                 kdow_orgl: "Chefe de SEM",
                 ktw_b: "",
                 ktw_or_rtw: "",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
-                lf_only: "CaminhĂµes de bombeiro",
-                long_distance_ambulance: "AmbulĂ˘ncia de SBV",
-                mask_service_unit: "Unidade aĂ©rea mĂłvel",
+                lf_only: "CaminhÃµes de bombeiro",
+                long_distance_ambulance: "AmbulÃ¢ncia de SBV",
+                mask_service_unit: "Unidade aÃ©rea mÃ³vel",
                 mek_mtf: "",
                 mek_zf: "",
                 mtw: "MTW",
@@ -8061,24 +7995,24 @@ function deleteMissionPosition(e) {
                 naw: "",
                 naw_or_rtw_and_nef: "",
                 naw_or_rtw_and_nef_or_rth: "",
-                nef_only: "AmbulĂ˘ncia",
-                oil_unit: "GW-Ă–l",
+                nef_only: "AmbulÃ¢ncia",
+                oil_unit: "GW-Ã–l",
                 only_ab_dekon_p: "",
                 only_dekon_p: "",
                 ovd_p: "",
                 police_car: "Carro de patrulha",
-                polizeihubschrauber: "HelicĂłptero de polĂ­cia",
-                rescue_vehicle: "VeĂ­culo de resgate pesado",
+                polizeihubschrauber: "HelicÃ³ptero de polÃ­cia",
+                rescue_vehicle: "VeÃ­culo de resgate pesado",
                 rescue_vehicle_only: "Resgate pesado",
                 rescueboat: "Barco de resgate grande",
                 rettungstreppe: "",
-                rth_only: "HelicĂłptero",
-                schlauchwagen: "CaminhĂŁo pipa",
+                rth_only: "HelicÃ³ptero",
+                schlauchwagen: "CaminhÃ£o pipa",
                 seg_elw: "",
                 sek_mtf: "",
                 sek_zf: "",
-                swat: "Treinamento do Comando de OperaĂ§Ăµes Especiais",
-                swat_armored_vehicle: "VeĂ­culo blindado da SWAT",
+                swat: "Treinamento do Comando de OperaÃ§Ãµes Especiais",
+                swat_armored_vehicle: "VeÃ­culo blindado da SWAT",
                 swat_suv: "SUV da SWAT",
                 thw_anh_mzab: "",
                 thw_anh_mzb: "",
@@ -8092,10 +8026,10 @@ function deleteMissionPosition(e) {
                 thw_mzkw: "Mehrzweckkraftwagen (MzKW)",
                 thw_tauchkraftwagen: "Equipe de mergulho",
                 thw_tauchkraftwagen_or_gw_taucher: "",
-                tlf_only: "CaminhĂŁo tanque",
+                tlf_only: "CaminhÃ£o tanque",
                 tm50: "",
                 turboloescher: "",
-                turntable_ladder: "CaminhĂŁo plataforma",
+                turntable_ladder: "CaminhÃ£o plataforma",
                 ulf: "",
                 wasserwerfer: "",
                 water_amount: "",
@@ -8107,86 +8041,86 @@ function deleteMissionPosition(e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: 'Depois, dĂŞ um nome para a sua estaĂ§ĂŁo! Escolha um nome simples e fĂˇcil de ser lembrado! Por exemplo: â€śEstaĂ§ĂŁo de incĂŞndios 0001". Quando tiver terminado, clique em â€śPrĂłximoâ€ť!',
-                            build_with_credits: "Agora, construa o seu edifĂ­cio com crĂ©ditos!",
-                            new_building: "Clique em â€śNovo edifĂ­cioâ€ť!",
-                            select_building: "Primeiro, escolha o tipo de edifĂ­cio com o qual vocĂŞ quer comeĂ§ar. Sugerimos que vocĂŞ comece com atendimentos a incĂŞndios! De qualquer forma, Ă© bom que vocĂŞ comece com uma estaĂ§ĂŁo pequena!",
-                            select_position: "Mova o marcador azul para onde vocĂŞ quer construir a sua primeira estaĂ§ĂŁo!"
+                            add_name: 'Depois, dÃª um nome para a sua estaÃ§Ã£o! Escolha um nome simples e fÃ¡cil de ser lembrado! Por exemplo: â€œEstaÃ§Ã£o de incÃªndios 0001". Quando tiver terminado, clique em â€œPrÃ³ximoâ€!',
+                            build_with_credits: "Agora, construa o seu edifÃ­cio com crÃ©ditos!",
+                            new_building: "Clique em â€œNovo edifÃ­cioâ€!",
+                            select_building: "Primeiro, escolha o tipo de edifÃ­cio com o qual vocÃª quer comeÃ§ar. Sugerimos que vocÃª comece com atendimentos a incÃªndios! De qualquer forma, Ã© bom que vocÃª comece com uma estaÃ§Ã£o pequena!",
+                            select_position: "Mova o marcador azul para onde vocÃª quer construir a sua primeira estaÃ§Ã£o!"
                         },
-                        pick_location: "Primeiro, escolha um lugar para comeĂ§ar! Digite na barra de pesquisa o nome do local em que vocĂŞ quer comeĂ§ar ou encontre-o no mapa! Que tal a sua cidade?",
-                        welcome: "OlĂˇ! Boas-vindas a Operador 193!  Eu vou lhe ensinar algumas coisas para que vocĂŞ comece bem a sua carreira nos serviĂ§os de emergĂŞncia!"
+                        pick_location: "Primeiro, escolha um lugar para comeÃ§ar! Digite na barra de pesquisa o nome do local em que vocÃª quer comeÃ§ar ou encontre-o no mapa! Que tal a sua cidade?",
+                        welcome: "OlÃ¡! Boas-vindas a Operador 193!  Eu vou lhe ensinar algumas coisas para que vocÃª comece bem a sua carreira nos serviÃ§os de emergÃªncia!"
                     },
                     mobile: {
                         build_building: {
-                            add_name: 'Depois, dĂŞ um nome para a sua estaĂ§ĂŁo! Escolha um nome simples e fĂˇcil de ser lembrado! Por exemplo: â€śEstaĂ§ĂŁo de incĂŞndios 0001". Quando tiver terminado, clique em â€śPrĂłximoâ€ť!',
-                            build_with_credits: "Agora, construa o seu edifĂ­cio com crĂ©ditos!",
-                            new_building: 'Primeiro, vamos escolher um lugar para comeĂ§ar e construir o seu primeiro edifĂ­cio! <br /> <br /> Para fazer isso, clique em â€śNovo edifĂ­cio"!',
-                            select_building: "Primeiro, escolha o tipo de edifĂ­cio com o qual vocĂŞ quer comeĂ§ar. Sugerimos que vocĂŞ comece com atendimentos a incĂŞndios! De qualquer forma, Ă© bom que vocĂŞ comece com uma estaĂ§ĂŁo pequena!"
+                            add_name: 'Depois, dÃª um nome para a sua estaÃ§Ã£o! Escolha um nome simples e fÃ¡cil de ser lembrado! Por exemplo: â€œEstaÃ§Ã£o de incÃªndios 0001". Quando tiver terminado, clique em â€œPrÃ³ximoâ€!',
+                            build_with_credits: "Agora, construa o seu edifÃ­cio com crÃ©ditos!",
+                            new_building: 'Primeiro, vamos escolher um lugar para comeÃ§ar e construir o seu primeiro edifÃ­cio! <br /> <br /> Para fazer isso, clique em â€œNovo edifÃ­cio"!',
+                            select_building: "Primeiro, escolha o tipo de edifÃ­cio com o qual vocÃª quer comeÃ§ar. Sugerimos que vocÃª comece com atendimentos a incÃªndios! De qualquer forma, Ã© bom que vocÃª comece com uma estaÃ§Ã£o pequena!"
                         },
-                        welcome: "OlĂˇ! Boas-vindas a Operador 193!  Eu vou lhe ensinar algumas coisas para que vocĂŞ comece bem a sua carreira nos serviĂ§os de emergĂŞncia!"
+                        welcome: "OlÃ¡! Boas-vindas a Operador 193!  Eu vou lhe ensinar algumas coisas para que vocÃª comece bem a sua carreira nos serviÃ§os de emergÃªncia!"
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Este Ă© o menu de atendimento. Ă‰ a partir daqui que vocĂŞ envia as suas unidades para as missĂµes!",
-                            dispatch_menu_buttons: "Estes sĂŁo os seus dois botĂµes de atendimento! O primeiro: â€śAtenderâ€ť envia as unidades selecionadas para a missĂŁo. O segundo faz a mesma coisa que o primeiro, mas leva Ă  missĂŁo seguinte. Por enquanto, clique no primeiro botĂŁo.",
-                            dispatch_menu_mission_general: "Aqui vocĂŞ acessa as informaĂ§Ăµes gerais da missĂŁo: o nome, o endereĂ§o e o Ă­cone da missĂŁo. Nas missĂµes das quais vocĂŞ jĂˇ participou, o Ă­cone do homenzinho aparece e substitui a estrelinha.",
-                            dispatch_menu_mission_progress: "Aqui vocĂŞ pode ver o progresso da missĂŁo, o nĂşmero de atendentes no local e o tempo que resta para o encerramento da missĂŁo!",
-                            dispatch_menu_mission_specific: "Aqui vocĂŞ pode ter mais informaĂ§Ăµes sobre a missĂŁo, quais unidades estĂŁo atendendo ao chamado e quais jĂˇ estĂŁo no local.",
-                            dispatch_menu_vehicle_list: "Esta Ă© a sua lista de veĂ­culos disponĂ­veis. VocĂŞ seleciona os veĂ­culos aqui. Agora, selecione o seu veĂ­culo clicando nele!"
+                            dispatch_menu: "Este Ã© o menu de atendimento. Ã‰ a partir daqui que vocÃª envia as suas unidades para as missÃµes!",
+                            dispatch_menu_buttons: "Estes sÃ£o os seus dois botÃµes de atendimento! O primeiro: â€œAtenderâ€ envia as unidades selecionadas para a missÃ£o. O segundo faz a mesma coisa que o primeiro, mas leva Ã  missÃ£o seguinte. Por enquanto, clique no primeiro botÃ£o.",
+                            dispatch_menu_mission_general: "Aqui vocÃª acessa as informaÃ§Ãµes gerais da missÃ£o: o nome, o endereÃ§o e o Ã­cone da missÃ£o. Nas missÃµes das quais vocÃª jÃ¡ participou, o Ã­cone do homenzinho aparece e substitui a estrelinha.",
+                            dispatch_menu_mission_progress: "Aqui vocÃª pode ver o progresso da missÃ£o, o nÃºmero de atendentes no local e o tempo que resta para o encerramento da missÃ£o!",
+                            dispatch_menu_mission_specific: "Aqui vocÃª pode ter mais informaÃ§Ãµes sobre a missÃ£o, quais unidades estÃ£o atendendo ao chamado e quais jÃ¡ estÃ£o no local.",
+                            dispatch_menu_vehicle_list: "Esta Ã© a sua lista de veÃ­culos disponÃ­veis. VocÃª seleciona os veÃ­culos aqui. Agora, selecione o seu veÃ­culo clicando nele!"
                         },
                         mobile: {
-                            dispatch_menu: "Este Ă© o menu de atendimento. Ă‰ a partir daqui que vocĂŞ envia as suas unidades para as missĂµes!",
-                            dispatch_menu_buttons: "Estes sĂŁo os seus dois botĂµes de atendimento! O primeiro: â€śAtenderâ€ť envia as unidades selecionadas para a missĂŁo. O segundo faz a mesma coisa que o primeiro, mas leva Ă  missĂŁo seguinte. Por enquanto, clique no primeiro botĂŁo.",
-                            dispatch_menu_mission_general: "Aqui vocĂŞ acessa as informaĂ§Ăµes gerais da missĂŁo: o nome, o endereĂ§o e o Ă­cone da missĂŁo. Nas missĂµes das quais vocĂŞ jĂˇ participou, o Ă­cone do homenzinho aparece e substitui a estrelinha.",
-                            dispatch_menu_mission_progress: "Aqui vocĂŞ pode ver o progresso da missĂŁo, o nĂşmero de atendentes no local e o tempo que resta para o encerramento da missĂŁo!",
-                            dispatch_menu_mission_specific: "Aqui vocĂŞ pode ter mais informaĂ§Ăµes sobre a missĂŁo, quais unidades estĂŁo atendendo ao chamado e quais jĂˇ estĂŁo no local.",
-                            dispatch_menu_vehicle_list: "Esta Ă© a sua lista de veĂ­culos disponĂ­veis. VocĂŞ seleciona os veĂ­culos aqui. Agora, selecione o seu veĂ­culo clicando nele!"
+                            dispatch_menu: "Este Ã© o menu de atendimento. Ã‰ a partir daqui que vocÃª envia as suas unidades para as missÃµes!",
+                            dispatch_menu_buttons: "Estes sÃ£o os seus dois botÃµes de atendimento! O primeiro: â€œAtenderâ€ envia as unidades selecionadas para a missÃ£o. O segundo faz a mesma coisa que o primeiro, mas leva Ã  missÃ£o seguinte. Por enquanto, clique no primeiro botÃ£o.",
+                            dispatch_menu_mission_general: "Aqui vocÃª acessa as informaÃ§Ãµes gerais da missÃ£o: o nome, o endereÃ§o e o Ã­cone da missÃ£o. Nas missÃµes das quais vocÃª jÃ¡ participou, o Ã­cone do homenzinho aparece e substitui a estrelinha.",
+                            dispatch_menu_mission_progress: "Aqui vocÃª pode ver o progresso da missÃ£o, o nÃºmero de atendentes no local e o tempo que resta para o encerramento da missÃ£o!",
+                            dispatch_menu_mission_specific: "Aqui vocÃª pode ter mais informaÃ§Ãµes sobre a missÃ£o, quais unidades estÃ£o atendendo ao chamado e quais jÃ¡ estÃ£o no local.",
+                            dispatch_menu_vehicle_list: "Esta Ã© a sua lista de veÃ­culos disponÃ­veis. VocÃª seleciona os veÃ­culos aqui. Agora, selecione o seu veÃ­culo clicando nele!"
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "Agora, queremos que vocĂŞ aprenda a lidar com incidentes. Abra o menu de atendimento clicando no botĂŁo â€śAtenderâ€ť!",
-                            first_mission: "Ă“timo! VocĂŞ construiu o seu primeiro edifĂ­cio! Veja sĂł, as primeiras missĂµes jĂˇ foram passadas a vocĂŞ!"
+                            dispatch_button: "Agora, queremos que vocÃª aprenda a lidar com incidentes. Abra o menu de atendimento clicando no botÃ£o â€œAtenderâ€!",
+                            first_mission: "Ã“timo! VocÃª construiu o seu primeiro edifÃ­cio! Veja sÃ³, as primeiras missÃµes jÃ¡ foram passadas a vocÃª!"
                         },
                         mobile: {
-                            dispatch_button: "Agora, queremos que vocĂŞ aprenda a lidar com incidentes. Abra o menu de atendimento clicando no botĂŁo â€śAtenderâ€ť!",
-                            first_mission: "Ă“timo! VocĂŞ construiu o seu primeiro edifĂ­cio! Veja sĂł, as primeiras missĂµes jĂˇ foram passadas a vocĂŞ!"
+                            dispatch_button: "Agora, queremos que vocÃª aprenda a lidar com incidentes. Abra o menu de atendimento clicando no botÃ£o â€œAtenderâ€!",
+                            first_mission: "Ã“timo! VocÃª construiu o seu primeiro edifÃ­cio! Veja sÃ³, as primeiras missÃµes jÃ¡ foram passadas a vocÃª!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Ă“timo! Em breve vocĂŞ vai se tornar um grande chefe de atendimento em Operador 193! AĂ­ vĂŁo %{coins} moedas para ajudar vocĂŞ no comeĂ§o! </br> Equipe do Operador 193"
+                        general: "Ã“timo! Em breve vocÃª vai se tornar um grande chefe de atendimento em Operador 193! AÃ­ vÃ£o %{coins} moedas para ajudar vocÃª no comeÃ§o! </br> Equipe do Operador 193"
                     },
                     mobile: {
-                        general: "Ă“timo! Em breve vocĂŞ vai se tornar um grande chefe de atendimento em Operador 193! AĂ­ vĂŁo %{coins} moedas para ajudar vocĂŞ no comeĂ§o! </br> Equipe do Operador 193"
+                        general: "Ã“timo! Em breve vocÃª vai se tornar um grande chefe de atendimento em Operador 193! AÃ­ vÃ£o %{coins} moedas para ajudar vocÃª no comeÃ§o! </br> Equipe do Operador 193"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Em caso de dĂşvidas, consulte a seĂ§ĂŁo â€śPerguntas Frequentesâ€ť no jogo, visite os fĂłruns de discussĂŁo ou acesse a nossa pĂˇgina no Facebook!",
-                        general: "Como o prĂłximo passo, recomendamos que vocĂŞ construa uma central de atendimentos e depois, o mais rĂˇpido possĂ­vel, novas estaĂ§Ăµes, jĂˇ que o nĂşmero mĂˇximo de missĂµes serĂˇ o mesmo do maior nĂşmero de estaĂ§Ăµes de qualquer tipo (polĂ­cia, bombeiros, ambulĂ˘ncia) mais 1. Por exemplo: 5 estaĂ§Ăµes de incĂŞndio e 3 de ambulĂ˘ncia = 6 missĂµes.",
-                        join_alliance: "AlĂ©m disso, juntar-se a uma alianĂ§a pode ser muito benĂ©fico, principalmente no comeĂ§o. Recomendamos que vocĂŞ tambĂ©m faĂ§a isso.",
-                        summary: "Este Ă© o bĂˇsico do Operador 193! Cumpra as missĂµes, ganhe crĂ©ditos, compre mais unidades, repita os procedimentos. Divirta-se! </br> Equipe do Operador 193"
+                        contact: "Em caso de dÃºvidas, consulte a seÃ§Ã£o â€œPerguntas Frequentesâ€ no jogo, visite os fÃ³runs de discussÃ£o ou acesse a nossa pÃ¡gina no Facebook!",
+                        general: "Como o prÃ³ximo passo, recomendamos que vocÃª construa uma central de atendimentos e depois, o mais rÃ¡pido possÃ­vel, novas estaÃ§Ãµes, jÃ¡ que o nÃºmero mÃ¡ximo de missÃµes serÃ¡ o mesmo do maior nÃºmero de estaÃ§Ãµes de qualquer tipo (polÃ­cia, bombeiros, ambulÃ¢ncia) mais 1. Por exemplo: 5 estaÃ§Ãµes de incÃªndio e 3 de ambulÃ¢ncia = 6 missÃµes.",
+                        join_alliance: "AlÃ©m disso, juntar-se a uma alianÃ§a pode ser muito benÃ©fico, principalmente no comeÃ§o. Recomendamos que vocÃª tambÃ©m faÃ§a isso.",
+                        summary: "Este Ã© o bÃ¡sico do Operador 193! Cumpra as missÃµes, ganhe crÃ©ditos, compre mais unidades, repita os procedimentos. Divirta-se! </br> Equipe do Operador 193"
                     },
                     mobile: {
-                        contact: "Em caso de dĂşvidas, consulte a seĂ§ĂŁo â€śPerguntas Frequentesâ€ť no jogo, visite os fĂłruns de discussĂŁo ou acesse a nossa pĂˇgina no Facebook!",
-                        general: "Como o prĂłximo passo, recomendamos que vocĂŞ construa uma central de atendimentos e depois, o mais rĂˇpido possĂ­vel, novas estaĂ§Ăµes, jĂˇ que o nĂşmero mĂˇximo de missĂµes serĂˇ o mesmo do maior nĂşmero de estaĂ§Ăµes de qualquer tipo (polĂ­cia, bombeiros, ambulĂ˘ncia) mais 1. Por exemplo: 5 estaĂ§Ăµes de incĂŞndio e 3 de ambulĂ˘ncia = 6 missĂµes.",
-                        join_alliance: "AlĂ©m disso, juntar-se a uma alianĂ§a pode ser muito benĂ©fico, principalmente no comeĂ§o. Recomendamos que vocĂŞ tambĂ©m faĂ§a isso.",
-                        summary: "Este Ă© o bĂˇsico do Operador 193! Cumpra as missĂµes, ganhe crĂ©ditos, compre mais unidades, repita os procedimentos. Divirta-se! </br> Equipe do Operador 193"
+                        contact: "Em caso de dÃºvidas, consulte a seÃ§Ã£o â€œPerguntas Frequentesâ€ no jogo, visite os fÃ³runs de discussÃ£o ou acesse a nossa pÃ¡gina no Facebook!",
+                        general: "Como o prÃ³ximo passo, recomendamos que vocÃª construa uma central de atendimentos e depois, o mais rÃ¡pido possÃ­vel, novas estaÃ§Ãµes, jÃ¡ que o nÃºmero mÃ¡ximo de missÃµes serÃ¡ o mesmo do maior nÃºmero de estaÃ§Ãµes de qualquer tipo (polÃ­cia, bombeiros, ambulÃ¢ncia) mais 1. Por exemplo: 5 estaÃ§Ãµes de incÃªndio e 3 de ambulÃ¢ncia = 6 missÃµes.",
+                        join_alliance: "AlÃ©m disso, juntar-se a uma alianÃ§a pode ser muito benÃ©fico, principalmente no comeÃ§o. Recomendamos que vocÃª tambÃ©m faÃ§a isso.",
+                        summary: "Este Ã© o bÃ¡sico do Operador 193! Cumpra as missÃµes, ganhe crÃ©ditos, compre mais unidades, repita os procedimentos. Divirta-se! </br> Equipe do Operador 193"
                     }
                 }
             },
             commons: {
                 collect: "Coletar",
-                "continue": "NĂŁo",
+                "continue": "NÃ£o",
                 end: "Fim",
-                next: "PrĂłximo",
+                next: "PrÃ³ximo",
                 prev: "Anterior",
                 skip: "Sim",
-                skip_hint: "Realmente desejas cancelar o tutorial? NĂŁo serĂˇ possĂ­vel acedĂŞ-lo mais tarde. NĂŁo serĂˇs elegĂ­vel para a recompensa de finalizaĂ§ĂŁo do tutorial."
+                skip_hint: "Realmente desejas cancelar o tutorial? NÃ£o serÃ¡ possÃ­vel acedÃª-lo mais tarde. NÃ£o serÃ¡s elegÃ­vel para a recompensa de finalizaÃ§Ã£o do tutorial."
             },
             rewards: {
                 log: "Recompensa por completar o tutorial."
@@ -8194,261 +8128,261 @@ function deleteMissionPosition(e) {
         }
     }, I18n.translations.uk_UA = {
         common: {
-            add: "Đ”ĐľĐ´Đ°Ń‚Đ¸",
-            back: "ĐťĐ°Đ·Đ°Đ´",
-            cancel: "ĐˇĐşĐ°ŃŃĐ˛Đ°Ń‚Đ¸",
-            change_saved: "Đ—ĐĽŃ–Đ˝Đ¸ Đ·Đ±ĐµŃ€ĐµĐ¶ĐµĐ˝Đľ",
-            coins_spend: "Đ”Ń–ĐąŃĐ˝Đľ Đ±Đ°Đ¶Đ°Ń”Ń‚Đµ Đ˛Đ¸Ń‚Ń€Đ°Ń‚Đ¸Ń‚Đ¸ Ń†Ń– ĐĽĐľĐ˝ĐµŃ‚Đ¸?",
-            congratulations: "Đ’Ń–Ń‚Đ°Đ˝Đ˝ŃŹ!",
-            content: "Đ’ĐĽŃ–ŃŃ‚",
-            copy: "ĐšĐľĐżŃ–ŃŽĐ˛Đ°Ń‚Đ¸",
-            credits: "ĐšŃ€ĐµĐ´Đ¸Ń‚Đ¸",
-            "delete": "Đ’Đ¸Đ´Đ°Đ»Đ¸Ń‚Đ¸",
-            details: "ĐźĐľĐ´Ń€ĐľĐ±Đ¸Ń†Ń–",
-            edit: "Đ ĐµĐ´Đ°ĐłŃĐ˛Đ°Ń‚Đ¸",
-            error: "ĐźĐľĐĽĐ¸Đ»ĐşĐ°",
-            is_offline: "%{user} Đ˝Đµ Đ˛ ĐĽĐµŃ€ĐµĐ¶Ń–.",
-            is_offline_long: "Đ”Đ°Đ˛Đ˝Đľ: %{user} Đ˝Đµ Đ˛ ĐĽĐµŃ€ĐµĐ¶Ń–",
-            is_online: "%{user} Đ˛ ĐĽĐµŃ€ĐµĐ¶Ń–.",
-            loading: "Đ—Đ°Đ˛Đ°Đ˝Ń‚Đ°Đ¶ĐµĐ˝Đ˝ŃŹ...",
-            name: "Đ†ĐĽ'ŃŹ",
-            none: "Đ–ĐľĐ´Đ˝ĐľĐłĐľ",
-            of: "Đ·",
-            off: "Đ’Ń–Đ´ĐşĐ».",
-            on: "Đ’ĐşĐ».",
-            save: "Đ—Đ±ĐµŃ€ĐµĐłŃ‚Đ¸",
-            search: "ĐźĐľŃŃĐş",
-            show: "ĐźĐľĐşĐ°Đ·Đ°Ń‚Đ¸",
-            user_not_found: "ĐšĐľŃ€Đ¸ŃŃ‚ŃĐ˛Đ°Ń‡Đ° Đ˝Đµ Đ·Đ˝Đ°ĐąĐ´ĐµĐ˝Đľ.",
-            wrong_key: "ĐťĐµĐ˛Ń–Ń€Đ˝Đ° ĐşĐ»Đ°Đ˛Ń–ŃĐ°"
+            add: "Ð”Ð¾Ð´Ð°Ñ‚Ð¸",
+            back: "ÐÐ°Ð·Ð°Ð´",
+            cancel: "Ð¡ÐºÐ°ÑÑƒÐ²Ð°Ñ‚Ð¸",
+            change_saved: "Ð—Ð¼Ñ–Ð½Ð¸ Ð·Ð±ÐµÑ€ÐµÐ¶ÐµÐ½Ð¾",
+            coins_spend: "Ð”Ñ–Ð¹ÑÐ½Ð¾ Ð±Ð°Ð¶Ð°Ñ”Ñ‚Ðµ Ð²Ð¸Ñ‚Ñ€Ð°Ñ‚Ð¸Ñ‚Ð¸ Ñ†Ñ– Ð¼Ð¾Ð½ÐµÑ‚Ð¸?",
+            congratulations: "Ð’Ñ–Ñ‚Ð°Ð½Ð½Ñ!",
+            content: "Ð’Ð¼Ñ–ÑÑ‚",
+            copy: "ÐšÐ¾Ð¿Ñ–ÑŽÐ²Ð°Ñ‚Ð¸",
+            credits: "ÐšÑ€ÐµÐ´Ð¸Ñ‚Ð¸",
+            "delete": "Ð’Ð¸Ð´Ð°Ð»Ð¸Ñ‚Ð¸",
+            details: "ÐŸÐ¾Ð´Ñ€Ð¾Ð±Ð¸Ñ†Ñ–",
+            edit: "Ð ÐµÐ´Ð°Ð³ÑƒÐ²Ð°Ñ‚Ð¸",
+            error: "ÐŸÐ¾Ð¼Ð¸Ð»ÐºÐ°",
+            is_offline: "%{user} Ð½Ðµ Ð² Ð¼ÐµÑ€ÐµÐ¶Ñ–.",
+            is_offline_long: "Ð”Ð°Ð²Ð½Ð¾: %{user} Ð½Ðµ Ð² Ð¼ÐµÑ€ÐµÐ¶Ñ–",
+            is_online: "%{user} Ð² Ð¼ÐµÑ€ÐµÐ¶Ñ–.",
+            loading: "Ð—Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶ÐµÐ½Ð½Ñ...",
+            name: "Ð†Ð¼'Ñ",
+            none: "Ð–Ð¾Ð´Ð½Ð¾Ð³Ð¾",
+            of: "Ð·",
+            off: "Ð’Ñ–Ð´ÐºÐ».",
+            on: "Ð’ÐºÐ».",
+            save: "Ð—Ð±ÐµÑ€ÐµÐ³Ñ‚Ð¸",
+            search: "ÐŸÐ¾ÑˆÑƒÐº",
+            show: "ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚Ð¸",
+            user_not_found: "ÐšÐ¾Ñ€Ð¸ÑÑ‚ÑƒÐ²Ð°Ñ‡Ð° Ð½Ðµ Ð·Ð½Ð°Ð¹Ð´ÐµÐ½Ð¾.",
+            wrong_key: "ÐÐµÐ²Ñ–Ñ€Ð½Ð° ÐºÐ»Ð°Ð²Ñ–ÑˆÐ°"
         },
         javascript: {
-            alarm: "Đ’Ń–Đ´ĐżŃ€Đ°Đ˛Đ¸Ń‚Đ¸",
-            arrival: "ĐźŃ€Đ¸Đ±ŃŃ‚Ń‚ŃŹ",
-            backalarm: "ĐˇĐşĐ°ŃŃĐ˛Đ°Ń‚Đ¸",
-            coins: "ĐśĐľĐ˝ĐµŃ‚Đ¸",
-            credits: "ĐšŃ€ĐµĐ´Đ¸Ń‚Đ¸",
-            days: "Đ´Đ˝.",
-            few_seconds: "Ń‡ĐµŃ€ĐµĐ· Đ´ĐµĐşŃ–Đ»ŃŚĐşĐ° ŃĐµĐşŃĐ˝Đ´",
-            finish_in: "Đ—Đ°Đ˛ĐµŃ€ŃĐµĐ˝Đ˝ŃŹ Ń‡ĐµŃ€ĐµĐ·:",
-            hours: "Đ“",
-            location_not_found: "ĐťĐµ Đ·Đ˝Đ°ĐąĐ´ĐµĐ˝Đľ",
-            messages: "ĐźĐľĐ˛Ń–Đ´ĐľĐĽĐ»ĐµĐ˝Đ˝ŃŹ",
-            minutes: "Ń…Đ˛.",
-            missed_vehicle: "ĐťĐµ Đ˛Đ¸ŃŃ‚Đ°Ń‡Đ°Ń”:",
-            mission_start_in: "ĐźĐľŃ‡Đ°Ń‚ĐľĐş Ń‡ĐµŃ€ĐµĐ·:",
-            not_found_map: "ĐśĐ°ŃĐ¸Đ˝Ń Đ˝Đµ Đ·Đ˝Đ°ĐąĐ´ĐµĐ˝Đľ Đ˝Đ° ĐşĐ°Ń€Ń‚Ń–",
-            now: "Đ—Đ°Ń€Đ°Đ·",
-            patient: "ĐźĐ°Ń†Ń–Ń”Đ˝Ń‚",
-            patient_untouched: "ĐťĐµĐ˛Đ¸Đ»Ń–ĐşŃĐ˛Đ°Đ˝Ń– ĐżĐ°Ń†Ń–Ń”Đ˝Ń‚Đ¸",
-            poi_delete: "Đ”Ń–ĐąŃĐ˝Đľ Đ˛Đ¸Đ´Đ°Đ»Đ¸Ń‚Đ¸ Đ˛Đ°Đ¶Đ»Đ¸Đ˛Ń Ń‚ĐľŃ‡ĐşŃ: %{caption}?",
-            reload: "ĐźĐµŃ€ĐµĐ·Đ°Đ˛Đ°Đ˝Ń‚Đ°Đ¶Đ¸Ń‚Đ¸",
-            sale: "Đ ĐľĐ·ĐżŃ€ĐľĐ´Đ°Đ¶",
-            sale_ended: "Đ ĐľĐ·ĐżŃ€ĐľĐ´Đ°Đ¶ Đ·Đ°Đ˛ĐµŃ€ŃĐµĐ˝Đľ",
-            secounds: "ŃĐµĐş.",
-            sicherheitswache_error: 'ĐˇĐżŃ–Đ˛Ń€ĐľĐ±Ń–Ń‚Đ˝Đ¸Đş ĐľŃ…ĐľŃ€ĐľĐ˝Đ¸ "%{caption}" Đ˝Đµ Đ˛Đ¸ĐşĐľĐ˝Đ°Đ˛ Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ, ĐľŃĐşŃ–Đ»ŃŚĐşĐ¸ Đ±ŃĐ»Đľ Đ·Đ°Đ´ĐľĐ˛ĐľĐ»ĐµĐ˝Đľ Đ˝Đµ Đ˛ŃŃ– ĐşŃ€Đ¸Ń‚ĐµŃ€Ń–Ń—.',
-            sicherheitswache_success: 'ĐˇĐżŃ–Đ˛Ń€ĐľĐ±Ń–Ń‚Đ˝Đ¸ĐşĐ° ĐľŃ…ĐľŃ€ĐľĐ˝Đ¸ "%{caption}" ŃŃĐżŃ–ŃĐ˝Đľ Đ˛Đ¸Đ˛ĐµĐ´ĐµĐ˝Đľ. ĐžŃ‚Ń€Đ¸ĐĽĐ°ĐąŃ‚Đµ ĐşŃ€ĐµĐ´Đ¸Ń‚Đ¸ (%{credits}).',
-            start_in: "ĐźĐľŃ‡Đ°Ń‚ĐľĐş Ń‡ĐµŃ€ĐµĐ·: ",
-            start_username: "ĐźĐľŃ‡Đ¸Đ˝Đ°Ń”:",
-            time_left: "Đ—Đ°Đ»Đ¸ŃĐ¸Đ»ĐľŃŃŹ Ń‡Đ°ŃŃ:",
-            to_building: "ĐźĐµŃ€ĐµĐłĐ»ŃŹĐ´ Đ±ŃĐ´Ń–Đ˛Đ»Ń–",
-            to_mission: "ĐźĐµŃ€ĐµĐłĐ»ŃŹĐ´ Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ",
-            understand: "Đ’Đ¸Đ·Đ˝Đ°Ń‚Đ¸",
-            user_not_found: "Đ“Ń€Đ°Đ˛Ń†ŃŹ Đ˝Đµ Đ·Đ˝Đ°ĐąĐ´ĐµĐ˝Đľ.",
-            vehicles_not_visible: "ĐśĐ°ŃĐ¸Đ˝Ń Đ˝Đµ Đ˛Đ¸Đ´Đ˝Đľ. "
+            alarm: "Ð’Ñ–Ð´Ð¿Ñ€Ð°Ð²Ð¸Ñ‚Ð¸",
+            arrival: "ÐŸÑ€Ð¸Ð±ÑƒÑ‚Ñ‚Ñ",
+            backalarm: "Ð¡ÐºÐ°ÑÑƒÐ²Ð°Ñ‚Ð¸",
+            coins: "ÐœÐ¾Ð½ÐµÑ‚Ð¸",
+            credits: "ÐšÑ€ÐµÐ´Ð¸Ñ‚Ð¸",
+            days: "Ð´Ð½.",
+            few_seconds: "Ñ‡ÐµÑ€ÐµÐ· Ð´ÐµÐºÑ–Ð»ÑŒÐºÐ° ÑÐµÐºÑƒÐ½Ð´",
+            finish_in: "Ð—Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð½Ñ Ñ‡ÐµÑ€ÐµÐ·:",
+            hours: "Ð“",
+            location_not_found: "ÐÐµ Ð·Ð½Ð°Ð¹Ð´ÐµÐ½Ð¾",
+            messages: "ÐŸÐ¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ",
+            minutes: "Ñ…Ð².",
+            missed_vehicle: "ÐÐµ Ð²Ð¸ÑÑ‚Ð°Ñ‡Ð°Ñ”:",
+            mission_start_in: "ÐŸÐ¾Ñ‡Ð°Ñ‚Ð¾Ðº Ñ‡ÐµÑ€ÐµÐ·:",
+            not_found_map: "ÐœÐ°ÑˆÐ¸Ð½Ñƒ Ð½Ðµ Ð·Ð½Ð°Ð¹Ð´ÐµÐ½Ð¾ Ð½Ð° ÐºÐ°Ñ€Ñ‚Ñ–",
+            now: "Ð—Ð°Ñ€Ð°Ð·",
+            patient: "ÐŸÐ°Ñ†Ñ–Ñ”Ð½Ñ‚",
+            patient_untouched: "ÐÐµÐ²Ð¸Ð»Ñ–ÐºÑƒÐ²Ð°Ð½Ñ– Ð¿Ð°Ñ†Ñ–Ñ”Ð½Ñ‚Ð¸",
+            poi_delete: "Ð”Ñ–Ð¹ÑÐ½Ð¾ Ð²Ð¸Ð´Ð°Ð»Ð¸Ñ‚Ð¸ Ð²Ð°Ð¶Ð»Ð¸Ð²Ñƒ Ñ‚Ð¾Ñ‡ÐºÑƒ: %{caption}?",
+            reload: "ÐŸÐµÑ€ÐµÐ·Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶Ð¸Ñ‚Ð¸",
+            sale: "Ð Ð¾Ð·Ð¿Ñ€Ð¾Ð´Ð°Ð¶",
+            sale_ended: "Ð Ð¾Ð·Ð¿Ñ€Ð¾Ð´Ð°Ð¶ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð¾",
+            secounds: "ÑÐµÐº.",
+            sicherheitswache_error: 'Ð¡Ð¿Ñ–Ð²Ñ€Ð¾Ð±Ñ–Ñ‚Ð½Ð¸Ðº Ð¾Ñ…Ð¾Ñ€Ð¾Ð½Ð¸ "%{caption}" Ð½Ðµ Ð²Ð¸ÐºÐ¾Ð½Ð°Ð² Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ, Ð¾ÑÐºÑ–Ð»ÑŒÐºÐ¸ Ð±ÑƒÐ»Ð¾ Ð·Ð°Ð´Ð¾Ð²Ð¾Ð»ÐµÐ½Ð¾ Ð½Ðµ Ð²ÑÑ– ÐºÑ€Ð¸Ñ‚ÐµÑ€Ñ–Ñ—.',
+            sicherheitswache_success: 'Ð¡Ð¿Ñ–Ð²Ñ€Ð¾Ð±Ñ–Ñ‚Ð½Ð¸ÐºÐ° Ð¾Ñ…Ð¾Ñ€Ð¾Ð½Ð¸ "%{caption}" ÑƒÑÐ¿Ñ–ÑˆÐ½Ð¾ Ð²Ð¸Ð²ÐµÐ´ÐµÐ½Ð¾. ÐžÑ‚Ñ€Ð¸Ð¼Ð°Ð¹Ñ‚Ðµ ÐºÑ€ÐµÐ´Ð¸Ñ‚Ð¸ (%{credits}).',
+            start_in: "ÐŸÐ¾Ñ‡Ð°Ñ‚Ð¾Ðº Ñ‡ÐµÑ€ÐµÐ·: ",
+            start_username: "ÐŸÐ¾Ñ‡Ð¸Ð½Ð°Ñ”:",
+            time_left: "Ð—Ð°Ð»Ð¸ÑˆÐ¸Ð»Ð¾ÑÑ Ñ‡Ð°ÑÑƒ:",
+            to_building: "ÐŸÐµÑ€ÐµÐ³Ð»ÑÐ´ Ð±ÑƒÐ´Ñ–Ð²Ð»Ñ–",
+            to_mission: "ÐŸÐµÑ€ÐµÐ³Ð»ÑÐ´ Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ",
+            understand: "Ð’Ð¸Ð·Ð½Ð°Ñ‚Ð¸",
+            user_not_found: "Ð“Ñ€Ð°Ð²Ñ†Ñ Ð½Ðµ Ð·Ð½Ð°Ð¹Ð´ÐµÐ½Ð¾.",
+            vehicles_not_visible: "ÐœÐ°ÑˆÐ¸Ð½Ñƒ Ð½Ðµ Ð²Ð¸Ð´Ð½Ð¾. "
         },
         map: {
-            alliance: "ĐĐ»ŃŚŃŹĐ˝Ń",
-            alliance_chat: "Đ§Đ°Ń‚",
-            alliance_chat_banned: "ĐťĐ° Đ´Đ°Đ˝Đ¸Đą ĐĽĐľĐĽĐµĐ˝Ń‚ Đ˛Đ°Ń Đ·Đ°Đ±Đ»ĐľĐşĐľĐ˛Đ°Đ˝Đľ Ń Ń‡Đ°Ń‚Ń– Đ°Đ»ŃŚŃŹĐ˝ŃŃ.",
-            alliance_chat_banned_admin: "Đ—Đ°Đ±Đ»ĐľĐşŃĐ˛Đ°Đ˛:",
-            alliance_chat_banned_timeleft: "Đ—Đ°Đ»Đ¸ŃĐ¸Đ»ĐľŃŃŹ Ń‡Đ°ŃŃ:",
-            alliance_chat_radio_off: "Đ Đ°Đ´Ń–Đľ Đ°Đ»ŃŚŃŹĐ˝ŃŃ: Đ’Ń–Đ´ĐşĐ».",
-            alliance_chat_radio_on: "Đ Đ°Đ´Ń–Đľ Đ°Đ»ŃŚŃŹĐ˝ŃŃ: Đ’ĐşĐ».",
-            alliance_event: "ĐźĐľĐ´Ń–ŃŹ",
-            alliance_missions: "Đ—Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ Đ°Đ»ŃŚŃŹĐ˝ŃŃ",
-            alliance_missions_event: "ĐźĐľĐ´Ń–ŃŹ",
-            ambulance: "Đ¨Đ˛Đ¸Đ´ĐşĐ° Đ´ĐľĐżĐľĐĽĐľĐłĐ°",
+            alliance: "ÐÐ»ÑŒÑÐ½Ñ",
+            alliance_chat: "Ð§Ð°Ñ‚",
+            alliance_chat_banned: "ÐÐ° Ð´Ð°Ð½Ð¸Ð¹ Ð¼Ð¾Ð¼ÐµÐ½Ñ‚ Ð²Ð°Ñ Ð·Ð°Ð±Ð»Ð¾ÐºÐ¾Ð²Ð°Ð½Ð¾ Ñƒ Ñ‡Ð°Ñ‚Ñ– Ð°Ð»ÑŒÑÐ½ÑÑƒ.",
+            alliance_chat_banned_admin: "Ð—Ð°Ð±Ð»Ð¾ÐºÑƒÐ²Ð°Ð²:",
+            alliance_chat_banned_timeleft: "Ð—Ð°Ð»Ð¸ÑˆÐ¸Ð»Ð¾ÑÑ Ñ‡Ð°ÑÑƒ:",
+            alliance_chat_radio_off: "Ð Ð°Ð´Ñ–Ð¾ Ð°Ð»ÑŒÑÐ½ÑÑƒ: Ð’Ñ–Ð´ÐºÐ».",
+            alliance_chat_radio_on: "Ð Ð°Ð´Ñ–Ð¾ Ð°Ð»ÑŒÑÐ½ÑÑƒ: Ð’ÐºÐ».",
+            alliance_event: "ÐŸÐ¾Ð´Ñ–Ñ",
+            alliance_missions: "Ð—Ð°Ð²Ð´Ð°Ð½Ð½Ñ Ð°Ð»ÑŒÑÐ½ÑÑƒ",
+            alliance_missions_event: "ÐŸÐ¾Ð´Ñ–Ñ",
+            ambulance: "Ð¨Ð²Ð¸Ð´ÐºÐ° Ð´Ð¾Ð¿Ð¾Ð¼Ð¾Ð³Ð°",
             challenges: "",
-            chat_history: "Đ†ŃŃ‚ĐľŃ€Ń–ŃŹ Ń‡Đ°Ń‚Ń",
-            congratulations: "Đ’Ń–Ń‚Đ°Đ˝Đ˝ŃŹ! Đ˘ĐµĐżĐµŃ€ Đ˛Đ¸ ĐĽĐľĐ¶ĐµŃ‚Đµ ĐľŃ‚Ń€Đ¸ĐĽĐ°Ń‚Đ¸ ĐżŃ–Đ´Đ˛Đ¸Ń‰ĐµĐ˝Đ˝ŃŹ.",
-            create_alliance_event: "Đ ĐľĐ·ĐżĐľŃ‡Đ°Ń‚Đ¸ ĐżĐľĐ´Ń–ŃŽ Đ°Đ»ŃŚŃŹĐ˝ŃŃ",
-            create_alliance_operation: "ĐˇŃ‚Đ˛ĐľŃ€Đ¸Ń‚Đ¸ Đ˛ĐµĐ»Đ¸ĐşĐľĐĽĐ°ŃŃŃ‚Đ°Đ±Đ˝Đµ Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ Đ°Đ»ŃŚŃŹĐ˝ŃŃ",
-            emergency: "ĐťĐ°Đ´Đ·Đ˛Đ¸Ń‡Đ°ĐąĐ˝Đ° ŃĐ¸Ń‚ŃĐ°Ń†Ń–ŃŹ",
-            join_alliance_infos: "ĐŻĐşŃ‰Đľ Đ˛Đ¸ ĐżĐµŃ€ĐµĐ±ŃĐ˛Đ°Ń”Ń‚Đµ Đ˛ Đ°Đ»ŃŚŃŹĐ˝ŃŃ–, Ń–Đ˝ŃŃ– ĐłŃ€Đ°Đ˛Ń†Ń– ĐĽĐľĐ¶ŃŃ‚ŃŚ Đ˛Ń–Đ»ŃŚĐ˝Đľ Đ´Đ°Đ˛Đ°Ń‚Đ¸ Đ˛Đ°ĐĽ Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ.",
-            map: "ĐšĐ°Ń€Ń‚Đ°",
+            chat_history: "Ð†ÑÑ‚Ð¾Ñ€Ñ–Ñ Ñ‡Ð°Ñ‚Ñƒ",
+            congratulations: "Ð’Ñ–Ñ‚Ð°Ð½Ð½Ñ! Ð¢ÐµÐ¿ÐµÑ€ Ð²Ð¸ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¾Ñ‚Ñ€Ð¸Ð¼Ð°Ñ‚Ð¸ Ð¿Ñ–Ð´Ð²Ð¸Ñ‰ÐµÐ½Ð½Ñ.",
+            create_alliance_event: "Ð Ð¾Ð·Ð¿Ð¾Ñ‡Ð°Ñ‚Ð¸ Ð¿Ð¾Ð´Ñ–ÑŽ Ð°Ð»ÑŒÑÐ½ÑÑƒ",
+            create_alliance_operation: "Ð¡Ñ‚Ð²Ð¾Ñ€Ð¸Ñ‚Ð¸ Ð²ÐµÐ»Ð¸ÐºÐ¾Ð¼Ð°ÑÑˆÑ‚Ð°Ð±Ð½Ðµ Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ Ð°Ð»ÑŒÑÐ½ÑÑƒ",
+            emergency: "ÐÐ°Ð´Ð·Ð²Ð¸Ñ‡Ð°Ð¹Ð½Ð° ÑÐ¸Ñ‚ÑƒÐ°Ñ†Ñ–Ñ",
+            join_alliance_infos: "Ð¯ÐºÑ‰Ð¾ Ð²Ð¸ Ð¿ÐµÑ€ÐµÐ±ÑƒÐ²Ð°Ñ”Ñ‚Ðµ Ð² Ð°Ð»ÑŒÑÐ½ÑÑ–, Ñ–Ð½ÑˆÑ– Ð³Ñ€Ð°Ð²Ñ†Ñ– Ð¼Ð¾Ð¶ÑƒÑ‚ÑŒ Ð²Ñ–Ð»ÑŒÐ½Ð¾ Ð´Ð°Ð²Ð°Ñ‚Ð¸ Ð²Ð°Ð¼ Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ.",
+            map: "ÐšÐ°Ñ€Ñ‚Ð°",
             map_filters: {
-                all_buildings: "Đ‘ŃĐ´Ń–Đ˛Đ»Ń–",
-                all_missions: "Đ—Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ",
-                alliance_buildings: "Đ‘ŃĐ´Ń–Đ˛Đ»Ń– Đ°Đ»ŃŚŃŹĐ˝ŃŃ",
-                alliance_members: "ĐŁŃ‡Đ°ŃĐ˝Đ¸ĐşĐ¸",
-                alliance_missions: "ĐˇĐżŃ–Đ»ŃŚĐ˝Đľ Đ˛Đ¸ĐşĐľŃ€Đ¸ŃŃ‚ĐľĐ˛ŃŃ”Ń‚ŃŚŃŃŹ Đ°Đ»ŃŚŃŹĐ˝ŃĐľĐĽ",
-                ambulance_station_missions: "ĐˇŃ‚Đ°Đ˝Ń†Ń–ŃŹ ŃĐ˛Đ¸Đ´ĐşĐľŃ— Đ´ĐľĐżĐľĐĽĐľĐłĐ¸",
-                ambulance_station_small_missions: "ĐźŃ–Đ´ŃŃ‚Đ°Đ˝Ń†Ń–ŃŹ ŃĐ˛Đ¸Đ´ĐşĐľŃ— Đ´ĐľĐżĐľĐĽĐľĐłĐ¸",
-                clinic_missions: "ĐšĐ»Ń–Đ˝Ń–ĐşĐ°",
-                dispatch_center_missions: "Đ”Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ŃŃŚĐşĐ¸Đą Ń†ĐµĐ˝Ń‚Ń€",
-                fire_school_missions: "ĐĐşĐ°Đ´ĐµĐĽŃ–ŃŹ ĐżĐľĐ¶ĐµĐ¶Đ˝ĐľŃ— Đ±ĐµĐ·ĐżĐµĐşĐ¸",
-                firehouse_missions: "ĐźĐľĐ¶ĐµĐ¶Đ˝Đ° Ń‡Đ°ŃŃ‚Đ¸Đ˝Đ°",
-                firehouse_small_missions: "ĐźĐľĐ¶ĐµĐ¶Đ˝Đ° Ń‡Đ°ŃŃ‚Đ¸Đ˝Đ° (ĐĽĐ°Đ»Đ°)",
-                hospital_missions: "Đ›Ń–ĐşĐ°Ń€Đ˝ŃŹ",
-                map_filters: "ĐˇĐżĐ¸ŃĐľĐş Ń„Ń–Đ»ŃŚŃ‚Ń€Ń–Đ˛ ĐşĐ°Ń€Ń‚Đ¸",
-                mission_positions: "Đ’Đ°Đ¶Đ»Đ¸Đ˛Ń– Ń‚ĐľŃ‡ĐşĐ¸ (Đ’Đ˘)",
-                police_copter_station_missions: "ĐźĐľĐ»Ń–Ń†ĐµĐąŃŃŚĐşĐ° Đ°Đ˛Ń–Đ°Ń†Ń–ŃŹ",
-                police_school_missions: "ĐźĐľĐ»Ń–Ń†ĐµĐąŃŃŚĐşĐ° Đ°ĐşĐ°Đ´ĐµĐĽŃ–ŃŹ",
-                police_small_missions: "Đ’Ń–Đ´Đ´Ń–Đ» ĐżĐľĐ»Ń–Ń†Ń–Ń—",
-                police_special_forces: "ĐˇĐżĐµŃ†Đ˝Đ°Đ· ĐżĐľĐ»Ń–Ń†Ń–Ń—",
-                police_station_missions: "ĐŁĐżŃ€Đ°Đ˛Đ»Ń–Đ˝Đ˝ŃŹ ĐżĐľĐ»Ń–Ń†Ń–Ń—",
-                prison_missions: "Đ’'ŃŹĐ·Đ˝Đ¸Ń†ŃŹ",
-                rapid_deployment_group: "Đ“Ń€ŃĐżĐ° ŃĐ˛Đ¸Đ´ĐşĐľĐłĐľ Ń€ĐľĐ·ĐłĐľŃ€Ń‚Đ°Đ˝Đ˝ŃŹ",
-                rescue_copter_station_missions: "ĐˇŃ‚Đ°Đ˝Ń†Ń–ŃŹ Đ˛ĐµŃ€Ń‚ĐľĐ»ŃŚĐľŃ‚Ń–Đ˛ ŃĐ˛Đ¸Đ´ĐşĐľŃ— Đ´ĐľĐżĐľĐĽĐľĐłĐ¸",
-                riot_police: "ĐźŃ–Đ´Ń€ĐľĐ·Đ´Ń–Đ» ĐľŃĐľĐ±Đ»Đ¸Đ˛ĐľĐłĐľ ĐżŃ€Đ¸Đ·Đ˝Đ°Ń‡ĐµĐ˝Đ˝ŃŹ",
-                staging_area_missions: "ĐźŃĐ˝ĐşŃ‚ Ń€ĐľĐ·ĐżĐľĐ´Ń–Đ»Ń",
-                technical_aid_organization: "ĐśĐťĐˇ",
-                technical_aid_organization_school: "Đ’Đ¸Ń‰Đ° ŃĐşĐľĐ»Đ° ĐśĐťĐˇ",
-                user_buildings: "ĐśĐľŃ— Đ±ŃĐ´Ń–Đ˛Đ»Ń–",
-                user_missions: "ĐśĐľŃ— Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ",
-                water_watch: "Đ’ĐľĐ´ĐľĐ»Đ°Đ·Đ˝Đľ-Ń€ŃŹŃ‚ŃĐ˛Đ°Đ»ŃŚĐ˝Đ° ŃĐ»ŃĐ¶Đ±Đ°"
+                all_buildings: "Ð‘ÑƒÐ´Ñ–Ð²Ð»Ñ–",
+                all_missions: "Ð—Ð°Ð²Ð´Ð°Ð½Ð½Ñ",
+                alliance_buildings: "Ð‘ÑƒÐ´Ñ–Ð²Ð»Ñ– Ð°Ð»ÑŒÑÐ½ÑÑƒ",
+                alliance_members: "Ð£Ñ‡Ð°ÑÐ½Ð¸ÐºÐ¸",
+                alliance_missions: "Ð¡Ð¿Ñ–Ð»ÑŒÐ½Ð¾ Ð²Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð¾Ð²ÑƒÑ”Ñ‚ÑŒÑÑ Ð°Ð»ÑŒÑÐ½ÑÐ¾Ð¼",
+                ambulance_station_missions: "Ð¡Ñ‚Ð°Ð½Ñ†Ñ–Ñ ÑˆÐ²Ð¸Ð´ÐºÐ¾Ñ— Ð´Ð¾Ð¿Ð¾Ð¼Ð¾Ð³Ð¸",
+                ambulance_station_small_missions: "ÐŸÑ–Ð´ÑÑ‚Ð°Ð½Ñ†Ñ–Ñ ÑˆÐ²Ð¸Ð´ÐºÐ¾Ñ— Ð´Ð¾Ð¿Ð¾Ð¼Ð¾Ð³Ð¸",
+                clinic_missions: "ÐšÐ»Ñ–Ð½Ñ–ÐºÐ°",
+                dispatch_center_missions: "Ð”Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ÑÑŒÐºÐ¸Ð¹ Ñ†ÐµÐ½Ñ‚Ñ€",
+                fire_school_missions: "ÐÐºÐ°Ð´ÐµÐ¼Ñ–Ñ Ð¿Ð¾Ð¶ÐµÐ¶Ð½Ð¾Ñ— Ð±ÐµÐ·Ð¿ÐµÐºÐ¸",
+                firehouse_missions: "ÐŸÐ¾Ð¶ÐµÐ¶Ð½Ð° Ñ‡Ð°ÑÑ‚Ð¸Ð½Ð°",
+                firehouse_small_missions: "ÐŸÐ¾Ð¶ÐµÐ¶Ð½Ð° Ñ‡Ð°ÑÑ‚Ð¸Ð½Ð° (Ð¼Ð°Ð»Ð°)",
+                hospital_missions: "Ð›Ñ–ÐºÐ°Ñ€Ð½Ñ",
+                map_filters: "Ð¡Ð¿Ð¸ÑÐ¾Ðº Ñ„Ñ–Ð»ÑŒÑ‚Ñ€Ñ–Ð² ÐºÐ°Ñ€Ñ‚Ð¸",
+                mission_positions: "Ð’Ð°Ð¶Ð»Ð¸Ð²Ñ– Ñ‚Ð¾Ñ‡ÐºÐ¸ (Ð’Ð¢)",
+                police_copter_station_missions: "ÐŸÐ¾Ð»Ñ–Ñ†ÐµÐ¹ÑÑŒÐºÐ° Ð°Ð²Ñ–Ð°Ñ†Ñ–Ñ",
+                police_school_missions: "ÐŸÐ¾Ð»Ñ–Ñ†ÐµÐ¹ÑÑŒÐºÐ° Ð°ÐºÐ°Ð´ÐµÐ¼Ñ–Ñ",
+                police_small_missions: "Ð’Ñ–Ð´Ð´Ñ–Ð» Ð¿Ð¾Ð»Ñ–Ñ†Ñ–Ñ—",
+                police_special_forces: "Ð¡Ð¿ÐµÑ†Ð½Ð°Ð· Ð¿Ð¾Ð»Ñ–Ñ†Ñ–Ñ—",
+                police_station_missions: "Ð£Ð¿Ñ€Ð°Ð²Ð»Ñ–Ð½Ð½Ñ Ð¿Ð¾Ð»Ñ–Ñ†Ñ–Ñ—",
+                prison_missions: "Ð’'ÑÐ·Ð½Ð¸Ñ†Ñ",
+                rapid_deployment_group: "Ð“Ñ€ÑƒÐ¿Ð° ÑˆÐ²Ð¸Ð´ÐºÐ¾Ð³Ð¾ Ñ€Ð¾Ð·Ð³Ð¾Ñ€Ñ‚Ð°Ð½Ð½Ñ",
+                rescue_copter_station_missions: "Ð¡Ñ‚Ð°Ð½Ñ†Ñ–Ñ Ð²ÐµÑ€Ñ‚Ð¾Ð»ÑŒÐ¾Ñ‚Ñ–Ð² ÑˆÐ²Ð¸Ð´ÐºÐ¾Ñ— Ð´Ð¾Ð¿Ð¾Ð¼Ð¾Ð³Ð¸",
+                riot_police: "ÐŸÑ–Ð´Ñ€Ð¾Ð·Ð´Ñ–Ð» Ð¾ÑÐ¾Ð±Ð»Ð¸Ð²Ð¾Ð³Ð¾ Ð¿Ñ€Ð¸Ð·Ð½Ð°Ñ‡ÐµÐ½Ð½Ñ",
+                staging_area_missions: "ÐŸÑƒÐ½ÐºÑ‚ Ñ€Ð¾Ð·Ð¿Ð¾Ð´Ñ–Ð»Ñƒ",
+                technical_aid_organization: "ÐœÐÐ¡",
+                technical_aid_organization_school: "Ð’Ð¸Ñ‰Ð° ÑˆÐºÐ¾Ð»Ð° ÐœÐÐ¡",
+                user_buildings: "ÐœÐ¾Ñ— Ð±ÑƒÐ´Ñ–Ð²Ð»Ñ–",
+                user_missions: "ÐœÐ¾Ñ— Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ",
+                water_watch: "Ð’Ð¾Ð´Ð¾Ð»Ð°Ð·Ð½Ð¾-Ñ€ÑÑ‚ÑƒÐ²Ð°Ð»ÑŒÐ½Ð° ÑÐ»ÑƒÐ¶Ð±Ð°"
             },
-            message: "ĐźĐľĐ˛Ń–Đ´ĐľĐĽĐ»ĐµĐ˝Đ˝ŃŹ",
-            mission: "Đ—Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ",
-            no_alliance_chat_impossible: "Đ’Đ¸ Đ˝Đµ ĐżĐµŃ€ĐµĐ±ŃĐ˛Đ°Ń”Ń‚Đµ Đ˛ Đ°Đ»ŃŚŃŹĐ˝ŃŃ–.",
-            no_alliance_missions: "ĐťĐ° Đ´Đ°Đ˝Đ¸Đą ĐĽĐľĐĽĐµĐ˝Ń‚ Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ Đ°Đ»ŃŚŃŹĐ˝ŃŃ Đ˛Ń–Đ´ŃŃŃ‚Đ˝Ń–.",
-            no_ambulance_missions: "Đ—Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ Đ°Đ»ŃŚŃŹĐ˝ŃŃ Đ˛Ń–Đ´ŃŃŃ‚Đ˝Ń–. Đ—Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ ŃĐ˛Đ¸Đ´ĐşĐľŃ— Đ´ĐľĐżĐľĐĽĐľĐłĐ¸ ĐĽĐľĐ¶ŃŃ‚ŃŚ Đ·'ŃŹĐ˛Đ»ŃŹŃ‚Đ¸ŃŃŹ Đ»Đ¸ŃĐµ Ń‚ĐľĐ´Ń–, ĐşĐľĐ»Đ¸ Ń Đ˛Đ°Ń Ń” ŃĐ˛Đ¸Đ´ĐşĐ° Đ´ĐľĐżĐľĐĽĐľĐłĐ° Ń– Đ»Ń–ĐşĐ°Ń€Đ˝ŃŹ.",
-            no_emergency_missions: "ĐťĐµĐĽĐ°Ń” Đ´ĐľŃŃ‚ŃĐżĐ˝Đ¸Ń… Đ·Đ°Đ˛Đ´Đ°Đ˝ŃŚ Đ´Đ»ŃŹ ĐµĐşŃŃ‚Ń€ĐµĐ˝Đ¸Ń… ŃĐ»ŃĐ¶Đ±. Đ—Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ Đ´Đ»ŃŹ ĐµĐşŃŃ‚Ń€ĐµĐ˝Đ¸Ń… ŃĐ»ŃĐ¶Đ± ĐĽĐľĐ¶Đµ Đ·'ŃŹĐ˛Đ¸Ń‚Đ¸ŃŃŹ Ń‚ĐľĐ´Ń–, ĐşĐľĐ»Đ¸ Đ˛Đ¸ Đ·Đ±ŃĐ´ŃŃ”Ń‚Đµ ŃĐ˛ĐľŃŽ ĐżĐµŃ€ŃŃ ŃŃ‚Đ°Đ˝Ń†Ń–ŃŽ.",
-            no_radio_messages: "Đ’Đ¸ Đ˝Đµ ĐľŃ‚Ń€Đ¸ĐĽŃĐ˛Đ°Đ»Đ¸ ĐżĐľĐ˛Ń–Đ´ĐľĐĽĐ»ĐµĐ˝Đ˝ŃŹ ĐżĐľ Ń€Đ°Đ´Ń–Đľ.",
-            radio_messages: "Đ Đ°Đ´Ń–Đľ",
-            restore_map: "Đ’Ń–Đ´Đ˝ĐľĐ˛Đ¸Ń‚Đ¸ ĐşĐ°Ń€Ń‚Ń",
-            show_informations: "Đ—ĐµĐ»ĐµĐ˝Đ¸Đą = Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ Đ±ŃĐ´ŃŃ‚ŃŚ ĐżĐľĐşĐ°Đ·Đ°Đ˝Ń– Ń ŃĐżĐ¸ŃĐşŃ. Đ§ĐµŃ€Đ˛ĐľĐ˝Đ¸Đą = Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ Đ˝Đµ Đ±ŃĐ´ŃŃ‚ŃŚ ĐżĐľĐşĐ°Đ·Đ°Đ˝Ń–.",
-            sicherheitswache: "Đ—Đ°ĐżĐ»Đ°Đ˝ĐľĐ˛Đ°Đ˝Ń– Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ",
-            transport: "ĐźĐµŃ€ĐµĐ˛ĐµĐ·ĐµĐ˝Đ˝ŃŹ"
+            message: "ÐŸÐ¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ",
+            mission: "Ð—Ð°Ð²Ð´Ð°Ð½Ð½Ñ",
+            no_alliance_chat_impossible: "Ð’Ð¸ Ð½Ðµ Ð¿ÐµÑ€ÐµÐ±ÑƒÐ²Ð°Ñ”Ñ‚Ðµ Ð² Ð°Ð»ÑŒÑÐ½ÑÑ–.",
+            no_alliance_missions: "ÐÐ° Ð´Ð°Ð½Ð¸Ð¹ Ð¼Ð¾Ð¼ÐµÐ½Ñ‚ Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ Ð°Ð»ÑŒÑÐ½ÑÑƒ Ð²Ñ–Ð´ÑÑƒÑ‚Ð½Ñ–.",
+            no_ambulance_missions: "Ð—Ð°Ð²Ð´Ð°Ð½Ð½Ñ Ð°Ð»ÑŒÑÐ½ÑÑƒ Ð²Ñ–Ð´ÑÑƒÑ‚Ð½Ñ–. Ð—Ð°Ð²Ð´Ð°Ð½Ð½Ñ ÑˆÐ²Ð¸Ð´ÐºÐ¾Ñ— Ð´Ð¾Ð¿Ð¾Ð¼Ð¾Ð³Ð¸ Ð¼Ð¾Ð¶ÑƒÑ‚ÑŒ Ð·'ÑÐ²Ð»ÑÑ‚Ð¸ÑÑ Ð»Ð¸ÑˆÐµ Ñ‚Ð¾Ð´Ñ–, ÐºÐ¾Ð»Ð¸ Ñƒ Ð²Ð°Ñ Ñ” ÑˆÐ²Ð¸Ð´ÐºÐ° Ð´Ð¾Ð¿Ð¾Ð¼Ð¾Ð³Ð° Ñ– Ð»Ñ–ÐºÐ°Ñ€Ð½Ñ.",
+            no_emergency_missions: "ÐÐµÐ¼Ð°Ñ” Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¸Ñ… Ð·Ð°Ð²Ð´Ð°Ð½ÑŒ Ð´Ð»Ñ ÐµÐºÑÑ‚Ñ€ÐµÐ½Ð¸Ñ… ÑÐ»ÑƒÐ¶Ð±. Ð—Ð°Ð²Ð´Ð°Ð½Ð½Ñ Ð´Ð»Ñ ÐµÐºÑÑ‚Ñ€ÐµÐ½Ð¸Ñ… ÑÐ»ÑƒÐ¶Ð± Ð¼Ð¾Ð¶Ðµ Ð·'ÑÐ²Ð¸Ñ‚Ð¸ÑÑ Ñ‚Ð¾Ð´Ñ–, ÐºÐ¾Ð»Ð¸ Ð²Ð¸ Ð·Ð±ÑƒÐ´ÑƒÑ”Ñ‚Ðµ ÑÐ²Ð¾ÑŽ Ð¿ÐµÑ€ÑˆÑƒ ÑÑ‚Ð°Ð½Ñ†Ñ–ÑŽ.",
+            no_radio_messages: "Ð’Ð¸ Ð½Ðµ Ð¾Ñ‚Ñ€Ð¸Ð¼ÑƒÐ²Ð°Ð»Ð¸ Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ Ð¿Ð¾ Ñ€Ð°Ð´Ñ–Ð¾.",
+            radio_messages: "Ð Ð°Ð´Ñ–Ð¾",
+            restore_map: "Ð’Ñ–Ð´Ð½Ð¾Ð²Ð¸Ñ‚Ð¸ ÐºÐ°Ñ€Ñ‚Ñƒ",
+            show_informations: "Ð—ÐµÐ»ÐµÐ½Ð¸Ð¹ = Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ Ð±ÑƒÐ´ÑƒÑ‚ÑŒ Ð¿Ð¾ÐºÐ°Ð·Ð°Ð½Ñ– Ñƒ ÑÐ¿Ð¸ÑÐºÑƒ. Ð§ÐµÑ€Ð²Ð¾Ð½Ð¸Ð¹ = Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ Ð½Ðµ Ð±ÑƒÐ´ÑƒÑ‚ÑŒ Ð¿Ð¾ÐºÐ°Ð·Ð°Ð½Ñ–.",
+            sicherheitswache: "Ð—Ð°Ð¿Ð»Ð°Ð½Ð¾Ð²Ð°Ð½Ñ– Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ",
+            transport: "ÐŸÐµÑ€ÐµÐ²ÐµÐ·ÐµÐ½Ð½Ñ"
         },
         fms: {
-            going: "Đ’Đ¸Ń—Đ¶Đ´Đ¶Đ°Ń”",
-            not_ready: "ĐťĐµ ĐżŃ€Đ°Ń†ŃŽŃ”",
-            on_destination: "Đ’ ĐżŃĐ˝ĐşŃ‚Ń– ĐżŃ€Đ¸Đ·Đ˝Đ°Ń‡ĐµĐ˝Đ˝ŃŹ Đ´Đ»ŃŹ ĐżĐµŃ€ĐµĐ˛ĐµĐ·ĐµĐ˝Đ˝ŃŹ",
-            on_place: "ĐťĐ° ĐĽŃ–ŃŃ†Ń–",
-            patient_transported: "ĐźĐµŃ€ĐµĐ˛ĐµĐ·ĐµĐ˝Đ˝ŃŹ ĐżĐ°Ń†Ń–Ń”Đ˝Ń‚Đ°",
-            prisoner_transported: "ĐźĐµŃ€ĐµĐ˛ĐµĐ·ĐµĐ˝Đ˝ŃŹ Đ˛'ŃŹĐ·Đ˝ŃŹ",
-            ready_home: "Đ”ĐľŃŃ‚ŃĐżĐ˝Đľ Đ˝Đ° ŃŃ‚Đ°Đ˝Ń†Ń–Ń—",
-            ready_traveling: "ĐťĐµ ĐĽĐ°Ń” Đ·Đ°Đ˛Đ´Đ°Đ˝ŃŚ Ń– Đ´ĐľŃŃ‚ŃĐżĐ˝Đľ",
-            talking_wish: "Đ—Đ°ĐżĐ¸Ń‚ Đ˝Đ° ĐżĐµŃ€ĐµĐ˛ĐµĐ·ĐµĐ˝Đ˝ŃŹ",
-            waiting_for_vehicle: "ĐžŃ‡Ń–ĐşŃŃ” ĐĽĐ°ŃĐ¸Đ˝Ń Đ´Đ»ŃŹ Đ±ŃĐşŃĐ¸Ń€ŃĐ˛Đ°Đ˝Đ˝ŃŹ"
+            going: "Ð’Ð¸Ñ—Ð¶Ð´Ð¶Ð°Ñ”",
+            not_ready: "ÐÐµ Ð¿Ñ€Ð°Ñ†ÑŽÑ”",
+            on_destination: "Ð’ Ð¿ÑƒÐ½ÐºÑ‚Ñ– Ð¿Ñ€Ð¸Ð·Ð½Ð°Ñ‡ÐµÐ½Ð½Ñ Ð´Ð»Ñ Ð¿ÐµÑ€ÐµÐ²ÐµÐ·ÐµÐ½Ð½Ñ",
+            on_place: "ÐÐ° Ð¼Ñ–ÑÑ†Ñ–",
+            patient_transported: "ÐŸÐµÑ€ÐµÐ²ÐµÐ·ÐµÐ½Ð½Ñ Ð¿Ð°Ñ†Ñ–Ñ”Ð½Ñ‚Ð°",
+            prisoner_transported: "ÐŸÐµÑ€ÐµÐ²ÐµÐ·ÐµÐ½Ð½Ñ Ð²'ÑÐ·Ð½Ñ",
+            ready_home: "Ð”Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ Ð½Ð° ÑÑ‚Ð°Ð½Ñ†Ñ–Ñ—",
+            ready_traveling: "ÐÐµ Ð¼Ð°Ñ” Ð·Ð°Ð²Ð´Ð°Ð½ÑŒ Ñ– Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾",
+            talking_wish: "Ð—Ð°Ð¿Ð¸Ñ‚ Ð½Ð° Ð¿ÐµÑ€ÐµÐ²ÐµÐ·ÐµÐ½Ð½Ñ",
+            waiting_for_vehicle: "ÐžÑ‡Ñ–ÐºÑƒÑ” Ð¼Ð°ÑˆÐ¸Ð½Ñƒ Ð´Ð»Ñ Ð±ÑƒÐºÑÐ¸Ñ€ÑƒÐ²Ð°Ð½Ð½Ñ"
         },
         intervention_order: {
-            back: "ĐťĐ°Đ·Đ°Đ´",
-            category: "ĐšĐ°Ń‚ĐµĐłĐľŃ€Ń–ŃŹ",
-            colour: "ĐšĐľĐ»Ń–Ń€",
-            column: "ĐˇŃ‚ĐľĐ˛ĐżŃ‡Đ¸Đş",
-            column_number: "ĐťĐľĐĽĐµŃ€ ŃŃ‚ĐľĐ˛ĐżŃ‡Đ¸ĐşĐ°",
-            column_number_hint: "ĐŻĐşŃ‰Đľ Đ·Đ°Đ´Đ°Đ˝Đ¸Đą Đ˝ĐľĐĽĐµŃ€ ŃŃ‚ĐľĐ˛ĐżŃ‡Đ¸ĐşĐ°, Ń Đ˛Ń–Đ´ĐżĐľĐ˛Ń–Đ´Đ˝ĐľĐĽŃ ŃŃ‚ĐľĐ˛ĐżŃ‡Đ¸ĐşŃ Đ˝Đ° ŃŃ‚ĐľŃ€Ń–Đ˝Ń†Ń– Ń‚Ń€Đ¸Đ˛ĐľĐłĐ¸ Đ±ŃĐ´Đµ Đ˛Ń–Đ´ĐľĐ±Ń€Đ°Đ¶ĐµĐ˝Đľ Đ·Đ°ĐżĐ¸Ń ĐżŃ€Đ°Đ˛Đ¸Đ»Đ° ĐźĐ†Đ .",
-            create_intervention_order: "ĐˇŃ‚Đ˛ĐľŃ€Đ¸Ń‚Đ¸ Đ˝ĐľĐ˛Đµ ĐżŃ€Đ°Đ˛Đ¸Đ»Đľ ĐźĐ†Đ ",
-            "delete": "Đ’Đ¸Đ´Đ°Đ»Đ¸Ń‚Đ¸",
-            delete_all: "ĐźĐľĐ˛Đ˝Ń–ŃŃ‚ŃŽ Đ˛Đ¸Đ´Đ°Đ»Đ¸Ń‚Đ¸ ĐżŃ€Đ°Đ˛Đ¸Đ»Đ° ĐźĐ†Đ ",
-            delete_all_confirm: "Đ”Ń–ĐąŃĐ˝Đľ ĐżĐľĐ˛Đ˝Ń–ŃŃ‚ŃŽ Đ˛Đ¸Đ´Đ°Đ»Đ¸Ń‚Đ¸ ĐżŃ€Đ°Đ˛Đ¸Đ»Đľ ĐźĐ†Đ ? Đ†ŃĐ˝ŃŃŽŃ‡Ń– ĐµĐşŃĐżĐľŃ€Ń‚ĐľĐ˛Đ°Đ˝Ń– Đ·Đ°ĐżĐ¸ŃĐ¸ Đ±Ń–Đ»ŃŚŃĐµ Đ˝ĐµĐ´ĐľŃŃ‚ŃĐżĐ˝Ń–!",
-            description: "Đ†ĐĽ'ŃŹ",
-            edit: "Đ ĐµĐ´Đ°ĐłŃĐ˛Đ°Ń‚Đ¸",
+            back: "ÐÐ°Ð·Ð°Ð´",
+            category: "ÐšÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ñ–Ñ",
+            colour: "ÐšÐ¾Ð»Ñ–Ñ€",
+            column: "Ð¡Ñ‚Ð¾Ð²Ð¿Ñ‡Ð¸Ðº",
+            column_number: "ÐÐ¾Ð¼ÐµÑ€ ÑÑ‚Ð¾Ð²Ð¿Ñ‡Ð¸ÐºÐ°",
+            column_number_hint: "Ð¯ÐºÑ‰Ð¾ Ð·Ð°Ð´Ð°Ð½Ð¸Ð¹ Ð½Ð¾Ð¼ÐµÑ€ ÑÑ‚Ð¾Ð²Ð¿Ñ‡Ð¸ÐºÐ°, Ñƒ Ð²Ñ–Ð´Ð¿Ð¾Ð²Ñ–Ð´Ð½Ð¾Ð¼Ñƒ ÑÑ‚Ð¾Ð²Ð¿Ñ‡Ð¸ÐºÑƒ Ð½Ð° ÑÑ‚Ð¾Ñ€Ñ–Ð½Ñ†Ñ– Ñ‚Ñ€Ð¸Ð²Ð¾Ð³Ð¸ Ð±ÑƒÐ´Ðµ Ð²Ñ–Ð´Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¾ Ð·Ð°Ð¿Ð¸Ñ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð° ÐŸÐ†Ð .",
+            create_intervention_order: "Ð¡Ñ‚Ð²Ð¾Ñ€Ð¸Ñ‚Ð¸ Ð½Ð¾Ð²Ðµ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð¾ ÐŸÐ†Ð ",
+            "delete": "Ð’Ð¸Ð´Ð°Ð»Ð¸Ñ‚Ð¸",
+            delete_all: "ÐŸÐ¾Ð²Ð½Ñ–ÑÑ‚ÑŽ Ð²Ð¸Ð´Ð°Ð»Ð¸Ñ‚Ð¸ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð° ÐŸÐ†Ð ",
+            delete_all_confirm: "Ð”Ñ–Ð¹ÑÐ½Ð¾ Ð¿Ð¾Ð²Ð½Ñ–ÑÑ‚ÑŽ Ð²Ð¸Ð´Ð°Ð»Ð¸Ñ‚Ð¸ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð¾ ÐŸÐ†Ð ? Ð†ÑÐ½ÑƒÑŽÑ‡Ñ– ÐµÐºÑÐ¿Ð¾Ñ€Ñ‚Ð¾Ð²Ð°Ð½Ñ– Ð·Ð°Ð¿Ð¸ÑÐ¸ Ð±Ñ–Ð»ÑŒÑˆÐµ Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ–!",
+            description: "Ð†Ð¼'Ñ",
+            edit: "Ð ÐµÐ´Ð°Ð³ÑƒÐ²Ð°Ñ‚Ð¸",
             "export": {
-                "export": "Đ•ĐşŃĐżĐľŃ€Ń‚",
-                "import": "Đ†ĐĽĐżĐľŃ€Ń‚",
-                import_done: "Đ’Đ¸Đ±Ń€Đ°Đ˝Ń– Đ·Đ°ĐżĐ¸ŃĐ¸ Ń–ĐĽĐżĐľŃ€Ń‚ĐľĐ˛Đ°Đ˝Đľ Ń– Đ·Đ°Đ˝ĐµŃĐµĐ˝Đľ Ń Đ˛Đ°Ń ĐżĐ»Đ°Đ˝ ĐźĐ†Đ .",
-                saved: "Đ•ĐşŃĐżĐľŃ€Ń‚ ĐżŃ€Đ°Đ˛Đ¸Đ» ĐźĐ†Đ ",
-                saved_text: "Đ’Đ°ŃĐµ ĐżŃ€Đ°Đ˛Đ¸Đ»Đľ ĐźĐ†Đ  ĐżŃ–Đ´ĐłĐľŃ‚ĐľĐ˛Đ»ĐµĐ˝Đµ Đ´Đľ ĐµĐşŃĐżĐľŃ€Ń‚Ń. Đ—Đ° Đ´ĐľĐżĐľĐĽĐľĐłĐľŃŽ ĐżĐľŃĐ¸Đ»Đ°Đ˝Đ˝ŃŹ, Ń–Đ˝ŃĐ¸Đą ĐłŃ€Đ°Đ˛ĐµŃ†ŃŚ Đ·ĐĽĐľĐ¶Đµ ĐµĐşŃĐżĐľŃ€Ń‚ŃĐ˛Đ°Ń‚Đ¸ ĐżŃ€Đ°Đ˛Đ¸Đ»Đľ ĐźĐ†Đ . ĐŻĐşŃ‰Đľ ĐżŃ€ĐľŃ‚ŃŹĐłĐľĐĽ Ń†ŃŚĐľĐłĐľ Ń‡Đ°ŃŃ Đ˛Đ¸ Đ·ĐĽŃ–Đ˝Đ¸Ń‚Đµ ŃĐ˛ĐľŃ” ĐżŃ€Đ°Đ˛Đ¸Đ»Đľ ĐźĐ†Đ , Đ·ĐĽŃ–Đ˝Ń Đ±ŃĐ´Đµ Đ°Đ˛Ń‚ĐľĐĽĐ°Ń‚Đ¸Ń‡Đ˝Đľ Đ·Đ°ŃŃ‚ĐľŃĐľĐ˛Đ°Đ˝Đľ Đ´Đľ ĐżŃ€Đ°Đ˛Đ¸Đ»Đ°, Ń‰Đľ ĐµĐşŃĐżĐľŃ€Ń‚ŃŃ”Ń‚ŃŚŃŃŹ."
+                "export": "Ð•ÐºÑÐ¿Ð¾Ñ€Ñ‚",
+                "import": "Ð†Ð¼Ð¿Ð¾Ñ€Ñ‚",
+                import_done: "Ð’Ð¸Ð±Ñ€Ð°Ð½Ñ– Ð·Ð°Ð¿Ð¸ÑÐ¸ Ñ–Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¾Ð²Ð°Ð½Ð¾ Ñ– Ð·Ð°Ð½ÐµÑÐµÐ½Ð¾ Ñƒ Ð²Ð°Ñˆ Ð¿Ð»Ð°Ð½ ÐŸÐ†Ð .",
+                saved: "Ð•ÐºÑÐ¿Ð¾Ñ€Ñ‚ Ð¿Ñ€Ð°Ð²Ð¸Ð» ÐŸÐ†Ð ",
+                saved_text: "Ð’Ð°ÑˆÐµ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð¾ ÐŸÐ†Ð  Ð¿Ñ–Ð´Ð³Ð¾Ñ‚Ð¾Ð²Ð»ÐµÐ½Ðµ Ð´Ð¾ ÐµÐºÑÐ¿Ð¾Ñ€Ñ‚Ñƒ. Ð—Ð° Ð´Ð¾Ð¿Ð¾Ð¼Ð¾Ð³Ð¾ÑŽ Ð¿Ð¾ÑÐ¸Ð»Ð°Ð½Ð½Ñ, Ñ–Ð½ÑˆÐ¸Ð¹ Ð³Ñ€Ð°Ð²ÐµÑ†ÑŒ Ð·Ð¼Ð¾Ð¶Ðµ ÐµÐºÑÐ¿Ð¾Ñ€Ñ‚ÑƒÐ²Ð°Ñ‚Ð¸ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð¾ ÐŸÐ†Ð . Ð¯ÐºÑ‰Ð¾ Ð¿Ñ€Ð¾Ñ‚ÑÐ³Ð¾Ð¼ Ñ†ÑŒÐ¾Ð³Ð¾ Ñ‡Ð°ÑÑƒ Ð²Ð¸ Ð·Ð¼Ñ–Ð½Ð¸Ñ‚Ðµ ÑÐ²Ð¾Ñ” Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð¾ ÐŸÐ†Ð , Ð·Ð¼Ñ–Ð½Ñƒ Ð±ÑƒÐ´Ðµ Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡Ð½Ð¾ Ð·Ð°ÑÑ‚Ð¾ÑÐ¾Ð²Ð°Ð½Ð¾ Ð´Ð¾ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð°, Ñ‰Ð¾ ÐµÐºÑÐ¿Ð¾Ñ€Ñ‚ÑƒÑ”Ñ‚ÑŒÑÑ."
             },
-            hotkey_hint: "Đ’Đ¸Đ±ĐµŃ€Ń–Ń‚ŃŚ ĐłĐ°Ń€ŃŹŃ‡Ń ĐşĐ»Đ°Đ˛Ń–ŃŃ Đ´Đ»ŃŹ Đ˛Đ¸Đ±Ń€Đ°Đ˝ĐľŃ— ĐĽĐ°ŃĐ¸Đ˝Đ¸. ĐťĐ°Ń‚Đ¸ŃĐ˝Ń–Ń‚ŃŚ Ń Đ˛Ń–ĐşĐ˝Ń– Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ: ALT + Đ˛Đ°ŃĐ° ĐłĐ°Ń€ŃŹŃ‡Đ° ĐşĐ»Đ°Đ˛Ń–ŃĐ° (Đ°Đ±Đľ Ń Firefox: ALT + SHIFT + Đ˛Đ°ŃĐ° ĐłĐ°Ń€ŃŹŃ‡Đ° ĐşĐ»Đ°Đ˛Ń–ŃĐ° Đ°Đ±Đľ Ń mac os: ctrl + alt + Đ˛Đ°ŃĐ° ĐłĐ°Ń€ŃŹŃ‡Đ° ĐşĐ»Đ°Đ˛Ń–ŃĐ°), Ń‰ĐľĐ± Đ˛Đ¸Đ´Ń–Đ»Đ¸Ń‚Đ¸ Đ˛Đ¸Đ±Ń€Đ°Đ˝Ń ĐĽĐ°ŃĐ¸Đ˝Ń.",
-            intervention_order: "Đ ĐµĐ´Đ°ĐłŃĐ˛Đ°Ń‚Đ¸ ĐżŃ€Đ°Đ˛Đ¸Đ»Đ° ĐźĐ†Đ ",
-            name: "Đ†ĐĽ'ŃŹ",
-            no_intervention_created: "Đ’Đ¸ Ń‰Đµ Đ˝Đµ ŃŃ‚Đ˛ĐľŃ€Đ¸Đ»Đ¸ ĐżŃ€Đ°Đ˛Đ¸Đ»Đľ ĐźĐ†Đ .",
-            options: "ĐžĐżŃ†Ń–Ń—",
-            reset: "ĐˇĐşĐ¸Đ˝ŃŚŃ‚Đµ ĐżĐľĐżĐµŃ€ĐµĐ´Đ˝Ń” Đ˛Đ¸Đ´Ń–Đ»ĐµĐ˝Đ˝ŃŹ Ń Đ˛Ń–ĐşĐ˝Ń– Ń‚Ń€Đ¸Đ˛ĐľĐłĐ¸.",
-            reset_hint: "ĐŻĐşŃ‰Đľ ĐĽĐ°ŃĐ¸Đ˝Ń Đ˝Đµ Đ˛Đ¸Đ´Ń–Đ»ĐµĐ˝Đľ Ń Đ˛Ń–ĐşĐ˝Ń– Đ˛Ń–Đ´ĐżŃ€Đ°Đ˛Đ»ĐµĐ˝Đ˝ŃŹ, ĐĽĐľĐ¶Đ˝Đ° ŃĐşĐľŃ€Đ¸ŃŃ‚Đ°Ń‚Đ¸ŃŃŹ Ń†Ń–Ń”ŃŽ ĐşĐ˝ĐľĐżĐşĐľŃŽ Đ´Đ»ŃŹ ŃĐşĐ¸Đ´Đ°Đ˝Đ˝ŃŹ.",
-            save: "Đ—Đ±ĐµŃ€ĐµĐłŃ‚Đ¸",
-            station: "ĐˇŃ‚Đ°Đ˝Ń†Ń–ŃŹ",
-            station_hint: "ĐźŃ€Đ¸ Đ˛Đ¸Đ±ĐľŃ€Ń– Đ±ŃĐ´Ń–Đ˛Đ»Ń–, Đ±ŃĐ´ŃŃ‚ŃŚ Đ˛Đ¸Đ´Ń–Đ»ĐµĐ˝Ń– Đ»Đ¸ŃĐµ ĐĽĐ°ŃĐ¸Đ˝Đ¸ Đ˛Ń–Đ´ĐżĐľĐ˛Ń–Đ´Đ˝ĐľŃ— Đ±ŃĐ´Ń–Đ˛Đ»Ń–.",
-            successfully_created: "ĐźŃ€Đ°Đ˛Đ¸Đ»Đľ ĐźĐ†Đ  ŃŃĐżŃ–ŃĐ˝Đľ ŃŃ‚Đ˛ĐľŃ€ĐµĐ˝Đľ.",
-            successfully_deleted: "ĐźŃ€Đ°Đ˛Đ¸Đ»Đľ ĐźĐ†Đ  Đ˛Đ¸Đ´Đ°Đ»ĐµĐ˝Đľ",
-            successfully_updated: "ĐźŃ€Đ°Đ˛Đ¸Đ»Đ° ĐźĐ†Đ  ŃŃĐżŃ–ŃĐ˝Đľ ĐľĐ˝ĐľĐ˛Đ»ĐµĐ˝Đľ.",
+            hotkey_hint: "Ð’Ð¸Ð±ÐµÑ€Ñ–Ñ‚ÑŒ Ð³Ð°Ñ€ÑÑ‡Ñƒ ÐºÐ»Ð°Ð²Ñ–ÑˆÑƒ Ð´Ð»Ñ Ð²Ð¸Ð±Ñ€Ð°Ð½Ð¾Ñ— Ð¼Ð°ÑˆÐ¸Ð½Ð¸. ÐÐ°Ñ‚Ð¸ÑÐ½Ñ–Ñ‚ÑŒ Ñƒ Ð²Ñ–ÐºÐ½Ñ– Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ: ALT + Ð²Ð°ÑˆÐ° Ð³Ð°Ñ€ÑÑ‡Ð° ÐºÐ»Ð°Ð²Ñ–ÑˆÐ° (Ð°Ð±Ð¾ Ñƒ Firefox: ALT + SHIFT + Ð²Ð°ÑˆÐ° Ð³Ð°Ñ€ÑÑ‡Ð° ÐºÐ»Ð°Ð²Ñ–ÑˆÐ° Ð°Ð±Ð¾ Ñƒ mac os: ctrl + alt + Ð²Ð°ÑˆÐ° Ð³Ð°Ñ€ÑÑ‡Ð° ÐºÐ»Ð°Ð²Ñ–ÑˆÐ°), Ñ‰Ð¾Ð± Ð²Ð¸Ð´Ñ–Ð»Ð¸Ñ‚Ð¸ Ð²Ð¸Ð±Ñ€Ð°Ð½Ñƒ Ð¼Ð°ÑˆÐ¸Ð½Ñƒ.",
+            intervention_order: "Ð ÐµÐ´Ð°Ð³ÑƒÐ²Ð°Ñ‚Ð¸ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð° ÐŸÐ†Ð ",
+            name: "Ð†Ð¼'Ñ",
+            no_intervention_created: "Ð’Ð¸ Ñ‰Ðµ Ð½Ðµ ÑÑ‚Ð²Ð¾Ñ€Ð¸Ð»Ð¸ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð¾ ÐŸÐ†Ð .",
+            options: "ÐžÐ¿Ñ†Ñ–Ñ—",
+            reset: "Ð¡ÐºÐ¸Ð½ÑŒÑ‚Ðµ Ð¿Ð¾Ð¿ÐµÑ€ÐµÐ´Ð½Ñ” Ð²Ð¸Ð´Ñ–Ð»ÐµÐ½Ð½Ñ Ñƒ Ð²Ñ–ÐºÐ½Ñ– Ñ‚Ñ€Ð¸Ð²Ð¾Ð³Ð¸.",
+            reset_hint: "Ð¯ÐºÑ‰Ð¾ Ð¼Ð°ÑˆÐ¸Ð½Ñƒ Ð½Ðµ Ð²Ð¸Ð´Ñ–Ð»ÐµÐ½Ð¾ Ñƒ Ð²Ñ–ÐºÐ½Ñ– Ð²Ñ–Ð´Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð½Ñ, Ð¼Ð¾Ð¶Ð½Ð° ÑÐºÐ¾Ñ€Ð¸ÑÑ‚Ð°Ñ‚Ð¸ÑÑ Ñ†Ñ–Ñ”ÑŽ ÐºÐ½Ð¾Ð¿ÐºÐ¾ÑŽ Ð´Ð»Ñ ÑÐºÐ¸Ð´Ð°Ð½Ð½Ñ.",
+            save: "Ð—Ð±ÐµÑ€ÐµÐ³Ñ‚Ð¸",
+            station: "Ð¡Ñ‚Ð°Ð½Ñ†Ñ–Ñ",
+            station_hint: "ÐŸÑ€Ð¸ Ð²Ð¸Ð±Ð¾Ñ€Ñ– Ð±ÑƒÐ´Ñ–Ð²Ð»Ñ–, Ð±ÑƒÐ´ÑƒÑ‚ÑŒ Ð²Ð¸Ð´Ñ–Ð»ÐµÐ½Ñ– Ð»Ð¸ÑˆÐµ Ð¼Ð°ÑˆÐ¸Ð½Ð¸ Ð²Ñ–Ð´Ð¿Ð¾Ð²Ñ–Ð´Ð½Ð¾Ñ— Ð±ÑƒÐ´Ñ–Ð²Ð»Ñ–.",
+            successfully_created: "ÐŸÑ€Ð°Ð²Ð¸Ð»Ð¾ ÐŸÐ†Ð  ÑƒÑÐ¿Ñ–ÑˆÐ½Ð¾ ÑÑ‚Ð²Ð¾Ñ€ÐµÐ½Ð¾.",
+            successfully_deleted: "ÐŸÑ€Ð°Ð²Ð¸Ð»Ð¾ ÐŸÐ†Ð  Ð²Ð¸Ð´Ð°Ð»ÐµÐ½Ð¾",
+            successfully_updated: "ÐŸÑ€Ð°Ð²Ð¸Ð»Ð° ÐŸÐ†Ð  ÑƒÑÐ¿Ñ–ÑˆÐ½Ð¾ Ð¾Ð½Ð¾Ð²Ð»ÐµÐ½Ð¾.",
             vehicles: {
-                ab_atemschutz_only: "ĐśĐľĐ´ŃĐ»ŃŚ Đ´Đ¸Ń…Đ°Đ»ŃŚĐ˝Đ¸Ń… Đ°ĐżĐ°Ń€Đ°Ń‚Ń–Đ˛",
-                ab_einsatzleitung_only: "ĐśĐľĐ´ŃĐ»ŃŚ ŃĐżŃ€Đ°Đ˛Đ»Ń–Đ˝Đ˝ŃŹ",
-                ab_gefahrgut_only: "ĐśĐľĐ´ŃĐ»ŃŚ Đ·Đ˝ĐµĐ·Đ°Ń€Đ°Đ¶ĐµĐ˝Đ˝ŃŹ",
-                ab_oel_only: "ĐśĐľĐ´ŃĐ»ŃŚ Đ›ĐĐ Đť",
-                ab_ruest: "Đ˘ĐµŃ…Đ˝ĐľĐ»ĐľĐłŃ–Ń‡Đ˝Đ¸Đą/Ń€ŃŹŃ‚ŃĐ˛Đ°Đ»ŃŚĐ˝Đ¸Đą ĐĽĐľĐ´ŃĐ»ŃŚ",
+                ab_atemschutz_only: "ÐœÐ¾Ð´ÑƒÐ»ÑŒ Ð´Ð¸Ñ…Ð°Ð»ÑŒÐ½Ð¸Ñ… Ð°Ð¿Ð°Ñ€Ð°Ñ‚Ñ–Ð²",
+                ab_einsatzleitung_only: "ÐœÐ¾Ð´ÑƒÐ»ÑŒ ÑƒÐ¿Ñ€Ð°Ð²Ð»Ñ–Ð½Ð½Ñ",
+                ab_gefahrgut_only: "ÐœÐ¾Ð´ÑƒÐ»ÑŒ Ð·Ð½ÐµÐ·Ð°Ñ€Ð°Ð¶ÐµÐ½Ð½Ñ",
+                ab_oel_only: "ÐœÐ¾Ð´ÑƒÐ»ÑŒ Ð›ÐÐ Ð",
+                ab_ruest: "Ð¢ÐµÑ…Ð½Ð¾Ð»Ð¾Ð³Ñ–Ñ‡Ð½Ð¸Ð¹/Ñ€ÑÑ‚ÑƒÐ²Ð°Ð»ÑŒÐ½Ð¸Ð¹ Ð¼Ð¾Ð´ÑƒÐ»ÑŒ",
                 ab_ruest_rw: "",
-                abl2wasser_only: "ĐśĐľĐ´ŃĐ»ŃŚ ĐżĐľĐ´Đ°Ń‡Ń– ŃĐ»Đ°Đ˝ĐłŃ",
-                ambulance: "Đ ĐµĐ°Đ˝Ń–ĐĽĐľĐ±Ń–Đ»ŃŚ",
+                abl2wasser_only: "ÐœÐ¾Ð´ÑƒÐ»ÑŒ Ð¿Ð¾Ð´Ð°Ñ‡Ñ– ÑˆÐ»Ð°Ð½Ð³Ñƒ",
+                ambulance: "Ð ÐµÐ°Ð½Ñ–Ð¼Ð¾Ð±Ñ–Ð»ÑŒ",
                 ambulance_or_rapid_responder: "",
-                arff: "ĐĐ Đ†Đź (ĐżĐľĐ¶ĐµĐ¶Đ˝Đ° ĐĽĐ°ŃĐ¸Đ˝Đ° Đ°ĐµŃ€ĐľĐżĐľŃ€Ń‚Ń)",
-                battalion_chief_unit: "ĐźŃ–Đ´Ń€ĐľĐ·Đ´Ń–Đ» ĐşĐľĐĽĐ°Đ˝Đ´Đ¸Ń€Đ° Đ±Đ°Ń‚Đ°Đ»ŃŚĐąĐľĐ˝Ń",
-                boot: "ĐˇŃĐ´Đ˝Đ° (Đ·Đ°ĐłĐ°Đ»ŃŚĐ˝Ń–)",
+                arff: "ÐÐ Ð†ÐŸ (Ð¿Ð¾Ð¶ÐµÐ¶Ð½Ð° Ð¼Ð°ÑˆÐ¸Ð½Ð° Ð°ÐµÑ€Ð¾Ð¿Ð¾Ñ€Ñ‚Ñƒ)",
+                battalion_chief_unit: "ÐŸÑ–Ð´Ñ€Ð¾Ð·Ð´Ñ–Ð» ÐºÐ¾Ð¼Ð°Ð½Ð´Ð¸Ñ€Ð° Ð±Ð°Ñ‚Ð°Ð»ÑŒÐ¹Ð¾Ð½Ñƒ",
+                boot: "Ð¡ÑƒÐ´Ð½Ð° (Ð·Ð°Ð³Ð°Ð»ÑŒÐ½Ñ–)",
                 dekon_p: "",
-                division_chief_unit: "ĐśĐľĐ±Ń–Đ»ŃŚĐ˝Đ¸Đą ĐşĐľĐĽĐ°Đ˝Đ´Đ˝Đ¸Đą ĐżŃĐ˝ĐşŃ‚",
+                division_chief_unit: "ÐœÐ¾Ð±Ñ–Ð»ÑŒÐ½Ð¸Ð¹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ð¸Ð¹ Ð¿ÑƒÐ½ÐºÑ‚",
                 dlk_or_tm50: "",
-                elw1_or_elw2: "ĐźŃ–Đ´Ń€ĐľĐ·Đ´Ń–Đ» ĐşĐľĐĽĐ°Đ˝Đ´Đ¸Ń€Đ° Đ±Đ°Ń‚Đ°Đ»ŃŚĐąĐľĐ˝Ń, ĐĽĐľĐ±Ń–Đ»ŃŚĐ˝Đ¸Đą ĐşĐľĐĽĐ°Đ˝Đ´Đ˝Đ¸Đą ĐżŃĐ˝ĐşŃ‚ Đ°Đ±Đľ ĐĽĐľĐ±Ń–Đ»ŃŚĐ˝Đ¸Đą ĐĽĐľĐ´ŃĐ»ŃŚ ŃĐżŃ€Đ°Đ˛Đ»Ń–Đ˝Đ˝ŃŹ ",
+                elw1_or_elw2: "ÐŸÑ–Ð´Ñ€Ð¾Ð·Ð´Ñ–Ð» ÐºÐ¾Ð¼Ð°Ð½Ð´Ð¸Ñ€Ð° Ð±Ð°Ñ‚Ð°Ð»ÑŒÐ¹Ð¾Ð½Ñƒ, Ð¼Ð¾Ð±Ñ–Ð»ÑŒÐ½Ð¸Ð¹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ð¸Ð¹ Ð¿ÑƒÐ½ÐºÑ‚ Ð°Ð±Ð¾ Ð¼Ð¾Ð±Ñ–Ð»ÑŒÐ½Ð¸Ð¹ Ð¼Ð¾Ð´ÑƒÐ»ÑŒ ÑƒÐ¿Ñ€Ð°Ð²Ð»Ñ–Ð½Ð½Ñ ",
                 elw2_or_ab_elw: "",
                 elw3: "",
                 elw_airport: "",
-                emergency_ambulance: "ĐśĐ°ŃĐ¸Đ˝Đ° Ń‡Đ¸ Đ˛ĐµŃ€Ń‚ĐľĐ»Ń–Ń‚ ŃĐ˛Đ¸Đ´ĐşĐľŃ— Đ´ĐľĐżĐľĐĽĐľĐłĐ¸",
-                fire_truck: "ĐźĐľĐ¶ĐµĐ¶Đ˝Ń– Đ°Đ˛Ń‚ĐľĐĽĐľĐ±Ń–Đ»Ń–",
-                fireboat: "Đ’ĐµĐ»Đ¸ĐşĐ¸Đą ĐżĐľĐ¶ĐµĐ¶Đ˝Đ¸Đą ĐşĐ°Ń‚ĐµŃ€",
+                emergency_ambulance: "ÐœÐ°ÑˆÐ¸Ð½Ð° Ñ‡Ð¸ Ð²ÐµÑ€Ñ‚Ð¾Ð»Ñ–Ñ‚ ÑˆÐ²Ð¸Ð´ÐºÐ¾Ñ— Ð´Ð¾Ð¿Ð¾Ð¼Ð¾Ð³Ð¸",
+                fire_truck: "ÐŸÐ¾Ð¶ÐµÐ¶Ð½Ñ– Ð°Ð²Ñ‚Ð¾Ð¼Ð¾Ð±Ñ–Ð»Ñ–",
+                fireboat: "Ð’ÐµÐ»Ð¸ÐºÐ¸Ð¹ Ð¿Ð¾Ð¶ÐµÐ¶Ð½Ð¸Ð¹ ÐºÐ°Ñ‚ÐµÑ€",
                 fly_car: "Fly-Car",
                 fukw: "",
                 fwk: "",
                 gefkw: "",
-                gkw: "Đ’Đ°Đ˝Ń‚Đ°Đ¶Ń–Đ˛ĐşĐ°",
-                grtw: "ĐźŃ–Đ´Ń€ĐľĐ·Đ´Ń–Đ» ĐżĐľ Ń€ĐľĐ±ĐľŃ‚Ń– Đ· Đ˛ĐµĐ»Đ¸ĐşĐľŃŽ ĐşŃ–Đ»ŃŚĐşŃ–ŃŃ‚ŃŽ ĐżĐľŃŃ‚Ń€Đ°Đ¶Đ´Đ°Đ»Đ¸Ń…",
+                gkw: "Ð’Ð°Ð½Ñ‚Ð°Ð¶Ñ–Ð²ÐºÐ°",
+                grtw: "ÐŸÑ–Ð´Ñ€Ð¾Ð·Ð´Ñ–Ð» Ð¿Ð¾ Ñ€Ð¾Ð±Ð¾Ñ‚Ñ– Ð· Ð²ÐµÐ»Ð¸ÐºÐ¾ÑŽ ÐºÑ–Ð»ÑŒÐºÑ–ÑÑ‚ÑŽ Ð¿Ð¾ÑÑ‚Ñ€Ð°Ð¶Ð´Ð°Ð»Ð¸Ñ…",
                 grtw0: "",
                 grtw1: "",
                 grukw: "",
                 gw_atemschutz_only: "",
-                gw_gefahrgut: "Đ—Đ˝ĐµĐ·Đ°Ń€Đ°Đ¶ĐµĐ˝Đ˝ŃŹ",
+                gw_gefahrgut: "Ð—Ð½ÐµÐ·Ð°Ñ€Ð°Ð¶ÐµÐ½Ð½Ñ",
                 gw_gefahrgut_only: "",
-                gw_hoehenrettung: "ĐĐ˛Ń‚ĐľĐĽĐľĐ±Ń–Đ»ŃŚ Đ· Đ´Ń€Đ°Đ±Đ¸Đ˝ĐľŃŽ",
-                gw_messtechnik: "ĐśĐµŃ‚Ń€ĐľĐ»ĐľĐłŃ–Ń‡Đ˝Đ¸Đą Đ°Đ˛Ń‚ĐľĐĽĐľĐ±Ń–Đ»ŃŚ",
+                gw_hoehenrettung: "ÐÐ²Ñ‚Ð¾Ð¼Ð¾Ð±Ñ–Ð»ÑŒ Ð· Ð´Ñ€Ð°Ð±Ð¸Ð½Ð¾ÑŽ",
+                gw_messtechnik: "ÐœÐµÑ‚Ñ€Ð¾Ð»Ð¾Ð³Ñ–Ñ‡Ð½Ð¸Ð¹ Ð°Ð²Ñ‚Ð¾Ð¼Ð¾Ð±Ñ–Ð»ÑŒ",
                 gw_oel_only: "",
                 gw_san: "",
                 gw_taucher: "",
-                gw_wasserrettung: "Đ’ĐľĐ»ĐľĐłĐľŃŃ‚Ń€Đ¸ĐĽĐ°Đ˝Đ˝ŃŹ",
+                gw_wasserrettung: "Ð’Ð¾Ð»Ð¾Ð³Ð¾ÑƒÑ‚Ñ€Ð¸Ð¼Ð°Ð½Ð½Ñ",
                 gw_werkfeuerwehr: "",
-                gwl2wasser_only: "ĐśĐ°ŃĐ¸Đ˝Đ° Ń–Đ· Đ±Ń€Đ°Đ˝Đ´ŃĐżĐľĐąĐ˝Ń‚ĐľĐĽ",
-                hems: "Đ’ĐµŃ€Ń‚ĐľĐ»Ń–Ń‚ Đ˝ĐµĐ˛Ń–Đ´ĐşĐ»Đ°Đ´Đ˝ĐľŃ— ĐĽĐµĐ´Đ¸Ń‡Đ˝ĐľŃ— Đ´ĐľĐżĐľĐĽĐľĐłĐ¸",
+                gwl2wasser_only: "ÐœÐ°ÑˆÐ¸Ð½Ð° Ñ–Ð· Ð±Ñ€Ð°Ð½Ð´ÑÐ¿Ð¾Ð¹Ð½Ñ‚Ð¾Ð¼",
+                hems: "Ð’ÐµÑ€Ñ‚Ð¾Ð»Ñ–Ñ‚ Ð½ÐµÐ²Ñ–Ð´ÐºÐ»Ð°Ð´Ð½Ð¾Ñ— Ð¼ÐµÐ´Ð¸Ñ‡Ð½Ð¾Ñ— Ð´Ð¾Ð¿Ð¾Ð¼Ð¾Ð³Ð¸",
                 hlf_only: "",
                 hlf_or_rw_and_lf: "",
                 hondengeleider: "",
-                k9: "ĐźŃ–Đ´Ń€ĐľĐ·Đ´Ń–Đ» ĐşŃ–Đ˝ĐľĐ»ĐľĐłŃ–Đ˛",
+                k9: "ÐŸÑ–Ð´Ñ€Ð¾Ð·Ð´Ñ–Ð» ÐºÑ–Ð½Ð¾Ð»Ð¾Ð³Ñ–Ð²",
                 kdow_lna: "",
-                kdow_orgl: "ĐšĐµŃ€Ń–Đ˛Đ˝Đ¸Đş ŃĐ˛Đ¸Đ´ĐşĐľŃ—",
+                kdow_orgl: "ÐšÐµÑ€Ñ–Ð²Ð½Ð¸Ðº ÑˆÐ²Ð¸Ð´ÐºÐ¾Ñ—",
                 ktw_b: "",
                 ktw_or_rtw: "",
-                lebefkw: "Đ›ĐµĐłĐşĐ¸Đą ĐşĐľĐĽĐ°Đ˝Đ´Đ˝Đ¸Đą ĐżŃĐ˝ĐşŃ‚",
-                lf_only: "ĐźĐľĐ¶ĐµĐ¶Đ˝Ń– ĐĽĐ°ŃĐ¸Đ˝Đ¸",
-                long_distance_ambulance: "Đ ĐµĐ°Đ˝Ń–ĐĽĐľĐ±Ń–Đ»ŃŚ",
-                mask_service_unit: "ĐśĐľĐ±Ń–Đ»ŃŚĐ˝Đ¸Đą ĐżĐľĐ˛Ń–Ń‚Ń€ŃŹĐ˝Đ¸Đą ĐżŃ–Đ´Ń€ĐľĐ·Đ´Ń–Đ»",
+                lebefkw: "Ð›ÐµÐ³ÐºÐ¸Ð¹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ð¸Ð¹ Ð¿ÑƒÐ½ÐºÑ‚",
+                lf_only: "ÐŸÐ¾Ð¶ÐµÐ¶Ð½Ñ– Ð¼Ð°ÑˆÐ¸Ð½Ð¸",
+                long_distance_ambulance: "Ð ÐµÐ°Ð½Ñ–Ð¼Ð¾Ð±Ñ–Ð»ÑŒ",
+                mask_service_unit: "ÐœÐ¾Ð±Ñ–Ð»ÑŒÐ½Ð¸Ð¹ Ð¿Ð¾Ð²Ñ–Ñ‚Ñ€ÑÐ½Ð¸Ð¹ Ð¿Ñ–Ð´Ñ€Ð¾Ð·Ð´Ñ–Ð»",
                 mek_mtf: "",
                 mek_zf: "",
-                mtw: "Đ˘Ń€Đ°Đ˝ŃĐżĐľŃ€Ń‚ĐµŃ€",
-                mzb: "Đ‘Đ°ĐłĐ°Ń‚ĐľŃ†Ń–Đ»ŃŚĐľĐ˛Đµ ŃŃĐ´Đ˝Đľ",
+                mtw: "Ð¢Ñ€Ð°Ð½ÑÐ¿Ð¾Ñ€Ñ‚ÐµÑ€",
+                mzb: "Ð‘Ð°Ð³Ð°Ñ‚Ð¾Ñ†Ñ–Ð»ÑŒÐ¾Ð²Ðµ ÑÑƒÐ´Ð½Ð¾",
                 naw: "",
                 naw_or_rtw_and_nef: "",
                 naw_or_rtw_and_nef_or_rth: "",
-                nef_only: "Đ¨Đ˛Đ¸Đ´ĐşĐ° Đ´ĐľĐżĐľĐĽĐľĐłĐ°",
-                oil_unit: "ĐťĐ°Ń„Ń‚ĐľĐ·Đ±Đ¸Ń€Đ˝Đµ ŃŃĐ´Đ˝Đľ",
+                nef_only: "Ð¨Ð²Ð¸Ð´ÐºÐ° Ð´Ð¾Ð¿Ð¾Ð¼Ð¾Ð³Ð°",
+                oil_unit: "ÐÐ°Ñ„Ñ‚Ð¾Ð·Ð±Ð¸Ñ€Ð½Ðµ ÑÑƒÐ´Ð½Ð¾",
                 only_ab_dekon_p: "",
                 only_dekon_p: "",
                 ovd_p: "",
-                police_car: "ĐźĐ°Ń‚Ń€ŃĐ»ŃŚĐ˝Đ¸Đą Đ°Đ˛Ń‚ĐľĐĽĐľĐ±Ń–Đ»ŃŚ",
-                polizeihubschrauber: "ĐźĐľĐ»Ń–Ń†ĐµĐąŃŃŚĐşĐ¸Đą Đ˛ĐµŃ€Ń‚ĐľĐ»Ń–Ń‚",
-                rescue_vehicle: "Đ’Đ°Đ¶ĐşĐ° Ń€ŃŹŃ‚ŃĐ˛Đ°Đ»ŃŚĐ˝Đ° ĐĽĐ°ŃĐ¸Đ˝Đ°",
-                rescue_vehicle_only: "ĐźŃ–Đ´Ń€ĐľĐ·Đ´Ń–Đ» ĐżĐľŃ€ŃŹŃ‚ŃĐ˝ĐşŃ Ń Đ˛Đ°Đ¶ĐşĐ¸Ń… ŃĐĽĐľĐ˛Đ°Ń…",
-                rescueboat: "Đ’ĐµĐ»Đ¸ĐşĐµ Ń€ŃŹŃ‚ŃĐ˛Đ°Đ»ŃŚĐ˝Đµ ŃŃĐ´Đ˝Đľ",
+                police_car: "ÐŸÐ°Ñ‚Ñ€ÑƒÐ»ÑŒÐ½Ð¸Ð¹ Ð°Ð²Ñ‚Ð¾Ð¼Ð¾Ð±Ñ–Ð»ÑŒ",
+                polizeihubschrauber: "ÐŸÐ¾Ð»Ñ–Ñ†ÐµÐ¹ÑÑŒÐºÐ¸Ð¹ Ð²ÐµÑ€Ñ‚Ð¾Ð»Ñ–Ñ‚",
+                rescue_vehicle: "Ð’Ð°Ð¶ÐºÐ° Ñ€ÑÑ‚ÑƒÐ²Ð°Ð»ÑŒÐ½Ð° Ð¼Ð°ÑˆÐ¸Ð½Ð°",
+                rescue_vehicle_only: "ÐŸÑ–Ð´Ñ€Ð¾Ð·Ð´Ñ–Ð» Ð¿Ð¾Ñ€ÑÑ‚ÑƒÐ½ÐºÑƒ Ñƒ Ð²Ð°Ð¶ÐºÐ¸Ñ… ÑƒÐ¼Ð¾Ð²Ð°Ñ…",
+                rescueboat: "Ð’ÐµÐ»Ð¸ÐºÐµ Ñ€ÑÑ‚ÑƒÐ²Ð°Ð»ÑŒÐ½Ðµ ÑÑƒÐ´Ð½Ð¾",
                 rettungstreppe: "",
-                rth_only: "Đ’ĐµŃ€Ń‚ĐľĐ»Ń–Ń‚",
-                schlauchwagen: "ĐĐ˛Ń‚ĐľŃ†Đ¸ŃŃ‚ĐµŃ€Đ˝Đ°",
+                rth_only: "Ð’ÐµÑ€Ñ‚Ð¾Ð»Ñ–Ñ‚",
+                schlauchwagen: "ÐÐ²Ñ‚Ð¾Ñ†Ð¸ÑÑ‚ÐµÑ€Ð½Ð°",
                 seg_elw: "",
                 sek_mtf: "",
                 sek_zf: "",
-                swat: "ĐˇĐżĐµŃ†Đ˝Đ°Đ·",
-                swat_armored_vehicle: "Đ‘Ń€ĐľĐ˝ŃŚĐľĐ˛Đ°Đ˝Đ¸Đą Đ°Đ˛Ń‚ĐľĐĽĐľĐ±Ń–Đ»ŃŚ ŃĐżĐµŃ†Đ˝Đ°Đ·Ń",
-                swat_suv: "ĐźĐľĐ·Đ°ŃĐ»ŃŹŃ…ĐľĐ˛Đ¸Đş ŃĐżĐµŃ†Đ˝Đ°Đ·Ń",
+                swat: "Ð¡Ð¿ÐµÑ†Ð½Ð°Ð·",
+                swat_armored_vehicle: "Ð‘Ñ€Ð¾Ð½ÑŒÐ¾Ð²Ð°Ð½Ð¸Ð¹ Ð°Ð²Ñ‚Ð¾Ð¼Ð¾Ð±Ñ–Ð»ÑŒ ÑÐ¿ÐµÑ†Ð½Ð°Ð·Ñƒ",
+                swat_suv: "ÐŸÐ¾Ð·Ð°ÑˆÐ»ÑÑ…Ð¾Ð²Ð¸Ðº ÑÐ¿ÐµÑ†Ð½Ð°Ð·Ñƒ",
                 thw_anh_mzab: "",
                 thw_anh_mzb: "",
                 thw_anh_schlb: "",
@@ -8457,14 +8391,14 @@ function deleteMissionPosition(e) {
                 thw_lkw: "",
                 thw_lkw_7_lkr_19_tm: "",
                 thw_mlw5: "",
-                thw_mtw: "ĐĐ˛Ń‚ĐľĐĽĐľĐ±Ń–Đ»ŃŚ Ń‚ĐµŃ…Đ˝Ń–Ń‡Đ˝ĐľŃ— ŃĐ»ŃĐ¶Đ±Đ¸",
-                thw_mzkw: "Đ‘Đ°ĐłĐ°Ń‚ĐľŃ†Ń–Đ»ŃŚĐľĐ˛Đ° ĐĽĐ°ŃĐ¸Đ˝Đ°",
-                thw_tauchkraftwagen: "ĐšĐľĐĽĐ°Đ˝Đ´Đ° Đ˛ĐľĐ´ĐľĐ»Đ°Đ·Ń–Đ˛",
+                thw_mtw: "ÐÐ²Ñ‚Ð¾Ð¼Ð¾Ð±Ñ–Ð»ÑŒ Ñ‚ÐµÑ…Ð½Ñ–Ñ‡Ð½Ð¾Ñ— ÑÐ»ÑƒÐ¶Ð±Ð¸",
+                thw_mzkw: "Ð‘Ð°Ð³Ð°Ñ‚Ð¾Ñ†Ñ–Ð»ÑŒÐ¾Ð²Ð° Ð¼Ð°ÑˆÐ¸Ð½Ð°",
+                thw_tauchkraftwagen: "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð° Ð²Ð¾Ð´Ð¾Ð»Ð°Ð·Ñ–Ð²",
                 thw_tauchkraftwagen_or_gw_taucher: "",
-                tlf_only: "ĐĐ˛Ń‚ĐľŃ†Đ¸ŃŃ‚ĐµŃ€Đ˝Đ°",
+                tlf_only: "ÐÐ²Ñ‚Ð¾Ñ†Ð¸ÑÑ‚ÐµÑ€Ð½Ð°",
                 tm50: "",
                 turboloescher: "",
-                turntable_ladder: "ĐźĐľĐ¶ĐµĐ¶Đ˝Ń– Đ°Đ˛Ń‚ĐľĐ´Ń€Đ°Đ±Đ¸Đ˝Đ¸",
+                turntable_ladder: "ÐŸÐ¾Ð¶ÐµÐ¶Ð½Ñ– Ð°Ð²Ñ‚Ð¾Ð´Ñ€Ð°Ð±Ð¸Ð½Ð¸",
                 ulf: "",
                 wasserwerfer: "",
                 water_amount: "",
@@ -8476,115 +8410,115 @@ function deleteMissionPosition(e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: 'Đ”Đ°Đ»Ń–, Đ´Đ°ĐąŃ‚Đµ ŃĐ˛ĐľŃ—Đą Đ˝ĐľĐ˛Ń–Đą ŃŃ‚Đ°Đ˝Ń†Ń–Ń— Đ˝Đ°Đ·Đ˛Ń! Đ—Ń€ĐľĐ±Ń–Ń‚ŃŚ Ń—Ń— ĐżĐľĐĽŃ–Ń‚Đ˝ĐľŃŽ Ń– Ń€ĐľĐ·ŃĐ¸Ń€ŃŽĐ˛Đ°Đ˝ĐľŃŽ! ĐťĐ°ĐżŃ€Đ¸ĐşĐ»Đ°Đ´, "ĐźĐľĐ¶ĐµĐ¶Đ˝Đ° ŃŃ‚Đ°Đ˝Ń†Ń–ŃŹ â„– 0001". ĐšĐľĐ»Đ¸ Đ±ŃĐ´ĐµŃ‚Đµ ĐłĐľŃ‚ĐľĐ˛Ń–, ĐşĐ»Đ°Ń†Đ˝Ń–Ń‚ŃŚ "Đ”Đ°Đ»Ń–"!',
-                            build_with_credits: "Đ˘ĐµĐżĐµŃ€ Đ·Đ±ŃĐ´ŃĐąŃ‚Đµ ŃĐ˛ĐľŃŽ Đ±ŃĐ´Ń–Đ˛Đ»ŃŽ Đ·Đ° ĐşŃ€ĐµĐ´Đ¸Ń‚Đ¸!",
-                            new_building: 'ĐšĐ»Đ°Ń†Đ˝Ń–Ń‚ŃŚ "ĐťĐľĐ˛Đ° Đ±ŃĐ´Ń–Đ˛Đ»ŃŹ"!',
-                            select_building: "ĐˇĐżĐľŃ‡Đ°Ń‚ĐşŃ Đ˛Đ¸Đ±ĐµŃ€Ń–Ń‚ŃŚ Ń‚Đ¸Đż Đ±ŃĐ´Ń–Đ˛Đ»Ń–, Đ· ŃŹĐşĐľĐłĐľ Ń…ĐľŃ‡ĐµŃ‚Đµ Ń€ĐľĐ·ĐżĐľŃ‡Đ°Ń‚Đ¸; ĐĽĐ¸ Đ˝Đ°ĐżĐľĐ»ĐµĐłĐ»Đ¸Đ˛Đľ Ń€ĐµĐşĐľĐĽĐµĐ˝Đ´ŃŃ”ĐĽĐľ Ń€ĐľĐ·ĐżĐľŃ‡Đ°Ń‚Đ¸ Đ· ĐżĐľĐ¶ĐµĐ¶Đ˝ĐľŃ— ŃŃ‚Đ°Đ˝Ń†Ń–Ń—! ĐŁ Đ±ŃĐ´ŃŚ-ŃŹĐşĐľĐĽŃ Đ˛Đ¸ĐżĐ°Đ´ĐşŃ, Ń€ĐµĐşĐľĐĽĐµĐ˝Đ´ŃŃ”Ń‚ŃŚŃŃŹ Ń€ĐľĐ·ĐżĐľŃ‡Đ°Ń‚Đ¸ Đ· ĐĽĐ°Đ»ĐľŃ— ŃŃ‚Đ°Đ˝Ń†Ń–Ń—!",
-                            select_position: "ĐźĐµŃ€ĐµĐĽŃ–ŃŃ‚Ń–Ń‚ŃŚ ĐĽĐ°Ń€ĐşĐµŃ€ ŃĐ¸Đ˝ŃŚĐľĐłĐľ ĐşĐľĐ»ŃŚĐľŃ€Ń Ń ĐĽŃ–ŃŃ†Đµ, Đ˛ ŃŹĐşĐľĐĽŃ Đ˛Đ¸ Ń…ĐľŃ‡ĐµŃ‚Đµ Đ·Đ±ŃĐ´ŃĐ˛Đ°Ń‚Đ¸ ŃĐ˛ĐľŃŽ ĐżĐµŃ€ŃŃ ŃŃ‚Đ°Đ˝Ń†Ń–ŃŽ!"
+                            add_name: 'Ð”Ð°Ð»Ñ–, Ð´Ð°Ð¹Ñ‚Ðµ ÑÐ²Ð¾Ñ—Ð¹ Ð½Ð¾Ð²Ñ–Ð¹ ÑÑ‚Ð°Ð½Ñ†Ñ–Ñ— Ð½Ð°Ð·Ð²Ñƒ! Ð—Ñ€Ð¾Ð±Ñ–Ñ‚ÑŒ Ñ—Ñ— Ð¿Ð¾Ð¼Ñ–Ñ‚Ð½Ð¾ÑŽ Ñ– Ñ€Ð¾Ð·ÑˆÐ¸Ñ€ÑŽÐ²Ð°Ð½Ð¾ÑŽ! ÐÐ°Ð¿Ñ€Ð¸ÐºÐ»Ð°Ð´, "ÐŸÐ¾Ð¶ÐµÐ¶Ð½Ð° ÑÑ‚Ð°Ð½Ñ†Ñ–Ñ â„– 0001". ÐšÐ¾Ð»Ð¸ Ð±ÑƒÐ´ÐµÑ‚Ðµ Ð³Ð¾Ñ‚Ð¾Ð²Ñ–, ÐºÐ»Ð°Ñ†Ð½Ñ–Ñ‚ÑŒ "Ð”Ð°Ð»Ñ–"!',
+                            build_with_credits: "Ð¢ÐµÐ¿ÐµÑ€ Ð·Ð±ÑƒÐ´ÑƒÐ¹Ñ‚Ðµ ÑÐ²Ð¾ÑŽ Ð±ÑƒÐ´Ñ–Ð²Ð»ÑŽ Ð·Ð° ÐºÑ€ÐµÐ´Ð¸Ñ‚Ð¸!",
+                            new_building: 'ÐšÐ»Ð°Ñ†Ð½Ñ–Ñ‚ÑŒ "ÐÐ¾Ð²Ð° Ð±ÑƒÐ´Ñ–Ð²Ð»Ñ"!',
+                            select_building: "Ð¡Ð¿Ð¾Ñ‡Ð°Ñ‚ÐºÑƒ Ð²Ð¸Ð±ÐµÑ€Ñ–Ñ‚ÑŒ Ñ‚Ð¸Ð¿ Ð±ÑƒÐ´Ñ–Ð²Ð»Ñ–, Ð· ÑÐºÐ¾Ð³Ð¾ Ñ…Ð¾Ñ‡ÐµÑ‚Ðµ Ñ€Ð¾Ð·Ð¿Ð¾Ñ‡Ð°Ñ‚Ð¸; Ð¼Ð¸ Ð½Ð°Ð¿Ð¾Ð»ÐµÐ³Ð»Ð¸Ð²Ð¾ Ñ€ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÑ”Ð¼Ð¾ Ñ€Ð¾Ð·Ð¿Ð¾Ñ‡Ð°Ñ‚Ð¸ Ð· Ð¿Ð¾Ð¶ÐµÐ¶Ð½Ð¾Ñ— ÑÑ‚Ð°Ð½Ñ†Ñ–Ñ—! Ð£ Ð±ÑƒÐ´ÑŒ-ÑÐºÐ¾Ð¼Ñƒ Ð²Ð¸Ð¿Ð°Ð´ÐºÑƒ, Ñ€ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÑ”Ñ‚ÑŒÑÑ Ñ€Ð¾Ð·Ð¿Ð¾Ñ‡Ð°Ñ‚Ð¸ Ð· Ð¼Ð°Ð»Ð¾Ñ— ÑÑ‚Ð°Ð½Ñ†Ñ–Ñ—!",
+                            select_position: "ÐŸÐµÑ€ÐµÐ¼Ñ–ÑÑ‚Ñ–Ñ‚ÑŒ Ð¼Ð°Ñ€ÐºÐµÑ€ ÑÐ¸Ð½ÑŒÐ¾Ð³Ð¾ ÐºÐ¾Ð»ÑŒÐ¾Ñ€Ñƒ Ñƒ Ð¼Ñ–ÑÑ†Ðµ, Ð² ÑÐºÐ¾Ð¼Ñƒ Ð²Ð¸ Ñ…Ð¾Ñ‡ÐµÑ‚Ðµ Ð·Ð±ÑƒÐ´ÑƒÐ²Ð°Ñ‚Ð¸ ÑÐ²Ð¾ÑŽ Ð¿ÐµÑ€ÑˆÑƒ ÑÑ‚Ð°Ð½Ñ†Ñ–ÑŽ!"
                         },
-                        pick_location: "ĐˇĐżĐľŃ‡Đ°Ń‚ĐşŃ ĐľĐ±ĐµŃ€Ń–Ń‚ŃŚ ĐĽŃ–ŃŃ†Đµ! Đ’Đ˛ĐµĐ´Ń–Ń‚ŃŚ Đ˝Đ°Đ·Đ˛Ń ĐĽŃ–ŃŃ†ŃŹ, Đ· ŃŹĐşĐľĐłĐľ Ń…ĐľŃ‡ĐµŃ‚Đµ Ń€ĐľĐ·ĐżĐľŃ‡Đ°Ń‚Đ¸, Ń Ń€ŃŹĐ´ĐľĐş ĐżĐľŃŃĐşŃ, Ń‰ĐľĐ± ĐľŃĐľĐ±Đ¸ŃŃ‚Đľ Đ·Đ˝Đ°ĐąŃ‚Đ¸ ĐąĐľĐłĐľ Đ˝Đ° ĐşĐ°Ń€Ń‚Ń–! ĐŻĐş Ń‰ĐľĐ´Đľ Đ˛Đ°ŃĐľĐłĐľ Ń€Ń–Đ´Đ˝ĐľĐłĐľ ĐĽŃ–ŃŃ‚Đ°?",
-                        welcome: 'ĐˇĐµŃ€Đ´ĐµŃ‡Đ˝Đľ Đ˛Ń–Ń‚Đ°Ń”ĐĽĐľ Ń ĐłŃ€Ń– "Đ”Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ 101"!  ĐŻ ĐżŃ€ĐľĐ´ĐµĐĽĐľĐ˝ŃŃ‚Ń€ŃŃŽ Đ˛Đ°ĐĽ, ŃŹĐşĐ¸ĐĽ Ń‡Đ¸Đ˝ĐľĐĽ ĐĽĐľĐ¶Đ˝Đ° Đ´Đ°Ń‚Đ¸ ĐłĐ°Ń€Đ˝Đ¸Đą ŃŃ‚Đ°Ń€Ń‚ Đ˛Đ»Đ°ŃĐ˝Ń–Đą ĐşĐ°Ń€\'Ń”Ń€Ń– Ń ŃŃ„ĐµŃ€Ń– ĐµĐşŃŃ‚Ń€ĐµĐ˝Đ¸Ń… ŃĐ»ŃĐ¶Đ±!'
+                        pick_location: "Ð¡Ð¿Ð¾Ñ‡Ð°Ñ‚ÐºÑƒ Ð¾Ð±ÐµÑ€Ñ–Ñ‚ÑŒ Ð¼Ñ–ÑÑ†Ðµ! Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð½Ð°Ð·Ð²Ñƒ Ð¼Ñ–ÑÑ†Ñ, Ð· ÑÐºÐ¾Ð³Ð¾ Ñ…Ð¾Ñ‡ÐµÑ‚Ðµ Ñ€Ð¾Ð·Ð¿Ð¾Ñ‡Ð°Ñ‚Ð¸, Ñƒ Ñ€ÑÐ´Ð¾Ðº Ð¿Ð¾ÑˆÑƒÐºÑƒ, Ñ‰Ð¾Ð± Ð¾ÑÐ¾Ð±Ð¸ÑÑ‚Ð¾ Ð·Ð½Ð°Ð¹Ñ‚Ð¸ Ð¹Ð¾Ð³Ð¾ Ð½Ð° ÐºÐ°Ñ€Ñ‚Ñ–! Ð¯Ðº Ñ‰Ð¾Ð´Ð¾ Ð²Ð°ÑˆÐ¾Ð³Ð¾ Ñ€Ñ–Ð´Ð½Ð¾Ð³Ð¾ Ð¼Ñ–ÑÑ‚Ð°?",
+                        welcome: 'Ð¡ÐµÑ€Ð´ÐµÑ‡Ð½Ð¾ Ð²Ñ–Ñ‚Ð°Ñ”Ð¼Ð¾ Ñƒ Ð³Ñ€Ñ– "Ð”Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ 101"!  Ð¯ Ð¿Ñ€Ð¾Ð´ÐµÐ¼Ð¾Ð½ÑÑ‚Ñ€ÑƒÑŽ Ð²Ð°Ð¼, ÑÐºÐ¸Ð¼ Ñ‡Ð¸Ð½Ð¾Ð¼ Ð¼Ð¾Ð¶Ð½Ð° Ð´Ð°Ñ‚Ð¸ Ð³Ð°Ñ€Ð½Ð¸Ð¹ ÑÑ‚Ð°Ñ€Ñ‚ Ð²Ð»Ð°ÑÐ½Ñ–Ð¹ ÐºÐ°Ñ€\'Ñ”Ñ€Ñ– Ñƒ ÑÑ„ÐµÑ€Ñ– ÐµÐºÑÑ‚Ñ€ÐµÐ½Ð¸Ñ… ÑÐ»ÑƒÐ¶Ð±!'
                     },
                     mobile: {
                         build_building: {
-                            add_name: 'Đ”Đ°Đ»Ń–, Đ´Đ°ĐąŃ‚Đµ ŃĐ˛ĐľŃ—Đą Đ˝ĐľĐ˛Ń–Đą ŃŃ‚Đ°Đ˝Ń†Ń–Ń— Đ˝Đ°Đ·Đ˛Ń! Đ—Ń€ĐľĐ±Ń–Ń‚ŃŚ Ń—Ń— ĐżĐľĐĽŃ–Ń‚Đ˝ĐľŃŽ Ń– Ń€ĐľĐ·ŃĐ¸Ń€ŃŽĐ˛Đ°Đ˝ĐľŃŽ! ĐťĐ°ĐżŃ€Đ¸ĐşĐ»Đ°Đ´, "ĐźĐľĐ¶ĐµĐ¶Đ˝Đ° ŃŃ‚Đ°Đ˝Ń†Ń–ŃŹ â„– 0001". ĐšĐľĐ»Đ¸ Đ±ŃĐ´ĐµŃ‚Đµ ĐłĐľŃ‚ĐľĐ˛Ń–, ĐşĐ»Đ°Ń†Đ˝Ń–Ń‚ŃŚ "Đ”Đ°Đ»Ń–"!',
-                            build_with_credits: "Đ˘ĐµĐżĐµŃ€ Đ·Đ±ŃĐ´ŃĐąŃ‚Đµ ŃĐ˛ĐľŃŽ Đ±ŃĐ´Ń–Đ˛Đ»ŃŽ Đ·Đ° ĐşŃ€ĐµĐ´Đ¸Ń‚Đ¸!",
-                            new_building: 'ĐˇĐżĐľŃ‡Đ°Ń‚ĐşŃ ĐĽĐ¸ Đ˛Đ¸Đ±ĐµŃ€ĐµĐĽĐľ ĐĽŃ–ŃŃ†Đµ Ń– Đ·Đ±ŃĐ´ŃŃ”ĐĽĐľ Đ˛Đ°ŃŃ ĐżĐµŃ€ŃŃ Đ±ŃĐ´Ń–Đ˛Đ»ŃŽ! <br /> <br /> Đ”Đ»ŃŹ Ń†ŃŚĐľĐłĐľ, ĐşĐ»Đ°Ń†Đ˝Ń–Ń‚ŃŚ "ĐťĐľĐ˛Đ° Đ±ŃĐ´Ń–Đ˛Đ»ŃŹ"!',
-                            select_building: "ĐˇĐżĐľŃ‡Đ°Ń‚ĐşŃ Đ˛Đ¸Đ±ĐµŃ€Ń–Ń‚ŃŚ Ń‚Đ¸Đż Đ±ŃĐ´Ń–Đ˛Đ»Ń–, Đ· ŃŹĐşĐľĐłĐľ Ń…ĐľŃ‡ĐµŃ‚Đµ Ń€ĐľĐ·ĐżĐľŃ‡Đ°Ń‚Đ¸; ĐĽĐ¸ Đ˝Đ°ĐżĐľĐ»ĐµĐłĐ»Đ¸Đ˛Đľ Ń€ĐµĐşĐľĐĽĐµĐ˝Đ´ŃŃ”ĐĽĐľ Ń€ĐľĐ·ĐżĐľŃ‡Đ°Ń‚Đ¸ Đ· ĐżĐľĐ¶ĐµĐ¶Đ˝ĐľŃ— ŃŃ‚Đ°Đ˝Ń†Ń–Ń—! ĐŁ Đ±ŃĐ´ŃŚ-ŃŹĐşĐľĐĽŃ Đ˛Đ¸ĐżĐ°Đ´ĐşŃ, Ń€ĐµĐşĐľĐĽĐµĐ˝Đ´ŃŃ”Ń‚ŃŚŃŃŹ Ń€ĐľĐ·ĐżĐľŃ‡Đ°Ń‚Đ¸ Đ· ĐĽĐ°Đ»ĐľŃ— ŃŃ‚Đ°Đ˝Ń†Ń–Ń—!"
+                            add_name: 'Ð”Ð°Ð»Ñ–, Ð´Ð°Ð¹Ñ‚Ðµ ÑÐ²Ð¾Ñ—Ð¹ Ð½Ð¾Ð²Ñ–Ð¹ ÑÑ‚Ð°Ð½Ñ†Ñ–Ñ— Ð½Ð°Ð·Ð²Ñƒ! Ð—Ñ€Ð¾Ð±Ñ–Ñ‚ÑŒ Ñ—Ñ— Ð¿Ð¾Ð¼Ñ–Ñ‚Ð½Ð¾ÑŽ Ñ– Ñ€Ð¾Ð·ÑˆÐ¸Ñ€ÑŽÐ²Ð°Ð½Ð¾ÑŽ! ÐÐ°Ð¿Ñ€Ð¸ÐºÐ»Ð°Ð´, "ÐŸÐ¾Ð¶ÐµÐ¶Ð½Ð° ÑÑ‚Ð°Ð½Ñ†Ñ–Ñ â„– 0001". ÐšÐ¾Ð»Ð¸ Ð±ÑƒÐ´ÐµÑ‚Ðµ Ð³Ð¾Ñ‚Ð¾Ð²Ñ–, ÐºÐ»Ð°Ñ†Ð½Ñ–Ñ‚ÑŒ "Ð”Ð°Ð»Ñ–"!',
+                            build_with_credits: "Ð¢ÐµÐ¿ÐµÑ€ Ð·Ð±ÑƒÐ´ÑƒÐ¹Ñ‚Ðµ ÑÐ²Ð¾ÑŽ Ð±ÑƒÐ´Ñ–Ð²Ð»ÑŽ Ð·Ð° ÐºÑ€ÐµÐ´Ð¸Ñ‚Ð¸!",
+                            new_building: 'Ð¡Ð¿Ð¾Ñ‡Ð°Ñ‚ÐºÑƒ Ð¼Ð¸ Ð²Ð¸Ð±ÐµÑ€ÐµÐ¼Ð¾ Ð¼Ñ–ÑÑ†Ðµ Ñ– Ð·Ð±ÑƒÐ´ÑƒÑ”Ð¼Ð¾ Ð²Ð°ÑˆÑƒ Ð¿ÐµÑ€ÑˆÑƒ Ð±ÑƒÐ´Ñ–Ð²Ð»ÑŽ! <br /> <br /> Ð”Ð»Ñ Ñ†ÑŒÐ¾Ð³Ð¾, ÐºÐ»Ð°Ñ†Ð½Ñ–Ñ‚ÑŒ "ÐÐ¾Ð²Ð° Ð±ÑƒÐ´Ñ–Ð²Ð»Ñ"!',
+                            select_building: "Ð¡Ð¿Ð¾Ñ‡Ð°Ñ‚ÐºÑƒ Ð²Ð¸Ð±ÐµÑ€Ñ–Ñ‚ÑŒ Ñ‚Ð¸Ð¿ Ð±ÑƒÐ´Ñ–Ð²Ð»Ñ–, Ð· ÑÐºÐ¾Ð³Ð¾ Ñ…Ð¾Ñ‡ÐµÑ‚Ðµ Ñ€Ð¾Ð·Ð¿Ð¾Ñ‡Ð°Ñ‚Ð¸; Ð¼Ð¸ Ð½Ð°Ð¿Ð¾Ð»ÐµÐ³Ð»Ð¸Ð²Ð¾ Ñ€ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÑ”Ð¼Ð¾ Ñ€Ð¾Ð·Ð¿Ð¾Ñ‡Ð°Ñ‚Ð¸ Ð· Ð¿Ð¾Ð¶ÐµÐ¶Ð½Ð¾Ñ— ÑÑ‚Ð°Ð½Ñ†Ñ–Ñ—! Ð£ Ð±ÑƒÐ´ÑŒ-ÑÐºÐ¾Ð¼Ñƒ Ð²Ð¸Ð¿Ð°Ð´ÐºÑƒ, Ñ€ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÑ”Ñ‚ÑŒÑÑ Ñ€Ð¾Ð·Ð¿Ð¾Ñ‡Ð°Ñ‚Ð¸ Ð· Ð¼Ð°Ð»Ð¾Ñ— ÑÑ‚Ð°Ð½Ñ†Ñ–Ñ—!"
                         },
-                        welcome: 'ĐˇĐµŃ€Đ´ĐµŃ‡Đ˝Đľ Đ˛Ń–Ń‚Đ°Ń”ĐĽĐľ Ń ĐłŃ€Ń– "Đ”Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ 101"!  ĐŻ ĐżŃ€ĐľĐ´ĐµĐĽĐľĐ˝ŃŃ‚Ń€ŃŃŽ Đ˛Đ°ĐĽ, ŃŹĐşĐ¸ĐĽ Ń‡Đ¸Đ˝ĐľĐĽ ĐĽĐľĐ¶Đ˝Đ° Đ´Đ°Ń‚Đ¸ ĐłĐ°Ń€Đ˝Đ¸Đą ŃŃ‚Đ°Ń€Ń‚ Đ˛Đ»Đ°ŃĐ˝Ń–Đą ĐşĐ°Ń€\'Ń”Ń€Ń– Ń ŃŃ„ĐµŃ€Ń– ĐµĐşŃŃ‚Ń€ĐµĐ˝Đ¸Ń… ŃĐ»ŃĐ¶Đ±!'
+                        welcome: 'Ð¡ÐµÑ€Ð´ÐµÑ‡Ð½Ð¾ Ð²Ñ–Ñ‚Ð°Ñ”Ð¼Ð¾ Ñƒ Ð³Ñ€Ñ– "Ð”Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ 101"!  Ð¯ Ð¿Ñ€Ð¾Ð´ÐµÐ¼Ð¾Ð½ÑÑ‚Ñ€ÑƒÑŽ Ð²Ð°Ð¼, ÑÐºÐ¸Ð¼ Ñ‡Ð¸Ð½Ð¾Ð¼ Ð¼Ð¾Ð¶Ð½Ð° Ð´Ð°Ñ‚Ð¸ Ð³Ð°Ñ€Ð½Ð¸Ð¹ ÑÑ‚Ð°Ñ€Ñ‚ Ð²Ð»Ð°ÑÐ½Ñ–Ð¹ ÐºÐ°Ñ€\'Ñ”Ñ€Ñ– Ñƒ ÑÑ„ÐµÑ€Ñ– ÐµÐºÑÑ‚Ñ€ÐµÐ½Ð¸Ñ… ÑÐ»ÑƒÐ¶Ð±!'
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Đ¦Đµ ĐĽĐµĐ˝ŃŽ Đ˛Ń–Đ´ĐżŃ€Đ°Đ˛ĐşĐ¸. Đ—Đ˛Ń–Đ´ŃĐ¸ Đ˛Đ¸ Đ˛Ń–Đ´ĐżŃ€Đ°Đ˛Đ»ŃŹŃ‚Đ¸ĐĽĐµŃ‚Đµ ŃĐ˛ĐľŃ— ĐżŃ–Đ´Ń€ĐľĐ·Đ´Ń–Đ»Đ¸ Đ˝Đ° Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ!",
-                            dispatch_menu_buttons: 'Đ¦Đµ Đ´Đ˛Ń– Đ˛Đ°ŃŃ– ĐşĐ˝ĐľĐżĐşĐ¸ Đ˛Ń–Đ´ĐżŃ€Đ°Đ˛ĐşĐ¸! ĐźĐµŃ€ŃĐ°: "Đ’Ń–Đ´ĐżŃ€Đ°Đ˛Đ¸Ń‚Đ¸" Đ˛Ń–Đ´ĐżŃ€Đ°Đ˛Đ»ŃŹŃ” Đ˛Đ¸Đ±Ń€Đ°Đ˝Ń– ĐżŃ–Đ´Ń€ĐľĐ·Đ´Ń–Đ»Đ¸ Đ˝Đ° Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ. Đ”Ń€ŃĐłĐ° Ń€ĐľĐ±Đ¸Ń‚ŃŚ Ń‚Đµ Đ¶ ŃĐ°ĐĽĐµ, Ń‰Đľ Đą ĐżĐµŃ€ŃĐ°, Đ°Đ»Đµ ĐżĐµŃ€ĐµŃ…ĐľĐ´Đ¸Ń‚ŃŚ Đ´Đľ Đ˝Đ°ŃŃ‚ŃĐżĐ˝ĐľĐłĐľ Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ. ĐźĐľĐşĐ¸ Ń‰Đľ, ĐşĐ»Đ°Ń†Đ˝Ń–Ń‚ŃŚ ĐżĐľ ĐżĐµŃ€ŃŃ–Đą ĐşĐ˝ĐľĐżŃ†Ń–.',
-                            dispatch_menu_mission_general: "Đ˘ŃŃ‚ ĐĽĐľĐ¶Đ˝Đ° ĐľŃ‚Ń€Đ¸ĐĽĐ°Ń‚Đ¸ Đ·Đ°ĐłĐ°Đ»ŃŚĐ˝Ń– Đ˛Ń–Đ´ĐľĐĽĐľŃŃ‚Ń– ĐżŃ€Đľ Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ, Đ° ŃĐ°ĐĽĐµ Đ˝Đ°Đ·Đ˛Ń, Đ°Đ´Ń€ĐµŃŃ, Đ·Đ˝Đ°Ń‡ĐľĐş Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ. ĐŁ Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹŃ…, Đ˛ ŃŹĐşĐ¸Ń… Đ˛Đ¸ Đ˛Đ¶Đµ Đ±Ń€Đ°Đ»Đ¸ ŃŃ‡Đ°ŃŃ‚ŃŚ, Đ·'ŃŹĐ˛Đ»ŃŹŃ”Ń‚ŃŚŃŃŹ Đ·Đ˝Đ°Ń‡ĐľĐş Đ· ĐĽĐ°Đ»ĐµĐ˝ŃŚĐşĐľŃŽ Đ»ŃŽĐ´Đ¸Đ˝ĐľŃŽ Ń– Đ·Đ°ĐĽŃ–Đ˝ŃŽŃ” ĐĽĐ°Đ»ĐµĐ˝ŃŚĐşŃ Đ·Ń–Ń€ĐľŃ‡ĐşŃ.",
-                            dispatch_menu_mission_progress: "Đ˘ŃŃ‚ ĐĽĐľĐ¶Đ˝Đ° ĐżĐľĐ±Đ°Ń‡Đ¸Ń‚Đ¸, ŃŹĐşĐľĐłĐľ ĐżŃ€ĐľĐłŃ€ĐµŃŃ Đ±ŃĐ»Đľ Đ´ĐľŃŃŹĐłĐ˝ŃŃ‚Đľ Ń Đ˛Đ¸ĐşĐľĐ˝Đ°Đ˝Đ˝Ń– Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ, Đ° Ń‚Đ°ĐşĐľĐ¶ ĐşŃ–Đ»ŃŚĐşŃ–ŃŃ‚ŃŚ ĐżĐµŃ€ŃĐľĐ˝Đ°Đ»Ń Đ˝Đ° ĐĽŃ–ŃŃ†Ń– Ń– Ń‡Đ°Ń, Đ˝ĐµĐľĐ±Ń…Ń–Đ´Đ˝Đ¸Đą Đ˝Đ° Đ˛Đ¸ĐşĐľĐ˝Đ°Đ˝Đ˝ŃŹ Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ!",
-                            dispatch_menu_mission_specific: "Đ˘ŃŃ‚ ĐĽĐľĐ¶Đ˝Đ° ĐľŃ‚Ń€Đ¸ĐĽĐ°Ń‚Đ¸ Đ±Ń–Đ»ŃŚŃĐµ Đ˛Ń–Đ´ĐľĐĽĐľŃŃ‚Đµ ĐżŃ€Đľ Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ, ĐżŃ€Đľ Ń‚Đµ, ŃŹĐşŃ– ĐżŃ–Đ´Ń€ĐľĐ·Đ´Ń–Đ»Đ¸ Đ˛Ń–Đ´ĐżĐľĐ˛Ń–Đ´Đ°ŃŽŃ‚ŃŚ Đ˝Đ° Đ˛Đ¸ĐşĐ»Đ¸Đş, Đ° ŃŹĐşŃ– Đ˛Đ¶Đµ Đ·Đ˝Đ°Ń…ĐľĐ´ŃŹŃ‚ŃŚŃŃŹ Đ˝Đ° ĐĽŃ–ŃŃ†Ń–.",
-                            dispatch_menu_vehicle_list: "Đ¦Đµ ŃĐżĐ¸ŃĐľĐş Đ˛Đ°ŃĐ¸Ń… Đ´ĐľŃŃ‚ŃĐżĐ˝Đ¸Ń… ĐĽĐ°ŃĐ¸Đ˝. Đ˘ŃŃ‚ ĐĽĐľĐ¶Đ˝Đ° Đ˛Đ¸Đ±Đ¸Ń€Đ°Ń‚Đ¸ ĐĽĐ°ŃĐ¸Đ˝Đ¸. Đ˘ĐµĐżĐµŃ€ Đ˛Đ¸Đ±ĐµŃ€Ń–Ń‚ŃŚ ŃĐ˛ĐľŃŽ ĐĽĐ°ŃĐ¸Đ˝Ń, ĐşĐ»Đ°Ń†Đ˝ŃĐ˛ŃĐ¸ ĐżĐľ Đ˝Ń–Đą!"
+                            dispatch_menu: "Ð¦Ðµ Ð¼ÐµÐ½ÑŽ Ð²Ñ–Ð´Ð¿Ñ€Ð°Ð²ÐºÐ¸. Ð—Ð²Ñ–Ð´ÑÐ¸ Ð²Ð¸ Ð²Ñ–Ð´Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚Ð¸Ð¼ÐµÑ‚Ðµ ÑÐ²Ð¾Ñ— Ð¿Ñ–Ð´Ñ€Ð¾Ð·Ð´Ñ–Ð»Ð¸ Ð½Ð° Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ!",
+                            dispatch_menu_buttons: 'Ð¦Ðµ Ð´Ð²Ñ– Ð²Ð°ÑˆÑ– ÐºÐ½Ð¾Ð¿ÐºÐ¸ Ð²Ñ–Ð´Ð¿Ñ€Ð°Ð²ÐºÐ¸! ÐŸÐµÑ€ÑˆÐ°: "Ð’Ñ–Ð´Ð¿Ñ€Ð°Ð²Ð¸Ñ‚Ð¸" Ð²Ñ–Ð´Ð¿Ñ€Ð°Ð²Ð»ÑÑ” Ð²Ð¸Ð±Ñ€Ð°Ð½Ñ– Ð¿Ñ–Ð´Ñ€Ð¾Ð·Ð´Ñ–Ð»Ð¸ Ð½Ð° Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ. Ð”Ñ€ÑƒÐ³Ð° Ñ€Ð¾Ð±Ð¸Ñ‚ÑŒ Ñ‚Ðµ Ð¶ ÑÐ°Ð¼Ðµ, Ñ‰Ð¾ Ð¹ Ð¿ÐµÑ€ÑˆÐ°, Ð°Ð»Ðµ Ð¿ÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ñ‚ÑŒ Ð´Ð¾ Ð½Ð°ÑÑ‚ÑƒÐ¿Ð½Ð¾Ð³Ð¾ Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ. ÐŸÐ¾ÐºÐ¸ Ñ‰Ð¾, ÐºÐ»Ð°Ñ†Ð½Ñ–Ñ‚ÑŒ Ð¿Ð¾ Ð¿ÐµÑ€ÑˆÑ–Ð¹ ÐºÐ½Ð¾Ð¿Ñ†Ñ–.',
+                            dispatch_menu_mission_general: "Ð¢ÑƒÑ‚ Ð¼Ð¾Ð¶Ð½Ð° Ð¾Ñ‚Ñ€Ð¸Ð¼Ð°Ñ‚Ð¸ Ð·Ð°Ð³Ð°Ð»ÑŒÐ½Ñ– Ð²Ñ–Ð´Ð¾Ð¼Ð¾ÑÑ‚Ñ– Ð¿Ñ€Ð¾ Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ, Ð° ÑÐ°Ð¼Ðµ Ð½Ð°Ð·Ð²Ñƒ, Ð°Ð´Ñ€ÐµÑÑƒ, Ð·Ð½Ð°Ñ‡Ð¾Ðº Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ. Ð£ Ð·Ð°Ð²Ð´Ð°Ð½Ð½ÑÑ…, Ð² ÑÐºÐ¸Ñ… Ð²Ð¸ Ð²Ð¶Ðµ Ð±Ñ€Ð°Ð»Ð¸ ÑƒÑ‡Ð°ÑÑ‚ÑŒ, Ð·'ÑÐ²Ð»ÑÑ”Ñ‚ÑŒÑÑ Ð·Ð½Ð°Ñ‡Ð¾Ðº Ð· Ð¼Ð°Ð»ÐµÐ½ÑŒÐºÐ¾ÑŽ Ð»ÑŽÐ´Ð¸Ð½Ð¾ÑŽ Ñ– Ð·Ð°Ð¼Ñ–Ð½ÑŽÑ” Ð¼Ð°Ð»ÐµÐ½ÑŒÐºÑƒ Ð·Ñ–Ñ€Ð¾Ñ‡ÐºÑƒ.",
+                            dispatch_menu_mission_progress: "Ð¢ÑƒÑ‚ Ð¼Ð¾Ð¶Ð½Ð° Ð¿Ð¾Ð±Ð°Ñ‡Ð¸Ñ‚Ð¸, ÑÐºÐ¾Ð³Ð¾ Ð¿Ñ€Ð¾Ð³Ñ€ÐµÑÑƒ Ð±ÑƒÐ»Ð¾ Ð´Ð¾ÑÑÐ³Ð½ÑƒÑ‚Ð¾ Ñƒ Ð²Ð¸ÐºÐ¾Ð½Ð°Ð½Ð½Ñ– Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ, Ð° Ñ‚Ð°ÐºÐ¾Ð¶ ÐºÑ–Ð»ÑŒÐºÑ–ÑÑ‚ÑŒ Ð¿ÐµÑ€ÑÐ¾Ð½Ð°Ð»Ñƒ Ð½Ð° Ð¼Ñ–ÑÑ†Ñ– Ñ– Ñ‡Ð°Ñ, Ð½ÐµÐ¾Ð±Ñ…Ñ–Ð´Ð½Ð¸Ð¹ Ð½Ð° Ð²Ð¸ÐºÐ¾Ð½Ð°Ð½Ð½Ñ Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ!",
+                            dispatch_menu_mission_specific: "Ð¢ÑƒÑ‚ Ð¼Ð¾Ð¶Ð½Ð° Ð¾Ñ‚Ñ€Ð¸Ð¼Ð°Ñ‚Ð¸ Ð±Ñ–Ð»ÑŒÑˆÐµ Ð²Ñ–Ð´Ð¾Ð¼Ð¾ÑÑ‚Ðµ Ð¿Ñ€Ð¾ Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ, Ð¿Ñ€Ð¾ Ñ‚Ðµ, ÑÐºÑ– Ð¿Ñ–Ð´Ñ€Ð¾Ð·Ð´Ñ–Ð»Ð¸ Ð²Ñ–Ð´Ð¿Ð¾Ð²Ñ–Ð´Ð°ÑŽÑ‚ÑŒ Ð½Ð° Ð²Ð¸ÐºÐ»Ð¸Ðº, Ð° ÑÐºÑ– Ð²Ð¶Ðµ Ð·Ð½Ð°Ñ…Ð¾Ð´ÑÑ‚ÑŒÑÑ Ð½Ð° Ð¼Ñ–ÑÑ†Ñ–.",
+                            dispatch_menu_vehicle_list: "Ð¦Ðµ ÑÐ¿Ð¸ÑÐ¾Ðº Ð²Ð°ÑˆÐ¸Ñ… Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¸Ñ… Ð¼Ð°ÑˆÐ¸Ð½. Ð¢ÑƒÑ‚ Ð¼Ð¾Ð¶Ð½Ð° Ð²Ð¸Ð±Ð¸Ñ€Ð°Ñ‚Ð¸ Ð¼Ð°ÑˆÐ¸Ð½Ð¸. Ð¢ÐµÐ¿ÐµÑ€ Ð²Ð¸Ð±ÐµÑ€Ñ–Ñ‚ÑŒ ÑÐ²Ð¾ÑŽ Ð¼Ð°ÑˆÐ¸Ð½Ñƒ, ÐºÐ»Ð°Ñ†Ð½ÑƒÐ²ÑˆÐ¸ Ð¿Ð¾ Ð½Ñ–Ð¹!"
                         },
                         mobile: {
-                            dispatch_menu: "Đ¦Đµ ĐĽĐµĐ˝ŃŽ Đ˛Ń–Đ´ĐżŃ€Đ°Đ˛ĐşĐ¸. Đ—Đ˛Ń–Đ´ŃĐ¸ Đ˛Đ¸ Đ˛Ń–Đ´ĐżŃ€Đ°Đ˛Đ»ŃŹŃ‚Đ¸ĐĽĐµŃ‚Đµ ŃĐ˛ĐľŃ— ĐżŃ–Đ´Ń€ĐľĐ·Đ´Ń–Đ»Đ¸ Đ˝Đ° Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ!",
-                            dispatch_menu_buttons: 'Đ¦Đµ Đ´Đ˛Ń– Đ˛Đ°ŃŃ– ĐşĐ˝ĐľĐżĐşĐ¸ Đ˛Ń–Đ´ĐżŃ€Đ°Đ˛ĐşĐ¸! ĐźĐµŃ€ŃĐ°: "Đ’Ń–Đ´ĐżŃ€Đ°Đ˛Đ¸Ń‚Đ¸" Đ˛Ń–Đ´ĐżŃ€Đ°Đ˛Đ»ŃŹŃ” Đ˛Đ¸Đ±Ń€Đ°Đ˝Ń– ĐżŃ–Đ´Ń€ĐľĐ·Đ´Ń–Đ»Đ¸ Đ˝Đ° Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ. Đ”Ń€ŃĐłĐ° Ń€ĐľĐ±Đ¸Ń‚ŃŚ Ń‚Đµ Đ¶ ŃĐ°ĐĽĐµ, Ń‰Đľ Đą ĐżĐµŃ€ŃĐ°, Đ°Đ»Đµ ĐżĐµŃ€ĐµŃ…ĐľĐ´Đ¸Ń‚ŃŚ Đ´Đľ Đ˝Đ°ŃŃ‚ŃĐżĐ˝ĐľĐłĐľ Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ. ĐźĐľĐşĐ¸ Ń‰Đľ, ĐşĐ»Đ°Ń†Đ˝Ń–Ń‚ŃŚ ĐżĐľ ĐżĐµŃ€ŃŃ–Đą ĐşĐ˝ĐľĐżŃ†Ń–.',
-                            dispatch_menu_mission_general: "Đ˘ŃŃ‚ ĐĽĐľĐ¶Đ˝Đ° ĐľŃ‚Ń€Đ¸ĐĽĐ°Ń‚Đ¸ Đ·Đ°ĐłĐ°Đ»ŃŚĐ˝Ń– Đ˛Ń–Đ´ĐľĐĽĐľŃŃ‚Ń– ĐżŃ€Đľ Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ, Đ° ŃĐ°ĐĽĐµ Đ˝Đ°Đ·Đ˛Ń, Đ°Đ´Ń€ĐµŃŃ, Đ·Đ˝Đ°Ń‡ĐľĐş Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ. ĐŁ Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹŃ…, Đ˛ ŃŹĐşĐ¸Ń… Đ˛Đ¸ Đ˛Đ¶Đµ Đ±Ń€Đ°Đ»Đ¸ ŃŃ‡Đ°ŃŃ‚ŃŚ, Đ·'ŃŹĐ˛Đ»ŃŹŃ”Ń‚ŃŚŃŃŹ Đ·Đ˝Đ°Ń‡ĐľĐş Đ· ĐĽĐ°Đ»ĐµĐ˝ŃŚĐşĐľŃŽ Đ»ŃŽĐ´Đ¸Đ˝ĐľŃŽ Ń– Đ·Đ°ĐĽŃ–Đ˝ŃŽŃ” ĐĽĐ°Đ»ĐµĐ˝ŃŚĐşŃ Đ·Ń–Ń€ĐľŃ‡ĐşŃ.",
-                            dispatch_menu_mission_progress: "Đ˘ŃŃ‚ ĐĽĐľĐ¶Đ˝Đ° ĐżĐľĐ±Đ°Ń‡Đ¸Ń‚Đ¸, ŃŹĐşĐľĐłĐľ ĐżŃ€ĐľĐłŃ€ĐµŃŃ Đ±ŃĐ»Đľ Đ´ĐľŃŃŹĐłĐ˝ŃŃ‚Đľ Ń Đ˛Đ¸ĐşĐľĐ˝Đ°Đ˝Đ˝Ń– Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ, Đ° Ń‚Đ°ĐşĐľĐ¶ ĐşŃ–Đ»ŃŚĐşŃ–ŃŃ‚ŃŚ ĐżĐµŃ€ŃĐľĐ˝Đ°Đ»Ń Đ˝Đ° ĐĽŃ–ŃŃ†Ń– Ń– Ń‡Đ°Ń, Đ˝ĐµĐľĐ±Ń…Ń–Đ´Đ˝Đ¸Đą Đ˝Đ° Đ˛Đ¸ĐşĐľĐ˝Đ°Đ˝Đ˝ŃŹ Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ!",
-                            dispatch_menu_mission_specific: "Đ˘ŃŃ‚ ĐĽĐľĐ¶Đ˝Đ° ĐľŃ‚Ń€Đ¸ĐĽĐ°Ń‚Đ¸ Đ±Ń–Đ»ŃŚŃĐµ Đ˛Ń–Đ´ĐľĐĽĐľŃŃ‚Đµ ĐżŃ€Đľ Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ, ĐżŃ€Đľ Ń‚Đµ, ŃŹĐşŃ– ĐżŃ–Đ´Ń€ĐľĐ·Đ´Ń–Đ»Đ¸ Đ˛Ń–Đ´ĐżĐľĐ˛Ń–Đ´Đ°ŃŽŃ‚ŃŚ Đ˝Đ° Đ˛Đ¸ĐşĐ»Đ¸Đş, Đ° ŃŹĐşŃ– Đ˛Đ¶Đµ Đ·Đ˝Đ°Ń…ĐľĐ´ŃŹŃ‚ŃŚŃŃŹ Đ˝Đ° ĐĽŃ–ŃŃ†Ń–.",
-                            dispatch_menu_vehicle_list: "Đ¦Đµ ŃĐżĐ¸ŃĐľĐş Đ˛Đ°ŃĐ¸Ń… Đ´ĐľŃŃ‚ŃĐżĐ˝Đ¸Ń… ĐĽĐ°ŃĐ¸Đ˝. Đ˘ŃŃ‚ ĐĽĐľĐ¶Đ˝Đ° Đ˛Đ¸Đ±Đ¸Ń€Đ°Ń‚Đ¸ ĐĽĐ°ŃĐ¸Đ˝Đ¸. Đ˘ĐµĐżĐµŃ€ Đ˛Đ¸Đ±ĐµŃ€Ń–Ń‚ŃŚ ŃĐ˛ĐľŃŽ ĐĽĐ°ŃĐ¸Đ˝Ń, ĐşĐ»Đ°Ń†Đ˝ŃĐ˛ŃĐ¸ ĐżĐľ Đ˝Ń–Đą!"
+                            dispatch_menu: "Ð¦Ðµ Ð¼ÐµÐ½ÑŽ Ð²Ñ–Ð´Ð¿Ñ€Ð°Ð²ÐºÐ¸. Ð—Ð²Ñ–Ð´ÑÐ¸ Ð²Ð¸ Ð²Ñ–Ð´Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚Ð¸Ð¼ÐµÑ‚Ðµ ÑÐ²Ð¾Ñ— Ð¿Ñ–Ð´Ñ€Ð¾Ð·Ð´Ñ–Ð»Ð¸ Ð½Ð° Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ!",
+                            dispatch_menu_buttons: 'Ð¦Ðµ Ð´Ð²Ñ– Ð²Ð°ÑˆÑ– ÐºÐ½Ð¾Ð¿ÐºÐ¸ Ð²Ñ–Ð´Ð¿Ñ€Ð°Ð²ÐºÐ¸! ÐŸÐµÑ€ÑˆÐ°: "Ð’Ñ–Ð´Ð¿Ñ€Ð°Ð²Ð¸Ñ‚Ð¸" Ð²Ñ–Ð´Ð¿Ñ€Ð°Ð²Ð»ÑÑ” Ð²Ð¸Ð±Ñ€Ð°Ð½Ñ– Ð¿Ñ–Ð´Ñ€Ð¾Ð·Ð´Ñ–Ð»Ð¸ Ð½Ð° Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ. Ð”Ñ€ÑƒÐ³Ð° Ñ€Ð¾Ð±Ð¸Ñ‚ÑŒ Ñ‚Ðµ Ð¶ ÑÐ°Ð¼Ðµ, Ñ‰Ð¾ Ð¹ Ð¿ÐµÑ€ÑˆÐ°, Ð°Ð»Ðµ Ð¿ÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ñ‚ÑŒ Ð´Ð¾ Ð½Ð°ÑÑ‚ÑƒÐ¿Ð½Ð¾Ð³Ð¾ Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ. ÐŸÐ¾ÐºÐ¸ Ñ‰Ð¾, ÐºÐ»Ð°Ñ†Ð½Ñ–Ñ‚ÑŒ Ð¿Ð¾ Ð¿ÐµÑ€ÑˆÑ–Ð¹ ÐºÐ½Ð¾Ð¿Ñ†Ñ–.',
+                            dispatch_menu_mission_general: "Ð¢ÑƒÑ‚ Ð¼Ð¾Ð¶Ð½Ð° Ð¾Ñ‚Ñ€Ð¸Ð¼Ð°Ñ‚Ð¸ Ð·Ð°Ð³Ð°Ð»ÑŒÐ½Ñ– Ð²Ñ–Ð´Ð¾Ð¼Ð¾ÑÑ‚Ñ– Ð¿Ñ€Ð¾ Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ, Ð° ÑÐ°Ð¼Ðµ Ð½Ð°Ð·Ð²Ñƒ, Ð°Ð´Ñ€ÐµÑÑƒ, Ð·Ð½Ð°Ñ‡Ð¾Ðº Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ. Ð£ Ð·Ð°Ð²Ð´Ð°Ð½Ð½ÑÑ…, Ð² ÑÐºÐ¸Ñ… Ð²Ð¸ Ð²Ð¶Ðµ Ð±Ñ€Ð°Ð»Ð¸ ÑƒÑ‡Ð°ÑÑ‚ÑŒ, Ð·'ÑÐ²Ð»ÑÑ”Ñ‚ÑŒÑÑ Ð·Ð½Ð°Ñ‡Ð¾Ðº Ð· Ð¼Ð°Ð»ÐµÐ½ÑŒÐºÐ¾ÑŽ Ð»ÑŽÐ´Ð¸Ð½Ð¾ÑŽ Ñ– Ð·Ð°Ð¼Ñ–Ð½ÑŽÑ” Ð¼Ð°Ð»ÐµÐ½ÑŒÐºÑƒ Ð·Ñ–Ñ€Ð¾Ñ‡ÐºÑƒ.",
+                            dispatch_menu_mission_progress: "Ð¢ÑƒÑ‚ Ð¼Ð¾Ð¶Ð½Ð° Ð¿Ð¾Ð±Ð°Ñ‡Ð¸Ñ‚Ð¸, ÑÐºÐ¾Ð³Ð¾ Ð¿Ñ€Ð¾Ð³Ñ€ÐµÑÑƒ Ð±ÑƒÐ»Ð¾ Ð´Ð¾ÑÑÐ³Ð½ÑƒÑ‚Ð¾ Ñƒ Ð²Ð¸ÐºÐ¾Ð½Ð°Ð½Ð½Ñ– Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ, Ð° Ñ‚Ð°ÐºÐ¾Ð¶ ÐºÑ–Ð»ÑŒÐºÑ–ÑÑ‚ÑŒ Ð¿ÐµÑ€ÑÐ¾Ð½Ð°Ð»Ñƒ Ð½Ð° Ð¼Ñ–ÑÑ†Ñ– Ñ– Ñ‡Ð°Ñ, Ð½ÐµÐ¾Ð±Ñ…Ñ–Ð´Ð½Ð¸Ð¹ Ð½Ð° Ð²Ð¸ÐºÐ¾Ð½Ð°Ð½Ð½Ñ Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ!",
+                            dispatch_menu_mission_specific: "Ð¢ÑƒÑ‚ Ð¼Ð¾Ð¶Ð½Ð° Ð¾Ñ‚Ñ€Ð¸Ð¼Ð°Ñ‚Ð¸ Ð±Ñ–Ð»ÑŒÑˆÐµ Ð²Ñ–Ð´Ð¾Ð¼Ð¾ÑÑ‚Ðµ Ð¿Ñ€Ð¾ Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ, Ð¿Ñ€Ð¾ Ñ‚Ðµ, ÑÐºÑ– Ð¿Ñ–Ð´Ñ€Ð¾Ð·Ð´Ñ–Ð»Ð¸ Ð²Ñ–Ð´Ð¿Ð¾Ð²Ñ–Ð´Ð°ÑŽÑ‚ÑŒ Ð½Ð° Ð²Ð¸ÐºÐ»Ð¸Ðº, Ð° ÑÐºÑ– Ð²Ð¶Ðµ Ð·Ð½Ð°Ñ…Ð¾Ð´ÑÑ‚ÑŒÑÑ Ð½Ð° Ð¼Ñ–ÑÑ†Ñ–.",
+                            dispatch_menu_vehicle_list: "Ð¦Ðµ ÑÐ¿Ð¸ÑÐ¾Ðº Ð²Ð°ÑˆÐ¸Ñ… Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¸Ñ… Ð¼Ð°ÑˆÐ¸Ð½. Ð¢ÑƒÑ‚ Ð¼Ð¾Ð¶Ð½Ð° Ð²Ð¸Ð±Ð¸Ñ€Ð°Ñ‚Ð¸ Ð¼Ð°ÑˆÐ¸Ð½Ð¸. Ð¢ÐµÐ¿ÐµÑ€ Ð²Ð¸Ð±ÐµÑ€Ñ–Ñ‚ÑŒ ÑÐ²Ð¾ÑŽ Ð¼Ð°ÑˆÐ¸Ð½Ñƒ, ÐºÐ»Ð°Ñ†Ð½ÑƒÐ²ÑˆÐ¸ Ð¿Ð¾ Ð½Ñ–Ð¹!"
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: 'Đ˘ĐµĐżĐµŃ€ ĐĽĐ¸ Ń…ĐľŃ‡ĐµĐĽĐľ Đ´Ń–Đ·Đ˝Đ°Ń‚Đ¸ŃŃŚ, ŃŹĐşĐ¸ĐĽ Ń‡Đ¸Đ˝ĐľĐĽ Ń€ĐµĐ°ĐłŃĐ˛Đ°Ń‚Đ¸ Đ˝Đ° ĐżŃ€Đ¸ĐłĐľĐ´Đ¸. Đ’Ń–Đ´ĐşŃ€Đ¸ĐąŃ‚Đµ ĐĽĐµĐ˝ŃŽ Đ˛Ń–Đ´ĐżŃ€Đ°Đ˛ĐşĐ¸, ĐşĐ»Đ°Ń†Đ˝ŃĐ˛ŃĐ¸ ĐżĐľ ĐşĐ˝ĐľĐżŃ†Ń– "Đ’Ń–Đ´ĐżŃ€Đ°Đ˛Đ¸Ń‚Đ¸"!',
-                            first_mission: "Đ§ŃĐ´ĐľĐ˛Đľ, Đ˛Đ¸ Đ·Đ±ŃĐ´ŃĐ˛Đ°Đ»Đ¸ ŃĐ˛ĐľŃŽ ĐżĐµŃ€ŃŃ Đ±ŃĐ´Ń–Đ˛Đ»ŃŽ! ĐžŃ‚ Đ±Đ°Ń‡Đ¸Ń‚Đµ, Đ˛Đ¸ Đ˛Đ¶Đµ ĐľŃ‚Ń€Đ¸ĐĽĐ°Đ»Đ¸ Đ·Đ˛Ń–Ń‚Đ¸ ĐżŃ€Đľ ĐżĐµŃ€ŃŃ– Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ!"
+                            dispatch_button: 'Ð¢ÐµÐ¿ÐµÑ€ Ð¼Ð¸ Ñ…Ð¾Ñ‡ÐµÐ¼Ð¾ Ð´Ñ–Ð·Ð½Ð°Ñ‚Ð¸ÑÑŒ, ÑÐºÐ¸Ð¼ Ñ‡Ð¸Ð½Ð¾Ð¼ Ñ€ÐµÐ°Ð³ÑƒÐ²Ð°Ñ‚Ð¸ Ð½Ð° Ð¿Ñ€Ð¸Ð³Ð¾Ð´Ð¸. Ð’Ñ–Ð´ÐºÑ€Ð¸Ð¹Ñ‚Ðµ Ð¼ÐµÐ½ÑŽ Ð²Ñ–Ð´Ð¿Ñ€Ð°Ð²ÐºÐ¸, ÐºÐ»Ð°Ñ†Ð½ÑƒÐ²ÑˆÐ¸ Ð¿Ð¾ ÐºÐ½Ð¾Ð¿Ñ†Ñ– "Ð’Ñ–Ð´Ð¿Ñ€Ð°Ð²Ð¸Ñ‚Ð¸"!',
+                            first_mission: "Ð§ÑƒÐ´Ð¾Ð²Ð¾, Ð²Ð¸ Ð·Ð±ÑƒÐ´ÑƒÐ²Ð°Ð»Ð¸ ÑÐ²Ð¾ÑŽ Ð¿ÐµÑ€ÑˆÑƒ Ð±ÑƒÐ´Ñ–Ð²Ð»ÑŽ! ÐžÑ‚ Ð±Ð°Ñ‡Ð¸Ñ‚Ðµ, Ð²Ð¸ Ð²Ð¶Ðµ Ð¾Ñ‚Ñ€Ð¸Ð¼Ð°Ð»Ð¸ Ð·Ð²Ñ–Ñ‚Ð¸ Ð¿Ñ€Ð¾ Ð¿ÐµÑ€ÑˆÑ– Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ!"
                         },
                         mobile: {
-                            dispatch_button: 'Đ˘ĐµĐżĐµŃ€ ĐĽĐ¸ Ń…ĐľŃ‡ĐµĐĽĐľ Đ´Ń–Đ·Đ˝Đ°Ń‚Đ¸ŃŃŚ, ŃŹĐşĐ¸ĐĽ Ń‡Đ¸Đ˝ĐľĐĽ Ń€ĐµĐ°ĐłŃĐ˛Đ°Ń‚Đ¸ Đ˝Đ° ĐżŃ€Đ¸ĐłĐľĐ´Đ¸. Đ’Ń–Đ´ĐşŃ€Đ¸ĐąŃ‚Đµ ĐĽĐµĐ˝ŃŽ Đ˛Ń–Đ´ĐżŃ€Đ°Đ˛ĐşĐ¸, ĐşĐ»Đ°Ń†Đ˝ŃĐ˛ŃĐ¸ ĐżĐľ ĐşĐ˝ĐľĐżŃ†Ń– "Đ’Ń–Đ´ĐżŃ€Đ°Đ˛Đ¸Ń‚Đ¸"!',
-                            first_mission: "Đ§ŃĐ´ĐľĐ˛Đľ, Đ˛Đ¸ Đ·Đ±ŃĐ´ŃĐ˛Đ°Đ»Đ¸ ŃĐ˛ĐľŃŽ ĐżĐµŃ€ŃŃ Đ±ŃĐ´Ń–Đ˛Đ»ŃŽ! ĐžŃ‚ Đ±Đ°Ń‡Đ¸Ń‚Đµ, Đ˛Đ¸ Đ˛Đ¶Đµ ĐľŃ‚Ń€Đ¸ĐĽĐ°Đ»Đ¸ Đ·Đ˛Ń–Ń‚Đ¸ ĐżŃ€Đľ ĐżĐµŃ€ŃŃ– Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ!"
+                            dispatch_button: 'Ð¢ÐµÐ¿ÐµÑ€ Ð¼Ð¸ Ñ…Ð¾Ñ‡ÐµÐ¼Ð¾ Ð´Ñ–Ð·Ð½Ð°Ñ‚Ð¸ÑÑŒ, ÑÐºÐ¸Ð¼ Ñ‡Ð¸Ð½Ð¾Ð¼ Ñ€ÐµÐ°Ð³ÑƒÐ²Ð°Ñ‚Ð¸ Ð½Ð° Ð¿Ñ€Ð¸Ð³Ð¾Ð´Ð¸. Ð’Ñ–Ð´ÐºÑ€Ð¸Ð¹Ñ‚Ðµ Ð¼ÐµÐ½ÑŽ Ð²Ñ–Ð´Ð¿Ñ€Ð°Ð²ÐºÐ¸, ÐºÐ»Ð°Ñ†Ð½ÑƒÐ²ÑˆÐ¸ Ð¿Ð¾ ÐºÐ½Ð¾Ð¿Ñ†Ñ– "Ð’Ñ–Ð´Ð¿Ñ€Ð°Ð²Ð¸Ñ‚Ð¸"!',
+                            first_mission: "Ð§ÑƒÐ´Ð¾Ð²Ð¾, Ð²Ð¸ Ð·Ð±ÑƒÐ´ÑƒÐ²Ð°Ð»Ð¸ ÑÐ²Ð¾ÑŽ Ð¿ÐµÑ€ÑˆÑƒ Ð±ÑƒÐ´Ñ–Ð²Ð»ÑŽ! ÐžÑ‚ Ð±Ð°Ñ‡Ð¸Ñ‚Ðµ, Ð²Ð¸ Ð²Ð¶Ðµ Ð¾Ñ‚Ñ€Ð¸Ð¼Ð°Ð»Ð¸ Ð·Ð²Ñ–Ñ‚Ð¸ Ð¿Ñ€Ð¾ Ð¿ÐµÑ€ÑˆÑ– Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: 'Đ§ŃĐ´ĐľĐ˛Đľ, Đ˛Đ¸ Đ˝Đ° ŃĐ»ŃŹŃ…Ń Đ´Đľ Ń‚ĐľĐłĐľ, Ń‰ĐľĐ± ŃŃ‚Đ°Ń‚Đ¸ ĐżĐľŃ‚Ń€ŃŹŃĐ˝Đ¸ĐĽ Đ´Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ĐľĐĽ! ĐžŃŃŚ ĐĽĐľĐ˝ĐµŃ‚Đ¸ (%{coins}), ŃŹĐşŃ– Đ´ĐľĐżĐľĐĽĐľĐ¶ŃŃ‚ŃŚ Đ˛Đ°ĐĽ Đ˝Đ° ĐżĐľŃ‡Đ°Ń‚ĐşŃ! </br> Đ’Đ°ŃĐ° ĐşĐľĐĽĐ°Đ˝Đ´Đ° ĐłŃ€Đ¸ "Đ”Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ 101"'
+                        general: 'Ð§ÑƒÐ´Ð¾Ð²Ð¾, Ð²Ð¸ Ð½Ð° ÑˆÐ»ÑÑ…Ñƒ Ð´Ð¾ Ñ‚Ð¾Ð³Ð¾, Ñ‰Ð¾Ð± ÑÑ‚Ð°Ñ‚Ð¸ Ð¿Ð¾Ñ‚Ñ€ÑÑÐ½Ð¸Ð¼ Ð´Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€Ð¾Ð¼! ÐžÑÑŒ Ð¼Ð¾Ð½ÐµÑ‚Ð¸ (%{coins}), ÑÐºÑ– Ð´Ð¾Ð¿Ð¾Ð¼Ð¾Ð¶ÑƒÑ‚ÑŒ Ð²Ð°Ð¼ Ð½Ð° Ð¿Ð¾Ñ‡Ð°Ñ‚ÐºÑƒ! </br> Ð’Ð°ÑˆÐ° ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð³Ñ€Ð¸ "Ð”Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ 101"'
                     },
                     mobile: {
-                        general: 'Đ§ŃĐ´ĐľĐ˛Đľ, Đ˛Đ¸ Đ˝Đ° ŃĐ»ŃŹŃ…Ń Đ´Đľ Ń‚ĐľĐłĐľ, Ń‰ĐľĐ± ŃŃ‚Đ°Ń‚Đ¸ ĐżĐľŃ‚Ń€ŃŹŃĐ˝Đ¸ĐĽ Đ´Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ĐľĐĽ! ĐžŃŃŚ ĐĽĐľĐ˝ĐµŃ‚Đ¸ (%{coins}), ŃŹĐşŃ– Đ´ĐľĐżĐľĐĽĐľĐ¶ŃŃ‚ŃŚ Đ˛Đ°ĐĽ Đ˝Đ° ĐżĐľŃ‡Đ°Ń‚ĐşŃ! </br> Đ’Đ°ŃĐ° ĐşĐľĐĽĐ°Đ˝Đ´Đ° ĐłŃ€Đ¸ "Đ”Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ 101"'
+                        general: 'Ð§ÑƒÐ´Ð¾Ð²Ð¾, Ð²Ð¸ Ð½Ð° ÑˆÐ»ÑÑ…Ñƒ Ð´Ð¾ Ñ‚Ð¾Ð³Ð¾, Ñ‰Ð¾Ð± ÑÑ‚Ð°Ñ‚Ð¸ Ð¿Ð¾Ñ‚Ñ€ÑÑÐ½Ð¸Ð¼ Ð´Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€Ð¾Ð¼! ÐžÑÑŒ Ð¼Ð¾Ð½ÐµÑ‚Ð¸ (%{coins}), ÑÐºÑ– Ð´Ð¾Ð¿Ð¾Ð¼Ð¾Ð¶ÑƒÑ‚ÑŒ Ð²Ð°Ð¼ Ð½Ð° Ð¿Ð¾Ñ‡Ð°Ñ‚ÐºÑƒ! </br> Ð’Ð°ÑˆÐ° ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð³Ñ€Ð¸ "Ð”Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ 101"'
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "ĐŁ Đ˛Đ¸ĐżĐ°Đ´ĐşŃ Đ˛Đ¸Đ˝Đ¸ĐşĐ˝ĐµĐ˝Đ˝ŃŹ Đ·Đ°ĐżĐ¸Ń‚Đ°Đ˝ŃŚ, Đ˛Đ¸ ĐĽĐľĐ¶ĐµŃ‚Đµ Đ·Đ˛ĐµŃ€Đ˝ŃŃ‚Đ¸ŃŃŚ Đ´Đľ Đ˛Ń–Đ´ĐżĐľĐ˛Ń–Đ´ĐµĐą Đ˝Đ° Ń‡Đ°ŃŃ‚Ń– ĐżĐ¸Ń‚Đ°Đ˝Đ˝ŃŹ ĐżĐľ ĐłŃ€Ń– Đ°Đ±Đľ Đ˛Ń–Đ´Đ˛Ń–Đ´Đ°Ń‚Đ¸ Ń–ĐłŃ€ĐľĐ˛Ń– Ń„ĐľŃ€ŃĐĽĐ¸ Ń‡Đ¸ Đ˝Đ°ŃŃ ŃŃ‚ĐľŃ€Ń–Đ˝ĐşŃ Ń Facebook!",
-                        general: "ĐŁ ŃŹĐşĐľŃŃ‚Ń– Đ˝Đ°ŃŃ‚ŃĐżĐ˝ĐľĐłĐľ ĐşŃ€ĐľĐşŃ, ĐĽĐ¸ ĐżĐľŃ€ĐµĐşĐľĐĽĐµĐ˝Đ´ŃŃ”ĐĽĐľ Đ˛Đ°ĐĽ ĐżĐľĐ±ŃĐ´ŃĐ˛Đ°Ń‚Đ¸ Đ´Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ŃŃŚĐşĐ¸Đą Ń†ĐµĐ˝Ń‚Ń€, Đ° ĐżĐľŃ‚Ń–ĐĽ, ŃŹĐşĐľĐĽĐľĐłĐ° ŃĐ˛Đ¸Đ´ŃĐµ, Đ˝ĐľĐ˛Ń– ŃŃ‚Đ°Đ˝Ń†Ń–Ń—, ĐľŃĐşŃ–Đ»ŃŚĐşĐ¸ ĐĽĐ°ĐşŃĐ¸ĐĽĐ°Đ»ŃŚĐ˝Đ° ĐşŃ–Đ»ŃŚĐşŃ–ŃŃ‚ŃŚ Đ·Đ°Đ˛Đ´Đ°Đ˝ŃŚ Đ´ĐľŃ€Ń–Đ˛Đ˝ŃŽŃ” Đ˝Đ°ĐąĐ˛Đ¸Ń‰Ń–Đą ĐşŃ–Đ»ŃŚĐşĐľŃŃ‚Ń– Đ±ŃĐ´ŃŚ-ŃŹĐşĐ¸Ń… ŃŃ‚Đ°Đ˝Ń†Ń–Đą Ń€Ń–Đ·Đ˝Đ¸Ń… Ń‚Đ¸ĐżŃ–Đ˛ (ĐżĐľĐ»Ń–Ń†Ń–ŃŹ, ĐżĐľĐ¶ĐµĐ¶Đ˝Đ¸ĐşĐ¸, ŃĐ˛Đ¸Đ´ĐşĐ°) ĐżĐ»ŃŽŃ 1; Đ˝Đ°ĐżŃ€Đ¸ĐşĐ»Đ°Đ´, 5 ĐżĐľĐ¶ĐµĐ¶Đ˝Đ¸Ń… ŃŃ‚Đ°Đ˝Ń†Ń–Đą Ń– 3 ŃŃ‚Đ°Đ˝Ń†Ń–Ń— ŃĐ˛Đ¸Đ´ĐşĐľŃ— = 6 Đ·Đ°Đ˛Đ´Đ°Đ˝ŃŚ.",
-                        join_alliance: "Đ˘Đ°ĐşĐľĐ¶, Đ˛ŃŃ‚ŃĐż Ń Đ°Đ»ŃŚŃŹĐ˝Ń Đ·Đ˝Đ°Ń‡Đ˝Đ¸ĐĽ Ń‡Đ¸Đ˝ĐľĐĽ Đ´ĐľĐżĐľĐĽĐľĐ¶Đµ Đ˛Đ°ĐĽ, ĐľŃĐľĐ±Đ»Đ¸Đ˛Đľ Đ˝Đ° ĐżĐľŃ‡Đ°Ń‚ĐşŃ, Ń‚ĐľĐĽŃ Ń†Đµ Ń€ĐµĐşĐľĐĽĐµĐ˝Đ´ŃŃ”Ń‚ŃŚŃŃŹ Ń‚Đ°ĐşĐľĐ¶.",
-                        summary: 'Đ¦Đµ ĐľŃĐ˝ĐľĐ˛Đ¸ ĐłŃ€Đ¸ "Đ”Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ 101"! Đ’Đ¸ĐşĐľĐ˝ŃĐąŃ‚Đµ Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ, ĐľŃ‚Ń€Đ¸ĐĽŃĐąŃ‚Đµ ĐşŃ€ĐµĐ´Đ¸Ń‚Đ¸, ĐşŃĐżĐ»ŃŹĐąŃ‚Đµ Đ±Ń–Đ»ŃŚŃĐµ ĐżŃ–Đ´Ń€ĐľĐ·Đ´Ń–Đ»Ń–Đ˛, ĐżĐľĐ˛Ń‚ĐľŃ€ŃŽĐąŃ‚Đµ. Đ’ĐµŃĐµĐ»ĐľŃ— Đ˛Đ°ĐĽ ĐłŃ€Đ¸! </br> Đ’Đ°ŃĐ° ĐşĐľĐĽĐ°Đ˝Đ´Đ° ĐłŃ€Đ¸ "Đ”Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ 101"'
+                        contact: "Ð£ Ð²Ð¸Ð¿Ð°Ð´ÐºÑƒ Ð²Ð¸Ð½Ð¸ÐºÐ½ÐµÐ½Ð½Ñ Ð·Ð°Ð¿Ð¸Ñ‚Ð°Ð½ÑŒ, Ð²Ð¸ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð·Ð²ÐµÑ€Ð½ÑƒÑ‚Ð¸ÑÑŒ Ð´Ð¾ Ð²Ñ–Ð´Ð¿Ð¾Ð²Ñ–Ð´ÐµÐ¹ Ð½Ð° Ñ‡Ð°ÑÑ‚Ñ– Ð¿Ð¸Ñ‚Ð°Ð½Ð½Ñ Ð¿Ð¾ Ð³Ñ€Ñ– Ð°Ð±Ð¾ Ð²Ñ–Ð´Ð²Ñ–Ð´Ð°Ñ‚Ð¸ Ñ–Ð³Ñ€Ð¾Ð²Ñ– Ñ„Ð¾Ñ€ÑƒÐ¼Ð¸ Ñ‡Ð¸ Ð½Ð°ÑˆÑƒ ÑÑ‚Ð¾Ñ€Ñ–Ð½ÐºÑƒ Ñƒ Facebook!",
+                        general: "Ð£ ÑÐºÐ¾ÑÑ‚Ñ– Ð½Ð°ÑÑ‚ÑƒÐ¿Ð½Ð¾Ð³Ð¾ ÐºÑ€Ð¾ÐºÑƒ, Ð¼Ð¸ Ð¿Ð¾Ñ€ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÑ”Ð¼Ð¾ Ð²Ð°Ð¼ Ð¿Ð¾Ð±ÑƒÐ´ÑƒÐ²Ð°Ñ‚Ð¸ Ð´Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ÑÑŒÐºÐ¸Ð¹ Ñ†ÐµÐ½Ñ‚Ñ€, Ð° Ð¿Ð¾Ñ‚Ñ–Ð¼, ÑÐºÐ¾Ð¼Ð¾Ð³Ð° ÑˆÐ²Ð¸Ð´ÑˆÐµ, Ð½Ð¾Ð²Ñ– ÑÑ‚Ð°Ð½Ñ†Ñ–Ñ—, Ð¾ÑÐºÑ–Ð»ÑŒÐºÐ¸ Ð¼Ð°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð° ÐºÑ–Ð»ÑŒÐºÑ–ÑÑ‚ÑŒ Ð·Ð°Ð²Ð´Ð°Ð½ÑŒ Ð´Ð¾Ñ€Ñ–Ð²Ð½ÑŽÑ” Ð½Ð°Ð¹Ð²Ð¸Ñ‰Ñ–Ð¹ ÐºÑ–Ð»ÑŒÐºÐ¾ÑÑ‚Ñ– Ð±ÑƒÐ´ÑŒ-ÑÐºÐ¸Ñ… ÑÑ‚Ð°Ð½Ñ†Ñ–Ð¹ Ñ€Ñ–Ð·Ð½Ð¸Ñ… Ñ‚Ð¸Ð¿Ñ–Ð² (Ð¿Ð¾Ð»Ñ–Ñ†Ñ–Ñ, Ð¿Ð¾Ð¶ÐµÐ¶Ð½Ð¸ÐºÐ¸, ÑˆÐ²Ð¸Ð´ÐºÐ°) Ð¿Ð»ÑŽÑ 1; Ð½Ð°Ð¿Ñ€Ð¸ÐºÐ»Ð°Ð´, 5 Ð¿Ð¾Ð¶ÐµÐ¶Ð½Ð¸Ñ… ÑÑ‚Ð°Ð½Ñ†Ñ–Ð¹ Ñ– 3 ÑÑ‚Ð°Ð½Ñ†Ñ–Ñ— ÑˆÐ²Ð¸Ð´ÐºÐ¾Ñ— = 6 Ð·Ð°Ð²Ð´Ð°Ð½ÑŒ.",
+                        join_alliance: "Ð¢Ð°ÐºÐ¾Ð¶, Ð²ÑÑ‚ÑƒÐ¿ Ñƒ Ð°Ð»ÑŒÑÐ½Ñ Ð·Ð½Ð°Ñ‡Ð½Ð¸Ð¼ Ñ‡Ð¸Ð½Ð¾Ð¼ Ð´Ð¾Ð¿Ð¾Ð¼Ð¾Ð¶Ðµ Ð²Ð°Ð¼, Ð¾ÑÐ¾Ð±Ð»Ð¸Ð²Ð¾ Ð½Ð° Ð¿Ð¾Ñ‡Ð°Ñ‚ÐºÑƒ, Ñ‚Ð¾Ð¼Ñƒ Ñ†Ðµ Ñ€ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÑ”Ñ‚ÑŒÑÑ Ñ‚Ð°ÐºÐ¾Ð¶.",
+                        summary: 'Ð¦Ðµ Ð¾ÑÐ½Ð¾Ð²Ð¸ Ð³Ñ€Ð¸ "Ð”Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ 101"! Ð’Ð¸ÐºÐ¾Ð½ÑƒÐ¹Ñ‚Ðµ Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ, Ð¾Ñ‚Ñ€Ð¸Ð¼ÑƒÐ¹Ñ‚Ðµ ÐºÑ€ÐµÐ´Ð¸Ñ‚Ð¸, ÐºÑƒÐ¿Ð»ÑÐ¹Ñ‚Ðµ Ð±Ñ–Ð»ÑŒÑˆÐµ Ð¿Ñ–Ð´Ñ€Ð¾Ð·Ð´Ñ–Ð»Ñ–Ð², Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€ÑŽÐ¹Ñ‚Ðµ. Ð’ÐµÑÐµÐ»Ð¾Ñ— Ð²Ð°Ð¼ Ð³Ñ€Ð¸! </br> Ð’Ð°ÑˆÐ° ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð³Ñ€Ð¸ "Ð”Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ 101"'
                     },
                     mobile: {
-                        contact: "ĐŁ Đ˛Đ¸ĐżĐ°Đ´ĐşŃ Đ˛Đ¸Đ˝Đ¸ĐşĐ˝ĐµĐ˝Đ˝ŃŹ Đ·Đ°ĐżĐ¸Ń‚Đ°Đ˝ŃŚ, Đ˛Đ¸ ĐĽĐľĐ¶ĐµŃ‚Đµ Đ·Đ˛ĐµŃ€Đ˝ŃŃ‚Đ¸ŃŃŚ Đ´Đľ Đ˛Ń–Đ´ĐżĐľĐ˛Ń–Đ´ĐµĐą Đ˝Đ° Ń‡Đ°ŃŃ‚Ń– ĐżĐ¸Ń‚Đ°Đ˝Đ˝ŃŹ ĐżĐľ ĐłŃ€Ń– Đ°Đ±Đľ Đ˛Ń–Đ´Đ˛Ń–Đ´Đ°Ń‚Đ¸ Ń–ĐłŃ€ĐľĐ˛Ń– Ń„ĐľŃ€ŃĐĽĐ¸ Ń‡Đ¸ Đ˝Đ°ŃŃ ŃŃ‚ĐľŃ€Ń–Đ˝ĐşŃ Ń Facebook!",
-                        general: "ĐŁ ŃŹĐşĐľŃŃ‚Ń– Đ˝Đ°ŃŃ‚ŃĐżĐ˝ĐľĐłĐľ ĐşŃ€ĐľĐşŃ, ĐĽĐ¸ ĐżĐľŃ€ĐµĐşĐľĐĽĐµĐ˝Đ´ŃŃ”ĐĽĐľ Đ˛Đ°ĐĽ ĐżĐľĐ±ŃĐ´ŃĐ˛Đ°Ń‚Đ¸ Đ´Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ŃŃŚĐşĐ¸Đą Ń†ĐµĐ˝Ń‚Ń€, Đ° ĐżĐľŃ‚Ń–ĐĽ, ŃŹĐşĐľĐĽĐľĐłĐ° ŃĐ˛Đ¸Đ´ŃĐµ, Đ˝ĐľĐ˛Ń– ŃŃ‚Đ°Đ˝Ń†Ń–Ń—, ĐľŃĐşŃ–Đ»ŃŚĐşĐ¸ ĐĽĐ°ĐşŃĐ¸ĐĽĐ°Đ»ŃŚĐ˝Đ° ĐşŃ–Đ»ŃŚĐşŃ–ŃŃ‚ŃŚ Đ·Đ°Đ˛Đ´Đ°Đ˝ŃŚ Đ´ĐľŃ€Ń–Đ˛Đ˝ŃŽŃ” Đ˝Đ°ĐąĐ˛Đ¸Ń‰Ń–Đą ĐşŃ–Đ»ŃŚĐşĐľŃŃ‚Ń– Đ±ŃĐ´ŃŚ-ŃŹĐşĐ¸Ń… ŃŃ‚Đ°Đ˝Ń†Ń–Đą Ń€Ń–Đ·Đ˝Đ¸Ń… Ń‚Đ¸ĐżŃ–Đ˛ (ĐżĐľĐ»Ń–Ń†Ń–ŃŹ, ĐżĐľĐ¶ĐµĐ¶Đ˝Đ¸ĐşĐ¸, ŃĐ˛Đ¸Đ´ĐşĐ°) ĐżĐ»ŃŽŃ 1; Đ˝Đ°ĐżŃ€Đ¸ĐşĐ»Đ°Đ´, 5 ĐżĐľĐ¶ĐµĐ¶Đ˝Đ¸Ń… ŃŃ‚Đ°Đ˝Ń†Ń–Đą Ń– 3 ŃŃ‚Đ°Đ˝Ń†Ń–Ń— ŃĐ˛Đ¸Đ´ĐşĐľŃ— = 6 Đ·Đ°Đ˛Đ´Đ°Đ˝ŃŚ.",
-                        join_alliance: "Đ˘Đ°ĐşĐľĐ¶, Đ˛ŃŃ‚ŃĐż Ń Đ°Đ»ŃŚŃŹĐ˝Ń Đ·Đ˝Đ°Ń‡Đ˝Đ¸ĐĽ Ń‡Đ¸Đ˝ĐľĐĽ Đ´ĐľĐżĐľĐĽĐľĐ¶Đµ Đ˛Đ°ĐĽ, ĐľŃĐľĐ±Đ»Đ¸Đ˛Đľ Đ˝Đ° ĐżĐľŃ‡Đ°Ń‚ĐşŃ, Ń‚ĐľĐĽŃ Ń†Đµ Ń€ĐµĐşĐľĐĽĐµĐ˝Đ´ŃŃ”Ń‚ŃŚŃŃŹ Ń‚Đ°ĐşĐľĐ¶.",
-                        summary: 'Đ¦Đµ ĐľŃĐ˝ĐľĐ˛Đ¸ ĐłŃ€Đ¸ "Đ”Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ 101"! Đ’Đ¸ĐşĐľĐ˝ŃĐąŃ‚Đµ Đ·Đ°Đ˛Đ´Đ°Đ˝Đ˝ŃŹ, ĐľŃ‚Ń€Đ¸ĐĽŃĐąŃ‚Đµ ĐşŃ€ĐµĐ´Đ¸Ń‚Đ¸, ĐşŃĐżĐ»ŃŹĐąŃ‚Đµ Đ±Ń–Đ»ŃŚŃĐµ ĐżŃ–Đ´Ń€ĐľĐ·Đ´Ń–Đ»Ń–Đ˛, ĐżĐľĐ˛Ń‚ĐľŃ€ŃŽĐąŃ‚Đµ. Đ’ĐµŃĐµĐ»ĐľŃ— Đ˛Đ°ĐĽ ĐłŃ€Đ¸! </br> Đ’Đ°ŃĐ° ĐşĐľĐĽĐ°Đ˝Đ´Đ° ĐłŃ€Đ¸ "Đ”Đ¸ŃĐżĐµŃ‚Ń‡ĐµŃ€ 101"'
+                        contact: "Ð£ Ð²Ð¸Ð¿Ð°Ð´ÐºÑƒ Ð²Ð¸Ð½Ð¸ÐºÐ½ÐµÐ½Ð½Ñ Ð·Ð°Ð¿Ð¸Ñ‚Ð°Ð½ÑŒ, Ð²Ð¸ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð·Ð²ÐµÑ€Ð½ÑƒÑ‚Ð¸ÑÑŒ Ð´Ð¾ Ð²Ñ–Ð´Ð¿Ð¾Ð²Ñ–Ð´ÐµÐ¹ Ð½Ð° Ñ‡Ð°ÑÑ‚Ñ– Ð¿Ð¸Ñ‚Ð°Ð½Ð½Ñ Ð¿Ð¾ Ð³Ñ€Ñ– Ð°Ð±Ð¾ Ð²Ñ–Ð´Ð²Ñ–Ð´Ð°Ñ‚Ð¸ Ñ–Ð³Ñ€Ð¾Ð²Ñ– Ñ„Ð¾Ñ€ÑƒÐ¼Ð¸ Ñ‡Ð¸ Ð½Ð°ÑˆÑƒ ÑÑ‚Ð¾Ñ€Ñ–Ð½ÐºÑƒ Ñƒ Facebook!",
+                        general: "Ð£ ÑÐºÐ¾ÑÑ‚Ñ– Ð½Ð°ÑÑ‚ÑƒÐ¿Ð½Ð¾Ð³Ð¾ ÐºÑ€Ð¾ÐºÑƒ, Ð¼Ð¸ Ð¿Ð¾Ñ€ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÑ”Ð¼Ð¾ Ð²Ð°Ð¼ Ð¿Ð¾Ð±ÑƒÐ´ÑƒÐ²Ð°Ñ‚Ð¸ Ð´Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ÑÑŒÐºÐ¸Ð¹ Ñ†ÐµÐ½Ñ‚Ñ€, Ð° Ð¿Ð¾Ñ‚Ñ–Ð¼, ÑÐºÐ¾Ð¼Ð¾Ð³Ð° ÑˆÐ²Ð¸Ð´ÑˆÐµ, Ð½Ð¾Ð²Ñ– ÑÑ‚Ð°Ð½Ñ†Ñ–Ñ—, Ð¾ÑÐºÑ–Ð»ÑŒÐºÐ¸ Ð¼Ð°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð° ÐºÑ–Ð»ÑŒÐºÑ–ÑÑ‚ÑŒ Ð·Ð°Ð²Ð´Ð°Ð½ÑŒ Ð´Ð¾Ñ€Ñ–Ð²Ð½ÑŽÑ” Ð½Ð°Ð¹Ð²Ð¸Ñ‰Ñ–Ð¹ ÐºÑ–Ð»ÑŒÐºÐ¾ÑÑ‚Ñ– Ð±ÑƒÐ´ÑŒ-ÑÐºÐ¸Ñ… ÑÑ‚Ð°Ð½Ñ†Ñ–Ð¹ Ñ€Ñ–Ð·Ð½Ð¸Ñ… Ñ‚Ð¸Ð¿Ñ–Ð² (Ð¿Ð¾Ð»Ñ–Ñ†Ñ–Ñ, Ð¿Ð¾Ð¶ÐµÐ¶Ð½Ð¸ÐºÐ¸, ÑˆÐ²Ð¸Ð´ÐºÐ°) Ð¿Ð»ÑŽÑ 1; Ð½Ð°Ð¿Ñ€Ð¸ÐºÐ»Ð°Ð´, 5 Ð¿Ð¾Ð¶ÐµÐ¶Ð½Ð¸Ñ… ÑÑ‚Ð°Ð½Ñ†Ñ–Ð¹ Ñ– 3 ÑÑ‚Ð°Ð½Ñ†Ñ–Ñ— ÑˆÐ²Ð¸Ð´ÐºÐ¾Ñ— = 6 Ð·Ð°Ð²Ð´Ð°Ð½ÑŒ.",
+                        join_alliance: "Ð¢Ð°ÐºÐ¾Ð¶, Ð²ÑÑ‚ÑƒÐ¿ Ñƒ Ð°Ð»ÑŒÑÐ½Ñ Ð·Ð½Ð°Ñ‡Ð½Ð¸Ð¼ Ñ‡Ð¸Ð½Ð¾Ð¼ Ð´Ð¾Ð¿Ð¾Ð¼Ð¾Ð¶Ðµ Ð²Ð°Ð¼, Ð¾ÑÐ¾Ð±Ð»Ð¸Ð²Ð¾ Ð½Ð° Ð¿Ð¾Ñ‡Ð°Ñ‚ÐºÑƒ, Ñ‚Ð¾Ð¼Ñƒ Ñ†Ðµ Ñ€ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÑ”Ñ‚ÑŒÑÑ Ñ‚Ð°ÐºÐ¾Ð¶.",
+                        summary: 'Ð¦Ðµ Ð¾ÑÐ½Ð¾Ð²Ð¸ Ð³Ñ€Ð¸ "Ð”Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ 101"! Ð’Ð¸ÐºÐ¾Ð½ÑƒÐ¹Ñ‚Ðµ Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ, Ð¾Ñ‚Ñ€Ð¸Ð¼ÑƒÐ¹Ñ‚Ðµ ÐºÑ€ÐµÐ´Ð¸Ñ‚Ð¸, ÐºÑƒÐ¿Ð»ÑÐ¹Ñ‚Ðµ Ð±Ñ–Ð»ÑŒÑˆÐµ Ð¿Ñ–Ð´Ñ€Ð¾Ð·Ð´Ñ–Ð»Ñ–Ð², Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€ÑŽÐ¹Ñ‚Ðµ. Ð’ÐµÑÐµÐ»Ð¾Ñ— Ð²Ð°Ð¼ Ð³Ñ€Ð¸! </br> Ð’Ð°ÑˆÐ° ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð³Ñ€Ð¸ "Ð”Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ 101"'
                     }
                 }
             },
             commons: {
-                collect: "Đ’Đ·ŃŹŃ‚Đ¸",
-                "continue": "ĐťŃ–",
-                end: "ĐšŃ–Đ˝ĐµŃ†ŃŚ",
-                next: "Đ”Đ°Đ»Ń–",
-                prev: "ĐťĐ°Đ·Đ°Đ´",
-                skip: "Đ˘Đ°Đş",
-                skip_hint: "Đ”Ń–ĐąŃĐ˝Đľ ŃĐşĐ°ŃŃĐ˛Đ°Ń‚Đ¸ Đ˝Đ°Đ˛Ń‡Đ°Đ˝Đ˝ŃŹ? ĐźĐµŃ€ĐµĐąŃ‚Đ¸ Đ´Đľ Đ˝ŃŚĐľĐłĐľ ĐżŃ–Đ·Đ˝Ń–ŃĐµ Đ˝Đµ Đ±ŃĐ´Đµ ĐĽĐľĐ¶Đ»Đ¸Đ˛ĐľŃŃ‚Ń–. Đ’Đ¸ Đ˝Đµ ĐĽĐ°Ń‚Đ¸ĐĽĐµŃ‚Đµ ĐżŃ€Đ°Đ˛Đ° Đ˝Đ° Đ˝Đ°ĐłĐľŃ€ĐľĐ´Ń Đ·Đ° Đ·Đ°Đ˛ĐµŃ€ŃĐµĐ˝Đ˝ŃŹ Đ˝Đ°Đ˛Ń‡Đ°Đ˝Đ˝ŃŹ."
+                collect: "Ð’Ð·ÑÑ‚Ð¸",
+                "continue": "ÐÑ–",
+                end: "ÐšÑ–Ð½ÐµÑ†ÑŒ",
+                next: "Ð”Ð°Ð»Ñ–",
+                prev: "ÐÐ°Ð·Ð°Ð´",
+                skip: "Ð¢Ð°Ðº",
+                skip_hint: "Ð”Ñ–Ð¹ÑÐ½Ð¾ ÑÐºÐ°ÑÑƒÐ²Ð°Ñ‚Ð¸ Ð½Ð°Ð²Ñ‡Ð°Ð½Ð½Ñ? ÐŸÐµÑ€ÐµÐ¹Ñ‚Ð¸ Ð´Ð¾ Ð½ÑŒÐ¾Ð³Ð¾ Ð¿Ñ–Ð·Ð½Ñ–ÑˆÐµ Ð½Ðµ Ð±ÑƒÐ´Ðµ Ð¼Ð¾Ð¶Ð»Ð¸Ð²Ð¾ÑÑ‚Ñ–. Ð’Ð¸ Ð½Ðµ Ð¼Ð°Ñ‚Ð¸Ð¼ÐµÑ‚Ðµ Ð¿Ñ€Ð°Ð²Ð° Ð½Ð° Ð½Ð°Ð³Ð¾Ñ€Ð¾Ð´Ñƒ Ð·Ð° Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð½Ñ Ð½Ð°Ð²Ñ‡Ð°Ð½Ð½Ñ."
             },
             rewards: {
-                log: "ĐťĐ°ĐłĐľŃ€ĐľĐ´Đ° Đ·Đ° Đ·Đ°Đ˛ĐµŃ€ŃĐµĐ˝Đ˝ŃŹ Đ˝Đ°Đ˛Ń‡Đ°Đ˝Đ˝ŃŹ."
+                log: "ÐÐ°Ð³Ð¾Ñ€Ð¾Ð´Ð° Ð·Ð° Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð½Ñ Ð½Ð°Ð²Ñ‡Ð°Ð½Ð½Ñ."
             }
         }
     }, I18n.translations.es_MX = {
         common: {
-            add: "AĂ±adir",
-            back: "AtrĂˇs",
+            add: "AÃ±adir",
+            back: "AtrÃ¡s",
             cancel: "Cancelar",
             change_saved: "Cambios guardados",
-            coins_spend: "ÂżSeguro que quieres gastar estas monedas?",
-            congratulations: "ÂˇEnhorabuena!",
+            coins_spend: "Â¿Seguro que quieres gastar estas monedas?",
+            congratulations: "Â¡Enhorabuena!",
             content: "Contenido",
             copy: "Copiar",
-            credits: "CrĂ©ditos",
+            credits: "CrÃ©ditos",
             "delete": "Eliminar",
             details: "Detalles",
             edit: "Editar",
             error: "Error",
-            is_offline: "%{user} no estĂˇ conectado.",
+            is_offline: "%{user} no estÃ¡ conectado.",
             is_offline_long: "%{user} no se ha conectado desde hace mucho tiempo",
-            is_online: "%{user} estĂˇ conectado.",
+            is_online: "%{user} estÃ¡ conectado.",
             loading: "Cargando...",
             name: "Nombre",
             none: "Nada",
             of: "de",
             off: "No",
-            on: "SĂ­",
+            on: "SÃ­",
             save: "Guardar",
             search: "Buscar",
             show: "Mostrar",
@@ -8596,8 +8530,8 @@ function deleteMissionPosition(e) {
             arrival: "Llegada",
             backalarm: "Cancelar",
             coins: "Monedas",
-            credits: "CrĂ©ditos",
-            days: "dĂ­as",
+            credits: "CrÃ©ditos",
+            days: "dÃ­as",
             few_seconds: "en pocos segundos",
             finish_in: "Termina en:",
             hours: "H",
@@ -8606,45 +8540,45 @@ function deleteMissionPosition(e) {
             minutes: "min.",
             missed_vehicle: "Falta:",
             mission_start_in: "Comienza en:",
-            not_found_map: "No se ha encontrado el vehĂ­culo en el mapa",
+            not_found_map: "No se ha encontrado el vehÃ­culo en el mapa",
             now: "Ahora",
             patient: "Paciente",
             patient_untouched: "Pacientes no tratados",
-            poi_delete: "ÂżSeguro que quieres eliminar el PI %{caption}?",
+            poi_delete: "Â¿Seguro que quieres eliminar el PI %{caption}?",
             reload: "Recargar",
             sale: "Rebajas",
             sale_ended: "Oferta finalizada",
             secounds: "seg.",
-            sicherheitswache_error: "El guardia de seguridad %{caption} no ha completado su misiĂłn, ya que no se han cumplido todos los criterios.",
-            sicherheitswache_success: "El guardia de seguridad %{caption} ha completado su misiĂłn. Recibes %{credits} crĂ©ditos.",
+            sicherheitswache_error: "El guardia de seguridad %{caption} no ha completado su misiÃ³n, ya que no se han cumplido todos los criterios.",
+            sicherheitswache_success: "El guardia de seguridad %{caption} ha completado su misiÃ³n. Recibes %{credits} crÃ©ditos.",
             start_in: "Comienza en: ",
             start_username: "Usuario:",
             time_left: "Tiempo restante:",
             to_building: "Ver edificio",
-            to_mission: "Ver misiĂłn",
+            to_mission: "Ver misiÃ³n",
             understand: "Recibido",
             user_not_found: "No se ha encontrado al jugador.",
-            vehicles_not_visible: "Los vehĂ­culos no estĂˇn visibles. "
+            vehicles_not_visible: "Los vehÃ­culos no estÃ¡n visibles. "
         },
         map: {
             alliance: "Alianza",
             alliance_chat: "Chat",
             alliance_chat_banned: "Tienes prohibido entrar al chat de la alianza.",
-            alliance_chat_banned_admin: "ProhibiciĂłn emitida por:",
+            alliance_chat_banned_admin: "ProhibiciÃ³n emitida por:",
             alliance_chat_banned_timeleft: "Tiempo restante:",
             alliance_chat_radio_off: "Radio de la alianza: No",
-            alliance_chat_radio_on: "Radio de la alianza: SĂ­",
+            alliance_chat_radio_on: "Radio de la alianza: SÃ­",
             alliance_event: "Evento",
             alliance_missions: "Misiones de alianza",
             alliance_missions_event: "Evento",
             ambulance: "Ambulancia",
             challenges: "",
             chat_history: "Historial de chat",
-            congratulations: "ÂˇEnhorabuena! Puedes ascender.",
+            congratulations: "Â¡Enhorabuena! Puedes ascender.",
             create_alliance_event: "Comenzar evento de alianza",
-            create_alliance_operation: "Crea una misiĂłn de alianza a gran escala",
+            create_alliance_operation: "Crea una misiÃ³n de alianza a gran escala",
             emergency: "Emergencia",
-            join_alliance_infos: "Si estĂˇs en una alianza, otros jugadores podrĂˇn ofrecerte misiones.",
+            join_alliance_infos: "Si estÃ¡s en una alianza, otros jugadores podrÃ¡n ofrecerte misiones.",
             map: "Mapa",
             map_filters: {
                 all_buildings: "Edificios",
@@ -8653,41 +8587,41 @@ function deleteMissionPosition(e) {
                 alliance_members: "Miembros",
                 alliance_missions: "Compartido por la alianza",
                 ambulance_station_missions: "Parque de ambulancias",
-                ambulance_station_small_missions: "Parque de ambulancias (pequeĂ±o)",
-                clinic_missions: "ClĂ­nica",
+                ambulance_station_small_missions: "Parque de ambulancias (pequeÃ±o)",
+                clinic_missions: "ClÃ­nica",
                 dispatch_center_missions: "Centralita",
                 fire_school_missions: "Academia de bomberos",
                 firehouse_missions: "Parque de bomberos",
-                firehouse_small_missions: "Parque de bomberos (pequeĂ±o)",
+                firehouse_small_missions: "Parque de bomberos (pequeÃ±o)",
                 hospital_missions: "Hospital",
                 map_filters: "Lista de filtros de mapa",
-                mission_positions: "Puntos de interĂ©s (PI)",
+                mission_positions: "Puntos de interÃ©s (PI)",
                 police_copter_station_missions: "Helipuerto policial",
-                police_school_missions: "Academia de policĂ­a",
-                police_small_missions: "ComisarĂ­a de policĂ­a (pequeĂ±o)",
-                police_special_forces: "Fuerzas especiales de la policĂ­a",
-                police_station_missions: "ComisarĂ­a de policĂ­a",
-                prison_missions: "PrisiĂłn",
-                rapid_deployment_group: "Grupo de preparaciĂłn rĂˇpida (GPR)",
-                rescue_copter_station_missions: "Helipuerto mĂ©dico",
-                riot_police: "PolicĂ­a antidisturbios",
-                staging_area_missions: "Zona de preparaciĂłn",
+                police_school_missions: "Academia de policÃ­a",
+                police_small_missions: "ComisarÃ­a de policÃ­a (pequeÃ±o)",
+                police_special_forces: "Fuerzas especiales de la policÃ­a",
+                police_station_missions: "ComisarÃ­a de policÃ­a",
+                prison_missions: "PrisiÃ³n",
+                rapid_deployment_group: "Grupo de preparaciÃ³n rÃ¡pida (GPR)",
+                rescue_copter_station_missions: "Helipuerto mÃ©dico",
+                riot_police: "PolicÃ­a antidisturbios",
+                staging_area_missions: "Zona de preparaciÃ³n",
                 technical_aid_organization: "SAT",
                 technical_aid_organization_school: "Academia SAT",
                 user_buildings: "Mis edificios",
                 user_missions: "Mis misiones",
-                water_watch: "Rescate acuĂˇtico"
+                water_watch: "Rescate acuÃ¡tico"
             },
             message: "Mensaje",
-            mission: "MisiĂłn",
-            no_alliance_chat_impossible: "No estĂˇs en una alianza.",
+            mission: "MisiÃ³n",
+            no_alliance_chat_impossible: "No estÃ¡s en una alianza.",
             no_alliance_missions: "No hay misiones de alianza.",
-            no_ambulance_missions: "No hay misiones de ambulancia. Solo habrĂˇ misiones de ambulancia cuando tengas una ambulancia y un hospital.",
-            no_emergency_missions: "No hay misiones de emergencia disponibles. Solo habrĂˇ misiones de emergencia despuĂ©s de que construyas tu primera instalaciĂłn.",
+            no_ambulance_missions: "No hay misiones de ambulancia. Solo habrÃ¡ misiones de ambulancia cuando tengas una ambulancia y un hospital.",
+            no_emergency_missions: "No hay misiones de emergencia disponibles. Solo habrÃ¡ misiones de emergencia despuÃ©s de que construyas tu primera instalaciÃ³n.",
             no_radio_messages: "No has recibido mensajes de radio.",
             radio_messages: "Radio",
             restore_map: "Restaurar mapa",
-            show_informations: "Verde: las misiones se mostrarĂˇn en la lista. Rojo: las misiones no se mostrarĂˇn.",
+            show_informations: "Verde: las misiones se mostrarÃ¡n en la lista. Rojo: las misiones no se mostrarÃ¡n.",
             sicherheitswache: "Misones planificadas",
             transport: "Transporte"
         },
@@ -8698,125 +8632,125 @@ function deleteMissionPosition(e) {
             on_place: "Presente",
             patient_transported: "Transportando paciente",
             prisoner_transported: "Transportando preso",
-            ready_home: "Disponible en la instalaciĂłn",
+            ready_home: "Disponible en la instalaciÃ³n",
             ready_traveling: "Listo y disponible",
-            talking_wish: "PeticiĂłn de transporte",
+            talking_wish: "PeticiÃ³n de transporte",
             waiting_for_vehicle: "Esperando a remolque"
         },
         intervention_order: {
-            back: "AtrĂˇs",
-            category: "CategorĂ­a",
+            back: "AtrÃ¡s",
+            category: "CategorÃ­a",
             colour: "Color",
             column: "Columna",
-            column_number: "N.Âş de columna",
-            column_number_hint: "Si hay un nĂşmero de columna, la entrada en las normas de alerta y respuesta se mostrarĂˇ en la columna correspondiente de la pĂˇgina de la alerta.",
+            column_number: "N.Âº de columna",
+            column_number_hint: "Si hay un nÃºmero de columna, la entrada en las normas de alerta y respuesta se mostrarÃ¡ en la columna correspondiente de la pÃ¡gina de la alerta.",
             create_intervention_order: "Crear nueva norma de alerta y respuesta",
             "delete": "Eliminar",
             delete_all: "Eliminar todas las normas de alerta y respuesta",
-            delete_all_confirm: "ÂżSeguro que quieres eliminar todas las normas de alerta y respuesta? ÂˇLas entradas exportadas existentes ya no estĂˇn disponibles!",
+            delete_all_confirm: "Â¿Seguro que quieres eliminar todas las normas de alerta y respuesta? Â¡Las entradas exportadas existentes ya no estÃ¡n disponibles!",
             description: "Nombre",
             edit: "Editar",
             "export": {
                 "export": "Exportar",
                 "import": "Importar",
-                import_done: "Las entradas seleccionadas se han importado y aĂ±adido a tu plan de alerta y respuesta.",
+                import_done: "Las entradas seleccionadas se han importado y aÃ±adido a tu plan de alerta y respuesta.",
                 saved: "Exportar las normas de alerta y respuesta",
-                saved_text: "Las normas de alerta y respuesta estĂˇn preparadas para ser exportadas. Mediante el enlace, otro jugador podrĂˇ importarlas. Mientras tanto, si cambias alguna norma, el cambio se aplicarĂˇ automĂˇticamente a lo exportado."
+                saved_text: "Las normas de alerta y respuesta estÃ¡n preparadas para ser exportadas. Mediante el enlace, otro jugador podrÃ¡ importarlas. Mientras tanto, si cambias alguna norma, el cambio se aplicarÃ¡ automÃ¡ticamente a lo exportado."
             },
-            hotkey_hint: "Elije una tecla para esta selecciĂłn de vehĂ­culos. En la ventana de la misiĂłn, pulsa ALT + tu tecla (ALT + SHIFT + tu tecla en Firefox o CTRL + ALT + tu tecla en MacOS) para seleccionarla.",
+            hotkey_hint: "Elije una tecla para esta selecciÃ³n de vehÃ­culos. En la ventana de la misiÃ³n, pulsa ALT + tu tecla (ALT + SHIFT + tu tecla en Firefox o CTRL + ALT + tu tecla en MacOS) para seleccionarla.",
             intervention_order: "Editar normas de alerta y respuesta",
             name: "Nombre",
-            no_intervention_created: "TodavĂ­a no has creado ninguna norma de alerta y respuesta.",
+            no_intervention_created: "TodavÃ­a no has creado ninguna norma de alerta y respuesta.",
             options: "Opciones",
-            reset: "Restablece la selecciĂłn anterior en la ventana de alertas.",
-            reset_hint: "Si has seleccionado el vehĂ­culo en la ventana de respuesta, puedes usar este botĂłn para restablecer.",
+            reset: "Restablece la selecciÃ³n anterior en la ventana de alertas.",
+            reset_hint: "Si has seleccionado el vehÃ­culo en la ventana de respuesta, puedes usar este botÃ³n para restablecer.",
             save: "Guardar",
-            station: "InstalaciĂłn",
-            station_hint: "Si hay un edificio seleccionado, solo se seleccionarĂˇn los vehĂ­culos de ese edificio.",
+            station: "InstalaciÃ³n",
+            station_hint: "Si hay un edificio seleccionado, solo se seleccionarÃ¡n los vehÃ­culos de ese edificio.",
             successfully_created: "Norma de alerta y respuesta creada correctamente.",
             successfully_deleted: "Norma de alerta y respuesta eliminada",
             successfully_updated: "Norma de alerta y respuesta actualizada correctamente.",
             vehicles: {
-                ab_atemschutz_only: "MĂłdulo ERA",
-                ab_einsatzleitung_only: "MĂłdulo de mando",
-                ab_gefahrgut_only: "MĂłdulo Hazmat",
-                ab_oel_only: "MĂłdulo de vertido de crudo",
-                ab_ruest: "MĂłdulo tecnolĂłgico de rescate",
+                ab_atemschutz_only: "MÃ³dulo ERA",
+                ab_einsatzleitung_only: "MÃ³dulo de mando",
+                ab_gefahrgut_only: "MÃ³dulo Hazmat",
+                ab_oel_only: "MÃ³dulo de vertido de crudo",
+                ab_ruest: "MÃ³dulo tecnolÃ³gico de rescate",
                 ab_ruest_rw: "",
-                abl2wasser_only: "MĂłdulo de mangueras",
-                ambulance: "UVI mĂłvil",
+                abl2wasser_only: "MÃ³dulo de mangueras",
+                ambulance: "UVI mÃ³vil",
                 ambulance_or_rapid_responder: "",
-                arff: "CBA (CamiĂłn de bomberos de aeropuerto)",
+                arff: "CBA (CamiÃ³n de bomberos de aeropuerto)",
                 battalion_chief_unit: "Unidad de Mando y Comunicaciones",
                 boot: "Botes (general)",
                 dekon_p: "",
                 division_chief_unit: "Unidad de mando",
                 dlk_or_tm50: "",
-                elw1_or_elw2: "Unidad de Mando y Comunicaciones, unidad de mando o mĂłdulo de mando mĂłvil ",
-                elw2_or_ab_elw: "Bomba de Rescate o Unidad de Apoyo de Rescate y CamiĂłn de Bomberos",
+                elw1_or_elw2: "Unidad de Mando y Comunicaciones, unidad de mando o mÃ³dulo de mando mÃ³vil ",
+                elw2_or_ab_elw: "Bomba de Rescate o Unidad de Apoyo de Rescate y CamiÃ³n de Bomberos",
                 elw3: "",
                 elw_airport: "",
-                emergency_ambulance: "Ambulancia o helicĂłptero de emergencia",
+                emergency_ambulance: "Ambulancia o helicÃ³ptero de emergencia",
                 fire_truck: "Camiones de bomberos",
                 fireboat: "Barco de bomberos grande",
                 fly_car: "Coche volador",
                 fukw: "",
                 fwk: "",
                 gefkw: "",
-                gkw: "CamiĂłn de usos mĂşltiples",
-                grtw: "Unidad para mĂşltiples vĂ­ctimas",
+                gkw: "CamiÃ³n de usos mÃºltiples",
+                grtw: "Unidad para mÃºltiples vÃ­ctimas",
                 grtw0: "",
                 grtw1: "",
                 grukw: "",
                 gw_atemschutz_only: "",
                 gw_gefahrgut: "Hazmat",
                 gw_gefahrgut_only: "",
-                gw_hoehenrettung: "CamiĂłn de rescate en altura",
-                gw_messtechnik: "CamiĂłn de mediciĂłn",
+                gw_hoehenrettung: "CamiÃ³n de rescate en altura",
+                gw_messtechnik: "CamiÃ³n de mediciÃ³n",
                 gw_oel_only: "",
                 gw_san: "",
                 gw_taucher: "",
-                gw_wasserrettung: "RetenciĂłn de agua",
+                gw_wasserrettung: "RetenciÃ³n de agua",
                 gw_werkfeuerwehr: "",
-                gwl2wasser_only: "VehĂ­culo con manguera",
+                gwl2wasser_only: "VehÃ­culo con manguera",
                 hems: "HSEM",
-                hlf_only: "VehĂ­culo de rescate",
-                hlf_or_rw_and_lf: "VehĂ­culo de rescate o vehĂ­culo de rescate pesado y camiĂłn de bomberos",
+                hlf_only: "VehÃ­culo de rescate",
+                hlf_or_rw_and_lf: "VehÃ­culo de rescate o vehÃ­culo de rescate pesado y camiÃ³n de bomberos",
                 hondengeleider: "",
                 k9: "Unidad canina",
                 kdow_lna: "",
                 kdow_orgl: "Jefe de emergencias",
                 ktw_b: "",
                 ktw_or_rtw: "",
-                lebefkw: "VehĂ­culo de mando ligero (leBefKw)",
+                lebefkw: "VehÃ­culo de mando ligero (leBefKw)",
                 lf_only: "Camiones de bomberos",
                 long_distance_ambulance: "Ambulancia SVB",
-                mask_service_unit: "Unidad aĂ©rea",
+                mask_service_unit: "Unidad aÃ©rea",
                 mek_mtf: "",
                 mek_zf: "",
-                mtw: "CamiĂłn de transporte",
+                mtw: "CamiÃ³n de transporte",
                 mzb: "Barco multiusos",
                 naw: "",
                 naw_or_rtw_and_nef: "",
                 naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Ambulancia",
-                oil_unit: "CamiĂłn para fuegos de aceite",
+                oil_unit: "CamiÃ³n para fuegos de aceite",
                 only_ab_dekon_p: "",
                 only_dekon_p: "",
                 ovd_p: "",
                 police_car: "Coche patrulla",
-                polizeihubschrauber: "HelicĂłptero de policĂ­a",
-                rescue_vehicle: "Furgones de Ăštiles Varios",
-                rescue_vehicle_only: "FurgĂłn de Ăštiles Varios",
+                polizeihubschrauber: "HelicÃ³ptero de policÃ­a",
+                rescue_vehicle: "Furgones de Ãštiles Varios",
+                rescue_vehicle_only: "FurgÃ³n de Ãštiles Varios",
                 rescueboat: "Barco de rescate grande",
                 rettungstreppe: "",
-                rth_only: "HelicĂłptero",
-                schlauchwagen: "CamiĂłn cisterna",
+                rth_only: "HelicÃ³ptero",
+                schlauchwagen: "CamiÃ³n cisterna",
                 seg_elw: "",
                 sek_mtf: "",
                 sek_zf: "",
                 swat: "Fuerzas especiales (GEO)",
-                swat_armored_vehicle: "VehĂ­culo blindado de los GEO",
+                swat_armored_vehicle: "VehÃ­culo blindado de los GEO",
                 swat_suv: "Todoterreno de los GEO",
                 thw_anh_mzab: "",
                 thw_anh_mzb: "",
@@ -8826,14 +8760,14 @@ function deleteMissionPosition(e) {
                 thw_lkw: "",
                 thw_lkw_7_lkr_19_tm: "",
                 thw_mlw5: "",
-                thw_mtw: "CamiĂłn de transporte tĂ©cnico",
-                thw_mzkw: "VehĂ­culo multiusos",
+                thw_mtw: "CamiÃ³n de transporte tÃ©cnico",
+                thw_mzkw: "VehÃ­culo multiusos",
                 thw_tauchkraftwagen: "Equipo de buceo",
                 thw_tauchkraftwagen_or_gw_taucher: "",
-                tlf_only: "CamiĂłn cisterna",
+                tlf_only: "CamiÃ³n cisterna",
                 tm50: "",
                 turboloescher: "",
-                turntable_ladder: "CamiĂłn AE",
+                turntable_ladder: "CamiÃ³n AE",
                 ulf: "",
                 wasserwerfer: "",
                 water_amount: "",
@@ -8845,75 +8779,75 @@ function deleteMissionPosition(e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: "Segundo, Âˇponle un nombre a tu nueva estaciĂłn! ÂˇHaz que sea reconocible y aumentable! P. ej., Â«EstaciĂłn de bomberos #0001Â». Cuando termines, Âˇhaz clic en Â«SiguienteÂ»!",
-                            build_with_credits: "ÂˇAhora construye tu edificio con crĂ©ditos!",
-                            new_building: "ÂˇHaz clic en Â«Nuevo edificioÂ»!",
-                            select_building: "Primero, elige el tipo de edificio con el que deseas empezar. ÂˇTe recomendamos que empieces con el servicio de bomberos! En cualquier caso, Âˇse recomienda empezar con una estaciĂłn pequeĂ±a!",
-                            select_position: "ÂˇColoca el marcador azul en donde desees construir tu primera estaciĂłn!"
+                            add_name: "Segundo, Â¡ponle un nombre a tu nueva estaciÃ³n! Â¡Haz que sea reconocible y aumentable! P. ej., Â«EstaciÃ³n de bomberos #0001Â». Cuando termines, Â¡haz clic en Â«SiguienteÂ»!",
+                            build_with_credits: "Â¡Ahora construye tu edificio con crÃ©ditos!",
+                            new_building: "Â¡Haz clic en Â«Nuevo edificioÂ»!",
+                            select_building: "Primero, elige el tipo de edificio con el que deseas empezar. Â¡Te recomendamos que empieces con el servicio de bomberos! En cualquier caso, Â¡se recomienda empezar con una estaciÃ³n pequeÃ±a!",
+                            select_position: "Â¡Coloca el marcador azul en donde desees construir tu primera estaciÃ³n!"
                         },
-                        pick_location: "Primero, Âˇelige una ubicaciĂłn para comenzar! Escribe el nombre de la ubicaciĂłn donde deseas empezar en la barra de bĂşsqueda Âˇo encuĂ©ntrala tĂş mismo en el mapa! ÂżQuĂ© hay de tu ciudad?",
-                        welcome: "ÂˇHola! ÂˇBienvenido a Centro de Mando MX!  ÂˇTe darĂ© algunas lecciones para que empieces tu carrera en los servicios de emergencia con el pie derecho!"
+                        pick_location: "Primero, Â¡elige una ubicaciÃ³n para comenzar! Escribe el nombre de la ubicaciÃ³n donde deseas empezar en la barra de bÃºsqueda Â¡o encuÃ©ntrala tÃº mismo en el mapa! Â¿QuÃ© hay de tu ciudad?",
+                        welcome: "Â¡Hola! Â¡Bienvenido a Centro de Mando MX!  Â¡Te darÃ© algunas lecciones para que empieces tu carrera en los servicios de emergencia con el pie derecho!"
                     },
                     mobile: {
                         build_building: {
-                            add_name: "Segundo, Âˇponle un nombre a tu nueva estaciĂłn! ÂˇHaz que sea reconocible y aumentable! P. ej., Â«EstaciĂłn de bomberos #0001Â». Cuando termines, Âˇhaz clic en Â«SiguienteÂ»!",
-                            build_with_credits: "ÂˇAhora construye tu edificio con crĂ©ditos!",
-                            new_building: "Primero, Âˇescogeremos una ubicaciĂłn para comenzar a construir tu primer edificio! <br /> <br /> Para eso, Âˇhaz clic en Â«Nuevo edificioÂ»!",
-                            select_building: "Primero, elige el tipo de edificio con el que deseas empezar. ÂˇTe recomendamos que empieces con el servicio de bomberos! En cualquier caso, Âˇse recomienda empezar con una estaciĂłn pequeĂ±a!"
+                            add_name: "Segundo, Â¡ponle un nombre a tu nueva estaciÃ³n! Â¡Haz que sea reconocible y aumentable! P. ej., Â«EstaciÃ³n de bomberos #0001Â». Cuando termines, Â¡haz clic en Â«SiguienteÂ»!",
+                            build_with_credits: "Â¡Ahora construye tu edificio con crÃ©ditos!",
+                            new_building: "Primero, Â¡escogeremos una ubicaciÃ³n para comenzar a construir tu primer edificio! <br /> <br /> Para eso, Â¡haz clic en Â«Nuevo edificioÂ»!",
+                            select_building: "Primero, elige el tipo de edificio con el que deseas empezar. Â¡Te recomendamos que empieces con el servicio de bomberos! En cualquier caso, Â¡se recomienda empezar con una estaciÃ³n pequeÃ±a!"
                         },
-                        welcome: "ÂˇHola! ÂˇBienvenido a Centro de Mando MX!  ÂˇTe darĂ© algunas lecciones para que empieces tu carrera en los servicios de emergencia con el pie derecho!"
+                        welcome: "Â¡Hola! Â¡Bienvenido a Centro de Mando MX!  Â¡Te darÃ© algunas lecciones para que empieces tu carrera en los servicios de emergencia con el pie derecho!"
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Este es el menĂş de despachos. ÂˇDesde aquĂ­ puedes enviar a tus unidades a misiones!",
-                            dispatch_menu_buttons: "ÂˇEstos son los dos botones de despacho! El primero, Â«DespacharÂ», envĂ­a a las unidades seleccionadas a la misiĂłn. El segundo hace lo mismo que el primero, pero va a la siguiente misiĂłn. Por ahora, haz clic en el primer botĂłn.",
-                            dispatch_menu_mission_general: "AquĂ­ puedes ver la informaciĂłn general de la misiĂłn; es decir, el nombre, la direcciĂłn y el Ă­cono de la misiĂłn. El Ă­cono del hombrecito aparece y reemplaza la estrella pequeĂ±a en las misiones donde ya participaste.",
-                            dispatch_menu_mission_progress: "AquĂ­ puedes ver el progreso de la misiĂłn, ademĂˇs de la cantidad de personal en el sitio Âˇy el tiempo restante para cumplir la misiĂłn!",
-                            dispatch_menu_mission_specific: "AquĂ­ puedes ver mĂˇs datos sobre la misiĂłn, quĂ© unidades estĂˇn respondiendo al llamado y cuĂˇles ya estĂˇn en el lugar.",
-                            dispatch_menu_vehicle_list: "Esta es la lista de los vehĂ­culos disponibles. Selecciona los vehĂ­culos aquĂ­. ÂˇSelecciona un vehĂ­culo haciendo clic sobre Ă©l!"
+                            dispatch_menu: "Este es el menÃº de despachos. Â¡Desde aquÃ­ puedes enviar a tus unidades a misiones!",
+                            dispatch_menu_buttons: "Â¡Estos son los dos botones de despacho! El primero, Â«DespacharÂ», envÃ­a a las unidades seleccionadas a la misiÃ³n. El segundo hace lo mismo que el primero, pero va a la siguiente misiÃ³n. Por ahora, haz clic en el primer botÃ³n.",
+                            dispatch_menu_mission_general: "AquÃ­ puedes ver la informaciÃ³n general de la misiÃ³n; es decir, el nombre, la direcciÃ³n y el Ã­cono de la misiÃ³n. El Ã­cono del hombrecito aparece y reemplaza la estrella pequeÃ±a en las misiones donde ya participaste.",
+                            dispatch_menu_mission_progress: "AquÃ­ puedes ver el progreso de la misiÃ³n, ademÃ¡s de la cantidad de personal en el sitio Â¡y el tiempo restante para cumplir la misiÃ³n!",
+                            dispatch_menu_mission_specific: "AquÃ­ puedes ver mÃ¡s datos sobre la misiÃ³n, quÃ© unidades estÃ¡n respondiendo al llamado y cuÃ¡les ya estÃ¡n en el lugar.",
+                            dispatch_menu_vehicle_list: "Esta es la lista de los vehÃ­culos disponibles. Selecciona los vehÃ­culos aquÃ­. Â¡Selecciona un vehÃ­culo haciendo clic sobre Ã©l!"
                         },
                         mobile: {
-                            dispatch_menu: "Este es el menĂş de despachos. ÂˇDesde aquĂ­ puedes enviar a tus unidades a misiones!",
-                            dispatch_menu_buttons: "ÂˇEstos son los dos botones de despacho! El primero, Â«DespacharÂ», envĂ­a a las unidades seleccionadas a la misiĂłn. El segundo hace lo mismo que el primero, pero va a la siguiente misiĂłn. Por ahora, haz clic en el primer botĂłn.",
-                            dispatch_menu_mission_general: "AquĂ­ puedes ver la informaciĂłn general de la misiĂłn; es decir, el nombre, la direcciĂłn y el Ă­cono de la misiĂłn. El Ă­cono del hombrecito aparece y reemplaza la estrella pequeĂ±a en las misiones donde ya participaste.",
-                            dispatch_menu_mission_progress: "AquĂ­ puedes ver el progreso de la misiĂłn, ademĂˇs de la cantidad de personal en el sitio Âˇy el tiempo restante para cumplir la misiĂłn!",
-                            dispatch_menu_mission_specific: "AquĂ­ puedes ver mĂˇs datos sobre la misiĂłn, quĂ© unidades estĂˇn respondiendo al llamado y cuĂˇles ya estĂˇn en el lugar.",
-                            dispatch_menu_vehicle_list: "Esta es la lista de los vehĂ­culos disponibles. Selecciona los vehĂ­culos aquĂ­. ÂˇSelecciona un vehĂ­culo haciendo clic sobre Ă©l!"
+                            dispatch_menu: "Este es el menÃº de despachos. Â¡Desde aquÃ­ puedes enviar a tus unidades a misiones!",
+                            dispatch_menu_buttons: "Â¡Estos son los dos botones de despacho! El primero, Â«DespacharÂ», envÃ­a a las unidades seleccionadas a la misiÃ³n. El segundo hace lo mismo que el primero, pero va a la siguiente misiÃ³n. Por ahora, haz clic en el primer botÃ³n.",
+                            dispatch_menu_mission_general: "AquÃ­ puedes ver la informaciÃ³n general de la misiÃ³n; es decir, el nombre, la direcciÃ³n y el Ã­cono de la misiÃ³n. El Ã­cono del hombrecito aparece y reemplaza la estrella pequeÃ±a en las misiones donde ya participaste.",
+                            dispatch_menu_mission_progress: "AquÃ­ puedes ver el progreso de la misiÃ³n, ademÃ¡s de la cantidad de personal en el sitio Â¡y el tiempo restante para cumplir la misiÃ³n!",
+                            dispatch_menu_mission_specific: "AquÃ­ puedes ver mÃ¡s datos sobre la misiÃ³n, quÃ© unidades estÃ¡n respondiendo al llamado y cuÃ¡les ya estÃ¡n en el lugar.",
+                            dispatch_menu_vehicle_list: "Esta es la lista de los vehÃ­culos disponibles. Selecciona los vehÃ­culos aquÃ­. Â¡Selecciona un vehÃ­culo haciendo clic sobre Ã©l!"
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "Ahora aprenderemos a lidiar con los incidentes. ÂˇAbre el menĂş de despachos haciendo clic en el botĂłn Â«DespacharÂ»!",
-                            first_mission: "ÂˇMuy bien! ÂˇConstruiste tu primer edificio! Mira, Âˇte reportaron las primeras misiones!"
+                            dispatch_button: "Ahora aprenderemos a lidiar con los incidentes. Â¡Abre el menÃº de despachos haciendo clic en el botÃ³n Â«DespacharÂ»!",
+                            first_mission: "Â¡Muy bien! Â¡Construiste tu primer edificio! Mira, Â¡te reportaron las primeras misiones!"
                         },
                         mobile: {
-                            dispatch_button: "Ahora aprenderemos a lidiar con los incidentes. ÂˇAbre el menĂş de despachos haciendo clic en el botĂłn Â«DespacharÂ»!",
-                            first_mission: "ÂˇMuy bien! ÂˇConstruiste tu primer edificio! Mira, Âˇte reportaron las primeras misiones!"
+                            dispatch_button: "Ahora aprenderemos a lidiar con los incidentes. Â¡Abre el menÃº de despachos haciendo clic en el botÃ³n Â«DespacharÂ»!",
+                            first_mission: "Â¡Muy bien! Â¡Construiste tu primer edificio! Mira, Â¡te reportaron las primeras misiones!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "ÂˇGrandioso! ÂˇVas en camino a convertirte en un asombroso Centro de mando MX! ÂˇAquĂ­ tienes %{coins} monedas para ayudarte a empezar! </br> El equipo de Centro de Mando MX"
+                        general: "Â¡Grandioso! Â¡Vas en camino a convertirte en un asombroso Centro de mando MX! Â¡AquÃ­ tienes %{coins} monedas para ayudarte a empezar! </br> El equipo de Centro de Mando MX"
                     },
                     mobile: {
-                        general: "ÂˇGrandioso! ÂˇVas en camino a convertirte en un asombroso Centro de mando MX! ÂˇAquĂ­ tienes %{coins} monedas para ayudarte a empezar! </br> El equipo de Centro de Mando MX"
+                        general: "Â¡Grandioso! Â¡Vas en camino a convertirte en un asombroso Centro de mando MX! Â¡AquÃ­ tienes %{coins} monedas para ayudarte a empezar! </br> El equipo de Centro de Mando MX"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "En caso de dudas, consulta las preguntas frecuentes dentro del juego o visita los foros del juego Âˇo nuestra pĂˇgina de Facebook!",
-                        general: "Como siguiente paso, te recomendamos construir un centro de despachos y, tan pronto sea posible, nuevas estaciones, ya que la cantidad mĂˇxima de misiones serĂˇ igual a la cantidad mĂˇxima de estaciones de un determinado tipo (policĂ­a, bomberos, ambulancias) mĂˇs 1; p. ej., 5 de bomberos y 3 de ambulancias = 6 misiones.",
-                        join_alliance: "Asimismo, unirte a una alianza te serĂˇ de gran ayuda, sobre todo, al inicio, por lo que tambiĂ©n te lo recomendamos.",
-                        summary: "ÂˇEstas son las bases de Centro de Mando MX! Completa misiones, obtĂ©n crĂ©ditos, compra mĂˇs unidades, repite. ÂˇDiviĂ©rtete jugando! </br> El equipo de Centro de Mando MX"
+                        contact: "En caso de dudas, consulta las preguntas frecuentes dentro del juego o visita los foros del juego Â¡o nuestra pÃ¡gina de Facebook!",
+                        general: "Como siguiente paso, te recomendamos construir un centro de despachos y, tan pronto sea posible, nuevas estaciones, ya que la cantidad mÃ¡xima de misiones serÃ¡ igual a la cantidad mÃ¡xima de estaciones de un determinado tipo (policÃ­a, bomberos, ambulancias) mÃ¡s 1; p. ej., 5 de bomberos y 3 de ambulancias = 6 misiones.",
+                        join_alliance: "Asimismo, unirte a una alianza te serÃ¡ de gran ayuda, sobre todo, al inicio, por lo que tambiÃ©n te lo recomendamos.",
+                        summary: "Â¡Estas son las bases de Centro de Mando MX! Completa misiones, obtÃ©n crÃ©ditos, compra mÃ¡s unidades, repite. Â¡DiviÃ©rtete jugando! </br> El equipo de Centro de Mando MX"
                     },
                     mobile: {
-                        contact: "En caso de dudas, consulta las preguntas frecuentes dentro del juego o visita los foros del juego Âˇo nuestra pĂˇgina de Facebook!",
-                        general: "Como siguiente paso, te recomendamos construir un centro de despachos y, tan pronto sea posible, nuevas estaciones, ya que la cantidad mĂˇxima de misiones serĂˇ igual a la cantidad mĂˇxima de estaciones de un determinado tipo (policĂ­a, bomberos, ambulancias) mĂˇs 1; p. ej., 5 de bomberos y 3 de ambulancias = 6 misiones.",
-                        join_alliance: "Asimismo, unirte a una alianza te serĂˇ de gran ayuda, sobre todo, al inicio, por lo que tambiĂ©n te lo recomendamos.",
-                        summary: "ÂˇEstas son las bases de Centro de Mando MX! Completa misiones, obtĂ©n crĂ©ditos, compra mĂˇs unidades, repite. ÂˇDiviĂ©rtete jugando! </br> El equipo de Centro de Mando MX"
+                        contact: "En caso de dudas, consulta las preguntas frecuentes dentro del juego o visita los foros del juego Â¡o nuestra pÃ¡gina de Facebook!",
+                        general: "Como siguiente paso, te recomendamos construir un centro de despachos y, tan pronto sea posible, nuevas estaciones, ya que la cantidad mÃ¡xima de misiones serÃ¡ igual a la cantidad mÃ¡xima de estaciones de un determinado tipo (policÃ­a, bomberos, ambulancias) mÃ¡s 1; p. ej., 5 de bomberos y 3 de ambulancias = 6 misiones.",
+                        join_alliance: "Asimismo, unirte a una alianza te serÃ¡ de gran ayuda, sobre todo, al inicio, por lo que tambiÃ©n te lo recomendamos.",
+                        summary: "Â¡Estas son las bases de Centro de Mando MX! Completa misiones, obtÃ©n crÃ©ditos, compra mÃ¡s unidades, repite. Â¡DiviÃ©rtete jugando! </br> El equipo de Centro de Mando MX"
                     }
                 }
             },
@@ -8923,8 +8857,8 @@ function deleteMissionPosition(e) {
                 end: "Finalizar",
                 next: "Siguiente",
                 prev: "Anterior",
-                skip: "SĂ­",
-                skip_hint: "ÂżSeguro que quieres saltarte el tutorial? DespuĂ©s, no podrĂˇs acceder a Ă©l.No podrĂˇs recibir la recompensa por completar el tutorial."
+                skip: "SÃ­",
+                skip_hint: "Â¿Seguro que quieres saltarte el tutorial? DespuÃ©s, no podrÃ¡s acceder a Ã©l.No podrÃ¡s recibir la recompensa por completar el tutorial."
             },
             rewards: {
                 log: "Recompensa por completar el tutorial."
@@ -8932,256 +8866,256 @@ function deleteMissionPosition(e) {
         }
     }, I18n.translations.ja_JP = {
         common: {
-            add: "čż˝ĺŠ ",
-            back: "ć»ă‚‹",
-            cancel: "ă‚­ăŁăłă‚»ă«",
-            change_saved: "ĺ¤‰ć›´ĺ†…ĺ®ąă‚’äżťĺ­ă—ăľă—ăź",
-            coins_spend: "ă“ă‚Śă‚‰ă®ă‚łă‚¤ăłă‚’ć”Żć‰•ă„ă‚’ĺ®źčˇŚă—ă¦ă‚‚ă‚ă‚Ťă—ă„ă§ă™ă‹ďĽź",
-            congratulations: "ăŠă‚ă§ă¨ă†ă”ă–ă„ăľă™ďĽ",
-            content: "ă‚łăłă†ăłă„",
-            copy: "ă‚łă”ăĽ",
-            credits: "ă‚Żă¬ă‚¸ăă",
-            "delete": "ĺ‰Šé™¤",
-            details: "č©łç´°",
+            add: "è¿½åŠ ",
+            back: "æˆ»ã‚‹",
+            cancel: "ã‚­ãƒ£ãƒ³ã‚»ãƒ«",
+            change_saved: "å¤‰æ›´å†…å®¹ã‚’ä¿å­˜ã—ã¾ã—ãŸ",
+            coins_spend: "ã“ã‚Œã‚‰ã®ã‚³ã‚¤ãƒ³ã‚’æ”¯æ‰•ã„ã‚’å®Ÿè¡Œã—ã¦ã‚‚ã‚ˆã‚ã—ã„ã§ã™ã‹ï¼Ÿ",
+            congratulations: "ãŠã‚ã§ã¨ã†ã”ã–ã„ã¾ã™ï¼",
+            content: "ã‚³ãƒ³ãƒ†ãƒ³ãƒ„",
+            copy: "ã‚³ãƒ”ãƒ¼",
+            credits: "ã‚¯ãƒ¬ã‚¸ãƒƒãƒˆ",
+            "delete": "å‰Šé™¤",
+            details: "è©³ç´°",
             edit: "ç·¨é›†",
-            error: "ă‚¨ă©ăĽ",
-            is_offline: "%{user}ăŻă‚Şă•ă©ă‚¤ăłă§ă™ă€‚",
-            is_offline_long: "é•·ć™‚é–“ďĽš%{user}ăŻă‚Şă•ă©ă‚¤ăłă§ă™ă€‚",
-            is_online: "%{user}ăŻă‚Şăłă©ă‚¤ăłă§ă™ă€‚",
-            loading: "ă­ăĽă‰ä¸­â€¦",
-            name: "ĺŤĺ‰Ť",
-            none: "ăŞă—",
+            error: "ã‚¨ãƒ©ãƒ¼",
+            is_offline: "%{user}ã¯ã‚ªãƒ•ãƒ©ã‚¤ãƒ³ã§ã™ã€‚",
+            is_offline_long: "é•·æ™‚é–“ï¼š%{user}ã¯ã‚ªãƒ•ãƒ©ã‚¤ãƒ³ã§ã™ã€‚",
+            is_online: "%{user}ã¯ã‚ªãƒ³ãƒ©ã‚¤ãƒ³ã§ã™ã€‚",
+            loading: "ãƒ­ãƒ¼ãƒ‰ä¸­â€¦",
+            name: "åå‰",
+            none: "ãªã—",
             of: "/",
-            off: "ă‚Şă•",
-            on: "ă‚Şăł",
-            save: "äżťĺ­",
-            search: "ć¤śç´˘",
-            show: "čˇ¨ç¤ş",
-            user_not_found: "ă¦ăĽă‚¶ăĽăŚč¦‹ă¤ă‹ă‚Šăľă›ă‚“",
-            wrong_key: "čŞ¤ăŁăźă‚­ăĽ"
+            off: "ã‚ªãƒ•",
+            on: "ã‚ªãƒ³",
+            save: "ä¿å­˜",
+            search: "æ¤œç´¢",
+            show: "è¡¨ç¤º",
+            user_not_found: "ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“",
+            wrong_key: "èª¤ã£ãŸã‚­ãƒ¼"
         },
         javascript: {
-            alarm: "ćŚ‡ä»¤",
-            arrival: "ĺ°çť€",
-            backalarm: "ă‚­ăŁăłă‚»ă«",
-            coins: "ă‚łă‚¤ăł",
-            credits: "ă‚Żă¬ă‚¸ăă",
-            days: "ć—Ą",
-            few_seconds: "ć•°ç§’ĺľŚ",
-            finish_in: "çµ‚äş†ăľă§ďĽš",
-            hours: "ć™‚é–“",
-            location_not_found: "č¦‹ă¤ă‹ă‚Šăľă›ă‚“",
-            messages: "ăˇăă‚»ăĽă‚¸",
-            minutes: "ĺ†",
-            missed_vehicle: "ä¸Ťč¶łďĽš",
-            mission_start_in: "é–‹ĺ§‹ăľă§:",
-            not_found_map: "č»Šä¸ˇăŚăžăă—ä¸Šă«č¦‹ă¤ă‹ă‚Šăľă›ă‚“ă§ă—ăź",
+            alarm: "æŒ‡ä»¤",
+            arrival: "åˆ°ç€",
+            backalarm: "ã‚­ãƒ£ãƒ³ã‚»ãƒ«",
+            coins: "ã‚³ã‚¤ãƒ³",
+            credits: "ã‚¯ãƒ¬ã‚¸ãƒƒãƒˆ",
+            days: "æ—¥",
+            few_seconds: "æ•°ç§’å¾Œ",
+            finish_in: "çµ‚äº†ã¾ã§ï¼š",
+            hours: "æ™‚é–“",
+            location_not_found: "è¦‹ã¤ã‹ã‚Šã¾ã›ã‚“",
+            messages: "ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸",
+            minutes: "åˆ†",
+            missed_vehicle: "ä¸è¶³ï¼š",
+            mission_start_in: "é–‹å§‹ã¾ã§:",
+            not_found_map: "è»Šä¸¡ãŒãƒžãƒƒãƒ—ä¸Šã«è¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸ",
             now: "ä»Š",
-            patient: "ć‚Łč€…",
-            patient_untouched: "ć˛»ç™‚ă‚’ĺŹ—ă‘ă¦ă„ăŞă„ć‚Łč€…",
-            poi_delete: "ă“ă®ĺ°çť€ĺś°ç‚ąă€ŚďĽš%{caption}ă€Ťă‚’ĺ‰Šé™¤ă—ăľă™ă‹ďĽź",
-            reload: "ăŞă­ăĽă‰",
-            sale: "ă‚»ăĽă«",
-            sale_ended: "ă‚»ăĽă«çµ‚äş†",
+            patient: "æ‚£è€…",
+            patient_untouched: "æ²»ç™‚ã‚’å—ã‘ã¦ã„ãªã„æ‚£è€…",
+            poi_delete: "ã“ã®åˆ°ç€åœ°ç‚¹ã€Œï¼š%{caption}ã€ã‚’å‰Šé™¤ã—ã¾ã™ã‹ï¼Ÿ",
+            reload: "ãƒªãƒ­ãƒ¼ãƒ‰",
+            sale: "ã‚»ãƒ¼ãƒ«",
+            sale_ended: "ã‚»ãƒ¼ãƒ«çµ‚äº†",
             secounds: "ç§’",
-            sicherheitswache_error: "ă™ăąă¦ă®ćťˇä»¶ă‚’ćş€ăźă•ăŞă‹ăŁăźăźă‚ă€ă‚»ă‚­ăĄăŞă†ă‚ŁăĽă‚¬ăĽă‰ă€Ś%{caption}ă€ŤăŚä¸Šć‰‹ăŹă„ăŤăľă›ă‚“ă§ă—ăźă€‚",
-            sicherheitswache_success: "ă‚»ă‚­ăĄăŞă†ă‚ŁăĽă‚¬ăĽă‰ă€Ś%{caption}ă€ŤăŻç„ˇäş‹čˇŚă‚Źă‚Śăľă—ăźă€‚%{credits}ă‚Żă¬ă‚¸ăăă‚’ĺŹ—ă‘ĺŹ–ă‚Šăľă™ă€‚",
-            start_in: "é–‹ĺ§‹ăľă§ďĽš ",
-            start_username: "ă‚ąă‚żăĽă‚żăĽďĽš",
-            time_left: "ć®‹ă‚Šć™‚é–“ďĽš",
-            to_building: "ĺ»şç‰©ă‚’č¦‹ă‚‹",
-            to_mission: "ăźăă‚·ă§ăłă‚’č¦‹ă‚‹",
-            understand: "ć‰żčŞŤ",
-            user_not_found: "ă—ă¬ă‚¤ă¤ăĽăŚč¦‹ă¤ă‹ă‚Šăľă›ă‚“ă§ă—ăźă€‚",
-            vehicles_not_visible: "č»Šä¸ˇăŚč¦‹ăăľă›ă‚“ă€‚ "
+            sicherheitswache_error: "ã™ã¹ã¦ã®æ¡ä»¶ã‚’æº€ãŸã•ãªã‹ã£ãŸãŸã‚ã€ã‚»ã‚­ãƒ¥ãƒªãƒ†ã‚£ãƒ¼ã‚¬ãƒ¼ãƒ‰ã€Œ%{caption}ã€ãŒä¸Šæ‰‹ãã„ãã¾ã›ã‚“ã§ã—ãŸã€‚",
+            sicherheitswache_success: "ã‚»ã‚­ãƒ¥ãƒªãƒ†ã‚£ãƒ¼ã‚¬ãƒ¼ãƒ‰ã€Œ%{caption}ã€ã¯ç„¡äº‹è¡Œã‚ã‚Œã¾ã—ãŸã€‚%{credits}ã‚¯ãƒ¬ã‚¸ãƒƒãƒˆã‚’å—ã‘å–ã‚Šã¾ã™ã€‚",
+            start_in: "é–‹å§‹ã¾ã§ï¼š ",
+            start_username: "ã‚¹ã‚¿ãƒ¼ã‚¿ãƒ¼ï¼š",
+            time_left: "æ®‹ã‚Šæ™‚é–“ï¼š",
+            to_building: "å»ºç‰©ã‚’è¦‹ã‚‹",
+            to_mission: "ãƒŸãƒƒã‚·ãƒ§ãƒ³ã‚’è¦‹ã‚‹",
+            understand: "æ‰¿èª",
+            user_not_found: "ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚",
+            vehicles_not_visible: "è»Šä¸¡ãŒè¦‹ãˆã¾ã›ã‚“ã€‚ "
         },
         map: {
-            alliance: "ă‚˘ă©ă‚¤ă‚˘ăłă‚ą",
-            alliance_chat: "ăăŁăă",
-            alliance_chat_banned: "ă‚˘ă©ă‚¤ă‚˘ăłă‚ąăăŁăăă‹ă‚‰çŹľĺś¨ăăłă‚’ă•ă‚Śă¦ă„ăľă™ă€‚",
-            alliance_chat_banned_admin: "ăăłă‚’čˇŚăŁăźäşşďĽš",
-            alliance_chat_banned_timeleft: "ć®‹ă‚Šć™‚é–“ďĽš",
-            alliance_chat_radio_off: "ă‚˘ă©ă‚¤ă‚˘ăłă‚ąç„ˇç·šďĽšă‚Şă•",
-            alliance_chat_radio_on: "ă‚˘ă©ă‚¤ă‚˘ăłă‚ąç„ˇç·šďĽšă‚Şăł",
-            alliance_event: "ă‚¤ă™ăłă",
-            alliance_missions: "ă‚˘ă©ă‚¤ă‚˘ăłă‚ąăźăă‚·ă§ăł",
-            alliance_missions_event: "ă‚¤ă™ăłă",
-            ambulance: "ć•‘ć€Ąč»Š",
+            alliance: "ã‚¢ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹",
+            alliance_chat: "ãƒãƒ£ãƒƒãƒˆ",
+            alliance_chat_banned: "ã‚¢ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ãƒãƒ£ãƒƒãƒˆã‹ã‚‰ç¾åœ¨ãƒãƒ³ã‚’ã•ã‚Œã¦ã„ã¾ã™ã€‚",
+            alliance_chat_banned_admin: "ãƒãƒ³ã‚’è¡Œã£ãŸäººï¼š",
+            alliance_chat_banned_timeleft: "æ®‹ã‚Šæ™‚é–“ï¼š",
+            alliance_chat_radio_off: "ã‚¢ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ç„¡ç·šï¼šã‚ªãƒ•",
+            alliance_chat_radio_on: "ã‚¢ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ç„¡ç·šï¼šã‚ªãƒ³",
+            alliance_event: "ã‚¤ãƒ™ãƒ³ãƒˆ",
+            alliance_missions: "ã‚¢ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ãƒŸãƒƒã‚·ãƒ§ãƒ³",
+            alliance_missions_event: "ã‚¤ãƒ™ãƒ³ãƒˆ",
+            ambulance: "æ•‘æ€¥è»Š",
             challenges: "",
-            chat_history: "ăăŁăăĺ±Ąć­´",
-            congratulations: "ăŠă‚ă§ă¨ă†ă”ă–ă„ăľă™ďĽć‡é€˛ă™ă‚‹ă“ă¨ăŚă§ăŤăľă™ă€‚",
-            create_alliance_event: "ă‚˘ă©ă‚¤ă‚˘ăłă‚ąă‚¤ă™ăłăă‚’é–‹ĺ§‹",
-            create_alliance_operation: "ĺ¤§ĺž‹ă‚˘ă©ă‚¤ă‚˘ăłă‚ąăźăă‚·ă§ăłă‚’ä˝ść",
-            emergency: "ç·Šć€Ąäş‹ć…‹",
-            join_alliance_infos: "ă‚˘ă©ă‚¤ă‚˘ăłă‚ąă«ć‰€ĺ±žă—ă¦ă„ă‚Śă°ă€ä»–ă®ă—ă¬ă‚¤ă¤ăĽăŚă‚ăŞăźă¸č‡Şç”±ă«ăźăă‚·ă§ăłă‚’ĺ‰˛ă‚Šĺ˝“ă¦ă‚‰ă‚Śăľă™ă€‚",
-            map: "ăžăă—",
+            chat_history: "ãƒãƒ£ãƒƒãƒˆå±¥æ­´",
+            congratulations: "ãŠã‚ã§ã¨ã†ã”ã–ã„ã¾ã™ï¼æ˜‡é€²ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚",
+            create_alliance_event: "ã‚¢ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ã‚¤ãƒ™ãƒ³ãƒˆã‚’é–‹å§‹",
+            create_alliance_operation: "å¤§åž‹ã‚¢ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ãƒŸãƒƒã‚·ãƒ§ãƒ³ã‚’ä½œæˆ",
+            emergency: "ç·Šæ€¥äº‹æ…‹",
+            join_alliance_infos: "ã‚¢ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ã«æ‰€å±žã—ã¦ã„ã‚Œã°ã€ä»–ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒã‚ãªãŸã¸è‡ªç”±ã«ãƒŸãƒƒã‚·ãƒ§ãƒ³ã‚’å‰²ã‚Šå½“ã¦ã‚‰ã‚Œã¾ã™ã€‚",
+            map: "ãƒžãƒƒãƒ—",
             map_filters: {
-                all_buildings: "ĺ»şç‰©",
-                all_missions: "ăźăă‚·ă§ăł",
-                alliance_buildings: "ă‚˘ă©ă‚¤ă‚˘ăłă‚ąă®ĺ»şç‰©",
-                alliance_members: "ăˇăłăăĽ",
-                alliance_missions: "ĺŚç›źă‹ă‚‰ĺ…±ćś‰",
-                ambulance_station_missions: "ć•‘ć€Ąč»Šă‚ąă†ăĽă‚·ă§ăł",
-                ambulance_station_small_missions: "ć•‘ć€Ąč»Šă‚ąă†ăĽă‚·ă§ăłďĽĺ°Źĺž‹ă‚ąă†ăĽă‚·ă§ăłďĽ‰",
-                clinic_missions: "ă‚ŻăŞă‹ăă‚Ż",
-                dispatch_center_missions: "ćŚ‡ä»¤ă‚»ăłă‚żăĽ",
-                fire_school_missions: "ć¶é˛ă‚˘ă‚«ă‡ăźăĽ",
-                firehouse_missions: "ć¶é˛ĺ±€",
-                firehouse_small_missions: "ć¶é˛ĺ±€ďĽĺ°ŹďĽ‰",
-                hospital_missions: "ç—…é™˘",
-                map_filters: "ăžăă—ă•ă‚Łă«ă‚żăĽă®ä¸€č¦§",
-                mission_positions: "ĺ°çť€ĺś°ç‚ąďĽPOIďĽ‰",
-                police_copter_station_missions: "č­¦ĺŻźčŞç©şéšŠ",
-                police_school_missions: "č­¦ĺŻźă‚˘ă‚«ă‡ăźăĽ",
-                police_small_missions: "č­¦ĺŻźç˝˛ďĽĺ°Źĺž‹ă‚ąă†ăĽă‚·ă§ăłďĽ‰",
-                police_special_forces: "č­¦ĺŻźç‰ąć®Šé¨éšŠ",
-                police_station_missions: "č­¦ĺŻźç˝˛",
-                prison_missions: "ĺ‘ĺ‹™ć‰€",
-                rapid_deployment_group: "é«é€źă‚»ăăă‚˘ăă—ă‚°ă«ăĽă—ďĽSEGďĽ‰",
-                rescue_copter_station_missions: "ĺŚ»ç™‚ăăŞă‚łă—ă‚żăĽă‚ąă†ăĽă‚·ă§ăł",
-                riot_police: "ĺŻľćš´ĺľ’č­¦ĺŻź",
-                staging_area_missions: "ă‚ąă†ăĽă‚¸ăłă‚°ă‚¨ăŞă‚˘",
-                technical_aid_organization: "ćŠ€čˇ“ć”ŻćŹ´éšŠ",
-                technical_aid_organization_school: "THWé€Łé‚¦ĺ­¦ć ˇ",
-                user_buildings: "č‡Şĺ†ă®ĺ»şç‰©",
-                user_missions: "č‡Şĺ†ă®ăźăă‚·ă§ăł",
-                water_watch: "ć°´é›Łć•‘ĺŠ©"
+                all_buildings: "å»ºç‰©",
+                all_missions: "ãƒŸãƒƒã‚·ãƒ§ãƒ³",
+                alliance_buildings: "ã‚¢ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ã®å»ºç‰©",
+                alliance_members: "ãƒ¡ãƒ³ãƒãƒ¼",
+                alliance_missions: "åŒç›Ÿã‹ã‚‰å…±æœ‰",
+                ambulance_station_missions: "æ•‘æ€¥è»Šã‚¹ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³",
+                ambulance_station_small_missions: "æ•‘æ€¥è»Šã‚¹ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ï¼ˆå°åž‹ã‚¹ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ï¼‰",
+                clinic_missions: "ã‚¯ãƒªãƒ‹ãƒƒã‚¯",
+                dispatch_center_missions: "æŒ‡ä»¤ã‚»ãƒ³ã‚¿ãƒ¼",
+                fire_school_missions: "æ¶ˆé˜²ã‚¢ã‚«ãƒ‡ãƒŸãƒ¼",
+                firehouse_missions: "æ¶ˆé˜²å±€",
+                firehouse_small_missions: "æ¶ˆé˜²å±€ï¼ˆå°ï¼‰",
+                hospital_missions: "ç—…é™¢",
+                map_filters: "ãƒžãƒƒãƒ—ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼ã®ä¸€è¦§",
+                mission_positions: "åˆ°ç€åœ°ç‚¹ï¼ˆPOIï¼‰",
+                police_copter_station_missions: "è­¦å¯Ÿèˆªç©ºéšŠ",
+                police_school_missions: "è­¦å¯Ÿã‚¢ã‚«ãƒ‡ãƒŸãƒ¼",
+                police_small_missions: "è­¦å¯Ÿç½²ï¼ˆå°åž‹ã‚¹ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ï¼‰",
+                police_special_forces: "è­¦å¯Ÿç‰¹æ®Šéƒ¨éšŠ",
+                police_station_missions: "è­¦å¯Ÿç½²",
+                prison_missions: "åˆ‘å‹™æ‰€",
+                rapid_deployment_group: "é«˜é€Ÿã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ã‚°ãƒ«ãƒ¼ãƒ—ï¼ˆSEGï¼‰",
+                rescue_copter_station_missions: "åŒ»ç™‚ãƒ˜ãƒªã‚³ãƒ—ã‚¿ãƒ¼ã‚¹ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³",
+                riot_police: "å¯¾æš´å¾’è­¦å¯Ÿ",
+                staging_area_missions: "ã‚¹ãƒ†ãƒ¼ã‚¸ãƒ³ã‚°ã‚¨ãƒªã‚¢",
+                technical_aid_organization: "æŠ€è¡“æ”¯æ´éšŠ",
+                technical_aid_organization_school: "THWé€£é‚¦å­¦æ ¡",
+                user_buildings: "è‡ªåˆ†ã®å»ºç‰©",
+                user_missions: "è‡ªåˆ†ã®ãƒŸãƒƒã‚·ãƒ§ãƒ³",
+                water_watch: "æ°´é›£æ•‘åŠ©"
             },
-            message: "ăˇăă‚»ăĽă‚¸",
-            mission: "ăźăă‚·ă§ăł",
-            no_alliance_chat_impossible: "ă‚˘ă©ă‚¤ă‚˘ăłă‚ąă«ć‰€ĺ±žă—ă¦ă„ăľă›ă‚“ă€‚",
-            no_alliance_missions: "çŹľĺś¨ă€ă‚˘ă©ă‚¤ă‚˘ăłă‚ąăźăă‚·ă§ăłăŻă‚ă‚Šăľă›ă‚“ă€‚",
-            no_ambulance_missions: "ć•‘ć€Ąč»Šăźăă‚·ă§ăłăŻă‚ă‚Šăľă›ă‚“ă€‚ć•‘ć€Ąč»Šă¨ç—…é™˘ă‚’ćŚăŁă¦ă„ă‚‹ă¨ăŤă®ăżă€ć•‘ć€Ąč»Šăźăă‚·ă§ăłăŚç™şç”źă—ăľă™ă€‚",
-            no_emergency_missions: "ĺŹ‚ĺŠ ă§ăŤă‚‹ç·Šć€Ąäş‹ć…‹ăźăă‚·ă§ăłăŻă‚ă‚Šăľă›ă‚“ă€‚ćś€ĺťă®ă‚ąă†ăĽă‚·ă§ăłă‚’ä˝śćă—ăźĺľŚă€ç·Šć€Ąäş‹ć…‹ăźăă‚·ă§ăłăŚç™şç”źă—ăľă™ă€‚",
-            no_radio_messages: "ç„ˇç·šăˇăă‚»ăĽă‚¸ă‚’ĺ‚ŤĺŹ—ă—ă¦ă„ăľă›ă‚“ă€‚",
-            radio_messages: "ç„ˇç·š",
-            restore_map: "ăžăă—ă‚’ăŞă‚ąăă‚˘",
-            show_informations: "ç·‘ = ăźăă‚·ă§ăłăŚăŞă‚ąăĺ†…ă«čˇ¨ç¤şă•ă‚Śăľă™ă€‚čµ¤ = ăźăă‚·ă§ăłăŚčˇ¨ç¤şă•ă‚Śăľă›ă‚“ă€‚",
-            sicherheitswache: "äşĺ®šă•ă‚Śă¦ă„ă‚‹ăźăă‚·ă§ăł",
-            transport: "čĽ¸é€"
+            message: "ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸",
+            mission: "ãƒŸãƒƒã‚·ãƒ§ãƒ³",
+            no_alliance_chat_impossible: "ã‚¢ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ã«æ‰€å±žã—ã¦ã„ã¾ã›ã‚“ã€‚",
+            no_alliance_missions: "ç¾åœ¨ã€ã‚¢ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ãƒŸãƒƒã‚·ãƒ§ãƒ³ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚",
+            no_ambulance_missions: "æ•‘æ€¥è»ŠãƒŸãƒƒã‚·ãƒ§ãƒ³ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚æ•‘æ€¥è»Šã¨ç—…é™¢ã‚’æŒã£ã¦ã„ã‚‹ã¨ãã®ã¿ã€æ•‘æ€¥è»ŠãƒŸãƒƒã‚·ãƒ§ãƒ³ãŒç™ºç”Ÿã—ã¾ã™ã€‚",
+            no_emergency_missions: "å‚åŠ ã§ãã‚‹ç·Šæ€¥äº‹æ…‹ãƒŸãƒƒã‚·ãƒ§ãƒ³ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚æœ€åˆã®ã‚¹ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ä½œæˆã—ãŸå¾Œã€ç·Šæ€¥äº‹æ…‹ãƒŸãƒƒã‚·ãƒ§ãƒ³ãŒç™ºç”Ÿã—ã¾ã™ã€‚",
+            no_radio_messages: "ç„¡ç·šãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‚å—ã—ã¦ã„ã¾ã›ã‚“ã€‚",
+            radio_messages: "ç„¡ç·š",
+            restore_map: "ãƒžãƒƒãƒ—ã‚’ãƒªã‚¹ãƒˆã‚¢",
+            show_informations: "ç·‘ = ãƒŸãƒƒã‚·ãƒ§ãƒ³ãŒãƒªã‚¹ãƒˆå†…ã«è¡¨ç¤ºã•ã‚Œã¾ã™ã€‚èµ¤ = ãƒŸãƒƒã‚·ãƒ§ãƒ³ãŒè¡¨ç¤ºã•ã‚Œã¾ã›ã‚“ã€‚",
+            sicherheitswache: "äºˆå®šã•ã‚Œã¦ã„ã‚‹ãƒŸãƒƒã‚·ãƒ§ãƒ³",
+            transport: "è¼¸é€"
         },
         fms: {
-            going: "ĺżśç­”ä¸­",
-            not_ready: "ć•…éšśä¸­",
-            on_destination: "čĽ¸é€ç›®çš„ĺś°",
-            on_place: "çŹľĺ ´",
-            patient_transported: "ć‚Łč€…ă‚’čĽ¸é€ä¸­",
-            prisoner_transported: "ĺ›šäşşă‚’čĽ¸é€ä¸­",
-            ready_home: "ă‚ąă†ăĽă‚·ă§ăłă§ĺ©ç”¨ĺŹŻ",
-            ready_traveling: "ăźăă‚·ă§ăłăŞă—ă€ĺ©ç”¨ĺŹŻ",
-            talking_wish: "čĽ¸é€č¦č«‹",
-            waiting_for_vehicle: "ç‰˝ĺĽ•ç”¨ă®č»Šä¸ˇă‚’ĺľ…ć©źä¸­"
+            going: "å¿œç­”ä¸­",
+            not_ready: "æ•…éšœä¸­",
+            on_destination: "è¼¸é€ç›®çš„åœ°",
+            on_place: "ç¾å ´",
+            patient_transported: "æ‚£è€…ã‚’è¼¸é€ä¸­",
+            prisoner_transported: "å›šäººã‚’è¼¸é€ä¸­",
+            ready_home: "ã‚¹ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã§åˆ©ç”¨å¯",
+            ready_traveling: "ãƒŸãƒƒã‚·ãƒ§ãƒ³ãªã—ã€åˆ©ç”¨å¯",
+            talking_wish: "è¼¸é€è¦è«‹",
+            waiting_for_vehicle: "ç‰½å¼•ç”¨ã®è»Šä¸¡ã‚’å¾…æ©Ÿä¸­"
         },
         intervention_order: {
-            back: "ć»ă‚‹",
-            category: "ă‚«ă†ă‚´ăŞăĽ",
-            colour: "ă‚«ă©ăĽ",
-            column: "ă‚łă©ă ",
-            column_number: "ă‚łă©ă ç•ŞĺŹ·",
-            column_number_hint: "ă‚łă©ă ç•ŞĺŹ·ăŚä¸Žăă‚‰ă‚Śă‚‹ă¨ă€č­¦ĺ ±ă¨ĺżśç­”ĺ†…ĺ®ąăŚč­¦ĺ ±ăšăĽă‚¸ĺ†…ă®ĺŻľĺżśă™ă‚‹ă‚łă©ă ă«čˇ¨ç¤şă•ă‚Śăľă™ă€‚",
-            create_intervention_order: "ć–°č¦Źă®č­¦ĺ ±ă¨ĺżśç­”ç®ˇç†ă‚’ä˝ść",
-            "delete": "ĺ‰Šé™¤",
-            delete_all: "č­¦ĺ ±ă¨ĺżśç­”ç®ˇç†ă‚’ĺ®Śĺ…¨ă«ĺ‰Šé™¤",
-            delete_all_confirm: "ă™ăąă¦ă®č­¦ĺ ±ă¨ĺżśç­”ç®ˇç†ă‚’ĺ‰Šé™¤ă—ă¦ă‚‚ă‚ă‚Ťă—ă„ă§ă™ă‹ďĽźć—˘ĺ­ă®ă‚¨ă‚Żă‚ąăťăĽăă—ăźĺ†…ĺ®ąăŻĺ©ç”¨ă§ăŤăľă›ă‚“ďĽ",
-            description: "ĺŤĺ‰Ť",
+            back: "æˆ»ã‚‹",
+            category: "ã‚«ãƒ†ã‚´ãƒªãƒ¼",
+            colour: "ã‚«ãƒ©ãƒ¼",
+            column: "ã‚³ãƒ©ãƒ ",
+            column_number: "ã‚³ãƒ©ãƒ ç•ªå·",
+            column_number_hint: "ã‚³ãƒ©ãƒ ç•ªå·ãŒä¸Žãˆã‚‰ã‚Œã‚‹ã¨ã€è­¦å ±ã¨å¿œç­”å†…å®¹ãŒè­¦å ±ãƒšãƒ¼ã‚¸å†…ã®å¯¾å¿œã™ã‚‹ã‚³ãƒ©ãƒ ã«è¡¨ç¤ºã•ã‚Œã¾ã™ã€‚",
+            create_intervention_order: "æ–°è¦ã®è­¦å ±ã¨å¿œç­”ç®¡ç†ã‚’ä½œæˆ",
+            "delete": "å‰Šé™¤",
+            delete_all: "è­¦å ±ã¨å¿œç­”ç®¡ç†ã‚’å®Œå…¨ã«å‰Šé™¤",
+            delete_all_confirm: "ã™ã¹ã¦ã®è­¦å ±ã¨å¿œç­”ç®¡ç†ã‚’å‰Šé™¤ã—ã¦ã‚‚ã‚ˆã‚ã—ã„ã§ã™ã‹ï¼Ÿæ—¢å­˜ã®ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆã—ãŸå†…å®¹ã¯åˆ©ç”¨ã§ãã¾ã›ã‚“ï¼",
+            description: "åå‰",
             edit: "ç·¨é›†",
             "export": {
-                "export": "ă‚¨ă‚Żă‚ąăťăĽă",
-                "import": "ă‚¤ăłăťăĽă",
-                import_done: "é¸ćŠžă—ăźĺ†…ĺ®ąăŻă‚¤ăłăťăĽăă•ă‚Śă€č­¦ĺ ±ă¨ĺżśç­”ă—ă©ăłă«ć›¸ă‹ă‚Śăľă—ăźă€‚",
-                saved: "č­¦ĺ ±ă¨ĺżśç­”ç®ˇç†ă‚’ă‚¨ă‚Żă‚ąăťăĽă",
-                saved_text: "č­¦ĺ ±ă¨ĺżśç­”ç®ˇç†ă®ă‚¨ă‚Żă‚ąăťăĽăćş–ĺ‚™ăŚă§ăŤăľă—ăźă€‚ä»–ă®ă—ă¬ă‚¤ă¤ăĽăŻăŞăłă‚Żă‚’čľżăŁă¦č­¦ĺ ±ă¨ĺżśç­”ç®ˇç†ăŚă‚¤ăłăťăĽăă§ăŤăľă™ă€‚ăťă®é–“č­¦ĺ ±ă¨ĺżśç­”ç®ˇç†ă‚’ĺ¤‰ć›´ă—ăźĺ ´ĺă€ă“ă®ĺ¤‰ć›´ăŻă‚¨ă‚Żă‚ąăťăĽăĺ†…ă«č‡Şĺ‹•çš„ă«é©ç”¨ă•ă‚Śăľă™ă€‚"
+                "export": "ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆ",
+                "import": "ã‚¤ãƒ³ãƒãƒ¼ãƒˆ",
+                import_done: "é¸æŠžã—ãŸå†…å®¹ã¯ã‚¤ãƒ³ãƒãƒ¼ãƒˆã•ã‚Œã€è­¦å ±ã¨å¿œç­”ãƒ—ãƒ©ãƒ³ã«æ›¸ã‹ã‚Œã¾ã—ãŸã€‚",
+                saved: "è­¦å ±ã¨å¿œç­”ç®¡ç†ã‚’ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆ",
+                saved_text: "è­¦å ±ã¨å¿œç­”ç®¡ç†ã®ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆæº–å‚™ãŒã§ãã¾ã—ãŸã€‚ä»–ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¯ãƒªãƒ³ã‚¯ã‚’è¾¿ã£ã¦è­¦å ±ã¨å¿œç­”ç®¡ç†ãŒã‚¤ãƒ³ãƒãƒ¼ãƒˆã§ãã¾ã™ã€‚ãã®é–“è­¦å ±ã¨å¿œç­”ç®¡ç†ã‚’å¤‰æ›´ã—ãŸå ´åˆã€ã“ã®å¤‰æ›´ã¯ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆå†…ã«è‡ªå‹•çš„ã«é©ç”¨ã•ã‚Œã¾ã™ã€‚"
             },
-            hotkey_hint: "č»Šä¸ˇă‚»ă‚Żă‚·ă§ăłă®ă›ăăă‚­ăĽă‚’é¸ćŠžă—ă¦ăŹă ă•ă„ă€‚ăźăă‚·ă§ăłç”»éť˘ă®ăśă‚żăłă‚’ćŠĽă—ă¦ăŹă ă•ă„ďĽšALT + ĺ‰˛ă‚Šĺ˝“ă¦ăźă›ăăă‚­ăĽ ďĽFirefoxă®ĺ ´ĺďĽšALT + SHIFT + ĺ‰˛ă‚Šĺ˝“ă¦ăźă›ăăă‚­ăĽă€mac osă®ĺ ´ĺďĽšctrl + alt + ĺ‰˛ă‚Šĺ˝“ă¦ăźă›ăăă‚­ăĽďĽ‰ă§č»Šä¸ˇă‚»ă‚Żă‚·ă§ăłă‚’é¸ćŠžă—ăľă™ă€‚",
-            intervention_order: "č­¦ĺ ±ă¨ĺżśç­”ç®ˇç†ă‚’ç·¨é›†",
-            name: "ĺŤĺ‰Ť",
-            no_intervention_created: "ăľă č­¦ĺ ±ă¨ĺżśç­”ç®ˇç†ă‚’ä˝śćă—ă¦ă„ăľă›ă‚“ă€‚",
-            options: "ă‚Şă—ă‚·ă§ăł",
-            reset: "č­¦ĺ ±ă‚¦ă‚Łăłă‰ă‚¦ĺ†…ă®ĺ‰Ťĺ›žă®ă‚»ă‚Żă‚·ă§ăłă‚’ăŞă‚»ăăă—ăľă™ă€‚",
-            reset_hint: "ćŚ‡ä»¤ă‚¦ă‚Łăłă‰ă‚¦ă§č»Šä¸ˇă‚’é¸ă‚“ă ĺ ´ĺă€ă“ă®ăśă‚żăłă§ăŞă‚»ăăă§ăŤăľă™ă€‚",
-            save: "äżťĺ­",
-            station: "ă‚ąă†ăĽă‚·ă§ăł",
-            station_hint: "ĺ»şç‰©ă‚’é¸ćŠžă™ă‚‹ă¨ă€ĺ»şç‰©ă«ĺŻľĺżśă™ă‚‹č»Šä¸ˇă®ăżăŚé¸ćŠžă•ă‚Śăľă™ă€‚",
-            successfully_created: "č­¦ĺ ±ă¨ĺżśç­”ç®ˇç†ă‚’ç„ˇäş‹ă«ä˝śćă—ăľă—ăźă€‚",
-            successfully_deleted: "č­¦ĺ ±ă¨ĺżśç­”ç®ˇç†ă‚’ĺ‰Šé™¤",
-            successfully_updated: "č­¦ĺ ±ă¨ĺżśç­”ç®ˇç†ăŚç„ˇäş‹ă«ă‚˘ăă—ă‡ăĽăă•ă‚Śăľă—ăźă€‚",
+            hotkey_hint: "è»Šä¸¡ã‚»ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒ›ãƒƒãƒˆã‚­ãƒ¼ã‚’é¸æŠžã—ã¦ãã ã•ã„ã€‚ãƒŸãƒƒã‚·ãƒ§ãƒ³ç”»é¢ã®ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ãã ã•ã„ï¼šALT + å‰²ã‚Šå½“ã¦ãŸãƒ›ãƒƒãƒˆã‚­ãƒ¼ ï¼ˆFirefoxã®å ´åˆï¼šALT + SHIFT + å‰²ã‚Šå½“ã¦ãŸãƒ›ãƒƒãƒˆã‚­ãƒ¼ã€mac osã®å ´åˆï¼šctrl + alt + å‰²ã‚Šå½“ã¦ãŸãƒ›ãƒƒãƒˆã‚­ãƒ¼ï¼‰ã§è»Šä¸¡ã‚»ã‚¯ã‚·ãƒ§ãƒ³ã‚’é¸æŠžã—ã¾ã™ã€‚",
+            intervention_order: "è­¦å ±ã¨å¿œç­”ç®¡ç†ã‚’ç·¨é›†",
+            name: "åå‰",
+            no_intervention_created: "ã¾ã è­¦å ±ã¨å¿œç­”ç®¡ç†ã‚’ä½œæˆã—ã¦ã„ã¾ã›ã‚“ã€‚",
+            options: "ã‚ªãƒ—ã‚·ãƒ§ãƒ³",
+            reset: "è­¦å ±ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦å†…ã®å‰å›žã®ã‚»ã‚¯ã‚·ãƒ§ãƒ³ã‚’ãƒªã‚»ãƒƒãƒˆã—ã¾ã™ã€‚",
+            reset_hint: "æŒ‡ä»¤ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§è»Šä¸¡ã‚’é¸ã‚“ã å ´åˆã€ã“ã®ãƒœã‚¿ãƒ³ã§ãƒªã‚»ãƒƒãƒˆã§ãã¾ã™ã€‚",
+            save: "ä¿å­˜",
+            station: "ã‚¹ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³",
+            station_hint: "å»ºç‰©ã‚’é¸æŠžã™ã‚‹ã¨ã€å»ºç‰©ã«å¯¾å¿œã™ã‚‹è»Šä¸¡ã®ã¿ãŒé¸æŠžã•ã‚Œã¾ã™ã€‚",
+            successfully_created: "è­¦å ±ã¨å¿œç­”ç®¡ç†ã‚’ç„¡äº‹ã«ä½œæˆã—ã¾ã—ãŸã€‚",
+            successfully_deleted: "è­¦å ±ã¨å¿œç­”ç®¡ç†ã‚’å‰Šé™¤",
+            successfully_updated: "è­¦å ±ã¨å¿œç­”ç®¡ç†ãŒç„¡äº‹ã«ã‚¢ãƒƒãƒ—ãƒ‡ãƒ¼ãƒˆã•ã‚Œã¾ã—ãŸã€‚",
             vehicles: {
-                ab_atemschutz_only: "č‡Şçµ¦ĺĽŹĺ‘Ľĺ¸ĺ™¨ă˘ă‚¸ăĄăĽă«",
-                ab_einsatzleitung_only: "ćŚ‡ç¤şă˘ă‚¸ăĄăĽă«",
-                ab_gefahrgut_only: "ĺŤ±é™şç‰©ĺŹ–ć‰±ă˘ă‚¸ăĄăĽă«",
-                ab_oel_only: "éŁ›ć•Łă‚Şă‚¤ă«ă˘ă‚¸ăĄăĽă«",
-                ab_ruest: "ă†ăă‚Ż/ć•‘ĺŠ©ă˘ă‚¸ăĄăĽă«",
+                ab_atemschutz_only: "è‡ªçµ¦å¼å‘¼å¸å™¨ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«",
+                ab_einsatzleitung_only: "æŒ‡ç¤ºãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«",
+                ab_gefahrgut_only: "å±é™ºç‰©å–æ‰±ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«",
+                ab_oel_only: "é£›æ•£ã‚ªã‚¤ãƒ«ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«",
+                ab_ruest: "ãƒ†ãƒƒã‚¯/æ•‘åŠ©ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«",
                 ab_ruest_rw: "",
-                abl2wasser_only: "ă›ăĽă‚ąă‚µă—ă©ă‚¤ă˘ă‚¸ăĄăĽă«",
-                ambulance: "ALSć•‘ć€Ąč»Š",
+                abl2wasser_only: "ãƒ›ãƒ¼ã‚¹ã‚µãƒ—ãƒ©ã‚¤ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«",
+                ambulance: "ALSæ•‘æ€¥è»Š",
                 ambulance_or_rapid_responder: "",
-                arff: "ç©şć¸Żç”¨ć¶é˛č»Š",
-                battalion_chief_unit: "ć¶é˛ćŚ‡ä»¤é•·ă¦ă‹ăă",
-                boot: "ăśăĽăďĽä¸€č¬ďĽ‰",
+                arff: "ç©ºæ¸¯ç”¨æ¶ˆé˜²è»Š",
+                battalion_chief_unit: "æ¶ˆé˜²æŒ‡ä»¤é•·ãƒ¦ãƒ‹ãƒƒãƒˆ",
+                boot: "ãƒœãƒ¼ãƒˆï¼ˆä¸€èˆ¬ï¼‰",
                 dekon_p: "",
-                division_chief_unit: "ç§»ĺ‹•é€šäżˇč»Šä¸ˇ",
+                division_chief_unit: "ç§»å‹•é€šä¿¡è»Šä¸¡",
                 dlk_or_tm50: "",
-                elw1_or_elw2: "ć¶é˛ćŚ‡ä»¤é•·ă¦ă‹ăăă€ç§»ĺ‹•é€šäżˇč»Šä¸ˇăľăźăŻç§»ĺ‹•é€šäżˇč»Šä¸ˇă˘ă‚¸ăĄăĽă« ",
+                elw1_or_elw2: "æ¶ˆé˜²æŒ‡ä»¤é•·ãƒ¦ãƒ‹ãƒƒãƒˆã€ç§»å‹•é€šä¿¡è»Šä¸¡ã¾ãŸã¯ç§»å‹•é€šä¿¡è»Šä¸¡ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ« ",
                 elw2_or_ab_elw: "",
                 elw3: "",
                 elw_airport: "",
-                emergency_ambulance: "ç·Šć€Ąć•‘ć€Ąč»ŠăľăźăŻăăŞă‚łă—ă‚żăĽ",
-                fire_truck: "ć¶é˛č»Š",
-                fireboat: "ç«ç˝ç”¨ĺ¤§ĺž‹ăśăĽă",
-                fly_car: "éŁ›čˇŚč»Š",
+                emergency_ambulance: "ç·Šæ€¥æ•‘æ€¥è»Šã¾ãŸã¯ãƒ˜ãƒªã‚³ãƒ—ã‚¿ãƒ¼",
+                fire_truck: "æ¶ˆé˜²è»Š",
+                fireboat: "ç«ç½ç”¨å¤§åž‹ãƒœãƒ¼ãƒˆ",
+                fly_car: "é£›è¡Œè»Š",
                 fukw: "",
                 fwk: "",
                 gefkw: "",
-                gkw: "ĺ°Źĺž‹ăă©ăă‚Ż",
-                grtw: "ĺ¤§ĺž‹ăă©ăă‚Żă¦ă‹ăă",
+                gkw: "å°åž‹ãƒˆãƒ©ãƒƒã‚¯",
+                grtw: "å¤§åž‹ãƒˆãƒ©ãƒƒã‚¯ãƒ¦ãƒ‹ãƒƒãƒˆ",
                 grtw0: "",
                 grtw1: "",
                 grukw: "",
                 gw_atemschutz_only: "",
-                gw_gefahrgut: "ĺŤ±é™şç‰©ĺŹ–ć‰±č»Šä¸ˇ",
+                gw_gefahrgut: "å±é™ºç‰©å–æ‰±è»Šä¸¡",
                 gw_gefahrgut_only: "",
                 gw_oel_only: "",
                 gw_san: "",
                 gw_taucher: "",
-                gw_wasserrettung: "č˛Żć°´č»Šä¸ˇ",
+                gw_wasserrettung: "è²¯æ°´è»Šä¸¡",
                 gw_werkfeuerwehr: "",
-                gwl2wasser_only: "ă›ăĽă‚ąč»Šä¸ˇ",
+                gwl2wasser_only: "ãƒ›ãƒ¼ã‚¹è»Šä¸¡",
                 hems: "HEMS",
                 hlf_only: "",
                 hlf_or_rw_and_lf: "",
                 hondengeleider: "",
-                k9: "č­¦ĺŻźçŠ¬ă¦ă‹ăă",
+                k9: "è­¦å¯ŸçŠ¬ãƒ¦ãƒ‹ãƒƒãƒˆ",
                 kdow_lna: "",
-                kdow_orgl: "ç·Šć€ĄĺŚ»ç™‚ăăĽă•",
+                kdow_orgl: "ç·Šæ€¥åŒ»ç™‚ãƒãƒ¼ãƒ•",
                 ktw_b: "",
                 ktw_or_rtw: "",
-                lf_only: "ć¶é˛č»Š",
-                long_distance_ambulance: "ä¸€ć™‚ć•‘ĺ‘˝ĺ‡¦ç˝®ć•‘ć€Ąč»Š",
-                mask_service_unit: "čŞç©şé€šäżˇă¦ă‹ăă",
+                lf_only: "æ¶ˆé˜²è»Š",
+                long_distance_ambulance: "ä¸€æ™‚æ•‘å‘½å‡¦ç½®æ•‘æ€¥è»Š",
+                mask_service_unit: "èˆªç©ºé€šä¿¡ãƒ¦ãƒ‹ãƒƒãƒˆ",
                 mek_mtf: "",
                 mek_zf: "",
-                mtw: "ć¶é˛éšŠĺ“ˇç”¨č»Šä¸ˇ",
-                mzb: "ĺ¤šç›®çš„ăśăĽă",
+                mtw: "æ¶ˆé˜²éšŠå“¡ç”¨è»Šä¸¡",
+                mzb: "å¤šç›®çš„ãƒœãƒ¼ãƒˆ",
                 naw: "",
                 naw_or_rtw_and_nef: "",
                 naw_or_rtw_and_nef_or_rth: "",
-                nef_only: "ć•‘ć€Ąč»Š",
+                nef_only: "æ•‘æ€¥è»Š",
                 only_ab_dekon_p: "",
                 only_dekon_p: "",
                 ovd_p: "",
-                police_car: "ă‘ăă‚«ăĽ",
-                polizeihubschrauber: "č­¦ĺŻźăăŞă‚łă—ă‚żăĽ",
-                rescue_vehicle: "ĺ¤§ĺž‹ć•‘ĺŠ©č»Šä¸ˇ",
-                rescue_vehicle_only: "ĺ¤§ĺž‹ć•‘ĺŠ©",
-                rescueboat: "ĺ¤§ĺž‹ć•‘ĺŠ©ăśăĽă",
+                police_car: "ãƒ‘ãƒˆã‚«ãƒ¼",
+                polizeihubschrauber: "è­¦å¯Ÿãƒ˜ãƒªã‚³ãƒ—ã‚¿ãƒ¼",
+                rescue_vehicle: "å¤§åž‹æ•‘åŠ©è»Šä¸¡",
+                rescue_vehicle_only: "å¤§åž‹æ•‘åŠ©",
+                rescueboat: "å¤§åž‹æ•‘åŠ©ãƒœãƒ¼ãƒˆ",
                 rettungstreppe: "",
-                rth_only: "ăăŞă‚łă—ă‚żăĽ",
-                schlauchwagen: "ă‚¦ă‚©ăĽă‚żăĽă‚żăłă‚«ăĽ",
+                rth_only: "ãƒ˜ãƒªã‚³ãƒ—ã‚¿ãƒ¼",
+                schlauchwagen: "ã‚¦ã‚©ãƒ¼ã‚¿ãƒ¼ã‚¿ãƒ³ã‚«ãƒ¼",
                 seg_elw: "",
                 sek_mtf: "",
                 sek_zf: "",
                 swat: "SWAT",
-                swat_armored_vehicle: "SWATčŁ…ç”˛č»Šä¸ˇ",
+                swat_armored_vehicle: "SWATè£…ç”²è»Šä¸¡",
                 swat_suv: "SWAT SUV",
                 thw_anh_mzab: "",
                 thw_anh_mzb: "",
@@ -9191,12 +9125,12 @@ function deleteMissionPosition(e) {
                 thw_lkw: "",
                 thw_lkw_7_lkr_19_tm: "",
                 thw_mlw5: "",
-                thw_tauchkraftwagen: "ć˝ść°´ăăĽă ",
+                thw_tauchkraftwagen: "æ½œæ°´ãƒãƒ¼ãƒ ",
                 thw_tauchkraftwagen_or_gw_taucher: "",
-                tlf_only: "ă‚żăłă‚«ăĽăă©ăă‚Ż",
+                tlf_only: "ã‚¿ãƒ³ã‚«ãƒ¼ãƒˆãƒ©ãƒƒã‚¯",
                 tm50: "",
                 turboloescher: "",
-                turntable_ladder: "ă—ă©ăăă•ă‚©ăĽă ăă©ăă‚Ż",
+                turntable_ladder: "ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ãƒˆãƒ©ãƒƒã‚¯",
                 ulf: "",
                 wasserwerfer: "",
                 water_amount: "",
@@ -9208,347 +9142,347 @@ function deleteMissionPosition(e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: "ć¬ˇăŻć–°ă—ă„ă‚ąă†ăĽă‚·ă§ăłă«ĺŤĺ‰Ťă‚’ä»ă‘ă¦ăŹă‚ŚďĽĺ†ă‹ă‚Šă‚„ă™ăŹă€äşŚă‹ć‰€ç›®ä»Ąé™Ťă‚‚ă¤ă‘ă‚„ă™ă„ĺŤĺ‰Ťă«ă—ă‚ă†ďĽäľ‹ăă°ă€ă€Ść¶é˛ĺ±€#0001ă€ŤăŚä¸€ă¤ă¨ă—ă¦ćŚ™ă’ă‚‰ă‚Śă‚‹ă€‚ă§ăŤăźă‚‰ă€Ść¬ˇă¸ă€Ťă‚’ă‚ŻăŞăă‚Żă ďĽ",
-                            build_with_credits: "ä»Šĺş¦ăŻă‚Żă¬ă‚¸ăăă‚’ä˝żăŁă¦ĺ»şç‰©ă‚’ĺ»şă¦ă‚ă†ďĽ",
-                            new_building: "ă€Ść–°ăźăŞĺ»şç‰©ă€Ťă‚’ă‚ŻăŞăă‚ŻďĽ",
-                            select_building: "ă‚ąă‚żăĽăă—ăźă„ĺ»şç‰©ă®ç¨®éˇžă‚’é¸ăĽă†ă€‚ć¶é˛ă‹ă‚‰ĺ§‹ă‚ă‚‹ă®ăŚăŠĺ‹§ă‚ă ďĽă¨ă‚Šă‚ăăšă€ĺ°Źă•ă„ă‚ąă†ăĽă‚·ă§ăłă‹ă‚‰ĺ§‹ă‚ă‚‹ă¨ă„ă„ăžďĽ",
-                            select_position: "ćś€ĺťă®ă‚ąă†ăĽă‚·ă§ăłă‚’ĺ»şă¦ăźă„ć‰€ă«éť’č‰˛ă®ăžăĽă‚«ăĽă‚’ĺ‹•ă‹ăťă†ďĽ"
+                            add_name: "æ¬¡ã¯æ–°ã—ã„ã‚¹ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã«åå‰ã‚’ä»˜ã‘ã¦ãã‚Œï¼åˆ†ã‹ã‚Šã‚„ã™ãã€äºŒã‹æ‰€ç›®ä»¥é™ã‚‚ã¤ã‘ã‚„ã™ã„åå‰ã«ã—ã‚ˆã†ï¼ä¾‹ãˆã°ã€ã€Œæ¶ˆé˜²å±€#0001ã€ãŒä¸€ã¤ã¨ã—ã¦æŒ™ã’ã‚‰ã‚Œã‚‹ã€‚ã§ããŸã‚‰ã€Œæ¬¡ã¸ã€ã‚’ã‚¯ãƒªãƒƒã‚¯ã ï¼",
+                            build_with_credits: "ä»Šåº¦ã¯ã‚¯ãƒ¬ã‚¸ãƒƒãƒˆã‚’ä½¿ã£ã¦å»ºç‰©ã‚’å»ºã¦ã‚ˆã†ï¼",
+                            new_building: "ã€Œæ–°ãŸãªå»ºç‰©ã€ã‚’ã‚¯ãƒªãƒƒã‚¯ï¼",
+                            select_building: "ã‚¹ã‚¿ãƒ¼ãƒˆã—ãŸã„å»ºç‰©ã®ç¨®é¡žã‚’é¸ã¼ã†ã€‚æ¶ˆé˜²ã‹ã‚‰å§‹ã‚ã‚‹ã®ãŒãŠå‹§ã‚ã ï¼ã¨ã‚Šã‚ãˆãšã€å°ã•ã„ã‚¹ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‹ã‚‰å§‹ã‚ã‚‹ã¨ã„ã„ãžï¼",
+                            select_position: "æœ€åˆã®ã‚¹ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å»ºã¦ãŸã„æ‰€ã«é’è‰²ã®ãƒžãƒ¼ã‚«ãƒ¼ã‚’å‹•ã‹ãã†ï¼"
                         },
-                        pick_location: "ăľăšăŻă‚ąă‚żăĽăĺś°ç‚ąă‚’é¸ă¶ďĽă‚ąă‚żăĽăă—ăźă„ĺ ´ć‰€ă®ĺŤĺ‰Ťă‚’ć¤śç´˘ăăĽă«ĺ…ĄĺŠ›ă™ă‚‹ă‹ă€ĺś°ĺ›łă‹ă‚‰č¦‹ă¤ă‘ă‚ă†ďĽĺ›ă®ĺ‡şčş«ĺś°ăŻă©ă†ă‹ăŞďĽź",
-                        welcome: "ăźăă‚·ă§ăłăăĽă•ă¸ă‚ă†ă“ăťďĽç·Šć€Ąă‚µăĽă“ă‚ąă‚­ăŁăŞă‚˘ă‚’ă‚ąă‚żăĽăă™ă‚‹ăźă‚ă®ă¬ăă‚ąăłă‚’ă—ă‚ă†ă€‚"
+                        pick_location: "ã¾ãšã¯ã‚¹ã‚¿ãƒ¼ãƒˆåœ°ç‚¹ã‚’é¸ã¶ï¼ã‚¹ã‚¿ãƒ¼ãƒˆã—ãŸã„å ´æ‰€ã®åå‰ã‚’æ¤œç´¢ãƒãƒ¼ã«å…¥åŠ›ã™ã‚‹ã‹ã€åœ°å›³ã‹ã‚‰è¦‹ã¤ã‘ã‚ˆã†ï¼å›ã®å‡ºèº«åœ°ã¯ã©ã†ã‹ãªï¼Ÿ",
+                        welcome: "ãƒŸãƒƒã‚·ãƒ§ãƒ³ãƒãƒ¼ãƒ•ã¸ã‚ˆã†ã“ãï¼ç·Šæ€¥ã‚µãƒ¼ãƒ“ã‚¹ã‚­ãƒ£ãƒªã‚¢ã‚’ã‚¹ã‚¿ãƒ¼ãƒˆã™ã‚‹ãŸã‚ã®ãƒ¬ãƒƒã‚¹ãƒ³ã‚’ã—ã‚ˆã†ã€‚"
                     },
                     mobile: {
                         build_building: {
-                            add_name: "ć¬ˇăŻć–°ă—ă„ă‚ąă†ăĽă‚·ă§ăłă«ĺŤĺ‰Ťă‚’ä»ă‘ă¦ăŹă‚ŚďĽĺ†ă‹ă‚Šă‚„ă™ăŹă€äşŚă‹ć‰€ç›®ä»Ąé™Ťă‚‚ă¤ă‘ă‚„ă™ă„ĺŤĺ‰Ťă«ă—ă‚ă†ďĽäľ‹ăă°ă€ă€Ść¶é˛ĺ±€#0001ă€ŤăŚä¸€ă¤ă¨ă—ă¦ćŚ™ă’ă‚‰ă‚Śă‚‹ă€‚ă§ăŤăźă‚‰ă€Ść¬ˇă¸ă€Ťă‚’ă‚ŻăŞăă‚Żă ďĽ",
-                            build_with_credits: "ä»Šĺş¦ăŻă‚Żă¬ă‚¸ăăă‚’ä˝żăŁă¦ĺ»şç‰©ă‚’ĺ»şă¦ă‚ă†ďĽ",
-                            new_building: "ăľăšăŻă‚ąă‚żăĽăĺś°ç‚ąă‚’é¸ă‚“ă§ă€ćś€ĺťă®ĺ»şč¨­ă‚’ĺ§‹ă‚ă‚ă†ďĽ<br /> <br /> ă€Ść–°ăźăŞĺ»şç‰©ă€Ťă‚’ă‚ŻăŞăă‚ŻďĽ",
-                            select_building: "ă‚ąă‚żăĽăă—ăźă„ĺ»şç‰©ă®ç¨®éˇžă‚’é¸ăĽă†ă€‚ć¶é˛ă‹ă‚‰ĺ§‹ă‚ă‚‹ă®ăŚăŠĺ‹§ă‚ă ďĽă¨ă‚Šă‚ăăšă€ĺ°Źă•ă„ă‚ąă†ăĽă‚·ă§ăłă‹ă‚‰ĺ§‹ă‚ă‚‹ă¨ă„ă„ăžďĽ"
+                            add_name: "æ¬¡ã¯æ–°ã—ã„ã‚¹ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã«åå‰ã‚’ä»˜ã‘ã¦ãã‚Œï¼åˆ†ã‹ã‚Šã‚„ã™ãã€äºŒã‹æ‰€ç›®ä»¥é™ã‚‚ã¤ã‘ã‚„ã™ã„åå‰ã«ã—ã‚ˆã†ï¼ä¾‹ãˆã°ã€ã€Œæ¶ˆé˜²å±€#0001ã€ãŒä¸€ã¤ã¨ã—ã¦æŒ™ã’ã‚‰ã‚Œã‚‹ã€‚ã§ããŸã‚‰ã€Œæ¬¡ã¸ã€ã‚’ã‚¯ãƒªãƒƒã‚¯ã ï¼",
+                            build_with_credits: "ä»Šåº¦ã¯ã‚¯ãƒ¬ã‚¸ãƒƒãƒˆã‚’ä½¿ã£ã¦å»ºç‰©ã‚’å»ºã¦ã‚ˆã†ï¼",
+                            new_building: "ã¾ãšã¯ã‚¹ã‚¿ãƒ¼ãƒˆåœ°ç‚¹ã‚’é¸ã‚“ã§ã€æœ€åˆã®å»ºè¨­ã‚’å§‹ã‚ã‚ˆã†ï¼<br /> <br /> ã€Œæ–°ãŸãªå»ºç‰©ã€ã‚’ã‚¯ãƒªãƒƒã‚¯ï¼",
+                            select_building: "ã‚¹ã‚¿ãƒ¼ãƒˆã—ãŸã„å»ºç‰©ã®ç¨®é¡žã‚’é¸ã¼ã†ã€‚æ¶ˆé˜²ã‹ã‚‰å§‹ã‚ã‚‹ã®ãŒãŠå‹§ã‚ã ï¼ã¨ã‚Šã‚ãˆãšã€å°ã•ã„ã‚¹ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‹ã‚‰å§‹ã‚ã‚‹ã¨ã„ã„ãžï¼"
                         },
-                        welcome: "ăźăă‚·ă§ăłăăĽă•ă¸ă‚ă†ă“ăťďĽç·Šć€Ąă‚µăĽă“ă‚ąă‚­ăŁăŞă‚˘ă‚’ă‚ąă‚żăĽăă™ă‚‹ăźă‚ă®ă¬ăă‚ąăłă‚’ă—ă‚ă†ă€‚"
+                        welcome: "ãƒŸãƒƒã‚·ãƒ§ãƒ³ãƒãƒ¼ãƒ•ã¸ã‚ˆã†ã“ãï¼ç·Šæ€¥ã‚µãƒ¼ãƒ“ã‚¹ã‚­ãƒ£ãƒªã‚¢ã‚’ã‚¹ã‚¿ãƒ¼ãƒˆã™ã‚‹ãŸã‚ã®ãƒ¬ãƒƒã‚¹ãƒ³ã‚’ã—ã‚ˆã†ã€‚"
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "ă“ă‚ŚăŚćŚ‡ä»¤ăˇă‹ăĄăĽă ă€‚ă“ă“ă‹ă‚‰ă¦ă‹ăăă‚’ăźăă‚·ă§ăłă«ć´ľéŁă™ă‚‹ă®ă ďĽ",
-                            dispatch_menu_buttons: "ćŚ‡ä»¤ăśă‚żăłăŻ2ă¤ă‚ă‚‹ďĽä¸€ă¤ç›®ăŻă€ŚćŚ‡ä»¤ă€Ťă ă€‚é¸ćŠžă—ăźă¦ă‹ăăă‚’ăźăă‚·ă§ăłă«ć´ľéŁă™ă‚‹ă€‚2ă¤ç›®ăŻćś€ĺťă¨ĺŚăă ăŚă€ć¬ˇă®ăźăă‚·ă§ăłă¸ĺ‘ă‹ă†ă€‚ă˛ă¨ăľăšă€ćś€ĺťă®ăśă‚żăłă‚’ă‚ŻăŞăă‚Żă—ă‚ă†ă€‚",
-                            dispatch_menu_mission_general: "ă“ă“ă§ăŻă€ăźăă‚·ă§ăłă«é–˘ă™ă‚‹ĺ…¨č¬çš„ăŞć…ĺ ±ă€ă¤ăľă‚Šăźăă‚·ă§ăłă®ĺŤĺ‰Ťă€ä˝Źć‰€ă€ă‚˘ă‚¤ă‚łăłă‚’ç˘şčŞŤă§ăŤă‚‹ă€‚ć—˘ă«ĺŹ‚ĺŠ ă—ă¦ă„ă‚‹ăźăă‚·ă§ăłăŻă€ĺ°Źă•ăŞćźă®ă‚˘ă‚¤ă‚łăłăŚäşşă®ĺ˝˘ă«ăŞă‚‹ă€‚",
-                            dispatch_menu_mission_progress: "ă“ă“ă§ăŻă€ă“ă®ăźăă‚·ă§ăłă«ăŠă‘ă‚‹é€˛ćŤ—çŠ¶ćłă€çŹľĺ ´ă«ă„ă‚‹äşşĺ“ˇć•°ă€ăźăă‚·ă§ăłă®ć®‹ă‚Šć™‚é–“ă‚’č¦‹ă‚‹ă“ă¨ăŚă§ăŤă‚‹ďĽ",
-                            dispatch_menu_mission_specific: "ă“ă“ă§ăŻă€ăźăă‚·ă§ăłă«é–˘ă™ă‚‹č©łç´°ăŞć…ĺ ±ă€é€šĺ ±ă«ĺżśç­”ă—ă¦ă„ă‚‹ă¦ă‹ăăă€ć—˘ă«çŹľĺ ´ć´ľéŁă•ă‚Śă¦ă„ă‚‹ă¦ă‹ăăă‚’č¦‹ă‚‹ă“ă¨ăŚă§ăŤă‚‹ă€‚",
-                            dispatch_menu_vehicle_list: "ă“ă‚ŚăŻä˝żăă‚‹č»Šä¸ˇă®ä¸€č¦§ă§ă‚ă‚‹ă€‚ă“ă“ă‹ă‚‰č»Šä¸ˇă‚’é¸ăąă‚‹ă€‚č»Šä¸ˇă‚’ă‚ŻăŞăă‚Żă—ă¦ć±şĺ®šďĽ"
+                            dispatch_menu: "ã“ã‚ŒãŒæŒ‡ä»¤ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã ã€‚ã“ã“ã‹ã‚‰ãƒ¦ãƒ‹ãƒƒãƒˆã‚’ãƒŸãƒƒã‚·ãƒ§ãƒ³ã«æ´¾é£ã™ã‚‹ã®ã ï¼",
+                            dispatch_menu_buttons: "æŒ‡ä»¤ãƒœã‚¿ãƒ³ã¯2ã¤ã‚ã‚‹ï¼ä¸€ã¤ç›®ã¯ã€ŒæŒ‡ä»¤ã€ã ã€‚é¸æŠžã—ãŸãƒ¦ãƒ‹ãƒƒãƒˆã‚’ãƒŸãƒƒã‚·ãƒ§ãƒ³ã«æ´¾é£ã™ã‚‹ã€‚2ã¤ç›®ã¯æœ€åˆã¨åŒã˜ã ãŒã€æ¬¡ã®ãƒŸãƒƒã‚·ãƒ§ãƒ³ã¸å‘ã‹ã†ã€‚ã²ã¨ã¾ãšã€æœ€åˆã®ãƒœã‚¿ãƒ³ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã‚ˆã†ã€‚",
+                            dispatch_menu_mission_general: "ã“ã“ã§ã¯ã€ãƒŸãƒƒã‚·ãƒ§ãƒ³ã«é–¢ã™ã‚‹å…¨èˆ¬çš„ãªæƒ…å ±ã€ã¤ã¾ã‚ŠãƒŸãƒƒã‚·ãƒ§ãƒ³ã®åå‰ã€ä½æ‰€ã€ã‚¢ã‚¤ã‚³ãƒ³ã‚’ç¢ºèªã§ãã‚‹ã€‚æ—¢ã«å‚åŠ ã—ã¦ã„ã‚‹ãƒŸãƒƒã‚·ãƒ§ãƒ³ã¯ã€å°ã•ãªæ˜Ÿã®ã‚¢ã‚¤ã‚³ãƒ³ãŒäººã®å½¢ã«ãªã‚‹ã€‚",
+                            dispatch_menu_mission_progress: "ã“ã“ã§ã¯ã€ã“ã®ãƒŸãƒƒã‚·ãƒ§ãƒ³ã«ãŠã‘ã‚‹é€²æ—çŠ¶æ³ã€ç¾å ´ã«ã„ã‚‹äººå“¡æ•°ã€ãƒŸãƒƒã‚·ãƒ§ãƒ³ã®æ®‹ã‚Šæ™‚é–“ã‚’è¦‹ã‚‹ã“ã¨ãŒã§ãã‚‹ï¼",
+                            dispatch_menu_mission_specific: "ã“ã“ã§ã¯ã€ãƒŸãƒƒã‚·ãƒ§ãƒ³ã«é–¢ã™ã‚‹è©³ç´°ãªæƒ…å ±ã€é€šå ±ã«å¿œç­”ã—ã¦ã„ã‚‹ãƒ¦ãƒ‹ãƒƒãƒˆã€æ—¢ã«ç¾å ´æ´¾é£ã•ã‚Œã¦ã„ã‚‹ãƒ¦ãƒ‹ãƒƒãƒˆã‚’è¦‹ã‚‹ã“ã¨ãŒã§ãã‚‹ã€‚",
+                            dispatch_menu_vehicle_list: "ã“ã‚Œã¯ä½¿ãˆã‚‹è»Šä¸¡ã®ä¸€è¦§ã§ã‚ã‚‹ã€‚ã“ã“ã‹ã‚‰è»Šä¸¡ã‚’é¸ã¹ã‚‹ã€‚è»Šä¸¡ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦æ±ºå®šï¼"
                         },
                         mobile: {
-                            dispatch_menu: "ă“ă‚ŚăŚćŚ‡ä»¤ăˇă‹ăĄăĽă ă€‚ă“ă“ă‹ă‚‰ă¦ă‹ăăă‚’ăźăă‚·ă§ăłă«ć´ľéŁă™ă‚‹ă®ă ďĽ",
-                            dispatch_menu_buttons: "ćŚ‡ä»¤ăśă‚żăłăŻ2ă¤ă‚ă‚‹ďĽä¸€ă¤ç›®ăŻă€ŚćŚ‡ä»¤ă€Ťă ă€‚é¸ćŠžă—ăźă¦ă‹ăăă‚’ăźăă‚·ă§ăłă«ć´ľéŁă™ă‚‹ă€‚2ă¤ç›®ăŻćś€ĺťă¨ĺŚăă ăŚă€ć¬ˇă®ăźăă‚·ă§ăłă¸ĺ‘ă‹ă†ă€‚ă˛ă¨ăľăšă€ćś€ĺťă®ăśă‚żăłă‚’ă‚ŻăŞăă‚Żă—ă‚ă†ă€‚",
-                            dispatch_menu_mission_general: "ă“ă“ă§ăŻă€ăźăă‚·ă§ăłă«é–˘ă™ă‚‹ĺ…¨č¬çš„ăŞć…ĺ ±ă€ă¤ăľă‚Šăźăă‚·ă§ăłă®ĺŤĺ‰Ťă€ä˝Źć‰€ă€ă‚˘ă‚¤ă‚łăłă‚’ç˘şčŞŤă§ăŤă‚‹ă€‚ć—˘ă«ĺŹ‚ĺŠ ă—ă¦ă„ă‚‹ăźăă‚·ă§ăłăŻă€ĺ°Źă•ăŞćźă®ă‚˘ă‚¤ă‚łăłăŚäşşă®ĺ˝˘ă«ăŞă‚‹ă€‚",
-                            dispatch_menu_mission_progress: "ă“ă“ă§ăŻă€ă“ă®ăźăă‚·ă§ăłă«ăŠă‘ă‚‹é€˛ćŤ—çŠ¶ćłă€çŹľĺ ´ă«ă„ă‚‹äşşĺ“ˇć•°ă€ăźăă‚·ă§ăłă®ć®‹ă‚Šć™‚é–“ă‚’č¦‹ă‚‹ă“ă¨ăŚă§ăŤă‚‹ďĽ",
-                            dispatch_menu_mission_specific: "ă“ă“ă§ăŻă€ăźăă‚·ă§ăłă«é–˘ă™ă‚‹č©łç´°ăŞć…ĺ ±ă€é€šĺ ±ă«ĺżśç­”ă—ă¦ă„ă‚‹ă¦ă‹ăăă€ć—˘ă«çŹľĺ ´ć´ľéŁă•ă‚Śă¦ă„ă‚‹ă¦ă‹ăăă‚’č¦‹ă‚‹ă“ă¨ăŚă§ăŤă‚‹ă€‚",
-                            dispatch_menu_vehicle_list: "ă“ă‚ŚăŻä˝żăă‚‹č»Šä¸ˇă®ä¸€č¦§ă§ă‚ă‚‹ă€‚ă“ă“ă‹ă‚‰č»Šä¸ˇă‚’é¸ăąă‚‹ă€‚č»Šä¸ˇă‚’ă‚ŻăŞăă‚Żă—ă¦ć±şĺ®šďĽ"
+                            dispatch_menu: "ã“ã‚ŒãŒæŒ‡ä»¤ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã ã€‚ã“ã“ã‹ã‚‰ãƒ¦ãƒ‹ãƒƒãƒˆã‚’ãƒŸãƒƒã‚·ãƒ§ãƒ³ã«æ´¾é£ã™ã‚‹ã®ã ï¼",
+                            dispatch_menu_buttons: "æŒ‡ä»¤ãƒœã‚¿ãƒ³ã¯2ã¤ã‚ã‚‹ï¼ä¸€ã¤ç›®ã¯ã€ŒæŒ‡ä»¤ã€ã ã€‚é¸æŠžã—ãŸãƒ¦ãƒ‹ãƒƒãƒˆã‚’ãƒŸãƒƒã‚·ãƒ§ãƒ³ã«æ´¾é£ã™ã‚‹ã€‚2ã¤ç›®ã¯æœ€åˆã¨åŒã˜ã ãŒã€æ¬¡ã®ãƒŸãƒƒã‚·ãƒ§ãƒ³ã¸å‘ã‹ã†ã€‚ã²ã¨ã¾ãšã€æœ€åˆã®ãƒœã‚¿ãƒ³ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã‚ˆã†ã€‚",
+                            dispatch_menu_mission_general: "ã“ã“ã§ã¯ã€ãƒŸãƒƒã‚·ãƒ§ãƒ³ã«é–¢ã™ã‚‹å…¨èˆ¬çš„ãªæƒ…å ±ã€ã¤ã¾ã‚ŠãƒŸãƒƒã‚·ãƒ§ãƒ³ã®åå‰ã€ä½æ‰€ã€ã‚¢ã‚¤ã‚³ãƒ³ã‚’ç¢ºèªã§ãã‚‹ã€‚æ—¢ã«å‚åŠ ã—ã¦ã„ã‚‹ãƒŸãƒƒã‚·ãƒ§ãƒ³ã¯ã€å°ã•ãªæ˜Ÿã®ã‚¢ã‚¤ã‚³ãƒ³ãŒäººã®å½¢ã«ãªã‚‹ã€‚",
+                            dispatch_menu_mission_progress: "ã“ã“ã§ã¯ã€ã“ã®ãƒŸãƒƒã‚·ãƒ§ãƒ³ã«ãŠã‘ã‚‹é€²æ—çŠ¶æ³ã€ç¾å ´ã«ã„ã‚‹äººå“¡æ•°ã€ãƒŸãƒƒã‚·ãƒ§ãƒ³ã®æ®‹ã‚Šæ™‚é–“ã‚’è¦‹ã‚‹ã“ã¨ãŒã§ãã‚‹ï¼",
+                            dispatch_menu_mission_specific: "ã“ã“ã§ã¯ã€ãƒŸãƒƒã‚·ãƒ§ãƒ³ã«é–¢ã™ã‚‹è©³ç´°ãªæƒ…å ±ã€é€šå ±ã«å¿œç­”ã—ã¦ã„ã‚‹ãƒ¦ãƒ‹ãƒƒãƒˆã€æ—¢ã«ç¾å ´æ´¾é£ã•ã‚Œã¦ã„ã‚‹ãƒ¦ãƒ‹ãƒƒãƒˆã‚’è¦‹ã‚‹ã“ã¨ãŒã§ãã‚‹ã€‚",
+                            dispatch_menu_vehicle_list: "ã“ã‚Œã¯ä½¿ãˆã‚‹è»Šä¸¡ã®ä¸€è¦§ã§ã‚ã‚‹ã€‚ã“ã“ã‹ã‚‰è»Šä¸¡ã‚’é¸ã¹ã‚‹ã€‚è»Šä¸¡ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦æ±ºå®šï¼"
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "ă“ă“ă§çŹľĺ ´ĺŻľĺżśă®ć–ąćł•ă‚’ĺ­¦ăĽă†ă€‚ă€ŚćŚ‡ä»¤ă€Ťăśă‚żăłă‚’ă‚ŻăŞăă‚Żă—ă¦ćŚ‡ä»¤ăˇă‹ăĄăĽă‚’é–‹ă„ă¦ăŹă‚ŚďĽ",
-                            first_mission: "ă‚ă—ă€ćś€ĺťă®ĺ»şç‰©ăŚĺ‡şćťĄăźăŞďĽćś€ĺťă®ăźăă‚·ă§ăłăŚćťĄăźăžďĽ"
+                            dispatch_button: "ã“ã“ã§ç¾å ´å¯¾å¿œã®æ–¹æ³•ã‚’å­¦ã¼ã†ã€‚ã€ŒæŒ‡ä»¤ã€ãƒœã‚¿ãƒ³ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦æŒ‡ä»¤ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚’é–‹ã„ã¦ãã‚Œï¼",
+                            first_mission: "ã‚ˆã—ã€æœ€åˆã®å»ºç‰©ãŒå‡ºæ¥ãŸãªï¼æœ€åˆã®ãƒŸãƒƒã‚·ãƒ§ãƒ³ãŒæ¥ãŸãžï¼"
                         },
                         mobile: {
-                            dispatch_button: "ă“ă“ă§çŹľĺ ´ĺŻľĺżśă®ć–ąćł•ă‚’ĺ­¦ăĽă†ă€‚ă€ŚćŚ‡ä»¤ă€Ťăśă‚żăłă‚’ă‚ŻăŞăă‚Żă—ă¦ćŚ‡ä»¤ăˇă‹ăĄăĽă‚’é–‹ă„ă¦ăŹă‚ŚďĽ",
-                            first_mission: "ă‚ă—ă€ćś€ĺťă®ĺ»şç‰©ăŚĺ‡şćťĄăźăŞďĽćś€ĺťă®ăźăă‚·ă§ăłăŚćťĄăźăžďĽ"
+                            dispatch_button: "ã“ã“ã§ç¾å ´å¯¾å¿œã®æ–¹æ³•ã‚’å­¦ã¼ã†ã€‚ã€ŒæŒ‡ä»¤ã€ãƒœã‚¿ãƒ³ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦æŒ‡ä»¤ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚’é–‹ã„ã¦ãã‚Œï¼",
+                            first_mission: "ã‚ˆã—ã€æœ€åˆã®å»ºç‰©ãŒå‡ºæ¥ãŸãªï¼æœ€åˆã®ãƒŸãƒƒã‚·ãƒ§ãƒ³ãŒæ¥ãŸãžï¼"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "ă„ă„ăžă€‚ä¸€ćµă®ăźăă‚·ă§ăłăăĽă•ă«ăŞă‚Śă‚‹ć—ĄăŻčż‘ă„ăŞďĽă‚łă‚¤ăł%{coins}ćžšă ă€‚ă‚­ăŁăŞă‚˘ă®ă‚ąă‚żăĽăă«ĺ˝ąç«‹ă¦ă¦ăŹă‚ŚďĽ</br> ăźăă‚·ă§ăłăăĽă•ă»ăăĽă ă‚ă‚Š"
+                        general: "ã„ã„ãžã€‚ä¸€æµã®ãƒŸãƒƒã‚·ãƒ§ãƒ³ãƒãƒ¼ãƒ•ã«ãªã‚Œã‚‹æ—¥ã¯è¿‘ã„ãªï¼ã‚³ã‚¤ãƒ³%{coins}æžšã ã€‚ã‚­ãƒ£ãƒªã‚¢ã®ã‚¹ã‚¿ãƒ¼ãƒˆã«å½¹ç«‹ã¦ã¦ãã‚Œï¼</br> ãƒŸãƒƒã‚·ãƒ§ãƒ³ãƒãƒ¼ãƒ•ãƒ»ãƒãƒ¼ãƒ ã‚ˆã‚Š"
                     },
                     mobile: {
-                        general: "ă„ă„ăžă€‚ä¸€ćµă®ăźăă‚·ă§ăłăăĽă•ă«ăŞă‚Śă‚‹ć—ĄăŻčż‘ă„ăŞďĽă‚łă‚¤ăł%{coins}ćžšă ă€‚ă‚­ăŁăŞă‚˘ă®ă‚ąă‚żăĽăă«ĺ˝ąç«‹ă¦ă¦ăŹă‚ŚďĽ</br> ăźăă‚·ă§ăłăăĽă•ă»ăăĽă ă‚ă‚Š"
+                        general: "ã„ã„ãžã€‚ä¸€æµã®ãƒŸãƒƒã‚·ãƒ§ãƒ³ãƒãƒ¼ãƒ•ã«ãªã‚Œã‚‹æ—¥ã¯è¿‘ã„ãªï¼ã‚³ã‚¤ãƒ³%{coins}æžšã ã€‚ã‚­ãƒ£ãƒªã‚¢ã®ã‚¹ã‚¿ãƒ¼ãƒˆã«å½¹ç«‹ã¦ã¦ãã‚Œï¼</br> ãƒŸãƒƒã‚·ãƒ§ãƒ³ãƒãƒ¼ãƒ•ãƒ»ãƒãƒ¼ãƒ ã‚ˆã‚Š"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "ĺ†ă‹ă‚‰ăŞă„ă“ă¨ăŚă‚ăŁăźă‚‰ă€ă‚˛ăĽă FAQă‚’ĺŹ‚ç…§ă™ă‚‹ă‹ă€ă‚˛ăĽă ă•ă‚©ăĽă©ă ă‹FacebookăšăĽă‚¸ă‚’č¨Şă­ă¦ăŹă‚ŚďĽ",
-                        general: "ć¬ˇă®ă‚ąă†ăă—ă§ăŻă€ćŚ‡ä»¤ă‚»ăłă‚żăĽă‚’ĺ»şč¨­ă—ă€ăťă®ĺľŚă™ăă«ć–°ă—ă„ă‚ąă†ăĽă‚·ă§ăłă‚’ĺ˘—ă‚„ă™ă“ă¨ă‚’ăŠĺ‹§ă‚ă™ă‚‹ă€‚ăźăă‚·ă§ăłă®ćś€ĺ¤§ć•°ďĽťĺ„ç¨®éˇžďĽč­¦ĺŻźă€ć¶é˛ă€ć•‘ć€ĄďĽ‰ă®ă‚ąă†ăĽă‚·ă§ăłă®ćś€ĺ¤§ć•°ďĽ‹1ă§ă‚ă‚‹ăźă‚ă ă€‚äľ‹ăă°ă€ć¶é˛ĺ±€ăŚ5č»’ă€ć•‘ć€Ąč»Šă‚ąă†ăĽă‚·ă§ăłăŚ3č»’ă¨ă™ă‚‹ă¨ă€ăźăă‚·ă§ăłć•°ăŻ6ă«ăŞă‚‹ă€‚",
-                        join_alliance: "ăľăźă€ă‚˘ă©ă‚¤ă‚˘ăłă‚ąă‚’ĺ˝˘ćă™ă‚‹ă¨ă€ç‰ąă«é§†ă‘ĺ‡şă—ă€ă‚˛ăĽă ĺşŹç›¤ă§ĺ¤§ă„ă«ĺ˝ąă«ç«‹ă¤ă®ă§ă€ăťă‚Śă‚‚ăŠĺ‹§ă‚ă—ă‚ă†ă€‚",
-                        summary: "ăźăă‚·ă§ăłăăĽă•ă®ĺźşćś¬ăŚç´ąä»‹ă•ă‚Śă¦ă„ă‚‹ăžďĽăźăă‚·ă§ăłă‚’é”ćă—ă€ă‚Żă¬ă‚¸ăăă‚’çŤ˛ĺľ—ă—ă€ă¦ă‹ăăă‚’čłĽĺ…Ąă—ă€ć‹ˇĺ……ă—ă‚ă†ă€‚ă‚˛ăĽă ăŻă“ă®ä¸€é€Łă®ćµă‚Śă‚’çą°ă‚Ščż”ă—ă¦é€˛ă‚€ăžă€‚ă§ăŻă€ćĄ˝ă—ă‚“ă§ăŹă‚ŚďĽ</br> ăźăă‚·ă§ăłăăĽă•ă»ăăĽă ă‚ă‚Š"
+                        contact: "åˆ†ã‹ã‚‰ãªã„ã“ã¨ãŒã‚ã£ãŸã‚‰ã€ã‚²ãƒ¼ãƒ FAQã‚’å‚ç…§ã™ã‚‹ã‹ã€ã‚²ãƒ¼ãƒ ãƒ•ã‚©ãƒ¼ãƒ©ãƒ ã‹Facebookãƒšãƒ¼ã‚¸ã‚’è¨ªã­ã¦ãã‚Œï¼",
+                        general: "æ¬¡ã®ã‚¹ãƒ†ãƒƒãƒ—ã§ã¯ã€æŒ‡ä»¤ã‚»ãƒ³ã‚¿ãƒ¼ã‚’å»ºè¨­ã—ã€ãã®å¾Œã™ãã«æ–°ã—ã„ã‚¹ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å¢—ã‚„ã™ã“ã¨ã‚’ãŠå‹§ã‚ã™ã‚‹ã€‚ãƒŸãƒƒã‚·ãƒ§ãƒ³ã®æœ€å¤§æ•°ï¼å„ç¨®é¡žï¼ˆè­¦å¯Ÿã€æ¶ˆé˜²ã€æ•‘æ€¥ï¼‰ã®ã‚¹ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã®æœ€å¤§æ•°ï¼‹1ã§ã‚ã‚‹ãŸã‚ã ã€‚ä¾‹ãˆã°ã€æ¶ˆé˜²å±€ãŒ5è»’ã€æ•‘æ€¥è»Šã‚¹ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ãŒ3è»’ã¨ã™ã‚‹ã¨ã€ãƒŸãƒƒã‚·ãƒ§ãƒ³æ•°ã¯6ã«ãªã‚‹ã€‚",
+                        join_alliance: "ã¾ãŸã€ã‚¢ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ã‚’å½¢æˆã™ã‚‹ã¨ã€ç‰¹ã«é§†ã‘å‡ºã—ã€ã‚²ãƒ¼ãƒ åºç›¤ã§å¤§ã„ã«å½¹ã«ç«‹ã¤ã®ã§ã€ãã‚Œã‚‚ãŠå‹§ã‚ã—ã‚ˆã†ã€‚",
+                        summary: "ãƒŸãƒƒã‚·ãƒ§ãƒ³ãƒãƒ¼ãƒ•ã®åŸºæœ¬ãŒç´¹ä»‹ã•ã‚Œã¦ã„ã‚‹ãžï¼ãƒŸãƒƒã‚·ãƒ§ãƒ³ã‚’é”æˆã—ã€ã‚¯ãƒ¬ã‚¸ãƒƒãƒˆã‚’ç²å¾—ã—ã€ãƒ¦ãƒ‹ãƒƒãƒˆã‚’è³¼å…¥ã—ã€æ‹¡å……ã—ã‚ˆã†ã€‚ã‚²ãƒ¼ãƒ ã¯ã“ã®ä¸€é€£ã®æµã‚Œã‚’ç¹°ã‚Šè¿”ã—ã¦é€²ã‚€ãžã€‚ã§ã¯ã€æ¥½ã—ã‚“ã§ãã‚Œï¼</br> ãƒŸãƒƒã‚·ãƒ§ãƒ³ãƒãƒ¼ãƒ•ãƒ»ãƒãƒ¼ãƒ ã‚ˆã‚Š"
                     },
                     mobile: {
-                        contact: "ĺ†ă‹ă‚‰ăŞă„ă“ă¨ăŚă‚ăŁăźă‚‰ă€ă‚˛ăĽă FAQă‚’ĺŹ‚ç…§ă™ă‚‹ă‹ă€ă‚˛ăĽă ă•ă‚©ăĽă©ă ă‹FacebookăšăĽă‚¸ă‚’č¨Şă­ă¦ăŹă‚ŚďĽ",
-                        general: "ć¬ˇă®ă‚ąă†ăă—ă§ăŻă€ćŚ‡ä»¤ă‚»ăłă‚żăĽă‚’ĺ»şč¨­ă—ă€ăťă®ĺľŚă™ăă«ć–°ă—ă„ă‚ąă†ăĽă‚·ă§ăłă‚’ĺ˘—ă‚„ă™ă“ă¨ă‚’ăŠĺ‹§ă‚ă™ă‚‹ă€‚ăźăă‚·ă§ăłă®ćś€ĺ¤§ć•°ďĽťĺ„ç¨®éˇžďĽč­¦ĺŻźă€ć¶é˛ă€ć•‘ć€ĄďĽ‰ă®ă‚ąă†ăĽă‚·ă§ăłă®ćś€ĺ¤§ć•°ďĽ‹1ă§ă‚ă‚‹ăźă‚ă ă€‚äľ‹ăă°ă€ć¶é˛ĺ±€ăŚ5č»’ă€ć•‘ć€Ąč»Šă‚ąă†ăĽă‚·ă§ăłăŚ3č»’ă¨ă™ă‚‹ă¨ă€ăźăă‚·ă§ăłć•°ăŻ6ă«ăŞă‚‹ă€‚",
-                        join_alliance: "ăľăźă€ă‚˘ă©ă‚¤ă‚˘ăłă‚ąă‚’ĺ˝˘ćă™ă‚‹ă¨ă€ç‰ąă«é§†ă‘ĺ‡şă—ă€ă‚˛ăĽă ĺşŹç›¤ă§ĺ¤§ă„ă«ĺ˝ąă«ç«‹ă¤ă®ă§ă€ăťă‚Śă‚‚ăŠĺ‹§ă‚ă—ă‚ă†ă€‚",
-                        summary: "ăźăă‚·ă§ăłăăĽă•ă®ĺźşćś¬ăŚç´ąä»‹ă•ă‚Śă¦ă„ă‚‹ăžďĽăźăă‚·ă§ăłă‚’é”ćă—ă€ă‚Żă¬ă‚¸ăăă‚’çŤ˛ĺľ—ă—ă€ă¦ă‹ăăă‚’čłĽĺ…Ąă—ă€ć‹ˇĺ……ă—ă‚ă†ă€‚ă‚˛ăĽă ăŻă“ă®ä¸€é€Łă®ćµă‚Śă‚’çą°ă‚Ščż”ă—ă¦é€˛ă‚€ăžă€‚ă§ăŻă€ćĄ˝ă—ă‚“ă§ăŹă‚ŚďĽ</br> ăźăă‚·ă§ăłăăĽă•ă»ăăĽă ă‚ă‚Š"
+                        contact: "åˆ†ã‹ã‚‰ãªã„ã“ã¨ãŒã‚ã£ãŸã‚‰ã€ã‚²ãƒ¼ãƒ FAQã‚’å‚ç…§ã™ã‚‹ã‹ã€ã‚²ãƒ¼ãƒ ãƒ•ã‚©ãƒ¼ãƒ©ãƒ ã‹Facebookãƒšãƒ¼ã‚¸ã‚’è¨ªã­ã¦ãã‚Œï¼",
+                        general: "æ¬¡ã®ã‚¹ãƒ†ãƒƒãƒ—ã§ã¯ã€æŒ‡ä»¤ã‚»ãƒ³ã‚¿ãƒ¼ã‚’å»ºè¨­ã—ã€ãã®å¾Œã™ãã«æ–°ã—ã„ã‚¹ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å¢—ã‚„ã™ã“ã¨ã‚’ãŠå‹§ã‚ã™ã‚‹ã€‚ãƒŸãƒƒã‚·ãƒ§ãƒ³ã®æœ€å¤§æ•°ï¼å„ç¨®é¡žï¼ˆè­¦å¯Ÿã€æ¶ˆé˜²ã€æ•‘æ€¥ï¼‰ã®ã‚¹ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã®æœ€å¤§æ•°ï¼‹1ã§ã‚ã‚‹ãŸã‚ã ã€‚ä¾‹ãˆã°ã€æ¶ˆé˜²å±€ãŒ5è»’ã€æ•‘æ€¥è»Šã‚¹ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ãŒ3è»’ã¨ã™ã‚‹ã¨ã€ãƒŸãƒƒã‚·ãƒ§ãƒ³æ•°ã¯6ã«ãªã‚‹ã€‚",
+                        join_alliance: "ã¾ãŸã€ã‚¢ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ã‚’å½¢æˆã™ã‚‹ã¨ã€ç‰¹ã«é§†ã‘å‡ºã—ã€ã‚²ãƒ¼ãƒ åºç›¤ã§å¤§ã„ã«å½¹ã«ç«‹ã¤ã®ã§ã€ãã‚Œã‚‚ãŠå‹§ã‚ã—ã‚ˆã†ã€‚",
+                        summary: "ãƒŸãƒƒã‚·ãƒ§ãƒ³ãƒãƒ¼ãƒ•ã®åŸºæœ¬ãŒç´¹ä»‹ã•ã‚Œã¦ã„ã‚‹ãžï¼ãƒŸãƒƒã‚·ãƒ§ãƒ³ã‚’é”æˆã—ã€ã‚¯ãƒ¬ã‚¸ãƒƒãƒˆã‚’ç²å¾—ã—ã€ãƒ¦ãƒ‹ãƒƒãƒˆã‚’è³¼å…¥ã—ã€æ‹¡å……ã—ã‚ˆã†ã€‚ã‚²ãƒ¼ãƒ ã¯ã“ã®ä¸€é€£ã®æµã‚Œã‚’ç¹°ã‚Šè¿”ã—ã¦é€²ã‚€ãžã€‚ã§ã¯ã€æ¥½ã—ã‚“ã§ãã‚Œï¼</br> ãƒŸãƒƒã‚·ãƒ§ãƒ³ãƒãƒ¼ãƒ•ãƒ»ãƒãƒ¼ãƒ ã‚ˆã‚Š"
                     }
                 }
             },
             commons: {
-                collect: "çŤ˛ĺľ—",
-                "continue": "ă„ă„ă",
-                end: "çµ‚äş†",
-                next: "ć¬ˇă¸",
-                prev: "ĺ‰Ťă¸",
-                skip: "ăŻă„",
-                skip_hint: "ăăĄăĽăăŞă‚˘ă«ăŻéŁ›ă°ă™ă¨ĺľŚă§č¦‹ă‚‹ă“ă¨ăŻă§ăŤăľă›ă‚“ă€ă‚ąă‚­ăă—ă—ă¦ă‚‚ă„ă„ă§ă™ă‹ďĽźăăĄăĽăăŞă‚˘ă«ĺ®Śäş†ĺ ±é…¬ăŚĺŹ—ă‘ĺŹ–ă‚ŚăŞăŹăŞă‚Šăľă™ă€‚"
+                collect: "ç²å¾—",
+                "continue": "ã„ã„ãˆ",
+                end: "çµ‚äº†",
+                next: "æ¬¡ã¸",
+                prev: "å‰ã¸",
+                skip: "ã¯ã„",
+                skip_hint: "ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«ã¯é£›ã°ã™ã¨å¾Œã§è¦‹ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“ã€ã‚¹ã‚­ãƒƒãƒ—ã—ã¦ã‚‚ã„ã„ã§ã™ã‹ï¼Ÿãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«å®Œäº†å ±é…¬ãŒå—ã‘å–ã‚Œãªããªã‚Šã¾ã™ã€‚"
             },
             rewards: {
-                log: "ăăĄăĽăăŞă‚˘ă«ĺ®Śäş†ă®ĺ ±é…¬ă§ă™ă€‚"
+                log: "ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«å®Œäº†ã®å ±é…¬ã§ã™ã€‚"
             }
         }
     }, I18n.translations.ko_KR = {
         common: {
-            add: "ě¶”ę°€",
-            back: "ë’¤ëˇś",
-            cancel: "ě·¨ě†Ś",
-            change_saved: "ëł€ę˛˝ ě €ěžĄë¨",
-            coins_spend: "ě˝”ěť¸ěť„ ě‚¬ěš©í•ě‹śę˛ ěŠµë‹ęąŚ?",
-            congratulations: "ě¶•í•í•©ë‹ë‹¤!",
-            content: "ë‚´ěš©",
-            copy: "ëłµě‚¬",
-            credits: "í¬ë ë”§",
-            "delete": "ě‚­ě ś",
-            details: "ě„¸ë¶€ ě‚¬í•­",
-            edit: "íŽ¸ě§‘",
-            error: "ě¤ëĄ",
-            is_offline: "%{user} ë‹ěť€ ě¤í”„ëťĽěť¸ěž…ë‹ë‹¤.",
-            is_offline_long: "ěžĄę¸°ę°„ ě¤í”„ëťĽěť¸: %{user}",
-            is_online: "%{user} ë‹ěť´ ě¨ëťĽěť¸ěž…ë‹ë‹¤.",
-            loading: "ëˇśë”© ě¤‘...",
-            name: "ěť´ë¦„",
-            none: "ě—†ěťŚ",
+            add: "ì¶”ê°€",
+            back: "ë’¤ë¡œ",
+            cancel: "ì·¨ì†Œ",
+            change_saved: "ë³€ê²½ ì €ìž¥ë¨",
+            coins_spend: "ì½”ì¸ì„ ì‚¬ìš©í•˜ì‹œê² ìŠµë‹ˆê¹Œ?",
+            congratulations: "ì¶•í•˜í•©ë‹ˆë‹¤!",
+            content: "ë‚´ìš©",
+            copy: "ë³µì‚¬",
+            credits: "í¬ë ˆë”§",
+            "delete": "ì‚­ì œ",
+            details: "ì„¸ë¶€ ì‚¬í•­",
+            edit: "íŽ¸ì§‘",
+            error: "ì˜¤ë¥˜",
+            is_offline: "%{user} ë‹˜ì€ ì˜¤í”„ë¼ì¸ìž…ë‹ˆë‹¤.",
+            is_offline_long: "ìž¥ê¸°ê°„ ì˜¤í”„ë¼ì¸: %{user}",
+            is_online: "%{user} ë‹˜ì´ ì˜¨ë¼ì¸ìž…ë‹ˆë‹¤.",
+            loading: "ë¡œë”© ì¤‘...",
+            name: "ì´ë¦„",
+            none: "ì—†ìŒ",
             of: "/",
             off: "ë”",
-            on: "ěĽ¬",
-            save: "ě €ěžĄ",
-            search: "íě‰",
-            show: "ëł´ę¸°",
-            user_not_found: "ěś ě €ëĄĽ ě°ľěť„ ě ě—†ěťŚ",
-            wrong_key: "ěžëŞ»ëś í‚¤"
+            on: "ì¼¬",
+            save: "ì €ìž¥",
+            search: "íƒìƒ‰",
+            show: "ë³´ê¸°",
+            user_not_found: "ìœ ì €ë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŒ",
+            wrong_key: "ìž˜ëª»ëœ í‚¤"
         },
         javascript: {
-            alarm: "íŚŚę˛¬",
-            arrival: "ëŹ„ě°©",
-            backalarm: "ě·¨ě†Ś",
-            coins: "ě˝”ěť¸",
-            credits: "í¬ë ë”§",
-            days: "ěťĽ",
-            few_seconds: "ëŞ‡ ě´ ě•ě—",
-            finish_in: "ě™„ëŁŚęąŚě§€:",
-            hours: "ě‹śę°„",
-            location_not_found: "ě°ľěť„ ě ě—†ěťŚ",
-            messages: "ë©”ě‹śě§€",
+            alarm: "íŒŒê²¬",
+            arrival: "ë„ì°©",
+            backalarm: "ì·¨ì†Œ",
+            coins: "ì½”ì¸",
+            credits: "í¬ë ˆë”§",
+            days: "ì¼",
+            few_seconds: "ëª‡ ì´ˆ ì•ˆì—",
+            finish_in: "ì™„ë£Œê¹Œì§€:",
+            hours: "ì‹œê°„",
+            location_not_found: "ì°¾ì„ ìˆ˜ ì—†ìŒ",
+            messages: "ë©”ì‹œì§€",
             minutes: "ë¶„",
-            missed_vehicle: "ë¶€ěˇ±ëź‰:",
-            mission_start_in: "ě‹śěž‘ęąŚě§€:",
-            not_found_map: "ě§€ëŹ„ěě—ě„ś ě°¨ëź‰ěť„ ě°ľěť„ ě ě—†ěŠµë‹ë‹¤",
-            now: "ě§€ę¸",
-            patient: "í™ěž",
-            patient_untouched: "ěąëŁŚë°›ě§€ ě•Šěť€ í™ěž",
-            poi_delete: "ěť´ ę´€ě‹¬ ě§€ě—­(%{caption})ěť„(ëĄĽ) ě‚­ě śí•ě‹śę˛ ěŠµë‹ęąŚ?",
-            reload: "ë‹¤ě‹ś ë¶ëź¬ě¤ę¸°",
-            sale: "í• ěť¸",
-            sale_ended: "í• ěť¸ ě˘…ëŁŚ",
-            secounds: "ě´",
-            sicherheitswache_error: 'ě¶©ěˇ±í•ě§€ ëŞ»í•ś ę¸°ě¤€ěť´ ěžě–´ "%{caption}" ëł´ě• ę˛˝ëą„ě— ě‹¤íŚ¨í–ěŠµë‹ë‹¤.',
-            sicherheitswache_success: '"%{caption}"ěť ëł´ě• ę˛˝ëą„ëĄĽ ě„±ęłµě ěśĽëˇś ě™„ëŁŚí–ěŠµë‹ë‹¤. %{credits} í¬ë ë”§ěť„ ë°›ě•ěŠµë‹ë‹¤.',
-            start_in: "ě‹śěž‘ęąŚě§€: ",
-            start_username: "ě‹śěž‘í•ś ě‚¬ěš©ěž:",
-            time_left: "ë‚¨ěť€ ě‹śę°„:",
-            to_building: "ę±´ë¬Ľ ëł´ę¸°",
-            to_mission: "ěž„ë¬´ ëł´ę¸°",
-            understand: "í™•ěť¸",
-            user_not_found: "í”Śë ěť´ě–´ëĄĽ ě°ľěť„ ě ě—†ěŠµë‹ë‹¤.",
-            vehicles_not_visible: "ě°¨ëź‰ěť´ ëł´ěť´ě§€ ě•ŠěŠµë‹ë‹¤. "
+            missed_vehicle: "ë¶€ì¡±ëŸ‰:",
+            mission_start_in: "ì‹œìž‘ê¹Œì§€:",
+            not_found_map: "ì§€ë„ìƒì—ì„œ ì°¨ëŸ‰ì„ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤",
+            now: "ì§€ê¸ˆ",
+            patient: "í™˜ìž",
+            patient_untouched: "ì¹˜ë£Œë°›ì§€ ì•Šì€ í™˜ìž",
+            poi_delete: "ì´ ê´€ì‹¬ ì§€ì—­(%{caption})ì„(ë¥¼) ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?",
+            reload: "ë‹¤ì‹œ ë¶ˆëŸ¬ì˜¤ê¸°",
+            sale: "í• ì¸",
+            sale_ended: "í• ì¸ ì¢…ë£Œ",
+            secounds: "ì´ˆ",
+            sicherheitswache_error: 'ì¶©ì¡±í•˜ì§€ ëª»í•œ ê¸°ì¤€ì´ ìžˆì–´ "%{caption}" ë³´ì•ˆ ê²½ë¹„ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.',
+            sicherheitswache_success: '"%{caption}"ì˜ ë³´ì•ˆ ê²½ë¹„ë¥¼ ì„±ê³µì ìœ¼ë¡œ ì™„ë£Œí–ˆìŠµë‹ˆë‹¤. %{credits} í¬ë ˆë”§ì„ ë°›ì•˜ìŠµë‹ˆë‹¤.',
+            start_in: "ì‹œìž‘ê¹Œì§€: ",
+            start_username: "ì‹œìž‘í•œ ì‚¬ìš©ìž:",
+            time_left: "ë‚¨ì€ ì‹œê°„:",
+            to_building: "ê±´ë¬¼ ë³´ê¸°",
+            to_mission: "ìž„ë¬´ ë³´ê¸°",
+            understand: "í™•ì¸",
+            user_not_found: "í”Œë ˆì´ì–´ë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.",
+            vehicles_not_visible: "ì°¨ëŸ‰ì´ ë³´ì´ì§€ ì•ŠìŠµë‹ˆë‹¤. "
         },
         map: {
-            alliance: "ëŹ™ë§ą",
-            alliance_chat: "ě±„íŚ…",
-            alliance_chat_banned: "í„ěž¬ ëŹ™ë§ą ě±„íŚ… ę¸ě§€ ěíśěž…ë‹ë‹¤.",
-            alliance_chat_banned_admin: "ě°¨ë‹¨ěž:",
-            alliance_chat_banned_timeleft: "ë‚¨ěť€ ě‹śę°„:",
-            alliance_chat_radio_off: "ëŹ™ë§ą ë¬´ě „: ë”",
-            alliance_chat_radio_on: "ëŹ™ë§ą ë¬´ě „: ěĽ¬",
-            alliance_event: "ěť´ë˛¤íŠ¸",
-            alliance_missions: "ëŹ™ë§ą ěž„ë¬´",
-            alliance_missions_event: "ěť´ë˛¤íŠ¸",
-            ambulance: "ęµ¬ę¸‰ě°¨",
+            alliance: "ë™ë§¹",
+            alliance_chat: "ì±„íŒ…",
+            alliance_chat_banned: "í˜„ìž¬ ë™ë§¹ ì±„íŒ… ê¸ˆì§€ ìƒíƒœìž…ë‹ˆë‹¤.",
+            alliance_chat_banned_admin: "ì°¨ë‹¨ìž:",
+            alliance_chat_banned_timeleft: "ë‚¨ì€ ì‹œê°„:",
+            alliance_chat_radio_off: "ë™ë§¹ ë¬´ì „: ë”",
+            alliance_chat_radio_on: "ë™ë§¹ ë¬´ì „: ì¼¬",
+            alliance_event: "ì´ë²¤íŠ¸",
+            alliance_missions: "ë™ë§¹ ìž„ë¬´",
+            alliance_missions_event: "ì´ë²¤íŠ¸",
+            ambulance: "êµ¬ê¸‰ì°¨",
             challenges: "",
-            chat_history: "ě±„íŚ… ěť´ë Ą",
-            congratulations: "ě¶•í•í•©ë‹ë‹¤! ěť´ě ś ě§„ę¸‰í•ě…¨ěŠµë‹ë‹¤.",
-            create_alliance_event: "ëŹ™ë§ą ěť´ë˛¤íŠ¸ ě‹śěž‘",
-            create_alliance_operation: "ëŚ€ę·śëŞ¨ ëŹ™ë§ą ěž„ë¬´ ěťě„±",
-            emergency: "ěť‘ę¸‰ ěí™©",
-            join_alliance_infos: "ëŹ™ë§ąě— ě†Śě†Ťëś ěíśëťĽë©´ ë‹¤ëĄ¸ í”Śë ěť´ě–´ëˇśë¶€í„° ěž„ë¬´ëĄĽ ěžěś ëˇ­ę˛Ś ë°›ěť„ ě ěžěŠµë‹ë‹¤.",
-            map: "ě§€ëŹ„",
+            chat_history: "ì±„íŒ… ì´ë ¥",
+            congratulations: "ì¶•í•˜í•©ë‹ˆë‹¤! ì´ì œ ì§„ê¸‰í•˜ì…¨ìŠµë‹ˆë‹¤.",
+            create_alliance_event: "ë™ë§¹ ì´ë²¤íŠ¸ ì‹œìž‘",
+            create_alliance_operation: "ëŒ€ê·œëª¨ ë™ë§¹ ìž„ë¬´ ìƒì„±",
+            emergency: "ì‘ê¸‰ ìƒí™©",
+            join_alliance_infos: "ë™ë§¹ì— ì†Œì†ëœ ìƒíƒœë¼ë©´ ë‹¤ë¥¸ í”Œë ˆì´ì–´ë¡œë¶€í„° ìž„ë¬´ë¥¼ ìžìœ ë¡­ê²Œ ë°›ì„ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.",
+            map: "ì§€ë„",
             map_filters: {
-                all_buildings: "ę±´ë¬Ľ",
-                all_missions: "ěž„ë¬´",
-                alliance_buildings: "ëŹ™ë§ą ę±´ë¬Ľ",
-                alliance_members: "ëŹ™ë§ąě›",
-                alliance_missions: "ëŹ™ë§ąěť´ ęłµěś ",
-                ambulance_station_missions: "ěť‘ę¸‰ě‹¤",
-                ambulance_station_small_missions: "ěť‘ę¸‰ě‹¤(ě†Śí• ę´€í• ě„ś)",
+                all_buildings: "ê±´ë¬¼",
+                all_missions: "ìž„ë¬´",
+                alliance_buildings: "ë™ë§¹ ê±´ë¬¼",
+                alliance_members: "ë™ë§¹ì›",
+                alliance_missions: "ë™ë§¹ì´ ê³µìœ ",
+                ambulance_station_missions: "ì‘ê¸‰ì‹¤",
+                ambulance_station_small_missions: "ì‘ê¸‰ì‹¤(ì†Œí˜• ê´€í• ì„œ)",
                 clinic_missions: "í´ë¦¬ë‹‰",
-                dispatch_center_missions: "ě§€íśě„Ľí„°",
-                fire_school_missions: "ě†Śë°©í•™ęµ",
-                firehouse_missions: "ě†Śë°©ě„ś",
-                firehouse_small_missions: "ě†Śë°©ě„ś(ě†Śí•)",
-                hospital_missions: "ëł‘ě›",
-                map_filters: "ě§€ëŹ„ í•„í„° ëŞ©ëˇť",
-                mission_positions: "ę´€ě‹¬ ě§€ě—­(POI)",
-                police_copter_station_missions: "ę˛˝ě°° í•­ęłµ",
-                police_school_missions: "ę˛˝ě°° í•™ęµ",
-                police_small_missions: "ę˛˝ě°°ě„ś(ě†Śí• ę´€í• ě„ś)",
-                police_special_forces: "ę˛˝ě°° íŠąęłµë¶€ëŚ€",
-                police_station_missions: "ę˛˝ě°°ě„ś",
-                prison_missions: "ę°ěĄ",
-                rapid_deployment_group: "ëą ëĄ¸ ę·¸ëŁą ě„¤ě •(SEG)",
-                rescue_copter_station_missions: "ěť‘ę¸‰ í—¬ę¸° ě°©ëĄ™ěžĄ",
-                riot_police: "ě§„ě•• ę˛˝ě°°",
-                staging_area_missions: "ě§‘ę˛°ě§€",
-                technical_aid_organization: "ę¸°ě  ě§€ě› ę¸°ę´€(THW)",
-                technical_aid_organization_school: "THW ě—°ë°© í•™ęµ",
-                user_buildings: "ë‚´ ę±´ë¬Ľ",
-                user_missions: "ë‚´ ěž„ë¬´",
-                water_watch: "ěě ęµ¬ěˇ°"
+                dispatch_center_missions: "ì§€íœ˜ì„¼í„°",
+                fire_school_missions: "ì†Œë°©í•™êµ",
+                firehouse_missions: "ì†Œë°©ì„œ",
+                firehouse_small_missions: "ì†Œë°©ì„œ(ì†Œí˜•)",
+                hospital_missions: "ë³‘ì›",
+                map_filters: "ì§€ë„ í•„í„° ëª©ë¡",
+                mission_positions: "ê´€ì‹¬ ì§€ì—­(POI)",
+                police_copter_station_missions: "ê²½ì°° í•­ê³µ",
+                police_school_missions: "ê²½ì°° í•™êµ",
+                police_small_missions: "ê²½ì°°ì„œ(ì†Œí˜• ê´€í• ì„œ)",
+                police_special_forces: "ê²½ì°° íŠ¹ê³µë¶€ëŒ€",
+                police_station_missions: "ê²½ì°°ì„œ",
+                prison_missions: "ê°ì˜¥",
+                rapid_deployment_group: "ë¹ ë¥¸ ê·¸ë£¹ ì„¤ì •(SEG)",
+                rescue_copter_station_missions: "ì‘ê¸‰ í—¬ê¸° ì°©ë¥™ìž¥",
+                riot_police: "ì§„ì•• ê²½ì°°",
+                staging_area_missions: "ì§‘ê²°ì§€",
+                technical_aid_organization: "ê¸°ìˆ  ì§€ì› ê¸°ê´€(THW)",
+                technical_aid_organization_school: "THW ì—°ë°© í•™êµ",
+                user_buildings: "ë‚´ ê±´ë¬¼",
+                user_missions: "ë‚´ ìž„ë¬´",
+                water_watch: "ìˆ˜ìƒ êµ¬ì¡°"
             },
-            message: "ë©”ě‹śě§€",
-            mission: "ěž„ë¬´",
-            no_alliance_chat_impossible: "ëŹ™ë§ąě— ě†Ťí•´ ěžě§€ ě•ŠěŠµë‹ë‹¤.",
-            no_alliance_missions: "í„ěž¬ ě§„í–‰ ě¤‘ěť¸ ëŹ™ë§ą ěž„ë¬´ę°€ ě—†ěŠµë‹ë‹¤.",
-            no_ambulance_missions: "ęµ¬ę¸‰ě°¨ ěž„ë¬´ę°€ ě—†ěŠµë‹ë‹¤. ęµ¬ę¸‰ě°¨ ěž„ë¬´ëŠ” ęµ¬ę¸‰ě°¨ě™€ ëł‘ě›ěť„ ëł´ěś í–ěť„ ë•Śě—ë§Ś ë°śěťí•©ë‹ë‹¤.",
-            no_emergency_missions: "ěť´ěš©í•  ě ěžëŠ” ę¸´ę¸‰ ěž„ë¬´ę°€ ě—†ěŠµë‹ë‹¤. ę¸´ę¸‰ ěž„ë¬´ëŠ” ě˛« ë˛ě§¸ ę´€í• ě„śëĄĽ ěťě„±í•ś í›„ ë°śěťí•©ë‹ë‹¤.",
-            no_radio_messages: "ë°›ěť€ ë¬´ě „ ë©”ě‹śě§€ę°€ ě—†ěŠµë‹ë‹¤.",
-            radio_messages: "ë¬´ě „ę¸°",
-            restore_map: "ě§€ëŹ„ ëłµě›",
-            show_informations: "ë…ąě‰ = ěž„ë¬´ę°€ ëŞ©ëˇťě— í‘śě‹śë©ë‹ë‹¤. ě ě‰ = ěž„ë¬´ę°€ í‘śě‹śëě§€ ě•ŠěŠµë‹ë‹¤.",
-            sicherheitswache: "ęł„íšŤëś ě¶śí„",
-            transport: "ěě†ˇ"
+            message: "ë©”ì‹œì§€",
+            mission: "ìž„ë¬´",
+            no_alliance_chat_impossible: "ë™ë§¹ì— ì†í•´ ìžˆì§€ ì•ŠìŠµë‹ˆë‹¤.",
+            no_alliance_missions: "í˜„ìž¬ ì§„í–‰ ì¤‘ì¸ ë™ë§¹ ìž„ë¬´ê°€ ì—†ìŠµë‹ˆë‹¤.",
+            no_ambulance_missions: "êµ¬ê¸‰ì°¨ ìž„ë¬´ê°€ ì—†ìŠµë‹ˆë‹¤. êµ¬ê¸‰ì°¨ ìž„ë¬´ëŠ” êµ¬ê¸‰ì°¨ì™€ ë³‘ì›ì„ ë³´ìœ í–ˆì„ ë•Œì—ë§Œ ë°œìƒí•©ë‹ˆë‹¤.",
+            no_emergency_missions: "ì´ìš©í•  ìˆ˜ ìžˆëŠ” ê¸´ê¸‰ ìž„ë¬´ê°€ ì—†ìŠµë‹ˆë‹¤. ê¸´ê¸‰ ìž„ë¬´ëŠ” ì²« ë²ˆì§¸ ê´€í• ì„œë¥¼ ìƒì„±í•œ í›„ ë°œìƒí•©ë‹ˆë‹¤.",
+            no_radio_messages: "ë°›ì€ ë¬´ì „ ë©”ì‹œì§€ê°€ ì—†ìŠµë‹ˆë‹¤.",
+            radio_messages: "ë¬´ì „ê¸°",
+            restore_map: "ì§€ë„ ë³µì›",
+            show_informations: "ë…¹ìƒ‰ = ìž„ë¬´ê°€ ëª©ë¡ì— í‘œì‹œë©ë‹ˆë‹¤. ì ìƒ‰ = ìž„ë¬´ê°€ í‘œì‹œë˜ì§€ ì•ŠìŠµë‹ˆë‹¤.",
+            sicherheitswache: "ê³„íšëœ ì¶œí˜„",
+            transport: "ìˆ˜ì†¡"
         },
         fms: {
-            going: "ěť‘ë‹µ ě¤‘",
-            not_ready: "ě„śëą„ěŠ¤ ě¤‘ë‹¨",
-            on_destination: "ěě†ˇ ëŞ©ě ě§€ëˇś",
-            on_place: "í„ěžĄě— ěžěťŚ",
-            patient_transported: "í™ěž ěť´ě†ˇ ě¤‘",
-            prisoner_transported: "ěŁ„ě í¸ě†ˇ ě¤‘",
-            ready_home: "ę´€í• ě„śě—ě„ś ěť´ěš© ę°€ëŠĄ",
-            ready_traveling: "ě™„ëŁŚ ë°Ź ěť´ěš© ę°€ëŠĄ",
-            talking_wish: "ěě†ˇ ěš”ě˛­",
-            waiting_for_vehicle: "ę˛¬ěť¸ ě°¨ëź‰ ę¸°ë‹¤ë¦¬ëŠ” ě¤‘"
+            going: "ì‘ë‹µ ì¤‘",
+            not_ready: "ì„œë¹„ìŠ¤ ì¤‘ë‹¨",
+            on_destination: "ìˆ˜ì†¡ ëª©ì ì§€ë¡œ",
+            on_place: "í˜„ìž¥ì— ìžˆìŒ",
+            patient_transported: "í™˜ìž ì´ì†¡ ì¤‘",
+            prisoner_transported: "ì£„ìˆ˜ í˜¸ì†¡ ì¤‘",
+            ready_home: "ê´€í• ì„œì—ì„œ ì´ìš© ê°€ëŠ¥",
+            ready_traveling: "ì™„ë£Œ ë° ì´ìš© ê°€ëŠ¥",
+            talking_wish: "ìˆ˜ì†¡ ìš”ì²­",
+            waiting_for_vehicle: "ê²¬ì¸ ì°¨ëŸ‰ ê¸°ë‹¤ë¦¬ëŠ” ì¤‘"
         },
         intervention_order: {
-            back: "ë’¤ëˇś",
-            category: "ěą´í…Śęł ë¦¬",
-            colour: "ě‰ě",
-            column: "ě—´",
-            column_number: "ě—´ ë˛í¸",
-            column_number_hint: "ě—´ ë˛í¸ëĄĽ ë°›ěśĽë©´ ë“±ëˇťí•ś ę˛˝ëł´ ë°Ź ëŚ€ěť‘ í•­ëŞ©ěť´ ę˛˝ëł´ íŽěť´ě§€ ë‚´ í•´ë‹ą ě—´ě— í‘śě‹śë©ë‹ë‹¤.",
-            create_intervention_order: "ě ę˛˝ëł´ ë°Ź ëŚ€ěť‘ ę·śě • ěťě„±",
-            "delete": "ě‚­ě ś",
-            delete_all: "ę˛˝ëł´ ë°Ź ëŚ€ěť‘ ę·śě • ě™„ě „ ě‚­ě ś",
-            delete_all_confirm: "ę˛˝ëł´ ë°Ź ëŚ€ěť‘ ę·śě •ěť„ ëŞ¨ë‘ ě‚­ě śí•ě‹śę˛ ěŠµë‹ęąŚ? ë‚´ëł´ë‚¸ ę¸°ěˇ´ í•­ëŞ©ěť„ ëŤ” ěť´ě ě‚¬ěš©í•  ě ě—†ěŠµë‹ë‹¤!",
-            description: "ěť´ë¦„",
-            edit: "íŽ¸ě§‘",
+            back: "ë’¤ë¡œ",
+            category: "ì¹´í…Œê³ ë¦¬",
+            colour: "ìƒ‰ìƒ",
+            column: "ì—´",
+            column_number: "ì—´ ë²ˆí˜¸",
+            column_number_hint: "ì—´ ë²ˆí˜¸ë¥¼ ë°›ìœ¼ë©´ ë“±ë¡í•œ ê²½ë³´ ë° ëŒ€ì‘ í•­ëª©ì´ ê²½ë³´ íŽ˜ì´ì§€ ë‚´ í•´ë‹¹ ì—´ì— í‘œì‹œë©ë‹ˆë‹¤.",
+            create_intervention_order: "ìƒˆ ê²½ë³´ ë° ëŒ€ì‘ ê·œì • ìƒì„±",
+            "delete": "ì‚­ì œ",
+            delete_all: "ê²½ë³´ ë° ëŒ€ì‘ ê·œì • ì™„ì „ ì‚­ì œ",
+            delete_all_confirm: "ê²½ë³´ ë° ëŒ€ì‘ ê·œì •ì„ ëª¨ë‘ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ? ë‚´ë³´ë‚¸ ê¸°ì¡´ í•­ëª©ì„ ë” ì´ìƒ ì‚¬ìš©í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤!",
+            description: "ì´ë¦„",
+            edit: "íŽ¸ì§‘",
             "export": {
-                "export": "ë‚´ëł´ë‚´ę¸°",
-                "import": "ę°€ě ¸ě¤ę¸°",
-                import_done: "ě„ íťí•ś í•­ëŞ©ěť„ ę°€ě ¸ě™€ ę˛˝ëł´ ë°Ź ëŚ€ěť‘ ęł„íšŤě— ę¸°ëˇťí–ěŠµë‹ë‹¤.",
-                saved: "ę˛˝ëł´ ë°Ź ëŚ€ěť‘ ę·śě • ë‚´ëł´ë‚´ę¸°",
-                saved_text: "ę˛˝ëł´ ë°Ź ëŚ€ěť‘ ę·śě •ěť„ ë‚´ëł´ë‚Ľ ě¤€ëą„ëĄĽ ë§ěł¤ěŠµë‹ë‹¤. ë§í¬ëĄĽ í†µí•´ ë‹¤ëĄ¸ í”Śë ěť´ě–´ę°€ ě śěž‘í•ś ę˛˝ëł´ ë°Ź ëŚ€ěť‘ ę·śě •ěť„ ę°€ě ¸ě¬ ě ěžěŠµë‹ë‹¤. ěť´ ę¸°ę°„ ëŹ™ě• ę˛˝ëł´ ë°Ź ëŚ€ěť‘ ę·śě •ěť„ ëł€ę˛˝í•  ę˛˝ěš° ëł€ę˛˝ëś ë‚´ěš©ěť´ ë‚´ëł´ë‚´ëŠ” í•­ëŞ©ě— ěžëŹ™ěśĽëˇś ě ěš©ë©ë‹ë‹¤."
+                "export": "ë‚´ë³´ë‚´ê¸°",
+                "import": "ê°€ì ¸ì˜¤ê¸°",
+                import_done: "ì„ íƒí•œ í•­ëª©ì„ ê°€ì ¸ì™€ ê²½ë³´ ë° ëŒ€ì‘ ê³„íšì— ê¸°ë¡í–ˆìŠµë‹ˆë‹¤.",
+                saved: "ê²½ë³´ ë° ëŒ€ì‘ ê·œì • ë‚´ë³´ë‚´ê¸°",
+                saved_text: "ê²½ë³´ ë° ëŒ€ì‘ ê·œì •ì„ ë‚´ë³´ë‚¼ ì¤€ë¹„ë¥¼ ë§ˆì³¤ìŠµë‹ˆë‹¤. ë§í¬ë¥¼ í†µí•´ ë‹¤ë¥¸ í”Œë ˆì´ì–´ê°€ ì œìž‘í•œ ê²½ë³´ ë° ëŒ€ì‘ ê·œì •ì„ ê°€ì ¸ì˜¬ ìˆ˜ ìžˆìŠµë‹ˆë‹¤. ì´ ê¸°ê°„ ë™ì•ˆ ê²½ë³´ ë° ëŒ€ì‘ ê·œì •ì„ ë³€ê²½í•  ê²½ìš° ë³€ê²½ëœ ë‚´ìš©ì´ ë‚´ë³´ë‚´ëŠ” í•­ëª©ì— ìžë™ìœ¼ë¡œ ì ìš©ë©ë‹ˆë‹¤."
             },
-            hotkey_hint: "ěť´ ě°¨ëź‰ěť„ ě„ íťí•  ë‹¨ě¶•í‚¤ëĄĽ ě§€ě •í•ě„¸ěš”. ěž„ë¬´ ě°˝ě—ě„ś: ALT + ë‹¨ě¶•í‚¤(Firefoxěť ę˛˝ěš°: ALT + SHIFT + ë‹¨ě¶•í‚¤, Mac osěť ę˛˝ěš°: ctrl + alt + ë‹¨ě¶•í‚¤)ëĄĽ ëŚëź¬ ě„ íťí•ś ě°¨ëź‰ěť„ ě§€ě •í•ě„¸ěš”.",
-            intervention_order: "ę˛˝ëł´ ë°Ź ëŚ€ěť‘ ę·śě • íŽ¸ě§‘",
-            name: "ěť´ë¦„",
-            no_intervention_created: "ę˛˝ëł´ ë°Ź ëŚ€ěť‘ ę·śě •ěť„ ěťě„±í•ě§€ ě•Šě•ěŠµë‹ë‹¤.",
-            options: "ěµě…",
-            reset: "ę˛˝ëł´ ě°˝ě—ě„ś ěť´ě „ ě„ íťěť„ ě´ę¸°í™”í•ě„¸ěš”.",
-            reset_hint: "íŚŚę˛¬ ě°˝ě—ě„ś ě°¨ëź‰ěť„ ě„ íťí–ěť„ ę˛˝ěš° ěť´ ë˛„íŠĽěť„ ě‚¬ěš©í•´ ě´ę¸°í™”í•  ě ěžěŠµë‹ë‹¤.",
-            save: "ě €ěžĄ",
-            station: "ę´€í• ě„ś",
-            station_hint: "ę±´ë¬Ľ ě„ íť ě‹ś, ě„ íťí•ś ę±´ë¬Ľ ë‚´ě— ë°°ěąí•ś ě°¨ëź‰ë§Ś ě„ íťë©ë‹ë‹¤.",
-            successfully_created: "ę˛˝ëł´ ë°Ź ëŚ€ěť‘ ę·śě •ěť„ ěťě„±í–ěŠµë‹ë‹¤.",
-            successfully_deleted: "ę˛˝ëł´ ë°Ź ëŚ€ěť‘ ę·śě •ěť„ ě‚­ě śí–ěŠµë‹ë‹¤",
-            successfully_updated: "ę˛˝ëł´ ë°Ź ëŚ€ěť‘ ę·śě •ěť„ ě—…ëŤ°ěť´íŠ¸í•ě€ěŠµë‹ë‹¤.",
+            hotkey_hint: "ì´ ì°¨ëŸ‰ì„ ì„ íƒí•  ë‹¨ì¶•í‚¤ë¥¼ ì§€ì •í•˜ì„¸ìš”. ìž„ë¬´ ì°½ì—ì„œ: ALT + ë‹¨ì¶•í‚¤(Firefoxì˜ ê²½ìš°: ALT + SHIFT + ë‹¨ì¶•í‚¤, Mac osì˜ ê²½ìš°: ctrl + alt + ë‹¨ì¶•í‚¤)ë¥¼ ëˆŒëŸ¬ ì„ íƒí•œ ì°¨ëŸ‰ì„ ì§€ì •í•˜ì„¸ìš”.",
+            intervention_order: "ê²½ë³´ ë° ëŒ€ì‘ ê·œì • íŽ¸ì§‘",
+            name: "ì´ë¦„",
+            no_intervention_created: "ê²½ë³´ ë° ëŒ€ì‘ ê·œì •ì„ ìƒì„±í•˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.",
+            options: "ì˜µì…˜",
+            reset: "ê²½ë³´ ì°½ì—ì„œ ì´ì „ ì„ íƒì„ ì´ˆê¸°í™”í•˜ì„¸ìš”.",
+            reset_hint: "íŒŒê²¬ ì°½ì—ì„œ ì°¨ëŸ‰ì„ ì„ íƒí–ˆì„ ê²½ìš° ì´ ë²„íŠ¼ì„ ì‚¬ìš©í•´ ì´ˆê¸°í™”í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.",
+            save: "ì €ìž¥",
+            station: "ê´€í• ì„œ",
+            station_hint: "ê±´ë¬¼ ì„ íƒ ì‹œ, ì„ íƒí•œ ê±´ë¬¼ ë‚´ì— ë°°ì¹˜í•œ ì°¨ëŸ‰ë§Œ ì„ íƒë©ë‹ˆë‹¤.",
+            successfully_created: "ê²½ë³´ ë° ëŒ€ì‘ ê·œì •ì„ ìƒì„±í–ˆìŠµë‹ˆë‹¤.",
+            successfully_deleted: "ê²½ë³´ ë° ëŒ€ì‘ ê·œì •ì„ ì‚­ì œí–ˆìŠµë‹ˆë‹¤",
+            successfully_updated: "ê²½ë³´ ë° ëŒ€ì‘ ê·œì •ì„ ì—…ë°ì´íŠ¸í•˜ì˜€ìŠµë‹ˆë‹¤.",
             vehicles: {
-                ab_atemschutz_only: "ęłµę¸°í¸íťˇę¸°(SCBA) ëŞ¨ë“",
-                ab_einsatzleitung_only: "ě§€íś ëŞ¨ë“",
-                ab_gefahrgut_only: "ěťí™”í•™ ëŞ¨ë“",
-                ab_oel_only: "ę¸°ë¦„ ěś ě¶ś ëŞ¨ë“",
-                ab_ruest: "ę¸°ě /ęµ¬ěˇ° ëŞ¨ë“",
+                ab_atemschutz_only: "ê³µê¸°í˜¸í¡ê¸°(SCBA) ëª¨ë“ˆ",
+                ab_einsatzleitung_only: "ì§€íœ˜ ëª¨ë“ˆ",
+                ab_gefahrgut_only: "ìƒí™”í•™ ëª¨ë“ˆ",
+                ab_oel_only: "ê¸°ë¦„ ìœ ì¶œ ëª¨ë“ˆ",
+                ab_ruest: "ê¸°ìˆ /êµ¬ì¡° ëª¨ë“ˆ",
                 ab_ruest_rw: "",
-                abl2wasser_only: "í¸ěŠ¤ ě§€ě› ëŞ¨ë“",
-                ambulance: "ęł ę¸‰ ěť¸ëŞ… ě§€ě›(ALS) ęµ¬ę¸‰ě°¨",
+                abl2wasser_only: "í˜¸ìŠ¤ ì§€ì› ëª¨ë“ˆ",
+                ambulance: "ê³ ê¸‰ ì¸ëª… ì§€ì›(ALS) êµ¬ê¸‰ì°¨",
                 ambulance_or_rapid_responder: "",
-                arff: "ARFF(ęłµí•­ ě†Śë°©ě°¨)",
-                battalion_chief_unit: "ě†Śë°©ëŚ€ěžĄ ěś ë‹›",
-                boot: "ëł´íŠ¸(ěťĽë°)",
+                arff: "ARFF(ê³µí•­ ì†Œë°©ì°¨)",
+                battalion_chief_unit: "ì†Œë°©ëŒ€ìž¥ ìœ ë‹›",
+                boot: "ë³´íŠ¸(ì¼ë°˜)",
                 dekon_p: "",
-                division_chief_unit: "ę¸°ëŹ™í• ě§€íśě°¨ëź‰",
+                division_chief_unit: "ê¸°ë™í˜• ì§€íœ˜ì°¨ëŸ‰",
                 dlk_or_tm50: "",
-                elw1_or_elw2: "ě†Śë°©ëŚ€ěžĄ ěś ë‹›, ę¸°ëŹ™í• ě§€íśě°¨ëź‰ ëëŠ” ę¸°ëŹ™í• ě§€íś ëŞ¨ë“ ",
+                elw1_or_elw2: "ì†Œë°©ëŒ€ìž¥ ìœ ë‹›, ê¸°ë™í˜• ì§€íœ˜ì°¨ëŸ‰ ë˜ëŠ” ê¸°ë™í˜• ì§€íœ˜ ëª¨ë“ˆ ",
                 elw2_or_ab_elw: "",
                 elw3: "",
                 elw_airport: "",
-                emergency_ambulance: "ěť‘ę¸‰ěš© ęµ¬ę¸‰ě°¨ ëëŠ” í—¬ę¸°",
-                fire_truck: "ě†Śë°©ě°¨",
-                fireboat: "ëŚ€í• ě†Śë°© ëł´íŠ¸",
-                fly_car: "ëą„í–‰ ěš´ě†ˇ ě°¨ëź‰",
+                emergency_ambulance: "ì‘ê¸‰ìš© êµ¬ê¸‰ì°¨ ë˜ëŠ” í—¬ê¸°",
+                fire_truck: "ì†Œë°©ì°¨",
+                fireboat: "ëŒ€í˜• ì†Œë°© ë³´íŠ¸",
+                fly_car: "ë¹„í–‰ ìš´ì†¡ ì°¨ëŸ‰",
                 fukw: "",
                 fwk: "",
                 gefkw: "",
-                gkw: "ë‹¤ěš©ëŹ„ íŠ¸ëź­",
-                grtw: "ëŚ€ëź‰ ě‚¬ěěžěš© ěś ë‹›",
+                gkw: "ë‹¤ìš©ë„ íŠ¸ëŸ­",
+                grtw: "ëŒ€ëŸ‰ ì‚¬ìƒìžìš© ìœ ë‹›",
                 grtw0: "",
                 grtw1: "",
                 grukw: "",
                 gw_atemschutz_only: "",
-                gw_gefahrgut: "ěťí™”í•™ ě°¨ëź‰",
+                gw_gefahrgut: "ìƒí™”í•™ ì°¨ëŸ‰",
                 gw_gefahrgut_only: "",
-                gw_hoehenrettung: "ěž‘ě—… ě°¨ëź‰-ëˇśí”„ ęµ¬ěˇ°ě°¨",
-                gw_messtechnik: "ěž‘ě—… ě°¨ëź‰-ě¸ˇëź‰ě°¨",
+                gw_hoehenrettung: "ìž‘ì—… ì°¨ëŸ‰-ë¡œí”„ êµ¬ì¡°ì°¨",
+                gw_messtechnik: "ìž‘ì—… ì°¨ëŸ‰-ì¸¡ëŸ‰ì°¨",
                 gw_oel_only: "",
                 gw_san: "",
                 gw_taucher: "",
-                gw_wasserrettung: "ěś ě ę´€ë¦¬",
+                gw_wasserrettung: "ìœ ìˆ˜ ê´€ë¦¬",
                 gw_werkfeuerwehr: "",
-                gwl2wasser_only: "í¸ěŠ¤ ě°¨ëź‰",
-                hems: "ę¸´ę¸‰ ěťëŁŚ ě„śëą„ěŠ¤(í—¬ę¸°)",
+                gwl2wasser_only: "í˜¸ìŠ¤ ì°¨ëŸ‰",
+                hems: "ê¸´ê¸‰ ì˜ë£Œ ì„œë¹„ìŠ¤(í—¬ê¸°)",
                 hlf_only: "",
                 hlf_or_rw_and_lf: "",
                 hondengeleider: "",
-                k9: "K-9 ěś ë‹›",
+                k9: "K-9 ìœ ë‹›",
                 kdow_lna: "",
-                kdow_orgl: "ę¸´ę¸‰ ěťëŁŚ ě„śëą„ěŠ¤ěžĄ",
+                kdow_orgl: "ê¸´ê¸‰ ì˜ë£Œ ì„œë¹„ìŠ¤ìž¥",
                 ktw_b: "",
                 ktw_or_rtw: "",
-                lebefkw: "ę˛˝ëź‰í• ě§€íśě°¨ëź‰(leBefKw)",
-                lf_only: "ě†Śë°©ě°¨",
-                long_distance_ambulance: "ę¸°ëł¸ ěť¸ëŞ… ě§€ě›(BLS) ęµ¬ę¸‰ě°¨",
-                mask_service_unit: "ę¸°ëŹ™í• ęłµě¤‘ ěś ë‹›",
+                lebefkw: "ê²½ëŸ‰í˜• ì§€íœ˜ì°¨ëŸ‰(leBefKw)",
+                lf_only: "ì†Œë°©ì°¨",
+                long_distance_ambulance: "ê¸°ë³¸ ì¸ëª… ì§€ì›(BLS) êµ¬ê¸‰ì°¨",
+                mask_service_unit: "ê¸°ë™í˜• ê³µì¤‘ ìœ ë‹›",
                 mek_mtf: "",
                 mek_zf: "",
-                mtw: "ě†Śë°© ë¶€ě„ś ě°¨ëź‰(MTW)",
-                mzb: "ë‹¤ëŞ©ě  ëł´íŠ¸",
+                mtw: "ì†Œë°© ë¶€ì„œ ì°¨ëŸ‰(MTW)",
+                mzb: "ë‹¤ëª©ì  ë³´íŠ¸",
                 naw: "",
                 naw_or_rtw_and_nef: "",
                 naw_or_rtw_and_nef_or_rth: "",
-                nef_only: "ęµ¬ę¸‰ě°¨",
-                oil_unit: "ěž‘ě—… ě°¨ëź‰-ę¸°ë¦„ ěś ě¶ś ë°©ě§€",
+                nef_only: "êµ¬ê¸‰ì°¨",
+                oil_unit: "ìž‘ì—… ì°¨ëŸ‰-ê¸°ë¦„ ìœ ì¶œ ë°©ì§€",
                 only_ab_dekon_p: "",
                 only_dekon_p: "",
                 ovd_p: "",
-                police_car: "ěśě°°ě°¨",
-                polizeihubschrauber: "ę˛˝ě°° í—¬ę¸°",
-                rescue_vehicle: "ě¤‘ěžĄëą„ ęµ¬ěˇ° ě°¨ëź‰",
-                rescue_vehicle_only: "ě¤‘ěžĄëą„ ęµ¬ěˇ°",
-                rescueboat: "ëŚ€í• ęµ¬ěˇ° ëł´íŠ¸",
+                police_car: "ìˆœì°°ì°¨",
+                polizeihubschrauber: "ê²½ì°° í—¬ê¸°",
+                rescue_vehicle: "ì¤‘ìž¥ë¹„ êµ¬ì¡° ì°¨ëŸ‰",
+                rescue_vehicle_only: "ì¤‘ìž¥ë¹„ êµ¬ì¡°",
+                rescueboat: "ëŒ€í˜• êµ¬ì¡° ë³´íŠ¸",
                 rettungstreppe: "",
-                rth_only: "í—¬ę¸°",
-                schlauchwagen: "ěě í±ě»¤",
+                rth_only: "í—¬ê¸°",
+                schlauchwagen: "ìˆ˜ìƒ íƒ±ì»¤",
                 seg_elw: "",
                 sek_mtf: "",
                 sek_zf: "",
                 swat: "SWAT",
-                swat_armored_vehicle: "SWAT ë¬´ěžĄ ě°¨ëź‰",
+                swat_armored_vehicle: "SWAT ë¬´ìž¥ ì°¨ëŸ‰",
                 swat_suv: "SWAT SUV",
                 thw_anh_mzab: "",
                 thw_anh_mzb: "",
@@ -9558,14 +9492,14 @@ function deleteMissionPosition(e) {
                 thw_lkw: "",
                 thw_lkw_7_lkr_19_tm: "",
                 thw_mlw5: "",
-                thw_mtw: "ěť¸ě› ěš´ě†ˇěš© ę¸°ě  ě°¨ëź‰(MTW-TZ - THW)",
-                thw_mzkw: "ë‹¤ëŞ©ě  ě°¨ëź‰(MzKW)",
-                thw_tauchkraftwagen: "ë‹¤ěť´ëą™ íŚ€",
+                thw_mtw: "ì¸ì› ìš´ì†¡ìš© ê¸°ìˆ  ì°¨ëŸ‰(MTW-TZ - THW)",
+                thw_mzkw: "ë‹¤ëª©ì  ì°¨ëŸ‰(MzKW)",
+                thw_tauchkraftwagen: "ë‹¤ì´ë¹™ íŒ€",
                 thw_tauchkraftwagen_or_gw_taucher: "",
-                tlf_only: "í±ě»¤ íŠ¸ëź­",
+                tlf_only: "íƒ±ì»¤ íŠ¸ëŸ­",
                 tm50: "",
                 turboloescher: "",
-                turntable_ladder: "í”Śëž«íŹĽ íŠ¸ëź­",
+                turntable_ladder: "í”Œëž«í¼ íŠ¸ëŸ­",
                 ulf: "",
                 wasserwerfer: "",
                 water_amount: "",
@@ -9577,294 +9511,294 @@ function deleteMissionPosition(e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: 'ë‘ ë˛ě§¸ëŠ” ě ę´€í• ě„śě— ěť´ë¦„ěť„ ë¶™ěť´ëŠ” ę˛ěž…ë‹ë‹¤! ě•Śę¸° ě‰˝ęł  í™•ěžĄ ě‹ś ęµ¬ëł„í•ę¸° ě‰¬ěš´ ěť´ë¦„ěśĽëˇś ë§Śë“¤ě–´ ëł´ě„¸ěš”! ěëĄĽ ë“¤ë©´ "ě†Śë°©ě„ś #0001"ě˛ëźĽ ë§ěž…ë‹ë‹¤. ě „ë¶€ ëťë‚¬ěśĽë©´ "ë‹¤ěťŚ"ěť„ í´ë¦­í•ě„¸ěš”!',
-                            build_with_credits: "ěť´ě ś í¬ë ë”§ěť„ ě‚¬ěš©í•´ ę±´ë¬Ľěť„ ě§€ěśĽě„¸ěš”!",
-                            new_building: '"ě ę±´ë¬Ľ"ěť„ í´ë¦­í•ě„¸ěš”!',
-                            select_building: "ë¨Ľě € ě‹śěž‘í•  ę±´ë¬Ľ ěś í•ěť„ ě„ íťí•ě„¸ěš”. ě†Śë°©ě„śëĄĽ ę°•ë Ąí•ę˛Ś ě¶”ě˛śí•©ë‹ë‹¤! ě–´ë–¤ ę˛˝ěš°ëťĽ í•ëŤ”ëťĽëŹ„ ě†Śí• ę´€í• ě„śëˇś ě‹śěž‘í•ëŠ” ę˛ěť„ ę¶ŚěžĄí•©ë‹ë‹¤!",
-                            select_position: "ě˛« ë˛ě§¸ ę´€í• ě„śëĄĽ ě§€ěť„ ęłłěśĽëˇś íŚŚëž€ě‰ í‘śě‹ťěť„ ě®ę¸°ě„¸ěš”!"
+                            add_name: 'ë‘ ë²ˆì§¸ëŠ” ìƒˆ ê´€í• ì„œì— ì´ë¦„ì„ ë¶™ì´ëŠ” ê²ƒìž…ë‹ˆë‹¤! ì•Œê¸° ì‰½ê³  í™•ìž¥ ì‹œ êµ¬ë³„í•˜ê¸° ì‰¬ìš´ ì´ë¦„ìœ¼ë¡œ ë§Œë“¤ì–´ ë³´ì„¸ìš”! ì˜ˆë¥¼ ë“¤ë©´ "ì†Œë°©ì„œ #0001"ì²˜ëŸ¼ ë§ìž…ë‹ˆë‹¤. ì „ë¶€ ëë‚¬ìœ¼ë©´ "ë‹¤ìŒ"ì„ í´ë¦­í•˜ì„¸ìš”!',
+                            build_with_credits: "ì´ì œ í¬ë ˆë”§ì„ ì‚¬ìš©í•´ ê±´ë¬¼ì„ ì§€ìœ¼ì„¸ìš”!",
+                            new_building: '"ìƒˆ ê±´ë¬¼"ì„ í´ë¦­í•˜ì„¸ìš”!',
+                            select_building: "ë¨¼ì € ì‹œìž‘í•  ê±´ë¬¼ ìœ í˜•ì„ ì„ íƒí•˜ì„¸ìš”. ì†Œë°©ì„œë¥¼ ê°•ë ¥í•˜ê²Œ ì¶”ì²œí•©ë‹ˆë‹¤! ì–´ë–¤ ê²½ìš°ë¼ í•˜ë”ë¼ë„ ì†Œí˜• ê´€í• ì„œë¡œ ì‹œìž‘í•˜ëŠ” ê²ƒì„ ê¶Œìž¥í•©ë‹ˆë‹¤!",
+                            select_position: "ì²« ë²ˆì§¸ ê´€í• ì„œë¥¼ ì§€ì„ ê³³ìœ¼ë¡œ íŒŒëž€ìƒ‰ í‘œì‹ì„ ì˜®ê¸°ì„¸ìš”!"
                         },
-                        pick_location: "ë¨Ľě € ě‹śěž‘ ěś„ěąëĄĽ ě„ íťí•©ë‹ë‹¤! ę˛€ě‰ ë°”ě—ě„ś ě‹śěž‘í•  ěś„ěą ěť´ë¦„ěť„ ěž…ë Ąí•ę±°ë‚ ě§ě ‘ ě§€ëŹ„ě—ě„ś ě°ľě•„ëł´ě„¸ěš”! ě§€ę¸ ě‚¬ëŠ” ëŹ„ě‹śëŠ” ě–´ë– ě‹ ę°€ěš”?",
-                        welcome: "ě•ë…•í•ě„¸ěš”, ëŻ¸ě… ěąí”„ě— ě¤ě‹  ę˛ěť„ í™ěí•©ë‹ë‹¤!  ěť‘ę¸‰ ęµ¬ěˇ°ëŚ€ ěť´ë Ąěť„ í™•ě‹¤í•ę˛Ś ěŚ“ěť„ ě ěžëŠ” ëŞ‡ ę°€ě§€ ë°©ë˛•ěť„ ě•Śë ¤ë“śë¦´ę˛Śěš”!"
+                        pick_location: "ë¨¼ì € ì‹œìž‘ ìœ„ì¹˜ë¥¼ ì„ íƒí•©ë‹ˆë‹¤! ê²€ìƒ‰ ë°”ì—ì„œ ì‹œìž‘í•  ìœ„ì¹˜ ì´ë¦„ì„ ìž…ë ¥í•˜ê±°ë‚˜ ì§ì ‘ ì§€ë„ì—ì„œ ì°¾ì•„ë³´ì„¸ìš”! ì§€ê¸ˆ ì‚¬ëŠ” ë„ì‹œëŠ” ì–´ë– ì‹ ê°€ìš”?",
+                        welcome: "ì•ˆë…•í•˜ì„¸ìš”, ë¯¸ì…˜ ì¹˜í”„ì— ì˜¤ì‹  ê²ƒì„ í™˜ì˜í•©ë‹ˆë‹¤!  ì‘ê¸‰ êµ¬ì¡°ëŒ€ ì´ë ¥ì„ í™•ì‹¤í•˜ê²Œ ìŒ“ì„ ìˆ˜ ìžˆëŠ” ëª‡ ê°€ì§€ ë°©ë²•ì„ ì•Œë ¤ë“œë¦´ê²Œìš”!"
                     },
                     mobile: {
                         build_building: {
-                            add_name: 'ë‘ ë˛ě§¸ëŠ” ě ę´€í• ě„śě— ěť´ë¦„ěť„ ë¶™ěť´ëŠ” ę˛ěž…ë‹ë‹¤! ě•Śę¸° ě‰˝ęł  í™•ěžĄ ě‹ś ęµ¬ëł„í•ę¸° ě‰¬ěš´ ěť´ë¦„ěśĽëˇś ë§Śë“¤ě–´ ëł´ě„¸ěš”! ěëĄĽ ë“¤ë©´ "ě†Śë°©ě„ś #0001"ě˛ëźĽ ë§ěž…ë‹ë‹¤. ě „ë¶€ ëťë‚¬ěśĽë©´ "ë‹¤ěťŚ"ěť„ í´ë¦­í•ě„¸ěš”!',
-                            build_with_credits: "ěť´ě ś í¬ë ë”§ěť„ ě‚¬ěš©í•´ ę±´ë¬Ľěť„ ě§€ěśĽě„¸ěš”!",
-                            new_building: 'ë¨Ľě € ě‹śěž‘ ěś„ěąëĄĽ ě„ íťí•´ ě˛« ë˛ě§¸ ę±´ë¬Ľěť„ ě§€ěśĽě„¸ěš”! <br /> <br /> ę±´ë¬Ľěť„ ě§€ěśĽë ¤ë©´ "ě ę±´ë¬Ľ"ěť„ í´ë¦­í•ě„¸ěš”!',
-                            select_building: "ë¨Ľě € ě‹śěž‘í•  ę±´ë¬Ľ ěś í•ěť„ ě„ íťí•ě„¸ěš”. ě†Śë°©ě„śëĄĽ ę°•ë Ąí•ę˛Ś ě¶”ě˛śí•©ë‹ë‹¤! ě–´ë–¤ ę˛˝ěš°ëťĽ í•ëŤ”ëťĽëŹ„ ě†Śí• ę´€í• ě„śëˇś ě‹śěž‘í•ëŠ” ę˛ěť„ ę¶ŚěžĄí•©ë‹ë‹¤!"
+                            add_name: 'ë‘ ë²ˆì§¸ëŠ” ìƒˆ ê´€í• ì„œì— ì´ë¦„ì„ ë¶™ì´ëŠ” ê²ƒìž…ë‹ˆë‹¤! ì•Œê¸° ì‰½ê³  í™•ìž¥ ì‹œ êµ¬ë³„í•˜ê¸° ì‰¬ìš´ ì´ë¦„ìœ¼ë¡œ ë§Œë“¤ì–´ ë³´ì„¸ìš”! ì˜ˆë¥¼ ë“¤ë©´ "ì†Œë°©ì„œ #0001"ì²˜ëŸ¼ ë§ìž…ë‹ˆë‹¤. ì „ë¶€ ëë‚¬ìœ¼ë©´ "ë‹¤ìŒ"ì„ í´ë¦­í•˜ì„¸ìš”!',
+                            build_with_credits: "ì´ì œ í¬ë ˆë”§ì„ ì‚¬ìš©í•´ ê±´ë¬¼ì„ ì§€ìœ¼ì„¸ìš”!",
+                            new_building: 'ë¨¼ì € ì‹œìž‘ ìœ„ì¹˜ë¥¼ ì„ íƒí•´ ì²« ë²ˆì§¸ ê±´ë¬¼ì„ ì§€ìœ¼ì„¸ìš”! <br /> <br /> ê±´ë¬¼ì„ ì§€ìœ¼ë ¤ë©´ "ìƒˆ ê±´ë¬¼"ì„ í´ë¦­í•˜ì„¸ìš”!',
+                            select_building: "ë¨¼ì € ì‹œìž‘í•  ê±´ë¬¼ ìœ í˜•ì„ ì„ íƒí•˜ì„¸ìš”. ì†Œë°©ì„œë¥¼ ê°•ë ¥í•˜ê²Œ ì¶”ì²œí•©ë‹ˆë‹¤! ì–´ë–¤ ê²½ìš°ë¼ í•˜ë”ë¼ë„ ì†Œí˜• ê´€í• ì„œë¡œ ì‹œìž‘í•˜ëŠ” ê²ƒì„ ê¶Œìž¥í•©ë‹ˆë‹¤!"
                         },
-                        welcome: "ě•ë…•í•ě„¸ěš”, ëŻ¸ě… ěąí”„ě— ě¤ě‹  ę˛ěť„ í™ěí•©ë‹ë‹¤!  ěť‘ę¸‰ ęµ¬ěˇ°ëŚ€ ěť´ë Ąěť„ í™•ě‹¤í•ę˛Ś ěŚ“ěť„ ě ěžëŠ” ëŞ‡ ę°€ě§€ ë°©ë˛•ěť„ ě•Śë ¤ë“śë¦´ę˛Śěš”!"
+                        welcome: "ì•ˆë…•í•˜ì„¸ìš”, ë¯¸ì…˜ ì¹˜í”„ì— ì˜¤ì‹  ê²ƒì„ í™˜ì˜í•©ë‹ˆë‹¤!  ì‘ê¸‰ êµ¬ì¡°ëŒ€ ì´ë ¥ì„ í™•ì‹¤í•˜ê²Œ ìŒ“ì„ ìˆ˜ ìžˆëŠ” ëª‡ ê°€ì§€ ë°©ë²•ì„ ì•Œë ¤ë“œë¦´ê²Œìš”!"
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "ě—¬ę¸°ę°€ íŚŚę˛¬ ë©”ë‰´ěž…ë‹ë‹¤. ěť´ ë©”ë‰´ě—ě„ś ěś ë‹›ěť„ ěž„ë¬´ě— ëł´ë‚Ľ ě ěžěŠµë‹ë‹¤!",
-                            dispatch_menu_buttons: 'íŚŚę˛¬ ë˛„íŠĽěť€ ë‘ ę°€ě§€ę°€ ěžěŠµë‹ë‹¤! ě˛« ë˛ě§¸: "íŚŚę˛¬"ěť„ ě‚¬ěš©í•´ ě„ íťí•ś ěś ë‹›ěť„ ěž„ë¬´ě— íŚŚę˛¬í•©ë‹ë‹¤. ë‘ ë˛ě§¸ëŠ” ě˛« ë˛ě§¸ ë°©ë˛•ęłĽ ëŹ™ěťĽí•ě§€ë§Ś, ě¦‰ě‹ś ë‹¤ěťŚ ěž„ë¬´ëˇś ěť´ëŹ™í•©ë‹ë‹¤. ě§€ę¸ěť€ ě˛« ë˛ě§¸ ë˛„íŠĽěť„ í´ë¦­í•ě„¸ěš”.',
-                            dispatch_menu_mission_general: "ě—¬ę¸°ě—ě„śëŠ” ěť´ë¦„, ěŁĽě†Ś, ěž„ë¬´ ě•„ěť´ě˝ ë“± ěž„ë¬´ě— ę´€í•ś ěťĽë° ě •ëł´ëĄĽ í™•ěť¸í•  ě ěžěŠµë‹ë‹¤. ěť´ëŻ¸ ě°¸ě—¬í•ś ěž„ë¬´ëŠ” ěž‘ěť€ ëł„ ëŚ€ě‹  ěž‘ěť€ ě‚¬ëžŚ ě•„ěť´ě˝ěť´ í‘śě‹śë©ë‹ë‹¤.",
-                            dispatch_menu_mission_progress: "ě—¬ę¸°ě—ě„śëŠ” ëŻ¸ě… ě™„ëŁŚęąŚě§€ěť ě§„í–‰ëŹ„ě™€ í„ěžĄ ěť¸ě›, ëŻ¸ě… ě™„ëŁŚęąŚě§€ ë‚¨ěť€ ě‹śę°„ěť„ í™•ěť¸í•  ě ěžěŠµë‹ë‹¤!",
-                            dispatch_menu_mission_specific: "ě—¬ę¸°ě—ě„śëŠ” ě–´ë–¤ ěś ë‹›ěť´ í¸ě¶śě— ë°ěť‘í•ëŠ”ě§€, ě–´ë–¤ ěś ë‹›ěť´ ěť´ëŻ¸ í„ěžĄě— ěžëŠ”ě§€ ë“± ěž„ë¬´ě— ëŚ€í•ś ěžě„¸í•ś ě •ëł´ëĄĽ í™•ěť¸í•  ě ěžěŠµë‹ë‹¤.",
-                            dispatch_menu_vehicle_list: "ěť´ěš©í•  ě ěžëŠ” ě°¨ëź‰ ëŞ©ëˇťěť´ ě—¬ę¸°ě— í‘śě‹śë©ë‹ë‹¤. ě—¬ę¸°ě„ś ě°¨ëź‰ěť„ ě„ íťí•©ë‹ë‹¤. ěť´ě ś ě°¨ëź‰ěť„ í´ë¦­í•´ ě„ íťí•ě„¸ěš”!"
+                            dispatch_menu: "ì—¬ê¸°ê°€ íŒŒê²¬ ë©”ë‰´ìž…ë‹ˆë‹¤. ì´ ë©”ë‰´ì—ì„œ ìœ ë‹›ì„ ìž„ë¬´ì— ë³´ë‚¼ ìˆ˜ ìžˆìŠµë‹ˆë‹¤!",
+                            dispatch_menu_buttons: 'íŒŒê²¬ ë²„íŠ¼ì€ ë‘ ê°€ì§€ê°€ ìžˆìŠµë‹ˆë‹¤! ì²« ë²ˆì§¸: "íŒŒê²¬"ì„ ì‚¬ìš©í•´ ì„ íƒí•œ ìœ ë‹›ì„ ìž„ë¬´ì— íŒŒê²¬í•©ë‹ˆë‹¤. ë‘ ë²ˆì§¸ëŠ” ì²« ë²ˆì§¸ ë°©ë²•ê³¼ ë™ì¼í•˜ì§€ë§Œ, ì¦‰ì‹œ ë‹¤ìŒ ìž„ë¬´ë¡œ ì´ë™í•©ë‹ˆë‹¤. ì§€ê¸ˆì€ ì²« ë²ˆì§¸ ë²„íŠ¼ì„ í´ë¦­í•˜ì„¸ìš”.',
+                            dispatch_menu_mission_general: "ì—¬ê¸°ì—ì„œëŠ” ì´ë¦„, ì£¼ì†Œ, ìž„ë¬´ ì•„ì´ì½˜ ë“± ìž„ë¬´ì— ê´€í•œ ì¼ë°˜ ì •ë³´ë¥¼ í™•ì¸í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤. ì´ë¯¸ ì°¸ì—¬í•œ ìž„ë¬´ëŠ” ìž‘ì€ ë³„ ëŒ€ì‹  ìž‘ì€ ì‚¬ëžŒ ì•„ì´ì½˜ì´ í‘œì‹œë©ë‹ˆë‹¤.",
+                            dispatch_menu_mission_progress: "ì—¬ê¸°ì—ì„œëŠ” ë¯¸ì…˜ ì™„ë£Œê¹Œì§€ì˜ ì§„í–‰ë„ì™€ í˜„ìž¥ ì¸ì›, ë¯¸ì…˜ ì™„ë£Œê¹Œì§€ ë‚¨ì€ ì‹œê°„ì„ í™•ì¸í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤!",
+                            dispatch_menu_mission_specific: "ì—¬ê¸°ì—ì„œëŠ” ì–´ë–¤ ìœ ë‹›ì´ í˜¸ì¶œì— ë°˜ì‘í•˜ëŠ”ì§€, ì–´ë–¤ ìœ ë‹›ì´ ì´ë¯¸ í˜„ìž¥ì— ìžˆëŠ”ì§€ ë“± ìž„ë¬´ì— ëŒ€í•œ ìžì„¸í•œ ì •ë³´ë¥¼ í™•ì¸í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.",
+                            dispatch_menu_vehicle_list: "ì´ìš©í•  ìˆ˜ ìžˆëŠ” ì°¨ëŸ‰ ëª©ë¡ì´ ì—¬ê¸°ì— í‘œì‹œë©ë‹ˆë‹¤. ì—¬ê¸°ì„œ ì°¨ëŸ‰ì„ ì„ íƒí•©ë‹ˆë‹¤. ì´ì œ ì°¨ëŸ‰ì„ í´ë¦­í•´ ì„ íƒí•˜ì„¸ìš”!"
                         },
                         mobile: {
-                            dispatch_menu: "ě—¬ę¸°ę°€ íŚŚę˛¬ ë©”ë‰´ěž…ë‹ë‹¤. ěť´ ë©”ë‰´ě—ě„ś ěś ë‹›ěť„ ěž„ë¬´ě— ëł´ë‚Ľ ě ěžěŠµë‹ë‹¤!",
-                            dispatch_menu_buttons: 'íŚŚę˛¬ ë˛„íŠĽěť€ ë‘ ę°€ě§€ę°€ ěžěŠµë‹ë‹¤! ě˛« ë˛ě§¸: "íŚŚę˛¬"ěť„ ě‚¬ěš©í•´ ě„ íťí•ś ěś ë‹›ěť„ ěž„ë¬´ě— íŚŚę˛¬í•©ë‹ë‹¤. ë‘ ë˛ě§¸ëŠ” ě˛« ë˛ě§¸ ë°©ë˛•ęłĽ ëŹ™ěťĽí•ě§€ë§Ś, ě¦‰ě‹ś ë‹¤ěťŚ ěž„ë¬´ëˇś ěť´ëŹ™í•©ë‹ë‹¤. ě§€ę¸ěť€ ě˛« ë˛ě§¸ ë˛„íŠĽěť„ í´ë¦­í•ě„¸ěš”.',
-                            dispatch_menu_mission_general: "ě—¬ę¸°ě—ě„śëŠ” ěť´ë¦„, ěŁĽě†Ś, ěž„ë¬´ ě•„ěť´ě˝ ë“± ěž„ë¬´ě— ę´€í•ś ěťĽë° ě •ëł´ëĄĽ í™•ěť¸í•  ě ěžěŠµë‹ë‹¤. ěť´ëŻ¸ ě°¸ě—¬í•ś ěž„ë¬´ëŠ” ěž‘ěť€ ëł„ ëŚ€ě‹  ěž‘ěť€ ě‚¬ëžŚ ě•„ěť´ě˝ěť´ í‘śě‹śë©ë‹ë‹¤.",
-                            dispatch_menu_mission_progress: "ě—¬ę¸°ě—ě„śëŠ” ëŻ¸ě… ě™„ëŁŚęąŚě§€ěť ě§„í–‰ëŹ„ě™€ í„ěžĄ ěť¸ě›, ëŻ¸ě… ě™„ëŁŚęąŚě§€ ë‚¨ěť€ ě‹śę°„ěť„ í™•ěť¸í•  ě ěžěŠµë‹ë‹¤!",
-                            dispatch_menu_mission_specific: "ě—¬ę¸°ě—ě„śëŠ” ě–´ë–¤ ěś ë‹›ěť´ í¸ě¶śě— ë°ěť‘í•ëŠ”ě§€, ě–´ë–¤ ěś ë‹›ěť´ ěť´ëŻ¸ í„ěžĄě— ěžëŠ”ě§€ ë“± ěž„ë¬´ě— ëŚ€í•ś ěžě„¸í•ś ě •ëł´ëĄĽ í™•ěť¸í•  ě ěžěŠµë‹ë‹¤.",
-                            dispatch_menu_vehicle_list: "ěť´ěš©í•  ě ěžëŠ” ě°¨ëź‰ ëŞ©ëˇťěť´ ě—¬ę¸°ě— í‘śě‹śë©ë‹ë‹¤. ě—¬ę¸°ě„ś ě°¨ëź‰ěť„ ě„ íťí•©ë‹ë‹¤. ěť´ě ś ě°¨ëź‰ěť„ í´ë¦­í•´ ě„ íťí•ě„¸ěš”!"
+                            dispatch_menu: "ì—¬ê¸°ê°€ íŒŒê²¬ ë©”ë‰´ìž…ë‹ˆë‹¤. ì´ ë©”ë‰´ì—ì„œ ìœ ë‹›ì„ ìž„ë¬´ì— ë³´ë‚¼ ìˆ˜ ìžˆìŠµë‹ˆë‹¤!",
+                            dispatch_menu_buttons: 'íŒŒê²¬ ë²„íŠ¼ì€ ë‘ ê°€ì§€ê°€ ìžˆìŠµë‹ˆë‹¤! ì²« ë²ˆì§¸: "íŒŒê²¬"ì„ ì‚¬ìš©í•´ ì„ íƒí•œ ìœ ë‹›ì„ ìž„ë¬´ì— íŒŒê²¬í•©ë‹ˆë‹¤. ë‘ ë²ˆì§¸ëŠ” ì²« ë²ˆì§¸ ë°©ë²•ê³¼ ë™ì¼í•˜ì§€ë§Œ, ì¦‰ì‹œ ë‹¤ìŒ ìž„ë¬´ë¡œ ì´ë™í•©ë‹ˆë‹¤. ì§€ê¸ˆì€ ì²« ë²ˆì§¸ ë²„íŠ¼ì„ í´ë¦­í•˜ì„¸ìš”.',
+                            dispatch_menu_mission_general: "ì—¬ê¸°ì—ì„œëŠ” ì´ë¦„, ì£¼ì†Œ, ìž„ë¬´ ì•„ì´ì½˜ ë“± ìž„ë¬´ì— ê´€í•œ ì¼ë°˜ ì •ë³´ë¥¼ í™•ì¸í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤. ì´ë¯¸ ì°¸ì—¬í•œ ìž„ë¬´ëŠ” ìž‘ì€ ë³„ ëŒ€ì‹  ìž‘ì€ ì‚¬ëžŒ ì•„ì´ì½˜ì´ í‘œì‹œë©ë‹ˆë‹¤.",
+                            dispatch_menu_mission_progress: "ì—¬ê¸°ì—ì„œëŠ” ë¯¸ì…˜ ì™„ë£Œê¹Œì§€ì˜ ì§„í–‰ë„ì™€ í˜„ìž¥ ì¸ì›, ë¯¸ì…˜ ì™„ë£Œê¹Œì§€ ë‚¨ì€ ì‹œê°„ì„ í™•ì¸í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤!",
+                            dispatch_menu_mission_specific: "ì—¬ê¸°ì—ì„œëŠ” ì–´ë–¤ ìœ ë‹›ì´ í˜¸ì¶œì— ë°˜ì‘í•˜ëŠ”ì§€, ì–´ë–¤ ìœ ë‹›ì´ ì´ë¯¸ í˜„ìž¥ì— ìžˆëŠ”ì§€ ë“± ìž„ë¬´ì— ëŒ€í•œ ìžì„¸í•œ ì •ë³´ë¥¼ í™•ì¸í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.",
+                            dispatch_menu_vehicle_list: "ì´ìš©í•  ìˆ˜ ìžˆëŠ” ì°¨ëŸ‰ ëª©ë¡ì´ ì—¬ê¸°ì— í‘œì‹œë©ë‹ˆë‹¤. ì—¬ê¸°ì„œ ì°¨ëŸ‰ì„ ì„ íƒí•©ë‹ˆë‹¤. ì´ì œ ì°¨ëŸ‰ì„ í´ë¦­í•´ ì„ íƒí•˜ì„¸ìš”!"
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: 'ěť´ě ś ě‚¬ęł ëĄĽ ě˛ë¦¬í•ëŠ” ë°©ë˛•ěť„ ě•Śě•„ëł´ę˛ ěŠµë‹ë‹¤. "íŚŚę˛¬" ë˛„íŠĽěť„ í´ë¦­í•´ íŚŚę˛¬ ë©”ë‰´ëĄĽ ě—¬ě„¸ěš”!',
-                            first_mission: "í›ŚëĄ­í•©ë‹ë‹¤. ě˛« ë˛ě§¸ ę±´ë¬Ľěť´ ě™„ě„±ëě—ë„¤ěš”! ëł´ě„¸ěš”, ě˛« ë˛ě§¸ ěž„ë¬´ ě‹ ęł ę°€ ě ‘ěëě—ěŠµë‹ë‹¤!"
+                            dispatch_button: 'ì´ì œ ì‚¬ê³ ë¥¼ ì²˜ë¦¬í•˜ëŠ” ë°©ë²•ì„ ì•Œì•„ë³´ê² ìŠµë‹ˆë‹¤. "íŒŒê²¬" ë²„íŠ¼ì„ í´ë¦­í•´ íŒŒê²¬ ë©”ë‰´ë¥¼ ì—¬ì„¸ìš”!',
+                            first_mission: "í›Œë¥­í•©ë‹ˆë‹¤. ì²« ë²ˆì§¸ ê±´ë¬¼ì´ ì™„ì„±ë˜ì—ˆë„¤ìš”! ë³´ì„¸ìš”, ì²« ë²ˆì§¸ ìž„ë¬´ ì‹ ê³ ê°€ ì ‘ìˆ˜ë˜ì—ˆìŠµë‹ˆë‹¤!"
                         },
                         mobile: {
-                            dispatch_button: 'ěť´ě ś ě‚¬ęł ëĄĽ ě˛ë¦¬í•ëŠ” ë°©ë˛•ěť„ ě•Śě•„ëł´ę˛ ěŠµë‹ë‹¤. "íŚŚę˛¬" ë˛„íŠĽěť„ í´ë¦­í•´ íŚŚę˛¬ ë©”ë‰´ëĄĽ ě—¬ě„¸ěš”!',
-                            first_mission: "í›ŚëĄ­í•©ë‹ë‹¤. ě˛« ë˛ě§¸ ę±´ë¬Ľěť´ ě™„ě„±ëě—ë„¤ěš”! ëł´ě„¸ěš”, ě˛« ë˛ě§¸ ěž„ë¬´ ě‹ ęł ę°€ ě ‘ěëě—ěŠµë‹ë‹¤!"
+                            dispatch_button: 'ì´ì œ ì‚¬ê³ ë¥¼ ì²˜ë¦¬í•˜ëŠ” ë°©ë²•ì„ ì•Œì•„ë³´ê² ìŠµë‹ˆë‹¤. "íŒŒê²¬" ë²„íŠ¼ì„ í´ë¦­í•´ íŒŒê²¬ ë©”ë‰´ë¥¼ ì—¬ì„¸ìš”!',
+                            first_mission: "í›Œë¥­í•©ë‹ˆë‹¤. ì²« ë²ˆì§¸ ê±´ë¬¼ì´ ì™„ì„±ë˜ì—ˆë„¤ìš”! ë³´ì„¸ìš”, ì²« ë²ˆì§¸ ìž„ë¬´ ì‹ ê³ ê°€ ì ‘ìˆ˜ë˜ì—ˆìŠµë‹ˆë‹¤!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "í›ŚëĄ­í•©ë‹ë‹¤. ë©‹ě§„ ëŻ¸ě… ěąí”„ę°€ ëę¸° ěś„í•´ ěž„ë¬´ëĄĽ ě—´ě‹¬íž ě§„í–‰ ě¤‘ěť´ě‹śęµ°ěš”! ěśěˇ°ëˇ­ę˛Ś ě‹śěž‘í•  ě ěžëŹ„ëˇť ě˝”ěť¸ %{coins}ę°śëĄĽ ë“śë¦˝ë‹ë‹¤. </br> ëŻ¸ě… ěąí”„ íŚ€ ě¬ë¦Ľ"
+                        general: "í›Œë¥­í•©ë‹ˆë‹¤. ë©‹ì§„ ë¯¸ì…˜ ì¹˜í”„ê°€ ë˜ê¸° ìœ„í•´ ìž„ë¬´ë¥¼ ì—´ì‹¬ížˆ ì§„í–‰ ì¤‘ì´ì‹œêµ°ìš”! ìˆœì¡°ë¡­ê²Œ ì‹œìž‘í•  ìˆ˜ ìžˆë„ë¡ ì½”ì¸ %{coins}ê°œë¥¼ ë“œë¦½ë‹ˆë‹¤. </br> ë¯¸ì…˜ ì¹˜í”„ íŒ€ ì˜¬ë¦¼"
                     },
                     mobile: {
-                        general: "í›ŚëĄ­í•©ë‹ë‹¤. ë©‹ě§„ ëŻ¸ě… ěąí”„ę°€ ëę¸° ěś„í•´ ěž„ë¬´ëĄĽ ě—´ě‹¬íž ě§„í–‰ ě¤‘ěť´ě‹śęµ°ěš”! ěśěˇ°ëˇ­ę˛Ś ě‹śěž‘í•  ě ěžëŹ„ëˇť ě˝”ěť¸ %{coins}ę°śëĄĽ ë“śë¦˝ë‹ë‹¤. </br> ëŻ¸ě… ěąí”„ íŚ€ ě¬ë¦Ľ"
+                        general: "í›Œë¥­í•©ë‹ˆë‹¤. ë©‹ì§„ ë¯¸ì…˜ ì¹˜í”„ê°€ ë˜ê¸° ìœ„í•´ ìž„ë¬´ë¥¼ ì—´ì‹¬ížˆ ì§„í–‰ ì¤‘ì´ì‹œêµ°ìš”! ìˆœì¡°ë¡­ê²Œ ì‹œìž‘í•  ìˆ˜ ìžˆë„ë¡ ì½”ì¸ %{coins}ê°œë¥¼ ë“œë¦½ë‹ˆë‹¤. </br> ë¯¸ì…˜ ì¹˜í”„ íŒ€ ì˜¬ë¦¼"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "ë¬¸ěť ě‚¬í•­ěť€ ę˛Śěž„ ë‚´ FAQëĄĽ ě°¸ęł í•ě‹śę±°ë‚ ę˛Śěž„ íŹ¬ëźĽ ëëŠ” Facebook íŽěť´ě§€ëĄĽ ë°©ë¬¸í•´ ěŁĽě„¸ěš”!",
-                        general: "ë‹¤ěťŚ ë‹¨ęł„ëŠ” ě§€íśě„Ľí„° ę±´ě„¤ í›„ ěµśëŚ€í•ś ëą¨ë¦¬ ě ę´€í• ě„śëĄĽ ě§“ëŠ” ę˛ěť„ ę¶ŚěžĄí•©ë‹ë‹¤. ěµśëŚ€ ěž„ë¬´ ěëŠ” ě—¬ëź¬ ěś í•(ę˛˝ě°°ě„ś, ě†Śë°©ě„ś, ěť‘ę¸‰ě‹¤)ěť ę´€í• ě„ś ě¤‘ ę°€ěžĄ ë§Žěť´ ë°°ěąí•ś ę´€í• ě„ś ě+1ëˇś ě •í•´ě§€ę¸° ë•Śë¬¸ěž…ë‹ë‹¤. ěëĄĽ ë“¤ě–´ ě†Śë°©ě„ś 5ęłłęłĽ ěť‘ę¸‰ě‹¤ 3ęłłěť„ ëł´ěś í•  ę˛˝ěš° ěµśëŚ€ 6ę°śěť ěž„ë¬´ëĄĽ ë°›ěť„ ě ěžěŠµë‹ë‹¤.",
-                        join_alliance: "ëí•ś ę˛Śěž„ ě´ę¸°ě— ëŹ™ë§ąě— ę°€ěž…í•ë©´ í° ëŹ„ě›€ěť„ ë°›ěť„ ě ěžěśĽëŻ€ëˇś ëŹ™ë§ą ę°€ěž…ëŹ„ ę¶ŚěžĄí•©ë‹ë‹¤.",
-                        summary: "ě§€ę¸ęąŚě§€ ëŻ¸ě… ěąí”„ěť ę¸°ëł¸ í”Śë ěť´ ë°©ë˛•ěť„ ě•Śë ¤ë“śë ¸ěŠµë‹ë‹¤! ěž„ë¬´ëĄĽ ě™„ěí•ęł  í¬ë ë”§ěť„ ë°›ě•„ ëŤ” ë§Žěť€ ěś ë‹›ěť„ ęµ¬ë§¤í•ë©° ěž„ë¬´ëĄĽ ë°ëłµí•ě„¸ěš”. ě¦ę˛ę˛Ś í”Śë ěť´í•ě„¸ěš”! </br> ëŻ¸ě… ěąí”„ íŚ€ ě¬ë¦Ľ"
+                        contact: "ë¬¸ì˜ ì‚¬í•­ì€ ê²Œìž„ ë‚´ FAQë¥¼ ì°¸ê³ í•˜ì‹œê±°ë‚˜ ê²Œìž„ í¬ëŸ¼ ë˜ëŠ” Facebook íŽ˜ì´ì§€ë¥¼ ë°©ë¬¸í•´ ì£¼ì„¸ìš”!",
+                        general: "ë‹¤ìŒ ë‹¨ê³„ëŠ” ì§€íœ˜ì„¼í„° ê±´ì„¤ í›„ ìµœëŒ€í•œ ë¹¨ë¦¬ ìƒˆ ê´€í• ì„œë¥¼ ì§“ëŠ” ê²ƒì„ ê¶Œìž¥í•©ë‹ˆë‹¤. ìµœëŒ€ ìž„ë¬´ ìˆ˜ëŠ” ì—¬ëŸ¬ ìœ í˜•(ê²½ì°°ì„œ, ì†Œë°©ì„œ, ì‘ê¸‰ì‹¤)ì˜ ê´€í• ì„œ ì¤‘ ê°€ìž¥ ë§Žì´ ë°°ì¹˜í•œ ê´€í• ì„œ ìˆ˜+1ë¡œ ì •í•´ì§€ê¸° ë•Œë¬¸ìž…ë‹ˆë‹¤. ì˜ˆë¥¼ ë“¤ì–´ ì†Œë°©ì„œ 5ê³³ê³¼ ì‘ê¸‰ì‹¤ 3ê³³ì„ ë³´ìœ í•  ê²½ìš° ìµœëŒ€ 6ê°œì˜ ìž„ë¬´ë¥¼ ë°›ì„ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.",
+                        join_alliance: "ë˜í•œ ê²Œìž„ ì´ˆê¸°ì— ë™ë§¹ì— ê°€ìž…í•˜ë©´ í° ë„ì›€ì„ ë°›ì„ ìˆ˜ ìžˆìœ¼ë¯€ë¡œ ë™ë§¹ ê°€ìž…ë„ ê¶Œìž¥í•©ë‹ˆë‹¤.",
+                        summary: "ì§€ê¸ˆê¹Œì§€ ë¯¸ì…˜ ì¹˜í”„ì˜ ê¸°ë³¸ í”Œë ˆì´ ë°©ë²•ì„ ì•Œë ¤ë“œë ¸ìŠµë‹ˆë‹¤! ìž„ë¬´ë¥¼ ì™„ìˆ˜í•˜ê³  í¬ë ˆë”§ì„ ë°›ì•„ ë” ë§Žì€ ìœ ë‹›ì„ êµ¬ë§¤í•˜ë©° ìž„ë¬´ë¥¼ ë°˜ë³µí•˜ì„¸ìš”. ì¦ê²ê²Œ í”Œë ˆì´í•˜ì„¸ìš”! </br> ë¯¸ì…˜ ì¹˜í”„ íŒ€ ì˜¬ë¦¼"
                     },
                     mobile: {
-                        contact: "ë¬¸ěť ě‚¬í•­ěť€ ę˛Śěž„ ë‚´ FAQëĄĽ ě°¸ęł í•ě‹śę±°ë‚ ę˛Śěž„ íŹ¬ëźĽ ëëŠ” Facebook íŽěť´ě§€ëĄĽ ë°©ë¬¸í•´ ěŁĽě„¸ěš”!",
-                        general: "ë‹¤ěťŚ ë‹¨ęł„ëŠ” ě§€íśě„Ľí„° ę±´ě„¤ í›„ ěµśëŚ€í•ś ëą¨ë¦¬ ě ę´€í• ě„śëĄĽ ě§“ëŠ” ę˛ěť„ ę¶ŚěžĄí•©ë‹ë‹¤. ěµśëŚ€ ěž„ë¬´ ěëŠ” ě—¬ëź¬ ěś í•(ę˛˝ě°°ě„ś, ě†Śë°©ě„ś, ěť‘ę¸‰ě‹¤)ěť ę´€í• ě„ś ě¤‘ ę°€ěžĄ ë§Žěť´ ë°°ěąí•ś ę´€í• ě„ś ě+1ëˇś ě •í•´ě§€ę¸° ë•Śë¬¸ěž…ë‹ë‹¤. ěëĄĽ ë“¤ě–´ ě†Śë°©ě„ś 5ęłłęłĽ ěť‘ę¸‰ě‹¤ 3ęłłěť„ ëł´ěś í•  ę˛˝ěš° ěµśëŚ€ 6ę°śěť ěž„ë¬´ëĄĽ ë°›ěť„ ě ěžěŠµë‹ë‹¤.",
-                        join_alliance: "ëí•ś ę˛Śěž„ ě´ę¸°ě— ëŹ™ë§ąě— ę°€ěž…í•ë©´ í° ëŹ„ě›€ěť„ ë°›ěť„ ě ěžěśĽëŻ€ëˇś ëŹ™ë§ą ę°€ěž…ëŹ„ ę¶ŚěžĄí•©ë‹ë‹¤.",
-                        summary: "ě§€ę¸ęąŚě§€ ëŻ¸ě… ěąí”„ěť ę¸°ëł¸ í”Śë ěť´ ë°©ë˛•ěť„ ě•Śë ¤ë“śë ¸ěŠµë‹ë‹¤! ěž„ë¬´ëĄĽ ě™„ěí•ęł  í¬ë ë”§ěť„ ë°›ě•„ ëŤ” ë§Žěť€ ěś ë‹›ěť„ ęµ¬ë§¤í•ë©° ěž„ë¬´ëĄĽ ë°ëłµí•ě„¸ěš”. ě¦ę˛ę˛Ś í”Śë ěť´í•ě„¸ěš”! </br> ëŻ¸ě… ěąí”„ íŚ€ ě¬ë¦Ľ"
+                        contact: "ë¬¸ì˜ ì‚¬í•­ì€ ê²Œìž„ ë‚´ FAQë¥¼ ì°¸ê³ í•˜ì‹œê±°ë‚˜ ê²Œìž„ í¬ëŸ¼ ë˜ëŠ” Facebook íŽ˜ì´ì§€ë¥¼ ë°©ë¬¸í•´ ì£¼ì„¸ìš”!",
+                        general: "ë‹¤ìŒ ë‹¨ê³„ëŠ” ì§€íœ˜ì„¼í„° ê±´ì„¤ í›„ ìµœëŒ€í•œ ë¹¨ë¦¬ ìƒˆ ê´€í• ì„œë¥¼ ì§“ëŠ” ê²ƒì„ ê¶Œìž¥í•©ë‹ˆë‹¤. ìµœëŒ€ ìž„ë¬´ ìˆ˜ëŠ” ì—¬ëŸ¬ ìœ í˜•(ê²½ì°°ì„œ, ì†Œë°©ì„œ, ì‘ê¸‰ì‹¤)ì˜ ê´€í• ì„œ ì¤‘ ê°€ìž¥ ë§Žì´ ë°°ì¹˜í•œ ê´€í• ì„œ ìˆ˜+1ë¡œ ì •í•´ì§€ê¸° ë•Œë¬¸ìž…ë‹ˆë‹¤. ì˜ˆë¥¼ ë“¤ì–´ ì†Œë°©ì„œ 5ê³³ê³¼ ì‘ê¸‰ì‹¤ 3ê³³ì„ ë³´ìœ í•  ê²½ìš° ìµœëŒ€ 6ê°œì˜ ìž„ë¬´ë¥¼ ë°›ì„ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.",
+                        join_alliance: "ë˜í•œ ê²Œìž„ ì´ˆê¸°ì— ë™ë§¹ì— ê°€ìž…í•˜ë©´ í° ë„ì›€ì„ ë°›ì„ ìˆ˜ ìžˆìœ¼ë¯€ë¡œ ë™ë§¹ ê°€ìž…ë„ ê¶Œìž¥í•©ë‹ˆë‹¤.",
+                        summary: "ì§€ê¸ˆê¹Œì§€ ë¯¸ì…˜ ì¹˜í”„ì˜ ê¸°ë³¸ í”Œë ˆì´ ë°©ë²•ì„ ì•Œë ¤ë“œë ¸ìŠµë‹ˆë‹¤! ìž„ë¬´ë¥¼ ì™„ìˆ˜í•˜ê³  í¬ë ˆë”§ì„ ë°›ì•„ ë” ë§Žì€ ìœ ë‹›ì„ êµ¬ë§¤í•˜ë©° ìž„ë¬´ë¥¼ ë°˜ë³µí•˜ì„¸ìš”. ì¦ê²ê²Œ í”Œë ˆì´í•˜ì„¸ìš”! </br> ë¯¸ì…˜ ì¹˜í”„ íŒ€ ì˜¬ë¦¼"
                     }
                 }
             },
             commons: {
-                collect: "ěě§‘",
-                "continue": "ě•„ë‹ěš”",
-                end: "ë§ě§€ë§‰",
-                next: "ë‹¤ěťŚ",
-                prev: "ěť´ě „",
-                skip: "ě",
-                skip_hint: "ě •ë§ íŠśí† ë¦¬ě–Ľěť„ ě·¨ě†Śí• ęąŚěš”? ěť´í›„ ë‹¤ě‹ś í™•ěť¸í•  ě ě—†ěŠµë‹ë‹¤.íŠśí† ë¦¬ě–Ľ ě™„ëŁŚ ëł´ě ěžę˛©ěť„ ë°›ě§€ ëŞ»í•ę˛Ś ë©ë‹ë‹¤."
+                collect: "ìˆ˜ì§‘",
+                "continue": "ì•„ë‹ˆìš”",
+                end: "ë§ˆì§€ë§‰",
+                next: "ë‹¤ìŒ",
+                prev: "ì´ì „",
+                skip: "ì˜ˆ",
+                skip_hint: "ì •ë§ íŠœí† ë¦¬ì–¼ì„ ì·¨ì†Œí• ê¹Œìš”? ì´í›„ ë‹¤ì‹œ í™•ì¸í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.íŠœí† ë¦¬ì–¼ ì™„ë£Œ ë³´ìƒ ìžê²©ì„ ë°›ì§€ ëª»í•˜ê²Œ ë©ë‹ˆë‹¤."
             },
             rewards: {
-                log: "íŠśí† ë¦¬ě–Ľ ě™„ëŁŚě— ëŚ€í•ś ëł´ě."
+                log: "íŠœí† ë¦¬ì–¼ ì™„ë£Œì— ëŒ€í•œ ë³´ìƒ."
             }
         }
     }, I18n.translations.ro_RO = {
         common: {
-            add: "AdaugÄ",
-            back: "ĂŽnapoi",
-            cancel: "AnuleazÄ",
-            change_saved: "SchimbÄri salvate",
-            coins_spend: "Chiar vrei sÄ cheltuieČ™ti aceste monede?",
-            congratulations: "FelicitÄri!",
-            content: "ConĹŁinut",
-            copy: "CopiazÄ",
+            add: "AdaugÄƒ",
+            back: "ÃŽnapoi",
+            cancel: "AnuleazÄƒ",
+            change_saved: "SchimbÄƒri salvate",
+            coins_spend: "Chiar vrei sÄƒ cheltuieÈ™ti aceste monede?",
+            congratulations: "FelicitÄƒri!",
+            content: "ConÅ£inut",
+            copy: "CopiazÄƒ",
             credits: "Credite",
-            "delete": "Čterge",
+            "delete": "È˜terge",
             details: "Detalii",
-            edit: "EditeazÄ",
+            edit: "EditeazÄƒ",
             error: "Eroare",
             is_offline: "%{user} este offline.",
-            is_offline_long: "PerioadÄ Ă®ndelungatÄ: %{user} este offline",
+            is_offline_long: "PerioadÄƒ Ã®ndelungatÄƒ: %{user} este offline",
             is_online: "%{user} este online.",
-            loading: "Se Ă®ncarcÄ...",
+            loading: "Se Ã®ncarcÄƒ...",
             name: "Nume",
             none: "Niciunul/niciuna",
             of: "din",
             off: "Dezactivat",
             on: "Activat",
-            save: "SalveazÄ",
-            search: "CautÄ",
-            show: "AratÄ",
-            user_not_found: "Utilizatorul nu a fost gÄsit",
-            wrong_key: "TastÄ greČ™itÄ"
+            save: "SalveazÄƒ",
+            search: "CautÄƒ",
+            show: "AratÄƒ",
+            user_not_found: "Utilizatorul nu a fost gÄƒsit",
+            wrong_key: "TastÄƒ greÈ™itÄƒ"
         },
         javascript: {
             alarm: "Trimitere",
             arrival: "Sosire",
-            backalarm: "AnuleazÄ",
+            backalarm: "AnuleazÄƒ",
             coins: "Monede",
             credits: "Credite",
             days: "zile",
-            few_seconds: "Ă®n cĂ˘teva secunde",
-            finish_in: "TerminÄ Ă®n:",
+            few_seconds: "Ã®n cÃ¢teva secunde",
+            finish_in: "TerminÄƒ Ã®n:",
             hours: "H",
-            location_not_found: "Nu a fost gÄsit",
+            location_not_found: "Nu a fost gÄƒsit",
             messages: "Mesaje",
             minutes: "min.",
-            missed_vehicle: "ĂŽi lipseČ™te:",
-            mission_start_in: "ĂŽncepe Ă®n:",
-            not_found_map: "Vehiculul nu a fost gÄsit pe hartÄ",
+            missed_vehicle: "ÃŽi lipseÈ™te:",
+            mission_start_in: "ÃŽncepe Ã®n:",
+            not_found_map: "Vehiculul nu a fost gÄƒsit pe hartÄƒ",
             now: "Acum",
             patient: "Pacient",
-            patient_untouched: "PacienČ›i netrataČ›i",
-            poi_delete: "EČ™ti sigur cÄ vrei sÄ Č™tergi Punctul de interes: %{caption}?",
-            reload: "ReĂ®ncarcÄ",
-            sale: "PromoČ›ie",
-            sale_ended: "PromoČ›ia s-a Ă®ncheiat",
+            patient_untouched: "PacienÈ›i netrataÈ›i",
+            poi_delete: "EÈ™ti sigur cÄƒ vrei sÄƒ È™tergi Punctul de interes: %{caption}?",
+            reload: "ReÃ®ncarcÄƒ",
+            sale: "PromoÈ›ie",
+            sale_ended: "PromoÈ›ia s-a Ã®ncheiat",
             secounds: "sec.",
-            sicherheitswache_error: 'Misiunea de securizare "%{caption}" nu a avut succes, deoarece nu au fost Ă®ndeplinite toate criteriile.',
-            sicherheitswache_success: 'Misiunea de securizare "%{caption}" a fost Ă®ndeplinitÄ cu succes. PrimeČ™ti %{credits} credite.',
-            start_in: "ĂŽncepe Ă®n: ",
+            sicherheitswache_error: 'Misiunea de securizare "%{caption}" nu a avut succes, deoarece nu au fost Ã®ndeplinite toate criteriile.',
+            sicherheitswache_success: 'Misiunea de securizare "%{caption}" a fost Ã®ndeplinitÄƒ cu succes. PrimeÈ™ti %{credits} credite.',
+            start_in: "ÃŽncepe Ã®n: ",
             start_username: "Starter:",
-            time_left: "Timp rÄmas:",
-            to_building: "Vezi clÄdirea",
+            time_left: "Timp rÄƒmas:",
+            to_building: "Vezi clÄƒdirea",
             to_mission: "Vezi misiunea",
-            understand: "ConfirmÄ",
-            user_not_found: "JucÄtorul nu a fost gÄsit.",
+            understand: "ConfirmÄƒ",
+            user_not_found: "JucÄƒtorul nu a fost gÄƒsit.",
             vehicles_not_visible: "Vehiculele nu sunt vizibile. "
         },
         map: {
-            alliance: "AlianČ›Ä",
+            alliance: "AlianÈ›Äƒ",
             alliance_chat: "Chat",
-            alliance_chat_banned: "ĂŽn prezent, Ă®Č›i este interzis accesul la chatul alianČ›ei.",
+            alliance_chat_banned: "ÃŽn prezent, Ã®È›i este interzis accesul la chatul alianÈ›ei.",
             alliance_chat_banned_admin: "Interzis de:",
-            alliance_chat_banned_timeleft: "Timp rÄmas:",
-            alliance_chat_radio_off: "Radio alianČ›Ä: Dezactivat",
-            alliance_chat_radio_on: "Radio alianČ›Ä: Activat",
+            alliance_chat_banned_timeleft: "Timp rÄƒmas:",
+            alliance_chat_radio_off: "Radio alianÈ›Äƒ: Dezactivat",
+            alliance_chat_radio_on: "Radio alianÈ›Äƒ: Activat",
             alliance_event: "Eveniment",
-            alliance_missions: "Misiuni alianČ›Ä",
+            alliance_missions: "Misiuni alianÈ›Äƒ",
             alliance_missions_event: "Eveniment",
-            ambulance: "AmbulanČ›Ä",
+            ambulance: "AmbulanÈ›Äƒ",
             challenges: "",
             chat_history: "Istoric chat",
-            congratulations: "FelicitÄri! Acum poČ›i fi promovat.",
-            create_alliance_event: "ĂŽncepe eveniment de alianČ›Ä",
-            create_alliance_operation: "CreeazÄ o misiune de alianČ›Ä pe scarÄ largÄ",
-            emergency: "UrgenČ›Ä",
-            join_alliance_infos: "DacÄ faci parte dintr-o alianČ›Ä, alČ›i jucÄtori Ă®Č›i pot Ă®ncredinČ›a misiuni dacÄ doresc.",
-            map: "HartÄ",
+            congratulations: "FelicitÄƒri! Acum poÈ›i fi promovat.",
+            create_alliance_event: "ÃŽncepe eveniment de alianÈ›Äƒ",
+            create_alliance_operation: "CreeazÄƒ o misiune de alianÈ›Äƒ pe scarÄƒ largÄƒ",
+            emergency: "UrgenÈ›Äƒ",
+            join_alliance_infos: "DacÄƒ faci parte dintr-o alianÈ›Äƒ, alÈ›i jucÄƒtori Ã®È›i pot Ã®ncredinÈ›a misiuni dacÄƒ doresc.",
+            map: "HartÄƒ",
             map_filters: {
-                all_buildings: "ClÄdiri",
+                all_buildings: "ClÄƒdiri",
                 all_missions: "Misiuni",
-                alliance_buildings: "ClÄdiri de alianČ›Ä",
+                alliance_buildings: "ClÄƒdiri de alianÈ›Äƒ",
                 alliance_members: "Membri",
-                alliance_missions: "Partajat de alianČ›Ä",
-                ambulance_station_missions: "StaČ›ie de ambulanČ›Ä",
-                ambulance_station_small_missions: "StaČ›ie de ambulanČ›Ä (staČ›ie micÄ)",
-                clinic_missions: "ClinicÄ",
+                alliance_missions: "Partajat de alianÈ›Äƒ",
+                ambulance_station_missions: "StaÈ›ie de ambulanÈ›Äƒ",
+                ambulance_station_small_missions: "StaÈ›ie de ambulanÈ›Äƒ (staÈ›ie micÄƒ)",
+                clinic_missions: "ClinicÄƒ",
                 dispatch_center_missions: "Dispecerat",
                 fire_school_missions: "Academia de Pompieri",
-                firehouse_missions: "StaČ›ie de pompieri",
-                firehouse_small_missions: "StaČ›ie de pompieri (micÄ)",
+                firehouse_missions: "StaÈ›ie de pompieri",
+                firehouse_small_missions: "StaÈ›ie de pompieri (micÄƒ)",
                 hospital_missions: "Spital",
-                map_filters: "Lista filtrelor de hartÄ",
+                map_filters: "Lista filtrelor de hartÄƒ",
                 mission_positions: "Puncte de interes",
-                police_copter_station_missions: "Transport aerian pentru forČ›ele de poliČ›ie",
-                police_school_missions: "Academia de PoliČ›ie",
-                police_small_missions: "SecČ›ie de poliĹŁie (secČ›ie micÄ)",
-                police_special_forces: "ForČ›ele speciale ale poliČ›iei",
-                police_station_missions: "SecČ›ie de poliČ›ie",
-                prison_missions: "PuČ™cÄrie",
-                rapid_deployment_group: "Grup special de intervenČ›ie",
-                rescue_copter_station_missions: "StaČ›ie pentru elicoptere medicale",
-                riot_police: "ForČ›e de poliČ›ie speciale Ă®mpotriva revoltelor stradale",
-                staging_area_missions: "Zona de aČ™teptare",
-                technical_aid_organization: "AgenČ›ia NaČ›ionalÄ de AsistenČ›Ä TehnicÄ (ANAT)",
+                police_copter_station_missions: "Transport aerian pentru forÈ›ele de poliÈ›ie",
+                police_school_missions: "Academia de PoliÈ›ie",
+                police_small_missions: "SecÈ›ie de poliÅ£ie (secÈ›ie micÄƒ)",
+                police_special_forces: "ForÈ›ele speciale ale poliÈ›iei",
+                police_station_missions: "SecÈ›ie de poliÈ›ie",
+                prison_missions: "PuÈ™cÄƒrie",
+                rapid_deployment_group: "Grup special de intervenÈ›ie",
+                rescue_copter_station_missions: "StaÈ›ie pentru elicoptere medicale",
+                riot_police: "ForÈ›e de poliÈ›ie speciale Ã®mpotriva revoltelor stradale",
+                staging_area_missions: "Zona de aÈ™teptare",
+                technical_aid_organization: "AgenÈ›ia NaÈ›ionalÄƒ de AsistenÈ›Äƒ TehnicÄƒ (ANAT)",
                 technical_aid_organization_school: "THW Bundesschule",
-                user_buildings: "ClÄdirile mele",
+                user_buildings: "ClÄƒdirile mele",
                 user_missions: "Misiunile mele",
-                water_watch: "Salvare acvaticÄ"
+                water_watch: "Salvare acvaticÄƒ"
             },
             message: "Mesaj",
             mission: "Misiune",
-            no_alliance_chat_impossible: "Nu faci parte dintr-o alianČ›Ä.",
-            no_alliance_missions: "ĂŽn prezent nu existÄ misiuni de alianČ›Ä.",
-            no_ambulance_missions: "Nu existÄ misiuni de ambulanČ›Ä. Misiunile de ambulanČ›Ä pot apÄrea numai atunci cĂ˘nd ai o ambulanČ›Ä Č™i un spital.",
-            no_emergency_missions: "Nu e disponibilÄ nicio misiune de urgenČ›Ä. O misiune de urgenČ›Ä poate apÄrea dupÄ ce Č›i-ai construit prima staČ›ie.",
+            no_alliance_chat_impossible: "Nu faci parte dintr-o alianÈ›Äƒ.",
+            no_alliance_missions: "ÃŽn prezent nu existÄƒ misiuni de alianÈ›Äƒ.",
+            no_ambulance_missions: "Nu existÄƒ misiuni de ambulanÈ›Äƒ. Misiunile de ambulanÈ›Äƒ pot apÄƒrea numai atunci cÃ¢nd ai o ambulanÈ›Äƒ È™i un spital.",
+            no_emergency_missions: "Nu e disponibilÄƒ nicio misiune de urgenÈ›Äƒ. O misiune de urgenÈ›Äƒ poate apÄƒrea dupÄƒ ce È›i-ai construit prima staÈ›ie.",
             no_radio_messages: "Nu ai primit niciun mesaj radio.",
             radio_messages: "Radio",
-            restore_map: "RestabileČ™te harta",
-            show_informations: "Verde = Misiunile sunt afiČ™ate pe listÄ. RoČ™u = Misiunile nu sunt afiČ™ate.",
-            sicherheitswache: "IntervenČ›ii planificate",
+            restore_map: "RestabileÈ™te harta",
+            show_informations: "Verde = Misiunile sunt afiÈ™ate pe listÄƒ. RoÈ™u = Misiunile nu sunt afiÈ™ate.",
+            sicherheitswache: "IntervenÈ›ii planificate",
             transport: "Transport"
         },
         fms: {
             going: "Pe drum",
-            not_ready: "NefuncČ›ional",
-            on_destination: "La destinaČ›ia de transport",
-            on_place: "La faČ›a locului",
-            patient_transported: "Se transportÄ un pacient",
-            prisoner_transported: "Se transportÄ un deČ›inut",
-            ready_home: "Disponibil la staČ›ie",
-            ready_traveling: "Liber Č™i disponibil",
+            not_ready: "NefuncÈ›ional",
+            on_destination: "La destinaÈ›ia de transport",
+            on_place: "La faÈ›a locului",
+            patient_transported: "Se transportÄƒ un pacient",
+            prisoner_transported: "Se transportÄƒ un deÈ›inut",
+            ready_home: "Disponibil la staÈ›ie",
+            ready_traveling: "Liber È™i disponibil",
             talking_wish: "Solicitare transport",
-            waiting_for_vehicle: "Se aČ™teaptÄ vehicul pentru tractare"
+            waiting_for_vehicle: "Se aÈ™teaptÄƒ vehicul pentru tractare"
         },
         intervention_order: {
-            back: "ĂŽnapoi",
+            back: "ÃŽnapoi",
             category: "Categorie",
             colour: "Culoare",
-            column: "ColoanÄ",
-            column_number: "NumÄr coloanÄ",
-            column_number_hint: "DacÄ este dat un numÄr de coloanÄ, intrarea de AlarmÄ Č™i RÄspuns va fi afiČ™atÄ Ă®n coloana corespunzÄtoare de pe pagina de alertÄ.",
-            create_intervention_order: "CreeazÄ un nou Regulament de AlarmÄ Č™i RÄspuns",
-            "delete": "Čterge",
-            delete_all: "Čterge complet Regulamentul de AlarmÄ Č™i RÄspuns",
-            delete_all_confirm: "EČ™ti sigur cÄ vrei sÄ Č™tergi complet Regulamentul de AlarmÄ Č™i RÄspuns? IntrÄrile existente care au fost exportate nu mai sunt disponibile!",
+            column: "ColoanÄƒ",
+            column_number: "NumÄƒr coloanÄƒ",
+            column_number_hint: "DacÄƒ este dat un numÄƒr de coloanÄƒ, intrarea de AlarmÄƒ È™i RÄƒspuns va fi afiÈ™atÄƒ Ã®n coloana corespunzÄƒtoare de pe pagina de alertÄƒ.",
+            create_intervention_order: "CreeazÄƒ un nou Regulament de AlarmÄƒ È™i RÄƒspuns",
+            "delete": "È˜terge",
+            delete_all: "È˜terge complet Regulamentul de AlarmÄƒ È™i RÄƒspuns",
+            delete_all_confirm: "EÈ™ti sigur cÄƒ vrei sÄƒ È™tergi complet Regulamentul de AlarmÄƒ È™i RÄƒspuns? IntrÄƒrile existente care au fost exportate nu mai sunt disponibile!",
             description: "Nume",
-            edit: "EditeazÄ",
+            edit: "EditeazÄƒ",
             "export": {
-                "export": "ExportÄ",
-                "import": "ImportÄ",
-                import_done: "IntrÄrile selectate au fost importate Č™i integrate Ă®n planul tÄu de AlarmÄ Č™i RÄspuns.",
-                saved: "ExportÄri ale Regulamentului de AlarmÄ Č™i RÄspuns",
-                saved_text: "Regulamentul tÄu de AlarmÄ Č™i RÄspuns a fost pregÄtit pentru exportare. Un alt jucÄtor poate importa Regulamentul de AlarmÄ Č™i RÄspuns prin intermediul linkului. DacÄ, Ă®ntre timp, modifici Regulamentul de AlarmÄ Č™i RÄspuns, aceastÄ modificare se va aplica automat la exportare."
+                "export": "ExportÄƒ",
+                "import": "ImportÄƒ",
+                import_done: "IntrÄƒrile selectate au fost importate È™i integrate Ã®n planul tÄƒu de AlarmÄƒ È™i RÄƒspuns.",
+                saved: "ExportÄƒri ale Regulamentului de AlarmÄƒ È™i RÄƒspuns",
+                saved_text: "Regulamentul tÄƒu de AlarmÄƒ È™i RÄƒspuns a fost pregÄƒtit pentru exportare. Un alt jucÄƒtor poate importa Regulamentul de AlarmÄƒ È™i RÄƒspuns prin intermediul linkului. DacÄƒ, Ã®ntre timp, modifici Regulamentul de AlarmÄƒ È™i RÄƒspuns, aceastÄƒ modificare se va aplica automat la exportare."
             },
-            hotkey_hint: "Alege o tastÄ rapidÄ pentru selectarea acestui vehicul. ApasÄ Ă®n fereastra misiunii: ALT + tasta ta rapidÄ (sau Ă®n Firefox: ALT + SHIFT + tasta ta rapidÄ; sau pe mac os: ctrl + alt + tasta ta rapidÄ) pentru selectarea vehiculului.",
-            intervention_order: "EditeazÄ Regulamentul de AlarmÄ Č™i RÄspuns",
+            hotkey_hint: "Alege o tastÄƒ rapidÄƒ pentru selectarea acestui vehicul. ApasÄƒ Ã®n fereastra misiunii: ALT + tasta ta rapidÄƒ (sau Ã®n Firefox: ALT + SHIFT + tasta ta rapidÄƒ; sau pe mac os: ctrl + alt + tasta ta rapidÄƒ) pentru selectarea vehiculului.",
+            intervention_order: "EditeazÄƒ Regulamentul de AlarmÄƒ È™i RÄƒspuns",
             name: "Nume",
-            no_intervention_created: "ĂŽncÄ nu ai creat niciun Regulament de AlarmÄ Č™i RÄspuns.",
-            options: "OpČ›iuni",
-            reset: "ReseteazÄ selecČ›ia anterioarÄ Ă®n fereastra de alarmÄ.",
-            reset_hint: "DacÄ ai selectat vehiculul Ă®n fereastra de trimitere, poČ›i utiliza acest buton pentru a-l reseta.",
-            save: "SalveazÄ",
-            station: "StaČ›ie",
-            station_hint: "Atunci cĂ˘nd ai ales o anumitÄ clÄdire, vei putea selecta doar vehiculele corespunzÄtoare acesteia.",
-            successfully_created: "Regulament de AlarmÄ Č™i RÄspuns creat cu succes.",
-            successfully_deleted: "Regulament de AlarmÄ Č™i RÄspuns Č™ters",
-            successfully_updated: "Regulament de AlarmÄ Č™i RÄspuns actualizat cu succes.",
+            no_intervention_created: "ÃŽncÄƒ nu ai creat niciun Regulament de AlarmÄƒ È™i RÄƒspuns.",
+            options: "OpÈ›iuni",
+            reset: "ReseteazÄƒ selecÈ›ia anterioarÄƒ Ã®n fereastra de alarmÄƒ.",
+            reset_hint: "DacÄƒ ai selectat vehiculul Ã®n fereastra de trimitere, poÈ›i utiliza acest buton pentru a-l reseta.",
+            save: "SalveazÄƒ",
+            station: "StaÈ›ie",
+            station_hint: "Atunci cÃ¢nd ai ales o anumitÄƒ clÄƒdire, vei putea selecta doar vehiculele corespunzÄƒtoare acesteia.",
+            successfully_created: "Regulament de AlarmÄƒ È™i RÄƒspuns creat cu succes.",
+            successfully_deleted: "Regulament de AlarmÄƒ È™i RÄƒspuns È™ters",
+            successfully_updated: "Regulament de AlarmÄƒ È™i RÄƒspuns actualizat cu succes.",
             vehicles: {
                 ab_atemschutz_only: "Modul Aparat de respirat izolant",
-                ab_einsatzleitung_only: "Modul de comandÄ",
+                ab_einsatzleitung_only: "Modul de comandÄƒ",
                 ab_gefahrgut_only: "Modul materiale periculoase",
                 ab_oel_only: "Modul scurgere petrol",
                 ab_ruest: "Modul Tehnologie/Salvare",
                 ab_ruest_rw: "",
                 abl2wasser_only: "Modul alimentare furtun",
-                ambulance: "AmbulanČ›Ä ALS (asistenČ›Ä avansatÄ Ă®n vederea menČ›inerii funcČ›iilor vitale)",
+                ambulance: "AmbulanÈ›Äƒ ALS (asistenÈ›Äƒ avansatÄƒ Ã®n vederea menÈ›inerii funcÈ›iilor vitale)",
                 ambulance_or_rapid_responder: "",
-                arff: "Salvare AerianÄ Č™i LuptÄ Ă®mpotriva Incendiilor (MaČ™ina de pompieri a aeroportului)",
-                battalion_chief_unit: "Unitate Čef batalion",
-                boot: "BÄrci (general)",
+                arff: "Salvare AerianÄƒ È™i LuptÄƒ Ã®mpotriva Incendiilor (MaÈ™ina de pompieri a aeroportului)",
+                battalion_chief_unit: "Unitate È˜ef batalion",
+                boot: "BÄƒrci (general)",
                 dekon_p: "",
-                division_chief_unit: "Vehicul comandÄ forČ›e mobile",
+                division_chief_unit: "Vehicul comandÄƒ forÈ›e mobile",
                 dlk_or_tm50: "",
-                elw1_or_elw2: "Unitate Čef Batalion, Vehicul comandÄ forČ›e mobile sau Modul comandÄ forČ›e mobile ",
+                elw1_or_elw2: "Unitate È˜ef Batalion, Vehicul comandÄƒ forÈ›e mobile sau Modul comandÄƒ forÈ›e mobile ",
                 elw2_or_ab_elw: "nul",
                 elw3: "",
                 elw_airport: "",
-                emergency_ambulance: "AmbulanČ›Ä de urgenČ›Ä sau elicopter",
-                fire_truck: "MaČ™ini de pompieri",
-                fireboat: "BarcÄ de stins incendii mare",
-                fly_car: "MaČ™inÄ de intervenČ›ie rapidÄ",
+                emergency_ambulance: "AmbulanÈ›Äƒ de urgenÈ›Äƒ sau elicopter",
+                fire_truck: "MaÈ™ini de pompieri",
+                fireboat: "BarcÄƒ de stins incendii mare",
+                fly_car: "MaÈ™inÄƒ de intervenÈ›ie rapidÄƒ",
                 fukw: "",
                 fwk: "",
                 gefkw: "",
-                gkw: "CamionetÄ utilitarÄ",
+                gkw: "CamionetÄƒ utilitarÄƒ",
                 grtw: "Unitate Victime multiple",
                 grtw0: "",
                 grtw1: "",
@@ -9872,47 +9806,47 @@ function deleteMissionPosition(e) {
                 gw_atemschutz_only: "",
                 gw_gefahrgut: "Materiale periculoase",
                 gw_gefahrgut_only: "",
-                gw_hoehenrettung: "Vehicul pentru salvare Č™i evacuare de la Ă®nÄlČ›ime (cu frĂ˘nghia)",
+                gw_hoehenrettung: "Vehicul pentru salvare È™i evacuare de la Ã®nÄƒlÈ›ime (cu frÃ¢nghia)",
                 gw_messtechnik: "Vehicul-metrologie",
                 gw_oel_only: "",
                 gw_san: "",
                 gw_taucher: "",
-                gw_wasserrettung: "MaČ™inÄ de salvare acvaticÄ",
+                gw_wasserrettung: "MaÈ™inÄƒ de salvare acvaticÄƒ",
                 gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Vehicul cu furtun",
-                hems: "Salvare aerianÄ",
+                hems: "Salvare aerianÄƒ",
                 hlf_only: "nul",
                 hlf_or_rw_and_lf: "nul",
                 hondengeleider: "",
-                k9: "Unitate caninÄ",
+                k9: "Unitate caninÄƒ",
                 kdow_lna: "",
-                kdow_orgl: "Director Servicii Medicale de UrgenČ›Ä",
+                kdow_orgl: "Director Servicii Medicale de UrgenÈ›Äƒ",
                 ktw_b: "",
                 ktw_or_rtw: "",
-                lebefkw: "Vehicul comandÄ uČ™or",
-                lf_only: "MaČ™ini de pompieri",
-                long_distance_ambulance: "AmbulanČ›Ä BLS (asistenČ›Ä de bazÄ pentru menČ›inerea funcČ›iilor vitale)",
+                lebefkw: "Vehicul comandÄƒ uÈ™or",
+                lf_only: "MaÈ™ini de pompieri",
+                long_distance_ambulance: "AmbulanÈ›Äƒ BLS (asistenÈ›Äƒ de bazÄƒ pentru menÈ›inerea funcÈ›iilor vitale)",
                 mask_service_unit: "Unitate Aer mobil",
                 mek_mtf: "",
                 mek_zf: "",
                 mtw: "Transportor blindat pentru personal",
-                mzb: "Vas multifuncČ›ional",
+                mzb: "Vas multifuncÈ›ional",
                 naw: "",
                 naw_or_rtw_and_nef: "",
                 naw_or_rtw_and_nef_or_rth: "",
-                nef_only: "AmbulanČ›Ä",
+                nef_only: "AmbulanÈ›Äƒ",
                 oil_unit: "Vehicul-colectare ulei",
                 only_ab_dekon_p: "",
                 only_dekon_p: "",
                 ovd_p: "",
-                police_car: "MaČ™inÄ de patrulare",
-                polizeihubschrauber: "Elicopter de poliČ›ie",
+                police_car: "MaÈ™inÄƒ de patrulare",
+                polizeihubschrauber: "Elicopter de poliÈ›ie",
                 rescue_vehicle: "Vehicul greu de salvare",
                 rescue_vehicle_only: "Vehicul greu de salvare",
-                rescueboat: "BarcÄ de salvare mare",
+                rescueboat: "BarcÄƒ de salvare mare",
                 rettungstreppe: "",
                 rth_only: "Elicopter",
-                schlauchwagen: "CisternÄ de apÄ",
+                schlauchwagen: "CisternÄƒ de apÄƒ",
                 seg_elw: "",
                 sek_mtf: "",
                 sek_zf: "",
@@ -9928,13 +9862,13 @@ function deleteMissionPosition(e) {
                 thw_lkw_7_lkr_19_tm: "",
                 thw_mlw5: "",
                 thw_mtw: "Transportor blindat pentru personalul tehnic (TBPT - ANAT)",
-                thw_mzkw: "Vehicul multifuncČ›ional",
+                thw_mzkw: "Vehicul multifuncÈ›ional",
                 thw_tauchkraftwagen: "Echipa de scafandri",
                 thw_tauchkraftwagen_or_gw_taucher: "",
-                tlf_only: "Camion cisternÄ",
+                tlf_only: "Camion cisternÄƒ",
                 tm50: "",
                 turboloescher: "",
-                turntable_ladder: "Camioane cu platformÄ",
+                turntable_ladder: "Camioane cu platformÄƒ",
                 ulf: "",
                 wasserwerfer: "",
                 water_amount: "",
@@ -9946,104 +9880,104 @@ function deleteMissionPosition(e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: "ĂŽn al doilea rĂ˘nd, noua ta staČ›ie va avea nevoie de un nume! Ar fi bine ca acesta sÄ fie uČ™or de recunoscut Č™i numerotat! Exemplu: â€žStaČ›ia de pompieri #0001â€ť. DupÄ ce termini, apasÄ pe â€žUrmÄtorulâ€ť!",
-                            build_with_credits: "Acum construieČ™te-Č›i clÄdirea folosind credite!",
-                            new_building: "DÄ clic pe â€žClÄdire nouÄâ€ť!",
-                            select_building: "Alege Ă®n primul rĂ˘nd tipul de clÄdire cu care doreČ™ti sÄ Ă®ncepi - Ă®Č›i sugerÄm sÄ Ă®ncepi cu pompierii! ĂŽn orice caz, se recomandÄ sÄ Ă®ncepi cu o staČ›ie micÄ!",
-                            select_position: "MutÄ marcatorul albastru acolo unde doreČ™ti sÄ construieČ™ti prima ta staČ›ie!"
+                            add_name: "ÃŽn al doilea rÃ¢nd, noua ta staÈ›ie va avea nevoie de un nume! Ar fi bine ca acesta sÄƒ fie uÈ™or de recunoscut È™i numerotat! Exemplu: â€žStaÈ›ia de pompieri #0001â€. DupÄƒ ce termini, apasÄƒ pe â€žUrmÄƒtorulâ€!",
+                            build_with_credits: "Acum construieÈ™te-È›i clÄƒdirea folosind credite!",
+                            new_building: "DÄƒ clic pe â€žClÄƒdire nouÄƒâ€!",
+                            select_building: "Alege Ã®n primul rÃ¢nd tipul de clÄƒdire cu care doreÈ™ti sÄƒ Ã®ncepi - Ã®È›i sugerÄƒm sÄƒ Ã®ncepi cu pompierii! ÃŽn orice caz, se recomandÄƒ sÄƒ Ã®ncepi cu o staÈ›ie micÄƒ!",
+                            select_position: "MutÄƒ marcatorul albastru acolo unde doreÈ™ti sÄƒ construieÈ™ti prima ta staÈ›ie!"
                         },
-                        pick_location: "Mai Ă®ntĂ˘i, alege o locaČ›ie Ă®n care sÄ Ă®ncepi! Introdu numele locaČ›iei de pornire Ă®n bara de cÄutare sau caut-o chiar tu pe hartÄ! Ce zici de oraČ™ul tÄu natal?",
-                        welcome: "Salut. Bine ai venit Ă®n Dispecerat 112!  ĂŽČ›i voi arÄta cĂ˘teva lucruri care te vor ajuta sÄ-Č›i Ă®ncepi cu dreptul cariera Ă®n domeniul serviciilor de urgenČ›Ä!"
+                        pick_location: "Mai Ã®ntÃ¢i, alege o locaÈ›ie Ã®n care sÄƒ Ã®ncepi! Introdu numele locaÈ›iei de pornire Ã®n bara de cÄƒutare sau caut-o chiar tu pe hartÄƒ! Ce zici de oraÈ™ul tÄƒu natal?",
+                        welcome: "Salut. Bine ai venit Ã®n Dispecerat 112!  ÃŽÈ›i voi arÄƒta cÃ¢teva lucruri care te vor ajuta sÄƒ-È›i Ã®ncepi cu dreptul cariera Ã®n domeniul serviciilor de urgenÈ›Äƒ!"
                     },
                     mobile: {
                         build_building: {
-                            add_name: "ĂŽn al doilea rĂ˘nd, noua ta staČ›ie va avea nevoie de un nume! Ar fi bine ca acesta sÄ fie uČ™or de recunoscut Č™i numerotat! Exemplu: â€žStaČ›ia de pompieri #0001â€ť. DupÄ ce termini, apasÄ pe â€žUrmÄtorulâ€ť!",
-                            build_with_credits: "Acum construieČ™te-Č›i clÄdirea folosind credite!",
-                            new_building: "Mai Ă®ntĂ˘i, vom alege o locaČ›ie pentru a Ă®ncepe Č™i construi prima ta clÄdire! <br /> <br />Pentru asta, dÄ clic pe â€žClÄdire nouÄâ€ť!",
-                            select_building: "Alege Ă®n primul rĂ˘nd tipul de clÄdire cu care doreČ™ti sÄ Ă®ncepi - Ă®Č›i sugerÄm sÄ Ă®ncepi cu pompierii! ĂŽn orice caz, se recomandÄ sÄ Ă®ncepi cu o staČ›ie micÄ!"
+                            add_name: "ÃŽn al doilea rÃ¢nd, noua ta staÈ›ie va avea nevoie de un nume! Ar fi bine ca acesta sÄƒ fie uÈ™or de recunoscut È™i numerotat! Exemplu: â€žStaÈ›ia de pompieri #0001â€. DupÄƒ ce termini, apasÄƒ pe â€žUrmÄƒtorulâ€!",
+                            build_with_credits: "Acum construieÈ™te-È›i clÄƒdirea folosind credite!",
+                            new_building: "Mai Ã®ntÃ¢i, vom alege o locaÈ›ie pentru a Ã®ncepe È™i construi prima ta clÄƒdire! <br /> <br />Pentru asta, dÄƒ clic pe â€žClÄƒdire nouÄƒâ€!",
+                            select_building: "Alege Ã®n primul rÃ¢nd tipul de clÄƒdire cu care doreÈ™ti sÄƒ Ã®ncepi - Ã®È›i sugerÄƒm sÄƒ Ã®ncepi cu pompierii! ÃŽn orice caz, se recomandÄƒ sÄƒ Ã®ncepi cu o staÈ›ie micÄƒ!"
                         },
-                        welcome: "Salut. Bine ai venit Ă®n Dispecerat 112!  ĂŽČ›i voi arÄta cĂ˘teva lucruri care te vor ajuta sÄ-Č›i Ă®ncepi cu dreptul cariera Ă®n domeniul serviciilor de urgenČ›Ä!"
+                        welcome: "Salut. Bine ai venit Ã®n Dispecerat 112!  ÃŽÈ›i voi arÄƒta cÃ¢teva lucruri care te vor ajuta sÄƒ-È›i Ã®ncepi cu dreptul cariera Ã®n domeniul serviciilor de urgenÈ›Äƒ!"
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Acesta este meniul de trimitere. De aici, Ă®Č›i trimiČ›i unitÄČ›ile Ă®n misiuni!",
-                            dispatch_menu_buttons: "Acestea sunt cele douÄ butoane de trimitere! Primul: â€žTrimiteâ€ť - trimite unitÄČ›ile selectate Ă®n misiune. Cel de-al doilea face acelaČ™i lucru, Ă®nsÄ trecĂ˘nd la urmÄtoarea misiune. DeocamdatÄ, dÄ clic pe primul buton.",
-                            dispatch_menu_mission_general: "Aici poČ›i vedea informaČ›iile generale despre misiune, adicÄ numele, adresa Č™i pictograma acesteia. ĂŽn misiunile la care ai participat deja, mini-pictograma cu omuleČ›ul apare Č™i Ă®nlocuieČ™te o stea micÄ.",
-                            dispatch_menu_mission_progress: "Aici poČ›i vedea progresul fÄcut Ă®n cadrul acestei misiuni, efectivele prezente la faČ›a locului Č™i timpul rÄmas pentru a Ă®ndeplini misiunea!",
-                            dispatch_menu_mission_specific: "Aici poČ›i vedea mai multe informaČ›ii despre misiune, ce unitÄČ›i rÄspund la apel Č™i care sunt deja la faČ›a locului.",
-                            dispatch_menu_vehicle_list: "Aceasta este lista vehiculelor disponibile. Aici, selectezi vehiculele. Acum dÄ clic pe un vehicul pentru a-l selecta!"
+                            dispatch_menu: "Acesta este meniul de trimitere. De aici, Ã®È›i trimiÈ›i unitÄƒÈ›ile Ã®n misiuni!",
+                            dispatch_menu_buttons: "Acestea sunt cele douÄƒ butoane de trimitere! Primul: â€žTrimiteâ€ - trimite unitÄƒÈ›ile selectate Ã®n misiune. Cel de-al doilea face acelaÈ™i lucru, Ã®nsÄƒ trecÃ¢nd la urmÄƒtoarea misiune. DeocamdatÄƒ, dÄƒ clic pe primul buton.",
+                            dispatch_menu_mission_general: "Aici poÈ›i vedea informaÈ›iile generale despre misiune, adicÄƒ numele, adresa È™i pictograma acesteia. ÃŽn misiunile la care ai participat deja, mini-pictograma cu omuleÈ›ul apare È™i Ã®nlocuieÈ™te o stea micÄƒ.",
+                            dispatch_menu_mission_progress: "Aici poÈ›i vedea progresul fÄƒcut Ã®n cadrul acestei misiuni, efectivele prezente la faÈ›a locului È™i timpul rÄƒmas pentru a Ã®ndeplini misiunea!",
+                            dispatch_menu_mission_specific: "Aici poÈ›i vedea mai multe informaÈ›ii despre misiune, ce unitÄƒÈ›i rÄƒspund la apel È™i care sunt deja la faÈ›a locului.",
+                            dispatch_menu_vehicle_list: "Aceasta este lista vehiculelor disponibile. Aici, selectezi vehiculele. Acum dÄƒ clic pe un vehicul pentru a-l selecta!"
                         },
                         mobile: {
-                            dispatch_menu: "Acesta este meniul de trimitere. De aici, Ă®Č›i trimiČ›i unitÄČ›ile Ă®n misiuni!",
-                            dispatch_menu_buttons: "Acestea sunt cele douÄ butoane de trimitere! Primul: â€žTrimiteâ€ť - trimite unitÄČ›ile selectate Ă®n misiune. Cel de-al doilea face acelaČ™i lucru, Ă®nsÄ trecĂ˘nd la urmÄtoarea misiune. DeocamdatÄ, dÄ clic pe primul buton.",
-                            dispatch_menu_mission_general: "Aici poČ›i vedea informaČ›iile generale despre misiune, adicÄ numele, adresa Č™i pictograma acesteia. ĂŽn misiunile la care ai participat deja, mini-pictograma cu omuleČ›ul apare Č™i Ă®nlocuieČ™te o stea micÄ.",
-                            dispatch_menu_mission_progress: "Aici poČ›i vedea progresul fÄcut Ă®n cadrul acestei misiuni, efectivele prezente la faČ›a locului Č™i timpul rÄmas pentru a Ă®ndeplini misiunea!",
-                            dispatch_menu_mission_specific: "Aici poČ›i vedea mai multe informaČ›ii despre misiune, ce unitÄČ›i rÄspund la apel Č™i care sunt deja la faČ›a locului.",
-                            dispatch_menu_vehicle_list: "Aceasta este lista vehiculelor disponibile. Aici, selectezi vehiculele. Acum dÄ clic pe un vehicul pentru a-l selecta!"
+                            dispatch_menu: "Acesta este meniul de trimitere. De aici, Ã®È›i trimiÈ›i unitÄƒÈ›ile Ã®n misiuni!",
+                            dispatch_menu_buttons: "Acestea sunt cele douÄƒ butoane de trimitere! Primul: â€žTrimiteâ€ - trimite unitÄƒÈ›ile selectate Ã®n misiune. Cel de-al doilea face acelaÈ™i lucru, Ã®nsÄƒ trecÃ¢nd la urmÄƒtoarea misiune. DeocamdatÄƒ, dÄƒ clic pe primul buton.",
+                            dispatch_menu_mission_general: "Aici poÈ›i vedea informaÈ›iile generale despre misiune, adicÄƒ numele, adresa È™i pictograma acesteia. ÃŽn misiunile la care ai participat deja, mini-pictograma cu omuleÈ›ul apare È™i Ã®nlocuieÈ™te o stea micÄƒ.",
+                            dispatch_menu_mission_progress: "Aici poÈ›i vedea progresul fÄƒcut Ã®n cadrul acestei misiuni, efectivele prezente la faÈ›a locului È™i timpul rÄƒmas pentru a Ã®ndeplini misiunea!",
+                            dispatch_menu_mission_specific: "Aici poÈ›i vedea mai multe informaÈ›ii despre misiune, ce unitÄƒÈ›i rÄƒspund la apel È™i care sunt deja la faÈ›a locului.",
+                            dispatch_menu_vehicle_list: "Aceasta este lista vehiculelor disponibile. Aici, selectezi vehiculele. Acum dÄƒ clic pe un vehicul pentru a-l selecta!"
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "Acum dorim sÄ aflÄm cum sÄ abordÄm incidentele. Deschide meniul de trimitere dĂ˘nd clic pe butonul â€žtrimiteâ€ť!",
-                            first_mission: "Grozav, ai construit prima ta clÄdire! Vezi, primele misiuni Č›i-au fost semnalate!"
+                            dispatch_button: "Acum dorim sÄƒ aflÄƒm cum sÄƒ abordÄƒm incidentele. Deschide meniul de trimitere dÃ¢nd clic pe butonul â€žtrimiteâ€!",
+                            first_mission: "Grozav, ai construit prima ta clÄƒdire! Vezi, primele misiuni È›i-au fost semnalate!"
                         },
                         mobile: {
-                            dispatch_button: "Acum dorim sÄ aflÄm cum sÄ abordÄm incidentele. Deschide meniul de trimitere dĂ˘nd clic pe butonul â€žtrimiteâ€ť!",
-                            first_mission: "Grozav, ai construit prima ta clÄdire! Vezi, primele misiuni Č›i-au fost semnalate!"
+                            dispatch_button: "Acum dorim sÄƒ aflÄƒm cum sÄƒ abordÄƒm incidentele. Deschide meniul de trimitere dÃ¢nd clic pe butonul â€žtrimiteâ€!",
+                            first_mission: "Grozav, ai construit prima ta clÄƒdire! Vezi, primele misiuni È›i-au fost semnalate!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Grozav, eČ™ti pe cale sÄ devii un Čef de Dispecerat extraordinar! Poftim %{coins} monede. Acestea te vor ajuta sÄ Ă®ncepi cu dreptul! </br> Echipa ta Dispecerat 112"
+                        general: "Grozav, eÈ™ti pe cale sÄƒ devii un È˜ef de Dispecerat extraordinar! Poftim %{coins} monede. Acestea te vor ajuta sÄƒ Ã®ncepi cu dreptul! </br> Echipa ta Dispecerat 112"
                     },
                     mobile: {
-                        general: "Grozav, eČ™ti pe cale sÄ devii un Čef de Dispecerat extraordinar! Poftim %{coins} monede. Acestea te vor ajuta sÄ Ă®ncepi cu dreptul! </br> Echipa ta Dispecerat 112"
+                        general: "Grozav, eÈ™ti pe cale sÄƒ devii un È˜ef de Dispecerat extraordinar! Poftim %{coins} monede. Acestea te vor ajuta sÄƒ Ã®ncepi cu dreptul! </br> Echipa ta Dispecerat 112"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "DacÄ ai Ă®ntrebÄri, poČ›i consulta secČ›iunea ĂŽntrebÄri Frecvente Ă®n cadrul jocului. De asemenea, poČ›i vizita forumurile jocului sau pagina noastrÄ de Facebook!",
-                        general: "ĂŽn continuare, te sfÄtuim sÄ construieČ™ti un dispecerat, iar apoi cĂ˘teva staČ›ii noi. Ar fi bine sÄ faci acest lucru cĂ˘t mai curĂ˘nd posibil, deoarece numÄrul maxim de misiuni este echivalent cu cel mai Ă®nalt numÄr de staČ›ii de un alt tip (poliČ›ie, pompieri, ambulanČ›Ä) + 1. Spre exemplu: 5 staČ›ii de pompieri Č™i 3 de ambulanČ›Ä = 6 misiuni.",
-                        join_alliance: "ĂŽn plus, aderarea la o alianČ›Ä te-ar ajuta foarte mult, mai ales la Ă®nceput - aČ™a cÄ Ă®Č›i sugerÄm sÄ faci Č™i acest pas.",
-                        summary: "Acestea sunt regulile de bazÄ ale jocului Dispecerat 112! ĂŽndeplineČ™te misiuni, obČ›ine credite, cumpÄrÄ mai multe unitÄČ›i, repetÄ. DistracČ›ie plÄcutÄ! </br> Echipa ta Dispecerat 112"
+                        contact: "DacÄƒ ai Ã®ntrebÄƒri, poÈ›i consulta secÈ›iunea ÃŽntrebÄƒri Frecvente Ã®n cadrul jocului. De asemenea, poÈ›i vizita forumurile jocului sau pagina noastrÄƒ de Facebook!",
+                        general: "ÃŽn continuare, te sfÄƒtuim sÄƒ construieÈ™ti un dispecerat, iar apoi cÃ¢teva staÈ›ii noi. Ar fi bine sÄƒ faci acest lucru cÃ¢t mai curÃ¢nd posibil, deoarece numÄƒrul maxim de misiuni este echivalent cu cel mai Ã®nalt numÄƒr de staÈ›ii de un alt tip (poliÈ›ie, pompieri, ambulanÈ›Äƒ) + 1. Spre exemplu: 5 staÈ›ii de pompieri È™i 3 de ambulanÈ›Äƒ = 6 misiuni.",
+                        join_alliance: "ÃŽn plus, aderarea la o alianÈ›Äƒ te-ar ajuta foarte mult, mai ales la Ã®nceput - aÈ™a cÄƒ Ã®È›i sugerÄƒm sÄƒ faci È™i acest pas.",
+                        summary: "Acestea sunt regulile de bazÄƒ ale jocului Dispecerat 112! ÃŽndeplineÈ™te misiuni, obÈ›ine credite, cumpÄƒrÄƒ mai multe unitÄƒÈ›i, repetÄƒ. DistracÈ›ie plÄƒcutÄƒ! </br> Echipa ta Dispecerat 112"
                     },
                     mobile: {
-                        contact: "DacÄ ai Ă®ntrebÄri, poČ›i consulta secČ›iunea ĂŽntrebÄri Frecvente Ă®n cadrul jocului. De asemenea, poČ›i vizita forumurile jocului sau pagina noastrÄ de Facebook!",
-                        general: "ĂŽn continuare, te sfÄtuim sÄ construieČ™ti un dispecerat, iar apoi cĂ˘teva staČ›ii noi. Ar fi bine sÄ faci acest lucru cĂ˘t mai curĂ˘nd posibil, deoarece numÄrul maxim de misiuni este echivalent cu cel mai Ă®nalt numÄr de staČ›ii de un alt tip (poliČ›ie, pompieri, ambulanČ›Ä) + 1. Spre exemplu: 5 staČ›ii de pompieri Č™i 3 de ambulanČ›Ä = 6 misiuni.",
-                        join_alliance: "ĂŽn plus, aderarea la o alianČ›Ä te-ar ajuta foarte mult, mai ales la Ă®nceput - aČ™a cÄ Ă®Č›i sugerÄm sÄ faci Č™i acest pas.",
-                        summary: "Acestea sunt regulile de bazÄ ale jocului Dispecerat 112! ĂŽndeplineČ™te misiuni, obČ›ine credite, cumpÄrÄ mai multe unitÄČ›i, repetÄ. DistracČ›ie plÄcutÄ! </br> Echipa ta Dispecerat 112"
+                        contact: "DacÄƒ ai Ã®ntrebÄƒri, poÈ›i consulta secÈ›iunea ÃŽntrebÄƒri Frecvente Ã®n cadrul jocului. De asemenea, poÈ›i vizita forumurile jocului sau pagina noastrÄƒ de Facebook!",
+                        general: "ÃŽn continuare, te sfÄƒtuim sÄƒ construieÈ™ti un dispecerat, iar apoi cÃ¢teva staÈ›ii noi. Ar fi bine sÄƒ faci acest lucru cÃ¢t mai curÃ¢nd posibil, deoarece numÄƒrul maxim de misiuni este echivalent cu cel mai Ã®nalt numÄƒr de staÈ›ii de un alt tip (poliÈ›ie, pompieri, ambulanÈ›Äƒ) + 1. Spre exemplu: 5 staÈ›ii de pompieri È™i 3 de ambulanÈ›Äƒ = 6 misiuni.",
+                        join_alliance: "ÃŽn plus, aderarea la o alianÈ›Äƒ te-ar ajuta foarte mult, mai ales la Ã®nceput - aÈ™a cÄƒ Ã®È›i sugerÄƒm sÄƒ faci È™i acest pas.",
+                        summary: "Acestea sunt regulile de bazÄƒ ale jocului Dispecerat 112! ÃŽndeplineÈ™te misiuni, obÈ›ine credite, cumpÄƒrÄƒ mai multe unitÄƒÈ›i, repetÄƒ. DistracÈ›ie plÄƒcutÄƒ! </br> Echipa ta Dispecerat 112"
                     }
                 }
             },
             commons: {
-                collect: "ColecteazÄ",
+                collect: "ColecteazÄƒ",
                 "continue": "Nu",
-                end: "SfĂ˘rČ™it",
+                end: "SfÃ¢rÈ™it",
                 next: "Urm.",
                 prev: "Ant.",
                 skip: "Da",
-                skip_hint: "EČ™ti sigur cÄ vrei sÄ anulezi tutorialul? Acesta nu poate fi accesat mai tĂ˘rziu. Nu vei fi eligibil pentru recompensa de finalizare a tutorialului."
+                skip_hint: "EÈ™ti sigur cÄƒ vrei sÄƒ anulezi tutorialul? Acesta nu poate fi accesat mai tÃ¢rziu. Nu vei fi eligibil pentru recompensa de finalizare a tutorialului."
             },
             rewards: {
-                log: "RecompensÄ pentru terminarea tutorialului."
+                log: "RecompensÄƒ pentru terminarea tutorialului."
             }
         }
     }, I18n.translations.fi_FI = {
         common: {
-            add: "LisĂ¤Ă¤",
+            add: "LisÃ¤Ã¤",
             back: "Palaa",
             cancel: "Peruuta",
             change_saved: "Muutokset tallennettu",
-            coins_spend: "Haluatko varmasti kĂ¤yttĂ¤Ă¤ nĂ¤mĂ¤ kolikot?",
+            coins_spend: "Haluatko varmasti kÃ¤yttÃ¤Ã¤ nÃ¤mÃ¤ kolikot?",
             congratulations: "Onnittelut!",
-            content: "SisĂ¤ltĂ¶",
+            content: "SisÃ¤ltÃ¶",
             copy: "Kopioi",
             credits: "Krediitit",
             "delete": "Poista",
-            details: "LisĂ¤tiedot",
+            details: "LisÃ¤tiedot",
             edit: "Muokkaa",
             error: "Virhe",
             is_offline: "%{user} ei ole verkossa",
@@ -10051,81 +9985,81 @@ function deleteMissionPosition(e) {
             is_online: "%{user} on verkossa.",
             loading: "Ladataan...",
             name: "Nimi",
-            none: "Ei mitĂ¤Ă¤n",
+            none: "Ei mitÃ¤Ã¤n",
             of: "/",
-            off: "Ei kĂ¤ytĂ¶ssĂ¤",
-            on: "KĂ¤ytĂ¶ssĂ¤",
+            off: "Ei kÃ¤ytÃ¶ssÃ¤",
+            on: "KÃ¤ytÃ¶ssÃ¤",
             save: "Tallenna",
             search: "Haku",
-            show: "NĂ¤ytĂ¤",
-            user_not_found: "KĂ¤yttĂ¤jĂ¤Ă¤ ei lĂ¶ytynyt",
-            wrong_key: "VĂ¤Ă¤rĂ¤ avain"
+            show: "NÃ¤ytÃ¤",
+            user_not_found: "KÃ¤yttÃ¤jÃ¤Ã¤ ei lÃ¶ytynyt",
+            wrong_key: "VÃ¤Ã¤rÃ¤ avain"
         },
         javascript: {
-            alarm: "LĂ¤hetĂ¤",
+            alarm: "LÃ¤hetÃ¤",
             arrival: "Saapumisaika",
             backalarm: "Peruuta",
             coins: "Kolikot",
             credits: "Krediitit",
-            days: "pĂ¤ivĂ¤Ă¤",
+            days: "pÃ¤ivÃ¤Ã¤",
             few_seconds: "muutaman sekunnin kuluttua",
-            finish_in: "PĂ¤Ă¤ttymiseen:",
+            finish_in: "PÃ¤Ã¤ttymiseen:",
             hours: "h",
-            location_not_found: "Ei lĂ¶ytynyt",
+            location_not_found: "Ei lÃ¶ytynyt",
             messages: "Viestit",
             minutes: "min",
             missed_vehicle: "Puuttuu:",
             mission_start_in: "Alkamiseen:",
-            not_found_map: "Ajoneuvoa ei lĂ¶ytynyt kartalta.",
+            not_found_map: "Ajoneuvoa ei lÃ¶ytynyt kartalta.",
             now: "Nyt",
             patient: "Potilas",
             patient_untouched: "Hoitamattomat potilaat",
             poi_delete: 'Haluatko varmasti poistaa kohdepisteen "%{caption}"?',
             reload: "Lataa uudelleen",
             sale: "Ale",
-            sale_ended: "Ale pĂ¤Ă¤ttynyt",
+            sale_ended: "Ale pÃ¤Ã¤ttynyt",
             secounds: "s",
-            sicherheitswache_error: 'TurvaamistehtĂ¤vĂ¤ "%{caption}" ei onnistunut, koska kaikki ehdot eivĂ¤t tĂ¤yttyneet.',
-            sicherheitswache_success: 'TurvaamistehtĂ¤vĂ¤n "%{caption}" suoritus onnistui. Saat %{credits} krediittiĂ¤.',
+            sicherheitswache_error: 'TurvaamistehtÃ¤vÃ¤ "%{caption}" ei onnistunut, koska kaikki ehdot eivÃ¤t tÃ¤yttyneet.',
+            sicherheitswache_success: 'TurvaamistehtÃ¤vÃ¤n "%{caption}" suoritus onnistui. Saat %{credits} krediittiÃ¤.',
             start_in: "Alkamiseen: ",
             start_username: "Aloittaja:",
-            time_left: "Aikaa jĂ¤ljellĂ¤:",
-            to_building: "NĂ¤ytĂ¤ rakennus",
-            to_mission: "NĂ¤ytĂ¤ tehtĂ¤vĂ¤",
+            time_left: "Aikaa jÃ¤ljellÃ¤:",
+            to_building: "NÃ¤ytÃ¤ rakennus",
+            to_mission: "NÃ¤ytÃ¤ tehtÃ¤vÃ¤",
             understand: "Kuittaa",
-            user_not_found: "Pelaajaa ei lĂ¶ytynyt.",
-            vehicles_not_visible: "Ajoneuvoja ei nĂ¤ytetĂ¤. "
+            user_not_found: "Pelaajaa ei lÃ¶ytynyt.",
+            vehicles_not_visible: "Ajoneuvoja ei nÃ¤ytetÃ¤. "
         },
         map: {
             alliance: "Liittoutuma",
             alliance_chat: "Chatti",
-            alliance_chat_banned: "Sinut on tĂ¤llĂ¤ hetkellĂ¤ estetty liittoutuman chatista.",
-            alliance_chat_banned_admin: "EstĂ¤jĂ¤:",
-            alliance_chat_banned_timeleft: "JĂ¤ljellĂ¤ oleva aika:",
-            alliance_chat_radio_off: "Liittoutuman radio: Ei kĂ¤ytĂ¶ssĂ¤",
-            alliance_chat_radio_on: "Liittoutuman radio: KĂ¤ytĂ¶ssĂ¤",
+            alliance_chat_banned: "Sinut on tÃ¤llÃ¤ hetkellÃ¤ estetty liittoutuman chatista.",
+            alliance_chat_banned_admin: "EstÃ¤jÃ¤:",
+            alliance_chat_banned_timeleft: "JÃ¤ljellÃ¤ oleva aika:",
+            alliance_chat_radio_off: "Liittoutuman radio: Ei kÃ¤ytÃ¶ssÃ¤",
+            alliance_chat_radio_on: "Liittoutuman radio: KÃ¤ytÃ¶ssÃ¤",
             alliance_event: "Tapahtuma",
-            alliance_missions: "Liittoutuman tehtĂ¤vĂ¤t",
+            alliance_missions: "Liittoutuman tehtÃ¤vÃ¤t",
             alliance_missions_event: "Tapahtuma",
             ambulance: "Ambulanssi",
             challenges: "",
             chat_history: "Chattihistoria",
             congratulations: "Onnittelut! Voit nyt saada ylennyksen.",
             create_alliance_event: "Aloita liittoutumatapahtuma",
-            create_alliance_operation: "Luo laaja liittoutumatehtĂ¤vĂ¤",
-            emergency: "HĂ¤tĂ¤tilanne",
-            join_alliance_infos: "Jos kuulut johonkin liittoutumaan, muut pelaajat voivat antaa sinulle tehtĂ¤viĂ¤.",
+            create_alliance_operation: "Luo laaja liittoutumatehtÃ¤vÃ¤",
+            emergency: "HÃ¤tÃ¤tilanne",
+            join_alliance_infos: "Jos kuulut johonkin liittoutumaan, muut pelaajat voivat antaa sinulle tehtÃ¤viÃ¤.",
             map: "Kartta",
             map_filters: {
                 all_buildings: "Rakennukset",
-                all_missions: "TehtĂ¤vĂ¤t",
+                all_missions: "TehtÃ¤vÃ¤t",
                 alliance_buildings: "Liittoutumarakennukset",
-                alliance_members: "JĂ¤senet",
+                alliance_members: "JÃ¤senet",
                 alliance_missions: "Liittoutuman jakama",
                 ambulance_station_missions: "Ambulanssiasema",
                 ambulance_station_small_missions: "Ambulanssiasema (pieni asema)",
                 clinic_missions: "Klinikka",
-                dispatch_center_missions: "HĂ¤tĂ¤keskus",
+                dispatch_center_missions: "HÃ¤tÃ¤keskus",
                 fire_school_missions: "Pelastajaoppilaitos",
                 firehouse_missions: "Paloasema",
                 firehouse_small_missions: "Paloasema (pieni)",
@@ -10138,85 +10072,85 @@ function deleteMissionPosition(e) {
                 police_special_forces: "Poliisin erikoisjoukot",
                 police_station_missions: "Poliisiasema",
                 prison_missions: "Vankila",
-                rapid_deployment_group: "EnsivasteyksikkĂ¶",
-                rescue_copter_station_missions: "LĂ¤Ă¤kintĂ¤helikopteriasema",
+                rapid_deployment_group: "EnsivasteyksikkÃ¶",
+                rescue_copter_station_missions: "LÃ¤Ã¤kintÃ¤helikopteriasema",
                 riot_police: "Mellakkapoliisi",
                 staging_area_missions: "Kokoontumispaikka",
                 technical_aid_organization: "VPK",
                 technical_aid_organization_school: "THW Bundesschule",
                 user_buildings: "Omat rakennukset",
-                user_missions: "Omat tehtĂ¤vĂ¤t",
+                user_missions: "Omat tehtÃ¤vÃ¤t",
                 water_watch: "Vesipelastus"
             },
             message: "Viesti",
-            mission: "TehtĂ¤vĂ¤",
-            no_alliance_chat_impossible: "Et kuulu mihinkĂ¤Ă¤n liittoutumaan.",
-            no_alliance_missions: "Ei liittoutumatehtĂ¤viĂ¤",
-            no_ambulance_missions: "Ei ambulanssitehtĂ¤viĂ¤ AmbulanssitehtĂ¤viĂ¤ syntyy vain kun sinulla on ambulanssi ja sairaala.",
-            no_emergency_missions: "Ei hĂ¤tĂ¤tehtĂ¤viĂ¤ HĂ¤tĂ¤tehtĂ¤viĂ¤ syntyy, kun olet rakentanut ensimmĂ¤isen asemasi.",
-            no_radio_messages: "Et ole saanut radioviestejĂ¤.",
+            mission: "TehtÃ¤vÃ¤",
+            no_alliance_chat_impossible: "Et kuulu mihinkÃ¤Ã¤n liittoutumaan.",
+            no_alliance_missions: "Ei liittoutumatehtÃ¤viÃ¤",
+            no_ambulance_missions: "Ei ambulanssitehtÃ¤viÃ¤ AmbulanssitehtÃ¤viÃ¤ syntyy vain kun sinulla on ambulanssi ja sairaala.",
+            no_emergency_missions: "Ei hÃ¤tÃ¤tehtÃ¤viÃ¤ HÃ¤tÃ¤tehtÃ¤viÃ¤ syntyy, kun olet rakentanut ensimmÃ¤isen asemasi.",
+            no_radio_messages: "Et ole saanut radioviestejÃ¤.",
             radio_messages: "Radio",
             restore_map: "Palauta kartta",
-            show_informations: "VihreĂ¤ = tehtĂ¤vĂ¤t nĂ¤kyvĂ¤t luettelossa. Punainen = tehtĂ¤vĂ¤t eivĂ¤t nĂ¤y.",
-            sicherheitswache: "Suunnitellut tehtĂ¤vĂ¤t",
+            show_informations: "VihreÃ¤ = tehtÃ¤vÃ¤t nÃ¤kyvÃ¤t luettelossa. Punainen = tehtÃ¤vÃ¤t eivÃ¤t nÃ¤y.",
+            sicherheitswache: "Suunnitellut tehtÃ¤vÃ¤t",
             transport: "Kuljetus"
         },
         fms: {
             going: "Matkalla",
             not_ready: "Ei toiminnassa",
-            on_destination: "Kuljetuksen mĂ¤Ă¤rĂ¤npĂ¤Ă¤ssĂ¤",
+            on_destination: "Kuljetuksen mÃ¤Ã¤rÃ¤npÃ¤Ã¤ssÃ¤",
             on_place: "Tapahtumapaikalla",
             patient_transported: "Kuljettaa potilasta",
             prisoner_transported: "Kuljettaa vankia",
-            ready_home: "KĂ¤ytettĂ¤vissĂ¤ asemalla",
+            ready_home: "KÃ¤ytettÃ¤vissÃ¤ asemalla",
             ready_traveling: "Vapaana",
-            talking_wish: "KuljetuspyyntĂ¶",
+            talking_wish: "KuljetuspyyntÃ¶",
             waiting_for_vehicle: "Odottaa vetoautoa"
         },
         intervention_order: {
             back: "Palaa",
             category: "Luokka",
-            colour: "VĂ¤ri",
+            colour: "VÃ¤ri",
             column: "Sarake",
             column_number: "Sarakkeen numero",
-            column_number_hint: "Jos sarakkeen numero on annettu, hĂ¤lytysjĂ¤rjestelymerkintĂ¤ nĂ¤kyy hĂ¤lytyssivun vastaavassa sarakkeessa.",
-            create_intervention_order: "Luo uusi hĂ¤lytysjĂ¤rjestely",
+            column_number_hint: "Jos sarakkeen numero on annettu, hÃ¤lytysjÃ¤rjestelymerkintÃ¤ nÃ¤kyy hÃ¤lytyssivun vastaavassa sarakkeessa.",
+            create_intervention_order: "Luo uusi hÃ¤lytysjÃ¤rjestely",
             "delete": "Poista",
-            delete_all: "Poista hĂ¤lytysjĂ¤rjestely kokonaan",
-            delete_all_confirm: "Haluatko varmasti poistaa koko hĂ¤lytysjĂ¤rjestelyn? VietyjĂ¤ merkintĂ¶jĂ¤ ei voi enĂ¤Ă¤ kĂ¤yttĂ¤Ă¤.",
+            delete_all: "Poista hÃ¤lytysjÃ¤rjestely kokonaan",
+            delete_all_confirm: "Haluatko varmasti poistaa koko hÃ¤lytysjÃ¤rjestelyn? VietyjÃ¤ merkintÃ¶jÃ¤ ei voi enÃ¤Ã¤ kÃ¤yttÃ¤Ã¤.",
             description: "Nimi",
             edit: "Muokkaa",
             "export": {
                 "export": "Vie",
                 "import": "Tuo",
-                import_done: "Valitut merkinnĂ¤t on tuotu ja kirjoitettu hĂ¤lytysjĂ¤rjestelyyn.",
-                saved: "HĂ¤lytysjĂ¤rjestely viety",
-                saved_text: "HĂ¤lytysjĂ¤rjestely on valmis vientiĂ¤ varten. Toinen pelaaja voi tuoda hĂ¤lytysjĂ¤rjestelyn linkin kautta. Jos muutat hĂ¤lytysjĂ¤rjestelyĂ¤ tĂ¤llĂ¤ vĂ¤lin, muutos vaikuttaa myĂ¶s vientiin."
+                import_done: "Valitut merkinnÃ¤t on tuotu ja kirjoitettu hÃ¤lytysjÃ¤rjestelyyn.",
+                saved: "HÃ¤lytysjÃ¤rjestely viety",
+                saved_text: "HÃ¤lytysjÃ¤rjestely on valmis vientiÃ¤ varten. Toinen pelaaja voi tuoda hÃ¤lytysjÃ¤rjestelyn linkin kautta. Jos muutat hÃ¤lytysjÃ¤rjestelyÃ¤ tÃ¤llÃ¤ vÃ¤lin, muutos vaikuttaa myÃ¶s vientiin."
             },
-            hotkey_hint: "Valitse pikanĂ¤ppĂ¤in tĂ¤mĂ¤n ajoneuvon valintaa varten. Valitse ajoneuvo painamalla tehtĂ¤vĂ¤ikkunassa: ALT + pikanĂ¤ppĂ¤in (Firefox: ALT + VAIHTO + pikanĂ¤ppĂ¤in; mac os: ctrl + alt + pikanĂ¤ppĂ¤in).",
-            intervention_order: "Muokkaa hĂ¤lytysjĂ¤rjestelyĂ¤",
+            hotkey_hint: "Valitse pikanÃ¤ppÃ¤in tÃ¤mÃ¤n ajoneuvon valintaa varten. Valitse ajoneuvo painamalla tehtÃ¤vÃ¤ikkunassa: ALT + pikanÃ¤ppÃ¤in (Firefox: ALT + VAIHTO + pikanÃ¤ppÃ¤in; mac os: ctrl + alt + pikanÃ¤ppÃ¤in).",
+            intervention_order: "Muokkaa hÃ¤lytysjÃ¤rjestelyÃ¤",
             name: "Nimi",
-            no_intervention_created: "Et ole vielĂ¤ luonut yhtĂ¤Ă¤n hĂ¤lytysjĂ¤rjestelyĂ¤.",
+            no_intervention_created: "Et ole vielÃ¤ luonut yhtÃ¤Ã¤n hÃ¤lytysjÃ¤rjestelyÃ¤.",
             options: "Asetukset",
-            reset: "Nollaa aiempi valinta hĂ¤lytysikkunassa.",
-            reset_hint: "Jos olet valinnut ajoneuvon lĂ¤hetysikkunassa, voit nollata valinnan tĂ¤llĂ¤ painikkeella.",
+            reset: "Nollaa aiempi valinta hÃ¤lytysikkunassa.",
+            reset_hint: "Jos olet valinnut ajoneuvon lÃ¤hetysikkunassa, voit nollata valinnan tÃ¤llÃ¤ painikkeella.",
             save: "Tallenna",
             station: "Asema",
             station_hint: "Kun rakennus valitaan, vain kyseisen rakennuksen ajoneuvot valitaan.",
-            successfully_created: "HĂ¤lytysjĂ¤rjestelyn luonti onnistui.",
-            successfully_deleted: "HĂ¤lytysjĂ¤rjestely poistettu",
-            successfully_updated: "HĂ¤lytysjĂ¤rjestelyn pĂ¤ivitys onnistui.",
+            successfully_created: "HÃ¤lytysjÃ¤rjestelyn luonti onnistui.",
+            successfully_deleted: "HÃ¤lytysjÃ¤rjestely poistettu",
+            successfully_updated: "HÃ¤lytysjÃ¤rjestelyn pÃ¤ivitys onnistui.",
             vehicles: {
                 ab_atemschutz_only: "Paineilmalaitemoduuli",
                 ab_einsatzleitung_only: "Johtomoduuli",
                 ab_gefahrgut_only: "Kemikaalitorjuntamoduuli",
-                ab_oel_only: "Ă–ljyvahinkomoduuli",
+                ab_oel_only: "Ã–ljyvahinkomoduuli",
                 ab_ruest: "Tekniikka-/pelastusmoduuli",
                 ab_ruest_rw: "",
                 abl2wasser_only: "Letkumoduuli",
                 ambulance: "Hoitotason ambulanssi",
                 ambulance_or_rapid_responder: "",
-                arff: "LentokenttĂ¤paloauto",
+                arff: "LentokenttÃ¤paloauto",
                 battalion_chief_unit: "Johtoauto",
                 boot: "Alukset (yleinen)",
                 dekon_p: "",
@@ -10234,14 +10168,14 @@ function deleteMissionPosition(e) {
                 fwk: "",
                 gefkw: "",
                 gkw: "Kalustoauto",
-                grtw: "SuuronnettomuusyksikkĂ¶",
+                grtw: "SuuronnettomuusyksikkÃ¶",
                 grtw0: "",
                 grtw1: "",
                 grukw: "",
                 gw_atemschutz_only: "",
                 gw_gefahrgut: "Kemikaalitorjunta",
                 gw_gefahrgut_only: "",
-                gw_hoehenrettung: "GW-HĂ¶henrettung",
+                gw_hoehenrettung: "GW-HÃ¶henrettung",
                 gw_messtechnik: "GW-Messtechnik",
                 gw_oel_only: "",
                 gw_san: "",
@@ -10249,11 +10183,11 @@ function deleteMissionPosition(e) {
                 gw_wasserrettung: "Vesipelastus",
                 gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Letkuauto",
-                hems: "LĂ¤Ă¤kĂ¤rihelikopteri (HEMS)",
+                hems: "LÃ¤Ã¤kÃ¤rihelikopteri (HEMS)",
                 hlf_only: "",
                 hlf_or_rw_and_lf: "",
                 hondengeleider: "",
-                k9: "KoirayksikkĂ¶",
+                k9: "KoirayksikkÃ¶",
                 kdow_lna: "",
                 kdow_orgl: "Ensihoidon johtoauto",
                 ktw_b: "",
@@ -10261,16 +10195,16 @@ function deleteMissionPosition(e) {
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
                 lf_only: "Paloautot",
                 long_distance_ambulance: "BLS-ambulanssi",
-                mask_service_unit: "PaineilmalaiteyksikkĂ¶",
+                mask_service_unit: "PaineilmalaiteyksikkÃ¶",
                 mek_mtf: "",
                 mek_zf: "",
-                mtw: "MiehistĂ¶nkuljetusauto",
+                mtw: "MiehistÃ¶nkuljetusauto",
                 mzb: "Monitoimialus",
                 naw: "",
                 naw_or_rtw_and_nef: "",
                 naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Ambulanssi",
-                oil_unit: "GW-Ă–l",
+                oil_unit: "GW-Ã–l",
                 only_ab_dekon_p: "",
                 only_dekon_p: "",
                 ovd_p: "",
@@ -10280,14 +10214,14 @@ function deleteMissionPosition(e) {
                 rescue_vehicle_only: "Raskas pelastus",
                 rescueboat: "Iso pelastusalus",
                 rettungstreppe: "",
-                rth_only: "LĂ¤Ă¤kĂ¤rihelikopteri (HEMS)",
-                schlauchwagen: "SĂ¤iliĂ¶auto",
+                rth_only: "LÃ¤Ã¤kÃ¤rihelikopteri (HEMS)",
+                schlauchwagen: "SÃ¤iliÃ¶auto",
                 seg_elw: "",
                 sek_mtf: "",
                 sek_zf: "",
-                swat: "Karhu-ryhmĂ¤",
-                swat_armored_vehicle: "Karhu-ryhmĂ¤n panssaroitu auto",
-                swat_suv: "Karhu-ryhmĂ¤n auto",
+                swat: "Karhu-ryhmÃ¤",
+                swat_armored_vehicle: "Karhu-ryhmÃ¤n panssaroitu auto",
+                swat_suv: "Karhu-ryhmÃ¤n auto",
                 thw_anh_mzab: "",
                 thw_anh_mzb: "",
                 thw_anh_schlb: "",
@@ -10298,9 +10232,9 @@ function deleteMissionPosition(e) {
                 thw_mlw5: "",
                 thw_mtw: "Mannschaftstransportwagen Technischer Zug (MTW-TZ - THW)",
                 thw_mzkw: "Mehrzweckkraftwagen (MzKW)",
-                thw_tauchkraftwagen: "SukellusryhmĂ¤",
+                thw_tauchkraftwagen: "SukellusryhmÃ¤",
                 thw_tauchkraftwagen_or_gw_taucher: "",
-                tlf_only: "SĂ¤iliĂ¶auto",
+                tlf_only: "SÃ¤iliÃ¶auto",
                 tm50: "",
                 turboloescher: "",
                 turntable_ladder: "Nostolava-autot",
@@ -10315,86 +10249,86 @@ function deleteMissionPosition(e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: "Anna seuraavaksi asemalle nimi! Tee siitĂ¤ helposti tunnistettava ja skaalautuva. Esim. â€ťPaloasema 0001â€ť. Kun olet valmis, valitse Seuraava.",
-                            build_with_credits: "Rakenna rakennus krediiteillĂ¤!",
+                            add_name: "Anna seuraavaksi asemalle nimi! Tee siitÃ¤ helposti tunnistettava ja skaalautuva. Esim. â€Paloasema 0001â€. Kun olet valmis, valitse Seuraava.",
+                            build_with_credits: "Rakenna rakennus krediiteillÃ¤!",
                             new_building: "Napsauta Uusi rakennus -kohtaa!",
-                            select_building: "Valitse ensin rakennuksen tyyppi. Suosittelen aloittamaan paloasemalla! Joka tapauksessa on parasta aloittaa pienellĂ¤ asemalla.",
-                            select_position: "SiirrĂ¤ sininen merkki siihen kohtaan, johon haluat rakentaa ensimmĂ¤isen aseman."
+                            select_building: "Valitse ensin rakennuksen tyyppi. Suosittelen aloittamaan paloasemalla! Joka tapauksessa on parasta aloittaa pienellÃ¤ asemalla.",
+                            select_position: "SiirrÃ¤ sininen merkki siihen kohtaan, johon haluat rakentaa ensimmÃ¤isen aseman."
                         },
-                        pick_location: "Aloita valitsemalla sijainti. Kirjoita haluamasi paikan nimi hakukenttĂ¤Ă¤n tai etsi se itse kartalta. Miten olisi kotipaikkakuntasi?",
-                        welcome: "Moi! Tervetuloa HĂ¤tĂ¤keskuspeliin!  Annan sinulle joitakin ohjeita, jotta pĂ¤Ă¤set hyvin alkuun hĂ¤tĂ¤keskustyĂ¶ssĂ¤si."
+                        pick_location: "Aloita valitsemalla sijainti. Kirjoita haluamasi paikan nimi hakukenttÃ¤Ã¤n tai etsi se itse kartalta. Miten olisi kotipaikkakuntasi?",
+                        welcome: "Moi! Tervetuloa HÃ¤tÃ¤keskuspeliin!  Annan sinulle joitakin ohjeita, jotta pÃ¤Ã¤set hyvin alkuun hÃ¤tÃ¤keskustyÃ¶ssÃ¤si."
                     },
                     mobile: {
                         build_building: {
-                            add_name: "Anna seuraavaksi asemalle nimi! Tee siitĂ¤ helposti tunnistettava ja skaalautuva. Esim. â€ťPaloasema 0001â€ť. Kun olet valmis, valitse Seuraava.",
-                            build_with_credits: "Rakenna rakennus krediiteillĂ¤!",
-                            new_building: "Ensin valitaan aloitussijainti ja rakennetaan ensimmĂ¤inen rakennus. <br /> <br /> Tee niin napsauttamalla Uusi rakennus -kohtaa!",
-                            select_building: "Valitse ensin rakennuksen tyyppi. Suosittelen aloittamaan paloasemalla! Joka tapauksessa on parasta aloittaa pienellĂ¤ asemalla."
+                            add_name: "Anna seuraavaksi asemalle nimi! Tee siitÃ¤ helposti tunnistettava ja skaalautuva. Esim. â€Paloasema 0001â€. Kun olet valmis, valitse Seuraava.",
+                            build_with_credits: "Rakenna rakennus krediiteillÃ¤!",
+                            new_building: "Ensin valitaan aloitussijainti ja rakennetaan ensimmÃ¤inen rakennus. <br /> <br /> Tee niin napsauttamalla Uusi rakennus -kohtaa!",
+                            select_building: "Valitse ensin rakennuksen tyyppi. Suosittelen aloittamaan paloasemalla! Joka tapauksessa on parasta aloittaa pienellÃ¤ asemalla."
                         },
-                        welcome: "Moi! Tervetuloa HĂ¤tĂ¤keskuspeliin!  Annan sinulle joitakin ohjeita, jotta pĂ¤Ă¤set hyvin alkuun hĂ¤tĂ¤keskustyĂ¶ssĂ¤si."
+                        welcome: "Moi! Tervetuloa HÃ¤tÃ¤keskuspeliin!  Annan sinulle joitakin ohjeita, jotta pÃ¤Ã¤set hyvin alkuun hÃ¤tÃ¤keskustyÃ¶ssÃ¤si."
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "TĂ¤mĂ¤ on lĂ¤hetysvalikko. TĂ¤Ă¤ltĂ¤ voit lĂ¤hettĂ¤Ă¤ yksikĂ¶itĂ¤ tehtĂ¤viin.",
-                            dispatch_menu_buttons: "NĂ¤mĂ¤ kaksi ovat molemmat lĂ¤hetyspainikkeita! EnsimmĂ¤inen: â€ťLĂ¤hetĂ¤â€ť lĂ¤hettĂ¤Ă¤ valitut yksikĂ¶t tehtĂ¤vĂ¤Ă¤n. Toinen toimii samalla tavalla, mutta siirtyy seuraavaan tehtĂ¤vĂ¤Ă¤n. Napsauta nyt ensimmĂ¤istĂ¤ painiketta.",
-                            dispatch_menu_mission_general: "TĂ¤ssĂ¤ nĂ¤kyvĂ¤t tehtĂ¤vĂ¤n yleistiedot, eli sen nimen, osoitteen ja kuvakkeen. Pieni ihmiskuvake korvaa tĂ¤htikuvakkeen niissĂ¤ tehtĂ¤vissĂ¤, joihin olet jo osallistunut.",
-                            dispatch_menu_mission_progress: "TĂ¤ssĂ¤ nĂ¤kyy, miten tehtĂ¤vien kĂ¤sittely on edistynyt, sekĂ¤ paikalla olevan henkilĂ¶stĂ¶n mĂ¤Ă¤rĂ¤n ja tehtĂ¤vĂ¤n jĂ¤ljellĂ¤ olevan kĂ¤sittelyajan.",
-                            dispatch_menu_mission_specific: "TĂ¤ssĂ¤ nĂ¤kyvĂ¤t tehtĂ¤vĂ¤n lisĂ¤tiedot, kutsuun vastaavat yksikĂ¶t ja paikalla jo olevat yksikĂ¶t.",
-                            dispatch_menu_vehicle_list: "TĂ¤ssĂ¤ nĂ¤kyy kĂ¤ytettĂ¤vissĂ¤ olevien ajoneuvojen lista. TĂ¤ssĂ¤ valitset ajoneuvot. Valitse ajoneuvo napsauttamalla sitĂ¤."
+                            dispatch_menu: "TÃ¤mÃ¤ on lÃ¤hetysvalikko. TÃ¤Ã¤ltÃ¤ voit lÃ¤hettÃ¤Ã¤ yksikÃ¶itÃ¤ tehtÃ¤viin.",
+                            dispatch_menu_buttons: "NÃ¤mÃ¤ kaksi ovat molemmat lÃ¤hetyspainikkeita! EnsimmÃ¤inen: â€LÃ¤hetÃ¤â€ lÃ¤hettÃ¤Ã¤ valitut yksikÃ¶t tehtÃ¤vÃ¤Ã¤n. Toinen toimii samalla tavalla, mutta siirtyy seuraavaan tehtÃ¤vÃ¤Ã¤n. Napsauta nyt ensimmÃ¤istÃ¤ painiketta.",
+                            dispatch_menu_mission_general: "TÃ¤ssÃ¤ nÃ¤kyvÃ¤t tehtÃ¤vÃ¤n yleistiedot, eli sen nimen, osoitteen ja kuvakkeen. Pieni ihmiskuvake korvaa tÃ¤htikuvakkeen niissÃ¤ tehtÃ¤vissÃ¤, joihin olet jo osallistunut.",
+                            dispatch_menu_mission_progress: "TÃ¤ssÃ¤ nÃ¤kyy, miten tehtÃ¤vien kÃ¤sittely on edistynyt, sekÃ¤ paikalla olevan henkilÃ¶stÃ¶n mÃ¤Ã¤rÃ¤n ja tehtÃ¤vÃ¤n jÃ¤ljellÃ¤ olevan kÃ¤sittelyajan.",
+                            dispatch_menu_mission_specific: "TÃ¤ssÃ¤ nÃ¤kyvÃ¤t tehtÃ¤vÃ¤n lisÃ¤tiedot, kutsuun vastaavat yksikÃ¶t ja paikalla jo olevat yksikÃ¶t.",
+                            dispatch_menu_vehicle_list: "TÃ¤ssÃ¤ nÃ¤kyy kÃ¤ytettÃ¤vissÃ¤ olevien ajoneuvojen lista. TÃ¤ssÃ¤ valitset ajoneuvot. Valitse ajoneuvo napsauttamalla sitÃ¤."
                         },
                         mobile: {
-                            dispatch_menu: "TĂ¤mĂ¤ on lĂ¤hetysvalikko. TĂ¤Ă¤ltĂ¤ voit lĂ¤hettĂ¤Ă¤ yksikĂ¶itĂ¤ tehtĂ¤viin.",
-                            dispatch_menu_buttons: "NĂ¤mĂ¤ kaksi ovat molemmat lĂ¤hetyspainikkeita! EnsimmĂ¤inen: â€ťLĂ¤hetĂ¤â€ť lĂ¤hettĂ¤Ă¤ valitut yksikĂ¶t tehtĂ¤vĂ¤Ă¤n. Toinen toimii samalla tavalla, mutta siirtyy seuraavaan tehtĂ¤vĂ¤Ă¤n. Napsauta nyt ensimmĂ¤istĂ¤ painiketta.",
-                            dispatch_menu_mission_general: "TĂ¤ssĂ¤ nĂ¤kyvĂ¤t tehtĂ¤vĂ¤n yleistiedot, eli sen nimen, osoitteen ja kuvakkeen. Pieni ihmiskuvake korvaa tĂ¤htikuvakkeen niissĂ¤ tehtĂ¤vissĂ¤, joihin olet jo osallistunut.",
-                            dispatch_menu_mission_progress: "TĂ¤ssĂ¤ nĂ¤kyy, miten tehtĂ¤vien kĂ¤sittely on edistynyt, sekĂ¤ paikalla olevan henkilĂ¶stĂ¶n mĂ¤Ă¤rĂ¤n ja tehtĂ¤vĂ¤n jĂ¤ljellĂ¤ olevan kĂ¤sittelyajan.",
-                            dispatch_menu_mission_specific: "TĂ¤ssĂ¤ nĂ¤kyvĂ¤t tehtĂ¤vĂ¤n lisĂ¤tiedot, kutsuun vastaavat yksikĂ¶t ja paikalla jo olevat yksikĂ¶t.",
-                            dispatch_menu_vehicle_list: "TĂ¤ssĂ¤ nĂ¤kyy kĂ¤ytettĂ¤vissĂ¤ olevien ajoneuvojen lista. TĂ¤ssĂ¤ valitset ajoneuvot. Valitse ajoneuvo napsauttamalla sitĂ¤."
+                            dispatch_menu: "TÃ¤mÃ¤ on lÃ¤hetysvalikko. TÃ¤Ã¤ltÃ¤ voit lÃ¤hettÃ¤Ã¤ yksikÃ¶itÃ¤ tehtÃ¤viin.",
+                            dispatch_menu_buttons: "NÃ¤mÃ¤ kaksi ovat molemmat lÃ¤hetyspainikkeita! EnsimmÃ¤inen: â€LÃ¤hetÃ¤â€ lÃ¤hettÃ¤Ã¤ valitut yksikÃ¶t tehtÃ¤vÃ¤Ã¤n. Toinen toimii samalla tavalla, mutta siirtyy seuraavaan tehtÃ¤vÃ¤Ã¤n. Napsauta nyt ensimmÃ¤istÃ¤ painiketta.",
+                            dispatch_menu_mission_general: "TÃ¤ssÃ¤ nÃ¤kyvÃ¤t tehtÃ¤vÃ¤n yleistiedot, eli sen nimen, osoitteen ja kuvakkeen. Pieni ihmiskuvake korvaa tÃ¤htikuvakkeen niissÃ¤ tehtÃ¤vissÃ¤, joihin olet jo osallistunut.",
+                            dispatch_menu_mission_progress: "TÃ¤ssÃ¤ nÃ¤kyy, miten tehtÃ¤vien kÃ¤sittely on edistynyt, sekÃ¤ paikalla olevan henkilÃ¶stÃ¶n mÃ¤Ã¤rÃ¤n ja tehtÃ¤vÃ¤n jÃ¤ljellÃ¤ olevan kÃ¤sittelyajan.",
+                            dispatch_menu_mission_specific: "TÃ¤ssÃ¤ nÃ¤kyvÃ¤t tehtÃ¤vÃ¤n lisÃ¤tiedot, kutsuun vastaavat yksikÃ¶t ja paikalla jo olevat yksikÃ¶t.",
+                            dispatch_menu_vehicle_list: "TÃ¤ssÃ¤ nÃ¤kyy kÃ¤ytettÃ¤vissÃ¤ olevien ajoneuvojen lista. TÃ¤ssÃ¤ valitset ajoneuvot. Valitse ajoneuvo napsauttamalla sitÃ¤."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "Nyt on aika oppia, miten tapauksia kĂ¤sitellĂ¤Ă¤n. Avaa lĂ¤hetysvalikko napsauttamalla LĂ¤hetĂ¤-painiketta.",
-                            first_mission: "Hienoa, ensimmĂ¤inen rakennus on valmis! Katso, olet saanut ilmoituksen ensimmĂ¤isistĂ¤ tehtĂ¤vistĂ¤!"
+                            dispatch_button: "Nyt on aika oppia, miten tapauksia kÃ¤sitellÃ¤Ã¤n. Avaa lÃ¤hetysvalikko napsauttamalla LÃ¤hetÃ¤-painiketta.",
+                            first_mission: "Hienoa, ensimmÃ¤inen rakennus on valmis! Katso, olet saanut ilmoituksen ensimmÃ¤isistÃ¤ tehtÃ¤vistÃ¤!"
                         },
                         mobile: {
-                            dispatch_button: "Nyt on aika oppia, miten tapauksia kĂ¤sitellĂ¤Ă¤n. Avaa lĂ¤hetysvalikko napsauttamalla LĂ¤hetĂ¤-painiketta.",
-                            first_mission: "Hienoa, ensimmĂ¤inen rakennus on valmis! Katso, olet saanut ilmoituksen ensimmĂ¤isistĂ¤ tehtĂ¤vistĂ¤!"
+                            dispatch_button: "Nyt on aika oppia, miten tapauksia kÃ¤sitellÃ¤Ã¤n. Avaa lÃ¤hetysvalikko napsauttamalla LÃ¤hetÃ¤-painiketta.",
+                            first_mission: "Hienoa, ensimmÃ¤inen rakennus on valmis! Katso, olet saanut ilmoituksen ensimmÃ¤isistÃ¤ tehtÃ¤vistÃ¤!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Hienoa, sinusta on jo tulossa erinomainen hĂ¤tĂ¤keskusjohtaja! TĂ¤ssĂ¤ %{coins} kolikkoa, jotta pĂ¤Ă¤set alkuun! </br> HĂ¤tĂ¤keskuspelin tiimi"
+                        general: "Hienoa, sinusta on jo tulossa erinomainen hÃ¤tÃ¤keskusjohtaja! TÃ¤ssÃ¤ %{coins} kolikkoa, jotta pÃ¤Ã¤set alkuun! </br> HÃ¤tÃ¤keskuspelin tiimi"
                     },
                     mobile: {
-                        general: "Hienoa, sinusta on jo tulossa erinomainen hĂ¤tĂ¤keskusjohtaja! TĂ¤ssĂ¤ %{coins} kolikkoa, jotta pĂ¤Ă¤set alkuun! </br> HĂ¤tĂ¤keskuspelin tiimi"
+                        general: "Hienoa, sinusta on jo tulossa erinomainen hÃ¤tÃ¤keskusjohtaja! TÃ¤ssÃ¤ %{coins} kolikkoa, jotta pÃ¤Ã¤set alkuun! </br> HÃ¤tÃ¤keskuspelin tiimi"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Jos sinulla on kysyttĂ¤vĂ¤Ă¤, voit tutustua pelin UKK-sivuun tai kĂ¤ydĂ¤ pelin keskustelupalstalla tai Facebook-sivullamme.",
-                        general: "Seuraavaksi suosittelen rakentamaan hĂ¤tĂ¤keskuksen ja sitten mahdollisimman pian uusia asemia, sillĂ¤ tehtĂ¤vien enimmĂ¤ismĂ¤Ă¤rĂ¤ on sama kuin erityyppisten asemien (poliisiasema, paloasema, ambulanssiasema) enimmĂ¤ismĂ¤Ă¤rĂ¤ plus 1, eli 5 palo- ja 3 ambulanssiasemaa = 6 tehtĂ¤vĂ¤Ă¤.",
-                        join_alliance: "MyĂ¶s liittoutumaan liittyminen on hyĂ¶dyksi erityisesti alussa, joten sekin on suositeltavaa.",
-                        summary: "TĂ¤ssĂ¤ olivat HĂ¤tĂ¤keskuspelin perusteet! Suorita tehtĂ¤viĂ¤, kerĂ¤Ă¤ krediittejĂ¤, osta uusia yksikĂ¶itĂ¤, toista. Hauskaa pelaamista! </br> HĂ¤tĂ¤keskuspelin tiimi"
+                        contact: "Jos sinulla on kysyttÃ¤vÃ¤Ã¤, voit tutustua pelin UKK-sivuun tai kÃ¤ydÃ¤ pelin keskustelupalstalla tai Facebook-sivullamme.",
+                        general: "Seuraavaksi suosittelen rakentamaan hÃ¤tÃ¤keskuksen ja sitten mahdollisimman pian uusia asemia, sillÃ¤ tehtÃ¤vien enimmÃ¤ismÃ¤Ã¤rÃ¤ on sama kuin erityyppisten asemien (poliisiasema, paloasema, ambulanssiasema) enimmÃ¤ismÃ¤Ã¤rÃ¤ plus 1, eli 5 palo- ja 3 ambulanssiasemaa = 6 tehtÃ¤vÃ¤Ã¤.",
+                        join_alliance: "MyÃ¶s liittoutumaan liittyminen on hyÃ¶dyksi erityisesti alussa, joten sekin on suositeltavaa.",
+                        summary: "TÃ¤ssÃ¤ olivat HÃ¤tÃ¤keskuspelin perusteet! Suorita tehtÃ¤viÃ¤, kerÃ¤Ã¤ krediittejÃ¤, osta uusia yksikÃ¶itÃ¤, toista. Hauskaa pelaamista! </br> HÃ¤tÃ¤keskuspelin tiimi"
                     },
                     mobile: {
-                        contact: "Jos sinulla on kysyttĂ¤vĂ¤Ă¤, voit tutustua pelin UKK-sivuun tai kĂ¤ydĂ¤ pelin keskustelupalstalla tai Facebook-sivullamme.",
-                        general: "Seuraavaksi suosittelen rakentamaan hĂ¤tĂ¤keskuksen ja sitten mahdollisimman pian uusia asemia, sillĂ¤ tehtĂ¤vien enimmĂ¤ismĂ¤Ă¤rĂ¤ on sama kuin erityyppisten asemien (poliisiasema, paloasema, ambulanssiasema) enimmĂ¤ismĂ¤Ă¤rĂ¤ plus 1, eli 5 palo- ja 3 ambulanssiasemaa = 6 tehtĂ¤vĂ¤Ă¤.",
-                        join_alliance: "MyĂ¶s liittoutumaan liittyminen on hyĂ¶dyksi erityisesti alussa, joten sekin on suositeltavaa.",
-                        summary: "TĂ¤ssĂ¤ olivat HĂ¤tĂ¤keskuspelin perusteet! Suorita tehtĂ¤viĂ¤, kerĂ¤Ă¤ krediittejĂ¤, osta uusia yksikĂ¶itĂ¤, toista. Hauskaa pelaamista! </br> HĂ¤tĂ¤keskuspelin tiimi"
+                        contact: "Jos sinulla on kysyttÃ¤vÃ¤Ã¤, voit tutustua pelin UKK-sivuun tai kÃ¤ydÃ¤ pelin keskustelupalstalla tai Facebook-sivullamme.",
+                        general: "Seuraavaksi suosittelen rakentamaan hÃ¤tÃ¤keskuksen ja sitten mahdollisimman pian uusia asemia, sillÃ¤ tehtÃ¤vien enimmÃ¤ismÃ¤Ã¤rÃ¤ on sama kuin erityyppisten asemien (poliisiasema, paloasema, ambulanssiasema) enimmÃ¤ismÃ¤Ã¤rÃ¤ plus 1, eli 5 palo- ja 3 ambulanssiasemaa = 6 tehtÃ¤vÃ¤Ã¤.",
+                        join_alliance: "MyÃ¶s liittoutumaan liittyminen on hyÃ¶dyksi erityisesti alussa, joten sekin on suositeltavaa.",
+                        summary: "TÃ¤ssÃ¤ olivat HÃ¤tÃ¤keskuspelin perusteet! Suorita tehtÃ¤viÃ¤, kerÃ¤Ã¤ krediittejÃ¤, osta uusia yksikÃ¶itÃ¤, toista. Hauskaa pelaamista! </br> HÃ¤tÃ¤keskuspelin tiimi"
                     }
                 }
             },
             commons: {
-                collect: "KerĂ¤Ă¤",
+                collect: "KerÃ¤Ã¤",
                 "continue": "Ei",
                 end: "Loppu",
                 next: "Edell.",
                 prev: "Seur.",
-                skip: "KyllĂ¤",
-                skip_hint: "Haluatko varmasti peruuttaa opetuspelin? Siihen ei voi palata myĂ¶hemmin. Et saa opetuspelin suorituspalkintoa."
+                skip: "KyllÃ¤",
+                skip_hint: "Haluatko varmasti peruuttaa opetuspelin? Siihen ei voi palata myÃ¶hemmin. Et saa opetuspelin suorituspalkintoa."
             },
             rewards: {
                 log: "Palkinto opetuspelin pelaamisesta loppuun."
@@ -10402,260 +10336,260 @@ function deleteMissionPosition(e) {
         }
     }, I18n.translations.sk_SK = {
         common: {
-            add: "PridaĹĄ",
-            back: "SpĂ¤ĹĄ",
-            cancel: "ZruĹˇiĹĄ",
-            change_saved: "Zmeny uloĹľenĂ©",
-            coins_spend: "Naozaj chcete minĂşĹĄ tieto mince?",
+            add: "PridaÅ¥",
+            back: "SpÃ¤Å¥",
+            cancel: "ZruÅ¡iÅ¥",
+            change_saved: "Zmeny uloÅ¾enÃ©",
+            coins_spend: "Naozaj chcete minÃºÅ¥ tieto mince?",
             congratulations: "Gratulujeme!",
             content: "Obsah",
-            copy: "KopĂ­rovaĹĄ",
+            copy: "KopÃ­rovaÅ¥",
             credits: "Kredity",
-            "delete": "VymazaĹĄ",
+            "delete": "VymazaÅ¥",
             details: "Podrobnosti",
-            edit: "UpraviĹĄ",
+            edit: "UpraviÅ¥",
             error: "Chyba",
             is_offline: "%{user} je offline.",
             is_offline_long: "Dlho: %{user} je offline",
             is_online: "%{user} je online.",
-            loading: "NaÄŤĂ­tava sa...",
-            name: "NĂˇzov",
-            none: "Ĺ˝iadne",
+            loading: "NaÄÃ­tava sa...",
+            name: "NÃ¡zov",
+            none: "Å½iadne",
             of: "z",
             off: "Vyp.",
             on: "Zap.",
-            save: "UloĹľiĹĄ",
-            search: "VyhÄľadaĹĄ",
-            show: "ZobraziĹĄ",
-            user_not_found: "PouĹľĂ­vateÄľ sa nenaĹˇiel",
-            wrong_key: "NesprĂˇvny kÄľĂşÄŤ"
+            save: "UloÅ¾iÅ¥",
+            search: "VyhÄ¾adaÅ¥",
+            show: "ZobraziÅ¥",
+            user_not_found: "PouÅ¾Ã­vateÄ¾ sa nenaÅ¡iel",
+            wrong_key: "NesprÃ¡vny kÄ¾ÃºÄ"
         },
         javascript: {
-            alarm: "VyslaĹĄ",
-            arrival: "PrĂ­chod",
-            backalarm: "ZruĹˇiĹĄ",
+            alarm: "VyslaÅ¥",
+            arrival: "PrÃ­chod",
+            backalarm: "ZruÅ¡iÅ¥",
             coins: "Mince",
             credits: "Kredity",
-            days: "dnĂ­",
-            few_seconds: "o niekoÄľko sekĂşnd",
+            days: "dnÃ­",
+            few_seconds: "o niekoÄ¾ko sekÃºnd",
             finish_in: "Koniec:",
             hours: "H",
-            location_not_found: "NenaĹˇlo sa",
-            messages: "SprĂˇvy",
+            location_not_found: "NenaÅ¡lo sa",
+            messages: "SprÃ¡vy",
             minutes: "min.",
-            missed_vehicle: "ChĂ˝ba:",
-            mission_start_in: "ZaÄŤiatok:",
-            not_found_map: "Vozidlo sa nenaĹˇlo na mape",
+            missed_vehicle: "ChÃ½ba:",
+            mission_start_in: "ZaÄiatok:",
+            not_found_map: "Vozidlo sa nenaÅ¡lo na mape",
             now: "Teraz",
             patient: "Pacient",
-            patient_untouched: "NelieÄŤenĂ­ pacienti",
-            poi_delete: "Naozaj chcete vymazaĹĄ POI: %{caption}?",
-            reload: "Znovu naÄŤĂ­taĹĄ",
-            sale: "PredaĹĄ",
-            sale_ended: "Predaj ukonÄŤenĂ˝",
+            patient_untouched: "NelieÄenÃ­ pacienti",
+            poi_delete: "Naozaj chcete vymazaÅ¥ POI: %{caption}?",
+            reload: "Znovu naÄÃ­taÅ¥",
+            sale: "PredaÅ¥",
+            sale_ended: "Predaj ukonÄenÃ½",
             secounds: "sek.",
-            sicherheitswache_error: 'Ochrana "%{caption}" nebola ĂşspeĹˇnĂˇ, pretoĹľe neboli splnenĂ© vĹˇetky kritĂ©riĂˇ.',
-            sicherheitswache_success: 'Ochrana "%{caption}" prebehla ĂşspeĹˇne. ZĂ­skaj %{credits} kreditov.',
-            start_in: "ZaÄŤiatok: ",
-            start_username: "Ĺ tartĂ©r:",
-            time_left: "ZostĂˇvajĂşci ÄŤas:",
-            to_building: "ZobraziĹĄ budovu",
-            to_mission: "ZobraziĹĄ misiu",
-            understand: "PotvrdiĹĄ prĂ­jem",
-            user_not_found: "HrĂˇÄŤ sa nenaĹˇiel.",
-            vehicles_not_visible: "Vozidlo nie je viditeÄľnĂ©. "
+            sicherheitswache_error: 'Ochrana "%{caption}" nebola ÃºspeÅ¡nÃ¡, pretoÅ¾e neboli splnenÃ© vÅ¡etky kritÃ©riÃ¡.',
+            sicherheitswache_success: 'Ochrana "%{caption}" prebehla ÃºspeÅ¡ne. ZÃ­skaj %{credits} kreditov.',
+            start_in: "ZaÄiatok: ",
+            start_username: "Å tartÃ©r:",
+            time_left: "ZostÃ¡vajÃºci Äas:",
+            to_building: "ZobraziÅ¥ budovu",
+            to_mission: "ZobraziÅ¥ misiu",
+            understand: "PotvrdiÅ¥ prÃ­jem",
+            user_not_found: "HrÃ¡Ä sa nenaÅ¡iel.",
+            vehicles_not_visible: "Vozidlo nie je viditeÄ¾nÃ©. "
         },
         map: {
             alliance: "Aliancia",
             alliance_chat: "Chat",
-            alliance_chat_banned: "MomentĂˇlne mĂˇte zakĂˇzanĂ˝ alianÄŤnĂ˝ chat.",
-            alliance_chat_banned_admin: "ZĂˇkaz od:",
-            alliance_chat_banned_timeleft: "ZostĂˇvajĂşci ÄŤas:",
-            alliance_chat_radio_off: "AlianÄŤnĂˇ vysielaÄŤka: Vyp.",
-            alliance_chat_radio_on: "AlianÄŤnĂˇ vysielaÄŤka: Zap.",
-            alliance_event: "UdalosĹĄ",
+            alliance_chat_banned: "MomentÃ¡lne mÃ¡te zakÃ¡zanÃ½ alianÄnÃ½ chat.",
+            alliance_chat_banned_admin: "ZÃ¡kaz od:",
+            alliance_chat_banned_timeleft: "ZostÃ¡vajÃºci Äas:",
+            alliance_chat_radio_off: "AlianÄnÃ¡ vysielaÄka: Vyp.",
+            alliance_chat_radio_on: "AlianÄnÃ¡ vysielaÄka: Zap.",
+            alliance_event: "UdalosÅ¥",
             alliance_missions: "Misie aliancie",
-            alliance_missions_event: "UdalosĹĄ",
-            ambulance: "SanitnĂ© vozidlo",
+            alliance_missions_event: "UdalosÅ¥",
+            ambulance: "SanitnÃ© vozidlo",
             challenges: "",
-            chat_history: "HistĂłria chatu",
-            congratulations: "Gratulujeme! Teraz mĂ´Ĺľete byĹĄ povĂ˝ĹˇenĂ˝.",
-            create_alliance_event: "SpustiĹĄ udalosĹĄ aliancie",
-            create_alliance_operation: "Vytvorte rozsiahlu alianÄŤnĂş misiu",
-            emergency: "Mimoriadna udalosĹĄ",
-            join_alliance_infos: "Ak ste v aliancii, ostatnĂ­ hrĂˇÄŤi vĂˇm mĂ´Ĺľu zadarmo dĂˇvaĹĄ misie.",
+            chat_history: "HistÃ³ria chatu",
+            congratulations: "Gratulujeme! Teraz mÃ´Å¾ete byÅ¥ povÃ½Å¡enÃ½.",
+            create_alliance_event: "SpustiÅ¥ udalosÅ¥ aliancie",
+            create_alliance_operation: "Vytvorte rozsiahlu alianÄnÃº misiu",
+            emergency: "Mimoriadna udalosÅ¥",
+            join_alliance_infos: "Ak ste v aliancii, ostatnÃ­ hrÃ¡Äi vÃ¡m mÃ´Å¾u zadarmo dÃ¡vaÅ¥ misie.",
             map: "Mapa",
             map_filters: {
                 all_buildings: "Budovy",
                 all_missions: "Misie",
-                alliance_buildings: "AlianÄŤnĂ© budovy",
-                alliance_members: "ÄŚlenovia",
-                alliance_missions: "ZdieÄľanĂ© alianciou",
+                alliance_buildings: "AlianÄnÃ© budovy",
+                alliance_members: "ÄŒlenovia",
+                alliance_missions: "ZdieÄ¾anÃ© alianciou",
                 ambulance_station_missions: "Stanica ZZS",
-                ambulance_station_small_missions: "Stanica ZZS (malĂˇ stanica)",
+                ambulance_station_small_missions: "Stanica ZZS (malÃ¡ stanica)",
                 clinic_missions: "Klinika",
-                dispatch_center_missions: "DispeÄŤerskĂ© centrum",
-                fire_school_missions: "HasiÄŤskĂˇ akadĂ©mia",
-                firehouse_missions: "HasiÄŤi",
-                firehouse_small_missions: "HasiÄŤi (malĂˇ)",
+                dispatch_center_missions: "DispeÄerskÃ© centrum",
+                fire_school_missions: "HasiÄskÃ¡ akadÃ©mia",
+                firehouse_missions: "HasiÄi",
+                firehouse_small_missions: "HasiÄi (malÃ¡)",
                 hospital_missions: "Nemocnica",
                 map_filters: "Zoznam filtrov mapy",
-                mission_positions: "Body zĂˇujmu (POI)",
-                police_copter_station_missions: "PolicajnĂ© letectvo",
-                police_school_missions: "PolicajnĂˇ akadĂ©mia",
-                police_small_missions: "PolicajnĂˇ stanica (malĂˇ stanica)",
-                police_special_forces: "PolicajnĂ© ĹˇpeciĂˇlne jednotky",
-                police_station_missions: "PolicajnĂˇ stanica",
-                prison_missions: "VĂ¤zenie",
-                rapid_deployment_group: "Skupina rĂ˝chleho nasadenia (SEG)",
-                rescue_copter_station_missions: "LekĂˇrska vrtuÄľnĂ­kovĂˇ stanica",
-                riot_police: "PoriadkovĂˇ polĂ­cia",
-                staging_area_missions: "SkĂşĹˇobnĂˇ oblasĹĄ",
-                technical_aid_organization: "OrganizĂˇcia technickej pomoci",
+                mission_positions: "Body zÃ¡ujmu (POI)",
+                police_copter_station_missions: "PolicajnÃ© letectvo",
+                police_school_missions: "PolicajnÃ¡ akadÃ©mia",
+                police_small_missions: "PolicajnÃ¡ stanica (malÃ¡ stanica)",
+                police_special_forces: "PolicajnÃ© Å¡peciÃ¡lne jednotky",
+                police_station_missions: "PolicajnÃ¡ stanica",
+                prison_missions: "VÃ¤zenie",
+                rapid_deployment_group: "Skupina rÃ½chleho nasadenia (SEG)",
+                rescue_copter_station_missions: "LekÃ¡rska vrtuÄ¾nÃ­kovÃ¡ stanica",
+                riot_police: "PoriadkovÃ¡ polÃ­cia",
+                staging_area_missions: "SkÃºÅ¡obnÃ¡ oblasÅ¥",
+                technical_aid_organization: "OrganizÃ¡cia technickej pomoci",
                 technical_aid_organization_school: "THW Bundesschule",
                 user_buildings: "Moje budovy",
                 user_missions: "Moje misie",
-                water_watch: "VodnĂˇ zĂˇchrannĂˇ sluĹľba"
+                water_watch: "VodnÃ¡ zÃ¡chrannÃ¡ sluÅ¾ba"
             },
-            message: "SprĂˇva",
+            message: "SprÃ¡va",
             mission: "Misia",
             no_alliance_chat_impossible: "Nie ste v aliancii.",
-            no_alliance_missions: "MomentĂˇlne nie sĂş Ĺľiadne misie aliancie.",
-            no_ambulance_missions: "MomentĂˇlne nie sĂş Ĺľiadne zĂˇchrannĂ© misie. ZĂˇchrannĂ© misie sa mĂ´Ĺľu vyskytnĂşĹĄ iba v prĂ­pade, Ĺľe mĂˇte sanitnĂ© vozidlo a nemocnicu.",
-            no_emergency_missions: "MomentĂˇlne nie sĂş Ĺľiadne nĂşdzovĂ© misie. NĂşdzovĂˇ misia sa mĂ´Ĺľe vyskytnĂşĹĄ iba v prĂ­pade, Ĺľe vybudujete prvĂş stanicu.",
-            no_radio_messages: "Nedostali ste Ĺľiadne rĂˇdiovĂ© sprĂˇvy.",
-            radio_messages: "VysielaÄŤka",
-            restore_map: "ObnoviĹĄ mapu",
-            show_informations: "ZelenĂˇ = Misie sĂş zobrazenĂ© v zozname. ÄŚervenĂˇ = Misie nie sĂş zobrazenĂ©.",
-            sicherheitswache: "PlĂˇnovanĂ© vĂ˝skyty",
+            no_alliance_missions: "MomentÃ¡lne nie sÃº Å¾iadne misie aliancie.",
+            no_ambulance_missions: "MomentÃ¡lne nie sÃº Å¾iadne zÃ¡chrannÃ© misie. ZÃ¡chrannÃ© misie sa mÃ´Å¾u vyskytnÃºÅ¥ iba v prÃ­pade, Å¾e mÃ¡te sanitnÃ© vozidlo a nemocnicu.",
+            no_emergency_missions: "MomentÃ¡lne nie sÃº Å¾iadne nÃºdzovÃ© misie. NÃºdzovÃ¡ misia sa mÃ´Å¾e vyskytnÃºÅ¥ iba v prÃ­pade, Å¾e vybudujete prvÃº stanicu.",
+            no_radio_messages: "Nedostali ste Å¾iadne rÃ¡diovÃ© sprÃ¡vy.",
+            radio_messages: "VysielaÄka",
+            restore_map: "ObnoviÅ¥ mapu",
+            show_informations: "ZelenÃ¡ = Misie sÃº zobrazenÃ© v zozname. ÄŒervenÃ¡ = Misie nie sÃº zobrazenÃ©.",
+            sicherheitswache: "PlÃ¡novanÃ© vÃ½skyty",
             transport: "Transport"
         },
         fms: {
-            going: "ReagovaĹĄ",
-            not_ready: "Mimo prevĂˇdzky",
+            going: "ReagovaÅ¥",
+            not_ready: "Mimo prevÃ¡dzky",
             on_destination: "V cieli transportu",
-            on_place: "Na scĂ©ne",
+            on_place: "Na scÃ©ne",
             patient_transported: "Transportovanie pacienta",
-            prisoner_transported: "Transportovanie vĂ¤zĹa",
-            ready_home: "DostupnĂ© na stanici",
-            ready_traveling: "JasnĂ© a dostupnĂ©",
-            talking_wish: "PoĹľiadavka na transport",
-            waiting_for_vehicle: "ÄŚakĂˇ vleÄŤnĂ© vozidlo"
+            prisoner_transported: "Transportovanie vÃ¤zÅˆa",
+            ready_home: "DostupnÃ© na stanici",
+            ready_traveling: "JasnÃ© a dostupnÃ©",
+            talking_wish: "PoÅ¾iadavka na transport",
+            waiting_for_vehicle: "ÄŒakÃ¡ vleÄnÃ© vozidlo"
         },
         intervention_order: {
-            back: "SpĂ¤ĹĄ",
-            category: "KategĂłria",
+            back: "SpÃ¤Å¥",
+            category: "KategÃ³ria",
             colour: "Farba",
-            column: "StÄşpec",
-            column_number: "ÄŚĂ­slo stÄşpca",
-            column_number_hint: "Ak je zadanĂ© ÄŤĂ­slo stÄşpca, zobrazĂ­ sa v prĂ­sluĹˇnom stÄşpci na strĂˇnke s upozorneniami poloĹľka Alarm a reakcia.",
-            create_intervention_order: "VytvoriĹĄ novĂ© riadenie alarmov a reakciĂ­",
-            "delete": "VymazaĹĄ",
-            delete_all: "Ăšplne vymazaĹĄ riadenie alarmov a reakciĂ­",
-            delete_all_confirm: "Naozaj chcete vymazaĹĄ celĂ© riadenie alarmov a reakciĂ­? ExistujĂşce exportovanĂ© poloĹľky uĹľ nie sĂş k dispozĂ­cii!",
-            description: "NĂˇzov",
-            edit: "UpraviĹĄ",
+            column: "StÄºpec",
+            column_number: "ÄŒÃ­slo stÄºpca",
+            column_number_hint: "Ak je zadanÃ© ÄÃ­slo stÄºpca, zobrazÃ­ sa v prÃ­sluÅ¡nom stÄºpci na strÃ¡nke s upozorneniami poloÅ¾ka Alarm a reakcia.",
+            create_intervention_order: "VytvoriÅ¥ novÃ© riadenie alarmov a reakciÃ­",
+            "delete": "VymazaÅ¥",
+            delete_all: "Ãšplne vymazaÅ¥ riadenie alarmov a reakciÃ­",
+            delete_all_confirm: "Naozaj chcete vymazaÅ¥ celÃ© riadenie alarmov a reakciÃ­? ExistujÃºce exportovanÃ© poloÅ¾ky uÅ¾ nie sÃº k dispozÃ­cii!",
+            description: "NÃ¡zov",
+            edit: "UpraviÅ¥",
             "export": {
-                "export": "ExportovaĹĄ",
-                "import": "ImportovaĹĄ",
-                import_done: "VybranĂ© poloĹľky boli importovanĂ© a zapĂ­sanĂ© do plĂˇnu alarmov a reakciĂ­.",
-                saved: "Riadenie alarmov a reakciĂ­ sa exportuje",
-                saved_text: "VaĹˇe riadenie alarmov a reakciĂ­ bolo pripravenĂ© na export. Cez odkaz mĂ´Ĺľe inĂ˝ hrĂˇÄŤ importovaĹĄ riadenie alarmov a reakciĂ­. Ak medzitĂ˝m zmenĂ­te svoje riadenia alarmov a reakciĂ­, aplikuje sa tĂˇto zmena automaticky v exporte."
+                "export": "ExportovaÅ¥",
+                "import": "ImportovaÅ¥",
+                import_done: "VybranÃ© poloÅ¾ky boli importovanÃ© a zapÃ­sanÃ© do plÃ¡nu alarmov a reakciÃ­.",
+                saved: "Riadenie alarmov a reakciÃ­ sa exportuje",
+                saved_text: "VaÅ¡e riadenie alarmov a reakciÃ­ bolo pripravenÃ© na export. Cez odkaz mÃ´Å¾e inÃ½ hrÃ¡Ä importovaÅ¥ riadenie alarmov a reakciÃ­. Ak medzitÃ½m zmenÃ­te svoje riadenia alarmov a reakciÃ­, aplikuje sa tÃ¡to zmena automaticky v exporte."
             },
-            hotkey_hint: "Vyberte klĂˇvesovĂş skratku na tento vĂ˝ber vozidla. StlaÄŤte pri okne svojej misie: ALT + vĂˇĹˇ klĂˇves (alebo vo Firefox: ALT + SHIFT + vĂˇĹˇ klĂˇves alebo v OS Mac: ctrl + alt + vĂˇĹˇ klĂˇves) a zvoÄľte svoj vĂ˝ber vozidla.",
-            intervention_order: "UpraviĹĄ riadenie alarmov a reakciĂ­",
-            name: "NĂˇzov",
-            no_intervention_created: "EĹˇte ste nevytvorili Ĺľiadne riadenie alarmov a reakciĂ­.",
-            options: "MoĹľnosti",
-            reset: "Resetujte predchĂˇdzajĂşci vĂ˝ber v okne alarmu.",
-            reset_hint: "Ak ste vozidlo vybrali v okne dispeÄŤingu, mĂ´Ĺľete toto tlaÄŤidlo pouĹľiĹĄ na resetovanie.",
-            save: "UloĹľiĹĄ",
+            hotkey_hint: "Vyberte klÃ¡vesovÃº skratku na tento vÃ½ber vozidla. StlaÄte pri okne svojej misie: ALT + vÃ¡Å¡ klÃ¡ves (alebo vo Firefox: ALT + SHIFT + vÃ¡Å¡ klÃ¡ves alebo v OS Mac: ctrl + alt + vÃ¡Å¡ klÃ¡ves) a zvoÄ¾te svoj vÃ½ber vozidla.",
+            intervention_order: "UpraviÅ¥ riadenie alarmov a reakciÃ­",
+            name: "NÃ¡zov",
+            no_intervention_created: "EÅ¡te ste nevytvorili Å¾iadne riadenie alarmov a reakciÃ­.",
+            options: "MoÅ¾nosti",
+            reset: "Resetujte predchÃ¡dzajÃºci vÃ½ber v okne alarmu.",
+            reset_hint: "Ak ste vozidlo vybrali v okne dispeÄingu, mÃ´Å¾ete toto tlaÄidlo pouÅ¾iÅ¥ na resetovanie.",
+            save: "UloÅ¾iÅ¥",
             station: "Stanica",
-            station_hint: "KeÄŹ je vybranĂˇ budova, budĂş sa daĹĄ vybraĹĄ iba vozidlĂˇ prĂ­sluĹˇnej budovy.",
-            successfully_created: "Riadenie alarmov a reakciĂ­ ĂşspeĹˇne vytvorenĂ©.",
-            successfully_deleted: "Riadenie alarmov a reakciĂ­ vymazanĂ©",
-            successfully_updated: "Riadenie alarmov a reakciĂ­ ĂşspeĹˇne aktualizovanĂ©.",
+            station_hint: "KeÄ je vybranÃ¡ budova, budÃº sa daÅ¥ vybraÅ¥ iba vozidlÃ¡ prÃ­sluÅ¡nej budovy.",
+            successfully_created: "Riadenie alarmov a reakciÃ­ ÃºspeÅ¡ne vytvorenÃ©.",
+            successfully_deleted: "Riadenie alarmov a reakciÃ­ vymazanÃ©",
+            successfully_updated: "Riadenie alarmov a reakciÃ­ ÃºspeÅ¡ne aktualizovanÃ©.",
             vehicles: {
                 ab_atemschutz_only: "Modul SCBA",
-                ab_einsatzleitung_only: "VeliteÄľskĂ˝ modul",
-                ab_gefahrgut_only: "Modul nebezpeÄŤnĂ©ho materiĂˇlu",
+                ab_einsatzleitung_only: "VeliteÄ¾skÃ½ modul",
+                ab_gefahrgut_only: "Modul nebezpeÄnÃ©ho materiÃ¡lu",
                 ab_oel_only: "Modul rozliateho oleja",
-                ab_ruest: "Modul tech./zĂˇchrany",
+                ab_ruest: "Modul tech./zÃ¡chrany",
                 ab_ruest_rw: "",
-                abl2wasser_only: "Modul hadicovĂ©ho prĂ­vodu",
-                ambulance: "SanitnĂ© vozidlo",
+                abl2wasser_only: "Modul hadicovÃ©ho prÃ­vodu",
+                ambulance: "SanitnÃ© vozidlo",
                 ambulance_or_rapid_responder: "",
-                arff: "Ĺ HA (ĹˇpeciĂˇlny hasiÄŤskĂ˝ automobil)",
-                battalion_chief_unit: "VeliteÄľskĂˇ a ĹˇtĂˇbna jednotka",
-                boot: "ÄŚlny (vĹˇeobecnĂ©)",
+                arff: "Å HA (Å¡peciÃ¡lny hasiÄskÃ½ automobil)",
+                battalion_chief_unit: "VeliteÄ¾skÃ¡ a Å¡tÃ¡bna jednotka",
+                boot: "ÄŒlny (vÅ¡eobecnÃ©)",
                 dekon_p: "",
-                division_chief_unit: "MobilnĂ˝ veliteÄľskĂ˝ automobil",
+                division_chief_unit: "MobilnÃ½ veliteÄ¾skÃ½ automobil",
                 dlk_or_tm50: "",
-                elw1_or_elw2: "VeliteÄľskĂˇ a ĹˇtĂˇbna jednotka, mobilnĂ˝ veliteÄľskĂ˝ automobil alebo mobilnĂ˝ veliteÄľskĂ˝ modul ",
+                elw1_or_elw2: "VeliteÄ¾skÃ¡ a Å¡tÃ¡bna jednotka, mobilnÃ½ veliteÄ¾skÃ½ automobil alebo mobilnÃ½ veliteÄ¾skÃ½ modul ",
                 elw2_or_ab_elw: "nula",
                 elw3: "",
                 elw_airport: "",
-                emergency_ambulance: "PohotovostnĂ© sanitnĂ© vozidlo alebo vrtuÄľnĂ­k",
-                fire_truck: "HasiÄŤskĂ© automobily",
-                fireboat: "VeÄľkĂ˝ hasiÄŤskĂ˝ ÄŤln",
+                emergency_ambulance: "PohotovostnÃ© sanitnÃ© vozidlo alebo vrtuÄ¾nÃ­k",
+                fire_truck: "HasiÄskÃ© automobily",
+                fireboat: "VeÄ¾kÃ½ hasiÄskÃ½ Äln",
                 fly_car: "AeroMobil",
                 fukw: "",
                 fwk: "",
                 gefkw: "",
-                gkw: "ĂšĹľitkovĂ© vozidlo",
-                grtw: "ĂšrazovĂ© oddelenie",
+                gkw: "ÃšÅ¾itkovÃ© vozidlo",
+                grtw: "ÃšrazovÃ© oddelenie",
                 grtw0: "",
                 grtw1: "",
                 grukw: "",
                 gw_atemschutz_only: "",
-                gw_gefahrgut: "TechnickĂ© vozidlo",
+                gw_gefahrgut: "TechnickÃ© vozidlo",
                 gw_gefahrgut_only: "",
-                gw_hoehenrettung: "GW-HĂ¶henrettung",
+                gw_hoehenrettung: "GW-HÃ¶henrettung",
                 gw_messtechnik: "GW-Messtechnik",
                 gw_oel_only: "",
                 gw_san: "",
                 gw_taucher: "",
-                gw_wasserrettung: "Vozidlo vodnej zĂˇchrany",
+                gw_wasserrettung: "Vozidlo vodnej zÃ¡chrany",
                 gw_werkfeuerwehr: "",
-                gwl2wasser_only: "AutomobilovĂˇ striekaÄŤka",
-                hems: "ZĂˇchranĂˇrsky vrtuÄľnĂ­k",
+                gwl2wasser_only: "AutomobilovÃ¡ striekaÄka",
+                hems: "ZÃ¡chranÃ¡rsky vrtuÄ¾nÃ­k",
                 hlf_only: "nula",
                 hlf_or_rw_and_lf: "nula",
                 hondengeleider: "",
                 k9: "Jednotka K-9",
                 kdow_lna: "",
-                kdow_orgl: "VeliteÄľ pohotovostnej lekĂˇrskej sluĹľby",
+                kdow_orgl: "VeliteÄ¾ pohotovostnej lekÃ¡rskej sluÅ¾by",
                 ktw_b: "",
                 ktw_or_rtw: "",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
-                lf_only: "KombinovanĂ© hasiÄŤskĂ© automobily",
-                long_distance_ambulance: "SanitnĂ© vozidlo",
-                mask_service_unit: "AutonĂłmny dĂ˝chacĂ­ prĂ­stroj",
+                lf_only: "KombinovanÃ© hasiÄskÃ© automobily",
+                long_distance_ambulance: "SanitnÃ© vozidlo",
+                mask_service_unit: "AutonÃ³mny dÃ½chacÃ­ prÃ­stroj",
                 mek_mtf: "",
                 mek_zf: "",
-                mtw: "Automobil na prepravu hasiÄŤov",
-                mzb: "ViacĂşÄŤelovĂ˝ ÄŤln",
+                mtw: "Automobil na prepravu hasiÄov",
+                mzb: "ViacÃºÄelovÃ½ Äln",
                 naw: "",
                 naw_or_rtw_and_nef: "",
                 naw_or_rtw_and_nef_or_rth: "",
-                nef_only: "SanitnĂ© vozidlo",
-                oil_unit: "GW-Ă–l",
+                nef_only: "SanitnÃ© vozidlo",
+                oil_unit: "GW-Ã–l",
                 only_ab_dekon_p: "",
                 only_dekon_p: "",
                 ovd_p: "",
-                police_car: "HliadkovĂ© vozidlo",
-                polizeihubschrauber: "PolicajnĂ˝ vrtuÄľnĂ­k",
-                rescue_vehicle: "Ĺ¤aĹľkĂ© zĂˇchrannĂ© vozidlo",
-                rescue_vehicle_only: "Ĺ¤aĹľkĂ© zĂˇchrannĂ© vozidlo",
-                rescueboat: "VeÄľkĂ˝ zĂˇchrannĂ˝ ÄŤln",
+                police_car: "HliadkovÃ© vozidlo",
+                polizeihubschrauber: "PolicajnÃ½ vrtuÄ¾nÃ­k",
+                rescue_vehicle: "Å¤aÅ¾kÃ© zÃ¡chrannÃ© vozidlo",
+                rescue_vehicle_only: "Å¤aÅ¾kÃ© zÃ¡chrannÃ© vozidlo",
+                rescueboat: "VeÄ¾kÃ½ zÃ¡chrannÃ½ Äln",
                 rettungstreppe: "",
-                rth_only: "VrtuÄľnĂ­k",
-                schlauchwagen: "CisternovĂ© vozidlo",
+                rth_only: "VrtuÄ¾nÃ­k",
+                schlauchwagen: "CisternovÃ© vozidlo",
                 seg_elw: "",
                 sek_mtf: "",
                 sek_zf: "",
                 swat: "SWAT",
-                swat_armored_vehicle: "ObrnenĂ© vozidlo SWAT",
+                swat_armored_vehicle: "ObrnenÃ© vozidlo SWAT",
                 swat_suv: "SUV SWAT",
                 thw_anh_mzab: "",
                 thw_anh_mzb: "",
@@ -10667,12 +10601,12 @@ function deleteMissionPosition(e) {
                 thw_mlw5: "",
                 thw_mtw: "Mannschaftstransportwagen Technischer Zug (MTW-TZ - THW)",
                 thw_mzkw: "Mehrzweckkraftwagen (MzKW)",
-                thw_tauchkraftwagen: "PotĂˇpaÄŤskĂ˝ tĂ­m",
+                thw_tauchkraftwagen: "PotÃ¡paÄskÃ½ tÃ­m",
                 thw_tauchkraftwagen_or_gw_taucher: "",
-                tlf_only: "KombinovanĂ˝ hasiÄŤskĂ˝ automobil",
+                tlf_only: "KombinovanÃ½ hasiÄskÃ½ automobil",
                 tm50: "",
                 turboloescher: "",
-                turntable_ladder: "ValnĂ­ky",
+                turntable_ladder: "ValnÃ­ky",
                 ulf: "",
                 wasserwerfer: "",
                 water_amount: "",
@@ -10684,89 +10618,89 @@ function deleteMissionPosition(e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: "Potom svoju novĂş stanicu pomenujte! Vyberte nĂˇzov, ktorĂ˝ je rozpoznateÄľnĂ˝ a rozĹˇĂ­riteÄľnĂ˝! Napr. â€žHasiÄŤskĂˇ stanica ÄŤ. 0001â€ś. Po dokonÄŤenĂ­ kliknite na â€žÄŽalejâ€ś!",
+                            add_name: "Potom svoju novÃº stanicu pomenujte! Vyberte nÃ¡zov, ktorÃ½ je rozpoznateÄ¾nÃ½ a rozÅ¡Ã­riteÄ¾nÃ½! Napr. â€žHasiÄskÃ¡ stanica Ä. 0001â€œ. Po dokonÄenÃ­ kliknite na â€žÄŽalejâ€œ!",
                             build_with_credits: "Teraz postavte svoju budovu pomocou kreditov!",
-                            new_building: "Kliknite na moĹľnosĹĄ â€žNovĂˇ budovaâ€ś!",
-                            select_building: "NajskĂ´r vyberte typ budovy, s ktorou chcete zaÄŤaĹĄ. VeÄľmi vĂˇm odporĂşÄŤame, aby ste zaÄŤali s hasiÄŤskĂ˝mi sluĹľbami! V kaĹľdom prĂ­pade vĂˇm odporĂşÄŤame, aby ste zaÄŤali s malou stanicou!",
-                            select_position: "ModrĂş znaÄŤku presuĹte na miesto, kde chcete postaviĹĄ svoju prvĂş stanicu!"
+                            new_building: "Kliknite na moÅ¾nosÅ¥ â€žNovÃ¡ budovaâ€œ!",
+                            select_building: "NajskÃ´r vyberte typ budovy, s ktorou chcete zaÄaÅ¥. VeÄ¾mi vÃ¡m odporÃºÄame, aby ste zaÄali s hasiÄskÃ½mi sluÅ¾bami! V kaÅ¾dom prÃ­pade vÃ¡m odporÃºÄame, aby ste zaÄali s malou stanicou!",
+                            select_position: "ModrÃº znaÄku presuÅˆte na miesto, kde chcete postaviÅ¥ svoju prvÃº stanicu!"
                         },
-                        pick_location: "NajskĂ´r si vyberte miesto, kde zaÄŤnete! Do vyhÄľadĂˇvacej liĹˇty zadajte nĂˇzov miesta, kde chcete zaÄŤaĹĄ, alebo ho nĂˇjdite na mape! A ÄŤo tak vaĹˇe rodnĂ© mesto?",
-                        welcome: "DobrĂ˝ deĹ, vitajte v DispeÄŤerskom centre!  NauÄŤĂ­m vĂˇs niekoÄľko lekciĂ­, ktorĂ© vĂˇm pomĂ´Ĺľu na zaÄŤiatku vaĹˇej kariĂ©ry v pohotovostnĂ˝ch sluĹľbĂˇch!"
+                        pick_location: "NajskÃ´r si vyberte miesto, kde zaÄnete! Do vyhÄ¾adÃ¡vacej liÅ¡ty zadajte nÃ¡zov miesta, kde chcete zaÄaÅ¥, alebo ho nÃ¡jdite na mape! A Äo tak vaÅ¡e rodnÃ© mesto?",
+                        welcome: "DobrÃ½ deÅˆ, vitajte v DispeÄerskom centre!  NauÄÃ­m vÃ¡s niekoÄ¾ko lekciÃ­, ktorÃ© vÃ¡m pomÃ´Å¾u na zaÄiatku vaÅ¡ej kariÃ©ry v pohotovostnÃ½ch sluÅ¾bÃ¡ch!"
                     },
                     mobile: {
                         build_building: {
-                            add_name: "Potom svoju novĂş stanicu pomenujte! Vyberte nĂˇzov, ktorĂ˝ je rozpoznateÄľnĂ˝ a rozĹˇĂ­riteÄľnĂ˝! Napr. â€žHasiÄŤskĂˇ stanica ÄŤ. 0001â€ś. Po dokonÄŤenĂ­ kliknite na â€žÄŽalejâ€ś!",
+                            add_name: "Potom svoju novÃº stanicu pomenujte! Vyberte nÃ¡zov, ktorÃ½ je rozpoznateÄ¾nÃ½ a rozÅ¡Ã­riteÄ¾nÃ½! Napr. â€žHasiÄskÃ¡ stanica Ä. 0001â€œ. Po dokonÄenÃ­ kliknite na â€žÄŽalejâ€œ!",
                             build_with_credits: "Teraz postavte svoju budovu pomocou kreditov!",
-                            new_building: "NajskĂ´r vyberte miesto, kde zaÄŤnete a postavte svoju prvĂş budovu! <br /> <br /> SpravĂ­te to tak, Ĺľe kliknete na moĹľnosĹĄ â€žNovĂˇ budovaâ€ś!",
-                            select_building: "NajskĂ´r vyberte typ budovy, s ktorou chcete zaÄŤaĹĄ. VeÄľmi vĂˇm odporĂşÄŤame, aby ste zaÄŤali s hasiÄŤskĂ˝mi sluĹľbami! V kaĹľdom prĂ­pade vĂˇm odporĂşÄŤame, aby ste zaÄŤali s malou stanicou!"
+                            new_building: "NajskÃ´r vyberte miesto, kde zaÄnete a postavte svoju prvÃº budovu! <br /> <br /> SpravÃ­te to tak, Å¾e kliknete na moÅ¾nosÅ¥ â€žNovÃ¡ budovaâ€œ!",
+                            select_building: "NajskÃ´r vyberte typ budovy, s ktorou chcete zaÄaÅ¥. VeÄ¾mi vÃ¡m odporÃºÄame, aby ste zaÄali s hasiÄskÃ½mi sluÅ¾bami! V kaÅ¾dom prÃ­pade vÃ¡m odporÃºÄame, aby ste zaÄali s malou stanicou!"
                         },
-                        welcome: "DobrĂ˝ deĹ, vitajte v DispeÄŤerskom centre!  NauÄŤĂ­m vĂˇs niekoÄľko lekciĂ­, ktorĂ© vĂˇm pomĂ´Ĺľu na zaÄŤiatku vaĹˇej kariĂ©ry v pohotovostnĂ˝ch sluĹľbĂˇch!"
+                        welcome: "DobrÃ½ deÅˆ, vitajte v DispeÄerskom centre!  NauÄÃ­m vÃ¡s niekoÄ¾ko lekciÃ­, ktorÃ© vÃ¡m pomÃ´Å¾u na zaÄiatku vaÅ¡ej kariÃ©ry v pohotovostnÃ½ch sluÅ¾bÃ¡ch!"
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Toto je ponuka vysielania. OdtiaÄľto posielate svoje jednotky na misie!",
-                            dispatch_menu_buttons: "Toto sĂş vaĹˇe dve tlaÄŤidlĂˇ vysielania! PrvĂ©: â€žVyslaĹĄâ€ś posiela vybranĂ© jednotky na misiu. DruhĂ© mĂˇ rovnakĂş funkciu ako to prvĂ©, ale jednotky posiela na ÄŹalĹˇiu misiu. Tentoraz kliknite na prvĂ© tlaÄŤidlo.",
-                            dispatch_menu_mission_general: "Na tomto mieste nĂˇjdete vĹˇeobecnĂ© informĂˇcie o misii, t. j. nĂˇzov, adresu, ikonu misie. Na misiĂˇch, na ktorĂ˝ch ste sa uĹľ zĂşÄŤastnili, sa objavĂ­ malĂˇ ikona muĹľa a nahrĂˇdza hviezdiÄŤku.",
-                            dispatch_menu_mission_progress: "Na tomto mieste vidĂ­te, akĂ˝ veÄľkĂ˝ pokrok ste dosiahli pri rieĹˇenĂ­ tejto misie, ako aj poÄŤet zamestnancov na mieste a zostĂˇvajĂşci ÄŤas na dokonÄŤenie tejto misie!",
-                            dispatch_menu_mission_specific: "Na tomto mieste nĂˇjdete viac informĂˇciĂ­ o misii, ktorĂ© jednotky reagujĂş na hovor a ktorĂ© sĂş uĹľ na mieste.",
-                            dispatch_menu_vehicle_list: "Toto je zoznam vaĹˇich dostupnĂ˝ch vozidiel. Na tomto mieste vyberĂˇte vozidlĂˇ. KliknutĂ­m vyberte vozidlo!"
+                            dispatch_menu: "Toto je ponuka vysielania. OdtiaÄ¾to posielate svoje jednotky na misie!",
+                            dispatch_menu_buttons: "Toto sÃº vaÅ¡e dve tlaÄidlÃ¡ vysielania! PrvÃ©: â€žVyslaÅ¥â€œ posiela vybranÃ© jednotky na misiu. DruhÃ© mÃ¡ rovnakÃº funkciu ako to prvÃ©, ale jednotky posiela na ÄalÅ¡iu misiu. Tentoraz kliknite na prvÃ© tlaÄidlo.",
+                            dispatch_menu_mission_general: "Na tomto mieste nÃ¡jdete vÅ¡eobecnÃ© informÃ¡cie o misii, t. j. nÃ¡zov, adresu, ikonu misie. Na misiÃ¡ch, na ktorÃ½ch ste sa uÅ¾ zÃºÄastnili, sa objavÃ­ malÃ¡ ikona muÅ¾a a nahrÃ¡dza hviezdiÄku.",
+                            dispatch_menu_mission_progress: "Na tomto mieste vidÃ­te, akÃ½ veÄ¾kÃ½ pokrok ste dosiahli pri rieÅ¡enÃ­ tejto misie, ako aj poÄet zamestnancov na mieste a zostÃ¡vajÃºci Äas na dokonÄenie tejto misie!",
+                            dispatch_menu_mission_specific: "Na tomto mieste nÃ¡jdete viac informÃ¡ciÃ­ o misii, ktorÃ© jednotky reagujÃº na hovor a ktorÃ© sÃº uÅ¾ na mieste.",
+                            dispatch_menu_vehicle_list: "Toto je zoznam vaÅ¡ich dostupnÃ½ch vozidiel. Na tomto mieste vyberÃ¡te vozidlÃ¡. KliknutÃ­m vyberte vozidlo!"
                         },
                         mobile: {
-                            dispatch_menu: "Toto je ponuka vysielania. OdtiaÄľto posielate svoje jednotky na misie!",
-                            dispatch_menu_buttons: "Toto sĂş vaĹˇe dve tlaÄŤidlĂˇ vysielania! PrvĂ©: â€žVyslaĹĄâ€ś posiela vybranĂ© jednotky na misiu. DruhĂ© mĂˇ rovnakĂş funkciu ako to prvĂ©, ale jednotky posiela na ÄŹalĹˇiu misiu. Tentoraz kliknite na prvĂ© tlaÄŤidlo.",
-                            dispatch_menu_mission_general: "Na tomto mieste nĂˇjdete vĹˇeobecnĂ© informĂˇcie o misii, t. j. nĂˇzov, adresu, ikonu misie. Na misiĂˇch, na ktorĂ˝ch ste sa uĹľ zĂşÄŤastnili, sa objavĂ­ malĂˇ ikona muĹľa a nahrĂˇdza hviezdiÄŤku.",
-                            dispatch_menu_mission_progress: "Na tomto mieste vidĂ­te, akĂ˝ veÄľkĂ˝ pokrok ste dosiahli pri rieĹˇenĂ­ tejto misie, ako aj poÄŤet zamestnancov na mieste a zostĂˇvajĂşci ÄŤas na dokonÄŤenie tejto misie!",
-                            dispatch_menu_mission_specific: "Na tomto mieste nĂˇjdete viac informĂˇciĂ­ o misii, ktorĂ© jednotky reagujĂş na hovor a ktorĂ© sĂş uĹľ na mieste.",
-                            dispatch_menu_vehicle_list: "Toto je zoznam vaĹˇich dostupnĂ˝ch vozidiel. Na tomto mieste vyberĂˇte vozidlĂˇ. KliknutĂ­m vyberte vozidlo!"
+                            dispatch_menu: "Toto je ponuka vysielania. OdtiaÄ¾to posielate svoje jednotky na misie!",
+                            dispatch_menu_buttons: "Toto sÃº vaÅ¡e dve tlaÄidlÃ¡ vysielania! PrvÃ©: â€žVyslaÅ¥â€œ posiela vybranÃ© jednotky na misiu. DruhÃ© mÃ¡ rovnakÃº funkciu ako to prvÃ©, ale jednotky posiela na ÄalÅ¡iu misiu. Tentoraz kliknite na prvÃ© tlaÄidlo.",
+                            dispatch_menu_mission_general: "Na tomto mieste nÃ¡jdete vÅ¡eobecnÃ© informÃ¡cie o misii, t. j. nÃ¡zov, adresu, ikonu misie. Na misiÃ¡ch, na ktorÃ½ch ste sa uÅ¾ zÃºÄastnili, sa objavÃ­ malÃ¡ ikona muÅ¾a a nahrÃ¡dza hviezdiÄku.",
+                            dispatch_menu_mission_progress: "Na tomto mieste vidÃ­te, akÃ½ veÄ¾kÃ½ pokrok ste dosiahli pri rieÅ¡enÃ­ tejto misie, ako aj poÄet zamestnancov na mieste a zostÃ¡vajÃºci Äas na dokonÄenie tejto misie!",
+                            dispatch_menu_mission_specific: "Na tomto mieste nÃ¡jdete viac informÃ¡ciÃ­ o misii, ktorÃ© jednotky reagujÃº na hovor a ktorÃ© sÃº uÅ¾ na mieste.",
+                            dispatch_menu_vehicle_list: "Toto je zoznam vaÅ¡ich dostupnÃ½ch vozidiel. Na tomto mieste vyberÃ¡te vozidlÃ¡. KliknutÃ­m vyberte vozidlo!"
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "Teraz by sme sa mohli nauÄŤiĹĄ, ako rieĹˇiĹĄ nehody. KliknutĂ­m na tlaÄŤidlo â€žVyslaĹĄâ€ś otvorte ponuku vysielania!",
-                            first_mission: "VĂ˝borne, postavili ste svoju prvĂş budovu! Aha, boli vĂˇm nahlĂˇsenĂ© prvĂ© misie!"
+                            dispatch_button: "Teraz by sme sa mohli nauÄiÅ¥, ako rieÅ¡iÅ¥ nehody. KliknutÃ­m na tlaÄidlo â€žVyslaÅ¥â€œ otvorte ponuku vysielania!",
+                            first_mission: "VÃ½borne, postavili ste svoju prvÃº budovu! Aha, boli vÃ¡m nahlÃ¡senÃ© prvÃ© misie!"
                         },
                         mobile: {
-                            dispatch_button: "Teraz by sme sa mohli nauÄŤiĹĄ, ako rieĹˇiĹĄ nehody. KliknutĂ­m na tlaÄŤidlo â€žVyslaĹĄâ€ś otvorte ponuku vysielania!",
-                            first_mission: "VĂ˝borne, postavili ste svoju prvĂş budovu! Aha, boli vĂˇm nahlĂˇsenĂ© prvĂ© misie!"
+                            dispatch_button: "Teraz by sme sa mohli nauÄiÅ¥, ako rieÅ¡iÅ¥ nehody. KliknutÃ­m na tlaÄidlo â€žVyslaÅ¥â€œ otvorte ponuku vysielania!",
+                            first_mission: "VÃ½borne, postavili ste svoju prvÃº budovu! Aha, boli vÃ¡m nahlÃ¡senÃ© prvÃ© misie!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "VĂ˝borne, vydali ste sa na cestu ku skvelĂ©mu dispeÄŤerskĂ©mu centru! Nech sa pĂˇÄŤi, %{coins} mincĂ­, ktorĂ© vĂˇm pomĂ´Ĺľu zaÄŤaĹĄ! </br> VĂˇĹˇ tĂ­m DispeÄŤerskĂ©ho centra"
+                        general: "VÃ½borne, vydali ste sa na cestu ku skvelÃ©mu dispeÄerskÃ©mu centru! Nech sa pÃ¡Äi, %{coins} mincÃ­, ktorÃ© vÃ¡m pomÃ´Å¾u zaÄaÅ¥! </br> VÃ¡Å¡ tÃ­m DispeÄerskÃ©ho centra"
                     },
                     mobile: {
-                        general: "VĂ˝borne, vydali ste sa na cestu ku skvelĂ©mu dispeÄŤerskĂ©mu centru! Nech sa pĂˇÄŤi, %{coins} mincĂ­, ktorĂ© vĂˇm pomĂ´Ĺľu zaÄŤaĹĄ! </br> VĂˇĹˇ tĂ­m DispeÄŤerskĂ©ho centra"
+                        general: "VÃ½borne, vydali ste sa na cestu ku skvelÃ©mu dispeÄerskÃ©mu centru! Nech sa pÃ¡Äi, %{coins} mincÃ­, ktorÃ© vÃ¡m pomÃ´Å¾u zaÄaÅ¥! </br> VÃ¡Å¡ tÃ­m DispeÄerskÃ©ho centra"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Ak mĂˇte otĂˇzky, mĂ´Ĺľete sa obrĂˇtiĹĄ na ÄŤastĂ© otĂˇzky v hre, navĹˇtĂ­viĹĄ hernĂ© fĂłra alebo naĹˇu strĂˇnku na Facebooku!",
-                        general: "Ako ÄŹalĹˇĂ­ krok vĂˇm odporĂşÄŤame, aby ste vybudovali dispeÄŤerskĂ© centrum a potom ÄŤo najskĂ´r novĂ© stanice, pretoĹľe maximĂˇlny poÄŤet misiĂ­ je rovnakĂ˝, ako najvyĹˇĹˇĂ­ poÄŤet stanĂ­c jednĂ©ho typu (polĂ­cia, hasiÄŤi, zĂˇchranka) plus 1; napr. 5 hasiÄŤskĂ˝ch stanĂ­c a 3 zĂˇchrannĂ© stanice = 6 misiĂ­.",
-                        join_alliance: "Hlavne na zaÄŤiatku vĂˇm veÄľmi pomĂ´Ĺľe, keÄŹ sa pripojĂ­te k aliancii, preto vĂˇm to tieĹľ odporĂşÄŤame.",
-                        summary: "Toto sĂş zĂˇklady DispeÄŤerskĂ©ho centra! PlĹte misie, zĂ­skavajte kredity, kupujte viac jednotiek, opakujte. Prajeme vĂˇm dobrĂş zĂˇbavu! </br> VĂˇĹˇ tĂ­m DispeÄŤerskĂ©ho centra"
+                        contact: "Ak mÃ¡te otÃ¡zky, mÃ´Å¾ete sa obrÃ¡tiÅ¥ na ÄastÃ© otÃ¡zky v hre, navÅ¡tÃ­viÅ¥ hernÃ© fÃ³ra alebo naÅ¡u strÃ¡nku na Facebooku!",
+                        general: "Ako ÄalÅ¡Ã­ krok vÃ¡m odporÃºÄame, aby ste vybudovali dispeÄerskÃ© centrum a potom Äo najskÃ´r novÃ© stanice, pretoÅ¾e maximÃ¡lny poÄet misiÃ­ je rovnakÃ½, ako najvyÅ¡Å¡Ã­ poÄet stanÃ­c jednÃ©ho typu (polÃ­cia, hasiÄi, zÃ¡chranka) plus 1; napr. 5 hasiÄskÃ½ch stanÃ­c a 3 zÃ¡chrannÃ© stanice = 6 misiÃ­.",
+                        join_alliance: "Hlavne na zaÄiatku vÃ¡m veÄ¾mi pomÃ´Å¾e, keÄ sa pripojÃ­te k aliancii, preto vÃ¡m to tieÅ¾ odporÃºÄame.",
+                        summary: "Toto sÃº zÃ¡klady DispeÄerskÃ©ho centra! PlÅˆte misie, zÃ­skavajte kredity, kupujte viac jednotiek, opakujte. Prajeme vÃ¡m dobrÃº zÃ¡bavu! </br> VÃ¡Å¡ tÃ­m DispeÄerskÃ©ho centra"
                     },
                     mobile: {
-                        contact: "Ak mĂˇte otĂˇzky, mĂ´Ĺľete sa obrĂˇtiĹĄ na ÄŤastĂ© otĂˇzky v hre, navĹˇtĂ­viĹĄ hernĂ© fĂłra alebo naĹˇu strĂˇnku na Facebooku!",
-                        general: "Ako ÄŹalĹˇĂ­ krok vĂˇm odporĂşÄŤame, aby ste vybudovali dispeÄŤerskĂ© centrum a potom ÄŤo najskĂ´r novĂ© stanice, pretoĹľe maximĂˇlny poÄŤet misiĂ­ je rovnakĂ˝, ako najvyĹˇĹˇĂ­ poÄŤet stanĂ­c jednĂ©ho typu (polĂ­cia, hasiÄŤi, zĂˇchranka) plus 1; napr. 5 hasiÄŤskĂ˝ch stanĂ­c a 3 zĂˇchrannĂ© stanice = 6 misiĂ­.",
-                        join_alliance: "Hlavne na zaÄŤiatku vĂˇm veÄľmi pomĂ´Ĺľe, keÄŹ sa pripojĂ­te k aliancii, preto vĂˇm to tieĹľ odporĂşÄŤame.",
-                        summary: "Toto sĂş zĂˇklady DispeÄŤerskĂ©ho centra! PlĹte misie, zĂ­skavajte kredity, kupujte viac jednotiek, opakujte. Prajeme vĂˇm dobrĂş zĂˇbavu! </br> VĂˇĹˇ tĂ­m DispeÄŤerskĂ©ho centra"
+                        contact: "Ak mÃ¡te otÃ¡zky, mÃ´Å¾ete sa obrÃ¡tiÅ¥ na ÄastÃ© otÃ¡zky v hre, navÅ¡tÃ­viÅ¥ hernÃ© fÃ³ra alebo naÅ¡u strÃ¡nku na Facebooku!",
+                        general: "Ako ÄalÅ¡Ã­ krok vÃ¡m odporÃºÄame, aby ste vybudovali dispeÄerskÃ© centrum a potom Äo najskÃ´r novÃ© stanice, pretoÅ¾e maximÃ¡lny poÄet misiÃ­ je rovnakÃ½, ako najvyÅ¡Å¡Ã­ poÄet stanÃ­c jednÃ©ho typu (polÃ­cia, hasiÄi, zÃ¡chranka) plus 1; napr. 5 hasiÄskÃ½ch stanÃ­c a 3 zÃ¡chrannÃ© stanice = 6 misiÃ­.",
+                        join_alliance: "Hlavne na zaÄiatku vÃ¡m veÄ¾mi pomÃ´Å¾e, keÄ sa pripojÃ­te k aliancii, preto vÃ¡m to tieÅ¾ odporÃºÄame.",
+                        summary: "Toto sÃº zÃ¡klady DispeÄerskÃ©ho centra! PlÅˆte misie, zÃ­skavajte kredity, kupujte viac jednotiek, opakujte. Prajeme vÃ¡m dobrÃº zÃ¡bavu! </br> VÃ¡Å¡ tÃ­m DispeÄerskÃ©ho centra"
                     }
                 }
             },
             commons: {
-                collect: "VyzdvihnĂşĹĄ",
+                collect: "VyzdvihnÃºÅ¥",
                 "continue": "Nie",
                 end: "Koniec",
                 next: "ÄŽalej",
                 prev: "Dozadu",
-                skip: "Ăno",
-                skip_hint: "Naozaj chcete zruĹˇiĹĄ nĂˇcvik? NeskĂ´r ho uĹľ nebudete mĂ´cĹĄ spustiĹĄ. Nebudete maĹĄ nĂˇrok na odmenu za absolvovanie nĂˇcviku."
+                skip: "Ãno",
+                skip_hint: "Naozaj chcete zruÅ¡iÅ¥ nÃ¡cvik? NeskÃ´r ho uÅ¾ nebudete mÃ´cÅ¥ spustiÅ¥. Nebudete maÅ¥ nÃ¡rok na odmenu za absolvovanie nÃ¡cviku."
             },
             rewards: {
-                log: "Odmena za dokonÄŤenie nĂˇcviku."
+                log: "Odmena za dokonÄenie nÃ¡cviku."
             }
         }
     },
@@ -10993,17 +10927,17 @@ function deleteMissionPosition(e) {
             return i.remove(), n
         }
 
-        function D(e, t, i, n) {
+        function M(e, t, i, n) {
             var o;
             if (ut.isArray(t)) ut.each(t, function(t, o) {
-                i || zi.test(e) ? n(e, o) : D(e + "[" + ("object" == typeof o ? t : "") + "]", o, i, n)
+                i || zi.test(e) ? n(e, o) : M(e + "[" + ("object" == typeof o ? t : "") + "]", o, i, n)
             });
             else if (i || "object" !== ut.type(t)) n(e, t);
             else
-                for (o in t) D(e + "[" + o + "]", t[o], i, n)
+                for (o in t) M(e + "[" + o + "]", t[o], i, n)
         }
 
-        function M(e) {
+        function D(e) {
             return function(t, i) {
                 "string" != typeof t && (i = t, t = "*");
                 var n, o = 0,
@@ -11421,7 +11355,7 @@ function deleteMissionPosition(e) {
                             if (o = t.call(e[s], s, e[s]), o === !1) break;
                     return e
                 },
-                trim: ct && !ct.call("ď»żÂ ") ? function(e) {
+                trim: ct && !ct.call("ï»¿Â ") ? function(e) {
                     return null == e ? "" : ct.call(e)
                 } : function(e) {
                     return null == e ? "" : (e + "").replace(pt, "")
@@ -11797,7 +11731,7 @@ function deleteMissionPosition(e) {
                 }
 
                 function T() {}
-                var z, S, A, E, D, M, I, P, j, N, L, O, R, $, F, B, H, W = "sizzle" + -new Date,
+                var z, S, A, E, M, D, I, P, j, N, L, O, R, $, F, B, H, W = "sizzle" + -new Date,
                     V = e.document,
                     q = 0,
                     U = 0,
@@ -11866,12 +11800,12 @@ function deleteMissionPosition(e) {
                         }
                     }
                 }
-                M = i.isXML = function(e) {
+                D = i.isXML = function(e) {
                     var t = e && (e.ownerDocument || e).documentElement;
                     return t ? "HTML" !== t.nodeName : !1
                 }, S = i.support = {}, N = i.setDocument = function(e) {
                     var t = e ? e.ownerDocument || e : V;
-                    return t !== L && 9 === t.nodeType && t.documentElement ? (L = t, O = t.documentElement, R = !M(t), S.attributes = a(function(e) {
+                    return t !== L && 9 === t.nodeType && t.documentElement ? (L = t, O = t.documentElement, R = !D(t), S.attributes = a(function(e) {
                         return e.innerHTML = "<a href='#'></a>", r("type|href|height|width", c, "#" === e.firstChild.getAttribute("href")), r(rt, l, null == e.getAttribute("disabled")), e.className = "i", !e.getAttribute("className")
                     }), S.input = a(function(e) {
                         return e.innerHTML = "<input>", e.firstChild.setAttribute("value", ""), "" === e.firstChild.getAttribute("value")
@@ -11972,17 +11906,17 @@ function deleteMissionPosition(e) {
                         for (; n--;) e.splice(i[n], 1)
                     }
                     return e
-                }, D = i.getText = function(e) {
+                }, M = i.getText = function(e) {
                     var t, i = "",
                         n = 0,
                         o = e.nodeType;
                     if (o) {
                         if (1 === o || 9 === o || 11 === o) {
                             if ("string" == typeof e.textContent) return e.textContent;
-                            for (e = e.firstChild; e; e = e.nextSibling) i += D(e)
+                            for (e = e.firstChild; e; e = e.nextSibling) i += M(e)
                         } else if (3 === o || 4 === o) return e.nodeValue
                     } else
-                        for (; t = e[n]; n++) i += D(t);
+                        for (; t = e[n]; n++) i += M(t);
                     return i
                 }, E = i.selectors = {
                     cacheLength: 50,
@@ -12100,7 +12034,7 @@ function deleteMissionPosition(e) {
                         }),
                         contains: s(function(e) {
                             return function(t) {
-                                return (t.textContent || t.innerText || D(t)).indexOf(e) > -1
+                                return (t.textContent || t.innerText || M(t)).indexOf(e) > -1
                             }
                         }),
                         lang: s(function(e) {
@@ -12467,8 +12401,8 @@ function deleteMissionPosition(e) {
                 return l(), s.promise(i)
             }
         });
-        var At, Et, Dt = /[\t\r\n\f]/g,
-            Mt = /\r/g,
+        var At, Et, Mt = /[\t\r\n\f]/g,
+            Dt = /\r/g,
             It = /^(?:input|select|textarea|button|object)$/i,
             Pt = /^(?:a|area)$/i,
             jt = /^(?:checked|selected)$/i,
@@ -12502,7 +12436,7 @@ function deleteMissionPosition(e) {
                 });
                 if (l)
                     for (t = (e || "").match(ht) || []; r > a; a++)
-                        if (i = this[a], n = 1 === i.nodeType && (i.className ? (" " + i.className + " ").replace(Dt, " ") : " ")) {
+                        if (i = this[a], n = 1 === i.nodeType && (i.className ? (" " + i.className + " ").replace(Mt, " ") : " ")) {
                             for (s = 0; o = t[s++];) n.indexOf(" " + o + " ") < 0 && (n += o + " ");
                             i.className = ut.trim(n)
                         } return this
@@ -12516,7 +12450,7 @@ function deleteMissionPosition(e) {
                 });
                 if (l)
                     for (t = (e || "").match(ht) || []; r > a; a++)
-                        if (i = this[a], n = 1 === i.nodeType && (i.className ? (" " + i.className + " ").replace(Dt, " ") : "")) {
+                        if (i = this[a], n = 1 === i.nodeType && (i.className ? (" " + i.className + " ").replace(Mt, " ") : "")) {
                             for (s = 0; o = t[s++];)
                                 for (; n.indexOf(" " + o + " ") >= 0;) n = n.replace(" " + o + " ", " ");
                             i.className = e ? ut.trim(n) : ""
@@ -12535,7 +12469,7 @@ function deleteMissionPosition(e) {
             },
             hasClass: function(e) {
                 for (var t = " " + e + " ", i = 0, n = this.length; n > i; i++)
-                    if (1 === this[i].nodeType && (" " + this[i].className + " ").replace(Dt, " ").indexOf(t) >= 0) return !0;
+                    if (1 === this[i].nodeType && (" " + this[i].className + " ").replace(Mt, " ").indexOf(t) >= 0) return !0;
                 return !1
             },
             val: function(e) {
@@ -12546,7 +12480,7 @@ function deleteMissionPosition(e) {
                             return null == e ? "" : e + ""
                         })), n = ut.valHooks[this.type] || ut.valHooks[this.nodeName.toLowerCase()], n && "set" in n && n.set(this, s, "value") !== t || (this.value = s))
                     });
-                    if (s) return n = ut.valHooks[s.type] || ut.valHooks[s.nodeName.toLowerCase()], n && "get" in n && (i = n.get(s, "value")) !== t ? i : (i = s.value, "string" == typeof i ? i.replace(Mt, "") : null == i ? "" : i)
+                    if (s) return n = ut.valHooks[s.type] || ut.valHooks[s.nodeName.toLowerCase()], n && "get" in n && (i = n.get(s, "value")) !== t ? i : (i = s.value, "string" == typeof i ? i.replace(Dt, "") : null == i ? "" : i)
                 }
             }
         }), ut.extend({
@@ -13480,7 +13414,7 @@ function deleteMissionPosition(e) {
                 s(this.name, this.value)
             });
             else
-                for (n in e) D(n, e[n], i, s);
+                for (n in e) M(n, e[n], i, s);
             return o.join("&").replace(Ti, "+")
         }, ut.each("blur focus focusin focusout load resize scroll unload click dblclick mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave change select submit keydown keypress keyup error contextmenu".split(" "), function(e, t) {
             ut.fn[t] = function(e, i) {
@@ -13503,7 +13437,7 @@ function deleteMissionPosition(e) {
                 return 1 === arguments.length ? this.off(e, "**") : this.off(t, e || "**", i)
             }
         });
-        var Di, Mi, Ii = ut.now(),
+        var Mi, Di, Ii = ut.now(),
             Pi = /\?/,
             ji = /#.*$/,
             Ni = /([?&])_=[^&]*/,
@@ -13517,11 +13451,11 @@ function deleteMissionPosition(e) {
             Wi = {},
             Vi = "*/".concat("*");
         try {
-            Mi = G.href
+            Di = G.href
         } catch (qi) {
-            Mi = Y.createElement("a"), Mi.href = "", Mi = Mi.href
+            Di = Y.createElement("a"), Di.href = "", Di = Di.href
         }
-        Di = Fi.exec(Mi.toLowerCase()) || [], ut.fn.load = function(e, i, n) {
+        Mi = Fi.exec(Di.toLowerCase()) || [], ut.fn.load = function(e, i, n) {
             if ("string" != typeof e && Bi) return Bi.apply(this, arguments);
             var o, s, a, r = this,
                 l = e.indexOf(" ");
@@ -13544,9 +13478,9 @@ function deleteMissionPosition(e) {
             lastModified: {},
             etag: {},
             ajaxSettings: {
-                url: Mi,
+                url: Di,
                 type: "GET",
-                isLocal: Oi.test(Di[1]),
+                isLocal: Oi.test(Mi[1]),
                 global: !0,
                 processData: !0,
                 async: !0,
@@ -13582,8 +13516,8 @@ function deleteMissionPosition(e) {
             ajaxSetup: function(e, t) {
                 return t ? P(P(e, ut.ajaxSettings), t) : P(ut.ajaxSettings, e)
             },
-            ajaxPrefilter: M(Hi),
-            ajaxTransport: M(Wi),
+            ajaxPrefilter: D(Hi),
+            ajaxTransport: D(Wi),
             ajax: function(e, i) {
                 function n(e, i, n, o) {
                     var s, d, v, b, w, x = i;
@@ -13634,7 +13568,7 @@ function deleteMissionPosition(e) {
                             return u && u.abort(t), n(0, t), this
                         }
                     };
-                if (f.promise(k).complete = _.add, k.success = k.done, k.error = k.fail, h.url = ((e || h.url || Mi) + "").replace(ji, "").replace($i, Di[1] + "//"), h.type = i.method || i.type || h.method || h.type, h.dataTypes = ut.trim(h.dataType || "*").toLowerCase().match(ht) || [""], null == h.crossDomain && (o = Fi.exec(h.url.toLowerCase()), h.crossDomain = !(!o || o[1] === Di[1] && o[2] === Di[2] && (o[3] || ("http:" === o[1] ? "80" : "443")) === (Di[3] || ("http:" === Di[1] ? "80" : "443")))), h.data && h.processData && "string" != typeof h.data && (h.data = ut.param(h.data, h.traditional)), I(Hi, h, i, k), 2 === y) return k;
+                if (f.promise(k).complete = _.add, k.success = k.done, k.error = k.fail, h.url = ((e || h.url || Di) + "").replace(ji, "").replace($i, Mi[1] + "//"), h.type = i.method || i.type || h.method || h.type, h.dataTypes = ut.trim(h.dataType || "*").toLowerCase().match(ht) || [""], null == h.crossDomain && (o = Fi.exec(h.url.toLowerCase()), h.crossDomain = !(!o || o[1] === Mi[1] && o[2] === Mi[2] && (o[3] || ("http:" === o[1] ? "80" : "443")) === (Mi[3] || ("http:" === Mi[1] ? "80" : "443")))), h.data && h.processData && "string" != typeof h.data && (h.data = ut.param(h.data, h.traditional)), I(Hi, h, i, k), 2 === y) return k;
                 c = h.global, c && 0 === ut.active++ && ut.event.trigger("ajaxStart"), h.type = h.type.toUpperCase(), h.hasContent = !Ri.test(h.type), a = h.url, h.hasContent || (h.data && (a = h.url += (Pi.test(a) ? "&" : "?") + h.data, delete h.data), h.cache === !1 && (h.url = Ni.test(a) ? a.replace(Ni, "$1_=" + Ii++) : a + (Pi.test(a) ? "&" : "?") + "_=" + Ii++)), h.ifModified && (ut.lastModified[a] && k.setRequestHeader("If-Modified-Since", ut.lastModified[a]), ut.etag[a] && k.setRequestHeader("If-None-Match", ut.etag[a])), (h.data && h.hasContent && h.contentType !== !1 || i.contentType) && k.setRequestHeader("Content-Type", h.contentType), k.setRequestHeader("Accept", h.dataTypes[0] && h.accepts[h.dataTypes[0]] ? h.accepts[h.dataTypes[0]] + ("*" !== h.dataTypes[0] ? ", " + Vi + "; q=0.01" : "") : h.accepts["*"]);
                 for (s in h.headers) k.setRequestHeader(s, h.headers[s]);
                 if (h.beforeSend && (h.beforeSend.call(p, k, h) === !1 || 2 === y)) return k.abort();
@@ -17742,7 +17676,7 @@ function deleteMissionPosition(e) {
                 })
             },
             _generateHTML: function(e) {
-                var t, i, n, o, s, a, r, l, c, u, d, h, p, m, f, _, g, v, b, y, w, k, x, C, T, z, S, A, E, D, M, I, P, j, N, L, O, R, $, F = new Date,
+                var t, i, n, o, s, a, r, l, c, u, d, h, p, m, f, _, g, v, b, y, w, k, x, C, T, z, S, A, E, M, D, I, P, j, N, L, O, R, $, F = new Date,
                     B = this._daylightSavingAdjust(new Date(F.getFullYear(), F.getMonth(), F.getDate())),
                     H = this._get(e, "isRTL"),
                     W = this._get(e, "showButtonPanel"),
@@ -17775,7 +17709,7 @@ function deleteMissionPosition(e) {
                             S += "'>"
                         }
                         for (S += "<div class='ui-datepicker-header ui-widget-header ui-helper-clearfix" + z + "'>" + (/all|left/.test(z) && 0 === k ? H ? s : n : "") + (/all|right/.test(z) && 0 === k ? H ? n : s : "") + this._generateMonthYearHeader(e, X, et, Q, J, k > 0 || C > 0, m, f) + "</div><table class='ui-datepicker-calendar'><thead>" + "<tr>", A = d ? "<th class='ui-datepicker-week-col'>" + this._get(e, "weekHeader") + "</th>" : "", w = 0; 7 > w; w++) E = (w + u) % 7, A += "<th scope='col'" + ((w + u + 6) % 7 >= 5 ? " class='ui-datepicker-week-end'" : "") + ">" + "<span title='" + h[E] + "'>" + p[E] + "</span></th>";
-                        for (S += A + "</tr></thead><tbody>", D = this._getDaysInMonth(et, X), et === e.selectedYear && X === e.selectedMonth && (e.selectedDay = Math.min(e.selectedDay, D)), M = (this._getFirstDayOfMonth(et, X) - u + 7) % 7, I = Math.ceil((M + D) / 7), P = G ? this.maxRows > I ? this.maxRows : I : I, this.maxRows = P, j = this._daylightSavingAdjust(new Date(et, X, 1 - M)), N = 0; P > N; N++) {
+                        for (S += A + "</tr></thead><tbody>", M = this._getDaysInMonth(et, X), et === e.selectedYear && X === e.selectedMonth && (e.selectedDay = Math.min(e.selectedDay, M)), D = (this._getFirstDayOfMonth(et, X) - u + 7) % 7, I = Math.ceil((D + M) / 7), P = G ? this.maxRows > I ? this.maxRows : I : I, this.maxRows = P, j = this._daylightSavingAdjust(new Date(et, X, 1 - D)), N = 0; P > N; N++) {
                             for (S += "<tr>", L = d ? "<td class='ui-datepicker-week-col'>" + this._get(e, "calculateWeek")(j) + "</td>" : "", w = 0; 7 > w; w++) O = _ ? _.apply(e.input ? e.input[0] : null, [j]) : [!0, ""], R = j.getMonth() !== X, $ = R && !v || !O[0] || Q && Q > j || J && j > J, L += "<td class='" + ((w + u + 6) % 7 >= 5 ? " ui-datepicker-week-end" : "") + (R ? " ui-datepicker-other-month" : "") + (j.getTime() === T.getTime() && X === e.selectedMonth && e._keyEvent || b.getTime() === j.getTime() && b.getTime() === T.getTime() ? " " + this._dayOverClass : "") + ($ ? " " + this._unselectableClass + " ui-state-disabled" : "") + (R && !g ? "" : " " + O[1] + (j.getTime() === Y.getTime() ? " " + this._currentClass : "") + (j.getTime() === B.getTime() ? " ui-datepicker-today" : "")) + "'" + (R && !g || !O[2] ? "" : " title='" + O[2].replace(/'/g, "&#39;") + "'") + ($ ? "" : " data-handler='selectDay' data-event='click' data-month='" + j.getMonth() + "' data-year='" + j.getFullYear() + "'") + ">" + (R && !g ? "&#xa0;" : $ ? "<span class='ui-state-default'>" + j.getDate() + "</span>" : "<a class='ui-state-default" + (j.getTime() === B.getTime() ? " ui-state-highlight" : "") + (j.getTime() === Y.getTime() ? " ui-state-active" : "") + (R ? " ui-priority-secondary" : "") + "' href='#'>" + j.getDate() + "</a>") + "</td>", j.setDate(j.getDate() + 1), j = this._daylightSavingAdjust(j);
                             S += L + "</tr>"
                         }
@@ -21115,20 +21049,20 @@ function deleteMissionPosition(e) {
                 }, x.sortNumeric = function(e, t) {
                     return e - t
                 }, x.characterEquivalents = {
-                    a: "ĂˇĂ Ă˘ĂŁĂ¤Ä…ĂĄ",
-                    A: "ĂĂ€Ă‚ĂĂ„Ä„Ă…",
-                    c: "Ă§Ä‡ÄŤ",
-                    C: "Ă‡Ä†ÄŚ",
-                    e: "Ă©Ă¨ĂŞĂ«Ä›Ä™",
-                    E: "Ă‰ĂĂŠĂ‹ÄšÄ",
-                    i: "Ă­Ă¬Ä°Ă®ĂŻÄ±",
-                    I: "ĂŤĂŚÄ°ĂŽĂŹ",
-                    o: "ĂłĂ˛Ă´ĂµĂ¶",
-                    O: "Ă“Ă’Ă”Ă•Ă–",
-                    ss: "Ăź",
-                    SS: "áşž",
-                    u: "ĂşĂąĂ»ĂĽĹŻ",
-                    U: "ĂšĂ™Ă›ĂśĹ®"
+                    a: "Ã¡Ã Ã¢Ã£Ã¤Ä…Ã¥",
+                    A: "ÃÃ€Ã‚ÃƒÃ„Ä„Ã…",
+                    c: "Ã§Ä‡Ä",
+                    C: "Ã‡Ä†ÄŒ",
+                    e: "Ã©Ã¨ÃªÃ«Ä›Ä™",
+                    E: "Ã‰ÃˆÃŠÃ‹ÄšÄ˜",
+                    i: "Ã­Ã¬Ä°Ã®Ã¯Ä±",
+                    I: "ÃÃŒÄ°ÃŽÃ",
+                    o: "Ã³Ã²Ã´ÃµÃ¶",
+                    O: "Ã“Ã’Ã”Ã•Ã–",
+                    ss: "ÃŸ",
+                    SS: "áºž",
+                    u: "ÃºÃ¹Ã»Ã¼Å¯",
+                    U: "ÃšÃ™Ã›ÃœÅ®"
                 }, x.replaceAccents = function(e) {
                     var t, i = "[",
                         n = x.characterEquivalents;
@@ -21377,12 +21311,12 @@ function deleteMissionPosition(e) {
                         S = z + a.height(),
                         A = T.left,
                         E = A + a.width(),
-                        D = i === !0 ? S : z,
-                        M = i === !0 ? z : S,
+                        M = i === !0 ? S : z,
+                        D = i === !0 ? z : S,
                         I = i === !0 ? E : A,
                         P = i === !0 ? A : E;
-                    if ("both" === o) return !!p && k >= M && D >= w && C >= P && I >= x;
-                    if ("vertical" === o) return !!p && k >= M && D >= w;
+                    if ("both" === o) return !!p && k >= D && M >= w && C >= P && I >= x;
+                    if ("vertical" === o) return !!p && k >= D && M >= w;
                     if ("horizontal" === o) return !!p && C >= P && I >= x
                 }
             }
@@ -22970,11 +22904,11 @@ function deleteMissionPosition(e) {
             return new A(e, t, i, n)
         }
 
-        function D(e) {
+        function M(e) {
             return document.createElementNS("http://www.w3.org/2000/svg", e)
         }
 
-        function M(e, t) {
+        function D(e, t) {
             var i, n, o, s, a, r, l = "";
             for (i = 0, o = e.length; o > i; i++) {
                 for (n = 0, s = (a = e[i]).length; s > n; n++) r = a[n], l += (n ? "L" : "M") + r.x + " " + r.y;
@@ -23232,7 +23166,7 @@ function deleteMissionPosition(e) {
                     return i.call(o || e, t || window.event)
                 },
                 r = a;
-            qi && 0 === t.indexOf("touch") ? P(e, t, a, s) : !Ui || "dblclick" !== t || !W || qi && Mi ? "addEventListener" in e ? "mousewheel" === t ? e.addEventListener("onwheel" in e ? "wheel" : "mousewheel", a, !1) : "mouseenter" === t || "mouseleave" === t ? (a = function(t) {
+            qi && 0 === t.indexOf("touch") ? P(e, t, a, s) : !Ui || "dblclick" !== t || !W || qi && Di ? "addEventListener" in e ? "mousewheel" === t ? e.addEventListener("onwheel" in e ? "wheel" : "mousewheel", a, !1) : "mouseenter" === t || "mouseleave" === t ? (a = function(t) {
                 t = t || window.event, At(e, t) && r(t)
             }, e.addEventListener("mouseenter" === t ? "mouseover" : "mouseout", a, !1)) : ("click" === t && zi && (a = function(e) {
                 Et(e, r)
@@ -23242,7 +23176,7 @@ function deleteMissionPosition(e) {
         function vt(e, t, i, o) {
             var s = t + n(i) + (o ? "_" + n(o) : ""),
                 a = e[yn] && e[yn][s];
-            return a ? (qi && 0 === t.indexOf("touch") ? j(e, t, s) : !Ui || "dblclick" !== t || !V || qi && Mi ? "removeEventListener" in e ? "mousewheel" === t ? e.removeEventListener("onwheel" in e ? "wheel" : "mousewheel", a, !1) : e.removeEventListener("mouseenter" === t ? "mouseover" : "mouseleave" === t ? "mouseout" : t, a, !1) : "detachEvent" in e && e.detachEvent("on" + t, a) : V(e, s), e[yn][s] = null, void 0) : this
+            return a ? (qi && 0 === t.indexOf("touch") ? j(e, t, s) : !Ui || "dblclick" !== t || !V || qi && Di ? "removeEventListener" in e ? "mousewheel" === t ? e.removeEventListener("onwheel" in e ? "wheel" : "mousewheel", a, !1) : e.removeEventListener("mouseenter" === t ? "mouseover" : "mouseleave" === t ? "mouseout" : t, a, !1) : "detachEvent" in e && e.detachEvent("on" + t, a) : V(e, s), e[yn][s] = null, void 0) : this
         }
 
         function bt(e) {
@@ -23302,13 +23236,13 @@ function deleteMissionPosition(e) {
             n && n > 100 && 500 > n || e.target._simulatedClick && !e._simulated ? xt(e) : (vn = i, t(e))
         }
 
-        function Dt(e, t) {
+        function Mt(e, t) {
             if (!t || !e.length) return e.slice();
             var i = t * t;
             return e = jt(e, i), e = It(e, i)
         }
 
-        function Mt(e, t, i) {
+        function Dt(e, t, i) {
             return Math.sqrt($t(e, t, i, !0))
         }
 
@@ -23969,10 +23903,10 @@ function deleteMissionPosition(e) {
             Si = I("android 2") || I("android 3"),
             Ai = parseInt(/WebKit\/([0-9]+)|$/.exec(navigator.userAgent)[1], 10),
             Ei = zi && I("Google") && 537 > Ai && !("AudioNode" in window),
-            Di = !!window.opera,
-            Mi = I("chrome"),
-            Ii = I("gecko") && !Ti && !Di && !ki,
-            Pi = !Mi && I("safari"),
+            Mi = !!window.opera,
+            Di = I("chrome"),
+            Ii = I("gecko") && !Ti && !Mi && !ki,
+            Pi = !Di && I("safari"),
             ji = I("phantom"),
             Ni = "OTransition" in wi,
             Li = 0 === navigator.platform.indexOf("Win"),
@@ -23986,11 +23920,11 @@ function deleteMissionPosition(e) {
             Vi = !window.PointerEvent && window.MSPointerEvent,
             qi = !(!window.PointerEvent && !Vi),
             Ui = !window.L_NO_TOUCH && (qi || "ontouchstart" in window || window.DocumentTouch && document instanceof window.DocumentTouch),
-            Zi = Bi && Di,
+            Zi = Bi && Mi,
             Ki = Bi && Ii,
             Gi = (window.devicePixelRatio || window.screen.deviceXDPI / window.screen.logicalXDPI) > 1,
             Yi = !!document.createElement("canvas").getContext,
-            Qi = !(!document.createElementNS || !D("svg").createSVGRect),
+            Qi = !(!document.createElementNS || !M("svg").createSVGRect),
             Ji = !Qi && function() {
                 try {
                     var e = document.createElement("div");
@@ -24009,8 +23943,8 @@ function deleteMissionPosition(e) {
                 android: zi,
                 android23: Si,
                 androidStock: Ei,
-                opera: Di,
-                chrome: Mi,
+                opera: Mi,
+                chrome: Di,
                 gecko: Ii,
                 safari: Pi,
                 phantom: ji,
@@ -24094,7 +24028,7 @@ function deleteMissionPosition(e) {
                 getScale: mt
             }),
             yn = "_leaflet_events",
-            wn = Li && Mi ? 2 * window.devicePixelRatio : Ii ? window.devicePixelRatio : 1,
+            wn = Li && Di ? 2 * window.devicePixelRatio : Ii ? window.devicePixelRatio : 1,
             kn = {},
             xn = (Object.freeze || Object)({
                 on: ft,
@@ -24973,7 +24907,7 @@ function deleteMissionPosition(e) {
         }), Tn.addInitHook(function() {
             this.options.zoomControl && (this.zoomControl = new En, this.addControl(this.zoomControl))
         });
-        var Dn = zn.extend({
+        var Mn = zn.extend({
                 options: {
                     position: "bottomleft",
                     maxWidth: 100,
@@ -25018,7 +24952,7 @@ function deleteMissionPosition(e) {
                     return i = i >= 10 ? 10 : i >= 5 ? 5 : i >= 3 ? 3 : i >= 2 ? 2 : 1, t * i
                 }
             }),
-            Mn = zn.extend({
+            Dn = zn.extend({
                 options: {
                     position: "bottomright",
                     prefix: '<a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>'
@@ -25052,15 +24986,15 @@ function deleteMissionPosition(e) {
         Tn.mergeOptions({
             attributionControl: !0
         }), Tn.addInitHook(function() {
-            this.options.attributionControl && (new Mn).addTo(this)
-        }), zn.Layers = An, zn.Zoom = En, zn.Scale = Dn, zn.Attribution = Mn, Sn.layers = function(e, t, i) {
+            this.options.attributionControl && (new Dn).addTo(this)
+        }), zn.Layers = An, zn.Zoom = En, zn.Scale = Mn, zn.Attribution = Dn, Sn.layers = function(e, t, i) {
             return new An(e, t, i)
         }, Sn.zoom = function(e) {
             return new En(e)
         }, Sn.scale = function(e) {
-            return new Dn(e)
-        }, Sn.attribution = function(e) {
             return new Mn(e)
+        }, Sn.attribution = function(e) {
+            return new Dn(e)
         };
         var In = v.extend({
             initialize: function(e) {
@@ -25143,8 +25077,8 @@ function deleteMissionPosition(e) {
                 }
             }),
             $n = (Object.freeze || Object)({
-                simplify: Dt,
-                pointToSegmentDistance: Mt,
+                simplify: Mt,
+                pointToSegmentDistance: Dt,
                 closestPointOnSegment: function(e, t, i) {
                     return $t(e, t, i)
                 },
@@ -25828,7 +25762,7 @@ function deleteMissionPosition(e) {
                         }
                 },
                 _simplifyPoints: function() {
-                    for (var e = this._parts, t = this.options.smoothFactor, i = 0, n = e.length; n > i; i++) e[i] = Dt(e[i], t)
+                    for (var e = this._parts, t = this.options.smoothFactor, i = 0, n = e.length; n > i; i++) e[i] = Mt(e[i], t)
                 },
                 _update: function() {
                     this._map && (this._clipPoints(), this._simplifyPoints(), this._updatePath())
@@ -25841,7 +25775,7 @@ function deleteMissionPosition(e) {
                     if (!this._pxBounds || !this._pxBounds.contains(e)) return !1;
                     for (i = 0, s = this._parts.length; s > i; i++)
                         for (n = 0, o = (a = (r = this._parts[i]).length) - 1; a > n; o = n++)
-                            if ((t || 0 !== n) && Mt(e, r[o], r[n]) <= l) return !0;
+                            if ((t || 0 !== n) && Dt(e, r[o], r[n]) <= l) return !0;
                     return !1
                 }
             });
@@ -27156,7 +27090,7 @@ function deleteMissionPosition(e) {
                     Q(e._container)
                 }
             },
-            ko = Ji ? yo : D,
+            ko = Ji ? yo : M,
             xo = vo.extend({
                 getEvents: function() {
                     var e = vo.prototype.getEvents.call(this);
@@ -27199,7 +27133,7 @@ function deleteMissionPosition(e) {
                     t && (i.stroke ? (t.setAttribute("stroke", i.color), t.setAttribute("stroke-opacity", i.opacity), t.setAttribute("stroke-width", i.weight), t.setAttribute("stroke-linecap", i.lineCap), t.setAttribute("stroke-linejoin", i.lineJoin), i.dashArray ? t.setAttribute("stroke-dasharray", i.dashArray) : t.removeAttribute("stroke-dasharray"), i.dashOffset ? t.setAttribute("stroke-dashoffset", i.dashOffset) : t.removeAttribute("stroke-dashoffset")) : t.setAttribute("stroke", "none"), i.fill ? (t.setAttribute("fill", i.fillColor || i.color), t.setAttribute("fill-opacity", i.fillOpacity), t.setAttribute("fill-rule", i.fillRule || "evenodd")) : t.setAttribute("fill", "none"))
                 },
                 _updatePoly: function(e, t) {
-                    this._setPath(e, M(e._parts, t))
+                    this._setPath(e, D(e._parts, t))
                 },
                 _updateCircle: function(e) {
                     var t = e._point,
@@ -27245,7 +27179,7 @@ function deleteMissionPosition(e) {
                 return e = T(e), [e.getSouthWest(), e.getNorthWest(), e.getNorthEast(), e.getSouthEast()]
             }
         });
-        xo.create = ko, xo.pointsToPath = M, so.geometryToLayer = Wt, so.coordsToLatLng = Vt, so.coordsToLatLngs = qt, so.latLngToCoords = Ut, so.latLngsToCoords = Zt, so.getFeature = Kt, so.asFeature = Gt, Tn.mergeOptions({
+        xo.create = ko, xo.pointsToPath = D, so.geometryToLayer = Wt, so.coordsToLatLng = Vt, so.coordsToLatLngs = qt, so.latLngToCoords = Ut, so.latLngsToCoords = Zt, so.getFeature = Kt, so.asFeature = Gt, Tn.mergeOptions({
             boxZoom: !0
         });
         var To = In.extend({
@@ -27545,7 +27479,7 @@ function deleteMissionPosition(e) {
             tap: !0,
             tapTolerance: 15
         });
-        var Do = In.extend({
+        var Mo = In.extend({
             addHooks: function() {
                 ft(this._map._container, "touchstart", this._onDown, this)
             },
@@ -27587,11 +27521,11 @@ function deleteMissionPosition(e) {
                 i._simulated = !0, t.target._simulatedClick = !0, i.initMouseEvent(e, !0, !0, window, 1, t.screenX, t.screenY, t.clientX, t.clientY, !1, !1, !1, !1, 0, null), t.target.dispatchEvent(i)
             }
         });
-        Ui && !qi && Tn.addInitHook("addHandler", "tap", Do), Tn.mergeOptions({
+        Ui && !qi && Tn.addInitHook("addHandler", "tap", Mo), Tn.mergeOptions({
             touchZoom: Ui && !Si,
             bounceAtZoomLimits: !0
         });
-        var Mo = In.extend({
+        var Do = In.extend({
             addHooks: function() {
                 X(this._map._container, "leaflet-touch-zoom"), ft(this._map._container, "touchstart", this._onTouchStart, this)
             },
@@ -27631,7 +27565,7 @@ function deleteMissionPosition(e) {
                 this._moved && this._zooming ? (this._zooming = !1, g(this._animRequest), _t(document, "touchmove", this._onTouchMove), _t(document, "touchend", this._onTouchEnd), this._map.options.zoomAnimation ? this._map._animateZoom(this._center, this._map._limitZoom(this._zoom), !0, this._map.options.zoomSnap) : this._map._resetView(this._center, this._map._limitZoom(this._zoom))) : this._zooming = !1
             }
         });
-        Tn.addInitHook("addHandler", "touchZoom", Mo), Tn.BoxZoom = To, Tn.DoubleClickZoom = zo, Tn.Drag = So, Tn.Keyboard = Ao, Tn.ScrollWheelZoom = Eo, Tn.Tap = Do, Tn.TouchZoom = Mo, Object.freeze = ei, e.version = "1.4.0+HEAD.3337f36", e.Control = zn, e.control = Sn, e.Browser = Xi, e.Evented = di, e.Mixin = jn, e.Util = ci, e.Class = v, e.Handler = In, e.extend = t, e.bind = i, e.stamp = n, e.setOptions = u, e.DomEvent = xn, e.DomUtil = bn, e.PosAnimation = Cn, e.Draggable = Rn, e.LineUtil = $n, e.PolyUtil = Fn, e.Point = y, e.point = w, e.Bounds = k, e.bounds = x, e.Transformation = A, e.transformation = E, e.Projection = Wn, e.LatLng = z, e.latLng = S, e.LatLngBounds = C, e.latLngBounds = T, e.CRS = pi, e.GeoJSON = so, e.geoJSON = Yt, e.geoJson = ro, e.Layer = Zn, e.LayerGroup = Kn, e.layerGroup = function(e, t) {
+        Tn.addInitHook("addHandler", "touchZoom", Do), Tn.BoxZoom = To, Tn.DoubleClickZoom = zo, Tn.Drag = So, Tn.Keyboard = Ao, Tn.ScrollWheelZoom = Eo, Tn.Tap = Mo, Tn.TouchZoom = Do, Object.freeze = ei, e.version = "1.4.0+HEAD.3337f36", e.Control = zn, e.control = Sn, e.Browser = Xi, e.Evented = di, e.Mixin = jn, e.Util = ci, e.Class = v, e.Handler = In, e.extend = t, e.bind = i, e.stamp = n, e.setOptions = u, e.DomEvent = xn, e.DomUtil = bn, e.PosAnimation = Cn, e.Draggable = Rn, e.LineUtil = $n, e.PolyUtil = Fn, e.Point = y, e.point = w, e.Bounds = k, e.bounds = x, e.Transformation = A, e.transformation = E, e.Projection = Wn, e.LatLng = z, e.latLng = S, e.LatLngBounds = C, e.latLngBounds = T, e.CRS = pi, e.GeoJSON = so, e.geoJSON = Yt, e.geoJson = ro, e.Layer = Zn, e.LayerGroup = Kn, e.layerGroup = function(e, t) {
             return new Kn(e, t)
         }, e.FeatureGroup = Gn, e.featureGroup = function(e) {
             return new Gn(e)
@@ -27775,7 +27709,7 @@ var map, alliance_building_show, geocoder, directionsService, building_eval_unlo
     building_timers = Array(),
     building_marker_image = "/images/building_fire.png",
     mission_markers = Array(),
-    mission_timers = Array(),
+    mission_position_new_marker, mission_timers = Array(),
     patient_timers = Array(),
     mission_vehicles = Array(),
     vehicle_delay_timers = Array(),
@@ -30293,15 +30227,15 @@ function(e, t) {
     ! function(e) {
         e.fn.selectpicker.defaults = {
             noneSelectedText: "-",
-            noneResultsText: "Keine Ergebnisse fĂĽr {0}",
+            noneResultsText: "Keine Ergebnisse fÃ¼r {0}",
             countSelectedText: function(e) {
-                return 1 == e ? "{0} Element ausgewĂ¤hlt" : "{0} Elemente ausgewĂ¤hlt"
+                return 1 == e ? "{0} Element ausgewÃ¤hlt" : "{0} Elemente ausgewÃ¤hlt"
             },
             maxOptionsText: function(e, t) {
                 return [1 == e ? "Limit erreicht ({n} Element max.)" : "Limit erreicht ({n} Elemente max.)", 1 == t ? "Gruppen-Limit erreicht ({n} Element max.)" : "Gruppen-Limit erreicht ({n} Elemente max.)"]
             },
-            selectAllText: "Alles auswĂ¤hlen",
-            deselectAllText: "Nichts auswĂ¤hlen",
+            selectAllText: "Alles auswÃ¤hlen",
+            deselectAllText: "Nichts auswÃ¤hlen",
             multipleSeparator: ", "
         }
     }(e)
@@ -30477,11 +30411,11 @@ function(e) {
         o(i, t), e.className = i.join(" ")
     }
 
-    function D(e, t, i) {
+    function M(e, t, i) {
         i = ut(i) ? !S(e, t) : i, i ? A(e, t) : E(e, t)
     }
 
-    function M(e, t) {
+    function D(e, t) {
         if (ut(t)) {
             var i = getComputedStyle(e),
                 n = a(i.paddingLeft) + a(i.paddingRight),
@@ -30824,15 +30758,15 @@ function(e) {
             return i && n && t ? (e = i.nextSibling === n, t = o.createRange(), t.setStartBefore(i), t.setEndAfter(n), e && t.collapse(!0), l.selectRange(t), l.removeMarkers(), void 0) : !1
         }, l.selectOuterText = function(e, t) {
             var i, n, o = l.cloneSelected();
-            return o ? (o.collapse(!1), i = Dt(o, !0, e), n = Dt(o, !1, t), o.setStart(i.node, i.offset), o.setEnd(n.node, n.offset), l.selectRange(o), void 0) : !1
+            return o ? (o.collapse(!1), i = Mt(o, !0, e), n = Mt(o, !1, t), o.setStart(i.node, i.offset), o.setEnd(n.node, n.offset), l.selectRange(o), void 0) : !1
         }, l.getOuterText = function(e, t) {
             var i = l.cloneSelected();
-            return i ? (i.collapse(!e), Dt(i, e, t).text) : ""
+            return i ? (i.collapse(!e), Mt(i, e, t).text) : ""
         }, l.replaceKeyword = function(e, t, i, n, o, s) {
             i || e.sort(function(e, t) {
                 return e[0].length - t[0].length
             });
-            var a, r, c, u, d, h, p, m, f = "(^|[\\sÂ â€‚â€â€‰])",
+            var a, r, c, u, d, h, p, m, f = "(^|[\\sÂ â€‚â€ƒâ€‰])",
                 _ = e.length,
                 g = o ? 1 : 0,
                 v = n || e[_ - 1][0].length;
@@ -30868,7 +30802,7 @@ function(e) {
 
     function at(e, t, i) {
         var n = e.ownerDocument,
-            o = "(^|\\s|Â |â€‚|â€|â€‰|$)",
+            o = "(^|\\s|Â |â€‚|â€ƒ|â€‰|$)",
             a = [],
             r = {};
         l(e, "code") || (s(t, function(e) {
@@ -30902,7 +30836,7 @@ function(e) {
     }
 
     function lt(e, t) {
-        var i, a, l, _, x, C, z, N, L, R, W, q, U, K, Y, Q, J, et, it, ht, pt, gt, bt, yt, Ct, Tt, zt, At, Et, Dt, Lt, Ot, Rt, $t, Ft, Bt, Ht, Wt, Vt, qt, Ut, Zt, Kt, Gt, Yt, Qt, Jt, Xt, ei, ti, ii, ni, oi, si, ai, ri, li, ci, ui, di, hi, pi, mi, fi = this,
+        var i, a, l, _, x, C, z, N, L, R, W, q, U, K, Y, Q, J, et, it, ht, pt, gt, bt, yt, Ct, Tt, zt, At, Et, Mt, Lt, Ot, Rt, $t, Ft, Bt, Ht, Wt, Vt, qt, Ut, Zt, Kt, Gt, Yt, Qt, Jt, Xt, ei, ti, ii, ni, oi, si, ai, ri, li, ci, ui, di, hi, pi, mi, fi = this,
             _i = {},
             gi = [],
             vi = [],
@@ -30918,9 +30852,9 @@ function(e) {
             var t = lt.formats[ki.format];
             i = t ? new t : {}, "init" in i && i.init.call(fi), Ot(), Wt(), $t(), Lt(), Ft(), Bt(), xt || fi.toggleSourceMode(), ti();
             var n = function() {
-                m(Mt, "load", n), ki.autofocus && ai(), mi(), ni(), Y.call("ready"), "onReady" in i && i.onReady.call(fi)
+                m(Dt, "load", n), ki.autofocus && ai(), mi(), ni(), Y.call("ready"), "onReady" in i && i.onReady.call(fi)
             };
-            p(Mt, "load", n), "complete" === It.readyState && n()
+            p(Dt, "load", n), "complete" === It.readyState && n()
         }, Ot = function() {
             var e = ki.plugins;
             e = e ? e.toString().split(",") : [], Y = new nt(fi), e.forEach(function(e) {
@@ -30933,7 +30867,7 @@ function(e) {
             N = r("textarea"), _ = r("iframe", {
                 frameborder: 0,
                 allowfullscreen: !0
-            }), ki.startInSourceMode ? (A(a, "sourceMode"), g(_)) : (A(a, "wysiwygMode"), g(N)), ki.spellcheck || f(a, "spellcheck", "false"), "https:" === Mt.location.protocol && f(_, "src", "javascript:false"), d(a, _), d(a, N), fi.dimensions(ki.width || M(e), ki.height || I(e));
+            }), ki.startInSourceMode ? (A(a, "sourceMode"), g(_)) : (A(a, "wysiwygMode"), g(N)), ki.spellcheck || f(a, "spellcheck", "false"), "https:" === Dt.location.protocol && f(_, "src", "javascript:false"), d(a, _), d(a, N), fi.dimensions(ki.width || D(e), ki.height || I(e));
             var t = Pt ? "ie ie" + Pt : "";
             t += kt ? " ios" : "", z = _.contentDocument, z.open(), z.write(tt("html", {
                 attrs: ' class="' + t + '"',
@@ -30952,11 +30886,11 @@ function(e) {
                 i = "compositionstart compositionend",
                 n = "keydown keyup keypress focus blur contextmenu",
                 o = "onselectionchange" in z ? "selectionchange" : "keyup focus blur contextmenu mouseup touchend click";
-            p(It, "click", Xt), t && (p(t, "reset", Gt), p(t, "submit", fi.updateOriginal, _t)), p(C, "keypress", Kt), p(C, "keydown", Ut), p(C, "keydown", Zt), p(C, "keyup", ni), p(C, "blur", di), p(C, "keyup", hi), p(C, "paste", Vt), p(C, i, Qt), p(C, o, oi), p(C, n, Jt), ki.emoticonsCompat && Mt.getSelection && p(C, "keyup", li), p(C, "blur", function() {
+            p(It, "click", Xt), t && (p(t, "reset", Gt), p(t, "submit", fi.updateOriginal, _t)), p(C, "keypress", Kt), p(C, "keydown", Ut), p(C, "keydown", Zt), p(C, "keyup", ni), p(C, "blur", di), p(C, "keyup", hi), p(C, "paste", Vt), p(C, i, Qt), p(C, o, oi), p(C, n, Jt), ki.emoticonsCompat && Dt.getSelection && p(C, "keyup", li), p(C, "blur", function() {
                 fi.val() || A(C, "placeholder")
             }), p(C, "focus", function() {
                 E(C, "placeholder")
-            }), p(N, "blur", di), p(N, "keyup", hi), p(N, "keydown", Ut), p(N, i, Qt), p(N, n, Jt), p(z, "mousedown", Yt), p(z, o, oi), p(z, "beforedeactivate keyup mouseup", Dt), p(z, "keyup", ni), p(z, "focus", function() {
+            }), p(N, "blur", di), p(N, "keyup", hi), p(N, "keydown", Ut), p(N, i, Qt), p(N, n, Jt), p(z, "mousedown", Yt), p(z, o, oi), p(z, "beforedeactivate keyup mouseup", Mt), p(z, "keyup", ni), p(z, "focus", function() {
                 R = null
             }), p(a, "selectionchanged", si), p(a, "selectionchanged", ti), p(a, "selectionchanged valuechanged nodechanged pasteraw paste", Jt)
         }, $t = function() {
@@ -30979,7 +30913,7 @@ function(e) {
                             var l = Tt.create(o);
                             l && (T(Tt.create(o), s.firstChild), A(s, "has-icon"))
                         }
-                        s._sceTxtMode = !!r.txtExec, s._sceWysiwygMode = !!r.exec, D(s, "disabled", !r.exec), p(s, "click", function(e) {
+                        s._sceTxtMode = !!r.txtExec, s._sceWysiwygMode = !!r.exec, M(s, "disabled", !r.exec), p(s, "click", function(e) {
                             S(s, "disabled") || Et(s, r), ti(), e.preventDefault()
                         }), p(s, "mousedown", function(e) {
                             fi.closeDropDown(), e.preventDefault()
@@ -31008,12 +30942,12 @@ function(e) {
                 y = 0,
                 w = 0,
                 k = 0,
-                x = M(a),
+                x = D(a),
                 C = I(a),
                 T = !1,
                 z = fi.rtl();
             if (e = ki.resizeMinHeight || C / 1.5, t = ki.resizeMaxHeight || 2.5 * C, i = ki.resizeMinWidth || x / 1.25, n = ki.resizeMaxWidth || 1.25 * x, o = function(o) {
-                    "touchmove" === o.type ? (o = Mt.event, b = o.changedTouches[0].pageX, y = o.changedTouches[0].pageY) : (b = o.pageX, y = o.pageY);
+                    "touchmove" === o.type ? (o = Dt.event, b = o.changedTouches[0].pageX, y = o.changedTouches[0].pageY) : (b = o.pageX, y = o.pageY);
                     var s = k + (y - _),
                         a = z ? w - (b - f) : w + (b - f);
                     n > 0 && a > n && (a = n), i > 0 && i > a && (a = i), ki.resizeWidth || (a = !1), t > 0 && s > t && (s = t), e > 0 && e > s && (s = e), ki.resizeHeight || (s = !1), (a || s) && fi.dimensions(a, s), o.preventDefault()
@@ -31024,7 +30958,7 @@ function(e) {
                 S && (d(l, S), A(l, "has-icon"))
             }
             d(a, l), d(a, c), g(c), p(l, "touchstart mousedown", function(e) {
-                "touchstart" === e.type ? (e = Mt.event, f = e.touches[0].pageX, _ = e.touches[0].pageY) : (f = e.pageX, _ = e.pageY), w = M(a), k = I(a), T = !0, A(a, "resizing"), v(c), p(It, u, o), p(It, h, s), e.preventDefault()
+                "touchstart" === e.type ? (e = Dt.event, f = e.touches[0].pageX, _ = e.touches[0].pageY) : (f = e.pageX, _ = e.pageY), w = D(a), k = I(a), T = !0, A(a, "resizing"), v(c), p(It, u, o), p(It, h, s), e.preventDefault()
             })
         }, Wt = function() {
             var e = ki.emoticons,
@@ -31055,20 +30989,20 @@ function(e) {
         }, ei = function(e) {
             var t = fi.inSourceMode() ? "_sceTxtMode" : "_sceWysiwygMode";
             s(yi, function(i, n) {
-                D(n, "disabled", e || !n[t])
+                M(n, "disabled", e || !n[t])
             })
         }, fi.width = function(e, t) {
-            return e || 0 === e ? (fi.dimensions(e, null, t), fi) : M(a)
+            return e || 0 === e ? (fi.dimensions(e, null, t), fi) : D(a)
         }, fi.dimensions = function(e, t, i) {
             return e = e || 0 === e ? e : !1, t = t || 0 === t ? t : !1, e === !1 && t === !1 ? {
                 width: fi.width(),
                 height: fi.height()
-            } : (e !== !1 && (i !== !1 && (ki.width = e), M(a, e)), t !== !1 && (i !== !1 && (ki.height = t), I(a, t)), fi)
+            } : (e !== !1 && (i !== !1 && (ki.width = e), D(a, e)), t !== !1 && (i !== !1 && (ki.height = t), I(a, t)), fi)
         }, fi.height = function(e, t) {
             return e || 0 === e ? (fi.dimensions(null, e, t), fi) : I(a)
         }, fi.maximize = function(e) {
             var t = "sceditor-maximize";
-            return ut(e) ? S(a, t) : (e = !!e, e && (yt = Mt.pageYOffset), D(It.documentElement, t, e), D(It.body, t, e), D(a, t, e), fi.width(e ? "100%" : ki.width, !1), fi.height(e ? "100%" : ki.height, !1), e || Mt.scrollTo(0, yt), mi(), fi)
+            return ut(e) ? S(a, t) : (e = !!e, e && (yt = Dt.pageYOffset), M(It.documentElement, t, e), M(It.body, t, e), M(a, t, e), fi.width(e ? "100%" : ki.width, !1), fi.height(e ? "100%" : ki.height, !1), e || Dt.scrollTo(0, yt), mi(), fi)
         }, mi = function() {
             ki.autoExpand && !bt && (bt = setTimeout(fi.expandToContent, 200))
         }, fi.expandToContent = function(t) {
@@ -31132,7 +31066,7 @@ function(e) {
                     r = n.items;
                 e.preventDefault();
                 for (var l = 0; l < a.length; l++) {
-                    if (Mt.FileReader && r && Nt.test(r[l].type)) return o(n.items[l].getAsFile());
+                    if (Dt.FileReader && r && Nt.test(r[l].type)) return o(n.items[l].getAsFile());
                     s[a[l]] = n.getData(a[l])
                 }
                 s.text = s["text/plain"], s.html = s["text/html"], qt(s)
@@ -31207,12 +31141,12 @@ function(e) {
             return "boolean" != typeof e ? t : ((t && !e || !t && e) && fi.toggleSourceMode(), fi)
         }, fi.toggleSourceMode = function() {
             var e = fi.inSourceMode();
-            (xt || !e) && (e || (K.saveRange(), K.clear()), fi.blur(), e ? fi.setWysiwygEditorValue(fi.getSourceEditorValue()) : fi.setSourceEditorValue(fi.getWysiwygEditorValue()), R = null, b(N), b(_), D(a, "wysiwygMode", e), D(a, "sourceMode", !e), ei(), ti())
+            (xt || !e) && (e || (K.saveRange(), K.clear()), fi.blur(), e ? fi.setWysiwygEditorValue(fi.getSourceEditorValue()) : fi.setSourceEditorValue(fi.getWysiwygEditorValue()), R = null, b(N), b(_), M(a, "wysiwygMode", e), M(a, "sourceMode", !e), ei(), ti())
         }, ii = function() {
             return N.focus(), N.value.substring(N.selectionStart, N.selectionEnd)
         }, Et = function(e, t) {
             fi.inSourceMode() ? t.txtExec && (Array.isArray(t.txtExec) ? fi.sourceEditorInsertText.apply(fi, t.txtExec) : t.txtExec.call(fi, e, ii())) : t.exec && (dt(t.exec) ? t.exec.call(fi, e) : fi.execCommand(t.exec, t.hasOwnProperty("execParam") ? t.execParam : null))
-        }, Dt = function() {
+        }, Mt = function() {
             Pt && (R = K.selectedRange())
         }, fi.execCommand = function(e, t) {
             var i = !1,
@@ -31265,7 +31199,7 @@ function(e) {
                         r = n.queryCommandEnabled(u) ? 0 : -1, r > -1 && (r = n.queryCommandState(u) ? 1 : 0)
                     } catch (p) {}
                 } else d || (r = u.call(fi, t, e));
-                D(c, "disabled", d || 0 > r), D(c, i, r > 0)
+                M(c, "disabled", d || 0 > r), M(c, i, r > 0)
             }
             Tt && Tt.update && Tt.update(o, t, e)
         }, Kt = function(e) {
@@ -32098,7 +32032,7 @@ function(e) {
         At = {};
     nt.plugins = At;
     var Et = yt && 11 > yt,
-        Dt = function(e, t, i) {
+        Mt = function(e, t, i) {
             var n, o, s, a, r, l = "",
                 c = e.startContainer,
                 u = e.startOffset;
@@ -32109,7 +32043,7 @@ function(e) {
                 text: l
             }
         },
-        Mt = window,
+        Dt = window,
         It = document,
         Pt = yt,
         jt = Pt && 11 > Pt,
@@ -32155,7 +32089,7 @@ function(e) {
                 removeAttr: _,
                 is: k,
                 closest: c,
-                width: M,
+                width: D,
                 height: I,
                 traverse: L,
                 rTraverse: O,
@@ -32382,11 +32316,11 @@ function(e) {
         o(i, t), e.className = i.join(" ")
     }
 
-    function D(e, t, i) {
+    function M(e, t, i) {
         i = ut(i) ? !S(e, t) : i, i ? A(e, t) : E(e, t)
     }
 
-    function M(e, t) {
+    function D(e, t) {
         if (ut(t)) {
             var i = getComputedStyle(e),
                 n = a(i.paddingLeft) + a(i.paddingRight),
@@ -32729,15 +32663,15 @@ function(e) {
             return i && n && t ? (e = i.nextSibling === n, t = o.createRange(), t.setStartBefore(i), t.setEndAfter(n), e && t.collapse(!0), l.selectRange(t), l.removeMarkers(), void 0) : !1
         }, l.selectOuterText = function(e, t) {
             var i, n, o = l.cloneSelected();
-            return o ? (o.collapse(!1), i = Dt(o, !0, e), n = Dt(o, !1, t), o.setStart(i.node, i.offset), o.setEnd(n.node, n.offset), l.selectRange(o), void 0) : !1
+            return o ? (o.collapse(!1), i = Mt(o, !0, e), n = Mt(o, !1, t), o.setStart(i.node, i.offset), o.setEnd(n.node, n.offset), l.selectRange(o), void 0) : !1
         }, l.getOuterText = function(e, t) {
             var i = l.cloneSelected();
-            return i ? (i.collapse(!e), Dt(i, e, t).text) : ""
+            return i ? (i.collapse(!e), Mt(i, e, t).text) : ""
         }, l.replaceKeyword = function(e, t, i, n, o, s) {
             i || e.sort(function(e, t) {
                 return e[0].length - t[0].length
             });
-            var a, r, c, u, d, h, p, m, f = "(^|[\\sÂ â€‚â€â€‰])",
+            var a, r, c, u, d, h, p, m, f = "(^|[\\sÂ â€‚â€ƒâ€‰])",
                 _ = e.length,
                 g = o ? 1 : 0,
                 v = n || e[_ - 1][0].length;
@@ -32773,7 +32707,7 @@ function(e) {
 
     function at(e, t, i) {
         var n = e.ownerDocument,
-            o = "(^|\\s|Â |â€‚|â€|â€‰|$)",
+            o = "(^|\\s|Â |â€‚|â€ƒ|â€‰|$)",
             a = [],
             r = {};
         l(e, "code") || (s(t, function(e) {
@@ -32807,7 +32741,7 @@ function(e) {
     }
 
     function lt(e, t) {
-        var i, a, l, _, x, C, z, N, L, R, W, q, U, K, Y, Q, J, et, it, ht, pt, gt, bt, yt, Ct, Tt, zt, At, Et, Dt, Lt, Ot, Rt, $t, Ft, Bt, Ht, Wt, Vt, qt, Ut, Zt, Kt, Gt, Yt, Qt, Jt, Xt, ei, ti, ii, ni, oi, si, ai, ri, li, ci, ui, di, hi, pi, mi, fi = this,
+        var i, a, l, _, x, C, z, N, L, R, W, q, U, K, Y, Q, J, et, it, ht, pt, gt, bt, yt, Ct, Tt, zt, At, Et, Mt, Lt, Ot, Rt, $t, Ft, Bt, Ht, Wt, Vt, qt, Ut, Zt, Kt, Gt, Yt, Qt, Jt, Xt, ei, ti, ii, ni, oi, si, ai, ri, li, ci, ui, di, hi, pi, mi, fi = this,
             _i = {},
             gi = [],
             vi = [],
@@ -32823,9 +32757,9 @@ function(e) {
             var t = lt.formats[ki.format];
             i = t ? new t : {}, "init" in i && i.init.call(fi), Ot(), Wt(), $t(), Lt(), Ft(), Bt(), xt || fi.toggleSourceMode(), ti();
             var n = function() {
-                m(Mt, "load", n), ki.autofocus && ai(), mi(), ni(), Y.call("ready"), "onReady" in i && i.onReady.call(fi)
+                m(Dt, "load", n), ki.autofocus && ai(), mi(), ni(), Y.call("ready"), "onReady" in i && i.onReady.call(fi)
             };
-            p(Mt, "load", n), "complete" === It.readyState && n()
+            p(Dt, "load", n), "complete" === It.readyState && n()
         }, Ot = function() {
             var e = ki.plugins;
             e = e ? e.toString().split(",") : [], Y = new nt(fi), e.forEach(function(e) {
@@ -32838,7 +32772,7 @@ function(e) {
             N = r("textarea"), _ = r("iframe", {
                 frameborder: 0,
                 allowfullscreen: !0
-            }), ki.startInSourceMode ? (A(a, "sourceMode"), g(_)) : (A(a, "wysiwygMode"), g(N)), ki.spellcheck || f(a, "spellcheck", "false"), "https:" === Mt.location.protocol && f(_, "src", "javascript:false"), d(a, _), d(a, N), fi.dimensions(ki.width || M(e), ki.height || I(e));
+            }), ki.startInSourceMode ? (A(a, "sourceMode"), g(_)) : (A(a, "wysiwygMode"), g(N)), ki.spellcheck || f(a, "spellcheck", "false"), "https:" === Dt.location.protocol && f(_, "src", "javascript:false"), d(a, _), d(a, N), fi.dimensions(ki.width || D(e), ki.height || I(e));
             var t = Pt ? "ie ie" + Pt : "";
             t += kt ? " ios" : "", z = _.contentDocument, z.open(), z.write(tt("html", {
                 attrs: ' class="' + t + '"',
@@ -32857,11 +32791,11 @@ function(e) {
                 i = "compositionstart compositionend",
                 n = "keydown keyup keypress focus blur contextmenu",
                 o = "onselectionchange" in z ? "selectionchange" : "keyup focus blur contextmenu mouseup touchend click";
-            p(It, "click", Xt), t && (p(t, "reset", Gt), p(t, "submit", fi.updateOriginal, _t)), p(C, "keypress", Kt), p(C, "keydown", Ut), p(C, "keydown", Zt), p(C, "keyup", ni), p(C, "blur", di), p(C, "keyup", hi), p(C, "paste", Vt), p(C, i, Qt), p(C, o, oi), p(C, n, Jt), ki.emoticonsCompat && Mt.getSelection && p(C, "keyup", li), p(C, "blur", function() {
+            p(It, "click", Xt), t && (p(t, "reset", Gt), p(t, "submit", fi.updateOriginal, _t)), p(C, "keypress", Kt), p(C, "keydown", Ut), p(C, "keydown", Zt), p(C, "keyup", ni), p(C, "blur", di), p(C, "keyup", hi), p(C, "paste", Vt), p(C, i, Qt), p(C, o, oi), p(C, n, Jt), ki.emoticonsCompat && Dt.getSelection && p(C, "keyup", li), p(C, "blur", function() {
                 fi.val() || A(C, "placeholder")
             }), p(C, "focus", function() {
                 E(C, "placeholder")
-            }), p(N, "blur", di), p(N, "keyup", hi), p(N, "keydown", Ut), p(N, i, Qt), p(N, n, Jt), p(z, "mousedown", Yt), p(z, o, oi), p(z, "beforedeactivate keyup mouseup", Dt), p(z, "keyup", ni), p(z, "focus", function() {
+            }), p(N, "blur", di), p(N, "keyup", hi), p(N, "keydown", Ut), p(N, i, Qt), p(N, n, Jt), p(z, "mousedown", Yt), p(z, o, oi), p(z, "beforedeactivate keyup mouseup", Mt), p(z, "keyup", ni), p(z, "focus", function() {
                 R = null
             }), p(a, "selectionchanged", si), p(a, "selectionchanged", ti), p(a, "selectionchanged valuechanged nodechanged pasteraw paste", Jt)
         }, $t = function() {
@@ -32884,7 +32818,7 @@ function(e) {
                             var l = Tt.create(o);
                             l && (T(Tt.create(o), s.firstChild), A(s, "has-icon"))
                         }
-                        s._sceTxtMode = !!r.txtExec, s._sceWysiwygMode = !!r.exec, D(s, "disabled", !r.exec), p(s, "click", function(e) {
+                        s._sceTxtMode = !!r.txtExec, s._sceWysiwygMode = !!r.exec, M(s, "disabled", !r.exec), p(s, "click", function(e) {
                             S(s, "disabled") || Et(s, r), ti(), e.preventDefault()
                         }), p(s, "mousedown", function(e) {
                             fi.closeDropDown(), e.preventDefault()
@@ -32913,12 +32847,12 @@ function(e) {
                 y = 0,
                 w = 0,
                 k = 0,
-                x = M(a),
+                x = D(a),
                 C = I(a),
                 T = !1,
                 z = fi.rtl();
             if (e = ki.resizeMinHeight || C / 1.5, t = ki.resizeMaxHeight || 2.5 * C, i = ki.resizeMinWidth || x / 1.25, n = ki.resizeMaxWidth || 1.25 * x, o = function(o) {
-                    "touchmove" === o.type ? (o = Mt.event, b = o.changedTouches[0].pageX, y = o.changedTouches[0].pageY) : (b = o.pageX, y = o.pageY);
+                    "touchmove" === o.type ? (o = Dt.event, b = o.changedTouches[0].pageX, y = o.changedTouches[0].pageY) : (b = o.pageX, y = o.pageY);
                     var s = k + (y - _),
                         a = z ? w - (b - f) : w + (b - f);
                     n > 0 && a > n && (a = n), i > 0 && i > a && (a = i), ki.resizeWidth || (a = !1), t > 0 && s > t && (s = t), e > 0 && e > s && (s = e), ki.resizeHeight || (s = !1), (a || s) && fi.dimensions(a, s), o.preventDefault()
@@ -32929,7 +32863,7 @@ function(e) {
                 S && (d(l, S), A(l, "has-icon"))
             }
             d(a, l), d(a, c), g(c), p(l, "touchstart mousedown", function(e) {
-                "touchstart" === e.type ? (e = Mt.event, f = e.touches[0].pageX, _ = e.touches[0].pageY) : (f = e.pageX, _ = e.pageY), w = M(a), k = I(a), T = !0, A(a, "resizing"), v(c), p(It, u, o), p(It, h, s), e.preventDefault()
+                "touchstart" === e.type ? (e = Dt.event, f = e.touches[0].pageX, _ = e.touches[0].pageY) : (f = e.pageX, _ = e.pageY), w = D(a), k = I(a), T = !0, A(a, "resizing"), v(c), p(It, u, o), p(It, h, s), e.preventDefault()
             })
         }, Wt = function() {
             var e = ki.emoticons,
@@ -32960,20 +32894,20 @@ function(e) {
         }, ei = function(e) {
             var t = fi.inSourceMode() ? "_sceTxtMode" : "_sceWysiwygMode";
             s(yi, function(i, n) {
-                D(n, "disabled", e || !n[t])
+                M(n, "disabled", e || !n[t])
             })
         }, fi.width = function(e, t) {
-            return e || 0 === e ? (fi.dimensions(e, null, t), fi) : M(a)
+            return e || 0 === e ? (fi.dimensions(e, null, t), fi) : D(a)
         }, fi.dimensions = function(e, t, i) {
             return e = e || 0 === e ? e : !1, t = t || 0 === t ? t : !1, e === !1 && t === !1 ? {
                 width: fi.width(),
                 height: fi.height()
-            } : (e !== !1 && (i !== !1 && (ki.width = e), M(a, e)), t !== !1 && (i !== !1 && (ki.height = t), I(a, t)), fi)
+            } : (e !== !1 && (i !== !1 && (ki.width = e), D(a, e)), t !== !1 && (i !== !1 && (ki.height = t), I(a, t)), fi)
         }, fi.height = function(e, t) {
             return e || 0 === e ? (fi.dimensions(null, e, t), fi) : I(a)
         }, fi.maximize = function(e) {
             var t = "sceditor-maximize";
-            return ut(e) ? S(a, t) : (e = !!e, e && (yt = Mt.pageYOffset), D(It.documentElement, t, e), D(It.body, t, e), D(a, t, e), fi.width(e ? "100%" : ki.width, !1), fi.height(e ? "100%" : ki.height, !1), e || Mt.scrollTo(0, yt), mi(), fi)
+            return ut(e) ? S(a, t) : (e = !!e, e && (yt = Dt.pageYOffset), M(It.documentElement, t, e), M(It.body, t, e), M(a, t, e), fi.width(e ? "100%" : ki.width, !1), fi.height(e ? "100%" : ki.height, !1), e || Dt.scrollTo(0, yt), mi(), fi)
         }, mi = function() {
             ki.autoExpand && !bt && (bt = setTimeout(fi.expandToContent, 200))
         }, fi.expandToContent = function(t) {
@@ -33037,7 +32971,7 @@ function(e) {
                     r = n.items;
                 e.preventDefault();
                 for (var l = 0; l < a.length; l++) {
-                    if (Mt.FileReader && r && Nt.test(r[l].type)) return o(n.items[l].getAsFile());
+                    if (Dt.FileReader && r && Nt.test(r[l].type)) return o(n.items[l].getAsFile());
                     s[a[l]] = n.getData(a[l])
                 }
                 s.text = s["text/plain"], s.html = s["text/html"], qt(s)
@@ -33112,12 +33046,12 @@ function(e) {
             return "boolean" != typeof e ? t : ((t && !e || !t && e) && fi.toggleSourceMode(), fi)
         }, fi.toggleSourceMode = function() {
             var e = fi.inSourceMode();
-            (xt || !e) && (e || (K.saveRange(), K.clear()), fi.blur(), e ? fi.setWysiwygEditorValue(fi.getSourceEditorValue()) : fi.setSourceEditorValue(fi.getWysiwygEditorValue()), R = null, b(N), b(_), D(a, "wysiwygMode", e), D(a, "sourceMode", !e), ei(), ti())
+            (xt || !e) && (e || (K.saveRange(), K.clear()), fi.blur(), e ? fi.setWysiwygEditorValue(fi.getSourceEditorValue()) : fi.setSourceEditorValue(fi.getWysiwygEditorValue()), R = null, b(N), b(_), M(a, "wysiwygMode", e), M(a, "sourceMode", !e), ei(), ti())
         }, ii = function() {
             return N.focus(), N.value.substring(N.selectionStart, N.selectionEnd)
         }, Et = function(e, t) {
             fi.inSourceMode() ? t.txtExec && (Array.isArray(t.txtExec) ? fi.sourceEditorInsertText.apply(fi, t.txtExec) : t.txtExec.call(fi, e, ii())) : t.exec && (dt(t.exec) ? t.exec.call(fi, e) : fi.execCommand(t.exec, t.hasOwnProperty("execParam") ? t.execParam : null))
-        }, Dt = function() {
+        }, Mt = function() {
             Pt && (R = K.selectedRange())
         }, fi.execCommand = function(e, t) {
             var i = !1,
@@ -33170,7 +33104,7 @@ function(e) {
                         r = n.queryCommandEnabled(u) ? 0 : -1, r > -1 && (r = n.queryCommandState(u) ? 1 : 0)
                     } catch (p) {}
                 } else d || (r = u.call(fi, t, e));
-                D(c, "disabled", d || 0 > r), D(c, i, r > 0)
+                M(c, "disabled", d || 0 > r), M(c, i, r > 0)
             }
             Tt && Tt.update && Tt.update(o, t, e)
         }, Kt = function(e) {
@@ -34003,7 +33937,7 @@ function(e) {
         At = {};
     nt.plugins = At;
     var Et = yt && 11 > yt,
-        Dt = function(e, t, i) {
+        Mt = function(e, t, i) {
             var n, o, s, a, r, l = "",
                 c = e.startContainer,
                 u = e.startOffset;
@@ -34014,7 +33948,7 @@ function(e) {
                 text: l
             }
         },
-        Mt = window,
+        Dt = window,
         It = document,
         Pt = yt,
         jt = Pt && 11 > Pt,
@@ -34060,7 +33994,7 @@ function(e) {
                 removeAttr: _,
                 is: k,
                 closest: c,
-                width: M,
+                width: D,
                 height: I,
                 traverse: L,
                 rTraverse: O,
@@ -34177,7 +34111,7 @@ function(e) {
         function i(e, t) {
             var i, n, o, r = /\[([^\]\s=]+)(?:([^\]]+))?\]/,
                 l = /\[\/([^\[\]]+)\]/;
-            return e === S && (i = t.match(r)) && (o = y(i[1]), i[2] && (i[2] = i[2].trim()) && (n = s(i[2]))), e === D && (i = t.match(l)) && (o = y(i[1])), e === E && (o = "#newline"), o && (e !== S && e !== D || z[o]) || (e = A, o = "#"), new a(e, o, t, n)
+            return e === S && (i = t.match(r)) && (o = y(i[1]), i[2] && (i[2] = i[2].trim()) && (n = s(i[2]))), e === M && (i = t.match(l)) && (o = y(i[1])), e === E && (o = "#newline"), o && (e !== S && e !== M || z[o]) || (e = A, o = "#"), new a(e, o, t, n)
         }
 
         function s(e) {
@@ -34208,11 +34142,11 @@ function(e) {
                     h() ? h().children.push(e) : u.push(e)
                 }, m = function(e) {
                     return h() && (i = z[h().name]) && i.closedBy && i.closedBy.indexOf(e) > -1
-                }; t = e.shift();) switch (a = e[0], c(h(), t) || t.type === D && h() && t.name === h().name || (t.name = "#", t.type = A), t.type) {
+                }; t = e.shift();) switch (a = e[0], c(h(), t) || t.type === M && h() && t.name === h().name || (t.name = "#", t.type = A), t.type) {
                 case S:
-                    m(t.name) && d.pop(), p(t), i = z[t.name], i && !i.isSelfClosing && (i.closedBy || l(t.name, D, e)) ? d.push(t) : i && i.isSelfClosing || (t.type = A);
+                    m(t.name) && d.pop(), p(t), i = z[t.name], i && !i.isSelfClosing && (i.closedBy || l(t.name, M, e)) ? d.push(t) : i && i.isSelfClosing || (t.type = A);
                     break;
-                case D:
+                case M:
                     if (h() && t.name !== h().name && m("/" + t.name) && d.pop(), h() && t.name === h().name) h().closing = t, d.pop();
                     else if (l(t.name, S, d)) {
                         for (; n = d.pop();) {
@@ -34227,7 +34161,7 @@ function(e) {
                     } else t.type = A, p(t);
                     break;
                 case E:
-                    h() && a && m((a.type === D ? "/" : "") + a.name) && (a.type !== D || a.name !== h().name) && (i = z[h().name], i && i.breakAfter ? d.pop() : i && i.isInline === !1 && k.opts.breakAfterBlock && i.breakAfter !== !1 && d.pop()), p(t);
+                    h() && a && m((a.type === M ? "/" : "") + a.name) && (a.type !== M || a.name !== h().name) && (i = z[h().name], i && i.breakAfter ? d.pop() : i && i.isInline === !1 && k.opts.breakAfterBlock && i.breakAfter !== !1 && d.pop()), p(t);
                     break;
                 default:
                     p(t)
@@ -34275,7 +34209,7 @@ function(e) {
             for (var t, i, n = function(e) {
                     for (var t = e.length; t--;) {
                         var i = e[t].type;
-                        if (i === S || i === D) return !1;
+                        if (i === S || i === M) return !1;
                         if (i === A && /\S|\u00A0/.test(e[t].val)) return !1
                     }
                     return !0
@@ -34344,7 +34278,7 @@ function(e) {
                     type: S,
                     regex: /^\[[^\[\]]+\]/
                 }, {
-                    type: D,
+                    type: M,
                     regex: /^\[\/[^\[\]]+\]/
                 }];
             e: for (; e.length;) {
@@ -34946,7 +34880,7 @@ function(e) {
         S = "open",
         A = "content",
         E = "newline",
-        D = "close";
+        M = "close";
     a.prototype = {
         clone: function() {
             var e = this;
@@ -36457,5 +36391,171 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = "mc_mobile_client_id",
             }
         }
     }(),
-    pois_layer_group, mission_poi_markers = Array(),
-    mission_position_new_marker;
+    map_pois_service = function() {
+        var e = Array();
+        return {
+            getMissionPoiMarkersArray: function() {
+                return e
+            },
+            leafletMissionPositionMarkerAdd: function(t) {
+                var i = L.icon({
+                    iconUrl: "/images/letter_p.png",
+                    iconSize: [32, 37],
+                    iconAnchor: iconAnchorCalculate([32, 37])
+                });
+                marker = L.marker([t.latitude, t.longitude], {
+                    icon: i
+                });
+                var n = function(e) {
+                    confirm(I18n.t("javascript.poi_delete", {
+                        caption: t.caption
+                    })) && (map_pois_service.leafletMissionPositionMarkerDelete(e.target._leaflet_id), $.ajax({
+                        url: "/mission_positions/" + t.id,
+                        type: "POST",
+                        data: {
+                            _method: "delete"
+                        },
+                        cache: !1
+                    }))
+                };
+                marker.on("click", n), marker.id = t.id, marker.addTo(map_filters_service.getMapFiltersLayers().pois), e.push(marker)
+            },
+            leafletMissionPositionMarkerDelete: function(t) {
+                marker = map_filters_service.getMapFiltersLayers().pois.getLayer(t), map_filters_service.getMapFiltersLayers().pois.removeLayer(t), index = e.indexOf(marker), -1 !== index && e.splice(index, 1)
+            },
+            mapkitMissionPositionMarkerAdd: function(t) {
+                var i = function() {
+                    confirm(I18n.t("javascript.poi_delete", {
+                        caption: t.caption
+                    })) && (this.mapkitMissionPositionMarkerDelete(t.id), $.ajax({
+                        url: "/mission_positions/" + t.id,
+                        type: "POST",
+                        data: {
+                            _method: "delete"
+                        },
+                        cache: !1
+                    }))
+                };
+                if ("undefined" != typeof mapkit) {
+                    var n = new mapkit.ImageAnnotation(new mapkit.Coordinate(t.latitude, t.longitude), {
+                        url: {
+                            1: "/images/letter_p.png"
+                        }
+                    });
+                    n.title = t.caption, n.addEventListener("select", i), map.addAnnotation(n), n.element.className = "mapkit-marker"
+                }
+                n.id = t.id, e.push(n)
+            },
+            mapkitMissionPositionMarkerDelete: function(t) {
+                $.each(e, function(e, i) {
+                    i.id == t && map.removeAnnotation(i)
+                })
+            },
+            mapkitMissionPositionMarkerDeleteAll: function() {
+                $.each(e, function(e, t) {
+                    map.removeAnnotation(t)
+                }), e = Array()
+            }
+        }
+    }(),
+    map_filters_service = function() {
+        var e, t, i = {},
+            n = {},
+            o = {},
+            s = {},
+            a = !1;
+        return {
+            initialize: function(a) {
+                o = a.building_types_collection, e = a.mission_types_collection, s = a.mission_types_with_filter_ids, t = a.user_id, $.each(a.sorted_map_filters, function() {
+                    filter_layer = L.layerGroup(), n[map_filters_service.decorateFilterText(this.text, this.filter_id)] = filter_layer, i[this.filter_id] = filter_layer
+                })
+            },
+            getMapFiltersLayersForMap: function() {
+                return n
+            },
+            getMapFiltersLayers: function() {
+                return i
+            },
+            getFilterLayerByBuildingParams: function(e) {
+                switch (!0) {
+                    case e.user_id == t && "undefined" != typeof o[e.building_type]:
+                        return i[o[e.building_type]];
+                    case null == e.user_id:
+                        return i.alliance_buildings;
+                    default:
+                        return map
+                }
+            },
+            getFilterLayerByMissionParams: function(e) {
+                switch (!0) {
+                    case e.user_id == t && "undefined" != typeof s[e.mtid]:
+                        return i[s[e.mtid]];
+                    case e.user_id != t:
+                        return i.alliance_missions;
+                    default:
+                        return map
+                }
+            },
+            onOverlayChanged: function(e) {
+                filter_key = Object.keys(i).find(function(t) {
+                    return i[t] === e.layer
+                }), filter_checked = "overlayadd" == e.type, a || ($.ajax({
+                    type: "PUT",
+                    url: "/map_filters",
+                    data: {
+                        filter_id: filter_key,
+                        checked: filter_checked
+                    },
+                    cache: !1
+                }), ("all_buildings" == filter_key || "user_buildings" == filter_key || "all_missions" == filter_key || "user_missions" == filter_key) && (a = !0, setTimeout(function() {
+                    map_filters_service.massFiltersChange(filter_key, filter_checked)
+                }, 0)))
+            },
+            massFiltersChange: function(t, n) {
+                switch (filters_keys = [], !0) {
+                    case "all_buildings" == t:
+                        filters_keys = Object.values(o).concat(["user_buildings", "alliance_buildings"]);
+                        break;
+                    case "user_buildings" == t:
+                        filters_keys = Object.values(o);
+                        break;
+                    case "all_missions" == t:
+                        filters_keys = e.concat(["user_missions", "alliance_missions"]);
+                        break;
+                    case "user_missions" == t:
+                        filters_keys = e
+                }
+                $.each(filters_keys, function(e, t) {
+                    n ? map.addLayer(i[t]) : map.removeLayer(i[t])
+                }), a = !1
+            },
+            decorateFilterText: function(t, i) {
+                var n = function(e, t, i) {
+                    return "<a class='list__element list__element--" + t + " " + i + "'>" + e + "</a>"
+                };
+                switch (!0) {
+                    case Object.values(o).includes(i):
+                        return n(t, "third", "building-filter");
+                    case e.includes(i):
+                        return n(t, "third", "mission-filter");
+                    case "all_buildings" == i:
+                        return n(t, "first", "all-buildings-filter");
+                    case "all_missions" == i:
+                        return n(t, "first", "all-missions-filter");
+                    case "pois" == i:
+                        return n(t, "first", "app-pois-filter");
+                    case "user_buildings" == i:
+                        return n(t, "second", "user-buildings-filter");
+                    case "user_missions" == i:
+                        return n(t, "second", "user-missions-filter");
+                    case ["alliance_buildings"].includes(i):
+                        return n(t, "second", "alliance-buildings-filter");
+                    case "alliance_missions" == i:
+                        return n(t, "second", "alliance-missions-filter");
+                    default:
+                        return t
+                }
+            }
+        }
+    }();
+mobile_map_filters_collection = {};
