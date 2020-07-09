@@ -5142,16 +5142,7 @@ background - repeat: repeat - x
                         color: #fff!important
                     }
                     body.dark.btn - success {
-                        color: #fff!important;
-                        background - image: linear - gradient(to bottom, #5cb85c 0, # 419641 100 % );
-                        background - image: -webkit - gradient(linear, left top, left bottom, from(#5cb85c), to(# 419641));
-                        background - image: -webkit - linear - gradient(top, #5cb85c 0, # 419641 100 % );
-                        border - color: #3e8f3e
-                    }
-                    body.dark .alert-info {
-                      background-color:# 3498 db;
-                      border - color: #3498db;
-                      color:# ffffff;background - image: none
+                        color: #fff!important;background - image: linear - gradient(to bottom, #5cb85c 0, # 419641 100 % );background - image: -webkit - gradient(linear, left top, left bottom, from(#5cb85c), to(# 419641));background - image: -webkit - linear - gradient(top, #5cb85c 0, # 419641 100 % );border - color: #3e8f3e}body.dark .alert-info{background-color:# 3498 db;border - color: #3498db;color:# ffffff;background - image: none
                     }
                     body.dark.alert - info a {
                         color: #fff
@@ -6912,4 +6903,39 @@ background - repeat: repeat - x
                                             display: none
                                         }.btn - tutorial {
                                             margin - right: 5 px
+                                        }.wrapper {
+                                            width: 200 px;background: white;border - radius: 5 px;border: 1 px solid grey;overflow: hidden
+                                        }.leaflet - control - layers - overlays {
+                                            width: 300 px
+                                        }.leaflet - control - layers - overlays div {
+                                            position: relative
+                                        }.leaflet - control - layers - overlays.leaflet - control - layers - selector {
+                                            position: absolute;left: 0;top: 0;bottom: 0;margin: auto
+                                        }.list {
+                                            padding: 0;margin: 0
+                                        }.list.collapsed a::before {
+                                            width: 0;height: 0;border - style: solid;border - width: 8 px 8 px 0 8 px;border - color: dimgray transparent transparent transparent
+                                        }.list__element {
+                                            list - style: none;
+                                            margin: 0;
+                                            cursor: pointer;
+                                            position: relative
+                                        }.list__element {
+                                            text - decoration: none;
+                                            color: dimgray;
+                                            padding: 2 px;
+                                            display: block;
+                                            position: relative
+                                        }.list__element--first::before, .list__element--second::before {
+                                            content: '';position: absolute;right: 10 px;top: 0;bottom: 0;width: 0;height: 0;margin: auto;display: bliock;border - style: solid;border - width: 0 8 px 8 px 8 px;border - color: transparent transparent dimgray transparent
+                                        }.list__element::after {
+                                            content: '';position: absolute;left: 0;bottom: 0;width: 100 % ;height: 1 px;background: grey
+                                        }.list__element: last - child::after {
+                                            display: none
+                                        }.list__element--first {
+                                            background: #F5F5F5;display: block;margin - left: 17 px;padding: 2 px
+                                        }.list__element--second {
+                                            background: #E7E7E7;display: block;margin - left: 17 px;padding: 2 px
+                                        }.list__element--third {
+                                            background: #C7C7C7;display: block;margin - left: 17 px;padding: 2 px
                                         }
