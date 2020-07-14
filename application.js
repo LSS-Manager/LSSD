@@ -1667,9 +1667,11 @@ function clearMap(e) {
 }
 
 function currentMarkerTypeFilterTurnedOn(e) {
-    return filter_checked = mobile_map_filters_collection.find(function(t) {
-        return t.filter_id === e
-    }).checked, "undefined" !== filter_checked ? filter_checked : !0
+    var t = mobile_map_filters_collection.find(function(t) {
+            return t.filter_id === e
+        }),
+        i = void 0 != t ? t.checked : "undefined";
+    return "undefined" !== i ? i : !0
 }! function(e) {
     "undefined" != typeof module && module.exports ? module.exports = e(this) : "function" == typeof define && define.amd ? define("i18n", function(t) {
         return function() {
@@ -6884,7 +6886,7 @@ function currentMarkerTypeFilterTurnedOn(e) {
                 lebefkw: "LehÄÃ­ velitelskÃ© vozidlo",
                 lf_only: "HasiÄskÃ© vozy",
                 long_distance_ambulance: "Sanitka DZS",
-                mask_service_unit: "Jednotka s dÃ½chacÃ­mi pÅ™Ã­stroji",
+                mask_service_unit: "ProtiplynovÃ½ automobil",
                 mek_mtf: "",
                 mek_zf: "",
                 mtw: "TransportnÃ­ tÃ½movÃ½ vÅ¯z",
@@ -6930,8 +6932,7 @@ function currentMarkerTypeFilterTurnedOn(e) {
                 ulf: "",
                 wasserwerfer: "",
                 water_amount: "",
-                water_amount_tlf: "",
-                gwa: "ProtiplynovÃ½ automobil"
+                water_amount_tlf: ""
             }
         },
         tutorial: {
@@ -7470,7 +7471,7 @@ function currentMarkerTypeFilterTurnedOn(e) {
             chat_history: "HistÃ³rico do chat",
             congratulations: "ParabÃ©ns! Agora vocÃª pode ser promovido.",
             create_alliance_event: "Iniciar evento de alianÃ§a",
-            create_alliance_operation: "Crie uma missÃ£o de alianÃ§a de larga escala",
+            create_alliance_operation: "Criar missÃ£o de alianÃ§a em grande escala",
             emergency: "EmergÃªncia",
             join_alliance_infos: "Se vocÃª estiver em uma alianÃ§a, outros jogadores podem lhe dar missÃµes livremente.",
             map: "Mapa",
@@ -7481,12 +7482,12 @@ function currentMarkerTypeFilterTurnedOn(e) {
                 alliance_members: "Membros",
                 alliance_missions: "Partilhado pela alianÃ§a",
                 ambulance_station_missions: "EstaÃ§Ã£o de ambulÃ¢ncia",
-                ambulance_station_small_missions: "EstaÃ§Ã£o de ambulÃ¢ncia (estaÃ§Ã£o pequena)",
+                ambulance_station_small_missions: "EstaÃ§Ã£o de AmbulÃ¢ncias (Pequena)",
                 clinic_missions: "ClÃ­nica",
-                dispatch_center_missions: "Central de Despacho",
-                fire_school_missions: "Academia de bombeiros",
-                firehouse_missions: "Unidade do corpo de bombeiros",
-                firehouse_small_missions: "Unidade do corpo de bombeiros (pequena)",
+                dispatch_center_missions: "Centro de Comando",
+                fire_school_missions: "Escola de FormaÃ§Ã£o de Bombeiros",
+                firehouse_missions: "Corpo de Bombeiros",
+                firehouse_small_missions: "Corpo de Bombeiros (Pequeno)",
                 hospital_missions: "Hospital",
                 map_filters: "Lista de filtros do mapa",
                 mission_positions: "Pontos de interesse (PDI)",
@@ -7499,7 +7500,7 @@ function currentMarkerTypeFilterTurnedOn(e) {
                 rapid_deployment_group: "Grupo de InstalaÃ§Ã£o RÃ¡pida (SEG)",
                 rescue_copter_station_missions: "Centro de meios aÃ©reos",
                 riot_police: "Tropa de choque",
-                staging_area_missions: "Ãrea de concentraÃ§Ã£o",
+                staging_area_missions: "Zona de ConcentraÃ§Ã£o e Reserva",
                 technical_aid_organization: "THW",
                 technical_aid_organization_school: "THW Bundesschule",
                 user_buildings: "Os meus edifÃ­cios",
@@ -7512,7 +7513,7 @@ function currentMarkerTypeFilterTurnedOn(e) {
             no_alliance_missions: "NÃ£o hÃ¡ missÃµes de alianÃ§a no momento.",
             no_ambulance_missions: "NÃ£o hÃ¡ missÃµes de ambulÃ¢ncia. VocÃª sÃ³ pode participar de missÃµes de ambulÃ¢ncia quando tiver uma ambulÃ¢ncia e um hospital.",
             no_emergency_missions: "NÃ£o hÃ¡ missÃµes de emergÃªncia disponÃ­veis. VocÃª pode participar de uma missÃ£o de emergÃªncia depois que construir o seu primeiro corpo de bombeiros.",
-            no_radio_messages: "VocÃª nÃ£o recebeu mensagens de rÃ¡dio.",
+            no_radio_messages: "NÃ£o existem mensagens via rÃ¡dio",
             radio_messages: "RÃ¡dio",
             restore_map: "Restaurar mapa",
             show_informations: "Verde = As missÃµes sÃ£o exibidas na lista. Vermelho = As missÃµes nÃ£o sÃ£o exibidas.",
