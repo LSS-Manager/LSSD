@@ -2368,7 +2368,8 @@ function currentMarkerTypeFilterTurnedOn(e) {
                 technical_aid_organization_school: "THW Bundesschule",
                 user_buildings: "My buildings",
                 user_missions: "My missions",
-                water_watch: "Water rescue"
+                water_watch: "Water rescue",
+                water_watch_missions: "Water rescue"
             },
             message: "Message",
             mission: "Mission",
@@ -7509,10 +7510,10 @@ function currentMarkerTypeFilterTurnedOn(e) {
             },
             message: "Mensagem",
             mission: "MissÃ£o",
-            no_alliance_chat_impossible: "VocÃª nÃ£o estÃ¡ em uma alianÃ§a.",
+            no_alliance_chat_impossible: "NÃ£o estÃ¡ em nenhuma alianÃ§a.",
             no_alliance_missions: "NÃ£o hÃ¡ missÃµes de alianÃ§a no momento.",
             no_ambulance_missions: "NÃ£o hÃ¡ missÃµes de ambulÃ¢ncia. VocÃª sÃ³ pode participar de missÃµes de ambulÃ¢ncia quando tiver uma ambulÃ¢ncia e um hospital.",
-            no_emergency_missions: "NÃ£o hÃ¡ missÃµes de emergÃªncia disponÃ­veis. VocÃª pode participar de uma missÃ£o de emergÃªncia depois que construir o seu primeiro corpo de bombeiros.",
+            no_emergency_missions: "NÃ£o hÃ¡ missÃµes de emergÃªncia disponÃ­veis. PoderÃ¡ participar em missÃµes de emergÃªncia depois de construir o seu primeiro corpo de bombeiros.",
             no_radio_messages: "NÃ£o existem mensagens via rÃ¡dio",
             radio_messages: "RÃ¡dio",
             restore_map: "Restaurar mapa",
@@ -7529,7 +7530,7 @@ function currentMarkerTypeFilterTurnedOn(e) {
             prisoner_transported: "A transportar detido.",
             ready_home: "DisponÃ­vel na estaÃ§Ã£o",
             ready_traveling: "Livre e disponÃ­vel",
-            talking_wish: "SolicitaÃ§Ã£o de transporte",
+            talking_wish: "Pedido de Transporte",
             waiting_for_vehicle: "Aguardando veÃ­culo para rebocar"
         },
         intervention_order: {
@@ -7635,7 +7636,7 @@ function currentMarkerTypeFilterTurnedOn(e) {
                 ovd_p: "",
                 police_car: "Carro de Patrulha",
                 polizeihubschrauber: "HelicÃ³ptero de polÃ­cia",
-                rescue_vehicle: "VeÃ­culo de Desencarceramento",
+                rescue_vehicle: "VeÃ­culo(s) de Desencarceramento",
                 rescue_vehicle_only: "Resgate pesado",
                 rescueboat: "Barco de resgate grande",
                 rettungstreppe: "",
@@ -10142,7 +10143,7 @@ function currentMarkerTypeFilterTurnedOn(e) {
             successfully_deleted: "HÃ¤lytysjÃ¤rjestely poistettu",
             successfully_updated: "HÃ¤lytysjÃ¤rjestelyn pÃ¤ivitys onnistui.",
             vehicles: {
-                ab_atemschutz_only: "Paineilmalaitemoduuli",
+                ab_atemschutz_only: "Paineilmahuoltokontti",
                 ab_einsatzleitung_only: "Johtomoduuli",
                 ab_gefahrgut_only: "Kemikaalitorjuntamoduuli",
                 ab_oel_only: "Ã–ljyvahinkomoduuli",
@@ -10157,7 +10158,7 @@ function currentMarkerTypeFilterTurnedOn(e) {
                 dekon_p: "",
                 division_chief_unit: "Johtokeskusauto",
                 dlk_or_tm50: "",
-                elw1_or_elw2: "Johtoauto, johtokeskusauto tai johtokeskusmoduuli ",
+                elw1_or_elw2: "johtoauto, johtokeskusauto tai johtokeskuskontti",
                 elw2_or_ab_elw: "",
                 elw3: "",
                 elw_airport: "",
@@ -10185,8 +10186,8 @@ function currentMarkerTypeFilterTurnedOn(e) {
                 gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Letkuauto",
                 hems: "LÃ¤Ã¤kÃ¤rihelikopteri (HEMS)",
-                hlf_only: "",
-                hlf_or_rw_and_lf: "",
+                hlf_only: "Pelastusauto",
+                hlf_or_rw_and_lf: "Pelastusauto tai Raskas pelastusauto ja Sammutusauto",
                 hondengeleider: "",
                 k9: "KoirayksikkÃ¶",
                 kdow_lna: "",
@@ -28118,13 +28119,6 @@ var map, alliance_building_show, geocoder, directionsService, building_eval_unlo
         }), !1
     }), $("#audio_chat_highlight_switch").click(function() {
         return $("#current_audio_chat_highlight").html(I18n.t("common.loading")), $.ajax({
-            url: $(this).attr("href"),
-            cache: !1
-        }).success(function(e) {
-            $("#ajax_temp").html(e)
-        }), !1
-    }), $("#alliance_building_switch").click(function() {
-        return $("#current_alliance_building").html(I18n.t("common.loading")), $.ajax({
             url: $(this).attr("href"),
             cache: !1
         }).success(function(e) {
