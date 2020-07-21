@@ -8421,6 +8421,11 @@ body.koenigstag .navbar-default{
 body.koenigstag .navbar-nav{
     background-color:rgba(1,1,1,0.2)
 }
+body.belgiumbar .navbar-default{
+    background-image:url(/images/belgiumbar.png);
+    background-size:auto 100%;
+    background-color:#c9302c
+}
 body.dodenherdenking .navbar-default{
     background-color:#000000
 }
@@ -8848,6 +8853,9 @@ body.dark select{
 }
 body.dark input{
     color:#000
+}
+body.dark .mission_overview_countdown{
+    color:#ddd
 }
 .tablesorter-header-inner{
     cursor:pointer
