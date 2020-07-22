@@ -664,7 +664,7 @@ function missionMarkerAdd(e) {
         e.alliance_id && (m = "panel-success");
         var f = "",
             _ = $("#missions-panel-body").offset().top;
-        _ + 5 * $("#missions-panel-body").height(), f = "missionSideBarEntryScrollInvisible", $(c).append("<div search_attribute='" + s + "' id='mission_" + e.id + "' mission_id='" + e.id + "' mission_type_id='" + e.mtid + "' class='missionSideBarEntry missionSideBarEntrySearchable " + f + "' latitude='" + e.latitude + "' longitude='" + e.longitude + "' target_latitude='" + e.tlat + "' target_longitude='" + e.tlng + "'><div id='mission_panel_" + e.id + "' class='panel panel-default " + m + " mission_panel_" + a + "'><div id='mission_panel_heading_" + e.id + "' class='panel-heading'><a href='/missions/" + e.id + "' class='btn btn-default btn-xs lightbox-open' id='alarm_button_" + e.id + "'> " + I18n.t("javascript.alarm") + "</a> <span id='mission_participant_" + e.id + "' class='glyphicon glyphicon-user hidden'></span><span id='mission_participant_new_" + e.id + "' class='glyphicon glyphicon-asterisk'></span> <a href='' id='mission_caption_" + e.id + "' class='map_position_mover' target_latitude='" + e.tlat + "' target_longitude='" + e.tlng + "' data-latitude='" + e.latitude + "' data-longitude='" + e.longitude + "'>" + r + "</a></div><div class='panel-body'><div class='row'><div class='col-xs-1'><img src='" + o + "' id='mission_vehicle_state_" + e.id + "' class='mission_vehicle_state'></div><div class='col-xs-11'><div class='mission_overview_countdown' id='mission_overview_countdown_" + e.id + "' timeleft='" + l + "'></div><div id='mission_bar_outer_" + e.id + "' class='" + bar_class + "'><div id='mission_bar_" + e.id + "' class='progress-bar progress-bar-danger' role='progressbar' aria-valuemin='0' aria-valuemax='100' style='width: " + e.live_current_value + "%;'><div class='" + t + "' id='mission_bar_striper_" + e.id + "'></div></div></div><div  id='mission_missing_" + e.id + "' class='" + u + "'>" + d + "</div><div  id='mission_missing_short_" + e.id + "' class='" + h + "'>" + p + "</div><div id='mission_patients_" + e.id + "' class='row'></div><div class='mission_prisoners' id='mission_prisoners_" + e.id + "'></div></div></div></div></div>"), tutorial.callNewMissionListener(!0)
+        _ + 5 * $("#missions-panel-body").height(), f = "missionSideBarEntryScrollInvisible", s = s.replace(/'/g, "&#039;"), $(c).append("<div search_attribute='" + s + "' id='mission_" + e.id + "' mission_id='" + e.id + "' mission_type_id='" + e.mtid + "' class='missionSideBarEntry missionSideBarEntrySearchable " + f + "' latitude='" + e.latitude + "' longitude='" + e.longitude + "' target_latitude='" + e.tlat + "' target_longitude='" + e.tlng + "'><div id='mission_panel_" + e.id + "' class='panel panel-default " + m + " mission_panel_" + a + "'><div id='mission_panel_heading_" + e.id + "' class='panel-heading'><a href='/missions/" + e.id + "' class='btn btn-default btn-xs lightbox-open' id='alarm_button_" + e.id + "'> " + I18n.t("javascript.alarm") + "</a> <span id='mission_participant_" + e.id + "' class='glyphicon glyphicon-user hidden'></span><span id='mission_participant_new_" + e.id + "' class='glyphicon glyphicon-asterisk'></span> <a href='' id='mission_caption_" + e.id + "' class='map_position_mover' target_latitude='" + e.tlat + "' target_longitude='" + e.tlng + "' data-latitude='" + e.latitude + "' data-longitude='" + e.longitude + "'>" + r + "</a></div><div class='panel-body'><div class='row'><div class='col-xs-1'><img src='" + o + "' id='mission_vehicle_state_" + e.id + "' class='mission_vehicle_state'></div><div class='col-xs-11'><div class='mission_overview_countdown' id='mission_overview_countdown_" + e.id + "' timeleft='" + l + "'></div><div id='mission_bar_outer_" + e.id + "' class='" + bar_class + "'><div id='mission_bar_" + e.id + "' class='progress-bar progress-bar-danger' role='progressbar' aria-valuemin='0' aria-valuemax='100' style='width: " + e.live_current_value + "%;'><div class='" + t + "' id='mission_bar_striper_" + e.id + "'></div></div></div><div  id='mission_missing_" + e.id + "' class='" + u + "'>" + d + "</div><div  id='mission_missing_short_" + e.id + "' class='" + h + "'>" + p + "</div><div id='mission_patients_" + e.id + "' class='row'></div><div class='mission_prisoners' id='mission_prisoners_" + e.id + "'></div></div></div></div></div>"), tutorial.callNewMissionListener(!0)
     }
     var g = !1;
     if ($.each(mission_markers, function(t, i) {
@@ -1237,6 +1237,7 @@ function mobileBridgeRequest() {
 }
 
 function mobileBridgeAdd(e, t) {
+    console.log("mobileBridgeAdd - params", t), console.log("mobileBridgeAdd - methode", e);
     var i = !1;
     1 == mobile_bridge_use && 4 == mobile_version && "vehicle_move" == e && $.each(mobile_bridge_content, function(n, s) {
         "vehicle_move" == s.f && s.p.id == t.id && (i = !0, mobile_bridge_content[n] = {
@@ -1974,13 +1975,14 @@ function currentMarkerTypeFilterTurnedOn(e) {
             map_filters: {
                 all_buildings: "GebÃ¤ude",
                 all_missions: "EinsÃ¤tze",
-                alliance_buildings: "GebÃ¤ude von Verbandsmitgliedern",
+                alliance_buildings: "VerbandsgebÃ¤ude",
                 alliance_members: "Mitglieder",
                 alliance_missions: "Vom Verband geteilt",
                 ambulance_station_missions: "Rettungswache",
                 ambulance_station_small_missions: "Rettungswache (Kleinwache)",
                 clinic_missions: "Klinik",
                 dispatch_center_missions: "Leitstelle",
+                factory_fire_brigade_missions: "Werksfeuerwehr",
                 fire_school_missions: "Feuerwehrschule",
                 firehouse_missions: "Feuerwache",
                 firehouse_small_missions: "Feuerwache (Kleinwache)",
@@ -1994,11 +1996,13 @@ function currentMarkerTypeFilterTurnedOn(e) {
                 police_station_missions: "Polizeiwache",
                 prison_missions: "Polizeizellen (Nur fÃ¼r den Verband)",
                 rapid_deployment_group: "Schnelleinsatzgruppe (SEG)",
+                rapid_deployment_group_missions: "Schnelleinsatzgruppe (SEG)",
                 rescue_copter_station_missions: "Rettungshubschrauber-Station",
                 riot_police: "Bereitschaftspolizei",
                 riot_police_missions: "Bereitschaftspolizei",
                 staging_area_missions: "Bereitstellungsraum",
                 technical_aid_organization: "THW",
+                technical_aid_organization_missions: "THW",
                 technical_aid_organization_school: "THW Bundesschule",
                 user_buildings: "Meine GebÃ¤ude",
                 user_missions: "Meine EinsÃ¤tze",
@@ -2635,13 +2639,13 @@ function currentMarkerTypeFilterTurnedOn(e) {
                         contact: "If you have questions you can consult the in game FAQ or visit the game forums or our facebook page!",
                         general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
                         join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
-                        summary: "These are the basics of Mission Chief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
+                        summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
                     },
                     mobile: {
                         contact: "If you have questions you can consult the in game FAQ or visit the game forums or our facebook page!",
                         general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
                         join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
-                        summary: "These are the basics of Mission Chief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
+                        summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
                     }
                 }
             },
@@ -3009,13 +3013,13 @@ function currentMarkerTypeFilterTurnedOn(e) {
                         contact: "If you have questions you can consult the in game FAQ or visit the game forums or our facebook page!",
                         general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
                         join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
-                        summary: "These are the basics of Mission Chief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
+                        summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
                     },
                     mobile: {
                         contact: "If you have questions you can consult the in game FAQ or visit the game forums or our facebook page!",
                         general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
                         join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
-                        summary: "These are the basics of Mission Chief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
+                        summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
                     }
                 }
             },
@@ -3120,7 +3124,7 @@ function currentMarkerTypeFilterTurnedOn(e) {
             map_filters: {
                 all_buildings: "Gebouwen",
                 all_missions: "Incidenten",
-                alliance_buildings: "Gebouwen van teamleden",
+                alliance_buildings: "Teamgebouwen",
                 alliance_members: "Teamleden",
                 alliance_missions: "Gedeeld door alliantie",
                 ambulance_station_missions: "Ambulance, standplaats",
@@ -3876,7 +3880,7 @@ function currentMarkerTypeFilterTurnedOn(e) {
                 ambulance_station_missions: "Ambulance Station",
                 ambulance_station_small_missions: "Ambulance station (Small station)",
                 clinic_missions: "Clinic",
-                dispatch_center_missions: "Dispatch Centre",
+                dispatch_center_missions: "Dispatch Center",
                 fire_school_missions: "Fire Academy",
                 firehouse_missions: "Fire Station",
                 firehouse_small_missions: "Fire Station (Small)",
@@ -4131,13 +4135,13 @@ function currentMarkerTypeFilterTurnedOn(e) {
                         contact: "If you have questions you can consult the in game FAQ or visit the game forums or our facebook page!",
                         general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
                         join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
-                        summary: "These are the basics of Mission Chief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
+                        summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
                     },
                     mobile: {
                         contact: "If you have questions you can consult the in game FAQ or visit the game forums or our facebook page!",
                         general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
                         join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
-                        summary: "These are the basics of Mission Chief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
+                        summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
                     }
                 }
             },
@@ -36554,8 +36558,6 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = "mc_mobile_client_id",
                 switch (!0) {
                     case e.user_id == t && "undefined" != typeof s[e.building_type]:
                         return i[s[e.building_type]];
-                    case e.user_id != t && null != e.user_id:
-                        return i.alliance_members;
                     case null == e.user_id:
                         return i.alliance_buildings;
                     default:
@@ -36590,7 +36592,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = "mc_mobile_client_id",
             massFiltersChange: function(t, n) {
                 switch (filters_keys = [], !0) {
                     case "all_buildings" == t:
-                        filters_keys = Object.values(s).concat(["user_buildings", "alliance_buildings", "alliance_members"]);
+                        filters_keys = Object.values(s).concat(["user_buildings", "alliance_buildings"]);
                         break;
                     case "user_buildings" == t:
                         filters_keys = Object.values(s);
@@ -36624,7 +36626,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = "mc_mobile_client_id",
                         return n(t, "second", "user-buildings-filter");
                     case "user_missions" == i:
                         return n(t, "second", "user-missions-filter");
-                    case ["alliance_buildings", "alliance_members"].includes(i):
+                    case ["alliance_buildings"].includes(i):
                         return n(t, "second", "alliance-buildings-filter");
                     case "alliance_missions" == i:
                         return n(t, "second", "alliance-missions-filter");
