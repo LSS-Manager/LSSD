@@ -12114,20 +12114,6 @@ div.sceditor-group{
     display:block;
     position:relative
 }
-.list__element--first::before,.list__element--second::before{
-    content:'';
-    position:absolute;
-    right:10px;
-    top:0;
-    bottom:0;
-    width:0;
-    height:0;
-    margin:auto;
-    display:bliock;
-    border-style:solid;
-    border-width:0 8px 8px 8px;
-    border-color:transparent transparent dimgray transparent
-}
 .list__element::after{
     content:'';
     position:absolute;
