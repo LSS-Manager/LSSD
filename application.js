@@ -1237,7 +1237,6 @@ function mobileBridgeRequest() {
 }
 
 function mobileBridgeAdd(e, t) {
-    console.log("mobileBridgeAdd - params", t), console.log("mobileBridgeAdd - methode", e);
     var i = !1;
     1 == mobile_bridge_use && 4 == mobile_version && "vehicle_move" == e && $.each(mobile_bridge_content, function(n, s) {
         "vehicle_move" == s.f && s.p.id == t.id && (i = !0, mobile_bridge_content[n] = {
@@ -1678,216 +1677,224 @@ function currentMarkerTypeFilterTurnedOn(e) {
         }),
         i = void 0 != t ? t.checked : "undefined";
     return "undefined" !== i ? i : !0
-}! function(e) {
-    "undefined" != typeof module && module.exports ? module.exports = e(this) : "function" == typeof define && define.amd ? define("i18n", function(t) {
-        return function() {
-            return e(t)
-        }
-    }(this)) : this.I18n = e(this)
-}(function(e) {
-    "use strict";
-    var t = e && e.I18n || {},
-        i = Array.prototype.slice,
-        n = function(e) {
-            return ("0" + e.toString()).substr(-2)
-        },
-        s = {
-            day_names: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            abbr_day_names: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-            month_names: [null, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-            abbr_month_names: [null, "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-            meridian: ["AM", "PM"]
-        },
-        o = {
-            precision: 3,
-            separator: ".",
-            delimiter: ",",
-            strip_insignificant_zeros: !1
-        },
-        a = {
-            unit: "$",
-            precision: 2,
-            format: "%u%n",
-            sign_first: !0,
-            delimiter: ",",
-            separator: "."
-        },
-        r = {
-            unit: "%",
-            precision: 3,
-            format: "%n%u",
-            separator: ".",
-            delimiter: ""
-        },
-        l = [null, "kb", "mb", "gb", "tb"],
-        c = {
-            defaultLocale: "en_US",
-            locale: "en_US",
-            defaultSeparator: ".",
-            placeholder: /(?:\{\{|%\{)(.*?)(?:\}\}?)/gm,
-            fallbacks: !1,
-            translations: {},
-            missingBehaviour: "message",
-            missingTranslationPrefix: ""
-        };
-    return t.reset = function() {
-        this.defaultLocale = c.defaultLocale, this.locale = c.locale, this.defaultSeparator = c.defaultSeparator, this.placeholder = c.placeholder, this.fallbacks = c.fallbacks, this.translations = c.translations, this.missingBehaviour = c.missingBehaviour, this.missingTranslationPrefix = c.missingTranslationPrefix
-    }, t.initializeOptions = function() {
-        "undefined" == typeof this.defaultLocale && null !== this.defaultLocale && (this.defaultLocale = c.defaultLocale), "undefined" == typeof this.locale && null !== this.locale && (this.locale = c.locale), "undefined" == typeof this.defaultSeparator && null !== this.defaultSeparator && (this.defaultSeparator = c.defaultSeparator), "undefined" == typeof this.placeholder && null !== this.placeholder && (this.placeholder = c.placeholder), "undefined" == typeof this.fallbacks && null !== this.fallbacks && (this.fallbacks = c.fallbacks), "undefined" == typeof this.translations && null !== this.translations && (this.translations = c.translations)
-    }, t.initializeOptions(), t.locales = {}, t.locales.get = function(e) {
-        var i = this[e] || this[t.locale] || this["default"];
-        return "function" == typeof i && (i = i(e)), i instanceof Array == !1 && (i = [i]), i
-    }, t.locales["default"] = function(e) {
-        var i, n = [],
-            s = [];
-        return e && n.push(e), !e && t.locale && n.push(t.locale), t.fallbacks && t.defaultLocale && n.push(t.defaultLocale), n.forEach(function(e) {
-            i = e.split("-")[0], ~s.indexOf(e) || s.push(e), t.fallbacks && i && i !== e && !~s.indexOf(i) && s.push(i)
-        }), n.length || n.push("en_US"), s
-    }, t.pluralization = {}, t.pluralization.get = function(e) {
-        return this[e] || this[t.locale] || this["default"]
-    }, t.pluralization["default"] = function(e) {
-        switch (e) {
-            case 0:
-                return ["zero", "other"];
-            case 1:
-                return ["one"];
-            default:
-                return ["other"]
-        }
-    }, t.currentLocale = function() {
-        return this.locale || this.defaultLocale
-    }, t.isSet = function(e) {
-        return void 0 !== e && null !== e
-    }, t.lookup = function(e, t) {
-        t = this.prepareOptions(t);
-        var i, n, s, o = this.locales.get(t.locale).slice();
-        for (o[0], e = this.getFullScope(e, t); o.length;)
-            if (i = o.shift(), n = e.split(this.defaultSeparator), s = this.translations[i]) {
-                for (; n.length && (s = s[n.shift()], void 0 !== s && null !== s););
-                if (void 0 !== s && null !== s) return s
-            } return this.isSet(t.defaultValue) ? t.defaultValue : void 0
-    }, t.meridian = function() {
-        var e = this.lookup("time"),
-            t = this.lookup("date");
-        return e && e.am && e.pm ? [e.am, e.pm] : t && t.meridian ? t.meridian : s.meridian
-    }, t.prepareOptions = function() {
-        for (var e, t = i.call(arguments), n = {}; t.length;)
-            if (e = t.shift(), "object" == typeof e)
-                for (var s in e) e.hasOwnProperty(s) && (this.isSet(n[s]) || (n[s] = e[s]));
-        return n
-    }, t.createTranslationOptions = function(e, t) {
-        var i = [{
-            scope: e
-        }];
-        return this.isSet(t.defaults) && (i = i.concat(t.defaults)), this.isSet(t.defaultValue) && (i.push({
-            message: t.defaultValue
-        }), delete t.defaultValue), i
-    }, t.translate = function(e, t) {
-        t = this.prepareOptions(t);
-        var i, n = this.createTranslationOptions(e, t),
-            s = n.some(function(e) {
-                return this.isSet(e.scope) ? i = this.lookup(e.scope, t) : this.isSet(e.message) && (i = e.message), void 0 !== i && null !== i ? !0 : void 0
-            }, this);
-        return s ? ("string" == typeof i ? i = this.interpolate(i, t) : i instanceof Object && this.isSet(t.count) && (i = this.pluralize(t.count, i, t)), i) : this.missingTranslation(e, t)
-    }, t.interpolate = function(e, t) {
-        t = this.prepareOptions(t);
-        var i, n, s, o, a = e.match(this.placeholder);
-        if (!a) return e;
-        for (var n; a.length;) i = a.shift(), s = i.replace(this.placeholder, "$1"), n = this.isSet(t[s]) ? t[s].toString().replace(/\$/gm, "_#$#_") : s in t ? this.nullPlaceholder(i, e) : this.missingPlaceholder(i, e), o = new RegExp(i.replace(/\{/gm, "\\{").replace(/\}/gm, "\\}")), e = e.replace(o, n);
-        return e.replace(/_#\$#_/g, "$")
-    }, t.pluralize = function(e, t, i) {
-        i = this.prepareOptions(i);
-        var n, s, o, a, r;
-        if (n = t instanceof Object ? t : this.lookup(t, i), !n) return this.missingTranslation(t, i);
-        for (s = this.pluralization.get(i.locale), o = s(e); o.length;)
-            if (a = o.shift(), this.isSet(n[a])) {
-                r = n[a];
-                break
-            } return i.count = String(e), this.interpolate(r, i)
-    }, t.missingTranslation = function(e, t) {
-        if ("guess" == this.missingBehaviour) {
-            var i = e.split(".").slice(-1)[0];
-            return (this.missingTranslationPrefix.length > 0 ? this.missingTranslationPrefix : "") + i.replace("_", " ").replace(/([a-z])([A-Z])/g, function(e, t, i) {
-                return t + " " + i.toLowerCase()
-            })
-        }
-        var n = this.getFullScope(e, t),
-            s = [this.currentLocale(), n].join(this.defaultSeparator);
-        return '[missing "' + s + '" translation]'
-    }, t.missingPlaceholder = function(e) {
-        return "[missing " + e + " value]"
-    }, t.nullPlaceholder = function() {
-        return t.missingPlaceholder.apply(t, arguments)
-    }, t.toNumber = function(e, t) {
-        t = this.prepareOptions(t, this.lookup("number.format"), o);
-        var i, n, s = 0 > e,
-            a = Math.abs(e).toFixed(t.precision).toString(),
-            r = a.split("."),
-            l = [],
-            c = t.format || "%n",
-            u = s ? "-" : "";
-        for (e = r[0], i = r[1]; e.length > 0;) l.unshift(e.substr(Math.max(0, e.length - 3), 3)), e = e.substr(0, e.length - 3);
-        return n = l.join(t.delimiter), t.strip_insignificant_zeros && i && (i = i.replace(/0+$/, "")), t.precision > 0 && i && (n += t.separator + i), c = t.sign_first ? "%s" + c : c.replace("%n", "%s%n"), n = c.replace("%u", t.unit).replace("%n", n).replace("%s", u)
-    }, t.toCurrency = function(e, t) {
-        return t = this.prepareOptions(t, this.lookup("number.currency.format"), this.lookup("number.format"), a), this.toNumber(e, t)
-    }, t.localize = function(e, t, i) {
-        switch (i || (i = {}), e) {
-            case "currency":
-                return this.toCurrency(t);
-            case "number":
-                return e = this.lookup("number.format"), this.toNumber(t, e);
-            case "percentage":
-                return this.toPercentage(t);
-            default:
-                var n;
-                return n = e.match(/^(date|time)/) ? this.toTime(e, t) : t.toString(), this.interpolate(n, i)
-        }
-    }, t.parseDate = function(e) {
-        var t, i, n;
-        if ("object" == typeof e) return e;
-        if (t = e.toString().match(/(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}):(\d{2})([\.,]\d{1,3})?)?(Z|\+00:?00)?/)) {
-            for (var s = 1; 6 >= s; s++) t[s] = parseInt(t[s], 10) || 0;
-            t[2] -= 1, n = t[7] ? 1e3 * ("0" + t[7]) : null, i = t[8] ? new Date(Date.UTC(t[1], t[2], t[3], t[4], t[5], t[6], n)) : new Date(t[1], t[2], t[3], t[4], t[5], t[6], n)
-        } else "number" == typeof e ? (i = new Date, i.setTime(e)) : e.match(/([A-Z][a-z]{2}) ([A-Z][a-z]{2}) (\d+) (\d+:\d+:\d+) ([+-]\d+) (\d+)/) ? (i = new Date, i.setTime(Date.parse([RegExp.$1, RegExp.$2, RegExp.$3, RegExp.$6, RegExp.$4, RegExp.$5].join(" ")))) : e.match(/\d+ \d+:\d+:\d+ [+-]\d+ \d+/) ? (i = new Date, i.setTime(Date.parse(e))) : (i = new Date, i.setTime(Date.parse(e)));
-        return i
-    }, t.strftime = function(e, i) {
-        var o = this.lookup("date"),
-            a = t.meridian();
-        o || (o = {}), o = this.prepareOptions(o, s);
-        var r = e.getDay(),
-            l = e.getDate(),
-            c = e.getFullYear(),
-            u = e.getMonth() + 1,
-            d = e.getHours(),
-            h = d,
-            p = d > 11 ? 1 : 0,
-            m = e.getSeconds(),
-            f = e.getMinutes(),
-            _ = e.getTimezoneOffset(),
-            g = Math.floor(Math.abs(_ / 60)),
-            v = Math.abs(_) - 60 * g,
-            b = (_ > 0 ? "-" : "+") + (g.toString().length < 2 ? "0" + g : g) + (v.toString().length < 2 ? "0" + v : v);
-        return h > 12 ? h -= 12 : 0 === h && (h = 12), i = i.replace("%a", o.abbr_day_names[r]), i = i.replace("%A", o.day_names[r]), i = i.replace("%b", o.abbr_month_names[u]), i = i.replace("%B", o.month_names[u]), i = i.replace("%d", n(l)), i = i.replace("%e", l), i = i.replace("%-d", l), i = i.replace("%H", n(d)), i = i.replace("%-H", d), i = i.replace("%I", n(h)), i = i.replace("%-I", h), i = i.replace("%m", n(u)), i = i.replace("%-m", u), i = i.replace("%M", n(f)), i = i.replace("%-M", f), i = i.replace("%p", a[p]), i = i.replace("%S", n(m)), i = i.replace("%-S", m), i = i.replace("%w", r), i = i.replace("%y", n(c)), i = i.replace("%-y", n(c).replace(/^0+/, "")), i = i.replace("%Y", c), i = i.replace("%z", b)
-    }, t.toTime = function(e, t) {
-        var i = this.parseDate(t),
-            n = this.lookup(e);
-        return i.toString().match(/invalid/i) ? i.toString() : n ? this.strftime(i, n) : i.toString()
-    }, t.toPercentage = function(e, t) {
-        return t = this.prepareOptions(t, this.lookup("number.percentage.format"), this.lookup("number.format"), r), this.toNumber(e, t)
-    }, t.toHumanSize = function(e, t) {
-        for (var i, n, s = 1024, o = e, a = 0; o >= s && 4 > a;) o /= s, a += 1;
-        return 0 === a ? (i = this.t("number.human.storage_units.units.byte", {
-            count: o
-        }), n = 0) : (i = this.t("number.human.storage_units.units." + l[a]), n = 0 === o - Math.floor(o) ? 0 : 1), t = this.prepareOptions(t, {
-            unit: i,
-            precision: n,
-            format: "%n%u",
-            delimiter: ""
-        }), this.toNumber(o, t)
-    }, t.getFullScope = function(e, t) {
-        return t = this.prepareOptions(t), e.constructor === Array && (e = e.join(this.defaultSeparator)), t.scope && (e = [t.scope, e].join(this.defaultSeparator)), e
-    }, t.t = t.translate, t.l = t.localize, t.p = t.pluralize, t
-}), I18n.translations || (I18n.translations = {}), I18n.translations.de_DE = {
+}
+Object.values || (Object.values = function(e) {
+        return Object.keys(e).map(function(t) {
+            return e[t]
+        })
+    }), Array.prototype.includes || (Array.prototype.includes = function(e) {
+        return !!~this.indexOf(e)
+    }),
+    function(e) {
+        "undefined" != typeof module && module.exports ? module.exports = e(this) : "function" == typeof define && define.amd ? define("i18n", function(t) {
+            return function() {
+                return e(t)
+            }
+        }(this)) : this.I18n = e(this)
+    }(function(e) {
+        "use strict";
+        var t = e && e.I18n || {},
+            i = Array.prototype.slice,
+            n = function(e) {
+                return ("0" + e.toString()).substr(-2)
+            },
+            s = {
+                day_names: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                abbr_day_names: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+                month_names: [null, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                abbr_month_names: [null, "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                meridian: ["AM", "PM"]
+            },
+            o = {
+                precision: 3,
+                separator: ".",
+                delimiter: ",",
+                strip_insignificant_zeros: !1
+            },
+            a = {
+                unit: "$",
+                precision: 2,
+                format: "%u%n",
+                sign_first: !0,
+                delimiter: ",",
+                separator: "."
+            },
+            r = {
+                unit: "%",
+                precision: 3,
+                format: "%n%u",
+                separator: ".",
+                delimiter: ""
+            },
+            l = [null, "kb", "mb", "gb", "tb"],
+            c = {
+                defaultLocale: "en_US",
+                locale: "en_US",
+                defaultSeparator: ".",
+                placeholder: /(?:\{\{|%\{)(.*?)(?:\}\}?)/gm,
+                fallbacks: !1,
+                translations: {},
+                missingBehaviour: "message",
+                missingTranslationPrefix: ""
+            };
+        return t.reset = function() {
+            this.defaultLocale = c.defaultLocale, this.locale = c.locale, this.defaultSeparator = c.defaultSeparator, this.placeholder = c.placeholder, this.fallbacks = c.fallbacks, this.translations = c.translations, this.missingBehaviour = c.missingBehaviour, this.missingTranslationPrefix = c.missingTranslationPrefix
+        }, t.initializeOptions = function() {
+            "undefined" == typeof this.defaultLocale && null !== this.defaultLocale && (this.defaultLocale = c.defaultLocale), "undefined" == typeof this.locale && null !== this.locale && (this.locale = c.locale), "undefined" == typeof this.defaultSeparator && null !== this.defaultSeparator && (this.defaultSeparator = c.defaultSeparator), "undefined" == typeof this.placeholder && null !== this.placeholder && (this.placeholder = c.placeholder), "undefined" == typeof this.fallbacks && null !== this.fallbacks && (this.fallbacks = c.fallbacks), "undefined" == typeof this.translations && null !== this.translations && (this.translations = c.translations)
+        }, t.initializeOptions(), t.locales = {}, t.locales.get = function(e) {
+            var i = this[e] || this[t.locale] || this["default"];
+            return "function" == typeof i && (i = i(e)), i instanceof Array == !1 && (i = [i]), i
+        }, t.locales["default"] = function(e) {
+            var i, n = [],
+                s = [];
+            return e && n.push(e), !e && t.locale && n.push(t.locale), t.fallbacks && t.defaultLocale && n.push(t.defaultLocale), n.forEach(function(e) {
+                i = e.split("-")[0], ~s.indexOf(e) || s.push(e), t.fallbacks && i && i !== e && !~s.indexOf(i) && s.push(i)
+            }), n.length || n.push("en_US"), s
+        }, t.pluralization = {}, t.pluralization.get = function(e) {
+            return this[e] || this[t.locale] || this["default"]
+        }, t.pluralization["default"] = function(e) {
+            switch (e) {
+                case 0:
+                    return ["zero", "other"];
+                case 1:
+                    return ["one"];
+                default:
+                    return ["other"]
+            }
+        }, t.currentLocale = function() {
+            return this.locale || this.defaultLocale
+        }, t.isSet = function(e) {
+            return void 0 !== e && null !== e
+        }, t.lookup = function(e, t) {
+            t = this.prepareOptions(t);
+            var i, n, s, o = this.locales.get(t.locale).slice();
+            for (o[0], e = this.getFullScope(e, t); o.length;)
+                if (i = o.shift(), n = e.split(this.defaultSeparator), s = this.translations[i]) {
+                    for (; n.length && (s = s[n.shift()], void 0 !== s && null !== s););
+                    if (void 0 !== s && null !== s) return s
+                } return this.isSet(t.defaultValue) ? t.defaultValue : void 0
+        }, t.meridian = function() {
+            var e = this.lookup("time"),
+                t = this.lookup("date");
+            return e && e.am && e.pm ? [e.am, e.pm] : t && t.meridian ? t.meridian : s.meridian
+        }, t.prepareOptions = function() {
+            for (var e, t = i.call(arguments), n = {}; t.length;)
+                if (e = t.shift(), "object" == typeof e)
+                    for (var s in e) e.hasOwnProperty(s) && (this.isSet(n[s]) || (n[s] = e[s]));
+            return n
+        }, t.createTranslationOptions = function(e, t) {
+            var i = [{
+                scope: e
+            }];
+            return this.isSet(t.defaults) && (i = i.concat(t.defaults)), this.isSet(t.defaultValue) && (i.push({
+                message: t.defaultValue
+            }), delete t.defaultValue), i
+        }, t.translate = function(e, t) {
+            t = this.prepareOptions(t);
+            var i, n = this.createTranslationOptions(e, t),
+                s = n.some(function(e) {
+                    return this.isSet(e.scope) ? i = this.lookup(e.scope, t) : this.isSet(e.message) && (i = e.message), void 0 !== i && null !== i ? !0 : void 0
+                }, this);
+            return s ? ("string" == typeof i ? i = this.interpolate(i, t) : i instanceof Object && this.isSet(t.count) && (i = this.pluralize(t.count, i, t)), i) : this.missingTranslation(e, t)
+        }, t.interpolate = function(e, t) {
+            t = this.prepareOptions(t);
+            var i, n, s, o, a = e.match(this.placeholder);
+            if (!a) return e;
+            for (var n; a.length;) i = a.shift(), s = i.replace(this.placeholder, "$1"), n = this.isSet(t[s]) ? t[s].toString().replace(/\$/gm, "_#$#_") : s in t ? this.nullPlaceholder(i, e) : this.missingPlaceholder(i, e), o = new RegExp(i.replace(/\{/gm, "\\{").replace(/\}/gm, "\\}")), e = e.replace(o, n);
+            return e.replace(/_#\$#_/g, "$")
+        }, t.pluralize = function(e, t, i) {
+            i = this.prepareOptions(i);
+            var n, s, o, a, r;
+            if (n = t instanceof Object ? t : this.lookup(t, i), !n) return this.missingTranslation(t, i);
+            for (s = this.pluralization.get(i.locale), o = s(e); o.length;)
+                if (a = o.shift(), this.isSet(n[a])) {
+                    r = n[a];
+                    break
+                } return i.count = String(e), this.interpolate(r, i)
+        }, t.missingTranslation = function(e, t) {
+            if ("guess" == this.missingBehaviour) {
+                var i = e.split(".").slice(-1)[0];
+                return (this.missingTranslationPrefix.length > 0 ? this.missingTranslationPrefix : "") + i.replace("_", " ").replace(/([a-z])([A-Z])/g, function(e, t, i) {
+                    return t + " " + i.toLowerCase()
+                })
+            }
+            var n = this.getFullScope(e, t),
+                s = [this.currentLocale(), n].join(this.defaultSeparator);
+            return '[missing "' + s + '" translation]'
+        }, t.missingPlaceholder = function(e) {
+            return "[missing " + e + " value]"
+        }, t.nullPlaceholder = function() {
+            return t.missingPlaceholder.apply(t, arguments)
+        }, t.toNumber = function(e, t) {
+            t = this.prepareOptions(t, this.lookup("number.format"), o);
+            var i, n, s = 0 > e,
+                a = Math.abs(e).toFixed(t.precision).toString(),
+                r = a.split("."),
+                l = [],
+                c = t.format || "%n",
+                u = s ? "-" : "";
+            for (e = r[0], i = r[1]; e.length > 0;) l.unshift(e.substr(Math.max(0, e.length - 3), 3)), e = e.substr(0, e.length - 3);
+            return n = l.join(t.delimiter), t.strip_insignificant_zeros && i && (i = i.replace(/0+$/, "")), t.precision > 0 && i && (n += t.separator + i), c = t.sign_first ? "%s" + c : c.replace("%n", "%s%n"), n = c.replace("%u", t.unit).replace("%n", n).replace("%s", u)
+        }, t.toCurrency = function(e, t) {
+            return t = this.prepareOptions(t, this.lookup("number.currency.format"), this.lookup("number.format"), a), this.toNumber(e, t)
+        }, t.localize = function(e, t, i) {
+            switch (i || (i = {}), e) {
+                case "currency":
+                    return this.toCurrency(t);
+                case "number":
+                    return e = this.lookup("number.format"), this.toNumber(t, e);
+                case "percentage":
+                    return this.toPercentage(t);
+                default:
+                    var n;
+                    return n = e.match(/^(date|time)/) ? this.toTime(e, t) : t.toString(), this.interpolate(n, i)
+            }
+        }, t.parseDate = function(e) {
+            var t, i, n;
+            if ("object" == typeof e) return e;
+            if (t = e.toString().match(/(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}):(\d{2})([\.,]\d{1,3})?)?(Z|\+00:?00)?/)) {
+                for (var s = 1; 6 >= s; s++) t[s] = parseInt(t[s], 10) || 0;
+                t[2] -= 1, n = t[7] ? 1e3 * ("0" + t[7]) : null, i = t[8] ? new Date(Date.UTC(t[1], t[2], t[3], t[4], t[5], t[6], n)) : new Date(t[1], t[2], t[3], t[4], t[5], t[6], n)
+            } else "number" == typeof e ? (i = new Date, i.setTime(e)) : e.match(/([A-Z][a-z]{2}) ([A-Z][a-z]{2}) (\d+) (\d+:\d+:\d+) ([+-]\d+) (\d+)/) ? (i = new Date, i.setTime(Date.parse([RegExp.$1, RegExp.$2, RegExp.$3, RegExp.$6, RegExp.$4, RegExp.$5].join(" ")))) : e.match(/\d+ \d+:\d+:\d+ [+-]\d+ \d+/) ? (i = new Date, i.setTime(Date.parse(e))) : (i = new Date, i.setTime(Date.parse(e)));
+            return i
+        }, t.strftime = function(e, i) {
+            var o = this.lookup("date"),
+                a = t.meridian();
+            o || (o = {}), o = this.prepareOptions(o, s);
+            var r = e.getDay(),
+                l = e.getDate(),
+                c = e.getFullYear(),
+                u = e.getMonth() + 1,
+                d = e.getHours(),
+                h = d,
+                p = d > 11 ? 1 : 0,
+                m = e.getSeconds(),
+                f = e.getMinutes(),
+                _ = e.getTimezoneOffset(),
+                g = Math.floor(Math.abs(_ / 60)),
+                v = Math.abs(_) - 60 * g,
+                b = (_ > 0 ? "-" : "+") + (g.toString().length < 2 ? "0" + g : g) + (v.toString().length < 2 ? "0" + v : v);
+            return h > 12 ? h -= 12 : 0 === h && (h = 12), i = i.replace("%a", o.abbr_day_names[r]), i = i.replace("%A", o.day_names[r]), i = i.replace("%b", o.abbr_month_names[u]), i = i.replace("%B", o.month_names[u]), i = i.replace("%d", n(l)), i = i.replace("%e", l), i = i.replace("%-d", l), i = i.replace("%H", n(d)), i = i.replace("%-H", d), i = i.replace("%I", n(h)), i = i.replace("%-I", h), i = i.replace("%m", n(u)), i = i.replace("%-m", u), i = i.replace("%M", n(f)), i = i.replace("%-M", f), i = i.replace("%p", a[p]), i = i.replace("%S", n(m)), i = i.replace("%-S", m), i = i.replace("%w", r), i = i.replace("%y", n(c)), i = i.replace("%-y", n(c).replace(/^0+/, "")), i = i.replace("%Y", c), i = i.replace("%z", b)
+        }, t.toTime = function(e, t) {
+            var i = this.parseDate(t),
+                n = this.lookup(e);
+            return i.toString().match(/invalid/i) ? i.toString() : n ? this.strftime(i, n) : i.toString()
+        }, t.toPercentage = function(e, t) {
+            return t = this.prepareOptions(t, this.lookup("number.percentage.format"), this.lookup("number.format"), r), this.toNumber(e, t)
+        }, t.toHumanSize = function(e, t) {
+            for (var i, n, s = 1024, o = e, a = 0; o >= s && 4 > a;) o /= s, a += 1;
+            return 0 === a ? (i = this.t("number.human.storage_units.units.byte", {
+                count: o
+            }), n = 0) : (i = this.t("number.human.storage_units.units." + l[a]), n = 0 === o - Math.floor(o) ? 0 : 1), t = this.prepareOptions(t, {
+                unit: i,
+                precision: n,
+                format: "%n%u",
+                delimiter: ""
+            }), this.toNumber(o, t)
+        }, t.getFullScope = function(e, t) {
+            return t = this.prepareOptions(t), e.constructor === Array && (e = e.join(this.defaultSeparator)), t.scope && (e = [t.scope, e].join(this.defaultSeparator)), e
+        }, t.t = t.translate, t.l = t.localize, t.p = t.pluralize, t
+    }), I18n.translations || (I18n.translations = {}), I18n.translations.de_DE = {
         common: {
             add: "HinzufÃ¼gen",
             back: "ZurÃ¼ck",
@@ -1982,7 +1989,7 @@ function currentMarkerTypeFilterTurnedOn(e) {
                 ambulance_station_small_missions: "Rettungswache (Kleinwache)",
                 clinic_missions: "Klinik",
                 dispatch_center_missions: "Leitstelle",
-                factory_fire_brigade_missions: "Werksfeuerwehr",
+                factory_fire_brigade_missions: "Werkfeuerwehr",
                 fire_school_missions: "Feuerwehrschule",
                 firehouse_missions: "Feuerwache",
                 firehouse_small_missions: "Feuerwache (Kleinwache)",
@@ -2011,7 +2018,7 @@ function currentMarkerTypeFilterTurnedOn(e) {
             },
             message: "Nachricht",
             mission: "EinsÃ¤tze",
-            missions_filtered_out: "Einige Missionen kÃ¶nnten herausgefiltert worden sein. Bitte Ã¼berprÃ¼fe deinen Kartenfilter.",
+            missions_filtered_out: "Einige EinsÃ¤tze kÃ¶nnten herausgefiltert worden sein. Bitte Ã¼berprÃ¼fe deinen Kartenfilter.",
             no_alliance_chat_impossible: "Du bist in keinem Verband. Der Chat ist nur innerhalb eines Verbandes mÃ¶glich.",
             no_alliance_missions: "Es liegen keine VerbandseinsÃ¤tze vor. ",
             no_ambulance_missions: "Es liegen keine Krankentransporte vor. Krankentransporte kÃ¶nnen auftreten, sobald Du einen KTW und ein Krankenhaus besitzt.",
@@ -2182,19 +2189,19 @@ function currentMarkerTypeFilterTurnedOn(e) {
                         build_building: {
                             add_name: 'Nun gibst du deinem GebÃ¤ude einen Namen! Dieser sollte erkennbar und erweiterbar sein! Z.B. "Feuerwache #0001". Wenn du damit fertig bist, klicke auf "Weiter"!',
                             build_with_credits: "Baue jetzt dein GebÃ¤ude mit Credits!",
-                            new_building: 'Klicke auf "Neues GebÃ¤ude"!',
-                            select_building: "Zuerst suchst du den Typen des GebÃ¤udes aus, mit dem du starten mÃ¶chtest. Wir empfehlen dir, mit Feuerwachen zu beginnen! In jedem Fall ist es ratsam, mit einer kleinen Station zu starten!",
-                            select_position: "Schiebe die blaue Markierung dorthin, wo du deine erste Station bauen mÃ¶chtest!"
+                            new_building: 'Klicke auf "Neues GebÃ¤ude bauen"!',
+                            select_building: "Zuerst suchst du den Typen des GebÃ¤udes aus, mit dem du starten mÃ¶chtest. Wir empfehlen dir, mit Feuerwachen zu beginnen! In jedem Fall ist es ratsam, mit einer kleinen Wache zu starten!",
+                            select_position: "Schiebe die blaue Markierung dorthin, wo du dein erstes GebÃ¤ude bauen mÃ¶chtest!"
                         },
-                        pick_location: "Suche dir zuerst einen Ort zum Anfangen aus! Tippen den Names des Ortes in die Suchleiste ein oder wÃ¤hle ihn direkt auf der Karte aus! Wie wÃ¤re es mit deiner Heimat?",
+                        pick_location: "Suche dir zuerst einen Ort zum Anfangen aus! Tippe den Names des Ortes in die Suchleiste ein oder wÃ¤hle ihn direkt auf der Karte aus! Wie wÃ¤re es mit deiner Heimat?",
                         welcome: "Hallo, willkommen beim Leitstellenspiel!  Ich werde dir einige Lektionen erteilen, damit du einen guten Start in deine Karriere in der Leitstelle hast!"
                     },
                     mobile: {
                         build_building: {
                             add_name: 'Nun gibst du deinem GebÃ¤ude einen Namen! Dieser sollte erkennbar und erweiterbar sein! Z.B. "Feuerwache #0001". Wenn du damit fertig bist, klicke auf "Weiter"!',
                             build_with_credits: "Baue jetzt dein GebÃ¤ude mit Credits!",
-                            new_building: 'Zuerst suchen wir uns einen Ort fÃ¼r dein neues GebÃ¤ude! <br /> <br /> Dazu klickst du auf "Neues GebÃ¤ude"!',
-                            select_building: "Jetzt suchst du den Typen des GebÃ¤udes aus, mit dem du starten mÃ¶chtest. Wir empfehlen dir, mit Feuerwachen zu beginnen! In jedem Fall ist es ratsam, mit einer kleinen Station zu starten!"
+                            new_building: 'Zuerst suchen wir uns einen Ort fÃ¼r dein neues GebÃ¤ude! <br /> <br /> Dazu klickst du auf "Neues GebÃ¤ude bauen"!',
+                            select_building: "Jetzt suchst du den Typen des GebÃ¤udes aus, mit dem du starten mÃ¶chtest. Wir empfehlen dir, mit Feuerwachen zu beginnen! In jedem Fall ist es ratsam, mit einer kleinen Wache zu starten!"
                         },
                         welcome: "Hallo, willkommen beim Leitstellenspiel!  Ich werde dir einige Lektionen erteilen, damit du einen guten Start in deine Karriere in der Leitstelle hast!"
                     }
@@ -2204,28 +2211,28 @@ function currentMarkerTypeFilterTurnedOn(e) {
                         browser: {
                             dispatch_menu: "Dies ist das Alarmierungsfenster. Von hier aus kannst du Fahrzeuge zu EinsÃ¤tzen schicken!",
                             dispatch_menu_buttons: 'Dies sind deine beiden Alarmierungsbuttons! Der erste "Alarm"-Button schickt die ausgewÃ¤hlten Fahrzeuge zum Einsatz. Der zweite tut das gleiche wie der erste, wechselt aber auch zum nÃ¤chsten Einsatz. Klicke jetzt den ersten Button.',
-                            dispatch_menu_mission_general: "Hier siehst du generelle Informationen zum Einsatz, wie Name, Adresse und Icon. Das Icon mit dem kleinen MÃ¤nnchen erscheint und ersetzt den kleinen Stern bei EinsÃ¤tzen an denen du bereits teilgeommen hast.",
-                            dispatch_menu_mission_progress: "Hier siehst du wie weit der Einsatz bereits fortgeschritten ist, wie viele EinsatzkrÃ¤fte vor Ort sind und wie viel Zeit verbleibt um den Einsazu abzuschlieÃŸen!",
+                            dispatch_menu_mission_general: "Hier siehst du generelle Informationen zum Einsatz, wie Name, Adresse und Icon. Bist du am Einsatz beteiligt wird ein MÃ¤nnchen angezeigt, ansonsten ein Stern.",
+                            dispatch_menu_mission_progress: "Hier siehst du wie weit der Einsatz bereits fortgeschritten ist, wie viele EinsatzkrÃ¤fte vor Ort sind und wie viel Zeit noch benÃ¶tigt wird um den Einsatz abzuschlieÃŸen!",
                             dispatch_menu_mission_specific: "Hier erhÃ¤ltst du mehr Informationen zum Einsatz, z.B. welche Fahrzeuge auf den Ruf antworten und welche bereits am Einsatzort sind.",
                             dispatch_menu_vehicle_list: "Hier siehst du die Liste deiner verfÃ¼gbaren Fahrzeuge. Du kannst hier ein Fahrzeug auswÃ¤hlen, indem du es anklickst!"
                         },
                         mobile: {
                             dispatch_menu: "Dies ist das Alarmierungsfenster. Von hier aus kannst du Fahrzeuge zu EinsÃ¤tzen schicken!",
                             dispatch_menu_buttons: 'Dies sind deine beiden Alarmierungsbuttons! Der erste "Alarm"-Button schickt die ausgewÃ¤hlten Fahrzeuge zum Einsatz. Der zweite tut das gleiche wie der erste, wechselt aber auch zum nÃ¤chsten Einsatz. Klicke jetzt den ersten Button.',
-                            dispatch_menu_mission_general: "Hier siehst du generelle Informationen zum Einsatz, wie Name, Adresse und Icon. Das Icon mit dem kleinen MÃ¤nnchen erscheint und ersetzt den kleinen Stern bei EinsÃ¤tzen an denen du bereits teilgeommen hast.",
-                            dispatch_menu_mission_progress: "Hier siehst du wie weit der Einsatz bereits fortgeschritten ist, wie viele EinsatzkrÃ¤fte vor Ort sind und wie viel Zeit verbleibt um den Einsazu abzuschlieÃŸen!",
-                            dispatch_menu_mission_specific: "Hier erhÃ¤ltst du mehr Informationen zum Einsatz, z.B. welche Fahrzeuge auf den Ruf antworten und welche bereits am Einsatzort sind.",
+                            dispatch_menu_mission_general: "Hier siehst du generelle Informationen zum Einsatz, wie Name, Adresse und Icon. Bist du am Einsatz beteiligt wird ein MÃ¤nnchen angezeigt, ansonsten ein Stern.",
+                            dispatch_menu_mission_progress: "Hier siehst du wie weit der Einsatz bereits fortgeschritten ist, wie viele EinsatzkrÃ¤fte vor Ort sind und wie viel Zeit noch benÃ¶tigt wird um den Einsatz abzuschlieÃŸen!",
+                            dispatch_menu_mission_specific: "Hier erhÃ¤ltst du mehr Informationen zum Einsatz, z.B. welche Fahrzeuge zum Einsatz alarmiert sind und welche bereits am Einsatzort sind.",
                             dispatch_menu_vehicle_list: "Hier siehst du die Liste deiner verfÃ¼gbaren Fahrzeuge. Du kannst hier ein Fahrzeug auswÃ¤hlen, indem du es anklickst!"
                         }
                     },
                     overview: {
                         browser: {
                             dispatch_button: 'Jetzt schauen wir uns an, wie man mit diesen VorfÃ¤llen umgeht. Ã–ffne das Alarmierungsfenster, indem du auf einen  "Alarm"-Button klickst!',
-                            first_mission: "Super, du hast dein ersten GebÃ¤ude gebaut! Schau, die ersten Missionen wurden dir bereits gemeldet!"
+                            first_mission: "Super, du hast dein ersten GebÃ¤ude gebaut! Schau, die ersten EinsÃ¤tze wurden dir bereits gemeldet!"
                         },
                         mobile: {
                             dispatch_button: 'Jetzt schauen wir uns an, wie man mit diesen VorfÃ¤llen umgeht. Ã–ffne das Alarmierungsfenster, indem du auf einen  "Alarm"-Button klickst!',
-                            first_mission: "Super, du hast dein ersten GebÃ¤ude gebaut! Schau, die ersten Missionen wurden dir bereits gemeldet!"
+                            first_mission: "Super, du hast dein ersten GebÃ¤ude gebaut! Schau, die ersten EinsÃ¤tze wurden dir bereits gemeldet!"
                         }
                     }
                 },
@@ -2240,14 +2247,14 @@ function currentMarkerTypeFilterTurnedOn(e) {
                 tips: {
                     browser: {
                         contact: "Wenn du Fragen hast kannst du dir unsere FAQ ansehen und das Forum oder unsere Facebook-Seite besuchen!",
-                        general: "Als nÃ¤chstes empfehlen wir dir, eine Leitstelle zu bauen. AuÃŸerdem solltest du weitere Stationen bauen, denn die maximale Anzahl an EinstÃ¤zen bestimmt sich aus der hÃ¶chsten Anzahl aller Stationen eines bestimmten Typs (Polizei, Feuerwehr, Rettungsdienst) plus 1; z.B. 5 Feuerwachen und 3 KrankenhÃ¤user = 6 Missionen.",
-                        join_alliance: "DarÃ¼ber hinaus empfehlen wir dir, einem Verband beizutreten. Dies wird sehr hilfreich fÃ¼r dich sein, besonders am Anfang.",
+                        general: "Als nÃ¤chstes empfehlen wir dir, eine Leitstelle zu bauen. AuÃŸerdem solltest du weitere GebÃ¤ude bauen, denn die maximale Anzahl an EinsÃ¤tzen bestimmt sich aus der hÃ¶chsten Anzahl aller GebÃ¤ude eines bestimmten Typs (Polizei, Feuerwehr, Rettungsdienst) plus 1; z.B. 5 Feuerwachen und 3 KrankenhÃ¤user = 6 EinsÃ¤tze.",
+                        join_alliance: "DarÃ¼ber hinaus empfehlen wir dir, einem Verband beizutreten. Dies wird sehr hilfreich fÃ¼r dich sein, besonders am Anfang. Bitte lies vorher die Bedingungen des Verbandes.",
                         summary: "Das waren die Grundlagen vom Leitstellenspiel! Beende EinsÃ¤tze, sammle Credits, kaufe mehr Fahrzeuge, und dann das Ganze nochmal. Viel SpaÃŸ beim Spielen! </br> Dein Leitstellenspiel-Team"
                     },
                     mobile: {
                         contact: "Wenn du Fragen hast kannst du dir unsere FAQ ansehen und das Forum oder unsere Facebook-Seite besuchen!",
-                        general: "Als nÃ¤chstes empfehlen wir dir, eine Leitstelle zu bauen. AuÃŸerdem solltest du weitere Stationen bauen, denn die maximale Anzahl an EinstÃ¤zen bestimmt sich aus der hÃ¶chsten Anzahl aller Stationen eines bestimmten Typs (Polizei, Feuerwehr, Rettungsdienst) plus 1; z.B. 5 Feuerwachen und 3 KrankenhÃ¤user = 6 Missionen.",
-                        join_alliance: "DarÃ¼ber hinaus empfehlen wir dir, einem Verband beizutreten. Dies wird sehr hilfreich fÃ¼r dich sein, besonders am Anfang.",
+                        general: "Als nÃ¤chstes empfehlen wir dir, eine Leitstelle zu bauen. AuÃŸerdem solltest du weitere GebÃ¤ude bauen, denn die maximale Anzahl an EinsÃ¤tzen bestimmt sich aus der hÃ¶chsten Anzahl aller GebÃ¤ude eines bestimmten Typs (Polizei, Feuerwehr, Rettungsdienst) plus 1; z.B. 5 Feuerwachen und 3 KrankenhÃ¤user = 6 EinsÃ¤tze.",
+                        join_alliance: "DarÃ¼ber hinaus empfehlen wir dir, einem Verband beizutreten. Dies wird sehr hilfreich fÃ¼r dich sein, besonders am Anfang. Bitte lies vorher die Bedingungen des Verbandes.",
                         summary: "Das waren die Grundlagen vom Leitstellenspiel! Beende EinsÃ¤tze, sammle Credits, kaufe mehr Fahrzeuge, und dann das Ganze nochmal. Viel SpaÃŸ beim Spielen! </br> Dein Leitstellenspiel-Team"
                     }
                 }
@@ -3985,7 +3992,7 @@ function currentMarkerTypeFilterTurnedOn(e) {
                 elw3: "",
                 elw_airport: "",
                 emergency_ambulance: "Ambulance or Air Ambulance",
-                fire_truck: "Pumper or Light Tanker",
+                fire_truck: "Pumper or Light Tanker or Tanker",
                 fireboat: "Fire Boat",
                 fly_car: "MICA",
                 fukw: "",
@@ -4004,7 +4011,7 @@ function currentMarkerTypeFilterTurnedOn(e) {
                 gw_oel_only: "",
                 gw_san: "",
                 gw_taucher: "",
-                gw_wasserrettung: "Water Retention",
+                gw_wasserrettung: "SES Vehicle",
                 gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Hose Vehicle",
                 hems: "Air Ambulance",
@@ -7585,7 +7592,7 @@ function currentMarkerTypeFilterTurnedOn(e) {
             not_ready: "Fora de serviÃ§o",
             on_destination: "No destino do transporte",
             on_place: "No local",
-            patient_transported: "Transportando paciente",
+            patient_transported: "A transportar paciente",
             prisoner_transported: "A transportar detido.",
             ready_home: "DisponÃ­vel na estaÃ§Ã£o",
             ready_traveling: "Livre e disponÃ­vel",
@@ -31635,7 +31642,7 @@ function(e) {
         kt = /iPhone|iPod|iPad| wosbrowser\//i.test(bt),
         xt = function() {
             var e, t, i = document.createElement("div");
-            return i.contentEditable = !0, "contentEditable" in document.documentElement && "true" === i.contentEditable ? (t = /Opera Mobi|Opera Mini/i.test(bt), /Android/i.test(bt) && (t = !0, /Safari/.test(bt) && (e = /Safari\/(\d+)/.exec(bt), t = e && e[1] ? e[1] < 534 : !0)), / Silk\//i.test(bt) && (e = /AppleWebKit\/(\d+)/.exec(bt), t = e && e[1] ? e[1] < 534 : !0), kt && (t = /OS [0-4](_\d)+ like Mac/i.test(bt)), /Firefox/i.test(bt) && (t = !1), /OneBrowser/i.test(bt) && (t = !1), "UCWEB" === navigator.vendor && (t = !1), 9 >= yt && (t = !0), !t) : !1
+            return i.contentEditable = !0, "contentEditable" in document.documentElement && "true" === i.contentEditable ? (t = /Opera Mobi|Opera Mini/i.test(bt), /Android/i.test(bt) && (t = !1), / Silk\//i.test(bt) && (e = /AppleWebKit\/(\d+)/.exec(bt), t = e && e[1] ? e[1] < 534 : !0), kt && (t = /OS [0-4](_\d)+ like Mac/i.test(bt)), /Firefox/i.test(bt) && (t = !1), /OneBrowser/i.test(bt) && (t = !1), "UCWEB" === navigator.vendor && (t = !1), 9 >= yt && (t = !0), !t) : !1
         }(),
         Ct = /^(https?|s?ftp|mailto|spotify|skype|ssh|teamspeak|tel):|(\/\/)|data:image\/(png|bmp|gif|p?jpe?g);/i,
         Tt = {
@@ -33540,7 +33547,7 @@ function(e) {
         kt = /iPhone|iPod|iPad| wosbrowser\//i.test(bt),
         xt = function() {
             var e, t, i = document.createElement("div");
-            return i.contentEditable = !0, "contentEditable" in document.documentElement && "true" === i.contentEditable ? (t = /Opera Mobi|Opera Mini/i.test(bt), /Android/i.test(bt) && (t = !0, /Safari/.test(bt) && (e = /Safari\/(\d+)/.exec(bt), t = e && e[1] ? e[1] < 534 : !0)), / Silk\//i.test(bt) && (e = /AppleWebKit\/(\d+)/.exec(bt), t = e && e[1] ? e[1] < 534 : !0), kt && (t = /OS [0-4](_\d)+ like Mac/i.test(bt)), /Firefox/i.test(bt) && (t = !1), /OneBrowser/i.test(bt) && (t = !1), "UCWEB" === navigator.vendor && (t = !1), 9 >= yt && (t = !0), !t) : !1
+            return i.contentEditable = !0, "contentEditable" in document.documentElement && "true" === i.contentEditable ? (t = /Opera Mobi|Opera Mini/i.test(bt), /Android/i.test(bt) && (t = !1), / Silk\//i.test(bt) && (e = /AppleWebKit\/(\d+)/.exec(bt), t = e && e[1] ? e[1] < 534 : !0), kt && (t = /OS [0-4](_\d)+ like Mac/i.test(bt)), /Firefox/i.test(bt) && (t = !1), /OneBrowser/i.test(bt) && (t = !1), "UCWEB" === navigator.vendor && (t = !1), 9 >= yt && (t = !0), !t) : !1
         }(),
         Ct = /^(https?|s?ftp|mailto|spotify|skype|ssh|teamspeak|tel):|(\/\/)|data:image\/(png|bmp|gif|p?jpe?g);/i,
         Tt = {
