@@ -4030,7 +4030,7 @@ Object.values || (Object.values = function(e) {
                 mek_mtf: "",
                 mek_zf: "",
                 mtw: "MTW",
-                mzb: "Multi-Purpose Boat",
+                mzb: "Rescue Boat",
                 naw: "",
                 naw_or_rtw_and_nef: "",
                 naw_or_rtw_and_nef_or_rth: "",
