@@ -1427,7 +1427,7 @@ function aao_available(e, t) {
                 var a = aao_check("naw", $("#aao_" + e), o),
                     r = aao_check(h, $("#aao_" + e), o),
                     l = aao_check("rtw", $("#aao_" + e), o);
-                if ((a || r) && l) {
+                if (a && (r || l)) {
                     if (a && r && l) {
                         var c = aao_maxtime(-1, a),
                             u = aao_maxtime(-1, r),
