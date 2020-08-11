@@ -10984,7 +10984,6 @@ body .ui-tooltip{
     position:absolute;
     width:350px;
     display:block;
-    color:white;
     left:50%;
     margin:-530px 0 0 -175px;
     border-radius:4px;
@@ -11313,6 +11312,50 @@ body.bigMap #search_input_field_missions{
 }
 #building_schooling_table .btn{
     white-space:normal
+}
+#landingpage_new .landingpage_1_signup_form{
+    left:45%;
+    margin:100px 0 0 -80px
+}
+#landingpage_new .landingpage_1_feuerwehrmann_new{
+    z-index:10;
+    position:absolute;
+    width:1100px;
+    display:block;
+    left:45%;
+    margin:0 0 0 -470px
+}
+#landingpage_new .landingpage_1_signup_form>.fit-content{
+    background:linear-gradient(180deg, #fdfdfd 70%, #cdcdcd 100%)
+}
+#landingpage_new .landingpage_1_signup_form h2{
+    font-size:22px
+}
+#landingpage_new .landingpage_1_signup_form #sign-up-now-button .btn{
+    width:190px;
+    font-size:11px
+}
+#landingpage_new #map{
+    height:99.1vh
+}
+#landingpage_new .footer_links{
+    font-size:10px;
+    margin-left:80px;
+    padding-top:25px
+}
+#landingpage_new .footer_links a{
+    color:black
+}
+#landingpage_new .fit-content{
+    width:330px;
+    padding:10px
+}
+#landingpage_new .landingpage_1_container{
+    height:95vh;
+    margin-top:-95vh
+}
+.landingpage_1_signup_form_legacy{
+    color:white
 }
 /* * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select) * * Copyright 2013-2017 bootstrap-select * Licensed under MIT (https://github.com/silviomoreto/bootstrap-select/blob/master/LICENSE) */
 select.bs-select-hidden,select.selectpicker{
