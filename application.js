@@ -406,7 +406,7 @@ function building_maps_redraw() {
             i = [n.latitude, n.longitude]
         }
         mapIsVisible(i) ? (visibles.push(t.building_id), building_markers_new.push(t)) : "undefined" == typeof mapkit ? map.removeLayer(t) : map.removeAnnotation(t)
-    }), building_markers = building_markers_new, console.log("building_markers", building_markers), $.each(building_markers_cache, function(e, t) {
+    }), building_markers = building_markers_new, $.each(building_markers_cache, function(e, t) {
         -1 == $.inArray(t.id, visibles) && mapIsVisible([t.latitude, t.longitude]) && building_maps_draw(t)
     })
 }
@@ -9549,8 +9549,8 @@ Object.values || (Object.values = function(e) {
                 gw_werkfeuerwehr: "",
                 gwl2wasser_only: "í˜¸ìŠ¤ ì°¨ëŸ‰",
                 hems: "ê¸´ê¸‰ ì˜ë£Œ ì„œë¹„ìŠ¤(í—¬ê¸°)",
-                hlf_only: "",
-                hlf_or_rw_and_lf: "",
+                hlf_only: "êµ¬ì¡° ê³µìž‘ì°¨",
+                hlf_or_rw_and_lf: "êµ¬ì¡° ê³µìž‘ì°¨ ë˜ëŠ” ì¤‘ìž¥ë¹„ êµ¬ì¡° ì°¨ëŸ‰ ë° ì†Œë°©ì°¨",
                 hondengeleider: "",
                 k9: "K-9 ìœ ë‹›",
                 kdow_lna: "",
