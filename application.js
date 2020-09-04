@@ -4372,6 +4372,10 @@ Object.values || (Object.values = function(e) {
                 arff: "Flygplansbrandbil",
                 battalion_chief_unit: "BrandbefÃ¤l",
                 boot: "BÃ¥tar (allmÃ¤nt)",
+                brush_truck: "Skogsbrandsfordon",
+                brush_truck_1: "TerrÃ¤ngbil",
+                brush_truck_2: "Bandvagn",
+                brush_truck_3: "ATV",
                 division_chief_unit: "RÃ¤ddningsledning",
                 elw1_or_elw2: "BrandbefÃ¤l eller Ledningsfordon",
                 elw2_or_ab_elw: "RÃ¤ddningspump eller stÃ¶denhet och brandbil",
@@ -4569,7 +4573,11 @@ Object.values || (Object.values = function(e) {
             to_mission: "PokaÅ¼ misjÄ™",
             understand: "PotwierdÅº",
             user_not_found: "Nie znaleziono gracza.",
-            vehicles_not_visible: "Pojazdy nie sÄ… widoczne. "
+            vehicles_not_visible: "Pojazdy nie sÄ… widoczne. ",
+            water_approaching: "W drodze: %{amount} l.",
+            water_missing: "Potrzebna: %{amount} l.",
+            water_on_site: "Na miejscu: %{amount} l.",
+            water_selected: "Wybrany: %{amount} l."
         },
         map: {
             alliance: "Sojusz",
@@ -4653,6 +4661,7 @@ Object.values || (Object.values = function(e) {
         },
         intervention_order: {
             back: "Wstecz",
+            battalion_chief_unit: "SamochÃ³d Oficera Operacyjnego lub SLRr",
             category: "Kategoria",
             colour: "Kolor",
             column: "Kolumna",
@@ -4719,7 +4728,7 @@ Object.values || (Object.values = function(e) {
                 gw_atemschutz_only: "",
                 gw_gefahrgut: "Ratownictwo chemiczne",
                 gw_gefahrgut_only: "",
-                gw_hoehenrettung: "GW-HÃ¶henrettung",
+                gw_hoehenrettung: "SRWys",
                 gw_messtechnik: "GW-Messtechnik",
                 gw_oel_only: "",
                 gw_san: "",
@@ -4784,7 +4793,7 @@ Object.values || (Object.values = function(e) {
                 turntable_ladder: "SP wysokoÅ›ciowy",
                 ulf: "",
                 wasserwerfer: "",
-                water_amount: "",
+                water_amount: "Litry wody",
                 water_amount_tlf: ""
             }
         },
