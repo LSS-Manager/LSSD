@@ -10483,8 +10483,8 @@ Object.values || (Object.values = function(e) {
                 sek_mtf: "",
                 sek_zf: "",
                 swat: "VATI",
-                swat_armored_vehicle: "Karhu-ryhmÃ¤n panssaroitu auto",
-                swat_suv: "Karhu-ryhmÃ¤n auto",
+                swat_armored_vehicle: "VATI miehistÃ¶nkuljetusajoneuvo",
+                swat_suv: "VATI-partio",
                 thw_anh_mzab: "",
                 thw_anh_mzb: "",
                 thw_anh_schlb: "",
@@ -28207,7 +28207,8 @@ $(function() {
         ["fbi_mobile_command", I18n.t("intervention_order.vehicles.fbi_mobile_command")],
         ["fbi_bomb_tech", I18n.t("intervention_order.vehicles.fbi_bomb_tech")],
         ["fbi_drone", I18n.t("intervention_order.vehicles.fbi_drone")],
-        ["sheriff_unit", I18n.t("intervention_order.vehicles.sheriff_unit")]
+        ["sheriff_unit", I18n.t("intervention_order.vehicles.sheriff_unit")],
+        ["any_traffic_car", I18n.t("intervention_order.vehicles.any_traffic_car")]
     ], $("#restore_map").click(function() {
         mapViewRestore()
     }), $("#coins_top").click(function() {
