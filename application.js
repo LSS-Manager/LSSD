@@ -1718,6 +1718,21 @@ Object.values || (Object.values = function(e) {
         })
     }), Array.prototype.includes || (Array.prototype.includes = function(e) {
         return !!~this.indexOf(e)
+    }), Array.prototype.find || Object.defineProperty(Array.prototype, "find", {
+        value: function(e) {
+            if (null == this) throw TypeError('"this" is null or not defined');
+            var t = Object(this),
+                i = t.length >>> 0;
+            if ("function" != typeof e) throw TypeError("predicate must be a function");
+            for (var n = arguments[1], s = 0; i > s;) {
+                var o = t[s];
+                if (e.call(n, o, s, t)) return o;
+                s++
+            }
+            return void 0
+        },
+        configurable: !0,
+        writable: !0
     }),
     function(e) {
         "undefined" != typeof module && module.exports ? module.exports = e(this) : "function" == typeof define && define.amd ? define("i18n", function(t) {
@@ -6979,8 +6994,8 @@ Object.values || (Object.values = function(e) {
                 alliance_buildings: "AlianÄnÃ­ budovy",
                 alliance_members: "ÄŒlenovÃ©",
                 alliance_missions: "SdÃ­leno aliancÃ­",
-                ambulance_station_missions: "VÃ½jezdovÃ¡ zÃ¡kladna zÃ¡chrannÃ© sluÅ¾by",
-                ambulance_station_small_missions: "VÃ½jezdovÃ¡ zÃ¡kladna zÃ¡chrannÃ© sluÅ¾by (malÃ¡)",
+                ambulance_station_missions: "VÃ½jezdovÃ© stanoviÅ¡tÄ› ZZS",
+                ambulance_station_small_missions: "VÃ½jezdovÃ© stanoviÅ¡tÄ› ZZS (malÃ¡)",
                 clinic_missions: "Klinika",
                 dispatch_center_missions: "OperaÄnÃ­ stÅ™edisko",
                 fire_school_missions: "Å kolnÃ­ a vÃ½cvikovÃ© zaÅ™Ã­zenÃ­ HZS",
