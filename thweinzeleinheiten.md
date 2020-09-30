@@ -62,6 +62,7 @@ thw_gkw_one_count
 
 thw_fg_raeumen_count
 
+
 ### 186
 
 thw_gkw_one_count
@@ -70,4 +71,47 @@ thw_bergung_one_count
 
 thw_zugtrupp_one_count
 
+
+### 206
+
+thw_gkw_one_count
+
+thw_gkw_count
+
+thw_zugtrupp_one_count
+
+thw_fg_raeumen_count 2
+
+
+### 207
+
+thw_gkw_one_count
+
+thw_gkw_count
+
+thw_zugtrupp_one_count
+
+thw_fg_raeumen_count 2
+
+
+### 213
+
+thw_gkw_one_count
+
+thw_zugtrupp_one_count
+
+thw_fg_raeumen_count
+
+thw_bergung_one_count
+
+
+### 221
+
+thw_gkw_one_count
+
+thw_zugtrupp_one_count
+
+thw_fg_raeumen_count 2
+
+thw_bergung_one_count
 
