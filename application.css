@@ -9032,6 +9032,13 @@ body.dark th.tablesorter-headerAsc,body.dark th.tablesorter-headerDesc{
 .vehicle_overview .list-group{
     margin:0 0 10px 0
 }
+.vehicle_list{
+    margin-top:40px
+}
+.stations_search_field{
+    margin-bottom:20px;
+    width:100%
+}
 .search_input_field,#search_input_field_missions{
     background-image:url(/images/search_5a5753.svg);
     background-repeat:no-repeat;
@@ -12211,7 +12218,7 @@ div.sceditor-group{
 .policechief .navbar-default .dropdown-menu{
     background-color:#004997
 }
-.policechief .mission_progress .progress-bar-danger{
+.policechief .mission_header_info_progress .progress-bar-danger,.policechief .mission_progress .progress-bar-danger{
     background-image:none;
     background-color:#2a6dc0
 }
