@@ -3390,8 +3390,8 @@ Object.values || (Object.values = function(e) {
             column_number_hint: "Wanneer je een kolomnummer invult wordt het deze Alarm en Uitrukregel in de bijbehorende kolom in de alarmeringsscherm geplaatst.",
             create_intervention_order: "Nieuwe Alarm en Uitrukregel aanmaken",
             "delete": "Verwijderen",
-            delete_all: "Alarm en Uitrukregels compleet verwijderen",
-            delete_all_confirm: "Weet je zeker dat je de Alarm en Uitrukregels wilt verwijderen? Ook de geÃ«xporteerde variant wordt niet meer beschikbaar.",
+            delete_all: "Inzetvoorstellen compleet verwijderen",
+            delete_all_confirm: "Weet je zeker dat je de inzetvoorstellen wilt verwijderen? Ook de geÃ«xporteerde variant wordt niet meer beschikbaar.",
             description: "Beschrijving",
             edit: "Bewerken",
             "export": {
@@ -3402,9 +3402,9 @@ Object.values || (Object.values = function(e) {
                 saved_text: "Jouw A&U worden voor export voorbereid. Met de link kunnen andere spelers de A&U importeren. Wanneer je tussentijds je eigen A&U regels veranderd, zullen deze veranderingen automatisch in de export worden meegenomen."
             },
             hotkey_hint: "Kies een letter voor deze inzet. In het alarmeringsscherm kun je dan met ALT + Letter naar keuze snel een keuze maken. (In Firefox: ALT + SHIFT + Letter naar keuze, Op Mac OS: CTRL + ALT + Letter)",
-            intervention_order: "Alarm en Uitrukregels aanpassen",
+            intervention_order: "Inzetvoorstellen aanpassen",
             name: "Naam",
-            no_intervention_created: "Je hebt nog geen Alarm en Uitrukregels aangemaakt.",
+            no_intervention_created: "Je hebt nog geen inzetvoorstellen aangemaakt.",
             options: "Opties",
             reset: "Voorgaande keuze in alarmeringsscherm terugzetten.",
             reset_hint: "Wanneer je bij je voertuigkeuze de verkeerde voertuigen geselecteerd hebt, kun je met deze knop de gehele selectie verwijderen en opnieuw beginnen.",
@@ -3413,7 +3413,7 @@ Object.values || (Object.values = function(e) {
             station_hint: "Wanneer je een post selecteert worden alleen voertuigen van deze post geselecteerd. ",
             successfully_created: "Alarm en Uitrukregel succesvol opgeslagen.",
             successfully_deleted: "Alarm en Uitrukregel verwijderd.",
-            successfully_updated: "Alarm en uitrukregels succesvol opgeslagen.",
+            successfully_updated: "Inzetvoorstellen succesvol opgeslagen.",
             vehicles: {
                 ab_atemschutz_only: "Adembeschermingshaakarmbak",
                 ab_einsatzleitung_only: "",
@@ -37839,6 +37839,12 @@ I18n.t = function(e, t) {
     }, {
         from: "/images/building_helipad_polizei.png",
         to: "/images/policechief_building_helipad_polizei.png"
+    }, {
+        from: "/images/building_polizeisondereinheiten.png",
+        to: "/images/policechief_building_polizeisondereinheiten.png"
+    }, {
+        from: "/images/building_bereitschaftspolizei.png",
+        to: "/images/policechief_building_bereitschaftspolizei.png"
     }, {
         from: "/images/police.png",
         to: "/images/policechief_police.png"
