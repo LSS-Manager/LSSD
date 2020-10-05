@@ -9164,7 +9164,10 @@ body.dark th.tablesorter-headerAsc,body.dark th.tablesorter-headerDesc{
     cursor:pointer
 }
 .building_list_li{
-    margin-bottom:5px
+    margin-bottom:6px
+}
+.building_list_li .list-group-item.active{
+    line-height:24px
 }
 body.bright .building_list_vehicle_element .label-default{
     background-color:transparent;
