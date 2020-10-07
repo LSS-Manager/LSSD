@@ -3533,21 +3533,21 @@ Object.values || (Object.values = function(e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: "Geef je nieuwe station een naam. Maak het herkenbaar en opschaalbaar. Bijvoorbeeld 'Brandweerkazerne nr. 0001'. Als je klaar bent, klik dan op 'Volgende'.",
+                            add_name: "Geef je nieuwe gebouw een naam. Maak het herkenbaar en opschaalbaar. Bijvoorbeeld 'Brandweerkazerne nr. 0001'. Als je klaar bent, klik dan op 'Volgende'.",
                             build_with_credits: "Bouw nu je gebouw met credits.",
-                            new_building: "Klik op 'Nieuw gebouw'.",
-                            select_building: "Kies eerst het type gebouw waar je mee wil beginnen. We raden je aan om te beginnen met de brandweer. Het is in ieder geval een goed idee om te beginnen met een klein station.",
-                            select_position: "Zet de blauwe markering neer waar je je eerste station wil bouwen."
+                            new_building: "Klik op 'Nieuw gebouw maken'.",
+                            select_building: "Kies nu eerst het type gebouw waar je mee wil beginnen. We raden je aan om te beginnen met de brandweer, zo maak je de beste start!",
+                            select_position: "Zet de blauwe markering neer waar je je eerste gebouw wil bouwen."
                         },
                         pick_location: "Kies eerst een locatie om te beginnen. Typ de naam van de locatie waar je wil beginnen in de zoekbalk of zoek zelf op de kaart. Je kunt bijvoorbeeld je woonplaats kiezen.",
                         welcome: "Hallo, welkom bij Meldkamerspel!  Ik zal je het een en ander leren om je te helpen je carriÃ¨re bij de hulpdiensten goed te beginnen."
                     },
                     mobile: {
                         build_building: {
-                            add_name: "Geef je nieuwe station een naam. Maak het herkenbaar en opschaalbaar. Bijvoorbeeld 'Brandweerkazerne nr. 0001'. Als je klaar bent, klik dan op 'Volgende'.",
+                            add_name: "Geef je nieuwe gebouw een naam. Maak het herkenbaar en opschaalbaar. Bijvoorbeeld 'Brandweerkazerne nr. 0001'. Als je klaar bent, klik dan op 'Volgende'.",
                             build_with_credits: "Bouw nu je gebouw met credits.",
-                            new_building: "Eerst kiezen we een locatie om te beginnen en bouwen we je eerste gebouw. <br /> <br /> Om dat te doen, klik je op 'Nieuw gebouw'.",
-                            select_building: "Kies eerst het type gebouw waar je mee wil beginnen. We raden je aan om te beginnen met de brandweer. Het is in ieder geval een goed idee om te beginnen met een klein station."
+                            new_building: "Eerst kiezen we een locatie om te beginnen en bouwen we je eerste gebouw. <br /> <br /> Om dat te doen, klik je op 'Nieuw gebouw maken'.",
+                            select_building: "Kies nu eerst het type gebouw waar je mee wil beginnen. We raden je aan om te beginnen met de brandweer, zo maak je de beste start!"
                         },
                         welcome: "Hallo, welkom bij Meldkamerspel!  Ik zal je het een en ander leren om je te helpen je carriÃ¨re bij de hulpdiensten goed te beginnen."
                     }
@@ -3555,53 +3555,53 @@ Object.values || (Object.values = function(e) {
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Dit is het uitzendmenu. Hiervandaan stuur je je eenheden op missies.",
-                            dispatch_menu_buttons: "Dit zijn de twee uitzendknoppen. De eerste: 'Uitzenden' stuurt de geselecteerde eenheden naar de missie. De tweede knop doet hetzelfde als de eerste, maar gaat door naar de volgende missie. Klik nu op de eerste knop.",
-                            dispatch_menu_mission_general: "Hier zie je algemene informatie over de missie: de naam, het adres, het icoontje van de missie. Het icoontje van een mannetje vervangt het sterretje voor missies waaraan je al deelneemt.",
-                            dispatch_menu_mission_progress: "Hier zie je hoeveel vooruitgang er is geboekt met deze missie, hoeveel medewerkers ter plaatse zijn en de resterende tijd voor de missie.",
-                            dispatch_menu_mission_specific: "Hier zie je meer informatie over de missie, welke eenheden reageren op de oproep en welke al ter plaatse zijn.",
-                            dispatch_menu_vehicle_list: "Dit is een lijst met beschikbare voertuigen. Hier selecteer je de voertuigen. Selecteer nu het voertuig door erop te klikken."
+                            dispatch_menu: "Dit is het Alarmeringsmenu. Hiervandaan stuur je je eenheden naar de melding.",
+                            dispatch_menu_buttons: "Dit zijn de twee Alarmeringsknoppen. De eerste: 'Alarmeren' stuurt de geselecteerde eenheden naar de melding. De tweede knop doet hetzelfde als de eerste, maar schakelt daarna door naar de volgende missie. Klik nu op de eerste knop.",
+                            dispatch_menu_mission_general: "Hier zie je algemene informatie over de melding: de naam, het adres, het icoontje van de missie. Het icoontje van een mannetje vervangt het sterretje voor missies waaraan je al deelneemt.",
+                            dispatch_menu_mission_progress: "Hier zie je hoeveel vooruitgang er is geboekt met deze melding; hoeveel medewerkers ter plaatse zijn en de resterende tijd die nog nodig is om de melding af te handelen.",
+                            dispatch_menu_mission_specific: "Hier zie je meer informatie over de melding; welke eenheden onderweg en welke al ter plaatse zijn.",
+                            dispatch_menu_vehicle_list: "Dit is een lijst met beschikbare voertuigen. Hier selecteer je de voertuigen. Selecteer nu je voertuig door erop te klikken."
                         },
                         mobile: {
-                            dispatch_menu: "Dit is het uitzendmenu. Hiervandaan stuur je je eenheden op missies.",
-                            dispatch_menu_buttons: "Dit zijn de twee uitzendknoppen. De eerste: 'Uitzenden' stuurt de geselecteerde eenheden naar de missie. De tweede knop doet hetzelfde als de eerste, maar gaat door naar de volgende missie. Klik nu op de eerste knop.",
-                            dispatch_menu_mission_general: "Hier zie je algemene informatie over de missie: de naam, het adres, het icoontje van de missie. Het icoontje van een mannetje vervangt het sterretje voor missies waaraan je al deelneemt.",
-                            dispatch_menu_mission_progress: "Hier zie je hoeveel vooruitgang er is geboekt met deze missie, hoeveel medewerkers ter plaatse zijn en de resterende tijd voor de missie.",
-                            dispatch_menu_mission_specific: "Hier zie je meer informatie over de missie, welke eenheden reageren op de oproep en welke al ter plaatse zijn.",
-                            dispatch_menu_vehicle_list: "Dit is een lijst met beschikbare voertuigen. Hier selecteer je de voertuigen. Selecteer nu het voertuig door erop te klikken."
+                            dispatch_menu: "Dit is het Alarmeringsmenu. Hiervandaan stuur je je eenheden naar de melding.",
+                            dispatch_menu_buttons: "Dit zijn de twee Alarmeringsknoppen. De eerste: 'Alarmeren' stuurt de geselecteerde eenheden naar de melding. De tweede knop doet hetzelfde als de eerste, maar schakelt daarna door naar de volgende missie. Klik nu op de eerste knop.",
+                            dispatch_menu_mission_general: "Hier zie je algemene informatie over de melding: de naam, het adres, het icoontje van de missie. Het icoontje van een mannetje vervangt het sterretje voor missies waaraan je al deelneemt.",
+                            dispatch_menu_mission_progress: "Hier zie je hoeveel vooruitgang er is geboekt met deze melding; hoeveel medewerkers ter plaatse zijn en de resterende tijd die nog nodig is om de melding af te handelen.",
+                            dispatch_menu_mission_specific: "Hier zie je meer informatie over de melding; welke eenheden onderweg en welke al ter plaatse zijn.",
+                            dispatch_menu_vehicle_list: "Dit is een lijst met beschikbare voertuigen. Hier selecteer je de voertuigen. Selecteer nu je voertuig door erop te klikken."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "Nu willen we leren hoe we met incidenten om moeten gaan. Open het uitzendmenu door op een 'Uitzenden'-knop te drukken.",
-                            first_mission: "Geweldig, je hebt je eerste gebouw gebouwd! Kijk, de eerste missies zijn aan jou gemeld!"
+                            dispatch_button: "Nu willen we leren hoe we met incidenten om moeten gaan. Open het Alarmeringsmenu door op de 'Alarm'-knop te drukken.",
+                            first_mission: "Geweldig, je hebt je eerste gebouw gebouwd! En kijk, de eerste meldingen komen al binnen!"
                         },
                         mobile: {
-                            dispatch_button: "Nu willen we leren hoe we met incidenten om moeten gaan. Open het uitzendmenu door op een 'Uitzenden'-knop te drukken.",
-                            first_mission: "Geweldig, je hebt je eerste gebouw gebouwd! Kijk, de eerste missies zijn aan jou gemeld!"
+                            dispatch_button: "Nu willen we leren hoe we met incidenten om moeten gaan. Open het Alarmeringsmenu door op de 'Alarm'-knop te drukken.",
+                            first_mission: "Geweldig, je hebt je eerste gebouw gebouwd! En kijk, de eerste meldingen komen al binnen!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Goed zo, je bent op weg om een geweldige meldkamerbestuurder te worden! Hier heb je %{coins} munten om je op weg te helpen. </br> Het team van Meldkamerspel"
+                        general: "Goed zo, je bent op weg om een geweldige meldkamercentralist te worden! Hier heb je %{coins} Coins om je verder op weg te helpen. </br> Het team van Meldkamerspel"
                     },
                     mobile: {
-                        general: "Goed zo, je bent op weg om een geweldige meldkamerbestuurder te worden! Hier heb je %{coins} munten om je op weg te helpen. </br> Het team van Meldkamerspel"
+                        general: "Goed zo, je bent op weg om een geweldige meldkamercentralist te worden! Hier heb je %{coins} Coins om je verder op weg te helpen. </br> Het team van Meldkamerspel"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Als je vragen hebt, kun je de veelgestelde vragen over het spel bekijken of een bezoekje brengen aan de forums of onze Facebook-pagina.",
-                        general: "Als volgende stap raden we je aan om een meldkamer te bouwen en dan zo snel mogelijk nieuwe stations te bouwen, aangezien het maximumaantal missies gelijk is aan het type station waarvan je er het meeste hebt (politie, brandweer, ambulance) plus 1. Bijvoorbeeld: 5 brandweerkazernes en 3 ambulanceposten = 6 missies.",
-                        join_alliance: "Sluit je aan bij een alliantie. Dat kan je vooral in het begin erg vooruit helpen.",
-                        summary: "Dit zijn de basisprincipes van Meldkamerspel. Missies voltooien, geld verdienen, meer eenheden kopen, herhalen. Veel speelplezier! </br> Het team van Meldkamerspel"
+                        contact: "Als je vragen hebt, kun je de veelgestelde vragen over het spel bekijken of een bezoekje brengen aan de forums of onze Facebook-pagina. Op het Blog vind je nog extra handleidingen en video's met uitleg over de verschillende functies in het spel.",
+                        general: "Als volgende stap raden we je aan om een meldkamer(gratis!) te bouwen en dan zo snel mogelijk nieuwe gebouwen te bouwen, aangezien het maximumaantal missies gelijk is aan het type station waarvan je er het meeste hebt (politie, brandweer, ambulance) plus 1. Bijvoorbeeld: 5 brandweerkazernes en 3 ambulanceposten = 6 missies.",
+                        join_alliance: "Ook kun je je aansluiten bij een team. Dat kan je vooral in het begin erg vooruit helpen.",
+                        summary: "Dit zijn de basisprincipes van Meldkamerspel. Meldigen afhandelen, Credits verdienen, meer gebouwen en eenheden kopen, enzovoorts. Veel speelplezier! </br> Het team van Meldkamerspel"
                     },
                     mobile: {
-                        contact: "Als je vragen hebt, kun je de veelgestelde vragen over het spel bekijken of een bezoekje brengen aan de forums of onze Facebook-pagina.",
-                        general: "Als volgende stap raden we je aan om een meldkamer te bouwen en dan zo snel mogelijk nieuwe stations te bouwen, aangezien het maximumaantal missies gelijk is aan het type station waarvan je er het meeste hebt (politie, brandweer, ambulance) plus 1. Bijvoorbeeld: 5 brandweerkazernes en 3 ambulanceposten = 6 missies.",
-                        join_alliance: "Sluit je aan bij een alliantie. Dat kan je vooral in het begin erg vooruit helpen.",
-                        summary: "Dit zijn de basisprincipes van Meldkamerspel. Missies voltooien, geld verdienen, meer eenheden kopen, herhalen. Veel speelplezier! </br> Het team van Meldkamerspel"
+                        contact: "Als je vragen hebt, kun je de veelgestelde vragen over het spel bekijken of een bezoekje brengen aan de forums of onze Facebook-pagina. Op het Blog vind je nog extra handleidingen en video's met uitleg over de verschillende functies in het spel.",
+                        general: "Als volgende stap raden we je aan om een meldkamer(gratis!) te bouwen en dan zo snel mogelijk nieuwe gebouwen te bouwen, aangezien het maximumaantal missies gelijk is aan het type station waarvan je er het meeste hebt (politie, brandweer, ambulance) plus 1. Bijvoorbeeld: 5 brandweerkazernes en 3 ambulanceposten = 6 missies.",
+                        join_alliance: "Ook kun je je aansluiten bij een team. Dat kan je vooral in het begin erg vooruit helpen.",
+                        summary: "Dit zijn de basisprincipes van Meldkamerspel. Meldigen afhandelen, Credits verdienen, meer gebouwen en eenheden kopen, enzovoorts. Veel speelplezier! </br> Het team van Meldkamerspel"
                     }
                 }
             },
@@ -4362,6 +4362,44 @@ Object.values || (Object.values = function(e) {
             },
             rewards: {
                 log: "Reward for finishing the tutorial."
+            }
+        },
+        policechief: {
+            tutorial: {
+                beginner: {
+                    building: {
+                        browser: {
+                            build_building: {
+                                add_name: 'Second give your new station a name! Make it recognisable and scalable! E.g. "Police station #0001". When you are done, please click "Next"!',
+                                select_building: "First choose the type of building you want to start with, we highly suggest you to start with a police station! In any case starting with a small station is advised!"
+                            },
+                            welcome: "Hello, welcome to Police MissionChief! I will teach you some lessons to help you start off your emergency services career well!"
+                        },
+                        mobile: {
+                            build_building: {
+                                add_name: 'Second give your new station a name! Make it recognisable and scalable! E.g. "Police station #0001". When you are done, please click "Next"!',
+                                select_building: "First choose the type of building you want to start with, we highly suggest you to start with a police station! In any case starting with a small station is advised!"
+                            },
+                            welcome: "Hello, welcome to Police MissionChief! I will teach you some lessons to help you start off your emergency services career well!"
+                        }
+                    },
+                    rewards: {
+                        browser: {
+                            general: "Great, you are on your way to becoming an awesome Police MissionChief! Here are %{coins} Coins. to help you get started! </br> Your Police MissionChief-team"
+                        },
+                        mobile: {
+                            general: "Great, you are on your way to becoming an awesome Police MissionChief! Here are %{coins} Coins. to help you get started! </br> Your Police MissionChief-team"
+                        }
+                    },
+                    tips: {
+                        browser: {
+                            summary: "These are the basics of Police MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your Police MissionChief-team"
+                        },
+                        mobile: {
+                            summary: "These are the basics of Police MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your Police MissionChief-team"
+                        }
+                    }
+                }
             }
         }
     }, I18n.translations.sv_SE = {
@@ -5256,6 +5294,7 @@ Object.values || (Object.values = function(e) {
                 arff: "ARFF (mezzo antincendio aeroportuale)",
                 battalion_chief_unit: "Funzionario",
                 boot: "Barche (generale)",
+                commerce_police: "Volante Finanza",
                 dekon_p: "",
                 division_chief_unit: "Veicoli comando mobile",
                 dlk_or_tm50: "",
@@ -5264,6 +5303,7 @@ Object.values || (Object.values = function(e) {
                 elw3: "",
                 elw_airport: "",
                 emergency_ambulance: "Automedica (VLV)",
+                fbi_bomb_techician: "Furgone artificieri",
                 fire_truck: "Autopompe",
                 fireboat: "Barca antincendio grande",
                 fly_car: "Fly-Car",
@@ -5435,6 +5475,44 @@ Object.values || (Object.values = function(e) {
             },
             rewards: {
                 log: "Ricompensa per aver completato il tutorial."
+            }
+        },
+        policechief: {
+            tutorial: {
+                beginner: {
+                    building: {
+                        browser: {
+                            build_building: {
+                                add_name: 'Ora assegna un nome alla tua nuova stazione. Scegli un nome di facile identificazione e numerabile. Per esempio: "Stazione di polizia 0001". Quando hai finito, fai clic su "Avanti".',
+                                select_building: "Per prima cosa scegli il tipo di edificio con cui vuoi cominciare; ti consiglio vivamente di iniziare con la polizia. In ogni caso, sarebbe meglio iniziare con una stazione di piccole dimensioni."
+                            },
+                            welcome: "Ciao, ti do il benvenuto in Operatore 112 Polizia!  Ti insegnerÃ² un po' di cose per aiutarti a partire alla grande con la tua carriera nei servizi di emergenza."
+                        },
+                        mobile: {
+                            build_building: {
+                                add_name: 'Ora assegna un nome alla tua nuova stazione. Scegli un nome di facile identificazione e numerabile. Per esempio: "Stazione di polizia 0001". Quando hai finito, fai clic su "Avanti".',
+                                select_building: "Per prima cosa scegli il tipo di edificio con cui vuoi cominciare; ti consiglio vivamente di iniziare con la polizia. In ogni caso, sarebbe meglio iniziare con una stazione di piccole dimensioni."
+                            },
+                            welcome: "Ciao, ti do il benvenuto in Operatore 112 Polizia!  Ti insegnerÃ² un po' di cose per aiutarti a partire alla grande con la tua carriera nei servizi di emergenza."
+                        }
+                    },
+                    rewards: {
+                        browser: {
+                            general: "Fantastico, stai per diventare un eccezionale Capomissione! Ecco %{coins} monete per aiutarti a partire! </br> Il team di Operatore 112 Polizia"
+                        },
+                        mobile: {
+                            general: "Fantastico, stai per diventare un eccezionale Capomissione! Ecco %{coins} monete per aiutarti a partire! </br> Il team di Operatore 112 Polizia"
+                        }
+                    },
+                    tips: {
+                        browser: {
+                            summary: "Queste sono le nozioni di base di Operatore 112 Polizia. Completa missioni, ottieni crediti, acquista altre unitÃ  e ricomincia. Divertiti a giocare! </br> Il team di Operatore 112 Polizia"
+                        },
+                        mobile: {
+                            summary: "Queste sono le nozioni di base di Operatore 112 Polizia. Completa missioni, ottieni crediti, acquista altre unitÃ  e ricomincia. Divertiti a giocare! </br> Il team di Operatore 112 Polizia"
+                        }
+                    }
+                }
             }
         }
     }, I18n.translations.fr_FR = {
@@ -11320,7 +11398,7 @@ Object.values || (Object.values = function(e) {
             }
         }
 
-        function D(e, t, i, n) {
+        function P(e, t, i, n) {
             function o(r) {
                 var l;
                 return s[r] = !0, ut.each(e[r] || [], function(e, r) {
@@ -11333,7 +11411,7 @@ Object.values || (Object.values = function(e) {
             return o(t.dataTypes[0]) || !s["*"] && o("*")
         }
 
-        function P(e, i) {
+        function D(e, i) {
             var n, o, s = ut.ajaxSettings.flatOptions || {};
             for (o in i) i[o] !== t && ((s[o] ? e : n || (n = {}))[o] = i[o]);
             return n && ut.extend(!0, e, n), e
@@ -12031,7 +12109,7 @@ Object.values || (Object.values = function(e) {
                         }, a, !0), c = g(function(e) {
                             return at.call(t, e) > -1
                         }, a, !0), u = [function(e, i, n) {
-                            return !s && (n || i !== P) || ((t = i).nodeType ? l(e, i, n) : c(e, i, n))
+                            return !s && (n || i !== D) || ((t = i).nodeType ? l(e, i, n) : c(e, i, n))
                         }]; o > r; r++)
                         if (i = E.relative[e[r].type]) u = [g(v(u), i)];
                         else {
@@ -12055,10 +12133,10 @@ Object.values || (Object.values = function(e) {
                                 _ = "0",
                                 g = s && [],
                                 v = null != u,
-                                y = P,
+                                y = D,
                                 w = s || a && E.find.TAG("*", u && r.parentNode || r),
                                 k = q += null == y ? 1 : Math.random() || .1;
-                            for (v && (P = r !== L && r, A = n); null != (d = w[_]); _++) {
+                            for (v && (D = r !== L && r, A = n); null != (d = w[_]); _++) {
                                 if (a && d) {
                                     for (h = 0; p = e[h++];)
                                         if (p(d, r, l)) {
@@ -12077,7 +12155,7 @@ Object.values || (Object.values = function(e) {
                                 }
                                 ot.apply(c, m), v && !s && m.length > 0 && f + t.length > 1 && i.uniqueSort(c)
                             }
-                            return v && (q = k, P = y), g
+                            return v && (q = k, D = y), g
                         };
                     return o ? s(r) : r
                 }
@@ -12100,11 +12178,11 @@ Object.values || (Object.values = function(e) {
                                 break
                             }
                     }
-                    return D(e, c)(n, t, !R, i, gt.test(e)), i
+                    return P(e, c)(n, t, !R, i, gt.test(e)), i
                 }
 
                 function z() {}
-                var T, S, A, E, I, M, D, P, j, N, L, O, R, $, F, B, H, W = "sizzle" + -new Date,
+                var T, S, A, E, I, M, P, D, j, N, L, O, R, $, F, B, H, W = "sizzle" + -new Date,
                     V = e.document,
                     q = 0,
                     U = 0,
@@ -12393,7 +12471,7 @@ Object.values || (Object.values = function(e) {
                         not: s(function(e) {
                             var t = [],
                                 i = [],
-                                n = D(e.replace(mt, "$1"));
+                                n = P(e.replace(mt, "$1"));
                             return n[W] ? s(function(e, t, i, o) {
                                 for (var s, a = n(e, null, o, []), r = e.length; r--;)(s = a[r]) && (e[r] = !(t[r] = s))
                             }) : function(e, o, s) {
@@ -12502,7 +12580,7 @@ Object.values || (Object.values = function(e) {
                         submit: !0,
                         reset: !0
                     }) E.pseudos[T] = p(T);
-                D = i.compile = function(e, t) {
+                P = i.compile = function(e, t) {
                     var i, n = [],
                         o = [],
                         s = K[e + " "];
@@ -12776,8 +12854,8 @@ Object.values || (Object.values = function(e) {
         });
         var At, Et, It = /[\t\r\n\f]/g,
             Mt = /\r/g,
-            Dt = /^(?:input|select|textarea|button|object)$/i,
-            Pt = /^(?:a|area)$/i,
+            Pt = /^(?:input|select|textarea|button|object)$/i,
+            Dt = /^(?:a|area)$/i,
             jt = /^(?:checked|selected)$/i,
             Nt = ut.support.getSetAttribute,
             Lt = ut.support.input;
@@ -12910,7 +12988,7 @@ Object.values || (Object.values = function(e) {
                 tabIndex: {
                     get: function(e) {
                         var t = ut.find.attr(e, "tabindex");
-                        return t ? parseInt(t, 10) : Dt.test(e.nodeName) || Pt.test(e.nodeName) && e.href ? 0 : -1
+                        return t ? parseInt(t, 10) : Pt.test(e.nodeName) || Dt.test(e.nodeName) && e.href ? 0 : -1
                     }
                 }
             }
@@ -13810,8 +13888,8 @@ Object.values || (Object.values = function(e) {
                 return 1 === arguments.length ? this.off(e, "**") : this.off(t, e || "**", i)
             }
         });
-        var Ii, Mi, Di = ut.now(),
-            Pi = /\?/,
+        var Ii, Mi, Pi = ut.now(),
+            Di = /\?/,
             ji = /#.*$/,
             Ni = /([?&])_=[^&]*/,
             Li = /^(.*?):[ \t]*([^\r\n]*)\r?$/gm,
@@ -13887,7 +13965,7 @@ Object.values || (Object.values = function(e) {
                 }
             },
             ajaxSetup: function(e, t) {
-                return t ? P(P(e, ut.ajaxSettings), t) : P(ut.ajaxSettings, e)
+                return t ? D(D(e, ut.ajaxSettings), t) : D(ut.ajaxSettings, e)
             },
             ajaxPrefilter: M(Hi),
             ajaxTransport: M(Wi),
@@ -13941,8 +14019,8 @@ Object.values || (Object.values = function(e) {
                             return u && u.abort(t), n(0, t), this
                         }
                     };
-                if (f.promise(k).complete = _.add, k.success = k.done, k.error = k.fail, h.url = ((e || h.url || Mi) + "").replace(ji, "").replace($i, Ii[1] + "//"), h.type = i.method || i.type || h.method || h.type, h.dataTypes = ut.trim(h.dataType || "*").toLowerCase().match(ht) || [""], null == h.crossDomain && (o = Fi.exec(h.url.toLowerCase()), h.crossDomain = !(!o || o[1] === Ii[1] && o[2] === Ii[2] && (o[3] || ("http:" === o[1] ? "80" : "443")) === (Ii[3] || ("http:" === Ii[1] ? "80" : "443")))), h.data && h.processData && "string" != typeof h.data && (h.data = ut.param(h.data, h.traditional)), D(Hi, h, i, k), 2 === y) return k;
-                c = h.global, c && 0 === ut.active++ && ut.event.trigger("ajaxStart"), h.type = h.type.toUpperCase(), h.hasContent = !Ri.test(h.type), a = h.url, h.hasContent || (h.data && (a = h.url += (Pi.test(a) ? "&" : "?") + h.data, delete h.data), h.cache === !1 && (h.url = Ni.test(a) ? a.replace(Ni, "$1_=" + Di++) : a + (Pi.test(a) ? "&" : "?") + "_=" + Di++)), h.ifModified && (ut.lastModified[a] && k.setRequestHeader("If-Modified-Since", ut.lastModified[a]), ut.etag[a] && k.setRequestHeader("If-None-Match", ut.etag[a])), (h.data && h.hasContent && h.contentType !== !1 || i.contentType) && k.setRequestHeader("Content-Type", h.contentType), k.setRequestHeader("Accept", h.dataTypes[0] && h.accepts[h.dataTypes[0]] ? h.accepts[h.dataTypes[0]] + ("*" !== h.dataTypes[0] ? ", " + Vi + "; q=0.01" : "") : h.accepts["*"]);
+                if (f.promise(k).complete = _.add, k.success = k.done, k.error = k.fail, h.url = ((e || h.url || Mi) + "").replace(ji, "").replace($i, Ii[1] + "//"), h.type = i.method || i.type || h.method || h.type, h.dataTypes = ut.trim(h.dataType || "*").toLowerCase().match(ht) || [""], null == h.crossDomain && (o = Fi.exec(h.url.toLowerCase()), h.crossDomain = !(!o || o[1] === Ii[1] && o[2] === Ii[2] && (o[3] || ("http:" === o[1] ? "80" : "443")) === (Ii[3] || ("http:" === Ii[1] ? "80" : "443")))), h.data && h.processData && "string" != typeof h.data && (h.data = ut.param(h.data, h.traditional)), P(Hi, h, i, k), 2 === y) return k;
+                c = h.global, c && 0 === ut.active++ && ut.event.trigger("ajaxStart"), h.type = h.type.toUpperCase(), h.hasContent = !Ri.test(h.type), a = h.url, h.hasContent || (h.data && (a = h.url += (Di.test(a) ? "&" : "?") + h.data, delete h.data), h.cache === !1 && (h.url = Ni.test(a) ? a.replace(Ni, "$1_=" + Pi++) : a + (Di.test(a) ? "&" : "?") + "_=" + Pi++)), h.ifModified && (ut.lastModified[a] && k.setRequestHeader("If-Modified-Since", ut.lastModified[a]), ut.etag[a] && k.setRequestHeader("If-None-Match", ut.etag[a])), (h.data && h.hasContent && h.contentType !== !1 || i.contentType) && k.setRequestHeader("Content-Type", h.contentType), k.setRequestHeader("Accept", h.dataTypes[0] && h.accepts[h.dataTypes[0]] ? h.accepts[h.dataTypes[0]] + ("*" !== h.dataTypes[0] ? ", " + Vi + "; q=0.01" : "") : h.accepts["*"]);
                 for (s in h.headers) k.setRequestHeader(s, h.headers[s]);
                 if (h.beforeSend && (h.beforeSend.call(p, k, h) === !1 || 2 === y)) return k.abort();
                 w = "abort";
@@ -13951,7 +14029,7 @@ Object.values || (Object.values = function(e) {
                         error: 1,
                         complete: 1
                     }) k[s](h[s]);
-                if (u = D(Wi, h, i, k)) {
+                if (u = P(Wi, h, i, k)) {
                     k.readyState = 1, c && m.trigger("ajaxSend", [k, h]), h.async && h.timeout > 0 && (l = setTimeout(function() {
                         k.abort("timeout")
                     }, h.timeout));
@@ -14014,12 +14092,12 @@ Object.values || (Object.values = function(e) {
         ut.ajaxSetup({
             jsonp: "callback",
             jsonpCallback: function() {
-                var e = Ui.pop() || ut.expando + "_" + Di++;
+                var e = Ui.pop() || ut.expando + "_" + Pi++;
                 return this[e] = !0, e
             }
         }), ut.ajaxPrefilter("json jsonp", function(i, n, o) {
             var s, a, r, l = i.jsonp !== !1 && (Gi.test(i.url) ? "url" : "string" == typeof i.data && !(i.contentType || "").indexOf("application/x-www-form-urlencoded") && Gi.test(i.data) && "data");
-            return l || "jsonp" === i.dataTypes[0] ? (s = i.jsonpCallback = ut.isFunction(i.jsonpCallback) ? i.jsonpCallback() : i.jsonpCallback, l ? i[l] = i[l].replace(Gi, "$1" + s) : i.jsonp !== !1 && (i.url += (Pi.test(i.url) ? "&" : "?") + i.jsonp + "=" + s), i.converters["script json"] = function() {
+            return l || "jsonp" === i.dataTypes[0] ? (s = i.jsonpCallback = ut.isFunction(i.jsonpCallback) ? i.jsonpCallback() : i.jsonpCallback, l ? i[l] = i[l].replace(Gi, "$1" + s) : i.jsonp !== !1 && (i.url += (Di.test(i.url) ? "&" : "?") + i.jsonp + "=" + s), i.converters["script json"] = function() {
                 return r || ut.error(s + " was not called"), r[0]
             }, i.dataTypes[0] = "json", a = e[s], e[s] = function() {
                 r = arguments
@@ -18049,7 +18127,7 @@ Object.values || (Object.values = function(e) {
                 })
             },
             _generateHTML: function(e) {
-                var t, i, n, o, s, a, r, l, c, u, d, h, p, m, f, _, g, v, b, y, w, k, x, C, z, T, S, A, E, I, M, D, P, j, N, L, O, R, $, F = new Date,
+                var t, i, n, o, s, a, r, l, c, u, d, h, p, m, f, _, g, v, b, y, w, k, x, C, z, T, S, A, E, I, M, P, D, j, N, L, O, R, $, F = new Date,
                     B = this._daylightSavingAdjust(new Date(F.getFullYear(), F.getMonth(), F.getDate())),
                     H = this._get(e, "isRTL"),
                     W = this._get(e, "showButtonPanel"),
@@ -18082,7 +18160,7 @@ Object.values || (Object.values = function(e) {
                             S += "'>"
                         }
                         for (S += "<div class='ui-datepicker-header ui-widget-header ui-helper-clearfix" + T + "'>" + (/all|left/.test(T) && 0 === k ? H ? s : n : "") + (/all|right/.test(T) && 0 === k ? H ? n : s : "") + this._generateMonthYearHeader(e, X, et, Q, J, k > 0 || C > 0, m, f) + "</div><table class='ui-datepicker-calendar'><thead>" + "<tr>", A = d ? "<th class='ui-datepicker-week-col'>" + this._get(e, "weekHeader") + "</th>" : "", w = 0; 7 > w; w++) E = (w + u) % 7, A += "<th scope='col'" + ((w + u + 6) % 7 >= 5 ? " class='ui-datepicker-week-end'" : "") + ">" + "<span title='" + h[E] + "'>" + p[E] + "</span></th>";
-                        for (S += A + "</tr></thead><tbody>", I = this._getDaysInMonth(et, X), et === e.selectedYear && X === e.selectedMonth && (e.selectedDay = Math.min(e.selectedDay, I)), M = (this._getFirstDayOfMonth(et, X) - u + 7) % 7, D = Math.ceil((M + I) / 7), P = K ? this.maxRows > D ? this.maxRows : D : D, this.maxRows = P, j = this._daylightSavingAdjust(new Date(et, X, 1 - M)), N = 0; P > N; N++) {
+                        for (S += A + "</tr></thead><tbody>", I = this._getDaysInMonth(et, X), et === e.selectedYear && X === e.selectedMonth && (e.selectedDay = Math.min(e.selectedDay, I)), M = (this._getFirstDayOfMonth(et, X) - u + 7) % 7, P = Math.ceil((M + I) / 7), D = K ? this.maxRows > P ? this.maxRows : P : P, this.maxRows = D, j = this._daylightSavingAdjust(new Date(et, X, 1 - M)), N = 0; D > N; N++) {
                             for (S += "<tr>", L = d ? "<td class='ui-datepicker-week-col'>" + this._get(e, "calculateWeek")(j) + "</td>" : "", w = 0; 7 > w; w++) O = _ ? _.apply(e.input ? e.input[0] : null, [j]) : [!0, ""], R = j.getMonth() !== X, $ = R && !v || !O[0] || Q && Q > j || J && j > J, L += "<td class='" + ((w + u + 6) % 7 >= 5 ? " ui-datepicker-week-end" : "") + (R ? " ui-datepicker-other-month" : "") + (j.getTime() === z.getTime() && X === e.selectedMonth && e._keyEvent || b.getTime() === j.getTime() && b.getTime() === z.getTime() ? " " + this._dayOverClass : "") + ($ ? " " + this._unselectableClass + " ui-state-disabled" : "") + (R && !g ? "" : " " + O[1] + (j.getTime() === Y.getTime() ? " " + this._currentClass : "") + (j.getTime() === B.getTime() ? " ui-datepicker-today" : "")) + "'" + (R && !g || !O[2] ? "" : " title='" + O[2].replace(/'/g, "&#39;") + "'") + ($ ? "" : " data-handler='selectDay' data-event='click' data-month='" + j.getMonth() + "' data-year='" + j.getFullYear() + "'") + ">" + (R && !g ? "&#xa0;" : $ ? "<span class='ui-state-default'>" + j.getDate() + "</span>" : "<a class='ui-state-default" + (j.getTime() === B.getTime() ? " ui-state-highlight" : "") + (j.getTime() === Y.getTime() ? " ui-state-active" : "") + (R ? " ui-priority-secondary" : "") + "' href='#'>" + j.getDate() + "</a>") + "</td>", j.setDate(j.getDate() + 1), j = this._daylightSavingAdjust(j);
                             S += L + "</tr>"
                         }
@@ -21686,11 +21764,11 @@ Object.values || (Object.values = function(e) {
                         E = A + a.width(),
                         I = i === !0 ? S : T,
                         M = i === !0 ? T : S,
-                        D = i === !0 ? E : A,
-                        P = i === !0 ? A : E;
-                    if ("both" === o) return !!p && k >= M && I >= w && C >= P && D >= x;
+                        P = i === !0 ? E : A,
+                        D = i === !0 ? A : E;
+                    if ("both" === o) return !!p && k >= M && I >= w && C >= D && P >= x;
                     if ("vertical" === o) return !!p && k >= M && I >= w;
-                    if ("horizontal" === o) return !!p && C >= P && D >= x
+                    if ("horizontal" === o) return !!p && C >= D && P >= x
                 }
             }
         }
@@ -23290,11 +23368,11 @@ Object.values || (Object.values = function(e) {
             return l || "M0 0"
         }
 
-        function D(e) {
+        function P(e) {
             return navigator.userAgent.toLowerCase().indexOf(e) >= 0
         }
 
-        function P(e, t, i, n) {
+        function D(e, t, i, n) {
             return "touchstart" === t ? N(e, i, n) : "touchmove" === t ? B(e, i, n) : "touchend" === t && H(e, i, n), this
         }
 
@@ -23539,7 +23617,7 @@ Object.values || (Object.values = function(e) {
                     return i.call(o || e, t || window.event)
                 },
                 r = a;
-            qi && 0 === t.indexOf("touch") ? P(e, t, a, s) : !Ui || "dblclick" !== t || !W || qi && Mi ? "addEventListener" in e ? "mousewheel" === t ? e.addEventListener("onwheel" in e ? "wheel" : "mousewheel", a, !1) : "mouseenter" === t || "mouseleave" === t ? (a = function(t) {
+            qi && 0 === t.indexOf("touch") ? D(e, t, a, s) : !Ui || "dblclick" !== t || !W || qi && Mi ? "addEventListener" in e ? "mousewheel" === t ? e.addEventListener("onwheel" in e ? "wheel" : "mousewheel", a, !1) : "mouseenter" === t || "mouseleave" === t ? (a = function(t) {
                 t = t || window.event, At(e, t) && r(t)
             }, e.addEventListener("mouseenter" === t ? "mouseover" : "mouseout", a, !1)) : ("click" === t && Ti && (a = function(e) {
                 Et(e, r)
@@ -23612,26 +23690,26 @@ Object.values || (Object.values = function(e) {
         function It(e, t) {
             if (!t || !e.length) return e.slice();
             var i = t * t;
-            return e = jt(e, i), e = Dt(e, i)
+            return e = jt(e, i), e = Pt(e, i)
         }
 
         function Mt(e, t, i) {
             return Math.sqrt($t(e, t, i, !0))
         }
 
-        function Dt(e, t) {
+        function Pt(e, t) {
             var i = e.length,
                 n = new(typeof Uint8Array != void 0 + "" ? Uint8Array : Array)(i);
-            n[0] = n[i - 1] = 1, Pt(e, n, t, 0, i - 1);
+            n[0] = n[i - 1] = 1, Dt(e, n, t, 0, i - 1);
             var o, s = [];
             for (o = 0; i > o; o++) n[o] && s.push(e[o]);
             return s
         }
 
-        function Pt(e, t, i, n, o) {
+        function Dt(e, t, i, n, o) {
             var s, a, r, l = 0;
             for (a = n + 1; o - 1 >= a; a++)(r = $t(e[a], e[n], e[o], !0)) > l && (s = a, l = r);
-            l > i && (t[s] = 1, Pt(e, t, i, n, s), Pt(e, t, i, s, o))
+            l > i && (t[s] = 1, Dt(e, t, i, n, s), Dt(e, t, i, s, o))
         }
 
         function jt(e, t) {
@@ -23640,9 +23718,9 @@ Object.values || (Object.values = function(e) {
         }
 
         function Nt(e, t, i, n, o) {
-            var s, a, r, l = n ? Pn : Ot(e, i),
+            var s, a, r, l = n ? Dn : Ot(e, i),
                 c = Ot(t, i);
-            for (Pn = c;;) {
+            for (Dn = c;;) {
                 if (!(l | c)) return [e, t];
                 if (l & c) return !1;
                 r = Ot(a = Lt(e, t, s = l || c, i, o), i), s === l ? (e = a, l = r) : (t = a, c = r)
@@ -24271,30 +24349,30 @@ Object.values || (Object.values = function(e) {
             ki = "ActiveXObject" in window,
             xi = ki && !document.addEventListener,
             Ci = "msLaunchUri" in navigator && !("documentMode" in document),
-            zi = D("webkit"),
-            Ti = D("android"),
-            Si = D("android 2") || D("android 3"),
+            zi = P("webkit"),
+            Ti = P("android"),
+            Si = P("android 2") || P("android 3"),
             Ai = parseInt(/WebKit\/([0-9]+)|$/.exec(navigator.userAgent)[1], 10),
-            Ei = Ti && D("Google") && 537 > Ai && !("AudioNode" in window),
+            Ei = Ti && P("Google") && 537 > Ai && !("AudioNode" in window),
             Ii = !!window.opera,
-            Mi = D("chrome"),
-            Di = D("gecko") && !zi && !Ii && !ki,
-            Pi = !Mi && D("safari"),
-            ji = D("phantom"),
+            Mi = P("chrome"),
+            Pi = P("gecko") && !zi && !Ii && !ki,
+            Di = !Mi && P("safari"),
+            ji = P("phantom"),
             Ni = "OTransition" in wi,
             Li = 0 === navigator.platform.indexOf("Win"),
             Oi = ki && "transition" in wi,
             Ri = "WebKitCSSMatrix" in window && "m11" in new window.WebKitCSSMatrix && !Si,
             $i = "MozPerspective" in wi,
             Fi = !window.L_DISABLE_3D && (Oi || Ri || $i) && !Ni && !ji,
-            Bi = "undefined" != typeof orientation || D("mobile"),
+            Bi = "undefined" != typeof orientation || P("mobile"),
             Hi = Bi && zi,
             Wi = Bi && Ri,
             Vi = !window.PointerEvent && window.MSPointerEvent,
             qi = !(!window.PointerEvent && !Vi),
             Ui = !window.L_NO_TOUCH && (qi || "ontouchstart" in window || window.DocumentTouch && document instanceof window.DocumentTouch),
             Gi = Bi && Ii,
-            Zi = Bi && Di,
+            Zi = Bi && Pi,
             Ki = (window.devicePixelRatio || window.screen.deviceXDPI / window.screen.logicalXDPI) > 1,
             Yi = !!document.createElement("canvas").getContext,
             Qi = !(!document.createElementNS || !I("svg").createSVGRect),
@@ -24318,8 +24396,8 @@ Object.values || (Object.values = function(e) {
                 androidStock: Ei,
                 opera: Ii,
                 chrome: Mi,
-                gecko: Di,
-                safari: Pi,
+                gecko: Pi,
+                safari: Di,
                 phantom: ji,
                 opera12: Ni,
                 win: Li,
@@ -24401,7 +24479,7 @@ Object.values || (Object.values = function(e) {
                 getScale: mt
             }),
             yn = "_leaflet_events",
-            wn = Li && Mi ? 2 * window.devicePixelRatio : Di ? window.devicePixelRatio : 1,
+            wn = Li && Mi ? 2 * window.devicePixelRatio : Pi ? window.devicePixelRatio : 1,
             kn = {},
             xn = (Object.freeze || Object)({
                 on: ft,
@@ -24835,7 +24913,7 @@ Object.values || (Object.values = function(e) {
                 },
                 _initLayout: function() {
                     var e = this._container;
-                    this._fadeAnimated = this.options.fadeAnimation && Fi, X(e, "leaflet-container" + (Ui ? " leaflet-touch" : "") + (Ki ? " leaflet-retina" : "") + (xi ? " leaflet-oldie" : "") + (Pi ? " leaflet-safari" : "") + (this._fadeAnimated ? " leaflet-fade-anim" : ""));
+                    this._fadeAnimated = this.options.fadeAnimation && Fi, X(e, "leaflet-container" + (Ui ? " leaflet-touch" : "") + (Ki ? " leaflet-retina" : "") + (xi ? " leaflet-oldie" : "") + (Di ? " leaflet-safari" : "") + (this._fadeAnimated ? " leaflet-fade-anim" : ""));
                     var t = U(e, "position");
                     "absolute" !== t && "relative" !== t && "fixed" !== t && (e.style.position = "relative"), this._initPanes(), this._initControlPos && this._initControlPos()
                 },
@@ -25369,7 +25447,7 @@ Object.values || (Object.values = function(e) {
         }, Sn.attribution = function(e) {
             return new Mn(e)
         };
-        var Dn = v.extend({
+        var Pn = v.extend({
             initialize: function(e) {
                 this._map = e
             },
@@ -25383,10 +25461,10 @@ Object.values || (Object.values = function(e) {
                 return !!this._enabled
             }
         });
-        Dn.addTo = function(e, t) {
+        Pn.addTo = function(e, t) {
             return e.addHandler(t, this), this
         };
-        var Pn, jn = {
+        var Dn, jn = {
                 Events: ui
             },
             Nn = Ui ? "touchstart mousedown" : "mousedown",
@@ -25747,7 +25825,7 @@ Object.values || (Object.values = function(e) {
                     return document.body.removeChild(e), t = null === t || 0 !== t.indexOf("url") ? "" : t.replace(/^url\(["']?/, "").replace(/marker-icon\.png["']?\)$/, "")
                 }
             }),
-            Jn = Dn.extend({
+            Jn = Pn.extend({
                 initialize: function(e) {
                     this._marker = e
                 },
@@ -27555,7 +27633,7 @@ Object.values || (Object.values = function(e) {
         xo.create = ko, xo.pointsToPath = M, so.geometryToLayer = Wt, so.coordsToLatLng = Vt, so.coordsToLatLngs = qt, so.latLngToCoords = Ut, so.latLngsToCoords = Gt, so.getFeature = Zt, so.asFeature = Kt, zn.mergeOptions({
             boxZoom: !0
         });
-        var zo = Dn.extend({
+        var zo = Pn.extend({
             initialize: function(e) {
                 this._map = e, this._container = e._container, this._pane = e._panes.overlayPane, this._resetStateTimeout = 0, e.on("unload", this._destroy, this)
             },
@@ -27615,7 +27693,7 @@ Object.values || (Object.values = function(e) {
         zn.addInitHook("addHandler", "boxZoom", zo), zn.mergeOptions({
             doubleClickZoom: !0
         });
-        var To = Dn.extend({
+        var To = Pn.extend({
             addHooks: function() {
                 this._map.on("dblclick", this._onDoubleClick, this)
             },
@@ -27639,7 +27717,7 @@ Object.values || (Object.values = function(e) {
             worldCopyJump: !1,
             maxBoundsViscosity: 0
         });
-        var So = Dn.extend({
+        var So = Pn.extend({
             addHooks: function() {
                 if (!this._draggable) {
                     var e = this._map;
@@ -27735,7 +27813,7 @@ Object.values || (Object.values = function(e) {
             keyboard: !0,
             keyboardPanDelta: 80
         });
-        var Ao = Dn.extend({
+        var Ao = Pn.extend({
             keyCodes: {
                 left: [37],
                 right: [39],
@@ -27822,7 +27900,7 @@ Object.values || (Object.values = function(e) {
             wheelDebounceTime: 40,
             wheelPxPerZoomLevel: 60
         });
-        var Eo = Dn.extend({
+        var Eo = Pn.extend({
             addHooks: function() {
                 ft(this._map._container, "mousewheel", this._onWheelScroll, this), this._delta = 0
             },
@@ -27852,7 +27930,7 @@ Object.values || (Object.values = function(e) {
             tap: !0,
             tapTolerance: 15
         });
-        var Io = Dn.extend({
+        var Io = Pn.extend({
             addHooks: function() {
                 ft(this._map._container, "touchstart", this._onDown, this)
             },
@@ -27898,7 +27976,7 @@ Object.values || (Object.values = function(e) {
             touchZoom: Ui && !Si,
             bounceAtZoomLimits: !0
         });
-        var Mo = Dn.extend({
+        var Mo = Pn.extend({
             addHooks: function() {
                 X(this._map._container, "leaflet-touch-zoom"), ft(this._map._container, "touchstart", this._onTouchStart, this)
             },
@@ -27938,7 +28016,7 @@ Object.values || (Object.values = function(e) {
                 this._moved && this._zooming ? (this._zooming = !1, g(this._animRequest), _t(document, "touchmove", this._onTouchMove), _t(document, "touchend", this._onTouchEnd), this._map.options.zoomAnimation ? this._map._animateZoom(this._center, this._map._limitZoom(this._zoom), !0, this._map.options.zoomSnap) : this._map._resetView(this._center, this._map._limitZoom(this._zoom))) : this._zooming = !1
             }
         });
-        zn.addInitHook("addHandler", "touchZoom", Mo), zn.BoxZoom = zo, zn.DoubleClickZoom = To, zn.Drag = So, zn.Keyboard = Ao, zn.ScrollWheelZoom = Eo, zn.Tap = Io, zn.TouchZoom = Mo, Object.freeze = ei, e.version = "1.4.0+HEAD.3337f36", e.Control = Tn, e.control = Sn, e.Browser = Xi, e.Evented = di, e.Mixin = jn, e.Util = ci, e.Class = v, e.Handler = Dn, e.extend = t, e.bind = i, e.stamp = n, e.setOptions = u, e.DomEvent = xn, e.DomUtil = bn, e.PosAnimation = Cn, e.Draggable = Rn, e.LineUtil = $n, e.PolyUtil = Fn, e.Point = y, e.point = w, e.Bounds = k, e.bounds = x, e.Transformation = A, e.transformation = E, e.Projection = Wn, e.LatLng = T, e.latLng = S, e.LatLngBounds = C, e.latLngBounds = z, e.CRS = pi, e.GeoJSON = so, e.geoJSON = Yt, e.geoJson = ro, e.Layer = Gn, e.LayerGroup = Zn, e.layerGroup = function(e, t) {
+        zn.addInitHook("addHandler", "touchZoom", Mo), zn.BoxZoom = zo, zn.DoubleClickZoom = To, zn.Drag = So, zn.Keyboard = Ao, zn.ScrollWheelZoom = Eo, zn.Tap = Io, zn.TouchZoom = Mo, Object.freeze = ei, e.version = "1.4.0+HEAD.3337f36", e.Control = Tn, e.control = Sn, e.Browser = Xi, e.Evented = di, e.Mixin = jn, e.Util = ci, e.Class = v, e.Handler = Pn, e.extend = t, e.bind = i, e.stamp = n, e.setOptions = u, e.DomEvent = xn, e.DomUtil = bn, e.PosAnimation = Cn, e.Draggable = Rn, e.LineUtil = $n, e.PolyUtil = Fn, e.Point = y, e.point = w, e.Bounds = k, e.bounds = x, e.Transformation = A, e.transformation = E, e.Projection = Wn, e.LatLng = T, e.latLng = S, e.LatLngBounds = C, e.latLngBounds = z, e.CRS = pi, e.GeoJSON = so, e.geoJSON = Yt, e.geoJson = ro, e.Layer = Gn, e.LayerGroup = Zn, e.layerGroup = function(e, t) {
             return new Zn(e, t)
         }, e.FeatureGroup = Kn, e.featureGroup = function(e) {
             return new Kn(e)
@@ -27971,9 +28049,9 @@ Object.values || (Object.values = function(e) {
         }, e.Map = zn, e.map = function(e, t) {
             return new zn(e, t)
         };
-        var Do = window.L;
+        var Po = window.L;
         e.noConflict = function() {
-            return window.L = Do, this
+            return window.L = Po, this
         }, window.L = e
     }), ! function(e) {
         "use strict";
@@ -30797,7 +30875,7 @@ function(e) {
         y(e, "width", t)
     }
 
-    function D(e, t) {
+    function P(e, t) {
         if (ut(t)) {
             var i = getComputedStyle(e),
                 n = a(i.paddingTop) + a(i.paddingBottom),
@@ -30807,7 +30885,7 @@ function(e) {
         y(e, "height", t)
     }
 
-    function P(e, t, i) {
+    function D(e, t, i) {
         var n;
         dt(window.CustomEvent) ? n = new CustomEvent(t, {
             bubbles: !0,
@@ -31220,13 +31298,13 @@ function(e) {
         fi.opts.emoticons = t.emoticons || vt.emoticons, Tt = function() {
             e._sceditor = fi, ki.locale && "en" !== ki.locale && Rt(), a = r("div", {
                 className: "sceditor-container"
-            }), z(a, e), y(a, "z-index", ki.zIndex), Pt && A(a, "ie ie" + Pt), ht = e.required, e.required = !1;
+            }), z(a, e), y(a, "z-index", ki.zIndex), Dt && A(a, "ie ie" + Dt), ht = e.required, e.required = !1;
             var t = lt.formats[ki.format];
             i = t ? new t : {}, "init" in i && i.init.call(fi), Ot(), Wt(), $t(), Lt(), Ft(), Bt(), xt || fi.toggleSourceMode(), ti();
             var n = function() {
                 m(Mt, "load", n), ki.autofocus && ai(), mi(), ni(), Y.call("ready"), "onReady" in i && i.onReady.call(fi)
             };
-            p(Mt, "load", n), "complete" === Dt.readyState && n()
+            p(Mt, "load", n), "complete" === Pt.readyState && n()
         }, Ot = function() {
             var e = ki.plugins;
             e = e ? e.toString().split(",") : [], Y = new nt(fi), e.forEach(function(e) {
@@ -31239,14 +31317,14 @@ function(e) {
             N = r("textarea"), _ = r("iframe", {
                 frameborder: 0,
                 allowfullscreen: !0
-            }), ki.startInSourceMode ? (A(a, "sourceMode"), g(_)) : (A(a, "wysiwygMode"), g(N)), ki.spellcheck || f(a, "spellcheck", "false"), "https:" === Mt.location.protocol && f(_, "src", "javascript:false"), d(a, _), d(a, N), fi.dimensions(ki.width || M(e), ki.height || D(e));
-            var t = Pt ? "ie ie" + Pt : "";
+            }), ki.startInSourceMode ? (A(a, "sourceMode"), g(_)) : (A(a, "wysiwygMode"), g(N)), ki.spellcheck || f(a, "spellcheck", "false"), "https:" === Mt.location.protocol && f(_, "src", "javascript:false"), d(a, _), d(a, N), fi.dimensions(ki.width || M(e), ki.height || P(e));
+            var t = Dt ? "ie ie" + Dt : "";
             t += kt ? " ios" : "", T = _.contentDocument, T.open(), T.write(tt("html", {
                 attrs: ' class="' + t + '"',
                 spellcheck: ki.spellcheck ? "" : 'spellcheck="false"',
                 charset: ki.charset,
                 style: ki.style
-            })), T.close(), C = T.body, x = _.contentWindow, fi.readOnly(!!ki.readOnly), (kt || wt || Pt) && (D(C, "100%"), Pt || p(C, "touchend", fi.focus));
+            })), T.close(), C = T.body, x = _.contentWindow, fi.readOnly(!!ki.readOnly), (kt || wt || Dt) && (P(C, "100%"), Dt || p(C, "touchend", fi.focus));
             var i = f(e, "tabindex");
             f(N, "tabindex", i), f(_, "tabindex", i), Z = new ot(x), g(e), fi.val(e.value);
             var n = ki.placeholder || f(e, "placeholder");
@@ -31258,7 +31336,7 @@ function(e) {
                 i = "compositionstart compositionend",
                 n = "keydown keyup keypress focus blur contextmenu",
                 o = "onselectionchange" in T ? "selectionchange" : "keyup focus blur contextmenu mouseup touchend click";
-            p(Dt, "click", Xt), t && (p(t, "reset", Kt), p(t, "submit", fi.updateOriginal, _t)), p(C, "keypress", Zt), p(C, "keydown", Ut), p(C, "keydown", Gt), p(C, "keyup", ni), p(C, "blur", di), p(C, "keyup", hi), p(C, "paste", Vt), p(C, i, Qt), p(C, o, oi), p(C, n, Jt), ki.emoticonsCompat && Mt.getSelection && p(C, "keyup", li), p(C, "blur", function() {
+            p(Pt, "click", Xt), t && (p(t, "reset", Kt), p(t, "submit", fi.updateOriginal, _t)), p(C, "keypress", Zt), p(C, "keydown", Ut), p(C, "keydown", Gt), p(C, "keyup", ni), p(C, "blur", di), p(C, "keyup", hi), p(C, "paste", Vt), p(C, i, Qt), p(C, o, oi), p(C, n, Jt), ki.emoticonsCompat && Mt.getSelection && p(C, "keyup", li), p(C, "blur", function() {
                 fi.val() || A(C, "placeholder")
             }), p(C, "focus", function() {
                 E(C, "placeholder")
@@ -31315,7 +31393,7 @@ function(e) {
                 w = 0,
                 k = 0,
                 x = M(a),
-                C = D(a),
+                C = P(a),
                 z = !1,
                 T = fi.rtl();
             if (e = ki.resizeMinHeight || C / 1.5, t = ki.resizeMaxHeight || 2.5 * C, i = ki.resizeMinWidth || x / 1.25, n = ki.resizeMaxWidth || 1.25 * x, o = function(o) {
@@ -31324,13 +31402,13 @@ function(e) {
                         a = T ? w - (b - f) : w + (b - f);
                     n > 0 && a > n && (a = n), i > 0 && i > a && (a = i), ki.resizeWidth || (a = !1), t > 0 && s > t && (s = t), e > 0 && e > s && (s = e), ki.resizeHeight || (s = !1), (a || s) && fi.dimensions(a, s), o.preventDefault()
                 }, s = function(e) {
-                    z && (z = !1, g(c), E(a, "resizing"), m(Dt, u, o), m(Dt, h, s), e.preventDefault())
+                    z && (z = !1, g(c), E(a, "resizing"), m(Pt, u, o), m(Pt, h, s), e.preventDefault())
                 }, zt && zt.create) {
                 var S = zt.create("grip");
                 S && (d(l, S), A(l, "has-icon"))
             }
             d(a, l), d(a, c), g(c), p(l, "touchstart mousedown", function(e) {
-                "touchstart" === e.type ? (e = Mt.event, f = e.touches[0].pageX, _ = e.touches[0].pageY) : (f = e.pageX, _ = e.pageY), w = M(a), k = D(a), z = !0, A(a, "resizing"), v(c), p(Dt, u, o), p(Dt, h, s), e.preventDefault()
+                "touchstart" === e.type ? (e = Mt.event, f = e.touches[0].pageX, _ = e.touches[0].pageY) : (f = e.pageX, _ = e.pageY), w = M(a), k = P(a), z = !0, A(a, "resizing"), v(c), p(Pt, u, o), p(Pt, h, s), e.preventDefault()
             })
         }, Wt = function() {
             var e = ki.emoticons,
@@ -31369,24 +31447,24 @@ function(e) {
             return e = e || 0 === e ? e : !1, t = t || 0 === t ? t : !1, e === !1 && t === !1 ? {
                 width: fi.width(),
                 height: fi.height()
-            } : (e !== !1 && (i !== !1 && (ki.width = e), M(a, e)), t !== !1 && (i !== !1 && (ki.height = t), D(a, t)), fi)
+            } : (e !== !1 && (i !== !1 && (ki.width = e), M(a, e)), t !== !1 && (i !== !1 && (ki.height = t), P(a, t)), fi)
         }, fi.height = function(e, t) {
-            return e || 0 === e ? (fi.dimensions(null, e, t), fi) : D(a)
+            return e || 0 === e ? (fi.dimensions(null, e, t), fi) : P(a)
         }, fi.maximize = function(e) {
             var t = "sceditor-maximize";
-            return ut(e) ? S(a, t) : (e = !!e, e && (yt = Mt.pageYOffset), I(Dt.documentElement, t, e), I(Dt.body, t, e), I(a, t, e), fi.width(e ? "100%" : ki.width, !1), fi.height(e ? "100%" : ki.height, !1), e || Mt.scrollTo(0, yt), mi(), fi)
+            return ut(e) ? S(a, t) : (e = !!e, e && (yt = Mt.pageYOffset), I(Pt.documentElement, t, e), I(Pt.body, t, e), I(a, t, e), fi.width(e ? "100%" : ki.width, !1), fi.height(e ? "100%" : ki.height, !1), e || Mt.scrollTo(0, yt), mi(), fi)
         }, mi = function() {
             ki.autoExpand && !bt && (bt = setTimeout(fi.expandToContent, 200))
         }, fi.expandToContent = function(t) {
             if (!fi.maximize()) {
                 if (clearTimeout(bt), bt = !1, !gt) {
-                    var i = ki.resizeMinHeight || ki.height || D(e);
+                    var i = ki.resizeMinHeight || ki.height || P(e);
                     gt = {
                         min: i,
                         max: ki.resizeMaxHeight || 2 * i
                     }
                 }
-                var n = Dt.createRange();
+                var n = Pt.createRange();
                 n.selectNodeContents(C);
                 var o = n.getBoundingClientRect(),
                     s = T.documentElement.clientHeight - 1,
@@ -31396,7 +31474,7 @@ function(e) {
             }
         }, fi.destroy = function() {
             if (Y) {
-                Y.destroy(), Z = null, R = null, Y = null, L && u(L), m(Dt, "click", Xt);
+                Y.destroy(), Z = null, R = null, Y = null, L && u(L), m(Pt, "click", Xt);
                 var t = e.form;
                 t && (m(t, "reset", Kt), m(t, "submit", fi.updateOriginal)), u(N), u(l), u(a), delete e._sceditor, v(e), e.required = ht
             }
@@ -31421,7 +31499,7 @@ function(e) {
         }, Xt = function(e) {
             3 !== e.which && L && !e.defaultPrevented && (pi(), fi.closeDropDown())
         }, Vt = function(e) {
-            var t = Pt || wt,
+            var t = Dt || wt,
                 i = C,
                 n = e.clipboardData,
                 o = function(e) {
@@ -31444,7 +31522,7 @@ function(e) {
                 s.text = s["text/plain"], s.html = s["text/html"], qt(s)
             } else if (!Ct) {
                 var c = i.scrollTop;
-                for (Z.saveRange(), Ct = Dt.createDocumentFragment(); i.firstChild;) d(Ct, i.firstChild);
+                for (Z.saveRange(), Ct = Pt.createDocumentFragment(); i.firstChild;) d(Ct, i.firstChild);
                 setTimeout(function() {
                     var e = i.innerHTML;
                     i.innerHTML = "", d(i, Ct), i.scrollTop = c, Ct = !1, Z.restoreRange(), qt({
@@ -31454,15 +31532,15 @@ function(e) {
             }
         }, qt = function(e) {
             var t = r("div", {}, T);
-            Y.call("pasteRaw", e), P(a, "pasteraw", e), e.html ? (t.innerHTML = e.html, V(t)) : t.innerHTML = X(e.text || "");
+            Y.call("pasteRaw", e), D(a, "pasteraw", e), e.html ? (t.innerHTML = e.html, V(t)) : t.innerHTML = X(e.text || "");
             var n = {
                 val: t.innerHTML
             };
-            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, T, Q)), Y.call("paste", n), P(a, "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, Q)), Y.call("pasteHtml", n), fi.wysiwygEditorInsertHtml(n.val, null, !0)
+            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, T, Q)), Y.call("paste", n), D(a, "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, Q)), Y.call("pasteHtml", n), fi.wysiwygEditorInsertHtml(n.val, null, !0)
         }, fi.closeDropDown = function(e) {
             L && (u(L), L = null), e === !0 && fi.focus()
         }, fi.wysiwygEditorInsertHtml = function(e, t, i) {
-            var n, o, s, a = D(_);
+            var n, o, s, a = P(_);
             fi.focus(), (i || !c(J, "code")) && (Z.insertHTML(e, t), Z.saveRange(), At(), n = h(C, "#sceditor-end-marker")[0], v(n), o = C.scrollTop, s = K(n).top + 1.5 * n.offsetHeight - a, g(n), (s > o || o > s + a) && (C.scrollTop = s), ui(!1), Z.restoreRange(), ni())
         }, fi.wysiwygEditorInsertText = function(e, t) {
             fi.wysiwygEditorInsertHtml(X(e), X(t))
@@ -31499,7 +31577,7 @@ function(e) {
             var t = N.value;
             return e !== !1 && "toHtml" in i && (t = i.toHtml(t)), t
         }, fi.setWysiwygEditorValue = function(e) {
-            e || (e = "<p>" + (Pt ? "" : "<br />") + "</p>"), C.innerHTML = e, At(), ni(), ui(), mi()
+            e || (e = "<p>" + (Dt ? "" : "<br />") + "</p>"), C.innerHTML = e, At(), ni(), ui(), mi()
         }, fi.setSourceEditorValue = function(e) {
             N.value = e, ui()
         }, fi.updateOriginal = function() {
@@ -31519,7 +31597,7 @@ function(e) {
         }, Et = function(e, t) {
             fi.inSourceMode() ? t.txtExec && (Array.isArray(t.txtExec) ? fi.sourceEditorInsertText.apply(fi, t.txtExec) : t.txtExec.call(fi, e, ii())) : t.exec && (dt(t.exec) ? t.exec.call(fi, e) : fi.execCommand(t.exec, t.hasOwnProperty("execParam") ? t.execParam : null))
         }, It = function() {
-            Pt && (R = Z.selectedRange())
+            Dt && (R = Z.selectedRange())
         }, fi.execCommand = function(e, t) {
             var i = !1,
                 n = fi.commands[e];
@@ -31538,14 +31616,14 @@ function(e) {
                         for (t && e.nodeType !== ft && (e = e.childNodes[t]); e && e.parentNode !== C;) e = e.parentNode;
                         e && H(e, !0) && (Z.saveRange(), rt(C, T), Z.restoreRange())
                     }
-                    P(a, "selectionchanged")
+                    D(a, "selectionchanged")
                 }
                 it = !1
             }
             it || (it = !0, "onselectionchange" in T ? e() : setTimeout(e, 100))
         }, si = function() {
             var e, t = Z.parentNode();
-            Q !== t && (e = Q, Q = t, J = Z.getFirstBlockParent(t), P(a, "nodechanged", {
+            Q !== t && (e = Q, Q = t, J = Z.getFirstBlockParent(t), D(a, "nodechanged", {
                 oldNode: e,
                 newNode: Q
             }))
@@ -31804,7 +31882,7 @@ function(e) {
             if (Y && (Y.hasHandler("valuechangedEvent") || ui.hasHandler)) {
                 var t, i = fi.sourceMode(),
                     n = !i && Z.hasSelection();
-                W = !1, e = e !== !1 && !T.getElementById("sceditor-start-marker"), q && (clearTimeout(q), q = !1), n && e && Z.saveRange(), t = i ? N.value : C.innerHTML, t !== ui.lastVal && (ui.lastVal = t, P(a, "valuechanged", {
+                W = !1, e = e !== !1 && !T.getElementById("sceditor-start-marker"), q && (clearTimeout(q), q = !1), n && e && Z.saveRange(), t = i ? N.value : C.innerHTML, t !== ui.lastVal && (ui.lastVal = t, D(a, "valuechanged", {
                     rawValue: i ? fi.val() : t
                 })), n && e && Z.removeMarkers()
             }
@@ -32416,9 +32494,9 @@ function(e) {
             }
         },
         Mt = window,
-        Dt = document,
-        Pt = yt,
-        jt = Pt && 11 > Pt,
+        Pt = document,
+        Dt = yt,
+        jt = Dt && 11 > Dt,
         Nt = /^image\/(p?jpe?g|gif|png|bmp)$/i;
     lt.locale = {}, lt.formats = {}, lt.icons = {}, lt.command = {
             get: function(e) {
@@ -32462,7 +32540,7 @@ function(e) {
                 is: k,
                 closest: c,
                 width: M,
-                height: D,
+                height: P,
                 traverse: L,
                 rTraverse: O,
                 parseHTML: R,
@@ -32702,7 +32780,7 @@ function(e) {
         y(e, "width", t)
     }
 
-    function D(e, t) {
+    function P(e, t) {
         if (ut(t)) {
             var i = getComputedStyle(e),
                 n = a(i.paddingTop) + a(i.paddingBottom),
@@ -32712,7 +32790,7 @@ function(e) {
         y(e, "height", t)
     }
 
-    function P(e, t, i) {
+    function D(e, t, i) {
         var n;
         dt(window.CustomEvent) ? n = new CustomEvent(t, {
             bubbles: !0,
@@ -33125,13 +33203,13 @@ function(e) {
         fi.opts.emoticons = t.emoticons || vt.emoticons, Tt = function() {
             e._sceditor = fi, ki.locale && "en" !== ki.locale && Rt(), a = r("div", {
                 className: "sceditor-container"
-            }), z(a, e), y(a, "z-index", ki.zIndex), Pt && A(a, "ie ie" + Pt), ht = e.required, e.required = !1;
+            }), z(a, e), y(a, "z-index", ki.zIndex), Dt && A(a, "ie ie" + Dt), ht = e.required, e.required = !1;
             var t = lt.formats[ki.format];
             i = t ? new t : {}, "init" in i && i.init.call(fi), Ot(), Wt(), $t(), Lt(), Ft(), Bt(), xt || fi.toggleSourceMode(), ti();
             var n = function() {
                 m(Mt, "load", n), ki.autofocus && ai(), mi(), ni(), Y.call("ready"), "onReady" in i && i.onReady.call(fi)
             };
-            p(Mt, "load", n), "complete" === Dt.readyState && n()
+            p(Mt, "load", n), "complete" === Pt.readyState && n()
         }, Ot = function() {
             var e = ki.plugins;
             e = e ? e.toString().split(",") : [], Y = new nt(fi), e.forEach(function(e) {
@@ -33144,14 +33222,14 @@ function(e) {
             N = r("textarea"), _ = r("iframe", {
                 frameborder: 0,
                 allowfullscreen: !0
-            }), ki.startInSourceMode ? (A(a, "sourceMode"), g(_)) : (A(a, "wysiwygMode"), g(N)), ki.spellcheck || f(a, "spellcheck", "false"), "https:" === Mt.location.protocol && f(_, "src", "javascript:false"), d(a, _), d(a, N), fi.dimensions(ki.width || M(e), ki.height || D(e));
-            var t = Pt ? "ie ie" + Pt : "";
+            }), ki.startInSourceMode ? (A(a, "sourceMode"), g(_)) : (A(a, "wysiwygMode"), g(N)), ki.spellcheck || f(a, "spellcheck", "false"), "https:" === Mt.location.protocol && f(_, "src", "javascript:false"), d(a, _), d(a, N), fi.dimensions(ki.width || M(e), ki.height || P(e));
+            var t = Dt ? "ie ie" + Dt : "";
             t += kt ? " ios" : "", T = _.contentDocument, T.open(), T.write(tt("html", {
                 attrs: ' class="' + t + '"',
                 spellcheck: ki.spellcheck ? "" : 'spellcheck="false"',
                 charset: ki.charset,
                 style: ki.style
-            })), T.close(), C = T.body, x = _.contentWindow, fi.readOnly(!!ki.readOnly), (kt || wt || Pt) && (D(C, "100%"), Pt || p(C, "touchend", fi.focus));
+            })), T.close(), C = T.body, x = _.contentWindow, fi.readOnly(!!ki.readOnly), (kt || wt || Dt) && (P(C, "100%"), Dt || p(C, "touchend", fi.focus));
             var i = f(e, "tabindex");
             f(N, "tabindex", i), f(_, "tabindex", i), Z = new ot(x), g(e), fi.val(e.value);
             var n = ki.placeholder || f(e, "placeholder");
@@ -33163,7 +33241,7 @@ function(e) {
                 i = "compositionstart compositionend",
                 n = "keydown keyup keypress focus blur contextmenu",
                 o = "onselectionchange" in T ? "selectionchange" : "keyup focus blur contextmenu mouseup touchend click";
-            p(Dt, "click", Xt), t && (p(t, "reset", Kt), p(t, "submit", fi.updateOriginal, _t)), p(C, "keypress", Zt), p(C, "keydown", Ut), p(C, "keydown", Gt), p(C, "keyup", ni), p(C, "blur", di), p(C, "keyup", hi), p(C, "paste", Vt), p(C, i, Qt), p(C, o, oi), p(C, n, Jt), ki.emoticonsCompat && Mt.getSelection && p(C, "keyup", li), p(C, "blur", function() {
+            p(Pt, "click", Xt), t && (p(t, "reset", Kt), p(t, "submit", fi.updateOriginal, _t)), p(C, "keypress", Zt), p(C, "keydown", Ut), p(C, "keydown", Gt), p(C, "keyup", ni), p(C, "blur", di), p(C, "keyup", hi), p(C, "paste", Vt), p(C, i, Qt), p(C, o, oi), p(C, n, Jt), ki.emoticonsCompat && Mt.getSelection && p(C, "keyup", li), p(C, "blur", function() {
                 fi.val() || A(C, "placeholder")
             }), p(C, "focus", function() {
                 E(C, "placeholder")
@@ -33220,7 +33298,7 @@ function(e) {
                 w = 0,
                 k = 0,
                 x = M(a),
-                C = D(a),
+                C = P(a),
                 z = !1,
                 T = fi.rtl();
             if (e = ki.resizeMinHeight || C / 1.5, t = ki.resizeMaxHeight || 2.5 * C, i = ki.resizeMinWidth || x / 1.25, n = ki.resizeMaxWidth || 1.25 * x, o = function(o) {
@@ -33229,13 +33307,13 @@ function(e) {
                         a = T ? w - (b - f) : w + (b - f);
                     n > 0 && a > n && (a = n), i > 0 && i > a && (a = i), ki.resizeWidth || (a = !1), t > 0 && s > t && (s = t), e > 0 && e > s && (s = e), ki.resizeHeight || (s = !1), (a || s) && fi.dimensions(a, s), o.preventDefault()
                 }, s = function(e) {
-                    z && (z = !1, g(c), E(a, "resizing"), m(Dt, u, o), m(Dt, h, s), e.preventDefault())
+                    z && (z = !1, g(c), E(a, "resizing"), m(Pt, u, o), m(Pt, h, s), e.preventDefault())
                 }, zt && zt.create) {
                 var S = zt.create("grip");
                 S && (d(l, S), A(l, "has-icon"))
             }
             d(a, l), d(a, c), g(c), p(l, "touchstart mousedown", function(e) {
-                "touchstart" === e.type ? (e = Mt.event, f = e.touches[0].pageX, _ = e.touches[0].pageY) : (f = e.pageX, _ = e.pageY), w = M(a), k = D(a), z = !0, A(a, "resizing"), v(c), p(Dt, u, o), p(Dt, h, s), e.preventDefault()
+                "touchstart" === e.type ? (e = Mt.event, f = e.touches[0].pageX, _ = e.touches[0].pageY) : (f = e.pageX, _ = e.pageY), w = M(a), k = P(a), z = !0, A(a, "resizing"), v(c), p(Pt, u, o), p(Pt, h, s), e.preventDefault()
             })
         }, Wt = function() {
             var e = ki.emoticons,
@@ -33274,24 +33352,24 @@ function(e) {
             return e = e || 0 === e ? e : !1, t = t || 0 === t ? t : !1, e === !1 && t === !1 ? {
                 width: fi.width(),
                 height: fi.height()
-            } : (e !== !1 && (i !== !1 && (ki.width = e), M(a, e)), t !== !1 && (i !== !1 && (ki.height = t), D(a, t)), fi)
+            } : (e !== !1 && (i !== !1 && (ki.width = e), M(a, e)), t !== !1 && (i !== !1 && (ki.height = t), P(a, t)), fi)
         }, fi.height = function(e, t) {
-            return e || 0 === e ? (fi.dimensions(null, e, t), fi) : D(a)
+            return e || 0 === e ? (fi.dimensions(null, e, t), fi) : P(a)
         }, fi.maximize = function(e) {
             var t = "sceditor-maximize";
-            return ut(e) ? S(a, t) : (e = !!e, e && (yt = Mt.pageYOffset), I(Dt.documentElement, t, e), I(Dt.body, t, e), I(a, t, e), fi.width(e ? "100%" : ki.width, !1), fi.height(e ? "100%" : ki.height, !1), e || Mt.scrollTo(0, yt), mi(), fi)
+            return ut(e) ? S(a, t) : (e = !!e, e && (yt = Mt.pageYOffset), I(Pt.documentElement, t, e), I(Pt.body, t, e), I(a, t, e), fi.width(e ? "100%" : ki.width, !1), fi.height(e ? "100%" : ki.height, !1), e || Mt.scrollTo(0, yt), mi(), fi)
         }, mi = function() {
             ki.autoExpand && !bt && (bt = setTimeout(fi.expandToContent, 200))
         }, fi.expandToContent = function(t) {
             if (!fi.maximize()) {
                 if (clearTimeout(bt), bt = !1, !gt) {
-                    var i = ki.resizeMinHeight || ki.height || D(e);
+                    var i = ki.resizeMinHeight || ki.height || P(e);
                     gt = {
                         min: i,
                         max: ki.resizeMaxHeight || 2 * i
                     }
                 }
-                var n = Dt.createRange();
+                var n = Pt.createRange();
                 n.selectNodeContents(C);
                 var o = n.getBoundingClientRect(),
                     s = T.documentElement.clientHeight - 1,
@@ -33301,7 +33379,7 @@ function(e) {
             }
         }, fi.destroy = function() {
             if (Y) {
-                Y.destroy(), Z = null, R = null, Y = null, L && u(L), m(Dt, "click", Xt);
+                Y.destroy(), Z = null, R = null, Y = null, L && u(L), m(Pt, "click", Xt);
                 var t = e.form;
                 t && (m(t, "reset", Kt), m(t, "submit", fi.updateOriginal)), u(N), u(l), u(a), delete e._sceditor, v(e), e.required = ht
             }
@@ -33326,7 +33404,7 @@ function(e) {
         }, Xt = function(e) {
             3 !== e.which && L && !e.defaultPrevented && (pi(), fi.closeDropDown())
         }, Vt = function(e) {
-            var t = Pt || wt,
+            var t = Dt || wt,
                 i = C,
                 n = e.clipboardData,
                 o = function(e) {
@@ -33349,7 +33427,7 @@ function(e) {
                 s.text = s["text/plain"], s.html = s["text/html"], qt(s)
             } else if (!Ct) {
                 var c = i.scrollTop;
-                for (Z.saveRange(), Ct = Dt.createDocumentFragment(); i.firstChild;) d(Ct, i.firstChild);
+                for (Z.saveRange(), Ct = Pt.createDocumentFragment(); i.firstChild;) d(Ct, i.firstChild);
                 setTimeout(function() {
                     var e = i.innerHTML;
                     i.innerHTML = "", d(i, Ct), i.scrollTop = c, Ct = !1, Z.restoreRange(), qt({
@@ -33359,15 +33437,15 @@ function(e) {
             }
         }, qt = function(e) {
             var t = r("div", {}, T);
-            Y.call("pasteRaw", e), P(a, "pasteraw", e), e.html ? (t.innerHTML = e.html, V(t)) : t.innerHTML = X(e.text || "");
+            Y.call("pasteRaw", e), D(a, "pasteraw", e), e.html ? (t.innerHTML = e.html, V(t)) : t.innerHTML = X(e.text || "");
             var n = {
                 val: t.innerHTML
             };
-            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, T, Q)), Y.call("paste", n), P(a, "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, Q)), Y.call("pasteHtml", n), fi.wysiwygEditorInsertHtml(n.val, null, !0)
+            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, T, Q)), Y.call("paste", n), D(a, "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, Q)), Y.call("pasteHtml", n), fi.wysiwygEditorInsertHtml(n.val, null, !0)
         }, fi.closeDropDown = function(e) {
             L && (u(L), L = null), e === !0 && fi.focus()
         }, fi.wysiwygEditorInsertHtml = function(e, t, i) {
-            var n, o, s, a = D(_);
+            var n, o, s, a = P(_);
             fi.focus(), (i || !c(J, "code")) && (Z.insertHTML(e, t), Z.saveRange(), At(), n = h(C, "#sceditor-end-marker")[0], v(n), o = C.scrollTop, s = K(n).top + 1.5 * n.offsetHeight - a, g(n), (s > o || o > s + a) && (C.scrollTop = s), ui(!1), Z.restoreRange(), ni())
         }, fi.wysiwygEditorInsertText = function(e, t) {
             fi.wysiwygEditorInsertHtml(X(e), X(t))
@@ -33404,7 +33482,7 @@ function(e) {
             var t = N.value;
             return e !== !1 && "toHtml" in i && (t = i.toHtml(t)), t
         }, fi.setWysiwygEditorValue = function(e) {
-            e || (e = "<p>" + (Pt ? "" : "<br />") + "</p>"), C.innerHTML = e, At(), ni(), ui(), mi()
+            e || (e = "<p>" + (Dt ? "" : "<br />") + "</p>"), C.innerHTML = e, At(), ni(), ui(), mi()
         }, fi.setSourceEditorValue = function(e) {
             N.value = e, ui()
         }, fi.updateOriginal = function() {
@@ -33424,7 +33502,7 @@ function(e) {
         }, Et = function(e, t) {
             fi.inSourceMode() ? t.txtExec && (Array.isArray(t.txtExec) ? fi.sourceEditorInsertText.apply(fi, t.txtExec) : t.txtExec.call(fi, e, ii())) : t.exec && (dt(t.exec) ? t.exec.call(fi, e) : fi.execCommand(t.exec, t.hasOwnProperty("execParam") ? t.execParam : null))
         }, It = function() {
-            Pt && (R = Z.selectedRange())
+            Dt && (R = Z.selectedRange())
         }, fi.execCommand = function(e, t) {
             var i = !1,
                 n = fi.commands[e];
@@ -33443,14 +33521,14 @@ function(e) {
                         for (t && e.nodeType !== ft && (e = e.childNodes[t]); e && e.parentNode !== C;) e = e.parentNode;
                         e && H(e, !0) && (Z.saveRange(), rt(C, T), Z.restoreRange())
                     }
-                    P(a, "selectionchanged")
+                    D(a, "selectionchanged")
                 }
                 it = !1
             }
             it || (it = !0, "onselectionchange" in T ? e() : setTimeout(e, 100))
         }, si = function() {
             var e, t = Z.parentNode();
-            Q !== t && (e = Q, Q = t, J = Z.getFirstBlockParent(t), P(a, "nodechanged", {
+            Q !== t && (e = Q, Q = t, J = Z.getFirstBlockParent(t), D(a, "nodechanged", {
                 oldNode: e,
                 newNode: Q
             }))
@@ -33709,7 +33787,7 @@ function(e) {
             if (Y && (Y.hasHandler("valuechangedEvent") || ui.hasHandler)) {
                 var t, i = fi.sourceMode(),
                     n = !i && Z.hasSelection();
-                W = !1, e = e !== !1 && !T.getElementById("sceditor-start-marker"), q && (clearTimeout(q), q = !1), n && e && Z.saveRange(), t = i ? N.value : C.innerHTML, t !== ui.lastVal && (ui.lastVal = t, P(a, "valuechanged", {
+                W = !1, e = e !== !1 && !T.getElementById("sceditor-start-marker"), q && (clearTimeout(q), q = !1), n && e && Z.saveRange(), t = i ? N.value : C.innerHTML, t !== ui.lastVal && (ui.lastVal = t, D(a, "valuechanged", {
                     rawValue: i ? fi.val() : t
                 })), n && e && Z.removeMarkers()
             }
@@ -34321,9 +34399,9 @@ function(e) {
             }
         },
         Mt = window,
-        Dt = document,
-        Pt = yt,
-        jt = Pt && 11 > Pt,
+        Pt = document,
+        Dt = yt,
+        jt = Dt && 11 > Dt,
         Nt = /^image\/(p?jpe?g|gif|png|bmp)$/i;
     lt.locale = {}, lt.formats = {}, lt.icons = {}, lt.command = {
             get: function(e) {
@@ -34367,7 +34445,7 @@ function(e) {
                 is: k,
                 closest: c,
                 width: M,
-                height: D,
+                height: P,
                 traverse: L,
                 rTraverse: O,
                 parseHTML: R,
@@ -37834,6 +37912,18 @@ I18n.t = function(e, t) {
         from: "/images/logo.de_DE.png",
         to: "/images/PC_Logo_de_DE.png"
     }, {
+        from: "/images/MC_Logo_en_AU.png",
+        to: "/images/PC_Logo_en_AU.png"
+    }, {
+        from: "/images/logo.en_AU.png",
+        to: "/images/PC_Logo_en_AU.png"
+    }, {
+        from: "/images/MC_Logo_it_IT.png",
+        to: "/images/PC_Logo_it_IT.png"
+    }, {
+        from: "/images/logo.it_IT.png",
+        to: "/images/PC_Logo_it_IT.png"
+    }, {
         from: "/images/logo-header.png",
         to: "/images/pc_logo-header.png"
     }, {
@@ -37871,19 +37961,25 @@ I18n.t = function(e, t) {
         to: "/images/pc_police_motorrad2.png"
     }, {
         from: "/images/sign_up.en_US.png",
-        to: "/images/policechief_sign_up.en_US.png"
+        to: "/images/policechief_sign_up.en.png"
+    }, {
+        from: "/images/sign_up.en_GB.png",
+        to: "/images/policechief_sign_up.en.png"
+    }, {
+        from: "/images/sign_up.en_AU.png",
+        to: "/images/policechief_sign_up.en.png"
     }, {
         from: "/images/sign_up.fr_FR.png",
         to: "/images/policechief_sign_up.fr_FR.png"
-    }, {
-        from: "/images/sign_up.en_GB.png",
-        to: "/images/policechief_sign_up.en_GB.png"
     }, {
         from: "/images/sign_up.fi_FI.png",
         to: "/images/policechief_sign_up.fi_FI.png"
     }, {
         from: "/images/sign_up.de_DE.png",
         to: "/images/policechief_sign_up.de_DE.png"
+    }, {
+        from: "/images/sign_up.it_IT.png",
+        to: "/images/policechief_sign_up.it_IT.png"
     }, {
         from: "/images/fire_rot.png",
         to: "/images/theft_rot.png",
