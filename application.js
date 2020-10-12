@@ -5306,7 +5306,7 @@ Object.values || (Object.values = function(e) {
                 elw3: "",
                 elw_airport: "",
                 emergency_ambulance: "Automedica (VLV)",
-                fbi_bomb_tech: "Furgone artificieri",
+                fbi_bomb_techician: "Furgone artificieri",
                 fire_truck: "Autopompe",
                 fireboat: "Barca antincendio grande",
                 fly_car: "Fly-Car",
