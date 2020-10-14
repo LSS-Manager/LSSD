@@ -11316,6 +11316,9 @@ body.bigMap #search_input_field_missions{
 #close_tutorial_modal{
     z-index:1200
 }
+.daily-bonuses{
+    margin-bottom:20px
+}
 .daily-bonuses .day-block{
     max-width:500px
 }
