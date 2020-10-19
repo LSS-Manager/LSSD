@@ -9446,7 +9446,7 @@ body.bigMap #building_panel_body{
     overflow-y:scroll;
     overflow-x:hidden
 }
-.halloween{
+.halloweenbar{
     background-image:url(/images/halloween.jpg);
     background-size:auto 100%
 }
@@ -12223,6 +12223,10 @@ div.sceditor-group{
 }
 .policechief .navbar-default .dropdown-menu{
     background-color:#004997
+}
+.policechief .halloweenbar{
+    background-image:url(/images/policechief_halloween.jpg);
+    background-size:auto 100%
 }
 .policechief .mission_header_info_progress .progress-bar-danger,.policechief .mission_progress .progress-bar-danger{
     background-image:none;

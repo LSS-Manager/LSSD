@@ -2251,51 +2251,51 @@ Object.values || (Object.values = function(e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: 'Nun gibst du deinem GebÃ¤ude einen Namen! Dieser sollte erkennbar und erweiterbar sein! Z.B. "Feuerwache #0001". Wenn du damit fertig bist, klicke auf "Weiter"!',
+                            add_name: 'Nun gib deinem GebÃ¤ude einen Namen! Dieser sollte erkennbar und erweiterbar sein! Z.B. "Feuerwache #0001". Wenn du damit fertig bist, klicke auf "Weiter"!',
                             build_with_credits: "Baue jetzt dein GebÃ¤ude mit Credits!",
                             new_building: 'Klicke auf "Neues GebÃ¤ude bauen"!',
-                            select_building: "Zuerst suchst du den Typen des GebÃ¤udes aus, mit dem du starten mÃ¶chtest. Wir empfehlen dir, mit Feuerwachen zu beginnen! In jedem Fall ist es ratsam, mit einer kleinen Wache zu starten!",
+                            select_building: "WÃ¤hle den GebÃ¤udetyp aus, mit dem du starten mÃ¶chtest. Wir empfehlen dir, mit Feuerwachen zu beginnen! In jedem Fall ist es ratsam, mit einer kleinen Wache zu starten!",
                             select_position: "Schiebe die blaue Markierung dorthin, wo du dein erstes GebÃ¤ude bauen mÃ¶chtest!"
                         },
-                        pick_location: "Suche dir zuerst einen Ort zum Anfangen aus! Tippe den Names des Ortes in die Suchleiste ein oder wÃ¤hle ihn direkt auf der Karte aus! Wie wÃ¤re es mit deiner Heimat?",
-                        welcome: "Hallo, willkommen beim Leitstellenspiel!  Ich werde dir einige Lektionen erteilen, damit du einen guten Start in deine Karriere in der Leitstelle hast!"
+                        pick_location: "Suche dir einen Ort zum Anfangen aus! Tippe den Names des Ortes in die Suchleiste ein oder wÃ¤hle ihn direkt auf der Karte aus! Wie wÃ¤re es mit deiner Heimat?",
+                        welcome: "Hallo, willkommen beim Leitstellenspiel! Zum Start haben wir eine kleine Anleitung vorbereitet."
                     },
                     mobile: {
                         build_building: {
                             add_name: 'Nun gibst du deinem GebÃ¤ude einen Namen! Dieser sollte erkennbar und erweiterbar sein! Z.B. "Feuerwache #0001". Wenn du damit fertig bist, klicke auf "Weiter"!',
                             build_with_credits: "Baue jetzt dein GebÃ¤ude mit Credits!",
                             new_building: 'Zuerst suchen wir uns einen Ort fÃ¼r dein neues GebÃ¤ude! <br /> <br /> Dazu klickst du auf "Neues GebÃ¤ude bauen"!',
-                            select_building: "Jetzt suchst du den Typen des GebÃ¤udes aus, mit dem du starten mÃ¶chtest. Wir empfehlen dir, mit Feuerwachen zu beginnen! In jedem Fall ist es ratsam, mit einer kleinen Wache zu starten!"
+                            select_building: "Jetzt suchst du den GebÃ¤udetyp aus, mit dem du starten mÃ¶chtest. Wir empfehlen dir, mit Feuerwachen zu beginnen! In jedem Fall ist es ratsam, mit einer kleinen Wache zu starten!"
                         },
-                        welcome: "Hallo, willkommen beim Leitstellenspiel!  Ich werde dir einige Lektionen erteilen, damit du einen guten Start in deine Karriere in der Leitstelle hast!"
+                        welcome: "Hallo, willkommen beim Leitstellenspiel! Zum Start haben wir eine kleine Anleitung vorbereitet."
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
                             dispatch_menu: "Dies ist das Alarmierungsfenster. Von hier aus kannst du Fahrzeuge zu EinsÃ¤tzen schicken!",
-                            dispatch_menu_buttons: 'Dies sind deine beiden Alarmierungsbuttons! Der erste "Alarm"-Button schickt die ausgewÃ¤hlten Fahrzeuge zum Einsatz. Der zweite tut das gleiche wie der erste, wechselt aber auch zum nÃ¤chsten Einsatz. Klicke jetzt den ersten Button.',
-                            dispatch_menu_mission_general: "Hier siehst du generelle Informationen zum Einsatz, wie Name, Adresse und Icon. Bist du am Einsatz beteiligt wird ein MÃ¤nnchen angezeigt, ansonsten ein Stern.",
+                            dispatch_menu_buttons: 'Dies sind deine beiden Alarmierungsoptionen! Der erste "Alarm"-Button schickt die ausgewÃ¤hlten Fahrzeuge zum Einsatz. Der Zweite wechselt zusÃ¤tzlich auch zum nÃ¤chsten Einsatz. Klicke jetzt den ersten Button.',
+                            dispatch_menu_mission_general: "Hier siehst du generelle Informationen zum Einsatz, wie Name, Adresse und Icon. Bist du am Einsatz beteiligt, springt die Farbe des Icons von rot auf gelb.",
                             dispatch_menu_mission_progress: "Hier siehst du wie weit der Einsatz bereits fortgeschritten ist, wie viele EinsatzkrÃ¤fte vor Ort sind und wie viel Zeit noch benÃ¶tigt wird um den Einsatz abzuschlieÃŸen!",
-                            dispatch_menu_mission_specific: "Hier erhÃ¤ltst du mehr Informationen zum Einsatz, z.B. welche Fahrzeuge auf den Ruf antworten und welche bereits am Einsatzort sind.",
-                            dispatch_menu_vehicle_list: "Hier siehst du die Liste deiner verfÃ¼gbaren Fahrzeuge. Du kannst hier ein Fahrzeug auswÃ¤hlen, indem du es anklickst!"
+                            dispatch_menu_mission_specific: "Hier erhÃ¤ltst du mehr Informationen zum Einsatz, z.B. welche Fahrzeuge unterwegs sind und welche sich bereits am Einsatzort befinden.",
+                            dispatch_menu_vehicle_list: "Hier siehst du die Liste deiner verfÃ¼gbaren Fahrzeuge. Du kannst ein Fahrzeug auswÃ¤hlen, indem du es anklickst!"
                         },
                         mobile: {
                             dispatch_menu: "Dies ist das Alarmierungsfenster. Von hier aus kannst du Fahrzeuge zu EinsÃ¤tzen schicken!",
-                            dispatch_menu_buttons: 'Dies sind deine beiden Alarmierungsbuttons! Der erste "Alarm"-Button schickt die ausgewÃ¤hlten Fahrzeuge zum Einsatz. Der zweite tut das gleiche wie der erste, wechselt aber auch zum nÃ¤chsten Einsatz. Klicke jetzt den ersten Button.',
-                            dispatch_menu_mission_general: "Hier siehst du generelle Informationen zum Einsatz, wie Name, Adresse und Icon. Bist du am Einsatz beteiligt wird ein MÃ¤nnchen angezeigt, ansonsten ein Stern.",
+                            dispatch_menu_buttons: 'Dies sind deine beiden Alarmierungsoptionen! Der erste "Alarm"-Button schickt die ausgewÃ¤hlten Fahrzeuge zum Einsatz. Der Zweite wechselt zusÃ¤tzlich auch zum nÃ¤chsten Einsatz. Tippe jetzt den ersten Button.',
+                            dispatch_menu_mission_general: "Hier siehst du generelle Informationen zum Einsatz, wie Name, Adresse und Icon. Bist du am Einsatz beteiligt, springt die Farbe des Icons von rot auf gelb.",
                             dispatch_menu_mission_progress: "Hier siehst du wie weit der Einsatz bereits fortgeschritten ist, wie viele EinsatzkrÃ¤fte vor Ort sind und wie viel Zeit noch benÃ¶tigt wird um den Einsatz abzuschlieÃŸen!",
-                            dispatch_menu_mission_specific: "Hier erhÃ¤ltst du mehr Informationen zum Einsatz, z.B. welche Fahrzeuge zum Einsatz alarmiert sind und welche bereits am Einsatzort sind.",
+                            dispatch_menu_mission_specific: "Hier erhÃ¤ltst du mehr Informationen zum Einsatz, z.B. welche Fahrzeuge unterwegs sind und welche sich bereits am Einsatzort befinden.",
                             dispatch_menu_vehicle_list: "Hier siehst du die Liste deiner verfÃ¼gbaren Fahrzeuge. Du kannst hier ein Fahrzeug auswÃ¤hlen, indem du es anklickst!"
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: 'Jetzt schauen wir uns an, wie man mit diesen VorfÃ¤llen umgeht. Ã–ffne das Alarmierungsfenster, indem du auf einen  "Alarm"-Button klickst!',
+                            dispatch_button: 'Ã–ffne das Alarmierungsfenster, indem du auf einen  "Alarm"-Button klickst!',
                             first_mission: "Super, du hast dein ersten GebÃ¤ude gebaut! Schau, die ersten EinsÃ¤tze wurden dir bereits gemeldet!"
                         },
                         mobile: {
-                            dispatch_button: 'Jetzt schauen wir uns an, wie man mit diesen VorfÃ¤llen umgeht. Ã–ffne das Alarmierungsfenster, indem du auf einen  "Alarm"-Button klickst!',
+                            dispatch_button: 'Ã–ffne das Alarmierungsfenster, indem du auf einen  "Alarm"-Button klickst!',
                             first_mission: "Super, du hast dein ersten GebÃ¤ude gebaut! Schau, die ersten EinsÃ¤tze wurden dir bereits gemeldet!"
                         }
                     }
@@ -2311,15 +2311,15 @@ Object.values || (Object.values = function(e) {
                 tips: {
                     browser: {
                         contact: "Wenn du Fragen hast kannst du dir unsere FAQ ansehen und das Forum oder unsere Facebook-Seite besuchen!",
-                        general: "Als nÃ¤chstes empfehlen wir dir, eine Leitstelle zu bauen. AuÃŸerdem solltest du weitere GebÃ¤ude bauen, denn die maximale Anzahl an EinsÃ¤tzen bestimmt sich aus der hÃ¶chsten Anzahl aller GebÃ¤ude eines bestimmten Typs (Polizei, Feuerwehr, Rettungsdienst) plus 1; z.B. 5 Feuerwachen und 3 KrankenhÃ¤user = 6 EinsÃ¤tze.",
-                        join_alliance: "DarÃ¼ber hinaus empfehlen wir dir, einem Verband beizutreten. Dies wird sehr hilfreich fÃ¼r dich sein, besonders am Anfang. Bitte lies vorher die Bedingungen des Verbandes.",
-                        summary: "Das waren die Grundlagen vom Leitstellenspiel! Beende EinsÃ¤tze, sammle Credits, kaufe mehr Fahrzeuge, und dann das Ganze nochmal. Viel SpaÃŸ beim Spielen! </br> Dein Leitstellenspiel-Team"
+                        general: "Als NÃ¤chstes empfehlen wir dir, eine Leitstelle zu bauen. AuÃŸerdem solltest du weitere Wachen bauen. Je mehr Wachen, desto mehr EinsÃ¤tze tauchen auf. Tipp: Zu Beginn empfehlen wir kleine Wachen.",
+                        join_alliance: "DarÃ¼ber hinaus empfehlen wir dir, einem Verband beizutreten. Gemeinsam macht es mehr SpaÃŸ und andere Mitglieder kÃ¶nnen dir mit deinen EinsÃ¤tzen helfen.",
+                        summary: "Das waren die Grundlagen vom Leitstellenspiel! Beende EinsÃ¤tze, sammle Credits, kaufe mehr Fahrzeuge, und baue dein Rettungsnetzwerk aus! Viel SpaÃŸ! </br> Dein Leitstellenspiel-Team"
                     },
                     mobile: {
                         contact: "Wenn du Fragen hast kannst du dir unsere FAQ ansehen und das Forum oder unsere Facebook-Seite besuchen!",
-                        general: "Als nÃ¤chstes empfehlen wir dir, eine Leitstelle zu bauen. AuÃŸerdem solltest du weitere GebÃ¤ude bauen, denn die maximale Anzahl an EinsÃ¤tzen bestimmt sich aus der hÃ¶chsten Anzahl aller GebÃ¤ude eines bestimmten Typs (Polizei, Feuerwehr, Rettungsdienst) plus 1; z.B. 5 Feuerwachen und 3 KrankenhÃ¤user = 6 EinsÃ¤tze.",
-                        join_alliance: "DarÃ¼ber hinaus empfehlen wir dir, einem Verband beizutreten. Dies wird sehr hilfreich fÃ¼r dich sein, besonders am Anfang. Bitte lies vorher die Bedingungen des Verbandes.",
-                        summary: "Das waren die Grundlagen vom Leitstellenspiel! Beende EinsÃ¤tze, sammle Credits, kaufe mehr Fahrzeuge, und dann das Ganze nochmal. Viel SpaÃŸ beim Spielen! </br> Dein Leitstellenspiel-Team"
+                        general: "Als NÃ¤chstes empfehlen wir dir, eine Leitstelle zu bauen. AuÃŸerdem solltest du weitere Wachen bauen. Je mehr Wachen, desto mehr EinsÃ¤tze tauchen auf. Tipp: Zu Beginn empfehlen wir kleine Wachen.",
+                        join_alliance: "DarÃ¼ber hinaus empfehlen wir dir, einem Verband beizutreten. Gemeinsam macht es mehr SpaÃŸ und andere Mitglieder kÃ¶nnen dir mit deinen EinsÃ¤tzen helfen.",
+                        summary: "Das waren die Grundlagen vom Leitstellenspiel! Beende EinsÃ¤tze, sammle Credits, kaufe mehr Fahrzeuge, und baue dein Rettungsnetzwerk aus! Viel SpaÃŸ! </br> Dein Leitstellenspiel-Team"
                     }
                 }
             },
@@ -2330,7 +2330,7 @@ Object.values || (Object.values = function(e) {
                 next: "Weiter",
                 prev: "ZurÃ¼ck",
                 skip: "Ja",
-                skip_hint: "MÃ¶chtest du das Tutorial wirklich abbrechen? Es kann spÃ¤ter nicht noch einmal abgerufen werden. Du wirst keine Belohnung fÃ¼r den Abschluss des Tutorials erhalten."
+                skip_hint: "MÃ¶chtest du das Tutorial wirklich abbrechen? Es kann spÃ¤ter nicht noch einmal abgerufen werden. Du wirst KEINE Belohnung fÃ¼r den Abschluss des Tutorials erhalten."
             },
             rewards: {
                 log: "Belohnung fÃ¼r das Beenden des Tutorials."
@@ -2342,15 +2342,15 @@ Object.values || (Object.values = function(e) {
                     building: {
                         browser: {
                             build_building: {
-                                add_name: 'Nun gibst du deinem GebÃ¤ude einen Namen! Dieser sollte erkennbar und erweiterbar sein! Z.B. "Polizeiwache #0001". Wenn du damit fertig bist, klicke auf "Weiter"!',
-                                select_building: "Zuerst suchst du den Typen des GebÃ¤udes aus, mit dem du starten mÃ¶chtest. Wir empfehlen dir, mit Polizeiwachen zu beginnen! In jedem Fall ist es ratsam, mit einer kleinen Wache zu starten!"
+                                add_name: 'Nun gib deinem GebÃ¤ude einen Namen! Dieser sollte erkennbar und erweiterbar sein! Z.B. "Polizeiwache #0001". Wenn du damit fertig bist, klicke auf "Weiter"!',
+                                select_building: "WÃ¤hle den GebÃ¤udetyp aus, mit dem du starten mÃ¶chtest. Wir empfehlen dir, mit Polizeiwachen zu beginnen! In jedem Fall ist es ratsam, mit einer kleinen Wache zu starten!"
                             },
                             welcome: "Hallo, willkommen beim Polizei Leitstellenspiel! Ich werde dir einige Tipps fÃ¼r einen guten Start geben!"
                         },
                         mobile: {
                             build_building: {
-                                add_name: 'Nun gibst du deinem GebÃ¤ude einen Namen! Dieser sollte erkennbar und erweiterbar sein! Z.B. "Polizeiwache #0001". Wenn du damit fertig bist, klicke auf "Weiter"!',
-                                select_building: "Zuerst suchst du den Typen des GebÃ¤udes aus, mit dem du starten mÃ¶chtest. Wir empfehlen dir, mit Polizeiwachen zu beginnen! In jedem Fall ist es ratsam, mit einer kleinen Wache zu starten!"
+                                add_name: 'Nun gib deinem GebÃ¤ude einen Namen! Dieser sollte erkennbar und erweiterbar sein! Z.B. "Polizeiwache #0001". Wenn du damit fertig bist, klicke auf "Weiter"!',
+                                select_building: "WÃ¤hle den GebÃ¤udetyp aus, mit dem du starten mÃ¶chtest. Wir empfehlen dir, mit Polizeiwachen zu beginnen! In jedem Fall ist es ratsam, mit einer kleinen Wache zu starten!"
                             },
                             welcome: "Hallo, willkommen beim Polizei Leitstellenspiel! Ich werde dir einige Tipps fÃ¼r einen guten Start geben!"
                         }
@@ -2365,10 +2365,10 @@ Object.values || (Object.values = function(e) {
                     },
                     tips: {
                         browser: {
-                            summary: "Das waren die Grundlagen vom Polizei Leitstellenspiel! Beende EinsÃ¤tze, sammle Credits, kaufe mehr Fahrzeuge, und dann das Ganze nochmal. Viel SpaÃŸ beim Spielen! </br> Dein Polizei Leitstellenspiel-Team"
+                            summary: "Das waren die Grundlagen vom Polizei Leitstellenspiel! Beende EinsÃ¤tze, sammle Credits, kaufe mehr Fahrzeuge, und baue dein Rettungsnetzwerk aus! Viel SpaÃŸ! </br> Dein Polizei Leitstellenspiel-Team"
                         },
                         mobile: {
-                            summary: "Das waren die Grundlagen vom Polizei Leitstellenspiel! Beende EinsÃ¤tze, sammle Credits, kaufe mehr Fahrzeuge, und dann das Ganze nochmal. Viel SpaÃŸ beim Spielen! </br> Dein Polizei Leitstellenspiel-Team"
+                            summary: "Das waren die Grundlagen vom Polizei Leitstellenspiel! Beende EinsÃ¤tze, sammle Credits, kaufe mehr Fahrzeuge, und baue dein Rettungsnetzwerk aus! Viel SpaÃŸ! </br> Dein Polizei Leitstellenspiel-Team"
                         }
                     }
                 }
@@ -4731,7 +4731,8 @@ Object.values || (Object.values = function(e) {
             rewards: {
                 log: "BelÃ¶ning fÃ¶r att ha klarat handledningen."
             }
-        }
+        },
+        policechief: null
     }, I18n.translations.pl_PL = {
         common: {
             add: "Dodaj",
@@ -5107,7 +5108,8 @@ Object.values || (Object.values = function(e) {
             rewards: {
                 log: "Nagroda za ukoÅ„czenie samouczka."
             }
-        }
+        },
+        policechief: null
     }, I18n.translations.it_IT = {
         common: {
             add: "Aggiungi",
@@ -6896,10 +6898,10 @@ Object.values || (Object.values = function(e) {
                 ambulance: "Ambulanse",
                 ambulance_or_rapid_responder: "",
                 arff: "Flyplassbrannbil",
-                battalion_chief_unit: "Utrykningsleder brann",
+                battalion_chief_unit: "Innsatsleder brann",
                 boot: "BÃ¥ter (generelt)",
                 dekon_p: "",
-                division_chief_unit: "Innsatsleder brann",
+                division_chief_unit: "InnsatsstÃ¸ttebil",
                 dlk_or_tm50: "",
                 elw1_or_elw2: "Innsatsleder brann eller innsatsstÃ¸ttebil",
                 elw2_or_ab_elw: "",
