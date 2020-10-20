@@ -8542,6 +8542,18 @@ body.dodenherdenking .navbar-default .dropdown-menu{
     color:white;
     padding:10px
 }
+.halloweenIframe{
+    background-image:url(/images/halloween_background.png);
+    width:100%;
+    min-height:454px;
+    background-repeat:repeat-x;
+    color:white;
+    padding:10px
+}
+.halloweenIframe .btn-adventskalender{
+    color:white;
+    background-color:#843200
+}
 .spring-event{
     background-image:url(/images/spring_event_navbar_icon.png);
     width:18px;

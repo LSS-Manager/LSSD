@@ -1643,6 +1643,10 @@ function flavouredAsset(e, t) {
     return n ? n.to : e
 }
 
+function updateDailyBonusIcon() {
+    $("#daily-bonus").find(".bonus-active").removeClass("bonus-active")
+}
+
 function missionPositionMarkerAdd(e) {
     1 == mobile_bridge_use && mobileBridgeAdd("poi", [e])
 }
@@ -7280,7 +7284,7 @@ Object.values || (Object.values = function(e) {
                 elw3: "",
                 elw_airport: "",
                 emergency_ambulance: "Sanitka nebo vrtulnÃ­k",
-                fbi_bomb_techician: "Vozidlo pyrotechika PÄŒR",
+                fbi_bomb_techician: "Vozidlo pyrotechnika PÄŒR",
                 fire_truck: "HasiÄskÃ© vozy",
                 fireboat: "VelkÃ¡ hasiÄskÃ¡ loÄ",
                 fly_car: "LÃ©kaÅ™skÃ© vozidlo RV",
