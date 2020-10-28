@@ -970,6 +970,12 @@ function missionCountdown(e, t) {
     }, 1e3))
 }
 
+function taskCountdown(e, t) {
+    0 > e || ($("#task_countdown_" + t).html(formatTime(e, !1)), e -= 1, setTimeout(function() {
+        taskCountdown(e, t)
+    }, 1e3))
+}
+
 function vehicleArrivalCountdown(e, t, i) {
     0 > e ? $("#vehicle_drive_" + t).html(I18n.t("javascript.arrival") + "... <a href='#' class='btn btn-xs btn-default' onclick='window.location.reload();'>" + I18n.t("javascript.reload") + "</a>") : (i > 0 ? $("#vehicle_drive_" + t).html(I18n.t("javascript.start_in") + formatTime(i, !1)) : $("#vehicle_drive_" + t).html(formatTime(e, !1)), e -= 1, i -= 1, setTimeout(function() {
         vehicleArrivalCountdown(e, t, i)
@@ -2534,6 +2540,7 @@ Object.values || (Object.values = function(e) {
         intervention_order: {
             back: "Back",
             battalion_chief_unit: "",
+            bike_police: "DB-Bike",
             category: "Category",
             colour: "Color",
             column: "Column",
@@ -2616,7 +2623,7 @@ Object.values || (Object.values = function(e) {
                 fukw: "",
                 fustw_or_police_motorcycle: "Patrol car or Police Motorcycle",
                 fwk: "",
-                gefkw: "",
+                gefkw: "DB-AV",
                 gkw: "Utility Truck",
                 grtw: "Mass Casualty Unit",
                 grtw0: "",
@@ -2662,6 +2669,7 @@ Object.values || (Object.values = function(e) {
                 only_dekon_p: "",
                 ovd_p: "",
                 police_car: "Patrol car",
+                police_car_3: "NH-O",
                 police_horse: "Mounted Police",
                 police_motorcycle: "Police Motorcycle",
                 polizeihubschrauber: "Police helicopter",
@@ -3394,6 +3402,7 @@ Object.values || (Object.values = function(e) {
         },
         intervention_order: {
             back: "Terug",
+            bike_police: "DB-Bike",
             category: "Categorie",
             colour: "Kleur",
             column: "Kolom",
@@ -3456,7 +3465,7 @@ Object.values || (Object.values = function(e) {
                 fukw: "Hondenbrigade",
                 fustw_or_police_motorcycle: "Politie Noodhulp of Dienstmotor Noodhulp",
                 fwk: "",
-                gefkw: "Gevangenen transport",
+                gefkw: "DB-AV",
                 gkw: "",
                 grtw: "",
                 grtw0: "",
@@ -3500,6 +3509,7 @@ Object.values || (Object.values = function(e) {
                 only_dekon_p: "",
                 ovd_p: "Officier van Dienst - Politie",
                 police_car: "Politie Noodhulp",
+                police_car_3: "NH-O",
                 police_motorcycle: "Dienstmotor Noodhulp",
                 polizeihubschrauber: "Politiehelikopter",
                 rescue_vehicle: "Hulpverleningsvoertuig",
@@ -7031,6 +7041,7 @@ Object.values || (Object.values = function(e) {
                 abl2wasser_only: "Slangeforsyning-modul",
                 ambulance: "Ambulanse",
                 ambulance_or_rapid_responder: "",
+                any_traffic_car: "Utrykningspolitibil",
                 arff: "Flyplassbrannbil",
                 battalion_chief_unit: "Innsatsleder brann",
                 boot: "BÃ¥ter (generelt)",
@@ -7102,7 +7113,7 @@ Object.values || (Object.values = function(e) {
                 seg_elw: "",
                 sek_mtf: "",
                 sek_zf: "",
-                swat: "Delta",
+                swat: "Politi med vÃ¥pentrening",
                 swat_armored_vehicle: "Pansret kjÃ¸retÃ¸y",
                 swat_suv: "Delta kjÃ¸retÃ¸y",
                 thw_anh_mzab: "",
@@ -38214,6 +38225,18 @@ I18n.t = function(e, t) {
         from: "/images/logo.sv_SE.png",
         to: "/images/PC_Logo_sv_SE.png"
     }, {
+        from: "/images/MC_Logo_nb_NO.png",
+        to: "/images/PC_Logo_nb_NO.png"
+    }, {
+        from: "/images/logo.nb_NO.png",
+        to: "/images/PC_Logo_nb_NO.png"
+    }, {
+        from: "/images/MC_Logo_nl_NL.png",
+        to: "/images/PC_Logo_nl_NL.png"
+    }, {
+        from: "/images/logo.nl_NL.png",
+        to: "/images/PC_Logo_nl_NL.png"
+    }, {
         from: "/images/logo-header.png",
         to: "/images/pc_logo-header.png"
     }, {
@@ -38291,6 +38314,12 @@ I18n.t = function(e, t) {
     }, {
         from: "/images/sign_up.sv_SE.png",
         to: "/images/policechief_sign_up.sv_SE.png"
+    }, {
+        from: "/images/sign_up.nb_NO.png",
+        to: "/images/policechief_sign_up.nb_NO.png"
+    }, {
+        from: "/images/sign_up.nl_NL.png",
+        to: "/images/policechief_sign_up.nl_NL.png"
     }, {
         from: "/images/fire_rot.png",
         to: "/images/theft_rot.png",

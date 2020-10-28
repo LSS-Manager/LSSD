@@ -8439,6 +8439,10 @@ body.dodenherdenking .navbar-default{
     max-width:350px;
     color:#fff
 }
+.navbar-default .dropdown-menu .glyphicon{
+    font-size:24px;
+    vertical-align:middle
+}
 .menu-links a{
     white-space:normal !important;
     padding-left:56px !important;
@@ -11393,6 +11397,44 @@ body.bigMap #search_input_field_missions{
 }
 .landingpage_1_signup_form_legacy{
     color:white
+}
+.reward_button{
+    display:inline-block
+}
+.reward_button .btn{
+    color:white;
+    background-image:url(/images/progressbar-green-background.png);
+    background-repeat:repeat-x
+}
+.reward_amount{
+    float:right;
+    margin-top:7px
+}
+.task_body{
+    padding:10px 15px
+}
+.progress_value{
+    float:right
+}
+.ends_in{
+    padding-left:65px
+}
+.progress_bar{
+    width:95%;
+    float:right
+}
+.progress_bar_mobile{
+    width:100%;
+    float:right
+}
+.task_body .glyphicon{
+    padding-left:40px
+}
+.task_panel{
+    height:140px
+}
+.task_panel_mobile{
+    height:160px
 }
 /* * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select) * * Copyright 2013-2017 bootstrap-select * Licensed under MIT (https://github.com/silviomoreto/bootstrap-select/blob/master/LICENSE) */
 select.bs-select-hidden,select.selectpicker{
