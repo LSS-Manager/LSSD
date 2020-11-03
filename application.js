@@ -142,8 +142,9 @@ function allianceChat(e) {
     var t = "",
         i = !1;
     (-1 != e.message.toUpperCase().indexOf("@" + username.toUpperCase()) || -1 != e.message.toUpperCase().indexOf("@all ".toUpperCase()) || -1 != e.message.toUpperCase().indexOf("@all:".toUpperCase()) || -1 != e.message.toUpperCase().indexOf("@admin".toUpperCase()) && (alliance_admin || alliance_coadmin) || "0" != e.whisper) && (t = "chatToSelf", "0" != e.whisper && (t = "chatWhisper", splitMessage = e.message.split(" "), splitMessage[0] = "<a username='" + splitMessage[0] + "' class='alliance_chat_private_username'><img class='alliance_chat_private_username' src='/images/icons8-privacy.svg'/></a><a href='/profile/" + e.whisper + "' class='lightbox-open label label-warning'>" + splitMessage[0] + "</a>", e.message = splitMessage.join(" ")), audio_chat_highlight && 1 != e.ignore_audio && user_id != e.user_id && !i && (play("chat_message_highlight"), i = !0), !$("body").hasClass("bigMap") || missionMarkerBulkAdd || $("#chat_outer").hasClass("fadeIn") || $("#bigMapMenuChatButton").addClass("bigMapMenuButtonBlack"));
-    var n = "<li class='" + t + "'><span class='mission_chat_message_username' title='" + e.date_hidden + "'>[" + e.date + "] <img username='" + e.username + "' class='alliance_chat_copy_username' src='/images/icons8-reply.svg'><a username='" + e.username + "' class='alliance_chat_private_username'> <img class='alliance_chat_private_username' src='/images/icons8-privacy.svg' /></a> <a href='/profile/" + e.user_id + "' class='lightbox-open ";
-    "true" == e.alliance_admin ? n += "label label-info" : "true" == e.alliance_coadmin && (n += "label label-default"), audio_chat && 1 != e.ignore_audio && user_id != e.user_id && !i && (play("chat_message"), i = !0), n = n + "'>" + e.username + ":</a></span>", e.mission_id && (n = n + "<a href='/missions/" + e.mission_id + "' class='lightbox-open'><span class='glyphicon glyphicon-bell'></span>", "undefined" != typeof e.mission_caption && e.mission_caption && (n = n + "[" + e.mission_caption + "]"), n += "</a> "), n = n + " " + e.message + "</li>", $("#mission_chat_messages").prepend(n), !$("body").hasClass("bigMap") || missionMarkerBulkAdd || $("#chat_outer").hasClass("fadeIn") || $("#bigMapMenuChatButton").addClass("bigMapMenuButtonGreen")
+    var n = e.iso_timestamp ? e.iso_timestamp : "",
+        o = "<li class='" + t + "' data-message-time='" + n + "'><span class='mission_chat_message_username' title='" + e.date_hidden + "'>[" + e.date + "] <img username='" + e.username + "' class='alliance_chat_copy_username' src='/images/icons8-reply.svg'><a username='" + e.username + "' class='alliance_chat_private_username'> <img class='alliance_chat_private_username' src='/images/icons8-privacy.svg' /></a> <a href='/profile/" + e.user_id + "' class='lightbox-open ";
+    "true" == e.alliance_admin ? o += "label label-info" : "true" == e.alliance_coadmin && (o += "label label-default"), audio_chat && 1 != e.ignore_audio && user_id != e.user_id && !i && (play("chat_message"), i = !0), o = o + "'>" + e.username + ":</a></span>", e.mission_id && (o = o + "<a href='/missions/" + e.mission_id + "' class='lightbox-open'><span class='glyphicon glyphicon-bell'></span>", "undefined" != typeof e.mission_caption && e.mission_caption && (o = o + "[" + e.mission_caption + "]"), o += "</a> "), o = o + " " + e.message + "</li>", $("#mission_chat_messages").prepend(o), !$("body").hasClass("bigMap") || missionMarkerBulkAdd || $("#chat_outer").hasClass("fadeIn") || $("#bigMapMenuChatButton").addClass("bigMapMenuButtonGreen")
 }
 
 function waterCalculatorSetPercent(e, t, i) {
@@ -5081,7 +5082,7 @@ Object.values || (Object.values = function(e) {
                 only_ab_dekon_p: "",
                 only_dekon_p: "",
                 ovd_p: "",
-                police_car: "RadiowÃ³z",
+                police_car: "RadiowÃ³z OPI",
                 police_motorcycle: "Motocykl Policyjny",
                 polizeihubschrauber: "Helikopter Policyjny",
                 rescue_vehicle: "SamochÃ³d Ratownictwa Technicznego",
@@ -38279,6 +38280,12 @@ I18n.t = function(e, t) {
         from: "/images/logo.nl_NL.png",
         to: "/images/PC_Logo_nl_NL.png"
     }, {
+        from: "/images/MC_Logo_pt_PT.png",
+        to: "/images/PC_Logo_pt_PT.png"
+    }, {
+        from: "/images/logo.pt_PT.png",
+        to: "/images/PC_Logo_pt_PT.png"
+    }, {
         from: "/images/logo-header.png",
         to: "/images/pc_logo-header.png"
     }, {
@@ -38368,6 +38375,9 @@ I18n.t = function(e, t) {
     }, {
         from: "/images/sign_up.nl_NL.png",
         to: "/images/policechief_sign_up.nl_NL.png"
+    }, {
+        from: "/images/sign_up.pt_PT.png",
+        to: "/images/policechief_sign_up.pt_PT.png"
     }, {
         from: "/images/fire_rot.png",
         to: "/images/theft_rot.png",
