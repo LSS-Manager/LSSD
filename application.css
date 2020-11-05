@@ -8615,10 +8615,10 @@ body.dodenherdenking .navbar-default .dropdown-menu{
     -o-object-fit:contain;
     object-fit:contain
 }
-.news_new,.alliance_forum_new,.alliance_message_new,.message_new,.alliance_apply_new,.alliance_news_new,.vehicle_graphic_check_new,.vehicle_graphic_abuse_check_new{
+.news_new,.alliance_forum_new,.alliance_message_new,.message_new,.alliance_apply_new,.alliance_news_new,.vehicle_graphic_check_new,.vehicle_graphic_abuse_check_new,.graphic_new_comments{
     background-color:#77dc81
 }
-.navbar-toggle.collapsed.news_new,.navbar-toggle.collapsed.alliance_forum_new,.navbar-toggle.collapsed.alliance_message_new,.navbar-toggle.collapsed.message_new,.navbar-toggle.collapsed.alliance_apply_new,.navbar-toggle.collapsed.alliance_news_new,.navbar-toggle.collapsed.vehicle_graphic_check_new,.navbar-toggle.collapsed.vehicle_graphic_abuse_check_new{
+.navbar-toggle.collapsed.news_new,.navbar-toggle.collapsed.alliance_forum_new,.navbar-toggle.collapsed.alliance_message_new,.navbar-toggle.collapsed.message_new,.navbar-toggle.collapsed.alliance_apply_new,.navbar-toggle.collapsed.alliance_news_new,.navbar-toggle.collapsed.vehicle_graphic_check_new,.navbar-toggle.collapsed.vehicle_graphic_abuse_check_new,.navbar-toggle.collapsed.graphic_new_comments{
     background-color:#77dc81
 }
 #restore_map{
@@ -9031,6 +9031,12 @@ body.dark th.tablesorter-headerAsc,body.dark th.tablesorter-headerDesc{
 }
 #alliance_thread_index_table .pagination{
     margin:0
+}
+.buildings-map-shrinked{
+    margin-bottom:10px;
+    margin-left:auto;
+    margin-right:auto;
+    max-width:92%
 }
 .vehicle_overview .list-group-item{
     padding:0 15px
@@ -11435,6 +11441,30 @@ body.bigMap #search_input_field_missions{
 }
 .task_panel_mobile{
     height:160px
+}
+.confirm-delete-modal .modal-body{
+    max-height:100%
+}
+.sortable-link{
+    display:block;
+    width:100%;
+    height:100%;
+    background-repeat:no-repeat;
+    background-position:right center;
+    color:inherit
+}
+.sortable-link:hover{
+    text-decoration:none;
+    color:inherit
+}
+.sortable-link.asc{
+    background-image:url(/images/asc.gif)
+}
+.sortable-link.desc{
+    background-image:url(/images/desc.gif)
+}
+.sortable-link.no-sort{
+    background-image:url(/images/bg.gif)
 }
 /* * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select) * * Copyright 2013-2017 bootstrap-select * Licensed under MIT (https://github.com/silviomoreto/bootstrap-select/blob/master/LICENSE) */
 select.bs-select-hidden,select.selectpicker{
