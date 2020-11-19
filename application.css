@@ -8338,6 +8338,13 @@ button.close{
     transform:rotate(-30deg);
     color:#fff
 }
+.building_discount_label{
+    position:static;
+    width:70px;
+    text-align:center;
+    font-size:12px;
+    margin-left:-15px
+}
 .store-offers-content{
     margin:0 1rem
 }
