@@ -1010,6 +1010,10 @@ function creditsUpdate(e) {
     $("#navigation_top").html(t), "" != i && i != t && highlightElement($("#navigation_top"))
 }
 
+function tasksUpdate(e) {
+    $("#completed_tasks_counter").html(e), e > 0 ? ($("#completed_tasks_counter").removeClass("hidden"), $("#menu_profile").addClass("alliance_forum_new")) : ($("#completed_tasks_counter").addClass("hidden"), $("#menu_profile").removeClass("alliance_forum_new"))
+}
+
 function updateSaleCountDown() {
     if (null != saleTimeout && (clearTimeout(saleTimeout), saleTimeout = null), sale_count_down > Date.now()) {
         var e = sale_count_down - Date.now(),
@@ -6313,7 +6317,7 @@ Object.values || (Object.values = function(e) {
                 mek_mtf: "",
                 mek_zf: "",
                 mtw: "Ð¢Ñ€Ð°Ð½ÑÐ¿Ð¾Ñ€Ñ‚Ñ‘Ñ€",
-                mzb: "ÐœÐ½Ð¾Ð³Ð¾Ñ†ÐµÐ»ÐµÐ²Ð¾Ðµ ÑÑƒÐ´Ð½Ð¾",
+                mzb: "Ð¡Ð¿Ð°ÑÐ°Ñ‚ÐµÐ»ÑŒÐ½Ð°Ñ Ð»Ð¾Ð´ÐºÐ°",
                 naw: "",
                 naw_or_rtw_and_nef: "",
                 naw_or_rtw_and_nef_or_rth: "",
@@ -28543,6 +28547,42 @@ $(function() {
         }
         return missing
     }
+
+    function aaoClickHandler(e) {
+        var t = "",
+            i = $(e);
+        "true" == i.attr("reset") && vehicleSelectionReset(), $.each(aao_types, function(e, n) {
+            if ("naw_or_rtw_and_nef" == n[0] || "naw_or_rtw_and_nef_or_rth" == n[0]) {
+                var o = "nef";
+                "naw_or_rtw_and_nef" == n[0] && (o = "nef_only");
+                var s = i.attr(n[0]);
+                t += aaoNearSelection("naw", o, "rtw", s, n, i)
+            } else if ("hlf_or_rw_and_lf" == n[0]) {
+                var s = i.attr(n[0]);
+                t += aaoNearSelection("hlf_only", "rw_only", "lf_only", s, n, i)
+            } else {
+                var s = i.attr(n[0]);
+                t += aao(n[0], i, n[1], s)
+            }
+        });
+        var n = i.attr("custom");
+        if ("" != n) {
+            var o = jQuery.parseJSON(n);
+            $.each(o, function(e, n) {
+                t += aao("custom_" + md5(e), i, e, n)
+            })
+        }
+        return "" != t ? ("undefined" != typeof pressedKeys && (pressedKeys = {}), alert(t)) : aao_available(i.attr("aao_id"), !0), !1
+    }
+
+    function vehicleGroupClickHandler(vehicle_group_element) {
+        var missing = [],
+            vehicle_group_id = $(vehicle_group_element).attr("vehicle_group_id"),
+            vehicle_ids = eval($("#vehicle_group_" + vehicle_group_id).attr("vehicles"));
+        return $.each(vehicle_ids, function(e, t) {
+            $("#vehicle_checkbox_" + t[0]).length <= 0 || $("#vehicle_checkbox_" + t[0]).is(":disabled") ? missing.push(t[1]) : ($("#vehicle_checkbox_" + t[0]).prop("checked", !0), $("#vehicle_checkbox_" + t[0]).change())
+        }), missing.length > 0 && ("undefined" != typeof pressedKeys && (pressedKeys = {}), alert(I18n.t("javascript.missed_vehicle") + " " + missing.join(", ") + ". ")), !1
+    }
     "undefined" != typeof L && (L.Icon.Default.imagePath = "/leaflet/images/"), aao_types = [
         ["ambulance_or_rapid_responder", I18n.t("intervention_order.vehicles.ambulance_or_rapid_responder")],
         ["wasser_amount", I18n.t("intervention_order.vehicles.water_amount")],
@@ -28735,37 +28775,9 @@ $(function() {
     }), $("#bigMapMenuChatButton").click(function() {
         bigMapMenuOpenClose($("#chat_outer")), $("#bigMapMenuChatButton").removeClass("bigMapMenuButtonGreen").removeClass("bigMapMenuButtonBlack")
     }), $(".aao").click(function() {
-        var e = "",
-            t = $(this);
-        "true" == t.attr("reset") && vehicleSelectionReset(), $.each(aao_types, function(i, n) {
-            if ("naw_or_rtw_and_nef" == n[0] || "naw_or_rtw_and_nef_or_rth" == n[0]) {
-                var o = "nef";
-                "naw_or_rtw_and_nef" == n[0] && (o = "nef_only");
-                var s = t.attr(n[0]);
-                e += aaoNearSelection("naw", o, "rtw", s, n, t)
-            } else if ("hlf_or_rw_and_lf" == n[0]) {
-                var s = t.attr(n[0]);
-                e += aaoNearSelection("hlf_only", "rw_only", "lf_only", s, n, t)
-            } else {
-                var s = t.attr(n[0]);
-                e += aao(n[0], t, n[1], s)
-            }
-        });
-        var i = t.attr("custom");
-        if ("" != i) {
-            var n = jQuery.parseJSON(i);
-            $.each(n, function(i, n) {
-                e += aao("custom_" + md5(i), t, i, n)
-            })
-        }
-        return "" != e ? ("undefined" != typeof pressedKeys && (pressedKeys = {}), alert(e)) : aao_available(t.attr("aao_id"), !0), !1
+        aaoClickHandler(this)
     }), $(".vehicle_group").click(function() {
-        var missing = [],
-            vehicle_group_id = $(this).attr("vehicle_group_id"),
-            vehicle_ids = eval($("#vehicle_group_" + vehicle_group_id).attr("vehicles"));
-        return $.each(vehicle_ids, function(e, t) {
-            $("#vehicle_checkbox_" + t[0]).length <= 0 || $("#vehicle_checkbox_" + t[0]).is(":disabled") ? missing.push(t[1]) : ($("#vehicle_checkbox_" + t[0]).prop("checked", !0), $("#vehicle_checkbox_" + t[0]).change())
-        }), missing.length > 0 && ("undefined" != typeof pressedKeys && (pressedKeys = {}), alert(I18n.t("javascript.missed_vehicle") + " " + missing.join(", ") + ". ")), !1
+        vehicleGroupClickHandler(this)
     }), $(".btn_alliance_radio").click(function() {
         alliance_ignore_fms_set(!alliance_ignore_fms, !0)
     }), $("#logout_button").click(function() {

@@ -11218,14 +11218,9 @@ body.bigMap #search_input_field_missions{
 }
 .fb-login-button-big{
     font-weight:700;
-    background-image:url(../images/facebook_logo_big.png) !important;
-    background-repeat:no-repeat !important;
     background-color:#1877f2 !important;
-    display:inline-block;
-    background-position-y:center !important;
-    background-position-x:8px !important;
-    padding-left:30px !important;
-    padding-right:10px;
+    display:flex;
+    justify-content:center;
     padding-top:6px;
     padding-bottom:6px;
     border-radius:6px;
@@ -11234,8 +11229,13 @@ body.bigMap #search_input_field_missions{
     border-width:1px !important;
     border-style:solid !important;
     text-decoration:none !important;
-    background-size:16px;
-    font-size:13px
+    font-size:14px;
+    height:34px
+}
+.fb-login-button-big img{
+    max-width:100%;
+    max-height:100%;
+    padding-right:5px
 }
 .fb-login-button-small{
     font-size:11px;
@@ -11352,11 +11352,26 @@ body.bigMap #search_input_field_missions{
     max-width:500px
 }
 .daily-bonuses .day-button{
-    height:45px
+    display:flex;
+    justify-content:center;
+    align-items:center
 }
 .daily-bonuses .day-button.coins-button{
     color:#fff;
     background-color:#651b85
+}
+.daily-bonuses-free-coin{
+    width:auto;
+    height:40px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center
+}
+.daily-bonuses-free-coin img{
+    height:20px;
+    width:20px;
+    color:#fff
 }
 .daily-bonuses .day-separator{
     padding:10px
@@ -11472,6 +11487,9 @@ body.bigMap #search_input_field_missions{
 }
 .sortable-link.no-sort{
     background-image:url(/images/bg.gif)
+}
+.tasks_and_events_navbar .badge{
+    margin-top:-1px
 }
 /* * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select) * * Copyright 2013-2017 bootstrap-select * Licensed under MIT (https://github.com/silviomoreto/bootstrap-select/blob/master/LICENSE) */
 select.bs-select-hidden,select.selectpicker{
