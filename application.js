@@ -28775,9 +28775,9 @@ $(function() {
     }), $("#bigMapMenuChatButton").click(function() {
         bigMapMenuOpenClose($("#chat_outer")), $("#bigMapMenuChatButton").removeClass("bigMapMenuButtonGreen").removeClass("bigMapMenuButtonBlack")
     }), $(".aao").click(function() {
-        aaoClickHandler(this)
+        return aaoClickHandler(this)
     }), $(".vehicle_group").click(function() {
-        vehicleGroupClickHandler(this)
+        return vehicleGroupClickHandler(this)
     }), $(".btn_alliance_radio").click(function() {
         alliance_ignore_fms_set(!alliance_ignore_fms, !0)
     }), $("#logout_button").click(function() {
