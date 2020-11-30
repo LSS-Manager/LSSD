@@ -8530,7 +8530,7 @@ body.dodenherdenking .navbar-default .dropdown-menu{
     height:auto !important
 }
 .christmasIframe{
-    background-image:url(/images/generic_calender_background.png);
+    background-image:url(/images/christmas_background.png);
     width:100%;
     min-height:454px;
     background-repeat:repeat-x;
@@ -12335,6 +12335,10 @@ div.sceditor-group{
 }
 .policechief .halloweenbar{
     background-image:url(/images/policechief_halloween.jpg);
+    background-size:auto 100%
+}
+.policechief .weihnachtenbar{
+    background-image:url(/images/policechief_weihnachtenbar.png);
     background-size:auto 100%
 }
 .policechief .mission_header_info_progress .progress-bar-danger,.policechief .mission_progress .progress-bar-danger{
