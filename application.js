@@ -254,6 +254,51 @@ function vehicleSelectionReset() {
     $(".vehicle_checkbox").attr("checked", !1), $(".vehicle_checkbox:first").change()
 }
 
+function aaoNearSelection(e, t, i, n, o, s) {
+    for (missing = ""; n > 0;) {
+        var a = aaoNextAvailable(t, s),
+            r = aaoNextAvailable(i, s),
+            l = aaoNextAvailable(e, s); - 1 != r && -1 != a && -1 != l ? a > l || r > l ? missing += aao(e, s, o[1], 1) : (missing += aao(t, s, o[1], 1), missing += aao(i, s, o[1], 1)) : -1 != r && -1 != a ? (missing += aao(t, s, o[1], 1), missing += aao(i, s, o[1], 1)) : -1 != l ? missing += aao(e, s, o[1], 1) : (missing += aao(o[0], s, o[1], n), n = 0), n -= 1
+    }
+    return missing
+}
+
+function aaoClickHandler(e) {
+    var t = "",
+        i = $(e);
+    "true" == i.attr("reset") && vehicleSelectionReset(), $.each(aao_types, function(e, n) {
+        if ("naw_or_rtw_and_nef" == n[0] || "naw_or_rtw_and_nef_or_rth" == n[0]) {
+            var o = "nef";
+            "naw_or_rtw_and_nef" == n[0] && (o = "nef_only");
+            var s = i.attr(n[0]);
+            t += aaoNearSelection("naw", o, "rtw", s, n, i)
+        } else if ("hlf_or_rw_and_lf" == n[0]) {
+            var s = i.attr(n[0]);
+            t += aaoNearSelection("hlf_only", "rw_only", "lf_only", s, n, i)
+        } else {
+            var s = i.attr(n[0]);
+            t += aao(n[0], i, n[1], s)
+        }
+    });
+    var n = i.attr("custom");
+    if ("" != n) {
+        var o = jQuery.parseJSON(n);
+        $.each(o, function(e, n) {
+            t += aao("custom_" + md5(e), i, e, n)
+        })
+    }
+    return "" != t ? ("undefined" != typeof pressedKeys && (pressedKeys = {}), alert(t)) : aao_available(i.attr("aao_id"), !0), !1
+}
+
+function vehicleGroupClickHandler(vehicle_group_element) {
+    var missing = [],
+        vehicle_group_id = $(vehicle_group_element).attr("vehicle_group_id"),
+        vehicle_ids = eval($("#vehicle_group_" + vehicle_group_id).attr("vehicles"));
+    return $.each(vehicle_ids, function(e, t) {
+        $("#vehicle_checkbox_" + t[0]).length <= 0 || $("#vehicle_checkbox_" + t[0]).is(":disabled") ? missing.push(t[1]) : ($("#vehicle_checkbox_" + t[0]).prop("checked", !0), $("#vehicle_checkbox_" + t[0]).change())
+    }), missing.length > 0 && ("undefined" != typeof pressedKeys && (pressedKeys = {}), alert(I18n.t("javascript.missed_vehicle") + " " + missing.join(", ") + ". ")), !1
+}
+
 function saveFcm() {}
 
 function radioMessage(e) {
@@ -28539,50 +28584,6 @@ var map, alliance_member_buildings_show, geocoder, directionsService, building_e
     gameFlavour = null,
     i18nPrefix = null;
 $(function() {
-    function aaoNearSelection(e, t, i, n, o, s) {
-        for (missing = ""; n > 0;) {
-            var a = aaoNextAvailable(t, s),
-                r = aaoNextAvailable(i, s),
-                l = aaoNextAvailable(e, s); - 1 != r && -1 != a && -1 != l ? a > l || r > l ? missing += aao(e, s, o[1], 1) : (missing += aao(t, s, o[1], 1), missing += aao(i, s, o[1], 1)) : -1 != r && -1 != a ? (missing += aao(t, s, o[1], 1), missing += aao(i, s, o[1], 1)) : -1 != l ? missing += aao(e, s, o[1], 1) : (missing += aao(o[0], s, o[1], n), n = 0), n -= 1
-        }
-        return missing
-    }
-
-    function aaoClickHandler(e) {
-        var t = "",
-            i = $(e);
-        "true" == i.attr("reset") && vehicleSelectionReset(), $.each(aao_types, function(e, n) {
-            if ("naw_or_rtw_and_nef" == n[0] || "naw_or_rtw_and_nef_or_rth" == n[0]) {
-                var o = "nef";
-                "naw_or_rtw_and_nef" == n[0] && (o = "nef_only");
-                var s = i.attr(n[0]);
-                t += aaoNearSelection("naw", o, "rtw", s, n, i)
-            } else if ("hlf_or_rw_and_lf" == n[0]) {
-                var s = i.attr(n[0]);
-                t += aaoNearSelection("hlf_only", "rw_only", "lf_only", s, n, i)
-            } else {
-                var s = i.attr(n[0]);
-                t += aao(n[0], i, n[1], s)
-            }
-        });
-        var n = i.attr("custom");
-        if ("" != n) {
-            var o = jQuery.parseJSON(n);
-            $.each(o, function(e, n) {
-                t += aao("custom_" + md5(e), i, e, n)
-            })
-        }
-        return "" != t ? ("undefined" != typeof pressedKeys && (pressedKeys = {}), alert(t)) : aao_available(i.attr("aao_id"), !0), !1
-    }
-
-    function vehicleGroupClickHandler(vehicle_group_element) {
-        var missing = [],
-            vehicle_group_id = $(vehicle_group_element).attr("vehicle_group_id"),
-            vehicle_ids = eval($("#vehicle_group_" + vehicle_group_id).attr("vehicles"));
-        return $.each(vehicle_ids, function(e, t) {
-            $("#vehicle_checkbox_" + t[0]).length <= 0 || $("#vehicle_checkbox_" + t[0]).is(":disabled") ? missing.push(t[1]) : ($("#vehicle_checkbox_" + t[0]).prop("checked", !0), $("#vehicle_checkbox_" + t[0]).change())
-        }), missing.length > 0 && ("undefined" != typeof pressedKeys && (pressedKeys = {}), alert(I18n.t("javascript.missed_vehicle") + " " + missing.join(", ") + ". ")), !1
-    }
     "undefined" != typeof L && (L.Icon.Default.imagePath = "/leaflet/images/"), aao_types = [
         ["ambulance_or_rapid_responder", I18n.t("intervention_order.vehicles.ambulance_or_rapid_responder")],
         ["wasser_amount", I18n.t("intervention_order.vehicles.water_amount")],
