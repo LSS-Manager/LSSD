@@ -598,15 +598,32 @@ function buildingsVehicleLoadVisible() {
     if ($("#building_panel_body").length <= 0) return !0;
     var e = $("#building_panel_body").offset().top - 3 * $("#building_panel_body").height(),
         t = $("#building_panel_body").offset().top + 3 * $("#building_panel_body").height();
-    $("#building_panel_body").is(":visible") && $(".building_list_vehicles:visible").each(function() {
-        var i = $(this).offset().top;
-        i > e && t > i && "0" == $(this).data("vehicles-loaded") && ($(this).data("vehicles-loaded", "1"), buildingsVehicleLoad($(this).data("building_id")))
-    })
+    if ($("#building_panel_body").is(":visible")) {
+        var i = [];
+        $(".building_list_vehicles:visible").each(function() {
+            var n = $(this).offset().top;
+            n > e && t > n && "0" == $(this).data("vehicles-loaded") && ($(this).data("vehicles-loaded", "1"), i.push($(this).data("building_id")))
+        }), i.length > 0 && batchBuildingsVehicleLoad(i)
+    }
 }
 
 function buildingsVehicleLoad(building_id) {
     $.get("/buildings/" + building_id + "/vehiclesMap", function(data) {
         buildingVehicleCache[building_id] = [], eval(data), vehicleContent = "", "undefined" != typeof buildingVehicleCache[building_id] && (vehicleContent = buildingVehicleCache[building_id].join(""), buildingVehicleCache[building_id] = []), $("#vehicle_building_" + building_id).html(vehicleContent)
+    })
+}
+
+function batchBuildingsVehicleLoad(building_id_array) {
+    $.post("/buildings/vehiclesMap", {
+        building_ids: building_id_array
+    }, function(data) {
+        for (var idx = 0; idx < building_id_array.length; idx++) buildingVehicleCache[building_id_array[idx]] = [];
+        eval(data);
+        for (var idx = 0; idx < building_id_array.length; idx++) {
+            var building_id = building_id_array[idx],
+                vehicleContent = "";
+            "undefined" != typeof buildingVehicleCache[building_id] && (vehicleContent = buildingVehicleCache[building_id].join(""), buildingVehicleCache[building_id] = []), $("#vehicle_building_" + building_id).html(vehicleContent)
+        }
     })
 }
 
