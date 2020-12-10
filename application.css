@@ -12357,3 +12357,11 @@ div.sceditor-group{
 .policechief .cookies-eu{
     background-color:#2a6dc0
 }
+@media only screen and (max-width: 1280px){
+    #daily-bonus #daily-bonus-description{
+        display:none
+    }
+    #event-calendar-navbar #event-calendar-navbar-description{
+        display:none
+    }
+}
