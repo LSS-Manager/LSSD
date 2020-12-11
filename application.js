@@ -7130,7 +7130,7 @@ Object.values || (Object.values = function(e) {
                 emergency_ambulance: "Ambulanse eller luftambulanse",
                 fire_truck: "Brannbil",
                 fireboat: "BrannbÃ¥t",
-                fly_car: "Akuttbil",
+                fly_car: "Legebil",
                 fukw: "",
                 fustw_or_police_motorcycle: "Patruljebil eller Politimotorsykkel",
                 fwk: "",
