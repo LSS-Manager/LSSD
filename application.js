@@ -8334,7 +8334,7 @@ Object.values || (Object.values = function(e) {
                 grtw1: "",
                 grukw: "",
                 gw_atemschutz_only: "",
-                gw_gefahrgut: "VPME",
+                gw_gefahrgut: "VPMA",
                 gw_gefahrgut_only: "",
                 gw_hoehenrettung: "GW-HÃ¶henrettung",
                 gw_messtechnik: "GW-Messtechnik",
@@ -28742,7 +28742,8 @@ $(function() {
         ["commerce_police", I18n.t("intervention_order.vehicles.commerce_police")],
         ["elw_police", I18n.t("intervention_order.vehicles.elw_police")],
         ["bike_police", I18n.t("intervention_order.vehicles.bike_police")],
-        ["police_car_3", I18n.t("intervention_order.vehicles.police_car_3")]
+        ["police_car_3", I18n.t("intervention_order.vehicles.police_car_3")],
+        ["helicopter_bucket", I18n.t("intervention_order.vehicles.helicopter_bucket")]
     ], $("#restore_map").click(function() {
         mapViewRestore()
     }), $("#coins_top").click(function() {
@@ -38373,6 +38374,9 @@ I18n.t = function(e, t) {
     }, {
         from: "/images/police_bike.png",
         to: "/images/pc_police_bike.png"
+    }, {
+        from: "/images/police_bucket.png",
+        to: "/images/pc_police_bucket.png"
     }, {
         from: "/images/sign_up.en_US.png",
         to: "/images/policechief_sign_up.en.png"
