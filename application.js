@@ -11123,8 +11123,8 @@ Object.values || (Object.values = function(e) {
                 collect: "KerÃ¤Ã¤",
                 "continue": "Ei",
                 end: "Loppu",
-                next: "Edell.",
-                prev: "Seur.",
+                next: "Seur.",
+                prev: "Edell.",
                 skip: "KyllÃ¤",
                 skip_hint: "Haluatko varmasti peruuttaa opetuspelin? Siihen ei voi palata myÃ¶hemmin. Et saa opetuspelin suorituspalkintoa."
             },
