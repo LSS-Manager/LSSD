@@ -2681,7 +2681,7 @@ Object.values || (Object.values = function(e) {
                 fbi_bomb_tech: "FBI Bomb Technician Vehicle",
                 fbi_drone: "FBI Surveillance Drone",
                 fbi_investigation_unit: "FBI Investigation Wagon",
-                fbi_mcc: "FBI Mobile Command Center",
+                fbi_mobile_command: "FBI Mobile Command Center",
                 fbi_unit: "FBI Unit",
                 fire_aviation: "Fire aviation",
                 fire_truck: "Firetrucks",
