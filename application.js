@@ -158,30 +158,26 @@ function waterCalculator(e) {
         t = $(this).data("need_water")
     });
     var i = $("#mission_water_bar_at_mission_" + e).data("water-has"),
-        n = 25 * $("#mission_water_bar_at_mission_" + e).data("water-schlauchwagen") / 100,
-        o = i;
-    i += i * n;
-    var s = parseInt(100 * (i / t));
-    waterCalculatorSetPercent($("#mission_water_bar_at_mission_" + e), s, 0), $("#mission_water_bar_at_mission_" + e).html(I18n.t("javascript.water_on_site", {
-        amount: number_format(parseInt(i))
-    }));
-    var a = $("#mission_water_bar_driving_" + e).data("water-has"),
-        r = 25 * $("#mission_water_bar_driving_" + e).data("water-schlauchwagen") / 100,
-        l = a;
-    a = a + a * (r + n) + o * r;
-    var c = parseInt(100 * (a / t));
-    waterCalculatorSetPercent($("#mission_water_bar_driving_" + e), c, s), $("#mission_water_bar_driving_" + e).html(I18n.t("javascript.water_approaching", {
-        amount: number_format(parseInt(a))
-    }));
-    var u = $("#mission_water_bar_selected_" + e).data("water-has"),
-        d = 25 * $("#mission_water_bar_selected_" + e).data("water-schlauchwagen") / 100;
-    u = u + u * (d + r + n) + o * d + l * d;
-    var h = parseInt(100 * (u / t));
-    waterCalculatorSetPercent($("#mission_water_bar_selected_" + e), h, c + s), $("#mission_water_bar_selected_" + e).html(I18n.t("javascript.water_selected", {
+        n = $("#mission_water_bar_driving_" + e).data("water-has"),
+        o = $("#mission_water_bar_selected_" + e).data("water-has"),
+        s = $("#mission_water_bar_at_mission_" + e).data("water-modifier") / 100,
+        a = $("#mission_water_bar_driving_" + e).data("water-modifier") / 100,
+        r = $("#mission_water_bar_selected_" + e).data("water-modifier") / 100,
+        l = i + i * s,
+        c = n + n * (a + s) + i * a,
+        u = o + o * (r + a + s) + i * r + n * r,
+        d = parseInt(100 * (l / t)),
+        h = parseInt(100 * (c / t)),
+        p = parseInt(100 * (u / t));
+    waterCalculatorSetPercent($("#mission_water_bar_at_mission_" + e), d, 0), waterCalculatorSetPercent($("#mission_water_bar_driving_" + e), h, d), waterCalculatorSetPercent($("#mission_water_bar_selected_" + e), p, h + d), waterCalculatorSetPercent($("#mission_water_bar_missing_" + e), 100, p + h + d), $("#mission_water_bar_at_mission_" + e).html(I18n.t("javascript.water_on_site", {
+        amount: number_format(parseInt(l))
+    })), $("#mission_water_bar_driving_" + e).html(I18n.t("javascript.water_approaching", {
+        amount: number_format(parseInt(c))
+    })), $("#mission_water_bar_selected_" + e).html(I18n.t("javascript.water_selected", {
         amount: number_format(parseInt(u))
-    })), h + c + s >= 100 ? ($("#mission_water_bar_selected_" + e).addClass("progress-bar-success").removeClass("progress-bar-danger"), $("#mission_water_progress_" + e).addClass("progress-glow-success").removeClass("progress-glow-danger")) : ($("#mission_water_bar_selected_" + e).addClass("progress-bar-danger").removeClass("progress-bar-success"), $("#mission_water_progress_" + e).addClass("progress-glow-danger").removeClass("progress-glow-success")), waterCalculatorSetPercent($("#mission_water_bar_missing_" + e), 100, h + c + s), $("#mission_water_bar_missing_" + e).html(I18n.t("javascript.water_missing", {
-        amount: number_format(parseInt(t) - (parseInt(u) + parseInt(a) + parseInt(i)))
-    }))
+    })), $("#mission_water_bar_missing_" + e).html(I18n.t("javascript.water_missing", {
+        amount: number_format(parseInt(t) - (parseInt(u) + parseInt(c) + parseInt(l)))
+    })), p + h + d >= 100 ? ($("#mission_water_bar_selected_" + e).addClass("progress-bar-success").removeClass("progress-bar-danger"), $("#mission_water_progress_" + e).addClass("progress-glow-success").removeClass("progress-glow-danger")) : ($("#mission_water_bar_selected_" + e).addClass("progress-bar-danger").removeClass("progress-bar-success"), $("#mission_water_progress_" + e).addClass("progress-glow-danger").removeClass("progress-glow-success"))
 }
 
 function missionWindowHasUpdate(e) {
@@ -3387,7 +3383,11 @@ Object.values || (Object.values = function(e) {
             to_mission: "Naar incident",
             understand: "Begrepen",
             user_not_found: "De speler is niet gevonden.",
-            vehicles_not_visible: "Voertuig verborgen."
+            vehicles_not_visible: "Voertuig verborgen.",
+            water_approaching: "Aanrijdend: %{amount} L.",
+            water_missing: "Nog nodig: %{amount} L.",
+            water_on_site: "Ter plaatse: %{amount} L.",
+            water_selected: "Geselecteerd: %{amount} L."
         },
         map: {
             alliance: "Team",
@@ -3581,7 +3581,7 @@ Object.values || (Object.values = function(e) {
                 police_car_3: "NH-O",
                 police_motorcycle: "Dienstmotor Noodhulp",
                 polizeihubschrauber: "Politiehelikopter",
-                rescue_vehicle: "Hulpverleningsvoertuig",
+                rescue_vehicle: "HV of TS-HV",
                 rescue_vehicle_only: "Hulpverleningsvoertuig",
                 rescueboat: "",
                 rettungstreppe: "",
@@ -3612,7 +3612,7 @@ Object.values || (Object.values = function(e) {
                 turntable_ladder: "Redvoertuig",
                 ulf: "",
                 wasserwerfer: "",
-                water_amount: "",
+                water_amount: "Liter water",
                 water_amount_tlf: ""
             }
         },
