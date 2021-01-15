@@ -2707,6 +2707,9 @@ Object.values || (Object.values = function(e) {
                 heavy_air_tanker: "Heavy air tanker",
                 helicopter_bucket: "Helicopter bucket",
                 hems: "HEMS",
+                hint: {
+                    water_amount: ""
+                },
                 hlf_only: "",
                 hlf_or_rw_and_lf: "",
                 hondengeleider: "",
@@ -3552,6 +3555,9 @@ Object.values || (Object.values = function(e) {
                 gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Alleen Slangenwagen / Watertankwagen",
                 hems: "",
+                hint: {
+                    water_amount: "In te voeren in Liters. Voorbeeld: Als je hier 4500 invoert zullen er voertuigen geselecteerd worden tot de gekozen waarde van 4500L is bereikt."
+                },
                 hlf_only: "",
                 hlf_or_rw_and_lf: "",
                 hondengeleider: "Hondengeleider",
@@ -3612,7 +3618,7 @@ Object.values || (Object.values = function(e) {
                 turntable_ladder: "Redvoertuig",
                 ulf: "",
                 wasserwerfer: "",
-                water_amount: "Liter water",
+                water_amount: "Water (in Liters):",
                 water_amount_tlf: ""
             }
         },
