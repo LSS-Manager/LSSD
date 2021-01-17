@@ -3113,7 +3113,7 @@ Object.values || (Object.values = function(e) {
                 emergency_ambulance: "Emergency ambulance or Helicopter",
                 fire_truck: "Fire engines",
                 fireboat: "Large Fireboat",
-                fly_car: "Rapid Response Vehicle",
+                fly_car: "Rapid Response Vehicle / General Practitioner",
                 fukw: "",
                 fwk: "",
                 gefkw: "",
