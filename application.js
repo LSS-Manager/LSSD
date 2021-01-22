@@ -512,7 +512,7 @@ function constructBuildingListElement(e) {
 }
 
 function getBuildingMarkerIcon(e) {
-    return e.user_id == user_id ? building_marker_image = e.icon : e.building_type == BUILDING_TYPE_FEUERWEHRSCHULE ? building_marker_image = "/images/building_fireschool_other.png" : e.building_type == BUILDING_TYPE_FEUERWACHE ? building_marker_image = "/images/building_fire_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSWACHE ? building_marker_image = "/images/building_rettungswache_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSSCHULE ? building_marker_image = "/images/building_rettungsschule_other.png" : e.building_type == BUILDING_TYPE_CLINIC ? building_marker_image = "/images/building_clinic_other.png" : e.building_type == BUILDING_TYPE_HOSPITAL ? building_marker_image = "/images/building_hospital_other.png" : e.building_type == BUILDING_TYPE_NOTARZTHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIWACHE || e.building_type == BUILDING_TYPE_POLIZEIZELLE ? building_marker_image = "/images/building_polizeiwache_other.png" : e.building_type == BUILDING_TYPE_LEITSTELLE ? building_marker_image = "/images/building_leitstelle_other.png" : e.building_type == BUILDING_TYPE_POLIZEISCHULE ? building_marker_image = "/images/building_polizeischule_other.png" : e.building_type == BUILDING_TYPE_THW ? building_marker_image = "/images/building_thw_other.png" : e.building_type == BUILDING_TYPE_THW_BUNDESSCHULE ? building_marker_image = "/images/building_thw_school_other.png" : e.building_type == BUILDING_TYPE_BEREITSCHAFTSPOLIZEI ? building_marker_image = "/images/building_bereitschaftspolizei_other.png" : e.building_type == BUILDING_TYPE_POLIZEISONDEREINHEITEN ? building_marker_image = "/images/building_polizeisondereinheiten_other.png" : e.building_type == BUILDING_TYPE_SEG ? building_marker_image = "/images/building_seg_other.png" : e.building_type == BUILDING_TYPE_BEREITSTELLUNGSRAUM ? building_marker_image = "/images/building_bereitstellungsraum_other.png" : e.building_type == BUILDING_TYPE_WASSERRETTUNG ? building_marker_image = "/images/building_wasserwacht_other.png" : e.building_type == BUILDING_TYPE_FIRE_BOAT_DOCK ? building_marker_image = "/images/building_fire_boat_dock_other.png" : e.building_type == BUILDING_TYPE_RESCUE_BOAT_DOCK ? building_marker_image = "/images/building_rescue_boat_dock_other.png" : e.building_type == BUILDING_TYPE_RESCUE_DOG_UNIT ? building_marker_image = "/images/building_rescue_dog_unit_other.png" : e.building_type == BUILDING_TYPE_FIRE_AVIATION_STATION ? building_marker_image = "/images/building_fire_aviation_station_other.png" : e.building_type == BUILDING_TYPE_FEDERAL_POLICE_STATION ? building_marker_image = "/images/building_federal_police_other.png" : e.building_type == BUILDING_TYPE_HOME_RESPONSE_LOCATION ? building_marker_image = "/images/building_home_response_location_other.png" : e.building_type == BUILDING_TYPE_COMMERCE_POLICE ? building_marker_image = "/images/building_commerce_police_other.png" : e.building_type == BUILDING_TYPE_BOMB_DISPOSAL && (building_marker_image = "/images/building_bomb_disposal_other.png"), flavouredAsset(building_marker_image)
+    return e.user_id == user_id ? building_marker_image = e.icon : e.building_type == BUILDING_TYPE_FEUERWEHRSCHULE ? building_marker_image = "/images/building_fireschool_other.png" : e.building_type == BUILDING_TYPE_FEUERWACHE ? building_marker_image = "/images/building_fire_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSWACHE ? building_marker_image = "/images/building_rettungswache_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSSCHULE ? building_marker_image = "/images/building_rettungsschule_other.png" : e.building_type == BUILDING_TYPE_CLINIC ? building_marker_image = "/images/building_clinic_other.png" : e.building_type == BUILDING_TYPE_HOSPITAL ? building_marker_image = "/images/building_hospital_other.png" : e.building_type == BUILDING_TYPE_NOTARZTHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIWACHE || e.building_type == BUILDING_TYPE_POLIZEIZELLE ? building_marker_image = "/images/building_polizeiwache_other.png" : e.building_type == BUILDING_TYPE_LEITSTELLE ? building_marker_image = "/images/building_leitstelle_other.png" : e.building_type == BUILDING_TYPE_POLIZEISCHULE ? building_marker_image = "/images/building_polizeischule_other.png" : e.building_type == BUILDING_TYPE_THW ? building_marker_image = "/images/building_thw_other.png" : e.building_type == BUILDING_TYPE_THW_BUNDESSCHULE ? building_marker_image = "/images/building_thw_school_other.png" : e.building_type == BUILDING_TYPE_BEREITSCHAFTSPOLIZEI ? building_marker_image = "/images/building_bereitschaftspolizei_other.png" : e.building_type == BUILDING_TYPE_POLIZEISONDEREINHEITEN ? building_marker_image = "/images/building_polizeisondereinheiten_other.png" : e.building_type == BUILDING_TYPE_SEG ? building_marker_image = "/images/building_seg_other.png" : e.building_type == BUILDING_TYPE_BEREITSTELLUNGSRAUM ? building_marker_image = "/images/building_bereitstellungsraum_other.png" : e.building_type == BUILDING_TYPE_WASSERRETTUNG ? building_marker_image = "/images/building_wasserwacht_other.png" : e.building_type == BUILDING_TYPE_FIRE_BOAT_DOCK ? building_marker_image = "/images/building_fire_boat_dock_other.png" : e.building_type == BUILDING_TYPE_RESCUE_BOAT_DOCK ? building_marker_image = "/images/building_rescue_boat_dock_other.png" : e.building_type == BUILDING_TYPE_RESCUE_DOG_UNIT ? building_marker_image = "/images/building_rescue_dog_unit_other.png" : e.building_type == BUILDING_TYPE_FIRE_AVIATION_STATION ? building_marker_image = "/images/building_fire_aviation_station_other.png" : e.building_type == BUILDING_TYPE_FEDERAL_POLICE_STATION ? building_marker_image = "/images/building_federal_police_other.png" : e.building_type == BUILDING_TYPE_HOME_RESPONSE_LOCATION ? building_marker_image = "/images/building_home_response_location_other.png" : e.building_type == BUILDING_TYPE_COMMERCE_POLICE ? building_marker_image = "/images/building_commerce_police_other.png" : e.building_type == BUILDING_TYPE_BOMB_DISPOSAL ? building_marker_image = "/images/building_bomb_disposal_other.png" : e.building_type == BUILDING_TYPE_WATER_RESCUE_SCHOOL && (building_marker_image = "/images/building_water_rescue_school_other.png"), flavouredAsset(building_marker_image)
 }
 
 function spliceLatLngs(e, t) {
@@ -6724,13 +6724,13 @@ Object.values || (Object.values = function(e) {
                 emergency_ambulance: "Ambulance eller Rednings Helikopter",
                 fire_truck: "Brandbiler",
                 fireboat: "Stor brandbÃ¥d",
-                fly_car: "Flyvebil",
+                fly_car: "AkutÃ¦ge",
                 fukw: "",
                 fustw_or_police_motorcycle: "Patruljevogn eller Politimotorcykel",
                 fwk: "",
                 gefkw: "",
                 gkw: "Servicebil",
-                grtw: "Masseenhed",
+                grtw: "Mobil Behandlingsplads",
                 grtw0: "",
                 grtw1: "",
                 grukw: "",
@@ -6751,7 +6751,7 @@ Object.values || (Object.values = function(e) {
                 hondengeleider: "",
                 k9: "Hundepatrulje",
                 kdow_lna: "",
-                kdow_orgl: "Redningschef",
+                kdow_orgl: "AkutlÃ¦ge Indsatsleder",
                 ktw_b: "",
                 ktw_or_rtw: "",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
@@ -7537,7 +7537,7 @@ Object.values || (Object.values = function(e) {
                 any_traffic_car: "Vozidlo vyÅ¡etÅ™ovatelÅ¯ DN",
                 arff: "LetiÅ¡tnÃ­ speciÃ¡l",
                 battalion_chief_unit: "VelitelskÃ½ automobil",
-                boot: "LodÄ› (obecnÄ›)",
+                boot: "PÅ™Ã­vÄ›s se Älunem",
                 dekon_p: "",
                 division_chief_unit: "VelitelskÃ© vozidlo",
                 dlk_or_tm50: "",
@@ -7566,8 +7566,8 @@ Object.values || (Object.values = function(e) {
                 gw_messtechnik: "DetekÄnÃ­ jednotka",
                 gw_oel_only: "",
                 gw_san: "",
-                gw_taucher: "",
-                gw_wasserrettung: "VodnÃ­ zÃ¡chrannÃ¡ sluÅ¾ba",
+                gw_taucher: "PotÃ¡pÄ›ÄskÃ½ automobil",
+                gw_wasserrettung: "SUV VZS ÄŒÄŒK nebo DodÃ¡vka VZS ÄŒÄŒK",
                 gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Vozidlo s hadicÃ­",
                 hems: "LZS",
@@ -7586,7 +7586,7 @@ Object.values || (Object.values = function(e) {
                 mek_mtf: "",
                 mek_zf: "",
                 mtw: "TransportnÃ­ tÃ½movÃ½ vÅ¯z",
-                mzb: "VÃ­ceÃºÄelovÃ¡ loÄ",
+                mzb: "PÅ™Ã­vÄ›s se Älunem",
                 naw: "",
                 naw_or_rtw_and_nef: "",
                 naw_or_rtw_and_nef_or_rth: "",
