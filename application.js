@@ -2070,6 +2070,7 @@ Object.values || (Object.values = function(e) {
             minutes: "Min.",
             missed_vehicle: "Es fehlen:",
             mission_start_in: "Beginn in:",
+            "new": "Neu",
             not_found_map: "Das Fahrzeug wurde auf der Karte nicht gefunden",
             now: "Sofort",
             patient: "Patienten",
@@ -2493,6 +2494,7 @@ Object.values || (Object.values = function(e) {
             minutes: "min.",
             missed_vehicle: "It lacks:",
             mission_start_in: "Starts in:",
+            "new": "New",
             not_found_map: "The vehicle hasn't been found on the map",
             now: "Now",
             patient: "Patient",
@@ -2954,6 +2956,7 @@ Object.values || (Object.values = function(e) {
             minutes: "min.",
             missed_vehicle: "It lacks:",
             mission_start_in: "Starts in:",
+            "new": "New",
             not_found_map: "The vehicle hasn't been found on the map",
             now: "Now",
             patient: "Patient",
@@ -3368,6 +3371,7 @@ Object.values || (Object.values = function(e) {
             minutes: "minuten",
             missed_vehicle: "Niet beschikbaar:",
             mission_start_in: "Begint in:",
+            "new": "Nieuw",
             not_found_map: "Het voertuig is niet gevonden op de kaart",
             now: "Nu",
             patient: "PatiÃ«nten",
@@ -3795,6 +3799,7 @@ Object.values || (Object.values = function(e) {
             minutes: "min.",
             missed_vehicle: "Falta:",
             mission_start_in: "Comienza en:",
+            "new": "Nuevo",
             not_found_map: "No se ha encontrado el vehÃ­culo en el mapa",
             now: "Ahora",
             patient: "Paciente",
@@ -4169,6 +4174,7 @@ Object.values || (Object.values = function(e) {
             minutes: "min.",
             missed_vehicle: "It lacks:",
             mission_start_in: "Starts in:",
+            "new": "New",
             not_found_map: "The vehicle hasn't been found on the map",
             now: "Now",
             patient: "Patient",
@@ -4583,6 +4589,7 @@ Object.values || (Object.values = function(e) {
             minutes: "min",
             missed_vehicle: "Det saknar:",
             mission_start_in: "BÃ¶rjar om:",
+            "new": "Ny",
             not_found_map: "Fordonet kunde inte hittas pÃ¥ kartan",
             now: "Nu",
             patient: "Patient",
@@ -4950,6 +4957,7 @@ Object.values || (Object.values = function(e) {
             minutes: "min",
             missed_vehicle: "Brakuje:",
             mission_start_in: "PoczÄ…tek za:",
+            "new": "Nowy",
             not_found_map: "Nie znaleziono pojazdu na mapie",
             now: "Teraz",
             patient: "Pacjent",
@@ -5367,6 +5375,7 @@ Object.values || (Object.values = function(e) {
             minutes: "min.",
             missed_vehicle: "Manca:",
             mission_start_in: "Inizia tra:",
+            "new": "Nuovo",
             not_found_map: "Il veicolo non Ã¨ stato trovato sulla mappa",
             now: "Adesso",
             patient: "Paziente",
@@ -5781,6 +5790,7 @@ Object.values || (Object.values = function(e) {
             minutes: "min",
             missed_vehicle: "Il manqueÂ :",
             mission_start_in: "Commence dansÂ :",
+            "new": "Neuf",
             not_found_map: "Impossible de trouver le vÃ©hicule sur la carte",
             now: "Maintenant",
             patient: "Patient",
@@ -6194,6 +6204,7 @@ Object.values || (Object.values = function(e) {
             minutes: "Ð¼Ð¸Ð½.",
             missed_vehicle: "ÐÐµ Ñ…Ð²Ð°Ñ‚Ð°ÐµÑ‚:",
             mission_start_in: "ÐÐ°Ñ‡Ð¸Ð½Ð°ÐµÑ‚ÑÑ Ñ‡ÐµÑ€ÐµÐ·:",
+            "new": "ÐÐ¾Ð²Ñ‹Ð¹",
             not_found_map: "ÐœÐ°ÑˆÐ¸Ð½Ð° Ð½Ðµ Ð¾Ð±Ð½Ð°Ñ€ÑƒÐ¶ÐµÐ½Ð° Ð½Ð° ÐºÐ°Ñ€Ñ‚Ðµ",
             now: "Ð¡ÐµÐ¹Ñ‡Ð°Ñ",
             patient: "ÐŸÐ°Ñ†Ð¸ÐµÐ½Ñ‚",
@@ -6567,6 +6578,7 @@ Object.values || (Object.values = function(e) {
             minutes: "min.",
             missed_vehicle: "Mangler:",
             mission_start_in: "Begynder om:",
+            "new": "Ny",
             not_found_map: "KÃ¸retÃ¸jet blev ikke fundet pÃ¥ kortet",
             now: "Nu",
             patient: "Patient",
@@ -6757,7 +6769,7 @@ Object.values || (Object.values = function(e) {
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
                 lf_only: "Brandbiler",
                 long_distance_ambulance: "Regionsambulance",
-                mask_service_unit: "Mobil luftenhed",
+                mask_service_unit: "HÃ¸jtrykskompressor",
                 mek_mtf: "",
                 mek_zf: "",
                 mtw: "Mandskabstransport",
@@ -6773,7 +6785,7 @@ Object.values || (Object.values = function(e) {
                 police_car: "Patruljebil",
                 police_motorcycle: "Politimotorcykel",
                 polizeihubschrauber: "Politihelikopter",
-                rescue_vehicle: "Tungt redningskÃ¸retÃ¸j",
+                rescue_vehicle: "Redningsvogn",
                 rescue_vehicle_only: "Tung redning",
                 rescueboat: "Stor redningsbÃ¥d",
                 rettungstreppe: "",
@@ -6979,6 +6991,7 @@ Object.values || (Object.values = function(e) {
             minutes: "min.",
             missed_vehicle: "Mangler:",
             mission_start_in: "Starter om:",
+            "new": "Ny",
             not_found_map: "Fremkomstmiddelet ble ikke funnet pÃ¥ kartet",
             now: "NÃ¥",
             patient: "Pasient",
@@ -7391,6 +7404,7 @@ Object.values || (Object.values = function(e) {
             minutes: "min",
             missed_vehicle: "ChybÃ­:",
             mission_start_in: "ZaÄne za:",
+            "new": "NovÃ½",
             not_found_map: "Vozidlo nebylo nalezeno nikde na mapÄ›",
             now: "TeÄ",
             patient: "Pacient",
@@ -7804,6 +7818,7 @@ Object.values || (Object.values = function(e) {
             minutes: "dk.",
             missed_vehicle: "Eksik:",
             mission_start_in: "BaÅŸlÄ±yor:",
+            "new": "Yeni",
             not_found_map: "AraÃ§ haritada bulunamadÄ±",
             now: "Åžimdi",
             patient: "Hasta",
@@ -8175,6 +8190,7 @@ Object.values || (Object.values = function(e) {
             minutes: "min.",
             missed_vehicle: "Falta:",
             mission_start_in: "ComeÃ§a em:",
+            "new": "Novo",
             not_found_map: "O veÃ­culo nÃ£o foi encontrado no mapa",
             now: "Agora",
             patient: "Paciente",
@@ -8583,6 +8599,7 @@ Object.values || (Object.values = function(e) {
             minutes: "min.",
             missed_vehicle: "Falta:",
             mission_start_in: "ComeÃ§a em:",
+            "new": "Novo",
             not_found_map: "O veÃ­culo nÃ£o foi encontrado no mapa",
             now: "Agora",
             patient: "Paciente",
@@ -8955,6 +8972,7 @@ Object.values || (Object.values = function(e) {
             minutes: "Ñ…Ð².",
             missed_vehicle: "ÐÐµ Ð²Ð¸ÑÑ‚Ð°Ñ‡Ð°Ñ”:",
             mission_start_in: "ÐŸÐ¾Ñ‡Ð°Ñ‚Ð¾Ðº Ñ‡ÐµÑ€ÐµÐ·:",
+            "new": "ÐÐ¾Ð²Ð¸Ð¹",
             not_found_map: "ÐœÐ°ÑˆÐ¸Ð½Ñƒ Ð½Ðµ Ð·Ð½Ð°Ð¹Ð´ÐµÐ½Ð¾ Ð½Ð° ÐºÐ°Ñ€Ñ‚Ñ–",
             now: "Ð—Ð°Ñ€Ð°Ð·",
             patient: "ÐŸÐ°Ñ†Ñ–Ñ”Ð½Ñ‚",
@@ -9327,6 +9345,7 @@ Object.values || (Object.values = function(e) {
             minutes: "min.",
             missed_vehicle: "Falta:",
             mission_start_in: "Comienza en:",
+            "new": "Nuevo",
             not_found_map: "No se ha encontrado el vehÃ­culo en el mapa",
             now: "Ahora",
             patient: "Paciente",
@@ -9699,6 +9718,7 @@ Object.values || (Object.values = function(e) {
             minutes: "åˆ†",
             missed_vehicle: "ä¸è¶³ï¼š",
             mission_start_in: "é–‹å§‹ã¾ã§:",
+            "new": "æ–°ç€",
             not_found_map: "è»Šä¸¡ãŒãƒžãƒƒãƒ—ä¸Šã«è¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸ",
             now: "ä»Š",
             patient: "æ‚£è€…",
@@ -10065,6 +10085,7 @@ Object.values || (Object.values = function(e) {
             minutes: "ë¶„",
             missed_vehicle: "ë¶€ì¡±ëŸ‰:",
             mission_start_in: "ì‹œìž‘ê¹Œì§€:",
+            "new": "ìƒˆë¡œìš´",
             not_found_map: "ì§€ë„ìƒì—ì„œ ì°¨ëŸ‰ì„ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤",
             now: "ì§€ê¸ˆ",
             patient: "í™˜ìž",
@@ -10437,6 +10458,7 @@ Object.values || (Object.values = function(e) {
             minutes: "min.",
             missed_vehicle: "ÃŽi lipseÈ™te:",
             mission_start_in: "ÃŽncepe Ã®n:",
+            "new": "Nou",
             not_found_map: "Vehiculul nu a fost gÄƒsit pe hartÄƒ",
             now: "Acum",
             patient: "Pacient",
@@ -10809,6 +10831,7 @@ Object.values || (Object.values = function(e) {
             minutes: "min",
             missed_vehicle: "Puuttuu:",
             mission_start_in: "Alkamiseen:",
+            "new": "Uusi",
             not_found_map: "Ajoneuvoa ei lÃ¶ytynyt kartalta.",
             now: "Nyt",
             patient: "Potilas",
@@ -11221,6 +11244,7 @@ Object.values || (Object.values = function(e) {
             minutes: "min.",
             missed_vehicle: "ChÃ½ba:",
             mission_start_in: "ZaÄiatok:",
+            "new": "NovÃ½",
             not_found_map: "Vozidlo sa nenaÅ¡lo na mape",
             now: "Teraz",
             patient: "Pacient",
@@ -30140,8 +30164,8 @@ function(e) {
                 o = !1,
                 s = this.settings;
             switch (e('[data-notify-position="' + this.settings.placement.from + "-" + this.settings.placement.align + '"]:not([data-closing="true"])').each(function() {
-                return i = Math.max(i, parseInt(e(this).css(s.placement.from)) + parseInt(e(this).outerHeight()) + parseInt(s.spacing))
-            }), 1 == this.settings.newest_on_top && (i = this.settings.offset.y), n[this.settings.placement.from] = i + "px", this.settings.placement.align) {
+                    return i = Math.max(i, parseInt(e(this).css(s.placement.from)) + parseInt(e(this).outerHeight()) + parseInt(s.spacing))
+                }), 1 == this.settings.newest_on_top && (i = this.settings.offset.y), n[this.settings.placement.from] = i + "px", this.settings.placement.align) {
                 case "left":
                 case "right":
                     n[this.settings.placement.align] = this.settings.offset.x + "px";
@@ -36524,8 +36548,8 @@ var bind = function(e, t) {
         }, t.prototype._showBackground = function(t, n) {
             var o, s, a, r, l, c, u, d, h;
             for (a = e(i).height(), h = e(i).width(), u = ["top", "bottom", "left", "right"], d = [], r = 0, l = u.length; l > r; r++) switch (c = u[r], o = null != (s = this.backdrops)[c] ? s[c] : s[c] = e("<div>", {
-                "class": "tour-backdrop " + c
-            }), e(t.backdropContainer).append(o), c) {
+                    "class": "tour-backdrop " + c
+                }), e(t.backdropContainer).append(o), c) {
                 case "top":
                     d.push(o.height(n.offset.top > 0 ? n.offset.top : 0).width(h).offset({
                         top: 0,
