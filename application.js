@@ -46,7 +46,13 @@ function aao_check(e, t, i) {
     var n = -3;
     if (i > 0) {
         n = 0;
-        var o = $(aao_source_element + " input").filter(function() {
+        var o;
+        if (-1 !== e.indexOf("vehicle_type_id_")) {
+            var s = e.substring(16);
+            o = $(aao_source_element + " input").filter(function() {
+                return $(this).attr("vehicle_type_id") === s
+            })
+        } else o = $(aao_source_element + " input").filter(function() {
             return $(this).attr(e) > 0
         });
         o.each(function() {
@@ -78,7 +84,13 @@ function aaoNextAvailable(e, t) {
 
 function aao(e, t, i, n) {
     if (n > 0) {
-        var o = $(aao_source_element + " input").filter(function() {
+        var o;
+        if (-1 !== e.indexOf("vehicle_type_id_")) {
+            var s = e.substring(16);
+            o = $(aao_source_element + " input").filter(function() {
+                return $(this).attr("vehicle_type_id") === s
+            })
+        } else o = $(aao_source_element + " input").filter(function() {
             return $(this).attr(e) > 0
         });
         o.each(function() {
@@ -281,6 +293,16 @@ function aaoClickHandler(e) {
         var o = jQuery.parseJSON(n);
         $.each(o, function(e, n) {
             t += aao("custom_" + md5(e), i, e, n)
+        })
+    }
+    var s = i.attr("vehicle_type_ids"),
+        a = i.attr("vehicle_type_captions");
+    if (void 0 !== s && void 0 !== a) {
+        var r = jQuery.parseJSON(s),
+            a = jQuery.parseJSON(a);
+        $.each(r, function(e, n) {
+            var o = a[e];
+            t += aao("vehicle_type_id_" + e, i, o, n)
         })
     }
     return "" != t ? ("undefined" != typeof pressedKeys && (pressedKeys = {}), alert(t)) : aao_available(i.attr("aao_id"), !0), !1
@@ -1493,14 +1515,16 @@ function aao_maxtime(e, t) {
 function aao_available(e, t) {
     var i = !0,
         n = -1;
-    if ("undefined" == typeof t && (t = !1), t || !$("#available_aao_" + e).hasClass("label-success")) {
-        $.each(aao_types, function(t, o) {
-            var s = $("#aao_" + e).attr(o[0]);
+    "undefined" == typeof t && (t = !1);
+    var o = $("#aao_" + e);
+    if (t || !$("#available_aao_" + e).hasClass("label-success")) {
+        $.each(aao_types, function(e, t) {
+            var s = o.attr(t[0]);
             if (s > 0)
-                if ("hlf_or_rw_and_lf" == o[0]) {
-                    var a = aao_check("hlf_only", $("#aao_" + e), s),
-                        r = aao_check("rw_only", $("#aao_" + e), s),
-                        l = aao_check("lf_only", $("#aao_" + e), s);
+                if ("hlf_or_rw_and_lf" == t[0]) {
+                    var a = aao_check("hlf_only", o, s),
+                        r = aao_check("rw_only", o, s),
+                        l = aao_check("lf_only", o, s);
                     if ((a || r) && l) {
                         if (a && r && l) {
                             var c = aao_maxtime(-1, a),
@@ -1518,12 +1542,12 @@ function aao_available(e, t) {
                             n = aao_maxtime(n, a)
                         }
                     } else i = !1
-                } else if ("naw_or_rtw_and_nef" == o[0] || "naw_or_rtw_and_nef_or_rth" == o[0]) {
+                } else if ("naw_or_rtw_and_nef" == t[0] || "naw_or_rtw_and_nef_or_rth" == t[0]) {
                 var h = "nef";
-                "naw_or_rtw_and_nef" == o[0] && (h = "nef_only");
-                var a = aao_check("naw", $("#aao_" + e), s),
-                    r = aao_check(h, $("#aao_" + e), s),
-                    l = aao_check("rtw", $("#aao_" + e), s);
+                "naw_or_rtw_and_nef" == t[0] && (h = "nef_only");
+                var a = aao_check("naw", o, s),
+                    r = aao_check(h, o, s),
+                    l = aao_check("rtw", o, s);
                 if (a || r && l) {
                     if (a && r && l) {
                         var c = aao_maxtime(-1, a),
@@ -1542,15 +1566,23 @@ function aao_available(e, t) {
                     }
                 } else i = !1
             } else {
-                var p = aao_check(o[0], $("#aao_" + e), s);
+                var p = aao_check(t[0], o, s);
                 n = aao_maxtime(n, p), p || (i = !1)
             }
         });
-        var o = $("#aao_" + e).attr("custom");
-        if ("" != o) {
-            var s = jQuery.parseJSON(o);
-            $.each(s, function(t, o) {
-                var s = aao_check("custom_" + md5(t), $("#aao_" + e), o);
+        var s = o.attr("custom");
+        if ("" != s) {
+            var a = jQuery.parseJSON(s);
+            $.each(a, function(e, t) {
+                var s = aao_check("custom_" + md5(e), o, t);
+                n = aao_maxtime(n, s), s || (i = !1)
+            })
+        }
+        var r = o.attr("vehicle_type_ids");
+        if (void 0 !== r) {
+            var l = jQuery.parseJSON(r);
+            $.each(l, function(e, t) {
+                var s = aao_check("vehicle_type_id_" + e, o, t);
                 n = aao_maxtime(n, s), s || (i = !1)
             })
         }
