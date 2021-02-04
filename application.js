@@ -4640,7 +4640,11 @@ Object.values || (Object.values = function(e) {
             to_mission: "Visa uppdrag",
             understand: "Acceptera",
             user_not_found: "Spelaren kunde inte hittas.",
-            vehicles_not_visible: "Fordon syns inte. "
+            vehicles_not_visible: "Fordon syns inte. ",
+            water_approaching: "PÃ¥vÃ¤g: %{amount} liter",
+            water_missing: "Saknas: %{amount} liter",
+            water_on_site: "PÃ¥ plats: %{amount} liter",
+            water_selected: "Valt: %{amount} liter"
         },
         map: {
             alliance: "Allians",
@@ -4773,6 +4777,7 @@ Object.values || (Object.values = function(e) {
                 elw1_or_elw2: "BrandbefÃ¤l eller Ledningsfordon",
                 elw2_or_ab_elw: "RÃ¤ddningspump eller stÃ¶denhet och brandbil",
                 emergency_ambulance: "Ambulans eller Helikopter",
+                fire_aviation: "Brandflygsenhet",
                 fire_truck: "SlÃ¤ckbilar",
                 fireboat: "Stor brandbÃ¥t",
                 fly_car: "Flygbil",
@@ -4814,7 +4819,8 @@ Object.values || (Object.values = function(e) {
                 thw_mzkw: "Minibuss",
                 thw_tauchkraftwagen: "Dykgrupp",
                 tlf_only: "Tankbil",
-                turntable_ladder: "Stegbilar"
+                turntable_ladder: "Stegbilar",
+                water_amount: "Liter av vatten"
             }
         },
         tutorial: {
