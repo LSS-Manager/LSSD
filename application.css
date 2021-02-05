@@ -9479,6 +9479,10 @@ body.bigMap #building_panel_body{
     background-image:url(/images/halloween.jpg);
     background-size:auto 100%
 }
+.valentinesbar{
+    background-image:url(/images/valentinesbar.png);
+    background-size:auto 100%
+}
 .sinterklaasbar{
     background-image:url(/images/sinterklaasbar.png);
     background-size:auto 100%
@@ -12335,6 +12339,10 @@ div.sceditor-group{
 }
 .policechief .halloweenbar{
     background-image:url(/images/policechief_halloween.jpg);
+    background-size:auto 100%
+}
+.policechief .valentinesbar{
+    background-image:url(/images/policechief_valentinesbar.png);
     background-size:auto 100%
 }
 .policechief .weihnachtenbar{
