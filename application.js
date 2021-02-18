@@ -534,7 +534,7 @@ function constructBuildingListElement(e) {
 }
 
 function getBuildingMarkerIcon(e) {
-    return e.user_id == user_id ? building_marker_image = e.icon : e.building_type == BUILDING_TYPE_FEUERWEHRSCHULE ? building_marker_image = "/images/building_fireschool_other.png" : e.building_type == BUILDING_TYPE_FEUERWACHE ? building_marker_image = "/images/building_fire_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSWACHE ? building_marker_image = "/images/building_rettungswache_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSSCHULE ? building_marker_image = "/images/building_rettungsschule_other.png" : e.building_type == BUILDING_TYPE_CLINIC ? building_marker_image = "/images/building_clinic_other.png" : e.building_type == BUILDING_TYPE_HOSPITAL ? building_marker_image = "/images/building_hospital_other.png" : e.building_type == BUILDING_TYPE_NOTARZTHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIWACHE || e.building_type == BUILDING_TYPE_POLIZEIZELLE ? building_marker_image = "/images/building_polizeiwache_other.png" : e.building_type == BUILDING_TYPE_LEITSTELLE ? building_marker_image = "/images/building_leitstelle_other.png" : e.building_type == BUILDING_TYPE_POLIZEISCHULE ? building_marker_image = "/images/building_polizeischule_other.png" : e.building_type == BUILDING_TYPE_THW ? building_marker_image = "/images/building_thw_other.png" : e.building_type == BUILDING_TYPE_THW_BUNDESSCHULE ? building_marker_image = "/images/building_thw_school_other.png" : e.building_type == BUILDING_TYPE_BEREITSCHAFTSPOLIZEI ? building_marker_image = "/images/building_bereitschaftspolizei_other.png" : e.building_type == BUILDING_TYPE_POLIZEISONDEREINHEITEN ? building_marker_image = "/images/building_polizeisondereinheiten_other.png" : e.building_type == BUILDING_TYPE_SEG ? building_marker_image = "/images/building_seg_other.png" : e.building_type == BUILDING_TYPE_BEREITSTELLUNGSRAUM ? building_marker_image = "/images/building_bereitstellungsraum_other.png" : e.building_type == BUILDING_TYPE_WASSERRETTUNG ? building_marker_image = "/images/building_wasserwacht_other.png" : e.building_type == BUILDING_TYPE_FIRE_BOAT_DOCK ? building_marker_image = "/images/building_fire_boat_dock_other.png" : e.building_type == BUILDING_TYPE_RESCUE_BOAT_DOCK ? building_marker_image = "/images/building_rescue_boat_dock_other.png" : e.building_type == BUILDING_TYPE_RESCUE_DOG_UNIT ? building_marker_image = "/images/building_rescue_dog_unit_other.png" : e.building_type == BUILDING_TYPE_FIRE_AVIATION_STATION ? building_marker_image = "/images/building_fire_aviation_station_other.png" : e.building_type == BUILDING_TYPE_FEDERAL_POLICE_STATION ? building_marker_image = "/images/building_federal_police_other.png" : e.building_type == BUILDING_TYPE_HOME_RESPONSE_LOCATION ? building_marker_image = "/images/building_home_response_location_other.png" : e.building_type == BUILDING_TYPE_COMMERCE_POLICE ? building_marker_image = "/images/building_commerce_police_other.png" : e.building_type == BUILDING_TYPE_BOMB_DISPOSAL ? building_marker_image = "/images/building_bomb_disposal_other.png" : e.building_type == BUILDING_TYPE_WATER_RESCUE_SCHOOL && (building_marker_image = "/images/building_water_rescue_school_other.png"), flavouredAsset(building_marker_image)
+    return e.user_id == user_id ? building_marker_image = e.icon : e.building_type == BUILDING_TYPE_FEUERWEHRSCHULE ? building_marker_image = "/images/building_fireschool_other.png" : e.building_type == BUILDING_TYPE_FEUERWACHE ? building_marker_image = "/images/building_fire_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSWACHE ? building_marker_image = "/images/building_rettungswache_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSSCHULE ? building_marker_image = "/images/building_rettungsschule_other.png" : e.building_type == BUILDING_TYPE_CLINIC ? building_marker_image = "/images/building_clinic_other.png" : e.building_type == BUILDING_TYPE_HOSPITAL ? building_marker_image = "/images/building_hospital_other.png" : e.building_type == BUILDING_TYPE_NOTARZTHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIWACHE || e.building_type == BUILDING_TYPE_POLIZEIZELLE ? building_marker_image = "/images/building_polizeiwache_other.png" : e.building_type == BUILDING_TYPE_LEITSTELLE ? building_marker_image = "/images/building_leitstelle_other.png" : e.building_type == BUILDING_TYPE_POLIZEISCHULE ? building_marker_image = "/images/building_polizeischule_other.png" : e.building_type == BUILDING_TYPE_THW ? building_marker_image = "/images/building_thw_other.png" : e.building_type == BUILDING_TYPE_THW_BUNDESSCHULE ? building_marker_image = "/images/building_thw_school_other.png" : e.building_type == BUILDING_TYPE_BEREITSCHAFTSPOLIZEI ? building_marker_image = "/images/building_bereitschaftspolizei_other.png" : e.building_type == BUILDING_TYPE_POLIZEISONDEREINHEITEN ? building_marker_image = "/images/building_polizeisondereinheiten_other.png" : e.building_type == BUILDING_TYPE_SEG ? building_marker_image = "/images/building_seg_other.png" : e.building_type == BUILDING_TYPE_BEREITSTELLUNGSRAUM ? building_marker_image = "/images/building_bereitstellungsraum_other.png" : e.building_type == BUILDING_TYPE_WASSERRETTUNG ? building_marker_image = "/images/building_wasserwacht_other.png" : e.building_type == BUILDING_TYPE_FIRE_BOAT_DOCK ? building_marker_image = "/images/building_fire_boat_dock_other.png" : e.building_type == BUILDING_TYPE_RESCUE_BOAT_DOCK ? building_marker_image = "/images/building_rescue_boat_dock_other.png" : e.building_type == BUILDING_TYPE_RESCUE_DOG_UNIT ? building_marker_image = "/images/building_rescue_dog_unit_other.png" : e.building_type == BUILDING_TYPE_FIRE_AVIATION_STATION ? building_marker_image = "/images/building_fire_aviation_station_other.png" : e.building_type == BUILDING_TYPE_FEDERAL_POLICE_STATION ? building_marker_image = "/images/building_federal_police_other.png" : e.building_type == BUILDING_TYPE_HOME_RESPONSE_LOCATION ? building_marker_image = "/images/building_home_response_location_other.png" : e.building_type == BUILDING_TYPE_COMMERCE_POLICE ? building_marker_image = "/images/building_commerce_police_other.png" : e.building_type == BUILDING_TYPE_BOMB_DISPOSAL ? building_marker_image = "/images/building_bomb_disposal_other.png" : e.building_type == BUILDING_TYPE_COMPLEX ? building_marker_image = "/images/building_complex_other.png" : e.building_type == BUILDING_TYPE_WATER_RESCUE_SCHOOL && (building_marker_image = "/images/building_water_rescue_school_other.png"), flavouredAsset(building_marker_image)
 }
 
 function spliceLatLngs(e, t) {
@@ -1090,8 +1090,8 @@ function creditsUpdate(e) {
     $("#navigation_top").html(t), "" != i && i != t && highlightElement($("#navigation_top"))
 }
 
-function tasksUpdate(e) {
-    $("#completed_tasks_counter").html(e), e > 0 ? ($("#completed_tasks_counter").removeClass("hidden"), $("#menu_profile").addClass("alliance_forum_new")) : ($("#completed_tasks_counter").addClass("hidden"), $("#menu_profile").removeClass("alliance_forum_new"))
+function tasksUpdate(e, t) {
+    e > 0 ? $("#completed_tasks_counter").html(e) : 1 == t && $("#completed_tasks_counter").html(I18n.t("javascript.new")), e > 0 ? ($("#completed_tasks_counter").removeClass("hidden"), $("#menu_profile").addClass("alliance_forum_new")) : 1 == t ? ($("#completed_tasks_counter").removeClass("hidden"), $("#menu_profile").addClass("alliance_forum_new")) : ($("#completed_tasks_counter").addClass("hidden"), $("#menu_profile").removeClass("alliance_forum_new"))
 }
 
 function updateSaleCountDown() {
@@ -1315,6 +1315,10 @@ function allianceForumNew(e) {
 
 function newsNew(e) {
     e ? ($("#news_li").addClass("news_new"), $("#main-navbar-toggle").addClass("news_new"), highlightElement($("#news"))) : ($("#news_li").removeClass("news_new"), $("#main-navbar-toggle").removeClass("news_new"))
+}
+
+function graphicPackNewMessages(e) {
+    0 == e && ($("#graphic_packs").find(".badge").hide(), 0 == $("ul[aria-labelledby='menu_profile']").find(".badge:visible").size() && $("#menu_profile").removeClass("graphic_new_comments"))
 }
 
 function play(e) {
@@ -1711,19 +1715,27 @@ function openExternalTelegramURL(e) {
 function setupTimer(e) {
     if (e.$timer.length) {
         var t = new Date(e.$timer.data("end-time"));
-        if (isDateValid(t)) var i = setInterval(function() {
-            var n = Date.now() <= t;
-            n ? updateTimer({
+        if (isDateValid(t) && !(Date.now() >= t)) {
+            updateTimer({
                 $timer: e.$timer,
-                endTime: t
-            }) : (clearInterval(i), e.onTimerEnd())
-        }, 1e3)
+                endTime: t,
+                format: e.format
+            });
+            var i = setInterval(function() {
+                var n = Date.now() <= t;
+                n ? updateTimer({
+                    $timer: e.$timer,
+                    endTime: t,
+                    format: e.format
+                }) : (clearInterval(i), e.onTimerEnd())
+            }, 1e3)
+        }
     }
 }
 
 function updateTimer(e) {
     var t = e.endTime - Date.now(),
-        i = getFormattedDuration(t);
+        i = "long" == e.format ? formatTime(Math.round(t / 1e3)) : getFormattedDuration(t);
     e.$timer.text(i)
 }
 
@@ -2074,6 +2086,7 @@ Object.values || (Object.values = function(e) {
             error: "Fehler",
             is_offline: "%{user} ist offline.",
             is_offline_long: "%{user}Â ist bereits lÃ¤nger offline.",
+            is_offline_with_duration: "%{user} ist offline: %{duration}",
             is_online: "%{user} ist online.",
             loading: "Lade...",
             name: "Name",
@@ -2500,6 +2513,7 @@ Object.values || (Object.values = function(e) {
             error: "Error",
             is_offline: "%{user} is offline.",
             is_offline_long: "Long time: %{user} is offline",
+            is_offline_with_duration: "%{user} is offline: %{duration}",
             is_online: "%{user} is online.",
             loading: "Loading...",
             name: "Name",
@@ -2964,6 +2978,7 @@ Object.values || (Object.values = function(e) {
             error: "Error",
             is_offline: "%{user} is offline.",
             is_offline_long: "Long time: %{user} is offline",
+            is_offline_with_duration: "%{user} is offline: %{duration}",
             is_online: "%{user} is online.",
             loading: "Loading...",
             name: "Name",
@@ -3381,6 +3396,7 @@ Object.values || (Object.values = function(e) {
             error: "Error",
             is_offline: "%{user} is offline.",
             is_offline_long: "%{user} is al een lange tijd offline.",
+            is_offline_with_duration: "%{user} is offline: %{duration}",
             is_online: "%{user} is online.",
             loading: "Laden...",
             name: "Naam",
@@ -3811,6 +3827,7 @@ Object.values || (Object.values = function(e) {
             error: "Error",
             is_offline: "%{user} no estÃ¡ conectado.",
             is_offline_long: "%{user} no se ha conectado desde hace mucho tiempo",
+            is_offline_with_duration: "%{user} no estÃ¡ conectado: %{duration}",
             is_online: "%{user} estÃ¡ conectado.",
             loading: "Cargando...",
             name: "Nombre",
@@ -4188,6 +4205,7 @@ Object.values || (Object.values = function(e) {
             error: "Error",
             is_offline: "%{user} is offline.",
             is_offline_long: "Long time: %{user} is offline",
+            is_offline_with_duration: "%{user} is offline: %{duration}",
             is_online: "%{user} is online.",
             loading: "Loading...",
             name: "Name",
@@ -4607,6 +4625,7 @@ Object.values || (Object.values = function(e) {
             error: "Fel",
             is_offline: "%{user} Ã¤r offline.",
             is_offline_long: "LÃ¤nge: %{user} Ã¤r offline",
+            is_offline_with_duration: "%{user} Ã¤r offline: %{duration}",
             is_online: "%{user} Ã¤r online.",
             loading: "Laddar â€¦",
             name: "Namn",
@@ -4983,6 +5002,7 @@ Object.values || (Object.values = function(e) {
             error: "BÅ‚Ä…d",
             is_offline: "%{user} jest offline.",
             is_offline_long: "Od dawna: %{user} jest offline",
+            is_offline_with_duration: "%{user} jest offline: %{duration}",
             is_online: "%{user} jest online.",
             loading: "Wczytywanieâ€¦",
             name: "Nazwa",
@@ -5403,6 +5423,7 @@ Object.values || (Object.values = function(e) {
             error: "Errore",
             is_offline: "%{user} non Ã¨ in linea.",
             is_offline_long: "Ora estesa: %{user} Ã¨ offline",
+            is_offline_with_duration: "%{user} non Ã¨ in linea: %{duration}",
             is_online: "%{user} Ã¨ online.",
             loading: "Caricamento...",
             name: "Nome",
@@ -5821,6 +5842,7 @@ Object.values || (Object.values = function(e) {
             error: "Erreur",
             is_offline: "%{user} est hors ligne.",
             is_offline_long: "PÃ©riode prolongÃ©eÂ : %{user} est hors ligne",
+            is_offline_with_duration: "%{user} est hors ligne: %{duration}",
             is_online: "%{user} est en ligne.",
             loading: "Chargement...",
             name: "Nom",
@@ -6237,6 +6259,7 @@ Object.values || (Object.values = function(e) {
             error: "ÐžÑˆÐ¸Ð±ÐºÐ°",
             is_offline: "%{user} Ð½Ðµ Ð² ÑÐµÑ‚Ð¸.",
             is_offline_long: "Ð”Ð°Ð²Ð½Ð¾: %{user} Ð½Ðµ Ð² ÑÐµÑ‚Ð¸",
+            is_offline_with_duration: "%{user} Ð½Ðµ Ð² ÑÐµÑ‚Ð¸: %{duration}",
             is_online: "%{user} Ð² ÑÐµÑ‚Ð¸.",
             loading: "Ð—Ð°Ð³Ñ€ÑƒÐ¶Ð°ÐµÑ‚ÑÑ...",
             name: "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ",
@@ -6613,6 +6636,7 @@ Object.values || (Object.values = function(e) {
             error: "Fejl",
             is_offline: "%{user} er offline.",
             is_offline_long: "Lang tid: %{user} er offline",
+            is_offline_with_duration: "%{user} er offline: %{duration}",
             is_online: "%{user} er online.",
             loading: "IndlÃ¦ser ...",
             name: "Navn",
@@ -7028,6 +7052,7 @@ Object.values || (Object.values = function(e) {
             error: "Feil",
             is_offline: "%{user} er offline.",
             is_offline_long: "Lenge: %{user} er offline",
+            is_offline_with_duration: "%{user} er offline: %{duration}",
             is_online: "%{user} er online.",
             loading: "Laster inn â€¦",
             name: "Navn",
@@ -7443,6 +7468,7 @@ Object.values || (Object.values = function(e) {
             error: "Chyba",
             is_offline: "%{user} je offline.",
             is_offline_long: "%{user} je uÅ¾ dlouho offline",
+            is_offline_with_duration: "%{user} je offline: %{duration}",
             is_online: "%{user} je online.",
             loading: "NaÄÃ­tÃ¡nÃ­â€¦",
             name: "NÃ¡zev",
@@ -7859,6 +7885,7 @@ Object.values || (Object.values = function(e) {
             error: "Hata",
             is_offline: "%{user} Ã§evrim dÄ±ÅŸÄ±.",
             is_offline_long: "Uzun sÃ¼re: %{user} Ã§evrim dÄ±ÅŸÄ±",
+            is_offline_with_duration: "%{user} Ã§evrim dÄ±ÅŸÄ±: %{duration}",
             is_online: "%{user} Ã§evrim iÃ§i.",
             loading: "YÃ¼kleniyor...",
             name: "Ad",
@@ -8233,6 +8260,7 @@ Object.values || (Object.values = function(e) {
             error: "Erro",
             is_offline: "%{user} estÃ¡ offline.",
             is_offline_long: "Tempo: %{user} estÃ¡ offline",
+            is_offline_with_duration: "%{user} estÃ¡ offline: %{duration}",
             is_online: "%{user} estÃ¡ online.",
             loading: "Carregando...",
             name: "Nome",
@@ -8644,6 +8672,7 @@ Object.values || (Object.values = function(e) {
             error: "Erro",
             is_offline: "%{user} estÃ¡ offline.",
             is_offline_long: "Tempo: %{user} estÃ¡ offline",
+            is_offline_with_duration: "%{user} estÃ¡ offline: %{duration}",
             is_online: "%{user} estÃ¡ online.",
             loading: "Carregando...",
             name: "Nome",
@@ -9019,6 +9048,7 @@ Object.values || (Object.values = function(e) {
             error: "ÐŸÐ¾Ð¼Ð¸Ð»ÐºÐ°",
             is_offline: "%{user} Ð½Ðµ Ð² Ð¼ÐµÑ€ÐµÐ¶Ñ–.",
             is_offline_long: "Ð”Ð°Ð²Ð½Ð¾: %{user} Ð½Ðµ Ð² Ð¼ÐµÑ€ÐµÐ¶Ñ–",
+            is_offline_with_duration: "%{user} Ð½Ðµ Ð² Ð¼ÐµÑ€ÐµÐ¶Ñ–: %{duration}",
             is_online: "%{user} Ð² Ð¼ÐµÑ€ÐµÐ¶Ñ–.",
             loading: "Ð—Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶ÐµÐ½Ð½Ñ...",
             name: "Ð†Ð¼'Ñ",
@@ -9394,6 +9424,7 @@ Object.values || (Object.values = function(e) {
             error: "Error",
             is_offline: "%{user} no estÃ¡ conectado.",
             is_offline_long: "%{user} no se ha conectado desde hace mucho tiempo",
+            is_offline_with_duration: "%{user} no estÃ¡ conectado: %{duration}",
             is_online: "%{user} estÃ¡ conectado.",
             loading: "Cargando...",
             name: "Nombre",
@@ -9769,6 +9800,7 @@ Object.values || (Object.values = function(e) {
             error: "ã‚¨ãƒ©ãƒ¼",
             is_offline: "%{user}ã¯ã‚ªãƒ•ãƒ©ã‚¤ãƒ³ã§ã™ã€‚",
             is_offline_long: "é•·æ™‚é–“ï¼š%{user}ã¯ã‚ªãƒ•ãƒ©ã‚¤ãƒ³ã§ã™ã€‚",
+            is_offline_with_duration: "%{user}ã¯ã‚ªãƒ•ãƒ©ã‚¤ãƒ³ã§ã™: %{duration}",
             is_online: "%{user}ã¯ã‚ªãƒ³ãƒ©ã‚¤ãƒ³ã§ã™ã€‚",
             loading: "ãƒ­ãƒ¼ãƒ‰ä¸­â€¦",
             name: "åå‰",
@@ -10138,6 +10170,7 @@ Object.values || (Object.values = function(e) {
             error: "ì˜¤ë¥˜",
             is_offline: "%{user} ë‹˜ì€ ì˜¤í”„ë¼ì¸ìž…ë‹ˆë‹¤.",
             is_offline_long: "ìž¥ê¸°ê°„ ì˜¤í”„ë¼ì¸: %{user}",
+            is_offline_with_duration: "%{user} ë‹˜ì€ ì˜¤í”„ë¼ì¸ìž…ë‹ˆë‹¤: %{duration}",
             is_online: "%{user} ë‹˜ì´ ì˜¨ë¼ì¸ìž…ë‹ˆë‹¤.",
             loading: "ë¡œë”© ì¤‘...",
             name: "ì´ë¦„",
@@ -10513,6 +10546,7 @@ Object.values || (Object.values = function(e) {
             error: "Eroare",
             is_offline: "%{user} este offline.",
             is_offline_long: "PerioadÄƒ Ã®ndelungatÄƒ: %{user} este offline",
+            is_offline_with_duration: "%{user} este offline: %{duration}",
             is_online: "%{user} este online.",
             loading: "Se Ã®ncarcÄƒ...",
             name: "Nume",
@@ -10888,6 +10922,7 @@ Object.values || (Object.values = function(e) {
             error: "Virhe",
             is_offline: "%{user} ei ole verkossa",
             is_offline_long: "Kauan: %{user} ei ole verkossa",
+            is_offline_with_duration: "%{user} ei ole verkossa: %{duration}",
             is_online: "%{user} on verkossa.",
             loading: "Ladataan...",
             name: "Nimi",
@@ -11303,6 +11338,7 @@ Object.values || (Object.values = function(e) {
             error: "Chyba",
             is_offline: "%{user} je offline.",
             is_offline_long: "Dlho: %{user} je offline",
+            is_offline_with_duration: "%{user} je offline: %{duration}",
             is_online: "%{user} je online.",
             loading: "NaÄÃ­tava sa...",
             name: "NÃ¡zov",

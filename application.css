@@ -8941,18 +8941,18 @@ body.dark .mission_overview_countdown{
     background-image:url(/images/expand.png);
     background-size:100% 100%
 }
-.missionNotFound{
-    min-height:500px;
-    background-image:url(/images/mission-success.jpg);
-    background-size:cover;
-    padding:50px;
-    margin:15px 0
+.mission-success{
+    display:flex;
+    padding:10px;
+    margin:10px auto;
+    width:fit-content
 }
-.missionNotFoundText{
-    background-color:rgba(0,0,0,0.5);
-    color:white;
-    text-align:center;
-    font-size:60px
+.mission-success .mission-success-image img{
+    width:35px;
+    margin:10px
+}
+.mission-success .mission-success-text{
+    margin:auto auto auto 10px
 }
 .logoSmall{
     width:24px;
@@ -9068,7 +9068,7 @@ body.dark th.tablesorter-headerAsc,body.dark th.tablesorter-headerDesc{
     margin-bottom:20px;
     width:100%
 }
-.search_input_field,#search_input_field_missions{
+.search_input_field,#search_input_field_missions,.search_input{
     background-image:url(/images/search_5a5753.svg);
     background-repeat:no-repeat;
     background-size:auto 100%;
@@ -9289,6 +9289,27 @@ body.dark .alert-success a.btn-default{
     background-size:40px 75%;
     background-image:url(/images/progressbar-arrow.gif);
     background-position:center
+}
+.progress-bar-rank{
+    margin-bottom:5px
+}
+.progress-bar-rank-reached{
+    color:white !important
+}
+.progress-bar-rank-percentage{
+    position:absolute;
+    margin:0 0 0 10px;
+    color:black
+}
+.rank-earned-label{
+    color:#5cb85c
+}
+.rank-earned-row{
+    background-color:#5cb85c !important;
+    color:white
+}
+.level_td{
+    width:10%
 }
 .patient_progress .progress-striped-inner-active{
     background-size:40px 100%
@@ -11429,6 +11450,18 @@ body.bigMap #search_input_field_missions{
 }
 .landingpage_1_signup_form_legacy{
     color:white
+}
+.building-complex-tab-container{
+    margin-bottom:20px
+}
+.building-complex-tab-container .table tr.building-attached{
+    background-color:#b2e4b2
+}
+.complex-expansion-select,.complex-vehicles-select-type{
+    width:90px !important
+}
+.dropdown-option-icon{
+    height:20px
 }
 .reward_button{
     display:inline-block
