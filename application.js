@@ -534,7 +534,7 @@ function constructBuildingListElement(e) {
 }
 
 function getBuildingMarkerIcon(e) {
-    return e.user_id == user_id ? building_marker_image = e.icon : e.building_type == BUILDING_TYPE_FEUERWEHRSCHULE ? building_marker_image = "/images/building_fireschool_other.png" : e.building_type == BUILDING_TYPE_FEUERWACHE ? building_marker_image = "/images/building_fire_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSWACHE ? building_marker_image = "/images/building_rettungswache_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSSCHULE ? building_marker_image = "/images/building_rettungsschule_other.png" : e.building_type == BUILDING_TYPE_CLINIC ? building_marker_image = "/images/building_clinic_other.png" : e.building_type == BUILDING_TYPE_HOSPITAL ? building_marker_image = "/images/building_hospital_other.png" : e.building_type == BUILDING_TYPE_NOTARZTHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIWACHE || e.building_type == BUILDING_TYPE_POLIZEIZELLE ? building_marker_image = "/images/building_polizeiwache_other.png" : e.building_type == BUILDING_TYPE_LEITSTELLE ? building_marker_image = "/images/building_leitstelle_other.png" : e.building_type == BUILDING_TYPE_POLIZEISCHULE ? building_marker_image = "/images/building_polizeischule_other.png" : e.building_type == BUILDING_TYPE_THW ? building_marker_image = "/images/building_thw_other.png" : e.building_type == BUILDING_TYPE_THW_BUNDESSCHULE ? building_marker_image = "/images/building_thw_school_other.png" : e.building_type == BUILDING_TYPE_BEREITSCHAFTSPOLIZEI ? building_marker_image = "/images/building_bereitschaftspolizei_other.png" : e.building_type == BUILDING_TYPE_POLIZEISONDEREINHEITEN ? building_marker_image = "/images/building_polizeisondereinheiten_other.png" : e.building_type == BUILDING_TYPE_SEG ? building_marker_image = "/images/building_seg_other.png" : e.building_type == BUILDING_TYPE_BEREITSTELLUNGSRAUM ? building_marker_image = "/images/building_bereitstellungsraum_other.png" : e.building_type == BUILDING_TYPE_WASSERRETTUNG ? building_marker_image = "/images/building_wasserwacht_other.png" : e.building_type == BUILDING_TYPE_FIRE_BOAT_DOCK ? building_marker_image = "/images/building_fire_boat_dock_other.png" : e.building_type == BUILDING_TYPE_RESCUE_BOAT_DOCK ? building_marker_image = "/images/building_rescue_boat_dock_other.png" : e.building_type == BUILDING_TYPE_RESCUE_DOG_UNIT ? building_marker_image = "/images/building_rescue_dog_unit_other.png" : e.building_type == BUILDING_TYPE_FIRE_AVIATION_STATION ? building_marker_image = "/images/building_fire_aviation_station_other.png" : e.building_type == BUILDING_TYPE_FEDERAL_POLICE_STATION ? building_marker_image = "/images/building_federal_police_other.png" : e.building_type == BUILDING_TYPE_HOME_RESPONSE_LOCATION ? building_marker_image = "/images/building_home_response_location_other.png" : e.building_type == BUILDING_TYPE_COMMERCE_POLICE ? building_marker_image = "/images/building_commerce_police_other.png" : e.building_type == BUILDING_TYPE_BOMB_DISPOSAL ? building_marker_image = "/images/building_bomb_disposal_other.png" : e.building_type == BUILDING_TYPE_COMPLEX ? building_marker_image = "/images/building_complex_other.png" : e.building_type == BUILDING_TYPE_WATER_RESCUE_SCHOOL && (building_marker_image = "/images/building_water_rescue_school_other.png"), flavouredAsset(building_marker_image)
+    return e.user_id == user_id ? building_marker_image = e.icon : e.building_type == BUILDING_TYPE_FEUERWEHRSCHULE ? building_marker_image = "/images/building_fireschool_other.png" : e.building_type == BUILDING_TYPE_FEUERWACHE ? building_marker_image = "/images/building_fire_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSWACHE ? building_marker_image = "/images/building_rettungswache_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSSCHULE ? building_marker_image = "/images/building_rettungsschule_other.png" : e.building_type == BUILDING_TYPE_CLINIC ? building_marker_image = "/images/building_clinic_other.png" : e.building_type == BUILDING_TYPE_HOSPITAL ? building_marker_image = "/images/building_hospital_other.png" : e.building_type == BUILDING_TYPE_NOTARZTHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIHUBSCHRAUBERLANDEPLATZ ? building_marker_image = "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIWACHE || e.building_type == BUILDING_TYPE_POLIZEIZELLE ? building_marker_image = "/images/building_polizeiwache_other.png" : e.building_type == BUILDING_TYPE_LEITSTELLE ? building_marker_image = "/images/building_leitstelle_other.png" : e.building_type == BUILDING_TYPE_POLIZEISCHULE ? building_marker_image = "/images/building_polizeischule_other.png" : e.building_type == BUILDING_TYPE_THW ? building_marker_image = "/images/building_thw_other.png" : e.building_type == BUILDING_TYPE_THW_BUNDESSCHULE ? building_marker_image = "/images/building_thw_school_other.png" : e.building_type == BUILDING_TYPE_BEREITSCHAFTSPOLIZEI ? building_marker_image = "/images/building_bereitschaftspolizei_other.png" : e.building_type == BUILDING_TYPE_POLIZEISONDEREINHEITEN ? building_marker_image = "/images/building_polizeisondereinheiten_other.png" : e.building_type == BUILDING_TYPE_SEG ? building_marker_image = "/images/building_seg_other.png" : e.building_type == BUILDING_TYPE_BEREITSTELLUNGSRAUM ? building_marker_image = "/images/building_bereitstellungsraum_other.png" : e.building_type == BUILDING_TYPE_WASSERRETTUNG ? building_marker_image = "/images/building_wasserwacht_other.png" : e.building_type == BUILDING_TYPE_FIRE_BOAT_DOCK ? building_marker_image = "/images/building_fire_boat_dock_other.png" : e.building_type == BUILDING_TYPE_RESCUE_BOAT_DOCK ? building_marker_image = "/images/building_rescue_boat_dock_other.png" : e.building_type == BUILDING_TYPE_RESCUE_DOG_UNIT ? building_marker_image = "/images/building_rescue_dog_unit_other.png" : e.building_type == BUILDING_TYPE_FIRE_AVIATION_STATION ? building_marker_image = "/images/building_fire_aviation_station_other.png" : e.building_type == BUILDING_TYPE_FEDERAL_POLICE_STATION ? building_marker_image = "/images/building_federal_police_other.png" : e.building_type == BUILDING_TYPE_HOME_RESPONSE_LOCATION ? building_marker_image = "/images/building_home_response_location_other.png" : e.building_type == BUILDING_TYPE_COMMERCE_POLICE ? building_marker_image = "/images/building_commerce_police_other.png" : e.building_type == BUILDING_TYPE_BOMB_DISPOSAL ? building_marker_image = "/images/building_bomb_disposal_other.png" : e.building_type == BUILDING_TYPE_WATER_RESCUE_SCHOOL && (building_marker_image = "/images/building_water_rescue_school_other.png"), flavouredAsset(building_marker_image)
 }
 
 function spliceLatLngs(e, t) {
@@ -1090,8 +1090,8 @@ function creditsUpdate(e) {
     $("#navigation_top").html(t), "" != i && i != t && highlightElement($("#navigation_top"))
 }
 
-function tasksUpdate(e, t) {
-    e > 0 ? $("#completed_tasks_counter").html(e) : 1 == t && $("#completed_tasks_counter").html(I18n.t("javascript.new")), e > 0 ? ($("#completed_tasks_counter").removeClass("hidden"), $("#menu_profile").addClass("alliance_forum_new")) : 1 == t ? ($("#completed_tasks_counter").removeClass("hidden"), $("#menu_profile").addClass("alliance_forum_new")) : ($("#completed_tasks_counter").addClass("hidden"), $("#menu_profile").removeClass("alliance_forum_new"))
+function tasksUpdate(e) {
+    $("#completed_tasks_counter").html(e), e > 0 ? ($("#completed_tasks_counter").removeClass("hidden"), $("#menu_profile").addClass("alliance_forum_new")) : ($("#completed_tasks_counter").addClass("hidden"), $("#menu_profile").removeClass("alliance_forum_new"))
 }
 
 function updateSaleCountDown() {
@@ -1315,10 +1315,6 @@ function allianceForumNew(e) {
 
 function newsNew(e) {
     e ? ($("#news_li").addClass("news_new"), $("#main-navbar-toggle").addClass("news_new"), highlightElement($("#news"))) : ($("#news_li").removeClass("news_new"), $("#main-navbar-toggle").removeClass("news_new"))
-}
-
-function graphicPackNewMessages(e) {
-    0 == e && ($("#graphic_packs").find(".badge").hide(), 0 == $("ul[aria-labelledby='menu_profile']").find(".badge:visible").size() && $("#menu_profile").removeClass("graphic_new_comments"))
 }
 
 function play(e) {
@@ -1715,27 +1711,19 @@ function openExternalTelegramURL(e) {
 function setupTimer(e) {
     if (e.$timer.length) {
         var t = new Date(e.$timer.data("end-time"));
-        if (isDateValid(t) && !(Date.now() >= t)) {
-            updateTimer({
+        if (isDateValid(t)) var i = setInterval(function() {
+            var n = Date.now() <= t;
+            n ? updateTimer({
                 $timer: e.$timer,
-                endTime: t,
-                format: e.format
-            });
-            var i = setInterval(function() {
-                var n = Date.now() <= t;
-                n ? updateTimer({
-                    $timer: e.$timer,
-                    endTime: t,
-                    format: e.format
-                }) : (clearInterval(i), e.onTimerEnd())
-            }, 1e3)
-        }
+                endTime: t
+            }) : (clearInterval(i), e.onTimerEnd())
+        }, 1e3)
     }
 }
 
 function updateTimer(e) {
     var t = e.endTime - Date.now(),
-        i = "long" == e.format ? formatTime(Math.round(t / 1e3)) : getFormattedDuration(t);
+        i = getFormattedDuration(t);
     e.$timer.text(i)
 }
 
