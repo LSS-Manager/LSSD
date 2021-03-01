@@ -8945,7 +8945,7 @@ body.dark .mission_overview_countdown{
     display:flex;
     padding:10px;
     margin:10px auto;
-    width:fit-content
+    width:100%
 }
 .mission-success .mission-success-image img{
     width:35px;
