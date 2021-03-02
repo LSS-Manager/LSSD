@@ -4396,7 +4396,7 @@ Object.values || (Object.values = function(e) {
                 fire_truck: "Pumper or Light Tanker or Tanker",
                 fireboat: "Fire Boat",
                 fly_car: "MICA",
-                fly_car_any: "Intensive Care Paramedic",
+                fly_car_any: "ICP / ICS / EMS Rescue",
                 fukw: "",
                 fustw_or_police_motorcycle: "Police car or Police Motorcycle",
                 fwk: "",
