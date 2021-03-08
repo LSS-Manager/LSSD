@@ -178,18 +178,21 @@ function waterCalculator(e) {
         l = i + i * s,
         c = n + n * (a + s) + i * a,
         u = o + o * (r + a + s) + i * r + n * r,
-        d = parseInt(100 * (l / t)),
-        h = parseInt(100 * (c / t)),
-        p = parseInt(100 * (u / t));
-    waterCalculatorSetPercent($("#mission_water_bar_at_mission_" + e), d, 0), waterCalculatorSetPercent($("#mission_water_bar_driving_" + e), h, d), waterCalculatorSetPercent($("#mission_water_bar_selected_" + e), p, h + d), waterCalculatorSetPercent($("#mission_water_bar_missing_" + e), 100, p + h + d), $("#mission_water_bar_at_mission_" + e).html(I18n.t("javascript.water_on_site", {
+        d = t - (l + c + u),
+        h = parseInt(100 * (l / t)),
+        p = parseInt(100 * (c / t)),
+        m = parseInt(100 * (u / t)),
+        f = parseInt(100 * (d / t)),
+        _ = 100 - (h + p + m + f);
+    _ > 0 && (h > 0 ? h += _ : p > 0 ? p += _ : m > 0 ? m += _ : f > 0 && (m += _)), waterCalculatorSetPercent($("#mission_water_bar_at_mission_" + e), h, 0), waterCalculatorSetPercent($("#mission_water_bar_driving_" + e), p, h), waterCalculatorSetPercent($("#mission_water_bar_selected_" + e), m, p + h), waterCalculatorSetPercent($("#mission_water_bar_missing_" + e), 100, m + p + h), $("#mission_water_bar_at_mission_" + e).html(I18n.t("javascript.water_on_site", {
         amount: number_format(parseInt(l))
     })), $("#mission_water_bar_driving_" + e).html(I18n.t("javascript.water_approaching", {
         amount: number_format(parseInt(c))
     })), $("#mission_water_bar_selected_" + e).html(I18n.t("javascript.water_selected", {
         amount: number_format(parseInt(u))
     })), $("#mission_water_bar_missing_" + e).html(I18n.t("javascript.water_missing", {
-        amount: number_format(parseInt(t) - (parseInt(u) + parseInt(c) + parseInt(l)))
-    })), p + h + d >= 100 ? ($("#mission_water_bar_selected_" + e).addClass("progress-bar-success").removeClass("progress-bar-danger"), $("#mission_water_progress_" + e).addClass("progress-glow-success").removeClass("progress-glow-danger")) : ($("#mission_water_bar_selected_" + e).addClass("progress-bar-danger").removeClass("progress-bar-success"), $("#mission_water_progress_" + e).addClass("progress-glow-danger").removeClass("progress-glow-success"))
+        amount: number_format(parseInt(d))
+    })), m + p + h >= 100 ? ($("#mission_water_bar_selected_" + e).addClass("progress-bar-success").removeClass("progress-bar-danger"), $("#mission_water_progress_" + e).addClass("progress-glow-success").removeClass("progress-glow-danger")) : ($("#mission_water_bar_selected_" + e).addClass("progress-bar-danger").removeClass("progress-bar-success"), $("#mission_water_progress_" + e).addClass("progress-glow-danger").removeClass("progress-glow-success"))
 }
 
 function missionWindowHasUpdate(e) {
