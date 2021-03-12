@@ -11481,25 +11481,15 @@ body.bigMap #search_input_field_missions{
 .progress_value{
     float:right
 }
-.ends_in{
-    padding-left:65px
-}
 .progress_bar{
-    width:95%;
-    float:right
-}
-.progress_bar_mobile{
     width:100%;
     float:right
 }
-.task_body .glyphicon{
-    padding-left:40px
-}
 .task_panel{
-    height:140px
-}
-.task_panel_mobile{
     height:160px
+}
+.task_panel .panel-heading{
+    height:75px
 }
 .confirm-delete-modal .modal-body{
     max-height:100%
