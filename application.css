@@ -9039,6 +9039,9 @@ body.dark th.tablesorter-headerAsc,body.dark th.tablesorter-headerDesc{
 #alliance_thread_index_table .pagination{
     margin:0
 }
+#aao_category_index_table .pagination{
+    margin:0
+}
 .buildings-map-shrinked{
     margin-bottom:10px;
     margin-left:auto;
