@@ -3607,7 +3607,7 @@ Object.values || (Object.values = function(e) {
                 grtw: "",
                 grtw0: "",
                 grtw1: "",
-                grukw: "ME Groepsvoertuig",
+                grukw: "ME Flexbus",
                 gw_atemschutz_only: "Adembeschermingsvoertuig",
                 gw_gefahrgut: "Adviseur Gevaarlijke Stoffen",
                 gw_gefahrgut_only: "",
