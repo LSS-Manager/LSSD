@@ -11463,6 +11463,9 @@ body.bigMap #search_input_field_missions{
 .complex-expansion-select,.complex-vehicles-select-type{
     width:90px !important
 }
+.attach-buildings-table .tablesorter-header-inner{
+    margin-right:10px
+}
 .dropdown-option-icon{
     height:20px
 }
