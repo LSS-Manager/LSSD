@@ -11447,7 +11447,7 @@ Object.values || (Object.values = function(e) {
                 alliance_missions: "ZdieÄ¾anÃ© alianciou",
                 ambulance_station_missions: "Stanica ZZS",
                 ambulance_station_small_missions: "Stanica ZZS (malÃ¡ stanica)",
-                building_complex: "Komplex budov",
+                building_complex: "VÃ½jazdovÃ© centrum",
                 clinic_missions: "Klinika",
                 dispatch_center_missions: "DispeÄerskÃ© centrum",
                 fire_school_missions: "HasiÄskÃ¡ akadÃ©mia",
@@ -38562,6 +38562,9 @@ I18n.t = function(e, t) {
     }, {
         from: "/images/police_bucket.png",
         to: "/images/pc_police_bucket.png"
+    }, {
+        from: "/images/police_boat.png",
+        to: "/images/pc_police_boat.png"
     }, {
         from: "/images/sign_up.en_US.png",
         to: "/images/policechief_sign_up.en.png"

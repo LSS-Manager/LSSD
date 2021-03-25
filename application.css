@@ -8529,6 +8529,14 @@ body.dodenherdenking .navbar-default .dropdown-menu{
     max-width:800px;
     height:auto !important
 }
+.easterIframe{
+    background-image:url(/images/easter_background.png);
+    width:100%;
+    min-height:454px;
+    background-repeat:repeat-x;
+    color:white;
+    padding:10px
+}
 .christmasIframe{
     background-image:url(/images/christmas_background.png);
     width:100%;
@@ -12378,6 +12386,10 @@ div.sceditor-group{
     background-image:url(/images/policechief_weihnachtenbar.png);
     background-size:auto 100%
 }
+.policechief .osterbar{
+    background-image:url(/images/policechief_osterbar.gif);
+    background-size:auto 100%
+}
 .policechief .mission_header_info_progress .progress-bar-danger,.policechief .mission_progress .progress-bar-danger{
     background-image:none;
     background-color:#2a6dc0
@@ -12393,6 +12405,27 @@ div.sceditor-group{
 }
 .policechief .cookies-eu{
     background-color:#2a6dc0
+}
+.policechief .seasonalbar .navbar-right>li,.policechief .seasonalbar .navbar-right>li>div,.policechief .seasonalbar .navbar-right>li>a,.policechief .seasonalbar .navbar-right>li>a>div,.policechief .seasonalbar .navbar-right>li>a>span{
+    text-shadow:1px 1px 2px black !important
+}
+.policechief .seasonalbar .navbar-right>li>a>img{
+    filter:drop-shadow(2px 2px 2px #000)
+}
+.policechief .seasonalbar #message_top{
+    filter:drop-shadow(1px 1px 2px rgba(0,0,0,0.5))
+}
+.policechief .easterIframe{
+    background-image:url(/images/pc_easter_background.png);
+    width:100%;
+    min-height:454px;
+    background-repeat:repeat-x;
+    color:white;
+    padding:10px
+}
+.policechief .easterIframe .btn-adventskalender{
+    color:white;
+    background-color:#003b73
 }
 @media only screen and (max-width: 1280px) and (min-width: 768px){
     #daily-bonus #daily-bonus-description{
