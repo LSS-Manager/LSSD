@@ -10947,7 +10947,7 @@ Object.values || (Object.values = function(e) {
             congratulations: "Onnittelut!",
             content: "SisÃ¤ltÃ¶",
             copy: "Kopioi",
-            credits: "Krediitit",
+            credits: "KrediittiÃ¤",
             "delete": "Poista",
             details: "LisÃ¤tiedot",
             edit: "Muokkaa",
