@@ -2159,6 +2159,7 @@ Object.values || (Object.values = function(e) {
             alliance_missions: "VerbandseinsÃ¤tze",
             alliance_missions_event: "Event",
             ambulance: "Krankentransporte",
+            attended: "Beantwortet",
             cancel_alliance_event: "Verbands-Event abbrechen",
             cancel_alliance_event_confirm: "MÃ¶chtest du das Verbands-Event wirklich abbrechen?",
             challenges: "",
@@ -2167,6 +2168,7 @@ Object.values || (Object.values = function(e) {
             create_alliance_event: "Verbands-Event starten",
             create_alliance_operation: "Verbands-GroÃŸeinsatz erstellen",
             emergency: "NotfÃ¤lle",
+            finishing: "Wird beendet",
             join_alliance_infos: "Wenn du in einem Verband bist, kÃ¶nnen andere Spieler dir EinsÃ¤tze freigeben.",
             map: "Karte",
             map_filters: {
@@ -2222,7 +2224,8 @@ Object.values || (Object.values = function(e) {
             restore_map: "Karte wiederherstellen",
             show_informations: "GrÃ¼n = Die EinsÃ¤tze werden in der Leiste angezeigt. Rot = Die EinsÃ¤tze werden nicht angezeigt.",
             sicherheitswache: "Geplante EinsÃ¤tze",
-            transport: "Transporte"
+            transport: "Transporte",
+            unattended: "Unbeantwortet"
         },
         fms: {
             going: "Auf Anfahrt",
@@ -2591,6 +2594,7 @@ Object.values || (Object.values = function(e) {
             alliance_missions: "Alliance Missions",
             alliance_missions_event: "Event",
             ambulance: "Ambulance",
+            attended: "Attended",
             cancel_alliance_event: "Cancel alliance event",
             cancel_alliance_event_confirm: "Do you really want to cancel the alliance event?",
             challenges: "",
@@ -2599,6 +2603,7 @@ Object.values || (Object.values = function(e) {
             create_alliance_event: "Start alliance event",
             create_alliance_operation: "Create a large scale alliance mission",
             emergency: "Emergency",
+            finishing: "Finishing",
             join_alliance_infos: "If you are in an alliance, other players can freely give you missions.",
             map: "Map",
             map_filters: {
@@ -2655,7 +2660,8 @@ Object.values || (Object.values = function(e) {
             restore_map: "Restore Map",
             show_informations: "Green = The missions are shown in the list. Red = The missions aren't shown.",
             sicherheitswache: "Planned Appearances",
-            transport: "Transport"
+            transport: "Transport",
+            unattended: "Unattended"
         },
         fms: {
             going: "Responding",
@@ -3057,6 +3063,7 @@ Object.values || (Object.values = function(e) {
             alliance_missions: "Alliance Missions",
             alliance_missions_event: "Event",
             ambulance: "Ambulance",
+            attended: "Attended",
             cancel_alliance_event: "Cancel alliance event",
             cancel_alliance_event_confirm: "Do you really want to cancel the alliance event?",
             challenges: "",
@@ -3065,6 +3072,7 @@ Object.values || (Object.values = function(e) {
             create_alliance_event: "Start alliance event",
             create_alliance_operation: "Create a large scale alliance mission",
             emergency: "Emergency",
+            finishing: "Finishing",
             join_alliance_infos: "If you are in an alliance, other players can freely give you missions.",
             map: "Map",
             map_filters: {
@@ -3117,7 +3125,8 @@ Object.values || (Object.values = function(e) {
             restore_map: "Restore Map",
             show_informations: "Green = The missions are shown in the list. Red = The missions aren't shown.",
             sicherheitswache: "Planned Appearances",
-            transport: "Transport"
+            transport: "Transport",
+            unattended: "Unattended"
         },
         fms: {
             going: "Responding",
@@ -3483,6 +3492,7 @@ Object.values || (Object.values = function(e) {
             alliance_missions: "Grote inzet",
             alliance_missions_event: "Event",
             ambulance: "Besteld vervoer",
+            attended: "Uitgevoerd",
             cancel_alliance_event: "Alliantie-evenement annuleren",
             cancel_alliance_event_confirm: "Wil je het alliantie-evenement echt annuleren?",
             challenges: "",
@@ -3491,6 +3501,7 @@ Object.values || (Object.values = function(e) {
             create_alliance_event: "Team-Event starten",
             create_alliance_operation: "Grote inzet aanmaken",
             emergency: "Spoed",
+            finishing: "Wordt afgerond",
             join_alliance_infos: "Wanneer je in een team zit kunnen andere spelers een incident vrijgeven.",
             map: "Kaart",
             map_filters: {
@@ -3543,7 +3554,8 @@ Object.values || (Object.values = function(e) {
             restore_map: "Kaart terugzetten",
             show_informations: "Groen = Inzet wordt in de lijst weergegeven. Rood = Inzet wordt niet weergegeven.",
             sicherheitswache: "Geplande inzetten",
-            transport: "Transport"
+            transport: "Transport",
+            unattended: "Niet uitgevoerd"
         },
         fms: {
             going: "Uitgerukt",
@@ -3914,6 +3926,7 @@ Object.values || (Object.values = function(e) {
             alliance_missions: "Misiones de alianza",
             alliance_missions_event: "Evento",
             ambulance: "Ambulancia",
+            attended: "Respondido",
             cancel_alliance_event: "Cancelar evento de alianza",
             cancel_alliance_event_confirm: "Â¿Seguro que quieres cancelar el evento de alianza?",
             challenges: "",
@@ -3922,6 +3935,7 @@ Object.values || (Object.values = function(e) {
             create_alliance_event: "Comenzar evento de alianza",
             create_alliance_operation: "Crea una misiÃ³n de alianza a gran escala",
             emergency: "Emergencia",
+            finishing: "Completando",
             join_alliance_infos: "Si estÃ¡s en una alianza, otros jugadores podrÃ¡n ofrecerte misiones.",
             map: "Mapa",
             map_filters: {
@@ -3974,7 +3988,8 @@ Object.values || (Object.values = function(e) {
             restore_map: "Restaurar mapa",
             show_informations: "Verde: las misiones se mostrarÃ¡n en la lista. Rojo: las misiones no se mostrarÃ¡n.",
             sicherheitswache: "Misones planificadas",
-            transport: "Transporte"
+            transport: "Transporte",
+            unattended: "Sin respuesta"
         },
         fms: {
             going: "Respondiendo",
@@ -4298,6 +4313,7 @@ Object.values || (Object.values = function(e) {
             alliance_missions: "Alliance Missions",
             alliance_missions_event: "Event",
             ambulance: "Ambulance",
+            attended: "Attended",
             cancel_alliance_event: "Cancel alliance event",
             cancel_alliance_event_confirm: "Do you really want to cancel the alliance event?",
             challenges: "",
@@ -4306,6 +4322,7 @@ Object.values || (Object.values = function(e) {
             create_alliance_event: "Start alliance event",
             create_alliance_operation: "Create a large scale alliance mission",
             emergency: "Emergency",
+            finishing: "Finishing",
             join_alliance_infos: "If you are in an alliance, other players can freely give you missions.",
             map: "Map",
             map_filters: {
@@ -4358,7 +4375,8 @@ Object.values || (Object.values = function(e) {
             restore_map: "Restore Map",
             show_informations: "Green = The missions are shown in the list. Red = The missions aren't shown.",
             sicherheitswache: "Planned Appearances",
-            transport: "Transport"
+            transport: "Transport",
+            unattended: "Unattended"
         },
         fms: {
             going: "Responding",
@@ -4726,6 +4744,7 @@ Object.values || (Object.values = function(e) {
             alliance_missions: "Alliansuppdrag",
             alliance_missions_event: "Evenemang",
             ambulance: "Ambulans",
+            attended: "Besvarade",
             cancel_alliance_event: "Avbryt alliansevenemanget",
             cancel_alliance_event_confirm: "Vill du verkligen avbryta alliansevenemanget?",
             chat_history: "Chatthistorik",
@@ -4733,6 +4752,7 @@ Object.values || (Object.values = function(e) {
             create_alliance_event: "Starta evenemang",
             create_alliance_operation: "Skapa ett storskaligt uppdrag",
             emergency: "Akut",
+            finishing: "I slutfas",
             join_alliance_infos: "Om du Ã¤r med i en allians kan andra spelare ge dig uppdrag.",
             map: "Karta",
             map_filters: {
@@ -4785,7 +4805,8 @@ Object.values || (Object.values = function(e) {
             restore_map: "Ã…terstÃ¤ll karta",
             show_informations: "GrÃ¶nt = Uppdragen visas i listan. RÃ¶tt = Uppdragen visas inte.",
             sicherheitswache: "Planerade uppdrag",
-            transport: "Transport"
+            transport: "Transport",
+            unattended: "Obesvarade"
         },
         fms: {
             going: "PÃ¥ uppdrag",
@@ -5107,6 +5128,7 @@ Object.values || (Object.values = function(e) {
             alliance_missions: "Misje sojuszu",
             alliance_missions_event: "Wydarzenie",
             ambulance: "Ambulans",
+            attended: "PodjÄ™te",
             cancel_alliance_event: "Anuluj wydarzenie sojuszu",
             cancel_alliance_event_confirm: "Czy na pewno chcesz anulowaÄ‡ wydarzenie sojuszu?",
             challenges: "",
@@ -5115,6 +5137,7 @@ Object.values || (Object.values = function(e) {
             create_alliance_event: "Rozpocznij wydarzenie sojuszu",
             create_alliance_operation: "UtwÃ³rz misjÄ™ sojuszu na duÅ¼Ä… skalÄ™",
             emergency: "Sytuacja wyjÄ…tkowa",
+            finishing: "Realizowane",
             join_alliance_infos: "JeÅ›li naleÅ¼ysz do sojuszu, inni gracze mogÄ… ci wyznaczaÄ‡ misje bez ograniczeÅ„.",
             map: "Mapa",
             map_filters: {
@@ -5167,7 +5190,8 @@ Object.values || (Object.values = function(e) {
             restore_map: "PrzywrÃ³Ä‡ mapÄ™",
             show_informations: "Zielony = misje sÄ… pokazywane. Czerwony = misje nie sÄ… pokazywane.",
             sicherheitswache: "Planowane misje",
-            transport: "Transport"
+            transport: "Transport",
+            unattended: "NiepodjÄ™te"
         },
         fms: {
             going: "Reagowanie",
@@ -5528,6 +5552,7 @@ Object.values || (Object.values = function(e) {
             alliance_missions: "Missioni dell'alleanza",
             alliance_missions_event: "Evento",
             ambulance: "Ambulanza",
+            attended: "Completate",
             cancel_alliance_event: "Annulla evento dell'alleanza",
             cancel_alliance_event_confirm: "Vuoi davvero annullare l'evento dell'alleanza?",
             challenges: "",
@@ -5536,6 +5561,7 @@ Object.values || (Object.values = function(e) {
             create_alliance_event: "Inizia evento dell'alleanza",
             create_alliance_operation: "Crea una missione dell'alleanza su larga scala",
             emergency: "Emergenza",
+            finishing: "In corso",
             join_alliance_infos: "Se fai parte di un'alleanza, altri giocatori possono assegnarti liberamente delle missioni.",
             map: "Mappa",
             map_filters: {
@@ -5588,7 +5614,8 @@ Object.values || (Object.values = function(e) {
             restore_map: "Ripristina mappa",
             show_informations: "Verde = Le missioni vengono mostrate nell'elenco. Rosso = Le missioni non vengono mostrate.",
             sicherheitswache: "Missioni pianificate",
-            transport: "Trasporto"
+            transport: "Trasporto",
+            unattended: "Da compiere"
         },
         fms: {
             going: "In risposta",
@@ -5951,6 +5978,7 @@ Object.values || (Object.values = function(e) {
             alliance_missions: "Missions dâ€™alliance",
             alliance_missions_event: "Ã‰vÃ¨nement",
             ambulance: "Ambulance",
+            attended: "AssignÃ©e",
             cancel_alliance_event: "Annuler lâ€™Ã©vÃ¨nement dâ€™alliance",
             cancel_alliance_event_confirm: "Voulez-vous vraiment annuler lâ€™Ã©vÃ¨nement dâ€™allianceÂ ?",
             challenges: "",
@@ -5959,6 +5987,7 @@ Object.values || (Object.values = function(e) {
             create_alliance_event: "Lancer lâ€™Ã©vÃ¨nement dâ€™alliance",
             create_alliance_operation: "CrÃ©er une mission dâ€™alliance majeure",
             emergency: "Urgence",
+            finishing: "Presque achevÃ©e",
             join_alliance_infos: "Si vous appartenez Ã  une alliance, les autres joueurs peuvent vous confier des missions.",
             map: "Carte",
             map_filters: {
@@ -6004,14 +6033,15 @@ Object.values || (Object.values = function(e) {
             missions_filtered_out: "Certaines missions peuvent Ãªtre filtrÃ©es. Veuillez vÃ©rifier les filtres de votre carte.",
             no_alliance_chat_impossible: "Vous nâ€™appartenez Ã  aucune alliance.",
             no_alliance_missions: "Aucune mission dâ€™alliance Ã  afficher.",
-            no_ambulance_missions: "Aucune mission dâ€™ambulance Ã  afficher. Les missions dâ€™ambulance nÃ©cessitent dâ€™avoir une ambulance et un hÃ´pital.",
+            no_ambulance_missions: "Il n'y a pas de transport de patient en attente. Les transports seront disponibles dÃ¨s que vous aurez trois ambulances de transport ou de secours et un hÃ´pital.",
             no_emergency_missions: "Aucune mission dâ€™urgence Ã  afficher. Vous pouvez recevoir des missions dâ€™urgence dÃ¨s lors que vous avez construit votre premier poste.",
             no_radio_messages: "Vous nâ€™avez reÃ§u aucun message radio.",
             radio_messages: "Radio",
             restore_map: "Restaurer la carte",
             show_informations: "Vert = les missions sâ€™affichent dans la liste. Rouge = les missions ne sâ€™affichent pas.",
             sicherheitswache: "Missions prÃ©vues",
-            transport: "Transport"
+            transport: "Transport",
+            unattended: "Non assignÃ©e"
         },
         fms: {
             going: "En intervention",
@@ -6115,10 +6145,10 @@ Object.values || (Object.values = function(e) {
                 kdow_lna: "",
                 kdow_orgl: "PC DSM",
                 ktw_b: "",
-                ktw_or_rtw: "",
+                ktw_or_rtw: "Ambulance de secours ou Ambulance de transport",
                 lebefkw: "Camionnette de police",
                 lf_only: "Fourgons dâ€™incendie",
-                long_distance_ambulance: "Ambulance RCP",
+                long_distance_ambulance: "Ambulance Type A",
                 mask_service_unit: "VÃ©hicule d'Assistance Respiratoire",
                 mek_mtf: "",
                 mek_zf: "",
@@ -6373,6 +6403,7 @@ Object.values || (Object.values = function(e) {
             alliance_missions: "Ð—Ð°Ð´Ð°Ð½Ð¸Ñ Ð°Ð»ÑŒÑÐ½ÑÐ°",
             alliance_missions_event: "Ð¡Ð¾Ð±Ñ‹Ñ‚Ð¸Ðµ",
             ambulance: "Ð¡ÐºÐ¾Ñ€Ð°Ñ Ð¿Ð¾Ð¼Ð¾Ñ‰ÑŒ",
+            attended: "ÐŸÐ¾ÑÐµÑ‰Ñ‘Ð½Ð½Ñ‹Ðµ",
             cancel_alliance_event: "ÐžÑ‚Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ðµ Ð°Ð»ÑŒÑÐ½ÑÐ°",
             cancel_alliance_event_confirm: "Ð’Ñ‹ ÑƒÐ²ÐµÑ€ÐµÐ½Ñ‹ Ñ‡Ñ‚Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¾Ñ‚Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ðµ Ð°Ð»ÑŒÑÐ½ÑÐ°?",
             challenges: "",
@@ -6381,6 +6412,7 @@ Object.values || (Object.values = function(e) {
             create_alliance_event: "ÐÐ°Ñ‡Ð°Ñ‚ÑŒ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ðµ Ð°Ð»ÑŒÑÐ½ÑÐ°",
             create_alliance_operation: "Ð¡Ð¾Ð·Ð´Ð°Ð¹Ñ‚Ðµ ÐºÑ€ÑƒÐ¿Ð½Ð¾Ð¼Ð°ÑÑˆÑ‚Ð°Ð±Ð½Ð¾Ðµ Ð·Ð°Ð´Ð°Ð½Ð¸Ðµ Ð°Ð»ÑŒÑÐ½ÑÐ°",
             emergency: "Ð§Ñ€ÐµÐ·Ð²Ñ‹Ñ‡Ð°Ð¹Ð½Ð°Ñ ÑÐ¸Ñ‚ÑƒÐ°Ñ†Ð¸Ñ",
+            finishing: "Ð—Ð°Ð²ÐµÑ€ÑˆÐ°ÑŽÑ‚ÑÑ",
             join_alliance_infos: "Ð•ÑÐ»Ð¸ Ð²Ñ‹ ÑÐ¾ÑÑ‚Ð¾Ð¸Ñ‚Ðµ Ð² Ð°Ð»ÑŒÑÐ½ÑÐµ, Ð´Ñ€ÑƒÐ³Ð¸Ðµ Ð¸Ð³Ñ€Ð¾ÐºÐ¸ Ð¼Ð¾Ð³ÑƒÑ‚ ÑÐ²Ð¾Ð±Ð¾Ð´Ð½Ð¾ Ð´Ð°Ð²Ð°Ñ‚ÑŒ Ð²Ð°Ð¼ Ð·Ð°Ð´Ð°Ð½Ð¸Ñ.",
             map: "ÐšÐ°Ñ€Ñ‚Ð°",
             map_filters: {
@@ -6433,7 +6465,8 @@ Object.values || (Object.values = function(e) {
             restore_map: "Ð’Ð¾ÑÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ ÐºÐ°Ñ€Ñ‚Ñƒ",
             show_informations: "Ð—ÐµÐ»Ñ‘Ð½Ñ‹Ð¹ = Ð·Ð°Ð´Ð°Ð½Ð¸Ñ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶Ð°ÑŽÑ‚ÑÑ Ð² ÑÐ¿Ð¸ÑÐºÐµ. ÐšÑ€Ð°ÑÐ½Ñ‹Ð¹ = Ð·Ð°Ð´Ð°Ð½Ð¸Ñ Ð½Ðµ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶Ð°ÑŽÑ‚ÑÑ.",
             sicherheitswache: "Ð—Ð°Ð¿Ð»Ð°Ð½Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ðµ Ð·Ð°Ð´Ð°Ð½Ð¸Ñ",
-            transport: "Ð¢Ñ€Ð°Ð½ÑÐ¿Ð¾Ñ€Ñ‚"
+            transport: "Ð¢Ñ€Ð°Ð½ÑÐ¿Ð¾Ñ€Ñ‚",
+            unattended: "ÐÐµÐ¿Ð¾ÑÐµÑ‰ÐµÐ½Ð½Ñ‹Ðµ"
         },
         fms: {
             going: "Ð’Ñ‹ÐµÐ·Ð¶Ð°ÐµÑ‚",
@@ -6755,6 +6788,7 @@ Object.values || (Object.values = function(e) {
             alliance_missions: "Alliancemissioner",
             alliance_missions_event: "Begivenhed",
             ambulance: "Ambulance",
+            attended: "IvÃ¦rksatte",
             cancel_alliance_event: "AnnullÃ©r alliancebegivenhed",
             cancel_alliance_event_confirm: "Er du sikker pÃ¥, at du vil annullere alliancebegivenheden?",
             challenges: "",
@@ -6763,6 +6797,7 @@ Object.values || (Object.values = function(e) {
             create_alliance_event: "PÃ¥begynd alliancebegivenhed",
             create_alliance_operation: "Opret en stor alliancemission",
             emergency: "Krisesituation",
+            finishing: "NÃ¦sten afsluttede",
             join_alliance_infos: "Hvis du er i en alliance, kan andre spillere give dig missioner.",
             map: "Kort",
             map_filters: {
@@ -6815,7 +6850,8 @@ Object.values || (Object.values = function(e) {
             restore_map: "Gendan kort",
             show_informations: "GrÃ¸n = Missionerne vises pÃ¥ listen. RÃ¸d = Missionerne vises ikke.",
             sicherheitswache: "Planlagte indsatser",
-            transport: "Transport"
+            transport: "Transport",
+            unattended: "Ikke ivÃ¦rksatte"
         },
         fms: {
             going: "Rykker ud",
@@ -7175,6 +7211,7 @@ Object.values || (Object.values = function(e) {
             alliance_missions: "Allianseoppdrag",
             alliance_missions_event: "Hendelse",
             ambulance: "Ambulanse",
+            attended: "HÃ¥ndterer",
             cancel_alliance_event: "Kansellere alliansehendelse",
             cancel_alliance_event_confirm: "Er du sikker pÃ¥ at du vil kansellere alliansehendelsen?",
             challenges: "",
@@ -7183,6 +7220,7 @@ Object.values || (Object.values = function(e) {
             create_alliance_event: "Start alliansehendelse",
             create_alliance_operation: "Lag et allianseoppdrag i stor skala",
             emergency: "NÃ¸dssituasjon",
+            finishing: "FullfÃ¸rer",
             join_alliance_infos: "Hvis du er i en allianse, kan andre spillere gi deg oppdrag.",
             map: "Kart",
             map_filters: {
@@ -7235,7 +7273,8 @@ Object.values || (Object.values = function(e) {
             restore_map: "Gjenopprett kart",
             show_informations: "GrÃ¸nn = oppdragene vises pÃ¥ listen. RÃ¸d = oppdragene vises ikke.",
             sicherheitswache: "Planlagte visninger",
-            transport: "Transport"
+            transport: "Transport",
+            unattended: "Ikke hÃ¥ndtert"
         },
         fms: {
             going: "Rykker ut",
@@ -7595,6 +7634,7 @@ Object.values || (Object.values = function(e) {
             alliance_missions: "AlianÄnÃ­ mise",
             alliance_missions_event: "Akce",
             ambulance: "Sanitka",
+            attended: "Å˜eÅ¡enÃ©",
             cancel_alliance_event: "ZruÅ¡it alianÄnÃ­ akci",
             cancel_alliance_event_confirm: "Opravdu chcete alianÄnÃ­ akci zruÅ¡it?",
             challenges: "VÃ½zvy",
@@ -7603,6 +7643,7 @@ Object.values || (Object.values = function(e) {
             create_alliance_event: "ZahÃ¡jit alianÄnÃ­ akci",
             create_alliance_operation: "VytvoÅ™it velkou alianÄnÃ­ misi",
             emergency: "Stav nouze",
+            finishing: "DokonÄovanÃ©",
             join_alliance_infos: "V alianci vÃ¡m ostatnÃ­ hrÃ¡Äi mÅ¯Å¾ou dÃ¡vat mise.",
             map: "Mapa",
             map_filters: {
@@ -7655,7 +7696,8 @@ Object.values || (Object.values = function(e) {
             restore_map: "Obnovit mapu",
             show_informations: "ZelenÃ¡ = Mise budou zobrazeny v seznamu. ÄŒervenÃ¡ = Mise nebudou zobrazeny.",
             sicherheitswache: "PlÃ¡novanÃ© mise",
-            transport: "PÅ™evoz"
+            transport: "PÅ™evoz",
+            unattended: "NeÅ™eÅ¡enÃ©"
         },
         fms: {
             going: "Na cestÄ›",
@@ -8016,6 +8058,7 @@ Object.values || (Object.values = function(e) {
             alliance_missions: "Birlik GÃ¶revleri",
             alliance_missions_event: "Etkinlik",
             ambulance: "Ambulans",
+            attended: "Attended",
             cancel_alliance_event: "Cancel alliance event",
             cancel_alliance_event_confirm: "Do you really want to cancel the alliance event?",
             challenges: "",
@@ -8024,6 +8067,7 @@ Object.values || (Object.values = function(e) {
             create_alliance_event: "Birlik etkinliÄŸi baÅŸlat",
             create_alliance_operation: "BÃ¼yÃ¼k Ã¶lÃ§ekli bir birlik gÃ¶revi oluÅŸtur",
             emergency: "Acil Durum",
+            finishing: "Finishing",
             join_alliance_infos: "Bir birlikteysen diÄŸer oyuncular sana istedikleri gibi gÃ¶revler verebilirler.",
             map: "Harita",
             map_filters: {
@@ -8076,7 +8120,8 @@ Object.values || (Object.values = function(e) {
             restore_map: "HaritayÄ± Geri YÃ¼kle",
             show_informations: "YeÅŸil = GÃ¶revler liste iÃ§inde gÃ¶sterilir. KÄ±rmÄ±zÄ± = GÃ¶revler gÃ¶sterilmez.",
             sicherheitswache: "Planlanan GÃ¶sterimler",
-            transport: "Nakil"
+            transport: "Nakil",
+            unattended: "Unattended"
         },
         fms: {
             going: "MÃ¼dahale ediyor",
@@ -8393,6 +8438,7 @@ Object.values || (Object.values = function(e) {
             alliance_missions: "MissÃµes da alianÃ§a",
             alliance_missions_event: "Evento",
             ambulance: "AmbulÃ¢ncia",
+            attended: "Respondidas",
             cancel_alliance_event: "Cancelar evento de alianÃ§a",
             cancel_alliance_event_confirm: "Realmente desejas cancelar o evento de alianÃ§a?",
             challenges: "",
@@ -8401,6 +8447,7 @@ Object.values || (Object.values = function(e) {
             create_alliance_event: "Iniciar evento de alianÃ§a",
             create_alliance_operation: "Criar missÃ£o de alianÃ§a em grande escala",
             emergency: "EmergÃªncia",
+            finishing: "Em decurso",
             join_alliance_infos: "Se estiver numa alianÃ§a, outros jogadores podem compartilhar missÃµes consigo.",
             map: "Mapa",
             map_filters: {
@@ -8453,7 +8500,8 @@ Object.values || (Object.values = function(e) {
             restore_map: "Restaurar mapa",
             show_informations: "Verde = As missÃµes sÃ£o exibidas na lista. Vermelho = As missÃµes nÃ£o sÃ£o exibidas.",
             sicherheitswache: "MissÃµes planejadas",
-            transport: "Transporte"
+            transport: "Transporte",
+            unattended: "NÃ£o respondidas"
         },
         fms: {
             going: "Em trÃ¢nsito",
@@ -8812,6 +8860,7 @@ Object.values || (Object.values = function(e) {
             alliance_missions: "MissÃµes da alianÃ§a",
             alliance_missions_event: "Evento",
             ambulance: "AmbulÃ¢ncia",
+            attended: "Respondidas",
             cancel_alliance_event: "Cancelar evento de alianÃ§a",
             cancel_alliance_event_confirm: "Realmente desejas cancelar o evento de alianÃ§a?",
             challenges: "",
@@ -8820,6 +8869,7 @@ Object.values || (Object.values = function(e) {
             create_alliance_event: "Iniciar evento de alianÃ§a",
             create_alliance_operation: "Crie uma missÃ£o de alianÃ§a de larga escala",
             emergency: "EmergÃªncia",
+            finishing: "Em decurso",
             join_alliance_infos: "Se vocÃª estiver em uma alianÃ§a, outros jogadores podem lhe dar missÃµes livremente.",
             map: "Mapa",
             map_filters: {
@@ -8872,7 +8922,8 @@ Object.values || (Object.values = function(e) {
             restore_map: "Restaurar mapa",
             show_informations: "Verde = As missÃµes sÃ£o exibidas na lista. Vermelho = As missÃµes nÃ£o sÃ£o exibidas.",
             sicherheitswache: "MissÃµes planejadas",
-            transport: "Transporte"
+            transport: "Transporte",
+            unattended: "NÃ£o respondidas"
         },
         fms: {
             going: "Respondendo",
@@ -9193,6 +9244,7 @@ Object.values || (Object.values = function(e) {
             alliance_missions: "Ð—Ð°Ð²Ð´Ð°Ð½Ð½Ñ Ð°Ð»ÑŒÑÐ½ÑÑƒ",
             alliance_missions_event: "ÐŸÐ¾Ð´Ñ–Ñ",
             ambulance: "Ð¨Ð²Ð¸Ð´ÐºÐ° Ð´Ð¾Ð¿Ð¾Ð¼Ð¾Ð³Ð°",
+            attended: "Ð’Ñ–Ð´Ð²Ñ–Ð´Ð°Ð½Ñ–",
             cancel_alliance_event: "Ð’Ñ–Ð´Ð¼Ñ–Ð½Ð¸Ñ‚Ð¸ Ð¿Ð¾Ð´Ñ–ÑŽ Ð°Ð»ÑŒÑÐ½ÑÑƒ",
             cancel_alliance_event_confirm: "Ð’Ð¸ Ð²Ð¿ÐµÐ²Ð½ÐµÐ½Ñ– Ñ‰Ð¾ Ñ…Ð¾Ñ‡ÐµÑ‚Ðµ Ð²Ñ–Ð´Ð¼Ñ–Ð½Ð¸Ñ‚Ð¸ Ð¿Ð¾Ð´Ñ–ÑŽ Ð°Ð»ÑŒÑÐ½ÑÑƒ?",
             challenges: "",
@@ -9201,6 +9253,7 @@ Object.values || (Object.values = function(e) {
             create_alliance_event: "Ð Ð¾Ð·Ð¿Ð¾Ñ‡Ð°Ñ‚Ð¸ Ð¿Ð¾Ð´Ñ–ÑŽ Ð°Ð»ÑŒÑÐ½ÑÑƒ",
             create_alliance_operation: "Ð¡Ñ‚Ð²Ð¾Ñ€Ð¸Ñ‚Ð¸ Ð²ÐµÐ»Ð¸ÐºÐ¾Ð¼Ð°ÑÑˆÑ‚Ð°Ð±Ð½Ðµ Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ Ð°Ð»ÑŒÑÐ½ÑÑƒ",
             emergency: "ÐÐ°Ð´Ð·Ð²Ð¸Ñ‡Ð°Ð¹Ð½Ð° ÑÐ¸Ñ‚ÑƒÐ°Ñ†Ñ–Ñ",
+            finishing: "Ð—Ð°Ð²ÐµÑ€ÑˆÑƒÑŽÑ‚ÑŒÑÑ",
             join_alliance_infos: "Ð¯ÐºÑ‰Ð¾ Ð²Ð¸ Ð¿ÐµÑ€ÐµÐ±ÑƒÐ²Ð°Ñ”Ñ‚Ðµ Ð² Ð°Ð»ÑŒÑÐ½ÑÑ–, Ñ–Ð½ÑˆÑ– Ð³Ñ€Ð°Ð²Ñ†Ñ– Ð¼Ð¾Ð¶ÑƒÑ‚ÑŒ Ð²Ñ–Ð»ÑŒÐ½Ð¾ Ð´Ð°Ð²Ð°Ñ‚Ð¸ Ð²Ð°Ð¼ Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ.",
             map: "ÐšÐ°Ñ€Ñ‚Ð°",
             map_filters: {
@@ -9253,7 +9306,8 @@ Object.values || (Object.values = function(e) {
             restore_map: "Ð’Ñ–Ð´Ð½Ð¾Ð²Ð¸Ñ‚Ð¸ ÐºÐ°Ñ€Ñ‚Ñƒ",
             show_informations: "Ð—ÐµÐ»ÐµÐ½Ð¸Ð¹ = Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ Ð±ÑƒÐ´ÑƒÑ‚ÑŒ Ð¿Ð¾ÐºÐ°Ð·Ð°Ð½Ñ– Ñƒ ÑÐ¿Ð¸ÑÐºÑƒ. Ð§ÐµÑ€Ð²Ð¾Ð½Ð¸Ð¹ = Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ Ð½Ðµ Ð±ÑƒÐ´ÑƒÑ‚ÑŒ Ð¿Ð¾ÐºÐ°Ð·Ð°Ð½Ñ–.",
             sicherheitswache: "Ð—Ð°Ð¿Ð»Ð°Ð½Ð¾Ð²Ð°Ð½Ñ– Ð·Ð°Ð²Ð´Ð°Ð½Ð½Ñ",
-            transport: "ÐŸÐµÑ€ÐµÐ²ÐµÐ·ÐµÐ½Ð½Ñ"
+            transport: "ÐŸÐµÑ€ÐµÐ²ÐµÐ·ÐµÐ½Ð½Ñ",
+            unattended: "ÐÐµÐ²Ñ–Ð´Ð²Ñ–Ð´Ð°Ð½Ñ–"
         },
         fms: {
             going: "Ð’Ð¸Ñ—Ð¶Ð´Ð¶Ð°Ñ”",
@@ -9574,6 +9628,7 @@ Object.values || (Object.values = function(e) {
             alliance_missions: "Misiones de alianza",
             alliance_missions_event: "Evento",
             ambulance: "Ambulancia",
+            attended: "Respondido",
             cancel_alliance_event: "Cancelar evento de alianza",
             cancel_alliance_event_confirm: "Â¿Seguro que quieres cancelar el evento de alianza?",
             challenges: "",
@@ -9582,6 +9637,7 @@ Object.values || (Object.values = function(e) {
             create_alliance_event: "Comenzar evento de alianza",
             create_alliance_operation: "Crea una misiÃ³n de alianza a gran escala",
             emergency: "Emergencia",
+            finishing: "Completando",
             join_alliance_infos: "Si estÃ¡s en una alianza, otros jugadores podrÃ¡n ofrecerte misiones.",
             map: "Mapa",
             map_filters: {
@@ -9634,7 +9690,8 @@ Object.values || (Object.values = function(e) {
             restore_map: "Restaurar mapa",
             show_informations: "Verde: las misiones se mostrarÃ¡n en la lista. Rojo: las misiones no se mostrarÃ¡n.",
             sicherheitswache: "Misones planificadas",
-            transport: "Transporte"
+            transport: "Transporte",
+            unattended: "Sin respuesta"
         },
         fms: {
             going: "Respondiendo",
@@ -9954,6 +10011,7 @@ Object.values || (Object.values = function(e) {
             alliance_missions: "ã‚¢ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ãƒŸãƒƒã‚·ãƒ§ãƒ³",
             alliance_missions_event: "ã‚¤ãƒ™ãƒ³ãƒˆ",
             ambulance: "æ•‘æ€¥è»Š",
+            attended: "å¯¾å¿œæ¸ˆ",
             cancel_alliance_event: "ã‚¢ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ã‚¤ãƒ™ãƒ³ãƒˆã®ã‚­ãƒ£ãƒ³ã‚»ãƒ«",
             cancel_alliance_event_confirm: "æœ¬å½“ã«ã‚¢ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ã‚¤ãƒ™ãƒ³ãƒˆã‚’ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã—ã¾ã™ã‹ï¼Ÿ ",
             challenges: "",
@@ -9962,6 +10020,7 @@ Object.values || (Object.values = function(e) {
             create_alliance_event: "ã‚¢ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ã‚¤ãƒ™ãƒ³ãƒˆã‚’é–‹å§‹",
             create_alliance_operation: "å¤§åž‹ã‚¢ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ãƒŸãƒƒã‚·ãƒ§ãƒ³ã‚’ä½œæˆ",
             emergency: "ç·Šæ€¥äº‹æ…‹",
+            finishing: "å¯¾å¿œä¸­",
             join_alliance_infos: "ã‚¢ãƒ©ã‚¤ã‚¢ãƒ³ã‚¹ã«æ‰€å±žã—ã¦ã„ã‚Œã°ã€ä»–ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒã‚ãªãŸã¸è‡ªç”±ã«ãƒŸãƒƒã‚·ãƒ§ãƒ³ã‚’å‰²ã‚Šå½“ã¦ã‚‰ã‚Œã¾ã™ã€‚",
             map: "ãƒžãƒƒãƒ—",
             map_filters: {
@@ -10014,7 +10073,8 @@ Object.values || (Object.values = function(e) {
             restore_map: "ãƒžãƒƒãƒ—ã‚’ãƒªã‚¹ãƒˆã‚¢",
             show_informations: "ç·‘ = ãƒŸãƒƒã‚·ãƒ§ãƒ³ãŒãƒªã‚¹ãƒˆå†…ã«è¡¨ç¤ºã•ã‚Œã¾ã™ã€‚èµ¤ = ãƒŸãƒƒã‚·ãƒ§ãƒ³ãŒè¡¨ç¤ºã•ã‚Œã¾ã›ã‚“ã€‚",
             sicherheitswache: "äºˆå®šã•ã‚Œã¦ã„ã‚‹ãƒŸãƒƒã‚·ãƒ§ãƒ³",
-            transport: "è¼¸é€"
+            transport: "è¼¸é€",
+            unattended: "æœªå¯¾å¿œ"
         },
         fms: {
             going: "å¿œç­”ä¸­",
@@ -10329,6 +10389,7 @@ Object.values || (Object.values = function(e) {
             alliance_missions: "ë™ë§¹ ìž„ë¬´",
             alliance_missions_event: "ì´ë²¤íŠ¸",
             ambulance: "êµ¬ê¸‰ì°¨",
+            attended: "ë°°ì •ë¨",
             cancel_alliance_event: "ë™ë§¹ ì´ë²¤íŠ¸ ì·¨ì†Œ",
             cancel_alliance_event_confirm: "ë™ë§¹ ì´ë²¤íŠ¸ë¥¼ ì·¨ì†Œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?",
             challenges: "",
@@ -10337,6 +10398,7 @@ Object.values || (Object.values = function(e) {
             create_alliance_event: "ë™ë§¹ ì´ë²¤íŠ¸ ì‹œìž‘",
             create_alliance_operation: "ëŒ€ê·œëª¨ ë™ë§¹ ìž„ë¬´ ìƒì„±",
             emergency: "ì‘ê¸‰ ìƒí™©",
+            finishing: "ì™„ë£Œ ì¤‘",
             join_alliance_infos: "ë™ë§¹ì— ì†Œì†ëœ ìƒíƒœë¼ë©´ ë‹¤ë¥¸ í”Œë ˆì´ì–´ë¡œë¶€í„° ìž„ë¬´ë¥¼ ìžìœ ë¡­ê²Œ ë°›ì„ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.",
             map: "ì§€ë„",
             map_filters: {
@@ -10389,7 +10451,8 @@ Object.values || (Object.values = function(e) {
             restore_map: "ì§€ë„ ë³µì›",
             show_informations: "ë…¹ìƒ‰ = ìž„ë¬´ê°€ ëª©ë¡ì— í‘œì‹œë©ë‹ˆë‹¤. ì ìƒ‰ = ìž„ë¬´ê°€ í‘œì‹œë˜ì§€ ì•ŠìŠµë‹ˆë‹¤.",
             sicherheitswache: "ê³„íšëœ ì¶œí˜„",
-            transport: "ìˆ˜ì†¡"
+            transport: "ìˆ˜ì†¡",
+            unattended: "ë°°ì •ë˜ì§€ ì•ŠìŒ"
         },
         fms: {
             going: "ì‘ë‹µ ì¤‘",
@@ -10711,6 +10774,7 @@ Object.values || (Object.values = function(e) {
             alliance_missions: "Misiuni alianÈ›Äƒ",
             alliance_missions_event: "Eveniment",
             ambulance: "AmbulanÈ›Äƒ",
+            attended: "Finalizate",
             cancel_alliance_event: "AnuleazÄƒ eveniment de alianÈ›Äƒ",
             cancel_alliance_event_confirm: "EÈ™ti sigur cÄƒ vrei sÄƒ anulezi evenimentul de alianÈ›Äƒ?",
             challenges: "",
@@ -10719,6 +10783,7 @@ Object.values || (Object.values = function(e) {
             create_alliance_event: "ÃŽncepe eveniment de alianÈ›Äƒ",
             create_alliance_operation: "CreeazÄƒ o misiune de alianÈ›Äƒ pe scarÄƒ largÄƒ",
             emergency: "UrgenÈ›Äƒ",
+            finishing: "ÃŽn finalizare",
             join_alliance_infos: "DacÄƒ faci parte dintr-o alianÈ›Äƒ, alÈ›i jucÄƒtori Ã®È›i pot Ã®ncredinÈ›a misiuni dacÄƒ doresc.",
             map: "HartÄƒ",
             map_filters: {
@@ -10771,7 +10836,8 @@ Object.values || (Object.values = function(e) {
             restore_map: "RestabileÈ™te harta",
             show_informations: "Verde = Misiunile sunt afiÈ™ate pe listÄƒ. RoÈ™u = Misiunile nu sunt afiÈ™ate.",
             sicherheitswache: "IntervenÈ›ii planificate",
-            transport: "Transport"
+            transport: "Transport",
+            unattended: "Nefinalizate"
         },
         fms: {
             going: "Pe drum",
@@ -11093,6 +11159,7 @@ Object.values || (Object.values = function(e) {
             alliance_missions: "Liittoutuman tehtÃ¤vÃ¤t",
             alliance_missions_event: "Tapahtuma",
             ambulance: "Ambulanssi",
+            attended: "Hoidettu",
             cancel_alliance_event: "Peruuta liittoumatapahtuma",
             cancel_alliance_event_confirm: "Haluatko varmasti peruuttaa liittoumatapahtuman?",
             challenges: "",
@@ -11101,6 +11168,7 @@ Object.values || (Object.values = function(e) {
             create_alliance_event: "Aloita liittoutumatapahtuma",
             create_alliance_operation: "Luo laaja liittoutumatehtÃ¤vÃ¤",
             emergency: "HÃ¤tÃ¤tilanne",
+            finishing: "PÃ¤Ã¤ttymÃ¤ssÃ¤",
             join_alliance_infos: "Jos kuulut johonkin liittoutumaan, muut pelaajat voivat antaa sinulle tehtÃ¤viÃ¤.",
             map: "Kartta",
             map_filters: {
@@ -11153,7 +11221,8 @@ Object.values || (Object.values = function(e) {
             restore_map: "Palauta kartta",
             show_informations: "VihreÃ¤ = tehtÃ¤vÃ¤t nÃ¤kyvÃ¤t luettelossa. Punainen = tehtÃ¤vÃ¤t eivÃ¤t nÃ¤y.",
             sicherheitswache: "Suunnitellut tehtÃ¤vÃ¤t",
-            transport: "Kuljetus"
+            transport: "Kuljetus",
+            unattended: "Ei hoidettu"
         },
         fms: {
             going: "Matkalla",
@@ -11515,6 +11584,7 @@ Object.values || (Object.values = function(e) {
             alliance_missions: "Misie aliancie",
             alliance_missions_event: "UdalosÅ¥",
             ambulance: "SanitnÃ© vozidlo",
+            attended: "RieÅ¡enÃ©",
             cancel_alliance_event: "ZruÅ¡iÅ¥ udalosÅ¥ aliancie",
             cancel_alliance_event_confirm: "Naozaj chcete zruÅ¡iÅ¥ udalosÅ¥ aliancie?",
             challenges: "",
@@ -11523,6 +11593,7 @@ Object.values || (Object.values = function(e) {
             create_alliance_event: "SpustiÅ¥ udalosÅ¥ aliancie",
             create_alliance_operation: "Vytvorte rozsiahlu alianÄnÃº misiu",
             emergency: "Mimoriadna udalosÅ¥",
+            finishing: "Prebieha dokonÄovanie",
             join_alliance_infos: "Ak ste v aliancii, ostatnÃ­ hrÃ¡Äi vÃ¡m mÃ´Å¾u zadarmo dÃ¡vaÅ¥ misie.",
             map: "Mapa",
             map_filters: {
@@ -11575,7 +11646,8 @@ Object.values || (Object.values = function(e) {
             restore_map: "ObnoviÅ¥ mapu",
             show_informations: "ZelenÃ¡ = Misie sÃº zobrazenÃ© v zozname. ÄŒervenÃ¡ = Misie nie sÃº zobrazenÃ©.",
             sicherheitswache: "PlÃ¡novanÃ© vÃ½skyty",
-            transport: "Transport"
+            transport: "Transport",
+            unattended: "NerieÅ¡enÃ©"
         },
         fms: {
             going: "ReagovaÅ¥",
