@@ -9535,6 +9535,10 @@ body.bigMap #building_panel_body{
     background-image:url(/images/anniversarybar.png);
     background-size:auto 100%
 }
+.mothersdaybar{
+    background-image:url(/images/mothersdaybar.png);
+    background-size:auto 100%
+}
 .missionAward{
     height:37px;
     width:37px
@@ -12388,6 +12392,10 @@ div.sceditor-group{
 }
 .policechief .osterbar{
     background-image:url(/images/policechief_osterbar.gif);
+    background-size:auto 100%
+}
+.policechief .mothersdaybar{
+    background-image:url(/images/policechief_mothersdaybar.png);
     background-size:auto 100%
 }
 .policechief .mission_header_info_progress .progress-bar-danger,.policechief .mission_progress .progress-bar-danger{
