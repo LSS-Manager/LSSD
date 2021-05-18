@@ -11513,6 +11513,10 @@ body.bigMap #search_input_field_missions{
 .task_panel .panel-heading{
     height:75px
 }
+.next_task{
+    float:right;
+    margin-top:-10px
+}
 .confirm-delete-modal .modal-body{
     max-height:100%
 }

@@ -3651,7 +3651,7 @@ Object.values || (Object.values = function(e) {
                 gw_oel_only: "Milieu wagen",
                 gw_san: "",
                 gw_taucher: "Waterongevallenvoertuig",
-                gw_wasserrettung: "",
+                gw_wasserrettung: "Strandvoertuig (DAT-RB of KHV)",
                 gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Alleen Slangenwagen / Watertankwagen",
                 hems: "",
