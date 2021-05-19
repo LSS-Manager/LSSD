@@ -3621,7 +3621,7 @@ Object.values || (Object.values = function(e) {
                 at_o: "AT-Operator",
                 battalion_chief_unit: "Officier van Dienst Brandweer",
                 bike_police: "DB-Bike",
-                boot: "WOA (Water ongeval aanhanger)",
+                boot: "WOA",
                 dekon_p: "",
                 division_chief_unit: "Hoofdofficier van Dienst - Brandweer",
                 dlk_or_tm50: "",
@@ -38759,6 +38759,9 @@ I18n.t = function(e, t) {
     }, {
         from: "/images/police_boat.png",
         to: "/images/pc_police_boat.png"
+    }, {
+        from: "/images/police_civil_car.png",
+        to: "/images/pc_police_civil_car.png"
     }, {
         from: "/images/sign_up.en_US.png",
         to: "/images/policechief_sign_up.en.png"
