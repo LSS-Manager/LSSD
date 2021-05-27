@@ -3194,7 +3194,7 @@ Object.values || (Object.values = function(e) {
                 dekon_p: "",
                 division_chief_unit: "ICCU or Ambulance Control Unit",
                 dlk_or_tm50: "",
-                elw1_or_elw2: "Fire Officer, ICCU or Ambulance Control Units",
+                elw1_or_elw2: "Fire Officer or ICCU",
                 elw2_or_ab_elw: "Incident Command and Control Unit",
                 elw3: "",
                 elw_airport: "",
