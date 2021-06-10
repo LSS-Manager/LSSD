@@ -11392,6 +11392,31 @@ body.bigMap #search_input_field_missions{
 .daily-bonuses{
     margin-bottom:20px
 }
+.daily-bonuses .collect-possible-block{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:20px;
+    background-color:#bbfbc6;
+    border-radius:5px
+}
+.daily-bonuses .collect-possible-block .day-title{
+    margin-bottom:15px;
+    font-size:16px
+}
+.daily-bonuses .collect-possible-block .collect-button{
+    min-width:240px
+}
+.daily-bonuses .collect-possible-block .watch-video-button{
+    margin-top:10px;
+    min-width:240px;
+    display:flex;
+    align-items:center;
+    justify-content:center
+}
+.daily-bonuses .collect-possible-block .watch-video-button img{
+    margin-right:5px
+}
 .daily-bonuses .day-block{
     max-width:500px
 }
@@ -11400,9 +11425,12 @@ body.bigMap #search_input_field_missions{
     justify-content:center;
     align-items:center
 }
+.daily-bonuses .day-button.btn-danger[disabled]{
+    background:linear-gradient(to bottom, #ec7572 0, #ab4f4d 100%)
+}
 .daily-bonuses .day-button.coins-button{
     color:#fff;
-    background-color:#651b85
+    background:linear-gradient(to bottom, #4fced9 0, #2ac1ba 100%)
 }
 .daily-bonuses-free-coin{
     width:auto;
@@ -11543,6 +11571,17 @@ body.bigMap #search_input_field_missions{
 }
 .tasks_and_events_navbar .badge{
     margin-top:-1px
+}
+.spinner{
+    width:20px;
+    height:20px;
+    display:none
+}
+.button-loading .element-hidden{
+    display:none
+}
+.button-loading .spinner{
+    display:block
 }
 /* * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select) * * Copyright 2013-2017 bootstrap-select * Licensed under MIT (https://github.com/silviomoreto/bootstrap-select/blob/master/LICENSE) */
 select.bs-select-hidden,select.selectpicker{

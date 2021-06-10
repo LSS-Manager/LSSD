@@ -1776,6 +1776,17 @@ function switchWorld(e) {
     }), window.location.href = t + "?" + $.param(i), !1
 }
 
+function updateButtonState(e, t) {
+    function i(e, t) {
+        e.toggleClass("disabled button-loading", !t).attr("disabled", !t)
+    }
+
+    function n(e) {
+        e.removeClass("button-loading").addClass("disabled").attr("disabled", !0)
+    }
+    t === BUTTON_STATES.loading ? i(e, !1) : t === BUTTON_STATES.enabled ? i(e, !0) : t == BUTTON_STATES.disabled && n(e)
+}
+
 function missionPositionMarkerAdd(e) {
     1 == mobile_bridge_use && mobileBridgeAdd("poi", [e])
 }
@@ -29419,38 +29430,43 @@ $(document).on("shown.bs.dropdown", function(e) {
     }
 });
 var dynamicLayouter = function() {
-    var e = {};
-    return {
-        init: function() {
-            dynamicLayouter.clear(), dynamicLayouter.initLayouter(), dynamicLayouter.resize()
-        },
-        initLayouter: function() {
-            dynamicLayouter.initCookiesBannerLayouter()
-        },
-        resize: function() {
-            for (var e in dynamicLayouter.resizeFunctions()) dynamicLayouter.resizeFunctions()[e]()
-        },
-        initCookiesBannerLayouter: function() {
-            var t = $("#bigMapMenu"),
-                i = $(".js-cookies-eu"),
-                n = $("#navbar-mobile-footer");
-            i.length && (t.length || n.length) && ($(".cookies-eu-ok").on("click", function() {
-                i.css("height", "0px"), e.recalculateCookiesBanner(), delete e.recalculateCookiesBanner
-            }), dynamicLayouter.resizeFunctions().recalculateCookiesBanner = dynamicLayouter.recalculateCookiesBanner)
-        },
-        recalculateCookiesBanner: function() {
-            var e = $("#bigMapMenu").length ? $("#bigMapMenu") : $("#navbar-mobile-footer"),
-                t = $(".js-cookies-eu");
-            t.length && e.length ? e.css("bottom", t.height()) : e.css("bottom", 0)
-        },
-        resizeFunctions: function() {
-            return e
-        },
-        clear: function() {
-            e = {}
+        var e = {};
+        return {
+            init: function() {
+                dynamicLayouter.clear(), dynamicLayouter.initLayouter(), dynamicLayouter.resize()
+            },
+            initLayouter: function() {
+                dynamicLayouter.initCookiesBannerLayouter()
+            },
+            resize: function() {
+                for (var e in dynamicLayouter.resizeFunctions()) dynamicLayouter.resizeFunctions()[e]()
+            },
+            initCookiesBannerLayouter: function() {
+                var t = $("#bigMapMenu"),
+                    i = $(".js-cookies-eu"),
+                    n = $("#navbar-mobile-footer");
+                i.length && (t.length || n.length) && ($(".cookies-eu-ok").on("click", function() {
+                    i.css("height", "0px"), e.recalculateCookiesBanner(), delete e.recalculateCookiesBanner
+                }), dynamicLayouter.resizeFunctions().recalculateCookiesBanner = dynamicLayouter.recalculateCookiesBanner)
+            },
+            recalculateCookiesBanner: function() {
+                var e = $("#bigMapMenu").length ? $("#bigMapMenu") : $("#navbar-mobile-footer"),
+                    t = $(".js-cookies-eu");
+                t.length && e.length ? e.css("bottom", t.height()) : e.css("bottom", 0)
+            },
+            resizeFunctions: function() {
+                return e
+            },
+            clear: function() {
+                e = {}
+            }
         }
-    }
-}();
+    }(),
+    BUTTON_STATES = {
+        loading: "loading",
+        enabled: "enabled",
+        disabled: "disabled"
+    };
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
