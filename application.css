@@ -11417,6 +11417,9 @@ body.bigMap #search_input_field_missions{
 .daily-bonuses .collect-possible-block .watch-video-button img{
     margin-right:5px
 }
+body.dark .daily-bonuses .collect-possible-block{
+    color:black
+}
 .daily-bonuses .day-block{
     max-width:500px
 }
