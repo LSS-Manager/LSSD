@@ -8901,13 +8901,13 @@ body.dark .mission_overview_countdown{
 }
 .fussballIframe{
     min-height:500px;
-    background-image:url(/images/fussball.svg);
+    background-image:url(/images/fussball.jpg);
     background-size:auto;
-    padding:50px;
+    padding:25px;
     margin:15px 0
 }
 .fussballCoins{
-    background-image:url(/images/fussball.svg);
+    background-image:url(/images/fussball.jpg);
     background-size:auto;
     color:white;
     font-size:20px;
@@ -8927,7 +8927,7 @@ body.dark .mission_overview_countdown{
     line-height:2
 }
 .fussballIframe input.numeric{
-    width:200px
+    width:Min(6em, 100%)
 }
 .fussballIframe h1{
     color:white
