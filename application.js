@@ -6659,7 +6659,11 @@ Object.values || (Object.values = function (e) {
             to_mission: "Visualizza missione",
             understand: "Conferma",
             user_not_found: "Il giocatore non è stato trovato.",
-            vehicles_not_visible: "Veicoli non visibili. "
+            vehicles_not_visible: "Veicoli non visibili. ",
+            water_approaching: "In Arrivo: %{amount} lit.",
+            water_missing: "Mancanti: %{amount} lit.",
+            water_on_site: "Sul Posto: %{amount} lit.",
+            water_selected: "Selezionati: %{amount} lit."
         },
         map: {
             alliance: "Alleanza",
@@ -6797,6 +6801,7 @@ Object.values || (Object.values = function (e) {
                 arff: "ARFF (mezzo antincendio aeroportuale)",
                 battalion_chief_unit: "Funzionario",
                 boot: "Barca",
+                brush_truck: "Mezzo AIB",
                 commerce_police: "Volante Finanza",
                 crew_carrier: "AF/BUS",
                 dekon_p: "",
@@ -6808,6 +6813,7 @@ Object.values || (Object.values = function (e) {
                 elw_airport: "",
                 emergency_ambulance: "Automedica (VLV)",
                 fbi_bomb_tech: "Furgone artificieri",
+                fire_aviation: "Unità Aerea Antincendio",
                 fire_truck: "Autopompe",
                 fireboat: "Barca antincendio grande",
                 fly_car: "Fly-Car",
@@ -6889,7 +6895,7 @@ Object.values || (Object.values = function (e) {
                 turntable_ladder: "Autoscala",
                 ulf: "",
                 wasserwerfer: "",
-                water_amount: "",
+                water_amount: "Litri d'acqua",
                 water_amount_tlf: ""
             }
         },
