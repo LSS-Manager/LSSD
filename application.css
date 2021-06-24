@@ -11769,11 +11769,14 @@ fieldset[disabled] .btn-danger:hover {
     font-size: 12px
 }
 
+.sale-countdown-block {
+    background-color: #5cb85c
+}
+
 #sale_countdown_mobile {
     display: none;
-    padding: 10px;
-    color: white;
-    font-size: 20px
+    padding: 5px 10px;
+    color: white
 }
 
 .highlight {
@@ -12596,6 +12599,26 @@ body.dark .mission_overview_countdown {
 
 #daily-bonus .bonus-active {
     color: #44c746
+}
+
+.navbar-default .dropdown-menu .nav-icon {
+    font-size: 16px
+}
+
+.navbar-default a#menu_daily_rewards .glyphicon {
+    font-size: 18px;
+    vertical-align: middle;
+    color: #fff
+}
+
+.navbar-header .money-block-mobile {
+    float: left;
+    margin-top: 15px
+}
+
+.navbar-header a {
+    color: #fff;
+    margin-left: 10px
 }
 
 .ajax-loader {
@@ -15780,6 +15803,14 @@ body.dark .daily-bonuses .collect-possible-block {
     padding: 10px
 }
 
+.residency-form {
+    margin-top: 20px
+}
+
+.residency-form .resident-selects {
+    width: 250px
+}
+
 #building_schooling_table td {
     vertical-align: middle
 }
@@ -15884,25 +15915,40 @@ body.dark .daily-bonuses .collect-possible-block {
 }
 
 .progress_value {
-    float: right
+    margin-left: auto
 }
 
 .progress_bar {
-    width: 100%;
-    float: right
-}
-
-.task_panel {
-    height: 160px
+    width: 100%
 }
 
 .task_panel .panel-heading {
-    height: 75px
+    min-height: 75px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: baseline
+}
+
+.task_panel .progress-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between
 }
 
 .next_task {
-    float: right;
-    margin-top: -10px
+    margin-top: -10px;
+    text-align: right
+}
+
+@media (max-width: 400px) {
+    .next_task {
+        text-align: left
+    }
+
+    .progress_value {
+        margin-left: inherit
+    }
 }
 
 .confirm-delete-modal .modal-body {
@@ -15935,6 +15981,12 @@ body.dark .daily-bonuses .collect-possible-block {
     background-image: url(/images/bg.gif)
 }
 
+.missions-sortable-link {
+    float: right;
+    width: 21px;
+    height: 21px
+}
+
 .tasks_and_events_navbar .badge {
     margin-top: -1px
 }
@@ -15951,6 +16003,23 @@ body.dark .daily-bonuses .collect-possible-block {
 
 .button-loading .spinner {
     display: block
+}
+
+.education-filter-title {
+    line-height: 34px
+}
+
+.vehicles-education-filter-box {
+    margin-bottom: 20px;
+    padding: 8px
+}
+
+.vehicles-education-filter-box .filter-title {
+    margin-right: 15px
+}
+
+.vehicle-prisons-filter {
+    margin-bottom: 10px
 }
 
 /*
