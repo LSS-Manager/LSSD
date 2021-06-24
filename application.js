@@ -5413,7 +5413,11 @@ Object.values || (Object.values = function (e) {
             to_mission: "View Mission",
             understand: "Acknowledge",
             user_not_found: "The player was not found.",
-            vehicles_not_visible: "Vehicles not visible. "
+            vehicles_not_visible: "Vehicles not visible. ",
+            water_approaching: "On route: %{amount} l.",
+            water_missing: "Missing: %{amount} l.",
+            water_on_site: "On scene: %{amount} l.",
+            water_selected: "Selected: %{amount} l."
         },
         map: {
             alliance: "Alliance",
@@ -5645,7 +5649,7 @@ Object.values || (Object.values = function (e) {
                 turntable_ladder: "Turntable Ladders",
                 ulf: "",
                 wasserwerfer: "",
-                water_amount: "",
+                water_amount: "Litres of water",
                 water_amount_tlf: ""
             }
         },
@@ -6222,7 +6226,7 @@ Object.values || (Object.values = function (e) {
             sale_ended: "Promocja zakończona",
             secounds: "s",
             sicherheitswache_error: "Zabezpieczenie „%{caption}” nie było skuteczne, ponieważ nie spełniono wszystkich kryteriów.",
-            sicherheitswache_success: "Zabezpieczenie „%{caption}” zadziałało. Otrzymaj %{credits} kredytów(-y).",
+            sicherheitswache_success: "Zabezpieczenie „%{caption}” zakończyło się. Otrzymałeś %{credits} kredytów(-y).",
             start_in: "Początek za: ",
             start_username: "Inicjator:",
             time_left: "Pozostało czasu:",
@@ -6811,10 +6815,10 @@ Object.values || (Object.values = function (e) {
                 elw2_or_ab_elw: "",
                 elw3: "",
                 elw_airport: "",
-                emergency_ambulance: "Automedica (VLV)",
+                emergency_ambulance: "Automedica (VLV) o Elisoccorso",
                 fbi_bomb_tech: "Furgone artificieri",
                 fire_aviation: "Unità Aerea Antincendio",
-                fire_truck: "Autopompe",
+                fire_truck: "APS/ABP",
                 fireboat: "Barca antincendio grande",
                 fly_car: "Fly-Car",
                 fukw: "",
@@ -6848,7 +6852,7 @@ Object.values || (Object.values = function (e) {
                 ktw_or_rtw: "Ambulanza ordinaria o BLSD",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
                 lf_only: "Mezzi antincendio",
-                long_distance_ambulance: "Ambulanza ordinaria o BLSD",
+                long_distance_ambulance: "Ambulanza ordinaria",
                 mask_service_unit: "Carro aria",
                 mek_mtf: "",
                 mek_zf: "",
@@ -6870,7 +6874,7 @@ Object.values || (Object.values = function (e) {
                 rescueboat: "Barca di salvataggio grande",
                 rettungstreppe: "",
                 rth_only: "Elisoccorso",
-                schlauchwagen: "Autobotte",
+                schlauchwagen: "Kilolitrica",
                 seg_elw: "",
                 sek_mtf: "",
                 sek_zf: "",
@@ -8328,7 +8332,11 @@ Object.values || (Object.values = function (e) {
             to_mission: "Vis oppdrag",
             understand: "Bekreft",
             user_not_found: "Spilleren ble ikke funnet.",
-            vehicles_not_visible: "Fremkomstmidler er ikke synlige. "
+            vehicles_not_visible: "Fremkomstmidler er ikke synlige. ",
+            water_approaching: "Rykker ut: %{amount} l.",
+            water_missing: "Mangler: %{amount} l.",
+            water_on_site: "På stedet: %{amount} l.",
+            water_selected: "Valgt: %{amount} l."
         },
         map: {
             alliance: "Allianse",
@@ -8559,7 +8567,7 @@ Object.values || (Object.values = function (e) {
                 turntable_ladder: "Stigebil",
                 ulf: "",
                 wasserwerfer: "",
-                water_amount: "",
+                water_amount: "Liter vann",
                 water_amount_tlf: ""
             }
         },
