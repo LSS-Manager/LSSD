@@ -6464,6 +6464,7 @@ Object.values || (Object.values = function (e) {
                 fire_truck: "Samochody pożarnicze",
                 fireboat: "Duża łódź strażacka",
                 fly_car: "Samochód szefa brygady",
+                fly_car_any: "Pomoc medyczna",
                 fukw: "",
                 fustw_or_police_motorcycle: "Radiowóz OPI lub Motocykl Policyjny",
                 fwk: "Dźwig SP",
