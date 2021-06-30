@@ -12187,7 +12187,7 @@ fieldset[disabled] .btn-gray.active {
     height: 5px
 }
 
-#btn-alliance-new-event {
+.alliance_events_buttons {
     margin-bottom: 150px
 }
 
@@ -15979,12 +15979,6 @@ body.dark .daily-bonuses .collect-possible-block {
 
 .sortable-link.no-sort {
     background-image: url(/images/bg.gif)
-}
-
-.missions-sortable-link {
-    float: right;
-    width: 21px;
-    height: 21px
 }
 
 .tasks_and_events_navbar .badge {
