@@ -35016,7 +35016,8 @@ $(function () {
                 "intervention_order.vehicles.elw_police")], ["bike_police", I18n.t(
                 "intervention_order.vehicles.bike_police")], ["police_car_3", I18n.t(
                 "intervention_order.vehicles.police_car_3")], ["helicopter_bucket", I18n.t(
-                "intervention_order.vehicles.helicopter_bucket")]], $("#restore_map")
+                "intervention_order.vehicles.helicopter_bucket")], ["flood_equipment", I18n.t(
+                "intervention_order.vehicles.flood_equipment")]], $("#restore_map")
         .click(function () {
             mapViewRestore()
         }), $("#coins_top")
