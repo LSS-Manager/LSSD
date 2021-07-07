@@ -12616,8 +12616,11 @@ body.dark .mission_overview_countdown {
     margin-top: 15px
 }
 
+.navbar-header .money-block-mobile a {
+    color: #fff
+}
+
 .navbar-header a {
-    color: #fff;
     margin-left: 10px
 }
 
@@ -16014,6 +16017,10 @@ body.dark .daily-bonuses .collect-possible-block {
 
 .vehicle-prisons-filter {
     margin-bottom: 10px
+}
+
+#map_adress_search_form {
+    margin-left: 0px
 }
 
 /*
