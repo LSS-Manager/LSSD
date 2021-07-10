@@ -12577,11 +12577,6 @@ body.dark .mission_overview_countdown {
     height: 19px
 }
 
-.navbar-nav .badge {
-    margin-left: 2px;
-    margin-top: -10px
-}
-
 #navbar-main-collapse {
     margin-right: 15px
 }
@@ -16021,6 +16016,19 @@ body.dark .daily-bonuses .collect-possible-block {
 
 #map_adress_search_form {
     margin-left: 0px
+}
+
+.navbar-nav>li>a>span {
+    vertical-align: middle
+}
+
+.navbar-nav>li>a {
+    vertical-align: middle;
+    margin-bottom: -1px
+}
+
+.navbar-nav .badge {
+    margin-left: 4px
 }
 
 /*
