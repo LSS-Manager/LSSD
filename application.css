@@ -16023,12 +16023,15 @@ body.dark .daily-bonuses .collect-possible-block {
 }
 
 .navbar-nav>li>a {
-    vertical-align: middle;
-    margin-bottom: -1px
+    vertical-align: middle
 }
 
 .navbar-nav .badge {
     margin-left: 4px
+}
+
+.navbar-nav>li>a {
+    line-height: 19px
 }
 
 /*
