@@ -3900,6 +3900,7 @@ Object.values || (Object.values = function (e) {
                 hlf_only: "",
                 hlf_or_rw_and_lf: "",
                 hondengeleider: "",
+                hose_trucks: "Hose Truck",
                 joint_response_unit: "",
                 k9: "K-9 Unit",
                 kdow_lna: "",
@@ -3929,6 +3930,7 @@ Object.values || (Object.values = function (e) {
                 police_horse: "Mounted Police",
                 police_motorcycle: "Police Motorcycle",
                 polizeihubschrauber: "Police helicopter",
+                pump: "Engine-Pumps",
                 rescue_dogs: "",
                 rescue_dogs_seg: "",
                 rescue_dogs_thw: "",
@@ -7100,7 +7102,11 @@ Object.values || (Object.values = function (e) {
             to_mission: "Afficher la mission",
             understand: "Bien reçu",
             user_not_found: "Impossible de trouver le joueur.",
-            vehicles_not_visible: "Les véhicules ne sont pas visibles. "
+            vehicles_not_visible: "Les véhicules ne sont pas visibles. ",
+            water_approaching: "En approche : %{amount} l",
+            water_missing: "Manquante : %{amount} l",
+            water_on_site: "Sur les lieux : %{amount} l",
+            water_selected: "Sélectionnée : %{amount} l"
         },
         map: {
             alliance: "Alliance",
@@ -7278,6 +7284,7 @@ Object.values || (Object.values = function (e) {
                 hlf_only: "Véhicule de secours",
                 hlf_or_rw_and_lf: "Véhicule de secours ou véhicule de secours lourd et véhicule d'incendie",
                 hondengeleider: "",
+                hose_trucks: "Camion dévidoir",
                 k9: "Brigade canine",
                 kdow_lna: "",
                 kdow_orgl: "PC DSM",
@@ -7302,6 +7309,7 @@ Object.values || (Object.values = function (e) {
                 police_car: "Voiture de patrouille",
                 police_motorcycle: "Unité motocycliste",
                 polizeihubschrauber: "Hélicoptère de police",
+                pump: "Motopompes",
                 rescue_vehicle: "Véhicule de secours routier",
                 rescue_vehicle_only: "Secours routier",
                 rescueboat: "Grand bateau de sauvetage",
@@ -7332,7 +7340,7 @@ Object.values || (Object.values = function (e) {
                 turntable_ladder: "Moyen Elévateur Aérien",
                 ulf: "",
                 wasserwerfer: "",
-                water_amount: "",
+                water_amount: "Litres d’eau",
                 water_amount_tlf: ""
             }
         },
@@ -35012,7 +35020,9 @@ $(function () {
                 "intervention_order.vehicles.bike_police")], ["police_car_3", I18n.t(
                 "intervention_order.vehicles.police_car_3")], ["helicopter_bucket", I18n.t(
                 "intervention_order.vehicles.helicopter_bucket")], ["flood_equipment", I18n.t(
-                "intervention_order.vehicles.flood_equipment")]], $("#restore_map")
+                "intervention_order.vehicles.flood_equipment")], ["hose_trucks", I18n.t(
+                "intervention_order.vehicles.hose_trucks")], ["pump", I18n.t(
+                "intervention_order.vehicles.pump")]], $("#restore_map")
         .click(function () {
             mapViewRestore()
         }), $("#coins_top")
