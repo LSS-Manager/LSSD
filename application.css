@@ -11838,8 +11838,7 @@ body.koenigstag .navbar-nav {
 
 body.belgiumbar .navbar-default {
     background-image: url(/images/belgiumbar.png);
-    background-size: auto 100%;
-    background-color: #c9302c
+    background-size: auto 100%
 }
 
 body.dodenherdenking .navbar-default {
@@ -17203,6 +17202,11 @@ div.sceditor-group {
 .policechief .oneyear_eventIframe .btn-adventskalender {
     color: white;
     background-color: #003b73
+}
+
+body.belgiumbar.policechief .navbar-default {
+    background-image: url(/images/policechief_belgiumbar.png);
+    background-size: auto 100%
 }
 
 @media only screen and (max-width: 1280px) and (min-width: 768px) {
