@@ -924,9 +924,10 @@ function getBuildingMarkerIcon(e) {
         .building_type == BUILDING_TYPE_WATER_RESCUE_SCHOOL ? building_marker_image =
         "/images/building_water_rescue_school_other.png" : e.building_type ==
         BUILDING_TYPE_HAZARD_RESPONSE_EMS ? building_marker_image =
-        "/images/building_hazard_response_ems_other.png" : e.building_type == BUILDING_TYPE_WATER_RESCUE_2 &&
-        (building_marker_image = "/images/building_wasserwacht_other.png"), flavouredAsset(
-            building_marker_image)
+        "/images/building_hazard_response_ems_other.png" : e.building_type == BUILDING_TYPE_WATER_RESCUE_2 ?
+        building_marker_image = "/images/building_wasserwacht_other.png" : e.building_type ==
+        BUILDING_TYPE_FIRE_INVESTIGATION && (building_marker_image =
+            "/images/building_fire_marshall_other.png"), flavouredAsset(building_marker_image)
 }
 
 function spliceLatLngs(e, t) {
@@ -1930,14 +1931,16 @@ function messageUnreadUpdate(e) {
 }
 
 function number_format(e, t) {
-    var i = ",",
-        n = ".";
-    x = new Array, s = 0 > e ? "-" : "", e = Math.abs(e)
+    var i = I18n.t("number.format.separator"),
+        n = I18n.t("number.format.delimiter"),
+        o = new Array,
+        s = 0 > e ? "-" : "";
+    e = Math.abs(e)
         .toFixed(t)
         .split("."), r = e[0].split("")
         .reverse();
-    for (var o = 1; o <= r.length; o++) x.unshift(r[o - 1]), 0 == o % 3 && o != r.length && x.unshift(n);
-    return s + x.join("") + (e[1] ? i + e[1] : "")
+    for (var a = 1; a <= r.length; a++) o.unshift(r[a - 1]), 0 == a % 3 && a != r.length && o.unshift(n);
+    return s + o.join("") + (e[1] ? i + e[1] : "")
 }
 
 function formatTimeDescription(e) {
@@ -3621,6 +3624,15 @@ Object.values || (Object.values = function (e) {
                     }
                 }
             }
+        },
+        number: {
+            format: {
+                delimiter: ".",
+                precision: 2,
+                separator: ",",
+                significant: !1,
+                strip_insignificant_zeros: !1
+            }
         }
     }, I18n.translations.en_US = {
         common: {
@@ -4098,6 +4110,15 @@ Object.values || (Object.values = function (e) {
                     }
                 }
             }
+        },
+        number: {
+            format: {
+                delimiter: ",",
+                precision: 3,
+                separator: ".",
+                significant: !1,
+                strip_insignificant_zeros: !1
+            }
         }
     }, I18n.translations.en_GB = {
         common: {
@@ -4523,6 +4544,15 @@ Object.values || (Object.values = function (e) {
                         }
                     }
                 }
+            }
+        },
+        number: {
+            format: {
+                delimiter: ",",
+                precision: 3,
+                separator: ".",
+                significant: !1,
+                strip_insignificant_zeros: !1
             }
         }
     }, I18n.translations.nl_NL = {
@@ -4963,6 +4993,15 @@ Object.values || (Object.values = function (e) {
                     }
                 }
             }
+        },
+        number: {
+            format: {
+                delimiter: ".",
+                precision: 2,
+                separator: ",",
+                significant: !1,
+                strip_insignificant_zeros: !1
+            }
         }
     }, I18n.translations.es_ES = {
         common: {
@@ -5350,6 +5389,15 @@ Object.values || (Object.values = function (e) {
             },
             rewards: {
                 log: "Recompensa por completar el tutorial."
+            }
+        },
+        number: {
+            format: {
+                delimiter: " ",
+                precision: 3,
+                separator: ",",
+                significant: !1,
+                strip_insignificant_zeros: !1
             }
         }
     }, I18n.translations.en_AU = {
@@ -5784,6 +5832,15 @@ Object.values || (Object.values = function (e) {
                     }
                 }
             }
+        },
+        number: {
+            format: {
+                delimiter: ",",
+                precision: 3,
+                separator: ".",
+                significant: !1,
+                strip_insignificant_zeros: !1
+            }
         }
     }, I18n.translations.sv_SE = {
         common: {
@@ -6172,6 +6229,15 @@ Object.values || (Object.values = function (e) {
                         }
                     }
                 }
+            }
+        },
+        number: {
+            format: {
+                delimiter: " ",
+                precision: 3,
+                separator: ",",
+                significant: !1,
+                strip_insignificant_zeros: !1
             }
         }
     }, I18n.translations.pl_PL = {
@@ -6603,6 +6669,15 @@ Object.values || (Object.values = function (e) {
                         }
                     }
                 }
+            }
+        },
+        number: {
+            format: {
+                delimiter: " ",
+                precision: 3,
+                separator: ",",
+                significant: !1,
+                strip_insignificant_zeros: !1
             }
         }
     }, I18n.translations.it_IT = {
@@ -7036,6 +7111,15 @@ Object.values || (Object.values = function (e) {
                     }
                 }
             }
+        },
+        number: {
+            format: {
+                delimiter: ".",
+                precision: 3,
+                separator: ",",
+                significant: !1,
+                strip_insignificant_zeros: !1
+            }
         }
     }, I18n.translations.fr_FR = {
         common: {
@@ -7468,6 +7552,15 @@ Object.values || (Object.values = function (e) {
                     }
                 }
             }
+        },
+        number: {
+            format: {
+                delimiter: " ",
+                precision: 3,
+                separator: ",",
+                significant: !1,
+                strip_insignificant_zeros: !1
+            }
         }
     }, I18n.translations.ru_RU = {
         common: {
@@ -7854,6 +7947,15 @@ Object.values || (Object.values = function (e) {
             },
             rewards: {
                 log: "Награда за завершение обучения."
+            }
+        },
+        number: {
+            format: {
+                delimiter: " ",
+                precision: 3,
+                separator: ",",
+                significant: !1,
+                strip_insignificant_zeros: !1
             }
         }
     }, I18n.translations.da_DK = {
@@ -8278,6 +8380,15 @@ Object.values || (Object.values = function (e) {
                         }
                     }
                 }
+            }
+        },
+        number: {
+            format: {
+                delimiter: ".",
+                precision: 3,
+                separator: ",",
+                significant: !1,
+                strip_insignificant_zeros: !1
             }
         }
     }, I18n.translations.nb_NO = {
@@ -8710,6 +8821,15 @@ Object.values || (Object.values = function (e) {
                     }
                 }
             }
+        },
+        number: {
+            format: {
+                delimiter: " ",
+                precision: 3,
+                separator: ",",
+                significant: !1,
+                strip_insignificant_zeros: !1
+            }
         }
     }, I18n.translations.cs_CZ = {
         common: {
@@ -9137,6 +9257,15 @@ Object.values || (Object.values = function (e) {
                     }
                 }
             }
+        },
+        number: {
+            format: {
+                delimiter: " ",
+                precision: 3,
+                separator: ",",
+                significant: !1,
+                strip_insignificant_zeros: !1
+            }
         }
     }, I18n.translations.tr_TR = {
         common: {
@@ -9519,6 +9648,15 @@ Object.values || (Object.values = function (e) {
             },
             rewards: {
                 log: "Eğitimi tamamlama ödülü."
+            }
+        },
+        number: {
+            format: {
+                delimiter: ".",
+                precision: 3,
+                separator: ",",
+                significant: !1,
+                strip_insignificant_zeros: !1
             }
         }
     }, I18n.translations.pt_PT = {
@@ -9948,6 +10086,15 @@ Object.values || (Object.values = function (e) {
                     }
                 }
             }
+        },
+        number: {
+            format: {
+                delimiter: " ",
+                precision: 2,
+                separator: ",",
+                significant: !1,
+                strip_insignificant_zeros: !1
+            }
         }
     }, I18n.translations.pt_BR = {
         common: {
@@ -10331,6 +10478,15 @@ Object.values || (Object.values = function (e) {
             },
             rewards: {
                 log: "Recompensa por completar o tutorial."
+            }
+        },
+        number: {
+            format: {
+                delimiter: ".",
+                precision: 3,
+                separator: ",",
+                significant: !1,
+                strip_insignificant_zeros: !1
             }
         }
     }, I18n.translations.uk_UA = {
@@ -10717,6 +10873,15 @@ Object.values || (Object.values = function (e) {
             rewards: {
                 log: "Нагорода за завершення навчання."
             }
+        },
+        number: {
+            format: {
+                delimiter: " ",
+                precision: 3,
+                separator: ",",
+                significant: !1,
+                strip_insignificant_zeros: !1
+            }
         }
     }, I18n.translations.es_MX = {
         common: {
@@ -11101,6 +11266,15 @@ Object.values || (Object.values = function (e) {
             rewards: {
                 log: "Recompensa por completar el tutorial."
             }
+        },
+        number: {
+            format: {
+                delimiter: ",",
+                precision: 3,
+                separator: ".",
+                significant: !1,
+                strip_insignificant_zeros: !1
+            }
         }
     }, I18n.translations.ja_JP = {
         common: {
@@ -11479,6 +11653,15 @@ Object.values || (Object.values = function (e) {
             },
             rewards: {
                 log: "チュートリアル完了の報酬です。"
+            }
+        },
+        number: {
+            format: {
+                delimiter: ",",
+                precision: 3,
+                separator: ".",
+                significant: "誤",
+                strip_insignificant_zeros: "誤"
             }
         }
     }, I18n.translations.ko_KR = {
@@ -11866,6 +12049,15 @@ Object.values || (Object.values = function (e) {
             rewards: {
                 log: "튜토리얼 완료에 대한 보상."
             }
+        },
+        number: {
+            format: {
+                delimiter: ",",
+                precision: 3,
+                separator: ".",
+                significant: "거짓",
+                strip_insignificant_zeros: "거짓"
+            }
         }
     }, I18n.translations.ro_RO = {
         common: {
@@ -12251,6 +12443,15 @@ Object.values || (Object.values = function (e) {
             },
             rewards: {
                 log: "Recompensă pentru terminarea tutorialului."
+            }
+        },
+        number: {
+            format: {
+                delimiter: ".",
+                precision: 3,
+                separator: ",",
+                significant: !1,
+                strip_insignificant_zeros: !1
             }
         }
     }, I18n.translations.fi_FI = {
@@ -12678,6 +12879,15 @@ Object.values || (Object.values = function (e) {
                     }
                 }
             }
+        },
+        number: {
+            format: {
+                delimiter: " ",
+                precision: 3,
+                separator: ",",
+                significant: !1,
+                strip_insignificant_zeros: !1
+            }
         }
     }, I18n.translations.sk_SK = {
         common: {
@@ -13062,6 +13272,25 @@ Object.values || (Object.values = function (e) {
             },
             rewards: {
                 log: "Odmena za dokončenie nácviku."
+            }
+        },
+        number: {
+            format: {
+                delimiter: " ",
+                precision: 3,
+                separator: ",",
+                significant: !1,
+                strip_insignificant_zeros: !1
+            }
+        }
+    }, I18n.translations.en = {
+        number: {
+            format: {
+                separator: ".",
+                delimiter: ",",
+                precision: 3,
+                significant: !1,
+                strip_insignificant_zeros: !1
             }
         }
     },
@@ -35022,7 +35251,8 @@ $(function () {
                 "intervention_order.vehicles.helicopter_bucket")], ["flood_equipment", I18n.t(
                 "intervention_order.vehicles.flood_equipment")], ["hose_trucks", I18n.t(
                 "intervention_order.vehicles.hose_trucks")], ["pump", I18n.t(
-                "intervention_order.vehicles.pump")]], $("#restore_map")
+                "intervention_order.vehicles.pump")], ["fire_investigation", I18n.t(
+                "intervention_order.vehicles.fire_investigation")]], $("#restore_map")
         .click(function () {
             mapViewRestore()
         }), $("#coins_top")
