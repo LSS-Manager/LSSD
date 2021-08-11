@@ -12287,7 +12287,7 @@ body.dark .navbar-default {
 body.dark .btn-default {
     background-image: linear-gradient(to bottom, #505050 0, #000 100%);
     color: #fff;
-    border: #000
+    border: 1px solid #252525
 }
 
 body.dark .btn-default:hover {
@@ -16031,6 +16031,14 @@ body.dark .daily-bonuses .collect-possible-block {
 
 .navbar-nav>li>a {
     line-height: 19px
+}
+
+.pumping-countdown-container {
+    margin-right: 10px
+}
+
+.water-progress {
+    margin-bottom: 0
 }
 
 /*
