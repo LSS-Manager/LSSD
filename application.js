@@ -93,7 +93,9 @@ function aao_check(e, t, i) {
                     .is(":disabled") && $(this)
                     .attr("ignore_aao") <= 0 && ($(this)
                         .attr("vehicle_type_ignore_default_aao") <= 0 || -1 !== e.indexOf("custom_")
-                        ) && (i -= "wasser_amount" == e || "wasser_amount_tlf" == e ? $(this)
+                        ) && (i -= "wasser_amount" == e || "wasser_amount_tlf" == e ||
+                        "water_damage_pump_value" == e || "water_damage_pump_value_only_pumps" == e ?
+                        $(this)
                         .attr(e) : 1), 0 >= i && (n = $("#vehicle_sort_" + $(this)
                             .val())
                         .attr("timevalue"))
@@ -156,7 +158,9 @@ function aao(e, t, i, n) {
                         .change(), "grtw1" == e && $("#vehicle_mode_" + $(this)
                             .val() + "_1")
                         .prop("checked", !0)
-                        .change(), n -= "wasser_amount" == e || "wasser_amount_tlf" == e ? $(this)
+                        .change(), n -= "wasser_amount" == e || "wasser_amount_tlf" == e ||
+                        "water_damage_pump_value" == e || "water_damage_pump_value_only_pumps" == e ?
+                        $(this)
                         .attr(e) : 1, $(this)
                         .prop("checked", !0), $(this)
                         .change())
@@ -3495,7 +3499,7 @@ Object.values || (Object.values = function (e) {
                 polizeihubschrauber: "Polizeihubschrauber",
                 pump: "Schmutzwasserpumpen",
                 pump_speed: "Pumpenleistung",
-                pump_speed_pump_only: "Pumpenleistung - Nur Pumpenfahrzeuge",
+                pump_speed_pump_only: "Pumpenleistung - Nur Schmutzwasserpumpen",
                 rescue_dogs: "Anhänger Hundetransport oder Rettungshundefahrzeug",
                 rescue_dogs_seg: "Rettungshundefahrzeug",
                 rescue_dogs_thw: "Anhänger Hundetransport",
@@ -35297,7 +35301,9 @@ $(function () {
                 "intervention_order.vehicles.hose_trucks")], ["pump", I18n.t(
                 "intervention_order.vehicles.pump")], ["fire_investigation", I18n.t(
                 "intervention_order.vehicles.fire_investigation")], ["water_damage_pump", I18n.t(
-                "intervention_order.vehicles.water_damage_pump")]], $("#restore_map")
+                "intervention_order.vehicles.water_damage_pump")], ["water_damage_pump_value", I18n.t(
+                "intervention_order.vehicles.pump_speed")], ["water_damage_pump_value_only_pumps",
+                I18n.t("intervention_order.vehicles.pump_speed_pump_only")]], $("#restore_map")
         .click(function () {
             mapViewRestore()
         }), $("#coins_top")
