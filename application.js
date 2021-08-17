@@ -3466,6 +3466,7 @@ Object.values || (Object.values = function (e) {
                 gw_taucher: "GW-Taucher",
                 gw_wasserrettung: "GW-Wasserrettung",
                 gw_werkfeuerwehr: "GW-Werkfeuerwehr",
+                gwl2wasser_all: "Alle Schlauchwagen",
                 gwl2wasser_only: "Schlauchwagen",
                 helicopter_bucket: "Außenlastbehälter (allgemein)",
                 hems: "",
@@ -3947,6 +3948,7 @@ Object.values || (Object.values = function (e) {
                 gw_taucher: "",
                 gw_wasserrettung: "Water Retention",
                 gw_werkfeuerwehr: "",
+                gwl2wasser_all: "All Water Tankers",
                 gwl2wasser_only: "Hose Vehicle",
                 heavy_air_tanker: "Heavy air tanker",
                 helicopter_bucket: "Helicopter bucket",
@@ -35303,7 +35305,8 @@ $(function () {
                 "intervention_order.vehicles.fire_investigation")], ["water_damage_pump", I18n.t(
                 "intervention_order.vehicles.water_damage_pump")], ["water_damage_pump_value", I18n.t(
                 "intervention_order.vehicles.pump_speed")], ["water_damage_pump_value_only_pumps",
-                I18n.t("intervention_order.vehicles.pump_speed_pump_only")]], $("#restore_map")
+                I18n.t("intervention_order.vehicles.pump_speed_pump_only")], ["gwl2wasser_all", I18n
+                .t("intervention_order.vehicles.gwl2wasser_all")]], $("#restore_map")
         .click(function () {
             mapViewRestore()
         }), $("#coins_top")
