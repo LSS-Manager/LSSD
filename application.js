@@ -2847,6 +2847,10 @@ function updateButtonState(e, t) {
         .disabled && n(e)
 }
 
+function onAndroidBack() {
+    return !1
+}
+
 function missionPositionMarkerAdd(e) {
     1 == mobile_bridge_use && mobileBridgeAdd("poi", [e])
 }
