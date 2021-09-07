@@ -2848,7 +2848,9 @@ function updateButtonState(e, t) {
 }
 
 function onAndroidBack() {
-    return !1
+    return $("#btn-tutorial-close")
+        .visible() ? ($("#btn-tutorial-close")
+            .click(), !0) : !1
 }
 
 function missionPositionMarkerAdd(e) {
