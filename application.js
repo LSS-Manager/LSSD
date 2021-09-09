@@ -13200,7 +13200,6 @@ Object.values || (Object.values = function (e) {
                 division_chief_unit: "Mobilný veliteľský automobil",
                 dlk_or_tm50: "",
                 elw1_or_elw2: "Veliteľský automobil, mobilný veliteľský automobil alebo mobilný veliteľský modul ",
-                elw2_or_ab_elw: "nula",
                 elw3: "",
                 elw_airport: "",
                 emergency_ambulance: "Sanitné vozidlo alebo vrtuľník VZZS",
