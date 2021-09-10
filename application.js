@@ -2848,7 +2848,9 @@ function updateButtonState(e, t) {
 }
 
 function onAndroidBack() {
-    return $("#btn-tutorial-close")
+    return $("#close_tutorial_modal")
+        .visible() ? ($("#close_tutorial_modal * .btn-danger")
+            .click(), !0) : $("#btn-tutorial-close")
         .visible() ? ($("#btn-tutorial-close")
             .click(), !0) : !1
 }
