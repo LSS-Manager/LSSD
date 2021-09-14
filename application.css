@@ -16041,6 +16041,10 @@ body.dark .daily-bonuses .collect-possible-block {
     margin-bottom: 0
 }
 
+.buy-vehicle-btn {
+    margin-top: 10px
+}
+
 /*
  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
  *
