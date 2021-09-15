@@ -286,7 +286,7 @@ function waterCalculatorSetPercent(e, t, i) {
 }
 
 function waterCalculator(e, t) {
-    t = t || "water", console.log("waterCalculator", t);
+    t = t || "water";
     var i = {
             water: {
                 containerSelector: "#mission_water_holder_",
