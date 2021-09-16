@@ -4406,7 +4406,6 @@ Object.values || (Object.values = function (e) {
                 ab_ruest_rw: "",
                 abl2wasser_only: "Hose-Supply-Module",
                 ambulance: "Ambulance",
-                ambulance_or_rapid_responder: "",
                 any_traffic_car: "Traffic Car",
                 arff: "ARFF (Airport Fire Truck)",
                 battalion_chief_unit: "Fire Officer",
