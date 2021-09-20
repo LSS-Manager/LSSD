@@ -1865,7 +1865,7 @@ function creditsUpdate(e) {
     });
     var t = number_format(e),
         i = $("#navigation_top .credits-value")
-        .html();
+        .text();
     $("#navigation_top .credits-value")
         .html(t), "" != i && i != t && highlightElement($("#navigation_top"))
 }
@@ -1958,7 +1958,7 @@ function coinsUpdate(e) {
         .html(t);
     else {
         var i = $("#coins_top .coins-value")
-            .html();
+            .text();
         $("#coins_top .coins-value")
             .html(t), "" != i && i != t && highlightElement($("#coins_top"))
     }
