@@ -3418,6 +3418,7 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "Warte auf Zugfahrzeug"
         },
         intervention_order: {
+            automatic_text_color: "Automatische Schriftfarbe",
             back: "Zurück",
             category: "Kategorie",
             colour: "Farbe",
@@ -3450,6 +3451,7 @@ Object.values || (Object.values = function (e) {
             successfully_created: "Alarm und Ausrückeordnung erfolgreich angelegt.",
             successfully_deleted: "Alarm und Ausrückeordnung gelöscht",
             successfully_updated: "Alarm und Ausrückeordnung erfolgreich gespeichert.",
+            text_color: "Schriftfarbe",
             vehicles: {
                 ab_atemschutz_only: "AB-Atemschutz",
                 ab_einsatzleitung_only: "AB-Einsatzleitung",
@@ -3880,6 +3882,7 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "Awaiting vehicle to tow"
         },
         intervention_order: {
+            automatic_text_color: "Automatic Text Color",
             back: "Back",
             battalion_chief_unit: "",
             category: "Category",
@@ -3913,6 +3916,7 @@ Object.values || (Object.values = function (e) {
             successfully_created: "Alarm and Response Regulation successfully created.",
             successfully_deleted: "Alarm and Response Regulation deleted",
             successfully_updated: "Alarm and Response Regulations successfully updated.",
+            text_color: "Text Color",
             vehicles: {
                 ab_atemschutz_only: "SCBA-Module",
                 ab_einsatzleitung_only: "Command-Module",
@@ -3963,6 +3967,7 @@ Object.values || (Object.values = function (e) {
                 flood_equipment: "Flood Equipment",
                 fly_car: "Fly-Car",
                 fly_car_any: "",
+                foam: "Foam Tenders",
                 foam_amount: "Gallons of foam",
                 fukw: "",
                 fustw_or_police_motorcycle: "Patrol car or Police Motorcycle",
@@ -4027,6 +4032,7 @@ Object.values || (Object.values = function (e) {
                 pump: "Engine-Pumps",
                 pump_speed: "Pump Capacity",
                 pump_speed_pump_only: "Pump Capacity - Only Pumps",
+                quint_or_dlk_and_lf: "Quint or Platform Truck and Fire Engine",
                 rescue_dogs: "",
                 rescue_dogs_seg: "",
                 rescue_dogs_thw: "",
@@ -4365,6 +4371,7 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "Awaiting vehicle to tow"
         },
         intervention_order: {
+            automatic_text_color: "Automatic Text Color",
             back: "Back",
             category: "Category",
             colour: "Color",
@@ -4397,6 +4404,7 @@ Object.values || (Object.values = function (e) {
             successfully_created: "Alarm and Response Regulation successfully created.",
             successfully_deleted: "Alarm and Response Regulation deleted",
             successfully_updated: "Alarm and Response Regulations successfully updated.",
+            text_color: "Text Color",
             vehicles: {
                 ab_atemschutz_only: "BASU-Module",
                 ab_einsatzleitung_only: "Command-Module",
@@ -4449,7 +4457,7 @@ Object.values || (Object.values = function (e) {
                 joint_response_unit: "Joint Response Unit",
                 k9: "Dog Support Unit (DSU)",
                 kdow_lna: "",
-                kdow_orgl: "Operational Team Leader",
+                kdow_orgl: "OTL / Ambulance Officer",
                 ktw_b: "",
                 ktw_or_rtw: "",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
@@ -4805,6 +4813,7 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "Wachten op trekkend voertuig."
         },
         intervention_order: {
+            automatic_text_color: "Automatische tekstkleur",
             back: "Terug",
             category: "Categorie",
             colour: "Kleur",
@@ -4837,6 +4846,7 @@ Object.values || (Object.values = function (e) {
             successfully_created: "Alarm en Uitrukregel succesvol opgeslagen.",
             successfully_deleted: "Alarm en Uitrukregel verwijderd.",
             successfully_updated: "Inzetvoorstellen succesvol opgeslagen.",
+            text_color: "Tekstkleur",
             vehicles: {
                 ab_atemschutz_only: "Adembeschermingshaakarmbak",
                 ab_einsatzleitung_only: "",
@@ -5259,6 +5269,7 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "Esperando a remolque"
         },
         intervention_order: {
+            automatic_text_color: "Color de texto automático",
             back: "Atrás",
             category: "Categoría",
             colour: "Color",
@@ -5291,6 +5302,7 @@ Object.values || (Object.values = function (e) {
             successfully_created: "Norma de alerta y respuesta creada correctamente.",
             successfully_deleted: "Norma de alerta y respuesta eliminada",
             successfully_updated: "Norma de alerta y respuesta actualizada correctamente.",
+            text_color: "Color de texto",
             vehicles: {
                 ab_atemschutz_only: "Módulo ERA",
                 ab_einsatzleitung_only: "Módulo de mando",
@@ -5663,6 +5675,7 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "Awaiting vehicle to tow"
         },
         intervention_order: {
+            automatic_text_color: "Automatic Text Color",
             back: "Back",
             category: "Category",
             colour: "Color",
@@ -5695,6 +5708,7 @@ Object.values || (Object.values = function (e) {
             successfully_created: "Alarm and Response Regulation successfully created.",
             successfully_deleted: "Alarm and Response Regulation deleted",
             successfully_updated: "Alarm and Response Regulations successfully updated.",
+            text_color: "Text Color",
             vehicles: {
                 ab_atemschutz_only: "SCBA-Module",
                 ab_einsatzleitung_only: "Command-Module",
@@ -6105,6 +6119,7 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "Inväntar fordon att bärga"
         },
         intervention_order: {
+            automatic_text_color: "Automatisk textfärg",
             back: "Tillbaka",
             category: "Kategori",
             colour: "Färg",
@@ -6137,6 +6152,7 @@ Object.values || (Object.values = function (e) {
             successfully_created: "Utryckningsförfarandet har skapats.",
             successfully_deleted: "Utryckningsförfarandet har tagits bort",
             successfully_updated: "Utryckningsförfarandet har uppdaterats.",
+            text_color: "Textfärg",
             vehicles: {
                 ab_atemschutz_only: "Andningsskydd-modul",
                 ab_einsatzleitung_only: "Kommando-modul",
@@ -6382,6 +6398,10 @@ Object.values || (Object.values = function (e) {
             days: "dni",
             few_seconds: "za kilka sekund",
             finish_in: "Koniec za:",
+            foam_approaching: "W drodze: %{amount} l.",
+            foam_missing: "Potrzeba: %{amount} l.",
+            foam_on_site: "Na miejscu: %{amount} l.",
+            foam_selected: "Wybrano: %{amount} l.",
             hours: "Godz.",
             location_not_found: "Nie znaleziono",
             messages: "Wiadomości",
@@ -6506,6 +6526,7 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "Czeka na pojazd do holowania"
         },
         intervention_order: {
+            automatic_text_color: "Automatyczny kolor tekstu",
             back: "Wstecz",
             battalion_chief_unit: "Samochód Oficera Operacyjnego lub SLRr",
             category: "Kategoria",
@@ -6539,6 +6560,7 @@ Object.values || (Object.values = function (e) {
             successfully_created: "Utworzono zasadę reagowania.",
             successfully_deleted: "Usunięto zasadę reagowania",
             successfully_updated: "Zaktualizowano zasadę reagowania.",
+            text_color: "Kolor tekstu",
             vehicles: {
                 ab_atemschutz_only: "Moduł aparatu oddechowego",
                 ab_einsatzleitung_only: "Moduł dowodzenia",
@@ -6566,6 +6588,8 @@ Object.values || (Object.values = function (e) {
                 flood_equipment: "Sprzęt przeciwpowodziowy",
                 fly_car: "Samochód szefa brygady",
                 fly_car_any: "Pomoc medyczna",
+                foam: "Zbiornik na piane",
+                foam_amount: "Litry piany gaśniczej",
                 fukw: "",
                 fustw_or_police_motorcycle: "Radiowóz OPI lub Motocykl Policyjny",
                 fwk: "Dźwig SP",
@@ -6590,6 +6614,7 @@ Object.values || (Object.values = function (e) {
                 hlf_only: "GBARt",
                 hlf_or_rw_and_lf: "GBARt lub samochód ratownictwa technicznego oraz samochód gaśniczy",
                 hondengeleider: "",
+                hose_trucks: "Pojazd z wężami",
                 k9: "Jednostka z psami",
                 kdow_lna: "",
                 kdow_orgl: "Szef służb ratownictwa medycznego",
@@ -6948,6 +6973,7 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "In attesa del veicolo da trainare"
         },
         intervention_order: {
+            automatic_text_color: "Colore testo automatico",
             back: "Indietro",
             category: "Categoria",
             colour: "Colore",
@@ -6980,6 +7006,7 @@ Object.values || (Object.values = function (e) {
             successfully_created: "Creazione della regola di allarme e risposta riuscita.",
             successfully_deleted: "Regola di allarme e risposta eliminata",
             successfully_updated: "Aggiornamento delle regole di allarme e risposta completato.",
+            text_color: "Colore testo",
             vehicles: {
                 ab_atemschutz_only: "Modulo - SCBA",
                 ab_einsatzleitung_only: "Modulo - Comando",
@@ -7392,6 +7419,7 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "En attente du véhicule à remorquer"
         },
         intervention_order: {
+            automatic_text_color: "Couleur du texte automatique",
             back: "Retour",
             category: "Catégorie",
             colour: "Couleur",
@@ -7424,6 +7452,7 @@ Object.values || (Object.values = function (e) {
             successfully_created: "Régulation d’alertes et d’interventions créée.",
             successfully_deleted: "Régulation d’alertes et d’interventions supprimée",
             successfully_updated: "Régulations d’alertes et d’interventions mises à jour.",
+            text_color: "Couleur du texte",
             vehicles: {
                 ab_atemschutz_only: "Module ARI",
                 ab_einsatzleitung_only: "Module de commandement",
@@ -7839,6 +7868,7 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "Ожидает машину для буксировки"
         },
         intervention_order: {
+            automatic_text_color: "Автоматический цвет текста",
             back: "Назад",
             category: "Категория",
             colour: "Цвет",
@@ -7871,6 +7901,7 @@ Object.values || (Object.values = function (e) {
             successfully_created: "Правило ИИР успешно создано.",
             successfully_deleted: "Правило ИИР удалено",
             successfully_updated: "Правила ИИР успешно обновлены.",
+            text_color: "Цвет текста",
             vehicles: {
                 ab_atemschutz_only: "Модуль дыхательных аппаратов",
                 ab_einsatzleitung_only: "Модуль управления",
@@ -8117,6 +8148,10 @@ Object.values || (Object.values = function (e) {
             days: "dage",
             few_seconds: "om få sekunder",
             finish_in: "Færdig om:",
+            foam_approaching: "På Vej: %{amount} l.",
+            foam_missing: "Mangler: %{amount} l.",
+            foam_on_site: "På Stedet: %{amount} l.",
+            foam_selected: "Valgte: %{amount} l.",
             hours: "T",
             location_not_found: "Ikke fundet",
             messages: "Meddelelser",
@@ -8142,7 +8177,11 @@ Object.values || (Object.values = function (e) {
             to_mission: "Se mission",
             understand: "Forstået",
             user_not_found: "Spilleren blev ikke fundet",
-            vehicles_not_visible: "Køretøjer ikke synlige. "
+            vehicles_not_visible: "Køretøjer ikke synlige. ",
+            water_approaching: "På Vej: %{amount} l.",
+            water_missing: "Mangler: %{amount} l.",
+            water_on_site: "På Stedet: %{amount} l.",
+            water_selected: "Valgte: %{amount} l."
         },
         map: {
             alliance: "Alliance",
@@ -8237,6 +8276,7 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "Venter på bugseringskøretøj"
         },
         intervention_order: {
+            automatic_text_color: "Automatisk tekstfarve",
             back: "Tilbage",
             category: "Kategori",
             colour: "Farve",
@@ -8269,6 +8309,7 @@ Object.values || (Object.values = function (e) {
             successfully_created: "Alarm- og beredskabsregulering oprettet.",
             successfully_deleted: "Alarm- og beredskabsregulering slettet",
             successfully_updated: "Alarm- og beredskabsregulering opdateret.",
+            text_color: "Tekstfarve",
             vehicles: {
                 ab_atemschutz_only: "Røgdykkermodul",
                 ab_einsatzleitung_only: "Kommandomodul",
@@ -8294,6 +8335,7 @@ Object.values || (Object.values = function (e) {
                 fire_truck: "Brandbiler",
                 fireboat: "Stor brandbåd",
                 fly_car: "Akutlæge",
+                foam_amount: "Liter af skum",
                 fukw: "",
                 fustw_or_police_motorcycle: "Patruljevogn eller Politimotorcykel",
                 fwk: "",
@@ -8318,6 +8360,7 @@ Object.values || (Object.values = function (e) {
                 hlf_only: "Specialsprøjte",
                 hlf_or_rw_and_lf: "Specialsprøjte eller Tung Redningsvogn og Autosprøjte",
                 hondengeleider: "",
+                hose_trucks: "Slange Tendere",
                 k9: "Hundepatrulje",
                 kdow_lna: "",
                 kdow_orgl: "Indsatsleder Akutlæge",
@@ -8372,7 +8415,7 @@ Object.values || (Object.values = function (e) {
                 turntable_ladder: "Stigevogne",
                 ulf: "",
                 wasserwerfer: "",
-                water_amount: "",
+                water_amount: "Liter vand",
                 water_amount_tlf: ""
             }
         },
@@ -8676,6 +8719,7 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "Venter på at bil taues"
         },
         intervention_order: {
+            automatic_text_color: "Automatisk tekstfarge",
             back: "Tilbake",
             category: "Kategori",
             colour: "Farge",
@@ -8708,6 +8752,7 @@ Object.values || (Object.values = function (e) {
             successfully_created: "Alarm og respons-regulering ble opprettet.",
             successfully_deleted: "Alarm og respons-regulering ble slettet.",
             successfully_updated: "Alarm og respons-regulering ble oppdatert.",
+            text_color: "Tekstfarge",
             vehicles: {
                 ab_atemschutz_only: "SCBA-modul",
                 ab_einsatzleitung_only: "Kommandomodul",
@@ -9114,6 +9159,7 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "Čekání na odtah"
         },
         intervention_order: {
+            automatic_text_color: "Automatická barva textu",
             back: "Zpět",
             category: "Kategorie",
             colour: "Barva",
@@ -9146,6 +9192,7 @@ Object.values || (Object.values = function (e) {
             successfully_created: "Pravidlo nouzového výjezdu bylo úspěšně vytvořeno.",
             successfully_deleted: "Pravidlo nouzového výjezdu odstraněno",
             successfully_updated: "Pravidlo nouzového výjezdu bylo úspěšně aktualizováno.",
+            text_color: "Barva textu",
             vehicles: {
                 ab_atemschutz_only: "Modul s dýchacími přístroji",
                 ab_einsatzleitung_only: "Velitelský modul",
@@ -9552,6 +9599,7 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "Araç tarafından çekilmeyi bekliyor"
         },
         intervention_order: {
+            automatic_text_color: "Automatic Text Color",
             back: "Geri",
             category: "Kategori",
             colour: "Renk",
@@ -9584,6 +9632,7 @@ Object.values || (Object.values = function (e) {
             successfully_created: "Alarm ve Müdahale Düzenlemesi başarıyla oluşturuldu.",
             successfully_deleted: "Alarm ve Müdahale Düzenlemesi silindi",
             successfully_updated: "Alarm ve Müdahale Düzenlemesi başarıyla güncellendi.",
+            text_color: "Text Color",
             vehicles: {
                 ab_atemschutz_only: "SCBA Modülü",
                 ab_einsatzleitung_only: "Komuta Modülü",
@@ -9826,6 +9875,10 @@ Object.values || (Object.values = function (e) {
             days: "dias",
             few_seconds: "em alguns segundos",
             finish_in: "Finaliza em:",
+            foam_approaching: "A caminho do TO: %{amount} l.",
+            foam_missing: "Em falta: %{amount} l.",
+            foam_on_site: "No TO: %{amount} l.",
+            foam_selected: "Selecionado: %{amount} l.",
             hours: "H",
             location_not_found: "Não encontrado",
             messages: "Mensagens",
@@ -9850,10 +9903,10 @@ Object.values || (Object.values = function (e) {
             understand: "Reconhecer",
             user_not_found: "O jogador não foi encontrado.",
             vehicles_not_visible: "Veículos não visíveis. ",
-            water_approaching: "A caminho do TO: %{amount} Lts.",
-            water_missing: "Falta no TO %{amount} Lts.",
-            water_on_site: "No TO: %{amount} Lts.",
-            water_selected: "Solicitado para o TO %{amount} Lts."
+            water_approaching: "A caminho do TO: %{amount} l.",
+            water_missing: "Em falta: %{amount} l.",
+            water_on_site: "No TO: %{amount} l.",
+            water_selected: "Selecionada: %{amount} l."
         },
         map: {
             alliance: "Aliança",
@@ -9948,6 +10001,7 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "Aguardando veículo para rebocar"
         },
         intervention_order: {
+            automatic_text_color: "Cor do Texto Automática",
             back: "Voltar",
             category: "Categoria",
             colour: "Cor",
@@ -9980,6 +10034,7 @@ Object.values || (Object.values = function (e) {
             successfully_created: "Regulamento de Alarme e Resposta criado com êxito.",
             successfully_deleted: "Regulamento de Alarme e Resposta apagado",
             successfully_updated: "Regulamento de Alarme e Resposta atualizado com êxito.",
+            text_color: "Cor do Texto",
             vehicles: {
                 ab_atemschutz_only: "Módulo SCBA",
                 ab_gefahrgut_only: "Módulo de PP",
@@ -10008,6 +10063,7 @@ Object.values || (Object.values = function (e) {
                 fireboat: "Barco de combate a incêndio grande",
                 fly_car: "Fly-Car",
                 fly_car_any: "VMER / Mota INEM",
+                foam_amount: "Espumifero (Qtd. de Litros)",
                 fukw: "",
                 fustw_or_police_motorcycle: "CP / EPRI",
                 fwk: "VSAE",
@@ -10056,6 +10112,7 @@ Object.values || (Object.values = function (e) {
                 police_car: "CP",
                 police_motorcycle: "EPRI",
                 polizeihubschrauber: "Helicóptero de polícia",
+                pump: "Moto Bomba:",
                 rescue_vehicle: "VSAT / VUCI",
                 rescue_vehicle_only: "VSAT",
                 rescueboat: "Barco de resgate grande",
@@ -10086,7 +10143,7 @@ Object.values || (Object.values = function (e) {
                 turntable_ladder: "VE / VP",
                 ulf: "",
                 wasserwerfer: "",
-                water_amount: "Litros de água",
+                water_amount: "Água (Qtd. de Litros)",
                 water_amount_tlf: ""
             }
         },
@@ -10393,6 +10450,7 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "Aguardando veículo para rebocar"
         },
         intervention_order: {
+            automatic_text_color: "Cor do Texto Automática",
             back: "Voltar",
             category: "Categoria",
             colour: "Cor",
@@ -10425,6 +10483,7 @@ Object.values || (Object.values = function (e) {
             successfully_created: "Regulamento de Alarme e Resposta criado com êxito.",
             successfully_deleted: "Regulamento de Alarme e Resposta apagado",
             successfully_updated: "Regulamento de Alarme e Resposta atualizado com êxito.",
+            text_color: "Cor do Texto",
             vehicles: {
                 ab_atemschutz_only: "Módulo SCBA",
                 ab_einsatzleitung_only: "Módulo de comando",
@@ -10790,6 +10849,7 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "Очікує машину для буксирування"
         },
         intervention_order: {
+            automatic_text_color: "Automatic Text Color",
             back: "Назад",
             category: "Категорія",
             colour: "Колір",
@@ -10822,6 +10882,7 @@ Object.values || (Object.values = function (e) {
             successfully_created: "Правило ПІР успішно створено.",
             successfully_deleted: "Правило ПІР видалено",
             successfully_updated: "Правила ПІР успішно оновлено.",
+            text_color: "Text Color",
             vehicles: {
                 ab_atemschutz_only: "Модуль дихальних апаратів",
                 ab_einsatzleitung_only: "Модуль управління",
@@ -11186,6 +11247,7 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "Esperando a remolque"
         },
         intervention_order: {
+            automatic_text_color: "Color de texto automático",
             back: "Atrás",
             category: "Categoría",
             colour: "Color",
@@ -11218,6 +11280,7 @@ Object.values || (Object.values = function (e) {
             successfully_created: "Norma de alerta y respuesta creada correctamente.",
             successfully_deleted: "Norma de alerta y respuesta eliminada",
             successfully_updated: "Norma de alerta y respuesta actualizada correctamente.",
+            text_color: "Color de texto",
             vehicles: {
                 ab_atemschutz_only: "Módulo ERA",
                 ab_einsatzleitung_only: "Módulo de mando",
@@ -11589,6 +11652,7 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "牽引用の車両を待機中"
         },
         intervention_order: {
+            automatic_text_color: "自動テキストカラー",
             back: "戻る",
             category: "カテゴリー",
             colour: "カラー",
@@ -11621,6 +11685,7 @@ Object.values || (Object.values = function (e) {
             successfully_created: "警報と応答管理を無事に作成しました。",
             successfully_deleted: "警報と応答管理を削除",
             successfully_updated: "警報と応答管理が無事にアップデートされました。",
+            text_color: "テキストカラー",
             vehicles: {
                 ab_atemschutz_only: "自給式呼吸器モジュール",
                 ab_einsatzleitung_only: "指示モジュール",
@@ -11988,6 +12053,7 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "견인 차량 기다리는 중"
         },
         intervention_order: {
+            automatic_text_color: "자동 글 색상",
             back: "뒤로",
             category: "카테고리",
             colour: "색상",
@@ -12020,6 +12086,7 @@ Object.values || (Object.values = function (e) {
             successfully_created: "경보 및 대응 규정을 생성했습니다.",
             successfully_deleted: "경보 및 대응 규정을 삭제했습니다",
             successfully_updated: "경보 및 대응 규정을 업데이트하였습니다.",
+            text_color: "글 색상",
             vehicles: {
                 ab_atemschutz_only: "공기호흡기(SCBA) 모듈",
                 ab_einsatzleitung_only: "지휘 모듈",
@@ -12394,6 +12461,7 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "Se așteaptă vehicul pentru tractare"
         },
         intervention_order: {
+            automatic_text_color: "Culoare text automată",
             back: "Înapoi",
             category: "Categorie",
             colour: "Culoare",
@@ -12426,6 +12494,7 @@ Object.values || (Object.values = function (e) {
             successfully_created: "Regulament de Alarmă și Răspuns creat cu succes.",
             successfully_deleted: "Regulament de Alarmă și Răspuns șters",
             successfully_updated: "Regulament de Alarmă și Răspuns actualizat cu succes.",
+            text_color: "Culoare text",
             vehicles: {
                 ab_atemschutz_only: "Modul Aparat de respirat izolant",
                 ab_einsatzleitung_only: "Modul de comandă",
@@ -12672,6 +12741,10 @@ Object.values || (Object.values = function (e) {
             days: "päivää",
             few_seconds: "muutaman sekunnin kuluttua",
             finish_in: "Päättymiseen:",
+            foam_approaching: "Matkalla: %{amount} l vaahtoa",
+            foam_missing: "Puuttuu: %{amount} l vaahtoa",
+            foam_on_site: "Kohteessa: %{amount} l vaahtoa",
+            foam_selected: "Valittu: %{amount} l vaahtoa",
             hours: "h",
             location_not_found: "Ei löytynyt",
             messages: "Viestit",
@@ -12697,7 +12770,11 @@ Object.values || (Object.values = function (e) {
             to_mission: "Näytä tehtävä",
             understand: "Kuittaa",
             user_not_found: "Pelaajaa ei löytynyt.",
-            vehicles_not_visible: "Ajoneuvoja ei näytetä. "
+            vehicles_not_visible: "Ajoneuvoja ei näytetä. ",
+            water_approaching: "Matkalla: %{amount} l vettä",
+            water_missing: "Puuttuu: %{amount} l vettä",
+            water_on_site: "Kohteessa: %{amount} l vettä",
+            water_selected: "Valittu: %{amount} l vettä"
         },
         map: {
             alliance: "Liittoutuma",
@@ -12792,6 +12869,7 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "Odottaa vetoautoa"
         },
         intervention_order: {
+            automatic_text_color: "Automaattinen tekstin väri",
             back: "Palaa",
             category: "Luokka",
             colour: "Väri",
@@ -12824,6 +12902,7 @@ Object.values || (Object.values = function (e) {
             successfully_created: "Hälytysjärjestelyn luonti onnistui.",
             successfully_deleted: "Hälytysjärjestely poistettu",
             successfully_updated: "Hälytysjärjestelyn päivitys onnistui.",
+            text_color: "Tekstin väri",
             vehicles: {
                 ab_atemschutz_only: "Paineilmahuoltokontti",
                 ab_einsatzleitung_only: "Johtomoduuli",
@@ -12849,6 +12928,7 @@ Object.values || (Object.values = function (e) {
                 fireboat: "Iso sammutusalus",
                 fly_car: "Ensivasteauto",
                 fly_car_any: "EVA-yksikkö, EVY-yksikkö tai Ensihoidon lääkäri",
+                foam_amount: "Litraa vaahtoa",
                 fukw: "",
                 fustw_or_police_motorcycle: "Partioauto tai Poliisimoottoripyörä",
                 fwk: "",
@@ -12873,6 +12953,7 @@ Object.values || (Object.values = function (e) {
                 hlf_only: "Pelastusauto",
                 hlf_or_rw_and_lf: "Pelastusauto tai Raskas pelastusauto ja Sammutusauto",
                 hondengeleider: "",
+                hose_trucks: "Letkuyksikkö",
                 k9: "Koirayksikkö",
                 kdow_lna: "",
                 kdow_orgl: "Ensihoidon kenttäjohtaja",
@@ -12898,6 +12979,7 @@ Object.values || (Object.values = function (e) {
                 police_car: "Partioauto",
                 police_motorcycle: "Poliisimoottoripyörä",
                 polizeihubschrauber: "Poliisihelikopteri",
+                pump: "Suurtehopumppu",
                 rescue_vehicle: "Raskas pelastusauto",
                 rescue_vehicle_only: "Raskas pelastus",
                 rescueboat: "Iso pelastusalus",
@@ -12928,7 +13010,7 @@ Object.values || (Object.values = function (e) {
                 turntable_ladder: "Nostolava-autot",
                 ulf: "",
                 wasserwerfer: "",
-                water_amount: "",
+                water_amount: "Litraa vettä",
                 water_amount_tlf: ""
             }
         },
@@ -13237,6 +13319,7 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "Čaká vlečné vozidlo"
         },
         intervention_order: {
+            automatic_text_color: "Automatická farba textu",
             back: "Späť",
             category: "Kategória",
             colour: "Farba",
@@ -13269,6 +13352,7 @@ Object.values || (Object.values = function (e) {
             successfully_created: "Riadenie alarmov a reakcií úspešne vytvorené.",
             successfully_deleted: "Riadenie alarmov a reakcií vymazané",
             successfully_updated: "Riadenie alarmov a reakcií úspešne aktualizované.",
+            text_color: "Farba textu",
             vehicles: {
                 ab_atemschutz_only: "Modul SCBA",
                 ab_einsatzleitung_only: "Veliteľský modul",
@@ -13319,7 +13403,7 @@ Object.values || (Object.values = function (e) {
                 hondengeleider: "",
                 k9: "Jednotka K-9",
                 kdow_lna: "",
-                kdow_orgl: "Veliteľ pohotovostnej lekárskej služby",
+                kdow_orgl: "Veliteľské vozidlo",
                 ktw_b: "",
                 ktw_or_rtw: "ambulancia DZS alebo RZP",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
@@ -13854,8 +13938,8 @@ Object.values || (Object.values = function (e) {
 
         function R() {
             return setTimeout(function () {
-                Qi = t
-            }), Qi = ut.now()
+                Ji = t
+            }), Ji = ut.now()
         }
 
         function F(e, t, i) {
@@ -13873,7 +13957,7 @@ Object.values || (Object.values = function (e) {
                 }),
                 l = function () {
                     if (o) return !1;
-                    for (var t = Qi || R(), i = Math.max(0, c.startTime + c.duration - t), n = i / c
+                    for (var t = Ji || R(), i = Math.max(0, c.startTime + c.duration - t), n = i / c
                             .duration || 0, a = 1 - n, s = 0, l = c.tweens.length; l > s; s++) c.tweens[s]
                         .run(a);
                     return r.notifyWith(e, [c, a, i]), 1 > a && l ? i : (r.resolveWith(e, [c]), !1)
@@ -13886,7 +13970,7 @@ Object.values || (Object.values = function (e) {
                     }, i),
                     originalProperties: t,
                     originalOptions: i,
-                    startTime: Qi || R(),
+                    startTime: Ji || R(),
                     duration: i.duration,
                     tweens: [],
                     createTween: function (t, i) {
@@ -13986,8 +14070,8 @@ Object.values || (Object.values = function (e) {
         var U, Z, G = typeof t,
             K = e.location,
             Y = e.document,
-            J = Y.documentElement,
-            Q = e.jQuery,
+            Q = Y.documentElement,
+            J = e.jQuery,
             X = e.$,
             et = {},
             tt = [],
@@ -14114,7 +14198,7 @@ Object.values || (Object.values = function (e) {
                 expando: "jQuery" + (it + Math.random())
                     .replace(/\D/g, ""),
                 noConflict: function (t) {
-                    return e.$ === ut && (e.$ = X), t && e.jQuery === ut && (e.jQuery = Q), ut
+                    return e.$ === ut && (e.$ = X), t && e.jQuery === ut && (e.jQuery = J), ut
                 },
                 isReady: !1,
                 readyWait: 1,
@@ -14643,10 +14727,10 @@ Object.values || (Object.values = function (e) {
                     G = o(),
                     K = o(),
                     Y = !1,
-                    J = function () {
+                    Q = function () {
                         return 0
                     },
-                    Q = typeof t,
+                    J = typeof t,
                     X = 1 << 31,
                     et = {}.hasOwnProperty,
                     tt = [],
@@ -14741,7 +14825,7 @@ Object.values || (Object.values = function (e) {
                                 .id = W, !t.getElementsByName || !t.getElementsByName(W)
                                 .length
                         }), S.getById ? (E.find.ID = function (e, t) {
-                            if (typeof t.getElementById !== Q && R) {
+                            if (typeof t.getElementById !== J && R) {
                                 var i = t.getElementById(e);
                                 return i && i.parentNode ? [i] : []
                             }
@@ -14753,12 +14837,12 @@ Object.values || (Object.values = function (e) {
                         }) : (delete E.find.ID, E.filter.ID = function (e) {
                             var t = e.replace(St, At);
                             return function (e) {
-                                var i = typeof e.getAttributeNode !== Q && e.getAttributeNode(
+                                var i = typeof e.getAttributeNode !== J && e.getAttributeNode(
                                     "id");
                                 return i && i.value === t
                             }
                         }), E.find.TAG = S.getElementsByTagName ? function (e, t) {
-                            return typeof t.getElementsByTagName !== Q ? t.getElementsByTagName(e) :
+                            return typeof t.getElementsByTagName !== J ? t.getElementsByTagName(e) :
                                 void 0
                         } : function (e, t) {
                             var i, n = [],
@@ -14770,7 +14854,7 @@ Object.values || (Object.values = function (e) {
                             }
                             return a
                         }, E.find.CLASS = S.getElementsByClassName && function (e, t) {
-                            return typeof t.getElementsByClassName !== Q && R ? t
+                            return typeof t.getElementsByClassName !== J && R ? t
                                 .getElementsByClassName(e) : void 0
                         }, $ = [], F = [], (S.qsa = n(t.querySelectorAll)) && (s(function (e) {
                             e.innerHTML = "<select><option selected=''></option></select>", e
@@ -14806,7 +14890,7 @@ Object.values || (Object.values = function (e) {
                             return !1
                         }, S.sortDetached = s(function (e) {
                             return 1 & e.compareDocumentPosition(t.createElement("div"))
-                        }), J = O.compareDocumentPosition ? function (e, i) {
+                        }), Q = O.compareDocumentPosition ? function (e, i) {
                             if (e === i) return Y = !0, 0;
                             var n = i.compareDocumentPosition && e.compareDocumentPosition && e
                                 .compareDocumentPosition(i);
@@ -14854,7 +14938,7 @@ Object.values || (Object.values = function (e) {
                     var t, i = [],
                         n = 0,
                         o = 0;
-                    if (Y = !S.detectDuplicates, D = !S.sortStable && e.slice(0), e.sort(J), Y) {
+                    if (Y = !S.detectDuplicates, D = !S.sortStable && e.slice(0), e.sort(Q), Y) {
                         for (; t = e[o++];) t === e[o] && (n = i.push(o));
                         for (; n--;) e.splice(i[n], 1)
                     }
@@ -14928,7 +15012,7 @@ Object.values || (Object.values = function (e) {
                             return t || (t = new RegExp("(^|" + lt + ")" + e + "(" + lt + "|$)")) &&
                                 Z(e, function (e) {
                                     return t.test("string" == typeof e.className && e.className ||
-                                        typeof e.getAttribute !== Q && e.getAttribute(
+                                        typeof e.getAttribute !== J && e.getAttribute(
                                         "class") || "")
                                 })
                         },
@@ -15136,8 +15220,8 @@ Object.values || (Object.values = function (e) {
                         return a
                     }, E.pseudos.nth = E.pseudos.eq, z.prototype = E.filters = E.pseudos, E.setFilters =
                     new z, S.sortStable = W.split("")
-                    .sort(J)
-                    .join("") === W, N(), [0, 0].sort(J), S.detectDuplicates = Y, ut.find = i, ut.expr = i
+                    .sort(Q)
+                    .join("") === W, N(), [0, 0].sort(Q), S.detectDuplicates = Y, ut.find = i, ut.expr = i
                     .selectors, ut.expr[":"] = ut.expr.pseudos, ut.unique = i.uniqueSort, ut.text = i.getText,
                     ut.isXMLDoc = i.isXML, ut.contains = i.contains
             }(e);
@@ -16252,8 +16336,8 @@ Object.values || (Object.values = function (e) {
             Gt = new RegExp("<(?:" + Ut + ")[\\s/>]", "i"),
             Kt = /^\s+/,
             Yt = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/gi,
-            Jt = /<([\w:]+)/,
-            Qt = /<tbody/i,
+            Qt = /<([\w:]+)/,
+            Jt = /<tbody/i,
             Xt = /<|&#?\w+;/,
             ei = /<(?:script|style|link)/i,
             ti = /^(?:checkbox|radio)$/i,
@@ -16340,7 +16424,7 @@ Object.values || (Object.values = function (e) {
                         t;
                         if (!("string" != typeof e || ei.test(e) || !ut.support
                                 .htmlSerialize && Gt.test(e) || !ut.support
-                                .leadingWhitespace && Kt.test(e) || si[(Jt.exec(e) || ["",
+                                .leadingWhitespace && Kt.test(e) || si[(Qt.exec(e) || ["",
                                     ""])[1].toLowerCase()])) {
                             e = e.replace(Yt, "<$1></$2>");
                             try {
@@ -16429,12 +16513,12 @@ Object.values || (Object.values = function (e) {
                         if (a = e[_], a || 0 === a)
                             if ("object" === ut.type(a)) ut.merge(m, a.nodeType ? [a] : a);
                             else if (Xt.test(a)) {
-                        for (r = r || h.appendChild(t.createElement("div")), l = (Jt.exec(a) || ["",
+                        for (r = r || h.appendChild(t.createElement("div")), l = (Qt.exec(a) || ["",
                                 ""])[1].toLowerCase(), u = si[l] || si._default, r.innerHTML = u[1] +
                             a.replace(Yt, "<$1></$2>") + u[2], o = u[0]; o--;) r = r.lastChild;
                         if (!ut.support.leadingWhitespace && Kt.test(a) && m.push(t.createTextNode(Kt
                                 .exec(a)[0])), !ut.support.tbody)
-                            for (a = "table" !== l || Qt.test(a) ? "<table>" !== u[1] || Qt.test(a) ?
+                            for (a = "table" !== l || Jt.test(a) ? "<table>" !== u[1] || Jt.test(a) ?
                                 0 : r : r.firstChild, o = a && a.childNodes.length; o--;) ut.nodeName(
                                     c = a.childNodes[o], "tbody") && !c.childNodes.length && a
                                 .removeChild(c);
@@ -17043,7 +17127,7 @@ Object.values || (Object.values = function (e) {
                 }), "script") : void 0
         });
         var Gi, Ki, Yi = 0,
-            Ji = e.ActiveXObject && function () {
+            Qi = e.ActiveXObject && function () {
                 var e;
                 for (e in Gi) Gi[e](t, !0)
             };
@@ -17069,7 +17153,7 @@ Object.values || (Object.values = function (e) {
                                 var r, c, u, d;
                                 try {
                                     if (n && (o || 4 === l.readyState))
-                                        if (n = t, s && (l.onreadystatechange = ut.noop, Ji &&
+                                        if (n = t, s && (l.onreadystatechange = ut.noop, Qi &&
                                                 delete Gi[s]), o) 4 !== l.readyState && l.abort();
                                         else {
                                             d = {}, r = l.status, c = l.getAllResponseHeaders(),
@@ -17087,9 +17171,9 @@ Object.values || (Object.values = function (e) {
                                     o || a(-1, p)
                                 }
                                 d && a(r, u, d, c)
-                            }, i.async ? 4 === l.readyState ? setTimeout(n) : (s = ++Yi, Ji && (
+                            }, i.async ? 4 === l.readyState ? setTimeout(n) : (s = ++Yi, Qi && (
                                 Gi || (Gi = {}, ut(e)
-                                    .unload(Ji)), Gi[s] = n), l.onreadystatechange = n) : n()
+                                    .unload(Qi)), Gi[s] = n), l.onreadystatechange = n) : n()
                         },
                         abort: function () {
                             n && n(t, !0)
@@ -17097,7 +17181,7 @@ Object.values || (Object.values = function (e) {
                     }
                 }
             });
-        var Qi, Xi, en = /^(?:toggle|show|hide)$/,
+        var Ji, Xi, en = /^(?:toggle|show|hide)$/,
             tn = new RegExp("^(?:([+-])=|)(" + dt + ")([a-z%]*)$", "i"),
             nn = /queueHooks$/,
             on = [H],
@@ -17264,8 +17348,8 @@ Object.values || (Object.values = function (e) {
             }, ut.timers = [], ut.fx = W.prototype.init, ut.fx.tick = function () {
                 var e, i = ut.timers,
                     n = 0;
-                for (Qi = ut.now(); n < i.length; n++) e = i[n], e() || i[n] !== e || i.splice(n--, 1);
-                i.length || ut.fx.stop(), Qi = t
+                for (Ji = ut.now(); n < i.length; n++) e = i[n], e() || i[n] !== e || i.splice(n--, 1);
+                i.length || ut.fx.stop(), Ji = t
             }, ut.fx.timer = function (e) {
                 e() && ut.timers.push(e) && ut.fx.start()
             }, ut.fx.interval = 13, ut.fx.start = function () {
@@ -17331,9 +17415,9 @@ Object.values || (Object.values = function (e) {
                 },
                 offsetParent: function () {
                     return this.map(function () {
-                        for (var e = this.offsetParent || J; e && !ut.nodeName(e, "html") &&
+                        for (var e = this.offsetParent || Q; e && !ut.nodeName(e, "html") &&
                             "static" === ut.css(e, "position");) e = e.offsetParent;
-                        return e || J
+                        return e || Q
                     })
                 }
             }), ut.each({
@@ -22842,13 +22926,13 @@ Object.values || (Object.values = function (e) {
                         K = 1 !== U[0] || 1 !== U[1],
                         Y = this._daylightSavingAdjust(e.currentDay ? new Date(e.currentYear, e
                             .currentMonth, e.currentDay) : new Date(9999, 9, 9)),
-                        J = this._getMinMaxDate(e, "min"),
-                        Q = this._getMinMaxDate(e, "max"),
+                        Q = this._getMinMaxDate(e, "min"),
+                        J = this._getMinMaxDate(e, "max"),
                         X = e.drawMonth - Z,
                         et = e.drawYear;
-                    if (0 > X && (X += 12, et--), Q)
-                        for (t = this._daylightSavingAdjust(new Date(Q.getFullYear(), Q
-                            .getMonth() - U[0] * U[1] + 1, Q.getDate())), t = J && J > t ? J :
+                    if (0 > X && (X += 12, et--), J)
+                        for (t = this._daylightSavingAdjust(new Date(J.getFullYear(), J
+                            .getMonth() - U[0] * U[1] + 1, J.getDate())), t = Q && Q > t ? Q :
                             t; this._daylightSavingAdjust(new Date(et, X, 1)) > t;) X--, 0 > X &&
                             (X = 11, et--);
                     for (e.drawMonth = X, e.drawYear = et, i = this._get(e, "prevText"), i = q ?
@@ -22904,7 +22988,7 @@ Object.values || (Object.values = function (e) {
                                 "<div class='ui-datepicker-header ui-widget-header ui-helper-clearfix" +
                                 T + "'>" + (/all|left/.test(T) && 0 === k ? H ? a : n : "") + (
                                     /all|right/.test(T) && 0 === k ? H ? n : a : "") + this
-                                ._generateMonthYearHeader(e, X, et, J, Q, k > 0 || C > 0, m, _) +
+                                ._generateMonthYearHeader(e, X, et, Q, J, k > 0 || C > 0, m, _) +
                                 "</div><table class='ui-datepicker-calendar'><thead>" + "<tr>",
                                 A = d ? "<th class='ui-datepicker-week-col'>" + this._get(e,
                                     "weekHeader") + "</th>" : "", w = 0; 7 > w; w++) E = (w + u) %
@@ -22922,7 +23006,7 @@ Object.values || (Object.values = function (e) {
                                     this._get(e, "calculateWeek")(D) + "</td>" : "", w = 0; 7 >
                                     w; w++) O = f ? f.apply(e.input ? e.input[0] : null, [D]) : [!
                                         0, ""], R = D.getMonth() !== X, F = R && !v || !O[0] ||
-                                    J && J > D || Q && D > Q, L += "<td class='" + ((w + u + 6) %
+                                    Q && Q > D || J && D > J, L += "<td class='" + ((w + u + 6) %
                                         7 >= 5 ? " ui-datepicker-week-end" : "") + (R ?
                                         " ui-datepicker-other-month" : "") + (D.getTime() === z
                                         .getTime() && X === e.selectedMonth && e._keyEvent || b
@@ -29565,7 +29649,7 @@ Object.values || (Object.values = function (e) {
             for (i = 0, o = e.length; o > i; i++) {
                 for (n = 0, a = (s = e[i])
                     .length; a > n; n++) r = s[n], l += (n ? "L" : "M") + r.x + " " + r.y;
-                l += t ? Ji ? "z" : "x" : ""
+                l += t ? Qi ? "z" : "x" : ""
             }
             return l || "M0 0"
         }
@@ -29706,12 +29790,12 @@ Object.values || (Object.values = function (e) {
             t && t.lastChild !== e && t.appendChild(e)
         }
 
-        function J(e) {
+        function Q(e) {
             var t = e.parentNode;
             t && t.firstChild !== e && t.insertBefore(e, t.firstChild)
         }
 
-        function Q(e, t) {
+        function J(e, t) {
             if (void 0 !== e.classList) return e.classList.contains(t);
             var i = it(e);
             return i.length > 0 && new RegExp("(^|\\s)" + t + "(\\s|$)")
@@ -29721,7 +29805,7 @@ Object.values || (Object.values = function (e) {
         function X(e, t) {
             if (void 0 !== e.classList)
                 for (var i = c(t), n = 0, o = i.length; o > n; n++) e.classList.add(i[n]);
-            else if (!Q(e, t)) {
+            else if (!J(e, t)) {
                 var a = it(e);
                 tt(e, (a ? a + " " : "") + t)
             }
@@ -30090,16 +30174,16 @@ Object.values || (Object.values = function (e) {
             return new ao(e, t)
         }
 
-        function Jt(e, t) {
+        function Qt(e, t) {
             return new fo(e, t)
         }
 
-        function Qt(e) {
+        function Jt(e) {
             return Yi ? new bo(e) : null
         }
 
         function Xt(e) {
-            return Ji || Qi ? new xo(e) : null
+            return Qi || Ji ? new xo(e) : null
         }
         var ei = Object.freeze;
         Object.freeze = function (e) {
@@ -30667,9 +30751,9 @@ Object.values || (Object.values = function (e) {
             Ki = (window.devicePixelRatio || window.screen.deviceXDPI / window.screen.logicalXDPI) > 1,
             Yi = !!document.createElement("canvas")
             .getContext,
-            Ji = !(!document.createElementNS || !P("svg")
+            Qi = !(!document.createElementNS || !P("svg")
                 .createSVGRect),
-            Qi = !Ji && function () {
+            Ji = !Qi && function () {
                 try {
                     var e = document.createElement("div");
                     e.innerHTML = '<v:shape adj="1"/>';
@@ -30708,8 +30792,8 @@ Object.values || (Object.values = function (e) {
                 mobileGecko: Gi,
                 retina: Ki,
                 canvas: Yi,
-                svg: Ji,
-                vml: Qi
+                svg: Qi,
+                vml: Ji
             }),
             en = Vi ? "MSPointerDown" : "pointerdown",
             tn = Vi ? "MSPointerMove" : "pointermove",
@@ -30752,8 +30836,8 @@ Object.values || (Object.values = function (e) {
                 remove: G,
                 empty: K,
                 toFront: Y,
-                toBack: J,
-                hasClass: Q,
+                toBack: Q,
+                hasClass: J,
                 addClass: X,
                 removeClass: et,
                 setClass: tt,
@@ -32016,7 +32100,7 @@ Object.values || (Object.values = function (e) {
                         this._moved = !1)
                 },
                 _onDown: function (e) {
-                    if (!e._simulated && this._enabled && (this._moved = !1, !(Q(this._element,
+                    if (!e._simulated && this._enabled && (this._moved = !1, !(J(this._element,
                                 "leaflet-zoom-anim") || Rn._dragging || e.shiftKey || 1 !== e
                             .which && 1 !== e.button && !e.touches || (Rn._dragging = this,
                                 this._preventOutline && dt(this._element), ct(), fi(), this
@@ -32380,7 +32464,7 @@ Object.values || (Object.values = function (e) {
                     return Ki && this.options[e + "RetinaUrl"] || this.options[e + "Url"]
                 }
             }),
-            Jn = Yn.extend({
+            Qn = Yn.extend({
                 options: {
                     iconUrl: "marker-icon.png",
                     iconRetinaUrl: "marker-icon-2x.png",
@@ -32392,8 +32476,8 @@ Object.values || (Object.values = function (e) {
                     shadowSize: [41, 41]
                 },
                 _getIconUrl: function (e) {
-                    return Jn.imagePath || (Jn.imagePath = this._detectIconPath()), (this.options
-                        .imagePath || Jn.imagePath) + Yn.prototype._getIconUrl.call(this, e)
+                    return Qn.imagePath || (Qn.imagePath = this._detectIconPath()), (this.options
+                        .imagePath || Qn.imagePath) + Yn.prototype._getIconUrl.call(this, e)
                 },
                 _detectIconPath: function () {
                     var e = Z("div", "leaflet-default-icon-path", document.body),
@@ -32403,7 +32487,7 @@ Object.values || (Object.values = function (e) {
                         .replace(/marker-icon\.png["']?\)$/, "")
                 }
             }),
-            Qn = Mn.extend({
+            Jn = Mn.extend({
                 initialize: function (e) {
                     this._marker = e
                 },
@@ -32479,7 +32563,7 @@ Object.values || (Object.values = function (e) {
             }),
             Xn = Zn.extend({
                 options: {
-                    icon: new Jn,
+                    icon: new Qn,
                     interactive: !0,
                     keyboard: !0,
                     title: "",
@@ -32588,10 +32672,10 @@ Object.values || (Object.values = function (e) {
                 },
                 _initInteraction: function () {
                     if (this.options.interactive && (X(this._icon, "leaflet-interactive"), this
-                            .addInteractiveTarget(this._icon), Qn)) {
+                            .addInteractiveTarget(this._icon), Jn)) {
                         var e = this.options.draggable;
                         this.dragging && (e = this.dragging.enabled(), this.dragging.disable()),
-                            this.dragging = new Qn(this), e && this.dragging.enable()
+                            this.dragging = new Jn(this), e && this.dragging.enable()
                     }
                 },
                 setOpacity: function (e) {
@@ -33055,7 +33139,7 @@ Object.values || (Object.values = function (e) {
                     return this._map && Y(this._image), this
                 },
                 bringToBack: function () {
-                    return this._map && J(this._image), this
+                    return this._map && Q(this._image), this
                 },
                 setUrl: function (e) {
                     return this._url = e, this._image && (this._image.src = e), this
@@ -33198,7 +33282,7 @@ Object.values || (Object.values = function (e) {
                     return this._map && Y(this._container), this
                 },
                 bringToBack: function () {
-                    return this._map && J(this._container), this
+                    return this._map && Q(this._container), this
                 },
                 _updateContent: function () {
                     if (this._content) {
@@ -33581,7 +33665,7 @@ Object.values || (Object.values = function (e) {
                 return null
             }
         });
-        Yn.Default = Jn;
+        Yn.Default = Qn;
         var _o = Zn.extend({
                 options: {
                     tileSize: 256,
@@ -33618,7 +33702,7 @@ Object.values || (Object.values = function (e) {
                     return this._map && (Y(this._container), this._setAutoZIndex(Math.max)), this
                 },
                 bringToBack: function () {
-                    return this._map && (J(this._container), this._setAutoZIndex(Math.min)), this
+                    return this._map && (Q(this._container), this._setAutoZIndex(Math.min)), this
                 },
                 getContainer: function () {
                     return this._container
@@ -34100,7 +34184,7 @@ Object.values || (Object.values = function (e) {
                     return t(this.wmsParams, e), i || this.redraw(), this
                 }
             });
-        fo.WMS = go, Jt.wms = function (e, t) {
+        fo.WMS = go, Qt.wms = function (e, t) {
             return new go(e, t)
         };
         var vo = Zn.extend({
@@ -34436,10 +34520,10 @@ Object.values || (Object.values = function (e) {
                     Y(e._container)
                 },
                 _bringToBack: function (e) {
-                    J(e._container)
+                    Q(e._container)
                 }
             },
-            ko = Qi ? yo : P,
+            ko = Ji ? yo : P,
             xo = vo.extend({
                 getEvents: function () {
                     var e = vo.prototype.getEvents.call(this);
@@ -34520,10 +34604,10 @@ Object.values || (Object.values = function (e) {
                     Y(e._path)
                 },
                 _bringToBack: function (e) {
-                    J(e._path)
+                    Q(e._path)
                 }
             });
-        Qi && xo.include(wo), zn.include({
+        Ji && xo.include(wo), zn.include({
             getRenderer: function (e) {
                 var t = e.options.renderer || this._getPaneRenderer(e.options.pane) || this
                     .options.renderer || this._renderer;
@@ -34538,7 +34622,7 @@ Object.values || (Object.values = function (e) {
                 }), this._paneRenderers[e] = t), t
             },
             _createRenderer: function (e) {
-                return this.options.preferCanvas && Qt(e) || Xt(e)
+                return this.options.preferCanvas && Jt(e) || Xt(e)
             }
         });
         var Co = oo.extend({
@@ -35051,9 +35135,9 @@ Object.values || (Object.values = function (e) {
                 return new mo(e)
             }, e.Marker = Xn, e.marker = function (e, t) {
                 return new Xn(e, t)
-            }, e.TileLayer = fo, e.tileLayer = Jt, e.GridLayer = _o, e.gridLayer = function (e) {
+            }, e.TileLayer = fo, e.tileLayer = Qt, e.GridLayer = _o, e.gridLayer = function (e) {
                 return new _o(e)
-            }, e.SVG = xo, e.svg = Xt, e.Renderer = vo, e.Canvas = bo, e.canvas = Qt, e.Path = eo, e
+            }, e.SVG = xo, e.svg = Xt, e.Renderer = vo, e.Canvas = bo, e.canvas = Jt, e.Path = eo, e
             .CircleMarker = to, e.circleMarker = function (e, t) {
                 return new to(e, t)
             }, e.Circle = io, e.circle = function (e, t, i) {
@@ -39002,12 +39086,12 @@ function (e) {
         return n
     }
 
-    function J(e, t, i) {
+    function Q(e, t, i) {
         var n = Y(e, t);
         return n ? !i || n === i || Array.isArray(i) && i.indexOf(n) > -1 : !1
     }
 
-    function Q(e) {
+    function J(e) {
         return e.replace(/([\-.*+?^=!:${}()|\[\]\/\\])/g, "\\$1")
     }
 
@@ -39040,7 +39124,7 @@ function (e) {
         var n = zt[e];
         return Object.keys(t)
             .forEach(function (e) {
-                n = n.replace(new RegExp(Q("{" + e + "}"), "g"), t[e])
+                n = n.replace(new RegExp(J("{" + e + "}"), "g"), t[e])
             }), i && (n = R(n)), n
     }
 
@@ -39222,7 +39306,7 @@ function (e) {
             for (o && v++, a = a || "", s = l.getOuterText(!0, v), d = s.length, s += a, t && (s += l
                     .getOuterText(!1, v)); f--;)
                 if (p = e[f][0], m = p.length, u = Math.max(0, d - m - g), c = -1, o ? (r = s.substr(u)
-                        .match(new RegExp(_ + Q(p) + _)), r && (c = r.index + u + r[1].length)) : c = s
+                        .match(new RegExp(_ + J(p) + _)), r && (c = r.index + u + r[1].length)) : c = s
                     .indexOf(p, u), c > -1 && d >= c && c + m + g >= d) return h = d - c, l
                     .selectOuterText(h, m - h - (/^\S/.test(a) ? 1 : 0)), l.insertHTML(e[f][1]), !0;
             return !1
@@ -39264,7 +39348,7 @@ function (e) {
             s = [],
             r = {};
         l(e, "code") || (a(t, function (e) {
-            r[e] = new RegExp(o + Q(e) + o), s.push(e)
+            r[e] = new RegExp(o + J(e) + o), s.push(e)
         }), s.sort(function (e, t) {
             return t.length - e.length
         }), function c(e) {
@@ -39296,8 +39380,8 @@ function (e) {
     }
 
     function lt(e, t) {
-        var i, s, l, f, x, C, T, N, L, R, W, q, U, G, Y, J, Q, et, it, ht, pt, gt, bt, yt, Ct, zt, Tt, At, Et,
-            Pt, Lt, Ot, Rt, Ft, $t, Bt, Ht, Wt, Vt, qt, Ut, Zt, Gt, Kt, Yt, Jt, Qt, Xt, ei, ti, ii, ni, oi,
+        var i, s, l, f, x, C, T, N, L, R, W, q, U, G, Y, Q, J, et, it, ht, pt, gt, bt, yt, Ct, zt, Tt, At, Et,
+            Pt, Lt, Ot, Rt, Ft, $t, Bt, Ht, Wt, Vt, qt, Ut, Zt, Gt, Kt, Yt, Qt, Jt, Xt, ei, ti, ii, ni, oi,
             ai, si, ri, li, ci, ui, di, hi, pi, mi, _i = this,
             fi = {},
             gi = [],
@@ -39363,18 +39447,18 @@ function (e) {
                 "keyup focus blur contextmenu mouseup touchend click";
             p(Mt, "click", Xt), t && (p(t, "reset", Kt), p(t, "submit", _i.updateOriginal, ft)), p(C,
                 "keypress", Gt), p(C, "keydown", Ut), p(C, "keydown", Zt), p(C, "keyup", ni), p(C,
-                "blur", di), p(C, "keyup", hi), p(C, "paste", Vt), p(C, i, Jt), p(C, o, oi), p(C, n,
-                Qt), ki.emoticonsCompat && It.getSelection && p(C, "keyup", li), p(C, "blur",
+                "blur", di), p(C, "keyup", hi), p(C, "paste", Vt), p(C, i, Qt), p(C, o, oi), p(C, n,
+                Jt), ki.emoticonsCompat && It.getSelection && p(C, "keyup", li), p(C, "blur",
                 function () {
                     _i.val() || A(C, "placeholder")
                 }), p(C, "focus", function () {
                 E(C, "placeholder")
-            }), p(N, "blur", di), p(N, "keyup", hi), p(N, "keydown", Ut), p(N, i, Jt), p(N, n, Qt), p(
+            }), p(N, "blur", di), p(N, "keyup", hi), p(N, "keydown", Ut), p(N, i, Qt), p(N, n, Jt), p(
                 T, "mousedown", Yt), p(T, o, oi), p(T, "beforedeactivate keyup mouseup", Pt), p(T,
                 "keyup", ni), p(T, "focus", function () {
                 R = null
             }), p(s, "selectionchanged", ai), p(s, "selectionchanged", ti), p(s,
-                "selectionchanged valuechanged nodechanged pasteraw paste", Qt)
+                "selectionchanged valuechanged nodechanged pasteraw paste", Jt)
         }, Ft = function () {
             var e, t = _i.commands,
                 i = (ki.toolbarExclude || "")
@@ -39590,14 +39674,14 @@ function (e) {
             var n = {
                 val: t.innerHTML
             };
-            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, T, J)), Y.call("paste", n), j(s,
-                "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, J)), Y.call(
+            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, T, Q)), Y.call("paste", n), j(s,
+                "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, Q)), Y.call(
                 "pasteHtml", n), _i.wysiwygEditorInsertHtml(n.val, null, !0)
         }, _i.closeDropDown = function (e) {
             L && (u(L), L = null), e === !0 && _i.focus()
         }, _i.wysiwygEditorInsertHtml = function (e, t, i) {
             var n, o, a, s = M(f);
-            _i.focus(), (i || !c(Q, "code")) && (G.insertHTML(e, t), G.saveRange(), At(), n = h(C,
+            _i.focus(), (i || !c(J, "code")) && (G.insertHTML(e, t), G.saveRange(), At(), n = h(C,
                     "#sceditor-end-marker")[0], v(n), o = C.scrollTop, a = K(n)
                 .top + 1.5 * n.offsetHeight - s, g(n), (a > o || o > a + s) && (C.scrollTop = a), ui(!
                     1), G.restoreRange(), ni())
@@ -39627,9 +39711,9 @@ function (e) {
             if (_i.inSourceMode()) return _i.sourceEditorInsertText(e, t), _i;
             if (t) {
                 var s = G.selectedHtml();
-                n !== !1 && "fragmentToSource" in i && (s = i.fragmentToSource(s, T, J)), e += s + t
+                n !== !1 && "fragmentToSource" in i && (s = i.fragmentToSource(s, T, Q)), e += s + t
             }
-            return n !== !1 && "fragmentToHtml" in i && (e = i.fragmentToHtml(e, J)), n !== !1 && a === !
+            return n !== !1 && "fragmentToHtml" in i && (e = i.fragmentToHtml(e, Q)), n !== !1 && a === !
                 0 && (e = e.replace(/&lt;/g, "<")
                     .replace(/&gt;/g, ">")
                     .replace(/&amp;/g, "&")), _i.wysiwygEditorInsertHtml(e), _i
@@ -39699,14 +39783,14 @@ function (e) {
             it || (it = !0, "onselectionchange" in T ? e() : setTimeout(e, 100))
         }, ai = function () {
             var e, t = G.parentNode();
-            J !== t && (e = J, J = t, Q = G.getFirstBlockParent(t), j(s, "nodechanged", {
+            Q !== t && (e = Q, Q = t, J = G.getFirstBlockParent(t), j(s, "nodechanged", {
                 oldNode: e,
-                newNode: J
+                newNode: Q
             }))
         }, _i.currentNode = function () {
-            return J
-        }, _i.currentBlockNode = function () {
             return Q
+        }, _i.currentBlockNode = function () {
+            return J
         }, ti = function () {
             var e, t, i = "active",
                 n = T,
@@ -39732,7 +39816,7 @@ function (e) {
         }, Gt = function (e) {
             if (!e.defaultPrevented && (_i.closeDropDown(), 13 === e.which)) {
                 var t = "li,ul,ol";
-                if (!k(Q, t) && F(Q)) {
+                if (!k(J, t) && F(J)) {
                     R = null;
                     var i = r("br", {}, T);
                     if (G.insertNode(i), !Dt) {
@@ -39763,7 +39847,7 @@ function (e) {
             return U && U[t[0]] && (t[0] = U[t[0]]), t[0].replace(/\{(\d+)\}/g, function (i, n) {
                 return t[n - 0 + 1] !== e ? t[n - 0 + 1] : "{" + n + "}"
             })
-        }, Qt = function (e) {
+        }, Jt = function (e) {
             Y && Y.call(e.type + "Event", e, _i);
             var t = (e.target === N ? "scesrc" : "scewys") + e.type;
             fi[t] && fi[t].forEach(function (t) {
@@ -39814,7 +39898,7 @@ function (e) {
             var t, i = 0,
                 n = _i.emoticonsCache,
                 o = String.fromCharCode(e.which);
-            c(Q, "code") || (n || (n = [], a(wi, function (e, t) {
+            c(J, "code") || (n || (n = [], a(wi, function (e, t) {
                     n[i++] = [e, t]
                 }), n.sort(function (e, t) {
                     return e[0].length - t[0].length
@@ -39822,7 +39906,7 @@ function (e) {
                 .replaceKeyword(_i.emoticonsCache, !0, !0, _i.longestEmoticonCode, ki.emoticonsCompat,
                     o), t && (ki.emoticonsCompat && /^\s$/.test(o) || e.preventDefault()))
         }, li = function () {
-            at(Q, G)
+            at(J, G)
         }, _i.emoticons = function (e) {
             if (!e && e !== !1) return ki.emoticonsEnabled;
             if (ki.emoticonsEnabled = e, e) p(C, "keypress", ri), _i.sourceMode() || (G.saveRange(), At(),
@@ -39968,7 +40052,7 @@ function (e) {
                 _i.clearBlockFormatting(o), e.preventDefault()
             }
         }, ci = function () {
-            for (var e = Q; !F(e) || H(e, !0);)
+            for (var e = J; !F(e) || H(e, !0);)
                 if (!(e = e.parentNode) || k(e, "body")) return;
             return e
         }, _i.clearBlockFormatting = function (e) {
@@ -39996,7 +40080,7 @@ function (e) {
                     .triggerNext = !1), clearTimeout(q), q = setTimeout(function () {
                     W || ui()
                 }, 1500))
-        }, Jt = function (e) {
+        }, Qt = function (e) {
             W = /start/i.test(e.type), W || ui()
         }, pi = function () {
             _i.updateOriginal()
@@ -40678,7 +40762,7 @@ function (e) {
             ie: yt,
             ios: kt,
             isWysiwygSupported: xt,
-            regexEscape: Q,
+            regexEscape: J,
             escapeEntities: X,
             escapeUriScheme: et,
             dom: {
@@ -40705,7 +40789,7 @@ function (e) {
                 extractContents: G,
                 getOffset: K,
                 getStyle: Y,
-                hasStyle: J
+                hasStyle: Q
             },
             locale: lt.locale,
             icons: lt.icons,
@@ -41098,12 +41182,12 @@ function (e) {
         return n
     }
 
-    function J(e, t, i) {
+    function Q(e, t, i) {
         var n = Y(e, t);
         return n ? !i || n === i || Array.isArray(i) && i.indexOf(n) > -1 : !1
     }
 
-    function Q(e) {
+    function J(e) {
         return e.replace(/([\-.*+?^=!:${}()|\[\]\/\\])/g, "\\$1")
     }
 
@@ -41136,7 +41220,7 @@ function (e) {
         var n = zt[e];
         return Object.keys(t)
             .forEach(function (e) {
-                n = n.replace(new RegExp(Q("{" + e + "}"), "g"), t[e])
+                n = n.replace(new RegExp(J("{" + e + "}"), "g"), t[e])
             }), i && (n = R(n)), n
     }
 
@@ -41318,7 +41402,7 @@ function (e) {
             for (o && v++, a = a || "", s = l.getOuterText(!0, v), d = s.length, s += a, t && (s += l
                     .getOuterText(!1, v)); f--;)
                 if (p = e[f][0], m = p.length, u = Math.max(0, d - m - g), c = -1, o ? (r = s.substr(u)
-                        .match(new RegExp(_ + Q(p) + _)), r && (c = r.index + u + r[1].length)) : c = s
+                        .match(new RegExp(_ + J(p) + _)), r && (c = r.index + u + r[1].length)) : c = s
                     .indexOf(p, u), c > -1 && d >= c && c + m + g >= d) return h = d - c, l
                     .selectOuterText(h, m - h - (/^\S/.test(a) ? 1 : 0)), l.insertHTML(e[f][1]), !0;
             return !1
@@ -41360,7 +41444,7 @@ function (e) {
             s = [],
             r = {};
         l(e, "code") || (a(t, function (e) {
-            r[e] = new RegExp(o + Q(e) + o), s.push(e)
+            r[e] = new RegExp(o + J(e) + o), s.push(e)
         }), s.sort(function (e, t) {
             return t.length - e.length
         }), function c(e) {
@@ -41392,8 +41476,8 @@ function (e) {
     }
 
     function lt(e, t) {
-        var i, s, l, f, x, C, T, N, L, R, W, q, U, G, Y, J, Q, et, it, ht, pt, gt, bt, yt, Ct, zt, Tt, At, Et,
-            Pt, Lt, Ot, Rt, Ft, $t, Bt, Ht, Wt, Vt, qt, Ut, Zt, Gt, Kt, Yt, Jt, Qt, Xt, ei, ti, ii, ni, oi,
+        var i, s, l, f, x, C, T, N, L, R, W, q, U, G, Y, Q, J, et, it, ht, pt, gt, bt, yt, Ct, zt, Tt, At, Et,
+            Pt, Lt, Ot, Rt, Ft, $t, Bt, Ht, Wt, Vt, qt, Ut, Zt, Gt, Kt, Yt, Qt, Jt, Xt, ei, ti, ii, ni, oi,
             ai, si, ri, li, ci, ui, di, hi, pi, mi, _i = this,
             fi = {},
             gi = [],
@@ -41459,18 +41543,18 @@ function (e) {
                 "keyup focus blur contextmenu mouseup touchend click";
             p(Mt, "click", Xt), t && (p(t, "reset", Kt), p(t, "submit", _i.updateOriginal, ft)), p(C,
                 "keypress", Gt), p(C, "keydown", Ut), p(C, "keydown", Zt), p(C, "keyup", ni), p(C,
-                "blur", di), p(C, "keyup", hi), p(C, "paste", Vt), p(C, i, Jt), p(C, o, oi), p(C, n,
-                Qt), ki.emoticonsCompat && It.getSelection && p(C, "keyup", li), p(C, "blur",
+                "blur", di), p(C, "keyup", hi), p(C, "paste", Vt), p(C, i, Qt), p(C, o, oi), p(C, n,
+                Jt), ki.emoticonsCompat && It.getSelection && p(C, "keyup", li), p(C, "blur",
                 function () {
                     _i.val() || A(C, "placeholder")
                 }), p(C, "focus", function () {
                 E(C, "placeholder")
-            }), p(N, "blur", di), p(N, "keyup", hi), p(N, "keydown", Ut), p(N, i, Jt), p(N, n, Qt), p(
+            }), p(N, "blur", di), p(N, "keyup", hi), p(N, "keydown", Ut), p(N, i, Qt), p(N, n, Jt), p(
                 T, "mousedown", Yt), p(T, o, oi), p(T, "beforedeactivate keyup mouseup", Pt), p(T,
                 "keyup", ni), p(T, "focus", function () {
                 R = null
             }), p(s, "selectionchanged", ai), p(s, "selectionchanged", ti), p(s,
-                "selectionchanged valuechanged nodechanged pasteraw paste", Qt)
+                "selectionchanged valuechanged nodechanged pasteraw paste", Jt)
         }, Ft = function () {
             var e, t = _i.commands,
                 i = (ki.toolbarExclude || "")
@@ -41686,14 +41770,14 @@ function (e) {
             var n = {
                 val: t.innerHTML
             };
-            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, T, J)), Y.call("paste", n), j(s,
-                "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, J)), Y.call(
+            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, T, Q)), Y.call("paste", n), j(s,
+                "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, Q)), Y.call(
                 "pasteHtml", n), _i.wysiwygEditorInsertHtml(n.val, null, !0)
         }, _i.closeDropDown = function (e) {
             L && (u(L), L = null), e === !0 && _i.focus()
         }, _i.wysiwygEditorInsertHtml = function (e, t, i) {
             var n, o, a, s = M(f);
-            _i.focus(), (i || !c(Q, "code")) && (G.insertHTML(e, t), G.saveRange(), At(), n = h(C,
+            _i.focus(), (i || !c(J, "code")) && (G.insertHTML(e, t), G.saveRange(), At(), n = h(C,
                     "#sceditor-end-marker")[0], v(n), o = C.scrollTop, a = K(n)
                 .top + 1.5 * n.offsetHeight - s, g(n), (a > o || o > a + s) && (C.scrollTop = a), ui(!
                     1), G.restoreRange(), ni())
@@ -41723,9 +41807,9 @@ function (e) {
             if (_i.inSourceMode()) return _i.sourceEditorInsertText(e, t), _i;
             if (t) {
                 var s = G.selectedHtml();
-                n !== !1 && "fragmentToSource" in i && (s = i.fragmentToSource(s, T, J)), e += s + t
+                n !== !1 && "fragmentToSource" in i && (s = i.fragmentToSource(s, T, Q)), e += s + t
             }
-            return n !== !1 && "fragmentToHtml" in i && (e = i.fragmentToHtml(e, J)), n !== !1 && a === !
+            return n !== !1 && "fragmentToHtml" in i && (e = i.fragmentToHtml(e, Q)), n !== !1 && a === !
                 0 && (e = e.replace(/&lt;/g, "<")
                     .replace(/&gt;/g, ">")
                     .replace(/&amp;/g, "&")), _i.wysiwygEditorInsertHtml(e), _i
@@ -41795,14 +41879,14 @@ function (e) {
             it || (it = !0, "onselectionchange" in T ? e() : setTimeout(e, 100))
         }, ai = function () {
             var e, t = G.parentNode();
-            J !== t && (e = J, J = t, Q = G.getFirstBlockParent(t), j(s, "nodechanged", {
+            Q !== t && (e = Q, Q = t, J = G.getFirstBlockParent(t), j(s, "nodechanged", {
                 oldNode: e,
-                newNode: J
+                newNode: Q
             }))
         }, _i.currentNode = function () {
-            return J
-        }, _i.currentBlockNode = function () {
             return Q
+        }, _i.currentBlockNode = function () {
+            return J
         }, ti = function () {
             var e, t, i = "active",
                 n = T,
@@ -41828,7 +41912,7 @@ function (e) {
         }, Gt = function (e) {
             if (!e.defaultPrevented && (_i.closeDropDown(), 13 === e.which)) {
                 var t = "li,ul,ol";
-                if (!k(Q, t) && F(Q)) {
+                if (!k(J, t) && F(J)) {
                     R = null;
                     var i = r("br", {}, T);
                     if (G.insertNode(i), !Dt) {
@@ -41859,7 +41943,7 @@ function (e) {
             return U && U[t[0]] && (t[0] = U[t[0]]), t[0].replace(/\{(\d+)\}/g, function (i, n) {
                 return t[n - 0 + 1] !== e ? t[n - 0 + 1] : "{" + n + "}"
             })
-        }, Qt = function (e) {
+        }, Jt = function (e) {
             Y && Y.call(e.type + "Event", e, _i);
             var t = (e.target === N ? "scesrc" : "scewys") + e.type;
             fi[t] && fi[t].forEach(function (t) {
@@ -41910,7 +41994,7 @@ function (e) {
             var t, i = 0,
                 n = _i.emoticonsCache,
                 o = String.fromCharCode(e.which);
-            c(Q, "code") || (n || (n = [], a(wi, function (e, t) {
+            c(J, "code") || (n || (n = [], a(wi, function (e, t) {
                     n[i++] = [e, t]
                 }), n.sort(function (e, t) {
                     return e[0].length - t[0].length
@@ -41918,7 +42002,7 @@ function (e) {
                 .replaceKeyword(_i.emoticonsCache, !0, !0, _i.longestEmoticonCode, ki.emoticonsCompat,
                     o), t && (ki.emoticonsCompat && /^\s$/.test(o) || e.preventDefault()))
         }, li = function () {
-            at(Q, G)
+            at(J, G)
         }, _i.emoticons = function (e) {
             if (!e && e !== !1) return ki.emoticonsEnabled;
             if (ki.emoticonsEnabled = e, e) p(C, "keypress", ri), _i.sourceMode() || (G.saveRange(), At(),
@@ -42064,7 +42148,7 @@ function (e) {
                 _i.clearBlockFormatting(o), e.preventDefault()
             }
         }, ci = function () {
-            for (var e = Q; !F(e) || H(e, !0);)
+            for (var e = J; !F(e) || H(e, !0);)
                 if (!(e = e.parentNode) || k(e, "body")) return;
             return e
         }, _i.clearBlockFormatting = function (e) {
@@ -42092,7 +42176,7 @@ function (e) {
                     .triggerNext = !1), clearTimeout(q), q = setTimeout(function () {
                     W || ui()
                 }, 1500))
-        }, Jt = function (e) {
+        }, Qt = function (e) {
             W = /start/i.test(e.type), W || ui()
         }, pi = function () {
             _i.updateOriginal()
@@ -42774,7 +42858,7 @@ function (e) {
             ie: yt,
             ios: kt,
             isWysiwygSupported: xt,
-            regexEscape: Q,
+            regexEscape: J,
             escapeEntities: X,
             escapeUriScheme: et,
             dom: {
@@ -42801,7 +42885,7 @@ function (e) {
                 extractContents: G,
                 getOffset: K,
                 getStyle: Y,
-                hasStyle: J
+                hasStyle: Q
             },
             locale: lt.locale,
             icons: lt.icons,
