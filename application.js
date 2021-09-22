@@ -4457,7 +4457,8 @@ Object.values || (Object.values = function (e) {
                 joint_response_unit: "Joint Response Unit",
                 k9: "Dog Support Unit (DSU)",
                 kdow_lna: "",
-                kdow_orgl: "OTL / Ambulance Officer",
+                kdow_orgl: "OTL",
+                kdow_orgl_any: "OTL / Ambulance Officer",
                 ktw_b: "",
                 ktw_or_rtw: "",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
@@ -35531,7 +35532,8 @@ $(function () {
                 "intervention_order.vehicles.pump_speed")], ["water_damage_pump_value_only_pumps",
                 I18n.t("intervention_order.vehicles.pump_speed_pump_only")], ["gwl2wasser_all", I18n
                 .t("intervention_order.vehicles.gwl2wasser_all")], ["foam_amount", I18n.t(
-                "intervention_order.vehicles.foam_amount")]], $("#restore_map")
+                "intervention_order.vehicles.foam_amount")], ["foam", I18n.t(
+                "intervention_order.vehicles.foam")]], $("#restore_map")
         .click(function () {
             mapViewRestore()
         }), $("#coins_top")
