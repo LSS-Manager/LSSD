@@ -3994,6 +3994,7 @@ Object.values || (Object.values = function (e) {
                 helicopter_bucket: "Helicopter bucket",
                 hems: "HEMS",
                 hint: {
+                    foam_amount: "Sum of foam in liters. Example: if you enter 10000 - then only those vehicles will be selected that have a total of 10000 liters of extinguishing foam.",
                     water_amount: ""
                 },
                 hlf_only: "",
@@ -6589,7 +6590,7 @@ Object.values || (Object.values = function (e) {
                 flood_equipment: "Sprzęt przeciwpowodziowy",
                 fly_car: "Samochód szefa brygady",
                 fly_car_any: "Pomoc medyczna",
-                foam: "Zbiornik na piane",
+                foam: "Samochód z zbiornikiem na pianę",
                 foam_amount: "Litry piany gaśniczej",
                 fukw: "",
                 fustw_or_police_motorcycle: "Radiowóz OPI lub Motocykl Policyjny",
@@ -6612,6 +6613,10 @@ Object.values || (Object.values = function (e) {
                 gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Samochód wężowy",
                 hems: "Śmigłowiec LPR",
+                hint: {
+                    foam_amount: "Suma piany w litrach. Przykład: jeśli wpiszesz 10000 - wtedy zostanie wybranych tyle pojazdów, których suma piany gaśniczej wyniesie 10000 l.",
+                    water_amount: "Suma wody w litrach. Przykład: jeśli wpiszesz 10000 - wtedy zostanie wybranych tyle pojazdów, których suma wody gaśniczej wyniesie 10000 l."
+                },
                 hlf_only: "GBARt",
                 hlf_or_rw_and_lf: "GBARt lub samochód ratownictwa technicznego oraz samochód gaśniczy",
                 hondengeleider: "",
