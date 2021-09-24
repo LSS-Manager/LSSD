@@ -15310,6 +15310,7 @@ a.ui-button:active,
 }
 
 .vehicle_type .alert {
+    margin-top: 5px;
     margin-bottom: 5px
 }
 
