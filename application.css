@@ -16046,6 +16046,10 @@ body.dark .daily-bonuses .collect-possible-block {
     margin-top: 10px
 }
 
+img.app-store-button {
+    height: 56px
+}
+
 /*
  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
  *
