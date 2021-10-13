@@ -15633,7 +15633,6 @@ body.bigMap #search_input_field_missions {
 
 .landingpage_1_signup_form * .fb-login-button-big {
     font-weight: 700;
-    background-image: url(../images/facebook_logo_big.png) !important;
     background-repeat: no-repeat !important;
     background-color: #1877f2 !important;
     background-position-y: center !important;
@@ -15645,7 +15644,8 @@ body.bigMap #search_input_field_missions {
     border-color: #1877f2 !important;
     border-width: 1px !important;
     border-style: solid !important;
-    text-decoration: none !important
+    text-decoration: none !important;
+    line-height: normal
 }
 
 .landingpage_1_signup_form * #back-to-registration-options {

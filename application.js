@@ -6185,7 +6185,7 @@ Object.values || (Object.values = function (e) {
                 fly_car: "Akutläkarbil",
                 fly_car_any: "Jourläkare / Akutläkarbil / FIP / IVPA / MC-Ambulans",
                 foam: "Skumenheter",
-                foam_amount: "Skum vatten",
+                foam_amount: "Liter Skum",
                 fustw_or_police_motorcycle: "Radiobil eller Polismotorcykel",
                 gkw: "Jeep",
                 grtw: "Ambulansbuss",
@@ -6198,7 +6198,7 @@ Object.values || (Object.values = function (e) {
                 hems: "Ambulanshelikopter",
                 hlf_only: "Räddningsbil",
                 hlf_or_rw_and_lf: "Räddningsbil eller tyngre räddningsbil och brandbil",
-                hose_trucks: "Slangbil",
+                hose_trucks: "Valfri slangbil",
                 k9: "Hundenhet",
                 kdow_orgl: "Ledningsfordon",
                 kdow_orgl_any: "Ledningsfordon, ambulans",
@@ -6215,7 +6215,7 @@ Object.values || (Object.values = function (e) {
                 police_horse: "Polishästar",
                 police_motorcycle: "Polismotorcykel",
                 polizeihubschrauber: "Polishelikopter",
-                pump: "Motorspruta",
+                pump: "Valfri pumpfri",
                 rescue_vehicle: "Lastväxlare",
                 rescue_vehicle_only: "Lastväxlare",
                 rescueboat: "Stor räddningsbåt",
@@ -6229,7 +6229,7 @@ Object.values || (Object.values = function (e) {
                 thw_tauchkraftwagen: "Dykgrupp",
                 tlf_only: "Tankbil",
                 turntable_ladder: "Stegbilar",
-                water_amount: "Liter av vatten"
+                water_amount: "Liter Vatten"
             }
         },
         tutorial: {
@@ -6863,9 +6863,9 @@ Object.values || (Object.values = function (e) {
             days: "giorni",
             few_seconds: "in pochi secondi",
             finish_in: "Finisce tra:",
-            foam_approaching: "In arrivo: %{amount} l.",
+            foam_approaching: "In Arrivo: %{amount} l.",
             foam_missing: "Mancante: %{amount} l.",
-            foam_on_site: "Sulla missione: %{amount} l.",
+            foam_on_site: "Sul Posto: %{amount} l.",
             foam_selected: "Selezionata: %{amount} l.",
             hours: "H",
             location_not_found: "Non trovato",
@@ -6893,10 +6893,10 @@ Object.values || (Object.values = function (e) {
             understand: "Conferma",
             user_not_found: "Il giocatore non è stato trovato.",
             vehicles_not_visible: "Veicoli non visibili. ",
-            water_approaching: "In Arrivo: %{amount} lit.",
-            water_missing: "Mancanti: %{amount} lit.",
-            water_on_site: "Sul Posto: %{amount} lit.",
-            water_selected: "Selezionati: %{amount} lit."
+            water_approaching: "In Arrivo: %{amount} l.",
+            water_missing: "Mancanti: %{amount} l.",
+            water_on_site: "Sul Posto: %{amount} l.",
+            water_selected: "Selezionati: %{amount} l."
         },
         map: {
             alliance: "Alleanza",
