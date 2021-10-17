@@ -3994,7 +3994,7 @@ Object.values || (Object.values = function (e) {
                 helicopter_bucket: "Helicopter bucket",
                 hems: "HEMS",
                 hint: {
-                    foam_amount: "Sum of foam in liters. Example: if you enter 10000 - then only those vehicles will be selected that have a total of 10000 liters of extinguishing foam.",
+                    foam_amount: "Sum of foam in gallons. Example: if you enter 10000 - then only those vehicles will be selected that have a total of 10000 gallons of extinguishing foam.",
                     water_amount: ""
                 },
                 hlf_only: "",
