@@ -3994,7 +3994,7 @@ Object.values || (Object.values = function (e) {
                 flood_equipment: "Flood Equipment",
                 fly_car: "Fly-Car",
                 fly_car_any: "",
-                foam: "Foam Tenders",
+                foam: "Foam Vehicles",
                 foam_amount: "Gallons of foam",
                 fukw: "",
                 fustw_or_police_motorcycle: "Patrol car or Police Motorcycle",
@@ -6212,7 +6212,7 @@ Object.values || (Object.values = function (e) {
                 fly_car: "Akutläkarbil",
                 fly_car_any: "Jourläkare / Akutläkarbil / FIP / IVPA / MC-Ambulans",
                 foam: "Skumenheter",
-                foam_amount: "Liter Skum",
+                foam_amount: "Liter skum",
                 fustw_or_police_motorcycle: "Radiobil eller Polismotorcykel",
                 gkw: "Jeep",
                 grtw: "Ambulansbuss",
@@ -6242,7 +6242,7 @@ Object.values || (Object.values = function (e) {
                 police_horse: "Polishästar",
                 police_motorcycle: "Polismotorcykel",
                 polizeihubschrauber: "Polishelikopter",
-                pump: "Valfri pumpfri",
+                pump: "Valfri pumpbil",
                 rescue_vehicle: "Lastväxlare",
                 rescue_vehicle_only: "Lastväxlare",
                 rescueboat: "Stor räddningsbåt",
@@ -6256,7 +6256,7 @@ Object.values || (Object.values = function (e) {
                 thw_tauchkraftwagen: "Dykgrupp",
                 tlf_only: "Tankbil",
                 turntable_ladder: "Stegbilar",
-                water_amount: "Liter Vatten"
+                water_amount: "Liter vatten"
             }
         },
         tutorial: {
