@@ -248,9 +248,9 @@ function allianceChat(e) {
         .indexOf("@" + username.toUpperCase()) || -1 != e.message.toUpperCase()
         .indexOf("@all ".toUpperCase()) || -1 != e.message.toUpperCase()
         .indexOf("@all:".toUpperCase()) || -1 != e.message.toUpperCase()
-        .indexOf("@admin".toUpperCase()) && (alliance_admin || alliance_coadmin) || "0" != e.whisper) && (t =
-        "chatToSelf", "0" != e.whisper && (t = "chatWhisper", splitMessage = e.message.split(" "),
-            splitMessage[0] = "<a username='" + splitMessage[0] +
+        .indexOf("@admin".toUpperCase()) && (alliance_admin || alliance_coadmin || alliance_owner) || "0" != e
+        .whisper) && (t = "chatToSelf", "0" != e.whisper && (t = "chatWhisper", splitMessage = e.message
+            .split(" "), splitMessage[0] = "<a username='" + splitMessage[0] +
             "' class='alliance_chat_private_username'><img class='alliance_chat_private_username' src='/images/icons8-privacy.svg'/></a><a href='/profile/" +
             e.whisper + "' class='lightbox-open label label-warning'>" + splitMessage[0] + "</a>", e.message =
             splitMessage.join(" ")), audio_chat_highlight && 1 != e.ignore_audio && user_id != e.user_id && !
@@ -265,10 +265,10 @@ function allianceChat(e) {
         "' class='alliance_chat_copy_username' src='/images/icons8-reply.svg'><a username='" + e.username +
         "' class='alliance_chat_private_username'> <img class='alliance_chat_private_username' src='/images/icons8-privacy.svg' /></a> <a href='/profile/" +
         e.user_id + "' class='lightbox-open ";
-    "true" == e.alliance_admin ? o += "label label-info" : "true" == e.alliance_coadmin && (o +=
-            "label label-default"), audio_chat && 1 != e.ignore_audio && user_id != e.user_id && !i && (play(
-            "chat_message"), i = !0), o = o + "'>" + e.username + ":</a></span>", e.mission_id && (o = o +
-            "<a href='/missions/" + e.mission_id +
+    "true" == e.alliance_admin || "true" == e.alliance_owner ? o += "label label-info" : "true" == e
+        .alliance_coadmin && (o += "label label-default"), audio_chat && 1 != e.ignore_audio && user_id != e
+        .user_id && !i && (play("chat_message"), i = !0), o = o + "'>" + e.username + ":</a></span>", e
+        .mission_id && (o = o + "<a href='/missions/" + e.mission_id +
             "' class='lightbox-open'><span class='glyphicon glyphicon-bell'></span>", "undefined" != typeof e
             .mission_caption && e.mission_caption && (o = o + "[" + e.mission_caption + "]"), o += "</a> "),
         o = o + " " + e.message + "</li>", $("#mission_chat_messages")
@@ -1379,7 +1379,7 @@ function missionMarkerAdd(e) {
                 e.live_current_value + "%;'><div class='" + t + "' id='mission_bar_striper_" + e.id +
                 "'></div></div></div><div  id='mission_missing_" + e.id + "' class='" + u + "'>" + d +
                 "</div><div  id='mission_missing_short_" + e.id + "' class='" + h + "'>" + p +
-                "</div><div id='mission_patients_" + e.id +
+                "</div><div id='mission_pump_progress_" + e.id + "'></div><div id='mission_patients_" + e.id +
                 "' class='row'></div><div class='mission_prisoners' id='mission_prisoners_" + e.id +
                 "'></div></div></div></div></div>"), tutorial.callNewMissionListener(!0)
     }
@@ -1421,9 +1421,26 @@ function missionMarkerAdd(e) {
         v.mission_id = e.id, v.user_id = e.user_id, v.vehicle_state = e.vehicle_state, v.krankentransport = e
             .kt, v.sicherheitswache = e.sw, v.involved = !0, mission_markers.push(v)
     }
-    n && $("#mission_" + e.id)
-        .addClass("mission_alliance_distance_hide"), e.date_end > 0 && missionTimerStart(e),
-        missionSelectionUpdateButtons(), e.live_current_value <= 0 && e
+    if (n && $("#mission_" + e.id)
+        .addClass("mission_alliance_distance_hide"), e.date_end > 0 && missionTimerStart(e), e
+        .water_damage_pump_value) {
+        var b = "<div class='small' id='pumping_" + e.id + "'>" + I18n.t("javascript.water_pumping_process") +
+            " <div id='pumping_bar_outer_" + e.id +
+            "' class='progress pumping_progress'><div id='pumping_bar_" + e.id +
+            "' class='progress-bar progress-bar-info";
+        b += "' style='width: " + e.live_current_water_damage_pump_value +
+            "%;'><div id='pumping_bar_striper_" + e.id + "' class='" + t +
+            "'></div></div></div><div  id='patients_missing_" + e.id + "'", $("#mission_pump_progress_" + e
+                .id)
+            .html(b)
+    }
+    e.pumping_date_end > 0 && ($("#pumping_bar_striper_" + e.id)
+            .addClass("progress-striped-inner-active"), startProgressBar({
+                $element: $("#pumping_bar_" + e.id),
+                missionValue: e.pumping_mission_value,
+                startTime: 1e3 * e.pumping_date_start,
+                endTime: 1e3 * e.pumping_date_end
+            })), missionSelectionUpdateButtons(), e.live_current_value <= 0 && e
         .live_current_water_damage_pump_value <= 0 && missionFinish(e), missionMarkerBulkAdd || (
             progressBarScrollUpdate(), "" != $("#search_input_field_missions")
             .val() && searchMission())
@@ -2174,7 +2191,7 @@ function allianceCandidatureCount(e) {
         i = $("#alliance_candidature_count")
         .html();
     $("#alliance_candidature_count")
-        .html(t), (alliance_coadmin || alliance_admin) && (e > 0 ? $("#menu_alliance")
+        .html(t), (alliance_coadmin || alliance_admin || alliance_owner) && (e > 0 ? $("#menu_alliance")
             .addClass("alliance_apply_new") : $("#menu_alliance")
             .removeClass("alliance_apply_new")), "" != i && i != t && highlightElement($("#menu_alliance"))
 }
@@ -2869,6 +2886,16 @@ function onAndroidBack() {
             .click(), !0) : $("#btn-tutorial-close")
         .visible() ? ($("#btn-tutorial-close")
             .click(), !0) : !1
+}
+
+function startProgressBar(e) {
+    var t = new Date,
+        i = 100 * ((t - e.startTime) / (e.endTime - e.startTime)),
+        n = 100 - i,
+        o = n * (e.missionValue / 100);
+    e.$element.css("width", o + "%"), n >= 0 && setTimeout(function () {
+        startProgressBar(e)
+    }, 1e3)
 }
 
 function missionPositionMarkerAdd(e) {
@@ -35384,6 +35411,7 @@ var map, alliance_member_buildings_show, geocoder, directionsService, building_e
     aao_types = [],
     alliance_coadmin = !1,
     alliance_admin = !1,
+    alliance_owner = !1,
     routes = {},
     missionMarkerBulkAdd = !1,
     patientBulkCache = {},

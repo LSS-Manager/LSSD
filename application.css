@@ -11724,6 +11724,21 @@ fieldset[disabled] .btn-danger:hover {
     color: #fff
 }
 
+.building-title {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap
+}
+
+.building-title h1 {
+    margin-right: 20px
+}
+
+.building-title .disabled-dispatch-alert {
+    margin: 0;
+    min-width: 400px
+}
+
 .building_discount_label {
     position: static;
     width: 70px;
@@ -12182,7 +12197,8 @@ fieldset[disabled] .btn-gray.active {
     padding: 5px
 }
 
-.patient_progress {
+.patient_progress,
+.pumping_progress {
     height: 5px
 }
 
@@ -12605,13 +12621,45 @@ body.dark .mission_overview_countdown {
     color: #fff
 }
 
-.navbar-header .money-block-mobile {
-    float: left;
-    margin-top: 15px
-}
+@media only screen and (max-width: 768px) {
+    .navbar-header .money-block-mobile {
+        float: left;
+        display: flex !important;
+        align-items: center;
+        position: relative;
+        top: 9px
+    }
 
-.navbar-header .money-block-mobile a {
-    color: #fff
+    .navbar-header .money-block-mobile a:hover {
+        text-decoration: none
+    }
+
+    .navbar-header .money-block-mobile a {
+        color: #fff;
+        padding: 5px;
+        border-radius: 5px;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        height: 65%
+    }
+
+    .navbar-header .money-block-mobile a span.coins-value {
+        margin-top: 2px
+    }
+
+    .navbar-header .money-block-mobile a span.credits-value {
+        margin-top: 2px
+    }
+
+    .navbar-header .money-block-mobile a .navbar-icon {
+        margin-right: 5px
+    }
+
+    .navbar-header .money-block-mobile a .glyphicon {
+        top: 0;
+        margin-left: 5px
+    }
 }
 
 .navbar-header a {
@@ -13044,7 +13092,8 @@ body.dark .alert-success a.btn-default {
     width: 10%
 }
 
-.patient_progress .progress-striped-inner-active {
+.patient_progress .progress-striped-inner-active,
+.pumping_progress .progress-striped-inner-active {
     background-size: 40px 100%
 }
 
@@ -15903,6 +15952,11 @@ body.dark .daily-bonuses .collect-possible-block {
     background-repeat: repeat-x
 }
 
+.claim_all {
+    margin-top: -10px;
+    margin-bottom: 20px
+}
+
 .reward_amount {
     float: right;
     margin-top: 7px
@@ -16042,12 +16096,31 @@ body.dark .daily-bonuses .collect-possible-block {
     margin-bottom: 0
 }
 
+.anti-abuse-warning {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 10px
+}
+
+.anti-abuse-warning-image {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px
+}
+
 .buy-vehicle-btn {
     margin-top: 10px
 }
 
 img.app-store-button {
     height: 56px
+}
+
+a#mission-type-helper-mobile {
+    height: 32px;
+    float: right;
+    display: block
 }
 
 /*
