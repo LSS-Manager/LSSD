@@ -1883,7 +1883,7 @@ function creditsUpdate(e) {
     var t = number_format(e),
         i = $("#navigation_top .credits-value")
         .text();
-    $("#navigation_top .credits-value")
+    $(".credits-value")
         .html(t), "" != i && i != t && highlightElement($("#navigation_top"))
 }
 
@@ -1971,12 +1971,12 @@ function coinsUpdate(e) {
             .append("<div id='sale_countdown_mobile' />"), $("#sale_countdown_mobile")
             .on("click", function () {
                 mobileBridgeAdd("coins_window", {})
-            })), updateSaleCountDown(), $("#coins_top .coins-value")
+            })), updateSaleCountDown(), $(".coins-value")
         .html(t);
     else {
         var i = $("#coins_top .coins-value")
             .text();
-        $("#coins_top .coins-value")
+        $(".coins-value")
             .html(t), "" != i && i != t && highlightElement($("#coins_top"))
     }
 }
@@ -35429,6 +35429,9 @@ var map, alliance_member_buildings_show, geocoder, directionsService, building_e
     gameFlavour = null,
     i18nPrefix = null;
 $(function () {
+    function onCoinsTop() {
+        return mobile_bridge_use ? (mobileBridgeAdd("coins_window", {}), !1) : !0
+    }
     "undefined" != typeof L && (L.Icon.Default.imagePath = "/leaflet/images/"), aao_types = [[
                 "ambulance_or_rapid_responder", I18n.t(
                     "intervention_order.vehicles.ambulance_or_rapid_responder")], ["wasser_amount",
@@ -35584,9 +35587,8 @@ $(function () {
         .click(function () {
             mapViewRestore()
         }), $("#coins_top")
-        .click(function () {
-            return mobile_bridge_use ? (mobileBridgeAdd("coins_window", {}), !1) : !0
-        }), "undefined" != typeof L && (icon_empty = L.icon({
+        .click(onCoinsTop), $("#coins_top_mobile")
+        .click(onCoinsTop), "undefined" != typeof L && (icon_empty = L.icon({
             iconUrl: "/images/pfeil_rot.png",
             iconSize: [0, 0],
             iconAnchor: iconAnchorCalculate([0, 0])

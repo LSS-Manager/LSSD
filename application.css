@@ -12621,45 +12621,58 @@ body.dark .mission_overview_countdown {
     color: #fff
 }
 
-@media only screen and (max-width: 768px) {
-    .navbar-header .money-block-mobile {
-        float: left;
-        display: flex !important;
-        align-items: center;
-        position: relative;
-        top: 9px
+@media only screen and (max-width: 767px) {
+    .money-block-web {
+        display: flex !important
     }
+}
 
-    .navbar-header .money-block-mobile a:hover {
-        text-decoration: none
+@media only screen and (min-width: 768px) {
+    .money-block-web {
+        display: none !important
     }
+}
 
-    .navbar-header .money-block-mobile a {
-        color: #fff;
-        padding: 5px;
-        border-radius: 5px;
-        background: rgba(0, 0, 0, 0.5);
-        display: flex;
-        align-items: center;
-        height: 65%
-    }
+.money-block-mobile {
+    display: flex !important
+}
 
-    .navbar-header .money-block-mobile a span.coins-value {
-        margin-top: 2px
-    }
+.navbar-header .money-block {
+    float: left;
+    align-items: center;
+    position: relative;
+    top: 9px
+}
 
-    .navbar-header .money-block-mobile a span.credits-value {
-        margin-top: 2px
-    }
+.navbar-header .money-block a:hover {
+    text-decoration: none
+}
 
-    .navbar-header .money-block-mobile a .navbar-icon {
-        margin-right: 5px
-    }
+.navbar-header .money-block a {
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    height: 65%
+}
 
-    .navbar-header .money-block-mobile a .glyphicon {
-        top: 0;
-        margin-left: 5px
-    }
+.navbar-header .money-block a span.coins-value {
+    margin-top: 2px
+}
+
+.navbar-header .money-block a span.credits-value {
+    margin-top: 2px
+}
+
+.navbar-header .money-block a .navbar-icon {
+    margin-right: 5px
+}
+
+.navbar-header .money-block a .glyphicon {
+    top: 0;
+    margin-left: 5px
 }
 
 .navbar-header a {
