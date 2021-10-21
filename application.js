@@ -3624,7 +3624,7 @@ Object.values || (Object.values = function (e) {
                         browser: {
                             dispatch_menu: "Dies ist das Alarmierungsfenster. Von hier aus kannst du Fahrzeuge zu Einsätzen schicken!",
                             dispatch_menu_buttons: 'Dies sind deine beiden Alarmierungsoptionen! Der erste "Alarm"-Button schickt die ausgewählten Fahrzeuge zum Einsatz. Der Zweite wechselt zusätzlich auch zum nächsten Einsatz. Klicke jetzt den ersten Button.',
-                            dispatch_menu_mission_general: "Hier siehst du generelle Informationen zum Einsatz, wie Name, Adresse und Icon. Bist du am Einsatz beteiligt, springt die Farbe des Icons von rot auf gelb.",
+                            dispatch_menu_mission_general: "Hier siehst du generelle Informationen zum Einsatz, wie Name, Adresse und Icon. Bist du am Einsatz beteiligt wird ein Männchen angezeigt, ansonsten ein Stern.",
                             dispatch_menu_mission_progress: "Hier siehst du wie weit der Einsatz bereits fortgeschritten ist, wie viele Einsatzkräfte vor Ort sind und wie viel Zeit noch benötigt wird um den Einsatz abzuschließen!",
                             dispatch_menu_mission_specific: "Hier erhältst du mehr Informationen zum Einsatz, z.B. welche Fahrzeuge unterwegs sind und welche sich bereits am Einsatzort befinden.",
                             dispatch_menu_vehicle_list: "Hier siehst du die Liste deiner verfügbaren Fahrzeuge. Du kannst ein Fahrzeug auswählen, indem du es anklickst!"
@@ -3632,7 +3632,7 @@ Object.values || (Object.values = function (e) {
                         mobile: {
                             dispatch_menu: "Dies ist das Alarmierungsfenster. Von hier aus kannst du Fahrzeuge zu Einsätzen schicken!",
                             dispatch_menu_buttons: 'Dies sind deine beiden Alarmierungsoptionen! Der erste "Alarm"-Button schickt die ausgewählten Fahrzeuge zum Einsatz. Der Zweite wechselt zusätzlich auch zum nächsten Einsatz. Tippe jetzt den ersten Button.',
-                            dispatch_menu_mission_general: "Hier siehst du generelle Informationen zum Einsatz, wie Name, Adresse und Icon. Bist du am Einsatz beteiligt, springt die Farbe des Icons von rot auf gelb.",
+                            dispatch_menu_mission_general: "Hier siehst du generelle Informationen zum Einsatz, wie Name, Adresse und Icon. Bist du am Einsatz beteiligt wird ein Männchen angezeigt, ansonsten ein Stern.",
                             dispatch_menu_mission_progress: "Hier siehst du wie weit der Einsatz bereits fortgeschritten ist, wie viele Einsatzkräfte vor Ort sind und wie viel Zeit noch benötigt wird um den Einsatz abzuschließen!",
                             dispatch_menu_mission_specific: "Hier erhältst du mehr Informationen zum Einsatz, z.B. welche Fahrzeuge unterwegs sind und welche sich bereits am Einsatzort befinden.",
                             dispatch_menu_vehicle_list: "Hier siehst du die Liste deiner verfügbaren Fahrzeuge. Du kannst hier ein Fahrzeug auswählen, indem du es anklickst!"
@@ -4718,6 +4718,10 @@ Object.values || (Object.values = function (e) {
             days: "dagen",
             few_seconds: "Nog enkele seconden",
             finish_in: "Duurt nog:",
+            foam_approaching: "Nog nodig: %{amount} L.",
+            foam_missing: "Ter plaatse: %{amount} L.",
+            foam_on_site: "Aanrijdend: %{amount} L.",
+            foam_selected: "Geselecteerd: %{amount} L.",
             hours: "uur",
             location_not_found: "Uw locatie is niet gevonden.",
             messages: "Berichten",
@@ -4905,6 +4909,8 @@ Object.values || (Object.values = function (e) {
                 fireboat: "",
                 fly_car: "Rapid Responder",
                 fly_car_any: "OVDG-RR of Rapid Responder",
+                foam: "Schuimblusvoertuig",
+                foam_amount: "Liter SVM",
                 fukw: "Hondenbrigade",
                 fustw_or_police_motorcycle: "Politie Noodhulp of Dienstmotor Noodhulp",
                 fwk: "",
@@ -4958,6 +4964,7 @@ Object.values || (Object.values = function (e) {
                 police_car_3: "NH-O",
                 police_motorcycle: "Dienstmotor Noodhulp",
                 polizeihubschrauber: "Politiehelikopter",
+                pump: "Motorspuitaanhangwagen",
                 rescue_vehicle: "HV of TS-HV",
                 rescue_vehicle_only: "Hulpverleningsvoertuig",
                 rescueboat: "",
