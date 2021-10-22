@@ -3375,6 +3375,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Notfälle",
             finishing: "Wird beendet",
             join_alliance_infos: "Wenn du in einem Verband bist, können andere Spieler dir Einsätze freigeben.",
+            legacy_client_notice: "NUR iOS & ANDROID USER:<br>\nWenn du noch eine alte Version nutzt, aktualisiere bitte auf die neueste App-Version. Die alte Version kann zukünftig zu Problemen mit dem Spiel und dem Login führen.<br>\nAndroid: %{google_store_link} <br>\niOS: %{ios_store_link}",
             map: "Karte",
             map_filters: {
                 all_buildings: "Gebäude",
@@ -3429,6 +3430,10 @@ Object.values || (Object.values = function (e) {
             restore_map: "Karte wiederherstellen",
             show_informations: "Grün = Die Einsätze werden in der Leiste angezeigt. Rot = Die Einsätze werden nicht angezeigt.",
             sicherheitswache: "Geplante Einsätze",
+            sorting_ascending: "Nach Alter aufsteigend",
+            sorting_default: "Standard",
+            sorting_descending: "Nach Alter absteigend",
+            sorting_label: "Sortieren nach:",
             transport: "Transporte",
             unattended: "Unbeantwortet"
         },
@@ -3837,6 +3842,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Emergency",
             finishing: "Finishing",
             join_alliance_infos: "If you are in an alliance, other players can freely give you missions.",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid: %{google_store_link} <br>\niOS: %{ios_store_link}",
             map: "Map",
             map_filters: {
                 all_buildings: "Buildings",
@@ -3881,7 +3887,7 @@ Object.values || (Object.values = function (e) {
                 water_watch_missions: "Water Rescue"
             },
             message: "Message",
-            mission: "Mission",
+            mission: "Missions",
             missions_filtered_out: "Some missions might be filtered out. Please, check your map filters.",
             no_alliance_chat_impossible: "You are not in an alliance.",
             no_alliance_missions: "There are currently no alliance missions.",
@@ -3893,6 +3899,10 @@ Object.values || (Object.values = function (e) {
             server_warning: "Server maintenance at 18:00 EDT. 6h downtime expected.",
             show_informations: "Green = The missions are shown in the list. Red = The missions aren't shown.",
             sicherheitswache: "Planned Appearances",
+            sorting_ascending: "Age asc.",
+            sorting_default: "Default",
+            sorting_descending: "Age desc.",
+            sorting_label: "Sort by:",
             transport: "Transport",
             unattended: "Unattended"
         },
@@ -4331,6 +4341,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Emergency",
             finishing: "Finishing",
             join_alliance_infos: "If you are in an alliance, other players can freely give you missions.",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid: %{google_store_link} <br>\niOS: %{ios_store_link}",
             map: "Map",
             map_filters: {
                 all_buildings: "Buildings",
@@ -4371,7 +4382,7 @@ Object.values || (Object.values = function (e) {
                 water_watch_missions: "Water Rescue"
             },
             message: "Message",
-            mission: "Mission",
+            mission: "Missions",
             missions_filtered_out: "Some missions might be filtered out. Please, check your map filters.",
             no_alliance_chat_impossible: "You are not in an alliance.",
             no_alliance_missions: "There are currently no alliance missions.",
@@ -4383,6 +4394,10 @@ Object.values || (Object.values = function (e) {
             server_warning: "Server maintenance at 11 pm. 6h downtime expected.",
             show_informations: "Green = The missions are shown in the list. Red = The missions aren't shown.",
             sicherheitswache: "Planned Appearances",
+            sorting_ascending: "Age asc.",
+            sorting_default: "Default",
+            sorting_descending: "Age desc.",
+            sorting_label: "Sort by:",
             transport: "Transport",
             unattended: "Unattended"
         },
@@ -4778,6 +4793,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Spoed",
             finishing: "Wordt afgerond",
             join_alliance_infos: "Wanneer je in een team zit kunnen andere spelers een incident vrijgeven.",
+            legacy_client_notice: "ALLEEN iOS- & ANDROID-GEBRUIKERS:<br>\nAls u de verouderde app of een oude versie gebruikt, zorg er dan voor dat u update naar onze vernieuwde app-versie. De oude versies kunnen in de toekomst problemen veroorzaken met kernfuncties en logins.<br>\nAndroid: %{google_store_link} <br>\niOS: %{ios_store_link}",
             map: "Kaart",
             map_filters: {
                 all_buildings: "Gebouwen",
@@ -4830,6 +4846,10 @@ Object.values || (Object.values = function (e) {
             server_warning: "Serveronderhoud om 00.00 uur. We verwachten 6 uur offline te zijn.",
             show_informations: "Groen = Inzet wordt in de lijst weergegeven. Rood = Inzet wordt niet weergegeven.",
             sicherheitswache: "Geplande inzetten",
+            sorting_ascending: "Leeftijd opl.",
+            sorting_default: "Standaard",
+            sorting_descending: "Leeftijd afl.",
+            sorting_label: "Sorteren op:",
             transport: "Transport",
             unattended: "Niet uitgevoerd"
         },
@@ -5237,6 +5257,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Emergencia",
             finishing: "Completando",
             join_alliance_infos: "Si estás en una alianza, otros jugadores podrán ofrecerte misiones.",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid: %{google_store_link} <br>\niOS: %{ios_store_link}",
             map: "Mapa",
             map_filters: {
                 all_buildings: "Edificios",
@@ -5277,7 +5298,7 @@ Object.values || (Object.values = function (e) {
                 water_watch_missions: "Rescate acuático"
             },
             message: "Mensaje",
-            mission: "Misión",
+            mission: "Misiones",
             missions_filtered_out: "Algunas misiones pueden ser filtradas. Por favor, revise los filtros de su mapa.",
             no_alliance_chat_impossible: "No estás en una alianza.",
             no_alliance_missions: "No hay misiones de alianza.",
@@ -5289,6 +5310,10 @@ Object.values || (Object.values = function (e) {
             server_warning: "Mantenimiento del servidor a las 00:00. Se espera un tiempo de inactividad de 6 horas.",
             show_informations: "Verde: las misiones se mostrarán en la lista. Rojo: las misiones no se mostrarán.",
             sicherheitswache: "Misones planificadas",
+            sorting_ascending: "Edad asc.",
+            sorting_default: "Por defecto",
+            sorting_descending: "Edad desc.",
+            sorting_label: "Ordenar por:",
             transport: "Transporte",
             unattended: "Sin respuesta"
         },
@@ -5643,6 +5668,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Emergency",
             finishing: "Finishing",
             join_alliance_infos: "If you are in an alliance, other players can freely give you missions.",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid: %{google_store_link} <br>\niOS: %{ios_store_link}",
             map: "Map",
             map_filters: {
                 all_buildings: "Buildings",
@@ -5683,7 +5709,7 @@ Object.values || (Object.values = function (e) {
                 water_watch_missions: "Water Rescue"
             },
             message: "Message",
-            mission: "Mission",
+            mission: "Missions",
             missions_filtered_out: "Some missions might be filtered out. Please, check your map filters.",
             no_alliance_chat_impossible: "You are not in an alliance.",
             no_alliance_missions: "There are currently no alliance missions.",
@@ -5695,6 +5721,10 @@ Object.values || (Object.values = function (e) {
             server_warning: "Server maintenance at 08:00 AEST. 6h downtime expected.",
             show_informations: "Green = The missions are shown in the list. Red = The missions aren't shown.",
             sicherheitswache: "Planned Appearances",
+            sorting_ascending: "Age asc.",
+            sorting_default: "Default",
+            sorting_descending: "Age desc.",
+            sorting_label: "Sort by:",
             transport: "Transport",
             unattended: "Unattended"
         },
@@ -6091,6 +6121,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Akut",
             finishing: "I slutfas",
             join_alliance_infos: "Om du är med i en allians kan andra spelare ge dig uppdrag.",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid: %{google_store_link} <br>\niOS: %{ios_store_link}",
             map: "Karta",
             map_filters: {
                 all_buildings: "Byggnader",
@@ -6143,6 +6174,10 @@ Object.values || (Object.values = function (e) {
             server_warning: "Vid midnatt sker serverunderhåll. Arbetet räknas pågå i cirka 6 timmar.",
             show_informations: "Grönt = Uppdragen visas i listan. Rött = Uppdragen visas inte.",
             sicherheitswache: "Planerade uppdrag",
+            sorting_ascending: "Ålder (stigande)",
+            sorting_default: "Standard",
+            sorting_descending: "Ålder (fallande)",
+            sorting_label: "Sortering:",
             transport: "Transport",
             unattended: "Obesvarade"
         },
@@ -6502,6 +6537,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Sytuacja wyjątkowa",
             finishing: "Realizowane",
             join_alliance_infos: "Jeśli należysz do sojuszu, inni gracze mogą ci wyznaczać misje bez ograniczeń.",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid: %{google_store_link} <br>\niOS: %{ios_store_link}",
             map: "Mapa",
             map_filters: {
                 all_buildings: "Budynki",
@@ -6542,7 +6578,7 @@ Object.values || (Object.values = function (e) {
                 water_watch_missions: "Ratownictwo wodne"
             },
             message: "Wiadomość",
-            mission: "Misja",
+            mission: "Misje",
             missions_filtered_out: "Niektóre misje mogą zostać odfiltrowane. Proszę sprawdzić filtry map.",
             no_alliance_chat_impossible: "Nie należysz do sojuszu.",
             no_alliance_missions: "W tej chwili nie ma misji sojuszu.",
@@ -6554,6 +6590,10 @@ Object.values || (Object.values = function (e) {
             server_warning: "Przewidujemy przerwę techniczną o północy. Przewidywany czas w okolicach 6 godzin.",
             show_informations: "Zielony = misje są pokazywane. Czerwony = misje nie są pokazywane.",
             sicherheitswache: "Planowane misje",
+            sorting_ascending: "Wiek wzr.",
+            sorting_default: "Domyślnie",
+            sorting_descending: "Wiek mal.",
+            sorting_label: "Sortuj według:",
             transport: "Transport",
             unattended: "Niepodjęte"
         },
@@ -6957,6 +6997,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Emergenza",
             finishing: "In corso",
             join_alliance_infos: "Se fai parte di un'alleanza, altri giocatori possono assegnarti liberamente delle missioni.",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid: %{google_store_link} <br>\niOS: %{ios_store_link}",
             map: "Mappa",
             map_filters: {
                 all_buildings: "Edifici",
@@ -6997,7 +7038,7 @@ Object.values || (Object.values = function (e) {
                 water_watch_missions: "Soccorso acquatico"
             },
             message: "Messaggio",
-            mission: "Missione",
+            mission: "Missioni",
             missions_filtered_out: "Alcune missioni potrebbero essere filtrate. Per favore, controlla i filtri della tua mappa.",
             no_alliance_chat_impossible: "Non fai parte di alcuna alleanza.",
             no_alliance_missions: "Al momento non ci sono missioni dell'alleanza.",
@@ -7009,6 +7050,10 @@ Object.values || (Object.values = function (e) {
             server_warning: "Manutenzione del server alle 00:00. Tempo di inattività previsto di 6 ore.",
             show_informations: "Verde = Le missioni vengono mostrate nell'elenco. Rosso = Le missioni non vengono mostrate.",
             sicherheitswache: "Missioni pianificate",
+            sorting_ascending: "Età (cresc.)",
+            sorting_default: "Predefinito",
+            sorting_descending: "Età (decr.)",
+            sorting_label: "Ordina per:",
             transport: "Trasporto",
             unattended: "Da compiere"
         },
@@ -7405,6 +7450,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Urgence",
             finishing: "Presque achevée",
             join_alliance_infos: "Si vous appartenez à une alliance, les autres joueurs peuvent vous confier des missions.",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid: %{google_store_link} <br>\niOS: %{ios_store_link}",
             map: "Carte",
             map_filters: {
                 all_buildings: "Bâtiments",
@@ -7445,7 +7491,7 @@ Object.values || (Object.values = function (e) {
                 water_watch_missions: "Secours nautique"
             },
             message: "Message",
-            mission: "Mission",
+            mission: "Missions",
             missions_filtered_out: "Certaines missions peuvent être filtrées. Veuillez vérifier les filtres de votre carte.",
             no_alliance_chat_impossible: "Vous n’appartenez à aucune alliance.",
             no_alliance_missions: "Aucune mission d’alliance à afficher.",
@@ -7457,6 +7503,10 @@ Object.values || (Object.values = function (e) {
             server_warning: "Maintenance des serveurs à 00h00. Ceux-ci seront indisponibles durant une durée approximative de 6h00.",
             show_informations: "Vert = les missions s’affichent dans la liste. Rouge = les missions ne s’affichent pas.",
             sicherheitswache: "Missions prévues",
+            sorting_ascending: "Ordre chrono (croissant)",
+            sorting_default: "Par défaut",
+            sorting_descending: "Ordre chrono (décroissant)",
+            sorting_label: "Trier par :",
             transport: "Transport",
             unattended: "Non assignée"
         },
@@ -7854,6 +7904,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Чрезвычайная ситуация",
             finishing: "Завершаются",
             join_alliance_infos: "Если вы состоите в альянсе, другие игроки могут свободно давать вам задания.",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid: %{google_store_link} <br>\niOS: %{ios_store_link}",
             map: "Карта",
             map_filters: {
                 all_buildings: "Здания",
@@ -7894,7 +7945,7 @@ Object.values || (Object.values = function (e) {
                 water_watch_missions: "ОСВОД"
             },
             message: "Сообщение",
-            mission: "Задание",
+            mission: "Задания",
             missions_filtered_out: "Некоторые миссии могут быть отфильтрованы. Пожалуйста, проверьте фильтры вашей карты.",
             no_alliance_chat_impossible: "Вы не состоите в альянсе.",
             no_alliance_missions: "В настоящее время заданий альянса нет.",
@@ -7906,6 +7957,10 @@ Object.values || (Object.values = function (e) {
             server_warning: "Server maintenance at 1 am. 6h downtime expected.",
             show_informations: "Зелёный = задания отображаются в списке. Красный = задания не отображаются.",
             sicherheitswache: "Запланированные задания",
+            sorting_ascending: "Возраст по возрастающей",
+            sorting_default: "По умолчанию",
+            sorting_descending: "Возраст по убывающей",
+            sorting_label: "Сортировка:",
             transport: "Транспорт",
             unattended: "Непосещенные"
         },
@@ -8262,6 +8317,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Krisesituation",
             finishing: "Næsten afsluttede",
             join_alliance_infos: "Hvis du er i en alliance, kan andre spillere give dig missioner.",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid: %{google_store_link} <br>\niOS: %{ios_store_link}",
             map: "Kort",
             map_filters: {
                 all_buildings: "Bygninger",
@@ -8302,7 +8358,7 @@ Object.values || (Object.values = function (e) {
                 water_watch_missions: "Vandredning"
             },
             message: "Meddelelse",
-            mission: "Mission",
+            mission: "Missioner",
             missions_filtered_out: "Nogle missioner kan blive filtreret ud. Tjek venligst dine kortfilter.",
             no_alliance_chat_impossible: "Du er ikke i en alliance.",
             no_alliance_missions: "Der er ingen alliancemissioner lige nu",
@@ -8314,6 +8370,10 @@ Object.values || (Object.values = function (e) {
             server_warning: "Servervedligeholdelse kl. 00.00. 6 t. nedlukning forventet.",
             show_informations: "Grøn = Missionerne vises på listen. Rød = Missionerne vises ikke.",
             sicherheitswache: "Planlagte indsatser",
+            sorting_ascending: "Alder opadg.",
+            sorting_default: "Standard",
+            sorting_descending: "Alder nedadg.",
+            sorting_label: "Sorteret efter:",
             transport: "Transport",
             unattended: "Ikke iværksatte"
         },
@@ -8705,6 +8765,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Nødssituasjon",
             finishing: "Fullfører",
             join_alliance_infos: "Hvis du er i en allianse, kan andre spillere gi deg oppdrag.",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid: %{google_store_link} <br>\niOS: %{ios_store_link}",
             map: "Kart",
             map_filters: {
                 all_buildings: "Bygninger",
@@ -8757,6 +8818,10 @@ Object.values || (Object.values = function (e) {
             server_warning: "Servervedlikehold i natt klokken 00:00. Det vil vare i 6 timer.",
             show_informations: "Grønn = oppdragene vises på listen. Rød = oppdragene vises ikke.",
             sicherheitswache: "Planlagte visninger",
+            sorting_ascending: "Nyeste først",
+            sorting_default: "Standard",
+            sorting_descending: "Eldste først",
+            sorting_label: "Sorter etter:",
             transport: "Transport",
             unattended: "Ikke håndtert"
         },
@@ -9145,6 +9210,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Stav nouze",
             finishing: "Dokončované",
             join_alliance_infos: "V alianci vám ostatní hráči můžou dávat mise.",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid: %{google_store_link} <br>\niOS: %{ios_store_link}",
             map: "Mapa",
             map_filters: {
                 all_buildings: "Budovy",
@@ -9197,6 +9263,10 @@ Object.values || (Object.values = function (e) {
             server_warning: "Údržba serveru v 00:00. Předpokládáme 6hodinové odstavení.",
             show_informations: "Zelená = Mise budou zobrazeny v seznamu. Červená = Mise nebudou zobrazeny.",
             sicherheitswache: "Plánované mise",
+            sorting_ascending: "Věk vzest.",
+            sorting_default: "Výchozí",
+            sorting_descending: "Věk sest.",
+            sorting_label: "Seřadit podle:",
             transport: "Převoz",
             unattended: "Neřešené"
         },
@@ -9585,6 +9655,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Acil Durum",
             finishing: "Finishing",
             join_alliance_infos: "Bir birlikteysen diğer oyuncular sana istedikleri gibi görevler verebilirler.",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid: %{google_store_link} <br>\niOS: %{ios_store_link}",
             map: "Harita",
             map_filters: {
                 all_buildings: "Yapılar",
@@ -9625,7 +9696,7 @@ Object.values || (Object.values = function (e) {
                 water_watch_missions: "Su Kurtarma"
             },
             message: "Mesaj",
-            mission: "Görev",
+            mission: "Görevler",
             missions_filtered_out: "Bazı görevler filtrelenebilir. Lütfen harita filtrelerinizi kontrol edin.",
             no_alliance_chat_impossible: "Bir birlikte değilsin.",
             no_alliance_missions: "Şu anda hiçbir birlik görevi yok.",
@@ -9637,6 +9708,10 @@ Object.values || (Object.values = function (e) {
             server_warning: "Server maintenance at 18:00 UTC. 6h downtime expected.",
             show_informations: "Yeşil = Görevler liste içinde gösterilir. Kırmızı = Görevler gösterilmez.",
             sicherheitswache: "Planlanan Gösterimler",
+            sorting_ascending: "Age asc.",
+            sorting_default: "Default",
+            sorting_descending: "Age desc.",
+            sorting_label: "Sort by:",
             transport: "Nakil",
             unattended: "Unattended"
         },
@@ -9987,6 +10062,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Emergência",
             finishing: "Em decurso",
             join_alliance_infos: "Se estiver numa aliança, outros jogadores podem compartilhar missões consigo.",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid: %{google_store_link} <br>\niOS: %{ios_store_link}",
             map: "Mapa",
             map_filters: {
                 all_buildings: "Edifícios",
@@ -10027,7 +10103,7 @@ Object.values || (Object.values = function (e) {
                 water_watch_missions: "Resgate aquático"
             },
             message: "Mensagem",
-            mission: "Missão",
+            mission: "Missões",
             missions_filtered_out: "Algumas missões podem ser filtradas. Por favor, verifique seus filtros de mapa.",
             no_alliance_chat_impossible: "Não está em nenhuma aliança.",
             no_alliance_missions: "De momento não existem missões de aliança.",
@@ -10039,6 +10115,10 @@ Object.values || (Object.values = function (e) {
             server_warning: "Manutenção do servidor às 23h. 6h tempo de inatividade esperadas.",
             show_informations: "Verde = As missões são exibidas na lista. Vermelho = As missões não são exibidas.",
             sicherheitswache: "Missões planejadas",
+            sorting_ascending: "Idade asc.",
+            sorting_default: "Padrão",
+            sorting_descending: "Idade desc.",
+            sorting_label: "Classificar por:",
             transport: "Transporte",
             unattended: "Não respondidas"
         },
@@ -10436,6 +10516,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Emergência",
             finishing: "Em decurso",
             join_alliance_infos: "Se você estiver em uma aliança, outros jogadores podem lhe dar missões livremente.",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid: %{google_store_link} <br>\niOS: %{ios_store_link}",
             map: "Mapa",
             map_filters: {
                 all_buildings: "Edifícios",
@@ -10476,7 +10557,7 @@ Object.values || (Object.values = function (e) {
                 water_watch_missions: "Resgate aquático"
             },
             message: "Mensagem",
-            mission: "Missão",
+            mission: "Missões",
             missions_filtered_out: "Algumas missões podem ser filtradas. Por favor, verifique seus filtros de mapa.",
             no_alliance_chat_impossible: "Você não está em uma aliança.",
             no_alliance_missions: "Não há missões de aliança no momento.",
@@ -10488,6 +10569,10 @@ Object.values || (Object.values = function (e) {
             server_warning: "Manutenção do servidor às 7h da tarde. 6h de tempo de inatividade esperado.",
             show_informations: "Verde = As missões são exibidas na lista. Vermelho = As missões não são exibidas.",
             sicherheitswache: "Missões planejadas",
+            sorting_ascending: "Idade asc.",
+            sorting_default: "Padrão",
+            sorting_descending: "Idade desc.",
+            sorting_label: "Classificar por:",
             transport: "Transporte",
             unattended: "Não respondidas"
         },
@@ -10835,6 +10920,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Надзвичайна ситуація",
             finishing: "Завершуються",
             join_alliance_infos: "Якщо ви перебуваєте в альянсі, інші гравці можуть вільно давати вам завдання.",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid: %{google_store_link} <br>\niOS: %{ios_store_link}",
             map: "Карта",
             map_filters: {
                 all_buildings: "Будівлі",
@@ -10887,6 +10973,10 @@ Object.values || (Object.values = function (e) {
             server_warning: "Server maintenance at 18:00 UTC. 6h downtime expected.",
             show_informations: "Зелений = завдання будуть показані у списку. Червоний = завдання не будуть показані.",
             sicherheitswache: "Заплановані завдання",
+            sorting_ascending: "Age asc.",
+            sorting_default: "Default",
+            sorting_descending: "Age desc.",
+            sorting_label: "Sort by:",
             transport: "Перевезення",
             unattended: "Невідвідані"
         },
@@ -11233,6 +11323,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Emergencia",
             finishing: "Completando",
             join_alliance_infos: "Si estás en una alianza, otros jugadores podrán ofrecerte misiones.",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid: %{google_store_link} <br>\niOS: %{ios_store_link}",
             map: "Mapa",
             map_filters: {
                 all_buildings: "Edificios",
@@ -11273,7 +11364,7 @@ Object.values || (Object.values = function (e) {
                 water_watch_missions: "Rescate acuático"
             },
             message: "Mensaje",
-            mission: "Misión",
+            mission: "Misiones",
             missions_filtered_out: "Algunas misiones pueden ser filtradas. Por favor, revise los filtros de su mapa.",
             no_alliance_chat_impossible: "No estás en una alianza.",
             no_alliance_missions: "No hay misiones de alianza.",
@@ -11285,6 +11376,10 @@ Object.values || (Object.values = function (e) {
             server_warning: "Mantenimiento del servidor a las 00:00. Se espera un tiempo de inactividad de 6 horas.",
             show_informations: "Verde: las misiones se mostrarán en la lista. Rojo: las misiones no se mostrarán.",
             sicherheitswache: "Misones planificadas",
+            sorting_ascending: "Edad asc.",
+            sorting_default: "Por defecto",
+            sorting_descending: "Edad desc.",
+            sorting_label: "Ordenar por:",
             transport: "Transporte",
             unattended: "Sin respuesta"
         },
@@ -11638,6 +11733,7 @@ Object.values || (Object.values = function (e) {
             emergency: "緊急事態",
             finishing: "対応中",
             join_alliance_infos: "アライアンスに所属していれば、他のプレイヤーがあなたへ自由にミッションを割り当てられます。",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid: %{google_store_link} <br>\niOS: %{ios_store_link}",
             map: "マップ",
             map_filters: {
                 all_buildings: "建物",
@@ -11690,6 +11786,10 @@ Object.values || (Object.values = function (e) {
             server_warning: "Server maintenance at 7 am. 6h downtime expected.",
             show_informations: "緑 = ミッションがリスト内に表示されます。赤 = ミッションが表示されません。",
             sicherheitswache: "予定されているミッション",
+            sorting_ascending: "年齢昇順",
+            sorting_default: "デフォルト",
+            sorting_descending: "年齢降順",
+            sorting_label: "並べ替え：",
             transport: "輸送",
             unattended: "未対応"
         },
@@ -12039,6 +12139,7 @@ Object.values || (Object.values = function (e) {
             emergency: "응급 상황",
             finishing: "완료 중",
             join_alliance_infos: "동맹에 소속된 상태라면 다른 플레이어로부터 임무를 자유롭게 받을 수 있습니다.",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid: %{google_store_link} <br>\niOS: %{ios_store_link}",
             map: "지도",
             map_filters: {
                 all_buildings: "건물",
@@ -12091,6 +12192,10 @@ Object.values || (Object.values = function (e) {
             server_warning: "Server maintenance at 7 am. 6h downtime expected.",
             show_informations: "녹색 = 임무가 목록에 표시됩니다. 적색 = 임무가 표시되지 않습니다.",
             sicherheitswache: "계획된 출현",
+            sorting_ascending: "오름차순",
+            sorting_default: "기본",
+            sorting_descending: "내림차순",
+            sorting_label: "정렬 방식:",
             transport: "수송",
             unattended: "배정되지 않음"
         },
@@ -12447,6 +12552,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Urgență",
             finishing: "În finalizare",
             join_alliance_infos: "Dacă faci parte dintr-o alianță, alți jucători îți pot încredința misiuni dacă doresc.",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid: %{google_store_link} <br>\niOS: %{ios_store_link}",
             map: "Hartă",
             map_filters: {
                 all_buildings: "Clădiri",
@@ -12487,7 +12593,7 @@ Object.values || (Object.values = function (e) {
                 water_watch_missions: "Salvare acvatică"
             },
             message: "Mesaj",
-            mission: "Misiune",
+            mission: "Misiuni",
             missions_filtered_out: "Unele misiuni ar putea fi eliminate. Vă rugăm să verificați filtrele de hartă.",
             no_alliance_chat_impossible: "Nu faci parte dintr-o alianță.",
             no_alliance_missions: "În prezent nu există misiuni de alianță.",
@@ -12499,6 +12605,10 @@ Object.values || (Object.values = function (e) {
             server_warning: "Server maintenance at 1 am. 6h downtime expected.",
             show_informations: "Verde = Misiunile sunt afișate pe listă. Roșu = Misiunile nu sunt afișate.",
             sicherheitswache: "Intervenții planificate",
+            sorting_ascending: "Dată, în ordine crescătoare",
+            sorting_default: "Implicit",
+            sorting_descending: "Dată, în ordine descrescătoare",
+            sorting_label: "Sortează după:",
             transport: "Transport",
             unattended: "Nefinalizate"
         },
@@ -12855,6 +12965,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Hätätilanne",
             finishing: "Päättymässä",
             join_alliance_infos: "Jos kuulut johonkin liittoutumaan, muut pelaajat voivat antaa sinulle tehtäviä.",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid: %{google_store_link} <br>\niOS: %{ios_store_link}",
             map: "Kartta",
             map_filters: {
                 all_buildings: "Rakennukset",
@@ -12895,7 +13006,7 @@ Object.values || (Object.values = function (e) {
                 water_watch_missions: "Vesipelastus"
             },
             message: "Viesti",
-            mission: "Tehtävä",
+            mission: "Tehtävät",
             missions_filtered_out: "Jotkut tehtävät voidaan suodattaa pois. Tarkista karttasuodattimet.",
             no_alliance_chat_impossible: "Et kuulu mihinkään liittoutumaan.",
             no_alliance_missions: "Ei liittoutumatehtäviä",
@@ -12907,6 +13018,10 @@ Object.values || (Object.values = function (e) {
             server_warning: "Palvelinhuolto alkaa 01:00, palvelukatkon arvioitu kesto noin 6 tuntia",
             show_informations: "Vihreä = tehtävät näkyvät luettelossa. Punainen = tehtävät eivät näy.",
             sicherheitswache: "Suunnitellut tehtävät",
+            sorting_ascending: "Ikä nous.",
+            sorting_default: "Oletus",
+            sorting_descending: "Ikä lask.",
+            sorting_label: "Lajittelu:",
             transport: "Kuljetus",
             unattended: "Ei hoidettu"
         },
@@ -13305,6 +13420,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Mimoriadna udalosť",
             finishing: "Prebieha dokončovanie",
             join_alliance_infos: "Ak ste v aliancii, ostatní hráči vám môžu zadarmo dávať misie.",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid: %{google_store_link} <br>\niOS: %{ios_store_link}",
             map: "Mapa",
             map_filters: {
                 all_buildings: "Budovy",
@@ -13345,7 +13461,7 @@ Object.values || (Object.values = function (e) {
                 water_watch_missions: "Vodná záchranná služba"
             },
             message: "Správa",
-            mission: "Misia",
+            mission: "Misie",
             missions_filtered_out: "Niektoré misie môžu byť odfiltrované. Skontrolujte filtre máp.",
             no_alliance_chat_impossible: "Nie ste v aliancii.",
             no_alliance_missions: "Momentálne nie sú žiadne misie aliancie.",
@@ -13357,6 +13473,10 @@ Object.values || (Object.values = function (e) {
             server_warning: "Údržba servera o polnoci. Očakáva sa výpadok 6 hodiny.",
             show_informations: "Zelená = Misie sú zobrazené v zozname. Červená = Misie nie sú zobrazené.",
             sicherheitswache: "Plánované výskyty",
+            sorting_ascending: "Vek vzostupne",
+            sorting_default: "Predvolené",
+            sorting_descending: "Vek zostupne",
+            sorting_label: "Zoradiť podľa:",
             transport: "Transport",
             unattended: "Neriešené"
         },
