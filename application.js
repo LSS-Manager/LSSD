@@ -1964,20 +1964,22 @@ function coinsUpdate(e) {
         value: number_format(e)
     });
     var t = number_format(e);
-    if (sale_count_down > Date.now()) mobile_bridge_use || (t += "<div id='sale_countdown' />", $(
-                "#coins_top")
-            .addClass("saleHighlight")), 0 === $("#sale_countdown_mobile")
-        .length && ($(".sale-countdown-block")
-            .append("<div id='sale_countdown_mobile' />"), $("#sale_countdown_mobile")
-            .on("click", function () {
-                mobileBridgeAdd("coins_window", {})
-            })), updateSaleCountDown(), $(".coins-value")
-        .html(t);
-    else {
-        var i = $("#coins_top .coins-value")
+    if (sale_count_down > Date.now()) {
+        var i = t;
+        mobile_bridge_use || (t += "<div id='sale_countdown' />", $("#coins_top")
+                .addClass("saleHighlight")), 0 === $("#sale_countdown_mobile")
+            .length && ($(".sale-countdown-block")
+                .append("<div id='sale_countdown_mobile' />"), $("#sale_countdown_mobile")
+                .on("click", function () {
+                    mobileBridgeAdd("coins_window", {})
+                })), $("#coins_top_mobile .coins-value")
+            .html(i), $("#coins_top .coins-value")
+            .html(t), updateSaleCountDown()
+    } else {
+        var n = $("#coins_top .coins-value")
             .text();
         $(".coins-value")
-            .html(t), "" != i && i != t && highlightElement($("#coins_top"))
+            .html(t), "" != n && n != t && highlightElement($("#coins_top"))
     }
 }
 
