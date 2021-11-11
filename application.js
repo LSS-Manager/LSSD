@@ -2900,6 +2900,10 @@ function startProgressBar(e) {
     }, 1e3)
 }
 
+function showEventInfo() {
+    return !0
+}
+
 function missionPositionMarkerAdd(e) {
     1 == mobile_bridge_use && mobileBridgeAdd("poi", [e])
 }
@@ -3559,6 +3563,7 @@ Object.values || (Object.values = function (e) {
                 only_dekon_p: "Dekon-P",
                 ovd_p: "",
                 police_car: "Funkstreifenwagen",
+                police_car_or_service_group_leader: "FuStW oder FuStW (DGL)",
                 police_motorcycle: "Polizeimotorrad",
                 polizeihubschrauber: "Polizeihubschrauber",
                 pump: "Schmutzwasserpumpen",
@@ -4067,6 +4072,7 @@ Object.values || (Object.values = function (e) {
                 ovd_p: "",
                 police_car: "Patrol car",
                 police_car_3: "NH-O",
+                police_car_or_service_group_leader: "Patrol Car or Service Group Leader",
                 police_horse: "Mounted Police",
                 police_motorcycle: "Police Motorcycle",
                 polizeihubschrauber: "Police helicopter",
