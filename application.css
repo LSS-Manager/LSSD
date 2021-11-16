@@ -16136,6 +16136,12 @@ a#mission-type-helper-mobile {
     display: block
 }
 
+.bottom-right-button {
+    position: absolute;
+    right: 15px;
+    bottom: 15px
+}
+
 /*
  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
  *

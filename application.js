@@ -2900,8 +2900,8 @@ function startProgressBar(e) {
     }, 1e3)
 }
 
-function showEventInfo() {
-    return !0
+function showEventInfo(e) {
+    return lightboxOpen("/event_info/" + e), !0
 }
 
 function missionPositionMarkerAdd(e) {
