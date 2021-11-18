@@ -2904,6 +2904,15 @@ function showEventInfo(e) {
     return lightboxOpen("/event_info/" + e), !0
 }
 
+function validateNumberInput(e) {
+    e.on("change", function () {
+        var t = +e.attr("min"),
+            i = +e.attr("max"),
+            n = +e.val();
+        n > i ? e.val(i) : t > n && e.val(t)
+    })
+}
+
 function missionPositionMarkerAdd(e) {
     1 == mobile_bridge_use && mobileBridgeAdd("poi", [e])
 }
@@ -3308,6 +3317,7 @@ Object.values || (Object.values = function (e) {
             save: "Speichern",
             search: "Suchen",
             show: "Anzeigen",
+            time_in_minutes: "in Minuten",
             user_not_found: "User nicht gefunden",
             wrong_key: "Key falsch"
         },
@@ -3772,6 +3782,7 @@ Object.values || (Object.values = function (e) {
             save: "Save",
             search: "Search",
             show: "Show",
+            time_in_minutes: "Time in minutes",
             user_not_found: "User not found",
             wrong_key: "Wrong key"
         },
@@ -35729,7 +35740,8 @@ $(function () {
                 I18n.t("intervention_order.vehicles.pump_speed_pump_only")], ["gwl2wasser_all", I18n
                 .t("intervention_order.vehicles.gwl2wasser_all")], ["foam_amount", I18n.t(
                 "intervention_order.vehicles.foam_amount")], ["foam", I18n.t(
-                "intervention_order.vehicles.foam")]], $("#restore_map")
+                "intervention_order.vehicles.foam")], ["police_car_or_service_group_leader", I18n.t(
+                "intervention_order.vehicles.police_car_or_service_group_leader")]], $("#restore_map")
         .click(function () {
             mapViewRestore()
         }), $("#coins_top")

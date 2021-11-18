@@ -16142,6 +16142,16 @@ a#mission-type-helper-mobile {
     bottom: 15px
 }
 
+.prisoner-transportation-timer {
+    font-weight: bold
+}
+
+.vehicles-at-mission-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
 /*
  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
  *
