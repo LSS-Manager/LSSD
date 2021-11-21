@@ -3317,7 +3317,7 @@ Object.values || (Object.values = function (e) {
             save: "Speichern",
             search: "Suchen",
             show: "Anzeigen",
-            time_in_minutes: "in Minuten",
+            time_in_minutes: "Zeit in Minuten",
             user_not_found: "User nicht gefunden",
             wrong_key: "Key falsch"
         },
@@ -4298,6 +4298,7 @@ Object.values || (Object.values = function (e) {
             save: "Save",
             search: "Search",
             show: "Show",
+            time_in_minutes: "Time in minutes",
             user_not_found: "User not found",
             wrong_key: "Wrong key"
         },
@@ -4742,6 +4743,7 @@ Object.values || (Object.values = function (e) {
             save: "Opslaan",
             search: "Zoeken",
             show: "Bekijken",
+            time_in_minutes: "Tijd in minuten",
             user_not_found: "Gebruiker niet gevonden",
             wrong_key: "Verkeerde key"
         },
@@ -5206,6 +5208,7 @@ Object.values || (Object.values = function (e) {
             save: "Guardar",
             search: "Buscar",
             show: "Mostrar",
+            time_in_minutes: "Tiempo en minutos",
             user_not_found: "Usuario no encontrado",
             wrong_key: "Tecla equivocada"
         },
@@ -5621,6 +5624,7 @@ Object.values || (Object.values = function (e) {
             save: "Save",
             search: "Search",
             show: "Show",
+            time_in_minutes: "Time in minutes",
             user_not_found: "User not found",
             wrong_key: "Wrong key"
         },
@@ -6071,6 +6075,7 @@ Object.values || (Object.values = function (e) {
             save: "Spara",
             search: "Sök",
             show: "Visa",
+            time_in_minutes: "Tid i minuter",
             user_not_found: "Användaren kunde inte hittas",
             wrong_key: "Fel kod"
         },
@@ -6486,6 +6491,7 @@ Object.values || (Object.values = function (e) {
             save: "Zapisz",
             search: "Wyszukaj",
             show: "Pokaż",
+            time_in_minutes: "Czas w minutach",
             user_not_found: "Nie znaleziono użytkownika",
             wrong_key: "Nieprawidłowy klawisz"
         },
@@ -6946,6 +6952,7 @@ Object.values || (Object.values = function (e) {
             save: "Salva",
             search: "Cerca",
             show: "Mostra",
+            time_in_minutes: "Tempo in minuti",
             user_not_found: "Impossibile trovare l'utente",
             wrong_key: "Codice errato"
         },
@@ -7403,6 +7410,7 @@ Object.values || (Object.values = function (e) {
             save: "Enregistrer",
             search: "Rechercher",
             show: "Afficher",
+            time_in_minutes: "Temps en minutes",
             user_not_found: "Utilisateur introuvable",
             wrong_key: "Clé invalide"
         },
@@ -7853,6 +7861,7 @@ Object.values || (Object.values = function (e) {
             save: "Сохранить",
             search: "Искать",
             show: "Показать",
+            time_in_minutes: "Время в минутах",
             user_not_found: "Пользователь не найден",
             wrong_key: "Неверная клавиша"
         },
@@ -8266,6 +8275,7 @@ Object.values || (Object.values = function (e) {
             save: "Gem",
             search: "Søg",
             show: "Vis",
+            time_in_minutes: "Tid i minutter",
             user_not_found: "Bruger ikke fundet",
             wrong_key: "Forkert nøgle"
         },
@@ -8718,6 +8728,7 @@ Object.values || (Object.values = function (e) {
             save: "Lagre",
             search: "Søk",
             show: "Vis",
+            time_in_minutes: "Tid i minutter",
             user_not_found: "Brukeren ble ikke funnet",
             wrong_key: "Feil nøkkel"
         },
@@ -9174,6 +9185,7 @@ Object.values || (Object.values = function (e) {
             save: "Uložit",
             search: "Hledat",
             show: "Zobrazit",
+            time_in_minutes: "Čas (min)",
             user_not_found: "Uživatel nenalezen",
             wrong_key: "Nesprávná klávesa"
         },
@@ -9621,6 +9633,7 @@ Object.values || (Object.values = function (e) {
             save: "Kaydet",
             search: "Ara",
             show: "Göster",
+            time_in_minutes: "Time in minutes",
             user_not_found: "Kullanıcı bulunmadı",
             wrong_key: "Yanlış tuş"
         },
@@ -10022,6 +10035,7 @@ Object.values || (Object.values = function (e) {
             save: "Salvar",
             search: "Procurar",
             show: "Exibir",
+            time_in_minutes: "Tempo em minutos",
             user_not_found: "Usuário não encontrado",
             wrong_key: "Chave errada"
         },
@@ -10474,6 +10488,7 @@ Object.values || (Object.values = function (e) {
             save: "Salvar",
             search: "Buscar",
             show: "Exibir",
+            time_in_minutes: "Tempo em minutos",
             user_not_found: "Usuário não encontrado",
             wrong_key: "Chave errada"
         },
@@ -10886,6 +10901,7 @@ Object.values || (Object.values = function (e) {
             save: "Зберегти",
             search: "Пошук",
             show: "Показати",
+            time_in_minutes: "Time in minutes",
             user_not_found: "Користувача не знайдено.",
             wrong_key: "Невірна клавіша"
         },
@@ -11289,6 +11305,7 @@ Object.values || (Object.values = function (e) {
             save: "Guardar",
             search: "Buscar",
             show: "Mostrar",
+            time_in_minutes: "Tiempo en minutos",
             user_not_found: "Usuario no encontrado",
             wrong_key: "Tecla equivocada"
         },
@@ -11691,6 +11708,7 @@ Object.values || (Object.values = function (e) {
             save: "保存",
             search: "検索",
             show: "表示",
+            time_in_minutes: "時間（分）",
             user_not_found: "ユーザーが見つかりません",
             wrong_key: "誤ったキー"
         },
@@ -12097,6 +12115,7 @@ Object.values || (Object.values = function (e) {
             save: "저장",
             search: "탐색",
             show: "보기",
+            time_in_minutes: "분 단위 시간",
             user_not_found: "유저를 찾을 수 없음",
             wrong_key: "잘못된 키"
         },
@@ -12510,6 +12529,7 @@ Object.values || (Object.values = function (e) {
             save: "Salvează",
             search: "Caută",
             show: "Arată",
+            time_in_minutes: "Timp în minute",
             user_not_found: "Utilizatorul nu a fost găsit",
             wrong_key: "Tastă greșită"
         },
@@ -12923,6 +12943,7 @@ Object.values || (Object.values = function (e) {
             save: "Tallenna",
             search: "Haku",
             show: "Näytä",
+            time_in_minutes: "Aika minuuteissa",
             user_not_found: "Käyttäjää ei löytynyt",
             wrong_key: "Väärä avain"
         },
@@ -13378,6 +13399,7 @@ Object.values || (Object.values = function (e) {
             save: "Uložiť",
             search: "Vyhľadať",
             show: "Zobraziť",
+            time_in_minutes: "Čas v minútach",
             user_not_found: "Používateľ sa nenašiel",
             wrong_key: "Nesprávny kľúč"
         },
