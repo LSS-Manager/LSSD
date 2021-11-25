@@ -2901,7 +2901,8 @@ function startProgressBar(e) {
 }
 
 function showEventInfo(e) {
-    return lightboxOpen("/event_info/" + e), !0
+    var t = "undefined" != typeof tutorial && tutorial.isRunning();
+    return t || lightboxOpen("/event_info/" + e), !0
 }
 
 function validateNumberInput(e) {
