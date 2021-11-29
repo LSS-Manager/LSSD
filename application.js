@@ -36172,6 +36172,12 @@ $(function () {
                     .remove()
             }
         }), setupTimer({
+            $timer: $(".credit-patient-modifier-event .timer"),
+            onTimerEnd: function () {
+                $(".credit-patient-modifier-event")
+                    .remove()
+            }
+        }), setupTimer({
             $timer: $(".coin-reduction-event .timer"),
             onTimerEnd: function () {
                 $(".coin-reduction-event")
