@@ -4531,7 +4531,7 @@ Object.values || (Object.values = function (e) {
                 ktw_b: "",
                 ktw_or_rtw: "",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
-                lf_only: "Water Ladder or L4P",
+                lf_only: "Fire Trucks",
                 long_distance_ambulance: "BLS ambulance",
                 mask_service_unit: "Breathing Apparatus Support Unit",
                 mek_mtf: "",
