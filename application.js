@@ -1312,7 +1312,8 @@ function missionMarkerAdd(e) {
         .attr("src", a), $("#mission_bar_" + e.id)
         .css("width", e.live_current_value + "%"), $("#mission_" + e.id)
         .attr("search_attribute", o), $("#mission_" + e.id)
-        .attr("data-overlay-index", e.overlay_index), $("#mission_panel_" + e.id)
+        .attr("data-overlay-index", e.overlay_index), $("#mission_" + e.id)
+        .attr("data-additive-overlays", e.additive_overlays || ""), $("#mission_panel_" + e.id)
         .removeClass("mission_panel_red"), $("#mission_panel_" + e.id)
         .removeClass("mission_panel_yellow"), $("#mission_panel_" + e.id)
         .removeClass("mission_panel_green"), $("#mission_panel_" + e.id)
@@ -1361,11 +1362,11 @@ function missionMarkerAdd(e) {
                 "' class='missionSideBarEntry missionSideBarEntrySearchable " + _ + "' latitude='" + e
                 .latitude + "' longitude='" + e.longitude + "' target_latitude='" + e.tlat +
                 "' target_longitude='" + e.tlng + "' data-overlay-index='" + e.overlay_index +
-                "'><div id='mission_panel_" + e.id + "' class='panel panel-default " + m + " mission_panel_" +
-                s + "'><div id='mission_panel_heading_" + e.id +
-                "' class='panel-heading'><a href='/missions/" + e.id +
-                "' class='btn btn-default btn-xs lightbox-open' id='alarm_button_" + e.id + "'> " + I18n.t(
-                    "javascript.alarm") + "</a> <span id='mission_participant_" + e.id +
+                "' data-additive-overlays='" + (e.additive_overlays || "") + "'><div id='mission_panel_" + e
+                .id + "' class='panel panel-default " + m + " mission_panel_" + s +
+                "'><div id='mission_panel_heading_" + e.id + "' class='panel-heading'><a href='/missions/" + e
+                .id + "' class='btn btn-default btn-xs lightbox-open' id='alarm_button_" + e.id + "'> " + I18n
+                .t("javascript.alarm") + "</a> <span id='mission_participant_" + e.id +
                 "' class='glyphicon glyphicon-user hidden'></span><span id='mission_participant_new_" + e.id +
                 "' class='glyphicon glyphicon-asterisk'></span> <a href='' id='mission_caption_" + e.id +
                 "' class='map_position_mover' target_latitude='" + e.tlat + "' target_longitude='" + e.tlng +
@@ -4495,7 +4496,7 @@ Object.values || (Object.values = function (e) {
                 elw3: "",
                 elw_airport: "",
                 emergency_ambulance: "Emergency ambulance or Helicopter",
-                emergency_welfare: "Any Emergency Welfare Vehicle",
+                emergency_welfare: "Any Crew Welfare Vehicle",
                 fire_truck: "Fire engines",
                 fireboat: "Large Fireboat",
                 fly_car: "Rapid Response Vehicle / General Practitioner",
@@ -4531,7 +4532,7 @@ Object.values || (Object.values = function (e) {
                 ktw_b: "",
                 ktw_or_rtw: "",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
-                lf_only: "Fire Trucks",
+                lf_only: "Water Ladder or L4P",
                 long_distance_ambulance: "BLS ambulance",
                 mask_service_unit: "Breathing Apparatus Support Unit",
                 mek_mtf: "",
@@ -35767,7 +35768,9 @@ $(function () {
                 .t("intervention_order.vehicles.gwl2wasser_all")], ["foam_amount", I18n.t(
                 "intervention_order.vehicles.foam_amount")], ["foam", I18n.t(
                 "intervention_order.vehicles.foam")], ["police_car_or_service_group_leader", I18n.t(
-                "intervention_order.vehicles.police_car_or_service_group_leader")]], $("#restore_map")
+                "intervention_order.vehicles.police_car_or_service_group_leader")], [
+                "emergency_welfare_value", I18n.t("intervention_order.vehicles.emergency_welfare")]],
+        $("#restore_map")
         .click(function () {
             mapViewRestore()
         }), $("#coins_top")
