@@ -16162,12 +16162,6 @@ a#mission-type-helper-mobile {
     margin-left: 20px
 }
 
-@media (max-width: 1271px) {
-    .table-header {
-        width: 90px !important
-    }
-}
-
 /*
  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
  *
