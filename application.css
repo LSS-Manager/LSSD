@@ -16126,6 +16126,11 @@ body.dark .daily-bonuses .collect-possible-block {
     margin-top: 10px
 }
 
+.alliance-thread-mute-icon {
+    width: 15px;
+    height: 15px
+}
+
 img.app-store-button {
     height: 56px
 }
@@ -16150,6 +16155,17 @@ a#mission-type-helper-mobile {
     display: flex;
     justify-content: space-between;
     align-items: center
+}
+
+.alliance-joinable-filter {
+    display: inline-block;
+    margin-left: 20px
+}
+
+@media (max-width: 1271px) {
+    .table-header {
+        width: 90px !important
+    }
 }
 
 /*

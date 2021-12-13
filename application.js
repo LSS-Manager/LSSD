@@ -4021,6 +4021,7 @@ Object.values || (Object.values = function (e) {
                 fbi_mobile_command: "FBI Mobile Command Center",
                 fbi_unit: "FBI Unit",
                 fire_aviation: "Fire aviation",
+                fire_investigation: "Fire Investigation Units",
                 fire_truck: "Firetrucks",
                 fireboat: "Large Fireboat",
                 flood_equipment: "Flood Equipment",
