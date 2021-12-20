@@ -17262,6 +17262,11 @@ div.sceditor-group {
     background-size: auto 100%
 }
 
+.policechief .silvesterbar {
+    background-image: url(/images/policechief_silvesterbar.png);
+    background-size: auto 100%
+}
+
 .policechief .mission_header_info_progress .progress-bar-danger,
 .policechief .mission_progress .progress-bar-danger {
     background-image: none;
