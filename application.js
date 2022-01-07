@@ -1312,6 +1312,7 @@ function missionMarkerAdd(e) {
         .attr("src", a), $("#mission_bar_" + e.id)
         .css("width", e.live_current_value + "%"), $("#mission_" + e.id)
         .attr("search_attribute", o), $("#mission_" + e.id)
+        .attr("mission_type_id", e.mtid), $("#mission_" + e.id)
         .attr("data-overlay-index", e.overlay_index), $("#mission_" + e.id)
         .attr("data-additive-overlays", e.additive_overlays || ""), $("#mission_panel_" + e.id)
         .removeClass("mission_panel_red"), $("#mission_panel_" + e.id)
@@ -1356,55 +1357,58 @@ function missionMarkerAdd(e) {
             .offset()
             .top;
         f + 5 * $("#missions-panel-body")
-            .height(), _ = "missionSideBarEntryScrollInvisible", o = o.replace(/'/g, "&#039;"), $(c)
-            .append("<div search_attribute='" + o + "' id='mission_" + e.id + "' mission_id='" + e.id +
-                "' mission_type_id='" + e.mtid +
-                "' class='missionSideBarEntry missionSideBarEntrySearchable " + _ + "' latitude='" + e
-                .latitude + "' longitude='" + e.longitude + "' target_latitude='" + e.tlat +
-                "' target_longitude='" + e.tlng + "' data-overlay-index='" + e.overlay_index +
-                "' data-additive-overlays='" + (e.additive_overlays || "") + "'><div id='mission_panel_" + e
-                .id + "' class='panel panel-default " + m + " mission_panel_" + s +
-                "'><div id='mission_panel_heading_" + e.id + "' class='panel-heading'><a href='/missions/" + e
-                .id + "' class='btn btn-default btn-xs lightbox-open' id='alarm_button_" + e.id + "'> " + I18n
-                .t("javascript.alarm") + "</a> <span id='mission_participant_" + e.id +
-                "' class='glyphicon glyphicon-user hidden'></span><span id='mission_participant_new_" + e.id +
-                "' class='glyphicon glyphicon-asterisk'></span> <a href='' id='mission_caption_" + e.id +
-                "' class='map_position_mover' target_latitude='" + e.tlat + "' target_longitude='" + e.tlng +
-                "' data-latitude='" + e.latitude + "' data-longitude='" + e.longitude + "'>" + r +
-                "</a></div><div class='panel-body'><div class='row'><div class='col-xs-1'><img src='" + a +
-                "' id='mission_vehicle_state_" + e.id +
-                "' class='mission_vehicle_state'></div><div class='col-xs-11'><div class='mission_overview_countdown' id='mission_overview_countdown_" +
-                e.id + "' timeleft='" + l + "'></div><div id='mission_bar_outer_" + e.id + "' class='" +
-                bar_class + "'><div id='mission_bar_" + e.id +
-                "' class='progress-bar progress-bar-danger' role='progressbar' aria-valuemin='0' aria-valuemax='100' style='width: " +
-                e.live_current_value + "%;'><div class='" + t + "' id='mission_bar_striper_" + e.id +
-                "'></div></div></div><div  id='mission_missing_" + e.id + "' class='" + u + "'>" + d +
-                "</div><div  id='mission_missing_short_" + e.id + "' class='" + h + "'>" + p +
-                "</div><div id='mission_pump_progress_" + e.id + "'></div><div id='mission_patients_" + e.id +
-                "' class='row'></div><div class='mission_prisoners' id='mission_prisoners_" + e.id +
-                "'></div></div></div></div></div>"), tutorial.callNewMissionListener(!0)
+            .height(), _ = "missionSideBarEntryScrollInvisible", o = o.replace(/'/g, "&#039;");
+        var g = "<div search_attribute='" + o + "' id='mission_" + e.id + "' mission_id='" + e.id +
+            "' mission_type_id='" + e.mtid + "' class='missionSideBarEntry missionSideBarEntrySearchable " +
+            _ + "' latitude='" + e.latitude + "' longitude='" + e.longitude + "' target_latitude='" + e.tlat +
+            "' target_longitude='" + e.tlng + "' data-overlay-index='" + e.overlay_index +
+            "' data-additive-overlays='" + (e.additive_overlays || "") + "'>" + "<div id='mission_panel_" + e
+            .id + "' class='panel panel-default " + m + " mission_panel_" + s + "'>" +
+            "<div id='mission_panel_heading_" + e.id + "' class='panel-heading'>" + "<a href='/missions/" + e
+            .id + "' class='btn btn-default btn-xs lightbox-open' id='alarm_button_" + e.id + "'> " + I18n.t(
+                "javascript.alarm") + "</a> " + "<span id='mission_participant_" + e.id +
+            "' class='glyphicon glyphicon-user hidden'></span>" + "<span id='mission_participant_new_" + e
+            .id + "' class='glyphicon glyphicon-asterisk'></span> " + "<a href='' id='mission_caption_" + e
+            .id + "' class='map_position_mover' target_latitude='" + e.tlat + "' target_longitude='" + e
+            .tlng + "' data-latitude='" + e.latitude + "' data-longitude='" + e.longitude + "'>" + r +
+            "</a></div>" + "<div class='panel-body'><div class='row'><div class='col-xs-1'>" + "<img src='" +
+            a + "' id='mission_vehicle_state_" + e.id +
+            "' class='mission_vehicle_state'></div><div class='col-xs-11'>" +
+            "<div class='mission_overview_countdown' id='mission_overview_countdown_" + e.id +
+            "' timeleft='" + l + "'></div><div id='mission_bar_outer_" + e.id + "' class='" + bar_class +
+            "'><div id='mission_bar_" + e.id +
+            "' class='progress-bar progress-bar-danger' role='progressbar' aria-valuemin='0' aria-valuemax='100' " +
+            "style='width: " + e.live_current_value + "%;'>" + "<div class='" + t +
+            "' id='mission_bar_striper_" + e.id + "'></div></div></div>" + "<div id='mission_missing_" + e
+            .id + "' class='" + u + "'>" + d + "</div>" + "<div id='mission_missing_short_" + e.id +
+            "' class='" + h + "'>" + p + "</div>" + "<div id='mission_pump_progress_" + e.id + "'></div>" +
+            "<div id='mission_patients_" + e.id + "' class='row'></div>" +
+            "<div class='mission_prisoners' id='mission_prisoners_" + e.id +
+            "'></div></div></div></div></div>";
+        $(c)
+            .append(g), tutorial.callNewMissionListener(!0)
     }
-    var g = !1;
+    var v = !1;
     if ($.each(mission_markers, function (t, i) {
             i.mission_id == e.id && ("undefined" != typeof mapkit ? (i.url = {
                     1: a
                 }, i.opacity = 1, i.title = e.caption, i.subtitle = e.address) : (i.setIcon(
                     icon_empty), i.setOpacity(1), iconMapGenerate(a, i), i.setTooltipContent(r)), i
-                .vehicle_state = e.vehicle_state, g = !0)
-        }), !g && "undefined" != typeof L) {
+                .vehicle_state = e.vehicle_state, v = !0)
+        }), !v && "undefined" != typeof L) {
         if ("undefined" != typeof mapkit) {
-            var v = new mapkit.ImageAnnotation(new mapkit.Coordinate(e.latitude, e.longitude), {
+            var b = new mapkit.ImageAnnotation(new mapkit.Coordinate(e.latitude, e.longitude), {
                 url: {
                     1: a
                 }
             });
-            v.title = e.caption, v.subtitle = e.address, map.addAnnotation(v), v.element.className =
-                "mapkit-marker", v.addEventListener("select", function () {
+            b.title = e.caption, b.subtitle = e.address, map.addAnnotation(b), b.element.className =
+                "mapkit-marker", b.addEventListener("select", function () {
                     $("#alarm_button_" + e.id)
                         .click(), setTimeout(mapkitDeselectAnnotation, 1e3)
                 })
         } else {
-            var v = L.marker([e.latitude, e.longitude], {
+            var b = L.marker([e.latitude, e.longitude], {
                     zIndexOffset: 1e4,
                     title: e.name,
                     icon: icon_empty
@@ -1413,27 +1417,27 @@ function missionMarkerAdd(e) {
                     permanent: mission_label,
                     opacity: 1
                 });
-            "undefined" != typeof map && v.addTo(map_filters_service.getFilterLayerByMissionParams(e)),
-                iconMapGenerate(a, v), v.on("click", function () {
+            "undefined" != typeof map && b.addTo(map_filters_service.getFilterLayerByMissionParams(e)),
+                iconMapGenerate(a, b), b.on("click", function () {
                     $("#alarm_button_" + e.id)
                         .click()
                 })
         }
-        v.mission_id = e.id, v.user_id = e.user_id, v.vehicle_state = e.vehicle_state, v.krankentransport = e
-            .kt, v.sicherheitswache = e.sw, v.involved = !0, mission_markers.push(v)
+        b.mission_id = e.id, b.user_id = e.user_id, b.vehicle_state = e.vehicle_state, b.krankentransport = e
+            .kt, b.sicherheitswache = e.sw, b.involved = !0, mission_markers.push(b)
     }
     if (n && $("#mission_" + e.id)
         .addClass("mission_alliance_distance_hide"), e.date_end > 0 && missionTimerStart(e), e
         .water_damage_pump_value) {
-        var b = "<div class='small' id='pumping_" + e.id + "'>" + I18n.t("javascript.water_pumping_process") +
+        var y = "<div class='small' id='pumping_" + e.id + "'>" + I18n.t("javascript.water_pumping_process") +
             " <div id='pumping_bar_outer_" + e.id +
             "' class='progress pumping_progress'><div id='pumping_bar_" + e.id +
             "' class='progress-bar progress-bar-info";
-        b += "' style='width: " + e.live_current_water_damage_pump_value +
+        y += "' style='width: " + e.live_current_water_damage_pump_value +
             "%;'><div id='pumping_bar_striper_" + e.id + "' class='" + t +
             "'></div></div></div><div  id='patients_missing_" + e.id + "'", $("#mission_pump_progress_" + e
                 .id)
-            .html(b)
+            .html(y)
     }
     e.pumping_date_end > 0 && ($("#pumping_bar_striper_" + e.id)
             .addClass("progress-striped-inner-active"), startProgressBar({
