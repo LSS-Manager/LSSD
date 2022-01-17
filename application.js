@@ -4842,7 +4842,7 @@ Object.values || (Object.values = function (e) {
                 dispatch_center_missions: "Meldkamer",
                 fire_school_missions: "Brandweer, Academie",
                 firehouse_missions: "Brandweer, Kazerne",
-                firehouse_small_missions: "Brandweerkazerne (klein)",
+                firehouse_small_missions: "Brandweer, Kazerne (klein)",
                 hospital_missions: "Spoedeisende hulp",
                 map_filters: "Belangrijke plaatsen (POI's)",
                 mission_positions: "Belangrijke plaatsen (POI's)",
