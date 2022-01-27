@@ -16162,6 +16162,16 @@ a#mission-type-helper-mobile {
     margin-left: 20px
 }
 
+.accept_tos {
+    width: auto;
+    float: left
+}
+
+.reject_tos {
+    width: auto;
+    float: right
+}
+
 /*
  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
  *
