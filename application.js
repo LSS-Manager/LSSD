@@ -4906,7 +4906,7 @@ Object.values || (Object.values = function (e) {
             column: "Kolom",
             column_number: "Kolomnummer",
             column_number_hint: "Wanneer je een kolomnummer invult wordt het deze Alarm en Uitrukregel in de bijbehorende kolom in de alarmeringsscherm geplaatst.",
-            create_intervention_order: "Nieuwe Alarm en Uitrukregel aanmaken",
+            create_intervention_order: "Nieuw inzetvoorstel aanmaken",
             "delete": "Verwijderen",
             delete_all: "Inzetvoorstellen compleet verwijderen",
             delete_all_confirm: "Weet je zeker dat je de inzetvoorstellen wilt verwijderen? Ook de geëxporteerde variant wordt niet meer beschikbaar.",
