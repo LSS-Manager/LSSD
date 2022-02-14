@@ -12706,7 +12706,8 @@ body.dark .mission_overview_countdown {
 
 h3#missionH1 {
     margin-top: 0px;
-    text-transform: uppercase
+    text-transform: uppercase;
+    width: 95%
 }
 
 th.tablesorter-header {

@@ -6611,8 +6611,8 @@ Object.values || (Object.values = function (e) {
                 technical_aid_organization_school: "THW Bundesschule",
                 user_buildings: "Moje budynki",
                 user_missions: "Moje misje",
-                water_watch: "Ratownictwo wodne",
-                water_watch_missions: "Ratownictwo wodne"
+                water_watch: "Rozbudowa ratownictwa wodnego",
+                water_watch_missions: "Rozbudowa ratownictwa wodnego"
             },
             message: "Wiadomość",
             mission: "Misje",
@@ -6728,7 +6728,7 @@ Object.values || (Object.values = function (e) {
                 gw_oel_only: "",
                 gw_san: "",
                 gw_taucher: "Samochód SLRw",
-                gw_wasserrettung: "Ratownictwo wodne",
+                gw_wasserrettung: "Rozbudowa ratownictwa wodnego",
                 gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Samochód wężowy",
                 hems: "Śmigłowiec LPR",
