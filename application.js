@@ -4850,7 +4850,7 @@ Object.values || (Object.values = function (e) {
                 missions_section: "Incidenten",
                 police_copter_station_missions: "Politiehelikopter standplaats",
                 police_school_missions: "Politie, Academie",
-                police_small_missions: "Politie, Steunpunt",
+                police_small_missions: "Politie, Opkomstbureau (klein)",
                 police_special_forces: "Police special forces",
                 police_station_missions: "Politie, Opkomstbureau",
                 prison_missions: "Politie, Cellencomplex voor teams",
