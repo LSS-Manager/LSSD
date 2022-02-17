@@ -1901,7 +1901,10 @@ function tasksUpdate(e, t) {
             .removeClass("hidden"), $("#menu_profile")
             .addClass("alliance_forum_new")) : ($("#completed_tasks_counter")
             .addClass("hidden"), $("#menu_profile")
-            .removeClass("alliance_forum_new"))
+            .removeClass("alliance_forum_new")), mobile_bridge_use && mobileBridgeAdd("update_task_counter", {
+            count: e,
+            new_tasks_present: t
+        })
 }
 
 function updateSaleCountDown() {
