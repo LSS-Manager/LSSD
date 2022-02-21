@@ -3318,6 +3318,8 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} ist offline: %{duration}",
             is_online: "%{user} ist online.",
             loading: "Lade...",
+            message_for_edit: "Das Personal wird nur mit ausrücken, wenn die benötigte Ausbildung abgeschlossen ist. ",
+            message_for_education: "Die Person wird nicht mit ausrücken, da die benötigte Ausbildung fehlt.",
             name: "Name",
             none: "Keine",
             of: "von",
@@ -3651,6 +3653,9 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
+                    alert: {
+                        build_2d_ambulance: "Mit einem Krankenhauses verdienst Du zusätzliche Credits für das Behandeln von Patienten, die in medizinischen Einsätzen auftauchen."
+                    },
                     detail: {
                         browser: {
                             dispatch_menu: "Dies ist das Alarmierungsfenster. Von hier aus kannst du Fahrzeuge zu Einsätzen schicken!",
@@ -3693,6 +3698,11 @@ Object.values || (Object.values = function (e) {
                         contact: "Wenn du Fragen hast kannst du dir unsere FAQ ansehen und das Forum oder unsere Facebook-Seite besuchen!",
                         general: "Als Nächstes empfehlen wir dir, eine Leitstelle zu bauen. Außerdem solltest du weitere Wachen bauen. Je mehr Wachen, desto mehr Einsätze tauchen auf. Tipp: Zu Beginn empfehlen wir kleine Wachen.",
                         join_alliance: "Darüber hinaus empfehlen wir dir, einem Verband beizutreten. Gemeinsam macht es mehr Spaß und andere Mitglieder können dir mit deinen Einsätzen helfen.",
+                        radio: {
+                            helpshift_id: "1662",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            "short": "Der Funk zeigt die Statusänderungen deiner Fahrzeuge an. Für mehr detaillierte Informationen klicke auf den Button."
+                        },
                         summary: "Das waren die Grundlagen vom Leitstellenspiel! Beende Einsätze, sammle Credits, kaufe mehr Fahrzeuge, und baue dein Rettungsnetzwerk aus! Viel Spaß! </br> Dein Leitstellenspiel-Team"
                     },
                     mobile: {
@@ -3783,6 +3793,8 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} is offline: %{duration}",
             is_online: "%{user} is online.",
             loading: "Loading...",
+            message_for_edit: "Personnel will only be dispatched with the vehicle if it has acquired the necessary education!",
+            message_for_education: "This person will not be dispatched with the vehicle because it is missing the necessary education!",
             name: "Name",
             none: "None",
             of: "of",
@@ -4169,6 +4181,9 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
+                    alert: {
+                        build_2d_ambulance: "Building a hospital will grant you extra credits for transporting and treating patients from your medical missions."
+                    },
                     detail: {
                         browser: {
                             dispatch_menu: "This is the dispatch menu. From here you send your units to missions!",
@@ -4211,6 +4226,11 @@ Object.values || (Object.values = function (e) {
                         contact: "If you have questions you can consult the in game FAQ or visit the game forums or our facebook page!",
                         general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
                         join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
+                        radio: {
+                            helpshift_id: "1662",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            "short": "The radio displays the status changes of all your vehicles. More detailed information can be found when you click the button."
+                        },
                         summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
                     },
                     mobile: {
@@ -4301,6 +4321,8 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} is offline: %{duration}",
             is_online: "%{user} is online.",
             loading: "Loading...",
+            message_for_edit: "Personnel will only be dispatched with the vehicle if it has acquired the necessary education!",
+            message_for_education: "This person will not be dispatched with the vehicle because it is missing the necessary education!",
             name: "Name",
             none: "None",
             of: "of",
@@ -4616,6 +4638,9 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
+                    alert: {
+                        build_2d_ambulance: "Building a hospital will grant you extra credits for transporting and treating patients from your medical missions."
+                    },
                     detail: {
                         browser: {
                             dispatch_menu: "This is the dispatch menu. From here you send your units to missions!",
@@ -4658,6 +4683,11 @@ Object.values || (Object.values = function (e) {
                         contact: "If you have questions you can consult the in game FAQ or visit the game forums or our facebook page!",
                         general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
                         join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
+                        radio: {
+                            helpshift_id: "1662",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            "short": "The radio displays the status changes of all your vehicles. More detailed information can be found when you click the button."
+                        },
                         summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
                     },
                     mobile: {
@@ -4748,6 +4778,8 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} is offline: %{duration}",
             is_online: "%{user} is online.",
             loading: "Laden...",
+            message_for_edit: "Werknemers worden alleen uitgezonden met het voertuig als ze de vereiste opleiding voltooid hebben.",
+            message_for_education: "Deze werknemer wordt niet uitgezonden met het voertuig omdat de vereiste opleiding niet voltooid is.",
             name: "Naam",
             none: "Geen",
             of: "van",
@@ -5081,6 +5113,9 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
+                    alert: {
+                        build_2d_ambulance: "Als je een ziekenhuis bouwt, ontvang je extra credits voor het vervoeren en behandelen van patiënten uit medische missies."
+                    },
                     detail: {
                         browser: {
                             dispatch_menu: "Dit is het Alarmeringsmenu. Hiervandaan stuur je je eenheden naar de melding.",
@@ -5123,6 +5158,11 @@ Object.values || (Object.values = function (e) {
                         contact: "Als je vragen hebt, kun je de veelgestelde vragen over het spel bekijken of een bezoekje brengen aan de forums of onze Facebook-pagina. Op het Blog vind je nog extra handleidingen en video's met uitleg over de verschillende functies in het spel.",
                         general: "Als volgende stap raden we je aan om een meldkamer(gratis!) te bouwen en dan zo snel mogelijk nieuwe gebouwen te bouwen, aangezien het maximumaantal missies gelijk is aan het type station waarvan je er het meeste hebt (politie, brandweer, ambulance) plus 1. Bijvoorbeeld: 5 brandweerkazernes en 3 ambulanceposten = 6 missies.",
                         join_alliance: "Ook kun je je aansluiten bij een team. Dat kan je vooral in het begin erg vooruit helpen.",
+                        radio: {
+                            helpshift_id: "1662",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            "short": "De radio toont de statuswijzigingen van al je voertuigen. Klik op de knop voor gedetailleerdere informatie."
+                        },
                         summary: "Dit zijn de basisprincipes van Meldkamerspel. Meldigen afhandelen, Credits verdienen, meer gebouwen en eenheden kopen, enzovoorts. Veel speelplezier! </br> Het team van Meldkamerspel"
                     },
                     mobile: {
@@ -5213,6 +5253,8 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} no está conectado: %{duration}",
             is_online: "%{user} está conectado.",
             loading: "Cargando...",
+            message_for_edit: "¡Los empleados solo acompañarán al vehículo si han recibido la formación necesaria!",
+            message_for_education: "¡Esta persona no acompañará al vehículo porque no ha recibido la formación necesaria!",
             name: "Nombre",
             none: "Nada",
             of: "de",
@@ -5535,6 +5577,9 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
+                    alert: {
+                        build_2d_ambulance: "Al construir un hospital, recibirás créditos adicionales por transportar y tratar a los pacientes de tus misiones médicas."
+                    },
                     detail: {
                         browser: {
                             dispatch_menu: "Desde este menú Puedes enviar a tus unidades a misiones.",
@@ -5577,6 +5622,11 @@ Object.values || (Object.values = function (e) {
                         contact: "Si tienes alguna pregunta, puedes consultar el FAQ y visitar el foro del juego y nuestra página de Facebook.",
                         general: "Te recomendamos que tu siguiente paso sea construir una centralita y después, en cuanto sea posible, nuevas instalaciones, ya que el número máximo de misiones es igual al número máximo de instalaciones del mismo tipo (comisarías, parques de bomberos o de ambulancias...) más 1. Por ejemplo: 5 parques de bomberos y 3 de ambulancias permiten tener 6 misiones disponibles.",
                         join_alliance: "Además, unirse a una alianza es de gran ayuda, especialmente al principio.",
+                        radio: {
+                            helpshift_id: "1662",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            "short": "La radio muestra los cambios de estado de todos tus vehículos. Haz clic en el botón para obtener información más detallada."
+                        },
                         summary: "¡Ya conoces lo fundamental de Centro de Mando! Completar misiones, ganar créditos, comprar más unidades y vuelta a empezar. ¡Diviértete! </br> El equipo de Centro de Mando"
                     },
                     mobile: {
@@ -5629,6 +5679,8 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} is offline: %{duration}",
             is_online: "%{user} is online.",
             loading: "Loading...",
+            message_for_edit: "Personnel will only be dispatched with the vehicle if it has acquired the necessary education!",
+            message_for_education: "This person will not be dispatched with the vehicle because it is missing the necessary education!",
             name: "Name",
             none: "None",
             of: "of",
@@ -5949,6 +6001,9 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
+                    alert: {
+                        build_2d_ambulance: "Building a hospital will grant you extra credits for transporting and treating patients from your medical missions."
+                    },
                     detail: {
                         browser: {
                             dispatch_menu: "This is the dispatch menu. From here you send your units to missions!",
@@ -5991,6 +6046,11 @@ Object.values || (Object.values = function (e) {
                         contact: "If you have questions you can consult the in game FAQ or visit the game forums or our facebook page!",
                         general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
                         join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
+                        radio: {
+                            helpshift_id: "1662",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            "short": "The radio displays the status changes of all your vehicles. More detailed information can be found when you click the button."
+                        },
                         summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
                     },
                     mobile: {
@@ -6080,6 +6140,8 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} är offline: %{duration}",
             is_online: "%{user} är online.",
             loading: "Laddar …",
+            message_for_edit: "Endast personal med rätt utbildning skickas med fordonet!",
+            message_for_education: "Personen saknar rätt utbildning och skickas därför inte med fordonet!",
             name: "Namn",
             none: "Ingen",
             of: "av",
@@ -6365,6 +6427,9 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
+                    alert: {
+                        build_2d_ambulance: "Om du bygger ett sjukhus får du fler krediter när du transporterar och vårdar patienter från medicinska uppdrag."
+                    },
                     detail: {
                         browser: {
                             dispatch_menu: "Det här är larmcentralsmenyn. Härifrån kan du skicka ut fordon på uppdrag!",
@@ -6407,6 +6472,11 @@ Object.values || (Object.values = function (e) {
                         contact: "Om du har frågor kan du vända dig till avsnittet Frågor och svar i spelet, spelets forum eller vår Facebook-sida!",
                         general: "Efter det här rekommenderar jag att du bygger en larmcentral följt av nya stationer, för det maximala antalet uppdrag är lika med det högsta antalet stationer av samma typ (polis-, brand- eller ambulansstation) plus 1. Om du har 5 brandstationer och 3 ambulansstationer innebär det alltså att du kan ha 6 uppdrag.",
                         join_alliance: "Det kan även ge stora fördelar att gå med i en allians, särskilt tidigt i spelet, så det rekommenderas också.",
+                        radio: {
+                            helpshift_id: "1662",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            "short": "Radion visas statusförändringar hos dina fordon. Klicka på knappen för mer detaljerad information."
+                        },
                         summary: "Det här är grunderna i Larmcentralen-spelet! Klara uppdrag, tjäna krediter, köp fler fordon, upprepa. Ha så kul! </br>Teamet på Larmcentralen-spelet"
                     },
                     mobile: {
@@ -6496,6 +6566,8 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} jest offline: %{duration}",
             is_online: "%{user} jest online.",
             loading: "Wczytywanie…",
+            message_for_edit: "Personel zostanie wysłany w tym pojeździe tylko wtedy, jeżeli przeszedł niezbędną edukację!",
+            message_for_education: "Wskazana osoba nie zostanie wysłana w tym pojeździe, ponieważ brakuje jej niezbędnej edukacji!",
             name: "Nazwa",
             none: "Brak",
             of: "z",
@@ -6826,6 +6898,9 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
+                    alert: {
+                        build_2d_ambulance: "Budowa szpitala zapewni ci dodatkowe kredyty za transport i opiekę nad pacjentami wymagającymi pomocy medycznej w misjach."
+                    },
                     detail: {
                         browser: {
                             dispatch_menu: "To menu wezwania. Możesz tu wysyłać swoje jednostki na misje!",
@@ -6868,6 +6943,11 @@ Object.values || (Object.values = function (e) {
                         contact: "W przypadku niejasności warto odwiedzić dział często zadawanych pytań, forum gry lub naszą stronę na Facebooku!",
                         general: "Następnymi zalecanymi krokami są budowa centrum powiadamiania ratunkowego oraz jak najszybsze wzniesienie nowych posterunków, ponieważ maksymalna liczba misji jest równa najwyższej liczbie posterunków jednego typu (policji, straży pożarnej, pogotowia ratunkowego) plus 1, np. przy 5 posterunkach straży pożarnej i 3 pogotowia ratunkowego dostępnych jest 6 misji.",
                         join_alliance: "Bardzo pomocne jest również dołączenie do sojuszu, zwłaszcza na początku gry, dlatego zalecamy również ten krok.",
+                        radio: {
+                            helpshift_id: "1662",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            "short": "Radio wyświetla zmiany stanu wszystkich twoich pojazdów. Po kliknięciu przycisku można wyświetlić więcej szczegółowych informacji."
+                        },
                         summary: "Oto podstawy gry Operator ratunkowy! Wykonuj misje, zdobywaj kredyty, kupuj kolejne jednostki, powtarzaj proces. Miłej gry! </br> Zespół gry Operator ratunkowy"
                     },
                     mobile: {
@@ -6957,6 +7037,8 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} non è in linea: %{duration}",
             is_online: "%{user} è online.",
             loading: "Caricamento...",
+            message_for_edit: "Il personale uscirà con il veicolo solo dopo aver acquisito la formazione necessaria!",
+            message_for_education: "Questa persona non uscirà con il veicolo perché non ha ricevuto la formazione necessaria!",
             name: "Nome",
             none: "Nessuno",
             of: "di",
@@ -7283,6 +7365,9 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
+                    alert: {
+                        build_2d_ambulance: "La costruzione di un ospedale ti garantirà dei crediti extra per il trasporto e il trattamento di pazienti dalle tue missioni sanitarie."
+                    },
                     detail: {
                         browser: {
                             dispatch_menu: "Questo è il menu di assegnazione. Da qui potrai inviare le tue unità in missione.",
@@ -7325,6 +7410,11 @@ Object.values || (Object.values = function (e) {
                         contact: "Se hai domande puoi consultare le FAQ del gioco oppure visitarne i forum o la nostra pagina di Facebook.",
                         general: "Come passo successivo ti consiglio di costruire una centrale operativa e poi, appena possibile, delle nuove stazioni. Il numero massimo di missioni è uguale al numero più alto di una delle stazioni di tipo diverso (polizia, vigili del fuoco, ambulanza) più 1; per esempio: 5 stazioni dei vigili del fuoco e 3 di ambulanze = 6 missioni.",
                         join_alliance: "Inoltre, ti consiglio di unirti a un'alleanza perché, soprattutto all'inizio, questo potrebbe esserti di grande aiuto.",
+                        radio: {
+                            helpshift_id: "1662",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            "short": "La radio mostra le modifiche di stato di tutti i tuoi veicoli. Facendo clic sul pulsante si visualizzano informazioni più dettagliate."
+                        },
                         summary: "Queste sono le nozioni di base di Operatore 112. Completa missioni, ottieni crediti, acquista altre unità e ricomincia. Divertiti a giocare! </br> Il team di Operatore 112"
                     },
                     mobile: {
@@ -7415,6 +7505,8 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} est hors ligne: %{duration}",
             is_online: "%{user} est en ligne.",
             loading: "Chargement...",
+            message_for_edit: "Le personnel ne sera déployé avec le véhicule que s'il a reçu la formation adéquate !",
+            message_for_education: "Cette personne ne sera pas déployée avec le véhicule car elle n'a pas reçu la formation adéquate !",
             name: "Nom",
             none: "Aucun",
             of: "de",
@@ -7737,6 +7829,9 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
+                    alert: {
+                        build_2d_ambulance: "Construire un hôpital vous octroiera des crédits supplémentaires pour transporter et soigner des patients de vos missions médicales."
+                    },
                     detail: {
                         browser: {
                             dispatch_menu: "Voici le menu de déploiement. Vous pouvez d'ici envoyer vos unités en mission !",
@@ -7779,6 +7874,11 @@ Object.values || (Object.values = function (e) {
                         contact: "Si vous avez des questions, vous pouvez consulter la FAQ du jeu, visiter les forums du jeu ou notre page Facebook !",
                         general: "Nous vous recommandons pour l'étape suivante de construire un centre de secours et, dès que possible, de nouveaux postes puisque le nombre de missions maximum équivaut au plus grand nombre de postes d'un genre (police, pompiers, ambulance) plus 1. Par exemple, 5 casernes de pompiers et 3 postes ambulanciers = 6 missions.",
                         join_alliance: "De plus, nous vous recommandons de rejoindre une alliance, ce qui peut grandement vous aider, surtout au début.",
+                        radio: {
+                            helpshift_id: "1662",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            "short": "La radio indique les changements de statut de tous vos véhicules. Cliquez sur ce bouton pour obtenir plus d'informations."
+                        },
                         summary: "Voici les bases d'Opérateur 112 ! Accomplissez des missions, recevez des crédits, achetez plus d'unités, recommencez. Amusez-vous bien ! </br> L'équipe d'Opérateur 112"
                     },
                     mobile: {
@@ -7866,6 +7966,8 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} не в сети: %{duration}",
             is_online: "%{user} в сети.",
             loading: "Загружается...",
+            message_for_edit: "Персонал сможет перемещаться на транспорте, только после завершения необходимого обучения!",
+            message_for_education: "Этот сотрудник не может перемещаться на транспорте, так как не прошел необходимое обучение!",
             name: "Название",
             none: "Ни один",
             of: "из",
@@ -8187,6 +8289,9 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
+                    alert: {
+                        build_2d_ambulance: "Строительство больницы принесет дополнительные кредиты за перевозку и лечение пациентов при выполнении медицинских заданий."
+                    },
                     detail: {
                         browser: {
                             dispatch_menu: "Это меню отправки. С его помощью вы можете отправлять подразделения на задания!",
@@ -8229,6 +8334,11 @@ Object.values || (Object.values = function (e) {
                         contact: "Если у вас остались вопросы, ознакомьтесь с ЧАВО или загляните на форумы игры или на нашу страничку Facebook!",
                         general: "Следующим шагом рекомендуем возвести диспетчерский пункт, а затем начать строительство новых станций, поскольку максимальное количество заданий на одно больше количества станций самого распространенного типа (полиция, пожарные, скорая помощь). Например, при пяти пожарных станциях и трёх станциях скорой помощи вам будет доступно шесть заданий.",
                         join_alliance: "Мы также рекомендуем вступить в альянс, так как это может здорово вам помочь, особенно по началу.",
+                        radio: {
+                            helpshift_id: "1662",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            "short": "Радио отображает статус вашего транспорта. Более подробные сведения можно увидеть, нажав на кнопку."
+                        },
                         summary: "Теперь вы знаете основы игры в «Диспетчер 112»! Выполняйте задания, получайте кредиты и покупайте новые подразделения. Весёлой игры! </br> Команда «Диспетчер 112»"
                     },
                     mobile: {
@@ -8280,6 +8390,8 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} er offline: %{duration}",
             is_online: "%{user} er online.",
             loading: "Indlæser ...",
+            message_for_edit: "Personalet kan først sendes ud med køretøjet efter den nødvendige undervisning er fuldendt!",
+            message_for_education: "Denne person vil ikke blive sendt ud med køretøjet, fordi vedkommende ikke har gennemført den nødvendige undervisning!",
             name: "Navn",
             none: "Ingen",
             of: "af",
@@ -8602,6 +8714,9 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
+                    alert: {
+                        build_2d_ambulance: "Et hospital giver ekstra kreditter ved transport og behandling af patienter i lægemissioner."
+                    },
                     detail: {
                         browser: {
                             dispatch_menu: "Dette er udsend-menuen. Herfra sender du dine enheder på missioner!",
@@ -8644,6 +8759,11 @@ Object.values || (Object.values = function (e) {
                         contact: "Hvis du har spørgsmål, kan du tjekke Spørgsmål og svar i spillet eller besøge spilforummer på vores Facebook-side!",
                         general: "Som et næste skridt vil vi anbefale, at du bygger en alarmcentral, og dernæst - så snart som muligt - nye stationer, da det maksimale antal missioner er lig med det højeste antal af enhver slags station (politi-, brand-, og ambulance-) plus 1; f.eks. 5 brand- og 3 ambulancestationer = 6 missioner.",
                         join_alliance: "Det ville også hjælpe dig enormt, især i starten, så det anbefales også.",
+                        radio: {
+                            helpshift_id: "1662",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            "short": "Radioen viser alle dine køretøjers statusændringer. Du kan se yderligere oplysninger ved at klikke på knappen."
+                        },
                         summary: "Dette er den grundlæggende viden i Alarmcentral-spil! Fuldfør missioner, få kreditter, køb flere enheder, gentag. God fornøjelse! </br> Dit Alarmcentral-spil-hold"
                     },
                     mobile: {
@@ -8733,6 +8853,8 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} er offline: %{duration}",
             is_online: "%{user} er online.",
             loading: "Laster inn …",
+            message_for_edit: "Personellet vil kun bli sendt ut med kjøretøyet om de har fått den nødvendige utdanningen!",
+            message_for_education: "Denne personen vil ikke bli sendt ut med kjøretøyet på grunn av mangel på nødvendig utdanningen!",
             name: "Navn",
             none: "Ingen",
             of: "av",
@@ -9059,6 +9181,9 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
+                    alert: {
+                        build_2d_ambulance: "Å bygge et sykehus gir deg ekstra kreditt for transportering og behandling av pasienter fra medisinske oppdrag."
+                    },
                     detail: {
                         browser: {
                             dispatch_menu: "Dette er nødedatsmenyen. Her i fra kan du sende enhetene dine ut på oppdrag!",
@@ -9101,6 +9226,11 @@ Object.values || (Object.values = function (e) {
                         contact: "Hvis du har spørsmål, kan du sjekke med spillets Vanlige spørsmål eller gå til spillforumet eller Facebook-siden vår.",
                         general: "I neste trinn anbefaler vi deg å bygge et nødetatssenter og så snart som mulig nye stasjoner, siden maks antall oppdrag er lik det høyeste antallet stasjoner av en stasjonstype (politi, brann, ambulanse) pluss 1. F.eks. 5 brannstasjoner og 3 ambulansestasjoner = 6 oppdrag.",
                         join_alliance: "Det er også nyttig å bli med i allianser, spesielt i begynnelsen, så det anbefales også.",
+                        radio: {
+                            helpshift_id: "1662",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            "short": "Radioen viser statusendringene til alle kjøretøyene dine. Mer omfattende informasjon får du når du trykker på knappen."
+                        },
                         summary: "Dette er det grunnleggende i Nødsentralspillet! Utfør oppdrag, få kreditter, kjøp flere enheter og gjenta. Kos deg med spillingen! </br> Nødsentralspillet-teamet"
                     },
                     mobile: {
@@ -9190,6 +9320,8 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} je offline: %{duration}",
             is_online: "%{user} je online.",
             loading: "Načítání…",
+            message_for_edit: "Personál bude vyslán s vozidlem pouze v případě, že dosáhne potřebného vzdělání!",
+            message_for_education: "Tato osoba nebude vyslána s vozidlem, protože jí chybí potřebné vzdělání!",
             name: "Název",
             none: "Nic",
             of: "z",
@@ -9507,6 +9639,9 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
+                    alert: {
+                        build_2d_ambulance: "Postavením nemocnice získáte další kredity za převoz a ošetření pacientů z lékařských misí."
+                    },
                     detail: {
                         browser: {
                             dispatch_menu: "Toto je nabídka výjezdů. Odtud na mise posíláte jednotky.",
@@ -9549,6 +9684,11 @@ Object.values || (Object.values = function (e) {
                         contact: "Pokud máte nějaké dotazy, můžete se podívat do častých dotazů o hře, případně navštivte naše herní fórum nebo stránku na Facebooku.",
                         general: "V dalším kroku bychom vám doporučili postavit dispečink a poté co nejrychleji další stanice, jelikož maximální počet misí se rovná maximálnímu počtu stanic různého typu (policie, hasiči, záchranka) plus 1. Tedy např. 5 hasičských stanic a 3 stanice záchranky = 6 misí.",
                         join_alliance: "Přidat se k alianci by vám rovněž mohlo velice pomoct, hlavně na začátku. Takže to také doporučujeme.",
+                        radio: {
+                            helpshift_id: "1662",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            "short": "Vysílačka zobrazuje změny stavu všech vašich vozidel. Podrobnější informace naleznete po kliknutí na tlačítko."
+                        },
                         summary: "Toto jsou základy hry Operační středisko! Plňte mise, získávejte kredity, nakupujte další jednotky. Postup opakujte. Příjemnou zábavu při hraní! </br> Váš tým hry Operační středisko"
                     },
                     mobile: {
@@ -10040,6 +10180,8 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} está offline: %{duration}",
             is_online: "%{user} está online.",
             loading: "Carregando...",
+            message_for_edit: "O pessoal só será enviado com o veículo se tiver adquirido a educação necessária!",
+            message_for_education: "Esta pessoa não será enviada com o veículo porque não possui a educação necessária!",
             name: "Nome",
             none: "Nenhum",
             of: "de",
@@ -10363,6 +10505,9 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
+                    alert: {
+                        build_2d_ambulance: "Construir um hospital dá-te créditos extra para transportar e tratar pacientes nas tuas missões médicas."
+                    },
                     detail: {
                         browser: {
                             dispatch_menu: "Este é o menu de operação. A partir daqui envias as tuas unidades em missões!",
@@ -10405,6 +10550,11 @@ Object.values || (Object.values = function (e) {
                         contact: "Se tiveres questões, podes consultar as Perguntas Frequentes do jogo ou visitar os fóruns do jogo ou a nossa página do Facebook!",
                         general: "Para o próximo passo, recomendamos que construas um centro de operações e a seguir, assim que possível, novas estações, já que o número máximo de missões corresponde ao maior número de quaisquer estações de um tipo diferente (polícia, bombeiros, ambulâncias) mais 1; por exemplo, 5 bombeiros e 3 estações de ambulâncias = 6 missões.",
                         join_alliance: "Adicionalmente, seria muito vantajoso para ti entrares numa aliança, especialmente no início, por isso também recomendamos que o faças.",
+                        radio: {
+                            helpshift_id: "1662",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            "short": "O rádio exibe as mudanças de estado de todos os teus veículos. Ao clicar no botão podes encontrar mais informações detalhadas."
+                        },
                         summary: "Isto é o básico do Jogo Operador 112! Completa missões, ganha créditos, compra mais unidades, faz tudo outra vez. Diverte-te a jogar! </br> A tua Equipa do Jogo Operador 112"
                     },
                     mobile: {
@@ -11713,6 +11863,8 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user}はオフラインです: %{duration}",
             is_online: "%{user}はオンラインです。",
             loading: "ロード中…",
+            message_for_edit: "人員を車両で派遣できるのは、必要な訓練を受けた場合のみです！",
+            message_for_education: "この人員は、必要な訓練を受けていないため、車両で派遣できません！",
             name: "名前",
             none: "なし",
             of: "/",
@@ -12026,6 +12178,9 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
+                    alert: {
+                        build_2d_ambulance: "病院を建設すると、救急ミッションで患者の輸送・手当を行ったときのクレジットが増えます。"
+                    },
                     detail: {
                         browser: {
                             dispatch_menu: "これが指令メニューだ。ここからユニットをミッションに派遣するのだ！",
@@ -12068,6 +12223,11 @@ Object.values || (Object.values = function (e) {
                         contact: "分からないことがあったら、ゲームFAQを参照するか、ゲームフォーラムかFacebookページを訪ねてくれ！",
                         general: "次のステップでは、指令センターを建設し、その後すぐに新しいステーションを増やすことをお勧めする。ミッションの最大数＝各種類（警察、消防、救急）のステーションの最大数＋1であるためだ。例えば、消防局が5軒、救急車ステーションが3軒とすると、ミッション数は6になる。",
                         join_alliance: "また、アライアンスを形成すると、特に駆け出し、ゲーム序盤で大いに役に立つので、それもお勧めしよう。",
+                        radio: {
+                            helpshift_id: "1662",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            "short": "無線は、全車両の状態の変化を表示します。ボタンをクリックすると、詳細情報を確認できます。"
+                        },
                         summary: "ミッションチーフの基本が紹介されているぞ！ミッションを達成し、クレジットを獲得し、ユニットを購入し、拡充しよう。ゲームはこの一連の流れを繰り返して進むぞ。では、楽しんでくれ！</br> ミッションチーフ・チームより"
                     },
                     mobile: {
@@ -12120,6 +12280,8 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} 님은 오프라인입니다: %{duration}",
             is_online: "%{user} 님이 온라인입니다.",
             loading: "로딩 중...",
+            message_for_edit: "필수 교육을 이수한 인원만 차량과 함께 파견할 수 있습니다!",
+            message_for_education: "이 인원은 필수 교육을 이수하지 않아 차량과 함께 파견할 수 없습니다!",
             name: "이름",
             none: "없음",
             of: "/",
@@ -12440,6 +12602,9 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
+                    alert: {
+                        build_2d_ambulance: "병원을 건설하면 의료 임무에서 환자를 이송하거나 치료 시 추가 크레딧을 얻을 수 있습니다."
+                    },
                     detail: {
                         browser: {
                             dispatch_menu: "여기가 파견 메뉴입니다. 이 메뉴에서 유닛을 임무에 보낼 수 있습니다!",
@@ -12482,6 +12647,11 @@ Object.values || (Object.values = function (e) {
                         contact: "문의 사항은 게임 내 FAQ를 참고하시거나 게임 포럼 또는 Facebook 페이지를 방문해 주세요!",
                         general: "다음 단계는 지휘센터 건설 후 최대한 빨리 새 관할서를 짓는 것을 권장합니다. 최대 임무 수는 여러 유형(경찰서, 소방서, 응급실)의 관할서 중 가장 많이 배치한 관할서 수+1로 정해지기 때문입니다. 예를 들어 소방서 5곳과 응급실 3곳을 보유할 경우 최대 6개의 임무를 받을 수 있습니다.",
                         join_alliance: "또한 게임 초기에 동맹에 가입하면 큰 도움을 받을 수 있으므로 동맹 가입도 권장합니다.",
+                        radio: {
+                            helpshift_id: "1662",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            "short": "무전기에서 모든 차량의 상태 변화를 확인할 수 있습니다. 버튼을 클릭하면 자세한 정보를 확인할 수 있습니다."
+                        },
                         summary: "지금까지 미션 치프의 기본 플레이 방법을 알려드렸습니다! 임무를 완수하고 크레딧을 받아 더 많은 유닛을 구매하며 임무를 반복하세요. 즐겁게 플레이하세요! </br> 미션 치프 팀 올림"
                     },
                     mobile: {
@@ -12948,6 +13118,8 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} ei ole verkossa: %{duration}",
             is_online: "%{user} on verkossa.",
             loading: "Ladataan...",
+            message_for_edit: "Henkilöstö lähetetään ajoneuvon mukana vain, jos se on saanut tarvittavan koulutuksen.",
+            message_for_education: "Tätä työntekijää ei lähetetä ajoneuvon mukana, koska häneltä puuttuu tarvittava koulutus.",
             name: "Nimi",
             none: "Ei mitään",
             of: "/",
@@ -13272,6 +13444,9 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
+                    alert: {
+                        build_2d_ambulance: "Kun rakennat sairaalan, saat lisäkrediittejä lääkintätehtävien potilaiden kuljettamisesta ja hoitamisesta."
+                    },
                     detail: {
                         browser: {
                             dispatch_menu: "Tämä on lähetysvalikko. Täältä voit lähettää yksiköitä tehtäviin.",
@@ -13314,6 +13489,11 @@ Object.values || (Object.values = function (e) {
                         contact: "Jos sinulla on kysyttävää, voit tutustua pelin UKK-sivuun tai käydä pelin keskustelupalstalla tai Facebook-sivullamme.",
                         general: "Seuraavaksi suosittelen rakentamaan hätäkeskuksen ja sitten mahdollisimman pian uusia asemia, sillä tehtävien enimmäismäärä on sama kuin erityyppisten asemien (poliisiasema, paloasema, ambulanssiasema) enimmäismäärä plus 1, eli 5 palo- ja 3 ambulanssiasemaa = 6 tehtävää.",
                         join_alliance: "Myös liittoutumaan liittyminen on hyödyksi erityisesti alussa, joten sekin on suositeltavaa.",
+                        radio: {
+                            helpshift_id: "1662",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            "short": "Radio näyttää kaikkien ajoneuvojen tilamuutokset. Lisätietoja saat napsauttamalla painiketta."
+                        },
                         summary: "Tässä olivat Hätäkeskuspelin perusteet! Suorita tehtäviä, kerää krediittejä, osta uusia yksiköitä, toista. Hauskaa pelaamista! </br> Hätäkeskuspelin tiimi"
                     },
                     mobile: {
@@ -14089,7 +14269,7 @@ Object.values || (Object.values = function (e) {
             }
         }
 
-        function M(e, t, i, n) {
+        function j(e, t, i, n) {
             function o(r) {
                 var l;
                 return a[r] = !0, ut.each(e[r] || [], function (e, r) {
@@ -14103,7 +14283,7 @@ Object.values || (Object.values = function (e) {
             return o(t.dataTypes[0]) || !a["*"] && o("*")
         }
 
-        function j(e, i) {
+        function M(e, i) {
             var n, o, a = ut.ajaxSettings.flatOptions || {};
             for (o in i) i[o] !== t && ((a[o] ? e : n || (n = {}))[o] = i[o]);
             return n && ut.extend(!0, e, n), e
@@ -14177,8 +14357,8 @@ Object.values || (Object.values = function (e) {
 
         function R() {
             return setTimeout(function () {
-                Qi = t
-            }), Qi = ut.now()
+                Ji = t
+            }), Ji = ut.now()
         }
 
         function F(e, t, i) {
@@ -14196,7 +14376,7 @@ Object.values || (Object.values = function (e) {
                 }),
                 l = function () {
                     if (o) return !1;
-                    for (var t = Qi || R(), i = Math.max(0, c.startTime + c.duration - t), n = i / c
+                    for (var t = Ji || R(), i = Math.max(0, c.startTime + c.duration - t), n = i / c
                             .duration || 0, a = 1 - n, s = 0, l = c.tweens.length; l > s; s++) c.tweens[s]
                         .run(a);
                     return r.notifyWith(e, [c, a, i]), 1 > a && l ? i : (r.resolveWith(e, [c]), !1)
@@ -14209,7 +14389,7 @@ Object.values || (Object.values = function (e) {
                     }, i),
                     originalProperties: t,
                     originalOptions: i,
-                    startTime: Qi || R(),
+                    startTime: Ji || R(),
                     duration: i.duration,
                     tweens: [],
                     createTween: function (t, i) {
@@ -14309,8 +14489,8 @@ Object.values || (Object.values = function (e) {
         var U, Z, G = typeof t,
             K = e.location,
             Y = e.document,
-            J = Y.documentElement,
-            Q = e.jQuery,
+            Q = Y.documentElement,
+            J = e.jQuery,
             X = e.$,
             et = {},
             tt = [],
@@ -14437,7 +14617,7 @@ Object.values || (Object.values = function (e) {
                 expando: "jQuery" + (it + Math.random())
                     .replace(/\D/g, ""),
                 noConflict: function (t) {
-                    return e.$ === ut && (e.$ = X), t && e.jQuery === ut && (e.jQuery = Q), ut
+                    return e.$ === ut && (e.$ = X), t && e.jQuery === ut && (e.jQuery = J), ut
                 },
                 isReady: !1,
                 readyWait: 1,
@@ -14877,7 +15057,7 @@ Object.values || (Object.values = function (e) {
                             }, s, !0), c = g(function (e) {
                                 return st.call(t, e) > -1
                             }, s, !0), u = [function (e, i, n) {
-                                return !a && (n || i !== j) || ((t = i)
+                                return !a && (n || i !== M) || ((t = i)
                                     .nodeType ? l(e, i, n) : c(e, i, n))
                             }]; o > r; r++)
                         if (i = E.relative[e[r].type]) u = [g(v(u), i)];
@@ -14905,10 +15085,10 @@ Object.values || (Object.values = function (e) {
                                 f = "0",
                                 g = a && [],
                                 v = null != u,
-                                y = j,
+                                y = M,
                                 w = a || s && E.find.TAG("*", u && r.parentNode || r),
                                 k = q += null == y ? 1 : Math.random() || .1;
-                            for (v && (j = r !== L && r, A = n); null != (d = w[f]); f++) {
+                            for (v && (M = r !== L && r, A = n); null != (d = w[f]); f++) {
                                 if (s && d) {
                                     for (h = 0; p = e[h++];)
                                         if (p(d, r, l)) {
@@ -14927,7 +15107,7 @@ Object.values || (Object.values = function (e) {
                                 }
                                 ot.apply(c, m), v && !a && m.length > 0 && _ + t.length > 1 && i.uniqueSort(c)
                             }
-                            return v && (q = k, j = y), g
+                            return v && (q = k, M = y), g
                         };
                     return o ? a(r) : r
                 }
@@ -14954,11 +15134,11 @@ Object.values || (Object.values = function (e) {
                                 break
                             }
                     }
-                    return M(e, c)(n, t, !R, i, gt.test(e)), i
+                    return j(e, c)(n, t, !R, i, gt.test(e)), i
                 }
 
                 function z() {}
-                var T, S, A, E, P, I, M, j, D, N, L, O, R, F, $, B, H, W = "sizzle" + -new Date,
+                var T, S, A, E, P, I, j, M, D, N, L, O, R, F, $, B, H, W = "sizzle" + -new Date,
                     V = e.document,
                     q = 0,
                     U = 0,
@@ -14966,10 +15146,10 @@ Object.values || (Object.values = function (e) {
                     G = o(),
                     K = o(),
                     Y = !1,
-                    J = function () {
+                    Q = function () {
                         return 0
                     },
-                    Q = typeof t,
+                    J = typeof t,
                     X = 1 << 31,
                     et = {}.hasOwnProperty,
                     tt = [],
@@ -15064,7 +15244,7 @@ Object.values || (Object.values = function (e) {
                                 .id = W, !t.getElementsByName || !t.getElementsByName(W)
                                 .length
                         }), S.getById ? (E.find.ID = function (e, t) {
-                            if (typeof t.getElementById !== Q && R) {
+                            if (typeof t.getElementById !== J && R) {
                                 var i = t.getElementById(e);
                                 return i && i.parentNode ? [i] : []
                             }
@@ -15076,12 +15256,12 @@ Object.values || (Object.values = function (e) {
                         }) : (delete E.find.ID, E.filter.ID = function (e) {
                             var t = e.replace(St, At);
                             return function (e) {
-                                var i = typeof e.getAttributeNode !== Q && e.getAttributeNode(
+                                var i = typeof e.getAttributeNode !== J && e.getAttributeNode(
                                     "id");
                                 return i && i.value === t
                             }
                         }), E.find.TAG = S.getElementsByTagName ? function (e, t) {
-                            return typeof t.getElementsByTagName !== Q ? t.getElementsByTagName(e) :
+                            return typeof t.getElementsByTagName !== J ? t.getElementsByTagName(e) :
                                 void 0
                         } : function (e, t) {
                             var i, n = [],
@@ -15093,7 +15273,7 @@ Object.values || (Object.values = function (e) {
                             }
                             return a
                         }, E.find.CLASS = S.getElementsByClassName && function (e, t) {
-                            return typeof t.getElementsByClassName !== Q && R ? t
+                            return typeof t.getElementsByClassName !== J && R ? t
                                 .getElementsByClassName(e) : void 0
                         }, $ = [], F = [], (S.qsa = n(t.querySelectorAll)) && (s(function (e) {
                             e.innerHTML = "<select><option selected=''></option></select>", e
@@ -15129,7 +15309,7 @@ Object.values || (Object.values = function (e) {
                             return !1
                         }, S.sortDetached = s(function (e) {
                             return 1 & e.compareDocumentPosition(t.createElement("div"))
-                        }), J = O.compareDocumentPosition ? function (e, i) {
+                        }), Q = O.compareDocumentPosition ? function (e, i) {
                             if (e === i) return Y = !0, 0;
                             var n = i.compareDocumentPosition && e.compareDocumentPosition && e
                                 .compareDocumentPosition(i);
@@ -15177,7 +15357,7 @@ Object.values || (Object.values = function (e) {
                     var t, i = [],
                         n = 0,
                         o = 0;
-                    if (Y = !S.detectDuplicates, D = !S.sortStable && e.slice(0), e.sort(J), Y) {
+                    if (Y = !S.detectDuplicates, D = !S.sortStable && e.slice(0), e.sort(Q), Y) {
                         for (; t = e[o++];) t === e[o] && (n = i.push(o));
                         for (; n--;) e.splice(i[n], 1)
                     }
@@ -15251,7 +15431,7 @@ Object.values || (Object.values = function (e) {
                             return t || (t = new RegExp("(^|" + lt + ")" + e + "(" + lt + "|$)")) &&
                                 Z(e, function (e) {
                                     return t.test("string" == typeof e.className && e.className ||
-                                        typeof e.getAttribute !== Q && e.getAttribute(
+                                        typeof e.getAttribute !== J && e.getAttribute(
                                         "class") || "")
                                 })
                         },
@@ -15326,7 +15506,7 @@ Object.values || (Object.values = function (e) {
                         not: a(function (e) {
                             var t = [],
                                 i = [],
-                                n = M(e.replace(mt, "$1"));
+                                n = j(e.replace(mt, "$1"));
                             return n[W] ? a(function (e, t, i, o) {
                                 for (var a, s = n(e, null, o, []), r = e.length; r--;)(a =
                                     s[r]) && (e[r] = !(t[r] = a))
@@ -15447,7 +15627,7 @@ Object.values || (Object.values = function (e) {
                         submit: !0,
                         reset: !0
                     }) E.pseudos[T] = p(T);
-                M = i.compile = function (e, t) {
+                j = i.compile = function (e, t) {
                         var i, n = [],
                             o = [],
                             a = K[e + " "];
@@ -15459,8 +15639,8 @@ Object.values || (Object.values = function (e) {
                         return a
                     }, E.pseudos.nth = E.pseudos.eq, z.prototype = E.filters = E.pseudos, E.setFilters =
                     new z, S.sortStable = W.split("")
-                    .sort(J)
-                    .join("") === W, N(), [0, 0].sort(J), S.detectDuplicates = Y, ut.find = i, ut.expr = i
+                    .sort(Q)
+                    .join("") === W, N(), [0, 0].sort(Q), S.detectDuplicates = Y, ut.find = i, ut.expr = i
                     .selectors, ut.expr[":"] = ut.expr.pseudos, ut.unique = i.uniqueSort, ut.text = i.getText,
                     ut.isXMLDoc = i.isXML, ut.contains = i.contains
             }(e);
@@ -15808,8 +15988,8 @@ Object.values || (Object.values = function (e) {
         });
         var At, Et, Pt = /[\t\r\n\f]/g,
             It = /\r/g,
-            Mt = /^(?:input|select|textarea|button|object)$/i,
-            jt = /^(?:a|area)$/i,
+            jt = /^(?:input|select|textarea|button|object)$/i,
+            Mt = /^(?:a|area)$/i,
             Dt = /^(?:checked|selected)$/i,
             Nt = ut.support.getSetAttribute,
             Lt = ut.support.input;
@@ -15987,7 +16167,7 @@ Object.values || (Object.values = function (e) {
                 tabIndex: {
                     get: function (e) {
                         var t = ut.find.attr(e, "tabindex");
-                        return t ? parseInt(t, 10) : Mt.test(e.nodeName) || jt.test(e.nodeName) &&
+                        return t ? parseInt(t, 10) : jt.test(e.nodeName) || Mt.test(e.nodeName) &&
                             e.href ? 0 : -1
                     }
                 }
@@ -16575,8 +16755,8 @@ Object.values || (Object.values = function (e) {
             Gt = new RegExp("<(?:" + Ut + ")[\\s/>]", "i"),
             Kt = /^\s+/,
             Yt = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/gi,
-            Jt = /<([\w:]+)/,
-            Qt = /<tbody/i,
+            Qt = /<([\w:]+)/,
+            Jt = /<tbody/i,
             Xt = /<|&#?\w+;/,
             ei = /<(?:script|style|link)/i,
             ti = /^(?:checkbox|radio)$/i,
@@ -16663,7 +16843,7 @@ Object.values || (Object.values = function (e) {
                         t;
                         if (!("string" != typeof e || ei.test(e) || !ut.support
                                 .htmlSerialize && Gt.test(e) || !ut.support
-                                .leadingWhitespace && Kt.test(e) || si[(Jt.exec(e) || ["",
+                                .leadingWhitespace && Kt.test(e) || si[(Qt.exec(e) || ["",
                                     ""])[1].toLowerCase()])) {
                             e = e.replace(Yt, "<$1></$2>");
                             try {
@@ -16752,12 +16932,12 @@ Object.values || (Object.values = function (e) {
                         if (a = e[_], a || 0 === a)
                             if ("object" === ut.type(a)) ut.merge(m, a.nodeType ? [a] : a);
                             else if (Xt.test(a)) {
-                        for (r = r || h.appendChild(t.createElement("div")), l = (Jt.exec(a) || ["",
+                        for (r = r || h.appendChild(t.createElement("div")), l = (Qt.exec(a) || ["",
                                 ""])[1].toLowerCase(), u = si[l] || si._default, r.innerHTML = u[1] +
                             a.replace(Yt, "<$1></$2>") + u[2], o = u[0]; o--;) r = r.lastChild;
                         if (!ut.support.leadingWhitespace && Kt.test(a) && m.push(t.createTextNode(Kt
                                 .exec(a)[0])), !ut.support.tbody)
-                            for (a = "table" !== l || Qt.test(a) ? "<table>" !== u[1] || Qt.test(a) ?
+                            for (a = "table" !== l || Jt.test(a) ? "<table>" !== u[1] || Jt.test(a) ?
                                 0 : r : r.firstChild, o = a && a.childNodes.length; o--;) ut.nodeName(
                                     c = a.childNodes[o], "tbody") && !c.childNodes.length && a
                                 .removeChild(c);
@@ -17093,8 +17273,8 @@ Object.values || (Object.values = function (e) {
                 return 1 === arguments.length ? this.off(e, "**") : this.off(t, e || "**", i)
             }
         });
-        var Pi, Ii, Mi = ut.now(),
-            ji = /\?/,
+        var Pi, Ii, ji = ut.now(),
+            Mi = /\?/,
             Di = /#.*$/,
             Ni = /([?&])_=[^&]*/,
             Li = /^(.*?):[ \t]*([^\r\n]*)\r?$/gm,
@@ -17176,7 +17356,7 @@ Object.values || (Object.values = function (e) {
                 }
             },
             ajaxSetup: function (e, t) {
-                return t ? j(j(e, ut.ajaxSettings), t) : j(ut.ajaxSettings, e)
+                return t ? M(M(e, ut.ajaxSettings), t) : M(ut.ajaxSettings, e)
             },
             ajaxPrefilter: I(Hi),
             ajaxTransport: I(Wi),
@@ -17255,13 +17435,13 @@ Object.values || (Object.values = function (e) {
                     .toLowerCase()), h.crossDomain = !(!o || o[1] === Pi[1] && o[2] === Pi[2] && (
                             o[3] || ("http:" === o[1] ? "80" : "443")) === (Pi[3] || (
                             "http:" === Pi[1] ? "80" : "443")))), h.data && h.processData &&
-                    "string" != typeof h.data && (h.data = ut.param(h.data, h.traditional)), M(Hi,
+                    "string" != typeof h.data && (h.data = ut.param(h.data, h.traditional)), j(Hi,
                         h, i, k), 2 === y) return k;
                 c = h.global, c && 0 === ut.active++ && ut.event.trigger("ajaxStart"), h.type = h
                     .type.toUpperCase(), h.hasContent = !Ri.test(h.type), s = h.url, h
-                    .hasContent || (h.data && (s = h.url += (ji.test(s) ? "&" : "?") + h.data,
+                    .hasContent || (h.data && (s = h.url += (Mi.test(s) ? "&" : "?") + h.data,
                         delete h.data), h.cache === !1 && (h.url = Ni.test(s) ? s.replace(Ni,
-                        "$1_=" + Mi++) : s + (ji.test(s) ? "&" : "?") + "_=" + Mi++)), h
+                        "$1_=" + ji++) : s + (Mi.test(s) ? "&" : "?") + "_=" + ji++)), h
                     .ifModified && (ut.lastModified[s] && k.setRequestHeader("If-Modified-Since",
                         ut.lastModified[s]), ut.etag[s] && k.setRequestHeader("If-None-Match",
                         ut.etag[s])), (h.data && h.hasContent && h.contentType !== !1 || i
@@ -17278,7 +17458,7 @@ Object.values || (Object.values = function (e) {
                         error: 1,
                         complete: 1
                     }) k[a](h[a]);
-                if (u = M(Wi, h, i, k)) {
+                if (u = j(Wi, h, i, k)) {
                     k.readyState = 1, c && m.trigger("ajaxSend", [k, h]), h.async && h.timeout >
                         0 && (l = setTimeout(function () {
                             k.abort("timeout")
@@ -17346,7 +17526,7 @@ Object.values || (Object.values = function (e) {
         ut.ajaxSetup({
             jsonp: "callback",
             jsonpCallback: function () {
-                var e = Ui.pop() || ut.expando + "_" + Mi++;
+                var e = Ui.pop() || ut.expando + "_" + ji++;
                 return this[e] = !0, e
             }
         }), ut.ajaxPrefilter("json jsonp", function (i, n, o) {
@@ -17355,7 +17535,7 @@ Object.values || (Object.values = function (e) {
                 .indexOf("application/x-www-form-urlencoded") && Zi.test(i.data) && "data");
             return l || "jsonp" === i.dataTypes[0] ? (a = i.jsonpCallback = ut.isFunction(i
                     .jsonpCallback) ? i.jsonpCallback() : i.jsonpCallback, l ? i[l] = i[l]
-                .replace(Zi, "$1" + a) : i.jsonp !== !1 && (i.url += (ji.test(i.url) ? "&" :
+                .replace(Zi, "$1" + a) : i.jsonp !== !1 && (i.url += (Mi.test(i.url) ? "&" :
                     "?") + i.jsonp + "=" + a), i.converters["script json"] = function () {
                     return r || ut.error(a + " was not called"), r[0]
                 }, i.dataTypes[0] = "json", s = e[a], e[a] = function () {
@@ -17366,7 +17546,7 @@ Object.values || (Object.values = function (e) {
                 }), "script") : void 0
         });
         var Gi, Ki, Yi = 0,
-            Ji = e.ActiveXObject && function () {
+            Qi = e.ActiveXObject && function () {
                 var e;
                 for (e in Gi) Gi[e](t, !0)
             };
@@ -17392,7 +17572,7 @@ Object.values || (Object.values = function (e) {
                                 var r, c, u, d;
                                 try {
                                     if (n && (o || 4 === l.readyState))
-                                        if (n = t, s && (l.onreadystatechange = ut.noop, Ji &&
+                                        if (n = t, s && (l.onreadystatechange = ut.noop, Qi &&
                                                 delete Gi[s]), o) 4 !== l.readyState && l.abort();
                                         else {
                                             d = {}, r = l.status, c = l.getAllResponseHeaders(),
@@ -17410,9 +17590,9 @@ Object.values || (Object.values = function (e) {
                                     o || a(-1, p)
                                 }
                                 d && a(r, u, d, c)
-                            }, i.async ? 4 === l.readyState ? setTimeout(n) : (s = ++Yi, Ji && (
+                            }, i.async ? 4 === l.readyState ? setTimeout(n) : (s = ++Yi, Qi && (
                                 Gi || (Gi = {}, ut(e)
-                                    .unload(Ji)), Gi[s] = n), l.onreadystatechange = n) : n()
+                                    .unload(Qi)), Gi[s] = n), l.onreadystatechange = n) : n()
                         },
                         abort: function () {
                             n && n(t, !0)
@@ -17420,7 +17600,7 @@ Object.values || (Object.values = function (e) {
                     }
                 }
             });
-        var Qi, Xi, en = /^(?:toggle|show|hide)$/,
+        var Ji, Xi, en = /^(?:toggle|show|hide)$/,
             tn = new RegExp("^(?:([+-])=|)(" + dt + ")([a-z%]*)$", "i"),
             nn = /queueHooks$/,
             on = [H],
@@ -17587,8 +17767,8 @@ Object.values || (Object.values = function (e) {
             }, ut.timers = [], ut.fx = W.prototype.init, ut.fx.tick = function () {
                 var e, i = ut.timers,
                     n = 0;
-                for (Qi = ut.now(); n < i.length; n++) e = i[n], e() || i[n] !== e || i.splice(n--, 1);
-                i.length || ut.fx.stop(), Qi = t
+                for (Ji = ut.now(); n < i.length; n++) e = i[n], e() || i[n] !== e || i.splice(n--, 1);
+                i.length || ut.fx.stop(), Ji = t
             }, ut.fx.timer = function (e) {
                 e() && ut.timers.push(e) && ut.fx.start()
             }, ut.fx.interval = 13, ut.fx.start = function () {
@@ -17654,9 +17834,9 @@ Object.values || (Object.values = function (e) {
                 },
                 offsetParent: function () {
                     return this.map(function () {
-                        for (var e = this.offsetParent || J; e && !ut.nodeName(e, "html") &&
+                        for (var e = this.offsetParent || Q; e && !ut.nodeName(e, "html") &&
                             "static" === ut.css(e, "position");) e = e.offsetParent;
-                        return e || J
+                        return e || Q
                     })
                 }
             }), ut.each({
@@ -23152,7 +23332,7 @@ Object.values || (Object.values = function (e) {
                 },
                 _generateHTML: function (e) {
                     var t, i, n, o, a, s, r, l, c, u, d, h, p, m, _, f, g, v, b, y, w, k, x, C, z,
-                        T, S, A, E, P, I, M, j, D, N, L, O, R, F, $ = new Date,
+                        T, S, A, E, P, I, j, M, D, N, L, O, R, F, $ = new Date,
                         B = this._daylightSavingAdjust(new Date($.getFullYear(), $.getMonth(), $
                             .getDate())),
                         H = this._get(e, "isRTL"),
@@ -23165,13 +23345,13 @@ Object.values || (Object.values = function (e) {
                         K = 1 !== U[0] || 1 !== U[1],
                         Y = this._daylightSavingAdjust(e.currentDay ? new Date(e.currentYear, e
                             .currentMonth, e.currentDay) : new Date(9999, 9, 9)),
-                        J = this._getMinMaxDate(e, "min"),
-                        Q = this._getMinMaxDate(e, "max"),
+                        Q = this._getMinMaxDate(e, "min"),
+                        J = this._getMinMaxDate(e, "max"),
                         X = e.drawMonth - Z,
                         et = e.drawYear;
-                    if (0 > X && (X += 12, et--), Q)
-                        for (t = this._daylightSavingAdjust(new Date(Q.getFullYear(), Q
-                            .getMonth() - U[0] * U[1] + 1, Q.getDate())), t = J && J > t ? J :
+                    if (0 > X && (X += 12, et--), J)
+                        for (t = this._daylightSavingAdjust(new Date(J.getFullYear(), J
+                            .getMonth() - U[0] * U[1] + 1, J.getDate())), t = Q && Q > t ? Q :
                             t; this._daylightSavingAdjust(new Date(et, X, 1)) > t;) X--, 0 > X &&
                             (X = 11, et--);
                     for (e.drawMonth = X, e.drawYear = et, i = this._get(e, "prevText"), i = q ?
@@ -23227,7 +23407,7 @@ Object.values || (Object.values = function (e) {
                                 "<div class='ui-datepicker-header ui-widget-header ui-helper-clearfix" +
                                 T + "'>" + (/all|left/.test(T) && 0 === k ? H ? a : n : "") + (
                                     /all|right/.test(T) && 0 === k ? H ? n : a : "") + this
-                                ._generateMonthYearHeader(e, X, et, J, Q, k > 0 || C > 0, m, _) +
+                                ._generateMonthYearHeader(e, X, et, Q, J, k > 0 || C > 0, m, _) +
                                 "</div><table class='ui-datepicker-calendar'><thead>" + "<tr>",
                                 A = d ? "<th class='ui-datepicker-week-col'>" + this._get(e,
                                     "weekHeader") + "</th>" : "", w = 0; 7 > w; w++) E = (w + u) %
@@ -23237,15 +23417,15 @@ Object.values || (Object.values = function (e) {
                             for (S += A + "</tr></thead><tbody>", P = this._getDaysInMonth(et, X),
                                 et === e.selectedYear && X === e.selectedMonth && (e.selectedDay =
                                     Math.min(e.selectedDay, P)), I = (this._getFirstDayOfMonth(et,
-                                    X) - u + 7) % 7, M = Math.ceil((I + P) / 7), j = K ? this
-                                .maxRows > M ? this.maxRows : M : M, this.maxRows = j, D = this
-                                ._daylightSavingAdjust(new Date(et, X, 1 - I)), N = 0; j > N; N++
+                                    X) - u + 7) % 7, j = Math.ceil((I + P) / 7), M = K ? this
+                                .maxRows > j ? this.maxRows : j : j, this.maxRows = M, D = this
+                                ._daylightSavingAdjust(new Date(et, X, 1 - I)), N = 0; M > N; N++
                                 ) {
                                 for (S += "<tr>", L = d ? "<td class='ui-datepicker-week-col'>" +
                                     this._get(e, "calculateWeek")(D) + "</td>" : "", w = 0; 7 >
                                     w; w++) O = f ? f.apply(e.input ? e.input[0] : null, [D]) : [!
                                         0, ""], R = D.getMonth() !== X, F = R && !v || !O[0] ||
-                                    J && J > D || Q && D > Q, L += "<td class='" + ((w + u + 6) %
+                                    Q && Q > D || J && D > J, L += "<td class='" + ((w + u + 6) %
                                         7 >= 5 ? " ui-datepicker-week-end" : "") + (R ?
                                         " ui-datepicker-other-month" : "") + (D.getTime() === z
                                         .getTime() && X === e.selectedMonth && e._keyEvent || b
@@ -28045,11 +28225,11 @@ Object.values || (Object.values = function (e) {
                         E = A + s.width(),
                         P = i === !0 ? S : T,
                         I = i === !0 ? T : S,
-                        M = i === !0 ? E : A,
-                        j = i === !0 ? A : E;
-                    if ("both" === o) return !!p && k >= I && P >= w && C >= j && M >= x;
+                        j = i === !0 ? E : A,
+                        M = i === !0 ? A : E;
+                    if ("both" === o) return !!p && k >= I && P >= w && C >= M && j >= x;
                     if ("vertical" === o) return !!p && k >= I && P >= w;
-                    if ("horizontal" === o) return !!p && C >= j && M >= x
+                    if ("horizontal" === o) return !!p && C >= M && j >= x
                 }
             }
         }
@@ -29888,17 +30068,17 @@ Object.values || (Object.values = function (e) {
             for (i = 0, o = e.length; o > i; i++) {
                 for (n = 0, a = (s = e[i])
                     .length; a > n; n++) r = s[n], l += (n ? "L" : "M") + r.x + " " + r.y;
-                l += t ? Ji ? "z" : "x" : ""
+                l += t ? Qi ? "z" : "x" : ""
             }
             return l || "M0 0"
         }
 
-        function M(e) {
+        function j(e) {
             return navigator.userAgent.toLowerCase()
                 .indexOf(e) >= 0
         }
 
-        function j(e, t, i, n) {
+        function M(e, t, i, n) {
             return "touchstart" === t ? N(e, i, n) : "touchmove" === t ? B(e, i, n) : "touchend" === t &&
                 H(e, i, n), this
         }
@@ -30029,12 +30209,12 @@ Object.values || (Object.values = function (e) {
             t && t.lastChild !== e && t.appendChild(e)
         }
 
-        function J(e) {
+        function Q(e) {
             var t = e.parentNode;
             t && t.firstChild !== e && t.insertBefore(e, t.firstChild)
         }
 
-        function Q(e, t) {
+        function J(e, t) {
             if (void 0 !== e.classList) return e.classList.contains(t);
             var i = it(e);
             return i.length > 0 && new RegExp("(^|\\s)" + t + "(\\s|$)")
@@ -30044,7 +30224,7 @@ Object.values || (Object.values = function (e) {
         function X(e, t) {
             if (void 0 !== e.classList)
                 for (var i = c(t), n = 0, o = i.length; o > n; n++) e.classList.add(i[n]);
-            else if (!Q(e, t)) {
+            else if (!J(e, t)) {
                 var a = it(e);
                 tt(e, (a ? a + " " : "") + t)
             }
@@ -30161,7 +30341,7 @@ Object.values || (Object.values = function (e) {
                     return i.call(o || e, t || window.event)
                 },
                 r = s;
-            qi && 0 === t.indexOf("touch") ? j(e, t, s, a) : !Ui || "dblclick" !== t || !W || qi && Ii ?
+            qi && 0 === t.indexOf("touch") ? M(e, t, s, a) : !Ui || "dblclick" !== t || !W || qi && Ii ?
                 "addEventListener" in e ? "mousewheel" === t ? e.addEventListener("onwheel" in e ?
                     "wheel" : "mousewheel", s, !1) : "mouseenter" === t || "mouseleave" === t ? (s =
                     function (t) {
@@ -30249,26 +30429,26 @@ Object.values || (Object.values = function (e) {
         function Pt(e, t) {
             if (!t || !e.length) return e.slice();
             var i = t * t;
-            return e = Dt(e, i), e = Mt(e, i)
+            return e = Dt(e, i), e = jt(e, i)
         }
 
         function It(e, t, i) {
             return Math.sqrt(Ft(e, t, i, !0))
         }
 
-        function Mt(e, t) {
+        function jt(e, t) {
             var i = e.length,
                 n = new(typeof Uint8Array != void 0 + "" ? Uint8Array : Array)(i);
-            n[0] = n[i - 1] = 1, jt(e, n, t, 0, i - 1);
+            n[0] = n[i - 1] = 1, Mt(e, n, t, 0, i - 1);
             var o, a = [];
             for (o = 0; i > o; o++) n[o] && a.push(e[o]);
             return a
         }
 
-        function jt(e, t, i, n, o) {
+        function Mt(e, t, i, n, o) {
             var a, s, r, l = 0;
             for (s = n + 1; o - 1 >= s; s++)(r = Ft(e[s], e[n], e[o], !0)) > l && (a = s, l = r);
-            l > i && (t[a] = 1, jt(e, t, i, n, a), jt(e, t, i, a, o))
+            l > i && (t[a] = 1, Mt(e, t, i, n, a), Mt(e, t, i, a, o))
         }
 
         function Dt(e, t) {
@@ -30278,9 +30458,9 @@ Object.values || (Object.values = function (e) {
         }
 
         function Nt(e, t, i, n, o) {
-            var a, s, r, l = n ? jn : Ot(e, i),
+            var a, s, r, l = n ? Mn : Ot(e, i),
                 c = Ot(t, i);
-            for (jn = c;;) {
+            for (Mn = c;;) {
                 if (!(l | c)) return [e, t];
                 if (l & c) return !1;
                 r = Ot(s = Lt(e, t, a = l || c, i, o), i), a === l ? (e = s, l = r) : (t = s, c = r)
@@ -30413,16 +30593,16 @@ Object.values || (Object.values = function (e) {
             return new ao(e, t)
         }
 
-        function Jt(e, t) {
+        function Qt(e, t) {
             return new fo(e, t)
         }
 
-        function Qt(e) {
+        function Jt(e) {
             return Yi ? new bo(e) : null
         }
 
         function Xt(e) {
-            return Ji || Qi ? new xo(e) : null
+            return Qi || Ji ? new xo(e) : null
         }
         var ei = Object.freeze;
         Object.freeze = function (e) {
@@ -30962,23 +31142,23 @@ Object.values || (Object.values = function (e) {
             ki = "ActiveXObject" in window,
             xi = ki && !document.addEventListener,
             Ci = "msLaunchUri" in navigator && !("documentMode" in document),
-            zi = M("webkit"),
-            Ti = M("android"),
-            Si = M("android 2") || M("android 3"),
+            zi = j("webkit"),
+            Ti = j("android"),
+            Si = j("android 2") || j("android 3"),
             Ai = parseInt(/WebKit\/([0-9]+)|$/.exec(navigator.userAgent)[1], 10),
-            Ei = Ti && M("Google") && 537 > Ai && !("AudioNode" in window),
+            Ei = Ti && j("Google") && 537 > Ai && !("AudioNode" in window),
             Pi = !!window.opera,
-            Ii = M("chrome"),
-            Mi = M("gecko") && !zi && !Pi && !ki,
-            ji = !Ii && M("safari"),
-            Di = M("phantom"),
+            Ii = j("chrome"),
+            ji = j("gecko") && !zi && !Pi && !ki,
+            Mi = !Ii && j("safari"),
+            Di = j("phantom"),
             Ni = "OTransition" in wi,
             Li = 0 === navigator.platform.indexOf("Win"),
             Oi = ki && "transition" in wi,
             Ri = "WebKitCSSMatrix" in window && "m11" in new window.WebKitCSSMatrix && !Si,
             Fi = "MozPerspective" in wi,
             $i = !window.L_DISABLE_3D && (Oi || Ri || Fi) && !Ni && !Di,
-            Bi = "undefined" != typeof orientation || M("mobile"),
+            Bi = "undefined" != typeof orientation || j("mobile"),
             Hi = Bi && zi,
             Wi = Bi && Ri,
             Vi = !window.PointerEvent && window.MSPointerEvent,
@@ -30986,13 +31166,13 @@ Object.values || (Object.values = function (e) {
             Ui = !window.L_NO_TOUCH && (qi || "ontouchstart" in window || window.DocumentTouch &&
                 document instanceof window.DocumentTouch),
             Zi = Bi && Pi,
-            Gi = Bi && Mi,
+            Gi = Bi && ji,
             Ki = (window.devicePixelRatio || window.screen.deviceXDPI / window.screen.logicalXDPI) > 1,
             Yi = !!document.createElement("canvas")
             .getContext,
-            Ji = !(!document.createElementNS || !P("svg")
+            Qi = !(!document.createElementNS || !P("svg")
                 .createSVGRect),
-            Qi = !Ji && function () {
+            Ji = !Qi && function () {
                 try {
                     var e = document.createElement("div");
                     e.innerHTML = '<v:shape adj="1"/>';
@@ -31012,8 +31192,8 @@ Object.values || (Object.values = function (e) {
                 androidStock: Ei,
                 opera: Pi,
                 chrome: Ii,
-                gecko: Mi,
-                safari: ji,
+                gecko: ji,
+                safari: Mi,
                 phantom: Di,
                 opera12: Ni,
                 win: Li,
@@ -31031,8 +31211,8 @@ Object.values || (Object.values = function (e) {
                 mobileGecko: Gi,
                 retina: Ki,
                 canvas: Yi,
-                svg: Ji,
-                vml: Qi
+                svg: Qi,
+                vml: Ji
             }),
             en = Vi ? "MSPointerDown" : "pointerdown",
             tn = Vi ? "MSPointerMove" : "pointermove",
@@ -31075,8 +31255,8 @@ Object.values || (Object.values = function (e) {
                 remove: G,
                 empty: K,
                 toFront: Y,
-                toBack: J,
-                hasClass: Q,
+                toBack: Q,
+                hasClass: J,
                 addClass: X,
                 removeClass: et,
                 setClass: tt,
@@ -31096,7 +31276,7 @@ Object.values || (Object.values = function (e) {
                 getScale: mt
             }),
             yn = "_leaflet_events",
-            wn = Li && Ii ? 2 * window.devicePixelRatio : Mi ? window.devicePixelRatio : 1,
+            wn = Li && Ii ? 2 * window.devicePixelRatio : ji ? window.devicePixelRatio : 1,
             kn = {},
             xn = (Object.freeze || Object)({
                 on: _t,
@@ -31620,7 +31800,7 @@ Object.values || (Object.values = function (e) {
                     var e = this._container;
                     this._fadeAnimated = this.options.fadeAnimation && $i, X(e,
                         "leaflet-container" + (Ui ? " leaflet-touch" : "") + (Ki ?
-                            " leaflet-retina" : "") + (xi ? " leaflet-oldie" : "") + (ji ?
+                            " leaflet-retina" : "") + (xi ? " leaflet-oldie" : "") + (Mi ?
                             " leaflet-safari" : "") + (this._fadeAnimated ?
                             " leaflet-fade-anim" : ""));
                     var t = U(e, "position");
@@ -32288,7 +32468,7 @@ Object.values || (Object.values = function (e) {
         }, Sn.attribution = function (e) {
             return new In(e)
         };
-        var Mn = v.extend({
+        var jn = v.extend({
             initialize: function (e) {
                 this._map = e
             },
@@ -32302,10 +32482,10 @@ Object.values || (Object.values = function (e) {
                 return !!this._enabled
             }
         });
-        Mn.addTo = function (e, t) {
+        jn.addTo = function (e, t) {
             return e.addHandler(t, this), this
         };
-        var jn, Dn = {
+        var Mn, Dn = {
                 Events: ui
             },
             Nn = Ui ? "touchstart mousedown" : "mousedown",
@@ -32339,7 +32519,7 @@ Object.values || (Object.values = function (e) {
                         this._moved = !1)
                 },
                 _onDown: function (e) {
-                    if (!e._simulated && this._enabled && (this._moved = !1, !(Q(this._element,
+                    if (!e._simulated && this._enabled && (this._moved = !1, !(J(this._element,
                                 "leaflet-zoom-anim") || Rn._dragging || e.shiftKey || 1 !== e
                             .which && 1 !== e.button && !e.touches || (Rn._dragging = this,
                                 this._preventOutline && dt(this._element), ct(), fi(), this
@@ -32703,7 +32883,7 @@ Object.values || (Object.values = function (e) {
                     return Ki && this.options[e + "RetinaUrl"] || this.options[e + "Url"]
                 }
             }),
-            Jn = Yn.extend({
+            Qn = Yn.extend({
                 options: {
                     iconUrl: "marker-icon.png",
                     iconRetinaUrl: "marker-icon-2x.png",
@@ -32715,8 +32895,8 @@ Object.values || (Object.values = function (e) {
                     shadowSize: [41, 41]
                 },
                 _getIconUrl: function (e) {
-                    return Jn.imagePath || (Jn.imagePath = this._detectIconPath()), (this.options
-                        .imagePath || Jn.imagePath) + Yn.prototype._getIconUrl.call(this, e)
+                    return Qn.imagePath || (Qn.imagePath = this._detectIconPath()), (this.options
+                        .imagePath || Qn.imagePath) + Yn.prototype._getIconUrl.call(this, e)
                 },
                 _detectIconPath: function () {
                     var e = Z("div", "leaflet-default-icon-path", document.body),
@@ -32726,7 +32906,7 @@ Object.values || (Object.values = function (e) {
                         .replace(/marker-icon\.png["']?\)$/, "")
                 }
             }),
-            Qn = Mn.extend({
+            Jn = jn.extend({
                 initialize: function (e) {
                     this._marker = e
                 },
@@ -32802,7 +32982,7 @@ Object.values || (Object.values = function (e) {
             }),
             Xn = Zn.extend({
                 options: {
-                    icon: new Jn,
+                    icon: new Qn,
                     interactive: !0,
                     keyboard: !0,
                     title: "",
@@ -32911,10 +33091,10 @@ Object.values || (Object.values = function (e) {
                 },
                 _initInteraction: function () {
                     if (this.options.interactive && (X(this._icon, "leaflet-interactive"), this
-                            .addInteractiveTarget(this._icon), Qn)) {
+                            .addInteractiveTarget(this._icon), Jn)) {
                         var e = this.options.draggable;
                         this.dragging && (e = this.dragging.enabled(), this.dragging.disable()),
-                            this.dragging = new Qn(this), e && this.dragging.enable()
+                            this.dragging = new Jn(this), e && this.dragging.enable()
                     }
                 },
                 setOpacity: function (e) {
@@ -33378,7 +33558,7 @@ Object.values || (Object.values = function (e) {
                     return this._map && Y(this._image), this
                 },
                 bringToBack: function () {
-                    return this._map && J(this._image), this
+                    return this._map && Q(this._image), this
                 },
                 setUrl: function (e) {
                     return this._url = e, this._image && (this._image.src = e), this
@@ -33521,7 +33701,7 @@ Object.values || (Object.values = function (e) {
                     return this._map && Y(this._container), this
                 },
                 bringToBack: function () {
-                    return this._map && J(this._container), this
+                    return this._map && Q(this._container), this
                 },
                 _updateContent: function () {
                     if (this._content) {
@@ -33904,7 +34084,7 @@ Object.values || (Object.values = function (e) {
                 return null
             }
         });
-        Yn.Default = Jn;
+        Yn.Default = Qn;
         var _o = Zn.extend({
                 options: {
                     tileSize: 256,
@@ -33941,7 +34121,7 @@ Object.values || (Object.values = function (e) {
                     return this._map && (Y(this._container), this._setAutoZIndex(Math.max)), this
                 },
                 bringToBack: function () {
-                    return this._map && (J(this._container), this._setAutoZIndex(Math.min)), this
+                    return this._map && (Q(this._container), this._setAutoZIndex(Math.min)), this
                 },
                 getContainer: function () {
                     return this._container
@@ -34423,7 +34603,7 @@ Object.values || (Object.values = function (e) {
                     return t(this.wmsParams, e), i || this.redraw(), this
                 }
             });
-        fo.WMS = go, Jt.wms = function (e, t) {
+        fo.WMS = go, Qt.wms = function (e, t) {
             return new go(e, t)
         };
         var vo = Zn.extend({
@@ -34759,10 +34939,10 @@ Object.values || (Object.values = function (e) {
                     Y(e._container)
                 },
                 _bringToBack: function (e) {
-                    J(e._container)
+                    Q(e._container)
                 }
             },
-            ko = Qi ? yo : P,
+            ko = Ji ? yo : P,
             xo = vo.extend({
                 getEvents: function () {
                     var e = vo.prototype.getEvents.call(this);
@@ -34843,10 +35023,10 @@ Object.values || (Object.values = function (e) {
                     Y(e._path)
                 },
                 _bringToBack: function (e) {
-                    J(e._path)
+                    Q(e._path)
                 }
             });
-        Qi && xo.include(wo), zn.include({
+        Ji && xo.include(wo), zn.include({
             getRenderer: function (e) {
                 var t = e.options.renderer || this._getPaneRenderer(e.options.pane) || this
                     .options.renderer || this._renderer;
@@ -34861,7 +35041,7 @@ Object.values || (Object.values = function (e) {
                 }), this._paneRenderers[e] = t), t
             },
             _createRenderer: function (e) {
-                return this.options.preferCanvas && Qt(e) || Xt(e)
+                return this.options.preferCanvas && Jt(e) || Xt(e)
             }
         });
         var Co = oo.extend({
@@ -34881,7 +35061,7 @@ Object.values || (Object.values = function (e) {
             .asFeature = Kt, zn.mergeOptions({
                 boxZoom: !0
             });
-        var zo = Mn.extend({
+        var zo = jn.extend({
             initialize: function (e) {
                 this._map = e, this._container = e._container, this._pane = e._panes
                     .overlayPane, this._resetStateTimeout = 0, e.on("unload", this._destroy,
@@ -34954,7 +35134,7 @@ Object.values || (Object.values = function (e) {
         zn.addInitHook("addHandler", "boxZoom", zo), zn.mergeOptions({
             doubleClickZoom: !0
         });
-        var To = Mn.extend({
+        var To = jn.extend({
             addHooks: function () {
                 this._map.on("dblclick", this._onDoubleClick, this)
             },
@@ -34979,7 +35159,7 @@ Object.values || (Object.values = function (e) {
             worldCopyJump: !1,
             maxBoundsViscosity: 0
         });
-        var So = Mn.extend({
+        var So = jn.extend({
             addHooks: function () {
                 if (!this._draggable) {
                     var e = this._map;
@@ -35101,7 +35281,7 @@ Object.values || (Object.values = function (e) {
             keyboard: !0,
             keyboardPanDelta: 80
         });
-        var Ao = Mn.extend({
+        var Ao = jn.extend({
             keyCodes: {
                 left: [37],
                 right: [39],
@@ -35194,7 +35374,7 @@ Object.values || (Object.values = function (e) {
             wheelDebounceTime: 40,
             wheelPxPerZoomLevel: 60
         });
-        var Eo = Mn.extend({
+        var Eo = jn.extend({
             addHooks: function () {
                 _t(this._map._container, "mousewheel", this._onWheelScroll, this), this
                     ._delta = 0
@@ -35229,7 +35409,7 @@ Object.values || (Object.values = function (e) {
             tap: !0,
             tapTolerance: 15
         });
-        var Po = Mn.extend({
+        var Po = jn.extend({
             addHooks: function () {
                 _t(this._map._container, "touchstart", this._onDown, this)
             },
@@ -35285,7 +35465,7 @@ Object.values || (Object.values = function (e) {
             touchZoom: Ui && !Si,
             bounceAtZoomLimits: !0
         });
-        var Io = Mn.extend({
+        var Io = jn.extend({
             addHooks: function () {
                 X(this._map._container, "leaflet-touch-zoom"), _t(this._map._container,
                     "touchstart", this._onTouchStart, this)
@@ -35351,7 +35531,7 @@ Object.values || (Object.values = function (e) {
         zn.addInitHook("addHandler", "touchZoom", Io), zn.BoxZoom = zo, zn.DoubleClickZoom = To, zn.Drag =
             So, zn.Keyboard = Ao, zn.ScrollWheelZoom = Eo, zn.Tap = Po, zn.TouchZoom = Io, Object.freeze =
             ei, e.version = "1.4.0+HEAD.3337f36", e.Control = Tn, e.control = Sn, e.Browser = Xi, e
-            .Evented = di, e.Mixin = Dn, e.Util = ci, e.Class = v, e.Handler = Mn, e.extend = t, e.bind =
+            .Evented = di, e.Mixin = Dn, e.Util = ci, e.Class = v, e.Handler = jn, e.extend = t, e.bind =
             i, e.stamp = n, e.setOptions = u, e.DomEvent = xn, e.DomUtil = bn, e.PosAnimation = Cn, e
             .Draggable = Rn, e.LineUtil = Fn, e.PolyUtil = $n, e.Point = y, e.point = w, e.Bounds = k, e
             .bounds = x, e.Transformation = A, e.transformation = E, e.Projection = Wn, e.LatLng = T, e
@@ -35374,9 +35554,9 @@ Object.values || (Object.values = function (e) {
                 return new mo(e)
             }, e.Marker = Xn, e.marker = function (e, t) {
                 return new Xn(e, t)
-            }, e.TileLayer = fo, e.tileLayer = Jt, e.GridLayer = _o, e.gridLayer = function (e) {
+            }, e.TileLayer = fo, e.tileLayer = Qt, e.GridLayer = _o, e.gridLayer = function (e) {
                 return new _o(e)
-            }, e.SVG = xo, e.svg = Xt, e.Renderer = vo, e.Canvas = bo, e.canvas = Qt, e.Path = eo, e
+            }, e.SVG = xo, e.svg = Xt, e.Renderer = vo, e.Canvas = bo, e.canvas = Jt, e.Path = eo, e
             .CircleMarker = to, e.circleMarker = function (e, t) {
                 return new to(e, t)
             }, e.Circle = io, e.circle = function (e, t, i) {
@@ -35390,9 +35570,9 @@ Object.values || (Object.values = function (e) {
             }, e.Map = zn, e.map = function (e, t) {
                 return new zn(e, t)
             };
-        var Mo = window.L;
+        var jo = window.L;
         e.noConflict = function () {
-            return window.L = Mo, this
+            return window.L = jo, this
         }, window.L = e
     }), ! function (e) {
         "use strict";
@@ -39179,7 +39359,7 @@ function (e) {
         y(e, "width", t)
     }
 
-    function M(e, t) {
+    function j(e, t) {
         if (ut(t)) {
             var i = getComputedStyle(e),
                 n = s(i.paddingTop) + s(i.paddingBottom),
@@ -39189,7 +39369,7 @@ function (e) {
         y(e, "height", t)
     }
 
-    function j(e, t, i) {
+    function M(e, t, i) {
         var n;
         dt(window.CustomEvent) ? n = new CustomEvent(t, {
                 bubbles: !0,
@@ -39338,12 +39518,12 @@ function (e) {
         return n
     }
 
-    function J(e, t, i) {
+    function Q(e, t, i) {
         var n = Y(e, t);
         return n ? !i || n === i || Array.isArray(i) && i.indexOf(n) > -1 : !1
     }
 
-    function Q(e) {
+    function J(e) {
         return e.replace(/([\-.*+?^=!:${}()|\[\]\/\\])/g, "\\$1")
     }
 
@@ -39376,7 +39556,7 @@ function (e) {
         var n = zt[e];
         return Object.keys(t)
             .forEach(function (e) {
-                n = n.replace(new RegExp(Q("{" + e + "}"), "g"), t[e])
+                n = n.replace(new RegExp(J("{" + e + "}"), "g"), t[e])
             }), i && (n = R(n)), n
     }
 
@@ -39558,7 +39738,7 @@ function (e) {
             for (o && v++, a = a || "", s = l.getOuterText(!0, v), d = s.length, s += a, t && (s += l
                     .getOuterText(!1, v)); f--;)
                 if (p = e[f][0], m = p.length, u = Math.max(0, d - m - g), c = -1, o ? (r = s.substr(u)
-                        .match(new RegExp(_ + Q(p) + _)), r && (c = r.index + u + r[1].length)) : c = s
+                        .match(new RegExp(_ + J(p) + _)), r && (c = r.index + u + r[1].length)) : c = s
                     .indexOf(p, u), c > -1 && d >= c && c + m + g >= d) return h = d - c, l
                     .selectOuterText(h, m - h - (/^\S/.test(a) ? 1 : 0)), l.insertHTML(e[f][1]), !0;
             return !1
@@ -39600,7 +39780,7 @@ function (e) {
             s = [],
             r = {};
         l(e, "code") || (a(t, function (e) {
-            r[e] = new RegExp(o + Q(e) + o), s.push(e)
+            r[e] = new RegExp(o + J(e) + o), s.push(e)
         }), s.sort(function (e, t) {
             return t.length - e.length
         }), function c(e) {
@@ -39632,8 +39812,8 @@ function (e) {
     }
 
     function lt(e, t) {
-        var i, s, l, f, x, C, T, N, L, R, W, q, U, G, Y, J, Q, et, it, ht, pt, gt, bt, yt, Ct, zt, Tt, At, Et,
-            Pt, Lt, Ot, Rt, Ft, $t, Bt, Ht, Wt, Vt, qt, Ut, Zt, Gt, Kt, Yt, Jt, Qt, Xt, ei, ti, ii, ni, oi,
+        var i, s, l, f, x, C, T, N, L, R, W, q, U, G, Y, Q, J, et, it, ht, pt, gt, bt, yt, Ct, zt, Tt, At, Et,
+            Pt, Lt, Ot, Rt, Ft, $t, Bt, Ht, Wt, Vt, qt, Ut, Zt, Gt, Kt, Yt, Qt, Jt, Xt, ei, ti, ii, ni, oi,
             ai, si, ri, li, ci, ui, di, hi, pi, mi, _i = this,
             fi = {},
             gi = [],
@@ -39646,7 +39826,7 @@ function (e) {
         _i.opts.emoticons = t.emoticons || vt.emoticons, Tt = function () {
             e._sceditor = _i, ki.locale && "en" !== ki.locale && Rt(), s = r("div", {
                     className: "sceditor-container"
-                }), z(s, e), y(s, "z-index", ki.zIndex), jt && A(s, "ie ie" + jt), ht = e.required, e
+                }), z(s, e), y(s, "z-index", ki.zIndex), Mt && A(s, "ie ie" + Mt), ht = e.required, e
                 .required = !1;
             var t = lt.formats[ki.format];
             i = t ? new t : {}, "init" in i && i.init.call(_i), Ot(), Wt(), Ft(), Lt(), $t(), Bt(), xt ||
@@ -39655,7 +39835,7 @@ function (e) {
                 m(It, "load", n), ki.autofocus && si(), mi(), ni(), Y.call("ready"), "onReady" in i &&
                     i.onReady.call(_i)
             };
-            p(It, "load", n), "complete" === Mt.readyState && n()
+            p(It, "load", n), "complete" === jt.readyState && n()
         }, Ot = function () {
             var e = ki.plugins;
             e = e ? e.toString()
@@ -39673,15 +39853,15 @@ function (e) {
                 }), ki.startInSourceMode ? (A(s, "sourceMode"), g(f)) : (A(s, "wysiwygMode"), g(N)), ki
                 .spellcheck || _(s, "spellcheck", "false"), "https:" === It.location.protocol && _(f,
                     "src", "javascript:false"), d(s, f), d(s, N), _i.dimensions(ki.width || I(e), ki
-                    .height || M(e));
-            var t = jt ? "ie ie" + jt : "";
+                    .height || j(e));
+            var t = Mt ? "ie ie" + Mt : "";
             t += kt ? " ios" : "", T = f.contentDocument, T.open(), T.write(tt("html", {
                 attrs: ' class="' + t + '"',
                 spellcheck: ki.spellcheck ? "" : 'spellcheck="false"',
                 charset: ki.charset,
                 style: ki.style
             })), T.close(), C = T.body, x = f.contentWindow, _i.readOnly(!!ki.readOnly), (kt || wt ||
-                jt) && (M(C, "100%"), jt || p(C, "touchend", _i.focus));
+                Mt) && (j(C, "100%"), Mt || p(C, "touchend", _i.focus));
             var i = _(e, "tabindex");
             _(N, "tabindex", i), _(f, "tabindex", i), G = new ot(x), g(e), _i.val(e.value);
             var n = ki.placeholder || _(e, "placeholder");
@@ -39697,20 +39877,20 @@ function (e) {
                 n = "keydown keyup keypress focus blur contextmenu",
                 o = "onselectionchange" in T ? "selectionchange" :
                 "keyup focus blur contextmenu mouseup touchend click";
-            p(Mt, "click", Xt), t && (p(t, "reset", Kt), p(t, "submit", _i.updateOriginal, ft)), p(C,
+            p(jt, "click", Xt), t && (p(t, "reset", Kt), p(t, "submit", _i.updateOriginal, ft)), p(C,
                 "keypress", Gt), p(C, "keydown", Ut), p(C, "keydown", Zt), p(C, "keyup", ni), p(C,
-                "blur", di), p(C, "keyup", hi), p(C, "paste", Vt), p(C, i, Jt), p(C, o, oi), p(C, n,
-                Qt), ki.emoticonsCompat && It.getSelection && p(C, "keyup", li), p(C, "blur",
+                "blur", di), p(C, "keyup", hi), p(C, "paste", Vt), p(C, i, Qt), p(C, o, oi), p(C, n,
+                Jt), ki.emoticonsCompat && It.getSelection && p(C, "keyup", li), p(C, "blur",
                 function () {
                     _i.val() || A(C, "placeholder")
                 }), p(C, "focus", function () {
                 E(C, "placeholder")
-            }), p(N, "blur", di), p(N, "keyup", hi), p(N, "keydown", Ut), p(N, i, Jt), p(N, n, Qt), p(
+            }), p(N, "blur", di), p(N, "keyup", hi), p(N, "keydown", Ut), p(N, i, Qt), p(N, n, Jt), p(
                 T, "mousedown", Yt), p(T, o, oi), p(T, "beforedeactivate keyup mouseup", Pt), p(T,
                 "keyup", ni), p(T, "focus", function () {
                 R = null
             }), p(s, "selectionchanged", ai), p(s, "selectionchanged", ti), p(s,
-                "selectionchanged valuechanged nodechanged pasteraw paste", Qt)
+                "selectionchanged valuechanged nodechanged pasteraw paste", Jt)
         }, Ft = function () {
             var e, t = _i.commands,
                 i = (ki.toolbarExclude || "")
@@ -39766,7 +39946,7 @@ function (e) {
                 w = 0,
                 k = 0,
                 x = I(s),
-                C = M(s),
+                C = j(s),
                 z = !1,
                 T = _i.rtl();
             if (e = ki.resizeMinHeight || C / 1.5, t = ki.resizeMaxHeight || 2.5 * C, i = ki
@@ -39779,15 +39959,15 @@ function (e) {
                         0 && a > t && (a = t), e > 0 && e > a && (a = e), ki.resizeHeight || (a = !1), (
                             s || a) && _i.dimensions(s, a), o.preventDefault()
                 }, a = function (e) {
-                    z && (z = !1, g(c), E(s, "resizing"), m(Mt, u, o), m(Mt, h, a), e.preventDefault())
+                    z && (z = !1, g(c), E(s, "resizing"), m(jt, u, o), m(jt, h, a), e.preventDefault())
                 }, zt && zt.create) {
                 var S = zt.create("grip");
                 S && (d(l, S), A(l, "has-icon"))
             }
             d(s, l), d(s, c), g(c), p(l, "touchstart mousedown", function (e) {
                 "touchstart" === e.type ? (e = It.event, _ = e.touches[0].pageX, f = e.touches[0]
-                    .pageY) : (_ = e.pageX, f = e.pageY), w = I(s), k = M(s), z = !0, A(s,
-                    "resizing"), v(c), p(Mt, u, o), p(Mt, h, a), e.preventDefault()
+                    .pageY) : (_ = e.pageX, f = e.pageY), w = I(s), k = j(s), z = !0, A(s,
+                    "resizing"), v(c), p(jt, u, o), p(jt, h, a), e.preventDefault()
             })
         }, Wt = function () {
             var e = ki.emoticons,
@@ -39832,26 +40012,26 @@ function (e) {
                 width: _i.width(),
                 height: _i.height()
             } : (e !== !1 && (i !== !1 && (ki.width = e), I(s, e)), t !== !1 && (i !== !1 && (ki
-                .height = t), M(s, t)), _i)
+                .height = t), j(s, t)), _i)
         }, _i.height = function (e, t) {
-            return e || 0 === e ? (_i.dimensions(null, e, t), _i) : M(s)
+            return e || 0 === e ? (_i.dimensions(null, e, t), _i) : j(s)
         }, _i.maximize = function (e) {
             var t = "sceditor-maximize";
-            return ut(e) ? S(s, t) : (e = !!e, e && (yt = It.pageYOffset), P(Mt.documentElement, t, e), P(
-                Mt.body, t, e), P(s, t, e), _i.width(e ? "100%" : ki.width, !1), _i.height(e ?
+            return ut(e) ? S(s, t) : (e = !!e, e && (yt = It.pageYOffset), P(jt.documentElement, t, e), P(
+                jt.body, t, e), P(s, t, e), _i.width(e ? "100%" : ki.width, !1), _i.height(e ?
                 "100%" : ki.height, !1), e || It.scrollTo(0, yt), mi(), _i)
         }, mi = function () {
             ki.autoExpand && !bt && (bt = setTimeout(_i.expandToContent, 200))
         }, _i.expandToContent = function (t) {
             if (!_i.maximize()) {
                 if (clearTimeout(bt), bt = !1, !gt) {
-                    var i = ki.resizeMinHeight || ki.height || M(e);
+                    var i = ki.resizeMinHeight || ki.height || j(e);
                     gt = {
                         min: i,
                         max: ki.resizeMaxHeight || 2 * i
                     }
                 }
-                var n = Mt.createRange();
+                var n = jt.createRange();
                 n.selectNodeContents(C);
                 var o = n.getBoundingClientRect(),
                     a = T.documentElement.clientHeight - 1,
@@ -39861,7 +40041,7 @@ function (e) {
             }
         }, _i.destroy = function () {
             if (Y) {
-                Y.destroy(), G = null, R = null, Y = null, L && u(L), m(Mt, "click", Xt);
+                Y.destroy(), G = null, R = null, Y = null, L && u(L), m(jt, "click", Xt);
                 var t = e.form;
                 t && (m(t, "reset", Kt), m(t, "submit", _i.updateOriginal)), u(N), u(l), u(s), delete e
                     ._sceditor, v(e), e.required = ht
@@ -39888,7 +40068,7 @@ function (e) {
         }, Xt = function (e) {
             3 !== e.which && L && !e.defaultPrevented && (pi(), _i.closeDropDown())
         }, Vt = function (e) {
-            var t = jt || wt,
+            var t = Mt || wt,
                 i = C,
                 n = e.clipboardData,
                 o = function (e) {
@@ -39911,7 +40091,7 @@ function (e) {
                 a.text = a["text/plain"], a.html = a["text/html"], qt(a)
             } else if (!Ct) {
                 var c = i.scrollTop;
-                for (G.saveRange(), Ct = Mt.createDocumentFragment(); i.firstChild;) d(Ct, i.firstChild);
+                for (G.saveRange(), Ct = jt.createDocumentFragment(); i.firstChild;) d(Ct, i.firstChild);
                 setTimeout(function () {
                     var e = i.innerHTML;
                     i.innerHTML = "", d(i, Ct), i.scrollTop = c, Ct = !1, G.restoreRange(), qt({
@@ -39921,19 +40101,19 @@ function (e) {
             }
         }, qt = function (e) {
             var t = r("div", {}, T);
-            Y.call("pasteRaw", e), j(s, "pasteraw", e), e.html ? (t.innerHTML = e.html, V(t)) : t
+            Y.call("pasteRaw", e), M(s, "pasteraw", e), e.html ? (t.innerHTML = e.html, V(t)) : t
                 .innerHTML = X(e.text || "");
             var n = {
                 val: t.innerHTML
             };
-            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, T, J)), Y.call("paste", n), j(s,
-                "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, J)), Y.call(
+            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, T, Q)), Y.call("paste", n), M(s,
+                "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, Q)), Y.call(
                 "pasteHtml", n), _i.wysiwygEditorInsertHtml(n.val, null, !0)
         }, _i.closeDropDown = function (e) {
             L && (u(L), L = null), e === !0 && _i.focus()
         }, _i.wysiwygEditorInsertHtml = function (e, t, i) {
-            var n, o, a, s = M(f);
-            _i.focus(), (i || !c(Q, "code")) && (G.insertHTML(e, t), G.saveRange(), At(), n = h(C,
+            var n, o, a, s = j(f);
+            _i.focus(), (i || !c(J, "code")) && (G.insertHTML(e, t), G.saveRange(), At(), n = h(C,
                     "#sceditor-end-marker")[0], v(n), o = C.scrollTop, a = K(n)
                 .top + 1.5 * n.offsetHeight - s, g(n), (a > o || o > a + s) && (C.scrollTop = a), ui(!
                     1), G.restoreRange(), ni())
@@ -39963,9 +40143,9 @@ function (e) {
             if (_i.inSourceMode()) return _i.sourceEditorInsertText(e, t), _i;
             if (t) {
                 var s = G.selectedHtml();
-                n !== !1 && "fragmentToSource" in i && (s = i.fragmentToSource(s, T, J)), e += s + t
+                n !== !1 && "fragmentToSource" in i && (s = i.fragmentToSource(s, T, Q)), e += s + t
             }
-            return n !== !1 && "fragmentToHtml" in i && (e = i.fragmentToHtml(e, J)), n !== !1 && a === !
+            return n !== !1 && "fragmentToHtml" in i && (e = i.fragmentToHtml(e, Q)), n !== !1 && a === !
                 0 && (e = e.replace(/&lt;/g, "<")
                     .replace(/&gt;/g, ">")
                     .replace(/&amp;/g, "&")), _i.wysiwygEditorInsertHtml(e), _i
@@ -39982,7 +40162,7 @@ function (e) {
             var t = N.value;
             return e !== !1 && "toHtml" in i && (t = i.toHtml(t)), t
         }, _i.setWysiwygEditorValue = function (e) {
-            e || (e = "<p>" + (jt ? "" : "<br />") + "</p>"), C.innerHTML = e, At(), ni(), ui(), mi()
+            e || (e = "<p>" + (Mt ? "" : "<br />") + "</p>"), C.innerHTML = e, At(), ni(), ui(), mi()
         }, _i.setSourceEditorValue = function (e) {
             N.value = e, ui()
         }, _i.updateOriginal = function () {
@@ -40007,7 +40187,7 @@ function (e) {
                 _i, e) : _i.execCommand(t.exec, t.hasOwnProperty("execParam") ? t.execParam :
                 null))
         }, Pt = function () {
-            jt && (R = G.selectedRange())
+            Mt && (R = G.selectedRange())
         }, _i.execCommand = function (e, t) {
             var i = !1,
                 n = _i.commands[e];
@@ -40028,21 +40208,21 @@ function (e) {
                             e = e.parentNode;
                         e && H(e, !0) && (G.saveRange(), rt(C, T), G.restoreRange())
                     }
-                    j(s, "selectionchanged")
+                    M(s, "selectionchanged")
                 }
                 it = !1
             }
             it || (it = !0, "onselectionchange" in T ? e() : setTimeout(e, 100))
         }, ai = function () {
             var e, t = G.parentNode();
-            J !== t && (e = J, J = t, Q = G.getFirstBlockParent(t), j(s, "nodechanged", {
+            Q !== t && (e = Q, Q = t, J = G.getFirstBlockParent(t), M(s, "nodechanged", {
                 oldNode: e,
-                newNode: J
+                newNode: Q
             }))
         }, _i.currentNode = function () {
-            return J
-        }, _i.currentBlockNode = function () {
             return Q
+        }, _i.currentBlockNode = function () {
+            return J
         }, ti = function () {
             var e, t, i = "active",
                 n = T,
@@ -40068,7 +40248,7 @@ function (e) {
         }, Gt = function (e) {
             if (!e.defaultPrevented && (_i.closeDropDown(), 13 === e.which)) {
                 var t = "li,ul,ol";
-                if (!k(Q, t) && F(Q)) {
+                if (!k(J, t) && F(J)) {
                     R = null;
                     var i = r("br", {}, T);
                     if (G.insertNode(i), !Dt) {
@@ -40099,7 +40279,7 @@ function (e) {
             return U && U[t[0]] && (t[0] = U[t[0]]), t[0].replace(/\{(\d+)\}/g, function (i, n) {
                 return t[n - 0 + 1] !== e ? t[n - 0 + 1] : "{" + n + "}"
             })
-        }, Qt = function (e) {
+        }, Jt = function (e) {
             Y && Y.call(e.type + "Event", e, _i);
             var t = (e.target === N ? "scesrc" : "scewys") + e.type;
             fi[t] && fi[t].forEach(function (t) {
@@ -40150,7 +40330,7 @@ function (e) {
             var t, i = 0,
                 n = _i.emoticonsCache,
                 o = String.fromCharCode(e.which);
-            c(Q, "code") || (n || (n = [], a(wi, function (e, t) {
+            c(J, "code") || (n || (n = [], a(wi, function (e, t) {
                     n[i++] = [e, t]
                 }), n.sort(function (e, t) {
                     return e[0].length - t[0].length
@@ -40158,7 +40338,7 @@ function (e) {
                 .replaceKeyword(_i.emoticonsCache, !0, !0, _i.longestEmoticonCode, ki.emoticonsCompat,
                     o), t && (ki.emoticonsCompat && /^\s$/.test(o) || e.preventDefault()))
         }, li = function () {
-            at(Q, G)
+            at(J, G)
         }, _i.emoticons = function (e) {
             if (!e && e !== !1) return ki.emoticonsEnabled;
             if (ki.emoticonsEnabled = e, e) p(C, "keypress", ri), _i.sourceMode() || (G.saveRange(), At(),
@@ -40304,7 +40484,7 @@ function (e) {
                 _i.clearBlockFormatting(o), e.preventDefault()
             }
         }, ci = function () {
-            for (var e = Q; !F(e) || H(e, !0);)
+            for (var e = J; !F(e) || H(e, !0);)
                 if (!(e = e.parentNode) || k(e, "body")) return;
             return e
         }, _i.clearBlockFormatting = function (e) {
@@ -40316,7 +40496,7 @@ function (e) {
                     n = !i && G.hasSelection();
                 W = !1, e = e !== !1 && !T.getElementById("sceditor-start-marker"), q && (clearTimeout(q),
                         q = !1), n && e && G.saveRange(), t = i ? N.value : C.innerHTML, t !== ui
-                    .lastVal && (ui.lastVal = t, j(s, "valuechanged", {
+                    .lastVal && (ui.lastVal = t, M(s, "valuechanged", {
                         rawValue: i ? _i.val() : t
                     })), n && e && G.removeMarkers()
             }
@@ -40332,7 +40512,7 @@ function (e) {
                     .triggerNext = !1), clearTimeout(q), q = setTimeout(function () {
                     W || ui()
                 }, 1500))
-        }, Jt = function (e) {
+        }, Qt = function (e) {
             W = /start/i.test(e.type), W || ui()
         }, pi = function () {
             _i.updateOriginal()
@@ -40978,9 +41158,9 @@ function (e) {
             }
         },
         It = window,
-        Mt = document,
-        jt = yt,
-        Dt = jt && 11 > jt,
+        jt = document,
+        Mt = yt,
+        Dt = Mt && 11 > Mt,
         Nt = /^image\/(p?jpe?g|gif|png|bmp)$/i;
     lt.locale = {}, lt.formats = {}, lt.icons = {}, lt.command = {
             get: function (e) {
@@ -41014,7 +41194,7 @@ function (e) {
             ie: yt,
             ios: kt,
             isWysiwygSupported: xt,
-            regexEscape: Q,
+            regexEscape: J,
             escapeEntities: X,
             escapeUriScheme: et,
             dom: {
@@ -41024,7 +41204,7 @@ function (e) {
                 is: k,
                 closest: c,
                 width: I,
-                height: M,
+                height: j,
                 traverse: L,
                 rTraverse: O,
                 parseHTML: R,
@@ -41041,7 +41221,7 @@ function (e) {
                 extractContents: G,
                 getOffset: K,
                 getStyle: Y,
-                hasStyle: J
+                hasStyle: Q
             },
             locale: lt.locale,
             icons: lt.icons,
@@ -41275,7 +41455,7 @@ function (e) {
         y(e, "width", t)
     }
 
-    function M(e, t) {
+    function j(e, t) {
         if (ut(t)) {
             var i = getComputedStyle(e),
                 n = s(i.paddingTop) + s(i.paddingBottom),
@@ -41285,7 +41465,7 @@ function (e) {
         y(e, "height", t)
     }
 
-    function j(e, t, i) {
+    function M(e, t, i) {
         var n;
         dt(window.CustomEvent) ? n = new CustomEvent(t, {
                 bubbles: !0,
@@ -41434,12 +41614,12 @@ function (e) {
         return n
     }
 
-    function J(e, t, i) {
+    function Q(e, t, i) {
         var n = Y(e, t);
         return n ? !i || n === i || Array.isArray(i) && i.indexOf(n) > -1 : !1
     }
 
-    function Q(e) {
+    function J(e) {
         return e.replace(/([\-.*+?^=!:${}()|\[\]\/\\])/g, "\\$1")
     }
 
@@ -41472,7 +41652,7 @@ function (e) {
         var n = zt[e];
         return Object.keys(t)
             .forEach(function (e) {
-                n = n.replace(new RegExp(Q("{" + e + "}"), "g"), t[e])
+                n = n.replace(new RegExp(J("{" + e + "}"), "g"), t[e])
             }), i && (n = R(n)), n
     }
 
@@ -41654,7 +41834,7 @@ function (e) {
             for (o && v++, a = a || "", s = l.getOuterText(!0, v), d = s.length, s += a, t && (s += l
                     .getOuterText(!1, v)); f--;)
                 if (p = e[f][0], m = p.length, u = Math.max(0, d - m - g), c = -1, o ? (r = s.substr(u)
-                        .match(new RegExp(_ + Q(p) + _)), r && (c = r.index + u + r[1].length)) : c = s
+                        .match(new RegExp(_ + J(p) + _)), r && (c = r.index + u + r[1].length)) : c = s
                     .indexOf(p, u), c > -1 && d >= c && c + m + g >= d) return h = d - c, l
                     .selectOuterText(h, m - h - (/^\S/.test(a) ? 1 : 0)), l.insertHTML(e[f][1]), !0;
             return !1
@@ -41696,7 +41876,7 @@ function (e) {
             s = [],
             r = {};
         l(e, "code") || (a(t, function (e) {
-            r[e] = new RegExp(o + Q(e) + o), s.push(e)
+            r[e] = new RegExp(o + J(e) + o), s.push(e)
         }), s.sort(function (e, t) {
             return t.length - e.length
         }), function c(e) {
@@ -41728,8 +41908,8 @@ function (e) {
     }
 
     function lt(e, t) {
-        var i, s, l, f, x, C, T, N, L, R, W, q, U, G, Y, J, Q, et, it, ht, pt, gt, bt, yt, Ct, zt, Tt, At, Et,
-            Pt, Lt, Ot, Rt, Ft, $t, Bt, Ht, Wt, Vt, qt, Ut, Zt, Gt, Kt, Yt, Jt, Qt, Xt, ei, ti, ii, ni, oi,
+        var i, s, l, f, x, C, T, N, L, R, W, q, U, G, Y, Q, J, et, it, ht, pt, gt, bt, yt, Ct, zt, Tt, At, Et,
+            Pt, Lt, Ot, Rt, Ft, $t, Bt, Ht, Wt, Vt, qt, Ut, Zt, Gt, Kt, Yt, Qt, Jt, Xt, ei, ti, ii, ni, oi,
             ai, si, ri, li, ci, ui, di, hi, pi, mi, _i = this,
             fi = {},
             gi = [],
@@ -41742,7 +41922,7 @@ function (e) {
         _i.opts.emoticons = t.emoticons || vt.emoticons, Tt = function () {
             e._sceditor = _i, ki.locale && "en" !== ki.locale && Rt(), s = r("div", {
                     className: "sceditor-container"
-                }), z(s, e), y(s, "z-index", ki.zIndex), jt && A(s, "ie ie" + jt), ht = e.required, e
+                }), z(s, e), y(s, "z-index", ki.zIndex), Mt && A(s, "ie ie" + Mt), ht = e.required, e
                 .required = !1;
             var t = lt.formats[ki.format];
             i = t ? new t : {}, "init" in i && i.init.call(_i), Ot(), Wt(), Ft(), Lt(), $t(), Bt(), xt ||
@@ -41751,7 +41931,7 @@ function (e) {
                 m(It, "load", n), ki.autofocus && si(), mi(), ni(), Y.call("ready"), "onReady" in i &&
                     i.onReady.call(_i)
             };
-            p(It, "load", n), "complete" === Mt.readyState && n()
+            p(It, "load", n), "complete" === jt.readyState && n()
         }, Ot = function () {
             var e = ki.plugins;
             e = e ? e.toString()
@@ -41769,15 +41949,15 @@ function (e) {
                 }), ki.startInSourceMode ? (A(s, "sourceMode"), g(f)) : (A(s, "wysiwygMode"), g(N)), ki
                 .spellcheck || _(s, "spellcheck", "false"), "https:" === It.location.protocol && _(f,
                     "src", "javascript:false"), d(s, f), d(s, N), _i.dimensions(ki.width || I(e), ki
-                    .height || M(e));
-            var t = jt ? "ie ie" + jt : "";
+                    .height || j(e));
+            var t = Mt ? "ie ie" + Mt : "";
             t += kt ? " ios" : "", T = f.contentDocument, T.open(), T.write(tt("html", {
                 attrs: ' class="' + t + '"',
                 spellcheck: ki.spellcheck ? "" : 'spellcheck="false"',
                 charset: ki.charset,
                 style: ki.style
             })), T.close(), C = T.body, x = f.contentWindow, _i.readOnly(!!ki.readOnly), (kt || wt ||
-                jt) && (M(C, "100%"), jt || p(C, "touchend", _i.focus));
+                Mt) && (j(C, "100%"), Mt || p(C, "touchend", _i.focus));
             var i = _(e, "tabindex");
             _(N, "tabindex", i), _(f, "tabindex", i), G = new ot(x), g(e), _i.val(e.value);
             var n = ki.placeholder || _(e, "placeholder");
@@ -41793,20 +41973,20 @@ function (e) {
                 n = "keydown keyup keypress focus blur contextmenu",
                 o = "onselectionchange" in T ? "selectionchange" :
                 "keyup focus blur contextmenu mouseup touchend click";
-            p(Mt, "click", Xt), t && (p(t, "reset", Kt), p(t, "submit", _i.updateOriginal, ft)), p(C,
+            p(jt, "click", Xt), t && (p(t, "reset", Kt), p(t, "submit", _i.updateOriginal, ft)), p(C,
                 "keypress", Gt), p(C, "keydown", Ut), p(C, "keydown", Zt), p(C, "keyup", ni), p(C,
-                "blur", di), p(C, "keyup", hi), p(C, "paste", Vt), p(C, i, Jt), p(C, o, oi), p(C, n,
-                Qt), ki.emoticonsCompat && It.getSelection && p(C, "keyup", li), p(C, "blur",
+                "blur", di), p(C, "keyup", hi), p(C, "paste", Vt), p(C, i, Qt), p(C, o, oi), p(C, n,
+                Jt), ki.emoticonsCompat && It.getSelection && p(C, "keyup", li), p(C, "blur",
                 function () {
                     _i.val() || A(C, "placeholder")
                 }), p(C, "focus", function () {
                 E(C, "placeholder")
-            }), p(N, "blur", di), p(N, "keyup", hi), p(N, "keydown", Ut), p(N, i, Jt), p(N, n, Qt), p(
+            }), p(N, "blur", di), p(N, "keyup", hi), p(N, "keydown", Ut), p(N, i, Qt), p(N, n, Jt), p(
                 T, "mousedown", Yt), p(T, o, oi), p(T, "beforedeactivate keyup mouseup", Pt), p(T,
                 "keyup", ni), p(T, "focus", function () {
                 R = null
             }), p(s, "selectionchanged", ai), p(s, "selectionchanged", ti), p(s,
-                "selectionchanged valuechanged nodechanged pasteraw paste", Qt)
+                "selectionchanged valuechanged nodechanged pasteraw paste", Jt)
         }, Ft = function () {
             var e, t = _i.commands,
                 i = (ki.toolbarExclude || "")
@@ -41862,7 +42042,7 @@ function (e) {
                 w = 0,
                 k = 0,
                 x = I(s),
-                C = M(s),
+                C = j(s),
                 z = !1,
                 T = _i.rtl();
             if (e = ki.resizeMinHeight || C / 1.5, t = ki.resizeMaxHeight || 2.5 * C, i = ki
@@ -41875,15 +42055,15 @@ function (e) {
                         0 && a > t && (a = t), e > 0 && e > a && (a = e), ki.resizeHeight || (a = !1), (
                             s || a) && _i.dimensions(s, a), o.preventDefault()
                 }, a = function (e) {
-                    z && (z = !1, g(c), E(s, "resizing"), m(Mt, u, o), m(Mt, h, a), e.preventDefault())
+                    z && (z = !1, g(c), E(s, "resizing"), m(jt, u, o), m(jt, h, a), e.preventDefault())
                 }, zt && zt.create) {
                 var S = zt.create("grip");
                 S && (d(l, S), A(l, "has-icon"))
             }
             d(s, l), d(s, c), g(c), p(l, "touchstart mousedown", function (e) {
                 "touchstart" === e.type ? (e = It.event, _ = e.touches[0].pageX, f = e.touches[0]
-                    .pageY) : (_ = e.pageX, f = e.pageY), w = I(s), k = M(s), z = !0, A(s,
-                    "resizing"), v(c), p(Mt, u, o), p(Mt, h, a), e.preventDefault()
+                    .pageY) : (_ = e.pageX, f = e.pageY), w = I(s), k = j(s), z = !0, A(s,
+                    "resizing"), v(c), p(jt, u, o), p(jt, h, a), e.preventDefault()
             })
         }, Wt = function () {
             var e = ki.emoticons,
@@ -41928,26 +42108,26 @@ function (e) {
                 width: _i.width(),
                 height: _i.height()
             } : (e !== !1 && (i !== !1 && (ki.width = e), I(s, e)), t !== !1 && (i !== !1 && (ki
-                .height = t), M(s, t)), _i)
+                .height = t), j(s, t)), _i)
         }, _i.height = function (e, t) {
-            return e || 0 === e ? (_i.dimensions(null, e, t), _i) : M(s)
+            return e || 0 === e ? (_i.dimensions(null, e, t), _i) : j(s)
         }, _i.maximize = function (e) {
             var t = "sceditor-maximize";
-            return ut(e) ? S(s, t) : (e = !!e, e && (yt = It.pageYOffset), P(Mt.documentElement, t, e), P(
-                Mt.body, t, e), P(s, t, e), _i.width(e ? "100%" : ki.width, !1), _i.height(e ?
+            return ut(e) ? S(s, t) : (e = !!e, e && (yt = It.pageYOffset), P(jt.documentElement, t, e), P(
+                jt.body, t, e), P(s, t, e), _i.width(e ? "100%" : ki.width, !1), _i.height(e ?
                 "100%" : ki.height, !1), e || It.scrollTo(0, yt), mi(), _i)
         }, mi = function () {
             ki.autoExpand && !bt && (bt = setTimeout(_i.expandToContent, 200))
         }, _i.expandToContent = function (t) {
             if (!_i.maximize()) {
                 if (clearTimeout(bt), bt = !1, !gt) {
-                    var i = ki.resizeMinHeight || ki.height || M(e);
+                    var i = ki.resizeMinHeight || ki.height || j(e);
                     gt = {
                         min: i,
                         max: ki.resizeMaxHeight || 2 * i
                     }
                 }
-                var n = Mt.createRange();
+                var n = jt.createRange();
                 n.selectNodeContents(C);
                 var o = n.getBoundingClientRect(),
                     a = T.documentElement.clientHeight - 1,
@@ -41957,7 +42137,7 @@ function (e) {
             }
         }, _i.destroy = function () {
             if (Y) {
-                Y.destroy(), G = null, R = null, Y = null, L && u(L), m(Mt, "click", Xt);
+                Y.destroy(), G = null, R = null, Y = null, L && u(L), m(jt, "click", Xt);
                 var t = e.form;
                 t && (m(t, "reset", Kt), m(t, "submit", _i.updateOriginal)), u(N), u(l), u(s), delete e
                     ._sceditor, v(e), e.required = ht
@@ -41984,7 +42164,7 @@ function (e) {
         }, Xt = function (e) {
             3 !== e.which && L && !e.defaultPrevented && (pi(), _i.closeDropDown())
         }, Vt = function (e) {
-            var t = jt || wt,
+            var t = Mt || wt,
                 i = C,
                 n = e.clipboardData,
                 o = function (e) {
@@ -42007,7 +42187,7 @@ function (e) {
                 a.text = a["text/plain"], a.html = a["text/html"], qt(a)
             } else if (!Ct) {
                 var c = i.scrollTop;
-                for (G.saveRange(), Ct = Mt.createDocumentFragment(); i.firstChild;) d(Ct, i.firstChild);
+                for (G.saveRange(), Ct = jt.createDocumentFragment(); i.firstChild;) d(Ct, i.firstChild);
                 setTimeout(function () {
                     var e = i.innerHTML;
                     i.innerHTML = "", d(i, Ct), i.scrollTop = c, Ct = !1, G.restoreRange(), qt({
@@ -42017,19 +42197,19 @@ function (e) {
             }
         }, qt = function (e) {
             var t = r("div", {}, T);
-            Y.call("pasteRaw", e), j(s, "pasteraw", e), e.html ? (t.innerHTML = e.html, V(t)) : t
+            Y.call("pasteRaw", e), M(s, "pasteraw", e), e.html ? (t.innerHTML = e.html, V(t)) : t
                 .innerHTML = X(e.text || "");
             var n = {
                 val: t.innerHTML
             };
-            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, T, J)), Y.call("paste", n), j(s,
-                "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, J)), Y.call(
+            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, T, Q)), Y.call("paste", n), M(s,
+                "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, Q)), Y.call(
                 "pasteHtml", n), _i.wysiwygEditorInsertHtml(n.val, null, !0)
         }, _i.closeDropDown = function (e) {
             L && (u(L), L = null), e === !0 && _i.focus()
         }, _i.wysiwygEditorInsertHtml = function (e, t, i) {
-            var n, o, a, s = M(f);
-            _i.focus(), (i || !c(Q, "code")) && (G.insertHTML(e, t), G.saveRange(), At(), n = h(C,
+            var n, o, a, s = j(f);
+            _i.focus(), (i || !c(J, "code")) && (G.insertHTML(e, t), G.saveRange(), At(), n = h(C,
                     "#sceditor-end-marker")[0], v(n), o = C.scrollTop, a = K(n)
                 .top + 1.5 * n.offsetHeight - s, g(n), (a > o || o > a + s) && (C.scrollTop = a), ui(!
                     1), G.restoreRange(), ni())
@@ -42059,9 +42239,9 @@ function (e) {
             if (_i.inSourceMode()) return _i.sourceEditorInsertText(e, t), _i;
             if (t) {
                 var s = G.selectedHtml();
-                n !== !1 && "fragmentToSource" in i && (s = i.fragmentToSource(s, T, J)), e += s + t
+                n !== !1 && "fragmentToSource" in i && (s = i.fragmentToSource(s, T, Q)), e += s + t
             }
-            return n !== !1 && "fragmentToHtml" in i && (e = i.fragmentToHtml(e, J)), n !== !1 && a === !
+            return n !== !1 && "fragmentToHtml" in i && (e = i.fragmentToHtml(e, Q)), n !== !1 && a === !
                 0 && (e = e.replace(/&lt;/g, "<")
                     .replace(/&gt;/g, ">")
                     .replace(/&amp;/g, "&")), _i.wysiwygEditorInsertHtml(e), _i
@@ -42078,7 +42258,7 @@ function (e) {
             var t = N.value;
             return e !== !1 && "toHtml" in i && (t = i.toHtml(t)), t
         }, _i.setWysiwygEditorValue = function (e) {
-            e || (e = "<p>" + (jt ? "" : "<br />") + "</p>"), C.innerHTML = e, At(), ni(), ui(), mi()
+            e || (e = "<p>" + (Mt ? "" : "<br />") + "</p>"), C.innerHTML = e, At(), ni(), ui(), mi()
         }, _i.setSourceEditorValue = function (e) {
             N.value = e, ui()
         }, _i.updateOriginal = function () {
@@ -42103,7 +42283,7 @@ function (e) {
                 _i, e) : _i.execCommand(t.exec, t.hasOwnProperty("execParam") ? t.execParam :
                 null))
         }, Pt = function () {
-            jt && (R = G.selectedRange())
+            Mt && (R = G.selectedRange())
         }, _i.execCommand = function (e, t) {
             var i = !1,
                 n = _i.commands[e];
@@ -42124,21 +42304,21 @@ function (e) {
                             e = e.parentNode;
                         e && H(e, !0) && (G.saveRange(), rt(C, T), G.restoreRange())
                     }
-                    j(s, "selectionchanged")
+                    M(s, "selectionchanged")
                 }
                 it = !1
             }
             it || (it = !0, "onselectionchange" in T ? e() : setTimeout(e, 100))
         }, ai = function () {
             var e, t = G.parentNode();
-            J !== t && (e = J, J = t, Q = G.getFirstBlockParent(t), j(s, "nodechanged", {
+            Q !== t && (e = Q, Q = t, J = G.getFirstBlockParent(t), M(s, "nodechanged", {
                 oldNode: e,
-                newNode: J
+                newNode: Q
             }))
         }, _i.currentNode = function () {
-            return J
-        }, _i.currentBlockNode = function () {
             return Q
+        }, _i.currentBlockNode = function () {
+            return J
         }, ti = function () {
             var e, t, i = "active",
                 n = T,
@@ -42164,7 +42344,7 @@ function (e) {
         }, Gt = function (e) {
             if (!e.defaultPrevented && (_i.closeDropDown(), 13 === e.which)) {
                 var t = "li,ul,ol";
-                if (!k(Q, t) && F(Q)) {
+                if (!k(J, t) && F(J)) {
                     R = null;
                     var i = r("br", {}, T);
                     if (G.insertNode(i), !Dt) {
@@ -42195,7 +42375,7 @@ function (e) {
             return U && U[t[0]] && (t[0] = U[t[0]]), t[0].replace(/\{(\d+)\}/g, function (i, n) {
                 return t[n - 0 + 1] !== e ? t[n - 0 + 1] : "{" + n + "}"
             })
-        }, Qt = function (e) {
+        }, Jt = function (e) {
             Y && Y.call(e.type + "Event", e, _i);
             var t = (e.target === N ? "scesrc" : "scewys") + e.type;
             fi[t] && fi[t].forEach(function (t) {
@@ -42246,7 +42426,7 @@ function (e) {
             var t, i = 0,
                 n = _i.emoticonsCache,
                 o = String.fromCharCode(e.which);
-            c(Q, "code") || (n || (n = [], a(wi, function (e, t) {
+            c(J, "code") || (n || (n = [], a(wi, function (e, t) {
                     n[i++] = [e, t]
                 }), n.sort(function (e, t) {
                     return e[0].length - t[0].length
@@ -42254,7 +42434,7 @@ function (e) {
                 .replaceKeyword(_i.emoticonsCache, !0, !0, _i.longestEmoticonCode, ki.emoticonsCompat,
                     o), t && (ki.emoticonsCompat && /^\s$/.test(o) || e.preventDefault()))
         }, li = function () {
-            at(Q, G)
+            at(J, G)
         }, _i.emoticons = function (e) {
             if (!e && e !== !1) return ki.emoticonsEnabled;
             if (ki.emoticonsEnabled = e, e) p(C, "keypress", ri), _i.sourceMode() || (G.saveRange(), At(),
@@ -42400,7 +42580,7 @@ function (e) {
                 _i.clearBlockFormatting(o), e.preventDefault()
             }
         }, ci = function () {
-            for (var e = Q; !F(e) || H(e, !0);)
+            for (var e = J; !F(e) || H(e, !0);)
                 if (!(e = e.parentNode) || k(e, "body")) return;
             return e
         }, _i.clearBlockFormatting = function (e) {
@@ -42412,7 +42592,7 @@ function (e) {
                     n = !i && G.hasSelection();
                 W = !1, e = e !== !1 && !T.getElementById("sceditor-start-marker"), q && (clearTimeout(q),
                         q = !1), n && e && G.saveRange(), t = i ? N.value : C.innerHTML, t !== ui
-                    .lastVal && (ui.lastVal = t, j(s, "valuechanged", {
+                    .lastVal && (ui.lastVal = t, M(s, "valuechanged", {
                         rawValue: i ? _i.val() : t
                     })), n && e && G.removeMarkers()
             }
@@ -42428,7 +42608,7 @@ function (e) {
                     .triggerNext = !1), clearTimeout(q), q = setTimeout(function () {
                     W || ui()
                 }, 1500))
-        }, Jt = function (e) {
+        }, Qt = function (e) {
             W = /start/i.test(e.type), W || ui()
         }, pi = function () {
             _i.updateOriginal()
@@ -43074,9 +43254,9 @@ function (e) {
             }
         },
         It = window,
-        Mt = document,
-        jt = yt,
-        Dt = jt && 11 > jt,
+        jt = document,
+        Mt = yt,
+        Dt = Mt && 11 > Mt,
         Nt = /^image\/(p?jpe?g|gif|png|bmp)$/i;
     lt.locale = {}, lt.formats = {}, lt.icons = {}, lt.command = {
             get: function (e) {
@@ -43110,7 +43290,7 @@ function (e) {
             ie: yt,
             ios: kt,
             isWysiwygSupported: xt,
-            regexEscape: Q,
+            regexEscape: J,
             escapeEntities: X,
             escapeUriScheme: et,
             dom: {
@@ -43120,7 +43300,7 @@ function (e) {
                 is: k,
                 closest: c,
                 width: I,
-                height: M,
+                height: j,
                 traverse: L,
                 rTraverse: O,
                 parseHTML: R,
@@ -43137,7 +43317,7 @@ function (e) {
                 extractContents: G,
                 getOffset: K,
                 getStyle: Y,
-                hasStyle: J
+                hasStyle: Q
             },
             locale: lt.locale,
             icons: lt.icons,
