@@ -3700,7 +3700,7 @@ Object.values || (Object.values = function (e) {
                         join_alliance: "Darüber hinaus empfehlen wir dir, einem Verband beizutreten. Gemeinsam macht es mehr Spaß und andere Mitglieder können dir mit deinen Einsätzen helfen.",
                         radio: {
                             helpshift_id: "1662",
-                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "Der Funk zeigt die Statusänderungen deiner Fahrzeuge an. Für mehr detaillierte Informationen klicke auf den Button."
                         },
                         summary: "Das waren die Grundlagen vom Leitstellenspiel! Beende Einsätze, sammle Credits, kaufe mehr Fahrzeuge, und baue dein Rettungsnetzwerk aus! Viel Spaß! </br> Dein Leitstellenspiel-Team"
@@ -4228,7 +4228,7 @@ Object.values || (Object.values = function (e) {
                         join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
                         radio: {
                             helpshift_id: "1662",
-                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "The radio displays the status changes of all your vehicles. More detailed information can be found when you click the button."
                         },
                         summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
@@ -4685,7 +4685,7 @@ Object.values || (Object.values = function (e) {
                         join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
                         radio: {
                             helpshift_id: "1662",
-                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "The radio displays the status changes of all your vehicles. More detailed information can be found when you click the button."
                         },
                         summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
@@ -5160,7 +5160,7 @@ Object.values || (Object.values = function (e) {
                         join_alliance: "Ook kun je je aansluiten bij een team. Dat kan je vooral in het begin erg vooruit helpen.",
                         radio: {
                             helpshift_id: "1662",
-                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "De radio toont de statuswijzigingen van al je voertuigen. Klik op de knop voor gedetailleerdere informatie."
                         },
                         summary: "Dit zijn de basisprincipes van Meldkamerspel. Meldigen afhandelen, Credits verdienen, meer gebouwen en eenheden kopen, enzovoorts. Veel speelplezier! </br> Het team van Meldkamerspel"
@@ -5624,7 +5624,7 @@ Object.values || (Object.values = function (e) {
                         join_alliance: "Además, unirse a una alianza es de gran ayuda, especialmente al principio.",
                         radio: {
                             helpshift_id: "1662",
-                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "La radio muestra los cambios de estado de todos tus vehículos. Haz clic en el botón para obtener información más detallada."
                         },
                         summary: "¡Ya conoces lo fundamental de Centro de Mando! Completar misiones, ganar créditos, comprar más unidades y vuelta a empezar. ¡Diviértete! </br> El equipo de Centro de Mando"
@@ -6048,7 +6048,7 @@ Object.values || (Object.values = function (e) {
                         join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
                         radio: {
                             helpshift_id: "1662",
-                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "The radio displays the status changes of all your vehicles. More detailed information can be found when you click the button."
                         },
                         summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
@@ -6474,7 +6474,7 @@ Object.values || (Object.values = function (e) {
                         join_alliance: "Det kan även ge stora fördelar att gå med i en allians, särskilt tidigt i spelet, så det rekommenderas också.",
                         radio: {
                             helpshift_id: "1662",
-                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "Radion visas statusförändringar hos dina fordon. Klicka på knappen för mer detaljerad information."
                         },
                         summary: "Det här är grunderna i Larmcentralen-spelet! Klara uppdrag, tjäna krediter, köp fler fordon, upprepa. Ha så kul! </br>Teamet på Larmcentralen-spelet"
@@ -6945,7 +6945,7 @@ Object.values || (Object.values = function (e) {
                         join_alliance: "Bardzo pomocne jest również dołączenie do sojuszu, zwłaszcza na początku gry, dlatego zalecamy również ten krok.",
                         radio: {
                             helpshift_id: "1662",
-                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "Radio wyświetla zmiany stanu wszystkich twoich pojazdów. Po kliknięciu przycisku można wyświetlić więcej szczegółowych informacji."
                         },
                         summary: "Oto podstawy gry Operator ratunkowy! Wykonuj misje, zdobywaj kredyty, kupuj kolejne jednostki, powtarzaj proces. Miłej gry! </br> Zespół gry Operator ratunkowy"
@@ -7412,7 +7412,7 @@ Object.values || (Object.values = function (e) {
                         join_alliance: "Inoltre, ti consiglio di unirti a un'alleanza perché, soprattutto all'inizio, questo potrebbe esserti di grande aiuto.",
                         radio: {
                             helpshift_id: "1662",
-                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "La radio mostra le modifiche di stato di tutti i tuoi veicoli. Facendo clic sul pulsante si visualizzano informazioni più dettagliate."
                         },
                         summary: "Queste sono le nozioni di base di Operatore 112. Completa missioni, ottieni crediti, acquista altre unità e ricomincia. Divertiti a giocare! </br> Il team di Operatore 112"
@@ -7876,7 +7876,7 @@ Object.values || (Object.values = function (e) {
                         join_alliance: "De plus, nous vous recommandons de rejoindre une alliance, ce qui peut grandement vous aider, surtout au début.",
                         radio: {
                             helpshift_id: "1662",
-                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "La radio indique les changements de statut de tous vos véhicules. Cliquez sur ce bouton pour obtenir plus d'informations."
                         },
                         summary: "Voici les bases d'Opérateur 112 ! Accomplissez des missions, recevez des crédits, achetez plus d'unités, recommencez. Amusez-vous bien ! </br> L'équipe d'Opérateur 112"
@@ -8336,7 +8336,7 @@ Object.values || (Object.values = function (e) {
                         join_alliance: "Мы также рекомендуем вступить в альянс, так как это может здорово вам помочь, особенно по началу.",
                         radio: {
                             helpshift_id: "1662",
-                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "Радио отображает статус вашего транспорта. Более подробные сведения можно увидеть, нажав на кнопку."
                         },
                         summary: "Теперь вы знаете основы игры в «Диспетчер 112»! Выполняйте задания, получайте кредиты и покупайте новые подразделения. Весёлой игры! </br> Команда «Диспетчер 112»"
@@ -8761,7 +8761,7 @@ Object.values || (Object.values = function (e) {
                         join_alliance: "Det ville også hjælpe dig enormt, især i starten, så det anbefales også.",
                         radio: {
                             helpshift_id: "1662",
-                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "Radioen viser alle dine køretøjers statusændringer. Du kan se yderligere oplysninger ved at klikke på knappen."
                         },
                         summary: "Dette er den grundlæggende viden i Alarmcentral-spil! Fuldfør missioner, få kreditter, køb flere enheder, gentag. God fornøjelse! </br> Dit Alarmcentral-spil-hold"
@@ -9228,7 +9228,7 @@ Object.values || (Object.values = function (e) {
                         join_alliance: "Det er også nyttig å bli med i allianser, spesielt i begynnelsen, så det anbefales også.",
                         radio: {
                             helpshift_id: "1662",
-                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "Radioen viser statusendringene til alle kjøretøyene dine. Mer omfattende informasjon får du når du trykker på knappen."
                         },
                         summary: "Dette er det grunnleggende i Nødsentralspillet! Utfør oppdrag, få kreditter, kjøp flere enheter og gjenta. Kos deg med spillingen! </br> Nødsentralspillet-teamet"
@@ -9686,7 +9686,7 @@ Object.values || (Object.values = function (e) {
                         join_alliance: "Přidat se k alianci by vám rovněž mohlo velice pomoct, hlavně na začátku. Takže to také doporučujeme.",
                         radio: {
                             helpshift_id: "1662",
-                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "Vysílačka zobrazuje změny stavu všech vašich vozidel. Podrobnější informace naleznete po kliknutí na tlačítko."
                         },
                         summary: "Toto jsou základy hry Operační středisko! Plňte mise, získávejte kredity, nakupujte další jednotky. Postup opakujte. Příjemnou zábavu při hraní! </br> Váš tým hry Operační středisko"
@@ -10552,7 +10552,7 @@ Object.values || (Object.values = function (e) {
                         join_alliance: "Adicionalmente, seria muito vantajoso para ti entrares numa aliança, especialmente no início, por isso também recomendamos que o faças.",
                         radio: {
                             helpshift_id: "1662",
-                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "O rádio exibe as mudanças de estado de todos os teus veículos. Ao clicar no botão podes encontrar mais informações detalhadas."
                         },
                         summary: "Isto é o básico do Jogo Operador 112! Completa missões, ganha créditos, compra mais unidades, faz tudo outra vez. Diverte-te a jogar! </br> A tua Equipa do Jogo Operador 112"
@@ -12225,7 +12225,7 @@ Object.values || (Object.values = function (e) {
                         join_alliance: "また、アライアンスを形成すると、特に駆け出し、ゲーム序盤で大いに役に立つので、それもお勧めしよう。",
                         radio: {
                             helpshift_id: "1662",
-                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "無線は、全車両の状態の変化を表示します。ボタンをクリックすると、詳細情報を確認できます。"
                         },
                         summary: "ミッションチーフの基本が紹介されているぞ！ミッションを達成し、クレジットを獲得し、ユニットを購入し、拡充しよう。ゲームはこの一連の流れを繰り返して進むぞ。では、楽しんでくれ！</br> ミッションチーフ・チームより"
@@ -12649,7 +12649,7 @@ Object.values || (Object.values = function (e) {
                         join_alliance: "또한 게임 초기에 동맹에 가입하면 큰 도움을 받을 수 있으므로 동맹 가입도 권장합니다.",
                         radio: {
                             helpshift_id: "1662",
-                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "무전기에서 모든 차량의 상태 변화를 확인할 수 있습니다. 버튼을 클릭하면 자세한 정보를 확인할 수 있습니다."
                         },
                         summary: "지금까지 미션 치프의 기본 플레이 방법을 알려드렸습니다! 임무를 완수하고 크레딧을 받아 더 많은 유닛을 구매하며 임무를 반복하세요. 즐겁게 플레이하세요! </br> 미션 치프 팀 올림"
@@ -13491,7 +13491,7 @@ Object.values || (Object.values = function (e) {
                         join_alliance: "Myös liittoutumaan liittyminen on hyödyksi erityisesti alussa, joten sekin on suositeltavaa.",
                         radio: {
                             helpshift_id: "1662",
-                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles&l=en&p=ios",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "Radio näyttää kaikkien ajoneuvojen tilamuutokset. Lisätietoja saat napsauttamalla painiketta."
                         },
                         summary: "Tässä olivat Hätäkeskuspelin perusteet! Suorita tehtäviä, kerää krediittejä, osta uusia yksiköitä, toista. Hauskaa pelaamista! </br> Hätäkeskuspelin tiimi"
