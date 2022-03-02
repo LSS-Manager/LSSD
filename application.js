@@ -2922,6 +2922,13 @@ function validateNumberInput(e) {
     })
 }
 
+function callOnLightbox(e) {
+    $("#lightbox_iframe_" + iframe_lightbox_number)
+        .each(function () {
+            e(this.contentWindow)
+        })
+}
+
 function missionPositionMarkerAdd(e) {
     1 == mobile_bridge_use && mobileBridgeAdd("poi", [e])
 }
