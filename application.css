@@ -17363,3 +17363,19 @@ body.belgiumbar.policechief .navbar-default {
         display: none
     }
 }
+
+.webshop-content {
+    width: 100%;
+    text-align: center
+}
+
+#webshop-spinner {
+    width: 100px;
+    animation: webshop-spin 2s linear infinite
+}
+
+@keyframes webshop-spin {
+    100% {
+        transform: rotate(360deg)
+    }
+}
