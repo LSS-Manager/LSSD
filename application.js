@@ -3968,6 +3968,12 @@ Object.values || (Object.values = function (e) {
             automatic_text_color: "Automatic Text Color",
             back: "Back",
             battalion_chief_unit: "",
+            categories: {
+                bereitschaftspolizei: "Riot Police",
+                firefighting: "Firefighting",
+                police: "Police",
+                rescue: "Rescue"
+            },
             category: "Category",
             colour: "Color",
             column: "Column",
@@ -7666,6 +7672,12 @@ Object.values || (Object.values = function (e) {
         intervention_order: {
             automatic_text_color: "Couleur du texte automatique",
             back: "Retour",
+            categories: {
+                bereitschaftspolizei: "Maintien de l'Ordre",
+                firefighting: "Sapeurs-pompiers",
+                police: "Police",
+                rescue: "Secours a Personne"
+            },
             category: "Catégorie",
             colour: "Couleur",
             column: "Colonne",
