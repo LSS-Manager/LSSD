@@ -16173,6 +16173,13 @@ a#mission-type-helper-mobile {
     float: right
 }
 
+@media only screen and (max-width: 767px) {
+    .navbar-default .navbar-nav>li a:hover {
+        background-color: rgba(0, 0, 0, 0.3) !important;
+        color: white !important
+    }
+}
+
 /*
  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
  *
