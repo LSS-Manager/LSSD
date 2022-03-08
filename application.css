@@ -16178,6 +16178,10 @@ a#mission-type-helper-mobile {
         background-color: rgba(0, 0, 0, 0.3) !important;
         color: white !important
     }
+
+    .facebook_login:hover {
+        background-color: #466485 !important
+    }
 }
 
 /*
