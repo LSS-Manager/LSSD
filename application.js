@@ -36497,7 +36497,22 @@ var dynamicLayouter = function () {
  * Copyright 2011-2015 Twitter, Inc.
  * Licensed under the MIT license
  */
-if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requires jQuery"); + function (e) {
+if ($(document)
+    .ready(function () {
+        cookiesEu.setCookie = function () {
+            var e = "https:" === location.protocol,
+                t = "lax";
+            e && (t = "none"), Cookies.set("cookie_eu_consented", !0, {
+                path: "/",
+                expires: 365,
+                secure: e,
+                sameSite: t
+            });
+            var i = document.querySelector(".js-cookies-eu");
+            i.parentNode.removeChild(i)
+        }
+    }), "undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requires jQuery"); + function (
+    e) {
     "use strict";
     var t = e.fn.jquery.split(" ")[0].split(".");
     if (t[0] < 2 && t[1] < 9 || 1 == t[0] && 9 == t[1] && t[2] < 1 || t[0] > 2) throw new Error(
