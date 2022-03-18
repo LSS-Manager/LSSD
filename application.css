@@ -12010,8 +12010,17 @@ body.dodenherdenking .navbar-default .dropdown-menu {
     padding: 10px
 }
 
-.springIframe {
+.spring_eventIframe {
     background-image: url(/images/spring_event_background.png);
+    width: 100%;
+    min-height: 454px;
+    background-repeat: repeat-x;
+    color: white;
+    padding: 10px
+}
+
+.fall_eventIframe {
+    background-image: url(/images/fall_event_background.png);
     width: 100%;
     min-height: 454px;
     background-repeat: repeat-x;
@@ -13399,6 +13408,16 @@ body.bigMap #building_panel_body {
 .missionAward {
     height: 37px;
     width: 37px
+}
+
+.springeventbar {
+    background-image: url(/images/springevent_bar.png);
+    background-size: auto 100%
+}
+
+.falleventbar {
+    background-image: url(/images/fallevent_bar.png);
+    background-size: auto 100%
 }
 
 .ui-helper-hidden {
@@ -17289,6 +17308,16 @@ div.sceditor-group {
     background-size: auto 100%
 }
 
+.policechief .springeventbar {
+    background-image: url(/images/springevent_bar_pc.png);
+    background-size: auto 100%
+}
+
+.policechief .falleventbar {
+    background-image: url(/images/fallevent_bar_pc.png);
+    background-size: auto 100%
+}
+
 .policechief .mission_header_info_progress .progress-bar-danger,
 .policechief .mission_progress .progress-bar-danger {
     background-image: none;
@@ -17356,6 +17385,34 @@ div.sceditor-group {
 }
 
 .policechief .oneyear_eventIframe .btn-adventskalender {
+    color: white;
+    background-color: #003b73
+}
+
+.policechief .spring_eventIframe {
+    background-image: url(/images/pc_spring_event_background.png);
+    width: 100%;
+    min-height: 454px;
+    background-repeat: repeat-x;
+    color: white;
+    padding: 10px
+}
+
+.policechief .spring_eventIframe .btn-adventskalender {
+    color: white;
+    background-color: #003b73
+}
+
+.policechief .fall_eventIframe {
+    background-image: url(/images/pc_fall_event_background.png);
+    width: 100%;
+    min-height: 454px;
+    background-repeat: repeat-x;
+    color: white;
+    padding: 10px
+}
+
+.policechief .fall_eventIframe .btn-adventskalender {
     color: white;
     background-color: #003b73
 }
