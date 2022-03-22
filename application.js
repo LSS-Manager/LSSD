@@ -2929,6 +2929,8 @@ function callOnLightbox(e) {
         })
 }
 
+function missionPositionMarkerAddAll() {}
+
 function missionPositionMarkerAdd(e) {
     1 == mobile_bridge_use && mobileBridgeAdd("poi", [e])
 }
