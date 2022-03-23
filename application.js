@@ -3972,9 +3972,11 @@ Object.values || (Object.values = function (e) {
             battalion_chief_unit: "",
             categories: {
                 bereitschaftspolizei: "Riot Police",
+                brush: "Brush fire",
                 firefighting: "Firefighting",
                 police: "Police",
-                rescue: "Rescue"
+                rescue: "Rescue",
+                water_rescue: "Water Rescue"
             },
             category: "Category",
             colour: "Color",
@@ -5848,6 +5850,14 @@ Object.values || (Object.values = function (e) {
         intervention_order: {
             automatic_text_color: "Automatic Text Color",
             back: "Back",
+            categories: {
+                bereitschaftspolizei: "Riot Police",
+                brush: "Bushfire",
+                firefighting: "Firefighting",
+                police: "Police",
+                rescue: "Rescue",
+                water_rescue: "SES"
+            },
             category: "Category",
             colour: "Color",
             column: "Column",
