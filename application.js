@@ -47418,6 +47418,12 @@ I18n.t = function (e, t) {
         from: "/images/police_civil_car.png",
         to: "/images/pc_police_civil_car.png"
     }, {
+        from: "/images/police_suv.png",
+        to: "/images/pc_police_suv.png"
+    }, {
+        from: "/images/police_suv_sonderrechte.png",
+        to: "/images/pc_police_suv_sonderrechte.png"
+    }, {
         from: "/images/sign_up.en_US.png",
         to: "/images/policechief_sign_up.en.png"
     }, {
