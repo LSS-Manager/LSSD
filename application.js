@@ -974,8 +974,10 @@ function getBuildingMarkerIcon(e) {
         BUILDING_TYPE_HAZARD_RESPONSE_EMS ? building_marker_image =
         "/images/building_hazard_response_ems_other.png" : e.building_type == BUILDING_TYPE_WATER_RESCUE_2 ?
         building_marker_image = "/images/building_wasserwacht_other.png" : e.building_type ==
-        BUILDING_TYPE_FIRE_INVESTIGATION && (building_marker_image =
-            "/images/building_fire_marshall_other.png"), flavouredAsset(building_marker_image)
+        BUILDING_TYPE_FIRE_INVESTIGATION ? building_marker_image =
+        "/images/building_fire_marshall_other.png" : e.building_type == BUILDING_TYPE_POLICE_DEPOT && (
+            building_marker_image = "/images/building_police_depot_other.png"), flavouredAsset(
+            building_marker_image)
 }
 
 function spliceLatLngs(e, t) {
@@ -47382,6 +47384,9 @@ I18n.t = function (e, t) {
     }, {
         from: "/images/building_bomb_disposal.png",
         to: "/images/policechief_building_bomb_disposal.png"
+    }, {
+        from: "/images/building_police_depot.png",
+        to: "/images/policechief_building_police_depot.png"
     }, {
         from: "/images/police.png",
         to: "/images/policechief_police.png"
