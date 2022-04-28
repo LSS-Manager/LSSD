@@ -3712,7 +3712,7 @@ Object.values || (Object.values = function (e) {
                         radio: {
                             helpshift_id: "1662",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
-                            "short": "Der Funk zeigt die Statusänderungen deiner Fahrzeuge an. Für mehr detaillierte Informationen klicke auf den Button."
+                            "short": "Der Funk zeigt Statusaktualisierungen eurer Fahrzeuge an. Weitere Informationen zum Status findet ihr hier."
                         },
                         summary: "Das waren die Grundlagen vom Leitstellenspiel! Beende Einsätze, sammle Credits, kaufe mehr Fahrzeuge, und baue dein Rettungsnetzwerk aus! Viel Spaß! </br> Dein Leitstellenspiel-Team"
                     },
@@ -4249,7 +4249,7 @@ Object.values || (Object.values = function (e) {
                         radio: {
                             helpshift_id: "1662",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
-                            "short": "The radio displays the status changes of all your vehicles. More detailed information can be found when you click the button."
+                            "short": "The radio displays status updates of your vehicles. For more detailed information on each status click here."
                         },
                         summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
                     },
@@ -4706,7 +4706,7 @@ Object.values || (Object.values = function (e) {
                         radio: {
                             helpshift_id: "1662",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
-                            "short": "The radio displays the status changes of all your vehicles. More detailed information can be found when you click the button."
+                            "short": "The radio displays status updates of your vehicles. For more detailed information on each status click here."
                         },
                         summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
                     },
@@ -5181,7 +5181,7 @@ Object.values || (Object.values = function (e) {
                         radio: {
                             helpshift_id: "1662",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
-                            "short": "De radio toont de statuswijzigingen van al je voertuigen. Klik op de knop voor gedetailleerdere informatie."
+                            "short": "De radio toont statusupdates van uw voertuigen. Voor meer gedetailleerde informatie over elke status klik hier."
                         },
                         summary: "Dit zijn de basisprincipes van Meldkamerspel. Meldigen afhandelen, Credits verdienen, meer gebouwen en eenheden kopen, enzovoorts. Veel speelplezier! </br> Het team van Meldkamerspel"
                     },
@@ -5645,7 +5645,7 @@ Object.values || (Object.values = function (e) {
                         radio: {
                             helpshift_id: "1662",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
-                            "short": "La radio muestra los cambios de estado de todos tus vehículos. Haz clic en el botón para obtener información más detallada."
+                            "short": "La radio muestra actualizaciones de estado de tus vehículos. Si deseas acceder a información más detallada sobre cada estado, haz clic aquí."
                         },
                         summary: "¡Ya conoces lo fundamental de Centro de Mando! Completar misiones, ganar créditos, comprar más unidades y vuelta a empezar. ¡Diviértete! </br> El equipo de Centro de Mando"
                     },
@@ -6077,7 +6077,7 @@ Object.values || (Object.values = function (e) {
                         radio: {
                             helpshift_id: "1662",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
-                            "short": "The radio displays the status changes of all your vehicles. More detailed information can be found when you click the button."
+                            "short": "The radio displays status updates of your vehicles. For more detailed information on each status click here."
                         },
                         summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
                     },
@@ -6503,7 +6503,7 @@ Object.values || (Object.values = function (e) {
                         radio: {
                             helpshift_id: "1662",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
-                            "short": "Radion visas statusförändringar hos dina fordon. Klicka på knappen för mer detaljerad information."
+                            "short": "Radion visar statusuppdateringar om dina fordon. Klicka här för mer detaljerad information om varje status."
                         },
                         summary: "Det här är grunderna i Larmcentralen-spelet! Klara uppdrag, tjäna krediter, köp fler fordon, upprepa. Ha så kul! </br>Teamet på Larmcentralen-spelet"
                     },
@@ -6974,7 +6974,7 @@ Object.values || (Object.values = function (e) {
                         radio: {
                             helpshift_id: "1662",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
-                            "short": "Radio wyświetla zmiany stanu wszystkich twoich pojazdów. Po kliknięciu przycisku można wyświetlić więcej szczegółowych informacji."
+                            "short": "Radio wyświetla aktualizację stanu twoich pojazdów. Aby uzyskać szczegółowe informacje na temat każdego stanu, kliknij tutaj."
                         },
                         summary: "Oto podstawy gry Operator ratunkowy! Wykonuj misje, zdobywaj kredyty, kupuj kolejne jednostki, powtarzaj proces. Miłej gry! </br> Zespół gry Operator ratunkowy"
                     },
@@ -7441,7 +7441,7 @@ Object.values || (Object.values = function (e) {
                         radio: {
                             helpshift_id: "1662",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
-                            "short": "La radio mostra le modifiche di stato di tutti i tuoi veicoli. Facendo clic sul pulsante si visualizzano informazioni più dettagliate."
+                            "short": "La radio visualizza gli aggiornamenti dello stato dei veicoli. Per maggiori informazioni su ogni stato, fai clic qui."
                         },
                         summary: "Queste sono le nozioni di base di Operatore 112. Completa missioni, ottieni crediti, acquista altre unità e ricomincia. Divertiti a giocare! </br> Il team di Operatore 112"
                     },
@@ -7911,7 +7911,7 @@ Object.values || (Object.values = function (e) {
                         radio: {
                             helpshift_id: "1662",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
-                            "short": "La radio indique les changements de statut de tous vos véhicules. Cliquez sur ce bouton pour obtenir plus d'informations."
+                            "short": "La radio diffuse des rapports périodiques sur vos véhicules. Pour plus de détails sur chaque statut, cliquez ici."
                         },
                         summary: "Voici les bases d'Opérateur 112 ! Accomplissez des missions, recevez des crédits, achetez plus d'unités, recommencez. Amusez-vous bien ! </br> L'équipe d'Opérateur 112"
                     },
@@ -8371,7 +8371,7 @@ Object.values || (Object.values = function (e) {
                         radio: {
                             helpshift_id: "1662",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
-                            "short": "Радио отображает статус вашего транспорта. Более подробные сведения можно увидеть, нажав на кнопку."
+                            "short": "Радио отображает статус вашего транспорта. Нажмите сюда, чтобы узнать подробности о статусах."
                         },
                         summary: "Теперь вы знаете основы игры в «Диспетчер 112»! Выполняйте задания, получайте кредиты и покупайте новые подразделения. Весёлой игры! </br> Команда «Диспетчер 112»"
                     },
@@ -8796,7 +8796,7 @@ Object.values || (Object.values = function (e) {
                         radio: {
                             helpshift_id: "1662",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
-                            "short": "Radioen viser alle dine køretøjers statusændringer. Du kan se yderligere oplysninger ved at klikke på knappen."
+                            "short": "Radioen viser statusopdateringer på dine køretøjer. Klik her for at få mere at vide om hver status."
                         },
                         summary: "Dette er den grundlæggende viden i Alarmcentral-spil! Fuldfør missioner, få kreditter, køb flere enheder, gentag. God fornøjelse! </br> Dit Alarmcentral-spil-hold"
                     },
@@ -9263,7 +9263,7 @@ Object.values || (Object.values = function (e) {
                         radio: {
                             helpshift_id: "1662",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
-                            "short": "Radioen viser statusendringene til alle kjøretøyene dine. Mer omfattende informasjon får du når du trykker på knappen."
+                            "short": "Radioen viser statusoppdateringer for alle kjøretøy. Klikk her for mer detaljert statusinformasjon."
                         },
                         summary: "Dette er det grunnleggende i Nødsentralspillet! Utfør oppdrag, få kreditter, kjøp flere enheter og gjenta. Kos deg med spillingen! </br> Nødsentralspillet-teamet"
                     },
@@ -9721,7 +9721,7 @@ Object.values || (Object.values = function (e) {
                         radio: {
                             helpshift_id: "1662",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
-                            "short": "Vysílačka zobrazuje změny stavu všech vašich vozidel. Podrobnější informace naleznete po kliknutí na tlačítko."
+                            "short": "Vysílačka zobrazuje aktualizace stavu vašich vozidel. Podrobnější informace o jednotlivých stavech získáte kliknutím na sem."
                         },
                         summary: "Toto jsou základy hry Operační středisko! Plňte mise, získávejte kredity, nakupujte další jednotky. Postup opakujte. Příjemnou zábavu při hraní! </br> Váš tým hry Operační středisko"
                     },
@@ -10587,7 +10587,7 @@ Object.values || (Object.values = function (e) {
                         radio: {
                             helpshift_id: "1662",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
-                            "short": "O rádio exibe as mudanças de estado de todos os teus veículos. Ao clicar no botão podes encontrar mais informações detalhadas."
+                            "short": "O rádio exibe atualizações de estado dos teus veículos. Para mais informação detalhada sobre cada estado, clica aqui."
                         },
                         summary: "Isto é o básico do Jogo Operador 112! Completa missões, ganha créditos, compra mais unidades, faz tudo outra vez. Diverte-te a jogar! </br> A tua Equipa do Jogo Operador 112"
                     },
@@ -12260,7 +12260,7 @@ Object.values || (Object.values = function (e) {
                         radio: {
                             helpshift_id: "1662",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
-                            "short": "無線は、全車両の状態の変化を表示します。ボタンをクリックすると、詳細情報を確認できます。"
+                            "short": "無線は、車両の最新状態を表示します。各状態の詳細情報は、こちらをクリックしてください。"
                         },
                         summary: "ミッションチーフの基本が紹介されているぞ！ミッションを達成し、クレジットを獲得し、ユニットを購入し、拡充しよう。ゲームはこの一連の流れを繰り返して進むぞ。では、楽しんでくれ！</br> ミッションチーフ・チームより"
                     },
@@ -12684,7 +12684,7 @@ Object.values || (Object.values = function (e) {
                         radio: {
                             helpshift_id: "1662",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
-                            "short": "무전기에서 모든 차량의 상태 변화를 확인할 수 있습니다. 버튼을 클릭하면 자세한 정보를 확인할 수 있습니다."
+                            "short": "무전기에 차량 상태 업데이트가 표시됩니다. 각 상태에 관한 자세한 내용은 여기를 클릭해 확인해 주세요."
                         },
                         summary: "지금까지 미션 치프의 기본 플레이 방법을 알려드렸습니다! 임무를 완수하고 크레딧을 받아 더 많은 유닛을 구매하며 임무를 반복하세요. 즐겁게 플레이하세요! </br> 미션 치프 팀 올림"
                     },
@@ -13526,7 +13526,7 @@ Object.values || (Object.values = function (e) {
                         radio: {
                             helpshift_id: "1662",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
-                            "short": "Radio näyttää kaikkien ajoneuvojen tilamuutokset. Lisätietoja saat napsauttamalla painiketta."
+                            "short": "Radio näyttää ajoneuvojesi statuspäivityksiä. Saadaksesi lisätietoa kustakin statuksesta, napsauta tästä."
                         },
                         summary: "Tässä olivat Hätäkeskuspelin perusteet! Suorita tehtäviä, kerää krediittejä, osta uusia yksiköitä, toista. Hauskaa pelaamista! </br> Hätäkeskuspelin tiimi"
                     },
