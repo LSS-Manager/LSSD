@@ -8667,7 +8667,7 @@ Object.values || (Object.values = function (e) {
                 hose_trucks: "Slange Tendere",
                 k9: "Hundepatrulje",
                 kdow_lna: "",
-                kdow_orgl: "Indsatsleder Akutlæge",
+                kdow_orgl: "Indsatsleder Sund",
                 ktw_b: "",
                 ktw_or_rtw: "",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
