@@ -3664,9 +3664,6 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
-                    alert: {
-                        build_2d_ambulance: "Mit einem Krankenhauses verdienst Du zusätzliche Credits für das Behandeln von Patienten, die in medizinischen Einsätzen auftauchen."
-                    },
                     detail: {
                         browser: {
                             dispatch_menu: "Dies ist das Alarmierungsfenster. Von hier aus kannst du Fahrzeuge zu Einsätzen schicken!",
@@ -4201,9 +4198,6 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
-                    alert: {
-                        build_2d_ambulance: "Building a hospital will grant you extra credits for transporting and treating patients from your medical missions."
-                    },
                     detail: {
                         browser: {
                             dispatch_menu: "This is the dispatch menu. From here you send your units to missions!",
@@ -4658,9 +4652,6 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
-                    alert: {
-                        build_2d_ambulance: "Building a hospital will grant you extra credits for transporting and treating patients from your medical missions."
-                    },
                     detail: {
                         browser: {
                             dispatch_menu: "This is the dispatch menu. From here you send your units to missions!",
@@ -5133,9 +5124,6 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
-                    alert: {
-                        build_2d_ambulance: "Als je een ziekenhuis bouwt, ontvang je extra credits voor het vervoeren en behandelen van patiënten uit medische missies."
-                    },
                     detail: {
                         browser: {
                             dispatch_menu: "Dit is het Alarmeringsmenu. Hiervandaan stuur je je eenheden naar de melding.",
@@ -5597,9 +5585,6 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
-                    alert: {
-                        build_2d_ambulance: "Al construir un hospital, recibirás créditos adicionales por transportar y tratar a los pacientes de tus misiones médicas."
-                    },
                     detail: {
                         browser: {
                             dispatch_menu: "Desde este menú Puedes enviar a tus unidades a misiones.",
@@ -6029,9 +6014,6 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
-                    alert: {
-                        build_2d_ambulance: "Building a hospital will grant you extra credits for transporting and treating patients from your medical missions."
-                    },
                     detail: {
                         browser: {
                             dispatch_menu: "This is the dispatch menu. From here you send your units to missions!",
@@ -6455,9 +6437,6 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
-                    alert: {
-                        build_2d_ambulance: "Om du bygger ett sjukhus får du fler krediter när du transporterar och vårdar patienter från medicinska uppdrag."
-                    },
                     detail: {
                         browser: {
                             dispatch_menu: "Det här är larmcentralsmenyn. Härifrån kan du skicka ut fordon på uppdrag!",
@@ -6926,9 +6905,6 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
-                    alert: {
-                        build_2d_ambulance: "Budowa szpitala zapewni ci dodatkowe kredyty za transport i opiekę nad pacjentami wymagającymi pomocy medycznej w misjach."
-                    },
                     detail: {
                         browser: {
                             dispatch_menu: "To menu wezwania. Możesz tu wysyłać swoje jednostki na misje!",
@@ -7393,9 +7369,6 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
-                    alert: {
-                        build_2d_ambulance: "La costruzione di un ospedale ti garantirà dei crediti extra per il trasporto e il trattamento di pazienti dalle tue missioni sanitarie."
-                    },
                     detail: {
                         browser: {
                             dispatch_menu: "Questo è il menu di assegnazione. Da qui potrai inviare le tue unità in missione.",
@@ -7863,9 +7836,6 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
-                    alert: {
-                        build_2d_ambulance: "Construire un hôpital vous octroiera des crédits supplémentaires pour transporter et soigner des patients de vos missions médicales."
-                    },
                     detail: {
                         browser: {
                             dispatch_menu: "Voici le menu de déploiement. Vous pouvez d'ici envoyer vos unités en mission !",
@@ -8323,9 +8293,6 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
-                    alert: {
-                        build_2d_ambulance: "Строительство больницы принесет дополнительные кредиты за перевозку и лечение пациентов при выполнении медицинских заданий."
-                    },
                     detail: {
                         browser: {
                             dispatch_menu: "Это меню отправки. С его помощью вы можете отправлять подразделения на задания!",
@@ -8748,9 +8715,6 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
-                    alert: {
-                        build_2d_ambulance: "Et hospital giver ekstra kreditter ved transport og behandling af patienter i lægemissioner."
-                    },
                     detail: {
                         browser: {
                             dispatch_menu: "Dette er udsend-menuen. Herfra sender du dine enheder på missioner!",
@@ -9215,9 +9179,6 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
-                    alert: {
-                        build_2d_ambulance: "Å bygge et sykehus gir deg ekstra kreditt for transportering og behandling av pasienter fra medisinske oppdrag."
-                    },
                     detail: {
                         browser: {
                             dispatch_menu: "Dette er nødedatsmenyen. Her i fra kan du sende enhetene dine ut på oppdrag!",
@@ -9673,9 +9634,6 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
-                    alert: {
-                        build_2d_ambulance: "Postavením nemocnice získáte další kredity za převoz a ošetření pacientů z lékařských misí."
-                    },
                     detail: {
                         browser: {
                             dispatch_menu: "Toto je nabídka výjezdů. Odtud na mise posíláte jednotky.",
@@ -10539,9 +10497,6 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
-                    alert: {
-                        build_2d_ambulance: "Construir um hospital dá-te créditos extra para transportar e tratar pacientes nas tuas missões médicas."
-                    },
                     detail: {
                         browser: {
                             dispatch_menu: "Este é o menu de operação. A partir daqui envias as tuas unidades em missões!",
@@ -12212,9 +12167,6 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
-                    alert: {
-                        build_2d_ambulance: "病院を建設すると、救急ミッションで患者の輸送・手当を行ったときのクレジットが増えます。"
-                    },
                     detail: {
                         browser: {
                             dispatch_menu: "これが指令メニューだ。ここからユニットをミッションに派遣するのだ！",
@@ -12636,9 +12588,6 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
-                    alert: {
-                        build_2d_ambulance: "병원을 건설하면 의료 임무에서 환자를 이송하거나 치료 시 추가 크레딧을 얻을 수 있습니다."
-                    },
                     detail: {
                         browser: {
                             dispatch_menu: "여기가 파견 메뉴입니다. 이 메뉴에서 유닛을 임무에 보낼 수 있습니다!",
@@ -13478,9 +13427,6 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 mission: {
-                    alert: {
-                        build_2d_ambulance: "Kun rakennat sairaalan, saat lisäkrediittejä lääkintätehtävien potilaiden kuljettamisesta ja hoitamisesta."
-                    },
                     detail: {
                         browser: {
                             dispatch_menu: "Tämä on lähetysvalikko. Täältä voit lähettää yksiköitä tehtäviin.",
