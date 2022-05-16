@@ -12646,6 +12646,42 @@ body.dark .mission_overview_countdown {
     display: flex !important
 }
 
+.money-block-mobile-vehicles {
+    display: flex;
+    margin-bottom: 10px
+}
+
+.money-block-mobile-vehicles a {
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    height: 65%
+}
+
+.money-block-mobile-vehicles a span.coins-value {
+    margin-top: 2px
+}
+
+.money-block-mobile-vehicles a span.credits-value {
+    margin-top: 2px
+}
+
+.money-block-mobile-vehicles a .navbar-icon {
+    margin-right: 5px
+}
+
+.money-block-mobile-vehicles a .glyphicon {
+    top: 0;
+    margin-left: 5px
+}
+
+.money-block-mobile-vehicles #coins_top_mobile {
+    margin-left: 10px
+}
+
 .navbar-header .money-block {
     float: left;
     align-items: center;
@@ -15406,7 +15442,8 @@ a.ui-button:active,
     position: fixed;
     bottom: 0;
     right: 0;
-    font-size: 15px
+    font-size: 15px;
+    z-index: 100
 }
 
 .mapkit-marker {
@@ -15627,6 +15664,12 @@ body.bigMap #search_input_field_missions {
     padding: 24px;
     line-height: 15px;
     font-weight: 500
+}
+
+.fit-content .back-button {
+    margin-left: 60px;
+    margin-bottom: 15px;
+    width: 80px
 }
 
 #sign-up-now-button {
@@ -15945,6 +15988,31 @@ body.dark .daily-bonuses .collect-possible-block {
     padding: 10px
 }
 
+#landingpage_new .fit-content .back-button {
+    color: #0f0f0f;
+    margin-left: 5px;
+    margin-right: 10px
+}
+
+#landingpage_new .fit-content .col-sm-3 {
+    margin-bottom: 0
+}
+
+#landingpage_new .fit-content .col-sm-9 {
+    width: 230px;
+    margin-left: 15px
+}
+
+#landingpage_new .fit-content .col-sm-9 label {
+    max-width: 120%;
+    width: 100px;
+    margin-right: 15px
+}
+
+#landingpage_new .fit-content .form-check-label {
+    max-width: 100%
+}
+
 #landingpage_new .landingpage_1_container {
     height: 95vh;
     margin-top: -95vh
@@ -16201,6 +16269,30 @@ a#mission-type-helper-mobile {
     .facebook_login:hover {
         background-color: #466485 !important
     }
+}
+
+.personnel_pannel_heading {
+    overflow: auto
+}
+
+#email-registration-form .control-label {
+    padding-right: 0
+}
+
+.switchButton {
+    color: #ffffff;
+    background-color: #3381e1;
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: fit-content;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 15px
+}
+
+.switchButton:hover {
+    color: #ffffff
 }
 
 /*
@@ -17415,6 +17507,10 @@ div.sceditor-group {
 .policechief .fall_eventIframe .btn-adventskalender {
     color: white;
     background-color: #003b73
+}
+
+.policechief .switchButton {
+    background-color: #a10707
 }
 
 body.belgiumbar.policechief .navbar-default {

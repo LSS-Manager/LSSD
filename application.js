@@ -178,19 +178,19 @@ function mission_participation_add(e) {
 
 function vehicleDistance(e, t, i, n, o, a, s) {
     return a > 0 ? (vehicleDistanceDraw(t, i, e, a), !0) : 1 != e ? (url =
-        "https://www.leitstellenspiel.de/osrmroute/viaroute?loc=" + t + "," + i + "&loc=" + n + "," + o, $
-        .get(url, function (a) {
-            if ("undefined" != typeof a.code && "Ok" == a.code && (0 == a.routes[0].distance ? a
-                    .status = -1 : (a.route_summary = {}, a.route_summary.total_time = a.routes[0]
-                        .duration, a.status = 200)), 200 != a.status)
-            return vehicleDistanceLeitstellenspiel(e, t, i, n, o, s), !0;
-            var r = TIME_MODIFIER_NORMAL;
-            ("undefined" == typeof s || 1 == s) && (r = TIME_MODIFIER_SONDERRECHTE);
-            var l = Math.round(a.route_summary.total_time * r),
-                c = vehicleDistanceDirectTimeToObject(20, t, i, n, o, s);
-            l > c && (l = vehicleDistanceDirectTimeToObject(30, t, i, n, o, s)), vehicleDistanceDraw(
-                t, i, e, l), reload_table()
-        }), !0) : (vehicleDistanceDirect(190, e, t, i, n, o, s), void 0)
+        "https://osrm.missionchief.com/viaroute?loc=" + t + "," + i + "&loc=" + n + "," + o, $.get(url,
+            function (a) {
+                if ("undefined" != typeof a.code && "Ok" == a.code && (0 == a.routes[0].distance ? a
+                        .status = -1 : (a.route_summary = {}, a.route_summary.total_time = a.routes[0]
+                            .duration, a.status = 200)), 200 != a.status)
+                return vehicleDistanceLeitstellenspiel(e, t, i, n, o, s), !0;
+                var r = TIME_MODIFIER_NORMAL;
+                ("undefined" == typeof s || 1 == s) && (r = TIME_MODIFIER_SONDERRECHTE);
+                var l = Math.round(a.route_summary.total_time * r),
+                    c = vehicleDistanceDirectTimeToObject(20, t, i, n, o, s);
+                l > c && (l = vehicleDistanceDirectTimeToObject(30, t, i, n, o, s)), vehicleDistanceDraw(
+                    t, i, e, l), reload_table()
+            }), !0) : (vehicleDistanceDirect(190, e, t, i, n, o, s), void 0)
 }
 
 function vehicleDistanceLeitstellenspiel(direct_move, source_latitude, source_longitude, target_latitude,
@@ -5896,6 +5896,7 @@ Object.values || (Object.values = function (e) {
                 arff: "ARFF Tender",
                 battalion_chief_unit: "Support Vehicle",
                 boot: "Boats (General)",
+                brush_truck: "Wildland fire engine",
                 crew_carrier: "Crew Carrier",
                 dekon_p: "",
                 division_chief_unit: "Mobile Command Vehicle",
