@@ -975,9 +975,10 @@ function getBuildingMarkerIcon(e) {
         "/images/building_hazard_response_ems_other.png" : e.building_type == BUILDING_TYPE_WATER_RESCUE_2 ?
         building_marker_image = "/images/building_wasserwacht_other.png" : e.building_type ==
         BUILDING_TYPE_FIRE_INVESTIGATION ? building_marker_image =
-        "/images/building_fire_marshall_other.png" : e.building_type == BUILDING_TYPE_POLICE_DEPOT && (
-            building_marker_image = "/images/building_police_depot_other.png"), flavouredAsset(
-            building_marker_image)
+        "/images/building_fire_marshall_other.png" : e.building_type == BUILDING_TYPE_POLICE_DEPOT ?
+        building_marker_image = "/images/building_police_depot_other.png" : e.building_type ==
+        BUILDING_TYPE_MUNICIPAL_POLICE && (building_marker_image =
+            "/images/building_municipal_police_other.png"), flavouredAsset(building_marker_image)
 }
 
 function spliceLatLngs(e, t) {
@@ -2623,7 +2624,7 @@ function aao_available(e, t) {
             }
         });
         var a = o.attr("custom");
-        if ("" != a) {
+        if ("" != a && "undefined" != typeof a) {
             var s = jQuery.parseJSON(a);
             $.each(s, function (e, t) {
                 var a = aao_check("custom_" + md5(e), o, t);
@@ -6691,8 +6692,8 @@ Object.values || (Object.values = function (e) {
                 prison_missions: "Zakład Karny",
                 rapid_deployment_group: "Grupa szybkiego montażu (SEG)",
                 rescue_copter_station_missions: "Baza HEMS",
-                riot_police: "Oddziały Prewencji",
-                riot_police_missions: "Oddziały prewencji",
+                riot_police: "Poligon Oddziału Prewencji Policji",
+                riot_police_missions: "Zgromadzenia publiczne (OPP)",
                 staging_area_missions: "Miejsce koncentracji Sił i Środków",
                 technical_aid_organization: "THW",
                 technical_aid_organization_school: "THW Bundesschule",
@@ -6737,6 +6738,13 @@ Object.values || (Object.values = function (e) {
             automatic_text_color: "Automatyczny kolor tekstu",
             back: "Wstecz",
             battalion_chief_unit: "Samochód Oficera Operacyjnego lub SLRr",
+            categories: {
+                bereitschaftspolizei: "OPP",
+                firefighting: "Straż pożarna",
+                police: "Policja",
+                rescue: "Pogotowie",
+                water_rescue: "WOPR"
+            },
             category: "Kategoria",
             colour: "Kolor",
             column: "Kolumna",
@@ -6779,7 +6787,7 @@ Object.values || (Object.values = function (e) {
                 abl2wasser_only: "Moduł wężowy",
                 ambulance: "Ambulans P lub S",
                 ambulance_or_rapid_responder: "",
-                any_traffic_car: "Radiowóz WRD",
+                any_traffic_car: "Pojazd WRD",
                 arff: "SP LSP (samochód pożarniczy lotniskowej straży pożarnej)",
                 battalion_chief_unit: "SLOp lub SLRr",
                 boot: "Łodzie (ogólne)",
@@ -6850,7 +6858,7 @@ Object.values || (Object.values = function (e) {
                 only_ab_dekon_p: "",
                 only_dekon_p: "",
                 ovd_p: "",
-                police_car: "Radiowóz OPI",
+                police_car: "Pojazd OPI",
                 police_motorcycle: "Motocykl Policyjny",
                 polizeihubschrauber: "Helikopter Policyjny",
                 rescue_vehicle: "Samochód Ratownictwa Technicznego",
@@ -35947,8 +35955,10 @@ $(function () {
                 "intervention_order.vehicles.foam_amount")], ["foam", I18n.t(
                 "intervention_order.vehicles.foam")], ["police_car_or_service_group_leader", I18n.t(
                 "intervention_order.vehicles.police_car_or_service_group_leader")], [
-                "emergency_welfare_value", I18n.t("intervention_order.vehicles.emergency_welfare")]],
-        $("#restore_map")
+                "emergency_welfare_value", I18n.t("intervention_order.vehicles.emergency_welfare")], [
+                "municipal_police", I18n.t("intervention_order.vehicles.municipal_police")], [
+                "riot_police", I18n.t("intervention_order.vehicles.riot_police")], ["detention_unit",
+                I18n.t("intervention_order.vehicles.detention_unit")]], $("#restore_map")
         .click(function () {
             mapViewRestore()
         }), $("#coins_top")
@@ -47344,6 +47354,9 @@ I18n.t = function (e, t) {
         from: "/images/building_police_depot.png",
         to: "/images/policechief_building_police_depot.png"
     }, {
+        from: "/images/building_municipal_police.png",
+        to: "/images/policechief_building_municipal_police.png"
+    }, {
         from: "/images/police.png",
         to: "/images/policechief_police.png"
     }, {
@@ -47385,6 +47398,12 @@ I18n.t = function (e, t) {
     }, {
         from: "/images/police_suv_sonderrechte.png",
         to: "/images/pc_police_suv_sonderrechte.png"
+    }, {
+        from: "/images/police_pickup.png",
+        to: "/images/pc_police_pickup.png"
+    }, {
+        from: "/images/police_pickup_sonderrechte.png",
+        to: "/images/pc_police_pickup_sonderrechte.png"
     }, {
         from: "/images/sign_up.en_US.png",
         to: "/images/policechief_sign_up.en.png"
