@@ -7216,6 +7216,13 @@ Object.values || (Object.values = function (e) {
         intervention_order: {
             automatic_text_color: "Colore testo automatico",
             back: "Indietro",
+            categories: {
+                brush: "Anticendio Boschivo",
+                firefighting: "Antincendio",
+                police: "Polizia",
+                rescue: "Soccorso",
+                water_rescue: "Soccorso Acquatico VVF"
+            },
             category: "Categoria",
             colour: "Colore",
             column: "Colonna",

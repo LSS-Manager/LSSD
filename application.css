@@ -13441,6 +13441,11 @@ body.bigMap #building_panel_body {
     background-size: auto 100%
 }
 
+.queen-platinum-jubilee {
+    background-image: url(/images/queen_platinum_jubilee_bar.png);
+    background-size: auto 100%
+}
+
 .missionAward {
     height: 37px;
     width: 37px
@@ -17407,6 +17412,11 @@ div.sceditor-group {
 
 .policechief .falleventbar {
     background-image: url(/images/fallevent_bar_pc.png);
+    background-size: auto 100%
+}
+
+.policechief .queen-platinum-jubilee {
+    background-image: url(/images/policechief_queen_platinum_jubilee_bar.png);
     background-size: auto 100%
 }
 
