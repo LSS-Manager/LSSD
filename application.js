@@ -6313,6 +6313,13 @@ Object.values || (Object.values = function (e) {
         intervention_order: {
             automatic_text_color: "Automatisk textfärg",
             back: "Tillbaka",
+            categories: {
+                brush: "Skogsbrandkår",
+                firefighting: "Brandkår",
+                police: "Polis",
+                rescue: "Räddning",
+                water_rescue: "Vattenräddning"
+            },
             category: "Kategori",
             colour: "Färg",
             column: "Kolumn",
