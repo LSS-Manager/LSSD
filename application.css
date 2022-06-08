@@ -16300,6 +16300,56 @@ a#mission-type-helper-mobile {
     color: #ffffff
 }
 
+.tooltip-mc[data-tip] {
+    position: relative
+}
+
+.tooltip-mc[data-tip]:before {
+    content: '';
+    display: none;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #fff7d9;
+    position: absolute;
+    top: 0px;
+    left: -205px;
+    z-index: 8;
+    font-size: 0;
+    line-height: 0;
+    width: 0;
+    height: 0
+}
+
+.tooltip-mc[data-tip]:after {
+    display: none;
+    content: attr(data-tip);
+    position: absolute;
+    top: -10px;
+    left: -205px;
+    padding: 5px 8px;
+    background: #fff7d9;
+    color: #1a1a1a;
+    z-index: 9;
+    font-size: 0.8em;
+    height: auto;
+    width: 200px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    word-wrap: normal;
+    word-break: break-word;
+    visibility: visible
+}
+
+.tooltip-mc[data-tip]:hover:before,
+.tooltip-mc[data-tip]:hover:after {
+    display: block
+}
+
+.tooltip-mc:after {
+    visibility: hidden
+}
+
 /*
  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
  *

@@ -2934,6 +2934,12 @@ function callOnLightbox(e) {
 
 function missionPositionMarkerAddAll() {}
 
+function openHelpshiftArticle(e, t) {
+    1 == mobile_bridge_use && 4 == mobile_version ? mobileBridgeAdd("open_helpshift_article", {
+        article_id: t
+    }) : "" !== e && window.open(e, "_blank")
+}
+
 function missionPositionMarkerAdd(e) {
     1 == mobile_bridge_use && mobileBridgeAdd("poi", [e])
 }
