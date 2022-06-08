@@ -2935,7 +2935,7 @@ function callOnLightbox(e) {
 function missionPositionMarkerAddAll() {}
 
 function openHelpshiftArticle(e, t) {
-    1 == mobile_bridge_use && 4 == mobile_version ? mobileBridgeAdd("open_helpshift_article", {
+    1 == mobile_bridge_use && 4 == mobile_version && null != t ? mobileBridgeAdd("open_helpshift_article", {
         article_id: t
     }) : "" !== e && window.open(e, "_blank")
 }
@@ -3714,7 +3714,7 @@ Object.values || (Object.values = function (e) {
                         general: "Als Nächstes empfehlen wir dir, eine Leitstelle zu bauen. Außerdem solltest du weitere Wachen bauen. Je mehr Wachen, desto mehr Einsätze tauchen auf. Tipp: Zu Beginn empfehlen wir kleine Wachen.",
                         join_alliance: "Darüber hinaus empfehlen wir dir, einem Verband beizutreten. Gemeinsam macht es mehr Spaß und andere Mitglieder können dir mit deinen Einsätzen helfen.",
                         radio: {
-                            helpshift_id: "1662",
+                            helpshift_id: 1540,
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "Der Funk zeigt Statusaktualisierungen eurer Fahrzeuge an. Weitere Informationen zum Status findet ihr hier."
                         },
@@ -4252,7 +4252,7 @@ Object.values || (Object.values = function (e) {
                         general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
                         join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
                         radio: {
-                            helpshift_id: "1662",
+                            helpshift_id: 1540,
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "The radio displays status updates of your vehicles. For more detailed information on each status click here."
                         },
@@ -4706,7 +4706,7 @@ Object.values || (Object.values = function (e) {
                         general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
                         join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
                         radio: {
-                            helpshift_id: "1662",
+                            helpshift_id: 1540,
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "The radio displays status updates of your vehicles. For more detailed information on each status click here."
                         },
@@ -5178,7 +5178,7 @@ Object.values || (Object.values = function (e) {
                         general: "Als volgende stap raden we je aan om een meldkamer(gratis!) te bouwen en dan zo snel mogelijk nieuwe gebouwen te bouwen, aangezien het maximumaantal missies gelijk is aan het type station waarvan je er het meeste hebt (politie, brandweer, ambulance) plus 1. Bijvoorbeeld: 5 brandweerkazernes en 3 ambulanceposten = 6 missies.",
                         join_alliance: "Ook kun je je aansluiten bij een team. Dat kan je vooral in het begin erg vooruit helpen.",
                         radio: {
-                            helpshift_id: "1662",
+                            helpshift_id: 1540,
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "De radio toont statusupdates van uw voertuigen. Voor meer gedetailleerde informatie over elke status klik hier."
                         },
@@ -5639,7 +5639,7 @@ Object.values || (Object.values = function (e) {
                         general: "Te recomendamos que tu siguiente paso sea construir una centralita y después, en cuanto sea posible, nuevas instalaciones, ya que el número máximo de misiones es igual al número máximo de instalaciones del mismo tipo (comisarías, parques de bomberos o de ambulancias...) más 1. Por ejemplo: 5 parques de bomberos y 3 de ambulancias permiten tener 6 misiones disponibles.",
                         join_alliance: "Además, unirse a una alianza es de gran ayuda, especialmente al principio.",
                         radio: {
-                            helpshift_id: "1662",
+                            helpshift_id: 1540,
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "La radio muestra actualizaciones de estado de tus vehículos. Si deseas acceder a información más detallada sobre cada estado, haz clic aquí."
                         },
@@ -6069,7 +6069,7 @@ Object.values || (Object.values = function (e) {
                         general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
                         join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
                         radio: {
-                            helpshift_id: "1662",
+                            helpshift_id: 1540,
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "The radio displays status updates of your vehicles. For more detailed information on each status click here."
                         },
@@ -6499,7 +6499,7 @@ Object.values || (Object.values = function (e) {
                         general: "Efter det här rekommenderar jag att du bygger en larmcentral följt av nya stationer, för det maximala antalet uppdrag är lika med det högsta antalet stationer av samma typ (polis-, brand- eller ambulansstation) plus 1. Om du har 5 brandstationer och 3 ambulansstationer innebär det alltså att du kan ha 6 uppdrag.",
                         join_alliance: "Det kan även ge stora fördelar att gå med i en allians, särskilt tidigt i spelet, så det rekommenderas också.",
                         radio: {
-                            helpshift_id: "1662",
+                            helpshift_id: 1540,
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "Radion visar statusuppdateringar om dina fordon. Klicka här för mer detaljerad information om varje status."
                         },
@@ -6978,7 +6978,7 @@ Object.values || (Object.values = function (e) {
                         general: "Następnymi zalecanymi krokami są budowa centrum powiadamiania ratunkowego oraz jak najszybsze wzniesienie nowych posterunków, ponieważ maksymalna liczba misji jest równa najwyższej liczbie posterunków jednego typu (policji, straży pożarnej, pogotowia ratunkowego) plus 1, np. przy 5 posterunkach straży pożarnej i 3 pogotowia ratunkowego dostępnych jest 6 misji.",
                         join_alliance: "Bardzo pomocne jest również dołączenie do sojuszu, zwłaszcza na początku gry, dlatego zalecamy również ten krok.",
                         radio: {
-                            helpshift_id: "1662",
+                            helpshift_id: 1540,
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "Radio wyświetla aktualizację stanu twoich pojazdów. Aby uzyskać szczegółowe informacje na temat każdego stanu, kliknij tutaj."
                         },
@@ -7450,7 +7450,7 @@ Object.values || (Object.values = function (e) {
                         general: "Come passo successivo ti consiglio di costruire una centrale operativa e poi, appena possibile, delle nuove stazioni. Il numero massimo di missioni è uguale al numero più alto di una delle stazioni di tipo diverso (polizia, vigili del fuoco, ambulanza) più 1; per esempio: 5 stazioni dei vigili del fuoco e 3 di ambulanze = 6 missioni.",
                         join_alliance: "Inoltre, ti consiglio di unirti a un'alleanza perché, soprattutto all'inizio, questo potrebbe esserti di grande aiuto.",
                         radio: {
-                            helpshift_id: "1662",
+                            helpshift_id: 1540,
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "La radio visualizza gli aggiornamenti dello stato dei veicoli. Per maggiori informazioni su ogni stato, fai clic qui."
                         },
@@ -7917,7 +7917,7 @@ Object.values || (Object.values = function (e) {
                         general: "Nous vous recommandons pour l'étape suivante de construire un centre de secours et, dès que possible, de nouveaux postes puisque le nombre de missions maximum équivaut au plus grand nombre de postes d'un genre (police, pompiers, ambulance) plus 1. Par exemple, 5 casernes de pompiers et 3 postes ambulanciers = 6 missions.",
                         join_alliance: "De plus, nous vous recommandons de rejoindre une alliance, ce qui peut grandement vous aider, surtout au début.",
                         radio: {
-                            helpshift_id: "1662",
+                            helpshift_id: 1540,
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "La radio diffuse des rapports périodiques sur vos véhicules. Pour plus de détails sur chaque statut, cliquez ici."
                         },
@@ -8374,7 +8374,7 @@ Object.values || (Object.values = function (e) {
                         general: "Следующим шагом рекомендуем возвести диспетчерский пункт, а затем начать строительство новых станций, поскольку максимальное количество заданий на одно больше количества станций самого распространенного типа (полиция, пожарные, скорая помощь). Например, при пяти пожарных станциях и трёх станциях скорой помощи вам будет доступно шесть заданий.",
                         join_alliance: "Мы также рекомендуем вступить в альянс, так как это может здорово вам помочь, особенно по началу.",
                         radio: {
-                            helpshift_id: "1662",
+                            helpshift_id: 1540,
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "Радио отображает статус вашего транспорта. Нажмите сюда, чтобы узнать подробности о статусах."
                         },
@@ -8796,7 +8796,7 @@ Object.values || (Object.values = function (e) {
                         general: "Som et næste skridt vil vi anbefale, at du bygger en alarmcentral, og dernæst - så snart som muligt - nye stationer, da det maksimale antal missioner er lig med det højeste antal af enhver slags station (politi-, brand-, og ambulance-) plus 1; f.eks. 5 brand- og 3 ambulancestationer = 6 missioner.",
                         join_alliance: "Det ville også hjælpe dig enormt, især i starten, så det anbefales også.",
                         radio: {
-                            helpshift_id: "1662",
+                            helpshift_id: 1540,
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "Radioen viser statusopdateringer på dine køretøjer. Klik her for at få mere at vide om hver status."
                         },
@@ -9260,7 +9260,7 @@ Object.values || (Object.values = function (e) {
                         general: "I neste trinn anbefaler vi deg å bygge et nødetatssenter og så snart som mulig nye stasjoner, siden maks antall oppdrag er lik det høyeste antallet stasjoner av en stasjonstype (politi, brann, ambulanse) pluss 1. F.eks. 5 brannstasjoner og 3 ambulansestasjoner = 6 oppdrag.",
                         join_alliance: "Det er også nyttig å bli med i allianser, spesielt i begynnelsen, så det anbefales også.",
                         radio: {
-                            helpshift_id: "1662",
+                            helpshift_id: 1540,
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "Radioen viser statusoppdateringer for alle kjøretøy. Klikk her for mer detaljert statusinformasjon."
                         },
@@ -9715,7 +9715,7 @@ Object.values || (Object.values = function (e) {
                         general: "V dalším kroku bychom vám doporučili postavit dispečink a poté co nejrychleji další stanice, jelikož maximální počet misí se rovná maximálnímu počtu stanic různého typu (policie, hasiči, záchranka) plus 1. Tedy např. 5 hasičských stanic a 3 stanice záchranky = 6 misí.",
                         join_alliance: "Přidat se k alianci by vám rovněž mohlo velice pomoct, hlavně na začátku. Takže to také doporučujeme.",
                         radio: {
-                            helpshift_id: "1662",
+                            helpshift_id: 1540,
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "Vysílačka zobrazuje aktualizace stavu vašich vozidel. Podrobnější informace o jednotlivých stavech získáte kliknutím na sem."
                         },
@@ -10578,7 +10578,7 @@ Object.values || (Object.values = function (e) {
                         general: "Para o próximo passo, recomendamos que construas um centro de operações e a seguir, assim que possível, novas estações, já que o número máximo de missões corresponde ao maior número de quaisquer estações de um tipo diferente (polícia, bombeiros, ambulâncias) mais 1; por exemplo, 5 bombeiros e 3 estações de ambulâncias = 6 missões.",
                         join_alliance: "Adicionalmente, seria muito vantajoso para ti entrares numa aliança, especialmente no início, por isso também recomendamos que o faças.",
                         radio: {
-                            helpshift_id: "1662",
+                            helpshift_id: 1540,
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "O rádio exibe atualizações de estado dos teus veículos. Para mais informação detalhada sobre cada estado, clica aqui."
                         },
@@ -12248,7 +12248,7 @@ Object.values || (Object.values = function (e) {
                         general: "次のステップでは、指令センターを建設し、その後すぐに新しいステーションを増やすことをお勧めする。ミッションの最大数＝各種類（警察、消防、救急）のステーションの最大数＋1であるためだ。例えば、消防局が5軒、救急車ステーションが3軒とすると、ミッション数は6になる。",
                         join_alliance: "また、アライアンスを形成すると、特に駆け出し、ゲーム序盤で大いに役に立つので、それもお勧めしよう。",
                         radio: {
-                            helpshift_id: "1662",
+                            helpshift_id: 1540,
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "無線は、車両の最新状態を表示します。各状態の詳細情報は、こちらをクリックしてください。"
                         },
@@ -12669,7 +12669,7 @@ Object.values || (Object.values = function (e) {
                         general: "다음 단계는 지휘센터 건설 후 최대한 빨리 새 관할서를 짓는 것을 권장합니다. 최대 임무 수는 여러 유형(경찰서, 소방서, 응급실)의 관할서 중 가장 많이 배치한 관할서 수+1로 정해지기 때문입니다. 예를 들어 소방서 5곳과 응급실 3곳을 보유할 경우 최대 6개의 임무를 받을 수 있습니다.",
                         join_alliance: "또한 게임 초기에 동맹에 가입하면 큰 도움을 받을 수 있으므로 동맹 가입도 권장합니다.",
                         radio: {
-                            helpshift_id: "1662",
+                            helpshift_id: 1540,
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "무전기에 차량 상태 업데이트가 표시됩니다. 각 상태에 관한 자세한 내용은 여기를 클릭해 확인해 주세요."
                         },
@@ -13508,7 +13508,7 @@ Object.values || (Object.values = function (e) {
                         general: "Seuraavaksi suosittelen rakentamaan hätäkeskuksen ja sitten mahdollisimman pian uusia asemia, sillä tehtävien enimmäismäärä on sama kuin erityyppisten asemien (poliisiasema, paloasema, ambulanssiasema) enimmäismäärä plus 1, eli 5 palo- ja 3 ambulanssiasemaa = 6 tehtävää.",
                         join_alliance: "Myös liittoutumaan liittyminen on hyödyksi erityisesti alussa, joten sekin on suositeltavaa.",
                         radio: {
-                            helpshift_id: "1662",
+                            helpshift_id: 1540,
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             "short": "Radio näyttää ajoneuvojesi statuspäivityksiä. Saadaksesi lisätietoa kustakin statuksesta, napsauta tästä."
                         },
