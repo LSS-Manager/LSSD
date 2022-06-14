@@ -2940,6 +2940,13 @@ function openHelpshiftArticle(e, t) {
     }) : "" !== e && window.open(e, "_blank")
 }
 
+function flashHighlightById(e) {
+    var t = document.getElementById(e);
+    t.classList.add("background-flash"), t.addEventListener("animationend", function () {
+        t.classList.remove("background-flash")
+    })
+}
+
 function missionPositionMarkerAdd(e) {
     1 == mobile_bridge_use && mobileBridgeAdd("poi", [e])
 }

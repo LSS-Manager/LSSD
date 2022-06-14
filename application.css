@@ -16350,6 +16350,25 @@ a#mission-type-helper-mobile {
     visibility: hidden
 }
 
+.background-flash {
+    animation: background-flash 350ms ease-out;
+    animation-iteration-count: 3
+}
+
+@keyframes background-flash {
+    0% {
+        background-color: transparent
+    }
+
+    50% {
+        background-color: #fae621
+    }
+
+    100% {
+        background-color: transparent
+    }
+}
+
 /*
  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
  *
