@@ -4270,6 +4270,11 @@ Object.values || (Object.values = function (e) {
                             link: "",
                             "short": ""
                         },
+                        police_depot: {
+                            helpshift_id: "",
+                            link: "",
+                            "short": ""
+                        },
                         police_school: {
                             helpshift_id: "",
                             link: "",
@@ -4362,17 +4367,6 @@ Object.values || (Object.values = function (e) {
                         general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
                         join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
                         summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
-                    }
-                }
-            },
-            begnner: {
-                building: {
-                    tooltop: {
-                        police_depot: {
-                            helpshift_id: "",
-                            link: "",
-                            "short": ""
-                        }
                     }
                 }
             },
@@ -4827,6 +4821,11 @@ Object.values || (Object.values = function (e) {
                             link: "https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-helicopter-station",
                             "short": "Houses aircrafts for police-related missions.\nA helicopter needs to be purchased separately. "
                         },
+                        police_depot: {
+                            helpshift_id: "1741",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version",
+                            "short": "Houses specialist police units that are often stored in large police depots. \nYou can only build one of these per 50 police buildings. Prison cells are available in this building."
+                        },
                         police_school: {
                             helpshift_id: "1724",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-academy",
@@ -4919,20 +4918,6 @@ Object.values || (Object.values = function (e) {
                         general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
                         join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
                         summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
-                    }
-                }
-            },
-            begnner: {
-                building: {
-                    tooltop: {
-                        police_depot: {
-                            helpshift_id: "1741",
-                            link: "https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version",
-                            "short": [
-                                "Houses specialist police units that are often stored in large police depots. ",
-                                "You can only build one of these per 50 police buildings. Prison cells are available in this building."
-                                ]
-                        }
                     }
                 }
             },
@@ -5288,6 +5273,7 @@ Object.values || (Object.values = function (e) {
                 ovd_p: "Officier van Dienst - Politie",
                 police_car: "Politie Noodhulp",
                 police_car_3: "NH-O",
+                police_horse: "VW-BB of BB-A",
                 police_motorcycle: "Dienstmotor Noodhulp",
                 polizeihubschrauber: "Politiehelikopter",
                 pump: "Pompaanhangers (DPA of MSA)",
