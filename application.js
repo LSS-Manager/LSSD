@@ -908,7 +908,8 @@ function constructBuildingListElement(e) {
             building_marker_image = getBuildingMarkerIcon(e), e.app_icon_path = -1 !== String(
                 building_marker_image)
             .indexOf("//") ? building_marker_image : currentHostname() + building_marker_image);
-        var t = "<li  class='building_list_li' building_type_id='" + e.building_type +
+        var t = "<li  search_attribute= '" + e.name +
+            "' class='building_list_li buildings_searchable' building_type_id='" + e.building_type +
             "' leitstelle_building_id='" + e.lbid +
             "'><div class='building_list_caption' id='building_list_caption_" + e.id + "' >" + e
             .detail_button + "<img class='building_marker_image' building_id='" + e.id + "' src='" +
@@ -2479,8 +2480,7 @@ function buildingSelectionActive(button) {
     building_type_ids = eval(button.attr("building_type_ids")), button.addClass("btn-success")
         .removeClass("btn-danger"), $.each(building_type_ids, function (e, t) {
             $(".building_list_li[building_type_id='" + t + "']")
-                .addClass("category_selected")
-                .show()
+                .removeClass("building-filtered-by-type")
         })
 }
 
@@ -2489,8 +2489,7 @@ function buildingSelectionDeactive(button) {
         button.removeClass("btn-success")
         .addClass("btn-danger"), $.each(building_type_ids, function (e, t) {
             $(".building_list_li[building_type_id='" + t + "']")
-                .removeClass("category_selected")
-                .hide()
+                .addClass("building-filtered-by-type")
         }))
 }
 
@@ -3343,13 +3342,15 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} ist offline: %{duration}",
             is_online: "%{user} ist online.",
             loading: "Lade...",
-            message_for_edit: "Das Personal wird nur mit ausrücken, wenn die benötigte Ausbildung abgeschlossen ist. ",
             message_for_education: "Die Person wird nicht mit ausrücken, da die benötigte Ausbildung fehlt.",
             name: "Name",
             none: "Keine",
             of: "von",
             off: "Aus",
             on: "An",
+            person: {
+                missing_education_for_vehicle: "Das Personal wird nur mit ausrücken, wenn die benötigte Ausbildung abgeschlossen ist. "
+            },
             save: "Speichern",
             search: "Suchen",
             show: "Anzeigen",
@@ -3473,8 +3474,9 @@ Object.values || (Object.values = function (e) {
             message: "Nachricht",
             mission: "Einsätze",
             missions_filtered_out: "Einige Einsätze könnten herausgefiltert worden sein. Bitte überprüfe deinen Kartenfilter.",
-            no_alliance_chat_impossible: "Du bist in keinem Verband. Der Chat ist nur innerhalb eines Verbandes möglich.",
+            no_alliance_chat_impossible: "Der Chat ermöglicht dir, dich mit anderen erfahrenen Spielern zu vernetzen. Sie können sowohl deine Fragen zum Spiel beantworten als auch helfen, indem sie dir Zugriff auf ihre Gebäude wie Schulen oder Krankenhäuser geben.",
             no_alliance_missions: "Es liegen keine Verbandseinsätze vor. ",
+            no_alliance_missions_join: "Die Teilnahme an Verbandseinsätzen ermöglicht es dir, Credits zu verdienen - unabhängig davon welches Fahrzeug du sendest. Im Verband kannst du sowohl Einsätze teilen, als auch auch anderen bei ihren Einsätzen helfen, um zusätzliche Credits zu erhalten",
             no_ambulance_missions: "Es liegen keine Krankentransporte vor. Krankentransporte können auftreten, sobald Du einen KTW und ein Krankenhaus besitzt.",
             no_emergency_missions: "Es liegen keine Notfalleinsätze vor. Notfalleinsätze können ab der ersten Wache auftreten.",
             no_radio_messages: "Es sind keine Funksprüche eingegangen.",
@@ -3732,6 +3734,9 @@ Object.values || (Object.values = function (e) {
                         general: "Als Nächstes empfehlen wir dir, eine Leitstelle zu bauen. Außerdem solltest du weitere Wachen bauen. Je mehr Wachen, desto mehr Einsätze tauchen auf. Tipp: Zu Beginn empfehlen wir kleine Wachen.",
                         join_alliance: "Darüber hinaus empfehlen wir dir, einem Verband beizutreten. Gemeinsam macht es mehr Spaß und andere Mitglieder können dir mit deinen Einsätzen helfen.",
                         summary: "Das waren die Grundlagen vom Leitstellenspiel! Beende Einsätze, sammle Credits, kaufe mehr Fahrzeuge, und baue dein Rettungsnetzwerk aus! Viel Spaß! </br> Dein Leitstellenspiel-Team"
+                    },
+                    reminder: {
+                        join_alliance: "Einem Verband beizutreten bringt mehrere Vorteile mit sich: Belohnungen für das absolvieren von Verbandseinsätzen, Unterstützung durch erfahrene Verbandsmitglieder bei schwierigen Einsätzen, außerdem kannst du Gebäude, wie zum Beispiel Schulen und Krankenhäuser mitnutzen. Klicke jetzt den Button um einem Verband beizutreten!"
                     }
                 }
             },
@@ -3815,13 +3820,15 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} is offline: %{duration}",
             is_online: "%{user} is online.",
             loading: "Loading...",
-            message_for_edit: "Personnel will only be dispatched with the vehicle if it has acquired the necessary education!",
             message_for_education: "This person will not be dispatched with the vehicle because it is missing the necessary education!",
             name: "Name",
             none: "None",
             of: "of",
             off: "Off",
             on: "On",
+            person: {
+                missing_education_for_vehicle: "Personnel will only be dispatched with the vehicle if it has acquired the necessary education!"
+            },
             save: "Save",
             search: "Search",
             show: "Show",
@@ -3951,8 +3958,9 @@ Object.values || (Object.values = function (e) {
             message: "Message",
             mission: "Missions",
             missions_filtered_out: "Some missions might be filtered out. Please, check your map filters.",
-            no_alliance_chat_impossible: "You are not in an alliance.",
+            no_alliance_chat_impossible: "The Chat is a great way to link up with other more experienced players. They can both answer your questions and help you by giving you access to buildings like Hospitals and Schools",
             no_alliance_missions: "There are currently no alliance missions.",
+            no_alliance_missions_join: "Participating in alliance missions will reward you with Credits - no matter what type of vehicle you send.\nBy joining an alliance you can do both, share your own missions to get help from experienced alliance members and participate in other’s shared missions for extra rewards.",
             no_ambulance_missions: "There are no ambulance missions. Ambulance missions can only occur when you have an ambulance and a hospital.",
             no_emergency_missions: "There are no emergency missions available. An emergency mission can occur after you made your first station.",
             no_radio_messages: "You didn't receive any radio messages.",
@@ -4367,6 +4375,9 @@ Object.values || (Object.values = function (e) {
                         general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
                         join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
                         summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
+                    },
+                    reminder: {
+                        join_alliance: "Joining an alliance has many benefits: extra rewards for completing alliance missions, support from experienced members for difficult missions and you can use facilities of other members like hospitals and schools! Press the button to join an alliance now!"
                     }
                 }
             },
@@ -4450,13 +4461,15 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} is offline: %{duration}",
             is_online: "%{user} is online.",
             loading: "Loading...",
-            message_for_edit: "Personnel will only be dispatched with the vehicle if it has acquired the necessary education!",
             message_for_education: "This person will not be dispatched with the vehicle because it is missing the necessary education!",
             name: "Name",
             none: "None",
             of: "of",
             off: "Off",
             on: "On",
+            person: {
+                missing_education_for_vehicle: "Personnel will only be dispatched with the vehicle if it has acquired the necessary education!"
+            },
             save: "Save",
             search: "Search",
             show: "Show",
@@ -4569,8 +4582,9 @@ Object.values || (Object.values = function (e) {
             message: "Message",
             mission: "Missions",
             missions_filtered_out: "Some missions might be filtered out. Please, check your map filters.",
-            no_alliance_chat_impossible: "You are not in an alliance.",
+            no_alliance_chat_impossible: "The Chat is a great way to link up with other more experienced players. They can both answer your questions and help you by giving you access to buildings like Hospitals and Schools",
             no_alliance_missions: "There are currently no alliance missions.",
+            no_alliance_missions_join: "Participating in alliance missions will reward you with Credits - no matter what type of vehicle you send.\nBy joining an alliance you can do both, share your own missions to get help from experienced alliance members and participate in other’s shared missions for extra rewards.",
             no_ambulance_missions: "There are no ambulance missions. Ambulance missions can only occur when you have an ambulance and a hospital.",
             no_emergency_missions: "There are no emergency missions available. An emergency mission can occur after you made your first station.",
             no_radio_messages: "You didn't receive any radio messages.",
@@ -4918,6 +4932,9 @@ Object.values || (Object.values = function (e) {
                         general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
                         join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
                         summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
+                    },
+                    reminder: {
+                        join_alliance: "Joining an alliance has many benefits: extra rewards for completing alliance missions, support from experienced members for difficult missions and you can use facilities of other members like hospitals and schools! Press the button to join an alliance now!"
                     }
                 }
             },
@@ -5001,13 +5018,15 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} is offline: %{duration}",
             is_online: "%{user} is online.",
             loading: "Laden...",
-            message_for_edit: "Werknemers worden alleen uitgezonden met het voertuig als ze de vereiste opleiding voltooid hebben.",
             message_for_education: "Deze werknemer wordt niet uitgezonden met het voertuig omdat de vereiste opleiding niet voltooid is.",
             name: "Naam",
             none: "Geen",
             of: "van",
             off: "Uit",
             on: "Aan",
+            person: {
+                missing_education_for_vehicle: "Werknemers worden alleen uitgezonden met het voertuig als ze de vereiste opleiding voltooid hebben."
+            },
             save: "Opslaan",
             search: "Zoeken",
             show: "Bekijken",
@@ -5127,8 +5146,9 @@ Object.values || (Object.values = function (e) {
             message: "Bericht",
             mission: "Incidenten",
             missions_filtered_out: "Sommige missies worden mogelijk uitgefilterd. Controleer alstublieft uw kaartfilters.",
-            no_alliance_chat_impossible: "Je zit nog niet in een team. De chat is pas beschikbaar als je in een team zit. ",
+            no_alliance_chat_impossible: "De Chat is een geweldige manier om in contact te komen met andere meer ervaren spelers. Zij kunnen zowel je vragen beantwoorden als je helpen door je toegang te geven tot gebouwen zoals Ziekenhuizen en Scholen",
             no_alliance_missions: "Er zijn geen team inzetten beschikbaar",
+            no_alliance_missions_join: "Deelnemen aan missies van een alliantie zal je belonen met credits - ongeacht het type voertuig dat je stuurt.\nDoor lid te worden van een alliantie kun je beide doen: je eigen missies delen om hulp te krijgen van ervaren alliantieleden en deelnemen aan de gedeelde missies van anderen voor extra beloningen.",
             no_ambulance_missions: "Er kan nog geen besteld vervoer plaatsvinden zonder een ziekenhuis en een zorgambulance.",
             no_emergency_missions: "Er hebben zich nog geen incidenten plaatsgevonden. Incidenten kunnen vanaf je eerste post plaatsvinden.",
             no_radio_messages: "Je hebt nog geen statusmeldingen ontvangen.",
@@ -5391,6 +5411,9 @@ Object.values || (Object.values = function (e) {
                         general: "Als volgende stap raden we je aan om een meldkamer(gratis!) te bouwen en dan zo snel mogelijk nieuwe gebouwen te bouwen, aangezien het maximumaantal missies gelijk is aan het type station waarvan je er het meeste hebt (politie, brandweer, ambulance) plus 1. Bijvoorbeeld: 5 brandweerkazernes en 3 ambulanceposten = 6 missies.",
                         join_alliance: "Ook kun je je aansluiten bij een team. Dat kan je vooral in het begin erg vooruit helpen.",
                         summary: "Dit zijn de basisprincipes van Meldkamerspel. Meldigen afhandelen, Credits verdienen, meer gebouwen en eenheden kopen, enzovoorts. Veel speelplezier! </br> Het team van Meldkamerspel"
+                    },
+                    reminder: {
+                        join_alliance: "Lid worden van een alliantie heeft veel voordelen: extra beloningen voor het voltooien van alliantie-missies, steun van ervaren leden bij moeilijke missies en je kunt gebruik maken van faciliteiten van andere leden zoals ziekenhuizen en scholen! Druk nu op de knop om lid te worden van een alliantie!"
                     }
                 }
             },
@@ -5474,13 +5497,15 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} no está conectado: %{duration}",
             is_online: "%{user} está conectado.",
             loading: "Cargando...",
-            message_for_edit: "¡Los empleados solo acompañarán al vehículo si han recibido la formación necesaria!",
             message_for_education: "¡Esta persona no acompañará al vehículo porque no ha recibido la formación necesaria!",
             name: "Nombre",
             none: "Nada",
             of: "de",
             off: "No",
             on: "Sí",
+            person: {
+                missing_education_for_vehicle: "¡Los empleados solo acompañarán al vehículo si han recibido la formación necesaria!"
+            },
             save: "Guardar",
             search: "Buscar",
             show: "Mostrar",
@@ -5600,8 +5625,9 @@ Object.values || (Object.values = function (e) {
             message: "Mensaje",
             mission: "Misiones",
             missions_filtered_out: "Algunas misiones pueden ser filtradas. Por favor, revise los filtros de su mapa.",
-            no_alliance_chat_impossible: "No estás en una alianza.",
+            no_alliance_chat_impossible: "El chat es una forma estupenda de conectar con otros jugadores más experimentados. Pueden responder a tus preguntas y ayudarte a acceder a edificios como hospitales y escuelas.",
             no_alliance_missions: "No hay misiones de alianza.",
+            no_alliance_missions_join: "Participar en las misiones de la alianza te recompensará con créditos, independientemente del tipo de vehículo que envíes.\nAl unirte a una alianza puedes hacer ambas cosas, compartir tus propias misiones para obtener ayuda de miembros experimentados de la alianza y participar en las misiones compartidas de otros para obtener recompensas extra.",
             no_ambulance_missions: "No hay transportes para pacientes. Estarán disponibles en cuanto poseas un vehículo SVB y un hospital.",
             no_emergency_missions: "No hay misiones de emergencia disponibles. Solo habrá misiones de emergencia después de que construyas tu primera instalación.",
             no_radio_messages: "No has recibido mensajes de radio.",
@@ -5852,6 +5878,9 @@ Object.values || (Object.values = function (e) {
                         general: "Te recomendamos que tu siguiente paso sea construir una centralita y después, en cuanto sea posible, nuevas instalaciones, ya que el número máximo de misiones es igual al número máximo de instalaciones del mismo tipo (comisarías, parques de bomberos o de ambulancias...) más 1. Por ejemplo: 5 parques de bomberos y 3 de ambulancias permiten tener 6 misiones disponibles.",
                         join_alliance: "Además, unirse a una alianza es de gran ayuda, especialmente al principio.",
                         summary: "¡Ya conoces lo fundamental de Centro de Mando! Completar misiones, ganar créditos, comprar más unidades y vuelta a empezar. ¡Diviértete! </br> El equipo de Centro de Mando"
+                    },
+                    reminder: {
+                        join_alliance: "Unirse a una alianza tiene muchas ventajas: recompensas extra por completar las misiones de la alianza, apoyo de miembros experimentados para las misiones difíciles y puedes utilizar las instalaciones de otros miembros como hospitales y escuelas. ¡Pulsa el botón para unirte a una alianza ahora!"
                     }
                 }
             },
@@ -5897,13 +5926,15 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} is offline: %{duration}",
             is_online: "%{user} is online.",
             loading: "Loading...",
-            message_for_edit: "Personnel will only be dispatched with the vehicle if it has acquired the necessary education!",
             message_for_education: "This person will not be dispatched with the vehicle because it is missing the necessary education!",
             name: "Name",
             none: "None",
             of: "of",
             off: "Off",
             on: "On",
+            person: {
+                missing_education_for_vehicle: "Personnel will only be dispatched with the vehicle if it has acquired the necessary education!"
+            },
             save: "Save",
             search: "Search",
             show: "Show",
@@ -6019,8 +6050,9 @@ Object.values || (Object.values = function (e) {
             message: "Message",
             mission: "Missions",
             missions_filtered_out: "Some missions might be filtered out. Please, check your map filters.",
-            no_alliance_chat_impossible: "You are not in an alliance.",
+            no_alliance_chat_impossible: "The Chat is a great way to link up with other more experienced players. They can both answer your questions and help you by giving you access to buildings like Hospitals and Schools",
             no_alliance_missions: "There are currently no alliance missions.",
+            no_alliance_missions_join: "Participating in alliance missions will reward you with Credits - no matter what type of vehicle you send.\nBy joining an alliance you can do both, share your own missions to get help from experienced alliance members and participate in other’s shared missions for extra rewards.",
             no_ambulance_missions: "There are no ambulance missions. Ambulance missions can only occur when you have an ambulance and a hospital.",
             no_emergency_missions: "There are no emergency missions available. An emergency mission can occur after you made your first station.",
             no_radio_messages: "You didn't receive any radio messages.",
@@ -6196,7 +6228,7 @@ Object.values || (Object.values = function (e) {
                 tlf_only: "Tanker Truck",
                 tm50: "",
                 turboloescher: "",
-                turntable_ladder: "Turntable Ladders",
+                turntable_ladder: "Ladder Platform Trucks",
                 ulf: "",
                 wasserwerfer: "",
                 water_amount: "Litres of water",
@@ -6282,6 +6314,9 @@ Object.values || (Object.values = function (e) {
                         general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
                         join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
                         summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
+                    },
+                    reminder: {
+                        join_alliance: "Joining an alliance has many benefits: extra rewards for completing alliance missions, support from experienced members for difficult missions and you can use facilities of other members like hospitals and schools! Press the button to join an alliance now!"
                     }
                 }
             },
@@ -6364,13 +6399,15 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} är offline: %{duration}",
             is_online: "%{user} är online.",
             loading: "Laddar …",
-            message_for_edit: "Endast personal med rätt utbildning skickas med fordonet!",
             message_for_education: "Personen saknar rätt utbildning och skickas därför inte med fordonet!",
             name: "Namn",
             none: "Ingen",
             of: "av",
             off: "Av",
             on: "På",
+            person: {
+                missing_education_for_vehicle: "Endast personal med rätt utbildning skickas med fordonet!"
+            },
             save: "Spara",
             search: "Sök",
             show: "Visa",
@@ -6489,8 +6526,9 @@ Object.values || (Object.values = function (e) {
             message: "Meddelande",
             mission: "Uppdrag",
             missions_filtered_out: "Vissa uppdrag kan filtreras bort. Kontrollera dina kartfilter.",
-            no_alliance_chat_impossible: "Du är inte med i en allians.",
+            no_alliance_chat_impossible: "Chatten är ett bra sätt att få kontakt med andra mer erfarna spelare. De kan både svara på dina frågor och hjälpa dig genom att ge dig tillgång till byggnader som sjukhus och skolor.",
             no_alliance_missions: "Det finns inga alliansuppdrag just nu.",
+            no_alliance_missions_join: "Om du deltar i alliansuppdrag får du krediter - oavsett vilken typ av fordon du skickar.\nGenom att gå med i en allians kan du göra både och, dela dina egna uppdrag för att få hjälp av erfarna alliansmedlemmar och delta i andras delade uppdrag för extra belöningar.",
             no_ambulance_missions: "Det finns ingen patienttransport. Patienttransporter kan ske först när du skaffat en lättvårdsambulans eller ett sjukhus.",
             no_emergency_missions: "Det finns inga akutuppdrag just nu. Ett akutuppdrag kan inträffa efter att du gjort din första station.",
             no_radio_messages: "Du har inga radiomeddelanden.",
@@ -6712,6 +6750,9 @@ Object.values || (Object.values = function (e) {
                         general: "Efter det här rekommenderar jag att du bygger en larmcentral följt av nya stationer, för det maximala antalet uppdrag är lika med det högsta antalet stationer av samma typ (polis-, brand- eller ambulansstation) plus 1. Om du har 5 brandstationer och 3 ambulansstationer innebär det alltså att du kan ha 6 uppdrag.",
                         join_alliance: "Det kan även ge stora fördelar att gå med i en allians, särskilt tidigt i spelet, så det rekommenderas också.",
                         summary: "Det här är grunderna i Larmcentralen-spelet! Klara uppdrag, tjäna krediter, köp fler fordon, upprepa. Ha så kul! </br>Teamet på Larmcentralen-spelet"
+                    },
+                    reminder: {
+                        join_alliance: "Att gå med i en allians har många fördelar: extra belöningar för att slutföra alliansuppdrag, stöd från erfarna medlemmar i svåra uppdrag och du kan använda andra medlemmars anläggningar som sjukhus och skolor! Tryck på knappen för att gå med i en allians nu!"
                     }
                 }
             },
@@ -6794,13 +6835,15 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} jest offline: %{duration}",
             is_online: "%{user} jest online.",
             loading: "Wczytywanie…",
-            message_for_edit: "Personel zostanie wysłany w tym pojeździe tylko wtedy, jeżeli przeszedł niezbędną edukację!",
             message_for_education: "Wskazana osoba nie zostanie wysłana w tym pojeździe, ponieważ brakuje jej niezbędnej edukacji!",
             name: "Nazwa",
             none: "Brak",
             of: "z",
             off: "Wył.",
             on: "Wł.",
+            person: {
+                missing_education_for_vehicle: "Personel zostanie wysłany w tym pojeździe tylko wtedy, jeżeli przeszedł niezbędną edukację!"
+            },
             save: "Zapisz",
             search: "Wyszukaj",
             show: "Pokaż",
@@ -6920,8 +6963,9 @@ Object.values || (Object.values = function (e) {
             message: "Wiadomość",
             mission: "Misje",
             missions_filtered_out: "Niektóre misje mogą zostać odfiltrowane. Proszę sprawdzić filtry map.",
-            no_alliance_chat_impossible: "Nie należysz do sojuszu.",
+            no_alliance_chat_impossible: "Czat to świetny sposób na nawiązanie kontaktu z innymi, bardziej doświadczonymi graczami. Mogą oni odpowiedzieć na twoje pytania i pomóc ci, dając ci dostęp do budynków takich jak szpitale i szkoły.",
             no_alliance_missions: "W tej chwili nie ma misji sojuszu.",
+            no_alliance_missions_join: "Udział w misjach sojuszu nagrodzi Cię Kredytami - bez względu na to, jaki pojazd wyślesz.\nDołączając do sojuszu, możesz robić obie te rzeczy: dzielić się własnymi misjami, aby uzyskać pomoc od doświadczonych członków sojuszu, oraz brać udział we wspólnych misjach innych, aby otrzymać dodatkowe nagrody.",
             no_ambulance_missions: "Brak misji dla ambulansów. Misje dla ambulansów pojawiają się tylko, gdy masz ambulans i szpital.",
             no_emergency_missions: "Brak misji z sytuacją wyjątkową. Misja z sytuacją wyjątkową może się pojawić, gdy wybudujesz pierwszy posterunek.",
             no_radio_messages: "Nie otrzymano wiadomości drogą radiową.",
@@ -7191,6 +7235,9 @@ Object.values || (Object.values = function (e) {
                         general: "Następnymi zalecanymi krokami są budowa centrum powiadamiania ratunkowego oraz jak najszybsze wzniesienie nowych posterunków, ponieważ maksymalna liczba misji jest równa najwyższej liczbie posterunków jednego typu (policji, straży pożarnej, pogotowia ratunkowego) plus 1, np. przy 5 posterunkach straży pożarnej i 3 pogotowia ratunkowego dostępnych jest 6 misji.",
                         join_alliance: "Bardzo pomocne jest również dołączenie do sojuszu, zwłaszcza na początku gry, dlatego zalecamy również ten krok.",
                         summary: "Oto podstawy gry Operator ratunkowy! Wykonuj misje, zdobywaj kredyty, kupuj kolejne jednostki, powtarzaj proces. Miłej gry! </br> Zespół gry Operator ratunkowy"
+                    },
+                    reminder: {
+                        join_alliance: "Dołączenie do sojuszu przynosi wiele korzyści: dodatkowe nagrody za ukończenie misji sojuszu, wsparcie doświadczonych członków w trudnych misjach oraz możliwość korzystania z budynków innych członków, takich jak szpitale czy szkoły! Naciśnij przycisk, aby dołączyć do sojuszu już teraz!"
                     }
                 }
             },
@@ -7273,13 +7320,15 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} non è in linea: %{duration}",
             is_online: "%{user} è online.",
             loading: "Caricamento...",
-            message_for_edit: "Il personale uscirà con il veicolo solo dopo aver acquisito la formazione necessaria!",
             message_for_education: "Questa persona non uscirà con il veicolo perché non ha ricevuto la formazione necessaria!",
             name: "Nome",
             none: "Nessuno",
             of: "di",
             off: "Off",
             on: "On",
+            person: {
+                missing_education_for_vehicle: "Il personale uscirà con il veicolo solo dopo aver acquisito la formazione necessaria!"
+            },
             save: "Salva",
             search: "Cerca",
             show: "Mostra",
@@ -7399,8 +7448,9 @@ Object.values || (Object.values = function (e) {
             message: "Messaggio",
             mission: "Missioni",
             missions_filtered_out: "Alcune missioni potrebbero essere filtrate. Per favore, controlla i filtri della tua mappa.",
-            no_alliance_chat_impossible: "Non fai parte di alcuna alleanza.",
+            no_alliance_chat_impossible: "La chat è un ottimo modo per entrare in contatto con altri giocatori più esperti. Possono rispondere alle vostre domande e aiutarvi dandovi accesso a edifici come ospedali e scuole.",
             no_alliance_missions: "Al momento non ci sono missioni dell'alleanza.",
+            no_alliance_missions_join: "Partecipare alle missioni dell'alleanza vi ricompenserà con i Crediti, indipendentemente dal tipo di veicolo inviato.\nUnendovi a un'alleanza potrete fare entrambe le cose: condividere le vostre missioni per ricevere aiuto dai membri esperti dell'alleanza e partecipare alle missioni condivise dagli altri per ottenere ricompense extra.",
             no_ambulance_missions: "Nessuna missione delle ambulanze. Le missioni delle ambulanze possono verificarsi solo quando si dispone di un'ambulanza e di un ospedale.",
             no_emergency_missions: "Non ci sono missioni di emergenza disponibili. Una missione di emergenza può verificarsi dopo aver creato la prima stazione.",
             no_radio_messages: "Nessun messaggio radio ricevuto.",
@@ -7663,6 +7713,9 @@ Object.values || (Object.values = function (e) {
                         general: "Come passo successivo ti consiglio di costruire una centrale operativa e poi, appena possibile, delle nuove stazioni. Il numero massimo di missioni è uguale al numero più alto di una delle stazioni di tipo diverso (polizia, vigili del fuoco, ambulanza) più 1; per esempio: 5 stazioni dei vigili del fuoco e 3 di ambulanze = 6 missioni.",
                         join_alliance: "Inoltre, ti consiglio di unirti a un'alleanza perché, soprattutto all'inizio, questo potrebbe esserti di grande aiuto.",
                         summary: "Queste sono le nozioni di base di Operatore 112. Completa missioni, ottieni crediti, acquista altre unità e ricomincia. Divertiti a giocare! </br> Il team di Operatore 112"
+                    },
+                    reminder: {
+                        join_alliance: "Unirsi a un'alleanza ha molti vantaggi: ricompense extra per il completamento delle missioni dell'alleanza, il supporto di membri esperti per le missioni difficili e la possibilità di utilizzare le strutture degli altri membri, come ospedali e scuole! Premete il pulsante per unirvi a un'alleanza!"
                     }
                 }
             },
@@ -7746,13 +7799,15 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} est hors ligne: %{duration}",
             is_online: "%{user} est en ligne.",
             loading: "Chargement...",
-            message_for_edit: "Le personnel ne sera déployé avec le véhicule que s'il a reçu la formation adéquate !",
             message_for_education: "Cette personne ne sera pas déployée avec le véhicule car elle n'a pas reçu la formation adéquate !",
             name: "Nom",
             none: "Aucun",
             of: "de",
             off: "OFF",
             on: "ON",
+            person: {
+                missing_education_for_vehicle: "Le personnel ne sera déployé avec le véhicule que s'il a reçu la formation adéquate !"
+            },
             save: "Enregistrer",
             search: "Rechercher",
             show: "Afficher",
@@ -7868,8 +7923,9 @@ Object.values || (Object.values = function (e) {
             message: "Message",
             mission: "Missions",
             missions_filtered_out: "Certaines missions peuvent être filtrées. Veuillez vérifier les filtres de votre carte.",
-            no_alliance_chat_impossible: "Vous n’appartenez à aucune alliance.",
+            no_alliance_chat_impossible: "Le chat est un excellent moyen d'entrer en contact avec d'autres joueurs plus expérimentés. Ils peuvent à la fois répondre à vos questions et vous aider en vous donnant accès à des bâtiments comme les hôpitaux et les écoles.",
             no_alliance_missions: "Aucune mission d’alliance à afficher.",
+            no_alliance_missions_join: "En participant à des missions d'alliance, vous recevrez des crédits, quel que soit le type de véhicule que vous envoyez.\nEn rejoignant une alliance, vous pouvez faire les deux, partager vos propres missions pour obtenir l'aide de membres expérimentés de l'alliance et participer aux missions partagées des autres pour obtenir des récompenses supplémentaires.",
             no_ambulance_missions: "Il n'y a pas de transport de patient en attente. Les transports seront disponibles dès que vous aurez trois ambulances de transport ou de secours et un hôpital.",
             no_emergency_missions: "Aucune mission d’urgence à afficher. Vous pouvez recevoir des missions d’urgence dès lors que vous avez construit votre premier poste.",
             no_radio_messages: "Vous n’avez reçu aucun message radio.",
@@ -8130,6 +8186,9 @@ Object.values || (Object.values = function (e) {
                         general: "Nous vous recommandons pour l'étape suivante de construire un centre de secours et, dès que possible, de nouveaux postes puisque le nombre de missions maximum équivaut au plus grand nombre de postes d'un genre (police, pompiers, ambulance) plus 1. Par exemple, 5 casernes de pompiers et 3 postes ambulanciers = 6 missions.",
                         join_alliance: "De plus, nous vous recommandons de rejoindre une alliance, ce qui peut grandement vous aider, surtout au début.",
                         summary: "Voici les bases d'Opérateur 112 ! Accomplissez des missions, recevez des crédits, achetez plus d'unités, recommencez. Amusez-vous bien ! </br> L'équipe d'Opérateur 112"
+                    },
+                    reminder: {
+                        join_alliance: "Rejoindre une alliance présente de nombreux avantages : des récompenses supplémentaires pour l'accomplissement des missions de l'alliance, le soutien de membres expérimentés pour les missions difficiles et vous pouvez utiliser les installations des autres membres comme les hôpitaux et les écoles ! Appuyez sur le bouton pour rejoindre une alliance maintenant !"
                     }
                 }
             },
@@ -8210,13 +8269,15 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} не в сети: %{duration}",
             is_online: "%{user} в сети.",
             loading: "Загружается...",
-            message_for_edit: "Персонал сможет перемещаться на транспорте, только после завершения необходимого обучения!",
             message_for_education: "Этот сотрудник не может перемещаться на транспорте, так как не прошел необходимое обучение!",
             name: "Название",
             none: "Ни один",
             of: "из",
             off: "Выкл",
             on: "Вкл",
+            person: {
+                missing_education_for_vehicle: "Персонал сможет перемещаться на транспорте, только после завершения необходимого обучения!"
+            },
             save: "Сохранить",
             search: "Искать",
             show: "Показать",
@@ -8336,8 +8397,9 @@ Object.values || (Object.values = function (e) {
             message: "Сообщение",
             mission: "Задания",
             missions_filtered_out: "Некоторые миссии могут быть отфильтрованы. Пожалуйста, проверьте фильтры вашей карты.",
-            no_alliance_chat_impossible: "Вы не состоите в альянсе.",
+            no_alliance_chat_impossible: "Чат - это отличный способ пообщаться с другими, более опытными игроками. Они могут как ответить на ваши вопросы, так и помочь вам, предоставив доступ к таким зданиям, как больницы и школы.",
             no_alliance_missions: "В настоящее время заданий альянса нет.",
+            no_alliance_missions_join: "Участие в миссиях альянса принесет вам кредиты - независимо от типа отправленного вами транспортного средства.\nВступив в альянс, вы можете делать и то, и другое: делиться своими заданиями, получая помощь от опытных членов альянса, и участвовать в общих заданиях других, получая дополнительные награды.",
             no_ambulance_missions: "Нет возможности перевозки пациентов. Перевозка станет возможной, когдапоявятся автомобиль скорой помощи и больница.",
             no_emergency_missions: "Нет доступных заданий ЧС. Задание ЧС может появиться только тогда, когда вы построите свою первую станцию.",
             no_radio_messages: "Вы не получали сообщений по радио.",
@@ -8587,6 +8649,9 @@ Object.values || (Object.values = function (e) {
                         general: "Следующим шагом рекомендуем возвести диспетчерский пункт, а затем начать строительство новых станций, поскольку максимальное количество заданий на одно больше количества станций самого распространенного типа (полиция, пожарные, скорая помощь). Например, при пяти пожарных станциях и трёх станциях скорой помощи вам будет доступно шесть заданий.",
                         join_alliance: "Мы также рекомендуем вступить в альянс, так как это может здорово вам помочь, особенно по началу.",
                         summary: "Теперь вы знаете основы игры в «Диспетчер 112»! Выполняйте задания, получайте кредиты и покупайте новые подразделения. Весёлой игры! </br> Команда «Диспетчер 112»"
+                    },
+                    reminder: {
+                        join_alliance: "Вступление в альянс имеет множество преимуществ: дополнительные награды за выполнение заданий альянса, поддержка опытных членов при выполнении сложных заданий, а также возможность пользоваться объектами других членов, такими как больницы и школы! Нажмите кнопку, чтобы вступить в альянс прямо сейчас!"
                     }
                 }
             },
@@ -8631,13 +8696,15 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} er offline: %{duration}",
             is_online: "%{user} er online.",
             loading: "Indlæser ...",
-            message_for_edit: "Personalet kan først sendes ud med køretøjet efter den nødvendige undervisning er fuldendt!",
             message_for_education: "Denne person vil ikke blive sendt ud med køretøjet, fordi vedkommende ikke har gennemført den nødvendige undervisning!",
             name: "Navn",
             none: "Ingen",
             of: "af",
             off: "Fra",
             on: "Til",
+            person: {
+                missing_education_for_vehicle: "Personalet kan først sendes ud med køretøjet efter den nødvendige undervisning er fuldendt!"
+            },
             save: "Gem",
             search: "Søg",
             show: "Vis",
@@ -8757,8 +8824,9 @@ Object.values || (Object.values = function (e) {
             message: "Meddelelse",
             mission: "Missioner",
             missions_filtered_out: "Nogle missioner kan blive filtreret ud. Tjek venligst dine kortfilter.",
-            no_alliance_chat_impossible: "Du er ikke i en alliance.",
+            no_alliance_chat_impossible: "Chatten er en god måde at komme i kontakt med andre mere erfarne spillere på. De kan både besvare dine spørgsmål og hjælpe dig ved at give dig adgang til bygninger som hospitaler og skoler.",
             no_alliance_missions: "Der er ingen alliancemissioner lige nu",
+            no_alliance_missions_join: 'Hvis du deltager i alliancemissioner, får du kreditter - uanset hvilken type køretøj du sender. \nVed at slutte dig til en alliance kan du gøre begge dele, dele dine egne missioner for at få hjælp fra erfarne alliancemedlemmer og deltage i andres delte missioner for at få ekstra belønninger."',
             no_ambulance_missions: "Der er ingen ambulancemissioner. Der er kun ambulancemissioner, når du har en ambulance og et hospital.",
             no_emergency_missions: "Der er ingen tilgængelige krisemissioner. Der kan opstå krisemissioner, når du har oprettet din første station.",
             no_radio_messages: "Du har ikke modtaget radiomeddelelser.",
@@ -9009,6 +9077,9 @@ Object.values || (Object.values = function (e) {
                         general: "Som et næste skridt vil vi anbefale, at du bygger en alarmcentral, og dernæst - så snart som muligt - nye stationer, da det maksimale antal missioner er lig med det højeste antal af enhver slags station (politi-, brand-, og ambulance-) plus 1; f.eks. 5 brand- og 3 ambulancestationer = 6 missioner.",
                         join_alliance: "Det ville også hjælpe dig enormt, især i starten, så det anbefales også.",
                         summary: "Dette er den grundlæggende viden i Alarmcentral-spil! Fuldfør missioner, få kreditter, køb flere enheder, gentag. God fornøjelse! </br> Dit Alarmcentral-spil-hold"
+                    },
+                    reminder: {
+                        join_alliance: "At deltage i en alliance har mange fordele: ekstra belønninger for at fuldføre alliancemissioner, støtte fra erfarne medlemmer til vanskelige missioner, og du kan bruge andre medlemmers faciliteter som hospitaler og skoler! Tryk på knappen for at slutte dig til en alliance nu!"
                     }
                 }
             },
@@ -9091,13 +9162,15 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} er offline: %{duration}",
             is_online: "%{user} er online.",
             loading: "Laster inn …",
-            message_for_edit: "Personellet vil kun bli sendt ut med kjøretøyet om de har fått den nødvendige utdanningen!",
             message_for_education: "Denne personen vil ikke bli sendt ut med kjøretøyet på grunn av mangel på nødvendig utdanningen!",
             name: "Navn",
             none: "Ingen",
             of: "av",
             off: "Av",
             on: "På",
+            person: {
+                missing_education_for_vehicle: "Personellet vil kun bli sendt ut med kjøretøyet om de har fått den nødvendige utdanningen!"
+            },
             save: "Lagre",
             search: "Søk",
             show: "Vis",
@@ -9217,8 +9290,9 @@ Object.values || (Object.values = function (e) {
             message: "Melding",
             mission: "Oppdrag",
             missions_filtered_out: "Noen oppdrag kan bli filtrert ut. Vennligst sjekk kartfiltrene dine.",
-            no_alliance_chat_impossible: "Du er ikke i en allianse.",
+            no_alliance_chat_impossible: "Chatten er en fin måte å koble seg opp til andre mer erfarne spillere på. De kan både svare på spørsmålene dine og hjelpe deg ved å gi deg tilgang til bygninger som sykehus og skoler",
             no_alliance_missions: "Du har for øyeblikket ingen allianseoppdrag.",
+            no_alliance_missions_join: "Å delta i allianseoppdrag vil belønne deg med kreditter - uansett hvilken type kjøretøy du sender. Ved å bli med i en allianse kan du gjøre begge deler, dele dine egne oppdrag for å få hjelp fra erfarne alliansemedlemmer og delta i andres delte oppdrag for ekstra belønninger.",
             no_ambulance_missions: "Det er ingen pasientoverflytninger bestilt. Overflytninger kan forekomme når du har en Syketransport og et sykehus.",
             no_emergency_missions: "Du har ingen nødoppdrag. Du kan få nødoppdrag etter at du bygger din første stasjon.",
             no_radio_messages: "Du har ikke fått noen radiomeldinger.",
@@ -9555,13 +9629,15 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} je offline: %{duration}",
             is_online: "%{user} je online.",
             loading: "Načítání…",
-            message_for_edit: "Personál bude vyslán s vozidlem pouze v případě, že dosáhne potřebného vzdělání!",
             message_for_education: "Tato osoba nebude vyslána s vozidlem, protože jí chybí potřebné vzdělání!",
             name: "Název",
             none: "Nic",
             of: "z",
             off: "Vyp.",
             on: "Zap.",
+            person: {
+                missing_education_for_vehicle: "Personál bude vyslán s vozidlem pouze v případě, že dosáhne potřebného vzdělání!"
+            },
             save: "Uložit",
             search: "Hledat",
             show: "Zobrazit",
@@ -9673,8 +9749,9 @@ Object.values || (Object.values = function (e) {
             message: "Zpráva",
             mission: "Mise",
             missions_filtered_out: "Některé mise mohou být odfiltrovány. Zkontrolujte prosím své mapové filtry.",
-            no_alliance_chat_impossible: "Nejste v žádné alianci.",
+            no_alliance_chat_impossible: "Chat je skvělý způsob, jak se spojit s dalšími zkušenějšími hráči. Ti vám mohou odpovědět na vaše otázky a také vám pomoci tím, že vám zpřístupní budovy, jako jsou nemocnice a školy.",
             no_alliance_missions: "K dispozici nejsou žádné alianční mise.",
+            no_alliance_missions_join: "Za účast v aliančních misích získáte kredity - bez ohledu na to, jaký typ vozidla pošlete.\nVstupem do aliance můžete dělat obojí, sdílet své vlastní mise a získat tak pomoc od zkušených členů aliance a účastnit se sdílených misí ostatních za další odměny.",
             no_ambulance_missions: "Mise záchranné služby nejsou k dispozici. Objeví se, až když budete mít záchrannou službu a nemocnici.",
             no_emergency_missions: "Nouzové mise nejsou k dispozici. Objeví se, až postavíte první stanici.",
             no_radio_messages: "Na vysílačku vám nepřišly žádné zprávy.",
@@ -9928,6 +10005,9 @@ Object.values || (Object.values = function (e) {
                         general: "V dalším kroku bychom vám doporučili postavit dispečink a poté co nejrychleji další stanice, jelikož maximální počet misí se rovná maximálnímu počtu stanic různého typu (policie, hasiči, záchranka) plus 1. Tedy např. 5 hasičských stanic a 3 stanice záchranky = 6 misí.",
                         join_alliance: "Přidat se k alianci by vám rovněž mohlo velice pomoct, hlavně na začátku. Takže to také doporučujeme.",
                         summary: "Toto jsou základy hry Operační středisko! Plňte mise, získávejte kredity, nakupujte další jednotky. Postup opakujte. Příjemnou zábavu při hraní! </br> Váš tým hry Operační středisko"
+                    },
+                    reminder: {
+                        join_alliance: "Vstup do aliance přináší mnoho výhod: extra odměny za splnění aliančních misí, podporu zkušených členů při plnění obtížných misí a možnost využívat zařízení ostatních členů, jako jsou nemocnice a školy! Stiskněte tlačítko a připojte se k alianci!"
                     }
                 }
             },
@@ -10412,13 +10492,15 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} está offline: %{duration}",
             is_online: "%{user} está online.",
             loading: "Carregando...",
-            message_for_edit: "O pessoal só será enviado com o veículo se tiver adquirido a educação necessária!",
             message_for_education: "Esta pessoa não será enviada com o veículo porque não possui a educação necessária!",
             name: "Nome",
             none: "Nenhum",
             of: "de",
             off: "Desligado",
             on: "Ligado",
+            person: {
+                missing_education_for_vehicle: "O pessoal só será enviado com o veículo se tiver adquirido a educação necessária!"
+            },
             save: "Salvar",
             search: "Procurar",
             show: "Exibir",
@@ -10536,8 +10618,9 @@ Object.values || (Object.values = function (e) {
             message: "Mensagem",
             mission: "Missões",
             missions_filtered_out: "Algumas missões podem ser filtradas. Por favor, verifique seus filtros de mapa.",
-            no_alliance_chat_impossible: "Não está em nenhuma aliança.",
+            no_alliance_chat_impossible: "O Chat é uma ótima forma de se ligar a outros jogadores mais experientes. Ambos podem responder às suas perguntas e ajudá-lo dando-lhe acesso a edifícios como Hospitais e Escolas.",
             no_alliance_missions: "De momento não existem missões de aliança.",
+            no_alliance_missions_join: "A participação em missões de aliança irá recompensá-lo com Créditos - independentemente do tipo de veículo que enviar.\nAo aderir a uma aliança pode fazer ambas, partilhar as suas próprias missões para obter ajuda de membros experientes da aliança e participar nas missões partilhadas de outros para obter recompensas extra.",
             no_ambulance_missions: "Não há missões de ambulância. Você só pode participar de missões de ambulância quando tiver uma ambulância e um hospital.",
             no_emergency_missions: "Não há missões de emergência disponíveis. Poderá participar em missões de emergência depois de construir o seu primeiro corpo de bombeiros.",
             no_radio_messages: "Não existem mensagens via rádio",
@@ -10791,6 +10874,9 @@ Object.values || (Object.values = function (e) {
                         general: "Para o próximo passo, recomendamos que construas um centro de operações e a seguir, assim que possível, novas estações, já que o número máximo de missões corresponde ao maior número de quaisquer estações de um tipo diferente (polícia, bombeiros, ambulâncias) mais 1; por exemplo, 5 bombeiros e 3 estações de ambulâncias = 6 missões.",
                         join_alliance: "Adicionalmente, seria muito vantajoso para ti entrares numa aliança, especialmente no início, por isso também recomendamos que o faças.",
                         summary: "Isto é o básico do Jogo Operador 112! Completa missões, ganha créditos, compra mais unidades, faz tudo outra vez. Diverte-te a jogar! </br> A tua Equipa do Jogo Operador 112"
+                    },
+                    reminder: {
+                        join_alliance: "Aderir a uma aliança tem muitos benefícios: recompensas extra para completar missões da aliança, apoio de membros experientes para missões difíceis e pode utilizar instalações de outros membros como hospitais e escolas! Prima o botão para se juntar a uma aliança agora!"
                     }
                 }
             },
@@ -12092,13 +12178,15 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user}はオフラインです: %{duration}",
             is_online: "%{user}はオンラインです。",
             loading: "ロード中…",
-            message_for_edit: "人員を車両で派遣できるのは、必要な訓練を受けた場合のみです！",
             message_for_education: "この人員は、必要な訓練を受けていないため、車両で派遣できません！",
             name: "名前",
             none: "なし",
             of: "/",
             off: "オフ",
             on: "オン",
+            person: {
+                missing_education_for_vehicle: "人員を車両で派遣できるのは、必要な訓練を受けた場合のみです！"
+            },
             save: "保存",
             search: "検索",
             show: "表示",
@@ -12218,8 +12306,9 @@ Object.values || (Object.values = function (e) {
             message: "メッセージ",
             mission: "ミッション",
             missions_filtered_out: "一部のミッションは除外される可能性があります。マップフィルターを確認してください。",
-            no_alliance_chat_impossible: "アライアンスに所属していません。",
+            no_alliance_chat_impossible: "チャットは、経験豊富なプレイヤーとつながるための素晴らしい方法です。 彼らはあなたの質問に答えたり、病院や学校などの建物にアクセスすることであなたを助けてくれるでしょう。",
             no_alliance_missions: "現在、アライアンスミッションはありません。",
+            no_alliance_missions_join: "アライアンスミッションに参加すると、どのような車種であってもクレジットの報酬が得られます。\nアライアンスに参加することで、自分のミッションを共有して経験豊富なアライアンスメンバーの助けを得ることと、他のアライアンスの共有ミッションに参加して追加報酬を得ることの両方を行うことができます。",
             no_ambulance_missions: '"患者の搬送はありません。患者の搬送は、一次救命処置と病院を所有すると対応できるようになります。"',
             no_emergency_missions: "参加できる緊急事態ミッションはありません。最初のステーションを作成した後、緊急事態ミッションが発生します。",
             no_radio_messages: "無線メッセージを傍受していません。",
@@ -12461,6 +12550,9 @@ Object.values || (Object.values = function (e) {
                         general: "次のステップでは、指令センターを建設し、その後すぐに新しいステーションを増やすことをお勧めする。ミッションの最大数＝各種類（警察、消防、救急）のステーションの最大数＋1であるためだ。例えば、消防局が5軒、救急車ステーションが3軒とすると、ミッション数は6になる。",
                         join_alliance: "また、アライアンスを形成すると、特に駆け出し、ゲーム序盤で大いに役に立つので、それもお勧めしよう。",
                         summary: "ミッションチーフの基本が紹介されているぞ！ミッションを達成し、クレジットを獲得し、ユニットを購入し、拡充しよう。ゲームはこの一連の流れを繰り返して進むぞ。では、楽しんでくれ！</br> ミッションチーフ・チームより"
+                    },
+                    reminder: {
+                        join_alliance: "同盟に参加すると、同盟のミッションをクリアしたときに報酬がもらえたり、難しいミッションを経験豊富なメンバーがサポートしてくれたり、病院や学校など他のメンバーの施設を利用できたりと、たくさんのメリットがあるんだ。今すぐ同盟に参加するボタンを押してください。"
                     }
                 }
             },
@@ -12506,13 +12598,15 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} 님은 오프라인입니다: %{duration}",
             is_online: "%{user} 님이 온라인입니다.",
             loading: "로딩 중...",
-            message_for_edit: "필수 교육을 이수한 인원만 차량과 함께 파견할 수 있습니다!",
             message_for_education: "이 인원은 필수 교육을 이수하지 않아 차량과 함께 파견할 수 없습니다!",
             name: "이름",
             none: "없음",
             of: "/",
             off: "끔",
             on: "켬",
+            person: {
+                missing_education_for_vehicle: "필수 교육을 이수한 인원만 차량과 함께 파견할 수 있습니다!"
+            },
             save: "저장",
             search: "탐색",
             show: "보기",
@@ -12632,8 +12726,9 @@ Object.values || (Object.values = function (e) {
             message: "메시지",
             mission: "임무",
             missions_filtered_out: "일부 미션이 필터링 될 수 있습니다. 지도 필터를 확인하십시오.",
-            no_alliance_chat_impossible: "동맹에 속해 있지 않습니다.",
+            no_alliance_chat_impossible: "채팅은 경험이 많은 다른 플레이어와 연결하는 좋은 방법입니다. 그들은 귀하의 질문에 답변하고 병원 및 학교와 같은 건물에 대한 액세스 권한을 부여하여 귀하를 도울 수 있습니다.",
             no_alliance_missions: "현재 진행 중인 동맹 임무가 없습니다.",
+            no_alliance_missions_join: "동맹 임무에 참여하면 보내는 차량 유형에 상관없이 크레딧으로 보상을 받습니다. 동맹에 가입하면 두 가지 모두를 수행할 수 있고, 경험이 풍부한 동맹 구성원의 도움을 받기 위해 자신의 임무를 공유하고, 추가 보상을 위해 다른 사람의 공유 임무에 참여할 수 있습니다.",
             no_ambulance_missions: '구급차 임무가 없습니다. 구급차 임무는 구급차와 병원을 보유했을 때에만 발생합니다."이송 환자가 없습니다. 환자는 BLS 및 병원을 보유하는 즉시이송이 이루어집니다."',
             no_emergency_missions: "이용할 수 있는 긴급 임무가 없습니다. 긴급 임무는 첫 번째 관할서를 생성한 후 발생합니다.",
             no_radio_messages: "받은 무전 메시지가 없습니다.",
@@ -13341,13 +13436,15 @@ Object.values || (Object.values = function (e) {
             is_offline_with_duration: "%{user} ei ole verkossa: %{duration}",
             is_online: "%{user} on verkossa.",
             loading: "Ladataan...",
-            message_for_edit: "Henkilöstö lähetetään ajoneuvon mukana vain, jos se on saanut tarvittavan koulutuksen.",
             message_for_education: "Tätä työntekijää ei lähetetä ajoneuvon mukana, koska häneltä puuttuu tarvittava koulutus.",
             name: "Nimi",
             none: "Ei mitään",
             of: "/",
             off: "Ei käytössä",
             on: "Käytössä",
+            person: {
+                missing_education_for_vehicle: "Henkilöstö lähetetään ajoneuvon mukana vain, jos se on saanut tarvittavan koulutuksen."
+            },
             save: "Tallenna",
             search: "Haku",
             show: "Näytä",
@@ -13467,8 +13564,9 @@ Object.values || (Object.values = function (e) {
             message: "Viesti",
             mission: "Tehtävät",
             missions_filtered_out: "Jotkut tehtävät voidaan suodattaa pois. Tarkista karttasuodattimet.",
-            no_alliance_chat_impossible: "Et kuulu mihinkään liittoutumaan.",
+            no_alliance_chat_impossible: "Chat on loistava tapa luoda yhteyksiä muihin kokeneempiin pelaajiin. He voivat sekä vastata kysymyksiisi että auttaa sinua antamalla sinulle pääsyn rakennuksiin, kuten sairaaloihin ja kouluihin.",
             no_alliance_missions: "Ei liittoutumatehtäviä",
+            no_alliance_missions_join: "Saat liittoumatehtäviin osallistumisesta krediittejä riippumatta siitä, minkä tyyppisen (tai miten monta) ajoneuvon lähetät.\n Lisäksi, liittoumassa voit sekä jakaa omia tehtäviäsi saadaksesi apua kokeneilta liittouman jäseniltä, että osallistua muiden yhteisiin tehtäviin saadaksesi hieman lisäkrediittejä.",
             no_ambulance_missions: "Ei ambulanssitehtäviä Ambulanssitehtäviä syntyy vain kun sinulla on ambulanssi ja sairaala.",
             no_emergency_missions: "Ei hätätehtäviä Hätätehtäviä syntyy, kun olet rakentanut ensimmäisen asemasi.",
             no_radio_messages: "Et ole saanut radioviestejä.",
@@ -13721,6 +13819,9 @@ Object.values || (Object.values = function (e) {
                         general: "Seuraavaksi suosittelen rakentamaan hätäkeskuksen ja sitten mahdollisimman pian uusia asemia, sillä tehtävien enimmäismäärä on sama kuin erityyppisten asemien (poliisiasema, paloasema, ambulanssiasema) enimmäismäärä plus 1, eli 5 palo- ja 3 ambulanssiasemaa = 6 tehtävää.",
                         join_alliance: "Myös liittoutumaan liittyminen on hyödyksi erityisesti alussa, joten sekin on suositeltavaa.",
                         summary: "Tässä olivat Hätäkeskuspelin perusteet! Suorita tehtäviä, kerää krediittejä, osta uusia yksiköitä, toista. Hauskaa pelaamista! </br> Hätäkeskuspelin tiimi"
+                    },
+                    reminder: {
+                        join_alliance: "Liittoon liittymisestä voi hyötyä monella tavalla; voit kerätä lisäkrediittejä osallistumalla liittouman jäsenten jakamiin tehtäviin, voit lähettää henkilöstöäsi liittoumasi jäsenten kursseille koulutukseen, ja voit viedä potilaitasi liittoumasi sairaaloihin! Paina tästä liittyäksesi liittoumaan!"
                     }
                 }
             },
@@ -14386,8 +14487,8 @@ Object.values || (Object.values = function (e) {
 
         function y(e, i) {
             var n, o, a = 0,
-                s = typeof e.getElementsByTagName !== Z ? e.getElementsByTagName(i || "*") : typeof e
-                .querySelectorAll !== Z ? e.querySelectorAll(i || "*") : t;
+                s = typeof e.getElementsByTagName !== G ? e.getElementsByTagName(i || "*") : typeof e
+                .querySelectorAll !== G ? e.querySelectorAll(i || "*") : t;
             if (!s)
                 for (s = [], n = e.childNodes || e; null != (o = n[a]); a++) !i || ut.nodeName(o, i) ? s.push(
                     o) : ut.merge(s, y(o, i));
@@ -14476,7 +14577,7 @@ Object.values || (Object.values = function (e) {
                 for (o in t) P(e + "[" + o + "]", t[o], i, n)
         }
 
-        function I(e) {
+        function j(e) {
             return function (t, i) {
                 "string" != typeof t && (i = t, t = "*");
                 var n, o = 0,
@@ -14489,7 +14590,7 @@ Object.values || (Object.values = function (e) {
             }
         }
 
-        function j(e, t, i, n) {
+        function I(e, t, i, n) {
             function o(r) {
                 var l;
                 return a[r] = !0, ut.each(e[r] || [], function (e, r) {
@@ -14706,7 +14807,7 @@ Object.values || (Object.values = function (e) {
         function q(e) {
             return ut.isWindow(e) ? e : 9 === e.nodeType ? e.defaultView || e.parentWindow : !1
         }
-        var U, G, Z = typeof t,
+        var U, Z, G = typeof t,
             K = e.location,
             Y = e.document,
             Q = Y.documentElement,
@@ -14723,7 +14824,7 @@ Object.values || (Object.values = function (e) {
             lt = et.hasOwnProperty,
             ct = it.trim,
             ut = function (e, t) {
-                return new ut.fn.init(e, t, G)
+                return new ut.fn.init(e, t, Z)
             },
             dt = /[+-]?(?:\d*\.|)\d+(?:[eE][+-]?\d+|)/.source,
             ht = /\S+/g,
@@ -15056,7 +15157,7 @@ Object.values || (Object.values = function (e) {
             }, ut.each("Boolean Number String Function Array Date RegExp Object Error".split(" "), function (
                 e, t) {
                 et["[object " + t + "]"] = t.toLowerCase()
-            }), G = ut(Y),
+            }), Z = ut(Y),
             /*!
              * Sizzle CSS Selector Engine v1.9.4-pre
              * http://sizzlejs.com/
@@ -15184,7 +15285,7 @@ Object.values || (Object.values = function (e) {
                 }
 
                 function _(e, t) {
-                    var n, o, a, s, r, l, c, u = Z[e + " "];
+                    var n, o, a, s, r, l, c, u = G[e + " "];
                     if (u) return t ? 0 : u.slice(0);
                     for (r = e, l = [], c = E.preFilter; r;) {
                         (!n || (o = _t.exec(r))) && (o && (r = r.slice(o[0].length) || r), l.push(a = [])), n
@@ -15200,7 +15301,7 @@ Object.values || (Object.values = function (e) {
                             }), r = r.slice(n.length));
                         if (!n) break
                     }
-                    return t ? r.length : r ? i.error(e) : Z(e, l)
+                    return t ? r.length : r ? i.error(e) : G(e, l)
                         .slice(0)
                 }
 
@@ -15354,16 +15455,16 @@ Object.values || (Object.values = function (e) {
                                 break
                             }
                     }
-                    return j(e, c)(n, t, !R, i, gt.test(e)), i
+                    return I(e, c)(n, t, !R, i, gt.test(e)), i
                 }
 
                 function z() {}
-                var T, S, A, E, P, I, j, M, D, N, L, O, R, F, $, B, H, W = "sizzle" + -new Date,
+                var T, S, A, E, P, j, I, M, D, N, L, O, R, F, $, B, H, W = "sizzle" + -new Date,
                     V = e.document,
                     q = 0,
                     U = 0,
-                    G = o(),
                     Z = o(),
+                    G = o(),
                     K = o(),
                     Y = !1,
                     Q = function () {
@@ -15435,14 +15536,14 @@ Object.values || (Object.values = function (e) {
                         }
                     }
                 }
-                I = i.isXML = function (e) {
+                j = i.isXML = function (e) {
                     var t = e && (e.ownerDocument || e)
                         .documentElement;
                     return t ? "HTML" !== t.nodeName : !1
                 }, S = i.support = {}, N = i.setDocument = function (e) {
                     var t = e ? e.ownerDocument || e : V;
                     return t !== L && 9 === t.nodeType && t.documentElement ? (L = t, O = t
-                        .documentElement, R = !I(t), S.attributes = s(function (e) {
+                        .documentElement, R = !j(t), S.attributes = s(function (e) {
                             return e.innerHTML = "<a href='#'></a>", r("type|href|height|width",
                                     c, "#" === e.firstChild.getAttribute("href")), r(rt, l,
                                     null == e.getAttribute("disabled")), e.className = "i", !e
@@ -15647,9 +15748,9 @@ Object.values || (Object.values = function (e) {
                             }
                         },
                         CLASS: function (e) {
-                            var t = G[e + " "];
+                            var t = Z[e + " "];
                             return t || (t = new RegExp("(^|" + lt + ")" + e + "(" + lt + "|$)")) &&
-                                G(e, function (e) {
+                                Z(e, function (e) {
                                     return t.test("string" == typeof e.className && e.className ||
                                         typeof e.getAttribute !== J && e.getAttribute(
                                         "class") || "")
@@ -15726,7 +15827,7 @@ Object.values || (Object.values = function (e) {
                         not: a(function (e) {
                             var t = [],
                                 i = [],
-                                n = j(e.replace(mt, "$1"));
+                                n = I(e.replace(mt, "$1"));
                             return n[W] ? a(function (e, t, i, o) {
                                 for (var a, s = n(e, null, o, []), r = e.length; r--;)(a =
                                     s[r]) && (e[r] = !(t[r] = a))
@@ -15847,7 +15948,7 @@ Object.values || (Object.values = function (e) {
                         submit: !0,
                         reset: !0
                     }) E.pseudos[T] = p(T);
-                j = i.compile = function (e, t) {
+                I = i.compile = function (e, t) {
                         var i, n = [],
                             o = [],
                             a = K[e + " "];
@@ -16075,7 +16176,7 @@ Object.values || (Object.values = function (e) {
                         .style.cssText = a, n.style.marginRight = n.style.width = "0", d.style
                         .width = "1px", t.reliableMarginRight = !parseFloat((e
                                 .getComputedStyle(n, null) || {})
-                            .marginRight)), typeof d.style.zoom !== Z && (d.innerHTML = "", d
+                            .marginRight)), typeof d.style.zoom !== G && (d.innerHTML = "", d
                         .style.cssText = a + "width:1px;padding:1px;display:inline;zoom:1", t
                         .inlineBlockNeedsLayout = 3 === d.offsetWidth, d.style.display =
                         "block", d.innerHTML = "<div></div>", d.firstChild.style.width =
@@ -16207,8 +16308,8 @@ Object.values || (Object.values = function (e) {
             }
         });
         var At, Et, Pt = /[\t\r\n\f]/g,
-            It = /\r/g,
-            jt = /^(?:input|select|textarea|button|object)$/i,
+            jt = /\r/g,
+            It = /^(?:input|select|textarea|button|object)$/i,
             Mt = /^(?:a|area)$/i,
             Dt = /^(?:checked|selected)$/i,
             Nt = ut.support.getSetAttribute,
@@ -16282,7 +16383,7 @@ Object.values || (Object.values = function (e) {
                         for (var o, a = 0, s = ut(this), r = t, l = e.match(ht) || []; o =
                             l[a++];) r = n ? r : !s.hasClass(o), s[r ? "addClass" :
                             "removeClass"](o);
-                    else(i === Z || "boolean" === i) && (this.className && ut._data(this,
+                    else(i === G || "boolean" === i) && (this.className && ut._data(this,
                             "__className__", this.className), this.className = this
                         .className || e === !1 ? "" : ut._data(this,
                         "__className__") || "")
@@ -16310,7 +16411,7 @@ Object.values || (Object.values = function (e) {
                     });
                     if (a) return n = ut.valHooks[a.type] || ut.valHooks[a.nodeName
                     .toLowerCase()], n && "get" in n && (i = n.get(a, "value")) !== t ? i : (
-                            i = a.value, "string" == typeof i ? i.replace(It, "") : null ==
+                            i = a.value, "string" == typeof i ? i.replace(jt, "") : null ==
                             i ? "" : i)
                 }
             }
@@ -16346,7 +16447,7 @@ Object.values || (Object.values = function (e) {
             },
             attr: function (e, i, n) {
                 var o, a, s = e.nodeType;
-                if (e && 3 !== s && 8 !== s && 2 !== s) return typeof e.getAttribute === Z ? ut
+                if (e && 3 !== s && 8 !== s && 2 !== s) return typeof e.getAttribute === G ? ut
                     .prop(e, i, n) : (1 === s && ut.isXMLDoc(e) || (i = i.toLowerCase(), o =
                             ut.attrHooks[i] || (ut.expr.match.bool.test(i) ? Et : At)), n ===
                         t ? o && "get" in o && null !== (a = o.get(e, i)) ? a : (a = ut.find
@@ -16387,7 +16488,7 @@ Object.values || (Object.values = function (e) {
                 tabIndex: {
                     get: function (e) {
                         var t = ut.find.attr(e, "tabindex");
-                        return t ? parseInt(t, 10) : jt.test(e.nodeName) || Mt.test(e.nodeName) &&
+                        return t ? parseInt(t, 10) : It.test(e.nodeName) || Mt.test(e.nodeName) &&
                             e.href ? 0 : -1
                     }
                 }
@@ -16483,7 +16584,7 @@ Object.values || (Object.values = function (e) {
                     for (n.handler && (c = n, n = c.handler, a = c.selector), n.guid || (n.guid = ut
                             .guid++), (r = g.events) || (r = g.events = {}), (d = g.handle) || (d = g
                             .handle = function (e) {
-                                return typeof ut === Z || e && ut.event.triggered === e.type ? t : ut
+                                return typeof ut === G || e && ut.event.triggered === e.type ? t : ut
                                     .event.dispatch.apply(d.elem, arguments)
                             }, d.elem = e), i = (i || "")
                         .match(ht) || [""], l = i.length; l--;) s = Bt.exec(i[l]) || [], m = f = s[1],
@@ -16686,7 +16787,7 @@ Object.values || (Object.values = function (e) {
             e.removeEventListener && e.removeEventListener(t, i, !1)
         } : function (e, t, i) {
             var n = "on" + t;
-            e.detachEvent && (typeof e[n] === Z && (e[n] = null), e.detachEvent(n, i))
+            e.detachEvent && (typeof e[n] === G && (e[n] = null), e.detachEvent(n, i))
         }, ut.Event = function (e, t) {
             return this instanceof ut.Event ? (e && e.type ? (this.originalEvent = e, this.type = e.type,
                     this.isDefaultPrevented = e.defaultPrevented || e.returnValue === !1 || e
@@ -16971,8 +17072,8 @@ Object.values || (Object.values = function (e) {
         });
         var Ut =
             "abbr|article|aside|audio|bdi|canvas|data|datalist|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|summary|time|video",
-            Gt = / jQuery\d+="(?:null|\d+)"/g,
-            Zt = new RegExp("<(?:" + Ut + ")[\\s/>]", "i"),
+            Zt = / jQuery\d+="(?:null|\d+)"/g,
+            Gt = new RegExp("<(?:" + Ut + ")[\\s/>]", "i"),
             Kt = /^\s+/,
             Yt = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/gi,
             Qt = /<([\w:]+)/,
@@ -17059,10 +17160,10 @@ Object.values || (Object.values = function (e) {
                         var i = this[0] || {},
                             n = 0,
                             o = this.length;
-                        if (e === t) return 1 === i.nodeType ? i.innerHTML.replace(Gt, "") :
+                        if (e === t) return 1 === i.nodeType ? i.innerHTML.replace(Zt, "") :
                         t;
                         if (!("string" != typeof e || ei.test(e) || !ut.support
-                                .htmlSerialize && Zt.test(e) || !ut.support
+                                .htmlSerialize && Gt.test(e) || !ut.support
                                 .leadingWhitespace && Kt.test(e) || si[(Qt.exec(e) || ["",
                                     ""])[1].toLowerCase()])) {
                             e = e.replace(Yt, "<$1></$2>");
@@ -17134,7 +17235,7 @@ Object.values || (Object.values = function (e) {
             }), ut.extend({
                 clone: function (e, t, i) {
                     var n, o, a, s, r, l = ut.contains(e.ownerDocument, e);
-                    if (ut.support.html5Clone || ut.isXMLDoc(e) || !Zt.test("<" + e.nodeName + ">") ?
+                    if (ut.support.html5Clone || ut.isXMLDoc(e) || !Gt.test("<" + e.nodeName + ">") ?
                         a = e.cloneNode(!0) : (li.innerHTML = e.outerHTML, li.removeChild(a = li
                             .firstChild)), !(ut.support.noCloneEvent && ut.support.noCloneChecked ||
                             1 !== e.nodeType && 11 !== e.nodeType || ut.isXMLDoc(e)))
@@ -17179,7 +17280,7 @@ Object.values || (Object.values = function (e) {
                             if (a.events)
                                 for (n in a.events) u[n] ? ut.event.remove(i, n) : ut.removeEvent(i,
                                     n, a.handle);
-                            l[o] && (delete l[o], c ? delete i[r] : typeof i.removeAttribute !== Z ? i
+                            l[o] && (delete l[o], c ? delete i[r] : typeof i.removeAttribute !== G ? i
                                 .removeAttribute(r) : i[r] = null, tt.push(o))
                         }
                 },
@@ -17493,7 +17594,7 @@ Object.values || (Object.values = function (e) {
                 return 1 === arguments.length ? this.off(e, "**") : this.off(t, e || "**", i)
             }
         });
-        var Pi, Ii, ji = ut.now(),
+        var Pi, ji, Ii = ut.now(),
             Mi = /\?/,
             Di = /#.*$/,
             Ni = /([?&])_=[^&]*/,
@@ -17507,11 +17608,11 @@ Object.values || (Object.values = function (e) {
             Wi = {},
             Vi = "*/".concat("*");
         try {
-            Ii = K.href
+            ji = K.href
         } catch (qi) {
-            Ii = Y.createElement("a"), Ii.href = "", Ii = Ii.href
+            ji = Y.createElement("a"), ji.href = "", ji = ji.href
         }
-        Pi = $i.exec(Ii.toLowerCase()) || [], ut.fn.load = function (e, i, n) {
+        Pi = $i.exec(ji.toLowerCase()) || [], ut.fn.load = function (e, i, n) {
             if ("string" != typeof e && Bi) return Bi.apply(this, arguments);
             var o, a, s, r = this,
                 l = e.indexOf(" ");
@@ -17540,7 +17641,7 @@ Object.values || (Object.values = function (e) {
             lastModified: {},
             etag: {},
             ajaxSettings: {
-                url: Ii,
+                url: ji,
                 type: "GET",
                 isLocal: Oi.test(Pi[1]),
                 global: !0,
@@ -17578,8 +17679,8 @@ Object.values || (Object.values = function (e) {
             ajaxSetup: function (e, t) {
                 return t ? M(M(e, ut.ajaxSettings), t) : M(ut.ajaxSettings, e)
             },
-            ajaxPrefilter: I(Hi),
-            ajaxTransport: I(Wi),
+            ajaxPrefilter: j(Hi),
+            ajaxTransport: j(Wi),
             ajax: function (e, i) {
                 function n(e, i, n, o) {
                     var a, d, v, b, w, x = i;
@@ -17646,7 +17747,7 @@ Object.values || (Object.values = function (e) {
                     };
                 if (_.promise(k)
                     .complete = f.add, k.success = k.done, k.error = k.fail, h.url = ((e || h
-                        .url || Ii) + "")
+                        .url || ji) + "")
                     .replace(Di, "")
                     .replace(Fi, Pi[1] + "//"), h.type = i.method || i.type || h.method || h.type,
                     h.dataTypes = ut.trim(h.dataType || "*")
@@ -17655,13 +17756,13 @@ Object.values || (Object.values = function (e) {
                     .toLowerCase()), h.crossDomain = !(!o || o[1] === Pi[1] && o[2] === Pi[2] && (
                             o[3] || ("http:" === o[1] ? "80" : "443")) === (Pi[3] || (
                             "http:" === Pi[1] ? "80" : "443")))), h.data && h.processData &&
-                    "string" != typeof h.data && (h.data = ut.param(h.data, h.traditional)), j(Hi,
+                    "string" != typeof h.data && (h.data = ut.param(h.data, h.traditional)), I(Hi,
                         h, i, k), 2 === y) return k;
                 c = h.global, c && 0 === ut.active++ && ut.event.trigger("ajaxStart"), h.type = h
                     .type.toUpperCase(), h.hasContent = !Ri.test(h.type), s = h.url, h
                     .hasContent || (h.data && (s = h.url += (Mi.test(s) ? "&" : "?") + h.data,
                         delete h.data), h.cache === !1 && (h.url = Ni.test(s) ? s.replace(Ni,
-                        "$1_=" + ji++) : s + (Mi.test(s) ? "&" : "?") + "_=" + ji++)), h
+                        "$1_=" + Ii++) : s + (Mi.test(s) ? "&" : "?") + "_=" + Ii++)), h
                     .ifModified && (ut.lastModified[s] && k.setRequestHeader("If-Modified-Since",
                         ut.lastModified[s]), ut.etag[s] && k.setRequestHeader("If-None-Match",
                         ut.etag[s])), (h.data && h.hasContent && h.contentType !== !1 || i
@@ -17678,7 +17779,7 @@ Object.values || (Object.values = function (e) {
                         error: 1,
                         complete: 1
                     }) k[a](h[a]);
-                if (u = j(Wi, h, i, k)) {
+                if (u = I(Wi, h, i, k)) {
                     k.readyState = 1, c && m.trigger("ajaxSend", [k, h]), h.async && h.timeout >
                         0 && (l = setTimeout(function () {
                             k.abort("timeout")
@@ -17742,20 +17843,20 @@ Object.values || (Object.values = function (e) {
             }
         });
         var Ui = [],
-            Gi = /(=)\?(?=&|$)|\?\?/;
+            Zi = /(=)\?(?=&|$)|\?\?/;
         ut.ajaxSetup({
             jsonp: "callback",
             jsonpCallback: function () {
-                var e = Ui.pop() || ut.expando + "_" + ji++;
+                var e = Ui.pop() || ut.expando + "_" + Ii++;
                 return this[e] = !0, e
             }
         }), ut.ajaxPrefilter("json jsonp", function (i, n, o) {
-            var a, s, r, l = i.jsonp !== !1 && (Gi.test(i.url) ? "url" : "string" == typeof i.data &&
+            var a, s, r, l = i.jsonp !== !1 && (Zi.test(i.url) ? "url" : "string" == typeof i.data &&
                 !(i.contentType || "")
-                .indexOf("application/x-www-form-urlencoded") && Gi.test(i.data) && "data");
+                .indexOf("application/x-www-form-urlencoded") && Zi.test(i.data) && "data");
             return l || "jsonp" === i.dataTypes[0] ? (a = i.jsonpCallback = ut.isFunction(i
                     .jsonpCallback) ? i.jsonpCallback() : i.jsonpCallback, l ? i[l] = i[l]
-                .replace(Gi, "$1" + a) : i.jsonp !== !1 && (i.url += (Mi.test(i.url) ? "&" :
+                .replace(Zi, "$1" + a) : i.jsonp !== !1 && (i.url += (Mi.test(i.url) ? "&" :
                     "?") + i.jsonp + "=" + a), i.converters["script json"] = function () {
                     return r || ut.error(a + " was not called"), r[0]
                 }, i.dataTypes[0] = "json", s = e[a], e[a] = function () {
@@ -17765,10 +17866,10 @@ Object.values || (Object.values = function (e) {
                         .isFunction(s) && s(r[0]), r = s = t
                 }), "script") : void 0
         });
-        var Zi, Ki, Yi = 0,
+        var Gi, Ki, Yi = 0,
             Qi = e.ActiveXObject && function () {
                 var e;
-                for (e in Zi) Zi[e](t, !0)
+                for (e in Gi) Gi[e](t, !0)
             };
         ut.ajaxSettings.xhr = e.ActiveXObject ? function () {
                 return !this.isLocal && L() || O()
@@ -17793,7 +17894,7 @@ Object.values || (Object.values = function (e) {
                                 try {
                                     if (n && (o || 4 === l.readyState))
                                         if (n = t, s && (l.onreadystatechange = ut.noop, Qi &&
-                                                delete Zi[s]), o) 4 !== l.readyState && l.abort();
+                                                delete Gi[s]), o) 4 !== l.readyState && l.abort();
                                         else {
                                             d = {}, r = l.status, c = l.getAllResponseHeaders(),
                                                 "string" == typeof l.responseText && (d.text = l
@@ -17811,8 +17912,8 @@ Object.values || (Object.values = function (e) {
                                 }
                                 d && a(r, u, d, c)
                             }, i.async ? 4 === l.readyState ? setTimeout(n) : (s = ++Yi, Qi && (
-                                Zi || (Zi = {}, ut(e)
-                                    .unload(Qi)), Zi[s] = n), l.onreadystatechange = n) : n()
+                                Gi || (Gi = {}, ut(e)
+                                    .unload(Qi)), Gi[s] = n), l.onreadystatechange = n) : n()
                         },
                         abort: function () {
                             n && n(t, !0)
@@ -18015,7 +18116,7 @@ Object.values || (Object.values = function (e) {
                     a = this[0],
                     s = a && a.ownerDocument;
                 if (s) return i = s.documentElement, ut.contains(i, a) ? (typeof a.getBoundingClientRect !==
-                    Z && (o = a.getBoundingClientRect()), n = q(s), {
+                    G && (o = a.getBoundingClientRect()), n = q(s), {
                         top: o.top + (n.pageYOffset || i.scrollTop) - (i.clientTop || 0),
                         left: o.left + (n.pageXOffset || i.scrollLeft) - (i.clientLeft || 0)
                     }) : o
@@ -23552,7 +23653,7 @@ Object.values || (Object.values = function (e) {
                 },
                 _generateHTML: function (e) {
                     var t, i, n, o, a, s, r, l, c, u, d, h, p, m, _, f, g, v, b, y, w, k, x, C, z,
-                        T, S, A, E, P, I, j, M, D, N, L, O, R, F, $ = new Date,
+                        T, S, A, E, P, j, I, M, D, N, L, O, R, F, $ = new Date,
                         B = this._daylightSavingAdjust(new Date($.getFullYear(), $.getMonth(), $
                             .getDate())),
                         H = this._get(e, "isRTL"),
@@ -23560,14 +23661,14 @@ Object.values || (Object.values = function (e) {
                         V = this._get(e, "hideIfNoPrevNext"),
                         q = this._get(e, "navigationAsDateFormat"),
                         U = this._getNumberOfMonths(e),
-                        G = this._get(e, "showCurrentAtPos"),
-                        Z = this._get(e, "stepMonths"),
+                        Z = this._get(e, "showCurrentAtPos"),
+                        G = this._get(e, "stepMonths"),
                         K = 1 !== U[0] || 1 !== U[1],
                         Y = this._daylightSavingAdjust(e.currentDay ? new Date(e.currentYear, e
                             .currentMonth, e.currentDay) : new Date(9999, 9, 9)),
                         Q = this._getMinMaxDate(e, "min"),
                         J = this._getMinMaxDate(e, "max"),
-                        X = e.drawMonth - G,
+                        X = e.drawMonth - Z,
                         et = e.drawYear;
                     if (0 > X && (X += 12, et--), J)
                         for (t = this._daylightSavingAdjust(new Date(J.getFullYear(), J
@@ -23575,7 +23676,7 @@ Object.values || (Object.values = function (e) {
                             t; this._daylightSavingAdjust(new Date(et, X, 1)) > t;) X--, 0 > X &&
                             (X = 11, et--);
                     for (e.drawMonth = X, e.drawYear = et, i = this._get(e, "prevText"), i = q ?
-                        this.formatDate(i, this._daylightSavingAdjust(new Date(et, X - Z, 1)),
+                        this.formatDate(i, this._daylightSavingAdjust(new Date(et, X - G, 1)),
                             this._getFormatConfig(e)) : i, n = this._canAdjustMonth(e, -1, et,
                         X) ?
                         "<a class='ui-datepicker-prev ui-corner-all' data-handler='prev' data-event='click' title='" +
@@ -23584,7 +23685,7 @@ Object.values || (Object.values = function (e) {
                         "<a class='ui-datepicker-prev ui-corner-all ui-state-disabled' title='" +
                         i + "'><span class='ui-icon ui-icon-circle-triangle-" + (H ? "e" : "w") +
                         "'>" + i + "</span></a>", o = this._get(e, "nextText"), o = q ? this
-                        .formatDate(o, this._daylightSavingAdjust(new Date(et, X + Z, 1)), this
+                        .formatDate(o, this._daylightSavingAdjust(new Date(et, X + G, 1)), this
                             ._getFormatConfig(e)) : o, a = this._canAdjustMonth(e, 1, et, X) ?
                         "<a class='ui-datepicker-next ui-corner-all' data-handler='next' data-event='click' title='" +
                         o + "'><span class='ui-icon ui-icon-circle-triangle-" + (H ? "w" : "e") +
@@ -23636,10 +23737,10 @@ Object.values || (Object.values = function (e) {
                                 "<span title='" + h[E] + "'>" + p[E] + "</span></th>";
                             for (S += A + "</tr></thead><tbody>", P = this._getDaysInMonth(et, X),
                                 et === e.selectedYear && X === e.selectedMonth && (e.selectedDay =
-                                    Math.min(e.selectedDay, P)), I = (this._getFirstDayOfMonth(et,
-                                    X) - u + 7) % 7, j = Math.ceil((I + P) / 7), M = K ? this
-                                .maxRows > j ? this.maxRows : j : j, this.maxRows = M, D = this
-                                ._daylightSavingAdjust(new Date(et, X, 1 - I)), N = 0; M > N; N++
+                                    Math.min(e.selectedDay, P)), j = (this._getFirstDayOfMonth(et,
+                                    X) - u + 7) % 7, I = Math.ceil((j + P) / 7), M = K ? this
+                                .maxRows > I ? this.maxRows : I : I, this.maxRows = M, D = this
+                                ._daylightSavingAdjust(new Date(et, X, 1 - j)), N = 0; M > N; N++
                                 ) {
                                 for (S += "<tr>", L = d ? "<td class='ui-datepicker-week-col'>" +
                                     this._get(e, "calculateWeek")(D) + "</td>" : "", w = 0; 7 >
@@ -28444,12 +28545,12 @@ Object.values || (Object.values = function (e) {
                         A = z.left,
                         E = A + s.width(),
                         P = i === !0 ? S : T,
-                        I = i === !0 ? T : S,
-                        j = i === !0 ? E : A,
+                        j = i === !0 ? T : S,
+                        I = i === !0 ? E : A,
                         M = i === !0 ? A : E;
-                    if ("both" === o) return !!p && k >= I && P >= w && C >= M && j >= x;
-                    if ("vertical" === o) return !!p && k >= I && P >= w;
-                    if ("horizontal" === o) return !!p && C >= M && j >= x
+                    if ("both" === o) return !!p && k >= j && P >= w && C >= M && I >= x;
+                    if ("vertical" === o) return !!p && k >= j && P >= w;
+                    if ("horizontal" === o) return !!p && C >= M && I >= x
                 }
             }
         }
@@ -30283,7 +30384,7 @@ Object.values || (Object.values = function (e) {
             return document.createElementNS("http://www.w3.org/2000/svg", e)
         }
 
-        function I(e, t) {
+        function j(e, t) {
             var i, n, o, a, s, r, l = "";
             for (i = 0, o = e.length; o > i; i++) {
                 for (n = 0, a = (s = e[i])
@@ -30293,7 +30394,7 @@ Object.values || (Object.values = function (e) {
             return l || "M0 0"
         }
 
-        function j(e) {
+        function I(e) {
             return navigator.userAgent.toLowerCase()
                 .indexOf(e) >= 0
         }
@@ -30410,12 +30511,12 @@ Object.values || (Object.values = function (e) {
             return "auto" === i ? null : i
         }
 
-        function G(e, t, i) {
+        function Z(e, t, i) {
             var n = document.createElement(e);
             return n.className = t || "", i && i.appendChild(n), n
         }
 
-        function Z(e) {
+        function G(e) {
             var t = e.parentNode;
             t && t.removeChild(e)
         }
@@ -30561,7 +30662,7 @@ Object.values || (Object.values = function (e) {
                     return i.call(o || e, t || window.event)
                 },
                 r = s;
-            qi && 0 === t.indexOf("touch") ? M(e, t, s, a) : !Ui || "dblclick" !== t || !W || qi && Ii ?
+            qi && 0 === t.indexOf("touch") ? M(e, t, s, a) : !Ui || "dblclick" !== t || !W || qi && ji ?
                 "addEventListener" in e ? "mousewheel" === t ? e.addEventListener("onwheel" in e ?
                     "wheel" : "mousewheel", s, !1) : "mouseenter" === t || "mouseleave" === t ? (s =
                     function (t) {
@@ -30577,7 +30678,7 @@ Object.values || (Object.values = function (e) {
             var a = t + n(i) + (o ? "_" + n(o) : ""),
                 s = e[yn] && e[yn][a];
             return s ? (qi && 0 === t.indexOf("touch") ? D(e, t, a) : !Ui || "dblclick" !== t || !V ||
-                    qi && Ii ? "removeEventListener" in e ? "mousewheel" === t ? e.removeEventListener(
+                    qi && ji ? "removeEventListener" in e ? "mousewheel" === t ? e.removeEventListener(
                         "onwheel" in e ? "wheel" : "mousewheel", s, !1) : e.removeEventListener(
                         "mouseenter" === t ? "mouseover" : "mouseleave" === t ? "mouseout" : t, s, !1) :
                     "detachEvent" in e && e.detachEvent("on" + t, s) : V(e, a), e[yn][a] = null, void 0) :
@@ -30649,14 +30750,14 @@ Object.values || (Object.values = function (e) {
         function Pt(e, t) {
             if (!t || !e.length) return e.slice();
             var i = t * t;
-            return e = Dt(e, i), e = jt(e, i)
+            return e = Dt(e, i), e = It(e, i)
         }
 
-        function It(e, t, i) {
+        function jt(e, t, i) {
             return Math.sqrt(Ft(e, t, i, !0))
         }
 
-        function jt(e, t) {
+        function It(e, t) {
             var i = e.length,
                 n = new(typeof Uint8Array != void 0 + "" ? Uint8Array : Array)(i);
             n[0] = n[i - 1] = 1, Mt(e, n, t, 0, i - 1);
@@ -30789,13 +30890,13 @@ Object.values || (Object.values = function (e) {
                 .alt, t)] : [r(e.lng, t), r(e.lat, t)]
         }
 
-        function Gt(e, t, i, n) {
-            for (var o = [], a = 0, s = e.length; s > a; a++) o.push(t ? Gt(e[a], t - 1, i, n) : Ut(e[a],
+        function Zt(e, t, i, n) {
+            for (var o = [], a = 0, s = e.length; s > a; a++) o.push(t ? Zt(e[a], t - 1, i, n) : Ut(e[a],
                 n));
             return !t && i && o.push(o[0]), o
         }
 
-        function Zt(e, i) {
+        function Gt(e, i) {
             return e.feature ? t({}, e.feature, {
                 geometry: i
             }) : Kt(i)
@@ -31362,31 +31463,31 @@ Object.values || (Object.values = function (e) {
             ki = "ActiveXObject" in window,
             xi = ki && !document.addEventListener,
             Ci = "msLaunchUri" in navigator && !("documentMode" in document),
-            zi = j("webkit"),
-            Ti = j("android"),
-            Si = j("android 2") || j("android 3"),
+            zi = I("webkit"),
+            Ti = I("android"),
+            Si = I("android 2") || I("android 3"),
             Ai = parseInt(/WebKit\/([0-9]+)|$/.exec(navigator.userAgent)[1], 10),
-            Ei = Ti && j("Google") && 537 > Ai && !("AudioNode" in window),
+            Ei = Ti && I("Google") && 537 > Ai && !("AudioNode" in window),
             Pi = !!window.opera,
-            Ii = j("chrome"),
-            ji = j("gecko") && !zi && !Pi && !ki,
-            Mi = !Ii && j("safari"),
-            Di = j("phantom"),
+            ji = I("chrome"),
+            Ii = I("gecko") && !zi && !Pi && !ki,
+            Mi = !ji && I("safari"),
+            Di = I("phantom"),
             Ni = "OTransition" in wi,
             Li = 0 === navigator.platform.indexOf("Win"),
             Oi = ki && "transition" in wi,
             Ri = "WebKitCSSMatrix" in window && "m11" in new window.WebKitCSSMatrix && !Si,
             Fi = "MozPerspective" in wi,
             $i = !window.L_DISABLE_3D && (Oi || Ri || Fi) && !Ni && !Di,
-            Bi = "undefined" != typeof orientation || j("mobile"),
+            Bi = "undefined" != typeof orientation || I("mobile"),
             Hi = Bi && zi,
             Wi = Bi && Ri,
             Vi = !window.PointerEvent && window.MSPointerEvent,
             qi = !(!window.PointerEvent && !Vi),
             Ui = !window.L_NO_TOUCH && (qi || "ontouchstart" in window || window.DocumentTouch &&
                 document instanceof window.DocumentTouch),
-            Gi = Bi && Pi,
-            Zi = Bi && ji,
+            Zi = Bi && Pi,
+            Gi = Bi && Ii,
             Ki = (window.devicePixelRatio || window.screen.deviceXDPI / window.screen.logicalXDPI) > 1,
             Yi = !!document.createElement("canvas")
             .getContext,
@@ -31411,8 +31512,8 @@ Object.values || (Object.values = function (e) {
                 android23: Si,
                 androidStock: Ei,
                 opera: Pi,
-                chrome: Ii,
-                gecko: ji,
+                chrome: ji,
+                gecko: Ii,
                 safari: Mi,
                 phantom: Di,
                 opera12: Ni,
@@ -31427,8 +31528,8 @@ Object.values || (Object.values = function (e) {
                 msPointer: Vi,
                 pointer: qi,
                 touch: Ui,
-                mobileOpera: Gi,
-                mobileGecko: Zi,
+                mobileOpera: Zi,
+                mobileGecko: Gi,
                 retina: Ki,
                 canvas: Yi,
                 svg: Qi,
@@ -31471,8 +31572,8 @@ Object.values || (Object.values = function (e) {
                 TRANSITION_END: mn,
                 get: q,
                 getStyle: U,
-                create: G,
-                remove: Z,
+                create: Z,
+                remove: G,
                 empty: K,
                 toFront: Y,
                 toBack: Q,
@@ -31496,7 +31597,7 @@ Object.values || (Object.values = function (e) {
                 getScale: mt
             }),
             yn = "_leaflet_events",
-            wn = Li && Ii ? 2 * window.devicePixelRatio : ji ? window.devicePixelRatio : 1,
+            wn = Li && ji ? 2 * window.devicePixelRatio : Ii ? window.devicePixelRatio : 1,
             kn = {},
             xn = (Object.freeze || Object)({
                 on: _t,
@@ -31571,7 +31672,7 @@ Object.values || (Object.values = function (e) {
                         t.zoom && (this._zoom = this._limitZoom(t.zoom)), t.center && void 0 !== t
                         .zoom && this.setView(S(t.center), t.zoom, {
                             reset: !0
-                        }), this.callInitHooks(), this._zoomAnimated = pn && $i && !Gi && this
+                        }), this.callInitHooks(), this._zoomAnimated = pn && $i && !Zi && this
                         .options.zoomAnimation, this._zoomAnimated && (this._createAnimProxy(),
                             _t(this._proxy, mn, this._catchTransitionEnd, this)), this._addLayers(
                             this.options.layers)
@@ -31871,18 +31972,18 @@ Object.values || (Object.values = function (e) {
                     } catch (e) {
                         this._container._leaflet_id = void 0, this._containerId = void 0
                     }
-                    void 0 !== this._locationWatchId && this.stopLocate(), this._stop(), Z(this
+                    void 0 !== this._locationWatchId && this.stopLocate(), this._stop(), G(this
                             ._mapPane), this._clearControlPos && this._clearControlPos(), this
                         ._resizeRequest && (g(this._resizeRequest), this._resizeRequest = null),
                         this._clearHandlers(), this._loaded && this.fire("unload");
                     var e;
                     for (e in this._layers) this._layers[e].remove();
-                    for (e in this._panes) Z(this._panes[e]);
+                    for (e in this._panes) G(this._panes[e]);
                     return this._layers = [], this._panes = [], delete this._mapPane, delete this
                         ._renderer, this
                 },
                 createPane: function (e, t) {
-                    var i = G("div", "leaflet-pane" + (e ? " leaflet-" + e.replace("Pane", "") +
+                    var i = Z("div", "leaflet-pane" + (e ? " leaflet-" + e.replace("Pane", "") +
                         "-pane" : ""), t || this._mapPane);
                     return e && (this._panes[e] = i), i
                 },
@@ -32252,7 +32353,7 @@ Object.values || (Object.values = function (e) {
                         .contains(i) || (this.panBy(i, t), 0))
                 },
                 _createAnimProxy: function () {
-                    var e = this._proxy = G("div", "leaflet-proxy leaflet-zoom-animated");
+                    var e = this._proxy = Z("div", "leaflet-proxy leaflet-zoom-animated");
                     this._panes.mapPane.appendChild(e), this.on("zoomanim", function (e) {
                         var t = hn,
                             i = this._proxy.style[t];
@@ -32266,7 +32367,7 @@ Object.values || (Object.values = function (e) {
                     }, this), this._on("unload", this._destroyAnimProxy, this)
                 },
                 _destroyAnimProxy: function () {
-                    Z(this._proxy), delete this._proxy
+                    G(this._proxy), delete this._proxy
                 },
                 _catchTransitionEnd: function (e) {
                     this._animatingZoom && e.propertyName.indexOf("transform") >= 0 && this
@@ -32334,7 +32435,7 @@ Object.values || (Object.values = function (e) {
                         n.firstChild) : n.appendChild(t), this
                 },
                 remove: function () {
-                    return this._map ? (Z(this._container), this.onRemove && this.onRemove(this
+                    return this._map ? (G(this._container), this.onRemove && this.onRemove(this
                         ._map), this._map = null, this) : this
                 },
                 _refocusOnMap: function (e) {
@@ -32355,17 +32456,17 @@ Object.values || (Object.values = function (e) {
             _initControlPos: function () {
                 function e(e, o) {
                     var a = i + e + " " + i + o;
-                    t[e + o] = G("div", a, n)
+                    t[e + o] = Z("div", a, n)
                 }
                 var t = this._controlCorners = {},
                     i = "leaflet-",
-                    n = this._controlContainer = G("div", i + "control-container", this
+                    n = this._controlContainer = Z("div", i + "control-container", this
                         ._container);
                 e("top", "left"), e("top", "right"), e("bottom", "left"), e("bottom", "right")
             },
             _clearControlPos: function () {
-                for (var e in this._controlCorners) Z(this._controlCorners[e]);
-                Z(this._controlContainer), delete this._controlCorners, delete this
+                for (var e in this._controlCorners) G(this._controlCorners[e]);
+                G(this._controlContainer), delete this._controlCorners, delete this
                     ._controlContainer
             }
         });
@@ -32428,19 +32529,19 @@ Object.values || (Object.values = function (e) {
                 },
                 _initLayout: function () {
                     var e = "leaflet-control-layers",
-                        t = this._container = G("div", e),
+                        t = this._container = Z("div", e),
                         i = this.options.collapsed;
                     t.setAttribute("aria-haspopup", !0), wt(t), yt(t);
-                    var n = this._section = G("section", e + "-list");
+                    var n = this._section = Z("section", e + "-list");
                     i && (this._map.on("click", this.collapse, this), Ti || _t(t, {
                         mouseenter: this.expand,
                         mouseleave: this.collapse
                     }, this));
-                    var o = this._layersLink = G("a", e + "-toggle", t);
+                    var o = this._layersLink = Z("a", e + "-toggle", t);
                     o.href = "#", o.title = "Layers", Ui ? (_t(o, "click", xt), _t(o, "click",
                             this.expand, this)) : _t(o, "focus", this.expand, this), i || this
-                        .expand(), this._baseLayersList = G("div", e + "-base", n), this
-                        ._separator = G("div", e + "-separator", n), this._overlaysList = G("div",
+                        .expand(), this._baseLayersList = Z("div", e + "-base", n), this
+                        ._separator = Z("div", e + "-separator", n), this._overlaysList = Z("div",
                             e + "-overlays", n), t.appendChild(n)
                 },
                 _getLayer: function (e) {
@@ -32538,7 +32639,7 @@ Object.values || (Object.values = function (e) {
                 },
                 onAdd: function (e) {
                     var t = "leaflet-control-zoom",
-                        i = G("div", t + " leaflet-bar"),
+                        i = Z("div", t + " leaflet-bar"),
                         n = this.options;
                     return this._zoomInButton = this._createButton(n.zoomInText, n.zoomInTitle,
                             t + "-in", i, this._zoomIn), this._zoomOutButton = this._createButton(
@@ -32564,7 +32665,7 @@ Object.values || (Object.values = function (e) {
                         .zoomOut(this._map.options.zoomDelta * (e.shiftKey ? 3 : 1))
                 },
                 _createButton: function (e, t, i, n, o) {
-                    var a = G("a", i, n);
+                    var a = Z("a", i, n);
                     return a.innerHTML = e, a.href = "#", a.title = t, a.setAttribute("role",
                             "button"), a.setAttribute("aria-label", t), wt(a), _t(a, "click", xt),
                         _t(a, "click", o, this), _t(a, "click", this._refocusOnMap, this), a
@@ -32591,7 +32692,7 @@ Object.values || (Object.values = function (e) {
                     imperial: !0
                 },
                 onAdd: function (e) {
-                    var t = G("div", "leaflet-control-scale"),
+                    var t = Z("div", "leaflet-control-scale"),
                         i = this.options;
                     return this._addScales(i, "leaflet-control-scale-line", t), e.on(i
                             .updateWhenIdle ? "moveend" : "move", this._update, this), e
@@ -32601,7 +32702,7 @@ Object.values || (Object.values = function (e) {
                     e.off(this.options.updateWhenIdle ? "moveend" : "move", this._update, this)
                 },
                 _addScales: function (e, t, i) {
-                    e.metric && (this._mScale = G("div", t, i)), e.imperial && (this._iScale = G(
+                    e.metric && (this._mScale = Z("div", t, i)), e.imperial && (this._iScale = Z(
                         "div", t, i))
                 },
                 _update: function () {
@@ -32637,7 +32738,7 @@ Object.values || (Object.values = function (e) {
                     return i = i >= 10 ? 10 : i >= 5 ? 5 : i >= 3 ? 3 : i >= 2 ? 2 : 1, t * i
                 }
             }),
-            In = Tn.extend({
+            jn = Tn.extend({
                 options: {
                     position: "bottomright",
                     prefix: '<a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>'
@@ -32646,7 +32747,7 @@ Object.values || (Object.values = function (e) {
                     u(this, e), this._attributions = {}
                 },
                 onAdd: function (e) {
-                    e.attributionControl = this, this._container = G("div",
+                    e.attributionControl = this, this._container = Z("div",
                         "leaflet-control-attribution"), wt(this._container);
                     for (var t in e._layers) e._layers[t].getAttribution && this.addAttribution(e
                         ._layers[t].getAttribution());
@@ -32676,9 +32777,9 @@ Object.values || (Object.values = function (e) {
         zn.mergeOptions({
             attributionControl: !0
         }), zn.addInitHook(function () {
-            this.options.attributionControl && (new In)
+            this.options.attributionControl && (new jn)
                 .addTo(this)
-        }), Tn.Layers = An, Tn.Zoom = En, Tn.Scale = Pn, Tn.Attribution = In, Sn.layers = function (e,
+        }), Tn.Layers = An, Tn.Zoom = En, Tn.Scale = Pn, Tn.Attribution = jn, Sn.layers = function (e,
             t, i) {
             return new An(e, t, i)
         }, Sn.zoom = function (e) {
@@ -32686,9 +32787,9 @@ Object.values || (Object.values = function (e) {
         }, Sn.scale = function (e) {
             return new Pn(e)
         }, Sn.attribution = function (e) {
-            return new In(e)
+            return new jn(e)
         };
-        var jn = v.extend({
+        var In = v.extend({
             initialize: function (e) {
                 this._map = e
             },
@@ -32702,7 +32803,7 @@ Object.values || (Object.values = function (e) {
                 return !!this._enabled
             }
         });
-        jn.addTo = function (e, t) {
+        In.addTo = function (e, t) {
             return e.addHandler(t, this), this
         };
         var Mn, Dn = {
@@ -32798,7 +32899,7 @@ Object.values || (Object.values = function (e) {
             }),
             Fn = (Object.freeze || Object)({
                 simplify: Pt,
-                pointToSegmentDistance: It,
+                pointToSegmentDistance: jt,
                 closestPointOnSegment: function (e, t, i) {
                     return Ft(e, t, i)
                 },
@@ -32880,7 +32981,7 @@ Object.values || (Object.values = function (e) {
             });
         pi.Earth = mi, pi.EPSG3395 = Vn, pi.EPSG3857 = bi, pi.EPSG900913 = yi, pi.EPSG4326 = qn, pi
             .Simple = Un;
-        var Gn = di.extend({
+        var Zn = di.extend({
             options: {
                 pane: "overlayPane",
                 attribution: null,
@@ -32978,7 +33079,7 @@ Object.values || (Object.values = function (e) {
                         this._layersMinZoom)
             }
         });
-        var Zn = Gn.extend({
+        var Gn = Zn.extend({
                 initialize: function (e, t) {
                     u(this, t), this._layers = {};
                     var i, n;
@@ -33029,16 +33130,16 @@ Object.values || (Object.values = function (e) {
                     return n(e)
                 }
             }),
-            Kn = Zn.extend({
+            Kn = Gn.extend({
                 addLayer: function (e) {
-                    return this.hasLayer(e) ? this : (e.addEventParent(this), Zn.prototype
+                    return this.hasLayer(e) ? this : (e.addEventParent(this), Gn.prototype
                         .addLayer.call(this, e), this.fire("layeradd", {
                             layer: e
                         }))
                 },
                 removeLayer: function (e) {
                     return this.hasLayer(e) ? (e in this._layers && (e = this._layers[e]), e
-                        .removeEventParent(this), Zn.prototype.removeLayer.call(this, e), this
+                        .removeEventParent(this), Gn.prototype.removeLayer.call(this, e), this
                         .fire("layerremove", {
                             layer: e
                         })) : this
@@ -33119,14 +33220,14 @@ Object.values || (Object.values = function (e) {
                         .imagePath || Qn.imagePath) + Yn.prototype._getIconUrl.call(this, e)
                 },
                 _detectIconPath: function () {
-                    var e = G("div", "leaflet-default-icon-path", document.body),
+                    var e = Z("div", "leaflet-default-icon-path", document.body),
                         t = U(e, "background-image") || U(e, "backgroundImage");
                     return document.body.removeChild(e), t = null === t || 0 !== t.indexOf(
                         "url") ? "" : t.replace(/^url\(["']?/, "")
                         .replace(/marker-icon\.png["']?\)$/, "")
                 }
             }),
-            Jn = jn.extend({
+            Jn = In.extend({
                 initialize: function (e) {
                     this._marker = e
                 },
@@ -33200,7 +33301,7 @@ Object.values || (Object.values = function (e) {
                         .fire("dragend", e)
                 }
             }),
-            Xn = Gn.extend({
+            Xn = Zn.extend({
                 options: {
                     icon: new Qn,
                     interactive: !0,
@@ -33291,11 +33392,11 @@ Object.values || (Object.values = function (e) {
                     this.options.riseOnHover && this.off({
                             mouseover: this._bringToFront,
                             mouseout: this._resetZIndex
-                        }), Z(this._icon), this.removeInteractiveTarget(this._icon), this._icon =
+                        }), G(this._icon), this.removeInteractiveTarget(this._icon), this._icon =
                         null
                 },
                 _removeShadow: function () {
-                    this._shadow && Z(this._shadow), this._shadow = null
+                    this._shadow && G(this._shadow), this._shadow = null
                 },
                 _setPos: function (e) {
                     rt(this._icon, e), this._shadow && rt(this._shadow, e), this._zIndex = e.y +
@@ -33337,7 +33438,7 @@ Object.values || (Object.values = function (e) {
                     return this.options.icon.options.tooltipAnchor
                 }
             }),
-            eo = Gn.extend({
+            eo = Zn.extend({
                 options: {
                     stroke: !0,
                     color: "#3388ff",
@@ -33589,7 +33690,7 @@ Object.values || (Object.values = function (e) {
                     for (i = 0, a = this._parts.length; a > i; i++)
                         for (n = 0, o = (s = (r = this._parts[i])
                                 .length) - 1; s > n; o = n++)
-                            if ((t || 0 !== n) && It(e, r[o], r[n]) <= l) return !0;
+                            if ((t || 0 !== n) && jt(e, r[o], r[n]) <= l) return !0;
                     return !1
                 }
             });
@@ -33683,7 +33784,7 @@ Object.values || (Object.values = function (e) {
             }),
             so = {
                 toGeoJSON: function (e) {
-                    return Zt(this, {
+                    return Gt(this, {
                         type: "Point",
                         coordinates: Ut(this.getLatLng(), e)
                     })
@@ -33692,8 +33793,8 @@ Object.values || (Object.values = function (e) {
         Xn.include(so), io.include(so), to.include(so), no.include({
             toGeoJSON: function (e) {
                 var t = !$t(this._latlngs),
-                    i = Gt(this._latlngs, t ? 1 : 0, !1, e);
-                return Zt(this, {
+                    i = Zt(this._latlngs, t ? 1 : 0, !1, e);
+                return Gt(this, {
                     type: (t ? "Multi" : "") + "LineString",
                     coordinates: i
                 })
@@ -33702,19 +33803,19 @@ Object.values || (Object.values = function (e) {
             toGeoJSON: function (e) {
                 var t = !$t(this._latlngs),
                     i = t && !$t(this._latlngs[0]),
-                    n = Gt(this._latlngs, i ? 2 : t ? 1 : 0, !0, e);
-                return t || (n = [n]), Zt(this, {
+                    n = Zt(this._latlngs, i ? 2 : t ? 1 : 0, !0, e);
+                return t || (n = [n]), Gt(this, {
                     type: (i ? "Multi" : "") + "Polygon",
                     coordinates: n
                 })
             }
-        }), Zn.include({
+        }), Gn.include({
             toMultiPoint: function (e) {
                 var t = [];
                 return this.eachLayer(function (i) {
                     t.push(i.toGeoJSON(e)
                         .geometry.coordinates)
-                }), Zt(this, {
+                }), Gt(this, {
                     type: "MultiPoint",
                     coordinates: t
                 })
@@ -33734,7 +33835,7 @@ Object.values || (Object.values = function (e) {
                                 .features) : n.push(a)
                         }
                     }
-                }), i ? Zt(this, {
+                }), i ? Gt(this, {
                     geometries: n,
                     type: "GeometryCollection"
                 }) : {
@@ -33744,7 +33845,7 @@ Object.values || (Object.values = function (e) {
             }
         });
         var ro = Yt,
-            lo = Gn.extend({
+            lo = Zn.extend({
                 options: {
                     opacity: 1,
                     alt: "",
@@ -33765,7 +33866,7 @@ Object.values || (Object.values = function (e) {
                         .appendChild(this._image), this._reset()
                 },
                 onRemove: function () {
-                    Z(this._image), this.options.interactive && this.removeInteractiveTarget(this
+                    G(this._image), this.options.interactive && this.removeInteractiveTarget(this
                         ._image)
                 },
                 setOpacity: function (e) {
@@ -33804,7 +33905,7 @@ Object.values || (Object.values = function (e) {
                 },
                 _initImage: function () {
                     var e = "IMG" === this._url.tagName,
-                        t = this._image = e ? this._url : G("img");
+                        t = this._image = e ? this._url : Z("img");
                     X(t, "leaflet-image-layer"), this._zoomAnimated && X(t,
                             "leaflet-zoom-animated"), this.options.className && X(t, this.options
                             .className), t.onselectstart = s, t.onmousemove = s, t.onload = i(this
@@ -33849,7 +33950,7 @@ Object.values || (Object.values = function (e) {
                 },
                 _initImage: function () {
                     var e = "VIDEO" === this._url.tagName,
-                        t = this._image = e ? this._url : G("video");
+                        t = this._image = e ? this._url : Z("video");
                     if (X(t, "leaflet-image-layer"), this._zoomAnimated && X(t,
                             "leaflet-zoom-animated"), t.onselectstart = s, t.onmousemove = s, t
                         .onloadeddata = i(this.fire, this, "load"), e) {
@@ -33860,13 +33961,13 @@ Object.values || (Object.values = function (e) {
                         oi(this._url) || (this._url = [this._url]), t.autoplay = !!this.options
                             .autoplay, t.loop = !!this.options.loop;
                         for (var r = 0; r < this._url.length; r++) {
-                            var l = G("source");
+                            var l = Z("source");
                             l.src = this._url[r], t.appendChild(l)
                         }
                     }
                 }
             }),
-            uo = Gn.extend({
+            uo = Zn.extend({
                 options: {
                     offset: [0, 7],
                     className: "",
@@ -33884,7 +33985,7 @@ Object.values || (Object.values = function (e) {
                 },
                 onRemove: function (e) {
                     e._fadeAnimated ? (nt(this._container, 0), this._removeTimeout = setTimeout(i(
-                        Z, void 0, this._container), 200)) : Z(this._container)
+                        G, void 0, this._container), 200)) : G(this._container)
                 },
                 getLatLng: function () {
                     return this._latlng
@@ -33997,14 +34098,14 @@ Object.values || (Object.values = function (e) {
                 },
                 _initLayout: function () {
                     var e = "leaflet-popup",
-                        t = this._container = G("div", e + " " + (this.options.className || "") +
+                        t = this._container = Z("div", e + " " + (this.options.className || "") +
                             " leaflet-zoom-animated"),
-                        i = this._wrapper = G("div", e + "-content-wrapper", t);
-                    if (this._contentNode = G("div", e + "-content", i), wt(i), yt(this
-                            ._contentNode), _t(i, "contextmenu", bt), this._tipContainer = G(
-                            "div", e + "-tip-container", t), this._tip = G("div", e + "-tip", this
+                        i = this._wrapper = Z("div", e + "-content-wrapper", t);
+                    if (this._contentNode = Z("div", e + "-content", i), wt(i), yt(this
+                            ._contentNode), _t(i, "contextmenu", bt), this._tipContainer = Z(
+                            "div", e + "-tip-container", t), this._tip = Z("div", e + "-tip", this
                             ._tipContainer), this.options.closeButton) {
-                        var n = this._closeButton = G("a", e + "-close-button", t);
+                        var n = this._closeButton = Z("a", e + "-close-button", t);
                         n.href = "#close", n.innerHTML = "&#215;", _t(n, "click", this
                             ._onCloseButtonClick, this)
                     }
@@ -34071,7 +34172,7 @@ Object.values || (Object.values = function (e) {
                 return e && e !== this._popup || (e = this._popup, this._popup = null), e &&
                     this.removeLayer(e), this
             }
-        }), Gn.include({
+        }), Zn.include({
             bindPopup: function (e, t) {
                 return e instanceof ho ? (u(e, t), this._popup = e, e._source = this) : (this
                     ._popup && !t || (this._popup = new ho(t, this)), this._popup
@@ -34091,7 +34192,7 @@ Object.values || (Object.values = function (e) {
                 }), this._popupHandlersAdded = !1, this._popup = null), this
             },
             openPopup: function (e, t) {
-                if (e instanceof Gn || (t = e, e = this), e instanceof Kn)
+                if (e instanceof Zn || (t = e, e = this), e instanceof Kn)
                     for (var i in this._layers) {
                         e = this._layers[i];
                         break
@@ -34165,7 +34266,7 @@ Object.values || (Object.values = function (e) {
             _initLayout: function () {
                 var e = "leaflet-tooltip " + (this.options.className || "") +
                     " leaflet-zoom-" + (this._zoomAnimated ? "animated" : "hide");
-                this._contentNode = this._container = G("div", e)
+                this._contentNode = this._container = Z("div", e)
             },
             _updateLayout: function () {},
             _adjustPan: function () {},
@@ -34213,7 +34314,7 @@ Object.values || (Object.values = function (e) {
             closeTooltip: function (e) {
                 return e && this.removeLayer(e), this
             }
-        }), Gn.include({
+        }), Zn.include({
             bindTooltip: function (e, t) {
                 return e instanceof po ? (u(e, t), this._tooltip = e, e._source = this) : (
                         this._tooltip && !t || (this._tooltip = new po(t, this)), this
@@ -34240,7 +34341,7 @@ Object.values || (Object.values = function (e) {
                 }
             },
             openTooltip: function (e, t) {
-                if (e instanceof Gn || (t = e, e = this), e instanceof Kn)
+                if (e instanceof Zn || (t = e, e = this), e instanceof Kn)
                     for (var i in this._layers) {
                         e = this._layers[i];
                         break
@@ -34305,7 +34406,7 @@ Object.values || (Object.values = function (e) {
             }
         });
         Yn.Default = Qn;
-        var _o = Gn.extend({
+        var _o = Zn.extend({
                 options: {
                     tileSize: 256,
                     opacity: 1,
@@ -34334,7 +34435,7 @@ Object.values || (Object.values = function (e) {
                     e._addZoomLimit(this)
                 },
                 onRemove: function (e) {
-                    this._removeAllTiles(), Z(this._container), e._removeZoomLimit(this), this
+                    this._removeAllTiles(), G(this._container), e._removeZoomLimit(this), this
                         ._container = null, this._tileZoom = void 0
                 },
                 bringToFront: function () {
@@ -34406,7 +34507,7 @@ Object.values || (Object.values = function (e) {
                 },
                 _onOpaqueTile: s,
                 _initContainer: function () {
-                    this._container || (this._container = G("div", "leaflet-layer " + (this
+                    this._container || (this._container = Z("div", "leaflet-layer " + (this
                             .options.className || "")), this._updateZIndex(), this.options
                         .opacity < 1 && this._updateOpacity(), this.getPane()
                         .appendChild(this._container))
@@ -34417,13 +34518,13 @@ Object.values || (Object.values = function (e) {
                     if (void 0 !== e) {
                         for (var i in this._levels) this._levels[i].el.children.length || i ===
                             e ? (this._levels[i].el.style.zIndex = t - Math.abs(e - i), this
-                                ._onUpdateLevel(i)) : (Z(this._levels[i].el), this
+                                ._onUpdateLevel(i)) : (G(this._levels[i].el), this
                                 ._removeTilesAtZoom(i), this._onRemoveLevel(i), delete this
                                 ._levels[i]);
                         var n = this._levels[e],
                             o = this._map;
                         return n || ((n = this._levels[e] = {})
-                                .el = G("div", "leaflet-tile-container leaflet-zoom-animated",
+                                .el = Z("div", "leaflet-tile-container leaflet-zoom-animated",
                                     this._container), n.el.style.zIndex = t, n.origin = o.project(
                                     o.unproject(o.getPixelOrigin()), e)
                                 .round(), n.zoom = e, this._setZoomTransform(n, o.getCenter(), o
@@ -34461,7 +34562,7 @@ Object.values || (Object.values = function (e) {
                     for (var e in this._tiles) this._removeTile(e)
                 },
                 _invalidateAll: function () {
-                    for (var e in this._levels) Z(this._levels[e].el), this._onRemoveLevel(e),
+                    for (var e in this._levels) G(this._levels[e].el), this._onRemoveLevel(e),
                         delete this._levels[e];
                     this._removeAllTiles(), this._tileZoom = void 0
                 },
@@ -34628,7 +34729,7 @@ Object.values || (Object.values = function (e) {
                 },
                 _removeTile: function (e) {
                     var t = this._tiles[e];
-                    t && (Z(t.el), delete this._tiles[e], this.fire("tileunload", {
+                    t && (G(t.el), delete this._tiles[e], this.fire("tileunload", {
                         tile: t.el,
                         coords: this._keyToTileCoords(e)
                     }))
@@ -34764,7 +34865,7 @@ Object.values || (Object.values = function (e) {
                     var e, t;
                     for (e in this._tiles) this._tiles[e].coords.z !== this._tileZoom && ((t =
                             this._tiles[e].el)
-                        .onload = s, t.onerror = s, t.complete || (t.src = ai, Z(t),
+                        .onload = s, t.onerror = s, t.complete || (t.src = ai, G(t),
                             delete this._tiles[e]))
                 },
                 _removeTile: function (e) {
@@ -34826,7 +34927,7 @@ Object.values || (Object.values = function (e) {
         fo.WMS = go, Qt.wms = function (e, t) {
             return new go(e, t)
         };
-        var vo = Gn.extend({
+        var vo = Zn.extend({
                 options: {
                     padding: .1,
                     tolerance: 0
@@ -34911,7 +35012,7 @@ Object.values || (Object.values = function (e) {
                             "2d")
                 },
                 _destroyContainer: function () {
-                    g(this._redrawRequest), delete this._ctx, Z(this._container), ft(this
+                    g(this._redrawRequest), delete this._ctx, G(this._container), ft(this
                         ._container), delete this._container
                 },
                 _updatePaths: function () {
@@ -35111,7 +35212,7 @@ Object.values || (Object.values = function (e) {
             }(),
             wo = {
                 _initContainer: function () {
-                    this._container = G("div", "leaflet-vml-container")
+                    this._container = Z("div", "leaflet-vml-container")
                 },
                 _update: function () {
                     this._map._animatingZoom || (vo.prototype._update.call(this), this.fire("update"))
@@ -35128,7 +35229,7 @@ Object.values || (Object.values = function (e) {
                 },
                 _removePath: function (e) {
                     var t = e._container;
-                    Z(t), e.removeInteractiveTarget(t), delete this._layers[n(e)]
+                    G(t), e.removeInteractiveTarget(t), delete this._layers[n(e)]
                 },
                 _updateStyle: function (e) {
                     var t = e._stroke,
@@ -35174,7 +35275,7 @@ Object.values || (Object.values = function (e) {
                         ._rootGroup)
                 },
                 _destroyContainer: function () {
-                    Z(this._container), ft(this._container), delete this._container, delete this
+                    G(this._container), ft(this._container), delete this._container, delete this
                         ._rootGroup, delete this._svgSize
                 },
                 _onZoomStart: function () {
@@ -35203,7 +35304,7 @@ Object.values || (Object.values = function (e) {
                         ._path), e.addInteractiveTarget(e._path)
                 },
                 _removePath: function (e) {
-                    Z(e._path), e.removeInteractiveTarget(e._path), delete this._layers[n(e)]
+                    G(e._path), e.removeInteractiveTarget(e._path), delete this._layers[n(e)]
                 },
                 _updatePath: function (e) {
                     e._project(), e._update()
@@ -35225,7 +35326,7 @@ Object.values || (Object.values = function (e) {
                         "fill", "none"))
                 },
                 _updatePoly: function (e, t) {
-                    this._setPath(e, I(e._parts, t))
+                    this._setPath(e, j(e._parts, t))
                 },
                 _updateCircle: function (e) {
                     var t = e._point,
@@ -35276,12 +35377,12 @@ Object.values || (Object.values = function (e) {
                     .getSouthEast()]
             }
         });
-        xo.create = ko, xo.pointsToPath = I, ao.geometryToLayer = Wt, ao.coordsToLatLng = Vt, ao
-            .coordsToLatLngs = qt, ao.latLngToCoords = Ut, ao.latLngsToCoords = Gt, ao.getFeature = Zt, ao
+        xo.create = ko, xo.pointsToPath = j, ao.geometryToLayer = Wt, ao.coordsToLatLng = Vt, ao
+            .coordsToLatLngs = qt, ao.latLngToCoords = Ut, ao.latLngsToCoords = Zt, ao.getFeature = Gt, ao
             .asFeature = Kt, zn.mergeOptions({
                 boxZoom: !0
             });
-        var zo = jn.extend({
+        var zo = In.extend({
             initialize: function (e) {
                 this._map = e, this._container = e._container, this._pane = e._panes
                     .overlayPane, this._resetStateTimeout = 0, e.on("unload", this._destroy,
@@ -35297,7 +35398,7 @@ Object.values || (Object.values = function (e) {
                 return this._moved
             },
             _destroy: function () {
-                Z(this._pane), delete this._pane
+                G(this._pane), delete this._pane
             },
             _resetState: function () {
                 this._resetStateTimeout = 0, this._moved = !1
@@ -35317,7 +35418,7 @@ Object.values || (Object.values = function (e) {
                     }, this), void 0)
             },
             _onMouseMove: function (e) {
-                this._moved || (this._moved = !0, this._box = G("div", "leaflet-zoom-box",
+                this._moved || (this._moved = !0, this._box = Z("div", "leaflet-zoom-box",
                             this._container), X(this._container, "leaflet-crosshair"), this
                         ._map.fire("boxzoomstart")), this._point = this._map
                     .mouseEventToContainerPoint(e);
@@ -35327,7 +35428,7 @@ Object.values || (Object.values = function (e) {
                     .height = i.y + "px"
             },
             _finish: function () {
-                this._moved && (Z(this._box), et(this._container, "leaflet-crosshair")), gi(),
+                this._moved && (G(this._box), et(this._container, "leaflet-crosshair")), gi(),
                     ut(), ft(document, {
                         contextmenu: xt,
                         mousemove: this._onMouseMove,
@@ -35354,7 +35455,7 @@ Object.values || (Object.values = function (e) {
         zn.addInitHook("addHandler", "boxZoom", zo), zn.mergeOptions({
             doubleClickZoom: !0
         });
-        var To = jn.extend({
+        var To = In.extend({
             addHooks: function () {
                 this._map.on("dblclick", this._onDoubleClick, this)
             },
@@ -35379,7 +35480,7 @@ Object.values || (Object.values = function (e) {
             worldCopyJump: !1,
             maxBoundsViscosity: 0
         });
-        var So = jn.extend({
+        var So = In.extend({
             addHooks: function () {
                 if (!this._draggable) {
                     var e = this._map;
@@ -35501,7 +35602,7 @@ Object.values || (Object.values = function (e) {
             keyboard: !0,
             keyboardPanDelta: 80
         });
-        var Ao = jn.extend({
+        var Ao = In.extend({
             keyCodes: {
                 left: [37],
                 right: [39],
@@ -35594,7 +35695,7 @@ Object.values || (Object.values = function (e) {
             wheelDebounceTime: 40,
             wheelPxPerZoomLevel: 60
         });
-        var Eo = jn.extend({
+        var Eo = In.extend({
             addHooks: function () {
                 _t(this._map._container, "mousewheel", this._onWheelScroll, this), this
                     ._delta = 0
@@ -35629,7 +35730,7 @@ Object.values || (Object.values = function (e) {
             tap: !0,
             tapTolerance: 15
         });
-        var Po = jn.extend({
+        var Po = In.extend({
             addHooks: function () {
                 _t(this._map._container, "touchstart", this._onDown, this)
             },
@@ -35685,7 +35786,7 @@ Object.values || (Object.values = function (e) {
             touchZoom: Ui && !Si,
             bounceAtZoomLimits: !0
         });
-        var Io = jn.extend({
+        var jo = In.extend({
             addHooks: function () {
                 X(this._map._container, "leaflet-touch-zoom"), _t(this._map._container,
                     "touchstart", this._onTouchStart, this)
@@ -35748,16 +35849,16 @@ Object.values || (Object.values = function (e) {
                         ._center, this._map._limitZoom(this._zoom))) : this._zooming = !1
             }
         });
-        zn.addInitHook("addHandler", "touchZoom", Io), zn.BoxZoom = zo, zn.DoubleClickZoom = To, zn.Drag =
-            So, zn.Keyboard = Ao, zn.ScrollWheelZoom = Eo, zn.Tap = Po, zn.TouchZoom = Io, Object.freeze =
+        zn.addInitHook("addHandler", "touchZoom", jo), zn.BoxZoom = zo, zn.DoubleClickZoom = To, zn.Drag =
+            So, zn.Keyboard = Ao, zn.ScrollWheelZoom = Eo, zn.Tap = Po, zn.TouchZoom = jo, Object.freeze =
             ei, e.version = "1.4.0+HEAD.3337f36", e.Control = Tn, e.control = Sn, e.Browser = Xi, e
-            .Evented = di, e.Mixin = Dn, e.Util = ci, e.Class = v, e.Handler = jn, e.extend = t, e.bind =
+            .Evented = di, e.Mixin = Dn, e.Util = ci, e.Class = v, e.Handler = In, e.extend = t, e.bind =
             i, e.stamp = n, e.setOptions = u, e.DomEvent = xn, e.DomUtil = bn, e.PosAnimation = Cn, e
             .Draggable = Rn, e.LineUtil = Fn, e.PolyUtil = $n, e.Point = y, e.point = w, e.Bounds = k, e
             .bounds = x, e.Transformation = A, e.transformation = E, e.Projection = Wn, e.LatLng = T, e
             .latLng = S, e.LatLngBounds = C, e.latLngBounds = z, e.CRS = pi, e.GeoJSON = ao, e.geoJSON =
-            Yt, e.geoJson = ro, e.Layer = Gn, e.LayerGroup = Zn, e.layerGroup = function (e, t) {
-                return new Zn(e, t)
+            Yt, e.geoJson = ro, e.Layer = Zn, e.LayerGroup = Gn, e.layerGroup = function (e, t) {
+                return new Gn(e, t)
             }, e.FeatureGroup = Kn, e.featureGroup = function (e) {
                 return new Kn(e)
             }, e.ImageOverlay = lo, e.imageOverlay = function (e, t, i) {
@@ -35790,9 +35891,9 @@ Object.values || (Object.values = function (e) {
             }, e.Map = zn, e.map = function (e, t) {
                 return new zn(e, t)
             };
-        var jo = window.L;
+        var Io = window.L;
         e.noConflict = function () {
-            return window.L = jo, this
+            return window.L = Io, this
         }, window.L = e
     }), ! function (e) {
         "use strict";
@@ -39586,7 +39687,7 @@ function (e) {
         i = ut(i) ? !S(e, t) : i, i ? A(e, t) : E(e, t)
     }
 
-    function I(e, t) {
+    function j(e, t) {
         if (ut(t)) {
             var i = getComputedStyle(e),
                 n = s(i.paddingLeft) + s(i.paddingRight),
@@ -39596,7 +39697,7 @@ function (e) {
         y(e, "width", t)
     }
 
-    function j(e, t) {
+    function I(e, t) {
         if (ut(t)) {
             var i = getComputedStyle(e),
                 n = s(i.paddingTop) + s(i.paddingBottom),
@@ -39689,7 +39790,7 @@ function (e) {
                 n = !H(e, !0);
             if (n && H(e.parentNode, !0)) {
                 var o = t(e),
-                    a = Z(o, e),
+                    a = G(o, e),
                     s = e;
                 W(o, s), z(a, o), z(s, o)
             }
@@ -39709,13 +39810,13 @@ function (e) {
         return e ? (t ? e.previousSibling : e.nextSibling) || U(e.parentNode, t) : null
     }
 
-    function G(e) {
+    function Z(e) {
         var t, i, n, o, a, s, r, l = y(e, "whiteSpace"),
             c = /line$/i.test(l),
             d = e.firstChild;
         if (!/pre(\-wrap)?$/i.test(l))
             for (; d;) {
-                if (s = d.nextSibling, t = d.nodeValue, i = d.nodeType, i === mt && d.firstChild && G(d),
+                if (s = d.nextSibling, t = d.nodeValue, i = d.nodeType, i === mt && d.firstChild && Z(d),
                     i === _t) {
                     for (n = U(d), o = U(d, !0), r = !1; S(o, "sceditor-ignore");) o = U(o, !0);
                     if (H(d) && o) {
@@ -39732,7 +39833,7 @@ function (e) {
             }
     }
 
-    function Z(e, t) {
+    function G(e, t) {
         var i = e.ownerDocument.createRange();
         return i.setStartBefore(e), i.setEndAfter(t), i.extractContents()
     }
@@ -40049,8 +40150,8 @@ function (e) {
     }
 
     function lt(e, t) {
-        var i, s, l, f, x, C, T, N, L, R, W, q, U, Z, Y, Q, J, et, it, ht, pt, gt, bt, yt, Ct, zt, Tt, At, Et,
-            Pt, Lt, Ot, Rt, Ft, $t, Bt, Ht, Wt, Vt, qt, Ut, Gt, Zt, Kt, Yt, Qt, Jt, Xt, ei, ti, ii, ni, oi,
+        var i, s, l, f, x, C, T, N, L, R, W, q, U, G, Y, Q, J, et, it, ht, pt, gt, bt, yt, Ct, zt, Tt, At, Et,
+            Pt, Lt, Ot, Rt, Ft, $t, Bt, Ht, Wt, Vt, qt, Ut, Zt, Gt, Kt, Yt, Qt, Jt, Xt, ei, ti, ii, ni, oi,
             ai, si, ri, li, ci, ui, di, hi, pi, mi, _i = this,
             fi = {},
             gi = [],
@@ -40069,10 +40170,10 @@ function (e) {
             i = t ? new t : {}, "init" in i && i.init.call(_i), Ot(), Wt(), Ft(), Lt(), $t(), Bt(), xt ||
                 _i.toggleSourceMode(), ti();
             var n = function () {
-                m(It, "load", n), ki.autofocus && si(), mi(), ni(), Y.call("ready"), "onReady" in i &&
+                m(jt, "load", n), ki.autofocus && si(), mi(), ni(), Y.call("ready"), "onReady" in i &&
                     i.onReady.call(_i)
             };
-            p(It, "load", n), "complete" === jt.readyState && n()
+            p(jt, "load", n), "complete" === It.readyState && n()
         }, Ot = function () {
             var e = ki.plugins;
             e = e ? e.toString()
@@ -40088,9 +40189,9 @@ function (e) {
                     frameborder: 0,
                     allowfullscreen: !0
                 }), ki.startInSourceMode ? (A(s, "sourceMode"), g(f)) : (A(s, "wysiwygMode"), g(N)), ki
-                .spellcheck || _(s, "spellcheck", "false"), "https:" === It.location.protocol && _(f,
-                    "src", "javascript:false"), d(s, f), d(s, N), _i.dimensions(ki.width || I(e), ki
-                    .height || j(e));
+                .spellcheck || _(s, "spellcheck", "false"), "https:" === jt.location.protocol && _(f,
+                    "src", "javascript:false"), d(s, f), d(s, N), _i.dimensions(ki.width || j(e), ki
+                    .height || I(e));
             var t = Mt ? "ie ie" + Mt : "";
             t += kt ? " ios" : "", T = f.contentDocument, T.open(), T.write(tt("html", {
                 attrs: ' class="' + t + '"',
@@ -40098,9 +40199,9 @@ function (e) {
                 charset: ki.charset,
                 style: ki.style
             })), T.close(), C = T.body, x = f.contentWindow, _i.readOnly(!!ki.readOnly), (kt || wt ||
-                Mt) && (j(C, "100%"), Mt || p(C, "touchend", _i.focus));
+                Mt) && (I(C, "100%"), Mt || p(C, "touchend", _i.focus));
             var i = _(e, "tabindex");
-            _(N, "tabindex", i), _(f, "tabindex", i), Z = new ot(x), g(e), _i.val(e.value);
+            _(N, "tabindex", i), _(f, "tabindex", i), G = new ot(x), g(e), _i.val(e.value);
             var n = ki.placeholder || _(e, "placeholder");
             n && (N.placeholder = n, _(C, "placeholder", n))
         }, $t = function () {
@@ -40114,10 +40215,10 @@ function (e) {
                 n = "keydown keyup keypress focus blur contextmenu",
                 o = "onselectionchange" in T ? "selectionchange" :
                 "keyup focus blur contextmenu mouseup touchend click";
-            p(jt, "click", Xt), t && (p(t, "reset", Kt), p(t, "submit", _i.updateOriginal, ft)), p(C,
-                "keypress", Zt), p(C, "keydown", Ut), p(C, "keydown", Gt), p(C, "keyup", ni), p(C,
+            p(It, "click", Xt), t && (p(t, "reset", Kt), p(t, "submit", _i.updateOriginal, ft)), p(C,
+                "keypress", Gt), p(C, "keydown", Ut), p(C, "keydown", Zt), p(C, "keyup", ni), p(C,
                 "blur", di), p(C, "keyup", hi), p(C, "paste", Vt), p(C, i, Qt), p(C, o, oi), p(C, n,
-                Jt), ki.emoticonsCompat && It.getSelection && p(C, "keyup", li), p(C, "blur",
+                Jt), ki.emoticonsCompat && jt.getSelection && p(C, "keyup", li), p(C, "blur",
                 function () {
                     _i.val() || A(C, "placeholder")
                 }), p(C, "focus", function () {
@@ -40182,13 +40283,13 @@ function (e) {
                 y = 0,
                 w = 0,
                 k = 0,
-                x = I(s),
-                C = j(s),
+                x = j(s),
+                C = I(s),
                 z = !1,
                 T = _i.rtl();
             if (e = ki.resizeMinHeight || C / 1.5, t = ki.resizeMaxHeight || 2.5 * C, i = ki
                 .resizeMinWidth || x / 1.25, n = ki.resizeMaxWidth || 1.25 * x, o = function (o) {
-                    "touchmove" === o.type ? (o = It.event, b = o.changedTouches[0].pageX, y = o
+                    "touchmove" === o.type ? (o = jt.event, b = o.changedTouches[0].pageX, y = o
                         .changedTouches[0].pageY) : (b = o.pageX, y = o.pageY);
                     var a = k + (y - f),
                         s = T ? w - (b - _) : w + (b - _);
@@ -40196,15 +40297,15 @@ function (e) {
                         0 && a > t && (a = t), e > 0 && e > a && (a = e), ki.resizeHeight || (a = !1), (
                             s || a) && _i.dimensions(s, a), o.preventDefault()
                 }, a = function (e) {
-                    z && (z = !1, g(c), E(s, "resizing"), m(jt, u, o), m(jt, h, a), e.preventDefault())
+                    z && (z = !1, g(c), E(s, "resizing"), m(It, u, o), m(It, h, a), e.preventDefault())
                 }, zt && zt.create) {
                 var S = zt.create("grip");
                 S && (d(l, S), A(l, "has-icon"))
             }
             d(s, l), d(s, c), g(c), p(l, "touchstart mousedown", function (e) {
-                "touchstart" === e.type ? (e = It.event, _ = e.touches[0].pageX, f = e.touches[0]
-                    .pageY) : (_ = e.pageX, f = e.pageY), w = I(s), k = j(s), z = !0, A(s,
-                    "resizing"), v(c), p(jt, u, o), p(jt, h, a), e.preventDefault()
+                "touchstart" === e.type ? (e = jt.event, _ = e.touches[0].pageX, f = e.touches[0]
+                    .pageY) : (_ = e.pageX, f = e.pageY), w = j(s), k = I(s), z = !0, A(s,
+                    "resizing"), v(c), p(It, u, o), p(It, h, a), e.preventDefault()
             })
         }, Wt = function () {
             var e = ki.emoticons,
@@ -40223,11 +40324,11 @@ function (e) {
                 n = !!ki.autofocusEnd;
             if (D(s)) {
                 if (_i.sourceMode()) return t = n ? N.value.length : 0, N.setSelectionRange(t, t), void 0;
-                if (G(C), n)
+                if (Z(C), n)
                     for ((i = C.lastChild) || (i = r("p", {}, T), d(C, i)); i.lastChild;) i = i.lastChild,
                         !Dt && k(i, "br") && i.previousSibling && (i = i.previousSibling);
                 e = T.createRange(), B(i) ? e.selectNodeContents(i) : (e.setStartBefore(i), n && e
-                    .setStartAfter(i)), e.collapse(!n), Z.selectRange(e), et = e, n && (C.scrollTop =
+                    .setStartAfter(i)), e.collapse(!n), G.selectRange(e), et = e, n && (C.scrollTop =
                     C.scrollHeight), _i.focus()
             }
         }, _i.readOnly = function (e) {
@@ -40243,32 +40344,32 @@ function (e) {
                 P(n, "disabled", e || !n[t])
             })
         }, _i.width = function (e, t) {
-            return e || 0 === e ? (_i.dimensions(e, null, t), _i) : I(s)
+            return e || 0 === e ? (_i.dimensions(e, null, t), _i) : j(s)
         }, _i.dimensions = function (e, t, i) {
             return e = e || 0 === e ? e : !1, t = t || 0 === t ? t : !1, e === !1 && t === !1 ? {
                 width: _i.width(),
                 height: _i.height()
-            } : (e !== !1 && (i !== !1 && (ki.width = e), I(s, e)), t !== !1 && (i !== !1 && (ki
-                .height = t), j(s, t)), _i)
+            } : (e !== !1 && (i !== !1 && (ki.width = e), j(s, e)), t !== !1 && (i !== !1 && (ki
+                .height = t), I(s, t)), _i)
         }, _i.height = function (e, t) {
-            return e || 0 === e ? (_i.dimensions(null, e, t), _i) : j(s)
+            return e || 0 === e ? (_i.dimensions(null, e, t), _i) : I(s)
         }, _i.maximize = function (e) {
             var t = "sceditor-maximize";
-            return ut(e) ? S(s, t) : (e = !!e, e && (yt = It.pageYOffset), P(jt.documentElement, t, e), P(
-                jt.body, t, e), P(s, t, e), _i.width(e ? "100%" : ki.width, !1), _i.height(e ?
-                "100%" : ki.height, !1), e || It.scrollTo(0, yt), mi(), _i)
+            return ut(e) ? S(s, t) : (e = !!e, e && (yt = jt.pageYOffset), P(It.documentElement, t, e), P(
+                It.body, t, e), P(s, t, e), _i.width(e ? "100%" : ki.width, !1), _i.height(e ?
+                "100%" : ki.height, !1), e || jt.scrollTo(0, yt), mi(), _i)
         }, mi = function () {
             ki.autoExpand && !bt && (bt = setTimeout(_i.expandToContent, 200))
         }, _i.expandToContent = function (t) {
             if (!_i.maximize()) {
                 if (clearTimeout(bt), bt = !1, !gt) {
-                    var i = ki.resizeMinHeight || ki.height || j(e);
+                    var i = ki.resizeMinHeight || ki.height || I(e);
                     gt = {
                         min: i,
                         max: ki.resizeMaxHeight || 2 * i
                     }
                 }
-                var n = jt.createRange();
+                var n = It.createRange();
                 n.selectNodeContents(C);
                 var o = n.getBoundingClientRect(),
                     a = T.documentElement.clientHeight - 1,
@@ -40278,7 +40379,7 @@ function (e) {
             }
         }, _i.destroy = function () {
             if (Y) {
-                Y.destroy(), Z = null, R = null, Y = null, L && u(L), m(jt, "click", Xt);
+                Y.destroy(), G = null, R = null, Y = null, L && u(L), m(It, "click", Xt);
                 var t = e.form;
                 t && (m(t, "reset", Kt), m(t, "submit", _i.updateOriginal)), u(N), u(l), u(s), delete e
                     ._sceditor, v(e), e.required = ht
@@ -40322,16 +40423,16 @@ function (e) {
                     r = n.items;
                 e.preventDefault();
                 for (var l = 0; l < s.length; l++) {
-                    if (It.FileReader && r && Nt.test(r[l].type)) return o(n.items[l].getAsFile());
+                    if (jt.FileReader && r && Nt.test(r[l].type)) return o(n.items[l].getAsFile());
                     a[s[l]] = n.getData(s[l])
                 }
                 a.text = a["text/plain"], a.html = a["text/html"], qt(a)
             } else if (!Ct) {
                 var c = i.scrollTop;
-                for (Z.saveRange(), Ct = jt.createDocumentFragment(); i.firstChild;) d(Ct, i.firstChild);
+                for (G.saveRange(), Ct = It.createDocumentFragment(); i.firstChild;) d(Ct, i.firstChild);
                 setTimeout(function () {
                     var e = i.innerHTML;
-                    i.innerHTML = "", d(i, Ct), i.scrollTop = c, Ct = !1, Z.restoreRange(), qt({
+                    i.innerHTML = "", d(i, Ct), i.scrollTop = c, Ct = !1, G.restoreRange(), qt({
                         html: e
                     })
                 }, 0)
@@ -40349,11 +40450,11 @@ function (e) {
         }, _i.closeDropDown = function (e) {
             L && (u(L), L = null), e === !0 && _i.focus()
         }, _i.wysiwygEditorInsertHtml = function (e, t, i) {
-            var n, o, a, s = j(f);
-            _i.focus(), (i || !c(J, "code")) && (Z.insertHTML(e, t), Z.saveRange(), At(), n = h(C,
+            var n, o, a, s = I(f);
+            _i.focus(), (i || !c(J, "code")) && (G.insertHTML(e, t), G.saveRange(), At(), n = h(C,
                     "#sceditor-end-marker")[0], v(n), o = C.scrollTop, a = K(n)
                 .top + 1.5 * n.offsetHeight - s, g(n), (a > o || o > a + s) && (C.scrollTop = a), ui(!
-                    1), Z.restoreRange(), ni())
+                    1), G.restoreRange(), ni())
         }, _i.wysiwygEditorInsertText = function (e, t) {
             _i.wysiwygEditorInsertHtml(X(e), X(t))
         }, _i.insertText = function (e, t) {
@@ -40366,7 +40467,7 @@ function (e) {
                 .substring(0, o) + e + n.substring(a, n.length), N.selectionStart = o + e.length - (t ? t
                     .length : 0), N.selectionEnd = N.selectionStart, N.scrollTop = i, N.focus(), ui()
         }, _i.getRangeHelper = function () {
-            return Z
+            return G
         }, _i.sourceEditorCaret = function (e) {
             return N.focus(), e ? (N.selectionStart = e.start, N.selectionEnd = e.end, this) : {
                 start: N.selectionStart,
@@ -40379,7 +40480,7 @@ function (e) {
         }, _i.insert = function (e, t, n, o, a) {
             if (_i.inSourceMode()) return _i.sourceEditorInsertText(e, t), _i;
             if (t) {
-                var s = Z.selectedHtml();
+                var s = G.selectedHtml();
                 n !== !1 && "fragmentToSource" in i && (s = i.fragmentToSource(s, T, Q)), e += s + t
             }
             return n !== !1 && "fragmentToHtml" in i && (e = i.fragmentToHtml(e, Q)), n !== !1 && a === !
@@ -40413,7 +40514,7 @@ function (e) {
             return "boolean" != typeof e ? t : ((t && !e || !t && e) && _i.toggleSourceMode(), _i)
         }, _i.toggleSourceMode = function () {
             var e = _i.inSourceMode();
-            (xt || !e) && (e || (Z.saveRange(), Z.clear()), _i.blur(), e ? _i.setWysiwygEditorValue(_i
+            (xt || !e) && (e || (G.saveRange(), G.clear()), _i.blur(), e ? _i.setWysiwygEditorValue(_i
                     .getSourceEditorValue()) : _i.setSourceEditorValue(_i.getWysiwygEditorValue()), R =
                 null, b(N), b(f), P(s, "wysiwygMode", e), P(s, "sourceMode", !e), ei(), ti())
         }, ii = function () {
@@ -40424,11 +40525,11 @@ function (e) {
                 _i, e) : _i.execCommand(t.exec, t.hasOwnProperty("execParam") ? t.execParam :
                 null))
         }, Pt = function () {
-            Mt && (R = Z.selectedRange())
+            Mt && (R = G.selectedRange())
         }, _i.execCommand = function (e, t) {
             var i = !1,
                 n = _i.commands[e];
-            if (_i.focus(), !c(Z.parentNode(), "code")) {
+            if (_i.focus(), !c(G.parentNode(), "code")) {
                 try {
                     i = T.execCommand(e, !1, t)
                 } catch (o) {}!i && n && n.errorMessage && alert(_i._(n.errorMessage)), ti()
@@ -40437,13 +40538,13 @@ function (e) {
             function e() {
                 if (x.getSelection() && x.getSelection()
                     .rangeCount <= 0) et = null;
-                else if (Z && !Z.compare(et)) {
-                    if (et = Z.cloneSelected(), et && et.collapsed) {
+                else if (G && !G.compare(et)) {
+                    if (et = G.cloneSelected(), et && et.collapsed) {
                         var e = et.startContainer,
                             t = et.startOffset;
                         for (t && e.nodeType !== _t && (e = e.childNodes[t]); e && e.parentNode !== C;)
                             e = e.parentNode;
-                        e && H(e, !0) && (Z.saveRange(), rt(C, T), Z.restoreRange())
+                        e && H(e, !0) && (G.saveRange(), rt(C, T), G.restoreRange())
                     }
                     M(s, "selectionchanged")
                 }
@@ -40451,8 +40552,8 @@ function (e) {
             }
             it || (it = !0, "onselectionchange" in T ? e() : setTimeout(e, 100))
         }, ai = function () {
-            var e, t = Z.parentNode();
-            Q !== t && (e = Q, Q = t, J = Z.getFirstBlockParent(t), M(s, "nodechanged", {
+            var e, t = G.parentNode();
+            Q !== t && (e = Q, Q = t, J = G.getFirstBlockParent(t), M(s, "nodechanged", {
                 oldNode: e,
                 newNode: Q
             }))
@@ -40467,7 +40568,7 @@ function (e) {
             if (_i.readOnly()) return a(h(l, i), function (e, t) {
                 E(t, i)
             }), void 0;
-            o || (t = Z.parentNode(), e = Z.getFirstBlockParent(t));
+            o || (t = G.parentNode(), e = G.getFirstBlockParent(t));
             for (var s = 0; s < vi.length; s++) {
                 var r = 0,
                     c = yi[vi[s].name],
@@ -40482,17 +40583,17 @@ function (e) {
                 P(c, "disabled", d || 0 > r), P(c, i, r > 0)
             }
             zt && zt.update && zt.update(o, t, e)
-        }, Zt = function (e) {
+        }, Gt = function (e) {
             if (!e.defaultPrevented && (_i.closeDropDown(), 13 === e.which)) {
                 var t = "li,ul,ol";
                 if (!k(J, t) && F(J)) {
                     R = null;
                     var i = r("br", {}, T);
-                    if (Z.insertNode(i), !Dt) {
+                    if (G.insertNode(i), !Dt) {
                         var n = i.parentNode,
                             o = n.lastChild;
                         o && o.nodeType === _t && "" === o.nodeValue && (u(o), o = n.lastChild), !H(n, !
-                            0) && o === i && H(i.previousSibling) && Z.insertHTML("<br>")
+                            0) && o === i && H(i.previousSibling) && G.insertHTML("<br>")
                     }
                     e.preventDefault()
                 }
@@ -40544,11 +40645,11 @@ function (e) {
             else {
                 if (h(T, ":focus")
                     .length) return;
-                var n, o = Z.selectedRange();
+                var n, o = G.selectedRange();
                 et || si(), !Dt && o && 1 === o.endOffset && o.collapsed && (n = o.endContainer, n &&
                     1 === n.childNodes.length && k(n.firstChild, "br") && (o.setStartBefore(n
-                        .firstChild), o.collapse(!0), Z.selectRange(o))), x.focus(), C.focus(), R && (
-                    Z.selectRange(R), R = null)
+                        .firstChild), o.collapse(!0), G.selectRange(o))), x.focus(), C.focus(), R && (
+                    G.selectRange(R), R = null)
             }
             return ti(), _i
         }, _i.keyDown = function (e, t, i) {
@@ -40571,15 +40672,15 @@ function (e) {
                     n[i++] = [e, t]
                 }), n.sort(function (e, t) {
                     return e[0].length - t[0].length
-                }), _i.emoticonsCache = n, _i.longestEmoticonCode = n[n.length - 1][0].length), t = Z
+                }), _i.emoticonsCache = n, _i.longestEmoticonCode = n[n.length - 1][0].length), t = G
                 .replaceKeyword(_i.emoticonsCache, !0, !0, _i.longestEmoticonCode, ki.emoticonsCompat,
                     o), t && (ki.emoticonsCompat && /^\s$/.test(o) || e.preventDefault()))
         }, li = function () {
-            at(J, Z)
+            at(J, G)
         }, _i.emoticons = function (e) {
             if (!e && e !== !1) return ki.emoticonsEnabled;
-            if (ki.emoticonsEnabled = e, e) p(C, "keypress", ri), _i.sourceMode() || (Z.saveRange(), At(),
-                ui(!1), Z.restoreRange());
+            if (ki.emoticonsEnabled = e, e) p(C, "keypress", ri), _i.sourceMode() || (G.saveRange(), At(),
+                ui(!1), G.restoreRange());
             else {
                 var t = h(C, "img[data-sceditor-emoticon]");
                 a(t, function (e, t) {
@@ -40709,9 +40810,9 @@ function (e) {
             } : t, _i
         }, _i.removeShortcut = function (e) {
             return delete bi[e.toLowerCase()], _i
-        }, Gt = function (e) {
+        }, Zt = function (e) {
             var t, i, n, o;
-            if (!ki.disableBlockRemove && 8 === e.which && (n = Z.selectedRange()) && (t = n
+            if (!ki.disableBlockRemove && 8 === e.which && (n = G.selectedRange()) && (t = n
                     .startContainer, i = n.startOffset, 0 === i && (o = ci()) && !k(o, "body"))) {
                 for (; t !== o;) {
                     for (; t.previousSibling;)
@@ -40725,17 +40826,17 @@ function (e) {
                 if (!(e = e.parentNode) || k(e, "body")) return;
             return e
         }, _i.clearBlockFormatting = function (e) {
-            return e = e || ci(), !e || k(e, "body") ? _i : (Z.saveRange(), e.className = "", R = null, _(
-                e, "style", ""), k(e, "p,div,td") || $(e, "p"), Z.restoreRange(), _i)
+            return e = e || ci(), !e || k(e, "body") ? _i : (G.saveRange(), e.className = "", R = null, _(
+                e, "style", ""), k(e, "p,div,td") || $(e, "p"), G.restoreRange(), _i)
         }, ui = function (e) {
             if (Y && (Y.hasHandler("valuechangedEvent") || ui.hasHandler)) {
                 var t, i = _i.sourceMode(),
-                    n = !i && Z.hasSelection();
+                    n = !i && G.hasSelection();
                 W = !1, e = e !== !1 && !T.getElementById("sceditor-start-marker"), q && (clearTimeout(q),
-                        q = !1), n && e && Z.saveRange(), t = i ? N.value : C.innerHTML, t !== ui
+                        q = !1), n && e && G.saveRange(), t = i ? N.value : C.innerHTML, t !== ui
                     .lastVal && (ui.lastVal = t, M(s, "valuechanged", {
                         rawValue: i ? _i.val() : t
-                    })), n && e && Z.removeMarkers()
+                    })), n && e && G.removeMarkers()
             }
         }, di = function () {
             q && ui()
@@ -41394,8 +41495,8 @@ function (e) {
                 text: l
             }
         },
-        It = window,
-        jt = document,
+        jt = window,
+        It = document,
         Mt = yt,
         Dt = Mt && 11 > Mt,
         Nt = /^image\/(p?jpe?g|gif|png|bmp)$/i;
@@ -41440,8 +41541,8 @@ function (e) {
                 removeAttr: f,
                 is: k,
                 closest: c,
-                width: I,
-                height: j,
+                width: j,
+                height: I,
                 traverse: L,
                 rTraverse: O,
                 parseHTML: R,
@@ -41454,8 +41555,8 @@ function (e) {
                 fixNesting: V,
                 findCommonAncestor: q,
                 getSibling: U,
-                removeWhiteSpace: G,
-                extractContents: Z,
+                removeWhiteSpace: Z,
+                extractContents: G,
                 getOffset: K,
                 getStyle: Y,
                 hasStyle: Q
@@ -41682,7 +41783,7 @@ function (e) {
         i = ut(i) ? !S(e, t) : i, i ? A(e, t) : E(e, t)
     }
 
-    function I(e, t) {
+    function j(e, t) {
         if (ut(t)) {
             var i = getComputedStyle(e),
                 n = s(i.paddingLeft) + s(i.paddingRight),
@@ -41692,7 +41793,7 @@ function (e) {
         y(e, "width", t)
     }
 
-    function j(e, t) {
+    function I(e, t) {
         if (ut(t)) {
             var i = getComputedStyle(e),
                 n = s(i.paddingTop) + s(i.paddingBottom),
@@ -41785,7 +41886,7 @@ function (e) {
                 n = !H(e, !0);
             if (n && H(e.parentNode, !0)) {
                 var o = t(e),
-                    a = Z(o, e),
+                    a = G(o, e),
                     s = e;
                 W(o, s), z(a, o), z(s, o)
             }
@@ -41805,13 +41906,13 @@ function (e) {
         return e ? (t ? e.previousSibling : e.nextSibling) || U(e.parentNode, t) : null
     }
 
-    function G(e) {
+    function Z(e) {
         var t, i, n, o, a, s, r, l = y(e, "whiteSpace"),
             c = /line$/i.test(l),
             d = e.firstChild;
         if (!/pre(\-wrap)?$/i.test(l))
             for (; d;) {
-                if (s = d.nextSibling, t = d.nodeValue, i = d.nodeType, i === mt && d.firstChild && G(d),
+                if (s = d.nextSibling, t = d.nodeValue, i = d.nodeType, i === mt && d.firstChild && Z(d),
                     i === _t) {
                     for (n = U(d), o = U(d, !0), r = !1; S(o, "sceditor-ignore");) o = U(o, !0);
                     if (H(d) && o) {
@@ -41828,7 +41929,7 @@ function (e) {
             }
     }
 
-    function Z(e, t) {
+    function G(e, t) {
         var i = e.ownerDocument.createRange();
         return i.setStartBefore(e), i.setEndAfter(t), i.extractContents()
     }
@@ -42145,8 +42246,8 @@ function (e) {
     }
 
     function lt(e, t) {
-        var i, s, l, f, x, C, T, N, L, R, W, q, U, Z, Y, Q, J, et, it, ht, pt, gt, bt, yt, Ct, zt, Tt, At, Et,
-            Pt, Lt, Ot, Rt, Ft, $t, Bt, Ht, Wt, Vt, qt, Ut, Gt, Zt, Kt, Yt, Qt, Jt, Xt, ei, ti, ii, ni, oi,
+        var i, s, l, f, x, C, T, N, L, R, W, q, U, G, Y, Q, J, et, it, ht, pt, gt, bt, yt, Ct, zt, Tt, At, Et,
+            Pt, Lt, Ot, Rt, Ft, $t, Bt, Ht, Wt, Vt, qt, Ut, Zt, Gt, Kt, Yt, Qt, Jt, Xt, ei, ti, ii, ni, oi,
             ai, si, ri, li, ci, ui, di, hi, pi, mi, _i = this,
             fi = {},
             gi = [],
@@ -42165,10 +42266,10 @@ function (e) {
             i = t ? new t : {}, "init" in i && i.init.call(_i), Ot(), Wt(), Ft(), Lt(), $t(), Bt(), xt ||
                 _i.toggleSourceMode(), ti();
             var n = function () {
-                m(It, "load", n), ki.autofocus && si(), mi(), ni(), Y.call("ready"), "onReady" in i &&
+                m(jt, "load", n), ki.autofocus && si(), mi(), ni(), Y.call("ready"), "onReady" in i &&
                     i.onReady.call(_i)
             };
-            p(It, "load", n), "complete" === jt.readyState && n()
+            p(jt, "load", n), "complete" === It.readyState && n()
         }, Ot = function () {
             var e = ki.plugins;
             e = e ? e.toString()
@@ -42184,9 +42285,9 @@ function (e) {
                     frameborder: 0,
                     allowfullscreen: !0
                 }), ki.startInSourceMode ? (A(s, "sourceMode"), g(f)) : (A(s, "wysiwygMode"), g(N)), ki
-                .spellcheck || _(s, "spellcheck", "false"), "https:" === It.location.protocol && _(f,
-                    "src", "javascript:false"), d(s, f), d(s, N), _i.dimensions(ki.width || I(e), ki
-                    .height || j(e));
+                .spellcheck || _(s, "spellcheck", "false"), "https:" === jt.location.protocol && _(f,
+                    "src", "javascript:false"), d(s, f), d(s, N), _i.dimensions(ki.width || j(e), ki
+                    .height || I(e));
             var t = Mt ? "ie ie" + Mt : "";
             t += kt ? " ios" : "", T = f.contentDocument, T.open(), T.write(tt("html", {
                 attrs: ' class="' + t + '"',
@@ -42194,9 +42295,9 @@ function (e) {
                 charset: ki.charset,
                 style: ki.style
             })), T.close(), C = T.body, x = f.contentWindow, _i.readOnly(!!ki.readOnly), (kt || wt ||
-                Mt) && (j(C, "100%"), Mt || p(C, "touchend", _i.focus));
+                Mt) && (I(C, "100%"), Mt || p(C, "touchend", _i.focus));
             var i = _(e, "tabindex");
-            _(N, "tabindex", i), _(f, "tabindex", i), Z = new ot(x), g(e), _i.val(e.value);
+            _(N, "tabindex", i), _(f, "tabindex", i), G = new ot(x), g(e), _i.val(e.value);
             var n = ki.placeholder || _(e, "placeholder");
             n && (N.placeholder = n, _(C, "placeholder", n))
         }, $t = function () {
@@ -42210,10 +42311,10 @@ function (e) {
                 n = "keydown keyup keypress focus blur contextmenu",
                 o = "onselectionchange" in T ? "selectionchange" :
                 "keyup focus blur contextmenu mouseup touchend click";
-            p(jt, "click", Xt), t && (p(t, "reset", Kt), p(t, "submit", _i.updateOriginal, ft)), p(C,
-                "keypress", Zt), p(C, "keydown", Ut), p(C, "keydown", Gt), p(C, "keyup", ni), p(C,
+            p(It, "click", Xt), t && (p(t, "reset", Kt), p(t, "submit", _i.updateOriginal, ft)), p(C,
+                "keypress", Gt), p(C, "keydown", Ut), p(C, "keydown", Zt), p(C, "keyup", ni), p(C,
                 "blur", di), p(C, "keyup", hi), p(C, "paste", Vt), p(C, i, Qt), p(C, o, oi), p(C, n,
-                Jt), ki.emoticonsCompat && It.getSelection && p(C, "keyup", li), p(C, "blur",
+                Jt), ki.emoticonsCompat && jt.getSelection && p(C, "keyup", li), p(C, "blur",
                 function () {
                     _i.val() || A(C, "placeholder")
                 }), p(C, "focus", function () {
@@ -42278,13 +42379,13 @@ function (e) {
                 y = 0,
                 w = 0,
                 k = 0,
-                x = I(s),
-                C = j(s),
+                x = j(s),
+                C = I(s),
                 z = !1,
                 T = _i.rtl();
             if (e = ki.resizeMinHeight || C / 1.5, t = ki.resizeMaxHeight || 2.5 * C, i = ki
                 .resizeMinWidth || x / 1.25, n = ki.resizeMaxWidth || 1.25 * x, o = function (o) {
-                    "touchmove" === o.type ? (o = It.event, b = o.changedTouches[0].pageX, y = o
+                    "touchmove" === o.type ? (o = jt.event, b = o.changedTouches[0].pageX, y = o
                         .changedTouches[0].pageY) : (b = o.pageX, y = o.pageY);
                     var a = k + (y - f),
                         s = T ? w - (b - _) : w + (b - _);
@@ -42292,15 +42393,15 @@ function (e) {
                         0 && a > t && (a = t), e > 0 && e > a && (a = e), ki.resizeHeight || (a = !1), (
                             s || a) && _i.dimensions(s, a), o.preventDefault()
                 }, a = function (e) {
-                    z && (z = !1, g(c), E(s, "resizing"), m(jt, u, o), m(jt, h, a), e.preventDefault())
+                    z && (z = !1, g(c), E(s, "resizing"), m(It, u, o), m(It, h, a), e.preventDefault())
                 }, zt && zt.create) {
                 var S = zt.create("grip");
                 S && (d(l, S), A(l, "has-icon"))
             }
             d(s, l), d(s, c), g(c), p(l, "touchstart mousedown", function (e) {
-                "touchstart" === e.type ? (e = It.event, _ = e.touches[0].pageX, f = e.touches[0]
-                    .pageY) : (_ = e.pageX, f = e.pageY), w = I(s), k = j(s), z = !0, A(s,
-                    "resizing"), v(c), p(jt, u, o), p(jt, h, a), e.preventDefault()
+                "touchstart" === e.type ? (e = jt.event, _ = e.touches[0].pageX, f = e.touches[0]
+                    .pageY) : (_ = e.pageX, f = e.pageY), w = j(s), k = I(s), z = !0, A(s,
+                    "resizing"), v(c), p(It, u, o), p(It, h, a), e.preventDefault()
             })
         }, Wt = function () {
             var e = ki.emoticons,
@@ -42319,11 +42420,11 @@ function (e) {
                 n = !!ki.autofocusEnd;
             if (D(s)) {
                 if (_i.sourceMode()) return t = n ? N.value.length : 0, N.setSelectionRange(t, t), void 0;
-                if (G(C), n)
+                if (Z(C), n)
                     for ((i = C.lastChild) || (i = r("p", {}, T), d(C, i)); i.lastChild;) i = i.lastChild,
                         !Dt && k(i, "br") && i.previousSibling && (i = i.previousSibling);
                 e = T.createRange(), B(i) ? e.selectNodeContents(i) : (e.setStartBefore(i), n && e
-                    .setStartAfter(i)), e.collapse(!n), Z.selectRange(e), et = e, n && (C.scrollTop =
+                    .setStartAfter(i)), e.collapse(!n), G.selectRange(e), et = e, n && (C.scrollTop =
                     C.scrollHeight), _i.focus()
             }
         }, _i.readOnly = function (e) {
@@ -42339,32 +42440,32 @@ function (e) {
                 P(n, "disabled", e || !n[t])
             })
         }, _i.width = function (e, t) {
-            return e || 0 === e ? (_i.dimensions(e, null, t), _i) : I(s)
+            return e || 0 === e ? (_i.dimensions(e, null, t), _i) : j(s)
         }, _i.dimensions = function (e, t, i) {
             return e = e || 0 === e ? e : !1, t = t || 0 === t ? t : !1, e === !1 && t === !1 ? {
                 width: _i.width(),
                 height: _i.height()
-            } : (e !== !1 && (i !== !1 && (ki.width = e), I(s, e)), t !== !1 && (i !== !1 && (ki
-                .height = t), j(s, t)), _i)
+            } : (e !== !1 && (i !== !1 && (ki.width = e), j(s, e)), t !== !1 && (i !== !1 && (ki
+                .height = t), I(s, t)), _i)
         }, _i.height = function (e, t) {
-            return e || 0 === e ? (_i.dimensions(null, e, t), _i) : j(s)
+            return e || 0 === e ? (_i.dimensions(null, e, t), _i) : I(s)
         }, _i.maximize = function (e) {
             var t = "sceditor-maximize";
-            return ut(e) ? S(s, t) : (e = !!e, e && (yt = It.pageYOffset), P(jt.documentElement, t, e), P(
-                jt.body, t, e), P(s, t, e), _i.width(e ? "100%" : ki.width, !1), _i.height(e ?
-                "100%" : ki.height, !1), e || It.scrollTo(0, yt), mi(), _i)
+            return ut(e) ? S(s, t) : (e = !!e, e && (yt = jt.pageYOffset), P(It.documentElement, t, e), P(
+                It.body, t, e), P(s, t, e), _i.width(e ? "100%" : ki.width, !1), _i.height(e ?
+                "100%" : ki.height, !1), e || jt.scrollTo(0, yt), mi(), _i)
         }, mi = function () {
             ki.autoExpand && !bt && (bt = setTimeout(_i.expandToContent, 200))
         }, _i.expandToContent = function (t) {
             if (!_i.maximize()) {
                 if (clearTimeout(bt), bt = !1, !gt) {
-                    var i = ki.resizeMinHeight || ki.height || j(e);
+                    var i = ki.resizeMinHeight || ki.height || I(e);
                     gt = {
                         min: i,
                         max: ki.resizeMaxHeight || 2 * i
                     }
                 }
-                var n = jt.createRange();
+                var n = It.createRange();
                 n.selectNodeContents(C);
                 var o = n.getBoundingClientRect(),
                     a = T.documentElement.clientHeight - 1,
@@ -42374,7 +42475,7 @@ function (e) {
             }
         }, _i.destroy = function () {
             if (Y) {
-                Y.destroy(), Z = null, R = null, Y = null, L && u(L), m(jt, "click", Xt);
+                Y.destroy(), G = null, R = null, Y = null, L && u(L), m(It, "click", Xt);
                 var t = e.form;
                 t && (m(t, "reset", Kt), m(t, "submit", _i.updateOriginal)), u(N), u(l), u(s), delete e
                     ._sceditor, v(e), e.required = ht
@@ -42418,16 +42519,16 @@ function (e) {
                     r = n.items;
                 e.preventDefault();
                 for (var l = 0; l < s.length; l++) {
-                    if (It.FileReader && r && Nt.test(r[l].type)) return o(n.items[l].getAsFile());
+                    if (jt.FileReader && r && Nt.test(r[l].type)) return o(n.items[l].getAsFile());
                     a[s[l]] = n.getData(s[l])
                 }
                 a.text = a["text/plain"], a.html = a["text/html"], qt(a)
             } else if (!Ct) {
                 var c = i.scrollTop;
-                for (Z.saveRange(), Ct = jt.createDocumentFragment(); i.firstChild;) d(Ct, i.firstChild);
+                for (G.saveRange(), Ct = It.createDocumentFragment(); i.firstChild;) d(Ct, i.firstChild);
                 setTimeout(function () {
                     var e = i.innerHTML;
-                    i.innerHTML = "", d(i, Ct), i.scrollTop = c, Ct = !1, Z.restoreRange(), qt({
+                    i.innerHTML = "", d(i, Ct), i.scrollTop = c, Ct = !1, G.restoreRange(), qt({
                         html: e
                     })
                 }, 0)
@@ -42445,11 +42546,11 @@ function (e) {
         }, _i.closeDropDown = function (e) {
             L && (u(L), L = null), e === !0 && _i.focus()
         }, _i.wysiwygEditorInsertHtml = function (e, t, i) {
-            var n, o, a, s = j(f);
-            _i.focus(), (i || !c(J, "code")) && (Z.insertHTML(e, t), Z.saveRange(), At(), n = h(C,
+            var n, o, a, s = I(f);
+            _i.focus(), (i || !c(J, "code")) && (G.insertHTML(e, t), G.saveRange(), At(), n = h(C,
                     "#sceditor-end-marker")[0], v(n), o = C.scrollTop, a = K(n)
                 .top + 1.5 * n.offsetHeight - s, g(n), (a > o || o > a + s) && (C.scrollTop = a), ui(!
-                    1), Z.restoreRange(), ni())
+                    1), G.restoreRange(), ni())
         }, _i.wysiwygEditorInsertText = function (e, t) {
             _i.wysiwygEditorInsertHtml(X(e), X(t))
         }, _i.insertText = function (e, t) {
@@ -42462,7 +42563,7 @@ function (e) {
                 .substring(0, o) + e + n.substring(a, n.length), N.selectionStart = o + e.length - (t ? t
                     .length : 0), N.selectionEnd = N.selectionStart, N.scrollTop = i, N.focus(), ui()
         }, _i.getRangeHelper = function () {
-            return Z
+            return G
         }, _i.sourceEditorCaret = function (e) {
             return N.focus(), e ? (N.selectionStart = e.start, N.selectionEnd = e.end, this) : {
                 start: N.selectionStart,
@@ -42475,7 +42576,7 @@ function (e) {
         }, _i.insert = function (e, t, n, o, a) {
             if (_i.inSourceMode()) return _i.sourceEditorInsertText(e, t), _i;
             if (t) {
-                var s = Z.selectedHtml();
+                var s = G.selectedHtml();
                 n !== !1 && "fragmentToSource" in i && (s = i.fragmentToSource(s, T, Q)), e += s + t
             }
             return n !== !1 && "fragmentToHtml" in i && (e = i.fragmentToHtml(e, Q)), n !== !1 && a === !
@@ -42509,7 +42610,7 @@ function (e) {
             return "boolean" != typeof e ? t : ((t && !e || !t && e) && _i.toggleSourceMode(), _i)
         }, _i.toggleSourceMode = function () {
             var e = _i.inSourceMode();
-            (xt || !e) && (e || (Z.saveRange(), Z.clear()), _i.blur(), e ? _i.setWysiwygEditorValue(_i
+            (xt || !e) && (e || (G.saveRange(), G.clear()), _i.blur(), e ? _i.setWysiwygEditorValue(_i
                     .getSourceEditorValue()) : _i.setSourceEditorValue(_i.getWysiwygEditorValue()), R =
                 null, b(N), b(f), P(s, "wysiwygMode", e), P(s, "sourceMode", !e), ei(), ti())
         }, ii = function () {
@@ -42520,11 +42621,11 @@ function (e) {
                 _i, e) : _i.execCommand(t.exec, t.hasOwnProperty("execParam") ? t.execParam :
                 null))
         }, Pt = function () {
-            Mt && (R = Z.selectedRange())
+            Mt && (R = G.selectedRange())
         }, _i.execCommand = function (e, t) {
             var i = !1,
                 n = _i.commands[e];
-            if (_i.focus(), !c(Z.parentNode(), "code")) {
+            if (_i.focus(), !c(G.parentNode(), "code")) {
                 try {
                     i = T.execCommand(e, !1, t)
                 } catch (o) {}!i && n && n.errorMessage && alert(_i._(n.errorMessage)), ti()
@@ -42533,13 +42634,13 @@ function (e) {
             function e() {
                 if (x.getSelection() && x.getSelection()
                     .rangeCount <= 0) et = null;
-                else if (Z && !Z.compare(et)) {
-                    if (et = Z.cloneSelected(), et && et.collapsed) {
+                else if (G && !G.compare(et)) {
+                    if (et = G.cloneSelected(), et && et.collapsed) {
                         var e = et.startContainer,
                             t = et.startOffset;
                         for (t && e.nodeType !== _t && (e = e.childNodes[t]); e && e.parentNode !== C;)
                             e = e.parentNode;
-                        e && H(e, !0) && (Z.saveRange(), rt(C, T), Z.restoreRange())
+                        e && H(e, !0) && (G.saveRange(), rt(C, T), G.restoreRange())
                     }
                     M(s, "selectionchanged")
                 }
@@ -42547,8 +42648,8 @@ function (e) {
             }
             it || (it = !0, "onselectionchange" in T ? e() : setTimeout(e, 100))
         }, ai = function () {
-            var e, t = Z.parentNode();
-            Q !== t && (e = Q, Q = t, J = Z.getFirstBlockParent(t), M(s, "nodechanged", {
+            var e, t = G.parentNode();
+            Q !== t && (e = Q, Q = t, J = G.getFirstBlockParent(t), M(s, "nodechanged", {
                 oldNode: e,
                 newNode: Q
             }))
@@ -42563,7 +42664,7 @@ function (e) {
             if (_i.readOnly()) return a(h(l, i), function (e, t) {
                 E(t, i)
             }), void 0;
-            o || (t = Z.parentNode(), e = Z.getFirstBlockParent(t));
+            o || (t = G.parentNode(), e = G.getFirstBlockParent(t));
             for (var s = 0; s < vi.length; s++) {
                 var r = 0,
                     c = yi[vi[s].name],
@@ -42578,17 +42679,17 @@ function (e) {
                 P(c, "disabled", d || 0 > r), P(c, i, r > 0)
             }
             zt && zt.update && zt.update(o, t, e)
-        }, Zt = function (e) {
+        }, Gt = function (e) {
             if (!e.defaultPrevented && (_i.closeDropDown(), 13 === e.which)) {
                 var t = "li,ul,ol";
                 if (!k(J, t) && F(J)) {
                     R = null;
                     var i = r("br", {}, T);
-                    if (Z.insertNode(i), !Dt) {
+                    if (G.insertNode(i), !Dt) {
                         var n = i.parentNode,
                             o = n.lastChild;
                         o && o.nodeType === _t && "" === o.nodeValue && (u(o), o = n.lastChild), !H(n, !
-                            0) && o === i && H(i.previousSibling) && Z.insertHTML("<br>")
+                            0) && o === i && H(i.previousSibling) && G.insertHTML("<br>")
                     }
                     e.preventDefault()
                 }
@@ -42640,11 +42741,11 @@ function (e) {
             else {
                 if (h(T, ":focus")
                     .length) return;
-                var n, o = Z.selectedRange();
+                var n, o = G.selectedRange();
                 et || si(), !Dt && o && 1 === o.endOffset && o.collapsed && (n = o.endContainer, n &&
                     1 === n.childNodes.length && k(n.firstChild, "br") && (o.setStartBefore(n
-                        .firstChild), o.collapse(!0), Z.selectRange(o))), x.focus(), C.focus(), R && (
-                    Z.selectRange(R), R = null)
+                        .firstChild), o.collapse(!0), G.selectRange(o))), x.focus(), C.focus(), R && (
+                    G.selectRange(R), R = null)
             }
             return ti(), _i
         }, _i.keyDown = function (e, t, i) {
@@ -42667,15 +42768,15 @@ function (e) {
                     n[i++] = [e, t]
                 }), n.sort(function (e, t) {
                     return e[0].length - t[0].length
-                }), _i.emoticonsCache = n, _i.longestEmoticonCode = n[n.length - 1][0].length), t = Z
+                }), _i.emoticonsCache = n, _i.longestEmoticonCode = n[n.length - 1][0].length), t = G
                 .replaceKeyword(_i.emoticonsCache, !0, !0, _i.longestEmoticonCode, ki.emoticonsCompat,
                     o), t && (ki.emoticonsCompat && /^\s$/.test(o) || e.preventDefault()))
         }, li = function () {
-            at(J, Z)
+            at(J, G)
         }, _i.emoticons = function (e) {
             if (!e && e !== !1) return ki.emoticonsEnabled;
-            if (ki.emoticonsEnabled = e, e) p(C, "keypress", ri), _i.sourceMode() || (Z.saveRange(), At(),
-                ui(!1), Z.restoreRange());
+            if (ki.emoticonsEnabled = e, e) p(C, "keypress", ri), _i.sourceMode() || (G.saveRange(), At(),
+                ui(!1), G.restoreRange());
             else {
                 var t = h(C, "img[data-sceditor-emoticon]");
                 a(t, function (e, t) {
@@ -42805,9 +42906,9 @@ function (e) {
             } : t, _i
         }, _i.removeShortcut = function (e) {
             return delete bi[e.toLowerCase()], _i
-        }, Gt = function (e) {
+        }, Zt = function (e) {
             var t, i, n, o;
-            if (!ki.disableBlockRemove && 8 === e.which && (n = Z.selectedRange()) && (t = n
+            if (!ki.disableBlockRemove && 8 === e.which && (n = G.selectedRange()) && (t = n
                     .startContainer, i = n.startOffset, 0 === i && (o = ci()) && !k(o, "body"))) {
                 for (; t !== o;) {
                     for (; t.previousSibling;)
@@ -42821,17 +42922,17 @@ function (e) {
                 if (!(e = e.parentNode) || k(e, "body")) return;
             return e
         }, _i.clearBlockFormatting = function (e) {
-            return e = e || ci(), !e || k(e, "body") ? _i : (Z.saveRange(), e.className = "", R = null, _(
-                e, "style", ""), k(e, "p,div,td") || $(e, "p"), Z.restoreRange(), _i)
+            return e = e || ci(), !e || k(e, "body") ? _i : (G.saveRange(), e.className = "", R = null, _(
+                e, "style", ""), k(e, "p,div,td") || $(e, "p"), G.restoreRange(), _i)
         }, ui = function (e) {
             if (Y && (Y.hasHandler("valuechangedEvent") || ui.hasHandler)) {
                 var t, i = _i.sourceMode(),
-                    n = !i && Z.hasSelection();
+                    n = !i && G.hasSelection();
                 W = !1, e = e !== !1 && !T.getElementById("sceditor-start-marker"), q && (clearTimeout(q),
-                        q = !1), n && e && Z.saveRange(), t = i ? N.value : C.innerHTML, t !== ui
+                        q = !1), n && e && G.saveRange(), t = i ? N.value : C.innerHTML, t !== ui
                     .lastVal && (ui.lastVal = t, M(s, "valuechanged", {
                         rawValue: i ? _i.val() : t
-                    })), n && e && Z.removeMarkers()
+                    })), n && e && G.removeMarkers()
             }
         }, di = function () {
             q && ui()
@@ -43490,8 +43591,8 @@ function (e) {
                 text: l
             }
         },
-        It = window,
-        jt = document,
+        jt = window,
+        It = document,
         Mt = yt,
         Dt = Mt && 11 > Mt,
         Nt = /^image\/(p?jpe?g|gif|png|bmp)$/i;
@@ -43536,8 +43637,8 @@ function (e) {
                 removeAttr: f,
                 is: k,
                 closest: c,
-                width: I,
-                height: j,
+                width: j,
+                height: I,
                 traverse: L,
                 rTraverse: O,
                 parseHTML: R,
@@ -43550,8 +43651,8 @@ function (e) {
                 fixNesting: V,
                 findCommonAncestor: q,
                 getSibling: U,
-                removeWhiteSpace: G,
-                extractContents: Z,
+                removeWhiteSpace: Z,
+                extractContents: G,
                 getOffset: K,
                 getStyle: Y,
                 hasStyle: Q

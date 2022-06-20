@@ -16276,6 +16276,17 @@ a#mission-type-helper-mobile {
     }
 }
 
+#building_panel_heading .search-station-input {
+    font-size: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 1rem
+}
+
+body.bigMap .search-station-input {
+    color: #333
+}
+
 .personnel_pannel_heading {
     overflow: auto
 }
@@ -16367,6 +16378,32 @@ a#mission-type-helper-mobile {
     100% {
         background-color: transparent
     }
+}
+
+.info-bubble-with-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start
+}
+
+.info-bubble-button-xs {
+    margin-right: 15px
+}
+
+.float-fix {
+    height: 1px;
+    width: 100%;
+    display: block;
+    background-color: transparent
+}
+
+.building-filtered-by-type {
+    display: none
+}
+
+.building-filtered-by-search {
+    display: none
 }
 
 /*
