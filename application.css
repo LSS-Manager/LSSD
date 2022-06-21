@@ -16279,8 +16279,7 @@ a#mission-type-helper-mobile {
 #building_panel_heading .search-station-input {
     font-size: 12px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 1rem
+    border-radius: 4px
 }
 
 body.bigMap .search-station-input {
