@@ -3928,6 +3928,7 @@ Object.values || (Object.values = function (e) {
                 building_complex: "Building Complex",
                 buildings_section: "Stations",
                 clinic_missions: "Clinic",
+                coastal_rescue_missions: "Coastal Rescue",
                 dispatch_center_missions: "Dispatch Center",
                 factory_fire_brigade_missions: "Factory Fire Brigade",
                 federal_police_missions: "Federal Police Station",
