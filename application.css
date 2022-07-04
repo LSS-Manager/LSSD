@@ -16405,6 +16405,110 @@ body.bigMap .search-station-input {
     display: none
 }
 
+@media only screen {
+    .collapse-table tbody tr:nth-child(n+11) {
+        display: none
+    }
+}
+
+@media (min-width: 300px) and (max-width: 767px) {
+    .collapse-table tbody tr:nth-child(n+6) {
+        display: none
+    }
+}
+
+#showRetired {
+    display: none
+}
+
+#showRetired~#hideBtn {
+    display: none
+}
+
+@media only screen {
+    #showRetired:checked+table tbody tr:nth-child(n+11) {
+        display: table-row
+    }
+}
+
+@media (min-width: 300px) and (max-width: 767px) {
+    #showRetired:checked+table tbody tr:nth-child(n+6) {
+        display: table-row
+    }
+}
+
+#showRetired:checked~#showBtn {
+    display: none
+}
+
+#showRetired:checked~#hideBtn {
+    display: inline
+}
+
+.dark label[for='showRetired'] {
+    color: #a6e1ec
+}
+
+.dark label[for='showRetired'] .arrow {
+    border: solid #a6e1ec;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 2px;
+    margin-bottom: 2px
+}
+
+.dark label[for='showRetired'] .up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    margin-bottom: 0
+}
+
+.dark label[for='showRetired'] .down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg)
+}
+
+.dark label[for='showRetired']:hover {
+    color: #78b0bb
+}
+
+label[for='showRetired'] {
+    cursor: pointer;
+    position: relative;
+    color: #337ab7;
+    text-decoration: none;
+    padding: 0 10px 10px 10px
+}
+
+label[for='showRetired'] .arrow {
+    border: solid #337ab7;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 2px;
+    margin-bottom: 2px
+}
+
+label[for='showRetired'] .up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    margin-bottom: 0
+}
+
+label[for='showRetired'] .down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg)
+}
+
+label[for='showRetired']:hover {
+    color: #3381e1;
+    text-decoration: underline
+}
+
+.collapse-table {
+    border-collapse: collapse;
+    margin-bottom: 10px
+}
+
 /*
  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
  *
