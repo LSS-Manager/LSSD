@@ -46521,7 +46521,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = "mc_mobile_client_id",
                 var i = function () {
                     confirm(I18n.t("javascript.poi_delete", {
                         caption: t.caption
-                    })) && (this.mapkitMissionPositionMarkerDelete(t.id), $.ajax({
+                    })) && (map_pois_service.mapkitMissionPositionMarkerDelete(t.id), $.ajax({
                         url: "/mission_positions/" + t.id,
                         type: "POST",
                         data: {
@@ -46534,17 +46534,22 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = "mc_mobile_client_id",
                     var n = new mapkit.ImageAnnotation(new mapkit.Coordinate(t.latitude, t.longitude), {
                         url: {
                             1: "/images/letter_p.png"
-                        }
+                        },
+                        calloutEnabled: !0
                     });
-                    n.title = t.caption, n.addEventListener("select", i), map.addAnnotation(n), n.element
-                        .className = "mapkit-marker"
+                    n.addEventListener("select", i, n), map.addAnnotation(n), n.element.className =
+                        "mapkit-marker"
                 }
                 n.id = t.id, e.push(n)
             },
             mapkitMissionPositionMarkerDelete: function (t) {
-                $.each(e, function (e, i) {
-                    i.id == t && map.removeAnnotation(i)
-                })
+                var i = map_pois_service.getMissionPoiMarkersArray()
+                    .find(function (e) {
+                        return e.id === t
+                    });
+                e = e.filter(function (e) {
+                    return e.id !== i.id
+                }), map.removeAnnotation(i)
             },
             mapkitMissionPositionMarkerDeleteAll: function () {
                 $.each(e, function (e, t) {
