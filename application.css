@@ -16379,6 +16379,33 @@ body.bigMap .search-station-input {
     }
 }
 
+.specializations-tab-content {
+    margin-top: 10px
+}
+
+.specializations-tab-content .specializations-mobile {
+    display: none
+}
+
+.specializations-mobile .specialization-item h3 {
+    margin-top: 0
+}
+
+.specializations-mobile .alert {
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+@media (max-width: 767px) {
+    .specializations-tab-content .specializations-desktop {
+        display: none
+    }
+
+    .specializations-tab-content .specializations-mobile {
+        display: block
+    }
+}
+
 .info-bubble-with-button {
     display: flex;
     flex-direction: row;

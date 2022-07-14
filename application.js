@@ -928,16 +928,16 @@ function constructBuildingListElement(e) {
 }
 
 function getBuildingMarkerIcon(e) {
-    return e.user_id == user_id ? building_marker_image = e.icon : e.building_type ==
-        BUILDING_TYPE_FEUERWEHRSCHULE ? building_marker_image = "/images/building_fireschool_other.png" : e
-        .building_type == BUILDING_TYPE_FEUERWACHE ? building_marker_image =
-        "/images/building_fire_other.png" : e.building_type == BUILDING_TYPE_RETTUNGSWACHE ?
-        building_marker_image = "/images/building_rettungswache_other.png" : e.building_type ==
-        BUILDING_TYPE_RETTUNGSSCHULE ? building_marker_image = "/images/building_rettungsschule_other.png" : e
-        .building_type == BUILDING_TYPE_CLINIC ? building_marker_image = "/images/building_clinic_other.png" :
-        e.building_type == BUILDING_TYPE_HOSPITAL ? building_marker_image =
-        "/images/building_hospital_other.png" : e.building_type ==
-        BUILDING_TYPE_NOTARZTHUBSCHRAUBERLANDEPLATZ ? building_marker_image =
+    return e.user_id == user_id ? building_marker_image = e.icon : e.icon_other ? building_marker_image = e
+        .icon_other : e.building_type == BUILDING_TYPE_FEUERWEHRSCHULE ? building_marker_image =
+        "/images/building_fireschool_other.png" : e.building_type == BUILDING_TYPE_FEUERWACHE ?
+        building_marker_image = "/images/building_fire_other.png" : e.building_type ==
+        BUILDING_TYPE_RETTUNGSWACHE ? building_marker_image = "/images/building_rettungswache_other.png" : e
+        .building_type == BUILDING_TYPE_RETTUNGSSCHULE ? building_marker_image =
+        "/images/building_rettungsschule_other.png" : e.building_type == BUILDING_TYPE_CLINIC ?
+        building_marker_image = "/images/building_clinic_other.png" : e.building_type ==
+        BUILDING_TYPE_HOSPITAL ? building_marker_image = "/images/building_hospital_other.png" : e
+        .building_type == BUILDING_TYPE_NOTARZTHUBSCHRAUBERLANDEPLATZ ? building_marker_image =
         "/images/building_helipad_other.png" : e.building_type ==
         BUILDING_TYPE_POLIZEIHUBSCHRAUBERLANDEPLATZ ? building_marker_image =
         "/images/building_helipad_other.png" : e.building_type == BUILDING_TYPE_POLIZEIWACHE || e
@@ -47812,6 +47812,24 @@ I18n.t = function (e, t) {
     }, {
         from: "/images/MC_LandingPage_US.png",
         to: "/images/PC_LandingPage_US.png"
+    }, {
+        from: "/images/spec_police_station_game_warden.png",
+        to: "/images/spec_police_station_game_warden_pc.png"
+    }, {
+        from: "/images/spec_police_station_game_warden_other.png",
+        to: "/images/spec_police_station_game_warden_other_pc.png"
+    }, {
+        from: "/images/spec_police_station_water_police.png",
+        to: "/images/spec_police_station_water_police_pc.png"
+    }, {
+        from: "/images/spec_police_station_water_police_other.png",
+        to: "/images/spec_police_station_water_police_other_pc.png"
+    }, {
+        from: "/images/spec_police_station_riot_police.png",
+        to: "/images/spec_police_station_riot_police_pc.png"
+    }, {
+        from: "/images/spec_police_station_riot_police_other.png",
+        to: "/images/spec_police_station_riot_police_other_pc.png"
     }],
     missionchief: []
 };
