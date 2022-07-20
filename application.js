@@ -1891,15 +1891,15 @@ function highlightElement(e) {
     }, 10)
 }
 
-function creditsUpdate(e) {
+function creditsUpdate(e, t) {
     1 == mobile_bridge_use && mobileBridgeAdd("credits", {
         value: number_format(e)
     });
-    var t = number_format(e),
-        i = $("#navigation_top .credits-value")
+    var i = number_format(e),
+        n = $("#navigation_top .credits-value")
         .text();
     $(".credits-value")
-        .html(t), "" != i && i != t && highlightElement($("#navigation_top"))
+        .html(i), "" == n || n == i || t || highlightElement($("#navigation_top"))
 }
 
 function tasksUpdate(e, t) {
@@ -8952,7 +8952,7 @@ Object.values || (Object.values = function (e) {
                 gw_oel_only: "",
                 gw_san: "",
                 gw_taucher: "Dykkerbil",
-                gw_wasserrettung: "Kystlivredderbil",
+                gw_wasserrettung: "Overfladeredderbil",
                 gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Brandslangekøretøj",
                 hems: "Rednings Helikopter",
@@ -8988,6 +8988,7 @@ Object.values || (Object.values = function (e) {
                 rescue_vehicle_only: "Tung redning",
                 rescueboat: "Stor redningsbåd",
                 rettungstreppe: "",
+                riot_police: "Gruppevogn og Hollændervogn",
                 rth_only: "Rednings Helikopter",
                 schlauchwagen: "Vandtankvogn",
                 seg_elw: "",
