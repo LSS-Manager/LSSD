@@ -8877,6 +8877,13 @@ Object.values || (Object.values = function (e) {
         intervention_order: {
             automatic_text_color: "Automatisk tekstfarve",
             back: "Tilbage",
+            categories: {
+                bereitschaftspolizei: "Uropoliti",
+                firefighting: "Brandslukning",
+                police: "Politi",
+                rescue: "Redning",
+                water_rescue: "Vandredning"
+            },
             category: "Kategori",
             colour: "Farve",
             column: "Søjle",
@@ -14724,7 +14731,7 @@ Object.values || (Object.values = function (e) {
                 if (n = o[a].call(i, t, e)) return n
         }
 
-        function $(e, t, i) {
+        function B(e, t, i) {
             var n, o, a = 0,
                 s = on.length,
                 r = ut.Deferred()
@@ -14762,7 +14769,7 @@ Object.values || (Object.values = function (e) {
                     }
                 }),
                 u = c.props;
-            for (B(u, c.opts.specialEasing); s > a; a++)
+            for ($(u, c.opts.specialEasing); s > a; a++)
                 if (n = on[a].call(c, e, u, c.opts)) return n;
             return ut.map(u, F, c), ut.isFunction(c.opts.start) && c.opts.start.call(e, c), ut.fx.timer(ut
                     .extend(l, {
@@ -14775,7 +14782,7 @@ Object.values || (Object.values = function (e) {
                 .always(c.opts.always)
         }
 
-        function B(e, t) {
+        function $(e, t) {
             var i, n, o, a, s;
             for (i in e)
                 if (n = ut.camelCase(i), o = t[n], a = e[i], ut.isArray(a) && (o = a[1], a = e[i] = a[0]),
@@ -15495,7 +15502,7 @@ Object.values || (Object.values = function (e) {
                 }
 
                 function z() {}
-                var T, S, A, E, P, j, I, M, D, N, L, O, R, F, $, B, H, W = "sizzle" + -new Date,
+                var T, S, A, E, P, j, I, M, D, N, L, O, R, F, B, $, H, W = "sizzle" + -new Date,
                     V = e.document,
                     q = 0,
                     U = 0,
@@ -15632,7 +15639,7 @@ Object.values || (Object.values = function (e) {
                         }, E.find.CLASS = S.getElementsByClassName && function (e, t) {
                             return typeof t.getElementsByClassName !== Q && R ? t
                                 .getElementsByClassName(e) : void 0
-                        }, $ = [], F = [], (S.qsa = n(t.querySelectorAll)) && (s(function (e) {
+                        }, B = [], F = [], (S.qsa = n(t.querySelectorAll)) && (s(function (e) {
                             e.innerHTML = "<select><option selected=''></option></select>", e
                                 .querySelectorAll("[selected]")
                                 .length || F.push("\\[" + lt + "*(?:value|" + rt + ")"), e
@@ -15646,12 +15653,12 @@ Object.values || (Object.values = function (e) {
                                 .querySelectorAll(":enabled")
                                 .length || F.push(":enabled", ":disabled"), e
                                 .querySelectorAll("*,:x"), F.push(",.*:")
-                        })), (S.matchesSelector = n(B = O.webkitMatchesSelector || O
+                        })), (S.matchesSelector = n($ = O.webkitMatchesSelector || O
                             .mozMatchesSelector || O.oMatchesSelector || O.msMatchesSelector)) && s(
                             function (e) {
-                                S.disconnectedMatch = B.call(e, "div"), B.call(e, "[s!='']:x"), $
+                                S.disconnectedMatch = $.call(e, "div"), $.call(e, "[s!='']:x"), B
                                     .push("!=", pt)
-                            }), F = F.length && new RegExp(F.join("|")), $ = $.length && new RegExp($
+                            }), F = F.length && new RegExp(F.join("|")), B = B.length && new RegExp(B
                             .join("|")), H = n(O.contains) || O.compareDocumentPosition ? function (e,
                             t) {
                             var i = 9 === e.nodeType ? e.documentElement : e,
@@ -15693,8 +15700,8 @@ Object.values || (Object.values = function (e) {
                     return i(e, null, null, t)
                 }, i.matchesSelector = function (e, t) {
                     if ((e.ownerDocument || e) !== L && N(e), t = t.replace(vt, "='$1']"), !(!S
-                            .matchesSelector || !R || $ && $.test(t) || F && F.test(t))) try {
-                        var n = B.call(e, t);
+                            .matchesSelector || !R || B && B.test(t) || F && F.test(t))) try {
+                        var n = $.call(e, t);
                         if (n || S.disconnectedMatch || e.document && 11 !== e.document.nodeType)
                             return n
                     } catch (o) {}
@@ -16610,8 +16617,8 @@ Object.values || (Object.values = function (e) {
         var Ot = /^(?:input|select|textarea)$/i,
             Rt = /^key/,
             Ft = /^(?:mouse|contextmenu)|click/,
-            $t = /^(?:focusinfocus|focusoutblur)$/,
-            Bt = /^([^.]*)(?:\.(.+)|)$/;
+            Bt = /^(?:focusinfocus|focusoutblur)$/,
+            $t = /^([^.]*)(?:\.(.+)|)$/;
         ut.event = {
             global: {},
             add: function (e, i, n, o, a) {
@@ -16623,7 +16630,7 @@ Object.values || (Object.values = function (e) {
                                 return typeof ut === Z || e && ut.event.triggered === e.type ? t : ut
                                     .event.dispatch.apply(d.elem, arguments)
                             }, d.elem = e), i = (i || "")
-                        .match(ht) || [""], l = i.length; l--;) s = Bt.exec(i[l]) || [], m = f = s[1],
+                        .match(ht) || [""], l = i.length; l--;) s = $t.exec(i[l]) || [], m = f = s[1],
                         _ = (s[2] || "")
                         .split(".")
                         .sort(), m && (u = ut.event.special[m] || {}, m = (a ? u.delegateType : u
@@ -16650,7 +16657,7 @@ Object.values || (Object.values = function (e) {
                 if (f && (u = f.events)) {
                     for (t = (t || "")
                         .match(ht) || [""], c = t.length; c--;)
-                        if (r = Bt.exec(t[c]) || [], p = _ = r[1], m = (r[2] || "")
+                        if (r = $t.exec(t[c]) || [], p = _ = r[1], m = (r[2] || "")
                             .split(".")
                             .sort(), p) {
                             for (d = ut.event.special[p] || {}, p = (n ? d.delegateType : d
@@ -16671,7 +16678,7 @@ Object.values || (Object.values = function (e) {
                 var s, r, l, c, u, d, h, p = [o || Y],
                     m = lt.call(i, "type") ? i.type : i,
                     _ = lt.call(i, "namespace") ? i.namespace.split(".") : [];
-                if (l = d = o = o || Y, 3 !== o.nodeType && 8 !== o.nodeType && !$t.test(m + ut.event
+                if (l = d = o = o || Y, 3 !== o.nodeType && 8 !== o.nodeType && !Bt.test(m + ut.event
                         .triggered) && (m.indexOf(".") >= 0 && (_ = m.split("."), m = _.shift(), _
                             .sort()), r = m.indexOf(":") < 0 && "on" + m, i = i[ut.expando] ? i :
                         new ut.Event(m, "object" == typeof i && i), i.isTrigger = a ? 2 : 3, i
@@ -16680,7 +16687,7 @@ Object.values || (Object.values = function (e) {
                         .target || (i.target = o), n = null == n ? [i] : ut.makeArray(n, [i]), u = ut
                         .event.special[m] || {}, a || !u.trigger || u.trigger.apply(o, n) !== !1)) {
                     if (!a && !u.noBubble && !ut.isWindow(o)) {
-                        for (c = u.delegateType || m, $t.test(c + m) || (l = l.parentNode); l; l = l
+                        for (c = u.delegateType || m, Bt.test(c + m) || (l = l.parentNode); l; l = l
                             .parentNode) p.push(l), d = l;
                         d === (o.ownerDocument || Y) && p.push(d.defaultView || d.parentWindow || e)
                     }
@@ -17638,8 +17645,8 @@ Object.values || (Object.values = function (e) {
             Oi = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
             Ri = /^(?:GET|HEAD)$/,
             Fi = /^\/\//,
-            $i = /^([\w.+-]+:)(?:\/\/([^\/?#:]*)(?::(\d+)|)|)/,
-            Bi = ut.fn.load,
+            Bi = /^([\w.+-]+:)(?:\/\/([^\/?#:]*)(?::(\d+)|)|)/,
+            $i = ut.fn.load,
             Hi = {},
             Wi = {},
             Vi = "*/".concat("*");
@@ -17648,8 +17655,8 @@ Object.values || (Object.values = function (e) {
         } catch (qi) {
             ji = Y.createElement("a"), ji.href = "", ji = ji.href
         }
-        Pi = $i.exec(ji.toLowerCase()) || [], ut.fn.load = function (e, i, n) {
-            if ("string" != typeof e && Bi) return Bi.apply(this, arguments);
+        Pi = Bi.exec(ji.toLowerCase()) || [], ut.fn.load = function (e, i, n) {
+            if ("string" != typeof e && $i) return $i.apply(this, arguments);
             var o, a, s, r = this,
                 l = e.indexOf(" ");
             return l >= 0 && (o = e.slice(l, e.length), e = e.slice(0, l)), ut.isFunction(i) ? (n = i, i =
@@ -17788,7 +17795,7 @@ Object.values || (Object.values = function (e) {
                     .replace(Fi, Pi[1] + "//"), h.type = i.method || i.type || h.method || h.type,
                     h.dataTypes = ut.trim(h.dataType || "*")
                     .toLowerCase()
-                    .match(ht) || [""], null == h.crossDomain && (o = $i.exec(h.url
+                    .match(ht) || [""], null == h.crossDomain && (o = Bi.exec(h.url
                     .toLowerCase()), h.crossDomain = !(!o || o[1] === Pi[1] && o[2] === Pi[2] && (
                             o[3] || ("http:" === o[1] ? "80" : "443")) === (Pi[3] || (
                             "http:" === Pi[1] ? "80" : "443")))), h.data && h.processData &&
@@ -17979,7 +17986,7 @@ Object.values || (Object.values = function (e) {
                         o[2] : +o[2]), i
                 }]
             };
-        ut.Animation = ut.extend($, {
+        ut.Animation = ut.extend(B, {
                 tweener: function (e, t) {
                     ut.isFunction(e) ? (t = e, e = ["*"]) : e = e.split(" ");
                     for (var i, n = 0, o = e.length; o > n; n++) i = e[n], an[i] = an[i] || [], an[i]
@@ -18045,7 +18052,7 @@ Object.values || (Object.values = function (e) {
                     var o = ut.isEmptyObject(e),
                         a = ut.speed(t, i, n),
                         s = function () {
-                            var t = $(this, ut.extend({}, e), a);
+                            var t = B(this, ut.extend({}, e), a);
                             s.finish = function () {
                                 t.stop(!0)
                             }, (o || ut._data(this, "finish")) && t.stop(!0)
@@ -23689,8 +23696,8 @@ Object.values || (Object.values = function (e) {
                 },
                 _generateHTML: function (e) {
                     var t, i, n, o, a, s, r, l, c, u, d, h, p, m, _, f, g, v, b, y, w, k, x, C, z,
-                        T, S, A, E, P, j, I, M, D, N, L, O, R, F, $ = new Date,
-                        B = this._daylightSavingAdjust(new Date($.getFullYear(), $.getMonth(), $
+                        T, S, A, E, P, j, I, M, D, N, L, O, R, F, B = new Date,
+                        $ = this._daylightSavingAdjust(new Date(B.getFullYear(), B.getMonth(), B
                             .getDate())),
                         H = this._get(e, "isRTL"),
                         W = this._get(e, "showButtonPanel"),
@@ -23729,7 +23736,7 @@ Object.values || (Object.values = function (e) {
                         "<a class='ui-datepicker-next ui-corner-all ui-state-disabled' title='" +
                         o + "'><span class='ui-icon ui-icon-circle-triangle-" + (H ? "w" : "e") +
                         "'>" + o + "</span></a>", s = this._get(e, "currentText"), r = this._get(
-                            e, "gotoCurrent") && e.currentDay ? Y : B, s = q ? this.formatDate(s,
+                            e, "gotoCurrent") && e.currentDay ? Y : $, s = q ? this.formatDate(s,
                             r, this._getFormatConfig(e)) : s, l = e.inline ? "" :
                         "<button type='button' class='ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all' data-handler='hide' data-event='click'>" +
                         this._get(e, "closeText") + "</button>", c = W ?
@@ -23790,7 +23797,7 @@ Object.values || (Object.values = function (e) {
                                     .getTime() ? " " + this._dayOverClass : "") + (F ? " " + this
                                         ._unselectableClass + " ui-state-disabled" : "") + (R && !
                                         g ? "" : " " + O[1] + (D.getTime() === Y.getTime() ? " " +
-                                            this._currentClass : "") + (D.getTime() === B
+                                            this._currentClass : "") + (D.getTime() === $
                                         .getTime() ? " ui-datepicker-today" : "")) + "'" + (R && !
                                         g || !O[2] ? "" : " title='" + O[2].replace(/'/g,
                                         "&#39;") + "'") + (F ? "" :
@@ -23799,7 +23806,7 @@ Object.values || (Object.values = function (e) {
                                     ">" + (R && !g ? "&#xa0;" : F ?
                                         "<span class='ui-state-default'>" + D.getDate() +
                                         "</span>" : "<a class='ui-state-default" + (D
-                                        .getTime() === B.getTime() ? " ui-state-highlight" : "") +
+                                        .getTime() === $.getTime() ? " ui-state-highlight" : "") +
                                         (D.getTime() === Y.getTime() ? " ui-state-active" : "") +
                                         (R ? " ui-priority-secondary" : "") + "' href='#'>" + D
                                         .getDate() + "</a>") + "</td>", D.setDate(D.getDate() +
@@ -30436,7 +30443,7 @@ Object.values || (Object.values = function (e) {
         }
 
         function M(e, t, i, n) {
-            return "touchstart" === t ? N(e, i, n) : "touchmove" === t ? B(e, i, n) : "touchend" === t &&
+            return "touchstart" === t ? N(e, i, n) : "touchmove" === t ? $(e, i, n) : "touchend" === t &&
                 H(e, i, n), this
         }
 
@@ -30454,7 +30461,7 @@ Object.values || (Object.values = function (e) {
                     if (!(an.indexOf(e.target.tagName) < 0)) return;
                     kt(e)
                 }
-                $(e, t)
+                B(e, t)
             });
             e["_leaflet_touchstart" + n] = o, e.addEventListener(en, o, !1), rn || (document
                 .documentElement.addEventListener(en, O, !0), document.documentElement
@@ -30474,23 +30481,23 @@ Object.values || (Object.values = function (e) {
             delete sn[e.pointerId], ln--
         }
 
-        function $(e, t) {
+        function B(e, t) {
             e.touches = [];
             for (var i in sn) e.touches.push(sn[i]);
             e.changedTouches = [e], t(e)
         }
 
-        function B(e, t, i) {
+        function $(e, t, i) {
             var n = function (e) {
                 (e.pointerType !== e.MSPOINTER_TYPE_MOUSE && "mouse" !== e.pointerType || 0 !== e
-                    .buttons) && $(e, t)
+                    .buttons) && B(e, t)
             };
             e["_leaflet_touchmove" + i] = n, e.addEventListener(tn, n, !1)
         }
 
         function H(e, t, i) {
             var n = function (e) {
-                $(e, t)
+                B(e, t)
             };
             e["_leaflet_touchend" + i] = n, e.addEventListener(nn, n, !1), e.addEventListener(on, n, !1)
         }
@@ -30630,7 +30637,7 @@ Object.values || (Object.values = function (e) {
         }
 
         function rt(e, t) {
-            e._leaflet_pos = t, $i ? st(e, t) : (e.style.left = t.x + "px", e.style.top = t.y + "px")
+            e._leaflet_pos = t, Bi ? st(e, t) : (e.style.left = t.x + "px", e.style.top = t.y + "px")
         }
 
         function lt(e) {
@@ -30856,12 +30863,12 @@ Object.values || (Object.values = function (e) {
                 (a += r * o, s += l * o)), r = e.x - a, l = e.y - s, n ? r * r + l * l : new y(a, s)
         }
 
-        function $t(e) {
+        function Bt(e) {
             return !oi(e[0]) || "object" != typeof e[0][0] && void 0 !== e[0][0]
         }
 
-        function Bt(e) {
-            return console.warn("Deprecated use of _flat, please use L.LineUtil.isFlat instead."), $t(e)
+        function $t(e) {
+            return console.warn("Deprecated use of _flat, please use L.LineUtil.isFlat instead."), Bt(e)
         }
 
         function Ht(e, t, i) {
@@ -31514,16 +31521,16 @@ Object.values || (Object.values = function (e) {
             Oi = ki && "transition" in wi,
             Ri = "WebKitCSSMatrix" in window && "m11" in new window.WebKitCSSMatrix && !Si,
             Fi = "MozPerspective" in wi,
-            $i = !window.L_DISABLE_3D && (Oi || Ri || Fi) && !Ni && !Di,
-            Bi = "undefined" != typeof orientation || I("mobile"),
-            Hi = Bi && zi,
-            Wi = Bi && Ri,
+            Bi = !window.L_DISABLE_3D && (Oi || Ri || Fi) && !Ni && !Di,
+            $i = "undefined" != typeof orientation || I("mobile"),
+            Hi = $i && zi,
+            Wi = $i && Ri,
             Vi = !window.PointerEvent && window.MSPointerEvent,
             qi = !(!window.PointerEvent && !Vi),
             Ui = !window.L_NO_TOUCH && (qi || "ontouchstart" in window || window.DocumentTouch &&
                 document instanceof window.DocumentTouch),
-            Gi = Bi && Pi,
-            Zi = Bi && Ii,
+            Gi = $i && Pi,
+            Zi = $i && Ii,
             Ki = (window.devicePixelRatio || window.screen.deviceXDPI / window.screen.logicalXDPI) > 1,
             Yi = !!document.createElement("canvas")
             .getContext,
@@ -31557,8 +31564,8 @@ Object.values || (Object.values = function (e) {
                 ie3d: Oi,
                 webkit3d: Ri,
                 gecko3d: Fi,
-                any3d: $i,
-                mobile: Bi,
+                any3d: Bi,
+                mobile: $i,
                 mobileWebkit: Hi,
                 mobileWebkit3d: Wi,
                 msPointer: Vi,
@@ -31708,7 +31715,7 @@ Object.values || (Object.values = function (e) {
                         t.zoom && (this._zoom = this._limitZoom(t.zoom)), t.center && void 0 !== t
                         .zoom && this.setView(S(t.center), t.zoom, {
                             reset: !0
-                        }), this.callInitHooks(), this._zoomAnimated = pn && $i && !Gi && this
+                        }), this.callInitHooks(), this._zoomAnimated = pn && Bi && !Gi && this
                         .options.zoomAnimation, this._zoomAnimated && (this._createAnimProxy(),
                             _t(this._proxy, mn, this._catchTransitionEnd, this)), this._addLayers(
                             this.options.layers)
@@ -31732,11 +31739,11 @@ Object.values || (Object.values = function (e) {
                     }) : (this._zoom = e, this)
                 },
                 zoomIn: function (e, t) {
-                    return e = e || ($i ? this.options.zoomDelta : 1), this.setZoom(this._zoom +
+                    return e = e || (Bi ? this.options.zoomDelta : 1), this.setZoom(this._zoom +
                         e, t)
                 },
                 zoomOut: function (e, t) {
-                    return e = e || ($i ? this.options.zoomDelta : 1), this.setZoom(this._zoom -
+                    return e = e || (Bi ? this.options.zoomDelta : 1), this.setZoom(this._zoom -
                         e, t)
                 },
                 setZoomAround: function (e, t, i) {
@@ -31850,7 +31857,7 @@ Object.values || (Object.values = function (e) {
                             ._moveEnd(!0)
                     }
                     if (!1 === (i = i || {})
-                        .animate || !$i) return this.setView(e, t, i);
+                        .animate || !Bi) return this.setView(e, t, i);
                     this._stop();
                     var d = this.project(this.getCenter()),
                         h = this.project(e),
@@ -32054,7 +32061,7 @@ Object.values || (Object.values = function (e) {
                         .subtract(i),
                         c = x(this.project(r, n), this.project(s, n))
                         .getSize(),
-                        u = $i ? this.options.zoomSnap : 1,
+                        u = Bi ? this.options.zoomSnap : 1,
                         d = l.x / c.x,
                         h = l.y / c.y,
                         p = t ? Math.max(d, h) : Math.min(d, h);
@@ -32155,7 +32162,7 @@ Object.values || (Object.values = function (e) {
                 },
                 _initLayout: function () {
                     var e = this._container;
-                    this._fadeAnimated = this.options.fadeAnimation && $i, X(e,
+                    this._fadeAnimated = this.options.fadeAnimation && Bi, X(e,
                         "leaflet-container" + (Ui ? " leaflet-touch" : "") + (Ki ?
                             " leaflet-retina" : "") + (xi ? " leaflet-oldie" : "") + (Mi ?
                             " leaflet-safari" : "") + (this._fadeAnimated ?
@@ -32219,7 +32226,7 @@ Object.values || (Object.values = function (e) {
                     t(this._container,
                             "click dblclick mousedown mouseup mouseover mouseout mousemove contextmenu keypress",
                             this._handleDOMEvent, this), this.options.trackResize && t(window,
-                            "resize", this._onResize, this), $i && this.options
+                            "resize", this._onResize, this), Bi && this.options
                         .transform3DLimit && (e ? this.off : this.on)
                         .call(this, "moveend", this._onMoveEnd)
                 },
@@ -32373,7 +32380,7 @@ Object.values || (Object.values = function (e) {
                 _limitZoom: function (e) {
                     var t = this.getMinZoom(),
                         i = this.getMaxZoom(),
-                        n = $i ? this.options.zoomSnap : 1;
+                        n = Bi ? this.options.zoomSnap : 1;
                     return n && (e = Math.round(e / n) * n), Math.max(t, Math.min(i, e))
                 },
                 _onPanTransitionStep: function () {
@@ -32943,13 +32950,13 @@ Object.values || (Object.values = function (e) {
                 _getEdgeIntersection: Lt,
                 _getBitCode: Ot,
                 _sqClosestPointOnSegment: Ft,
-                isFlat: $t,
-                _flat: Bt
+                isFlat: Bt,
+                _flat: $t
             }),
-            $n = (Object.freeze || Object)({
+            Bn = (Object.freeze || Object)({
                 clipPolygon: Ht
             }),
-            Bn = {
+            $n = {
                 project: function (e) {
                     return new y(e.lng, e.lat)
                 },
@@ -32982,7 +32989,7 @@ Object.values || (Object.values = function (e) {
                 }
             },
             Wn = (Object.freeze || Object)({
-                LonLat: Bn,
+                LonLat: $n,
                 Mercator: Hn,
                 SphericalMercator: _i
             }),
@@ -32996,11 +33003,11 @@ Object.values || (Object.values = function (e) {
             }),
             qn = t({}, mi, {
                 code: "EPSG:4326",
-                projection: Bn,
+                projection: $n,
                 transformation: E(1 / 180, 1, -1 / 180, .5)
             }),
             Un = t({}, pi, {
-                projection: Bn,
+                projection: $n,
                 transformation: E(1, 0, -1, 0),
                 scale: function (e) {
                     return Math.pow(2, e)
@@ -33672,10 +33679,10 @@ Object.values || (Object.values = function (e) {
                     this._bounds = new C, this._latlngs = this._convertLatLngs(e)
                 },
                 _defaultShape: function () {
-                    return $t(this._latlngs) ? this._latlngs : this._latlngs[0]
+                    return Bt(this._latlngs) ? this._latlngs : this._latlngs[0]
                 },
                 _convertLatLngs: function (e) {
-                    for (var t = [], i = $t(e), n = 0, o = e.length; o > n; n++) i ? (t[n] = S(e[
+                    for (var t = [], i = Bt(e), n = 0, o = e.length; o > n; n++) i ? (t[n] = S(e[
                         n]), this._bounds.extend(t[n])) : t[n] = this._convertLatLngs(e[n]);
                     return t
                 },
@@ -33730,7 +33737,7 @@ Object.values || (Object.values = function (e) {
                     return !1
                 }
             });
-        no._flat = Bt;
+        no._flat = $t;
         var oo = no.extend({
                 options: {
                     fill: !0
@@ -33755,11 +33762,11 @@ Object.values || (Object.values = function (e) {
                     return i >= 2 && t[0] instanceof T && t[0].equals(t[i - 1]) && t.pop(), t
                 },
                 _setLatLngs: function (e) {
-                    no.prototype._setLatLngs.call(this, e), $t(this._latlngs) && (this
+                    no.prototype._setLatLngs.call(this, e), Bt(this._latlngs) && (this
                         ._latlngs = [this._latlngs])
                 },
                 _defaultShape: function () {
-                    return $t(this._latlngs[0]) ? this._latlngs[0] : this._latlngs[0][0]
+                    return Bt(this._latlngs[0]) ? this._latlngs[0] : this._latlngs[0][0]
                 },
                 _clipPoints: function () {
                     var e = this._renderer._bounds,
@@ -33828,7 +33835,7 @@ Object.values || (Object.values = function (e) {
             };
         Xn.include(so), io.include(so), to.include(so), no.include({
             toGeoJSON: function (e) {
-                var t = !$t(this._latlngs),
+                var t = !Bt(this._latlngs),
                     i = Gt(this._latlngs, t ? 1 : 0, !1, e);
                 return Zt(this, {
                     type: (t ? "Multi" : "") + "LineString",
@@ -33837,8 +33844,8 @@ Object.values || (Object.values = function (e) {
             }
         }), oo.include({
             toGeoJSON: function (e) {
-                var t = !$t(this._latlngs),
-                    i = t && !$t(this._latlngs[0]),
+                var t = !Bt(this._latlngs),
+                    i = t && !Bt(this._latlngs[0]),
                     n = Gt(this._latlngs, i ? 2 : t ? 1 : 0, !0, e);
                 return t || (n = [n]), Zt(this, {
                     type: (i ? "Multi" : "") + "Polygon",
@@ -34446,7 +34453,7 @@ Object.values || (Object.values = function (e) {
                 options: {
                     tileSize: 256,
                     opacity: 1,
-                    updateWhenIdle: Bi,
+                    updateWhenIdle: $i,
                     updateWhenZooming: !0,
                     updateInterval: 200,
                     zIndex: 1,
@@ -34654,7 +34661,7 @@ Object.values || (Object.values = function (e) {
                         o = e.origin.multiplyBy(n)
                         .subtract(this._map._getNewPixelOrigin(t, i))
                         .round();
-                    $i ? st(e.el, o, n) : rt(e.el, o)
+                    Bi ? st(e.el, o, n) : rt(e.el, o)
                 },
                 _resetGrid: function () {
                     var e = this._map,
@@ -35007,7 +35014,7 @@ Object.values || (Object.values = function (e) {
                         .add(n)
                         .add(o)
                         .subtract(s);
-                    $i ? st(this._container, r, i) : rt(this._container, r)
+                    Bi ? st(this._container, r, i) : rt(this._container, r)
                 },
                 _reset: function () {
                     this._update(), this._updateTransform(this._center, this._zoom);
@@ -35890,7 +35897,7 @@ Object.values || (Object.values = function (e) {
             ei, e.version = "1.4.0+HEAD.3337f36", e.Control = Tn, e.control = Sn, e.Browser = Xi, e
             .Evented = di, e.Mixin = Dn, e.Util = ci, e.Class = v, e.Handler = In, e.extend = t, e.bind =
             i, e.stamp = n, e.setOptions = u, e.DomEvent = xn, e.DomUtil = bn, e.PosAnimation = Cn, e
-            .Draggable = Rn, e.LineUtil = Fn, e.PolyUtil = $n, e.Point = y, e.point = w, e.Bounds = k, e
+            .Draggable = Rn, e.LineUtil = Fn, e.PolyUtil = Bn, e.Point = y, e.point = w, e.Bounds = k, e
             .bounds = x, e.Transformation = A, e.transformation = E, e.Projection = Wn, e.LatLng = T, e
             .latLng = S, e.LatLngBounds = C, e.latLngBounds = z, e.CRS = pi, e.GeoJSON = ao, e.geoJSON =
             Yt, e.geoJson = ro, e.Layer = Gn, e.LayerGroup = Zn, e.layerGroup = function (e, t) {
@@ -39789,7 +39796,7 @@ function (e) {
         return e && (!k(e, "p,div") || e.className || _(e, "style") || !i(w(e)))
     }
 
-    function $(e, t) {
+    function B(e, t) {
         var i = r(t, {}, e.ownerDocument);
         for (a(e.attributes, function (e, t) {
                 try {
@@ -39799,7 +39806,7 @@ function (e) {
         return e.parentNode.replaceChild(i, e), i
     }
 
-    function B(e) {
+    function $(e) {
         return /11?|9/.test(e.nodeType) ?
             "|iframe|area|base|basefont|br|col|frame|hr|img|input|wbr|isindex|link|meta|param|command|embed|keygen|source|track|object|"
             .indexOf("|" + e.nodeName.toLowerCase() + "|") < 0 : !1
@@ -40009,7 +40016,7 @@ function (e) {
                     l.selectedRange()
                     .extractContents()), d(u, t))), c = u.lastChild) {
                 for (; !H(c.lastChild, !0);) c = c.lastChild;
-                if (B(c) ? c.lastChild || d(c, document.createTextNode("​")) : c = u, l.removeMarkers(),
+                if ($(c) ? c.lastChild || d(c, document.createTextNode("​")) : c = u, l.removeMarkers(),
                     d(c, i(a)), d(c, i(s)), n) {
                     var h = r("div");
                     return d(h, u), h.innerHTML
@@ -40020,7 +40027,7 @@ function (e) {
             var i = n(e, t),
                 o = l.selectedRange(),
                 a = o.commonAncestorContainer;
-            return i ? (o.deleteContents(), a && 3 !== a.nodeType && !B(a) ? z(i, a) : o.insertNode(i), l
+            return i ? (o.deleteContents(), a && 3 !== a.nodeType && !$(a) ? z(i, a) : o.insertNode(i), l
                 .restoreRange(), void 0) : !1
         }, l.cloneSelected = function () {
             var e = l.selectedRange();
@@ -40187,7 +40194,7 @@ function (e) {
 
     function lt(e, t) {
         var i, s, l, f, x, C, T, N, L, R, W, q, U, Z, Y, J, Q, et, it, ht, pt, gt, bt, yt, Ct, zt, Tt, At, Et,
-            Pt, Lt, Ot, Rt, Ft, $t, Bt, Ht, Wt, Vt, qt, Ut, Gt, Zt, Kt, Yt, Jt, Qt, Xt, ei, ti, ii, ni, oi,
+            Pt, Lt, Ot, Rt, Ft, Bt, $t, Ht, Wt, Vt, qt, Ut, Gt, Zt, Kt, Yt, Jt, Qt, Xt, ei, ti, ii, ni, oi,
             ai, si, ri, li, ci, ui, di, hi, pi, mi, _i = this,
             fi = {},
             gi = [],
@@ -40203,7 +40210,7 @@ function (e) {
                 }), z(s, e), y(s, "z-index", ki.zIndex), Mt && A(s, "ie ie" + Mt), ht = e.required, e
                 .required = !1;
             var t = lt.formats[ki.format];
-            i = t ? new t : {}, "init" in i && i.init.call(_i), Ot(), Wt(), Ft(), Lt(), $t(), Bt(), xt ||
+            i = t ? new t : {}, "init" in i && i.init.call(_i), Ot(), Wt(), Ft(), Lt(), Bt(), $t(), xt ||
                 _i.toggleSourceMode(), ti();
             var n = function () {
                 m(jt, "load", n), ki.autofocus && si(), mi(), ni(), Y.call("ready"), "onReady" in i &&
@@ -40240,12 +40247,12 @@ function (e) {
             _(N, "tabindex", i), _(f, "tabindex", i), Z = new ot(x), g(e), _i.val(e.value);
             var n = ki.placeholder || _(e, "placeholder");
             n && (N.placeholder = n, _(C, "placeholder", n))
-        }, $t = function () {
+        }, Bt = function () {
             ki.autoUpdate && (p(C, "blur", pi), p(N, "blur", pi)), null === ki.rtl && (ki.rtl = "rtl" ===
                 y(N, "direction")), _i.rtl(!!ki.rtl), ki.autoExpand && (p(C, "load", mi, ft), p(C,
                 "input keyup", mi)), ki.resizeEnabled && Ht(), _(s, "id", ki.id), _i.emoticons(ki
                 .emoticonsEnabled)
-        }, Bt = function () {
+        }, $t = function () {
             var t = e.form,
                 i = "compositionstart compositionend",
                 n = "keydown keyup keypress focus blur contextmenu",
@@ -40363,7 +40370,7 @@ function (e) {
                 if (G(C), n)
                     for ((i = C.lastChild) || (i = r("p", {}, T), d(C, i)); i.lastChild;) i = i.lastChild,
                         !Dt && k(i, "br") && i.previousSibling && (i = i.previousSibling);
-                e = T.createRange(), B(i) ? e.selectNodeContents(i) : (e.setStartBefore(i), n && e
+                e = T.createRange(), $(i) ? e.selectNodeContents(i) : (e.setStartBefore(i), n && e
                     .setStartAfter(i)), e.collapse(!n), Z.selectRange(e), et = e, n && (C.scrollTop =
                     C.scrollHeight), _i.focus()
             }
@@ -40863,7 +40870,7 @@ function (e) {
             return e
         }, _i.clearBlockFormatting = function (e) {
             return e = e || ci(), !e || k(e, "body") ? _i : (Z.saveRange(), e.className = "", R = null, _(
-                e, "style", ""), k(e, "p,div,td") || $(e, "p"), Z.restoreRange(), _i)
+                e, "style", ""), k(e, "p,div,td") || B(e, "p"), Z.restoreRange(), _i)
         }, ui = function (e) {
             if (Y && (Y.hasHandler("valuechangedEvent") || ui.hasHandler)) {
                 var t, i = _i.sourceMode(),
@@ -41583,9 +41590,9 @@ function (e) {
                 rTraverse: O,
                 parseHTML: R,
                 hasStyling: F,
-                convertElement: $,
+                convertElement: B,
                 blockLevelList: gt,
-                canHaveChildren: B,
+                canHaveChildren: $,
                 isInline: H,
                 copyCSS: W,
                 fixNesting: V,
@@ -41885,7 +41892,7 @@ function (e) {
         return e && (!k(e, "p,div") || e.className || _(e, "style") || !i(w(e)))
     }
 
-    function $(e, t) {
+    function B(e, t) {
         var i = r(t, {}, e.ownerDocument);
         for (a(e.attributes, function (e, t) {
                 try {
@@ -41895,7 +41902,7 @@ function (e) {
         return e.parentNode.replaceChild(i, e), i
     }
 
-    function B(e) {
+    function $(e) {
         return /11?|9/.test(e.nodeType) ?
             "|iframe|area|base|basefont|br|col|frame|hr|img|input|wbr|isindex|link|meta|param|command|embed|keygen|source|track|object|"
             .indexOf("|" + e.nodeName.toLowerCase() + "|") < 0 : !1
@@ -42105,7 +42112,7 @@ function (e) {
                     l.selectedRange()
                     .extractContents()), d(u, t))), c = u.lastChild) {
                 for (; !H(c.lastChild, !0);) c = c.lastChild;
-                if (B(c) ? c.lastChild || d(c, document.createTextNode("​")) : c = u, l.removeMarkers(),
+                if ($(c) ? c.lastChild || d(c, document.createTextNode("​")) : c = u, l.removeMarkers(),
                     d(c, i(a)), d(c, i(s)), n) {
                     var h = r("div");
                     return d(h, u), h.innerHTML
@@ -42116,7 +42123,7 @@ function (e) {
             var i = n(e, t),
                 o = l.selectedRange(),
                 a = o.commonAncestorContainer;
-            return i ? (o.deleteContents(), a && 3 !== a.nodeType && !B(a) ? z(i, a) : o.insertNode(i), l
+            return i ? (o.deleteContents(), a && 3 !== a.nodeType && !$(a) ? z(i, a) : o.insertNode(i), l
                 .restoreRange(), void 0) : !1
         }, l.cloneSelected = function () {
             var e = l.selectedRange();
@@ -42283,7 +42290,7 @@ function (e) {
 
     function lt(e, t) {
         var i, s, l, f, x, C, T, N, L, R, W, q, U, Z, Y, J, Q, et, it, ht, pt, gt, bt, yt, Ct, zt, Tt, At, Et,
-            Pt, Lt, Ot, Rt, Ft, $t, Bt, Ht, Wt, Vt, qt, Ut, Gt, Zt, Kt, Yt, Jt, Qt, Xt, ei, ti, ii, ni, oi,
+            Pt, Lt, Ot, Rt, Ft, Bt, $t, Ht, Wt, Vt, qt, Ut, Gt, Zt, Kt, Yt, Jt, Qt, Xt, ei, ti, ii, ni, oi,
             ai, si, ri, li, ci, ui, di, hi, pi, mi, _i = this,
             fi = {},
             gi = [],
@@ -42299,7 +42306,7 @@ function (e) {
                 }), z(s, e), y(s, "z-index", ki.zIndex), Mt && A(s, "ie ie" + Mt), ht = e.required, e
                 .required = !1;
             var t = lt.formats[ki.format];
-            i = t ? new t : {}, "init" in i && i.init.call(_i), Ot(), Wt(), Ft(), Lt(), $t(), Bt(), xt ||
+            i = t ? new t : {}, "init" in i && i.init.call(_i), Ot(), Wt(), Ft(), Lt(), Bt(), $t(), xt ||
                 _i.toggleSourceMode(), ti();
             var n = function () {
                 m(jt, "load", n), ki.autofocus && si(), mi(), ni(), Y.call("ready"), "onReady" in i &&
@@ -42336,12 +42343,12 @@ function (e) {
             _(N, "tabindex", i), _(f, "tabindex", i), Z = new ot(x), g(e), _i.val(e.value);
             var n = ki.placeholder || _(e, "placeholder");
             n && (N.placeholder = n, _(C, "placeholder", n))
-        }, $t = function () {
+        }, Bt = function () {
             ki.autoUpdate && (p(C, "blur", pi), p(N, "blur", pi)), null === ki.rtl && (ki.rtl = "rtl" ===
                 y(N, "direction")), _i.rtl(!!ki.rtl), ki.autoExpand && (p(C, "load", mi, ft), p(C,
                 "input keyup", mi)), ki.resizeEnabled && Ht(), _(s, "id", ki.id), _i.emoticons(ki
                 .emoticonsEnabled)
-        }, Bt = function () {
+        }, $t = function () {
             var t = e.form,
                 i = "compositionstart compositionend",
                 n = "keydown keyup keypress focus blur contextmenu",
@@ -42459,7 +42466,7 @@ function (e) {
                 if (G(C), n)
                     for ((i = C.lastChild) || (i = r("p", {}, T), d(C, i)); i.lastChild;) i = i.lastChild,
                         !Dt && k(i, "br") && i.previousSibling && (i = i.previousSibling);
-                e = T.createRange(), B(i) ? e.selectNodeContents(i) : (e.setStartBefore(i), n && e
+                e = T.createRange(), $(i) ? e.selectNodeContents(i) : (e.setStartBefore(i), n && e
                     .setStartAfter(i)), e.collapse(!n), Z.selectRange(e), et = e, n && (C.scrollTop =
                     C.scrollHeight), _i.focus()
             }
@@ -42959,7 +42966,7 @@ function (e) {
             return e
         }, _i.clearBlockFormatting = function (e) {
             return e = e || ci(), !e || k(e, "body") ? _i : (Z.saveRange(), e.className = "", R = null, _(
-                e, "style", ""), k(e, "p,div,td") || $(e, "p"), Z.restoreRange(), _i)
+                e, "style", ""), k(e, "p,div,td") || B(e, "p"), Z.restoreRange(), _i)
         }, ui = function (e) {
             if (Y && (Y.hasHandler("valuechangedEvent") || ui.hasHandler)) {
                 var t, i = _i.sourceMode(),
@@ -43679,9 +43686,9 @@ function (e) {
                 rTraverse: O,
                 parseHTML: R,
                 hasStyling: F,
-                convertElement: $,
+                convertElement: B,
                 blockLevelList: gt,
-                canHaveChildren: B,
+                canHaveChildren: $,
                 isInline: H,
                 copyCSS: W,
                 fixNesting: V,
@@ -47721,53 +47728,86 @@ I18n.t = function (e, t) {
         from: "/images/building_municipal_police.png",
         to: "/images/policechief_building_municipal_police.png"
     }, {
-        from: "/images/police.png",
-        to: "/images/policechief_police.png"
+        from: "/images/vehicles/green_car.png",
+        to: "/images/vehicles/blue_car.png"
     }, {
-        from: "/images/police2.png",
-        to: "/images/policechief_police2.png"
+        from: "/images/vehicles/green_car_2.png",
+        to: "/images/vehicles/blue_car_2.png"
     }, {
-        from: "/images/pheli2_1.png",
-        to: "/images/policechief_pheli2_1.png"
+        from: "/images/vehicles/green_helicopter.png",
+        to: "/images/vehicles/blue_helicopter.png"
     }, {
-        from: "/images/pheli2_2.png",
-        to: "/images/policechief_pheli2_2.png"
+        from: "/images/vehicles/green_helicopter_2.png",
+        to: "/images/vehicles/blue_helicopter_2.png"
     }, {
-        from: "/images/police_motorrad.png",
-        to: "/images/pc_police_motorrad.png"
+        from: "/images/vehicles/green_motorcycle.png",
+        to: "/images/vehicles/blue_motorcycle.png"
     }, {
-        from: "/images/police_motorrad2.png",
-        to: "/images/pc_police_motorrad2.png"
+        from: "/images/vehicles/green_motorcycle_2.png",
+        to: "/images/vehicles/blue_motorcycle_2.png"
     }, {
-        from: "/images/police_trailer.png",
-        to: "/images/pc_police_trailer.png"
+        from: "/images/vehicles/green_trailer.png",
+        to: "/images/vehicles/blue_trailer.png"
     }, {
-        from: "/images/police_truck.png",
-        to: "/images/pc_police_truck.png"
+        from: "/images/vehicles/green_truck.png",
+        to: "/images/vehicles/blue_truck.png"
     }, {
-        from: "/images/police_bike.png",
-        to: "/images/pc_police_bike.png"
+        from: "/images/vehicles/green_truck_2.png",
+        to: "/images/vehicles/blue_truck_2.png"
     }, {
-        from: "/images/police_bucket.png",
-        to: "/images/pc_police_bucket.png"
+        from: "/images/vehicles/green_bike.png",
+        to: "/images/vehicles/blue_bike.png"
     }, {
-        from: "/images/police_boat.png",
-        to: "/images/pc_police_boat.png"
+        from: "/images/vehicles/green_helicopter_bucket.png",
+        to: "/images/vehicles/blue_helicopter_bucket.png"
     }, {
-        from: "/images/police_civil_car.png",
-        to: "/images/pc_police_civil_car.png"
+        from: "/images/vehicles/green_boat.png",
+        to: "/images/vehicles/blue_boat.png"
     }, {
-        from: "/images/police_suv.png",
-        to: "/images/pc_police_suv.png"
+        from: "/images/vehicles/green_civil_car.png",
+        to: "/images/vehicles/blue_civil_car.png"
     }, {
-        from: "/images/police_suv_sonderrechte.png",
-        to: "/images/pc_police_suv_sonderrechte.png"
+        from: "/images/vehicles/green_civil_car_2.png",
+        to: "/images/vehicles/blue_civil_car_2.png"
     }, {
-        from: "/images/police_pickup.png",
-        to: "/images/pc_police_pickup.png"
+        from: "/images/vehicles/green_suv.png",
+        to: "/images/vehicles/blue_suv.png"
     }, {
-        from: "/images/police_pickup_sonderrechte.png",
-        to: "/images/pc_police_pickup_sonderrechte.png"
+        from: "/images/vehicles/green_suv_2.png",
+        to: "/images/vehicles/blue_suv_2.png"
+    }, {
+        from: "/images/vehicles/green_pickup.png",
+        to: "/images/vehicles/blue_pickup.png"
+    }, {
+        from: "/images/vehicles/green_pickup_2.png",
+        to: "/images/vehicles/blue_pickup_2.png"
+    }, {
+        from: "/images/vehicles/green_bus.png",
+        to: "/images/vehicles/blue_bus.png"
+    }, {
+        from: "/images/vehicles/green_bus_2.png",
+        to: "/images/vehicles/blue_bus_2.png"
+    }, {
+        from: "/images/vehicles/green_dogs.png",
+        to: "/images/vehicles/blue_dogs.png"
+    }, {
+        from: "/images/vehicles/green_plow.png",
+        to: "/images/vehicles/blue_plow.png"
+    }, {
+        from: "/images/vehicles/green_plow_2.png",
+        to: "/images/vehicles/blue_plow_2.png"
+    }, {
+        from: "/images/vehicles/green_sprinter.png",
+        to: "/images/vehicles/blue_sprinter.png"
+    }, {
+        from: "/images/vehicles/green_sprinter_2.png",
+        to: "/images/vehicles/blue_sprinter_2.png"
+    }, {
+        from: "/images/vehicles/green_water_cannon.png",
+        to: "/images/vehicles/blue_water_cannon.png"
+    }, {
+        from: "/images/vehicles/green_water_cannon_2.png",
+        to: "/images/vehicles/blue_water_cannon_2.png"
     }, {
         from: "/images/sign_up.en_US.png",
         to: "/images/policechief_sign_up.en.png"
