@@ -12640,6 +12640,10 @@ body.dark .mission_overview_countdown {
     .money-block-web {
         display: none !important
     }
+
+    #building-navigation-container {
+        float: right
+    }
 }
 
 .money-block-mobile {
@@ -12805,10 +12809,6 @@ body.dark th.tablesorter-headerDesc {
 
 .vehicle_overview .list-group-item {
     padding: 0 15px
-}
-
-.vehicle_overview {
-    margin-top: 70px
 }
 
 .vehicle_overview .list-group-item img {
