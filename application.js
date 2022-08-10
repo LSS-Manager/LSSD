@@ -669,6 +669,11 @@ function radioMessage(e) {
     }
 }
 
+function deleteRadioMessage(e) {
+    $(".radio_message_vehicle_" + e)
+        .remove()
+}
+
 function vehicleSearch(e) {
     if (mapViewExpanded) return mapViewExpandedWindow.vehicleSearch(e);
     var t = !1;
