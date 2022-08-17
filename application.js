@@ -12836,6 +12836,11 @@ Object.values || (Object.values = function (e) {
         intervention_order: {
             automatic_text_color: "자동 글 색상",
             back: "뒤로",
+            categories: {
+                firefighting: "소방차",
+                police: "경찰",
+                rescue: "구조대"
+            },
             category: "카테고리",
             colour: "색상",
             column: "열",
