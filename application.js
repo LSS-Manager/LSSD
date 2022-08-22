@@ -3613,6 +3613,7 @@ Object.values || (Object.values = function (e) {
                 kdow_orgl: "KdoW-OrgL",
                 ktw_b: "KTW Typ B",
                 ktw_or_rtw: "KTW oder RTW",
+                ktw_or_rtw_2: "KTW oder RTW oder ITW",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
                 lf_only: "Löschfahrzeuge",
                 long_distance_ambulance: "Krankentransportwagen",
@@ -4151,6 +4152,7 @@ Object.values || (Object.values = function (e) {
                 kdow_orgl_any: "",
                 ktw_b: "",
                 ktw_or_rtw: "",
+                ktw_or_rtw_2: "patient transport or ambulance",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
                 lf_only: "Fire Trucks",
                 long_distance_ambulance: "BLS ambulance",
@@ -5121,8 +5123,8 @@ Object.values || (Object.values = function (e) {
             anti_abuse_active_link: "Klik hier voor meer informatie.",
             anti_abuse_active_text: "Missies zullen binnen een grotere straal van 100 km verschijnen, omdat te veel stations van hetzelfde type te dicht bij elkaar zijn gebouwd.",
             attended: "Uitgevoerd",
-            cancel_alliance_event: "Alliantie-evenement annuleren",
-            cancel_alliance_event_confirm: "Wil je het alliantie-evenement echt annuleren?",
+            cancel_alliance_event: "Team-evenement annuleren",
+            cancel_alliance_event_confirm: "Wil je het team-evenement echt annuleren?",
             challenges: "",
             chat_history: "Chat geschiedenis",
             congratulations: "Gefeliciteerd! Je mag je nieuwe rang ophalen.",
@@ -5138,7 +5140,7 @@ Object.values || (Object.values = function (e) {
                 all_missions: "Incidenten",
                 alliance_buildings: "Teamgebouwen",
                 alliance_members: "Teamleden",
-                alliance_missions: "Gedeeld door alliantie",
+                alliance_missions: "Gedeeld door team",
                 ambulance_station_missions: "Ambulance, standplaats",
                 ambulance_station_small_missions: "Ambulance, VWS-post",
                 building_complex: "Gebouwencomplex",
@@ -5176,7 +5178,7 @@ Object.values || (Object.values = function (e) {
             missions_filtered_out: "Sommige missies worden mogelijk uitgefilterd. Controleer alstublieft uw kaartfilters.",
             no_alliance_chat_impossible: "De Chat is een geweldige manier om in contact te komen met andere meer ervaren spelers. Zij kunnen zowel je vragen beantwoorden als je helpen door je toegang te geven tot gebouwen zoals Ziekenhuizen en Scholen",
             no_alliance_missions: "Er zijn geen team inzetten beschikbaar",
-            no_alliance_missions_join: "Deelnemen aan missies van een alliantie zal je belonen met credits - ongeacht het type voertuig dat je stuurt.\nDoor lid te worden van een alliantie kun je beide doen: je eigen missies delen om hulp te krijgen van ervaren alliantieleden en deelnemen aan de gedeelde missies van anderen voor extra beloningen.",
+            no_alliance_missions_join: "Deelnemen aan missies van een team zal je belonen met credits - ongeacht het type voertuig dat je stuurt.\nDoor lid te worden van een team kun je beide doen: je eigen missies delen om hulp te krijgen van ervaren teamleden en deelnemen aan de gedeelde missies van anderen voor extra beloningen.",
             no_ambulance_missions: "Er kan nog geen besteld vervoer plaatsvinden zonder een ziekenhuis en een zorgambulance.",
             no_emergency_missions: "Er hebben zich nog geen incidenten plaatsgevonden. Incidenten kunnen vanaf je eerste post plaatsvinden.",
             no_radio_messages: "Je hebt nog geen statusmeldingen ontvangen.",
@@ -5441,7 +5443,7 @@ Object.values || (Object.values = function (e) {
                         summary: "Dit zijn de basisprincipes van Meldkamerspel. Meldigen afhandelen, Credits verdienen, meer gebouwen en eenheden kopen, enzovoorts. Veel speelplezier! </br> Het team van Meldkamerspel"
                     },
                     reminder: {
-                        join_alliance: "Lid worden van een alliantie heeft veel voordelen: extra beloningen voor het voltooien van alliantie-missies, steun van ervaren leden bij moeilijke missies en je kunt gebruik maken van faciliteiten van andere leden zoals ziekenhuizen en scholen! Druk nu op de knop om lid te worden van een alliantie!"
+                        join_alliance: "Lid worden van een team heeft veel voordelen: extra beloningen voor het voltooien van team-missies, steun van ervaren leden bij moeilijke missies en je kunt gebruik maken van faciliteiten van andere leden zoals ziekenhuizen en scholen! Druk nu op de knop om lid te worden van een team!"
                     }
                 }
             },
@@ -36244,7 +36246,8 @@ $(function () {
                     "intervention_order.vehicles.thw_tauchkraftwagen_or_gw_taucher")], [
                 "rettungstreppe", I18n.t("intervention_order.vehicles.rettungstreppe")], [
                 "elw_airport", I18n.t("intervention_order.vehicles.elw_airport")], ["ktw_or_rtw", I18n
-                .t("intervention_order.vehicles.ktw_or_rtw")], ["hlf_or_rw_and_lf", I18n.t(
+                .t("intervention_order.vehicles.ktw_or_rtw")], ["ktw_or_rtw_2", I18n.t(
+                "intervention_order.vehicles.ktw_or_rtw_2")], ["hlf_or_rw_and_lf", I18n.t(
                 "intervention_order.vehicles.hlf_or_rw_and_lf")], ["elw1_or_elw2", I18n.t(
                 "intervention_order.vehicles.elw1_or_elw2")], ["naw", I18n.t(
                 "intervention_order.vehicles.naw")], ["naw_or_rtw_and_nef", I18n.t(

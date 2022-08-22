@@ -16536,6 +16536,21 @@ label[for='showRetired']:hover {
     margin-bottom: 10px
 }
 
+@keyframes tutorial-alarm-button-highlight {
+    from {
+        border-color: #ffffff
+    }
+
+    to {
+        border-color: #3381e1
+    }
+}
+
+.tutorial-alarm-button-highlight {
+    border-width: 3px;
+    animation: tutorial-alarm-button-highlight 1.5s ease-in-out infinite alternate
+}
+
 /*
  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
  *
