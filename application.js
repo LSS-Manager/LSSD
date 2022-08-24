@@ -12839,6 +12839,7 @@ Object.values || (Object.values = function (e) {
             automatic_text_color: "자동 글 색상",
             back: "뒤로",
             categories: {
+                bereitschaftspolizei: "진압 경찰",
                 firefighting: "소방차",
                 police: "경찰",
                 rescue: "구조대"
