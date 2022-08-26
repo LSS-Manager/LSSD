@@ -9380,6 +9380,12 @@ Object.values || (Object.values = function (e) {
         intervention_order: {
             automatic_text_color: "Automatisk tekstfarge",
             back: "Tilbake",
+            categories: {
+                firefighting: "Brannslukking",
+                police: "Politi",
+                rescue: "Redning",
+                water_rescue: "Vannredning"
+            },
             category: "Kategori",
             colour: "Farge",
             column: "Kolonne",
@@ -12416,6 +12422,12 @@ Object.values || (Object.values = function (e) {
         intervention_order: {
             automatic_text_color: "自動テキストカラー",
             back: "戻る",
+            categories: {
+                bereitschaftspolizei: "対暴徒警察",
+                firefighting: "消防",
+                police: "警察",
+                rescue: "救助"
+            },
             category: "カテゴリー",
             colour: "カラー",
             column: "コラム",
@@ -47842,6 +47854,9 @@ I18n.t = function (e, t) {
     }, {
         from: "/images/vehicles/green_dogs.png",
         to: "/images/vehicles/blue_dogs.png"
+    }, {
+        from: "/images/vehicles/green_drone.png",
+        to: "/images/vehicles/blue_drone.png"
     }, {
         from: "/images/vehicles/green_plow.png",
         to: "/images/vehicles/blue_plow.png"
