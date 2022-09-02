@@ -7633,7 +7633,7 @@ Object.values || (Object.values = function (e) {
                 mek_mtf: "",
                 mek_zf: "",
                 mtw: "Trasporto truppa MTW",
-                municipal_police: "Seleziona un qualsiasi veicolo della polizia municipale",
+                municipal_police: "Seleziona un qualsiasi Veicolo Della Polizia Locale",
                 mzb: "Barca",
                 naw: "Ambulanza MSA",
                 naw_or_rtw_and_nef: "MSA o VLV",
