@@ -12105,7 +12105,7 @@ fieldset[disabled] .btn-gray.active {
 }
 
 .chatToSelf {
-    background-color: #d84f4b;
+    background-color: #c9302c;
     color: white
 }
 
@@ -16549,6 +16549,45 @@ label[for='showRetired']:hover {
 .tutorial-alarm-button-highlight {
     border-width: 3px;
     animation: tutorial-alarm-button-highlight 1.5s ease-in-out infinite alternate
+}
+
+@keyframes tutorial-alarm-button-highlight {
+    from {
+        border-color: #ffffff
+    }
+
+    to {
+        border-color: #3381e1
+    }
+}
+
+.tutorial-alarm-button-highlight {
+    border-width: 3px;
+    animation: tutorial-alarm-button-highlight 1.5s ease-in-out infinite alternate
+}
+
+.chatWhisper a.whisper-label {
+    color: black
+}
+
+body.dark .chatWhisper a.whisper-label {
+    color: black
+}
+
+.chatToSelf a.chat-username {
+    color: #ececec
+}
+
+body.dark .chatToSelf a.chat-username {
+    color: #ececec
+}
+
+a.chat-username-dark.label-info {
+    color: #393939 !important
+}
+
+a.chat-username-dark.label-default {
+    color: white !important
 }
 
 /*

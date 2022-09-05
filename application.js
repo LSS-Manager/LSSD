@@ -259,9 +259,9 @@ function allianceChat(e) {
         .whisper) && (t = "chatToSelf", "0" != e.whisper && (t = "chatWhisper", splitMessage = e.message
             .split(" "), splitMessage[0] = "<a username='" + splitMessage[0] +
             "' class='alliance_chat_private_username'><img class='alliance_chat_private_username' src='/images/icons8-privacy.svg'/></a><a href='/profile/" +
-            e.whisper + "' class='lightbox-open label label-warning'>" + splitMessage[0] + "</a>", e.message =
-            splitMessage.join(" ")), audio_chat_highlight && 1 != e.ignore_audio && user_id != e.user_id && !
-        i && (play("chat_message_highlight"), i = !0), !$("body")
+            e.whisper + "' class='lightbox-open label label-warning whisper-label'>" + splitMessage[0] +
+            "</a>", e.message = splitMessage.join(" ")), audio_chat_highlight && 1 != e.ignore_audio &&
+        user_id != e.user_id && !i && (play("chat_message_highlight"), i = !0), !$("body")
         .hasClass("bigMap") || missionMarkerBulkAdd || $("#chat_outer")
         .hasClass("fadeIn") || $("#bigMapMenuChatButton")
         .addClass("bigMapMenuButtonBlack"));
@@ -271,11 +271,11 @@ function allianceChat(e) {
         "] <img username='" + e.username +
         "' class='alliance_chat_copy_username' src='/images/icons8-reply.svg'><a username='" + e.username +
         "' class='alliance_chat_private_username'> <img class='alliance_chat_private_username' src='/images/icons8-privacy.svg' /></a> <a href='/profile/" +
-        e.user_id + "' class='lightbox-open ";
-    "true" == e.alliance_admin || "true" == e.alliance_owner ? o += "label label-info" : "true" == e
-        .alliance_coadmin && (o += "label label-default"), audio_chat && 1 != e.ignore_audio && user_id != e
-        .user_id && !i && (play("chat_message"), i = !0), o = o + "'>" + e.username + ":</a></span>", e
-        .mission_id && (o = o + "<a href='/missions/" + e.mission_id +
+        e.user_id + "' class='lightbox-open chat-username ";
+    "true" == e.alliance_admin || "true" == e.alliance_owner ? o += "chat-username-dark label label-info " :
+        "true" == e.alliance_coadmin && (o += "chat-username-dark label label-default"), audio_chat && 1 != e
+        .ignore_audio && user_id != e.user_id && !i && (play("chat_message"), i = !0), o = o + "'>" + e
+        .username + ":</a></span>", e.mission_id && (o = o + "<a href='/missions/" + e.mission_id +
             "' class='lightbox-open'><span class='glyphicon glyphicon-bell'></span>", "undefined" != typeof e
             .mission_caption && e.mission_caption && (o = o + "[" + e.mission_caption + "]"), o += "</a> "),
         o = o + " " + e.message + "</li>", $("#mission_chat_messages")
