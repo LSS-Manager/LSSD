@@ -13461,6 +13461,11 @@ body.bigMap #building_panel_body {
     background-size: auto 100%
 }
 
+.blackribbon {
+    background-image: url(/images/blackribbon.png);
+    background-size: auto 100%
+}
+
 .ui-helper-hidden {
     display: none
 }
@@ -16534,21 +16539,6 @@ label[for='showRetired']:hover {
 .collapse-table {
     border-collapse: collapse;
     margin-bottom: 10px
-}
-
-@keyframes tutorial-alarm-button-highlight {
-    from {
-        border-color: #ffffff
-    }
-
-    to {
-        border-color: #3381e1
-    }
-}
-
-.tutorial-alarm-button-highlight {
-    border-width: 3px;
-    animation: tutorial-alarm-button-highlight 1.5s ease-in-out infinite alternate
 }
 
 @keyframes tutorial-alarm-button-highlight {
