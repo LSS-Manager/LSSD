@@ -16580,6 +16580,26 @@ a.chat-username-dark.label-default {
     color: white !important
 }
 
+.col-lg16-2 {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px
+}
+
+@media (min-width: 1280px) {
+    .col-lg16-2 {
+        float: left;
+        width: 12.5%
+    }
+}
+
+@media (min-width: 1280px) {
+    .col-lg16-offset-7 {
+        margin-left: 43.75%
+    }
+}
+
 /*
  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
  *
