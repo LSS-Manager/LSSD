@@ -17690,6 +17690,11 @@ div.sceditor-group {
     background-size: auto 100%
 }
 
+.policechief .anniversarybar {
+    background-image: url(/images/policechief_anniversarybar.png);
+    background-size: auto 100%
+}
+
 .policechief .mothersdaybar {
     background-image: url(/images/policechief_mothersdaybar.png);
     background-size: auto 100%
