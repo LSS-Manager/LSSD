@@ -4021,6 +4021,7 @@ Object.values || (Object.values = function (e) {
             categories: {
                 bereitschaftspolizei: "Riot Police",
                 brush: "Brush fire",
+                coastal_rescue: "Coastal Rescue",
                 firefighting: "Firefighting",
                 police: "Police",
                 rescue: "Rescue",
@@ -5814,7 +5815,7 @@ Object.values || (Object.values = function (e) {
                 sek_mtf: "",
                 sek_zf: "",
                 swat: "Fuerzas especiales (GEO)",
-                swat_armored_vehicle: "Unidad Antidisturbios",
+                swat_armored_vehicle: "Unidad GOES",
                 swat_suv: "Unidad GEO",
                 thw_anh_mzab: "",
                 thw_anh_mzb: "",
@@ -8008,9 +8009,11 @@ Object.values || (Object.values = function (e) {
             back: "Retour",
             categories: {
                 bereitschaftspolizei: "Maintien de l'Ordre",
+                coastal_rescue: "Sauvetage Côtier",
                 firefighting: "Sapeurs-pompiers",
                 police: "Police",
-                rescue: "Secours a Personne"
+                rescue: "Secours a Personne",
+                water_rescue: "Secours nautique"
             },
             category: "Catégorie",
             colour: "Couleur",
