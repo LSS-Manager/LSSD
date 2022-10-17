@@ -5211,6 +5211,9 @@ Object.values || (Object.values = function (e) {
         intervention_order: {
             automatic_text_color: "Automatische tekstkleur",
             back: "Terug",
+            categories: {
+                coastal_rescue: "Kustwacht"
+            },
             category: "Categorie",
             colour: "Kleur",
             column: "Kolom",
