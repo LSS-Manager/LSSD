@@ -7469,6 +7469,7 @@ Object.values || (Object.values = function (e) {
                 building_complex: "Complesso di edifici",
                 buildings_section: "Stazioni",
                 clinic_missions: "Clinica",
+                coastal_rescue_missions: "Guardia Costiera",
                 dispatch_center_missions: "Centrale operativa",
                 fire_school_missions: "Scuola dei vigili del fuoco",
                 firehouse_missions: "Caserma dei vigili del fuoco",
