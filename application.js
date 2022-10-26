@@ -5148,6 +5148,7 @@ Object.values || (Object.values = function (e) {
                 building_complex: "Gebouwencomplex",
                 buildings_section: "Posten",
                 clinic_missions: "Clinic",
+                coastal_rescue_missions: "Kustwacht",
                 dispatch_center_missions: "Meldkamer",
                 fire_school_missions: "Brandweer, Academie",
                 firehouse_missions: "Brandweer, Kazerne",
