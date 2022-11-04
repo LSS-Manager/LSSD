@@ -17725,6 +17725,11 @@ div.sceditor-group {
     background-size: auto 100%
 }
 
+.policechief .sinterklaasbar {
+    background-image: url(/images/policechief_sinterklaas_bar.png);
+    background-size: auto 100%
+}
+
 .policechief .mission_header_info_progress .progress-bar-danger,
 .policechief .mission_progress .progress-bar-danger {
     background-image: none;
