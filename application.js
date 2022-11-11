@@ -3938,7 +3938,7 @@ Object.values || (Object.values = function (e) {
             map: "Map",
             map_filters: {
                 all_buildings: "Buildings",
-                all_missions: "Missons",
+                all_missions: "Missions",
                 alliance_buildings: "Alliance Buildings",
                 alliance_members: "Members",
                 alliance_missions: "Shared by Alliance",
@@ -4573,7 +4573,7 @@ Object.values || (Object.values = function (e) {
             map: "Map",
             map_filters: {
                 all_buildings: "Buildings",
-                all_missions: "Missons",
+                all_missions: "Missions",
                 alliance_buildings: "Alliance Buildings",
                 alliance_members: "Members",
                 alliance_missions: "Shared by Alliance",
@@ -6059,7 +6059,7 @@ Object.values || (Object.values = function (e) {
             map: "Map",
             map_filters: {
                 all_buildings: "Buildings",
-                all_missions: "Missons",
+                all_missions: "Missions",
                 alliance_buildings: "Alliance Buildings",
                 alliance_members: "Members",
                 alliance_missions: "Shared by Alliance",
@@ -8858,6 +8858,7 @@ Object.values || (Object.values = function (e) {
                 building_complex: "Bygningskompleks",
                 buildings_section: "Stationer",
                 clinic_missions: "Klinik",
+                coastal_rescue_missions: "Kystredning",
                 dispatch_center_missions: "Alarmcentral",
                 fire_school_missions: "Brandakademi",
                 firehouse_missions: "Brandstation",
@@ -8923,6 +8924,7 @@ Object.values || (Object.values = function (e) {
             back: "Tilbage",
             categories: {
                 bereitschaftspolizei: "Uropoliti",
+                coastal_rescue: "Kystredning",
                 firefighting: "Brandslukning",
                 police: "Politi",
                 rescue: "Redning",
