@@ -13653,6 +13653,7 @@ Object.values || (Object.values = function (e) {
                 building_complex: "Rakennuskompleksi",
                 buildings_section: "Asemat",
                 clinic_missions: "Klinikka",
+                coastal_rescue_missions: "Rajavartiolaitos",
                 dispatch_center_missions: "Hätäkeskus",
                 fire_school_missions: "Pelastajaoppilaitos",
                 firehouse_missions: "Paloasema",
@@ -13719,7 +13720,8 @@ Object.values || (Object.values = function (e) {
             categories: {
                 firefighting: "Palokunta",
                 police: "Poliisi",
-                rescue: "Ambulanssi"
+                rescue: "Ambulanssi",
+                water_rescue: "Rajavartiolaitos"
             },
             category: "Luokka",
             colour: "Väri",
