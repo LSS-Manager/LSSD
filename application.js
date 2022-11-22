@@ -6546,6 +6546,7 @@ Object.values || (Object.values = function (e) {
                 building_complex: "Byggnadskomplex",
                 buildings_section: "Stationer",
                 clinic_missions: "Klinik",
+                coastal_rescue_missions: "Kusträddning",
                 dispatch_center_missions: "Larmcentral",
                 fire_school_missions: "Räddningsskola",
                 firehouse_missions: "Brandstation",
@@ -6611,6 +6612,7 @@ Object.values || (Object.values = function (e) {
             back: "Tillbaka",
             categories: {
                 brush: "Skogsbrandkår",
+                coastal_rescue: "Kusträddning",
                 firefighting: "Brandkår",
                 police: "Polis",
                 rescue: "Räddning",
