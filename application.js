@@ -2135,7 +2135,7 @@ function lightboxShowClose(e) {
 function lighboxCalculateHeight() {}
 
 function lightboxOpen(e) {
-    if (1 == mobile_bridge_use) mobileBridgeAdd("lightbox_open", {
+    if (1 == mobile_bridge_use && 0 == mixed_mobile_desktop_mode) mobileBridgeAdd("lightbox_open", {
         url: e
     });
     else {
@@ -36255,6 +36255,7 @@ var map, alliance_member_buildings_show, geocoder, directionsService, building_e
     alliance_mission_distance = !1,
     mobile_bridge_content = Array(),
     mobile_bridge_use = !1,
+    mixed_mobile_desktop_mode = !1,
     mobile_version = 1,
     vehicle_markers = Array(),
     icon_empty, vehicles_not_involved = Array(),
