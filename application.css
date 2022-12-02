@@ -15834,7 +15834,7 @@ body.bigMap #search_input_field_missions {
 
 .system_messages_content_container {
     overflow-y: auto;
-    max-height: 90px
+    max-height: 110px
 }
 
 .panel-body.system_messages_container {

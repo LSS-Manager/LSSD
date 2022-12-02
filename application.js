@@ -3344,6 +3344,7 @@ Object.values || (Object.values = function (e) {
     }), I18n.translations || (I18n.translations = {}), I18n.translations.de_DE = {
         common: {
             add: "Hinzufügen",
+            all: "Alle",
             back: "Zurück",
             cancel: "Abbrechen",
             change_saved: "Änderung gespeichert",
@@ -3827,6 +3828,7 @@ Object.values || (Object.values = function (e) {
     }, I18n.translations.en_US = {
         common: {
             add: "Add",
+            all: "All",
             back: "Back",
             cancel: "Cancel",
             change_saved: "Changes saved",
@@ -4479,6 +4481,7 @@ Object.values || (Object.values = function (e) {
     }, I18n.translations.en_GB = {
         common: {
             add: "Add",
+            all: "All",
             back: "Back",
             cancel: "Cancel",
             change_saved: "Changes saved",
@@ -4590,6 +4593,7 @@ Object.values || (Object.values = function (e) {
                 building_complex: "Building Complex",
                 buildings_section: "Stations",
                 clinic_missions: "Clinic",
+                coastal_rescue_missions: "SAR",
                 dispatch_center_missions: "Dispatch Center",
                 fire_school_missions: "Fire Academy",
                 firehouse_missions: "Fire Station",
@@ -5040,6 +5044,7 @@ Object.values || (Object.values = function (e) {
     }, I18n.translations.nl_NL = {
         common: {
             add: "Toevoegen",
+            all: "Allemaal",
             back: "Terug",
             cancel: "Cancel",
             change_saved: "Veranderingen opgeslagen",
@@ -5528,6 +5533,7 @@ Object.values || (Object.values = function (e) {
     }, I18n.translations.es_ES = {
         common: {
             add: "Añadir",
+            all: "Todos",
             back: "Atrás",
             cancel: "Cancelar",
             change_saved: "Cambios guardados",
@@ -5967,6 +5973,7 @@ Object.values || (Object.values = function (e) {
     }, I18n.translations.en_AU = {
         common: {
             add: "Add",
+            all: "All",
             back: "Back",
             cancel: "Cancel",
             change_saved: "Changes saved",
@@ -6445,6 +6452,7 @@ Object.values || (Object.values = function (e) {
     }, I18n.translations.sv_SE = {
         common: {
             add: "Lägg till",
+            all: "All",
             back: "Tillbaka",
             cancel: "Avbryt",
             change_saved: "Ändringar sparade",
@@ -6889,6 +6897,7 @@ Object.values || (Object.values = function (e) {
     }, I18n.translations.pl_PL = {
         common: {
             add: "Dodaj",
+            all: "Wszystkie",
             back: "Wstecz",
             cancel: "Anuluj",
             change_saved: "Zapisano zmiany",
@@ -7378,6 +7387,7 @@ Object.values || (Object.values = function (e) {
     }, I18n.translations.it_IT = {
         common: {
             add: "Aggiungi",
+            all: "Tutte",
             back: "Indietro",
             cancel: "Annulla",
             change_saved: "Modifiche salvate",
@@ -7862,6 +7872,7 @@ Object.values || (Object.values = function (e) {
     }, I18n.translations.fr_FR = {
         common: {
             add: "Ajouter",
+            all: "Tout",
             back: "Retour",
             cancel: "Annuler",
             change_saved: "Modifications enregistrées",
@@ -8338,6 +8349,7 @@ Object.values || (Object.values = function (e) {
     }, I18n.translations.ru_RU = {
         common: {
             add: "Добавить",
+            all: "Все",
             back: "Назад",
             cancel: "Отменить",
             change_saved: "Изменения сохранены",
@@ -8768,6 +8780,7 @@ Object.values || (Object.values = function (e) {
     }, I18n.translations.da_DK = {
         common: {
             add: "Tilføj",
+            all: "Alle",
             back: "Tilbage",
             cancel: "Annullér",
             change_saved: "Ændringer gemt",
@@ -9248,6 +9261,7 @@ Object.values || (Object.values = function (e) {
     }, I18n.translations.nb_NO = {
         common: {
             add: "Legg til",
+            all: "Alle",
             back: "Tilbake",
             cancel: "Avbryt",
             change_saved: "Endringer lagret",
@@ -9728,6 +9742,7 @@ Object.values || (Object.values = function (e) {
     }, I18n.translations.cs_CZ = {
         common: {
             add: "Přidat",
+            all: "Všechny",
             back: "Zpět",
             cancel: "Zrušit",
             change_saved: "Změny uloženy",
@@ -10195,6 +10210,7 @@ Object.values || (Object.values = function (e) {
     }, I18n.translations.tr_TR = {
         common: {
             add: "Ekle",
+            all: "Tümü",
             back: "Geri",
             cancel: "İptal et",
             change_saved: "Değişiklikler kaydedildi",
@@ -10597,6 +10613,7 @@ Object.values || (Object.values = function (e) {
     }, I18n.translations.pt_PT = {
         common: {
             add: "Adicionar",
+            all: "Tudo",
             back: "Voltar",
             cancel: "Cancelar",
             change_saved: "Alterações salvas",
@@ -11074,6 +11091,7 @@ Object.values || (Object.values = function (e) {
     }, I18n.translations.pt_BR = {
         common: {
             add: "Adicionar",
+            all: "Tudo",
             back: "Voltar",
             cancel: "Cancelar",
             change_saved: "Alterações salvas",
@@ -11489,6 +11507,7 @@ Object.values || (Object.values = function (e) {
     }, I18n.translations.uk_UA = {
         common: {
             add: "Додати",
+            all: "Всі",
             back: "Назад",
             cancel: "Скасувати",
             change_saved: "Зміни збережено",
@@ -11893,6 +11912,7 @@ Object.values || (Object.values = function (e) {
     }, I18n.translations.es_MX = {
         common: {
             add: "Añadir",
+            all: "Todos",
             back: "Atrás",
             cancel: "Cancelar",
             change_saved: "Cambios guardados",
@@ -12297,6 +12317,7 @@ Object.values || (Object.values = function (e) {
     }, I18n.translations.ja_JP = {
         common: {
             add: "追加",
+            all: "すべて",
             back: "戻る",
             cancel: "キャンセル",
             change_saved: "変更内容を保存しました",
@@ -12727,6 +12748,7 @@ Object.values || (Object.values = function (e) {
     }, I18n.translations.ko_KR = {
         common: {
             add: "추가",
+            all: "모두",
             back: "뒤로",
             cancel: "취소",
             change_saved: "변경 저장됨",
@@ -13161,6 +13183,7 @@ Object.values || (Object.values = function (e) {
     }, I18n.translations.ro_RO = {
         common: {
             add: "Adaugă",
+            all: "Toate",
             back: "Înapoi",
             cancel: "Anulează",
             change_saved: "Schimbări salvate",
@@ -13576,6 +13599,7 @@ Object.values || (Object.values = function (e) {
     }, I18n.translations.fi_FI = {
         common: {
             add: "Lisää",
+            all: "Kaikki",
             back: "Palaa",
             cancel: "Peruuta",
             change_saved: "Muutokset tallennettu",
@@ -14056,6 +14080,7 @@ Object.values || (Object.values = function (e) {
     }, I18n.translations.sk_SK = {
         common: {
             add: "Pridať",
+            all: "Všetky",
             back: "Späť",
             cancel: "Zrušiť",
             change_saved: "Zmeny uložené",
