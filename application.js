@@ -4031,6 +4031,7 @@ Object.values || (Object.values = function (e) {
                 firefighting: "Firefighting",
                 police: "Police",
                 rescue: "Rescue",
+                search_and_rescue: "Search and Rescue",
                 water_rescue: "Water Rescue"
             },
             category: "Category",
@@ -4149,6 +4150,8 @@ Object.values || (Object.values = function (e) {
                 hems: "HEMS",
                 hint: {
                     foam_amount: "Sum of foam in gallons. Example: if you enter 10000 - then only those vehicles will be selected that have a total of 10000 gallons of extinguishing foam.",
+                    pump_speed: "Select vehicles until the required pump speed is reached.",
+                    rescue_dogs: "The ARR selects vehicles until it has the entered number of rescue dogs or more.",
                     water_amount: ""
                 },
                 hlf_only: "",
@@ -4203,6 +4206,7 @@ Object.values || (Object.values = function (e) {
                 road_rescue_or_fire_engine: "Road Rescue or Fire Engine",
                 rth_only: "Helicopter",
                 schlauchwagen: "Water Tanker",
+                search_and_rescue: "SAR Vehicles",
                 seg_elw: "",
                 sek_mtf: "",
                 sek_zf: "",
@@ -6089,6 +6093,7 @@ Object.values || (Object.values = function (e) {
                 building_complex: "Building Complex",
                 buildings_section: "Stations",
                 clinic_missions: "Clinic",
+                coastal_rescue_missions: "VMR Missions",
                 dispatch_center_missions: "Dispatch Center",
                 fire_school_missions: "Fire Academy",
                 firehouse_missions: "Fire Station",
@@ -6113,8 +6118,8 @@ Object.values || (Object.values = function (e) {
                 technical_aid_organization_school: "THW Bundesschule",
                 user_buildings: "My buildings",
                 user_missions: "My missions",
-                water_watch: "Water Rescue",
-                water_watch_missions: "Water Rescue"
+                water_watch: "SES Missions",
+                water_watch_missions: "SES Missions"
             },
             message: "Message",
             mission: "Missions",
@@ -6155,6 +6160,7 @@ Object.values || (Object.values = function (e) {
             categories: {
                 bereitschaftspolizei: "Riot Police",
                 brush: "Bushfire",
+                coastal_rescue: "MVR",
                 firefighting: "Firefighting",
                 police: "Police",
                 rescue: "Rescue",
@@ -6959,6 +6965,9 @@ Object.values || (Object.values = function (e) {
             patient: "Pacjent",
             patient_untouched: "Pacjenci bez opieki",
             poi_delete: "Czy na pewno chcesz usunąć UM: %{caption}?",
+            pump_speed_approaching: "W drodze: %{amount} l/min",
+            pump_speed_missing: "Potrzebne: %{amount} l/min",
+            pump_speed_selected: "Wybrano: : %{amount} l/min",
             reload: "Odśwież",
             sale: "Wyprzedaż",
             sale_ended: "Promocja zakończona",
@@ -6976,6 +6985,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "W drodze: %{amount} l.",
             water_missing: "Potrzebna: %{amount} l.",
             water_on_site: "Na miejscu: %{amount} l.",
+            water_pumping_process: "Trwa odpompowywanie wody",
             water_selected: "Wybrany: %{amount} l."
         },
         map: {
@@ -7085,6 +7095,7 @@ Object.values || (Object.values = function (e) {
                 firefighting: "Straż pożarna",
                 police: "Policja",
                 rescue: "Pogotowie",
+                search_and_rescue: "Ratownictwo poszukiwawczo - ratownicze",
                 water_rescue: "WOPR"
             },
             category: "Kategoria",
@@ -7172,6 +7183,8 @@ Object.values || (Object.values = function (e) {
                 hems: "Śmigłowiec LPR",
                 hint: {
                     foam_amount: "Suma piany w litrach. Przykład: jeśli wpiszesz 10000 - wtedy zostanie wybranych tyle pojazdów, których suma piany gaśniczej wyniesie 10000 l.",
+                    pump_speed: "Wybiera tyle pojazdów, aż wymagana wydajność pomp zostanie osiągnięta.",
+                    rescue_dogs: "Wybiera tyle pojazdów, aż podana ilość psów ratowniczych zostanie osiągnięta.",
                     water_amount: "Suma wody w litrach. Przykład: jeśli wpiszesz 10000 - wtedy zostanie wybranych tyle pojazdów, których suma wody gaśniczej wyniesie 10000 l."
                 },
                 hlf_only: "GBARt",
@@ -7203,6 +7216,8 @@ Object.values || (Object.values = function (e) {
                 police_car: "Pojazd OPI",
                 police_motorcycle: "Quad Policyjny",
                 polizeihubschrauber: "Helikopter Policyjny",
+                pump_speed: "Wydajność pomp",
+                rescue_dogs: "Samochód z psami ratowniczymi",
                 rescue_vehicle: "Samochód Ratownictwa Technicznego",
                 rescue_vehicle_only: "Samochód Ratownictwa Technicznego",
                 rescueboat: "Duża łódź ratownicza",
@@ -7210,6 +7225,7 @@ Object.values || (Object.values = function (e) {
                 riot_police: "Radiowóz OPP",
                 rth_only: "Śmigłowiec",
                 schlauchwagen: "Cysterna z wodą",
+                search_and_rescue: "Samochód poszukiwawczo - ratowniczy",
                 seg_elw: "",
                 sek_mtf: "",
                 sek_zf: "",
@@ -9960,7 +9976,6 @@ Object.values || (Object.values = function (e) {
                 ambulance: "Sanitka RZP",
                 ambulance_or_rapid_responder: "",
                 any_traffic_car: "Vozidlo vyšetřovatelů DN",
-                arff: "Letištní speciál",
                 battalion_chief_unit: "Velitelský automobil",
                 boot: "Přívěs se člunem",
                 crew_carrier_or_fire_engine: "CAS nebo DA",
@@ -10030,7 +10045,6 @@ Object.values || (Object.values = function (e) {
                 rescue_vehicle: "Technický automobil",
                 rescue_vehicle_only: "Těžká záchranářská jednotka",
                 rescueboat: "Velká záchranářská loď",
-                rettungstreppe: "",
                 road_rescue_or_fire_engine: "CAS nebo RZA",
                 rth_only: "Vrtulník LZS",
                 schlauchwagen: "Kombinovaný hasící automobil",
