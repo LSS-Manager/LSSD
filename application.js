@@ -6967,6 +6967,7 @@ Object.values || (Object.values = function (e) {
             poi_delete: "Czy na pewno chcesz usunąć UM: %{caption}?",
             pump_speed_approaching: "W drodze: %{amount} l/min",
             pump_speed_missing: "Potrzebne: %{amount} l/min",
+            pump_speed_on_site: "Na miejscu: %{amount} l/min",
             pump_speed_selected: "Wybrano: : %{amount} l/min",
             reload: "Odśwież",
             sale: "Wyprzedaż",
@@ -6985,7 +6986,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "W drodze: %{amount} l.",
             water_missing: "Potrzebna: %{amount} l.",
             water_on_site: "Na miejscu: %{amount} l.",
-            water_pumping_process: "Trwa odpompowywanie wody",
+            water_pumping_process: "Proces odpompowywania wody",
             water_selected: "Wybrany: %{amount} l."
         },
         map: {
