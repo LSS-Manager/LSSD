@@ -1315,13 +1315,14 @@ function missionMarkerAdd(e) {
         mission_graphics[e.mtid][e.vehicle_state] : "/images/" + e.icon + ".png";
     var s = "red";
     1 == e.vehicle_state && (s = "yellow"), 2 == e.vehicle_state && (s = "green"), e.user_id != user_id && (
-        0 != leitstelle_latitude && (i = leiststelleMinDistance(e.latitude, e.longitude)), null == e
-        .user_id ? (e.caption = "[" + I18n.t("map.alliance_event") + "] " + e.caption, o = o + " " + I18n
-            .t("map.alliance_event")) : (e.caption = "[" + I18n.t("map.alliance") + "] " + e.caption, o =
-            o + " " + I18n.t("map.alliance")), alliance_mission_distance !== !1 && i >
-        alliance_mission_distance && (n = !0)), 1 == mobile_bridge_use && currentMarkerTypeFilterTurnedOn(
-        e.filter_id) && (4 == mobile_version && (e.app_icon_path = -1 !== String(a)
-        .indexOf("//") ? a : currentHostname() + a), mobileBridgeAdd("mission", e));
+            0 != leitstelle_latitude && (i = leiststelleMinDistance(e.latitude, e.longitude)), null == e
+            .user_id ? (e.caption = "[" + I18n.t("map.alliance_event") + "] " + e.caption, o = o + " " + I18n
+                .t("map.alliance_event")) : (e.caption = "[" + I18n.t("map.alliance") + "] " + e.caption, o =
+                o + " " + I18n.t("map.alliance")), alliance_mission_distance !== !1 && i >
+            alliance_mission_distance && (n = !0)), 1 == mobile_bridge_use && 0 ==
+        mixed_mobile_desktop_mode && currentMarkerTypeFilterTurnedOn(e.filter_id) && (4 == mobile_version && (
+            e.app_icon_path = -1 !== String(a)
+            .indexOf("//") ? a : currentHostname() + a), mobileBridgeAdd("mission", e));
     var r = e.caption;
     "" != e.captionOld && (r = "<small id='mission_old_caption_" + e.id + "'><s>" + e.captionOld +
         "</s></small> " + r), "" != e.address && (r = r + ", <small  id='mission_address_" + e.id + "'>" +
