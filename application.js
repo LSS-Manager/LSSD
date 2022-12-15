@@ -4027,8 +4027,9 @@ Object.values || (Object.values = function (e) {
             battalion_chief_unit: "",
             categories: {
                 bereitschaftspolizei: "Riot Police",
-                brush: "Brush fire",
+                brush: "Wildfire",
                 coastal_rescue: "Coastal Rescue",
+                fbi: "FBI & DEA",
                 firefighting: "Firefighting",
                 police: "Police",
                 rescue: "Rescue",
@@ -4086,7 +4087,7 @@ Object.values || (Object.values = function (e) {
                 battalion_chief_unit: "Battalion Chief unit",
                 bike_police: "DB-Bike",
                 boot: "Light boats (General)",
-                brush_air_commando: "Wildland Lead Planes",
+                brush_air_command: "Wildland Lead Planes",
                 brush_truck: "Wildland fire engine",
                 brush_truck_1: "Type 3 engine",
                 brush_truck_2: "Type 5 engine",
@@ -10816,7 +10817,8 @@ Object.values || (Object.values = function (e) {
                 brush: "Inc. Florestais",
                 firefighting: "Bombeiros",
                 police: "Polícia",
-                rescue: "Pré-Hospitalar"
+                rescue: "Pré-Hospitalar",
+                water_rescue: "Resgate aquático"
             },
             category: "Categoria",
             colour: "Cor",
@@ -36499,7 +36501,10 @@ $(function () {
                 I18n.t("intervention_order.vehicles.detention_unit")], ["coastal_boat", I18n.t(
                 "intervention_order.vehicles.coastal_boat")], ["coastal_guard_boat", I18n.t(
                 "intervention_order.vehicles.coastal_guard_boat")], ["large_coastal_boat", I18n.t(
-                "intervention_order.vehicles.large_coastal_boat")]], $("#restore_map")
+                "intervention_order.vehicles.large_coastal_boat")], ["coastal_rescue", I18n.t(
+                "intervention_order.vehicles.coastal_rescue")], ["mud_rescue", I18n.t(
+                "intervention_order.vehicles.mud_rescue")], ["coastal_helicopter", I18n.t(
+                "intervention_order.vehicles.coastal_helicopter")]], $("#restore_map")
         .click(function () {
             mapViewRestore()
         }), $("#coins_top")
