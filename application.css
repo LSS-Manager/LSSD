@@ -13461,6 +13461,16 @@ body.bigMap #building_panel_body {
     background-size: auto 100%
 }
 
+.wintereventbar {
+    background-image: url(/images/winterevent_bar.png);
+    background-size: auto 100%
+}
+
+.summereventbar {
+    background-image: url(/images/summerevent_bar.png);
+    background-size: auto 100%
+}
+
 .blackribbon {
     background-image: url(/images/blackribbon.png);
     background-size: auto 100%
@@ -17717,6 +17727,16 @@ div.sceditor-group {
 
 .policechief .falleventbar {
     background-image: url(/images/fallevent_bar_pc.png);
+    background-size: auto 100%
+}
+
+.policechief .wintereventbar {
+    background-image: url(/images/winterevent_bar_pc.png);
+    background-size: auto 100%
+}
+
+.policechief .summereventbar {
+    background-image: url(/images/summerevent_bar_pc.png);
     background-size: auto 100%
 }
 
