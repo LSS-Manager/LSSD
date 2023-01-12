@@ -16551,6 +16551,27 @@ label[for='showRetired']:hover {
     margin-bottom: 10px
 }
 
+.not-enough-coins-modal .modal-footer {
+    text-align: left
+}
+
+.not-enough-coins-modal .package {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px
+}
+
+.not-enough-coins-modal .package .coins-block {
+    margin-bottom: 0;
+    margin-right: 10px;
+    width: 25%;
+    text-align: center
+}
+
+.not-enough-coins-modal .package .buy-block {
+    min-width: 30%
+}
+
 @keyframes tutorial-alarm-button-highlight {
     from {
         border-color: #ffffff

@@ -2966,6 +2966,19 @@ function flashHighlightById(e) {
     })
 }
 
+function showCoinsPopup(e) {
+    var t = null;
+    t = $("#lightbox_box")
+        .is(":visible") ? $(".lightbox_iframe")
+        .contents()
+        .find(".not-enough-coins-popup-container") : $(".not-enough-coins-popup-container");
+    var i = "/coins/not_enough_coins?cost=" + e;
+    t.load(i, function () {
+        t.find(".not-enough-coins-modal")
+            .modal("show")
+    })
+}
+
 function missionPositionMarkerAdd(e) {
     1 == mobile_bridge_use && mobileBridgeAdd("poi", [e])
 }
@@ -4718,6 +4731,9 @@ Object.values || (Object.values = function (e) {
         intervention_order: {
             automatic_text_color: "Automatic Text Color",
             back: "Back",
+            categories: {
+                water_rescue: "Technical Rescue and SAR"
+            },
             category: "Category",
             colour: "Color",
             column: "Column",
