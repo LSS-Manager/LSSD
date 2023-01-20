@@ -4047,6 +4047,7 @@ Object.values || (Object.values = function (e) {
                 police: "Police",
                 rescue: "Rescue",
                 search_and_rescue: "Search and Rescue",
+                technical_aid: "Technical Aid",
                 water_rescue: "Water Rescue"
             },
             category: "Category",
@@ -4093,6 +4094,7 @@ Object.values || (Object.values = function (e) {
                 ambulance: "ALS ambulance",
                 ambulance_or_rapid_responder: "",
                 any_traffic_car: "Any Traffic Car",
+                any_traffic_unit: "Any Traffic Unit",
                 arff: "ARFF (Airport Fire Truck)",
                 at_c: "",
                 at_m: "",
@@ -5307,7 +5309,8 @@ Object.values || (Object.values = function (e) {
             automatic_text_color: "Automatische tekstkleur",
             back: "Terug",
             categories: {
-                coastal_rescue: "Kustwacht"
+                coastal_rescue: "Kustwacht",
+                technical_aid: "Signalisatie"
             },
             category: "Categorie",
             colour: "Kleur",
@@ -5351,6 +5354,8 @@ Object.values || (Object.values = function (e) {
                 abl2wasser_only: "Watertransportsysteem-haakarmbak",
                 ambulance: "Ambulance",
                 ambulance_or_rapid_responder: "Ambulance of Rapid Responder",
+                any_traffic_car: "Signalisatie Voertuig (DA-RWS, DA-SIG of DM-RWS)",
+                any_traffic_unit: "Signalisatie Voertuig (DA-RWS, DA-SIG of DM-RWS)",
                 arff: "Crashtender",
                 at_c: "AT-Commandant",
                 at_m: "AT-Materiaalwagen",
@@ -5455,6 +5460,7 @@ Object.values || (Object.values = function (e) {
                 thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "",
                 tm50: "",
+                traffic_car: "Signalisatie Voertuig (DA-RWS, DA-SIG of DM-RWS)",
                 turboloescher: "",
                 turntable_ladder: "Redvoertuig",
                 ulf: "",
@@ -10105,6 +10111,13 @@ Object.values || (Object.values = function (e) {
         intervention_order: {
             automatic_text_color: "Automatická barva textu",
             back: "Zpět",
+            categories: {
+                bereitschaftspolizei: "Pořádková jednotka",
+                firefighting: "Hasičský vůz",
+                police: "Policie",
+                rescue: "Sanitka",
+                water_rescue: "Vodní záchranná služba"
+            },
             category: "Kategorie",
             colour: "Barva",
             column: "Sloupec",
