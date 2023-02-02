@@ -12653,6 +12653,7 @@ Object.values || (Object.values = function (e) {
                 building_complex: "連結建造物",
                 buildings_section: "ステーション",
                 clinic_missions: "クリニック",
+                coastal_rescue_missions: "沿岸救助ミッション",
                 dispatch_center_missions: "指令センター",
                 fire_school_missions: "消防アカデミー",
                 firehouse_missions: "消防局",
@@ -12718,6 +12719,7 @@ Object.values || (Object.values = function (e) {
             back: "戻る",
             categories: {
                 bereitschaftspolizei: "対暴徒警察",
+                coastal_rescue: "水上警察",
                 firefighting: "消防",
                 police: "警察",
                 rescue: "救助"
@@ -13084,6 +13086,7 @@ Object.values || (Object.values = function (e) {
                 building_complex: "복합 건물",
                 buildings_section: "관할서",
                 clinic_missions: "클리닉",
+                coastal_rescue_missions: "수상 구조 임무",
                 dispatch_center_missions: "지휘센터",
                 fire_school_missions: "소방학교",
                 firehouse_missions: "소방서",
@@ -13149,6 +13152,7 @@ Object.values || (Object.values = function (e) {
             back: "뒤로",
             categories: {
                 bereitschaftspolizei: "진압 경찰",
+                coastal_rescue: "해안 구조",
                 firefighting: "소방차",
                 police: "경찰",
                 rescue: "구조대"
