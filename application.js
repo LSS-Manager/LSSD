@@ -4797,7 +4797,7 @@ Object.values || (Object.values = function (e) {
                 battalion_chief_unit: "Fire Officer",
                 boot: "Boats (General)",
                 coastal_helicopter: "Coastguard Rescue Helicopter",
-                coastal_rescue: "Any Coastal Guard Vehicle",
+                coastal_rescue: "Coastal Rescue, Rope Rescue or Mud Rescue Vehicle",
                 coresponder: "Co-Responder Vehicle",
                 crew_carrier: "Crew Carrier",
                 dekon_p: "",
