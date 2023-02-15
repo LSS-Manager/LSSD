@@ -5754,6 +5754,7 @@ Object.values || (Object.values = function (e) {
                 building_complex: "Complejo de edificios",
                 buildings_section: "Instalaciones",
                 clinic_missions: "Clínica",
+                coastal_rescue_missions: "Rescate costero",
                 dispatch_center_missions: "Centralita",
                 fire_school_missions: "Academia de bomberos",
                 firehouse_missions: "Parque de bomberos",
