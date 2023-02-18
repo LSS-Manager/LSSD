@@ -1,0 +1,11 @@
+{
+  "name": "lssd",
+  "packageManager": "yarn@3.4.1",
+  "scripts": {
+    "download": "yarn node .download.js"
+  },
+  "dependencies": {
+    "js-beautify": "^1.14.7",
+    "jsdom": "^21.1.0"
+  }
+}
