@@ -3,6 +3,7 @@ Für mich und andere Entwickler eine kleine Übersicht der Einsätze aller Spiel
 
 <!-- automated -->
 ## Beautify options
+Tool: [js-beautify](https://github.com/beautify-web/js-beautify)
 ```json
 {
     "indent_size": "4",
@@ -30,12 +31,12 @@ Für mich und andere Entwickler eine kleine Übersicht der Einsätze aller Spiel
 | --------- | ----- |
 | File      | [application-5acde73b640ef99a8d756abfd3c10bb9.js](https://missionchief.co.uk/assets/application-5acde73b640ef99a8d756abfd3c10bb9.js) |
 | Server    | https://missionchief.co.uk |
-| Time      | 2023-02-18T09:20:43.647Z |
+| Time      | 2023-02-18T09:36:24.537Z |
 
 ## CSS
 | Attribute | Value |
 | --------- | ----- |
 | File      | [application-998cec7e61ae0d27907d671f5c6681e7.css](https://missionchief.co.uk/assets/application-998cec7e61ae0d27907d671f5c6681e7.css) |
 | Server    | https://missionchief.co.uk |
-| Time      | 2023-02-18T09:20:43.647Z |
+| Time      | 2023-02-18T09:36:24.537Z |
 <!-- /automated -->

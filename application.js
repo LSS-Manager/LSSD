@@ -5820,9 +5820,11 @@ Object.values || (Object.values = function (e) {
             back: "Atrás",
             categories: {
                 bereitschaftspolizei: "Policía antidisturbios",
+                coastal_rescue: "Rescate costero",
                 firefighting: "Bomberos",
                 police: "Policía",
-                rescue: "Rescate"
+                rescue: "Rescate",
+                water_rescue: "Rescate acuático"
             },
             category: "Categoría",
             colour: "Color",
