@@ -1,0 +1,60 @@
+name: '[📥️] Download'
+
+on:
+    workflow_dispatch:
+    schedule:
+        - cron: '0 8-18/2 * * 1-5' # At minute 0 past every 2nd hour from 8 through 18 on every day-of-week from Monday through Friday.
+        - cron: '0 0 * * *'        # Every day at midnight
+
+jobs:
+    build:
+        name: '[📥️] Download'
+        runs-on: 'ubuntu-latest'
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0 # checkout full history
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 18
+
+            - name: Set yarn version to latest stable
+              run: |
+                  corepack enable
+                  yarn set version latest
+            - name: Get yarn cache directory path
+              run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+
+            - name: Restore Cache
+              uses: actions/cache@v3
+              with:
+                  path: |
+                      ${{ steps.yarn_cache_dir.outputs.dir }}
+                      **/node_modules
+                      **/.eslintcache
+                  key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock', '.yarnrc.yml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-yarn-
+
+            - name: Install dependencies
+              run: |
+                  yarn install --immutable
+
+            - name: Run Download Script
+              run: |
+                  yarn download
+
+            - name: Show changes
+              run: |
+                  git --no-pager diff --color-words
+
+#            - name: Commit & Push changes
+#              if: github.ref == 'refs/heads/master'
+#              uses: actions-js/push@master
+#              with:
+#                  github_token: ${{ secrets.GITHUB_TOKEN }}
+#                  message: 'chore: updates by CI'
+#                  branch: 'master'
