@@ -16631,6 +16631,103 @@ a.chat-username-dark.label-default {
     }
 }
 
+.dispatch-vehicle-equipments .equipment-item label {
+    font-weight: normal
+}
+
+.card {
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+.card .panel-body {
+    background-image: linear-gradient(to bottom, #e8e8e8 0, #f3f3f3 100%);
+    padding: 5px 15px 5px 15px
+}
+
+.card .panel-body .col-xs-1 {
+    padding-left: 0
+}
+
+.card .panel-body .col-xs-6 {
+    padding-left: 0
+}
+
+.card .panel-body.building-attached {
+    background-image: none;
+    background-color: #b2e4b2 !important
+}
+
+.card .col-xs-1 {
+    padding-right: 0
+}
+
+.card .col-xs-10 {
+    padding-left: 0
+}
+
+.card .col-xs-10 .row span.label {
+    font-size: 100% !important
+}
+
+.card .row {
+    margin: 0;
+    padding: 5px 0 5px 0
+}
+
+.card .row .caption {
+    font-weight: bold
+}
+
+.card .row .body {
+    margin-left: 5px
+}
+
+.card .row .body a {
+    display: inline-block
+}
+
+.card .row .col-xs-1 {
+    padding: 0
+}
+
+.card .row .col-xs-2 {
+    padding: 0
+}
+
+.card .row .col-xs-4 {
+    padding: 0
+}
+
+.card .row .col-xs-5 {
+    padding: 0
+}
+
+.card .row .col-xs-6 {
+    padding-left: 0
+}
+
+.card .row .col-xs-7 {
+    padding: 0
+}
+
+.card .row .col-xs-8 {
+    padding-left: 10px
+}
+
+.card .row ul {
+    padding-left: 15px
+}
+
+.card .row #extension-timer {
+    margin-bottom: 10px;
+    margin-top: -10px
+}
+
+.dark .panel-body {
+    background-image: none
+}
+
 /*
  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
  *

@@ -3086,7 +3086,47 @@ Object.values || (Object.values = function (e) {
         },
         configurable: !0,
         writable: !0
-    }),
+    }), Array.prototype.flatMap || (Array.prototype.flatMap = function (e) {
+        return Array.prototype.concat.apply([], this.map(e))
+    }), Array.prototype.some || (Array.prototype.some = function (e) {
+        "use strict";
+        if (null == this) throw new TypeError("Array.prototype.some called on null or undefined");
+        if ("function" != typeof e) throw new TypeError;
+        for (var t = Object(this), i = t.length >>> 0, n = arguments.length >= 2 ? arguments[1] : void 0,
+                o = 0; i > o; o++)
+            if (o in t && e.call(n, t[o], o, t)) return !0;
+        return !1
+    }), Array.from || (Array.from = function () {
+        var e = Object.prototype.toString,
+            t = function (t) {
+                return "function" == typeof t || "[object Function]" === e.call(t)
+            },
+            i = function (e) {
+                var t = Number(e);
+                return isNaN(t) ? 0 : 0 !== t && isFinite(t) ? (t > 0 ? 1 : -1) * Math.floor(Math.abs(
+                    t)) : t
+            },
+            n = Math.pow(2, 53) - 1,
+            o = function (e) {
+                var t = i(e);
+                return Math.min(Math.max(t, 0), n)
+            };
+        return function (e) {
+            var i = this,
+                n = Object(e);
+            if (null == e) throw new TypeError(
+                "Array.from requires an array-like object - not null or undefined");
+            var a, s = arguments.length > 1 ? arguments[1] : void 0;
+            if ("undefined" != typeof s) {
+                if (!t(s)) throw new TypeError(
+                    "Array.from: when provided, the second argument must be a function");
+                arguments.length > 2 && (a = arguments[2])
+            }
+            for (var r, l = o(n.length), c = t(i) ? Object(new i(l)) : new Array(l), u = 0; l > u;)
+                r = n[u], c[u] = s ? "undefined" == typeof a ? s(r, u) : s.call(a, r, u) : r, u += 1;
+            return c.length = l, c
+        }
+    }()),
     function (e) {
         "undefined" != typeof module && module.exports ? module.exports = e(this) : "function" ==
             typeof define && define.amd ? define("i18n", function (t) {
