@@ -51,8 +51,12 @@ jobs:
               run: |
                   git --no-pager diff --color-words
 
+            - name: Check if there are changes
+              run: |
+                  echo "CHANGED_FILES=$(git status -s | wc -l)" >> $GITHUB_ENV
+
             - name: Commit & Push changes
-              if: github.ref == 'refs/heads/master'
+              if: github.ref == 'refs/heads/master' && env.CHANGED_FILES > 1
               uses: actions-js/push@master
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
