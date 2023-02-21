@@ -1000,8 +1000,9 @@ function getBuildingMarkerIcon(e) {
         .building_type == BUILDING_TYPE_COASTAL_RESCUE_SMALL ? building_marker_image =
         "/images/building_wasserwacht_other.png" : e.building_type == BUILDING_TYPE_TECHNICAL_AID ?
         building_marker_image = "/images/building_technical_aid_other.png" : e.building_type ==
-        BUILDING_TYPE_POLICE_BOAT_DOCK && (building_marker_image = "/images/building_police_boat_dock.png"),
-        flavouredAsset(building_marker_image)
+        BUILDING_TYPE_POLICE_BOAT_DOCK ? building_marker_image = "/images/building_police_boat_dock.png" : e
+        .building_type == BUILDING_TYPE_CUSTOMS_HELIPORT && (building_marker_image =
+            "/images/building_customs_heliport.png"), flavouredAsset(building_marker_image)
 }
 
 function spliceLatLngs(e, t) {
