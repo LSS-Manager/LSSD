@@ -4286,7 +4286,7 @@ Object.values || (Object.values = function (e) {
                 seg_elw: "",
                 sek_mtf: "",
                 sek_zf: "",
-                sheriff_unit: "Sheriff Unit",
+                sheriff_unit: "Police Supervisor / Sheriff",
                 smoke_jumper: "Smoke Jumper Planes",
                 spokesman: "",
                 swat: "SWAT",
