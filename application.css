@@ -16679,12 +16679,21 @@ a.chat-username-dark.label-default {
     font-weight: bold
 }
 
+.card .row .caption-name {
+    font-weight: bold;
+    font-size: 120%
+}
+
 .card .row .body {
     margin-left: 5px
 }
 
 .card .row .body a {
     display: inline-block
+}
+
+.card .row .select-cell .bootstrap-select {
+    width: 100% !important
 }
 
 .card .row .col-xs-1 {
@@ -16715,6 +16724,20 @@ a.chat-username-dark.label-default {
     padding-left: 10px
 }
 
+.card .row .col-xs-12 {
+    display: flex;
+    padding-left: 0;
+    margin-right: 15px
+}
+
+.card .row .simple-row {
+    justify-content: space-between;
+    margin-right: 0;
+    padding: 0;
+    flex-shrink: 0.5;
+    flex-grow: 1
+}
+
 .card .row ul {
     padding-left: 15px
 }
@@ -16724,8 +16747,148 @@ a.chat-username-dark.label-default {
     margin-top: -10px
 }
 
-.dark .panel-body {
-    background-image: none
+@media (max-width: 412px) {
+    .row.mobile button {
+        padding-right: 7px;
+        padding-left: 7px
+    }
+
+    .row.mobile input {
+        padding-right: 7px;
+        padding-left: 7px
+    }
+
+    .row.mobile #transfer_personnel {
+        margin-left: 10px !important
+    }
+}
+
+@media (max-width: 375px) {
+    .row.mobile #transfer_personnel {
+        margin-left: 0px !important
+    }
+}
+
+body.dark .card .panel-body {
+    background-color: #323232;
+    background-image: none;
+    color: #dcdcdc
+}
+
+body.dark .card .panel-default {
+    border-color: #fff !important
+}
+
+body.dark .card .btn {
+    background-color: #323232;
+    background-image: none;
+    color: #dcdcdc
+}
+
+body.dark .card .row .col-xs-3 .btn {
+    background-color: #323232;
+    background-image: none;
+    color: #dcdcdc
+}
+
+body.dark .card .row .col-xs-3 .btn a {
+    color: white
+}
+
+body.dark .card .btn.btn-danger {
+    background-color: unset !important;
+    color: red;
+    font-size: 16px
+}
+
+body.dark .card .btn.btn-success {
+    color: #fff !important;
+    background-image: linear-gradient(to bottom, #5cb85c 0, #419641 100%) !important;
+    border-color: #3e8f3e
+}
+
+body.dark .card #vehicle_assigned {
+    background-color: #323232;
+    background-image: none;
+    color: #dcdcdc
+}
+
+body.dark .card .open .dropdown-toggle.btn-default:hover {
+    background-color: #323232;
+    background-image: none;
+    color: #dcdcdc
+}
+
+body.dark .card .open .dropdown-toggle.btn-default {
+    background-color: #323232;
+    background-image: none;
+    color: #dcdcdc
+}
+
+body.dark .card .btn-group .dropdown-menu li a {
+    background-color: #323232;
+    background-image: none;
+    color: #dcdcdc
+}
+
+body.dark .card .btn-group .dropdown-menu li.disabled a {
+    color: grey !important
+}
+
+body.dark .card .dropdown-menu {
+    background-color: #323232;
+    background-image: none;
+    color: #dcdcdc
+}
+
+body.dark .card .dropdown-menu ul {
+    background-color: #323232
+}
+
+body.dark .card .btn .row .col-xs-10 a {
+    color: white
+}
+
+body.dark .card .row .col-xs-5 .btn {
+    background-color: #323232;
+    background-image: none;
+    color: #dcdcdc
+}
+
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px
+}
+
+body.dark .arrow {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px
+}
+
+.up {
+    transform: rotate(-135deg)
+}
+
+.down {
+    transform: rotate(45deg)
+}
+
+#sortModal .row .col-xs-1 {
+    padding: 0
+}
+
+#sortModal .modal-footer {
+    text-align: center
+}
+
+#sortModal .modal-footer .btn {
+    background-color: unset !important;
+    color: red;
+    font-size: 16px
 }
 
 /*
