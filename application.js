@@ -4093,6 +4093,7 @@ Object.values || (Object.values = function (e) {
             back: "Back",
             battalion_chief_unit: "",
             categories: {
+                airport: "Airport",
                 bereitschaftspolizei: "Riot Police",
                 brush: "Wildfire",
                 coastal_rescue: "Coastal Rescue",
@@ -6353,7 +6354,7 @@ Object.values || (Object.values = function (e) {
                 arff: "ARFF Tender",
                 battalion_chief_unit: "Support Vehicle",
                 boot: "Boats (General)",
-                brush_truck: "Wildland fire engine",
+                brush_truck: "Bushfire Vehicles",
                 crew_carrier: "Crew Carrier",
                 dekon_p: "",
                 division_chief_unit: "Mobile Command Vehicle",
@@ -7826,6 +7827,7 @@ Object.values || (Object.values = function (e) {
             automatic_text_color: "Colore testo automatico",
             back: "Indietro",
             categories: {
+                airport: "Aeroporto",
                 brush: "Anticendio Boschivo",
                 firefighting: "Antincendio",
                 police: "Polizia",
