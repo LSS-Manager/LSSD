@@ -8430,7 +8430,7 @@ Object.values || (Object.values = function (e) {
                 rescue_vehicle: "Véhicule de secours routier",
                 rescue_vehicle_only: "Secours routier",
                 rescueboat: "Grand bateau de sauvetage",
-                rettungstreppe: "",
+                rettungstreppe: "Moyen d'Accès en Hauteur",
                 rth_only: "Hélicoptère",
                 schlauchwagen: "Camion-citerne ou CCFS",
                 seg_elw: "",
