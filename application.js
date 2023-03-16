@@ -6927,7 +6927,7 @@ Object.values || (Object.values = function (e) {
                 ab_ruest: "Teknik/räddning-modul",
                 abl2wasser_only: "Slang-modul",
                 ambulance: "Ambulans",
-                arff: "Flygplansbrandbil",
+                arff: "Haveribil",
                 battalion_chief_unit: "Brandbefäl",
                 boot: "Båtar (allmänt)",
                 brush_truck: "Skogsbrandsfordon",
@@ -9702,6 +9702,7 @@ Object.values || (Object.values = function (e) {
             automatic_text_color: "Automatisk tekstfarge",
             back: "Tilbake",
             categories: {
+                airport: "Flyplass",
                 coastal_rescue: "Kystredning",
                 firefighting: "Brannslukking",
                 police: "Politi",
