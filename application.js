@@ -6351,7 +6351,7 @@ Object.values || (Object.values = function (e) {
                 ambulance: "Ambulance",
                 ambulance_or_rapid_responder: "",
                 any_traffic_car: "Traffic Car",
-                arff: "ARFF Tender",
+                arff: "ULFV Crash Tender",
                 battalion_chief_unit: "Support Vehicle",
                 boot: "Boats (General)",
                 brush_truck: "Bushfire Vehicles",
@@ -14059,6 +14059,7 @@ Object.values || (Object.values = function (e) {
             automatic_text_color: "Automaattinen tekstin väri",
             back: "Palaa",
             categories: {
+                airport: "Lentokenttä",
                 firefighting: "Palokunta",
                 police: "Poliisi",
                 rescue: "Ambulanssi",

@@ -16073,6 +16073,11 @@ body.dark .daily-bonuses .collect-possible-block {
     background-repeat: repeat-x
 }
 
+.reward_button .btn:disabled {
+    background-image: unset;
+    background-color: grey
+}
+
 .claim_all {
     margin-top: -10px;
     margin-bottom: 20px
