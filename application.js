@@ -13254,7 +13254,7 @@ Object.values || (Object.values = function (e) {
                 abl2wasser_only: "호스 지원 모듈",
                 ambulance: "고급 인명 지원(ALS) 구급차",
                 ambulance_or_rapid_responder: "",
-                arff: "ARFF(공항 소방차)",
+                arff: "항공기 구조용고성능 소방차 또는 스팅어 HRET",
                 battalion_chief_unit: "소방대장 유닛",
                 boot: "보트(일반)",
                 dekon_p: "",
