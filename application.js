@@ -5861,6 +5861,7 @@ Object.values || (Object.values = function (e) {
             automatic_text_color: "Color de texto automático",
             back: "Atrás",
             categories: {
+                airport: "Aeropuerto",
                 bereitschaftspolizei: "Policía antidisturbios",
                 coastal_rescue: "Rescate costero",
                 firefighting: "Bomberos",
@@ -5910,7 +5911,7 @@ Object.values || (Object.values = function (e) {
                 abl2wasser_only: "Módulo de mangueras",
                 ambulance: "UVI móvil",
                 ambulance_or_rapid_responder: "",
-                arff: "CBA (Camión de bomberos de aeropuerto)",
+                arff: "ARFF",
                 battalion_chief_unit: "Unidad de Mando y Comunicaciones",
                 boot: "Botes (general)",
                 dekon_p: "",
