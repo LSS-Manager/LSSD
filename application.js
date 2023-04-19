@@ -4219,6 +4219,7 @@ Object.values || (Object.values = function (e) {
                 gw_taucher: "",
                 gw_wasserrettung: "Water Retention",
                 gw_werkfeuerwehr: "",
+                gwl2wasser: "Water Carrier or Major Foam Tender",
                 gwl2wasser_all: "All Water Tankers",
                 gwl2wasser_only: "Water Tankers",
                 heavy_air_tanker: "Heavy air tanker",
@@ -4247,6 +4248,7 @@ Object.values || (Object.values = function (e) {
                 lf_only: "Fire Trucks",
                 long_distance_ambulance: "BLS ambulance",
                 mask_service_unit: "Mobile Air Unit",
+                mass_casualty_equipment: "Mass Casualty Equipment or Medical Equipment Trailer",
                 mek_mtf: "",
                 mek_zf: "",
                 mtw: "MTW",
@@ -4854,7 +4856,7 @@ Object.values || (Object.values = function (e) {
                 fire_truck: "Fire engines",
                 fireboat: "Large Fireboat",
                 fly_car: "Rapid Response Vehicle / General Practitioner",
-                foam: "Foam Units",
+                foam: "Foam Tenders or RIV",
                 fukw: "",
                 fwk: "",
                 gefkw: "",
@@ -4873,6 +4875,7 @@ Object.values || (Object.values = function (e) {
                 gw_taucher: "",
                 gw_wasserrettung: "Water Retention",
                 gw_werkfeuerwehr: "",
+                gwl2wasser: "Water Carrier or Major Foam Tender",
                 gwl2wasser_only: "Hose Vehicle",
                 hems: "HEMS",
                 hlf_only: "Rescue Pump",
@@ -4889,6 +4892,7 @@ Object.values || (Object.values = function (e) {
                 lf_only: "Water Ladder or L4P",
                 long_distance_ambulance: "BLS ambulance",
                 mask_service_unit: "Breathing Apparatus Support Unit",
+                mass_casualty_equipment: "Mass Casualty Equipment or Medical Equipment Trailer",
                 mek_mtf: "",
                 mek_zf: "",
                 mtw: "MTW",
@@ -36762,7 +36766,8 @@ $(function () {
                 "intervention_order.vehicles.coastal_rescue")], ["mud_rescue", I18n.t(
                 "intervention_order.vehicles.mud_rescue")], ["coastal_helicopter", I18n.t(
                 "intervention_order.vehicles.coastal_helicopter")], ["police_boat", I18n.t(
-                "intervention_order.vehicles.police_boat")]], $("#restore_map")
+                "intervention_order.vehicles.police_boat")], ["mass_casualty_equipment", I18n.t(
+                "intervention_order.vehicles.mass_casualty_equipment")]], $("#restore_map")
         .click(function () {
             mapViewRestore()
         }), $("#coins_top")
