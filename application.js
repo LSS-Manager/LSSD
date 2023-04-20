@@ -6426,7 +6426,7 @@ Object.values || (Object.values = function (e) {
                 rescue_vehicle: "Rescue",
                 rescue_vehicle_only: "Rescue",
                 rescueboat: "Marine Rescue Boat",
-                rettungstreppe: "",
+                rettungstreppe: "Emergency Stairs",
                 rth_only: "Air Ambulance",
                 schlauchwagen: "Bulk Water Tanker",
                 seg_elw: "",
