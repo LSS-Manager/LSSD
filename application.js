@@ -47051,6 +47051,8 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = "mc_mobile_client_id",
                 switch (!0) {
                 case e.user_id == t && "undefined" != typeof a[e.mtid]:
                     return i[a[e.mtid]];
+                case e.handoff:
+                    return i.coastal_rescue_missions;
                 case e.user_id != t || "alliance_missions" === e.filter_id:
                     return i.alliance_missions;
                 default:
