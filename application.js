@@ -2343,10 +2343,13 @@ function mobileBridgeAdd(e, t) {
                 f: e,
                 p: t
             })
-        }), i || mobile_bridge_content.push({
+        }), i || (mobile_bridge_content.push({
         f: e,
         p: t
-    })
+    }), mixed_mobile_desktop_mode && isIframe && window.top.mobile_bridge_content.push({
+        f: e,
+        p: t
+    }))
 }
 
 function mobileDirectBridgeCall() {}
@@ -36596,7 +36599,8 @@ var map, alliance_member_buildings_show, geocoder, directionsService, building_e
     count_down_title, saleTimeout = null,
     apng_supported = !1,
     gameFlavour = null,
-    i18nPrefix = null;
+    i18nPrefix = null,
+    isIframe = window.self !== window.top;
 $(function () {
     function onCoinsTop() {
         return mobile_bridge_use ? (mobileBridgeAdd("coins_window", {}), !1) : !0
