@@ -8196,6 +8196,10 @@ Object.values || (Object.values = function (e) {
             patient: "Patient",
             patient_untouched: "Patients non traités",
             poi_delete: "Voulez-vous vraiment supprimer ce point d’intérêt : %{caption} ?",
+            pump_speed_approaching: "En approche : %{amount} l/min",
+            pump_speed_missing: "Manquant : %{amount} l/min",
+            pump_speed_on_site: "Sur place : %{amount} l/min",
+            pump_speed_selected: "Sélectionné : %{amount} l/min",
             reload: "Recharger",
             sale: "Soldes",
             sale_ended: "Fin de l’offre spéciale",
@@ -8213,6 +8217,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "En approche : %{amount} l",
             water_missing: "Manquante : %{amount} l",
             water_on_site: "Sur les lieux : %{amount} l",
+            water_pumping_process: "Processus de pompage de l'eau",
             water_selected: "Sélectionnée : %{amount} l"
         },
         map: {
@@ -8435,6 +8440,8 @@ Object.values || (Object.values = function (e) {
                 police_motorcycle: "Unité motocycliste",
                 polizeihubschrauber: "Hélicoptère de police",
                 pump: "Motopompes",
+                pump_speed: "Capacité de la pompe",
+                pump_speed_pump_only: "Capacité de la pompe - Pompes uniquement",
                 rescue_vehicle: "Véhicule de secours routier",
                 rescue_vehicle_only: "Secours routier",
                 rescueboat: "Grand bateau de sauvetage",
