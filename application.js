@@ -944,7 +944,7 @@ function getBuildingMarkerIcon(e) {
         .icon_other : e.building_type == BUILDING_TYPE_FEUERWEHRSCHULE ? building_marker_image =
         "/images/building_fireschool_other.png" : e.building_type == BUILDING_TYPE_FEUERWACHE ?
         building_marker_image = "/images/building_fire_other.png" : e.building_type ==
-        BUILDING_TYPE_RETTUNGSWACHE ? building_marker_image = "/images/building_rettungswache_other.png" : e
+        BUILDING_TYPE_RETTUNGSWACHE ? building_marker_image = "/images/building_rescue_station_other.png" : e
         .building_type == BUILDING_TYPE_RETTUNGSSCHULE ? building_marker_image =
         "/images/building_rettungsschule_other.png" : e.building_type == BUILDING_TYPE_CLINIC ?
         building_marker_image = "/images/building_clinic_other.png" : e.building_type ==
