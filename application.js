@@ -3648,6 +3648,8 @@ Object.values || (Object.values = function (e) {
                 elw3: "ELW 3",
                 elw_airport: "",
                 emergency_ambulance: "Notarzteinsatzfahrzeug oder Rettungshubschrauber",
+                energy_supply: "NEA50",
+                energy_supply_2: "NEA200",
                 fire_truck: "Löschfahrzeuge oder Tanklöschfahrzeuge",
                 fireboat: "",
                 fly_car: "",
@@ -3731,7 +3733,7 @@ Object.values || (Object.values = function (e) {
                 thw_lkw_7_lkr_19_tm: "LKW 7 Lkr 19 tm",
                 thw_mlw5: "Mannschaftslastwagen Typ V (MLW 5)",
                 thw_mtw: "Mannschaftstransportwagen Technischer Zug (MTW-TZ - THW)",
-                thw_mzkw: "Mehrzweckkraftwagen (MzKW)",
+                thw_mzkw: "Mehrzweck-Gerätewagen (FGr N)",
                 thw_tauchkraftwagen: "Tauchkraftwagen",
                 thw_tauchkraftwagen_or_gw_taucher: "Tauchkraftwagen oder GW-Taucher",
                 tlf_only: "Tanklöschfahrzeuge",
@@ -4189,6 +4191,8 @@ Object.values || (Object.values = function (e) {
                 elw_police: "Police MCV",
                 emergency_ambulance: "Emergency ambulance or Helicopter",
                 emergency_welfare: "Any Emergency Welfare Vehicle",
+                energy_supply: "Energy Supply Trailer",
+                energy_supply_2: "Large Energy Supply Trailer",
                 fbi_bomb_tech: "FBI Bomb Technician Vehicle",
                 fbi_drone: "FBI Surveillance Drone",
                 fbi_investigation_unit: "FBI Investigation Wagon",
@@ -4284,7 +4288,7 @@ Object.values || (Object.values = function (e) {
                 rescue_vehicle_only: "Heavy Rescue",
                 rescueboat: "Large Rescue Boat",
                 rettungstreppe: "",
-                riot_police: "Riot Police Van, Riot Police Van 2 or Riot Police Equipment",
+                riot_police: "Riot Police Van or Riot Police Bus",
                 road_rescue_or_fire_engine: "Road Rescue or Fire Engine",
                 rth_only: "Helicopter",
                 schlauchwagen: "Water Tanker or Foam Tender",
@@ -36778,7 +36782,9 @@ $(function () {
                 "intervention_order.vehicles.mud_rescue")], ["coastal_helicopter", I18n.t(
                 "intervention_order.vehicles.coastal_helicopter")], ["police_boat", I18n.t(
                 "intervention_order.vehicles.police_boat")], ["mass_casualty_equipment", I18n.t(
-                "intervention_order.vehicles.mass_casualty_equipment")]], $("#restore_map")
+                "intervention_order.vehicles.mass_casualty_equipment")], ["energy_supply", I18n.t(
+                "intervention_order.vehicles.energy_supply")], ["energy_supply_2", I18n.t(
+                "intervention_order.vehicles.energy_supply_2")]], $("#restore_map")
         .click(function () {
             mapViewRestore()
         }), $("#coins_top")
