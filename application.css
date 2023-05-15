@@ -12835,7 +12835,8 @@ body.dark th.tablesorter-headerDesc {
 
 .search_input_field,
 #search_input_field_missions,
-.search_input {
+.search_input,
+#search_input_field_possible_mission {
     background-image: url(/images/search_5a5753.svg);
     background-repeat: no-repeat;
     background-size: auto 100%;
@@ -16894,6 +16895,235 @@ body.dark .arrow {
     background-color: unset !important;
     color: red;
     font-size: 16px
+}
+
+#sort_options_panel .select {
+    top: 30px;
+    margin-right: 10px
+}
+
+#sort_options_panel .mission-possible-credits span {
+    display: block;
+    text-align: center;
+    font-weight: 700;
+    margin: 5px
+}
+
+#sort_options_panel .reset-filters-button {
+    top: 30px
+}
+
+#sort_options_panel .reset-filters-button-mobile {
+    top: 30px;
+    margin-bottom: 35px
+}
+
+#sort_options_panel .select {
+    margin-bottom: 15px
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px
+}
+
+.flex-container>div {
+    width: 230px;
+    text-align: center
+}
+
+.card {
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+.card .panel-body {
+    background-image: linear-gradient(to bottom, #e8e8e8 0, #f3f3f3 100%);
+    padding: 5px 15px 5px 15px
+}
+
+.card .panel-body .col-xs-1 {
+    padding-left: 0
+}
+
+.card .panel-body .col-xs-6 {
+    padding-left: 0
+}
+
+.card .panel-body.building-attached {
+    background-image: none;
+    background-color: #b2e4b2 !important
+}
+
+.card .col-xs-1 {
+    padding-right: 0
+}
+
+.card .col-xs-10 {
+    padding-left: 0
+}
+
+.card .col-xs-10 .row span.label {
+    font-size: 100% !important
+}
+
+.card .row {
+    margin: 0;
+    padding: 5px 0 5px 0
+}
+
+.card .row .caption {
+    font-weight: bold
+}
+
+.card .row .body {
+    margin-left: 5px
+}
+
+.card .row .body a {
+    display: inline-block
+}
+
+.card .row .col-xs-1 {
+    padding: 0
+}
+
+.card .row .col-xs-2 {
+    padding: 0
+}
+
+.card .row .col-xs-4 {
+    padding: 0
+}
+
+.card .row .col-xs-5 {
+    padding: 0
+}
+
+.card .row .col-xs-6 {
+    padding-left: 0
+}
+
+.card .row .col-xs-7 {
+    padding: 0
+}
+
+.card .row .col-xs-8 {
+    padding-left: 10px
+}
+
+.card .row ul {
+    padding-left: 15px
+}
+
+.card .row #extension-timer {
+    margin-bottom: 10px;
+    margin-top: -10px
+}
+
+@media (max-width: 412px) {
+    .row.mobile button {
+        padding-right: 7px;
+        padding-left: 7px
+    }
+
+    .row.mobile input {
+        padding-right: 7px;
+        padding-left: 7px
+    }
+
+    .row.mobile #transfer_personnel {
+        margin-left: 10px !important
+    }
+}
+
+@media (max-width: 375px) {
+    .row.mobile #transfer_personnel {
+        margin-left: 0px !important
+    }
+}
+
+body.dark .card .panel-body {
+    background-image: linear-gradient(to bottom, #505050 0, #000 100%) !important;
+    color: #fff;
+    border: 1px solid #252525
+}
+
+body.dark .btn {
+    background-image: linear-gradient(to bottom, #505050 0, #000 100%) !important;
+    color: #fff;
+    border: 1px solid #252525
+}
+
+body.dark .row .col-xs-3 .btn {
+    background-image: linear-gradient(to bottom, #505050 0, #000 100%) !important;
+    color: #fff;
+    border: 1px solid #252525
+}
+
+body.dark .row .col-xs-3 .btn a {
+    color: white
+}
+
+body.dark .btn .row .col-xs-10 a {
+    color: white
+}
+
+body.dark .row .col-xs-5 .btn {
+    background-image: linear-gradient(to bottom, #505050 0, #000 100%) !important;
+    color: #fff;
+    border: 1px solid #252525
+}
+
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px
+}
+
+body.dark .arrow {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px
+}
+
+.up {
+    transform: rotate(-135deg)
+}
+
+.down {
+    transform: rotate(45deg)
+}
+
+#sortModal .row .col-xs-1 {
+    padding: 0
+}
+
+#sortModal .modal-footer {
+    text-align: center
+}
+
+#sortModal .modal-footer .btn {
+    background-color: unset !important;
+    color: red;
+    font-size: 16px
+}
+
+#sort_options_panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center
+}
+
+@media (min-width: 300px) and (max-width: 600px) {
+    #sort_options_panel {
+        flex-direction: column;
+        align-items: self-start
+    }
 }
 
 /*
