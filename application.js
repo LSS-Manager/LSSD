@@ -3192,7 +3192,9 @@ Object.values || (Object.values = function (e) {
                 r = n[u], c[u] = a ? "undefined" == typeof s ? a(r, u) : a.call(s, r, u) : r, u += 1;
             return c.length = l, c
         }
-    }()),
+    }()), String.prototype.includes || (String.prototype.includes = function (e, t) {
+        return void 0 === t && (t = 0), -1 !== this.indexOf(e, t)
+    }),
     function (e) {
         "undefined" != typeof module && module.exports ? module.exports = e(this) : "function" ==
             typeof define && define.amd ? define("i18n", function (t) {
