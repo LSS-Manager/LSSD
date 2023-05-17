@@ -359,19 +359,27 @@ function waterCalculator(e, t) {
             s.find(".mission_water_bar_selected_" + e), b, v + g), waterCalculatorSetPercent(s.find(
             ".mission_water_bar_missing_" + e), 100, b + v + g);
     var k = n.translations;
-    s.find(".mission_water_bar_at_mission_" + e)
-        .html(I18n.t(k.amountOnSite, {
+    const x = I18n.t(k.amountOnSite, {
             amount: number_format(parseInt(p))
-        })), s.find(".mission_water_bar_driving_" + e)
-        .html(I18n.t(k.amountApproaching, {
+        }),
+        C = I18n.t(k.amountApproaching, {
             amount: number_format(parseInt(m))
-        })), s.find(".mission_water_bar_selected_" + e)
-        .html(I18n.t(k.amountSelected, {
+        }),
+        z = I18n.t(k.amountSelected, {
             amount: number_format(parseInt(f))
-        })), s.find(".mission_water_bar_missing_" + e)
-        .html(I18n.t(k.amountMissing, {
+        }),
+        T = I18n.t(k.amountMissing, {
             amount: number_format(parseInt(_))
-        })), b + v + g >= 100 ? (s.find(".mission_water_bar_selected_" + e)
+        });
+    s.find(".mission_water_bar_at_mission_" + e)
+        .html(x), s.find(".mission_water_bar_driving_" + e)
+        .html(C), s.find(".mission_water_bar_selected_" + e)
+        .html(z), s.find(".mission_water_bar_missing_" + e)
+        .html(T), s.find(".mission_water_bar_at_mission_" + e)
+        .attr("aria-valuetext", x), s.find(".mission_water_bar_driving_" + e)
+        .attr("aria-valuetext", C), s.find(".mission_water_bar_selected_" + e)
+        .attr("aria-valuetext", z), s.find(".mission_water_bar_missing_" + e)
+        .attr("aria-valuetext", T), b + v + g >= 100 ? (s.find(".mission_water_bar_selected_" + e)
             .addClass("progress-bar-success")
             .removeClass("progress-bar-danger"), s.find(".mission_water_progress_" + e)
             .addClass("progress-glow-success")
