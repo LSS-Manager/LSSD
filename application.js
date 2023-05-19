@@ -9794,6 +9794,7 @@ Object.values || (Object.values = function (e) {
             back: "Tilbake",
             categories: {
                 airport: "Flyplass",
+                bereitschaftspolizei: "Opprørspoliti",
                 coastal_rescue: "Kystredning",
                 firefighting: "Brannslukking",
                 police: "Politi",
