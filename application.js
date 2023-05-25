@@ -4389,9 +4389,6 @@ Object.values || (Object.values = function (e) {
                 tlf_only: "Tanker Truck",
                 tm50: "",
                 traffic_car: "Traffic Car, Fast Traffic Car, Traffic Motorcycle and Road Rescue",
-                trailers: {
-                    pump: "Pump Trailer"
-                },
                 turboloescher: "",
                 turntable_ladder: "Platform trucks",
                 ulf: "",
@@ -5330,9 +5327,9 @@ Object.values || (Object.values = function (e) {
             patient: "Patiënten",
             patient_untouched: "onbehandelde patiënten",
             poi_delete: 'Weet je zeker dat je dit Point of Interest: "%{caption}" wilt verwijderen?',
-            pump_speed_approaching: "Aanrijdend: %{amount} l/min",
-            pump_speed_missing: "Nog nodig: %{amount} l/min",
-            pump_speed_on_site: "Ter plaatse: %{amount} l/min",
+            pump_speed_approaching: "Onderweg: %{amount} l/min",
+            pump_speed_missing: "Te Weinig: %{amount} l/min",
+            pump_speed_on_site: "Ter Plekke: %{amount} l/min",
             pump_speed_selected: "Geselecteerd: %{amount} l/min",
             reload: "Refresh",
             sale: "Sale",
@@ -5351,7 +5348,6 @@ Object.values || (Object.values = function (e) {
             water_approaching: "Aanrijdend: %{amount} L.",
             water_missing: "Nog nodig: %{amount} L.",
             water_on_site: "Ter plaatse: %{amount} L.",
-            water_pumping_process: "Water pomp process",
             water_selected: "Geselecteerd: %{amount} L."
         },
         map: {
@@ -5618,8 +5614,7 @@ Object.values || (Object.values = function (e) {
                 ulf: "",
                 wasserwerfer: "",
                 water_amount: "Water (in Liters):",
-                water_amount_tlf: "",
-                water_damage_pump: "Pompvoertuigen"
+                water_amount_tlf: ""
             }
         },
         tutorial: {
@@ -10183,8 +10178,7 @@ Object.values || (Object.values = function (e) {
             to_mission: "Zobrazit misi",
             understand: "OK",
             user_not_found: "Hráč nebyl nalezen.",
-            vehicles_not_visible: "Vozidla nejsou vidět. ",
-            water_pumping_process: "Proces čerpání vody"
+            vehicles_not_visible: "Vozidla nejsou vidět. "
         },
         map: {
             alliance: "Aliance",
@@ -10432,9 +10426,6 @@ Object.values || (Object.values = function (e) {
                 thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "Vůz s cisternou",
                 tm50: "",
-                trailers: {
-                    pump: "Přívěs pro motorové čerpadlo"
-                },
                 turboloescher: "",
                 turntable_ladder: "AZ nebo AP",
                 ulf: "",
