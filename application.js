@@ -3487,6 +3487,7 @@ Object.values || (Object.values = function (e) {
             content: "Inhalt",
             copy: "Kopieren",
             credits: "Credits",
+            custom_missions: "Verbands-Großeinsatz",
             "delete": "Löschen",
             description: "Beschreibung",
             details: "Details",
@@ -3977,6 +3978,7 @@ Object.values || (Object.values = function (e) {
             content: "Content",
             copy: "Copy",
             credits: "Credits",
+            custom_missions: "Large Scale Alliance Mission",
             "delete": "Delete",
             description: "Description",
             details: "Details",
@@ -4389,6 +4391,9 @@ Object.values || (Object.values = function (e) {
                 tlf_only: "Tanker Truck",
                 tm50: "",
                 traffic_car: "Traffic Car, Fast Traffic Car, Traffic Motorcycle and Road Rescue",
+                trailers: {
+                    pump: "Pump Trailer"
+                },
                 turboloescher: "",
                 turntable_ladder: "Platform trucks",
                 ulf: "",
@@ -4704,6 +4709,7 @@ Object.values || (Object.values = function (e) {
             content: "Content",
             copy: "Copy",
             credits: "Credits",
+            custom_missions: "Large Scale Alliance Mission",
             "delete": "Delete",
             description: "Description",
             details: "Details",
@@ -5274,6 +5280,7 @@ Object.values || (Object.values = function (e) {
             content: "Inhoud",
             copy: "kopiëren",
             credits: "Credits",
+            custom_missions: "Grote inzet ",
             "delete": "Verwijderen",
             description: "Beschrijving",
             details: "Details",
@@ -5327,9 +5334,9 @@ Object.values || (Object.values = function (e) {
             patient: "Patiënten",
             patient_untouched: "onbehandelde patiënten",
             poi_delete: 'Weet je zeker dat je dit Point of Interest: "%{caption}" wilt verwijderen?',
-            pump_speed_approaching: "Onderweg: %{amount} l/min",
-            pump_speed_missing: "Te Weinig: %{amount} l/min",
-            pump_speed_on_site: "Ter Plekke: %{amount} l/min",
+            pump_speed_approaching: "Aanrijdend: %{amount} l/min",
+            pump_speed_missing: "Nog nodig: %{amount} l/min",
+            pump_speed_on_site: "Ter plaatse: %{amount} l/min",
             pump_speed_selected: "Geselecteerd: %{amount} l/min",
             reload: "Refresh",
             sale: "Sale",
@@ -5348,6 +5355,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "Aanrijdend: %{amount} L.",
             water_missing: "Nog nodig: %{amount} L.",
             water_on_site: "Ter plaatse: %{amount} L.",
+            water_pumping_process: "Water pomp process",
             water_selected: "Geselecteerd: %{amount} L."
         },
         map: {
@@ -5614,7 +5622,8 @@ Object.values || (Object.values = function (e) {
                 ulf: "",
                 wasserwerfer: "",
                 water_amount: "Water (in Liters):",
-                water_amount_tlf: ""
+                water_amount_tlf: "",
+                water_damage_pump: "Pompvoertuigen"
             }
         },
         tutorial: {
@@ -5775,6 +5784,7 @@ Object.values || (Object.values = function (e) {
             content: "Contenido",
             copy: "Copiar",
             credits: "Créditos",
+            custom_missions: "Misión de alianza a gran escala",
             "delete": "Eliminar",
             description: "Descripción",
             details: "Detalles",
@@ -6219,6 +6229,7 @@ Object.values || (Object.values = function (e) {
             content: "Content",
             copy: "copy",
             credits: "Credits",
+            custom_missions: "Large Scale Alliance Mission",
             "delete": "Delete",
             description: "Description",
             details: "Details",
@@ -6796,6 +6807,7 @@ Object.values || (Object.values = function (e) {
             congratulations: "Grattis!",
             content: "Innehåll",
             credits: "Krediter",
+            custom_missions: "Storskaligt uppdrag",
             "delete": "Ta bort",
             description: "Beskrivning",
             details: "Detaljer",
@@ -7241,6 +7253,7 @@ Object.values || (Object.values = function (e) {
             congratulations: "Gratulacje!",
             content: "Zawartość",
             credits: "Kredyty",
+            custom_missions: "Misję sojuszu na dużą skalę",
             "delete": "Usuń",
             description: "Opis",
             details: "Szczegóły",
@@ -7742,6 +7755,7 @@ Object.values || (Object.values = function (e) {
             congratulations: "Congratulazioni!",
             content: "Contenuto",
             credits: "Crediti",
+            custom_missions: "Missione dell'alleanza su larga scala",
             "delete": "Elimina",
             description: "Descrizione",
             details: "Dettagli",
@@ -8229,6 +8243,7 @@ Object.values || (Object.values = function (e) {
             content: "Contenu",
             copy: "Copier",
             credits: "Crédits",
+            custom_missions: "Mission d’alliance majeure",
             "delete": "Supprimer",
             description: "Description",
             details: "Détails",
@@ -8713,6 +8728,7 @@ Object.values || (Object.values = function (e) {
             content: "Содержимое",
             copy: "Скопировать",
             credits: "Кредиты",
+            custom_missions: "крупномасштабное задание альянса",
             "delete": "Удалить",
             description: "Описание",
             details: "Подробности",
@@ -9143,6 +9159,7 @@ Object.values || (Object.values = function (e) {
             congratulations: "Tillykke!",
             content: "Indhold",
             credits: "Kreditter",
+            custom_missions: "Stor alliancemission",
             "delete": "Slet",
             description: "Beskrivelse",
             details: "Detaljer",
@@ -9196,6 +9213,10 @@ Object.values || (Object.values = function (e) {
             patient: "Patient",
             patient_untouched: "Ubehandlede patienter",
             poi_delete: "Er du sikker på, at du vil slette interessepunktet: %{caption}?",
+            pump_speed_approaching: "Tilnærmelse: %{amount} l/min",
+            pump_speed_missing: "Mangler: %{amount} l/min",
+            pump_speed_on_site: "På stedet: %{amount} l/min",
+            pump_speed_selected: "Valgt: %{amount} l/min",
             reload: "Genindlæs",
             sale: "Sale",
             sale_ended: "Udsalg forbi ",
@@ -9432,6 +9453,8 @@ Object.values || (Object.values = function (e) {
                 police_car: "Patruljebil",
                 police_motorcycle: "Politimotorcykel",
                 polizeihubschrauber: "Politihelikopter",
+                pump_speed: "Pumpekapacitet",
+                pump_speed_pump_only: "Pumpekapacitet - kun pumper",
                 rescue_vehicle: "Redningsvogn",
                 rescue_vehicle_only: "Tung redning",
                 rescueboat: "Stor redningsbåd",
@@ -9624,6 +9647,7 @@ Object.values || (Object.values = function (e) {
             congratulations: "Gratulerer!",
             content: "Innhold",
             credits: "Kreditter",
+            custom_missions: "Allianseoppdrag i stor skala",
             "delete": "Slett",
             description: "Beskrivelse",
             details: "Info",
@@ -10112,6 +10136,7 @@ Object.values || (Object.values = function (e) {
             congratulations: "Blahopřejeme!",
             content: "Obsah",
             credits: "Kredity",
+            custom_missions: "Alianční mise",
             "delete": "Odstranit",
             description: "Popis",
             details: "Podrobnosti",
@@ -10149,6 +10174,10 @@ Object.values || (Object.values = function (e) {
             days: "d",
             few_seconds: "za pár sekund",
             finish_in: "Konec za:",
+            foam_approaching: "Na místě: %{amount} l",
+            foam_missing: "Chybí: %{amount} l",
+            foam_on_site: "Zvoleno: %{amount} l",
+            foam_selected: "Zvoleno: %{amount} l",
             hours: "h",
             location_not_found: "Nenalezeno",
             messages: "Zprávy",
@@ -10178,7 +10207,12 @@ Object.values || (Object.values = function (e) {
             to_mission: "Zobrazit misi",
             understand: "OK",
             user_not_found: "Hráč nebyl nalezen.",
-            vehicles_not_visible: "Vozidla nejsou vidět. "
+            vehicles_not_visible: "Vozidla nejsou vidět. ",
+            water_approaching: "Na místě: %{amount} l/min",
+            water_missing: "Chybí: %{amount} l/min",
+            water_on_site: "Na místě: %{amount} gal",
+            water_pumping_process: "Proces čerpání vody",
+            water_selected: "Zvoleno: %{amount} l/min"
         },
         map: {
             alliance: "Aliance",
@@ -10348,6 +10382,7 @@ Object.values || (Object.values = function (e) {
                 fireboat: "Velká hasičská loď",
                 fly_car: "Lékařské vozidlo RV",
                 fly_car_any: "Samochód Lekarza  / SRMed / Motoambulans",
+                foam_amount: "Galony pěny",
                 fukw: "",
                 fustw_or_police_motorcycle: "Policejní automobil nebo Policejní motocykl",
                 fwk: "VYA nebo AJ",
@@ -10426,12 +10461,16 @@ Object.values || (Object.values = function (e) {
                 thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "Vůz s cisternou",
                 tm50: "",
+                trailers: {
+                    pump: "Přívěs pro motorové čerpadlo"
+                },
                 turboloescher: "",
                 turntable_ladder: "AZ nebo AP",
                 ulf: "",
                 wasserwerfer: "",
-                water_amount: "",
-                water_amount_tlf: ""
+                water_amount: "Galony vody",
+                water_amount_tlf: "",
+                water_damage_pump: "Motorovým čerpadlem"
             }
         },
         tutorial: {
@@ -10590,6 +10629,7 @@ Object.values || (Object.values = function (e) {
             congratulations: "Tebrikler!",
             content: "İçerik",
             credits: "Krediler",
+            custom_missions: "Büyük ölçekli bir birlik görev",
             "delete": "Sil",
             details: "Ayrıntılar",
             edit: "Düzenle",
@@ -10994,6 +11034,7 @@ Object.values || (Object.values = function (e) {
             congratulations: "Parabéns!",
             content: "Conteúdo",
             credits: "Créditos",
+            custom_missions: "Missão de aliança em grande escala",
             "delete": "Apagar",
             description: "Descrição",
             details: "Detalhes",
@@ -11475,6 +11516,7 @@ Object.values || (Object.values = function (e) {
             congratulations: "Parabéns!",
             content: "Conteúdo",
             credits: "Créditos",
+            custom_missions: "Missão de aliança em grande escala",
             "delete": "Apagar",
             details: "Detalhes",
             edit: "Editar",
@@ -11891,6 +11933,7 @@ Object.values || (Object.values = function (e) {
             content: "Вміст",
             copy: "Копіювати",
             credits: "Кредити",
+            custom_missions: "завдання альянсу ",
             "delete": "Видалити",
             details: "Подробиці",
             edit: "Редагувати",
@@ -12297,6 +12340,7 @@ Object.values || (Object.values = function (e) {
             content: "Contenido",
             copy: "Copiar",
             credits: "Créditos",
+            custom_missions: "Misión de alianza a gran escala",
             "delete": "Eliminar",
             details: "Detalles",
             edit: "Editar",
@@ -12702,6 +12746,7 @@ Object.values || (Object.values = function (e) {
             content: "コンテンツ",
             copy: "コピー",
             credits: "クレジット",
+            custom_missions: "アライアンスミッ",
             "delete": "削除",
             description: "説明",
             details: "詳細",
@@ -13135,6 +13180,7 @@ Object.values || (Object.values = function (e) {
             content: "내용",
             copy: "복사",
             credits: "크레딧",
+            custom_missions: "대규모 동맹 임무 ",
             "delete": "삭제",
             description: "설명",
             details: "세부 사항",
@@ -13572,6 +13618,7 @@ Object.values || (Object.values = function (e) {
             content: "Conţinut",
             copy: "Copiază",
             credits: "Credite",
+            custom_missions: "Misiuni de alianță",
             "delete": "Șterge",
             details: "Detalii",
             edit: "Editează",
@@ -13988,6 +14035,7 @@ Object.values || (Object.values = function (e) {
             content: "Sisältö",
             copy: "Kopioi",
             credits: "Krediittiä",
+            custom_missions: "Laaja liittoutumatehtävä",
             "delete": "Poista",
             description: "Kuvaus",
             details: "Lisätiedot",
@@ -14470,6 +14518,7 @@ Object.values || (Object.values = function (e) {
             content: "Obsah",
             copy: "Kopírovať",
             credits: "Kredity",
+            custom_missions: "Rozsiahlu aliančnú misie",
             "delete": "Vymazať",
             details: "Podrobnosti",
             edit: "Upraviť",
@@ -15061,8 +15110,8 @@ Object.values || (Object.values = function (e) {
 
         function y(e, i) {
             var n, o, s = 0,
-                a = typeof e.getElementsByTagName !== Z ? e.getElementsByTagName(i || "*") : typeof e
-                .querySelectorAll !== Z ? e.querySelectorAll(i || "*") : t;
+                a = typeof e.getElementsByTagName !== K ? e.getElementsByTagName(i || "*") : typeof e
+                .querySelectorAll !== K ? e.querySelectorAll(i || "*") : t;
             if (!a)
                 for (a = [], n = e.childNodes || e; null != (o = n[s]); s++) !i || ut.nodeName(o, i) ? a.push(
                     o) : ut.merge(a, y(o, i));
@@ -15381,7 +15430,7 @@ Object.values || (Object.values = function (e) {
         function q(e) {
             return ut.isWindow(e) ? e : 9 === e.nodeType ? e.defaultView || e.parentWindow : !1
         }
-        var U, K, Z = typeof t,
+        var U, Z, K = typeof t,
             G = e.location,
             Y = e.document,
             J = Y.documentElement,
@@ -15398,7 +15447,7 @@ Object.values || (Object.values = function (e) {
             lt = et.hasOwnProperty,
             ct = it.trim,
             ut = function (e, t) {
-                return new ut.fn.init(e, t, K)
+                return new ut.fn.init(e, t, Z)
             },
             dt = /[+-]?(?:\d*\.|)\d+(?:[eE][+-]?\d+|)/.source,
             ht = /\S+/g,
@@ -15731,7 +15780,7 @@ Object.values || (Object.values = function (e) {
             }, ut.each("Boolean Number String Function Array Date RegExp Object Error".split(" "), function (
                 e, t) {
                 et["[object " + t + "]"] = t.toLowerCase()
-            }), K = ut(Y),
+            }), Z = ut(Y),
             /*!
              * Sizzle CSS Selector Engine v1.9.4-pre
              * http://sizzlejs.com/
@@ -15859,7 +15908,7 @@ Object.values || (Object.values = function (e) {
                 }
 
                 function _(e, t) {
-                    var n, o, s, a, r, l, c, u = Z[e + " "];
+                    var n, o, s, a, r, l, c, u = K[e + " "];
                     if (u) return t ? 0 : u.slice(0);
                     for (r = e, l = [], c = E.preFilter; r;) {
                         (!n || (o = _t.exec(r))) && (o && (r = r.slice(o[0].length) || r), l.push(s = [])), n
@@ -15875,7 +15924,7 @@ Object.values || (Object.values = function (e) {
                             }), r = r.slice(n.length));
                         if (!n) break
                     }
-                    return t ? r.length : r ? i.error(e) : Z(e, l)
+                    return t ? r.length : r ? i.error(e) : K(e, l)
                         .slice(0)
                 }
 
@@ -16037,8 +16086,8 @@ Object.values || (Object.values = function (e) {
                     V = e.document,
                     q = 0,
                     U = 0,
-                    K = o(),
                     Z = o(),
+                    K = o(),
                     G = o(),
                     Y = !1,
                     J = function () {
@@ -16322,9 +16371,9 @@ Object.values || (Object.values = function (e) {
                             }
                         },
                         CLASS: function (e) {
-                            var t = K[e + " "];
+                            var t = Z[e + " "];
                             return t || (t = new RegExp("(^|" + lt + ")" + e + "(" + lt + "|$)")) &&
-                                K(e, function (e) {
+                                Z(e, function (e) {
                                     return t.test("string" == typeof e.className && e.className ||
                                         typeof e.getAttribute !== Q && e.getAttribute(
                                         "class") || "")
@@ -16750,7 +16799,7 @@ Object.values || (Object.values = function (e) {
                         .style.cssText = s, n.style.marginRight = n.style.width = "0", d.style
                         .width = "1px", t.reliableMarginRight = !parseFloat((e
                                 .getComputedStyle(n, null) || {})
-                            .marginRight)), typeof d.style.zoom !== Z && (d.innerHTML = "", d
+                            .marginRight)), typeof d.style.zoom !== K && (d.innerHTML = "", d
                         .style.cssText = s + "width:1px;padding:1px;display:inline;zoom:1", t
                         .inlineBlockNeedsLayout = 3 === d.offsetWidth, d.style.display =
                         "block", d.innerHTML = "<div></div>", d.firstChild.style.width =
@@ -16957,7 +17006,7 @@ Object.values || (Object.values = function (e) {
                         for (var o, s = 0, a = ut(this), r = t, l = e.match(ht) || []; o =
                             l[s++];) r = n ? r : !a.hasClass(o), a[r ? "addClass" :
                             "removeClass"](o);
-                    else(i === Z || "boolean" === i) && (this.className && ut._data(this,
+                    else(i === K || "boolean" === i) && (this.className && ut._data(this,
                             "__className__", this.className), this.className = this
                         .className || e === !1 ? "" : ut._data(this,
                         "__className__") || "")
@@ -17021,7 +17070,7 @@ Object.values || (Object.values = function (e) {
             },
             attr: function (e, i, n) {
                 var o, s, a = e.nodeType;
-                if (e && 3 !== a && 8 !== a && 2 !== a) return typeof e.getAttribute === Z ? ut
+                if (e && 3 !== a && 8 !== a && 2 !== a) return typeof e.getAttribute === K ? ut
                     .prop(e, i, n) : (1 === a && ut.isXMLDoc(e) || (i = i.toLowerCase(), o =
                             ut.attrHooks[i] || (ut.expr.match.bool.test(i) ? Et : At)), n ===
                         t ? o && "get" in o && null !== (s = o.get(e, i)) ? s : (s = ut.find
@@ -17158,7 +17207,7 @@ Object.values || (Object.values = function (e) {
                     for (n.handler && (c = n, n = c.handler, s = c.selector), n.guid || (n.guid = ut
                             .guid++), (r = g.events) || (r = g.events = {}), (d = g.handle) || (d = g
                             .handle = function (e) {
-                                return typeof ut === Z || e && ut.event.triggered === e.type ? t : ut
+                                return typeof ut === K || e && ut.event.triggered === e.type ? t : ut
                                     .event.dispatch.apply(d.elem, arguments)
                             }, d.elem = e), i = (i || "")
                         .match(ht) || [""], l = i.length; l--;) a = Bt.exec(i[l]) || [], m = f = a[1],
@@ -17361,7 +17410,7 @@ Object.values || (Object.values = function (e) {
             e.removeEventListener && e.removeEventListener(t, i, !1)
         } : function (e, t, i) {
             var n = "on" + t;
-            e.detachEvent && (typeof e[n] === Z && (e[n] = null), e.detachEvent(n, i))
+            e.detachEvent && (typeof e[n] === K && (e[n] = null), e.detachEvent(n, i))
         }, ut.Event = function (e, t) {
             return this instanceof ut.Event ? (e && e.type ? (this.originalEvent = e, this.type = e.type,
                     this.isDefaultPrevented = e.defaultPrevented || e.returnValue === !1 || e
@@ -17646,8 +17695,8 @@ Object.values || (Object.values = function (e) {
         });
         var Ut =
             "abbr|article|aside|audio|bdi|canvas|data|datalist|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|summary|time|video",
-            Kt = / jQuery\d+="(?:null|\d+)"/g,
-            Zt = new RegExp("<(?:" + Ut + ")[\\s/>]", "i"),
+            Zt = / jQuery\d+="(?:null|\d+)"/g,
+            Kt = new RegExp("<(?:" + Ut + ")[\\s/>]", "i"),
             Gt = /^\s+/,
             Yt = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/gi,
             Jt = /<([\w:]+)/,
@@ -17734,10 +17783,10 @@ Object.values || (Object.values = function (e) {
                         var i = this[0] || {},
                             n = 0,
                             o = this.length;
-                        if (e === t) return 1 === i.nodeType ? i.innerHTML.replace(Kt, "") :
+                        if (e === t) return 1 === i.nodeType ? i.innerHTML.replace(Zt, "") :
                         t;
                         if (!("string" != typeof e || ei.test(e) || !ut.support
-                                .htmlSerialize && Zt.test(e) || !ut.support
+                                .htmlSerialize && Kt.test(e) || !ut.support
                                 .leadingWhitespace && Gt.test(e) || ai[(Jt.exec(e) || ["",
                                     ""])[1].toLowerCase()])) {
                             e = e.replace(Yt, "<$1></$2>");
@@ -17809,7 +17858,7 @@ Object.values || (Object.values = function (e) {
             }), ut.extend({
                 clone: function (e, t, i) {
                     var n, o, s, a, r, l = ut.contains(e.ownerDocument, e);
-                    if (ut.support.html5Clone || ut.isXMLDoc(e) || !Zt.test("<" + e.nodeName + ">") ?
+                    if (ut.support.html5Clone || ut.isXMLDoc(e) || !Kt.test("<" + e.nodeName + ">") ?
                         s = e.cloneNode(!0) : (li.innerHTML = e.outerHTML, li.removeChild(s = li
                             .firstChild)), !(ut.support.noCloneEvent && ut.support.noCloneChecked ||
                             1 !== e.nodeType && 11 !== e.nodeType || ut.isXMLDoc(e)))
@@ -17854,7 +17903,7 @@ Object.values || (Object.values = function (e) {
                             if (s.events)
                                 for (n in s.events) u[n] ? ut.event.remove(i, n) : ut.removeEvent(i,
                                     n, s.handle);
-                            l[o] && (delete l[o], c ? delete i[r] : typeof i.removeAttribute !== Z ? i
+                            l[o] && (delete l[o], c ? delete i[r] : typeof i.removeAttribute !== K ? i
                                 .removeAttribute(r) : i[r] = null, tt.push(o))
                         }
                 },
@@ -18417,7 +18466,7 @@ Object.values || (Object.values = function (e) {
             }
         });
         var Ui = [],
-            Ki = /(=)\?(?=&|$)|\?\?/;
+            Zi = /(=)\?(?=&|$)|\?\?/;
         ut.ajaxSetup({
             jsonp: "callback",
             jsonpCallback: function () {
@@ -18425,12 +18474,12 @@ Object.values || (Object.values = function (e) {
                 return this[e] = !0, e
             }
         }), ut.ajaxPrefilter("json jsonp", function (i, n, o) {
-            var s, a, r, l = i.jsonp !== !1 && (Ki.test(i.url) ? "url" : "string" == typeof i.data &&
+            var s, a, r, l = i.jsonp !== !1 && (Zi.test(i.url) ? "url" : "string" == typeof i.data &&
                 !(i.contentType || "")
-                .indexOf("application/x-www-form-urlencoded") && Ki.test(i.data) && "data");
+                .indexOf("application/x-www-form-urlencoded") && Zi.test(i.data) && "data");
             return l || "jsonp" === i.dataTypes[0] ? (s = i.jsonpCallback = ut.isFunction(i
                     .jsonpCallback) ? i.jsonpCallback() : i.jsonpCallback, l ? i[l] = i[l]
-                .replace(Ki, "$1" + s) : i.jsonp !== !1 && (i.url += (Ii.test(i.url) ? "&" :
+                .replace(Zi, "$1" + s) : i.jsonp !== !1 && (i.url += (Ii.test(i.url) ? "&" :
                     "?") + i.jsonp + "=" + s), i.converters["script json"] = function () {
                     return r || ut.error(s + " was not called"), r[0]
                 }, i.dataTypes[0] = "json", a = e[s], e[s] = function () {
@@ -18440,10 +18489,10 @@ Object.values || (Object.values = function (e) {
                         .isFunction(a) && a(r[0]), r = a = t
                 }), "script") : void 0
         });
-        var Zi, Gi, Yi = 0,
+        var Ki, Gi, Yi = 0,
             Ji = e.ActiveXObject && function () {
                 var e;
-                for (e in Zi) Zi[e](t, !0)
+                for (e in Ki) Ki[e](t, !0)
             };
         ut.ajaxSettings.xhr = e.ActiveXObject ? function () {
                 return !this.isLocal && O() || L()
@@ -18468,7 +18517,7 @@ Object.values || (Object.values = function (e) {
                                 try {
                                     if (n && (o || 4 === l.readyState))
                                         if (n = t, a && (l.onreadystatechange = ut.noop, Ji &&
-                                                delete Zi[a]), o) 4 !== l.readyState && l.abort();
+                                                delete Ki[a]), o) 4 !== l.readyState && l.abort();
                                         else {
                                             d = {}, r = l.status, c = l.getAllResponseHeaders(),
                                                 "string" == typeof l.responseText && (d.text = l
@@ -18486,8 +18535,8 @@ Object.values || (Object.values = function (e) {
                                 }
                                 d && s(r, u, d, c)
                             }, i.async ? 4 === l.readyState ? setTimeout(n) : (a = ++Yi, Ji && (
-                                Zi || (Zi = {}, ut(e)
-                                    .unload(Ji)), Zi[a] = n), l.onreadystatechange = n) : n()
+                                Ki || (Ki = {}, ut(e)
+                                    .unload(Ji)), Ki[a] = n), l.onreadystatechange = n) : n()
                         },
                         abort: function () {
                             n && n(t, !0)
@@ -18690,7 +18739,7 @@ Object.values || (Object.values = function (e) {
                     s = this[0],
                     a = s && s.ownerDocument;
                 if (a) return i = a.documentElement, ut.contains(i, s) ? (typeof s.getBoundingClientRect !==
-                    Z && (o = s.getBoundingClientRect()), n = q(a), {
+                    K && (o = s.getBoundingClientRect()), n = q(a), {
                         top: o.top + (n.pageYOffset || i.scrollTop) - (i.clientTop || 0),
                         left: o.left + (n.pageXOffset || i.scrollLeft) - (i.clientLeft || 0)
                     }) : o
@@ -24235,14 +24284,14 @@ Object.values || (Object.values = function (e) {
                         V = this._get(e, "hideIfNoPrevNext"),
                         q = this._get(e, "navigationAsDateFormat"),
                         U = this._getNumberOfMonths(e),
-                        K = this._get(e, "showCurrentAtPos"),
-                        Z = this._get(e, "stepMonths"),
+                        Z = this._get(e, "showCurrentAtPos"),
+                        K = this._get(e, "stepMonths"),
                         G = 1 !== U[0] || 1 !== U[1],
                         Y = this._daylightSavingAdjust(e.currentDay ? new Date(e.currentYear, e
                             .currentMonth, e.currentDay) : new Date(9999, 9, 9)),
                         J = this._getMinMaxDate(e, "min"),
                         Q = this._getMinMaxDate(e, "max"),
-                        X = e.drawMonth - K,
+                        X = e.drawMonth - Z,
                         et = e.drawYear;
                     if (0 > X && (X += 12, et--), Q)
                         for (t = this._daylightSavingAdjust(new Date(Q.getFullYear(), Q
@@ -24250,7 +24299,7 @@ Object.values || (Object.values = function (e) {
                             t; this._daylightSavingAdjust(new Date(et, X, 1)) > t;) X--, 0 > X &&
                             (X = 11, et--);
                     for (e.drawMonth = X, e.drawYear = et, i = this._get(e, "prevText"), i = q ?
-                        this.formatDate(i, this._daylightSavingAdjust(new Date(et, X - Z, 1)),
+                        this.formatDate(i, this._daylightSavingAdjust(new Date(et, X - K, 1)),
                             this._getFormatConfig(e)) : i, n = this._canAdjustMonth(e, -1, et,
                         X) ?
                         "<a class='ui-datepicker-prev ui-corner-all' data-handler='prev' data-event='click' title='" +
@@ -24259,7 +24308,7 @@ Object.values || (Object.values = function (e) {
                         "<a class='ui-datepicker-prev ui-corner-all ui-state-disabled' title='" +
                         i + "'><span class='ui-icon ui-icon-circle-triangle-" + (H ? "e" : "w") +
                         "'>" + i + "</span></a>", o = this._get(e, "nextText"), o = q ? this
-                        .formatDate(o, this._daylightSavingAdjust(new Date(et, X + Z, 1)), this
+                        .formatDate(o, this._daylightSavingAdjust(new Date(et, X + K, 1)), this
                             ._getFormatConfig(e)) : o, s = this._canAdjustMonth(e, 1, et, X) ?
                         "<a class='ui-datepicker-next ui-corner-all' data-handler='next' data-event='click' title='" +
                         o + "'><span class='ui-icon ui-icon-circle-triangle-" + (H ? "w" : "e") +
@@ -31085,12 +31134,12 @@ Object.values || (Object.values = function (e) {
             return "auto" === i ? null : i
         }
 
-        function K(e, t, i) {
+        function Z(e, t, i) {
             var n = document.createElement(e);
             return n.className = t || "", i && i.appendChild(n), n
         }
 
-        function Z(e) {
+        function K(e) {
             var t = e.parentNode;
             t && t.removeChild(e)
         }
@@ -31464,13 +31513,13 @@ Object.values || (Object.values = function (e) {
                 .alt, t)] : [r(e.lng, t), r(e.lat, t)]
         }
 
-        function Kt(e, t, i, n) {
-            for (var o = [], s = 0, a = e.length; a > s; s++) o.push(t ? Kt(e[s], t - 1, i, n) : Ut(e[s],
+        function Zt(e, t, i, n) {
+            for (var o = [], s = 0, a = e.length; a > s; s++) o.push(t ? Zt(e[s], t - 1, i, n) : Ut(e[s],
                 n));
             return !t && i && o.push(o[0]), o
         }
 
-        function Zt(e, i) {
+        function Kt(e, i) {
             return e.feature ? t({}, e.feature, {
                 geometry: i
             }) : Gt(i)
@@ -32060,8 +32109,8 @@ Object.values || (Object.values = function (e) {
             qi = !(!window.PointerEvent && !Vi),
             Ui = !window.L_NO_TOUCH && (qi || "ontouchstart" in window || window.DocumentTouch &&
                 document instanceof window.DocumentTouch),
-            Ki = Bi && Pi,
-            Zi = Bi && Mi,
+            Zi = Bi && Pi,
+            Ki = Bi && Mi,
             Gi = (window.devicePixelRatio || window.screen.deviceXDPI / window.screen.logicalXDPI) > 1,
             Yi = !!document.createElement("canvas")
             .getContext,
@@ -32102,8 +32151,8 @@ Object.values || (Object.values = function (e) {
                 msPointer: Vi,
                 pointer: qi,
                 touch: Ui,
-                mobileOpera: Ki,
-                mobileGecko: Zi,
+                mobileOpera: Zi,
+                mobileGecko: Ki,
                 retina: Gi,
                 canvas: Yi,
                 svg: Ji,
@@ -32146,8 +32195,8 @@ Object.values || (Object.values = function (e) {
                 TRANSITION_END: mn,
                 get: q,
                 getStyle: U,
-                create: K,
-                remove: Z,
+                create: Z,
+                remove: K,
                 empty: G,
                 toFront: Y,
                 toBack: J,
@@ -32246,7 +32295,7 @@ Object.values || (Object.values = function (e) {
                         t.zoom && (this._zoom = this._limitZoom(t.zoom)), t.center && void 0 !== t
                         .zoom && this.setView(S(t.center), t.zoom, {
                             reset: !0
-                        }), this.callInitHooks(), this._zoomAnimated = pn && Fi && !Ki && this
+                        }), this.callInitHooks(), this._zoomAnimated = pn && Fi && !Zi && this
                         .options.zoomAnimation, this._zoomAnimated && (this._createAnimProxy(),
                             _t(this._proxy, mn, this._catchTransitionEnd, this)), this._addLayers(
                             this.options.layers)
@@ -32546,18 +32595,18 @@ Object.values || (Object.values = function (e) {
                     } catch (e) {
                         this._container._leaflet_id = void 0, this._containerId = void 0
                     }
-                    void 0 !== this._locationWatchId && this.stopLocate(), this._stop(), Z(this
+                    void 0 !== this._locationWatchId && this.stopLocate(), this._stop(), K(this
                             ._mapPane), this._clearControlPos && this._clearControlPos(), this
                         ._resizeRequest && (g(this._resizeRequest), this._resizeRequest = null),
                         this._clearHandlers(), this._loaded && this.fire("unload");
                     var e;
                     for (e in this._layers) this._layers[e].remove();
-                    for (e in this._panes) Z(this._panes[e]);
+                    for (e in this._panes) K(this._panes[e]);
                     return this._layers = [], this._panes = [], delete this._mapPane, delete this
                         ._renderer, this
                 },
                 createPane: function (e, t) {
-                    var i = K("div", "leaflet-pane" + (e ? " leaflet-" + e.replace("Pane", "") +
+                    var i = Z("div", "leaflet-pane" + (e ? " leaflet-" + e.replace("Pane", "") +
                         "-pane" : ""), t || this._mapPane);
                     return e && (this._panes[e] = i), i
                 },
@@ -32927,7 +32976,7 @@ Object.values || (Object.values = function (e) {
                         .contains(i) || (this.panBy(i, t), 0))
                 },
                 _createAnimProxy: function () {
-                    var e = this._proxy = K("div", "leaflet-proxy leaflet-zoom-animated");
+                    var e = this._proxy = Z("div", "leaflet-proxy leaflet-zoom-animated");
                     this._panes.mapPane.appendChild(e), this.on("zoomanim", function (e) {
                         var t = hn,
                             i = this._proxy.style[t];
@@ -32941,7 +32990,7 @@ Object.values || (Object.values = function (e) {
                     }, this), this._on("unload", this._destroyAnimProxy, this)
                 },
                 _destroyAnimProxy: function () {
-                    Z(this._proxy), delete this._proxy
+                    K(this._proxy), delete this._proxy
                 },
                 _catchTransitionEnd: function (e) {
                     this._animatingZoom && e.propertyName.indexOf("transform") >= 0 && this
@@ -33009,7 +33058,7 @@ Object.values || (Object.values = function (e) {
                         n.firstChild) : n.appendChild(t), this
                 },
                 remove: function () {
-                    return this._map ? (Z(this._container), this.onRemove && this.onRemove(this
+                    return this._map ? (K(this._container), this.onRemove && this.onRemove(this
                         ._map), this._map = null, this) : this
                 },
                 _refocusOnMap: function (e) {
@@ -33030,17 +33079,17 @@ Object.values || (Object.values = function (e) {
             _initControlPos: function () {
                 function e(e, o) {
                     var s = i + e + " " + i + o;
-                    t[e + o] = K("div", s, n)
+                    t[e + o] = Z("div", s, n)
                 }
                 var t = this._controlCorners = {},
                     i = "leaflet-",
-                    n = this._controlContainer = K("div", i + "control-container", this
+                    n = this._controlContainer = Z("div", i + "control-container", this
                         ._container);
                 e("top", "left"), e("top", "right"), e("bottom", "left"), e("bottom", "right")
             },
             _clearControlPos: function () {
-                for (var e in this._controlCorners) Z(this._controlCorners[e]);
-                Z(this._controlContainer), delete this._controlCorners, delete this
+                for (var e in this._controlCorners) K(this._controlCorners[e]);
+                K(this._controlContainer), delete this._controlCorners, delete this
                     ._controlContainer
             }
         });
@@ -33103,19 +33152,19 @@ Object.values || (Object.values = function (e) {
                 },
                 _initLayout: function () {
                     var e = "leaflet-control-layers",
-                        t = this._container = K("div", e),
+                        t = this._container = Z("div", e),
                         i = this.options.collapsed;
                     t.setAttribute("aria-haspopup", !0), wt(t), yt(t);
-                    var n = this._section = K("section", e + "-list");
+                    var n = this._section = Z("section", e + "-list");
                     i && (this._map.on("click", this.collapse, this), Ti || _t(t, {
                         mouseenter: this.expand,
                         mouseleave: this.collapse
                     }, this));
-                    var o = this._layersLink = K("a", e + "-toggle", t);
+                    var o = this._layersLink = Z("a", e + "-toggle", t);
                     o.href = "#", o.title = "Layers", Ui ? (_t(o, "click", xt), _t(o, "click",
                             this.expand, this)) : _t(o, "focus", this.expand, this), i || this
-                        .expand(), this._baseLayersList = K("div", e + "-base", n), this
-                        ._separator = K("div", e + "-separator", n), this._overlaysList = K("div",
+                        .expand(), this._baseLayersList = Z("div", e + "-base", n), this
+                        ._separator = Z("div", e + "-separator", n), this._overlaysList = Z("div",
                             e + "-overlays", n), t.appendChild(n)
                 },
                 _getLayer: function (e) {
@@ -33213,7 +33262,7 @@ Object.values || (Object.values = function (e) {
                 },
                 onAdd: function (e) {
                     var t = "leaflet-control-zoom",
-                        i = K("div", t + " leaflet-bar"),
+                        i = Z("div", t + " leaflet-bar"),
                         n = this.options;
                     return this._zoomInButton = this._createButton(n.zoomInText, n.zoomInTitle,
                             t + "-in", i, this._zoomIn), this._zoomOutButton = this._createButton(
@@ -33239,7 +33288,7 @@ Object.values || (Object.values = function (e) {
                         .zoomOut(this._map.options.zoomDelta * (e.shiftKey ? 3 : 1))
                 },
                 _createButton: function (e, t, i, n, o) {
-                    var s = K("a", i, n);
+                    var s = Z("a", i, n);
                     return s.innerHTML = e, s.href = "#", s.title = t, s.setAttribute("role",
                             "button"), s.setAttribute("aria-label", t), wt(s), _t(s, "click", xt),
                         _t(s, "click", o, this), _t(s, "click", this._refocusOnMap, this), s
@@ -33266,7 +33315,7 @@ Object.values || (Object.values = function (e) {
                     imperial: !0
                 },
                 onAdd: function (e) {
-                    var t = K("div", "leaflet-control-scale"),
+                    var t = Z("div", "leaflet-control-scale"),
                         i = this.options;
                     return this._addScales(i, "leaflet-control-scale-line", t), e.on(i
                             .updateWhenIdle ? "moveend" : "move", this._update, this), e
@@ -33276,7 +33325,7 @@ Object.values || (Object.values = function (e) {
                     e.off(this.options.updateWhenIdle ? "moveend" : "move", this._update, this)
                 },
                 _addScales: function (e, t, i) {
-                    e.metric && (this._mScale = K("div", t, i)), e.imperial && (this._iScale = K(
+                    e.metric && (this._mScale = Z("div", t, i)), e.imperial && (this._iScale = Z(
                         "div", t, i))
                 },
                 _update: function () {
@@ -33321,7 +33370,7 @@ Object.values || (Object.values = function (e) {
                     u(this, e), this._attributions = {}
                 },
                 onAdd: function (e) {
-                    e.attributionControl = this, this._container = K("div",
+                    e.attributionControl = this, this._container = Z("div",
                         "leaflet-control-attribution"), wt(this._container);
                     for (var t in e._layers) e._layers[t].getAttribution && this.addAttribution(e
                         ._layers[t].getAttribution());
@@ -33555,7 +33604,7 @@ Object.values || (Object.values = function (e) {
             });
         pi.Earth = mi, pi.EPSG3395 = Vn, pi.EPSG3857 = bi, pi.EPSG900913 = yi, pi.EPSG4326 = qn, pi
             .Simple = Un;
-        var Kn = di.extend({
+        var Zn = di.extend({
             options: {
                 pane: "overlayPane",
                 attribution: null,
@@ -33653,7 +33702,7 @@ Object.values || (Object.values = function (e) {
                         this._layersMinZoom)
             }
         });
-        var Zn = Kn.extend({
+        var Kn = Zn.extend({
                 initialize: function (e, t) {
                     u(this, t), this._layers = {};
                     var i, n;
@@ -33704,16 +33753,16 @@ Object.values || (Object.values = function (e) {
                     return n(e)
                 }
             }),
-            Gn = Zn.extend({
+            Gn = Kn.extend({
                 addLayer: function (e) {
-                    return this.hasLayer(e) ? this : (e.addEventParent(this), Zn.prototype
+                    return this.hasLayer(e) ? this : (e.addEventParent(this), Kn.prototype
                         .addLayer.call(this, e), this.fire("layeradd", {
                             layer: e
                         }))
                 },
                 removeLayer: function (e) {
                     return this.hasLayer(e) ? (e in this._layers && (e = this._layers[e]), e
-                        .removeEventParent(this), Zn.prototype.removeLayer.call(this, e), this
+                        .removeEventParent(this), Kn.prototype.removeLayer.call(this, e), this
                         .fire("layerremove", {
                             layer: e
                         })) : this
@@ -33794,7 +33843,7 @@ Object.values || (Object.values = function (e) {
                         .imagePath || Jn.imagePath) + Yn.prototype._getIconUrl.call(this, e)
                 },
                 _detectIconPath: function () {
-                    var e = K("div", "leaflet-default-icon-path", document.body),
+                    var e = Z("div", "leaflet-default-icon-path", document.body),
                         t = U(e, "background-image") || U(e, "backgroundImage");
                     return document.body.removeChild(e), t = null === t || 0 !== t.indexOf(
                         "url") ? "" : t.replace(/^url\(["']?/, "")
@@ -33875,7 +33924,7 @@ Object.values || (Object.values = function (e) {
                         .fire("dragend", e)
                 }
             }),
-            Xn = Kn.extend({
+            Xn = Zn.extend({
                 options: {
                     icon: new Jn,
                     interactive: !0,
@@ -33966,11 +34015,11 @@ Object.values || (Object.values = function (e) {
                     this.options.riseOnHover && this.off({
                             mouseover: this._bringToFront,
                             mouseout: this._resetZIndex
-                        }), Z(this._icon), this.removeInteractiveTarget(this._icon), this._icon =
+                        }), K(this._icon), this.removeInteractiveTarget(this._icon), this._icon =
                         null
                 },
                 _removeShadow: function () {
-                    this._shadow && Z(this._shadow), this._shadow = null
+                    this._shadow && K(this._shadow), this._shadow = null
                 },
                 _setPos: function (e) {
                     rt(this._icon, e), this._shadow && rt(this._shadow, e), this._zIndex = e.y +
@@ -34012,7 +34061,7 @@ Object.values || (Object.values = function (e) {
                     return this.options.icon.options.tooltipAnchor
                 }
             }),
-            eo = Kn.extend({
+            eo = Zn.extend({
                 options: {
                     stroke: !0,
                     color: "#3388ff",
@@ -34358,7 +34407,7 @@ Object.values || (Object.values = function (e) {
             }),
             ao = {
                 toGeoJSON: function (e) {
-                    return Zt(this, {
+                    return Kt(this, {
                         type: "Point",
                         coordinates: Ut(this.getLatLng(), e)
                     })
@@ -34367,8 +34416,8 @@ Object.values || (Object.values = function (e) {
         Xn.include(ao), io.include(ao), to.include(ao), no.include({
             toGeoJSON: function (e) {
                 var t = !Ft(this._latlngs),
-                    i = Kt(this._latlngs, t ? 1 : 0, !1, e);
-                return Zt(this, {
+                    i = Zt(this._latlngs, t ? 1 : 0, !1, e);
+                return Kt(this, {
                     type: (t ? "Multi" : "") + "LineString",
                     coordinates: i
                 })
@@ -34377,19 +34426,19 @@ Object.values || (Object.values = function (e) {
             toGeoJSON: function (e) {
                 var t = !Ft(this._latlngs),
                     i = t && !Ft(this._latlngs[0]),
-                    n = Kt(this._latlngs, i ? 2 : t ? 1 : 0, !0, e);
-                return t || (n = [n]), Zt(this, {
+                    n = Zt(this._latlngs, i ? 2 : t ? 1 : 0, !0, e);
+                return t || (n = [n]), Kt(this, {
                     type: (i ? "Multi" : "") + "Polygon",
                     coordinates: n
                 })
             }
-        }), Zn.include({
+        }), Kn.include({
             toMultiPoint: function (e) {
                 var t = [];
                 return this.eachLayer(function (i) {
                     t.push(i.toGeoJSON(e)
                         .geometry.coordinates)
-                }), Zt(this, {
+                }), Kt(this, {
                     type: "MultiPoint",
                     coordinates: t
                 })
@@ -34409,7 +34458,7 @@ Object.values || (Object.values = function (e) {
                                 .features) : n.push(s)
                         }
                     }
-                }), i ? Zt(this, {
+                }), i ? Kt(this, {
                     geometries: n,
                     type: "GeometryCollection"
                 }) : {
@@ -34419,7 +34468,7 @@ Object.values || (Object.values = function (e) {
             }
         });
         var ro = Yt,
-            lo = Kn.extend({
+            lo = Zn.extend({
                 options: {
                     opacity: 1,
                     alt: "",
@@ -34440,7 +34489,7 @@ Object.values || (Object.values = function (e) {
                         .appendChild(this._image), this._reset()
                 },
                 onRemove: function () {
-                    Z(this._image), this.options.interactive && this.removeInteractiveTarget(this
+                    K(this._image), this.options.interactive && this.removeInteractiveTarget(this
                         ._image)
                 },
                 setOpacity: function (e) {
@@ -34479,7 +34528,7 @@ Object.values || (Object.values = function (e) {
                 },
                 _initImage: function () {
                     var e = "IMG" === this._url.tagName,
-                        t = this._image = e ? this._url : K("img");
+                        t = this._image = e ? this._url : Z("img");
                     X(t, "leaflet-image-layer"), this._zoomAnimated && X(t,
                             "leaflet-zoom-animated"), this.options.className && X(t, this.options
                             .className), t.onselectstart = a, t.onmousemove = a, t.onload = i(this
@@ -34524,7 +34573,7 @@ Object.values || (Object.values = function (e) {
                 },
                 _initImage: function () {
                     var e = "VIDEO" === this._url.tagName,
-                        t = this._image = e ? this._url : K("video");
+                        t = this._image = e ? this._url : Z("video");
                     if (X(t, "leaflet-image-layer"), this._zoomAnimated && X(t,
                             "leaflet-zoom-animated"), t.onselectstart = a, t.onmousemove = a, t
                         .onloadeddata = i(this.fire, this, "load"), e) {
@@ -34535,13 +34584,13 @@ Object.values || (Object.values = function (e) {
                         oi(this._url) || (this._url = [this._url]), t.autoplay = !!this.options
                             .autoplay, t.loop = !!this.options.loop;
                         for (var r = 0; r < this._url.length; r++) {
-                            var l = K("source");
+                            var l = Z("source");
                             l.src = this._url[r], t.appendChild(l)
                         }
                     }
                 }
             }),
-            uo = Kn.extend({
+            uo = Zn.extend({
                 options: {
                     offset: [0, 7],
                     className: "",
@@ -34559,7 +34608,7 @@ Object.values || (Object.values = function (e) {
                 },
                 onRemove: function (e) {
                     e._fadeAnimated ? (nt(this._container, 0), this._removeTimeout = setTimeout(i(
-                        Z, void 0, this._container), 200)) : Z(this._container)
+                        K, void 0, this._container), 200)) : K(this._container)
                 },
                 getLatLng: function () {
                     return this._latlng
@@ -34672,14 +34721,14 @@ Object.values || (Object.values = function (e) {
                 },
                 _initLayout: function () {
                     var e = "leaflet-popup",
-                        t = this._container = K("div", e + " " + (this.options.className || "") +
+                        t = this._container = Z("div", e + " " + (this.options.className || "") +
                             " leaflet-zoom-animated"),
-                        i = this._wrapper = K("div", e + "-content-wrapper", t);
-                    if (this._contentNode = K("div", e + "-content", i), wt(i), yt(this
-                            ._contentNode), _t(i, "contextmenu", bt), this._tipContainer = K(
-                            "div", e + "-tip-container", t), this._tip = K("div", e + "-tip", this
+                        i = this._wrapper = Z("div", e + "-content-wrapper", t);
+                    if (this._contentNode = Z("div", e + "-content", i), wt(i), yt(this
+                            ._contentNode), _t(i, "contextmenu", bt), this._tipContainer = Z(
+                            "div", e + "-tip-container", t), this._tip = Z("div", e + "-tip", this
                             ._tipContainer), this.options.closeButton) {
-                        var n = this._closeButton = K("a", e + "-close-button", t);
+                        var n = this._closeButton = Z("a", e + "-close-button", t);
                         n.href = "#close", n.innerHTML = "&#215;", _t(n, "click", this
                             ._onCloseButtonClick, this)
                     }
@@ -34746,7 +34795,7 @@ Object.values || (Object.values = function (e) {
                 return e && e !== this._popup || (e = this._popup, this._popup = null), e &&
                     this.removeLayer(e), this
             }
-        }), Kn.include({
+        }), Zn.include({
             bindPopup: function (e, t) {
                 return e instanceof ho ? (u(e, t), this._popup = e, e._source = this) : (this
                     ._popup && !t || (this._popup = new ho(t, this)), this._popup
@@ -34766,7 +34815,7 @@ Object.values || (Object.values = function (e) {
                 }), this._popupHandlersAdded = !1, this._popup = null), this
             },
             openPopup: function (e, t) {
-                if (e instanceof Kn || (t = e, e = this), e instanceof Gn)
+                if (e instanceof Zn || (t = e, e = this), e instanceof Gn)
                     for (var i in this._layers) {
                         e = this._layers[i];
                         break
@@ -34840,7 +34889,7 @@ Object.values || (Object.values = function (e) {
             _initLayout: function () {
                 var e = "leaflet-tooltip " + (this.options.className || "") +
                     " leaflet-zoom-" + (this._zoomAnimated ? "animated" : "hide");
-                this._contentNode = this._container = K("div", e)
+                this._contentNode = this._container = Z("div", e)
             },
             _updateLayout: function () {},
             _adjustPan: function () {},
@@ -34888,7 +34937,7 @@ Object.values || (Object.values = function (e) {
             closeTooltip: function (e) {
                 return e && this.removeLayer(e), this
             }
-        }), Kn.include({
+        }), Zn.include({
             bindTooltip: function (e, t) {
                 return e instanceof po ? (u(e, t), this._tooltip = e, e._source = this) : (
                         this._tooltip && !t || (this._tooltip = new po(t, this)), this
@@ -34915,7 +34964,7 @@ Object.values || (Object.values = function (e) {
                 }
             },
             openTooltip: function (e, t) {
-                if (e instanceof Kn || (t = e, e = this), e instanceof Gn)
+                if (e instanceof Zn || (t = e, e = this), e instanceof Gn)
                     for (var i in this._layers) {
                         e = this._layers[i];
                         break
@@ -34980,7 +35029,7 @@ Object.values || (Object.values = function (e) {
             }
         });
         Yn.Default = Jn;
-        var _o = Kn.extend({
+        var _o = Zn.extend({
                 options: {
                     tileSize: 256,
                     opacity: 1,
@@ -35009,7 +35058,7 @@ Object.values || (Object.values = function (e) {
                     e._addZoomLimit(this)
                 },
                 onRemove: function (e) {
-                    this._removeAllTiles(), Z(this._container), e._removeZoomLimit(this), this
+                    this._removeAllTiles(), K(this._container), e._removeZoomLimit(this), this
                         ._container = null, this._tileZoom = void 0
                 },
                 bringToFront: function () {
@@ -35081,7 +35130,7 @@ Object.values || (Object.values = function (e) {
                 },
                 _onOpaqueTile: a,
                 _initContainer: function () {
-                    this._container || (this._container = K("div", "leaflet-layer " + (this
+                    this._container || (this._container = Z("div", "leaflet-layer " + (this
                             .options.className || "")), this._updateZIndex(), this.options
                         .opacity < 1 && this._updateOpacity(), this.getPane()
                         .appendChild(this._container))
@@ -35092,13 +35141,13 @@ Object.values || (Object.values = function (e) {
                     if (void 0 !== e) {
                         for (var i in this._levels) this._levels[i].el.children.length || i ===
                             e ? (this._levels[i].el.style.zIndex = t - Math.abs(e - i), this
-                                ._onUpdateLevel(i)) : (Z(this._levels[i].el), this
+                                ._onUpdateLevel(i)) : (K(this._levels[i].el), this
                                 ._removeTilesAtZoom(i), this._onRemoveLevel(i), delete this
                                 ._levels[i]);
                         var n = this._levels[e],
                             o = this._map;
                         return n || ((n = this._levels[e] = {})
-                                .el = K("div", "leaflet-tile-container leaflet-zoom-animated",
+                                .el = Z("div", "leaflet-tile-container leaflet-zoom-animated",
                                     this._container), n.el.style.zIndex = t, n.origin = o.project(
                                     o.unproject(o.getPixelOrigin()), e)
                                 .round(), n.zoom = e, this._setZoomTransform(n, o.getCenter(), o
@@ -35136,7 +35185,7 @@ Object.values || (Object.values = function (e) {
                     for (var e in this._tiles) this._removeTile(e)
                 },
                 _invalidateAll: function () {
-                    for (var e in this._levels) Z(this._levels[e].el), this._onRemoveLevel(e),
+                    for (var e in this._levels) K(this._levels[e].el), this._onRemoveLevel(e),
                         delete this._levels[e];
                     this._removeAllTiles(), this._tileZoom = void 0
                 },
@@ -35303,7 +35352,7 @@ Object.values || (Object.values = function (e) {
                 },
                 _removeTile: function (e) {
                     var t = this._tiles[e];
-                    t && (Z(t.el), delete this._tiles[e], this.fire("tileunload", {
+                    t && (K(t.el), delete this._tiles[e], this.fire("tileunload", {
                         tile: t.el,
                         coords: this._keyToTileCoords(e)
                     }))
@@ -35439,7 +35488,7 @@ Object.values || (Object.values = function (e) {
                     var e, t;
                     for (e in this._tiles) this._tiles[e].coords.z !== this._tileZoom && ((t =
                             this._tiles[e].el)
-                        .onload = a, t.onerror = a, t.complete || (t.src = si, Z(t),
+                        .onload = a, t.onerror = a, t.complete || (t.src = si, K(t),
                             delete this._tiles[e]))
                 },
                 _removeTile: function (e) {
@@ -35501,7 +35550,7 @@ Object.values || (Object.values = function (e) {
         fo.WMS = go, Jt.wms = function (e, t) {
             return new go(e, t)
         };
-        var vo = Kn.extend({
+        var vo = Zn.extend({
                 options: {
                     padding: .1,
                     tolerance: 0
@@ -35586,7 +35635,7 @@ Object.values || (Object.values = function (e) {
                             "2d")
                 },
                 _destroyContainer: function () {
-                    g(this._redrawRequest), delete this._ctx, Z(this._container), ft(this
+                    g(this._redrawRequest), delete this._ctx, K(this._container), ft(this
                         ._container), delete this._container
                 },
                 _updatePaths: function () {
@@ -35786,7 +35835,7 @@ Object.values || (Object.values = function (e) {
             }(),
             wo = {
                 _initContainer: function () {
-                    this._container = K("div", "leaflet-vml-container")
+                    this._container = Z("div", "leaflet-vml-container")
                 },
                 _update: function () {
                     this._map._animatingZoom || (vo.prototype._update.call(this), this.fire("update"))
@@ -35803,7 +35852,7 @@ Object.values || (Object.values = function (e) {
                 },
                 _removePath: function (e) {
                     var t = e._container;
-                    Z(t), e.removeInteractiveTarget(t), delete this._layers[n(e)]
+                    K(t), e.removeInteractiveTarget(t), delete this._layers[n(e)]
                 },
                 _updateStyle: function (e) {
                     var t = e._stroke,
@@ -35849,7 +35898,7 @@ Object.values || (Object.values = function (e) {
                         ._rootGroup)
                 },
                 _destroyContainer: function () {
-                    Z(this._container), ft(this._container), delete this._container, delete this
+                    K(this._container), ft(this._container), delete this._container, delete this
                         ._rootGroup, delete this._svgSize
                 },
                 _onZoomStart: function () {
@@ -35878,7 +35927,7 @@ Object.values || (Object.values = function (e) {
                         ._path), e.addInteractiveTarget(e._path)
                 },
                 _removePath: function (e) {
-                    Z(e._path), e.removeInteractiveTarget(e._path), delete this._layers[n(e)]
+                    K(e._path), e.removeInteractiveTarget(e._path), delete this._layers[n(e)]
                 },
                 _updatePath: function (e) {
                     e._project(), e._update()
@@ -35952,7 +36001,7 @@ Object.values || (Object.values = function (e) {
             }
         });
         xo.create = ko, xo.pointsToPath = j, so.geometryToLayer = Wt, so.coordsToLatLng = Vt, so
-            .coordsToLatLngs = qt, so.latLngToCoords = Ut, so.latLngsToCoords = Kt, so.getFeature = Zt, so
+            .coordsToLatLngs = qt, so.latLngToCoords = Ut, so.latLngsToCoords = Zt, so.getFeature = Kt, so
             .asFeature = Gt, zn.mergeOptions({
                 boxZoom: !0
             });
@@ -35972,7 +36021,7 @@ Object.values || (Object.values = function (e) {
                 return this._moved
             },
             _destroy: function () {
-                Z(this._pane), delete this._pane
+                K(this._pane), delete this._pane
             },
             _resetState: function () {
                 this._resetStateTimeout = 0, this._moved = !1
@@ -35992,7 +36041,7 @@ Object.values || (Object.values = function (e) {
                     }, this), void 0)
             },
             _onMouseMove: function (e) {
-                this._moved || (this._moved = !0, this._box = K("div", "leaflet-zoom-box",
+                this._moved || (this._moved = !0, this._box = Z("div", "leaflet-zoom-box",
                             this._container), X(this._container, "leaflet-crosshair"), this
                         ._map.fire("boxzoomstart")), this._point = this._map
                     .mouseEventToContainerPoint(e);
@@ -36002,7 +36051,7 @@ Object.values || (Object.values = function (e) {
                     .height = i.y + "px"
             },
             _finish: function () {
-                this._moved && (Z(this._box), et(this._container, "leaflet-crosshair")), gi(),
+                this._moved && (K(this._box), et(this._container, "leaflet-crosshair")), gi(),
                     ut(), ft(document, {
                         contextmenu: xt,
                         mousemove: this._onMouseMove,
@@ -36431,8 +36480,8 @@ Object.values || (Object.values = function (e) {
             .Draggable = Rn, e.LineUtil = $n, e.PolyUtil = Fn, e.Point = y, e.point = w, e.Bounds = k, e
             .bounds = x, e.Transformation = A, e.transformation = E, e.Projection = Wn, e.LatLng = T, e
             .latLng = S, e.LatLngBounds = C, e.latLngBounds = z, e.CRS = pi, e.GeoJSON = so, e.geoJSON =
-            Yt, e.geoJson = ro, e.Layer = Kn, e.LayerGroup = Zn, e.layerGroup = function (e, t) {
-                return new Zn(e, t)
+            Yt, e.geoJson = ro, e.Layer = Zn, e.LayerGroup = Kn, e.layerGroup = function (e, t) {
+                return new Kn(e, t)
             }, e.FeatureGroup = Gn, e.featureGroup = function (e) {
                 return new Gn(e)
             }, e.ImageOverlay = lo, e.imageOverlay = function (e, t, i) {
@@ -40378,7 +40427,7 @@ function (e) {
                 n = !H(e, !0);
             if (n && H(e.parentNode, !0)) {
                 var o = t(e),
-                    s = Z(o, e),
+                    s = K(o, e),
                     a = e;
                 W(o, a), z(s, o), z(a, o)
             }
@@ -40398,13 +40447,13 @@ function (e) {
         return e ? (t ? e.previousSibling : e.nextSibling) || U(e.parentNode, t) : null
     }
 
-    function K(e) {
+    function Z(e) {
         var t, i, n, o, s, a, r, l = y(e, "whiteSpace"),
             c = /line$/i.test(l),
             d = e.firstChild;
         if (!/pre(\-wrap)?$/i.test(l))
             for (; d;) {
-                if (a = d.nextSibling, t = d.nodeValue, i = d.nodeType, i === mt && d.firstChild && K(d),
+                if (a = d.nextSibling, t = d.nodeValue, i = d.nodeType, i === mt && d.firstChild && Z(d),
                     i === _t) {
                     for (n = U(d), o = U(d, !0), r = !1; S(o, "sceditor-ignore");) o = U(o, !0);
                     if (H(d) && o) {
@@ -40421,7 +40470,7 @@ function (e) {
             }
     }
 
-    function Z(e, t) {
+    function K(e, t) {
         var i = e.ownerDocument.createRange();
         return i.setStartBefore(e), i.setEndAfter(t), i.extractContents()
     }
@@ -40738,8 +40787,8 @@ function (e) {
     }
 
     function lt(e, t) {
-        var i, a, l, f, x, C, T, N, O, R, W, q, U, Z, Y, J, Q, et, it, ht, pt, gt, bt, yt, Ct, zt, Tt, At, Et,
-            Pt, Ot, Lt, Rt, $t, Ft, Bt, Ht, Wt, Vt, qt, Ut, Kt, Zt, Gt, Yt, Jt, Qt, Xt, ei, ti, ii, ni, oi,
+        var i, a, l, f, x, C, T, N, O, R, W, q, U, K, Y, J, Q, et, it, ht, pt, gt, bt, yt, Ct, zt, Tt, At, Et,
+            Pt, Ot, Lt, Rt, $t, Ft, Bt, Ht, Wt, Vt, qt, Ut, Zt, Kt, Gt, Yt, Jt, Qt, Xt, ei, ti, ii, ni, oi,
             si, ai, ri, li, ci, ui, di, hi, pi, mi, _i = this,
             fi = {},
             gi = [],
@@ -40789,7 +40838,7 @@ function (e) {
             })), T.close(), C = T.body, x = f.contentWindow, _i.readOnly(!!ki.readOnly), (kt || wt ||
                 It) && (M(C, "100%"), It || p(C, "touchend", _i.focus));
             var i = _(e, "tabindex");
-            _(N, "tabindex", i), _(f, "tabindex", i), Z = new ot(x), g(e), _i.val(e.value);
+            _(N, "tabindex", i), _(f, "tabindex", i), K = new ot(x), g(e), _i.val(e.value);
             var n = ki.placeholder || _(e, "placeholder");
             n && (N.placeholder = n, _(C, "placeholder", n))
         }, Ft = function () {
@@ -40804,7 +40853,7 @@ function (e) {
                 o = "onselectionchange" in T ? "selectionchange" :
                 "keyup focus blur contextmenu mouseup touchend click";
             p(Mt, "click", Xt), t && (p(t, "reset", Gt), p(t, "submit", _i.updateOriginal, ft)), p(C,
-                "keypress", Zt), p(C, "keydown", Ut), p(C, "keydown", Kt), p(C, "keyup", ni), p(C,
+                "keypress", Kt), p(C, "keydown", Ut), p(C, "keydown", Zt), p(C, "keyup", ni), p(C,
                 "blur", di), p(C, "keyup", hi), p(C, "paste", Vt), p(C, i, Jt), p(C, o, oi), p(C, n,
                 Qt), ki.emoticonsCompat && jt.getSelection && p(C, "keyup", li), p(C, "blur",
                 function () {
@@ -40912,11 +40961,11 @@ function (e) {
                 n = !!ki.autofocusEnd;
             if (D(a)) {
                 if (_i.sourceMode()) return t = n ? N.value.length : 0, N.setSelectionRange(t, t), void 0;
-                if (K(C), n)
+                if (Z(C), n)
                     for ((i = C.lastChild) || (i = r("p", {}, T), d(C, i)); i.lastChild;) i = i.lastChild,
                         !Dt && k(i, "br") && i.previousSibling && (i = i.previousSibling);
                 e = T.createRange(), B(i) ? e.selectNodeContents(i) : (e.setStartBefore(i), n && e
-                    .setStartAfter(i)), e.collapse(!n), Z.selectRange(e), et = e, n && (C.scrollTop =
+                    .setStartAfter(i)), e.collapse(!n), K.selectRange(e), et = e, n && (C.scrollTop =
                     C.scrollHeight), _i.focus()
             }
         }, _i.readOnly = function (e) {
@@ -40967,7 +41016,7 @@ function (e) {
             }
         }, _i.destroy = function () {
             if (Y) {
-                Y.destroy(), Z = null, R = null, Y = null, O && u(O), m(Mt, "click", Xt);
+                Y.destroy(), K = null, R = null, Y = null, O && u(O), m(Mt, "click", Xt);
                 var t = e.form;
                 t && (m(t, "reset", Gt), m(t, "submit", _i.updateOriginal)), u(N), u(l), u(a), delete e
                     ._sceditor, v(e), e.required = ht
@@ -41017,10 +41066,10 @@ function (e) {
                 s.text = s["text/plain"], s.html = s["text/html"], qt(s)
             } else if (!Ct) {
                 var c = i.scrollTop;
-                for (Z.saveRange(), Ct = Mt.createDocumentFragment(); i.firstChild;) d(Ct, i.firstChild);
+                for (K.saveRange(), Ct = Mt.createDocumentFragment(); i.firstChild;) d(Ct, i.firstChild);
                 setTimeout(function () {
                     var e = i.innerHTML;
-                    i.innerHTML = "", d(i, Ct), i.scrollTop = c, Ct = !1, Z.restoreRange(), qt({
+                    i.innerHTML = "", d(i, Ct), i.scrollTop = c, Ct = !1, K.restoreRange(), qt({
                         html: e
                     })
                 }, 0)
@@ -41039,10 +41088,10 @@ function (e) {
             O && (u(O), O = null), e === !0 && _i.focus()
         }, _i.wysiwygEditorInsertHtml = function (e, t, i) {
             var n, o, s, a = M(f);
-            _i.focus(), (i || !c(Q, "code")) && (Z.insertHTML(e, t), Z.saveRange(), At(), n = h(C,
+            _i.focus(), (i || !c(Q, "code")) && (K.insertHTML(e, t), K.saveRange(), At(), n = h(C,
                     "#sceditor-end-marker")[0], v(n), o = C.scrollTop, s = G(n)
                 .top + 1.5 * n.offsetHeight - a, g(n), (s > o || o > s + a) && (C.scrollTop = s), ui(!
-                    1), Z.restoreRange(), ni())
+                    1), K.restoreRange(), ni())
         }, _i.wysiwygEditorInsertText = function (e, t) {
             _i.wysiwygEditorInsertHtml(X(e), X(t))
         }, _i.insertText = function (e, t) {
@@ -41055,7 +41104,7 @@ function (e) {
                 .substring(0, o) + e + n.substring(s, n.length), N.selectionStart = o + e.length - (t ? t
                     .length : 0), N.selectionEnd = N.selectionStart, N.scrollTop = i, N.focus(), ui()
         }, _i.getRangeHelper = function () {
-            return Z
+            return K
         }, _i.sourceEditorCaret = function (e) {
             return N.focus(), e ? (N.selectionStart = e.start, N.selectionEnd = e.end, this) : {
                 start: N.selectionStart,
@@ -41068,7 +41117,7 @@ function (e) {
         }, _i.insert = function (e, t, n, o, s) {
             if (_i.inSourceMode()) return _i.sourceEditorInsertText(e, t), _i;
             if (t) {
-                var a = Z.selectedHtml();
+                var a = K.selectedHtml();
                 n !== !1 && "fragmentToSource" in i && (a = i.fragmentToSource(a, T, J)), e += a + t
             }
             return n !== !1 && "fragmentToHtml" in i && (e = i.fragmentToHtml(e, J)), n !== !1 && s === !
@@ -41102,7 +41151,7 @@ function (e) {
             return "boolean" != typeof e ? t : ((t && !e || !t && e) && _i.toggleSourceMode(), _i)
         }, _i.toggleSourceMode = function () {
             var e = _i.inSourceMode();
-            (xt || !e) && (e || (Z.saveRange(), Z.clear()), _i.blur(), e ? _i.setWysiwygEditorValue(_i
+            (xt || !e) && (e || (K.saveRange(), K.clear()), _i.blur(), e ? _i.setWysiwygEditorValue(_i
                     .getSourceEditorValue()) : _i.setSourceEditorValue(_i.getWysiwygEditorValue()), R =
                 null, b(N), b(f), P(a, "wysiwygMode", e), P(a, "sourceMode", !e), ei(), ti())
         }, ii = function () {
@@ -41113,11 +41162,11 @@ function (e) {
                 _i, e) : _i.execCommand(t.exec, t.hasOwnProperty("execParam") ? t.execParam :
                 null))
         }, Pt = function () {
-            It && (R = Z.selectedRange())
+            It && (R = K.selectedRange())
         }, _i.execCommand = function (e, t) {
             var i = !1,
                 n = _i.commands[e];
-            if (_i.focus(), !c(Z.parentNode(), "code")) {
+            if (_i.focus(), !c(K.parentNode(), "code")) {
                 try {
                     i = T.execCommand(e, !1, t)
                 } catch (o) {}!i && n && n.errorMessage && alert(_i._(n.errorMessage)), ti()
@@ -41126,13 +41175,13 @@ function (e) {
             function e() {
                 if (x.getSelection() && x.getSelection()
                     .rangeCount <= 0) et = null;
-                else if (Z && !Z.compare(et)) {
-                    if (et = Z.cloneSelected(), et && et.collapsed) {
+                else if (K && !K.compare(et)) {
+                    if (et = K.cloneSelected(), et && et.collapsed) {
                         var e = et.startContainer,
                             t = et.startOffset;
                         for (t && e.nodeType !== _t && (e = e.childNodes[t]); e && e.parentNode !== C;)
                             e = e.parentNode;
-                        e && H(e, !0) && (Z.saveRange(), rt(C, T), Z.restoreRange())
+                        e && H(e, !0) && (K.saveRange(), rt(C, T), K.restoreRange())
                     }
                     I(a, "selectionchanged")
                 }
@@ -41140,8 +41189,8 @@ function (e) {
             }
             it || (it = !0, "onselectionchange" in T ? e() : setTimeout(e, 100))
         }, si = function () {
-            var e, t = Z.parentNode();
-            J !== t && (e = J, J = t, Q = Z.getFirstBlockParent(t), I(a, "nodechanged", {
+            var e, t = K.parentNode();
+            J !== t && (e = J, J = t, Q = K.getFirstBlockParent(t), I(a, "nodechanged", {
                 oldNode: e,
                 newNode: J
             }))
@@ -41156,7 +41205,7 @@ function (e) {
             if (_i.readOnly()) return s(h(l, i), function (e, t) {
                 E(t, i)
             }), void 0;
-            o || (t = Z.parentNode(), e = Z.getFirstBlockParent(t));
+            o || (t = K.parentNode(), e = K.getFirstBlockParent(t));
             for (var a = 0; a < vi.length; a++) {
                 var r = 0,
                     c = yi[vi[a].name],
@@ -41171,17 +41220,17 @@ function (e) {
                 P(c, "disabled", d || 0 > r), P(c, i, r > 0)
             }
             zt && zt.update && zt.update(o, t, e)
-        }, Zt = function (e) {
+        }, Kt = function (e) {
             if (!e.defaultPrevented && (_i.closeDropDown(), 13 === e.which)) {
                 var t = "li,ul,ol";
                 if (!k(Q, t) && $(Q)) {
                     R = null;
                     var i = r("br", {}, T);
-                    if (Z.insertNode(i), !Dt) {
+                    if (K.insertNode(i), !Dt) {
                         var n = i.parentNode,
                             o = n.lastChild;
                         o && o.nodeType === _t && "" === o.nodeValue && (u(o), o = n.lastChild), !H(n, !
-                            0) && o === i && H(i.previousSibling) && Z.insertHTML("<br>")
+                            0) && o === i && H(i.previousSibling) && K.insertHTML("<br>")
                     }
                     e.preventDefault()
                 }
@@ -41233,11 +41282,11 @@ function (e) {
             else {
                 if (h(T, ":focus")
                     .length) return;
-                var n, o = Z.selectedRange();
+                var n, o = K.selectedRange();
                 et || ai(), !Dt && o && 1 === o.endOffset && o.collapsed && (n = o.endContainer, n &&
                     1 === n.childNodes.length && k(n.firstChild, "br") && (o.setStartBefore(n
-                        .firstChild), o.collapse(!0), Z.selectRange(o))), x.focus(), C.focus(), R && (
-                    Z.selectRange(R), R = null)
+                        .firstChild), o.collapse(!0), K.selectRange(o))), x.focus(), C.focus(), R && (
+                    K.selectRange(R), R = null)
             }
             return ti(), _i
         }, _i.keyDown = function (e, t, i) {
@@ -41260,15 +41309,15 @@ function (e) {
                     n[i++] = [e, t]
                 }), n.sort(function (e, t) {
                     return e[0].length - t[0].length
-                }), _i.emoticonsCache = n, _i.longestEmoticonCode = n[n.length - 1][0].length), t = Z
+                }), _i.emoticonsCache = n, _i.longestEmoticonCode = n[n.length - 1][0].length), t = K
                 .replaceKeyword(_i.emoticonsCache, !0, !0, _i.longestEmoticonCode, ki.emoticonsCompat,
                     o), t && (ki.emoticonsCompat && /^\s$/.test(o) || e.preventDefault()))
         }, li = function () {
-            st(Q, Z)
+            st(Q, K)
         }, _i.emoticons = function (e) {
             if (!e && e !== !1) return ki.emoticonsEnabled;
-            if (ki.emoticonsEnabled = e, e) p(C, "keypress", ri), _i.sourceMode() || (Z.saveRange(), At(),
-                ui(!1), Z.restoreRange());
+            if (ki.emoticonsEnabled = e, e) p(C, "keypress", ri), _i.sourceMode() || (K.saveRange(), At(),
+                ui(!1), K.restoreRange());
             else {
                 var t = h(C, "img[data-sceditor-emoticon]");
                 s(t, function (e, t) {
@@ -41398,9 +41447,9 @@ function (e) {
             } : t, _i
         }, _i.removeShortcut = function (e) {
             return delete bi[e.toLowerCase()], _i
-        }, Kt = function (e) {
+        }, Zt = function (e) {
             var t, i, n, o;
-            if (!ki.disableBlockRemove && 8 === e.which && (n = Z.selectedRange()) && (t = n
+            if (!ki.disableBlockRemove && 8 === e.which && (n = K.selectedRange()) && (t = n
                     .startContainer, i = n.startOffset, 0 === i && (o = ci()) && !k(o, "body"))) {
                 for (; t !== o;) {
                     for (; t.previousSibling;)
@@ -41414,17 +41463,17 @@ function (e) {
                 if (!(e = e.parentNode) || k(e, "body")) return;
             return e
         }, _i.clearBlockFormatting = function (e) {
-            return e = e || ci(), !e || k(e, "body") ? _i : (Z.saveRange(), e.className = "", R = null, _(
-                e, "style", ""), k(e, "p,div,td") || F(e, "p"), Z.restoreRange(), _i)
+            return e = e || ci(), !e || k(e, "body") ? _i : (K.saveRange(), e.className = "", R = null, _(
+                e, "style", ""), k(e, "p,div,td") || F(e, "p"), K.restoreRange(), _i)
         }, ui = function (e) {
             if (Y && (Y.hasHandler("valuechangedEvent") || ui.hasHandler)) {
                 var t, i = _i.sourceMode(),
-                    n = !i && Z.hasSelection();
+                    n = !i && K.hasSelection();
                 W = !1, e = e !== !1 && !T.getElementById("sceditor-start-marker"), q && (clearTimeout(q),
-                        q = !1), n && e && Z.saveRange(), t = i ? N.value : C.innerHTML, t !== ui
+                        q = !1), n && e && K.saveRange(), t = i ? N.value : C.innerHTML, t !== ui
                     .lastVal && (ui.lastVal = t, I(a, "valuechanged", {
                         rawValue: i ? _i.val() : t
-                    })), n && e && Z.removeMarkers()
+                    })), n && e && K.removeMarkers()
             }
         }, di = function () {
             q && ui()
@@ -42143,8 +42192,8 @@ function (e) {
                 fixNesting: V,
                 findCommonAncestor: q,
                 getSibling: U,
-                removeWhiteSpace: K,
-                extractContents: Z,
+                removeWhiteSpace: Z,
+                extractContents: K,
                 getOffset: G,
                 getStyle: Y,
                 hasStyle: J
@@ -42474,7 +42523,7 @@ function (e) {
                 n = !H(e, !0);
             if (n && H(e.parentNode, !0)) {
                 var o = t(e),
-                    s = Z(o, e),
+                    s = K(o, e),
                     a = e;
                 W(o, a), z(s, o), z(a, o)
             }
@@ -42494,13 +42543,13 @@ function (e) {
         return e ? (t ? e.previousSibling : e.nextSibling) || U(e.parentNode, t) : null
     }
 
-    function K(e) {
+    function Z(e) {
         var t, i, n, o, s, a, r, l = y(e, "whiteSpace"),
             c = /line$/i.test(l),
             d = e.firstChild;
         if (!/pre(\-wrap)?$/i.test(l))
             for (; d;) {
-                if (a = d.nextSibling, t = d.nodeValue, i = d.nodeType, i === mt && d.firstChild && K(d),
+                if (a = d.nextSibling, t = d.nodeValue, i = d.nodeType, i === mt && d.firstChild && Z(d),
                     i === _t) {
                     for (n = U(d), o = U(d, !0), r = !1; S(o, "sceditor-ignore");) o = U(o, !0);
                     if (H(d) && o) {
@@ -42517,7 +42566,7 @@ function (e) {
             }
     }
 
-    function Z(e, t) {
+    function K(e, t) {
         var i = e.ownerDocument.createRange();
         return i.setStartBefore(e), i.setEndAfter(t), i.extractContents()
     }
@@ -42834,8 +42883,8 @@ function (e) {
     }
 
     function lt(e, t) {
-        var i, a, l, f, x, C, T, N, O, R, W, q, U, Z, Y, J, Q, et, it, ht, pt, gt, bt, yt, Ct, zt, Tt, At, Et,
-            Pt, Ot, Lt, Rt, $t, Ft, Bt, Ht, Wt, Vt, qt, Ut, Kt, Zt, Gt, Yt, Jt, Qt, Xt, ei, ti, ii, ni, oi,
+        var i, a, l, f, x, C, T, N, O, R, W, q, U, K, Y, J, Q, et, it, ht, pt, gt, bt, yt, Ct, zt, Tt, At, Et,
+            Pt, Ot, Lt, Rt, $t, Ft, Bt, Ht, Wt, Vt, qt, Ut, Zt, Kt, Gt, Yt, Jt, Qt, Xt, ei, ti, ii, ni, oi,
             si, ai, ri, li, ci, ui, di, hi, pi, mi, _i = this,
             fi = {},
             gi = [],
@@ -42885,7 +42934,7 @@ function (e) {
             })), T.close(), C = T.body, x = f.contentWindow, _i.readOnly(!!ki.readOnly), (kt || wt ||
                 It) && (M(C, "100%"), It || p(C, "touchend", _i.focus));
             var i = _(e, "tabindex");
-            _(N, "tabindex", i), _(f, "tabindex", i), Z = new ot(x), g(e), _i.val(e.value);
+            _(N, "tabindex", i), _(f, "tabindex", i), K = new ot(x), g(e), _i.val(e.value);
             var n = ki.placeholder || _(e, "placeholder");
             n && (N.placeholder = n, _(C, "placeholder", n))
         }, Ft = function () {
@@ -42900,7 +42949,7 @@ function (e) {
                 o = "onselectionchange" in T ? "selectionchange" :
                 "keyup focus blur contextmenu mouseup touchend click";
             p(Mt, "click", Xt), t && (p(t, "reset", Gt), p(t, "submit", _i.updateOriginal, ft)), p(C,
-                "keypress", Zt), p(C, "keydown", Ut), p(C, "keydown", Kt), p(C, "keyup", ni), p(C,
+                "keypress", Kt), p(C, "keydown", Ut), p(C, "keydown", Zt), p(C, "keyup", ni), p(C,
                 "blur", di), p(C, "keyup", hi), p(C, "paste", Vt), p(C, i, Jt), p(C, o, oi), p(C, n,
                 Qt), ki.emoticonsCompat && jt.getSelection && p(C, "keyup", li), p(C, "blur",
                 function () {
@@ -43008,11 +43057,11 @@ function (e) {
                 n = !!ki.autofocusEnd;
             if (D(a)) {
                 if (_i.sourceMode()) return t = n ? N.value.length : 0, N.setSelectionRange(t, t), void 0;
-                if (K(C), n)
+                if (Z(C), n)
                     for ((i = C.lastChild) || (i = r("p", {}, T), d(C, i)); i.lastChild;) i = i.lastChild,
                         !Dt && k(i, "br") && i.previousSibling && (i = i.previousSibling);
                 e = T.createRange(), B(i) ? e.selectNodeContents(i) : (e.setStartBefore(i), n && e
-                    .setStartAfter(i)), e.collapse(!n), Z.selectRange(e), et = e, n && (C.scrollTop =
+                    .setStartAfter(i)), e.collapse(!n), K.selectRange(e), et = e, n && (C.scrollTop =
                     C.scrollHeight), _i.focus()
             }
         }, _i.readOnly = function (e) {
@@ -43063,7 +43112,7 @@ function (e) {
             }
         }, _i.destroy = function () {
             if (Y) {
-                Y.destroy(), Z = null, R = null, Y = null, O && u(O), m(Mt, "click", Xt);
+                Y.destroy(), K = null, R = null, Y = null, O && u(O), m(Mt, "click", Xt);
                 var t = e.form;
                 t && (m(t, "reset", Gt), m(t, "submit", _i.updateOriginal)), u(N), u(l), u(a), delete e
                     ._sceditor, v(e), e.required = ht
@@ -43113,10 +43162,10 @@ function (e) {
                 s.text = s["text/plain"], s.html = s["text/html"], qt(s)
             } else if (!Ct) {
                 var c = i.scrollTop;
-                for (Z.saveRange(), Ct = Mt.createDocumentFragment(); i.firstChild;) d(Ct, i.firstChild);
+                for (K.saveRange(), Ct = Mt.createDocumentFragment(); i.firstChild;) d(Ct, i.firstChild);
                 setTimeout(function () {
                     var e = i.innerHTML;
-                    i.innerHTML = "", d(i, Ct), i.scrollTop = c, Ct = !1, Z.restoreRange(), qt({
+                    i.innerHTML = "", d(i, Ct), i.scrollTop = c, Ct = !1, K.restoreRange(), qt({
                         html: e
                     })
                 }, 0)
@@ -43135,10 +43184,10 @@ function (e) {
             O && (u(O), O = null), e === !0 && _i.focus()
         }, _i.wysiwygEditorInsertHtml = function (e, t, i) {
             var n, o, s, a = M(f);
-            _i.focus(), (i || !c(Q, "code")) && (Z.insertHTML(e, t), Z.saveRange(), At(), n = h(C,
+            _i.focus(), (i || !c(Q, "code")) && (K.insertHTML(e, t), K.saveRange(), At(), n = h(C,
                     "#sceditor-end-marker")[0], v(n), o = C.scrollTop, s = G(n)
                 .top + 1.5 * n.offsetHeight - a, g(n), (s > o || o > s + a) && (C.scrollTop = s), ui(!
-                    1), Z.restoreRange(), ni())
+                    1), K.restoreRange(), ni())
         }, _i.wysiwygEditorInsertText = function (e, t) {
             _i.wysiwygEditorInsertHtml(X(e), X(t))
         }, _i.insertText = function (e, t) {
@@ -43151,7 +43200,7 @@ function (e) {
                 .substring(0, o) + e + n.substring(s, n.length), N.selectionStart = o + e.length - (t ? t
                     .length : 0), N.selectionEnd = N.selectionStart, N.scrollTop = i, N.focus(), ui()
         }, _i.getRangeHelper = function () {
-            return Z
+            return K
         }, _i.sourceEditorCaret = function (e) {
             return N.focus(), e ? (N.selectionStart = e.start, N.selectionEnd = e.end, this) : {
                 start: N.selectionStart,
@@ -43164,7 +43213,7 @@ function (e) {
         }, _i.insert = function (e, t, n, o, s) {
             if (_i.inSourceMode()) return _i.sourceEditorInsertText(e, t), _i;
             if (t) {
-                var a = Z.selectedHtml();
+                var a = K.selectedHtml();
                 n !== !1 && "fragmentToSource" in i && (a = i.fragmentToSource(a, T, J)), e += a + t
             }
             return n !== !1 && "fragmentToHtml" in i && (e = i.fragmentToHtml(e, J)), n !== !1 && s === !
@@ -43198,7 +43247,7 @@ function (e) {
             return "boolean" != typeof e ? t : ((t && !e || !t && e) && _i.toggleSourceMode(), _i)
         }, _i.toggleSourceMode = function () {
             var e = _i.inSourceMode();
-            (xt || !e) && (e || (Z.saveRange(), Z.clear()), _i.blur(), e ? _i.setWysiwygEditorValue(_i
+            (xt || !e) && (e || (K.saveRange(), K.clear()), _i.blur(), e ? _i.setWysiwygEditorValue(_i
                     .getSourceEditorValue()) : _i.setSourceEditorValue(_i.getWysiwygEditorValue()), R =
                 null, b(N), b(f), P(a, "wysiwygMode", e), P(a, "sourceMode", !e), ei(), ti())
         }, ii = function () {
@@ -43209,11 +43258,11 @@ function (e) {
                 _i, e) : _i.execCommand(t.exec, t.hasOwnProperty("execParam") ? t.execParam :
                 null))
         }, Pt = function () {
-            It && (R = Z.selectedRange())
+            It && (R = K.selectedRange())
         }, _i.execCommand = function (e, t) {
             var i = !1,
                 n = _i.commands[e];
-            if (_i.focus(), !c(Z.parentNode(), "code")) {
+            if (_i.focus(), !c(K.parentNode(), "code")) {
                 try {
                     i = T.execCommand(e, !1, t)
                 } catch (o) {}!i && n && n.errorMessage && alert(_i._(n.errorMessage)), ti()
@@ -43222,13 +43271,13 @@ function (e) {
             function e() {
                 if (x.getSelection() && x.getSelection()
                     .rangeCount <= 0) et = null;
-                else if (Z && !Z.compare(et)) {
-                    if (et = Z.cloneSelected(), et && et.collapsed) {
+                else if (K && !K.compare(et)) {
+                    if (et = K.cloneSelected(), et && et.collapsed) {
                         var e = et.startContainer,
                             t = et.startOffset;
                         for (t && e.nodeType !== _t && (e = e.childNodes[t]); e && e.parentNode !== C;)
                             e = e.parentNode;
-                        e && H(e, !0) && (Z.saveRange(), rt(C, T), Z.restoreRange())
+                        e && H(e, !0) && (K.saveRange(), rt(C, T), K.restoreRange())
                     }
                     I(a, "selectionchanged")
                 }
@@ -43236,8 +43285,8 @@ function (e) {
             }
             it || (it = !0, "onselectionchange" in T ? e() : setTimeout(e, 100))
         }, si = function () {
-            var e, t = Z.parentNode();
-            J !== t && (e = J, J = t, Q = Z.getFirstBlockParent(t), I(a, "nodechanged", {
+            var e, t = K.parentNode();
+            J !== t && (e = J, J = t, Q = K.getFirstBlockParent(t), I(a, "nodechanged", {
                 oldNode: e,
                 newNode: J
             }))
@@ -43252,7 +43301,7 @@ function (e) {
             if (_i.readOnly()) return s(h(l, i), function (e, t) {
                 E(t, i)
             }), void 0;
-            o || (t = Z.parentNode(), e = Z.getFirstBlockParent(t));
+            o || (t = K.parentNode(), e = K.getFirstBlockParent(t));
             for (var a = 0; a < vi.length; a++) {
                 var r = 0,
                     c = yi[vi[a].name],
@@ -43267,17 +43316,17 @@ function (e) {
                 P(c, "disabled", d || 0 > r), P(c, i, r > 0)
             }
             zt && zt.update && zt.update(o, t, e)
-        }, Zt = function (e) {
+        }, Kt = function (e) {
             if (!e.defaultPrevented && (_i.closeDropDown(), 13 === e.which)) {
                 var t = "li,ul,ol";
                 if (!k(Q, t) && $(Q)) {
                     R = null;
                     var i = r("br", {}, T);
-                    if (Z.insertNode(i), !Dt) {
+                    if (K.insertNode(i), !Dt) {
                         var n = i.parentNode,
                             o = n.lastChild;
                         o && o.nodeType === _t && "" === o.nodeValue && (u(o), o = n.lastChild), !H(n, !
-                            0) && o === i && H(i.previousSibling) && Z.insertHTML("<br>")
+                            0) && o === i && H(i.previousSibling) && K.insertHTML("<br>")
                     }
                     e.preventDefault()
                 }
@@ -43329,11 +43378,11 @@ function (e) {
             else {
                 if (h(T, ":focus")
                     .length) return;
-                var n, o = Z.selectedRange();
+                var n, o = K.selectedRange();
                 et || ai(), !Dt && o && 1 === o.endOffset && o.collapsed && (n = o.endContainer, n &&
                     1 === n.childNodes.length && k(n.firstChild, "br") && (o.setStartBefore(n
-                        .firstChild), o.collapse(!0), Z.selectRange(o))), x.focus(), C.focus(), R && (
-                    Z.selectRange(R), R = null)
+                        .firstChild), o.collapse(!0), K.selectRange(o))), x.focus(), C.focus(), R && (
+                    K.selectRange(R), R = null)
             }
             return ti(), _i
         }, _i.keyDown = function (e, t, i) {
@@ -43356,15 +43405,15 @@ function (e) {
                     n[i++] = [e, t]
                 }), n.sort(function (e, t) {
                     return e[0].length - t[0].length
-                }), _i.emoticonsCache = n, _i.longestEmoticonCode = n[n.length - 1][0].length), t = Z
+                }), _i.emoticonsCache = n, _i.longestEmoticonCode = n[n.length - 1][0].length), t = K
                 .replaceKeyword(_i.emoticonsCache, !0, !0, _i.longestEmoticonCode, ki.emoticonsCompat,
                     o), t && (ki.emoticonsCompat && /^\s$/.test(o) || e.preventDefault()))
         }, li = function () {
-            st(Q, Z)
+            st(Q, K)
         }, _i.emoticons = function (e) {
             if (!e && e !== !1) return ki.emoticonsEnabled;
-            if (ki.emoticonsEnabled = e, e) p(C, "keypress", ri), _i.sourceMode() || (Z.saveRange(), At(),
-                ui(!1), Z.restoreRange());
+            if (ki.emoticonsEnabled = e, e) p(C, "keypress", ri), _i.sourceMode() || (K.saveRange(), At(),
+                ui(!1), K.restoreRange());
             else {
                 var t = h(C, "img[data-sceditor-emoticon]");
                 s(t, function (e, t) {
@@ -43494,9 +43543,9 @@ function (e) {
             } : t, _i
         }, _i.removeShortcut = function (e) {
             return delete bi[e.toLowerCase()], _i
-        }, Kt = function (e) {
+        }, Zt = function (e) {
             var t, i, n, o;
-            if (!ki.disableBlockRemove && 8 === e.which && (n = Z.selectedRange()) && (t = n
+            if (!ki.disableBlockRemove && 8 === e.which && (n = K.selectedRange()) && (t = n
                     .startContainer, i = n.startOffset, 0 === i && (o = ci()) && !k(o, "body"))) {
                 for (; t !== o;) {
                     for (; t.previousSibling;)
@@ -43510,17 +43559,17 @@ function (e) {
                 if (!(e = e.parentNode) || k(e, "body")) return;
             return e
         }, _i.clearBlockFormatting = function (e) {
-            return e = e || ci(), !e || k(e, "body") ? _i : (Z.saveRange(), e.className = "", R = null, _(
-                e, "style", ""), k(e, "p,div,td") || F(e, "p"), Z.restoreRange(), _i)
+            return e = e || ci(), !e || k(e, "body") ? _i : (K.saveRange(), e.className = "", R = null, _(
+                e, "style", ""), k(e, "p,div,td") || F(e, "p"), K.restoreRange(), _i)
         }, ui = function (e) {
             if (Y && (Y.hasHandler("valuechangedEvent") || ui.hasHandler)) {
                 var t, i = _i.sourceMode(),
-                    n = !i && Z.hasSelection();
+                    n = !i && K.hasSelection();
                 W = !1, e = e !== !1 && !T.getElementById("sceditor-start-marker"), q && (clearTimeout(q),
-                        q = !1), n && e && Z.saveRange(), t = i ? N.value : C.innerHTML, t !== ui
+                        q = !1), n && e && K.saveRange(), t = i ? N.value : C.innerHTML, t !== ui
                     .lastVal && (ui.lastVal = t, I(a, "valuechanged", {
                         rawValue: i ? _i.val() : t
-                    })), n && e && Z.removeMarkers()
+                    })), n && e && K.removeMarkers()
             }
         }, di = function () {
             q && ui()
@@ -44239,8 +44288,8 @@ function (e) {
                 fixNesting: V,
                 findCommonAncestor: q,
                 getSibling: U,
-                removeWhiteSpace: K,
-                extractContents: Z,
+                removeWhiteSpace: Z,
+                extractContents: K,
                 getOffset: G,
                 getStyle: Y,
                 hasStyle: J
