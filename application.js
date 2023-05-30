@@ -9244,7 +9244,7 @@ Object.values || (Object.values = function (e) {
             patient: "Patient",
             patient_untouched: "Ubehandlede patienter",
             poi_delete: "Er du sikker på, at du vil slette interessepunktet: %{caption}?",
-            pump_speed_approaching: "Tilnærmelse: %{amount} l/min",
+            pump_speed_approaching: "På vej: %{amount} l/min",
             pump_speed_missing: "Mangler: %{amount} l/min",
             pump_speed_on_site: "På stedet: %{amount} l/min",
             pump_speed_selected: "Valgt: %{amount} l/min",
@@ -9265,6 +9265,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "På Vej: %{amount} l.",
             water_missing: "Mangler: %{amount} l.",
             water_on_site: "På Stedet: %{amount} l.",
+            water_pumping_process: "Vand pumpnings process",
             water_selected: "Valgte: %{amount} l."
         },
         map: {
@@ -9518,7 +9519,8 @@ Object.values || (Object.values = function (e) {
                 ulf: "",
                 wasserwerfer: "",
                 water_amount: "Liter vand",
-                water_amount_tlf: ""
+                water_amount_tlf: "",
+                water_damage_pump: "Påhængs Pumpe"
             }
         },
         tutorial: {
