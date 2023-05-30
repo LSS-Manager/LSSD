@@ -18061,6 +18061,14 @@ div.sceditor-group {
     left: 0
 }
 
+div.sceditor-dropdown label[for='des'] {
+    display: none
+}
+
+div.sceditor-dropdown input[id='des'] {
+    display: none
+}
+
 .tour-backdrop {
     position: absolute;
     z-index: 1100;
@@ -18400,4 +18408,57 @@ body.belgiumbar.policechief .navbar-default {
     100% {
         transform: rotate(360deg)
     }
+}
+
+table.bbcode-table {
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    border-collapse: collapse;
+    background-color: transparent !important
+}
+
+tr.bbcode-row {
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    background-color: transparent !important
+}
+
+td.bbcode-column {
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    padding: 5px;
+    background-color: transparent !important
+}
+
+body.dark table.bbcode-table {
+    border-color: white
+}
+
+body.dark tr.bbcode-row {
+    border-color: white
+}
+
+body.dark td.bbcode-column {
+    border-color: white
+}
+
+blockquote.bbcode-quote {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: 14px
+}
+
+a.bbcode-link {
+    text-decoration: underline
+}
+
+i.bbcode-link-icon {
+    font-size: 10px;
+    margin-left: 2px;
+    margin-right: 2px
 }

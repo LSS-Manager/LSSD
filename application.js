@@ -3056,6 +3056,37 @@ function alphanum(e, t, i) {
         } return "asc" == i ? o.length - s.length : s.length - o.length
 }
 
+function isValidDate(e, t) {
+    var i = "";
+    if (t.indexOf(".") > 0) i = ".";
+    else if (t.indexOf("/") > 0) i = "/";
+    else {
+        if (!(t.indexOf("-") > 0)) return !1;
+        i = "-"
+    }
+    var n = t.split(i),
+        o = e.split(i);
+    if (o.length < 3) return !1;
+    var s = "";
+    if ("D" === n[0].toUpperCase() || "DD" === n[0].toUpperCase()) {
+        if (o[0].length > 2) return !1;
+        1 === o[0].length && (o[0] = "0" + o[0]), 1 === o[1].length && (o[1] = "0" + o[1]), s = o[2] + "-" +
+            o[1] + "-" + o[0]
+    }
+    if ("M" === n[0].toUpperCase() || "MM" === n[0].toUpperCase()) {
+        if (o[0].length > 2) return !1;
+        1 === o[0].length && (o[0] = "0" + o[0]), 1 === o[1].length && (o[1] = "0" + o[1]), s = o[2] + "-" +
+            o[0] + "-" + o[1]
+    }
+    if ("Y" === n[0].toUpperCase() || "YY" === n[0].toUpperCase() || "YYYY" === n[0].toUpperCase()) {
+        if (2 !== o[0].length || 4 !== o[0].length) return !1;
+        1 === o[2].length && (o[2] = "0" + o[2]), 1 === o[1].length && (o[1] = "0" + o[1]), s = o[0] + "-" +
+            o[1] + "-" + o[2]
+    }
+    var a = Date.parse(s);
+    return isNaN(a) === !1
+}
+
 function missionPositionMarkerAdd(e) {
     1 == mobile_bridge_use && mobileBridgeAdd("poi", [e])
 }
