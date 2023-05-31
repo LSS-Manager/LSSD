@@ -10243,7 +10243,7 @@ Object.values || (Object.values = function (e) {
             vehicles_not_visible: "Vozidla nejsou vidět. ",
             water_approaching: "Na místě: %{amount} l/min",
             water_missing: "Chybí: %{amount} l/min",
-            water_on_site: "Na místě: %{amount} gal",
+            water_on_site: "Na místě: %{amount} l",
             water_pumping_process: "Proces čerpání vody",
             water_selected: "Zvoleno: %{amount} l/min"
         },
