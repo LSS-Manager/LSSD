@@ -10415,7 +10415,7 @@ Object.values || (Object.values = function (e) {
                 fireboat: "Velká hasičská loď",
                 fly_car: "Lékařské vozidlo RV",
                 fly_car_any: "Samochód Lekarza  / SRMed / Motoambulans",
-                foam_amount: "Galony pěny",
+                foam_amount: "Litry pěny pěna",
                 fukw: "",
                 fustw_or_police_motorcycle: "Policejní automobil nebo Policejní motocykl",
                 fwk: "VYA nebo AJ",
@@ -10501,7 +10501,7 @@ Object.values || (Object.values = function (e) {
                 turntable_ladder: "AZ nebo AP",
                 ulf: "",
                 wasserwerfer: "",
-                water_amount: "Galony vody",
+                water_amount: "Litry vody",
                 water_amount_tlf: "",
                 water_damage_pump: "Motorovým čerpadlem"
             }
