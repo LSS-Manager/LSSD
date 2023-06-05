@@ -18462,3 +18462,17 @@ i.bbcode-link-icon {
     margin-left: 2px;
     margin-right: 2px
 }
+
+.social-media-links {
+    display: inline-flex;
+    flex-direction: row;
+    gap: 15px
+}
+
+.social-media-links img {
+    width: 32px
+}
+
+.social-media-nav-icon {
+    width: 19px
+}

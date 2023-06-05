@@ -7840,6 +7840,10 @@ Object.values || (Object.values = function (e) {
             patient: "Paziente",
             patient_untouched: "Pazienti non trattati",
             poi_delete: "Vuoi davvero eliminare il PDI: %{caption}?",
+            pump_speed_approaching: "In Arrivo: %{amount} l/min",
+            pump_speed_missing: "Mancanti: %{amount} l/min",
+            pump_speed_on_site: "Sul Posto: %{amount} l/min",
+            pump_speed_selected: "Selezionati: %{amount} l/min",
             reload: "Ricarica",
             sale: "Sale",
             sale_ended: "Vendita terminata",
@@ -8031,7 +8035,7 @@ Object.values || (Object.values = function (e) {
                 fireboat: "Barca antincendio grande",
                 fly_car: "Fly-Car",
                 foam: "Carro Schiuma",
-                foam_amount: "Litri di schiuma",
+                foam_amount: "Quantità di Schiuma in Litri",
                 fukw: "",
                 fustw_or_police_motorcycle: "Volante oppure Moto della Polizia",
                 fwk: "AG",
@@ -8081,6 +8085,9 @@ Object.values || (Object.values = function (e) {
                 police_car: "Auto di pattuglia",
                 police_motorcycle: "Moto della Polizia",
                 polizeihubschrauber: "Elicottero della polizia",
+                pump: "Carrelli Alluvionali",
+                pump_speed: "Capacità di Pompaggio",
+                pump_speed_pump_only: "Capatità di Pompaggio - Solo Carrelli Alluvionali",
                 rescue_vehicle: "Polisoccorso",
                 rescue_vehicle_only: "CA / POLI",
                 rescueboat: "Barca di salvataggio grande",
@@ -8112,8 +8119,9 @@ Object.values || (Object.values = function (e) {
                 turntable_ladder: "Autoscala",
                 ulf: "",
                 wasserwerfer: "",
-                water_amount: "Litri d'acqua",
-                water_amount_tlf: ""
+                water_amount: "Quantità di Acqua in Litri",
+                water_amount_tlf: "",
+                water_damage_pump: "Carrelli Alluvionali"
             }
         },
         tutorial: {
@@ -48507,6 +48515,12 @@ I18n.t = function (e, t) {
     }, {
         from: "/images/building_police_horse.png",
         to: "/images/policechief_building_police_horse.png"
+    }, {
+        from: "/images/socials/blog.svg",
+        to: "/images/socials/blog-police.svg"
+    }, {
+        from: "/images/socials/forum.svg",
+        to: "/images/socials/forum-police.svg"
     }],
     missionchief: []
 };
