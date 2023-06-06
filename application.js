@@ -7861,6 +7861,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "In Arrivo: %{amount} l.",
             water_missing: "Mancanti: %{amount} l.",
             water_on_site: "Sul Posto: %{amount} l.",
+            water_pumping_process: "Operazione di Pompaggio dell'Acqua",
             water_selected: "Selezionati: %{amount} l."
         },
         map: {
