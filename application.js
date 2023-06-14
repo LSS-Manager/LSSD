@@ -14133,6 +14133,10 @@ Object.values || (Object.values = function (e) {
             patient: "Potilas",
             patient_untouched: "Hoitamattomat potilaat",
             poi_delete: 'Haluatko varmasti poistaa kohdepisteen "%{caption}"?',
+            pump_speed_approaching: "Lähestyminen: %{amount} l/min",
+            pump_speed_missing: "Puuttuu: %{amount} l/min",
+            pump_speed_on_site: "Paikalla: %{amount} l/min",
+            pump_speed_selected: "Valittu: %{amount} l/min",
             reload: "Lataa uudelleen",
             sale: "Ale",
             sale_ended: "Ale päättynyt",
@@ -14150,6 +14154,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "Matkalla: %{amount} l vettä",
             water_missing: "Puuttuu: %{amount} l vettä",
             water_on_site: "Kohteessa: %{amount} l vettä",
+            water_pumping_process: "Veden pumppausprosessi",
             water_selected: "Valittu: %{amount} l vettä"
         },
         map: {
@@ -14370,6 +14375,8 @@ Object.values || (Object.values = function (e) {
                 police_motorcycle: "Poliisimoottoripyörä",
                 polizeihubschrauber: "Poliisihelikopteri",
                 pump: "Suurtehopumppu",
+                pump_speed: "Pumpun kapasiteetti",
+                pump_speed_pump_only: "Pumpun kapasiteetti - Vain pumput",
                 rescue_vehicle: "Raskas pelastusauto",
                 rescue_vehicle_only: "Raskas pelastus",
                 rescueboat: "Iso pelastusalus",
@@ -14401,7 +14408,8 @@ Object.values || (Object.values = function (e) {
                 ulf: "",
                 wasserwerfer: "",
                 water_amount: "Litraa vettä",
-                water_amount_tlf: ""
+                water_amount_tlf: "",
+                water_damage_pump: "Vesipumput"
             }
         },
         tutorial: {
@@ -36962,7 +36970,8 @@ $(function () {
                 "intervention_order.vehicles.police_boat")], ["mass_casualty_equipment", I18n.t(
                 "intervention_order.vehicles.mass_casualty_equipment")], ["energy_supply", I18n.t(
                 "intervention_order.vehicles.energy_supply")], ["energy_supply_2", I18n.t(
-                "intervention_order.vehicles.energy_supply_2")]], $("#restore_map")
+                "intervention_order.vehicles.energy_supply_2")], ["ventilation", I18n.t(
+                "intervention_order.vehicles.ventilation")]], $("#restore_map")
         .click(function () {
             mapViewRestore()
         }), $("#coins_top")
