@@ -12765,12 +12765,12 @@ th.tablesorter-header {
     cursor: pointer
 }
 
-th.tablesorter-headerUnSorted {
-    background-image: url(/images/bg.gif)
-}
-
 th.sorter-false {
     background-image: none !important
+}
+
+th.tablesorter-headerUnSorted {
+    background-image: url(/images/bg.gif)
 }
 
 th.tablesorter-headerDesc {
@@ -12783,8 +12783,17 @@ th.tablesorter-headerAsc {
     background-color: #f9f9f9
 }
 
-body.dark th.tablesorter-headerAsc,
+body.dark th.tablesorter-headerUnSorted {
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 -10 70 70" fill="%23ffffff" stroke="%23ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpolygon points="6 25 12 33 18 25"%3E%3C/polygon%3E%3Cpolygon points="6 23 12 15 18 23"%3E%3C/polygon%3E%3C/svg%3E')
+}
+
 body.dark th.tablesorter-headerDesc {
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 -20 70 70" fill="%23ffffff" stroke="%23ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpolygon points="6 15 12 9 18 15"%3E%3C/polygon%3E%3C/svg%3E');
+    background-color: #323232
+}
+
+body.dark th.tablesorter-headerAsc {
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 -20 70 70" fill="%23ffffff" stroke="%23ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpolygon points="6 9 12 15 18 9"%3E%3C/polygon%3E%3C/svg%3E');
     background-color: #323232
 }
 
