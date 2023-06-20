@@ -9745,6 +9745,10 @@ Object.values || (Object.values = function (e) {
             patient: "Pasient",
             patient_untouched: "Ubehandlede pasienter",
             poi_delete: "Er du sikker på at du vil slette interessepunktet %{caption}?",
+            pump_speed_approaching: "Nærmer seg: %{amount} l/min",
+            pump_speed_missing: "Mangler: %{amount} l/min",
+            pump_speed_on_site: "På stedet: %{amount} l/min",
+            pump_speed_selected: "Valgt: %{amount} l/min",
             reload: "Last inn på nytt",
             sale: "Salg",
             sale_ended: "Salg avsluttet",
@@ -9759,10 +9763,11 @@ Object.values || (Object.values = function (e) {
             understand: "Bekreft",
             user_not_found: "Spilleren ble ikke funnet.",
             vehicles_not_visible: "Fremkomstmidler er ikke synlige. ",
-            water_approaching: "Rykker ut: %{amount} l.",
-            water_missing: "Mangler: %{amount} l.",
-            water_on_site: "På stedet: %{amount} l.",
-            water_selected: "Valgt: %{amount} l."
+            water_approaching: "Nærmer seg: %{amount} l",
+            water_missing: "Mangler: %{amount} l",
+            water_on_site: "På stedet: %{amount} l",
+            water_pumping_process: "Vannpumpeprosess",
+            water_selected: "Valgt: %{amount} l"
         },
         map: {
             alliance: "Allianse",
@@ -9989,6 +9994,8 @@ Object.values || (Object.values = function (e) {
                 police_motorcycle: "Politimotorsykkel",
                 polizeihubschrauber: "Politihelikopter",
                 pump: "Tilhengerpumpe eller Slangebil med pumpe",
+                pump_speed: "Pumpekapasitet",
+                pump_speed_pump_only: "Pumpekapasitet - Kun pumper",
                 rescue_vehicle: "Tungredningsbil",
                 rescue_vehicle_only: "Tungredningsbil",
                 rescueboat: "Ambulansebåt",
@@ -10020,7 +10027,8 @@ Object.values || (Object.values = function (e) {
                 ulf: "",
                 wasserwerfer: "",
                 water_amount: "Liter vann",
-                water_amount_tlf: ""
+                water_amount_tlf: "",
+                water_damage_pump: "Vannpumper"
             }
         },
         tutorial: {
@@ -14133,7 +14141,7 @@ Object.values || (Object.values = function (e) {
             patient: "Potilas",
             patient_untouched: "Hoitamattomat potilaat",
             poi_delete: 'Haluatko varmasti poistaa kohdepisteen "%{caption}"?',
-            pump_speed_approaching: "Lähestyminen: %{amount} l/min",
+            pump_speed_approaching: "Lähestymässä: %{amount} l/min",
             pump_speed_missing: "Puuttuu: %{amount} l/min",
             pump_speed_on_site: "Paikalla: %{amount} l/min",
             pump_speed_selected: "Valittu: %{amount} l/min",
