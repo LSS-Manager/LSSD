@@ -15880,11 +15880,57 @@ body.bigMap #search_input_field_missions {
     z-index: 1200
 }
 
+body.dark .daily-bonuses .collect-possible-block {
+    color: black
+}
+
 .daily-bonuses {
     margin-bottom: 20px
 }
 
+.daily-bonuses .day-block {
+    max-width: 500px
+}
+
+.daily-bonuses .day-button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.daily-bonuses .day-button.btn-danger[disabled] {
+    background: linear-gradient(to bottom, #ec7572 0, #ab4f4d 100%)
+}
+
+.daily-bonuses .day-button.coins-button {
+    color: #fff;
+    background: linear-gradient(to bottom, #4fced9 0, #2ac1ba 100%)
+}
+
+.daily-bonuses .day-button .daily-bonuses-free-coin {
+    width: auto;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+.daily-bonuses .day-button .daily-bonuses-free-coin img {
+    height: 20px;
+    width: 20px;
+    color: #fff
+}
+
+.daily-bonuses .day-button .daily-bonuses-free-coin .premium-icon {
+    position: absolute;
+    top: 17px;
+    right: 10px
+}
+
 .daily-bonuses .collect-possible-block {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15914,42 +15960,12 @@ body.bigMap #search_input_field_missions {
     margin-right: 5px
 }
 
-body.dark .daily-bonuses .collect-possible-block {
-    color: black
-}
-
-.daily-bonuses .day-block {
-    max-width: 500px
-}
-
-.daily-bonuses .day-button {
-    display: flex;
-    justify-content: center;
-    align-items: center
-}
-
-.daily-bonuses .day-button.btn-danger[disabled] {
-    background: linear-gradient(to bottom, #ec7572 0, #ab4f4d 100%)
-}
-
-.daily-bonuses .day-button.coins-button {
-    color: #fff;
-    background: linear-gradient(to bottom, #4fced9 0, #2ac1ba 100%)
-}
-
-.daily-bonuses-free-coin {
-    width: auto;
-    height: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center
-}
-
-.daily-bonuses-free-coin img {
-    height: 20px;
+.daily-bonuses .collect-possible-block .premium-icon {
+    position: absolute;
+    top: 46px;
     width: 20px;
-    color: #fff
+    height: 20px;
+    right: 15px
 }
 
 .daily-bonuses .day-separator {
@@ -17139,6 +17155,71 @@ body.dark .arrow {
         flex-direction: column;
         align-items: self-start
     }
+}
+
+.info-block-credits {
+    display: flex;
+    align-items: center
+}
+
+.credits-premium-icon {
+    margin-left: 3px;
+    width: 13px;
+    height: 13px
+}
+
+.task-premium-icon {
+    width: 15px;
+    height: 15px
+}
+
+.mission-speed-turbo-block {
+    position: relative
+}
+
+.mission-speed-turbo-block .turbo-premium-icon {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    right: 25px;
+    top: 10px
+}
+
+.dispatch-hiring-header .tablesorter-header-inner {
+    display: flex;
+    align-items: center
+}
+
+.dispatch-hiring-header .premium-icon {
+    margin-left: 5px;
+    width: 13px;
+    height: 13px
+}
+
+#stats .premium-buy-button {
+    display: inline-flex;
+    align-items: center
+}
+
+#stats .premium-buy-button .premium-icon {
+    margin-left: 5px;
+    width: 13px;
+    height: 13px
+}
+
+#stats .premium-alert {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.mission-credits-label {
+    display: inline-flex;
+    padding: 5px 10px
+}
+
+.mission-credits-label .credits-premium-icon {
+    margin-left: 7px
 }
 
 /*
