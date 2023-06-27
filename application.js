@@ -346,12 +346,12 @@ function waterCalculator(e, t) {
         .data("water-modifier") / 100,
         p = r + r * u,
         m = l + l * (d + u) + r * d,
-        _ = c + c * (h + d + u) + r * h + l * h,
-        f = a - (p + m + _),
+        f = c + c * (h + d + u) + r * h + l * h,
+        _ = a - (p + m + f),
         g = parseInt(100 * (p / a)),
         v = parseInt(100 * (m / a)),
-        b = parseInt(100 * (_ / a)),
-        y = parseInt(100 * (f / a)),
+        b = parseInt(100 * (f / a)),
+        y = parseInt(100 * (_ / a)),
         w = 100 - (g + v + b + y);
     w > 0 && (g > 0 ? g += w : v > 0 ? v += w : b > 0 ? b += w : y > 0 && (b += w)),
         waterCalculatorSetPercent(s.find(".mission_water_bar_at_mission_" + e), g, 0),
@@ -366,10 +366,10 @@ function waterCalculator(e, t) {
             amount: number_format(parseInt(m))
         }),
         z = I18n.t(k.amountSelected, {
-            amount: number_format(parseInt(_))
+            amount: number_format(parseInt(f))
         }),
         T = I18n.t(k.amountMissing, {
-            amount: number_format(parseInt(f))
+            amount: number_format(parseInt(_))
         });
     s.find(".mission_water_bar_at_mission_" + e)
         .html(x), s.find(".mission_water_bar_driving_" + e)
@@ -683,6 +683,9 @@ function deleteRadioMessage(e) {
 }
 
 function vehicleSearch(e) {
+    if (mobile_bridge_use && !mixed_mobile_desktop_mode) return mobileBridgeAdd("vehicle_center_on_map", {
+        id: e
+    }), void 0;
     if (mapViewExpanded) return mapViewExpandedWindow.vehicleSearch(e);
     var t = !1;
     $.each(mission_vehicles, function (i, n) {
@@ -1327,15 +1330,15 @@ function missionMarkerAdd(e) {
         e.missing_text_short && (h = "alert alert-danger", p = e.missing_text_short);
         var m = "";
         e.alliance_id && (m = "panel-success");
-        var _ = "",
-            f = $("#missions-panel-body")
+        var f = "",
+            _ = $("#missions-panel-body")
             .offset()
             .top;
-        f + 5 * $("#missions-panel-body")
-            .height(), _ = "missionSideBarEntryScrollInvisible", o = o.replace(/'/g, "&#039;");
+        _ + 5 * $("#missions-panel-body")
+            .height(), f = "missionSideBarEntryScrollInvisible", o = o.replace(/'/g, "&#039;");
         var g = "<div search_attribute='" + o + "' id='mission_" + e.id + "' mission_id='" + e.id +
             "' mission_type_id='" + e.mtid + "' class='missionSideBarEntry missionSideBarEntrySearchable " +
-            _ + "' latitude='" + e.latitude + "' longitude='" + e.longitude + "' target_latitude='" + e.tlat +
+            f + "' latitude='" + e.latitude + "' longitude='" + e.longitude + "' target_latitude='" + e.tlat +
             "' target_longitude='" + e.tlng + "' data-overlay-index='" + e.overlay_index +
             "' data-additive-overlays='" + (e.additive_overlays || "") + "'>" + "<div id='mission_panel_" + e
             .id + "' class='panel panel-default " + m + " mission_panel_" + a + "'>" +
@@ -3466,11 +3469,11 @@ Object.values || (Object.values = function (e) {
                 h = d,
                 p = d > 11 ? 1 : 0,
                 m = e.getSeconds(),
-                _ = e.getMinutes(),
-                f = e.getTimezoneOffset(),
-                g = Math.floor(Math.abs(f / 60)),
-                v = Math.abs(f) - 60 * g,
-                b = (f > 0 ? "-" : "+") + (g.toString()
+                f = e.getMinutes(),
+                _ = e.getTimezoneOffset(),
+                g = Math.floor(Math.abs(_ / 60)),
+                v = Math.abs(_) - 60 * g,
+                b = (_ > 0 ? "-" : "+") + (g.toString()
                     .length < 2 ? "0" + g : g) + (v.toString()
                     .length < 2 ? "0" + v : v);
             return h > 12 ? h -= 12 : 0 === h && (h = 12), i = i.replace("%a", s.abbr_day_names[r]),
@@ -3478,7 +3481,7 @@ Object.values || (Object.values = function (e) {
                 .replace("%B", s.month_names[u]), i = i.replace("%d", n(l)), i = i.replace("%e", l),
                 i = i.replace("%-d", l), i = i.replace("%H", n(d)), i = i.replace("%-H", d), i = i
                 .replace("%I", n(h)), i = i.replace("%-I", h), i = i.replace("%m", n(u)), i = i
-                .replace("%-m", u), i = i.replace("%M", n(_)), i = i.replace("%-M", _), i = i.replace(
+                .replace("%-m", u), i = i.replace("%M", n(f)), i = i.replace("%-M", f), i = i.replace(
                     "%p", a[p]), i = i.replace("%S", n(m)), i = i.replace("%-S", m), i = i.replace(
                     "%w", r), i = i.replace("%y", n(c)), i = i.replace("%-y", n(c)
                     .replace(/^0+/, "")), i = i.replace("%Y", c), i = i.replace("%z", b)
@@ -3613,7 +3616,6 @@ Object.values || (Object.values = function (e) {
             attended: "Beantwortet",
             cancel_alliance_event: "Verbands-Event abbrechen",
             cancel_alliance_event_confirm: "Möchtest du das Verbands-Event wirklich abbrechen?",
-            challenges: "",
             chat_history: "Chatverlauf",
             congratulations: "Herzlichen Glückwunsch! Du kannst jetzt befördert werden.",
             create_alliance_event: "Verbands-Event starten",
@@ -3740,7 +3742,6 @@ Object.values || (Object.values = function (e) {
                 ab_ruest_rw: "AB Rüst oder Rüstwagen oder HLF",
                 abl2wasser_only: "AB-Schlauch",
                 ambulance: "Rettungswagen",
-                ambulance_or_rapid_responder: "",
                 arff: "Flugfeldlöschfahrzeug",
                 battalion_chief_unit: "Einsatzleitfahrzeuge 1",
                 boot: "Boote (Allgemein)",
@@ -3750,13 +3751,10 @@ Object.values || (Object.values = function (e) {
                 elw1_or_elw2: "ELW 1, ELW 2 oder AB-Einsatzleitung",
                 elw2_or_ab_elw: "ELW 2 oder AB-Einsatzleitung",
                 elw3: "ELW 3",
-                elw_airport: "",
                 emergency_ambulance: "Notarzteinsatzfahrzeug oder Rettungshubschrauber",
                 energy_supply: "NEA50",
                 energy_supply_2: "NEA200",
                 fire_truck: "Löschfahrzeuge oder Tanklöschfahrzeuge",
-                fireboat: "",
-                fly_car: "",
                 fukw: "FüKw (Führungskraftwagen)",
                 fustw_or_police_motorcycle: "Funkstreifenwagen oder Polizeimotorrad",
                 fwk: "Feuerwehrkran",
@@ -3779,10 +3777,8 @@ Object.values || (Object.values = function (e) {
                 gwl2wasser_all: "Alle Schlauchwagen",
                 gwl2wasser_only: "Schlauchwagen",
                 helicopter_bucket: "Außenlastbehälter (allgemein)",
-                hems: "",
                 hlf_only: "HLF",
                 hlf_or_rw_and_lf: "HLF oder RW und LF",
-                hondengeleider: "",
                 k9: "Diensthundeführerkraftwagen",
                 kdow_lna: "KdoW-LNA",
                 kdow_orgl: "KdoW-OrgL",
@@ -3805,7 +3801,6 @@ Object.values || (Object.values = function (e) {
                 oil_unit: "GW-Öl oder AB-Öl",
                 only_ab_dekon_p: "AB-Dekon-P ",
                 only_dekon_p: "Dekon-P",
-                ovd_p: "",
                 police_car: "Funkstreifenwagen",
                 police_car_or_service_group_leader: "FuStW oder FuStW (DGL)",
                 police_motorcycle: "Polizeimotorrad",
@@ -3818,16 +3813,12 @@ Object.values || (Object.values = function (e) {
                 rescue_dogs_thw: "Anhänger Hundetransport",
                 rescue_vehicle: "Rüstwagen oder HLF",
                 rescue_vehicle_only: "Rüstwagen",
-                rescueboat: "",
                 rettungstreppe: "Rettungstreppe",
                 rth_only: "Rettungshubschrauber",
                 schlauchwagen: "Schlauchwagen oder AB-Schlauch",
                 seg_elw: "ELW 1 (SEG)",
                 sek_mtf: "SEK - MTF",
                 sek_zf: "SEK - ZF",
-                swat: "",
-                swat_armored_vehicle: "",
-                swat_suv: "",
                 thw_anh_mzab: "Anh MzAB",
                 thw_anh_mzb: "Anh MzB",
                 thw_anh_schlb: "Anh SchlB",
@@ -4109,7 +4100,6 @@ Object.values || (Object.values = function (e) {
             attended: "Attended",
             cancel_alliance_event: "Cancel alliance event",
             cancel_alliance_event_confirm: "Do you really want to cancel the alliance event?",
-            challenges: "",
             chat_history: "Chat History",
             congratulations: "Congratulations! You can now be promoted.",
             create_alliance_event: "Start alliance event",
@@ -4202,7 +4192,6 @@ Object.values || (Object.values = function (e) {
         intervention_order: {
             automatic_text_color: "Automatic Text Color",
             back: "Back",
-            battalion_chief_unit: "",
             categories: {
                 airport: "Airport",
                 bereitschaftspolizei: "Riot Police",
@@ -4254,17 +4243,12 @@ Object.values || (Object.values = function (e) {
                 ab_gefahrgut_only: "HazMat-Module",
                 ab_oel_only: "Oil spill-Module",
                 ab_ruest: "Tech/Rescue-Module",
-                ab_ruest_rw: "",
                 abl2wasser_only: "Hose-Supply-Module",
                 air_tanker: "Air tanker",
                 ambulance: "ALS ambulance",
-                ambulance_or_rapid_responder: "",
                 any_traffic_car: "Any Traffic Car",
                 any_traffic_unit: "Any Traffic Unit",
                 arff: "ARFF (Airport Fire Truck)",
-                at_c: "",
-                at_m: "",
-                at_o: "",
                 battalion_chief_unit: "Battalion Chief unit",
                 bike_police: "DB-Bike",
                 boot: "Light boats (General)",
@@ -4282,19 +4266,14 @@ Object.values || (Object.values = function (e) {
                 coastal_prisoner_bus: "Coast Guard Prisoner Bus",
                 coastal_rescue: "Coastal Rescue Vehicles",
                 commerce_police: "Commerce Police Car",
-                coresponder: "",
                 crew_carrier: "Crew Carrier",
                 crew_carrier_or_fire_engine: "Crew Carrier or Fire Engine",
-                dekon_p: "",
                 detention_unit: "Riot Police Detention Unit and Riot Police Detention Unit (large)",
                 division_chief_unit: "Mobile Command Vehicle",
-                dlk_or_tm50: "",
                 dozer_trailer: "Dozer Trailer",
-                elw1_or_elw2: "Battalion Chief Unit, Mobile Command Vehicle or Mobile Command-Module",
-                elw2_or_ab_elw: "",
-                elw3: "Wildland MCCs",
-                elw_airport: "",
                 elw_police: "Police MCV",
+                elw1_or_elw2: "Battalion Chief Unit, Mobile Command Vehicle or Mobile Command-Module",
+                elw3: "Wildland MCCs",
                 emergency_ambulance: "Emergency ambulance or Helicopter",
                 emergency_welfare: "Any Emergency Welfare Vehicle",
                 energy_supply: "Energy Supply Trailer",
@@ -4310,28 +4289,17 @@ Object.values || (Object.values = function (e) {
                 fireboat: "Large Fireboat",
                 flood_equipment: "Flood Equipment",
                 fly_car: "Fly-Car",
-                fly_car_any: "",
                 foam: "Foam Vehicles",
                 foam_amount: "Gallons of foam",
-                fukw: "",
                 fustw_or_police_motorcycle: "Patrol car or Police Motorcycle",
                 fwk: "Fire Brigarde Cranes",
                 gefkw: "DB-AV",
                 gkw: "Utility Truck",
                 grtw: "Mass Casualty Unit",
-                grtw0: "",
-                grtw1: "",
-                grukw: "",
-                gw_atemschutz_only: "",
                 gw_gefahrgut: "HazMat",
-                gw_gefahrgut_only: "",
                 gw_hoehenrettung: "GW-Höhenrettung",
                 gw_messtechnik: "GW-Messtechnik",
-                gw_oel_only: "",
-                gw_san: "",
-                gw_taucher: "",
                 gw_wasserrettung: "Water Retention",
-                gw_werkfeuerwehr: "",
                 gwl2wasser: "Water Carrier or Major Foam Tender",
                 gwl2wasser_all: "All Water Tankers",
                 gwl2wasser_only: "Water Tankers",
@@ -4341,20 +4309,11 @@ Object.values || (Object.values = function (e) {
                 hint: {
                     foam_amount: "Sum of foam in gallons. Example: if you enter 10000 - then only those vehicles will be selected that have a total of 10000 gallons of extinguishing foam.",
                     pump_speed: "Select vehicles until the required pump speed is reached.",
-                    rescue_dogs: "The ARR selects vehicles until it has the entered number of rescue dogs or more.",
-                    water_amount: ""
+                    rescue_dogs: "The ARR selects vehicles until it has the entered number of rescue dogs or more."
                 },
-                hlf_only: "",
-                hlf_or_rw_and_lf: "",
-                hondengeleider: "",
                 hose_trucks: "Hose Truck",
-                joint_response_unit: "",
                 k9: "K-9 Unit",
-                kdow_lna: "",
                 kdow_orgl: "EMS Chief",
-                kdow_orgl_any: "",
-                ktw_b: "",
-                ktw_or_rtw: "",
                 ktw_or_rtw_2: "patient transport or ambulance",
                 large_coastal_boat: "Large Coastal Boat",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
@@ -4362,20 +4321,12 @@ Object.values || (Object.values = function (e) {
                 long_distance_ambulance: "BLS ambulance",
                 mask_service_unit: "Mobile Air Unit",
                 mass_casualty_equipment: "Mass Casualty Equipment or Medical Equipment Trailer",
-                mek_mtf: "",
-                mek_zf: "",
                 mtw: "MTW",
                 municipal_police: "Municipal Police Car or Municipal Police Van",
                 mzb: "Light Multi-Purpose Boat",
-                naw: "",
                 naw_or_critical_transport: "NAW or critical transport",
-                naw_or_rtw_and_nef: "",
-                naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Ambulance",
                 oil_unit: "GW-Öl",
-                only_ab_dekon_p: "",
-                only_dekon_p: "",
-                ovd_p: "",
                 police_boat: "Police Boat",
                 police_car: "Patrol car",
                 police_car_3: "NH-O",
@@ -4387,52 +4338,30 @@ Object.values || (Object.values = function (e) {
                 pump_speed: "Pump Capacity",
                 pump_speed_pump_only: "Pump Capacity - Only Pumps",
                 quint_or_dlk_and_lf: "Quint or Platform Truck and Fire Engine",
-                rescue_dogs: "",
-                rescue_dogs_seg: "",
-                rescue_dogs_thw: "",
                 rescue_vehicle: "Any Heavy Rescue unit",
                 rescue_vehicle_only: "Heavy Rescue",
                 rescueboat: "Large Rescue Boat",
-                rettungstreppe: "",
                 riot_police: "Riot Police Van or Riot Police Bus",
                 road_rescue_or_fire_engine: "Road Rescue or Fire Engine",
                 rth_only: "Helicopter",
                 schlauchwagen: "Water Tanker or Foam Tender",
                 search_and_rescue: "SAR Vehicles",
-                seg_elw: "",
-                sek_mtf: "",
-                sek_zf: "",
                 sheriff_unit: "Police Supervisor / Sheriff",
                 smoke_jumper: "Smoke Jumper Planes",
-                spokesman: "",
                 swat: "SWAT",
                 swat_armored_vehicle: "SWAT Armoured Vehicle",
                 swat_suv: "SWAT SUV",
-                thw_anh_mzab: "",
-                thw_anh_mzb: "",
-                thw_anh_schlb: "",
-                thw_brmg_r: "",
-                thw_dle: "",
-                thw_lkw: "",
-                thw_lkw_7_lkr_19_tm: "",
-                thw_mlw5: "",
                 thw_mtw: "Mannschaftstransportwagen Technischer Zug (MTW-TZ - THW)",
                 thw_mzkw: "Mehrzweckkraftwagen (MzKW)",
                 thw_tauchkraftwagen: "Dive Team",
-                thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "Tanker Truck",
-                tm50: "",
                 traffic_car: "Traffic Car, Fast Traffic Car, Traffic Motorcycle and Road Rescue",
                 trailers: {
                     pump: "Pump Trailer"
                 },
-                turboloescher: "",
                 turntable_ladder: "Platform trucks",
-                ulf: "",
                 ventilation: "Ventilation Units",
-                wasserwerfer: "",
                 water_amount: "Gallons of water",
-                water_amount_tlf: "",
                 water_damage_pump: "Water Pumps",
                 water_drop_helicopter: "Water drop helicopter"
             }
@@ -4461,30 +4390,30 @@ Object.values || (Object.values = function (e) {
                         welcome: "Hello, welcome to MissionChief!  I will teach you some lessons to help you start off your emergency services career well!"
                     },
                     tooltip: {
-                        ambulance_station: {
-                            helpshift_id: "1714",
-                            link: "https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station",
-                            "short": "Houses vehicles need for medical-related missions. Extensions can be built, which unlocks purchasing of specialized units."
-                        },
                         ambulance_station_small: {
                             helpshift_id: "1715",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station",
                             "short": "Houses vehicles for medical-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station."
+                        },
+                        ambulance_station: {
+                            helpshift_id: "1714",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station",
+                            "short": "Houses vehicles need for medical-related missions. Extensions can be built, which unlocks purchasing of specialized units."
                         },
                         clinic: {
                             helpshift_id: "1719",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-clinic",
                             "short": "Houses vehicles need for EMS-related missions.\nPatients can be transported here, however there is limited space and it is less specialized than the hospital."
                         },
-                        coastal_rescue: {
-                            helpshift_id: "1832",
-                            link: "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1832-what-is-a-coastal-rescue-station/?p=alll",
-                            "short": "Houses vehicles needed for Ocean & Coast related missions. You are required to set the spawn area before missions will spawn. "
-                        },
                         coastal_rescue_small: {
                             helpshift_id: "1833",
                             link: "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1833-what-is-a-lifeguard-post/?p=alll",
                             "short": "Houses vehicles needed for coast-related missions. "
+                        },
+                        coastal_rescue: {
+                            helpshift_id: "1832",
+                            link: "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1832-what-is-a-coastal-rescue-station/?p=alll",
+                            "short": "Houses vehicles needed for Ocean & Coast related missions. You are required to set the spawn area before missions will spawn. "
                         },
                         dispatch_center: {
                             helpshift_id: "1497",
@@ -4511,30 +4440,20 @@ Object.values || (Object.values = function (e) {
                             link: "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1745-what-is-an-fire-marshall-s-office-us-version/?p=all",
                             "short": "This building houses fire investigation & fire prevention units. \nThese units are needed for fire-related missions."
                         },
-                        firehouse: {
-                            helpshift_id: "1709",
-                            link: "https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station",
-                            "short": "Houses vehicles needed for fire-related missions. Extensions can be built, which unlocks purchasing of specialized units. "
-                        },
                         firehouse_small: {
                             helpshift_id: "1710",
                             link: "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1710-what-is-a-small-fire-station/?p=all&s=buildings&f=what-is-a-fire-station",
                             "short": "Houses vehicles needed for fire-related missions. Only one extension can be built, however it can be upgraded to a regular station."
                         },
+                        firehouse: {
+                            helpshift_id: "1709",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station",
+                            "short": "Houses vehicles needed for fire-related missions. Extensions can be built, which unlocks purchasing of specialized units. "
+                        },
                         fireschool: {
                             helpshift_id: "1711",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-academy",
                             "short": "Allows for training firefighters to operate specialized vehicles. Specialized vehicles are occasionally needed in missions. "
-                        },
-                        hazard_response_ems: {
-                            helpshift_id: "",
-                            link: "",
-                            "short": ""
-                        },
-                        home_response_location: {
-                            helpshift_id: "",
-                            link: "",
-                            "short": ""
                         },
                         hospital: {
                             helpshift_id: "1718",
@@ -4545,11 +4464,6 @@ Object.values || (Object.values = function (e) {
                             helpshift_id: "1731",
                             link: "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1731-what-is-a-police-helicopter-station/?p=all&s=buildings&f=what-is-a-police-station",
                             "short": "Houses police air wing for police-related missions. The police air wing does not come with the building."
-                        },
-                        police_depot: {
-                            helpshift_id: "",
-                            link: "",
-                            "short": ""
                         },
                         police_school: {
                             helpshift_id: "1724",
@@ -4824,7 +4738,6 @@ Object.values || (Object.values = function (e) {
             attended: "Attended",
             cancel_alliance_event: "Cancel alliance event",
             cancel_alliance_event_confirm: "Do you really want to cancel the alliance event?",
-            challenges: "",
             chat_history: "Chat History",
             congratulations: "Congratulations! You can now be promoted.",
             create_alliance_event: "Start alliance event",
@@ -4951,7 +4864,6 @@ Object.values || (Object.values = function (e) {
                 ab_gefahrgut_only: "HazMat-Module",
                 ab_oel_only: "Oil spill-Module",
                 ab_ruest: "Tech/Rescue-Module",
-                ab_ruest_rw: "",
                 abl2wasser_only: "Hose-Supply-Module",
                 ambulance: "Ambulance",
                 any_traffic_car: "Any Traffic Car",
@@ -4962,100 +4874,53 @@ Object.values || (Object.values = function (e) {
                 coastal_rescue: "Coastal Rescue, Rope Rescue or Mud Rescue Vehicle",
                 coresponder: "Co-Responder Vehicle",
                 crew_carrier: "Crew Carrier",
-                dekon_p: "",
                 division_chief_unit: "ICCU",
-                dlk_or_tm50: "",
                 elw1_or_elw2: "Fire Officer or ICCU",
                 elw2_or_ab_elw: "ICCU / ACU",
-                elw3: "",
-                elw_airport: "",
                 emergency_ambulance: "Emergency ambulance or Helicopter",
                 emergency_welfare: "Any Crew Welfare Vehicle",
                 fire_truck: "Fire engines",
                 fireboat: "Large Fireboat",
                 fly_car: "Rapid Response Vehicle / General Practitioner",
                 foam: "Foam Tenders or RIV",
-                fukw: "",
-                fwk: "",
-                gefkw: "",
                 gkw: "Utility Truck",
                 grtw: "Mass Casualty Unit",
-                grtw0: "",
-                grtw1: "",
-                grukw: "",
-                gw_atemschutz_only: "",
                 gw_gefahrgut: "HazMat Unit or CBRN Vehicle",
-                gw_gefahrgut_only: "",
                 gw_hoehenrettung: "GW-Höhenrettung",
                 gw_messtechnik: "GW-Messtechnik",
-                gw_oel_only: "",
-                gw_san: "",
-                gw_taucher: "",
                 gw_wasserrettung: "Water Retention",
-                gw_werkfeuerwehr: "",
                 gwl2wasser: "Water Carrier or Major Foam Tender",
                 gwl2wasser_only: "Hose Vehicle",
                 hems: "HEMS",
                 hlf_only: "Rescue Pump",
                 hlf_or_rw_and_lf: "Rescue Pump or Rescue Support Unit and Fire engine",
-                hondengeleider: "",
                 joint_response_unit: "Joint Response Unit",
                 k9: "Any Dog Carrier",
-                kdow_lna: "",
                 kdow_orgl: "OTL",
                 kdow_orgl_any: "OTL / Ambulance Officer",
-                ktw_b: "",
-                ktw_or_rtw: "",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
                 lf_only: "Water Ladder or L4P",
                 long_distance_ambulance: "BLS ambulance",
                 mask_service_unit: "Breathing Apparatus Support Unit",
                 mass_casualty_equipment: "Mass Casualty Equipment or Medical Equipment Trailer",
-                mek_mtf: "",
-                mek_zf: "",
                 mtw: "MTW",
                 mzb: "Multi-Purpose Boat",
-                naw: "",
-                naw_or_rtw_and_nef: "",
-                naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Ambulance",
                 oil_unit: "GW-Öl",
-                only_ab_dekon_p: "",
-                only_dekon_p: "",
-                ovd_p: "",
                 police_car: "Police car",
                 polizeihubschrauber: "Police helicopter",
                 rescue_vehicle: "Rescue Support Unit or Rescue Pump",
                 rescue_vehicle_only: "Rescue Support Unit",
                 rescueboat: "Large Rescue Boat",
-                rettungstreppe: "",
                 rth_only: "HEMS",
                 schlauchwagen: "Water Carrier",
-                seg_elw: "",
-                sek_mtf: "",
-                sek_zf: "",
                 swat: "Armed Response Vehicle",
                 swat_suv: "Armed Response Vehicle (ARV)",
-                thw_anh_mzab: "",
-                thw_anh_mzb: "",
-                thw_anh_schlb: "",
-                thw_brmg_r: "",
-                thw_dle: "",
-                thw_lkw: "",
-                thw_lkw_7_lkr_19_tm: "",
-                thw_mlw5: "",
                 thw_mtw: "Mannschaftstransportwagen Technischer Zug (MTW-TZ - THW)",
                 thw_mzkw: "Mehrzweckkraftwagen (MzKW)",
                 thw_tauchkraftwagen: "Dive Team",
-                thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "Tanker Truck",
-                tm50: "",
-                turboloescher: "",
-                turntable_ladder: "Aerial Appliance Truck",
-                ulf: "",
-                wasserwerfer: "",
-                water_amount: "",
-                water_amount_tlf: ""
+                turntable_ladder: "Aerial Appliance Truck"
             }
         },
         tutorial: {
@@ -5082,15 +4947,15 @@ Object.values || (Object.values = function (e) {
                         welcome: "Hello, welcome to MissionChief!  I will teach you some lessons to help you start off your emergency services career well!"
                     },
                     tooltip: {
-                        ambulance_station: {
-                            helpshift_id: "1714",
-                            link: "https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station",
-                            "short": "Houses vehicles need for EMS-related missions. \nExtensions can be built, which unlocks purchasing of specialized units.\nAccess to a hospital or clinic is needed to complete most missions. "
-                        },
                         ambulance_station_small: {
                             helpshift_id: "1715",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station",
                             "short": "Houses vehicles for EMS-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station.\nAccess to a hospital or clinic is needed to complete most missions. "
+                        },
+                        ambulance_station: {
+                            helpshift_id: "1714",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station",
+                            "short": "Houses vehicles need for EMS-related missions. \nExtensions can be built, which unlocks purchasing of specialized units.\nAccess to a hospital or clinic is needed to complete most missions. "
                         },
                         clinic: {
                             helpshift_id: "1719",
@@ -5102,15 +4967,15 @@ Object.values || (Object.values = function (e) {
                             link: "https://xyrality.helpshift.com/a/mission-chief/?p=all&s=gameplay&f=what-is-the-dispatch-center-good-for",
                             "short": "Gives you an overview of all your buildings and allows you to group them in a dispatch area."
                         },
-                        firehouse: {
-                            helpshift_id: "1709",
-                            link: "https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station",
-                            "short": "Houses vehicles needed for fire-related missions. \nExtensions can be built, which unlocks purchasing of specialized units. "
-                        },
                         firehouse_small: {
                             helpshift_id: "1710",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station",
                             "short": "Houses vehicles needed for fire-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station."
+                        },
+                        firehouse: {
+                            helpshift_id: "1709",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station",
+                            "short": "Houses vehicles needed for fire-related missions. \nExtensions can be built, which unlocks purchasing of specialized units. "
                         },
                         fireschool: {
                             helpshift_id: "1711",
@@ -5408,7 +5273,6 @@ Object.values || (Object.values = function (e) {
             attended: "Uitgevoerd",
             cancel_alliance_event: "Team-evenement annuleren",
             cancel_alliance_event_confirm: "Wil je het team-evenement echt annuleren?",
-            challenges: "",
             chat_history: "Chat geschiedenis",
             congratulations: "Gefeliciteerd! Je mag je nieuwe rang ophalen.",
             create_alliance_event: "Team-Event starten",
@@ -5453,7 +5317,6 @@ Object.values || (Object.values = function (e) {
                 technical_aid: "Steunpunt Rijkswaterstaat",
                 technical_aid_missions: "RWS / Signalisatie Inzetten",
                 technical_aid_organization: "THW",
-                technical_aid_organization_school: "",
                 user_buildings: "Mijn gebouwen",
                 user_missions: "Mijn inzetten",
                 water_watch: "Waterongevallen",
@@ -5533,8 +5396,6 @@ Object.values || (Object.values = function (e) {
             text_color: "Tekstkleur",
             vehicles: {
                 ab_atemschutz_only: "Adembeschermingshaakarmbak",
-                ab_einsatzleitung_only: "",
-                ab_gefahrgut_only: "",
                 ab_oel_only: "Haakarmbak Milieu",
                 ab_ruest: "Haakarmbak Hulpverlening",
                 ab_ruest_rw: "Hulpverleningsvoertuig of HVH",
@@ -5551,68 +5412,39 @@ Object.values || (Object.values = function (e) {
                 bike_police: "DB-Bike",
                 boot: "WOA of BA-RB",
                 coastal_boat: "RB-K of RB-G",
-                dekon_p: "",
                 division_chief_unit: "Hoofdofficier van Dienst - Brandweer",
-                dlk_or_tm50: "",
-                elw1_or_elw2: "",
-                elw2_or_ab_elw: "",
-                elw3: "Commandovoertuig of haakarmbak",
                 elw_airport: "Airport Fire Officer / On Scene Commander",
+                elw3: "Commandovoertuig of haakarmbak",
                 emergency_ambulance: "MMT-Auto of Lifeliner",
                 fire_truck: "Tankautospuit",
-                fireboat: "",
                 fly_car: "Rapid Responder",
                 fly_car_any: "OVDG-RR of Rapid Responder",
                 foam: "Schuimblusvoertuigen (SB, SBH of SBA)",
                 foam_amount: "Liter SVM",
                 fukw: "Hondenbrigade",
                 fustw_or_police_motorcycle: "Politie Noodhulp of Dienstmotor Noodhulp",
-                fwk: "",
                 gefkw: "DB-AV",
-                gkw: "",
-                grtw: "",
-                grtw0: "",
-                grtw1: "",
                 grukw: "ME Flexbus",
                 gw_atemschutz_only: "Adembeschermingsvoertuig",
                 gw_gefahrgut: "Adviseur Gevaarlijke Stoffen",
-                gw_gefahrgut_only: "",
                 gw_hoehenrettung: "Hoogte reddingsteam (HRT)",
                 gw_messtechnik: "Dienstbus Verkenningseenheid Brandweer",
                 gw_oel_only: "Milieu wagen",
-                gw_san: "",
                 gw_taucher: "Waterongevallenvoertuig",
                 gw_wasserrettung: "Strandvoertuig (Quad, DAT-RB of KHV)",
-                gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Alleen Slangenwagen / Watertankwagen",
-                hems: "",
                 hint: {
                     water_amount: "In te voeren in Liters. Voorbeeld: Als je hier 4500 invoert zullen er voertuigen geselecteerd worden tot de gekozen waarde van 4500L is bereikt."
                 },
-                hlf_only: "",
-                hlf_or_rw_and_lf: "",
                 hondengeleider: "Hondengeleider",
-                k9: "",
-                kdow_lna: "",
                 kdow_orgl: "Officier van Dienst Geneeskunde",
                 kdow_orgl_any: "OVD-G of OVDG-RR",
-                ktw_b: "",
-                ktw_or_rtw: "",
                 lebefkw: "ME Commandovoertuig",
-                lf_only: "",
                 long_distance_ambulance: "Zorgambulance",
                 mask_service_unit: "Adembeschermingsvoertuig of haakarmbak",
-                mek_mtf: "",
-                mek_zf: "",
                 mtw: "Dienstauto / Dienstbus brandweer",
-                mzb: "",
-                naw: "",
-                naw_or_rtw_and_nef: "",
-                naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "MMT-Auto",
                 oil_unit: "Milieu wagen of haakarmbak milieu",
-                only_ab_dekon_p: "",
-                only_dekon_p: "",
                 ovd_p: "Officier van Dienst - Politie",
                 police_car: "Politie Noodhulp",
                 police_car_3: "NH-O",
@@ -5624,38 +5456,12 @@ Object.values || (Object.values = function (e) {
                 pump_speed_pump_only: "Pomp Capaciteit - Alleen Pomp Voertuigen",
                 rescue_vehicle: "HV of TS-HV",
                 rescue_vehicle_only: "Hulpverleningsvoertuig",
-                rescueboat: "",
-                rettungstreppe: "",
                 rth_only: "Lifeliner",
                 schlauchwagen: "Slangenwagen / Watertankwagen of Watertransportsysteem-haakarmbak",
-                seg_elw: "",
-                sek_mtf: "",
-                sek_zf: "",
                 spokesman: "Voorlichters",
-                swat: "",
-                swat_armored_vehicle: "",
-                swat_suv: "",
-                thw_anh_mzab: "",
-                thw_anh_mzb: "",
-                thw_anh_schlb: "",
-                thw_brmg_r: "",
-                thw_dle: "",
-                thw_lkw: "",
-                thw_lkw_7_lkr_19_tm: "",
-                thw_mlw5: "",
-                thw_mtw: "",
-                thw_mzkw: "",
-                thw_tauchkraftwagen: "",
-                thw_tauchkraftwagen_or_gw_taucher: "",
-                tlf_only: "",
-                tm50: "",
                 traffic_car: "Signalisatie Voertuig (DA-RWS, DA-SIG of DM-RWS)",
-                turboloescher: "",
                 turntable_ladder: "Redvoertuig",
-                ulf: "",
-                wasserwerfer: "",
                 water_amount: "Water (in Liters):",
-                water_amount_tlf: "",
                 water_damage_pump: "Pompvoertuigen"
             }
         },
@@ -5907,7 +5713,6 @@ Object.values || (Object.values = function (e) {
             attended: "Respondido",
             cancel_alliance_event: "Cancelar evento de alianza",
             cancel_alliance_event_confirm: "¿Seguro que quieres cancelar el evento de alianza?",
-            challenges: "",
             chat_history: "Historial de chat",
             congratulations: "¡Enhorabuena! Puedes ascender.",
             create_alliance_event: "Comenzar evento de alianza",
@@ -6039,107 +5844,60 @@ Object.values || (Object.values = function (e) {
                 ab_gefahrgut_only: "Módulo Hazmat",
                 ab_oel_only: "Módulo de vertido de crudo",
                 ab_ruest: "Módulo tecnológico de rescate",
-                ab_ruest_rw: "",
                 abl2wasser_only: "Módulo de mangueras",
                 ambulance: "UVI móvil",
-                ambulance_or_rapid_responder: "",
                 arff: "ARFF",
                 battalion_chief_unit: "Unidad de Mando y Comunicaciones",
                 boot: "Botes (general)",
-                dekon_p: "",
                 division_chief_unit: "Unidad de mando",
-                dlk_or_tm50: "",
                 elw1_or_elw2: "Unidad de Mando y Comunicaciones, unidad de mando o módulo de mando móvil ",
                 elw2_or_ab_elw: "Bomba de Rescate o Unidad de Apoyo de Rescate y Camión de Bomberos",
-                elw3: "",
-                elw_airport: "",
                 emergency_ambulance: "Ambulancia o Helicóptero",
                 fire_truck: "Camiones de bomberos",
                 fireboat: "Barco de bomberos grande",
                 fly_car: "VIR",
                 fly_car_any: "VIR / Médico de cabecera",
                 foam_amount: "Litros de espuma",
-                fukw: "",
                 fustw_or_police_motorcycle: "Coche patrulla o Moto de Policía",
-                fwk: "",
-                gefkw: "",
                 gkw: "Camión de usos múltiples",
                 grtw: "Unidad para múltiples víctimas",
-                grtw0: "",
-                grtw1: "",
-                grukw: "",
-                gw_atemschutz_only: "",
                 gw_gefahrgut: "Hazmat",
-                gw_gefahrgut_only: "",
                 gw_hoehenrettung: "Camión de rescate en altura",
                 gw_messtechnik: "Camión de medición",
-                gw_oel_only: "",
-                gw_san: "",
-                gw_taucher: "",
                 gw_wasserrettung: "Retención de agua",
-                gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Vehículo con manguera",
                 hems: "HEMS",
                 hlf_only: "Vehículo de rescate",
                 hlf_or_rw_and_lf: "Vehículo de rescate o vehículo de rescate pesado y camión de bomberos",
-                hondengeleider: "",
                 k9: "Unidad Canina",
-                kdow_lna: "",
                 kdow_orgl: "Unidad logística de AMV",
                 kdow_orgl_any: "Unidad logística de AMV",
-                ktw_b: "",
                 ktw_or_rtw: "SVB o SVA",
                 lebefkw: "Vehículo de mando ligero (leBefKw)",
                 lf_only: "Camiones de bomberos",
                 long_distance_ambulance: "Ambulancia SVB",
                 mask_service_unit: "Unidad aérea",
-                mek_mtf: "",
-                mek_zf: "",
                 mtw: "Camión de transporte",
                 mzb: "Barco multiusos",
-                naw: "",
-                naw_or_rtw_and_nef: "",
-                naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Ambulancia",
                 oil_unit: "Camión para fuegos de aceite",
-                only_ab_dekon_p: "",
-                only_dekon_p: "",
-                ovd_p: "",
                 police_car: "Coche patrulla",
                 police_motorcycle: "Moto de Policía",
                 polizeihubschrauber: "Helicóptero de Policía",
                 rescue_vehicle: "Furgones de Útiles Varios",
                 rescue_vehicle_only: "Furgón de Útiles Varios",
                 rescueboat: "Barco de rescate grande",
-                rettungstreppe: "",
                 rth_only: "HEMS",
                 schlauchwagen: "Camión cisterna",
-                seg_elw: "",
-                sek_mtf: "",
-                sek_zf: "",
                 swat: "Fuerzas especiales (GEO)",
                 swat_armored_vehicle: "Unidad GEO",
                 swat_suv: "Unidad GOES",
-                thw_anh_mzab: "",
-                thw_anh_mzb: "",
-                thw_anh_schlb: "",
-                thw_brmg_r: "",
-                thw_dle: "",
-                thw_lkw: "",
-                thw_lkw_7_lkr_19_tm: "",
-                thw_mlw5: "",
                 thw_mtw: "Camión de transporte técnico",
                 thw_mzkw: "Vehículo multiusos",
                 thw_tauchkraftwagen: "Equipo de buceo",
-                thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "Camión cisterna",
-                tm50: "",
-                turboloescher: "",
                 turntable_ladder: "Camión AE",
-                ulf: "",
-                wasserwerfer: "",
-                water_amount: "Litros de agua",
-                water_amount_tlf: ""
+                water_amount: "Litros de agua"
             }
         },
         tutorial: {
@@ -6348,7 +6106,6 @@ Object.values || (Object.values = function (e) {
             attended: "Attended",
             cancel_alliance_event: "Cancel alliance event",
             cancel_alliance_event_confirm: "Do you really want to cancel the alliance event?",
-            challenges: "",
             chat_history: "Chat History",
             congratulations: "Congratulations! You can now be promoted.",
             create_alliance_event: "Start alliance event",
@@ -6480,74 +6237,44 @@ Object.values || (Object.values = function (e) {
                 ab_gefahrgut_only: "HazMat-Module",
                 ab_oel_only: "Oil spill-Module",
                 ab_ruest: "Tech/Rescue-Module",
-                ab_ruest_rw: "",
                 abl2wasser_only: "Hose-Supply-Module",
                 ambulance: "Ambulance",
-                ambulance_or_rapid_responder: "",
                 any_traffic_car: "Traffic Car",
                 arff: "ULFV Crash Tender",
                 battalion_chief_unit: "Support Vehicle",
                 boot: "Boats (General)",
                 brush_truck: "Bushfire Vehicles",
                 crew_carrier: "Crew Carrier",
-                dekon_p: "",
                 division_chief_unit: "Mobile Command Vehicle",
-                dlk_or_tm50: "",
                 elw1_or_elw2: "Support Vehicle or Mobile Command Vehicle",
                 elw2_or_ab_elw: "Rescue Pump or Rescue Support Unit and Fire engine",
-                elw3: "",
-                elw_airport: "",
                 emergency_ambulance: "Ambulance or Air Ambulance",
                 fire_truck: "Pumper or Light Tanker or Tanker",
                 fireboat: "Fire Boat",
                 fly_car: "MICA",
                 fly_car_any: "ICP / ICS / EMS Rescue",
-                fukw: "",
                 fustw_or_police_motorcycle: "Police car or Police Motorcycle",
-                fwk: "",
-                gefkw: "",
                 gkw: "Utility Truck",
                 grtw: "Mass Casualty Unit",
-                grtw0: "",
-                grtw1: "",
-                grukw: "",
-                gw_atemschutz_only: "",
                 gw_gefahrgut: "HAZMAT Unit",
-                gw_gefahrgut_only: "",
                 gw_hoehenrettung: "GW-Höhenrettung",
                 gw_messtechnik: "GW-Messtechnik",
-                gw_oel_only: "",
-                gw_san: "",
-                gw_taucher: "",
                 gw_wasserrettung: "SES Vehicle",
-                gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Bulk Water Tanker",
                 hems: "Air Ambulance",
                 hlf_only: "Rescue Pumper",
                 hlf_or_rw_and_lf: "Rescue Pumper or Major Rescue Vehicle and Fire Engine",
-                hondengeleider: "",
                 k9: "K-9 Unit",
-                kdow_lna: "",
                 kdow_orgl: "Paramedic Supervisor",
                 kdow_orgl_any: "Required Paramedic Supervisor",
-                ktw_b: "",
-                ktw_or_rtw: "",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
                 lf_only: "Fire Trucks",
                 long_distance_ambulance: "BLS ambulance",
                 mask_service_unit: "BASU",
-                mek_mtf: "",
-                mek_zf: "",
                 mtw: "MTW",
                 mzb: "Rescue Boat",
-                naw: "",
-                naw_or_rtw_and_nef: "",
-                naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Ambulance",
                 oil_unit: "GW-Öl",
-                only_ab_dekon_p: "",
-                only_dekon_p: "",
-                ovd_p: "",
                 police_car: "Patrol Car",
                 police_horse: "Mounted Police",
                 police_motorcycle: "Police Motorcycle",
@@ -6558,32 +6285,15 @@ Object.values || (Object.values = function (e) {
                 rettungstreppe: "Emergency Stairs",
                 rth_only: "Air Ambulance",
                 schlauchwagen: "Bulk Water Tanker",
-                seg_elw: "",
-                sek_mtf: "",
-                sek_zf: "",
                 swat: "TOG",
                 swat_armored_vehicle: "TOG Armoured Vehicle",
                 swat_suv: "TOG SUV",
-                thw_anh_mzab: "",
-                thw_anh_mzb: "",
-                thw_anh_schlb: "",
-                thw_brmg_r: "",
-                thw_dle: "",
-                thw_lkw: "",
-                thw_lkw_7_lkr_19_tm: "",
-                thw_mlw5: "",
                 thw_mtw: "Mannschaftstransportwagen Technischer Zug (MTW-TZ - THW)",
                 thw_mzkw: "Mehrzweckkraftwagen (MzKW)",
                 thw_tauchkraftwagen: "Dive Team",
-                thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "Tanker Truck",
-                tm50: "",
-                turboloescher: "",
                 turntable_ladder: "Ladder Platform Trucks",
-                ulf: "",
-                wasserwerfer: "",
-                water_amount: "Litres of water",
-                water_amount_tlf: ""
+                water_amount: "Litres of water"
             }
         },
         tutorial: {
@@ -6610,15 +6320,15 @@ Object.values || (Object.values = function (e) {
                         welcome: "Hello, welcome to MissionChief! I will teach you some lessons to help you start off your emergency services career well!"
                     },
                     tooltip: {
-                        ambulance_station: {
-                            helpshift_id: "1714",
-                            link: "https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station",
-                            "short": "Houses vehicles need for medical-related missions. Extensions can be built, which unlocks purchasing of specialized units."
-                        },
                         ambulance_station_small: {
                             helpshift_id: "1715",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station",
                             "short": "Houses vehicles for medical-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station."
+                        },
+                        ambulance_station: {
+                            helpshift_id: "1714",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station",
+                            "short": "Houses vehicles need for medical-related missions. Extensions can be built, which unlocks purchasing of specialized units."
                         },
                         coastal_rescue: {
                             helpshift_id: "1832",
@@ -6635,15 +6345,15 @@ Object.values || (Object.values = function (e) {
                             link: "https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-firefighting-plane-station",
                             "short": "Houses airborne firefighters for bushfire-related missions. The building does not come with a free vehicle."
                         },
-                        firehouse: {
-                            helpshift_id: "1709",
-                            link: "https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station",
-                            "short": "Houses vehicles needed for fire-related missions. Extensions can be built, which unlocks purchasing of specialized units. "
-                        },
                         firehouse_small: {
                             helpshift_id: "1710",
                             link: "https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1710-what-is-a-small-fire-station/?p=all&s=buildings&f=what-is-a-fire-station",
                             "short": "Houses vehicles needed for fire-related missions. Only one extension can be built, however it can be upgraded to a regular station."
+                        },
+                        firehouse: {
+                            helpshift_id: "1709",
+                            link: "https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station",
+                            "short": "Houses vehicles needed for fire-related missions. Extensions can be built, which unlocks purchasing of specialized units. "
                         },
                         fireschool: {
                             helpshift_id: "1711",
@@ -6894,6 +6604,10 @@ Object.values || (Object.values = function (e) {
             patient: "Patient",
             patient_untouched: "Obehandlade patienter",
             poi_delete: "Vill du verkligen ta bort intressepunkten %{caption}?",
+            pump_speed_approaching: "Approximation: %{amount} l/min",
+            pump_speed_missing: "Saknas: %{amount} l/min",
+            pump_speed_on_site: "Ingen lokal: %{amount} l/min",
+            pump_speed_selected: "Vald: %{amount} l/min",
             reload: "Ladda om",
             sale: "Sale",
             sale_ended: "Rean är slut",
@@ -6911,6 +6625,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "På väg: %{amount} l.",
             water_missing: "Saknas: %{amount} liter",
             water_on_site: "På plats: %{amount} l.",
+            water_pumping_process: "Process för pumpning av vatten",
             water_selected: "Valt: %{amount} l."
         },
         map: {
@@ -7113,6 +6828,8 @@ Object.values || (Object.values = function (e) {
                 police_motorcycle: "Polismotorcykel",
                 polizeihubschrauber: "Polishelikopter",
                 pump: "Valfri pumpbil",
+                pump_speed: "Pumpens kapacitet",
+                pump_speed_pump_only: "Pumpkapacitet - endast pumpar",
                 rescue_vehicle: "Lastväxlare",
                 rescue_vehicle_only: "Lastväxlare",
                 rescueboat: "Stor räddningsbåt",
@@ -7126,7 +6843,8 @@ Object.values || (Object.values = function (e) {
                 thw_tauchkraftwagen: "Dykgrupp",
                 tlf_only: "Tankbil",
                 turntable_ladder: "Stegbilar",
-                water_amount: "Liter vatten"
+                water_amount: "Liter vatten",
+                water_damage_pump: "Vattenpumpar"
             }
         },
         tutorial: {
@@ -7381,7 +7099,6 @@ Object.values || (Object.values = function (e) {
             attended: "Podjęte",
             cancel_alliance_event: "Anuluj wydarzenie sojuszu",
             cancel_alliance_event_confirm: "Czy na pewno chcesz anulować wydarzenie sojuszu?",
-            challenges: "",
             chat_history: "Historia czatu",
             congratulations: "Gratulacje! Możesz teraz otrzymać awans.",
             create_alliance_event: "Rozpocznij wydarzenie sojuszu",
@@ -7512,22 +7229,15 @@ Object.values || (Object.values = function (e) {
                 ab_gefahrgut_only: "Moduł Rchem",
                 ab_oel_only: "Moduł do sprzątania oleju",
                 ab_ruest: "Moduł ratownictwa technicznego",
-                ab_ruest_rw: "",
                 abl2wasser_only: "Moduł wężowy",
                 ambulance: "Ambulans P lub S",
-                ambulance_or_rapid_responder: "",
                 any_traffic_car: "Pojazd WRD",
                 arff: "SP LSP (samochód pożarniczy lotniskowej straży pożarnej)",
                 battalion_chief_unit: "SLOp lub SLRr",
                 boot: "Łodzie (ogólne)",
-                dekon_p: "",
                 detention_unit: "Więźniarka",
                 division_chief_unit: "Samochód dowodzenia i łączności",
-                dlk_or_tm50: "",
                 elw1_or_elw2: "SLOp lub Samochód dowodzenia i łączności",
-                elw2_or_ab_elw: "",
-                elw3: "",
-                elw_airport: "",
                 emergency_ambulance: "Ambulans lub śmigłowiec LPR",
                 fire_truck: "Samochody pożarnicze",
                 fireboat: "Duża łódź strażacka",
@@ -7536,25 +7246,15 @@ Object.values || (Object.values = function (e) {
                 fly_car_any: "Pomoc medyczna",
                 foam: "Samochód z zbiornikiem na pianę",
                 foam_amount: "Litry piany gaśniczej",
-                fukw: "",
                 fustw_or_police_motorcycle: "Radiowóz OPI lub Quad Policyjny",
                 fwk: "Dźwig SP",
-                gefkw: "",
                 gkw: "Samochód kwatermistrzowski",
                 grtw: "Jednostka do zdarzeń masowych",
-                grtw0: "",
-                grtw1: "",
-                grukw: "",
-                gw_atemschutz_only: "",
                 gw_gefahrgut: "Ratownictwo chemiczne",
-                gw_gefahrgut_only: "",
                 gw_hoehenrettung: "SRWys",
                 gw_messtechnik: "GW-Messtechnik",
-                gw_oel_only: "",
-                gw_san: "",
                 gw_taucher: "Samochód SLRw",
                 gw_wasserrettung: "S.WOPR lub Quad",
-                gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Samochód wężowy",
                 hems: "Śmigłowiec LPR",
                 hint: {
@@ -7565,30 +7265,19 @@ Object.values || (Object.values = function (e) {
                 },
                 hlf_only: "GBARt",
                 hlf_or_rw_and_lf: "GBARt lub samochód ratownictwa technicznego oraz samochód gaśniczy",
-                hondengeleider: "",
                 hose_trucks: "Pojazd z wężami",
                 k9: "Jednostka z psami",
-                kdow_lna: "",
                 kdow_orgl: "Szef służb ratownictwa medycznego",
-                ktw_b: "",
                 ktw_or_rtw: "Ambulans P, S lub T",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
                 lf_only: "Samochody pożarnicze",
                 long_distance_ambulance: "Ambulans T",
                 mask_service_unit: "SPGaz",
-                mek_mtf: "",
-                mek_zf: "",
                 mtw: "MTW",
                 municipal_police: "Straż miejska",
                 mzb: "Łódź wielozadaniowa",
-                naw: "",
-                naw_or_rtw_and_nef: "",
-                naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Ambulans",
                 oil_unit: "Jednostka do sprzątania oleju",
-                only_ab_dekon_p: "",
-                only_dekon_p: "",
-                ovd_p: "",
                 police_car: "Pojazd OPI",
                 police_motorcycle: "Quad Policyjny",
                 polizeihubschrauber: "Helikopter Policyjny",
@@ -7597,38 +7286,20 @@ Object.values || (Object.values = function (e) {
                 rescue_vehicle: "Samochód Ratownictwa Technicznego",
                 rescue_vehicle_only: "Samochód Ratownictwa Technicznego",
                 rescueboat: "Duża łódź ratownicza",
-                rettungstreppe: "",
                 riot_police: "Radiowóz OPP",
                 rth_only: "Śmigłowiec",
                 schlauchwagen: "Cysterna z wodą",
                 search_and_rescue: "Samochód poszukiwawczo - ratowniczy",
-                seg_elw: "",
-                sek_mtf: "",
-                sek_zf: "",
                 swat: "SPKP",
                 swat_armored_vehicle: "Opanerzony Pojazd SPKP",
                 swat_suv: "SUV SPKP",
-                thw_anh_mzab: "",
-                thw_anh_mzb: "",
-                thw_anh_schlb: "",
-                thw_brmg_r: "",
-                thw_dle: "",
-                thw_lkw: "",
-                thw_lkw_7_lkr_19_tm: "",
-                thw_mlw5: "",
                 thw_mtw: "Mannschaftstransportwagen Technischer Zug (MTW-TZ - THW)",
                 thw_mzkw: "Mehrzweckkraftwagen (MzKW)",
                 thw_tauchkraftwagen: "Zespół nurków",
-                thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "Samochód dla ratownictwa wodno-nurkowego",
-                tm50: "",
                 traffic_car: "Radiowóz WRD",
-                turboloescher: "",
                 turntable_ladder: "SH lub SD",
-                ulf: "",
-                wasserwerfer: "",
-                water_amount: "Litry wody",
-                water_amount_tlf: ""
+                water_amount: "Litry wody"
             }
         },
         tutorial: {
@@ -7883,7 +7554,6 @@ Object.values || (Object.values = function (e) {
             attended: "Completate",
             cancel_alliance_event: "Annulla evento dell'alleanza",
             cancel_alliance_event_confirm: "Vuoi davvero annullare l'evento dell'alleanza?",
-            challenges: "",
             chat_history: "Cronologia chat",
             congratulations: "Congratulazioni! Adesso puoi ricevere una promozione.",
             create_alliance_event: "Inizia evento dell'alleanza",
@@ -8014,23 +7684,16 @@ Object.values || (Object.values = function (e) {
                 ab_gefahrgut_only: "Modulo - N.B.C.R.",
                 ab_oel_only: "Modulo - Perdita di olio",
                 ab_ruest: "Modulo - Soccorso/Tecniche",
-                ab_ruest_rw: "",
                 abl2wasser_only: "Modulo - Alimentazione tubi",
                 ambulance: "Ambulanza BLSD",
-                ambulance_or_rapid_responder: "",
                 arff: "ARFF (mezzo antincendio aeroportuale)",
                 battalion_chief_unit: "Funzionario",
                 boot: "Barca",
                 brush_truck: "Mezzo AIB",
                 commerce_police: "Volante Finanza",
                 crew_carrier: "AF/BUS",
-                dekon_p: "",
                 division_chief_unit: "Veicoli comando mobile",
-                dlk_or_tm50: "",
                 elw1_or_elw2: "Modulo - Funzionario, Veicoli comando mobile o Comando mobile ",
-                elw2_or_ab_elw: "",
-                elw3: "",
-                elw_airport: "",
                 emergency_ambulance: "Automedica (VLV) o Elisoccorso",
                 fbi_bomb_tech: "Furgone artificieri",
                 fire_aviation: "Unità Aerea Antincendio",
@@ -8039,41 +7702,26 @@ Object.values || (Object.values = function (e) {
                 fly_car: "Fly-Car",
                 foam: "Carro Schiuma",
                 foam_amount: "Quantità di Schiuma in Litri",
-                fukw: "",
                 fustw_or_police_motorcycle: "Volante oppure Moto della Polizia",
                 fwk: "AG",
-                gefkw: "",
                 gkw: "Furgone generico",
                 grtw: "Unità antistrage",
-                grtw0: "",
-                grtw1: "",
-                grukw: "",
-                gw_atemschutz_only: "",
                 gw_gefahrgut: "N.B.C.R.",
-                gw_gefahrgut_only: "",
                 gw_hoehenrettung: "GW-Höhenrettung",
                 gw_messtechnik: "GW-Messtechnik",
-                gw_oel_only: "",
-                gw_san: "",
                 gw_taucher: "Camion Tecnico NSSA",
                 gw_wasserrettung: "Ritenzione delle acque",
-                gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Autocarro per tubazioni",
                 hems: "Elisoccorso HEMS",
                 hlf_only: "Autopompa",
                 hlf_or_rw_and_lf: "Autopompa oppure Polisoccorso e Autobotte",
-                hondengeleider: "",
                 k9: "Seleziona qualsiasi unità cinofila antidroga",
-                kdow_lna: "",
                 kdow_orgl: "DTS",
-                ktw_b: "",
                 ktw_or_rtw: "Ambulanza ordinaria o BLSD",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
                 lf_only: "Mezzi antincendio",
                 long_distance_ambulance: "Ambulanza ordinaria",
                 mask_service_unit: "Carro aria",
-                mek_mtf: "",
-                mek_zf: "",
                 mtw: "Trasporto truppa MTW",
                 municipal_police: "Seleziona un qualsiasi Veicolo Della Polizia Locale",
                 mzb: "Barca",
@@ -8082,9 +7730,6 @@ Object.values || (Object.values = function (e) {
                 naw_or_rtw_and_nef_or_rth: "MSA o VLV o Elisoccorso",
                 nef_only: "Automedica (VLV)",
                 oil_unit: "GW-Öl",
-                only_ab_dekon_p: "",
-                only_dekon_p: "",
-                ovd_p: "",
                 police_car: "Auto di pattuglia",
                 police_motorcycle: "Moto della Polizia",
                 polizeihubschrauber: "Elicottero della polizia",
@@ -8094,36 +7739,18 @@ Object.values || (Object.values = function (e) {
                 rescue_vehicle: "Polisoccorso",
                 rescue_vehicle_only: "CA / POLI",
                 rescueboat: "Barca di salvataggio grande",
-                rettungstreppe: "",
                 rth_only: "Elisoccorso",
                 schlauchwagen: "Kilolitrica",
-                seg_elw: "",
-                sek_mtf: "",
-                sek_zf: "",
                 swat: "Unità speciali",
                 swat_armored_vehicle: "Veicolo Antisommossa",
                 swat_suv: "UOPI Suv",
-                thw_anh_mzab: "",
-                thw_anh_mzb: "",
-                thw_anh_schlb: "",
-                thw_brmg_r: "",
-                thw_dle: "",
-                thw_lkw: "",
-                thw_lkw_7_lkr_19_tm: "",
-                thw_mlw5: "",
                 thw_mtw: "Mannschaftstransportwagen Technischer Zug",
                 thw_mzkw: "Mehrzweckkraftwagen (MzKW)",
                 thw_tauchkraftwagen: "Team sommozzatori",
-                thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "Veicolo trasporto sommozzatori",
-                tm50: "",
                 traffic_car: "Pattuglia Polizia Stradale e Moto Polizia Stradale",
-                turboloescher: "",
                 turntable_ladder: "Autoscala",
-                ulf: "",
-                wasserwerfer: "",
                 water_amount: "Quantità di Acqua in Litri",
-                water_amount_tlf: "",
                 water_damage_pump: "Carrelli Alluvionali"
             }
         },
@@ -8376,7 +8003,6 @@ Object.values || (Object.values = function (e) {
             attended: "Assignée",
             cancel_alliance_event: "Annuler l’évènement d’alliance",
             cancel_alliance_event_confirm: "Voulez-vous vraiment annuler l’évènement d’alliance ?",
-            challenges: "",
             chat_history: "Historique du salon",
             congratulations: "Félicitations ! Vous avez désormais accès à une promotion.",
             create_alliance_event: "Lancer l’évènement d’alliance",
@@ -8506,10 +8132,8 @@ Object.values || (Object.values = function (e) {
                 ab_gefahrgut_only: "Module risques chimiques",
                 ab_oel_only: "Module marée noire",
                 ab_ruest: "Module tech/sauvetage",
-                ab_ruest_rw: "",
                 abl2wasser_only: "Module approv. lance à eau",
                 ambulance: "ASSU / VSAV / AR",
-                ambulance_or_rapid_responder: "",
                 arff: "VIA (fourgon d’incendie d’aéroport)",
                 battalion_chief_unit: "Chef de groupe",
                 boot: "Bateaux (généraux)",
@@ -8517,64 +8141,38 @@ Object.values || (Object.values = function (e) {
                 brush_truck_1: "CCFS",
                 brush_truck_2: "CCFM",
                 brush_truck_3: "CCFL",
-                dekon_p: "",
                 division_chief_unit: "Véhicule poste de commandement",
-                dlk_or_tm50: "",
                 elw1_or_elw2: "Chef de Groupe ou PC",
                 elw2_or_ab_elw: "Pompe de secours ou unité de secours en renfort et véhicule d'incendie",
                 elw3: "VLHR",
-                elw_airport: "",
                 emergency_ambulance: "Ambulance d’urgence ou hélicoptère",
                 fire_truck: "Fourgons d’incendie",
                 fireboat: "Grand bateau d’incendie",
                 fly_car: "VRM",
                 fly_car_any: "VL SSSM / VLM",
-                fukw: "",
                 fustw_or_police_motorcycle: "Véhicule de patrouille ou Unité motocycliste",
-                fwk: "",
-                gefkw: "",
                 gkw: "Véhicule Tout Usage",
                 grtw: "Unité accidents majeurs",
-                grtw0: "",
-                grtw1: "",
-                grukw: "",
-                gw_atemschutz_only: "",
                 gw_gefahrgut: "Véhicules risques chimiques",
-                gw_gefahrgut_only: "",
                 gw_hoehenrettung: "VGRIMP",
                 gw_messtechnik: "GW-M",
-                gw_oel_only: "",
-                gw_san: "",
-                gw_taucher: "",
                 gw_wasserrettung: "VPL",
-                gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Véhicule à lance",
                 hems: "Services d’urgence",
                 hlf_only: "Véhicule de secours",
                 hlf_or_rw_and_lf: "Véhicule de secours ou véhicule de secours lourd et véhicule d'incendie",
-                hondengeleider: "",
                 hose_trucks: "Camion dévidoir",
                 k9: "Brigade canine",
-                kdow_lna: "",
                 kdow_orgl: "PC DSM",
-                ktw_b: "",
                 ktw_or_rtw: "Ambulance de secours ou Ambulance de transport",
                 lebefkw: "Camionnette de police",
                 lf_only: "Fourgons d’incendie",
                 long_distance_ambulance: "Ambulance Type A",
                 mask_service_unit: "Véhicule d'Assistance Respiratoire",
-                mek_mtf: "",
-                mek_zf: "",
                 mtw: "VSAV",
                 mzb: "BLS",
-                naw: "",
-                naw_or_rtw_and_nef: "",
-                naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Ambulance",
                 oil_unit: "Camion d’assainissement",
-                only_ab_dekon_p: "",
-                only_dekon_p: "",
-                ovd_p: "",
                 police_car: "Voiture de patrouille",
                 police_motorcycle: "Unité motocycliste",
                 polizeihubschrauber: "Hélicoptère de police",
@@ -8587,32 +8185,15 @@ Object.values || (Object.values = function (e) {
                 rettungstreppe: "Moyen d'Accès en Hauteur",
                 rth_only: "Hélicoptère",
                 schlauchwagen: "Camion-citerne ou CCFS",
-                seg_elw: "",
-                sek_mtf: "",
-                sek_zf: "",
                 swat: "SWAT",
                 swat_armored_vehicle: "Véhicule renforcé du SWAT",
                 swat_suv: "SUV du SWAT",
-                thw_anh_mzab: "",
-                thw_anh_mzb: "",
-                thw_anh_schlb: "",
-                thw_brmg_r: "",
-                thw_dle: "",
-                thw_lkw: "",
-                thw_lkw_7_lkr_19_tm: "",
-                thw_mlw5: "",
                 thw_mtw: "Fourgon de la protection civile",
                 thw_mzkw: "Camion de la protection civile",
                 thw_tauchkraftwagen: "Équipe de plongée",
-                thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "Camion-citerne",
-                tm50: "",
-                turboloescher: "",
                 turntable_ladder: "Moyen Elévateur Aérien",
-                ulf: "",
-                wasserwerfer: "",
-                water_amount: "Litres d’eau",
-                water_amount_tlf: ""
+                water_amount: "Litres d’eau"
             }
         },
         tutorial: {
@@ -8858,7 +8439,6 @@ Object.values || (Object.values = function (e) {
             attended: "Посещённые",
             cancel_alliance_event: "Отменить событие альянса",
             cancel_alliance_event_confirm: "Вы уверены что хотите отменить событие альянса?",
-            challenges: "",
             chat_history: "История чата",
             congratulations: "Поздравляем! Теперь вы можете получить повышение.",
             create_alliance_event: "Начать событие альянса",
@@ -8980,106 +8560,60 @@ Object.values || (Object.values = function (e) {
                 ab_gefahrgut_only: "Модуль обезвреживания",
                 ab_oel_only: "Модуль разлива нефти",
                 ab_ruest: "Технологический модуль/модуль спасения",
-                ab_ruest_rw: "",
                 abl2wasser_only: "Модуль подачи шланга",
                 ambulance: "Реанимобиль",
-                ambulance_or_rapid_responder: "",
                 arff: "АПСР (пожарная машина аэропорта)",
                 battalion_chief_unit: "Подразделение командира батальона",
                 boot: "Суда (общее)",
-                dekon_p: "",
                 division_chief_unit: "Мобильный командный пункт",
-                dlk_or_tm50: "",
                 elw1_or_elw2: "Подразделение командира батальона, мобильный командный пункт или мобильный модуль управления ",
                 elw2_or_ab_elw: "Насос или вспомогательное спасательное подразделение",
-                elw3: "",
-                elw_airport: "",
                 emergency_ambulance: "Машина скорой помощи ИЛИ вертолет",
                 fire_truck: "Пожарные машины",
                 fireboat: "Большой пожарный катер",
                 fly_car: "Медицинский автомобиль",
                 fly_car_any: "Медицинский автомобиль / Терапевт",
                 foam_amount: "Литров пены",
-                fukw: "",
                 fustw_or_police_motorcycle: "Полицейская машина или Полицейский мотоцикл",
-                fwk: "",
-                gefkw: "",
                 gkw: "Грузовой автомобиль",
                 grtw: "Подразделение по работе с большим числом пострадавших",
-                grtw0: "",
-                grtw1: "",
-                grukw: "",
-                gw_atemschutz_only: "",
                 gw_gefahrgut: "Обезвреживание",
-                gw_gefahrgut_only: "",
                 gw_hoehenrettung: "Автомобиль с лестницей",
                 gw_messtechnik: "Метрологический автомобиль",
-                gw_oel_only: "",
-                gw_san: "",
                 gw_taucher: "Автомобиль водолазов",
                 gw_wasserrettung: "Автомобиль спасения на воде",
-                gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Машина с брандспойнтом",
                 hems: "Вертолёт неотложной медицинской помощи",
                 hlf_only: "ПСА",
                 hlf_or_rw_and_lf: "Спасатели или тяжёлые спасатели и пожарный автомобиль",
-                hondengeleider: "",
                 k9: "Подразделение кинологов",
-                kdow_lna: "",
                 kdow_orgl: "Глава скорой",
-                ktw_b: "",
                 ktw_or_rtw: "Скорые и реанимобили",
                 lebefkw: "Облегченный командный пункт",
                 lf_only: "Пожарные машины",
                 long_distance_ambulance: "Реанимобиль",
                 mask_service_unit: "Мобильное воздушное подразделение",
-                mek_mtf: "",
-                mek_zf: "",
                 mtw: "Транспортёр",
                 mzb: "Спасательная лодка",
-                naw: "",
-                naw_or_rtw_and_nef: "",
-                naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Скорая помощь",
                 oil_unit: "Маслоудалитель",
-                only_ab_dekon_p: "",
-                only_dekon_p: "",
-                ovd_p: "",
                 police_car: "Патрульный автомобиль",
                 police_motorcycle: "Полицейский мотоцикл",
                 polizeihubschrauber: "Полицейский вертолёт",
                 rescue_vehicle: "Машина для спасательных работ в тяжёлых условиях",
                 rescue_vehicle_only: "Подразделение спасателей в тяжёлых условиях",
                 rescueboat: "Большое спасательное судно",
-                rettungstreppe: "",
                 rth_only: "Медицинский вертолёт",
                 schlauchwagen: "Цистерна с водой",
-                seg_elw: "",
-                sek_mtf: "",
-                sek_zf: "",
                 swat: "Спецназ",
                 swat_armored_vehicle: "Бронемобиль спецназа",
                 swat_suv: "Внедорожник спецназа",
-                thw_anh_mzab: "",
-                thw_anh_mzb: "",
-                thw_anh_schlb: "",
-                thw_brmg_r: "",
-                thw_dle: "",
-                thw_lkw: "",
-                thw_lkw_7_lkr_19_tm: "",
-                thw_mlw5: "",
                 thw_mtw: "Автомобиль технической службы (АТС - МЧС)",
                 thw_mzkw: "Грузовик с бортом подъемником (ГрБП)",
                 thw_tauchkraftwagen: "Команда водолазов",
-                thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "Машина водолазов",
-                tm50: "",
-                turboloescher: "",
                 turntable_ladder: "Платформы",
-                ulf: "",
-                wasserwerfer: "",
-                water_amount: "Литров воды",
-                water_amount_tlf: ""
+                water_amount: "Литров воды"
             }
         },
         tutorial: {
@@ -9296,7 +8830,6 @@ Object.values || (Object.values = function (e) {
             attended: "Iværksatte",
             cancel_alliance_event: "Annullér alliancebegivenhed",
             cancel_alliance_event_confirm: "Er du sikker på, at du vil annullere alliancebegivenheden?",
-            challenges: "",
             chat_history: "Chat-historik",
             congratulations: "Tillykke! Du kan nu blive forfremmet.",
             create_alliance_event: "Påbegynd alliancebegivenhed",
@@ -9427,72 +8960,42 @@ Object.values || (Object.values = function (e) {
                 ab_gefahrgut_only: "Gift- og kemikaliemodul",
                 ab_oel_only: "Olieudslipmodul",
                 ab_ruest: "Teknologi-/redningsmodul",
-                ab_ruest_rw: "",
                 abl2wasser_only: "Brandslangemodul",
                 ambulance: "ALS-ambulance",
-                ambulance_or_rapid_responder: "",
                 arff: "ARFF (lufthavnsbrandbil)",
                 battalion_chief_unit: "Indsatsleder Brand",
                 boot: "Både (generelt)",
-                dekon_p: "",
                 division_chief_unit: "Mobilkommando-køretøj",
-                dlk_or_tm50: "",
-                elw1_or_elw2: "Indsatsleder Brand eller Ledelses- og kommunikationsmodul",
-                elw2_or_ab_elw: "",
-                elw3: "",
-                elw_airport: "",
                 elw_police: "Indsatsleder Politi",
+                elw1_or_elw2: "Indsatsleder Brand eller Ledelses- og kommunikationsmodul",
                 emergency_ambulance: "Ambulance eller Rednings Helikopter",
                 fire_truck: "Brandbiler",
                 fireboat: "Stor brandbåd",
                 fly_car: "Akutlæge",
                 foam_amount: "Liter af skum",
-                fukw: "",
                 fustw_or_police_motorcycle: "Patruljevogn eller Politimotorcykel",
-                fwk: "",
-                gefkw: "",
                 gkw: "Servicebil",
                 grtw: "Mobil Behandlingsplads",
-                grtw0: "",
-                grtw1: "",
-                grukw: "",
-                gw_atemschutz_only: "",
                 gw_gefahrgut: "Gift og kemikalie-enhed",
-                gw_gefahrgut_only: "",
                 gw_hoehenrettung: "GW-Höhenrettung",
                 gw_messtechnik: "GW-Messtechnik",
-                gw_oel_only: "",
-                gw_san: "",
                 gw_taucher: "Dykkerbil",
                 gw_wasserrettung: "Overfladeredderbil",
-                gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Brandslangekøretøj",
                 hems: "Rednings Helikopter",
                 hlf_only: "Specialsprøjte",
                 hlf_or_rw_and_lf: "Specialsprøjte eller Tung Redningsvogn og Autosprøjte",
-                hondengeleider: "",
                 hose_trucks: "Slange Tendere",
                 k9: "Hundepatrulje",
-                kdow_lna: "",
                 kdow_orgl: "Indsatsleder Sund",
-                ktw_b: "",
-                ktw_or_rtw: "",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
                 lf_only: "Brandbiler",
                 long_distance_ambulance: "Regionsambulance",
                 mask_service_unit: "Højtrykskompressor",
-                mek_mtf: "",
-                mek_zf: "",
                 mtw: "Mandskabstransport",
                 mzb: "Bådtrailer",
-                naw: "",
-                naw_or_rtw_and_nef: "",
-                naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Ambulance",
                 oil_unit: "GW-Öl",
-                only_ab_dekon_p: "",
-                only_dekon_p: "",
-                ovd_p: "",
                 police_car: "Patruljebil",
                 police_motorcycle: "Politimotorcykel",
                 polizeihubschrauber: "Politihelikopter",
@@ -9501,36 +9004,18 @@ Object.values || (Object.values = function (e) {
                 rescue_vehicle: "Redningsvogn",
                 rescue_vehicle_only: "Tung redning",
                 rescueboat: "Stor redningsbåd",
-                rettungstreppe: "",
                 riot_police: "Gruppevogn og Hollændervogn",
                 rth_only: "Rednings Helikopter",
                 schlauchwagen: "Vandtankvogn",
-                seg_elw: "",
-                sek_mtf: "",
-                sek_zf: "",
                 swat: "AKS",
                 swat_armored_vehicle: "AKS Pansret mandskabsvogn",
                 swat_suv: "AKS Patruljevogn",
-                thw_anh_mzab: "",
-                thw_anh_mzb: "",
-                thw_anh_schlb: "",
-                thw_brmg_r: "",
-                thw_dle: "",
-                thw_lkw: "",
-                thw_lkw_7_lkr_19_tm: "",
-                thw_mlw5: "",
                 thw_mtw: "Mannschaftstransportwagen Technischer Zug (MTW-TZ - THW)",
                 thw_mzkw: "Mehrzweckkraftwagen (MzKW)",
                 thw_tauchkraftwagen: "Dykkerhold",
-                thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "Tankvogn",
-                tm50: "",
-                turboloescher: "",
                 turntable_ladder: "Stigevogne",
-                ulf: "",
-                wasserwerfer: "",
                 water_amount: "Liter vand",
-                water_amount_tlf: "",
                 water_damage_pump: "Påhængs Pumpe"
             }
         },
@@ -9786,7 +9271,6 @@ Object.values || (Object.values = function (e) {
             attended: "Håndterer",
             cancel_alliance_event: "Kansellere alliansehendelse",
             cancel_alliance_event_confirm: "Er du sikker på at du vil kansellere alliansehendelsen?",
-            challenges: "",
             chat_history: "Chatlogg",
             congratulations: "Gratulerer! Du kan nå forfremmes.",
             create_alliance_event: "Start alliansehendelse",
@@ -9918,10 +9402,8 @@ Object.values || (Object.values = function (e) {
                 ab_gefahrgut_only: "HazMat-modul",
                 ab_oel_only: "Oljeutslipp-modul",
                 ab_ruest: "Tek/rednings-modul",
-                ab_ruest_rw: "",
                 abl2wasser_only: "Slangeforsyning-modul",
                 ambulance: "Ambulanse",
-                ambulance_or_rapid_responder: "",
                 any_traffic_car: "Utrykningspolitibil",
                 arff: "Flyplassbrannbil",
                 battalion_chief_unit: "Innsatsleder brann",
@@ -9929,66 +9411,40 @@ Object.values || (Object.values = function (e) {
                 coastal_boat: "Redningsbåt",
                 coastal_guard_boat: "Kystvaktbåt",
                 coresponder: "First responder bil",
-                dekon_p: "",
                 division_chief_unit: "Innsatsstøttebil",
-                dlk_or_tm50: "",
                 elw1_or_elw2: "Innsatsleder brann eller innsatsstøttebil",
-                elw2_or_ab_elw: "",
-                elw3: "",
-                elw_airport: "",
                 emergency_ambulance: "Ambulanse eller luftambulanse",
                 fire_truck: "Brannbil",
                 fireboat: "Brannbåt",
                 fly_car: "Legebil",
                 fly_car_any: "Legebil / Akuttbil / First responder bil / Akutthjelper / Ambulansemotorsykkel",
                 foam_amount: "Liter med skum",
-                fukw: "",
                 fustw_or_police_motorcycle: "Patruljebil eller Politimotorsykkel",
-                fwk: "",
-                gefkw: "",
                 gkw: "Lett lastebil",
                 grtw: "Masseskade-enhet",
-                grtw0: "",
-                grtw1: "",
-                grukw: "",
                 gw_atemschutz_only: "Røykdykkerbil",
                 gw_gefahrgut: "CBRNe-enhet",
-                gw_gefahrgut_only: "",
                 gw_hoehenrettung: "Stigebil",
                 gw_messtechnik: "GW-Messtechnik",
-                gw_oel_only: "",
-                gw_san: "",
                 gw_taucher: "Dykkerbil",
                 gw_wasserrettung: "Dykkerbil",
-                gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Tankbil",
                 hems: "Luftambulanse",
                 hlf_only: "Redningsbil",
                 hlf_or_rw_and_lf: "Redningsbil eller Tungredningsbil og Brannbil",
-                hondengeleider: "",
                 hose_trucks: "Slangebil eller Slangetilhenger",
                 k9: "Hundepatrulje",
-                kdow_lna: "",
                 kdow_orgl: "Innsatsleder Helse",
                 kdow_orgl_any: "Innsatslederbil helse",
-                ktw_b: "",
                 ktw_or_rtw: "Syketransport eller Ambulanse",
                 lebefkw: "Innsatsleder politi",
                 lf_only: "Brannbil",
                 long_distance_ambulance: "Syketransport",
                 mask_service_unit: "Røykdykkerbil",
-                mek_mtf: "",
-                mek_zf: "",
                 mtw: "MTW",
                 mzb: "Lett redningsbåt",
-                naw: "",
-                naw_or_rtw_and_nef: "",
-                naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Anestesilege",
                 oil_unit: "IUA enhet",
-                only_ab_dekon_p: "",
-                only_dekon_p: "",
-                ovd_p: "",
                 police_boat: "Politibåt",
                 police_car: "Patruljebil",
                 police_motorcycle: "Politimotorsykkel",
@@ -9999,35 +9455,17 @@ Object.values || (Object.values = function (e) {
                 rescue_vehicle: "Tungredningsbil",
                 rescue_vehicle_only: "Tungredningsbil",
                 rescueboat: "Ambulansebåt",
-                rettungstreppe: "",
                 rth_only: "Luftambulanse",
                 schlauchwagen: "Tankbil",
-                seg_elw: "",
-                sek_mtf: "",
-                sek_zf: "",
                 swat: "Politi med våpentrening",
                 swat_armored_vehicle: "Pansret kjøretøy",
                 swat_suv: "Delta kjøretøy",
-                thw_anh_mzab: "",
-                thw_anh_mzb: "",
-                thw_anh_schlb: "",
-                thw_brmg_r: "",
-                thw_dle: "",
-                thw_lkw: "",
-                thw_lkw_7_lkr_19_tm: "",
-                thw_mlw5: "",
                 thw_mtw: "Mannschaftstransportwagen Technischer Zug (MTW-TZ - THW)",
                 thw_mzkw: "Mehrzweckkraftwagen (MzKW)",
                 thw_tauchkraftwagen: "Dykkerbil",
-                thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "Tankbil",
-                tm50: "",
-                turboloescher: "",
                 turntable_ladder: "Stigebil",
-                ulf: "",
-                wasserwerfer: "",
                 water_amount: "Liter vann",
-                water_amount_tlf: "",
                 water_damage_pump: "Vannpumper"
             }
         },
@@ -10413,21 +9851,15 @@ Object.values || (Object.values = function (e) {
                 ab_gefahrgut_only: "Modul pro práci s nebezpečnými látkami",
                 ab_oel_only: "Modul pro likvidaci uniklé ropy",
                 ab_ruest: "Technicko-záchranářský modul",
-                ab_ruest_rw: "",
                 abl2wasser_only: "Modul s hadicemi",
                 ambulance: "Sanitka RZP",
-                ambulance_or_rapid_responder: "",
                 any_traffic_car: "Vozidlo vyšetřovatelů DN",
                 battalion_chief_unit: "Velitelský automobil",
                 boot: "Přívěs se člunem",
                 crew_carrier_or_fire_engine: "CAS nebo DA",
-                dekon_p: "",
                 division_chief_unit: "MOS",
-                dlk_or_tm50: "",
                 elw1_or_elw2: "VEA nebo MOS",
                 elw2_or_ab_elw: "MOS nebo řízení provozu",
-                elw3: "",
-                elw_airport: "",
                 emergency_ambulance: "Sanitka nebo vrtulník",
                 fbi_bomb_tech: "Vozidlo pyrotechnika PČR",
                 fire_truck: "Hasičské vozy",
@@ -10435,52 +9867,28 @@ Object.values || (Object.values = function (e) {
                 fly_car: "Lékařské vozidlo RV",
                 fly_car_any: "Samochód Lekarza  / SRMed / Motoambulans",
                 foam_amount: "Litry pěny pěna",
-                fukw: "",
                 fustw_or_police_motorcycle: "Policejní automobil nebo Policejní motocykl",
                 fwk: "VYA nebo AJ",
-                gefkw: "",
                 gkw: "Užitkový vůz",
                 grtw: "Jednotka pro hromadná neštěstí",
-                grtw0: "",
-                grtw1: "",
-                grukw: "",
-                gw_atemschutz_only: "",
                 gw_gefahrgut: "Nebezpečné látky",
-                gw_gefahrgut_only: "",
                 gw_hoehenrettung: "Výšková jednotka",
                 gw_messtechnik: "Detekční jednotka",
-                gw_oel_only: "",
-                gw_san: "",
                 gw_taucher: "Potápěčský automobil",
                 gw_wasserrettung: "SUV VZS ČČK nebo Dodávka VZS ČČK",
-                gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Vozidlo s hadicí",
                 hems: "LZS",
-                hlf_only: "",
-                hlf_or_rw_and_lf: "",
-                hondengeleider: "",
                 k9: "Vozidlo Kynologů PČR",
-                kdow_lna: "",
                 kdow_orgl: "IP",
                 kdow_orgl_any: "IP",
-                ktw_b: "",
-                ktw_or_rtw: "",
                 lebefkw: "Lehčí velitelské vozidlo",
                 lf_only: "Hasičské vozy",
                 long_distance_ambulance: "Sanitka DZS",
                 mask_service_unit: "Protiplynový automobil",
-                mek_mtf: "",
-                mek_zf: "",
                 mtw: "Transportní týmový vůz",
                 mzb: "Přívěs se člunem",
-                naw: "",
-                naw_or_rtw_and_nef: "",
-                naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Sanitka",
                 oil_unit: "Ropná jednotka",
-                only_ab_dekon_p: "",
-                only_dekon_p: "",
-                ovd_p: "",
                 police_car: "Hlídkový vůz",
                 police_horse: "Jízdní jednotka PČR",
                 police_motorcycle: "Policejní motocykl",
@@ -10493,35 +9901,18 @@ Object.values || (Object.values = function (e) {
                 road_rescue_or_fire_engine: "CAS nebo RZA",
                 rth_only: "Vrtulník LZS",
                 schlauchwagen: "Kombinovaný hasící automobil",
-                seg_elw: "",
-                sek_mtf: "",
-                sek_zf: "",
                 swat: "URNA",
                 swat_armored_vehicle: "Obrněné vozidlo URNA",
                 swat_suv: "URNA SUV",
-                thw_anh_mzab: "",
-                thw_anh_mzb: "",
-                thw_anh_schlb: "",
-                thw_brmg_r: "",
-                thw_dle: "",
-                thw_lkw: "",
-                thw_lkw_7_lkr_19_tm: "",
-                thw_mlw5: "",
                 thw_mtw: "Transportní vůz techniků",
                 thw_mzkw: "Víceúčelové vozidlo",
                 thw_tauchkraftwagen: "Potápěčský tým",
-                thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "Vůz s cisternou",
-                tm50: "",
                 trailers: {
                     pump: "Přívěs pro motorové čerpadlo"
                 },
-                turboloescher: "",
                 turntable_ladder: "AZ nebo AP",
-                ulf: "",
-                wasserwerfer: "",
                 water_amount: "Litry vody",
-                water_amount_tlf: "",
                 water_damage_pump: "Motorovým čerpadlem"
             }
         },
@@ -10756,7 +10147,6 @@ Object.values || (Object.values = function (e) {
             attended: "Attended",
             cancel_alliance_event: "Cancel alliance event",
             cancel_alliance_event_confirm: "Do you really want to cancel the alliance event?",
-            challenges: "",
             chat_history: "Sohbet Geçmişi",
             congratulations: "Tebrikler! Artık terfi alabilirsin.",
             create_alliance_event: "Birlik etkinliği başlat",
@@ -10877,102 +10267,50 @@ Object.values || (Object.values = function (e) {
                 ab_gefahrgut_only: "Tehlikeli Madde Modülü",
                 ab_oel_only: "Yağ Sızıntısı Modülü",
                 ab_ruest: "Teknik/Kurtarma Modülü",
-                ab_ruest_rw: "",
                 abl2wasser_only: "Hortumla Besleme Modülü",
                 ambulance: "ALS ambulansı",
-                ambulance_or_rapid_responder: "",
                 arff: "ARFF (Havalimanı İtfaiye Aracı)",
                 battalion_chief_unit: "Tabur Amiri birimi",
                 boot: "Botlar (Genel)",
-                dekon_p: "",
                 division_chief_unit: "Mobil Komuta Aracı",
-                dlk_or_tm50: "",
                 elw1_or_elw2: "Tabur Amiri Birimi, Mobil Komuta Aracı veya Mobil Komuta Modülü ",
-                elw2_or_ab_elw: "",
-                elw3: "",
-                elw_airport: "",
                 emergency_ambulance: "Acil durum ambulansı veya Helikopteri",
                 fire_truck: "İtfaiye Araçları",
                 fireboat: "Büyük İtfaiye Botları",
                 fly_car: "Uçan Araba",
-                fukw: "",
-                fwk: "",
-                gefkw: "",
                 gkw: "Hizmet Kamyonu",
                 grtw: "Mobil Hastane Aracı",
-                grtw0: "",
-                grtw1: "",
-                grukw: "",
-                gw_atemschutz_only: "",
                 gw_gefahrgut: "Tehlikeli Madde",
-                gw_gefahrgut_only: "",
                 gw_hoehenrettung: "GW-Höhenrettung",
                 gw_messtechnik: "GW-Messtechnik",
-                gw_oel_only: "",
-                gw_san: "",
-                gw_taucher: "",
                 gw_wasserrettung: "Su Toplama",
-                gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Hortumlu Araç",
                 hems: "Hızır Acil Helikopteri",
-                hlf_only: "",
-                hlf_or_rw_and_lf: "",
-                hondengeleider: "",
                 k9: "Polis K-9 Aracı",
-                kdow_lna: "",
                 kdow_orgl: "Hızır Acil Amiri",
-                ktw_b: "",
-                ktw_or_rtw: "",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
                 lf_only: "İtfaiye Araçları",
                 long_distance_ambulance: "BLS ambulansı",
                 mask_service_unit: "Mobil Hava Birimi",
-                mek_mtf: "",
-                mek_zf: "",
                 mtw: "MTW",
                 mzb: "Çok Amaçlı Bot",
-                naw: "",
-                naw_or_rtw_and_nef: "",
-                naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Ambulans",
                 oil_unit: "GW-Öl",
-                only_ab_dekon_p: "",
-                only_dekon_p: "",
-                ovd_p: "",
                 police_car: "Devriye arabası",
                 polizeihubschrauber: "Polis helikopteri",
                 rescue_vehicle: "Büyük kurtarma aracı",
                 rescue_vehicle_only: "Büyük Kurtarma",
                 rescueboat: "Büyük Kurtarma Botu",
-                rettungstreppe: "",
                 rth_only: "Helikopter",
                 schlauchwagen: "Su Tankeri",
-                seg_elw: "",
-                sek_mtf: "",
-                sek_zf: "",
                 swat: "PÖH",
                 swat_armored_vehicle: "PÖH Zırhlı Aracı",
                 swat_suv: "PÖH SUV",
-                thw_anh_mzab: "",
-                thw_anh_mzb: "",
-                thw_anh_schlb: "",
-                thw_brmg_r: "",
-                thw_dle: "",
-                thw_lkw: "",
-                thw_lkw_7_lkr_19_tm: "",
-                thw_mlw5: "",
                 thw_mtw: "Mannschaftstransportwagen Technischer Zug (MTW-TZ - THW)",
                 thw_mzkw: "Mehrzweckkraftwagen (MzKW)",
                 thw_tauchkraftwagen: "Dalış Ekibi",
-                thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "Tanker",
-                tm50: "",
-                turboloescher: "",
-                turntable_ladder: "Platformlu kamyonlar",
-                ulf: "",
-                wasserwerfer: "",
-                water_amount: "",
-                water_amount_tlf: ""
+                turntable_ladder: "Platformlu kamyonlar"
             }
         },
         tutorial: {
@@ -11140,6 +10478,10 @@ Object.values || (Object.values = function (e) {
             patient: "Paciente",
             patient_untouched: "Pacientes não tratados",
             poi_delete: "Tem certeza de que quer apagar o PDI: %{caption}?",
+            pump_speed_approaching: "Aproximação: %{amount} l/min",
+            pump_speed_missing: "Em falta: %{amount} l/min",
+            pump_speed_on_site: "No local: %{amount} l/min",
+            pump_speed_selected: "Selecionado: %{amount} l/min",
             reload: "Recarregar",
             secounds: "seg.",
             sicherheitswache_error: 'A guarda de segurança "%{caption}" não teve êxito porque nem todos os critérios foram atendidos.',
@@ -11155,6 +10497,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "A caminho do TO: %{amount} l.",
             water_missing: "Em falta: %{amount} l.",
             water_on_site: "No TO: %{amount} l.",
+            water_pumping_process: "Processo de bombagem de água",
             water_selected: "Selecionada: %{amount} l."
         },
         map: {
@@ -11174,7 +10517,6 @@ Object.values || (Object.values = function (e) {
             attended: "Respondidas",
             cancel_alliance_event: "Cancelar evento de aliança",
             cancel_alliance_event_confirm: "Realmente desejas cancelar o evento de aliança?",
-            challenges: "",
             chat_history: "Histórico do chat",
             congratulations: "Parabéns! Agora você pode ser promovido.",
             create_alliance_event: "Iniciar evento de aliança",
@@ -11304,23 +10646,16 @@ Object.values || (Object.values = function (e) {
                 ab_gefahrgut_only: "Módulo de PP",
                 ab_oel_only: "Módulo de derramamento de óleo",
                 ab_ruest: "Módulo de resgate técnico",
-                ab_ruest_rw: "",
                 abl2wasser_only: "Módulo de fornecimento de mangueiras",
                 ambulance: "ABSC",
-                ambulance_or_rapid_responder: "",
                 arff: "VIM ou VIM T2 necessários:",
                 battalion_chief_unit: "VCOT",
                 bike_police: "Ciclopatrulha",
                 boot: "Barcos (geral)",
                 brush_truck: "Veículos Florestais",
-                dekon_p: "",
                 division_chief_unit: "VCOC",
-                dlk_or_tm50: "",
                 dozer_trailer: "Máquina de Rasto",
                 elw1_or_elw2: "VCOT / VCOC",
-                elw2_or_ab_elw: "",
-                elw3: "",
-                elw_airport: "",
                 emergency_ambulance: "ABSC / Heli INEM",
                 fbi_bomb_tech: "UEP/UI - CIEXSS",
                 fire_aviation: "Meios Aéreos",
@@ -11329,87 +10664,49 @@ Object.values || (Object.values = function (e) {
                 fly_car: "Fly-Car",
                 fly_car_any: "VMER / Mota INEM",
                 foam_amount: "Espumifero (Qtd. de Litros)",
-                fukw: "",
                 fustw_or_police_motorcycle: "CP / EPRI",
                 fwk: "VSAE",
-                gefkw: "",
                 gkw: "Veículo de Logística",
                 grtw: "VIC",
-                grtw0: "",
-                grtw1: "",
-                grukw: "",
-                gw_atemschutz_only: "",
                 gw_gefahrgut: "VPMA",
-                gw_gefahrgut_only: "",
                 gw_hoehenrettung: "GW-Höhenrettung",
                 gw_messtechnik: "GW-Messtechnik",
-                gw_oel_only: "",
-                gw_san: "",
-                gw_taucher: "",
                 gw_wasserrettung: "Retenção de água",
-                gw_werkfeuerwehr: "",
                 gwl2wasser_only: "VTTU",
                 hems: "Heli INEM",
                 hlf_only: "VUCI",
                 hlf_or_rw_and_lf: "VUCI ou VSAT e VFCI / VLCI",
-                hondengeleider: "",
                 k9: "UEP/UI - GOC",
-                kdow_lna: "",
                 kdow_orgl: "Chefe de SEM",
-                ktw_b: "",
-                ktw_or_rtw: "",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
                 lf_only: "VFCI / VLCI",
                 long_distance_ambulance: "Ambulância de SBV",
                 mask_service_unit: "UAAR",
-                mek_mtf: "",
-                mek_zf: "",
                 mtw: "MTW",
                 mzb: "Barco multiuso",
-                naw: "",
-                naw_or_rtw_and_nef: "",
-                naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Ambulância",
                 oil_unit: "GW-Öl",
-                only_ab_dekon_p: "",
-                only_dekon_p: "",
-                ovd_p: "",
                 police_car: "CP",
                 police_motorcycle: "EPRI",
                 polizeihubschrauber: "Helicóptero de polícia",
                 pump: "Moto Bomba:",
+                pump_speed: "Capacidade da bomba",
+                pump_speed_pump_only: "Capacidade da bomba - Apenas bombas",
                 rescue_vehicle: "VSAT / VUCI",
                 rescue_vehicle_only: "VSAT",
                 rescueboat: "Barco de resgate grande",
-                rettungstreppe: "",
                 rth_only: "Heli INEM",
                 schlauchwagen: "VTTU / VTTF",
-                seg_elw: "",
-                sek_mtf: "",
-                sek_zf: "",
                 swat_armored_vehicle: "UEP/UI - GOE/POE",
                 swat_suv: "UEP/UI - CI/UI",
-                thw_anh_mzab: "",
-                thw_anh_mzb: "",
-                thw_anh_schlb: "",
-                thw_brmg_r: "",
-                thw_dle: "",
-                thw_lkw: "",
-                thw_lkw_7_lkr_19_tm: "",
-                thw_mlw5: "",
                 thw_mtw: "Mannschaftstransportwagen Technischer Zug (MTW-TZ - THW)",
                 thw_mzkw: "Mehrzweckkraftwagen (MzKW)",
                 thw_tauchkraftwagen: "Equipe de mergulho",
-                thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "Veículo Tanque de Grande Capacidade",
-                tm50: "",
                 traffic_car: "UT/UNT",
-                turboloescher: "",
                 turntable_ladder: "VE / VP",
-                ulf: "",
-                wasserwerfer: "",
                 water_amount: "Água (Qtd. de Litros)",
-                water_amount_tlf: ""
+                water_damage_pump: "Bombas de água"
             }
         },
         tutorial: {
@@ -11653,7 +10950,6 @@ Object.values || (Object.values = function (e) {
             attended: "Respondidas",
             cancel_alliance_event: "Cancelar evento de aliança",
             cancel_alliance_event_confirm: "Realmente desejas cancelar o evento de aliança?",
-            challenges: "",
             chat_history: "Histórico do chat",
             congratulations: "Parabéns! Agora você pode ser promovido.",
             create_alliance_event: "Iniciar evento de aliança",
@@ -11774,104 +11070,54 @@ Object.values || (Object.values = function (e) {
                 ab_gefahrgut_only: "Módulo de PP",
                 ab_oel_only: "Módulo de derramamento de óleo",
                 ab_ruest: "Módulo de resgate técnico",
-                ab_ruest_rw: "",
                 abl2wasser_only: "Módulo de fornecimento de mangueiras",
                 ambulance: "Ambulância de SAV",
-                ambulance_or_rapid_responder: "",
                 arff: "Defesa Civil (caminhão de bombeiro para aeroportos)",
                 battalion_chief_unit: "Viatura de batalhão",
                 boot: "Barcos (geral)",
-                dekon_p: "",
                 division_chief_unit: "Viatura de comando móvel",
-                dlk_or_tm50: "",
                 elw1_or_elw2: "Viatura de batalhão, viatura de comando móvel ou módulo de comando móvel ",
-                elw2_or_ab_elw: "",
-                elw3: "",
-                elw_airport: "",
                 emergency_ambulance: "Ambulância de emergência ou helicóptero de resgate",
                 fire_truck: "Caminhões de bombeiro",
                 fireboat: "Barco de combate a incêndio grande",
                 fly_car: "VIR",
                 fly_car_any: "VIR ou Médico de Clinica Geral",
                 foam_amount: "Litros de Espuma",
-                fukw: "",
-                fwk: "",
-                gefkw: "",
                 gkw: "Caminhão utilitário",
                 grtw: "Unidade para incidentes com múltiplas vítimas",
-                grtw0: "",
-                grtw1: "",
-                grukw: "",
-                gw_atemschutz_only: "",
                 gw_gefahrgut: "Produtos Perigosos",
-                gw_gefahrgut_only: "",
                 gw_hoehenrettung: "GW-Höhenrettung",
                 gw_messtechnik: "GW-Messtechnik",
-                gw_oel_only: "",
-                gw_san: "",
-                gw_taucher: "",
                 gw_wasserrettung: "Retenção de água",
-                gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Veículo com mangueira",
                 hems: "HEMS",
-                hlf_only: "",
-                hlf_or_rw_and_lf: "",
-                hondengeleider: "",
                 k9: "Unidade de Ações com Cães",
-                kdow_lna: "",
                 kdow_orgl: "Chefe de SEM",
-                ktw_b: "",
                 ktw_or_rtw: "USB ou SAMU",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
                 lf_only: "Caminhões de bombeiro",
                 long_distance_ambulance: "Ambulância de SBV",
                 mask_service_unit: "Unidade aérea móvel",
-                mek_mtf: "",
-                mek_zf: "",
                 mtw: "MTW",
                 mzb: "Barco multiuso",
-                naw: "",
-                naw_or_rtw_and_nef: "",
-                naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Ambulância",
                 oil_unit: "GW-Öl",
-                only_ab_dekon_p: "",
-                only_dekon_p: "",
-                ovd_p: "",
                 police_car: "Carro de patrulha",
                 polizeihubschrauber: "Helicóptero de polícia",
                 rescue_vehicle: "Veículo de resgate pesado",
                 rescue_vehicle_only: "Resgate pesado",
                 rescueboat: "Barco de resgate grande",
-                rettungstreppe: "",
                 rth_only: "Helicóptero de Resgate",
                 schlauchwagen: "Caminhão pipa",
-                seg_elw: "",
-                sek_mtf: "",
-                sek_zf: "",
                 swat: "Treinamento do Comando de Operações Especiais",
                 swat_armored_vehicle: "Veículo blindado da SWAT",
                 swat_suv: "SUV da SWAT",
-                thw_anh_mzab: "",
-                thw_anh_mzb: "",
-                thw_anh_schlb: "",
-                thw_brmg_r: "",
-                thw_dle: "",
-                thw_lkw: "",
-                thw_lkw_7_lkr_19_tm: "",
-                thw_mlw5: "",
                 thw_mtw: "Mannschaftstransportwagen Technischer Zug (MTW-TZ - THW)",
                 thw_mzkw: "Mehrzweckkraftwagen (MzKW)",
                 thw_tauchkraftwagen: "Equipe de mergulho",
-                thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "Caminhão tanque",
-                tm50: "",
-                turboloescher: "",
                 turntable_ladder: "Caminhão plataforma",
-                ulf: "",
-                wasserwerfer: "",
-                water_amount: "Litros de água",
-                water_amount_tlf: ""
+                water_amount: "Litros de água"
             }
         },
         tutorial: {
@@ -12060,7 +11306,6 @@ Object.values || (Object.values = function (e) {
             attended: "Відвідані",
             cancel_alliance_event: "Відмінити подію альянсу",
             cancel_alliance_event_confirm: "Ви впевнені що хочете відмінити подію альянсу?",
-            challenges: "",
             chat_history: "Історія чату",
             congratulations: "Вітання! Тепер ви можете отримати підвищення.",
             create_alliance_event: "Розпочати подію альянсу",
@@ -12181,103 +11426,52 @@ Object.values || (Object.values = function (e) {
                 ab_gefahrgut_only: "Модуль знезараження",
                 ab_oel_only: "Модуль ЛАРН",
                 ab_ruest: "Технологічний/рятувальний модуль",
-                ab_ruest_rw: "",
                 abl2wasser_only: "Модуль подачі шлангу",
                 ambulance: "Реанімобіль",
-                ambulance_or_rapid_responder: "",
                 arff: "АРІП (пожежна машина аеропорту)",
                 battalion_chief_unit: "Підрозділ командира батальйону",
                 boot: "Судна (загальні)",
-                dekon_p: "",
                 division_chief_unit: "Мобільний командний пункт",
-                dlk_or_tm50: "",
                 elw1_or_elw2: "Підрозділ командира батальйону, мобільний командний пункт або мобільний модуль управління ",
-                elw2_or_ab_elw: "",
-                elw3: "",
-                elw_airport: "",
                 emergency_ambulance: "Машина чи вертоліт швидкої допомоги",
                 fire_truck: "Пожежні автомобілі",
                 fireboat: "Великий пожежний катер",
                 fly_car: "Летючий автомобіль",
                 fly_car_any: "Летючий автомобіль / Лікар загальної практики",
-                fukw: "",
-                fwk: "",
-                gefkw: "",
                 gkw: "Вантажівка",
                 grtw: "Підрозділ по роботі з великою кількістю постраждалих",
-                grtw0: "",
-                grtw1: "",
-                grukw: "",
-                gw_atemschutz_only: "",
                 gw_gefahrgut: "Знезараження",
-                gw_gefahrgut_only: "",
                 gw_hoehenrettung: "Автомобіль з драбиною",
                 gw_messtechnik: "Метрологічний автомобіль",
-                gw_oel_only: "",
-                gw_san: "",
-                gw_taucher: "",
                 gw_wasserrettung: "Вологоутримання",
-                gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Машина із брандспойнтом",
                 hems: "Вертоліт невідкладної медичної допомоги",
-                hlf_only: "",
-                hlf_or_rw_and_lf: "",
-                hondengeleider: "",
                 k9: "Підрозділ кінологів",
-                kdow_lna: "",
                 kdow_orgl: "Керівник швидкої",
-                ktw_b: "",
                 ktw_or_rtw: "Реанімобіль BLS чи ALS",
                 lebefkw: "Легкий командний пункт",
                 lf_only: "Пожежні машини",
                 long_distance_ambulance: "Реанімобіль",
                 mask_service_unit: "Мобільний повітряний підрозділ",
-                mek_mtf: "",
-                mek_zf: "",
                 mtw: "Транспортер",
                 mzb: "Багатоцільове судно",
-                naw: "",
-                naw_or_rtw_and_nef: "",
-                naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Швидка допомога",
                 oil_unit: "Нафтозбирне судно",
-                only_ab_dekon_p: "",
-                only_dekon_p: "",
-                ovd_p: "",
                 police_car: "Патрульний автомобіль",
                 polizeihubschrauber: "Поліцейський вертоліт",
                 rescue_vehicle: "Важка рятувальна машина",
                 rescue_vehicle_only: "Підрозділ порятунку у важких умовах",
                 rescueboat: "Велике рятувальне судно",
-                rettungstreppe: "",
                 rth_only: "Вертоліт швидкої допомоги",
                 schlauchwagen: "Автоцистерна",
-                seg_elw: "",
-                sek_mtf: "",
-                sek_zf: "",
                 swat: "Спецназ",
                 swat_armored_vehicle: "Броньований автомобіль спецназу",
                 swat_suv: "Позашляховик спецназу",
-                thw_anh_mzab: "",
-                thw_anh_mzb: "",
-                thw_anh_schlb: "",
-                thw_brmg_r: "",
-                thw_dle: "",
-                thw_lkw: "",
-                thw_lkw_7_lkr_19_tm: "",
-                thw_mlw5: "",
                 thw_mtw: "Автомобіль технічної служби",
                 thw_mzkw: "Багатоцільова машина",
                 thw_tauchkraftwagen: "Команда водолазів",
-                thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "Автоцистерна",
-                tm50: "",
-                turboloescher: "",
-                turntable_ladder: "Пожежні автодрабини",
-                ulf: "",
-                wasserwerfer: "",
-                water_amount: "",
-                water_amount_tlf: ""
+                turntable_ladder: "Пожежні автодрабини"
             }
         },
         tutorial: {
@@ -12467,7 +11661,6 @@ Object.values || (Object.values = function (e) {
             attended: "Respondido",
             cancel_alliance_event: "Cancelar evento de alianza",
             cancel_alliance_event_confirm: "¿Seguro que quieres cancelar el evento de alianza?",
-            challenges: "",
             chat_history: "Historial de chat",
             congratulations: "¡Enhorabuena! Puedes ascender.",
             create_alliance_event: "Comenzar evento de alianza",
@@ -12588,102 +11781,53 @@ Object.values || (Object.values = function (e) {
                 ab_gefahrgut_only: "Módulo Hazmat",
                 ab_oel_only: "Módulo de vertido de crudo",
                 ab_ruest: "Módulo tecnológico de rescate",
-                ab_ruest_rw: "",
                 abl2wasser_only: "Módulo de mangueras",
                 ambulance: "UVI móvil",
-                ambulance_or_rapid_responder: "",
                 arff: "CBA (Camión de bomberos de aeropuerto)",
                 battalion_chief_unit: "Unidad de Mando y Comunicaciones",
                 boot: "Botes (general)",
-                dekon_p: "",
                 division_chief_unit: "Unidad de mando",
-                dlk_or_tm50: "",
                 elw1_or_elw2: "Unidad de Mando y Comunicaciones, unidad de mando o módulo de mando móvil ",
                 elw2_or_ab_elw: "Bomba de Rescate o Unidad de Apoyo de Rescate y Camión de Bomberos",
-                elw3: "",
-                elw_airport: "",
                 emergency_ambulance: "Ambulancia o helicóptero de emergencia",
                 fire_truck: "Camiones de bomberos",
                 fireboat: "Barco de bomberos grande",
                 fly_car: "Coche volador",
-                fukw: "",
-                fwk: "",
-                gefkw: "",
                 gkw: "Camión de usos múltiples",
                 grtw: "Unidad para múltiples víctimas",
-                grtw0: "",
-                grtw1: "",
-                grukw: "",
-                gw_atemschutz_only: "",
                 gw_gefahrgut: "Hazmat",
-                gw_gefahrgut_only: "",
                 gw_hoehenrettung: "Camión de rescate en altura",
                 gw_messtechnik: "Camión de medición",
-                gw_oel_only: "",
-                gw_san: "",
-                gw_taucher: "",
                 gw_wasserrettung: "Retención de agua",
-                gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Vehículo con manguera",
                 hems: "HSEM",
                 hlf_only: "Vehículo de rescate",
                 hlf_or_rw_and_lf: "Vehículo de rescate o vehículo de rescate pesado y camión de bomberos",
-                hondengeleider: "",
                 k9: "Unidad canina",
-                kdow_lna: "",
                 kdow_orgl: "Jefe de emergencias",
-                ktw_b: "",
-                ktw_or_rtw: "",
                 lebefkw: "Vehículo de mando ligero (leBefKw)",
                 lf_only: "Camiones de bomberos",
                 long_distance_ambulance: "Ambulancia SVB",
                 mask_service_unit: "Unidad aérea",
-                mek_mtf: "",
-                mek_zf: "",
                 mtw: "Camión de transporte",
                 mzb: "Barco multiusos",
-                naw: "",
-                naw_or_rtw_and_nef: "",
-                naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Ambulancia",
                 oil_unit: "Camión para fuegos de aceite",
-                only_ab_dekon_p: "",
-                only_dekon_p: "",
-                ovd_p: "",
                 police_car: "Coche patrulla",
                 polizeihubschrauber: "Helicóptero de policía",
                 rescue_vehicle: "Furgones de Útiles Varios",
                 rescue_vehicle_only: "Furgón de Útiles Varios",
                 rescueboat: "Barco de rescate grande",
-                rettungstreppe: "",
                 rth_only: "Helicóptero",
                 schlauchwagen: "Camión cisterna",
-                seg_elw: "",
-                sek_mtf: "",
-                sek_zf: "",
                 swat: "Fuerzas especiales (GEO)",
                 swat_armored_vehicle: "Vehículo blindado de los GEO",
                 swat_suv: "Todoterreno de los GEO",
-                thw_anh_mzab: "",
-                thw_anh_mzb: "",
-                thw_anh_schlb: "",
-                thw_brmg_r: "",
-                thw_dle: "",
-                thw_lkw: "",
-                thw_lkw_7_lkr_19_tm: "",
-                thw_mlw5: "",
                 thw_mtw: "Camión de transporte técnico",
                 thw_mzkw: "Vehículo multiusos",
                 thw_tauchkraftwagen: "Equipo de buceo",
-                thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "Camión cisterna",
-                tm50: "",
-                turboloescher: "",
-                turntable_ladder: "Camión AE",
-                ulf: "",
-                wasserwerfer: "",
-                water_amount: "",
-                water_amount_tlf: ""
+                turntable_ladder: "Camión AE"
             }
         },
         tutorial: {
@@ -12888,7 +12032,6 @@ Object.values || (Object.values = function (e) {
             attended: "対応済",
             cancel_alliance_event: "アライアンスイベントのキャンセル",
             cancel_alliance_event_confirm: "本当にアライアンスイベントをキャンセルしますか？ ",
-            challenges: "",
             chat_history: "チャット履歴",
             congratulations: "おめでとうございます！昇進することができます。",
             create_alliance_event: "アライアンスイベントを開始",
@@ -13018,98 +12161,51 @@ Object.values || (Object.values = function (e) {
                 ab_gefahrgut_only: "危険物取扱モジュール",
                 ab_oel_only: "飛散オイルモジュール",
                 ab_ruest: "テック/救助モジュール",
-                ab_ruest_rw: "",
                 abl2wasser_only: "ホースサプライモジュール",
                 ambulance: "ALS救急車",
-                ambulance_or_rapid_responder: "",
                 arff: "空港用消防車",
                 battalion_chief_unit: "消防指令長ユニット",
                 boot: "ボート（一般）",
-                dekon_p: "",
                 division_chief_unit: "移動通信車両",
-                dlk_or_tm50: "",
                 elw1_or_elw2: "消防司令長車両または指令車",
-                elw2_or_ab_elw: "",
-                elw3: "",
-                elw_airport: "",
                 emergency_ambulance: "緊急救急車またはヘリコプター",
                 fire_truck: "消防車",
                 fireboat: "火災用大型ボート",
                 fly_car: "ドクターカー",
                 fly_car_any: "ドクターカー / 家庭医",
                 foam_amount: "泡沫（リットル）",
-                fukw: "",
-                fwk: "",
-                gefkw: "",
                 gkw: "小型トラック",
                 grtw: "大型トラックユニット",
-                grtw0: "",
-                grtw1: "",
-                grukw: "",
                 gw_atemschutz_only: "空気充填照明車",
                 gw_gefahrgut: "危険物取扱車両",
-                gw_gefahrgut_only: "",
-                gw_oel_only: "",
-                gw_san: "",
-                gw_taucher: "",
                 gw_wasserrettung: "貯水車両",
-                gw_werkfeuerwehr: "",
                 gwl2wasser_only: "ホース車両",
                 hems: "HEMS",
                 hlf_only: "救助工作車",
                 hlf_or_rw_and_lf: "救助工作車または特別高度救助部隊車両と消防車",
-                hondengeleider: "",
                 k9: "警察犬ユニット",
-                kdow_lna: "",
                 kdow_orgl: "救急車指揮官",
-                ktw_b: "",
                 ktw_or_rtw: "一次／二次救命処置",
                 lf_only: "消防車",
                 long_distance_ambulance: "一時救命処置救急車",
                 mask_service_unit: "空気充填照明車",
-                mek_mtf: "",
-                mek_zf: "",
                 mtw: "消防隊員用車両",
                 mzb: "多目的ボート",
-                naw: "",
-                naw_or_rtw_and_nef: "",
-                naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "救急車",
-                only_ab_dekon_p: "",
-                only_dekon_p: "",
-                ovd_p: "",
                 police_car: "パトカー",
                 polizeihubschrauber: "警察ヘリコプター",
                 rescue_vehicle: "大型救助車両",
                 rescue_vehicle_only: "特別高度救助部隊車両のみ",
                 rescueboat: "大型救助ボート",
-                rettungstreppe: "",
                 rth_only: "ヘリコプター",
                 schlauchwagen: "ウォータータンカー",
-                seg_elw: "",
-                sek_mtf: "",
-                sek_zf: "",
                 swat: "SWAT",
                 swat_armored_vehicle: "SWAT装甲車両",
                 swat_suv: "SWAT SUV",
-                thw_anh_mzab: "",
-                thw_anh_mzb: "",
-                thw_anh_schlb: "",
-                thw_brmg_r: "",
-                thw_dle: "",
-                thw_lkw: "",
-                thw_lkw_7_lkr_19_tm: "",
-                thw_mlw5: "",
                 thw_tauchkraftwagen: "潜水チーム",
-                thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "タンカートラック",
-                tm50: "",
-                turboloescher: "",
                 turntable_ladder: "プラットフォームトラック",
-                ulf: "",
-                wasserwerfer: "",
-                water_amount: "リットルの水",
-                water_amount_tlf: ""
+                water_amount: "リットルの水"
             }
         },
         tutorial: {
@@ -13322,7 +12418,6 @@ Object.values || (Object.values = function (e) {
             attended: "배정됨",
             cancel_alliance_event: "동맹 이벤트 취소",
             cancel_alliance_event_confirm: "동맹 이벤트를 취소하시겠습니까?",
-            challenges: "",
             chat_history: "채팅 이력",
             congratulations: "축하합니다! 이제 진급하셨습니다.",
             create_alliance_event: "동맹 이벤트 시작",
@@ -13452,105 +12547,57 @@ Object.values || (Object.values = function (e) {
                 ab_gefahrgut_only: "생화학 모듈",
                 ab_oel_only: "기름 유출 모듈",
                 ab_ruest: "기술/구조 모듈",
-                ab_ruest_rw: "",
                 abl2wasser_only: "호스 지원 모듈",
                 ambulance: "고급 인명 지원(ALS) 구급차",
-                ambulance_or_rapid_responder: "",
                 arff: "항공기 구조용고성능 소방차 또는 스팅어 HRET",
                 battalion_chief_unit: "소방대장 유닛",
                 boot: "보트(일반)",
-                dekon_p: "",
                 division_chief_unit: "기동형 지휘차량",
-                dlk_or_tm50: "",
                 elw1_or_elw2: "소방대장 유닛, 기동형 지휘차량 또는 기동형 지휘 모듈 ",
-                elw2_or_ab_elw: "",
-                elw3: "",
-                elw_airport: "",
                 emergency_ambulance: "응급용 구급차 또는 헬기",
                 fire_truck: "소방차",
                 fireboat: "대형 소방 보트",
                 fly_car: "긴급 이송차",
                 fly_car_any: "긴급 이송차 / 일반의",
                 foam_amount: "거품(리터)",
-                fukw: "",
-                fwk: "",
-                gefkw: "",
                 gkw: "다용도 트럭",
                 grtw: "대량 사상자용 유닛",
-                grtw0: "",
-                grtw1: "",
-                grukw: "",
-                gw_atemschutz_only: "",
                 gw_gefahrgut: "생화학 차량",
-                gw_gefahrgut_only: "",
                 gw_hoehenrettung: "작업 차량-로프 구조차",
                 gw_messtechnik: "작업 차량-측량차",
-                gw_oel_only: "",
-                gw_san: "",
-                gw_taucher: "",
                 gw_wasserrettung: "유수 관리",
-                gw_werkfeuerwehr: "",
                 gwl2wasser_only: "호스 차량",
                 hems: "긴급 의료 서비스(헬기)",
                 hlf_only: "구조 공작차",
                 hlf_or_rw_and_lf: "구조 공작차 또는 중장비 구조 차량 및 소방차",
-                hondengeleider: "",
                 k9: "K-9 유닛",
-                kdow_lna: "",
                 kdow_orgl: "구급 지휘차",
                 kdow_orgl_any: "구급 지휘차",
-                ktw_b: "",
                 ktw_or_rtw: "BLS 또는 ALS",
                 lebefkw: "경량형 지휘차량(leBefKw)",
                 lf_only: "소방차",
                 long_distance_ambulance: "기본 인명 지원(BLS) 구급차",
                 mask_service_unit: "이동식 호흡 장비",
-                mek_mtf: "",
-                mek_zf: "",
                 mtw: "소방 부서 차량(MTW)",
                 mzb: "다목적 보트",
-                naw: "",
-                naw_or_rtw_and_nef: "",
-                naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "구급차",
                 oil_unit: "작업 차량-기름 유출 방지",
-                only_ab_dekon_p: "",
-                only_dekon_p: "",
-                ovd_p: "",
                 police_car: "순찰차",
                 polizeihubschrauber: "경찰 헬기",
                 rescue_vehicle: "중장비 구조 차량",
                 rescue_vehicle_only: "중장비 구조",
                 rescueboat: "대형 구조 보트",
-                rettungstreppe: "",
                 rth_only: "구급 헬리콥터",
                 schlauchwagen: "수상 탱커",
-                seg_elw: "",
-                sek_mtf: "",
-                sek_zf: "",
                 swat: "SWAT",
                 swat_armored_vehicle: "SWAT 무장 차량",
                 swat_suv: "SWAT SUV",
-                thw_anh_mzab: "",
-                thw_anh_mzb: "",
-                thw_anh_schlb: "",
-                thw_brmg_r: "",
-                thw_dle: "",
-                thw_lkw: "",
-                thw_lkw_7_lkr_19_tm: "",
-                thw_mlw5: "",
                 thw_mtw: "인원 운송용 기술 차량(MTW-TZ - THW)",
                 thw_mzkw: "다목적 차량(MzKW)",
                 thw_tauchkraftwagen: "다이빙 팀",
-                thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "탱커 트럭",
-                tm50: "",
-                turboloescher: "",
                 turntable_ladder: "플랫폼 트럭",
-                ulf: "",
-                wasserwerfer: "",
-                water_amount: "물 리터 수",
-                water_amount_tlf: ""
+                water_amount: "물 리터 수"
             }
         },
         tutorial: {
@@ -13753,7 +12800,6 @@ Object.values || (Object.values = function (e) {
             attended: "Finalizate",
             cancel_alliance_event: "Anulează eveniment de alianță",
             cancel_alliance_event_confirm: "Ești sigur că vrei să anulezi evenimentul de alianță?",
-            challenges: "",
             chat_history: "Istoric chat",
             congratulations: "Felicitări! Acum poți fi promovat.",
             create_alliance_event: "Începe eveniment de alianță",
@@ -13874,105 +12920,59 @@ Object.values || (Object.values = function (e) {
                 ab_gefahrgut_only: "Modul materiale periculoase",
                 ab_oel_only: "Modul scurgere petrol",
                 ab_ruest: "Modul Tehnologie/Salvare",
-                ab_ruest_rw: "",
                 abl2wasser_only: "Modul alimentare furtun",
                 ambulance: "Ambulanță ALS (asistență avansată în vederea menținerii funcțiilor vitale)",
-                ambulance_or_rapid_responder: "",
                 arff: "Salvare Aeriană și Luptă împotriva Incendiilor (Mașina de pompieri a aeroportului)",
                 battalion_chief_unit: "Unitate Șef batalion",
                 boot: "Bărci (general)",
-                dekon_p: "",
                 division_chief_unit: "Vehicul comandă forțe mobile",
-                dlk_or_tm50: "",
                 elw1_or_elw2: "Unitate șef batalion sau mașină de comanda și control",
                 elw2_or_ab_elw: "nul",
-                elw3: "",
-                elw_airport: "",
                 emergency_ambulance: "Ambulanță de urgență sau elicopter",
                 fire_truck: "Mașini de pompieri",
                 fireboat: "Barcă de stins incendii mare",
                 fly_car: "Vehicul EMS netransportant",
                 fly_car_any: "Vehicul EMS netransportant / Medic generalist",
                 foam_amount: "Litri de spumă",
-                fukw: "",
-                fwk: "",
-                gefkw: "",
                 gkw: "Camionetă utilitară",
                 grtw: "Unitate Victime multiple",
-                grtw0: "",
-                grtw1: "",
-                grukw: "",
                 gw_atemschutz_only: "Mașină de suport logistic",
                 gw_gefahrgut: "Materiale periculoase",
-                gw_gefahrgut_only: "",
                 gw_hoehenrettung: "Vehicul pentru salvare și evacuare de la înălțime (cu frânghia)",
                 gw_messtechnik: "Vehicul-metrologie",
-                gw_oel_only: "",
-                gw_san: "",
-                gw_taucher: "",
                 gw_wasserrettung: "Mașină de salvare acvatică",
-                gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Vehicul cu furtun",
                 hems: "Elicopter SMURD",
                 hlf_only: "Mașină de intervenții accidente colective",
                 hlf_or_rw_and_lf: "Mașină de intervenții accidente colective sau vehicul greu de salvare și pompă de incendiu",
-                hondengeleider: "",
                 k9: "Unitate canină",
-                kdow_lna: "",
                 kdow_orgl: "Unitate transport Supervizor",
                 kdow_orgl_any: "Unitate transport Supervizor",
-                ktw_b: "",
                 ktw_or_rtw: "Ambulanță tip B (BLS) sau C (ALS)",
                 lebefkw: "Vehicul comandă ușor",
                 lf_only: "Mașini de pompieri",
                 long_distance_ambulance: "Ambulanță BLS (asistență de bază pentru menținerea funcțiilor vitale)",
                 mask_service_unit: "Unitate Aer mobil",
-                mek_mtf: "",
-                mek_zf: "",
                 mtw: "Transportor blindat pentru personal",
                 mzb: "Vas multifuncțional",
-                naw: "",
-                naw_or_rtw_and_nef: "",
-                naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Ambulanță",
                 oil_unit: "Vehicul-colectare ulei",
-                only_ab_dekon_p: "",
-                only_dekon_p: "",
-                ovd_p: "",
                 police_car: "Mașină de patrulare",
                 polizeihubschrauber: "Elicopter de poliție",
                 rescue_vehicle: "Vehicul greu de salvare",
                 rescue_vehicle_only: "Doar vehicol de salvare",
                 rescueboat: "Barcă de salvare mare",
-                rettungstreppe: "",
                 rth_only: "Elicopter SMURD",
                 schlauchwagen: "Cisternă de apă",
-                seg_elw: "",
-                sek_mtf: "",
-                sek_zf: "",
                 swat: "SIAS",
                 swat_armored_vehicle: "Vehicul blindat SIAS",
                 swat_suv: "SUV SIAS",
-                thw_anh_mzab: "",
-                thw_anh_mzb: "",
-                thw_anh_schlb: "",
-                thw_brmg_r: "",
-                thw_dle: "",
-                thw_lkw: "",
-                thw_lkw_7_lkr_19_tm: "",
-                thw_mlw5: "",
                 thw_mtw: "Transportor blindat pentru personalul tehnic (TBPT - ANAT)",
                 thw_mzkw: "Vehicul multifuncțional",
                 thw_tauchkraftwagen: "Echipa de scafandri",
-                thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "Camion cisternă",
-                tm50: "",
-                turboloescher: "",
                 turntable_ladder: "Camioane cu platformă",
-                ulf: "",
-                wasserwerfer: "",
-                water_amount: "Litri de apă",
-                water_amount_tlf: ""
+                water_amount: "Litri de apă"
             }
         },
         tutorial: {
@@ -14182,7 +13182,6 @@ Object.values || (Object.values = function (e) {
             attended: "Hoidettu",
             cancel_alliance_event: "Peruuta liittoumatapahtuma",
             cancel_alliance_event_confirm: "Haluatko varmasti peruuttaa liittoumatapahtuman?",
-            challenges: "",
             chat_history: "Chattihistoria",
             congratulations: "Onnittelut! Voit nyt saada ylennyksen.",
             create_alliance_event: "Aloita liittoutumatapahtuma",
@@ -14312,73 +13311,42 @@ Object.values || (Object.values = function (e) {
                 ab_gefahrgut_only: "Kemikaalitorjuntamoduuli",
                 ab_oel_only: "Öljyvahinkomoduuli",
                 ab_ruest: "Tekniikka-/pelastusmoduuli",
-                ab_ruest_rw: "",
                 abl2wasser_only: "Letkumoduuli",
                 ambulance: "Hoitotason ambulanssi",
-                ambulance_or_rapid_responder: "",
                 arff: "Lentokenttäpaloauto",
                 battalion_chief_unit: "Johtoauto",
                 boot: "Alukset (yleinen)",
-                dekon_p: "",
                 division_chief_unit: "Johtokeskusauto",
-                dlk_or_tm50: "",
                 elw1_or_elw2: "johtoauto, johtokeskusauto tai johtokeskuskontti",
-                elw2_or_ab_elw: "",
-                elw3: "",
-                elw_airport: "",
                 emergency_ambulance: "Ambulanssi tai Helikopteri",
                 fire_truck: "Paloautot",
                 fireboat: "Iso sammutusalus",
                 fly_car: "Ensivasteauto",
                 fly_car_any: "EVA-yksikkö, EVY-yksikkö tai Ensihoidon lääkäri",
                 foam_amount: "Litraa vaahtoa",
-                fukw: "",
                 fustw_or_police_motorcycle: "Partioauto tai Poliisimoottoripyörä",
-                fwk: "",
-                gefkw: "",
                 gkw: "Kalustoauto",
                 grtw: "Suuronnettomuusyksikkö",
-                grtw0: "",
-                grtw1: "",
-                grukw: "",
-                gw_atemschutz_only: "",
                 gw_gefahrgut: "Kemikaalitorjunta",
-                gw_gefahrgut_only: "",
                 gw_hoehenrettung: "GW-Höhenrettung",
                 gw_messtechnik: "GW-Messtechnik",
-                gw_oel_only: "",
-                gw_san: "",
-                gw_taucher: "",
                 gw_wasserrettung: "Vesipelastus",
-                gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Letkuauto",
                 hems: "Lääkärihelikopteri (HEMS)",
                 hlf_only: "Pelastusauto",
                 hlf_or_rw_and_lf: "Pelastusauto tai Raskas pelastusauto ja Sammutusauto",
-                hondengeleider: "",
                 hose_trucks: "Letkuyksikkö",
                 k9: "Koirayksikkö",
-                kdow_lna: "",
                 kdow_orgl: "Ensihoidon kenttäjohtaja",
                 kdow_orgl_any: "Ensihoidon kenttäjohtaja",
-                ktw_b: "",
-                ktw_or_rtw: "",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
                 lf_only: "Paloautot",
                 long_distance_ambulance: "Perustason ambulanssi",
                 mask_service_unit: "Paineilmalaiteyksikkö",
-                mek_mtf: "",
-                mek_zf: "",
                 mtw: "Miehistönkuljetusauto",
                 mzb: "Monitoimialus",
-                naw: "",
-                naw_or_rtw_and_nef: "",
-                naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Ambulanssi",
                 oil_unit: "GW-Öl",
-                only_ab_dekon_p: "",
-                only_dekon_p: "",
-                ovd_p: "",
                 police_car: "Partioauto",
                 police_motorcycle: "Poliisimoottoripyörä",
                 polizeihubschrauber: "Poliisihelikopteri",
@@ -14388,35 +13356,17 @@ Object.values || (Object.values = function (e) {
                 rescue_vehicle: "Raskas pelastusauto",
                 rescue_vehicle_only: "Raskas pelastus",
                 rescueboat: "Iso pelastusalus",
-                rettungstreppe: "",
                 rth_only: "Lääkärihelikopteri (HEMS)",
                 schlauchwagen: "Säiliöauto",
-                seg_elw: "",
-                sek_mtf: "",
-                sek_zf: "",
                 swat: "VATI",
                 swat_armored_vehicle: "VATI miehistönkuljetusajoneuvo",
                 swat_suv: "VATI-partio",
-                thw_anh_mzab: "",
-                thw_anh_mzb: "",
-                thw_anh_schlb: "",
-                thw_brmg_r: "",
-                thw_dle: "",
-                thw_lkw: "",
-                thw_lkw_7_lkr_19_tm: "",
-                thw_mlw5: "",
                 thw_mtw: "Mannschaftstransportwagen Technischer Zug (MTW-TZ - THW)",
                 thw_mzkw: "Mehrzweckkraftwagen (MzKW)",
                 thw_tauchkraftwagen: "Sukellusryhmä",
-                thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "Säiliöauto",
-                tm50: "",
-                turboloescher: "",
                 turntable_ladder: "Nostolava-autot",
-                ulf: "",
-                wasserwerfer: "",
                 water_amount: "Litraa vettä",
-                water_amount_tlf: "",
                 water_damage_pump: "Vesipumput"
             }
         },
@@ -14661,7 +13611,6 @@ Object.values || (Object.values = function (e) {
             attended: "Riešené",
             cancel_alliance_event: "Zrušiť udalosť aliancie",
             cancel_alliance_event_confirm: "Naozaj chcete zrušiť udalosť aliancie?",
-            challenges: "",
             chat_history: "História chatu",
             congratulations: "Gratulujeme! Teraz môžete byť povýšený.",
             create_alliance_event: "Spustiť udalosť aliancie",
@@ -14782,103 +13731,56 @@ Object.values || (Object.values = function (e) {
                 ab_gefahrgut_only: "Modul nebezpečného materiálu",
                 ab_oel_only: "Modul rozliateho oleja",
                 ab_ruest: "Modul tech./záchrany",
-                ab_ruest_rw: "",
                 abl2wasser_only: "Modul hadicového prívodu",
                 ambulance: "Sanitné vozidlo",
-                ambulance_or_rapid_responder: "",
                 arff: "ŠHA (špeciálny hasičský automobil)",
                 battalion_chief_unit: "VEA",
                 boot: "Člny (všeobecné)",
-                dekon_p: "",
                 division_chief_unit: "Mobilný veliteľský automobil",
-                dlk_or_tm50: "",
                 elw1_or_elw2: "Veliteľský automobil, mobilný veliteľský automobil alebo mobilný veliteľský modul ",
-                elw3: "",
-                elw_airport: "",
                 emergency_ambulance: "Sanitné vozidlo alebo vrtuľník VZZS",
                 fire_truck: "Hasičské automobily",
                 fireboat: "Veľký hasičský čln",
                 fly_car: "Rýchle výjazdové vozidlo",
                 fly_car_any: "Rýchle výjazdové vozidlo / Lekárske vozidlo",
                 foam_amount: "Litre penidla",
-                fukw: "",
-                fwk: "",
-                gefkw: "",
                 gkw: "Úžitkové vozidlo",
                 grtw: "Úrazové oddelenie",
-                grtw0: "",
-                grtw1: "",
-                grukw: "",
-                gw_atemschutz_only: "",
                 gw_gefahrgut: "EKOA",
-                gw_gefahrgut_only: "",
                 gw_hoehenrettung: "GW-Höhenrettung",
                 gw_messtechnik: "GW-Messtechnik",
-                gw_oel_only: "",
-                gw_san: "",
-                gw_taucher: "",
                 gw_wasserrettung: "Vozidlo vodnej záchrany",
-                gw_werkfeuerwehr: "",
                 gwl2wasser_only: "Automobilová striekačka",
                 hems: "Vrtuľník VZZS",
                 hlf_only: "nula",
                 hlf_or_rw_and_lf: "nula",
-                hondengeleider: "",
                 k9: "Jednotka K-9",
-                kdow_lna: "",
                 kdow_orgl: "Veliteľské vozidlo",
-                ktw_b: "",
                 ktw_or_rtw: "ambulancia DZS alebo RZP",
                 lebefkw: "Leichter Befehlskraftwagen (leBefKw)",
                 lf_only: "Kombinované hasičské automobily",
                 long_distance_ambulance: "Sanitné vozidlo",
                 mask_service_unit: "Autonómny dýchací prístroj",
-                mek_mtf: "",
-                mek_zf: "",
                 mtw: "Automobil na prepravu hasičov",
                 mzb: "Viacúčelový čln",
-                naw: "",
-                naw_or_rtw_and_nef: "",
-                naw_or_rtw_and_nef_or_rth: "",
                 nef_only: "Sanitné vozidlo",
                 oil_unit: "GW-Öl",
-                only_ab_dekon_p: "",
-                only_dekon_p: "",
-                ovd_p: "",
                 police_car: "Hliadkové vozidlo",
                 polizeihubschrauber: "Policajný vrtuľník",
                 rescue_vehicle: "AHZS 4",
                 rescue_vehicle_only: "AHZS 4",
                 rescueboat: "Veľký záchranný čln",
-                rettungstreppe: "",
                 rth_only: "Vrtuľník VZZS",
                 schlauchwagen: "KHA",
-                seg_elw: "",
-                sek_mtf: "",
-                sek_zf: "",
                 swat: "SWAT",
                 swat_armored_vehicle: "Obrnené vozidlo SWAT",
                 swat_suv: "SUV SWAT",
-                thw_anh_mzab: "",
-                thw_anh_mzb: "",
-                thw_anh_schlb: "",
-                thw_brmg_r: "",
-                thw_dle: "",
-                thw_lkw: "",
-                thw_lkw_7_lkr_19_tm: "",
-                thw_mlw5: "",
                 thw_mtw: "Mannschaftstransportwagen Technischer Zug (MTW-TZ - THW)",
                 thw_mzkw: "Mehrzweckkraftwagen (MzKW)",
                 thw_tauchkraftwagen: "Potápačský tím",
-                thw_tauchkraftwagen_or_gw_taucher: "",
                 tlf_only: "Kombinovaný hasičský automobil",
-                tm50: "",
-                turboloescher: "",
                 turntable_ladder: "AR",
-                ulf: "",
-                wasserwerfer: "",
-                water_amount: "Litre vody",
-                water_amount_tlf: ""
+                water_amount: "Litre vody"
             }
         },
         tutorial: {
@@ -15122,11 +14024,11 @@ Object.values || (Object.values = function (e) {
                 .getElementsByTagName("tbody")[0] || e.appendChild(e.ownerDocument.createElement("tbody")) : e
         }
 
-        function _(e) {
+        function f(e) {
             return e.type = (null !== ut.find.attr(e, "type")) + "/" + e.type, e
         }
 
-        function f(e) {
+        function _(e) {
             var t = oi.exec(e.type);
             return t ? e.type = t[1] : e.removeAttribute("type"), e
         }
@@ -15158,8 +14060,8 @@ Object.values || (Object.values = function (e) {
                     for (n in o.events) ut.removeEvent(t, n, o.handle);
                     t.removeAttribute(ut.expando)
                 }
-                "script" === i && t.text !== e.text ? (_(t)
-                        .text = e.text, f(t)) : "object" === i ? (t.parentNode && (t.outerHTML = e.outerHTML),
+                "script" === i && t.text !== e.text ? (f(t)
+                        .text = e.text, _(t)) : "object" === i ? (t.parentNode && (t.outerHTML = e.outerHTML),
                         ut.support.html5Clone && e.innerHTML && !ut.trim(t.innerHTML) && (t.innerHTML = e
                             .innerHTML)) : "input" === i && ti.test(e.type) ? (t.defaultChecked = t.checked =
                         e.checked, t.value !== e.value && (t.value = e.value)) : "option" === i ? t
@@ -15513,8 +14415,8 @@ Object.values || (Object.values = function (e) {
             ht = /\S+/g,
             pt = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,
             mt = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/,
-            _t = /^<(\w+)\s*\/?>(?:<\/\1>|)$/,
-            ft = /^[\],:{}\s]*$/,
+            ft = /^<(\w+)\s*\/?>(?:<\/\1>|)$/,
+            _t = /^[\],:{}\s]*$/,
             gt = /(?:^|:|,)(?:\s*\[)+/g,
             vt = /\\(?:["\\\/bfnrt]|u[\da-fA-F]{4})/g,
             bt = /"[^"\\\r\n]*"|true|false|null|-?(?:\d+\.|)\d+(?:[eE][+-]?\d+|)/g,
@@ -15545,7 +14447,7 @@ Object.values || (Object.values = function (e) {
                             .find(e);
                         if (o[1]) {
                             if (i = i instanceof ut ? i[0] : i, ut.merge(this, ut.parseHTML(o[1], i && i
-                                    .nodeType ? i.ownerDocument || i : Y, !0)), _t.test(o[1]) && ut
+                                    .nodeType ? i.ownerDocument || i : Y, !0)), ft.test(o[1]) && ut
                                 .isPlainObject(i))
                                 for (o in i) ut.isFunction(this[o]) ? this[o](i[o]) : this.attr(o, i[o]);
                             return this
@@ -15678,14 +14580,14 @@ Object.values || (Object.values = function (e) {
                 parseHTML: function (e, t, i) {
                     if (!e || "string" != typeof e) return null;
                     "boolean" == typeof t && (i = t, t = !1), t = t || Y;
-                    var n = _t.exec(e),
+                    var n = ft.exec(e),
                         o = !i && [];
                     return n ? [t.createElement(n[1])] : (n = ut.buildFragment([e], t, o), o && ut(o)
                         .remove(), ut.merge([], n.childNodes))
                 },
                 parseJSON: function (t) {
                     return e.JSON && e.JSON.parse ? e.JSON.parse(t) : null === t ? t : "string" ==
-                        typeof t && (t = ut.trim(t), t && ft.test(t.replace(vt, "@")
+                        typeof t && (t = ut.trim(t), t && _t.test(t.replace(vt, "@")
                             .replace(bt, "]")
                             .replace(gt, ""))) ? new Function("return " + t)() : (ut.error(
                             "Invalid JSON: " + t), void 0)
@@ -15872,9 +14774,9 @@ Object.values || (Object.values = function (e) {
                             } if (S.qsa && (!$ || !$.test(e))) {
                             if (d = u = W, h = t, p = 9 === r && e, 1 === r && "object" !== t.nodeName
                                 .toLowerCase()) {
-                                for (c = _(e), (u = t.getAttribute("id")) ? d = u.replace(Tt, "\\$&") : t
+                                for (c = f(e), (u = t.getAttribute("id")) ? d = u.replace(Tt, "\\$&") : t
                                     .setAttribute("id", d), d = "[id='" + d + "'] ", l = c.length; l--;) c[
-                                    l] = d + f(c[l]);
+                                    l] = d + _(c[l]);
                                 h = gt.test(e) && t.parentNode || t, p = c.join(",")
                             }
                             if (p) try {
@@ -15967,12 +14869,12 @@ Object.values || (Object.values = function (e) {
                     })
                 }
 
-                function _(e, t) {
+                function f(e, t) {
                     var n, o, s, a, r, l, c, u = K[e + " "];
                     if (u) return t ? 0 : u.slice(0);
                     for (r = e, l = [], c = E.preFilter; r;) {
-                        (!n || (o = _t.exec(r))) && (o && (r = r.slice(o[0].length) || r), l.push(s = [])), n
-                            = !1, (o = ft.exec(r)) && (n = o.shift(), s.push({
+                        (!n || (o = ft.exec(r))) && (o && (r = r.slice(o[0].length) || r), l.push(s = [])), n
+                            = !1, (o = _t.exec(r)) && (n = o.shift(), s.push({
                                 value: n,
                                 type: o[0].replace(mt, " ")
                             }), r = r.slice(n.length));
@@ -15988,7 +14890,7 @@ Object.values || (Object.values = function (e) {
                         .slice(0)
                 }
 
-                function f(e) {
+                function _(e) {
                     for (var t = 0, i = e.length, n = ""; i > t; t++) n += e[t].value;
                     return n
                 }
@@ -16034,16 +14936,16 @@ Object.values || (Object.values = function (e) {
                         var c, u, d, h = [],
                             p = [],
                             m = a.length,
-                            _ = s || x(t || "*", r.nodeType ? [r] : r, []),
-                            f = !e || !s && t ? _ : b(_, h, e, r, l),
-                            g = i ? o || (s ? e : m || n) ? [] : a : f;
-                        if (i && i(f, g, r, l), n)
+                            f = s || x(t || "*", r.nodeType ? [r] : r, []),
+                            _ = !e || !s && t ? f : b(f, h, e, r, l),
+                            g = i ? o || (s ? e : m || n) ? [] : a : _;
+                        if (i && i(_, g, r, l), n)
                             for (c = b(g, p), n(c, [], r, l), u = c.length; u--;)(d = c[u]) && (g[p[
-                                u]] = !(f[p[u]] = d));
+                                u]] = !(_[p[u]] = d));
                         if (s) {
                             if (o || e) {
                                 if (o) {
-                                    for (c = [], u = g.length; u--;)(d = g[u]) && c.push(f[u] = d);
+                                    for (c = [], u = g.length; u--;)(d = g[u]) && c.push(_[u] = d);
                                     o(null, g = [], c, l)
                                 }
                                 for (u = g.length; u--;)(d = g[u]) && (c = o ? at.call(s, d) : h[u]) >
@@ -16068,12 +14970,12 @@ Object.values || (Object.values = function (e) {
                         else {
                             if (i = E.filter[e[r].type].apply(null, e[r].matches), i[W]) {
                                 for (n = ++r; o > n && !E.relative[e[n].type]; n++);
-                                return y(r > 1 && v(u), r > 1 && f(e.slice(0, r - 1)
+                                return y(r > 1 && v(u), r > 1 && _(e.slice(0, r - 1)
                                         .concat({
                                             value: " " === e[r - 2].type ? "*" : ""
                                         }))
                                     .replace(mt, "$1"), i, n > r && w(e.slice(r, n)), o > n && w(e = e
-                                        .slice(n)), o > n && f(e))
+                                        .slice(n)), o > n && _(e))
                             }
                             u.push(i)
                         } return v(u)
@@ -16085,14 +14987,14 @@ Object.values || (Object.values = function (e) {
                         a = e.length > 0,
                         r = function (s, r, l, c, u) {
                             var d, h, p, m = [],
-                                _ = 0,
-                                f = "0",
+                                f = 0,
+                                _ = "0",
                                 g = s && [],
                                 v = null != u,
                                 y = I,
                                 w = s || a && E.find.TAG("*", u && r.parentNode || r),
                                 k = q += null == y ? 1 : Math.random() || .1;
-                            for (v && (I = r !== O && r, A = n); null != (d = w[f]); f++) {
+                            for (v && (I = r !== O && r, A = n); null != (d = w[_]); _++) {
                                 if (a && d) {
                                     for (h = 0; p = e[h++];)
                                         if (p(d, r, l)) {
@@ -16100,16 +15002,16 @@ Object.values || (Object.values = function (e) {
                                             break
                                         } v && (q = k, A = ++n)
                                 }
-                                o && ((d = !p && d) && _--, s && g.push(d))
+                                o && ((d = !p && d) && f--, s && g.push(d))
                             }
-                            if (_ += f, o && f !== _) {
+                            if (f += _, o && _ !== f) {
                                 for (h = 0; p = t[h++];) p(g, m, r, l);
                                 if (s) {
-                                    if (_ > 0)
-                                        for (; f--;) g[f] || m[f] || (m[f] = it.call(c));
+                                    if (f > 0)
+                                        for (; _--;) g[_] || m[_] || (m[_] = it.call(c));
                                     m = b(m)
                                 }
-                                ot.apply(c, m), v && !s && m.length > 0 && _ + t.length > 1 && i.uniqueSort(c)
+                                ot.apply(c, m), v && !s && m.length > 0 && f + t.length > 1 && i.uniqueSort(c)
                             }
                             return v && (q = k, I = y), g
                         };
@@ -16122,7 +15024,7 @@ Object.values || (Object.values = function (e) {
                 }
 
                 function C(e, t, i, n) {
-                    var o, s, a, r, l, c = _(e);
+                    var o, s, a, r, l, c = f(e);
                     if (!n && 1 === c.length) {
                         if (s = c[0] = c[0].slice(0), s.length > 2 && "ID" === (a = s[0])
                             .type && S.getById && 9 === t.nodeType && R && E.relative[s[1].type]) {
@@ -16134,7 +15036,7 @@ Object.values || (Object.values = function (e) {
                                 .type]);)
                             if ((l = E.find[r]) && (n = l(a.matches[0].replace(St, At), gt.test(s[0].type) &&
                                     t.parentNode || t))) {
-                                if (s.splice(o, 1), e = n.length && f(s), !e) return ot.apply(i, n), i;
+                                if (s.splice(o, 1), e = n.length && _(s), !e) return ot.apply(i, n), i;
                                 break
                             }
                     }
@@ -16176,8 +15078,8 @@ Object.values || (Object.values = function (e) {
                     pt = ":(" + ct + ")(?:\\(((['\"])((?:\\\\.|[^\\\\])*?)\\3|((?:\\\\.|[^\\\\()[\\]]|" + ht
                     .replace(3, 8) + ")*)|.*)\\)|)",
                     mt = new RegExp("^" + lt + "+|((?:^|[^\\\\])(?:\\\\.)*)" + lt + "+$", "g"),
-                    _t = new RegExp("^" + lt + "*," + lt + "*"),
-                    ft = new RegExp("^" + lt + "*([>+~]|" + lt + ")" + lt + "*"),
+                    ft = new RegExp("^" + lt + "*," + lt + "*"),
+                    _t = new RegExp("^" + lt + "*([>+~]|" + lt + ")" + lt + "*"),
                     gt = new RegExp(lt + "*[+~]"),
                     vt = new RegExp("=" + lt + "*([^\\]'\"]*)" + lt + "*\\]", "g"),
                     bt = new RegExp(pt),
@@ -16415,7 +15317,7 @@ Object.values || (Object.values = function (e) {
                         PSEUDO: function (e) {
                             var i, n = !e[5] && e[2];
                             return wt.CHILD.test(e[0]) ? null : (e[3] && e[4] !== t ? e[2] = e[4] :
-                                n && bt.test(n) && (i = _(n, !0)) && (i = n.indexOf(")", n
+                                n && bt.test(n) && (i = f(n, !0)) && (i = n.indexOf(")", n
                                     .length - i) - n.length) && (e[0] = e[0].slice(0, i), e[2] = n
                                     .slice(0, i)), e.slice(0, 3))
                         }
@@ -16458,25 +15360,25 @@ Object.values || (Object.values = function (e) {
                             return 1 === n && 0 === o ? function (e) {
                                 return !!e.parentNode
                             } : function (t, i, l) {
-                                var c, u, d, h, p, m, _ = s !== a ? "nextSibling" :
+                                var c, u, d, h, p, m, f = s !== a ? "nextSibling" :
                                     "previousSibling",
-                                    f = t.parentNode,
+                                    _ = t.parentNode,
                                     g = r && t.nodeName.toLowerCase(),
                                     v = !l && !r;
-                                if (f) {
+                                if (_) {
                                     if (s) {
-                                        for (; _;) {
-                                            for (d = t; d = d[_];)
+                                        for (; f;) {
+                                            for (d = t; d = d[f];)
                                                 if (r ? d.nodeName.toLowerCase() === g : 1 === d
                                                     .nodeType) return !1;
-                                            m = _ = "only" === e && !m && "nextSibling"
+                                            m = f = "only" === e && !m && "nextSibling"
                                         }
                                         return !0
                                     }
-                                    if (m = [a ? f.firstChild : f.lastChild], a && v) {
-                                        for (u = f[W] || (f[W] = {}), c = u[e] || [], p = c[0] ===
-                                            q && c[1], h = c[0] === q && c[2], d = p && f
-                                            .childNodes[p]; d = ++p && d && d[_] || (h = p = 0) ||
+                                    if (m = [a ? _.firstChild : _.lastChild], a && v) {
+                                        for (u = _[W] || (_[W] = {}), c = u[e] || [], p = c[0] ===
+                                            q && c[1], h = c[0] === q && c[2], d = p && _
+                                            .childNodes[p]; d = ++p && d && d[f] || (h = p = 0) ||
                                             m.pop();)
                                             if (1 === d.nodeType && ++h && d === t) {
                                                 u[e] = [q, p, h];
@@ -16486,7 +15388,7 @@ Object.values || (Object.values = function (e) {
                                         h = c[1];
                                     else
                                         for (;
-                                            (d = ++p && d && d[_] || (h = p = 0) || m.pop()) && ((
+                                            (d = ++p && d && d[f] || (h = p = 0) || m.pop()) && ((
                                                 r ? d.nodeName.toLowerCase() !== g : 1 !== d
                                                 .nodeType) || !++h || (v && ((d[W] || (d[
                                             W] = {}))[e] = [q, h]), d !== t)););
@@ -16636,7 +15538,7 @@ Object.values || (Object.values = function (e) {
                             o = [],
                             s = G[e + " "];
                         if (!s) {
-                            for (t || (t = _(e)), i = t.length; i--;) s = w(t[i]), s[W] ? n.push(s) : o.push(
+                            for (t || (t = f(e)), i = t.length; i--;) s = w(t[i]), s[W] ? n.push(s) : o.push(
                                 s);
                             s = G(e, k(o, n))
                         }
@@ -17262,7 +16164,7 @@ Object.values || (Object.values = function (e) {
         ut.event = {
             global: {},
             add: function (e, i, n, o, s) {
-                var a, r, l, c, u, d, h, p, m, _, f, g = ut._data(e);
+                var a, r, l, c, u, d, h, p, m, f, _, g = ut._data(e);
                 if (g) {
                     for (n.handler && (c = n, n = c.handler, s = c.selector), n.guid || (n.guid = ut
                             .guid++), (r = g.events) || (r = g.events = {}), (d = g.handle) || (d = g
@@ -17270,21 +16172,21 @@ Object.values || (Object.values = function (e) {
                                 return typeof ut === K || e && ut.event.triggered === e.type ? t : ut
                                     .event.dispatch.apply(d.elem, arguments)
                             }, d.elem = e), i = (i || "")
-                        .match(ht) || [""], l = i.length; l--;) a = Bt.exec(i[l]) || [], m = f = a[1],
-                        _ = (a[2] || "")
+                        .match(ht) || [""], l = i.length; l--;) a = Bt.exec(i[l]) || [], m = _ = a[1],
+                        f = (a[2] || "")
                         .split(".")
                         .sort(), m && (u = ut.event.special[m] || {}, m = (s ? u.delegateType : u
                                 .bindType) || m, u = ut.event.special[m] || {}, h = ut.extend({
                                 type: m,
-                                origType: f,
+                                origType: _,
                                 data: o,
                                 handler: n,
                                 guid: n.guid,
                                 selector: s,
                                 needsContext: s && ut.expr.match.needsContext.test(s),
-                                namespace: _.join(".")
+                                namespace: f.join(".")
                             }, c), (p = r[m]) || (p = r[m] = [], p.delegateCount = 0, u.setup && u
-                                .setup.call(e, o, _, d) !== !1 || (e.addEventListener ? e
+                                .setup.call(e, o, f, d) !== !1 || (e.addEventListener ? e
                                     .addEventListener(m, d, !1) : e.attachEvent && e.attachEvent(
                                         "on" + m, d))), u.add && (u.add.call(e, h), h.handler.guid ||
                                 (h.handler.guid = n.guid)), s ? p.splice(p.delegateCount++, 0, h) : p
@@ -17293,37 +16195,37 @@ Object.values || (Object.values = function (e) {
                 }
             },
             remove: function (e, t, i, n, o) {
-                var s, a, r, l, c, u, d, h, p, m, _, f = ut.hasData(e) && ut._data(e);
-                if (f && (u = f.events)) {
+                var s, a, r, l, c, u, d, h, p, m, f, _ = ut.hasData(e) && ut._data(e);
+                if (_ && (u = _.events)) {
                     for (t = (t || "")
                         .match(ht) || [""], c = t.length; c--;)
-                        if (r = Bt.exec(t[c]) || [], p = _ = r[1], m = (r[2] || "")
+                        if (r = Bt.exec(t[c]) || [], p = f = r[1], m = (r[2] || "")
                             .split(".")
                             .sort(), p) {
                             for (d = ut.event.special[p] || {}, p = (n ? d.delegateType : d
                                 .bindType) || p, h = u[p] || [], r = r[2] && new RegExp("(^|\\.)" + m
                                     .join("\\.(?:.*\\.|)") + "(\\.|$)"), l = s = h.length; s--;) a =
-                                h[s], !o && _ !== a.origType || i && i.guid !== a.guid || r && !r
+                                h[s], !o && f !== a.origType || i && i.guid !== a.guid || r && !r
                                 .test(a.namespace) || n && n !== a.selector && ("**" !== n || !a
                                     .selector) || (h.splice(s, 1), a.selector && h.delegateCount--, d
                                     .remove && d.remove.call(e, a));
-                            l && !h.length && (d.teardown && d.teardown.call(e, m, f.handle) !== !1 ||
-                                ut.removeEvent(e, p, f.handle), delete u[p])
+                            l && !h.length && (d.teardown && d.teardown.call(e, m, _.handle) !== !1 ||
+                                ut.removeEvent(e, p, _.handle), delete u[p])
                         } else
                             for (p in u) ut.event.remove(e, p + t[c], i, n, !0);
-                    ut.isEmptyObject(u) && (delete f.handle, ut._removeData(e, "events"))
+                    ut.isEmptyObject(u) && (delete _.handle, ut._removeData(e, "events"))
                 }
             },
             trigger: function (i, n, o, s) {
                 var a, r, l, c, u, d, h, p = [o || Y],
                     m = lt.call(i, "type") ? i.type : i,
-                    _ = lt.call(i, "namespace") ? i.namespace.split(".") : [];
+                    f = lt.call(i, "namespace") ? i.namespace.split(".") : [];
                 if (l = d = o = o || Y, 3 !== o.nodeType && 8 !== o.nodeType && !Ft.test(m + ut.event
-                        .triggered) && (m.indexOf(".") >= 0 && (_ = m.split("."), m = _.shift(), _
+                        .triggered) && (m.indexOf(".") >= 0 && (f = m.split("."), m = f.shift(), f
                             .sort()), r = m.indexOf(":") < 0 && "on" + m, i = i[ut.expando] ? i :
                         new ut.Event(m, "object" == typeof i && i), i.isTrigger = s ? 2 : 3, i
-                        .namespace = _.join("."), i.namespace_re = i.namespace ? new RegExp(
-                            "(^|\\.)" + _.join("\\.(?:.*\\.|)") + "(\\.|$)") : null, i.result = t, i
+                        .namespace = f.join("."), i.namespace_re = i.namespace ? new RegExp(
+                            "(^|\\.)" + f.join("\\.(?:.*\\.|)") + "(\\.|$)") : null, i.result = t, i
                         .target || (i.target = o), n = null == n ? [i] : ut.makeArray(n, [i]), u = ut
                         .event.special[m] || {}, s || !u.trigger || u.trigger.apply(o, n) !== !1)) {
                     if (!s && !u.noBubble && !ut.isWindow(o)) {
@@ -17341,7 +16243,7 @@ Object.values || (Object.values = function (e) {
                         d = o[r], d && (o[r] = null), ut.event.triggered = m;
                         try {
                             o[m]()
-                        } catch (f) {}
+                        } catch (_) {}
                         ut.event.triggered = t, d && (o[r] = d)
                     }
                     return i.result
@@ -17890,11 +16792,11 @@ Object.values || (Object.values = function (e) {
                         });
                     if (u && (l = ut.buildFragment(e, this[0].ownerDocument, !1, !i && this), n = l
                             .firstChild, 1 === l.childNodes.length && (l = n), n)) {
-                        for (a = ut.map(y(l, "script"), _), s = a.length; u > c; c++) o = l, c !==
+                        for (a = ut.map(y(l, "script"), f), s = a.length; u > c; c++) o = l, c !==
                             h && (o = ut.clone(o, !0, !0), s && ut.merge(a, y(o, "script"))), t.call(
                                 this[c], o, c);
                         if (s)
-                            for (r = a[a.length - 1].ownerDocument, ut.map(a, f), c = 0; s > c; c++)
+                            for (r = a[a.length - 1].ownerDocument, ut.map(a, _), c = 0; s > c; c++)
                                 o = a[c], ni.test(o.type || "") && !ut._data(o, "globalEval") && ut
                                 .contains(r, o) && (o.src ? ut._evalUrl(o.src) : ut.globalEval((o
                                         .text || o.textContent || o.innerHTML || "")
@@ -17932,8 +16834,8 @@ Object.values || (Object.values = function (e) {
                         null, s
                 },
                 buildFragment: function (e, t, i, n) {
-                    for (var o, s, a, r, l, c, u, d = e.length, h = p(t), m = [], _ = 0; d > _; _++)
-                        if (s = e[_], s || 0 === s)
+                    for (var o, s, a, r, l, c, u, d = e.length, h = p(t), m = [], f = 0; d > f; f++)
+                        if (s = e[f], s || 0 === s)
                             if ("object" === ut.type(s)) ut.merge(m, s.nodeType ? [s] : s);
                             else if (Xt.test(s)) {
                         for (r = r || h.appendChild(t.createElement("div")), l = (Jt.exec(s) || ["",
@@ -17950,7 +16852,7 @@ Object.values || (Object.values = function (e) {
                         r = h.lastChild
                     } else m.push(t.createTextNode(s));
                     for (r && h.removeChild(r), ut.support.appendChecked || ut.grep(y(m, "input"), w),
-                        _ = 0; s = m[_++];)
+                        f = 0; s = m[f++];)
                         if ((!n || -1 === ut.inArray(s, n)) && (a = ut.contains(s.ownerDocument, s),
                                 r = y(h.appendChild(s), "script"), a && g(r), i))
                             for (o = 0; s = r[o++];) ni.test(s.type || "") && i.push(s);
@@ -18025,8 +16927,8 @@ Object.values || (Object.values = function (e) {
         var ci, ui, di, hi = /alpha\([^)]*\)/i,
             pi = /opacity\s*=\s*([^)]*)/,
             mi = /^(top|right|bottom|left)$/,
-            _i = /^(none|table(?!-c[ea]).+)/,
-            fi = /^margin/,
+            fi = /^(none|table(?!-c[ea]).+)/,
+            _i = /^margin/,
             gi = new RegExp("^(" + dt + ")(.*)$", "i"),
             vi = new RegExp("^(" + dt + ")(?!px)[a-z%]+$", "i"),
             bi = new RegExp("^([+-])=(" + dt + ")", "i"),
@@ -18127,7 +17029,7 @@ Object.values || (Object.values = function (e) {
                 l = r ? r.getPropertyValue(i) || r[i] : t,
                 c = e.style;
             return r && ("" !== l || ut.contains(e.ownerDocument, e) || (l = ut.style(e, i)), vi.test(
-                l) && fi.test(i) && (o = c.width, s = c.minWidth, a = c.maxWidth, c.minWidth =
+                l) && _i.test(i) && (o = c.width, s = c.minWidth, a = c.maxWidth, c.minWidth =
                 c.maxWidth = c.width = l, l = r.width, c.width = o, c.minWidth = s, c
                 .maxWidth = a)), l
         }) : Y.documentElement.currentStyle && (ui = function (e) {
@@ -18143,7 +17045,7 @@ Object.values || (Object.values = function (e) {
         }), ut.each(["height", "width"], function (e, t) {
             ut.cssHooks[t] = {
                 get: function (e, i, n) {
-                    return i ? 0 === e.offsetWidth && _i.test(ut.css(e, "display")) ? ut.swap(
+                    return i ? 0 === e.offsetWidth && fi.test(ut.css(e, "display")) ? ut.swap(
                         e, wi,
                         function () {
                             return S(e, t, n)
@@ -18201,7 +17103,7 @@ Object.values || (Object.values = function (e) {
                         n; n++) o[e + xi[n] + t] = s[n] || s[n - 2] || s[0];
                     return o
                 }
-            }, fi.test(e) || (ut.cssHooks[e + t].set = z)
+            }, _i.test(e) || (ut.cssHooks[e + t].set = z)
         });
         var zi = /%20/g,
             Ti = /\[\]$/,
@@ -18376,9 +17278,9 @@ Object.values || (Object.values = function (e) {
                             "nocontent" : 304 === e ? x = "notmodified" : (x = b.state, d = b
                                 .data, v = b.error, s = !v)) : (v = x, (e || !x) && (x =
                             "error", 0 > e && (e = 0))), k.status = e, k.statusText = (i ||
-                        x) + "", s ? _.resolveWith(p, [d, x, k]) : _.rejectWith(p, [k, x, v]),
+                        x) + "", s ? f.resolveWith(p, [d, x, k]) : f.rejectWith(p, [k, x, v]),
                         k.statusCode(g), g = t, c && m.trigger(s ? "ajaxSuccess" :
-                            "ajaxError", [k, h, s ? d : v]), f.fireWith(p, [k, x]), c && (m
+                            "ajaxError", [k, h, s ? d : v]), _.fireWith(p, [k, x]), c && (m
                             .trigger("ajaxComplete", [k, h]), --ut.active || ut.event.trigger(
                                 "ajaxStop")))
                 }
@@ -18386,8 +17288,8 @@ Object.values || (Object.values = function (e) {
                 var o, s, a, r, l, c, u, d, h = ut.ajaxSetup({}, i),
                     p = h.context || h,
                     m = h.context && (p.nodeType || p.jquery) ? ut(p) : ut.event,
-                    _ = ut.Deferred(),
-                    f = ut.Callbacks("once memory"),
+                    f = ut.Deferred(),
+                    _ = ut.Callbacks("once memory"),
                     g = h.statusCode || {},
                     v = {},
                     b = {},
@@ -18428,8 +17330,8 @@ Object.values || (Object.values = function (e) {
                             return u && u.abort(t), n(0, t), this
                         }
                     };
-                if (_.promise(k)
-                    .complete = f.add, k.success = k.done, k.error = k.fail, h.url = ((e || h
+                if (f.promise(k)
+                    .complete = _.add, k.success = k.done, k.error = k.fail, h.url = ((e || h
                         .url || ji) + "")
                     .replace(Di, "")
                     .replace($i, Pi[1] + "//"), h.type = i.method || i.type || h.method || h.type,
@@ -19663,13 +18565,13 @@ Object.values || (Object.values = function (e) {
                     }, e.fn.position = function (o) {
                         if (!o || !o.of) return m.apply(this, arguments);
                         o = e.extend({}, o);
-                        var p, _, f, g, v, b, y = e(o.of),
+                        var p, f, _, g, v, b, y = e(o.of),
                             w = e.position.getWithinInfo(o.within),
                             k = e.position.getScrollInfo(w),
                             x = (o.collision || "flip")
                             .split(" "),
                             C = {};
-                        return b = n(y), y[0].preventDefault && (o.at = "left top"), _ = b.width, f = b
+                        return b = n(y), y[0].preventDefault && (o.at = "left top"), f = b.width, _ = b
                             .height, g = b.offset, v = e.extend({}, g), e.each(["my", "at"], function () {
                                 var e, t, i = (o[this] || "")
                                     .split(" ");
@@ -19679,9 +18581,9 @@ Object.values || (Object.values = function (e) {
                                     "center", e = d.exec(i[0]), t = d.exec(i[1]), C[this] = [e ? e[
                                         0] : 0, t ? t[0] : 0], o[this] = [h.exec(i[0])[0], h.exec(i[
                                         1])[0]]
-                            }), 1 === x.length && (x[1] = x[0]), "right" === o.at[0] ? v.left += _ :
-                            "center" === o.at[0] && (v.left += _ / 2), "bottom" === o.at[1] ? v.top += f :
-                            "center" === o.at[1] && (v.top += f / 2), p = t(C.at, _, f), v.left += p[0], v
+                            }), 1 === x.length && (x[1] = x[0]), "right" === o.at[0] ? v.left += f :
+                            "center" === o.at[0] && (v.left += f / 2), "bottom" === o.at[1] ? v.top += _ :
+                            "center" === o.at[1] && (v.top += _ / 2), p = t(C.at, f, _), v.left += p[0], v
                             .top += p[1], this.each(function () {
                                 var n, c, u = e(this),
                                     d = u.outerWidth(),
@@ -19700,8 +18602,8 @@ Object.values || (Object.values = function (e) {
                                     marginTop: b
                                 }, e.each(["left", "top"], function (t, i) {
                                     e.ui.position[x[t]] && e.ui.position[x[t]][i](S, {
-                                        targetWidth: _,
-                                        targetHeight: f,
+                                        targetWidth: f,
+                                        targetHeight: _,
                                         elemWidth: d,
                                         elemHeight: h,
                                         collisionPosition: n,
@@ -19715,16 +18617,16 @@ Object.values || (Object.values = function (e) {
                                     })
                                 }), o.using && (c = function (e) {
                                     var t = g.left - S.left,
-                                        i = t + _ - d,
+                                        i = t + f - d,
                                         n = g.top - S.top,
-                                        s = n + f - h,
+                                        s = n + _ - h,
                                         l = {
                                             target: {
                                                 element: y,
                                                 left: g.left,
                                                 top: g.top,
-                                                width: _,
-                                                height: f
+                                                width: f,
+                                                height: _
                                             },
                                             element: {
                                                 element: u,
@@ -19738,8 +18640,8 @@ Object.values || (Object.values = function (e) {
                                             vertical: 0 > s ? "top" : n > 0 ? "bottom" :
                                                 "middle"
                                         };
-                                    d > _ && r(t + i) < _ && (l.horizontal = "center"), h >
-                                        f && r(n + s) < f && (l.vertical = "middle"), l
+                                    d > f && r(t + i) < f && (l.horizontal = "center"), h >
+                                        _ && r(n + s) < _ && (l.vertical = "middle"), l
                                         .important = a(r(t), r(i)) > a(r(n), r(s)) ?
                                         "horizontal" : "vertical", o.using.call(this, e, l)
                                 }), u.offset(e.extend(S, {
@@ -19804,11 +18706,11 @@ Object.values || (Object.values = function (e) {
                                     p = h ? -t.elemHeight : "bottom" === t.my[1] ? t.elemHeight : 0,
                                     m = "top" === t.at[1] ? t.targetHeight : "bottom" === t.at[1] ? -t
                                     .targetHeight : 0,
-                                    _ = -2 * t.offset[1];
-                                0 > u ? (n = e.top + p + m + _ + t.collisionHeight - a - s, (0 > n ||
-                                    n < r(u)) && (e.top += p + m + _)) : d > 0 && (i = e.top - t
-                                    .collisionPosition.marginTop + p + m + _ - l, (i > 0 || r(i) <
-                                        d) && (e.top += p + m + _))
+                                    f = -2 * t.offset[1];
+                                0 > u ? (n = e.top + p + m + f + t.collisionHeight - a - s, (0 > n ||
+                                    n < r(u)) && (e.top += p + m + f)) : d > 0 && (i = e.top - t
+                                    .collisionPosition.marginTop + p + m + f - l, (i > 0 || r(i) <
+                                        d) && (e.top += p + m + f))
                             }
                         },
                         flipfit: {
@@ -20361,22 +19263,22 @@ Object.values || (Object.values = function (e) {
                 },
                 drag: function (t, i, n) {
                     var o, s, a, r, l, c, u, d, h, p, m = n.options,
-                        _ = m.snapTolerance,
-                        f = i.offset.left,
-                        g = f + n.helperProportions.width,
+                        f = m.snapTolerance,
+                        _ = i.offset.left,
+                        g = _ + n.helperProportions.width,
                         v = i.offset.top,
                         b = v + n.helperProportions.height;
                     for (h = n.snapElements.length - 1; h >= 0; h--) l = n.snapElements[h].left -
                         n.margins.left, c = l + n.snapElements[h].width, u = n.snapElements[h]
-                        .top - n.margins.top, d = u + n.snapElements[h].height, l - _ > g || f >
-                        c + _ || u - _ > b || v > d + _ || !e.contains(n.snapElements[h].item
+                        .top - n.margins.top, d = u + n.snapElements[h].height, l - f > g || _ >
+                        c + f || u - f > b || v > d + f || !e.contains(n.snapElements[h].item
                             .ownerDocument, n.snapElements[h].item) ? (n.snapElements[h]
                             .snapping && n.options.snap.release && n.options.snap.release.call(n
                                 .element, t, e.extend(n._uiHash(), {
                                     snapItem: n.snapElements[h].item
                                 })), n.snapElements[h].snapping = !1) : ("inner" !== m.snapMode &&
-                            (o = Math.abs(u - b) <= _, s = Math.abs(d - v) <= _, a = Math.abs(l -
-                                g) <= _, r = Math.abs(c - f) <= _, o && (i.position.top = n
+                            (o = Math.abs(u - b) <= f, s = Math.abs(d - v) <= f, a = Math.abs(l -
+                                g) <= f, r = Math.abs(c - _) <= f, o && (i.position.top = n
                                 ._convertPositionTo("relative", {
                                     top: u - n.helperProportions.height,
                                     left: 0
@@ -20397,8 +19299,8 @@ Object.values || (Object.values = function (e) {
                                         left: c
                                     })
                                 .left)), p = o || s || a || r, "outer" !== m.snapMode && (o = Math
-                                .abs(u - v) <= _, s = Math.abs(d - b) <= _, a = Math.abs(l - f) <=
-                                _, r = Math.abs(c - g) <= _, o && (i.position.top = n
+                                .abs(u - v) <= f, s = Math.abs(d - b) <= f, a = Math.abs(l - _) <=
+                                f, r = Math.abs(c - g) <= f, o && (i.position.top = n
                                     ._convertPositionTo("relative", {
                                         top: u,
                                         left: 0
@@ -21329,11 +20231,11 @@ Object.values || (Object.values = function (e) {
                         h = Math.round((o.height - s.height) / u) * u,
                         p = s.width + d,
                         m = s.height + h,
-                        _ = n.maxWidth && n.maxWidth < p,
-                        f = n.maxHeight && n.maxHeight < m,
+                        f = n.maxWidth && n.maxWidth < p,
+                        _ = n.maxHeight && n.maxHeight < m,
                         g = n.minWidth && n.minWidth > p,
                         v = n.minHeight && n.minHeight > m;
-                    n.grid = l, g && (p += c), v && (m += u), _ && (p -= c), f && (m -= u),
+                    n.grid = l, g && (p += c), v && (m += u), f && (p -= c), _ && (m -= u),
                         /^(se|s|e)$/.test(r) ? (i.size.width = p, i.size.height = m) : /^(ne)$/
                         .test(r) ? (i.size.width = p, i.size.height = m, i.position.top = a.top -
                             h) : /^(sw)$/.test(r) ? (i.size.width = p, i.size.height = m, i
@@ -23255,14 +22157,14 @@ Object.values || (Object.values = function (e) {
         var h, p = "ui-button ui-widget ui-state-default ui-corner-all",
             m =
             "ui-button-icons-only ui-button-icon-only ui-button-text-icons ui-button-text-icon-primary ui-button-text-icon-secondary ui-button-text-only",
-            _ = function () {
+            f = function () {
                 var t = e(this);
                 setTimeout(function () {
                     t.find(":ui-button")
                         .button("refresh")
                 }, 1)
             },
-            f = function (t) {
+            _ = function (t) {
                 var i = t.name,
                     n = t.form,
                     o = e([]);
@@ -23288,7 +22190,7 @@ Object.values || (Object.values = function (e) {
                 _create: function () {
                     this.element.closest("form")
                         .unbind("reset" + this.eventNamespace)
-                        .bind("reset" + this.eventNamespace, _), "boolean" != typeof this.options
+                        .bind("reset" + this.eventNamespace, f), "boolean" != typeof this.options
                         .disabled ? this.options.disabled = !!this.element.prop("disabled") : this
                         .element.prop("disabled", this.options.disabled), this
                         ._determineButtonType(), this.hasTitle = !!this.buttonElement.attr(
@@ -23332,7 +22234,7 @@ Object.values || (Object.values = function (e) {
                                     .addClass("ui-state-active"), t.buttonElement.attr(
                                         "aria-pressed", "true");
                                 var n = t.element[0];
-                                f(n)
+                                _(n)
                                     .not(n)
                                     .map(function () {
                                         return e(this)
@@ -23406,7 +22308,7 @@ Object.values || (Object.values = function (e) {
                     var t = this.element.is("input, button") ? this.element.is(":disabled") : this
                         .element.hasClass("ui-button-disabled");
                     t !== this.options.disabled && this._setOption("disabled", t), "radio" ===
-                        this.type ? f(this.element[0])
+                        this.type ? _(this.element[0])
                         .each(function () {
                             e(this)
                                 .is(":checked") ? e(this)
@@ -24016,8 +22918,8 @@ Object.values || (Object.values = function (e) {
                         h = (n ? n.dayNames : null) || this._defaults.dayNames,
                         p = (n ? n.monthNamesShort : null) || this._defaults.monthNamesShort,
                         m = (n ? n.monthNames : null) || this._defaults.monthNames,
-                        _ = -1,
                         f = -1,
+                        _ = -1,
                         g = -1,
                         v = -1,
                         b = !1,
@@ -24070,21 +22972,21 @@ Object.values || (Object.values = function (e) {
                             v = w("o");
                             break;
                         case "m":
-                            f = w("m");
+                            _ = w("m");
                             break;
                         case "M":
-                            f = k("M", p, m);
+                            _ = k("M", p, m);
                             break;
                         case "y":
-                            _ = w("y");
+                            f = w("y");
                             break;
                         case "@":
-                            r = new Date(w("@")), _ = r.getFullYear(), f = r.getMonth() + 1,
+                            r = new Date(w("@")), f = r.getFullYear(), _ = r.getMonth() + 1,
                                 g = r.getDate();
                             break;
                         case "!":
-                            r = new Date((w("!") - this._ticksTo1970) / 1e4), _ = r
-                                .getFullYear(), f = r.getMonth() + 1, g = r.getDate();
+                            r = new Date((w("!") - this._ticksTo1970) / 1e4), f = r
+                                .getFullYear(), _ = r.getMonth() + 1, g = r.getDate();
                             break;
                         case "'":
                             y("'") ? x() : b = !0;
@@ -24094,16 +22996,16 @@ Object.values || (Object.values = function (e) {
                         }
                     if (l < i.length && (a = i.substr(l), !/^\s+/.test(a)))
                     throw "Extra/unparsed characters found in date: " + a;
-                    if (-1 === _ ? _ = (new Date)
-                        .getFullYear() : 100 > _ && (_ += (new Date)
+                    if (-1 === f ? f = (new Date)
+                        .getFullYear() : 100 > f && (f += (new Date)
                             .getFullYear() - (new Date)
-                            .getFullYear() % 100 + (u >= _ ? 0 : -100)), v > -1)
-                        for (f = 1, g = v;;) {
-                            if (s = this._getDaysInMonth(_, f - 1), s >= g) break;
-                            f++, g -= s
+                            .getFullYear() % 100 + (u >= f ? 0 : -100)), v > -1)
+                        for (_ = 1, g = v;;) {
+                            if (s = this._getDaysInMonth(f, _ - 1), s >= g) break;
+                            _++, g -= s
                         }
-                    if (r = this._daylightSavingAdjust(new Date(_, f - 1, g)), r.getFullYear() !==
-                        _ || r.getMonth() + 1 !== f || r.getDate() !== g) throw "Invalid date";
+                    if (r = this._daylightSavingAdjust(new Date(f, _ - 1, g)), r.getFullYear() !==
+                        f || r.getMonth() + 1 !== _ || r.getDate() !== g) throw "Invalid date";
                     return r
                 },
                 ATOM: "yy-mm-dd",
@@ -24335,7 +23237,7 @@ Object.values || (Object.values = function (e) {
                         })
                 },
                 _generateHTML: function (e) {
-                    var t, i, n, o, s, a, r, l, c, u, d, h, p, m, _, f, g, v, b, y, w, k, x, C, z,
+                    var t, i, n, o, s, a, r, l, c, u, d, h, p, m, f, _, g, v, b, y, w, k, x, C, z,
                         T, S, A, E, P, j, M, I, D, N, O, L, R, $, F = new Date,
                         B = this._daylightSavingAdjust(new Date(F.getFullYear(), F.getMonth(), F
                             .getDate())),
@@ -24386,8 +23288,8 @@ Object.values || (Object.values = function (e) {
                             a + "</button>" : "") + (H ? "" : l) + "</div>" : "", u = parseInt(
                             this._get(e, "firstDay"), 10), u = isNaN(u) ? 0 : u, d = this._get(e,
                             "showWeek"), h = this._get(e, "dayNames"), p = this._get(e,
-                            "dayNamesMin"), m = this._get(e, "monthNames"), _ = this._get(e,
-                            "monthNamesShort"), f = this._get(e, "beforeShowDay"), g = this._get(
+                            "dayNamesMin"), m = this._get(e, "monthNames"), f = this._get(e,
+                            "monthNamesShort"), _ = this._get(e, "beforeShowDay"), g = this._get(
                             e, "showOtherMonths"), v = this._get(e, "selectOtherMonths"), b = this
                         ._getDefaultDate(e), y = "", k = 0; k < U[0]; k++) {
                         for (x = "", this.maxRows = 4, C = 0; C < U[1]; C++) {
@@ -24411,7 +23313,7 @@ Object.values || (Object.values = function (e) {
                                 "<div class='ui-datepicker-header ui-widget-header ui-helper-clearfix" +
                                 T + "'>" + (/all|left/.test(T) && 0 === k ? H ? s : n : "") + (
                                     /all|right/.test(T) && 0 === k ? H ? n : s : "") + this
-                                ._generateMonthYearHeader(e, X, et, J, Q, k > 0 || C > 0, m, _) +
+                                ._generateMonthYearHeader(e, X, et, J, Q, k > 0 || C > 0, m, f) +
                                 "</div><table class='ui-datepicker-calendar'><thead>" + "<tr>",
                                 A = d ? "<th class='ui-datepicker-week-col'>" + this._get(e,
                                     "weekHeader") + "</th>" : "", w = 0; 7 > w; w++) E = (w + u) %
@@ -24427,7 +23329,7 @@ Object.values || (Object.values = function (e) {
                                 ) {
                                 for (S += "<tr>", O = d ? "<td class='ui-datepicker-week-col'>" +
                                     this._get(e, "calculateWeek")(D) + "</td>" : "", w = 0; 7 >
-                                    w; w++) L = f ? f.apply(e.input ? e.input[0] : null, [D]) : [!
+                                    w; w++) L = _ ? _.apply(e.input ? e.input[0] : null, [D]) : [!
                                         0, ""], R = D.getMonth() !== X, $ = R && !v || !L[0] ||
                                     J && J > D || Q && D > Q, O += "<td class='" + ((w + u + 6) %
                                         7 >= 5 ? " ui-datepicker-week-end" : "") + (R ?
@@ -24463,12 +23365,12 @@ Object.values || (Object.values = function (e) {
                     return y += c, e._keyEvent = !1, y
                 },
                 _generateMonthYearHeader: function (e, t, i, n, o, s, a, r) {
-                    var l, c, u, d, h, p, m, _, f = this._get(e, "changeMonth"),
+                    var l, c, u, d, h, p, m, f, _ = this._get(e, "changeMonth"),
                         g = this._get(e, "changeYear"),
                         v = this._get(e, "showMonthAfterYear"),
                         b = "<div class='ui-datepicker-title'>",
                         y = "";
-                    if (s || !f) y += "<span class='ui-datepicker-month'>" + a[t] + "</span>";
+                    if (s || !_) y += "<span class='ui-datepicker-month'>" + a[t] + "</span>";
                     else {
                         for (l = n && n.getFullYear() === i, c = o && o.getFullYear() === i, y +=
                             "<select class='ui-datepicker-month' data-handler='selectMonth' data-event='change'>",
@@ -24477,7 +23379,7 @@ Object.values || (Object.values = function (e) {
                             " selected='selected'" : "") + ">" + r[u] + "</option>");
                         y += "</select>"
                     }
-                    if (v || (b += y + (!s && f && g ? "" : "&#xa0;")), !e.yearshtml)
+                    if (v || (b += y + (!s && _ && g ? "" : "&#xa0;")), !e.yearshtml)
                         if (e.yearshtml = "", s || !g) b += "<span class='ui-datepicker-year'>" +
                             i + "</span>";
                         else {
@@ -24488,14 +23390,14 @@ Object.values || (Object.values = function (e) {
                                         10) : e.match(/[+\-].*/) ? h + parseInt(e, 10) : parseInt(
                                             e, 10);
                                     return isNaN(t) ? h : t
-                                }, m = p(d[0]), _ = Math.max(m, p(d[1] || "")), m = n ? Math.max(
-                                    m, n.getFullYear()) : m, _ = o ? Math.min(_, o
-                            .getFullYear()) : _, e.yearshtml +=
-                                "<select class='ui-datepicker-year' data-handler='selectYear' data-event='change'>"; _ >=
+                                }, m = p(d[0]), f = Math.max(m, p(d[1] || "")), m = n ? Math.max(
+                                    m, n.getFullYear()) : m, f = o ? Math.min(f, o
+                            .getFullYear()) : f, e.yearshtml +=
+                                "<select class='ui-datepicker-year' data-handler='selectYear' data-event='change'>"; f >=
                                 m; m++) e.yearshtml += "<option value='" + m + "'" + (m === i ?
                                 " selected='selected'" : "") + ">" + m + "</option>";
                             e.yearshtml += "</select>", b += e.yearshtml, e.yearshtml = null
-                        } return b += this._get(e, "yearSuffix"), v && (b += (!s && f && g ? "" :
+                        } return b += this._get(e, "yearSuffix"), v && (b += (!s && _ && g ? "" :
                         "&#xa0;") + y), b += "</div>"
                 },
                 _adjustInstDate: function (e, t, i) {
@@ -27463,21 +26365,21 @@ Object.values || (Object.values = function (e) {
                     h = r.test(d),
                     p = h ? "height" : "width",
                     m = h ? "top" : "left",
-                    _ = l.test(d),
-                    f = {},
+                    f = l.test(d),
+                    _ = {},
                     g = "show" === u;
                 a.parent()
                     .is(".ui-effects-wrapper") ? e.effects.save(a.parent(), c) : e.effects.save(a, c), a
                     .show(), n = e.effects.createWrapper(a)
                     .css({
                         overflow: "hidden"
-                    }), o = n[p](), s = parseFloat(n.css(m)) || 0, f[p] = g ? o : 0, _ || (a.css(h ?
+                    }), o = n[p](), s = parseFloat(n.css(m)) || 0, _[p] = g ? o : 0, f || (a.css(h ?
                             "bottom" : "right", 0)
                         .css(h ? "top" : "left", "auto")
                         .css({
                             position: "absolute"
-                        }), f[m] = g ? s : o + s), g && (n.css(p, 0), _ || n.css(m, s + o)), n.animate(
-                    f, {
+                        }), _[m] = g ? s : o + s), g && (n.css(p, 0), f || n.css(m, s + o)), n.animate(
+                    _, {
                         duration: t.duration,
                         easing: t.easing,
                         queue: !1,
@@ -27496,8 +26398,8 @@ Object.values || (Object.values = function (e) {
                     h = t.distance,
                     p = t.times || 5,
                     m = 2 * p + (u || c ? 1 : 0),
-                    _ = t.duration / m,
-                    f = t.easing,
+                    f = t.duration / m,
+                    _ = t.easing,
                     g = "up" === d || "down" === d ? "top" : "left",
                     v = "up" === d || "left" === d,
                     b = a.queue(),
@@ -27508,12 +26410,12 @@ Object.values || (Object.values = function (e) {
                             opacity: 1
                         }, s[g] = 0, a.css("opacity", 0)
                         .css(g, v ? 2 * -h : 2 * h)
-                        .animate(s, _, f)), c && (h /= Math.pow(2, p - 1)), s = {}, s[g] = 0, n = 0; p >
-                    n; n++) o = {}, o[g] = (v ? "-=" : "+=") + h, a.animate(o, _, f)
-                    .animate(s, _, f), h = c ? 2 * h : h / 2;
+                        .animate(s, f, _)), c && (h /= Math.pow(2, p - 1)), s = {}, s[g] = 0, n = 0; p >
+                    n; n++) o = {}, o[g] = (v ? "-=" : "+=") + h, a.animate(o, f, _)
+                    .animate(s, f, _), h = c ? 2 * h : h / 2;
                 c && (o = {
                     opacity: 0
-                }, o[g] = (v ? "-=" : "+=") + h, a.animate(o, _, f)), a.queue(function () {
+                }, o[g] = (v ? "-=" : "+=") + h, a.animate(o, f, _)), a.queue(function () {
                     c && a.hide(), e.effects.restore(a, r), e.effects.removeWrapper(a), i()
                 }), y > 1 && b.splice.apply(b, [1, 0].concat(b.splice(y, m + 1))), a.dequeue()
             }, e.effects.effect.clip = function (t, i) {
@@ -27571,21 +26473,21 @@ Object.values || (Object.values = function (e) {
                     p.css({
                             visibility: "visible"
                         }), e(b)
-                        .remove(), _ || p.hide(), i()
+                        .remove(), f || p.hide(), i()
                 }
                 var s, a, r, l, c, u, d = t.pieces ? Math.round(Math.sqrt(t.pieces)) : 3,
                     h = d,
                     p = e(this),
                     m = e.effects.setMode(p, t.mode || "hide"),
-                    _ = "show" === m,
-                    f = p.show()
+                    f = "show" === m,
+                    _ = p.show()
                     .css("visibility", "hidden")
                     .offset(),
                     g = Math.ceil(p.outerWidth() / h),
                     v = Math.ceil(p.outerHeight() / d),
                     b = [];
                 for (s = 0; d > s; s++)
-                    for (l = f.top + s * v, u = s - (d - 1) / 2, a = 0; h > a; a++) r = f.left + a * g,
+                    for (l = _.top + s * v, u = s - (d - 1) / 2, a = 0; h > a; a++) r = _.left + a * g,
                         c = a - (h - 1) / 2, p.clone()
                         .appendTo("body")
                         .wrap("<div></div>")
@@ -27602,14 +26504,14 @@ Object.values || (Object.values = function (e) {
                             overflow: "hidden",
                             width: g,
                             height: v,
-                            left: r + (_ ? c * g : 0),
-                            top: l + (_ ? u * v : 0),
-                            opacity: _ ? 0 : 1
+                            left: r + (f ? c * g : 0),
+                            top: l + (f ? u * v : 0),
+                            opacity: f ? 0 : 1
                         })
                         .animate({
-                            left: r + (_ ? 0 : c * g),
-                            top: l + (_ ? 0 : u * v),
-                            opacity: _ ? 1 : 0
+                            left: r + (f ? 0 : c * g),
+                            top: l + (f ? 0 : u * v),
+                            opacity: f ? 1 : 0
                         }, t.duration || 500, t.easing, n)
             }, e.effects.effect.fade = function (t, i) {
                 var n = e(this),
@@ -27633,8 +26535,8 @@ Object.values || (Object.values = function (e) {
                     h = !!t.horizFirst,
                     p = l !== h,
                     m = p ? ["width", "height"] : ["height", "width"],
-                    _ = t.duration / 2,
-                    f = {},
+                    f = t.duration / 2,
+                    _ = {},
                     g = {};
                 e.effects.save(s, a), s.show(), n = e.effects.createWrapper(s)
                     .css({
@@ -27646,8 +26548,8 @@ Object.values || (Object.values = function (e) {
                     } : {
                         height: u,
                         width: 0
-                    }), f[m[0]] = l ? o[0] : u, g[m[1]] = l ? o[1] : 0, n.animate(f, _, t.easing)
-                    .animate(g, _, t.easing, function () {
+                    }), _[m[0]] = l ? o[0] : u, g[m[1]] = l ? o[1] : 0, n.animate(_, f, t.easing)
+                    .animate(g, f, t.easing, function () {
                         c && s.hide(), e.effects.restore(s, a), e.effects.removeWrapper(s), i()
                     })
             }, e.effects.effect.highlight = function (t, i) {
@@ -27681,8 +26583,8 @@ Object.values || (Object.values = function (e) {
                     h = ["borderLeftWidth", "borderRightWidth", "paddingLeft", "paddingRight"],
                     p = e.effects.setMode(a, t.mode || "effect"),
                     m = t.restore || "effect" !== p,
-                    _ = t.scale || "both",
-                    f = t.origin || ["middle", "center"],
+                    f = t.scale || "both",
+                    _ = t.origin || ["middle", "center"],
                     g = a.css("position"),
                     v = m ? r : l,
                     b = {
@@ -27707,19 +26609,19 @@ Object.values || (Object.values = function (e) {
                             y: a.to.height / n.height,
                             x: a.to.width / n.width
                         }
-                    }, ("box" === _ || "both" === _) && (s.from.y !== s.to.y && (v = v.concat(d), a.from =
+                    }, ("box" === f || "both" === f) && (s.from.y !== s.to.y && (v = v.concat(d), a.from =
                         e.effects.setTransition(a, d, s.from.y, a.from), a.to = e.effects
                         .setTransition(a, d, s.to.y, a.to)), s.from.x !== s.to.x && (v = v.concat(h),
                         a.from = e.effects.setTransition(a, h, s.from.x, a.from), a.to = e.effects
-                        .setTransition(a, h, s.to.x, a.to))), ("content" === _ || "both" === _) && s.from
+                        .setTransition(a, h, s.to.x, a.to))), ("content" === f || "both" === f) && s.from
                     .y !== s.to.y && (v = v.concat(u)
                         .concat(c), a.from = e.effects.setTransition(a, u, s.from.y, a.from), a.to = e
                         .effects.setTransition(a, u, s.to.y, a.to)), e.effects.save(a, v), a.show(), e
                     .effects.createWrapper(a), a.css("overflow", "hidden")
-                    .css(a.from), f && (o = e.effects.getBaseline(f, n), a.from.top = (n.outerHeight - a
+                    .css(a.from), _ && (o = e.effects.getBaseline(_, n), a.from.top = (n.outerHeight - a
                             .outerHeight()) * o.y, a.from.left = (n.outerWidth - a.outerWidth()) * o.x, a
                         .to.top = (n.outerHeight - a.to.outerHeight) * o.y, a.to.left = (n.outerWidth - a
-                            .to.outerWidth) * o.x), a.css(a.from), ("content" === _ || "both" === _) && (
+                            .to.outerWidth) * o.x), a.css(a.from), ("content" === f || "both" === f) && (
                         d = d.concat(["marginTop", "marginBottom"])
                         .concat(u), h = h.concat(["marginLeft", "marginRight"]), c = r.concat(d)
                         .concat(h), a.find("*[width]")
@@ -27860,15 +26762,15 @@ Object.values || (Object.values = function (e) {
                     h = "up" === r || "down" === r ? "top" : "left",
                     p = "up" === r || "left" === r,
                     m = {},
-                    _ = {},
                     f = {},
+                    _ = {},
                     g = o.queue(),
                     v = g.length;
                 for (e.effects.save(o, s), o.show(), e.effects.createWrapper(o), m[h] = (p ? "-=" :
-                    "+=") + l, _[h] = (p ? "+=" : "-=") + 2 * l, f[h] = (p ? "-=" : "+=") + 2 * l, o
-                    .animate(m, d, t.easing), n = 1; c > n; n++) o.animate(_, d, t.easing)
-                    .animate(f, d, t.easing);
-                o.animate(_, d, t.easing)
+                    "+=") + l, f[h] = (p ? "+=" : "-=") + 2 * l, _[h] = (p ? "-=" : "+=") + 2 * l, o
+                    .animate(m, d, t.easing), n = 1; c > n; n++) o.animate(f, d, t.easing)
+                    .animate(_, d, t.easing);
+                o.animate(f, d, t.easing)
                     .animate(m, d / 2, t.easing)
                     .queue(function () {
                         "hide" === a && o.hide(), e.effects.restore(o, s), e.effects.removeWrapper(o),
@@ -28232,67 +27134,67 @@ Object.values || (Object.values = function (e) {
                 }
 
                 function r(n) {
-                    var s, a, r, l, c, u, d, h, p, m, _ = n.tBodies,
-                        f = n.config,
-                        g = f.parsers,
+                    var s, a, r, l, c, u, d, h, p, m, f = n.tBodies,
+                        _ = n.config,
+                        g = _.parsers,
                         v = [];
-                    if (f.cache = {}, !g) return f.debug ? t(
+                    if (_.cache = {}, !g) return _.debug ? t(
                         "Warning: *Empty table!* Not building a cache") : "";
-                    for (f.debug && (m = new Date), f.showProcessing && x.isProcessing(n, !0), d =
-                        0; d < _.length; d++)
-                        if (f.cache[d] = {
+                    for (_.debug && (m = new Date), _.showProcessing && x.isProcessing(n, !0), d =
+                        0; d < f.length; d++)
+                        if (_.cache[d] = {
                                 row: [],
                                 normalized: []
-                            }, !e(_[d])
-                            .hasClass(f.cssInfoBlock)) {
-                            for (s = _[d] && _[d].rows.length || 0, a = _[d].rows[0] && _[d].rows[
+                            }, !e(f[d])
+                            .hasClass(_.cssInfoBlock)) {
+                            for (s = f[d] && f[d].rows.length || 0, a = f[d].rows[0] && f[d].rows[
                                     0].cells.length || 0, c = 0; s > c; ++c)
-                                if (h = e(_[d].rows[c]), p = [], h.hasClass(f.cssChildRow) &&
-                                    0 !== c) f.cache[d].row[f.cache[d].row.length - 1] = f.cache[
-                                        d].row[f.cache[d].row.length - 1].add(h), h.prev()
-                                    .hasClass(f.cssChildRow) || h.prev()
+                                if (h = e(f[d].rows[c]), p = [], h.hasClass(_.cssChildRow) &&
+                                    0 !== c) _.cache[d].row[_.cache[d].row.length - 1] = _.cache[
+                                        d].row[_.cache[d].row.length - 1].add(h), h.prev()
+                                    .hasClass(_.cssChildRow) || h.prev()
                                     .addClass(x.css.cssHasChild);
                                 else {
-                                    for (f.cache[d].row.push(h), u = 0; a > u; ++u) "undefined" !=
+                                    for (_.cache[d].row.push(h), u = 0; a > u; ++u) "undefined" !=
                                         typeof g[u] ? (r = o(n, h[0].cells[u], u), l = g[u]
                                             .format(r, n, h[0].cells[u], u), p.push(l),
                                             "numeric" === (g[u].type || "")
                                             .toLowerCase() && (v[u] = Math.max(Math.abs(l) || 0,
-                                                v[u] || 0))) : f.debug && t(
+                                                v[u] || 0))) : _.debug && t(
                                             "No parser found for cell:", h[0].cells[u],
                                             "does it have a header?");
-                                    p.push(f.cache[d].normalized.length), f.cache[d].normalized
+                                    p.push(_.cache[d].normalized.length), _.cache[d].normalized
                                         .push(p)
-                                } f.cache[d].colMax = v
-                        } f.showProcessing && x.isProcessing(n), f.debug && i(
+                                } _.cache[d].colMax = v
+                        } _.showProcessing && x.isProcessing(n), _.debug && i(
                         "Building cache for " + s + " rows", m)
                 }
 
                 function l(t, o) {
-                    var s, a, r, l, c, u, d, h, p, m, _, f, g = t.config,
+                    var s, a, r, l, c, u, d, h, p, m, f, _, g = t.config,
                         v = g.widgetOptions,
                         b = t.tBodies,
                         y = [],
                         w = g.cache;
                     if (n(w)) return g.appender ? g.appender(t, y) : t.isUpdating ? g.$table
                         .trigger("updateComplete", t) : "";
-                    for (g.debug && (f = new Date), p = 0; p < b.length; p++)
+                    for (g.debug && (_ = new Date), p = 0; p < b.length; p++)
                         if (c = e(b[p]), c.length && !c.hasClass(g.cssInfoBlock)) {
                             for (u = x.processTbody(t, c, !0), s = w[p].row, a = w[p].normalized,
                                 r = a.length, l = r ? a[0].length - 1 : 0, d = 0; r > d; d++)
-                                if (_ = a[d][l], y.push(s[_]), !g.appender || g.pager && (!g.pager
+                                if (f = a[d][l], y.push(s[f]), !g.appender || g.pager && (!g.pager
                                         .removeRows || !v.pager_removeRows) && !g.pager.ajax)
-                                    for (m = s[_].length, h = 0; m > h; h++) u.append(s[_][h]);
+                                    for (m = s[f].length, h = 0; m > h; h++) u.append(s[f][h]);
                             x.processTbody(t, u, !1)
-                        } g.appender && g.appender(t, y), g.debug && i("Rebuilt table", f), o || g
+                        } g.appender && g.appender(t, y), g.debug && i("Rebuilt table", _), o || g
                         .appender || x.applyWidget(t), t.isUpdating && g.$table.trigger(
                             "updateComplete", t)
                 }
 
                 function c(t) {
                     var i, n, o, s, a, r, l, c, u, d, h, p, m = [],
-                        _ = {},
-                        f = 0,
+                        f = {},
+                        _ = 0,
                         g = e(t)
                         .children("thead, tfoot")
                         .children("tr");
@@ -28304,14 +27206,14 @@ Object.values || (Object.values = function (e) {
                                 if ("undefined" == typeof m[l][o]) {
                                     h = o;
                                     break
-                                } for (_[c] = h, f = Math.max(h, f), e(a)
+                                } for (f[c] = h, _ = Math.max(h, _), e(a)
                                 .attr({
                                     "data-column": h
                                 }), o = l; l + u > o; o++)
                                 for ("undefined" == typeof m[o] && (m[o] = []), p = m[o], s =
                                     h; h + d > s; s++) p[s] = "x"
                         }
-                    t.config.columns = f + 1
+                    t.config.columns = _ + 1
                 }
 
                 function u(e) {
@@ -28402,7 +27304,7 @@ Object.values || (Object.values = function (e) {
                         })
                 }
 
-                function _(t) {
+                function f(t) {
                     if (t.config.widthFixed && 0 === e(t)
                         .find("colgroup")
                         .length) {
@@ -28421,7 +27323,7 @@ Object.values || (Object.values = function (e) {
                     }
                 }
 
-                function f(t, i) {
+                function _(t, i) {
                     var n, o, s, a = t.config,
                         r = i || a.sortList;
                     a.sortList = [], e.each(r, function (t, i) {
@@ -28474,7 +27376,7 @@ Object.values || (Object.values = function (e) {
                 }
 
                 function b(e) {
-                    var t, o, s, a, r, l, c, u, d, h, p, m, _, f = 0,
+                    var t, o, s, a, r, l, c, u, d, h, p, m, f, _ = 0,
                         v = e.config,
                         b = v.textSorter || "",
                         y = v.sortList,
@@ -28485,19 +27387,19 @@ Object.values || (Object.values = function (e) {
                             l = v.cache[o].normalized, c = l.length, d = l && l[0] ? l[0].length -
                             1 : 0, l.sort(function (i, n) {
                                 for (t = 0; w > t; t++) {
-                                    if (a = y[t][0], u = y[t][1], f = 0 === u, v.sortStable &&
+                                    if (a = y[t][0], u = y[t][1], _ = 0 === u, v.sortStable &&
                                         i[a] === n[a] && 1 === w) return i[d] - n[d];
                                     if (s = /n/i.test(g(v.parsers, a)), s && v.strings[a] ? (
                                             s = "boolean" == typeof v.string[v.strings[a]] ? (
-                                                f ? 1 : -1) * (v.string[v.strings[a]] ? -1 :
+                                                _ ? 1 : -1) * (v.string[v.strings[a]] ? -1 :
                                                 1) : v.strings[a] ? v.string[v.strings[a]] ||
                                             0 : 0, p = v.numberSorter ? v.numberSorter(i[a],
-                                                n[a], f, r[a], e) : x["sortNumeric" + (f ?
+                                                n[a], _, r[a], e) : x["sortNumeric" + (_ ?
                                                 "Asc" : "Desc")](i[a], n[a], s, r[a], a, e)) :
-                                        (m = f ? i : n, _ = f ? n : i, p = "function" ==
-                                            typeof b ? b(m[a], _[a], f, a, e) : "object" ==
-                                            typeof b && b.hasOwnProperty(a) ? b[a](m[a], _[a],
-                                                f, a, e) : x["sortNatural" + (f ? "Asc" :
+                                        (m = _ ? i : n, f = _ ? n : i, p = "function" ==
+                                            typeof b ? b(m[a], f[a], _, a, e) : "object" ==
+                                            typeof b && b.hasOwnProperty(a) ? b[a](m[a], f[a],
+                                                _, a, e) : x["sortNatural" + (_ ? "Asc" :
                                                 "Desc")](i[a], n[a], a, e, v)), p) return p
                                 }
                                 return i[d] - n[d]
@@ -28562,16 +27464,16 @@ Object.values || (Object.values = function (e) {
                             else {
                                 var u, d, m = r.filter("tr")
                                     .length,
-                                    _ = [],
-                                    f = r[0].cells.length,
+                                    f = [],
+                                    _ = r[0].cells.length,
                                     g = s.find("tbody")
                                     .index(r.parents("tbody")
                                         .filter(":first"));
                                 for (i.parsers || a(t), u = 0; m > u; u++) {
-                                    for (d = 0; f > d; d++) _[d] = i.parsers[d].format(o(t, r[
+                                    for (d = 0; _ > d; d++) f[d] = i.parsers[d].format(o(t, r[
                                         u].cells[d], d), t, r[u].cells[d], d);
-                                    _.push(i.cache[g].row.length), i.cache[g].row.push([r[
-                                        u]]), i.cache[g].normalized.push(_), _ = []
+                                    f.push(i.cache[g].row.length), i.cache[g].row.push([r[
+                                        u]]), i.cache[g].normalized.push(f), f = []
                                 }
                                 w(s, l, c)
                             }
@@ -28581,7 +27483,7 @@ Object.values || (Object.values = function (e) {
                         })
                         .bind("sorton" + i.namespace, function (e, i, o, a) {
                             var c = t.config;
-                            e.stopPropagation(), s.trigger("sortStart", this), f(t, i), m(t),
+                            e.stopPropagation(), s.trigger("sortStart", this), _(t, i), m(t),
                                 c.delayInit && n(c.cache) && r(t), s.trigger("sortBegin",
                                     this), b(t), l(t, a), s.trigger("sortEnd", this)
                                 .trigger("applyWidgets"), "function" == typeof o && o(t)
@@ -28727,7 +27629,7 @@ Object.values || (Object.values = function (e) {
                             "aria-relevant": "all"
                         }), n.$table.find("caption")
                         .length && n.$table.attr("aria-labelledby", "theCaption"), n
-                        .widgetInit = {}, d(i), _(i), a(i), n.delayInit || r(i), x.bindEvents(
+                        .widgetInit = {}, d(i), f(i), a(i), n.delayInit || r(i), x.bindEvents(
                             i, n.$headers), k(i), n.supportsDataObject && "undefined" !=
                         typeof s.data()
                         .sortlist ? n.sortList = s.data()
@@ -29204,13 +28106,13 @@ Object.values || (Object.values = function (e) {
                     p = n === !0 ? u.offsetWidth * u.offsetHeight : !0;
                 if ("function" == typeof u.getBoundingClientRect) {
                     var m = u.getBoundingClientRect(),
-                        _ = r ? m.top - c.top >= 0 && m.top < h + c.top : m.top >= 0 && m.top < h,
-                        f = r ? m.bottom - c.top > 0 && m.bottom <= h + c.top : m.bottom > 0 && m
+                        f = r ? m.top - c.top >= 0 && m.top < h + c.top : m.top >= 0 && m.top < h,
+                        _ = r ? m.bottom - c.top > 0 && m.bottom <= h + c.top : m.bottom > 0 && m
                         .bottom <= h,
                         g = r ? m.left - c.left >= 0 && m.left < d + c.left : m.left >= 0 && m.left < d,
                         v = r ? m.right - c.left > 0 && m.right < d + c.left : m.right > 0 && m.right <=
                         d,
-                        b = i ? _ || f : _ && f,
+                        b = i ? f || _ : f && _,
                         y = i ? g || v : g && v,
                         b = m.top < 0 && m.bottom > h ? !0 : b,
                         y = m.left < 0 && m.right > d ? !0 : y;
@@ -30989,14 +29891,14 @@ Object.values || (Object.values = function (e) {
             return window["webkit" + e] || window["moz" + e] || window["ms" + e]
         }
 
-        function _(e) {
+        function f(e) {
             var t = +new Date,
                 i = Math.max(0, 16 - (t - ai));
             return ai = t + i, window.setTimeout(e, i)
         }
 
-        function f(e, t, n) {
-            return n && ri === _ ? (e.call(t), void 0) : ri.call(window, i(e, t))
+        function _(e, t, n) {
+            return n && ri === f ? (e.call(t), void 0) : ri.call(window, i(e, t))
         }
 
         function g(e) {
@@ -31285,21 +30187,21 @@ Object.values || (Object.values = function (e) {
         }
 
         function ct() {
-            _t(window, "dragstart", kt)
+            ft(window, "dragstart", kt)
         }
 
         function ut() {
-            ft(window, "dragstart", kt)
+            _t(window, "dragstart", kt)
         }
 
         function dt(e) {
             for (; - 1 === e.tabIndex;) e = e.parentNode;
-            e.style && (ht(), fn = e, gn = e.style.outline, e.style.outline = "none", _t(window,
+            e.style && (ht(), _n = e, gn = e.style.outline, e.style.outline = "none", ft(window,
                 "keydown", ht))
         }
 
         function ht() {
-            fn && (fn.style.outline = gn, fn = void 0, gn = void 0, ft(window, "keydown", ht))
+            _n && (_n.style.outline = gn, _n = void 0, gn = void 0, _t(window, "keydown", ht))
         }
 
         function pt(e) {
@@ -31316,7 +30218,7 @@ Object.values || (Object.values = function (e) {
             }
         }
 
-        function _t(e, t, i, n) {
+        function ft(e, t, i, n) {
             if ("object" == typeof t)
                 for (var o in t) gt(e, o, t[o], i);
             else
@@ -31325,7 +30227,7 @@ Object.values || (Object.values = function (e) {
             return this
         }
 
-        function ft(e, t, i, n) {
+        function _t(e, t, i, n) {
             if ("object" == typeof t)
                 for (var o in t) vt(e, o, t[o], i);
             else if (t)
@@ -31378,7 +30280,7 @@ Object.values || (Object.values = function (e) {
         }
 
         function wt(e) {
-            return _t(e, "mousedown touchstart dblclick", bt), gt(e, "click", Tt), this
+            return ft(e, "mousedown touchstart dblclick", bt), gt(e, "click", Tt), this
         }
 
         function kt(e) {
@@ -31598,7 +30500,7 @@ Object.values || (Object.values = function (e) {
         }
 
         function Jt(e, t) {
-            return new fo(e, t)
+            return new _o(e, t)
         }
 
         function Qt(e) {
@@ -31625,7 +30527,7 @@ Object.values || (Object.values = function (e) {
             },
             si = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=",
             ai = 0,
-            ri = window.requestAnimationFrame || m("RequestAnimationFrame") || _,
+            ri = window.requestAnimationFrame || m("RequestAnimationFrame") || f,
             li = window.cancelAnimationFrame || m("CancelAnimationFrame") || m(
                 "CancelRequestAnimationFrame") || function (e) {
                 window.clearTimeout(e)
@@ -31651,7 +30553,7 @@ Object.values || (Object.values = function (e) {
                 emptyImageUrl: si,
                 requestFn: ri,
                 cancelFn: li,
-                requestAnimFrame: f,
+                requestAnimFrame: _,
                 cancelAnimFrame: g
             });
         v.extend = function (e) {
@@ -32098,7 +31000,7 @@ Object.values || (Object.values = function (e) {
                     return this.R * l
                 }
             }),
-            _i = {
+            fi = {
                 R: 6378137,
                 MAX_LATITUDE: 85.0511287798,
                 project: function (e) {
@@ -32131,11 +31033,11 @@ Object.values || (Object.values = function (e) {
                     ._c)
             }
         };
-        var fi, gi, vi, bi = t({}, mi, {
+        var _i, gi, vi, bi = t({}, mi, {
                 code: "EPSG:3857",
-                projection: _i,
+                projection: fi,
                 transformation: function () {
-                    var e = .5 / (Math.PI * _i.R);
+                    var e = .5 / (Math.PI * fi.R);
                     return E(e, .5, -e, .5)
                 }()
             }),
@@ -32232,24 +31134,24 @@ Object.values || (Object.values = function (e) {
             hn = st(["transform", "webkitTransform", "OTransform", "MozTransform", "msTransform"]),
             pn = st(["webkitTransition", "transition", "OTransition", "MozTransition", "msTransition"]),
             mn = "webkitTransition" === pn || "OTransition" === pn ? pn + "End" : "transitionend";
-        if ("onselectstart" in document) fi = function () {
-            _t(window, "selectstart", kt)
-        }, gi = function () {
+        if ("onselectstart" in document) _i = function () {
             ft(window, "selectstart", kt)
+        }, gi = function () {
+            _t(window, "selectstart", kt)
         };
         else {
-            var _n = st(["userSelect", "WebkitUserSelect", "OUserSelect", "MozUserSelect",
+            var fn = st(["userSelect", "WebkitUserSelect", "OUserSelect", "MozUserSelect",
                 "msUserSelect"]);
-            fi = function () {
-                if (_n) {
+            _i = function () {
+                if (fn) {
                     var e = document.documentElement.style;
-                    vi = e[_n], e[_n] = "none"
+                    vi = e[fn], e[fn] = "none"
                 }
             }, gi = function () {
-                _n && (document.documentElement.style[_n] = vi, vi = void 0)
+                fn && (document.documentElement.style[fn] = vi, vi = void 0)
             }
         }
-        var fn, gn, vn, bn = (Object.freeze || Object)({
+        var _n, gn, vn, bn = (Object.freeze || Object)({
                 TRANSFORM: hn,
                 TRANSITION: pn,
                 TRANSITION_END: mn,
@@ -32270,7 +31172,7 @@ Object.values || (Object.values = function (e) {
                 setTransform: at,
                 setPosition: rt,
                 getPosition: lt,
-                disableTextSelection: fi,
+                disableTextSelection: _i,
                 enableTextSelection: gi,
                 disableImageDrag: ct,
                 enableImageDrag: ut,
@@ -32283,8 +31185,8 @@ Object.values || (Object.values = function (e) {
             wn = Oi && ji ? 2 * window.devicePixelRatio : Mi ? window.devicePixelRatio : 1,
             kn = {},
             xn = (Object.freeze || Object)({
-                on: _t,
-                off: ft,
+                on: ft,
+                off: _t,
                 stopPropagation: bt,
                 disableScrollPropagation: yt,
                 disableClickPropagation: wt,
@@ -32295,8 +31197,8 @@ Object.values || (Object.values = function (e) {
                 fakeStop: Tt,
                 skipped: St,
                 isExternalTarget: At,
-                addListener: _t,
-                removeListener: ft
+                addListener: ft,
+                removeListener: _t
             }),
             Cn = di.extend({
                 run: function (e, t, i, n) {
@@ -32309,7 +31211,7 @@ Object.values || (Object.values = function (e) {
                     this._inProgress && (this._step(!0), this._complete())
                 },
                 _animate: function () {
-                    this._animId = f(this._animate, this), this._step()
+                    this._animId = _(this._animate, this), this._step()
                 },
                 _step: function (e) {
                     var t = +new Date - this._startTime,
@@ -32357,7 +31259,7 @@ Object.values || (Object.values = function (e) {
                             reset: !0
                         }), this.callInitHooks(), this._zoomAnimated = pn && Fi && !Zi && this
                         .options.zoomAnimation, this._zoomAnimated && (this._createAnimProxy(),
-                            _t(this._proxy, mn, this._catchTransitionEnd, this)), this._addLayers(
+                            ft(this._proxy, mn, this._catchTransitionEnd, this)), this._addLayers(
                             this.options.layers)
                 },
                 setView: function (e, i, n) {
@@ -32455,8 +31357,8 @@ Object.values || (Object.values = function (e) {
                 },
                 flyTo: function (e, t, i) {
                     function n(e) {
-                        var t = (g * g - _ * _ + (e ? -1 : 1) * y * y * v * v) / (2 * (e ? g :
-                                _) * y * v),
+                        var t = (g * g - f * f + (e ? -1 : 1) * y * y * v * v) / (2 * (e ? g :
+                                f) * y * v),
                             i = Math.sqrt(t * t + 1) - t;
                         return 1e-9 > i ? -18 : Math.log(i)
                     }
@@ -32474,11 +31376,11 @@ Object.values || (Object.values = function (e) {
                     }
 
                     function r(e) {
-                        return _ * (s(w) / s(w + b * e))
+                        return f * (s(w) / s(w + b * e))
                     }
 
                     function l(e) {
-                        return _ * (s(w) * a(w + b * e) - o(w)) / y
+                        return f * (s(w) * a(w + b * e) - o(w)) / y
                     }
 
                     function c(e) {
@@ -32488,9 +31390,9 @@ Object.values || (Object.values = function (e) {
                     function u() {
                         var i = (Date.now() - k) / C,
                             n = c(i) * x;
-                        1 >= i ? (this._flyToFrame = f(u, this), this._move(this.unproject(d.add(h
+                        1 >= i ? (this._flyToFrame = _(u, this), this._move(this.unproject(d.add(h
                                     .subtract(d)
-                                    .multiplyBy(l(n) / v)), m), this.getScaleZoom(_ / r(n),
+                                    .multiplyBy(l(n) / v)), m), this.getScaleZoom(f / r(n),
                                 m), {
                                     flyTo: !0
                                 })) : this._move(e, t)
@@ -32504,8 +31406,8 @@ Object.values || (Object.values = function (e) {
                         p = this.getSize(),
                         m = this._zoom;
                     e = S(e), t = void 0 === t ? m : t;
-                    var _ = Math.max(p.x, p.y),
-                        g = _ * this.getZoomScale(m, t),
+                    var f = Math.max(p.x, p.y),
+                        g = f * this.getZoomScale(m, t),
                         v = h.distanceTo(d) || 1,
                         b = 1.42,
                         y = b * b,
@@ -32798,7 +31700,7 @@ Object.values || (Object.values = function (e) {
                     var t = this._container = q(e);
                     if (!t) throw new Error("Map container not found.");
                     if (t._leaflet_id) throw new Error("Map container is already initialized.");
-                    _t(t, "scroll", this._onScroll, this), this._containerId = n(t)
+                    ft(t, "scroll", this._onScroll, this), this._containerId = n(t)
                 },
                 _initLayout: function () {
                     var e = this._container;
@@ -32862,7 +31764,7 @@ Object.values || (Object.values = function (e) {
                 },
                 _initEvents: function (e) {
                     this._targets = {}, this._targets[n(this._container)] = this;
-                    var t = e ? ft : _t;
+                    var t = e ? _t : ft;
                     t(this._container,
                             "click dblclick mousedown mouseup mouseover mouseout mousemove contextmenu keypress",
                             this._handleDOMEvent, this), this.options.trackResize && t(window,
@@ -32871,7 +31773,7 @@ Object.values || (Object.values = function (e) {
                         .call(this, "moveend", this._onMoveEnd)
                 },
                 _onResize: function () {
-                    g(this._resizeRequest), this._resizeRequest = f(function () {
+                    g(this._resizeRequest), this._resizeRequest = _(function () {
                         this.invalidateSize({
                             debounceMoveend: !0
                         })
@@ -33069,7 +31971,7 @@ Object.values || (Object.values = function (e) {
                         o = this._getCenterOffset(e)
                         ._divideBy(1 - 1 / n);
                     return !(!0 !== i.animate && !this.getSize()
-                        .contains(o) || (f(function () {
+                        .contains(o) || (_(function () {
                             this._moveStart(!0, !1)
                                 ._animateZoom(e, t, !0)
                         }, this), 0))
@@ -33086,7 +31988,7 @@ Object.values || (Object.values = function (e) {
                 _onZoomTransitionEnd: function () {
                     this._animatingZoom && (this._mapPane && et(this._mapPane,
                         "leaflet-zoom-anim"), this._animatingZoom = !1, this._move(this
-                        ._animateToCenter, this._animateToZoom), f(function () {
+                        ._animateToCenter, this._animateToZoom), _(function () {
                         this._moveEnd(!0)
                     }, this))
                 }
@@ -33216,13 +32118,13 @@ Object.values || (Object.values = function (e) {
                         i = this.options.collapsed;
                     t.setAttribute("aria-haspopup", !0), wt(t), yt(t);
                     var n = this._section = Z("section", e + "-list");
-                    i && (this._map.on("click", this.collapse, this), Ti || _t(t, {
+                    i && (this._map.on("click", this.collapse, this), Ti || ft(t, {
                         mouseenter: this.expand,
                         mouseleave: this.collapse
                     }, this));
                     var o = this._layersLink = Z("a", e + "-toggle", t);
-                    o.href = "#", o.title = "Layers", Ui ? (_t(o, "click", xt), _t(o, "click",
-                            this.expand, this)) : _t(o, "focus", this.expand, this), i || this
+                    o.href = "#", o.title = "Layers", Ui ? (ft(o, "click", xt), ft(o, "click",
+                            this.expand, this)) : ft(o, "focus", this.expand, this), i || this
                         .expand(), this._baseLayersList = Z("div", e + "-base", n), this
                         ._separator = Z("div", e + "-separator", n), this._overlaysList = Z("div",
                             e + "-overlays", n), t.appendChild(n)
@@ -33274,7 +32176,7 @@ Object.values || (Object.values = function (e) {
                             .type = "checkbox", t.className = "leaflet-control-layers-selector", t
                             .defaultChecked = o) : t = this._createRadioElement(
                             "leaflet-base-layers", o), this._layerControlInputs.push(t), t
-                        .layerId = n(e.layer), _t(t, "click", this._onInputClick, this);
+                        .layerId = n(e.layer), ft(t, "click", this._onInputClick, this);
                     var s = document.createElement("span");
                     s.innerHTML = " " + e.name;
                     var a = document.createElement("div");
@@ -33350,8 +32252,8 @@ Object.values || (Object.values = function (e) {
                 _createButton: function (e, t, i, n, o) {
                     var s = Z("a", i, n);
                     return s.innerHTML = e, s.href = "#", s.title = t, s.setAttribute("role",
-                            "button"), s.setAttribute("aria-label", t), wt(s), _t(s, "click", xt),
-                        _t(s, "click", o, this), _t(s, "click", this._refocusOnMap, this), s
+                            "button"), s.setAttribute("aria-label", t), wt(s), ft(s, "click", xt),
+                        ft(s, "click", o, this), ft(s, "click", this._refocusOnMap, this), s
                 },
                 _updateDisabled: function () {
                     var e = this._map,
@@ -33514,11 +32416,11 @@ Object.values || (Object.values = function (e) {
                         ._preventOutline = i
                 },
                 enable: function () {
-                    this._enabled || (_t(this._dragStartTarget, Nn, this._onDown, this), this
+                    this._enabled || (ft(this._dragStartTarget, Nn, this._onDown, this), this
                         ._enabled = !0)
                 },
                 disable: function () {
-                    this._enabled && (Rn._dragging === this && this.finishDrag(), ft(this
+                    this._enabled && (Rn._dragging === this && this.finishDrag(), _t(this
                             ._dragStartTarget, Nn, this._onDown, this), this._enabled = !1,
                         this._moved = !1)
                 },
@@ -33526,13 +32428,13 @@ Object.values || (Object.values = function (e) {
                     if (!e._simulated && this._enabled && (this._moved = !1, !(Q(this._element,
                                 "leaflet-zoom-anim") || Rn._dragging || e.shiftKey || 1 !== e
                             .which && 1 !== e.button && !e.touches || (Rn._dragging = this,
-                                this._preventOutline && dt(this._element), ct(), fi(), this
+                                this._preventOutline && dt(this._element), ct(), _i(), this
                                 ._moving)))) {
                         this.fire("down");
                         var t = e.touches ? e.touches[0] : e,
                             i = pt(this._element);
                         this._startPoint = new y(t.clientX, t.clientY), this._parentScale = mt(i),
-                            _t(document, Ln[e.type], this._onMove, this), _t(document, On[e.type],
+                            ft(document, Ln[e.type], this._onMove, this), ft(document, On[e.type],
                                 this._onUp, this)
                     }
                 },
@@ -33556,7 +32458,7 @@ Object.values || (Object.values = function (e) {
                                             .correspondingUseElement), X(this._lastTarget,
                                             "leaflet-drag-target")), this._newPos = this._startPos
                                     .add(i), this._moving = !0, g(this._animRequest), this
-                                    ._lastEvent = e, this._animRequest = f(this._updatePosition,
+                                    ._lastEvent = e, this._animRequest = _(this._updatePosition,
                                         this, !0)))
                         }
                 },
@@ -33572,7 +32474,7 @@ Object.values || (Object.values = function (e) {
                 finishDrag: function () {
                     et(document.body, "leaflet-dragging"), this._lastTarget && (et(this
                         ._lastTarget, "leaflet-drag-target"), this._lastTarget = null);
-                    for (var e in Ln) ft(document, Ln[e], this._onMove, this), ft(document, On[e],
+                    for (var e in Ln) _t(document, Ln[e], this._onMove, this), _t(document, On[e],
                         this._onUp, this);
                     ut(), gi(), this._moved && this._moving && (g(this._animRequest), this.fire(
                         "dragend", {
@@ -33631,7 +32533,7 @@ Object.values || (Object.values = function (e) {
             Wn = (Object.freeze || Object)({
                 LonLat: Bn,
                 Mercator: Hn,
-                SphericalMercator: _i
+                SphericalMercator: fi
             }),
             Vn = t({}, mi, {
                 code: "EPSG:3395",
@@ -33958,7 +32860,7 @@ Object.values || (Object.values = function (e) {
                                 animate: !1
                             }), this._draggable._newPos._add(c), this._draggable._startPos._add(
                             c), rt(t._icon, this._draggable._newPos), this._onDrag(e), this
-                            ._panRequest = f(this._adjustPan.bind(this, e))
+                            ._panRequest = _(this._adjustPan.bind(this, e))
                     }
                 },
                 _onDragStart: function () {
@@ -33967,7 +32869,7 @@ Object.values || (Object.values = function (e) {
                         .fire("dragstart")
                 },
                 _onPreDrag: function (e) {
-                    this._marker.options.autoPan && (g(this._panRequest), this._panRequest = f(
+                    this._marker.options.autoPan && (g(this._panRequest), this._panRequest = _(
                         this._adjustPan.bind(this, e)))
                 },
                 _onDrag: function (e) {
@@ -34785,11 +33687,11 @@ Object.values || (Object.values = function (e) {
                             " leaflet-zoom-animated"),
                         i = this._wrapper = Z("div", e + "-content-wrapper", t);
                     if (this._contentNode = Z("div", e + "-content", i), wt(i), yt(this
-                            ._contentNode), _t(i, "contextmenu", bt), this._tipContainer = Z(
+                            ._contentNode), ft(i, "contextmenu", bt), this._tipContainer = Z(
                             "div", e + "-tip-container", t), this._tip = Z("div", e + "-tip", this
                             ._tipContainer), this.options.closeButton) {
                         var n = this._closeButton = Z("a", e + "-close-button", t);
-                        n.href = "#close", n.innerHTML = "&#215;", _t(n, "click", this
+                        n.href = "#close", n.innerHTML = "&#215;", ft(n, "click", this
                             ._onCloseButtonClick, this)
                     }
                 },
@@ -35089,7 +33991,7 @@ Object.values || (Object.values = function (e) {
             }
         });
         Yn.Default = Jn;
-        var _o = Zn.extend({
+        var fo = Zn.extend({
                 options: {
                     tileSize: 256,
                     opacity: 1,
@@ -35185,7 +34087,7 @@ Object.values || (Object.values = function (e) {
                             }
                         }
                         i && !this._noPrune && this._pruneTiles(), t && (g(this._fadeFrame), this
-                            ._fadeFrame = f(this._updateOpacity, this))
+                            ._fadeFrame = _(this._updateOpacity, this))
                     }
                 },
                 _onOpaqueTile: a,
@@ -35367,9 +34269,9 @@ Object.values || (Object.values = function (e) {
                                         return e.distanceTo(s) - t.distanceTo(s)
                                     }), 0 !== a.length) {
                                     this._loading || (this._loading = !0, this.fire("loading"));
-                                    var _ = document.createDocumentFragment();
-                                    for (h = 0; h < a.length; h++) this._addTile(a[h], _);
-                                    this._level.el.appendChild(_)
+                                    var f = document.createDocumentFragment();
+                                    for (h = 0; h < a.length; h++) this._addTile(a[h], f);
+                                    this._level.el.appendChild(f)
                                 }
                             }
                         }
@@ -35428,7 +34330,7 @@ Object.values || (Object.values = function (e) {
                     var n = this._getTilePos(e),
                         o = this._tileCoordsToKey(e),
                         s = this.createTile(this._wrapCoords(e), i(this._tileReady, this, e));
-                    this._initTile(s), this.createTile.length < 2 && f(i(this._tileReady, this, e,
+                    this._initTile(s), this.createTile.length < 2 && _(i(this._tileReady, this, e,
                         null, s)), rt(s, n), this._tiles[o] = {
                         el: s,
                         coords: e,
@@ -35446,13 +34348,13 @@ Object.values || (Object.values = function (e) {
                     });
                     var o = this._tileCoordsToKey(e);
                     (n = this._tiles[o]) && (n.loaded = +new Date, this._map._fadeAnimated ? (nt(n
-                        .el, 0), g(this._fadeFrame), this._fadeFrame = f(this
+                        .el, 0), g(this._fadeFrame), this._fadeFrame = _(this
                         ._updateOpacity, this)) : (n.active = !0, this._pruneTiles()), t || (
                         X(n.el, "leaflet-tile-loaded"), this.fire("tileload", {
                             tile: n.el,
                             coords: e
                         })), this._noTilesToLoad() && (this._loading = !1, this.fire("load"),
-                        xi || !this._map._fadeAnimated ? f(this._pruneTiles, this) :
+                        xi || !this._map._fadeAnimated ? _(this._pruneTiles, this) :
                         setTimeout(i(this._pruneTiles, this), 250)))
                 },
                 _getTilePos: function (e) {
@@ -35477,7 +34379,7 @@ Object.values || (Object.values = function (e) {
                     return !0
                 }
             }),
-            fo = _o.extend({
+            _o = fo.extend({
                 options: {
                     minZoom: 0,
                     maxZoom: 18,
@@ -35503,7 +34405,7 @@ Object.values || (Object.values = function (e) {
                 },
                 createTile: function (e, t) {
                     var n = document.createElement("img");
-                    return _t(n, "load", i(this._tileOnLoad, this, t, n)), _t(n, "error", i(this
+                    return ft(n, "load", i(this._tileOnLoad, this, t, n)), ft(n, "error", i(this
                             ._tileOnError, this, t, n)), (this.options.crossOrigin || "" === this
                             .options.crossOrigin) && (n.crossOrigin = !0 === this.options
                             .crossOrigin ? "" : this.options.crossOrigin), n.alt = "", n
@@ -35553,15 +34455,15 @@ Object.values || (Object.values = function (e) {
                 },
                 _removeTile: function (e) {
                     var t = this._tiles[e];
-                    return t ? (Ei || t.el.setAttribute("src", si), _o.prototype._removeTile.call(
+                    return t ? (Ei || t.el.setAttribute("src", si), fo.prototype._removeTile.call(
                         this, e)) : void 0
                 },
                 _tileReady: function (e, t, i) {
-                    return !this._map || i && i.getAttribute("src") === si ? void 0 : _o.prototype
+                    return !this._map || i && i.getAttribute("src") === si ? void 0 : fo.prototype
                         ._tileReady.call(this, e, t, i)
                 }
             }),
-            go = fo.extend({
+            go = _o.extend({
                 defaultWmsParams: {
                     service: "WMS",
                     request: "GetMap",
@@ -35588,7 +34490,7 @@ Object.values || (Object.values = function (e) {
                     this._crs = this.options.crs || e.options.crs, this._wmsVersion = parseFloat(
                         this.wmsParams.version);
                     var t = this._wmsVersion >= 1.3 ? "crs" : "srs";
-                    this.wmsParams[t] = this._crs.code, fo.prototype.onAdd.call(this, e)
+                    this.wmsParams[t] = this._crs.code, _o.prototype.onAdd.call(this, e)
                 },
                 getTileUrl: function (e) {
                     var t = this._tileCoordsToNwSe(e),
@@ -35599,7 +34501,7 @@ Object.values || (Object.values = function (e) {
                         a = (this._wmsVersion >= 1.3 && this._crs === qn ? [o.y, o.x, s.y, s.x] :
                             [o.x, o.y, s.x, s.y])
                         .join(","),
-                        r = fo.prototype.getTileUrl.call(this, e);
+                        r = _o.prototype.getTileUrl.call(this, e);
                     return r + d(this.wmsParams, r, this.options.uppercase) + (this.options
                         .uppercase ? "&BBOX=" : "&bbox=") + a
                 },
@@ -35607,7 +34509,7 @@ Object.values || (Object.values = function (e) {
                     return t(this.wmsParams, e), i || this.redraw(), this
                 }
             });
-        fo.WMS = go, Jt.wms = function (e, t) {
+        _o.WMS = go, Jt.wms = function (e, t) {
             return new go(e, t)
         };
         var vo = Zn.extend({
@@ -35689,13 +34591,13 @@ Object.values || (Object.values = function (e) {
                 },
                 _initContainer: function () {
                     var e = this._container = document.createElement("canvas");
-                    _t(e, "mousemove", o(this._onMouseMove, 32, this), this), _t(e,
+                    ft(e, "mousemove", o(this._onMouseMove, 32, this), this), ft(e,
                             "click dblclick mousedown mouseup contextmenu", this._onClick, this),
-                        _t(e, "mouseout", this._handleMouseOut, this), this._ctx = e.getContext(
+                        ft(e, "mouseout", this._handleMouseOut, this), this._ctx = e.getContext(
                             "2d")
                 },
                 _destroyContainer: function () {
-                    g(this._redrawRequest), delete this._ctx, K(this._container), ft(this
+                    g(this._redrawRequest), delete this._ctx, K(this._container), _t(this
                         ._container), delete this._container
                 },
                 _updatePaths: function () {
@@ -35760,7 +34662,7 @@ Object.values || (Object.values = function (e) {
                 },
                 _requestRedraw: function (e) {
                     this._map && (this._extendRedrawBounds(e), this._redrawRequest = this
-                        ._redrawRequest || f(this._redraw, this))
+                        ._redrawRequest || _(this._redraw, this))
                 },
                 _extendRedrawBounds: function (e) {
                     if (e._pxBounds) {
@@ -35958,7 +34860,7 @@ Object.values || (Object.values = function (e) {
                         ._rootGroup)
                 },
                 _destroyContainer: function () {
-                    K(this._container), ft(this._container), delete this._container, delete this
+                    K(this._container), _t(this._container), delete this._container, delete this
                         ._rootGroup, delete this._svgSize
                 },
                 _onZoomStart: function () {
@@ -36072,10 +34974,10 @@ Object.values || (Object.values = function (e) {
                         this)
             },
             addHooks: function () {
-                _t(this._container, "mousedown", this._onMouseDown, this)
+                ft(this._container, "mousedown", this._onMouseDown, this)
             },
             removeHooks: function () {
-                ft(this._container, "mousedown", this._onMouseDown, this)
+                _t(this._container, "mousedown", this._onMouseDown, this)
             },
             moved: function () {
                 return this._moved
@@ -36092,8 +34994,8 @@ Object.values || (Object.values = function (e) {
             },
             _onMouseDown: function (e) {
                 return !e.shiftKey || 1 !== e.which && 1 !== e.button ? !1 : (this
-                    ._clearDeferredResetState(), this._resetState(), fi(), ct(), this
-                    ._startPoint = this._map.mouseEventToContainerPoint(e), _t(document, {
+                    ._clearDeferredResetState(), this._resetState(), _i(), ct(), this
+                    ._startPoint = this._map.mouseEventToContainerPoint(e), ft(document, {
                         contextmenu: xt,
                         mousemove: this._onMouseMove,
                         mouseup: this._onMouseUp,
@@ -36112,7 +35014,7 @@ Object.values || (Object.values = function (e) {
             },
             _finish: function () {
                 this._moved && (K(this._box), et(this._container, "leaflet-crosshair")), gi(),
-                    ut(), ft(document, {
+                    ut(), _t(document, {
                         contextmenu: xt,
                         mousemove: this._onMouseMove,
                         mouseup: this._onMouseUp,
@@ -36270,7 +35172,7 @@ Object.values || (Object.values = function (e) {
                         d = c / (i.inertiaDeceleration * a),
                         h = u.multiplyBy(-d / 2)
                         .round();
-                    h.x || h.y ? (h = t._limitOffset(h, t.options.maxBounds), f(function () {
+                    h.x || h.y ? (h = t._limitOffset(h, t.options.maxBounds), _(function () {
                         t.panBy(h, {
                             duration: d,
                             easeLinearity: a,
@@ -36300,7 +35202,7 @@ Object.values || (Object.values = function (e) {
             },
             addHooks: function () {
                 var e = this._map._container;
-                e.tabIndex <= 0 && (e.tabIndex = "0"), _t(e, {
+                e.tabIndex <= 0 && (e.tabIndex = "0"), ft(e, {
                     focus: this._onFocus,
                     blur: this._onBlur,
                     mousedown: this._onMouseDown
@@ -36310,7 +35212,7 @@ Object.values || (Object.values = function (e) {
                 }, this)
             },
             removeHooks: function () {
-                this._removeHooks(), ft(this._map._container, {
+                this._removeHooks(), _t(this._map._container, {
                     focus: this._onFocus,
                     blur: this._onBlur,
                     mousedown: this._onMouseDown
@@ -36349,10 +35251,10 @@ Object.values || (Object.values = function (e) {
                 for (t = 0, i = o.zoomOut.length; i > t; t++) n[o.zoomOut[t]] = -e
             },
             _addHooks: function () {
-                _t(document, "keydown", this._onKeyDown, this)
+                ft(document, "keydown", this._onKeyDown, this)
             },
             _removeHooks: function () {
-                ft(document, "keydown", this._onKeyDown, this)
+                _t(document, "keydown", this._onKeyDown, this)
             },
             _onKeyDown: function (e) {
                 if (!(e.altKey || e.ctrlKey || e.metaKey)) {
@@ -36380,11 +35282,11 @@ Object.values || (Object.values = function (e) {
         });
         var Eo = Mn.extend({
             addHooks: function () {
-                _t(this._map._container, "mousewheel", this._onWheelScroll, this), this
+                ft(this._map._container, "mousewheel", this._onWheelScroll, this), this
                     ._delta = 0
             },
             removeHooks: function () {
-                ft(this._map._container, "mousewheel", this._onWheelScroll, this)
+                _t(this._map._container, "mousewheel", this._onWheelScroll, this)
             },
             _onWheelScroll: function (e) {
                 var t = zt(e),
@@ -36415,10 +35317,10 @@ Object.values || (Object.values = function (e) {
         });
         var Po = Mn.extend({
             addHooks: function () {
-                _t(this._map._container, "touchstart", this._onDown, this)
+                ft(this._map._container, "touchstart", this._onDown, this)
             },
             removeHooks: function () {
-                ft(this._map._container, "touchstart", this._onDown, this)
+                _t(this._map._container, "touchstart", this._onDown, this)
             },
             _onDown: function (e) {
                 if (e.touches) {
@@ -36431,14 +35333,14 @@ Object.values || (Object.values = function (e) {
                         ._holdTimeout = setTimeout(i(function () {
                             this._isTapValid() && (this._fireClick = !1, this._onUp(),
                                 this._simulateEvent("contextmenu", t))
-                        }, this), 1e3), this._simulateEvent("mousedown", t), _t(document, {
+                        }, this), 1e3), this._simulateEvent("mousedown", t), ft(document, {
                             touchmove: this._onMove,
                             touchend: this._onUp
                         }, this)
                 }
             },
             _onUp: function (e) {
-                if (clearTimeout(this._holdTimeout), ft(document, {
+                if (clearTimeout(this._holdTimeout), _t(document, {
                         touchmove: this._onMove,
                         touchend: this._onUp
                     }, this), this._fireClick && e && e.changedTouches) {
@@ -36471,11 +35373,11 @@ Object.values || (Object.values = function (e) {
         });
         var jo = Mn.extend({
             addHooks: function () {
-                X(this._map._container, "leaflet-touch-zoom"), _t(this._map._container,
+                X(this._map._container, "leaflet-touch-zoom"), ft(this._map._container,
                     "touchstart", this._onTouchStart, this)
             },
             removeHooks: function () {
-                et(this._map._container, "leaflet-touch-zoom"), ft(this._map._container,
+                et(this._map._container, "leaflet-touch-zoom"), _t(this._map._container,
                     "touchstart", this._onTouchStart, this)
             },
             _onTouchStart: function (e) {
@@ -36490,7 +35392,7 @@ Object.values || (Object.values = function (e) {
                             ._pinchStartLatLng = t.containerPointToLatLng(i.add(n)
                                 ._divideBy(2))), this._startDist = i.distanceTo(n), this
                         ._startZoom = t.getZoom(), this._moved = !1, this._zooming = !0, t
-                        ._stop(), _t(document, "touchmove", this._onTouchMove, this), _t(
+                        ._stop(), ft(document, "touchmove", this._onTouchMove, this), ft(
                             document, "touchend", this._onTouchEnd, this), kt(e)
                 }
             },
@@ -36520,12 +35422,12 @@ Object.values || (Object.values = function (e) {
                         pinch: !0,
                         round: !1
                     });
-                    this._animRequest = f(r, this, !0), kt(e)
+                    this._animRequest = _(r, this, !0), kt(e)
                 }
             },
             _onTouchEnd: function () {
-                this._moved && this._zooming ? (this._zooming = !1, g(this._animRequest), ft(
-                        document, "touchmove", this._onTouchMove), ft(document,
+                this._moved && this._zooming ? (this._zooming = !1, g(this._animRequest), _t(
+                        document, "touchmove", this._onTouchMove), _t(document,
                         "touchend", this._onTouchEnd), this._map.options.zoomAnimation ?
                     this._map._animateZoom(this._center, this._map._limitZoom(this._zoom),
                         !0, this._map.options.zoomSnap) : this._map._resetView(this
@@ -36558,8 +35460,8 @@ Object.values || (Object.values = function (e) {
                 return new mo(e)
             }, e.Marker = Xn, e.marker = function (e, t) {
                 return new Xn(e, t)
-            }, e.TileLayer = fo, e.tileLayer = Jt, e.GridLayer = _o, e.gridLayer = function (e) {
-                return new _o(e)
+            }, e.TileLayer = _o, e.tileLayer = Jt, e.GridLayer = fo, e.gridLayer = function (e) {
+                return new fo(e)
             }, e.SVG = xo, e.svg = Xt, e.Renderer = vo, e.Canvas = bo, e.canvas = Qt, e.Path = eo, e
             .CircleMarker = to, e.circleMarker = function (e, t) {
                 return new to(e, t)
@@ -36615,69 +35517,69 @@ Object.values || (Object.values = function (e) {
             var n, l, c, u, d, h = 1732584193,
                 p = -271733879,
                 m = -1732584194,
-                _ = 271733878;
-            for (n = 0; n < e.length; n += 16) l = h, c = p, u = m, d = _, p = r(p = r(p = r(p = r(p = a(p =
+                f = 271733878;
+            for (n = 0; n < e.length; n += 16) l = h, c = p, u = m, d = f, p = r(p = r(p = r(p = r(p = a(p =
                             a(p = a(p = a(p = s(p = s(p = s(p = s(p = o(p = o(p = o(p = o(p, m = o(m,
-                                                    _ = o(_, h = o(h, p, m, _,
+                                                    f = o(f, h = o(h, p, m, f,
                                                             e[n], 7, -
                                                             680876936), p, m,
                                                         e[n + 1], 12, -
                                                         389564586), h, p, e[
                                                         n + 2], 17, 606105819
-                                                    ), _, h, e[n + 3], 22, -
-                                                1044525330), m = o(m, _ = o(_,
-                                                h = o(h, p, m, _, e[n +
+                                                    ), f, h, e[n + 3], 22, -
+                                                1044525330), m = o(m, f = o(f,
+                                                h = o(h, p, m, f, e[n +
                                                     4], 7, -176418897), p,
                                                 m, e[n + 5], 12,
                                                 1200080426), h, p, e[n +
-                                                6], 17, -1473231341), _, h, e[
+                                                6], 17, -1473231341), f, h, e[
                                                 n + 7], 22, -45705983), m = o(m,
-                                                _ = o(_, h = o(h, p, m, _, e[n +
+                                                f = o(f, h = o(h, p, m, f, e[n +
                                                         8], 7, 1770035416), p, m,
                                                     e[n + 9], 12, -1958414417), h,
-                                                p, e[n + 10], 17, -42063), _, h,
+                                                p, e[n + 10], 17, -42063), f, h,
                                             e[n + 11], 22, -1990404162), m = o(m,
-                                            _ = o(_, h = o(h, p, m, _, e[n + 12],
+                                            f = o(f, h = o(h, p, m, f, e[n + 12],
                                                 7, 1804603682), p, m, e[n +
                                                 13], 12, -40341101), h, p, e[n +
-                                                14], 17, -1502002290), _, h, e[n +
-                                            15], 22, 1236535329), m = s(m, _ = s(_,
-                                                h = s(h, p, m, _, e[n + 1], 5, -
+                                                14], 17, -1502002290), f, h, e[n +
+                                            15], 22, 1236535329), m = s(m, f = s(f,
+                                                h = s(h, p, m, f, e[n + 1], 5, -
                                                     165796510), p, m, e[n + 6], 9, -
                                                 1069501632), h, p, e[n + 11], 14,
-                                            643717713), _, h, e[n], 20, -373897302), m =
-                                        s(m, _ = s(_, h = s(h, p, m, _, e[n + 5], 5, -
+                                            643717713), f, h, e[n], 20, -373897302), m =
+                                        s(m, f = s(f, h = s(h, p, m, f, e[n + 5], 5, -
                                                     701558691), p, m, e[n + 10], 9,
                                                 38016083), h, p, e[n + 15], 14, -
-                                            660478335), _, h, e[n + 4], 20, -405537848),
-                                    m = s(m, _ = s(_, h = s(h, p, m, _, e[n + 9], 5,
+                                            660478335), f, h, e[n + 4], 20, -405537848),
+                                    m = s(m, f = s(f, h = s(h, p, m, f, e[n + 9], 5,
                                             568446438), p, m, e[n + 14], 9, -
-                                        1019803690), h, p, e[n + 3], 14, -187363961), _,
-                                    h, e[n + 8], 20, 1163531501), m = s(m, _ = s(_, h = s(
-                                            h, p, m, _, e[n + 13], 5, -1444681467), p, m,
+                                        1019803690), h, p, e[n + 3], 14, -187363961), f,
+                                    h, e[n + 8], 20, 1163531501), m = s(m, f = s(f, h = s(
+                                            h, p, m, f, e[n + 13], 5, -1444681467), p, m,
                                         e[n + 2], 9, -51403784), h, p, e[n + 7], 14,
-                                    1735328473), _, h, e[n + 12], 20, -1926607734), m = a(m,
-                                    _ = a(_, h = a(h, p, m, _, e[n + 5], 4, -378558), p, m, e[
+                                    1735328473), f, h, e[n + 12], 20, -1926607734), m = a(m,
+                                    f = a(f, h = a(h, p, m, f, e[n + 5], 4, -378558), p, m, e[
                                         n + 8], 11, -2022574463), h, p, e[n + 11], 16,
-                                    1839030562), _, h, e[n + 14], 23, -35309556), m = a(m, _ = a(
-                                        _, h = a(h, p, m, _, e[n + 1], 4, -1530992060), p, m, e[
+                                    1839030562), f, h, e[n + 14], 23, -35309556), m = a(m, f = a(
+                                        f, h = a(h, p, m, f, e[n + 1], 4, -1530992060), p, m, e[
                                             n + 4], 11, 1272893353), h, p, e[n + 7], 16, -
-                                    155497632), _, h, e[n + 10], 23, -1094730640), m = a(m, _ = a(_,
-                                    h = a(h, p, m, _, e[n + 13], 4, 681279174), p, m, e[n], 11, -
-                                    358537222), h, p, e[n + 3], 16, -722521979), _, h, e[n + 6], 23,
-                                76029189), m = a(m, _ = a(_, h = a(h, p, m, _, e[n + 9], 4, -
+                                    155497632), f, h, e[n + 10], 23, -1094730640), m = a(m, f = a(f,
+                                    h = a(h, p, m, f, e[n + 13], 4, 681279174), p, m, e[n], 11, -
+                                    358537222), h, p, e[n + 3], 16, -722521979), f, h, e[n + 6], 23,
+                                76029189), m = a(m, f = a(f, h = a(h, p, m, f, e[n + 9], 4, -
                                     640364487), p, m, e[n + 12], 11, -421815835), h, p, e[n + 15], 16,
-                                530742520), _, h, e[n + 2], 23, -995338651), m = r(m, _ = r(_, h = r(
-                                h, p, m, _, e[n], 6, -198630844), p, m, e[n + 7], 10, 1126891415), h,
-                            p, e[n + 14], 15, -1416354905), _, h, e[n + 5], 21, -57434055), m = r(m, _ =
-                            r(_, h = r(h, p, m, _, e[n + 12], 6, 1700485571), p, m, e[n + 3], 10, -
-                                1894986606), h, p, e[n + 10], 15, -1051523), _, h, e[n + 1], 21, -
-                        2054922799), m = r(m, _ = r(_, h = r(h, p, m, _, e[n + 8], 6, 1873313359), p, m,
-                        e[n + 15], 10, -30611744), h, p, e[n + 6], 15, -1560198380), _, h, e[n + 13], 21,
-                    1309151649), m = r(m, _ = r(_, h = r(h, p, m, _, e[n + 4], 6, -145523070), p, m, e[n +
-                    11], 10, -1120210379), h, p, e[n + 2], 15, 718787259), _, h, e[n + 9], 21, -343485551),
-                h = t(h, l), p = t(p, c), m = t(m, u), _ = t(_, d);
-            return [h, p, m, _]
+                                530742520), f, h, e[n + 2], 23, -995338651), m = r(m, f = r(f, h = r(
+                                h, p, m, f, e[n], 6, -198630844), p, m, e[n + 7], 10, 1126891415), h,
+                            p, e[n + 14], 15, -1416354905), f, h, e[n + 5], 21, -57434055), m = r(m, f =
+                            r(f, h = r(h, p, m, f, e[n + 12], 6, 1700485571), p, m, e[n + 3], 10, -
+                                1894986606), h, p, e[n + 10], 15, -1051523), f, h, e[n + 1], 21, -
+                        2054922799), m = r(m, f = r(f, h = r(h, p, m, f, e[n + 8], 6, 1873313359), p, m,
+                        e[n + 15], 10, -30611744), h, p, e[n + 6], 15, -1560198380), f, h, e[n + 13], 21,
+                    1309151649), m = r(m, f = r(f, h = r(h, p, m, f, e[n + 4], 6, -145523070), p, m, e[n +
+                    11], 10, -1120210379), h, p, e[n + 2], 15, 718787259), f, h, e[n + 9], 21, -343485551),
+                h = t(h, l), p = t(p, c), m = t(m, u), f = t(f, d);
+            return [h, p, m, f]
         }
 
         function c(e) {
@@ -36719,12 +35621,12 @@ Object.values || (Object.values = function (e) {
             return unescape(encodeURIComponent(e))
         }
 
-        function _(e) {
+        function f(e) {
             return d(m(e))
         }
 
-        function f(e) {
-            return p(_(e))
+        function _(e) {
+            return p(f(e))
         }
 
         function g(e, t) {
@@ -36736,7 +35638,7 @@ Object.values || (Object.values = function (e) {
         }
 
         function b(e, t, i) {
-            return t ? i ? g(t, e) : v(t, e) : i ? _(e) : f(e)
+            return t ? i ? g(t, e) : v(t, e) : i ? f(e) : _(e)
         }
         "function" == typeof define && define.amd ? define(function () {
             return b
@@ -38267,15 +37169,15 @@ if ($(document)
                     d < m.left ? "right" : r, s.removeClass(p)
                     .addClass(r)
             }
-            var _ = this.getCalculatedOffset(r, u, d, h);
-            this.applyPlacement(_, r);
-            var f = function () {
+            var f = this.getCalculatedOffset(r, u, d, h);
+            this.applyPlacement(f, r);
+            var _ = function () {
                 var e = o.hoverState;
                 o.$element.trigger("shown.bs." + o.type), o.hoverState = null, "out" == e && o.leave(
                     o)
             };
-            e.support.transition && this.$tip.hasClass("fade") ? s.one("bsTransitionEnd", f)
-                .emulateTransitionEnd(i.TRANSITION_DURATION) : f()
+            e.support.transition && this.$tip.hasClass("fade") ? s.one("bsTransitionEnd", _)
+                .emulateTransitionEnd(i.TRANSITION_DURATION) : _()
         }
     }, i.prototype.applyPlacement = function (t, i) {
         var n = this.tip(),
@@ -39411,8 +38313,8 @@ function (e) {
                             var u, d = this.className || "",
                                 p = c(this.style.cssText),
                                 m = s.data("content") ? s.data("content") : s.html(),
-                                _ = s.data("tokens") ? s.data("tokens") : null,
-                                f = "undefined" != typeof s.data("subtext") ?
+                                f = s.data("tokens") ? s.data("tokens") : null,
+                                _ = "undefined" != typeof s.data("subtext") ?
                                 '<small class="text-muted">' + s.data("subtext") +
                                 "</small>" : "",
                                 g = "undefined" != typeof s.data("icon") ? '<span class="' + i
@@ -39425,7 +38327,7 @@ function (e) {
                                 .hideDisabled && (w && !b || y)) return u = s.data(
                                     "prevHiddenIndex"), s.next()
                                 .data("prevHiddenIndex", void 0 !== u ? u : t), void a--;
-                            if (s.data("content") || (m = g + '<span class="text">' + m + f +
+                            if (s.data("content") || (m = g + '<span class="text">' + m + _ +
                                     "</span>"), b && s.data("divider") !== !0) {
                                 if (i.options.hideDisabled && w) {
                                     if (void 0 === v.data("allOptionsDisabled")) {
@@ -39450,12 +38352,12 @@ function (e) {
                                             "dropdown-header" + x, o))
                                 }
                                 if (i.options.hideDisabled && w) return void a--;
-                                n.push(r(l(m, "opt " + d + x, p, _), t, "", o))
+                                n.push(r(l(m, "opt " + d + x, p, f), t, "", o))
                             } else if (s.data("divider") === !0) n.push(r("", t, "divider"));
                             else if (s.data("hidden") === !0) u = s.data("prevHiddenIndex"), s
                                 .next()
                                 .data("prevHiddenIndex", void 0 !== u ? u : t), n.push(r(l(m,
-                                    d, p, _), t, "hidden is-hidden"));
+                                    d, p, f), t, "hidden is-hidden"));
                             else {
                                 var S = this.previousElementSibling && "OPTGROUP" === this
                                     .previousElementSibling.tagName;
@@ -39465,7 +38367,7 @@ function (e) {
                                     A && "OPTGROUP" === A.tagName && !A.disabled && (S = !0)
                                 }
                                 S && (a++, n.push(r("", null, "divider", o + "div"))), n.push(
-                                    r(l(m, d, p, _), t))
+                                    r(l(m, d, p, f), t))
                             }
                             i.liObj[t] = a
                         }
@@ -39566,8 +38468,8 @@ function (e) {
                     d && n.appendChild(d), n.appendChild(o), h && n.appendChild(h), i.appendChild(
                         n), document.body.appendChild(i);
                     var m = r.offsetHeight,
-                        _ = c ? c.offsetHeight : 0,
-                        f = u ? u.offsetHeight : 0,
+                        f = c ? c.offsetHeight : 0,
+                        _ = u ? u.offsetHeight : 0,
                         g = d ? d.offsetHeight : 0,
                         v = h ? h.offsetHeight : 0,
                         b = e(s)
@@ -39592,8 +38494,8 @@ function (e) {
                         };
                     document.body.removeChild(i), this.sizeInfo = {
                         liHeight: m,
-                        headerHeight: _,
-                        searchHeight: f,
+                        headerHeight: f,
+                        searchHeight: _,
                         actionsHeight: g,
                         doneButtonHeight: v,
                         dividerHeight: b,
@@ -39611,8 +38513,8 @@ function (e) {
                         h = e(window),
                         p = this.$newElement[0].offsetHeight,
                         m = this.$newElement[0].offsetWidth,
-                        _ = this.sizeInfo.liHeight,
-                        f = this.sizeInfo.headerHeight,
+                        f = this.sizeInfo.liHeight,
+                        _ = this.sizeInfo.headerHeight,
                         g = this.sizeInfo.searchHeight,
                         v = this.sizeInfo.actionsHeight,
                         b = this.sizeInfo.doneButtonHeight,
@@ -39659,12 +38561,12 @@ function (e) {
                                 .hasClass("dropup") && (t = s - k.vert), "auto" === c.options
                                 .dropdownAlignRight && u.toggleClass("dropdown-menu-right",
                                     r > l && i - k.horiz < o - m), h = x.length + z.length >
-                                3 ? 3 * _ + k.vert - 2 : 0, u.css({
+                                3 ? 3 * f + k.vert - 2 : 0, u.css({
                                     "max-height": t + "px",
                                     overflow: "hidden",
-                                    "min-height": h + f + g + v + b + "px"
+                                    "min-height": h + _ + g + v + b + "px"
                                 }), d.css({
-                                    "max-height": t - f - g - v - b - w.vert + "px",
+                                    "max-height": t - _ - g - v - b - w.vert + "px",
                                     "overflow-y": "auto",
                                     "min-height": Math.max(h - w.vert, 0) + "px"
                                 })
@@ -39686,11 +38588,11 @@ function (e) {
                             S = this.$lis.slice(0, T + 1)
                             .filter(".divider")
                             .length;
-                        t = _ * this.options.size + S * y + w.vert, c.options.container ? (u.data(
+                        t = f * this.options.size + S * y + w.vert, c.options.container ? (u.data(
                                 "height") || u.data("height", u.height()), n = u.data(
                                 "height")) : n = u.height(), c.options.dropupAuto && this
                             .$newElement.toggleClass("dropup", s > a && t - k.vert < n), u.css({
-                                "max-height": t + f + g + v + b + "px",
+                                "max-height": t + _ + g + v + b + "px",
                                 overflow: "hidden",
                                 "min-height": ""
                             }), d.css({
@@ -39841,11 +38743,11 @@ function (e) {
                         if (t.multiple) {
                             if (u.prop("selected", !d), t.setSelected(s, !d), n.blur(),
                                 p !== !1 || m !== !1) {
-                                var _ = p < c.filter(":selected")
+                                var f = p < c.filter(":selected")
                                     .length,
-                                    f = m < h.find("option:selected")
+                                    _ = m < h.find("option:selected")
                                     .length;
-                                if (p && _ || m && f)
+                                if (p && f || m && _)
                                     if (p && 1 == p) c.prop("selected", !1), u.prop(
                                             "selected", !0), t.$menuInner.find(
                                             ".selected")
@@ -39868,9 +38770,9 @@ function (e) {
                                     b[2] && (y = y.replace("{var}", b[2][p > 1 ? 0 : 1]),
                                             w = w.replace("{var}", b[2][m > 1 ? 0 : 1])),
                                         u.prop("selected", !1), t.$menu.append(k), p &&
-                                        _ && (k.append(e("<div>" + y + "</div>")), l = !1,
+                                        f && (k.append(e("<div>" + y + "</div>")), l = !1,
                                             t.$element.trigger("maxReached.bs.select")),
-                                        m && f && (k.append(e("<div>" + w + "</div>")),
+                                        m && _ && (k.append(e("<div>" + w + "</div>")),
                                             l = !1, t.$element.trigger(
                                                 "maxReachedGrp.bs.select")), setTimeout(
                                             function () {
@@ -40299,11 +39201,11 @@ function (e) {
             })
     }
 
-    function _(e, t, i) {
-        return arguments.length < 3 ? e.getAttribute(t) : (null == i ? f(e, t) : e.setAttribute(t, i), void 0)
+    function f(e, t, i) {
+        return arguments.length < 3 ? e.getAttribute(t) : (null == i ? _(e, t) : e.setAttribute(t, i), void 0)
     }
 
-    function f(e, t) {
+    function _(e, t) {
         e.removeAttribute(t)
     }
 
@@ -40338,8 +39240,8 @@ function (e) {
             if (1 === n) return s(e.attributes, function (e, t) {
                 /^data\-/i.test(t.name) && (o[t.name.substr(5)] = t.value)
             }), o;
-            if (2 === n) return _(e, "data-" + t);
-            _(e, "data-" + t, String(i))
+            if (2 === n) return f(e, "data-" + t);
+            f(e, "data-" + t, String(i))
         }
     }
 
@@ -40448,14 +39350,14 @@ function (e) {
     }
 
     function $(e) {
-        return e && (!k(e, "p,div") || e.className || _(e, "style") || !i(w(e)))
+        return e && (!k(e, "p,div") || e.className || f(e, "style") || !i(w(e)))
     }
 
     function F(e, t) {
         var i = r(t, {}, e.ownerDocument);
         for (s(e.attributes, function (e, t) {
                 try {
-                    _(i, t.name, t.value)
+                    f(i, t.name, t.value)
                 } catch (n) {}
             }); e.firstChild;) d(i, e.firstChild);
         return e.parentNode.replaceChild(i, e), i
@@ -40469,8 +39371,8 @@ function (e) {
 
     function H(e, t) {
         var i, n = (e || {})
-            .nodeType || _t;
-        return n !== mt ? n === _t : (i = e.tagName.toLowerCase(), "code" === i ? !t : gt.indexOf("|" + i +
+            .nodeType || ft;
+        return n !== mt ? n === ft : (i = e.tagName.toLowerCase(), "code" === i ? !t : gt.indexOf("|" + i +
             "|") < 0)
     }
 
@@ -40515,12 +39417,12 @@ function (e) {
         if (!/pre(\-wrap)?$/i.test(l))
             for (; d;) {
                 if (a = d.nextSibling, t = d.nodeValue, i = d.nodeType, i === mt && d.firstChild && Z(d),
-                    i === _t) {
+                    i === ft) {
                     for (n = U(d), o = U(d, !0), r = !1; S(o, "sceditor-ignore");) o = U(o, !0);
                     if (H(d) && o) {
                         for (s = o; s.lastChild;)
                             for (s = s.lastChild; S(s, "sceditor-ignore");) s = U(s, !0);
-                        r = s.nodeType === _t ? /[\t\n\r ]$/.test(s.nodeValue) : !H(s)
+                        r = s.nodeType === ft ? /[\t\n\r ]$/.test(s.nodeValue) : !H(s)
                     }
                     t = t.replace(/\u200B/g, ""), o && H(o) && !r || (t = t.replace(c ? /^[\t ]+/ :
                         /^[\t\n\r ]+/, "")), n && H(n) || (t = t.replace(c ? /[\t ]+$/ : /[\t\n\r ]+$/,
@@ -40767,16 +39669,16 @@ function (e) {
             i || e.sort(function (e, t) {
                 return e[0].length - t[0].length
             });
-            var a, r, c, u, d, h, p, m, _ = "(^|[\\s    ])",
-                f = e.length,
+            var a, r, c, u, d, h, p, m, f = "(^|[\\s    ])",
+                _ = e.length,
                 g = o ? 1 : 0,
-                v = n || e[f - 1][0].length;
+                v = n || e[_ - 1][0].length;
             for (o && v++, s = s || "", a = l.getOuterText(!0, v), d = a.length, a += s, t && (a += l
-                    .getOuterText(!1, v)); f--;)
-                if (p = e[f][0], m = p.length, u = Math.max(0, d - m - g), c = -1, o ? (r = a.substr(u)
-                        .match(new RegExp(_ + Q(p) + _)), r && (c = r.index + u + r[1].length)) : c = a
+                    .getOuterText(!1, v)); _--;)
+                if (p = e[_][0], m = p.length, u = Math.max(0, d - m - g), c = -1, o ? (r = a.substr(u)
+                        .match(new RegExp(f + Q(p) + f)), r && (c = r.index + u + r[1].length)) : c = a
                     .indexOf(p, u), c > -1 && d >= c && c + m + g >= d) return h = d - c, l
-                    .selectOuterText(h, m - h - (/^\S/.test(s) ? 1 : 0)), l.insertHTML(e[f][1]), !0;
+                    .selectOuterText(h, m - h - (/^\S/.test(s) ? 1 : 0)), l.insertHTML(e[_][1]), !0;
             return !1
         }, l.compare = function (e, t) {
             return t || (t = l.selectedRange()), e && t ? 0 === e.compareBoundaryPoints(Range.END_TO_END,
@@ -40803,7 +39705,7 @@ function (e) {
                         m = r.nodeValue;
                     null === m && (m = r.innerText || ""), m += w(s, "sceditor-emoticon"), p === l && (d = m
                             .length + c.startOffset), p === e && e.childNodes[c.startOffset] === l && (d = m
-                            .length), p === r && (d = c.startOffset), l && l.nodeType === _t || (l = a
+                            .length), p === r && (d = c.startOffset), l && l.nodeType === ft || (l = a
                             .insertBefore(a.ownerDocument.createTextNode(""), l)), l.insertData(0, m), u(r),
                         u(s), d > -1 && (c.setStart(l, d), c.collapse(!0), t.selectRange(c))
                 }
@@ -40821,7 +39723,7 @@ function (e) {
             return t.length - e.length
         }), function c(e) {
             for (e = e.firstChild; e;) {
-                if (e.nodeType !== mt || k(e, "code") || c(e), e.nodeType === _t)
+                if (e.nodeType !== mt || k(e, "code") || c(e), e.nodeType === ft)
                     for (var o = 0; o < a.length; o++) {
                         var s = e.nodeValue,
                             l = a[o],
@@ -40842,40 +39744,40 @@ function (e) {
     function rt(e, t) {
         var i;
         O(e, function (e) {
-            H(e, !0) ? (i || (i = r("p", {}, t), z(i, e)), (e.nodeType !== _t || "" !== e
+            H(e, !0) ? (i || (i = r("p", {}, t), z(i, e)), (e.nodeType !== ft || "" !== e
                 .nodeValue) && d(i, e)) : i = null
         }, !1, !0)
     }
 
     function lt(e, t) {
-        var i, a, l, f, x, C, T, N, O, R, W, q, U, K, Y, J, Q, et, it, ht, pt, gt, bt, yt, Ct, zt, Tt, At, Et,
+        var i, a, l, _, x, C, T, N, O, R, W, q, U, K, Y, J, Q, et, it, ht, pt, gt, bt, yt, Ct, zt, Tt, At, Et,
             Pt, Ot, Lt, Rt, $t, Ft, Bt, Ht, Wt, Vt, qt, Ut, Zt, Kt, Gt, Yt, Jt, Qt, Xt, ei, ti, ii, ni, oi,
-            si, ai, ri, li, ci, ui, di, hi, pi, mi, _i = this,
-            fi = {},
+            si, ai, ri, li, ci, ui, di, hi, pi, mi, fi = this,
+            _i = {},
             gi = [],
             vi = [],
             bi = {},
             yi = {},
             wi = {};
-        _i.commands = n(!0, {}, t.commands || St);
-        var ki = _i.opts = n(!0, {}, vt, t);
-        _i.opts.emoticons = t.emoticons || vt.emoticons, Tt = function () {
-            e._sceditor = _i, ki.locale && "en" !== ki.locale && Rt(), a = r("div", {
+        fi.commands = n(!0, {}, t.commands || St);
+        var ki = fi.opts = n(!0, {}, vt, t);
+        fi.opts.emoticons = t.emoticons || vt.emoticons, Tt = function () {
+            e._sceditor = fi, ki.locale && "en" !== ki.locale && Rt(), a = r("div", {
                     className: "sceditor-container"
                 }), z(a, e), y(a, "z-index", ki.zIndex), It && A(a, "ie ie" + It), ht = e.required, e
                 .required = !1;
             var t = lt.formats[ki.format];
-            i = t ? new t : {}, "init" in i && i.init.call(_i), Lt(), Wt(), $t(), Ot(), Ft(), Bt(), xt ||
-                _i.toggleSourceMode(), ti();
+            i = t ? new t : {}, "init" in i && i.init.call(fi), Lt(), Wt(), $t(), Ot(), Ft(), Bt(), xt ||
+                fi.toggleSourceMode(), ti();
             var n = function () {
                 m(jt, "load", n), ki.autofocus && ai(), mi(), ni(), Y.call("ready"), "onReady" in i &&
-                    i.onReady.call(_i)
+                    i.onReady.call(fi)
             };
             p(jt, "load", n), "complete" === Mt.readyState && n()
         }, Lt = function () {
             var e = ki.plugins;
             e = e ? e.toString()
-                .split(",") : [], Y = new nt(_i), e.forEach(function (e) {
+                .split(",") : [], Y = new nt(fi), e.forEach(function (e) {
                     Y.register(e.trim())
                 })
         }, Rt = function () {
@@ -40883,29 +39785,29 @@ function (e) {
             U = lt.locale[ki.locale], U || (e = ki.locale.split("-"), U = lt.locale[e[0]]), U && U
                 .dateFormat && (ki.dateFormat = U.dateFormat)
         }, Ot = function () {
-            N = r("textarea"), f = r("iframe", {
+            N = r("textarea"), _ = r("iframe", {
                     frameborder: 0,
                     allowfullscreen: !0
-                }), ki.startInSourceMode ? (A(a, "sourceMode"), g(f)) : (A(a, "wysiwygMode"), g(N)), ki
-                .spellcheck || _(a, "spellcheck", "false"), "https:" === jt.location.protocol && _(f,
-                    "src", "javascript:false"), d(a, f), d(a, N), _i.dimensions(ki.width || j(e), ki
+                }), ki.startInSourceMode ? (A(a, "sourceMode"), g(_)) : (A(a, "wysiwygMode"), g(N)), ki
+                .spellcheck || f(a, "spellcheck", "false"), "https:" === jt.location.protocol && f(_,
+                    "src", "javascript:false"), d(a, _), d(a, N), fi.dimensions(ki.width || j(e), ki
                     .height || M(e));
             var t = It ? "ie ie" + It : "";
-            t += kt ? " ios" : "", T = f.contentDocument, T.open(), T.write(tt("html", {
+            t += kt ? " ios" : "", T = _.contentDocument, T.open(), T.write(tt("html", {
                 attrs: ' class="' + t + '"',
                 spellcheck: ki.spellcheck ? "" : 'spellcheck="false"',
                 charset: ki.charset,
                 style: ki.style
-            })), T.close(), C = T.body, x = f.contentWindow, _i.readOnly(!!ki.readOnly), (kt || wt ||
-                It) && (M(C, "100%"), It || p(C, "touchend", _i.focus));
-            var i = _(e, "tabindex");
-            _(N, "tabindex", i), _(f, "tabindex", i), K = new ot(x), g(e), _i.val(e.value);
-            var n = ki.placeholder || _(e, "placeholder");
-            n && (N.placeholder = n, _(C, "placeholder", n))
+            })), T.close(), C = T.body, x = _.contentWindow, fi.readOnly(!!ki.readOnly), (kt || wt ||
+                It) && (M(C, "100%"), It || p(C, "touchend", fi.focus));
+            var i = f(e, "tabindex");
+            f(N, "tabindex", i), f(_, "tabindex", i), K = new ot(x), g(e), fi.val(e.value);
+            var n = ki.placeholder || f(e, "placeholder");
+            n && (N.placeholder = n, f(C, "placeholder", n))
         }, Ft = function () {
             ki.autoUpdate && (p(C, "blur", pi), p(N, "blur", pi)), null === ki.rtl && (ki.rtl = "rtl" ===
-                y(N, "direction")), _i.rtl(!!ki.rtl), ki.autoExpand && (p(C, "load", mi, ft), p(C,
-                "input keyup", mi)), ki.resizeEnabled && Ht(), _(a, "id", ki.id), _i.emoticons(ki
+                y(N, "direction")), fi.rtl(!!ki.rtl), ki.autoExpand && (p(C, "load", mi, _t), p(C,
+                "input keyup", mi)), ki.resizeEnabled && Ht(), f(a, "id", ki.id), fi.emoticons(ki
                 .emoticonsEnabled)
         }, Bt = function () {
             var t = e.form,
@@ -40913,12 +39815,12 @@ function (e) {
                 n = "keydown keyup keypress focus blur contextmenu",
                 o = "onselectionchange" in T ? "selectionchange" :
                 "keyup focus blur contextmenu mouseup touchend click";
-            p(Mt, "click", Xt), t && (p(t, "reset", Gt), p(t, "submit", _i.updateOriginal, ft)), p(C,
+            p(Mt, "click", Xt), t && (p(t, "reset", Gt), p(t, "submit", fi.updateOriginal, _t)), p(C,
                 "keypress", Kt), p(C, "keydown", Ut), p(C, "keydown", Zt), p(C, "keyup", ni), p(C,
                 "blur", di), p(C, "keyup", hi), p(C, "paste", Vt), p(C, i, Jt), p(C, o, oi), p(C, n,
                 Qt), ki.emoticonsCompat && jt.getSelection && p(C, "keyup", li), p(C, "blur",
                 function () {
-                    _i.val() || A(C, "placeholder")
+                    fi.val() || A(C, "placeholder")
                 }), p(C, "focus", function () {
                 E(C, "placeholder")
             }), p(N, "blur", di), p(N, "keyup", hi), p(N, "keydown", Ut), p(N, i, Jt), p(N, n, Qt), p(
@@ -40928,7 +39830,7 @@ function (e) {
             }), p(a, "selectionchanged", si), p(a, "selectionchanged", ti), p(a,
                 "selectionchanged valuechanged nodechanged pasteraw paste", Qt)
         }, $t = function () {
-            var e, t = _i.commands,
+            var e, t = fi.commands,
                 i = (ki.toolbarExclude || "")
                 .split(","),
                 n = ki.toolbar.split("|");
@@ -40943,7 +39845,7 @@ function (e) {
                     if (r && !(i.indexOf(o) > -1)) {
                         if (a = r.shortcut, s = tt("toolbarButton", {
                                 name: o,
-                                dispName: _i._(r.name || r.tooltip || o)
+                                dispName: fi._(r.name || r.tooltip || o)
                             }, !0)
                             .firstChild, zt && zt.create) {
                             var l = zt.create(o);
@@ -40953,9 +39855,9 @@ function (e) {
                                 "disabled", !r.exec), p(s, "click", function (e) {
                                 S(s, "disabled") || Et(s, r), ti(), e.preventDefault()
                             }), p(s, "mousedown", function (e) {
-                                _i.closeDropDown(), e.preventDefault()
-                            }), r.tooltip && _(s, "title", _i._(r.tooltip) + (a ? " (" +
-                                a + ")" : "")), a && _i.addShortcut(a, o), r.state ? vi
+                                fi.closeDropDown(), e.preventDefault()
+                            }), r.tooltip && f(s, "title", fi._(r.tooltip) + (a ? " (" +
+                                a + ")" : "")), a && fi.addShortcut(a, o), r.state ? vi
                             .push({
                                 name: o,
                                 state: r.state
@@ -40975,8 +39877,8 @@ function (e) {
                 }),
                 u = "touchmove mousemove",
                 h = "touchcancel touchend mouseup",
-                _ = 0,
                 f = 0,
+                _ = 0,
                 b = 0,
                 y = 0,
                 w = 0,
@@ -40984,16 +39886,16 @@ function (e) {
                 x = j(a),
                 C = M(a),
                 z = !1,
-                T = _i.rtl();
+                T = fi.rtl();
             if (e = ki.resizeMinHeight || C / 1.5, t = ki.resizeMaxHeight || 2.5 * C, i = ki
                 .resizeMinWidth || x / 1.25, n = ki.resizeMaxWidth || 1.25 * x, o = function (o) {
                     "touchmove" === o.type ? (o = jt.event, b = o.changedTouches[0].pageX, y = o
                         .changedTouches[0].pageY) : (b = o.pageX, y = o.pageY);
-                    var s = k + (y - f),
-                        a = T ? w - (b - _) : w + (b - _);
+                    var s = k + (y - _),
+                        a = T ? w - (b - f) : w + (b - f);
                     n > 0 && a > n && (a = n), i > 0 && i > a && (a = i), ki.resizeWidth || (a = !1), t >
                         0 && s > t && (s = t), e > 0 && e > s && (s = e), ki.resizeHeight || (s = !1), (
-                            a || s) && _i.dimensions(a, s), o.preventDefault()
+                            a || s) && fi.dimensions(a, s), o.preventDefault()
                 }, s = function (e) {
                     z && (z = !1, g(c), E(a, "resizing"), m(Mt, u, o), m(Mt, h, s), e.preventDefault())
                 }, zt && zt.create) {
@@ -41001,8 +39903,8 @@ function (e) {
                 S && (d(l, S), A(l, "has-icon"))
             }
             d(a, l), d(a, c), g(c), p(l, "touchstart mousedown", function (e) {
-                "touchstart" === e.type ? (e = jt.event, _ = e.touches[0].pageX, f = e.touches[0]
-                    .pageY) : (_ = e.pageX, f = e.pageY), w = j(a), k = M(a), z = !0, A(a,
+                "touchstart" === e.type ? (e = jt.event, f = e.touches[0].pageX, _ = e.touches[0]
+                    .pageY) : (f = e.pageX, _ = e.pageY), w = j(a), k = M(a), z = !0, A(a,
                     "resizing"), v(c), p(Mt, u, o), p(Mt, h, s), e.preventDefault()
             })
         }, Wt = function () {
@@ -41021,45 +39923,45 @@ function (e) {
             var e, t, i = C.firstChild,
                 n = !!ki.autofocusEnd;
             if (D(a)) {
-                if (_i.sourceMode()) return t = n ? N.value.length : 0, N.setSelectionRange(t, t), void 0;
+                if (fi.sourceMode()) return t = n ? N.value.length : 0, N.setSelectionRange(t, t), void 0;
                 if (Z(C), n)
                     for ((i = C.lastChild) || (i = r("p", {}, T), d(C, i)); i.lastChild;) i = i.lastChild,
                         !Dt && k(i, "br") && i.previousSibling && (i = i.previousSibling);
                 e = T.createRange(), B(i) ? e.selectNodeContents(i) : (e.setStartBefore(i), n && e
                     .setStartAfter(i)), e.collapse(!n), K.selectRange(e), et = e, n && (C.scrollTop =
-                    C.scrollHeight), _i.focus()
+                    C.scrollHeight), fi.focus()
             }
-        }, _i.readOnly = function (e) {
+        }, fi.readOnly = function (e) {
             return "boolean" != typeof e ? !N.readonly : (C.contentEditable = !e, N.readonly = !e, ei(e),
-                _i)
-        }, _i.rtl = function (e) {
+                fi)
+        }, fi.rtl = function (e) {
             var t = e ? "rtl" : "ltr";
-            return "boolean" != typeof e ? "rtl" === _(N, "dir") : (_(C, "dir", t), _(N, "dir", t), E(a,
-                "rtl"), E(a, "ltr"), A(a, t), zt && zt.rtl && zt.rtl(e), _i)
+            return "boolean" != typeof e ? "rtl" === f(N, "dir") : (f(C, "dir", t), f(N, "dir", t), E(a,
+                "rtl"), E(a, "ltr"), A(a, t), zt && zt.rtl && zt.rtl(e), fi)
         }, ei = function (e) {
-            var t = _i.inSourceMode() ? "_sceTxtMode" : "_sceWysiwygMode";
+            var t = fi.inSourceMode() ? "_sceTxtMode" : "_sceWysiwygMode";
             s(yi, function (i, n) {
                 P(n, "disabled", e || !n[t])
             })
-        }, _i.width = function (e, t) {
-            return e || 0 === e ? (_i.dimensions(e, null, t), _i) : j(a)
-        }, _i.dimensions = function (e, t, i) {
+        }, fi.width = function (e, t) {
+            return e || 0 === e ? (fi.dimensions(e, null, t), fi) : j(a)
+        }, fi.dimensions = function (e, t, i) {
             return e = e || 0 === e ? e : !1, t = t || 0 === t ? t : !1, e === !1 && t === !1 ? {
-                width: _i.width(),
-                height: _i.height()
+                width: fi.width(),
+                height: fi.height()
             } : (e !== !1 && (i !== !1 && (ki.width = e), j(a, e)), t !== !1 && (i !== !1 && (ki
-                .height = t), M(a, t)), _i)
-        }, _i.height = function (e, t) {
-            return e || 0 === e ? (_i.dimensions(null, e, t), _i) : M(a)
-        }, _i.maximize = function (e) {
+                .height = t), M(a, t)), fi)
+        }, fi.height = function (e, t) {
+            return e || 0 === e ? (fi.dimensions(null, e, t), fi) : M(a)
+        }, fi.maximize = function (e) {
             var t = "sceditor-maximize";
             return ut(e) ? S(a, t) : (e = !!e, e && (yt = jt.pageYOffset), P(Mt.documentElement, t, e), P(
-                Mt.body, t, e), P(a, t, e), _i.width(e ? "100%" : ki.width, !1), _i.height(e ?
-                "100%" : ki.height, !1), e || jt.scrollTo(0, yt), mi(), _i)
+                Mt.body, t, e), P(a, t, e), fi.width(e ? "100%" : ki.width, !1), fi.height(e ?
+                "100%" : ki.height, !1), e || jt.scrollTo(0, yt), mi(), fi)
         }, mi = function () {
-            ki.autoExpand && !bt && (bt = setTimeout(_i.expandToContent, 200))
-        }, _i.expandToContent = function (t) {
-            if (!_i.maximize()) {
+            ki.autoExpand && !bt && (bt = setTimeout(fi.expandToContent, 200))
+        }, fi.expandToContent = function (t) {
+            if (!fi.maximize()) {
                 if (clearTimeout(bt), bt = !1, !gt) {
                     var i = ki.resizeMinHeight || ki.height || M(e);
                     gt = {
@@ -41072,21 +39974,21 @@ function (e) {
                 var o = n.getBoundingClientRect(),
                     s = T.documentElement.clientHeight - 1,
                     a = o.bottom - o.top,
-                    r = _i.height() + 1 + (a - s);
-                t || -1 === gt.max || (r = Math.min(r, gt.max)), _i.height(Math.ceil(Math.max(r, gt.min)))
+                    r = fi.height() + 1 + (a - s);
+                t || -1 === gt.max || (r = Math.min(r, gt.max)), fi.height(Math.ceil(Math.max(r, gt.min)))
             }
-        }, _i.destroy = function () {
+        }, fi.destroy = function () {
             if (Y) {
                 Y.destroy(), K = null, R = null, Y = null, O && u(O), m(Mt, "click", Xt);
                 var t = e.form;
-                t && (m(t, "reset", Gt), m(t, "submit", _i.updateOriginal)), u(N), u(l), u(a), delete e
+                t && (m(t, "reset", Gt), m(t, "submit", fi.updateOriginal)), u(N), u(l), u(a), delete e
                     ._sceditor, v(e), e.required = ht
             }
-        }, _i.createDropDown = function (e, t, i, o) {
+        }, fi.createDropDown = function (e, t, i, o) {
             var l, c = "sceditor-" + t;
-            _i.closeDropDown(!0), O && S(O, c) || (o !== !1 && s(h(i, ":not(input):not(textarea)"),
+            fi.closeDropDown(!0), O && S(O, c) || (o !== !1 && s(h(i, ":not(input):not(textarea)"),
                 function (e, t) {
-                    t.nodeType === mt && _(t, "unselectable", "on")
+                    t.nodeType === mt && f(t, "unselectable", "on")
                 }), l = n({
                 top: e.offsetTop,
                 left: e.offsetLeft,
@@ -41102,7 +40004,7 @@ function (e) {
                 }
             }))
         }, Xt = function (e) {
-            3 !== e.which && O && !e.defaultPrevented && (pi(), _i.closeDropDown())
+            3 !== e.which && O && !e.defaultPrevented && (pi(), fi.closeDropDown())
         }, Vt = function (e) {
             var t = It || wt,
                 i = C,
@@ -41144,39 +40046,39 @@ function (e) {
             };
             "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, T, J)), Y.call("paste", n), I(a,
                 "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, J)), Y.call(
-                "pasteHtml", n), _i.wysiwygEditorInsertHtml(n.val, null, !0)
-        }, _i.closeDropDown = function (e) {
-            O && (u(O), O = null), e === !0 && _i.focus()
-        }, _i.wysiwygEditorInsertHtml = function (e, t, i) {
-            var n, o, s, a = M(f);
-            _i.focus(), (i || !c(Q, "code")) && (K.insertHTML(e, t), K.saveRange(), At(), n = h(C,
+                "pasteHtml", n), fi.wysiwygEditorInsertHtml(n.val, null, !0)
+        }, fi.closeDropDown = function (e) {
+            O && (u(O), O = null), e === !0 && fi.focus()
+        }, fi.wysiwygEditorInsertHtml = function (e, t, i) {
+            var n, o, s, a = M(_);
+            fi.focus(), (i || !c(Q, "code")) && (K.insertHTML(e, t), K.saveRange(), At(), n = h(C,
                     "#sceditor-end-marker")[0], v(n), o = C.scrollTop, s = G(n)
                 .top + 1.5 * n.offsetHeight - a, g(n), (s > o || o > s + a) && (C.scrollTop = s), ui(!
                     1), K.restoreRange(), ni())
-        }, _i.wysiwygEditorInsertText = function (e, t) {
-            _i.wysiwygEditorInsertHtml(X(e), X(t))
-        }, _i.insertText = function (e, t) {
-            return _i.inSourceMode() ? _i.sourceEditorInsertText(e, t) : _i.wysiwygEditorInsertText(e, t),
-                _i
-        }, _i.sourceEditorInsertText = function (e, t) {
+        }, fi.wysiwygEditorInsertText = function (e, t) {
+            fi.wysiwygEditorInsertHtml(X(e), X(t))
+        }, fi.insertText = function (e, t) {
+            return fi.inSourceMode() ? fi.sourceEditorInsertText(e, t) : fi.wysiwygEditorInsertText(e, t),
+                fi
+        }, fi.sourceEditorInsertText = function (e, t) {
             var i, n, o = N.selectionStart,
                 s = N.selectionEnd;
             i = N.scrollTop, N.focus(), n = N.value, t && (e += n.substring(o, s) + t), N.value = n
                 .substring(0, o) + e + n.substring(s, n.length), N.selectionStart = o + e.length - (t ? t
                     .length : 0), N.selectionEnd = N.selectionStart, N.scrollTop = i, N.focus(), ui()
-        }, _i.getRangeHelper = function () {
+        }, fi.getRangeHelper = function () {
             return K
-        }, _i.sourceEditorCaret = function (e) {
+        }, fi.sourceEditorCaret = function (e) {
             return N.focus(), e ? (N.selectionStart = e.start, N.selectionEnd = e.end, this) : {
                 start: N.selectionStart,
                 end: N.selectionEnd
             }
-        }, _i.val = function (e, t) {
-            return ct(e) ? (_i.inSourceMode() ? _i.setSourceEditorValue(e) : (t !== !1 && "toHtml" in i &&
-                    (e = i.toHtml(e)), _i.setWysiwygEditorValue(e)), _i) : _i.inSourceMode() ? _i
-                .getSourceEditorValue(!1) : _i.getWysiwygEditorValue(t)
-        }, _i.insert = function (e, t, n, o, s) {
-            if (_i.inSourceMode()) return _i.sourceEditorInsertText(e, t), _i;
+        }, fi.val = function (e, t) {
+            return ct(e) ? (fi.inSourceMode() ? fi.setSourceEditorValue(e) : (t !== !1 && "toHtml" in i &&
+                    (e = i.toHtml(e)), fi.setWysiwygEditorValue(e)), fi) : fi.inSourceMode() ? fi
+                .getSourceEditorValue(!1) : fi.getWysiwygEditorValue(t)
+        }, fi.insert = function (e, t, n, o, s) {
+            if (fi.inSourceMode()) return fi.sourceEditorInsertText(e, t), fi;
             if (t) {
                 var a = K.selectedHtml();
                 n !== !1 && "fragmentToSource" in i && (a = i.fragmentToSource(a, T, J)), e += a + t
@@ -41184,53 +40086,53 @@ function (e) {
             return n !== !1 && "fragmentToHtml" in i && (e = i.fragmentToHtml(e, J)), n !== !1 && s === !
                 0 && (e = e.replace(/&lt;/g, "<")
                     .replace(/&gt;/g, ">")
-                    .replace(/&amp;/g, "&")), _i.wysiwygEditorInsertHtml(e), _i
-        }, _i.getWysiwygEditorValue = function (e) {
+                    .replace(/&amp;/g, "&")), fi.wysiwygEditorInsertHtml(e), fi
+        }, fi.getWysiwygEditorValue = function (e) {
             for (var t, n = r("div", {}, T), o = C.childNodes, s = 0; s < o.length; s++) d(n, o[s]
                 .cloneNode(!0));
             return d(C, n), V(n), u(n), t = n.innerHTML, e !== !1 && i.hasOwnProperty("toSource") && (t =
                 i.toSource(t, T)), t
-        }, _i.getBody = function () {
+        }, fi.getBody = function () {
             return C
-        }, _i.getContentAreaContainer = function () {
-            return f
-        }, _i.getSourceEditorValue = function (e) {
+        }, fi.getContentAreaContainer = function () {
+            return _
+        }, fi.getSourceEditorValue = function (e) {
             var t = N.value;
             return e !== !1 && "toHtml" in i && (t = i.toHtml(t)), t
-        }, _i.setWysiwygEditorValue = function (e) {
+        }, fi.setWysiwygEditorValue = function (e) {
             e || (e = "<p>" + (It ? "" : "<br />") + "</p>"), C.innerHTML = e, At(), ni(), ui(), mi()
-        }, _i.setSourceEditorValue = function (e) {
+        }, fi.setSourceEditorValue = function (e) {
             N.value = e, ui()
-        }, _i.updateOriginal = function () {
-            e.value = _i.val()
+        }, fi.updateOriginal = function () {
+            e.value = fi.val()
         }, At = function () {
             ki.emoticonsEnabled && at(C, wi, ki.emoticonsCompat)
-        }, _i.inSourceMode = function () {
+        }, fi.inSourceMode = function () {
             return S(a, "sourceMode")
-        }, _i.sourceMode = function (e) {
-            var t = _i.inSourceMode();
-            return "boolean" != typeof e ? t : ((t && !e || !t && e) && _i.toggleSourceMode(), _i)
-        }, _i.toggleSourceMode = function () {
-            var e = _i.inSourceMode();
-            (xt || !e) && (e || (K.saveRange(), K.clear()), _i.blur(), e ? _i.setWysiwygEditorValue(_i
-                    .getSourceEditorValue()) : _i.setSourceEditorValue(_i.getWysiwygEditorValue()), R =
-                null, b(N), b(f), P(a, "wysiwygMode", e), P(a, "sourceMode", !e), ei(), ti())
+        }, fi.sourceMode = function (e) {
+            var t = fi.inSourceMode();
+            return "boolean" != typeof e ? t : ((t && !e || !t && e) && fi.toggleSourceMode(), fi)
+        }, fi.toggleSourceMode = function () {
+            var e = fi.inSourceMode();
+            (xt || !e) && (e || (K.saveRange(), K.clear()), fi.blur(), e ? fi.setWysiwygEditorValue(fi
+                    .getSourceEditorValue()) : fi.setSourceEditorValue(fi.getWysiwygEditorValue()), R =
+                null, b(N), b(_), P(a, "wysiwygMode", e), P(a, "sourceMode", !e), ei(), ti())
         }, ii = function () {
             return N.focus(), N.value.substring(N.selectionStart, N.selectionEnd)
         }, Et = function (e, t) {
-            _i.inSourceMode() ? t.txtExec && (Array.isArray(t.txtExec) ? _i.sourceEditorInsertText.apply(
-                _i, t.txtExec) : t.txtExec.call(_i, e, ii())) : t.exec && (dt(t.exec) ? t.exec.call(
-                _i, e) : _i.execCommand(t.exec, t.hasOwnProperty("execParam") ? t.execParam :
+            fi.inSourceMode() ? t.txtExec && (Array.isArray(t.txtExec) ? fi.sourceEditorInsertText.apply(
+                fi, t.txtExec) : t.txtExec.call(fi, e, ii())) : t.exec && (dt(t.exec) ? t.exec.call(
+                fi, e) : fi.execCommand(t.exec, t.hasOwnProperty("execParam") ? t.execParam :
                 null))
         }, Pt = function () {
             It && (R = K.selectedRange())
-        }, _i.execCommand = function (e, t) {
+        }, fi.execCommand = function (e, t) {
             var i = !1,
-                n = _i.commands[e];
-            if (_i.focus(), !c(K.parentNode(), "code")) {
+                n = fi.commands[e];
+            if (fi.focus(), !c(K.parentNode(), "code")) {
                 try {
                     i = T.execCommand(e, !1, t)
-                } catch (o) {}!i && n && n.errorMessage && alert(_i._(n.errorMessage)), ti()
+                } catch (o) {}!i && n && n.errorMessage && alert(fi._(n.errorMessage)), ti()
             }
         }, oi = function () {
             function e() {
@@ -41240,7 +40142,7 @@ function (e) {
                     if (et = K.cloneSelected(), et && et.collapsed) {
                         var e = et.startContainer,
                             t = et.startOffset;
-                        for (t && e.nodeType !== _t && (e = e.childNodes[t]); e && e.parentNode !== C;)
+                        for (t && e.nodeType !== ft && (e = e.childNodes[t]); e && e.parentNode !== C;)
                             e = e.parentNode;
                         e && H(e, !0) && (K.saveRange(), rt(C, T), K.restoreRange())
                     }
@@ -41255,15 +40157,15 @@ function (e) {
                 oldNode: e,
                 newNode: J
             }))
-        }, _i.currentNode = function () {
+        }, fi.currentNode = function () {
             return J
-        }, _i.currentBlockNode = function () {
+        }, fi.currentBlockNode = function () {
             return Q
         }, ti = function () {
             var e, t, i = "active",
                 n = T,
-                o = _i.sourceMode();
-            if (_i.readOnly()) return s(h(l, i), function (e, t) {
+                o = fi.sourceMode();
+            if (fi.readOnly()) return s(h(l, i), function (e, t) {
                 E(t, i)
             }), void 0;
             o || (t = K.parentNode(), e = K.getFirstBlockParent(t));
@@ -41277,12 +40179,12 @@ function (e) {
                         r = n.queryCommandEnabled(u) ? 0 : -1, r > -1 && (r = n.queryCommandState(u) ?
                             1 : 0)
                     } catch (p) {}
-                } else d || (r = u.call(_i, t, e));
+                } else d || (r = u.call(fi, t, e));
                 P(c, "disabled", d || 0 > r), P(c, i, r > 0)
             }
             zt && zt.update && zt.update(o, t, e)
         }, Kt = function (e) {
-            if (!e.defaultPrevented && (_i.closeDropDown(), 13 === e.which)) {
+            if (!e.defaultPrevented && (fi.closeDropDown(), 13 === e.which)) {
                 var t = "li,ul,ol";
                 if (!k(Q, t) && $(Q)) {
                     R = null;
@@ -41290,7 +40192,7 @@ function (e) {
                     if (K.insertNode(i), !Dt) {
                         var n = i.parentNode,
                             o = n.lastChild;
-                        o && o.nodeType === _t && "" === o.nodeValue && (u(o), o = n.lastChild), !H(n, !
+                        o && o.nodeType === ft && "" === o.nodeValue && (u(o), o = n.lastChild), !H(n, !
                             0) && o === i && H(i.previousSibling) && K.insertHTML("<br>")
                     }
                     e.preventDefault()
@@ -41307,39 +40209,39 @@ function (e) {
                 return 3 === e.nodeType && !/^\s*$/.test(e.nodeValue) || k(e, "br") ? !1 : void 0
             })
         }, Gt = function () {
-            _i.val(e.value)
+            fi.val(e.value)
         }, Yt = function () {
-            _i.closeDropDown(), R = null
-        }, _i._ = function () {
+            fi.closeDropDown(), R = null
+        }, fi._ = function () {
             var e, t = arguments;
             return U && U[t[0]] && (t[0] = U[t[0]]), t[0].replace(/\{(\d+)\}/g, function (i, n) {
                 return t[n - 0 + 1] !== e ? t[n - 0 + 1] : "{" + n + "}"
             })
         }, Qt = function (e) {
-            Y && Y.call(e.type + "Event", e, _i);
+            Y && Y.call(e.type + "Event", e, fi);
             var t = (e.target === N ? "scesrc" : "scewys") + e.type;
-            fi[t] && fi[t].forEach(function (t) {
-                t.call(_i, e)
+            _i[t] && _i[t].forEach(function (t) {
+                t.call(fi, e)
             })
-        }, _i.bind = function (e, t, i, n) {
+        }, fi.bind = function (e, t, i, n) {
             e = e.split(" ");
             for (var o = e.length; o--;)
                 if (dt(t)) {
                     var s = "scewys" + e[o],
                         a = "scesrc" + e[o];
-                    i || (fi[s] = fi[s] || [], fi[s].push(t)), n || (fi[a] = fi[a] || [], fi[a].push(t)),
+                    i || (_i[s] = _i[s] || [], _i[s].push(t)), n || (_i[a] = _i[a] || [], _i[a].push(t)),
                         "valuechanged" === e[o] && (ui.hasHandler = !0)
-                } return _i
-        }, _i.unbind = function (e, t, i, n) {
+                } return fi
+        }, fi.unbind = function (e, t, i, n) {
             e = e.split(" ");
-            for (var s = e.length; s--;) dt(t) && (i || o(fi["scewys" + e[s]] || [], t), n || o(fi[
+            for (var s = e.length; s--;) dt(t) && (i || o(_i["scewys" + e[s]] || [], t), n || o(_i[
                 "scesrc" + e[s]] || [], t));
-            return _i
-        }, _i.blur = function (e, t, i) {
-            return dt(e) ? _i.bind("blur", e, t, i) : _i.sourceMode() ? N.blur() : C.blur(), _i
-        }, _i.focus = function (e, t, i) {
-            if (dt(e)) _i.bind("focus", e, t, i);
-            else if (_i.inSourceMode()) N.focus();
+            return fi
+        }, fi.blur = function (e, t, i) {
+            return dt(e) ? fi.bind("blur", e, t, i) : fi.sourceMode() ? N.blur() : C.blur(), fi
+        }, fi.focus = function (e, t, i) {
+            if (dt(e)) fi.bind("focus", e, t, i);
+            else if (fi.inSourceMode()) N.focus();
             else {
                 if (h(T, ":focus")
                     .length) return;
@@ -41349,35 +40251,35 @@ function (e) {
                         .firstChild), o.collapse(!0), K.selectRange(o))), x.focus(), C.focus(), R && (
                     K.selectRange(R), R = null)
             }
-            return ti(), _i
-        }, _i.keyDown = function (e, t, i) {
-            return _i.bind("keydown", e, t, i)
-        }, _i.keyPress = function (e, t, i) {
-            return _i.bind("keypress", e, t, i)
-        }, _i.keyUp = function (e, t, i) {
-            return _i.bind("keyup", e, t, i)
-        }, _i.nodeChanged = function (e) {
-            return _i.bind("nodechanged", e, !1, !0)
-        }, _i.selectionChanged = function (e) {
-            return _i.bind("selectionchanged", e, !1, !0)
-        }, _i.valueChanged = function (e, t, i) {
-            return _i.bind("valuechanged", e, t, i)
+            return ti(), fi
+        }, fi.keyDown = function (e, t, i) {
+            return fi.bind("keydown", e, t, i)
+        }, fi.keyPress = function (e, t, i) {
+            return fi.bind("keypress", e, t, i)
+        }, fi.keyUp = function (e, t, i) {
+            return fi.bind("keyup", e, t, i)
+        }, fi.nodeChanged = function (e) {
+            return fi.bind("nodechanged", e, !1, !0)
+        }, fi.selectionChanged = function (e) {
+            return fi.bind("selectionchanged", e, !1, !0)
+        }, fi.valueChanged = function (e, t, i) {
+            return fi.bind("valuechanged", e, t, i)
         }, ri = function (e) {
             var t, i = 0,
-                n = _i.emoticonsCache,
+                n = fi.emoticonsCache,
                 o = String.fromCharCode(e.which);
             c(Q, "code") || (n || (n = [], s(wi, function (e, t) {
                     n[i++] = [e, t]
                 }), n.sort(function (e, t) {
                     return e[0].length - t[0].length
-                }), _i.emoticonsCache = n, _i.longestEmoticonCode = n[n.length - 1][0].length), t = K
-                .replaceKeyword(_i.emoticonsCache, !0, !0, _i.longestEmoticonCode, ki.emoticonsCompat,
+                }), fi.emoticonsCache = n, fi.longestEmoticonCode = n[n.length - 1][0].length), t = K
+                .replaceKeyword(fi.emoticonsCache, !0, !0, fi.longestEmoticonCode, ki.emoticonsCompat,
                     o), t && (ki.emoticonsCompat && /^\s$/.test(o) || e.preventDefault()))
         }, li = function () {
             st(Q, K)
-        }, _i.emoticons = function (e) {
+        }, fi.emoticons = function (e) {
             if (!e && e !== !1) return ki.emoticonsEnabled;
-            if (ki.emoticonsEnabled = e, e) p(C, "keypress", ri), _i.sourceMode() || (K.saveRange(), At(),
+            if (ki.emoticonsEnabled = e, e) p(C, "keypress", ri), fi.sourceMode() || (K.saveRange(), At(),
                 ui(!1), K.restoreRange());
             else {
                 var t = h(C, "img[data-sceditor-emoticon]");
@@ -41387,12 +40289,12 @@ function (e) {
                     t.parentNode.replaceChild(n, t)
                 }), m(C, "keypress", ri), ui()
             }
-            return _i
-        }, _i.css = function (e) {
+            return fi
+        }, fi.css = function (e) {
             return pt || (pt = r("style", {
                 id: "inline"
             }, T), d(T.head, pt)), ct(e) ? (pt.styleSheet ? pt.styleSheet.cssText = e : pt.innerHTML =
-                e, _i) : pt.styleSheet ? pt.styleSheet.cssText : pt.innerHTML
+                e, fi) : pt.styleSheet ? pt.styleSheet.cssText : pt.innerHTML
         }, Ut = function (e) {
             var t = [],
                 i = {
@@ -41500,40 +40402,40 @@ function (e) {
                 .toLowerCase();
             (e.ctrlKey || e.metaKey) && t.push("ctrl"), e.altKey && t.push("alt"), e.shiftKey && (t.push(
                     "shift"), o[s] ? a = o[s] : i[a] && (a = i[a])), a && (16 > s || s > 18) && t.push(a),
-                t = t.join("+"), bi[t] && bi[t].call(_i) === !1 && (e.stopPropagation(), e
+                t = t.join("+"), bi[t] && bi[t].call(fi) === !1 && (e.stopPropagation(), e
                 .preventDefault())
-        }, _i.addShortcut = function (e, t) {
+        }, fi.addShortcut = function (e, t) {
             return e = e.toLowerCase(), bi[e] = ct(t) ? function () {
-                return Et(yi[t], _i.commands[t]), !1
-            } : t, _i
-        }, _i.removeShortcut = function (e) {
-            return delete bi[e.toLowerCase()], _i
+                return Et(yi[t], fi.commands[t]), !1
+            } : t, fi
+        }, fi.removeShortcut = function (e) {
+            return delete bi[e.toLowerCase()], fi
         }, Zt = function (e) {
             var t, i, n, o;
             if (!ki.disableBlockRemove && 8 === e.which && (n = K.selectedRange()) && (t = n
                     .startContainer, i = n.startOffset, 0 === i && (o = ci()) && !k(o, "body"))) {
                 for (; t !== o;) {
                     for (; t.previousSibling;)
-                        if (t = t.previousSibling, t.nodeType !== _t || t.nodeValue) return;
+                        if (t = t.previousSibling, t.nodeType !== ft || t.nodeValue) return;
                     if (!(t = t.parentNode)) return
                 }
-                _i.clearBlockFormatting(o), e.preventDefault()
+                fi.clearBlockFormatting(o), e.preventDefault()
             }
         }, ci = function () {
             for (var e = Q; !$(e) || H(e, !0);)
                 if (!(e = e.parentNode) || k(e, "body")) return;
             return e
-        }, _i.clearBlockFormatting = function (e) {
-            return e = e || ci(), !e || k(e, "body") ? _i : (K.saveRange(), e.className = "", R = null, _(
-                e, "style", ""), k(e, "p,div,td") || F(e, "p"), K.restoreRange(), _i)
+        }, fi.clearBlockFormatting = function (e) {
+            return e = e || ci(), !e || k(e, "body") ? fi : (K.saveRange(), e.className = "", R = null, f(
+                e, "style", ""), k(e, "p,div,td") || F(e, "p"), K.restoreRange(), fi)
         }, ui = function (e) {
             if (Y && (Y.hasHandler("valuechangedEvent") || ui.hasHandler)) {
-                var t, i = _i.sourceMode(),
+                var t, i = fi.sourceMode(),
                     n = !i && K.hasSelection();
                 W = !1, e = e !== !1 && !T.getElementById("sceditor-start-marker"), q && (clearTimeout(q),
                         q = !1), n && e && K.saveRange(), t = i ? N.value : C.innerHTML, t !== ui
                     .lastVal && (ui.lastVal = t, I(a, "valuechanged", {
-                        rawValue: i ? _i.val() : t
+                        rawValue: i ? fi.val() : t
                     })), n && e && K.removeMarkers()
             }
         }, di = function () {
@@ -41551,7 +40453,7 @@ function (e) {
         }, Jt = function (e) {
             W = /start/i.test(e.type), W || ui()
         }, pi = function () {
-            _i.updateOriginal()
+            fi.updateOriginal()
         }, Tt()
     }
     e = e && e.hasOwnProperty("default") ? e["default"] : e;
@@ -41561,8 +40463,8 @@ function (e) {
         ht = t.bind(null, "number"),
         pt = {},
         mt = 1,
-        _t = 3,
-        ft = !0,
+        ft = 3,
+        _t = !0,
         gt =
         "|body|hr|p|div|h1|h2|h3|h4|h5|h6|address|pre|form|table|tbody|thead|tfoot|th|tr|td|li|ol|ul|blockquote|center|",
         vt = {
@@ -41571,7 +40473,7 @@ function (e) {
             style: "jquery.sceditor.default.css",
             fonts: "Arial,Arial Black,Comic Sans MS,Courier New,Georgia,Impact,Sans-serif,Serif,Times New Roman,Trebuchet MS,Verdana",
             colors: "#000000,#44B8FF,#1E92F7,#0074D9,#005DC2,#00369B,#b3d5f4|#444444,#C3FFFF,#9DF9FF,#7FDBFF,#68C4E8,#419DC1,#d9f4ff|#666666,#72FF84,#4CEA5E,#2ECC40,#17B529,#008E02,#c0f0c6|#888888,#FFFF44,#FFFA1E,#FFDC00,#E8C500,#C19E00,#fff5b3|#aaaaaa,#FFC95F,#FFA339,#FF851B,#E86E04,#C14700,#ffdbbb|#cccccc,#FF857A,#FF5F54,#FF4136,#E82A1F,#C10300,#ffc6c3|#eeeeee,#FF56FF,#FF30DC,#F012BE,#D900A7,#B20080,#fbb8ec|#ffffff,#F551FF,#CF2BE7,#B10DC9,#9A00B2,#9A00B2,#e8b6ef",
-            locale: _(document.documentElement, "lang") || "en",
+            locale: f(document.documentElement, "lang") || "en",
             charset: "utf-8",
             emoticonsCompat: !1,
             emoticonsEnabled: !0,
@@ -41973,7 +40875,7 @@ function (e) {
                     var s = h(o, "#link")[0];
                     p(o, "click", ".button", n), p(o, "keypress", function (e) {
                         13 === e.which && s.value && n(e)
-                    }, ft), e.createDropDown(t, "insertlink", o)
+                    }, _t), e.createDropDown(t, "insertlink", o)
                 },
                 exec: function (e) {
                     var t = this;
@@ -42018,14 +40920,14 @@ function (e) {
                                 u = l.emoticonsCompat,
                                 h = t.getRangeHelper(),
                                 m = u && " " !== h.getOuterText(!0, 1) ? " " : "",
-                                f = u && " " !== h.getOuterText(!1, 1) ? " " : "",
+                                _ = u && " " !== h.getOuterText(!1, 1) ? " " : "",
                                 g = r("div"),
                                 v = r("div"),
                                 b = 0,
                                 y = n({}, l.emoticons.dropdown, o ? l.emoticons.more : {});
                             return d(g, v), b = Math.sqrt(Object.keys(y)
                                 .length), p(g, "click", "img", function (e) {
-                                t.insert(m + _(this, "alt") + f, null, !1)
+                                t.insert(m + f(this, "alt") + _, null, !1)
                                     .closeDropDown(!0), e.preventDefault()
                             }), s(y, function (e, t) {
                                 d(v, r("img", {
@@ -42235,8 +41137,8 @@ function (e) {
             escapeUriScheme: et,
             dom: {
                 css: y,
-                attr: _,
-                removeAttr: f,
+                attr: f,
+                removeAttr: _,
                 is: k,
                 closest: c,
                 width: j,
@@ -42395,11 +41297,11 @@ function (e) {
             })
     }
 
-    function _(e, t, i) {
-        return arguments.length < 3 ? e.getAttribute(t) : (null == i ? f(e, t) : e.setAttribute(t, i), void 0)
+    function f(e, t, i) {
+        return arguments.length < 3 ? e.getAttribute(t) : (null == i ? _(e, t) : e.setAttribute(t, i), void 0)
     }
 
-    function f(e, t) {
+    function _(e, t) {
         e.removeAttribute(t)
     }
 
@@ -42434,8 +41336,8 @@ function (e) {
             if (1 === n) return s(e.attributes, function (e, t) {
                 /^data\-/i.test(t.name) && (o[t.name.substr(5)] = t.value)
             }), o;
-            if (2 === n) return _(e, "data-" + t);
-            _(e, "data-" + t, String(i))
+            if (2 === n) return f(e, "data-" + t);
+            f(e, "data-" + t, String(i))
         }
     }
 
@@ -42544,14 +41446,14 @@ function (e) {
     }
 
     function $(e) {
-        return e && (!k(e, "p,div") || e.className || _(e, "style") || !i(w(e)))
+        return e && (!k(e, "p,div") || e.className || f(e, "style") || !i(w(e)))
     }
 
     function F(e, t) {
         var i = r(t, {}, e.ownerDocument);
         for (s(e.attributes, function (e, t) {
                 try {
-                    _(i, t.name, t.value)
+                    f(i, t.name, t.value)
                 } catch (n) {}
             }); e.firstChild;) d(i, e.firstChild);
         return e.parentNode.replaceChild(i, e), i
@@ -42565,8 +41467,8 @@ function (e) {
 
     function H(e, t) {
         var i, n = (e || {})
-            .nodeType || _t;
-        return n !== mt ? n === _t : (i = e.tagName.toLowerCase(), "code" === i ? !t : gt.indexOf("|" + i +
+            .nodeType || ft;
+        return n !== mt ? n === ft : (i = e.tagName.toLowerCase(), "code" === i ? !t : gt.indexOf("|" + i +
             "|") < 0)
     }
 
@@ -42611,12 +41513,12 @@ function (e) {
         if (!/pre(\-wrap)?$/i.test(l))
             for (; d;) {
                 if (a = d.nextSibling, t = d.nodeValue, i = d.nodeType, i === mt && d.firstChild && Z(d),
-                    i === _t) {
+                    i === ft) {
                     for (n = U(d), o = U(d, !0), r = !1; S(o, "sceditor-ignore");) o = U(o, !0);
                     if (H(d) && o) {
                         for (s = o; s.lastChild;)
                             for (s = s.lastChild; S(s, "sceditor-ignore");) s = U(s, !0);
-                        r = s.nodeType === _t ? /[\t\n\r ]$/.test(s.nodeValue) : !H(s)
+                        r = s.nodeType === ft ? /[\t\n\r ]$/.test(s.nodeValue) : !H(s)
                     }
                     t = t.replace(/\u200B/g, ""), o && H(o) && !r || (t = t.replace(c ? /^[\t ]+/ :
                         /^[\t\n\r ]+/, "")), n && H(n) || (t = t.replace(c ? /[\t ]+$/ : /[\t\n\r ]+$/,
@@ -42863,16 +41765,16 @@ function (e) {
             i || e.sort(function (e, t) {
                 return e[0].length - t[0].length
             });
-            var a, r, c, u, d, h, p, m, _ = "(^|[\\s    ])",
-                f = e.length,
+            var a, r, c, u, d, h, p, m, f = "(^|[\\s    ])",
+                _ = e.length,
                 g = o ? 1 : 0,
-                v = n || e[f - 1][0].length;
+                v = n || e[_ - 1][0].length;
             for (o && v++, s = s || "", a = l.getOuterText(!0, v), d = a.length, a += s, t && (a += l
-                    .getOuterText(!1, v)); f--;)
-                if (p = e[f][0], m = p.length, u = Math.max(0, d - m - g), c = -1, o ? (r = a.substr(u)
-                        .match(new RegExp(_ + Q(p) + _)), r && (c = r.index + u + r[1].length)) : c = a
+                    .getOuterText(!1, v)); _--;)
+                if (p = e[_][0], m = p.length, u = Math.max(0, d - m - g), c = -1, o ? (r = a.substr(u)
+                        .match(new RegExp(f + Q(p) + f)), r && (c = r.index + u + r[1].length)) : c = a
                     .indexOf(p, u), c > -1 && d >= c && c + m + g >= d) return h = d - c, l
-                    .selectOuterText(h, m - h - (/^\S/.test(s) ? 1 : 0)), l.insertHTML(e[f][1]), !0;
+                    .selectOuterText(h, m - h - (/^\S/.test(s) ? 1 : 0)), l.insertHTML(e[_][1]), !0;
             return !1
         }, l.compare = function (e, t) {
             return t || (t = l.selectedRange()), e && t ? 0 === e.compareBoundaryPoints(Range.END_TO_END,
@@ -42899,7 +41801,7 @@ function (e) {
                         m = r.nodeValue;
                     null === m && (m = r.innerText || ""), m += w(s, "sceditor-emoticon"), p === l && (d = m
                             .length + c.startOffset), p === e && e.childNodes[c.startOffset] === l && (d = m
-                            .length), p === r && (d = c.startOffset), l && l.nodeType === _t || (l = a
+                            .length), p === r && (d = c.startOffset), l && l.nodeType === ft || (l = a
                             .insertBefore(a.ownerDocument.createTextNode(""), l)), l.insertData(0, m), u(r),
                         u(s), d > -1 && (c.setStart(l, d), c.collapse(!0), t.selectRange(c))
                 }
@@ -42917,7 +41819,7 @@ function (e) {
             return t.length - e.length
         }), function c(e) {
             for (e = e.firstChild; e;) {
-                if (e.nodeType !== mt || k(e, "code") || c(e), e.nodeType === _t)
+                if (e.nodeType !== mt || k(e, "code") || c(e), e.nodeType === ft)
                     for (var o = 0; o < a.length; o++) {
                         var s = e.nodeValue,
                             l = a[o],
@@ -42938,40 +41840,40 @@ function (e) {
     function rt(e, t) {
         var i;
         O(e, function (e) {
-            H(e, !0) ? (i || (i = r("p", {}, t), z(i, e)), (e.nodeType !== _t || "" !== e
+            H(e, !0) ? (i || (i = r("p", {}, t), z(i, e)), (e.nodeType !== ft || "" !== e
                 .nodeValue) && d(i, e)) : i = null
         }, !1, !0)
     }
 
     function lt(e, t) {
-        var i, a, l, f, x, C, T, N, O, R, W, q, U, K, Y, J, Q, et, it, ht, pt, gt, bt, yt, Ct, zt, Tt, At, Et,
+        var i, a, l, _, x, C, T, N, O, R, W, q, U, K, Y, J, Q, et, it, ht, pt, gt, bt, yt, Ct, zt, Tt, At, Et,
             Pt, Ot, Lt, Rt, $t, Ft, Bt, Ht, Wt, Vt, qt, Ut, Zt, Kt, Gt, Yt, Jt, Qt, Xt, ei, ti, ii, ni, oi,
-            si, ai, ri, li, ci, ui, di, hi, pi, mi, _i = this,
-            fi = {},
+            si, ai, ri, li, ci, ui, di, hi, pi, mi, fi = this,
+            _i = {},
             gi = [],
             vi = [],
             bi = {},
             yi = {},
             wi = {};
-        _i.commands = n(!0, {}, t.commands || St);
-        var ki = _i.opts = n(!0, {}, vt, t);
-        _i.opts.emoticons = t.emoticons || vt.emoticons, Tt = function () {
-            e._sceditor = _i, ki.locale && "en" !== ki.locale && Rt(), a = r("div", {
+        fi.commands = n(!0, {}, t.commands || St);
+        var ki = fi.opts = n(!0, {}, vt, t);
+        fi.opts.emoticons = t.emoticons || vt.emoticons, Tt = function () {
+            e._sceditor = fi, ki.locale && "en" !== ki.locale && Rt(), a = r("div", {
                     className: "sceditor-container"
                 }), z(a, e), y(a, "z-index", ki.zIndex), It && A(a, "ie ie" + It), ht = e.required, e
                 .required = !1;
             var t = lt.formats[ki.format];
-            i = t ? new t : {}, "init" in i && i.init.call(_i), Lt(), Wt(), $t(), Ot(), Ft(), Bt(), xt ||
-                _i.toggleSourceMode(), ti();
+            i = t ? new t : {}, "init" in i && i.init.call(fi), Lt(), Wt(), $t(), Ot(), Ft(), Bt(), xt ||
+                fi.toggleSourceMode(), ti();
             var n = function () {
                 m(jt, "load", n), ki.autofocus && ai(), mi(), ni(), Y.call("ready"), "onReady" in i &&
-                    i.onReady.call(_i)
+                    i.onReady.call(fi)
             };
             p(jt, "load", n), "complete" === Mt.readyState && n()
         }, Lt = function () {
             var e = ki.plugins;
             e = e ? e.toString()
-                .split(",") : [], Y = new nt(_i), e.forEach(function (e) {
+                .split(",") : [], Y = new nt(fi), e.forEach(function (e) {
                     Y.register(e.trim())
                 })
         }, Rt = function () {
@@ -42979,29 +41881,29 @@ function (e) {
             U = lt.locale[ki.locale], U || (e = ki.locale.split("-"), U = lt.locale[e[0]]), U && U
                 .dateFormat && (ki.dateFormat = U.dateFormat)
         }, Ot = function () {
-            N = r("textarea"), f = r("iframe", {
+            N = r("textarea"), _ = r("iframe", {
                     frameborder: 0,
                     allowfullscreen: !0
-                }), ki.startInSourceMode ? (A(a, "sourceMode"), g(f)) : (A(a, "wysiwygMode"), g(N)), ki
-                .spellcheck || _(a, "spellcheck", "false"), "https:" === jt.location.protocol && _(f,
-                    "src", "javascript:false"), d(a, f), d(a, N), _i.dimensions(ki.width || j(e), ki
+                }), ki.startInSourceMode ? (A(a, "sourceMode"), g(_)) : (A(a, "wysiwygMode"), g(N)), ki
+                .spellcheck || f(a, "spellcheck", "false"), "https:" === jt.location.protocol && f(_,
+                    "src", "javascript:false"), d(a, _), d(a, N), fi.dimensions(ki.width || j(e), ki
                     .height || M(e));
             var t = It ? "ie ie" + It : "";
-            t += kt ? " ios" : "", T = f.contentDocument, T.open(), T.write(tt("html", {
+            t += kt ? " ios" : "", T = _.contentDocument, T.open(), T.write(tt("html", {
                 attrs: ' class="' + t + '"',
                 spellcheck: ki.spellcheck ? "" : 'spellcheck="false"',
                 charset: ki.charset,
                 style: ki.style
-            })), T.close(), C = T.body, x = f.contentWindow, _i.readOnly(!!ki.readOnly), (kt || wt ||
-                It) && (M(C, "100%"), It || p(C, "touchend", _i.focus));
-            var i = _(e, "tabindex");
-            _(N, "tabindex", i), _(f, "tabindex", i), K = new ot(x), g(e), _i.val(e.value);
-            var n = ki.placeholder || _(e, "placeholder");
-            n && (N.placeholder = n, _(C, "placeholder", n))
+            })), T.close(), C = T.body, x = _.contentWindow, fi.readOnly(!!ki.readOnly), (kt || wt ||
+                It) && (M(C, "100%"), It || p(C, "touchend", fi.focus));
+            var i = f(e, "tabindex");
+            f(N, "tabindex", i), f(_, "tabindex", i), K = new ot(x), g(e), fi.val(e.value);
+            var n = ki.placeholder || f(e, "placeholder");
+            n && (N.placeholder = n, f(C, "placeholder", n))
         }, Ft = function () {
             ki.autoUpdate && (p(C, "blur", pi), p(N, "blur", pi)), null === ki.rtl && (ki.rtl = "rtl" ===
-                y(N, "direction")), _i.rtl(!!ki.rtl), ki.autoExpand && (p(C, "load", mi, ft), p(C,
-                "input keyup", mi)), ki.resizeEnabled && Ht(), _(a, "id", ki.id), _i.emoticons(ki
+                y(N, "direction")), fi.rtl(!!ki.rtl), ki.autoExpand && (p(C, "load", mi, _t), p(C,
+                "input keyup", mi)), ki.resizeEnabled && Ht(), f(a, "id", ki.id), fi.emoticons(ki
                 .emoticonsEnabled)
         }, Bt = function () {
             var t = e.form,
@@ -43009,12 +41911,12 @@ function (e) {
                 n = "keydown keyup keypress focus blur contextmenu",
                 o = "onselectionchange" in T ? "selectionchange" :
                 "keyup focus blur contextmenu mouseup touchend click";
-            p(Mt, "click", Xt), t && (p(t, "reset", Gt), p(t, "submit", _i.updateOriginal, ft)), p(C,
+            p(Mt, "click", Xt), t && (p(t, "reset", Gt), p(t, "submit", fi.updateOriginal, _t)), p(C,
                 "keypress", Kt), p(C, "keydown", Ut), p(C, "keydown", Zt), p(C, "keyup", ni), p(C,
                 "blur", di), p(C, "keyup", hi), p(C, "paste", Vt), p(C, i, Jt), p(C, o, oi), p(C, n,
                 Qt), ki.emoticonsCompat && jt.getSelection && p(C, "keyup", li), p(C, "blur",
                 function () {
-                    _i.val() || A(C, "placeholder")
+                    fi.val() || A(C, "placeholder")
                 }), p(C, "focus", function () {
                 E(C, "placeholder")
             }), p(N, "blur", di), p(N, "keyup", hi), p(N, "keydown", Ut), p(N, i, Jt), p(N, n, Qt), p(
@@ -43024,7 +41926,7 @@ function (e) {
             }), p(a, "selectionchanged", si), p(a, "selectionchanged", ti), p(a,
                 "selectionchanged valuechanged nodechanged pasteraw paste", Qt)
         }, $t = function () {
-            var e, t = _i.commands,
+            var e, t = fi.commands,
                 i = (ki.toolbarExclude || "")
                 .split(","),
                 n = ki.toolbar.split("|");
@@ -43039,7 +41941,7 @@ function (e) {
                     if (r && !(i.indexOf(o) > -1)) {
                         if (a = r.shortcut, s = tt("toolbarButton", {
                                 name: o,
-                                dispName: _i._(r.name || r.tooltip || o)
+                                dispName: fi._(r.name || r.tooltip || o)
                             }, !0)
                             .firstChild, zt && zt.create) {
                             var l = zt.create(o);
@@ -43049,9 +41951,9 @@ function (e) {
                                 "disabled", !r.exec), p(s, "click", function (e) {
                                 S(s, "disabled") || Et(s, r), ti(), e.preventDefault()
                             }), p(s, "mousedown", function (e) {
-                                _i.closeDropDown(), e.preventDefault()
-                            }), r.tooltip && _(s, "title", _i._(r.tooltip) + (a ? " (" +
-                                a + ")" : "")), a && _i.addShortcut(a, o), r.state ? vi
+                                fi.closeDropDown(), e.preventDefault()
+                            }), r.tooltip && f(s, "title", fi._(r.tooltip) + (a ? " (" +
+                                a + ")" : "")), a && fi.addShortcut(a, o), r.state ? vi
                             .push({
                                 name: o,
                                 state: r.state
@@ -43071,8 +41973,8 @@ function (e) {
                 }),
                 u = "touchmove mousemove",
                 h = "touchcancel touchend mouseup",
-                _ = 0,
                 f = 0,
+                _ = 0,
                 b = 0,
                 y = 0,
                 w = 0,
@@ -43080,16 +41982,16 @@ function (e) {
                 x = j(a),
                 C = M(a),
                 z = !1,
-                T = _i.rtl();
+                T = fi.rtl();
             if (e = ki.resizeMinHeight || C / 1.5, t = ki.resizeMaxHeight || 2.5 * C, i = ki
                 .resizeMinWidth || x / 1.25, n = ki.resizeMaxWidth || 1.25 * x, o = function (o) {
                     "touchmove" === o.type ? (o = jt.event, b = o.changedTouches[0].pageX, y = o
                         .changedTouches[0].pageY) : (b = o.pageX, y = o.pageY);
-                    var s = k + (y - f),
-                        a = T ? w - (b - _) : w + (b - _);
+                    var s = k + (y - _),
+                        a = T ? w - (b - f) : w + (b - f);
                     n > 0 && a > n && (a = n), i > 0 && i > a && (a = i), ki.resizeWidth || (a = !1), t >
                         0 && s > t && (s = t), e > 0 && e > s && (s = e), ki.resizeHeight || (s = !1), (
-                            a || s) && _i.dimensions(a, s), o.preventDefault()
+                            a || s) && fi.dimensions(a, s), o.preventDefault()
                 }, s = function (e) {
                     z && (z = !1, g(c), E(a, "resizing"), m(Mt, u, o), m(Mt, h, s), e.preventDefault())
                 }, zt && zt.create) {
@@ -43097,8 +41999,8 @@ function (e) {
                 S && (d(l, S), A(l, "has-icon"))
             }
             d(a, l), d(a, c), g(c), p(l, "touchstart mousedown", function (e) {
-                "touchstart" === e.type ? (e = jt.event, _ = e.touches[0].pageX, f = e.touches[0]
-                    .pageY) : (_ = e.pageX, f = e.pageY), w = j(a), k = M(a), z = !0, A(a,
+                "touchstart" === e.type ? (e = jt.event, f = e.touches[0].pageX, _ = e.touches[0]
+                    .pageY) : (f = e.pageX, _ = e.pageY), w = j(a), k = M(a), z = !0, A(a,
                     "resizing"), v(c), p(Mt, u, o), p(Mt, h, s), e.preventDefault()
             })
         }, Wt = function () {
@@ -43117,45 +42019,45 @@ function (e) {
             var e, t, i = C.firstChild,
                 n = !!ki.autofocusEnd;
             if (D(a)) {
-                if (_i.sourceMode()) return t = n ? N.value.length : 0, N.setSelectionRange(t, t), void 0;
+                if (fi.sourceMode()) return t = n ? N.value.length : 0, N.setSelectionRange(t, t), void 0;
                 if (Z(C), n)
                     for ((i = C.lastChild) || (i = r("p", {}, T), d(C, i)); i.lastChild;) i = i.lastChild,
                         !Dt && k(i, "br") && i.previousSibling && (i = i.previousSibling);
                 e = T.createRange(), B(i) ? e.selectNodeContents(i) : (e.setStartBefore(i), n && e
                     .setStartAfter(i)), e.collapse(!n), K.selectRange(e), et = e, n && (C.scrollTop =
-                    C.scrollHeight), _i.focus()
+                    C.scrollHeight), fi.focus()
             }
-        }, _i.readOnly = function (e) {
+        }, fi.readOnly = function (e) {
             return "boolean" != typeof e ? !N.readonly : (C.contentEditable = !e, N.readonly = !e, ei(e),
-                _i)
-        }, _i.rtl = function (e) {
+                fi)
+        }, fi.rtl = function (e) {
             var t = e ? "rtl" : "ltr";
-            return "boolean" != typeof e ? "rtl" === _(N, "dir") : (_(C, "dir", t), _(N, "dir", t), E(a,
-                "rtl"), E(a, "ltr"), A(a, t), zt && zt.rtl && zt.rtl(e), _i)
+            return "boolean" != typeof e ? "rtl" === f(N, "dir") : (f(C, "dir", t), f(N, "dir", t), E(a,
+                "rtl"), E(a, "ltr"), A(a, t), zt && zt.rtl && zt.rtl(e), fi)
         }, ei = function (e) {
-            var t = _i.inSourceMode() ? "_sceTxtMode" : "_sceWysiwygMode";
+            var t = fi.inSourceMode() ? "_sceTxtMode" : "_sceWysiwygMode";
             s(yi, function (i, n) {
                 P(n, "disabled", e || !n[t])
             })
-        }, _i.width = function (e, t) {
-            return e || 0 === e ? (_i.dimensions(e, null, t), _i) : j(a)
-        }, _i.dimensions = function (e, t, i) {
+        }, fi.width = function (e, t) {
+            return e || 0 === e ? (fi.dimensions(e, null, t), fi) : j(a)
+        }, fi.dimensions = function (e, t, i) {
             return e = e || 0 === e ? e : !1, t = t || 0 === t ? t : !1, e === !1 && t === !1 ? {
-                width: _i.width(),
-                height: _i.height()
+                width: fi.width(),
+                height: fi.height()
             } : (e !== !1 && (i !== !1 && (ki.width = e), j(a, e)), t !== !1 && (i !== !1 && (ki
-                .height = t), M(a, t)), _i)
-        }, _i.height = function (e, t) {
-            return e || 0 === e ? (_i.dimensions(null, e, t), _i) : M(a)
-        }, _i.maximize = function (e) {
+                .height = t), M(a, t)), fi)
+        }, fi.height = function (e, t) {
+            return e || 0 === e ? (fi.dimensions(null, e, t), fi) : M(a)
+        }, fi.maximize = function (e) {
             var t = "sceditor-maximize";
             return ut(e) ? S(a, t) : (e = !!e, e && (yt = jt.pageYOffset), P(Mt.documentElement, t, e), P(
-                Mt.body, t, e), P(a, t, e), _i.width(e ? "100%" : ki.width, !1), _i.height(e ?
-                "100%" : ki.height, !1), e || jt.scrollTo(0, yt), mi(), _i)
+                Mt.body, t, e), P(a, t, e), fi.width(e ? "100%" : ki.width, !1), fi.height(e ?
+                "100%" : ki.height, !1), e || jt.scrollTo(0, yt), mi(), fi)
         }, mi = function () {
-            ki.autoExpand && !bt && (bt = setTimeout(_i.expandToContent, 200))
-        }, _i.expandToContent = function (t) {
-            if (!_i.maximize()) {
+            ki.autoExpand && !bt && (bt = setTimeout(fi.expandToContent, 200))
+        }, fi.expandToContent = function (t) {
+            if (!fi.maximize()) {
                 if (clearTimeout(bt), bt = !1, !gt) {
                     var i = ki.resizeMinHeight || ki.height || M(e);
                     gt = {
@@ -43168,21 +42070,21 @@ function (e) {
                 var o = n.getBoundingClientRect(),
                     s = T.documentElement.clientHeight - 1,
                     a = o.bottom - o.top,
-                    r = _i.height() + 1 + (a - s);
-                t || -1 === gt.max || (r = Math.min(r, gt.max)), _i.height(Math.ceil(Math.max(r, gt.min)))
+                    r = fi.height() + 1 + (a - s);
+                t || -1 === gt.max || (r = Math.min(r, gt.max)), fi.height(Math.ceil(Math.max(r, gt.min)))
             }
-        }, _i.destroy = function () {
+        }, fi.destroy = function () {
             if (Y) {
                 Y.destroy(), K = null, R = null, Y = null, O && u(O), m(Mt, "click", Xt);
                 var t = e.form;
-                t && (m(t, "reset", Gt), m(t, "submit", _i.updateOriginal)), u(N), u(l), u(a), delete e
+                t && (m(t, "reset", Gt), m(t, "submit", fi.updateOriginal)), u(N), u(l), u(a), delete e
                     ._sceditor, v(e), e.required = ht
             }
-        }, _i.createDropDown = function (e, t, i, o) {
+        }, fi.createDropDown = function (e, t, i, o) {
             var l, c = "sceditor-" + t;
-            _i.closeDropDown(!0), O && S(O, c) || (o !== !1 && s(h(i, ":not(input):not(textarea)"),
+            fi.closeDropDown(!0), O && S(O, c) || (o !== !1 && s(h(i, ":not(input):not(textarea)"),
                 function (e, t) {
-                    t.nodeType === mt && _(t, "unselectable", "on")
+                    t.nodeType === mt && f(t, "unselectable", "on")
                 }), l = n({
                 top: e.offsetTop,
                 left: e.offsetLeft,
@@ -43198,7 +42100,7 @@ function (e) {
                 }
             }))
         }, Xt = function (e) {
-            3 !== e.which && O && !e.defaultPrevented && (pi(), _i.closeDropDown())
+            3 !== e.which && O && !e.defaultPrevented && (pi(), fi.closeDropDown())
         }, Vt = function (e) {
             var t = It || wt,
                 i = C,
@@ -43240,39 +42142,39 @@ function (e) {
             };
             "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, T, J)), Y.call("paste", n), I(a,
                 "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, J)), Y.call(
-                "pasteHtml", n), _i.wysiwygEditorInsertHtml(n.val, null, !0)
-        }, _i.closeDropDown = function (e) {
-            O && (u(O), O = null), e === !0 && _i.focus()
-        }, _i.wysiwygEditorInsertHtml = function (e, t, i) {
-            var n, o, s, a = M(f);
-            _i.focus(), (i || !c(Q, "code")) && (K.insertHTML(e, t), K.saveRange(), At(), n = h(C,
+                "pasteHtml", n), fi.wysiwygEditorInsertHtml(n.val, null, !0)
+        }, fi.closeDropDown = function (e) {
+            O && (u(O), O = null), e === !0 && fi.focus()
+        }, fi.wysiwygEditorInsertHtml = function (e, t, i) {
+            var n, o, s, a = M(_);
+            fi.focus(), (i || !c(Q, "code")) && (K.insertHTML(e, t), K.saveRange(), At(), n = h(C,
                     "#sceditor-end-marker")[0], v(n), o = C.scrollTop, s = G(n)
                 .top + 1.5 * n.offsetHeight - a, g(n), (s > o || o > s + a) && (C.scrollTop = s), ui(!
                     1), K.restoreRange(), ni())
-        }, _i.wysiwygEditorInsertText = function (e, t) {
-            _i.wysiwygEditorInsertHtml(X(e), X(t))
-        }, _i.insertText = function (e, t) {
-            return _i.inSourceMode() ? _i.sourceEditorInsertText(e, t) : _i.wysiwygEditorInsertText(e, t),
-                _i
-        }, _i.sourceEditorInsertText = function (e, t) {
+        }, fi.wysiwygEditorInsertText = function (e, t) {
+            fi.wysiwygEditorInsertHtml(X(e), X(t))
+        }, fi.insertText = function (e, t) {
+            return fi.inSourceMode() ? fi.sourceEditorInsertText(e, t) : fi.wysiwygEditorInsertText(e, t),
+                fi
+        }, fi.sourceEditorInsertText = function (e, t) {
             var i, n, o = N.selectionStart,
                 s = N.selectionEnd;
             i = N.scrollTop, N.focus(), n = N.value, t && (e += n.substring(o, s) + t), N.value = n
                 .substring(0, o) + e + n.substring(s, n.length), N.selectionStart = o + e.length - (t ? t
                     .length : 0), N.selectionEnd = N.selectionStart, N.scrollTop = i, N.focus(), ui()
-        }, _i.getRangeHelper = function () {
+        }, fi.getRangeHelper = function () {
             return K
-        }, _i.sourceEditorCaret = function (e) {
+        }, fi.sourceEditorCaret = function (e) {
             return N.focus(), e ? (N.selectionStart = e.start, N.selectionEnd = e.end, this) : {
                 start: N.selectionStart,
                 end: N.selectionEnd
             }
-        }, _i.val = function (e, t) {
-            return ct(e) ? (_i.inSourceMode() ? _i.setSourceEditorValue(e) : (t !== !1 && "toHtml" in i &&
-                    (e = i.toHtml(e)), _i.setWysiwygEditorValue(e)), _i) : _i.inSourceMode() ? _i
-                .getSourceEditorValue(!1) : _i.getWysiwygEditorValue(t)
-        }, _i.insert = function (e, t, n, o, s) {
-            if (_i.inSourceMode()) return _i.sourceEditorInsertText(e, t), _i;
+        }, fi.val = function (e, t) {
+            return ct(e) ? (fi.inSourceMode() ? fi.setSourceEditorValue(e) : (t !== !1 && "toHtml" in i &&
+                    (e = i.toHtml(e)), fi.setWysiwygEditorValue(e)), fi) : fi.inSourceMode() ? fi
+                .getSourceEditorValue(!1) : fi.getWysiwygEditorValue(t)
+        }, fi.insert = function (e, t, n, o, s) {
+            if (fi.inSourceMode()) return fi.sourceEditorInsertText(e, t), fi;
             if (t) {
                 var a = K.selectedHtml();
                 n !== !1 && "fragmentToSource" in i && (a = i.fragmentToSource(a, T, J)), e += a + t
@@ -43280,53 +42182,53 @@ function (e) {
             return n !== !1 && "fragmentToHtml" in i && (e = i.fragmentToHtml(e, J)), n !== !1 && s === !
                 0 && (e = e.replace(/&lt;/g, "<")
                     .replace(/&gt;/g, ">")
-                    .replace(/&amp;/g, "&")), _i.wysiwygEditorInsertHtml(e), _i
-        }, _i.getWysiwygEditorValue = function (e) {
+                    .replace(/&amp;/g, "&")), fi.wysiwygEditorInsertHtml(e), fi
+        }, fi.getWysiwygEditorValue = function (e) {
             for (var t, n = r("div", {}, T), o = C.childNodes, s = 0; s < o.length; s++) d(n, o[s]
                 .cloneNode(!0));
             return d(C, n), V(n), u(n), t = n.innerHTML, e !== !1 && i.hasOwnProperty("toSource") && (t =
                 i.toSource(t, T)), t
-        }, _i.getBody = function () {
+        }, fi.getBody = function () {
             return C
-        }, _i.getContentAreaContainer = function () {
-            return f
-        }, _i.getSourceEditorValue = function (e) {
+        }, fi.getContentAreaContainer = function () {
+            return _
+        }, fi.getSourceEditorValue = function (e) {
             var t = N.value;
             return e !== !1 && "toHtml" in i && (t = i.toHtml(t)), t
-        }, _i.setWysiwygEditorValue = function (e) {
+        }, fi.setWysiwygEditorValue = function (e) {
             e || (e = "<p>" + (It ? "" : "<br />") + "</p>"), C.innerHTML = e, At(), ni(), ui(), mi()
-        }, _i.setSourceEditorValue = function (e) {
+        }, fi.setSourceEditorValue = function (e) {
             N.value = e, ui()
-        }, _i.updateOriginal = function () {
-            e.value = _i.val()
+        }, fi.updateOriginal = function () {
+            e.value = fi.val()
         }, At = function () {
             ki.emoticonsEnabled && at(C, wi, ki.emoticonsCompat)
-        }, _i.inSourceMode = function () {
+        }, fi.inSourceMode = function () {
             return S(a, "sourceMode")
-        }, _i.sourceMode = function (e) {
-            var t = _i.inSourceMode();
-            return "boolean" != typeof e ? t : ((t && !e || !t && e) && _i.toggleSourceMode(), _i)
-        }, _i.toggleSourceMode = function () {
-            var e = _i.inSourceMode();
-            (xt || !e) && (e || (K.saveRange(), K.clear()), _i.blur(), e ? _i.setWysiwygEditorValue(_i
-                    .getSourceEditorValue()) : _i.setSourceEditorValue(_i.getWysiwygEditorValue()), R =
-                null, b(N), b(f), P(a, "wysiwygMode", e), P(a, "sourceMode", !e), ei(), ti())
+        }, fi.sourceMode = function (e) {
+            var t = fi.inSourceMode();
+            return "boolean" != typeof e ? t : ((t && !e || !t && e) && fi.toggleSourceMode(), fi)
+        }, fi.toggleSourceMode = function () {
+            var e = fi.inSourceMode();
+            (xt || !e) && (e || (K.saveRange(), K.clear()), fi.blur(), e ? fi.setWysiwygEditorValue(fi
+                    .getSourceEditorValue()) : fi.setSourceEditorValue(fi.getWysiwygEditorValue()), R =
+                null, b(N), b(_), P(a, "wysiwygMode", e), P(a, "sourceMode", !e), ei(), ti())
         }, ii = function () {
             return N.focus(), N.value.substring(N.selectionStart, N.selectionEnd)
         }, Et = function (e, t) {
-            _i.inSourceMode() ? t.txtExec && (Array.isArray(t.txtExec) ? _i.sourceEditorInsertText.apply(
-                _i, t.txtExec) : t.txtExec.call(_i, e, ii())) : t.exec && (dt(t.exec) ? t.exec.call(
-                _i, e) : _i.execCommand(t.exec, t.hasOwnProperty("execParam") ? t.execParam :
+            fi.inSourceMode() ? t.txtExec && (Array.isArray(t.txtExec) ? fi.sourceEditorInsertText.apply(
+                fi, t.txtExec) : t.txtExec.call(fi, e, ii())) : t.exec && (dt(t.exec) ? t.exec.call(
+                fi, e) : fi.execCommand(t.exec, t.hasOwnProperty("execParam") ? t.execParam :
                 null))
         }, Pt = function () {
             It && (R = K.selectedRange())
-        }, _i.execCommand = function (e, t) {
+        }, fi.execCommand = function (e, t) {
             var i = !1,
-                n = _i.commands[e];
-            if (_i.focus(), !c(K.parentNode(), "code")) {
+                n = fi.commands[e];
+            if (fi.focus(), !c(K.parentNode(), "code")) {
                 try {
                     i = T.execCommand(e, !1, t)
-                } catch (o) {}!i && n && n.errorMessage && alert(_i._(n.errorMessage)), ti()
+                } catch (o) {}!i && n && n.errorMessage && alert(fi._(n.errorMessage)), ti()
             }
         }, oi = function () {
             function e() {
@@ -43336,7 +42238,7 @@ function (e) {
                     if (et = K.cloneSelected(), et && et.collapsed) {
                         var e = et.startContainer,
                             t = et.startOffset;
-                        for (t && e.nodeType !== _t && (e = e.childNodes[t]); e && e.parentNode !== C;)
+                        for (t && e.nodeType !== ft && (e = e.childNodes[t]); e && e.parentNode !== C;)
                             e = e.parentNode;
                         e && H(e, !0) && (K.saveRange(), rt(C, T), K.restoreRange())
                     }
@@ -43351,15 +42253,15 @@ function (e) {
                 oldNode: e,
                 newNode: J
             }))
-        }, _i.currentNode = function () {
+        }, fi.currentNode = function () {
             return J
-        }, _i.currentBlockNode = function () {
+        }, fi.currentBlockNode = function () {
             return Q
         }, ti = function () {
             var e, t, i = "active",
                 n = T,
-                o = _i.sourceMode();
-            if (_i.readOnly()) return s(h(l, i), function (e, t) {
+                o = fi.sourceMode();
+            if (fi.readOnly()) return s(h(l, i), function (e, t) {
                 E(t, i)
             }), void 0;
             o || (t = K.parentNode(), e = K.getFirstBlockParent(t));
@@ -43373,12 +42275,12 @@ function (e) {
                         r = n.queryCommandEnabled(u) ? 0 : -1, r > -1 && (r = n.queryCommandState(u) ?
                             1 : 0)
                     } catch (p) {}
-                } else d || (r = u.call(_i, t, e));
+                } else d || (r = u.call(fi, t, e));
                 P(c, "disabled", d || 0 > r), P(c, i, r > 0)
             }
             zt && zt.update && zt.update(o, t, e)
         }, Kt = function (e) {
-            if (!e.defaultPrevented && (_i.closeDropDown(), 13 === e.which)) {
+            if (!e.defaultPrevented && (fi.closeDropDown(), 13 === e.which)) {
                 var t = "li,ul,ol";
                 if (!k(Q, t) && $(Q)) {
                     R = null;
@@ -43386,7 +42288,7 @@ function (e) {
                     if (K.insertNode(i), !Dt) {
                         var n = i.parentNode,
                             o = n.lastChild;
-                        o && o.nodeType === _t && "" === o.nodeValue && (u(o), o = n.lastChild), !H(n, !
+                        o && o.nodeType === ft && "" === o.nodeValue && (u(o), o = n.lastChild), !H(n, !
                             0) && o === i && H(i.previousSibling) && K.insertHTML("<br>")
                     }
                     e.preventDefault()
@@ -43403,39 +42305,39 @@ function (e) {
                 return 3 === e.nodeType && !/^\s*$/.test(e.nodeValue) || k(e, "br") ? !1 : void 0
             })
         }, Gt = function () {
-            _i.val(e.value)
+            fi.val(e.value)
         }, Yt = function () {
-            _i.closeDropDown(), R = null
-        }, _i._ = function () {
+            fi.closeDropDown(), R = null
+        }, fi._ = function () {
             var e, t = arguments;
             return U && U[t[0]] && (t[0] = U[t[0]]), t[0].replace(/\{(\d+)\}/g, function (i, n) {
                 return t[n - 0 + 1] !== e ? t[n - 0 + 1] : "{" + n + "}"
             })
         }, Qt = function (e) {
-            Y && Y.call(e.type + "Event", e, _i);
+            Y && Y.call(e.type + "Event", e, fi);
             var t = (e.target === N ? "scesrc" : "scewys") + e.type;
-            fi[t] && fi[t].forEach(function (t) {
-                t.call(_i, e)
+            _i[t] && _i[t].forEach(function (t) {
+                t.call(fi, e)
             })
-        }, _i.bind = function (e, t, i, n) {
+        }, fi.bind = function (e, t, i, n) {
             e = e.split(" ");
             for (var o = e.length; o--;)
                 if (dt(t)) {
                     var s = "scewys" + e[o],
                         a = "scesrc" + e[o];
-                    i || (fi[s] = fi[s] || [], fi[s].push(t)), n || (fi[a] = fi[a] || [], fi[a].push(t)),
+                    i || (_i[s] = _i[s] || [], _i[s].push(t)), n || (_i[a] = _i[a] || [], _i[a].push(t)),
                         "valuechanged" === e[o] && (ui.hasHandler = !0)
-                } return _i
-        }, _i.unbind = function (e, t, i, n) {
+                } return fi
+        }, fi.unbind = function (e, t, i, n) {
             e = e.split(" ");
-            for (var s = e.length; s--;) dt(t) && (i || o(fi["scewys" + e[s]] || [], t), n || o(fi[
+            for (var s = e.length; s--;) dt(t) && (i || o(_i["scewys" + e[s]] || [], t), n || o(_i[
                 "scesrc" + e[s]] || [], t));
-            return _i
-        }, _i.blur = function (e, t, i) {
-            return dt(e) ? _i.bind("blur", e, t, i) : _i.sourceMode() ? N.blur() : C.blur(), _i
-        }, _i.focus = function (e, t, i) {
-            if (dt(e)) _i.bind("focus", e, t, i);
-            else if (_i.inSourceMode()) N.focus();
+            return fi
+        }, fi.blur = function (e, t, i) {
+            return dt(e) ? fi.bind("blur", e, t, i) : fi.sourceMode() ? N.blur() : C.blur(), fi
+        }, fi.focus = function (e, t, i) {
+            if (dt(e)) fi.bind("focus", e, t, i);
+            else if (fi.inSourceMode()) N.focus();
             else {
                 if (h(T, ":focus")
                     .length) return;
@@ -43445,35 +42347,35 @@ function (e) {
                         .firstChild), o.collapse(!0), K.selectRange(o))), x.focus(), C.focus(), R && (
                     K.selectRange(R), R = null)
             }
-            return ti(), _i
-        }, _i.keyDown = function (e, t, i) {
-            return _i.bind("keydown", e, t, i)
-        }, _i.keyPress = function (e, t, i) {
-            return _i.bind("keypress", e, t, i)
-        }, _i.keyUp = function (e, t, i) {
-            return _i.bind("keyup", e, t, i)
-        }, _i.nodeChanged = function (e) {
-            return _i.bind("nodechanged", e, !1, !0)
-        }, _i.selectionChanged = function (e) {
-            return _i.bind("selectionchanged", e, !1, !0)
-        }, _i.valueChanged = function (e, t, i) {
-            return _i.bind("valuechanged", e, t, i)
+            return ti(), fi
+        }, fi.keyDown = function (e, t, i) {
+            return fi.bind("keydown", e, t, i)
+        }, fi.keyPress = function (e, t, i) {
+            return fi.bind("keypress", e, t, i)
+        }, fi.keyUp = function (e, t, i) {
+            return fi.bind("keyup", e, t, i)
+        }, fi.nodeChanged = function (e) {
+            return fi.bind("nodechanged", e, !1, !0)
+        }, fi.selectionChanged = function (e) {
+            return fi.bind("selectionchanged", e, !1, !0)
+        }, fi.valueChanged = function (e, t, i) {
+            return fi.bind("valuechanged", e, t, i)
         }, ri = function (e) {
             var t, i = 0,
-                n = _i.emoticonsCache,
+                n = fi.emoticonsCache,
                 o = String.fromCharCode(e.which);
             c(Q, "code") || (n || (n = [], s(wi, function (e, t) {
                     n[i++] = [e, t]
                 }), n.sort(function (e, t) {
                     return e[0].length - t[0].length
-                }), _i.emoticonsCache = n, _i.longestEmoticonCode = n[n.length - 1][0].length), t = K
-                .replaceKeyword(_i.emoticonsCache, !0, !0, _i.longestEmoticonCode, ki.emoticonsCompat,
+                }), fi.emoticonsCache = n, fi.longestEmoticonCode = n[n.length - 1][0].length), t = K
+                .replaceKeyword(fi.emoticonsCache, !0, !0, fi.longestEmoticonCode, ki.emoticonsCompat,
                     o), t && (ki.emoticonsCompat && /^\s$/.test(o) || e.preventDefault()))
         }, li = function () {
             st(Q, K)
-        }, _i.emoticons = function (e) {
+        }, fi.emoticons = function (e) {
             if (!e && e !== !1) return ki.emoticonsEnabled;
-            if (ki.emoticonsEnabled = e, e) p(C, "keypress", ri), _i.sourceMode() || (K.saveRange(), At(),
+            if (ki.emoticonsEnabled = e, e) p(C, "keypress", ri), fi.sourceMode() || (K.saveRange(), At(),
                 ui(!1), K.restoreRange());
             else {
                 var t = h(C, "img[data-sceditor-emoticon]");
@@ -43483,12 +42385,12 @@ function (e) {
                     t.parentNode.replaceChild(n, t)
                 }), m(C, "keypress", ri), ui()
             }
-            return _i
-        }, _i.css = function (e) {
+            return fi
+        }, fi.css = function (e) {
             return pt || (pt = r("style", {
                 id: "inline"
             }, T), d(T.head, pt)), ct(e) ? (pt.styleSheet ? pt.styleSheet.cssText = e : pt.innerHTML =
-                e, _i) : pt.styleSheet ? pt.styleSheet.cssText : pt.innerHTML
+                e, fi) : pt.styleSheet ? pt.styleSheet.cssText : pt.innerHTML
         }, Ut = function (e) {
             var t = [],
                 i = {
@@ -43596,40 +42498,40 @@ function (e) {
                 .toLowerCase();
             (e.ctrlKey || e.metaKey) && t.push("ctrl"), e.altKey && t.push("alt"), e.shiftKey && (t.push(
                     "shift"), o[s] ? a = o[s] : i[a] && (a = i[a])), a && (16 > s || s > 18) && t.push(a),
-                t = t.join("+"), bi[t] && bi[t].call(_i) === !1 && (e.stopPropagation(), e
+                t = t.join("+"), bi[t] && bi[t].call(fi) === !1 && (e.stopPropagation(), e
                 .preventDefault())
-        }, _i.addShortcut = function (e, t) {
+        }, fi.addShortcut = function (e, t) {
             return e = e.toLowerCase(), bi[e] = ct(t) ? function () {
-                return Et(yi[t], _i.commands[t]), !1
-            } : t, _i
-        }, _i.removeShortcut = function (e) {
-            return delete bi[e.toLowerCase()], _i
+                return Et(yi[t], fi.commands[t]), !1
+            } : t, fi
+        }, fi.removeShortcut = function (e) {
+            return delete bi[e.toLowerCase()], fi
         }, Zt = function (e) {
             var t, i, n, o;
             if (!ki.disableBlockRemove && 8 === e.which && (n = K.selectedRange()) && (t = n
                     .startContainer, i = n.startOffset, 0 === i && (o = ci()) && !k(o, "body"))) {
                 for (; t !== o;) {
                     for (; t.previousSibling;)
-                        if (t = t.previousSibling, t.nodeType !== _t || t.nodeValue) return;
+                        if (t = t.previousSibling, t.nodeType !== ft || t.nodeValue) return;
                     if (!(t = t.parentNode)) return
                 }
-                _i.clearBlockFormatting(o), e.preventDefault()
+                fi.clearBlockFormatting(o), e.preventDefault()
             }
         }, ci = function () {
             for (var e = Q; !$(e) || H(e, !0);)
                 if (!(e = e.parentNode) || k(e, "body")) return;
             return e
-        }, _i.clearBlockFormatting = function (e) {
-            return e = e || ci(), !e || k(e, "body") ? _i : (K.saveRange(), e.className = "", R = null, _(
-                e, "style", ""), k(e, "p,div,td") || F(e, "p"), K.restoreRange(), _i)
+        }, fi.clearBlockFormatting = function (e) {
+            return e = e || ci(), !e || k(e, "body") ? fi : (K.saveRange(), e.className = "", R = null, f(
+                e, "style", ""), k(e, "p,div,td") || F(e, "p"), K.restoreRange(), fi)
         }, ui = function (e) {
             if (Y && (Y.hasHandler("valuechangedEvent") || ui.hasHandler)) {
-                var t, i = _i.sourceMode(),
+                var t, i = fi.sourceMode(),
                     n = !i && K.hasSelection();
                 W = !1, e = e !== !1 && !T.getElementById("sceditor-start-marker"), q && (clearTimeout(q),
                         q = !1), n && e && K.saveRange(), t = i ? N.value : C.innerHTML, t !== ui
                     .lastVal && (ui.lastVal = t, I(a, "valuechanged", {
-                        rawValue: i ? _i.val() : t
+                        rawValue: i ? fi.val() : t
                     })), n && e && K.removeMarkers()
             }
         }, di = function () {
@@ -43647,7 +42549,7 @@ function (e) {
         }, Jt = function (e) {
             W = /start/i.test(e.type), W || ui()
         }, pi = function () {
-            _i.updateOriginal()
+            fi.updateOriginal()
         }, Tt()
     }
     e = e && e.hasOwnProperty("default") ? e["default"] : e;
@@ -43657,8 +42559,8 @@ function (e) {
         ht = t.bind(null, "number"),
         pt = {},
         mt = 1,
-        _t = 3,
-        ft = !0,
+        ft = 3,
+        _t = !0,
         gt =
         "|body|hr|p|div|h1|h2|h3|h4|h5|h6|address|pre|form|table|tbody|thead|tfoot|th|tr|td|li|ol|ul|blockquote|center|",
         vt = {
@@ -43667,7 +42569,7 @@ function (e) {
             style: "jquery.sceditor.default.css",
             fonts: "Arial,Arial Black,Comic Sans MS,Courier New,Georgia,Impact,Sans-serif,Serif,Times New Roman,Trebuchet MS,Verdana",
             colors: "#000000,#44B8FF,#1E92F7,#0074D9,#005DC2,#00369B,#b3d5f4|#444444,#C3FFFF,#9DF9FF,#7FDBFF,#68C4E8,#419DC1,#d9f4ff|#666666,#72FF84,#4CEA5E,#2ECC40,#17B529,#008E02,#c0f0c6|#888888,#FFFF44,#FFFA1E,#FFDC00,#E8C500,#C19E00,#fff5b3|#aaaaaa,#FFC95F,#FFA339,#FF851B,#E86E04,#C14700,#ffdbbb|#cccccc,#FF857A,#FF5F54,#FF4136,#E82A1F,#C10300,#ffc6c3|#eeeeee,#FF56FF,#FF30DC,#F012BE,#D900A7,#B20080,#fbb8ec|#ffffff,#F551FF,#CF2BE7,#B10DC9,#9A00B2,#9A00B2,#e8b6ef",
-            locale: _(document.documentElement, "lang") || "en",
+            locale: f(document.documentElement, "lang") || "en",
             charset: "utf-8",
             emoticonsCompat: !1,
             emoticonsEnabled: !0,
@@ -44069,7 +42971,7 @@ function (e) {
                     var s = h(o, "#link")[0];
                     p(o, "click", ".button", n), p(o, "keypress", function (e) {
                         13 === e.which && s.value && n(e)
-                    }, ft), e.createDropDown(t, "insertlink", o)
+                    }, _t), e.createDropDown(t, "insertlink", o)
                 },
                 exec: function (e) {
                     var t = this;
@@ -44114,14 +43016,14 @@ function (e) {
                                 u = l.emoticonsCompat,
                                 h = t.getRangeHelper(),
                                 m = u && " " !== h.getOuterText(!0, 1) ? " " : "",
-                                f = u && " " !== h.getOuterText(!1, 1) ? " " : "",
+                                _ = u && " " !== h.getOuterText(!1, 1) ? " " : "",
                                 g = r("div"),
                                 v = r("div"),
                                 b = 0,
                                 y = n({}, l.emoticons.dropdown, o ? l.emoticons.more : {});
                             return d(g, v), b = Math.sqrt(Object.keys(y)
                                 .length), p(g, "click", "img", function (e) {
-                                t.insert(m + _(this, "alt") + f, null, !1)
+                                t.insert(m + f(this, "alt") + _, null, !1)
                                     .closeDropDown(!0), e.preventDefault()
                             }), s(y, function (e, t) {
                                 d(v, r("img", {
@@ -44331,8 +43233,8 @@ function (e) {
             escapeUriScheme: et,
             dom: {
                 css: y,
-                attr: _,
-                removeAttr: f,
+                attr: f,
+                removeAttr: _,
                 is: k,
                 closest: c,
                 width: j,
@@ -44429,7 +43331,7 @@ function (e) {
                     }
                     o.removeChild(e)
                 }
-            }, _(o, "display", "none"), o.innerHTML = e.replace(/<\/div>\n/g, "</div>"), (t = o.firstChild) &&
+            }, f(o, "display", "none"), o.innerHTML = e.replace(/<\/div>\n/g, "</div>"), (t = o.firstChild) &&
             g(t, "div") && n(t, !0), (t = o.lastChild) && g(t, "div") && n(t), o.innerHTML
     }
 
@@ -44590,14 +43492,14 @@ function (e) {
                 .concat(t.children)))
         }
 
-        function _(e, i) {
+        function f(e, i) {
             var o, s, a, r, l, c, u, h, p, m = [];
             for (h = function (e) {
                     return (!e || (e.isHtmlInline !== o ? e.isHtmlInline : e.isInline)) !== !1
                 }; e.length > 0;)
                 if (s = e.shift()) {
                     if (s.type === S) p = s.children[s.children.length - 1] || {}, a = T[s.name], c = i && h(
-                            a), r = _(s.children, !1), a && a.html ? (h(a) || !h(T[p.name]) || a
+                            a), r = f(s.children, !1), a && a.html ? (h(a) || !h(T[p.name]) || a
                             .isPreFormatted || a.skipLastLineBreak || w || (r += "<br />"), n(a.html) ? l = a
                             .html.call(k, s, s.attrs, r) : (s.attrs["0"] = r, l = t(a.html, s.attrs))) : l = s
                         .val + r + (s.closing ? s.closing.val : "");
@@ -44617,7 +43519,7 @@ function (e) {
                 } return u && m.push("</div>\n"), m.join("")
         }
 
-        function f(e) {
+        function _(e) {
             for (var t, i, n, o, s, a, r, l, c, u, d = []; e.length > 0;)
                 if (t = e.shift())
                     if (n = T[t.name], o = !(!n || n.isInline !== !1), s = n && n.isSelfClosing, r = o && k
@@ -44633,11 +43535,11 @@ function (e) {
                                 for (i in t.attrs) t.attrs.hasOwnProperty(i) && d.push(" ", i, "=", g(t.attrs[
                                     i], a, i))
                             }
-                            d.push("]"), l && d.push("\n"), t.children && d.push(f(t.children)), s || n
+                            d.push("]"), l && d.push("\n"), t.children && d.push(_(t.children)), s || n
                                 .excludeClosing || (c && d.push("\n"), d.push("[/" + t.name + "]")), u && d
                                 .push("\n"), t.closing && s && d.push(t.closing.val)
                         } else d.push(t.val);
-            else d.push(t.val), t.children && d.push(f(t.children)), t.closing && d.push(t.closing.val);
+            else d.push(t.val), t.children && d.push(_(t.children)), t.closing && d.push(t.closing.val);
             return d.join("")
         }
 
@@ -44683,9 +43585,9 @@ function (e) {
                 n = k.opts;
             return n.fixInvalidNesting && p(i), h(i, null, t), n.removeEmptyTags && m(i), i
         }, k.toHTML = function (e, t) {
-            return _(k.parse(e, t), !0)
+            return f(k.parse(e, t), !0)
         }, k.toBBCode = function (e, t) {
-            return f(k.parse(e, t))
+            return _(k.parse(e, t))
         }
     }
 
@@ -44743,7 +43645,7 @@ function (e) {
             var o, a, r = e.nodeName.toLowerCase();
             return i = !!i, m[r] && m[r][i] && b(m[r][i], function (i, r) {
                 (!r || (o = !1, b(r, function (t, i) {
-                    return !f(e, t) || i && i.indexOf(f(e, t)) < 0 ? void 0 : (o = !0, !1)
+                    return !_(e, t) || i && i.indexOf(_(e, t)) < 0 ? void 0 : (o = !0, !1)
                 }), o)) && (a = T[i].format, t = n(a) ? a.call(h, e, t) : s(a, t))
             }), t
         }
@@ -44758,7 +43660,7 @@ function (e) {
                         u = x[c],
                         d = e.firstChild,
                         h = !0;
-                    if ("object" == typeof n && (h = n.indexOf(c) > -1, g(e, "img") && f(e, k) &&
+                    if ("object" == typeof n && (h = n.indexOf(c) > -1, g(e, "img") && _(e, k) &&
                             (h = !0), h || (u = n)), 3 === r || 1 === r)
                         if (1 === r) {
                             if (g(e, ".sceditor-nlf") && (!d || !w && 1 === e.childNodes.length &&
@@ -44783,9 +43685,9 @@ function (e) {
             var o, s, a = i.createElement("div"),
                 l = i.createElement("div"),
                 u = new r(h.opts.parserOptions);
-            for (l.innerHTML = t, _(a, "visibility", "hidden"), a.appendChild(l), i.body.appendChild(a), e &&
+            for (l.innerHTML = t, f(a, "visibility", "hidden"), a.appendChild(l), i.body.appendChild(a), e &&
                 (a.insertBefore(i.createTextNode("#"), a.firstChild), a.appendChild(i.createTextNode("#"))),
-                n && _(l, "whiteSpace", _(n, "whiteSpace")), s = l.getElementsByClassName(
+                n && f(l, "whiteSpace", f(n, "whiteSpace")), s = l.getElementsByClassName(
                 "sceditor-ignore"); s.length;) s[0].parentNode.removeChild(s[0]);
             return p.removeWhiteSpace(a), o = c(l), i.body.removeChild(a), o = u.toBBCode(o, !0), h.opts
                 .bbcodeTrim && (o = o.trim()), o
@@ -44811,8 +43713,8 @@ function (e) {
         h = e.escapeUriScheme,
         p = e.dom,
         m = e.utils,
-        _ = p.css,
-        f = p.attr,
+        f = p.css,
+        _ = p.attr,
         g = p.is,
         v = m.extend,
         b = m.each,
@@ -45026,7 +43928,7 @@ function (e) {
                 quoteType: C.never,
                 format: function (e, t) {
                     var i;
-                    return g(e, "font") && (i = f(e, "face")) || (i = _(e, "font-family")), "[font=" + o(
+                    return g(e, "font") && (i = _(e, "face")) || (i = f(e, "font-family")), "[font=" + o(
                         i) + "]" + t + "[/font]"
                 },
                 html: '<font face="{defaultattr}">{0}</font>'
@@ -45041,9 +43943,9 @@ function (e) {
                     "font-size": null
                 },
                 format: function (e, t) {
-                    var i = f(e, "size"),
+                    var i = _(e, "size"),
                         n = 2;
-                    return i || (i = _(e, "fontSize")), i.indexOf("px") > -1 ? (i = i.replace("px", "") -
+                    return i || (i = f(e, "fontSize")), i.indexOf("px") > -1 ? (i = i.replace("px", "") -
                             0, 12 > i && (n = 1), i > 15 && (n = 3), i > 17 && (n = 4), i > 23 && (n = 5),
                             i > 31 && (n = 6), i > 47 && (n = 7)) : n = i, "[size=" + n + "]" + t +
                         "[/size]"
@@ -45062,7 +43964,7 @@ function (e) {
                 quoteType: C.never,
                 format: function (e, t) {
                     var i;
-                    return g(e, "font") && (i = f(e, "color")) || (i = e.style.color || _(e, "color")),
+                    return g(e, "font") && (i = _(e, "color")) || (i = e.style.color || f(e, "color")),
                         "[color=" + c(i) + "]" + t + "[/color]"
                 },
                 html: function (e, t, i) {
@@ -45155,7 +44057,7 @@ function (e) {
                     }
                 },
                 format: function (e, t) {
-                    return f(e, k) + t
+                    return _(e, k) + t
                 },
                 html: "{0}"
             },
@@ -45183,9 +44085,9 @@ function (e) {
                         s = function (t) {
                             return e.style ? e.style[t] : null
                         };
-                    return f(e, k) ? t : (i = f(e, "width") || s("width"), n = f(e, "height") || s(
+                    return _(e, k) ? t : (i = _(e, "width") || s("width"), n = _(e, "height") || s(
                         "height"), (e.complete && (i || n) || i && n) && (o = "=" + p.width(e) +
-                        "x" + p.height(e)), "[img" + o + "]" + f(e, "src") + "[/img]")
+                        "x" + p.height(e)), "[img" + o + "]" + _(e, "src") + "[/img]")
                 },
                 html: function (e, t, i) {
                     var n, o, s, a, r = "";
@@ -45204,7 +44106,7 @@ function (e) {
                 },
                 quoteType: C.never,
                 format: function (e, t) {
-                    var i = f(e, "href");
+                    var i = _(e, "href");
                     return "mailto:" === i.substr(0, 7) ? '[email="' + i.substr(7) + '"]' + t +
                         "[/email]" : "[url=" + i + "]" + t + "[/url]"
                 },
@@ -45228,7 +44130,7 @@ function (e) {
                 format: function (e, t) {
                     for (var i, n = "data-author", o = "", s = e.children, a = 0; !i && a < s.length; a++)
                         g(s[a], "cite") && (i = s[a]);
-                    return (i || f(e, n)) && (o = i && i.textContent || f(e, n), f(e, n, o), i && e
+                    return (i || _(e, n)) && (o = i && i.textContent || _(e, n), _(e, n, o), i && e
                             .removeChild(i), t = this.elementToBbcode(e), o = "=" + o.replace(
                                 /(^\s+|\s+$)/g, ""), i && e.insertBefore(i, e.firstChild)), "[quote" + o +
                         "]" + t + "[/quote]"
@@ -45287,7 +44189,7 @@ function (e) {
                     }
                 },
                 format: function (e, t) {
-                    return e = f(e, "data-youtube-id"), e ? "[youtube]" + e + "[/youtube]" : t
+                    return e = _(e, "data-youtube-id"), e ? "[youtube]" + e + "[/youtube]" : t
                 },
                 html: '<iframe width="560" height="315" frameborder="0" src="https://www.youtube.com/embed/{0}?wmode=opaque" data-youtube-id="{0}" allowfullscreen></iframe>'
             },
@@ -45393,20 +44295,20 @@ function (e) {
                 for (var d = document.cookie ? document.cookie.split("; ") : [], h = /(%[0-9A-Z]{2})+/g,
                         p = 0; p < d.length; p++) {
                     var m = d[p].split("="),
-                        _ = m.slice(1)
+                        f = m.slice(1)
                         .join("=");
-                    this.json || '"' !== _.charAt(0) || (_ = _.slice(1, -1));
+                    this.json || '"' !== f.charAt(0) || (f = f.slice(1, -1));
                     try {
-                        var f = m[0].replace(h, decodeURIComponent);
-                        if (_ = i.read ? i.read(_, f) : i(_, f) || _.replace(h, decodeURIComponent), this
+                        var _ = m[0].replace(h, decodeURIComponent);
+                        if (f = i.read ? i.read(f, _) : i(f, _) || f.replace(h, decodeURIComponent), this
                             .json) try {
-                            _ = JSON.parse(_)
+                            f = JSON.parse(f)
                         } catch (l) {}
-                        if (t === f) {
-                            a = _;
+                        if (t === _) {
+                            a = f;
                             break
                         }
-                        t || (a[f] = _)
+                        t || (a[_] = f)
                     } catch (l) {}
                 }
                 return a
@@ -45669,15 +44571,15 @@ var windowIsTurbolinked = "Turbolinks" in window,
                     d < m.left ? "right" : r, s.removeClass(p)
                     .addClass(r)
             }
-            var _ = this.getCalculatedOffset(r, u, d, h);
-            this.applyPlacement(_, r);
-            var f = function () {
+            var f = this.getCalculatedOffset(r, u, d, h);
+            this.applyPlacement(f, r);
+            var _ = function () {
                 var e = o.hoverState;
                 o.$element.trigger("shown.bs." + o.type), o.hoverState = null, "out" == e && o.leave(
                     o)
             };
-            e.support.transition && this.$tip.hasClass("fade") ? s.one("bsTransitionEnd", f)
-                .emulateTransitionEnd(i.TRANSITION_DURATION) : f()
+            e.support.transition && this.$tip.hasClass("fade") ? s.one("bsTransitionEnd", _)
+                .emulateTransitionEnd(i.TRANSITION_DURATION) : _()
         }
     }, i.prototype.applyPlacement = function (t, i) {
         var n = this.tip(),
@@ -46848,7 +45750,7 @@ var tutorial = function () {
     function c(e) {
         var t, i;
         return e && "[object Object]" === p.call(e) ? (t = g(e)) ? (i = m.call(t, "constructor") && t
-            .constructor, "function" == typeof i && _.call(i) === f) : !0 : !1
+            .constructor, "function" == typeof i && f.call(i) === _) : !0 : !1
     }
 
     function u(e) {
@@ -46867,8 +45769,8 @@ var tutorial = function () {
     var h = {},
         p = h.toString,
         m = h.hasOwnProperty,
-        _ = m.toString,
-        f = _.call(Object),
+        f = m.toString,
+        _ = f.call(Object),
         g = Object.getPrototypeOf,
         v = {},
         b = "ls_",
@@ -47490,18 +46392,18 @@ mobile_map_filters_collection = {}, ! function (e, t) {
                         m = parseFloat(p);
                     r[h] = isNaN(m) ? 0 : m
                 }
-                var _ = r.paddingLeft + r.paddingRight,
-                    f = r.paddingTop + r.paddingBottom,
+                var f = r.paddingLeft + r.paddingRight,
+                    _ = r.paddingTop + r.paddingBottom,
                     g = r.marginLeft + r.marginRight,
                     v = r.marginTop + r.marginBottom,
                     b = r.borderLeftWidth + r.borderRightWidth,
                     y = r.borderTopWidth + r.borderBottomWidth,
                     w = u && a,
                     k = e(s.width);
-                k !== !1 && (r.width = k + (w ? 0 : _ + b));
+                k !== !1 && (r.width = k + (w ? 0 : f + b));
                 var x = e(s.height);
-                return x !== !1 && (r.height = x + (w ? 0 : f + y)), r.innerWidth = r.width - (_ + b), r
-                    .innerHeight = r.height - (f + y), r.outerWidth = r.width + g, r.outerHeight = r
+                return x !== !1 && (r.height = x + (w ? 0 : _ + y)), r.innerWidth = r.width - (f + b), r
+                    .innerHeight = r.height - (_ + y), r.outerWidth = r.width + g, r.outerHeight = r
                     .height + v, r
             }
         }
