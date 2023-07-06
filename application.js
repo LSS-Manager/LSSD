@@ -4276,6 +4276,7 @@ Object.values || (Object.values = function (e) {
                 commerce_police: "Commerce Police Car",
                 crew_carrier: "Crew Carrier",
                 crew_carrier_or_fire_engine: "Crew Carrier or Fire Engine",
+                damage_control: "Damage Control Wagon",
                 detention_unit: "Riot Police Detention Unit and Riot Police Detention Unit (large)",
                 division_chief_unit: "Mobile Command Vehicle",
                 dozer_trailer: "Dozer Trailer",
@@ -12078,6 +12079,10 @@ Object.values || (Object.values = function (e) {
             patient: "患者",
             patient_untouched: "治療を受けていない患者",
             poi_delete: "この到着地点「：%{caption}」を削除しますか？",
+            pump_speed_approaching: "接近：%{amount} リットル／分",
+            pump_speed_missing: "行方不明だ：%{amount} リットル",
+            pump_speed_on_site: "現場では:  %{amount} リットル／分",
+            pump_speed_selected: "選ばれた：%{amount} リットル",
             reload: "リロード",
             sale: "セール",
             sale_ended: "セール終了",
@@ -12098,6 +12103,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "接近中: %{amount}リットル",
             water_missing: "不足分: %{amount}リットル",
             water_on_site: "現場: %{amount}リットル",
+            water_pumping_process: "揚水工程",
             water_selected: "選択済み: %{amount}リットル"
         },
         map: {
@@ -12251,6 +12257,7 @@ Object.values || (Object.values = function (e) {
                 arff: "空港用消防車",
                 battalion_chief_unit: "消防指令長ユニット",
                 boot: "ボート（一般）",
+                damage_control: "ダメージ・コントロール・ワゴン",
                 division_chief_unit: "移動通信車両",
                 elw1_or_elw2: "消防司令長車両または指令車",
                 emergency_ambulance: "緊急救急車またはヘリコプター",
@@ -12266,6 +12273,9 @@ Object.values || (Object.values = function (e) {
                 gw_wasserrettung: "貯水車両",
                 gwl2wasser_only: "ホース車両",
                 hems: "HEMS",
+                hint: {
+                    pump_speed: "必要なポンプ速度に達するまで車両を選択する。"
+                },
                 hlf_only: "救助工作車",
                 hlf_or_rw_and_lf: "救助工作車または特別高度救助部隊車両と消防車",
                 k9: "警察犬ユニット",
@@ -12279,6 +12289,9 @@ Object.values || (Object.values = function (e) {
                 nef_only: "救急車",
                 police_car: "パトカー",
                 polizeihubschrauber: "警察ヘリコプター",
+                pump: "エンジン-ポンプ",
+                pump_speed: "ポンプ容量",
+                pump_speed_pump_only: "ポンプ容量 - ポンプのみ",
                 rescue_vehicle: "大型救助車両",
                 rescue_vehicle_only: "特別高度救助部隊車両のみ",
                 rescueboat: "大型救助ボート",
@@ -12290,7 +12303,8 @@ Object.values || (Object.values = function (e) {
                 thw_tauchkraftwagen: "潜水チーム",
                 tlf_only: "タンカートラック",
                 turntable_ladder: "プラットフォームトラック",
-                water_amount: "リットルの水"
+                water_amount: "リットルの水",
+                water_damage_pump: "水ポンプ"
             }
         },
         tutorial: {
@@ -12467,6 +12481,10 @@ Object.values || (Object.values = function (e) {
             patient: "환자",
             patient_untouched: "치료받지 않은 환자",
             poi_delete: "이 관심 지역(%{caption})을(를) 삭제하시겠습니까?",
+            pump_speed_approaching: "접근 중: %{amount} 리터",
+            pump_speed_missing: "누락: %{amount} 리터",
+            pump_speed_on_site: "현장: %{amount} 리터",
+            pump_speed_selected: "선택됨: %{amount} 리터",
             reload: "다시 불러오기",
             sale: "할인",
             sale_ended: "할인 종료",
@@ -12487,6 +12505,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "접근 중: %{amount}L",
             water_missing: "분실: %{amount}L",
             water_on_site: "현장 보유: %{amount}L",
+            water_pumping_process: "워터 펌핑 프로세스",
             water_selected: "선택함: %{amount}L"
         },
         map: {
@@ -12640,14 +12659,16 @@ Object.values || (Object.values = function (e) {
                 arff: "항공기 구조용고성능 소방차 또는 스팅어 HRET",
                 battalion_chief_unit: "소방대장 유닛",
                 boot: "보트(일반)",
+                damage_control: "피해 통제 왜건",
                 division_chief_unit: "기동형 지휘차량",
                 elw1_or_elw2: "소방대장 유닛, 기동형 지휘차량 또는 기동형 지휘 모듈 ",
                 emergency_ambulance: "응급용 구급차 또는 헬기",
                 fire_truck: "소방차",
                 fireboat: "대형 소방 보트",
+                flood_equipment: "홍수 장비 트레일러",
                 fly_car: "긴급 이송차",
                 fly_car_any: "긴급 이송차 / 일반의",
-                foam_amount: "거품(리터)",
+                foam_amount: "거품 양 (리터)",
                 gkw: "다용도 트럭",
                 grtw: "대량 사상자용 유닛",
                 gw_gefahrgut: "생화학 차량",
@@ -12672,6 +12693,9 @@ Object.values || (Object.values = function (e) {
                 oil_unit: "작업 차량-기름 유출 방지",
                 police_car: "순찰차",
                 polizeihubschrauber: "경찰 헬기",
+                pump: "엔진 펌프",
+                pump_speed: "펌프 용량",
+                pump_speed_pump_only: "펌프 용량 - 펌프만",
                 rescue_vehicle: "중장비 구조 차량",
                 rescue_vehicle_only: "중장비 구조",
                 rescueboat: "대형 구조 보트",
@@ -12685,7 +12709,8 @@ Object.values || (Object.values = function (e) {
                 thw_tauchkraftwagen: "다이빙 팀",
                 tlf_only: "탱커 트럭",
                 turntable_ladder: "플랫폼 트럭",
-                water_amount: "물 리터 수"
+                water_amount: "물 리터 수",
+                water_damage_pump: "수해 펌프"
             }
         },
         tutorial: {
