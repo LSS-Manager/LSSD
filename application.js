@@ -35811,7 +35811,7 @@ var map, alliance_member_buildings_show, geocoder, directionsService, building_e
     vehicle_graphics_sorted = [],
     mission_graphics_lookups = {
         regular: [],
-        generic: []
+        generic: {}
     },
     mission_graphics = [],
     target_marker = !1,
