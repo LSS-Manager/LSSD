@@ -6107,6 +6107,10 @@ Object.values || (Object.values = function (e) {
             patient: "Patient",
             patient_untouched: "Untreated patients",
             poi_delete: "Are you sure you want to delete the POI: %{caption}?",
+            pump_speed_approaching: "Approaching: %{amount} l/min",
+            pump_speed_missing: "Missing: %{amount} l/min",
+            pump_speed_on_site: "On scene: %{amount} l/min",
+            pump_speed_selected: "Selected: %{amount} l/min",
             reload: "Reload",
             sale: "Sale",
             sale_ended: "Sale ended",
@@ -6128,6 +6132,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "On route: %{amount} l.",
             water_missing: "Missing: %{amount} l.",
             water_on_site: "On scene: %{amount} l.",
+            water_pumping_process: "Water pumping process",
             water_selected: "Selected: %{amount} l."
         },
         map: {
@@ -6320,6 +6325,8 @@ Object.values || (Object.values = function (e) {
                 police_horse: "Mounted Police",
                 police_motorcycle: "Police Motorcycle",
                 polizeihubschrauber: "Police helicopter",
+                pump_speed: "Pump Capacity",
+                pump_speed_pump_only: "Pump Capacity - Only Pumps",
                 rescue_vehicle: "Rescue",
                 rescue_vehicle_only: "Rescue",
                 rescueboat: "Marine Rescue Boat",
@@ -6334,7 +6341,8 @@ Object.values || (Object.values = function (e) {
                 thw_tauchkraftwagen: "Dive Team",
                 tlf_only: "Tanker Truck",
                 turntable_ladder: "Ladder Platform Trucks",
-                water_amount: "Litres of water"
+                water_amount: "Litres of water",
+                water_damage_pump: "Water Pumps"
             }
         },
         tutorial: {
