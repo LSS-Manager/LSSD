@@ -4722,6 +4722,10 @@ Object.values || (Object.values = function (e) {
             patient: "Patient",
             patient_untouched: "Untreated patients",
             poi_delete: "Are you sure you want to delete the POI: %{caption}?",
+            pump_speed_approaching: "Approaching: %{amount} l/min",
+            pump_speed_missing: "Missing: %{amount} l/min",
+            pump_speed_on_site: "On scene: %{amount} l/min",
+            pump_speed_selected: "Selected: %{amount} l/min",
             reload: "Reload",
             sale: "Sale",
             sale_ended: "Sale ended",
@@ -4739,7 +4743,8 @@ Object.values || (Object.values = function (e) {
             to_mission: "View Mission",
             understand: "Acknowledge",
             user_not_found: "The player was not found.",
-            vehicles_not_visible: "Vehicles not visible. "
+            vehicles_not_visible: "Vehicles not visible. ",
+            water_pumping_process: "Water pumping process"
         },
         map: {
             alliance: "Alliance",
@@ -4929,6 +4934,8 @@ Object.values || (Object.values = function (e) {
                 oil_unit: "GW-Öl",
                 police_car: "Police car",
                 polizeihubschrauber: "Police helicopter",
+                pump_speed: "Pump Capacity",
+                pump_speed_pump_only: "Pump Capacity - Only Pumps",
                 rescue_vehicle: "Rescue Support Unit or Rescue Pump",
                 rescue_vehicle_only: "Rescue Support Unit",
                 rescueboat: "Large Rescue Boat",
@@ -4940,7 +4947,8 @@ Object.values || (Object.values = function (e) {
                 thw_mzkw: "Mehrzweckkraftwagen (MzKW)",
                 thw_tauchkraftwagen: "Dive Team",
                 tlf_only: "Tanker Truck",
-                turntable_ladder: "Aerial Appliance Truck"
+                turntable_ladder: "Aerial Appliance Truck",
+                water_damage_pump: "Water Pumps"
             }
         },
         tutorial: {
