@@ -3585,8 +3585,8 @@ Object.values || (Object.values = function (e) {
             sicherheitswache_error: 'Die Sicherheitswache "%{caption}" wurde nicht erfolgreich durchgeführt, weil nicht alle Voraussetzung erfüllt waren.',
             sicherheitswache_success: 'Die Sicherheitswache "%{caption}" wurde erfolgreich durchgeführt. Du erhältst %{credits} Credits.',
             start_alliance_mission_new: {
-                one: "%{count} Einsatz beginnen (%{price})",
-                other: "%{count} Einsätze beginnen (%{price})"
+                one: "%{count} Einsatz beginnen (%{price} Coins)",
+                other: "%{count} Einsätze beginnen (%{price} Coins)"
             },
             start_in: "Ausrücken in: ",
             start_username: "Gestartet von:",
@@ -4733,8 +4733,8 @@ Object.values || (Object.values = function (e) {
             sicherheitswache_error: 'The security guard "%{caption}" was not successful, because not all the criteria were met.',
             sicherheitswache_success: 'The security guard "%{caption}" has been successfully carried out. Receive %{credits} Credits.',
             start_alliance_mission_new: {
-                one: "Start %{count} mission (%{price})",
-                other: "Start %{count} missions (%{price})"
+                one: "Start %{count} mission (%{price} Coins)",
+                other: "Start %{count} missions (%{price} Coins)"
             },
             start_in: "Start in: ",
             start_username: "Starter:",
@@ -5271,8 +5271,8 @@ Object.values || (Object.values = function (e) {
             sicherheitswache_error: 'Het evenement "%{caption}" werd niet succesvol doorlopen. Er werd niet aan alle vereisten voldaan. ',
             sicherheitswache_success: 'Het evenement "%{caption}" werd succesvol doorlopen. Je hebt %{credits} Credits gekregen.',
             start_alliance_mission_new: {
-                one: "Start %{count} teaminzet (%{price})",
-                other: "Start %{count} teaminzetten (%{price})"
+                one: "Start %{count} teaminzet (%{price} Coins)",
+                other: "Start %{count} teaminzetten (%{price} Coins)"
             },
             start_in: "Uitrukken in:",
             start_username: "Gestart door:",
@@ -5720,8 +5720,8 @@ Object.values || (Object.values = function (e) {
             sicherheitswache_error: "El guardia de seguridad %{caption} no ha completado su misión, ya que no se han cumplido todos los criterios.",
             sicherheitswache_success: "El guardia de seguridad %{caption} ha completado su misión. Recibes %{credits} créditos.",
             start_alliance_mission_new: {
-                one: "Iniciar %{count} misión (%{price})",
-                other: "Iniciar %{count} misiones (%{price})"
+                one: "Iniciar %{count} misión (%{price} Monedas)",
+                other: "Iniciar %{count} misiones (%{price} Monedas)"
             },
             start_in: "Comienza en: ",
             start_username: "Usuario:",
@@ -6126,8 +6126,8 @@ Object.values || (Object.values = function (e) {
             sicherheitswache_error: 'The security guard "%{caption}" was not successful, because not all the criteria were met.',
             sicherheitswache_success: 'The security guard "%{caption}" has been successfully carried out. Receive %{credits} Credits.',
             start_alliance_mission_new: {
-                one: "Start %{count} mission (%{price})",
-                other: "Start %{count} missions (%{price})"
+                one: "Start %{count} mission (%{price} Coins)",
+                other: "Start %{count} missions (%{price} Coins)"
             },
             start_in: "Start in: ",
             start_username: "Starter:",
@@ -6672,8 +6672,8 @@ Object.values || (Object.values = function (e) {
             sicherheitswache_error: "Vakten %{caption} lyckades inte eftersom kriterierna inte uppfyllts.",
             sicherheitswache_success: "Vakten %{caption} har lyckats. Få %{credits} krediter.",
             start_alliance_mission_new: {
-                one: "Starta %{count} uppdrag (%{price})",
-                other: "Starta %{count} uppdrag (%{price})"
+                one: "Starta %{count} uppdrag (%{price} Mynt)",
+                other: "Starta %{count} uppdrag (%{price} Mynt)"
             },
             start_in: "Åker om: ",
             start_username: "Startad av:",
@@ -7130,10 +7130,10 @@ Object.values || (Object.values = function (e) {
             sicherheitswache_error: "Zabezpieczenie „%{caption}” nie było skuteczne, ponieważ nie spełniono wszystkich kryteriów.",
             sicherheitswache_success: "Zabezpieczenie „%{caption}” zakończyło się. Otrzymałeś %{credits} kredytów(-y).",
             start_alliance_mission_new: {
-                few: "Rozpoczęcie %{count} misji (%{price})",
-                many: "Rozpoczęcie %{count} misji (%{price})",
-                one: "Rozpoczęcie %{count} misji (%{price})",
-                other: "Rozpoczęcie %{count} misji (%{price})"
+                few: "Rozpocznij %{count} misji (%{price} Monety)",
+                many: "Rozpocznij %{count} misji (%{price} Monety)",
+                one: "Rozpocznij %{count} misje (%{price} Monety)",
+                other: "Rozpocznij %{count} misji (%{price} Monety)"
             },
             start_in: "Początek za: ",
             start_username: "Inicjator:",
@@ -7591,8 +7591,8 @@ Object.values || (Object.values = function (e) {
             sicherheitswache_error: 'La guardia di sicurezza "%{caption}" non è stata completata, perché non tutti i criteri sono stati soddisfatti.',
             sicherheitswache_success: 'La guardia di sicurezza "%{caption}" è stata completata. Ricevi %{credits} crediti.',
             start_alliance_mission_new: {
-                one: "Avviare %{count} missione (%{price})",
-                other: "Avviare %{count} missioni (%{price})"
+                one: "Avviare %{count} missione (%{price} Monete)",
+                other: "Avviare %{count} missioni (%{price} Monete)"
             },
             start_in: "Inizia tra: ",
             start_username: "Avviatore:",
@@ -8044,8 +8044,8 @@ Object.values || (Object.values = function (e) {
             sicherheitswache_error: "Le garde de sécurité « %{caption} » a échoué dans sa mission, car il ne répondait pas à tous les critères.",
             sicherheitswache_success: "Le garde de sécurité « %{caption} » a rempli son objectif. Recevoir %{credits} crédits.",
             start_alliance_mission_new: {
-                one: "Commencez %{count} mission (%{price})",
-                other: "Commencez %{count} missions (%{price})"
+                one: "Commencez %{count} mission (%{price} Pièces)",
+                other: "Commencez %{count} missions (%{price} Pièces)"
             },
             start_in: "Commencer dans : ",
             start_username: "Initiateur :",
@@ -8484,6 +8484,12 @@ Object.values || (Object.values = function (e) {
             secounds: "сек.",
             sicherheitswache_error: "Cотрудник охраны «%{caption}» не добился успеха, потому что не все критерии удовлетворены.",
             sicherheitswache_success: "Cотрудник охраны «%{caption}» успешно выведен. Получите кредиты (%{credits}).",
+            start_alliance_mission_new: {
+                few: "Начать %{count} миссии (%{price} Монеты)",
+                many: "Начать %{count} миссии (%{price} Монеты)",
+                one: "Начать %{count} миссию (%{price} Монеты)",
+                other: "Начать %{count} миссии (%{price} Монеты)"
+            },
             start_in: "Начать через: ",
             start_username: "Начинает:",
             time_left: "Осталось:",
@@ -8875,8 +8881,8 @@ Object.values || (Object.values = function (e) {
             sicherheitswache_error: 'Sikkerhedsvagten "%{caption}" lykkedes ikke, da ikke alle kriterier blev opfyldt.',
             sicherheitswache_success: 'Sikkerhedsvagten "%{caption}" er blevet gennemført. Modtag %{credits} kreditter.',
             start_alliance_mission_new: {
-                one: "Start %{count} mission (%{price})",
-                other: "Start %{count} missioner (%{price})"
+                one: "Start %{count} mission (%{price} Mønter)",
+                other: "Start %{count} missioner (%{price} Mønter)"
             },
             start_in: "Begynder om: ",
             start_username: "Begynder:",
@@ -9320,8 +9326,8 @@ Object.values || (Object.values = function (e) {
             sicherheitswache_error: "Sikkerhetsvakten %{caption} lyktes ikke, for ikke alle kriteriene ble innfridd.",
             sicherheitswache_success: "Sikkerhetsvakten %{caption} lyktes. Få %{credits} kreditter.",
             start_alliance_mission_new: {
-                one: "Start %{count} oppdrag (%{price})",
-                other: "Start %{count} oppdrag (%{price})"
+                one: "Start %{count} oppdrag (%{price} Mynter)",
+                other: "Start %{count} oppdrag (%{price} Mynter)"
             },
             start_in: "Starter om: ",
             start_username: "Starter:",
@@ -9774,10 +9780,10 @@ Object.values || (Object.values = function (e) {
             sicherheitswache_error: "Hlídka %{caption} nebyla úspěšná, protože nebyla splněna všechna kritéria.",
             sicherheitswache_success: "Hlídka %{caption} byla úspěšná. Získáte %{credits} kreditů.",
             start_alliance_mission_new: {
-                few: "Zahájení %{count} misí (%{price})",
-                many: "Zahájení %{count} mise (%{price})",
-                one: "Zahájení %{count} mise (%{price})",
-                other: "Zahájení %{count} misí (%{price})"
+                few: "Zahájit %{count} mise (%{price} Mince)",
+                many: "Zahájit %{count} misí (%{price} Mince) ",
+                one: "Zahájit %{count} misi (%{price} Mince)",
+                other: "Zahájit %{count} misí (%{price} Mince) "
             },
             start_in: "Začátek za: ",
             start_username: "Zahájil uživatel:",
@@ -10211,8 +10217,8 @@ Object.values || (Object.values = function (e) {
             sicherheitswache_error: 'Tüm kriterler sağlanmadığı için güvenlik koruması "%{caption}" başarılı olamadı.',
             sicherheitswache_success: 'Güvenlik koruması "%{caption}" başarıyla gerçekleştirildi. %{credits} Kredi al.',
             start_alliance_mission_new: {
-                one: "%{count} Görev Başlat (%{price})",
-                other: "%{count} Görev Başlat (%{price})"
+                one: "%{count} görevi başlat (%{price} Altın) ",
+                other: "%{count} görevi başlat (%{price} Altın)"
             },
             start_in: "Başlıyor: ",
             start_username: "Başlatan:",
@@ -10580,8 +10586,8 @@ Object.values || (Object.values = function (e) {
             sicherheitswache_error: 'A guarda de segurança "%{caption}" não teve êxito porque nem todos os critérios foram atendidos.',
             sicherheitswache_success: 'A guarda de segurança "%{caption}" foi realizada com sucesso. Receber %{credits} créditos.',
             start_alliance_mission_new: {
-                one: "Iniciar %{count} missão (%{price})",
-                other: "Iniciar %{count} missões (%{price})"
+                one: "Iniciar %{count} missão (%{price} Moedas)",
+                other: "Iniciar %{count} missões (%{price} Moedas)"
             },
             start_in: "Começar em: ",
             start_username: "Iniciante:",
@@ -11018,8 +11024,8 @@ Object.values || (Object.values = function (e) {
             sicherheitswache_error: 'A guarda de segurança "%{caption}" não teve êxito porque nem todos os critérios foram atendidos.',
             sicherheitswache_success: 'A guarda de segurança "%{caption}" foi realizada com sucesso. Receber %{credits} créditos.',
             start_alliance_mission_new: {
-                one: "Iniciar %{count} missão (%{price})",
-                other: "Iniciar X %{count} missões (%{price})"
+                one: "Iniciar %{count} missão (%{price} Moedas)",
+                other: "Iniciar X %{count} missões (%{price} Moedas)"
             },
             start_in: "Começar em: ",
             start_username: "Iniciante:",
@@ -11382,10 +11388,10 @@ Object.values || (Object.values = function (e) {
             sicherheitswache_error: 'Співробітник охорони "%{caption}" не виконав завдання, оскільки було задоволено не всі критерії.',
             sicherheitswache_success: 'Співробітника охорони "%{caption}" успішно виведено. Отримайте кредити (%{credits}).',
             start_alliance_mission_new: {
-                few: "Почніть %{count} місії (%{price})",
-                many: "Почати %{count} місій (%{price})",
-                one: "Почніть %{count} місію (%{price})",
-                other: "Почати %{count} місії (%{price})"
+                few: "Старт %{count} місій (%{price} Монети)",
+                many: "Старт %{count} місій (%{price} Монети)",
+                one: "Старт %{count} місії (%{price} Монети)",
+                other: "Старт %{count} місій (%{price} Монети)"
             },
             start_in: "Початок через: ",
             start_username: "Починає:",
@@ -11743,8 +11749,8 @@ Object.values || (Object.values = function (e) {
             sicherheitswache_error: "El guardia de seguridad %{caption} no ha completado su misión, ya que no se han cumplido todos los criterios.",
             sicherheitswache_success: "El guardia de seguridad %{caption} ha completado su misión. Recibes %{credits} créditos.",
             start_alliance_mission_new: {
-                one: "Iniciar %{count} misión (%{price})",
-                other: "Iniciar %{count} misiones (%{price})"
+                one: "Iniciar %{count} misión (%{price} Monedas)",
+                other: "Iniciar %{count} misiones (%{price} Monedas)"
             },
             start_in: "Comienza en: ",
             start_username: "Usuario:",
@@ -12118,7 +12124,7 @@ Object.values || (Object.values = function (e) {
             sicherheitswache_error: "すべての条件を満たさなかったため、セキュリティーガード「%{caption}」が上手くいきませんでした。",
             sicherheitswache_success: "セキュリティーガード「%{caption}」は無事行われました。%{credits}クレジットを受け取ります。",
             start_alliance_mission_new: {
-                other: "%{count}個のミッションを開始する (%{price})"
+                other: "%{count}個のミッションを開始する (%{price} コイン)"
             },
             start_in: "開始まで： ",
             start_username: "スターター：",
@@ -12520,7 +12526,7 @@ Object.values || (Object.values = function (e) {
             sicherheitswache_error: '충족하지 못한 기준이 있어 "%{caption}" 보안 경비에 실패했습니다.',
             sicherheitswache_success: '"%{caption}"의 보안 경비를 성공적으로 완료했습니다. %{credits} 크레딧을 받았습니다.',
             start_alliance_mission_new: {
-                other: "%{count} 임무 시작(%{price})"
+                other: "%{count} 임무 시작(%{price} 코인)"
             },
             start_in: "시작까지: ",
             start_username: "시작한 사용자:",
@@ -12912,9 +12918,9 @@ Object.values || (Object.values = function (e) {
             sicherheitswache_error: 'Misiunea de securizare "%{caption}" nu a avut succes, deoarece nu au fost îndeplinite toate criteriile.',
             sicherheitswache_success: 'Misiunea de securizare "%{caption}" a fost îndeplinită cu succes. Primești %{credits} credite.',
             start_alliance_mission_new: {
-                few: "Începe %{count} misiuni (%{price})",
-                one: "Începe %{count} misiune (%{price})",
-                other: "Începeți %{count} de misiuni (%{price})"
+                few: "Începeți %{count} misiuni (%{price} Monede)",
+                one: "Începeți %{count} misiune (%{price} Monede)",
+                other: "Începeți %{count} misiuni (%{price} Monede)"
             },
             start_in: "Începe în: ",
             start_username: "Starter:",
@@ -13298,8 +13304,8 @@ Object.values || (Object.values = function (e) {
             sicherheitswache_error: 'Turvaamistehtävä "%{caption}" ei onnistunut, koska kaikki ehdot eivät täyttyneet.',
             sicherheitswache_success: 'Turvaamistehtävän "%{caption}" suoritus onnistui. Saat %{credits} krediittiä.',
             start_alliance_mission_new: {
-                one: "Aloita %{count} tehtävä (%{price})",
-                other: "Aloita %{count} tehtävää (%{price})"
+                one: "Aloita %{count} tehtävä (%{price} Kolikot)",
+                other: "Aloita %{count} tehtävää (%{price} Kolikot)"
             },
             start_in: "Alkamiseen: ",
             start_username: "Aloittaja:",
@@ -13732,10 +13738,10 @@ Object.values || (Object.values = function (e) {
             sicherheitswache_error: 'Ochrana "%{caption}" nebola úspešná, pretože neboli splnené všetky kritériá.',
             sicherheitswache_success: 'Ochrana "%{caption}" prebehla úspešne. Získaj %{credits} kreditov.',
             start_alliance_mission_new: {
-                few: "Spustite %{count} misie (%{price})",
-                many: "Spustite %{count} misií (%{price})",
-                one: "Spustite %{count} misiu (%{price})",
-                other: "Spustite %{count} misie (%{price})"
+                few: "Spustite %{count} misie (%{price} Mince)",
+                many: "Spustite %{count} misií (%{price} Mince)",
+                one: "Spustenie %{count} misie (%{price} Mince)",
+                other: "Spustite %{count} misií (%{price} Mince)"
             },
             start_in: "Začiatok: ",
             start_username: "Štartér:",
