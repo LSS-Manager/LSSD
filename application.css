@@ -17225,25 +17225,13 @@ body.dark .arrow {
     margin-bottom: 10px
 }
 
-body.dark .grid-container .grid-item {
-    display: grid;
-    grid: 'header header' 'img main';
-    grid-gap: 10px;
-    padding: 10px;
-    grid-template-rows: auto 1fr;
-    grid-template-columns: 100px 1fr
-}
-
 body.dark .grid-container .grid-item .grid-item-header {
-    grid-area: header;
     background-image: linear-gradient(to bottom, #505050 0, #000 100%);
-    padding: 10px;
     border: 1px solid #000
 }
 
 body.dark .grid-container .grid-item .grid-item-text .line {
-    border-top: 1px solid #fff;
-    margin-bottom: 10px
+    border-top: 1px solid #fff
 }
 
 .info-block-credits {
