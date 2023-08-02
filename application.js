@@ -918,9 +918,10 @@ function buildingMarkerAdd(e) {
     return $.each(building_markers_cache, function (i, n) {
         n.id == e.id && (t = !0)
     }), buildingVehicleGraphicCacheAdd(e), t ? !0 : (building_marker_image = getBuildingMarkerIcon(e), e
-        .building_marker_image = building_marker_image, 0 == mobile_bridge_use &&
-        constructBuildingListElement(e), 1 == mobile_bridge_use && 4 == mobile_version && (e.name = e.name
-            .replace("%", ""), e.app_icon_path = -1 !== String(building_marker_image)
+        .building_marker_image = building_marker_image, (0 == mobile_bridge_use ||
+            mixed_mobile_desktop_mode) && constructBuildingListElement(e), 1 == mobile_bridge_use && 4 ==
+        mobile_version && (e.name = e.name.replace("%", ""), e.app_icon_path = -1 !== String(
+                building_marker_image)
             .indexOf("//") ? building_marker_image : currentHostname() + building_marker_image,
             mobileBridgeAdd("building_add", e)), building_markers_cache.push(e), void 0)
 }
