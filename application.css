@@ -11924,7 +11924,8 @@ body.dodenherdenking .navbar-default .dropdown-menu {
 
 .navbar-default .navbar-text.timer-event {
     margin-top: 8px;
-    margin-bottom: 0px
+    margin-bottom: 0px;
+    text-align: center
 }
 
 .navbar-default .timer {
@@ -17297,6 +17298,15 @@ body.dark .grid-container .grid-item .grid-item-text .line {
 
 .mission-credits-label .credits-premium-icon {
     margin-left: 7px
+}
+
+.dropdown-menu>li>a {
+    padding-left: 15px;
+    padding-right: 15px
+}
+
+.dropdown-menu>li>a img {
+    margin-right: 8px
 }
 
 /*

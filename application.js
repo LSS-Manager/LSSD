@@ -3782,8 +3782,8 @@ Object.values || (Object.values = function (e) {
                 gw_taucher: "GW-Taucher",
                 gw_wasserrettung: "GW-Wasserrettung",
                 gw_werkfeuerwehr: "GW-Werkfeuerwehr",
-                gwl2wasser_all: "Alle Schlauchwagen",
-                gwl2wasser_only: "Schlauchwagen",
+                gwl2wasser_all: "Alle Schlauchfahrzeuge",
+                gwl2wasser_only: "Nur Schlauchwagen",
                 helicopter_bucket: "Außenlastbehälter (allgemein)",
                 hlf_only: "HLF",
                 hlf_or_rw_and_lf: "HLF oder RW und LF",
@@ -3848,6 +3848,7 @@ Object.values || (Object.values = function (e) {
                 wasserwerfer: "Wasserwerfer",
                 water_amount: "Liter Wasser",
                 water_amount_tlf: "Liter Wasser - Nur TLF",
+                water_carrier: "Beliebiges Großtankfahrzeug",
                 water_damage_pump: "Feuerlöschpumpen"
             }
         },
@@ -4375,6 +4376,7 @@ Object.values || (Object.values = function (e) {
                 turntable_ladder: "Platform trucks",
                 ventilation: "Ventilation Units",
                 water_amount: "Gallons of water",
+                water_carrier: "Any Water Carriers",
                 water_damage_pump: "Water Pumps",
                 water_drop_helicopter: "Water drop helicopter"
             }
