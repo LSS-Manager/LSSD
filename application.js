@@ -3591,6 +3591,9 @@ Object.values || (Object.values = function (e) {
             days: "Tage",
             few_seconds: "In wenigen Sekunden",
             finish_in: "Ende in:",
+            helpshift: {
+                confirm_close_bubble: "M\xf6chtest du den Support-Chat wirklich schlie\xdfen? Du kannst ihn jeder Zeit im Hilfe-Men\xfc wieder \xf6ffnen."
+            },
             hours: "Std.",
             location_not_found: "Ort nicht gefunden.",
             messages: "Nachrichten",
@@ -3659,7 +3662,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Notf\xe4lle",
             finishing: "Wird beendet",
             join_alliance_infos: "Wenn du in einem Verband bist, k\xf6nnen andere Spieler dir Eins\xe4tze freigeben.",
-            legacy_client_notice: "NUR iOS & ANDROID USER:<br>\nWenn du noch eine alte Version nutzt, aktualisiere bitte auf die neueste App-Version. Die alte Version kann zuk\xfcnftig zu Problemen mit dem Spiel und dem Login f\xfchren.<br>\nAndroid:\xa0%{google_store_link} <br>\u2028iOS:\xa0%{ios_store_link}",
+            legacy_client_notice: "NUR iOS & ANDROID USER:<br>\nWenn du noch eine alte Version nutzt, aktualisiere bitte auf die neueste App-Version. Die alte Version kann zuk\xfcnftig zu Problemen mit dem Spiel und dem Login f\xfchren.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Karte",
             map_filters: {
                 all_buildings: "Geb\xe4ude",
@@ -4082,6 +4085,9 @@ Object.values || (Object.values = function (e) {
             foam_missing: "Missing: %{amount} gal.",
             foam_on_site: "On scene: %{amount} gal.",
             foam_selected: "Selected: %{amount} gal.",
+            helpshift: {
+                confirm_close_bubble: "Do you really want to dismiss support chat? You can always reopen it from the help-menu"
+            },
             hours: "H",
             location_not_found: "Not found",
             messages: "Messages",
@@ -4150,7 +4156,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Emergency",
             finishing: "Finishing",
             join_alliance_infos: "If you are in an alliance, other players can freely give you missions.",
-            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>\u2028iOS:\xa0%{ios_store_link}",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Map",
             map_filters: {
                 all_buildings: "Buildings",
@@ -4204,7 +4210,7 @@ Object.values || (Object.values = function (e) {
             missions_filtered_out: "Some missions might be filtered out. Please, check your map filters.",
             no_alliance_chat_impossible: "The Chat is a great way to link up with other more experienced players.\xa0They can both answer your questions and help you by giving you access to buildings like Hospitals and Schools",
             no_alliance_missions: "There are currently no alliance missions.",
-            no_alliance_missions_join: "Participating in alliance missions will reward you with Credits - no matter what type of vehicle you send.\u2028By joining an alliance you can do both, share your own missions to get help from experienced alliance members and participate in other\u2019s shared missions for extra rewards.",
+            no_alliance_missions_join: "Participating in alliance missions will reward you with Credits - no matter what type of vehicle you send. By joining an alliance you can do both, share your own missions to get help from experienced alliance members and participate in other\u2019s shared missions for extra rewards.",
             no_ambulance_missions: "There are no ambulance missions. Ambulance missions can only occur when you have an ambulance and a hospital.",
             no_emergency_missions: "There are no emergency missions available. An emergency mission can occur after you made your first station.",
             no_radio_messages: "You didn't receive any radio messages.",
@@ -4745,6 +4751,9 @@ Object.values || (Object.values = function (e) {
             days: "days",
             few_seconds: "in few seconds",
             finish_in: "Finish in:",
+            helpshift: {
+                confirm_close_bubble: "Do you really want to dismiss support chat? You can always reopen it from the help-menu"
+            },
             hours: "H",
             location_not_found: "Not found",
             messages: "Messages",
@@ -4805,7 +4814,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Emergency",
             finishing: "Finishing",
             join_alliance_infos: "If you are in an alliance, other players can freely give you missions.",
-            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>\u2028iOS:\xa0%{ios_store_link}",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Map",
             map_filters: {
                 all_buildings: "Buildings",
@@ -4852,7 +4861,7 @@ Object.values || (Object.values = function (e) {
             missions_filtered_out: "Some missions might be filtered out. Please, check your map filters.",
             no_alliance_chat_impossible: "The Chat is a great way to link up with other more experienced players.\xa0They can both answer your questions and help you by giving you access to buildings like Hospitals and Schools",
             no_alliance_missions: "There are currently no alliance missions.",
-            no_alliance_missions_join: "Participating in alliance missions will reward you with Credits - no matter what type of vehicle you send.\u2028By joining an alliance you can do both, share your own missions to get help from experienced alliance members and participate in other\u2019s shared missions for extra rewards.",
+            no_alliance_missions_join: "Participating in alliance missions will reward you with Credits - no matter what type of vehicle you send. By joining an alliance you can do both, share your own missions to get help from experienced alliance members and participate in other\u2019s shared missions for extra rewards.",
             no_ambulance_missions: "There are no ambulance missions. Ambulance missions can only occur when you have an ambulance and a hospital.",
             no_emergency_missions: "There are no emergency missions available. An emergency mission can occur after you made your first station.",
             no_radio_messages: "You didn't receive any radio messages.",
@@ -5283,6 +5292,9 @@ Object.values || (Object.values = function (e) {
             foam_missing: "Nog nodig: %{amount} L.",
             foam_on_site: "Ter plaatsen: %{amount} L.",
             foam_selected: "Geselecteerd: %{amount} L.",
+            helpshift: {
+                confirm_close_bubble: "Weet je zeker dat je de supportchat wilt sluiten? Je kunt het altijd opnieuw openen vanuit het helpmenu"
+            },
             hours: "uur",
             location_not_found: "Uw locatie is niet gevonden.",
             messages: "Berichten",
@@ -5347,7 +5359,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Spoed",
             finishing: "Wordt afgerond",
             join_alliance_infos: "Wanneer je in een team zit kunnen andere spelers een incident vrijgeven.",
-            legacy_client_notice: "ALLEEN iOS- & ANDROID-GEBRUIKERS:<br>\nAls u de verouderde app of een oude versie gebruikt, zorg er dan voor dat u update naar onze vernieuwde app-versie. De oude versies kunnen in de toekomst problemen veroorzaken met kernfuncties en logins.<br>\nAndroid: %{google_store_link} <br>\u2028iOS: %{ios_store_link}",
+            legacy_client_notice: "ALLEEN iOS- & ANDROID-GEBRUIKERS:<br>\nAls u de verouderde app of een oude versie gebruikt, zorg er dan voor dat u update naar onze vernieuwde app-versie. De oude versies kunnen in de toekomst problemen veroorzaken met kernfuncties en logins.<br>\nAndroid: %{google_store_link} <br>iOS: %{ios_store_link}",
             map: "Kaart",
             map_filters: {
                 all_buildings: "Gebouwen",
@@ -5394,7 +5406,7 @@ Object.values || (Object.values = function (e) {
             missions_filtered_out: "Sommige missies worden mogelijk uitgefilterd. Controleer alstublieft uw kaartfilters.",
             no_alliance_chat_impossible: "De Chat is een geweldige manier om in contact te komen met andere meer ervaren spelers.\xa0Zij kunnen zowel je vragen beantwoorden als je helpen door je toegang te geven tot gebouwen zoals Ziekenhuizen en Scholen",
             no_alliance_missions: "Er zijn geen team inzetten beschikbaar",
-            no_alliance_missions_join: "Deelnemen aan missies van een team zal je belonen met credits - ongeacht het type voertuig dat je stuurt.\u2028Door lid te worden van een team kun je beide doen: je eigen missies delen om hulp te krijgen van ervaren teamleden en deelnemen aan de gedeelde missies van anderen voor extra beloningen.",
+            no_alliance_missions_join: "Deelnemen aan missies van een team zal je belonen met credits - ongeacht het type voertuig dat je stuurt. Door lid te worden van een team kun je beide doen: je eigen missies delen om hulp te krijgen van ervaren teamleden en deelnemen aan de gedeelde missies van anderen voor extra beloningen.",
             no_ambulance_missions: "Er kan nog geen besteld vervoer plaatsvinden zonder een ziekenhuis en een zorgambulance.",
             no_emergency_missions: "Er hebben zich nog geen incidenten plaatsgevonden. Incidenten kunnen vanaf je eerste post plaatsvinden.",
             no_radio_messages: "Je hebt nog geen statusmeldingen ontvangen.",
@@ -5732,6 +5744,9 @@ Object.values || (Object.values = function (e) {
             foam_missing: "Falta: %{amount} l",
             foam_on_site: "Presente: %{amount} l",
             foam_selected: "Seleccionada: %{amount} l",
+            helpshift: {
+                confirm_close_bubble: "\xbfDe verdad quieres cerrar el chat de ayuda? Siempre puedes reabrirlo desde el men\xfa de ayuda"
+            },
             hours: "H",
             location_not_found: "No encontrado",
             messages: "Mensajes",
@@ -5796,7 +5811,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Emergencia",
             finishing: "Completando",
             join_alliance_infos: "Si est\xe1s en una alianza, otros jugadores podr\xe1n ofrecerte misiones.",
-            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>\u2028iOS:\xa0%{ios_store_link}",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Mapa",
             map_filters: {
                 all_buildings: "Edificios",
@@ -5842,7 +5857,7 @@ Object.values || (Object.values = function (e) {
             missions_filtered_out: "Algunas misiones pueden ser filtradas. Por favor, revise los filtros de su mapa.",
             no_alliance_chat_impossible: "El chat es una forma estupenda de conectar con otros jugadores m\xe1s experimentados.\xa0Pueden responder a tus preguntas y ayudarte a acceder a edificios como hospitales y escuelas.",
             no_alliance_missions: "No hay misiones de alianza.",
-            no_alliance_missions_join: "Participar en las misiones de la alianza te recompensar\xe1 con cr\xe9ditos, independientemente del tipo de veh\xedculo que env\xedes.\u2028Al unirte a una alianza puedes hacer ambas cosas, compartir tus propias misiones para obtener ayuda de miembros experimentados de la alianza y participar en las misiones compartidas de otros para obtener recompensas extra.",
+            no_alliance_missions_join: "Participar en las misiones de la alianza te recompensar\xe1 con cr\xe9ditos, independientemente del tipo de veh\xedculo que env\xedes. Al unirte a una alianza puedes hacer ambas cosas, compartir tus propias misiones para obtener ayuda de miembros experimentados de la alianza y participar en las misiones compartidas de otros para obtener recompensas extra.",
             no_ambulance_missions: "No hay transportes para pacientes. Estar\xe1n disponibles en cuanto poseas un veh\xedculo SVB y un hospital.",
             no_emergency_missions: "No hay misiones de emergencia disponibles. Solo habr\xe1 misiones de emergencia despu\xe9s de que construyas tu primera instalaci\xf3n.",
             no_radio_messages: "No has recibido mensajes de radio.",
@@ -6138,6 +6153,9 @@ Object.values || (Object.values = function (e) {
             days: "days",
             few_seconds: "in few seconds",
             finish_in: "Finish in:",
+            helpshift: {
+                confirm_close_bubble: "Do you really want to dismiss support chat? You can always reopen it from the help-menu"
+            },
             hours: "H",
             location_not_found: "Not found",
             messages: "Messages",
@@ -6202,7 +6220,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Emergency",
             finishing: "Finishing",
             join_alliance_infos: "If you are in an alliance, other players can freely give you missions.",
-            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>\u2028iOS:\xa0%{ios_store_link}",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Map",
             map_filters: {
                 all_buildings: "Buildings",
@@ -6248,7 +6266,7 @@ Object.values || (Object.values = function (e) {
             missions_filtered_out: "Some missions might be filtered out. Please, check your map filters.",
             no_alliance_chat_impossible: "The Chat is a great way to link up with other more experienced players.\xa0They can both answer your questions and help you by giving you access to buildings like Hospitals and Schools",
             no_alliance_missions: "There are currently no alliance missions.",
-            no_alliance_missions_join: "Participating in alliance missions will reward you with Credits - no matter what type of vehicle you send.\u2028By joining an alliance you can do both, share your own missions to get help from experienced alliance members and participate in other\u2019s shared missions for extra rewards.",
+            no_alliance_missions_join: "Participating in alliance missions will reward you with Credits - no matter what type of vehicle you send. By joining an alliance you can do both, share your own missions to get help from experienced alliance members and participate in other\u2019s shared missions for extra rewards.",
             no_ambulance_missions: "There are no ambulance missions. Ambulance missions can only occur when you have an ambulance and a hospital.",
             no_emergency_missions: "There are no emergency missions available. An emergency mission can occur after you made your first station.",
             no_radio_messages: "You didn't receive any radio messages.",
@@ -6684,6 +6702,9 @@ Object.values || (Object.values = function (e) {
             foam_missing: "Saknas: %{amount} l.",
             foam_on_site: "P\xe5 plats: %{amount} l.",
             foam_selected: "Valt: %{amount} l.",
+            helpshift: {
+                confirm_close_bubble: "Vill du verkligen st\xe4nga av supportchatten? Du kan alltid \xf6ppna den igen fr\xe5n hj\xe4lp-menyn"
+            },
             hours: "tim",
             location_not_found: "Kunde inte hittas",
             messages: "Meddelanden",
@@ -6748,7 +6769,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Akut",
             finishing: "I slutfas",
             join_alliance_infos: "Om du \xe4r med i en allians kan andra spelare ge dig uppdrag.",
-            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>\u2028iOS:\xa0%{ios_store_link}",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Karta",
             map_filters: {
                 all_buildings: "Byggnader",
@@ -6794,7 +6815,7 @@ Object.values || (Object.values = function (e) {
             missions_filtered_out: "Vissa uppdrag kan filtreras bort. Kontrollera dina kartfilter.",
             no_alliance_chat_impossible: "Chatten \xe4r ett bra s\xe4tt att f\xe5 kontakt med andra mer erfarna spelare.\xa0De kan b\xe5de svara p\xe5 dina fr\xe5gor och hj\xe4lpa dig genom att ge dig tillg\xe5ng till byggnader som sjukhus och skolor.",
             no_alliance_missions: "Det finns inga alliansuppdrag just nu.",
-            no_alliance_missions_join: "Om du deltar i alliansuppdrag f\xe5r du krediter - oavsett vilken typ av fordon du skickar.\u2028Genom att g\xe5 med i en allians kan du g\xf6ra b\xe5de och, dela dina egna uppdrag f\xf6r att f\xe5 hj\xe4lp av erfarna alliansmedlemmar och delta i andras delade uppdrag f\xf6r extra bel\xf6ningar.",
+            no_alliance_missions_join: "Om du deltar i alliansuppdrag f\xe5r du krediter - oavsett vilken typ av fordon du skickar. Genom att g\xe5 med i en allians kan du g\xf6ra b\xe5de och, dela dina egna uppdrag f\xf6r att f\xe5 hj\xe4lp av erfarna alliansmedlemmar och delta i andras delade uppdrag f\xf6r extra bel\xf6ningar.",
             no_ambulance_missions: "Det finns ingen patienttransport. Patienttransporter kan ske f\xf6rst n\xe4r du skaffat en l\xe4ttv\xe5rdsambulans eller ett sjukhus.",
             no_emergency_missions: "Det finns inga akutuppdrag just nu. Ett akutuppdrag kan intr\xe4ffa efter att du gjort din f\xf6rsta station.",
             no_radio_messages: "Du har inga radiomeddelanden.",
@@ -7142,6 +7163,9 @@ Object.values || (Object.values = function (e) {
             foam_missing: "Potrzeba: %{amount} l.",
             foam_on_site: "Na miejscu: %{amount} l.",
             foam_selected: "Wybrano: %{amount} l.",
+            helpshift: {
+                confirm_close_bubble: "Czy na pewno chcesz opu\u015bci\u0107 czat pomocy technicznej? Zawsze mo\u017cesz go ponownie otworzy\u0107 z menu pomocy"
+            },
             hours: "Godz.",
             location_not_found: "Nie znaleziono",
             messages: "Wiadomo\u015bci",
@@ -7208,7 +7232,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Sytuacja wyj\u0105tkowa",
             finishing: "Realizowane",
             join_alliance_infos: "Je\u015bli nale\u017cysz do sojuszu, inni gracze mog\u0105 ci wyznacza\u0107 misje bez ogranicze\u0144.",
-            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>\u2028iOS:\xa0%{ios_store_link}",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Mapa",
             map_filters: {
                 all_buildings: "Budynki",
@@ -7253,7 +7277,7 @@ Object.values || (Object.values = function (e) {
             missions_filtered_out: "Niekt\xf3re misje mog\u0105 zosta\u0107 odfiltrowane. Prosz\u0119 sprawdzi\u0107 filtry map.",
             no_alliance_chat_impossible: "Czat to \u015bwietny spos\xf3b na nawi\u0105zanie kontaktu z innymi, bardziej do\u015bwiadczonymi graczami.\xa0Mog\u0105 oni odpowiedzie\u0107 na twoje pytania i pom\xf3c ci, daj\u0105c ci dost\u0119p do budynk\xf3w takich jak szpitale i szko\u0142y.",
             no_alliance_missions: "W tej chwili nie ma misji sojuszu.",
-            no_alliance_missions_join: "Udzia\u0142 w misjach sojuszu nagrodzi Ci\u0119 Kredytami - bez wzgl\u0119du na to, jaki pojazd wy\u015blesz.\u2028Do\u0142\u0105czaj\u0105c do sojuszu, mo\u017cesz robi\u0107 obie te rzeczy: dzieli\u0107 si\u0119 w\u0142asnymi misjami, aby uzyska\u0107 pomoc od do\u015bwiadczonych cz\u0142onk\xf3w sojuszu, oraz bra\u0107 udzia\u0142 we wsp\xf3lnych misjach innych, aby otrzyma\u0107 dodatkowe nagrody.",
+            no_alliance_missions_join: "Udzia\u0142 w misjach sojuszu nagrodzi Ci\u0119 Kredytami - bez wzgl\u0119du na to, jaki pojazd wy\u015blesz. Do\u0142\u0105czaj\u0105c do sojuszu, mo\u017cesz robi\u0107 obie te rzeczy: dzieli\u0107 si\u0119 w\u0142asnymi misjami, aby uzyska\u0107 pomoc od do\u015bwiadczonych cz\u0142onk\xf3w sojuszu, oraz bra\u0107 udzia\u0142 we wsp\xf3lnych misjach innych, aby otrzyma\u0107 dodatkowe nagrody.",
             no_ambulance_missions: "Brak misji dla ambulans\xf3w. Misje dla ambulans\xf3w pojawiaj\u0105 si\u0119 tylko, gdy masz ambulans i szpital.",
             no_emergency_missions: "Brak misji z sytuacj\u0105 wyj\u0105tkow\u0105. Misja z sytuacj\u0105 wyj\u0105tkow\u0105 mo\u017ce si\u0119 pojawi\u0107, gdy wybudujesz pierwszy posterunek.",
             no_radio_messages: "Nie otrzymano wiadomo\u015bci drog\u0105 radiow\u0105.",
@@ -7603,6 +7627,9 @@ Object.values || (Object.values = function (e) {
             foam_missing: "Mancante: %{amount} l.",
             foam_on_site: "Sul Posto: %{amount} l.",
             foam_selected: "Selezionata: %{amount} l.",
+            helpshift: {
+                confirm_close_bubble: "Volete davvero chiudere la chat di supporto? \xc8 sempre possibile riaprirla dal menu di aiuto."
+            },
             hours: "H",
             location_not_found: "Non trovato",
             messages: "Messaggi",
@@ -7667,7 +7694,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Emergenza",
             finishing: "In corso",
             join_alliance_infos: "Se fai parte di un'alleanza, altri giocatori possono assegnarti liberamente delle missioni.",
-            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>\u2028iOS:\xa0%{ios_store_link}",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Mappa",
             map_filters: {
                 all_buildings: "Edifici",
@@ -7713,7 +7740,7 @@ Object.values || (Object.values = function (e) {
             missions_filtered_out: "Alcune missioni potrebbero essere filtrate. Per favore, controlla i filtri della tua mappa.",
             no_alliance_chat_impossible: "La chat \xe8 un ottimo modo per entrare in contatto con altri giocatori pi\xf9 esperti.\xa0Possono rispondere alle vostre domande e aiutarvi dandovi accesso a edifici come ospedali e scuole.",
             no_alliance_missions: "Al momento non ci sono missioni dell'alleanza.",
-            no_alliance_missions_join: "Partecipare alle missioni dell'alleanza vi ricompenser\xe0 con i Crediti, indipendentemente dal tipo di veicolo inviato.\u2028Unendovi a un'alleanza potrete fare entrambe le cose: condividere le vostre missioni per ricevere aiuto dai membri esperti dell'alleanza e partecipare alle missioni condivise dagli altri per ottenere ricompense extra.",
+            no_alliance_missions_join: "Partecipare alle missioni dell'alleanza vi ricompenser\xe0 con i Crediti, indipendentemente dal tipo di veicolo inviato. Unendovi a un'alleanza potrete fare entrambe le cose: condividere le vostre missioni per ricevere aiuto dai membri esperti dell'alleanza e partecipare alle missioni condivise dagli altri per ottenere ricompense extra.",
             no_ambulance_missions: "Nessuna missione delle ambulanze. Le missioni delle ambulanze possono verificarsi solo quando si dispone di un'ambulanza e di un ospedale.",
             no_emergency_missions: "Non ci sono missioni di emergenza disponibili. Una missione di emergenza pu\xf2 verificarsi dopo aver creato la prima stazione.",
             no_radio_messages: "Nessun messaggio radio ricevuto.",
@@ -8056,6 +8083,9 @@ Object.values || (Object.values = function (e) {
             days: "jours",
             few_seconds: "dans quelques secondes",
             finish_in: "Terminer dans\xa0:",
+            helpshift: {
+                confirm_close_bubble: "Voulez-vous vraiment fermer le chat d'assistance ? Vous pouvez toujours le rouvrir \xe0 partir du menu d'aide."
+            },
             hours: "h",
             location_not_found: "Introuvable",
             messages: "Messages",
@@ -8120,7 +8150,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Urgence",
             finishing: "Presque achev\xe9e",
             join_alliance_infos: "Si vous appartenez \xe0 une alliance, les autres joueurs peuvent vous confier des missions.",
-            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>\u2028iOS:\xa0%{ios_store_link}",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Carte",
             map_filters: {
                 all_buildings: "B\xe2timents",
@@ -8165,7 +8195,7 @@ Object.values || (Object.values = function (e) {
             missions_filtered_out: "Certaines missions peuvent \xeatre filtr\xe9es. Veuillez v\xe9rifier les filtres de votre carte.",
             no_alliance_chat_impossible: "Le chat est un excellent moyen d'entrer en contact avec d'autres joueurs plus exp\xe9riment\xe9s.\xa0Ils peuvent \xe0 la fois r\xe9pondre \xe0 vos questions et vous aider en vous donnant acc\xe8s \xe0 des b\xe2timents comme les h\xf4pitaux et les \xe9coles.",
             no_alliance_missions: "Aucune mission d\u2019alliance \xe0 afficher.",
-            no_alliance_missions_join: "En participant \xe0 des missions d'alliance, vous recevrez des cr\xe9dits, quel que soit le type de v\xe9hicule que vous envoyez.\u2028En rejoignant une alliance, vous pouvez faire les deux, partager vos propres missions pour obtenir l'aide de membres exp\xe9riment\xe9s de l'alliance et participer aux missions partag\xe9es des autres pour obtenir des r\xe9compenses suppl\xe9mentaires.",
+            no_alliance_missions_join: "En participant \xe0 des missions d'alliance, vous recevrez des cr\xe9dits, quel que soit le type de v\xe9hicule que vous envoyez. En rejoignant une alliance, vous pouvez faire les deux, partager vos propres missions pour obtenir l'aide de membres exp\xe9riment\xe9s de l'alliance et participer aux missions partag\xe9es des autres pour obtenir des r\xe9compenses suppl\xe9mentaires.",
             no_ambulance_missions: "Il n'y a pas de transport de patient en attente. Les transports seront disponibles d\xe8s que vous aurez trois ambulances de transport ou de secours et un h\xf4pital.",
             no_emergency_missions: "Aucune mission d\u2019urgence \xe0 afficher. Vous pouvez recevoir des missions d\u2019urgence d\xe8s lors que vous avez construit votre premier poste.",
             no_radio_messages: "Vous n\u2019avez re\xe7u aucun message radio.",
@@ -8501,6 +8531,9 @@ Object.values || (Object.values = function (e) {
             foam_missing: "\u041d\u0435 \u0445\u0432\u0430\u0442\u0430\u0435\u0442: %{amount} \u043b",
             foam_on_site: "\u041d\u0430 \u043c\u0435\u0441\u0442\u0435: %{amount} \u043b",
             foam_selected: "\u0412\u044b\u0431\u0440\u0430\u043d\u043e: %{amount} \u043b",
+            helpshift: {
+                confirm_close_bubble: "\u0412\u044b \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u0437\u0430\u043a\u0440\u044b\u0442\u044c \u0447\u0430\u0442 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0438? \u0412\u044b \u0432\u0441\u0435\u0433\u0434\u0430 \u043c\u043e\u0436\u0435\u0442\u0435 \u0441\u043d\u043e\u0432\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u044c \u0435\u0433\u043e \u0438\u0437 \u043c\u0435\u043d\u044e \u043f\u043e\u043c\u043e\u0449\u0438"
+            },
             hours: "\u0427",
             location_not_found: "\u041d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e",
             messages: "\u0421\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f",
@@ -8562,7 +8595,7 @@ Object.values || (Object.values = function (e) {
             emergency: "\u0427\u0440\u0435\u0437\u0432\u044b\u0447\u0430\u0439\u043d\u0430\u044f \u0441\u0438\u0442\u0443\u0430\u0446\u0438\u044f",
             finishing: "\u0417\u0430\u0432\u0435\u0440\u0448\u0430\u044e\u0442\u0441\u044f",
             join_alliance_infos: "\u0415\u0441\u043b\u0438 \u0432\u044b \u0441\u043e\u0441\u0442\u043e\u0438\u0442\u0435 \u0432 \u0430\u043b\u044c\u044f\u043d\u0441\u0435, \u0434\u0440\u0443\u0433\u0438\u0435 \u0438\u0433\u0440\u043e\u043a\u0438 \u043c\u043e\u0433\u0443\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u043e \u0434\u0430\u0432\u0430\u0442\u044c \u0432\u0430\u043c \u0437\u0430\u0434\u0430\u043d\u0438\u044f.",
-            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>\u2028iOS:\xa0%{ios_store_link}",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "\u041a\u0430\u0440\u0442\u0430",
             map_filters: {
                 all_buildings: "\u0417\u0434\u0430\u043d\u0438\u044f",
@@ -8607,7 +8640,7 @@ Object.values || (Object.values = function (e) {
             missions_filtered_out: "\u041d\u0435\u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u043c\u0438\u0441\u0441\u0438\u0438 \u043c\u043e\u0433\u0443\u0442 \u0431\u044b\u0442\u044c \u043e\u0442\u0444\u0438\u043b\u044c\u0442\u0440\u043e\u0432\u0430\u043d\u044b. \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u0440\u043e\u0432\u0435\u0440\u044c\u0442\u0435 \u0444\u0438\u043b\u044c\u0442\u0440\u044b \u0432\u0430\u0448\u0435\u0439 \u043a\u0430\u0440\u0442\u044b.",
             no_alliance_chat_impossible: "\u0427\u0430\u0442 - \u044d\u0442\u043e \u043e\u0442\u043b\u0438\u0447\u043d\u044b\u0439 \u0441\u043f\u043e\u0441\u043e\u0431 \u043f\u043e\u043e\u0431\u0449\u0430\u0442\u044c\u0441\u044f \u0441 \u0434\u0440\u0443\u0433\u0438\u043c\u0438, \u0431\u043e\u043b\u0435\u0435 \u043e\u043f\u044b\u0442\u043d\u044b\u043c\u0438 \u0438\u0433\u0440\u043e\u043a\u0430\u043c\u0438.\xa0\u041e\u043d\u0438 \u043c\u043e\u0433\u0443\u0442 \u043a\u0430\u043a \u043e\u0442\u0432\u0435\u0442\u0438\u0442\u044c \u043d\u0430 \u0432\u0430\u0448\u0438 \u0432\u043e\u043f\u0440\u043e\u0441\u044b, \u0442\u0430\u043a \u0438 \u043f\u043e\u043c\u043e\u0447\u044c \u0432\u0430\u043c, \u043f\u0440\u0435\u0434\u043e\u0441\u0442\u0430\u0432\u0438\u0432 \u0434\u043e\u0441\u0442\u0443\u043f \u043a \u0442\u0430\u043a\u0438\u043c \u0437\u0434\u0430\u043d\u0438\u044f\u043c, \u043a\u0430\u043a \u0431\u043e\u043b\u044c\u043d\u0438\u0446\u044b \u0438 \u0448\u043a\u043e\u043b\u044b.",
             no_alliance_missions: "\u0412 \u043d\u0430\u0441\u0442\u043e\u044f\u0449\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u0437\u0430\u0434\u0430\u043d\u0438\u0439 \u0430\u043b\u044c\u044f\u043d\u0441\u0430 \u043d\u0435\u0442.",
-            no_alliance_missions_join: "\u0423\u0447\u0430\u0441\u0442\u0438\u0435 \u0432 \u043c\u0438\u0441\u0441\u0438\u044f\u0445 \u0430\u043b\u044c\u044f\u043d\u0441\u0430 \u043f\u0440\u0438\u043d\u0435\u0441\u0435\u0442 \u0432\u0430\u043c \u043a\u0440\u0435\u0434\u0438\u0442\u044b - \u043d\u0435\u0437\u0430\u0432\u0438\u0441\u0438\u043c\u043e \u043e\u0442 \u0442\u0438\u043f\u0430 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u043e\u0433\u043e \u0432\u0430\u043c\u0438 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u043e\u0433\u043e \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430.\u2028\u0412\u0441\u0442\u0443\u043f\u0438\u0432 \u0432 \u0430\u043b\u044c\u044f\u043d\u0441, \u0432\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0434\u0435\u043b\u0430\u0442\u044c \u0438 \u0442\u043e, \u0438 \u0434\u0440\u0443\u0433\u043e\u0435: \u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f \u0441\u0432\u043e\u0438\u043c\u0438 \u0437\u0430\u0434\u0430\u043d\u0438\u044f\u043c\u0438, \u043f\u043e\u043b\u0443\u0447\u0430\u044f \u043f\u043e\u043c\u043e\u0449\u044c \u043e\u0442 \u043e\u043f\u044b\u0442\u043d\u044b\u0445 \u0447\u043b\u0435\u043d\u043e\u0432 \u0430\u043b\u044c\u044f\u043d\u0441\u0430, \u0438 \u0443\u0447\u0430\u0441\u0442\u0432\u043e\u0432\u0430\u0442\u044c \u0432 \u043e\u0431\u0449\u0438\u0445 \u0437\u0430\u0434\u0430\u043d\u0438\u044f\u0445 \u0434\u0440\u0443\u0433\u0438\u0445, \u043f\u043e\u043b\u0443\u0447\u0430\u044f \u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0435 \u043d\u0430\u0433\u0440\u0430\u0434\u044b.",
+            no_alliance_missions_join: "\u0423\u0447\u0430\u0441\u0442\u0438\u0435 \u0432 \u043c\u0438\u0441\u0441\u0438\u044f\u0445 \u0430\u043b\u044c\u044f\u043d\u0441\u0430 \u043f\u0440\u0438\u043d\u0435\u0441\u0435\u0442 \u0432\u0430\u043c \u043a\u0440\u0435\u0434\u0438\u0442\u044b - \u043d\u0435\u0437\u0430\u0432\u0438\u0441\u0438\u043c\u043e \u043e\u0442 \u0442\u0438\u043f\u0430 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u043e\u0433\u043e \u0432\u0430\u043c\u0438 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u043e\u0433\u043e \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430. \u0412\u0441\u0442\u0443\u043f\u0438\u0432 \u0432 \u0430\u043b\u044c\u044f\u043d\u0441, \u0432\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0434\u0435\u043b\u0430\u0442\u044c \u0438 \u0442\u043e, \u0438 \u0434\u0440\u0443\u0433\u043e\u0435: \u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f \u0441\u0432\u043e\u0438\u043c\u0438 \u0437\u0430\u0434\u0430\u043d\u0438\u044f\u043c\u0438, \u043f\u043e\u043b\u0443\u0447\u0430\u044f \u043f\u043e\u043c\u043e\u0449\u044c \u043e\u0442 \u043e\u043f\u044b\u0442\u043d\u044b\u0445 \u0447\u043b\u0435\u043d\u043e\u0432 \u0430\u043b\u044c\u044f\u043d\u0441\u0430, \u0438 \u0443\u0447\u0430\u0441\u0442\u0432\u043e\u0432\u0430\u0442\u044c \u0432 \u043e\u0431\u0449\u0438\u0445 \u0437\u0430\u0434\u0430\u043d\u0438\u044f\u0445 \u0434\u0440\u0443\u0433\u0438\u0445, \u043f\u043e\u043b\u0443\u0447\u0430\u044f \u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0435 \u043d\u0430\u0433\u0440\u0430\u0434\u044b.",
             no_ambulance_missions: "\u041d\u0435\u0442 \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u0438 \u043f\u0435\u0440\u0435\u0432\u043e\u0437\u043a\u0438 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432. \u041f\u0435\u0440\u0435\u0432\u043e\u0437\u043a\u0430 \u0441\u0442\u0430\u043d\u0435\u0442 \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0439, \u043a\u043e\u0433\u0434\u0430\u043f\u043e\u044f\u0432\u044f\u0442\u0441\u044f \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0438\u043b\u044c \u0441\u043a\u043e\u0440\u043e\u0439 \u043f\u043e\u043c\u043e\u0449\u0438 \u0438 \u0431\u043e\u043b\u044c\u043d\u0438\u0446\u0430.",
             no_emergency_missions: "\u041d\u0435\u0442 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b\u0445 \u0437\u0430\u0434\u0430\u043d\u0438\u0439 \u0427\u0421. \u0417\u0430\u0434\u0430\u043d\u0438\u0435 \u0427\u0421 \u043c\u043e\u0436\u0435\u0442 \u043f\u043e\u044f\u0432\u0438\u0442\u044c\u0441\u044f \u0442\u043e\u043b\u044c\u043a\u043e \u0442\u043e\u0433\u0434\u0430, \u043a\u043e\u0433\u0434\u0430 \u0432\u044b \u043f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u0435 \u0441\u0432\u043e\u044e \u043f\u0435\u0440\u0432\u0443\u044e \u0441\u0442\u0430\u043d\u0446\u0438\u044e.",
             no_radio_messages: "\u0412\u044b \u043d\u0435 \u043f\u043e\u043b\u0443\u0447\u0430\u043b\u0438 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0439 \u043f\u043e \u0440\u0430\u0434\u0438\u043e.",
@@ -8893,6 +8926,9 @@ Object.values || (Object.values = function (e) {
             foam_missing: "Mangler: %{amount} l.",
             foam_on_site: "P\xe5 Stedet: %{amount} l.",
             foam_selected: "Valgte: %{amount} l.",
+            helpshift: {
+                confirm_close_bubble: "Vil du virkelig lukke supportchatten? Du kan altid gen\xe5bne den fra hj\xe6lpemenuen"
+            },
             hours: "T",
             location_not_found: "Ikke fundet",
             messages: "Meddelelser",
@@ -8957,7 +8993,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Krisesituation",
             finishing: "N\xe6sten afsluttede",
             join_alliance_infos: "Hvis du er i en alliance, kan andre spillere give dig missioner.",
-            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>\u2028iOS:\xa0%{ios_store_link}",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Kort",
             map_filters: {
                 all_buildings: "Bygninger",
@@ -9003,7 +9039,7 @@ Object.values || (Object.values = function (e) {
             missions_filtered_out: "Nogle missioner kan blive filtreret ud. Tjek venligst dine kortfilter.",
             no_alliance_chat_impossible: "Chatten er en god m\xe5de at komme i kontakt med andre mere erfarne spillere p\xe5.\xa0De kan b\xe5de besvare dine sp\xf8rgsm\xe5l og hj\xe6lpe dig ved at give dig adgang til bygninger som hospitaler og skoler.",
             no_alliance_missions: "Der er ingen alliancemissioner lige nu",
-            no_alliance_missions_join: 'Hvis du deltager i alliancemissioner, f\xe5r du kreditter - uanset hvilken type k\xf8ret\xf8j du sender. \u2028Ved at slutte dig til en alliance kan du g\xf8re begge dele, dele dine egne missioner for at f\xe5 hj\xe6lp fra erfarne alliancemedlemmer og deltage i andres delte missioner for at f\xe5 ekstra bel\xf8nninger."',
+            no_alliance_missions_join: 'Hvis du deltager i alliancemissioner, f\xe5r du kreditter - uanset hvilken type k\xf8ret\xf8j du sender. Ved at slutte dig til en alliance kan du g\xf8re begge dele, dele dine egne missioner for at f\xe5 hj\xe6lp fra erfarne alliancemedlemmer og deltage i andres delte missioner for at f\xe5 ekstra bel\xf8nninger."',
             no_ambulance_missions: "Der er ingen ambulancemissioner. Der er kun ambulancemissioner, n\xe5r du har en ambulance og et hospital.",
             no_emergency_missions: "Der er ingen tilg\xe6ngelige krisemissioner. Der kan opst\xe5 krisemissioner, n\xe5r du har oprettet din f\xf8rste station.",
             no_radio_messages: "Du har ikke modtaget radiomeddelelser.",
@@ -9338,6 +9374,9 @@ Object.values || (Object.values = function (e) {
             foam_missing: "Mangler: %{amount} l.",
             foam_on_site: "Fremme: %{amount} l.",
             foam_selected: "Valgt: %{amount} l.",
+            helpshift: {
+                confirm_close_bubble: "Vil du virkelig avslutte supportchatten? Du kan alltid \xe5pne den igjen fra hjelpemenyen."
+            },
             hours: "T",
             location_not_found: "Ikke funnet",
             messages: "Meldinger",
@@ -9402,7 +9441,7 @@ Object.values || (Object.values = function (e) {
             emergency: "N\xf8dssituasjon",
             finishing: "Fullf\xf8rer",
             join_alliance_infos: "Hvis du er i en allianse, kan andre spillere gi deg oppdrag.",
-            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>\u2028iOS:\xa0%{ios_store_link}",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Kart",
             map_filters: {
                 all_buildings: "Bygninger",
@@ -9792,6 +9831,9 @@ Object.values || (Object.values = function (e) {
             foam_missing: "Chyb\xed: %{amount} l",
             foam_on_site: "Zvoleno: %{amount} l",
             foam_selected: "Zvoleno: %{amount} l",
+            helpshift: {
+                confirm_close_bubble: "Opravdu chcete zru\u0161it chat s podporou? V\u017edy jej m\u016f\u017eete znovu otev\u0159\xedt v menu n\xe1pov\u011bdy."
+            },
             hours: "h",
             location_not_found: "Nenalezeno",
             messages: "Zpr\xe1vy",
@@ -9859,7 +9901,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Stav nouze",
             finishing: "Dokon\u010dovan\xe9",
             join_alliance_infos: "V alianci v\xe1m ostatn\xed hr\xe1\u010di m\u016f\u017eou d\xe1vat mise.",
-            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>\u2028iOS:\xa0%{ios_store_link}",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Mapa",
             map_filters: {
                 all_buildings: "Budovy",
@@ -9905,7 +9947,7 @@ Object.values || (Object.values = function (e) {
             missions_filtered_out: "N\u011bkter\xe9 mise mohou b\xfdt odfiltrov\xe1ny. Zkontrolujte pros\xedm sv\xe9 mapov\xe9 filtry.",
             no_alliance_chat_impossible: "Chat je skv\u011bl\xfd zp\u016fsob, jak se spojit s dal\u0161\xedmi zku\u0161en\u011bj\u0161\xedmi hr\xe1\u010di.\xa0Ti v\xe1m mohou odpov\u011bd\u011bt na va\u0161e ot\xe1zky a tak\xe9 v\xe1m pomoci t\xedm, \u017ee v\xe1m zp\u0159\xedstupn\xed budovy, jako jsou nemocnice a \u0161koly.",
             no_alliance_missions: "K dispozici nejsou \u017e\xe1dn\xe9 alian\u010dn\xed mise.",
-            no_alliance_missions_join: "Za \xfa\u010dast v alian\u010dn\xedch mis\xedch z\xedsk\xe1te kredity - bez ohledu na to, jak\xfd typ vozidla po\u0161lete.\u2028Vstupem do aliance m\u016f\u017eete d\u011blat oboj\xed, sd\xedlet sv\xe9 vlastn\xed mise a z\xedskat tak pomoc od zku\u0161en\xfdch \u010dlen\u016f aliance a \xfa\u010dastnit se sd\xedlen\xfdch mis\xed ostatn\xedch za dal\u0161\xed odm\u011bny.",
+            no_alliance_missions_join: "Za \xfa\u010dast v alian\u010dn\xedch mis\xedch z\xedsk\xe1te kredity - bez ohledu na to, jak\xfd typ vozidla po\u0161lete. Vstupem do aliance m\u016f\u017eete d\u011blat oboj\xed, sd\xedlet sv\xe9 vlastn\xed mise a z\xedskat tak pomoc od zku\u0161en\xfdch \u010dlen\u016f aliance a \xfa\u010dastnit se sd\xedlen\xfdch mis\xed ostatn\xedch za dal\u0161\xed odm\u011bny.",
             no_ambulance_missions: "Mise z\xe1chrann\xe9 slu\u017eby nejsou k dispozici. Objev\xed se, a\u017e kdy\u017e budete m\xedt z\xe1chrannou slu\u017ebu a nemocnici.",
             no_emergency_missions: "Nouzov\xe9 mise nejsou k dispozici. Objev\xed se, a\u017e postav\xedte prvn\xed stanici.",
             no_radio_messages: "Na vys\xedla\u010dku v\xe1m nep\u0159i\u0161ly \u017e\xe1dn\xe9 zpr\xe1vy.",
@@ -10233,6 +10275,9 @@ Object.values || (Object.values = function (e) {
             days: "g\xfcn",
             few_seconds: "birka\xe7 saniyede",
             finish_in: "Bitir:",
+            helpshift: {
+                confirm_close_bubble: "Destek sohbetini ger\xe7ekten kapatmak m\u0131 istiyorsunuz? Yard\u0131m men\xfcs\xfcnden her zaman yeniden a\xe7abilirsiniz"
+            },
             hours: "S",
             location_not_found: "Bulunmad\u0131",
             messages: "Mesajlar",
@@ -10288,7 +10333,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Acil Durum",
             finishing: "Finishing",
             join_alliance_infos: "Bir birlikteysen di\u011fer oyuncular sana istedikleri gibi g\xf6revler verebilirler.",
-            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>\u2028iOS:\xa0%{ios_store_link}",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Harita",
             map_filters: {
                 all_buildings: "Yap\u0131lar",
@@ -10600,6 +10645,9 @@ Object.values || (Object.values = function (e) {
             foam_missing: "Em falta: %{amount} l.",
             foam_on_site: "No TO: %{amount} l.",
             foam_selected: "Selecionado: %{amount} l.",
+            helpshift: {
+                confirm_close_bubble: "Pretende mesmo fechar o chat de ajuda? Pode sempre reabri-lo a partir do menu de ajuda"
+            },
             hours: "H",
             location_not_found: "N\xe3o encontrado",
             messages: "Mensagens",
@@ -10612,10 +10660,10 @@ Object.values || (Object.values = function (e) {
             patient: "Paciente",
             patient_untouched: "Pacientes n\xe3o tratados",
             poi_delete: "Tem certeza de que quer apagar o PDI: %{caption}?",
-            pump_speed_approaching: "Aproxima\xe7\xe3o: %{amount} l/min",
-            pump_speed_missing: "Em falta: %{amount} l/min",
-            pump_speed_on_site: "No local: %{amount} l/min",
-            pump_speed_selected: "Selecionado: %{amount} l/min",
+            pump_speed_approaching: "A Caminho do TO: %{amount} l/min",
+            pump_speed_missing: "Em falta no TO: %{amount} l/min",
+            pump_speed_on_site: "No TO: %{amount} l/min",
+            pump_speed_selected: "Selecionado para o TO: %{amount} l/min",
             reload: "Recarregar",
             secounds: "seg.",
             sicherheitswache_error: 'A guarda de seguran\xe7a "%{caption}" n\xe3o teve \xeaxito porque nem todos os crit\xe9rios foram atendidos.',
@@ -10635,7 +10683,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "A caminho do TO: %{amount} l.",
             water_missing: "Em falta: %{amount} l.",
             water_on_site: "No TO: %{amount} l.",
-            water_pumping_process: "Processo de bombagem de \xe1gua",
+            water_pumping_process: "Progresso de bombagem de \xe1gua",
             water_selected: "Selecionada: %{amount} l."
         },
         map: {
@@ -10662,7 +10710,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Emerg\xeancia",
             finishing: "Em decurso",
             join_alliance_infos: "Se estiver numa alian\xe7a, outros jogadores podem compartilhar miss\xf5es consigo.",
-            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>\u2028iOS:\xa0%{ios_store_link}",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Mapa",
             map_filters: {
                 all_buildings: "Edif\xedcios",
@@ -10708,7 +10756,7 @@ Object.values || (Object.values = function (e) {
             missions_filtered_out: "Algumas miss\xf5es podem ser filtradas. Por favor, verifique seus filtros de mapa.",
             no_alliance_chat_impossible: "O Chat \xe9 uma \xf3tima forma de se ligar a outros jogadores mais experientes.\xa0Ambos podem responder \xe0s suas perguntas e ajud\xe1-lo dando-lhe acesso a edif\xedcios como Hospitais e Escolas.",
             no_alliance_missions: "De momento n\xe3o existem miss\xf5es de alian\xe7a.",
-            no_alliance_missions_join: "A participa\xe7\xe3o em miss\xf5es de alian\xe7a ir\xe1 recompens\xe1-lo com Cr\xe9ditos - independentemente do tipo de ve\xedculo que enviar.\u2028Ao aderir a uma alian\xe7a pode fazer ambas, partilhar as suas pr\xf3prias miss\xf5es para obter ajuda de membros experientes da alian\xe7a e participar nas miss\xf5es partilhadas de outros para obter recompensas extra.",
+            no_alliance_missions_join: "A participa\xe7\xe3o em miss\xf5es de alian\xe7a ir\xe1 recompens\xe1-lo com Cr\xe9ditos - independentemente do tipo de ve\xedculo que enviar. Ao aderir a uma alian\xe7a pode fazer ambas, partilhar as suas pr\xf3prias miss\xf5es para obter ajuda de membros experientes da alian\xe7a e participar nas miss\xf5es partilhadas de outros para obter recompensas extra.",
             no_ambulance_missions: "N\xe3o h\xe1 miss\xf5es de ambul\xe2ncia. Voc\xea s\xf3 pode participar de miss\xf5es de ambul\xe2ncia quando tiver uma ambul\xe2ncia e um hospital.",
             no_emergency_missions: "N\xe3o h\xe1 miss\xf5es de emerg\xeancia dispon\xedveis. Poder\xe1 participar em miss\xf5es de emerg\xeancia depois de construir o seu primeiro corpo de bombeiros.",
             no_radio_messages: "N\xe3o existem mensagens via r\xe1dio",
@@ -10828,8 +10876,8 @@ Object.values || (Object.values = function (e) {
                 police_motorcycle: "EPRI",
                 polizeihubschrauber: "Helic\xf3ptero de pol\xedcia",
                 pump: "Moto Bomba:",
-                pump_speed: "Capacidade da bomba",
-                pump_speed_pump_only: "Capacidade da bomba - Apenas bombas",
+                pump_speed: "Capacidade de bombagem",
+                pump_speed_pump_only: "Capacidade de bombagem - Apenas Moto Bombas",
                 rescue_vehicle: "VSAT / VUCI",
                 rescue_vehicle_only: "VSAT",
                 rescueboat: "Barco de resgate grande",
@@ -10844,7 +10892,7 @@ Object.values || (Object.values = function (e) {
                 traffic_car: "UT/UNT",
                 turntable_ladder: "VE / VP",
                 water_amount: "\xc1gua (Qtd. de Litros)",
-                water_damage_pump: "Bombas de \xe1gua"
+                water_damage_pump: "Moto Bombas"
             }
         },
         tutorial: {
@@ -11040,6 +11088,9 @@ Object.values || (Object.values = function (e) {
             foam_missing: "Faltando: %{amount} l.",
             foam_on_site: "Em cena: %{amount} l.",
             foam_selected: "Selecionada: %{amount} l.",
+            helpshift: {
+                confirm_close_bubble: "Pretende mesmo abandonar o chat de suporte? Pode sempre reabri-lo a partir do menu de ajuda"
+            },
             hours: "H",
             location_not_found: "N\xe3o encontrado",
             messages: "Mensagens",
@@ -11099,7 +11150,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Emerg\xeancia",
             finishing: "Em decurso",
             join_alliance_infos: "Se voc\xea estiver em uma alian\xe7a, outros jogadores podem lhe dar miss\xf5es livremente.",
-            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>\u2028iOS:\xa0%{ios_store_link}",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Mapa",
             map_filters: {
                 all_buildings: "Edif\xedcios",
@@ -11144,6 +11195,7 @@ Object.values || (Object.values = function (e) {
             missions_filtered_out: "Algumas miss\xf5es podem ser filtradas. Por favor, verifique seus filtros de mapa.",
             no_alliance_chat_impossible: "Voc\xea n\xe3o est\xe1 em uma alian\xe7a.",
             no_alliance_missions: "N\xe3o h\xe1 miss\xf5es de alian\xe7a no momento.",
+            no_alliance_missions_join: "A participa\xe7\xe3o em miss\xf5es de alian\xe7a ir\xe1 recompens\xe1-lo com Cr\xe9ditos - independentemente do tipo de ve\xedculo que enviar. Ao aderir a uma alian\xe7a pode fazer ambas, partilhar as suas pr\xf3prias miss\xf5es para obter ajuda de membros experientes da alian\xe7a e participar nas miss\xf5es partilhadas de outros para obter recompensas extra.",
             no_ambulance_missions: "N\xe3o h\xe1 miss\xf5es de ambul\xe2ncia. Voc\xea s\xf3 pode participar de miss\xf5es de ambul\xe2ncia quando tiver uma ambul\xe2ncia e um hospital.",
             no_emergency_missions: "N\xe3o h\xe1 miss\xf5es de emerg\xeancia dispon\xedveis. Voc\xea pode participar de uma miss\xe3o de emerg\xeancia depois que construir o seu primeiro corpo de bombeiros.",
             no_radio_messages: "Voc\xea n\xe3o recebeu mensagens de r\xe1dio.",
@@ -11404,6 +11456,9 @@ Object.values || (Object.values = function (e) {
             days: "\u0434\u043d.",
             few_seconds: "\u0447\u0435\u0440\u0435\u0437 \u0434\u0435\u043a\u0456\u043b\u044c\u043a\u0430 \u0441\u0435\u043a\u0443\u043d\u0434",
             finish_in: "\u0417\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u0447\u0435\u0440\u0435\u0437:",
+            helpshift: {
+                confirm_close_bubble: "\u0412\u0438 \u0434\u0456\u0439\u0441\u043d\u043e \u0445\u043e\u0447\u0435\u0442\u0435 \u0432\u0456\u0434\u043a\u043b\u044e\u0447\u0438\u0442\u0438 \u0447\u0430\u0442 \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u043a\u0438? \u0412\u0438 \u0437\u0430\u0432\u0436\u0434\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0437\u043d\u043e\u0432\u0443 \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u0438 \u0439\u043e\u0433\u043e \u0437 \u043c\u0435\u043d\u044e \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0438"
+            },
             hours: "\u0413",
             location_not_found: "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e",
             messages: "\u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f",
@@ -11461,7 +11516,7 @@ Object.values || (Object.values = function (e) {
             emergency: "\u041d\u0430\u0434\u0437\u0432\u0438\u0447\u0430\u0439\u043d\u0430 \u0441\u0438\u0442\u0443\u0430\u0446\u0456\u044f",
             finishing: "\u0417\u0430\u0432\u0435\u0440\u0448\u0443\u044e\u0442\u044c\u0441\u044f",
             join_alliance_infos: "\u042f\u043a\u0449\u043e \u0432\u0438 \u043f\u0435\u0440\u0435\u0431\u0443\u0432\u0430\u0454\u0442\u0435 \u0432 \u0430\u043b\u044c\u044f\u043d\u0441\u0456, \u0456\u043d\u0448\u0456 \u0433\u0440\u0430\u0432\u0446\u0456 \u043c\u043e\u0436\u0443\u0442\u044c \u0432\u0456\u043b\u044c\u043d\u043e \u0434\u0430\u0432\u0430\u0442\u0438 \u0432\u0430\u043c \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f.",
-            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>\u2028iOS:\xa0%{ios_store_link}",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "\u041a\u0430\u0440\u0442\u0430",
             map_filters: {
                 all_buildings: "\u0411\u0443\u0434\u0456\u0432\u043b\u0456",
@@ -11765,6 +11820,9 @@ Object.values || (Object.values = function (e) {
             days: "d\xedas",
             few_seconds: "en pocos segundos",
             finish_in: "Termina en:",
+            helpshift: {
+                confirm_close_bubble: "\xbfDe verdad quieres cerrar el chat de ayuda? Siempre puedes reabrirlo desde el men\xfa de ayuda"
+            },
             hours: "H",
             location_not_found: "No encontrado",
             messages: "Mensajes",
@@ -11820,7 +11878,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Emergencia",
             finishing: "Completando",
             join_alliance_infos: "Si est\xe1s en una alianza, otros jugadores podr\xe1n ofrecerte misiones.",
-            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>\u2028iOS:\xa0%{ios_store_link}",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Mapa",
             map_filters: {
                 all_buildings: "Edificios",
@@ -11865,6 +11923,7 @@ Object.values || (Object.values = function (e) {
             missions_filtered_out: "Algunas misiones pueden ser filtradas. Por favor, revise los filtros de su mapa.",
             no_alliance_chat_impossible: "No est\xe1s en una alianza.",
             no_alliance_missions: "No hay misiones de alianza.",
+            no_alliance_missions_join: "Participar en las misiones de la alianza te recompensar\xe1 con cr\xe9ditos, independientemente del tipo de veh\xedculo que env\xedes. Al unirte a una alianza puedes hacer ambas cosas, compartir tus propias misiones para obtener ayuda de miembros experimentados de la alianza y participar en las misiones compartidas de otros para obtener recompensas extra.",
             no_ambulance_missions: "No hay misiones de ambulancia. Solo habr\xe1 misiones de ambulancia cuando tengas una ambulancia y un hospital.",
             no_emergency_missions: "No hay misiones de emergencia disponibles. Solo habr\xe1 misiones de emergencia despu\xe9s de que construyas tu primera instalaci\xf3n.",
             no_radio_messages: "No has recibido mensajes de radio.",
@@ -12136,6 +12195,9 @@ Object.values || (Object.values = function (e) {
             foam_missing: "\u4e0d\u8db3\u5206\uff1a%{amount}\u30ea\u30c3\u30c8\u30eb",
             foam_on_site: "\u73fe\u5834\uff1a%{amount}\u30ea\u30c3\u30c8\u30eb",
             foam_selected: "\u9078\u629e\u6e08\u307f\uff1a%{amount}\u30ea\u30c3\u30c8\u30eb",
+            helpshift: {
+                confirm_close_bubble: "\u672c\u5f53\u306b\u30b5\u30dd\u30fc\u30c8\u30c1\u30e3\u30c3\u30c8\u3092\u7d42\u4e86\u3057\u307e\u3059\u304b\uff1f\u30d8\u30eb\u30d7\u30e1\u30cb\u30e5\u30fc\u304b\u3089\u3044\u3064\u3067\u3082\u518d\u958b\u3067\u304d\u307e\u3059\u3002"
+            },
             hours: "\u6642\u9593",
             location_not_found: "\u898b\u3064\u304b\u308a\u307e\u305b\u3093",
             messages: "\u30e1\u30c3\u30bb\u30fc\u30b8",
@@ -12199,7 +12261,7 @@ Object.values || (Object.values = function (e) {
             emergency: "\u7dca\u6025\u4e8b\u614b",
             finishing: "\u5bfe\u5fdc\u4e2d",
             join_alliance_infos: "\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u306b\u6240\u5c5e\u3057\u3066\u3044\u308c\u3070\u3001\u4ed6\u306e\u30d7\u30ec\u30a4\u30e4\u30fc\u304c\u3042\u306a\u305f\u3078\u81ea\u7531\u306b\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u5272\u308a\u5f53\u3066\u3089\u308c\u307e\u3059\u3002",
-            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>\u2028iOS:\xa0%{ios_store_link}",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "\u30de\u30c3\u30d7",
             map_filters: {
                 all_buildings: "\u5efa\u7269",
@@ -12245,7 +12307,7 @@ Object.values || (Object.values = function (e) {
             missions_filtered_out: "\u4e00\u90e8\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u306f\u9664\u5916\u3055\u308c\u308b\u53ef\u80fd\u6027\u304c\u3042\u308a\u307e\u3059\u3002\u30de\u30c3\u30d7\u30d5\u30a3\u30eb\u30bf\u30fc\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
             no_alliance_chat_impossible: "\u30c1\u30e3\u30c3\u30c8\u306f\u3001\u7d4c\u9a13\u8c4a\u5bcc\u306a\u30d7\u30ec\u30a4\u30e4\u30fc\u3068\u3064\u306a\u304c\u308b\u305f\u3081\u306e\u7d20\u6674\u3089\u3057\u3044\u65b9\u6cd5\u3067\u3059\u3002\xa0\u5f7c\u3089\u306f\u3042\u306a\u305f\u306e\u8cea\u554f\u306b\u7b54\u3048\u305f\u308a\u3001\u75c5\u9662\u3084\u5b66\u6821\u306a\u3069\u306e\u5efa\u7269\u306b\u30a2\u30af\u30bb\u30b9\u3059\u308b\u3053\u3068\u3067\u3042\u306a\u305f\u3092\u52a9\u3051\u3066\u304f\u308c\u308b\u3067\u3057\u3087\u3046\u3002",
             no_alliance_missions: "\u73fe\u5728\u3001\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u30df\u30c3\u30b7\u30e7\u30f3\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
-            no_alliance_missions_join: "\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u53c2\u52a0\u3059\u308b\u3068\u3001\u3069\u306e\u3088\u3046\u306a\u8eca\u7a2e\u3067\u3042\u3063\u3066\u3082\u30af\u30ec\u30b8\u30c3\u30c8\u306e\u5831\u916c\u304c\u5f97\u3089\u308c\u307e\u3059\u3002\u2028\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u306b\u53c2\u52a0\u3059\u308b\u3053\u3068\u3067\u3001\u81ea\u5206\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u5171\u6709\u3057\u3066\u7d4c\u9a13\u8c4a\u5bcc\u306a\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u30e1\u30f3\u30d0\u30fc\u306e\u52a9\u3051\u3092\u5f97\u308b\u3053\u3068\u3068\u3001\u4ed6\u306e\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u306e\u5171\u6709\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u53c2\u52a0\u3057\u3066\u8ffd\u52a0\u5831\u916c\u3092\u5f97\u308b\u3053\u3068\u306e\u4e21\u65b9\u3092\u884c\u3046\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002",
+            no_alliance_missions_join: "\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u53c2\u52a0\u3059\u308b\u3068\u3001\u3069\u306e\u3088\u3046\u306a\u8eca\u7a2e\u3067\u3042\u3063\u3066\u3082\u30af\u30ec\u30b8\u30c3\u30c8\u306e\u5831\u916c\u304c\u5f97\u3089\u308c\u307e\u3059\u3002\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u306b\u53c2\u52a0\u3059\u308b\u3053\u3068\u3067\u3001\u81ea\u5206\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u5171\u6709\u3057\u3066\u7d4c\u9a13\u8c4a\u5bcc\u306a\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u30e1\u30f3\u30d0\u30fc\u306e\u52a9\u3051\u3092\u5f97\u308b\u3053\u3068\u3068\u3001\u4ed6\u306e\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u306e\u5171\u6709\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u53c2\u52a0\u3057\u3066\u8ffd\u52a0\u5831\u916c\u3092\u5f97\u308b\u3053\u3068\u306e\u4e21\u65b9\u3092\u884c\u3046\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002",
             no_ambulance_missions: '"\u60a3\u8005\u306e\u642c\u9001\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u60a3\u8005\u306e\u642c\u9001\u306f\u3001\u4e00\u6b21\u6551\u547d\u51e6\u7f6e\u3068\u75c5\u9662\u3092\u6240\u6709\u3059\u308b\u3068\u5bfe\u5fdc\u3067\u304d\u308b\u3088\u3046\u306b\u306a\u308a\u307e\u3059\u3002"',
             no_emergency_missions: "\u53c2\u52a0\u3067\u304d\u308b\u7dca\u6025\u4e8b\u614b\u30df\u30c3\u30b7\u30e7\u30f3\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u6700\u521d\u306e\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u3092\u4f5c\u6210\u3057\u305f\u5f8c\u3001\u7dca\u6025\u4e8b\u614b\u30df\u30c3\u30b7\u30e7\u30f3\u304c\u767a\u751f\u3057\u307e\u3059\u3002",
             no_radio_messages: "\u7121\u7dda\u30e1\u30c3\u30bb\u30fc\u30b8\u3092\u508d\u53d7\u3057\u3066\u3044\u307e\u305b\u3093\u3002",
@@ -12538,6 +12600,9 @@ Object.values || (Object.values = function (e) {
             foam_missing: "\uc18c\uc2e4\ub41c \uc591: %{amount}\ub9ac\ud130",
             foam_on_site: "\ud604\uc7a5: %{amount}\ub9ac\ud130",
             foam_selected: "\uc120\ud0dd\ud55c \uac70\ud488: %{amount}\ub9ac\ud130",
+            helpshift: {
+                confirm_close_bubble: "\uc815\ub9d0 \uc9c0\uc6d0 \ucc44\ud305\uc744 \uc885\ub8cc\ud558\uace0 \uc2f6\uc73c\uc2e0\uac00\uc694? \uc5b8\uc81c\ub4e0\uc9c0 \ub3c4\uc6c0\ub9d0 \uba54\ub274\uc5d0\uc11c \ub2e4\uc2dc \uc5f4 \uc218 \uc788\uc2b5\ub2c8\ub2e4."
+            },
             hours: "\uc2dc\uac04",
             location_not_found: "\ucc3e\uc744 \uc218 \uc5c6\uc74c",
             messages: "\uba54\uc2dc\uc9c0",
@@ -12601,7 +12666,7 @@ Object.values || (Object.values = function (e) {
             emergency: "\uc751\uae09 \uc0c1\ud669",
             finishing: "\uc644\ub8cc \uc911",
             join_alliance_infos: "\ub3d9\ub9f9\uc5d0 \uc18c\uc18d\ub41c \uc0c1\ud0dc\ub77c\uba74 \ub2e4\ub978 \ud50c\ub808\uc774\uc5b4\ub85c\ubd80\ud130 \uc784\ubb34\ub97c \uc790\uc720\ub86d\uac8c \ubc1b\uc744 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
-            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>\u2028iOS:\xa0%{ios_store_link}",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "\uc9c0\ub3c4",
             map_filters: {
                 all_buildings: "\uac74\ubb3c",
@@ -12934,6 +12999,9 @@ Object.values || (Object.values = function (e) {
             foam_missing: "Lipsesc: %{amount} l.",
             foam_on_site: "La fa\u021ba locului: %{amount} l.",
             foam_selected: "Selecta\u021bi: %{amount} l.",
+            helpshift: {
+                confirm_close_bubble: "Chiar vre\u021bi s\u0103 renun\u021ba\u021bi la chat-ul de asisten\u021b\u0103? \xcel pute\u021bi redeschide oric\xe2nd din meniul de ajutor"
+            },
             hours: "H",
             location_not_found: "Nu a fost g\u0103sit",
             messages: "Mesaje",
@@ -12994,7 +13062,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Urgen\u021b\u0103",
             finishing: "\xcen finalizare",
             join_alliance_infos: "Dac\u0103 faci parte dintr-o alian\u021b\u0103, al\u021bi juc\u0103tori \xee\u021bi pot \xeencredin\u021ba misiuni dac\u0103 doresc.",
-            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>\u2028iOS:\xa0%{ios_store_link}",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Hart\u0103",
             map_filters: {
                 all_buildings: "Cl\u0103diri",
@@ -13316,6 +13384,9 @@ Object.values || (Object.values = function (e) {
             foam_missing: "Puuttuu: %{amount} l vaahtoa",
             foam_on_site: "Kohteessa: %{amount} l vaahtoa",
             foam_selected: "Valittu: %{amount} l vaahtoa",
+            helpshift: {
+                confirm_close_bubble: "Haluatko todella hyl\xe4t\xe4 tukikeskustelun? Voit aina avata sen uudelleen ohje-valikosta."
+            },
             hours: "h",
             location_not_found: "Ei l\xf6ytynyt",
             messages: "Viestit",
@@ -13380,7 +13451,7 @@ Object.values || (Object.values = function (e) {
             emergency: "H\xe4t\xe4tilanne",
             finishing: "P\xe4\xe4ttym\xe4ss\xe4",
             join_alliance_infos: "Jos kuulut johonkin liittoutumaan, muut pelaajat voivat antaa sinulle teht\xe4vi\xe4.",
-            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>\u2028iOS:\xa0%{ios_store_link}",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Kartta",
             map_filters: {
                 all_buildings: "Rakennukset",
@@ -13426,7 +13497,7 @@ Object.values || (Object.values = function (e) {
             missions_filtered_out: "Jotkut teht\xe4v\xe4t voidaan suodattaa pois. Tarkista karttasuodattimet.",
             no_alliance_chat_impossible: "Chat on loistava tapa luoda yhteyksi\xe4 muihin kokeneempiin pelaajiin.\xa0He voivat sek\xe4 vastata kysymyksiisi ett\xe4 auttaa sinua antamalla sinulle p\xe4\xe4syn rakennuksiin, kuten sairaaloihin ja kouluihin.",
             no_alliance_missions: "Ei liittoutumateht\xe4vi\xe4",
-            no_alliance_missions_join: "Saat liittoumateht\xe4viin osallistumisesta krediittej\xe4 riippumatta siit\xe4, mink\xe4 tyyppisen (tai miten monta) ajoneuvon l\xe4het\xe4t.\u2028 Lis\xe4ksi, liittoumassa voit sek\xe4 jakaa omia teht\xe4vi\xe4si saadaksesi apua kokeneilta liittouman j\xe4senilt\xe4, ett\xe4 osallistua muiden yhteisiin teht\xe4viin saadaksesi hieman lis\xe4krediittej\xe4.",
+            no_alliance_missions_join: "Saat liittoumateht\xe4viin osallistumisesta krediittej\xe4 riippumatta siit\xe4, mink\xe4 tyyppisen (tai miten monta) ajoneuvon l\xe4het\xe4t. Lis\xe4ksi, liittoumassa voit sek\xe4 jakaa omia teht\xe4vi\xe4si saadaksesi apua kokeneilta liittouman j\xe4senilt\xe4, ett\xe4 osallistua muiden yhteisiin teht\xe4viin saadaksesi hieman lis\xe4krediittej\xe4.",
             no_ambulance_missions: "Ei ambulanssiteht\xe4vi\xe4 Ambulanssiteht\xe4vi\xe4 syntyy vain kun sinulla on ambulanssi ja sairaala.",
             no_emergency_missions: "Ei h\xe4t\xe4teht\xe4vi\xe4 H\xe4t\xe4teht\xe4vi\xe4 syntyy, kun olet rakentanut ensimm\xe4isen asemasi.",
             no_radio_messages: "Et ole saanut radioviestej\xe4.",
@@ -13754,6 +13825,9 @@ Object.values || (Object.values = function (e) {
             foam_missing: "Ch\xfdbaj\xface: %{amount} l.",
             foam_on_site: "Na mieste %{amount} l.",
             foam_selected: "Vybran\xe9: %{amount} l.",
+            helpshift: {
+                confirm_close_bubble: "Naozaj chcete zru\u0161i\u0165 chat s podporou? V\u017edy ho m\xf4\u017eete znovu otvori\u0165 v menu n\xe1povedy"
+            },
             hours: "H",
             location_not_found: "Nena\u0161lo sa",
             messages: "Spr\xe1vy",
@@ -13815,7 +13889,7 @@ Object.values || (Object.values = function (e) {
             emergency: "Mimoriadna udalos\u0165",
             finishing: "Prebieha dokon\u010dovanie",
             join_alliance_infos: "Ak ste v aliancii, ostatn\xed hr\xe1\u010di v\xe1m m\xf4\u017eu zadarmo d\xe1va\u0165 misie.",
-            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>\u2028iOS:\xa0%{ios_store_link}",
+            legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Mapa",
             map_filters: {
                 all_buildings: "Budovy",
