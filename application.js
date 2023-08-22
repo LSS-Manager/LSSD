@@ -2136,7 +2136,12 @@ function lightboxClose() {
             "#lightbox_background")
         .hide(), $("#lightbox_box")
         .hide(), $("#lightbox_iframe_" + iframe_lightbox_number)
-        .hide(), iframe_lightbox_number += 1, tutorial.callLightBoxCloseListener()
+        .hide(), iframe_lightbox_number += 1, tutorial.callLightBoxCloseListener(),
+        shouldReloadAfterIFrameClose && page_reload()
+}
+
+function scheduleReloadAfterLightboxClose() {
+    tellParent("shouldReloadAfterIFrameClose = true")
 }
 
 function distance(e, t, i, n) {
@@ -2307,12 +2312,12 @@ function checkDesign(e) {
             .removeClass("dark", 500), "undefined" != typeof mapkit && (map.colorScheme = mapkit.Map
                 .ColorSchemes.Light)) : ($("body")
             .addClass("dark", 500), "undefined" != typeof mapkit && (map.colorScheme = mapkit.Map.ColorSchemes
-                .Dark)), 2 != e || $("body")
-        .hasClass("bright") ? 2 != e && $("body")
-        .hasClass("bright") && $("body")
-        .removeClass("bright", 500) : ($("body")
+                .Dark)), 2 == e || 6 == e && !$("body")
+        .hasClass("bright") ? ($("body")
             .addClass("bright", 500), "undefined" != typeof mapkit && (map.colorScheme = mapkit.Map
-                .ColorSchemes.Light))
+                .ColorSchemes.Light)) : (2 != e || 6 != e && $("body")
+            .hasClass("bright")) && $("body")
+        .removeClass("bright", 500)
 }
 
 function tellParent(e) {
@@ -2884,6 +2889,29 @@ function validateNumberInput(e) {
     }))
 }
 
+function save_settings(e, t, i) {
+    e.html(I18n.t("common.loading")), $.ajax({
+        url: i,
+        type: "post",
+        data: t,
+        success: function (t) {
+            e.html(t)
+        },
+        error: function () {}
+    })
+}
+
+function page_reload() {
+    $.ajax({
+        url: $(this)
+            .attr("href"),
+        cache: !1,
+        success: function () {
+            tellParent("location.reload();")
+        }
+    })
+}
+
 function callOnLightbox(e) {
     $("#lightbox_iframe_" + iframe_lightbox_number)
         .each((function () {
@@ -3149,6 +3177,59 @@ function currentMarkerTypeFilterTurnedOn(e) {
         })),
         i = null != t ? t.checked : "undefined";
     return "undefined" === i || i
+}
+async function submitHelpshiftState(e, t) {
+    var i = new FormData;
+    i.append("visible", e), i.append("loaded", t), await fetch("/helpshift/state", {
+        method: "POST",
+        body: i
+    })
+}
+async function dismissHelpshift() {
+    confirm(I18n.t("javascript.helpshift.confirm_close_bubble")) && (document.getElementById(
+            "helpshift-close-button")
+        .style.display = "none", Helpshift("hide"), await submitHelpshiftState(!1, !1))
+}
+async function showHelpshift(e) {
+    var t = await fetch("/helpshift/state", {
+        method: "GET"
+    });
+    if (403 === t.status) return console.log("Helpshift not available on this server"), !1;
+    var i = await t.json(),
+        n = i.visible;
+    return e && (n = !0), await activateHelpshift(i.helpshiftConfig, n), await submitHelpshiftState(n, !
+        0), !1
+}
+async function activateHelpshift(e, t) {
+    if (window.helpshiftConfig = e, "function" == typeof window.Helpshift) return Helpshift(
+            "updateHelpshiftConfig"), document.getElementById("helpshift-close-button")
+        .style.display = "block", Helpshift("show"), void(t ? Helpshift("open") : Helpshift("close"));
+    ! function (e, t) {
+        if ("function" != typeof window.Helpshift) {
+            var i = function () {
+                i.q.push(arguments)
+            };
+            i.q = [], window.Helpshift = i;
+            var n, o = e.getElementsByTagName("script")[0];
+            if (e.getElementById(t)) return;
+            (n = e.createElement("script"))
+            .async = !0, n.id = t, n.src = "https://webchat.helpshift.com/latest/webChat.js";
+            var s = function () {
+                window.Helpshift("init")
+            };
+            window.attachEvent ? n.attachEvent("onload", s) : n.addEventListener("load", s, !1), o
+                .parentNode.insertBefore(n, o)
+        } else window.Helpshift("update")
+    }(document, "hs-chat");
+    var i = document.createElement("img");
+    i.id = "helpshift-close-button", i.width = "100%", i.height = "100%", i.src =
+        "/images/helpshift-close.svg", i.onclick = dismissHelpshift, document.body.appendChild(i), window
+        .setTimeout((function () {
+            document.getElementById("helpshift-close-button")
+                .style.display = "block"
+        }), 1e3), Helpshift("addEventListener", "widgetToggle", (async function (e) {
+            await submitHelpshiftState(e.visible, !0)
+        })), t && Helpshift("open")
 }
 var map, alliance_member_buildings_show, geocoder, directionsService, building_eval_unload;
 Object.values || (Object.values = function (e) {
@@ -8927,7 +9008,7 @@ Object.values || (Object.values = function (e) {
             foam_on_site: "P\xe5 Stedet: %{amount} l.",
             foam_selected: "Valgte: %{amount} l.",
             helpshift: {
-                confirm_close_bubble: "Vil du virkelig lukke supportchatten? Du kan altid gen\xe5bne den fra hj\xe6lpemenuen"
+                confirm_close_bubble: "Vil du virkelig lukke supportchat? Du kan altid gen\xe5bne den fra hj\xe6lpemenuen"
             },
             hours: "T",
             location_not_found: "Ikke fundet",
@@ -36298,6 +36379,7 @@ var building_markers = Array(),
     apng_supported = !1,
     gameFlavour = null,
     i18nPrefix = null,
+    shouldReloadAfterIFrameClose = !1,
     isIframe = window.self !== window.top;
 $((function () {
     function onCoinsTop() {

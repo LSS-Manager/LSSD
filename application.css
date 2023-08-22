@@ -11944,6 +11944,14 @@ body.dodenherdenking .navbar-default .dropdown-menu {
     color: #fff
 }
 
+.settings_nav_bar .nav-tabs>li.settings.active>a,
+.settings_nav_bar .nav-tabs>li.settings.active>a:focus,
+.settings_nav_bar .nav-tabs>li.settings.active>a:hover {
+    background-image: none;
+    background-color: #c9302c;
+    color: #fff
+}
+
 .nav-tabs>li>a {
     background-color: #fff;
     border: 1px solid #ddd
@@ -12308,6 +12316,14 @@ body.dark .dropdown-menu a {
 
 body.dark .navbar-default {
     border-color: #000
+}
+
+.settings_nav_bar body.dark .nav-tabs>li.settings.active>a,
+.settings_nav_bar .nav-tabs>li.settings.active>a:focus,
+.settings_nav_bar .nav-tabs>li.settings.active>a:hover {
+    background-image: none;
+    background-color: #c9302c;
+    color: #fff
 }
 
 body.dark .btn-default {
@@ -17314,6 +17330,55 @@ body.dark .grid-container .grid-item .grid-item-text .line {
     margin-right: 8px
 }
 
+.settings form {
+    margin-right: 20px;
+    margin-left: 20px
+}
+
+.settings h2 {
+    padding-bottom: 15px;
+    margin-bottom: unset
+}
+
+.settings .select.optional {
+    padding-top: 7px;
+    max-width: 80%
+}
+
+.settings .integer.optional {
+    width: 80%;
+    padding-top: 7px
+}
+
+.settings .select-container {
+    display: flex;
+    flex-direction: column
+}
+
+.settings .select-container .integer.optional {
+    margin-bottom: 0
+}
+
+.settings .btn-success {
+    margin: 3px
+}
+
+.settings label {
+    margin-top: 10px
+}
+
+.settings label .integer.optional {
+    margin-bottom: 0
+}
+
+.settings .check-box-label {
+    font-weight: normal
+}
+
+.settings .settings-tab-body {
+    margin-bottom: 70px
+}
+
 /*
 * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
 *
@@ -18657,4 +18722,15 @@ i.bbcode-link-icon {
 
 .social-media-nav-icon {
     width: 19px
+}
+
+#helpshift-close-button {
+    width: 16px;
+    height: 16px;
+    position: fixed;
+    right: 16px;
+    bottom: 56px;
+    z-index: 9999999;
+    display: none;
+    cursor: pointer
 }
