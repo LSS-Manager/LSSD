@@ -713,7 +713,7 @@ function setTitle() {
 }
 
 function mapMoveToSearch() {
-    $.getJSON("https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" + $("#map_adress_search")
+    $.getJSON("https://reverse.missionchief.com/search?format=json&limit=1&q=" + $("#map_adress_search")
         .val(), (function (e) {
             e.length <= 0 ? alert(I18n.t("javascript.location_not_found")) : $.each(e, (function (e,
                 t) {
