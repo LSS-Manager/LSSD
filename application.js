@@ -3096,6 +3096,8 @@ function isValidDate(e, t) {
     return !1 === isNaN(a)
 }
 
+function associate_mission_with_group() {}
+
 function missionPositionMarkerAdd(e) {
     1 == mobile_bridge_use && mobileBridgeAdd("poi", [e])
 }
