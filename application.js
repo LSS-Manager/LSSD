@@ -7297,6 +7297,10 @@ Object.values || (Object.values = function (e) {
             to_mission: "Poka\u017c misj\u0119",
             understand: "Potwierd\u017a",
             user_not_found: "Nie znaleziono gracza.",
+            vehicle_payload: {
+                apply_payload: "Zastosuj \u0142adunek",
+                change_payload: "Zmie\u0144 \u0142adunek"
+            },
             vehicles_not_visible: "Pojazdy nie s\u0105 widoczne. ",
             water_approaching: "W drodze: %{amount} l.",
             water_missing: "Potrzebna: %{amount} l.",
@@ -7342,6 +7346,7 @@ Object.values || (Object.values = function (e) {
                 buildings_section: "Posterunki",
                 clinic_missions: "Klinika",
                 dispatch_center_missions: "Centrum Powiadamiania Ratunkowego",
+                fire_aviation: "Stacje samolot\xf3w ga\u015bniczych",
                 fire_school_missions: "Szko\u0142a Po\u017carnicza",
                 firehouse_missions: "Jednostka Ratowniczo-Ga\u015bnicza",
                 firehouse_small_missions: "Remiza",
@@ -7461,6 +7466,7 @@ Object.values || (Object.values = function (e) {
                 division_chief_unit: "Samoch\xf3d dowodzenia i \u0142\u0105czno\u015bci",
                 elw1_or_elw2: "SLOp lub Samoch\xf3d dowodzenia i \u0142\u0105czno\u015bci",
                 emergency_ambulance: "Ambulans lub \u015bmig\u0142owiec LPR",
+                fire_aviation_2: "Samolot ga\u015bniczy lub bambi bucket (jednostki powietrzne)",
                 fire_truck: "Samochody po\u017carnicze",
                 fireboat: "Du\u017ca \u0142\xf3d\u017a stra\u017cacka",
                 flood_equipment: "Sprz\u0119t przeciwpowodziowy",
@@ -7478,6 +7484,7 @@ Object.values || (Object.values = function (e) {
                 gw_taucher: "Samoch\xf3d SLRw",
                 gw_wasserrettung: "S.WOPR lub Quad",
                 gwl2wasser_only: "Samoch\xf3d w\u0119\u017cowy",
+                helicopter_bucket: "Bambi Bucket",
                 hems: "\u015amig\u0142owiec LPR",
                 hint: {
                     foam_amount: "Suma piany w litrach. Przyk\u0142ad: je\u015bli wpiszesz 10000 - wtedy zostanie wybranych tyle pojazd\xf3w, kt\xf3rych suma piany ga\u015bniczej wyniesie 10000 l.",
@@ -36598,7 +36605,8 @@ $((function () {
             .t("intervention_order.vehicles.water_amount_water_carrier")], [
             "water_amount_tlf_water_carrier", I18n.t(
                 "intervention_order.vehicles.water_amount_tlf_water_carrier")], [
-            "search_and_rescue", I18n.t("intervention_order.vehicles.search_and_rescue")]], $(
+            "search_and_rescue", I18n.t("intervention_order.vehicles.search_and_rescue")], [
+            "fire_aviation_2", I18n.t("intervention_order.vehicles.fire_aviation_2")]], $(
             "#restore_map")
         .click((function () {
             mapViewRestore()

@@ -16742,11 +16742,6 @@ a.chat-username-dark.label-default {
     font-weight: bold
 }
 
-.card .row .caption-name {
-    font-weight: bold;
-    font-size: 120%
-}
-
 .card .row .body {
     margin-left: 5px
 }
@@ -16916,6 +16911,11 @@ body.dark .card .row .col-xs-5 .btn {
     background-color: #323232;
     background-image: none;
     color: #dcdcdc
+}
+
+.caption-name {
+    font-weight: bold;
+    font-size: 120%
 }
 
 .arrow {
@@ -17377,6 +17377,10 @@ body.dark .grid-container .grid-item .grid-item-text .line {
 
 .settings .settings-tab-body {
     margin-bottom: 70px
+}
+
+.w-full-force {
+    width: 100% !important
 }
 
 /*
