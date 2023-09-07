@@ -4208,6 +4208,7 @@ Object.values || (Object.values = function (e) {
             user_not_found: "The player was not found.",
             vehicle_payload: {
                 apply_payload: "Apply Payload",
+                change_payload: "Change Payload",
                 equipment_unavailable: "Equipment unavailable"
             },
             vehicles_not_visible: "Vehicles not visible. ",
