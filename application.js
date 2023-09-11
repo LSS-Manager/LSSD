@@ -2680,9 +2680,10 @@ function bigMapWindowPositionSave() {
 
 function bigMapWindowPositionRestore() {
     var e = mc_storage.get(STORAGE_KEY_BIG_MAP_WINDOW_POSITIONS);
-    void 0 !== e && (bigMapWindowPositionRestoreWindow($("#missions_outer"), e.m),
+    void 0 !== e ? (bigMapWindowPositionRestoreWindow($("#missions_outer"), e.m),
             bigMapWindowPositionRestoreWindow($("#buildings_outer"), e.b), bigMapWindowPositionRestoreWindow(
-                $("#chat_outer"), e.c), bigMapWindowPositionRestoreWindow($("#radio_outer"), e.r)),
+                $("#chat_outer"), e.c), bigMapWindowPositionRestoreWindow($("#radio_outer"), e.r)) : (
+            bigMapMenuOpen($("#buildings_outer")), bigMapMenuOpen($("#missions_outer"))),
         bigMapWindowSizeChanged(), buildingsVehicleLoadVisible()
 }
 
