@@ -4875,6 +4875,10 @@ Object.values || (Object.values = function (e) {
             to_mission: "View Mission",
             understand: "Acknowledge",
             user_not_found: "The player was not found.",
+            vehicle_payload: {
+                apply_payload: "Apply Payload",
+                change_payload: "Change Payload"
+            },
             vehicles_not_visible: "Vehicles not visible. ",
             water_pumping_process: "Water pumping process"
         },
@@ -4937,6 +4941,7 @@ Object.values || (Object.values = function (e) {
                 riot_police: "Riot Police",
                 riot_police_missions: "Riot Police",
                 staging_area_missions: "Staging Area",
+                technical_aid: "Search and Rescue HQ",
                 technical_aid_organization: "THW",
                 technical_aid_organization_school: "THW Bundesschule",
                 user_buildings: "My buildings",
@@ -5001,6 +5006,7 @@ Object.values || (Object.values = function (e) {
                 saved: "Alarm and Response Regulations Exports",
                 saved_text: "Your Alarm and Response Regulation has been prepared for export. Via the link another player can import the Alarm and Response Regulation. If you change your Alarm and Response Regualtion in the meantime, this change will automatically be applied in the export."
             },
+            flood_equipment: "Flood Rescue Units",
             hotkey_hint: "Choose a hotkey for this vehicle selection. Press at your window mission: ALT + your hotkey (or at Firefox: ALT + SHIFT + your hotkey or at mac os: ctrl + alt + your hotkey) to choose your vehicle selection.",
             intervention_order: "Edit Alarm and Response Regulations",
             name: "Name",
@@ -5038,6 +5044,7 @@ Object.values || (Object.values = function (e) {
                 emergency_welfare: "Any Crew Welfare Vehicle",
                 fire_truck: "Fire engines",
                 fireboat: "Large Fireboat",
+                flood_equipment: "Flood Rescue",
                 fly_car: "Rapid Response Vehicle / General Practitioner",
                 foam: "Foam Tenders or RIV",
                 gkw: "Utility Truck",
@@ -5045,7 +5052,7 @@ Object.values || (Object.values = function (e) {
                 gw_gefahrgut: "HazMat Unit or CBRN Vehicle",
                 gw_hoehenrettung: "GW-H\xf6henrettung",
                 gw_messtechnik: "GW-Messtechnik",
-                gw_wasserrettung: "Water Retention",
+                gw_wasserrettung: "4x4 Units",
                 gwl2wasser: "Water Carrier or Major Foam Tender",
                 gwl2wasser_only: "Hose Vehicle",
                 hems: "HEMS",
@@ -5073,6 +5080,7 @@ Object.values || (Object.values = function (e) {
                 rescueboat: "Large Rescue Boat",
                 rth_only: "HEMS",
                 schlauchwagen: "Water Carrier",
+                search_and_rescue: "SAR Units",
                 swat: "Armed Response Vehicle",
                 swat_suv: "Armed Response Vehicle (ARV)",
                 thw_mtw: "Mannschaftstransportwagen Technischer Zug (MTW-TZ - THW)",
@@ -36608,8 +36616,8 @@ $((function () {
             "water_amount_tlf_water_carrier", I18n.t(
                 "intervention_order.vehicles.water_amount_tlf_water_carrier")], [
             "search_and_rescue", I18n.t("intervention_order.vehicles.search_and_rescue")], [
-            "fire_aviation_2", I18n.t("intervention_order.vehicles.fire_aviation_2")]], $(
-            "#restore_map")
+            "fire_aviation_2", I18n.t("intervention_order.vehicles.fire_aviation_2")], [
+            "drone", I18n.t("intervention_order.vehicles.drone")]], $("#restore_map")
         .click((function () {
             mapViewRestore()
         })), $("#coins_top")
