@@ -4942,6 +4942,7 @@ Object.values || (Object.values = function (e) {
                 riot_police_missions: "Riot Police",
                 staging_area_missions: "Staging Area",
                 technical_aid: "Search and Rescue HQ",
+                technical_aid_missions: "SAR",
                 technical_aid_organization: "THW",
                 technical_aid_organization_school: "THW Bundesschule",
                 user_buildings: "My buildings",
