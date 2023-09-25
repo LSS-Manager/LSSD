@@ -17383,6 +17383,21 @@ body.dark .grid-container .grid-item .grid-item-text .line {
     width: 100% !important
 }
 
+.label-speedbutton {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.25rem;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0;
+    padding-bottom: 0
+}
+
+.label-speedbutton .glyphicon {
+    top: 0;
+    bottom: 0
+}
+
 /*
 * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
 *

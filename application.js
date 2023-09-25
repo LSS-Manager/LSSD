@@ -2041,9 +2041,41 @@ function rand(e, t) {
 }
 
 function missionSpeed(e) {
-    mission_speed = e, 6 == mission_speed ? $("#mission_speed_pause")
-        .show() : $("#mission_speed_pause")
-        .hide()
+    if (mission_speed = e, 6 == mission_speed) $("#mission_speed_pause")
+        .show(), $("#mission_speed_play")
+        .hide();
+    else {
+        var t = "";
+        switch (mission_speed) {
+        case 0:
+            t = "0.33x";
+            break;
+        case 1:
+            t = "1x";
+            break;
+        case 2:
+            t = "2x";
+            break;
+        case 3:
+            t = "3x";
+            break;
+        case 4:
+            t = "0.2x";
+            break;
+        case 5:
+            t = "0.1x";
+            break;
+        case 7:
+            t = "0.5x";
+            break;
+        case 8:
+            t = "0.14x"
+        }
+        $("#mission_speed_value_label")
+            .text(t), $("#mission_speed_pause")
+            .hide(), $("#mission_speed_play")
+            .show()
+    }
 }
 
 function missionRequest() {
@@ -2928,9 +2960,10 @@ function openHelpshiftArticle(e, t) {
 
 function flashHighlightById(e) {
     var t = document.getElementById(e);
-    t.classList.add("background-flash"), t.addEventListener("animationend", (function () {
-        t.classList.remove("background-flash")
-    }))
+    t.classList.add("background-flash"),
+        t.addEventListener("animationend", (function () {
+            t.classList.remove("background-flash")
+        }))
 }
 
 function showCoinsPopup(e) {
@@ -5039,6 +5072,7 @@ Object.values || (Object.values = function (e) {
                 coresponder: "Co-Responder Vehicle",
                 crew_carrier: "Crew Carrier",
                 division_chief_unit: "ICCU",
+                drone: "Drone Equipment",
                 elw1_or_elw2: "Fire Officer or ICCU",
                 elw2_or_ab_elw: "ICCU / ACU",
                 emergency_ambulance: "Emergency ambulance or Helicopter",
