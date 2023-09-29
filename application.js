@@ -36652,6 +36652,7 @@ $((function () {
                 "intervention_order.vehicles.water_amount_tlf_water_carrier")], [
             "search_and_rescue", I18n.t("intervention_order.vehicles.search_and_rescue")], [
             "fire_aviation_2", I18n.t("intervention_order.vehicles.fire_aviation_2")], [
+            "technical_rescue", I18n.t("intervention_order.vehicles.technical_rescue")], [
             "drone", I18n.t("intervention_order.vehicles.drone")]], $("#restore_map")
         .click((function () {
             mapViewRestore()
