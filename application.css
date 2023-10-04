@@ -11724,6 +11724,18 @@ fieldset[disabled] .btn-danger:hover {
     color: #fff
 }
 
+.premium_item_save {
+    background-color: #5bb75b;
+    font-size: 10px;
+    line-height: 12px;
+    padding: 4px;
+    margin-left: -5px;
+    position: absolute;
+    transform: rotate(-5deg);
+    transform-origin: left;
+    color: #fff
+}
+
 .building-title {
     display: flex;
     align-items: center;
