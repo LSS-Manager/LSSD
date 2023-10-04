@@ -6440,7 +6440,7 @@ Object.values || (Object.values = function (e) {
             categories: {
                 bereitschaftspolizei: "Riot Police",
                 brush: "Bushfire",
-                coastal_rescue: "MVR",
+                coastal_rescue: "VMR",
                 firefighting: "Firefighting",
                 police: "Police",
                 rescue: "Rescue",
