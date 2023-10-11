@@ -764,7 +764,7 @@ function buildingMarkerReset() {
             })), $.each(building_timers, (function (e, t) {
             window.clearTimeout(t)
         })), mobile_bridge_use && mobileBridgeAdd("building_remove_all", {}), building_markers = Array(),
-        building_markers_cache = Array()
+        building_markers_cache = Array(), buildingMarkerBulkContentCache = []
 }
 
 function iconAnchorCalculate(e) {
@@ -2960,10 +2960,9 @@ function openHelpshiftArticle(e, t) {
 
 function flashHighlightById(e) {
     var t = document.getElementById(e);
-    t.classList.add("background-flash"),
-        t.addEventListener("animationend", (function () {
-            t.classList.remove("background-flash")
-        }))
+    t.classList.add("background-flash"), t.addEventListener("animationend", (function () {
+        t.classList.remove("background-flash")
+    }))
 }
 
 function showCoinsPopup(e) {

@@ -17410,6 +17410,10 @@ body.dark .grid-container .grid-item .grid-item-text .line {
     bottom: 0
 }
 
+.navbar {
+    color: #fff
+}
+
 /*
 * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
 *
