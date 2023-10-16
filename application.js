@@ -3121,7 +3121,7 @@ function isValidDate(e, t) {
             o[0] + "-" + o[1]
     }
     if ("Y" === n[0].toUpperCase() || "YY" === n[0].toUpperCase() || "YYYY" === n[0].toUpperCase()) {
-        if (2 !== o[0].length || 4 !== o[0].length) return !1;
+        if (2 !== o[0].length && 4 !== o[0].length) return !1;
         1 === o[2].length && (o[2] = "0" + o[2]), 1 === o[1].length && (o[1] = "0" + o[1]), s = o[0] + "-" +
             o[1] + "-" + o[2]
     }
@@ -3265,6 +3265,258 @@ async function activateHelpshift(e, t) {
         }), 1e3), Helpshift("addEventListener", "widgetToggle", (async function (e) {
             await submitHelpshiftState(e.visible, !0)
         })), t && Helpshift("open")
+}
+
+function initEquipment() {
+    initVehiclesEquipment($(".dispatch-vehicle-equipments-container")
+        .map((function () {
+            return $(this)
+                .data("vehicle-id")
+        }))
+        .get())
+}
+
+function initVehiclesEquipment(e) {
+    function t(e) {
+        n = o.flatMap((function (e) {
+                return e.state.equipments
+            }))
+            .filter((function (e) {
+                return e.applied
+            }))
+            .map((function (e) {
+                return e.id
+            })), o.filter((function (t) {
+                return t.vehicleId !== e
+            }))
+            .forEach((function (e) {
+                e.state.equipments.filter((function (e) {
+                        return !e.applied && n.includes(e.id)
+                    }))
+                    .forEach((function (e) {
+                        e.selected = !1
+                    })), e.updateSelectedEquipment()
+            }))
+    }
+
+    function i(e, t) {
+        function i() {
+            o(), s(), a()
+        }
+
+        function o() {
+            Object.values(m.containersByTab)
+                .forEach((function (e) {
+                    var t = e.querySelector(".change-payload-btn"),
+                        i = e.querySelector(".apply-payload-btn"),
+                        n = e.querySelector(".dispatch-vehicle-equipments");
+                    m.isEditMode ? (t.classList.add("hidden"), i.classList.remove("hidden"), n
+                        .classList.remove("hidden")) : (t.classList.remove("hidden"), i.classList
+                        .add("hidden"), n.classList.add("hidden"))
+                }))
+        }
+
+        function s() {
+            var e = m.getSelectedEquipmentsSize();
+            Object.values(m.containersByTab)
+                .forEach((function (t) {
+                    const i = t.querySelector(".capacity-used-amount");
+                    i.textContent !== e && (i.textContent = e), m.equipments.forEach((function (e) {
+                        var i = t.querySelector(
+                            '.equipment-checkbox[data-equipment-id="' + e.id + '"]');
+                        i.checked = e.selected, i.disabled = !e.isSelectPossible()
+                    }))
+                })), l(), r()
+        }
+
+        function a() {
+            Object.values(m.containersByTab)
+                .forEach((function (e) {
+                    m.equipments.forEach((function (t) {
+                        e.querySelector('.equipment-input[data-equipment-id="' + t.id +
+                                '"]')
+                            .disabled = !t.selected
+                    }))
+                }))
+        }
+
+        function r() {
+            Object.values(m.containersByTab)
+                .forEach((function (e) {
+                    var t = e.querySelector(".payload-error-indicator");
+                    m.hasUnavailableSelectedEquipments() ? t.classList.remove("hidden") : t.classList
+                        .add("hidden")
+                }))
+        }
+
+        function l() {
+            var e = m.isApplyPossible(),
+                t = e ? I18n.t("javascript.vehicle_payload.apply_payload") : I18n.t(
+                    "javascript.vehicle_payload.equipment_unavailable");
+            Object.values(m.containersByTab)
+                .forEach((function (i) {
+                    var n = i.querySelector(".apply-payload-btn");
+                    e ? n.classList.remove("disabled") : n.classList.add("disabled"), n.textContent =
+                        t
+                }))
+        }
+
+        function c() {
+            var e = m.equipments.filter((function (e) {
+                    return e.applied
+                }))
+                .map((function (e) {
+                    return e.id
+                })),
+                t = aao_types.map((function (e) {
+                    return e[0]
+                }));
+            $.ajax({
+                url: "/vehicles/" + m.vehicleId + "/aao_settings",
+                dataType: "json",
+                data: {
+                    applied_equipment_ids: e
+                },
+                success: function (e) {
+                    var i = $("#vehicle_checkbox_" + m.vehicleId)[0],
+                        n = Array.from(i.attributes)
+                        .map((function (e) {
+                            return e.name
+                        }))
+                        .filter((function (e) {
+                            return t.includes(e) || "data-equipment-types" === e
+                        })),
+                        o = Object.keys(e)
+                        .filter((function (e) {
+                            return t.includes(e) || "data-equipment-types" === e
+                        }));
+                    n.forEach((function (e) {
+                        i.removeAttribute(e)
+                    })), o.forEach((function (t) {
+                        i.setAttribute(t, e[t])
+                    }));
+                    var s = [].concat(n, o),
+                        a = Array.from(new Set(s));
+                    Array.from(document.querySelectorAll(".aao"))
+                        .filter((function (e) {
+                            return a.some((function (t) {
+                                return "1" === e.getAttribute(t)
+                            }))
+                        }))
+                        .map((function (e) {
+                            return e.getAttribute("aao_id")
+                        }))
+                        .forEach((function (e) {
+                            aao_available(e, !0)
+                        })), calculateWaterBar(m.equipments.filter((function (e) {
+                            return e.applied
+                        })))
+                }
+            })
+        }
+
+        function u(e) {
+            var t = $(".vehicle_checkbox[value=" + e + "]");
+            t.prop("checked", !0), handleVehicleSelect(t)
+        }
+        var d = $('.dispatch-vehicle-equipments-container[data-vehicle-id="' + e + '"]'),
+            h = "2" === $("#vehicle_checkbox_" + e)
+            .attr("fms"),
+            p = "true" === $("#vehicle_checkbox_" + e)
+            .attr("at_staging_area"),
+            m = {
+                vehicleId: e,
+                totalCapacity: parseInt(d.find(".capacity-total-amount")
+                    .text()),
+                isEditMode: !1,
+                containersByTab: {
+                    all: d[0]
+                },
+                equipments: d.find(".equipment-checkbox")
+                    .map((function () {
+                        var e = $(this),
+                            t = e.data("equipment-in-use"),
+                            i = e.data("equipment-is-default"),
+                            o = e.data("equipment-is-equiped"),
+                            s = i && h || o;
+                        return {
+                            id: e.data("equipment-id"),
+                            size: e.data("equipment-size"),
+                            isDefault: i,
+                            inUse: t,
+                            selected: s,
+                            applied: s,
+                            missionValues: e.data("mission-values"),
+                            isSelectPossible: function () {
+                                return !p && (!(this.inUse && !this.isDefault) && (!!this
+                                    .selected || !(n.includes(this.id) && !this
+                                    .applied) && !(this.size > m.getFreeCapacity())))
+                            }
+                        }
+                    }))
+                    .get(),
+                getFreeCapacity: function () {
+                    return m.totalCapacity - m.getSelectedEquipmentsSize()
+                },
+                getSelectedEquipmentsSize: function () {
+                    return this.equipments.filter((function (e) {
+                            return e.selected
+                        }))
+                        .map((function (e) {
+                            return e.size
+                        }))
+                        .reduce((function (e, t) {
+                            return e + t
+                        }), 0)
+                },
+                hasUnavailableDefaultEquipments: function () {
+                    return this.equipments.filter((function (e) {
+                            return e.applied
+                        }))
+                        .some((function (e) {
+                            return e.isDefault && e.inUse
+                        }))
+                },
+                hasUnavailableSelectedEquipments: function () {
+                    return this.equipments.some((function (e) {
+                        return e.selected && e.isDefault && e.inUse
+                    }))
+                },
+                isApplyPossible() {
+                    return !this.hasUnavailableSelectedEquipments()
+                }
+            };
+        return i(), d.find(".change-payload-btn")
+            .click((function (e) {
+                e.preventDefault(), m.isEditMode = !0, o()
+            })), d.find(".apply-payload-btn")
+            .click((function (e) {
+                e.preventDefault();
+                var i = m.equipments.some((function (e) {
+                    return e.selected !== e.applied
+                }));
+                m.equipments.forEach((function (e) {
+                    e.applied = e.selected
+                })), m.isEditMode = !1, o(), a(), t(m.vehicleId), i && u(m.vehicleId), c()
+            })), d.find(".equipment-checkbox")
+            .on("change", (function () {
+                $this = $(this), m.equipments.find((function (e) {
+                        return e.id === $this.data("equipment-id")
+                    }))
+                    .selected = $this.is(":checked"), s()
+            })), {
+                state: m,
+                updateSelectedEquipment: s
+            }
+    }
+    var n = [];
+    e.forEach((function (e) {
+        vehicleData = i(e, t), vehiclesEquipmentDataById[e] = vehicleData
+    }));
+    var o = Object.values(vehiclesEquipmentDataById);
+    o.forEach((function (e) {
+        t(e.state.vehicleId)
+    }))
 }
 var map, alliance_member_buildings_show, geocoder, directionsService, building_eval_unload;
 Object.values || (Object.values = function (e) {
@@ -14710,13 +14962,13 @@ Object.values || (Object.values = function (e) {
             })), Yt = ue.now()
         }
 
-        function F(e, t, i) {
+        function $(e, t, i) {
             for (var n, o = (ii[t] || [])
                     .concat(ii["*"]), s = 0, a = o.length; s < a; s++)
                 if (n = o[s].call(i, t, e)) return n
         }
 
-        function $(e, t, i) {
+        function F(e, t, i) {
             var n, o, s = 0,
                 a = ti.length,
                 r = ue.Deferred()
@@ -14755,7 +15007,7 @@ Object.values || (Object.values = function (e) {
                 u = c.props;
             for (B(u, c.opts.specialEasing); s < a; s++)
                 if (n = ti[s].call(c, e, u, c.opts)) return n;
-            return ue.map(u, F, c), ue.isFunction(c.opts.start) && c.opts.start.call(e, c), ue.fx.timer(ue
+            return ue.map(u, $, c), ue.isFunction(c.opts.start) && c.opts.start.call(e, c), ue.fx.timer(ue
                     .extend(l, {
                         elem: e,
                         anim: c,
@@ -14809,7 +15061,7 @@ Object.values || (Object.values = function (e) {
                     })), c.done((function () {
                         var t;
                         for (t in ue._removeData(e, "fxshow"), u) ue.style(e, t, u[t])
-                    })), u) a = F(h ? p[n] : 0, n, c), n in p || (p[n] = a.start, h && (a.end = a.start, a
+                    })), u) a = $(h ? p[n] : 0, n, c), n in p || (p[n] = a.start, h && (a.end = a.start, a
                     .start = "width" === n || "height" === n ? 1 : 0))
         }
 
@@ -15207,7 +15459,7 @@ Object.values || (Object.values = function (e) {
                                 if (o[2]) return oe.apply(i, t.getElementsByTagName(e)), i;
                                 if ((a = o[3]) && T.getElementsByClassName && t.getElementsByClassName)
                                 return oe.apply(i, t.getElementsByClassName(a)), i
-                            } if (T.qsa && (!F || !F.test(e))) {
+                            } if (T.qsa && (!$ || !$.test(e))) {
                             if (d = u = W, h = t, p = 9 === r && e, 1 === r && "object" !== t.nodeName
                                 .toLowerCase()) {
                                 for (c = f(e), (u = t.getAttribute("id")) ? d = u.replace(Se, "\\$&") : t
@@ -15480,7 +15732,7 @@ Object.values || (Object.values = function (e) {
                 }
 
                 function z() {}
-                var S, T, A, E, P, j, M, I, D, N, O, L, R, F, $, B, H, W = "sizzle" + -new Date,
+                var S, T, A, E, P, j, M, I, D, N, O, L, R, $, F, B, H, W = "sizzle" + -new Date,
                     V = e.document,
                     q = 0,
                     U = 0,
@@ -15618,27 +15870,27 @@ Object.values || (Object.values = function (e) {
                             }, E.find.CLASS = T.getElementsByClassName && function (e, t) {
                                 if (typeof t.getElementsByClassName !== Q && R) return t
                                     .getElementsByClassName(e)
-                            }, $ = [], F = [], (T.qsa = n(t.querySelectorAll)) && (a((function (e) {
+                            }, F = [], $ = [], (T.qsa = n(t.querySelectorAll)) && (a((function (e) {
                                 e.innerHTML =
                                     "<select><option selected=''></option></select>", e
                                     .querySelectorAll("[selected]")
-                                    .length || F.push("\\[" + le + "*(?:value|" + re + ")"), e
+                                    .length || $.push("\\[" + le + "*(?:value|" + re + ")"), e
                                     .querySelectorAll(":checked")
-                                    .length || F.push(":checked")
+                                    .length || $.push(":checked")
                             })), a((function (e) {
                                 var i = t.createElement("input");
                                 i.setAttribute("type", "hidden"), e.appendChild(i)
                                     .setAttribute("t", ""), e.querySelectorAll("[t^='']")
-                                    .length && F.push("[*^$]=" + le + "*(?:''|\"\")"), e
+                                    .length && $.push("[*^$]=" + le + "*(?:''|\"\")"), e
                                     .querySelectorAll(":enabled")
-                                    .length || F.push(":enabled", ":disabled"), e
-                                    .querySelectorAll("*,:x"), F.push(",.*:")
+                                    .length || $.push(":enabled", ":disabled"), e
+                                    .querySelectorAll("*,:x"), $.push(",.*:")
                             }))), (T.matchesSelector = n(B = L.webkitMatchesSelector || L
                                 .mozMatchesSelector || L.oMatchesSelector || L.msMatchesSelector)) && a((
                                 function (e) {
-                                    T.disconnectedMatch = B.call(e, "div"), B.call(e, "[s!='']:x"), $
+                                    T.disconnectedMatch = B.call(e, "div"), B.call(e, "[s!='']:x"), F
                                         .push("!=", pe)
-                                })), F = F.length && new RegExp(F.join("|")), $ = $.length && new RegExp($
+                                })), $ = $.length && new RegExp($.join("|")), F = F.length && new RegExp(F
                                 .join("|")), H = n(L.contains) || L.compareDocumentPosition ? function (e,
                                 t) {
                                 var i = 9 === e.nodeType ? e.documentElement : e,
@@ -15680,7 +15932,7 @@ Object.values || (Object.values = function (e) {
                         return i(e, null, null, t)
                     }, i.matchesSelector = function (e, t) {
                         if ((e.ownerDocument || e) !== O && N(e), t = t.replace(ve, "='$1']"), T
-                            .matchesSelector && R && (!$ || !$.test(t)) && (!F || !F.test(t))) try {
+                            .matchesSelector && R && (!F || !F.test(t)) && (!$ || !$.test(t))) try {
                             var n = B.call(e, t);
                             if (n || T.disconnectedMatch || e.document && 11 !== e.document.nodeType)
                                 return n
@@ -16614,8 +16866,8 @@ Object.values || (Object.values = function (e) {
                 }));
         var Le = /^(?:input|select|textarea)$/i,
             Re = /^key/,
-            Fe = /^(?:mouse|contextmenu)|click/,
-            $e = /^(?:focusinfocus|focusoutblur)$/,
+            $e = /^(?:mouse|contextmenu)|click/,
+            Fe = /^(?:focusinfocus|focusoutblur)$/,
             Be = /^([^.]*)(?:\.(.+)|)$/;
         ue.event = {
             global: {},
@@ -16678,7 +16930,7 @@ Object.values || (Object.values = function (e) {
                 var a, r, l, c, u, d, h, p = [o || Y],
                     m = le.call(i, "type") ? i.type : i,
                     f = le.call(i, "namespace") ? i.namespace.split(".") : [];
-                if (l = d = o = o || Y, 3 !== o.nodeType && 8 !== o.nodeType && !$e.test(m + ue.event
+                if (l = d = o = o || Y, 3 !== o.nodeType && 8 !== o.nodeType && !Fe.test(m + ue.event
                         .triggered) && (m.indexOf(".") >= 0 && (f = m.split("."), m = f.shift(), f
                             .sort()), r = m.indexOf(":") < 0 && "on" + m, (i = i[ue.expando] ? i :
                             new ue.Event(m, "object" == typeof i && i))
@@ -16688,7 +16940,7 @@ Object.values || (Object.values = function (e) {
                         .makeArray(n, [i]), u = ue.event.special[m] || {}, s || !u.trigger || !1 !== u
                         .trigger.apply(o, n))) {
                     if (!s && !u.noBubble && !ue.isWindow(o)) {
-                        for (c = u.delegateType || m, $e.test(c + m) || (l = l.parentNode); l; l = l
+                        for (c = u.delegateType || m, Fe.test(c + m) || (l = l.parentNode); l; l = l
                             .parentNode) p.push(l), d = l;
                         d === (o.ownerDocument || Y) && p.push(d.defaultView || d.parentWindow || e)
                     }
@@ -16753,7 +17005,7 @@ Object.values || (Object.values = function (e) {
                 var t, i, n, o = e.type,
                     s = e,
                     a = this.fixHooks[o];
-                for (a || (this.fixHooks[o] = a = Fe.test(o) ? this.mouseHooks : Re.test(o) ? this
+                for (a || (this.fixHooks[o] = a = $e.test(o) ? this.mouseHooks : Re.test(o) ? this
                         .keyHooks : {}), n = a.props ? this.props.concat(a.props) : this.props, e =
                     new ue.Event(s), t = n.length; t--;) e[i = n[t]] = s[i];
                 return e.target || (e.target = s.srcElement || Y), 3 === e.target.nodeType && (e
@@ -17646,8 +17898,8 @@ Object.values || (Object.values = function (e) {
             Ot = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
             Lt = /^(?:GET|HEAD)$/,
             Rt = /^\/\//,
-            Ft = /^([\w.+-]+:)(?:\/\/([^\/?#:]*)(?::(\d+)|)|)/,
-            $t = ue.fn.load,
+            $t = /^([\w.+-]+:)(?:\/\/([^\/?#:]*)(?::(\d+)|)|)/,
+            Ft = ue.fn.load,
             Bt = {},
             Ht = {},
             Wt = "*/".concat("*");
@@ -17657,8 +17909,8 @@ Object.values || (Object.values = function (e) {
             (Pt = Y.createElement("a"))
             .href = "", Pt = Pt.href
         }
-        Et = Ft.exec(Pt.toLowerCase()) || [], ue.fn.load = function (e, i, n) {
-            if ("string" != typeof e && $t) return $t.apply(this, arguments);
+        Et = $t.exec(Pt.toLowerCase()) || [], ue.fn.load = function (e, i, n) {
+            if ("string" != typeof e && Ft) return Ft.apply(this, arguments);
             var o, s, a, r = this,
                 l = e.indexOf(" ");
             return l >= 0 && (o = e.slice(l, e.length), e = e.slice(0, l)), ue.isFunction(i) ? (n = i, i =
@@ -17797,7 +18049,7 @@ Object.values || (Object.values = function (e) {
                     .replace(Rt, Et[1] + "//"), h.type = i.method || i.type || h.method || h.type,
                     h.dataTypes = ue.trim(h.dataType || "*")
                     .toLowerCase()
-                    .match(he) || [""], null == h.crossDomain && (o = Ft.exec(h.url
+                    .match(he) || [""], null == h.crossDomain && (o = $t.exec(h.url
                     .toLowerCase()), h.crossDomain = !(!o || o[1] === Et[1] && o[2] === Et[2] && (
                             o[3] || ("http:" === o[1] ? "80" : "443")) === (Et[3] || (
                             "http:" === Et[1] ? "80" : "443")))), h.data && h.processData &&
@@ -17988,7 +18240,7 @@ Object.values || (Object.values = function (e) {
                         o[2] : +o[2]), i
                 }]
             };
-        ue.Animation = ue.extend($, {
+        ue.Animation = ue.extend(F, {
                 tweener: function (e, t) {
                     ue.isFunction(e) ? (t = e, e = ["*"]) : e = e.split(" ");
                     for (var i, n = 0, o = e.length; n < o; n++) i = e[n], ii[i] = ii[i] || [], ii[i]
@@ -18053,7 +18305,7 @@ Object.values || (Object.values = function (e) {
                     var o = ue.isEmptyObject(e),
                         s = ue.speed(t, i, n),
                         a = function () {
-                            var t = $(this, ue.extend({}, e), s);
+                            var t = F(this, ue.extend({}, e), s);
                             a.finish = function () {
                                 t.stop(!0)
                             }, (o || ue._data(this, "finish")) && t.stop(!0)
@@ -23839,9 +24091,9 @@ Object.values || (Object.values = function (e) {
                 },
                 _generateHTML: function (e) {
                     var t, i, n, o, s, a, r, l, c, u, d, h, p, m, f, _, g, v, b, y, w, k, x,
-                        C, z, S, T, A, E, P, j, M, I, D, N, O, L, R, F, $ = new Date,
-                        B = this._daylightSavingAdjust(new Date($.getFullYear(), $.getMonth(),
-                            $.getDate())),
+                        C, z, S, T, A, E, P, j, M, I, D, N, O, L, R, $, F = new Date,
+                        B = this._daylightSavingAdjust(new Date(F.getFullYear(), F.getMonth(),
+                            F.getDate())),
                         H = this._get(e, "isRTL"),
                         W = this._get(e, "showButtonPanel"),
                         V = this._get(e, "hideIfNoPrevNext"),
@@ -23936,23 +24188,23 @@ Object.values || (Object.values = function (e) {
                                     "<td class='ui-datepicker-week-col'>" + this._get(e,
                                         "calculateWeek")(D) + "</td>" : "", w = 0; w < 7; w++)
                                     L = _ ? _.apply(e.input ? e.input[0] : null, [D]) : [!0,
-                                        ""], F = (R = D.getMonth() !== X) && !v || !L[0] ||
+                                        ""], $ = (R = D.getMonth() !== X) && !v || !L[0] ||
                                     J && D < J || Q && D > Q, O += "<td class='" + ((w + u +
                                         6) % 7 >= 5 ? " ui-datepicker-week-end" : "") + (R ?
                                         " ui-datepicker-other-month" : "") + (D.getTime() ===
                                         z.getTime() && X === e.selectedMonth && e._keyEvent ||
                                         b.getTime() === D.getTime() && b.getTime() === z
-                                        .getTime() ? " " + this._dayOverClass : "") + (F ?
+                                        .getTime() ? " " + this._dayOverClass : "") + ($ ?
                                         " " + this._unselectableClass + " ui-state-disabled" :
                                         "") + (R && !g ? "" : " " + L[1] + (D.getTime() === Y
                                         .getTime() ? " " + this._currentClass : "") + (D
                                         .getTime() === B.getTime() ?
                                         " ui-datepicker-today" : "")) + "'" + (R && !g || !L[
                                             2] ? "" : " title='" + L[2].replace(/'/g,
-                                        "&#39;") + "'") + (F ? "" :
+                                        "&#39;") + "'") + ($ ? "" :
                                         " data-handler='selectDay' data-event='click' data-month='" +
                                         D.getMonth() + "' data-year='" + D.getFullYear() + "'"
-                                        ) + ">" + (R && !g ? "&#xa0;" : F ?
+                                        ) + ">" + (R && !g ? "&#xa0;" : $ ?
                                         "<span class='ui-state-default'>" + D.getDate() +
                                         "</span>" : "<a class='ui-state-default" + (D
                                             .getTime() === B.getTime() ?
@@ -30678,12 +30930,12 @@ Object.values || (Object.values = function (e) {
                     if (!(oi.indexOf(e.target.tagName) < 0)) return;
                     ke(e)
                 }
-                $(e, t)
+                F(e, t)
             }));
             e["_leaflet_touchstart" + n] = o, e.addEventListener(ei, o, !1), ai || (document
                 .documentElement.addEventListener(ei, O, !0), document.documentElement
-                .addEventListener(ti, R, !0), document.documentElement.addEventListener(ii, F, !
-                0), document.documentElement.addEventListener(ni, F, !0), ai = !0)
+                .addEventListener(ti, R, !0), document.documentElement.addEventListener(ii, $, !
+                0), document.documentElement.addEventListener(ni, $, !0), ai = !0)
         }
 
         function O(e) {
@@ -30694,11 +30946,11 @@ Object.values || (Object.values = function (e) {
             si[e.pointerId] && (si[e.pointerId] = e)
         }
 
-        function F(e) {
+        function $(e) {
             delete si[e.pointerId], ri--
         }
 
-        function $(e, t) {
+        function F(e, t) {
             for (var i in e.touches = [], si) e.touches.push(si[i]);
             e.changedTouches = [e], t(e)
         }
@@ -30706,14 +30958,14 @@ Object.values || (Object.values = function (e) {
         function B(e, t, i) {
             var n = function (e) {
                 (e.pointerType !== e.MSPOINTER_TYPE_MOUSE && "mouse" !== e.pointerType || 0 !== e
-                    .buttons) && $(e, t)
+                    .buttons) && F(e, t)
             };
             e["_leaflet_touchmove" + i] = n, e.addEventListener(ti, n, !1)
         }
 
         function H(e, t, i) {
             var n = function (e) {
-                $(e, t)
+                F(e, t)
             };
             e["_leaflet_touchend" + i] = n, e.addEventListener(ii, n, !1), e.addEventListener(ni, n, !
                 1)
@@ -30855,7 +31107,7 @@ Object.values || (Object.values = function (e) {
         }
 
         function re(e, t) {
-            e._leaflet_pos = t, $t ? ae(e, t) : (e.style.left = t.x + "px", e.style.top = t.y + "px")
+            e._leaflet_pos = t, Ft ? ae(e, t) : (e.style.left = t.x + "px", e.style.top = t.y + "px")
         }
 
         function le(e) {
@@ -31019,7 +31271,7 @@ Object.values || (Object.values = function (e) {
         }
 
         function je(e, t, i) {
-            return Math.sqrt(Fe(e, t, i, !0))
+            return Math.sqrt($e(e, t, i, !0))
         }
 
         function Me(e, t) {
@@ -31033,7 +31285,7 @@ Object.values || (Object.values = function (e) {
 
         function Ie(e, t, i, n, o) {
             var s, a, r, l = 0;
-            for (a = n + 1; a <= o - 1; a++)(r = Fe(e[a], e[n], e[o], !0)) > l && (s = a, l = r);
+            for (a = n + 1; a <= o - 1; a++)(r = $e(e[a], e[n], e[o], !0)) > l && (s = a, l = r);
             l > i && (t[s] = 1, Ie(e, t, i, n, s), Ie(e, t, i, s, o))
         }
 
@@ -31075,7 +31327,7 @@ Object.values || (Object.values = function (e) {
             return i * i + n * n
         }
 
-        function Fe(e, t, i, n) {
+        function $e(e, t, i, n) {
             var o, s = t.x,
                 a = t.y,
                 r = i.x - s,
@@ -31086,12 +31338,12 @@ Object.values || (Object.values = function (e) {
                 new y(s, a)
         }
 
-        function $e(e) {
+        function Fe(e) {
             return !ot(e[0]) || "object" != typeof e[0][0] && void 0 !== e[0][0]
         }
 
         function Be(e) {
-            return console.warn("Deprecated use of _flat, please use L.LineUtil.isFlat instead."), $e(
+            return console.warn("Deprecated use of _flat, please use L.LineUtil.isFlat instead."), Fe(
                 e)
         }
 
@@ -31745,8 +31997,8 @@ Object.values || (Object.values = function (e) {
             Ot = 0 === navigator.platform.indexOf("Win"),
             Lt = kt && "transition" in wt,
             Rt = "WebKitCSSMatrix" in window && "m11" in new window.WebKitCSSMatrix && !Tt,
-            Ft = "MozPerspective" in wt,
-            $t = !window.L_DISABLE_3D && (Lt || Rt || Ft) && !Nt && !Dt,
+            $t = "MozPerspective" in wt,
+            Ft = !window.L_DISABLE_3D && (Lt || Rt || $t) && !Nt && !Dt,
             Bt = "undefined" != typeof orientation || M("mobile"),
             Ht = Bt && zt,
             Wt = Bt && Rt,
@@ -31789,8 +32041,8 @@ Object.values || (Object.values = function (e) {
                 win: Ot,
                 ie3d: Lt,
                 webkit3d: Rt,
-                gecko3d: Ft,
-                any3d: $t,
+                gecko3d: $t,
+                any3d: Ft,
                 mobile: Bt,
                 mobileWebkit: Ht,
                 mobileWebkit3d: Wt,
@@ -31942,7 +32194,7 @@ Object.values || (Object.values = function (e) {
                         void 0 !== t.zoom && (this._zoom = this._limitZoom(t.zoom)), t
                         .center && void 0 !== t.zoom && this.setView(T(t.center), t.zoom, {
                             reset: !0
-                        }), this.callInitHooks(), this._zoomAnimated = hi && $t && !Zt && this
+                        }), this.callInitHooks(), this._zoomAnimated = hi && Ft && !Zt && this
                         .options.zoomAnimation, this._zoomAnimated && (this
                         ._createAnimProxy(), fe(this._proxy, pi, this._catchTransitionEnd,
                                 this)), this._addLayers(this.options.layers)
@@ -31967,11 +32219,11 @@ Object.values || (Object.values = function (e) {
                     }) : (this._zoom = e, this)
                 },
                 zoomIn: function (e, t) {
-                    return e = e || ($t ? this.options.zoomDelta : 1), this.setZoom(this
+                    return e = e || (Ft ? this.options.zoomDelta : 1), this.setZoom(this
                         ._zoom + e, t)
                 },
                 zoomOut: function (e, t) {
-                    return e = e || ($t ? this.options.zoomDelta : 1), this.setZoom(this
+                    return e = e || (Ft ? this.options.zoomDelta : 1), this.setZoom(this
                         ._zoom - e, t)
                 },
                 setZoomAround: function (e, t, i) {
@@ -32088,7 +32340,7 @@ Object.values || (Object.values = function (e) {
                             ._moveEnd(!0)
                     }
                     if (!1 === (i = i || {})
-                        .animate || !$t) return this.setView(e, t, i);
+                        .animate || !Ft) return this.setView(e, t, i);
                     this._stop();
                     var d = this.project(this.getCenter()),
                         h = this.project(e),
@@ -32295,7 +32547,7 @@ Object.values || (Object.values = function (e) {
                         .subtract(i),
                         c = x(this.project(r, n), this.project(a, n))
                         .getSize(),
-                        u = $t ? this.options.zoomSnap : 1,
+                        u = Ft ? this.options.zoomSnap : 1,
                         d = l.x / c.x,
                         h = l.y / c.y,
                         p = t ? Math.max(d, h) : Math.min(d, h);
@@ -32398,7 +32650,7 @@ Object.values || (Object.values = function (e) {
                 },
                 _initLayout: function () {
                     var e = this._container;
-                    this._fadeAnimated = this.options.fadeAnimation && $t, X(e,
+                    this._fadeAnimated = this.options.fadeAnimation && Ft, X(e,
                         "leaflet-container" + (Ut ? " leaflet-touch" : "") + (Gt ?
                             " leaflet-retina" : "") + (xt ? " leaflet-oldie" : "") + (It ?
                             " leaflet-safari" : "") + (this._fadeAnimated ?
@@ -32462,7 +32714,7 @@ Object.values || (Object.values = function (e) {
                     t(this._container,
                             "click dblclick mousedown mouseup mouseover mouseout mousemove contextmenu keypress",
                             this._handleDOMEvent, this), this.options.trackResize && t(window,
-                            "resize", this._onResize, this), $t && this.options
+                            "resize", this._onResize, this), Ft && this.options
                         .transform3DLimit && (e ? this.off : this.on)
                         .call(this, "moveend", this._onMoveEnd)
                 },
@@ -32617,7 +32869,7 @@ Object.values || (Object.values = function (e) {
                 _limitZoom: function (e) {
                     var t = this.getMinZoom(),
                         i = this.getMaxZoom(),
-                        n = $t ? this.options.zoomSnap : 1;
+                        n = Ft ? this.options.zoomSnap : 1;
                     return n && (e = Math.round(e / n) * n), Math.max(t, Math.min(i, e))
                 },
                 _onPanTransitionStep: function () {
@@ -33198,19 +33450,19 @@ Object.values || (Object.values = function (e) {
                 simplify: Pe,
                 pointToSegmentDistance: je,
                 closestPointOnSegment: function (e, t, i) {
-                    return Fe(e, t, i)
+                    return $e(e, t, i)
                 },
                 clipSegment: Ne,
                 _getEdgeIntersection: Oe,
                 _getBitCode: Le,
-                _sqClosestPointOnSegment: Fe,
-                isFlat: $e,
+                _sqClosestPointOnSegment: $e,
+                isFlat: Fe,
                 _flat: Be
             }),
-            Fi = (Object.freeze || Object)({
+            $i = (Object.freeze || Object)({
                 clipPolygon: He
             }),
-            $i = {
+            Fi = {
                 project: function (e) {
                     return new y(e.lng, e.lat)
                 },
@@ -33243,7 +33495,7 @@ Object.values || (Object.values = function (e) {
                 }
             },
             Hi = (Object.freeze || Object)({
-                LonLat: $i,
+                LonLat: Fi,
                 Mercator: Bi,
                 SphericalMercator: ft
             }),
@@ -33257,11 +33509,11 @@ Object.values || (Object.values = function (e) {
             }),
             Vi = t({}, mt, {
                 code: "EPSG:4326",
-                projection: $i,
+                projection: Fi,
                 transformation: E(1 / 180, 1, -1 / 180, .5)
             }),
             qi = t({}, pt, {
-                projection: $i,
+                projection: Fi,
                 transformation: E(1, 0, -1, 0),
                 scale: function (e) {
                     return Math.pow(2, e)
@@ -33911,7 +34163,7 @@ Object.values || (Object.values = function (e) {
                     return !this._latlngs.length
                 },
                 closestLayerPoint: function (e) {
-                    for (var t, i, n = 1 / 0, o = null, s = Fe, a = 0, r = this._parts
+                    for (var t, i, n = 1 / 0, o = null, s = $e, a = 0, r = this._parts
                         .length; a < r; a++)
                         for (var l = this._parts[a], c = 1, u = l.length; c < u; c++) {
                             var d = s(e, t = l[c - 1], i = l[c], !0);
@@ -33943,10 +34195,10 @@ Object.values || (Object.values = function (e) {
                     this._bounds = new C, this._latlngs = this._convertLatLngs(e)
                 },
                 _defaultShape: function () {
-                    return $e(this._latlngs) ? this._latlngs : this._latlngs[0]
+                    return Fe(this._latlngs) ? this._latlngs : this._latlngs[0]
                 },
                 _convertLatLngs: function (e) {
-                    for (var t = [], i = $e(e), n = 0, o = e.length; n < o; n++) i ? (t[n] =
+                    for (var t = [], i = Fe(e), n = 0, o = e.length; n < o; n++) i ? (t[n] =
                         T(e[n]), this._bounds.extend(t[n])) : t[n] = this._convertLatLngs(
                         e[n]);
                     return t
@@ -34029,11 +34281,11 @@ Object.values || (Object.values = function (e) {
                     return i >= 2 && t[0] instanceof S && t[0].equals(t[i - 1]) && t.pop(), t
                 },
                 _setLatLngs: function (e) {
-                    nn.prototype._setLatLngs.call(this, e), $e(this._latlngs) && (this
+                    nn.prototype._setLatLngs.call(this, e), Fe(this._latlngs) && (this
                         ._latlngs = [this._latlngs])
                 },
                 _defaultShape: function () {
-                    return $e(this._latlngs[0]) ? this._latlngs[0] : this._latlngs[0][0]
+                    return Fe(this._latlngs[0]) ? this._latlngs[0] : this._latlngs[0][0]
                 },
                 _clipPoints: function () {
                     var e = this._renderer._bounds,
@@ -34103,7 +34355,7 @@ Object.values || (Object.values = function (e) {
             };
         Qi.include(an), tn.include(an), en.include(an), nn.include({
             toGeoJSON: function (e) {
-                var t = !$e(this._latlngs);
+                var t = !Fe(this._latlngs);
                 return Ke(this, {
                     type: (t ? "Multi" : "") + "LineString",
                     coordinates: Ze(this._latlngs, t ? 1 : 0, !1, e)
@@ -34111,8 +34363,8 @@ Object.values || (Object.values = function (e) {
             }
         }), on.include({
             toGeoJSON: function (e) {
-                var t = !$e(this._latlngs),
-                    i = t && !$e(this._latlngs[0]),
+                var t = !Fe(this._latlngs),
+                    i = t && !Fe(this._latlngs[0]),
                     n = Ze(this._latlngs, i ? 2 : t ? 1 : 0, !0, e);
                 return t || (n = [n]), Ke(this, {
                     type: (i ? "Multi" : "") + "Polygon",
@@ -34940,7 +35192,7 @@ Object.values || (Object.values = function (e) {
                         o = e.origin.multiplyBy(n)
                         .subtract(this._map._getNewPixelOrigin(t, i))
                         .round();
-                    $t ? ae(e.el, o, n) : re(e.el, o)
+                    Ft ? ae(e.el, o, n) : re(e.el, o)
                 },
                 _resetGrid: function () {
                     var e = this._map,
@@ -35295,7 +35547,7 @@ Object.values || (Object.values = function (e) {
                         .add(n)
                         .add(o)
                         .subtract(a);
-                    $t ? ae(this._container, r, i) : re(this._container, r)
+                    Ft ? ae(this._container, r, i) : re(this._container, r)
                 },
                 _reset: function () {
                     for (var e in this._update(), this._updateTransform(this._center, this
@@ -36194,7 +36446,7 @@ Object.values || (Object.values = function (e) {
             Object.freeze = et, e.version = "1.4.0+HEAD.3337f36", e.Control = zi, e.control = Si, e
             .Browser = Xt, e.Evented = dt, e.Mixin = Ii, e.Util = ct, e.Class = v, e.Handler = ji, e
             .extend = t, e.bind = i, e.stamp = n, e.setOptions = u, e.DomEvent = ki, e.DomUtil = vi, e
-            .PosAnimation = xi, e.Draggable = Li, e.LineUtil = Ri, e.PolyUtil = Fi, e.Point = y, e
+            .PosAnimation = xi, e.Draggable = Li, e.LineUtil = Ri, e.PolyUtil = $i, e.Point = y, e
             .point = w, e.Bounds = k, e.bounds = x, e.Transformation = A, e.transformation = E, e
             .Projection = Hi, e.LatLng = S, e.latLng = T, e.LatLngBounds = C, e.latLngBounds = z, e
             .CRS = pt, e.GeoJSON = sn, e.geoJSON = Ye, e.geoJson = rn, e.Layer = Ui, e.LayerGroup =
@@ -36468,7 +36720,8 @@ var building_markers = Array(),
     gameFlavour = null,
     i18nPrefix = null,
     shouldReloadAfterIFrameClose = !1,
-    isIframe = window.self !== window.top;
+    isIframe = window.self !== window.top,
+    vehiclesEquipmentDataById = {};
 $((function () {
     function onCoinsTop() {
         return !mobile_bridge_use || (mobileBridgeAdd("coins_window", {}), !1)
@@ -40190,11 +40443,11 @@ function (e) {
         return i
     }
 
-    function F(e) {
+    function $(e) {
         return e && (!k(e, "p,div") || e.className || f(e, "style") || !i(w(e)))
     }
 
-    function $(e, t) {
+    function F(e, t) {
         var i = r(t, {}, e.ownerDocument);
         for (s(e.attributes, (function (e, t) {
                 try {
@@ -40598,7 +40851,7 @@ function (e) {
 
     function le(e, t) {
         var i, a, l, _, x, C, S, N, O, R, W, q, U, K, Y, J, Q, ee, ie, ce, ue, de, fe, _e, ye, ke, xe, Te, Ae,
-            Ee, je, Me, Ie, Fe, $e, Be, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, ot,
+            Ee, je, Me, Ie, $e, Fe, Be, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, ot,
             st, at, rt, lt, ct, ut, dt, ht, pt, mt, ft = this,
             _t = {},
             gt = [],
@@ -40614,7 +40867,7 @@ function (e) {
                 }), e), y(a, "z-index", kt.zIndex), Oe && A(a, "ie ie" + Oe), ce = e.required, e
                 .required = !1;
             var t = le.formats[kt.format];
-            "init" in (i = t ? new t : {}) && i.init.call(ft), Me(), We(), Fe(), je(), $e(), Be(), Se ||
+            "init" in (i = t ? new t : {}) && i.init.call(ft), Me(), We(), $e(), je(), Fe(), Be(), Se ||
                 ft.toggleSourceMode(), tt();
             var n = function () {
                 m(De, "load", n), kt.autofocus && at(), mt(), nt(), Y.call("ready"), "onReady" in i &&
@@ -40652,7 +40905,7 @@ function (e) {
             f(N, "tabindex", i), f(_, "tabindex", i), K = new oe(x), g(e), ft.val(e.value);
             var n = kt.placeholder || f(e, "placeholder");
             n && (N.placeholder = n, f(C, "placeholder", n))
-        }, $e = function () {
+        }, Fe = function () {
             kt.autoUpdate && (p(C, "blur", pt), p(N, "blur", pt)), null === kt.rtl && (kt.rtl = "rtl" ===
                 y(N, "direction")), ft.rtl(!!kt.rtl), kt.autoExpand && (p(C, "load", mt, be), p(C,
                 "input keyup", mt)), kt.resizeEnabled && He(), f(a, "id", kt.id), ft.emoticons(kt
@@ -40677,7 +40930,7 @@ function (e) {
                     R = null
                 })), p(a, "selectionchanged", st), p(a, "selectionchanged", tt), p(a,
                     "selectionchanged valuechanged nodechanged pasteraw paste", Qe)
-        }, Fe = function () {
+        }, $e = function () {
             var e, t = ft.commands,
                 i = (kt.toolbarExclude || "")
                 .split(","),
@@ -41036,7 +41289,7 @@ function (e) {
                 ke && ke.update && ke.update(o, t, e)
             }
         }, Ke = function (e) {
-            if (!e.defaultPrevented && (ft.closeDropDown(), 13 === e.which && !k(Q, "li,ul,ol") && F(
+            if (!e.defaultPrevented && (ft.closeDropDown(), 13 === e.which && !k(Q, "li,ul,ol") && $(
                 Q))) {
                 R = null;
                 var t = r("br", {}, S);
@@ -41051,7 +41304,7 @@ function (e) {
         }, nt = function () {
             L(C, (function (e) {
                 if (e.nodeType === ge && !/inline/.test(y(e, "display")) && !k(e,
-                        ".sceditor-nlf") && F(e)) {
+                        ".sceditor-nlf") && $(e)) {
                     var t = r("p", {}, S);
                     return t.className = "sceditor-nlf", t.innerHTML = Le ? "" : "<br />", d(
                         C, t), !1
@@ -41269,12 +41522,12 @@ function (e) {
                 ft.clearBlockFormatting(n), e.preventDefault()
             }
         }, ct = function () {
-            for (var e = Q; !F(e) || H(e, !0);)
+            for (var e = Q; !$(e) || H(e, !0);)
                 if (!(e = e.parentNode) || k(e, "body")) return;
             return e
         }, ft.clearBlockFormatting = function (e) {
             return !(e = e || ct()) || k(e, "body") || (K.saveRange(), e.className = "", R = null, f(e,
-                "style", ""), k(e, "p,div,td") || $(e, "p"), K.restoreRange()), ft
+                "style", ""), k(e, "p,div,td") || F(e, "p"), K.restoreRange()), ft
         }, ut = function (e) {
             if (Y && (Y.hasHandler("valuechangedEvent") || ut.hasHandler)) {
                 var t, i = ft.sourceMode(),
@@ -41997,8 +42250,8 @@ function (e) {
                 traverse: O,
                 rTraverse: L,
                 parseHTML: R,
-                hasStyling: F,
-                convertElement: $,
+                hasStyling: $,
+                convertElement: F,
                 blockLevelList: ye,
                 canHaveChildren: B,
                 isInline: H,
@@ -42298,11 +42551,11 @@ function (e) {
         return i
     }
 
-    function F(e) {
+    function $(e) {
         return e && (!k(e, "p,div") || e.className || f(e, "style") || !i(w(e)))
     }
 
-    function $(e, t) {
+    function F(e, t) {
         var i = r(t, {}, e.ownerDocument);
         for (s(e.attributes, (function (e, t) {
                 try {
@@ -42706,7 +42959,7 @@ function (e) {
 
     function le(e, t) {
         var i, a, l, _, x, C, S, N, O, R, W, q, U, K, Y, J, Q, ee, ie, ce, ue, de, fe, _e, ye, ke, xe, Te, Ae,
-            Ee, je, Me, Ie, Fe, $e, Be, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, ot,
+            Ee, je, Me, Ie, $e, Fe, Be, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, ot,
             st, at, rt, lt, ct, ut, dt, ht, pt, mt, ft = this,
             _t = {},
             gt = [],
@@ -42722,7 +42975,7 @@ function (e) {
                 }), e), y(a, "z-index", kt.zIndex), Oe && A(a, "ie ie" + Oe), ce = e.required, e
                 .required = !1;
             var t = le.formats[kt.format];
-            "init" in (i = t ? new t : {}) && i.init.call(ft), Me(), We(), Fe(), je(), $e(), Be(), Se ||
+            "init" in (i = t ? new t : {}) && i.init.call(ft), Me(), We(), $e(), je(), Fe(), Be(), Se ||
                 ft.toggleSourceMode(), tt();
             var n = function () {
                 m(De, "load", n), kt.autofocus && at(), mt(), nt(), Y.call("ready"), "onReady" in i &&
@@ -42760,7 +43013,7 @@ function (e) {
             f(N, "tabindex", i), f(_, "tabindex", i), K = new oe(x), g(e), ft.val(e.value);
             var n = kt.placeholder || f(e, "placeholder");
             n && (N.placeholder = n, f(C, "placeholder", n))
-        }, $e = function () {
+        }, Fe = function () {
             kt.autoUpdate && (p(C, "blur", pt), p(N, "blur", pt)), null === kt.rtl && (kt.rtl = "rtl" ===
                 y(N, "direction")), ft.rtl(!!kt.rtl), kt.autoExpand && (p(C, "load", mt, be), p(C,
                 "input keyup", mt)), kt.resizeEnabled && He(), f(a, "id", kt.id), ft.emoticons(kt
@@ -42785,7 +43038,7 @@ function (e) {
                     R = null
                 })), p(a, "selectionchanged", st), p(a, "selectionchanged", tt), p(a,
                     "selectionchanged valuechanged nodechanged pasteraw paste", Qe)
-        }, Fe = function () {
+        }, $e = function () {
             var e, t = ft.commands,
                 i = (kt.toolbarExclude || "")
                 .split(","),
@@ -43144,7 +43397,7 @@ function (e) {
                 ke && ke.update && ke.update(o, t, e)
             }
         }, Ke = function (e) {
-            if (!e.defaultPrevented && (ft.closeDropDown(), 13 === e.which && !k(Q, "li,ul,ol") && F(
+            if (!e.defaultPrevented && (ft.closeDropDown(), 13 === e.which && !k(Q, "li,ul,ol") && $(
                 Q))) {
                 R = null;
                 var t = r("br", {}, S);
@@ -43159,7 +43412,7 @@ function (e) {
         }, nt = function () {
             L(C, (function (e) {
                 if (e.nodeType === ge && !/inline/.test(y(e, "display")) && !k(e,
-                        ".sceditor-nlf") && F(e)) {
+                        ".sceditor-nlf") && $(e)) {
                     var t = r("p", {}, S);
                     return t.className = "sceditor-nlf", t.innerHTML = Le ? "" : "<br />", d(
                         C, t), !1
@@ -43377,12 +43630,12 @@ function (e) {
                 ft.clearBlockFormatting(n), e.preventDefault()
             }
         }, ct = function () {
-            for (var e = Q; !F(e) || H(e, !0);)
+            for (var e = Q; !$(e) || H(e, !0);)
                 if (!(e = e.parentNode) || k(e, "body")) return;
             return e
         }, ft.clearBlockFormatting = function (e) {
             return !(e = e || ct()) || k(e, "body") || (K.saveRange(), e.className = "", R = null, f(e,
-                "style", ""), k(e, "p,div,td") || $(e, "p"), K.restoreRange()), ft
+                "style", ""), k(e, "p,div,td") || F(e, "p"), K.restoreRange()), ft
         }, ut = function (e) {
             if (Y && (Y.hasHandler("valuechangedEvent") || ut.hasHandler)) {
                 var t, i = ft.sourceMode(),
@@ -44104,8 +44357,8 @@ function (e) {
                 traverse: O,
                 rTraverse: L,
                 parseHTML: R,
-                hasStyling: F,
-                convertElement: $,
+                hasStyling: $,
+                convertElement: F,
                 blockLevelList: ye,
                 canHaveChildren: B,
                 isInline: H,
