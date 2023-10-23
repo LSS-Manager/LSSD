@@ -3,3 +3,5 @@
 .yarn/*
 !.yarn/releases
 .pnp*
+
+node_modules/*
