@@ -5109,6 +5109,7 @@ Object.values || (Object.values = function (e) {
             person: {
                 missing_education_for_vehicle: "Personnel will only be dispatched with the vehicle if it has acquired the necessary education!"
             },
+            release_at: "Released at",
             save: "Save",
             search: "Search",
             show: "Show",
