@@ -8184,6 +8184,7 @@ Object.values || (Object.values = function (e) {
             categories: {
                 airport: "Aeroporto",
                 brush: "Anticendio Boschivo",
+                disaster_response: "Risposta ai disastri",
                 firefighting: "Antincendio",
                 police: "Polizia",
                 rescue: "Soccorso",
