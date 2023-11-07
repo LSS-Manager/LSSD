@@ -12166,7 +12166,8 @@ fieldset[disabled] .btn-gray.active {
 .alliance_news_new,
 .vehicle_graphic_check_new,
 .vehicle_graphic_abuse_check_new,
-.graphic_new_comments {
+.graphic_new_comments,
+.finished-tasks-tab {
     background-color: #77dc81
 }
 
@@ -16133,72 +16134,6 @@ body.dark .daily-bonuses .collect-possible-block {
     height: 20px
 }
 
-.reward_button {
-    display: inline-block
-}
-
-.reward_button .btn {
-    color: white;
-    background-image: url(/images/progressbar-green-background.png);
-    background-repeat: repeat-x
-}
-
-.reward_button .btn:disabled {
-    background-image: unset;
-    background-color: grey
-}
-
-.claim_all {
-    margin-top: -10px;
-    margin-bottom: 20px
-}
-
-.reward_amount {
-    float: right;
-    margin-top: 7px
-}
-
-.task_body {
-    padding: 10px 15px
-}
-
-.progress_value {
-    margin-left: auto
-}
-
-.progress_bar {
-    width: 100%
-}
-
-.task_panel .panel-heading {
-    min-height: 75px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: baseline
-}
-
-.task_panel .progress-info {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between
-}
-
-.next_task {
-    margin-top: -10px;
-    text-align: right
-}
-
-@media (max-width: 400px) {
-    .next_task {
-        text-align: left
-    }
-
-    .progress_value {
-        margin-left: inherit
-    }
-}
-
 .confirm-delete-modal .modal-body {
     max-height: 100%
 }
@@ -17408,6 +17343,11 @@ body.dark .grid-container .grid-item .grid-item-text .line {
 .label-speedbutton .glyphicon {
     top: 0;
     bottom: 0
+}
+
+body.dark .nav-tabs>li.active>a,
+body.dark .nav-tabs>li.active>a:focus {
+    background-color: #c9302c
 }
 
 /*
@@ -18664,6 +18604,12 @@ div.sceditor-dropdown input[id='des'] {
 body.belgiumbar.policechief .navbar-default {
     background-image: url(/images/policechief_belgiumbar.png);
     background-size: auto 100%
+}
+
+body.dark.policechief .nav-tabs>li.active>a,
+body.dark.policechief .nav-tabs>li.active>a:focus,
+body.dark.policechief .nav-tabs>li.active>a:hover {
+    background-color: #2a6dc0
 }
 
 @media only screen and (max-width: 1280px) and (min-width: 768px) {

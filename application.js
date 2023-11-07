@@ -1812,10 +1812,10 @@ function missionCountdown(e, t) {
         }), 1e3))
 }
 
-function taskCountdown(e, t) {
-    e < 0 || ($("#task_countdown_" + t)
+function taskCountdown(e, t, i, n) {
+    e >= 0 && ($("#task_countdown_" + i + "-" + t + "-" + n)
         .html(formatTime(e, !1)), e -= 1, setTimeout((function () {
-            taskCountdown(e, t)
+            taskCountdown(e, t, i, n)
         }), 1e3))
 }
 
@@ -36918,7 +36918,9 @@ $((function () {
             "search_and_rescue", I18n.t("intervention_order.vehicles.search_and_rescue")], [
             "fire_aviation_2", I18n.t("intervention_order.vehicles.fire_aviation_2")], [
             "technical_rescue", I18n.t("intervention_order.vehicles.technical_rescue")], [
-            "drone", I18n.t("intervention_order.vehicles.drone")]], $("#restore_map")
+            "drone", I18n.t("intervention_order.vehicles.drone")], ["elw1_or_elw_drone", I18n
+            .t("intervention_order.vehicles.elw1_or_elw_drone")], ["elw2_or_elw2_drone", I18n
+            .t("intervention_order.vehicles.elw2_or_elw2_drone")]], $("#restore_map")
         .click((function () {
             mapViewRestore()
         })), $("#coins_top")
