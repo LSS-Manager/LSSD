@@ -4153,6 +4153,7 @@ Object.values || (Object.values = function (e) {
                 arff: "Flugfeldl\xf6schfahrzeug",
                 battalion_chief_unit: "Einsatzleitfahrzeuge 1",
                 boot: "Boote (Allgemein)",
+                care_service_equipment: "Feldk\xfcchen",
                 dekon_p: "Dekon-P oder AB-Dekon-P",
                 division_chief_unit: "Einsatzleitfahrzeuge 2",
                 dlk_or_tm50: "DLK oder TM 50",
@@ -4262,80 +4263,80 @@ Object.values || (Object.values = function (e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: 'Nun gib deinem Geb\xe4ude einen Namen! Dieser sollte erkennbar und erweiterbar sein! Z.B. "Feuerwache #0001". Wenn du damit fertig bist, klicke auf "Weiter"!',
-                            build_with_credits: "Baue jetzt dein Geb\xe4ude mit Credits!",
-                            new_building: 'Klicke auf "Neues Geb\xe4ude bauen"!',
-                            select_building: "W\xe4hle den Geb\xe4udetyp aus, mit dem du starten m\xf6chtest. Wir empfehlen dir, mit Feuerwachen zu beginnen! In jedem Fall ist es ratsam, mit einer kleinen Wache zu starten!",
-                            select_position: "Schiebe die blaue Markierung dorthin, wo du dein erstes Geb\xe4ude bauen m\xf6chtest!"
+                            add_name: "Gib deiner Wache einen Namen! Du kannst sie sp\xe4ter umbenennen.",
+                            build_with_credits: "Zum Bauen der Wache ben\xf6tigst du Credits, die W\xe4hrung des Spiels. Du kannst sie durch Eins\xe4tze, t\xe4gliche Logins sowie Aufgaben und Events verdienen.",
+                            new_building: "Beginne jetzt den Bauprozess f\xfcr deine Wache.",
+                            select_building: "Entscheide dich zwischen einer Feuerwache und einer Polizeiwache. F\xfcr den Anfang reichen kleine Wachen. Du kannst sie sp\xe4ter zu normalen Wachen ausbauen.",
+                            select_position: "Verschiebe den Standort-Marker an den Standort, an dem die Wache stehen soll."
                         },
-                        pick_location: "Suche dir einen Ort zum Anfangen aus! Tippe den Names des Ortes in die Suchleiste ein oder w\xe4hle ihn direkt auf der Karte aus! Wie w\xe4re es mit deiner Heimat?",
-                        welcome: "Hallo, willkommen beim Leitstellenspiel! Zum Start haben wir eine kleine Anleitung vorbereitet."
+                        pick_location: "Suche dir einen Ort aus, an dem du deine erste Wache bauen m\xf6chtest.",
+                        welcome: "Willkommen zum Leitstellenspiel! Als Disponent/in in einer Leitstelle f\xfcr Rettungs- und Sicherheitsdienste bearbeitest du Notrufe, um der Bev\xf6lkerung zu helfen und sie zu sch\xfctzen! Dazu baust du Wachen und entsendest verschiedene Fahrzeugtypen und ausgebildetes Personal auf diverse Eins\xe4tze."
                     },
                     mobile: {
                         build_building: {
-                            add_name: 'Nun gibst du deinem Geb\xe4ude einen Namen! Dieser sollte erkennbar und erweiterbar sein! Z.B. "Feuerwache #0001". Wenn du damit fertig bist, klicke auf "Weiter"!',
-                            build_with_credits: "Baue jetzt dein Geb\xe4ude mit Credits!",
-                            new_building: 'Zuerst suchen wir uns einen Ort f\xfcr dein neues Geb\xe4ude! <br /> <br /> Dazu klickst du auf "Neues Geb\xe4ude bauen"!',
-                            select_building: "Jetzt suchst du den Geb\xe4udetyp aus, mit dem du starten m\xf6chtest. Wir empfehlen dir, mit Feuerwachen zu beginnen! In jedem Fall ist es ratsam, mit einer kleinen Wache zu starten!"
+                            add_name: "Gib deiner Wache einen Namen! Du kannst sie sp\xe4ter umbenennen.",
+                            build_with_credits: "Zum Bauen der Wache ben\xf6tigst du Credits, die W\xe4hrung des Spiels. Du kannst sie durch Eins\xe4tze, t\xe4gliche Logins sowie Aufgaben und Events verdienen.",
+                            new_building: "Baue zun\xe4chst deine erste Wache. Du kannst den Standort aussuchen indem du ihn manuell eingibst oder den Standort-Marker auf der Karte verschiebst. Je nach Betriebssystem kann es sein, dass du den Standortmarker l\xe4nger gedr\xfcckt halten musst, bevor er sich bewegen l\xe4sst.",
+                            select_building: "Entscheide dich zwischen einer Feuerwache und einer Polizeiwache. F\xfcr den Anfang reichen kleine Wachen. Du kannst sie sp\xe4ter zu normalen Wachen ausbauen."
                         },
-                        welcome: "Hallo, willkommen beim Leitstellenspiel! Zum Start haben wir eine kleine Anleitung vorbereitet."
+                        welcome: "Willkommen zum Leitstellenspiel! Als Disponent/in in einer Leitstelle f\xfcr Rettungs- und Sicherheitsdienste bearbeitest du Notrufe, um der Bev\xf6lkerung zu helfen und sie zu sch\xfctzen! Dazu baust du Wachen und entsendest verschiedene Fahrzeugtypen und ausgebildetes Personal auf diverse Eins\xe4tze."
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Dies ist das Alarmierungsfenster. Von hier aus kannst du Fahrzeuge zu Eins\xe4tzen schicken!",
-                            dispatch_menu_buttons: 'Dies sind deine beiden Alarmierungsoptionen! Der erste "Alarm"-Button schickt die ausgew\xe4hlten Fahrzeuge zum Einsatz. Der Zweite wechselt zus\xe4tzlich auch zum n\xe4chsten Einsatz. Klicke jetzt den ersten Button.',
-                            dispatch_menu_mission_general: "Hier siehst du generelle Informationen zum Einsatz, wie Name, Adresse und Icon. Bist du am Einsatz beteiligt wird ein M\xe4nnchen angezeigt, ansonsten ein Stern.",
-                            dispatch_menu_mission_progress: "Hier siehst du wie weit der Einsatz bereits fortgeschritten ist, wie viele Einsatzkr\xe4fte vor Ort sind und wie viel Zeit noch ben\xf6tigt wird um den Einsatz abzuschlie\xdfen!",
-                            dispatch_menu_mission_specific: "Hier erh\xe4ltst du mehr Informationen zum Einsatz, z.B. welche Fahrzeuge unterwegs sind und welche sich bereits am Einsatzort befinden.",
-                            dispatch_menu_vehicle_list: "Hier siehst du die Liste deiner verf\xfcgbaren Fahrzeuge. Du kannst ein Fahrzeug ausw\xe4hlen, indem du es anklickst!"
+                            dispatch_menu: "Dies ist das Alarmierungsfenster. Hier kannst du Fahrzeuge zu Eins\xe4tzen schicken.",
+                            dispatch_menu_buttons: 'Schicke das Fahrzeug los, indem du auf den "Alarmieren"-Button klickst. Sobald du mehr Eins\xe4tze hast, kannst du den Button daneben nutzen um zus\xe4tzlich zum n\xe4chsten Einsatz zu wechseln.',
+                            dispatch_menu_mission_general: 'Hier siehst du allgemeine Informationen zu dem Einsatz. Vor dem Namen wird <span class="glyphicon glyphicon-asterisk"></span> angezeigt solange du nicht am Einsatz beteiligt bist, <span class="glyphicon glyphicon-user"></span> sobald du das erste Fahrzeug losgeschickt hast.',
+                            dispatch_menu_mission_progress: "Hier siehst du den Fortschritt des Einsatzes. Sobald Einsatzkr\xe4fte vor Ort sind, werden sie hier angezeigt und du siehst, wie viel Zeit noch ben\xf6tigt wird um den Einsatz abzuschlie\xdfen.",
+                            dispatch_menu_mission_specific: "Hier siehst du welche Fahrzeuge auf dem Weg oder beim Einsatzort sind. Die Zahl vor einem Fahrzeug zeigt \xfcbrigens seinen Einsatzstatus an.",
+                            dispatch_menu_vehicle_list: "Hier werden alle verf\xfcgbaren Fahrzeuge in Reichweite des Einsatzes angezeigt. W\xe4hle ein Fahrzeug aus indem du auf die danebenliegende Checkbox klickst."
                         },
                         mobile: {
-                            dispatch_menu: "Dies ist das Alarmierungsfenster. Von hier aus kannst du Fahrzeuge zu Eins\xe4tzen schicken!",
-                            dispatch_menu_buttons: 'Dies sind deine beiden Alarmierungsoptionen! Der erste "Alarm"-Button schickt die ausgew\xe4hlten Fahrzeuge zum Einsatz. Der Zweite wechselt zus\xe4tzlich auch zum n\xe4chsten Einsatz. Tippe jetzt den ersten Button.',
-                            dispatch_menu_mission_general: "Hier siehst du generelle Informationen zum Einsatz, wie Name, Adresse und Icon. Bist du am Einsatz beteiligt wird ein M\xe4nnchen angezeigt, ansonsten ein Stern.",
-                            dispatch_menu_mission_progress: "Hier siehst du wie weit der Einsatz bereits fortgeschritten ist, wie viele Einsatzkr\xe4fte vor Ort sind und wie viel Zeit noch ben\xf6tigt wird um den Einsatz abzuschlie\xdfen!",
-                            dispatch_menu_mission_specific: "Hier erh\xe4ltst du mehr Informationen zum Einsatz, z.B. welche Fahrzeuge unterwegs sind und welche sich bereits am Einsatzort befinden.",
-                            dispatch_menu_vehicle_list: "Hier siehst du die Liste deiner verf\xfcgbaren Fahrzeuge. Du kannst hier ein Fahrzeug ausw\xe4hlen, indem du es anklickst!"
+                            dispatch_menu: "Dies ist das Alarmierungsfenster. Hier kannst du Fahrzeuge zu Eins\xe4tzen schicken.",
+                            dispatch_menu_buttons: 'Schicke das Fahrzeug los, indem du auf den "Alarmieren"-Button klickst. Sobald du mehr Eins\xe4tze hast, kannst du den Button daneben nutzen um zus\xe4tzlich zum n\xe4chsten Einsatz zu wechseln.',
+                            dispatch_menu_mission_general: 'Hier siehst du allgemeine Informationen zu dem Einsatz. Vor dem Namen wird <span class="glyphicon glyphicon-asterisk"></span> angezeigt solange du nicht am Einsatz beteiligt bist, <span class="glyphicon glyphicon-user"></span> sobald du das erste Fahrzeug losgeschickt hast.',
+                            dispatch_menu_mission_progress: "Hier siehst du den Fortschritt des Einsatzes. Sobald Einsatzkr\xe4fte vor Ort sind, werden sie hier angezeigt und du siehst, wie viel Zeit noch ben\xf6tigt wird um den Einsatz abzuschlie\xdfen.",
+                            dispatch_menu_mission_specific: "Hier siehst du welche Fahrzeuge auf dem Weg oder beim Einsatzort sind. Die Zahl vor einem Fahrzeug zeigt \xfcbrigens seinen Einsatzstatus an.",
+                            dispatch_menu_vehicle_list: "Hier werden alle verf\xfcgbaren Fahrzeuge in Reichweite des Einsatzes angezeigt. W\xe4hle ein Fahrzeug aus indem du auf die danebenliegende Checkbox klickst."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: '\xd6ffne das Alarmierungsfenster, indem du auf einen  "Alarm"-Button klickst!',
-                            first_mission: "Super, du hast dein ersten Geb\xe4ude gebaut! Schau, die ersten Eins\xe4tze wurden dir bereits gemeldet!"
+                            dispatch_button: 'K\xfcmmere dich um den Einsatz, indem du zun\xe4chst auf den "Alarm"-Button klickst.',
+                            first_mission: "Dein erstes Geb\xe4ude wurde fertiggestellt. Der erste Einsatz wurde auch schon gemeldet!"
                         },
                         mobile: {
-                            dispatch_button: '\xd6ffne das Alarmierungsfenster, indem du auf einen  "Alarm"-Button klickst!',
-                            first_mission: "Super, du hast dein ersten Geb\xe4ude gebaut! Schau, die ersten Eins\xe4tze wurden dir bereits gemeldet!"
+                            dispatch_button: 'K\xfcmmere dich um den Einsatz, indem du zun\xe4chst auf den "Alarm"-Button klickst.',
+                            first_mission: "Dein erstes Geb\xe4ude wurde fertiggestellt. Der erste Einsatz wurde auch schon gemeldet!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Gro\xdfartig, du bist auf dem Weg ein hervorragender Einsatzleiter zu werden! Hier hast du %{coins} Coins als Starthilfe! </br> Dein Leitstellenspiel-Team"
+                        general: "Du bist jetzt bereit, dich alleine um Eins\xe4tze zu k\xfcmmern. Als Starthilfe f\xfcr deine Eins\xe4tze und Expansion erh\xe4ltst du %{coins} Coins. Viel Erfolg!"
                     },
                     mobile: {
-                        general: "Gro\xdfartig, du bist auf dem Weg ein hervorragender Einsatzleiter zu werden! Hier hast du %{coins} Coins als Starthilfe! </br> Dein Leitstellenspiel-Team"
+                        general: "Du bist jetzt bereit, dich alleine um Eins\xe4tze zu k\xfcmmern. Als Starthilfe f\xfcr deine Eins\xe4tze und Expansion erh\xe4ltst du %{coins} Coins. Viel Erfolg!"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Wenn du Fragen hast kannst du dir unsere FAQ ansehen und das Forum oder unsere Facebook-Seite besuchen!",
-                        general: "Als N\xe4chstes empfehlen wir dir, eine Leitstelle zu bauen. Au\xdferdem solltest du weitere Wachen bauen. Je mehr Wachen, desto mehr Eins\xe4tze tauchen auf. Tipp: Zu Beginn empfehlen wir kleine Wachen.",
-                        join_alliance: "Dar\xfcber hinaus empfehlen wir dir, einem Verband beizutreten. Gemeinsam macht es mehr Spa\xdf und andere Mitglieder k\xf6nnen dir mit deinen Eins\xe4tzen helfen.",
+                        contact: "Wenn du deine Wachen ausbaust, bekommst du Platz f\xfcr neue Fahrzeuge.",
+                        general: "F\xfcr den Abschluss eines Einsatzes erh\xe4ltst du Credits. Durch das Verdienen von Credits kommst du einer Bef\xf6rderung n\xe4her.",
+                        join_alliance: "Bef\xf6rderungen und das Bauen von Wachen schalten neue Features wie Einsatztypen oder Fahrzeuge frei.",
                         radio: {
                             helpshift_id: "1540",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             short: "Der Funk zeigt Statusaktualisierungen eurer Fahrzeuge an. Weitere Informationen zum Status findet ihr hier."
                         },
-                        summary: "Das waren die Grundlagen vom Leitstellenspiel! Beende Eins\xe4tze, sammle Credits, kaufe mehr Fahrzeuge, und baue dein Rettungsnetzwerk aus! Viel Spa\xdf! </br> Dein Leitstellenspiel-Team"
+                        summary: "Du kannst einem Verband beitreten, um mit anderen Leuten Eins\xe4tze zu fahren. Au\xdferdem gibt es regelm\xe4\xdfig Verband-Events, an denen alle Mitglieder teilnehmen k\xf6nnen!"
                     },
                     mobile: {
-                        contact: "Wenn du Fragen hast kannst du dir unsere FAQ ansehen und das Forum oder unsere Facebook-Seite besuchen!",
-                        general: "Als N\xe4chstes empfehlen wir dir, eine Leitstelle zu bauen. Au\xdferdem solltest du weitere Wachen bauen. Je mehr Wachen, desto mehr Eins\xe4tze tauchen auf. Tipp: Zu Beginn empfehlen wir kleine Wachen.",
-                        join_alliance: "Dar\xfcber hinaus empfehlen wir dir, einem Verband beizutreten. Gemeinsam macht es mehr Spa\xdf und andere Mitglieder k\xf6nnen dir mit deinen Eins\xe4tzen helfen.",
-                        summary: "Das waren die Grundlagen vom Leitstellenspiel! Beende Eins\xe4tze, sammle Credits, kaufe mehr Fahrzeuge, und baue dein Rettungsnetzwerk aus! Viel Spa\xdf! </br> Dein Leitstellenspiel-Team"
+                        contact: "Wenn du deine Wachen ausbaust, bekommst du Platz f\xfcr neue Fahrzeuge. ",
+                        general: "F\xfcr den Abschluss eines Einsatzes erh\xe4ltst du Credits. Durch das Verdienen von Credits kommst du einer Bef\xf6rderung n\xe4her.",
+                        join_alliance: "Bef\xf6rderungen und das Bauen von Wachen schalten neue Features wie Einsatztypen oder Fahrzeuge frei.",
+                        summary: "Du kannst einem Verband beitreten, um mit anderen Leuten Eins\xe4tze zu fahren. Au\xdferdem gibt es regelm\xe4\xdfig Verband-Events, an denen alle Mitglieder teilnehmen k\xf6nnen!"
                     },
                     reminder: {
                         join_alliance: "Einem Verband beizutreten bringt mehrere Vorteile mit sich: Belohnungen f\xfcr das absolvieren von Verbandseins\xe4tzen, Unterst\xfctzung durch erfahrene Verbandsmitglieder bei schwierigen Eins\xe4tzen, au\xdferdem kannst du Geb\xe4ude, wie zum Beispiel Schulen und Krankenh\xe4user mitnutzen. Klicke jetzt den Button um einem Verband beizutreten!"
@@ -4360,34 +4361,10 @@ Object.values || (Object.values = function (e) {
                 beginner: {
                     building: {
                         browser: {
-                            build_building: {
-                                add_name: 'Nun gib deinem Geb\xe4ude einen Namen! Dieser sollte erkennbar und erweiterbar sein! Z.B. "Polizeiwache #0001". Wenn du damit fertig bist, klicke auf "Weiter"!',
-                                select_building: "W\xe4hle den Geb\xe4udetyp aus, mit dem du starten m\xf6chtest. Wir empfehlen dir, mit Polizeiwachen zu beginnen! In jedem Fall ist es ratsam, mit einer kleinen Wache zu starten!"
-                            },
-                            welcome: "Hallo, willkommen beim Polizei Leitstellenspiel! Ich werde dir einige Tipps f\xfcr einen guten Start geben!"
+                            welcome: "Willkommen zum Polizei Leitstellenspiel! Als Disponent/in in einer Leitstelle f\xfcr Rettungs- und Sicherheitsdienste bearbeitest du Notrufe, um der Bev\xf6lkerung zu helfen und sie zu sch\xfctzen! Dazu baust du Wachen und entsendest verschiedene Fahrzeugtypen und ausgebildetes Personal auf diverse Eins\xe4tze."
                         },
                         mobile: {
-                            build_building: {
-                                add_name: 'Nun gib deinem Geb\xe4ude einen Namen! Dieser sollte erkennbar und erweiterbar sein! Z.B. "Polizeiwache #0001". Wenn du damit fertig bist, klicke auf "Weiter"!',
-                                select_building: "W\xe4hle den Geb\xe4udetyp aus, mit dem du starten m\xf6chtest. Wir empfehlen dir, mit Polizeiwachen zu beginnen! In jedem Fall ist es ratsam, mit einer kleinen Wache zu starten!"
-                            },
-                            welcome: "Hallo, willkommen beim Polizei Leitstellenspiel! Ich werde dir einige Tipps f\xfcr einen guten Start geben!"
-                        }
-                    },
-                    rewards: {
-                        browser: {
-                            general: "Gro\xdfartig, du bist auf dem Weg ein hervorragender Einsatzleiter zu werden! Hier hast du %{coins} Coins als Starthilfe! </br> Dein Polizei Leitstellenspiel-Team"
-                        },
-                        mobile: {
-                            general: "Gro\xdfartig, du bist auf dem Weg ein hervorragender Einsatzleiter zu werden! Hier hast du %{coins} Coins als Starthilfe! </br> Dein Polizei Leitstellenspiel-Team"
-                        }
-                    },
-                    tips: {
-                        browser: {
-                            summary: "Das waren die Grundlagen vom Polizei Leitstellenspiel! Beende Eins\xe4tze, sammle Credits, kaufe mehr Fahrzeuge, und baue dein Rettungsnetzwerk aus! Viel Spa\xdf! </br> Dein Polizei Leitstellenspiel-Team"
-                        },
-                        mobile: {
-                            summary: "Das waren die Grundlagen vom Polizei Leitstellenspiel! Beende Eins\xe4tze, sammle Credits, kaufe mehr Fahrzeuge, und baue dein Rettungsnetzwerk aus! Viel Spa\xdf! </br> Dein Polizei Leitstellenspiel-Team"
+                            welcome: "Willkommen zum Polizei Leitstellenspiel! Als Disponent/in in einer Leitstelle f\xfcr Rettungs- und Sicherheitsdienste bearbeitest du Notrufe, um der Bev\xf6lkerung zu helfen und sie zu sch\xfctzen! Dazu baust du Wachen und entsendest verschiedene Fahrzeugtypen und ausgebildetes Personal auf diverse Eins\xe4tze."
                         }
                     }
                 }
@@ -4683,6 +4660,7 @@ Object.values || (Object.values = function (e) {
                 brush_truck_4: "Type 4 engine",
                 brush_truck_5: "Type 6 engine",
                 brush_vehicle: "Wildland fire vehicle",
+                care_service_equipment: "Field Kitchen",
                 coastal_boat: "Coastal Boat",
                 coastal_guard_boat: "Coastal Guard Boat",
                 coastal_helicopter: "Coastal Helicopter",
@@ -4800,23 +4778,23 @@ Object.values || (Object.values = function (e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: 'Second give your new station a name! Make it recognisable and scalable! E.g. "Fire station #0001". When you are done, please click "Next"!',
-                            build_with_credits: "Now build your building with credits!",
-                            new_building: 'Click on "New building"!',
-                            select_building: "First choose the type of building you want to start with, we highly suggest you to start with fire services! In any case starting with a small station is advised!",
-                            select_position: "Move the blue marker where you want to build your first station!"
+                            add_name: "Choose a name for your station. You can rename it later.",
+                            build_with_credits: "To build a station you need credits, the currency of the game. You can earn credits through missions, daily logins, tasks and events.",
+                            new_building: "Start the building process of your station.",
+                            select_building: "Decide if you want to build a fire station or a police station. In the beginning small stations are sufficient. You can upgrade them to normal stations later.",
+                            select_position: "Move the location marker to the location where you want the station to be."
                         },
-                        pick_location: "First pick a location to start! Type the name of the location you want to start in into the search bar or find it on the map yourself! What about your hometown?",
-                        welcome: "Hello, welcome to MissionChief!  I will teach you some lessons to help you start off your emergency services career well!"
+                        pick_location: "Pick a location where you want to build your first station.",
+                        welcome: "Welcome to Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions."
                     },
                     mobile: {
                         build_building: {
-                            add_name: 'Second give your new station a name! Make it recognisable and scalable! E.g. "Fire station #0001". When you are done, please click "Next"!',
-                            build_with_credits: "Now build your building with credits!",
-                            new_building: 'First we will pick a location to start and build your first building! <br /> <br /> To do that click on "New building"!',
-                            select_building: "First choose the type of building you want to start with, we highly suggest you to start with fire services! In any case starting with a small station is advised!"
+                            add_name: "Choose a name for your station. You can rename it later.",
+                            build_with_credits: "To build a station you need credits, the currency of the game. You can earn credits through missions, daily logins, tasks and events.",
+                            new_building: "Begin with building your first station. You can choose its location by entering it manually or by moving the location marker on the map. Depending on your operating system, you might have to hold the marker for a while before you can move it.",
+                            select_building: "Decide if you want to build a fire station or a police station. In the beginning small stations are sufficient. You can upgrade them to normal stations later."
                         },
-                        welcome: "Hello, welcome to MissionChief!  I will teach you some lessons to help you start off your emergency services career well!"
+                        welcome: "Welcome to Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions."
                     },
                     tooltip: {
                         ambulance_station_small: {
@@ -4954,62 +4932,62 @@ Object.values || (Object.values = function (e) {
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "This is the dispatch menu. From here you send your units to missions!",
-                            dispatch_menu_buttons: 'These are your two dispatch buttons! The first one: "Dispatch" sends the selected units to the mission. The second one does the same as the first one but goes to the next mission. Click the first button for now.',
-                            dispatch_menu_mission_general: "Here you can see the general mission information, that means the name, address, icon of the mission. The little man-icon appears and replaces a small star, on missions which you already participated in.",
-                            dispatch_menu_mission_progress: "Here you can see how much progress has been made to deal with this mission as well as the number of staff on site and the time left to deal with the mission!",
-                            dispatch_menu_mission_specific: "Here you can see more information about the mission, which units are responding to the call and which are already at the site",
-                            dispatch_menu_vehicle_list: "This is the list of your available vehicles. You select the vehicles here. Now select your vehicle by clicking on it!"
+                            dispatch_menu: "This is the dispatch window. Here you can send vehicles on missions.",
+                            dispatch_menu_buttons: "Send a vehicle to a mission by clicking the dispatch button. As soon as you have more missions you can use the button next to it to additionaly go to the next mission.",
+                            dispatch_menu_mission_general: 'Here you can find general information about the mission. As long as you are not involved in the mission, <span class="glyphicon glyphicon-asterisk"></span> is displayed in front of the mission name, <span class="glyphicon glyphicon-user"></span> as soon as you have sent the first vehicle.',
+                            dispatch_menu_mission_progress: "Here you can see the progress of the mission. As soon as personnel is on site, they get displayed here and you can see how much time is still needed for completing the mission.",
+                            dispatch_menu_mission_specific: "Here you can see which vehicles are on their way to or at the mission. The number in front of a vehicle indicates its deployment status.",
+                            dispatch_menu_vehicle_list: "Here you can see all vehicles available for the mission. Select a vehicle by clicking on the check box next to it."
                         },
                         mobile: {
-                            dispatch_menu: "This is the dispatch menu. From here you send your units to missions!",
-                            dispatch_menu_buttons: 'These are your two dispatch buttons! The first one: "Dispatch" sends the selected units to the mission. The second one does the same as the first one but goes to the next mission. Click the first button for now.',
-                            dispatch_menu_mission_general: "Here you can see the general mission information, that means the name, address, icon of the mission. The little man-icon appears and replaces a small star, on missions which you already participated in.",
-                            dispatch_menu_mission_progress: "Here you can see how much progress has been made to deal with this mission as well as the number of staff on site and the time left to deal with the mission!",
-                            dispatch_menu_mission_specific: "Here you can see more information about the mission, which units are responding to the call and which are already at the site",
-                            dispatch_menu_vehicle_list: "This is the list of your available vehicles. You select the vehicles here. Now select your vehicle by clicking on it!"
+                            dispatch_menu: "This is the dispatch window. Here you can send vehicles on missions.",
+                            dispatch_menu_buttons: "Send a vehicle to a mission by clicking the dispatch button. As soon as you have more missions you can use the button next to it to additionaly go to the next mission.",
+                            dispatch_menu_mission_general: 'Here you can find general information about the mission. As long as you are not involved in the mission, <span class="glyphicon glyphicon-asterisk"></span> is displayed in front of the mission name, <span class="glyphicon glyphicon-user"></span> as soon as you have sent the first vehicle.',
+                            dispatch_menu_mission_progress: "Here you can see the progress of the mission. As soon as personnel is on site, they get displayed here and you can see how much time is still needed for completing the mission.",
+                            dispatch_menu_mission_specific: "Here you can see which vehicles are on their way to or at the mission. The number in front of a vehicle indicates its deployment status.",
+                            dispatch_menu_vehicle_list: "Here you can see all vehicles available for the mission. Select a vehicle by clicking on the check box next to it."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: 'Now we want to learn how to deal with incidents. Open the dispatch menu by clicking on a "dispatch"-button!',
-                            first_mission: "Great, you've built your first building! See, the first missions were reported to you!"
+                            dispatch_button: 'Attend to the mission by first clicking on the "Dispatch" button.',
+                            first_mission: "Your first building is ready. You also received your first mission!"
                         },
                         mobile: {
-                            dispatch_button: 'Now we want to learn how to deal with incidents. Open the dispatch menu by clicking on a "dispatch"-button!',
-                            first_mission: "Great, you've built your first building! See, the first missions were reported to you!"
+                            dispatch_button: 'Attend to the mission by first clicking on the "Dispatch" button.',
+                            first_mission: "Your first building is ready. You also received your first mission!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Great, you are on your way to becoming an awesome Missionchief! Here are %{coins} Coins. to help you get started! </br> Your MissionChief-team"
+                        general: "You are now ready to start taking care of missions on your own. To help you get started with your missions and expansion, you receive %{coins} coins. Good luck!"
                     },
                     mobile: {
-                        general: "Great, you are on your way to becoming an awesome Missionchief! Here are %{coins} Coins. to help you get started! </br> Your MissionChief-team"
+                        general: "You are now ready to start taking care of missions on your own. To help you get started with your missions and expansion, you receive %{coins} coins. Good luck!"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "If you have questions you can consult the in game FAQ or visit the game forums or our facebook page!",
-                        general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
-                        join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
+                        contact: "If you upgrade your stations, you get space for new vehicles.",
+                        general: "You will receive credits for finishing a mission. By earning credits you get closer to a promotion.",
+                        join_alliance: "Promotions and building stations unlock new features like mission types or vehicles.",
                         radio: {
                             helpshift_id: "1540",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             short: "The radio displays status updates of your vehicles. For more detailed information on each status click here."
                         },
-                        summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
+                        summary: "You can join an alliance to solve missions together with others. There are also regular alliance events in which all members can participate!"
                     },
                     daily_bonus: {
                         helpshift_id: "1829",
                         link: "https://xyrality.helpshift.com/hc/all/23-mission-chief/faq/1829-what-is-the-daily-login-bonus/"
                     },
                     mobile: {
-                        contact: "If you have questions you can consult the in game FAQ or visit the game forums or our facebook page!",
-                        general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
-                        join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
-                        summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
+                        contact: "If you upgrade your stations, you get space for new vehicles.",
+                        general: "You will receive credits for finishing a mission. By earning credits you get closer to a promotion.",
+                        join_alliance: "Promotions and building stations unlock new features like mission types or vehicles.",
+                        summary: "You can join an alliance to solve missions together with others. There are also regular alliance events in which all members can participate!"
                     },
                     reminder: {
                         join_alliance: "Joining an alliance has many benefits: extra rewards for completing alliance missions, support from experienced members for difficult missions and you can use facilities of other members like hospitals and schools! Press the button to join an alliance now!"
@@ -5034,34 +5012,10 @@ Object.values || (Object.values = function (e) {
                 beginner: {
                     building: {
                         browser: {
-                            build_building: {
-                                add_name: 'Second give your new station a name! Make it recognisable and scalable! E.g. "Police station #0001". When you are done, please click "Next"!',
-                                select_building: "First choose the type of building you want to start with, we highly suggest you to start with a police station! In any case starting with a small station is advised!"
-                            },
-                            welcome: "Hello, welcome to Police MissionChief!  I will teach you some lessons to help you start off your emergency services career well!"
+                            welcome: "Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions."
                         },
                         mobile: {
-                            build_building: {
-                                add_name: 'Second give your new station a name! Make it recognisable and scalable! E.g. "Police station #0001". When you are done, please click "Next"!',
-                                select_building: "First choose the type of building you want to start with, we highly suggest you to start with a police station! In any case starting with a small station is advised!"
-                            },
-                            welcome: "Hello, welcome to Police MissionChief!  I will teach you some lessons to help you start off your emergency services career well!"
-                        }
-                    },
-                    rewards: {
-                        browser: {
-                            general: "Great, you are on your way to becoming an awesome Police MissionChief! Here are %{coins} Coins to help you get started! </br> Your Police MissionChief-team"
-                        },
-                        mobile: {
-                            general: "Great, you are on your way to becoming an awesome Police MissionChief! Here are %{coins} Coins to help you get started! </br> Your Police MissionChief-team"
-                        }
-                    },
-                    tips: {
-                        browser: {
-                            summary: "These are the basics of Police MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your Police MissionChief-team"
-                        },
-                        mobile: {
-                            summary: "These are the basics of Police MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your Police MissionChief-team"
+                            welcome: "Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions."
                         }
                     }
                 }
@@ -5388,23 +5342,23 @@ Object.values || (Object.values = function (e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: 'Second give your new station a name! Make it recognisable and scalable! E.g. "Fire station #0001". When you are done, please click "Next"!',
-                            build_with_credits: "Now build your building with credits!",
-                            new_building: 'Click on "New building"!',
-                            select_building: "First choose the type of building you want to start with, we highly suggest you to start with fire services! In any case starting with a small station is advised!",
-                            select_position: "Move the blue marker where you want to build your first station!"
+                            add_name: "Choose a name for your station. You can rename it later.",
+                            build_with_credits: "To build a station you need credits, the currency of the game. You can earn credits through missions, daily logins, tasks and events.",
+                            new_building: "Start the building process of your station.",
+                            select_building: "Decide if you want to build a fire station or a police station. In the beginning small stations are sufficient. You can upgrade them to normal stations later.",
+                            select_position: "Move the location marker to the location where you want the station to be."
                         },
-                        pick_location: "First pick a location to start! Type the name of the location you want to start in into the search bar or find it on the map yourself! What about your hometown?",
-                        welcome: "Hello, welcome to MissionChief!  I will teach you some lessons to help you start off your emergency services career well!"
+                        pick_location: "Pick a location where you want to build your first station.",
+                        welcome: "Welcome to Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions."
                     },
                     mobile: {
                         build_building: {
-                            add_name: 'Second give your new station a name! Make it recognisable and scalable! E.g. "Fire station #0001". When you are done, please click "Next"!',
-                            build_with_credits: "Now build your building with credits!",
-                            new_building: 'First we will pick a location to start and build your first building! <br /> <br /> To do that click on "New building"!',
-                            select_building: "First choose the type of building you want to start with, we highly suggest you to start with fire services! In any case starting with a small station is advised!"
+                            add_name: "Choose a name for your station. You can rename it later.",
+                            build_with_credits: "To build a station you need credits, the currency of the game. You can earn credits through missions, daily logins, tasks and events.",
+                            new_building: "Begin with building your first station. You can choose its location by entering it manually or by moving the location marker on the map. Depending on your operating system, you might have to hold the marker for a while before you can move it.",
+                            select_building: "Decide if you want to build a fire station or a police station. In the beginning small stations are sufficient. You can upgrade them to normal stations later."
                         },
-                        welcome: "Hello, welcome to MissionChief!  I will teach you some lessons to help you start off your emergency services career well!"
+                        welcome: "Welcome to Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions."
                     },
                     tooltip: {
                         ambulance_station_small: {
@@ -5507,58 +5461,58 @@ Object.values || (Object.values = function (e) {
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "This is the dispatch menu. From here you send your units to missions!",
-                            dispatch_menu_buttons: 'These are your two dispatch buttons! The first one: "Dispatch" sends the selected units to the mission. The second one does the same as the first one but goes to the next mission. Click the first button for now.',
-                            dispatch_menu_mission_general: "Here you can see the general mission information, that means the name, address, icon of the mission. The little man-icon appears and replaces a small star, on missions which you already participated in.",
-                            dispatch_menu_mission_progress: "Here you can see how much progress has been made to deal with this mission as well as the number of staff on site and the time left to deal with the mission!",
-                            dispatch_menu_mission_specific: "Here you can see more information about the mission, which units are responding to the call and which are already at the site",
-                            dispatch_menu_vehicle_list: "This is the list of your available vehicles. You select the vehicles here. Now select your vehicle by clicking on it!"
+                            dispatch_menu: "This is the dispatch window. Here you can send vehicles on missions.",
+                            dispatch_menu_buttons: "Send a vehicle to a mission by clicking the dispatch button. As soon as you have more missions you can use the button next to it to additionaly go to the next mission.",
+                            dispatch_menu_mission_general: 'Here you can find general information about the mission. As long as you are not involved in the mission, <span class="glyphicon glyphicon-asterisk"></span> is displayed in front of the mission name, <span class="glyphicon glyphicon-user"></span> as soon as you have sent the first vehicle.',
+                            dispatch_menu_mission_progress: "Here you can see the progress of the mission. As soon as personnel is on site, they get displayed here and you can see how much time is still needed for completing the mission.",
+                            dispatch_menu_mission_specific: "Here you can see which vehicles are on their way to or at the mission. The number in front of a vehicle indicates its deployment status.",
+                            dispatch_menu_vehicle_list: "Here you can see all vehicles available for the mission. Select a vehicle by clicking on the check box next to it."
                         },
                         mobile: {
-                            dispatch_menu: "This is the dispatch menu. From here you send your units to missions!",
-                            dispatch_menu_buttons: 'These are your two dispatch buttons! The first one: "Dispatch" sends the selected units to the mission. The second one does the same as the first one but goes to the next mission. Click the first button for now.',
-                            dispatch_menu_mission_general: "Here you can see the general mission information, that means the name, address, icon of the mission. The little man-icon appears and replaces a small star, on missions which you already participated in.",
-                            dispatch_menu_mission_progress: "Here you can see how much progress has been made to deal with this mission as well as the number of staff on site and the time left to deal with the mission!",
-                            dispatch_menu_mission_specific: "Here you can see more information about the mission, which units are responding to the call and which are already at the site",
-                            dispatch_menu_vehicle_list: "This is the list of your available vehicles. You select the vehicles here. Now select your vehicle by clicking on it!"
+                            dispatch_menu: "This is the dispatch window. Here you can send vehicles on missions.",
+                            dispatch_menu_buttons: "Send a vehicle to a mission by clicking the dispatch button. As soon as you have more missions you can use the button next to it to additionaly go to the next mission.",
+                            dispatch_menu_mission_general: 'Here you can find general information about the mission. As long as you are not involved in the mission, <span class="glyphicon glyphicon-asterisk"></span> is displayed in front of the mission name, <span class="glyphicon glyphicon-user"></span> as soon as you have sent the first vehicle.',
+                            dispatch_menu_mission_progress: "Here you can see the progress of the mission. As soon as personnel is on site, they get displayed here and you can see how much time is still needed for completing the mission.",
+                            dispatch_menu_mission_specific: "Here you can see which vehicles are on their way to or at the mission. The number in front of a vehicle indicates its deployment status.",
+                            dispatch_menu_vehicle_list: "Here you can see all vehicles available for the mission. Select a vehicle by clicking on the check box next to it."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: 'Now we want to learn how to deal with incidents. Open the dispatch menu by clicking on a "dispatch"-button!',
-                            first_mission: "Great, you've built your first building! See, the first missions were reported to you!"
+                            dispatch_button: 'Attend to the mission by first clicking on the "Dispatch" button.',
+                            first_mission: "Your first building is ready. You also received your first mission!"
                         },
                         mobile: {
-                            dispatch_button: 'Now we want to learn how to deal with incidents. Open the dispatch menu by clicking on a "dispatch"-button!',
-                            first_mission: "Great, you've built your first building! See, the first missions were reported to you!"
+                            dispatch_button: 'Attend to the mission by first clicking on the "Dispatch" button.',
+                            first_mission: "Your first building is ready. You also received your first mission!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Great, you are on your way to becoming an awesome Missionchief! Here are %{coins} Coins. to help you get started! </br> Your MissionChief-team"
+                        general: "You are now ready to start taking care of missions on your own. To help you get started with your missions and expansion, you receive %{coins} coins. Good luck!"
                     },
                     mobile: {
-                        general: "Great, you are on your way to becoming an awesome Missionchief! Here are %{coins} Coins. to help you get started! </br> Your MissionChief-team"
+                        general: "You are now ready to start taking care of missions on your own. To help you get started with your missions and expansion, you receive %{coins} coins. Good luck!"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "If you have questions you can consult the in game FAQ or visit the game forums or our facebook page!",
-                        general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
-                        join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
+                        contact: "If you upgrade your stations, you get space for new vehicles.",
+                        general: "You will receive credits for finishing a mission. By earning credits you get closer to a promotion.",
+                        join_alliance: "Promotions and building stations unlock new features like mission types or vehicles.",
                         radio: {
                             helpshift_id: "1540",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             short: "The radio displays status updates of your vehicles. For more detailed information on each status click here."
                         },
-                        summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
+                        summary: "You can join an alliance to solve missions together with others. There are also regular alliance events in which all members can participate!"
                     },
                     mobile: {
-                        contact: "If you have questions you can consult the in game FAQ or visit the game forums or our facebook page!",
-                        general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
-                        join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
-                        summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
+                        contact: "If you upgrade your stations, you get space for new vehicles.",
+                        general: "You will receive credits for finishing a mission. By earning credits you get closer to a promotion.",
+                        join_alliance: "Promotions and building stations unlock new features like mission types or vehicles.",
+                        summary: "You can join an alliance to solve missions together with others. There are also regular alliance events in which all members can participate!"
                     },
                     reminder: {
                         join_alliance: "Joining an alliance has many benefits: extra rewards for completing alliance missions, support from experienced members for difficult missions and you can use facilities of other members like hospitals and schools! Press the button to join an alliance now!"
@@ -5583,34 +5537,10 @@ Object.values || (Object.values = function (e) {
                 beginner: {
                     building: {
                         browser: {
-                            build_building: {
-                                add_name: 'Second give your new station a name! Make it recognisable and scalable! E.g. "Police station #0001". When you are done, please click "Next"!',
-                                select_building: "First choose the type of building you want to start with, we highly suggest you to start with a police station! In any case starting with a small station is advised!"
-                            },
-                            welcome: "Hello, welcome to Police MissionChief! I will teach you some lessons to help you start off your emergency services career well!"
+                            welcome: "Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions."
                         },
                         mobile: {
-                            build_building: {
-                                add_name: 'Second give your new station a name! Make it recognisable and scalable! E.g. "Police station #0001". When you are done, please click "Next"!',
-                                select_building: "First choose the type of building you want to start with, we highly suggest you to start with a police station! In any case starting with a small station is advised!"
-                            },
-                            welcome: "Hello, welcome to Police MissionChief! I will teach you some lessons to help you start off your emergency services career well!"
-                        }
-                    },
-                    rewards: {
-                        browser: {
-                            general: "Great, you are on your way to becoming an awesome Police MissionChief! Here are %{coins} Coins. to help you get started! </br> Your Police MissionChief-team"
-                        },
-                        mobile: {
-                            general: "Great, you are on your way to becoming an awesome Police MissionChief! Here are %{coins} Coins. to help you get started! </br> Your Police MissionChief-team"
-                        }
-                    },
-                    tips: {
-                        browser: {
-                            summary: "These are the basics of Police MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your Police MissionChief-team"
-                        },
-                        mobile: {
-                            summary: "These are the basics of Police MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your Police MissionChief-team"
+                            welcome: "Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions."
                         }
                     }
                 }
@@ -5943,80 +5873,80 @@ Object.values || (Object.values = function (e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: "Geef je nieuwe gebouw een naam. Maak het herkenbaar en opschaalbaar. Bijvoorbeeld 'Brandweerkazerne nr. 0001'. Als je klaar bent, klik dan op 'Volgende'.",
-                            build_with_credits: "Bouw nu je gebouw met credits.",
-                            new_building: "Klik op 'Nieuw gebouw maken'.",
-                            select_building: "Kies nu eerst het type gebouw waar je mee wil beginnen. We raden je aan om te beginnen met de brandweer, zo maak je de beste start!",
-                            select_position: "Zet de blauwe markering neer waar je je eerste gebouw wil bouwen."
+                            add_name: "Kies een naam voor je post. Je kunt de naam later wijzigen.",
+                            build_with_credits: "Om een post te bouwen heb je credits nodig, de valuta van het spel. Je kunt credits verdienen met inzetten, dagelijkse logins, taken en evenementen.",
+                            new_building: "Start het bouwproces van je post.",
+                            select_building: "Beslis of je een brandweerkazerne of een politiebureau wilt bouwen. In het begin zijn kleine posten voldoende. Je kunt ze later upgraden naar normale posten.",
+                            select_position: "Verplaats de locatiemarkeerder naar de locatie waar je het post wilt hebben."
                         },
-                        pick_location: "Kies eerst een locatie om te beginnen. Typ de naam van de locatie waar je wil beginnen in de zoekbalk of zoek zelf op de kaart. Je kunt bijvoorbeeld je woonplaats kiezen.",
-                        welcome: "Hallo, welkom bij Meldkamerspel!  Ik zal je het een en ander leren om je te helpen je carri\xe8re bij de hulpdiensten goed te beginnen."
+                        pick_location: "Kies een locatie waar je je eerste post wilt bouwen.",
+                        welcome: "Welkom bij Meldkamerspel! In een meldkamer voor hulpdiensten behandel je noodoproepen om de burgers te helpen en te beschermen. Hiervoor bouw je posten en stuur je verschillende soorten voertuigen en opgeleid personeel naar verschillende inzetten."
                     },
                     mobile: {
                         build_building: {
-                            add_name: "Geef je nieuwe gebouw een naam. Maak het herkenbaar en opschaalbaar. Bijvoorbeeld 'Brandweerkazerne nr. 0001'. Als je klaar bent, klik dan op 'Volgende'.",
-                            build_with_credits: "Bouw nu je gebouw met credits.",
-                            new_building: "Eerst kiezen we een locatie om te beginnen en bouwen we je eerste gebouw. <br /> <br /> Om dat te doen, klik je op 'Nieuw gebouw maken'.",
-                            select_building: "Kies nu eerst het type gebouw waar je mee wil beginnen. We raden je aan om te beginnen met de brandweer, zo maak je de beste start!"
+                            add_name: "Kies een naam voor je post. Je kunt de naam later wijzigen.",
+                            build_with_credits: "Om een post te bouwen heb je credits nodig, de valuta van het spel. Je kunt credits verdienen met inzetten, dagelijkse logins, taken en evenementen.",
+                            new_building: "Begin met het bouwen van je eerste post. Je kunt de locatie kiezen door deze handmatig in te voeren of door de locatiemarkeerder op de kaart te verplaatsen. Afhankelijk van je besturingssysteem moet je de locatiemarkeerder even ingedrukt houden voordat je hem kunt verplaatsen.",
+                            select_building: "Beslis of je een brandweerkazerne of een politiebureau wilt bouwen. In het begin zijn kleine posten voldoende. Je kunt ze later upgraden naar normale posten."
                         },
-                        welcome: "Hallo, welkom bij Meldkamerspel!  Ik zal je het een en ander leren om je te helpen je carri\xe8re bij de hulpdiensten goed te beginnen."
+                        welcome: "Welkom bij Meldkamerspel! In een meldkamer voor hulpdiensten behandel je noodoproepen om de burgers te helpen en te beschermen. Hiervoor bouw je posten en stuur je verschillende soorten voertuigen en opgeleid personeel naar verschillende inzetten."
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Dit is het Alarmeringsmenu. Hiervandaan stuur je je eenheden naar de melding.",
-                            dispatch_menu_buttons: "Dit zijn de twee Alarmeringsknoppen. De eerste: 'Alarmeren' stuurt de geselecteerde eenheden naar de melding. De tweede knop doet hetzelfde als de eerste, maar schakelt daarna door naar de volgende missie. Klik nu op de eerste knop.",
-                            dispatch_menu_mission_general: "Hier zie je algemene informatie over de melding: de naam, het adres, het icoontje van de missie. Het icoontje van een mannetje vervangt het sterretje voor missies waaraan je al deelneemt.",
-                            dispatch_menu_mission_progress: "Hier zie je hoeveel vooruitgang er is geboekt met deze melding; hoeveel medewerkers ter plaatse zijn en de resterende tijd die nog nodig is om de melding af te handelen.",
-                            dispatch_menu_mission_specific: "Hier zie je meer informatie over de melding; welke eenheden onderweg en welke al ter plaatse zijn.",
-                            dispatch_menu_vehicle_list: "Dit is een lijst met beschikbare voertuigen. Hier selecteer je de voertuigen. Selecteer nu je voertuig door erop te klikken."
+                            dispatch_menu: "Dit is het meldingscherm. Hier kun je voertuigen naar inzetten sturen.",
+                            dispatch_menu_buttons: "Stuur een voertuig naar een inzet door op de verzendknop te klikken. Zodra je meer inzetten hebt kun je de knop ernaast gebruiken om naar de volgende inzet te gaan.",
+                            dispatch_menu_mission_general: 'Hier vind je algemene informatie over de inzet. Zolang je niet betrokken bent bij de inzet, staat <span class="glyphicon glyphicon-asterisk"></span> voor de inzet naam, dit veranderd in<span class="glyphicon glyphicon-user"></span> zodra je het eerste voertuig hebt gestuurd.',
+                            dispatch_menu_mission_progress: "Hier kun je de voortgang van de inzet zien. Zodra er personeel ter plaatse is, wordt het hier weergegeven en kun je zien hoeveel tijd er nog nodig is om de inzet te voltooien.",
+                            dispatch_menu_mission_specific: "Hier kun je zien welke voertuigen onderweg zijn naar of op de inzet. Het nummer voor een voertuig geeft de inzetstatus aan.",
+                            dispatch_menu_vehicle_list: "Hier zie je alle voertuigen die beschikbaar zijn voor de inzet. Selecteer een voertuig door op het selectievakje ernaast te klikken."
                         },
                         mobile: {
-                            dispatch_menu: "Dit is het Alarmeringsmenu. Hiervandaan stuur je je eenheden naar de melding.",
-                            dispatch_menu_buttons: "Dit zijn de twee Alarmeringsknoppen. De eerste: 'Alarmeren' stuurt de geselecteerde eenheden naar de melding. De tweede knop doet hetzelfde als de eerste, maar schakelt daarna door naar de volgende missie. Klik nu op de eerste knop.",
-                            dispatch_menu_mission_general: "Hier zie je algemene informatie over de melding: de naam, het adres, het icoontje van de missie. Het icoontje van een mannetje vervangt het sterretje voor missies waaraan je al deelneemt.",
-                            dispatch_menu_mission_progress: "Hier zie je hoeveel vooruitgang er is geboekt met deze melding; hoeveel medewerkers ter plaatse zijn en de resterende tijd die nog nodig is om de melding af te handelen.",
-                            dispatch_menu_mission_specific: "Hier zie je meer informatie over de melding; welke eenheden onderweg en welke al ter plaatse zijn.",
-                            dispatch_menu_vehicle_list: "Dit is een lijst met beschikbare voertuigen. Hier selecteer je de voertuigen. Selecteer nu je voertuig door erop te klikken."
+                            dispatch_menu: "Dit is het meldingscherm. Hier kun je voertuigen naar inzetten sturen.",
+                            dispatch_menu_buttons: "Stuur een voertuig naar een inzet door op de verzendknop te klikken. Zodra je meer inzetten hebt kun je de knop ernaast gebruiken om naar de volgende inzet te gaan.",
+                            dispatch_menu_mission_general: 'Hier vind je algemene informatie over de inzet. Zolang je niet betrokken bent bij de inzet, staat <span class="glyphicon glyphicon-asterisk"></span> voor de inzet naam, dit veranderd in<span class="glyphicon glyphicon-user"></span> zodra je het eerste voertuig hebt gestuurd.',
+                            dispatch_menu_mission_progress: "Hier kun je de voortgang van de inzet zien. Zodra er personeel ter plaatse is, wordt het hier weergegeven en kun je zien hoeveel tijd er nog nodig is om de inzet te voltooien.",
+                            dispatch_menu_mission_specific: "Hier kun je zien welke voertuigen onderweg zijn naar of op de inzet. Het nummer voor een voertuig geeft de inzetstatus aan.",
+                            dispatch_menu_vehicle_list: "Hier zie je alle voertuigen die beschikbaar zijn voor de inzet. Selecteer een voertuig door op het selectievakje ernaast te klikken."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "Nu willen we leren hoe we met incidenten om moeten gaan. Open het Alarmeringsmenu door op de 'Alarm'-knop te drukken.",
-                            first_mission: "Geweldig, je hebt je eerste gebouw gebouwd! En kijk, de eerste meldingen komen al binnen!"
+                            dispatch_button: 'Voer de inzet uit door eerst op de knop "Alarm" te klikken.',
+                            first_mission: "Je eerste gebouw is klaar. Je hebt ook je eerste inzet ontvangen!"
                         },
                         mobile: {
-                            dispatch_button: "Nu willen we leren hoe we met incidenten om moeten gaan. Open het Alarmeringsmenu door op de 'Alarm'-knop te drukken.",
-                            first_mission: "Geweldig, je hebt je eerste gebouw gebouwd! En kijk, de eerste meldingen komen al binnen!"
+                            dispatch_button: 'Voer de inzet uit door eerst op de knop "Alarm" te klikken.',
+                            first_mission: "Je eerste gebouw is klaar. Je hebt ook je eerste inzet ontvangen!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Goed zo, je bent op weg om een geweldige meldkamercentralist te worden! Hier heb je %{coins} Coins om je verder op weg te helpen. </br> Het team van Meldkamerspel"
+                        general: "Je bent nu klaar om de inzetten zelf uit te voeren. Om je op weg te helpen met je inzetten en uitbreidingen, ontvang je %{coins} coins. Veel succes!"
                     },
                     mobile: {
-                        general: "Goed zo, je bent op weg om een geweldige meldkamercentralist te worden! Hier heb je %{coins} Coins om je verder op weg te helpen. </br> Het team van Meldkamerspel"
+                        general: "Je bent nu klaar om de inzetten zelf uit te voeren. Om je op weg te helpen met je inzetten en uitbreidingen, ontvang je %{coins} coins. Veel succes!"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Als je vragen hebt, kun je de veelgestelde vragen over het spel bekijken of een bezoekje brengen aan de forums of onze Facebook-pagina. Op het Blog vind je nog extra handleidingen en video's met uitleg over de verschillende functies in het spel.",
-                        general: "Als volgende stap raden we je aan om een meldkamer(gratis!) te bouwen en dan zo snel mogelijk nieuwe gebouwen te bouwen, aangezien het maximumaantal missies gelijk is aan het type station waarvan je er het meeste hebt (politie, brandweer, ambulance) plus 1. Bijvoorbeeld: 5 brandweerkazernes en 3 ambulanceposten = 6 missies.",
-                        join_alliance: "Ook kun je je aansluiten bij een team. Dat kan je vooral in het begin erg vooruit helpen.",
+                        contact: "Als je je posten uitbouwd, krijg je ruimte voor nieuwe voertuigen.",
+                        general: "Je krijgt credits voor het voltooien van een inzet. Door credits te verdienen kom je dichter bij een promotie.",
+                        join_alliance: "Door promoties en het bouwen van posten, ontgrendelen er nieuwe functies zoals inzet types of voertuigen.",
                         radio: {
                             helpshift_id: "1540",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             short: "De radio toont statusupdates van uw voertuigen. Voor meer gedetailleerde informatie over elke status klik hier."
                         },
-                        summary: "Dit zijn de basisprincipes van Meldkamerspel. Meldigen afhandelen, Credits verdienen, meer gebouwen en eenheden kopen, enzovoorts. Veel speelplezier! </br> Het team van Meldkamerspel"
+                        summary: "Je kunt lid worden van een team om samen met anderen inzetten uit te voeren. Er zijn ook regelmatig team-evenementen waaraan je kunt deelnemen."
                     },
                     mobile: {
-                        contact: "Als je vragen hebt, kun je de veelgestelde vragen over het spel bekijken of een bezoekje brengen aan de forums of onze Facebook-pagina. Op het Blog vind je nog extra handleidingen en video's met uitleg over de verschillende functies in het spel.",
-                        general: "Als volgende stap raden we je aan om een meldkamer(gratis!) te bouwen en dan zo snel mogelijk nieuwe gebouwen te bouwen, aangezien het maximumaantal missies gelijk is aan het type station waarvan je er het meeste hebt (politie, brandweer, ambulance) plus 1. Bijvoorbeeld: 5 brandweerkazernes en 3 ambulanceposten = 6 missies.",
-                        join_alliance: "Ook kun je je aansluiten bij een team. Dat kan je vooral in het begin erg vooruit helpen.",
-                        summary: "Dit zijn de basisprincipes van Meldkamerspel. Meldigen afhandelen, Credits verdienen, meer gebouwen en eenheden kopen, enzovoorts. Veel speelplezier! </br> Het team van Meldkamerspel"
+                        contact: "Als je je posten uitbouwd, krijg je ruimte voor nieuwe voertuigen.",
+                        general: "Je krijgt credits voor het voltooien van een inzet. Door credits te verdienen kom je dichter bij een promotie.",
+                        join_alliance: "Door promoties en het bouwen van posten, ontgrendelen er nieuwe functies zoals inzet types of voertuigen.",
+                        summary: "Je kunt lid worden van een team om samen met anderen inzetten uit te voeren. Er zijn ook regelmatig team-evenementen waaraan je kunt deelnemen."
                     },
                     reminder: {
                         join_alliance: "Lid worden van een team heeft veel voordelen: extra beloningen voor het voltooien van team-missies, steun van ervaren leden bij moeilijke missies en je kunt gebruik maken van faciliteiten van andere leden zoals ziekenhuizen en scholen! Druk nu op de knop om lid te worden van een team!"
@@ -6041,34 +5971,10 @@ Object.values || (Object.values = function (e) {
                 beginner: {
                     building: {
                         browser: {
-                            build_building: {
-                                add_name: "Geef je nieuwe gebouw een naam. Maak het herkenbaar en opschaalbaar. Bijvoorbeeld 'Politie nr. 0001'. Als je klaar bent, klik dan op 'Volgende'.",
-                                select_building: "Kies nu eerst het type gebouw waar je mee wil beginnen. We raden je aan om te beginnen met de politie, zo maak je de beste start!"
-                            },
-                            welcome: "Hallo, welkom bij Meldkamerspel Politie! Ik zal je het een en ander leren om je te helpen je carri\xe8re bij de hulpdiensten goed te beginnen."
+                            welcome: "Welkom bij Meldkamerspel Politie! In een meldkamer voor hulpdiensten behandel je noodoproepen om de burgers te helpen en te beschermen. Hiervoor bouw je posten en stuur je verschillende soorten voertuigen en opgeleid personeel naar verschillende inzetten."
                         },
                         mobile: {
-                            build_building: {
-                                add_name: "Geef je nieuwe gebouw een naam. Maak het herkenbaar en opschaalbaar. Bijvoorbeeld 'Politie nr. 0001'. Als je klaar bent, klik dan op 'Volgende'.",
-                                select_building: "Kies nu eerst het type gebouw waar je mee wil beginnen. We raden je aan om te beginnen met de politie, zo maak je de beste start!"
-                            },
-                            welcome: "Hallo, welkom bij Meldkamerspel Politie! Ik zal je het een en ander leren om je te helpen je carri\xe8re bij de hulpdiensten goed te beginnen."
-                        }
-                    },
-                    rewards: {
-                        browser: {
-                            general: "Goed zo, je bent op weg om een geweldige meldkamercentralist te worden! Hier heb je %{coins} Coins om je verder op weg te helpen. </br> Het team van Meldkamerspel Politie"
-                        },
-                        mobile: {
-                            general: "Goed zo, je bent op weg om een geweldige meldkamercentralist te worden! Hier heb je %{coins} Coins om je verder op weg te helpen. </br> Het team van Meldkamerspel Politie"
-                        }
-                    },
-                    tips: {
-                        browser: {
-                            summary: "Dit zijn de basisprincipes van Meldkamerspel Politie. Meldigen afhandelen, Credits verdienen, meer gebouwen en eenheden kopen, enzovoorts. Veel speelplezier! </br> Het team van Meldkamerspel Politie"
-                        },
-                        mobile: {
-                            summary: "Dit zijn de basisprincipes van Meldkamerspel Politie. Meldigen afhandelen, Credits verdienen, meer gebouwen en eenheden kopen, enzovoorts. Veel speelplezier! </br> Het team van Meldkamerspel Politie"
+                            welcome: "Welkom bij Meldkamerspel Politie! In een meldkamer voor hulpdiensten behandel je noodoproepen om de burgers te helpen en te beschermen. Hiervoor bouw je posten en stuur je verschillende soorten voertuigen en opgeleid personeel naar verschillende inzetten."
                         }
                     }
                 }
@@ -6395,80 +6301,80 @@ Object.values || (Object.values = function (e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: "\xa1El segundo paso es bautizarla! Dale un nombre reconocible y escalable, Como \xabParque de bomberos #0001\xbb. Cuando acabes, haz clic en Sig.",
-                            build_with_credits: "Ahora, construye tu edificio con cr\xe9ditos.",
-                            new_building: "Haz clic en \xabNuevo edificio\xbb.",
-                            select_building: "Lo primero es elegir el tipo de edificio con el que quieres comenzar. \xa1Te recomendamos que escojas un parque de bomberos! En cualquier caso, lo mejor es comenzar con una instalaci\xf3n peque\xf1a.",
-                            select_position: "Mueve el marcador azul al lugar donde quieres construir tu primera instalaci\xf3n."
+                            add_name: "Seleccione un nombre para su edificio. Puedes cambiarle el nombre m\xe1s tarde.",
+                            build_with_credits: "Para construir un edificio necesitas cr\xe9ditos, la moneda del juego. Puedes ganar cr\xe9ditos a trav\xe9s de misiones, inicios de sesi\xf3n diarios, completando tareas y eventos.",
+                            new_building: "Inicie el proceso de construcci\xf3n de su edificio.",
+                            select_building: "Decide si quieres construir un parque de bomberos o una comisar\xeda de polic\xeda. Al principio son suficientes edificios peque\xf1os. Podr\xe1s actualizarlos a edificios normales m\xe1s adelante.",
+                            select_position: "Mueve el marcador al lugar exacto de tu edificio."
                         },
-                        pick_location: "Para comenzar, elige una ubicaci\xf3n. Puedes escribir su nombre en la barra de b\xfasqueda o mover el mapa hasta llegar a ella. \xbfQu\xe9 te parece si vamos a tu hogar?",
-                        welcome: "\xa1Hola! Te damos la bienvenida a Centro de Mando.  \xa1Te voy a ense\xf1ar algunos conceptos b\xe1sicos para que puedas comenzar tu carrera como operador con buen pie!"
+                        pick_location: "Elija una ubicaci\xf3n donde desee construir su primer edificio.",
+                        welcome: "\xa1Bienvenidos a Centro de Mando! Al trabajar en un centro de despacho de servicios de emergencia, usted atiende llamadas de emergencia para ayudar y proteger a la ciudadan\xeda. Para ello, construyes edificios y env\xedas varios tipos de veh\xedculos y personal capacitado a una variedad de misiones."
                     },
                     mobile: {
                         build_building: {
-                            add_name: "\xa1El segundo paso es bautizarla! Dale un nombre reconocible y escalable, Como \xabParque de bomberos #0001\xbb. Cuando acabes, haz clic en Sig.",
-                            build_with_credits: "Ahora, construye tu edificio con cr\xe9ditos.",
-                            new_building: "Comenzaremos eligiendo una ubicaci\xf3n para tu primer edificio. <br /> <br /> Haz clic en \xabNuevo edificio\xbb.",
-                            select_building: "Lo primero es elegir el tipo de edificio con el que quieres comenzar. \xa1Te recomendamos que escojas un parque de bomberos! En cualquier caso, lo mejor es comenzar con una instalaci\xf3n peque\xf1a."
+                            add_name: "Seleccione un nombre para su edificio. Puedes cambiarle el nombre m\xe1s tarde.",
+                            build_with_credits: "Para construir un edificio necesitas cr\xe9ditos, la moneda del juego. Puedes ganar cr\xe9ditos a trav\xe9s de misiones, inicios de sesi\xf3n diarios, completando tareas y eventos.",
+                            new_building: "Comience construyendo su primer edificio. Puede seleccionar su ubicaci\xf3n indicandola manualmente o moviendo el marcador de ubicaci\xf3n en el mapa. Dependiendo de su sistema operativo, es posible que deba mantener presionado el marcador por un tiempo antes de poder moverlo.",
+                            select_building: "Decide si quieres construir un parque de bomberos o una comisar\xeda de polic\xeda. Al principio son suficientes edificios peque\xf1os. Podr\xe1s actualizarlos a edificios normales m\xe1s adelante."
                         },
-                        welcome: "\xa1Hola! Te damos la bienvenida a Centro de Mando.  \xa1Te voy a ense\xf1ar algunos conceptos b\xe1sicos para que puedas comenzar tu carrera como operador con buen pie!"
+                        welcome: "\xa1Bienvenidos a Centro de Mando! Al trabajar en un centro de despacho de servicios de emergencia, usted atiende llamadas de emergencia para ayudar y proteger a la ciudadan\xeda. Para ello, construyes edificios y env\xedas varios tipos de veh\xedculos y personal capacitado a una variedad de misiones."
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Desde este men\xfa Puedes enviar a tus unidades a misiones.",
-                            dispatch_menu_buttons: "Hay dos botones para enviar el veh\xedculo: El primero, \xabEnviar\xbb, dirige a las unidades seleccionadas a la misi\xf3n. El segundo tambi\xe9n hace esto, pero despu\xe9s pasa a la siguiente misi\xf3n. Por ahora, haz clic en el primer bot\xf3n.",
-                            dispatch_menu_mission_general: "Aqu\xed puedes ver informaci\xf3n general de la misi\xf3n, como su nombre, direcci\xf3n e icono. En las misiones en las que ya est\xe9s participando aparecer\xe1 un peque\xf1o s\xedmbolo de una persona en lugar de la estrella.",
-                            dispatch_menu_mission_progress: "Aqu\xed puedes ver el progreso de la misi\xf3n, as\xed como el personal en el lugar del incidente y el tiempo restante.",
-                            dispatch_menu_mission_specific: "Aqu\xed puedes ver m\xe1s informaci\xf3n sobre la misi\xf3n, qu\xe9 unidades est\xe1n respondiendo a la emergencia y cu\xe1les han llegado ya all\xed.",
-                            dispatch_menu_vehicle_list: "Esta es la lista de veh\xedculos que tienes disponibles. Aqu\xed puedes seleccionarlos. Elige el veh\xedculo que quieras enviar y haz clic sobre \xe9l."
+                            dispatch_menu: "Esta es la ventana de gesti\xf3n de la emergencia. Aqu\xed puedes enviar veh\xedculos a misiones.",
+                            dispatch_menu_buttons: "Env\xeda un veh\xedculo a una misi\xf3n haciendo clic en el bot\xf3n de env\xedo. Tan pronto como tengas m\xe1s misiones podr\xe1s usar el bot\xf3n siguiente para pasar a la siguiente misi\xf3n.",
+                            dispatch_menu_mission_general: 'Aqu\xed podr\xe1s encontrar informaci\xf3n general sobre la misi\xf3n. Siempre que no est\xe9s involucrado en la misi\xf3n, aparecer\xe1 frente a ella <span class="glyphicon glyphicon-asterisk"></span>, una vez que hayas enviado el primer veh\xedculo <span class="glyphicon glyphicon-user"></span>.',
+                            dispatch_menu_mission_progress: "Aqu\xed puedes ver el progreso de la misi\xf3n. Aqu\xed puedes ver qu\xe9 veh\xedculos est\xe1n en el lugar y cu\xe1nto tiempo queda para completar la misi\xf3n.",
+                            dispatch_menu_mission_specific: "Aqu\xed puede ver qu\xe9 veh\xedculos se encuentran en camino hacia o en el lugar de la misi\xf3n. El n\xfamero delante de su veh\xedculo muestra su estado.",
+                            dispatch_menu_vehicle_list: "Aqu\xed puede ver todos los veh\xedculos disponibles para la misi\xf3n. Seleccione un veh\xedculo haciendo clic en la casilla de verificaci\xf3n junto a \xe9l."
                         },
                         mobile: {
-                            dispatch_menu: "Desde este men\xfa Puedes enviar a tus unidades a misiones.",
-                            dispatch_menu_buttons: "Hay dos botones para enviar el veh\xedculo: El primero, \xabEnviar\xbb, dirige a las unidades seleccionadas a la misi\xf3n. El segundo tambi\xe9n hace esto, pero despu\xe9s pasa a la siguiente misi\xf3n. Por ahora, haz clic en el primer bot\xf3n.",
-                            dispatch_menu_mission_general: "Aqu\xed puedes ver informaci\xf3n general de la misi\xf3n, como su nombre, direcci\xf3n e icono. En las misiones en las que ya est\xe9s participando aparecer\xe1 un peque\xf1o s\xedmbolo de una persona en lugar de la estrella.",
-                            dispatch_menu_mission_progress: "Aqu\xed puedes ver el progreso de la misi\xf3n, as\xed como el personal en el lugar del incidente y el tiempo restante.",
-                            dispatch_menu_mission_specific: "Aqu\xed puedes ver m\xe1s informaci\xf3n sobre la misi\xf3n, qu\xe9 unidades est\xe1n respondiendo a la emergencia y cu\xe1les han llegado ya all\xed.",
-                            dispatch_menu_vehicle_list: "Esta es la lista de veh\xedculos que tienes disponibles. Aqu\xed puedes seleccionarlos. Elige el veh\xedculo que quieras enviar y haz clic sobre \xe9l."
+                            dispatch_menu: "Esta es la ventana de gesti\xf3n de la emergencia. Aqu\xed puedes enviar veh\xedculos a misiones.",
+                            dispatch_menu_buttons: "Env\xeda un veh\xedculo a una misi\xf3n haciendo clic en el bot\xf3n de env\xedo. Tan pronto como tengas m\xe1s misiones podr\xe1s usar el bot\xf3n siguiente para pasar a la siguiente misi\xf3n.",
+                            dispatch_menu_mission_general: 'Aqu\xed podr\xe1s encontrar informaci\xf3n general sobre la misi\xf3n. Siempre que no est\xe9s involucrado en la misi\xf3n, aparecer\xe1 frente a ella <span class="glyphicon glyphicon-asterisk"></span>, una vez que hayas enviado el primer veh\xedculo <span class="glyphicon glyphicon-user"></span>.',
+                            dispatch_menu_mission_progress: "Aqu\xed puedes ver el progreso de la misi\xf3n. Aqu\xed puedes ver qu\xe9 veh\xedculos est\xe1n en el lugar y cu\xe1nto tiempo queda para completar la misi\xf3n.",
+                            dispatch_menu_mission_specific: "Aqu\xed puede ver qu\xe9 veh\xedculos se encuentran en camino hacia o en el lugar de la misi\xf3n. El n\xfamero delante de su veh\xedculo muestra su estado.",
+                            dispatch_menu_vehicle_list: "Aqu\xed puede ver todos los veh\xedculos disponibles para la misi\xf3n. Seleccione un veh\xedculo haciendo clic en la casilla de verificaci\xf3n junto a \xe9l."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "Ahora, aprendamos c\xf3mo lidiar con incidentes. Haz clic en un bot\xf3n \xabenviar\xbb para abrir el men\xfa.",
-                            first_mission: "\xa1Genial! Tu primer edificio ya est\xe1 construido. \xbfVes? Ya est\xe1s recibiendo avisos de emergencias."
+                            dispatch_button: 'Haga clic en el bot\xf3n "Enviar" para realizar la misi\xf3n.',
+                            first_mission: "Tu primer edificio est\xe1 listo. \xa1Tambi\xe9n recibiste tu primera misi\xf3n!"
                         },
                         mobile: {
-                            dispatch_button: "Ahora, aprendamos c\xf3mo lidiar con incidentes. Haz clic en un bot\xf3n \xabenviar\xbb para abrir el men\xfa.",
-                            first_mission: "\xa1Genial! Tu primer edificio ya est\xe1 construido. \xbfVes? Ya est\xe1s recibiendo avisos de emergencias."
+                            dispatch_button: 'Haga clic en el bot\xf3n "Enviar" para realizar la misi\xf3n.',
+                            first_mission: "Tu primer edificio est\xe1 listo. \xa1Tambi\xe9n recibiste tu primera misi\xf3n!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "\xa1Genial! Sigue as\xed y te convertir\xe1s en un gran operador. \xa1Aqu\xed tienes %{coins} monedas para ayudarte a arrancar! </br> El equipo de Centro de Mando"
+                        general: "Ahora est\xe1 listo para ocuparse usted mismo de su misi\xf3n. Para ayudarte a comenzar con tus misiones y expansi\xf3n, recibes %{coins} monedas. \xa1Buena suerte!"
                     },
                     mobile: {
-                        general: "\xa1Genial! Sigue as\xed y te convertir\xe1s en un gran operador. \xa1Aqu\xed tienes %{coins} monedas para ayudarte a arrancar! </br> El equipo de Centro de Mando"
+                        general: "Ahora est\xe1 listo para ocuparse usted mismo de su misi\xf3n. Para ayudarte a comenzar con tus misiones y expansi\xf3n, recibes %{coins} monedas. \xa1Buena suerte!"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Si tienes alguna pregunta, puedes consultar el FAQ y visitar el foro del juego y nuestra p\xe1gina de Facebook.",
-                        general: "Te recomendamos que tu siguiente paso sea construir una centralita y despu\xe9s, en cuanto sea posible, nuevas instalaciones, ya que el n\xfamero m\xe1ximo de misiones es igual al n\xfamero m\xe1ximo de instalaciones del mismo tipo (comisar\xedas, parques de bomberos o de ambulancias...) m\xe1s 1. Por ejemplo: 5 parques de bomberos y 3 de ambulancias permiten tener 6 misiones disponibles.",
-                        join_alliance: "Adem\xe1s, unirse a una alianza es de gran ayuda, especialmente al principio.",
+                        contact: "Si amplia su edificio, tendr\xe1 m\xe1s lugares para veh\xedculos nuevos.",
+                        general: "Recibir\xe1s cr\xe9ditos por terminar una misi\xf3n. Al ganar cr\xe9ditos te acercas a tu pr\xf3ximo ascenso.",
+                        join_alliance: "Obtener un ascenso a un nuevo rango y construir edificios desbloquea nuevas caracter\xedsticas como tipos de misiones y veh\xedculos.",
                         radio: {
                             helpshift_id: "1540",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             short: "La radio muestra actualizaciones de estado de tus veh\xedculos. Si deseas acceder a informaci\xf3n m\xe1s detallada sobre cada estado, haz clic aqu\xed."
                         },
-                        summary: "\xa1Ya conoces lo fundamental de Centro de Mando! Completar misiones, ganar cr\xe9ditos, comprar m\xe1s unidades y vuelta a empezar. \xa1Divi\xe9rtete! </br> El equipo de Centro de Mando"
+                        summary: "Puedes unirte a una alianza para realizar misiones con otros jugadores. Tambi\xe9n hay eventos de alianza regulares en los que puedes participar."
                     },
                     mobile: {
-                        contact: "Si tienes alguna pregunta, puedes consultar el FAQ y visitar el foro del juego y nuestra p\xe1gina de Facebook.",
-                        general: "Te recomendamos que tu siguiente paso sea construir una centralita y despu\xe9s, en cuanto sea posible, nuevas instalaciones, ya que el n\xfamero m\xe1ximo de misiones es igual al n\xfamero m\xe1ximo de instalaciones del mismo tipo (comisar\xedas, parques de bomberos o de ambulancias...) m\xe1s 1. Por ejemplo: 5 parques de bomberos y 3 de ambulancias permiten tener 6 misiones disponibles.",
-                        join_alliance: "Adem\xe1s, unirse a una alianza es de gran ayuda, especialmente al principio.",
-                        summary: "\xa1Ya conoces lo fundamental de Centro de Mando! Completar misiones, ganar cr\xe9ditos, comprar m\xe1s unidades y vuelta a empezar. \xa1Divi\xe9rtete! </br> El equipo de Centro de Mando"
+                        contact: "Si amplia su edificio, tendr\xe1 m\xe1s lugares para veh\xedculos nuevos.",
+                        general: "Recibir\xe1s cr\xe9ditos por terminar una misi\xf3n. Al ganar cr\xe9ditos te acercas a tu pr\xf3ximo ascenso.",
+                        join_alliance: "Obtener un ascenso a un nuevo rango y construir edificios desbloquea nuevas caracter\xedsticas como tipos de misiones y veh\xedculos.",
+                        summary: "Puedes unirte a una alianza para realizar misiones con otros jugadores. Tambi\xe9n hay eventos de alianza regulares en los que puedes participar."
                     },
                     reminder: {
                         join_alliance: "Unirse a una alianza tiene muchas ventajas: recompensas extra por completar las misiones de la alianza, apoyo de miembros experimentados para las misiones dif\xedciles y puedes utilizar las instalaciones de otros miembros como hospitales y escuelas. \xa1Pulsa el bot\xf3n para unirte a una alianza ahora!"
@@ -6813,23 +6719,23 @@ Object.values || (Object.values = function (e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: 'Second give your new station a name! Make it recognisable and scalable! E.g. "Fire station #0001". When you are done, please click "Next"!',
-                            build_with_credits: "Now build your building with credits!",
-                            new_building: 'Click on "New building"!',
-                            select_building: "First choose the type of building you want to start with, we highly suggest you to start with fire services! In any case starting with a small station is advised!",
-                            select_position: "Move the blue marker where you want to build your first station!"
+                            add_name: "Choose a name for your station. You can rename it later.",
+                            build_with_credits: "To build a station you need credits, the currency of the game. You can earn credits through missions, daily logins, tasks and events.",
+                            new_building: "Start the building process of your station.",
+                            select_building: "Decide if you want to build a fire station or a police station. In the beginning small stations are sufficient. You can upgrade them to normal stations later.",
+                            select_position: "Move the location marker to the location where you want the station to be."
                         },
-                        pick_location: "First pick a location to start! Type the name of the location you want to start in into the search bar or find it on the map yourself! What about your hometown?",
-                        welcome: "Hello, welcome to MissionChief! I will teach you some lessons to help you start off your emergency services career well!"
+                        pick_location: "Pick a location where you want to build your first station.",
+                        welcome: "Welcome to Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions."
                     },
                     mobile: {
                         build_building: {
-                            add_name: 'Second give your new station a name! Make it recognisable and scalable! E.g. "Fire station #0001". When you are done, please click "Next"!',
-                            build_with_credits: "Now build your building with credits!",
-                            new_building: 'First we will pick a location to start and build your first building! <br /> <br /> To do that click on "New building"!',
-                            select_building: "First choose the type of building you want to start with, we highly suggest you to start with fire services! In any case starting with a small station is advised!"
+                            add_name: "Choose a name for your station. You can rename it later.",
+                            build_with_credits: "To build a station you need credits, the currency of the game. You can earn credits through missions, daily logins, tasks and events.",
+                            new_building: "Begin with building your first station. You can choose its location by entering it manually or by moving the location marker on the map. Depending on your operating system, you might have to hold the marker for a while before you can move it.",
+                            select_building: "Decide if you want to build a fire station or a police station. In the beginning small stations are sufficient. You can upgrade them to normal stations later."
                         },
-                        welcome: "Hello, welcome to MissionChief! I will teach you some lessons to help you start off your emergency services career well!"
+                        welcome: "Welcome to Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions."
                     },
                     tooltip: {
                         ambulance_station_small: {
@@ -6932,58 +6838,58 @@ Object.values || (Object.values = function (e) {
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "This is the dispatch menu. From here you send your units to missions!",
-                            dispatch_menu_buttons: 'These are your two dispatch buttons! The first one: "Dispatch" sends the selected units to the mission. The second one does the same as the first one but goes to the next mission. Click the first button for now.',
-                            dispatch_menu_mission_general: "Here you can see the general mission information, that means the name, address, icon of the mission. The little man-icon appears and replaces a small star, on missions which you already participated in.",
-                            dispatch_menu_mission_progress: "Here you can see how much progress has been made to deal with this mission as well as the number of staff on site and the time left to deal with the mission!",
-                            dispatch_menu_mission_specific: "Here you can see more information about the mission, which units are responding to the call and which are already at the site",
-                            dispatch_menu_vehicle_list: "This is the list of your available vehicles. You select the vehicles here. Now select your vehicle by clicking on it!"
+                            dispatch_menu: "This is the dispatch window. Here you can send vehicles on missions.",
+                            dispatch_menu_buttons: "Send a vehicle to a mission by clicking the dispatch button. As soon as you have more missions you can use the button next to it to additionaly go to the next mission.",
+                            dispatch_menu_mission_general: 'Here you can find general information about the mission. As long as you are not involved in the mission, <span class="glyphicon glyphicon-asterisk"></span> is displayed in front of the mission name, <span class="glyphicon glyphicon-user"></span> as soon as you have sent the first vehicle.',
+                            dispatch_menu_mission_progress: "Here you can see the progress of the mission. As soon as personnel is on site, they get displayed here and you can see how much time is still needed for completing the mission.",
+                            dispatch_menu_mission_specific: "Here you can see which vehicles are on their way to or at the mission. The number in front of a vehicle indicates its deployment status.",
+                            dispatch_menu_vehicle_list: "Here you can see all vehicles available for the mission. Select a vehicle by clicking on the check box next to it."
                         },
                         mobile: {
-                            dispatch_menu: "This is the dispatch menu. From here you send your units to missions!",
-                            dispatch_menu_buttons: 'These are your two dispatch buttons! The first one: "Dispatch" sends the selected units to the mission. The second one does the same as the first one but goes to the next mission. Click the first button for now.',
-                            dispatch_menu_mission_general: "Here you can see the general mission information, that means the name, address, icon of the mission. The little man-icon appears and replaces a small star, on missions which you already participated in.",
-                            dispatch_menu_mission_progress: "Here you can see how much progress has been made to deal with this mission as well as the number of staff on site and the time left to deal with the mission!",
-                            dispatch_menu_mission_specific: "Here you can see more information about the mission, which units are responding to the call and which are already at the site",
-                            dispatch_menu_vehicle_list: "This is the list of your available vehicles. You select the vehicles here. Now select your vehicle by clicking on it!"
+                            dispatch_menu: "This is the dispatch window. Here you can send vehicles on missions.",
+                            dispatch_menu_buttons: "Send a vehicle to a mission by clicking the dispatch button. As soon as you have more missions you can use the button next to it to additionaly go to the next mission.",
+                            dispatch_menu_mission_general: 'Here you can find general information about the mission. As long as you are not involved in the mission, <span class="glyphicon glyphicon-asterisk"></span> is displayed in front of the mission name, <span class="glyphicon glyphicon-user"></span> as soon as you have sent the first vehicle.',
+                            dispatch_menu_mission_progress: "Here you can see the progress of the mission. As soon as personnel is on site, they get displayed here and you can see how much time is still needed for completing the mission.",
+                            dispatch_menu_mission_specific: "Here you can see which vehicles are on their way to or at the mission. The number in front of a vehicle indicates its deployment status.",
+                            dispatch_menu_vehicle_list: "Here you can see all vehicles available for the mission. Select a vehicle by clicking on the check box next to it."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: 'Now we want to learn how to deal with incidents. Open the dispatch menu by clicking on a "dispatch"-button!',
-                            first_mission: "Great, you've built your first building! See, the first missions were reported to you!"
+                            dispatch_button: 'Attend to the mission by first clicking on the "Dispatch" button.',
+                            first_mission: "Your first building is ready. You also received your first mission!"
                         },
                         mobile: {
-                            dispatch_button: 'Now we want to learn how to deal with incidents. Open the dispatch menu by clicking on a "dispatch"-button!',
-                            first_mission: "Great, you've built your first building! See, the first missions were reported to you!"
+                            dispatch_button: 'Attend to the mission by first clicking on the "Dispatch" button.',
+                            first_mission: "Your first building is ready. You also received your first mission!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Great, you are on your way to becoming an awesome Missionchief! Here are %{coins} Coins. to help you get started! </br> Your MissionChief-team"
+                        general: "You are now ready to start taking care of missions on your own. To help you get started with your missions and expansion, you receive %{coins} coins. Good luck!"
                     },
                     mobile: {
-                        general: "Great, you are on your way to becoming an awesome Missionchief! Here are %{coins} Coins. to help you get started! </br> Your MissionChief-team"
+                        general: "You are now ready to start taking care of missions on your own. To help you get started with your missions and expansion, you receive %{coins} coins. Good luck!"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "If you have questions you can consult the in game FAQ or visit the game forums or our facebook page!",
-                        general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
-                        join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
+                        contact: "If you upgrade your stations, you get space for new vehicles.",
+                        general: "You will receive credits for finishing a mission. By earning credits you get closer to a promotion.",
+                        join_alliance: "Promotions and building stations unlock new features like mission types or vehicles.",
                         radio: {
                             helpshift_id: "1540",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             short: "The radio displays status updates of your vehicles. For more detailed information on each status click here."
                         },
-                        summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
+                        summary: "You can join an alliance to solve missions together with others. There are also regular alliance events in which all members can participate!"
                     },
                     mobile: {
-                        contact: "If you have questions you can consult the in game FAQ or visit the game forums or our facebook page!",
-                        general: "As a next step we would recommend you to build a dispatch center and then as soon as possible new stations, since the max number of missions equals the highest number of any of stations of a different type (police, fire, ambulance) plus 1; e.g. 5 fire and 3 ambulance stations = 6 missions.",
-                        join_alliance: "Also, joining an alliance would help you greatly, especially in the beginning, so that's recommended, too.",
-                        summary: "These are the basics of MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your MissionChief-team"
+                        contact: "If you upgrade your stations, you get space for new vehicles.",
+                        general: "You will receive credits for finishing a mission. By earning credits you get closer to a promotion.",
+                        join_alliance: "Promotions and building stations unlock new features like mission types or vehicles.",
+                        summary: "You can join an alliance to solve missions together with others. There are also regular alliance events in which all members can participate!"
                     },
                     reminder: {
                         join_alliance: "Joining an alliance has many benefits: extra rewards for completing alliance missions, support from experienced members for difficult missions and you can use facilities of other members like hospitals and schools! Press the button to join an alliance now!"
@@ -7008,34 +6914,10 @@ Object.values || (Object.values = function (e) {
                 beginner: {
                     building: {
                         browser: {
-                            build_building: {
-                                add_name: 'Second give your new station a name! Make it recognisable and scalable! E.g. "Police station #0001". When you are done, please click "Next"!',
-                                select_building: "First choose the type of building you want to start with, we highly suggest you to start with a police station! In any case starting with a small station is advised!"
-                            },
-                            welcome: "Hello, welcome to Police MissionChief! I will teach you some lessons to help you start off your emergency services career well!"
+                            welcome: "Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions."
                         },
                         mobile: {
-                            build_building: {
-                                add_name: 'Second give your new station a name! Make it recognisable and scalable! E.g. "Police station #0001". When you are done, please click "Next"!',
-                                select_building: "First choose the type of building you want to start with, we highly suggest you to start with a police station! In any case starting with a small station is advised!"
-                            },
-                            welcome: "Hello, welcome to Police MissionChief! I will teach you some lessons to help you start off your emergency services career well!"
-                        }
-                    },
-                    rewards: {
-                        browser: {
-                            general: "Great, you are on your way to becoming an awesome Police MissionChief! Here are %{coins} Coins. to help you get started! </br> Your Police MissionChief-team"
-                        },
-                        mobile: {
-                            general: "Great, you are on your way to becoming an awesome Police MissionChief! Here are %{coins} Coins. to help you get started! </br> Your Police MissionChief-team"
-                        }
-                    },
-                    tips: {
-                        browser: {
-                            summary: "These are the basics of Police MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your Police MissionChief-team"
-                        },
-                        mobile: {
-                            summary: "These are the basics of Police MissionChief! Accomplish missions, get credits, buy more units, repeat. Have fun playing! </br> Your Police MissionChief-team"
+                            welcome: "Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions."
                         }
                     }
                 }
@@ -7372,80 +7254,80 @@ Object.values || (Object.values = function (e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: 'Efter det f\xe5r du ge stationen ett namn. G\xf6r det l\xe4tt att k\xe4nna igen, och f\xf6rs\xf6k att hitta p\xe5 n\xe5got du kan bygga vidare p\xe5. Exempelvis "Brandstation nr 0001". Klicka p\xe5 N\xe4sta n\xe4r du \xe4r klar.',
-                            build_with_credits: "Nu f\xe5r du bygga byggnaden f\xf6r krediter!",
-                            new_building: "Klicka p\xe5 Ny byggnad.",
-                            select_building: "Du f\xe5r v\xe4lja vad f\xf6r sorts byggnad du vill b\xf6rja med. Vi rekommenderar att b\xf6rja med en brandstation! Oavsett vad du v\xe4ljer \xe4r det b\xe4st att b\xf6rja med en liten station.",
-                            select_position: "Flytta den bl\xe5 mark\xf6ren till platsen d\xe4r du vill bygga din f\xf6rsta central."
+                            add_name: "V\xe4lj ett namn p\xe5 din station. Du kan byta namnet senare.",
+                            build_with_credits: "F\xf6r att bygga en station beh\xf6ver du krediter, spelets valuta. Du kan tj\xe4na po\xe4ng Du kan tj\xe4na po\xe4ng genom uppdrag, dagliga inloggningar, uppgifter och evenemang.",
+                            new_building: "Starta byggnadsprocessen f\xf6r din f\xf6rsta station",
+                            select_building: "Best\xe4m om du vill bygga en brandstation eller en polisstation. I b\xf6rjan r\xe4cker det med sm\xe5 stationer. Du kan uppgradera dem till vanliga stationer senare.",
+                            select_position: "Flytta mark\xf6ren till den exakta plats du \xf6nskar placera din station p\xe5"
                         },
-                        pick_location: "B\xf6rja med att v\xe4lja en plats! Skriv in namnet p\xe5 platsen d\xe4r du vill b\xf6rja i s\xf6kf\xe4ltet, eller leta upp den p\xe5 kartan. Kanske din hemstad?",
-                        welcome: "Hej och v\xe4lkommen till Larmcentralen-spelet!  Jag ska l\xe4ra dig n\xe5gra saker s\xe5 du f\xe5r en flygande start p\xe5 n\xf6dutryckningskarri\xe4ren."
+                        pick_location: "V\xe4lj en plats att bygga din f\xf6rsta station p\xe5.",
+                        welcome: "V\xe4lkommen till Larmcentralen-spelet! Genom att arbeta p\xe5 en larmcentral f\xf6r r\xe4ddningstj\xe4nster hanterar du n\xf6dsamtal f\xf6r att hj\xe4lpa och skydda allm\xe4nheten. F\xf6r att kunna bygga stationer och skicka ut flera typer av fordon och utbildad personal till en m\xe4ngd olika uppdrag"
                     },
                     mobile: {
                         build_building: {
-                            add_name: 'Efter det f\xe5r du ge stationen ett namn. G\xf6r det l\xe4tt att k\xe4nna igen, och f\xf6rs\xf6k att hitta p\xe5 n\xe5got du kan bygga vidare p\xe5. Exempelvis "Brandstation nr 0001". Klicka p\xe5 N\xe4sta n\xe4r du \xe4r klar.',
-                            build_with_credits: "Nu f\xe5r du bygga byggnaden f\xf6r krediter!",
-                            new_building: "F\xf6rst v\xe4ljer vi en plats d\xe4r du kan bygga din f\xf6rsta byggnad. <br /><br />F\xf6r att g\xf6ra det klickar du p\xe5 Ny byggnad.",
-                            select_building: "Du f\xe5r v\xe4lja vad f\xf6r sorts byggnad du vill b\xf6rja med. Vi rekommenderar att b\xf6rja med en brandstation! Oavsett vad du v\xe4ljer \xe4r det b\xe4st att b\xf6rja med en liten station."
+                            add_name: "V\xe4lj ett namn p\xe5 din station. Du kan byta namnet senare.",
+                            build_with_credits: "F\xf6r att bygga en station beh\xf6ver du krediter, spelets valuta. Du kan tj\xe4na po\xe4ng Du kan tj\xe4na po\xe4ng genom uppdrag, dagliga inloggningar, uppgifter och evenemang.",
+                            new_building: "B\xf6rja med att bygga din f\xf6rsta station. Du kan v\xe4lja dess plats genom att ange den manuellt eller genom att flytta platsmark\xf6ren p\xe5 kartan. Beroende p\xe5 ditt operativsystem kan du beh\xf6va h\xe5lla mark\xf6ren ett tag innan du kan flytta den.",
+                            select_building: "Best\xe4m om du vill bygga en brandstation eller en polisstation. I b\xf6rjan r\xe4cker det med sm\xe5 stationer. Du kan uppgradera dem till vanliga stationer senare."
                         },
-                        welcome: "Hej och v\xe4lkommen till Larmcentralen-spelet!  Jag ska l\xe4ra dig n\xe5gra saker s\xe5 du f\xe5r en flygande start p\xe5 n\xf6dutryckningskarri\xe4ren."
+                        welcome: "V\xe4lkommen till Larmcentralen-spelet! Genom att arbeta p\xe5 en larmcentral f\xf6r r\xe4ddningstj\xe4nster hanterar du n\xf6dsamtal f\xf6r att hj\xe4lpa och skydda allm\xe4nheten. F\xf6r att kunna bygga stationer och skicka ut flera typer av fordon och utbildad personal till en m\xe4ngd olika uppdrag"
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Det h\xe4r \xe4r larmcentralsmenyn. H\xe4rifr\xe5n kan du skicka ut fordon p\xe5 uppdrag!",
-                            dispatch_menu_buttons: "De h\xe4r tv\xe5 knapparna s\xe4tter ig\xe5ng uppdraget. Den f\xf6rsta, Skicka ut, skickar ut de valda fordonen till uppdraget. Den andra g\xf6r samma sak, men g\xe5r sedan vidare till n\xe4sta uppdrag. Du kan trycka p\xe5 den f\xf6rsta.",
-                            dispatch_menu_mission_general: "H\xe4r ser du allm\xe4n information om uppdraget: namn, adress och uppdragsikon. Ikonen med den lilla mannen dyker upp och ers\xe4tter stj\xe4rnan i uppdrag du redan deltagit i.",
-                            dispatch_menu_mission_progress: "H\xe4r kan du se dina framsteg i uppdraget, hur mycket personal du har p\xe5 plats och hur l\xe5ng tid som \xe5terst\xe5r!",
-                            dispatch_menu_mission_specific: "H\xe4r ser du mer information om uppdraget, vilka fordon som besvarar anropet och vilka som redan befinner sig p\xe5 platsen.",
-                            dispatch_menu_vehicle_list: "I den h\xe4r listan ser du dina tillg\xe4ngliga fordon. Det \xe4r h\xe4rifr\xe5n du v\xe4ljer dina fordon. Klicka p\xe5 ett f\xf6r att v\xe4lja det!"
+                            dispatch_menu: "Detta \xe4r leveransf\xf6nstret. H\xe4r kan du skicka fordon p\xe5 uppdrag.",
+                            dispatch_menu_buttons: "Skicka ett fordon till ett uppdrag genom att klicka p\xe5 s\xe4ndningsknappen. S\xe5 fort du har fler uppdrag kan du anv\xe4nda knappen bredvid den f\xf6r att g\xe5 till n\xe4sta uppdrag.",
+                            dispatch_menu_mission_general: 'H\xe4r kan du hitta allm\xe4n information om uppdraget. S\xe5 l\xe4nge du inte \xe4r involverad i uppdraget <span class="glyphicon glyphicon-asterisk"></span> kommer att dyka upp framf\xf6r det, <span class="glyphicon glyphicon-user"></span> n\xe4r du har skickat ut det f\xf6rsta fordonet.',
+                            dispatch_menu_mission_progress: "H\xe4r kan du se hur uppdraget fortskrider. H\xe4r kan du se vilka fordon som finns p\xe5 plats och hur l\xe5ng tid som \xe4r kvar till uppdragets slut.",
+                            dispatch_menu_mission_specific: "H\xe4r kan du se vilka fordon som \xe4r p\xe5 v\xe4g till eller vid uppdragets plats. Numret framf\xf6r ditt fordon visar dess status.",
+                            dispatch_menu_vehicle_list: "H\xe4r kan du se alla tillg\xe4ngliga fordon f\xf6r uppdraget. V\xe4lj ett fordon genom att klicka p\xe5 kryssrutan bredvid det."
                         },
                         mobile: {
-                            dispatch_menu: "Det h\xe4r \xe4r larmcentralsmenyn. H\xe4rifr\xe5n kan du skicka ut fordon p\xe5 uppdrag!",
-                            dispatch_menu_buttons: "De h\xe4r tv\xe5 knapparna s\xe4tter ig\xe5ng uppdraget. Den f\xf6rsta, Skicka ut, skickar ut de valda fordonen till uppdraget. Den andra g\xf6r samma sak, men g\xe5r sedan vidare till n\xe4sta uppdrag. Du kan trycka p\xe5 den f\xf6rsta.",
-                            dispatch_menu_mission_general: "H\xe4r ser du allm\xe4n information om uppdraget: namn, adress och uppdragsikon. Ikonen med den lilla mannen dyker upp och ers\xe4tter stj\xe4rnan i uppdrag du redan deltagit i.",
-                            dispatch_menu_mission_progress: "H\xe4r kan du se dina framsteg i uppdraget, hur mycket personal du har p\xe5 plats och hur l\xe5ng tid som \xe5terst\xe5r!",
-                            dispatch_menu_mission_specific: "H\xe4r ser du mer information om uppdraget, vilka fordon som besvarar anropet och vilka som redan befinner sig p\xe5 platsen.",
-                            dispatch_menu_vehicle_list: "I den h\xe4r listan ser du dina tillg\xe4ngliga fordon. Det \xe4r h\xe4rifr\xe5n du v\xe4ljer dina fordon. Klicka p\xe5 ett f\xf6r att v\xe4lja det!"
+                            dispatch_menu: "Detta \xe4r leveransf\xf6nstret. H\xe4r kan du skicka fordon p\xe5 uppdrag.",
+                            dispatch_menu_buttons: "Skicka ett fordon till ett uppdrag genom att klicka p\xe5 s\xe4ndningsknappen. S\xe5 fort du har fler uppdrag kan du anv\xe4nda knappen bredvid den f\xf6r att g\xe5 till n\xe4sta uppdrag.",
+                            dispatch_menu_mission_general: 'H\xe4r kan du hitta allm\xe4n information om uppdraget. S\xe5 l\xe4nge du inte \xe4r involverad i uppdraget <span class="glyphicon glyphicon-asterisk"></span> kommer att dyka upp framf\xf6r det, <span class="glyphicon glyphicon-user"></span> n\xe4r du har skickat ut det f\xf6rsta fordonet.',
+                            dispatch_menu_mission_progress: "H\xe4r kan du se hur uppdraget fortskrider. H\xe4r kan du se vilka fordon som finns p\xe5 plats och hur l\xe5ng tid som \xe4r kvar till uppdragets slut.",
+                            dispatch_menu_mission_specific: "H\xe4r kan du se vilka fordon som \xe4r p\xe5 v\xe4g till eller vid uppdragets plats. Numret framf\xf6r ditt fordon visar dess status.",
+                            dispatch_menu_vehicle_list: "H\xe4r kan du se alla tillg\xe4ngliga fordon f\xf6r uppdraget. V\xe4lj ett fordon genom att klicka p\xe5 kryssrutan bredvid det."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "Nu ska vi l\xe4ra oss hur man tar hand om rapporter. \xd6ppna larmcentralsmenyn genom att trycka p\xe5 Larmcentral.",
-                            first_mission: "Toppen, du har byggt din f\xf6rsta byggnad! Titta, du har f\xe5tt in dina f\xf6rsta uppdrag!"
+                            dispatch_button: 'Klicka p\xe5 "utskick"-knappen f\xf6r att utf\xf6ra uppdraget.',
+                            first_mission: "Din f\xf6rsta byggnad \xe4r redo. Du har ocks\xe5 mottagit ditt f\xf6rsta uppdrag"
                         },
                         mobile: {
-                            dispatch_button: "Nu ska vi l\xe4ra oss hur man tar hand om rapporter. \xd6ppna larmcentralsmenyn genom att trycka p\xe5 Larmcentral.",
-                            first_mission: "Toppen, du har byggt din f\xf6rsta byggnad! Titta, du har f\xe5tt in dina f\xf6rsta uppdrag!"
+                            dispatch_button: 'Klicka p\xe5 "utskick"-knappen f\xf6r att utf\xf6ra uppdraget.',
+                            first_mission: "Din f\xf6rsta byggnad \xe4r redo. Du har ocks\xe5 mottagit ditt f\xf6rsta uppdrag"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Toppen, du b\xf6rjar f\xe5 full koll p\xe5 hur man sk\xf6ter en larmcentral! H\xe4r f\xe5r du %{coins} mynt att komma ig\xe5ng med! </br>Teamet p\xe5 Larmcentralen-spelet"
+                        general: "Nu \xe4r du redo att ta itu med ditt uppdrag sj\xe4lv. F\xf6r att hj\xe4lpa dig komma ig\xe5ng med dina uppdrag och expansion f\xe5r du %{coins} mynt. Lycka till!"
                     },
                     mobile: {
-                        general: "Toppen, du b\xf6rjar f\xe5 full koll p\xe5 hur man sk\xf6ter en larmcentral! H\xe4r f\xe5r du %{coins} mynt att komma ig\xe5ng med! </br>Teamet p\xe5 Larmcentralen-spelet"
+                        general: "Nu \xe4r du redo att ta itu med ditt uppdrag sj\xe4lv. F\xf6r att hj\xe4lpa dig komma ig\xe5ng med dina uppdrag och expansion f\xe5r du %{coins} mynt. Lycka till!"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Om du har fr\xe5gor kan du v\xe4nda dig till avsnittet Fr\xe5gor och svar i spelet, spelets forum eller v\xe5r Facebook-sida!",
-                        general: "Efter det h\xe4r rekommenderar jag att du bygger en larmcentral f\xf6ljt av nya stationer, f\xf6r det maximala antalet uppdrag \xe4r lika med det h\xf6gsta antalet stationer av samma typ (polis-, brand- eller ambulansstation) plus 1. Om du har 5 brandstationer och 3 ambulansstationer inneb\xe4r det allts\xe5 att du kan ha 6 uppdrag.",
-                        join_alliance: "Det kan \xe4ven ge stora f\xf6rdelar att g\xe5 med i en allians, s\xe4rskilt tidigt i spelet, s\xe5 det rekommenderas ocks\xe5.",
+                        contact: "Om du uppgraderar din station kommer du att f\xe5 mer plats f\xf6r nya fordon.",
+                        general: "Du kommer att f\xe5 krediter efter ett avslutat uppdrag. Genom att tj\xe4na krediter kommer du n\xe4rmare din n\xe4sta kampanj.",
+                        join_alliance: "Att bli befordrad till en ny rang och att bygga stationer sl\xe4pper nya funktioner som uppdragstyper och fordon.",
                         radio: {
                             helpshift_id: "1540",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             short: "Radion visar statusuppdateringar om dina fordon. Klicka h\xe4r f\xf6r mer detaljerad information om varje status."
                         },
-                        summary: "Det h\xe4r \xe4r grunderna i Larmcentralen-spelet! Klara uppdrag, tj\xe4na krediter, k\xf6p fler fordon, upprepa. Ha s\xe5 kul! </br>Teamet p\xe5 Larmcentralen-spelet"
+                        summary: "Du kan g\xe5 med i en allians f\xf6r att \xe5ka p\xe5 uppdrag med andra. Det finns ocks\xe5 regelbundna alliansevent d\xe4r du kan delta."
                     },
                     mobile: {
-                        contact: "Om du har fr\xe5gor kan du v\xe4nda dig till avsnittet Fr\xe5gor och svar i spelet, spelets forum eller v\xe5r Facebook-sida!",
-                        general: "Efter det h\xe4r rekommenderar jag att du bygger en larmcentral f\xf6ljt av nya stationer, f\xf6r det maximala antalet uppdrag \xe4r lika med det h\xf6gsta antalet stationer av samma typ (polis-, brand- eller ambulansstation) plus 1. Om du har 5 brandstationer och 3 ambulansstationer inneb\xe4r det allts\xe5 att du kan ha 6 uppdrag.",
-                        join_alliance: "Det kan \xe4ven ge stora f\xf6rdelar att g\xe5 med i en allians, s\xe4rskilt tidigt i spelet, s\xe5 det rekommenderas ocks\xe5.",
-                        summary: "Det h\xe4r \xe4r grunderna i Larmcentralen-spelet! Klara uppdrag, tj\xe4na krediter, k\xf6p fler fordon, upprepa. Ha s\xe5 kul! </br>Teamet p\xe5 Larmcentralen-spelet"
+                        contact: "Om du uppgraderar din station kommer du att f\xe5 mer plats f\xf6r nya fordon.",
+                        general: "Du kommer att f\xe5 krediter efter ett avslutat uppdrag. Genom att tj\xe4na krediter kommer du n\xe4rmare din n\xe4sta kampanj.",
+                        join_alliance: "Att bli befordrad till en ny rang och att bygga stationer sl\xe4pper nya funktioner som uppdragstyper och fordon.",
+                        summary: "Du kan g\xe5 med i en allians f\xf6r att \xe5ka p\xe5 uppdrag med andra. Det finns ocks\xe5 regelbundna alliansevent d\xe4r du kan delta."
                     },
                     reminder: {
                         join_alliance: "Att g\xe5 med i en allians har m\xe5nga f\xf6rdelar: extra bel\xf6ningar f\xf6r att slutf\xf6ra alliansuppdrag, st\xf6d fr\xe5n erfarna medlemmar i sv\xe5ra uppdrag och du kan anv\xe4nda andra medlemmars anl\xe4ggningar som sjukhus och skolor! Tryck p\xe5 knappen f\xf6r att g\xe5 med i en allians nu!"
@@ -7470,34 +7352,10 @@ Object.values || (Object.values = function (e) {
                 beginner: {
                     building: {
                         browser: {
-                            build_building: {
-                                add_name: 'Efter det f\xe5r du ge stationen ett namn. G\xf6r det l\xe4tt att k\xe4nna igen, och f\xf6rs\xf6k att hitta p\xe5 n\xe5got du kan bygga vidare p\xe5. Exempelvis "Polisstation nr 0001". Klicka p\xe5 N\xe4sta n\xe4r du \xe4r klar.',
-                                select_building: "Du f\xe5r v\xe4lja vad f\xf6r sorts byggnad du vill b\xf6rja med. Vi rekommenderar att b\xf6rja med en polisstation! Oavsett vad du v\xe4ljer \xe4r det b\xe4st att b\xf6rja med en liten station."
-                            },
-                            welcome: "Hej och v\xe4lkommen till Larmcentralen-spelet Polis! Jag ska l\xe4ra dig n\xe5gra saker s\xe5 du f\xe5r en flygande start p\xe5 n\xf6dutryckningskarri\xe4ren."
+                            welcome: "V\xe4lkommen till Larmcentralen-spelet Polis! Genom att arbeta p\xe5 en larmcentral f\xf6r r\xe4ddningstj\xe4nster hanterar du n\xf6dsamtal f\xf6r att hj\xe4lpa och skydda allm\xe4nheten. F\xf6r att kunna bygga stationer och skicka ut flera typer av fordon och utbildad personal till en m\xe4ngd olika uppdrag"
                         },
                         mobile: {
-                            build_building: {
-                                add_name: 'Efter det f\xe5r du ge stationen ett namn. G\xf6r det l\xe4tt att k\xe4nna igen, och f\xf6rs\xf6k att hitta p\xe5 n\xe5got du kan bygga vidare p\xe5. Exempelvis "Polisstation nr 0001". Klicka p\xe5 N\xe4sta n\xe4r du \xe4r klar.',
-                                select_building: "Du f\xe5r v\xe4lja vad f\xf6r sorts byggnad du vill b\xf6rja med. Vi rekommenderar att b\xf6rja med en polisstation! Oavsett vad du v\xe4ljer \xe4r det b\xe4st att b\xf6rja med en liten station."
-                            },
-                            welcome: "Hej och v\xe4lkommen till Larmcentralen-spelet Polis! Jag ska l\xe4ra dig n\xe5gra saker s\xe5 du f\xe5r en flygande start p\xe5 n\xf6dutryckningskarri\xe4ren."
-                        }
-                    },
-                    rewards: {
-                        browser: {
-                            general: "Toppen, du b\xf6rjar f\xe5 full koll p\xe5 hur man sk\xf6ter en larmcentral! H\xe4r f\xe5r du %{coins} mynt att komma ig\xe5ng med! </br>Teamet p\xe5 Larmcentralen-spelet Polis"
-                        },
-                        mobile: {
-                            general: "Toppen, du b\xf6rjar f\xe5 full koll p\xe5 hur man sk\xf6ter en larmcentral! H\xe4r f\xe5r du %{coins} mynt att komma ig\xe5ng med! </br>Teamet p\xe5 Larmcentralen-spelet Polis"
-                        }
-                    },
-                    tips: {
-                        browser: {
-                            summary: "Det h\xe4r \xe4r grunderna i Larmcentralen-spelet Polis! Klara uppdrag, tj\xe4na krediter, k\xf6p fler fordon, upprepa. Ha s\xe5 kul! </br>Teamet p\xe5 Larmcentralen-spelet Polis"
-                        },
-                        mobile: {
-                            summary: "Det h\xe4r \xe4r grunderna i Larmcentralen-spelet Polis! Klara uppdrag, tj\xe4na krediter, k\xf6p fler fordon, upprepa. Ha s\xe5 kul! </br>Teamet p\xe5 Larmcentralen-spelet Polis"
+                            welcome: "V\xe4lkommen till Larmcentralen-spelet Polis! Genom att arbeta p\xe5 en larmcentral f\xf6r r\xe4ddningstj\xe4nster hanterar du n\xf6dsamtal f\xf6r att hj\xe4lpa och skydda allm\xe4nheten. F\xf6r att kunna bygga stationer och skicka ut flera typer av fordon och utbildad personal till en m\xe4ngd olika uppdrag"
                         }
                     }
                 }
@@ -7844,80 +7702,80 @@ Object.values || (Object.values = function (e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: "Teraz musisz nazwa\u0107 sw\xf3j posterunek! Nazwa musi by\u0107 rozpoznawalna i skalowalna! Np.: \u201ePosterunek stra\u017cy po\u017carnej #0001\u201d. Gdy sko\u0144czysz, kliknij opcj\u0119 Dalej!",
-                            build_with_credits: "Teraz wznie\u015b budynek za kredyty!",
-                            new_building: "Kliknij opcj\u0119 Nowy budynek!",
-                            select_building: "Wybierz rodzaj budynku, od kt\xf3rego chcesz zacz\u0105\u0107, sugerujemy wyb\xf3r stra\u017cy po\u017carnej! W ka\u017cdym wypadku najlepiej zacz\u0105\u0107 od ma\u0142ego posterunku!",
-                            select_position: "Przesu\u0144 b\u0142\u0119kitny znacznik w miejsce, w kt\xf3rym chcesz zbudowa\u0107 pierwszy posterunek!"
+                            add_name: "Wybierz nazw\u0119 dla swojego posterunku. Mo\u017cesz j\u0105 p\xf3\u017aniej zmieni\u0107.",
+                            build_with_credits: "Do zbudowania posterunku potrzebne s\u0105 kredyty, waluta w grze. Kredyty mo\u017cna zdobywa\u0107 poprzez misje, codzienne logowania, zadania i wydarzenia.",
+                            new_building: "Rozpocznij proces budowy swojego posterunku.",
+                            select_building: "Zdecyduj, czy chcesz zbudowa\u0107 posterunek stra\u017cy po\u017carnej czy policji. Na pocz\u0105tku wystarcz\u0105 ma\u0142e posterunki. P\xf3\u017aniej mo\u017cesz je rozbudowa\u0107 do normalnych posterunk\xf3w.",
+                            select_position: "Przesu\u0144 znacznik lokalizacji do miejsca, w kt\xf3rym ma znajdowa\u0107 si\u0119 stacja."
                         },
-                        pick_location: "Najpierw wybierz miejsce pocz\u0105tkowe! W pasku wyszukiwania wpisz nazw\u0119 miejsca, w kt\xf3rym masz ochot\u0119 rozpocz\u0105\u0107 gr\u0119, b\u0105d\u017a zlokalizuj je na mapie osobi\u015bcie! Mo\u017ce chcesz wybra\u0107 swoje rodzinne miasto?",
-                        welcome: "Witaj w grze Operator ratunkowy!  Pomo\u017cemy Ci dobrze rozpocz\u0105\u0107 karier\u0119 w s\u0142u\u017cbach ratowniczych!"
+                        pick_location: "Wybierz lokalizacj\u0119, w kt\xf3rej chcesz zbudowa\u0107 swoj\u0105 pierwsz\u0105 stacj\u0119.",
+                        welcome: "Witamy w operatorratunkowy! Pracuj\u0105c w centrum dyspozytorskim dla s\u0142u\u017cb ratunkowych, zajmujesz si\u0119 po\u0142\u0105czeniami alarmowymi, aby pomaga\u0107 i chroni\u0107 spo\u0142ecze\u0144stwo. W tym celu budujesz stacje i wysy\u0142asz kilka rodzaj\xf3w pojazd\xf3w oraz wyszkolony personel do r\xf3\u017cnych misji."
                     },
                     mobile: {
                         build_building: {
-                            add_name: "Teraz musisz nazwa\u0107 sw\xf3j posterunek! Nazwa musi by\u0107 rozpoznawalna i skalowalna! Np.: \u201ePosterunek stra\u017cy po\u017carnej #0001\u201d. Gdy sko\u0144czysz, kliknij opcj\u0119 Dalej!",
-                            build_with_credits: "Teraz wznie\u015b budynek za kredyty!",
-                            new_building: "Najpierw wybierz miejsce pocz\u0105tkowe i wznie\u015b sw\xf3j pierwszy budynek! <br /> <br /> W tym celu wybierz opcj\u0119 Nowy budynek!",
-                            select_building: "Wybierz rodzaj budynku, od kt\xf3rego chcesz zacz\u0105\u0107, sugerujemy wyb\xf3r stra\u017cy po\u017carnej! W ka\u017cdym wypadku najlepiej zacz\u0105\u0107 od ma\u0142ego posterunku!"
+                            add_name: "Wybierz nazw\u0119 dla swojego posterunku. Mo\u017cesz j\u0105 p\xf3\u017aniej zmieni\u0107.",
+                            build_with_credits: "Do zbudowania posterunku potrzebne s\u0105 kredyty, waluta w grze. Kredyty mo\u017cna zdobywa\u0107 poprzez misje, codzienne logowania, zadania i wydarzenia.",
+                            new_building: "Rozpocznij budow\u0119 swojej pierwszej stacji. Mo\u017cesz wybra\u0107 jej lokalizacj\u0119, wprowadzaj\u0105c j\u0105 r\u0119cznie lub przesuwaj\u0105c znacznik lokalizacji na mapie. W zale\u017cno\u015bci od systemu operacyjnego mo\u017ce by\u0107 konieczne przytrzymanie znacznika przez chwil\u0119, zanim b\u0119dzie mo\u017cna go przesun\u0105\u0107.",
+                            select_building: "Zdecyduj, czy chcesz zbudowa\u0107 posterunek stra\u017cy po\u017carnej czy policji. Na pocz\u0105tku wystarcz\u0105 ma\u0142e posterunki. P\xf3\u017aniej mo\u017cesz je rozbudowa\u0107 do normalnych posterunk\xf3w."
                         },
-                        welcome: "Witaj w grze Operator ratunkowy!  Pomo\u017cemy Ci dobrze rozpocz\u0105\u0107 karier\u0119 w s\u0142u\u017cbach ratowniczych!"
+                        welcome: "Witamy w operatorratunkowy! Pracuj\u0105c w centrum dyspozytorskim dla s\u0142u\u017cb ratunkowych, zajmujesz si\u0119 po\u0142\u0105czeniami alarmowymi, aby pomaga\u0107 i chroni\u0107 spo\u0142ecze\u0144stwo. W tym celu budujesz stacje i wysy\u0142asz kilka rodzaj\xf3w pojazd\xf3w oraz wyszkolony personel do r\xf3\u017cnych misji."
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "To menu wezwania. Mo\u017cesz tu wysy\u0142a\u0107 swoje jednostki na misje!",
-                            dispatch_menu_buttons: "To dwa przyciski wysy\u0142ania na wezwanie. Pierwszy: Opcja Wy\u015blij posy\u0142a wybrane jednostki na misj\u0119. Drugi przycisk wydaje to samo polecenie i przenosi do nast\u0119pnej misji. Na razie kliknij pierwszy przycisk.",
-                            dispatch_menu_mission_general: "Tutaj znajduj\u0105 si\u0119 og\xf3lne informacje o misji, czyli nazwa, adres i ikona misji. Je\u015bli na misj\u0119 zosta\u0142a wys\u0142ana jednostka, gwiazdk\u0119 zast\u0119puje ikona przestawiaj\u0105ca posta\u0107.",
-                            dispatch_menu_mission_progress: "Tutaj mo\u017cna sprawdzi\u0107 post\u0119py w wykonywaniu misji oraz liczb\u0119 personelu na miejscu i czas pozosta\u0142y do wykonania misji!",
-                            dispatch_menu_mission_specific: "Tutaj znajduj\u0105 si\u0119 szczeg\xf3\u0142owe informacje o misji, w tym jednostki, kt\xf3re j\u0105 wykonuj\u0105 i te, kt\xf3re s\u0105 ju\u017c na miejscu.",
-                            dispatch_menu_vehicle_list: "To lista dost\u0119pnych pojazd\xf3w. Tutaj wybierasz pojazdy. Wybierz pojazd, klikaj\u0105c go!"
+                            dispatch_menu: "To jest okno wysy\u0142ki. Tutaj mo\u017cesz wysy\u0142a\u0107 pojazdy na misje.",
+                            dispatch_menu_buttons: "Wy\u015blij pojazd na misj\u0119, klikaj\u0105c przycisk wysy\u0142ki. Je\u015bli masz wi\u0119cej misji, mo\u017cesz u\u017cy\u0107 przycisku obok, aby przej\u015b\u0107 do nast\u0119pnej misji.",
+                            dispatch_menu_mission_general: 'Tutaj mo\u017cna znale\u017a\u0107 og\xf3lne informacje o misji. Dop\xf3ki nie jeste\u015b zaanga\u017cowany w misj\u0119, przed nazw\u0105 misji wy\u015bwietlana jest strona <span class="glyphicon glyphicon-asterisk"></span>, <span class="glyphicon glyphicon-user"></span> po wys\u0142aniu pierwszego pojazdu.',
+                            dispatch_menu_mission_progress: "Tutaj mo\u017cna zobaczy\u0107 post\u0119p misji. Gdy tylko personel znajdzie si\u0119 na miejscu, zostanie on wy\u015bwietlony i b\u0119dzie mo\u017cna zobaczy\u0107, ile czasu pozosta\u0142o do uko\u0144czenia misji.",
+                            dispatch_menu_mission_specific: "Tutaj mo\u017cesz zobaczy\u0107, kt\xf3re pojazdy s\u0105 w drodze do lub na misj\u0119. Liczba przed pojazdem wskazuje jego status rozmieszczenia.",
+                            dispatch_menu_vehicle_list: "Tutaj mo\u017cesz zobaczy\u0107 wszystkie pojazdy dost\u0119pne dla misji. Wybierz pojazd, klikaj\u0105c pole wyboru obok niego."
                         },
                         mobile: {
-                            dispatch_menu: "To menu wezwania. Mo\u017cesz tu wysy\u0142a\u0107 swoje jednostki na misje!",
-                            dispatch_menu_buttons: "To dwa przyciski wysy\u0142ania na wezwanie. Pierwszy: Opcja Wy\u015blij posy\u0142a wybrane jednostki na misj\u0119. Drugi przycisk wydaje to samo polecenie i przenosi do nast\u0119pnej misji. Na razie kliknij pierwszy przycisk.",
-                            dispatch_menu_mission_general: "Tutaj znajduj\u0105 si\u0119 og\xf3lne informacje o misji, czyli nazwa, adres i ikona misji. Je\u015bli na misj\u0119 zosta\u0142a wys\u0142ana jednostka, gwiazdk\u0119 zast\u0119puje ikona przestawiaj\u0105ca posta\u0107.",
-                            dispatch_menu_mission_progress: "Tutaj mo\u017cna sprawdzi\u0107 post\u0119py w wykonywaniu misji oraz liczb\u0119 personelu na miejscu i czas pozosta\u0142y do wykonania misji!",
-                            dispatch_menu_mission_specific: "Tutaj znajduj\u0105 si\u0119 szczeg\xf3\u0142owe informacje o misji, w tym jednostki, kt\xf3re j\u0105 wykonuj\u0105 i te, kt\xf3re s\u0105 ju\u017c na miejscu.",
-                            dispatch_menu_vehicle_list: "To lista dost\u0119pnych pojazd\xf3w. Tutaj wybierasz pojazdy. Wybierz pojazd, klikaj\u0105c go!"
+                            dispatch_menu: "To jest okno wysy\u0142ki. Tutaj mo\u017cesz wysy\u0142a\u0107 pojazdy na misje.",
+                            dispatch_menu_buttons: "Wy\u015blij pojazd na misj\u0119, klikaj\u0105c przycisk wysy\u0142ki. Je\u015bli masz wi\u0119cej misji, mo\u017cesz u\u017cy\u0107 przycisku obok, aby przej\u015b\u0107 do nast\u0119pnej misji.",
+                            dispatch_menu_mission_general: 'Tutaj mo\u017cna znale\u017a\u0107 og\xf3lne informacje o misji. Dop\xf3ki nie jeste\u015b zaanga\u017cowany w misj\u0119, przed nazw\u0105 misji wy\u015bwietlana jest strona <span class="glyphicon glyphicon-asterisk"></span>, <span class="glyphicon glyphicon-user"></span> po wys\u0142aniu pierwszego pojazdu.',
+                            dispatch_menu_mission_progress: "Tutaj mo\u017cna zobaczy\u0107 post\u0119p misji. Gdy tylko personel znajdzie si\u0119 na miejscu, zostanie on wy\u015bwietlony i b\u0119dzie mo\u017cna zobaczy\u0107, ile czasu pozosta\u0142o do uko\u0144czenia misji.",
+                            dispatch_menu_mission_specific: "Tutaj mo\u017cesz zobaczy\u0107, kt\xf3re pojazdy s\u0105 w drodze do lub na misj\u0119. Liczba przed pojazdem wskazuje jego status rozmieszczenia.",
+                            dispatch_menu_vehicle_list: "Tutaj mo\u017cesz zobaczy\u0107 wszystkie pojazdy dost\u0119pne dla misji. Wybierz pojazd, klikaj\u0105c pole wyboru obok niego."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "Teraz nauczymy si\u0119, jak reagowa\u0107 na wydarzenia. Otw\xf3rz menu wezwa\u0144, klikaj\u0105c przycisk Wy\u015blij!",
-                            first_mission: "\u015awietnie, masz ju\u017c pierwszy budynek! Przysz\u0142y zg\u0142oszenia pierwszych misji!"
+                            dispatch_button: 'Zajmij si\u0119 misj\u0105, klikaj\u0105c najpierw przycisk "Wysy\u0142ka".',
+                            first_mission: "Tw\xf3j pierwszy budynek jest gotowy. Otrzyma\u0142e\u015b r\xf3wnie\u017c swoj\u0105 pierwsz\u0105 misj\u0119!"
                         },
                         mobile: {
-                            dispatch_button: "Teraz nauczymy si\u0119, jak reagowa\u0107 na wydarzenia. Otw\xf3rz menu wezwa\u0144, klikaj\u0105c przycisk Wy\u015blij!",
-                            first_mission: "\u015awietnie, masz ju\u017c pierwszy budynek! Przysz\u0142y zg\u0142oszenia pierwszych misji!"
+                            dispatch_button: 'Zajmij si\u0119 misj\u0105, klikaj\u0105c najpierw przycisk "Wysy\u0142ka".',
+                            first_mission: "Tw\xf3j pierwszy budynek jest gotowy. Otrzyma\u0142e\u015b r\xf3wnie\u017c swoj\u0105 pierwsz\u0105 misj\u0119!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Doskonale, wkr\xf3tce osi\u0105gniesz mistrzostwo w grze Operator ratunkowy! Oto %{coins} Monet, kt\xf3re pomog\u0105 Ci na pocz\u0105tek! </br> Zesp\xf3\u0142 gry Operator ratunkowy"
+                        general: "Jeste\u015b teraz gotowy, aby rozpocz\u0105\u0107 samodzielne wykonywanie misji. Aby pom\xf3c ci w rozpocz\u0119ciu misji i ekspansji, otrzymasz %{coins} monety. Powodzenia!"
                     },
                     mobile: {
-                        general: "Doskonale, wkr\xf3tce osi\u0105gniesz mistrzostwo w grze Operator ratunkowy! Oto %{coins} Monet, kt\xf3re pomog\u0105 Ci na pocz\u0105tek! </br> Zesp\xf3\u0142 gry Operator ratunkowy"
+                        general: "Jeste\u015b teraz gotowy, aby rozpocz\u0105\u0107 samodzielne wykonywanie misji. Aby pom\xf3c ci w rozpocz\u0119ciu misji i ekspansji, otrzymasz %{coins} monety. Powodzenia!"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "W przypadku niejasno\u015bci warto odwiedzi\u0107 dzia\u0142 cz\u0119sto zadawanych pyta\u0144, forum gry lub nasz\u0105 stron\u0119 na Facebooku!",
-                        general: "Nast\u0119pnymi zalecanymi krokami s\u0105 budowa centrum powiadamiania ratunkowego oraz jak najszybsze wzniesienie nowych posterunk\xf3w, poniewa\u017c maksymalna liczba misji jest r\xf3wna najwy\u017cszej liczbie posterunk\xf3w jednego typu (policji, stra\u017cy po\u017carnej, pogotowia ratunkowego) plus 1, np. przy 5 posterunkach stra\u017cy po\u017carnej i 3 pogotowia ratunkowego dost\u0119pnych jest 6 misji.",
-                        join_alliance: "Bardzo pomocne jest r\xf3wnie\u017c do\u0142\u0105czenie do sojuszu, zw\u0142aszcza na pocz\u0105tku gry, dlatego zalecamy r\xf3wnie\u017c ten krok.",
+                        contact: "Je\u015bli ulepszysz swoje stacje, zyskasz miejsce na nowe pojazdy.",
+                        general: "Za uko\u0144czenie misji otrzymasz kredyty. Zdobywanie kredyt\xf3w przybli\u017ca ci\u0119 do awansu.",
+                        join_alliance: "Awanse i budowanie stacji odblokowuj\u0105 nowe funkcje, takie jak typy misji lub pojazdy.",
                         radio: {
                             helpshift_id: "1540",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             short: "Radio wy\u015bwietla aktualizacj\u0119 stanu twoich pojazd\xf3w. Aby uzyska\u0107 szczeg\xf3\u0142owe informacje na temat ka\u017cdego stanu, kliknij tutaj."
                         },
-                        summary: "Oto podstawy gry Operator ratunkowy! Wykonuj misje, zdobywaj kredyty, kupuj kolejne jednostki, powtarzaj proces. Mi\u0142ej gry! </br> Zesp\xf3\u0142 gry Operator ratunkowy"
+                        summary: "Mo\u017cesz do\u0142\u0105czy\u0107 do sojuszu, aby rozwi\u0105zywa\u0107 misje razem z innymi. Istniej\u0105 r\xf3wnie\u017c regularne wydarzenia sojuszu, w kt\xf3rych mog\u0105 uczestniczy\u0107 wszyscy cz\u0142onkowie!"
                     },
                     mobile: {
-                        contact: "W przypadku niejasno\u015bci warto odwiedzi\u0107 dzia\u0142 cz\u0119sto zadawanych pyta\u0144, forum gry lub nasz\u0105 stron\u0119 na Facebooku!",
-                        general: "Nast\u0119pnymi zalecanymi krokami s\u0105 budowa centrum powiadamiania ratunkowego oraz jak najszybsze wzniesienie nowych posterunk\xf3w, poniewa\u017c maksymalna liczba misji jest r\xf3wna najwy\u017cszej liczbie posterunk\xf3w jednego typu (policji, stra\u017cy po\u017carnej, pogotowia ratunkowego) plus 1, np. przy 5 posterunkach stra\u017cy po\u017carnej i 3 pogotowia ratunkowego dost\u0119pnych jest 6 misji.",
-                        join_alliance: "Bardzo pomocne jest r\xf3wnie\u017c do\u0142\u0105czenie do sojuszu, zw\u0142aszcza na pocz\u0105tku gry, dlatego zalecamy r\xf3wnie\u017c ten krok.",
-                        summary: "Oto podstawy gry Operator ratunkowy! Wykonuj misje, zdobywaj kredyty, kupuj kolejne jednostki, powtarzaj proces. Mi\u0142ej gry! </br> Zesp\xf3\u0142 gry Operator ratunkowy"
+                        contact: "Je\u015bli ulepszysz swoje stacje, zyskasz miejsce na nowe pojazdy.",
+                        general: "Za uko\u0144czenie misji otrzymasz kredyty. Zdobywanie kredyt\xf3w przybli\u017ca ci\u0119 do awansu.",
+                        join_alliance: "Awanse i budowanie stacji odblokowuj\u0105 nowe funkcje, takie jak typy misji lub pojazdy.",
+                        summary: "Mo\u017cesz do\u0142\u0105czy\u0107 do sojuszu, aby rozwi\u0105zywa\u0107 misje razem z innymi. Istniej\u0105 r\xf3wnie\u017c regularne wydarzenia sojuszu, w kt\xf3rych mog\u0105 uczestniczy\u0107 wszyscy cz\u0142onkowie!"
                     },
                     reminder: {
                         join_alliance: "Do\u0142\u0105czenie do sojuszu przynosi wiele korzy\u015bci: dodatkowe nagrody za uko\u0144czenie misji sojuszu, wsparcie do\u015bwiadczonych cz\u0142onk\xf3w w trudnych misjach oraz mo\u017cliwo\u015b\u0107 korzystania z budynk\xf3w innych cz\u0142onk\xf3w, takich jak szpitale czy szko\u0142y! Naci\u015bnij przycisk, aby do\u0142\u0105czy\u0107 do sojuszu ju\u017c teraz!"
@@ -7942,34 +7800,10 @@ Object.values || (Object.values = function (e) {
                 beginner: {
                     building: {
                         browser: {
-                            build_building: {
-                                add_name: "Teraz musisz nazwa\u0107 sw\xf3j posterunek! Nazwa musi by\u0107 rozpoznawalna i skalowalna! Np.: \u201ePosterunek Policja #0001\u201d. Gdy sko\u0144czysz, kliknij opcj\u0119 Dalej!",
-                                select_building: "Wybierz rodzaj budynku, od kt\xf3rego chcesz zacz\u0105\u0107, sugerujemy wyb\xf3r posterunek policja! W ka\u017cdym wypadku najlepiej zacz\u0105\u0107 od ma\u0142ego posterunku!"
-                            },
-                            welcome: "Witaj w grze Operator ratunkowy Policja! Pomo\u017cemy Ci dobrze rozpocz\u0105\u0107 karier\u0119 w s\u0142u\u017cbach ratowniczych!"
+                            welcome: "Witamy w operatorratunkowy policja! Pracuj\u0105c w centrum dyspozytorskim dla s\u0142u\u017cb ratunkowych, zajmujesz si\u0119 po\u0142\u0105czeniami alarmowymi, aby pomaga\u0107 i chroni\u0107 spo\u0142ecze\u0144stwo. W tym celu budujesz stacje i wysy\u0142asz kilka rodzaj\xf3w pojazd\xf3w oraz wyszkolony personel do r\xf3\u017cnych misji."
                         },
                         mobile: {
-                            build_building: {
-                                add_name: "Teraz musisz nazwa\u0107 sw\xf3j posterunek! Nazwa musi by\u0107 rozpoznawalna i skalowalna! Np.: \u201ePosterunek Policja #0001\u201d. Gdy sko\u0144czysz, kliknij opcj\u0119 Dalej!",
-                                select_building: "Wybierz rodzaj budynku, od kt\xf3rego chcesz zacz\u0105\u0107, sugerujemy wyb\xf3r posterunek policja! W ka\u017cdym wypadku najlepiej zacz\u0105\u0107 od ma\u0142ego posterunku!"
-                            },
-                            welcome: "Witaj w grze Operator ratunkowy Policja! Pomo\u017cemy Ci dobrze rozpocz\u0105\u0107 karier\u0119 w s\u0142u\u017cbach ratowniczych!"
-                        }
-                    },
-                    rewards: {
-                        browser: {
-                            general: "Doskonale, wkr\xf3tce osi\u0105gniesz mistrzostwo w grze Operator ratunkowy Policja! Oto %{coins} Monet, kt\xf3re pomog\u0105 Ci na pocz\u0105tek! </br> Zesp\xf3\u0142 gry Operator ratunkowy Policja"
-                        },
-                        mobile: {
-                            general: "Doskonale, wkr\xf3tce osi\u0105gniesz mistrzostwo w grze Operator ratunkowy Policja! Oto %{coins} Monet, kt\xf3re pomog\u0105 Ci na pocz\u0105tek! </br> Zesp\xf3\u0142 gry Operator ratunkowy Policja"
-                        }
-                    },
-                    tips: {
-                        browser: {
-                            summary: "Oto podstawy gry Operator ratunkowy Policja! Wykonuj misje, zdobywaj kredyty, kupuj kolejne jednostki, powtarzaj proces. Mi\u0142ej gry! </br> Zesp\xf3\u0142 gry Operator ratunkowy Policja"
-                        },
-                        mobile: {
-                            summary: "Oto podstawy gry Operator ratunkowy Policja! Wykonuj misje, zdobywaj kredyty, kupuj kolejne jednostki, powtarzaj proces. Mi\u0142ej gry! </br> Zesp\xf3\u0142 gry Operator ratunkowy Policja"
+                            welcome: "Witamy w operatorratunkowy policja! Pracuj\u0105c w centrum dyspozytorskim dla s\u0142u\u017cb ratunkowych, zajmujesz si\u0119 po\u0142\u0105czeniami alarmowymi, aby pomaga\u0107 i chroni\u0107 spo\u0142ecze\u0144stwo. W tym celu budujesz stacje i wysy\u0142asz kilka rodzaj\xf3w pojazd\xf3w oraz wyszkolony personel do r\xf3\u017cnych misji."
                         }
                     }
                 }
@@ -8305,80 +8139,80 @@ Object.values || (Object.values = function (e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: 'Ora assegna un nome alla tua nuova stazione. Scegli un nome di facile identificazione e numerabile. Per esempio: "Caserma dei vigili del fuoco 0001". Quando hai finito, fai clic su "Avanti".',
-                            build_with_credits: "Ora costruisci il tuo edificio utilizzando i crediti.",
-                            new_building: 'Fai clic su "Nuovo edificio".',
-                            select_building: "Per prima cosa scegli il tipo di edificio con cui vuoi cominciare; ti consiglio vivamente di iniziare con i vigili del fuoco. In ogni caso, sarebbe meglio iniziare con una stazione di piccole dimensioni.",
-                            select_position: "Sposta il segnalino blu dove desideri costruire la tua prima stazione."
+                            add_name: "Scegli un nome per la tua stazione. Lo potrai cambiare in seguito.",
+                            build_with_credits: "Per costruire una stazione hai bisogno di crediti, la valuta del gioco. Puoi guadagnare crediti attraverso missioni, accessi giornalieri, attivit\xe0 ed eventi.",
+                            new_building: "Inizia la Costruzione della tua Stazione.",
+                            select_building: "Decidi se vuoi costruire una caserma dei pompieri o una stazione di polizia. All'inizio sono sufficienti le stazioni piccole. Potrai aggiornarle a stazioni normali in seguito.",
+                            select_position: "Sposta l'indicatore nel luogo esatto in cui posizionare la tua stazione."
                         },
-                        pick_location: "Per prima cosa, scegli una posizione. Digita nella barra di ricerca il nome del luogo da cui vuoi iniziare oppure trovalo sulla mappa. Che ne dici della tua citt\xe0 natale?",
-                        welcome: "Ciao, ti do il benvenuto in Operatore 112!  Ti insegner\xf2 un po' di cose per aiutarti a partire alla grande con la tua carriera nei servizi di emergenza."
+                        pick_location: "Scegli la localit\xe0 dove costruire la tua Prima Stazione.",
+                        welcome: "Benvenuto su Operatore112! Lavorando in una Centrale Operativa di Soccorso ti occuperai delle chiamate di emergenza per aiutare e proteggere la popolazione. Per fare ci\xf2, costruisci stazioni e invia diverse tipologie di veicoli e personale addestrato in una variet\xe0 di missioni."
                     },
                     mobile: {
                         build_building: {
-                            add_name: 'Ora assegna un nome alla tua nuova stazione. Scegli un nome di facile identificazione e numerabile. Per esempio: "Caserma dei vigili del fuoco 0001". Quando hai finito, fai clic su "Avanti".',
-                            build_with_credits: "Ora costruisci il tuo edificio utilizzando i crediti.",
-                            new_building: 'Per prima cosa, scegliamo una posizione dove costruiremo il primo edificio. <br /> <br /> Per fare questo, fai clic su "Nuovo edificio".',
-                            select_building: "Per prima cosa scegli il tipo di edificio con cui vuoi cominciare; ti consiglio vivamente di iniziare con i vigili del fuoco. In ogni caso, sarebbe meglio iniziare con una stazione di piccole dimensioni."
+                            add_name: "Scegli un nome per la tua stazione. Lo potrai cambiare in seguito.",
+                            build_with_credits: "Per costruire una stazione hai bisogno di crediti, la valuta del gioco. Puoi guadagnare crediti attraverso missioni, accessi giornalieri, attivit\xe0 ed eventi.",
+                            new_building: "Inizia costruendo della tua prima stazione. Puoi selezionare la sua posizione inserendola manualmente o spostando l'indicatore di posizione sulla mappa. A seconda del sistema operativo utilizzato, potrebbe essere necessario tenere premuto l'indicatore per un po' prima di poterlo spostare.",
+                            select_building: "Decidi se vuoi costruire una caserma dei pompieri o una stazione di polizia. All'inizio sono sufficienti le stazioni piccole. Potrai aggiornarle a stazioni normali in seguito."
                         },
-                        welcome: "Ciao, ti do il benvenuto in Operatore 112!  Ti insegner\xf2 un po' di cose per aiutarti a partire alla grande con la tua carriera nei servizi di emergenza."
+                        welcome: "Benvenuto su Operatore112! Lavorando in una Centrale Operativa di Soccorso ti occuperai delle chiamate di emergenza per aiutare e proteggere la popolazione. Per fare ci\xf2, costruisci stazioni e invia diverse tipologie di veicoli e personale addestrato in una variet\xe0 di missioni."
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Questo \xe8 il menu di assegnazione. Da qui potrai inviare le tue unit\xe0 in missione.",
-                            dispatch_menu_buttons: 'Questi sono i due pulsanti per l\'assegnazione. Il primo pulsante: "Assegna" invia in missione le unit\xe0 selezionate. Il secondo fa la stessa cosa del primo pulsante ma passa alla missione successiva. Per adesso, fai clic sul primo pulsante.',
-                            dispatch_menu_mission_general: "Qui puoi visualizzare le informazioni generali della missione, ovvero nome, indirizzo, icona della missione. Nelle missioni a cui hai gi\xe0 preso parte, l'icona a forma di piccola stella viene sostituita da un'icona a forma di omino.",
-                            dispatch_menu_mission_progress: "Qui puoi vedere i progressi gi\xe0 fatti in una missione, il numero di persone operative sul posto e il tempo rimasto per occuparti della missione.",
-                            dispatch_menu_mission_specific: "Qui trovi maggiori informazioni sulla missione, sulle unit\xe0 che rispondono alla chiamata e su quelle che si trovano gi\xe0 sul posto.",
-                            dispatch_menu_vehicle_list: "Questa \xe8 la lista dei mezzi a tua disposizione. Qui puoi selezionare i veicoli. Seleziona un veicolo facendo clic su di esso."
+                            dispatch_menu: "Questa \xe8 la finestra di invio. Qui puoi mandare i veicoli in missione.",
+                            dispatch_menu_buttons: "Invia un veicolo in missione facendo clic sul pulsante di invio. Non appena avrai pi\xf9 missioni potrai utilizzare il pulsante accanto per passare alla missione successiva.",
+                            dispatch_menu_mission_general: 'Qui puoi trovare informazioni generali sulla missione. Finch\xe9 non sei coinvolto nella missione <span class="glyphicon glyphicon-asterisk"></span> apparir\xe0 di fronte ad essa, <span class="glyphicon glyphicon-user"></span>dopo aver inviato il primo veicolo.',
+                            dispatch_menu_mission_progress: "Qui potete vedere lo stato di avanzamento della missione. Qui puoi vedere quali veicoli sono sul posto e quanto tempo manca alla fine della missione.",
+                            dispatch_menu_mission_specific: "Qui puoi vedere quali veicoli sono in viaggio verso o sul luogo della missione. Il numero davanti al tuo veicolo ne mostra lo stato.",
+                            dispatch_menu_vehicle_list: "Qui puoi vedere tutti i veicoli disponibili per la missione. Seleziona un veicolo facendo clic sulla casella accanto ad esso."
                         },
                         mobile: {
-                            dispatch_menu: "Questo \xe8 il menu di assegnazione. Da qui potrai inviare le tue unit\xe0 in missione.",
-                            dispatch_menu_buttons: 'Questi sono i due pulsanti per l\'assegnazione. Il primo pulsante: "Assegna" invia in missione le unit\xe0 selezionate. Il secondo fa la stessa cosa del primo pulsante ma passa alla missione successiva. Per adesso, fai clic sul primo pulsante.',
-                            dispatch_menu_mission_general: "Qui puoi visualizzare le informazioni generali della missione, ovvero nome, indirizzo, icona della missione. Nelle missioni a cui hai gi\xe0 preso parte, l'icona a forma di piccola stella viene sostituita da un'icona a forma di omino.",
-                            dispatch_menu_mission_progress: "Qui puoi vedere i progressi gi\xe0 fatti in una missione, il numero di persone operative sul posto e il tempo rimasto per occuparti della missione.",
-                            dispatch_menu_mission_specific: "Qui trovi maggiori informazioni sulla missione, sulle unit\xe0 che rispondono alla chiamata e su quelle che si trovano gi\xe0 sul posto.",
-                            dispatch_menu_vehicle_list: "Questa \xe8 la lista dei mezzi a tua disposizione. Qui puoi selezionare i veicoli. Seleziona un veicolo facendo clic su di esso."
+                            dispatch_menu: "Questa \xe8 la finestra di invio. Qui puoi mandare i veicoli in missione.",
+                            dispatch_menu_buttons: "Invia un veicolo in missione facendo clic sul pulsante di invio. Non appena avrai pi\xf9 missioni potrai utilizzare il pulsante accanto per passare alla missione successiva.",
+                            dispatch_menu_mission_general: 'Qui puoi trovare informazioni generali sulla missione. Finch\xe9 non sei coinvolto nella missione <span class="glyphicon glyphicon-asterisk"></span> apparir\xe0 di fronte ad essa, <span class="glyphicon glyphicon-user"></span>dopo aver inviato il primo veicolo.',
+                            dispatch_menu_mission_progress: "Qui potete vedere lo stato di avanzamento della missione. Qui puoi vedere quali veicoli sono sul posto e quanto tempo manca alla fine della missione.",
+                            dispatch_menu_mission_specific: "Qui puoi vedere quali veicoli sono in viaggio verso o sul luogo della missione. Il numero davanti al tuo veicolo ne mostra lo stato.",
+                            dispatch_menu_vehicle_list: "Qui puoi vedere tutti i veicoli disponibili per la missione. Seleziona un veicolo facendo clic sulla casella accanto ad esso."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: 'Ora dovremo imparare a gestire gli incidenti. Apri il menu di assegnazione facendo clic sul pulsante "Assegna".',
-                            first_mission: "Fantastico, hai costruito il tuo primo edificio! Vedi, ti sono state segnalate le prime missioni."
+                            dispatch_button: 'Fare clic sul pulsante "assegna" per svolgere la missione.',
+                            first_mission: "Il tuo primo edificio \xe8 pronto. Hai anche ricevuto la tua prima missione!"
                         },
                         mobile: {
-                            dispatch_button: 'Ora dovremo imparare a gestire gli incidenti. Apri il menu di assegnazione facendo clic sul pulsante "Assegna".',
-                            first_mission: "Fantastico, hai costruito il tuo primo edificio! Vedi, ti sono state segnalate le prime missioni."
+                            dispatch_button: 'Fare clic sul pulsante "assegna" per svolgere la missione.',
+                            first_mission: "Il tuo primo edificio \xe8 pronto. Hai anche ricevuto la tua prima missione!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Fantastico, stai per diventare un eccezionale Capomissione! Ecco %{coins} monete per aiutarti a partire! </br> Il team di Operatore 112"
+                        general: "Ora sei pronto per affrontare tu stesso i vari interventi. Per aiutarti a iniziare con le tue missioni ed espansioni, riceverai %{coins} monete. Buona fortuna!"
                     },
                     mobile: {
-                        general: "Fantastico, stai per diventare un eccezionale Capomissione! Ecco %{coins} monete per aiutarti a partire! </br> Il team di Operatore 112"
+                        general: "Ora sei pronto per affrontare tu stesso i vari interventi. Per aiutarti a iniziare con le tue missioni ed espansioni, riceverai %{coins} monete. Buona fortuna!"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Se hai domande puoi consultare le FAQ del gioco oppure visitarne i forum o la nostra pagina di Facebook.",
-                        general: "Come passo successivo ti consiglio di costruire una centrale operativa e poi, appena possibile, delle nuove stazioni. Il numero massimo di missioni \xe8 uguale al numero pi\xf9 alto di una delle stazioni di tipo diverso (polizia, vigili del fuoco, ambulanza) pi\xf9 1; per esempio: 5 stazioni dei vigili del fuoco e 3 di ambulanze = 6 missioni.",
-                        join_alliance: "Inoltre, ti consiglio di unirti a un'alleanza perch\xe9, soprattutto all'inizio, questo potrebbe esserti di grande aiuto.",
+                        contact: "Se migliori la tua stazione riceverai pi\xf9 spazio per i nuovi veicoli.",
+                        general: "Riceverai crediti per aver completato una missione. Guadagnando crediti arrivi pi\xf9 vicino alla tua prossima promozione.",
+                        join_alliance: "Essere promosso a un nuovo grado e costruire stazioni sblocca nuove funzionalit\xe0, ad esempio nuove tipologie di missione e veicoli.",
                         radio: {
                             helpshift_id: "1540",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             short: "La radio visualizza gli aggiornamenti dello stato dei veicoli. Per maggiori informazioni su ogni stato, fai clic qui."
                         },
-                        summary: "Queste sono le nozioni di base di Operatore 112. Completa missioni, ottieni crediti, acquista altre unit\xe0 e ricomincia. Divertiti a giocare! </br> Il team di Operatore 112"
+                        summary: "Puoi unirti a un'alleanza per andare in missione con gli altri. Ci sono anche eventi regolari dell'alleanza a cui puoi partecipare."
                     },
                     mobile: {
-                        contact: "Se hai domande puoi consultare le FAQ del gioco oppure visitarne i forum o la nostra pagina di Facebook.",
-                        general: "Come passo successivo ti consiglio di costruire una centrale operativa e poi, appena possibile, delle nuove stazioni. Il numero massimo di missioni \xe8 uguale al numero pi\xf9 alto di una delle stazioni di tipo diverso (polizia, vigili del fuoco, ambulanza) pi\xf9 1; per esempio: 5 stazioni dei vigili del fuoco e 3 di ambulanze = 6 missioni.",
-                        join_alliance: "Inoltre, ti consiglio di unirti a un'alleanza perch\xe9, soprattutto all'inizio, questo potrebbe esserti di grande aiuto.",
-                        summary: "Queste sono le nozioni di base di Operatore 112. Completa missioni, ottieni crediti, acquista altre unit\xe0 e ricomincia. Divertiti a giocare! </br> Il team di Operatore 112"
+                        contact: "Se migliori la tua stazione riceverai pi\xf9 spazio per i nuovi veicoli.",
+                        general: "Riceverai crediti per aver completato una missione. Guadagnando crediti arrivi pi\xf9 vicino alla tua prossima promozione.",
+                        join_alliance: "Essere promosso a un nuovo grado e costruire stazioni sblocca nuove funzionalit\xe0, ad esempio nuove tipologie di missione e veicoli.",
+                        summary: "Puoi unirti a un'alleanza per andare in missione con gli altri. Ci sono anche eventi regolari dell'alleanza a cui puoi partecipare."
                     },
                     reminder: {
                         join_alliance: "Unirsi a un'alleanza ha molti vantaggi: ricompense extra per il completamento delle missioni dell'alleanza, il supporto di membri esperti per le missioni difficili e la possibilit\xe0 di utilizzare le strutture degli altri membri, come ospedali e scuole! Premete il pulsante per unirvi a un'alleanza!"
@@ -8403,34 +8237,10 @@ Object.values || (Object.values = function (e) {
                 beginner: {
                     building: {
                         browser: {
-                            build_building: {
-                                add_name: 'Ora assegna un nome alla tua nuova stazione. Scegli un nome di facile identificazione e numerabile. Per esempio: "Stazione di polizia 0001". Quando hai finito, fai clic su "Avanti".',
-                                select_building: "Per prima cosa scegli il tipo di edificio con cui vuoi cominciare; ti consiglio vivamente di iniziare con la polizia. In ogni caso, sarebbe meglio iniziare con una stazione di piccole dimensioni."
-                            },
-                            welcome: "Ciao, ti do il benvenuto in Operatore 112 Polizia!  Ti insegner\xf2 un po' di cose per aiutarti a partire alla grande con la tua carriera nei servizi di emergenza."
+                            welcome: "Benvenuto su Operatore 112 Polizia! Lavorando in una Centrale Operativa di Soccorso ti occuperai delle chiamate di emergenza per aiutare e proteggere la popolazione. Per fare ci\xf2, costruisci stazioni e invia diverse tipologie di veicoli e personale addestrato in una variet\xe0 di missioni."
                         },
                         mobile: {
-                            build_building: {
-                                add_name: 'Ora assegna un nome alla tua nuova stazione. Scegli un nome di facile identificazione e numerabile. Per esempio: "Stazione di polizia 0001". Quando hai finito, fai clic su "Avanti".',
-                                select_building: "Per prima cosa scegli il tipo di edificio con cui vuoi cominciare; ti consiglio vivamente di iniziare con la polizia. In ogni caso, sarebbe meglio iniziare con una stazione di piccole dimensioni."
-                            },
-                            welcome: "Ciao, ti do il benvenuto in Operatore 112 Polizia!  Ti insegner\xf2 un po' di cose per aiutarti a partire alla grande con la tua carriera nei servizi di emergenza."
-                        }
-                    },
-                    rewards: {
-                        browser: {
-                            general: "Fantastico, stai per diventare un eccezionale Capomissione! Ecco %{coins} monete per aiutarti a partire! </br> Il team di Operatore 112 Polizia"
-                        },
-                        mobile: {
-                            general: "Fantastico, stai per diventare un eccezionale Capomissione! Ecco %{coins} monete per aiutarti a partire! </br> Il team di Operatore 112 Polizia"
-                        }
-                    },
-                    tips: {
-                        browser: {
-                            summary: "Queste sono le nozioni di base di Operatore 112 Polizia. Completa missioni, ottieni crediti, acquista altre unit\xe0 e ricomincia. Divertiti a giocare! </br> Il team di Operatore 112 Polizia"
-                        },
-                        mobile: {
-                            summary: "Queste sono le nozioni di base di Operatore 112 Polizia. Completa missioni, ottieni crediti, acquista altre unit\xe0 e ricomincia. Divertiti a giocare! </br> Il team di Operatore 112 Polizia"
+                            welcome: "Benvenuto su Operatore 112 Polizia! Lavorando in una Centrale Operativa di Soccorso ti occuperai delle chiamate di emergenza per aiutare e proteggere la popolazione. Per fare ci\xf2, costruisci stazioni e invia diverse tipologie di veicoli e personale addestrato in una variet\xe0 di missioni."
                         }
                     }
                 }
@@ -8760,80 +8570,80 @@ Object.values || (Object.values = function (e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: "Ensuite, donnez un nom \xe0 votre poste\xa0! Il faut qu'il soit identifiable et \xe9volutif. Par exemple\xa0: \xab\xa0Caserne de pompiers n\xb01\xa0\xbb. Cliquez sur \xab\xa0Suiv.\xa0\xbb lorsque vous avez termin\xe9\xa0!",
-                            build_with_credits: "Construisez maintenant votre b\xe2timent \xe0 l'aide de cr\xe9dits\xa0!",
-                            new_building: "Cliquez sur \xab\xa0Nouveau b\xe2timent\xa0\xbb\xa0!",
-                            select_building: "Choisissez d'abord le type de b\xe2timent avec lequel vous voulez d\xe9buter. Nous vous recommandons de d\xe9marrer avec une caserne de pompiers. Dans tous les cas, nous vous conseillons un petit poste\xa0!",
-                            select_position: "D\xe9placez le marqueur bleu o\xf9 vous voulez construire votre premier poste\xa0!"
+                            add_name: "S\xe9lectionnez un nom pour votre station (b\xe2timent). Vous pourrez le renommer plus tard.",
+                            build_with_credits: "Pour construire une station (b\xe2timent), vous avez besoin de cr\xe9dits, la monnaie du jeu. Vous pouvez gagner des cr\xe9dits gr\xe2ce \xe0 des missions, des connexions quotidiennes, des t\xe2ches et des \xe9v\xe9nements.",
+                            new_building: "D\xe9marrez le processus de construction de votre station (b\xe2timent).",
+                            select_building: "D\xe9cidez si vous souhaitez construire une caserne de pompiers ou un commissariat de police. Au d\xe9but, des petits b\xe2timents suffisent. Vous pourrez les mettre \xe0 niveau vers des stations plus grandes plus tard.",
+                            select_position: "D\xe9placez le marqueur \xe0 l'endroit exact de votre station (b\xe2timent)."
                         },
-                        pick_location: "Tout d'abord, choisissez un endroit o\xf9 d\xe9marrer. Indiquez le nom du lieu depuis lequel vous voulez commencer dans la barre de recherche ou directement sur la carte. Que diriez-vous de la ville o\xf9 vous r\xe9sidez\xa0?",
-                        welcome: "Bonjour, et bienvenue sur Op\xe9rateur\xa0112\xa0!  Je vais vous aider \xe0 bien d\xe9marrer votre carri\xe8re dans les services d'urgence\xa0!"
+                        pick_location: "Choisissez un emplacement o\xf9 vous souhaitez construire votre premi\xe8re station (b\xe2timent).",
+                        welcome: "Bienvenue sur Op\xe9rateur 112! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions."
                     },
                     mobile: {
                         build_building: {
-                            add_name: "Ensuite, donnez un nom \xe0 votre poste\xa0! Il faut qu'il soit identifiable et \xe9volutif. Par exemple\xa0: \xab\xa0Caserne de pompiers n\xb01\xa0\xbb. Cliquez sur \xab\xa0Suiv.\xa0\xbb lorsque vous avez termin\xe9\xa0!",
-                            build_with_credits: "Construisez maintenant votre b\xe2timent \xe0 l'aide de cr\xe9dits\xa0!",
-                            new_building: "Nous allons d'abord choisir un emplacement pour commencer et construire votre premier b\xe2timent\xa0! <br /> <br /> Pour cela, cliquez sur \xab\xa0Nouveau b\xe2timent\xa0\xbb.",
-                            select_building: "Choisissez d'abord le type de b\xe2timent avec lequel vous voulez d\xe9buter. Nous vous recommandons de d\xe9marrer avec une caserne de pompiers. Dans tous les cas, nous vous conseillons un petit poste\xa0!"
+                            add_name: "S\xe9lectionnez un nom pour votre station (b\xe2timent). Vous pourrez le renommer plus tard.",
+                            build_with_credits: "Pour construire une station (b\xe2timent), vous avez besoin de cr\xe9dits, la monnaie du jeu. Vous pouvez gagner des cr\xe9dits gr\xe2ce \xe0 des missions, des connexions quotidiennes, des t\xe2ches et des \xe9v\xe9nements.",
+                            new_building: "Commencez par construire votre premi\xe8re station (b\xe2timent). Vous pouvez s\xe9lectionner son emplacement en le saisissant manuellement ou en d\xe9pla\xe7ant le marqueur de localisation sur la carte. Selon votre syst\xe8me d'exploitation, vous devrez peut-\xeatre maintenir le marqueur pendant un certain temps avant de pouvoir le d\xe9placer.",
+                            select_building: "D\xe9cidez si vous souhaitez construire une caserne de pompiers ou un commissariat de police. Au d\xe9but, des petits b\xe2timents suffisent. Vous pourrez les mettre \xe0 niveau vers des stations plus grandes plus tard."
                         },
-                        welcome: "Bonjour, et bienvenue sur Op\xe9rateur\xa0112\xa0!  Je vais vous aider \xe0 bien d\xe9marrer votre carri\xe8re dans les services d'urgence\xa0!"
+                        welcome: "Bienvenue sur Op\xe9rateur 112! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions."
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Voici le menu de d\xe9ploiement. Vous pouvez d'ici envoyer vos unit\xe9s en mission\xa0!",
-                            dispatch_menu_buttons: "Ce sont vos deux boutons de d\xe9ploiement\xa0! Le premier \xab\xa0D\xe9ployer\xa0\xbb envoie les unit\xe9s s\xe9lectionn\xe9es pour la mission. Le second fait la m\xeame chose que le premier, mais pour la mission suivante. Pour l'instant, cliquez sur le premier bouton.",
-                            dispatch_menu_mission_general: "Ici sont affich\xe9es les informations g\xe9n\xe9rales de mission, c'est-\xe0-dire le nom, l'adresse et l'ic\xf4ne de la mission. La petite ic\xf4ne en forme de silhouette appara\xeet et remplace l'\xe9toile pour les missions auxquelles vous participez d\xe9j\xe0.",
-                            dispatch_menu_mission_progress: "Vous pouvez voir ici votre progression sur cette mission, le personnel sur site ainsi que le temps restant pour accomplir la mission\xa0!",
-                            dispatch_menu_mission_specific: "Vous pouvez consulter ici plus d'informations sur la mission, voir quelles unit\xe9s r\xe9pondent \xe0 l'appel, et quelles sont celles qui sont d\xe9j\xe0 sur site.",
-                            dispatch_menu_vehicle_list: "Voici la liste de vos v\xe9hicules disponibles. Vous pouvez s\xe9lectionner les v\xe9hicules d'ici. S\xe9lectionnez votre v\xe9hicule en cliquant dessus\xa0!"
+                            dispatch_menu: "C'est la fen\xeatre d'exp\xe9dition. Ici, vous pouvez envoyer des v\xe9hicules en mission.",
+                            dispatch_menu_buttons: "Envoyez un v\xe9hicule \xe0 une mission en cliquant sur le bouton d'envoi. D\xe8s que vous avez plus de missions, vous pouvez utiliser le bouton \xe0 c\xf4t\xe9 pour passer \xe0 la mission suivante.",
+                            dispatch_menu_mission_general: 'Vous trouverez ici des informations g\xe9n\xe9rales sur la mission. Tant que vous n\'\xeates pas impliqu\xe9 dans la mission, <span class="glyphicon glyphicon-asterisk"></span> appara\xeetra devant elle, <span class="glyphicon glyphicon-user"></span> une fois que vous aurez envoy\xe9 le premier v\xe9hicule.',
+                            dispatch_menu_mission_progress: "Ici vous pouvez voir la progression de la mission. Ici, vous pouvez voir quels v\xe9hicules sont sur place et combien de temps il reste avant la fin de la mission.",
+                            dispatch_menu_mission_specific: "Ici, vous pouvez voir quels v\xe9hicules sont en route vers ou sur le lieu de la mission. Le num\xe9ro devant votre v\xe9hicule indique son \xe9tat.",
+                            dispatch_menu_vehicle_list: "Ici vous pouvez voir tous les v\xe9hicules disponibles pour la mission. S\xe9lectionnez un v\xe9hicule en cliquant sur la case \xe0 c\xf4t\xe9 de lui."
                         },
                         mobile: {
-                            dispatch_menu: "Voici le menu de d\xe9ploiement. Vous pouvez d'ici envoyer vos unit\xe9s en mission\xa0!",
-                            dispatch_menu_buttons: "Ce sont vos deux boutons de d\xe9ploiement\xa0! Le premier \xab\xa0D\xe9ployer\xa0\xbb envoie les unit\xe9s s\xe9lectionn\xe9es pour la mission. Le second fait la m\xeame chose que le premier, mais pour la mission suivante. Pour l'instant, cliquez sur le premier bouton.",
-                            dispatch_menu_mission_general: "Ici sont affich\xe9es les informations g\xe9n\xe9rales de mission, c'est-\xe0-dire le nom, l'adresse et l'ic\xf4ne de la mission. La petite ic\xf4ne en forme de silhouette appara\xeet et remplace l'\xe9toile pour les missions auxquelles vous participez d\xe9j\xe0.",
-                            dispatch_menu_mission_progress: "Vous pouvez voir ici votre progression sur cette mission, le personnel sur site ainsi que le temps restant pour accomplir la mission\xa0!",
-                            dispatch_menu_mission_specific: "Vous pouvez consulter ici plus d'informations sur la mission, voir quelles unit\xe9s r\xe9pondent \xe0 l'appel, et quelles sont celles qui sont d\xe9j\xe0 sur site.",
-                            dispatch_menu_vehicle_list: "Voici la liste de vos v\xe9hicules disponibles. Vous pouvez s\xe9lectionner les v\xe9hicules d'ici. S\xe9lectionnez votre v\xe9hicule en cliquant dessus\xa0!"
+                            dispatch_menu: "C'est la fen\xeatre d'exp\xe9dition. Ici, vous pouvez envoyer des v\xe9hicules en mission.",
+                            dispatch_menu_buttons: "Envoyez un v\xe9hicule \xe0 une mission en cliquant sur le bouton d'envoi. D\xe8s que vous avez plus de missions, vous pouvez utiliser le bouton \xe0 c\xf4t\xe9 pour passer \xe0 la mission suivante.",
+                            dispatch_menu_mission_general: 'Vous trouverez ici des informations g\xe9n\xe9rales sur la mission. Tant que vous n\'\xeates pas impliqu\xe9 dans la mission, <span class="glyphicon glyphicon-asterisk"></span> appara\xeetra devant elle, <span class="glyphicon glyphicon-user"></span> une fois que vous aurez envoy\xe9 le premier v\xe9hicule.',
+                            dispatch_menu_mission_progress: "Ici vous pouvez voir la progression de la mission. Ici, vous pouvez voir quels v\xe9hicules sont sur place et combien de temps il reste avant la fin de la mission.",
+                            dispatch_menu_mission_specific: "Ici, vous pouvez voir quels v\xe9hicules sont en route vers ou sur le lieu de la mission. Le num\xe9ro devant votre v\xe9hicule indique son \xe9tat.",
+                            dispatch_menu_vehicle_list: "Ici vous pouvez voir tous les v\xe9hicules disponibles pour la mission. S\xe9lectionnez un v\xe9hicule en cliquant sur la case \xe0 c\xf4t\xe9 de lui."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "Il vous faut maintenant apprendre \xe0 g\xe9rer les incidents. Ouvrez le menu de d\xe9ploiement en cliquant sur le bouton \xab\xa0D\xe9ployer\xa0\xbb\xa0!",
-                            first_mission: "Parfait, vous avez construit votre premier b\xe2timent\xa0! Regardez, on commence d\xe9j\xe0 \xe0 vous signaler des missions\xa0!"
+                            dispatch_button: "Cliquez sur le bouton \xab envoyer \xbb pour effectuer la mission.",
+                            first_mission: "Votre premier b\xe2timent est pr\xeat. Vous avez \xe9galement re\xe7u votre premi\xe8re mission !"
                         },
                         mobile: {
-                            dispatch_button: "Il vous faut maintenant apprendre \xe0 g\xe9rer les incidents. Ouvrez le menu de d\xe9ploiement en cliquant sur le bouton \xab\xa0D\xe9ployer\xa0\xbb\xa0!",
-                            first_mission: "Parfait, vous avez construit votre premier b\xe2timent\xa0! Regardez, on commence d\xe9j\xe0 \xe0 vous signaler des missions\xa0!"
+                            dispatch_button: "Cliquez sur le bouton \xab envoyer \xbb pour effectuer la mission.",
+                            first_mission: "Votre premier b\xe2timent est pr\xeat. Vous avez \xe9galement re\xe7u votre premi\xe8re mission !"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Parfait, vous \xeates bien parti pour devenir un Op\xe9rateur\xa0112 de talent\xa0! Voici %{coins}\xa0pi\xe8ces pour vous aider \xe0 d\xe9marrer\xa0! </br> L'\xe9quipe d'Op\xe9rateur\xa0112"
+                        general: "Vous \xeates d\xe9sormais pr\xeat \xe0 accomplir vous-m\xeame votre mission. Pour vous aider \xe0 d\xe9marrer vos missions et votre expansion, vous recevez %{coins} pi\xe8ces. Bonne chance!"
                     },
                     mobile: {
-                        general: "Parfait, vous \xeates bien parti pour devenir un Op\xe9rateur\xa0112 de talent\xa0! Voici %{coins}\xa0pi\xe8ces pour vous aider \xe0 d\xe9marrer\xa0! </br> L'\xe9quipe d'Op\xe9rateur\xa0112"
+                        general: "Vous \xeates d\xe9sormais pr\xeat \xe0 accomplir vous-m\xeame votre mission. Pour vous aider \xe0 d\xe9marrer vos missions et votre expansion, vous recevez %{coins} pi\xe8ces. Bonne chance!"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Si vous avez des questions, vous pouvez consulter la FAQ du jeu, visiter les forums du jeu ou notre page Facebook\xa0!",
-                        general: "Nous vous recommandons pour l'\xe9tape suivante de construire un centre de secours et, d\xe8s que possible, de nouveaux postes puisque le nombre de missions maximum \xe9quivaut au plus grand nombre de postes d'un genre (police, pompiers, ambulance) plus 1. Par exemple, 5\xa0casernes de pompiers et 3\xa0postes ambulanciers = 6\xa0missions.",
-                        join_alliance: "De plus, nous vous recommandons de rejoindre une alliance, ce qui peut grandement vous aider, surtout au d\xe9but.",
+                        contact: "Si vous am\xe9liorez votre station, vous recevrez plus de place pour les nouveaux v\xe9hicules.",
+                        general: "Vous recevrez des cr\xe9dits pour avoir termin\xe9 une mission. En gagnant des cr\xe9dits, vous vous rapprochez de votre prochaine promotion.",
+                        join_alliance: "\xcatre promu \xe0 un nouveau rang et construire des stations lib\xe8re de nouvelles fonctionnalit\xe9s telles que des types de missions et des v\xe9hicules.",
                         radio: {
                             helpshift_id: "1540",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             short: "La radio diffuse des rapports p\xe9riodiques sur vos v\xe9hicules. Pour plus de d\xe9tails sur chaque statut, cliquez ici."
                         },
-                        summary: "Voici les bases d'Op\xe9rateur\xa0112\xa0! Accomplissez des missions, recevez des cr\xe9dits, achetez plus d'unit\xe9s, recommencez. Amusez-vous bien\xa0! </br> L'\xe9quipe d'Op\xe9rateur\xa0112"
+                        summary: "Vous pouvez rejoindre une alliance pour partir en mission avec d'autres. Il existe \xe9galement des \xe9v\xe9nements d'alliance r\xe9guliers auxquels vous pouvez participer."
                     },
                     mobile: {
-                        contact: "Si vous avez des questions, vous pouvez consulter la FAQ du jeu, visiter les forums du jeu ou notre page Facebook\xa0!",
-                        general: "Nous vous recommandons pour l'\xe9tape suivante de construire un centre de secours et, d\xe8s que possible, de nouveaux postes puisque le nombre de missions maximum \xe9quivaut au plus grand nombre de postes d'un genre (police, pompiers, ambulance) plus 1. Par exemple, 5\xa0casernes de pompiers et 3\xa0postes ambulanciers = 6\xa0missions.",
-                        join_alliance: "De plus, nous vous recommandons de rejoindre une alliance, ce qui peut grandement vous aider, surtout au d\xe9but.",
-                        summary: "Voici les bases d'Op\xe9rateur\xa0112\xa0! Accomplissez des missions, recevez des cr\xe9dits, achetez plus d'unit\xe9s, recommencez. Amusez-vous bien\xa0! </br> L'\xe9quipe d'Op\xe9rateur\xa0112"
+                        contact: "Si vous am\xe9liorez votre station, vous recevrez plus de place pour les nouveaux v\xe9hicules.",
+                        general: "Vous recevrez des cr\xe9dits pour avoir termin\xe9 une mission. En gagnant des cr\xe9dits, vous vous rapprochez de votre prochaine promotion.",
+                        join_alliance: "\xcatre promu \xe0 un nouveau rang et construire des stations lib\xe8re de nouvelles fonctionnalit\xe9s telles que des types de missions et des v\xe9hicules.",
+                        summary: "Vous pouvez rejoindre une alliance pour partir en mission avec d'autres. Il existe \xe9galement des \xe9v\xe9nements d'alliance r\xe9guliers auxquels vous pouvez participer."
                     },
                     reminder: {
                         join_alliance: "Rejoindre une alliance pr\xe9sente de nombreux avantages : des r\xe9compenses suppl\xe9mentaires pour l'accomplissement des missions de l'alliance, le soutien de membres exp\xe9riment\xe9s pour les missions difficiles et vous pouvez utiliser les installations des autres membres comme les h\xf4pitaux et les \xe9coles ! Appuyez sur le bouton pour rejoindre une alliance maintenant !"
@@ -8858,31 +8668,10 @@ Object.values || (Object.values = function (e) {
                 beginner: {
                     building: {
                         browser: {
-                            build_building: {
-                                add_name: "Ensuite, donnez un nom \xe0 votre poste\xa0! Il faut qu'il soit identifiable et \xe9volutif. Par exemple\xa0: \xab\xa0Police Muncipale n\xb01\xa0\xbb. Cliquez sur \xab\xa0Suiv.\xa0\xbb lorsque vous avez termin\xe9\xa0!",
-                                select_building: "Choisissez d'abord le type de b\xe2timent avec lequel vous voulez d\xe9buter. Nous vous recommandons de d\xe9marrer avec une police muncipale. Dans tous les cas, nous vous conseillons un petit poste\xa0!"
-                            },
-                            welcome: "Bonjour, et bienvenue sur Op\xe9rateur\xa0112 Police\xa0!  Je vais vous aider \xe0 bien d\xe9marrer votre carri\xe8re dans les services d'urgence\xa0!"
+                            welcome: "Bienvenue sur Op\xe9rateur 112 Police! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions."
                         },
                         mobile: {
-                            build_building: {
-                                add_name: "Ensuite, donnez un nom \xe0 votre poste\xa0! Il faut qu'il soit identifiable et \xe9volutif. Par exemple\xa0: \xab\xa0Police Muncipale n\xb01\xa0\xbb. Cliquez sur \xab\xa0Suiv.\xa0\xbb lorsque vous avez termin\xe9\xa0!",
-                                select_building: "Choisissez d'abord le type de b\xe2timent avec lequel vous voulez d\xe9buter. Nous vous recommandons de d\xe9marrer avec une police muncipale. Dans tous les cas, nous vous conseillons un petit poste\xa0!"
-                            },
-                            welcome: "Bonjour, et bienvenue sur Op\xe9rateur\xa0112 Police\xa0!  Je vais vous aider \xe0 bien d\xe9marrer votre carri\xe8re dans les services d'urgence\xa0!"
-                        }
-                    },
-                    rewards: {
-                        mobile: {
-                            general: "Parfait, vous \xeates bien parti pour devenir un Op\xe9rateur\xa0112 Police de talent\xa0! Voici %{coins}\xa0pi\xe8ces pour vous aider \xe0 d\xe9marrer\xa0! </br> L'\xe9quipe d'Op\xe9rateur\xa0112 Police"
-                        }
-                    },
-                    tips: {
-                        browser: {
-                            summary: "Voici les bases d'Op\xe9rateur\xa0112 Police\xa0! Accomplissez des missions, recevez des cr\xe9dits, achetez plus d'unit\xe9s, recommencez. Amusez-vous bien\xa0! </br> L'\xe9quipe d'Op\xe9rateur\xa0112 Police"
-                        },
-                        mobile: {
-                            summary: "Voici les bases d'Op\xe9rateur\xa0112 Police\xa0! Accomplissez des missions, recevez des cr\xe9dits, achetez plus d'unit\xe9s, recommencez. Amusez-vous bien\xa0! </br> L'\xe9quipe d'Op\xe9rateur\xa0112 Police"
+                            welcome: "Bienvenue sur Op\xe9rateur 112 Police! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions."
                         }
                     }
                 }
@@ -9190,80 +8979,80 @@ Object.values || (Object.values = function (e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: "\u0422\u0435\u043f\u0435\u0440\u044c \u043d\u0430\u0437\u043e\u0432\u0438\u0442\u0435 \u0441\u0432\u043e\u044e \u043d\u043e\u0432\u0443\u044e \u0441\u0442\u0430\u043d\u0446\u0438\u044e! \u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0443\u0437\u043d\u0430\u0432\u0430\u0435\u043c\u043e\u0435 \u0438 \u043d\u0435 \u043e\u0447\u0435\u043d\u044c \u0434\u043b\u0438\u043d\u043d\u043e\u0435 \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435! \u041d\u0430\u043f\u0440\u0438\u043c\u0435\u0440, \xab\u041f\u043e\u0436\u0430\u0440\u043d\u0430\u044f \u0441\u0442\u0430\u043d\u0446\u0438\u044f \u21160001\xbb. \u041a\u043e\u0433\u0434\u0430 \u0437\u0430\u043a\u043e\u043d\u0447\u0438\u0442\u0435, \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \xab\u0414\u0430\u043b\u0435\u0435\xbb!",
-                            build_with_credits: "\u0422\u0435\u043f\u0435\u0440\u044c \u043f\u043e\u0441\u0442\u0440\u043e\u0439\u0442\u0435 \u0437\u0434\u0430\u043d\u0438\u0435 \u0437\u0430 \u043a\u0440\u0435\u0434\u0438\u0442\u044b!",
-                            new_building: "\u0429\u0451\u043b\u043a\u043d\u0438\u0442\u0435 \u043a\u043d\u043e\u043f\u043a\u0443 \xab\u041d\u043e\u0432\u043e\u0435 \u0437\u0434\u0430\u043d\u0438\u0435\xbb!",
-                            select_building: "\u0421\u043f\u0435\u0440\u0432\u0430 \u0432\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0442\u0438\u043f \u0437\u0434\u0430\u043d\u0438\u044f. \u041f\u0440\u0435\u0434\u043b\u0430\u0433\u0430\u0435\u043c \u043d\u0430\u0447\u0430\u0442\u044c \u0441 \u043f\u043e\u0436\u0430\u0440\u043d\u043e\u0439 \u0447\u0430\u0441\u0442\u0438! \u0422\u0430\u043a \u0438\u043b\u0438 \u0438\u043d\u0430\u0447\u0435, \u043d\u043e \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0435\u043c \u043d\u0430\u0447\u0430\u0442\u044c \u0441 \u043d\u0435\u0431\u043e\u043b\u044c\u0448\u043e\u0439 \u0441\u0442\u0430\u043d\u0446\u0438\u0438!",
-                            select_position: "\u041f\u0435\u0440\u0435\u043c\u0435\u0441\u0442\u0438\u0442\u0435 \u0441\u0438\u043d\u044e\u044e \u043c\u0435\u0442\u043a\u0443 \u0442\u0443\u0434\u0430, \u0433\u0434\u0435 \u0445\u043e\u0442\u0438\u0442\u0435 \u043f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u0441\u0432\u043e\u044e \u043f\u0435\u0440\u0432\u0443\u044e \u0441\u0442\u0430\u043d\u0446\u0438\u044e!"
+                            add_name: "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0438\u043c\u044f \u0434\u043b\u044f \u0441\u0432\u043e\u0435\u0439 \u0441\u0442\u0430\u043d\u0446\u0438\u0438. \u041f\u043e\u0437\u0436\u0435 \u0432\u044b \u0441\u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u0435\u0440\u0435\u0438\u043c\u0435\u043d\u043e\u0432\u0430\u0442\u044c \u0435\u0435.",
+                            build_with_credits: "\u0414\u043b\u044f \u0441\u0442\u0440\u043e\u0438\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u0430 \u0441\u0442\u0430\u043d\u0446\u0438\u0438 \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u044b \u043a\u0440\u0435\u0434\u0438\u0442\u044b - \u0438\u0433\u0440\u043e\u0432\u0430\u044f \u0432\u0430\u043b\u044e\u0442\u0430. \u041a\u0440\u0435\u0434\u0438\u0442\u044b \u043c\u043e\u0436\u043d\u043e \u0437\u0430\u0440\u0430\u0431\u043e\u0442\u0430\u0442\u044c, \u0432\u044b\u043f\u043e\u043b\u043d\u044f\u044f \u043c\u0438\u0441\u0441\u0438\u0438, \u0435\u0436\u0435\u0434\u043d\u0435\u0432\u043d\u043e \u0432\u0445\u043e\u0434\u044f \u0432 \u0438\u0433\u0440\u0443, \u0432\u044b\u043f\u043e\u043b\u043d\u044f\u044f \u0437\u0430\u0434\u0430\u043d\u0438\u044f \u0438 \u0441\u043e\u0431\u044b\u0442\u0438\u044f.",
+                            new_building: "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0440\u043e\u0446\u0435\u0441\u0441 \u0441\u043e\u0437\u0434\u0430\u043d\u0438\u044f \u0441\u0442\u0430\u043d\u0446\u0438\u0438.",
+                            select_building: "\u0420\u0435\u0448\u0438\u0442\u0435, \u0445\u043e\u0442\u0438\u0442\u0435 \u043b\u0438 \u0432\u044b \u043f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u043f\u043e\u0436\u0430\u0440\u043d\u0443\u044e \u0441\u0442\u0430\u043d\u0446\u0438\u044e \u0438\u043b\u0438 \u043f\u043e\u043b\u0438\u0446\u0435\u0439\u0441\u043a\u0438\u0439 \u0443\u0447\u0430\u0441\u0442\u043e\u043a. \u0412\u043d\u0430\u0447\u0430\u043b\u0435 \u0434\u043e\u0441\u0442\u0430\u0442\u043e\u0447\u043d\u043e \u043d\u0435\u0431\u043e\u043b\u044c\u0448\u0438\u0445 \u0441\u0442\u0430\u043d\u0446\u0438\u0439. \u041f\u043e\u0437\u0436\u0435 \u0438\u0445 \u043c\u043e\u0436\u043d\u043e \u043f\u0435\u0440\u0435\u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u0442\u044c \u0432 \u043e\u0431\u044b\u0447\u043d\u044b\u0435 \u0441\u0442\u0430\u043d\u0446\u0438\u0438.",
+                            select_position: "\u041f\u0435\u0440\u0435\u043c\u0435\u0441\u0442\u0438\u0442\u0435 \u043c\u0430\u0440\u043a\u0435\u0440 \u043c\u0435\u0441\u0442\u043e\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u044f \u0432 \u0442\u043e \u043c\u0435\u0441\u0442\u043e, \u0433\u0434\u0435 \u0434\u043e\u043b\u0436\u043d\u0430 \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c\u0441\u044f \u0441\u0442\u0430\u043d\u0446\u0438\u044f."
                         },
-                        pick_location: "\u041f\u0435\u0440\u0432\u044b\u043c \u0434\u0435\u043b\u043e\u043c \u0434\u0430\u0432\u0430\u0439\u0442\u0435 \u0432\u044b\u0431\u0435\u0440\u0435\u043c \u043c\u0435\u0441\u0442\u043e, \u043e\u0442\u043a\u0443\u0434\u0430 \u0432\u044b \u043d\u0430\u0447\u043d\u0435\u0442\u0435 \u0441\u0432\u043e\u0439 \u043f\u0443\u0442\u044c! \u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u043c\u0435\u0441\u0442\u0430 \u0432 \u043f\u043e\u0438\u0441\u043a\u043e\u0432\u0443\u044e \u0441\u0442\u0440\u043e\u043a\u0443 \u0438\u043b\u0438 \u0441\u0430\u043c\u043e\u0441\u0442\u043e\u044f\u0442\u0435\u043b\u044c\u043d\u043e \u043d\u0430\u0439\u0434\u0438\u0442\u0435 \u0435\u0433\u043e \u043d\u0430 \u043a\u0430\u0440\u0442\u0435! \u041a\u0430\u043a \u043d\u0430\u0441\u0447\u0435\u0442 \u0432\u0430\u0448\u0435\u0433\u043e \u0440\u043e\u0434\u043d\u043e\u0433\u043e \u0433\u043e\u0440\u043e\u0434\u0430?",
-                        welcome: "\u0414\u043e\u0431\u0440\u043e \u043f\u043e\u0436\u0430\u043b\u043e\u0432\u0430\u0442\u044c \u0432 \xab\u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440 112\xbb!  \u042f \u043f\u0440\u0435\u043f\u043e\u0434\u0430\u043c \u0432\u0430\u043c \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0443\u0440\u043e\u043a\u043e\u0432, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u043f\u043e\u043c\u043e\u0433\u0443\u0442 \u043d\u0430\u0447\u0430\u0442\u044c \u043a\u0430\u0440\u044c\u0435\u0440\u0443 \u0441\u043f\u0430\u0441\u0430\u0442\u0435\u043b\u044f!"
+                        pick_location: "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u043c\u0435\u0441\u0442\u043e, \u0433\u0434\u0435 \u0432\u044b \u0445\u043e\u0442\u0438\u0442\u0435 \u043f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u0441\u0432\u043e\u044e \u043f\u0435\u0440\u0432\u0443\u044e \u0441\u0442\u0430\u043d\u0446\u0438\u044e.",
+                        welcome: "\u0414\u043e\u0431\u0440\u043e \u043f\u043e\u0436\u0430\u043b\u043e\u0432\u0430\u0442\u044c \u0432 \u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440 112 - \u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f! \u0420\u0430\u0431\u043e\u0442\u0430\u044f \u0432 \u0434\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440\u0441\u043a\u043e\u043c \u0446\u0435\u043d\u0442\u0440\u0435 \u0430\u0432\u0430\u0440\u0438\u0439\u043d\u043e-\u0441\u043f\u0430\u0441\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0439 \u0441\u043b\u0443\u0436\u0431\u044b, \u0432\u044b \u043f\u0440\u0438\u043d\u0438\u043c\u0430\u0435\u0442\u0435 \u044d\u043a\u0441\u0442\u0440\u0435\u043d\u043d\u044b\u0435 \u0432\u044b\u0437\u043e\u0432\u044b \u0434\u043b\u044f \u043e\u043a\u0430\u0437\u0430\u043d\u0438\u044f \u043f\u043e\u043c\u043e\u0449\u0438 \u0438 \u0437\u0430\u0449\u0438\u0442\u044b \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u0438\u044f. \u0414\u043b\u044f \u044d\u0442\u043e\u0433\u043e \u0432\u044b \u0441\u0442\u0440\u043e\u0438\u0442\u0435 \u0441\u0442\u0430\u043d\u0446\u0438\u0438 \u0438 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u0435\u0442\u0435 \u043d\u0430 \u0440\u0430\u0437\u043b\u0438\u0447\u043d\u044b\u0435 \u0437\u0430\u0434\u0430\u043d\u0438\u044f \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0432\u0438\u0434\u043e\u0432 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u044b\u0445 \u0441\u0440\u0435\u0434\u0441\u0442\u0432 \u0438 \u043e\u0431\u0443\u0447\u0435\u043d\u043d\u044b\u0439 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b."
                     },
                     mobile: {
                         build_building: {
-                            add_name: "\u0422\u0435\u043f\u0435\u0440\u044c \u043d\u0430\u0437\u043e\u0432\u0438\u0442\u0435 \u0441\u0432\u043e\u044e \u043d\u043e\u0432\u0443\u044e \u0441\u0442\u0430\u043d\u0446\u0438\u044e! \u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0443\u0437\u043d\u0430\u0432\u0430\u0435\u043c\u043e\u0435 \u0438 \u043d\u0435 \u043e\u0447\u0435\u043d\u044c \u0434\u043b\u0438\u043d\u043d\u043e\u0435 \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435! \u041d\u0430\u043f\u0440\u0438\u043c\u0435\u0440, \xab\u041f\u043e\u0436\u0430\u0440\u043d\u0430\u044f \u0441\u0442\u0430\u043d\u0446\u0438\u044f \u21160001\xbb. \u041a\u043e\u0433\u0434\u0430 \u0437\u0430\u043a\u043e\u043d\u0447\u0438\u0442\u0435, \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \xab\u0414\u0430\u043b\u0435\u0435\xbb!",
-                            build_with_credits: "\u0422\u0435\u043f\u0435\u0440\u044c \u043f\u043e\u0441\u0442\u0440\u043e\u0439\u0442\u0435 \u0437\u0434\u0430\u043d\u0438\u0435 \u0437\u0430 \u043a\u0440\u0435\u0434\u0438\u0442\u044b!",
-                            new_building: "\u0421\u043f\u0435\u0440\u0432\u0430 \u0434\u0430\u0432\u0430\u0439\u0442\u0435 \u0432\u044b\u0431\u0435\u0440\u0435\u043c \u043c\u0435\u0441\u0442\u043e, \u043e\u0442\u043a\u0443\u0434\u0430 \u0432\u044b \u043d\u0430\u0447\u043d\u0435\u0442\u0435 \u0441\u0432\u043e\u0439 \u043f\u0443\u0442\u044c, \u0438 \u043f\u043e\u0441\u0442\u0440\u043e\u0438\u043c \u0442\u0430\u043c \u0432\u0430\u0448\u0435 \u043f\u0435\u0440\u0432\u043e\u0435 \u0437\u0434\u0430\u043d\u0438\u0435! <br /> <br /> \u0414\u043b\u044f \u044d\u0442\u043e\u0433\u043e \u0449\u0451\u043b\u043a\u043d\u0438\u0442\u0435 \u043a\u043d\u043e\u043f\u043a\u0443 \xab\u041d\u043e\u0432\u043e\u0435 \u0437\u0434\u0430\u043d\u0438\u0435\xbb!",
-                            select_building: "\u0421\u043f\u0435\u0440\u0432\u0430 \u0432\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0442\u0438\u043f \u0437\u0434\u0430\u043d\u0438\u044f. \u041f\u0440\u0435\u0434\u043b\u0430\u0433\u0430\u0435\u043c \u043d\u0430\u0447\u0430\u0442\u044c \u0441 \u043f\u043e\u0436\u0430\u0440\u043d\u043e\u0439 \u0447\u0430\u0441\u0442\u0438! \u0422\u0430\u043a \u0438\u043b\u0438 \u0438\u043d\u0430\u0447\u0435, \u043d\u043e \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0435\u043c \u043d\u0430\u0447\u0430\u0442\u044c \u0441 \u043d\u0435\u0431\u043e\u043b\u044c\u0448\u043e\u0439 \u0441\u0442\u0430\u043d\u0446\u0438\u0438!"
+                            add_name: "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0438\u043c\u044f \u0434\u043b\u044f \u0441\u0432\u043e\u0435\u0439 \u0441\u0442\u0430\u043d\u0446\u0438\u0438. \u041f\u043e\u0437\u0436\u0435 \u0432\u044b \u0441\u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u0435\u0440\u0435\u0438\u043c\u0435\u043d\u043e\u0432\u0430\u0442\u044c \u0435\u0435.",
+                            build_with_credits: "\u0414\u043b\u044f \u0441\u0442\u0440\u043e\u0438\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u0430 \u0441\u0442\u0430\u043d\u0446\u0438\u0438 \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u044b \u043a\u0440\u0435\u0434\u0438\u0442\u044b - \u0438\u0433\u0440\u043e\u0432\u0430\u044f \u0432\u0430\u043b\u044e\u0442\u0430. \u041a\u0440\u0435\u0434\u0438\u0442\u044b \u043c\u043e\u0436\u043d\u043e \u0437\u0430\u0440\u0430\u0431\u043e\u0442\u0430\u0442\u044c, \u0432\u044b\u043f\u043e\u043b\u043d\u044f\u044f \u043c\u0438\u0441\u0441\u0438\u0438, \u0435\u0436\u0435\u0434\u043d\u0435\u0432\u043d\u043e \u0432\u0445\u043e\u0434\u044f \u0432 \u0438\u0433\u0440\u0443, \u0432\u044b\u043f\u043e\u043b\u043d\u044f\u044f \u0437\u0430\u0434\u0430\u043d\u0438\u044f \u0438 \u0441\u043e\u0431\u044b\u0442\u0438\u044f.",
+                            new_building: "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u0441\u043e \u0441\u0442\u0440\u043e\u0438\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u0430 \u0441\u0432\u043e\u0435\u0439 \u043f\u0435\u0440\u0432\u043e\u0439 \u0441\u0442\u0430\u043d\u0446\u0438\u0438. \u0412\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u044b\u0431\u0440\u0430\u0442\u044c \u0435\u0435 \u043c\u0435\u0441\u0442\u043e\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435, \u0432\u0432\u0435\u0434\u044f \u0435\u0433\u043e \u0432\u0440\u0443\u0447\u043d\u0443\u044e \u0438\u043b\u0438 \u043f\u0435\u0440\u0435\u043c\u0435\u0441\u0442\u0438\u0432 \u043c\u0430\u0440\u043a\u0435\u0440 \u043c\u0435\u0441\u0442\u043e\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u044f \u043d\u0430 \u043a\u0430\u0440\u0442\u0435. \u0412 \u0437\u0430\u0432\u0438\u0441\u0438\u043c\u043e\u0441\u0442\u0438 \u043e\u0442 \u043e\u043f\u0435\u0440\u0430\u0446\u0438\u043e\u043d\u043d\u043e\u0439 \u0441\u0438\u0441\u0442\u0435\u043c\u044b \u0434\u043b\u044f \u043f\u0435\u0440\u0435\u043c\u0435\u0449\u0435\u043d\u0438\u044f \u043c\u0430\u0440\u043a\u0435\u0440\u0430 \u043c\u043e\u0436\u0435\u0442 \u043f\u043e\u0442\u0440\u0435\u0431\u043e\u0432\u0430\u0442\u044c\u0441\u044f \u0443\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0442\u044c \u0435\u0433\u043e \u0432 \u0442\u0435\u0447\u0435\u043d\u0438\u0435 \u043d\u0435\u043a\u043e\u0442\u043e\u0440\u043e\u0433\u043e \u0432\u0440\u0435\u043c\u0435\u043d\u0438.",
+                            select_building: "\u0420\u0435\u0448\u0438\u0442\u0435, \u0445\u043e\u0442\u0438\u0442\u0435 \u043b\u0438 \u0432\u044b \u043f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u043f\u043e\u0436\u0430\u0440\u043d\u0443\u044e \u0441\u0442\u0430\u043d\u0446\u0438\u044e \u0438\u043b\u0438 \u043f\u043e\u043b\u0438\u0446\u0435\u0439\u0441\u043a\u0438\u0439 \u0443\u0447\u0430\u0441\u0442\u043e\u043a. \u0412\u043d\u0430\u0447\u0430\u043b\u0435 \u0434\u043e\u0441\u0442\u0430\u0442\u043e\u0447\u043d\u043e \u043d\u0435\u0431\u043e\u043b\u044c\u0448\u0438\u0445 \u0441\u0442\u0430\u043d\u0446\u0438\u0439. \u041f\u043e\u0437\u0436\u0435 \u0438\u0445 \u043c\u043e\u0436\u043d\u043e \u043f\u0435\u0440\u0435\u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u0442\u044c \u0432 \u043e\u0431\u044b\u0447\u043d\u044b\u0435 \u0441\u0442\u0430\u043d\u0446\u0438\u0438."
                         },
-                        welcome: "\u0414\u043e\u0431\u0440\u043e \u043f\u043e\u0436\u0430\u043b\u043e\u0432\u0430\u0442\u044c \u0432 \xab\u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440 112\xbb!  \u042f \u043f\u0440\u0435\u043f\u043e\u0434\u0430\u043c \u0432\u0430\u043c \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0443\u0440\u043e\u043a\u043e\u0432, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u043f\u043e\u043c\u043e\u0433\u0443\u0442 \u043d\u0430\u0447\u0430\u0442\u044c \u043a\u0430\u0440\u044c\u0435\u0440\u0443 \u0441\u043f\u0430\u0441\u0430\u0442\u0435\u043b\u044f!"
+                        welcome: "\u0414\u043e\u0431\u0440\u043e \u043f\u043e\u0436\u0430\u043b\u043e\u0432\u0430\u0442\u044c \u0432 \u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440 112 - \u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f! \u0420\u0430\u0431\u043e\u0442\u0430\u044f \u0432 \u0434\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440\u0441\u043a\u043e\u043c \u0446\u0435\u043d\u0442\u0440\u0435 \u0430\u0432\u0430\u0440\u0438\u0439\u043d\u043e-\u0441\u043f\u0430\u0441\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0439 \u0441\u043b\u0443\u0436\u0431\u044b, \u0432\u044b \u043f\u0440\u0438\u043d\u0438\u043c\u0430\u0435\u0442\u0435 \u044d\u043a\u0441\u0442\u0440\u0435\u043d\u043d\u044b\u0435 \u0432\u044b\u0437\u043e\u0432\u044b \u0434\u043b\u044f \u043e\u043a\u0430\u0437\u0430\u043d\u0438\u044f \u043f\u043e\u043c\u043e\u0449\u0438 \u0438 \u0437\u0430\u0449\u0438\u0442\u044b \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u0438\u044f. \u0414\u043b\u044f \u044d\u0442\u043e\u0433\u043e \u0432\u044b \u0441\u0442\u0440\u043e\u0438\u0442\u0435 \u0441\u0442\u0430\u043d\u0446\u0438\u0438 \u0438 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u0435\u0442\u0435 \u043d\u0430 \u0440\u0430\u0437\u043b\u0438\u0447\u043d\u044b\u0435 \u0437\u0430\u0434\u0430\u043d\u0438\u044f \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0432\u0438\u0434\u043e\u0432 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u044b\u0445 \u0441\u0440\u0435\u0434\u0441\u0442\u0432 \u0438 \u043e\u0431\u0443\u0447\u0435\u043d\u043d\u044b\u0439 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b."
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "\u042d\u0442\u043e \u043c\u0435\u043d\u044e \u043e\u0442\u043f\u0440\u0430\u0432\u043a\u0438. \u0421 \u0435\u0433\u043e \u043f\u043e\u043c\u043e\u0449\u044c\u044e \u0432\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u0442\u044c \u043f\u043e\u0434\u0440\u0430\u0437\u0434\u0435\u043b\u0435\u043d\u0438\u044f \u043d\u0430 \u0437\u0430\u0434\u0430\u043d\u0438\u044f!",
-                            dispatch_menu_buttons: "\u042d\u0442\u043e \u0434\u0432\u0435 \u043a\u043d\u043e\u043f\u043a\u0438 \u043e\u0442\u043f\u0440\u0430\u0432\u043a\u0438. \u041f\u0435\u0440\u0432\u0430\u044f \u043a\u043d\u043e\u043f\u043a\u0430, \xab\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c\xbb, \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u0435\u0442 \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u044b\u0435 \u043f\u043e\u0434\u0440\u0430\u0437\u0434\u0435\u043b\u0435\u043d\u0438\u044f \u043d\u0430 \u0437\u0430\u0434\u0430\u043d\u0438\u0435. \u0412\u0442\u043e\u0440\u0430\u044f \u0434\u0435\u043b\u0430\u0435\u0442 \u0442\u043e \u0436\u0435 \u0441\u0430\u043c\u043e\u0435, \u043d\u043e \u0441 \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u043e\u043c \u043a \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u043c\u0443 \u0437\u0430\u0434\u0430\u043d\u0438\u044e. \u0429\u0451\u043b\u043a\u043d\u0438\u0442\u0435 \u043f\u0435\u0440\u0432\u0443\u044e \u043a\u043d\u043e\u043f\u043a\u0443.",
-                            dispatch_menu_mission_general: "\u0417\u0434\u0435\u0441\u044c \u043f\u0440\u0438\u0432\u0435\u0434\u0435\u043d\u0430 \u043e\u0431\u0449\u0430\u044f \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f \u043e \u0437\u0430\u0434\u0430\u043d\u0438\u0438: \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435, \u0430\u0434\u0440\u0435\u0441 \u0438 \u0437\u043d\u0430\u0447\u043e\u043a. \u0417\u0430\u0434\u0430\u043d\u0438\u044f, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u0432\u044b \u0443\u0436\u0435 \u0432\u044b\u043f\u043e\u043b\u043d\u044f\u0435\u0442\u0435, \u043e\u0442\u043c\u0435\u0447\u0435\u043d\u044b \u0437\u043d\u0430\u0447\u043a\u043e\u043c \u0447\u0435\u043b\u043e\u0432\u0435\u0447\u043a\u0430, \u0430 \u043d\u0435 \u0437\u0432\u0435\u0437\u0434\u043e\u0447\u043a\u043e\u0439.",
-                            dispatch_menu_mission_progress: "\u0417\u0434\u0435\u0441\u044c \u043c\u043e\u0436\u043d\u043e \u0443\u0437\u043d\u0430\u0442\u044c \u043f\u0440\u043e\u0433\u0440\u0435\u0441\u0441 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044f \u0437\u0430\u0434\u0430\u043d\u0438\u044f, \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u043a\u043e\u0432 \u043d\u0430 \u043c\u0435\u0441\u0442\u0435 \u0438\u043d\u0446\u0438\u0434\u0435\u043d\u0442\u0430 \u0438 \u0432\u0440\u0435\u043c\u044f \u0434\u043e \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0438\u044f \u0437\u0430\u0434\u0430\u043d\u0438\u044f.",
-                            dispatch_menu_mission_specific: "\u0417\u0434\u0435\u0441\u044c \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u0430 \u043f\u043e\u0434\u0440\u043e\u0431\u043d\u0430\u044f \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f \u043e \u0437\u0430\u0434\u0430\u043d\u0438\u0438, \u0430 \u0442\u0430\u043a\u0436\u0435 \u043e\u0431 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u044b\u0445 \u043d\u0430 \u0432\u044b\u0437\u043e\u0432 \u0438 \u0443\u0436\u0435 \u043d\u0430\u0445\u043e\u0434\u044f\u0449\u0438\u0445\u0441\u044f \u043d\u0430 \u043c\u0435\u0441\u0442\u0435 \u043f\u043e\u0434\u0440\u0430\u0437\u0434\u0435\u043b\u0435\u043d\u0438\u044f\u0445.",
-                            dispatch_menu_vehicle_list: "\u042d\u0442\u043e \u0441\u043f\u0438\u0441\u043e\u043a \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b\u0445 \u043c\u0430\u0448\u0438\u043d. \u0417\u0434\u0435\u0441\u044c \u043c\u043e\u0436\u043d\u043e \u0432\u044b\u0431\u0440\u0430\u0442\u044c \u043c\u0430\u0448\u0438\u043d\u044b. \u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u043c\u0430\u0448\u0438\u043d\u0443, \u0449\u0451\u043b\u043a\u043d\u0443\u0432 \u0435\u0451!"
+                            dispatch_menu: "\u042d\u0442\u043e \u043e\u043a\u043d\u043e \u0434\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440\u0430. \u0417\u0434\u0435\u0441\u044c \u043c\u043e\u0436\u043d\u043e \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u0442\u044c \u043c\u0430\u0448\u0438\u043d\u044b \u043d\u0430 \u0437\u0430\u0434\u0430\u043d\u0438\u044f.",
+                            dispatch_menu_buttons: "\u041e\u0442\u043f\u0440\u0430\u0432\u044c\u0442\u0435 \u043c\u0430\u0448\u0438\u043d\u0443 \u043d\u0430 \u0437\u0430\u0434\u0430\u043d\u0438\u0435, \u043d\u0430\u0436\u0430\u0432 \u043d\u0430 \u043a\u043d\u043e\u043f\u043a\u0443 \u043e\u0442\u043f\u0440\u0430\u0432\u043a\u0438. \u041a\u0430\u043a \u0442\u043e\u043b\u044c\u043a\u043e \u0443 \u0432\u0430\u0441 \u043f\u043e\u044f\u0432\u044f\u0442\u0441\u044f \u043d\u043e\u0432\u044b\u0435 \u043c\u0438\u0441\u0441\u0438\u0438, \u0432\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u044c \u043a\u043d\u043e\u043f\u043a\u0443 \u0440\u044f\u0434\u043e\u043c \u0441 \u043d\u0438\u043c\u0438 \u0434\u043b\u044f \u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0433\u043e \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0430 \u043a \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u0439 \u043c\u0438\u0441\u0441\u0438\u0438.",
+                            dispatch_menu_mission_general: '\u0417\u0434\u0435\u0441\u044c \u0412\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u043d\u0430\u0439\u0442\u0438 \u043e\u0431\u0449\u0443\u044e \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044e \u043e \u043c\u0438\u0441\u0441\u0438\u0438. \u041f\u043e\u043a\u0430 \u0432\u044b \u043d\u0435 \u0443\u0447\u0430\u0441\u0442\u0432\u0443\u0435\u0442\u0435 \u0432 \u043c\u0438\u0441\u0441\u0438\u0438, \u043f\u0435\u0440\u0435\u0434 \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435\u043c \u043c\u0438\u0441\u0441\u0438\u0438 \u043e\u0442\u043e\u0431\u0440\u0430\u0436\u0430\u0435\u0442\u0441\u044f <span class="glyphicon glyphicon-asterisk"></span>, <span class="glyphicon glyphicon-user"></span> - \u043a\u0430\u043a \u0442\u043e\u043b\u044c\u043a\u043e \u0432\u044b \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u043b\u0438 \u043f\u0435\u0440\u0432\u044b\u0439 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442.',
+                            dispatch_menu_mission_progress: "\u0417\u0434\u0435\u0441\u044c \u043c\u043e\u0436\u043d\u043e \u0443\u0432\u0438\u0434\u0435\u0442\u044c \u0445\u043e\u0434 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044f \u0437\u0430\u0434\u0430\u043d\u0438\u044f. \u041a\u0430\u043a \u0442\u043e\u043b\u044c\u043a\u043e \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b \u043f\u0440\u0438\u0431\u044b\u0432\u0430\u0435\u0442 \u043d\u0430 \u043c\u0435\u0441\u0442\u043e, \u043e\u043d \u043e\u0442\u043e\u0431\u0440\u0430\u0436\u0430\u0435\u0442\u0441\u044f \u0437\u0434\u0435\u0441\u044c, \u0438 \u0432\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u0438\u0434\u0435\u0442\u044c, \u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0432\u0440\u0435\u043c\u0435\u043d\u0438 \u0435\u0449\u0435 \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e \u0434\u043b\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0438\u044f \u043c\u0438\u0441\u0441\u0438\u0438.",
+                            dispatch_menu_mission_specific: "\u0417\u0434\u0435\u0441\u044c \u043c\u043e\u0436\u043d\u043e \u0443\u0432\u0438\u0434\u0435\u0442\u044c, \u043a\u0430\u043a\u0438\u0435 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u044b\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430 \u043d\u0430\u0445\u043e\u0434\u044f\u0442\u0441\u044f \u043d\u0430 \u043f\u0443\u0442\u0438 \u043a \u043c\u0435\u0441\u0442\u0443 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044f \u0437\u0430\u0434\u0430\u043d\u0438\u044f. \u041d\u043e\u043c\u0435\u0440 \u043f\u0435\u0440\u0435\u0434 \u043c\u0430\u0448\u0438\u043d\u043e\u0439 \u0443\u043a\u0430\u0437\u044b\u0432\u0430\u0435\u0442 \u043d\u0430 \u0441\u0442\u0430\u0442\u0443\u0441 \u0435\u0435 \u0440\u0430\u0437\u0432\u0435\u0440\u0442\u044b\u0432\u0430\u043d\u0438\u044f.",
+                            dispatch_menu_vehicle_list: "\u0417\u0434\u0435\u0441\u044c \u043c\u043e\u0436\u043d\u043e \u0443\u0432\u0438\u0434\u0435\u0442\u044c \u0432\u0441\u0435 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u044b\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430, \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b\u0435 \u0434\u043b\u044f \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044f \u043c\u0438\u0441\u0441\u0438\u0438. \u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u043e\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u043e, \u043d\u0430\u0436\u0430\u0432 \u043d\u0430 \u0444\u043b\u0430\u0436\u043e\u043a \u0440\u044f\u0434\u043e\u043c \u0441 \u043d\u0438\u043c."
                         },
                         mobile: {
-                            dispatch_menu: "\u042d\u0442\u043e \u043c\u0435\u043d\u044e \u043e\u0442\u043f\u0440\u0430\u0432\u043a\u0438. \u0421 \u0435\u0433\u043e \u043f\u043e\u043c\u043e\u0449\u044c\u044e \u0432\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u0442\u044c \u043f\u043e\u0434\u0440\u0430\u0437\u0434\u0435\u043b\u0435\u043d\u0438\u044f \u043d\u0430 \u0437\u0430\u0434\u0430\u043d\u0438\u044f!",
-                            dispatch_menu_buttons: "\u042d\u0442\u043e \u0434\u0432\u0435 \u043a\u043d\u043e\u043f\u043a\u0438 \u043e\u0442\u043f\u0440\u0430\u0432\u043a\u0438. \u041f\u0435\u0440\u0432\u0430\u044f \u043a\u043d\u043e\u043f\u043a\u0430, \xab\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c\xbb, \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u0435\u0442 \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u044b\u0435 \u043f\u043e\u0434\u0440\u0430\u0437\u0434\u0435\u043b\u0435\u043d\u0438\u044f \u043d\u0430 \u0437\u0430\u0434\u0430\u043d\u0438\u0435. \u0412\u0442\u043e\u0440\u0430\u044f \u0434\u0435\u043b\u0430\u0435\u0442 \u0442\u043e \u0436\u0435 \u0441\u0430\u043c\u043e\u0435, \u043d\u043e \u0441 \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u043e\u043c \u043a \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u043c\u0443 \u0437\u0430\u0434\u0430\u043d\u0438\u044e. \u0429\u0451\u043b\u043a\u043d\u0438\u0442\u0435 \u043f\u0435\u0440\u0432\u0443\u044e \u043a\u043d\u043e\u043f\u043a\u0443.",
-                            dispatch_menu_mission_general: "\u0417\u0434\u0435\u0441\u044c \u043f\u0440\u0438\u0432\u0435\u0434\u0435\u043d\u0430 \u043e\u0431\u0449\u0430\u044f \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f \u043e \u0437\u0430\u0434\u0430\u043d\u0438\u0438: \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435, \u0430\u0434\u0440\u0435\u0441 \u0438 \u0437\u043d\u0430\u0447\u043e\u043a. \u0417\u0430\u0434\u0430\u043d\u0438\u044f, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u0432\u044b \u0443\u0436\u0435 \u0432\u044b\u043f\u043e\u043b\u043d\u044f\u0435\u0442\u0435, \u043e\u0442\u043c\u0435\u0447\u0435\u043d\u044b \u0437\u043d\u0430\u0447\u043a\u043e\u043c \u0447\u0435\u043b\u043e\u0432\u0435\u0447\u043a\u0430, \u0430 \u043d\u0435 \u0437\u0432\u0435\u0437\u0434\u043e\u0447\u043a\u043e\u0439.",
-                            dispatch_menu_mission_progress: "\u0417\u0434\u0435\u0441\u044c \u043c\u043e\u0436\u043d\u043e \u0443\u0437\u043d\u0430\u0442\u044c \u043f\u0440\u043e\u0433\u0440\u0435\u0441\u0441 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044f \u0437\u0430\u0434\u0430\u043d\u0438\u044f, \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u043a\u043e\u0432 \u043d\u0430 \u043c\u0435\u0441\u0442\u0435 \u0438\u043d\u0446\u0438\u0434\u0435\u043d\u0442\u0430 \u0438 \u0432\u0440\u0435\u043c\u044f \u0434\u043e \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0438\u044f \u0437\u0430\u0434\u0430\u043d\u0438\u044f.",
-                            dispatch_menu_mission_specific: "\u0417\u0434\u0435\u0441\u044c \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u0430 \u043f\u043e\u0434\u0440\u043e\u0431\u043d\u0430\u044f \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f \u043e \u0437\u0430\u0434\u0430\u043d\u0438\u0438, \u0430 \u0442\u0430\u043a\u0436\u0435 \u043e\u0431 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u044b\u0445 \u043d\u0430 \u0432\u044b\u0437\u043e\u0432 \u0438 \u0443\u0436\u0435 \u043d\u0430\u0445\u043e\u0434\u044f\u0449\u0438\u0445\u0441\u044f \u043d\u0430 \u043c\u0435\u0441\u0442\u0435 \u043f\u043e\u0434\u0440\u0430\u0437\u0434\u0435\u043b\u0435\u043d\u0438\u044f\u0445.",
-                            dispatch_menu_vehicle_list: "\u042d\u0442\u043e \u0441\u043f\u0438\u0441\u043e\u043a \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b\u0445 \u043c\u0430\u0448\u0438\u043d. \u0417\u0434\u0435\u0441\u044c \u043c\u043e\u0436\u043d\u043e \u0432\u044b\u0431\u0440\u0430\u0442\u044c \u043c\u0430\u0448\u0438\u043d\u044b. \u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u043c\u0430\u0448\u0438\u043d\u0443, \u0449\u0451\u043b\u043a\u043d\u0443\u0432 \u0435\u0451!"
+                            dispatch_menu: "\u042d\u0442\u043e \u043e\u043a\u043d\u043e \u0434\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440\u0430. \u0417\u0434\u0435\u0441\u044c \u043c\u043e\u0436\u043d\u043e \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u0442\u044c \u043c\u0430\u0448\u0438\u043d\u044b \u043d\u0430 \u0437\u0430\u0434\u0430\u043d\u0438\u044f.",
+                            dispatch_menu_buttons: "\u041e\u0442\u043f\u0440\u0430\u0432\u044c\u0442\u0435 \u043c\u0430\u0448\u0438\u043d\u0443 \u043d\u0430 \u0437\u0430\u0434\u0430\u043d\u0438\u0435, \u043d\u0430\u0436\u0430\u0432 \u043d\u0430 \u043a\u043d\u043e\u043f\u043a\u0443 \u043e\u0442\u043f\u0440\u0430\u0432\u043a\u0438. \u041a\u0430\u043a \u0442\u043e\u043b\u044c\u043a\u043e \u0443 \u0432\u0430\u0441 \u043f\u043e\u044f\u0432\u044f\u0442\u0441\u044f \u043d\u043e\u0432\u044b\u0435 \u043c\u0438\u0441\u0441\u0438\u0438, \u0432\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u044c \u043a\u043d\u043e\u043f\u043a\u0443 \u0440\u044f\u0434\u043e\u043c \u0441 \u043d\u0438\u043c\u0438 \u0434\u043b\u044f \u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0433\u043e \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0430 \u043a \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u0439 \u043c\u0438\u0441\u0441\u0438\u0438.",
+                            dispatch_menu_mission_general: '\u0417\u0434\u0435\u0441\u044c \u0412\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u043d\u0430\u0439\u0442\u0438 \u043e\u0431\u0449\u0443\u044e \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044e \u043e \u043c\u0438\u0441\u0441\u0438\u0438. \u041f\u043e\u043a\u0430 \u0432\u044b \u043d\u0435 \u0443\u0447\u0430\u0441\u0442\u0432\u0443\u0435\u0442\u0435 \u0432 \u043c\u0438\u0441\u0441\u0438\u0438, \u043f\u0435\u0440\u0435\u0434 \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435\u043c \u043c\u0438\u0441\u0441\u0438\u0438 \u043e\u0442\u043e\u0431\u0440\u0430\u0436\u0430\u0435\u0442\u0441\u044f <span class="glyphicon glyphicon-asterisk"></span>, <span class="glyphicon glyphicon-user"></span> - \u043a\u0430\u043a \u0442\u043e\u043b\u044c\u043a\u043e \u0432\u044b \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u043b\u0438 \u043f\u0435\u0440\u0432\u044b\u0439 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442.',
+                            dispatch_menu_mission_progress: "\u0417\u0434\u0435\u0441\u044c \u043c\u043e\u0436\u043d\u043e \u0443\u0432\u0438\u0434\u0435\u0442\u044c \u0445\u043e\u0434 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044f \u0437\u0430\u0434\u0430\u043d\u0438\u044f. \u041a\u0430\u043a \u0442\u043e\u043b\u044c\u043a\u043e \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b \u043f\u0440\u0438\u0431\u044b\u0432\u0430\u0435\u0442 \u043d\u0430 \u043c\u0435\u0441\u0442\u043e, \u043e\u043d \u043e\u0442\u043e\u0431\u0440\u0430\u0436\u0430\u0435\u0442\u0441\u044f \u0437\u0434\u0435\u0441\u044c, \u0438 \u0432\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u0438\u0434\u0435\u0442\u044c, \u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0432\u0440\u0435\u043c\u0435\u043d\u0438 \u0435\u0449\u0435 \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e \u0434\u043b\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0438\u044f \u043c\u0438\u0441\u0441\u0438\u0438.",
+                            dispatch_menu_mission_specific: "\u0417\u0434\u0435\u0441\u044c \u043c\u043e\u0436\u043d\u043e \u0443\u0432\u0438\u0434\u0435\u0442\u044c, \u043a\u0430\u043a\u0438\u0435 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u044b\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430 \u043d\u0430\u0445\u043e\u0434\u044f\u0442\u0441\u044f \u043d\u0430 \u043f\u0443\u0442\u0438 \u043a \u043c\u0435\u0441\u0442\u0443 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044f \u0437\u0430\u0434\u0430\u043d\u0438\u044f. \u041d\u043e\u043c\u0435\u0440 \u043f\u0435\u0440\u0435\u0434 \u043c\u0430\u0448\u0438\u043d\u043e\u0439 \u0443\u043a\u0430\u0437\u044b\u0432\u0430\u0435\u0442 \u043d\u0430 \u0441\u0442\u0430\u0442\u0443\u0441 \u0435\u0435 \u0440\u0430\u0437\u0432\u0435\u0440\u0442\u044b\u0432\u0430\u043d\u0438\u044f.",
+                            dispatch_menu_vehicle_list: "\u0417\u0434\u0435\u0441\u044c \u043c\u043e\u0436\u043d\u043e \u0443\u0432\u0438\u0434\u0435\u0442\u044c \u0432\u0441\u0435 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u044b\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430, \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b\u0435 \u0434\u043b\u044f \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044f \u043c\u0438\u0441\u0441\u0438\u0438. \u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u043e\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u043e, \u043d\u0430\u0436\u0430\u0432 \u043d\u0430 \u0444\u043b\u0430\u0436\u043e\u043a \u0440\u044f\u0434\u043e\u043c \u0441 \u043d\u0438\u043c."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "\u0422\u0435\u043f\u0435\u0440\u044c \u0434\u0430\u0432\u0430\u0439\u0442\u0435 \u043d\u0430\u0443\u0447\u0438\u043c\u0441\u044f \u0440\u0430\u0437\u0431\u0438\u0440\u0430\u0442\u044c\u0441\u044f \u0441 \u043f\u0440\u043e\u0438\u0441\u0448\u0435\u0441\u0442\u0432\u0438\u044f\u043c\u0438. \u041e\u0442\u043a\u0440\u043e\u0439\u0442\u0435 \u043c\u0435\u043d\u044e \u043e\u0442\u043f\u0440\u0430\u0432\u043a\u0438, \u0449\u0451\u043b\u043a\u043d\u0443\u0432 \u043f\u043e \u043a\u043d\u043e\u043f\u043a\u0435 \xab\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c\xbb!",
-                            first_mission: "\u041e\u0442\u043b\u0438\u0447\u043d\u043e, \u0432\u044b \u043f\u043e\u0441\u0442\u0440\u043e\u0438\u043b\u0438 \u0441\u0432\u043e\u0451 \u043f\u0435\u0440\u0432\u043e\u0435 \u0437\u0434\u0430\u043d\u0438\u0435! \u0421\u043c\u043e\u0442\u0440\u0438\u0442\u0435, \u0443\u0436\u0435 \u043f\u043e\u0441\u0442\u0443\u043f\u0438\u043b\u0438 \u043f\u0435\u0440\u0432\u044b\u0435 \u0437\u0430\u0434\u0430\u043d\u0438\u044f \u0434\u043b\u044f \u0432\u0430\u0441!"
+                            dispatch_button: '\u0414\u043b\u044f \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044f \u0437\u0430\u0434\u0430\u043d\u0438\u044f \u0441\u043d\u0430\u0447\u0430\u043b\u0430 \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \u043d\u0430 \u043a\u043d\u043e\u043f\u043a\u0443 "\u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440".',
+                            first_mission: "\u0412\u0430\u0448\u0435 \u043f\u0435\u0440\u0432\u043e\u0435 \u0437\u0434\u0430\u043d\u0438\u0435 \u0433\u043e\u0442\u043e\u0432\u043e. \u0412\u044b \u0442\u0430\u043a\u0436\u0435 \u043f\u043e\u043b\u0443\u0447\u0438\u043b\u0438 \u0441\u0432\u043e\u0435 \u043f\u0435\u0440\u0432\u043e\u0435 \u0437\u0430\u0434\u0430\u043d\u0438\u0435!"
                         },
                         mobile: {
-                            dispatch_button: "\u0422\u0435\u043f\u0435\u0440\u044c \u0434\u0430\u0432\u0430\u0439\u0442\u0435 \u043d\u0430\u0443\u0447\u0438\u043c\u0441\u044f \u0440\u0430\u0437\u0431\u0438\u0440\u0430\u0442\u044c\u0441\u044f \u0441 \u043f\u0440\u043e\u0438\u0441\u0448\u0435\u0441\u0442\u0432\u0438\u044f\u043c\u0438. \u041e\u0442\u043a\u0440\u043e\u0439\u0442\u0435 \u043c\u0435\u043d\u044e \u043e\u0442\u043f\u0440\u0430\u0432\u043a\u0438, \u0449\u0451\u043b\u043a\u043d\u0443\u0432 \u043f\u043e \u043a\u043d\u043e\u043f\u043a\u0435 \xab\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c\xbb!",
-                            first_mission: "\u041e\u0442\u043b\u0438\u0447\u043d\u043e, \u0432\u044b \u043f\u043e\u0441\u0442\u0440\u043e\u0438\u043b\u0438 \u0441\u0432\u043e\u0451 \u043f\u0435\u0440\u0432\u043e\u0435 \u0437\u0434\u0430\u043d\u0438\u0435! \u0421\u043c\u043e\u0442\u0440\u0438\u0442\u0435, \u0443\u0436\u0435 \u043f\u043e\u0441\u0442\u0443\u043f\u0438\u043b\u0438 \u043f\u0435\u0440\u0432\u044b\u0435 \u0437\u0430\u0434\u0430\u043d\u0438\u044f \u0434\u043b\u044f \u0432\u0430\u0441!"
+                            dispatch_button: '\u0414\u043b\u044f \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044f \u0437\u0430\u0434\u0430\u043d\u0438\u044f \u0441\u043d\u0430\u0447\u0430\u043b\u0430 \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \u043d\u0430 \u043a\u043d\u043e\u043f\u043a\u0443 "\u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440".',
+                            first_mission: "\u0412\u0430\u0448\u0435 \u043f\u0435\u0440\u0432\u043e\u0435 \u0437\u0434\u0430\u043d\u0438\u0435 \u0433\u043e\u0442\u043e\u0432\u043e. \u0412\u044b \u0442\u0430\u043a\u0436\u0435 \u043f\u043e\u043b\u0443\u0447\u0438\u043b\u0438 \u0441\u0432\u043e\u0435 \u043f\u0435\u0440\u0432\u043e\u0435 \u0437\u0430\u0434\u0430\u043d\u0438\u0435!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "\u041e\u0442\u043b\u0438\u0447\u043d\u043e, \u0441\u043a\u043e\u0440\u043e \u0432\u044b \u0441\u0442\u0430\u043d\u0435\u0442\u0435 \u043d\u0430\u0441\u0442\u043e\u044f\u0449\u0438\u043c \u043c\u0430\u0441\u0442\u0435\u0440\u043e\u043c \xab\u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440 112\xbb! \u0414\u0435\u0440\u0436\u0438\u0442\u0435 \u043c\u043e\u043d\u0435\u0442\u044b \u0434\u043b\u044f \u043d\u0430\u0447\u0430\u043b\u0430: %{coins}! </br> \u041a\u043e\u043c\u0430\u043d\u0434\u0430 \xab\u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440 112\xbb"
+                        general: "\u0422\u0435\u043f\u0435\u0440\u044c \u0432\u044b \u0433\u043e\u0442\u043e\u0432\u044b \u0441\u0430\u043c\u043e\u0441\u0442\u043e\u044f\u0442\u0435\u043b\u044c\u043d\u043e \u043f\u0440\u0438\u0441\u0442\u0443\u043f\u0438\u0442\u044c \u043a \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044e \u043c\u0438\u0441\u0441\u0438\u0439. \u0427\u0442\u043e\u0431\u044b \u043f\u043e\u043c\u043e\u0447\u044c \u0412\u0430\u043c \u043d\u0430\u0447\u0430\u0442\u044c \u0440\u0430\u0431\u043e\u0442\u0443 \u043d\u0430\u0434 \u043c\u0438\u0441\u0441\u0438\u044f\u043c\u0438 \u0438 \u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043d\u0438\u0435\u043c, \u0412\u044b \u043f\u043e\u043b\u0443\u0447\u0430\u0435\u0442\u0435 %{coins} \u041c\u043e\u043d\u0435\u0442\u044b. \u0423\u0434\u0430\u0447\u0438!"
                     },
                     mobile: {
-                        general: "\u041e\u0442\u043b\u0438\u0447\u043d\u043e, \u0441\u043a\u043e\u0440\u043e \u0432\u044b \u0441\u0442\u0430\u043d\u0435\u0442\u0435 \u043d\u0430\u0441\u0442\u043e\u044f\u0449\u0438\u043c \u043c\u0430\u0441\u0442\u0435\u0440\u043e\u043c \xab\u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440 112\xbb! \u0414\u0435\u0440\u0436\u0438\u0442\u0435 \u043c\u043e\u043d\u0435\u0442\u044b \u0434\u043b\u044f \u043d\u0430\u0447\u0430\u043b\u0430: %{coins}! </br> \u041a\u043e\u043c\u0430\u043d\u0434\u0430 \xab\u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440 112\xbb"
+                        general: "\u0422\u0435\u043f\u0435\u0440\u044c \u0432\u044b \u0433\u043e\u0442\u043e\u0432\u044b \u0441\u0430\u043c\u043e\u0441\u0442\u043e\u044f\u0442\u0435\u043b\u044c\u043d\u043e \u043f\u0440\u0438\u0441\u0442\u0443\u043f\u0438\u0442\u044c \u043a \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044e \u043c\u0438\u0441\u0441\u0438\u0439. \u0427\u0442\u043e\u0431\u044b \u043f\u043e\u043c\u043e\u0447\u044c \u0412\u0430\u043c \u043d\u0430\u0447\u0430\u0442\u044c \u0440\u0430\u0431\u043e\u0442\u0443 \u043d\u0430\u0434 \u043c\u0438\u0441\u0441\u0438\u044f\u043c\u0438 \u0438 \u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043d\u0438\u0435\u043c, \u0412\u044b \u043f\u043e\u043b\u0443\u0447\u0430\u0435\u0442\u0435 %{coins} \u041c\u043e\u043d\u0435\u0442\u044b. \u0423\u0434\u0430\u0447\u0438!"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "\u0415\u0441\u043b\u0438 \u0443 \u0432\u0430\u0441 \u043e\u0441\u0442\u0430\u043b\u0438\u0441\u044c \u0432\u043e\u043f\u0440\u043e\u0441\u044b, \u043e\u0437\u043d\u0430\u043a\u043e\u043c\u044c\u0442\u0435\u0441\u044c \u0441 \u0427\u0410\u0412\u041e \u0438\u043b\u0438 \u0437\u0430\u0433\u043b\u044f\u043d\u0438\u0442\u0435 \u043d\u0430 \u0444\u043e\u0440\u0443\u043c\u044b \u0438\u0433\u0440\u044b \u0438\u043b\u0438 \u043d\u0430 \u043d\u0430\u0448\u0443 \u0441\u0442\u0440\u0430\u043d\u0438\u0447\u043a\u0443 Facebook!",
-                        general: "\u0421\u043b\u0435\u0434\u0443\u044e\u0449\u0438\u043c \u0448\u0430\u0433\u043e\u043c \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0435\u043c \u0432\u043e\u0437\u0432\u0435\u0441\u0442\u0438 \u0434\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440\u0441\u043a\u0438\u0439 \u043f\u0443\u043d\u043a\u0442, \u0430 \u0437\u0430\u0442\u0435\u043c \u043d\u0430\u0447\u0430\u0442\u044c \u0441\u0442\u0440\u043e\u0438\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u043e \u043d\u043e\u0432\u044b\u0445 \u0441\u0442\u0430\u043d\u0446\u0438\u0439, \u043f\u043e\u0441\u043a\u043e\u043b\u044c\u043a\u0443 \u043c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u043e\u0435 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0437\u0430\u0434\u0430\u043d\u0438\u0439 \u043d\u0430 \u043e\u0434\u043d\u043e \u0431\u043e\u043b\u044c\u0448\u0435 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u0430 \u0441\u0442\u0430\u043d\u0446\u0438\u0439 \u0441\u0430\u043c\u043e\u0433\u043e \u0440\u0430\u0441\u043f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u0435\u043d\u043d\u043e\u0433\u043e \u0442\u0438\u043f\u0430 (\u043f\u043e\u043b\u0438\u0446\u0438\u044f, \u043f\u043e\u0436\u0430\u0440\u043d\u044b\u0435, \u0441\u043a\u043e\u0440\u0430\u044f \u043f\u043e\u043c\u043e\u0449\u044c). \u041d\u0430\u043f\u0440\u0438\u043c\u0435\u0440, \u043f\u0440\u0438 \u043f\u044f\u0442\u0438 \u043f\u043e\u0436\u0430\u0440\u043d\u044b\u0445 \u0441\u0442\u0430\u043d\u0446\u0438\u044f\u0445 \u0438 \u0442\u0440\u0451\u0445 \u0441\u0442\u0430\u043d\u0446\u0438\u044f\u0445 \u0441\u043a\u043e\u0440\u043e\u0439 \u043f\u043e\u043c\u043e\u0449\u0438 \u0432\u0430\u043c \u0431\u0443\u0434\u0435\u0442 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e \u0448\u0435\u0441\u0442\u044c \u0437\u0430\u0434\u0430\u043d\u0438\u0439.",
-                        join_alliance: "\u041c\u044b \u0442\u0430\u043a\u0436\u0435 \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0435\u043c \u0432\u0441\u0442\u0443\u043f\u0438\u0442\u044c \u0432 \u0430\u043b\u044c\u044f\u043d\u0441, \u0442\u0430\u043a \u043a\u0430\u043a \u044d\u0442\u043e \u043c\u043e\u0436\u0435\u0442 \u0437\u0434\u043e\u0440\u043e\u0432\u043e \u0432\u0430\u043c \u043f\u043e\u043c\u043e\u0447\u044c, \u043e\u0441\u043e\u0431\u0435\u043d\u043d\u043e \u043f\u043e \u043d\u0430\u0447\u0430\u043b\u0443.",
+                        contact: "\u0415\u0441\u043b\u0438 \u0432\u044b \u043c\u043e\u0434\u0435\u0440\u043d\u0438\u0437\u0438\u0440\u0443\u0435\u0442\u0435 \u0441\u0432\u043e\u0438 \u0441\u0442\u0430\u043d\u0446\u0438\u0438, \u0442\u043e \u043f\u043e\u043b\u0443\u0447\u0430\u0435\u0442\u0435 \u043c\u0435\u0441\u0442\u043e \u0434\u043b\u044f \u043d\u043e\u0432\u044b\u0445 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u044b\u0445 \u0441\u0440\u0435\u0434\u0441\u0442\u0432.",
+                        general: "\u0417\u0430 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u0435 \u0437\u0430\u0434\u0430\u043d\u0438\u0439 \u0432\u044b \u043f\u043e\u043b\u0443\u0447\u0430\u0435\u0442\u0435 \u043a\u0440\u0435\u0434\u0438\u0442\u044b. \u0417\u0430\u0440\u0430\u0431\u0430\u0442\u044b\u0432\u0430\u044f \u043a\u0440\u0435\u0434\u0438\u0442\u044b, \u0432\u044b \u043f\u0440\u0438\u0431\u043b\u0438\u0436\u0430\u0435\u0442\u0435\u0441\u044c \u043a \u043f\u043e\u0432\u044b\u0448\u0435\u043d\u0438\u044e \u0432 \u0434\u043e\u043b\u0436\u043d\u043e\u0441\u0442\u0438.",
+                        join_alliance: "\u041f\u0440\u043e\u0434\u0432\u0438\u0436\u0435\u043d\u0438\u0435 \u043f\u043e \u0441\u043b\u0443\u0436\u0431\u0435 \u0438 \u0441\u0442\u0440\u043e\u0438\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u043e \u0441\u0442\u0430\u043d\u0446\u0438\u0439 \u043e\u0442\u043a\u0440\u044b\u0432\u0430\u044e\u0442 \u043d\u043e\u0432\u044b\u0435 \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u0438, \u043d\u0430\u043f\u0440\u0438\u043c\u0435\u0440, \u0442\u0438\u043f\u044b \u043c\u0438\u0441\u0441\u0438\u0439 \u0438\u043b\u0438 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u044b\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430.",
                         radio: {
                             helpshift_id: "1540",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             short: "\u0420\u0430\u0434\u0438\u043e \u043e\u0442\u043e\u0431\u0440\u0430\u0436\u0430\u0435\u0442 \u0441\u0442\u0430\u0442\u0443\u0441 \u0432\u0430\u0448\u0435\u0433\u043e \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0430. \u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u0441\u044e\u0434\u0430, \u0447\u0442\u043e\u0431\u044b \u0443\u0437\u043d\u0430\u0442\u044c \u043f\u043e\u0434\u0440\u043e\u0431\u043d\u043e\u0441\u0442\u0438 \u043e \u0441\u0442\u0430\u0442\u0443\u0441\u0430\u0445."
                         },
-                        summary: "\u0422\u0435\u043f\u0435\u0440\u044c \u0432\u044b \u0437\u043d\u0430\u0435\u0442\u0435 \u043e\u0441\u043d\u043e\u0432\u044b \u0438\u0433\u0440\u044b \u0432 \xab\u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440 112\xbb! \u0412\u044b\u043f\u043e\u043b\u043d\u044f\u0439\u0442\u0435 \u0437\u0430\u0434\u0430\u043d\u0438\u044f, \u043f\u043e\u043b\u0443\u0447\u0430\u0439\u0442\u0435 \u043a\u0440\u0435\u0434\u0438\u0442\u044b \u0438 \u043f\u043e\u043a\u0443\u043f\u0430\u0439\u0442\u0435 \u043d\u043e\u0432\u044b\u0435 \u043f\u043e\u0434\u0440\u0430\u0437\u0434\u0435\u043b\u0435\u043d\u0438\u044f. \u0412\u0435\u0441\u0451\u043b\u043e\u0439 \u0438\u0433\u0440\u044b! </br> \u041a\u043e\u043c\u0430\u043d\u0434\u0430 \xab\u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440 112\xbb"
+                        summary: "\u0412\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u0441\u0442\u0443\u043f\u0438\u0442\u044c \u0432 \u0430\u043b\u044c\u044f\u043d\u0441, \u0447\u0442\u043e\u0431\u044b \u0432\u043c\u0435\u0441\u0442\u0435 \u0441 \u0434\u0440\u0443\u0433\u0438\u043c\u0438 \u0440\u0435\u0448\u0430\u0442\u044c \u043f\u043e\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u043d\u044b\u0435 \u0437\u0430\u0434\u0430\u0447\u0438. \u041a\u0440\u043e\u043c\u0435 \u0442\u043e\u0433\u043e, \u0440\u0435\u0433\u0443\u043b\u044f\u0440\u043d\u043e \u043f\u0440\u043e\u0432\u043e\u0434\u044f\u0442\u0441\u044f \u043c\u0435\u0440\u043e\u043f\u0440\u0438\u044f\u0442\u0438\u044f, \u0432 \u043a\u043e\u0442\u043e\u0440\u044b\u0445 \u043c\u043e\u0433\u0443\u0442 \u0443\u0447\u0430\u0441\u0442\u0432\u043e\u0432\u0430\u0442\u044c \u0432\u0441\u0435 \u0447\u043b\u0435\u043d\u044b \u0430\u043b\u044c\u044f\u043d\u0441\u0430!"
                     },
                     mobile: {
-                        contact: "\u0415\u0441\u043b\u0438 \u0443 \u0432\u0430\u0441 \u043e\u0441\u0442\u0430\u043b\u0438\u0441\u044c \u0432\u043e\u043f\u0440\u043e\u0441\u044b, \u043e\u0437\u043d\u0430\u043a\u043e\u043c\u044c\u0442\u0435\u0441\u044c \u0441 \u0427\u0410\u0412\u041e \u0438\u043b\u0438 \u0437\u0430\u0433\u043b\u044f\u043d\u0438\u0442\u0435 \u043d\u0430 \u0444\u043e\u0440\u0443\u043c\u044b \u0438\u0433\u0440\u044b \u0438\u043b\u0438 \u043d\u0430 \u043d\u0430\u0448\u0443 \u0441\u0442\u0440\u0430\u043d\u0438\u0447\u043a\u0443 Facebook!",
-                        general: "\u0421\u043b\u0435\u0434\u0443\u044e\u0449\u0438\u043c \u0448\u0430\u0433\u043e\u043c \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0435\u043c \u0432\u043e\u0437\u0432\u0435\u0441\u0442\u0438 \u0434\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440\u0441\u043a\u0438\u0439 \u043f\u0443\u043d\u043a\u0442, \u0430 \u0437\u0430\u0442\u0435\u043c \u043d\u0430\u0447\u0430\u0442\u044c \u0441\u0442\u0440\u043e\u0438\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u043e \u043d\u043e\u0432\u044b\u0445 \u0441\u0442\u0430\u043d\u0446\u0438\u0439, \u043f\u043e\u0441\u043a\u043e\u043b\u044c\u043a\u0443 \u043c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u043e\u0435 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0437\u0430\u0434\u0430\u043d\u0438\u0439 \u043d\u0430 \u043e\u0434\u043d\u043e \u0431\u043e\u043b\u044c\u0448\u0435 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u0430 \u0441\u0442\u0430\u043d\u0446\u0438\u0439 \u0441\u0430\u043c\u043e\u0433\u043e \u0440\u0430\u0441\u043f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u0435\u043d\u043d\u043e\u0433\u043e \u0442\u0438\u043f\u0430 (\u043f\u043e\u043b\u0438\u0446\u0438\u044f, \u043f\u043e\u0436\u0430\u0440\u043d\u044b\u0435, \u0441\u043a\u043e\u0440\u0430\u044f \u043f\u043e\u043c\u043e\u0449\u044c). \u041d\u0430\u043f\u0440\u0438\u043c\u0435\u0440, \u043f\u0440\u0438 \u043f\u044f\u0442\u0438 \u043f\u043e\u0436\u0430\u0440\u043d\u044b\u0445 \u0441\u0442\u0430\u043d\u0446\u0438\u044f\u0445 \u0438 \u0442\u0440\u0451\u0445 \u0441\u0442\u0430\u043d\u0446\u0438\u044f\u0445 \u0441\u043a\u043e\u0440\u043e\u0439 \u043f\u043e\u043c\u043e\u0449\u0438 \u0432\u0430\u043c \u0431\u0443\u0434\u0435\u0442 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e \u0448\u0435\u0441\u0442\u044c \u0437\u0430\u0434\u0430\u043d\u0438\u0439.",
-                        join_alliance: "\u041c\u044b \u0442\u0430\u043a\u0436\u0435 \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0435\u043c \u0432\u0441\u0442\u0443\u043f\u0438\u0442\u044c \u0432 \u0430\u043b\u044c\u044f\u043d\u0441, \u0442\u0430\u043a \u043a\u0430\u043a \u044d\u0442\u043e \u043c\u043e\u0436\u0435\u0442 \u0437\u0434\u043e\u0440\u043e\u0432\u043e \u0432\u0430\u043c \u043f\u043e\u043c\u043e\u0447\u044c, \u043e\u0441\u043e\u0431\u0435\u043d\u043d\u043e \u043f\u043e \u043d\u0430\u0447\u0430\u043b\u0443.",
-                        summary: "\u0422\u0435\u043f\u0435\u0440\u044c \u0432\u044b \u0437\u043d\u0430\u0435\u0442\u0435 \u043e\u0441\u043d\u043e\u0432\u044b \u0438\u0433\u0440\u044b \u0432 \xab\u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440 112\xbb! \u0412\u044b\u043f\u043e\u043b\u043d\u044f\u0439\u0442\u0435 \u0437\u0430\u0434\u0430\u043d\u0438\u044f, \u043f\u043e\u043b\u0443\u0447\u0430\u0439\u0442\u0435 \u043a\u0440\u0435\u0434\u0438\u0442\u044b \u0438 \u043f\u043e\u043a\u0443\u043f\u0430\u0439\u0442\u0435 \u043d\u043e\u0432\u044b\u0435 \u043f\u043e\u0434\u0440\u0430\u0437\u0434\u0435\u043b\u0435\u043d\u0438\u044f. \u0412\u0435\u0441\u0451\u043b\u043e\u0439 \u0438\u0433\u0440\u044b! </br> \u041a\u043e\u043c\u0430\u043d\u0434\u0430 \xab\u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440 112\xbb"
+                        contact: "\u0415\u0441\u043b\u0438 \u0432\u044b \u043c\u043e\u0434\u0435\u0440\u043d\u0438\u0437\u0438\u0440\u0443\u0435\u0442\u0435 \u0441\u0432\u043e\u0438 \u0441\u0442\u0430\u043d\u0446\u0438\u0438, \u0442\u043e \u043f\u043e\u043b\u0443\u0447\u0430\u0435\u0442\u0435 \u043c\u0435\u0441\u0442\u043e \u0434\u043b\u044f \u043d\u043e\u0432\u044b\u0445 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u044b\u0445 \u0441\u0440\u0435\u0434\u0441\u0442\u0432.",
+                        general: "\u0417\u0430 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u0435 \u0437\u0430\u0434\u0430\u043d\u0438\u0439 \u0432\u044b \u043f\u043e\u043b\u0443\u0447\u0430\u0435\u0442\u0435 \u043a\u0440\u0435\u0434\u0438\u0442\u044b. \u0417\u0430\u0440\u0430\u0431\u0430\u0442\u044b\u0432\u0430\u044f \u043a\u0440\u0435\u0434\u0438\u0442\u044b, \u0432\u044b \u043f\u0440\u0438\u0431\u043b\u0438\u0436\u0430\u0435\u0442\u0435\u0441\u044c \u043a \u043f\u043e\u0432\u044b\u0448\u0435\u043d\u0438\u044e \u0432 \u0434\u043e\u043b\u0436\u043d\u043e\u0441\u0442\u0438.",
+                        join_alliance: "\u041f\u0440\u043e\u0434\u0432\u0438\u0436\u0435\u043d\u0438\u0435 \u043f\u043e \u0441\u043b\u0443\u0436\u0431\u0435 \u0438 \u0441\u0442\u0440\u043e\u0438\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u043e \u0441\u0442\u0430\u043d\u0446\u0438\u0439 \u043e\u0442\u043a\u0440\u044b\u0432\u0430\u044e\u0442 \u043d\u043e\u0432\u044b\u0435 \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u0438, \u043d\u0430\u043f\u0440\u0438\u043c\u0435\u0440, \u0442\u0438\u043f\u044b \u043c\u0438\u0441\u0441\u0438\u0439 \u0438\u043b\u0438 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u044b\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430.",
+                        summary: "\u0412\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u0441\u0442\u0443\u043f\u0438\u0442\u044c \u0432 \u0430\u043b\u044c\u044f\u043d\u0441, \u0447\u0442\u043e\u0431\u044b \u0432\u043c\u0435\u0441\u0442\u0435 \u0441 \u0434\u0440\u0443\u0433\u0438\u043c\u0438 \u0440\u0435\u0448\u0430\u0442\u044c \u043f\u043e\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u043d\u044b\u0435 \u0437\u0430\u0434\u0430\u0447\u0438. \u041a\u0440\u043e\u043c\u0435 \u0442\u043e\u0433\u043e, \u0440\u0435\u0433\u0443\u043b\u044f\u0440\u043d\u043e \u043f\u0440\u043e\u0432\u043e\u0434\u044f\u0442\u0441\u044f \u043c\u0435\u0440\u043e\u043f\u0440\u0438\u044f\u0442\u0438\u044f, \u0432 \u043a\u043e\u0442\u043e\u0440\u044b\u0445 \u043c\u043e\u0433\u0443\u0442 \u0443\u0447\u0430\u0441\u0442\u0432\u043e\u0432\u0430\u0442\u044c \u0432\u0441\u0435 \u0447\u043b\u0435\u043d\u044b \u0430\u043b\u044c\u044f\u043d\u0441\u0430!"
                     },
                     reminder: {
                         join_alliance: "\u0412\u0441\u0442\u0443\u043f\u043b\u0435\u043d\u0438\u0435 \u0432 \u0430\u043b\u044c\u044f\u043d\u0441 \u0438\u043c\u0435\u0435\u0442 \u043c\u043d\u043e\u0436\u0435\u0441\u0442\u0432\u043e \u043f\u0440\u0435\u0438\u043c\u0443\u0449\u0435\u0441\u0442\u0432: \u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0435 \u043d\u0430\u0433\u0440\u0430\u0434\u044b \u0437\u0430 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u0435 \u0437\u0430\u0434\u0430\u043d\u0438\u0439 \u0430\u043b\u044c\u044f\u043d\u0441\u0430, \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0430 \u043e\u043f\u044b\u0442\u043d\u044b\u0445 \u0447\u043b\u0435\u043d\u043e\u0432 \u043f\u0440\u0438 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u0438 \u0441\u043b\u043e\u0436\u043d\u044b\u0445 \u0437\u0430\u0434\u0430\u043d\u0438\u0439, \u0430 \u0442\u0430\u043a\u0436\u0435 \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u044c \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u044c\u0441\u044f \u043e\u0431\u044a\u0435\u043a\u0442\u0430\u043c\u0438 \u0434\u0440\u0443\u0433\u0438\u0445 \u0447\u043b\u0435\u043d\u043e\u0432, \u0442\u0430\u043a\u0438\u043c\u0438 \u043a\u0430\u043a \u0431\u043e\u043b\u044c\u043d\u0438\u0446\u044b \u0438 \u0448\u043a\u043e\u043b\u044b! \u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u043a\u043d\u043e\u043f\u043a\u0443, \u0447\u0442\u043e\u0431\u044b \u0432\u0441\u0442\u0443\u043f\u0438\u0442\u044c \u0432 \u0430\u043b\u044c\u044f\u043d\u0441 \u043f\u0440\u044f\u043c\u043e \u0441\u0435\u0439\u0447\u0430\u0441!"
@@ -9601,80 +9390,80 @@ Object.values || (Object.values = function (e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: 'Dern\xe6st skal du navngive din station! G\xf8r den genkendelig og skalerbar! F.eks. "Brandstation #0001". N\xe5r du er f\xe6rdig, s\xe5 tryk "N\xe6ste"!',
-                            build_with_credits: "Byg derefter din bygning med kreditter!",
-                            new_building: 'Klik p\xe5 "Ny bygning"!',
-                            select_building: "V\xe6lg f\xf8rst den type bygning, du vil starte med. Vi anbefaler, at du starter med brandtjeneste! I hvert fald anbefales det, at man starter med en lille station!",
-                            select_position: "Flyt den bl\xe5 mark\xf8r til der, hvor du gerne vil bygge din f\xf8rste station!"
+                            add_name: "V\xe6lg et navn til din station. Du kan omd\xf8be den senere.",
+                            build_with_credits: "For at bygge en station skal du bruge Kreditter, spillets valuta. Du kan optjene kreditter gennem missioner, daglige logins, opgaver og begivenheder.",
+                            new_building: "Byg din station.",
+                            select_building: "Beslut dig for, om du vil bygge en brandstation eller en politistation. I begyndelsen er sm\xe5 stationer tilstr\xe6kkelige. Du kan opgradere dem til normale stationer senere.",
+                            select_position: "Flyt mark\xf8ren til det n\xf8jagtige sted for din station."
                         },
-                        pick_location: "V\xe6lg f\xf8rst et sted at starte! Indtast navnet p\xe5 stedet, hvor du gerne vil starte, p\xe5 s\xf8gebj\xe6lken, eller find det selv p\xe5 kortet! Hvad med din hjemby?",
-                        welcome: "Hej, velkommen til Alarmcentral-spil!  Jeg vil give dig lidt vejledning, s\xe5 du kan f\xe5 en ordentlig start p\xe5 din redningstjeneste-karierre!"
+                        pick_location: "V\xe6lg et sted, hvor du vil bygge din f\xf8rste station",
+                        welcome: "Velkommen til Alarmcentral spillet! N\xe5r du arbejder i en alarmcentral, h\xe5ndterer du n\xf8dopkald for at hj\xe6lpe og beskytte offentligheden. For at g\xf8re det bygger du stationer og sender flere typer k\xf8ret\xf8jer og uddannet personale til en r\xe6kke forskellige missioner"
                     },
                     mobile: {
                         build_building: {
-                            add_name: 'Dern\xe6st skal du navngive din station! G\xf8r den genkendelig og skalerbar! F.eks. "Brandstation #0001". N\xe5r du er f\xe6rdig, s\xe5 tryk "N\xe6ste"!',
-                            build_with_credits: "Byg derefter din bygning med kreditter!",
-                            new_building: 'F\xf8rst v\xe6lger vi et sted at begynde at bygge din f\xf8rste bygning! <br /> <br /> For at g\xf8re det, skal du klikke p\xe5 "Ny bygning"!',
-                            select_building: "V\xe6lg f\xf8rst den type bygning, du vil starte med. Vi anbefaler, at du starter med brandtjeneste! I hvert fald anbefales det, at man starter med en lille station!"
+                            add_name: "V\xe6lg et navn til din station. Du kan omd\xf8be den senere.",
+                            build_with_credits: "For at bygge en station skal du bruge Kreditter, spillets valuta. Du kan optjene kreditter gennem missioner, daglige logins, opgaver og begivenheder.",
+                            new_building: "Begynd med at bygge din f\xf8rste station. Du kan v\xe6lge dens placering ved at indtaste den manuelt eller ved at flytte placeringsmark\xf8ren p\xe5 kortet. Afh\xe6ngigt af dit operativsystem skal du muligvis holde mark\xf8ren i et stykke tid, f\xf8r du kan flytte den.",
+                            select_building: "Beslut dig for, om du vil bygge en brandstation eller en politistation. I begyndelsen er sm\xe5 stationer tilstr\xe6kkelige. Du kan opgradere dem til normale stationer senere."
                         },
-                        welcome: "Hej, velkommen til Alarmcentral-spil!  Jeg vil give dig lidt vejledning, s\xe5 du kan f\xe5 en ordentlig start p\xe5 din redningstjeneste-karierre!"
+                        welcome: "Velkommen til Alarmcentral spillet! N\xe5r du arbejder i en alarmcentral, h\xe5ndterer du n\xf8dopkald for at hj\xe6lpe og beskytte offentligheden. For at g\xf8re det bygger du stationer og sender flere typer k\xf8ret\xf8jer og uddannet personale til en r\xe6kke forskellige missioner"
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Dette er udsend-menuen. Herfra sender du dine enheder p\xe5 missioner!",
-                            dispatch_menu_buttons: 'Disse er dine to "udsend"-knapper! Den f\xf8rste: "Udsend" sender de valgte enheder p\xe5 missionen. Den anden g\xf8r det samme som den f\xf8rste, men g\xe6lder for den n\xe6ste mission. Klik p\xe5 den f\xf8rste nu.',
-                            dispatch_menu_mission_general: "Her kan du se generel information om missionen, s\xe5 som missionens navn, adresse og ikon. Ikonet med den lille mand dukker op og erstatter en lille stjerne, n\xe5r det er missioner, du allerede har deltaget i.",
-                            dispatch_menu_mission_progress: "Her kan du se, hvor mange fremskridt, der er sket med at h\xe5ndtere missionen, antallet af personale p\xe5 stedet, samt den tid, der resterer til at h\xe5ndtere missionen!",
-                            dispatch_menu_mission_specific: "Her kan du se mere information om missionen. Hvilke enheder, der reagerer p\xe5 opkaldet, og hvilke, der allerede er n\xe5et frem",
-                            dispatch_menu_vehicle_list: "Dette er en liste over tilg\xe6ngelige k\xf8ret\xf8jer. Du v\xe6lger k\xf8ret\xf8jerne her. V\xe6lg nu dine k\xf8ret\xf8jer ved at klikke p\xe5 den!"
+                            dispatch_menu: "Dette er missionsvinduet. Her kan du sende k\xf8ret\xf8jer p\xe5 missioner.",
+                            dispatch_menu_buttons: "Send et k\xf8ret\xf8j til en mission ved at klikke p\xe5 send ud knappen. S\xe5 snart du har flere missioner, kan du bruge knappen ved siden af \u200b\u200bden for at g\xe5 til n\xe6ste mission.",
+                            dispatch_menu_mission_general: 'Her kan du finde generel information om missionen. S\xe5 l\xe6nge du ikke er involveret i missionen <span class="glyphicon glyphicon-asterisk"></span> vil dukke op foran den, <span class="glyphicon glyphicon-user"></span>n\xe5r du har sendt det f\xf8rste k\xf8ret\xf8j ud.',
+                            dispatch_menu_mission_progress: "Her kan du se missionens fremskridt. Her kan du se, hvilke k\xf8ret\xf8jer der er p\xe5 stedet, og hvor lang tid der er tilbage til missionens afslutning.",
+                            dispatch_menu_mission_specific: "Her kan du se, hvilke k\xf8ret\xf8jer der er p\xe5 vej til eller er p\xe5 stedet for missionen. Nummeret foran dit k\xf8ret\xf8j viser dens status.",
+                            dispatch_menu_vehicle_list: "Her kan du se alle tilg\xe6ngelige k\xf8ret\xf8jer til missionen. V\xe6lg et k\xf8ret\xf8j ved at klikke p\xe5 afkrydsningsfeltet ud for det."
                         },
                         mobile: {
-                            dispatch_menu: "Dette er udsend-menuen. Herfra sender du dine enheder p\xe5 missioner!",
-                            dispatch_menu_buttons: 'Disse er dine to "udsend"-knapper! Den f\xf8rste: "Udsend" sender de valgte enheder p\xe5 missionen. Den anden g\xf8r det samme som den f\xf8rste, men g\xe6lder for den n\xe6ste mission. Klik p\xe5 den f\xf8rste nu.',
-                            dispatch_menu_mission_general: "Her kan du se generel information om missionen, s\xe5 som missionens navn, adresse og ikon. Ikonet med den lille mand dukker op og erstatter en lille stjerne, n\xe5r det er missioner, du allerede har deltaget i.",
-                            dispatch_menu_mission_progress: "Her kan du se, hvor mange fremskridt, der er sket med at h\xe5ndtere missionen, antallet af personale p\xe5 stedet, samt den tid, der resterer til at h\xe5ndtere missionen!",
-                            dispatch_menu_mission_specific: "Her kan du se mere information om missionen. Hvilke enheder, der reagerer p\xe5 opkaldet, og hvilke, der allerede er n\xe5et frem",
-                            dispatch_menu_vehicle_list: "Dette er en liste over tilg\xe6ngelige k\xf8ret\xf8jer. Du v\xe6lger k\xf8ret\xf8jerne her. V\xe6lg nu dine k\xf8ret\xf8jer ved at klikke p\xe5 den!"
+                            dispatch_menu: "Dette er missionsvinduet. Her kan du sende k\xf8ret\xf8jer p\xe5 missioner.",
+                            dispatch_menu_buttons: "Send et k\xf8ret\xf8j til en mission ved at klikke p\xe5 send ud knappen. S\xe5 snart du har flere missioner, kan du bruge knappen ved siden af \u200b\u200bden for at g\xe5 til n\xe6ste mission.",
+                            dispatch_menu_mission_general: 'Her kan du finde generel information om missionen. S\xe5 l\xe6nge du ikke er involveret i missionen <span class="glyphicon glyphicon-asterisk"></span> vil dukke op foran den, <span class="glyphicon glyphicon-user"></span>n\xe5r du har sendt det f\xf8rste k\xf8ret\xf8j ud.',
+                            dispatch_menu_mission_progress: "Her kan du se missionens fremskridt. Her kan du se, hvilke k\xf8ret\xf8jer der er p\xe5 stedet, og hvor lang tid der er tilbage til missionens afslutning.",
+                            dispatch_menu_mission_specific: "Her kan du se, hvilke k\xf8ret\xf8jer der er p\xe5 vej til eller er p\xe5 stedet for missionen. Nummeret foran dit k\xf8ret\xf8j viser dens status.",
+                            dispatch_menu_vehicle_list: "Her kan du se alle tilg\xe6ngelige k\xf8ret\xf8jer til missionen. V\xe6lg et k\xf8ret\xf8j ved at klikke p\xe5 afkrydsningsfeltet ud for det."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: 'Nu skal vi l\xe6re, hvordan vi tager os af h\xe6ndelser. \xc5bn udsendelsesmenuen ved at klikke p\xe5 "udsend"-knappen!',
-                            first_mission: "Glimrende, du har bygget din f\xf8rste bygning. Se, de f\xf8rste missioner blev indberettet til dig!"
+                            dispatch_button: 'Klik p\xe5 knappen "Send ud" for at udf\xf8re missionen.',
+                            first_mission: "Din f\xf8rste bygning er klar. Du har ogs\xe5 modtaget din f\xf8rste mission!"
                         },
                         mobile: {
-                            dispatch_button: 'Nu skal vi l\xe6re, hvordan vi tager os af h\xe6ndelser. \xc5bn udsendelsesmenuen ved at klikke p\xe5 "udsend"-knappen!',
-                            first_mission: "Glimrende, du har bygget din f\xf8rste bygning. Se, de f\xf8rste missioner blev indberettet til dig!"
+                            dispatch_button: 'Klik p\xe5 knappen "Send ud" for at udf\xf8re missionen.',
+                            first_mission: "Din f\xf8rste bygning er klar. Du har ogs\xe5 modtaget din f\xf8rste mission!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Glimrende - du er p\xe5 vej til at blive alletiders til Alarmcentral-spil! Her er %{coins} m\xf8nter til at f\xe5 dig i gang! </br> Dit Alarmcentral-spil-hold"
+                        general: "Du er nu klar til selv at h\xe5ndtere din mission. For at hj\xe6lpe dig med at komme i gang med dine missioner og udvidelse modtager du %{coins} m\xf8nter. Held og lykke!"
                     },
                     mobile: {
-                        general: "Glimrende - du er p\xe5 vej til at blive alletiders til Alarmcentral-spil! Her er %{coins} m\xf8nter til at f\xe5 dig i gang! </br> Dit Alarmcentralspil-hold"
+                        general: "Du er nu klar til selv at h\xe5ndtere din mission. For at hj\xe6lpe dig med at komme i gang med dine missioner og udvidelse modtager du %{coins} m\xf8nter. Held og lykke!"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Hvis du har sp\xf8rgsm\xe5l, kan du tjekke Sp\xf8rgsm\xe5l og svar i spillet eller bes\xf8ge spilforummer p\xe5 vores Facebook-side!",
-                        general: "Som et n\xe6ste skridt vil vi anbefale, at du bygger en alarmcentral, og dern\xe6st - s\xe5 snart som muligt - nye stationer, da det maksimale antal missioner er lig med det h\xf8jeste antal af enhver slags station (politi-, brand-, og ambulance-) plus 1; f.eks. 5 brand- og 3 ambulancestationer = 6 missioner.",
-                        join_alliance: "Det ville ogs\xe5 hj\xe6lpe dig enormt, is\xe6r i starten, s\xe5 det anbefales ogs\xe5.",
+                        contact: "Hvis du opgraderer din station, f\xe5r du mere plads til nye k\xf8ret\xf8jer.",
+                        general: "Du f\xe5r credits for at afslutte en mission. Ved at optjene point kommer du t\xe6ttere p\xe5 en forfremmelse.",
+                        join_alliance: "N\xe5r du bliver forfremmet til en ny rang og ved at bygge stationer frigiver nye funktioner som andre missionstyper og k\xf8ret\xf8jer.",
                         radio: {
                             helpshift_id: "1540",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             short: "Radioen viser statusopdateringer p\xe5 dine k\xf8ret\xf8jer. Klik her for at f\xe5 mere at vide om hver status."
                         },
-                        summary: "Dette er den grundl\xe6ggende viden i Alarmcentral-spil! Fuldf\xf8r missioner, f\xe5 kreditter, k\xf8b flere enheder, gentag. God forn\xf8jelse! </br> Dit Alarmcentral-spil-hold"
+                        summary: "Du kan deltage i en alliance for at tage p\xe5 mission med andre. Der er ogs\xe5 regelm\xe6ssige alliancearrangementer, hvor du kan deltage."
                     },
                     mobile: {
-                        contact: "Hvis du har sp\xf8rgsm\xe5l, kan du tjekke Sp\xf8rgsm\xe5l og svar i spillet eller bes\xf8ge spilforummer p\xe5 vores Facebook-side!",
-                        general: "Som et n\xe6ste skridt vil vi anbefale, at du bygger en alarmcentral, og dern\xe6st - s\xe5 snart som muligt - nye stationer, da det maksimale antal missioner er lig med det h\xf8jeste antal af enhver slags station (politi-, brand-, og ambulance-) plus 1; f.eks. 5 brand- og 3 ambulancestationer = 6 missioner.",
-                        join_alliance: "Det ville ogs\xe5 hj\xe6lpe dig enormt, is\xe6r i starten, s\xe5 det anbefales ogs\xe5.",
-                        summary: "Dette er den grundl\xe6ggende viden i Alarmcentral-spil! Fuldf\xf8r missioner, f\xe5 kreditter, k\xf8b flere enheder, gentag. God forn\xf8jelse! </br> Dit Alarmcentral-spil-hold"
+                        contact: "Hvis du opgraderer din station, f\xe5r du mere plads til nye k\xf8ret\xf8jer.",
+                        general: "Du f\xe5r credits for at afslutte en mission. Ved at optjene point kommer du t\xe6ttere p\xe5 en forfremmelse.",
+                        join_alliance: "N\xe5r du bliver forfremmet til en ny rang og ved at bygge stationer frigiver nye funktioner som andre missionstyper og k\xf8ret\xf8jer.",
+                        summary: "Du kan deltage i en alliance for at tage p\xe5 mission med andre. Der er ogs\xe5 regelm\xe6ssige alliancearrangementer, hvor du kan deltage."
                     },
                     reminder: {
                         join_alliance: "At deltage i en alliance har mange fordele: ekstra bel\xf8nninger for at fuldf\xf8re alliancemissioner, st\xf8tte fra erfarne medlemmer til vanskelige missioner, og du kan bruge andre medlemmers faciliteter som hospitaler og skoler! Tryk p\xe5 knappen for at slutte dig til en alliance nu!"
@@ -9699,34 +9488,10 @@ Object.values || (Object.values = function (e) {
                 beginner: {
                     building: {
                         browser: {
-                            build_building: {
-                                add_name: 'Dern\xe6st skal du navngive din station! G\xf8r den genkendelig og skalerbar! F.eks. "Politistation #0001". N\xe5r du er f\xe6rdig, s\xe5 tryk "N\xe6ste"!',
-                                select_building: "V\xe6lg f\xf8rst den type bygning, du vil starte med. Vi anbefaler, at du starter med politistation! I hvert fald anbefales det, at man starter med en lille station!"
-                            },
-                            welcome: "Hej, velkommen til Politi Alarmcentral-spil!  Jeg vil give dig lidt vejledning, s\xe5 du kan f\xe5 en ordentlig start p\xe5 din redningstjeneste-karierre!"
+                            welcome: "Velkommen til Politi Alarmcentral spillet! N\xe5r du arbejder i en alarmcentral, h\xe5ndterer du n\xf8dopkald for at hj\xe6lpe og beskytte offentligheden. For at g\xf8re det bygger du stationer og sender flere typer k\xf8ret\xf8jer og uddannet personale til en r\xe6kke forskellige missioner"
                         },
                         mobile: {
-                            build_building: {
-                                add_name: 'Dern\xe6st skal du navngive din station! G\xf8r den genkendelig og skalerbar! F.eks. "Politistation #0001". N\xe5r du er f\xe6rdig, s\xe5 tryk "N\xe6ste"!',
-                                select_building: "V\xe6lg f\xf8rst den type bygning, du vil starte med. Vi anbefaler, at du starter med politistation! I hvert fald anbefales det, at man starter med en lille station!"
-                            },
-                            welcome: "Hej, velkommen til Politi Alarmcentral-spil!  Jeg vil give dig lidt vejledning, s\xe5 du kan f\xe5 en ordentlig start p\xe5 din redningstjeneste-karierre!"
-                        }
-                    },
-                    rewards: {
-                        browser: {
-                            general: "Glimrende - du er p\xe5 vej til at blive alletiders til Politi Alarmcentral-spil! Her er %{coins} m\xf8nter til at f\xe5 dig i gang! </br> Dit Politi Alarmcentral-spil-hold"
-                        },
-                        mobile: {
-                            general: "Glimrende - du er p\xe5 vej til at blive alletiders til Politi Alarmcentral-spil! Her er %{coins} m\xf8nter til at f\xe5 dig i gang! </br> Dit Politi Alarmcentral-spil-hold"
-                        }
-                    },
-                    tips: {
-                        browser: {
-                            summary: "Dette er den grundl\xe6ggende viden i Politi Alarmcentral-spil! Fuldf\xf8r missioner, f\xe5 kreditter, k\xf8b flere enheder, gentag. God forn\xf8jelse! </br> Dit Politi Alarmcentral-spil-hold"
-                        },
-                        mobile: {
-                            summary: "Dette er den grundl\xe6ggende viden i Politi Alarmcentral-spil! Fuldf\xf8r missioner, f\xe5 kreditter, k\xf8b flere enheder, gentag. God forn\xf8jelse! </br> Dit Politi Alarmcentral-spil-hold"
+                            welcome: "Velkommen til Politi Alarmcentral spillet! N\xe5r du arbejder i en alarmcentral, h\xe5ndterer du n\xf8dopkald for at hj\xe6lpe og beskytte offentligheden. For at g\xf8re det bygger du stationer og sender flere typer k\xf8ret\xf8jer og uddannet personale til en r\xe6kke forskellige missioner"
                         }
                     }
                 }
@@ -10059,80 +9824,80 @@ Object.values || (Object.values = function (e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: "S\xe5 gir du stasjonen et navn. Gj\xf8r det gjenkjennelig og skalerbart! F.eks. \xabBrannstasjon nr. 0001\xbb. N\xe5r du er ferdig, klikker du p\xe5 \xabNeste\xbb!",
-                            build_with_credits: "Bygg bygningen din med kreditter!",
-                            new_building: "Klikk p\xe5 \xabNy bygning\xbb!",
-                            select_building: "Velg f\xf8rst bygningstypen du vil begynne med, vi anbefaler deg \xe5 begynne med brannvesenet! Det er ogs\xe5 lurt \xe5 begynne med en liten stasjon.",
-                            select_position: "Flytt den bl\xe5 mark\xf8ren dit du vil bygge den f\xf8rste stasjonen din!"
+                            add_name: "Velg et navn p\xe5 stasjonen. Du kan endre navnet senere.",
+                            build_with_credits: "For \xe5 bygge en stasjon trenger du kreditter, spillets valuta. Du kan tjene kreditter gjennom oppdrag, daglige innlogginger, oppgaver og hendelser.",
+                            new_building: "Start byggeprosessen for stasjonen din.",
+                            select_building: "Bestem deg for om du vil bygge en brannstasjon eller en politistasjon. I begynnelsen holder det med sm\xe5 stasjoner. Du kan oppgradere dem til vanlige stasjoner senere.",
+                            select_position: "Flytt posisjonsmark\xf8ren til stedet der du vil at stasjonen skal v\xe6re."
                         },
-                        pick_location: "Velg f\xf8rst et sted \xe5 begynne! Skriv inn navnet der du vil begynne, eller finn det selv p\xe5 kartet! Hva med hjembyen din?",
-                        welcome: "Hei og velkommen til N\xf8dsentralspillet!  Jeg skal l\xe6re deg hvordan du f\xe5r en pangstart i n\xf8detatenes verden!"
+                        pick_location: "Velg et sted der du vil bygge din f\xf8rste stasjon.",
+                        welcome: "Velkommen til n\xf8dsentralspillet! Du jobber p\xe5 en n\xf8dmeldingssentral for n\xf8detatene og h\xe5ndterer n\xf8dsamtaler for \xe5 hjelpe og beskytte publikum. For \xe5 gj\xf8re dette bygger du stasjoner og sender ut ulike typer kj\xf8ret\xf8y og oppl\xe6rt personell til forskjellige oppdrag."
                     },
                     mobile: {
                         build_building: {
-                            add_name: "S\xe5 gir du stasjonen et navn. Gj\xf8r det gjenkjennelig og skalerbart! F.eks. \xabBrannstasjon nr. 0001\xbb. N\xe5r du er ferdig, klikker du p\xe5 \xabNeste\xbb!",
-                            build_with_credits: "Bygg bygningen din med kreditter!",
-                            new_building: "F\xf8rst velger vi et sted \xe5 begynne og bygge v\xe5r f\xf8rste bygning. <br /> <br />For \xe5 gj\xf8re det klikker du p\xe5 \xabNy bygning\xbb!",
-                            select_building: "Velg f\xf8rst bygningstypen du vil begynne med, vi anbefaler deg \xe5 begynne med brannvesenet! Det er ogs\xe5 lurt \xe5 begynne med en liten stasjon."
+                            add_name: "Velg et navn p\xe5 stasjonen. Du kan endre navnet senere.",
+                            build_with_credits: "For \xe5 bygge en stasjon trenger du kreditter, spillets valuta. Du kan tjene kreditter gjennom oppdrag, daglige innlogginger, oppgaver og hendelser.",
+                            new_building: "Begynn med \xe5 bygge din f\xf8rste stasjon. Du kan velge sted ved \xe5 angi det manuelt eller ved \xe5 flytte stedsmark\xf8ren p\xe5 kartet. Avhengig av operativsystemet m\xe5 du kanskje holde mark\xf8ren inne en stund f\xf8r du kan flytte den.",
+                            select_building: "Bestem deg for om du vil bygge en brannstasjon eller en politistasjon. I begynnelsen holder det med sm\xe5 stasjoner. Du kan oppgradere dem til vanlige stasjoner senere."
                         },
-                        welcome: "Hei og velkommen til N\xf8dsentralspillet!  Jeg skal l\xe6re deg hvordan du f\xe5r en pangstart i n\xf8detatenes verden!"
+                        welcome: "Velkommen til n\xf8dsentralspillet! Du jobber p\xe5 en n\xf8dmeldingssentral for n\xf8detatene og h\xe5ndterer n\xf8dsamtaler for \xe5 hjelpe og beskytte publikum. For \xe5 gj\xf8re dette bygger du stasjoner og sender ut ulike typer kj\xf8ret\xf8y og oppl\xe6rt personell til forskjellige oppdrag."
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Dette er n\xf8dedatsmenyen. Her i fra kan du sende enhetene dine ut p\xe5 oppdrag!",
-                            dispatch_menu_buttons: "Dette er dine to n\xf8detatsknapper. Den f\xf8rste: \xabN\xf8detat\xbb sender de valgte enhetene ut p\xe5 oppdraget. Den andre gj\xf8r det samme som den f\xf8rste, men g\xe5r ut p\xe5 neste oppdrag. Klikk p\xe5 den f\xf8rste knappen.",
-                            dispatch_menu_mission_general: "Her kan du se generell oppdragsinfo, alts\xe5 navnet, adressen og oppdragsikonet. Ikonet av den lille mannen dukker opp og erstatter en liten stjerne p\xe5 oppdrag du allerede deltar p\xe5.",
-                            dispatch_menu_mission_progress: "Her kan du se hvor mye framdrift som er gjort p\xe5 oppdraget, samt antallet personell p\xe5 stedet og hvor mye tid du har igjen.",
-                            dispatch_menu_mission_specific: "Her kan du se info om oppdraget, hvilke enheter som svarer p\xe5 n\xf8danropet og hvem som allerede er p\xe5 stedet.",
-                            dispatch_menu_vehicle_list: "Dette er listen over dine tilgjengelige fremkomstmidler. Velg fremkomstmidler her. Velg fremkomstmiddelet ved \xe5 klikke p\xe5 det."
+                            dispatch_menu: "Dette er ekspedisjonsvinduet. Her kan du sende kj\xf8ret\xf8y ut p\xe5 oppdrag.",
+                            dispatch_menu_buttons: "Send et kj\xf8ret\xf8y til et oppdrag ved \xe5 klikke p\xe5 utsendelsesknappen. S\xe5 snart du har flere oppdrag, kan du bruke knappen ved siden av for \xe5 g\xe5 videre til neste oppdrag.",
+                            dispatch_menu_mission_general: 'Her finner du generell informasjon om oppdraget. S\xe5 lenge du ikke er involvert i oppdraget, vises <span class="glyphicon glyphicon-asterisk"></span> foran oppdragsnavnet, <span class="glyphicon glyphicon-user"></span> s\xe5 snart du har sendt det f\xf8rste kj\xf8ret\xf8yet.',
+                            dispatch_menu_mission_progress: "Her kan du se fremdriften i oppdraget. S\xe5 snart personell er p\xe5 plass, vises de her, og du kan se hvor lang tid som gjenst\xe5r for \xe5 fullf\xf8re oppdraget.",
+                            dispatch_menu_mission_specific: "Her kan du se hvilke kj\xf8ret\xf8y som er p\xe5 vei til eller befinner seg p\xe5 oppdraget. Tallet foran kj\xf8ret\xf8yet viser hvilken status kj\xf8ret\xf8yet har.",
+                            dispatch_menu_vehicle_list: "Her kan du se alle kj\xf8ret\xf8yene som er tilgjengelige for oppdraget. Velg et kj\xf8ret\xf8y ved \xe5 klikke p\xe5 avmerkingsboksen ved siden av det."
                         },
                         mobile: {
-                            dispatch_menu: "Dette er n\xf8dedatsmenyen. Her i fra kan du sende enhetene dine ut p\xe5 oppdrag!",
-                            dispatch_menu_buttons: "Dette er dine to n\xf8detatsknapper. Den f\xf8rste: \xabN\xf8detat\xbb sender de valgte enhetene ut p\xe5 oppdraget. Den andre gj\xf8r det samme som den f\xf8rste, men g\xe5r ut p\xe5 neste oppdrag. Klikk p\xe5 den f\xf8rste knappen.",
-                            dispatch_menu_mission_general: "Her kan du se generell oppdragsinfo, alts\xe5 navnet, adressen og oppdragsikonet. Ikonet av den lille mannen dukker opp og erstatter en liten stjerne p\xe5 oppdrag du allerede deltar p\xe5.",
-                            dispatch_menu_mission_progress: "Her kan du se hvor mye framdrift som er gjort p\xe5 oppdraget, samt antallet personell p\xe5 stedet og hvor mye tid du har igjen.",
-                            dispatch_menu_mission_specific: "Her kan du se info om oppdraget, hvilke enheter som svarer p\xe5 n\xf8danropet og hvem som allerede er p\xe5 stedet.",
-                            dispatch_menu_vehicle_list: "Dette er listen over dine tilgjengelige fremkomstmidler. Velg fremkomstmidler her. Velg fremkomstmiddelet ved \xe5 klikke p\xe5 det."
+                            dispatch_menu: "Dette er ekspedisjonsvinduet. Her kan du sende kj\xf8ret\xf8y ut p\xe5 oppdrag.",
+                            dispatch_menu_buttons: "Send et kj\xf8ret\xf8y til et oppdrag ved \xe5 klikke p\xe5 utsendelsesknappen. S\xe5 snart du har flere oppdrag, kan du bruke knappen ved siden av for \xe5 g\xe5 videre til neste oppdrag.",
+                            dispatch_menu_mission_general: 'Her finner du generell informasjon om oppdraget. S\xe5 lenge du ikke er involvert i oppdraget, vises <span class="glyphicon glyphicon-asterisk"></span> foran oppdragsnavnet, <span class="glyphicon glyphicon-user"></span> s\xe5 snart du har sendt det f\xf8rste kj\xf8ret\xf8yet.',
+                            dispatch_menu_mission_progress: "Her kan du se fremdriften i oppdraget. S\xe5 snart personell er p\xe5 plass, vises de her, og du kan se hvor lang tid som gjenst\xe5r for \xe5 fullf\xf8re oppdraget.",
+                            dispatch_menu_mission_specific: "Her kan du se hvilke kj\xf8ret\xf8y som er p\xe5 vei til eller befinner seg p\xe5 oppdraget. Tallet foran kj\xf8ret\xf8yet viser hvilken status kj\xf8ret\xf8yet har.",
+                            dispatch_menu_vehicle_list: "Her kan du se alle kj\xf8ret\xf8yene som er tilgjengelige for oppdraget. Velg et kj\xf8ret\xf8y ved \xe5 klikke p\xe5 avmerkingsboksen ved siden av det."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "N\xe5 skal vi l\xe6re \xe5 h\xe5ndtere ulykker. \xc5pne n\xf8detatsmenyen ved \xe5 klikke p\xe5 en n\xf8detatsknapp.",
-                            first_mission: "Flott, du har bygget din f\xf8rste bygning! Se, de f\xf8rste oppdragene ble meldt inn til deg!"
+                            dispatch_button: 'Ta deg av oppdraget ved f\xf8rst \xe5 klikke p\xe5 "Dispatch"-knappen.',
+                            first_mission: "Den f\xf8rste bygningen din er klar. Du har ogs\xe5 f\xe5tt ditt f\xf8rste oppdrag!"
                         },
                         mobile: {
-                            dispatch_button: "N\xe5 skal vi l\xe6re \xe5 h\xe5ndtere ulykker. \xc5pne n\xf8detatsmenyen ved \xe5 klikke p\xe5 en n\xf8detatsknapp.",
-                            first_mission: "Flott, du har bygget din f\xf8rste bygning! Se, de f\xf8rste oppdragene ble meldt inn til deg!"
+                            dispatch_button: 'Ta deg av oppdraget ved f\xf8rst \xe5 klikke p\xe5 "Dispatch"-knappen.',
+                            first_mission: "Den f\xf8rste bygningen din er klar. Du har ogs\xe5 f\xe5tt ditt f\xf8rste oppdrag!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Flott, n\xe5 er du p\xe5 vei til \xe5 bli en god n\xf8dsentralleder! Her f\xe5r du %{coins} mynter for \xe5 komme i gang! </br> N\xf8dsentralspillet-teamet"
+                        general: "N\xe5 er du klar til \xe5 begynne \xe5 l\xf8se oppdrag p\xe5 egen h\xe5nd. For \xe5 hjelpe deg i gang med oppdragene og utvidelsen f\xe5r du %{coins} mynter. Lykke til!"
                     },
                     mobile: {
-                        general: "Flott, n\xe5 er du p\xe5 vei til \xe5 bli en god n\xf8dsentralleder! Her f\xe5r du %{coins} mynter for \xe5 komme i gang! </br> N\xf8dsentralspillet-teamet"
+                        general: "N\xe5 er du klar til \xe5 begynne \xe5 l\xf8se oppdrag p\xe5 egen h\xe5nd. For \xe5 hjelpe deg i gang med oppdragene og utvidelsen f\xe5r du %{coins} mynter. Lykke til!"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Hvis du har sp\xf8rsm\xe5l, kan du sjekke med spillets Vanlige sp\xf8rsm\xe5l eller g\xe5 til spillforumet eller Facebook-siden v\xe5r.",
-                        general: "I neste trinn anbefaler vi deg \xe5 bygge et n\xf8detatssenter og s\xe5 snart som mulig nye stasjoner, siden maks antall oppdrag er lik det h\xf8yeste antallet stasjoner av en stasjonstype (politi, brann, ambulanse) pluss 1. F.eks. 5 brannstasjoner og 3 ambulansestasjoner = 6 oppdrag.",
-                        join_alliance: "Det er ogs\xe5 nyttig \xe5 bli med i allianser, spesielt i begynnelsen, s\xe5 det anbefales ogs\xe5.",
+                        contact: "Hvis du oppgraderer stasjonene dine, f\xe5r du plass til nye kj\xf8ret\xf8y.",
+                        general: "Du f\xe5r poeng for \xe5 fullf\xf8re et oppdrag. Ved \xe5 tjene poeng kommer du n\xe6rmere en forfremmelse.",
+                        join_alliance: "Forfremmelser og bygging av stasjoner l\xe5ser opp nye funksjoner som oppdragstyper eller kj\xf8ret\xf8y.",
                         radio: {
                             helpshift_id: "1540",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             short: "Radioen viser statusoppdateringer for alle kj\xf8ret\xf8y. Klikk her for mer detaljert statusinformasjon."
                         },
-                        summary: "Dette er det grunnleggende i N\xf8dsentralspillet! Utf\xf8r oppdrag, f\xe5 kreditter, kj\xf8p flere enheter og gjenta. Kos deg med spillingen! </br> N\xf8dsentralspillet-teamet"
+                        summary: "Du kan bli med i en allianse for \xe5 l\xf8se oppdrag sammen med andre. Det arrangeres ogs\xe5 jevnlige alliansearrangementer som alle medlemmene kan delta i!"
                     },
                     mobile: {
-                        contact: "Hvis du har sp\xf8rsm\xe5l, kan du sjekke med spillets Vanlige sp\xf8rsm\xe5l eller g\xe5 til spillforumet eller Facebook-siden v\xe5r.",
-                        general: "I neste trinn anbefaler vi deg \xe5 bygge et n\xf8detatssenter og s\xe5 snart som mulig nye stasjoner, siden maks antall oppdrag er lik det h\xf8yeste antallet stasjoner av en stasjonstype (politi, brann, ambulanse) pluss 1. F.eks. 5 brannstasjoner og 3 ambulansestasjoner = 6 oppdrag.",
-                        join_alliance: "Det er ogs\xe5 nyttig \xe5 bli med i allianser, spesielt i begynnelsen, s\xe5 det anbefales ogs\xe5.",
-                        summary: "Dette er det grunnleggende i N\xf8dsentralspillet! Utf\xf8r oppdrag, f\xe5 kreditter, kj\xf8p flere enheter og gjenta. Kos deg med spillingen! </br> N\xf8dsentralspillet-teamet"
+                        contact: "Hvis du oppgraderer stasjonene dine, f\xe5r du plass til nye kj\xf8ret\xf8y.",
+                        general: "Du f\xe5r poeng for \xe5 fullf\xf8re et oppdrag. Ved \xe5 tjene poeng kommer du n\xe6rmere en forfremmelse.",
+                        join_alliance: "Forfremmelser og bygging av stasjoner l\xe5ser opp nye funksjoner som oppdragstyper eller kj\xf8ret\xf8y.",
+                        summary: "Du kan bli med i en allianse for \xe5 l\xf8se oppdrag sammen med andre. Det arrangeres ogs\xe5 jevnlige alliansearrangementer som alle medlemmene kan delta i!"
                     },
                     reminder: {
                         join_alliance: "\xc5 bli med i en allianse har mange fordeler: ekstra bel\xf8nninger for \xe5 fullf\xf8re allianseoppdrag, st\xf8tte fra erfarne medlemmer for vanskelige oppdrag og du kan bruke bygninger til andre medlemmer som sykehus og skoler! Trykk p\xe5 knappen for \xe5 bli med i en allianse n\xe5!"
@@ -10157,34 +9922,10 @@ Object.values || (Object.values = function (e) {
                 beginner: {
                     building: {
                         browser: {
-                            build_building: {
-                                add_name: "S\xe5 gir du stasjonen et navn. Gj\xf8r det gjenkjennelig og skalerbart! F.eks. \xabPolitistasjon nr. 0001\xbb. N\xe5r du er ferdig, klikker du p\xe5 \xabNeste\xbb!",
-                                select_building: "Velg f\xf8rst bygningstypen du vil begynne med, vi anbefaler deg \xe5 begynne med politistasjon! Det er ogs\xe5 lurt \xe5 begynne med en liten stasjon."
-                            },
-                            welcome: "Hei og velkommen til N\xf8dsentralspillet Politiet! Jeg skal l\xe6re deg hvordan du f\xe5r en pangstart i n\xf8detatenes verden!"
+                            welcome: "Velkommen til n\xf8dsentralspillet politiet! Du jobber p\xe5 en n\xf8dmeldingssentral for n\xf8detatene og h\xe5ndterer n\xf8dsamtaler for \xe5 hjelpe og beskytte publikum. For \xe5 gj\xf8re dette bygger du stasjoner og sender ut ulike typer kj\xf8ret\xf8y og oppl\xe6rt personell til forskjellige oppdrag."
                         },
                         mobile: {
-                            build_building: {
-                                add_name: "S\xe5 gir du stasjonen et navn. Gj\xf8r det gjenkjennelig og skalerbart! F.eks. \xabPolitistasjon nr. 0001\xbb. N\xe5r du er ferdig, klikker du p\xe5 \xabNeste\xbb!",
-                                select_building: "Velg f\xf8rst bygningstypen du vil begynne med, vi anbefaler deg \xe5 begynne med politistasjon! Det er ogs\xe5 lurt \xe5 begynne med en liten stasjon."
-                            },
-                            welcome: "Hei og velkommen til N\xf8dsentralspillet Politiet! Jeg skal l\xe6re deg hvordan du f\xe5r en pangstart i n\xf8detatenes verden!"
-                        }
-                    },
-                    rewards: {
-                        browser: {
-                            general: "Flott, n\xe5 er du p\xe5 vei til \xe5 bli en god n\xf8dsentralleder! Her f\xe5r du %{coins} mynter for \xe5 komme i gang! </br> N\xf8dsentralspillet-teamet"
-                        },
-                        mobile: {
-                            general: "Flott, n\xe5 er du p\xe5 vei til \xe5 bli en god n\xf8dsentralleder! Her f\xe5r du %{coins} mynter for \xe5 komme i gang! </br> N\xf8dsentralspillet-teamet"
-                        }
-                    },
-                    tips: {
-                        browser: {
-                            summary: "Dette er det grunnleggende i N\xf8dsentralspillet Politiet! Utf\xf8r oppdrag, f\xe5 kreditter, kj\xf8p flere enheter og gjenta. Kos deg med spillingen! </br> N\xf8dsentralspillet-teamet"
-                        },
-                        mobile: {
-                            summary: "Dette er det grunnleggende i N\xf8dsentralspillet Politiet! Utf\xf8r oppdrag, f\xe5 kreditter, kj\xf8p flere enheter og gjenta. Kos deg med spillingen! </br> N\xf8dsentralspillet-teamet"
+                            welcome: "Velkommen til n\xf8dsentralspillet politiet! Du jobber p\xe5 en n\xf8dmeldingssentral for n\xf8detatene og h\xe5ndterer n\xf8dsamtaler for \xe5 hjelpe og beskytte publikum. For \xe5 gj\xf8re dette bygger du stasjoner og sender ut ulike typer kj\xf8ret\xf8y og oppl\xe6rt personell til forskjellige oppdrag."
                         }
                     }
                 }
@@ -10269,10 +10010,10 @@ Object.values || (Object.values = function (e) {
             patient: "Pacient",
             patient_untouched: "Neo\u0161et\u0159en\xed pacienti",
             poi_delete: "Opravdu chcete odstranit bod z\xe1jmu: %{caption}?",
-            pump_speed_approaching: "P\u0159ibl\xed\u017een\xed: %{amount} l/min",
-            pump_speed_missing: "Chyb\xed: %{amount} l/min",
-            pump_speed_on_site: "Na m\xedst\u011b: %{amount} l/min",
-            pump_speed_selected: "Zvoleno: %{amount} l/min",
+            pump_speed_approaching: "P\u0159ibl\xed\u017een\xed: %{amount} l",
+            pump_speed_missing: "Chyb\xed: %{amount} l",
+            pump_speed_on_site: "Na m\xedst\u011b: %{amount} l",
+            pump_speed_selected: "Zvoleno: %{amount} l",
             reload: "Obnovit",
             sale: "Prodej",
             sale_ended: "Prodej ukon\u010den",
@@ -10293,11 +10034,11 @@ Object.values || (Object.values = function (e) {
             understand: "OK",
             user_not_found: "Hr\xe1\u010d nebyl nalezen.",
             vehicles_not_visible: "Vozidla nejsou vid\u011bt. ",
-            water_approaching: "Na m\xedst\u011b: %{amount} l/min",
-            water_missing: "Chyb\xed: %{amount} l/min",
+            water_approaching: "Na m\xedst\u011b: %{amount} l",
+            water_missing: "Chyb\xed: %{amount} l",
             water_on_site: "Na m\xedst\u011b: %{amount} l",
             water_pumping_process: "Proces \u010derp\xe1n\xed vody",
-            water_selected: "Zvoleno: %{amount} l/min"
+            water_selected: "Zvoleno: %{amount} l"
         },
         map: {
             alliance: "Aliance",
@@ -10516,80 +10257,80 @@ Object.values || (Object.values = function (e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: "D\xe1l svou novou stanici pojmenujte. N\xe1zev by m\u011bl b\xfdt rozpoznateln\xfd a \u0161k\xe1lovateln\xfd. Nap\u0159. \u201eHasi\u010dsk\xe1 stanice 1\u201c. A\u017e bude hotovo, klikn\u011bte na mo\u017enost \u201eDal\u0161\xed\u201c.",
-                            build_with_credits: "Te\u010f si budovu postavte za kredity.",
-                            new_building: "Klikn\u011bte na mo\u017enost \u201eNov\xe1 budova\u201c.",
-                            select_building: "Nejd\u0159\xedv si vyberte typ budovy, se kterou chcete za\u010d\xedt. Doporu\u010dujeme za\u010d\xedt s hasi\u010dskou stanic\xed. V ka\u017ed\xe9m p\u0159\xedpad\u011b doporu\u010dujeme za\u010d\xednat s malou stanic\xed.",
-                            select_position: "P\u0159esu\u0148te modr\xfd ukazatel na m\xedsto, kde chcete postavit svou prvn\xed stanici."
+                            add_name: "Vyberte n\xe1zev stanice. Pozd\u011bji ji m\u016f\u017eete p\u0159ejmenovat.",
+                            build_with_credits: "Ke stavb\u011b stanice pot\u0159ebujete kredity, m\u011bnu hry. Kredity m\u016f\u017eete z\xedskat prost\u0159ednictv\xedm mis\xed, denn\xedch p\u0159ihl\xe1\u0161en\xed, \xfakol\u016f a ud\xe1lost\xed.",
+                            new_building: "Spus\u0165te proces budov\xe1n\xed va\u0161\xed stanice.",
+                            select_building: "Rozhodn\u011bte se, zda chcete postavit hasi\u010dskou nebo policejn\xed stanici. Zpo\u010d\xe1tku sta\u010d\xed mal\xe9 stanice. Pozd\u011bji je m\u016f\u017eete p\u0159estavovat na norm\xe1ln\xed stanice.",
+                            select_position: "P\u0159esu\u0148te zna\u010dku na p\u0159esnou polohu va\u0161\xed stanice."
                         },
-                        pick_location: "Nejd\u0159\xedv si vyberte m\xedsto, kde chcete za\u010d\xedt. Do vyhled\xe1vac\xedho panelu napi\u0161te n\xe1zev m\xedsta, ve kter\xe9m chcete za\u010d\xedt, p\u0159\xedpadn\u011b m\xedsto najd\u011bte na map\u011b. Co takhle m\u011bsto, ve kter\xe9m bydl\xedte?",
-                        welcome: "Zdrav\xedme! V\xedtejte ve h\u0159e Opera\u010dn\xed st\u0159edisko!  V n\u011bkolika lekc\xedch v\xe1s nau\u010d\xedm, jak spr\xe1vn\u011b odstartovat kari\xe9ru v z\xe1chrann\xfdch slu\u017eb\xe1ch."
+                        pick_location: "Vyberte m\xedsto, kde chcete postavit svou prvn\xed stanici",
+                        welcome: "V\xedtejte v Opera\u010dn\xedm st\u0159edisku! \xdakolem dispe\u010dinku z\xe1chrann\xfdch slo\u017eek je \u0159e\u0161it t\xeds\u0148ov\xe1 vol\xe1n\xed s nutnost\xed pomoci a zajistit ochranu ve\u0159ejnosti. Za t\xedmto \xfa\u010delem stav\xedte stanice a vys\xedl\xe1te mnoho typ\u016f vozidel a vy\u0161kolen\xfd person\xe1l na r\u016fzn\xe9 mise."
                     },
                     mobile: {
                         build_building: {
-                            add_name: "D\xe1l svou novou stanici pojmenujte. N\xe1zev by m\u011bl b\xfdt rozpoznateln\xfd a \u0161k\xe1lovateln\xfd. Nap\u0159. \u201eHasi\u010dsk\xe1 stanice 1\u201c. A\u017e bude hotovo, klikn\u011bte na mo\u017enost \u201eDal\u0161\xed\u201c.",
-                            build_with_credits: "Te\u010f si budovu postavte za kredity.",
-                            new_building: "Nejd\u0159\xedv vybereme po\u010d\xe1te\u010dn\xed m\xedsto a postav\xedme prvn\xed budovu. <br /> <br /> Prove\u010fte to kliknut\xedm na mo\u017enost \u201eNov\xe1 budova\u201c.",
-                            select_building: "Nejd\u0159\xedv si vyberte typ budovy, se kterou chcete za\u010d\xedt. Doporu\u010dujeme za\u010d\xedt s hasi\u010dskou stanic\xed. V ka\u017ed\xe9m p\u0159\xedpad\u011b doporu\u010dujeme za\u010d\xednat s malou stanic\xed."
+                            add_name: "Vyberte n\xe1zev stanice. Pozd\u011bji ji m\u016f\u017eete p\u0159ejmenovat.",
+                            build_with_credits: "Ke stavb\u011b stanice pot\u0159ebujete kredity, m\u011bnu hry. Kredity m\u016f\u017eete z\xedskat prost\u0159ednictv\xedm mis\xed, denn\xedch p\u0159ihl\xe1\u0161en\xed, \xfakol\u016f a ud\xe1lost\xed.",
+                            new_building: "Za\u010dn\u011bte stavbou sv\xe9 prvn\xed stanice. Jej\xed polohu m\u016f\u017eete vybrat ru\u010dn\xedm zad\xe1n\xedm nebo posunut\xedm zna\u010dky polohy na map\u011b. V z\xe1vislosti na va\u0161em opera\u010dn\xedm syst\xe9mu mo\u017en\xe1 budete muset zna\u010dku chv\xedli podr\u017eet, ne\u017e ji budete moci p\u0159esunout.",
+                            select_building: "Rozhodn\u011bte se, zda chcete postavit hasi\u010dskou nebo policejn\xed stanici. Zpo\u010d\xe1tku sta\u010d\xed mal\xe9 stanice. Pozd\u011bji je m\u016f\u017eete p\u0159estavovat na norm\xe1ln\xed stanice."
                         },
-                        welcome: "Zdrav\xedme! V\xedtejte ve h\u0159e Opera\u010dn\xed st\u0159edisko!  V n\u011bkolika lekc\xedch v\xe1s nau\u010d\xedm, jak spr\xe1vn\u011b odstartovat kari\xe9ru v z\xe1chrann\xfdch slu\u017eb\xe1ch."
+                        welcome: "V\xedtejte v Opera\u010dn\xedm st\u0159edisku! \xdakolem dispe\u010dinku z\xe1chrann\xfdch slo\u017eek je \u0159e\u0161it t\xeds\u0148ov\xe1 vol\xe1n\xed s nutnost\xed pomoci a zajistit ochranu ve\u0159ejnosti. Za t\xedmto \xfa\u010delem stav\xedte stanice a vys\xedl\xe1te mnoho typ\u016f vozidel a vy\u0161kolen\xfd person\xe1l na r\u016fzn\xe9 mise."
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Toto je nab\xeddka v\xfdjezd\u016f. Odtud na mise pos\xedl\xe1te jednotky.",
-                            dispatch_menu_buttons: "Toto jsou dv\u011b v\xfdjezdn\xed tla\u010d\xedtka. Prvn\xed: \u201eV\xfdjezd\u201c vy\u0161le vybran\xe9 jednotky na misi. Druh\xe9 d\u011bl\xe1 to sam\xe9 jako prvn\xed, ale p\u0159esune v\xe1s tak\xe9 na dal\u0161\xed misi. Prozat\xedm klikn\u011bte na prvn\xed tla\u010d\xedtko.",
-                            dispatch_menu_mission_general: "Dozv\xedte se zde obecn\xe9 informace o misi, \u010dili n\xe1zev, adresu a ikonu mise. U mis\xed, kter\xe9 jste u\u017e za\u010dali \u0159e\u0161it, se objev\xed ikonka \u010dlov\u011bka, kter\xe1 nahrad\xed hv\u011bzdi\u010dku.",
-                            dispatch_menu_mission_progress: "Dozv\xedte se zde, kolik pokroku se na misi ud\u011blalo, a tak\xe9 po\u010det z\xe1chran\xe1\u0159\u016f na m\xedst\u011b. Uveden je tak\xe9 \u010das zb\xfdvaj\xedc\xed do spln\u011bn\xed mise.",
-                            dispatch_menu_mission_specific: "Tady se dozv\xedte dal\u0161\xed podrobnosti o misi, kter\xe9 jednotky vyjedou a kter\xe9 u\u017e jsou na m\xedst\u011b.",
-                            dispatch_menu_vehicle_list: "Toto je seznam va\u0161ich dostupn\xfdch vozidel. Vozidla vyb\xedr\xe1te zde. Te\u010f vyberte vozidlo tak, \u017ee na n\u011bj kliknete."
+                            dispatch_menu: "Toto je okno nouzov\xe9 situace. Zde m\u016f\u017eete pos\xedlat vozidla na mise.",
+                            dispatch_menu_buttons: 'Po\u0161lete vozidlo na misi kliknut\xedm na tla\u010d\xedtko "V\xfdjezd". Jakmile budete m\xedt v\xedce mis\xed, m\u016f\u017eete pomoc\xed \u0161ipky p\u0159ej\xedt na dal\u0161\xed misi.',
+                            dispatch_menu_mission_general: 'Zde najdete obecn\xe9 informace o misi. Dokud se mise nez\xfa\u010dastn\xedte, objev\xed se p\u0159ed n\xed <span class="glyphicon glyphicon-asterisk"></span>, <span class="glyphicon glyphicon-user"></span> jakmile vy\u0161lete prvn\xed vozidlo.',
+                            dispatch_menu_mission_progress: "Zde m\u016f\u017eete vid\u011bt pr\u016fb\u011bh mise. Zde tak\xe9 zjist\xedte, kter\xe1 vozidla jsou na m\xedst\u011b a kolik \u010dasu zb\xfdv\xe1 do konce mise.",
+                            dispatch_menu_mission_specific: "Zde vid\xedte, kter\xe1 vozidla jsou na cest\u011b k z\xe1sahu nebo na m\xedst\u011b z\xe1sahu. \u010c\xedslo p\u0159ed va\u0161\xedm vozidlem ukazuje jeho status.",
+                            dispatch_menu_vehicle_list: "Zde m\xe1te na v\xfdb\u011br v\u0161echna vozidla dostupn\xe1 pro misi. Vyberte vozidlo kliknut\xedm na za\u0161krt\xe1vac\xed pol\xed\u010dko vedle n\u011bj."
                         },
                         mobile: {
-                            dispatch_menu: "Toto je nab\xeddka v\xfdjezd\u016f. Odtud na mise pos\xedl\xe1te jednotky.",
-                            dispatch_menu_buttons: "Toto jsou dv\u011b v\xfdjezdn\xed tla\u010d\xedtka. Prvn\xed: \u201eV\xfdjezd\u201c vy\u0161le vybran\xe9 jednotky na misi. Druh\xe9 d\u011bl\xe1 to sam\xe9 jako prvn\xed, ale p\u0159esune v\xe1s tak\xe9 na dal\u0161\xed misi. Prozat\xedm klikn\u011bte na prvn\xed tla\u010d\xedtko.",
-                            dispatch_menu_mission_general: "Dozv\xedte se zde obecn\xe9 informace o misi, \u010dili n\xe1zev, adresu a ikonu mise. U mis\xed, kter\xe9 jste u\u017e za\u010dali \u0159e\u0161it, se objev\xed ikonka \u010dlov\u011bka, kter\xe1 nahrad\xed hv\u011bzdi\u010dku.",
-                            dispatch_menu_mission_progress: "Dozv\xedte se zde, kolik pokroku se na misi ud\u011blalo, a tak\xe9 po\u010det z\xe1chran\xe1\u0159\u016f na m\xedst\u011b. Uveden je tak\xe9 \u010das zb\xfdvaj\xedc\xed do spln\u011bn\xed mise.",
-                            dispatch_menu_mission_specific: "Tady se dozv\xedte dal\u0161\xed podrobnosti o misi, kter\xe9 jednotky vyjedou a kter\xe9 u\u017e jsou na m\xedst\u011b.",
-                            dispatch_menu_vehicle_list: "Toto je seznam va\u0161ich dostupn\xfdch vozidel. Vozidla vyb\xedr\xe1te zde. Te\u010f vyberte vozidlo tak, \u017ee na n\u011bj kliknete."
+                            dispatch_menu: "Toto je okno nouzov\xe9 situace. Zde m\u016f\u017eete pos\xedlat vozidla na mise.",
+                            dispatch_menu_buttons: 'Po\u0161lete vozidlo na misi kliknut\xedm na tla\u010d\xedtko "V\xfdjezd". Jakmile budete m\xedt v\xedce mis\xed, m\u016f\u017eete pomoc\xed \u0161ipky p\u0159ej\xedt na dal\u0161\xed misi.',
+                            dispatch_menu_mission_general: 'Zde najdete obecn\xe9 informace o misi. Dokud se mise nez\xfa\u010dastn\xedte, objev\xed se p\u0159ed n\xed <span class="glyphicon glyphicon-asterisk"></span>, <span class="glyphicon glyphicon-user"></span> jakmile vy\u0161lete prvn\xed vozidlo.',
+                            dispatch_menu_mission_progress: "Zde m\u016f\u017eete vid\u011bt pr\u016fb\u011bh mise. Zde tak\xe9 zjist\xedte, kter\xe1 vozidla jsou na m\xedst\u011b a kolik \u010dasu zb\xfdv\xe1 do konce mise.",
+                            dispatch_menu_mission_specific: "Zde vid\xedte, kter\xe1 vozidla jsou na cest\u011b k z\xe1sahu nebo na m\xedst\u011b z\xe1sahu. \u010c\xedslo p\u0159ed va\u0161\xedm vozidlem ukazuje jeho status.",
+                            dispatch_menu_vehicle_list: "Zde m\xe1te na v\xfdb\u011br v\u0161echna vozidla dostupn\xe1 pro misi. Vyberte vozidlo kliknut\xedm na za\u0161krt\xe1vac\xed pol\xed\u010dko vedle n\u011bj."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "Te\u010f se nau\u010d\xedme, jak se vypo\u0159\xe1dat s nehodami. Kliknut\xedm na tla\u010d\xedtko \u201eV\xfdjezd\u201c otev\u0159ete nab\xeddku v\xfdjezd\u016f.",
-                            first_mission: "V\xfdborn\u011b! Postavili jste svou v\u016fbec prvn\xed budovu! Pod\xedvejte, u\u017e se v\xe1m hl\xe1s\xed prvn\xed mise."
+                            dispatch_button: "Pro proveden\xed mise klikn\u011bte na tla\u010d\xedtko \u201eV\xfdjezd\u201c.",
+                            first_mission: "Va\u0161e prvn\xed budova je p\u0159ipravena. Dostali jste tak\xe9 svou prvn\xed misi!"
                         },
                         mobile: {
-                            dispatch_button: "Te\u010f se nau\u010d\xedme, jak se vypo\u0159\xe1dat s nehodami. Kliknut\xedm na tla\u010d\xedtko \u201eV\xfdjezd\u201c otev\u0159ete nab\xeddku v\xfdjezd\u016f.",
-                            first_mission: "V\xfdborn\u011b! Postavili jste svou v\u016fbec prvn\xed budovu! Pod\xedvejte, u\u017e se v\xe1m hl\xe1s\xed prvn\xed mise."
+                            dispatch_button: "Pro proveden\xed mise klikn\u011bte na tla\u010d\xedtko \u201eV\xfdjezd\u201c.",
+                            first_mission: "Va\u0161e prvn\xed budova je p\u0159ipravena. Dostali jste tak\xe9 svou prvn\xed misi!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "V\xfdborn\u011b! Jste na t\xe9 nejlep\u0161\xed cest\u011b st\xe1t se \xfa\u017easn\xfdm vedouc\xedm opera\u010dn\xedho st\u0159ediska. Zde m\xe1te %{coins} minc\xed na za\u010d\xe1tek. </br> V\xe1\u0161 t\xfdm hry Opera\u010dn\xed st\u0159edisko"
+                        general: "Nyn\xed jste p\u0159ipraveni vypo\u0159\xe1dat se se sv\xfdm posl\xe1n\xedm sami. Abychom v\xe1m pomohli za\u010d\xedt s misemi a roz\u0161\xed\u0159en\xedm, dostanete %{coins} minc\xed. Hodn\u011b \u0161t\u011bst\xed!"
                     },
                     mobile: {
-                        general: "V\xfdborn\u011b! Jste na t\xe9 nejlep\u0161\xed cest\u011b st\xe1t se \xfa\u017easn\xfdm vedouc\xedm opera\u010dn\xedho st\u0159ediska. Zde m\xe1te %{coins} minc\xed na za\u010d\xe1tek. </br> V\xe1\u0161 t\xfdm hry Opera\u010dn\xed st\u0159edisko"
+                        general: "Nyn\xed jste p\u0159ipraveni vypo\u0159\xe1dat se se sv\xfdm posl\xe1n\xedm sami. Abychom v\xe1m pomohli za\u010d\xedt s misemi a roz\u0161\xed\u0159en\xedm, dostanete %{coins} minc\xed. Hodn\u011b \u0161t\u011bst\xed!"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Pokud m\xe1te n\u011bjak\xe9 dotazy, m\u016f\u017eete se pod\xedvat do \u010dast\xfdch dotaz\u016f o h\u0159e, p\u0159\xedpadn\u011b nav\u0161tivte na\u0161e hern\xed f\xf3rum nebo str\xe1nku na Facebooku.",
-                        general: "V dal\u0161\xedm kroku bychom v\xe1m doporu\u010dili postavit dispe\u010dink a pot\xe9 co nejrychleji dal\u0161\xed stanice, jeliko\u017e maxim\xe1ln\xed po\u010det mis\xed se rovn\xe1 maxim\xe1ln\xedmu po\u010dtu stanic r\u016fzn\xe9ho typu (policie, hasi\u010di, z\xe1chranka) plus 1. Tedy nap\u0159. 5 hasi\u010dsk\xfdch stanic a 3 stanice z\xe1chranky = 6 mis\xed.",
-                        join_alliance: "P\u0159idat se k alianci by v\xe1m rovn\u011b\u017e mohlo velice pomoct, hlavn\u011b na za\u010d\xe1tku. Tak\u017ee to tak\xe9 doporu\u010dujeme.",
+                        contact: "Pokud vylep\u0161\xedte svou stanici, z\xedsk\xe1te v\xedce m\xedsta pro nov\xe1 vozidla.",
+                        general: "Za dokon\u010den\xed mise z\xedsk\xe1te kredity. Z\xedsk\xe1n\xedm kredit\u016f se p\u0159ibl\xed\u017e\xedte sv\xe9mu dal\u0161\xedmu pov\xfd\u0161en\xed.",
+                        join_alliance: "Pov\xfd\u0161en\xed na novou hodnost a budov\xe1n\xed stanic p\u0159in\xe1\u0161\xed nov\xe9 funkce, jako jsou nov\xe9 mise a typy vozidel.",
                         radio: {
                             helpshift_id: "1540",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             short: "Vys\xedla\u010dka zobrazuje aktualizace stavu va\u0161ich vozidel. Podrobn\u011bj\u0161\xed informace o jednotliv\xfdch stavech z\xedsk\xe1te kliknut\xedm na sem."
                         },
-                        summary: "Toto jsou z\xe1klady hry Opera\u010dn\xed st\u0159edisko! Pl\u0148te mise, z\xedsk\xe1vejte kredity, nakupujte dal\u0161\xed jednotky. Postup opakujte. P\u0159\xedjemnou z\xe1bavu p\u0159i hran\xed! </br> V\xe1\u0161 t\xfdm hry Opera\u010dn\xed st\u0159edisko"
+                        summary: "M\u016f\u017eete se p\u0159ipojit k alianci a vydat se na mise s ostatn\xedmi. Po\u0159\xe1daj\xed se tak\xe9 pravideln\xe9 alian\u010dn\xed akce, kter\xfdch se m\u016f\u017eete z\xfa\u010dastnit."
                     },
                     mobile: {
-                        contact: "Pokud m\xe1te n\u011bjak\xe9 dotazy, m\u016f\u017eete se pod\xedvat do \u010dast\xfdch dotaz\u016f o h\u0159e, p\u0159\xedpadn\u011b nav\u0161tivte na\u0161e hern\xed f\xf3rum nebo str\xe1nku na Facebooku.",
-                        general: "V dal\u0161\xedm kroku bychom v\xe1m doporu\u010dili postavit dispe\u010dink a pot\xe9 co nejrychleji dal\u0161\xed stanice, jeliko\u017e maxim\xe1ln\xed po\u010det mis\xed se rovn\xe1 maxim\xe1ln\xedmu po\u010dtu stanic r\u016fzn\xe9ho typu (policie, hasi\u010di, z\xe1chranka) plus 1. Tedy nap\u0159. 5 hasi\u010dsk\xfdch stanic a 3 stanice z\xe1chranky = 6 mis\xed.",
-                        join_alliance: "P\u0159idat se k alianci by v\xe1m rovn\u011b\u017e mohlo velice pomoct, hlavn\u011b na za\u010d\xe1tku. Tak\u017ee to tak\xe9 doporu\u010dujeme.",
-                        summary: "Toto jsou z\xe1klady hry Opera\u010dn\xed st\u0159edisko! Pl\u0148te mise, z\xedsk\xe1vejte kredity, nakupujte dal\u0161\xed jednotky. Postup opakujte. P\u0159\xedjemnou z\xe1bavu p\u0159i hran\xed! </br> V\xe1\u0161 t\xfdm hry Opera\u010dn\xed st\u0159edisko"
+                        contact: "Pokud vylep\u0161\xedte svou stanici, z\xedsk\xe1te v\xedce m\xedsta pro nov\xe1 vozidla.",
+                        general: "Za dokon\u010den\xed mise z\xedsk\xe1te kredity. Z\xedsk\xe1n\xedm kredit\u016f se p\u0159ibl\xed\u017e\xedte sv\xe9mu dal\u0161\xedmu pov\xfd\u0161en\xed.",
+                        join_alliance: "Pov\xfd\u0161en\xed na novou hodnost a budov\xe1n\xed stanic p\u0159in\xe1\u0161\xed nov\xe9 funkce, jako jsou nov\xe9 mise a typy vozidel.",
+                        summary: "M\u016f\u017eete se p\u0159ipojit k alianci a vydat se na mise s ostatn\xedmi. Po\u0159\xe1daj\xed se tak\xe9 pravideln\xe9 alian\u010dn\xed akce, kter\xfdch se m\u016f\u017eete z\xfa\u010dastnit."
                     },
                     reminder: {
                         join_alliance: "Vstup do aliance p\u0159in\xe1\u0161\xed mnoho v\xfdhod: extra odm\u011bny za spln\u011bn\xed alian\u010dn\xedch mis\xed, podporu zku\u0161en\xfdch \u010dlen\u016f p\u0159i pln\u011bn\xed obt\xed\u017en\xfdch mis\xed a mo\u017enost vyu\u017e\xedvat za\u0159\xedzen\xed ostatn\xedch \u010dlen\u016f, jako jsou nemocnice a \u0161koly! Stiskn\u011bte tla\u010d\xedtko a p\u0159ipojte se k alianci!"
@@ -10614,34 +10355,10 @@ Object.values || (Object.values = function (e) {
                 beginner: {
                     building: {
                         browser: {
-                            build_building: {
-                                add_name: "D\xe1l svou novou stanici pojmenujte. N\xe1zev by m\u011bl b\xfdt rozpoznateln\xfd a \u0161k\xe1lovateln\xfd. Nap\u0159. \u201eObvodn\xed odd\u011blen\xed Policie 001\u201c. A\u017e bude hotovo, klikn\u011bte na mo\u017enost \u201eDal\u0161\xed\u201c.",
-                                select_building: "Nejd\u0159\xedv si vyberte typ budovy, se kterou chcete za\u010d\xedt. Doporu\u010dujeme za\u010d\xedt s policejn\xed stanic\xed. V ka\u017ed\xe9m p\u0159\xedpad\u011b doporu\u010dujeme za\u010d\xednat s malou stanic\xed."
-                            },
-                            welcome: "Zdrav\xedme! V\xedtejte ve h\u0159e Opera\u010dn\xed st\u0159edisko Policie! V n\u011bkolika lekc\xedch v\xe1s nau\u010d\xedm, jak spr\xe1vn\u011b odstartovat kari\xe9ru v z\xe1chrann\xfdch slu\u017eb\xe1ch."
+                            welcome: "V\xedtejte v Opera\u010dn\xed st\u0159edisko Policie! \xdakolem dispe\u010dinku z\xe1chrann\xfdch slo\u017eek je \u0159e\u0161it t\xeds\u0148ov\xe1 vol\xe1n\xed s nutnost\xed pomoci a zajistit ochranu ve\u0159ejnosti. Za t\xedmto \xfa\u010delem stav\xedte stanice a vys\xedl\xe1te mnoho typ\u016f vozidel a vy\u0161kolen\xfd person\xe1l na r\u016fzn\xe9 mise."
                         },
                         mobile: {
-                            build_building: {
-                                add_name: "D\xe1l svou novou stanici pojmenujte. N\xe1zev by m\u011bl b\xfdt rozpoznateln\xfd a \u0161k\xe1lovateln\xfd. Nap\u0159. \u201eObvodn\xed odd\u011blen\xed Policie 001\u201c. A\u017e bude hotovo, klikn\u011bte na mo\u017enost \u201eDal\u0161\xed\u201c.",
-                                select_building: "Nejd\u0159\xedv si vyberte typ budovy, se kterou chcete za\u010d\xedt. Doporu\u010dujeme za\u010d\xedt s policejn\xed stanic\xed. V ka\u017ed\xe9m p\u0159\xedpad\u011b doporu\u010dujeme za\u010d\xednat s malou stanic\xed."
-                            },
-                            welcome: "Zdrav\xedme! V\xedtejte ve h\u0159e Opera\u010dn\xed st\u0159edisko Policie! V n\u011bkolika lekc\xedch v\xe1s nau\u010d\xedm, jak spr\xe1vn\u011b odstartovat kari\xe9ru v z\xe1chrann\xfdch slu\u017eb\xe1ch."
-                        }
-                    },
-                    rewards: {
-                        browser: {
-                            general: "V\xfdborn\u011b! Jste na t\xe9 nejlep\u0161\xed cest\u011b st\xe1t se \xfa\u017easn\xfdm vedouc\xedm opera\u010dn\xedho st\u0159ediska policie. Zde m\xe1te %{coins} minc\xed na za\u010d\xe1tek. </br> V\xe1\u0161 t\xfdm hry Opera\u010dn\xed st\u0159edisko Policie"
-                        },
-                        mobile: {
-                            general: "V\xfdborn\u011b! Jste na t\xe9 nejlep\u0161\xed cest\u011b st\xe1t se \xfa\u017easn\xfdm vedouc\xedm opera\u010dn\xedho st\u0159ediska policie. Zde m\xe1te %{coins} minc\xed na za\u010d\xe1tek. </br> V\xe1\u0161 t\xfdm hry Opera\u010dn\xed st\u0159edisko Policie"
-                        }
-                    },
-                    tips: {
-                        browser: {
-                            summary: "Toto jsou z\xe1klady hry Opera\u010dn\xed st\u0159edisko Policie! Pl\u0148te mise, z\xedsk\xe1vejte kredity, nakupujte dal\u0161\xed jednotky. Postup opakujte. P\u0159\xedjemnou z\xe1bavu p\u0159i hran\xed! </br> V\xe1\u0161 t\xfdm hry Opera\u010dn\xed st\u0159edisko Policie"
-                        },
-                        mobile: {
-                            summary: "Toto jsou z\xe1klady hry Opera\u010dn\xed st\u0159edisko Policie! Pl\u0148te mise, z\xedsk\xe1vejte kredity, nakupujte dal\u0161\xed jednotky. Postup opakujte. P\u0159\xedjemnou z\xe1bavu p\u0159i hran\xed! </br> V\xe1\u0161 t\xfdm hry Opera\u010dn\xed st\u0159edisko Policie"
+                            welcome: "V\xedtejte v Opera\u010dn\xed st\u0159edisko Policie! \xdakolem dispe\u010dinku z\xe1chrann\xfdch slo\u017eek je \u0159e\u0161it t\xeds\u0148ov\xe1 vol\xe1n\xed s nutnost\xed pomoci a zajistit ochranu ve\u0159ejnosti. Za t\xedmto \xfa\u010delem stav\xedte stanice a vys\xedl\xe1te mnoho typ\u016f vozidel a vy\u0161kolen\xfd person\xe1l na r\u016fzn\xe9 mise."
                         }
                     }
                 }
@@ -10921,75 +10638,75 @@ Object.values || (Object.values = function (e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: '\u0130kinci ad\u0131mda yeni istasyonuna bir isim ver! Farkedilebilir ve \xf6l\xe7eklenebilir olsun! \xd6r. "\u0130tfaiye istasyonu no. 0001". \u0130\u015fin bitti\u011finde l\xfctfen "\u0130leri" \xf6gesine t\u0131kla!',
-                            build_with_credits: "\u015eimdi binan\u0131 kredilerinle in\u015fa et!",
-                            new_building: '"Yeni bina" \xf6gesine t\u0131kla!',
-                            select_building: "\xd6ncelikle ba\u015flamak istedi\u011fin bina tipini se\xe7, itfaiye ile ba\u015flaman\u0131 \u015fiddetle tavsiye ederiz! Her durumda k\xfc\xe7\xfck bir istasyonla ba\u015flaman daha iyi olur!",
-                            select_position: "Mavi i\u015faret\xe7iyi ilk istasyonunu in\u015fa etmek istedi\u011fin yere ta\u015f\u0131!"
+                            add_name: "\u0130stasyonunuz i\xe7in bir isim se\xe7in. Daha sonra yeniden adland\u0131rabilirsiniz.",
+                            build_with_credits: "Bir istasyon in\u015fa etmek i\xe7in oyunun para birimi olan krediler'e ihtiyac\u0131n\u0131z var. G\xf6revler, g\xfcnl\xfck giri\u015fler, g\xf6revler ve etkinlikler arac\u0131l\u0131\u011f\u0131yla kredi kazanabilirsiniz.",
+                            new_building: "\u0130stasyonunuzun in\u015fa s\xfcrecini ba\u015flat\u0131n.",
+                            select_building: "Bir itfaiye istasyonu mu yoksa bir polis karakolu mu in\u015fa etmek istedi\u011finize karar verin. Ba\u015flang\u0131\xe7ta k\xfc\xe7\xfck istasyonlar yeterlidir. Daha sonra bunlar\u0131 normal istasyonlara y\xfckseltebilirsiniz.",
+                            select_position: "Konum i\u015faretleyicisini istasyonun olmas\u0131n\u0131 istedi\u011finiz konuma ta\u015f\u0131y\u0131n."
                         },
-                        pick_location: "Ba\u015flamak i\xe7in \xf6nce bir konum se\xe7! Ba\u015flamak istedi\u011fin konumun ad\u0131n\u0131 arama \xe7ubu\u011funa yaz veya haritada kendin bul! Memleketine ne dersin?",
-                        welcome: "Merhaba, 112 Merkez'e ho\u015f geldin!  Acil servis kariyerine g\xfczel bir ba\u015flang\u0131\xe7 yapmana yard\u0131mc\u0131 olacak baz\u0131 t\xfcyolar verece\u011fim sana!"
+                        pick_location: "\u0130lk istasyonunuzu in\u015fa etmek istedi\u011finiz bir yer se\xe7in.",
+                        welcome: "112 Merkez - Kaydol'ye ho\u015f geldiniz! Acil durum hizmetleri i\xe7in bir sevk merkezinde \xe7al\u0131\u015farak halka yard\u0131m etmek ve onlar\u0131 korumak i\xe7in acil durum \xe7a\u011fr\u0131lar\u0131yla ilgileniyorsunuz. Bunun i\xe7in istasyonlar in\u015fa ediyor ve \xe7e\u015fitli g\xf6revlere \xe7e\u015fitli tipte ara\xe7lar ve e\u011fitimli personel g\xf6nderiyorsunuz."
                     },
                     mobile: {
                         build_building: {
-                            add_name: '\u0130kinci ad\u0131mda yeni istasyonuna bir isim ver! Farkedilebilir ve \xf6l\xe7eklenebilir olsun! \xd6r. "\u0130tfaiye istasyonu no. 0001". \u0130\u015fin bitti\u011finde l\xfctfen "\u0130leri" \xf6gesine t\u0131kla!',
-                            build_with_credits: "\u015eimdi binan\u0131 kredilerinle in\u015fa et!",
-                            new_building: 'Ba\u015flamak i\xe7in \xf6nce bir konum se\xe7ecek ve ilk binan\u0131 in\u015fa edece\u011fiz! <br /> <br /> Bunun i\xe7in "Yeni bina" \xf6gesine t\u0131kla!',
-                            select_building: "\xd6ncelikle ba\u015flamak istedi\u011fin bina tipini se\xe7, itfaiye ile ba\u015flaman\u0131 \u015fiddetle tavsiye ederiz! Her durumda k\xfc\xe7\xfck bir istasyonla ba\u015flaman daha iyi olur!"
+                            add_name: "\u0130stasyonunuz i\xe7in bir isim se\xe7in. Daha sonra yeniden adland\u0131rabilirsiniz.",
+                            build_with_credits: "Bir istasyon in\u015fa etmek i\xe7in oyunun para birimi olan krediler'e ihtiyac\u0131n\u0131z var. G\xf6revler, g\xfcnl\xfck giri\u015fler, g\xf6revler ve etkinlikler arac\u0131l\u0131\u011f\u0131yla kredi kazanabilirsiniz.",
+                            new_building: "\u0130lk istasyonunuzu in\u015fa etmekle ba\u015flay\u0131n. Konumunu manuel olarak girerek veya haritadaki konum i\u015faretleyicisini hareket ettirerek se\xe7ebilirsiniz. \u0130\u015fletim sisteminize ba\u011fl\u0131 olarak, i\u015faret\xe7iyi hareket ettirebilmeniz i\xe7in bir s\xfcre bas\u0131l\u0131 tutman\u0131z gerekebilir.",
+                            select_building: "Bir itfaiye istasyonu mu yoksa bir polis karakolu mu in\u015fa etmek istedi\u011finize karar verin. Ba\u015flang\u0131\xe7ta k\xfc\xe7\xfck istasyonlar yeterlidir. Daha sonra bunlar\u0131 normal istasyonlara y\xfckseltebilirsiniz."
                         },
-                        welcome: "Merhaba, 112 Merkez'e ho\u015f geldin!  Acil servis kariyerine g\xfczel bir ba\u015flang\u0131\xe7 yapmana yard\u0131mc\u0131 olacak baz\u0131 t\xfcyolar verece\u011fim sana!"
+                        welcome: "112 Merkez - Kaydol'ye ho\u015f geldiniz! Acil durum hizmetleri i\xe7in bir sevk merkezinde \xe7al\u0131\u015farak halka yard\u0131m etmek ve onlar\u0131 korumak i\xe7in acil durum \xe7a\u011fr\u0131lar\u0131yla ilgileniyorsunuz. Bunun i\xe7in istasyonlar in\u015fa ediyor ve \xe7e\u015fitli g\xf6revlere \xe7e\u015fitli tipte ara\xe7lar ve e\u011fitimli personel g\xf6nderiyorsunuz."
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Bu sevk etme men\xfcs\xfcd\xfcr. Buradan birliklerini g\xf6revlere g\xf6nderirsin!",
-                            dispatch_menu_buttons: 'Bunlar ise senin i\xe7in iki sevk d\xfc\u011fmesi! \u0130lki: "Sevk et" se\xe7ilen birimleri g\xf6reve g\xf6nderir. \u0130kincisi birinciyle ayn\u0131 \u015feyi yapar, ancak bir sonraki g\xf6reve gider. \u015eimdilik ilk d\xfc\u011fmeye t\u0131kla.',
-                            dispatch_menu_mission_general: "Burada g\xf6revin ad\u0131, adresi ve simgesi gibi genel g\xf6rev bilgilerini g\xf6rebilirsin. Daha \xf6nce kat\u0131ld\u0131\u011f\u0131n g\xf6revlerde, k\xfc\xe7\xfck y\u0131ld\u0131z\u0131n yerini k\xfc\xe7\xfck adam simgesi al\u0131r.",
-                            dispatch_menu_mission_progress: "Burada bu g\xf6revle ba\u015fa \xe7\u0131kmak i\xe7in ne kadar ilerleme kaydedildi\u011fini, ayr\u0131ca sahadaki personel say\u0131s\u0131n\u0131 ve g\xf6revin \xfcstesinden gelmek i\xe7in kalan s\xfcreyi g\xf6rebilirsin!",
-                            dispatch_menu_mission_specific: "Burada, hangi birimlerin \xe7a\u011fr\u0131ya yan\u0131t verdi\u011fi ve hangilerinin \xe7oktan sahada oldu\u011fu gibi g\xf6rev hakk\u0131nda daha fazla bilgi g\xf6rebilirsin.",
-                            dispatch_menu_vehicle_list: "Bu, mevcut ara\xe7lar\u0131n\u0131n listesidir. Burada ara\xe7lar\u0131 se\xe7ersin. \u015eimdi \xfczerine t\u0131klayarak arac\u0131n\u0131 se\xe7!"
+                            dispatch_menu: "Bu sevkiyat penceresidir. Burada ara\xe7lar\u0131 g\xf6revlere g\xf6nderebilirsiniz.",
+                            dispatch_menu_buttons: "G\xf6nder d\xfc\u011fmesine t\u0131klayarak bir arac\u0131 bir g\xf6reve g\xf6nderin. Daha fazla g\xf6reviniz oldu\u011funda, bir sonraki g\xf6reve gitmek i\xe7in yan\u0131ndaki d\xfc\u011fmeyi kullanabilirsiniz.",
+                            dispatch_menu_mission_general: 'Burada g\xf6revle ilgili genel bilgileri bulabilirsiniz. G\xf6reve dahil olmad\u0131\u011f\u0131n\u0131z s\xfcrece, g\xf6rev ad\u0131n\u0131n \xf6n\xfcnde <span class="glyphicon glyphicon-asterisk"></span>, ilk arac\u0131 g\xf6nderir g\xf6ndermez <span class="glyphicon glyphicon-user"></span> g\xf6r\xfcnt\xfclenir.',
+                            dispatch_menu_mission_progress: "Burada g\xf6revin ilerleyi\u015fini g\xf6rebilirsiniz. Personel sahaya girer girmez burada g\xf6r\xfcnt\xfclenir ve g\xf6revi tamamlamak i\xe7in hala ne kadar zamana ihtiya\xe7 oldu\u011funu g\xf6rebilirsiniz.",
+                            dispatch_menu_mission_specific: "Burada hangi ara\xe7lar\u0131n g\xf6reve do\u011fru yola \xe7\u0131kt\u0131\u011f\u0131n\u0131 veya g\xf6revde oldu\u011funu g\xf6rebilirsiniz. Bir arac\u0131n \xf6n\xfcndeki say\u0131, arac\u0131n konu\u015flanma durumunu g\xf6sterir.",
+                            dispatch_menu_vehicle_list: "Burada g\xf6rev i\xe7in mevcut t\xfcm ara\xe7lar\u0131 g\xf6rebilirsiniz. Yan\u0131ndaki onay kutusuna t\u0131klayarak bir ara\xe7 se\xe7in."
                         },
                         mobile: {
-                            dispatch_menu: "Bu sevk etme men\xfcs\xfcd\xfcr. Buradan birliklerini g\xf6revlere g\xf6nderirsin!",
-                            dispatch_menu_buttons: 'Bunlar ise senin i\xe7in iki sevk d\xfc\u011fmesi! \u0130lki: "Sevk et" se\xe7ilen birimleri g\xf6reve g\xf6nderir. \u0130kincisi birinciyle ayn\u0131 \u015feyi yapar, ancak bir sonraki g\xf6reve gider. \u015eimdilik ilk d\xfc\u011fmeye t\u0131kla.',
-                            dispatch_menu_mission_general: "Burada g\xf6revin ad\u0131, adresi ve simgesi gibi genel g\xf6rev bilgilerini g\xf6rebilirsin. Daha \xf6nce kat\u0131ld\u0131\u011f\u0131n g\xf6revlerde, k\xfc\xe7\xfck y\u0131ld\u0131z\u0131n yerini k\xfc\xe7\xfck adam simgesi al\u0131r.",
-                            dispatch_menu_mission_progress: "Burada bu g\xf6revle ba\u015fa \xe7\u0131kmak i\xe7in ne kadar ilerleme kaydedildi\u011fini, ayr\u0131ca sahadaki personel say\u0131s\u0131n\u0131 ve g\xf6revin \xfcstesinden gelmek i\xe7in kalan s\xfcreyi g\xf6rebilirsin!",
-                            dispatch_menu_mission_specific: "Burada, hangi birimlerin \xe7a\u011fr\u0131ya yan\u0131t verdi\u011fi ve hangilerinin \xe7oktan sahada oldu\u011fu gibi g\xf6rev hakk\u0131nda daha fazla bilgi g\xf6rebilirsin.",
-                            dispatch_menu_vehicle_list: "Bu, mevcut ara\xe7lar\u0131n\u0131n listesidir. Burada ara\xe7lar\u0131 se\xe7ersin. \u015eimdi \xfczerine t\u0131klayarak arac\u0131n\u0131 se\xe7!"
+                            dispatch_menu: "Bu sevkiyat penceresidir. Burada ara\xe7lar\u0131 g\xf6revlere g\xf6nderebilirsiniz.",
+                            dispatch_menu_buttons: "G\xf6nder d\xfc\u011fmesine t\u0131klayarak bir arac\u0131 bir g\xf6reve g\xf6nderin. Daha fazla g\xf6reviniz oldu\u011funda, bir sonraki g\xf6reve gitmek i\xe7in yan\u0131ndaki d\xfc\u011fmeyi kullanabilirsiniz.",
+                            dispatch_menu_mission_general: 'Burada g\xf6revle ilgili genel bilgileri bulabilirsiniz. G\xf6reve dahil olmad\u0131\u011f\u0131n\u0131z s\xfcrece, g\xf6rev ad\u0131n\u0131n \xf6n\xfcnde <span class="glyphicon glyphicon-asterisk"></span>, ilk arac\u0131 g\xf6nderir g\xf6ndermez <span class="glyphicon glyphicon-user"></span> g\xf6r\xfcnt\xfclenir.',
+                            dispatch_menu_mission_progress: "Burada g\xf6revin ilerleyi\u015fini g\xf6rebilirsiniz. Personel sahaya girer girmez burada g\xf6r\xfcnt\xfclenir ve g\xf6revi tamamlamak i\xe7in hala ne kadar zamana ihtiya\xe7 oldu\u011funu g\xf6rebilirsiniz.",
+                            dispatch_menu_mission_specific: "Burada hangi ara\xe7lar\u0131n g\xf6reve do\u011fru yola \xe7\u0131kt\u0131\u011f\u0131n\u0131 veya g\xf6revde oldu\u011funu g\xf6rebilirsiniz. Bir arac\u0131n \xf6n\xfcndeki say\u0131, arac\u0131n konu\u015flanma durumunu g\xf6sterir.",
+                            dispatch_menu_vehicle_list: "Burada g\xf6rev i\xe7in mevcut t\xfcm ara\xe7lar\u0131 g\xf6rebilirsiniz. Yan\u0131ndaki onay kutusuna t\u0131klayarak bir ara\xe7 se\xe7in."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: '\u015eimdi olaylarla nas\u0131l ba\u015fa \xe7\u0131kaca\u011f\u0131m\u0131z\u0131 \xf6\u011frenelim. Bir "sevk et" d\xfc\u011fmesine t\u0131klayarak sevk etme men\xfcs\xfcn\xfc a\xe7!',
-                            first_mission: "Harika, ilk binan\u0131 in\u015fa ettin! Bak, ilk g\xf6revler geldi bile!"
+                            dispatch_button: '\xd6nce "Sevk Et" d\xfc\u011fmesine t\u0131klayarak g\xf6reve kat\u0131l\u0131n.',
+                            first_mission: "\u0130lk binan\u0131z haz\u0131r. Ayr\u0131ca ilk g\xf6revinizi de ald\u0131n\u0131z!"
                         },
                         mobile: {
-                            dispatch_button: '\u015eimdi olaylarla nas\u0131l ba\u015fa \xe7\u0131kaca\u011f\u0131m\u0131z\u0131 \xf6\u011frenelim. Bir "sevk et" d\xfc\u011fmesine t\u0131klayarak sevk etme men\xfcs\xfcn\xfc a\xe7!',
-                            first_mission: "Harika, ilk binan\u0131 in\u015fa ettin! Bak, ilk g\xf6revler geldi bile!"
+                            dispatch_button: '\xd6nce "Sevk Et" d\xfc\u011fmesine t\u0131klayarak g\xf6reve kat\u0131l\u0131n.',
+                            first_mission: "\u0130lk binan\u0131z haz\u0131r. Ayr\u0131ca ilk g\xf6revinizi de ald\u0131n\u0131z!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Harika, m\xfckemmel bir 112 Merkezi olma yolundas\u0131n! \u0130\u015fte sana ba\u015flamana yard\u0131mc\u0131 olmak i\xe7in %{coins} Alt\u0131n! </br> 112 Merkez ekibin"
+                        general: "Art\u0131k g\xf6revlerle kendi ba\u015f\u0131n\u0131za ilgilenmeye haz\u0131rs\u0131n\u0131z. G\xf6revlerinize ve geni\u015flemenize ba\u015flaman\u0131za yard\u0131mc\u0131 olmak i\xe7in %{coins} Alt\u0131n alacaks\u0131n\u0131z. \u0130yi \u015fanslar!"
                     },
                     mobile: {
-                        general: "Harika, m\xfckemmel bir 112 Merkezi olma yolundas\u0131n! \u0130\u015fte sana ba\u015flamana yard\u0131mc\u0131 olmak i\xe7in %{coins} Alt\u0131n! </br> 112 Merkez ekibin"
+                        general: "Art\u0131k g\xf6revlerle kendi ba\u015f\u0131n\u0131za ilgilenmeye haz\u0131rs\u0131n\u0131z. G\xf6revlerinize ve geni\u015flemenize ba\u015flaman\u0131za yard\u0131mc\u0131 olmak i\xe7in %{coins} Alt\u0131n alacaks\u0131n\u0131z. \u0130yi \u015fanslar!"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Sorular\u0131n varsa oyun i\xe7i SSS b\xf6l\xfcm\xfcne ba\u015fvurabilir veya oyun forumlar\u0131n\u0131 veya facebook sayfam\u0131z\u0131 ziyaret edebilirsin!",
-                        general: "Bir sonraki ad\u0131m olarak, bir sevk merkezi ve sonra m\xfcmk\xfcn olan en k\u0131sa s\xfcrede yeni istasyonlar in\u015fa etmeni \xf6neririz, \xe7\xfcnk\xfc maksimum g\xf6rev say\u0131s\u0131 farkl\u0131 tipteki istasyonlardan (polis, itfaiye, ambulans) en fazla olan\u0131n 1 fazlas\u0131na e\u015fittir; \xf6r. 5 itfaiye ve 3 ambulans istasyonu = 6 g\xf6rev demektir.",
-                        join_alliance: "Ayr\u0131ca, bir ittifaka kat\u0131lmak \xf6zellikle ba\u015flang\u0131\xe7ta sana \xe7ok yard\u0131mc\u0131 olacakt\u0131r, bu y\xfczden bunu da tavsiye ederiz.",
-                        summary: "\u0130\u015fte bunlar 112 Merkez'in temel \xf6zellikleri! G\xf6revleri yerine getir, kredi al, daha fazla birim sat\u0131n al ve bunlar\u0131 tekrarla. Oyunda iyi e\u011flenceler! </br> 112 Merkez ekibin"
+                        contact: "\u0130stasyonlar\u0131n\u0131z\u0131 y\xfckseltirseniz, yeni ara\xe7lar i\xe7in yer kazan\u0131rs\u0131n\u0131z.",
+                        general: "Bir g\xf6revi bitirdi\u011finizde kredi kazan\u0131rs\u0131n\u0131z. Kredi kazand\u0131k\xe7a terfiye daha da yakla\u015f\u0131rs\u0131n\u0131z.",
+                        join_alliance: "Terfiler ve bina istasyonlar\u0131, g\xf6rev t\xfcrleri veya ara\xe7lar gibi yeni \xf6zelliklerin kilidini a\xe7ar.",
+                        summary: "G\xf6revleri ba\u015fkalar\u0131yla birlikte \xe7\xf6zmek i\xe7in bir ittifaka kat\u0131labilirsiniz. Ayr\u0131ca t\xfcm \xfcyelerin kat\u0131labilece\u011fi d\xfczenli ittifak etkinlikleri de var!"
                     },
                     mobile: {
-                        contact: "Sorular\u0131n varsa oyun i\xe7i SSS b\xf6l\xfcm\xfcne ba\u015fvurabilir veya oyun forumlar\u0131n\u0131 veya facebook sayfam\u0131z\u0131 ziyaret edebilirsin!",
-                        general: "Bir sonraki ad\u0131m olarak, bir sevk merkezi ve sonra m\xfcmk\xfcn olan en k\u0131sa s\xfcrede yeni istasyonlar in\u015fa etmeni \xf6neririz, \xe7\xfcnk\xfc maksimum g\xf6rev say\u0131s\u0131 farkl\u0131 tipteki istasyonlardan (polis, itfaiye, ambulans) en fazla olan\u0131n 1 fazlas\u0131na e\u015fittir; \xf6r. 5 itfaiye ve 3 ambulans istasyonu = 6 g\xf6rev demektir.",
-                        join_alliance: "Ayr\u0131ca, bir ittifaka kat\u0131lmak \xf6zellikle ba\u015flang\u0131\xe7ta sana \xe7ok yard\u0131mc\u0131 olacakt\u0131r, bu y\xfczden bunu da tavsiye ederiz.",
-                        summary: "\u0130\u015fte bunlar 112 Merkez'in temel \xf6zellikleri! G\xf6revleri yerine getir, kredi al, daha fazla birim sat\u0131n al ve bunlar\u0131 tekrarla. Oyunda iyi e\u011flenceler! </br> 112 Merkez ekibin"
+                        contact: "\u0130stasyonlar\u0131n\u0131z\u0131 y\xfckseltirseniz, yeni ara\xe7lar i\xe7in yer kazan\u0131rs\u0131n\u0131z.",
+                        general: "Bir g\xf6revi bitirdi\u011finizde kredi kazan\u0131rs\u0131n\u0131z. Kredi kazand\u0131k\xe7a terfiye daha da yakla\u015f\u0131rs\u0131n\u0131z.",
+                        join_alliance: "Terfiler ve bina istasyonlar\u0131, g\xf6rev t\xfcrleri veya ara\xe7lar gibi yeni \xf6zelliklerin kilidini a\xe7ar.",
+                        summary: "G\xf6revleri ba\u015fkalar\u0131yla birlikte \xe7\xf6zmek i\xe7in bir ittifaka kat\u0131labilirsiniz. Ayr\u0131ca t\xfcm \xfcyelerin kat\u0131labilece\u011fi d\xfczenli ittifak etkinlikleri de var!"
                     }
                 }
             },
@@ -11325,80 +11042,80 @@ Object.values || (Object.values = function (e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: 'A seguir, d\xe1 um nome \xe0 tua nova esta\xe7\xe3o! Escolhe algo que seja reconhec\xedvel e expans\xedvel! Por ex. \xabBombeiros #0001". Quando terminares, clica em \xabSeguinte\xbb!',
-                            build_with_credits: "Agora, constr\xf3i o teu edif\xedcio com cr\xe9ditos!",
-                            new_building: "Clica em \xabNovo Edif\xedcio\xbb!",
-                            select_building: "Primeiro, escolhe o tipo de edif\xedcio com que desejas come\xe7ar. Recomendamos vivamente que comeces pelos bombeiros! De qualquer forma, recomendamos que comeces com uma pequena esta\xe7\xe3o!",
-                            select_position: "Move o marcador azul para onde desejas construir a tua primeira esta\xe7\xe3o!"
+                            add_name: "Seleccione um nome para a sua esta\xe7\xe3o. Pode voltar a dar-lhe um nome mais tarde.",
+                            build_with_credits: "Para construir uma esta\xe7\xe3o, precisas de cr\xe9ditos, a moeda do jogo. Podes ganhar cr\xe9ditos atrav\xe9s de miss\xf5es, logins di\xe1rios, tarefas e eventos.",
+                            new_building: "Inicie o processo de constru\xe7\xe3o do seu edificio.",
+                            select_building: "Decida se quer construir um quartel de bombeiros ou uma esquadra de pol\xedcia. No in\xedcio, as esquadras pequenas s\xe3o suficientes. Mais tarde, pode transform\xe1-los em esquadras normais.",
+                            select_position: "Desloque o marcador para o local exato do seu edificio."
                         },
-                        pick_location: "Primeiro, escolhe um local para come\xe7ar! Introduz o nome da localiza\xe7\xe3o onde desejas come\xe7ar na barra de pesquisa ou encontra-a no mapa por ti mesmo! Que tal a tua cidade natal?",
-                        welcome: "Ol\xe1, bem vindo ao Jogo Operador 112!  Vou dar-te algumas instru\xe7\xf5es para te ajudar a come\xe7ares bem a tua carreira nos servi\xe7os de emerg\xeancia!"
+                        pick_location: "Escolha um local onde quer construir o seu primeiro edificio.",
+                        welcome: "Bem-vindo ao Jogo Operador 112! Trabalhando num centro de comando de servi\xe7os de emerg\xeancia, lidas com chamadas de emerg\xeancia para ajudar e proteger o p\xfablico. Para isso, constr\xf3i eedificios e envia v\xe1rios tipos de ve\xedculos e pessoal treinado para uma variedade de miss\xf5es."
                     },
                     mobile: {
                         build_building: {
-                            add_name: 'A seguir, d\xe1 um nome \xe0 tua nova esta\xe7\xe3o! Escolhe algo que seja reconhec\xedvel e expans\xedvel! Por ex. \xabBombeiros #0001". Quando terminares, clica em \xabSeguinte\xbb!',
-                            build_with_credits: "Agora, constr\xf3i o teu edif\xedcio com cr\xe9ditos!",
-                            new_building: "Primeiro, vamos escolher um local para come\xe7ares e construires o teu primeiro edif\xedcio! <br /> <br /> Para faz\xea-lo, clica em \xabNovo edif\xedcio\xbb!",
-                            select_building: "Primeiro, escolhe o tipo de edif\xedcio com que desejas come\xe7ar. Recomendamos vivamente que comeces pelos bombeiros! De qualquer forma, recomendamos que comeces com uma pequena esta\xe7\xe3o!"
+                            add_name: "Seleccione um nome para a sua esta\xe7\xe3o. Pode voltar a dar-lhe um nome mais tarde.",
+                            build_with_credits: "Para construir uma esta\xe7\xe3o, precisas de cr\xe9ditos, a moeda do jogo. Podes ganhar cr\xe9ditos atrav\xe9s de miss\xf5es, logins di\xe1rios, tarefas e eventos.",
+                            new_building: "Comece por construir a seu primeiro edificio. Pode selecionar a sua localiza\xe7\xe3o introduzindo-a manualmente ou movendo o marcador de localiza\xe7\xe3o no mapa.Dependendo do seu sistema operativo, pode ter de manter o marcador premido durante algum tempo antes de o poder mover.",
+                            select_building: "Decida se quer construir um quartel de bombeiros ou uma esquadra de pol\xedcia. No in\xedcio, as esquadras pequenas s\xe3o suficientes. Mais tarde, pode transform\xe1-los em esquadras normais."
                         },
-                        welcome: "Ol\xe1, bem vindo ao Jogo Operador 112!  Vou dar-te algumas instru\xe7\xf5es para te ajudar a come\xe7ares bem a tua carreira nos servi\xe7os de emerg\xeancia!"
+                        welcome: "Bem-vindo ao Jogo Operador 112! Trabalhando num centro de comando de servi\xe7os de emerg\xeancia, lidas com chamadas de emerg\xeancia para ajudar e proteger o p\xfablico. Para isso, constr\xf3i eedificios e envia v\xe1rios tipos de ve\xedculos e pessoal treinado para uma variedade de miss\xf5es."
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Este \xe9 o menu de opera\xe7\xe3o. A partir daqui envias as tuas unidades em miss\xf5es!",
-                            dispatch_menu_buttons: "Estes s\xe3o os teus dois bot\xf5es de opera\xe7\xe3o! O primeiro: \xabEnviar\xbb envia as unidades selecionadas para a miss\xe3o. O segundo bot\xe3o faz a mesma coisa que o primeiro, mas passa para a miss\xe3o seguinte. Por agora, clica no primeiro bot\xe3o.",
-                            dispatch_menu_mission_general: "Aqui podes ver as informa\xe7\xf5es gerais da miss\xe3o, ou seja, o nome, a morada e o \xedcone da miss\xe3o. O pequeno \xedcone do boneco aparece e substitui uma pequena estrela nas miss\xf5es em que j\xe1 participaste.",
-                            dispatch_menu_mission_progress: "Aqui podes ver quanto progresso j\xe1 foi feito para lidar com esta miss\xe3o, assim como o n\xfamero de elementos no local e o tempo restante para cumprir a miss\xe3o!",
-                            dispatch_menu_mission_specific: "Aqui podes ver mais informa\xe7\xe3o sobre a miss\xe3o, que unidades est\xe3o a responder \xe0 chamada e quais as j\xe1 se encontram no local.",
-                            dispatch_menu_vehicle_list: "Esta \xe9 a lista dos teus ve\xedculos dispon\xedveis. Selecionas dentre estes ve\xedculos. Agora, clica e seleciona o teu ve\xedculo!"
+                            dispatch_menu: "Esta \xe9 a janela de envio. Aqui pode enviar ve\xedculos para miss\xf5es.",
+                            dispatch_menu_buttons: "Envia um ve\xedculo para uma miss\xe3o clicando no bot\xe3o de envio. Assim que tiveres mais miss\xf5es, podes usar o bot\xe3o ao lado para ires para a pr\xf3xima miss\xe3o.",
+                            dispatch_menu_mission_general: 'Aqui pode encontrar as informa\xe7\xf5es gerais sobre a miss\xe3o. Desde que n\xe3o esteja envolvido na miss\xe3o, <span class="glyphicon glyphicon-asterisk"></span> ir\xe1 aparecer \xe0 frente da miss\xe3o, <span class="glyphicon glyphicon-user"></span> uma vezque enviou o primeiro ve\xedculo.',
+                            dispatch_menu_mission_progress: "Aqui pode ver o progresso da miss\xe3o. Aqui pode ver quais os ve\xedculos que est\xe3o no local e quanto tempo falta para o fim da miss\xe3o.",
+                            dispatch_menu_mission_specific: "Aqui pode ver quais os ve\xedculos que est\xe3o a caminho ou no local da miss\xe3o. O n\xfamero \xe0 frente do teu ve\xedculo mostra o seu estado",
+                            dispatch_menu_vehicle_list: "Aqui pode ver todos os ve\xedculos dispon\xedveis para a miss\xe3o. Seleccione um ve\xedculo clicando na caixa de verifica\xe7\xe3o ao lado do mesmo."
                         },
                         mobile: {
-                            dispatch_menu: "Este \xe9 o menu de opera\xe7\xe3o. A partir daqui envias as tuas unidades em miss\xf5es!",
-                            dispatch_menu_buttons: "Estes s\xe3o os teus dois bot\xf5es de opera\xe7\xe3o! O primeiro: \xabEnviar\xbb envia as unidades selecionadas para a miss\xe3o. O segundo bot\xe3o faz a mesma coisa que o primeiro, mas passa para a miss\xe3o seguinte. Por agora, clica no primeiro bot\xe3o.",
-                            dispatch_menu_mission_general: "Aqui podes ver as informa\xe7\xf5es gerais da miss\xe3o, ou seja, o nome, a morada e o \xedcone da miss\xe3o. O pequeno \xedcone do boneco aparece e substitui uma pequena estrela nas miss\xf5es em que j\xe1 participaste.",
-                            dispatch_menu_mission_progress: "Aqui podes ver quanto progresso j\xe1 foi feito para lidar com esta miss\xe3o, assim como o n\xfamero de elementos no local e o tempo restante para cumprir a miss\xe3o!",
-                            dispatch_menu_mission_specific: "Aqui podes ver mais informa\xe7\xe3o sobre a miss\xe3o, que unidades est\xe3o a responder \xe0 chamada e quais as j\xe1 se encontram no local.",
-                            dispatch_menu_vehicle_list: "Esta \xe9 a lista dos teus ve\xedculos dispon\xedveis. Selecionas dentre estes ve\xedculos. Agora, clica e seleciona o teu ve\xedculo!"
+                            dispatch_menu: "Esta \xe9 a janela de envio. Aqui pode enviar ve\xedculos para miss\xf5es.",
+                            dispatch_menu_buttons: "Envia um ve\xedculo para uma miss\xe3o clicando no bot\xe3o de envio. Assim que tiveres mais miss\xf5es, podes usar o bot\xe3o ao lado para ires para a pr\xf3xima miss\xe3o.",
+                            dispatch_menu_mission_general: 'Aqui pode encontrar as informa\xe7\xf5es gerais sobre a miss\xe3o. Desde que n\xe3o esteja envolvido na miss\xe3o, <span class="glyphicon glyphicon-asterisk"></span> ir\xe1 aparecer \xe0 frente da miss\xe3o, <span class="glyphicon glyphicon-user"></span> uma vezque enviou o primeiro ve\xedculo.',
+                            dispatch_menu_mission_progress: "Aqui pode ver o progresso da miss\xe3o. Aqui pode ver quais os ve\xedculos que est\xe3o no local e quanto tempo falta para o fim da miss\xe3o.",
+                            dispatch_menu_mission_specific: "Aqui pode ver quais os ve\xedculos que est\xe3o a caminho ou no local da miss\xe3o. O n\xfamero \xe0 frente do teu ve\xedculo mostra o seu estado",
+                            dispatch_menu_vehicle_list: "Aqui pode ver todos os ve\xedculos dispon\xedveis para a miss\xe3o. Seleccione um ve\xedculo clicando na caixa de verifica\xe7\xe3o ao lado do mesmo."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "Agora iremos aprender como lidar com incidentes. Abre o menu do operador clicando num bot\xe3o \xabopera\xe7\xe3o\xbb!",
-                            first_mission: "Fant\xe1stico, constru\xedste o teu primeiro edif\xedcio! V\xeas, comunicaram-te as primeiras miss\xf5es!"
+                            dispatch_button: 'Clique no bot\xe3o "Despachar" para concluir a miss\xe3o.',
+                            first_mission: "O teu primeiro edif\xedcio est\xe1 pronto. Tamb\xe9m recebeste a tua primeira miss\xe3o!"
                         },
                         mobile: {
-                            dispatch_button: "Agora iremos aprender como lidar com incidentes. Abre o menu do operador clicando num bot\xe3o \xabopera\xe7\xe3o\xbb!",
-                            first_mission: "Fant\xe1stico, constru\xedste o teu primeiro edif\xedcio! V\xeas, comunicaram-te as primeiras miss\xf5es!"
+                            dispatch_button: 'Clique no bot\xe3o "Despachar" para concluir a miss\xe3o.',
+                            first_mission: "O teu primeiro edif\xedcio est\xe1 pronto. Tamb\xe9m recebeste a tua primeira miss\xe3o!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Muito bem, est\xe1s a caminho de te tornares um fant\xe1stico Operador 112! Aqui tens %{coins} Moedas para um apoio inicial! </br> A tua Equipa do Jogo Operador 112"
+                        general: "Agora, est\xe1 pronto para tratar da sua miss\xe3o sozinho. Para o ajudar a come\xe7ar as suas miss\xf5es e as suas expans\xf5es, recebe %{coins} moedas. Boa sorte!"
                     },
                     mobile: {
-                        general: "Muito bem, est\xe1s a caminho de te tornares um fant\xe1stico Operador 112! Aqui tens %{coins} Moedas para um apoio inicial! </br> A tua Equipa do Jogo Operador 112"
+                        general: "Agora, est\xe1 pronto para tratar da sua miss\xe3o sozinho. Para o ajudar a come\xe7ar as suas miss\xf5es e as suas expans\xf5es, recebe %{coins} moedas. Boa sorte!"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Se tiveres quest\xf5es, podes consultar as Perguntas Frequentes do jogo ou visitar os f\xf3runs do jogo ou a nossa p\xe1gina do Facebook!",
-                        general: "Para o pr\xf3ximo passo, recomendamos que construas um centro de opera\xe7\xf5es e a seguir, assim que poss\xedvel, novas esta\xe7\xf5es, j\xe1 que o n\xfamero m\xe1ximo de miss\xf5es corresponde ao maior n\xfamero de quaisquer esta\xe7\xf5es de um tipo diferente (pol\xedcia, bombeiros, ambul\xe2ncias) mais 1; por exemplo, 5 bombeiros e 3 esta\xe7\xf5es de ambul\xe2ncias = 6 miss\xf5es.",
-                        join_alliance: "Adicionalmente, seria muito vantajoso para ti entrares numa alian\xe7a, especialmente no in\xedcio, por isso tamb\xe9m recomendamos que o fa\xe7as.",
+                        contact: "Se atualizar o seu edificio, receber\xe1 mais espa\xe7o para novos ve\xedculos.",
+                        general: "Receber\xe1 cr\xe9ditos por terminar uma miss\xe3o. Ao ganhar cr\xe9ditos, chegar\xe1 mais perto da sua pr\xf3xima promo\xe7\xe3o.",
+                        join_alliance: "Ser promovido a um novo posto e construir edificioc, liberta novas caracter\xedsticas, como tipos de miss\xf5es e ve\xedculos.",
                         radio: {
                             helpshift_id: "1540",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             short: "O r\xe1dio exibe atualiza\xe7\xf5es de estado dos teus ve\xedculos. Para mais informa\xe7\xe3o detalhada sobre cada estado, clica aqui."
                         },
-                        summary: "Isto \xe9 o b\xe1sico do Jogo Operador 112! Completa miss\xf5es, ganha cr\xe9ditos, compra mais unidades, faz tudo outra vez. Diverte-te a jogar! </br> A tua Equipa do Jogo Operador 112"
+                        summary: "Pode juntar-se a uma alian\xe7a para participar em miss\xf5es com outros jogadores. H\xe1 tamb\xe9m eventos regulares da alian\xe7a nos quais pode participar."
                     },
                     mobile: {
-                        contact: "Se tiveres quest\xf5es, podes consultar as Perguntas Frequentes do jogo ou visitar os f\xf3runs do jogo ou a nossa p\xe1gina do Facebook!",
-                        general: "Para o pr\xf3ximo passo, recomendamos que construas um centro de opera\xe7\xf5es e a seguir, assim que poss\xedvel, novas esta\xe7\xf5es, j\xe1 que o n\xfamero m\xe1ximo de miss\xf5es corresponde ao maior n\xfamero de quaisquer esta\xe7\xf5es de um tipo diferente (pol\xedcia, bombeiros, ambul\xe2ncias) mais 1; por exemplo, 5 bombeiros e 3 esta\xe7\xf5es de ambul\xe2ncias = 6 miss\xf5es.",
-                        join_alliance: "Adicionalmente, seria muito vantajoso para ti entrares numa alian\xe7a, especialmente no in\xedcio, por isso tamb\xe9m recomendamos que o fa\xe7as.",
-                        summary: "Isto \xe9 o b\xe1sico do Jogo Operador 112! Completa miss\xf5es, ganha cr\xe9ditos, compra mais unidades, faz tudo outra vez. Diverte-te a jogar! </br> A tua Equipa do Jogo Operador 112"
+                        contact: "Se atualizar o seu edificio, receber\xe1 mais espa\xe7o para novos ve\xedculos.",
+                        general: "Receber\xe1 cr\xe9ditos por terminar uma miss\xe3o. Ao ganhar cr\xe9ditos, chegar\xe1 mais perto da sua pr\xf3xima promo\xe7\xe3o.",
+                        join_alliance: "Ser promovido a um novo posto e construir edificioc, liberta novas caracter\xedsticas, como tipos de miss\xf5es e ve\xedculos.",
+                        summary: "Pode juntar-se a uma alian\xe7a para participar em miss\xf5es com outros jogadores. H\xe1 tamb\xe9m eventos regulares da alian\xe7a nos quais pode participar."
                     },
                     reminder: {
                         join_alliance: "Aderir a uma alian\xe7a tem muitos benef\xedcios: recompensas extra para completar miss\xf5es da alian\xe7a, apoio de membros experientes para miss\xf5es dif\xedceis e pode utilizar instala\xe7\xf5es de outros membros como hospitais e escolas! Prima o bot\xe3o para se juntar a uma alian\xe7a agora!"
@@ -11423,33 +11140,10 @@ Object.values || (Object.values = function (e) {
                 beginner: {
                     building: {
                         browser: {
-                            build_building: {
-                                add_name: 'A seguir, d\xe1 um nome \xe0 tua nova esta\xe7\xe3o! Escolhe algo que seja reconhec\xedvel e expans\xedvel! Por ex. \xabEsquadra de Pol\xedcia #0001". Quando terminares, clica em \xabSeguinte\xbb!',
-                                select_building: "Primeiro, escolhe o tipo de edif\xedcio com que desejas come\xe7ar. Recomendamos vivamente que comeces pela pol\xedcia! De qualquer forma, recomendamos que comeces com uma pequena esta\xe7\xe3o!"
-                            },
-                            welcome: "Ol\xe1, bem vindo ao Jogo Operador 112 Pol\xedcia!  Vou dar-te algumas instru\xe7\xf5es para te ajudar a come\xe7ares bem a tua carreira nos servi\xe7os de emerg\xeancia!"
+                            welcome: "Bem-vindo ao Jogo Operador 112 Pol\xedcia! Trabalhando num centro de comando de servi\xe7os de emerg\xeancia, lidas com chamadas de emerg\xeancia para ajudar e proteger o p\xfablico. Para isso, constr\xf3i eedificios e envia v\xe1rios tipos de ve\xedculos e pessoal treinado para uma variedade de miss\xf5es."
                         },
                         mobile: {
-                            build_building: {
-                                add_name: 'A seguir, d\xe1 um nome \xe0 tua nova esta\xe7\xe3o! Escolhe algo que seja reconhec\xedvel e expans\xedvel! Por ex. \xabEsquadra de Pol\xedcia #0001". Quando terminares, clica em \xabSeguinte\xbb!'
-                            },
-                            welcome: "Ol\xe1, bem vindo ao Jogo Operador 112 Pol\xedcia!  Vou dar-te algumas instru\xe7\xf5es para te ajudar a come\xe7ares bem a tua carreira nos servi\xe7os de emerg\xeancia!"
-                        }
-                    },
-                    rewards: {
-                        browser: {
-                            general: "Muito bem, est\xe1s a caminho de te tornares um fant\xe1stico Operador 112 Pol\xedcia! Aqui tens %{coins} Moedas para um apoio inicial! </br> A tua Equipa do Jogo Operador 112 - Pol\xedcia"
-                        },
-                        mobile: {
-                            general: "Muito bem, est\xe1s a caminho de te tornares um fant\xe1stico Operador 112 Pol\xedcia! Aqui tens %{coins} Moedas para um apoio inicial! </br> A tua Equipa do Jogo Operador 112 - Pol\xedcia"
-                        }
-                    },
-                    tips: {
-                        browser: {
-                            summary: "Isto \xe9 o b\xe1sico do Jogo Operador 112 - Pol\xedcia! Completa miss\xf5es, ganha cr\xe9ditos, compra mais unidades, faz tudo outra vez. Diverte-te a jogar! </br> A tua Equipa do Jogo Operador 112 - Pol\xedcia"
-                        },
-                        mobile: {
-                            summary: "Isto \xe9 o b\xe1sico do Jogo Operador 112 - Pol\xedcia! Completa miss\xf5es, ganha cr\xe9ditos, compra mais unidades, faz tudo outra vez. Diverte-te a jogar! </br> A tua Equipa do Jogo Operador 112 - Pol\xedcia"
+                            welcome: "Bem-vindo ao Jogo Operador 112 Pol\xedcia! Trabalhando num centro de comando de servi\xe7os de emerg\xeancia, lidas com chamadas de emerg\xeancia para ajudar e proteger o p\xfablico. Para isso, constr\xf3i eedificios e envia v\xe1rios tipos de ve\xedculos e pessoal treinado para uma variedade de miss\xf5es."
                         }
                     }
                 }
@@ -11745,75 +11439,75 @@ Object.values || (Object.values = function (e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: 'Depois, d\xea um nome para a sua esta\xe7\xe3o! Escolha um nome simples e f\xe1cil de ser lembrado! Por exemplo: \u201cEsta\xe7\xe3o de inc\xeandios 0001". Quando tiver terminado, clique em \u201cPr\xf3ximo\u201d!',
-                            build_with_credits: "Agora, construa o seu edif\xedcio com cr\xe9ditos!",
-                            new_building: "Clique em \u201cNovo edif\xedcio\u201d!",
-                            select_building: "Primeiro, escolha o tipo de edif\xedcio com o qual voc\xea quer come\xe7ar. Sugerimos que voc\xea comece com atendimentos a inc\xeandios! De qualquer forma, \xe9 bom que voc\xea comece com uma esta\xe7\xe3o pequena!",
-                            select_position: "Mova o marcador azul para onde voc\xea quer construir a sua primeira esta\xe7\xe3o!"
+                            add_name: "Escolha um nome para sua esta\xe7\xe3o. Voc\xea pode renome\xe1-la mais tarde.",
+                            build_with_credits: "Para construir uma esta\xe7\xe3o, voc\xea precisa de cr\xe9ditos, a moeda do jogo. Voc\xea pode ganhar cr\xe9ditos por meio de miss\xf5es, logins di\xe1rios, tarefas e eventos.",
+                            new_building: "Inicie o processo de constru\xe7\xe3o de sua esta\xe7\xe3o.",
+                            select_building: "Decida se deseja construir um corpo de bombeiros ou uma delegacia de pol\xedcia. No in\xedcio, pequenas esta\xe7\xf5es s\xe3o suficientes. Voc\xea pode atualiz\xe1-las para esta\xe7\xf5es normais mais tarde.",
+                            select_position: "Mova o marcador de localiza\xe7\xe3o para o local onde voc\xea deseja que a esta\xe7\xe3o fique."
                         },
-                        pick_location: "Primeiro, escolha um lugar para come\xe7ar! Digite na barra de pesquisa o nome do local em que voc\xea quer come\xe7ar ou encontre-o no mapa! Que tal a sua cidade?",
-                        welcome: "Ol\xe1! Boas-vindas a Operador 193!  Eu vou lhe ensinar algumas coisas para que voc\xea comece bem a sua carreira nos servi\xe7os de emerg\xeancia!"
+                        pick_location: "Escolha um local onde voc\xea deseja construir sua primeira esta\xe7\xe3o.",
+                        welcome: "Bem-vindo ao Operador 193! Trabalhando em um centro de despacho para servi\xe7os de emerg\xeancia, voc\xea lida com chamadas de emerg\xeancia para ajudar e proteger o p\xfablico. Para isso, voc\xea constr\xf3i esta\xe7\xf5es e envia v\xe1rios tipos de ve\xedculos e pessoal treinado para v\xe1rias miss\xf5es."
                     },
                     mobile: {
                         build_building: {
-                            add_name: 'Depois, d\xea um nome para a sua esta\xe7\xe3o! Escolha um nome simples e f\xe1cil de ser lembrado! Por exemplo: \u201cEsta\xe7\xe3o de inc\xeandios 0001". Quando tiver terminado, clique em \u201cPr\xf3ximo\u201d!',
-                            build_with_credits: "Agora, construa o seu edif\xedcio com cr\xe9ditos!",
-                            new_building: 'Primeiro, vamos escolher um lugar para come\xe7ar e construir o seu primeiro edif\xedcio! <br /> <br /> Para fazer isso, clique em \u201cNovo edif\xedcio"!',
-                            select_building: "Primeiro, escolha o tipo de edif\xedcio com o qual voc\xea quer come\xe7ar. Sugerimos que voc\xea comece com atendimentos a inc\xeandios! De qualquer forma, \xe9 bom que voc\xea comece com uma esta\xe7\xe3o pequena!"
+                            add_name: "Escolha um nome para sua esta\xe7\xe3o. Voc\xea pode renome\xe1-la mais tarde.",
+                            build_with_credits: "Para construir uma esta\xe7\xe3o, voc\xea precisa de cr\xe9ditos, a moeda do jogo. Voc\xea pode ganhar cr\xe9ditos por meio de miss\xf5es, logins di\xe1rios, tarefas e eventos.",
+                            new_building: "Comece construindo sua primeira esta\xe7\xe3o. Voc\xea pode escolher seu local inserindo-o manualmente ou movendo o marcador de local no mapa. Dependendo do seu sistema operacional, talvez seja necess\xe1rio manter o marcador pressionado por algum tempo antes de poder mov\xea-lo.",
+                            select_building: "Decida se deseja construir um corpo de bombeiros ou uma delegacia de pol\xedcia. No in\xedcio, pequenas esta\xe7\xf5es s\xe3o suficientes. Voc\xea pode atualiz\xe1-las para esta\xe7\xf5es normais mais tarde."
                         },
-                        welcome: "Ol\xe1! Boas-vindas a Operador 193!  Eu vou lhe ensinar algumas coisas para que voc\xea comece bem a sua carreira nos servi\xe7os de emerg\xeancia!"
+                        welcome: "Bem-vindo ao Operador 193! Trabalhando em um centro de despacho para servi\xe7os de emerg\xeancia, voc\xea lida com chamadas de emerg\xeancia para ajudar e proteger o p\xfablico. Para isso, voc\xea constr\xf3i esta\xe7\xf5es e envia v\xe1rios tipos de ve\xedculos e pessoal treinado para v\xe1rias miss\xf5es."
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Este \xe9 o menu de atendimento. \xc9 a partir daqui que voc\xea envia as suas unidades para as miss\xf5es!",
-                            dispatch_menu_buttons: "Estes s\xe3o os seus dois bot\xf5es de atendimento! O primeiro: \u201cAtender\u201d envia as unidades selecionadas para a miss\xe3o. O segundo faz a mesma coisa que o primeiro, mas leva \xe0 miss\xe3o seguinte. Por enquanto, clique no primeiro bot\xe3o.",
-                            dispatch_menu_mission_general: "Aqui voc\xea acessa as informa\xe7\xf5es gerais da miss\xe3o: o nome, o endere\xe7o e o \xedcone da miss\xe3o. Nas miss\xf5es das quais voc\xea j\xe1 participou, o \xedcone do homenzinho aparece e substitui a estrelinha.",
-                            dispatch_menu_mission_progress: "Aqui voc\xea pode ver o progresso da miss\xe3o, o n\xfamero de atendentes no local e o tempo que resta para o encerramento da miss\xe3o!",
-                            dispatch_menu_mission_specific: "Aqui voc\xea pode ter mais informa\xe7\xf5es sobre a miss\xe3o, quais unidades est\xe3o atendendo ao chamado e quais j\xe1 est\xe3o no local.",
-                            dispatch_menu_vehicle_list: "Esta \xe9 a sua lista de ve\xedculos dispon\xedveis. Voc\xea seleciona os ve\xedculos aqui. Agora, selecione o seu ve\xedculo clicando nele!"
+                            dispatch_menu: "Esta \xe9 a janela de despacho. Aqui voc\xea pode enviar ve\xedculos em miss\xf5es.",
+                            dispatch_menu_buttons: "Envie um ve\xedculo para uma miss\xe3o clicando no bot\xe3o de envio. Assim que voc\xea tiver mais miss\xf5es, poder\xe1 usar o bot\xe3o ao lado para ir para a pr\xf3xima miss\xe3o.",
+                            dispatch_menu_mission_general: 'Aqui voc\xea pode encontrar informa\xe7\xf5es gerais sobre a miss\xe3o. Enquanto voc\xea n\xe3o estiver envolvido na miss\xe3o, <span class="glyphicon glyphicon-asterisk"></span> ser\xe1 exibido na frente do nome da miss\xe3o, <span class="glyphicon glyphicon-user"></span> assim que voc\xea enviar o primeiro ve\xedculo.',
+                            dispatch_menu_mission_progress: "Aqui voc\xea pode ver o progresso da miss\xe3o. Assim que a equipe estiver no local, ela ser\xe1 exibida aqui e voc\xea poder\xe1 ver quanto tempo ainda \xe9 necess\xe1rio para concluir a miss\xe3o.",
+                            dispatch_menu_mission_specific: "Aqui voc\xea pode ver quais ve\xedculos est\xe3o a caminho ou na miss\xe3o. O n\xfamero na frente de um ve\xedculo indica seu status de implanta\xe7\xe3o.",
+                            dispatch_menu_vehicle_list: "Aqui voc\xea pode ver todos os ve\xedculos dispon\xedveis para a miss\xe3o. Selecione um ve\xedculo clicando na caixa de sele\xe7\xe3o ao lado dele."
                         },
                         mobile: {
-                            dispatch_menu: "Este \xe9 o menu de atendimento. \xc9 a partir daqui que voc\xea envia as suas unidades para as miss\xf5es!",
-                            dispatch_menu_buttons: "Estes s\xe3o os seus dois bot\xf5es de atendimento! O primeiro: \u201cAtender\u201d envia as unidades selecionadas para a miss\xe3o. O segundo faz a mesma coisa que o primeiro, mas leva \xe0 miss\xe3o seguinte. Por enquanto, clique no primeiro bot\xe3o.",
-                            dispatch_menu_mission_general: "Aqui voc\xea acessa as informa\xe7\xf5es gerais da miss\xe3o: o nome, o endere\xe7o e o \xedcone da miss\xe3o. Nas miss\xf5es das quais voc\xea j\xe1 participou, o \xedcone do homenzinho aparece e substitui a estrelinha.",
-                            dispatch_menu_mission_progress: "Aqui voc\xea pode ver o progresso da miss\xe3o, o n\xfamero de atendentes no local e o tempo que resta para o encerramento da miss\xe3o!",
-                            dispatch_menu_mission_specific: "Aqui voc\xea pode ter mais informa\xe7\xf5es sobre a miss\xe3o, quais unidades est\xe3o atendendo ao chamado e quais j\xe1 est\xe3o no local.",
-                            dispatch_menu_vehicle_list: "Esta \xe9 a sua lista de ve\xedculos dispon\xedveis. Voc\xea seleciona os ve\xedculos aqui. Agora, selecione o seu ve\xedculo clicando nele!"
+                            dispatch_menu: "Esta \xe9 a janela de despacho. Aqui voc\xea pode enviar ve\xedculos em miss\xf5es.",
+                            dispatch_menu_buttons: "Envie um ve\xedculo para uma miss\xe3o clicando no bot\xe3o de envio. Assim que voc\xea tiver mais miss\xf5es, poder\xe1 usar o bot\xe3o ao lado para ir para a pr\xf3xima miss\xe3o.",
+                            dispatch_menu_mission_general: 'Aqui voc\xea pode encontrar informa\xe7\xf5es gerais sobre a miss\xe3o. Enquanto voc\xea n\xe3o estiver envolvido na miss\xe3o, <span class="glyphicon glyphicon-asterisk"></span> ser\xe1 exibido na frente do nome da miss\xe3o, <span class="glyphicon glyphicon-user"></span> assim que voc\xea enviar o primeiro ve\xedculo.',
+                            dispatch_menu_mission_progress: "Aqui voc\xea pode ver o progresso da miss\xe3o. Assim que a equipe estiver no local, ela ser\xe1 exibida aqui e voc\xea poder\xe1 ver quanto tempo ainda \xe9 necess\xe1rio para concluir a miss\xe3o.",
+                            dispatch_menu_mission_specific: "Aqui voc\xea pode ver quais ve\xedculos est\xe3o a caminho ou na miss\xe3o. O n\xfamero na frente de um ve\xedculo indica seu status de implanta\xe7\xe3o.",
+                            dispatch_menu_vehicle_list: "Aqui voc\xea pode ver todos os ve\xedculos dispon\xedveis para a miss\xe3o. Selecione um ve\xedculo clicando na caixa de sele\xe7\xe3o ao lado dele."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "Agora, queremos que voc\xea aprenda a lidar com incidentes. Abra o menu de atendimento clicando no bot\xe3o \u201cAtender\u201d!",
-                            first_mission: "\xd3timo! Voc\xea construiu o seu primeiro edif\xedcio! Veja s\xf3, as primeiras miss\xf5es j\xe1 foram passadas a voc\xea!"
+                            dispatch_button: 'Para participar da miss\xe3o, primeiro clique no bot\xe3o "Dispatch" (Despacho).',
+                            first_mission: "Seu primeiro edif\xedcio est\xe1 pronto. Voc\xea tamb\xe9m recebeu sua primeira miss\xe3o!"
                         },
                         mobile: {
-                            dispatch_button: "Agora, queremos que voc\xea aprenda a lidar com incidentes. Abra o menu de atendimento clicando no bot\xe3o \u201cAtender\u201d!",
-                            first_mission: "\xd3timo! Voc\xea construiu o seu primeiro edif\xedcio! Veja s\xf3, as primeiras miss\xf5es j\xe1 foram passadas a voc\xea!"
+                            dispatch_button: 'Para participar da miss\xe3o, primeiro clique no bot\xe3o "Dispatch" (Despacho).',
+                            first_mission: "Seu primeiro edif\xedcio est\xe1 pronto. Voc\xea tamb\xe9m recebeu sua primeira miss\xe3o!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "\xd3timo! Em breve voc\xea vai se tornar um grande chefe de atendimento em Operador 193! A\xed v\xe3o %{coins} moedas para ajudar voc\xea no come\xe7o! </br> Equipe do Operador 193"
+                        general: "Agora voc\xea est\xe1 pronto para come\xe7ar a cuidar das miss\xf5es por conta pr\xf3pria. Para ajud\xe1-lo a come\xe7ar suas miss\xf5es e expans\xf5es, voc\xea receber\xe1 %{coins} moedas. Boa sorte!"
                     },
                     mobile: {
-                        general: "\xd3timo! Em breve voc\xea vai se tornar um grande chefe de atendimento em Operador 193! A\xed v\xe3o %{coins} moedas para ajudar voc\xea no come\xe7o! </br> Equipe do Operador 193"
+                        general: "Agora voc\xea est\xe1 pronto para come\xe7ar a cuidar das miss\xf5es por conta pr\xf3pria. Para ajud\xe1-lo a come\xe7ar suas miss\xf5es e expans\xf5es, voc\xea receber\xe1 %{coins} moedas. Boa sorte!"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Em caso de d\xfavidas, consulte a se\xe7\xe3o \u201cPerguntas Frequentes\u201d no jogo, visite os f\xf3runs de discuss\xe3o ou acesse a nossa p\xe1gina no Facebook!",
-                        general: "Como o pr\xf3ximo passo, recomendamos que voc\xea construa uma central de atendimentos e depois, o mais r\xe1pido poss\xedvel, novas esta\xe7\xf5es, j\xe1 que o n\xfamero m\xe1ximo de miss\xf5es ser\xe1 o mesmo do maior n\xfamero de esta\xe7\xf5es de qualquer tipo (pol\xedcia, bombeiros, ambul\xe2ncia) mais 1. Por exemplo: 5 esta\xe7\xf5es de inc\xeandio e 3 de ambul\xe2ncia = 6 miss\xf5es.",
-                        join_alliance: "Al\xe9m disso, juntar-se a uma alian\xe7a pode ser muito ben\xe9fico, principalmente no come\xe7o. Recomendamos que voc\xea tamb\xe9m fa\xe7a isso.",
-                        summary: "Este \xe9 o b\xe1sico do Operador 193! Cumpra as miss\xf5es, ganhe cr\xe9ditos, compre mais unidades, repita os procedimentos. Divirta-se! </br> Equipe do Operador 193"
+                        contact: "Se voc\xea atualizar suas esta\xe7\xf5es, ter\xe1 espa\xe7o para novos ve\xedculos.",
+                        general: "Voc\xea receber\xe1 cr\xe9ditos ao concluir uma miss\xe3o. Ao ganhar cr\xe9ditos, voc\xea se aproxima de uma promo\xe7\xe3o.",
+                        join_alliance: "As promo\xe7\xf5es e as esta\xe7\xf5es de constru\xe7\xe3o desbloqueiam novos recursos, como tipos de miss\xe3o ou ve\xedculos.",
+                        summary: "Voc\xea pode participar de uma alian\xe7a para resolver miss\xf5es junto com outras pessoas. Tamb\xe9m h\xe1 eventos regulares da alian\xe7a dos quais todos os membros podem participar!"
                     },
                     mobile: {
-                        contact: "Em caso de d\xfavidas, consulte a se\xe7\xe3o \u201cPerguntas Frequentes\u201d no jogo, visite os f\xf3runs de discuss\xe3o ou acesse a nossa p\xe1gina no Facebook!",
-                        general: "Como o pr\xf3ximo passo, recomendamos que voc\xea construa uma central de atendimentos e depois, o mais r\xe1pido poss\xedvel, novas esta\xe7\xf5es, j\xe1 que o n\xfamero m\xe1ximo de miss\xf5es ser\xe1 o mesmo do maior n\xfamero de esta\xe7\xf5es de qualquer tipo (pol\xedcia, bombeiros, ambul\xe2ncia) mais 1. Por exemplo: 5 esta\xe7\xf5es de inc\xeandio e 3 de ambul\xe2ncia = 6 miss\xf5es.",
-                        join_alliance: "Al\xe9m disso, juntar-se a uma alian\xe7a pode ser muito ben\xe9fico, principalmente no come\xe7o. Recomendamos que voc\xea tamb\xe9m fa\xe7a isso.",
-                        summary: "Este \xe9 o b\xe1sico do Operador 193! Cumpra as miss\xf5es, ganhe cr\xe9ditos, compre mais unidades, repita os procedimentos. Divirta-se! </br> Equipe do Operador 193"
+                        contact: "Se voc\xea atualizar suas esta\xe7\xf5es, ter\xe1 espa\xe7o para novos ve\xedculos.",
+                        general: "Voc\xea receber\xe1 cr\xe9ditos ao concluir uma miss\xe3o. Ao ganhar cr\xe9ditos, voc\xea se aproxima de uma promo\xe7\xe3o.",
+                        join_alliance: "As promo\xe7\xf5es e as esta\xe7\xf5es de constru\xe7\xe3o desbloqueiam novos recursos, como tipos de miss\xe3o ou ve\xedculos.",
+                        summary: "Voc\xea pode participar de uma alian\xe7a para resolver miss\xf5es junto com outras pessoas. Tamb\xe9m h\xe1 eventos regulares da alian\xe7a dos quais todos os membros podem participar!"
                     }
                 }
             },
@@ -12109,75 +11803,75 @@ Object.values || (Object.values = function (e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: '\u0414\u0430\u043b\u0456, \u0434\u0430\u0439\u0442\u0435 \u0441\u0432\u043e\u0457\u0439 \u043d\u043e\u0432\u0456\u0439 \u0441\u0442\u0430\u043d\u0446\u0456\u0457 \u043d\u0430\u0437\u0432\u0443! \u0417\u0440\u043e\u0431\u0456\u0442\u044c \u0457\u0457 \u043f\u043e\u043c\u0456\u0442\u043d\u043e\u044e \u0456 \u0440\u043e\u0437\u0448\u0438\u0440\u044e\u0432\u0430\u043d\u043e\u044e! \u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434, "\u041f\u043e\u0436\u0435\u0436\u043d\u0430 \u0441\u0442\u0430\u043d\u0446\u0456\u044f \u2116 0001". \u041a\u043e\u043b\u0438 \u0431\u0443\u0434\u0435\u0442\u0435 \u0433\u043e\u0442\u043e\u0432\u0456, \u043a\u043b\u0430\u0446\u043d\u0456\u0442\u044c "\u0414\u0430\u043b\u0456"!',
-                            build_with_credits: "\u0422\u0435\u043f\u0435\u0440 \u0437\u0431\u0443\u0434\u0443\u0439\u0442\u0435 \u0441\u0432\u043e\u044e \u0431\u0443\u0434\u0456\u0432\u043b\u044e \u0437\u0430 \u043a\u0440\u0435\u0434\u0438\u0442\u0438!",
-                            new_building: '\u041a\u043b\u0430\u0446\u043d\u0456\u0442\u044c "\u041d\u043e\u0432\u0430 \u0431\u0443\u0434\u0456\u0432\u043b\u044f"!',
-                            select_building: "\u0421\u043f\u043e\u0447\u0430\u0442\u043a\u0443 \u0432\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u0442\u0438\u043f \u0431\u0443\u0434\u0456\u0432\u043b\u0456, \u0437 \u044f\u043a\u043e\u0433\u043e \u0445\u043e\u0447\u0435\u0442\u0435 \u0440\u043e\u0437\u043f\u043e\u0447\u0430\u0442\u0438; \u043c\u0438 \u043d\u0430\u043f\u043e\u043b\u0435\u0433\u043b\u0438\u0432\u043e \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0454\u043c\u043e \u0440\u043e\u0437\u043f\u043e\u0447\u0430\u0442\u0438 \u0437 \u043f\u043e\u0436\u0435\u0436\u043d\u043e\u0457 \u0441\u0442\u0430\u043d\u0446\u0456\u0457! \u0423 \u0431\u0443\u0434\u044c-\u044f\u043a\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443, \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0454\u0442\u044c\u0441\u044f \u0440\u043e\u0437\u043f\u043e\u0447\u0430\u0442\u0438 \u0437 \u043c\u0430\u043b\u043e\u0457 \u0441\u0442\u0430\u043d\u0446\u0456\u0457!",
-                            select_position: "\u041f\u0435\u0440\u0435\u043c\u0456\u0441\u0442\u0456\u0442\u044c \u043c\u0430\u0440\u043a\u0435\u0440 \u0441\u0438\u043d\u044c\u043e\u0433\u043e \u043a\u043e\u043b\u044c\u043e\u0440\u0443 \u0443 \u043c\u0456\u0441\u0446\u0435, \u0432 \u044f\u043a\u043e\u043c\u0443 \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u0437\u0431\u0443\u0434\u0443\u0432\u0430\u0442\u0438 \u0441\u0432\u043e\u044e \u043f\u0435\u0440\u0448\u0443 \u0441\u0442\u0430\u043d\u0446\u0456\u044e!"
+                            add_name: "\u0412\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u043d\u0430\u0437\u0432\u0443 \u0434\u043b\u044f \u0441\u0432\u043e\u0454\u0457 \u0441\u0442\u0430\u043d\u0446\u0456\u0457. \u0412\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u0435\u0440\u0435\u0439\u043c\u0435\u043d\u0443\u0432\u0430\u0442\u0438 \u0457\u0457 \u043f\u0456\u0437\u043d\u0456\u0448\u0435.",
+                            build_with_credits: "\u0429\u043e\u0431 \u043f\u043e\u0431\u0443\u0434\u0443\u0432\u0430\u0442\u0438 \u0441\u0442\u0430\u043d\u0446\u0456\u044e, \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u0456 \u043a\u0440\u0435\u0434\u0438\u0442\u0438, \u0432\u0430\u043b\u044e\u0442\u0430 \u0433\u0440\u0438. \u041a\u0440\u0435\u0434\u0438\u0442\u0438 \u043c\u043e\u0436\u043d\u0430 \u0437\u0430\u0440\u043e\u0431\u0438\u0442\u0438, \u0432\u0438\u043a\u043e\u043d\u0443\u044e\u0447\u0438 \u043c\u0456\u0441\u0456\u0457, \u0449\u043e\u0434\u0435\u043d\u043d\u0456 \u0432\u0445\u043e\u0434\u0438 \u0432 \u0433\u0440\u0443, \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f \u0442\u0430 \u043f\u043e\u0434\u0456\u0457.",
+                            new_building: "\u041f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0440\u043e\u0446\u0435\u0441 \u0441\u0442\u0432\u043e\u0440\u0435\u043d\u043d\u044f \u0432\u0430\u0448\u043e\u0457 \u0441\u0442\u0430\u043d\u0446\u0456\u0457.",
+                            select_building: "\u0412\u0438\u0440\u0456\u0448\u0456\u0442\u044c, \u0447\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u0432\u0438 \u043f\u043e\u0431\u0443\u0434\u0443\u0432\u0430\u0442\u0438 \u043f\u043e\u0436\u0435\u0436\u043d\u0443 \u0441\u0442\u0430\u043d\u0446\u0456\u044e \u0430\u0431\u043e \u043f\u043e\u043b\u0456\u0446\u0435\u0439\u0441\u044c\u043a\u0443 \u0434\u0456\u043b\u044c\u043d\u0438\u0446\u044e. \u041d\u0430 \u043f\u043e\u0447\u0430\u0442\u043a\u0443 \u0434\u043e\u0441\u0442\u0430\u0442\u043d\u044c\u043e \u043d\u0435\u0432\u0435\u043b\u0438\u043a\u0438\u0445 \u0441\u0442\u0430\u043d\u0446\u0456\u0439. \u041f\u0456\u0437\u043d\u0456\u0448\u0435 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043c\u043e\u0434\u0435\u0440\u043d\u0456\u0437\u0443\u0432\u0430\u0442\u0438 \u0457\u0445 \u0434\u043e \u043d\u043e\u0440\u043c\u0430\u043b\u044c\u043d\u0438\u0445 \u0441\u0442\u0430\u043d\u0446\u0456\u0439.",
+                            select_position: "\u041f\u0435\u0440\u0435\u043c\u0456\u0441\u0442\u0456\u0442\u044c \u043c\u0430\u0440\u043a\u0435\u0440 \u0440\u043e\u0437\u0442\u0430\u0448\u0443\u0432\u0430\u043d\u043d\u044f \u0432 \u0442\u0435 \u043c\u0456\u0441\u0446\u0435, \u0434\u0435 \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435, \u0449\u043e\u0431 \u0431\u0443\u043b\u0430 \u0441\u0442\u0430\u043d\u0446\u0456\u044f."
                         },
-                        pick_location: "\u0421\u043f\u043e\u0447\u0430\u0442\u043a\u0443 \u043e\u0431\u0435\u0440\u0456\u0442\u044c \u043c\u0456\u0441\u0446\u0435! \u0412\u0432\u0435\u0434\u0456\u0442\u044c \u043d\u0430\u0437\u0432\u0443 \u043c\u0456\u0441\u0446\u044f, \u0437 \u044f\u043a\u043e\u0433\u043e \u0445\u043e\u0447\u0435\u0442\u0435 \u0440\u043e\u0437\u043f\u043e\u0447\u0430\u0442\u0438, \u0443 \u0440\u044f\u0434\u043e\u043a \u043f\u043e\u0448\u0443\u043a\u0443, \u0449\u043e\u0431 \u043e\u0441\u043e\u0431\u0438\u0441\u0442\u043e \u0437\u043d\u0430\u0439\u0442\u0438 \u0439\u043e\u0433\u043e \u043d\u0430 \u043a\u0430\u0440\u0442\u0456! \u042f\u043a \u0449\u043e\u0434\u043e \u0432\u0430\u0448\u043e\u0433\u043e \u0440\u0456\u0434\u043d\u043e\u0433\u043e \u043c\u0456\u0441\u0442\u0430?",
-                        welcome: '\u0421\u0435\u0440\u0434\u0435\u0447\u043d\u043e \u0432\u0456\u0442\u0430\u0454\u043c\u043e \u0443 \u0433\u0440\u0456 "\u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440 101"!  \u042f \u043f\u0440\u043e\u0434\u0435\u043c\u043e\u043d\u0441\u0442\u0440\u0443\u044e \u0432\u0430\u043c, \u044f\u043a\u0438\u043c \u0447\u0438\u043d\u043e\u043c \u043c\u043e\u0436\u043d\u0430 \u0434\u0430\u0442\u0438 \u0433\u0430\u0440\u043d\u0438\u0439 \u0441\u0442\u0430\u0440\u0442 \u0432\u043b\u0430\u0441\u043d\u0456\u0439 \u043a\u0430\u0440\'\u0454\u0440\u0456 \u0443 \u0441\u0444\u0435\u0440\u0456 \u0435\u043a\u0441\u0442\u0440\u0435\u043d\u0438\u0445 \u0441\u043b\u0443\u0436\u0431!'
+                        pick_location: "\u0412\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u043c\u0456\u0441\u0446\u0435, \u0434\u0435 \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u043f\u043e\u0431\u0443\u0434\u0443\u0432\u0430\u0442\u0438 \u0441\u0432\u043e\u044e \u043f\u0435\u0440\u0448\u0443 \u0441\u0442\u0430\u043d\u0446\u0456\u044e.",
+                        welcome: "\u041b\u0430\u0441\u043a\u0430\u0432\u043e \u043f\u0440\u043e\u0441\u0438\u043c\u043e \u0434\u043e \u0413\u0440\u0430 \u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440 101 \u2014 \u0420\u0435\u0454\u0441\u0442\u0440\u0430\u0446\u0456\u044f! \u041f\u0440\u0430\u0446\u044e\u044e\u0447\u0438 \u0432 \u0434\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440\u0441\u044c\u043a\u043e\u043c\u0443 \u0446\u0435\u043d\u0442\u0440\u0456 \u0435\u043a\u0441\u0442\u0440\u0435\u043d\u0438\u0445 \u0441\u043b\u0443\u0436\u0431, \u0442\u0438 \u043c\u0430\u0454\u0448 \u0441\u043f\u0440\u0430\u0432\u0443 \u0437 \u0435\u043a\u0441\u0442\u0440\u0435\u043d\u0438\u043c\u0438 \u0432\u0438\u043a\u043b\u0438\u043a\u0430\u043c\u0438, \u0449\u043e\u0431 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0442\u0438 \u0442\u0430 \u0437\u0430\u0445\u0438\u0441\u0442\u0438\u0442\u0438 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u043d\u044f. \u0414\u043b\u044f \u0446\u044c\u043e\u0433\u043e \u0432\u0438 \u0431\u0443\u0434\u0443\u0454\u0442\u0435 \u0441\u0442\u0430\u043d\u0446\u0456\u0457 \u0442\u0430 \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043b\u044f\u0454\u0442\u0435 \u043a\u0456\u043b\u044c\u043a\u0430 \u0432\u0438\u0434\u0456\u0432 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u0438\u0445 \u0437\u0430\u0441\u043e\u0431\u0456\u0432 \u0456 \u043d\u0430\u0432\u0447\u0435\u043d\u0438\u0439 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b \u043d\u0430 \u0440\u0456\u0437\u043d\u0456 \u043c\u0456\u0441\u0456\u0457."
                     },
                     mobile: {
                         build_building: {
-                            add_name: '\u0414\u0430\u043b\u0456, \u0434\u0430\u0439\u0442\u0435 \u0441\u0432\u043e\u0457\u0439 \u043d\u043e\u0432\u0456\u0439 \u0441\u0442\u0430\u043d\u0446\u0456\u0457 \u043d\u0430\u0437\u0432\u0443! \u0417\u0440\u043e\u0431\u0456\u0442\u044c \u0457\u0457 \u043f\u043e\u043c\u0456\u0442\u043d\u043e\u044e \u0456 \u0440\u043e\u0437\u0448\u0438\u0440\u044e\u0432\u0430\u043d\u043e\u044e! \u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434, "\u041f\u043e\u0436\u0435\u0436\u043d\u0430 \u0441\u0442\u0430\u043d\u0446\u0456\u044f \u2116 0001". \u041a\u043e\u043b\u0438 \u0431\u0443\u0434\u0435\u0442\u0435 \u0433\u043e\u0442\u043e\u0432\u0456, \u043a\u043b\u0430\u0446\u043d\u0456\u0442\u044c "\u0414\u0430\u043b\u0456"!',
-                            build_with_credits: "\u0422\u0435\u043f\u0435\u0440 \u0437\u0431\u0443\u0434\u0443\u0439\u0442\u0435 \u0441\u0432\u043e\u044e \u0431\u0443\u0434\u0456\u0432\u043b\u044e \u0437\u0430 \u043a\u0440\u0435\u0434\u0438\u0442\u0438!",
-                            new_building: '\u0421\u043f\u043e\u0447\u0430\u0442\u043a\u0443 \u043c\u0438 \u0432\u0438\u0431\u0435\u0440\u0435\u043c\u043e \u043c\u0456\u0441\u0446\u0435 \u0456 \u0437\u0431\u0443\u0434\u0443\u0454\u043c\u043e \u0432\u0430\u0448\u0443 \u043f\u0435\u0440\u0448\u0443 \u0431\u0443\u0434\u0456\u0432\u043b\u044e! <br /> <br /> \u0414\u043b\u044f \u0446\u044c\u043e\u0433\u043e, \u043a\u043b\u0430\u0446\u043d\u0456\u0442\u044c "\u041d\u043e\u0432\u0430 \u0431\u0443\u0434\u0456\u0432\u043b\u044f"!',
-                            select_building: "\u0421\u043f\u043e\u0447\u0430\u0442\u043a\u0443 \u0432\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u0442\u0438\u043f \u0431\u0443\u0434\u0456\u0432\u043b\u0456, \u0437 \u044f\u043a\u043e\u0433\u043e \u0445\u043e\u0447\u0435\u0442\u0435 \u0440\u043e\u0437\u043f\u043e\u0447\u0430\u0442\u0438; \u043c\u0438 \u043d\u0430\u043f\u043e\u043b\u0435\u0433\u043b\u0438\u0432\u043e \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0454\u043c\u043e \u0440\u043e\u0437\u043f\u043e\u0447\u0430\u0442\u0438 \u0437 \u043f\u043e\u0436\u0435\u0436\u043d\u043e\u0457 \u0441\u0442\u0430\u043d\u0446\u0456\u0457! \u0423 \u0431\u0443\u0434\u044c-\u044f\u043a\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443, \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0454\u0442\u044c\u0441\u044f \u0440\u043e\u0437\u043f\u043e\u0447\u0430\u0442\u0438 \u0437 \u043c\u0430\u043b\u043e\u0457 \u0441\u0442\u0430\u043d\u0446\u0456\u0457!"
+                            add_name: "\u0412\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u043d\u0430\u0437\u0432\u0443 \u0434\u043b\u044f \u0441\u0432\u043e\u0454\u0457 \u0441\u0442\u0430\u043d\u0446\u0456\u0457. \u0412\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u0435\u0440\u0435\u0439\u043c\u0435\u043d\u0443\u0432\u0430\u0442\u0438 \u0457\u0457 \u043f\u0456\u0437\u043d\u0456\u0448\u0435.",
+                            build_with_credits: "\u0429\u043e\u0431 \u043f\u043e\u0431\u0443\u0434\u0443\u0432\u0430\u0442\u0438 \u0441\u0442\u0430\u043d\u0446\u0456\u044e, \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u0456 \u043a\u0440\u0435\u0434\u0438\u0442\u0438, \u0432\u0430\u043b\u044e\u0442\u0430 \u0433\u0440\u0438. \u041a\u0440\u0435\u0434\u0438\u0442\u0438 \u043c\u043e\u0436\u043d\u0430 \u0437\u0430\u0440\u043e\u0431\u0438\u0442\u0438, \u0432\u0438\u043a\u043e\u043d\u0443\u044e\u0447\u0438 \u043c\u0456\u0441\u0456\u0457, \u0449\u043e\u0434\u0435\u043d\u043d\u0456 \u0432\u0445\u043e\u0434\u0438 \u0432 \u0433\u0440\u0443, \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f \u0442\u0430 \u043f\u043e\u0434\u0456\u0457.",
+                            new_building: "\u041f\u043e\u0447\u043d\u0456\u0442\u044c \u0437 \u043f\u043e\u0431\u0443\u0434\u043e\u0432\u0438 \u043f\u0435\u0440\u0448\u043e\u0457 \u0441\u0442\u0430\u043d\u0446\u0456\u0457. \u0412\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u0438\u0431\u0440\u0430\u0442\u0438 \u0457\u0457 \u043c\u0456\u0441\u0446\u0435 \u0440\u043e\u0437\u0442\u0430\u0448\u0443\u0432\u0430\u043d\u043d\u044f, \u0432\u0432\u0456\u0432\u0448\u0438 \u0439\u043e\u0433\u043e \u0432\u0440\u0443\u0447\u043d\u0443 \u0430\u0431\u043e \u043f\u0435\u0440\u0435\u043c\u0456\u0441\u0442\u0438\u0432\u0448\u0438 \u043c\u0430\u0440\u043a\u0435\u0440 \u0440\u043e\u0437\u0442\u0430\u0448\u0443\u0432\u0430\u043d\u043d\u044f \u043d\u0430 \u043a\u0430\u0440\u0442\u0456. \u0417\u0430\u043b\u0435\u0436\u043d\u043e \u0432\u0456\u0434 \u0432\u0430\u0448\u043e\u0457 \u043e\u043f\u0435\u0440\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u0441\u0438\u0441\u0442\u0435\u043c\u0438, \u043c\u043e\u0436\u043b\u0438\u0432\u043e, \u0432\u0430\u043c \u0434\u043e\u0432\u0435\u0434\u0435\u0442\u044c\u0441\u044f \u0443\u0442\u0440\u0438\u043c\u0443\u0432\u0430\u0442\u0438 \u043c\u0430\u0440\u043a\u0435\u0440 \u0434\u0435\u044f\u043a\u0438\u0439 \u0447\u0430\u0441, \u043f\u0435\u0440\u0448 \u043d\u0456\u0436 \u0432\u0438 \u0437\u043c\u043e\u0436\u0435\u0442\u0435 \u0439\u043e\u0433\u043e \u043f\u0435\u0440\u0435\u043c\u0456\u0441\u0442\u0438\u0442\u0438.",
+                            select_building: "\u0412\u0438\u0440\u0456\u0448\u0456\u0442\u044c, \u0447\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u0432\u0438 \u043f\u043e\u0431\u0443\u0434\u0443\u0432\u0430\u0442\u0438 \u043f\u043e\u0436\u0435\u0436\u043d\u0443 \u0441\u0442\u0430\u043d\u0446\u0456\u044e \u0430\u0431\u043e \u043f\u043e\u043b\u0456\u0446\u0435\u0439\u0441\u044c\u043a\u0443 \u0434\u0456\u043b\u044c\u043d\u0438\u0446\u044e. \u041d\u0430 \u043f\u043e\u0447\u0430\u0442\u043a\u0443 \u0434\u043e\u0441\u0442\u0430\u0442\u043d\u044c\u043e \u043d\u0435\u0432\u0435\u043b\u0438\u043a\u0438\u0445 \u0441\u0442\u0430\u043d\u0446\u0456\u0439. \u041f\u0456\u0437\u043d\u0456\u0448\u0435 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043c\u043e\u0434\u0435\u0440\u043d\u0456\u0437\u0443\u0432\u0430\u0442\u0438 \u0457\u0445 \u0434\u043e \u043d\u043e\u0440\u043c\u0430\u043b\u044c\u043d\u0438\u0445 \u0441\u0442\u0430\u043d\u0446\u0456\u0439."
                         },
-                        welcome: '\u0421\u0435\u0440\u0434\u0435\u0447\u043d\u043e \u0432\u0456\u0442\u0430\u0454\u043c\u043e \u0443 \u0433\u0440\u0456 "\u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440 101"!  \u042f \u043f\u0440\u043e\u0434\u0435\u043c\u043e\u043d\u0441\u0442\u0440\u0443\u044e \u0432\u0430\u043c, \u044f\u043a\u0438\u043c \u0447\u0438\u043d\u043e\u043c \u043c\u043e\u0436\u043d\u0430 \u0434\u0430\u0442\u0438 \u0433\u0430\u0440\u043d\u0438\u0439 \u0441\u0442\u0430\u0440\u0442 \u0432\u043b\u0430\u0441\u043d\u0456\u0439 \u043a\u0430\u0440\'\u0454\u0440\u0456 \u0443 \u0441\u0444\u0435\u0440\u0456 \u0435\u043a\u0441\u0442\u0440\u0435\u043d\u0438\u0445 \u0441\u043b\u0443\u0436\u0431!'
+                        welcome: "\u041b\u0430\u0441\u043a\u0430\u0432\u043e \u043f\u0440\u043e\u0441\u0438\u043c\u043e \u0434\u043e \u0413\u0440\u0430 \u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440 101 \u2014 \u0420\u0435\u0454\u0441\u0442\u0440\u0430\u0446\u0456\u044f! \u041f\u0440\u0430\u0446\u044e\u044e\u0447\u0438 \u0432 \u0434\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440\u0441\u044c\u043a\u043e\u043c\u0443 \u0446\u0435\u043d\u0442\u0440\u0456 \u0435\u043a\u0441\u0442\u0440\u0435\u043d\u0438\u0445 \u0441\u043b\u0443\u0436\u0431, \u0442\u0438 \u043c\u0430\u0454\u0448 \u0441\u043f\u0440\u0430\u0432\u0443 \u0437 \u0435\u043a\u0441\u0442\u0440\u0435\u043d\u0438\u043c\u0438 \u0432\u0438\u043a\u043b\u0438\u043a\u0430\u043c\u0438, \u0449\u043e\u0431 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0442\u0438 \u0442\u0430 \u0437\u0430\u0445\u0438\u0441\u0442\u0438\u0442\u0438 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u043d\u044f. \u0414\u043b\u044f \u0446\u044c\u043e\u0433\u043e \u0432\u0438 \u0431\u0443\u0434\u0443\u0454\u0442\u0435 \u0441\u0442\u0430\u043d\u0446\u0456\u0457 \u0442\u0430 \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043b\u044f\u0454\u0442\u0435 \u043a\u0456\u043b\u044c\u043a\u0430 \u0432\u0438\u0434\u0456\u0432 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u0438\u0445 \u0437\u0430\u0441\u043e\u0431\u0456\u0432 \u0456 \u043d\u0430\u0432\u0447\u0435\u043d\u0438\u0439 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b \u043d\u0430 \u0440\u0456\u0437\u043d\u0456 \u043c\u0456\u0441\u0456\u0457."
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "\u0426\u0435 \u043c\u0435\u043d\u044e \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043a\u0438. \u0417\u0432\u0456\u0434\u0441\u0438 \u0432\u0438 \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043b\u044f\u0442\u0438\u043c\u0435\u0442\u0435 \u0441\u0432\u043e\u0457 \u043f\u0456\u0434\u0440\u043e\u0437\u0434\u0456\u043b\u0438 \u043d\u0430 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f!",
-                            dispatch_menu_buttons: '\u0426\u0435 \u0434\u0432\u0456 \u0432\u0430\u0448\u0456 \u043a\u043d\u043e\u043f\u043a\u0438 \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043a\u0438! \u041f\u0435\u0440\u0448\u0430: "\u0412\u0456\u0434\u043f\u0440\u0430\u0432\u0438\u0442\u0438" \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043b\u044f\u0454 \u0432\u0438\u0431\u0440\u0430\u043d\u0456 \u043f\u0456\u0434\u0440\u043e\u0437\u0434\u0456\u043b\u0438 \u043d\u0430 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f. \u0414\u0440\u0443\u0433\u0430 \u0440\u043e\u0431\u0438\u0442\u044c \u0442\u0435 \u0436 \u0441\u0430\u043c\u0435, \u0449\u043e \u0439 \u043f\u0435\u0440\u0448\u0430, \u0430\u043b\u0435 \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0438\u0442\u044c \u0434\u043e \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f. \u041f\u043e\u043a\u0438 \u0449\u043e, \u043a\u043b\u0430\u0446\u043d\u0456\u0442\u044c \u043f\u043e \u043f\u0435\u0440\u0448\u0456\u0439 \u043a\u043d\u043e\u043f\u0446\u0456.',
-                            dispatch_menu_mission_general: "\u0422\u0443\u0442 \u043c\u043e\u0436\u043d\u0430 \u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u0437\u0430\u0433\u0430\u043b\u044c\u043d\u0456 \u0432\u0456\u0434\u043e\u043c\u043e\u0441\u0442\u0456 \u043f\u0440\u043e \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f, \u0430 \u0441\u0430\u043c\u0435 \u043d\u0430\u0437\u0432\u0443, \u0430\u0434\u0440\u0435\u0441\u0443, \u0437\u043d\u0430\u0447\u043e\u043a \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f. \u0423 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f\u0445, \u0432 \u044f\u043a\u0438\u0445 \u0432\u0438 \u0432\u0436\u0435 \u0431\u0440\u0430\u043b\u0438 \u0443\u0447\u0430\u0441\u0442\u044c, \u0437'\u044f\u0432\u043b\u044f\u0454\u0442\u044c\u0441\u044f \u0437\u043d\u0430\u0447\u043e\u043a \u0437 \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u043e\u044e \u043b\u044e\u0434\u0438\u043d\u043e\u044e \u0456 \u0437\u0430\u043c\u0456\u043d\u044e\u0454 \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u0443 \u0437\u0456\u0440\u043e\u0447\u043a\u0443.",
-                            dispatch_menu_mission_progress: "\u0422\u0443\u0442 \u043c\u043e\u0436\u043d\u0430 \u043f\u043e\u0431\u0430\u0447\u0438\u0442\u0438, \u044f\u043a\u043e\u0433\u043e \u043f\u0440\u043e\u0433\u0440\u0435\u0441\u0443 \u0431\u0443\u043b\u043e \u0434\u043e\u0441\u044f\u0433\u043d\u0443\u0442\u043e \u0443 \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u043d\u0456 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f, \u0430 \u0442\u0430\u043a\u043e\u0436 \u043a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u0443 \u043d\u0430 \u043c\u0456\u0441\u0446\u0456 \u0456 \u0447\u0430\u0441, \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0438\u0439 \u043d\u0430 \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u043d\u044f \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f!",
-                            dispatch_menu_mission_specific: "\u0422\u0443\u0442 \u043c\u043e\u0436\u043d\u0430 \u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u0431\u0456\u043b\u044c\u0448\u0435 \u0432\u0456\u0434\u043e\u043c\u043e\u0441\u0442\u0435 \u043f\u0440\u043e \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f, \u043f\u0440\u043e \u0442\u0435, \u044f\u043a\u0456 \u043f\u0456\u0434\u0440\u043e\u0437\u0434\u0456\u043b\u0438 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u0430\u044e\u0442\u044c \u043d\u0430 \u0432\u0438\u043a\u043b\u0438\u043a, \u0430 \u044f\u043a\u0456 \u0432\u0436\u0435 \u0437\u043d\u0430\u0445\u043e\u0434\u044f\u0442\u044c\u0441\u044f \u043d\u0430 \u043c\u0456\u0441\u0446\u0456.",
-                            dispatch_menu_vehicle_list: "\u0426\u0435 \u0441\u043f\u0438\u0441\u043e\u043a \u0432\u0430\u0448\u0438\u0445 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0438\u0445 \u043c\u0430\u0448\u0438\u043d. \u0422\u0443\u0442 \u043c\u043e\u0436\u043d\u0430 \u0432\u0438\u0431\u0438\u0440\u0430\u0442\u0438 \u043c\u0430\u0448\u0438\u043d\u0438. \u0422\u0435\u043f\u0435\u0440 \u0432\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u0441\u0432\u043e\u044e \u043c\u0430\u0448\u0438\u043d\u0443, \u043a\u043b\u0430\u0446\u043d\u0443\u0432\u0448\u0438 \u043f\u043e \u043d\u0456\u0439!"
+                            dispatch_menu: "\u0426\u0435 \u0432\u0456\u043a\u043d\u043e \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043a\u0438. \u0422\u0443\u0442 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043b\u044f\u0442\u0438 \u043c\u0430\u0448\u0438\u043d\u0438 \u043d\u0430 \u043c\u0456\u0441\u0456\u0457.",
+                            dispatch_menu_buttons: "\u0412\u0456\u0434\u043f\u0440\u0430\u0432\u0442\u0435 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u0438\u0439 \u0437\u0430\u0441\u0456\u0431 \u043d\u0430 \u043c\u0456\u0441\u0456\u044e, \u043d\u0430\u0442\u0438\u0441\u043d\u0443\u0432\u0448\u0438 \u043a\u043d\u043e\u043f\u043a\u0443 \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043a\u0438. \u042f\u043a \u0442\u0456\u043b\u044c\u043a\u0438 \u0443 \u0432\u0430\u0441 \u0437'\u044f\u0432\u0438\u0442\u044c\u0441\u044f \u0431\u0456\u043b\u044c\u0448\u0435 \u043c\u0456\u0441\u0456\u0439, \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0441\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u0442\u0438\u0441\u044f \u043a\u043d\u043e\u043f\u043a\u043e\u044e \u043f\u043e\u0440\u0443\u0447 \u0437 \u043d\u0435\u044e, \u0449\u043e\u0431 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u043e \u043f\u0435\u0440\u0435\u0439\u0442\u0438 \u0434\u043e \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0457 \u043c\u0456\u0441\u0456\u0457.",
+                            dispatch_menu_mission_general: '\u0422\u0443\u0442 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0437\u043d\u0430\u0439\u0442\u0438 \u0437\u0430\u0433\u0430\u043b\u044c\u043d\u0443 \u0456\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u044e \u043f\u0440\u043e \u043c\u0456\u0441\u0456\u044e. \u041f\u043e\u043a\u0438 \u0432\u0438 \u043d\u0435 \u0431\u0435\u0440\u0435\u0442\u0435 \u0443\u0447\u0430\u0441\u0442\u0456 \u0432 \u043c\u0456\u0441\u0456\u0457, \u043f\u0435\u0440\u0435\u0434 \u043d\u0430\u0437\u0432\u043e\u044e \u043c\u0456\u0441\u0456\u0457 \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0430\u0454\u0442\u044c\u0441\u044f <span class="glyphicon glyphicon-asterisk"></span>, <span class="glyphicon glyphicon-user"></span> - \u044f\u043a \u0442\u0456\u043b\u044c\u043a\u0438 \u0432\u0438 \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u0438\u0442\u0435 \u043f\u0435\u0440\u0448\u0438\u0439 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0456\u043b\u044c.',
+                            dispatch_menu_mission_progress: "\u0422\u0443\u0442 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0431\u0430\u0447\u0438\u0442\u0438 \u043f\u0440\u043e\u0433\u0440\u0435\u0441 \u043c\u0456\u0441\u0456\u0457. \u042f\u043a \u0442\u0456\u043b\u044c\u043a\u0438 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b \u0437'\u044f\u0432\u043b\u044f\u0454\u0442\u044c\u0441\u044f \u043d\u0430 \u043c\u0456\u0441\u0446\u0456, \u0432\u0456\u043d \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0430\u0454\u0442\u044c\u0441\u044f \u0442\u0443\u0442, \u0456 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u043e\u0431\u0430\u0447\u0438\u0442\u0438, \u0441\u043a\u0456\u043b\u044c\u043a\u0438 \u0447\u0430\u0441\u0443 \u0449\u0435 \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043b\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u043c\u0456\u0441\u0456\u0457.",
+                            dispatch_menu_mission_specific: "\u0422\u0443\u0442 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0431\u0430\u0447\u0438\u0442\u0438, \u044f\u043a\u0456 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u0456 \u0437\u0430\u0441\u043e\u0431\u0438 \u043f\u0435\u0440\u0435\u0431\u0443\u0432\u0430\u044e\u0442\u044c \u043d\u0430 \u0448\u043b\u044f\u0445\u0443 \u0434\u043e \u043c\u0456\u0441\u0456\u0457 \u0430\u0431\u043e \u043d\u0430 \u043c\u0456\u0441\u0446\u0456. \u041d\u043e\u043c\u0435\u0440 \u043f\u0435\u0440\u0435\u0434 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0456\u043b\u0435\u043c \u0432\u043a\u0430\u0437\u0443\u0454 \u043d\u0430 \u0439\u043e\u0433\u043e \u0441\u0442\u0430\u0442\u0443\u0441 \u0440\u043e\u0437\u0433\u043e\u0440\u0442\u0430\u043d\u043d\u044f.",
+                            dispatch_menu_vehicle_list: "\u0422\u0443\u0442 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u043e\u0431\u0430\u0447\u0438\u0442\u0438 \u0432\u0441\u0456 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u0456 \u0437\u0430\u0441\u043e\u0431\u0438, \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0456 \u0434\u043b\u044f \u043c\u0456\u0441\u0456\u0457. \u0412\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u0438\u0439 \u0437\u0430\u0441\u0456\u0431, \u043d\u0430\u0442\u0438\u0441\u043d\u0443\u0432\u0448\u0438 \u043d\u0430 \u043f\u0440\u0430\u043f\u043e\u0440\u0435\u0446\u044c \u043f\u043e\u0440\u0443\u0447 \u0437 \u043d\u0438\u043c."
                         },
                         mobile: {
-                            dispatch_menu: "\u0426\u0435 \u043c\u0435\u043d\u044e \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043a\u0438. \u0417\u0432\u0456\u0434\u0441\u0438 \u0432\u0438 \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043b\u044f\u0442\u0438\u043c\u0435\u0442\u0435 \u0441\u0432\u043e\u0457 \u043f\u0456\u0434\u0440\u043e\u0437\u0434\u0456\u043b\u0438 \u043d\u0430 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f!",
-                            dispatch_menu_buttons: '\u0426\u0435 \u0434\u0432\u0456 \u0432\u0430\u0448\u0456 \u043a\u043d\u043e\u043f\u043a\u0438 \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043a\u0438! \u041f\u0435\u0440\u0448\u0430: "\u0412\u0456\u0434\u043f\u0440\u0430\u0432\u0438\u0442\u0438" \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043b\u044f\u0454 \u0432\u0438\u0431\u0440\u0430\u043d\u0456 \u043f\u0456\u0434\u0440\u043e\u0437\u0434\u0456\u043b\u0438 \u043d\u0430 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f. \u0414\u0440\u0443\u0433\u0430 \u0440\u043e\u0431\u0438\u0442\u044c \u0442\u0435 \u0436 \u0441\u0430\u043c\u0435, \u0449\u043e \u0439 \u043f\u0435\u0440\u0448\u0430, \u0430\u043b\u0435 \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0438\u0442\u044c \u0434\u043e \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f. \u041f\u043e\u043a\u0438 \u0449\u043e, \u043a\u043b\u0430\u0446\u043d\u0456\u0442\u044c \u043f\u043e \u043f\u0435\u0440\u0448\u0456\u0439 \u043a\u043d\u043e\u043f\u0446\u0456.',
-                            dispatch_menu_mission_general: "\u0422\u0443\u0442 \u043c\u043e\u0436\u043d\u0430 \u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u0437\u0430\u0433\u0430\u043b\u044c\u043d\u0456 \u0432\u0456\u0434\u043e\u043c\u043e\u0441\u0442\u0456 \u043f\u0440\u043e \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f, \u0430 \u0441\u0430\u043c\u0435 \u043d\u0430\u0437\u0432\u0443, \u0430\u0434\u0440\u0435\u0441\u0443, \u0437\u043d\u0430\u0447\u043e\u043a \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f. \u0423 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f\u0445, \u0432 \u044f\u043a\u0438\u0445 \u0432\u0438 \u0432\u0436\u0435 \u0431\u0440\u0430\u043b\u0438 \u0443\u0447\u0430\u0441\u0442\u044c, \u0437'\u044f\u0432\u043b\u044f\u0454\u0442\u044c\u0441\u044f \u0437\u043d\u0430\u0447\u043e\u043a \u0437 \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u043e\u044e \u043b\u044e\u0434\u0438\u043d\u043e\u044e \u0456 \u0437\u0430\u043c\u0456\u043d\u044e\u0454 \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u0443 \u0437\u0456\u0440\u043e\u0447\u043a\u0443.",
-                            dispatch_menu_mission_progress: "\u0422\u0443\u0442 \u043c\u043e\u0436\u043d\u0430 \u043f\u043e\u0431\u0430\u0447\u0438\u0442\u0438, \u044f\u043a\u043e\u0433\u043e \u043f\u0440\u043e\u0433\u0440\u0435\u0441\u0443 \u0431\u0443\u043b\u043e \u0434\u043e\u0441\u044f\u0433\u043d\u0443\u0442\u043e \u0443 \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u043d\u0456 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f, \u0430 \u0442\u0430\u043a\u043e\u0436 \u043a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u0443 \u043d\u0430 \u043c\u0456\u0441\u0446\u0456 \u0456 \u0447\u0430\u0441, \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0438\u0439 \u043d\u0430 \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u043d\u044f \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f!",
-                            dispatch_menu_mission_specific: "\u0422\u0443\u0442 \u043c\u043e\u0436\u043d\u0430 \u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u0431\u0456\u043b\u044c\u0448\u0435 \u0432\u0456\u0434\u043e\u043c\u043e\u0441\u0442\u0435 \u043f\u0440\u043e \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f, \u043f\u0440\u043e \u0442\u0435, \u044f\u043a\u0456 \u043f\u0456\u0434\u0440\u043e\u0437\u0434\u0456\u043b\u0438 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u0430\u044e\u0442\u044c \u043d\u0430 \u0432\u0438\u043a\u043b\u0438\u043a, \u0430 \u044f\u043a\u0456 \u0432\u0436\u0435 \u0437\u043d\u0430\u0445\u043e\u0434\u044f\u0442\u044c\u0441\u044f \u043d\u0430 \u043c\u0456\u0441\u0446\u0456.",
-                            dispatch_menu_vehicle_list: "\u0426\u0435 \u0441\u043f\u0438\u0441\u043e\u043a \u0432\u0430\u0448\u0438\u0445 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0438\u0445 \u043c\u0430\u0448\u0438\u043d. \u0422\u0443\u0442 \u043c\u043e\u0436\u043d\u0430 \u0432\u0438\u0431\u0438\u0440\u0430\u0442\u0438 \u043c\u0430\u0448\u0438\u043d\u0438. \u0422\u0435\u043f\u0435\u0440 \u0432\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u0441\u0432\u043e\u044e \u043c\u0430\u0448\u0438\u043d\u0443, \u043a\u043b\u0430\u0446\u043d\u0443\u0432\u0448\u0438 \u043f\u043e \u043d\u0456\u0439!"
+                            dispatch_menu: "\u0426\u0435 \u0432\u0456\u043a\u043d\u043e \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043a\u0438. \u0422\u0443\u0442 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043b\u044f\u0442\u0438 \u043c\u0430\u0448\u0438\u043d\u0438 \u043d\u0430 \u043c\u0456\u0441\u0456\u0457.",
+                            dispatch_menu_buttons: "\u0412\u0456\u0434\u043f\u0440\u0430\u0432\u0442\u0435 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u0438\u0439 \u0437\u0430\u0441\u0456\u0431 \u043d\u0430 \u043c\u0456\u0441\u0456\u044e, \u043d\u0430\u0442\u0438\u0441\u043d\u0443\u0432\u0448\u0438 \u043a\u043d\u043e\u043f\u043a\u0443 \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043a\u0438. \u042f\u043a \u0442\u0456\u043b\u044c\u043a\u0438 \u0443 \u0432\u0430\u0441 \u0437'\u044f\u0432\u0438\u0442\u044c\u0441\u044f \u0431\u0456\u043b\u044c\u0448\u0435 \u043c\u0456\u0441\u0456\u0439, \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0441\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u0442\u0438\u0441\u044f \u043a\u043d\u043e\u043f\u043a\u043e\u044e \u043f\u043e\u0440\u0443\u0447 \u0437 \u043d\u0435\u044e, \u0449\u043e\u0431 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u043e \u043f\u0435\u0440\u0435\u0439\u0442\u0438 \u0434\u043e \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0457 \u043c\u0456\u0441\u0456\u0457.",
+                            dispatch_menu_mission_general: '\u0422\u0443\u0442 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0437\u043d\u0430\u0439\u0442\u0438 \u0437\u0430\u0433\u0430\u043b\u044c\u043d\u0443 \u0456\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u044e \u043f\u0440\u043e \u043c\u0456\u0441\u0456\u044e. \u041f\u043e\u043a\u0438 \u0432\u0438 \u043d\u0435 \u0431\u0435\u0440\u0435\u0442\u0435 \u0443\u0447\u0430\u0441\u0442\u0456 \u0432 \u043c\u0456\u0441\u0456\u0457, \u043f\u0435\u0440\u0435\u0434 \u043d\u0430\u0437\u0432\u043e\u044e \u043c\u0456\u0441\u0456\u0457 \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0430\u0454\u0442\u044c\u0441\u044f <span class="glyphicon glyphicon-asterisk"></span>, <span class="glyphicon glyphicon-user"></span> - \u044f\u043a \u0442\u0456\u043b\u044c\u043a\u0438 \u0432\u0438 \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u0438\u0442\u0435 \u043f\u0435\u0440\u0448\u0438\u0439 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0456\u043b\u044c.',
+                            dispatch_menu_mission_progress: "\u0422\u0443\u0442 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0431\u0430\u0447\u0438\u0442\u0438 \u043f\u0440\u043e\u0433\u0440\u0435\u0441 \u043c\u0456\u0441\u0456\u0457. \u042f\u043a \u0442\u0456\u043b\u044c\u043a\u0438 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b \u0437'\u044f\u0432\u043b\u044f\u0454\u0442\u044c\u0441\u044f \u043d\u0430 \u043c\u0456\u0441\u0446\u0456, \u0432\u0456\u043d \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0430\u0454\u0442\u044c\u0441\u044f \u0442\u0443\u0442, \u0456 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u043e\u0431\u0430\u0447\u0438\u0442\u0438, \u0441\u043a\u0456\u043b\u044c\u043a\u0438 \u0447\u0430\u0441\u0443 \u0449\u0435 \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043b\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u043c\u0456\u0441\u0456\u0457.",
+                            dispatch_menu_mission_specific: "\u0422\u0443\u0442 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0431\u0430\u0447\u0438\u0442\u0438, \u044f\u043a\u0456 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u0456 \u0437\u0430\u0441\u043e\u0431\u0438 \u043f\u0435\u0440\u0435\u0431\u0443\u0432\u0430\u044e\u0442\u044c \u043d\u0430 \u0448\u043b\u044f\u0445\u0443 \u0434\u043e \u043c\u0456\u0441\u0456\u0457 \u0430\u0431\u043e \u043d\u0430 \u043c\u0456\u0441\u0446\u0456. \u041d\u043e\u043c\u0435\u0440 \u043f\u0435\u0440\u0435\u0434 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0456\u043b\u0435\u043c \u0432\u043a\u0430\u0437\u0443\u0454 \u043d\u0430 \u0439\u043e\u0433\u043e \u0441\u0442\u0430\u0442\u0443\u0441 \u0440\u043e\u0437\u0433\u043e\u0440\u0442\u0430\u043d\u043d\u044f.",
+                            dispatch_menu_vehicle_list: "\u0422\u0443\u0442 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u043e\u0431\u0430\u0447\u0438\u0442\u0438 \u0432\u0441\u0456 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u0456 \u0437\u0430\u0441\u043e\u0431\u0438, \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0456 \u0434\u043b\u044f \u043c\u0456\u0441\u0456\u0457. \u0412\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u0438\u0439 \u0437\u0430\u0441\u0456\u0431, \u043d\u0430\u0442\u0438\u0441\u043d\u0443\u0432\u0448\u0438 \u043d\u0430 \u043f\u0440\u0430\u043f\u043e\u0440\u0435\u0446\u044c \u043f\u043e\u0440\u0443\u0447 \u0437 \u043d\u0438\u043c."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: '\u0422\u0435\u043f\u0435\u0440 \u043c\u0438 \u0445\u043e\u0447\u0435\u043c\u043e \u0434\u0456\u0437\u043d\u0430\u0442\u0438\u0441\u044c, \u044f\u043a\u0438\u043c \u0447\u0438\u043d\u043e\u043c \u0440\u0435\u0430\u0433\u0443\u0432\u0430\u0442\u0438 \u043d\u0430 \u043f\u0440\u0438\u0433\u043e\u0434\u0438. \u0412\u0456\u0434\u043a\u0440\u0438\u0439\u0442\u0435 \u043c\u0435\u043d\u044e \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043a\u0438, \u043a\u043b\u0430\u0446\u043d\u0443\u0432\u0448\u0438 \u043f\u043e \u043a\u043d\u043e\u043f\u0446\u0456 "\u0412\u0456\u0434\u043f\u0440\u0430\u0432\u0438\u0442\u0438"!',
-                            first_mission: "\u0427\u0443\u0434\u043e\u0432\u043e, \u0432\u0438 \u0437\u0431\u0443\u0434\u0443\u0432\u0430\u043b\u0438 \u0441\u0432\u043e\u044e \u043f\u0435\u0440\u0448\u0443 \u0431\u0443\u0434\u0456\u0432\u043b\u044e! \u041e\u0442 \u0431\u0430\u0447\u0438\u0442\u0435, \u0432\u0438 \u0432\u0436\u0435 \u043e\u0442\u0440\u0438\u043c\u0430\u043b\u0438 \u0437\u0432\u0456\u0442\u0438 \u043f\u0440\u043e \u043f\u0435\u0440\u0448\u0456 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f!"
+                            dispatch_button: '\u0412\u0456\u0437\u044c\u043c\u0456\u0442\u044c \u0443\u0447\u0430\u0441\u0442\u044c \u0443 \u043c\u0456\u0441\u0456\u0457, \u0441\u043f\u043e\u0447\u0430\u0442\u043a\u0443 \u043d\u0430\u0442\u0438\u0441\u043d\u0443\u0432\u0448\u0438 \u043d\u0430 \u043a\u043d\u043e\u043f\u043a\u0443 "\u0412\u0456\u0434\u043f\u0440\u0430\u0432\u0438\u0442\u0438".',
+                            first_mission: "\u0412\u0430\u0448\u0430 \u043f\u0435\u0440\u0448\u0430 \u0431\u0443\u0434\u0456\u0432\u043b\u044f \u0433\u043e\u0442\u043e\u0432\u0430. \u0412\u0438 \u0442\u0430\u043a\u043e\u0436 \u043e\u0442\u0440\u0438\u043c\u0430\u043b\u0438 \u0441\u0432\u043e\u044e \u043f\u0435\u0440\u0448\u0443 \u043c\u0456\u0441\u0456\u044e!"
                         },
                         mobile: {
-                            dispatch_button: '\u0422\u0435\u043f\u0435\u0440 \u043c\u0438 \u0445\u043e\u0447\u0435\u043c\u043e \u0434\u0456\u0437\u043d\u0430\u0442\u0438\u0441\u044c, \u044f\u043a\u0438\u043c \u0447\u0438\u043d\u043e\u043c \u0440\u0435\u0430\u0433\u0443\u0432\u0430\u0442\u0438 \u043d\u0430 \u043f\u0440\u0438\u0433\u043e\u0434\u0438. \u0412\u0456\u0434\u043a\u0440\u0438\u0439\u0442\u0435 \u043c\u0435\u043d\u044e \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043a\u0438, \u043a\u043b\u0430\u0446\u043d\u0443\u0432\u0448\u0438 \u043f\u043e \u043a\u043d\u043e\u043f\u0446\u0456 "\u0412\u0456\u0434\u043f\u0440\u0430\u0432\u0438\u0442\u0438"!',
-                            first_mission: "\u0427\u0443\u0434\u043e\u0432\u043e, \u0432\u0438 \u0437\u0431\u0443\u0434\u0443\u0432\u0430\u043b\u0438 \u0441\u0432\u043e\u044e \u043f\u0435\u0440\u0448\u0443 \u0431\u0443\u0434\u0456\u0432\u043b\u044e! \u041e\u0442 \u0431\u0430\u0447\u0438\u0442\u0435, \u0432\u0438 \u0432\u0436\u0435 \u043e\u0442\u0440\u0438\u043c\u0430\u043b\u0438 \u0437\u0432\u0456\u0442\u0438 \u043f\u0440\u043e \u043f\u0435\u0440\u0448\u0456 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f!"
+                            dispatch_button: '\u0412\u0456\u0437\u044c\u043c\u0456\u0442\u044c \u0443\u0447\u0430\u0441\u0442\u044c \u0443 \u043c\u0456\u0441\u0456\u0457, \u0441\u043f\u043e\u0447\u0430\u0442\u043a\u0443 \u043d\u0430\u0442\u0438\u0441\u043d\u0443\u0432\u0448\u0438 \u043d\u0430 \u043a\u043d\u043e\u043f\u043a\u0443 "\u0412\u0456\u0434\u043f\u0440\u0430\u0432\u0438\u0442\u0438".',
+                            first_mission: "\u0412\u0430\u0448\u0430 \u043f\u0435\u0440\u0448\u0430 \u0431\u0443\u0434\u0456\u0432\u043b\u044f \u0433\u043e\u0442\u043e\u0432\u0430. \u0412\u0438 \u0442\u0430\u043a\u043e\u0436 \u043e\u0442\u0440\u0438\u043c\u0430\u043b\u0438 \u0441\u0432\u043e\u044e \u043f\u0435\u0440\u0448\u0443 \u043c\u0456\u0441\u0456\u044e!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: '\u0427\u0443\u0434\u043e\u0432\u043e, \u0432\u0438 \u043d\u0430 \u0448\u043b\u044f\u0445\u0443 \u0434\u043e \u0442\u043e\u0433\u043e, \u0449\u043e\u0431 \u0441\u0442\u0430\u0442\u0438 \u043f\u043e\u0442\u0440\u044f\u0441\u043d\u0438\u043c \u0434\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440\u043e\u043c! \u041e\u0441\u044c \u043c\u043e\u043d\u0435\u0442\u0438 (%{coins}), \u044f\u043a\u0456 \u0434\u043e\u043f\u043e\u043c\u043e\u0436\u0443\u0442\u044c \u0432\u0430\u043c \u043d\u0430 \u043f\u043e\u0447\u0430\u0442\u043a\u0443! </br> \u0412\u0430\u0448\u0430 \u043a\u043e\u043c\u0430\u043d\u0434\u0430 \u0433\u0440\u0438 "\u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440 101"'
+                        general: "\u0422\u0435\u043f\u0435\u0440 \u0432\u0438 \u0433\u043e\u0442\u043e\u0432\u0456 \u0434\u043e \u0441\u0430\u043c\u043e\u0441\u0442\u0456\u0439\u043d\u043e\u0433\u043e \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u043d\u044f \u043c\u0456\u0441\u0456\u0439. \u0429\u043e\u0431 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0442\u0438 \u0432\u0430\u043c \u043f\u043e\u0447\u0430\u0442\u0438 \u0432\u0438\u043a\u043e\u043d\u0443\u0432\u0430\u0442\u0438 \u043c\u0456\u0441\u0456\u0457 \u0442\u0430 \u0440\u043e\u0437\u0448\u0438\u0440\u044e\u0432\u0430\u0442\u0438 \u0442\u0435\u0440\u0438\u0442\u043e\u0440\u0456\u044e, \u0432\u0438 \u043e\u0442\u0440\u0438\u043c\u0443\u0454\u0442\u0435 %{coins} \u041c\u043e\u043d\u0435\u0442\u0438 \u0429\u0430\u0441\u0442\u0438 \u0442\u043e\u0431\u0456!"
                     },
                     mobile: {
-                        general: '\u0427\u0443\u0434\u043e\u0432\u043e, \u0432\u0438 \u043d\u0430 \u0448\u043b\u044f\u0445\u0443 \u0434\u043e \u0442\u043e\u0433\u043e, \u0449\u043e\u0431 \u0441\u0442\u0430\u0442\u0438 \u043f\u043e\u0442\u0440\u044f\u0441\u043d\u0438\u043c \u0434\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440\u043e\u043c! \u041e\u0441\u044c \u043c\u043e\u043d\u0435\u0442\u0438 (%{coins}), \u044f\u043a\u0456 \u0434\u043e\u043f\u043e\u043c\u043e\u0436\u0443\u0442\u044c \u0432\u0430\u043c \u043d\u0430 \u043f\u043e\u0447\u0430\u0442\u043a\u0443! </br> \u0412\u0430\u0448\u0430 \u043a\u043e\u043c\u0430\u043d\u0434\u0430 \u0433\u0440\u0438 "\u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440 101"'
+                        general: "\u0422\u0435\u043f\u0435\u0440 \u0432\u0438 \u0433\u043e\u0442\u043e\u0432\u0456 \u0434\u043e \u0441\u0430\u043c\u043e\u0441\u0442\u0456\u0439\u043d\u043e\u0433\u043e \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u043d\u044f \u043c\u0456\u0441\u0456\u0439. \u0429\u043e\u0431 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0442\u0438 \u0432\u0430\u043c \u043f\u043e\u0447\u0430\u0442\u0438 \u0432\u0438\u043a\u043e\u043d\u0443\u0432\u0430\u0442\u0438 \u043c\u0456\u0441\u0456\u0457 \u0442\u0430 \u0440\u043e\u0437\u0448\u0438\u0440\u044e\u0432\u0430\u0442\u0438 \u0442\u0435\u0440\u0438\u0442\u043e\u0440\u0456\u044e, \u0432\u0438 \u043e\u0442\u0440\u0438\u043c\u0443\u0454\u0442\u0435 %{coins} \u041c\u043e\u043d\u0435\u0442\u0438 \u0429\u0430\u0441\u0442\u0438 \u0442\u043e\u0431\u0456!"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "\u0423 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u0432\u0438\u043d\u0438\u043a\u043d\u0435\u043d\u043d\u044f \u0437\u0430\u043f\u0438\u0442\u0430\u043d\u044c, \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0437\u0432\u0435\u0440\u043d\u0443\u0442\u0438\u0441\u044c \u0434\u043e \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u0435\u0439 \u043d\u0430 \u0447\u0430\u0441\u0442\u0456 \u043f\u0438\u0442\u0430\u043d\u043d\u044f \u043f\u043e \u0433\u0440\u0456 \u0430\u0431\u043e \u0432\u0456\u0434\u0432\u0456\u0434\u0430\u0442\u0438 \u0456\u0433\u0440\u043e\u0432\u0456 \u0444\u043e\u0440\u0443\u043c\u0438 \u0447\u0438 \u043d\u0430\u0448\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0443 Facebook!",
-                        general: "\u0423 \u044f\u043a\u043e\u0441\u0442\u0456 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u043a\u0440\u043e\u043a\u0443, \u043c\u0438 \u043f\u043e\u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0454\u043c\u043e \u0432\u0430\u043c \u043f\u043e\u0431\u0443\u0434\u0443\u0432\u0430\u0442\u0438 \u0434\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440\u0441\u044c\u043a\u0438\u0439 \u0446\u0435\u043d\u0442\u0440, \u0430 \u043f\u043e\u0442\u0456\u043c, \u044f\u043a\u043e\u043c\u043e\u0433\u0430 \u0448\u0432\u0438\u0434\u0448\u0435, \u043d\u043e\u0432\u0456 \u0441\u0442\u0430\u043d\u0446\u0456\u0457, \u043e\u0441\u043a\u0456\u043b\u044c\u043a\u0438 \u043c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u0430 \u043a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u0437\u0430\u0432\u0434\u0430\u043d\u044c \u0434\u043e\u0440\u0456\u0432\u043d\u044e\u0454 \u043d\u0430\u0439\u0432\u0438\u0449\u0456\u0439 \u043a\u0456\u043b\u044c\u043a\u043e\u0441\u0442\u0456 \u0431\u0443\u0434\u044c-\u044f\u043a\u0438\u0445 \u0441\u0442\u0430\u043d\u0446\u0456\u0439 \u0440\u0456\u0437\u043d\u0438\u0445 \u0442\u0438\u043f\u0456\u0432 (\u043f\u043e\u043b\u0456\u0446\u0456\u044f, \u043f\u043e\u0436\u0435\u0436\u043d\u0438\u043a\u0438, \u0448\u0432\u0438\u0434\u043a\u0430) \u043f\u043b\u044e\u0441 1; \u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434, 5 \u043f\u043e\u0436\u0435\u0436\u043d\u0438\u0445 \u0441\u0442\u0430\u043d\u0446\u0456\u0439 \u0456 3 \u0441\u0442\u0430\u043d\u0446\u0456\u0457 \u0448\u0432\u0438\u0434\u043a\u043e\u0457 = 6 \u0437\u0430\u0432\u0434\u0430\u043d\u044c.",
-                        join_alliance: "\u0422\u0430\u043a\u043e\u0436, \u0432\u0441\u0442\u0443\u043f \u0443 \u0430\u043b\u044c\u044f\u043d\u0441 \u0437\u043d\u0430\u0447\u043d\u0438\u043c \u0447\u0438\u043d\u043e\u043c \u0434\u043e\u043f\u043e\u043c\u043e\u0436\u0435 \u0432\u0430\u043c, \u043e\u0441\u043e\u0431\u043b\u0438\u0432\u043e \u043d\u0430 \u043f\u043e\u0447\u0430\u0442\u043a\u0443, \u0442\u043e\u043c\u0443 \u0446\u0435 \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0454\u0442\u044c\u0441\u044f \u0442\u0430\u043a\u043e\u0436.",
-                        summary: '\u0426\u0435 \u043e\u0441\u043d\u043e\u0432\u0438 \u0433\u0440\u0438 "\u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440 101"! \u0412\u0438\u043a\u043e\u043d\u0443\u0439\u0442\u0435 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f, \u043e\u0442\u0440\u0438\u043c\u0443\u0439\u0442\u0435 \u043a\u0440\u0435\u0434\u0438\u0442\u0438, \u043a\u0443\u043f\u043b\u044f\u0439\u0442\u0435 \u0431\u0456\u043b\u044c\u0448\u0435 \u043f\u0456\u0434\u0440\u043e\u0437\u0434\u0456\u043b\u0456\u0432, \u043f\u043e\u0432\u0442\u043e\u0440\u044e\u0439\u0442\u0435. \u0412\u0435\u0441\u0435\u043b\u043e\u0457 \u0432\u0430\u043c \u0433\u0440\u0438! </br> \u0412\u0430\u0448\u0430 \u043a\u043e\u043c\u0430\u043d\u0434\u0430 \u0433\u0440\u0438 "\u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440 101"'
+                        contact: "\u042f\u043a\u0449\u043e \u0432\u0438 \u043c\u043e\u0434\u0435\u0440\u043d\u0456\u0437\u0443\u0454\u0442\u0435 \u0441\u0432\u043e\u0457 \u0441\u0442\u0430\u043d\u0446\u0456\u0457, \u0432\u0438 \u043e\u0442\u0440\u0438\u043c\u0443\u0454\u0442\u0435 \u043c\u0456\u0441\u0446\u0435 \u0434\u043b\u044f \u043d\u043e\u0432\u0438\u0445 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u0438\u0445 \u0437\u0430\u0441\u043e\u0431\u0456\u0432.",
+                        general: "\u0417\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u043c\u0456\u0441\u0456\u0457 \u0432\u0438 \u043e\u0442\u0440\u0438\u043c\u0430\u0454\u0442\u0435 \u043a\u0440\u0435\u0434\u0438\u0442\u0438. \u0417\u0430\u0440\u043e\u0431\u043b\u044f\u044e\u0447\u0438 \u043a\u0440\u0435\u0434\u0438\u0442\u0438, \u0432\u0438 \u043d\u0430\u0431\u043b\u0438\u0436\u0430\u0454\u0442\u0435\u0441\u044c \u0434\u043e \u043f\u0456\u0434\u0432\u0438\u0449\u0435\u043d\u043d\u044f.",
+                        join_alliance: "\u041f\u0440\u043e\u043c\u043e-\u0430\u043a\u0446\u0456\u0457 \u0442\u0430 \u0431\u0443\u0434\u0456\u0432\u0435\u043b\u044c\u043d\u0456 \u0441\u0442\u0430\u043d\u0446\u0456\u0457 \u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u044e\u0442\u044c \u043d\u043e\u0432\u0456 \u043c\u043e\u0436\u043b\u0438\u0432\u043e\u0441\u0442\u0456, \u0442\u0430\u043a\u0456 \u044f\u043a \u0442\u0438\u043f\u0438 \u043c\u0456\u0441\u0456\u0439 \u0430\u0431\u043e \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u0456 \u0437\u0430\u0441\u043e\u0431\u0438.",
+                        summary: "\u0412\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u0442\u0438\u0441\u044f \u0434\u043e \u0430\u043b\u044c\u044f\u043d\u0441\u0443, \u0449\u043e\u0431 \u0432\u0438\u0440\u0456\u0448\u0443\u0432\u0430\u0442\u0438 \u043c\u0456\u0441\u0456\u0457 \u0440\u0430\u0437\u043e\u043c \u0437 \u0456\u043d\u0448\u0438\u043c\u0438. \u0422\u0430\u043a\u043e\u0436 \u0432\u0456\u0434\u0431\u0443\u0432\u0430\u044e\u0442\u044c\u0441\u044f \u0440\u0435\u0433\u0443\u043b\u044f\u0440\u043d\u0456 \u0437\u0430\u0445\u043e\u0434\u0438 \u0430\u043b\u044c\u044f\u043d\u0441\u0443, \u0432 \u044f\u043a\u0438\u0445 \u043c\u043e\u0436\u0443\u0442\u044c \u0431\u0440\u0430\u0442\u0438 \u0443\u0447\u0430\u0441\u0442\u044c \u0443\u0441\u0456 \u0447\u043b\u0435\u043d\u0438!"
                     },
                     mobile: {
-                        contact: "\u0423 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u0432\u0438\u043d\u0438\u043a\u043d\u0435\u043d\u043d\u044f \u0437\u0430\u043f\u0438\u0442\u0430\u043d\u044c, \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0437\u0432\u0435\u0440\u043d\u0443\u0442\u0438\u0441\u044c \u0434\u043e \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u0435\u0439 \u043d\u0430 \u0447\u0430\u0441\u0442\u0456 \u043f\u0438\u0442\u0430\u043d\u043d\u044f \u043f\u043e \u0433\u0440\u0456 \u0430\u0431\u043e \u0432\u0456\u0434\u0432\u0456\u0434\u0430\u0442\u0438 \u0456\u0433\u0440\u043e\u0432\u0456 \u0444\u043e\u0440\u0443\u043c\u0438 \u0447\u0438 \u043d\u0430\u0448\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0443 Facebook!",
-                        general: "\u0423 \u044f\u043a\u043e\u0441\u0442\u0456 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u043a\u0440\u043e\u043a\u0443, \u043c\u0438 \u043f\u043e\u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0454\u043c\u043e \u0432\u0430\u043c \u043f\u043e\u0431\u0443\u0434\u0443\u0432\u0430\u0442\u0438 \u0434\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440\u0441\u044c\u043a\u0438\u0439 \u0446\u0435\u043d\u0442\u0440, \u0430 \u043f\u043e\u0442\u0456\u043c, \u044f\u043a\u043e\u043c\u043e\u0433\u0430 \u0448\u0432\u0438\u0434\u0448\u0435, \u043d\u043e\u0432\u0456 \u0441\u0442\u0430\u043d\u0446\u0456\u0457, \u043e\u0441\u043a\u0456\u043b\u044c\u043a\u0438 \u043c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u0430 \u043a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u0437\u0430\u0432\u0434\u0430\u043d\u044c \u0434\u043e\u0440\u0456\u0432\u043d\u044e\u0454 \u043d\u0430\u0439\u0432\u0438\u0449\u0456\u0439 \u043a\u0456\u043b\u044c\u043a\u043e\u0441\u0442\u0456 \u0431\u0443\u0434\u044c-\u044f\u043a\u0438\u0445 \u0441\u0442\u0430\u043d\u0446\u0456\u0439 \u0440\u0456\u0437\u043d\u0438\u0445 \u0442\u0438\u043f\u0456\u0432 (\u043f\u043e\u043b\u0456\u0446\u0456\u044f, \u043f\u043e\u0436\u0435\u0436\u043d\u0438\u043a\u0438, \u0448\u0432\u0438\u0434\u043a\u0430) \u043f\u043b\u044e\u0441 1; \u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434, 5 \u043f\u043e\u0436\u0435\u0436\u043d\u0438\u0445 \u0441\u0442\u0430\u043d\u0446\u0456\u0439 \u0456 3 \u0441\u0442\u0430\u043d\u0446\u0456\u0457 \u0448\u0432\u0438\u0434\u043a\u043e\u0457 = 6 \u0437\u0430\u0432\u0434\u0430\u043d\u044c.",
-                        join_alliance: "\u0422\u0430\u043a\u043e\u0436, \u0432\u0441\u0442\u0443\u043f \u0443 \u0430\u043b\u044c\u044f\u043d\u0441 \u0437\u043d\u0430\u0447\u043d\u0438\u043c \u0447\u0438\u043d\u043e\u043c \u0434\u043e\u043f\u043e\u043c\u043e\u0436\u0435 \u0432\u0430\u043c, \u043e\u0441\u043e\u0431\u043b\u0438\u0432\u043e \u043d\u0430 \u043f\u043e\u0447\u0430\u0442\u043a\u0443, \u0442\u043e\u043c\u0443 \u0446\u0435 \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0454\u0442\u044c\u0441\u044f \u0442\u0430\u043a\u043e\u0436.",
-                        summary: '\u0426\u0435 \u043e\u0441\u043d\u043e\u0432\u0438 \u0433\u0440\u0438 "\u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440 101"! \u0412\u0438\u043a\u043e\u043d\u0443\u0439\u0442\u0435 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f, \u043e\u0442\u0440\u0438\u043c\u0443\u0439\u0442\u0435 \u043a\u0440\u0435\u0434\u0438\u0442\u0438, \u043a\u0443\u043f\u043b\u044f\u0439\u0442\u0435 \u0431\u0456\u043b\u044c\u0448\u0435 \u043f\u0456\u0434\u0440\u043e\u0437\u0434\u0456\u043b\u0456\u0432, \u043f\u043e\u0432\u0442\u043e\u0440\u044e\u0439\u0442\u0435. \u0412\u0435\u0441\u0435\u043b\u043e\u0457 \u0432\u0430\u043c \u0433\u0440\u0438! </br> \u0412\u0430\u0448\u0430 \u043a\u043e\u043c\u0430\u043d\u0434\u0430 \u0433\u0440\u0438 "\u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440 101"'
+                        contact: "\u042f\u043a\u0449\u043e \u0432\u0438 \u043c\u043e\u0434\u0435\u0440\u043d\u0456\u0437\u0443\u0454\u0442\u0435 \u0441\u0432\u043e\u0457 \u0441\u0442\u0430\u043d\u0446\u0456\u0457, \u0432\u0438 \u043e\u0442\u0440\u0438\u043c\u0443\u0454\u0442\u0435 \u043c\u0456\u0441\u0446\u0435 \u0434\u043b\u044f \u043d\u043e\u0432\u0438\u0445 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u0438\u0445 \u0437\u0430\u0441\u043e\u0431\u0456\u0432.",
+                        general: "\u0417\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u043c\u0456\u0441\u0456\u0457 \u0432\u0438 \u043e\u0442\u0440\u0438\u043c\u0430\u0454\u0442\u0435 \u043a\u0440\u0435\u0434\u0438\u0442\u0438. \u0417\u0430\u0440\u043e\u0431\u043b\u044f\u044e\u0447\u0438 \u043a\u0440\u0435\u0434\u0438\u0442\u0438, \u0432\u0438 \u043d\u0430\u0431\u043b\u0438\u0436\u0430\u0454\u0442\u0435\u0441\u044c \u0434\u043e \u043f\u0456\u0434\u0432\u0438\u0449\u0435\u043d\u043d\u044f.",
+                        join_alliance: "\u041f\u0440\u043e\u043c\u043e-\u0430\u043a\u0446\u0456\u0457 \u0442\u0430 \u0431\u0443\u0434\u0456\u0432\u0435\u043b\u044c\u043d\u0456 \u0441\u0442\u0430\u043d\u0446\u0456\u0457 \u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u044e\u0442\u044c \u043d\u043e\u0432\u0456 \u043c\u043e\u0436\u043b\u0438\u0432\u043e\u0441\u0442\u0456, \u0442\u0430\u043a\u0456 \u044f\u043a \u0442\u0438\u043f\u0438 \u043c\u0456\u0441\u0456\u0439 \u0430\u0431\u043e \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u0456 \u0437\u0430\u0441\u043e\u0431\u0438.",
+                        summary: "\u0412\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u0442\u0438\u0441\u044f \u0434\u043e \u0430\u043b\u044c\u044f\u043d\u0441\u0443, \u0449\u043e\u0431 \u0432\u0438\u0440\u0456\u0448\u0443\u0432\u0430\u0442\u0438 \u043c\u0456\u0441\u0456\u0457 \u0440\u0430\u0437\u043e\u043c \u0437 \u0456\u043d\u0448\u0438\u043c\u0438. \u0422\u0430\u043a\u043e\u0436 \u0432\u0456\u0434\u0431\u0443\u0432\u0430\u044e\u0442\u044c\u0441\u044f \u0440\u0435\u0433\u0443\u043b\u044f\u0440\u043d\u0456 \u0437\u0430\u0445\u043e\u0434\u0438 \u0430\u043b\u044c\u044f\u043d\u0441\u0443, \u0432 \u044f\u043a\u0438\u0445 \u043c\u043e\u0436\u0443\u0442\u044c \u0431\u0440\u0430\u0442\u0438 \u0443\u0447\u0430\u0441\u0442\u044c \u0443\u0441\u0456 \u0447\u043b\u0435\u043d\u0438!"
                     }
                 }
             },
@@ -12474,75 +12168,75 @@ Object.values || (Object.values = function (e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: "Segundo, \xa1ponle un nombre a tu nueva estaci\xf3n! \xa1Haz que sea reconocible y aumentable! P. ej., \xabEstaci\xf3n de bomberos #0001\xbb. Cuando termines, \xa1haz clic en \xabSiguiente\xbb!",
-                            build_with_credits: "\xa1Ahora construye tu edificio con cr\xe9ditos!",
-                            new_building: "\xa1Haz clic en \xabNuevo edificio\xbb!",
-                            select_building: "Primero, elige el tipo de edificio con el que deseas empezar. \xa1Te recomendamos que empieces con el servicio de bomberos! En cualquier caso, \xa1se recomienda empezar con una estaci\xf3n peque\xf1a!",
-                            select_position: "\xa1Coloca el marcador azul en donde desees construir tu primera estaci\xf3n!"
+                            add_name: "Seleccione un nombre para su edificio. Puedes cambiarle el nombre m\xe1s tarde.",
+                            build_with_credits: "Para construir un edificio necesitas cr\xe9ditos, la moneda del juego. Puedes ganar cr\xe9ditos a trav\xe9s de misiones, inicios de sesi\xf3n diarios, completando tareas y eventos.",
+                            new_building: "Inicie el proceso de construcci\xf3n de su edificio.",
+                            select_building: "Decide si quieres construir un parque de bomberos o una comisar\xeda de polic\xeda. Al principio son suficientes edificios peque\xf1os. Podr\xe1s actualizarlos a edificios normales m\xe1s adelante.",
+                            select_position: "Mueve el marcador al lugar exacto de tu edificio."
                         },
-                        pick_location: "Primero, \xa1elige una ubicaci\xf3n para comenzar! Escribe el nombre de la ubicaci\xf3n donde deseas empezar en la barra de b\xfasqueda \xa1o encu\xe9ntrala t\xfa mismo en el mapa! \xbfQu\xe9 hay de tu ciudad?",
-                        welcome: "\xa1Hola! \xa1Bienvenido a Centro de Mando MX!  \xa1Te dar\xe9 algunas lecciones para que empieces tu carrera en los servicios de emergencia con el pie derecho!"
+                        pick_location: "Elija una ubicaci\xf3n donde desee construir su primer edificio.",
+                        welcome: "\xa1Bienvenidos a Centro de Mando! Al trabajar en un centro de despacho de servicios de emergencia, usted atiende llamadas de emergencia para ayudar y proteger a la ciudadan\xeda. Para ello, construyes edificios y env\xedas varios tipos de veh\xedculos y personal capacitado a una variedad de misiones."
                     },
                     mobile: {
                         build_building: {
-                            add_name: "Segundo, \xa1ponle un nombre a tu nueva estaci\xf3n! \xa1Haz que sea reconocible y aumentable! P. ej., \xabEstaci\xf3n de bomberos #0001\xbb. Cuando termines, \xa1haz clic en \xabSiguiente\xbb!",
-                            build_with_credits: "\xa1Ahora construye tu edificio con cr\xe9ditos!",
-                            new_building: "Primero, \xa1escogeremos una ubicaci\xf3n para comenzar a construir tu primer edificio! <br /> <br /> Para eso, \xa1haz clic en \xabNuevo edificio\xbb!",
-                            select_building: "Primero, elige el tipo de edificio con el que deseas empezar. \xa1Te recomendamos que empieces con el servicio de bomberos! En cualquier caso, \xa1se recomienda empezar con una estaci\xf3n peque\xf1a!"
+                            add_name: "Seleccione un nombre para su edificio. Puedes cambiarle el nombre m\xe1s tarde.",
+                            build_with_credits: "Para construir un edificio necesitas cr\xe9ditos, la moneda del juego. Puedes ganar cr\xe9ditos a trav\xe9s de misiones, inicios de sesi\xf3n diarios, completando tareas y eventos.",
+                            new_building: "Comience construyendo su primer edificio. Puede seleccionar su ubicaci\xf3n indicandola manualmente o moviendo el marcador de ubicaci\xf3n en el mapa. Dependiendo de su sistema operativo, es posible que deba mantener presionado el marcador por un tiempo antes de poder moverlo.",
+                            select_building: "Decide si quieres construir un parque de bomberos o una comisar\xeda de polic\xeda. Al principio son suficientes edificios peque\xf1os. Podr\xe1s actualizarlos a edificios normales m\xe1s adelante."
                         },
-                        welcome: "\xa1Hola! \xa1Bienvenido a Centro de Mando MX!  \xa1Te dar\xe9 algunas lecciones para que empieces tu carrera en los servicios de emergencia con el pie derecho!"
+                        welcome: "\xa1Bienvenidos a Centro de Mando! Al trabajar en un centro de despacho de servicios de emergencia, usted atiende llamadas de emergencia para ayudar y proteger a la ciudadan\xeda. Para ello, construyes edificios y env\xedas varios tipos de veh\xedculos y personal capacitado a una variedad de misiones."
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Este es el men\xfa de despachos. \xa1Desde aqu\xed puedes enviar a tus unidades a misiones!",
-                            dispatch_menu_buttons: "\xa1Estos son los dos botones de despacho! El primero, \xabDespachar\xbb, env\xeda a las unidades seleccionadas a la misi\xf3n. El segundo hace lo mismo que el primero, pero va a la siguiente misi\xf3n. Por ahora, haz clic en el primer bot\xf3n.",
-                            dispatch_menu_mission_general: "Aqu\xed puedes ver la informaci\xf3n general de la misi\xf3n; es decir, el nombre, la direcci\xf3n y el \xedcono de la misi\xf3n. El \xedcono del hombrecito aparece y reemplaza la estrella peque\xf1a en las misiones donde ya participaste.",
-                            dispatch_menu_mission_progress: "Aqu\xed puedes ver el progreso de la misi\xf3n, adem\xe1s de la cantidad de personal en el sitio \xa1y el tiempo restante para cumplir la misi\xf3n!",
-                            dispatch_menu_mission_specific: "Aqu\xed puedes ver m\xe1s datos sobre la misi\xf3n, qu\xe9 unidades est\xe1n respondiendo al llamado y cu\xe1les ya est\xe1n en el lugar.",
-                            dispatch_menu_vehicle_list: "Esta es la lista de los veh\xedculos disponibles. Selecciona los veh\xedculos aqu\xed. \xa1Selecciona un veh\xedculo haciendo clic sobre \xe9l!"
+                            dispatch_menu: "Esta es la ventana de gesti\xf3n de la emergencia. Aqu\xed puedes enviar veh\xedculos a misiones.",
+                            dispatch_menu_buttons: "Env\xeda un veh\xedculo a una misi\xf3n haciendo clic en el bot\xf3n de env\xedo. Tan pronto como tengas m\xe1s misiones podr\xe1s usar el bot\xf3n siguiente para pasar a la siguiente misi\xf3n.",
+                            dispatch_menu_mission_general: 'Aqu\xed podr\xe1s encontrar informaci\xf3n general sobre la misi\xf3n. Siempre que no est\xe9s involucrado en la misi\xf3n, aparecer\xe1 frente a ella <span class="glyphicon glyphicon-asterisk"></span>, una vez que hayas enviado el primer veh\xedculo <span class="glyphicon glyphicon-user"></span>.',
+                            dispatch_menu_mission_progress: "Aqu\xed puedes ver el progreso de la misi\xf3n. Aqu\xed puedes ver qu\xe9 veh\xedculos est\xe1n en el lugar y cu\xe1nto tiempo queda para completar la misi\xf3n.",
+                            dispatch_menu_mission_specific: "Aqu\xed puede ver qu\xe9 veh\xedculos se encuentran en camino hacia o en el lugar de la misi\xf3n. El n\xfamero delante de su veh\xedculo muestra su estado.",
+                            dispatch_menu_vehicle_list: "Aqu\xed puede ver todos los veh\xedculos disponibles para la misi\xf3n. Seleccione un veh\xedculo haciendo clic en la casilla de verificaci\xf3n junto a \xe9l."
                         },
                         mobile: {
-                            dispatch_menu: "Este es el men\xfa de despachos. \xa1Desde aqu\xed puedes enviar a tus unidades a misiones!",
-                            dispatch_menu_buttons: "\xa1Estos son los dos botones de despacho! El primero, \xabDespachar\xbb, env\xeda a las unidades seleccionadas a la misi\xf3n. El segundo hace lo mismo que el primero, pero va a la siguiente misi\xf3n. Por ahora, haz clic en el primer bot\xf3n.",
-                            dispatch_menu_mission_general: "Aqu\xed puedes ver la informaci\xf3n general de la misi\xf3n; es decir, el nombre, la direcci\xf3n y el \xedcono de la misi\xf3n. El \xedcono del hombrecito aparece y reemplaza la estrella peque\xf1a en las misiones donde ya participaste.",
-                            dispatch_menu_mission_progress: "Aqu\xed puedes ver el progreso de la misi\xf3n, adem\xe1s de la cantidad de personal en el sitio \xa1y el tiempo restante para cumplir la misi\xf3n!",
-                            dispatch_menu_mission_specific: "Aqu\xed puedes ver m\xe1s datos sobre la misi\xf3n, qu\xe9 unidades est\xe1n respondiendo al llamado y cu\xe1les ya est\xe1n en el lugar.",
-                            dispatch_menu_vehicle_list: "Esta es la lista de los veh\xedculos disponibles. Selecciona los veh\xedculos aqu\xed. \xa1Selecciona un veh\xedculo haciendo clic sobre \xe9l!"
+                            dispatch_menu: "Esta es la ventana de gesti\xf3n de la emergencia. Aqu\xed puedes enviar veh\xedculos a misiones.",
+                            dispatch_menu_buttons: "Env\xeda un veh\xedculo a una misi\xf3n haciendo clic en el bot\xf3n de env\xedo. Tan pronto como tengas m\xe1s misiones podr\xe1s usar el bot\xf3n siguiente para pasar a la siguiente misi\xf3n.",
+                            dispatch_menu_mission_general: 'Aqu\xed podr\xe1s encontrar informaci\xf3n general sobre la misi\xf3n. Siempre que no est\xe9s involucrado en la misi\xf3n, aparecer\xe1 frente a ella <span class="glyphicon glyphicon-asterisk"></span>, una vez que hayas enviado el primer veh\xedculo <span class="glyphicon glyphicon-user"></span>.',
+                            dispatch_menu_mission_progress: "Aqu\xed puedes ver el progreso de la misi\xf3n. Aqu\xed puedes ver qu\xe9 veh\xedculos est\xe1n en el lugar y cu\xe1nto tiempo queda para completar la misi\xf3n.",
+                            dispatch_menu_mission_specific: "Aqu\xed puede ver qu\xe9 veh\xedculos se encuentran en camino hacia o en el lugar de la misi\xf3n. El n\xfamero delante de su veh\xedculo muestra su estado.",
+                            dispatch_menu_vehicle_list: "Aqu\xed puede ver todos los veh\xedculos disponibles para la misi\xf3n. Seleccione un veh\xedculo haciendo clic en la casilla de verificaci\xf3n junto a \xe9l."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "Ahora aprenderemos a lidiar con los incidentes. \xa1Abre el men\xfa de despachos haciendo clic en el bot\xf3n \xabDespachar\xbb!",
-                            first_mission: "\xa1Muy bien! \xa1Construiste tu primer edificio! Mira, \xa1te reportaron las primeras misiones!"
+                            dispatch_button: 'Haga clic en el bot\xf3n "Enviar" para realizar la misi\xf3n.',
+                            first_mission: "Tu primer edificio est\xe1 listo. \xa1Tambi\xe9n recibiste tu primera misi\xf3n!"
                         },
                         mobile: {
-                            dispatch_button: "Ahora aprenderemos a lidiar con los incidentes. \xa1Abre el men\xfa de despachos haciendo clic en el bot\xf3n \xabDespachar\xbb!",
-                            first_mission: "\xa1Muy bien! \xa1Construiste tu primer edificio! Mira, \xa1te reportaron las primeras misiones!"
+                            dispatch_button: 'Haga clic en el bot\xf3n "Enviar" para realizar la misi\xf3n.',
+                            first_mission: "Tu primer edificio est\xe1 listo. \xa1Tambi\xe9n recibiste tu primera misi\xf3n!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "\xa1Grandioso! \xa1Vas en camino a convertirte en un asombroso Centro de mando MX! \xa1Aqu\xed tienes %{coins} monedas para ayudarte a empezar! </br> El equipo de Centro de Mando MX"
+                        general: "Ahora est\xe1 listo para ocuparse usted mismo de su misi\xf3n. Para ayudarte a comenzar con tus misiones y expansi\xf3n, recibes %{coins} monedas. \xa1Buena suerte!"
                     },
                     mobile: {
-                        general: "\xa1Grandioso! \xa1Vas en camino a convertirte en un asombroso Centro de mando MX! \xa1Aqu\xed tienes %{coins} monedas para ayudarte a empezar! </br> El equipo de Centro de Mando MX"
+                        general: "Ahora est\xe1 listo para ocuparse usted mismo de su misi\xf3n. Para ayudarte a comenzar con tus misiones y expansi\xf3n, recibes %{coins} monedas. \xa1Buena suerte!"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "En caso de dudas, consulta las preguntas frecuentes dentro del juego o visita los foros del juego \xa1o nuestra p\xe1gina de Facebook!",
-                        general: "Como siguiente paso, te recomendamos construir un centro de despachos y, tan pronto sea posible, nuevas estaciones, ya que la cantidad m\xe1xima de misiones ser\xe1 igual a la cantidad m\xe1xima de estaciones de un determinado tipo (polic\xeda, bomberos, ambulancias) m\xe1s 1; p. ej., 5 de bomberos y 3 de ambulancias = 6 misiones.",
-                        join_alliance: "Asimismo, unirte a una alianza te ser\xe1 de gran ayuda, sobre todo, al inicio, por lo que tambi\xe9n te lo recomendamos.",
-                        summary: "\xa1Estas son las bases de Centro de Mando MX! Completa misiones, obt\xe9n cr\xe9ditos, compra m\xe1s unidades, repite. \xa1Divi\xe9rtete jugando! </br> El equipo de Centro de Mando MX"
+                        contact: "Si amplia su edificio, tendr\xe1 m\xe1s lugares para veh\xedculos nuevos.",
+                        general: "Recibir\xe1s cr\xe9ditos por terminar una misi\xf3n. Al ganar cr\xe9ditos te acercas a tu pr\xf3ximo ascenso.",
+                        join_alliance: "Obtener un ascenso a un nuevo rango y construir edificios desbloquea nuevas caracter\xedsticas como tipos de misiones y veh\xedculos.",
+                        summary: "Puedes unirte a una alianza para realizar misiones con otros jugadores. Tambi\xe9n hay eventos de alianza regulares en los que puedes participar."
                     },
                     mobile: {
-                        contact: "En caso de dudas, consulta las preguntas frecuentes dentro del juego o visita los foros del juego \xa1o nuestra p\xe1gina de Facebook!",
-                        general: "Como siguiente paso, te recomendamos construir un centro de despachos y, tan pronto sea posible, nuevas estaciones, ya que la cantidad m\xe1xima de misiones ser\xe1 igual a la cantidad m\xe1xima de estaciones de un determinado tipo (polic\xeda, bomberos, ambulancias) m\xe1s 1; p. ej., 5 de bomberos y 3 de ambulancias = 6 misiones.",
-                        join_alliance: "Asimismo, unirte a una alianza te ser\xe1 de gran ayuda, sobre todo, al inicio, por lo que tambi\xe9n te lo recomendamos.",
-                        summary: "\xa1Estas son las bases de Centro de Mando MX! Completa misiones, obt\xe9n cr\xe9ditos, compra m\xe1s unidades, repite. \xa1Divi\xe9rtete jugando! </br> El equipo de Centro de Mando MX"
+                        contact: "Si amplia su edificio, tendr\xe1 m\xe1s lugares para veh\xedculos nuevos.",
+                        general: "Recibir\xe1s cr\xe9ditos por terminar una misi\xf3n. Al ganar cr\xe9ditos te acercas a tu pr\xf3ximo ascenso.",
+                        join_alliance: "Obtener un ascenso a un nuevo rango y construir edificios desbloquea nuevas caracter\xedsticas como tipos de misiones y veh\xedculos.",
+                        summary: "Puedes unirte a una alianza para realizar misiones con otros jugadores. Tambi\xe9n hay eventos de alianza regulares en los que puedes participar."
                     }
                 }
             },
@@ -12872,80 +12566,80 @@ Object.values || (Object.values = function (e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: "\u6b21\u306f\u65b0\u3057\u3044\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u306b\u540d\u524d\u3092\u4ed8\u3051\u3066\u304f\u308c\uff01\u5206\u304b\u308a\u3084\u3059\u304f\u3001\u4e8c\u304b\u6240\u76ee\u4ee5\u964d\u3082\u3064\u3051\u3084\u3059\u3044\u540d\u524d\u306b\u3057\u3088\u3046\uff01\u4f8b\u3048\u3070\u3001\u300c\u6d88\u9632\u5c40#0001\u300d\u304c\u4e00\u3064\u3068\u3057\u3066\u6319\u3052\u3089\u308c\u308b\u3002\u3067\u304d\u305f\u3089\u300c\u6b21\u3078\u300d\u3092\u30af\u30ea\u30c3\u30af\u3060\uff01",
-                            build_with_credits: "\u4eca\u5ea6\u306f\u30af\u30ec\u30b8\u30c3\u30c8\u3092\u4f7f\u3063\u3066\u5efa\u7269\u3092\u5efa\u3066\u3088\u3046\uff01",
-                            new_building: "\u300c\u65b0\u305f\u306a\u5efa\u7269\u300d\u3092\u30af\u30ea\u30c3\u30af\uff01",
-                            select_building: "\u30b9\u30bf\u30fc\u30c8\u3057\u305f\u3044\u5efa\u7269\u306e\u7a2e\u985e\u3092\u9078\u307c\u3046\u3002\u6d88\u9632\u304b\u3089\u59cb\u3081\u308b\u306e\u304c\u304a\u52e7\u3081\u3060\uff01\u3068\u308a\u3042\u3048\u305a\u3001\u5c0f\u3055\u3044\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u304b\u3089\u59cb\u3081\u308b\u3068\u3044\u3044\u305e\uff01",
-                            select_position: "\u6700\u521d\u306e\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u3092\u5efa\u3066\u305f\u3044\u6240\u306b\u9752\u8272\u306e\u30de\u30fc\u30ab\u30fc\u3092\u52d5\u304b\u305d\u3046\uff01"
+                            add_name: "\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u306e\u540d\u524d\u3092\u6c7a\u3081\u3066\u304f\u3060\u3055\u3044\u3002\u5f8c\u3067\u540d\u524d\u3092\u5909\u66f4\u3059\u308b\u3053\u3068\u3082\u3067\u304d\u307e\u3059\u3002",
+                            build_with_credits: "\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u3092\u5efa\u8a2d\u3059\u308b\u306b\u306f\u3001\u30b2\u30fc\u30e0\u306e\u901a\u8ca8\u3067\u3042\u308b\u30af\u30ec\u30b8\u30c3\u30c8\u304c\u5fc5\u8981\u3067\u3059\u3002\u30af\u30ec\u30b8\u30c3\u30c8\u306f\u30df\u30c3\u30b7\u30e7\u30f3\u3001\u30c7\u30a4\u30ea\u30fc\u30ed\u30b0\u30a4\u30f3\u3001\u30bf\u30b9\u30af\u3001\u30a4\u30d9\u30f3\u30c8\u3092\u901a\u3058\u3066\u7372\u5f97\u3067\u304d\u307e\u3059\u3002",
+                            new_building: "\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u306e\u5efa\u8a2d\u30d7\u30ed\u30bb\u30b9\u3092\u958b\u59cb\u3059\u308b\u3002",
+                            select_building: "\u6d88\u9632\u7f72\u3092\u5efa\u3066\u308b\u304b\u8b66\u5bdf\u7f72\u3092\u5efa\u3066\u308b\u304b\u3092\u6c7a\u3081\u308b\u3002\u6700\u521d\u306e\u3046\u3061\u306f\u5c0f\u3055\u306a\u7f72\u3067\u5341\u5206\u3067\u3059\u3002\u5f8c\u3067\u666e\u901a\u306e\u7f72\u306b\u30a2\u30c3\u30d7\u30b0\u30ec\u30fc\u30c9\u3067\u304d\u307e\u3059\u3002",
+                            select_position: "\u3092\u30af\u30ea\u30c3\u30af\u3057\u3001\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u3092\u8a2d\u7f6e\u3057\u305f\u3044\u5834\u6240\u306b\u30ed\u30b1\u30fc\u30b7\u30e7\u30f3\u30de\u30fc\u30ab\u30fc\u3092\u79fb\u52d5\u3057\u307e\u3059\u3002"
                         },
-                        pick_location: "\u307e\u305a\u306f\u30b9\u30bf\u30fc\u30c8\u5730\u70b9\u3092\u9078\u3076\uff01\u30b9\u30bf\u30fc\u30c8\u3057\u305f\u3044\u5834\u6240\u306e\u540d\u524d\u3092\u691c\u7d22\u30d0\u30fc\u306b\u5165\u529b\u3059\u308b\u304b\u3001\u5730\u56f3\u304b\u3089\u898b\u3064\u3051\u3088\u3046\uff01\u541b\u306e\u51fa\u8eab\u5730\u306f\u3069\u3046\u304b\u306a\uff1f",
-                        welcome: "\u30df\u30c3\u30b7\u30e7\u30f3\u30c1\u30fc\u30d5\u3078\u3088\u3046\u3053\u305d\uff01\u7dca\u6025\u30b5\u30fc\u30d3\u30b9\u30ad\u30e3\u30ea\u30a2\u3092\u30b9\u30bf\u30fc\u30c8\u3059\u308b\u305f\u3081\u306e\u30ec\u30c3\u30b9\u30f3\u3092\u3057\u3088\u3046\u3002"
+                        pick_location: "\u6700\u521d\u306e\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u3092\u5efa\u8a2d\u3059\u308b\u5834\u6240\u3092\u9078\u3076\u3002",
+                        welcome: "\u30df\u30c3\u30b7\u30e7\u30f3\u30c1\u30fc\u30d5 - \u30b5\u30a4\u30f3\u30a2\u30c3\u30d7\u3078\u3088\u3046\u3053\u305d\uff01\u7dca\u6025\u30b5\u30fc\u30d3\u30b9\u306e\u6d3e\u9063\u30bb\u30f3\u30bf\u30fc\u3067\u50cd\u304f\u3042\u306a\u305f\u306f\u3001\u5e02\u6c11\u3092\u52a9\u3051\u3001\u4fdd\u8b77\u3059\u308b\u305f\u3081\u306b\u7dca\u6025\u901a\u5831\u306b\u5bfe\u5fdc\u3057\u307e\u3059\u3002\u305d\u306e\u305f\u3081\u306b\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u3092\u5efa\u8a2d\u3057\u3001\u3055\u307e\u3056\u307e\u306a\u7a2e\u985e\u306e\u8eca\u4e21\u3084\u8a13\u7df4\u3092\u53d7\u3051\u305f\u4eba\u54e1\u3092\u3055\u307e\u3056\u307e\u306a\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u6d3e\u9063\u3057\u307e\u3059\u3002"
                     },
                     mobile: {
                         build_building: {
-                            add_name: "\u6b21\u306f\u65b0\u3057\u3044\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u306b\u540d\u524d\u3092\u4ed8\u3051\u3066\u304f\u308c\uff01\u5206\u304b\u308a\u3084\u3059\u304f\u3001\u4e8c\u304b\u6240\u76ee\u4ee5\u964d\u3082\u3064\u3051\u3084\u3059\u3044\u540d\u524d\u306b\u3057\u3088\u3046\uff01\u4f8b\u3048\u3070\u3001\u300c\u6d88\u9632\u5c40#0001\u300d\u304c\u4e00\u3064\u3068\u3057\u3066\u6319\u3052\u3089\u308c\u308b\u3002\u3067\u304d\u305f\u3089\u300c\u6b21\u3078\u300d\u3092\u30af\u30ea\u30c3\u30af\u3060\uff01",
-                            build_with_credits: "\u4eca\u5ea6\u306f\u30af\u30ec\u30b8\u30c3\u30c8\u3092\u4f7f\u3063\u3066\u5efa\u7269\u3092\u5efa\u3066\u3088\u3046\uff01",
-                            new_building: "\u307e\u305a\u306f\u30b9\u30bf\u30fc\u30c8\u5730\u70b9\u3092\u9078\u3093\u3067\u3001\u6700\u521d\u306e\u5efa\u8a2d\u3092\u59cb\u3081\u3088\u3046\uff01<br /> <br /> \u300c\u65b0\u305f\u306a\u5efa\u7269\u300d\u3092\u30af\u30ea\u30c3\u30af\uff01",
-                            select_building: "\u30b9\u30bf\u30fc\u30c8\u3057\u305f\u3044\u5efa\u7269\u306e\u7a2e\u985e\u3092\u9078\u307c\u3046\u3002\u6d88\u9632\u304b\u3089\u59cb\u3081\u308b\u306e\u304c\u304a\u52e7\u3081\u3060\uff01\u3068\u308a\u3042\u3048\u305a\u3001\u5c0f\u3055\u3044\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u304b\u3089\u59cb\u3081\u308b\u3068\u3044\u3044\u305e\uff01"
+                            add_name: "\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u306e\u540d\u524d\u3092\u6c7a\u3081\u3066\u304f\u3060\u3055\u3044\u3002\u5f8c\u3067\u540d\u524d\u3092\u5909\u66f4\u3059\u308b\u3053\u3068\u3082\u3067\u304d\u307e\u3059\u3002",
+                            build_with_credits: "\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u3092\u5efa\u8a2d\u3059\u308b\u306b\u306f\u3001\u30b2\u30fc\u30e0\u306e\u901a\u8ca8\u3067\u3042\u308b\u30af\u30ec\u30b8\u30c3\u30c8\u304c\u5fc5\u8981\u3067\u3059\u3002\u30af\u30ec\u30b8\u30c3\u30c8\u306f\u30df\u30c3\u30b7\u30e7\u30f3\u3001\u30c7\u30a4\u30ea\u30fc\u30ed\u30b0\u30a4\u30f3\u3001\u30bf\u30b9\u30af\u3001\u30a4\u30d9\u30f3\u30c8\u3092\u901a\u3058\u3066\u7372\u5f97\u3067\u304d\u307e\u3059\u3002",
+                            new_building: "\u6700\u521d\u306e\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u306e\u5efa\u8a2d\u304b\u3089\u59cb\u3081\u307e\u3057\u3087\u3046\u3002\u5834\u6240\u306f\u624b\u52d5\u3067\u5165\u529b\u3059\u308b\u304b\u3001\u5730\u56f3\u4e0a\u306e\u4f4d\u7f6e\u30de\u30fc\u30ab\u30fc\u3092\u52d5\u304b\u3057\u3066\u9078\u3076\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002\u304a\u4f7f\u3044\u306e\u30aa\u30da\u30ec\u30fc\u30c6\u30a3\u30f3\u30b0\u30fb\u30b7\u30b9\u30c6\u30e0\u306b\u3088\u3063\u3066\u306f\u3001\u30de\u30fc\u30ab\u30fc\u3092\u52d5\u304b\u3059\u524d\u306b\u3057\u3070\u3089\u304f\u9577\u62bc\u3057\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002",
+                            select_building: "\u6d88\u9632\u7f72\u3092\u5efa\u3066\u308b\u304b\u8b66\u5bdf\u7f72\u3092\u5efa\u3066\u308b\u304b\u3092\u6c7a\u3081\u308b\u3002\u6700\u521d\u306e\u3046\u3061\u306f\u5c0f\u3055\u306a\u7f72\u3067\u5341\u5206\u3067\u3059\u3002\u5f8c\u3067\u666e\u901a\u306e\u7f72\u306b\u30a2\u30c3\u30d7\u30b0\u30ec\u30fc\u30c9\u3067\u304d\u307e\u3059\u3002"
                         },
-                        welcome: "\u30df\u30c3\u30b7\u30e7\u30f3\u30c1\u30fc\u30d5\u3078\u3088\u3046\u3053\u305d\uff01\u7dca\u6025\u30b5\u30fc\u30d3\u30b9\u30ad\u30e3\u30ea\u30a2\u3092\u30b9\u30bf\u30fc\u30c8\u3059\u308b\u305f\u3081\u306e\u30ec\u30c3\u30b9\u30f3\u3092\u3057\u3088\u3046\u3002"
+                        welcome: "\u30df\u30c3\u30b7\u30e7\u30f3\u30c1\u30fc\u30d5 - \u30b5\u30a4\u30f3\u30a2\u30c3\u30d7\u3078\u3088\u3046\u3053\u305d\uff01\u7dca\u6025\u30b5\u30fc\u30d3\u30b9\u306e\u6d3e\u9063\u30bb\u30f3\u30bf\u30fc\u3067\u50cd\u304f\u3042\u306a\u305f\u306f\u3001\u5e02\u6c11\u3092\u52a9\u3051\u3001\u4fdd\u8b77\u3059\u308b\u305f\u3081\u306b\u7dca\u6025\u901a\u5831\u306b\u5bfe\u5fdc\u3057\u307e\u3059\u3002\u305d\u306e\u305f\u3081\u306b\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u3092\u5efa\u8a2d\u3057\u3001\u3055\u307e\u3056\u307e\u306a\u7a2e\u985e\u306e\u8eca\u4e21\u3084\u8a13\u7df4\u3092\u53d7\u3051\u305f\u4eba\u54e1\u3092\u3055\u307e\u3056\u307e\u306a\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u6d3e\u9063\u3057\u307e\u3059\u3002"
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "\u3053\u308c\u304c\u6307\u4ee4\u30e1\u30cb\u30e5\u30fc\u3060\u3002\u3053\u3053\u304b\u3089\u30e6\u30cb\u30c3\u30c8\u3092\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u6d3e\u9063\u3059\u308b\u306e\u3060\uff01",
-                            dispatch_menu_buttons: "\u6307\u4ee4\u30dc\u30bf\u30f3\u306f2\u3064\u3042\u308b\uff01\u4e00\u3064\u76ee\u306f\u300c\u6307\u4ee4\u300d\u3060\u3002\u9078\u629e\u3057\u305f\u30e6\u30cb\u30c3\u30c8\u3092\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u6d3e\u9063\u3059\u308b\u30022\u3064\u76ee\u306f\u6700\u521d\u3068\u540c\u3058\u3060\u304c\u3001\u6b21\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u3078\u5411\u304b\u3046\u3002\u3072\u3068\u307e\u305a\u3001\u6700\u521d\u306e\u30dc\u30bf\u30f3\u3092\u30af\u30ea\u30c3\u30af\u3057\u3088\u3046\u3002",
-                            dispatch_menu_mission_general: "\u3053\u3053\u3067\u306f\u3001\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u95a2\u3059\u308b\u5168\u822c\u7684\u306a\u60c5\u5831\u3001\u3064\u307e\u308a\u30df\u30c3\u30b7\u30e7\u30f3\u306e\u540d\u524d\u3001\u4f4f\u6240\u3001\u30a2\u30a4\u30b3\u30f3\u3092\u78ba\u8a8d\u3067\u304d\u308b\u3002\u65e2\u306b\u53c2\u52a0\u3057\u3066\u3044\u308b\u30df\u30c3\u30b7\u30e7\u30f3\u306f\u3001\u5c0f\u3055\u306a\u661f\u306e\u30a2\u30a4\u30b3\u30f3\u304c\u4eba\u306e\u5f62\u306b\u306a\u308b\u3002",
-                            dispatch_menu_mission_progress: "\u3053\u3053\u3067\u306f\u3001\u3053\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u304a\u3051\u308b\u9032\u6357\u72b6\u6cc1\u3001\u73fe\u5834\u306b\u3044\u308b\u4eba\u54e1\u6570\u3001\u30df\u30c3\u30b7\u30e7\u30f3\u306e\u6b8b\u308a\u6642\u9593\u3092\u898b\u308b\u3053\u3068\u304c\u3067\u304d\u308b\uff01",
-                            dispatch_menu_mission_specific: "\u3053\u3053\u3067\u306f\u3001\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u95a2\u3059\u308b\u8a73\u7d30\u306a\u60c5\u5831\u3001\u901a\u5831\u306b\u5fdc\u7b54\u3057\u3066\u3044\u308b\u30e6\u30cb\u30c3\u30c8\u3001\u65e2\u306b\u73fe\u5834\u6d3e\u9063\u3055\u308c\u3066\u3044\u308b\u30e6\u30cb\u30c3\u30c8\u3092\u898b\u308b\u3053\u3068\u304c\u3067\u304d\u308b\u3002",
-                            dispatch_menu_vehicle_list: "\u3053\u308c\u306f\u4f7f\u3048\u308b\u8eca\u4e21\u306e\u4e00\u89a7\u3067\u3042\u308b\u3002\u3053\u3053\u304b\u3089\u8eca\u4e21\u3092\u9078\u3079\u308b\u3002\u8eca\u4e21\u3092\u30af\u30ea\u30c3\u30af\u3057\u3066\u6c7a\u5b9a\uff01"
+                            dispatch_menu: "\u3053\u308c\u304c\u30c7\u30a3\u30b9\u30d1\u30c3\u30c1\u30fb\u30a6\u30a3\u30f3\u30c9\u30a6\u3060\u3002\u3053\u3053\u3067\u8eca\u4e21\u3092\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u6d3e\u9063\u3059\u308b\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002",
+                            dispatch_menu_buttons: "\u914d\u8eca\u30dc\u30bf\u30f3\u3092\u30af\u30ea\u30c3\u30af\u3057\u3066\u3001\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u8eca\u4e21\u3092\u9001\u308a\u307e\u3059\u3002\u30df\u30c3\u30b7\u30e7\u30f3\u304c\u5897\u3048\u308c\u3070\u3001\u305d\u306e\u6a2a\u306e\u30dc\u30bf\u30f3\u3067\u3055\u3089\u306b\u6b21\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u884c\u304f\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002",
+                            dispatch_menu_mission_general: '\u3053\u3053\u306b\u306f\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u95a2\u3059\u308b\u4e00\u822c\u7684\u306a\u60c5\u5831\u304c\u63b2\u8f09\u3055\u308c\u3066\u3044\u308b\u3002\u3042\u306a\u305f\u304c\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u53c2\u52a0\u3057\u3066\u3044\u306a\u3044\u9650\u308a\u3001<span class="glyphicon glyphicon-asterisk"></span> \u304c\u30df\u30c3\u30b7\u30e7\u30f3\u540d\u306e\u524d\u306b\u8868\u793a\u3055\u308c\u308b\u3002 <span class="glyphicon glyphicon-user"></span> \u6700\u521d\u306e\u8eca\u4e21\u3092\u9001\u308b\u3068\u3059\u3050\u306b\u3001<span class="glyphicon glyphicon-user"></span>.',
+                            dispatch_menu_mission_progress: "\u3053\u3053\u3067\u30df\u30c3\u30b7\u30e7\u30f3\u306e\u9032\u6357\u72b6\u6cc1\u3092\u898b\u308b\u3053\u3068\u304c\u3067\u304d\u308b\u3002\u8981\u54e1\u304c\u73fe\u5834\u306b\u5230\u7740\u3059\u308b\u3068\u3059\u3050\u306b\u3053\u3053\u306b\u8868\u793a\u3055\u308c\u3001\u30df\u30c3\u30b7\u30e7\u30f3\u5b8c\u4e86\u307e\u3067\u306b\u307e\u3060\u3069\u308c\u3060\u3051\u306e\u6642\u9593\u304c\u5fc5\u8981\u304b\u3092\u78ba\u8a8d\u3067\u304d\u308b\u3002",
+                            dispatch_menu_mission_specific: "\u3053\u3053\u3067\u306f\u3001\u3069\u306e\u8eca\u4e21\u304c\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u5411\u304b\u3046\u9014\u4e2d\u304b\u3001\u307e\u305f\u306f\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u5230\u7740\u3057\u305f\u304b\u3092\u78ba\u8a8d\u3059\u308b\u3053\u3068\u304c\u3067\u304d\u308b\u3002\u8eca\u4e21\u306e\u524d\u306e\u6570\u5b57\u306f\u3001\u305d\u306e\u914d\u5099\u72b6\u6cc1\u3092\u793a\u3057\u3066\u3044\u307e\u3059\u3002",
+                            dispatch_menu_vehicle_list: "\u3053\u3053\u3067\u306f\u3001\u30df\u30c3\u30b7\u30e7\u30f3\u3067\u4f7f\u7528\u53ef\u80fd\u306a\u3059\u3079\u3066\u306e\u8eca\u4e21\u3092\u898b\u308b\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002\u305d\u306e\u6a2a\u306b\u3042\u308b\u30c1\u30a7\u30c3\u30af\u30dc\u30c3\u30af\u30b9\u3092\u30af\u30ea\u30c3\u30af\u3057\u3066\u8eca\u4e21\u3092\u9078\u629e\u3057\u307e\u3059\u3002"
                         },
                         mobile: {
-                            dispatch_menu: "\u3053\u308c\u304c\u6307\u4ee4\u30e1\u30cb\u30e5\u30fc\u3060\u3002\u3053\u3053\u304b\u3089\u30e6\u30cb\u30c3\u30c8\u3092\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u6d3e\u9063\u3059\u308b\u306e\u3060\uff01",
-                            dispatch_menu_buttons: "\u6307\u4ee4\u30dc\u30bf\u30f3\u306f2\u3064\u3042\u308b\uff01\u4e00\u3064\u76ee\u306f\u300c\u6307\u4ee4\u300d\u3060\u3002\u9078\u629e\u3057\u305f\u30e6\u30cb\u30c3\u30c8\u3092\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u6d3e\u9063\u3059\u308b\u30022\u3064\u76ee\u306f\u6700\u521d\u3068\u540c\u3058\u3060\u304c\u3001\u6b21\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u3078\u5411\u304b\u3046\u3002\u3072\u3068\u307e\u305a\u3001\u6700\u521d\u306e\u30dc\u30bf\u30f3\u3092\u30af\u30ea\u30c3\u30af\u3057\u3088\u3046\u3002",
-                            dispatch_menu_mission_general: "\u3053\u3053\u3067\u306f\u3001\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u95a2\u3059\u308b\u5168\u822c\u7684\u306a\u60c5\u5831\u3001\u3064\u307e\u308a\u30df\u30c3\u30b7\u30e7\u30f3\u306e\u540d\u524d\u3001\u4f4f\u6240\u3001\u30a2\u30a4\u30b3\u30f3\u3092\u78ba\u8a8d\u3067\u304d\u308b\u3002\u65e2\u306b\u53c2\u52a0\u3057\u3066\u3044\u308b\u30df\u30c3\u30b7\u30e7\u30f3\u306f\u3001\u5c0f\u3055\u306a\u661f\u306e\u30a2\u30a4\u30b3\u30f3\u304c\u4eba\u306e\u5f62\u306b\u306a\u308b\u3002",
-                            dispatch_menu_mission_progress: "\u3053\u3053\u3067\u306f\u3001\u3053\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u304a\u3051\u308b\u9032\u6357\u72b6\u6cc1\u3001\u73fe\u5834\u306b\u3044\u308b\u4eba\u54e1\u6570\u3001\u30df\u30c3\u30b7\u30e7\u30f3\u306e\u6b8b\u308a\u6642\u9593\u3092\u898b\u308b\u3053\u3068\u304c\u3067\u304d\u308b\uff01",
-                            dispatch_menu_mission_specific: "\u3053\u3053\u3067\u306f\u3001\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u95a2\u3059\u308b\u8a73\u7d30\u306a\u60c5\u5831\u3001\u901a\u5831\u306b\u5fdc\u7b54\u3057\u3066\u3044\u308b\u30e6\u30cb\u30c3\u30c8\u3001\u65e2\u306b\u73fe\u5834\u6d3e\u9063\u3055\u308c\u3066\u3044\u308b\u30e6\u30cb\u30c3\u30c8\u3092\u898b\u308b\u3053\u3068\u304c\u3067\u304d\u308b\u3002",
-                            dispatch_menu_vehicle_list: "\u3053\u308c\u306f\u4f7f\u3048\u308b\u8eca\u4e21\u306e\u4e00\u89a7\u3067\u3042\u308b\u3002\u3053\u3053\u304b\u3089\u8eca\u4e21\u3092\u9078\u3079\u308b\u3002\u8eca\u4e21\u3092\u30af\u30ea\u30c3\u30af\u3057\u3066\u6c7a\u5b9a\uff01"
+                            dispatch_menu: "\u3053\u308c\u304c\u30c7\u30a3\u30b9\u30d1\u30c3\u30c1\u30fb\u30a6\u30a3\u30f3\u30c9\u30a6\u3060\u3002\u3053\u3053\u3067\u8eca\u4e21\u3092\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u6d3e\u9063\u3059\u308b\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002",
+                            dispatch_menu_buttons: "\u914d\u8eca\u30dc\u30bf\u30f3\u3092\u30af\u30ea\u30c3\u30af\u3057\u3066\u3001\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u8eca\u4e21\u3092\u9001\u308a\u307e\u3059\u3002\u30df\u30c3\u30b7\u30e7\u30f3\u304c\u5897\u3048\u308c\u3070\u3001\u305d\u306e\u6a2a\u306e\u30dc\u30bf\u30f3\u3067\u3055\u3089\u306b\u6b21\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u884c\u304f\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002",
+                            dispatch_menu_mission_general: '\u3053\u3053\u306b\u306f\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u95a2\u3059\u308b\u4e00\u822c\u7684\u306a\u60c5\u5831\u304c\u63b2\u8f09\u3055\u308c\u3066\u3044\u308b\u3002\u3042\u306a\u305f\u304c\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u53c2\u52a0\u3057\u3066\u3044\u306a\u3044\u9650\u308a\u3001<span class="glyphicon glyphicon-asterisk"></span> \u304c\u30df\u30c3\u30b7\u30e7\u30f3\u540d\u306e\u524d\u306b\u8868\u793a\u3055\u308c\u308b\u3002 <span class="glyphicon glyphicon-user"></span> \u6700\u521d\u306e\u8eca\u4e21\u3092\u9001\u308b\u3068\u3059\u3050\u306b\u3001<span class="glyphicon glyphicon-user"></span>.',
+                            dispatch_menu_mission_progress: "\u3053\u3053\u3067\u30df\u30c3\u30b7\u30e7\u30f3\u306e\u9032\u6357\u72b6\u6cc1\u3092\u898b\u308b\u3053\u3068\u304c\u3067\u304d\u308b\u3002\u8981\u54e1\u304c\u73fe\u5834\u306b\u5230\u7740\u3059\u308b\u3068\u3059\u3050\u306b\u3053\u3053\u306b\u8868\u793a\u3055\u308c\u3001\u30df\u30c3\u30b7\u30e7\u30f3\u5b8c\u4e86\u307e\u3067\u306b\u307e\u3060\u3069\u308c\u3060\u3051\u306e\u6642\u9593\u304c\u5fc5\u8981\u304b\u3092\u78ba\u8a8d\u3067\u304d\u308b\u3002",
+                            dispatch_menu_mission_specific: "\u3053\u3053\u3067\u306f\u3001\u3069\u306e\u8eca\u4e21\u304c\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u5411\u304b\u3046\u9014\u4e2d\u304b\u3001\u307e\u305f\u306f\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u5230\u7740\u3057\u305f\u304b\u3092\u78ba\u8a8d\u3059\u308b\u3053\u3068\u304c\u3067\u304d\u308b\u3002\u8eca\u4e21\u306e\u524d\u306e\u6570\u5b57\u306f\u3001\u305d\u306e\u914d\u5099\u72b6\u6cc1\u3092\u793a\u3057\u3066\u3044\u307e\u3059\u3002",
+                            dispatch_menu_vehicle_list: "\u3053\u3053\u3067\u306f\u3001\u30df\u30c3\u30b7\u30e7\u30f3\u3067\u4f7f\u7528\u53ef\u80fd\u306a\u3059\u3079\u3066\u306e\u8eca\u4e21\u3092\u898b\u308b\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002\u305d\u306e\u6a2a\u306b\u3042\u308b\u30c1\u30a7\u30c3\u30af\u30dc\u30c3\u30af\u30b9\u3092\u30af\u30ea\u30c3\u30af\u3057\u3066\u8eca\u4e21\u3092\u9078\u629e\u3057\u307e\u3059\u3002"
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "\u3053\u3053\u3067\u73fe\u5834\u5bfe\u5fdc\u306e\u65b9\u6cd5\u3092\u5b66\u307c\u3046\u3002\u300c\u6307\u4ee4\u300d\u30dc\u30bf\u30f3\u3092\u30af\u30ea\u30c3\u30af\u3057\u3066\u6307\u4ee4\u30e1\u30cb\u30e5\u30fc\u3092\u958b\u3044\u3066\u304f\u308c\uff01",
-                            first_mission: "\u3088\u3057\u3001\u6700\u521d\u306e\u5efa\u7269\u304c\u51fa\u6765\u305f\u306a\uff01\u6700\u521d\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u304c\u6765\u305f\u305e\uff01"
+                            dispatch_button: "\u307e\u305a\u300c\u6d3e\u9063\u300d\u30dc\u30bf\u30f3\u3092\u30af\u30ea\u30c3\u30af\u3057\u3066\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u53c2\u52a0\u3059\u308b\u3002",
+                            first_mission: "\u6700\u521d\u306e\u5efa\u7269\u304c\u5b8c\u6210\u3057\u307e\u3057\u305f\u3002\u6700\u521d\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u3082\u53d7\u3051\u53d6\u3063\u305f\uff01"
                         },
                         mobile: {
-                            dispatch_button: "\u3053\u3053\u3067\u73fe\u5834\u5bfe\u5fdc\u306e\u65b9\u6cd5\u3092\u5b66\u307c\u3046\u3002\u300c\u6307\u4ee4\u300d\u30dc\u30bf\u30f3\u3092\u30af\u30ea\u30c3\u30af\u3057\u3066\u6307\u4ee4\u30e1\u30cb\u30e5\u30fc\u3092\u958b\u3044\u3066\u304f\u308c\uff01",
-                            first_mission: "\u3088\u3057\u3001\u6700\u521d\u306e\u5efa\u7269\u304c\u51fa\u6765\u305f\u306a\uff01\u6700\u521d\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u304c\u6765\u305f\u305e\uff01"
+                            dispatch_button: "\u307e\u305a\u300c\u6d3e\u9063\u300d\u30dc\u30bf\u30f3\u3092\u30af\u30ea\u30c3\u30af\u3057\u3066\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u53c2\u52a0\u3059\u308b\u3002",
+                            first_mission: "\u6700\u521d\u306e\u5efa\u7269\u304c\u5b8c\u6210\u3057\u307e\u3057\u305f\u3002\u6700\u521d\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u3082\u53d7\u3051\u53d6\u3063\u305f\uff01"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "\u3044\u3044\u305e\u3002\u4e00\u6d41\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u30c1\u30fc\u30d5\u306b\u306a\u308c\u308b\u65e5\u306f\u8fd1\u3044\u306a\uff01\u30b3\u30a4\u30f3%{coins}\u679a\u3060\u3002\u30ad\u30e3\u30ea\u30a2\u306e\u30b9\u30bf\u30fc\u30c8\u306b\u5f79\u7acb\u3066\u3066\u304f\u308c\uff01</br> \u30df\u30c3\u30b7\u30e7\u30f3\u30c1\u30fc\u30d5\u30fb\u30c1\u30fc\u30e0\u3088\u308a"
+                        general: "\u3053\u308c\u3067\u3001\u3042\u306a\u305f\u4e00\u4eba\u3067\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u3053\u306a\u3059\u6e96\u5099\u304c\u6574\u3044\u307e\u3057\u305f\u3002\u30df\u30c3\u30b7\u30e7\u30f3\u306e\u958b\u59cb\u3068\u62e1\u5927\u306e\u305f\u3081\u306b\u3001%{coins}\u30b3\u30a4\u30f3\u3092\u5dee\u3057\u4e0a\u3052\u307e\u3059\u3002\u5e78\u904b\u3092\uff01"
                     },
                     mobile: {
-                        general: "\u3044\u3044\u305e\u3002\u4e00\u6d41\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u30c1\u30fc\u30d5\u306b\u306a\u308c\u308b\u65e5\u306f\u8fd1\u3044\u306a\uff01\u30b3\u30a4\u30f3%{coins}\u679a\u3060\u3002\u30ad\u30e3\u30ea\u30a2\u306e\u30b9\u30bf\u30fc\u30c8\u306b\u5f79\u7acb\u3066\u3066\u304f\u308c\uff01</br> \u30df\u30c3\u30b7\u30e7\u30f3\u30c1\u30fc\u30d5\u30fb\u30c1\u30fc\u30e0\u3088\u308a"
+                        general: "\u3053\u308c\u3067\u3001\u3042\u306a\u305f\u4e00\u4eba\u3067\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u3053\u306a\u3059\u6e96\u5099\u304c\u6574\u3044\u307e\u3057\u305f\u3002\u30df\u30c3\u30b7\u30e7\u30f3\u306e\u958b\u59cb\u3068\u62e1\u5927\u306e\u305f\u3081\u306b\u3001%{coins}\u30b3\u30a4\u30f3\u3092\u5dee\u3057\u4e0a\u3052\u307e\u3059\u3002\u5e78\u904b\u3092\uff01"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "\u5206\u304b\u3089\u306a\u3044\u3053\u3068\u304c\u3042\u3063\u305f\u3089\u3001\u30b2\u30fc\u30e0FAQ\u3092\u53c2\u7167\u3059\u308b\u304b\u3001\u30b2\u30fc\u30e0\u30d5\u30a9\u30fc\u30e9\u30e0\u304bFacebook\u30da\u30fc\u30b8\u3092\u8a2a\u306d\u3066\u304f\u308c\uff01",
-                        general: "\u6b21\u306e\u30b9\u30c6\u30c3\u30d7\u3067\u306f\u3001\u6307\u4ee4\u30bb\u30f3\u30bf\u30fc\u3092\u5efa\u8a2d\u3057\u3001\u305d\u306e\u5f8c\u3059\u3050\u306b\u65b0\u3057\u3044\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u3092\u5897\u3084\u3059\u3053\u3068\u3092\u304a\u52e7\u3081\u3059\u308b\u3002\u30df\u30c3\u30b7\u30e7\u30f3\u306e\u6700\u5927\u6570\uff1d\u5404\u7a2e\u985e\uff08\u8b66\u5bdf\u3001\u6d88\u9632\u3001\u6551\u6025\uff09\u306e\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u306e\u6700\u5927\u6570\uff0b1\u3067\u3042\u308b\u305f\u3081\u3060\u3002\u4f8b\u3048\u3070\u3001\u6d88\u9632\u5c40\u304c5\u8ed2\u3001\u6551\u6025\u8eca\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u304c3\u8ed2\u3068\u3059\u308b\u3068\u3001\u30df\u30c3\u30b7\u30e7\u30f3\u6570\u306f6\u306b\u306a\u308b\u3002",
-                        join_alliance: "\u307e\u305f\u3001\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u3092\u5f62\u6210\u3059\u308b\u3068\u3001\u7279\u306b\u99c6\u3051\u51fa\u3057\u3001\u30b2\u30fc\u30e0\u5e8f\u76e4\u3067\u5927\u3044\u306b\u5f79\u306b\u7acb\u3064\u306e\u3067\u3001\u305d\u308c\u3082\u304a\u52e7\u3081\u3057\u3088\u3046\u3002",
+                        contact: "\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u3092\u30a2\u30c3\u30d7\u30b0\u30ec\u30fc\u30c9\u3059\u308c\u3070\u3001\u65b0\u3057\u3044\u8eca\u4e21\u3092\u7f6e\u304f\u30b9\u30da\u30fc\u30b9\u304c\u5f97\u3089\u308c\u308b\u3002",
+                        general: "\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u9054\u6210\u3059\u308b\u3068\u30af\u30ec\u30b8\u30c3\u30c8\u3092\u7372\u5f97\u3067\u304d\u308b\u3002\u30af\u30ec\u30b8\u30c3\u30c8\u3092\u7372\u5f97\u3059\u308b\u3053\u3068\u3067\u6607\u683c\u306b\u8fd1\u3065\u304f\u3002",
+                        join_alliance: "\u6607\u9032\u3084\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u306e\u5efa\u8a2d\u306b\u3088\u3063\u3066\u3001\u30df\u30c3\u30b7\u30e7\u30f3\u306e\u7a2e\u985e\u3084\u4e57\u308a\u7269\u306a\u3069\u306e\u65b0\u3057\u3044\u6a5f\u80fd\u304c\u30a2\u30f3\u30ed\u30c3\u30af\u3055\u308c\u308b\u3002",
                         radio: {
                             helpshift_id: "1540",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             short: "\u7121\u7dda\u306f\u3001\u8eca\u4e21\u306e\u6700\u65b0\u72b6\u614b\u3092\u8868\u793a\u3057\u307e\u3059\u3002\u5404\u72b6\u614b\u306e\u8a73\u7d30\u60c5\u5831\u306f\u3001\u3053\u3061\u3089\u3092\u30af\u30ea\u30c3\u30af\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
                         },
-                        summary: "\u30df\u30c3\u30b7\u30e7\u30f3\u30c1\u30fc\u30d5\u306e\u57fa\u672c\u304c\u7d39\u4ecb\u3055\u308c\u3066\u3044\u308b\u305e\uff01\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u9054\u6210\u3057\u3001\u30af\u30ec\u30b8\u30c3\u30c8\u3092\u7372\u5f97\u3057\u3001\u30e6\u30cb\u30c3\u30c8\u3092\u8cfc\u5165\u3057\u3001\u62e1\u5145\u3057\u3088\u3046\u3002\u30b2\u30fc\u30e0\u306f\u3053\u306e\u4e00\u9023\u306e\u6d41\u308c\u3092\u7e70\u308a\u8fd4\u3057\u3066\u9032\u3080\u305e\u3002\u3067\u306f\u3001\u697d\u3057\u3093\u3067\u304f\u308c\uff01</br> \u30df\u30c3\u30b7\u30e7\u30f3\u30c1\u30fc\u30d5\u30fb\u30c1\u30fc\u30e0\u3088\u308a"
+                        summary: "\u540c\u76df\u306b\u52a0\u5165\u3057\u3066\u3001\u4ed6\u306e\u30e1\u30f3\u30d0\u30fc\u3068\u4e00\u7dd2\u306b\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u89e3\u6c7a\u3059\u308b\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002\u30e1\u30f3\u30d0\u30fc\u5168\u54e1\u304c\u53c2\u52a0\u3067\u304d\u308b\u540c\u76df\u30a4\u30d9\u30f3\u30c8\u3082\u5b9a\u671f\u7684\u306b\u958b\u50ac\u3055\u308c\u307e\u3059\uff01"
                     },
                     mobile: {
-                        contact: "\u5206\u304b\u3089\u306a\u3044\u3053\u3068\u304c\u3042\u3063\u305f\u3089\u3001\u30b2\u30fc\u30e0FAQ\u3092\u53c2\u7167\u3059\u308b\u304b\u3001\u30b2\u30fc\u30e0\u30d5\u30a9\u30fc\u30e9\u30e0\u304bFacebook\u30da\u30fc\u30b8\u3092\u8a2a\u306d\u3066\u304f\u308c\uff01",
-                        general: "\u6b21\u306e\u30b9\u30c6\u30c3\u30d7\u3067\u306f\u3001\u6307\u4ee4\u30bb\u30f3\u30bf\u30fc\u3092\u5efa\u8a2d\u3057\u3001\u305d\u306e\u5f8c\u3059\u3050\u306b\u65b0\u3057\u3044\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u3092\u5897\u3084\u3059\u3053\u3068\u3092\u304a\u52e7\u3081\u3059\u308b\u3002\u30df\u30c3\u30b7\u30e7\u30f3\u306e\u6700\u5927\u6570\uff1d\u5404\u7a2e\u985e\uff08\u8b66\u5bdf\u3001\u6d88\u9632\u3001\u6551\u6025\uff09\u306e\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u306e\u6700\u5927\u6570\uff0b1\u3067\u3042\u308b\u305f\u3081\u3060\u3002\u4f8b\u3048\u3070\u3001\u6d88\u9632\u5c40\u304c5\u8ed2\u3001\u6551\u6025\u8eca\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u304c3\u8ed2\u3068\u3059\u308b\u3068\u3001\u30df\u30c3\u30b7\u30e7\u30f3\u6570\u306f6\u306b\u306a\u308b\u3002",
-                        join_alliance: "\u307e\u305f\u3001\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u3092\u5f62\u6210\u3059\u308b\u3068\u3001\u7279\u306b\u99c6\u3051\u51fa\u3057\u3001\u30b2\u30fc\u30e0\u5e8f\u76e4\u3067\u5927\u3044\u306b\u5f79\u306b\u7acb\u3064\u306e\u3067\u3001\u305d\u308c\u3082\u304a\u52e7\u3081\u3057\u3088\u3046\u3002",
-                        summary: "\u30df\u30c3\u30b7\u30e7\u30f3\u30c1\u30fc\u30d5\u306e\u57fa\u672c\u304c\u7d39\u4ecb\u3055\u308c\u3066\u3044\u308b\u305e\uff01\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u9054\u6210\u3057\u3001\u30af\u30ec\u30b8\u30c3\u30c8\u3092\u7372\u5f97\u3057\u3001\u30e6\u30cb\u30c3\u30c8\u3092\u8cfc\u5165\u3057\u3001\u62e1\u5145\u3057\u3088\u3046\u3002\u30b2\u30fc\u30e0\u306f\u3053\u306e\u4e00\u9023\u306e\u6d41\u308c\u3092\u7e70\u308a\u8fd4\u3057\u3066\u9032\u3080\u305e\u3002\u3067\u306f\u3001\u697d\u3057\u3093\u3067\u304f\u308c\uff01</br> \u30df\u30c3\u30b7\u30e7\u30f3\u30c1\u30fc\u30d5\u30fb\u30c1\u30fc\u30e0\u3088\u308a"
+                        contact: "\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u3092\u30a2\u30c3\u30d7\u30b0\u30ec\u30fc\u30c9\u3059\u308c\u3070\u3001\u65b0\u3057\u3044\u8eca\u4e21\u3092\u7f6e\u304f\u30b9\u30da\u30fc\u30b9\u304c\u5f97\u3089\u308c\u308b\u3002",
+                        general: "\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u9054\u6210\u3059\u308b\u3068\u30af\u30ec\u30b8\u30c3\u30c8\u3092\u7372\u5f97\u3067\u304d\u308b\u3002\u30af\u30ec\u30b8\u30c3\u30c8\u3092\u7372\u5f97\u3059\u308b\u3053\u3068\u3067\u6607\u683c\u306b\u8fd1\u3065\u304f\u3002",
+                        join_alliance: "\u6607\u9032\u3084\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u306e\u5efa\u8a2d\u306b\u3088\u3063\u3066\u3001\u30df\u30c3\u30b7\u30e7\u30f3\u306e\u7a2e\u985e\u3084\u4e57\u308a\u7269\u306a\u3069\u306e\u65b0\u3057\u3044\u6a5f\u80fd\u304c\u30a2\u30f3\u30ed\u30c3\u30af\u3055\u308c\u308b\u3002",
+                        summary: "\u540c\u76df\u306b\u52a0\u5165\u3057\u3066\u3001\u4ed6\u306e\u30e1\u30f3\u30d0\u30fc\u3068\u4e00\u7dd2\u306b\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u89e3\u6c7a\u3059\u308b\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002\u30e1\u30f3\u30d0\u30fc\u5168\u54e1\u304c\u53c2\u52a0\u3067\u304d\u308b\u540c\u76df\u30a4\u30d9\u30f3\u30c8\u3082\u5b9a\u671f\u7684\u306b\u958b\u50ac\u3055\u308c\u307e\u3059\uff01"
                     },
                     reminder: {
                         join_alliance: "\u540c\u76df\u306b\u53c2\u52a0\u3059\u308b\u3068\u3001\u540c\u76df\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u30af\u30ea\u30a2\u3057\u305f\u3068\u304d\u306b\u5831\u916c\u304c\u3082\u3089\u3048\u305f\u308a\u3001\u96e3\u3057\u3044\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u7d4c\u9a13\u8c4a\u5bcc\u306a\u30e1\u30f3\u30d0\u30fc\u304c\u30b5\u30dd\u30fc\u30c8\u3057\u3066\u304f\u308c\u305f\u308a\u3001\u75c5\u9662\u3084\u5b66\u6821\u306a\u3069\u4ed6\u306e\u30e1\u30f3\u30d0\u30fc\u306e\u65bd\u8a2d\u3092\u5229\u7528\u3067\u304d\u305f\u308a\u3068\u3001\u305f\u304f\u3055\u3093\u306e\u30e1\u30ea\u30c3\u30c8\u304c\u3042\u308b\u3093\u3060\u3002\u4eca\u3059\u3050\u540c\u76df\u306b\u53c2\u52a0\u3059\u308b\u30dc\u30bf\u30f3\u3092\u62bc\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
@@ -13282,80 +12976,80 @@ Object.values || (Object.values = function (e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: '\ub450 \ubc88\uc9f8\ub294 \uc0c8 \uad00\ud560\uc11c\uc5d0 \uc774\ub984\uc744 \ubd99\uc774\ub294 \uac83\uc785\ub2c8\ub2e4! \uc54c\uae30 \uc27d\uace0 \ud655\uc7a5 \uc2dc \uad6c\ubcc4\ud558\uae30 \uc26c\uc6b4 \uc774\ub984\uc73c\ub85c \ub9cc\ub4e4\uc5b4 \ubcf4\uc138\uc694! \uc608\ub97c \ub4e4\uba74 "\uc18c\ubc29\uc11c #0001"\ucc98\ub7fc \ub9d0\uc785\ub2c8\ub2e4. \uc804\ubd80 \ub05d\ub0ac\uc73c\uba74 "\ub2e4\uc74c"\uc744 \ud074\ub9ad\ud558\uc138\uc694!',
-                            build_with_credits: "\uc774\uc81c \ud06c\ub808\ub527\uc744 \uc0ac\uc6a9\ud574 \uac74\ubb3c\uc744 \uc9c0\uc73c\uc138\uc694!",
-                            new_building: '"\uc0c8 \uac74\ubb3c"\uc744 \ud074\ub9ad\ud558\uc138\uc694!',
-                            select_building: "\uba3c\uc800 \uc2dc\uc791\ud560 \uac74\ubb3c \uc720\ud615\uc744 \uc120\ud0dd\ud558\uc138\uc694. \uc18c\ubc29\uc11c\ub97c \uac15\ub825\ud558\uac8c \ucd94\ucc9c\ud569\ub2c8\ub2e4! \uc5b4\ub5a4 \uacbd\uc6b0\ub77c \ud558\ub354\ub77c\ub3c4 \uc18c\ud615 \uad00\ud560\uc11c\ub85c \uc2dc\uc791\ud558\ub294 \uac83\uc744 \uad8c\uc7a5\ud569\ub2c8\ub2e4!",
-                            select_position: "\uccab \ubc88\uc9f8 \uad00\ud560\uc11c\ub97c \uc9c0\uc744 \uacf3\uc73c\ub85c \ud30c\ub780\uc0c9 \ud45c\uc2dd\uc744 \uc62e\uae30\uc138\uc694!"
+                            add_name: "\uc2a4\ud14c\uc774\uc158\uc758 \uc774\ub984\uc744 \uc120\ud0dd\ud569\ub2c8\ub2e4. \ub098\uc911\uc5d0 \uc774\ub984\uc744 \ubcc0\uacbd\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
+                            build_with_credits: "\uc5ed\uc744 \uac74\uc124\ud558\ub824\uba74 \uac8c\uc784 \ud654\ud3d0\uc778 \ud06c\ub808\ub527\uc774 \ud544\uc694\ud569\ub2c8\ub2e4. \ud06c\ub808\ub527\uc740 \ubbf8\uc158, \uc77c\uc77c \ub85c\uadf8\uc778, \uacfc\uc81c \ubc0f \uc774\ubca4\ud2b8\ub97c \ud1b5\ud574 \ud68d\ub4dd\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
+                            new_building: "\uc2a4\ud14c\uc774\uc158 \uac74\uc124 \uacfc\uc815\uc744 \uc2dc\uc791\ud558\uc138\uc694.",
+                            select_building: "\uc18c\ubc29\uc11c\ub97c \uc9c0\uc744\uc9c0 \uacbd\ucc30\uc11c\ub97c \uc9c0\uc744\uc9c0 \uacb0\uc815\ud558\uc138\uc694. \ucc98\uc74c\uc5d0\ub294 \uc791\uc740 \uc5ed\uc73c\ub85c \ucda9\ubd84\ud569\ub2c8\ub2e4. \ub098\uc911\uc5d0 \uc77c\ubc18 \uc2a4\ud14c\uc774\uc158\uc73c\ub85c \uc5c5\uadf8\ub808\uc774\ub4dc\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
+                            select_position: "\uc704\uce58 \ub9c8\ucee4\ub97c \uc2a4\ud14c\uc774\uc158\uc744 \uc6d0\ud558\ub294 \uc704\uce58\ub85c \uc774\ub3d9\ud569\ub2c8\ub2e4."
                         },
-                        pick_location: "\uba3c\uc800 \uc2dc\uc791 \uc704\uce58\ub97c \uc120\ud0dd\ud569\ub2c8\ub2e4! \uac80\uc0c9 \ubc14\uc5d0\uc11c \uc2dc\uc791\ud560 \uc704\uce58 \uc774\ub984\uc744 \uc785\ub825\ud558\uac70\ub098 \uc9c1\uc811 \uc9c0\ub3c4\uc5d0\uc11c \ucc3e\uc544\ubcf4\uc138\uc694! \uc9c0\uae08 \uc0ac\ub294 \ub3c4\uc2dc\ub294 \uc5b4\ub5a0\uc2e0\uac00\uc694?",
-                        welcome: "\uc548\ub155\ud558\uc138\uc694, \ubbf8\uc158 \uce58\ud504\uc5d0 \uc624\uc2e0 \uac83\uc744 \ud658\uc601\ud569\ub2c8\ub2e4!  \uc751\uae09 \uad6c\uc870\ub300 \uc774\ub825\uc744 \ud655\uc2e4\ud558\uac8c \uc313\uc744 \uc218 \uc788\ub294 \uba87 \uac00\uc9c0 \ubc29\ubc95\uc744 \uc54c\ub824\ub4dc\ub9b4\uac8c\uc694!"
+                        pick_location: "\uccab \ubc88\uc9f8 \uc2a4\ud14c\uc774\uc158\uc744 \uad6c\ucd95\ud560 \uc704\uce58\ub97c \uc120\ud0dd\ud558\uc138\uc694.",
+                        welcome: "\ubbf8\uc158 \uce58\ud504 - \uac00\uc785 \uc5d0 \uc624\uc2e0 \uac83\uc744 \ud658\uc601\ud569\ub2c8\ub2e4! \uc751\uae09 \uc11c\ube44\uc2a4 \ub514\uc2a4\ud328\uce58 \uc13c\ud130\uc5d0\uc11c \uadfc\ubb34\ud558\ub294 \uc5ec\ub7ec\ubd84\uc740 \ub300\uc911\uc744 \ub3d5\uace0 \ubcf4\ud638\ud558\uae30 \uc704\ud574 \uae34\uae09 \uc694\uccad\uc5d0 \ub300\uc751\ud569\ub2c8\ub2e4. \uc774\ub97c \uc704\ud574 \uc2a4\ud14c\uc774\uc158\uc744 \uac74\uc124\ud558\uace0 \uc5ec\ub7ec \uc885\ub958\uc758 \ucc28\ub7c9\uacfc \ud6c8\ub828\ub41c \uc778\ub825\uc744 \ub2e4\uc591\ud55c \uc784\ubb34\uc5d0 \ud30c\uacac\ud569\ub2c8\ub2e4."
                     },
                     mobile: {
                         build_building: {
-                            add_name: '\ub450 \ubc88\uc9f8\ub294 \uc0c8 \uad00\ud560\uc11c\uc5d0 \uc774\ub984\uc744 \ubd99\uc774\ub294 \uac83\uc785\ub2c8\ub2e4! \uc54c\uae30 \uc27d\uace0 \ud655\uc7a5 \uc2dc \uad6c\ubcc4\ud558\uae30 \uc26c\uc6b4 \uc774\ub984\uc73c\ub85c \ub9cc\ub4e4\uc5b4 \ubcf4\uc138\uc694! \uc608\ub97c \ub4e4\uba74 "\uc18c\ubc29\uc11c #0001"\ucc98\ub7fc \ub9d0\uc785\ub2c8\ub2e4. \uc804\ubd80 \ub05d\ub0ac\uc73c\uba74 "\ub2e4\uc74c"\uc744 \ud074\ub9ad\ud558\uc138\uc694!',
-                            build_with_credits: "\uc774\uc81c \ud06c\ub808\ub527\uc744 \uc0ac\uc6a9\ud574 \uac74\ubb3c\uc744 \uc9c0\uc73c\uc138\uc694!",
-                            new_building: '\uba3c\uc800 \uc2dc\uc791 \uc704\uce58\ub97c \uc120\ud0dd\ud574 \uccab \ubc88\uc9f8 \uac74\ubb3c\uc744 \uc9c0\uc73c\uc138\uc694! <br /> <br /> \uac74\ubb3c\uc744 \uc9c0\uc73c\ub824\uba74 "\uc0c8 \uac74\ubb3c"\uc744 \ud074\ub9ad\ud558\uc138\uc694!',
-                            select_building: "\uba3c\uc800 \uc2dc\uc791\ud560 \uac74\ubb3c \uc720\ud615\uc744 \uc120\ud0dd\ud558\uc138\uc694. \uc18c\ubc29\uc11c\ub97c \uac15\ub825\ud558\uac8c \ucd94\ucc9c\ud569\ub2c8\ub2e4! \uc5b4\ub5a4 \uacbd\uc6b0\ub77c \ud558\ub354\ub77c\ub3c4 \uc18c\ud615 \uad00\ud560\uc11c\ub85c \uc2dc\uc791\ud558\ub294 \uac83\uc744 \uad8c\uc7a5\ud569\ub2c8\ub2e4!"
+                            add_name: "\uc2a4\ud14c\uc774\uc158\uc758 \uc774\ub984\uc744 \uc120\ud0dd\ud569\ub2c8\ub2e4. \ub098\uc911\uc5d0 \uc774\ub984\uc744 \ubcc0\uacbd\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
+                            build_with_credits: "\uc5ed\uc744 \uac74\uc124\ud558\ub824\uba74 \uac8c\uc784 \ud654\ud3d0\uc778 \ud06c\ub808\ub527\uc774 \ud544\uc694\ud569\ub2c8\ub2e4. \ud06c\ub808\ub527\uc740 \ubbf8\uc158, \uc77c\uc77c \ub85c\uadf8\uc778, \uacfc\uc81c \ubc0f \uc774\ubca4\ud2b8\ub97c \ud1b5\ud574 \ud68d\ub4dd\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
+                            new_building: "\uccab \ubc88\uc9f8 \uc815\uac70\uc7a5 \uac74\uc124\ubd80\ud130 \uc2dc\uc791\ud558\uc138\uc694. \uc704\uce58\ub97c \uc9c1\uc811 \uc785\ub825\ud558\uac70\ub098 \uc9c0\ub3c4\uc5d0\uc11c \uc704\uce58 \ub9c8\ucee4\ub97c \uc774\ub3d9\ud558\uc5ec \uc704\uce58\ub97c \uc120\ud0dd\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \uc6b4\uc601 \uccb4\uc81c\uc5d0 \ub530\ub77c \ub9c8\ucee4\ub97c \uc7a0\uc2dc \ub204\ub974\uace0 \uc788\uc5b4\uc57c \uc774\ub3d9\ud560 \uc218 \uc788\uc744 \uc218\ub3c4 \uc788\uc2b5\ub2c8\ub2e4.",
+                            select_building: "\uc18c\ubc29\uc11c\ub97c \uc9c0\uc744\uc9c0 \uacbd\ucc30\uc11c\ub97c \uc9c0\uc744\uc9c0 \uacb0\uc815\ud558\uc138\uc694. \ucc98\uc74c\uc5d0\ub294 \uc791\uc740 \uc5ed\uc73c\ub85c \ucda9\ubd84\ud569\ub2c8\ub2e4. \ub098\uc911\uc5d0 \uc77c\ubc18 \uc2a4\ud14c\uc774\uc158\uc73c\ub85c \uc5c5\uadf8\ub808\uc774\ub4dc\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4."
                         },
-                        welcome: "\uc548\ub155\ud558\uc138\uc694, \ubbf8\uc158 \uce58\ud504\uc5d0 \uc624\uc2e0 \uac83\uc744 \ud658\uc601\ud569\ub2c8\ub2e4!  \uc751\uae09 \uad6c\uc870\ub300 \uc774\ub825\uc744 \ud655\uc2e4\ud558\uac8c \uc313\uc744 \uc218 \uc788\ub294 \uba87 \uac00\uc9c0 \ubc29\ubc95\uc744 \uc54c\ub824\ub4dc\ub9b4\uac8c\uc694!"
+                        welcome: "\ubbf8\uc158 \uce58\ud504 - \uac00\uc785 \uc5d0 \uc624\uc2e0 \uac83\uc744 \ud658\uc601\ud569\ub2c8\ub2e4! \uc751\uae09 \uc11c\ube44\uc2a4 \ub514\uc2a4\ud328\uce58 \uc13c\ud130\uc5d0\uc11c \uadfc\ubb34\ud558\ub294 \uc5ec\ub7ec\ubd84\uc740 \ub300\uc911\uc744 \ub3d5\uace0 \ubcf4\ud638\ud558\uae30 \uc704\ud574 \uae34\uae09 \uc694\uccad\uc5d0 \ub300\uc751\ud569\ub2c8\ub2e4. \uc774\ub97c \uc704\ud574 \uc2a4\ud14c\uc774\uc158\uc744 \uac74\uc124\ud558\uace0 \uc5ec\ub7ec \uc885\ub958\uc758 \ucc28\ub7c9\uacfc \ud6c8\ub828\ub41c \uc778\ub825\uc744 \ub2e4\uc591\ud55c \uc784\ubb34\uc5d0 \ud30c\uacac\ud569\ub2c8\ub2e4."
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "\uc5ec\uae30\uac00 \ud30c\uacac \uba54\ub274\uc785\ub2c8\ub2e4. \uc774 \uba54\ub274\uc5d0\uc11c \uc720\ub2db\uc744 \uc784\ubb34\uc5d0 \ubcf4\ub0bc \uc218 \uc788\uc2b5\ub2c8\ub2e4!",
-                            dispatch_menu_buttons: '\ud30c\uacac \ubc84\ud2bc\uc740 \ub450 \uac00\uc9c0\uac00 \uc788\uc2b5\ub2c8\ub2e4! \uccab \ubc88\uc9f8: "\ud30c\uacac"\uc744 \uc0ac\uc6a9\ud574 \uc120\ud0dd\ud55c \uc720\ub2db\uc744 \uc784\ubb34\uc5d0 \ud30c\uacac\ud569\ub2c8\ub2e4. \ub450 \ubc88\uc9f8\ub294 \uccab \ubc88\uc9f8 \ubc29\ubc95\uacfc \ub3d9\uc77c\ud558\uc9c0\ub9cc, \uc989\uc2dc \ub2e4\uc74c \uc784\ubb34\ub85c \uc774\ub3d9\ud569\ub2c8\ub2e4. \uc9c0\uae08\uc740 \uccab \ubc88\uc9f8 \ubc84\ud2bc\uc744 \ud074\ub9ad\ud558\uc138\uc694.',
-                            dispatch_menu_mission_general: "\uc5ec\uae30\uc5d0\uc11c\ub294 \uc774\ub984, \uc8fc\uc18c, \uc784\ubb34 \uc544\uc774\ucf58 \ub4f1 \uc784\ubb34\uc5d0 \uad00\ud55c \uc77c\ubc18 \uc815\ubcf4\ub97c \ud655\uc778\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \uc774\ubbf8 \ucc38\uc5ec\ud55c \uc784\ubb34\ub294 \uc791\uc740 \ubcc4 \ub300\uc2e0 \uc791\uc740 \uc0ac\ub78c \uc544\uc774\ucf58\uc774 \ud45c\uc2dc\ub429\ub2c8\ub2e4.",
-                            dispatch_menu_mission_progress: "\uc5ec\uae30\uc5d0\uc11c\ub294 \ubbf8\uc158 \uc644\ub8cc\uae4c\uc9c0\uc758 \uc9c4\ud589\ub3c4\uc640 \ud604\uc7a5 \uc778\uc6d0, \ubbf8\uc158 \uc644\ub8cc\uae4c\uc9c0 \ub0a8\uc740 \uc2dc\uac04\uc744 \ud655\uc778\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4!",
-                            dispatch_menu_mission_specific: "\uc5ec\uae30\uc5d0\uc11c\ub294 \uc5b4\ub5a4 \uc720\ub2db\uc774 \ud638\ucd9c\uc5d0 \ubc18\uc751\ud558\ub294\uc9c0, \uc5b4\ub5a4 \uc720\ub2db\uc774 \uc774\ubbf8 \ud604\uc7a5\uc5d0 \uc788\ub294\uc9c0 \ub4f1 \uc784\ubb34\uc5d0 \ub300\ud55c \uc790\uc138\ud55c \uc815\ubcf4\ub97c \ud655\uc778\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
-                            dispatch_menu_vehicle_list: "\uc774\uc6a9\ud560 \uc218 \uc788\ub294 \ucc28\ub7c9 \ubaa9\ub85d\uc774 \uc5ec\uae30\uc5d0 \ud45c\uc2dc\ub429\ub2c8\ub2e4. \uc5ec\uae30\uc11c \ucc28\ub7c9\uc744 \uc120\ud0dd\ud569\ub2c8\ub2e4. \uc774\uc81c \ucc28\ub7c9\uc744 \ud074\ub9ad\ud574 \uc120\ud0dd\ud558\uc138\uc694!"
+                            dispatch_menu: "\ud30c\uacac \ucc3d\uc785\ub2c8\ub2e4. \uc774\uacf3\uc5d0\uc11c \uc784\ubb34\ub97c \uc218\ud589\ud558\uae30 \uc704\ud574 \ucc28\ub7c9\uc744 \ubcf4\ub0bc \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
+                            dispatch_menu_buttons: "\ud30c\uacac \ubc84\ud2bc\uc744 \ud074\ub9ad\ud558\uc5ec \uc804\ucc28\ub97c \uc784\ubb34\uc5d0 \ud30c\uacac\ud569\ub2c8\ub2e4. \uc784\ubb34\uac00 \ub354 \ub9ce\uc544\uc9c0\uba74 \uc606\uc5d0 \uc788\ub294 \ubc84\ud2bc\uc744 \uc0ac\uc6a9\ud558\uc5ec \ub2e4\uc74c \uc784\ubb34\ub85c \uc774\ub3d9\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
+                            dispatch_menu_mission_general: '\uc5ec\uae30\uc5d0\uc11c \ubbf8\uc158\uc5d0 \ub300\ud55c \uc77c\ubc18\uc801\uc778 \uc815\ubcf4\ub97c \ud655\uc778\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \ubbf8\uc158\uc5d0 \ucc38\uc5ec\ud558\uc9c0 \uc54a\ub294 \ud55c, \uccab \ubc88\uc9f8 \ucc28\ub7c9\uc744 \ubcf4\ub0b4\uc790\ub9c8\uc790 \ubbf8\uc158 \uc774\ub984(<span class="glyphicon glyphicon-user"></span>) \uc55e\uc5d0 <span class="glyphicon glyphicon-asterisk"></span> \uac00 \ud45c\uc2dc\ub429\ub2c8\ub2e4.',
+                            dispatch_menu_mission_progress: "\uc5ec\uae30\uc5d0\uc11c \ubbf8\uc158\uc758 \uc9c4\ud589 \uc0c1\ud669\uc744 \ud655\uc778\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \uc778\ub825\uc774 \ud604\uc7a5\uc5d0 \ub3c4\ucc29\ud558\uba74 \ubc14\ub85c \uc5ec\uae30\uc5d0 \ud45c\uc2dc\ub418\uba70 \uc784\ubb34\ub97c \uc644\ub8cc\ud558\ub294 \ub370 \uc5bc\ub9c8\ub098 \ub9ce\uc740 \uc2dc\uac04\uc774 \ud544\uc694\ud55c\uc9c0 \ud655\uc778\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
+                            dispatch_menu_mission_specific: "\uc5ec\uae30\uc5d0\uc11c \uc784\ubb34\ub85c \uc774\ub3d9 \uc911\uc774\uac70\ub098 \ub3c4\ucc29\ud55c \ucc28\ub7c9\uc744 \ud655\uc778\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \ucc28\ub7c9 \uc55e\uc758 \uc22b\uc790\ub294 \ubc30\uce58 \uc0c1\ud0dc\ub97c \ub098\ud0c0\ub0c5\ub2c8\ub2e4.",
+                            dispatch_menu_vehicle_list: "\uc5ec\uae30\uc5d0\uc11c \uc784\ubb34\uc5d0 \uc0ac\uc6a9\ud560 \uc218 \uc788\ub294 \ubaa8\ub4e0 \uc804\ucc28\ub97c \ud655\uc778\ud560 \uc218 \uc788\uc73c\uba70, \uc606\uc5d0 \uc788\ub294 \ud655\uc778\ub780\uc744 \ud074\ub9ad\ud558\uc5ec \uc804\ucc28\ub97c \uc120\ud0dd\ud569\ub2c8\ub2e4."
                         },
                         mobile: {
-                            dispatch_menu: "\uc5ec\uae30\uac00 \ud30c\uacac \uba54\ub274\uc785\ub2c8\ub2e4. \uc774 \uba54\ub274\uc5d0\uc11c \uc720\ub2db\uc744 \uc784\ubb34\uc5d0 \ubcf4\ub0bc \uc218 \uc788\uc2b5\ub2c8\ub2e4!",
-                            dispatch_menu_buttons: '\ud30c\uacac \ubc84\ud2bc\uc740 \ub450 \uac00\uc9c0\uac00 \uc788\uc2b5\ub2c8\ub2e4! \uccab \ubc88\uc9f8: "\ud30c\uacac"\uc744 \uc0ac\uc6a9\ud574 \uc120\ud0dd\ud55c \uc720\ub2db\uc744 \uc784\ubb34\uc5d0 \ud30c\uacac\ud569\ub2c8\ub2e4. \ub450 \ubc88\uc9f8\ub294 \uccab \ubc88\uc9f8 \ubc29\ubc95\uacfc \ub3d9\uc77c\ud558\uc9c0\ub9cc, \uc989\uc2dc \ub2e4\uc74c \uc784\ubb34\ub85c \uc774\ub3d9\ud569\ub2c8\ub2e4. \uc9c0\uae08\uc740 \uccab \ubc88\uc9f8 \ubc84\ud2bc\uc744 \ud074\ub9ad\ud558\uc138\uc694.',
-                            dispatch_menu_mission_general: "\uc5ec\uae30\uc5d0\uc11c\ub294 \uc774\ub984, \uc8fc\uc18c, \uc784\ubb34 \uc544\uc774\ucf58 \ub4f1 \uc784\ubb34\uc5d0 \uad00\ud55c \uc77c\ubc18 \uc815\ubcf4\ub97c \ud655\uc778\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \uc774\ubbf8 \ucc38\uc5ec\ud55c \uc784\ubb34\ub294 \uc791\uc740 \ubcc4 \ub300\uc2e0 \uc791\uc740 \uc0ac\ub78c \uc544\uc774\ucf58\uc774 \ud45c\uc2dc\ub429\ub2c8\ub2e4.",
-                            dispatch_menu_mission_progress: "\uc5ec\uae30\uc5d0\uc11c\ub294 \ubbf8\uc158 \uc644\ub8cc\uae4c\uc9c0\uc758 \uc9c4\ud589\ub3c4\uc640 \ud604\uc7a5 \uc778\uc6d0, \ubbf8\uc158 \uc644\ub8cc\uae4c\uc9c0 \ub0a8\uc740 \uc2dc\uac04\uc744 \ud655\uc778\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4!",
-                            dispatch_menu_mission_specific: "\uc5ec\uae30\uc5d0\uc11c\ub294 \uc5b4\ub5a4 \uc720\ub2db\uc774 \ud638\ucd9c\uc5d0 \ubc18\uc751\ud558\ub294\uc9c0, \uc5b4\ub5a4 \uc720\ub2db\uc774 \uc774\ubbf8 \ud604\uc7a5\uc5d0 \uc788\ub294\uc9c0 \ub4f1 \uc784\ubb34\uc5d0 \ub300\ud55c \uc790\uc138\ud55c \uc815\ubcf4\ub97c \ud655\uc778\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
-                            dispatch_menu_vehicle_list: "\uc774\uc6a9\ud560 \uc218 \uc788\ub294 \ucc28\ub7c9 \ubaa9\ub85d\uc774 \uc5ec\uae30\uc5d0 \ud45c\uc2dc\ub429\ub2c8\ub2e4. \uc5ec\uae30\uc11c \ucc28\ub7c9\uc744 \uc120\ud0dd\ud569\ub2c8\ub2e4. \uc774\uc81c \ucc28\ub7c9\uc744 \ud074\ub9ad\ud574 \uc120\ud0dd\ud558\uc138\uc694!"
+                            dispatch_menu: "\ud30c\uacac \ucc3d\uc785\ub2c8\ub2e4. \uc774\uacf3\uc5d0\uc11c \uc784\ubb34\ub97c \uc218\ud589\ud558\uae30 \uc704\ud574 \ucc28\ub7c9\uc744 \ubcf4\ub0bc \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
+                            dispatch_menu_buttons: "\ud30c\uacac \ubc84\ud2bc\uc744 \ud074\ub9ad\ud558\uc5ec \uc804\ucc28\ub97c \uc784\ubb34\uc5d0 \ud30c\uacac\ud569\ub2c8\ub2e4. \uc784\ubb34\uac00 \ub354 \ub9ce\uc544\uc9c0\uba74 \uc606\uc5d0 \uc788\ub294 \ubc84\ud2bc\uc744 \uc0ac\uc6a9\ud558\uc5ec \ub2e4\uc74c \uc784\ubb34\ub85c \uc774\ub3d9\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
+                            dispatch_menu_mission_general: '\uc5ec\uae30\uc5d0\uc11c \ubbf8\uc158\uc5d0 \ub300\ud55c \uc77c\ubc18\uc801\uc778 \uc815\ubcf4\ub97c \ud655\uc778\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \ubbf8\uc158\uc5d0 \ucc38\uc5ec\ud558\uc9c0 \uc54a\ub294 \ud55c, \uccab \ubc88\uc9f8 \ucc28\ub7c9\uc744 \ubcf4\ub0b4\uc790\ub9c8\uc790 \ubbf8\uc158 \uc774\ub984(<span class="glyphicon glyphicon-user"></span>) \uc55e\uc5d0 <span class="glyphicon glyphicon-asterisk"></span> \uac00 \ud45c\uc2dc\ub429\ub2c8\ub2e4.',
+                            dispatch_menu_mission_progress: "\uc5ec\uae30\uc5d0\uc11c \ubbf8\uc158\uc758 \uc9c4\ud589 \uc0c1\ud669\uc744 \ud655\uc778\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \uc778\ub825\uc774 \ud604\uc7a5\uc5d0 \ub3c4\ucc29\ud558\uba74 \ubc14\ub85c \uc5ec\uae30\uc5d0 \ud45c\uc2dc\ub418\uba70 \uc784\ubb34\ub97c \uc644\ub8cc\ud558\ub294 \ub370 \uc5bc\ub9c8\ub098 \ub9ce\uc740 \uc2dc\uac04\uc774 \ud544\uc694\ud55c\uc9c0 \ud655\uc778\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
+                            dispatch_menu_mission_specific: "\uc5ec\uae30\uc5d0\uc11c \uc784\ubb34\ub85c \uc774\ub3d9 \uc911\uc774\uac70\ub098 \ub3c4\ucc29\ud55c \ucc28\ub7c9\uc744 \ud655\uc778\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \ucc28\ub7c9 \uc55e\uc758 \uc22b\uc790\ub294 \ubc30\uce58 \uc0c1\ud0dc\ub97c \ub098\ud0c0\ub0c5\ub2c8\ub2e4.",
+                            dispatch_menu_vehicle_list: "\uc5ec\uae30\uc5d0\uc11c \uc784\ubb34\uc5d0 \uc0ac\uc6a9\ud560 \uc218 \uc788\ub294 \ubaa8\ub4e0 \uc804\ucc28\ub97c \ud655\uc778\ud560 \uc218 \uc788\uc73c\uba70, \uc606\uc5d0 \uc788\ub294 \ud655\uc778\ub780\uc744 \ud074\ub9ad\ud558\uc5ec \uc804\ucc28\ub97c \uc120\ud0dd\ud569\ub2c8\ub2e4."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: '\uc774\uc81c \uc0ac\uace0\ub97c \ucc98\ub9ac\ud558\ub294 \ubc29\ubc95\uc744 \uc54c\uc544\ubcf4\uaca0\uc2b5\ub2c8\ub2e4. "\ud30c\uacac" \ubc84\ud2bc\uc744 \ud074\ub9ad\ud574 \ud30c\uacac \uba54\ub274\ub97c \uc5ec\uc138\uc694!',
-                            first_mission: "\ud6cc\ub96d\ud569\ub2c8\ub2e4. \uccab \ubc88\uc9f8 \uac74\ubb3c\uc774 \uc644\uc131\ub418\uc5c8\ub124\uc694! \ubcf4\uc138\uc694, \uccab \ubc88\uc9f8 \uc784\ubb34 \uc2e0\uace0\uac00 \uc811\uc218\ub418\uc5c8\uc2b5\ub2c8\ub2e4!"
+                            dispatch_button: "\uba3c\uc800 '\ud30c\uacac' \ubc84\ud2bc\uc744 \ud074\ub9ad\ud558\uc5ec \uc784\ubb34\uc5d0 \ucc38\uc5ec\ud558\uc138\uc694.",
+                            first_mission: "\uccab \ubc88\uc9f8 \uac74\ubb3c\uc774 \uc900\ube44\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \uccab \ubc88\uc9f8 \ubbf8\uc158\ub3c4 \ubc1b\uc558\uc2b5\ub2c8\ub2e4!"
                         },
                         mobile: {
-                            dispatch_button: '\uc774\uc81c \uc0ac\uace0\ub97c \ucc98\ub9ac\ud558\ub294 \ubc29\ubc95\uc744 \uc54c\uc544\ubcf4\uaca0\uc2b5\ub2c8\ub2e4. "\ud30c\uacac" \ubc84\ud2bc\uc744 \ud074\ub9ad\ud574 \ud30c\uacac \uba54\ub274\ub97c \uc5ec\uc138\uc694!',
-                            first_mission: "\ud6cc\ub96d\ud569\ub2c8\ub2e4. \uccab \ubc88\uc9f8 \uac74\ubb3c\uc774 \uc644\uc131\ub418\uc5c8\ub124\uc694! \ubcf4\uc138\uc694, \uccab \ubc88\uc9f8 \uc784\ubb34 \uc2e0\uace0\uac00 \uc811\uc218\ub418\uc5c8\uc2b5\ub2c8\ub2e4!"
+                            dispatch_button: "\uba3c\uc800 '\ud30c\uacac' \ubc84\ud2bc\uc744 \ud074\ub9ad\ud558\uc5ec \uc784\ubb34\uc5d0 \ucc38\uc5ec\ud558\uc138\uc694.",
+                            first_mission: "\uccab \ubc88\uc9f8 \uac74\ubb3c\uc774 \uc900\ube44\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \uccab \ubc88\uc9f8 \ubbf8\uc158\ub3c4 \ubc1b\uc558\uc2b5\ub2c8\ub2e4!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "\ud6cc\ub96d\ud569\ub2c8\ub2e4. \uba4b\uc9c4 \ubbf8\uc158 \uce58\ud504\uac00 \ub418\uae30 \uc704\ud574 \uc784\ubb34\ub97c \uc5f4\uc2ec\ud788 \uc9c4\ud589 \uc911\uc774\uc2dc\uad70\uc694! \uc21c\uc870\ub86d\uac8c \uc2dc\uc791\ud560 \uc218 \uc788\ub3c4\ub85d \ucf54\uc778 %{coins}\uac1c\ub97c \ub4dc\ub9bd\ub2c8\ub2e4. </br> \ubbf8\uc158 \uce58\ud504 \ud300 \uc62c\ub9bc"
+                        general: "\uc774\uc81c \ud63c\uc790\uc11c \uc784\ubb34\ub97c \uc218\ud589\ud560 \uc900\ube44\uac00 \ub418\uc5c8\uc2b5\ub2c8\ub2e4. \ubbf8\uc158\uacfc \ud655\uc7a5\uc744 \uc2dc\uc791\ud558\ub294 \ub370 \ub3c4\uc6c0\uc774 \ub418\ub3c4\ub85d %{coins} \ucf54\uc778\uc744 \ubc1b\uc2b5\ub2c8\ub2e4. \ud589\uc6b4\uc744 \ube55\ub2c8\ub2e4!"
                     },
                     mobile: {
-                        general: "\ud6cc\ub96d\ud569\ub2c8\ub2e4. \uba4b\uc9c4 \ubbf8\uc158 \uce58\ud504\uac00 \ub418\uae30 \uc704\ud574 \uc784\ubb34\ub97c \uc5f4\uc2ec\ud788 \uc9c4\ud589 \uc911\uc774\uc2dc\uad70\uc694! \uc21c\uc870\ub86d\uac8c \uc2dc\uc791\ud560 \uc218 \uc788\ub3c4\ub85d \ucf54\uc778 %{coins}\uac1c\ub97c \ub4dc\ub9bd\ub2c8\ub2e4. </br> \ubbf8\uc158 \uce58\ud504 \ud300 \uc62c\ub9bc"
+                        general: "\uc774\uc81c \ud63c\uc790\uc11c \uc784\ubb34\ub97c \uc218\ud589\ud560 \uc900\ube44\uac00 \ub418\uc5c8\uc2b5\ub2c8\ub2e4. \ubbf8\uc158\uacfc \ud655\uc7a5\uc744 \uc2dc\uc791\ud558\ub294 \ub370 \ub3c4\uc6c0\uc774 \ub418\ub3c4\ub85d %{coins} \ucf54\uc778\uc744 \ubc1b\uc2b5\ub2c8\ub2e4. \ud589\uc6b4\uc744 \ube55\ub2c8\ub2e4!"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "\ubb38\uc758 \uc0ac\ud56d\uc740 \uac8c\uc784 \ub0b4 FAQ\ub97c \ucc38\uace0\ud558\uc2dc\uac70\ub098 \uac8c\uc784 \ud3ec\ub7fc \ub610\ub294 Facebook \ud398\uc774\uc9c0\ub97c \ubc29\ubb38\ud574 \uc8fc\uc138\uc694!",
-                        general: "\ub2e4\uc74c \ub2e8\uacc4\ub294 \uc9c0\ud718\uc13c\ud130 \uac74\uc124 \ud6c4 \ucd5c\ub300\ud55c \ube68\ub9ac \uc0c8 \uad00\ud560\uc11c\ub97c \uc9d3\ub294 \uac83\uc744 \uad8c\uc7a5\ud569\ub2c8\ub2e4. \ucd5c\ub300 \uc784\ubb34 \uc218\ub294 \uc5ec\ub7ec \uc720\ud615(\uacbd\ucc30\uc11c, \uc18c\ubc29\uc11c, \uc751\uae09\uc2e4)\uc758 \uad00\ud560\uc11c \uc911 \uac00\uc7a5 \ub9ce\uc774 \ubc30\uce58\ud55c \uad00\ud560\uc11c \uc218+1\ub85c \uc815\ud574\uc9c0\uae30 \ub54c\ubb38\uc785\ub2c8\ub2e4. \uc608\ub97c \ub4e4\uc5b4 \uc18c\ubc29\uc11c 5\uacf3\uacfc \uc751\uae09\uc2e4 3\uacf3\uc744 \ubcf4\uc720\ud560 \uacbd\uc6b0 \ucd5c\ub300 6\uac1c\uc758 \uc784\ubb34\ub97c \ubc1b\uc744 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
-                        join_alliance: "\ub610\ud55c \uac8c\uc784 \ucd08\uae30\uc5d0 \ub3d9\ub9f9\uc5d0 \uac00\uc785\ud558\uba74 \ud070 \ub3c4\uc6c0\uc744 \ubc1b\uc744 \uc218 \uc788\uc73c\ubbc0\ub85c \ub3d9\ub9f9 \uac00\uc785\ub3c4 \uad8c\uc7a5\ud569\ub2c8\ub2e4.",
+                        contact: "\uc815\uac70\uc7a5\uc744 \uc5c5\uadf8\ub808\uc774\ub4dc\ud558\uba74 \uc0c8 \ucc28\ub7c9\uc744 \uc704\ud55c \uacf5\uac04\uc744 \ud655\ubcf4\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
+                        general: "\ubbf8\uc158\uc744 \uc644\ub8cc\ud558\uba74 \ud06c\ub808\ub527\uc744 \ubc1b\uac8c \ub429\ub2c8\ub2e4. \ud06c\ub808\ub527\uc744 \ud68d\ub4dd\ud558\uba74 \uc2b9\uae09\uc5d0 \ub354 \uac00\uae4c\uc6cc\uc9d1\ub2c8\ub2e4.",
+                        join_alliance: "\ud504\ub85c\ubaa8\uc158\uacfc \uac74\uc124 \uc2a4\ud14c\uc774\uc158\uc744 \ud1b5\ud574 \ubbf8\uc158 \uc720\ud615\uc774\ub098 \ucc28\ub7c9\uacfc \uac19\uc740 \uc0c8\ub85c\uc6b4 \uae30\ub2a5\uc744 \uc7a0\uae08 \ud574\uc81c\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
                         radio: {
                             helpshift_id: "1540",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             short: "\ubb34\uc804\uae30\uc5d0 \ucc28\ub7c9 \uc0c1\ud0dc \uc5c5\ub370\uc774\ud2b8\uac00 \ud45c\uc2dc\ub429\ub2c8\ub2e4. \uac01 \uc0c1\ud0dc\uc5d0 \uad00\ud55c \uc790\uc138\ud55c \ub0b4\uc6a9\uc740 \uc5ec\uae30\ub97c \ud074\ub9ad\ud574 \ud655\uc778\ud574 \uc8fc\uc138\uc694."
                         },
-                        summary: "\uc9c0\uae08\uae4c\uc9c0 \ubbf8\uc158 \uce58\ud504\uc758 \uae30\ubcf8 \ud50c\ub808\uc774 \ubc29\ubc95\uc744 \uc54c\ub824\ub4dc\ub838\uc2b5\ub2c8\ub2e4! \uc784\ubb34\ub97c \uc644\uc218\ud558\uace0 \ud06c\ub808\ub527\uc744 \ubc1b\uc544 \ub354 \ub9ce\uc740 \uc720\ub2db\uc744 \uad6c\ub9e4\ud558\uba70 \uc784\ubb34\ub97c \ubc18\ubcf5\ud558\uc138\uc694. \uc990\uac81\uac8c \ud50c\ub808\uc774\ud558\uc138\uc694! </br> \ubbf8\uc158 \uce58\ud504 \ud300 \uc62c\ub9bc"
+                        summary: "\ub3d9\ub9f9\uc5d0 \uac00\uc785\ud558\uc5ec \ub2e4\ub978 \uc0ac\ub78c\ub4e4\uacfc \ud568\uaed8 \ubbf8\uc158\uc744 \ud574\uacb0\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \ubaa8\ub4e0 \uba64\ubc84\uac00 \ucc38\uc5ec\ud560 \uc218 \uc788\ub294 \uc815\uae30 \ub3d9\ub9f9 \uc774\ubca4\ud2b8\ub3c4 \uc788\uc2b5\ub2c8\ub2e4!"
                     },
                     mobile: {
-                        contact: "\ubb38\uc758 \uc0ac\ud56d\uc740 \uac8c\uc784 \ub0b4 FAQ\ub97c \ucc38\uace0\ud558\uc2dc\uac70\ub098 \uac8c\uc784 \ud3ec\ub7fc \ub610\ub294 Facebook \ud398\uc774\uc9c0\ub97c \ubc29\ubb38\ud574 \uc8fc\uc138\uc694!",
-                        general: "\ub2e4\uc74c \ub2e8\uacc4\ub294 \uc9c0\ud718\uc13c\ud130 \uac74\uc124 \ud6c4 \ucd5c\ub300\ud55c \ube68\ub9ac \uc0c8 \uad00\ud560\uc11c\ub97c \uc9d3\ub294 \uac83\uc744 \uad8c\uc7a5\ud569\ub2c8\ub2e4. \ucd5c\ub300 \uc784\ubb34 \uc218\ub294 \uc5ec\ub7ec \uc720\ud615(\uacbd\ucc30\uc11c, \uc18c\ubc29\uc11c, \uc751\uae09\uc2e4)\uc758 \uad00\ud560\uc11c \uc911 \uac00\uc7a5 \ub9ce\uc774 \ubc30\uce58\ud55c \uad00\ud560\uc11c \uc218+1\ub85c \uc815\ud574\uc9c0\uae30 \ub54c\ubb38\uc785\ub2c8\ub2e4. \uc608\ub97c \ub4e4\uc5b4 \uc18c\ubc29\uc11c 5\uacf3\uacfc \uc751\uae09\uc2e4 3\uacf3\uc744 \ubcf4\uc720\ud560 \uacbd\uc6b0 \ucd5c\ub300 6\uac1c\uc758 \uc784\ubb34\ub97c \ubc1b\uc744 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
-                        join_alliance: "\ub610\ud55c \uac8c\uc784 \ucd08\uae30\uc5d0 \ub3d9\ub9f9\uc5d0 \uac00\uc785\ud558\uba74 \ud070 \ub3c4\uc6c0\uc744 \ubc1b\uc744 \uc218 \uc788\uc73c\ubbc0\ub85c \ub3d9\ub9f9 \uac00\uc785\ub3c4 \uad8c\uc7a5\ud569\ub2c8\ub2e4.",
-                        summary: "\uc9c0\uae08\uae4c\uc9c0 \ubbf8\uc158 \uce58\ud504\uc758 \uae30\ubcf8 \ud50c\ub808\uc774 \ubc29\ubc95\uc744 \uc54c\ub824\ub4dc\ub838\uc2b5\ub2c8\ub2e4! \uc784\ubb34\ub97c \uc644\uc218\ud558\uace0 \ud06c\ub808\ub527\uc744 \ubc1b\uc544 \ub354 \ub9ce\uc740 \uc720\ub2db\uc744 \uad6c\ub9e4\ud558\uba70 \uc784\ubb34\ub97c \ubc18\ubcf5\ud558\uc138\uc694. \uc990\uac81\uac8c \ud50c\ub808\uc774\ud558\uc138\uc694! </br> \ubbf8\uc158 \uce58\ud504 \ud300 \uc62c\ub9bc"
+                        contact: "\uc815\uac70\uc7a5\uc744 \uc5c5\uadf8\ub808\uc774\ub4dc\ud558\uba74 \uc0c8 \ucc28\ub7c9\uc744 \uc704\ud55c \uacf5\uac04\uc744 \ud655\ubcf4\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
+                        general: "\ubbf8\uc158\uc744 \uc644\ub8cc\ud558\uba74 \ud06c\ub808\ub527\uc744 \ubc1b\uac8c \ub429\ub2c8\ub2e4. \ud06c\ub808\ub527\uc744 \ud68d\ub4dd\ud558\uba74 \uc2b9\uae09\uc5d0 \ub354 \uac00\uae4c\uc6cc\uc9d1\ub2c8\ub2e4.",
+                        join_alliance: "\ud504\ub85c\ubaa8\uc158\uacfc \uac74\uc124 \uc2a4\ud14c\uc774\uc158\uc744 \ud1b5\ud574 \ubbf8\uc158 \uc720\ud615\uc774\ub098 \ucc28\ub7c9\uacfc \uac19\uc740 \uc0c8\ub85c\uc6b4 \uae30\ub2a5\uc744 \uc7a0\uae08 \ud574\uc81c\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
+                        summary: "\ub3d9\ub9f9\uc5d0 \uac00\uc785\ud558\uc5ec \ub2e4\ub978 \uc0ac\ub78c\ub4e4\uacfc \ud568\uaed8 \ubbf8\uc158\uc744 \ud574\uacb0\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \ubaa8\ub4e0 \uba64\ubc84\uac00 \ucc38\uc5ec\ud560 \uc218 \uc788\ub294 \uc815\uae30 \ub3d9\ub9f9 \uc774\ubca4\ud2b8\ub3c4 \uc788\uc2b5\ub2c8\ub2e4!"
                     }
                 }
             },
@@ -13666,75 +13360,75 @@ Object.values || (Object.values = function (e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: "\xcen al doilea r\xe2nd, noua ta sta\u021bie va avea nevoie de un nume! Ar fi bine ca acesta s\u0103 fie u\u0219or de recunoscut \u0219i numerotat! Exemplu: \u201eSta\u021bia de pompieri #0001\u201d. Dup\u0103 ce termini, apas\u0103 pe \u201eUrm\u0103torul\u201d!",
-                            build_with_credits: "Acum construie\u0219te-\u021bi cl\u0103direa folosind credite!",
-                            new_building: "D\u0103 clic pe \u201eCl\u0103dire nou\u0103\u201d!",
-                            select_building: "Alege \xeen primul r\xe2nd tipul de cl\u0103dire cu care dore\u0219ti s\u0103 \xeencepi - \xee\u021bi suger\u0103m s\u0103 \xeencepi cu pompierii! \xcen orice caz, se recomand\u0103 s\u0103 \xeencepi cu o sta\u021bie mic\u0103!",
-                            select_position: "Mut\u0103 marcatorul albastru acolo unde dore\u0219ti s\u0103 construie\u0219ti prima ta sta\u021bie!"
+                            add_name: "Alege\u021bi un nume pentru sta\u021bia dumneavoastr\u0103. O pute\u021bi redenumi mai t\xe2rziu.",
+                            build_with_credits: "Pentru a construi o sta\u021bie ave\u021bi nevoie de credte, moneda jocului. Pute\u021bi c\xe2\u0219tiga credite prin misiuni, log\u0103ri zilnice, sarcini \u0219i evenimente.",
+                            new_building: "\xcencepe\u021bi procesul de construc\u021bie a sta\u021biei dumneavoastr\u0103.",
+                            select_building: "Decide\u021bi dac\u0103 dori\u021bi s\u0103 construi\u021bi o sta\u021bie de pompieri sau o sec\u021bie de poli\u021bie. La \xeenceput sunt suficiente sta\u021biile mici. Mai t\xe2rziu, le pute\u021bi \xeembun\u0103t\u0103\u021bi \xeen sta\u021bii normale.",
+                            select_position: "Muta\u021bi indicatorul de loca\u021bie \xeen locul \xeen care dori\u021bi s\u0103 fie amplasat\u0103 sta\u021bia."
                         },
-                        pick_location: "Mai \xeent\xe2i, alege o loca\u021bie \xeen care s\u0103 \xeencepi! Introdu numele loca\u021biei de pornire \xeen bara de c\u0103utare sau caut-o chiar tu pe hart\u0103! Ce zici de ora\u0219ul t\u0103u natal?",
-                        welcome: "Salut. Bine ai venit \xeen Dispecerat 112!  \xce\u021bi voi ar\u0103ta c\xe2teva lucruri care te vor ajuta s\u0103-\u021bi \xeencepi cu dreptul cariera \xeen domeniul serviciilor de urgen\u021b\u0103!"
+                        pick_location: "Alege\u021bi o loca\u021bie \xeen care dori\u021bi s\u0103 v\u0103 construi\u021bi prima sta\u021bie.",
+                        welcome: "Bine a\u021bi venit la Dispecerat 112 - \xcenregistreaz\u0103-te! Lucr\xe2nd \xeentr-un centru de dispecerat pentru serviciile de urgen\u021b\u0103, v\u0103 ocupa\u021bi de apelurile de urgen\u021b\u0103 pentru a ajuta \u0219i proteja publicul. Pentru a face acest lucru, construi\u021bi sta\u021bii \u0219i trimite\u021bi mai multe tipuri de vehicule \u0219i personal instruit \xeen diverse misiuni."
                     },
                     mobile: {
                         build_building: {
-                            add_name: "\xcen al doilea r\xe2nd, noua ta sta\u021bie va avea nevoie de un nume! Ar fi bine ca acesta s\u0103 fie u\u0219or de recunoscut \u0219i numerotat! Exemplu: \u201eSta\u021bia de pompieri #0001\u201d. Dup\u0103 ce termini, apas\u0103 pe \u201eUrm\u0103torul\u201d!",
-                            build_with_credits: "Acum construie\u0219te-\u021bi cl\u0103direa folosind credite!",
-                            new_building: "Mai \xeent\xe2i, vom alege o loca\u021bie pentru a \xeencepe \u0219i construi prima ta cl\u0103dire! <br /> <br />Pentru asta, d\u0103 clic pe \u201eCl\u0103dire nou\u0103\u201d!",
-                            select_building: "Alege \xeen primul r\xe2nd tipul de cl\u0103dire cu care dore\u0219ti s\u0103 \xeencepi - \xee\u021bi suger\u0103m s\u0103 \xeencepi cu pompierii! \xcen orice caz, se recomand\u0103 s\u0103 \xeencepi cu o sta\u021bie mic\u0103!"
+                            add_name: "Alege\u021bi un nume pentru sta\u021bia dumneavoastr\u0103. O pute\u021bi redenumi mai t\xe2rziu.",
+                            build_with_credits: "Pentru a construi o sta\u021bie ave\u021bi nevoie de credte, moneda jocului. Pute\u021bi c\xe2\u0219tiga credite prin misiuni, log\u0103ri zilnice, sarcini \u0219i evenimente.",
+                            new_building: "\xcencepe\u021bi cu construirea primei sta\u021bii. Pute\u021bi alege loca\u021bia acesteia introduc\xe2nd-o manual sau mut\xe2nd indicatorul de loca\u021bie de pe hart\u0103. \xcen func\u021bie de sistemul dvs. de operare, este posibil s\u0103 trebuiasc\u0103 s\u0103 \u021bine\u021bi ap\u0103sat markerul pentru o perioad\u0103 de timp \xeenainte de a-l putea muta.",
+                            select_building: "Decide\u021bi dac\u0103 dori\u021bi s\u0103 construi\u021bi o sta\u021bie de pompieri sau o sec\u021bie de poli\u021bie. La \xeenceput sunt suficiente sta\u021biile mici. Mai t\xe2rziu, le pute\u021bi \xeembun\u0103t\u0103\u021bi \xeen sta\u021bii normale."
                         },
-                        welcome: "Salut. Bine ai venit \xeen Dispecerat 112!  \xce\u021bi voi ar\u0103ta c\xe2teva lucruri care te vor ajuta s\u0103-\u021bi \xeencepi cu dreptul cariera \xeen domeniul serviciilor de urgen\u021b\u0103!"
+                        welcome: "Bine a\u021bi venit la Dispecerat 112 - \xcenregistreaz\u0103-te! Lucr\xe2nd \xeentr-un centru de dispecerat pentru serviciile de urgen\u021b\u0103, v\u0103 ocupa\u021bi de apelurile de urgen\u021b\u0103 pentru a ajuta \u0219i proteja publicul. Pentru a face acest lucru, construi\u021bi sta\u021bii \u0219i trimite\u021bi mai multe tipuri de vehicule \u0219i personal instruit \xeen diverse misiuni."
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Acesta este meniul de trimitere. De aici, \xee\u021bi trimi\u021bi unit\u0103\u021bile \xeen misiuni!",
-                            dispatch_menu_buttons: "Acestea sunt cele dou\u0103 butoane de trimitere! Primul: \u201eTrimite\u201d - trimite unit\u0103\u021bile selectate \xeen misiune. Cel de-al doilea face acela\u0219i lucru, \xeens\u0103 trec\xe2nd la urm\u0103toarea misiune. Deocamdat\u0103, d\u0103 clic pe primul buton.",
-                            dispatch_menu_mission_general: "Aici po\u021bi vedea informa\u021biile generale despre misiune, adic\u0103 numele, adresa \u0219i pictograma acesteia. \xcen misiunile la care ai participat deja, mini-pictograma cu omule\u021bul apare \u0219i \xeenlocuie\u0219te o stea mic\u0103.",
-                            dispatch_menu_mission_progress: "Aici po\u021bi vedea progresul f\u0103cut \xeen cadrul acestei misiuni, efectivele prezente la fa\u021ba locului \u0219i timpul r\u0103mas pentru a \xeendeplini misiunea!",
-                            dispatch_menu_mission_specific: "Aici po\u021bi vedea mai multe informa\u021bii despre misiune, ce unit\u0103\u021bi r\u0103spund la apel \u0219i care sunt deja la fa\u021ba locului.",
-                            dispatch_menu_vehicle_list: "Aceasta este lista vehiculelor disponibile. Aici, selectezi vehiculele. Acum d\u0103 clic pe un vehicul pentru a-l selecta!"
+                            dispatch_menu: "Aceasta este fereastra de expediere. Aici pute\u021bi trimite vehicule \xeen misiuni.",
+                            dispatch_menu_buttons: "Trimite\u021bi un vehicul la o misiune f\u0103c\xe2nd clic pe butonul de expediere. De \xeendat\u0103 ce ave\u021bi mai multe misiuni, pute\u021bi folosi butonul de l\xe2ng\u0103 aceasta pentru a merge suplimentar la urm\u0103toarea misiune.",
+                            dispatch_menu_mission_general: 'Aici pute\u021bi g\u0103si informa\u021bii generale despre misiune. At\xe2ta timp c\xe2t nu sunte\u021bi implicat \xeen misiune, <span class="glyphicon glyphicon-asterisk"></span> este afi\u0219at \xeen fa\u021ba numelui misiunii, <span class="glyphicon glyphicon-user"></span> imediat ce a\u021bi trimis primul vehicul.',
+                            dispatch_menu_mission_progress: "Aici pute\u021bi vedea progresul misiunii. De \xeendat\u0103 ce personalul se afl\u0103 la fa\u021ba locului, acesta este afi\u0219at aici \u0219i pute\u021bi vedea c\xe2t timp mai este necesar pentru finalizarea misiunii.",
+                            dispatch_menu_mission_specific: "Aici pute\u021bi vedea ce vehicule sunt \xeen drum spre sau la misiune. Num\u0103rul din fa\u021ba unui vehicul indic\u0103 starea de desf\u0103\u0219urare a acestuia.",
+                            dispatch_menu_vehicle_list: "Aici pute\u021bi vedea toate vehiculele disponibile pentru misiune. Selecta\u021bi un vehicul f\u0103c\xe2nd clic pe c\u0103su\u021ba de selectare de l\xe2ng\u0103 el."
                         },
                         mobile: {
-                            dispatch_menu: "Acesta este meniul de trimitere. De aici, \xee\u021bi trimi\u021bi unit\u0103\u021bile \xeen misiuni!",
-                            dispatch_menu_buttons: "Acestea sunt cele dou\u0103 butoane de trimitere! Primul: \u201eTrimite\u201d - trimite unit\u0103\u021bile selectate \xeen misiune. Cel de-al doilea face acela\u0219i lucru, \xeens\u0103 trec\xe2nd la urm\u0103toarea misiune. Deocamdat\u0103, d\u0103 clic pe primul buton.",
-                            dispatch_menu_mission_general: "Aici po\u021bi vedea informa\u021biile generale despre misiune, adic\u0103 numele, adresa \u0219i pictograma acesteia. \xcen misiunile la care ai participat deja, mini-pictograma cu omule\u021bul apare \u0219i \xeenlocuie\u0219te o stea mic\u0103.",
-                            dispatch_menu_mission_progress: "Aici po\u021bi vedea progresul f\u0103cut \xeen cadrul acestei misiuni, efectivele prezente la fa\u021ba locului \u0219i timpul r\u0103mas pentru a \xeendeplini misiunea!",
-                            dispatch_menu_mission_specific: "Aici po\u021bi vedea mai multe informa\u021bii despre misiune, ce unit\u0103\u021bi r\u0103spund la apel \u0219i care sunt deja la fa\u021ba locului.",
-                            dispatch_menu_vehicle_list: "Aceasta este lista vehiculelor disponibile. Aici, selectezi vehiculele. Acum d\u0103 clic pe un vehicul pentru a-l selecta!"
+                            dispatch_menu: "Aceasta este fereastra de expediere. Aici pute\u021bi trimite vehicule \xeen misiuni.",
+                            dispatch_menu_buttons: "Trimite\u021bi un vehicul la o misiune f\u0103c\xe2nd clic pe butonul de expediere. De \xeendat\u0103 ce ave\u021bi mai multe misiuni, pute\u021bi folosi butonul de l\xe2ng\u0103 aceasta pentru a merge suplimentar la urm\u0103toarea misiune.",
+                            dispatch_menu_mission_general: 'Aici pute\u021bi g\u0103si informa\u021bii generale despre misiune. At\xe2ta timp c\xe2t nu sunte\u021bi implicat \xeen misiune, <span class="glyphicon glyphicon-asterisk"></span> este afi\u0219at \xeen fa\u021ba numelui misiunii, <span class="glyphicon glyphicon-user"></span> imediat ce a\u021bi trimis primul vehicul.',
+                            dispatch_menu_mission_progress: "Aici pute\u021bi vedea progresul misiunii. De \xeendat\u0103 ce personalul se afl\u0103 la fa\u021ba locului, acesta este afi\u0219at aici \u0219i pute\u021bi vedea c\xe2t timp mai este necesar pentru finalizarea misiunii.",
+                            dispatch_menu_mission_specific: "Aici pute\u021bi vedea ce vehicule sunt \xeen drum spre sau la misiune. Num\u0103rul din fa\u021ba unui vehicul indic\u0103 starea de desf\u0103\u0219urare a acestuia.",
+                            dispatch_menu_vehicle_list: "Aici pute\u021bi vedea toate vehiculele disponibile pentru misiune. Selecta\u021bi un vehicul f\u0103c\xe2nd clic pe c\u0103su\u021ba de selectare de l\xe2ng\u0103 el."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "Acum dorim s\u0103 afl\u0103m cum s\u0103 abord\u0103m incidentele. Deschide meniul de trimitere d\xe2nd clic pe butonul \u201etrimite\u201d!",
-                            first_mission: "Grozav, ai construit prima ta cl\u0103dire! Vezi, primele misiuni \u021bi-au fost semnalate!"
+                            dispatch_button: 'Participa\u021bi la misiune d\xe2nd mai \xeent\xe2i click pe butonul "Dispecerat".',
+                            first_mission: "Prima ta cl\u0103dire este gata. A\u021bi primit \u0219i prima misiune!"
                         },
                         mobile: {
-                            dispatch_button: "Acum dorim s\u0103 afl\u0103m cum s\u0103 abord\u0103m incidentele. Deschide meniul de trimitere d\xe2nd clic pe butonul \u201etrimite\u201d!",
-                            first_mission: "Grozav, ai construit prima ta cl\u0103dire! Vezi, primele misiuni \u021bi-au fost semnalate!"
+                            dispatch_button: 'Participa\u021bi la misiune d\xe2nd mai \xeent\xe2i click pe butonul "Dispecerat".',
+                            first_mission: "Prima ta cl\u0103dire este gata. A\u021bi primit \u0219i prima misiune!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Grozav, e\u0219ti pe cale s\u0103 devii un \u0218ef de Dispecerat extraordinar! Poftim %{coins} monede. Acestea te vor ajuta s\u0103 \xeencepi cu dreptul! </br> Echipa ta Dispecerat 112"
+                        general: "Sunte\u021bi acum gata s\u0103 \xeencepe\u021bi s\u0103 v\u0103 ocupa\u021bi de misiuni pe cont propriu. Pentru a te ajuta s\u0103 \xeencepi cu misiunile \u0219i expansiunea, prime\u0219ti %{coins} monede. Mult noroc!"
                     },
                     mobile: {
-                        general: "Grozav, e\u0219ti pe cale s\u0103 devii un \u0218ef de Dispecerat extraordinar! Poftim %{coins} monede. Acestea te vor ajuta s\u0103 \xeencepi cu dreptul! </br> Echipa ta Dispecerat 112"
+                        general: "Sunte\u021bi acum gata s\u0103 \xeencepe\u021bi s\u0103 v\u0103 ocupa\u021bi de misiuni pe cont propriu. Pentru a te ajuta s\u0103 \xeencepi cu misiunile \u0219i expansiunea, prime\u0219ti %{coins} monede. Mult noroc!"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Dac\u0103 ai \xeentreb\u0103ri, po\u021bi consulta sec\u021biunea \xcentreb\u0103ri Frecvente \xeen cadrul jocului. De asemenea, po\u021bi vizita forumurile jocului sau pagina noastr\u0103 de Facebook!",
-                        general: "\xcen continuare, te sf\u0103tuim s\u0103 construie\u0219ti un dispecerat, iar apoi c\xe2teva sta\u021bii noi. Ar fi bine s\u0103 faci acest lucru c\xe2t mai cur\xe2nd posibil, deoarece num\u0103rul maxim de misiuni este echivalent cu cel mai \xeenalt num\u0103r de sta\u021bii de un alt tip (poli\u021bie, pompieri, ambulan\u021b\u0103) + 1. Spre exemplu: 5 sta\u021bii de pompieri \u0219i 3 de ambulan\u021b\u0103 = 6 misiuni.",
-                        join_alliance: "\xcen plus, aderarea la o alian\u021b\u0103 te-ar ajuta foarte mult, mai ales la \xeenceput - a\u0219a c\u0103 \xee\u021bi suger\u0103m s\u0103 faci \u0219i acest pas.",
-                        summary: "Acestea sunt regulile de baz\u0103 ale jocului Dispecerat 112! \xcendepline\u0219te misiuni, ob\u021bine credite, cump\u0103r\u0103 mai multe unit\u0103\u021bi, repet\u0103. Distrac\u021bie pl\u0103cut\u0103! </br> Echipa ta Dispecerat 112"
+                        contact: "Dac\u0103 v\u0103 moderniza\u021bi sta\u021biile, ve\u021bi ob\u021bine spa\u021biu pentru vehicule noi.",
+                        general: "Ve\u021bi primi credite pentru c\u0103 a\u021bi terminat o misiune. C\xe2\u0219tig\xe2nd credite, v\u0103 apropia\u021bi de o promovare.",
+                        join_alliance: "Promo\u021biile \u0219i sta\u021biile de construc\u021bie deblocheaz\u0103 noi caracteristici, cum ar fi tipuri de misiuni sau vehicule.",
+                        summary: "V\u0103 pute\u021bi al\u0103tura unei alian\u021be pentru a rezolva misiuni \xeempreun\u0103 cu al\u021bii. Exist\u0103, de asemenea, evenimente regulate ale alian\u021bei la care pot participa to\u021bi membrii!"
                     },
                     mobile: {
-                        contact: "Dac\u0103 ai \xeentreb\u0103ri, po\u021bi consulta sec\u021biunea \xcentreb\u0103ri Frecvente \xeen cadrul jocului. De asemenea, po\u021bi vizita forumurile jocului sau pagina noastr\u0103 de Facebook!",
-                        general: "\xcen continuare, te sf\u0103tuim s\u0103 construie\u0219ti un dispecerat, iar apoi c\xe2teva sta\u021bii noi. Ar fi bine s\u0103 faci acest lucru c\xe2t mai cur\xe2nd posibil, deoarece num\u0103rul maxim de misiuni este echivalent cu cel mai \xeenalt num\u0103r de sta\u021bii de un alt tip (poli\u021bie, pompieri, ambulan\u021b\u0103) + 1. Spre exemplu: 5 sta\u021bii de pompieri \u0219i 3 de ambulan\u021b\u0103 = 6 misiuni.",
-                        join_alliance: "\xcen plus, aderarea la o alian\u021b\u0103 te-ar ajuta foarte mult, mai ales la \xeenceput - a\u0219a c\u0103 \xee\u021bi suger\u0103m s\u0103 faci \u0219i acest pas.",
-                        summary: "Acestea sunt regulile de baz\u0103 ale jocului Dispecerat 112! \xcendepline\u0219te misiuni, ob\u021bine credite, cump\u0103r\u0103 mai multe unit\u0103\u021bi, repet\u0103. Distrac\u021bie pl\u0103cut\u0103! </br> Echipa ta Dispecerat 112"
+                        contact: "Dac\u0103 v\u0103 moderniza\u021bi sta\u021biile, ve\u021bi ob\u021bine spa\u021biu pentru vehicule noi.",
+                        general: "Ve\u021bi primi credite pentru c\u0103 a\u021bi terminat o misiune. C\xe2\u0219tig\xe2nd credite, v\u0103 apropia\u021bi de o promovare.",
+                        join_alliance: "Promo\u021biile \u0219i sta\u021biile de construc\u021bie deblocheaz\u0103 noi caracteristici, cum ar fi tipuri de misiuni sau vehicule.",
+                        summary: "V\u0103 pute\u021bi al\u0103tura unei alian\u021be pentru a rezolva misiuni \xeempreun\u0103 cu al\u021bii. Exist\u0103, de asemenea, evenimente regulate ale alian\u021bei la care pot participa to\u021bi membrii!"
                     }
                 }
             },
@@ -14069,80 +13763,80 @@ Object.values || (Object.values = function (e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: "Anna seuraavaksi asemalle nimi! Tee siit\xe4 helposti tunnistettava ja skaalautuva. Esim. \u201dPaloasema 0001\u201d. Kun olet valmis, valitse Seuraava.",
-                            build_with_credits: "Rakenna rakennus krediiteill\xe4!",
-                            new_building: "Napsauta Uusi rakennus -kohtaa!",
-                            select_building: "Valitse ensin rakennuksen tyyppi. Suosittelen aloittamaan paloasemalla! Joka tapauksessa on parasta aloittaa pienell\xe4 asemalla.",
-                            select_position: "Siirr\xe4 sininen merkki siihen kohtaan, johon haluat rakentaa ensimm\xe4isen aseman."
+                            add_name: "Valitse asemallesi nimi. Voit nimet\xe4 sen my\xf6hemmin uudelleen.",
+                            build_with_credits: "Aseman rakentamiseen tarvitset krediittej\xe4, pelin valuuttaa. Voit ansaita krediittej\xe4 teht\xe4vill\xe4, p\xe4ivitt\xe4isill\xe4 kirjautumisilla, teht\xe4vill\xe4 ja tapahtumilla.",
+                            new_building: "Aloita asemasi rakentaminen.",
+                            select_building: "P\xe4\xe4t\xe4, haluatko rakentaa paloaseman vai poliisiaseman. Aluksi pienet asemat riitt\xe4v\xe4t. Voit p\xe4ivitt\xe4\xe4 ne normaaleiksi asemiksi my\xf6hemmin.",
+                            select_position: "Siirr\xe4 sijaintimerkint\xe4 paikkaan, johon haluat aseman sijoittaa."
                         },
-                        pick_location: "Aloita valitsemalla sijainti. Kirjoita haluamasi paikan nimi hakukentt\xe4\xe4n tai etsi se itse kartalta. Miten olisi kotipaikkakuntasi?",
-                        welcome: "Moi! Tervetuloa H\xe4t\xe4keskuspeliin!  Annan sinulle joitakin ohjeita, jotta p\xe4\xe4set hyvin alkuun h\xe4t\xe4keskusty\xf6ss\xe4si."
+                        pick_location: "Valitse paikka, jonne haluat rakentaa ensimm\xe4isen asemasi.",
+                        welcome: "Tervetuloa hatakeskuspeli! Ty\xf6skentelet h\xe4t\xe4keskuksessa, jossa k\xe4sittelet h\xe4t\xe4puheluita auttaaksesi ja suojellaksesi yleis\xf6\xe4. T\xe4t\xe4 varten rakennat asemia ja l\xe4het\xe4t erityyppisi\xe4 ajoneuvoja ja koulutettua henkil\xf6kuntaa erilaisiin teht\xe4viin."
                     },
                     mobile: {
                         build_building: {
-                            add_name: "Anna seuraavaksi asemalle nimi! Tee siit\xe4 helposti tunnistettava ja skaalautuva. Esim. \u201dPaloasema 0001\u201d. Kun olet valmis, valitse Seuraava.",
-                            build_with_credits: "Rakenna rakennus krediiteill\xe4!",
-                            new_building: "Ensin valitaan aloitussijainti ja rakennetaan ensimm\xe4inen rakennus. <br /> <br /> Tee niin napsauttamalla Uusi rakennus -kohtaa!",
-                            select_building: "Valitse ensin rakennuksen tyyppi. Suosittelen aloittamaan paloasemalla! Joka tapauksessa on parasta aloittaa pienell\xe4 asemalla."
+                            add_name: "Valitse asemallesi nimi. Voit nimet\xe4 sen my\xf6hemmin uudelleen.",
+                            build_with_credits: "Aseman rakentamiseen tarvitset krediittej\xe4, pelin valuuttaa. Voit ansaita krediittej\xe4 teht\xe4vill\xe4, p\xe4ivitt\xe4isill\xe4 kirjautumisilla, teht\xe4vill\xe4 ja tapahtumilla.",
+                            new_building: "Aloita ensimm\xe4isen asemasi rakentaminen. Voit valita sen sijainnin sy\xf6tt\xe4m\xe4ll\xe4 sen manuaalisesti tai siirt\xe4m\xe4ll\xe4 sijaintimerkki\xe4 kartalla. K\xe4ytt\xf6j\xe4rjestelm\xe4st\xe4si riippuen sinun on ehk\xe4 pidett\xe4v\xe4 merkki\xe4 jonkin aikaa painettuna, ennen kuin voit siirt\xe4\xe4 sit\xe4.",
+                            select_building: "P\xe4\xe4t\xe4, haluatko rakentaa paloaseman vai poliisiaseman. Aluksi pienet asemat riitt\xe4v\xe4t. Voit p\xe4ivitt\xe4\xe4 ne normaaleiksi asemiksi my\xf6hemmin."
                         },
-                        welcome: "Moi! Tervetuloa H\xe4t\xe4keskuspeliin!  Annan sinulle joitakin ohjeita, jotta p\xe4\xe4set hyvin alkuun h\xe4t\xe4keskusty\xf6ss\xe4si."
+                        welcome: "Tervetuloa hatakeskuspeli! Ty\xf6skentelet h\xe4t\xe4keskuksessa, jossa k\xe4sittelet h\xe4t\xe4puheluita auttaaksesi ja suojellaksesi yleis\xf6\xe4. T\xe4t\xe4 varten rakennat asemia ja l\xe4het\xe4t erityyppisi\xe4 ajoneuvoja ja koulutettua henkil\xf6kuntaa erilaisiin teht\xe4viin."
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "T\xe4m\xe4 on l\xe4hetysvalikko. T\xe4\xe4lt\xe4 voit l\xe4hett\xe4\xe4 yksik\xf6it\xe4 teht\xe4viin.",
-                            dispatch_menu_buttons: "N\xe4m\xe4 kaksi ovat molemmat l\xe4hetyspainikkeita! Ensimm\xe4inen: \u201dL\xe4het\xe4\u201d l\xe4hett\xe4\xe4 valitut yksik\xf6t teht\xe4v\xe4\xe4n. Toinen toimii samalla tavalla, mutta siirtyy seuraavaan teht\xe4v\xe4\xe4n. Napsauta nyt ensimm\xe4ist\xe4 painiketta.",
+                            dispatch_menu: "T\xe4m\xe4 on l\xe4hetysikkuna. T\xe4\xe4ll\xe4 voit l\xe4hett\xe4\xe4 ajoneuvoja teht\xe4viin.",
+                            dispatch_menu_buttons: "L\xe4het\xe4 ajoneuvo teht\xe4v\xe4\xe4n napsauttamalla l\xe4hetyspainiketta. Kun sinulla on lis\xe4\xe4 teht\xe4vi\xe4, voit k\xe4ytt\xe4\xe4 vieress\xe4 olevaa painiketta siirty\xe4ksesi seuraavaan teht\xe4v\xe4\xe4n.",
                             dispatch_menu_mission_general: "T\xe4ss\xe4 n\xe4kyv\xe4t teht\xe4v\xe4n yleistiedot, eli sen nimen, osoitteen ja kuvakkeen. Pieni ihmiskuvake korvaa t\xe4htikuvakkeen niiss\xe4 teht\xe4viss\xe4, joihin olet jo osallistunut.",
-                            dispatch_menu_mission_progress: "T\xe4ss\xe4 n\xe4kyy, miten teht\xe4vien k\xe4sittely on edistynyt, sek\xe4 paikalla olevan henkil\xf6st\xf6n m\xe4\xe4r\xe4n ja teht\xe4v\xe4n j\xe4ljell\xe4 olevan k\xe4sittelyajan.",
-                            dispatch_menu_mission_specific: "T\xe4ss\xe4 n\xe4kyv\xe4t teht\xe4v\xe4n lis\xe4tiedot, kutsuun vastaavat yksik\xf6t ja paikalla jo olevat yksik\xf6t.",
-                            dispatch_menu_vehicle_list: "T\xe4ss\xe4 n\xe4kyy k\xe4ytett\xe4viss\xe4 olevien ajoneuvojen lista. T\xe4ss\xe4 valitset ajoneuvot. Valitse ajoneuvo napsauttamalla sit\xe4."
+                            dispatch_menu_mission_progress: "T\xe4\xe4ll\xe4 n\xe4et teht\xe4v\xe4n edistymisen. Heti kun henkil\xf6st\xf6\xe4 on paikalla, he tulevat n\xe4kyviin t\xe4nne, ja n\xe4et, kuinka paljon aikaa teht\xe4v\xe4n suorittamiseen viel\xe4 tarvitaan.",
+                            dispatch_menu_mission_specific: "T\xe4\xe4lt\xe4 n\xe4et, mitk\xe4 ajoneuvot ovat matkalla teht\xe4v\xe4\xe4n tai teht\xe4v\xe4ss\xe4. Ajoneuvon edess\xe4 oleva numero ilmaisee sen asematilan.",
+                            dispatch_menu_vehicle_list: "T\xe4ss\xe4 n\xe4et kaikki teht\xe4v\xe4\xe4n k\xe4ytett\xe4viss\xe4 olevat ajoneuvot. Valitse ajoneuvo klikkaamalla sen vieress\xe4 olevaa valintaruutua."
                         },
                         mobile: {
-                            dispatch_menu: "T\xe4m\xe4 on l\xe4hetysvalikko. T\xe4\xe4lt\xe4 voit l\xe4hett\xe4\xe4 yksik\xf6it\xe4 teht\xe4viin.",
-                            dispatch_menu_buttons: "N\xe4m\xe4 kaksi ovat molemmat l\xe4hetyspainikkeita! Ensimm\xe4inen: \u201dL\xe4het\xe4\u201d l\xe4hett\xe4\xe4 valitut yksik\xf6t teht\xe4v\xe4\xe4n. Toinen toimii samalla tavalla, mutta siirtyy seuraavaan teht\xe4v\xe4\xe4n. Napsauta nyt ensimm\xe4ist\xe4 painiketta.",
+                            dispatch_menu: "T\xe4m\xe4 on l\xe4hetysikkuna. T\xe4\xe4ll\xe4 voit l\xe4hett\xe4\xe4 ajoneuvoja teht\xe4viin.",
+                            dispatch_menu_buttons: "L\xe4het\xe4 ajoneuvo teht\xe4v\xe4\xe4n napsauttamalla l\xe4hetyspainiketta. Kun sinulla on lis\xe4\xe4 teht\xe4vi\xe4, voit k\xe4ytt\xe4\xe4 vieress\xe4 olevaa painiketta siirty\xe4ksesi seuraavaan teht\xe4v\xe4\xe4n.",
                             dispatch_menu_mission_general: "T\xe4ss\xe4 n\xe4kyv\xe4t teht\xe4v\xe4n yleistiedot, eli sen nimen, osoitteen ja kuvakkeen. Pieni ihmiskuvake korvaa t\xe4htikuvakkeen niiss\xe4 teht\xe4viss\xe4, joihin olet jo osallistunut.",
-                            dispatch_menu_mission_progress: "T\xe4ss\xe4 n\xe4kyy, miten teht\xe4vien k\xe4sittely on edistynyt, sek\xe4 paikalla olevan henkil\xf6st\xf6n m\xe4\xe4r\xe4n ja teht\xe4v\xe4n j\xe4ljell\xe4 olevan k\xe4sittelyajan.",
-                            dispatch_menu_mission_specific: "T\xe4ss\xe4 n\xe4kyv\xe4t teht\xe4v\xe4n lis\xe4tiedot, kutsuun vastaavat yksik\xf6t ja paikalla jo olevat yksik\xf6t.",
-                            dispatch_menu_vehicle_list: "T\xe4ss\xe4 n\xe4kyy k\xe4ytett\xe4viss\xe4 olevien ajoneuvojen lista. T\xe4ss\xe4 valitset ajoneuvot. Valitse ajoneuvo napsauttamalla sit\xe4."
+                            dispatch_menu_mission_progress: "T\xe4\xe4ll\xe4 n\xe4et teht\xe4v\xe4n edistymisen. Heti kun henkil\xf6st\xf6\xe4 on paikalla, he tulevat n\xe4kyviin t\xe4nne, ja n\xe4et, kuinka paljon aikaa teht\xe4v\xe4n suorittamiseen viel\xe4 tarvitaan.",
+                            dispatch_menu_mission_specific: "T\xe4\xe4lt\xe4 n\xe4et, mitk\xe4 ajoneuvot ovat matkalla teht\xe4v\xe4\xe4n tai teht\xe4v\xe4ss\xe4. Ajoneuvon edess\xe4 oleva numero ilmaisee sen asematilan.",
+                            dispatch_menu_vehicle_list: "T\xe4ss\xe4 n\xe4et kaikki teht\xe4v\xe4\xe4n k\xe4ytett\xe4viss\xe4 olevat ajoneuvot. Valitse ajoneuvo klikkaamalla sen vieress\xe4 olevaa valintaruutua."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "Nyt on aika oppia, miten tapauksia k\xe4sitell\xe4\xe4n. Avaa l\xe4hetysvalikko napsauttamalla L\xe4het\xe4-painiketta.",
-                            first_mission: "Hienoa, ensimm\xe4inen rakennus on valmis! Katso, olet saanut ilmoituksen ensimm\xe4isist\xe4 teht\xe4vist\xe4!"
+                            dispatch_button: 'Hoida teht\xe4v\xe4 klikkaamalla ensin "L\xe4hetys"-painiketta.',
+                            first_mission: "Ensimm\xe4inen rakennuksesi on valmis. Sait my\xf6s ensimm\xe4isen teht\xe4v\xe4si!"
                         },
                         mobile: {
-                            dispatch_button: "Nyt on aika oppia, miten tapauksia k\xe4sitell\xe4\xe4n. Avaa l\xe4hetysvalikko napsauttamalla L\xe4het\xe4-painiketta.",
-                            first_mission: "Hienoa, ensimm\xe4inen rakennus on valmis! Katso, olet saanut ilmoituksen ensimm\xe4isist\xe4 teht\xe4vist\xe4!"
+                            dispatch_button: 'Hoida teht\xe4v\xe4 klikkaamalla ensin "L\xe4hetys"-painiketta.',
+                            first_mission: "Ensimm\xe4inen rakennuksesi on valmis. Sait my\xf6s ensimm\xe4isen teht\xe4v\xe4si!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "Hienoa, sinusta on jo tulossa erinomainen h\xe4t\xe4keskusjohtaja! T\xe4ss\xe4 %{coins} kolikkoa, jotta p\xe4\xe4set alkuun! </br> H\xe4t\xe4keskuspelin tiimi"
+                        general: "Olet nyt valmis aloittamaan teht\xe4vien hoitamisen yksin. Jotta p\xe4\xe4sisit alkuun teht\xe4viss\xe4si ja laajentumisessa, saat %{coins} kolikkoa. Onnea matkaan!"
                     },
                     mobile: {
-                        general: "Hienoa, sinusta on jo tulossa erinomainen h\xe4t\xe4keskusjohtaja! T\xe4ss\xe4 %{coins} kolikkoa, jotta p\xe4\xe4set alkuun! </br> H\xe4t\xe4keskuspelin tiimi"
+                        general: "Olet nyt valmis aloittamaan teht\xe4vien hoitamisen yksin. Jotta p\xe4\xe4sisit alkuun teht\xe4viss\xe4si ja laajentumisessa, saat %{coins} kolikkoa. Onnea matkaan!"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Jos sinulla on kysytt\xe4v\xe4\xe4, voit tutustua pelin UKK-sivuun tai k\xe4yd\xe4 pelin keskustelupalstalla tai Facebook-sivullamme.",
-                        general: "Seuraavaksi suosittelen rakentamaan h\xe4t\xe4keskuksen ja sitten mahdollisimman pian uusia asemia, sill\xe4 teht\xe4vien enimm\xe4ism\xe4\xe4r\xe4 on sama kuin erityyppisten asemien (poliisiasema, paloasema, ambulanssiasema) enimm\xe4ism\xe4\xe4r\xe4 plus 1, eli 5 palo- ja 3 ambulanssiasemaa = 6 teht\xe4v\xe4\xe4.",
-                        join_alliance: "My\xf6s liittoutumaan liittyminen on hy\xf6dyksi erityisesti alussa, joten sekin on suositeltavaa.",
+                        contact: "Jos p\xe4ivit\xe4t asemia, saat tilaa uusille ajoneuvoille.",
+                        general: "Saat krediittej\xe4 teht\xe4v\xe4n suorittamisesta. Ansaitsemalla krediittej\xe4 p\xe4\xe4set l\xe4hemm\xe4ksi ylennyst\xe4.",
+                        join_alliance: "Ylennykset ja asemien rakentaminen avaavat uusia ominaisuuksia, kuten teht\xe4v\xe4tyyppej\xe4 tai ajoneuvoja.",
                         radio: {
                             helpshift_id: "1540",
                             link: "https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles",
                             short: "Radio n\xe4ytt\xe4\xe4 ajoneuvojesi statusp\xe4ivityksi\xe4. Saadaksesi lis\xe4tietoa kustakin statuksesta, napsauta t\xe4st\xe4."
                         },
-                        summary: "T\xe4ss\xe4 olivat H\xe4t\xe4keskuspelin perusteet! Suorita teht\xe4vi\xe4, ker\xe4\xe4 krediittej\xe4, osta uusia yksik\xf6it\xe4, toista. Hauskaa pelaamista! </br> H\xe4t\xe4keskuspelin tiimi"
+                        summary: "Voit liitty\xe4 liittoutumaan ja ratkaista teht\xe4vi\xe4 yhdess\xe4 muiden kanssa. Liittoumalla on my\xf6s s\xe4\xe4nn\xf6llisi\xe4 tapahtumia, joihin kaikki j\xe4senet voivat osallistua!"
                     },
                     mobile: {
-                        contact: "Jos sinulla on kysytt\xe4v\xe4\xe4, voit tutustua pelin UKK-sivuun tai k\xe4yd\xe4 pelin keskustelupalstalla tai Facebook-sivullamme.",
-                        general: "Seuraavaksi suosittelen rakentamaan h\xe4t\xe4keskuksen ja sitten mahdollisimman pian uusia asemia, sill\xe4 teht\xe4vien enimm\xe4ism\xe4\xe4r\xe4 on sama kuin erityyppisten asemien (poliisiasema, paloasema, ambulanssiasema) enimm\xe4ism\xe4\xe4r\xe4 plus 1, eli 5 palo- ja 3 ambulanssiasemaa = 6 teht\xe4v\xe4\xe4.",
-                        join_alliance: "My\xf6s liittoutumaan liittyminen on hy\xf6dyksi erityisesti alussa, joten sekin on suositeltavaa.",
-                        summary: "T\xe4ss\xe4 olivat H\xe4t\xe4keskuspelin perusteet! Suorita teht\xe4vi\xe4, ker\xe4\xe4 krediittej\xe4, osta uusia yksik\xf6it\xe4, toista. Hauskaa pelaamista! </br> H\xe4t\xe4keskuspelin tiimi"
+                        contact: "Jos p\xe4ivit\xe4t asemia, saat tilaa uusille ajoneuvoille.",
+                        general: "Saat krediittej\xe4 teht\xe4v\xe4n suorittamisesta. Ansaitsemalla krediittej\xe4 p\xe4\xe4set l\xe4hemm\xe4ksi ylennyst\xe4.",
+                        join_alliance: "Ylennykset ja asemien rakentaminen avaavat uusia ominaisuuksia, kuten teht\xe4v\xe4tyyppej\xe4 tai ajoneuvoja.",
+                        summary: "Voit liitty\xe4 liittoutumaan ja ratkaista teht\xe4vi\xe4 yhdess\xe4 muiden kanssa. Liittoumalla on my\xf6s s\xe4\xe4nn\xf6llisi\xe4 tapahtumia, joihin kaikki j\xe4senet voivat osallistua!"
                     },
                     reminder: {
                         join_alliance: "Liittoon liittymisest\xe4 voi hy\xf6ty\xe4 monella tavalla; voit ker\xe4t\xe4 lis\xe4krediittej\xe4 osallistumalla liittouman j\xe4senten jakamiin teht\xe4viin, voit l\xe4hett\xe4\xe4 henkil\xf6st\xf6\xe4si liittoumasi j\xe4senten kursseille koulutukseen, ja voit vied\xe4 potilaitasi liittoumasi sairaaloihin! Paina t\xe4st\xe4 liitty\xe4ksesi liittoumaan!"
@@ -14167,34 +13861,10 @@ Object.values || (Object.values = function (e) {
                 beginner: {
                     building: {
                         browser: {
-                            build_building: {
-                                add_name: "Anna seuraavaksi asemalle nimi! Tee siit\xe4 helposti tunnistettava ja skaalautuva. Esim. \u201dPoliisiasema 0001\u201d. Kun olet valmis, valitse Seuraava.",
-                                select_building: "Valitse ensin rakennuksen tyyppi. Suosittelen aloittamaan poliisiasemalla! Joka tapauksessa on parasta aloittaa pienell\xe4 asemalla."
-                            },
-                            welcome: "Moi! Tervetuloa H\xe4t\xe4keskuspeliin Poliisi!  Annan sinulle joitakin ohjeita, jotta p\xe4\xe4set hyvin alkuun h\xe4t\xe4keskusty\xf6ss\xe4si."
+                            welcome: "Tervetuloa H\xe4t\xe4keskuspeliin Poliisi! Ty\xf6skentelet h\xe4t\xe4keskuksessa, jossa k\xe4sittelet h\xe4t\xe4puheluita auttaaksesi ja suojellaksesi yleis\xf6\xe4. T\xe4t\xe4 varten rakennat asemia ja l\xe4het\xe4t erityyppisi\xe4 ajoneuvoja ja koulutettua henkil\xf6kuntaa erilaisiin teht\xe4viin."
                         },
                         mobile: {
-                            build_building: {
-                                add_name: "Anna seuraavaksi asemalle nimi! Tee siit\xe4 helposti tunnistettava ja skaalautuva. Esim. \u201dPoliisiasema 0001\u201d. Kun olet valmis, valitse Seuraava.",
-                                select_building: "Valitse ensin rakennuksen tyyppi. Suosittelen aloittamaan poliisiasemalla! Joka tapauksessa on parasta aloittaa pienell\xe4 asemalla."
-                            },
-                            welcome: "Moi! Tervetuloa H\xe4t\xe4keskuspeliin Poliisi!  Annan sinulle joitakin ohjeita, jotta p\xe4\xe4set hyvin alkuun h\xe4t\xe4keskusty\xf6ss\xe4si."
-                        }
-                    },
-                    rewards: {
-                        browser: {
-                            general: "Hienoa, sinusta on jo tulossa erinomainen h\xe4t\xe4keskusjohtaja! T\xe4ss\xe4 %{coins} kolikkoa, jotta p\xe4\xe4set alkuun! </br> H\xe4t\xe4keskuspelin Polisii tiimi"
-                        },
-                        mobile: {
-                            general: "Hienoa, sinusta on jo tulossa erinomainen h\xe4t\xe4keskusjohtaja! T\xe4ss\xe4 %{coins} kolikkoa, jotta p\xe4\xe4set alkuun! </br> H\xe4t\xe4keskuspelin Polisii tiimi"
-                        }
-                    },
-                    tips: {
-                        browser: {
-                            summary: "T\xe4ss\xe4 olivat H\xe4t\xe4keskuspelin Poliisi perusteet! Suorita teht\xe4vi\xe4, ker\xe4\xe4 krediittej\xe4, osta uusia yksik\xf6it\xe4, toista. Hauskaa pelaamista! </br> H\xe4t\xe4keskuspelin Poliisi tiimi"
-                        },
-                        mobile: {
-                            summary: "T\xe4ss\xe4 olivat H\xe4t\xe4keskuspelin Poliisi perusteet! Suorita teht\xe4vi\xe4, ker\xe4\xe4 krediittej\xe4, osta uusia yksik\xf6it\xe4, toista. Hauskaa pelaamista! </br> H\xe4t\xe4keskuspelin Poliisi tiimi"
+                            welcome: "Tervetuloa H\xe4t\xe4keskuspeliin Poliisi! Ty\xf6skentelet h\xe4t\xe4keskuksessa, jossa k\xe4sittelet h\xe4t\xe4puheluita auttaaksesi ja suojellaksesi yleis\xf6\xe4. T\xe4t\xe4 varten rakennat asemia ja l\xe4het\xe4t erityyppisi\xe4 ajoneuvoja ja koulutettua henkil\xf6kuntaa erilaisiin teht\xe4viin."
                         }
                     }
                 }
@@ -14492,75 +14162,75 @@ Object.values || (Object.values = function (e) {
                 building: {
                     browser: {
                         build_building: {
-                            add_name: "Potom svoju nov\xfa stanicu pomenujte! Vyberte n\xe1zov, ktor\xfd je rozpoznate\u013en\xfd a roz\u0161\xedrite\u013en\xfd! Napr. \u201eHasi\u010dsk\xe1 stanica \u010d. 0001\u201c. Po dokon\u010den\xed kliknite na \u201e\u010ealej\u201c!",
-                            build_with_credits: "Teraz postavte svoju budovu pomocou kreditov!",
-                            new_building: "Kliknite na mo\u017enos\u0165 \u201eNov\xe1 budova\u201c!",
-                            select_building: "Najsk\xf4r vyberte typ budovy, s ktorou chcete za\u010da\u0165. Ve\u013emi v\xe1m odpor\xfa\u010dame, aby ste za\u010dali s hasi\u010dsk\xfdmi slu\u017ebami! V ka\u017edom pr\xedpade v\xe1m odpor\xfa\u010dame, aby ste za\u010dali s malou stanicou!",
-                            select_position: "Modr\xfa zna\u010dku presu\u0148te na miesto, kde chcete postavi\u0165 svoju prv\xfa stanicu!"
+                            add_name: "Vyberte si n\xe1zov stanice. Nesk\xf4r ju m\xf4\u017eete premenova\u0165.",
+                            build_with_credits: "Na vybudovanie stanice potrebujete kredity, menu hry. Kredity m\xf4\u017eete z\xedska\u0165 prostredn\xedctvom misi\xed, denn\xfdch prihl\xe1sen\xed, \xfaloh a udalost\xed.",
+                            new_building: "Spustite proces budovania stanice.",
+                            select_building: "Rozhodnite sa, \u010di chcete postavi\u0165 hasi\u010dsk\xfa alebo policajn\xfa stanicu. Na za\u010diatku posta\u010dia mal\xe9 stanice. Nesk\xf4r ich m\xf4\u017eete vylep\u0161i\u0165 na norm\xe1lne stanice.",
+                            select_position: "Presu\u0148te zna\u010dku umiestnenia na miesto, kde chcete ma\u0165 stanicu."
                         },
-                        pick_location: "Najsk\xf4r si vyberte miesto, kde za\u010dnete! Do vyh\u013ead\xe1vacej li\u0161ty zadajte n\xe1zov miesta, kde chcete za\u010da\u0165, alebo ho n\xe1jdite na mape! A \u010do tak va\u0161e rodn\xe9 mesto?",
-                        welcome: "Dobr\xfd de\u0148, vitajte v Dispe\u010derskom centre!  Nau\u010d\xedm v\xe1s nieko\u013eko lekci\xed, ktor\xe9 v\xe1m pom\xf4\u017eu na za\u010diatku va\u0161ej kari\xe9ry v pohotovostn\xfdch slu\u017eb\xe1ch!"
+                        pick_location: "Vyberte si miesto, kde chcete postavi\u0165 svoju prv\xfa stanicu.",
+                        welcome: "Vitajte v Dispe\u010dersk\xe9 centrum - Prihl\xe1si\u0165! Pr\xe1ca na dispe\u010dingu z\xe1chrannej slu\u017eby je spojen\xe1 s rie\u0161en\xedm ties\u0148ov\xfdch volan\xed s cie\u013eom pom\xf4c\u0165 a chr\xe1ni\u0165 verejnos\u0165. Za t\xfdmto \xfa\u010delom budujete stanice a vysielate nieko\u013eko typov vozidiel a vy\u0161kolen\xfdch pracovn\xedkov na r\xf4zne misie."
                     },
                     mobile: {
                         build_building: {
-                            add_name: "Potom svoju nov\xfa stanicu pomenujte! Vyberte n\xe1zov, ktor\xfd je rozpoznate\u013en\xfd a roz\u0161\xedrite\u013en\xfd! Napr. \u201eHasi\u010dsk\xe1 stanica \u010d. 0001\u201c. Po dokon\u010den\xed kliknite na \u201e\u010ealej\u201c!",
-                            build_with_credits: "Teraz postavte svoju budovu pomocou kreditov!",
-                            new_building: "Najsk\xf4r vyberte miesto, kde za\u010dnete a postavte svoju prv\xfa budovu! <br /> <br /> Sprav\xedte to tak, \u017ee kliknete na mo\u017enos\u0165 \u201eNov\xe1 budova\u201c!",
-                            select_building: "Najsk\xf4r vyberte typ budovy, s ktorou chcete za\u010da\u0165. Ve\u013emi v\xe1m odpor\xfa\u010dame, aby ste za\u010dali s hasi\u010dsk\xfdmi slu\u017ebami! V ka\u017edom pr\xedpade v\xe1m odpor\xfa\u010dame, aby ste za\u010dali s malou stanicou!"
+                            add_name: "Vyberte si n\xe1zov stanice. Nesk\xf4r ju m\xf4\u017eete premenova\u0165.",
+                            build_with_credits: "Na vybudovanie stanice potrebujete kredity, menu hry. Kredity m\xf4\u017eete z\xedska\u0165 prostredn\xedctvom misi\xed, denn\xfdch prihl\xe1sen\xed, \xfaloh a udalost\xed.",
+                            new_building: "Za\u010dnite s budovan\xedm prvej stanice. Jej umiestnenie m\xf4\u017eete zvoli\u0165 ru\u010dn\xfdm zadan\xedm alebo presunut\xedm zna\u010dky umiestnenia na mape. V z\xe1vislosti od opera\u010dn\xe9ho syst\xe9mu budete mo\u017eno musie\u0165 zna\u010dku chv\xed\u013eu podr\u017ea\u0165, k\xfdm ju budete m\xf4c\u0165 presun\xfa\u0165.",
+                            select_building: "Rozhodnite sa, \u010di chcete postavi\u0165 hasi\u010dsk\xfa alebo policajn\xfa stanicu. Na za\u010diatku posta\u010dia mal\xe9 stanice. Nesk\xf4r ich m\xf4\u017eete vylep\u0161i\u0165 na norm\xe1lne stanice."
                         },
-                        welcome: "Dobr\xfd de\u0148, vitajte v Dispe\u010derskom centre!  Nau\u010d\xedm v\xe1s nieko\u013eko lekci\xed, ktor\xe9 v\xe1m pom\xf4\u017eu na za\u010diatku va\u0161ej kari\xe9ry v pohotovostn\xfdch slu\u017eb\xe1ch!"
+                        welcome: "Vitajte v Dispe\u010dersk\xe9 centrum - Prihl\xe1si\u0165! Pr\xe1ca na dispe\u010dingu z\xe1chrannej slu\u017eby je spojen\xe1 s rie\u0161en\xedm ties\u0148ov\xfdch volan\xed s cie\u013eom pom\xf4c\u0165 a chr\xe1ni\u0165 verejnos\u0165. Za t\xfdmto \xfa\u010delom budujete stanice a vysielate nieko\u013eko typov vozidiel a vy\u0161kolen\xfdch pracovn\xedkov na r\xf4zne misie."
                     }
                 },
                 mission: {
                     detail: {
                         browser: {
-                            dispatch_menu: "Toto je ponuka vysielania. Odtia\u013eto posielate svoje jednotky na misie!",
-                            dispatch_menu_buttons: "Toto s\xfa va\u0161e dve tla\u010didl\xe1 vysielania! Prv\xe9: \u201eVysla\u0165\u201c posiela vybran\xe9 jednotky na misiu. Druh\xe9 m\xe1 rovnak\xfa funkciu ako to prv\xe9, ale jednotky posiela na \u010fal\u0161iu misiu. Tentoraz kliknite na prv\xe9 tla\u010didlo.",
-                            dispatch_menu_mission_general: "Na tomto mieste n\xe1jdete v\u0161eobecn\xe9 inform\xe1cie o misii, t. j. n\xe1zov, adresu, ikonu misie. Na misi\xe1ch, na ktor\xfdch ste sa u\u017e z\xfa\u010dastnili, sa objav\xed mal\xe1 ikona mu\u017ea a nahr\xe1dza hviezdi\u010dku.",
-                            dispatch_menu_mission_progress: "Na tomto mieste vid\xedte, ak\xfd ve\u013ek\xfd pokrok ste dosiahli pri rie\u0161en\xed tejto misie, ako aj po\u010det zamestnancov na mieste a zost\xe1vaj\xfaci \u010das na dokon\u010denie tejto misie!",
-                            dispatch_menu_mission_specific: "Na tomto mieste n\xe1jdete viac inform\xe1ci\xed o misii, ktor\xe9 jednotky reaguj\xfa na hovor a ktor\xe9 s\xfa u\u017e na mieste.",
-                            dispatch_menu_vehicle_list: "Toto je zoznam va\u0161ich dostupn\xfdch vozidiel. Na tomto mieste vyber\xe1te vozidl\xe1. Kliknut\xedm vyberte vozidlo!"
+                            dispatch_menu: "Toto je okno odoslania. Tu m\xf4\u017eete posiela\u0165 vozidl\xe1 na misie.",
+                            dispatch_menu_buttons: "Vozidlo na misiu odo\u0161lete kliknut\xedm na tla\u010didlo odoslania. Akon\xe1hle m\xe1te viac misi\xed, m\xf4\u017eete pou\u017ei\u0165 tla\u010didlo ved\u013ea, aby ste dodato\u010dne pre\u0161li na \u010fal\u0161iu misiu.",
+                            dispatch_menu_mission_general: 'Tu n\xe1jdete v\u0161eobecn\xe9 inform\xe1cie o misii. Pokia\u013e sa misie nez\xfa\u010dast\u0148ujete, pred n\xe1zvom misie sa zobrazuje str\xe1nka <span class="glyphicon glyphicon-asterisk"></span>, <span class="glyphicon glyphicon-user"></span> hne\u010f ako vy\u0161lete prv\xe9 vozidlo.',
+                            dispatch_menu_mission_progress: "Tu si m\xf4\u017eete pozrie\u0165 priebeh misie. Akon\xe1hle je person\xe1l na mieste, zobraz\xed sa tu a vy m\xf4\u017eete vidie\u0165, ko\u013eko \u010dasu je e\u0161te potrebn\xe9 na dokon\u010denie misie.",
+                            dispatch_menu_mission_specific: "Tu m\xf4\u017eete vidie\u0165, ktor\xe9 vozidl\xe1 s\xfa na ceste do misie alebo v nej. \u010c\xedslo pred vozidlom ozna\u010duje jeho stav nasadenia.",
+                            dispatch_menu_vehicle_list: "Tu m\xf4\u017eete vidie\u0165 v\u0161etky vozidl\xe1, ktor\xe9 s\xfa k dispoz\xedcii pre misiu.Vyberte vozidlo kliknut\xedm na za\u0161krt\xe1vacie pol\xed\u010dko ved\u013ea neho."
                         },
                         mobile: {
-                            dispatch_menu: "Toto je ponuka vysielania. Odtia\u013eto posielate svoje jednotky na misie!",
-                            dispatch_menu_buttons: "Toto s\xfa va\u0161e dve tla\u010didl\xe1 vysielania! Prv\xe9: \u201eVysla\u0165\u201c posiela vybran\xe9 jednotky na misiu. Druh\xe9 m\xe1 rovnak\xfa funkciu ako to prv\xe9, ale jednotky posiela na \u010fal\u0161iu misiu. Tentoraz kliknite na prv\xe9 tla\u010didlo.",
-                            dispatch_menu_mission_general: "Na tomto mieste n\xe1jdete v\u0161eobecn\xe9 inform\xe1cie o misii, t. j. n\xe1zov, adresu, ikonu misie. Na misi\xe1ch, na ktor\xfdch ste sa u\u017e z\xfa\u010dastnili, sa objav\xed mal\xe1 ikona mu\u017ea a nahr\xe1dza hviezdi\u010dku.",
-                            dispatch_menu_mission_progress: "Na tomto mieste vid\xedte, ak\xfd ve\u013ek\xfd pokrok ste dosiahli pri rie\u0161en\xed tejto misie, ako aj po\u010det zamestnancov na mieste a zost\xe1vaj\xfaci \u010das na dokon\u010denie tejto misie!",
-                            dispatch_menu_mission_specific: "Na tomto mieste n\xe1jdete viac inform\xe1ci\xed o misii, ktor\xe9 jednotky reaguj\xfa na hovor a ktor\xe9 s\xfa u\u017e na mieste.",
-                            dispatch_menu_vehicle_list: "Toto je zoznam va\u0161ich dostupn\xfdch vozidiel. Na tomto mieste vyber\xe1te vozidl\xe1. Kliknut\xedm vyberte vozidlo!"
+                            dispatch_menu: "Toto je okno odoslania. Tu m\xf4\u017eete posiela\u0165 vozidl\xe1 na misie.",
+                            dispatch_menu_buttons: "Vozidlo na misiu odo\u0161lete kliknut\xedm na tla\u010didlo odoslania. Akon\xe1hle m\xe1te viac misi\xed, m\xf4\u017eete pou\u017ei\u0165 tla\u010didlo ved\u013ea, aby ste dodato\u010dne pre\u0161li na \u010fal\u0161iu misiu.",
+                            dispatch_menu_mission_general: 'Tu n\xe1jdete v\u0161eobecn\xe9 inform\xe1cie o misii. Pokia\u013e sa misie nez\xfa\u010dast\u0148ujete, pred n\xe1zvom misie sa zobrazuje str\xe1nka <span class="glyphicon glyphicon-asterisk"></span>, <span class="glyphicon glyphicon-user"></span> hne\u010f ako vy\u0161lete prv\xe9 vozidlo.',
+                            dispatch_menu_mission_progress: "Tu si m\xf4\u017eete pozrie\u0165 priebeh misie. Akon\xe1hle je person\xe1l na mieste, zobraz\xed sa tu a vy m\xf4\u017eete vidie\u0165, ko\u013eko \u010dasu je e\u0161te potrebn\xe9 na dokon\u010denie misie.",
+                            dispatch_menu_mission_specific: "Tu m\xf4\u017eete vidie\u0165, ktor\xe9 vozidl\xe1 s\xfa na ceste do misie alebo v nej. \u010c\xedslo pred vozidlom ozna\u010duje jeho stav nasadenia.",
+                            dispatch_menu_vehicle_list: "Tu m\xf4\u017eete vidie\u0165 v\u0161etky vozidl\xe1, ktor\xe9 s\xfa k dispoz\xedcii pre misiu.Vyberte vozidlo kliknut\xedm na za\u0161krt\xe1vacie pol\xed\u010dko ved\u013ea neho."
                         }
                     },
                     overview: {
                         browser: {
-                            dispatch_button: "Teraz by sme sa mohli nau\u010di\u0165, ako rie\u0161i\u0165 nehody. Kliknut\xedm na tla\u010didlo \u201eVysla\u0165\u201c otvorte ponuku vysielania!",
-                            first_mission: "V\xfdborne, postavili ste svoju prv\xfa budovu! Aha, boli v\xe1m nahl\xe1sen\xe9 prv\xe9 misie!"
+                            dispatch_button: 'Misie sa ujmite tak, \u017ee najprv kliknete na tla\u010didlo "Dispatch".',
+                            first_mission: "Va\u0161a prv\xe1 budova je pripraven\xe1. Dostali ste aj svoju prv\xfa misiu!"
                         },
                         mobile: {
-                            dispatch_button: "Teraz by sme sa mohli nau\u010di\u0165, ako rie\u0161i\u0165 nehody. Kliknut\xedm na tla\u010didlo \u201eVysla\u0165\u201c otvorte ponuku vysielania!",
-                            first_mission: "V\xfdborne, postavili ste svoju prv\xfa budovu! Aha, boli v\xe1m nahl\xe1sen\xe9 prv\xe9 misie!"
+                            dispatch_button: 'Misie sa ujmite tak, \u017ee najprv kliknete na tla\u010didlo "Dispatch".',
+                            first_mission: "Va\u0161a prv\xe1 budova je pripraven\xe1. Dostali ste aj svoju prv\xfa misiu!"
                         }
                     }
                 },
                 rewards: {
                     browser: {
-                        general: "V\xfdborne, vydali ste sa na cestu ku skvel\xe9mu dispe\u010dersk\xe9mu centru! Nech sa p\xe1\u010di, %{coins} minc\xed, ktor\xe9 v\xe1m pom\xf4\u017eu za\u010da\u0165! </br> V\xe1\u0161 t\xedm Dispe\u010dersk\xe9ho centra"
+                        general: "Teraz ste pripraven\xed za\u010da\u0165 sa o misie stara\u0165 sami. Aby ste mohli za\u010da\u0165 s misiami a roz\u0161irovan\xedm, dostanete %{coins} minc\xed. Ve\u013ea \u0161\u0165astia!"
                     },
                     mobile: {
-                        general: "V\xfdborne, vydali ste sa na cestu ku skvel\xe9mu dispe\u010dersk\xe9mu centru! Nech sa p\xe1\u010di, %{coins} minc\xed, ktor\xe9 v\xe1m pom\xf4\u017eu za\u010da\u0165! </br> V\xe1\u0161 t\xedm Dispe\u010dersk\xe9ho centra"
+                        general: "Teraz ste pripraven\xed za\u010da\u0165 sa o misie stara\u0165 sami. Aby ste mohli za\u010da\u0165 s misiami a roz\u0161irovan\xedm, dostanete %{coins} minc\xed. Ve\u013ea \u0161\u0165astia!"
                     }
                 },
                 tips: {
                     browser: {
-                        contact: "Ak m\xe1te ot\xe1zky, m\xf4\u017eete sa obr\xe1ti\u0165 na \u010dast\xe9 ot\xe1zky v hre, nav\u0161t\xedvi\u0165 hern\xe9 f\xf3ra alebo na\u0161u str\xe1nku na Facebooku!",
-                        general: "Ako \u010fal\u0161\xed krok v\xe1m odpor\xfa\u010dame, aby ste vybudovali dispe\u010dersk\xe9 centrum a potom \u010do najsk\xf4r nov\xe9 stanice, preto\u017ee maxim\xe1lny po\u010det misi\xed je rovnak\xfd, ako najvy\u0161\u0161\xed po\u010det stan\xedc jedn\xe9ho typu (pol\xedcia, hasi\u010di, z\xe1chranka) plus 1; napr. 5 hasi\u010dsk\xfdch stan\xedc a 3 z\xe1chrann\xe9 stanice = 6 misi\xed.",
-                        join_alliance: "Hlavne na za\u010diatku v\xe1m ve\u013emi pom\xf4\u017ee, ke\u010f sa pripoj\xedte k aliancii, preto v\xe1m to tie\u017e odpor\xfa\u010dame.",
-                        summary: "Toto s\xfa z\xe1klady Dispe\u010dersk\xe9ho centra! Pl\u0148te misie, z\xedskavajte kredity, kupujte viac jednotiek, opakujte. Prajeme v\xe1m dobr\xfa z\xe1bavu! </br> V\xe1\u0161 t\xedm Dispe\u010dersk\xe9ho centra"
+                        contact: "Ak vylep\u0161ujete svoje stanice, z\xedskate priestor pre nov\xe9 vozidl\xe1.",
+                        general: "Za dokon\u010denie misie z\xedskate kredity. Z\xedskavan\xedm kreditov sa pribli\u017eujete k pov\xfd\u0161eniu.",
+                        join_alliance: "Propag\xe1cia a budovanie stan\xedc odomykaj\xfa nov\xe9 funkcie, ako s\xfa typy misi\xed alebo vozidl\xe1.",
+                        summary: "M\xf4\u017eete vst\xfapi\u0165 do aliancie a rie\u0161i\u0165 misie spolu s ostatn\xfdmi. Pravidelne sa konaj\xfa aj alian\u010dn\xe9 podujatia, na ktor\xfdch sa m\xf4\u017eu z\xfa\u010dastni\u0165 v\u0161etci \u010dlenovia!"
                     },
                     mobile: {
-                        contact: "Ak m\xe1te ot\xe1zky, m\xf4\u017eete sa obr\xe1ti\u0165 na \u010dast\xe9 ot\xe1zky v hre, nav\u0161t\xedvi\u0165 hern\xe9 f\xf3ra alebo na\u0161u str\xe1nku na Facebooku!",
-                        general: "Ako \u010fal\u0161\xed krok v\xe1m odpor\xfa\u010dame, aby ste vybudovali dispe\u010dersk\xe9 centrum a potom \u010do najsk\xf4r nov\xe9 stanice, preto\u017ee maxim\xe1lny po\u010det misi\xed je rovnak\xfd, ako najvy\u0161\u0161\xed po\u010det stan\xedc jedn\xe9ho typu (pol\xedcia, hasi\u010di, z\xe1chranka) plus 1; napr. 5 hasi\u010dsk\xfdch stan\xedc a 3 z\xe1chrann\xe9 stanice = 6 misi\xed.",
-                        join_alliance: "Hlavne na za\u010diatku v\xe1m ve\u013emi pom\xf4\u017ee, ke\u010f sa pripoj\xedte k aliancii, preto v\xe1m to tie\u017e odpor\xfa\u010dame.",
-                        summary: "Toto s\xfa z\xe1klady Dispe\u010dersk\xe9ho centra! Pl\u0148te misie, z\xedskavajte kredity, kupujte viac jednotiek, opakujte. Prajeme v\xe1m dobr\xfa z\xe1bavu! </br> V\xe1\u0161 t\xedm Dispe\u010dersk\xe9ho centra"
+                        contact: "Ak vylep\u0161ujete svoje stanice, z\xedskate priestor pre nov\xe9 vozidl\xe1.",
+                        general: "Za dokon\u010denie misie z\xedskate kredity. Z\xedskavan\xedm kreditov sa pribli\u017eujete k pov\xfd\u0161eniu.",
+                        join_alliance: "Propag\xe1cia a budovanie stan\xedc odomykaj\xfa nov\xe9 funkcie, ako s\xfa typy misi\xed alebo vozidl\xe1.",
+                        summary: "M\xf4\u017eete vst\xfapi\u0165 do aliancie a rie\u0161i\u0165 misie spolu s ostatn\xfdmi. Pravidelne sa konaj\xfa aj alian\u010dn\xe9 podujatia, na ktor\xfdch sa m\xf4\u017eu z\xfa\u010dastni\u0165 v\u0161etci \u010dlenovia!"
                     }
                 }
             },
@@ -14882,7 +14552,7 @@ Object.values || (Object.values = function (e) {
             }
         }
 
-        function M(e, t, i, n) {
+        function I(e, t, i, n) {
             function o(r) {
                 var l;
                 return s[r] = !0, ue.each(e[r] || [], (function (e, r) {
@@ -14896,7 +14566,7 @@ Object.values || (Object.values = function (e) {
             return o(t.dataTypes[0]) || !s["*"] && o("*")
         }
 
-        function I(e, i) {
+        function M(e, i) {
             var n, o, s = ue.ajaxSettings.flatOptions || {};
             for (o in i) i[o] !== t && ((s[o] ? e : n || (n = {}))[o] = i[o]);
             return n && ue.extend(!0, e, n), e
@@ -14956,13 +14626,13 @@ Object.values || (Object.values = function (e) {
             }
         }
 
-        function O() {
+        function L() {
             try {
                 return new e.XMLHttpRequest
             } catch (e) {}
         }
 
-        function L() {
+        function O() {
             try {
                 return new e.ActiveXObject("Microsoft.XMLHTTP")
             } catch (e) {}
@@ -14980,7 +14650,7 @@ Object.values || (Object.values = function (e) {
                 if (n = o[s].call(i, t, e)) return n
         }
 
-        function F(e, t, i) {
+        function B(e, t, i) {
             var n, o, s = 0,
                 a = ti.length,
                 r = ue.Deferred()
@@ -15017,7 +14687,7 @@ Object.values || (Object.values = function (e) {
                     }
                 }),
                 u = c.props;
-            for (B(u, c.opts.specialEasing); s < a; s++)
+            for (F(u, c.opts.specialEasing); s < a; s++)
                 if (n = ti[s].call(c, e, u, c.opts)) return n;
             return ue.map(u, $, c), ue.isFunction(c.opts.start) && c.opts.start.call(e, c), ue.fx.timer(ue
                     .extend(l, {
@@ -15030,7 +14700,7 @@ Object.values || (Object.values = function (e) {
                 .always(c.opts.always)
         }
 
-        function B(e, t) {
+        function F(e, t) {
             var i, n, o, s, a;
             for (i in e)
                 if (o = t[n = ue.camelCase(i)], s = e[i], ue.isArray(s) && (o = s[1], s = e[i] = s[0]), i !==
@@ -15455,9 +15125,9 @@ Object.values || (Object.values = function (e) {
             function (e, t) {
                 function i(e, t, i, n) {
                     var o, s, a, r, l, c, u, d, h, p;
-                    if ((t ? t.ownerDocument || t : V) !== O && N(t), i = i || [], !e || "string" != typeof e)
+                    if ((t ? t.ownerDocument || t : V) !== L && N(t), i = i || [], !e || "string" != typeof e)
                         return i;
-                    if (1 !== (r = (t = t || O)
+                    if (1 !== (r = (t = t || L)
                             .nodeType) && 9 !== r) return [];
                     if (R && !n) {
                         if (o = xe.exec(e))
@@ -15506,7 +15176,7 @@ Object.values || (Object.values = function (e) {
                 }
 
                 function a(e) {
-                    var t = O.createElement("div");
+                    var t = L.createElement("div");
                     try {
                         return !!e(t)
                     } catch (e) {
@@ -15662,7 +15332,7 @@ Object.values || (Object.values = function (e) {
                             }), a, !0), c = g((function (e) {
                                 return ae.call(t, e) > -1
                             }), a, !0), u = [function (e, i, n) {
-                                return !s && (n || i !== I) || ((t = i)
+                                return !s && (n || i !== M) || ((t = i)
                                     .nodeType ? l(e, i, n) : c(e, i, n))
                             }]; r < o; r++)
                         if (i = E.relative[e[r].type]) u = [g(v(u), i)];
@@ -15690,10 +15360,10 @@ Object.values || (Object.values = function (e) {
                                 _ = "0",
                                 g = s && [],
                                 v = null != u,
-                                y = I,
+                                y = M,
                                 w = s || a && E.find.TAG("*", u && r.parentNode || r),
                                 k = q += null == y ? 1 : Math.random() || .1;
-                            for (v && (I = r !== O && r, A = n); null != (d = w[_]); _++) {
+                            for (v && (M = r !== L && r, A = n); null != (d = w[_]); _++) {
                                 if (a && d) {
                                     for (h = 0; p = e[h++];)
                                         if (p(d, r, l)) {
@@ -15712,7 +15382,7 @@ Object.values || (Object.values = function (e) {
                                 }
                                 oe.apply(c, m), v && !s && m.length > 0 && f + t.length > 1 && i.uniqueSort(c)
                             }
-                            return v && (q = k, I = y), g
+                            return v && (q = k, M = y), g
                         };
                     return o ? s(r) : r
                 }
@@ -15740,11 +15410,11 @@ Object.values || (Object.values = function (e) {
                                 break
                             }
                     }
-                    return M(e, c)(n, t, !R, i, ge.test(e)), i
+                    return I(e, c)(n, t, !R, i, ge.test(e)), i
                 }
 
                 function z() {}
-                var S, T, A, E, P, j, M, I, D, N, O, L, R, $, F, B, H, W = "sizzle" + -new Date,
+                var S, T, A, E, P, j, I, M, D, N, L, O, R, $, B, F, H, W = "sizzle" + -new Date,
                     V = e.document,
                     q = 0,
                     U = 0,
@@ -15827,7 +15497,7 @@ Object.values || (Object.values = function (e) {
                         return !!t && "HTML" !== t.nodeName
                     }, T = i.support = {}, N = i.setDocument = function (e) {
                         var t = e ? e.ownerDocument || e : V;
-                        return t !== O && 9 === t.nodeType && t.documentElement ? (O = t, L = t
+                        return t !== L && 9 === t.nodeType && t.documentElement ? (L = t, O = t
                             .documentElement, R = !j(t), T.attributes = a((function (e) {
                                 return e.innerHTML = "<a href='#'></a>", r(
                                     "type|href|height|width", c, "#" === e.firstChild
@@ -15848,7 +15518,7 @@ Object.values || (Object.values = function (e) {
                                     .className = "i", 2 === e.getElementsByClassName("i")
                                     .length
                             })), T.getById = a((function (e) {
-                                return L.appendChild(e)
+                                return O.appendChild(e)
                                     .id = W, !t.getElementsByName || !t.getElementsByName(W)
                                     .length
                             })), T.getById ? (E.find.ID = function (e, t) {
@@ -15882,7 +15552,7 @@ Object.values || (Object.values = function (e) {
                             }, E.find.CLASS = T.getElementsByClassName && function (e, t) {
                                 if (typeof t.getElementsByClassName !== Q && R) return t
                                     .getElementsByClassName(e)
-                            }, F = [], $ = [], (T.qsa = n(t.querySelectorAll)) && (a((function (e) {
+                            }, B = [], $ = [], (T.qsa = n(t.querySelectorAll)) && (a((function (e) {
                                 e.innerHTML =
                                     "<select><option selected=''></option></select>", e
                                     .querySelectorAll("[selected]")
@@ -15897,13 +15567,13 @@ Object.values || (Object.values = function (e) {
                                     .querySelectorAll(":enabled")
                                     .length || $.push(":enabled", ":disabled"), e
                                     .querySelectorAll("*,:x"), $.push(",.*:")
-                            }))), (T.matchesSelector = n(B = L.webkitMatchesSelector || L
-                                .mozMatchesSelector || L.oMatchesSelector || L.msMatchesSelector)) && a((
+                            }))), (T.matchesSelector = n(F = O.webkitMatchesSelector || O
+                                .mozMatchesSelector || O.oMatchesSelector || O.msMatchesSelector)) && a((
                                 function (e) {
-                                    T.disconnectedMatch = B.call(e, "div"), B.call(e, "[s!='']:x"), F
+                                    T.disconnectedMatch = F.call(e, "div"), F.call(e, "[s!='']:x"), B
                                         .push("!=", pe)
-                                })), $ = $.length && new RegExp($.join("|")), F = F.length && new RegExp(F
-                                .join("|")), H = n(L.contains) || L.compareDocumentPosition ? function (e,
+                                })), $ = $.length && new RegExp($.join("|")), B = B.length && new RegExp(B
+                                .join("|")), H = n(O.contains) || O.compareDocumentPosition ? function (e,
                                 t) {
                                 var i = 9 === e.nodeType ? e.documentElement : e,
                                     n = t && t.parentNode;
@@ -15917,7 +15587,7 @@ Object.values || (Object.values = function (e) {
                                 return !1
                             }, T.sortDetached = a((function (e) {
                                 return 1 & e.compareDocumentPosition(t.createElement("div"))
-                            })), J = L.compareDocumentPosition ? function (e, i) {
+                            })), J = O.compareDocumentPosition ? function (e, i) {
                                 if (e === i) return Y = !0, 0;
                                 var n = i.compareDocumentPosition && e.compareDocumentPosition && e
                                     .compareDocumentPosition(i);
@@ -15939,22 +15609,22 @@ Object.values || (Object.values = function (e) {
                                 for (n = i; n = n.parentNode;) l.unshift(n);
                                 for (; r[o] === l[o];) o++;
                                 return o ? d(r[o], l[o]) : r[o] === V ? -1 : l[o] === V ? 1 : 0
-                            }, t) : O
+                            }, t) : L
                     }, i.matches = function (e, t) {
                         return i(e, null, null, t)
                     }, i.matchesSelector = function (e, t) {
-                        if ((e.ownerDocument || e) !== O && N(e), t = t.replace(ve, "='$1']"), T
-                            .matchesSelector && R && (!F || !F.test(t)) && (!$ || !$.test(t))) try {
-                            var n = B.call(e, t);
+                        if ((e.ownerDocument || e) !== L && N(e), t = t.replace(ve, "='$1']"), T
+                            .matchesSelector && R && (!B || !B.test(t)) && (!$ || !$.test(t))) try {
+                            var n = F.call(e, t);
                             if (n || T.disconnectedMatch || e.document && 11 !== e.document.nodeType)
                                 return n
                         } catch (e) {}
-                        return i(t, O, null, [e])
+                        return i(t, L, null, [e])
                             .length > 0
                     }, i.contains = function (e, t) {
-                        return (e.ownerDocument || e) !== O && N(e), H(e, t)
+                        return (e.ownerDocument || e) !== L && N(e), H(e, t)
                     }, i.attr = function (e, i) {
-                        (e.ownerDocument || e) !== O && N(e);
+                        (e.ownerDocument || e) !== L && N(e);
                         var n = E.attrHandle[i.toLowerCase()],
                             o = n && ee.call(E.attrHandle, i.toLowerCase()) ? n(e, i, !R) : t;
                         return o === t ? T.attributes || !R ? e.getAttribute(i) : (o = e.getAttributeNode(
@@ -16114,7 +15784,7 @@ Object.values || (Object.values = function (e) {
                             not: s((function (e) {
                                 var t = [],
                                     i = [],
-                                    n = M(e.replace(me, "$1"));
+                                    n = I(e.replace(me, "$1"));
                                 return n[W] ? s((function (e, t, i, o) {
                                     for (var s, a = n(e, null, o, []), r = e
                                         .length; r--;)(s = a[r]) && (e[r] = !(t[r] =
@@ -16155,10 +15825,10 @@ Object.values || (Object.values = function (e) {
                                 return i && i.slice(1) === t.id
                             },
                             root: function (e) {
-                                return e === L
+                                return e === O
                             },
                             focus: function (e) {
-                                return e === O.activeElement && (!O.hasFocus || O.hasFocus()) && !!(e
+                                return e === L.activeElement && (!L.hasFocus || L.hasFocus()) && !!(e
                                     .type || e.href || ~e.tabIndex)
                             },
                             enabled: function (e) {
@@ -16236,7 +15906,7 @@ Object.values || (Object.values = function (e) {
                         submit: !0,
                         reset: !0
                     }) E.pseudos[S] = p(S);
-                M = i.compile = function (e, t) {
+                I = i.compile = function (e, t) {
                         var i, n = [],
                             o = [],
                             s = G[e + " "];
@@ -16613,11 +16283,11 @@ Object.values || (Object.values = function (e) {
         });
         var Ae, Ee, Pe = /[\t\r\n\f]/g,
             je = /\r/g,
-            Me = /^(?:input|select|textarea|button|object)$/i,
-            Ie = /^(?:a|area)$/i,
+            Ie = /^(?:input|select|textarea|button|object)$/i,
+            Me = /^(?:a|area)$/i,
             De = /^(?:checked|selected)$/i,
             Ne = ue.support.getSetAttribute,
-            Oe = ue.support.input;
+            Le = ue.support.input;
         ue.fn.extend({
                 attr: function (e, t) {
                     return ue.access(this, ue.attr, e, t, arguments.length > 1)
@@ -16763,7 +16433,7 @@ Object.values || (Object.values = function (e) {
                     var i, n, o = 0,
                         s = t && t.match(he);
                     if (s && 1 === e.nodeType)
-                        for (; i = s[o++];) n = ue.propFix[i] || i, ue.expr.match.bool.test(i) ? Oe &&
+                        for (; i = s[o++];) n = ue.propFix[i] || i, ue.expr.match.bool.test(i) ? Le &&
                             Ne || !De.test(i) ? e[n] = !1 : e[ue.camelCase("default-" + i)] = e[n] = !
                             1 : ue.attr(e, i, ""), e.removeAttribute(Ne ? i : n)
                 },
@@ -16792,19 +16462,19 @@ Object.values || (Object.values = function (e) {
                     tabIndex: {
                         get: function (e) {
                             var t = ue.find.attr(e, "tabindex");
-                            return t ? parseInt(t, 10) : Me.test(e.nodeName) || Ie.test(e.nodeName) &&
+                            return t ? parseInt(t, 10) : Ie.test(e.nodeName) || Me.test(e.nodeName) &&
                                 e.href ? 0 : -1
                         }
                     }
                 }
             }), Ee = {
                 set: function (e, t, i) {
-                    return !1 === t ? ue.removeAttr(e, i) : Oe && Ne || !De.test(i) ? e.setAttribute(!
+                    return !1 === t ? ue.removeAttr(e, i) : Le && Ne || !De.test(i) ? e.setAttribute(!
                         Ne && ue.propFix[i] || i, i) : e[ue.camelCase("default-" + i)] = e[i] = !0, i
                 }
             }, ue.each(ue.expr.match.bool.source.match(/\w+/g), (function (e, i) {
                 var n = ue.expr.attrHandle[i] || ue.find.attr;
-                ue.expr.attrHandle[i] = Oe && Ne || !De.test(i) ? function (e, i, o) {
+                ue.expr.attrHandle[i] = Le && Ne || !De.test(i) ? function (e, i, o) {
                     var s = ue.expr.attrHandle[i],
                         a = o ? t : (ue.expr.attrHandle[i] = t) != n(e, i, o) ? i.toLowerCase() :
                         null;
@@ -16812,7 +16482,7 @@ Object.values || (Object.values = function (e) {
                 } : function (e, i, n) {
                     return n ? t : e[ue.camelCase("default-" + i)] ? i.toLowerCase() : null
                 }
-            })), Oe && Ne || (ue.attrHooks.value = {
+            })), Le && Ne || (ue.attrHooks.value = {
                 set: function (e, t, i) {
                     if (!ue.nodeName(e, "input")) return Ae && Ae.set(e, t, i);
                     e.defaultValue = t
@@ -16876,11 +16546,11 @@ Object.values || (Object.values = function (e) {
                         return null === e.getAttribute("value") ? "on" : e.value
                     })
                 }));
-        var Le = /^(?:input|select|textarea)$/i,
+        var Oe = /^(?:input|select|textarea)$/i,
             Re = /^key/,
             $e = /^(?:mouse|contextmenu)|click/,
-            Fe = /^(?:focusinfocus|focusoutblur)$/,
-            Be = /^([^.]*)(?:\.(.+)|)$/;
+            Be = /^(?:focusinfocus|focusoutblur)$/,
+            Fe = /^([^.]*)(?:\.(.+)|)$/;
         ue.event = {
             global: {},
             add: function (e, i, n, o, s) {
@@ -16894,7 +16564,7 @@ Object.values || (Object.values = function (e) {
                                 .event.dispatch.apply(d.elem, arguments)
                         }, d.elem = e), l = (i = (i || "")
                             .match(he) || [""])
-                        .length; l--;) m = _ = (a = Be.exec(i[l]) || [])[1], f = (a[2] || "")
+                        .length; l--;) m = _ = (a = Fe.exec(i[l]) || [])[1], f = (a[2] || "")
                         .split(".")
                         .sort(), m && (u = ue.event.special[m] || {}, m = (s ? u.delegateType : u
                                 .bindType) || m, u = ue.event.special[m] || {}, h = ue.extend({
@@ -16921,7 +16591,7 @@ Object.values || (Object.values = function (e) {
                     for (c = (t = (t || "")
                             .match(he) || [""])
                         .length; c--;)
-                        if (p = f = (r = Be.exec(t[c]) || [])[1], m = (r[2] || "")
+                        if (p = f = (r = Fe.exec(t[c]) || [])[1], m = (r[2] || "")
                             .split(".")
                             .sort(), p) {
                             for (d = ue.event.special[p] || {}, h = u[p = (n ? d.delegateType : d
@@ -16942,7 +16612,7 @@ Object.values || (Object.values = function (e) {
                 var a, r, l, c, u, d, h, p = [o || Y],
                     m = le.call(i, "type") ? i.type : i,
                     f = le.call(i, "namespace") ? i.namespace.split(".") : [];
-                if (l = d = o = o || Y, 3 !== o.nodeType && 8 !== o.nodeType && !Fe.test(m + ue.event
+                if (l = d = o = o || Y, 3 !== o.nodeType && 8 !== o.nodeType && !Be.test(m + ue.event
                         .triggered) && (m.indexOf(".") >= 0 && (f = m.split("."), m = f.shift(), f
                             .sort()), r = m.indexOf(":") < 0 && "on" + m, (i = i[ue.expando] ? i :
                             new ue.Event(m, "object" == typeof i && i))
@@ -16952,7 +16622,7 @@ Object.values || (Object.values = function (e) {
                         .makeArray(n, [i]), u = ue.event.special[m] || {}, s || !u.trigger || !1 !== u
                         .trigger.apply(o, n))) {
                     if (!s && !u.noBubble && !ue.isWindow(o)) {
-                        for (c = u.delegateType || m, Fe.test(c + m) || (l = l.parentNode); l; l = l
+                        for (c = u.delegateType || m, Be.test(c + m) || (l = l.parentNode); l; l = l
                             .parentNode) p.push(l), d = l;
                         d === (o.ownerDocument || Y) && p.push(d.defaultView || d.parentWindow || e)
                     }
@@ -17158,7 +16828,7 @@ Object.values || (Object.values = function (e) {
             }
         }), ue.support.changeBubbles || (ue.event.special.change = {
             setup: function () {
-                if (Le.test(this.nodeName)) return "checkbox" !== this.type && "radio" !== this
+                if (Oe.test(this.nodeName)) return "checkbox" !== this.type && "radio" !== this
                     .type || (ue.event.add(this, "propertychange._change", (function (e) {
                         "checked" === e.originalEvent.propertyName && (this
                             ._just_changed = !0)
@@ -17169,7 +16839,7 @@ Object.values || (Object.values = function (e) {
                     }))), !1;
                 ue.event.add(this, "beforeactivate._change", (function (e) {
                     var t = e.target;
-                    Le.test(t.nodeName) && !ue._data(t, "changeBubbles") && (ue.event
+                    Oe.test(t.nodeName) && !ue._data(t, "changeBubbles") && (ue.event
                         .add(t, "change._change", (function (e) {
                             !this.parentNode || e.isSimulated || e
                                 .isTrigger || ue.event.simulate("change",
@@ -17183,7 +16853,7 @@ Object.values || (Object.values = function (e) {
                     "checkbox" !== t.type) return e.handleObj.handler.apply(this, arguments)
             },
             teardown: function () {
-                return ue.event.remove(this, "._change"), !Le.test(this.nodeName)
+                return ue.event.remove(this, "._change"), !Oe.test(this.nodeName)
             }
         }), ue.support.focusinBubbles || ue.each({
             focus: "focusin",
@@ -17903,16 +17573,16 @@ Object.values || (Object.values = function (e) {
             }
         });
         var Et, Pt, jt = ue.now(),
-            Mt = /\?/,
-            It = /#.*$/,
+            It = /\?/,
+            Mt = /#.*$/,
             Dt = /([?&])_=[^&]*/,
             Nt = /^(.*?):[ \t]*([^\r\n]*)\r?$/gm,
-            Ot = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
-            Lt = /^(?:GET|HEAD)$/,
+            Lt = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
+            Ot = /^(?:GET|HEAD)$/,
             Rt = /^\/\//,
             $t = /^([\w.+-]+:)(?:\/\/([^\/?#:]*)(?::(\d+)|)|)/,
-            Ft = ue.fn.load,
-            Bt = {},
+            Bt = ue.fn.load,
+            Ft = {},
             Ht = {},
             Wt = "*/".concat("*");
         try {
@@ -17922,7 +17592,7 @@ Object.values || (Object.values = function (e) {
             .href = "", Pt = Pt.href
         }
         Et = $t.exec(Pt.toLowerCase()) || [], ue.fn.load = function (e, i, n) {
-            if ("string" != typeof e && Ft) return Ft.apply(this, arguments);
+            if ("string" != typeof e && Bt) return Bt.apply(this, arguments);
             var o, s, a, r = this,
                 l = e.indexOf(" ");
             return l >= 0 && (o = e.slice(l, e.length), e = e.slice(0, l)), ue.isFunction(i) ? (n = i, i =
@@ -17952,7 +17622,7 @@ Object.values || (Object.values = function (e) {
             ajaxSettings: {
                 url: Pt,
                 type: "GET",
-                isLocal: Ot.test(Et[1]),
+                isLocal: Lt.test(Et[1]),
                 global: !0,
                 processData: !0,
                 async: !0,
@@ -17986,9 +17656,9 @@ Object.values || (Object.values = function (e) {
                 }
             },
             ajaxSetup: function (e, t) {
-                return t ? I(I(e, ue.ajaxSettings), t) : I(ue.ajaxSettings, e)
+                return t ? M(M(e, ue.ajaxSettings), t) : M(ue.ajaxSettings, e)
             },
-            ajaxPrefilter: j(Bt),
+            ajaxPrefilter: j(Ft),
             ajaxTransport: j(Ht),
             ajax: function (e, i) {
                 function n(e, i, n, o) {
@@ -18057,7 +17727,7 @@ Object.values || (Object.values = function (e) {
                 if (f.promise(k)
                     .complete = _.add, k.success = k.done, k.error = k.fail, h.url = ((e || h
                         .url || Pt) + "")
-                    .replace(It, "")
+                    .replace(Mt, "")
                     .replace(Rt, Et[1] + "//"), h.type = i.method || i.type || h.method || h.type,
                     h.dataTypes = ue.trim(h.dataType || "*")
                     .toLowerCase()
@@ -18065,13 +17735,13 @@ Object.values || (Object.values = function (e) {
                     .toLowerCase()), h.crossDomain = !(!o || o[1] === Et[1] && o[2] === Et[2] && (
                             o[3] || ("http:" === o[1] ? "80" : "443")) === (Et[3] || (
                             "http:" === Et[1] ? "80" : "443")))), h.data && h.processData &&
-                    "string" != typeof h.data && (h.data = ue.param(h.data, h.traditional)), M(Bt,
+                    "string" != typeof h.data && (h.data = ue.param(h.data, h.traditional)), I(Ft,
                         h, i, k), 2 === y) return k;
                 for (s in (c = h.global) && 0 == ue.active++ && ue.event.trigger("ajaxStart"), h
-                    .type = h.type.toUpperCase(), h.hasContent = !Lt.test(h.type), a = h.url, h
-                    .hasContent || (h.data && (a = h.url += (Mt.test(a) ? "&" : "?") + h.data,
+                    .type = h.type.toUpperCase(), h.hasContent = !Ot.test(h.type), a = h.url, h
+                    .hasContent || (h.data && (a = h.url += (It.test(a) ? "&" : "?") + h.data,
                         delete h.data), !1 === h.cache && (h.url = Dt.test(a) ? a.replace(Dt,
-                        "$1_=" + jt++) : a + (Mt.test(a) ? "&" : "?") + "_=" + jt++)), h
+                        "$1_=" + jt++) : a + (It.test(a) ? "&" : "?") + "_=" + jt++)), h
                     .ifModified && (ue.lastModified[a] && k.setRequestHeader("If-Modified-Since",
                         ue.lastModified[a]), ue.etag[a] && k.setRequestHeader("If-None-Match",
                         ue.etag[a])), (h.data && h.hasContent && !1 !== h.contentType || i
@@ -18087,7 +17757,7 @@ Object.values || (Object.values = function (e) {
                         error: 1,
                         complete: 1
                     }) k[s](h[s]);
-                if (u = M(Ht, h, i, k)) {
+                if (u = I(Ht, h, i, k)) {
                     k.readyState = 1, c && m.trigger("ajaxSend", [k, h]), h.async && h.timeout >
                         0 && (l = setTimeout((function () {
                             k.abort("timeout")
@@ -18165,7 +17835,7 @@ Object.values || (Object.values = function (e) {
                 .indexOf("application/x-www-form-urlencoded") && qt.test(i.data) && "data");
             if (l || "jsonp" === i.dataTypes[0]) return s = i.jsonpCallback = ue.isFunction(i
                     .jsonpCallback) ? i.jsonpCallback() : i.jsonpCallback, l ? i[l] = i[l]
-                .replace(qt, "$1" + s) : !1 !== i.jsonp && (i.url += (Mt.test(i.url) ? "&" :
+                .replace(qt, "$1" + s) : !1 !== i.jsonp && (i.url += (It.test(i.url) ? "&" :
                     "?") + i.jsonp + "=" + s), i.converters["script json"] = function () {
                     return r || ue.error(s + " was not called"), r[0]
                 }, i.dataTypes[0] = "json", a = e[s], e[s] = function () {
@@ -18181,8 +17851,8 @@ Object.values || (Object.values = function (e) {
                 for (e in Ut) Ut[e](t, !0)
             };
         ue.ajaxSettings.xhr = e.ActiveXObject ? function () {
-            return !this.isLocal && O() || L()
-        } : O, Zt = ue.ajaxSettings.xhr(), ue.support.cors = !!Zt && "withCredentials" in Zt, (Zt = ue
+            return !this.isLocal && L() || O()
+        } : L, Zt = ue.ajaxSettings.xhr(), ue.support.cors = !!Zt && "withCredentials" in Zt, (Zt = ue
             .support.ajax = !!Zt) && ue.ajaxTransport((function (i) {
             var n;
             if (!i.crossDomain || ue.support.cors) return {
@@ -18252,7 +17922,7 @@ Object.values || (Object.values = function (e) {
                         o[2] : +o[2]), i
                 }]
             };
-        ue.Animation = ue.extend(F, {
+        ue.Animation = ue.extend(B, {
                 tweener: function (e, t) {
                     ue.isFunction(e) ? (t = e, e = ["*"]) : e = e.split(" ");
                     for (var i, n = 0, o = e.length; n < o; n++) i = e[n], ii[i] = ii[i] || [], ii[i]
@@ -18317,7 +17987,7 @@ Object.values || (Object.values = function (e) {
                     var o = ue.isEmptyObject(e),
                         s = ue.speed(t, i, n),
                         a = function () {
-                            var t = F(this, ue.extend({}, e), s);
+                            var t = B(this, ue.extend({}, e), s);
                             a.finish = function () {
                                 t.stop(!0)
                             }, (o || ue._data(this, "finish")) && t.stop(!0)
@@ -24103,9 +23773,9 @@ Object.values || (Object.values = function (e) {
                 },
                 _generateHTML: function (e) {
                     var t, i, n, o, s, a, r, l, c, u, d, h, p, m, f, _, g, v, b, y, w, k, x,
-                        C, z, S, T, A, E, P, j, M, I, D, N, O, L, R, $, F = new Date,
-                        B = this._daylightSavingAdjust(new Date(F.getFullYear(), F.getMonth(),
-                            F.getDate())),
+                        C, z, S, T, A, E, P, j, I, M, D, N, L, O, R, $, B = new Date,
+                        F = this._daylightSavingAdjust(new Date(B.getFullYear(), B.getMonth(),
+                            B.getDate())),
                         H = this._get(e, "isRTL"),
                         W = this._get(e, "showButtonPanel"),
                         V = this._get(e, "hideIfNoPrevNext"),
@@ -24144,7 +23814,7 @@ Object.values || (Object.values = function (e) {
                         "<a class='ui-datepicker-next ui-corner-all ui-state-disabled' title='" +
                         o + "'><span class='ui-icon ui-icon-circle-triangle-" + (H ? "w" :
                             "e") + "'>" + o + "</span></a>", a = this._get(e, "currentText"),
-                        r = this._get(e, "gotoCurrent") && e.currentDay ? Y : B, a = q ? this
+                        r = this._get(e, "gotoCurrent") && e.currentDay ? Y : F, a = q ? this
                         .formatDate(a, r, this._getFormatConfig(e)) : a, l = e.inline ? "" :
                         "<button type='button' class='ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all' data-handler='hide' data-event='click'>" +
                         this._get(e, "closeText") + "</button>", c = W ?
@@ -24192,40 +23862,40 @@ Object.values || (Object.values = function (e) {
                             for (T += A + "</tr></thead><tbody>", P = this._getDaysInMonth(ee,
                                     X), ee === e.selectedYear && X === e.selectedMonth && (e
                                     .selectedDay = Math.min(e.selectedDay, P)), j = (this
-                                    ._getFirstDayOfMonth(ee, X) - u + 7) % 7, M = Math.ceil((
-                                    j + P) / 7), I = G && this.maxRows > M ? this.maxRows : M,
-                                this.maxRows = I, D = this._daylightSavingAdjust(new Date(ee,
-                                    X, 1 - j)), N = 0; N < I; N++) {
-                                for (T += "<tr>", O = d ?
+                                    ._getFirstDayOfMonth(ee, X) - u + 7) % 7, I = Math.ceil((
+                                    j + P) / 7), M = G && this.maxRows > I ? this.maxRows : I,
+                                this.maxRows = M, D = this._daylightSavingAdjust(new Date(ee,
+                                    X, 1 - j)), N = 0; N < M; N++) {
+                                for (T += "<tr>", L = d ?
                                     "<td class='ui-datepicker-week-col'>" + this._get(e,
                                         "calculateWeek")(D) + "</td>" : "", w = 0; w < 7; w++)
-                                    L = _ ? _.apply(e.input ? e.input[0] : null, [D]) : [!0,
-                                        ""], $ = (R = D.getMonth() !== X) && !v || !L[0] ||
-                                    J && D < J || Q && D > Q, O += "<td class='" + ((w + u +
+                                    O = _ ? _.apply(e.input ? e.input[0] : null, [D]) : [!0,
+                                        ""], $ = (R = D.getMonth() !== X) && !v || !O[0] ||
+                                    J && D < J || Q && D > Q, L += "<td class='" + ((w + u +
                                         6) % 7 >= 5 ? " ui-datepicker-week-end" : "") + (R ?
                                         " ui-datepicker-other-month" : "") + (D.getTime() ===
                                         z.getTime() && X === e.selectedMonth && e._keyEvent ||
                                         b.getTime() === D.getTime() && b.getTime() === z
                                         .getTime() ? " " + this._dayOverClass : "") + ($ ?
                                         " " + this._unselectableClass + " ui-state-disabled" :
-                                        "") + (R && !g ? "" : " " + L[1] + (D.getTime() === Y
+                                        "") + (R && !g ? "" : " " + O[1] + (D.getTime() === Y
                                         .getTime() ? " " + this._currentClass : "") + (D
-                                        .getTime() === B.getTime() ?
-                                        " ui-datepicker-today" : "")) + "'" + (R && !g || !L[
-                                            2] ? "" : " title='" + L[2].replace(/'/g,
+                                        .getTime() === F.getTime() ?
+                                        " ui-datepicker-today" : "")) + "'" + (R && !g || !O[
+                                            2] ? "" : " title='" + O[2].replace(/'/g,
                                         "&#39;") + "'") + ($ ? "" :
                                         " data-handler='selectDay' data-event='click' data-month='" +
                                         D.getMonth() + "' data-year='" + D.getFullYear() + "'"
                                         ) + ">" + (R && !g ? "&#xa0;" : $ ?
                                         "<span class='ui-state-default'>" + D.getDate() +
                                         "</span>" : "<a class='ui-state-default" + (D
-                                            .getTime() === B.getTime() ?
+                                            .getTime() === F.getTime() ?
                                             " ui-state-highlight" : "") + (D.getTime() === Y
                                             .getTime() ? " ui-state-active" : "") + (R ?
                                             " ui-priority-secondary" : "") + "' href='#'>" + D
                                         .getDate() + "</a>") + "</td>", D.setDate(D
                                     .getDate() + 1), D = this._daylightSavingAdjust(D);
-                                T += O + "</tr>"
+                                T += L + "</tr>"
                             }++X > 11 && (X = 0, ee++), x += T += "</tbody></table>" + (G ?
                                 "</div>" + (U[0] > 0 && C === U[1] - 1 ?
                                     "<div class='ui-datepicker-row-break'></div>" : "") :
@@ -29074,11 +28744,11 @@ Object.values || (Object.values = function (e) {
                         E = A + a.width(),
                         P = !0 === i ? T : S,
                         j = !0 === i ? S : T,
-                        M = !0 === i ? E : A,
-                        I = !0 === i ? A : E;
-                    if ("both" === o) return !!p && j <= k && P >= w && I <= C && M >= x;
+                        I = !0 === i ? E : A,
+                        M = !0 === i ? A : E;
+                    if ("both" === o) return !!p && j <= k && P >= w && M <= C && I >= x;
                     if ("vertical" === o) return !!p && j <= k && P >= w;
-                    if ("horizontal" === o) return !!p && I <= C && M >= x
+                    if ("horizontal" === o) return !!p && M <= C && I >= x
                 }
             }
         }
@@ -30918,13 +30588,13 @@ Object.values || (Object.values = function (e) {
             return l || "M0 0"
         }
 
-        function M(e) {
+        function I(e) {
             return navigator.userAgent.toLowerCase()
                 .indexOf(e) >= 0
         }
 
-        function I(e, t, i, n) {
-            return "touchstart" === t ? N(e, i, n) : "touchmove" === t ? B(e, i, n) : "touchend" ===
+        function M(e, t, i, n) {
+            return "touchstart" === t ? N(e, i, n) : "touchmove" === t ? F(e, i, n) : "touchend" ===
                 t && H(e, i, n), this
         }
 
@@ -30942,7 +30612,7 @@ Object.values || (Object.values = function (e) {
                     if (!(oi.indexOf(e.target.tagName) < 0)) return;
                     ke(e)
                 }
-                F(e, t)
+                B(e, t)
             }));
             e["_leaflet_touchstart" + n] = o, e.addEventListener(ei, o, !1), ai || (document
                 .documentElement.addEventListener(ei, O, !0), document.documentElement
@@ -30962,22 +30632,22 @@ Object.values || (Object.values = function (e) {
             delete si[e.pointerId], ri--
         }
 
-        function F(e, t) {
+        function B(e, t) {
             for (var i in e.touches = [], si) e.touches.push(si[i]);
             e.changedTouches = [e], t(e)
         }
 
-        function B(e, t, i) {
+        function F(e, t, i) {
             var n = function (e) {
                 (e.pointerType !== e.MSPOINTER_TYPE_MOUSE && "mouse" !== e.pointerType || 0 !== e
-                    .buttons) && F(e, t)
+                    .buttons) && B(e, t)
             };
             e["_leaflet_touchmove" + i] = n, e.addEventListener(ti, n, !1)
         }
 
         function H(e, t, i) {
             var n = function (e) {
-                F(e, t)
+                B(e, t)
             };
             e["_leaflet_touchend" + i] = n, e.addEventListener(ii, n, !1), e.addEventListener(ni, n, !
                 1)
@@ -31114,12 +30784,12 @@ Object.values || (Object.values = function (e) {
 
         function ae(e, t, i) {
             var n = t || new y(0, 0);
-            e.style[di] = (Lt ? "translate(" + n.x + "px," + n.y + "px)" : "translate3d(" + n.x +
+            e.style[di] = (Ot ? "translate(" + n.x + "px," + n.y + "px)" : "translate3d(" + n.x +
                 "px," + n.y + "px,0)") + (i ? " scale(" + i + ")" : "")
         }
 
         function re(e, t) {
-            e._leaflet_pos = t, Ft ? ae(e, t) : (e.style.left = t.x + "px", e.style.top = t.y + "px")
+            e._leaflet_pos = t, Bt ? ae(e, t) : (e.style.left = t.x + "px", e.style.top = t.y + "px")
         }
 
         function le(e) {
@@ -31189,7 +30859,7 @@ Object.values || (Object.values = function (e) {
                     return i.call(o || e, t || window.event)
                 },
                 r = a;
-            qt && 0 === t.indexOf("touch") ? I(e, t, a, s) : !Ut || "dblclick" !== t || !W || qt &&
+            qt && 0 === t.indexOf("touch") ? M(e, t, a, s) : !Ut || "dblclick" !== t || !W || qt &&
                 jt ? "addEventListener" in e ? "mousewheel" === t ? e.addEventListener("onwheel" in
                     e ? "wheel" : "mousewheel", a, !1) : "mouseenter" === t || "mouseleave" === t ? (
                     a = function (t) {
@@ -31279,26 +30949,26 @@ Object.values || (Object.values = function (e) {
         function Pe(e, t) {
             if (!t || !e.length) return e.slice();
             var i = t * t;
-            return Me(e = De(e, i), i)
+            return Ie(e = De(e, i), i)
         }
 
         function je(e, t, i) {
             return Math.sqrt($e(e, t, i, !0))
         }
 
-        function Me(e, t) {
+        function Ie(e, t) {
             var i = e.length,
                 n = new(typeof Uint8Array != void 0 + "" ? Uint8Array : Array)(i);
-            n[0] = n[i - 1] = 1, Ie(e, n, t, 0, i - 1);
+            n[0] = n[i - 1] = 1, Me(e, n, t, 0, i - 1);
             var o, s = [];
             for (o = 0; o < i; o++) n[o] && s.push(e[o]);
             return s
         }
 
-        function Ie(e, t, i, n, o) {
+        function Me(e, t, i, n, o) {
             var s, a, r, l = 0;
             for (a = n + 1; a <= o - 1; a++)(r = $e(e[a], e[n], e[o], !0)) > l && (s = a, l = r);
-            l > i && (t[s] = 1, Ie(e, t, i, n, s), Ie(e, t, i, s, o))
+            l > i && (t[s] = 1, Me(e, t, i, n, s), Me(e, t, i, s, o))
         }
 
         function De(e, t) {
@@ -31308,16 +30978,16 @@ Object.values || (Object.values = function (e) {
         }
 
         function Ne(e, t, i, n, o) {
-            var s, a, r, l = n ? Mi : Le(e, i),
-                c = Le(t, i);
-            for (Mi = c;;) {
+            var s, a, r, l = n ? Ii : Oe(e, i),
+                c = Oe(t, i);
+            for (Ii = c;;) {
                 if (!(l | c)) return [e, t];
                 if (l & c) return !1;
-                r = Le(a = Oe(e, t, s = l || c, i, o), i), s === l ? (e = a, l = r) : (t = a, c = r)
+                r = Oe(a = Le(e, t, s = l || c, i, o), i), s === l ? (e = a, l = r) : (t = a, c = r)
             }
         }
 
-        function Oe(e, t, i, n, o) {
+        function Le(e, t, i, n, o) {
             var s, a, r = t.x - e.x,
                 l = t.y - e.y,
                 c = n.min,
@@ -31327,7 +30997,7 @@ Object.values || (Object.values = function (e) {
                 s = c.x, a = e.y + l * (c.x - e.x) / r), new y(s, a, o)
         }
 
-        function Le(e, t) {
+        function Oe(e, t) {
             var i = 0;
             return e.x < t.min.x ? i |= 1 : e.x > t.max.x && (i |= 2), e.y < t.min.y ? i |= 4 : e.y >
                 t.max.y && (i |= 8), i
@@ -31350,23 +31020,23 @@ Object.values || (Object.values = function (e) {
                 new y(s, a)
         }
 
-        function Fe(e) {
+        function Be(e) {
             return !ot(e[0]) || "object" != typeof e[0][0] && void 0 !== e[0][0]
         }
 
-        function Be(e) {
-            return console.warn("Deprecated use of _flat, please use L.LineUtil.isFlat instead."), Fe(
+        function Fe(e) {
+            return console.warn("Deprecated use of _flat, please use L.LineUtil.isFlat instead."), Be(
                 e)
         }
 
         function He(e, t, i) {
             var n, o, s, a, r, l, c, u, d, h = [1, 4, 2, 8];
-            for (o = 0, c = e.length; o < c; o++) e[o]._code = Le(e[o], t);
+            for (o = 0, c = e.length; o < c; o++) e[o]._code = Oe(e[o], t);
             for (a = 0; a < 4; a++) {
                 for (u = h[a], n = [], o = 0, s = (c = e.length) - 1; o < c; s = o++) r = e[o], l = e[
-                    s], r._code & u ? l._code & u || ((d = Oe(l, r, u, t, i))
-                    ._code = Le(d, t), n.push(d)) : (l._code & u && ((d = Oe(l, r, u, t, i))
-                    ._code = Le(d, t), n.push(d)), n.push(r));
+                    s], r._code & u ? l._code & u || ((d = Le(l, r, u, t, i))
+                    ._code = Oe(d, t), n.push(d)) : (l._code & u && ((d = Le(l, r, u, t, i))
+                    ._code = Oe(d, t), n.push(d)), n.push(r));
                 e = n
             }
             return e
@@ -31995,31 +31665,31 @@ Object.values || (Object.values = function (e) {
             kt = "ActiveXObject" in window,
             xt = kt && !document.addEventListener,
             Ct = "msLaunchUri" in navigator && !("documentMode" in document),
-            zt = M("webkit"),
-            St = M("android"),
-            Tt = M("android 2") || M("android 3"),
+            zt = I("webkit"),
+            St = I("android"),
+            Tt = I("android 2") || I("android 3"),
             At = parseInt(/WebKit\/([0-9]+)|$/.exec(navigator.userAgent)[1], 10),
-            Et = St && M("Google") && At < 537 && !("AudioNode" in window),
+            Et = St && I("Google") && At < 537 && !("AudioNode" in window),
             Pt = !!window.opera,
-            jt = M("chrome"),
-            Mt = M("gecko") && !zt && !Pt && !kt,
-            It = !jt && M("safari"),
-            Dt = M("phantom"),
+            jt = I("chrome"),
+            It = I("gecko") && !zt && !Pt && !kt,
+            Mt = !jt && I("safari"),
+            Dt = I("phantom"),
             Nt = "OTransition" in wt,
-            Ot = 0 === navigator.platform.indexOf("Win"),
-            Lt = kt && "transition" in wt,
+            Lt = 0 === navigator.platform.indexOf("Win"),
+            Ot = kt && "transition" in wt,
             Rt = "WebKitCSSMatrix" in window && "m11" in new window.WebKitCSSMatrix && !Tt,
             $t = "MozPerspective" in wt,
-            Ft = !window.L_DISABLE_3D && (Lt || Rt || $t) && !Nt && !Dt,
-            Bt = "undefined" != typeof orientation || M("mobile"),
-            Ht = Bt && zt,
-            Wt = Bt && Rt,
+            Bt = !window.L_DISABLE_3D && (Ot || Rt || $t) && !Nt && !Dt,
+            Ft = "undefined" != typeof orientation || I("mobile"),
+            Ht = Ft && zt,
+            Wt = Ft && Rt,
             Vt = !window.PointerEvent && window.MSPointerEvent,
             qt = !(!window.PointerEvent && !Vt),
             Ut = !window.L_NO_TOUCH && (qt || "ontouchstart" in window || window.DocumentTouch &&
                 document instanceof window.DocumentTouch),
-            Zt = Bt && Pt,
-            Kt = Bt && Mt,
+            Zt = Ft && Pt,
+            Kt = Ft && It,
             Gt = (window.devicePixelRatio || window.screen.deviceXDPI / window.screen.logicalXDPI) >
             1,
             Yt = !!document.createElement("canvas")
@@ -32046,16 +31716,16 @@ Object.values || (Object.values = function (e) {
                 androidStock: Et,
                 opera: Pt,
                 chrome: jt,
-                gecko: Mt,
-                safari: It,
+                gecko: It,
+                safari: Mt,
                 phantom: Dt,
                 opera12: Nt,
-                win: Ot,
-                ie3d: Lt,
+                win: Lt,
+                ie3d: Ot,
                 webkit3d: Rt,
                 gecko3d: $t,
-                any3d: Ft,
-                mobile: Bt,
+                any3d: Bt,
+                mobile: Ft,
                 mobileWebkit: Ht,
                 mobileWebkit3d: Wt,
                 msPointer: Vt,
@@ -32131,7 +31801,7 @@ Object.values || (Object.values = function (e) {
                 getScale: me
             }),
             bi = "_leaflet_events",
-            yi = Ot && jt ? 2 * window.devicePixelRatio : Mt ? window.devicePixelRatio : 1,
+            yi = Lt && jt ? 2 * window.devicePixelRatio : It ? window.devicePixelRatio : 1,
             wi = {},
             ki = (Object.freeze || Object)({
                 on: fe,
@@ -32206,7 +31876,7 @@ Object.values || (Object.values = function (e) {
                         void 0 !== t.zoom && (this._zoom = this._limitZoom(t.zoom)), t
                         .center && void 0 !== t.zoom && this.setView(T(t.center), t.zoom, {
                             reset: !0
-                        }), this.callInitHooks(), this._zoomAnimated = hi && Ft && !Zt && this
+                        }), this.callInitHooks(), this._zoomAnimated = hi && Bt && !Zt && this
                         .options.zoomAnimation, this._zoomAnimated && (this
                         ._createAnimProxy(), fe(this._proxy, pi, this._catchTransitionEnd,
                                 this)), this._addLayers(this.options.layers)
@@ -32231,11 +31901,11 @@ Object.values || (Object.values = function (e) {
                     }) : (this._zoom = e, this)
                 },
                 zoomIn: function (e, t) {
-                    return e = e || (Ft ? this.options.zoomDelta : 1), this.setZoom(this
+                    return e = e || (Bt ? this.options.zoomDelta : 1), this.setZoom(this
                         ._zoom + e, t)
                 },
                 zoomOut: function (e, t) {
-                    return e = e || (Ft ? this.options.zoomDelta : 1), this.setZoom(this
+                    return e = e || (Bt ? this.options.zoomDelta : 1), this.setZoom(this
                         ._zoom - e, t)
                 },
                 setZoomAround: function (e, t, i) {
@@ -32352,7 +32022,7 @@ Object.values || (Object.values = function (e) {
                             ._moveEnd(!0)
                     }
                     if (!1 === (i = i || {})
-                        .animate || !Ft) return this.setView(e, t, i);
+                        .animate || !Bt) return this.setView(e, t, i);
                     this._stop();
                     var d = this.project(this.getCenter()),
                         h = this.project(e),
@@ -32559,7 +32229,7 @@ Object.values || (Object.values = function (e) {
                         .subtract(i),
                         c = x(this.project(r, n), this.project(a, n))
                         .getSize(),
-                        u = Ft ? this.options.zoomSnap : 1,
+                        u = Bt ? this.options.zoomSnap : 1,
                         d = l.x / c.x,
                         h = l.y / c.y,
                         p = t ? Math.max(d, h) : Math.min(d, h);
@@ -32662,9 +32332,9 @@ Object.values || (Object.values = function (e) {
                 },
                 _initLayout: function () {
                     var e = this._container;
-                    this._fadeAnimated = this.options.fadeAnimation && Ft, X(e,
+                    this._fadeAnimated = this.options.fadeAnimation && Bt, X(e,
                         "leaflet-container" + (Ut ? " leaflet-touch" : "") + (Gt ?
-                            " leaflet-retina" : "") + (xt ? " leaflet-oldie" : "") + (It ?
+                            " leaflet-retina" : "") + (xt ? " leaflet-oldie" : "") + (Mt ?
                             " leaflet-safari" : "") + (this._fadeAnimated ?
                             " leaflet-fade-anim" : ""));
                     var t = U(e, "position");
@@ -32726,7 +32396,7 @@ Object.values || (Object.values = function (e) {
                     t(this._container,
                             "click dblclick mousedown mouseup mouseover mouseout mousemove contextmenu keypress",
                             this._handleDOMEvent, this), this.options.trackResize && t(window,
-                            "resize", this._onResize, this), Ft && this.options
+                            "resize", this._onResize, this), Bt && this.options
                         .transform3DLimit && (e ? this.off : this.on)
                         .call(this, "moveend", this._onMoveEnd)
                 },
@@ -32881,7 +32551,7 @@ Object.values || (Object.values = function (e) {
                 _limitZoom: function (e) {
                     var t = this.getMinZoom(),
                         i = this.getMaxZoom(),
-                        n = Ft ? this.options.zoomSnap : 1;
+                        n = Bt ? this.options.zoomSnap : 1;
                     return n && (e = Math.round(e / n) * n), Math.max(t, Math.min(i, e))
                 },
                 _onPanTransitionStep: function () {
@@ -33366,7 +33036,7 @@ Object.values || (Object.values = function (e) {
         ji.addTo = function (e, t) {
             return e.addHandler(t, this), this
         };
-        var Mi, Ii = {
+        var Ii, Mi = {
                 Events: ut
             },
             Di = Ut ? "touchstart mousedown" : "mousedown",
@@ -33376,13 +33046,13 @@ Object.values || (Object.values = function (e) {
                 pointerdown: "touchend",
                 MSPointerDown: "touchend"
             },
-            Oi = {
+            Li = {
                 mousedown: "mousemove",
                 touchstart: "touchmove",
                 pointerdown: "touchmove",
                 MSPointerDown: "touchmove"
             },
-            Li = dt.extend({
+            Oi = dt.extend({
                 options: {
                     clickTolerance: 3
                 },
@@ -33395,21 +33065,21 @@ Object.values || (Object.values = function (e) {
                         ._enabled = !0)
                 },
                 disable: function () {
-                    this._enabled && (Li._dragging === this && this.finishDrag(), _e(this
+                    this._enabled && (Oi._dragging === this && this.finishDrag(), _e(this
                             ._dragStartTarget, Di, this._onDown, this), this._enabled = !
                         1, this._moved = !1)
                 },
                 _onDown: function (e) {
                     if (!e._simulated && this._enabled && (this._moved = !1, !Q(this._element,
-                            "leaflet-zoom-anim") && !(Li._dragging || e.shiftKey || 1 !==
-                            e.which && 1 !== e.button && !e.touches || (Li._dragging =
+                            "leaflet-zoom-anim") && !(Oi._dragging || e.shiftKey || 1 !==
+                            e.which && 1 !== e.button && !e.touches || (Oi._dragging =
                                 this, this._preventOutline && de(this._element), ce(),
                                 _t(), this._moving)))) {
                         this.fire("down");
                         var t = e.touches ? e.touches[0] : e,
                             i = pe(this._element);
                         this._startPoint = new y(t.clientX, t.clientY), this._parentScale =
-                            me(i), fe(document, Oi[e.type], this._onMove, this), fe(document,
+                            me(i), fe(document, Li[e.type], this._onMove, this), fe(document,
                                 Ni[e.type], this._onUp, this)
                     }
                 },
@@ -33450,12 +33120,12 @@ Object.values || (Object.values = function (e) {
                 finishDrag: function () {
                     for (var e in ee(document.body, "leaflet-dragging"), this._lastTarget && (
                             ee(this._lastTarget, "leaflet-drag-target"), this
-                            ._lastTarget = null), Oi) _e(document, Oi[e], this._onMove, this),
+                            ._lastTarget = null), Li) _e(document, Li[e], this._onMove, this),
                         _e(document, Ni[e], this._onUp, this);
                     ue(), gt(), this._moved && this._moving && (g(this._animRequest), this
                         .fire("dragend", {
                             distance: this._newPos.distanceTo(this._startPos)
-                        })), this._moving = !1, Li._dragging = !1
+                        })), this._moving = !1, Oi._dragging = !1
                 }
             }),
             Ri = (Object.freeze || Object)({
@@ -33465,16 +33135,16 @@ Object.values || (Object.values = function (e) {
                     return $e(e, t, i)
                 },
                 clipSegment: Ne,
-                _getEdgeIntersection: Oe,
-                _getBitCode: Le,
+                _getEdgeIntersection: Le,
+                _getBitCode: Oe,
                 _sqClosestPointOnSegment: $e,
-                isFlat: Fe,
-                _flat: Be
+                isFlat: Be,
+                _flat: Fe
             }),
             $i = (Object.freeze || Object)({
                 clipPolygon: He
             }),
-            Fi = {
+            Bi = {
                 project: function (e) {
                     return new y(e.lng, e.lat)
                 },
@@ -33483,7 +33153,7 @@ Object.values || (Object.values = function (e) {
                 },
                 bounds: new k([-180, -90], [180, 90])
             },
-            Bi = {
+            Fi = {
                 R: 6378137,
                 R_MINOR: 6356752.314245179,
                 bounds: new k([-20037508.34279, -15496570.73972], [20037508.34279, 18764656.23138]),
@@ -33507,25 +33177,25 @@ Object.values || (Object.values = function (e) {
                 }
             },
             Hi = (Object.freeze || Object)({
-                LonLat: Fi,
-                Mercator: Bi,
+                LonLat: Bi,
+                Mercator: Fi,
                 SphericalMercator: ft
             }),
             Wi = t({}, mt, {
                 code: "EPSG:3395",
-                projection: Bi,
+                projection: Fi,
                 transformation: function () {
-                    var e = .5 / (Math.PI * Bi.R);
+                    var e = .5 / (Math.PI * Fi.R);
                     return E(e, .5, -e, .5)
                 }()
             }),
             Vi = t({}, mt, {
                 code: "EPSG:4326",
-                projection: Fi,
+                projection: Bi,
                 transformation: E(1 / 180, 1, -1 / 180, .5)
             }),
             qi = t({}, pt, {
-                projection: Fi,
+                projection: Bi,
                 transformation: E(1, 0, -1, 0),
                 scale: function (e) {
                     return Math.pow(2, e)
@@ -33798,7 +33468,7 @@ Object.values || (Object.values = function (e) {
                 },
                 addHooks: function () {
                     var e = this._marker._icon;
-                    this._draggable || (this._draggable = new Li(e, e, !0)), this._draggable
+                    this._draggable || (this._draggable = new Oi(e, e, !0)), this._draggable
                         .on({
                             dragstart: this._onDragStart,
                             predrag: this._onPreDrag,
@@ -34207,10 +33877,10 @@ Object.values || (Object.values = function (e) {
                     this._bounds = new C, this._latlngs = this._convertLatLngs(e)
                 },
                 _defaultShape: function () {
-                    return Fe(this._latlngs) ? this._latlngs : this._latlngs[0]
+                    return Be(this._latlngs) ? this._latlngs : this._latlngs[0]
                 },
                 _convertLatLngs: function (e) {
-                    for (var t = [], i = Fe(e), n = 0, o = e.length; n < o; n++) i ? (t[n] =
+                    for (var t = [], i = Be(e), n = 0, o = e.length; n < o; n++) i ? (t[n] =
                         T(e[n]), this._bounds.extend(t[n])) : t[n] = this._convertLatLngs(
                         e[n]);
                     return t
@@ -34267,7 +33937,7 @@ Object.values || (Object.values = function (e) {
                     return !1
                 }
             });
-        nn._flat = Be;
+        nn._flat = Fe;
         var on = nn.extend({
                 options: {
                     fill: !0
@@ -34293,11 +33963,11 @@ Object.values || (Object.values = function (e) {
                     return i >= 2 && t[0] instanceof S && t[0].equals(t[i - 1]) && t.pop(), t
                 },
                 _setLatLngs: function (e) {
-                    nn.prototype._setLatLngs.call(this, e), Fe(this._latlngs) && (this
+                    nn.prototype._setLatLngs.call(this, e), Be(this._latlngs) && (this
                         ._latlngs = [this._latlngs])
                 },
                 _defaultShape: function () {
-                    return Fe(this._latlngs[0]) ? this._latlngs[0] : this._latlngs[0][0]
+                    return Be(this._latlngs[0]) ? this._latlngs[0] : this._latlngs[0][0]
                 },
                 _clipPoints: function () {
                     var e = this._renderer._bounds,
@@ -34367,7 +34037,7 @@ Object.values || (Object.values = function (e) {
             };
         Qi.include(an), tn.include(an), en.include(an), nn.include({
             toGeoJSON: function (e) {
-                var t = !Fe(this._latlngs);
+                var t = !Be(this._latlngs);
                 return Ke(this, {
                     type: (t ? "Multi" : "") + "LineString",
                     coordinates: Ze(this._latlngs, t ? 1 : 0, !1, e)
@@ -34375,8 +34045,8 @@ Object.values || (Object.values = function (e) {
             }
         }), on.include({
             toGeoJSON: function (e) {
-                var t = !Fe(this._latlngs),
-                    i = t && !Fe(this._latlngs[0]),
+                var t = !Be(this._latlngs),
+                    i = t && !Be(this._latlngs[0]),
                     n = Ze(this._latlngs, i ? 2 : t ? 1 : 0, !0, e);
                 return t || (n = [n]), Ke(this, {
                     type: (i ? "Multi" : "") + "Polygon",
@@ -34991,7 +34661,7 @@ Object.values || (Object.values = function (e) {
                 options: {
                     tileSize: 256,
                     opacity: 1,
-                    updateWhenIdle: Bt,
+                    updateWhenIdle: Ft,
                     updateWhenZooming: !0,
                     updateInterval: 200,
                     zIndex: 1,
@@ -35204,7 +34874,7 @@ Object.values || (Object.values = function (e) {
                         o = e.origin.multiplyBy(n)
                         .subtract(this._map._getNewPixelOrigin(t, i))
                         .round();
-                    Ft ? ae(e.el, o, n) : re(e.el, o)
+                    Bt ? ae(e.el, o, n) : re(e.el, o)
                 },
                 _resetGrid: function () {
                     var e = this._map,
@@ -35559,7 +35229,7 @@ Object.values || (Object.values = function (e) {
                         .add(n)
                         .add(o)
                         .subtract(a);
-                    Ft ? ae(this._container, r, i) : re(this._container, r)
+                    Bt ? ae(this._container, r, i) : re(this._container, r)
                 },
                 _reset: function () {
                     for (var e in this._update(), this._updateTransform(this._center, this
@@ -36079,7 +35749,7 @@ Object.values || (Object.values = function (e) {
             addHooks: function () {
                 if (!this._draggable) {
                     var e = this._map;
-                    this._draggable = new Li(e._mapPane, e._container), this._draggable
+                    this._draggable = new Oi(e._mapPane, e._container), this._draggable
                         .on({
                             dragstart: this._onDragStart,
                             drag: this._onDrag,
@@ -36456,9 +36126,9 @@ Object.values || (Object.values = function (e) {
         Ci.addInitHook("addHandler", "touchZoom", Pn), Ci.BoxZoom = Cn, Ci.DoubleClickZoom = zn, Ci
             .Drag = Sn, Ci.Keyboard = Tn, Ci.ScrollWheelZoom = An, Ci.Tap = En, Ci.TouchZoom = Pn,
             Object.freeze = et, e.version = "1.4.0+HEAD.3337f36", e.Control = zi, e.control = Si, e
-            .Browser = Xt, e.Evented = dt, e.Mixin = Ii, e.Util = ct, e.Class = v, e.Handler = ji, e
+            .Browser = Xt, e.Evented = dt, e.Mixin = Mi, e.Util = ct, e.Class = v, e.Handler = ji, e
             .extend = t, e.bind = i, e.stamp = n, e.setOptions = u, e.DomEvent = ki, e.DomUtil = vi, e
-            .PosAnimation = xi, e.Draggable = Li, e.LineUtil = Ri, e.PolyUtil = $i, e.Point = y, e
+            .PosAnimation = xi, e.Draggable = Oi, e.LineUtil = Ri, e.PolyUtil = $i, e.Point = y, e
             .point = w, e.Bounds = k, e.bounds = x, e.Transformation = A, e.transformation = E, e
             .Projection = Hi, e.LatLng = S, e.latLng = T, e.LatLngBounds = C, e.latLngBounds = z, e
             .CRS = pt, e.GeoJSON = sn, e.geoJSON = Ye, e.geoJson = rn, e.Layer = Ui, e.LayerGroup =
@@ -40405,7 +40075,7 @@ function (e) {
         y(e, "width", t)
     }
 
-    function M(e, t) {
+    function I(e, t) {
         if (pe(t)) {
             var i = getComputedStyle(e),
                 n = a(i.paddingTop) + a(i.paddingBottom),
@@ -40415,7 +40085,7 @@ function (e) {
         y(e, "height", t)
     }
 
-    function I(e, t, i) {
+    function M(e, t, i) {
         var n;
         me(window.CustomEvent) ? n = new CustomEvent(t, {
                 bubbles: !0,
@@ -40437,16 +40107,16 @@ function (e) {
             }))
     }
 
-    function O(e, t, i, n, o) {
+    function L(e, t, i, n, o) {
         for (e = o ? e.lastChild : e.firstChild; e;) {
             var s = o ? e.previousSibling : e.nextSibling;
-            if (!i && !1 === t(e) || !n && !1 === O(e, t, i, n, o) || i && !1 === t(e)) return !1;
+            if (!i && !1 === t(e) || !n && !1 === L(e, t, i, n, o) || i && !1 === t(e)) return !1;
             e = s
         }
     }
 
-    function L(e, t, i, n) {
-        O(e, t, i, n, !0)
+    function O(e, t, i, n) {
+        L(e, t, i, n, !0)
     }
 
     function R(e, t) {
@@ -40461,7 +40131,7 @@ function (e) {
         return e && (!k(e, "p,div") || e.className || f(e, "style") || !i(w(e)))
     }
 
-    function F(e, t) {
+    function B(e, t) {
         var i = r(t, {}, e.ownerDocument);
         for (s(e.attributes, (function (e, t) {
                 try {
@@ -40471,7 +40141,7 @@ function (e) {
         return e.parentNode.replaceChild(i, e), i
     }
 
-    function B(e) {
+    function F(e) {
         return !!/11?|9/.test(e.nodeType) &&
             "|iframe|area|base|basefont|br|col|frame|hr|img|input|wbr|isindex|link|meta|param|command|embed|keygen|source|track|object|"
             .indexOf("|" + e.nodeName.toLowerCase() + "|") < 0
@@ -40493,7 +40163,7 @@ function (e) {
             for (; H(e.parentNode, !0);) e = e.parentNode;
             return e
         };
-        O(e, (function (e) {
+        L(e, (function (e) {
             var i = "ul,ol",
                 n = !H(e, !0);
             if (n && H(e.parentNode, !0)) {
@@ -40681,7 +40351,7 @@ function (e) {
                     l.selectedRange()
                     .extractContents()), d(u, t))), c = u.lastChild) {
                 for (; !H(c.lastChild, !0);) c = c.lastChild;
-                if (B(c) ? c.lastChild || d(c, document.createTextNode("\u200b")) : c = u, l
+                if (F(c) ? c.lastChild || d(c, document.createTextNode("\u200b")) : c = u, l
                     .removeMarkers(), d(c, i(s)), d(c, i(a)), n) {
                     var h = r("div");
                     return d(h, u), h.innerHTML
@@ -40693,7 +40363,7 @@ function (e) {
                 o = l.selectedRange(),
                 s = o.commonAncestorContainer;
             if (!i) return !1;
-            o.deleteContents(), s && 3 !== s.nodeType && !B(s) ? z(i, s) : o.insertNode(i), l
+            o.deleteContents(), s && 3 !== s.nodeType && !F(s) ? z(i, s) : o.insertNode(i), l
                 .restoreRange()
         }, l.cloneSelected = function () {
             var e = l.selectedRange();
@@ -40752,7 +40422,7 @@ function (e) {
         }, l.selectRange = function (t) {
             var i, n = e.getSelection(),
                 s = t.endContainer;
-            if (!Me && t.collapsed && s && !H(s, !0)) {
+            if (!Ie && t.collapsed && s && !H(s, !0)) {
                 for (i = s.lastChild; i && k(i, ".sceditor-ignore");) i = i.previousSibling;
                 if (k(i, "br")) {
                     var a = o.createRange();
@@ -40772,11 +40442,11 @@ function (e) {
         }, l.selectOuterText = function (e, t) {
             var i, n, o = l.cloneSelected();
             if (!o) return !1;
-            o.collapse(!1), i = Ie(o, !0, e), n = Ie(o, !1, t), o.setStart(i.node, i.offset), o.setEnd(n
+            o.collapse(!1), i = Me(o, !0, e), n = Me(o, !1, t), o.setStart(i.node, i.offset), o.setEnd(n
                 .node, n.offset), l.selectRange(o)
         }, l.getOuterText = function (e, t) {
             var i = l.cloneSelected();
-            return i ? (i.collapse(!e), Ie(i, e, t)
+            return i ? (i.collapse(!e), Me(i, e, t)
                 .text) : ""
         }, l.replaceKeyword = function (e, t, i, n, o, s) {
             i || e.sort((function (e, t) {
@@ -40857,15 +40527,15 @@ function (e) {
 
     function re(e, t) {
         var i;
-        O(e, (function (e) {
+        L(e, (function (e) {
             H(e, !0) ? (i || z(i = r("p", {}, t), e), e.nodeType === ve && "" === e.nodeValue ||
                 d(i, e)) : i = null
         }), !1, !0)
     }
 
     function le(e, t) {
-        var i, a, l, _, x, C, S, N, O, R, W, q, U, K, Y, J, Q, ee, ie, ce, ue, de, fe, _e, ye, ke, xe, Te, Ae,
-            Ee, je, Me, Ie, $e, Fe, Be, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, ot,
+        var i, a, l, _, x, C, S, N, L, R, W, q, U, K, Y, J, Q, ee, ie, ce, ue, de, fe, _e, ye, ke, xe, Te, Ae,
+            Ee, je, Ie, Me, $e, Be, Fe, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, ot,
             st, at, rt, lt, ct, ut, dt, ht, pt, mt, ft = this,
             _t = {},
             gt = [],
@@ -40876,25 +40546,25 @@ function (e) {
         ft.commands = n(!0, {}, t.commands || Pe);
         var kt = ft.opts = n(!0, {}, we, t);
         ft.opts.emoticons = t.emoticons || we.emoticons, xe = function () {
-            e._sceditor = ft, kt.locale && "en" !== kt.locale && Ie(), z(a = r("div", {
+            e._sceditor = ft, kt.locale && "en" !== kt.locale && Me(), z(a = r("div", {
                     className: "sceditor-container"
-                }), e), y(a, "z-index", kt.zIndex), Oe && A(a, "ie ie" + Oe), ce = e.required, e
+                }), e), y(a, "z-index", kt.zIndex), Le && A(a, "ie ie" + Le), ce = e.required, e
                 .required = !1;
             var t = le.formats[kt.format];
-            "init" in (i = t ? new t : {}) && i.init.call(ft), Me(), We(), $e(), je(), Fe(), Be(), Se ||
+            "init" in (i = t ? new t : {}) && i.init.call(ft), Ie(), We(), $e(), je(), Be(), Fe(), Se ||
                 ft.toggleSourceMode(), tt();
             var n = function () {
                 m(De, "load", n), kt.autofocus && at(), mt(), nt(), Y.call("ready"), "onReady" in i &&
                     i.onReady.call(ft)
             };
             p(De, "load", n), "complete" === Ne.readyState && n()
-        }, Me = function () {
+        }, Ie = function () {
             var e = kt.plugins;
             e = e ? e.toString()
                 .split(",") : [], Y = new ne(ft), e.forEach((function (e) {
                     Y.register(e.trim())
                 }))
-        }, Ie = function () {
+        }, Me = function () {
             var e;
             (U = le.locale[kt.locale]) || (e = kt.locale.split("-"), U = le.locale[e[0]]), U && U
                 .dateFormat && (kt.dateFormat = U.dateFormat)
@@ -40905,8 +40575,8 @@ function (e) {
                 }), kt.startInSourceMode ? (A(a, "sourceMode"), g(_)) : (A(a, "wysiwygMode"), g(N)), kt
                 .spellcheck || f(a, "spellcheck", "false"), "https:" === De.location.protocol && f(_,
                     "src", "javascript:false"), d(a, _), d(a, N), ft.dimensions(kt.width || j(e), kt
-                    .height || M(e));
-            var t = Oe ? "ie ie" + Oe : "";
+                    .height || I(e));
+            var t = Le ? "ie ie" + Le : "";
             t += ze ? " ios" : "", (S = _.contentDocument)
                 .open(), S.write(te("html", {
                     attrs: ' class="' + t + '"',
@@ -40914,17 +40584,17 @@ function (e) {
                     charset: kt.charset,
                     style: kt.style
                 })), S.close(), C = S.body, x = _.contentWindow, ft.readOnly(!!kt.readOnly), (ze || Ce ||
-                    Oe) && (M(C, "100%"), Oe || p(C, "touchend", ft.focus));
+                    Le) && (I(C, "100%"), Le || p(C, "touchend", ft.focus));
             var i = f(e, "tabindex");
             f(N, "tabindex", i), f(_, "tabindex", i), K = new oe(x), g(e), ft.val(e.value);
             var n = kt.placeholder || f(e, "placeholder");
             n && (N.placeholder = n, f(C, "placeholder", n))
-        }, Fe = function () {
+        }, Be = function () {
             kt.autoUpdate && (p(C, "blur", pt), p(N, "blur", pt)), null === kt.rtl && (kt.rtl = "rtl" ===
                 y(N, "direction")), ft.rtl(!!kt.rtl), kt.autoExpand && (p(C, "load", mt, be), p(C,
                 "input keyup", mt)), kt.resizeEnabled && He(), f(a, "id", kt.id), ft.emoticons(kt
                 .emoticonsEnabled)
-        }, Be = function () {
+        }, Fe = function () {
             var t = e.form,
                 i = "compositionstart compositionend",
                 n = "keydown keyup keypress focus blur contextmenu",
@@ -40999,7 +40669,7 @@ function (e) {
                 w = 0,
                 k = 0,
                 x = j(a),
-                C = M(a),
+                C = I(a),
                 z = !1,
                 S = ft.rtl();
             if (e = kt.resizeMinHeight || C / 1.5, t = kt.resizeMaxHeight || 2.5 * C, i = kt
@@ -41019,7 +40689,7 @@ function (e) {
             }
             d(a, l), d(a, c), g(c), p(l, "touchstart mousedown", (function (e) {
                 "touchstart" === e.type ? (e = De.event, f = e.touches[0].pageX, _ = e
-                        .touches[0].pageY) : (f = e.pageX, _ = e.pageY), w = j(a), k = M(a),
+                        .touches[0].pageY) : (f = e.pageX, _ = e.pageY), w = j(a), k = I(a),
                     z = !0, A(a, "resizing"), v(c), p(Ne, u, o), p(Ne, h, s), e
                     .preventDefault()
             }))
@@ -41042,8 +40712,8 @@ function (e) {
                 if (ft.sourceMode()) return t = n ? N.value.length : 0, void N.setSelectionRange(t, t);
                 if (Z(C), n)
                     for ((i = C.lastChild) || (i = r("p", {}, S), d(C, i)); i.lastChild;) i = i.lastChild,
-                        !Le && k(i, "br") && i.previousSibling && (i = i.previousSibling);
-                e = S.createRange(), B(i) ? e.selectNodeContents(i) : (e.setStartBefore(i), n && e
+                        !Oe && k(i, "br") && i.previousSibling && (i = i.previousSibling);
+                e = S.createRange(), F(i) ? e.selectNodeContents(i) : (e.setStartBefore(i), n && e
                     .setStartAfter(i)), e.collapse(!n), K.selectRange(e), ee = e, n && (C.scrollTop =
                     C.scrollHeight), ft.focus()
             }
@@ -41066,9 +40736,9 @@ function (e) {
                 width: ft.width(),
                 height: ft.height()
             } : (!1 !== e && (!1 !== i && (kt.width = e), j(a, e)), !1 !== t && (!1 !== i && (kt
-                .height = t), M(a, t)), ft)
+                .height = t), I(a, t)), ft)
         }, ft.height = function (e, t) {
-            return e || 0 === e ? (ft.dimensions(null, e, t), ft) : M(a)
+            return e || 0 === e ? (ft.dimensions(null, e, t), ft) : I(a)
         }, ft.maximize = function (e) {
             var t = "sceditor-maximize";
             return pe(e) ? T(a, t) : ((e = !!e) && (_e = De.pageYOffset), P(Ne.documentElement, t, e), P(
@@ -41079,7 +40749,7 @@ function (e) {
         }, ft.expandToContent = function (t) {
             if (!ft.maximize()) {
                 if (clearTimeout(fe), fe = !1, !de) {
-                    var i = kt.resizeMinHeight || kt.height || M(e);
+                    var i = kt.resizeMinHeight || kt.height || I(e);
                     de = {
                         min: i,
                         max: kt.resizeMaxHeight || 2 * i
@@ -41095,34 +40765,34 @@ function (e) {
             }
         }, ft.destroy = function () {
             if (Y) {
-                Y.destroy(), K = null, R = null, Y = null, O && u(O), m(Ne, "click", Xe);
+                Y.destroy(), K = null, R = null, Y = null, L && u(L), m(Ne, "click", Xe);
                 var t = e.form;
                 t && (m(t, "reset", Ge), m(t, "submit", ft.updateOriginal)), u(N), u(l), u(a), delete e
                     ._sceditor, v(e), e.required = ce
             }
         }, ft.createDropDown = function (e, t, i, o) {
             var l, c = "sceditor-" + t;
-            ft.closeDropDown(!0), O && T(O, c) || (!1 !== o && s(h(i, ":not(input):not(textarea)"), (
+            ft.closeDropDown(!0), L && T(L, c) || (!1 !== o && s(h(i, ":not(input):not(textarea)"), (
                 function (e, t) {
                     t.nodeType === ge && f(t, "unselectable", "on")
                 })), l = n({
                 top: e.offsetTop,
                 left: e.offsetLeft,
                 marginTop: e.clientHeight
-            }, kt.dropDownCss), y(O = r("div", {
+            }, kt.dropDownCss), y(L = r("div", {
                 className: "sceditor-dropdown " + c
-            }), l), d(O, i), d(a, O), p(O, "click focusin", (function (e) {
+            }), l), d(L, i), d(a, L), p(L, "click focusin", (function (e) {
                 e.stopPropagation()
             })), setTimeout((function () {
-                if (O) {
-                    var e = h(O, "input,textarea")[0];
+                if (L) {
+                    var e = h(L, "input,textarea")[0];
                     e && e.focus()
                 }
             })))
         }, Xe = function (e) {
-            3 !== e.which && O && !e.defaultPrevented && (pt(), ft.closeDropDown())
+            3 !== e.which && L && !e.defaultPrevented && (pt(), ft.closeDropDown())
         }, Ve = function (e) {
-            var t = Oe || Ce,
+            var t = Le || Ce,
                 i = C,
                 n = e.clipboardData,
                 o = function (e) {
@@ -41156,18 +40826,18 @@ function (e) {
             }
         }, qe = function (e) {
             var t = r("div", {}, S);
-            Y.call("pasteRaw", e), I(a, "pasteraw", e), e.html ? (t.innerHTML = e.html, V(t)) : t
+            Y.call("pasteRaw", e), M(a, "pasteraw", e), e.html ? (t.innerHTML = e.html, V(t)) : t
                 .innerHTML = X(e.text || "");
             var n = {
                 val: t.innerHTML
             };
-            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, S, J)), Y.call("paste", n), I(a,
+            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, S, J)), Y.call("paste", n), M(a,
                 "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, J)), Y.call(
                 "pasteHtml", n), ft.wysiwygEditorInsertHtml(n.val, null, !0)
         }, ft.closeDropDown = function (e) {
-            O && (u(O), O = null), !0 === e && ft.focus()
+            L && (u(L), L = null), !0 === e && ft.focus()
         }, ft.wysiwygEditorInsertHtml = function (e, t, i) {
-            var n, o, s, a = M(_);
+            var n, o, s, a = I(_);
             ft.focus(), !i && c(Q, "code") || (K.insertHTML(e, t), K.saveRange(), Te(), v(n = h(C,
                     "#sceditor-end-marker")[0]), o = C.scrollTop, s = G(n)
                 .top + 1.5 * n.offsetHeight - a, g(n), (s > o || s + a < o) && (C.scrollTop = s), ut(!
@@ -41217,7 +40887,7 @@ function (e) {
             var t = N.value;
             return !1 !== e && "toHtml" in i && (t = i.toHtml(t)), t
         }, ft.setWysiwygEditorValue = function (e) {
-            e || (e = "<p>" + (Oe ? "" : "<br />") + "</p>"), C.innerHTML = e, Te(), nt(), ut(), mt()
+            e || (e = "<p>" + (Le ? "" : "<br />") + "</p>"), C.innerHTML = e, Te(), nt(), ut(), mt()
         }, ft.setSourceEditorValue = function (e) {
             N.value = e, ut()
         }, ft.updateOriginal = function () {
@@ -41242,7 +40912,7 @@ function (e) {
                 ft, e) : ft.execCommand(t.exec, t.hasOwnProperty("execParam") ? t.execParam :
                 null))
         }, Ee = function () {
-            Oe && (R = K.selectedRange())
+            Le && (R = K.selectedRange())
         }, ft.execCommand = function (e, t) {
             var i = !1,
                 n = ft.commands[e];
@@ -41263,14 +40933,14 @@ function (e) {
                             e = e.parentNode;
                         e && H(e, !0) && (K.saveRange(), re(C, S), K.restoreRange())
                     }
-                    I(a, "selectionchanged")
+                    M(a, "selectionchanged")
                 }
                 ie = !1
             }
             ie || (ie = !0, "onselectionchange" in S ? e() : setTimeout(e, 100))
         }, st = function () {
             var e, t = K.parentNode();
-            J !== t && (e = J, J = t, Q = K.getFirstBlockParent(t), I(a, "nodechanged", {
+            J !== t && (e = J, J = t, Q = K.getFirstBlockParent(t), M(a, "nodechanged", {
                 oldNode: e,
                 newNode: J
             }))
@@ -41307,7 +40977,7 @@ function (e) {
                 Q))) {
                 R = null;
                 var t = r("br", {}, S);
-                if (K.insertNode(t), !Le) {
+                if (K.insertNode(t), !Oe) {
                     var i = t.parentNode,
                         n = i.lastChild;
                     n && n.nodeType === ve && "" === n.nodeValue && (u(n), n = i.lastChild), !H(i, !0) &&
@@ -41316,11 +40986,11 @@ function (e) {
                 e.preventDefault()
             }
         }, nt = function () {
-            L(C, (function (e) {
+            O(C, (function (e) {
                 if (e.nodeType === ge && !/inline/.test(y(e, "display")) && !k(e,
                         ".sceditor-nlf") && $(e)) {
                     var t = r("p", {}, S);
-                    return t.className = "sceditor-nlf", t.innerHTML = Le ? "" : "<br />", d(
+                    return t.className = "sceditor-nlf", t.innerHTML = Oe ? "" : "<br />", d(
                         C, t), !1
                 }
                 if (3 === e.nodeType && !/^\s*$/.test(e.nodeValue) || k(e, "br")) return !1
@@ -41363,7 +41033,7 @@ function (e) {
                 if (h(S, ":focus")
                     .length) return;
                 var n, o = K.selectedRange();
-                ee || at(), !Le && o && 1 === o.endOffset && o.collapsed && (n = o.endContainer) && 1 ===
+                ee || at(), !Oe && o && 1 === o.endOffset && o.collapsed && (n = o.endContainer) && 1 ===
                     n.childNodes.length && k(n.firstChild, "br") && (o.setStartBefore(n.firstChild), o
                         .collapse(!0), K.selectRange(o)), x.focus(), C.focus(), R && (K.selectRange(R),
                         R = null)
@@ -41541,14 +41211,14 @@ function (e) {
             return e
         }, ft.clearBlockFormatting = function (e) {
             return !(e = e || ct()) || k(e, "body") || (K.saveRange(), e.className = "", R = null, f(e,
-                "style", ""), k(e, "p,div,td") || F(e, "p"), K.restoreRange()), ft
+                "style", ""), k(e, "p,div,td") || B(e, "p"), K.restoreRange()), ft
         }, ut = function (e) {
             if (Y && (Y.hasHandler("valuechangedEvent") || ut.hasHandler)) {
                 var t, i = ft.sourceMode(),
                     n = !i && K.hasSelection();
                 W = !1, e = !1 !== e && !S.getElementById("sceditor-start-marker"), q && (clearTimeout(q),
                         q = !1), n && e && K.saveRange(),
-                    (t = i ? N.value : C.innerHTML) !== ut.lastVal && (ut.lastVal = t, I(a,
+                    (t = i ? N.value : C.innerHTML) !== ut.lastVal && (ut.lastVal = t, M(a,
                         "valuechanged", {
                             rawValue: i ? ft.val() : t
                         })), n && e && K.removeMarkers()
@@ -42197,8 +41867,8 @@ function (e) {
         },
         je = {};
     ne.plugins = je;
-    var Me = xe && xe < 11,
-        Ie = function (e, t, i) {
+    var Ie = xe && xe < 11,
+        Me = function (e, t, i) {
             var n, o, s, a, r, l = "",
                 c = e.startContainer,
                 u = e.startOffset;
@@ -42214,8 +41884,8 @@ function (e) {
         },
         De = window,
         Ne = document,
-        Oe = xe,
-        Le = Oe && Oe < 11,
+        Le = xe,
+        Oe = Le && Le < 11,
         Re = /^image\/(p?jpe?g|gif|png|bmp)$/i;
     le.locale = {}, le.formats = {}, le.icons = {}, le.command = {
             get: function (e) {
@@ -42260,14 +41930,14 @@ function (e) {
                 is: k,
                 closest: c,
                 width: j,
-                height: M,
-                traverse: O,
-                rTraverse: L,
+                height: I,
+                traverse: L,
+                rTraverse: O,
                 parseHTML: R,
                 hasStyling: $,
-                convertElement: F,
+                convertElement: B,
                 blockLevelList: ye,
-                canHaveChildren: B,
+                canHaveChildren: F,
                 isInline: H,
                 copyCSS: W,
                 fixNesting: V,
@@ -42513,7 +42183,7 @@ function (e) {
         y(e, "width", t)
     }
 
-    function M(e, t) {
+    function I(e, t) {
         if (pe(t)) {
             var i = getComputedStyle(e),
                 n = a(i.paddingTop) + a(i.paddingBottom),
@@ -42523,7 +42193,7 @@ function (e) {
         y(e, "height", t)
     }
 
-    function I(e, t, i) {
+    function M(e, t, i) {
         var n;
         me(window.CustomEvent) ? n = new CustomEvent(t, {
                 bubbles: !0,
@@ -42545,16 +42215,16 @@ function (e) {
             }))
     }
 
-    function O(e, t, i, n, o) {
+    function L(e, t, i, n, o) {
         for (e = o ? e.lastChild : e.firstChild; e;) {
             var s = o ? e.previousSibling : e.nextSibling;
-            if (!i && !1 === t(e) || !n && !1 === O(e, t, i, n, o) || i && !1 === t(e)) return !1;
+            if (!i && !1 === t(e) || !n && !1 === L(e, t, i, n, o) || i && !1 === t(e)) return !1;
             e = s
         }
     }
 
-    function L(e, t, i, n) {
-        O(e, t, i, n, !0)
+    function O(e, t, i, n) {
+        L(e, t, i, n, !0)
     }
 
     function R(e, t) {
@@ -42569,7 +42239,7 @@ function (e) {
         return e && (!k(e, "p,div") || e.className || f(e, "style") || !i(w(e)))
     }
 
-    function F(e, t) {
+    function B(e, t) {
         var i = r(t, {}, e.ownerDocument);
         for (s(e.attributes, (function (e, t) {
                 try {
@@ -42579,7 +42249,7 @@ function (e) {
         return e.parentNode.replaceChild(i, e), i
     }
 
-    function B(e) {
+    function F(e) {
         return !!/11?|9/.test(e.nodeType) &&
             "|iframe|area|base|basefont|br|col|frame|hr|img|input|wbr|isindex|link|meta|param|command|embed|keygen|source|track|object|"
             .indexOf("|" + e.nodeName.toLowerCase() + "|") < 0
@@ -42601,7 +42271,7 @@ function (e) {
             for (; H(e.parentNode, !0);) e = e.parentNode;
             return e
         };
-        O(e, (function (e) {
+        L(e, (function (e) {
             var i = "ul,ol",
                 n = !H(e, !0);
             if (n && H(e.parentNode, !0)) {
@@ -42789,7 +42459,7 @@ function (e) {
                     l.selectedRange()
                     .extractContents()), d(u, t))), c = u.lastChild) {
                 for (; !H(c.lastChild, !0);) c = c.lastChild;
-                if (B(c) ? c.lastChild || d(c, document.createTextNode("\u200b")) : c = u, l
+                if (F(c) ? c.lastChild || d(c, document.createTextNode("\u200b")) : c = u, l
                     .removeMarkers(), d(c, i(s)), d(c, i(a)), n) {
                     var h = r("div");
                     return d(h, u), h.innerHTML
@@ -42801,7 +42471,7 @@ function (e) {
                 o = l.selectedRange(),
                 s = o.commonAncestorContainer;
             if (!i) return !1;
-            o.deleteContents(), s && 3 !== s.nodeType && !B(s) ? z(i, s) : o.insertNode(i), l
+            o.deleteContents(), s && 3 !== s.nodeType && !F(s) ? z(i, s) : o.insertNode(i), l
                 .restoreRange()
         }, l.cloneSelected = function () {
             var e = l.selectedRange();
@@ -42860,7 +42530,7 @@ function (e) {
         }, l.selectRange = function (t) {
             var i, n = e.getSelection(),
                 s = t.endContainer;
-            if (!Me && t.collapsed && s && !H(s, !0)) {
+            if (!Ie && t.collapsed && s && !H(s, !0)) {
                 for (i = s.lastChild; i && k(i, ".sceditor-ignore");) i = i.previousSibling;
                 if (k(i, "br")) {
                     var a = o.createRange();
@@ -42880,11 +42550,11 @@ function (e) {
         }, l.selectOuterText = function (e, t) {
             var i, n, o = l.cloneSelected();
             if (!o) return !1;
-            o.collapse(!1), i = Ie(o, !0, e), n = Ie(o, !1, t), o.setStart(i.node, i.offset), o.setEnd(n
+            o.collapse(!1), i = Me(o, !0, e), n = Me(o, !1, t), o.setStart(i.node, i.offset), o.setEnd(n
                 .node, n.offset), l.selectRange(o)
         }, l.getOuterText = function (e, t) {
             var i = l.cloneSelected();
-            return i ? (i.collapse(!e), Ie(i, e, t)
+            return i ? (i.collapse(!e), Me(i, e, t)
                 .text) : ""
         }, l.replaceKeyword = function (e, t, i, n, o, s) {
             i || e.sort((function (e, t) {
@@ -42965,15 +42635,15 @@ function (e) {
 
     function re(e, t) {
         var i;
-        O(e, (function (e) {
+        L(e, (function (e) {
             H(e, !0) ? (i || z(i = r("p", {}, t), e), e.nodeType === ve && "" === e.nodeValue ||
                 d(i, e)) : i = null
         }), !1, !0)
     }
 
     function le(e, t) {
-        var i, a, l, _, x, C, S, N, O, R, W, q, U, K, Y, J, Q, ee, ie, ce, ue, de, fe, _e, ye, ke, xe, Te, Ae,
-            Ee, je, Me, Ie, $e, Fe, Be, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, ot,
+        var i, a, l, _, x, C, S, N, L, R, W, q, U, K, Y, J, Q, ee, ie, ce, ue, de, fe, _e, ye, ke, xe, Te, Ae,
+            Ee, je, Ie, Me, $e, Be, Fe, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, ot,
             st, at, rt, lt, ct, ut, dt, ht, pt, mt, ft = this,
             _t = {},
             gt = [],
@@ -42984,25 +42654,25 @@ function (e) {
         ft.commands = n(!0, {}, t.commands || Pe);
         var kt = ft.opts = n(!0, {}, we, t);
         ft.opts.emoticons = t.emoticons || we.emoticons, xe = function () {
-            e._sceditor = ft, kt.locale && "en" !== kt.locale && Ie(), z(a = r("div", {
+            e._sceditor = ft, kt.locale && "en" !== kt.locale && Me(), z(a = r("div", {
                     className: "sceditor-container"
-                }), e), y(a, "z-index", kt.zIndex), Oe && A(a, "ie ie" + Oe), ce = e.required, e
+                }), e), y(a, "z-index", kt.zIndex), Le && A(a, "ie ie" + Le), ce = e.required, e
                 .required = !1;
             var t = le.formats[kt.format];
-            "init" in (i = t ? new t : {}) && i.init.call(ft), Me(), We(), $e(), je(), Fe(), Be(), Se ||
+            "init" in (i = t ? new t : {}) && i.init.call(ft), Ie(), We(), $e(), je(), Be(), Fe(), Se ||
                 ft.toggleSourceMode(), tt();
             var n = function () {
                 m(De, "load", n), kt.autofocus && at(), mt(), nt(), Y.call("ready"), "onReady" in i &&
                     i.onReady.call(ft)
             };
             p(De, "load", n), "complete" === Ne.readyState && n()
-        }, Me = function () {
+        }, Ie = function () {
             var e = kt.plugins;
             e = e ? e.toString()
                 .split(",") : [], Y = new ne(ft), e.forEach((function (e) {
                     Y.register(e.trim())
                 }))
-        }, Ie = function () {
+        }, Me = function () {
             var e;
             (U = le.locale[kt.locale]) || (e = kt.locale.split("-"), U = le.locale[e[0]]), U && U
                 .dateFormat && (kt.dateFormat = U.dateFormat)
@@ -43013,8 +42683,8 @@ function (e) {
                 }), kt.startInSourceMode ? (A(a, "sourceMode"), g(_)) : (A(a, "wysiwygMode"), g(N)), kt
                 .spellcheck || f(a, "spellcheck", "false"), "https:" === De.location.protocol && f(_,
                     "src", "javascript:false"), d(a, _), d(a, N), ft.dimensions(kt.width || j(e), kt
-                    .height || M(e));
-            var t = Oe ? "ie ie" + Oe : "";
+                    .height || I(e));
+            var t = Le ? "ie ie" + Le : "";
             t += ze ? " ios" : "", (S = _.contentDocument)
                 .open(), S.write(te("html", {
                     attrs: ' class="' + t + '"',
@@ -43022,17 +42692,17 @@ function (e) {
                     charset: kt.charset,
                     style: kt.style
                 })), S.close(), C = S.body, x = _.contentWindow, ft.readOnly(!!kt.readOnly), (ze || Ce ||
-                    Oe) && (M(C, "100%"), Oe || p(C, "touchend", ft.focus));
+                    Le) && (I(C, "100%"), Le || p(C, "touchend", ft.focus));
             var i = f(e, "tabindex");
             f(N, "tabindex", i), f(_, "tabindex", i), K = new oe(x), g(e), ft.val(e.value);
             var n = kt.placeholder || f(e, "placeholder");
             n && (N.placeholder = n, f(C, "placeholder", n))
-        }, Fe = function () {
+        }, Be = function () {
             kt.autoUpdate && (p(C, "blur", pt), p(N, "blur", pt)), null === kt.rtl && (kt.rtl = "rtl" ===
                 y(N, "direction")), ft.rtl(!!kt.rtl), kt.autoExpand && (p(C, "load", mt, be), p(C,
                 "input keyup", mt)), kt.resizeEnabled && He(), f(a, "id", kt.id), ft.emoticons(kt
                 .emoticonsEnabled)
-        }, Be = function () {
+        }, Fe = function () {
             var t = e.form,
                 i = "compositionstart compositionend",
                 n = "keydown keyup keypress focus blur contextmenu",
@@ -43107,7 +42777,7 @@ function (e) {
                 w = 0,
                 k = 0,
                 x = j(a),
-                C = M(a),
+                C = I(a),
                 z = !1,
                 S = ft.rtl();
             if (e = kt.resizeMinHeight || C / 1.5, t = kt.resizeMaxHeight || 2.5 * C, i = kt
@@ -43127,7 +42797,7 @@ function (e) {
             }
             d(a, l), d(a, c), g(c), p(l, "touchstart mousedown", (function (e) {
                 "touchstart" === e.type ? (e = De.event, f = e.touches[0].pageX, _ = e
-                        .touches[0].pageY) : (f = e.pageX, _ = e.pageY), w = j(a), k = M(a),
+                        .touches[0].pageY) : (f = e.pageX, _ = e.pageY), w = j(a), k = I(a),
                     z = !0, A(a, "resizing"), v(c), p(Ne, u, o), p(Ne, h, s), e
                     .preventDefault()
             }))
@@ -43150,8 +42820,8 @@ function (e) {
                 if (ft.sourceMode()) return t = n ? N.value.length : 0, void N.setSelectionRange(t, t);
                 if (Z(C), n)
                     for ((i = C.lastChild) || (i = r("p", {}, S), d(C, i)); i.lastChild;) i = i.lastChild,
-                        !Le && k(i, "br") && i.previousSibling && (i = i.previousSibling);
-                e = S.createRange(), B(i) ? e.selectNodeContents(i) : (e.setStartBefore(i), n && e
+                        !Oe && k(i, "br") && i.previousSibling && (i = i.previousSibling);
+                e = S.createRange(), F(i) ? e.selectNodeContents(i) : (e.setStartBefore(i), n && e
                     .setStartAfter(i)), e.collapse(!n), K.selectRange(e), ee = e, n && (C.scrollTop =
                     C.scrollHeight), ft.focus()
             }
@@ -43174,9 +42844,9 @@ function (e) {
                 width: ft.width(),
                 height: ft.height()
             } : (!1 !== e && (!1 !== i && (kt.width = e), j(a, e)), !1 !== t && (!1 !== i && (kt
-                .height = t), M(a, t)), ft)
+                .height = t), I(a, t)), ft)
         }, ft.height = function (e, t) {
-            return e || 0 === e ? (ft.dimensions(null, e, t), ft) : M(a)
+            return e || 0 === e ? (ft.dimensions(null, e, t), ft) : I(a)
         }, ft.maximize = function (e) {
             var t = "sceditor-maximize";
             return pe(e) ? T(a, t) : ((e = !!e) && (_e = De.pageYOffset), P(Ne.documentElement, t, e), P(
@@ -43187,7 +42857,7 @@ function (e) {
         }, ft.expandToContent = function (t) {
             if (!ft.maximize()) {
                 if (clearTimeout(fe), fe = !1, !de) {
-                    var i = kt.resizeMinHeight || kt.height || M(e);
+                    var i = kt.resizeMinHeight || kt.height || I(e);
                     de = {
                         min: i,
                         max: kt.resizeMaxHeight || 2 * i
@@ -43203,34 +42873,34 @@ function (e) {
             }
         }, ft.destroy = function () {
             if (Y) {
-                Y.destroy(), K = null, R = null, Y = null, O && u(O), m(Ne, "click", Xe);
+                Y.destroy(), K = null, R = null, Y = null, L && u(L), m(Ne, "click", Xe);
                 var t = e.form;
                 t && (m(t, "reset", Ge), m(t, "submit", ft.updateOriginal)), u(N), u(l), u(a), delete e
                     ._sceditor, v(e), e.required = ce
             }
         }, ft.createDropDown = function (e, t, i, o) {
             var l, c = "sceditor-" + t;
-            ft.closeDropDown(!0), O && T(O, c) || (!1 !== o && s(h(i, ":not(input):not(textarea)"), (
+            ft.closeDropDown(!0), L && T(L, c) || (!1 !== o && s(h(i, ":not(input):not(textarea)"), (
                 function (e, t) {
                     t.nodeType === ge && f(t, "unselectable", "on")
                 })), l = n({
                 top: e.offsetTop,
                 left: e.offsetLeft,
                 marginTop: e.clientHeight
-            }, kt.dropDownCss), y(O = r("div", {
+            }, kt.dropDownCss), y(L = r("div", {
                 className: "sceditor-dropdown " + c
-            }), l), d(O, i), d(a, O), p(O, "click focusin", (function (e) {
+            }), l), d(L, i), d(a, L), p(L, "click focusin", (function (e) {
                 e.stopPropagation()
             })), setTimeout((function () {
-                if (O) {
-                    var e = h(O, "input,textarea")[0];
+                if (L) {
+                    var e = h(L, "input,textarea")[0];
                     e && e.focus()
                 }
             })))
         }, Xe = function (e) {
-            3 !== e.which && O && !e.defaultPrevented && (pt(), ft.closeDropDown())
+            3 !== e.which && L && !e.defaultPrevented && (pt(), ft.closeDropDown())
         }, Ve = function (e) {
-            var t = Oe || Ce,
+            var t = Le || Ce,
                 i = C,
                 n = e.clipboardData,
                 o = function (e) {
@@ -43264,18 +42934,18 @@ function (e) {
             }
         }, qe = function (e) {
             var t = r("div", {}, S);
-            Y.call("pasteRaw", e), I(a, "pasteraw", e), e.html ? (t.innerHTML = e.html, V(t)) : t
+            Y.call("pasteRaw", e), M(a, "pasteraw", e), e.html ? (t.innerHTML = e.html, V(t)) : t
                 .innerHTML = X(e.text || "");
             var n = {
                 val: t.innerHTML
             };
-            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, S, J)), Y.call("paste", n), I(a,
+            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, S, J)), Y.call("paste", n), M(a,
                 "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, J)), Y.call(
                 "pasteHtml", n), ft.wysiwygEditorInsertHtml(n.val, null, !0)
         }, ft.closeDropDown = function (e) {
-            O && (u(O), O = null), !0 === e && ft.focus()
+            L && (u(L), L = null), !0 === e && ft.focus()
         }, ft.wysiwygEditorInsertHtml = function (e, t, i) {
-            var n, o, s, a = M(_);
+            var n, o, s, a = I(_);
             ft.focus(), !i && c(Q, "code") || (K.insertHTML(e, t), K.saveRange(), Te(), v(n = h(C,
                     "#sceditor-end-marker")[0]), o = C.scrollTop, s = G(n)
                 .top + 1.5 * n.offsetHeight - a, g(n), (s > o || s + a < o) && (C.scrollTop = s), ut(!
@@ -43325,7 +42995,7 @@ function (e) {
             var t = N.value;
             return !1 !== e && "toHtml" in i && (t = i.toHtml(t)), t
         }, ft.setWysiwygEditorValue = function (e) {
-            e || (e = "<p>" + (Oe ? "" : "<br />") + "</p>"), C.innerHTML = e, Te(), nt(), ut(), mt()
+            e || (e = "<p>" + (Le ? "" : "<br />") + "</p>"), C.innerHTML = e, Te(), nt(), ut(), mt()
         }, ft.setSourceEditorValue = function (e) {
             N.value = e, ut()
         }, ft.updateOriginal = function () {
@@ -43350,7 +43020,7 @@ function (e) {
                 ft, e) : ft.execCommand(t.exec, t.hasOwnProperty("execParam") ? t.execParam :
                 null))
         }, Ee = function () {
-            Oe && (R = K.selectedRange())
+            Le && (R = K.selectedRange())
         }, ft.execCommand = function (e, t) {
             var i = !1,
                 n = ft.commands[e];
@@ -43371,14 +43041,14 @@ function (e) {
                             e = e.parentNode;
                         e && H(e, !0) && (K.saveRange(), re(C, S), K.restoreRange())
                     }
-                    I(a, "selectionchanged")
+                    M(a, "selectionchanged")
                 }
                 ie = !1
             }
             ie || (ie = !0, "onselectionchange" in S ? e() : setTimeout(e, 100))
         }, st = function () {
             var e, t = K.parentNode();
-            J !== t && (e = J, J = t, Q = K.getFirstBlockParent(t), I(a, "nodechanged", {
+            J !== t && (e = J, J = t, Q = K.getFirstBlockParent(t), M(a, "nodechanged", {
                 oldNode: e,
                 newNode: J
             }))
@@ -43415,7 +43085,7 @@ function (e) {
                 Q))) {
                 R = null;
                 var t = r("br", {}, S);
-                if (K.insertNode(t), !Le) {
+                if (K.insertNode(t), !Oe) {
                     var i = t.parentNode,
                         n = i.lastChild;
                     n && n.nodeType === ve && "" === n.nodeValue && (u(n), n = i.lastChild), !H(i, !0) &&
@@ -43424,11 +43094,11 @@ function (e) {
                 e.preventDefault()
             }
         }, nt = function () {
-            L(C, (function (e) {
+            O(C, (function (e) {
                 if (e.nodeType === ge && !/inline/.test(y(e, "display")) && !k(e,
                         ".sceditor-nlf") && $(e)) {
                     var t = r("p", {}, S);
-                    return t.className = "sceditor-nlf", t.innerHTML = Le ? "" : "<br />", d(
+                    return t.className = "sceditor-nlf", t.innerHTML = Oe ? "" : "<br />", d(
                         C, t), !1
                 }
                 if (3 === e.nodeType && !/^\s*$/.test(e.nodeValue) || k(e, "br")) return !1
@@ -43471,7 +43141,7 @@ function (e) {
                 if (h(S, ":focus")
                     .length) return;
                 var n, o = K.selectedRange();
-                ee || at(), !Le && o && 1 === o.endOffset && o.collapsed && (n = o.endContainer) && 1 ===
+                ee || at(), !Oe && o && 1 === o.endOffset && o.collapsed && (n = o.endContainer) && 1 ===
                     n.childNodes.length && k(n.firstChild, "br") && (o.setStartBefore(n.firstChild), o
                         .collapse(!0), K.selectRange(o)), x.focus(), C.focus(), R && (K.selectRange(R),
                         R = null)
@@ -43649,14 +43319,14 @@ function (e) {
             return e
         }, ft.clearBlockFormatting = function (e) {
             return !(e = e || ct()) || k(e, "body") || (K.saveRange(), e.className = "", R = null, f(e,
-                "style", ""), k(e, "p,div,td") || F(e, "p"), K.restoreRange()), ft
+                "style", ""), k(e, "p,div,td") || B(e, "p"), K.restoreRange()), ft
         }, ut = function (e) {
             if (Y && (Y.hasHandler("valuechangedEvent") || ut.hasHandler)) {
                 var t, i = ft.sourceMode(),
                     n = !i && K.hasSelection();
                 W = !1, e = !1 !== e && !S.getElementById("sceditor-start-marker"), q && (clearTimeout(q),
                         q = !1), n && e && K.saveRange(), (t = i ? N.value : C.innerHTML) !== ut
-                    .lastVal && (ut.lastVal = t, I(a, "valuechanged", {
+                    .lastVal && (ut.lastVal = t, M(a, "valuechanged", {
                         rawValue: i ? ft.val() : t
                     })), n && e && K.removeMarkers()
             }
@@ -44304,8 +43974,8 @@ function (e) {
         },
         je = {};
     ne.plugins = je;
-    var Me = xe && xe < 11,
-        Ie = function (e, t, i) {
+    var Ie = xe && xe < 11,
+        Me = function (e, t, i) {
             var n, o, s, a, r, l = "",
                 c = e.startContainer,
                 u = e.startOffset;
@@ -44321,8 +43991,8 @@ function (e) {
         },
         De = window,
         Ne = document,
-        Oe = xe,
-        Le = Oe && Oe < 11,
+        Le = xe,
+        Oe = Le && Le < 11,
         Re = /^image\/(p?jpe?g|gif|png|bmp)$/i;
     le.locale = {}, le.formats = {}, le.icons = {}, le.command = {
             get: function (e) {
@@ -44367,14 +44037,14 @@ function (e) {
                 is: k,
                 closest: c,
                 width: j,
-                height: M,
-                traverse: O,
-                rTraverse: L,
+                height: I,
+                traverse: L,
+                rTraverse: O,
                 parseHTML: R,
                 hasStyling: $,
-                convertElement: F,
+                convertElement: B,
                 blockLevelList: ye,
-                canHaveChildren: B,
+                canHaveChildren: F,
                 isInline: H,
                 copyCSS: W,
                 fixNesting: V,
