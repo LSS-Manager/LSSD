@@ -4153,7 +4153,7 @@ Object.values || (Object.values = function (e) {
                 arff: "Flugfeldl\xf6schfahrzeug",
                 battalion_chief_unit: "Einsatzleitfahrzeuge 1",
                 boot: "Boote (Allgemein)",
-                care_service_equipment: "Feldk\xfcchen",
+                care_service_equipment: "Betreuungs- und Verpflegungsausstattung",
                 dekon_p: "Dekon-P oder AB-Dekon-P",
                 division_chief_unit: "Einsatzleitfahrzeuge 2",
                 dlk_or_tm50: "DLK oder TM 50",
@@ -36592,7 +36592,8 @@ $((function () {
             "technical_rescue", I18n.t("intervention_order.vehicles.technical_rescue")], [
             "drone", I18n.t("intervention_order.vehicles.drone")], ["elw1_or_elw_drone", I18n
             .t("intervention_order.vehicles.elw1_or_elw_drone")], ["elw2_or_elw2_drone", I18n
-            .t("intervention_order.vehicles.elw2_or_elw2_drone")]], $("#restore_map")
+            .t("intervention_order.vehicles.elw2_or_elw2_drone")], ["care_service_equipment",
+            I18n.t("intervention_order.vehicles.care_service_equipment")]], $("#restore_map")
         .click((function () {
             mapViewRestore()
         })), $("#coins_top")

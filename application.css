@@ -17350,6 +17350,10 @@ body.dark .nav-tabs>li.active>a:focus {
     background-color: #c9302c
 }
 
+.checkbox input[type="checkbox"].custom-mission-checkbox {
+    margin-left: 0
+}
+
 /*
 * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
 *
