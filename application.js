@@ -4021,7 +4021,7 @@ Object.values || (Object.values = function (e) {
             ambulance: "Krankentransporte",
             anti_abuse_active_link: "Klicke hier f\xfcr weitere Informationen.",
             anti_abuse_active_text: "Neue Eins\xe4tze werden in einem erweiterten Radius von 100km generiert, da zu viele Geb\xe4ude desselben Typs zu nah beieinander stehen.",
-            attended: "Beantwortet",
+            attended: "\ud83d\udfe1",
             cancel_alliance_event: "Verbands-Event abbrechen",
             cancel_alliance_event_confirm: "M\xf6chtest du das Verbands-Event wirklich abbrechen?",
             chat_history: "Chatverlauf",
@@ -4029,7 +4029,7 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Verbands-Event starten",
             create_alliance_operation: "Verbands-Gro\xdfeinsatz erstellen",
             emergency: "Notf\xe4lle",
-            finishing: "Wird beendet",
+            finishing: "\ud83d\udfe2",
             join_alliance_infos: "Wenn du in einem Verband bist, k\xf6nnen andere Spieler dir Eins\xe4tze freigeben.",
             legacy_client_notice: "NUR iOS & ANDROID USER:<br>\nWenn du noch eine alte Version nutzt, aktualisiere bitte auf die neueste App-Version. Die alte Version kann zuk\xfcnftig zu Problemen mit dem Spiel und dem Login f\xfchren.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Karte",
@@ -4092,7 +4092,7 @@ Object.values || (Object.values = function (e) {
             sorting_descending: "Nach Alter absteigend",
             sorting_label: "Sortieren nach:",
             transport: "Transporte",
-            unattended: "Unbeantwortet"
+            unattended: "\ud83d\udd34"
         },
         fms: {
             going: "Auf Anfahrt",
@@ -4498,7 +4498,7 @@ Object.values || (Object.values = function (e) {
             ambulance: "Ambulance",
             anti_abuse_active_link: "Click here for more information.",
             anti_abuse_active_text: "Missions will be generated within an extended radius of 100km, since too many stations of the same type are built too close to each other.",
-            attended: "Attended",
+            attended: "\ud83d\udfe1",
             cancel_alliance_event: "Cancel alliance event",
             cancel_alliance_event_confirm: "Do you really want to cancel the alliance event?",
             chat_history: "Chat History",
@@ -4506,7 +4506,7 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Start alliance event",
             create_alliance_operation: "Create a large scale alliance mission",
             emergency: "Emergency",
-            finishing: "Finishing",
+            finishing: "\ud83d\udfe2",
             join_alliance_infos: "If you are in an alliance, other players can freely give you missions.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Map",
@@ -4576,7 +4576,7 @@ Object.values || (Object.values = function (e) {
             sorting_descending: "Age desc.",
             sorting_label: "Sort by:",
             transport: "Transport",
-            unattended: "Unattended"
+            unattended: "\ud83d\udd34"
         },
         fms: {
             going: "Responding",
@@ -5142,7 +5142,7 @@ Object.values || (Object.values = function (e) {
             ambulance: "Ambulance",
             anti_abuse_active_link: "Click here for more information.",
             anti_abuse_active_text: "Missions will be generated within an extended radius of 100km, since too many stations of the same type are built too close to each other.",
-            attended: "Attended",
+            attended: "\ud83d\udfe1",
             cancel_alliance_event: "Cancel alliance event",
             cancel_alliance_event_confirm: "Do you really want to cancel the alliance event?",
             chat_history: "Chat History",
@@ -5150,7 +5150,7 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Start alliance event",
             create_alliance_operation: "Create a large scale alliance mission",
             emergency: "Emergency",
-            finishing: "Finishing",
+            finishing: "\ud83d\udfe2",
             join_alliance_infos: "If you are in an alliance, other players can freely give you missions.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Map",
@@ -5215,7 +5215,7 @@ Object.values || (Object.values = function (e) {
             sorting_descending: "Age desc.",
             sorting_label: "Sort by:",
             transport: "Transport",
-            unattended: "Unattended"
+            unattended: "\ud83d\udd34"
         },
         fms: {
             going: "Responding",
@@ -5670,7 +5670,7 @@ Object.values || (Object.values = function (e) {
             ambulance: "Besteld vervoer",
             anti_abuse_active_link: "Klik hier voor meer informatie.",
             anti_abuse_active_text: "Missies zullen binnen een grotere straal van 100\xa0km verschijnen, omdat te veel stations van hetzelfde type te dicht bij elkaar zijn gebouwd.",
-            attended: "Uitgevoerd",
+            attended: "\ud83d\udfe1",
             cancel_alliance_event: "Team-evenement annuleren",
             cancel_alliance_event_confirm: "Wil je het team-evenement echt annuleren?",
             chat_history: "Chat geschiedenis",
@@ -5678,7 +5678,7 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Team-Event starten",
             create_alliance_operation: "Grote inzet aanmaken",
             emergency: "Spoed",
-            finishing: "Wordt afgerond",
+            finishing: "\ud83d\udfe2",
             join_alliance_infos: "Wanneer je in een team zit kunnen andere spelers een incident vrijgeven.",
             legacy_client_notice: "ALLEEN iOS- & ANDROID-GEBRUIKERS:<br>\nAls u de verouderde app of een oude versie gebruikt, zorg er dan voor dat u update naar onze vernieuwde app-versie. De oude versies kunnen in de toekomst problemen veroorzaken met kernfuncties en logins.<br>\nAndroid: %{google_store_link} <br>iOS: %{ios_store_link}",
             map: "Kaart",
@@ -5742,7 +5742,7 @@ Object.values || (Object.values = function (e) {
             sorting_descending: "Leeftijd afl.",
             sorting_label: "Sorteren op:",
             transport: "Transport",
-            unattended: "Niet uitgevoerd"
+            unattended: "\ud83d\udd34"
         },
         fms: {
             going: "Uitgerukt",
@@ -6104,7 +6104,7 @@ Object.values || (Object.values = function (e) {
             ambulance: "Ambulancia",
             anti_abuse_active_link: "Haz clic aqu\xed para obtener m\xe1s informaci\xf3n.",
             anti_abuse_active_text: "Las misiones se generar\xe1n en un radio ampliado de 100\xa0km, ya que hay construidas demasiadas estaciones del mismo tipo muy pr\xf3ximas entre s\xed.",
-            attended: "Respondido",
+            attended: "\ud83d\udfe1",
             cancel_alliance_event: "Cancelar evento de alianza",
             cancel_alliance_event_confirm: "\xbfSeguro que quieres cancelar el evento de alianza?",
             chat_history: "Historial de chat",
@@ -6112,7 +6112,7 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Comenzar evento de alianza",
             create_alliance_operation: "Crea una misi\xf3n de alianza a gran escala",
             emergency: "Emergencia",
-            finishing: "Completando",
+            finishing: "\ud83d\udfe2",
             join_alliance_infos: "Si est\xe1s en una alianza, otros jugadores podr\xe1n ofrecerte misiones.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Mapa",
@@ -6174,7 +6174,7 @@ Object.values || (Object.values = function (e) {
             sorting_descending: "Edad desc.",
             sorting_label: "Ordenar por:",
             transport: "Transporte",
-            unattended: "Sin respuesta"
+            unattended: "\ud83d\udd34"
         },
         fms: {
             going: "Respondiendo",
@@ -6518,7 +6518,7 @@ Object.values || (Object.values = function (e) {
             ambulance: "Ambulance",
             anti_abuse_active_link: "Click here for more information.",
             anti_abuse_active_text: "Missions will be generated within an extended radius of 100km, since too many stations of the same type are built too close to each other.",
-            attended: "Attended",
+            attended: "\ud83d\udfe1",
             cancel_alliance_event: "Cancel alliance event",
             cancel_alliance_event_confirm: "Do you really want to cancel the alliance event?",
             chat_history: "Chat History",
@@ -6526,7 +6526,7 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Start alliance event",
             create_alliance_operation: "Create a large scale alliance mission",
             emergency: "Emergency",
-            finishing: "Finishing",
+            finishing: "\ud83d\udfe2",
             join_alliance_infos: "If you are in an alliance, other players can freely give you missions.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Map",
@@ -6588,7 +6588,7 @@ Object.values || (Object.values = function (e) {
             sorting_descending: "Age desc.",
             sorting_label: "Sort by:",
             transport: "Transport",
-            unattended: "Unattended"
+            unattended: "\ud83d\udd34"
         },
         fms: {
             going: "Responding",
@@ -7046,7 +7046,7 @@ Object.values || (Object.values = function (e) {
             ambulance: "Ambulans",
             anti_abuse_active_link: "Klicka h\xe4r f\xf6r mer information.",
             anti_abuse_active_text: "Uppdrag kan dyka upp p\xe5 upp till 100 km avst\xe5nd, eftersom det ligger f\xf6r m\xe5nga stationer av samma typ n\xe4ra varandra.",
-            attended: "Besvarade",
+            attended: "\ud83d\udfe1",
             cancel_alliance_event: "Avbryt alliansevenemanget",
             cancel_alliance_event_confirm: "Vill du verkligen avbryta alliansevenemanget?",
             chat_history: "Chatthistorik",
@@ -7054,7 +7054,7 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Starta evenemang",
             create_alliance_operation: "Skapa ett storskaligt uppdrag",
             emergency: "Akut",
-            finishing: "I slutfas",
+            finishing: "\ud83d\udfe2",
             join_alliance_infos: "Om du \xe4r med i en allians kan andra spelare ge dig uppdrag.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Karta",
@@ -7116,7 +7116,7 @@ Object.values || (Object.values = function (e) {
             sorting_descending: "\xc5lder (fallande)",
             sorting_label: "Sortering:",
             transport: "Transport",
-            unattended: "Obesvarade"
+            unattended: "\ud83d\udd34"
         },
         fms: {
             going: "P\xe5 uppdrag",
@@ -7490,7 +7490,7 @@ Object.values || (Object.values = function (e) {
             ambulance: "Ambulans",
             anti_abuse_active_link: "Kliknij tutaj, \u017ceby dowiedzie\u0107 si\u0119 wi\u0119cej.",
             anti_abuse_active_text: "Misje b\u0119d\u0105 si\u0119 pojawia\u0107 na rozszerzonym obszarze do 100 km, poniewa\u017c zbyt wiele posterunk\xf3w tego samego rodzaju jest umieszczonych zbyt blisko siebie.",
-            attended: "Podj\u0119te",
+            attended: "\ud83d\udfe1",
             cancel_alliance_event: "Anuluj wydarzenie sojuszu",
             cancel_alliance_event_confirm: "Czy na pewno chcesz anulowa\u0107 wydarzenie sojuszu?",
             chat_history: "Historia czatu",
@@ -7498,7 +7498,7 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Rozpocznij wydarzenie sojuszu",
             create_alliance_operation: "Utw\xf3rz misj\u0119 sojuszu na du\u017c\u0105 skal\u0119",
             emergency: "Sytuacja wyj\u0105tkowa",
-            finishing: "Realizowane",
+            finishing: "\ud83d\udfe2",
             join_alliance_infos: "Je\u015bli nale\u017cysz do sojuszu, inni gracze mog\u0105 ci wyznacza\u0107 misje bez ogranicze\u0144.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Mapa",
@@ -7560,7 +7560,7 @@ Object.values || (Object.values = function (e) {
             sorting_descending: "Wiek mal.",
             sorting_label: "Sortuj wed\u0142ug:",
             transport: "Transport",
-            unattended: "Niepodj\u0119te"
+            unattended: "\ud83d\udd34"
         },
         fms: {
             going: "Reagowanie",
@@ -7932,7 +7932,7 @@ Object.values || (Object.values = function (e) {
             ambulance: "Ambulanza",
             anti_abuse_active_link: "Fai clic qui per maggiori informazioni.",
             anti_abuse_active_text: "Le missioni si generano all'interno di un raggio esteso di 100 Km, poich\xe9 troppe stazioni dello stesso tipo sono state costruite troppo vicine tra loro.",
-            attended: "Completate",
+            attended: "\ud83d\udfe1",
             cancel_alliance_event: "Annulla evento dell'alleanza",
             cancel_alliance_event_confirm: "Vuoi davvero annullare l'evento dell'alleanza?",
             chat_history: "Cronologia chat",
@@ -7940,7 +7940,7 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Inizia evento dell'alleanza",
             create_alliance_operation: "Crea una missione dell'alleanza su larga scala",
             emergency: "Emergenza",
-            finishing: "In corso",
+            finishing: "\ud83d\udfe2",
             join_alliance_infos: "Se fai parte di un'alleanza, altri giocatori possono assegnarti liberamente delle missioni.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Mappa",
@@ -8002,7 +8002,7 @@ Object.values || (Object.values = function (e) {
             sorting_descending: "Et\xe0 (decr.)",
             sorting_label: "Ordina per:",
             transport: "Trasporto",
-            unattended: "Da compiere"
+            unattended: "\ud83d\udd34"
         },
         fms: {
             going: "In risposta",
@@ -8366,7 +8366,7 @@ Object.values || (Object.values = function (e) {
             ambulance: "Ambulance",
             anti_abuse_active_link: "Cliquez ici pour plus d'informations.",
             anti_abuse_active_text: "Les missions vont appara\xeetre dans un rayon \xe9tendu de 100\xa0km, car trop de postes du m\xeame type ont \xe9t\xe9 construits trop pr\xe8s les uns des autres.",
-            attended: "Assign\xe9e",
+            attended: "\ud83d\udfe1",
             cancel_alliance_event: "Annuler l\u2019\xe9v\xe8nement d\u2019alliance",
             cancel_alliance_event_confirm: "Voulez-vous vraiment annuler l\u2019\xe9v\xe8nement d\u2019alliance\xa0?",
             chat_history: "Historique du salon",
@@ -8374,7 +8374,7 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Lancer l\u2019\xe9v\xe8nement d\u2019alliance",
             create_alliance_operation: "Cr\xe9er une mission d\u2019alliance majeure",
             emergency: "Urgence",
-            finishing: "Presque achev\xe9e",
+            finishing: "\ud83d\udfe2",
             join_alliance_infos: "Si vous appartenez \xe0 une alliance, les autres joueurs peuvent vous confier des missions.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Carte",
@@ -8410,6 +8410,7 @@ Object.values || (Object.values = function (e) {
                 riot_police: "Compagnie de CRS",
                 riot_police_missions: "Maintien de l'Ordre",
                 staging_area_missions: "Centre de Regroupement des Moyens",
+                swat: "GIGN",
                 technical_aid: "U.I.I.S.C.",
                 technical_aid_missions: "U.I.I.S.C.",
                 technical_aid_organization: "Protection civile",
@@ -8438,7 +8439,7 @@ Object.values || (Object.values = function (e) {
             sorting_descending: "Ordre chrono (d\xe9croissant)",
             sorting_label: "Trier par\xa0:",
             transport: "Transport",
-            unattended: "Non assign\xe9e"
+            unattended: "\ud83d\udd34"
         },
         fms: {
             going: "En intervention",
@@ -8796,7 +8797,7 @@ Object.values || (Object.values = function (e) {
             ambulance: "\u0421\u043a\u043e\u0440\u0430\u044f \u043f\u043e\u043c\u043e\u0449\u044c",
             anti_abuse_active_link: "\u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u0437\u0434\u0435\u0441\u044c, \u0447\u0442\u043e\u0431\u044b \u043f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u043f\u043e\u0434\u0440\u043e\u0431\u043d\u0443\u044e \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044e.",
             anti_abuse_active_text: "\u0417\u0430\u0434\u0430\u043d\u0438\u044f \u0431\u0443\u0434\u0443\u0442 \u043f\u043e\u044f\u0432\u043b\u044f\u0442\u044c\u0441\u044f \u0432 \u0440\u0430\u0434\u0438\u0443\u0441\u0435 100 \u043a\u043c, \u043f\u043e\u0441\u043a\u043e\u043b\u044c\u043a\u0443 \u0441\u043b\u0438\u0448\u043a\u043e\u043c \u043c\u0430\u043b\u043e \u0441\u0442\u0430\u043d\u0446\u0438\u0439 \u043e\u0434\u043d\u043e\u0433\u043e \u0442\u0438\u043f\u0430 \u0440\u0430\u0441\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u043e \u0431\u043b\u0438\u0437\u043a\u043e \u0434\u0440\u0443\u0433 \u043a \u0434\u0440\u0443\u0433\u0443.",
-            attended: "\u041f\u043e\u0441\u0435\u0449\u0451\u043d\u043d\u044b\u0435",
+            attended: "\ud83d\udfe1",
             cancel_alliance_event: "\u041e\u0442\u043c\u0435\u043d\u0438\u0442\u044c \u0441\u043e\u0431\u044b\u0442\u0438\u0435 \u0430\u043b\u044c\u044f\u043d\u0441\u0430",
             cancel_alliance_event_confirm: "\u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b \u0447\u0442\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u043e\u0442\u043c\u0435\u043d\u0438\u0442\u044c \u0441\u043e\u0431\u044b\u0442\u0438\u0435 \u0430\u043b\u044c\u044f\u043d\u0441\u0430?",
             chat_history: "\u0418\u0441\u0442\u043e\u0440\u0438\u044f \u0447\u0430\u0442\u0430",
@@ -8804,7 +8805,7 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "\u041d\u0430\u0447\u0430\u0442\u044c \u0441\u043e\u0431\u044b\u0442\u0438\u0435 \u0430\u043b\u044c\u044f\u043d\u0441\u0430",
             create_alliance_operation: "\u0421\u043e\u0437\u0434\u0430\u0439\u0442\u0435 \u043a\u0440\u0443\u043f\u043d\u043e\u043c\u0430\u0441\u0448\u0442\u0430\u0431\u043d\u043e\u0435 \u0437\u0430\u0434\u0430\u043d\u0438\u0435 \u0430\u043b\u044c\u044f\u043d\u0441\u0430",
             emergency: "\u0427\u0440\u0435\u0437\u0432\u044b\u0447\u0430\u0439\u043d\u0430\u044f \u0441\u0438\u0442\u0443\u0430\u0446\u0438\u044f",
-            finishing: "\u0417\u0430\u0432\u0435\u0440\u0448\u0430\u044e\u0442\u0441\u044f",
+            finishing: "\ud83d\udfe2",
             join_alliance_infos: "\u0415\u0441\u043b\u0438 \u0432\u044b \u0441\u043e\u0441\u0442\u043e\u0438\u0442\u0435 \u0432 \u0430\u043b\u044c\u044f\u043d\u0441\u0435, \u0434\u0440\u0443\u0433\u0438\u0435 \u0438\u0433\u0440\u043e\u043a\u0438 \u043c\u043e\u0433\u0443\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u043e \u0434\u0430\u0432\u0430\u0442\u044c \u0432\u0430\u043c \u0437\u0430\u0434\u0430\u043d\u0438\u044f.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "\u041a\u0430\u0440\u0442\u0430",
@@ -8865,7 +8866,7 @@ Object.values || (Object.values = function (e) {
             sorting_descending: "\u0412\u043e\u0437\u0440\u0430\u0441\u0442 \u043f\u043e \u0443\u0431\u044b\u0432\u0430\u044e\u0449\u0435\u0439",
             sorting_label: "\u0421\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u043a\u0430:",
             transport: "\u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442",
-            unattended: "\u041d\u0435\u043f\u043e\u0441\u0435\u0449\u0435\u043d\u043d\u044b\u0435"
+            unattended: "\ud83d\udd34"
         },
         fms: {
             going: "\u0412\u044b\u0435\u0437\u0436\u0430\u0435\u0442",
@@ -9195,7 +9196,7 @@ Object.values || (Object.values = function (e) {
             ambulance: "Ambulance",
             anti_abuse_active_link: "Klik her for mere information.",
             anti_abuse_active_text: "Der vil opst\xe5 mange missioner indenfor en udvidet radius p\xe5 100 km, da der er bygget for mange stationer af den samme type for t\xe6t p\xe5 hinanden.",
-            attended: "Iv\xe6rksatte",
+            attended: "\ud83d\udfe1",
             cancel_alliance_event: "Annull\xe9r alliancebegivenhed",
             cancel_alliance_event_confirm: "Er du sikker p\xe5, at du vil annullere alliancebegivenheden?",
             chat_history: "Chat-historik",
@@ -9203,7 +9204,7 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "P\xe5begynd alliancebegivenhed",
             create_alliance_operation: "Opret en stor alliancemission",
             emergency: "Krisesituation",
-            finishing: "N\xe6sten afsluttede",
+            finishing: "\ud83d\udfe2",
             join_alliance_infos: "Hvis du er i en alliance, kan andre spillere give dig missioner.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Kort",
@@ -9265,7 +9266,7 @@ Object.values || (Object.values = function (e) {
             sorting_descending: "Alder nedadg.",
             sorting_label: "Sorteret efter:",
             transport: "Transport",
-            unattended: "Ikke iv\xe6rksatte"
+            unattended: "\ud83d\udd34"
         },
         fms: {
             going: "Rykker ud",
@@ -9620,7 +9621,7 @@ Object.values || (Object.values = function (e) {
             ambulance: "Ambulanse",
             anti_abuse_active_link: "Klikk her for mer informasjon.",
             anti_abuse_active_text: "Oppdragene dukker opp innenfor en utvidet radius p\xe5 100 km fordi for mange stasjoner av samme variant er bygd i n\xe6rheten av hverandre.",
-            attended: "H\xe5ndterer",
+            attended: "\ud83d\udfe1",
             cancel_alliance_event: "Kansellere alliansehendelse",
             cancel_alliance_event_confirm: "Er du sikker p\xe5 at du vil kansellere alliansehendelsen?",
             chat_history: "Chatlogg",
@@ -9628,7 +9629,7 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Start alliansehendelse",
             create_alliance_operation: "Lag et allianseoppdrag i stor skala",
             emergency: "N\xf8dssituasjon",
-            finishing: "Fullf\xf8rer",
+            finishing: "\ud83d\udfe2",
             join_alliance_infos: "Hvis du er i en allianse, kan andre spillere gi deg oppdrag.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Kart",
@@ -9690,7 +9691,7 @@ Object.values || (Object.values = function (e) {
             sorting_descending: "Eldste f\xf8rst",
             sorting_label: "Sorter etter:",
             transport: "Transport",
-            unattended: "Ikke h\xe5ndtert"
+            unattended: "\ud83d\udd34"
         },
         fms: {
             going: "Rykker ut",
@@ -10056,7 +10057,7 @@ Object.values || (Object.values = function (e) {
             ambulance: "Sanitka",
             anti_abuse_active_link: "Kliknut\xedm zde zobrazte dal\u0161\xed informace.",
             anti_abuse_active_text: "Mise se objev\xed v roz\u0161\xed\u0159en\xe9m okruhu 100 km, proto\u017ee bylo postaveno p\u0159\xedli\u0161 mnoho stanic stejn\xe9ho typu bl\xedzko u sebe.",
-            attended: "\u0158e\u0161en\xe9",
+            attended: "\ud83d\udfe1",
             cancel_alliance_event: "Zru\u0161it alian\u010dn\xed akci",
             cancel_alliance_event_confirm: "Opravdu chcete alian\u010dn\xed akci zru\u0161it?",
             challenges: "V\xfdzvy",
@@ -10065,7 +10066,7 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Zah\xe1jit alian\u010dn\xed akci",
             create_alliance_operation: "Vytvo\u0159it velkou alian\u010dn\xed misi",
             emergency: "Stav nouze",
-            finishing: "Dokon\u010dovan\xe9",
+            finishing: "\ud83d\udfe2",
             join_alliance_infos: "V alianci v\xe1m ostatn\xed hr\xe1\u010di m\u016f\u017eou d\xe1vat mise.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Mapa",
@@ -10127,7 +10128,7 @@ Object.values || (Object.values = function (e) {
             sorting_descending: "V\u011bk sest.",
             sorting_label: "Se\u0159adit podle:",
             transport: "P\u0159evoz",
-            unattended: "Ne\u0159e\u0161en\xe9"
+            unattended: "\ud83d\udd34"
         },
         fms: {
             going: "Na cest\u011b",
@@ -10466,7 +10467,7 @@ Object.values || (Object.values = function (e) {
             ambulance: "Ambulans",
             anti_abuse_active_link: "Click here for more information.",
             anti_abuse_active_text: "Missions will be generated within an extended radius of 100km, since too many stations of the same type are built too close to each other.",
-            attended: "Attended",
+            attended: "\ud83d\udfe1",
             cancel_alliance_event: "Cancel alliance event",
             cancel_alliance_event_confirm: "Do you really want to cancel the alliance event?",
             chat_history: "Sohbet Ge\xe7mi\u015fi",
@@ -10474,7 +10475,7 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Birlik etkinli\u011fi ba\u015flat",
             create_alliance_operation: "B\xfcy\xfck \xf6l\xe7ekli bir birlik g\xf6revi olu\u015ftur",
             emergency: "Acil Durum",
-            finishing: "Finishing",
+            finishing: "\ud83d\udfe2",
             join_alliance_infos: "Bir birlikteysen di\u011fer oyuncular sana istedikleri gibi g\xf6revler verebilirler.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Harita",
@@ -10534,7 +10535,7 @@ Object.values || (Object.values = function (e) {
             sorting_descending: "Age desc.",
             sorting_label: "Sort by:",
             transport: "Nakil",
-            unattended: "Unattended"
+            unattended: "\ud83d\udd34"
         },
         fms: {
             going: "M\xfcdahale ediyor",
@@ -10844,7 +10845,7 @@ Object.values || (Object.values = function (e) {
             ambulance: "Ambul\xe2ncia",
             anti_abuse_active_link: "Clica aqui para mais informa\xe7\xf5es.",
             anti_abuse_active_text: "As miss\xf5es ser\xe3o geradas dentro de um raio aumentado de 100 km, uma vez que demasiadas esta\xe7\xf5es do mesmo tipo est\xe3o constru\xeddas demasiado perto umas das outras.",
-            attended: "Respondidas",
+            attended: "\ud83d\udfe1",
             cancel_alliance_event: "Cancelar evento de alian\xe7a",
             cancel_alliance_event_confirm: "Realmente desejas cancelar o evento de alian\xe7a?",
             chat_history: "Hist\xf3rico do chat",
@@ -10852,7 +10853,7 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Iniciar evento de alian\xe7a",
             create_alliance_operation: "Criar miss\xe3o de alian\xe7a em grande escala",
             emergency: "Emerg\xeancia",
-            finishing: "Em decurso",
+            finishing: "\ud83d\udfe2",
             join_alliance_infos: "Se estiver numa alian\xe7a, outros jogadores podem compartilhar miss\xf5es consigo.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Mapa",
@@ -10914,7 +10915,7 @@ Object.values || (Object.values = function (e) {
             sorting_descending: "Idade desc.",
             sorting_label: "Classificar por:",
             transport: "Transporte",
-            unattended: "N\xe3o respondidas"
+            unattended: "\ud83d\udd34"
         },
         fms: {
             going: "Em tr\xe2nsito",
@@ -11262,7 +11263,7 @@ Object.values || (Object.values = function (e) {
             ambulance: "Ambul\xe2ncia",
             anti_abuse_active_link: "Clica aqui para mais informa\xe7\xf5es.",
             anti_abuse_active_text: "As miss\xf5es ser\xe3o geradas dentro de um raio aumentado de 100 km, uma vez que demasiadas esta\xe7\xf5es do mesmo tipo est\xe3o constru\xeddas demasiado perto umas das outras.",
-            attended: "Respondidas",
+            attended: "\ud83d\udfe1",
             cancel_alliance_event: "Cancelar evento de alian\xe7a",
             cancel_alliance_event_confirm: "Realmente desejas cancelar o evento de alian\xe7a?",
             chat_history: "Hist\xf3rico do chat",
@@ -11270,7 +11271,7 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Iniciar evento de alian\xe7a",
             create_alliance_operation: "Crie uma miss\xe3o de alian\xe7a de larga escala",
             emergency: "Emerg\xeancia",
-            finishing: "Em decurso",
+            finishing: "\ud83d\udfe2",
             join_alliance_infos: "Se voc\xea estiver em uma alian\xe7a, outros jogadores podem lhe dar miss\xf5es livremente.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Mapa",
@@ -11331,7 +11332,7 @@ Object.values || (Object.values = function (e) {
             sorting_descending: "Idade desc.",
             sorting_label: "Classificar por:",
             transport: "Transporte",
-            unattended: "N\xe3o respondidas"
+            unattended: "\ud83d\udd34"
         },
         fms: {
             going: "Respondendo",
@@ -11629,7 +11630,7 @@ Object.values || (Object.values = function (e) {
             ambulance: "\u0428\u0432\u0438\u0434\u043a\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0430",
             anti_abuse_active_link: "Click here for more information.",
             anti_abuse_active_text: "Missions will be generated within an extended radius of 100km, since too many stations of the same type are built too close to each other.",
-            attended: "\u0412\u0456\u0434\u0432\u0456\u0434\u0430\u043d\u0456",
+            attended: "\ud83d\udfe1",
             cancel_alliance_event: "\u0412\u0456\u0434\u043c\u0456\u043d\u0438\u0442\u0438 \u043f\u043e\u0434\u0456\u044e \u0430\u043b\u044c\u044f\u043d\u0441\u0443",
             cancel_alliance_event_confirm: "\u0412\u0438 \u0432\u043f\u0435\u0432\u043d\u0435\u043d\u0456 \u0449\u043e \u0445\u043e\u0447\u0435\u0442\u0435 \u0432\u0456\u0434\u043c\u0456\u043d\u0438\u0442\u0438 \u043f\u043e\u0434\u0456\u044e \u0430\u043b\u044c\u044f\u043d\u0441\u0443?",
             chat_history: "\u0406\u0441\u0442\u043e\u0440\u0456\u044f \u0447\u0430\u0442\u0443",
@@ -11637,7 +11638,7 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "\u0420\u043e\u0437\u043f\u043e\u0447\u0430\u0442\u0438 \u043f\u043e\u0434\u0456\u044e \u0430\u043b\u044c\u044f\u043d\u0441\u0443",
             create_alliance_operation: "\u0421\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u0432\u0435\u043b\u0438\u043a\u043e\u043c\u0430\u0441\u0448\u0442\u0430\u0431\u043d\u0435 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f \u0430\u043b\u044c\u044f\u043d\u0441\u0443",
             emergency: "\u041d\u0430\u0434\u0437\u0432\u0438\u0447\u0430\u0439\u043d\u0430 \u0441\u0438\u0442\u0443\u0430\u0446\u0456\u044f",
-            finishing: "\u0417\u0430\u0432\u0435\u0440\u0448\u0443\u044e\u0442\u044c\u0441\u044f",
+            finishing: "\ud83d\udfe2",
             join_alliance_infos: "\u042f\u043a\u0449\u043e \u0432\u0438 \u043f\u0435\u0440\u0435\u0431\u0443\u0432\u0430\u0454\u0442\u0435 \u0432 \u0430\u043b\u044c\u044f\u043d\u0441\u0456, \u0456\u043d\u0448\u0456 \u0433\u0440\u0430\u0432\u0446\u0456 \u043c\u043e\u0436\u0443\u0442\u044c \u0432\u0456\u043b\u044c\u043d\u043e \u0434\u0430\u0432\u0430\u0442\u0438 \u0432\u0430\u043c \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "\u041a\u0430\u0440\u0442\u0430",
@@ -11697,7 +11698,7 @@ Object.values || (Object.values = function (e) {
             sorting_descending: "Age desc.",
             sorting_label: "Sort by:",
             transport: "\u041f\u0435\u0440\u0435\u0432\u0435\u0437\u0435\u043d\u043d\u044f",
-            unattended: "\u041d\u0435\u0432\u0456\u0434\u0432\u0456\u0434\u0430\u043d\u0456"
+            unattended: "\ud83d\udd34"
         },
         fms: {
             going: "\u0412\u0438\u0457\u0436\u0434\u0436\u0430\u0454",
@@ -11992,7 +11993,7 @@ Object.values || (Object.values = function (e) {
             ambulance: "Ambulancia",
             anti_abuse_active_link: "Haz clic aqu\xed para obtener m\xe1s informaci\xf3n.",
             anti_abuse_active_text: "Las misiones se generar\xe1n en un radio ampliado de 100\xa0km, ya que hay construidas demasiadas estaciones del mismo tipo muy pr\xf3ximas entre s\xed.",
-            attended: "Respondido",
+            attended: "\ud83d\udfe1",
             cancel_alliance_event: "Cancelar evento de alianza",
             cancel_alliance_event_confirm: "\xbfSeguro que quieres cancelar el evento de alianza?",
             chat_history: "Historial de chat",
@@ -12000,7 +12001,7 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Comenzar evento de alianza",
             create_alliance_operation: "Crea una misi\xf3n de alianza a gran escala",
             emergency: "Emergencia",
-            finishing: "Completando",
+            finishing: "\ud83d\udfe2",
             join_alliance_infos: "Si est\xe1s en una alianza, otros jugadores podr\xe1n ofrecerte misiones.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Mapa",
@@ -12061,7 +12062,7 @@ Object.values || (Object.values = function (e) {
             sorting_descending: "Edad desc.",
             sorting_label: "Ordenar por:",
             transport: "Transporte",
-            unattended: "Sin respuesta"
+            unattended: "\ud83d\udd34"
         },
         fms: {
             going: "Respondiendo",
@@ -12376,7 +12377,7 @@ Object.values || (Object.values = function (e) {
             ambulance: "\u6551\u6025\u8eca",
             anti_abuse_active_link: "\u8a73\u7d30\u306f\u3053\u3061\u3089\u3092\u3054\u89a7\u304f\u3060\u3055\u3044\u3002",
             anti_abuse_active_text: "\u540c\u3058\u7a2e\u985e\u306e\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u304c\u3042\u307e\u308a\u306b\u3082\u8fd1\u304f\u306b\u5efa\u8a2d\u3055\u308c\u3066\u3044\u308b\u305f\u3081\u3001\u30df\u30c3\u30b7\u30e7\u30f3\u306f\u534a\u5f84100km\u306e\u62e1\u5f35\u7bc4\u56f2\u5185\u3067\u767a\u751f\u3057\u307e\u3059\u3002",
-            attended: "\u5bfe\u5fdc\u6e08",
+            attended: "\ud83d\udfe1",
             cancel_alliance_event: "\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u30a4\u30d9\u30f3\u30c8\u306e\u30ad\u30e3\u30f3\u30bb\u30eb",
             cancel_alliance_event_confirm: "\u672c\u5f53\u306b\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u30a4\u30d9\u30f3\u30c8\u3092\u30ad\u30e3\u30f3\u30bb\u30eb\u3057\u307e\u3059\u304b\uff1f ",
             chat_history: "\u30c1\u30e3\u30c3\u30c8\u5c65\u6b74",
@@ -12384,7 +12385,7 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u30a4\u30d9\u30f3\u30c8\u3092\u958b\u59cb",
             create_alliance_operation: "\u5927\u578b\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u4f5c\u6210",
             emergency: "\u7dca\u6025\u4e8b\u614b",
-            finishing: "\u5bfe\u5fdc\u4e2d",
+            finishing: "\ud83d\udfe2",
             join_alliance_infos: "\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u306b\u6240\u5c5e\u3057\u3066\u3044\u308c\u3070\u3001\u4ed6\u306e\u30d7\u30ec\u30a4\u30e4\u30fc\u304c\u3042\u306a\u305f\u3078\u81ea\u7531\u306b\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u5272\u308a\u5f53\u3066\u3089\u308c\u307e\u3059\u3002",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "\u30de\u30c3\u30d7",
@@ -12446,7 +12447,7 @@ Object.values || (Object.values = function (e) {
             sorting_descending: "\u5e74\u9f62\u964d\u9806",
             sorting_label: "\u4e26\u3079\u66ff\u3048\uff1a",
             transport: "\u8f38\u9001",
-            unattended: "\u672a\u5bfe\u5fdc"
+            unattended: "\ud83d\udd34"
         },
         fms: {
             going: "\u5fdc\u7b54\u4e2d",
@@ -12782,7 +12783,7 @@ Object.values || (Object.values = function (e) {
             ambulance: "\uad6c\uae09\ucc28",
             anti_abuse_active_link: "\ub354 \ub9ce\uc740 \uc815\ubcf4\ub97c \ud655\uc778\ud558\ub824\uba74 \ud074\ub9ad\ud558\uc138\uc694.",
             anti_abuse_active_text: "\ub3d9\uc77c \uc720\ud615\uc758 \uad00\ud560\uc11c\uac00 \uac00\uae4c\uc6b4 \uac70\ub9ac\uc5d0 \ub108\ubb34 \ub9ce\uc774 \uc138\uc6cc\uc84c\uae30 \ub54c\ubb38\uc5d0 100km\uc758 \ud655\uc7a5\ub41c \ubc18\uacbd \ub0b4\uc5d0\uc11c \uc784\ubb34\uac00 \ubc1c\uc0dd\ud569\ub2c8\ub2e4.",
-            attended: "\ubc30\uc815\ub428",
+            attended: "\ud83d\udfe1",
             cancel_alliance_event: "\ub3d9\ub9f9 \uc774\ubca4\ud2b8 \ucde8\uc18c",
             cancel_alliance_event_confirm: "\ub3d9\ub9f9 \uc774\ubca4\ud2b8\ub97c \ucde8\uc18c\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?",
             chat_history: "\ucc44\ud305 \uc774\ub825",
@@ -12790,7 +12791,7 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "\ub3d9\ub9f9 \uc774\ubca4\ud2b8 \uc2dc\uc791",
             create_alliance_operation: "\ub300\uaddc\ubaa8 \ub3d9\ub9f9 \uc784\ubb34 \uc0dd\uc131",
             emergency: "\uc751\uae09 \uc0c1\ud669",
-            finishing: "\uc644\ub8cc \uc911",
+            finishing: "\ud83d\udfe2",
             join_alliance_infos: "\ub3d9\ub9f9\uc5d0 \uc18c\uc18d\ub41c \uc0c1\ud0dc\ub77c\uba74 \ub2e4\ub978 \ud50c\ub808\uc774\uc5b4\ub85c\ubd80\ud130 \uc784\ubb34\ub97c \uc790\uc720\ub86d\uac8c \ubc1b\uc744 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "\uc9c0\ub3c4",
@@ -12852,7 +12853,7 @@ Object.values || (Object.values = function (e) {
             sorting_descending: "\ub0b4\ub9bc\ucc28\uc21c",
             sorting_label: "\uc815\ub82c \ubc29\uc2dd:",
             transport: "\uc218\uc1a1",
-            unattended: "\ubc30\uc815\ub418\uc9c0 \uc54a\uc74c"
+            unattended: "\ud83d\udd34"
         },
         fms: {
             going: "\uc751\ub2f5 \uc911",
@@ -13179,7 +13180,7 @@ Object.values || (Object.values = function (e) {
             ambulance: "Ambulan\u021b\u0103",
             anti_abuse_active_link: "F\u0103 clic aici pentru mai multe informa\u021bii.",
             anti_abuse_active_text: "\xcentruc\xe2t prea multe sta\u021bii de acela\u0219ti tip sunt construite prea aproape una de alta, misiunile vor ap\u0103rea pe o raz\u0103 extins\u0103 de 100 km.",
-            attended: "Finalizate",
+            attended: "\ud83d\udfe1",
             cancel_alliance_event: "Anuleaz\u0103 eveniment de alian\u021b\u0103",
             cancel_alliance_event_confirm: "E\u0219ti sigur c\u0103 vrei s\u0103 anulezi evenimentul de alian\u021b\u0103?",
             chat_history: "Istoric chat",
@@ -13187,7 +13188,7 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "\xcencepe eveniment de alian\u021b\u0103",
             create_alliance_operation: "Creeaz\u0103 o misiune de alian\u021b\u0103 pe scar\u0103 larg\u0103",
             emergency: "Urgen\u021b\u0103",
-            finishing: "\xcen finalizare",
+            finishing: "\ud83d\udfe2",
             join_alliance_infos: "Dac\u0103 faci parte dintr-o alian\u021b\u0103, al\u021bi juc\u0103tori \xee\u021bi pot \xeencredin\u021ba misiuni dac\u0103 doresc.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Hart\u0103",
@@ -13247,7 +13248,7 @@ Object.values || (Object.values = function (e) {
             sorting_descending: "Dat\u0103, \xeen ordine descresc\u0103toare",
             sorting_label: "Sorteaz\u0103 dup\u0103:",
             transport: "Transport",
-            unattended: "Nefinalizate"
+            unattended: "\ud83d\udd34"
         },
         fms: {
             going: "Pe drum",
@@ -13569,7 +13570,7 @@ Object.values || (Object.values = function (e) {
             ambulance: "Ambulanssi",
             anti_abuse_active_link: "Lis\xe4tietoja saat napsauttamalla t\xe4t\xe4.",
             anti_abuse_active_text: "Teht\xe4vi\xe4 syntyy laajennetulla 100 km:n s\xe4teell\xe4, sill\xe4 liian monta samantyyppist\xe4 asemaa on rakennettu l\xe4hekk\xe4in.",
-            attended: "Hoidettu",
+            attended: "\ud83d\udfe1",
             cancel_alliance_event: "Peruuta liittoumatapahtuma",
             cancel_alliance_event_confirm: "Haluatko varmasti peruuttaa liittoumatapahtuman?",
             chat_history: "Chattihistoria",
@@ -13577,7 +13578,7 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Aloita liittoutumatapahtuma",
             create_alliance_operation: "Luo laaja liittoutumateht\xe4v\xe4",
             emergency: "H\xe4t\xe4tilanne",
-            finishing: "P\xe4\xe4ttym\xe4ss\xe4",
+            finishing: "\ud83d\udfe2",
             join_alliance_infos: "Jos kuulut johonkin liittoutumaan, muut pelaajat voivat antaa sinulle teht\xe4vi\xe4.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Kartta",
@@ -13639,7 +13640,7 @@ Object.values || (Object.values = function (e) {
             sorting_descending: "Ik\xe4 lask.",
             sorting_label: "Lajittelu:",
             transport: "Kuljetus",
-            unattended: "Ei hoidettu"
+            unattended: "\ud83d\udd34"
         },
         fms: {
             going: "Matkalla",
@@ -13984,7 +13985,7 @@ Object.values || (Object.values = function (e) {
             ambulance: "Sanitn\xe9 vozidlo",
             anti_abuse_active_link: "Ak chcete z\xedska\u0165 viac inform\xe1ci\xed, kliknite sem.",
             anti_abuse_active_text: "Misie bud\xfa vznika\u0165 v roz\u0161\xedrenom okruhu 100 km, preto\u017ee je bl\xedzko seba postaven\xfdch pr\xedli\u0161 ve\u013ea stan\xedc rovnak\xe9ho typu.",
-            attended: "Rie\u0161en\xe9",
+            attended: "\ud83d\udfe1",
             cancel_alliance_event: "Zru\u0161i\u0165 udalos\u0165 aliancie",
             cancel_alliance_event_confirm: "Naozaj chcete zru\u0161i\u0165 udalos\u0165 aliancie?",
             chat_history: "Hist\xf3ria chatu",
@@ -13992,7 +13993,7 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Spusti\u0165 udalos\u0165 aliancie",
             create_alliance_operation: "Vytvorte rozsiahlu alian\u010dn\xfa misiu",
             emergency: "Mimoriadna udalos\u0165",
-            finishing: "Prebieha dokon\u010dovanie",
+            finishing: "\ud83d\udfe2",
             join_alliance_infos: "Ak ste v aliancii, ostatn\xed hr\xe1\u010di v\xe1m m\xf4\u017eu zadarmo d\xe1va\u0165 misie.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Mapa",
@@ -14052,7 +14053,7 @@ Object.values || (Object.values = function (e) {
             sorting_descending: "Vek zostupne",
             sorting_label: "Zoradi\u0165 pod\u013ea:",
             transport: "Transport",
-            unattended: "Nerie\u0161en\xe9"
+            unattended: "\ud83d\udd34"
         },
         fms: {
             going: "Reagova\u0165",
