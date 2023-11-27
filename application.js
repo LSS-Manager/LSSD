@@ -4267,7 +4267,7 @@ Object.values || (Object.values = function (e) {
                             add_name: "Gib deiner Wache einen Namen! Du kannst sie sp\xe4ter umbenennen.",
                             build_with_credits: "Zum Bauen der Wache ben\xf6tigst du Credits, die W\xe4hrung des Spiels. Du kannst sie durch Eins\xe4tze, t\xe4gliche Logins sowie Aufgaben und Events verdienen.",
                             new_building: "Beginne jetzt den Bauprozess f\xfcr deine Wache.",
-                            select_building: "Entscheide dich zwischen einer Feuerwache und einer Polizeiwache. F\xfcr den Anfang reichen kleine Wachen. Du kannst sie sp\xe4ter zu normalen Wachen ausbauen.",
+                            select_building: "Entscheide dich zwischen einer Feuerwache und einer Polizeiwache. F\xfcr den Anfang reichen kleine Wachen. Du kannst sie sp\xe4ter zu normalen Wachen umbauen.",
                             select_position: "Verschiebe den Standort-Marker an den Standort, an dem die Wache stehen soll."
                         },
                         pick_location: "Suche dir einen Ort aus, an dem du deine erste Wache bauen m\xf6chtest.",
@@ -4278,7 +4278,7 @@ Object.values || (Object.values = function (e) {
                             add_name: "Gib deiner Wache einen Namen! Du kannst sie sp\xe4ter umbenennen.",
                             build_with_credits: "Zum Bauen der Wache ben\xf6tigst du Credits, die W\xe4hrung des Spiels. Du kannst sie durch Eins\xe4tze, t\xe4gliche Logins sowie Aufgaben und Events verdienen.",
                             new_building: "Baue zun\xe4chst deine erste Wache. Du kannst den Standort aussuchen indem du ihn manuell eingibst oder den Standort-Marker auf der Karte verschiebst. Je nach Betriebssystem kann es sein, dass du den Standortmarker l\xe4nger gedr\xfcckt halten musst, bevor er sich bewegen l\xe4sst.",
-                            select_building: "Entscheide dich zwischen einer Feuerwache und einer Polizeiwache. F\xfcr den Anfang reichen kleine Wachen. Du kannst sie sp\xe4ter zu normalen Wachen ausbauen."
+                            select_building: "Entscheide dich zwischen einer Feuerwache und einer Polizeiwache. F\xfcr den Anfang reichen kleine Wachen. Du kannst sie sp\xe4ter zu normalen Wachen umbauen."
                         },
                         welcome: "Willkommen zum Leitstellenspiel! Als Disponent/in in einer Leitstelle f\xfcr Rettungs- und Sicherheitsdienste bearbeitest du Notrufe, um der Bev\xf6lkerung zu helfen und sie zu sch\xfctzen! Dazu baust du Wachen und entsendest verschiedene Fahrzeugtypen und ausgebildetes Personal auf diverse Eins\xe4tze."
                     }
@@ -4323,7 +4323,7 @@ Object.values || (Object.values = function (e) {
                 },
                 tips: {
                     browser: {
-                        contact: "Wenn du deine Wachen ausbaust, bekommst du Platz f\xfcr neue Fahrzeuge.",
+                        contact: "Wenn du deine Wachen umbaust, bekommst du Platz f\xfcr neue Fahrzeuge.",
                         general: "F\xfcr den Abschluss eines Einsatzes erh\xe4ltst du Credits. Durch das Verdienen von Credits kommst du einer Bef\xf6rderung n\xe4her.",
                         join_alliance: "Bef\xf6rderungen und das Bauen von Wachen schalten neue Features wie Einsatztypen oder Fahrzeuge frei.",
                         radio: {
@@ -4334,7 +4334,7 @@ Object.values || (Object.values = function (e) {
                         summary: "Du kannst einem Verband beitreten, um mit anderen Leuten Eins\xe4tze zu fahren. Au\xdferdem gibt es regelm\xe4\xdfig Verband-Events, an denen alle Mitglieder teilnehmen k\xf6nnen!"
                     },
                     mobile: {
-                        contact: "Wenn du deine Wachen ausbaust, bekommst du Platz f\xfcr neue Fahrzeuge. ",
+                        contact: "Wenn du deine Wachen umbaust, bekommst du Platz f\xfcr neue Fahrzeuge. ",
                         general: "F\xfcr den Abschluss eines Einsatzes erh\xe4ltst du Credits. Durch das Verdienen von Credits kommst du einer Bef\xf6rderung n\xe4her.",
                         join_alliance: "Bef\xf6rderungen und das Bauen von Wachen schalten neue Features wie Einsatztypen oder Fahrzeuge frei.",
                         summary: "Du kannst einem Verband beitreten, um mit anderen Leuten Eins\xe4tze zu fahren. Au\xdferdem gibt es regelm\xe4\xdfig Verband-Events, an denen alle Mitglieder teilnehmen k\xf6nnen!"
@@ -4604,6 +4604,7 @@ Object.values || (Object.values = function (e) {
                 rescue: "Rescue",
                 search_and_rescue: "Search and Rescue",
                 technical_aid: "Technical Aid",
+                traffic_police: "Traffic Police",
                 water_rescue: "Water Rescue"
             },
             category: "Category",
