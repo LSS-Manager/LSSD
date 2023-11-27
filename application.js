@@ -5764,7 +5764,8 @@ Object.values || (Object.values = function (e) {
                 brush: "NBB",
                 coastal_rescue: "Kustwacht",
                 disaster_response: "STH",
-                technical_aid: "Signalisatie"
+                technical_aid: "Signalisatie",
+                traffic_police: "Dienst Infra"
             },
             category: "Categorie",
             colour: "Kleur",
