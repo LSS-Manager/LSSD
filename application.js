@@ -3943,6 +3943,7 @@ Object.values || (Object.values = function (e) {
             person: {
                 missing_education_for_vehicle: "Das Personal wird nur mit ausr\xfccken, wenn die ben\xf6tigte Ausbildung abgeschlossen ist. "
             },
+            release_at: "Entlassung in",
             save: "Speichern",
             search: "Suchen",
             show: "Anzeigen",
@@ -4415,6 +4416,7 @@ Object.values || (Object.values = function (e) {
             person: {
                 missing_education_for_vehicle: "Personnel will only be dispatched with the vehicle if it has acquired the necessary education!"
             },
+            release_at: "Release in",
             save: "Save",
             search: "Search",
             show: "Show",
@@ -4547,6 +4549,7 @@ Object.values || (Object.values = function (e) {
                 riot_police: "Riot police",
                 riot_police_missions: "Riot Police",
                 staging_area_missions: "Staging area",
+                swat_missions: "GIGN",
                 technical_aid: "Technical Aid Station",
                 technical_aid_missions: "Technical Aid Missions",
                 technical_aid_organization: "THW",
@@ -5068,7 +5071,7 @@ Object.values || (Object.values = function (e) {
             person: {
                 missing_education_for_vehicle: "Personnel will only be dispatched with the vehicle if it has acquired the necessary education!"
             },
-            release_at: "Released at",
+            release_at: "Release in",
             save: "Save",
             search: "Search",
             show: "Show",
@@ -5593,6 +5596,7 @@ Object.values || (Object.values = function (e) {
             person: {
                 missing_education_for_vehicle: "Werknemers worden alleen uitgezonden met het voertuig als ze de vereiste opleiding voltooid hebben."
             },
+            release_at: "Ontslagen in",
             save: "Opslaan",
             search: "Zoeken",
             show: "Bekijken",
@@ -6028,6 +6032,7 @@ Object.values || (Object.values = function (e) {
             person: {
                 missing_education_for_vehicle: "\xa1Los empleados solo acompa\xf1ar\xe1n al veh\xedculo si han recibido la formaci\xf3n necesaria!"
             },
+            release_at: "Alta en",
             save: "Guardar",
             search: "Buscar",
             show: "Mostrar",
@@ -6442,6 +6447,7 @@ Object.values || (Object.values = function (e) {
             person: {
                 missing_education_for_vehicle: "Personnel will only be dispatched with the vehicle if it has acquired the necessary education!"
             },
+            release_at: "Release in",
             save: "Save",
             search: "Search",
             show: "Show",
@@ -6970,6 +6976,7 @@ Object.values || (Object.values = function (e) {
             person: {
                 missing_education_for_vehicle: "Endast personal med r\xe4tt utbildning skickas med fordonet!"
             },
+            release_at: "Utskriven i",
             save: "Spara",
             search: "S\xf6k",
             show: "Visa",
@@ -7408,6 +7415,7 @@ Object.values || (Object.values = function (e) {
             person: {
                 missing_education_for_vehicle: "Personel zostanie wys\u0142any w tym poje\u017adzie tylko wtedy, je\u017celi przeszed\u0142 niezb\u0119dn\u0105 edukacj\u0119!"
             },
+            release_at: "Zwolnienie w",
             save: "Zapisz",
             search: "Wyszukaj",
             show: "Poka\u017c",
@@ -7856,6 +7864,7 @@ Object.values || (Object.values = function (e) {
             person: {
                 missing_education_for_vehicle: "Il personale uscir\xe0 con il veicolo solo dopo aver acquisito la formazione necessaria!"
             },
+            release_at: "Dimissione in",
             save: "Salva",
             search: "Cerca",
             show: "Mostra",
@@ -8294,6 +8303,7 @@ Object.values || (Object.values = function (e) {
             person: {
                 missing_education_for_vehicle: "Le personnel ne sera d\xe9ploy\xe9 avec le v\xe9hicule que s'il a re\xe7u la formation ad\xe9quate\xa0!"
             },
+            release_at: "Sort dans",
             save: "Enregistrer",
             search: "Rechercher",
             show: "Afficher",
@@ -8412,7 +8422,6 @@ Object.values || (Object.values = function (e) {
                 riot_police: "Compagnie de CRS",
                 riot_police_missions: "Maintien de l'Ordre",
                 staging_area_missions: "Centre de Regroupement des Moyens",
-                swat: "GIGN",
                 technical_aid: "U.I.I.S.C.",
                 technical_aid_missions: "U.I.I.S.C.",
                 technical_aid_organization: "Protection civile",
@@ -8725,6 +8734,7 @@ Object.values || (Object.values = function (e) {
             person: {
                 missing_education_for_vehicle: "\u041f\u0435\u0440\u0441\u043e\u043d\u0430\u043b \u0441\u043c\u043e\u0436\u0435\u0442 \u043f\u0435\u0440\u0435\u043c\u0435\u0449\u0430\u0442\u044c\u0441\u044f \u043d\u0430 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0435, \u0442\u043e\u043b\u044c\u043a\u043e \u043f\u043e\u0441\u043b\u0435 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0438\u044f \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e\u0433\u043e \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u044f!"
             },
+            release_at: "\u0432\u044b\u043f\u0438\u0441\u0430\u043d \u0432",
             save: "\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c",
             search: "\u0418\u0441\u043a\u0430\u0442\u044c",
             show: "\u041f\u043e\u043a\u0430\u0437\u0430\u0442\u044c",
@@ -9120,6 +9130,7 @@ Object.values || (Object.values = function (e) {
             person: {
                 missing_education_for_vehicle: "Personalet kan f\xf8rst sendes ud med k\xf8ret\xf8jet efter den n\xf8dvendige undervisning er fuldendt!"
             },
+            release_at: "Udskrivning i",
             save: "Gem",
             search: "S\xf8g",
             show: "Vis",
@@ -9545,6 +9556,7 @@ Object.values || (Object.values = function (e) {
             person: {
                 missing_education_for_vehicle: "Personellet vil kun bli sendt ut med kj\xf8ret\xf8yet om de har f\xe5tt den n\xf8dvendige utdanningen!"
             },
+            release_at: "Utskrivning i",
             save: "Lagre",
             search: "S\xf8k",
             show: "Vis",
@@ -9979,6 +9991,7 @@ Object.values || (Object.values = function (e) {
             person: {
                 missing_education_for_vehicle: "Person\xe1l bude vysl\xe1n s vozidlem pouze v p\u0159\xedpad\u011b, \u017ee dos\xe1hne pot\u0159ebn\xe9ho vzd\u011bl\xe1n\xed!"
             },
+            release_at: "Propu\u0161t\u011bn\xed v",
             save: "Ulo\u017eit",
             search: "Hledat",
             show: "Zobrazit",
@@ -10405,6 +10418,7 @@ Object.values || (Object.values = function (e) {
             of: "/",
             off: "Kapal\u0131",
             on: "A\xe7\u0131k",
+            release_at: "I\xe7inde taburcu edildi",
             save: "Kaydet",
             search: "Ara",
             show: "G\xf6ster",
@@ -10771,6 +10785,7 @@ Object.values || (Object.values = function (e) {
             person: {
                 missing_education_for_vehicle: "O pessoal s\xf3 ser\xe1 enviado com o ve\xedculo se tiver adquirido a educa\xe7\xe3o necess\xe1ria!"
             },
+            release_at: "Alta em",
             save: "Salvar",
             search: "Procurar",
             show: "Exibir",
@@ -11192,6 +11207,7 @@ Object.values || (Object.values = function (e) {
             of: "de",
             off: "Desligado",
             on: "Ligado",
+            release_at: "Alta em",
             save: "Salvar",
             search: "Buscar",
             show: "Exibir",
@@ -11566,6 +11582,7 @@ Object.values || (Object.values = function (e) {
             of: "\u0437",
             off: "\u0412\u0456\u0434\u043a\u043b.",
             on: "\u0412\u043a\u043b.",
+            release_at: "\u0432\u0438\u043f\u0438\u0441\u0430\u043d\u0438\u0439 \u0432",
             save: "\u0417\u0431\u0435\u0440\u0435\u0433\u0442\u0438",
             search: "\u041f\u043e\u0448\u0443\u043a",
             show: "\u041f\u043e\u043a\u0430\u0437\u0430\u0442\u0438",
@@ -11931,6 +11948,7 @@ Object.values || (Object.values = function (e) {
             of: "de",
             off: "No",
             on: "S\xed",
+            release_at: "Alta en",
             save: "Guardar",
             search: "Buscar",
             show: "Mostrar",
@@ -12302,6 +12320,7 @@ Object.values || (Object.values = function (e) {
             person: {
                 missing_education_for_vehicle: "\u4eba\u54e1\u3092\u8eca\u4e21\u3067\u6d3e\u9063\u3067\u304d\u308b\u306e\u306f\u3001\u5fc5\u8981\u306a\u8a13\u7df4\u3092\u53d7\u3051\u305f\u5834\u5408\u306e\u307f\u3067\u3059\uff01"
             },
+            release_at: "\u9000\u9662",
             save: "\u4fdd\u5b58",
             search: "\u691c\u7d22",
             show: "\u8868\u793a",
@@ -12708,6 +12727,7 @@ Object.values || (Object.values = function (e) {
             person: {
                 missing_education_for_vehicle: "\ud544\uc218 \uad50\uc721\uc744 \uc774\uc218\ud55c \uc778\uc6d0\ub9cc \ucc28\ub7c9\uacfc \ud568\uaed8 \ud30c\uacac\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4!"
             },
+            release_at: "\ud1f4\uc6d0",
             save: "\uc800\uc7a5",
             search: "\ud0d0\uc0c9",
             show: "\ubcf4\uae30",
@@ -13109,6 +13129,7 @@ Object.values || (Object.values = function (e) {
             of: "din",
             off: "Dezactivat",
             on: "Activat",
+            release_at: "Externat \xeen",
             save: "Salveaz\u0103",
             search: "Caut\u0103",
             show: "Arat\u0103",
@@ -13494,6 +13515,7 @@ Object.values || (Object.values = function (e) {
             person: {
                 missing_education_for_vehicle: "Henkil\xf6st\xf6 l\xe4hetet\xe4\xe4n ajoneuvon mukana vain, jos se on saanut tarvittavan koulutuksen."
             },
+            release_at: "Vapauttaminen",
             save: "Tallenna",
             search: "Haku",
             show: "N\xe4yt\xe4",
@@ -13913,6 +13935,7 @@ Object.values || (Object.values = function (e) {
             of: "z",
             off: "Vyp.",
             on: "Zap.",
+            release_at: "Prepusten\xfd v",
             save: "Ulo\u017ei\u0165",
             search: "Vyh\u013eada\u0165",
             show: "Zobrazi\u0165",
