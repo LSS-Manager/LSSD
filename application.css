@@ -17268,6 +17268,21 @@ body.dark .grid-container .grid-item .grid-item-text .line {
     margin-left: 7px
 }
 
+.patients .record {
+    opacity: 1;
+    transition: opacity .5s ease-out
+}
+
+.patients .record.fade-out {
+    opacity: 0
+}
+
+.patients .disabled-button {
+    opacity: 0.6;
+    pointer-events: none;
+    cursor: not-allowed
+}
+
 .dropdown-menu>li>a {
     padding-left: 15px;
     padding-right: 15px
