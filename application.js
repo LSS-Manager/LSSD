@@ -1875,6 +1875,24 @@ function tasksUpdate(e, t) {
         })
 }
 
+function dailyBonusesUpdate(e) {
+    e ? $("#daily-bonus")
+        .addClass("daily_bonus_not_taken") : $("#daily-bonus")
+        .removeClass("daily_bonus_not_taken")
+}
+
+function eventGiftUpdate(e) {
+    e ? $("#event-calendar-navbar")
+        .addClass("daily_bonus_not_taken") : $("#event-calendar-navbar")
+        .removeClass("daily_bonus_not_taken")
+}
+
+function dailyRewardsUpdate(e) {
+    e ? $("#daily_rewards_li")
+        .addClass("daily_bonus_not_taken") : $("#daily_rewards_li")
+        .removeClass("daily_bonus_not_taken")
+}
+
 function updateSaleCountDown() {
     if (null != saleTimeout && (clearTimeout(saleTimeout), saleTimeout = null), sale_count_down > Date
     .now()) {
@@ -1969,7 +1987,8 @@ function messageUnreadUpdate(e) {
         .html();
     $("#message_top")
         .html(t), e > 0 ? ($("#message_top")
-            .addClass("message_new"), $("#main-navbar-toggle")
+            .addClass("message_new"),
+            $("#main-navbar-toggle")
             .addClass("message_new")) : ($("#message_top")
             .removeClass("message_new"), $("#main-navbar-toggle")
             .removeClass("message_new")), "" != i && i != t && highlightElement($("#message_top"))
@@ -2867,6 +2886,18 @@ function updateDailyBonusIcon() {
     $("#daily-bonus")
         .find(".bonus-active")
         .removeClass("bonus-active")
+}
+
+function updateDailyBonusHighlight() {
+    $("#daily-bonus")
+        .find(".daily_bonus_not_taken")
+        .removeClass("daily_bonus_not_taken")
+}
+
+function updateEventGift() {
+    $("#event-calendar-navbar")
+        .find(".daily_bonus_not_taken")
+        .removeClass("daily_bonus_not_taken")
 }
 
 function switchWorld(e) {
@@ -4766,6 +4797,7 @@ Object.values || (Object.values = function (e) {
                 thw_tauchkraftwagen: "Dive Team",
                 tlf_only: "Tanker Truck",
                 traffic_car: "Traffic Car, Fast Traffic Car, Traffic Motorcycle and Road Rescue",
+                traffic_patrol: "Any Traffic Patrol Unit",
                 trailers: {
                     pump: "Pump Trailer"
                 },
@@ -5871,6 +5903,7 @@ Object.values || (Object.values = function (e) {
                 search_and_rescue: "Dienstvoertuig USAR",
                 spokesman: "Voorlichters",
                 traffic_car: "Signalisatie Voertuig (DA-RWS, DA-SIG of DM-RWS)",
+                traffic_patrol: "SIV-P of DM-P",
                 turntable_ladder: "Redvoertuig",
                 water_amount: "Water (in Liters):",
                 water_damage_pump: "Pompvoertuigen"
@@ -36619,7 +36652,9 @@ $((function () {
             "drone", I18n.t("intervention_order.vehicles.drone")], ["elw1_or_elw_drone", I18n
             .t("intervention_order.vehicles.elw1_or_elw_drone")], ["elw2_or_elw2_drone", I18n
             .t("intervention_order.vehicles.elw2_or_elw2_drone")], ["care_service_equipment",
-            I18n.t("intervention_order.vehicles.care_service_equipment")]], $("#restore_map")
+            I18n.t("intervention_order.vehicles.care_service_equipment")], [
+            "fustkw_or_civil_patrolcar", I18n.t(
+                "intervention_order.vehicles.fustkw_or_civil_patrolcar")]], $("#restore_map")
         .click((function () {
             mapViewRestore()
         })), $("#coins_top")

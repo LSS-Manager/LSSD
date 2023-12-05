@@ -12167,7 +12167,8 @@ fieldset[disabled] .btn-gray.active {
 .vehicle_graphic_check_new,
 .vehicle_graphic_abuse_check_new,
 .graphic_new_comments,
-.finished-tasks-tab {
+.finished-tasks-tab,
+.daily_bonus_not_taken {
     background-color: #77dc81
 }
 
