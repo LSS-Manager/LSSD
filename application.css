@@ -18853,7 +18853,7 @@ i.bbcode-link-icon {
     color: #28401A
 }
 
-.design-v2.design-v2.design-v2.design-v2 .alert-success a {
+.design-v2.design-v2.design-v2.design-v2 .alert-success a:not(.btn) {
     color: #3c763d;
     text-decoration: underline
 }
@@ -18864,7 +18864,7 @@ i.bbcode-link-icon {
     color: #9D4A46
 }
 
-.design-v2.design-v2.design-v2.design-v2 .alert-danger a {
+.design-v2.design-v2.design-v2.design-v2 .alert-danger a:not(.btn) {
     color: #a94442;
     text-decoration: underline
 }
@@ -18875,12 +18875,12 @@ i.bbcode-link-icon {
     color: #416F8C
 }
 
-.design-v2.design-v2.design-v2.design-v2 .alert-info a {
+.design-v2.design-v2.design-v2.design-v2 .alert-info a:not(.btn) {
     color: #547E99;
     text-decoration: underline
 }
 
-.design-v2.design-v2.design-v2.design-v2 .alert-warning a {
+.design-v2.design-v2.design-v2.design-v2 .alert-warning a:not(.btn) {
     color: #8C6F3E;
     text-decoration: underline
 }
@@ -18999,7 +18999,7 @@ i.bbcode-link-icon {
     color: #9D4A46
 }
 
-.dark.design-v2.design-v2.design-v2.design-v2 .alert-warning a {
+.dark.design-v2.design-v2.design-v2.design-v2 .alert-warning a:not(.btn) {
     color: #a94442;
     text-decoration: underline
 }
