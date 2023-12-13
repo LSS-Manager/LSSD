@@ -36654,7 +36654,8 @@ $((function () {
             .t("intervention_order.vehicles.elw2_or_elw2_drone")], ["care_service_equipment",
             I18n.t("intervention_order.vehicles.care_service_equipment")], [
             "fustkw_or_civil_patrolcar", I18n.t(
-                "intervention_order.vehicles.fustkw_or_civil_patrolcar")]], $("#restore_map")
+                "intervention_order.vehicles.fustkw_or_civil_patrolcar")], ["traffic_patrol",
+            I18n.t("intervention_order.vehicles.traffic_patrol")]], $("#restore_map")
         .click((function () {
             mapViewRestore()
         })), $("#coins_top")
