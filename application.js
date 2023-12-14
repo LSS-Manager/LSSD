@@ -8020,6 +8020,8 @@ Object.values || (Object.values = function (e) {
                 riot_police: "Squadra antisommossa",
                 riot_police_missions: "Squadra antisommossa",
                 staging_area_missions: "Base temporanea",
+                technical_aid: "Protezione Civile",
+                technical_aid_missions: "Protezione Civile",
                 technical_aid_organization: "THW",
                 technical_aid_organization_school: "THW Bundesschule",
                 user_buildings: "I miei edifici",
@@ -8070,6 +8072,7 @@ Object.values || (Object.values = function (e) {
                 firefighting: "Antincendio",
                 police: "Polizia",
                 rescue: "Soccorso",
+                technical_aid: "Protezione Civile",
                 water_rescue: "Soccorso Acquatico VVF"
             },
             category: "Categoria",
