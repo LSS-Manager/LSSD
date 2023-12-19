@@ -18789,6 +18789,15 @@ i.bbcode-link-icon {
     color: black
 }
 
+.design-v2.design-v2.design-v2.design-v2 .btn:active {
+    filter: brightness(85%)
+}
+
+.design-v2.design-v2.design-v2.design-v2 .aao_btn:active,
+.design-v2.design-v2.design-v2.design-v2 .aao_btn:hover {
+    filter: brightness(85%)
+}
+
 .design-v2.design-v2.design-v2.design-v2 .btn-success {
     background-image: -webkit-linear-gradient(top, #71af63 0, #629f55 100%);
     background-image: -o-linear-gradient(top, #71af63 0, #629f55 100%);
