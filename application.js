@@ -5074,6 +5074,7 @@ Object.values || (Object.values = function (e) {
             all: "All",
             around: "Around %{target}",
             back: "Back",
+            between: "Between %{minimum} and %{maximum}",
             cancel: "Cancel",
             change_saved: "Changes saved",
             click_for_more_info: "Click here for more information.",
