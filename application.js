@@ -1280,10 +1280,8 @@ function missionMarkerAdd(e) {
         "</s></small> " + c), "" != e.address && (c = c + ", <small  id='mission_address_" + e.id + "'>" +
         e.address + "</small>", o = o + " " + e.address);
     var u = 0;
-    e.sw_start_in > 0 && (u = 1e3 * e.sw_start_in, void 0 === mission_overview_timer && (
-        mission_overview_timer = setInterval(mission_overview_timer_call, 1e3)));
-    var d = ["unattended", "attended", "finishing"][e.vehicle_state];
-    if ($("#mission_" + e.id)
+    if (e.sw_start_in > 0 && (u = 1e3 * e.sw_start_in, void 0 === mission_overview_timer && (
+            mission_overview_timer = setInterval(mission_overview_timer_call, 1e3))), $("#mission_" + e.id)
         .length > 0) missionTimerDelete(e.id), $("#mission_bar_outer_" + e.id)
         .attr("class", bar_class), $("#mission_bar_striper_" + e.id)
         .attr("class", t), $("#mission_vehicle_state_" + e.id)
@@ -1296,8 +1294,7 @@ function missionMarkerAdd(e) {
         .removeClass("mission_panel_red"), $("#mission_panel_" + e.id)
         .removeClass("mission_panel_yellow"), $("#mission_panel_" + e.id)
         .removeClass("mission_panel_green"), $("#mission_panel_" + e.id)
-        .addClass("mission_panel_" + l), $("#mission_" + e.id)
-        .data("mission-state-filter", d), (e.live_current_value > 0 || e.patients_count > 0 || e
+        .addClass("mission_panel_" + l), (e.live_current_value > 0 || e.patients_count > 0 || e
             .prisoners_count > 0 || e.handoff) && setTimeout((function () {
             $("#mission_" + e.id)
                 .removeClass("mission_deleted")
@@ -1315,36 +1312,34 @@ function missionMarkerAdd(e) {
             .attr("class", "")), e.alliance_id && $("#mission_panel_" + e.id)
         .addClass("panel-success");
     else {
-        var h = "#mission_list",
-            p = "emergency";
-        e.kt ? (p = "krankentransporte", $("#ktw_no_transports")
-                .hide()) : e.sw ? p = "sicherheitswache" : e.user_id != user_id && null != e.user_id ? ($(
+        var d = "#mission_list";
+        e.kt ? (d = "#mission_list_krankentransporte", $("#ktw_no_transports")
+                .hide()) : e.sw ? d = "#mission_list_sicherheitswache" : e.user_id != user_id && null != e
+            .user_id ? ($("#alliance_no_mission")
+                .hide(), d = "#mission_list_alliance") : e.user_id != user_id && null == e.user_id ? ($(
                     "#alliance_no_mission")
-                .hide(), p = "alliance") : e.user_id != user_id && null == e.user_id ? ($(
-                    "#alliance_no_mission")
-                .hide(), p = "alliance_event") : $("#emergency_no")
+                .hide(), d = "#mission_list_alliance_event") : $("#emergency_no")
             .hide();
+        var h = "",
+            p = "";
+        e.missing_text && (h = "alert alert-danger", p = e.missing_text);
         var m = "",
             f = "";
-        e.missing_text && (m = "alert alert-danger", f = e.missing_text);
-        var _ = "",
-            g = "";
-        e.missing_text_short && (_ = "alert alert-danger", g = e.missing_text_short);
-        var v = "";
-        e.alliance_id && (v = "panel-success");
-        var b = "";
-        b = null != missionListIntersectionObserver ? "" : "missionSideBarEntryScrollInvisible";
-        var y = "<div search_attribute='" + (o = o.replace(/'/g, "&#039;")) + "' data-mission-type-filter='" +
-            p + "' data-mission-state-filter=" + d + " data-sortable-by='" + e.id + "' id='mission_" + e.id +
+        e.missing_text_short && (m = "alert alert-danger", f = e.missing_text_short);
+        var _ = "";
+        e.alliance_id && (_ = "panel-success");
+        var g = "";
+        g = null != missionListIntersectionObserver ? "" : "missionSideBarEntryScrollInvisible";
+        var v = "<div search_attribute='" + (o = o.replace(/'/g, "&#039;")) + "' id='mission_" + e.id +
             "' mission_id='" + e.id + "' mission_type_id='" + e.mtid +
-            "' class='missionSideBarEntry missionSideBarEntrySearchable " + b + "' latitude='" + e.latitude +
+            "' class='missionSideBarEntry missionSideBarEntrySearchable " + g + "' latitude='" + e.latitude +
             "' longitude='" + e.longitude + "' target_latitude='" + e.tlat + "' target_longitude='" + e.tlng +
             "' data-overlay-index='" + e.overlay_index + "' data-additive-overlays='" + (e
                 .additive_overlays || "") + "'><div id='mission_panel_" + e.id +
-            "' class='panel panel-default " + v + " mission_panel_" + l +
+            "' class='panel panel-default " + _ + " mission_panel_" + l +
             "'><div id='mission_panel_heading_" + e.id + "' class='panel-heading'><a href='/missions/" + e
-            .id + "' class='btn btn-default btn-xs lightbox-open mission-alarm-button' id='alarm_button_" + e
-            .id + "'> " + I18n.t("javascript.alarm") + "</a> <span id='mission_participant_" + e.id +
+            .id + "' class='btn btn-default btn-xs lightbox-open' id='alarm_button_" + e.id + "'> " + I18n.t(
+                "javascript.alarm") + "</a> <span id='mission_participant_" + e.id +
             "' class='glyphicon glyphicon-user hidden'></span><span id='mission_participant_new_" + e.id +
             "' class='glyphicon glyphicon-asterisk'></span> <a href='' id='mission_caption_" + e.id +
             "' class='map_position_mover' target_latitude='" + e.tlat + "' target_longitude='" + e.tlng +
@@ -1356,37 +1351,36 @@ function missionMarkerAdd(e) {
             bar_class + "'><div id='mission_bar_" + e.id +
             "' class='progress-bar progress-bar-danger' role='progressbar' aria-valuemin='0' aria-valuemax='100' style='width: " +
             e.live_current_value + "%;'><div class='" + t + "' id='mission_bar_striper_" + e.id +
-            "'></div></div></div><div id='mission_missing_" + e.id + "' class='" + m + "'>" + f +
-            "</div><div id='mission_missing_short_" + e.id + "' class='" + _ + "'>" + g +
+            "'></div></div></div><div id='mission_missing_" + e.id + "' class='" + h + "'>" + p +
+            "</div><div id='mission_missing_short_" + e.id + "' class='" + m + "'>" + f +
             "</div><div id='mission_pump_progress_" + e.id + "'></div><div id='mission_patients_" + e.id +
             "' class='row'></div><div class='mission_prisoners' id='mission_prisoners_" + e.id +
             "'></div></div></div></div></div>";
-        $(h)
-            .append(y), missionListSorter && missionListSorter.reSort(), tutorial.callNewMissionListener(!0),
-            null != missionListIntersectionObserver && missionListIntersectionObserver.observe(document
-                .getElementById("mission_" + e.id))
+        $(d)
+            .append(v), tutorial.callNewMissionListener(!0), null != missionListIntersectionObserver &&
+            missionListIntersectionObserver.observe(document.getElementById("mission_" + e.id))
     }
-    var w = !1;
+    var b = !1;
     if ($.each(mission_markers, (function (t, i) {
             i.mission_id == e.id && ("undefined" != typeof mapkit ? (i.url = {
                 1: s
             }, i.opacity = 1, i.title = e.caption, i.subtitle = e.address) : (i.setIcon(
                 icon_empty), i.setOpacity(1), iconMapGenerate(s, i), i.setTooltipContent(
-                c)), i.vehicle_state = e.vehicle_state, w = !0)
-        })), !w && "undefined" != typeof L) {
+                c)), i.vehicle_state = e.vehicle_state, b = !0)
+        })), !b && "undefined" != typeof L) {
         if ("undefined" != typeof mapkit) {
-            (k = new mapkit.ImageAnnotation(new mapkit.Coordinate(e.latitude, e.longitude), {
+            (y = new mapkit.ImageAnnotation(new mapkit.Coordinate(e.latitude, e.longitude), {
                 url: {
                     1: s
                 }
             }))
-            .title = e.caption, k.subtitle = e.address, map.addAnnotation(k), k.element.className =
-                "mapkit-marker", k.addEventListener("select", (function () {
+            .title = e.caption, y.subtitle = e.address, map.addAnnotation(y), y.element.className =
+                "mapkit-marker", y.addEventListener("select", (function () {
                     $("#alarm_button_" + e.id)
                         .click(), setTimeout(mapkitDeselectAnnotation, 1e3)
                 }))
         } else {
-            var k = L.marker([e.latitude, e.longitude], {
+            var y = L.marker([e.latitude, e.longitude], {
                     zIndexOffset: 1e4,
                     title: e.name,
                     icon: icon_empty
@@ -1395,27 +1389,27 @@ function missionMarkerAdd(e) {
                     permanent: mission_label,
                     opacity: 1
                 });
-            void 0 !== map && k.addTo(map_filters_service.getFilterLayerByMissionParams(e)), iconMapGenerate(
-                s, k), k.on("click", (function () {
+            void 0 !== map && y.addTo(map_filters_service.getFilterLayerByMissionParams(e)), iconMapGenerate(
+                s, y), y.on("click", (function () {
                 $("#alarm_button_" + e.id)
                     .click()
             }))
         }
-        k.mission_id = e.id, k.user_id = e.user_id, k.vehicle_state = e.vehicle_state, k.krankentransport = e
-            .kt, k.sicherheitswache = e.sw, k.involved = !0, mission_markers.push(k)
+        y.mission_id = e.id, y.user_id = e.user_id, y.vehicle_state = e.vehicle_state, y.krankentransport = e
+            .kt, y.sicherheitswache = e.sw, y.involved = !0, mission_markers.push(y)
     }
     if (n && $("#mission_" + e.id)
         .addClass("mission_alliance_distance_hide"), e.date_end > 0 && missionTimerStart(e), e
         .water_damage_pump_value) {
-        var x = "<div class='small' id='pumping_" + e.id + "'>" + I18n.t("javascript.water_pumping_process") +
+        var w = "<div class='small' id='pumping_" + e.id + "'>" + I18n.t("javascript.water_pumping_process") +
             " <div id='pumping_bar_outer_" + e.id +
             "' class='progress pumping_progress'><div id='pumping_bar_" + e.id +
             "' class='progress-bar progress-bar-info";
-        x += "' style='width: " + e.live_current_water_damage_pump_value +
+        w += "' style='width: " + e.live_current_water_damage_pump_value +
             "%;'><div id='pumping_bar_striper_" + e.id + "' class='" + t +
             "'></div></div></div><div  id='patients_missing_" + e.id + "'", $("#mission_pump_progress_" + e
                 .id)
-            .html(x)
+            .html(w)
     }
     e.pumping_date_end > 0 && ($("#pumping_bar_striper_" + e.id)
             .addClass("progress-striped-inner-active"), startProgressBar({
@@ -1424,27 +1418,8 @@ function missionMarkerAdd(e) {
                 startTime: 1e3 * e.pumping_date_start,
                 endTime: 1e3 * e.pumping_date_end
             })), missionSelectionUpdateButtons(), e.live_current_value <= 0 && e
-        .live_current_water_damage_pump_value <= 0 && missionFinish(e);
-    var C = $(".mission_selection[data-type-filter].btn-danger")
-        .map((function (e, t) {
-            return $(t)
-                .data("type-filter")
-        }))
-        .toArray(),
-        z = $(".mission_selection[data-state-filter].btn-danger")
-        .map((function (e, t) {
-            return $(t)
-                .data("state-filter")
-        }))
-        .toArray(),
-        S = $("#mission_" + e.id)
-        .data("mission-type-filter"),
-        T = $("#mission_" + e.id)
-        .data("mission-state-filter");
-    C.includes(S) || z.includes(T) ? $("#mission_" + e.id)
-        .addClass("hidden") : $("#mission_" + e.id)
-        .removeClass("hidden"), missionMarkerBulkAdd || (progressBarScrollUpdate(), "" != $(
-                "#search_input_field_missions")
+        .live_current_water_damage_pump_value <= 0 && missionFinish(e), missionMarkerBulkAdd || (
+            progressBarScrollUpdate(), "" != $("#search_input_field_missions")
             .val() && searchMission())
 }
 
@@ -2397,15 +2372,12 @@ function tellParent(e) {
 }
 
 function missionSelectionOnly(e) {
-    var t = !!e.data("type-filter"),
-        i = !!e.data("state-filter");
-    t ? $(".mission_selection[data-type-filter]")
-        .each((function (e, t) {
-            missionSelectionDeactive($(t))
-        })) : i && $(".mission_selection[data-state-filter]")
-        .each((function (e, t) {
-            missionSelectionDeactive($(t))
-        })), missionSelectionActive(e), missionSelectionSave()
+    var t = ["mission_select_emergency", "mission_select_krankentransport", "mission_select_alliance",
+        "mission_select_alliance_event", "mission_select_sicherheitswache"];
+    $.each(t, (function (t, i) {
+        e.attr("id") == i ? missionSelectionActive($("#" + i)) : missionSelectionDeactive($("#" +
+            i))
+    })), missionSelectionSave()
 }
 
 function missionSelectionUpdateButtons() {
@@ -2419,17 +2391,12 @@ function missionSelectionUpdateButtons() {
         a = 0,
         r = 0,
         l = 0,
-        c = 0,
-        u = 0,
-        d = 0,
-        h = 0,
-        p = 0;
-    $.each(mission_markers, (function (m, f) {
-            p++, f.krankentransport ? (i++, 0 == f.vehicle_state && n++) : f.sicherheitswache ? (l++,
-                    0 == f.vehicle_state && c++) : f.user_id != user_id && null != f.user_id ? (o++,
-                    0 == f.vehicle_state && s++) : f.user_id != user_id && null == f.user_id ? (a++,
-                    0 == f.vehicle_state && r++) : (e++, 0 == f.vehicle_state && t++), 0 == f
-                .vehicle_state && u++, 1 == f.vehicle_state && d++, 2 == f.vehicle_state && h++
+        c = 0;
+    $.each(mission_markers, (function (u, d) {
+            d.krankentransport ? (i++, 0 == d.vehicle_state && n++) : d.sicherheitswache ? (l++, 0 ==
+                d.vehicle_state && c++) : d.user_id != user_id && null != d.user_id ? (o++, 0 == d
+                .vehicle_state && s++) : d.user_id != user_id && null == d.user_id ? (a++, 0 == d
+                .vehicle_state && r++) : (e++, 0 == d.vehicle_state && t++)
         })), $("#mission_select_emergency")
         .html(
             '<img class="icon icons8-Siren-Filled" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAADcElEQVRoQ+2Z/XETMRDF91WAUwFQAaQCoAJIBSQVABUQKoBUgFNBQgVABSQVQCogqeAxz0ge5aw7Sau7GYax/rFnrK/frvbtSoY5Gsm1mb00s0MAvxxT7AwhuTKzn2Z2DuBt65xoHaD+AeR1WPTYM8dwDMlTM3vvndML8ihYT/t53OuVxBvyims+F8jcXun1hvbTAzKLV+bwRhfIwCsnACQAzY2kYuyzNzbigm6PBBCd6WMAn5oJkgEkpVJrALfeebpAvIsuMW4PsoRVe+b8fzxCUmWB2imAc49VSD43szdmpk8JQE27MrNLMzvzBjlJVReqCFYgqQmfhJVVN1UDhRwg6XxVs/ORPlIqrXlWO0cCoFymdrM5WkHLRfYwAToCIMhsCxBfzeypmd2ZmSRYElpVRAYvKofIqmoaezIFQ1JrXZjZFiAYYX0vRgZAk0mOpDau43Qtj9QCDDeaJET9JOPpuI0ZLybPmwgQO2aDXdYC8G1iwrQ8USk/6rma45LA3AI4KHgluzeXaiXe0N1hrjJehntmZq5yxwvyI8TGiynP1Xgj9gllykdvzeUFoTYAwDU+BxiCX+LxHYBkvKk1b4RkjI87ALU5o7ipoIK/zawYJ7nJPCCylttyhUB2e9oDEiXwC4CeRLjDlCTnZiX0gMRHgg8A9H22RjIqV7OIeECUsPQU5JLJwtFyG8kD4rZayXXJI0Sztz0gUhb3s00pa3uFZAck6LkybLa8JulWlgqPREW8AnCYqctkQD3iSWjulVBbkACgTjEZ7cRAkrSuAagSnb1NGWpQYApER3ADpPuINp4CbErynCL1Zt8aapK6nzwws4PchSvEkV5d1EftL1C0QHKnEET2WSYJRh275ofmSpCimIQqQOtvgQSie4U2PgqQFHbxDtKsKjUQ6kOyWt4ToFWTavUkrAYQVy5pBZm9fM8ok6sEagVZTHqT4+sqSqtBlirfMx6J14Smcr4FxGWp2thI+3mSbguI6+w6QeJbW3UV3ALiUhMnSDGXDOdtAdEfOXpMe9f7f0gJLnmlqc5XLSDNVipteOx3TwXRArJY+Z5RrmZhGQUhGZOf17BLjLsEcJSbeApkk/z+tTb2llYEmfMRrscopdyyB+mxrmfs3iMlC3is2jOmtJ9ijPQsvsRYj2rFTL7Efrxzjr43/wE/Kgjg5EADGQAAAABJRU5ErkJggg==" width="15" height="15"> (' +
@@ -2445,10 +2412,7 @@ function missionSelectionUpdateButtons() {
             r + "/" + a + ")"), $("#mission_select_sicherheitswache")
         .html(
             '<img class="icon icons8-Clock-Filled" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAE8klEQVRoQ8Waj5EVNwzGpQoSKkioIFBBuAqSVBCoAKggUEG4CgIVBCoIV0GggkAFQAVifjvy4bdr+d/uTjxzM+/d83r1WZ8+y7JVDm5m9r2I/CQi90SEz/zxmfZORD77H5/fqyrfD2t6xEhmhsG/i8iDzPjeoQH2VkReqSqfd7VpQO6JX0TkmYj8uMuKbw9/8PHezHpuCpCZPfYXQ6czGjR8pqrXo4MPAXJq/TVBq1G7Un8o+GiEit2A3CsvZi3b+dyTXm91ATIzvPKw06g3rmYEOjP8WkR+9mdvfBxiLgkIcdjTXqrqo1bHKiAP/H86KPZeRPDe63Uwm9lLV0BsQckuJsbfwf/4Q+5rjQm6qglGC9C/DTAfRQQ64IVi87h74j++qMWDmQGKifmuguqdqt6Pfg8BddDsOS+fldfKBKCcLAUoadRC+hUBmRkz+mcw2hf3ClQ6rbm3iN2oPVXVjUhtADlFoFqpAebBiIyaGQKQxruvqiyeXc1tQVwiCjLeRXZRAlSLm80ALcvMDPr84f2eqyrfu1tjgjfxdAGoQTUWuGGa7QUE8gb9Lqh3C8jl8z/PjtczeK2qSam6Z9eN2eWh9DIzI15KQkGadDeJUw4IySwFIdJ8b1bNVoYMUy4DhPoRf6V4umVPDgjvlLLmKaplhhDUKVOY9nSDeh9U9S59FkCVwGMDljZnQ1QLAN2oKinPdDMzVK2UUSyClQBF/Cxq/Yg1ZpZ76AhA0Rq5eD8BiqT6zmzsnOghYulTYVIXCVdXt1IHdo2/jnij1NfM8tjc7SEPEXLHUpZ+B0Bwmox63aYVKR/IzCz7fhSgfCnIX3cFoIiTpOnwf1dbAapmyr0vMjOY83eh/1MARWhZrLrzroBupdh8q6pXvcYH47K8QOUtqyorMN4BEOoxXF6qTBRGTKmnLy/khQhDSf6v8VAuq6UJ2ewye2a3Me5ULHXYevN/ASL/IkaHPN8LKFpUKWhAueq2OfJWI3PnsWFQrsiIGJRL6VRuwkK5M0UhSlOSEc2ix4wonC3bjI/Mokw/lFb4ViVn/Uxl7Vxk+9SFNRnjGQkCVEosKX/91iM29KmwallYo9zokNRnlTXwLna9pbSlq5DogOLUxztEXN+dnAYxkBcf8y7N9anigGWrc/r2oaKCkRhVN5QV9bzYPrCJK5WuDsm9KqCibX9YXTKzaKvzbYPntGPNKanQri14K9CD8m8xk6hUfz6q6lI+6CmSXFRVWgbO/F4oKG62Lo2qVLFIUquq7Cpu9IB0UMQVNN8UIytJ9BdVvT1JPL3Q2AOm1Weq0JgtgLV0ZbgU3DK29XujFLypSo0W64cTypbBtd8dDOWB6HC6Xax3xasdp9DlVOVzGyJJT3PQd5ySUS9azVMXth2o0aE3QVzN2JXWaunhprN1JNlK/wHDkeSryuLJop0fp4SbOjPjNgoTVbv/UK3mtgAxcJQh5xgwEo8ycxce6zw0BggUa5WdOZzmwC1kRe+xfot+OTgy4XR/h5MLnl0f65ORpGP93mJmV22jC1CnUOwRtNazzSw8DdANyEFBCWa8dZ+gZWDv71Ds4UgxZQhQpoAoEOlJ7T5Br9GlfhxOc3lp+CrOFCD3FoIB/wFWytJnABFzjLe5kdI72DSg/AW+oqNSBPooHaEVSsoWfKhOVwJ5CKAVuHQls+eKJpn1oQvzV++Yjk+9aieJAAAAAElFTkSuQmCC" width="15" height="15"> (' +
-            c + "/" + l + ")"), $("#mission_select_unattended .counter")
-        .html("(" + u + "/" + p + ")"), $("#mission_select_attended .counter")
-        .html("(" + d + "/" + p + ")"), $("#mission_select_finishing .counter")
-        .html("(" + h + "/" + p + ")")
+            c + "/" + l + ")")
 }
 
 function missionSelection(e) {
@@ -2458,43 +2422,17 @@ function missionSelection(e) {
 
 function missionSelectionActive(e) {
     e.addClass("btn-success")
-        .removeClass("btn-danger");
-    var t = filterMissionList();
-    $(".missionSideBarEntry")
-        .addClass("hidden"), null == missionListIntersectionObserver && t.removeClass(
-            "missionSideBarEntryScrollInvisible")
-        .css("height", "auto"), t.removeClass("hidden"), progressBarScrollUpdate()
+        .removeClass("btn-danger"), null == missionListIntersectionObserver && $("#" + e.attr("classShow") +
+            " > .missionSideBarEntry")
+        .removeClass("missionSideBarEntryScrollInvisible")
+        .css("height", "auto"), $("#" + e.attr("classShow"))
+        .show(), progressBarScrollUpdate()
 }
 
 function missionSelectionDeactive(e) {
     e.removeClass("btn-success")
-        .addClass("btn-danger");
-    var t = filterMissionList();
-    $(".missionSideBarEntry")
-        .addClass("hidden"), t.removeClass("hidden"), progressBarScrollUpdate()
-}
-
-function filterMissionList() {
-    var e = $(".mission_selection[data-type-filter].btn-danger")
-        .map((function (e, t) {
-            return $(t)
-                .data("type-filter")
-        }))
-        .toArray(),
-        t = $(".mission_selection[data-state-filter].btn-danger")
-        .map((function (e, t) {
-            return $(t)
-                .data("state-filter")
-        }))
-        .toArray();
-    return $(".missionSideBarEntry")
-        .filter((function (i, n) {
-            var o = $(n)
-                .data("mission-type-filter"),
-                s = $(n)
-                .data("mission-state-filter");
-            return !e.includes(o) && !t.includes(s)
-        }))
+        .addClass("btn-danger"), $("#" + e.attr("classShow"))
+        .hide(), progressBarScrollUpdate()
 }
 
 function missionSelectionSave() {
@@ -2981,60 +2919,6 @@ function updateButtonState(e, t) {
         .disabled && n(e)
 }
 
-function initSortable(e) {
-    function t(t) {
-        function i() {
-            return o("asc")
-        }
-
-        function o(e) {
-            return function (t, i) {
-                var n = parseInt($(t)
-                        .data("sortable-by")),
-                    o = parseInt($(i)
-                        .data("sortable-by"));
-                return "desc" === e ? o - n : n - o
-            }
-        }
-        n(t), sortFn = "custom" === t && e.customSort ? e.customSort : o(t), $(e.containerSelector + " " + e
-                .sortableElementSelector)
-            .sort(i())
-            .sort(sortFn)
-            .appendTo(e.containerSelector), e.$element.data("sort-direction", t)
-    }
-
-    function i(t) {
-        return "select" === e.type ? t.val() : "asc" === t.data("sort-direction") ? "desc" : "asc"
-    }
-
-    function n(t) {
-        var i = "desc" === t ? "desc" : "asc";
-        e.$element.removeClass("desc asc")
-            .addClass(i)
-    }
-    e.initialDirection && (t(e.initialDirection), e.$element.find(`option[value="${e.initialDirection}"]`)
-        .attr("selected", !0));
-    const o = "select" === e.type ? "change" : "click";
-    return e.$element.on(o, (function () {
-        var n = i(e.$element);
-        t(n), e.afterSort && e.afterSort(n)
-    })), {
-        reSort() {
-            t(e.$element.data("sort-direction"))
-        }
-    }
-}
-
-function updateMissionListOrder(e) {
-    $.ajax({
-        url: "/missions/update_order",
-        method: "PUT",
-        data: {
-            order: e
-        }
-    })
-}
-
 function onAndroidBack() {
     return $("#close_tutorial_modal")
         .visible() ? ($("#close_tutorial_modal * .btn-danger")
@@ -3046,9 +2930,10 @@ function onAndroidBack() {
 function startProgressBar(e) {
     var t = 100 - (new Date - e.startTime) / (e.endTime - e.startTime) * 100,
         i = t * (e.missionValue / 100);
-    e.$element.css("width", i + "%"), t >= 0 && setTimeout((function () {
-        startProgressBar(e)
-    }), 1e3)
+    e.$element.css("width", i + "%"),
+        t >= 0 && setTimeout((function () {
+            startProgressBar(e)
+        }), 1e3)
 }
 
 function showEventInfo(e) {
@@ -36604,7 +36489,6 @@ var building_markers = Array(),
     shouldReloadAfterIFrameClose = !1,
     isIframe = window.self !== window.top,
     vehiclesEquipmentDataById = {},
-    missionListSorter = null,
     missionListIntersectionObserver = null;
 $((function () {
     function onCoinsTop() {

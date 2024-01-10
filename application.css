@@ -11974,21 +11974,11 @@ body.dodenherdenking .navbar-default .dropdown-menu {
 }
 
 #missions-panel-body {
+    height: 497px;
     overflow-x: hidden;
     overflow-y: scroll;
     margin-bottom: 10px;
     padding: 0 20px 0 0
-}
-
-#missions {
-    height: 560px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden
-}
-
-.bigMap #missions {
-    height: auto
 }
 
 #missions-panel-body .panel-body {
@@ -13365,34 +13355,6 @@ body.bigMap .big_map_window_head {
 
 body.bigMap .missions-panel-head strong {
     font-weight: normal
-}
-
-.mission-filters-block {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap
-}
-
-.mission-filters-block .mission-filters-row {
-    display: flex;
-    flex-wrap: wrap
-}
-
-.mission-filters-block .mission-filters-top {
-    align-items: baseline;
-    display: flex;
-    flex-wrap: wrap;
-    flex: 1 1 270px;
-    margin-top: 5px
-}
-
-.mission-filters-block .mission-filters-top .missions-title {
-    vertical-align: top;
-    margin-right: 5px
-}
-
-.mission-filters-block .mission-filters-top #mission_speed_pause {
-    margin-right: 5px
 }
 
 body.bigMap #missions_outer {
@@ -16201,19 +16163,6 @@ body.dark .daily-bonuses .collect-possible-block {
 
 .sortable-link.no-sort {
     background-image: url(/images/bg.gif)
-}
-
-.mission-sorting {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-left: auto
-}
-
-.mission-sorting .missions-sortable-select {
-    height: 25px;
-    line-height: 25px;
-    font-size: 11px
 }
 
 .tasks_and_events_navbar .badge {
