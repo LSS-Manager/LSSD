@@ -11974,10 +11974,21 @@ body.dodenherdenking .navbar-default .dropdown-menu {
 }
 
 #missions-panel-body {
-    height: 497px;
     overflow-x: hidden;
     overflow-y: scroll;
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    padding: 0 20px 0 0
+}
+
+#missions {
+    height: 560px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden
+}
+
+.bigMap #missions {
+    height: auto
 }
 
 #missions-panel-body .panel-body {
@@ -12137,13 +12148,6 @@ fieldset[disabled] .btn-gray.active {
 
 .chatWhisper a {
     color: white
-}
-
-#missions {
-    padding: 10px;
-    border: 1px solid #bdbdbd;
-    border-radius: 5px;
-    margin-bottom: 20px
 }
 
 #missions ul,
