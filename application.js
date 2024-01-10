@@ -4087,6 +4087,7 @@ Object.values || (Object.values = function (e) {
                 mission_positions_section: "POIs",
                 missions_section: "Eins\xe4tze",
                 police_copter_station_missions: "Polizeihubschrauberstation",
+                police_horse: "Reiterstaffel",
                 police_school_missions: "Polizeischule",
                 police_small_missions: "Polizeiwache (Kleinwache)",
                 police_special_forces: "Polizei-Sondereinheiten",
