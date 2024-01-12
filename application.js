@@ -1119,30 +1119,33 @@ function progressBarScrollUpdate() {
 }
 
 function missionScrollUpdate() {
-    if (null == missionListIntersectionObserver && $("#missions_outer")
-        .is(":visible")) {
-        var e = $("#missions-panel-body")
-            .offset()
-            .top - 5 * $("#missions-panel-body")
-            .height(),
-            t = $("#missions-panel-body")
-            .offset()
-            .top + 5 * $("#missions-panel-body")
-            .height();
-        $(".missionSideBarEntry")
-            .each((function () {
-                let i = $(this)
+    var e = $("#missions-panel-body")
+        .offset()
+        .top - 5 * $("#missions-panel-body")
+        .height(),
+        t = $("#missions-panel-body")
+        .offset()
+        .top + 5 * $("#missions-panel-body")
+        .height();
+    $("#missions_outer")
+        .is(":visible") && $(".missionSideBarEntry")
+        .each((function () {
+            $(this)
+                .hasClass("missionSideBarEntryScrollInvisible") ? $(this)
+                .offset()
+                .top < t && $(this)
+                .offset()
+                .top > e && $(this)
+                .removeClass("missionSideBarEntryScrollInvisible")
+                .css("height", "auto") : ($(this)
                     .offset()
-                    .top;
-                $(this)
-                    .hasClass("missionSideBarEntryScrollInvisible") ? i < t && i > e && $(this)
-                    .removeClass("missionSideBarEntryScrollInvisible")
-                    .css("height", "auto") : (i > t || i < e) && ($(this)
-                        .css("height", $(this)
-                            .height() + "px"), $(this)
-                        .addClass("missionSideBarEntryScrollInvisible"))
-            }))
-    }
+                    .top > t || $(this)
+                    .offset()
+                    .top < e) && ($(this)
+                    .css("height", $(this)
+                        .height() + "px"), $(this)
+                    .addClass("missionSideBarEntryScrollInvisible"))
+        }))
 }
 
 function patientMarkerAddCombined(e) {
@@ -1329,7 +1332,11 @@ function missionMarkerAdd(e) {
         var _ = "";
         e.alliance_id && (_ = "panel-success");
         var g = "";
-        g = null != missionListIntersectionObserver ? "" : "missionSideBarEntryScrollInvisible";
+        $("#missions-panel-body")
+            .offset()
+            .top, $("#missions-panel-body")
+            .height();
+        g = "missionSideBarEntryScrollInvisible";
         var v = "<div search_attribute='" + (o = o.replace(/'/g, "&#039;")) + "' id='mission_" + e.id +
             "' mission_id='" + e.id + "' mission_type_id='" + e.mtid +
             "' class='missionSideBarEntry missionSideBarEntrySearchable " + g + "' latitude='" + e.latitude +
@@ -1357,8 +1364,7 @@ function missionMarkerAdd(e) {
             "' class='row'></div><div class='mission_prisoners' id='mission_prisoners_" + e.id +
             "'></div></div></div></div></div>";
         $(d)
-            .append(v), tutorial.callNewMissionListener(!0), null != missionListIntersectionObserver &&
-            missionListIntersectionObserver.observe(document.getElementById("mission_" + e.id))
+            .append(v), tutorial.callNewMissionListener(!0)
     }
     var b = !1;
     if ($.each(mission_markers, (function (t, i) {
@@ -1524,8 +1530,7 @@ function missionFinish(e) {
 function missionDelete(e) {
     1 == mobile_bridge_use && 4 == mobile_version && mobileBridgeAdd("mission_delete", {
             id: e
-        }), null != missionListIntersectionObserver && missionListIntersectionObserver.unobserve(document
-            .getElementById("mission_" + e)), $("#mission_" + e)
+        }), $("#mission_" + e)
         .addClass("mission_deleted"), missionTimerDelete(e);
     var t = [];
     $.each(mission_markers, (function (i, n) {
@@ -1982,7 +1987,8 @@ function messageUnreadUpdate(e) {
         .html();
     $("#message_top")
         .html(t), e > 0 ? ($("#message_top")
-            .addClass("message_new"), $("#main-navbar-toggle")
+            .addClass("message_new"),
+            $("#main-navbar-toggle")
             .addClass("message_new")) : ($("#message_top")
             .removeClass("message_new"), $("#main-navbar-toggle")
             .removeClass("message_new")), "" != i && i != t && highlightElement($("#message_top"))
@@ -2422,8 +2428,7 @@ function missionSelection(e) {
 
 function missionSelectionActive(e) {
     e.addClass("btn-success")
-        .removeClass("btn-danger"), null == missionListIntersectionObserver && $("#" + e.attr("classShow") +
-            " > .missionSideBarEntry")
+        .removeClass("btn-danger"), $("#" + e.attr("classShow") + " > .missionSideBarEntry")
         .removeClass("missionSideBarEntryScrollInvisible")
         .css("height", "auto"), $("#" + e.attr("classShow"))
         .show(), progressBarScrollUpdate()
@@ -2930,10 +2935,9 @@ function onAndroidBack() {
 function startProgressBar(e) {
     var t = 100 - (new Date - e.startTime) / (e.endTime - e.startTime) * 100,
         i = t * (e.missionValue / 100);
-    e.$element.css("width", i + "%"),
-        t >= 0 && setTimeout((function () {
-            startProgressBar(e)
-        }), 1e3)
+    e.$element.css("width", i + "%"), t >= 0 && setTimeout((function () {
+        startProgressBar(e)
+    }), 1e3)
 }
 
 function showEventInfo(e) {
@@ -36488,22 +36492,12 @@ var building_markers = Array(),
     i18nPrefix = null,
     shouldReloadAfterIFrameClose = !1,
     isIframe = window.self !== window.top,
-    vehiclesEquipmentDataById = {},
-    missionListIntersectionObserver = null;
+    vehiclesEquipmentDataById = {};
 $((function () {
     function onCoinsTop() {
         return !mobile_bridge_use || (mobileBridgeAdd("coins_window", {}), !1)
     }
     "undefined" != typeof L && (L.Icon.Default.imagePath = "/leaflet/images/"),
-        "IntersectionObserver" in window && document.getElementById("missions-panel-body") && (
-            missionListIntersectionObserver = new IntersectionObserver((e => {
-                for (let t of e) t.isIntersecting ? (t.target.style.height = "auto", t
-                        .target.classList.remove("missionSideBarEntryScrollInvisible")) :
-                    (t.target.style.height = t.boundingClientRect.height + "px", t.target
-                        .classList.add("missionSideBarEntryScrollInvisible"))
-            }), {
-                root: document.getElementById("missions-panel-body")
-            })),
         aao_types = [["ambulance_or_rapid_responder", I18n.t(
             "intervention_order.vehicles.ambulance_or_rapid_responder")], ["wasser_amount",
             I18n.t("intervention_order.vehicles.water_amount")], ["wasser_amount_tlf", I18n.t(
