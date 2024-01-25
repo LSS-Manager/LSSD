@@ -105,8 +105,9 @@ function aao_check(e, t, i) {
                     "custom_")) && (i -= "wasser_amount" == e || "wasser_amount_tlf" == e ||
                     "water_damage_pump_value" == e || "water_damage_pump_value_only_pumps" ==
                     e || "foam_amount" == e || "water_amount_water_carrier" == e ||
-                    "water_amount_tlf_water_carrier" == e ? t.getAttribute(e) : 1), i <= 0 &&
-                (n = document.getElementById("vehicle_sort_" + t.value)
+                    "water_amount_tlf_water_carrier" == e || "police_horse_count" == e ? t
+                    .getAttribute(e) : 1), i <= 0 && (n = document.getElementById(
+                        "vehicle_sort_" + t.value)
                     .getAttribute("timevalue")))
         }))
     }
@@ -170,7 +171,8 @@ function aao(e, t, i, n) {
                         .change(), n -= "wasser_amount" == e || "wasser_amount_tlf" == e ||
                         "water_damage_pump_value" == e || "water_damage_pump_value_only_pumps" ==
                         e || "foam_amount" == e || "water_amount_water_carrier" == e ||
-                        "water_amount_tlf_water_carrier" == e ? $(this)
+                        "water_amount_tlf_water_carrier" == e || "police_horse_count" == e ? $(
+                            this)
                         .attr(e) : 1, $(this)
                         .prop("checked", !0), $(this)
                         .change())
@@ -1067,8 +1069,8 @@ function buildingsVehicleLoad(building_id) {
     $.get("/buildings/" + building_id + "/vehiclesMap", (function (data) {
         buildingVehicleCache[building_id] = [], eval(data), vehicleContent = "", void 0 !==
             buildingVehicleCache[building_id] && (vehicleContent = buildingVehicleCache[
-                building_id].join(""), buildingVehicleCache[building_id] = []), $(
-                "#vehicle_building_" + building_id)
+                building_id].join(""), buildingVehicleCache[building_id] = []),
+            $("#vehicle_building_" + building_id)
             .html(vehicleContent)
     }))
 }
@@ -1986,9 +1988,9 @@ function messageUnreadUpdate(e) {
         i = $("#message_top")
         .html();
     $("#message_top")
-        .html(t), e > 0 ? ($("#message_top")
-            .addClass("message_new"),
-            $("#main-navbar-toggle")
+        .html(t),
+        e > 0 ? ($("#message_top")
+            .addClass("message_new"), $("#main-navbar-toggle")
             .addClass("message_new")) : ($("#message_top")
             .removeClass("message_new"), $("#main-navbar-toggle")
             .removeClass("message_new")), "" != i && i != t && highlightElement($("#message_top"))
@@ -4141,6 +4143,8 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "Warte auf Zugfahrzeug"
         },
         intervention_order: {
+            assigns_equipment_automatically: "Weist Ausr\xfcstung automatisch zu",
+            assigns_equipment_automatically_hint: "Wenn aktiv, kann die AAO den Fahrzeugen Ausr\xfcstung zuweisen. W\xe4hlt die n\xe4chstgelegene Einheit oder Ausr\xfcstung. (W\xe4hlt nicht ausschlie\xdflich Ausr\xfcstung)",
             automatic_text_color: "Automatische Schriftfarbe",
             back: "Zur\xfcck",
             category: "Kategorie",
@@ -4250,6 +4254,7 @@ Object.values || (Object.values = function (e) {
                 only_dekon_p: "Dekon-P",
                 police_car: "Funkstreifenwagen",
                 police_car_or_service_group_leader: "FuStW oder FuStW (DGL)",
+                police_horse_count: "Polizeipferde",
                 police_motorcycle: "Polizeimotorrad",
                 polizeihubschrauber: "Polizeihubschrauber",
                 pump: "Schmutzwasserpumpen",
@@ -4628,6 +4633,8 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "Awaiting vehicle to tow"
         },
         intervention_order: {
+            assigns_equipment_automatically: "Assigns Equipment Automatically",
+            assigns_equipment_automatically_hint: "If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment. (Does not exclusively choose equipment)",
             automatic_text_color: "Automatic Text Color",
             back: "Back",
             categories: {
@@ -4685,7 +4692,7 @@ Object.values || (Object.values = function (e) {
                 abl2wasser_only: "Hose-Supply-Module",
                 air_tanker: "Air tanker",
                 ambulance: "ALS ambulance",
-                any_traffic_car: "Any Traffic Car",
+                any_traffic_car: "Traffic Control Units",
                 any_traffic_unit: "Any Traffic Unit",
                 arff: "ARFF (Airport Fire Truck)",
                 battalion_chief_unit: "Battalion Chief unit",
@@ -4775,6 +4782,7 @@ Object.values || (Object.values = function (e) {
                 police_car_3: "NH-O",
                 police_car_or_service_group_leader: "Patrol Car or Service Group Leader",
                 police_horse: "Mounted Police",
+                police_horse_count: "Police Horses",
                 police_motorcycle: "Police Motorcycle",
                 polizeihubschrauber: "Police helicopter",
                 pump: "Engine-Pumps",
@@ -5270,6 +5278,8 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "Awaiting vehicle to tow"
         },
         intervention_order: {
+            assigns_equipment_automatically: "Assigns Equipment Automatically",
+            assigns_equipment_automatically_hint: "If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment. (Does not exclusively choose equipment)",
             automatic_text_color: "Automatic Text Color",
             back: "Back",
             categories: {
@@ -7627,6 +7637,8 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "Czeka na pojazd do holowania"
         },
         intervention_order: {
+            assigns_equipment_automatically: "Automatycznie przypisuje urz\u0105dzenia",
+            assigns_equipment_automatically_hint: "Je\u015bli jest aktywna, ZR mo\u017ce przypisa\u0107 wyposa\u017cenie do pojazd\xf3w. Wybiera najbli\u017csz\u0105 jednostk\u0119 lub wyposa\u017cenie. (Nie wybiera wy\u0142\u0105cznie wyposa\u017cenia)",
             automatic_text_color: "Automatyczny kolor tekstu",
             back: "Wstecz",
             battalion_chief_unit: "Samoch\xf3d Oficera Operacyjnego lub SLRr",
@@ -36683,7 +36695,8 @@ $((function () {
             I18n.t("intervention_order.vehicles.care_service_equipment")], [
             "fustkw_or_civil_patrolcar", I18n.t(
                 "intervention_order.vehicles.fustkw_or_civil_patrolcar")], ["traffic_patrol",
-            I18n.t("intervention_order.vehicles.traffic_patrol")]], $("#restore_map")
+            I18n.t("intervention_order.vehicles.traffic_patrol")], ["police_horse_count", I18n
+            .t("intervention_order.vehicles.police_horse_count")]], $("#restore_map")
         .click((function () {
             mapViewRestore()
         })), $("#coins_top")
