@@ -4159,10 +4159,10 @@ Object.values || (Object.values = function (e) {
             description: "Bezeichnung",
             edit: "Bearbeiten",
             export: {
-                export: "Exportieren",
+                export: "Teilen",
                 import: "Importieren",
                 import_done: "Die gew\xe4hlten Eintr\xe4ge wurden importiert und in deine AAO geschrieben.",
-                saved: "AAO-Exportiert",
+                saved: "Teile AAO",
                 saved_text: "Deine AAO wurde f\xfcr den Export vorbereitet. \xdcber den Link kann ein anderer Spieler die AAO bei sich importieren. Solltest du deine AAO in der Zwischenzeit ver\xe4ndern, so wird diese \xc4nderung auch im Export automatisch \xfcbernommen. "
             },
             hotkey_hint: "W\xe4hle einen Tastencode f\xfcr diese Auswahl an Fahrzeugen. Im Alarmierungsfenster kannst du dann mit ALT + Taste deiner Wahl (bzw. im Firefox: ALT + SHIFT + Taste deiner Wahl - bzw. unter Mac OS: CTRL + ALT + Taste deiner Wahl) direkt diese Fahrzeugauswahl aufrufen. ",
@@ -4663,10 +4663,10 @@ Object.values || (Object.values = function (e) {
             description: "Name",
             edit: "Edit",
             export: {
-                export: "Export",
+                export: "Share",
                 import: "Import",
                 import_done: "The selected entries have been imported and written to your Alarm and Response plan .",
-                saved: "Alarm and Response Regulations Exports",
+                saved: "Share Alarm and Response Regulations",
                 saved_text: "Your Alarm and Response Regulation has been prepared for export. Via the link another player can import the Alarm and Response Regulation. If you change your Alarm and Response Regualtion in the meantime, this change will automatically be applied in the export."
             },
             hotkey_hint: "Choose a hotkey for this vehicle selection. Press at your window mission: ALT + your hotkey (or at Firefox: ALT + SHIFT + your hotkey or at mac os: ctrl + alt + your hotkey) to choose your vehicle selection.",
@@ -5297,10 +5297,10 @@ Object.values || (Object.values = function (e) {
             description: "Name",
             edit: "Edit",
             export: {
-                export: "Export",
+                export: "Share",
                 import: "Import",
                 import_done: "The selected entries have been imported and written to your Alarm and Response plan .",
-                saved: "Alarm and Response Regulations Exports",
+                saved: "Share Alarm and Response Regulations",
                 saved_text: "Your Alarm and Response Regulation has been prepared for export. Via the link another player can import the Alarm and Response Regulation. If you change your Alarm and Response Regualtion in the meantime, this change will automatically be applied in the export."
             },
             flood_equipment: "Flood Rescue Units",
@@ -5830,10 +5830,10 @@ Object.values || (Object.values = function (e) {
             description: "Beschrijving",
             edit: "Bewerken",
             export: {
-                export: "Exporteren",
+                export: "Delen",
                 import: "Importeren",
                 import_done: "De gekozen input wordt ge\xefmporteerd en jouw eigen A&U worden overschreven.",
-                saved: "A&U-Ge\xebxporteerd ",
+                saved: "Inzetvoorstellen delen",
                 saved_text: "Jouw A&U worden voor export voorbereid. Met de link kunnen andere spelers de A&U importeren. Wanneer je tussentijds je eigen A&U regels veranderd, zullen deze veranderingen automatisch in de export worden meegenomen."
             },
             hotkey_hint: "Kies een letter voor deze inzet. In het alarmeringsscherm kun je dan met ALT + Letter naar keuze snel een keuze maken. (In Firefox: ALT + SHIFT + Letter naar keuze, Op Mac OS: CTRL + ALT + Letter)",
@@ -6268,10 +6268,10 @@ Object.values || (Object.values = function (e) {
             description: "Nombre",
             edit: "Editar",
             export: {
-                export: "Exportar",
+                export: "Compartir",
                 import: "Importar",
                 import_done: "Las entradas seleccionadas se han importado y a\xf1adido a tu plan de alerta y respuesta.",
-                saved: "Exportar las normas de alerta y respuesta",
+                saved: "Compartir normas de alarma y respuesta",
                 saved_text: "Las normas de alerta y respuesta est\xe1n preparadas para ser exportadas. Mediante el enlace, otro jugador podr\xe1 importarlas. Mientras tanto, si cambias alguna norma, el cambio se aplicar\xe1 autom\xe1ticamente a lo exportado."
             },
             hotkey_hint: "Elije una tecla para esta selecci\xf3n de veh\xedculos. En la ventana de la misi\xf3n, pulsa ALT + tu tecla (ALT + SHIFT + tu tecla en Firefox o CTRL + ALT + tu tecla en MacOS) para seleccionarla.",
@@ -6684,10 +6684,10 @@ Object.values || (Object.values = function (e) {
             description: "Name",
             edit: "Edit",
             export: {
-                export: "Export",
+                export: "Share",
                 import: "Import",
                 import_done: "The selected entries have been imported and written to your Alarm and Response plan .",
-                saved: "Alarm and Response Regulations Exports",
+                saved: "Share Alarm and Response Regulations",
                 saved_text: "Your Alarm and Response Regulation has been prepared for export. Via the link another player can import the Alarm and Response Regulation. If you change your Alarm and Response Regualtion in the meantime, this change will automatically be applied in the export."
             },
             hotkey_hint: "Choose a hotkey for this vehicle selection. Press at your window mission: ALT + your hotkey (or at Firefox: ALT + SHIFT + your hotkey or at mac os: ctrl + alt + your hotkey) to choose your vehicle selection.",
@@ -7213,10 +7213,10 @@ Object.values || (Object.values = function (e) {
             description: "Namn",
             edit: "Redigera",
             export: {
-                export: "Exportera",
+                export: "Dela",
                 import: "Importera",
                 import_done: "De valda inl\xe4ggen har importerats och skrivits in i ditt utryckningsf\xf6rfarande.",
-                saved: "Exporterade utryckningsf\xf6rfaranden",
+                saved: "Del utryckningsf\xf6rfaranden",
                 saved_text: "Ditt utryckningsf\xf6rfarande har f\xf6rberetts f\xf6r exportering. Med l\xe4nken kan en annan spelare importera utryckningsf\xf6rfarandet. Om du \xe4ndrar utryckningsf\xf6rfarandet kommer exporten ocks\xe5 att \xe4ndras."
             },
             hotkey_hint: "V\xe4lj en snabbtangent f\xf6r det h\xe4r fordonsvalet. Tryck i uppdragsf\xf6nstret: Alt + snabbtangenten (eller i Firefox: Alt + Skift + snabbtangenten, eller i Mac OS: Cmd + Alt + snabbtangenten) f\xf6r att v\xe4lja fordon.",
@@ -7662,10 +7662,10 @@ Object.values || (Object.values = function (e) {
             description: "Nazwa",
             edit: "Edytuj",
             export: {
-                export: "Eksportuj",
+                export: "Udost\u0119pnij",
                 import: "Importuj",
                 import_done: "Wybrane wpisy zosta\u0142y zaimportowane i wprowadzone do twojej zasady reagowania.",
-                saved: "Wyeksportowane zasady reagowania",
+                saved: "Udost\u0119pnij zasady reagowania",
                 saved_text: "Zasada reagowania zosta\u0142a przygotowana do eksportu. Za pomoc\u0105 tego linku mo\u017cesz zaimportowa\u0107 zasad\u0119 reagowania. Je\u015bli w mi\u0119dzyczasie zmienisz zasad\u0119 reagowania, zostanie ona automatycznie uwzgl\u0119dniona w eksporcie."
             },
             hotkey_hint: "Wybierz skr\xf3t dla tego zestawu pojazd\xf3w. Naci\u015bnij w oknie misji: ALT + skr\xf3t (lub w przegl\u0105darce Firefox: ALT + SHIFT + skr\xf3t lub w systemie macOS: Ctrl + Alt + skr\xf3t), aby wybra\u0107 zestaw pojazd\xf3w.",
@@ -8109,10 +8109,10 @@ Object.values || (Object.values = function (e) {
             description: "Nome",
             edit: "Modifica",
             export: {
-                export: "Esporta",
+                export: "Condividi",
                 import: "Importa",
                 import_done: "Le voci selezionate sono state importate e scritte nel piano di allarme e risposta.",
-                saved: "Esportazioni regole di allarme e risposta",
+                saved: "Condividere le regole di allarme e risposta",
                 saved_text: "La regola di allarme e risposta \xe8 pronta per l'esportazione. Tramite il link un altro giocatore pu\xf2 importare la regola di allarme e risposta. Se nel frattempo modifichi una regola di allarme e risposta, tale modifica verr\xe0 automaticamente applicata nell'esportazione."
             },
             hotkey_hint: "Scegli un tasto di scelta rapida per questa selezione di veicoli. Premi durante la missione su Windows: ALT + tasto di scelta rapida (o su Firefox: ALT + SHIFT + tasto di scelta rapida oppure su Mac OS: ctrl + alt + tasto di scelta rapida) per scegliere la tua selezione di veicoli.",
@@ -8547,10 +8547,10 @@ Object.values || (Object.values = function (e) {
             description: "Nom",
             edit: "Modifier",
             export: {
-                export: "Exporter",
+                export: "Partager",
                 import: "Importer",
                 import_done: "Les entr\xe9es s\xe9lectionn\xe9es ont \xe9t\xe9 import\xe9es et incorpor\xe9es \xe0 votre R\xe9gulation d\u2019alertes et d\u2019interventions.",
-                saved: "Exportations des R\xe9gulations d\u2019alertes et d\u2019interventions",
+                saved: "Partager vos R\xe9gulations d\u2019alertes et d\u2019interventions",
                 saved_text: "Votre R\xe9gulation d\u2019alertes et d\u2019interventions est pr\xeate \xe0 l\u2019exportation. Gr\xe2ce \xe0 ce lien, un autre joueur peut importer cette R\xe9gulation d\u2019alertes et d\u2019interventions. Si d\u2019ici l\xe0 vous modifiez votre R\xe9gulation d\u2019alertes et d\u2019interventions, ce changement sera automatiquement appliqu\xe9 \xe0 l\u2019exportation."
             },
             hotkey_hint: "Choisissez un raccourci pour cette s\xe9lection de v\xe9hicules. Dans votre fen\xeatre de mission, appuyez sur\xa0: ALT + votre raccourci (ou sur Firefox\xa0: ALT + Shift + votre raccourci, ou sur Mac OS\xa0: CTRL + ALT + votre raccourci) pour choisir votre s\xe9lection de v\xe9hicules.",
@@ -8601,8 +8601,8 @@ Object.values || (Object.values = function (e) {
                 gw_wasserrettung: "VPL",
                 gwl2wasser_only: "V\xe9hicule \xe0 lance",
                 hems: "Services d\u2019urgence",
-                hlf_only: "V\xe9hicule de secours",
-                hlf_or_rw_and_lf: "V\xe9hicule de secours ou v\xe9hicule de secours lourd et v\xe9hicule d'incendie",
+                hlf_only: "FPTSR",
+                hlf_or_rw_and_lf: "FPTSR ou v\xe9hicule de secours lourd et v\xe9hicule d'incendie",
                 hose_trucks: "Camion d\xe9vidoir",
                 k9: "Brigade canine",
                 kdow_orgl: "PC DSM",
@@ -8967,10 +8967,10 @@ Object.values || (Object.values = function (e) {
             description: "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435",
             edit: "\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c",
             export: {
-                export: "\u042d\u043a\u0441\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c",
+                export: "\u041f\u043e\u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f",
                 import: "\u0418\u043c\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c",
                 import_done: "\u0412\u044b\u0431\u0440\u0430\u043d\u043d\u044b\u0435 \u0437\u0430\u043f\u0438\u0441\u0438 \u0438\u043c\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u044b \u0438 \u0434\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u044b \u0432 \u0432\u0430\u0448 \u043f\u043b\u0430\u043d \u0418\u0418\u0420.",
-                saved: "\u042d\u043a\u0441\u043f\u043e\u0440\u0442 \u043f\u0440\u0430\u0432\u0438\u043b \u0418\u0418\u0420",
+                saved: "\u041f\u043e\u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u0418\u0418\u0420",
                 saved_text: "\u041f\u0440\u0430\u0432\u0438\u043b\u043e \u0418\u0418\u0420 \u043f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u043b\u0435\u043d\u043e \u043a \u044d\u043a\u0441\u043f\u043e\u0440\u0442\u0443. \u0414\u0440\u0443\u0433\u043e\u0439 \u0438\u0433\u0440\u043e\u043a \u0441\u043c\u043e\u0436\u0435\u0442 \u0438\u043c\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043f\u0440\u0430\u0432\u0438\u043b\u043e \u0418\u0418\u0420, \u0432\u043e\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0432\u0448\u0438\u0441\u044c \u044d\u0442\u043e\u0439 \u0441\u0441\u044b\u043b\u043a\u043e\u0439. \u0415\u0441\u043b\u0438 \u0432 \u044d\u0442\u043e\u043c \u0432\u0440\u0435\u043c\u044f \u0432\u044b \u0438\u0437\u043c\u0435\u043d\u0438\u0442\u0435 \u0441\u0432\u043e\u0451 \u043f\u0440\u0430\u0432\u0438\u043b\u043e \u0418\u0418\u0420, \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f \u0431\u0443\u0434\u0443\u0442 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438 \u043f\u0440\u0438\u043c\u0435\u043d\u0435\u043d\u044b \u043a \u044d\u043a\u0441\u043f\u043e\u0440\u0442\u0438\u0440\u0443\u0435\u043c\u043e\u043c\u0443 \u043f\u0440\u0430\u0432\u0438\u043b\u0443."
             },
             hotkey_hint: "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0433\u043e\u0440\u044f\u0447\u0443\u044e \u043a\u043b\u0430\u0432\u0438\u0448\u0443 \u0434\u043b\u044f \u0432\u044b\u0434\u0435\u043b\u0435\u043d\u0438\u044f \u044d\u0442\u043e\u0439 \u043c\u0430\u0448\u0438\u043d\u044b. \u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u0432 \u043e\u043a\u043d\u0435 \u0437\u0430\u0434\u0430\u043d\u0438\u044f: ALT + \u0433\u043e\u0440\u044f\u0447\u0430\u044f \u043a\u043b\u0430\u0432\u0438\u0448\u0430 (\u0438\u043b\u0438 \u0432 Firefox: ALT + SHIFT + \u0433\u043e\u0440\u044f\u0447\u0430\u044f \u043a\u043b\u0430\u0432\u0438\u0448\u0430, \u0438\u043b\u0438 \u0432 mac os: ctrl + alt + \u0433\u043e\u0440\u044f\u0447\u0430\u044f \u043a\u043b\u0430\u0432\u0438\u0448\u0430), \u0447\u0442\u043e\u0431\u044b \u0432\u044b\u0434\u0435\u043b\u0438\u0442\u044c \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u0443\u044e \u043c\u0430\u0448\u0438\u043d\u0443.",
@@ -9377,10 +9377,10 @@ Object.values || (Object.values = function (e) {
             description: "Navn",
             edit: "Redig\xe9r",
             export: {
-                export: "Eksport\xe9r",
+                export: "Del",
                 import: "Import\xe9r",
                 import_done: "De valgte indl\xe6g er blevet importeret og skrevet p\xe5 din alarm- og beredskabsplan.",
-                saved: "Alarm- og beredskabsreguleringer \u2013 eksport",
+                saved: "Del Alarm- og beredskabsreguleringer",
                 saved_text: "Dine alarm- og beredskabsreguleringer er klar til eksport. Med linket kan en anden spiller importere alarm- og beredskabsreguleringerne. Hvis du i mellemtiden \xe6ndrer dine alarm- og beredskabsreguleringer, bliver denne \xe6ndring automatisk brugt i eksporten."
             },
             hotkey_hint: "V\xe6lg en genvejstast for dette k\xf8ret\xf8jsvalg. Tryk f\xf8lgende i dit missionsvindue: ALT + din genvejstast (eller med Firefox: ALT + SHIFT + din genvejstast eller p\xe5 Mac OS: CTRL + ALT + din genvejstast) for at v\xe6lge k\xf8ret\xf8j(er).",
@@ -9805,10 +9805,10 @@ Object.values || (Object.values = function (e) {
             description: "Navn",
             edit: "Rediger",
             export: {
-                export: "Eksporter",
+                export: "Dele",
                 import: "Importer",
                 import_done: "De valgte oppf\xf8ringene ble importer og skrevet over til Alarm og respons-planen.",
-                saved: "Eksport av Alarm og respons-reguleringer",
+                saved: "Dele Alarm og respons-reguleringer",
                 saved_text: "Alarm og respons-reguleringen er klargjort for eksport. Via koblingen kan andre spillere importere Alarm og respons-reguleringen. Hvis du i mellomtiden endrer Alarm og respons-reguleringen, reflekteres endringene i automatisk i eksporten."
             },
             hotkey_hint: "Velg en snarvei for dette fremkomstmiddelvalget. Oppgi i oppdragsvinduet: ALT + snarveien (eller i Firefox: ALT + SHIFT + snarveien, eller p\xe5 mac os: ctrl + alt + snarveien) for \xe5 velge fremkomstmiddelvalget.",
@@ -10242,10 +10242,10 @@ Object.values || (Object.values = function (e) {
             description: "N\xe1zev",
             edit: "Upravit",
             export: {
-                export: "Exportovat",
+                export: "Sd\xedlet",
                 import: "Importovat",
                 import_done: "Vybran\xe9 polo\u017eky byly importov\xe1ny a zaneseny do pl\xe1nu nouzov\xfdch v\xfdjezd\u016f.",
-                saved: "Export pravidel nouzov\xfdch v\xfdjezd\u016f",
+                saved: "Sd\xedlen\xed pravidel nouzov\xfdch v\xfdjezd\u016f",
                 saved_text: "Pravidlo nouzov\xe9ho v\xfdjezdu je p\u0159ipraven\xe9 k exportu. Ostatn\xed hr\xe1\u010di mohou pravidlo importovat pomoc\xed odkazu. Pokud mezit\xedm pravidlo zm\u011bn\xedte, zm\u011bna se automaticky prom\xedtne i do exportu."
             },
             hotkey_hint: "P\u0159i\u0159a\u010fte tomuto v\xfdb\u011bru kl\xe1vesu. V okn\u011b s mis\xed stiskn\u011bte: ALT + kl\xe1vesa (nebo ve Firefoxu: ALT + SHIFT + kl\xe1vesa, nebo na Mac OS: CTRL + ALT + kl\xe1vesa), a t\xedm prove\u010fte p\u0159ednastaven\xfd v\xfdb\u011br vozidel.",
@@ -10644,10 +10644,10 @@ Object.values || (Object.values = function (e) {
             description: "Ad",
             edit: "D\xfczenle",
             export: {
-                export: "D\u0131\u015fa aktar",
+                export: "Payla\u015f",
                 import: "\u0130\xe7e aktar",
                 import_done: "Se\xe7ili girdiler i\xe7e aktar\u0131ld\u0131 ve Alarm ve M\xfcdahale plan\u0131na kaydedildi.",
-                saved: "Alarm ve M\xfcdahale D\xfczenlemelerinin D\u0131\u015fa Aktar\u0131mlar\u0131",
+                saved: "Alarm ve M\xfcdahale D\xfczenlemelerinin Payla\u015f\u0131n",
                 saved_text: "Alarm ve M\xfcdahale D\xfczenlemesi d\u0131\u015fa aktar\u0131m i\xe7in haz\u0131rland\u0131. Bu ba\u011flant\u0131 ile ba\u015fka bir oyuncu Alarm ve M\xfcdahale D\xfczenlemesini i\xe7e aktarabilir. Bu esnada Alarm ve M\xfcdahale D\xfczenlemesini de\u011fi\u015ftirirsen bu de\u011fi\u015fiklik d\u0131\u015fa aktar\u0131mda otomatik olarak uygulanacak."
             },
             hotkey_hint: "Bu ara\xe7 se\xe7imi i\xe7in bir k\u0131sayol tu\u015fu se\xe7. Pencerendeki g\xf6reve bas: ALT + k\u0131sayol tu\u015fun (veya Firefox'ta: ALT + SHIFT + k\u0131sayol tu\u015fun veya Mac i\u015fletim sisteminde: ctrl + alt + k\u0131sayol tu\u015fun) ile ara\xe7 se\xe7imini yap.",
@@ -11034,10 +11034,10 @@ Object.values || (Object.values = function (e) {
             description: "Nome",
             edit: "Editar",
             export: {
-                export: "Exportar",
+                export: "Compartilhar",
                 import: "Importar",
                 import_done: "As entradas selecionadas foram importadas e escritas no seu plano de Alarme e Resposta.",
-                saved: "Exporta\xe7\xf5es de Regulamentos de Alarme e Resposta",
+                saved: "Compartilhar Regulamentos de Alarme e Resposta",
                 saved_text: "Seu Regulamento de Alarme e Resposta foi preparado para exporta\xe7\xe3o. Por meio do link, outro jogador pode importar o Regulamento de Alarme e Resposta. Se voc\xea alterar seu Regulamento de Alarme e Resposta neste intervalo, essa altera\xe7\xe3o ser\xe1 automaticamente aplicada \xe0 exporta\xe7\xe3o."
             },
             hotkey_hint: "Escolha uma tecla de atalho para selecionar este ve\xedculo. Carregue na janela de miss\xe3o: ALT + a sua tecla de atalho (ou no Firefox: ALT + SHIFT + a sua tecla de atalho, ou no mac os: ctrl + alt + a sua tecla de atalho) para escolher a sele\xe7\xe3o do seu ve\xedculo.",
@@ -11445,10 +11445,10 @@ Object.values || (Object.values = function (e) {
             description: "Nome",
             edit: "Editar",
             export: {
-                export: "Exportar",
+                export: "Compartilhar",
                 import: "Importar",
                 import_done: "As entradas selecionadas foram importadas e escritas no seu plano de Alarme e Resposta.",
-                saved: "Exporta\xe7\xf5es de Regulamentos de Alarme e Resposta",
+                saved: "Compartilhar Regulamentos de Alarme e Resposta",
                 saved_text: "Seu Regulamento de Alarme e Resposta foi preparado para exporta\xe7\xe3o. Por meio do link, outro jogador pode importar o Regulamento de Alarme e Resposta. Se voc\xea alterar seu Regulamento de Alarme e Resposta neste intervalo, essa altera\xe7\xe3o ser\xe1 automaticamente aplicada \xe0 exporta\xe7\xe3o."
             },
             hotkey_hint: "Escolha uma tecla de atalho para selecionar este ve\xedculo. Pressione na sua janela de miss\xe3o: ALT + sua tecla de atalho (ou no Firefox: ALT + SHIFT + sua tecla de atalho, ou no mac os: ctrl + alt + sua tecla de atalho) para escolher a sele\xe7\xe3o do seu ve\xedculo.",
@@ -11813,10 +11813,10 @@ Object.values || (Object.values = function (e) {
             description: "\u0406\u043c'\u044f",
             edit: "\u0420\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u0442\u0438",
             export: {
-                export: "\u0415\u043a\u0441\u043f\u043e\u0440\u0442",
+                export: "\u041f\u043e\u0434\u0456\u043b\u0456\u0442\u044c\u0441\u044f",
                 import: "\u0406\u043c\u043f\u043e\u0440\u0442",
                 import_done: "\u0412\u0438\u0431\u0440\u0430\u043d\u0456 \u0437\u0430\u043f\u0438\u0441\u0438 \u0456\u043c\u043f\u043e\u0440\u0442\u043e\u0432\u0430\u043d\u043e \u0456 \u0437\u0430\u043d\u0435\u0441\u0435\u043d\u043e \u0443 \u0432\u0430\u0448 \u043f\u043b\u0430\u043d \u041f\u0406\u0420.",
-                saved: "\u0415\u043a\u0441\u043f\u043e\u0440\u0442 \u043f\u0440\u0430\u0432\u0438\u043b \u041f\u0406\u0420",
+                saved: "\u041f\u043e\u0434\u0456\u043b\u0456\u0442\u044c\u0441\u044f \u043f\u0440\u0430\u0432\u0438\u043b \u041f\u0406\u0420",
                 saved_text: "\u0412\u0430\u0448\u0435 \u043f\u0440\u0430\u0432\u0438\u043b\u043e \u041f\u0406\u0420 \u043f\u0456\u0434\u0433\u043e\u0442\u043e\u0432\u043b\u0435\u043d\u0435 \u0434\u043e \u0435\u043a\u0441\u043f\u043e\u0440\u0442\u0443. \u0417\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f, \u0456\u043d\u0448\u0438\u0439 \u0433\u0440\u0430\u0432\u0435\u0446\u044c \u0437\u043c\u043e\u0436\u0435 \u0435\u043a\u0441\u043f\u043e\u0440\u0442\u0443\u0432\u0430\u0442\u0438 \u043f\u0440\u0430\u0432\u0438\u043b\u043e \u041f\u0406\u0420. \u042f\u043a\u0449\u043e \u043f\u0440\u043e\u0442\u044f\u0433\u043e\u043c \u0446\u044c\u043e\u0433\u043e \u0447\u0430\u0441\u0443 \u0432\u0438 \u0437\u043c\u0456\u043d\u0438\u0442\u0435 \u0441\u0432\u043e\u0454 \u043f\u0440\u0430\u0432\u0438\u043b\u043e \u041f\u0406\u0420, \u0437\u043c\u0456\u043d\u0443 \u0431\u0443\u0434\u0435 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e \u0437\u0430\u0441\u0442\u043e\u0441\u043e\u0432\u0430\u043d\u043e \u0434\u043e \u043f\u0440\u0430\u0432\u0438\u043b\u0430, \u0449\u043e \u0435\u043a\u0441\u043f\u043e\u0440\u0442\u0443\u0454\u0442\u044c\u0441\u044f."
             },
             hotkey_hint: "\u0412\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u0433\u0430\u0440\u044f\u0447\u0443 \u043a\u043b\u0430\u0432\u0456\u0448\u0443 \u0434\u043b\u044f \u0432\u0438\u0431\u0440\u0430\u043d\u043e\u0457 \u043c\u0430\u0448\u0438\u043d\u0438. \u041d\u0430\u0442\u0438\u0441\u043d\u0456\u0442\u044c \u0443 \u0432\u0456\u043a\u043d\u0456 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f: ALT + \u0432\u0430\u0448\u0430 \u0433\u0430\u0440\u044f\u0447\u0430 \u043a\u043b\u0430\u0432\u0456\u0448\u0430 (\u0430\u0431\u043e \u0443 Firefox: ALT + SHIFT + \u0432\u0430\u0448\u0430 \u0433\u0430\u0440\u044f\u0447\u0430 \u043a\u043b\u0430\u0432\u0456\u0448\u0430 \u0430\u0431\u043e \u0443 mac os: ctrl + alt + \u0432\u0430\u0448\u0430 \u0433\u0430\u0440\u044f\u0447\u0430 \u043a\u043b\u0430\u0432\u0456\u0448\u0430), \u0449\u043e\u0431 \u0432\u0438\u0434\u0456\u043b\u0438\u0442\u0438 \u0432\u0438\u0431\u0440\u0430\u043d\u0443 \u043c\u0430\u0448\u0438\u043d\u0443.",
@@ -12179,10 +12179,10 @@ Object.values || (Object.values = function (e) {
             description: "Nombre",
             edit: "Editar",
             export: {
-                export: "Exportar",
+                export: "Compartir",
                 import: "Importar",
                 import_done: "Las entradas seleccionadas se han importado y a\xf1adido a tu plan de alerta y respuesta.",
-                saved: "Exportar las normas de alerta y respuesta",
+                saved: "Compartir normas de alarma y respuesta",
                 saved_text: "Las normas de alerta y respuesta est\xe1n preparadas para ser exportadas. Mediante el enlace, otro jugador podr\xe1 importarlas. Mientras tanto, si cambias alguna norma, el cambio se aplicar\xe1 autom\xe1ticamente a lo exportado."
             },
             hotkey_hint: "Elije una tecla para esta selecci\xf3n de veh\xedculos. En la ventana de la misi\xf3n, pulsa ALT + tu tecla (ALT + SHIFT + tu tecla en Firefox o CTRL + ALT + tu tecla en MacOS) para seleccionarla.",
@@ -12573,10 +12573,10 @@ Object.values || (Object.values = function (e) {
             description: "\u540d\u524d",
             edit: "\u7de8\u96c6",
             export: {
-                export: "\u30a8\u30af\u30b9\u30dd\u30fc\u30c8",
+                export: "\u5171\u6709",
                 import: "\u30a4\u30f3\u30dd\u30fc\u30c8",
                 import_done: "\u9078\u629e\u3057\u305f\u5185\u5bb9\u306f\u30a4\u30f3\u30dd\u30fc\u30c8\u3055\u308c\u3001\u8b66\u5831\u3068\u5fdc\u7b54\u30d7\u30e9\u30f3\u306b\u66f8\u304b\u308c\u307e\u3057\u305f\u3002",
-                saved: "\u8b66\u5831\u3068\u5fdc\u7b54\u7ba1\u7406\u3092\u30a8\u30af\u30b9\u30dd\u30fc\u30c8",
+                saved: "\u8b66\u5831\u304a\u3088\u3073\u5bfe\u5fdc\u898f\u5247\u306e\u5171\u6709",
                 saved_text: "\u8b66\u5831\u3068\u5fdc\u7b54\u7ba1\u7406\u306e\u30a8\u30af\u30b9\u30dd\u30fc\u30c8\u6e96\u5099\u304c\u3067\u304d\u307e\u3057\u305f\u3002\u4ed6\u306e\u30d7\u30ec\u30a4\u30e4\u30fc\u306f\u30ea\u30f3\u30af\u3092\u8fbf\u3063\u3066\u8b66\u5831\u3068\u5fdc\u7b54\u7ba1\u7406\u304c\u30a4\u30f3\u30dd\u30fc\u30c8\u3067\u304d\u307e\u3059\u3002\u305d\u306e\u9593\u8b66\u5831\u3068\u5fdc\u7b54\u7ba1\u7406\u3092\u5909\u66f4\u3057\u305f\u5834\u5408\u3001\u3053\u306e\u5909\u66f4\u306f\u30a8\u30af\u30b9\u30dd\u30fc\u30c8\u5185\u306b\u81ea\u52d5\u7684\u306b\u9069\u7528\u3055\u308c\u307e\u3059\u3002"
             },
             hotkey_hint: "\u8eca\u4e21\u30bb\u30af\u30b7\u30e7\u30f3\u306e\u30db\u30c3\u30c8\u30ad\u30fc\u3092\u9078\u629e\u3057\u3066\u304f\u3060\u3055\u3044\u3002\u30df\u30c3\u30b7\u30e7\u30f3\u753b\u9762\u306e\u30dc\u30bf\u30f3\u3092\u62bc\u3057\u3066\u304f\u3060\u3055\u3044\uff1aALT + \u5272\u308a\u5f53\u3066\u305f\u30db\u30c3\u30c8\u30ad\u30fc \uff08Firefox\u306e\u5834\u5408\uff1aALT + SHIFT + \u5272\u308a\u5f53\u3066\u305f\u30db\u30c3\u30c8\u30ad\u30fc\u3001mac os\u306e\u5834\u5408\uff1actrl + alt + \u5272\u308a\u5f53\u3066\u305f\u30db\u30c3\u30c8\u30ad\u30fc\uff09\u3067\u8eca\u4e21\u30bb\u30af\u30b7\u30e7\u30f3\u3092\u9078\u629e\u3057\u307e\u3059\u3002",
@@ -12981,10 +12981,10 @@ Object.values || (Object.values = function (e) {
             description: "\uc774\ub984",
             edit: "\ud3b8\uc9d1",
             export: {
-                export: "\ub0b4\ubcf4\ub0b4\uae30",
+                export: "\uacf5\uc720",
                 import: "\uac00\uc838\uc624\uae30",
                 import_done: "\uc120\ud0dd\ud55c \ud56d\ubaa9\uc744 \uac00\uc838\uc640 \uacbd\ubcf4 \ubc0f \ub300\uc751 \uacc4\ud68d\uc5d0 \uae30\ub85d\ud588\uc2b5\ub2c8\ub2e4.",
-                saved: "\uacbd\ubcf4 \ubc0f \ub300\uc751 \uaddc\uc815 \ub0b4\ubcf4\ub0b4\uae30",
+                saved: "\uc54c\ub78c \ubc0f \ub300\uc751 \uaddc\uc815 \uacf5\uc720",
                 saved_text: "\uacbd\ubcf4 \ubc0f \ub300\uc751 \uaddc\uc815\uc744 \ub0b4\ubcf4\ub0bc \uc900\ube44\ub97c \ub9c8\ucce4\uc2b5\ub2c8\ub2e4. \ub9c1\ud06c\ub97c \ud1b5\ud574 \ub2e4\ub978 \ud50c\ub808\uc774\uc5b4\uac00 \uc81c\uc791\ud55c \uacbd\ubcf4 \ubc0f \ub300\uc751 \uaddc\uc815\uc744 \uac00\uc838\uc62c \uc218 \uc788\uc2b5\ub2c8\ub2e4. \uc774 \uae30\uac04 \ub3d9\uc548 \uacbd\ubcf4 \ubc0f \ub300\uc751 \uaddc\uc815\uc744 \ubcc0\uacbd\ud560 \uacbd\uc6b0 \ubcc0\uacbd\ub41c \ub0b4\uc6a9\uc774 \ub0b4\ubcf4\ub0b4\ub294 \ud56d\ubaa9\uc5d0 \uc790\ub3d9\uc73c\ub85c \uc801\uc6a9\ub429\ub2c8\ub2e4."
             },
             hotkey_hint: "\uc774 \ucc28\ub7c9\uc744 \uc120\ud0dd\ud560 \ub2e8\ucd95\ud0a4\ub97c \uc9c0\uc815\ud558\uc138\uc694. \uc784\ubb34 \ucc3d\uc5d0\uc11c: ALT + \ub2e8\ucd95\ud0a4(Firefox\uc758 \uacbd\uc6b0: ALT + SHIFT + \ub2e8\ucd95\ud0a4, Mac os\uc758 \uacbd\uc6b0: ctrl + alt + \ub2e8\ucd95\ud0a4)\ub97c \ub20c\ub7ec \uc120\ud0dd\ud55c \ucc28\ub7c9\uc744 \uc9c0\uc815\ud558\uc138\uc694.",
@@ -13371,10 +13371,10 @@ Object.values || (Object.values = function (e) {
             description: "Nume",
             edit: "Editeaz\u0103",
             export: {
-                export: "Export\u0103",
+                export: "Partajeaz\u0103",
                 import: "Import\u0103",
                 import_done: "Intr\u0103rile selectate au fost importate \u0219i integrate \xeen planul t\u0103u de Alarm\u0103 \u0219i R\u0103spuns.",
-                saved: "Export\u0103ri ale Regulamentului de Alarm\u0103 \u0219i R\u0103spuns",
+                saved: "Partajeaz\u0103 Regulamentul de Alarm\u0103 \u0219i R\u0103spuns",
                 saved_text: "Regulamentul t\u0103u de Alarm\u0103 \u0219i R\u0103spuns a fost preg\u0103tit pentru exportare. Un alt juc\u0103tor poate importa Regulamentul de Alarm\u0103 \u0219i R\u0103spuns prin intermediul linkului. Dac\u0103, \xeentre timp, modifici Regulamentul de Alarm\u0103 \u0219i R\u0103spuns, aceast\u0103 modificare se va aplica automat la exportare."
             },
             hotkey_hint: "Alege o tast\u0103 rapid\u0103 pentru selectarea acestui vehicul. Apas\u0103 \xeen fereastra misiunii: ALT + tasta ta rapid\u0103 (sau \xeen Firefox: ALT + SHIFT + tasta ta rapid\u0103; sau pe mac os: ctrl + alt + tasta ta rapid\u0103) pentru selectarea vehiculului.",
@@ -13772,10 +13772,10 @@ Object.values || (Object.values = function (e) {
             description: "Nimi",
             edit: "Muokkaa",
             export: {
-                export: "Vie",
+                export: "Jaa",
                 import: "Tuo",
                 import_done: "Valitut merkinn\xe4t on tuotu ja kirjoitettu h\xe4lytysj\xe4rjestelyyn.",
-                saved: "H\xe4lytysj\xe4rjestely viety",
+                saved: "Jaa H\xe4lytysj\xe4rjestely",
                 saved_text: "H\xe4lytysj\xe4rjestely on valmis vienti\xe4 varten. Toinen pelaaja voi tuoda h\xe4lytysj\xe4rjestelyn linkin kautta. Jos muutat h\xe4lytysj\xe4rjestely\xe4 t\xe4ll\xe4 v\xe4lin, muutos vaikuttaa my\xf6s vientiin."
             },
             hotkey_hint: "Valitse pikan\xe4pp\xe4in t\xe4m\xe4n ajoneuvon valintaa varten. Valitse ajoneuvo painamalla teht\xe4v\xe4ikkunassa: ALT + pikan\xe4pp\xe4in (Firefox: ALT + VAIHTO + pikan\xe4pp\xe4in; mac os: ctrl + alt + pikan\xe4pp\xe4in).",
@@ -14180,10 +14180,10 @@ Object.values || (Object.values = function (e) {
             description: "N\xe1zov",
             edit: "Upravi\u0165",
             export: {
-                export: "Exportova\u0165",
+                export: "Zdie\u013ea\u0165",
                 import: "Importova\u0165",
                 import_done: "Vybran\xe9 polo\u017eky boli importovan\xe9 a zap\xedsan\xe9 do pl\xe1nu alarmov a reakci\xed.",
-                saved: "Riadenie alarmov a reakci\xed sa exportuje",
+                saved: "Zdie\u013eanie alarmov a reakci\xed sa exportuje",
                 saved_text: "Va\u0161e riadenie alarmov a reakci\xed bolo pripraven\xe9 na export. Cez odkaz m\xf4\u017ee in\xfd hr\xe1\u010d importova\u0165 riadenie alarmov a reakci\xed. Ak medzit\xfdm zmen\xedte svoje riadenia alarmov a reakci\xed, aplikuje sa t\xe1to zmena automaticky v exporte."
             },
             hotkey_hint: "Vyberte kl\xe1vesov\xfa skratku na tento v\xfdber vozidla. Stla\u010dte pri okne svojej misie: ALT + v\xe1\u0161 kl\xe1ves (alebo vo Firefox: ALT + SHIFT + v\xe1\u0161 kl\xe1ves alebo v OS Mac: ctrl + alt + v\xe1\u0161 kl\xe1ves) a zvo\u013ete svoj v\xfdber vozidla.",
