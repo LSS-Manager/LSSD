@@ -8481,6 +8481,7 @@ Object.values || (Object.values = function (e) {
                 riot_police: "Compagnie de CRS",
                 riot_police_missions: "Maintien de l'Ordre",
                 staging_area_missions: "Centre de Regroupement des Moyens",
+                swat_airport: "GIH",
                 technical_aid: "U.I.I.S.C.",
                 technical_aid_missions: "U.I.I.S.C.",
                 technical_aid_organization: "Protection civile",
