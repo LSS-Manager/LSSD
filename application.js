@@ -4778,7 +4778,7 @@ Object.values || (Object.values = function (e) {
                 nef_only: "Ambulance",
                 oil_unit: "GW-\xd6l",
                 police_boat: "Police Boat",
-                police_car: "Patrol car",
+                police_car: "Any Patrol Unit",
                 police_car_3: "NH-O",
                 police_car_or_service_group_leader: "Patrol Car or Service Group Leader",
                 police_horse: "Mounted Police",
