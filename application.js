@@ -3995,6 +3995,7 @@ Object.values || (Object.values = function (e) {
             days: "Tage",
             few_seconds: "In wenigen Sekunden",
             finish_in: "Ende in:",
+            foam_process: "Schaum ben\xf6tigt",
             helpshift: {
                 confirm_close_bubble: "M\xf6chtest du den Support-Chat wirklich schlie\xdfen? Du kannst ihn jeder Zeit im Hilfe-Men\xfc wieder \xf6ffnen."
             },
@@ -4013,6 +4014,7 @@ Object.values || (Object.values = function (e) {
             pump_speed_approaching: "Anfahrt: %{amount} l/min",
             pump_speed_missing: "Fehlen: %{amount} l/min",
             pump_speed_on_site: "Einsatzstelle: %{amount} l/min",
+            pump_speed_process: "Wasserschaden Pumpe Prozess",
             pump_speed_selected: "Ausgew\xe4hlt: %{amount} l/min",
             reload: "Neuladen",
             sale: "Sale",
@@ -4039,6 +4041,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "Anfahrt: %{amount} l.",
             water_missing: "Fehlen: %{amount} l.",
             water_on_site: "Einsatzstelle: %{amount} l.",
+            water_process: "Ben\xf6tigtes Wasser",
             water_pumping_process: "Wasser-Abpump-Prozess",
             water_selected: "Ausgew\xe4hlt: %{amount} l."
         },
@@ -4476,6 +4479,7 @@ Object.values || (Object.values = function (e) {
             foam_approaching: "Approaching: %{amount} gal.",
             foam_missing: "Missing: %{amount} gal.",
             foam_on_site: "On scene: %{amount} gal.",
+            foam_process: "Foam Needed",
             foam_selected: "Selected: %{amount} gal.",
             helpshift: {
                 confirm_close_bubble: "Do you really want to dismiss support chat? You can always reopen it from the help-menu"
@@ -4495,6 +4499,7 @@ Object.values || (Object.values = function (e) {
             pump_speed_approaching: "Approaching: %{amount} GPM",
             pump_speed_missing: "Missing: %{amount} GPM",
             pump_speed_on_site: "On scene: %{amount} GPM",
+            pump_speed_process: "Water Damage Pump Process",
             pump_speed_selected: "Selected: %{amount} GPM",
             reload: "Reload",
             sale: "Sale",
@@ -4522,6 +4527,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "Approaching: %{amount} gal.",
             water_missing: "Missing: %{amount} gal.",
             water_on_site: "On scene: %{amount} gal.",
+            water_process: "Water needed",
             water_pumping_process: "Water pumping process",
             water_selected: "Selected: %{amount} gal."
         },
@@ -5133,6 +5139,7 @@ Object.values || (Object.values = function (e) {
             days: "days",
             few_seconds: "in few seconds",
             finish_in: "Finish in:",
+            foam_process: "Foam Needed",
             helpshift: {
                 confirm_close_bubble: "Do you really want to dismiss support chat? You can always reopen it from the help-menu"
             },
@@ -5151,6 +5158,7 @@ Object.values || (Object.values = function (e) {
             pump_speed_approaching: "Approaching: %{amount} l/min",
             pump_speed_missing: "Missing: %{amount} l/min",
             pump_speed_on_site: "On scene: %{amount} l/min",
+            pump_speed_process: "Water Damage Pump Process",
             pump_speed_selected: "Selected: %{amount} l/min",
             reload: "Reload",
             sale: "Sale",
@@ -5174,6 +5182,7 @@ Object.values || (Object.values = function (e) {
                 change_payload: "Change Payload"
             },
             vehicles_not_visible: "Vehicles not visible. ",
+            water_process: "Water needed",
             water_pumping_process: "Water pumping process"
         },
         map: {
@@ -5664,6 +5673,7 @@ Object.values || (Object.values = function (e) {
             foam_approaching: "Aanrijdend: %{amount} L.",
             foam_missing: "Nog nodig: %{amount} L.",
             foam_on_site: "Ter plaatsen: %{amount} L.",
+            foam_process: "Schuim benodigd",
             foam_selected: "Geselecteerd: %{amount} L.",
             helpshift: {
                 confirm_close_bubble: "Weet je zeker dat je de supportchat wilt sluiten? Je kunt het altijd opnieuw openen vanuit het helpmenu"
@@ -5683,6 +5693,7 @@ Object.values || (Object.values = function (e) {
             pump_speed_approaching: "Aanrijdend: %{amount} l/min",
             pump_speed_missing: "Nog nodig: %{amount} l/min",
             pump_speed_on_site: "Ter plaatse: %{amount} l/min",
+            pump_speed_process: "Waterschade pomp proces",
             pump_speed_selected: "Geselecteerd: %{amount} l/min",
             reload: "Refresh",
             sale: "Sale",
@@ -5705,6 +5716,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "Aanrijdend: %{amount} L.",
             water_missing: "Nog nodig: %{amount} L.",
             water_on_site: "Ter plaatse: %{amount} L.",
+            water_process: "Water benodigd",
             water_pumping_process: "Water pomp process",
             water_selected: "Geselecteerd: %{amount} L."
         },
@@ -6102,6 +6114,7 @@ Object.values || (Object.values = function (e) {
             foam_approaching: "Aproxim\xe1ndose: %{amount} l",
             foam_missing: "Falta: %{amount} l",
             foam_on_site: "Presente: %{amount} l",
+            foam_process: "Se necesita espuma",
             foam_selected: "Seleccionada: %{amount} l",
             helpshift: {
                 confirm_close_bubble: "\xbfDe verdad quieres cerrar el chat de ayuda? Siempre puedes reabrirlo desde el men\xfa de ayuda"
@@ -6121,6 +6134,7 @@ Object.values || (Object.values = function (e) {
             pump_speed_approaching: "Aproximaci\xf3n: %{amount} l/min",
             pump_speed_missing: "Falta: %{amount} l/min",
             pump_speed_on_site: "En escena: %{amount} l/min",
+            pump_speed_process: "Proceso de bombeo de da\xf1os causados por el agua",
             pump_speed_selected: "Seleccionado: %{amount} l/min",
             reload: "Recargar",
             sale: "Rebajas",
@@ -6143,6 +6157,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "Aproxim\xe1ndose: %{amount} l",
             water_missing: "Falta: %{amount} l",
             water_on_site: "Presente: %{amount} l",
+            water_process: "Agua necesaria",
             water_pumping_process: "Proceso de bombeo de agua",
             water_selected: "Seleccionado: %{amount} l"
         },
@@ -6518,6 +6533,7 @@ Object.values || (Object.values = function (e) {
             foam_approaching: "Approaching: %{amount} l.",
             foam_missing: "Missing: %{amount} l.",
             foam_on_site: "On scene: %{amount} l.",
+            foam_process: "Foam Needed",
             foam_selected: "Selected: %{amount} l.",
             helpshift: {
                 confirm_close_bubble: "Do you really want to dismiss support chat? You can always reopen it from the help-menu"
@@ -6537,6 +6553,7 @@ Object.values || (Object.values = function (e) {
             pump_speed_approaching: "Approaching: %{amount} l/min",
             pump_speed_missing: "Missing: %{amount} l/min",
             pump_speed_on_site: "On scene: %{amount} l/min",
+            pump_speed_process: "Water Damage Pump Process",
             pump_speed_selected: "Selected: %{amount} l/min",
             reload: "Reload",
             sale: "Sale",
@@ -6559,6 +6576,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "On route: %{amount} l.",
             water_missing: "Missing: %{amount} l.",
             water_on_site: "On scene: %{amount} l.",
+            water_process: "Water needed",
             water_pumping_process: "Water pumping process",
             water_selected: "Selected: %{amount} l."
         },
@@ -7048,6 +7066,7 @@ Object.values || (Object.values = function (e) {
             foam_approaching: "P\xe5 v\xe4g: %{amount} l.",
             foam_missing: "Saknas: %{amount} l.",
             foam_on_site: "P\xe5 plats: %{amount} l.",
+            foam_process: "Skum beh\xf6vs",
             foam_selected: "Valt: %{amount} l.",
             helpshift: {
                 confirm_close_bubble: "Vill du verkligen st\xe4nga av supportchatten? Du kan alltid \xf6ppna den igen fr\xe5n hj\xe4lp-menyn"
@@ -7067,6 +7086,7 @@ Object.values || (Object.values = function (e) {
             pump_speed_approaching: "Cirka: %{amount} l/min",
             pump_speed_missing: "Saknas: %{amount} l/min",
             pump_speed_on_site: "Ingen lokal: %{amount} l/min",
+            pump_speed_process: "Vattenskada Pump Process",
             pump_speed_selected: "Vald: %{amount} l/min",
             reload: "Ladda om",
             sale: "Sale",
@@ -7089,6 +7109,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "P\xe5 v\xe4g: %{amount} l.",
             water_missing: "Saknas: %{amount} liter",
             water_on_site: "P\xe5 plats: %{amount} l.",
+            water_process: "Vatten beh\xf6vs",
             water_pumping_process: "Process f\xf6r pumpning av vatten",
             water_selected: "Valt: %{amount} l."
         },
@@ -7488,6 +7509,7 @@ Object.values || (Object.values = function (e) {
             foam_approaching: "W drodze: %{amount} l.",
             foam_missing: "Potrzeba: %{amount} l.",
             foam_on_site: "Na miejscu: %{amount} l.",
+            foam_process: "Potrzebna pianka",
             foam_selected: "Wybrano: %{amount} l.",
             helpshift: {
                 confirm_close_bubble: "Czy na pewno chcesz opu\u015bci\u0107 czat pomocy technicznej? Zawsze mo\u017cesz go ponownie otworzy\u0107 z menu pomocy"
@@ -7507,6 +7529,7 @@ Object.values || (Object.values = function (e) {
             pump_speed_approaching: "W drodze: %{amount} l/min",
             pump_speed_missing: "Potrzebne: %{amount} l/min",
             pump_speed_on_site: "Na miejscu: %{amount} l/min",
+            pump_speed_process: "Proces pompowania uszkodze\u0144 spowodowanych przez wod\u0119",
             pump_speed_selected: "Wybrano: : %{amount} l/min",
             reload: "Od\u015bwie\u017c",
             sale: "Wyprzeda\u017c",
@@ -7535,6 +7558,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "W drodze: %{amount} l.",
             water_missing: "Potrzebna: %{amount} l.",
             water_on_site: "Na miejscu: %{amount} l.",
+            water_process: "Potrzebna woda",
             water_pumping_process: "Proces odpompowywania wody",
             water_selected: "Wybrany: %{amount} l."
         },
@@ -7940,6 +7964,7 @@ Object.values || (Object.values = function (e) {
             foam_approaching: "In Arrivo: %{amount} l.",
             foam_missing: "Mancante: %{amount} l.",
             foam_on_site: "Sul Posto: %{amount} l.",
+            foam_process: "Schiuma necessaria",
             foam_selected: "Selezionata: %{amount} l.",
             helpshift: {
                 confirm_close_bubble: "Volete davvero chiudere la chat di supporto? \xc8 sempre possibile riaprirla dal menu di aiuto."
@@ -7959,6 +7984,7 @@ Object.values || (Object.values = function (e) {
             pump_speed_approaching: "In Arrivo: %{amount} l/min",
             pump_speed_missing: "Mancanti: %{amount} l/min",
             pump_speed_on_site: "Sul Posto: %{amount} l/min",
+            pump_speed_process: "Processo di pompaggio per danni da acqua",
             pump_speed_selected: "Selezionati: %{amount} l/min",
             reload: "Ricarica",
             sale: "Sale",
@@ -7981,6 +8007,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "In Arrivo: %{amount} l.",
             water_missing: "Mancanti: %{amount} l.",
             water_on_site: "Sul Posto: %{amount} l.",
+            water_process: "Acqua necessaria",
             water_pumping_process: "Operazione di Pompaggio dell'Acqua",
             water_selected: "Selezionati: %{amount} l."
         },
@@ -8380,6 +8407,7 @@ Object.values || (Object.values = function (e) {
             days: "jours",
             few_seconds: "dans quelques secondes",
             finish_in: "Terminer dans\xa0:",
+            foam_process: "Mousse n\xe9cessaire",
             helpshift: {
                 confirm_close_bubble: "Voulez-vous vraiment fermer le chat d'assistance ? Vous pouvez toujours le rouvrir \xe0 partir du menu d'aide."
             },
@@ -8398,6 +8426,7 @@ Object.values || (Object.values = function (e) {
             pump_speed_approaching: "En approche : %{amount} l/min",
             pump_speed_missing: "Manquant : %{amount} l/min",
             pump_speed_on_site: "Sur place : %{amount} l/min",
+            pump_speed_process: "Processus de pompage en cas de d\xe9g\xe2ts des eaux",
             pump_speed_selected: "S\xe9lectionn\xe9 : %{amount} l/min",
             reload: "Recharger",
             sale: "Soldes",
@@ -8420,6 +8449,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "En approche : %{amount} l",
             water_missing: "Manquante : %{amount} l",
             water_on_site: "Sur les lieux : %{amount} l",
+            water_process: "Eau n\xe9cessaire",
             water_pumping_process: "Processus de pompage de l'eau",
             water_selected: "S\xe9lectionn\xe9e : %{amount} l"
         },
@@ -8815,6 +8845,7 @@ Object.values || (Object.values = function (e) {
             foam_approaching: "\u041d\u0430 \u043f\u043e\u0434\u0445\u043e\u0434\u0435: %{amount} \u043b",
             foam_missing: "\u041d\u0435 \u0445\u0432\u0430\u0442\u0430\u0435\u0442: %{amount} \u043b",
             foam_on_site: "\u041d\u0430 \u043c\u0435\u0441\u0442\u0435: %{amount} \u043b",
+            foam_process: "\u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u0430 \u043f\u0435\u043d\u0430",
             foam_selected: "\u0412\u044b\u0431\u0440\u0430\u043d\u043e: %{amount} \u043b",
             helpshift: {
                 confirm_close_bubble: "\u0412\u044b \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u0437\u0430\u043a\u0440\u044b\u0442\u044c \u0447\u0430\u0442 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0438? \u0412\u044b \u0432\u0441\u0435\u0433\u0434\u0430 \u043c\u043e\u0436\u0435\u0442\u0435 \u0441\u043d\u043e\u0432\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u044c \u0435\u0433\u043e \u0438\u0437 \u043c\u0435\u043d\u044e \u043f\u043e\u043c\u043e\u0449\u0438"
@@ -8831,6 +8862,7 @@ Object.values || (Object.values = function (e) {
             patient: "\u041f\u0430\u0446\u0438\u0435\u043d\u0442",
             patient_untouched: "\u041d\u0435 \u043f\u043e\u043b\u0443\u0447\u0438\u0432\u0448\u0438\u0435 \u043f\u043e\u043c\u043e\u0449\u0438 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u044b",
             poi_delete: "\u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b, \u0447\u0442\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043b\u0438\u0442\u044c \u044d\u0442\u0443 \u0432\u0430\u0436\u043d\u0443\u044e \u0442\u043e\u0447\u043a\u0443: %{caption}?",
+            pump_speed_process: "\u041f\u0440\u043e\u0446\u0435\u0441\u0441 \u043e\u0442\u043a\u0430\u0447\u043a\u0438 \u043f\u043e\u0432\u0440\u0435\u0436\u0434\u0435\u043d\u0438\u0439 \u043e\u0442 \u0432\u043e\u0434\u044b",
             reload: "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u043f\u043e\u0432\u0442\u043e\u0440\u043d\u043e",
             sale: "\u0420\u0430\u0441\u043f\u0440\u043e\u0434\u0430\u0436\u0430",
             sale_ended: "\u0410\u043a\u0446\u0438\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0430",
@@ -8854,6 +8886,8 @@ Object.values || (Object.values = function (e) {
             water_approaching: "\u041d\u0430 \u043f\u043e\u0434\u0445\u043e\u0434\u0435: %{amount} \u043b",
             water_missing: "\u041d\u0435 \u0445\u0432\u0430\u0442\u0430\u0435\u0442: %{amount} \u043b",
             water_on_site: "\u041d\u0430 \u043c\u0435\u0441\u0442\u0435: %{amount} \u043b",
+            water_process: "\u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u0430\u044f \u0432\u043e\u0434\u0430",
+            water_pumping_process: "\u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u0430\u044f \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u044c \u043d\u0430\u0441\u043e\u0441\u0430",
             water_selected: "\u0412\u044b\u0431\u0440\u0430\u043d\u043e: %{amount} \u043b"
         },
         map: {
@@ -9213,6 +9247,7 @@ Object.values || (Object.values = function (e) {
             foam_approaching: "P\xe5 Vej: %{amount} l.",
             foam_missing: "Mangler: %{amount} l.",
             foam_on_site: "P\xe5 Stedet: %{amount} l.",
+            foam_process: "Brug for skum",
             foam_selected: "Valgte: %{amount} l.",
             helpshift: {
                 confirm_close_bubble: "Vil du virkelig lukke supportchat? Du kan altid gen\xe5bne den fra hj\xe6lpemenuen"
@@ -9232,6 +9267,7 @@ Object.values || (Object.values = function (e) {
             pump_speed_approaching: "P\xe5 vej: %{amount} l/min",
             pump_speed_missing: "Mangler: %{amount} l/min",
             pump_speed_on_site: "P\xe5 stedet: %{amount} l/min",
+            pump_speed_process: "Proces for vandskadet pumpe",
             pump_speed_selected: "Valgt: %{amount} l/min",
             reload: "Genindl\xe6s",
             sale: "Sale",
@@ -9254,6 +9290,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "P\xe5 Vej: %{amount} l.",
             water_missing: "Mangler: %{amount} l.",
             water_on_site: "P\xe5 Stedet: %{amount} l.",
+            water_process: "Behov for vand",
             water_pumping_process: "Vand pumpnings process",
             water_selected: "Valgte: %{amount} l."
         },
@@ -9640,6 +9677,7 @@ Object.values || (Object.values = function (e) {
             foam_approaching: "P\xe5 vei: %{amount} l.",
             foam_missing: "Mangler: %{amount} l.",
             foam_on_site: "Fremme: %{amount} l.",
+            foam_process: "Behov for skum",
             foam_selected: "Valgt: %{amount} l.",
             helpshift: {
                 confirm_close_bubble: "Vil du virkelig avslutte supportchatten? Du kan alltid \xe5pne den igjen fra hjelpemenyen."
@@ -9659,6 +9697,7 @@ Object.values || (Object.values = function (e) {
             pump_speed_approaching: "N\xe6rmer seg: %{amount} l/min",
             pump_speed_missing: "Mangler: %{amount} l/min",
             pump_speed_on_site: "P\xe5 stedet: %{amount} l/min",
+            pump_speed_process: "Prosess for vannskadepumpe",
             pump_speed_selected: "Valgt: %{amount} l/min",
             reload: "Last inn p\xe5 nytt",
             sale: "Salg",
@@ -9681,6 +9720,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "N\xe6rmer seg: %{amount} l",
             water_missing: "Mangler: %{amount} l",
             water_on_site: "P\xe5 stedet: %{amount} l",
+            water_process: "Behov for vann",
             water_pumping_process: "Vannpumpeprosess",
             water_selected: "Valgt: %{amount} l"
         },
@@ -10076,6 +10116,7 @@ Object.values || (Object.values = function (e) {
             foam_approaching: "Na m\xedst\u011b: %{amount} l",
             foam_missing: "Chyb\xed: %{amount} l",
             foam_on_site: "Zvoleno: %{amount} l",
+            foam_process: "Pot\u0159ebn\xe1 p\u011bna",
             foam_selected: "Zvoleno: %{amount} l",
             helpshift: {
                 confirm_close_bubble: "Opravdu chcete zru\u0161it chat s podporou? V\u017edy jej m\u016f\u017eete znovu otev\u0159\xedt v menu n\xe1pov\u011bdy."
@@ -10095,6 +10136,7 @@ Object.values || (Object.values = function (e) {
             pump_speed_approaching: "P\u0159ibl\xed\u017een\xed: %{amount} l",
             pump_speed_missing: "Chyb\xed: %{amount} l",
             pump_speed_on_site: "Na m\xedst\u011b: %{amount} l",
+            pump_speed_process: "Proces \u010derp\xe1n\xed p\u0159i po\u0161kozen\xed vodou",
             pump_speed_selected: "Zvoleno: %{amount} l",
             reload: "Obnovit",
             sale: "Prodej",
@@ -10119,6 +10161,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "Na m\xedst\u011b: %{amount} l",
             water_missing: "Chyb\xed: %{amount} l",
             water_on_site: "Na m\xedst\u011b: %{amount} l",
+            water_process: "Pot\u0159eba vody",
             water_pumping_process: "Proces \u010derp\xe1n\xed vody",
             water_selected: "Zvoleno: %{amount} l"
         },
@@ -10500,6 +10543,7 @@ Object.values || (Object.values = function (e) {
             days: "g\xfcn",
             few_seconds: "birka\xe7 saniyede",
             finish_in: "Bitir:",
+            foam_process: "K\xf6p\xfck \u0130htiyac\u0131",
             helpshift: {
                 confirm_close_bubble: "Destek sohbetini ger\xe7ekten kapatmak m\u0131 istiyorsunuz? Yard\u0131m men\xfcs\xfcnden her zaman yeniden a\xe7abilirsiniz"
             },
@@ -10515,6 +10559,7 @@ Object.values || (Object.values = function (e) {
             patient: "Hasta",
             patient_untouched: "Tedavi edilmeyen hastalar",
             poi_delete: "%{caption} \u0130lgili Alan\u0131n\u0131 silmek istedi\u011finden emin misin?",
+            pump_speed_process: "Su Hasar\u0131 Pompa S\xfcreci",
             reload: "Yeniden y\xfckle",
             sale: "Sat\u0131\u015f",
             sale_ended: "\u0130ndirim sona erdi.",
@@ -10532,7 +10577,8 @@ Object.values || (Object.values = function (e) {
             to_mission: "G\xf6revi G\xf6r\xfcnt\xfcle",
             understand: "Onayla",
             user_not_found: "Oyuncu bulunamad\u0131.",
-            vehicles_not_visible: "Ara\xe7lar g\xf6r\xfcnm\xfcyor. "
+            vehicles_not_visible: "Ara\xe7lar g\xf6r\xfcnm\xfcyor. ",
+            water_pumping_process: "Gerekli pompa kapasitesi"
         },
         map: {
             alliance: "Birlik",
@@ -10872,6 +10918,7 @@ Object.values || (Object.values = function (e) {
             foam_approaching: "A caminho do TO: %{amount} l.",
             foam_missing: "Em falta: %{amount} l.",
             foam_on_site: "No TO: %{amount} l.",
+            foam_process: "Espuma necess\xe1ria",
             foam_selected: "Selecionado: %{amount} l.",
             helpshift: {
                 confirm_close_bubble: "Pretende mesmo fechar o chat de ajuda? Pode sempre reabri-lo a partir do menu de ajuda"
@@ -10891,6 +10938,7 @@ Object.values || (Object.values = function (e) {
             pump_speed_approaching: "A Caminho do TO: %{amount} l/min",
             pump_speed_missing: "Em falta no TO: %{amount} l/min",
             pump_speed_on_site: "No TO: %{amount} l/min",
+            pump_speed_process: "Processo de bombagem de danos causados pela \xe1gua",
             pump_speed_selected: "Selecionado para o TO: %{amount} l/min",
             reload: "Recarregar",
             secounds: "seg.",
@@ -10911,6 +10959,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "A caminho do TO: %{amount} l.",
             water_missing: "Em falta: %{amount} l.",
             water_on_site: "No TO: %{amount} l.",
+            water_process: "\xc1gua necess\xe1ria",
             water_pumping_process: "Progresso de bombagem de \xe1gua",
             water_selected: "Selecionada: %{amount} l."
         },
@@ -11295,6 +11344,7 @@ Object.values || (Object.values = function (e) {
             foam_approaching: "Se aproximando: %{amount} l.",
             foam_missing: "Faltando: %{amount} l.",
             foam_on_site: "Em cena: %{amount} l.",
+            foam_process: "Espuma necess\xe1ria",
             foam_selected: "Selecionada: %{amount} l.",
             helpshift: {
                 confirm_close_bubble: "Pretende mesmo abandonar o chat de suporte? Pode sempre reabri-lo a partir do menu de ajuda"
@@ -11311,6 +11361,7 @@ Object.values || (Object.values = function (e) {
             patient: "Paciente",
             patient_untouched: "Pacientes n\xe3o tratados",
             poi_delete: "Tem certeza de que quer apagar o PDI: %{caption}?",
+            pump_speed_process: "Processo de bombagem de danos causados pela \xe1gua",
             reload: "Recarregar",
             sale: "Promo\xe7\xf5es",
             sale_ended: "Fin de l\u2019offre sp\xe9ciale",
@@ -11332,6 +11383,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "Aproximando-se: %{amount} l.",
             water_missing: "Faltando: %{amount} l.",
             water_on_site: "Em Cena: %{amount} l.",
+            water_process: "\xc1gua necess\xe1ria",
             water_selected: "Selecionada: %{amount} l."
         },
         map: {
@@ -11667,6 +11719,7 @@ Object.values || (Object.values = function (e) {
             days: "\u0434\u043d.",
             few_seconds: "\u0447\u0435\u0440\u0435\u0437 \u0434\u0435\u043a\u0456\u043b\u044c\u043a\u0430 \u0441\u0435\u043a\u0443\u043d\u0434",
             finish_in: "\u0417\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u0447\u0435\u0440\u0435\u0437:",
+            foam_process: "\u041d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0430 \u043f\u0456\u043d\u0430",
             helpshift: {
                 confirm_close_bubble: "\u0412\u0438 \u0434\u0456\u0439\u0441\u043d\u043e \u0445\u043e\u0447\u0435\u0442\u0435 \u0432\u0456\u0434\u043a\u043b\u044e\u0447\u0438\u0442\u0438 \u0447\u0430\u0442 \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u043a\u0438? \u0412\u0438 \u0437\u0430\u0432\u0436\u0434\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0437\u043d\u043e\u0432\u0443 \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u0438 \u0439\u043e\u0433\u043e \u0437 \u043c\u0435\u043d\u044e \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0438"
             },
@@ -11682,6 +11735,7 @@ Object.values || (Object.values = function (e) {
             patient: "\u041f\u0430\u0446\u0456\u0454\u043d\u0442",
             patient_untouched: "\u041d\u0435\u0432\u0438\u043b\u0456\u043a\u0443\u0432\u0430\u043d\u0456 \u043f\u0430\u0446\u0456\u0454\u043d\u0442\u0438",
             poi_delete: "\u0414\u0456\u0439\u0441\u043d\u043e \u0432\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u0432\u0430\u0436\u043b\u0438\u0432\u0443 \u0442\u043e\u0447\u043a\u0443: %{caption}?",
+            pump_speed_process: "\u041f\u0440\u043e\u0446\u0435\u0441 \u0440\u043e\u0431\u043e\u0442\u0438 \u043d\u0430\u0441\u043e\u0441\u0430 \u0434\u043b\u044f \u043f\u043e\u0448\u043a\u043e\u0434\u0436\u0435\u043d\u043d\u044f \u0432\u043e\u0434\u0438",
             reload: "\u041f\u0435\u0440\u0435\u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438",
             sale: "\u0420\u043e\u0437\u043f\u0440\u043e\u0434\u0430\u0436",
             sale_ended: "\u0420\u043e\u0437\u043f\u0440\u043e\u0434\u0430\u0436 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043e",
@@ -11701,7 +11755,8 @@ Object.values || (Object.values = function (e) {
             to_mission: "\u041f\u0435\u0440\u0435\u0433\u043b\u044f\u0434 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f",
             understand: "\u0412\u0438\u0437\u043d\u0430\u0442\u0438",
             user_not_found: "\u0413\u0440\u0430\u0432\u0446\u044f \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e.",
-            vehicles_not_visible: "\u041c\u0430\u0448\u0438\u043d\u0443 \u043d\u0435 \u0432\u0438\u0434\u043d\u043e. "
+            vehicles_not_visible: "\u041c\u0430\u0448\u0438\u043d\u0443 \u043d\u0435 \u0432\u0438\u0434\u043d\u043e. ",
+            water_pumping_process: "\u041d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0430 \u043f\u043e\u0442\u0443\u0436\u043d\u0456\u0441\u0442\u044c \u043d\u0430\u0441\u043e\u0441\u0430"
         },
         map: {
             alliance: "\u0410\u043b\u044c\u044f\u043d\u0441",
@@ -12034,6 +12089,7 @@ Object.values || (Object.values = function (e) {
             days: "d\xedas",
             few_seconds: "en pocos segundos",
             finish_in: "Termina en:",
+            foam_process: "Se necesita espuma",
             helpshift: {
                 confirm_close_bubble: "\xbfDe verdad quieres cerrar el chat de ayuda? Siempre puedes reabrirlo desde el men\xfa de ayuda"
             },
@@ -12049,6 +12105,7 @@ Object.values || (Object.values = function (e) {
             patient: "Paciente",
             patient_untouched: "Pacientes no tratados",
             poi_delete: "\xbfSeguro que quieres eliminar el PI %{caption}?",
+            pump_speed_process: "Proceso de bombeo de da\xf1os causados por el agua",
             reload: "Recargar",
             sale: "Rebajas",
             sale_ended: "Oferta finalizada",
@@ -12066,7 +12123,8 @@ Object.values || (Object.values = function (e) {
             to_mission: "Ver misi\xf3n",
             understand: "Recibido",
             user_not_found: "No se ha encontrado al jugador.",
-            vehicles_not_visible: "Los veh\xedculos no est\xe1n visibles. "
+            vehicles_not_visible: "Los veh\xedculos no est\xe1n visibles. ",
+            water_process: "Agua necesaria"
         },
         map: {
             alliance: "Alianza",
@@ -12411,6 +12469,7 @@ Object.values || (Object.values = function (e) {
             foam_approaching: "\u63a5\u8fd1\u4e2d\uff1a%{amount}\u30ea\u30c3\u30c8\u30eb",
             foam_missing: "\u4e0d\u8db3\u5206\uff1a%{amount}\u30ea\u30c3\u30c8\u30eb",
             foam_on_site: "\u73fe\u5834\uff1a%{amount}\u30ea\u30c3\u30c8\u30eb",
+            foam_process: "\u30d5\u30a9\u30fc\u30e0\u304c\u5fc5\u8981",
             foam_selected: "\u9078\u629e\u6e08\u307f\uff1a%{amount}\u30ea\u30c3\u30c8\u30eb",
             helpshift: {
                 confirm_close_bubble: "\u672c\u5f53\u306b\u30b5\u30dd\u30fc\u30c8\u30c1\u30e3\u30c3\u30c8\u3092\u7d42\u4e86\u3057\u307e\u3059\u304b\uff1f\u30d8\u30eb\u30d7\u30e1\u30cb\u30e5\u30fc\u304b\u3089\u3044\u3064\u3067\u3082\u518d\u958b\u3067\u304d\u307e\u3059\u3002"
@@ -12430,6 +12489,7 @@ Object.values || (Object.values = function (e) {
             pump_speed_approaching: "\u63a5\u8fd1\uff1a%{amount} \u30ea\u30c3\u30c8\u30eb\uff0f\u5206",
             pump_speed_missing: "\u884c\u65b9\u4e0d\u660e\u3060\uff1a%{amount} \u30ea\u30c3\u30c8\u30eb",
             pump_speed_on_site: "\u73fe\u5834\u3067\u306f:  %{amount} \u30ea\u30c3\u30c8\u30eb\uff0f\u5206",
+            pump_speed_process: "\u6c34\u5bb3\u30dd\u30f3\u30d7\u306e\u30d7\u30ed\u30bb\u30b9",
             pump_speed_selected: "\u9078\u3070\u308c\u305f\uff1a%{amount} \u30ea\u30c3\u30c8\u30eb",
             reload: "\u30ea\u30ed\u30fc\u30c9",
             sale: "\u30bb\u30fc\u30eb",
@@ -12451,6 +12511,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "\u63a5\u8fd1\u4e2d: %{amount}\u30ea\u30c3\u30c8\u30eb",
             water_missing: "\u4e0d\u8db3\u5206: %{amount}\u30ea\u30c3\u30c8\u30eb",
             water_on_site: "\u73fe\u5834: %{amount}\u30ea\u30c3\u30c8\u30eb",
+            water_process: "\u6c34\u304c\u5fc5\u8981",
             water_pumping_process: "\u63da\u6c34\u5de5\u7a0b",
             water_selected: "\u9078\u629e\u6e08\u307f: %{amount}\u30ea\u30c3\u30c8\u30eb"
         },
@@ -12819,6 +12880,7 @@ Object.values || (Object.values = function (e) {
             foam_approaching: "\uc811\uadfc \uc911: %{amount}\ub9ac\ud130",
             foam_missing: "\uc18c\uc2e4\ub41c \uc591: %{amount}\ub9ac\ud130",
             foam_on_site: "\ud604\uc7a5: %{amount}\ub9ac\ud130",
+            foam_process: "\ud3fc \ud544\uc694",
             foam_selected: "\uc120\ud0dd\ud55c \uac70\ud488: %{amount}\ub9ac\ud130",
             helpshift: {
                 confirm_close_bubble: "\uc815\ub9d0 \uc9c0\uc6d0 \ucc44\ud305\uc744 \uc885\ub8cc\ud558\uace0 \uc2f6\uc73c\uc2e0\uac00\uc694? \uc5b8\uc81c\ub4e0\uc9c0 \ub3c4\uc6c0\ub9d0 \uba54\ub274\uc5d0\uc11c \ub2e4\uc2dc \uc5f4 \uc218 \uc788\uc2b5\ub2c8\ub2e4."
@@ -12838,6 +12900,7 @@ Object.values || (Object.values = function (e) {
             pump_speed_approaching: "\uc811\uadfc \uc911: %{amount} \ub9ac\ud130",
             pump_speed_missing: "\ub204\ub77d: %{amount} \ub9ac\ud130",
             pump_speed_on_site: "\ud604\uc7a5: %{amount} \ub9ac\ud130",
+            pump_speed_process: "\uc218\ud574 \ud38c\ud504 \ud504\ub85c\uc138\uc2a4",
             pump_speed_selected: "\uc120\ud0dd\ub428: %{amount} \ub9ac\ud130",
             reload: "\ub2e4\uc2dc \ubd88\ub7ec\uc624\uae30",
             sale: "\ud560\uc778",
@@ -12859,6 +12922,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "\uc811\uadfc \uc911: %{amount}L",
             water_missing: "\ubd84\uc2e4: %{amount}L",
             water_on_site: "\ud604\uc7a5 \ubcf4\uc720: %{amount}L",
+            water_process: "\ud544\uc694\ud55c \ubb3c",
             water_pumping_process: "\uc6cc\ud130 \ud38c\ud551 \ud504\ub85c\uc138\uc2a4",
             water_selected: "\uc120\ud0dd\ud568: %{amount}L"
         },
@@ -13221,6 +13285,7 @@ Object.values || (Object.values = function (e) {
             foam_approaching: "Se apropie: %{amount} l.",
             foam_missing: "Lipsesc: %{amount} l.",
             foam_on_site: "La fa\u021ba locului: %{amount} l.",
+            foam_process: "Spum\u0103 necesar\u0103",
             foam_selected: "Selecta\u021bi: %{amount} l.",
             helpshift: {
                 confirm_close_bubble: "Chiar vre\u021bi s\u0103 renun\u021ba\u021bi la chat-ul de asisten\u021b\u0103? \xcel pute\u021bi redeschide oric\xe2nd din meniul de ajutor"
@@ -13237,6 +13302,7 @@ Object.values || (Object.values = function (e) {
             patient: "Pacient",
             patient_untouched: "Pacien\u021bi netrata\u021bi",
             poi_delete: "E\u0219ti sigur c\u0103 vrei s\u0103 \u0219tergi Punctul de interes: %{caption}?",
+            pump_speed_process: "Procesul de pompare a daunelor provocate de ap\u0103",
             reload: "Re\xeencarc\u0103",
             sale: "Promo\u021bie",
             sale_ended: "Promo\u021bia s-a \xeencheiat",
@@ -13259,6 +13325,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "Se apropie: %{amount} l.",
             water_missing: "Lipsesc: %{amount} l.",
             water_on_site: "La fa\u021ba locului: %{amount} l.",
+            water_pumping_process: "Capacitate de pompare necesar\u0103",
             water_selected: "Selecta\u021bi: %{amount} l."
         },
         map: {
@@ -13609,6 +13676,7 @@ Object.values || (Object.values = function (e) {
             foam_approaching: "Matkalla: %{amount} l vaahtoa",
             foam_missing: "Puuttuu: %{amount} l vaahtoa",
             foam_on_site: "Kohteessa: %{amount} l vaahtoa",
+            foam_process: "Tarvittava vaahto",
             foam_selected: "Valittu: %{amount} l vaahtoa",
             helpshift: {
                 confirm_close_bubble: "Haluatko todella hyl\xe4t\xe4 tukikeskustelun? Voit aina avata sen uudelleen ohje-valikosta."
@@ -13628,6 +13696,7 @@ Object.values || (Object.values = function (e) {
             pump_speed_approaching: "L\xe4hestym\xe4ss\xe4: %{amount} l/min",
             pump_speed_missing: "Puuttuu: %{amount} l/min",
             pump_speed_on_site: "Paikalla: %{amount} l/min",
+            pump_speed_process: "Vesivahingon pumppuprosessi",
             pump_speed_selected: "Valittu: %{amount} l/min",
             reload: "Lataa uudelleen",
             sale: "Ale",
@@ -13650,6 +13719,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "Matkalla: %{amount} l vett\xe4",
             water_missing: "Puuttuu: %{amount} l vett\xe4",
             water_on_site: "Kohteessa: %{amount} l vett\xe4",
+            water_process: "Tarvittava vesi",
             water_pumping_process: "Veden pumppausprosessi",
             water_selected: "Valittu: %{amount} l vett\xe4"
         },
@@ -14029,6 +14099,7 @@ Object.values || (Object.values = function (e) {
             foam_approaching: "Na ceste %{amount} l.",
             foam_missing: "Ch\xfdbaj\xface: %{amount} l.",
             foam_on_site: "Na mieste %{amount} l.",
+            foam_process: "Potrebn\xe1 pena",
             foam_selected: "Vybran\xe9: %{amount} l.",
             helpshift: {
                 confirm_close_bubble: "Naozaj chcete zru\u0161i\u0165 chat s podporou? V\u017edy ho m\xf4\u017eete znovu otvori\u0165 v menu n\xe1povedy"
@@ -14045,6 +14116,7 @@ Object.values || (Object.values = function (e) {
             patient: "Pacient",
             patient_untouched: "Nelie\u010den\xed pacienti",
             poi_delete: "Naozaj chcete vymaza\u0165 POI: %{caption}?",
+            pump_speed_process: "Proces po\u0161kodenia \u010derpadla vodou",
             reload: "Znovu na\u010d\xedta\u0165",
             sale: "Preda\u0165",
             sale_ended: "Predaj ukon\u010den\xfd",
@@ -14068,6 +14140,7 @@ Object.values || (Object.values = function (e) {
             water_approaching: "Na ceste %{amount} l",
             water_missing: "Ch\xfdba %{amount} l",
             water_on_site: "Na mieste %{amount} l",
+            water_pumping_process: "Potrebn\xe1 kapacita \u010derpadla",
             water_selected: "Vybran\xe9 %{amount} l"
         },
         map: {
