@@ -364,21 +364,21 @@ function waterCalculator(e, t) {
         x = I18n.t(w.amountApproaching, {
             amount: number_format(parseInt(p))
         }),
-        C = I18n.t(w.amountSelected, {
+        z = I18n.t(w.amountSelected, {
             amount: number_format(parseInt(m))
         }),
-        z = I18n.t(w.amountMissing, {
+        C = I18n.t(w.amountMissing, {
             amount: number_format(parseInt(f))
         });
     o.find(".mission_water_bar_at_mission_" + e)
         .html(k), o.find(".mission_water_bar_driving_" + e)
         .html(x), o.find(".mission_water_bar_selected_" + e)
-        .html(C), o.find(".mission_water_bar_missing_" + e)
-        .html(z), o.find(".mission_water_bar_at_mission_" + e)
+        .html(z), o.find(".mission_water_bar_missing_" + e)
+        .html(C), o.find(".mission_water_bar_at_mission_" + e)
         .attr("aria-valuetext", k), o.find(".mission_water_bar_driving_" + e)
         .attr("aria-valuetext", x), o.find(".mission_water_bar_selected_" + e)
-        .attr("aria-valuetext", C), o.find(".mission_water_bar_missing_" + e)
-        .attr("aria-valuetext", z), v + g + _ >= 100 ? (o.find(".mission_water_bar_selected_" + e)
+        .attr("aria-valuetext", z), o.find(".mission_water_bar_missing_" + e)
+        .attr("aria-valuetext", C), v + g + _ >= 100 ? (o.find(".mission_water_bar_selected_" + e)
             .addClass("progress-bar-success")
             .removeClass("progress-bar-danger"), o.find(".mission_water_progress_" + e)
             .addClass("progress-glow-success")
@@ -4115,6 +4115,11 @@ Object.values || (Object.values = function (e) {
             },
             message: "Nachricht",
             mission: "Eins\xe4tze",
+            mission_filters: {
+                attended_description: "Einsatzen in Bearbeitung, nicht alle Bedingungen erf\xfcllt",
+                finishing_description: "Missionen abgeschlossen, alle Bedingungen erf\xfcllt",
+                unattended_description: "Neue Einsatzen"
+            },
             missions_filtered_out: "Einige Eins\xe4tze k\xf6nnten herausgefiltert worden sein. Bitte \xfcberpr\xfcfe deinen Kartenfilter.",
             no_alliance_chat_impossible: "Der Chat erm\xf6glicht dir, dich mit anderen erfahrenen Spielern zu vernetzen. Sie k\xf6nnen sowohl deine Fragen zum Spiel beantworten als auch helfen, indem sie dir Zugriff auf ihre Geb\xe4ude wie Schulen oder Krankenh\xe4user geben.",
             no_alliance_missions: "Es liegen keine Verbandseins\xe4tze vor. ",
@@ -4607,6 +4612,11 @@ Object.values || (Object.values = function (e) {
             },
             message: "Message",
             mission: "Missions",
+            mission_filters: {
+                attended_description: "Missions in Progress, Not all conditions fulfilled",
+                finishing_description: "Missions Completed, All conditions fulfilled",
+                unattended_description: "New Missions"
+            },
             missions_filtered_out: "Some missions might be filtered out. Please, check your map filters.",
             no_alliance_chat_impossible: "The Chat is a great way to link up with other more experienced players.\xa0They can both answer your questions and help you by giving you access to buildings like Hospitals and Schools",
             no_alliance_missions: "There are currently no alliance missions.",
@@ -5255,6 +5265,11 @@ Object.values || (Object.values = function (e) {
             },
             message: "Message",
             mission: "Missions",
+            mission_filters: {
+                attended_description: "Missions in Progress, Not all conditions fulfilled",
+                finishing_description: "Missions Completed, All conditions fulfilled",
+                unattended_description: "New Missions"
+            },
             missions_filtered_out: "Some missions might be filtered out. Please, check your map filters.",
             no_alliance_chat_impossible: "The Chat is a great way to link up with other more experienced players.\xa0They can both answer your questions and help you by giving you access to buildings like Hospitals and Schools",
             no_alliance_missions: "There are currently no alliance missions.",
@@ -5789,6 +5804,11 @@ Object.values || (Object.values = function (e) {
             },
             message: "Bericht",
             mission: "Incidenten",
+            mission_filters: {
+                attended_description: "Inzetten in uitvoering, niet aan alle voorwaarden voldaan",
+                finishing_description: "Inzetten voltooid, alle voorwaarden vervuld",
+                unattended_description: "Nieuwe inzetten"
+            },
             missions_filtered_out: "Sommige missies worden mogelijk uitgefilterd. Controleer alstublieft uw kaartfilters.",
             no_alliance_chat_impossible: "De Chat is een geweldige manier om in contact te komen met andere meer ervaren spelers.\xa0Zij kunnen zowel je vragen beantwoorden als je helpen door je toegang te geven tot gebouwen zoals Ziekenhuizen en Scholen",
             no_alliance_missions: "Er zijn geen team inzetten beschikbaar",
@@ -6228,6 +6248,11 @@ Object.values || (Object.values = function (e) {
             },
             message: "Mensaje",
             mission: "Misiones",
+            mission_filters: {
+                attended_description: "Misiones en curso, no se cumplen todas las condiciones",
+                finishing_description: "Misiones completadas, todas las condiciones cumplidas",
+                unattended_description: "Nuevas misiones"
+            },
             missions_filtered_out: "Algunas misiones pueden ser filtradas. Por favor, revise los filtros de su mapa.",
             no_alliance_chat_impossible: "El chat es una forma estupenda de conectar con otros jugadores m\xe1s experimentados.\xa0Pueden responder a tus preguntas y ayudarte a acceder a edificios como hospitales y escuelas.",
             no_alliance_missions: "No hay misiones de alianza.",
@@ -6647,6 +6672,11 @@ Object.values || (Object.values = function (e) {
             },
             message: "Message",
             mission: "Missions",
+            mission_filters: {
+                attended_description: "Missions in Progress, Not all conditions fulfilled",
+                finishing_description: "Missions Completed, All conditions fulfilled",
+                unattended_description: "New Missions"
+            },
             missions_filtered_out: "Some missions might be filtered out. Please, check your map filters.",
             no_alliance_chat_impossible: "The Chat is a great way to link up with other more experienced players.\xa0They can both answer your questions and help you by giving you access to buildings like Hospitals and Schools",
             no_alliance_missions: "There are currently no alliance missions.",
@@ -7180,6 +7210,11 @@ Object.values || (Object.values = function (e) {
             },
             message: "Meddelande",
             mission: "Uppdrag",
+            mission_filters: {
+                attended_description: "P\xe5g\xe5ende uppdrag, inte alla villkor uppfyllda",
+                finishing_description: "Uppdrag slutf\xf6rda, alla villkor uppfyllda",
+                unattended_description: "Nya uppdrag"
+            },
             missions_filtered_out: "Vissa uppdrag kan filtreras bort. Kontrollera dina kartfilter.",
             no_alliance_chat_impossible: "Chatten \xe4r ett bra s\xe4tt att f\xe5 kontakt med andra mer erfarna spelare.\xa0De kan b\xe5de svara p\xe5 dina fr\xe5gor och hj\xe4lpa dig genom att ge dig tillg\xe5ng till byggnader som sjukhus och skolor.",
             no_alliance_missions: "Det finns inga alliansuppdrag just nu.",
@@ -7629,6 +7664,11 @@ Object.values || (Object.values = function (e) {
             },
             message: "Wiadomo\u015b\u0107",
             mission: "Misje",
+            mission_filters: {
+                attended_description: "Misje w toku, nie wszystkie warunki zosta\u0142y spe\u0142nione",
+                finishing_description: "Misje uko\u0144czone, wszystkie warunki spe\u0142nione",
+                unattended_description: "Nowe misje"
+            },
             missions_filtered_out: "Niekt\xf3re misje mog\u0105 zosta\u0107 odfiltrowane. Prosz\u0119 sprawdzi\u0107 filtry map.",
             no_alliance_chat_impossible: "Czat to \u015bwietny spos\xf3b na nawi\u0105zanie kontaktu z innymi, bardziej do\u015bwiadczonymi graczami.\xa0Mog\u0105 oni odpowiedzie\u0107 na twoje pytania i pom\xf3c ci, daj\u0105c ci dost\u0119p do budynk\xf3w takich jak szpitale i szko\u0142y.",
             no_alliance_missions: "W tej chwili nie ma misji sojuszu.",
@@ -8080,6 +8120,11 @@ Object.values || (Object.values = function (e) {
             },
             message: "Messaggio",
             mission: "Missioni",
+            mission_filters: {
+                attended_description: "Missioni in corso, non tutte le condizioni sono soddisfatte",
+                finishing_description: "Missioni completate, tutte le condizioni soddisfatte",
+                unattended_description: "Nuove missioni"
+            },
             missions_filtered_out: "Alcune missioni potrebbero essere filtrate. Per favore, controlla i filtri della tua mappa.",
             no_alliance_chat_impossible: "La chat \xe8 un ottimo modo per entrare in contatto con altri giocatori pi\xf9 esperti.\xa0Possono rispondere alle vostre domande e aiutarvi dandovi accesso a edifici come ospedali e scuole.",
             no_alliance_missions: "Al momento non ci sono missioni dell'alleanza.",
@@ -8523,6 +8568,11 @@ Object.values || (Object.values = function (e) {
             },
             message: "Message",
             mission: "Missions",
+            mission_filters: {
+                attended_description: "Missions en cours, toutes les conditions ne sont pas remplies",
+                finishing_description: "Missions termin\xe9es, toutes les conditions sont remplies",
+                unattended_description: "Nouvelles missions"
+            },
             missions_filtered_out: "Certaines missions peuvent \xeatre filtr\xe9es. Veuillez v\xe9rifier les filtres de votre carte.",
             no_alliance_chat_impossible: "Le chat est un excellent moyen d'entrer en contact avec d'autres joueurs plus exp\xe9riment\xe9s.\xa0Ils peuvent \xe0 la fois r\xe9pondre \xe0 vos questions et vous aider en vous donnant acc\xe8s \xe0 des b\xe2timents comme les h\xf4pitaux et les \xe9coles.",
             no_alliance_missions: "Aucune mission d\u2019alliance \xe0 afficher.",
@@ -8956,6 +9006,11 @@ Object.values || (Object.values = function (e) {
             },
             message: "\u0421\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435",
             mission: "\u0417\u0430\u0434\u0430\u043d\u0438\u044f",
+            mission_filters: {
+                attended_description: "\u041c\u0438\u0441\u0441\u0438\u0438 \u0432 \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u0435 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044f, \u043d\u0435 \u0432\u0441\u0435 \u0443\u0441\u043b\u043e\u0432\u0438\u044f \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u044b",
+                finishing_description: "\u041c\u0438\u0441\u0441\u0438\u0438 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u044b, \u0432\u0441\u0435 \u0443\u0441\u043b\u043e\u0432\u0438\u044f \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u044b",
+                unattended_description: "\u041d\u043e\u0432\u044b\u0435 \u043c\u0438\u0441\u0441\u0438\u0438"
+            },
             missions_filtered_out: "\u041d\u0435\u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u043c\u0438\u0441\u0441\u0438\u0438 \u043c\u043e\u0433\u0443\u0442 \u0431\u044b\u0442\u044c \u043e\u0442\u0444\u0438\u043b\u044c\u0442\u0440\u043e\u0432\u0430\u043d\u044b. \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u0440\u043e\u0432\u0435\u0440\u044c\u0442\u0435 \u0444\u0438\u043b\u044c\u0442\u0440\u044b \u0432\u0430\u0448\u0435\u0439 \u043a\u0430\u0440\u0442\u044b.",
             no_alliance_chat_impossible: "\u0427\u0430\u0442 - \u044d\u0442\u043e \u043e\u0442\u043b\u0438\u0447\u043d\u044b\u0439 \u0441\u043f\u043e\u0441\u043e\u0431 \u043f\u043e\u043e\u0431\u0449\u0430\u0442\u044c\u0441\u044f \u0441 \u0434\u0440\u0443\u0433\u0438\u043c\u0438, \u0431\u043e\u043b\u0435\u0435 \u043e\u043f\u044b\u0442\u043d\u044b\u043c\u0438 \u0438\u0433\u0440\u043e\u043a\u0430\u043c\u0438.\xa0\u041e\u043d\u0438 \u043c\u043e\u0433\u0443\u0442 \u043a\u0430\u043a \u043e\u0442\u0432\u0435\u0442\u0438\u0442\u044c \u043d\u0430 \u0432\u0430\u0448\u0438 \u0432\u043e\u043f\u0440\u043e\u0441\u044b, \u0442\u0430\u043a \u0438 \u043f\u043e\u043c\u043e\u0447\u044c \u0432\u0430\u043c, \u043f\u0440\u0435\u0434\u043e\u0441\u0442\u0430\u0432\u0438\u0432 \u0434\u043e\u0441\u0442\u0443\u043f \u043a \u0442\u0430\u043a\u0438\u043c \u0437\u0434\u0430\u043d\u0438\u044f\u043c, \u043a\u0430\u043a \u0431\u043e\u043b\u044c\u043d\u0438\u0446\u044b \u0438 \u0448\u043a\u043e\u043b\u044b.",
             no_alliance_missions: "\u0412 \u043d\u0430\u0441\u0442\u043e\u044f\u0449\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u0437\u0430\u0434\u0430\u043d\u0438\u0439 \u0430\u043b\u044c\u044f\u043d\u0441\u0430 \u043d\u0435\u0442.",
@@ -9361,6 +9416,11 @@ Object.values || (Object.values = function (e) {
             },
             message: "Meddelelse",
             mission: "Missioner",
+            mission_filters: {
+                attended_description: "Missioner i gang, ikke alle betingelser opfyldt",
+                finishing_description: "Missioner fuldf\xf8rt, alle betingelser opfyldt",
+                unattended_description: "Nye missioner"
+            },
             missions_filtered_out: "Nogle missioner kan blive filtreret ud. Tjek venligst dine kortfilter.",
             no_alliance_chat_impossible: "Chatten er en god m\xe5de at komme i kontakt med andre mere erfarne spillere p\xe5.\xa0De kan b\xe5de besvare dine sp\xf8rgsm\xe5l og hj\xe6lpe dig ved at give dig adgang til bygninger som hospitaler og skoler.",
             no_alliance_missions: "Der er ingen alliancemissioner lige nu",
@@ -9791,6 +9851,11 @@ Object.values || (Object.values = function (e) {
             },
             message: "Melding",
             mission: "Oppdrag",
+            mission_filters: {
+                attended_description: "P\xe5g\xe5ende oppdrag, ikke alle betingelser er oppfylt",
+                finishing_description: "Oppdrag fullf\xf8rt, alle betingelser oppfylt",
+                unattended_description: "Nye oppdrag"
+            },
             missions_filtered_out: "Noen oppdrag kan bli filtrert ut. Vennligst sjekk kartfiltrene dine.",
             no_alliance_chat_impossible: "Chatten er en fin m\xe5te \xe5 koble seg opp til andre mer erfarne spillere p\xe5. De kan b\xe5de svare p\xe5 sp\xf8rsm\xe5lene dine og hjelpe deg ved \xe5 gi deg tilgang til bygninger som sykehus og skoler",
             no_alliance_missions: "Du har for \xf8yeblikket ingen allianseoppdrag.",
@@ -10233,6 +10298,11 @@ Object.values || (Object.values = function (e) {
             },
             message: "Zpr\xe1va",
             mission: "Mise",
+            mission_filters: {
+                attended_description: "Prob\xedhaj\xedc\xed mise, nejsou spln\u011bny v\u0161echny podm\xednky",
+                finishing_description: "Mise spln\u011bny, v\u0161echny podm\xednky spln\u011bny",
+                unattended_description: "Nov\xe9 mise"
+            },
             missions_filtered_out: "N\u011bkter\xe9 mise mohou b\xfdt odfiltrov\xe1ny. Zkontrolujte pros\xedm sv\xe9 mapov\xe9 filtry.",
             no_alliance_chat_impossible: "Chat je skv\u011bl\xfd zp\u016fsob, jak se spojit s dal\u0161\xedmi zku\u0161en\u011bj\u0161\xedmi hr\xe1\u010di.\xa0Ti v\xe1m mohou odpov\u011bd\u011bt na va\u0161e ot\xe1zky a tak\xe9 v\xe1m pomoci t\xedm, \u017ee v\xe1m zp\u0159\xedstupn\xed budovy, jako jsou nemocnice a \u0161koly.",
             no_alliance_missions: "K dispozici nejsou \u017e\xe1dn\xe9 alian\u010dn\xed mise.",
@@ -10646,6 +10716,11 @@ Object.values || (Object.values = function (e) {
             },
             message: "Mesaj",
             mission: "G\xf6revler",
+            mission_filters: {
+                attended_description: "G\xf6revler Devam Ediyor, T\xfcm ko\u015fullar yerine getirilmedi",
+                finishing_description: "G\xf6revler Tamamland\u0131, T\xfcm ko\u015fullar yerine getirildi",
+                unattended_description: "Yeni G\xf6revler"
+            },
             missions_filtered_out: "Baz\u0131 g\xf6revler filtrelenebilir. L\xfctfen harita filtrelerinizi kontrol edin.",
             no_alliance_chat_impossible: "Bir birlikte de\u011filsin.",
             no_alliance_missions: "\u015eu anda hi\xe7bir birlik g\xf6revi yok.",
@@ -11030,6 +11105,11 @@ Object.values || (Object.values = function (e) {
             },
             message: "Mensagem",
             mission: "Miss\xf5es",
+            mission_filters: {
+                attended_description: "Miss\xf5es em curso, nem todas as condi\xe7\xf5es foram cumpridas",
+                finishing_description: "Miss\xf5es conclu\xeddas, todas as condi\xe7\xf5es cumpridas",
+                unattended_description: "Novas miss\xf5es"
+            },
             missions_filtered_out: "Algumas miss\xf5es podem ser filtradas. Por favor, verifique seus filtros de mapa.",
             no_alliance_chat_impossible: "O Chat \xe9 uma \xf3tima forma de se ligar a outros jogadores mais experientes.\xa0Ambos podem responder \xe0s suas perguntas e ajud\xe1-lo dando-lhe acesso a edif\xedcios como Hospitais e Escolas.",
             no_alliance_missions: "De momento n\xe3o existem miss\xf5es de alian\xe7a.",
@@ -11452,6 +11532,11 @@ Object.values || (Object.values = function (e) {
             },
             message: "Mensagem",
             mission: "Miss\xf5es",
+            mission_filters: {
+                attended_description: "Miss\xf5es em curso, nem todas as condi\xe7\xf5es foram cumpridas",
+                finishing_description: "Miss\xf5es conclu\xeddas, todas as condi\xe7\xf5es cumpridas",
+                unattended_description: "Novas miss\xf5es"
+            },
             missions_filtered_out: "Algumas miss\xf5es podem ser filtradas. Por favor, verifique seus filtros de mapa.",
             no_alliance_chat_impossible: "Voc\xea n\xe3o est\xe1 em uma alian\xe7a.",
             no_alliance_missions: "N\xe3o h\xe1 miss\xf5es de alian\xe7a no momento.",
@@ -11824,6 +11909,11 @@ Object.values || (Object.values = function (e) {
             },
             message: "\u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f",
             mission: "\u0417\u0430\u0432\u0434\u0430\u043d\u043d\u044f",
+            mission_filters: {
+                attended_description: "\u041c\u0456\u0441\u0456\u0457 \u0432 \u043f\u0440\u043e\u0446\u0435\u0441\u0456 \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u043d\u044f, \u043d\u0435 \u0432\u0441\u0456 \u0443\u043c\u043e\u0432\u0438 \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u0456",
+                finishing_description: "\u041c\u0456\u0441\u0456\u0457 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043e, \u0432\u0441\u0456 \u0443\u043c\u043e\u0432\u0438 \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u043e",
+                unattended_description: "\u041d\u043e\u0432\u0456 \u043c\u0456\u0441\u0456\u0457"
+            },
             missions_filtered_out: "\u0414\u0435\u044f\u043a\u0456 \u043c\u0456\u0441\u0456\u0457 \u043c\u043e\u0436\u0443\u0442\u044c \u0431\u0443\u0442\u0438 \u0432\u0456\u0434\u0444\u0456\u043b\u044c\u0442\u0440\u043e\u0432\u0430\u043d\u0456. \u041f\u0435\u0440\u0435\u0432\u0456\u0440\u0442\u0435 \u0441\u0432\u043e\u0457 \u0444\u0456\u043b\u044c\u0442\u0440\u0438 \u043d\u0430 \u043a\u0430\u0440\u0442\u0456.",
             no_alliance_chat_impossible: "\u0412\u0438 \u043d\u0435 \u043f\u0435\u0440\u0435\u0431\u0443\u0432\u0430\u0454\u0442\u0435 \u0432 \u0430\u043b\u044c\u044f\u043d\u0441\u0456.",
             no_alliance_missions: "\u041d\u0430 \u0434\u0430\u043d\u0438\u0439 \u043c\u043e\u043c\u0435\u043d\u0442 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f \u0430\u043b\u044c\u044f\u043d\u0441\u0443 \u0432\u0456\u0434\u0441\u0443\u0442\u043d\u0456.",
@@ -12192,6 +12282,11 @@ Object.values || (Object.values = function (e) {
             },
             message: "Mensaje",
             mission: "Misiones",
+            mission_filters: {
+                attended_description: "Misiones en curso, no se cumplen todas las condiciones",
+                finishing_description: "Misiones completadas, todas las condiciones cumplidas",
+                unattended_description: "Nuevas misiones"
+            },
             missions_filtered_out: "Algunas misiones pueden ser filtradas. Por favor, revise los filtros de su mapa.",
             no_alliance_chat_impossible: "No est\xe1s en una alianza.",
             no_alliance_missions: "No hay misiones de alianza.",
@@ -12582,6 +12677,11 @@ Object.values || (Object.values = function (e) {
             },
             message: "\u30e1\u30c3\u30bb\u30fc\u30b8",
             mission: "\u30df\u30c3\u30b7\u30e7\u30f3",
+            mission_filters: {
+                attended_description: "\u9032\u884c\u4e2d\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u3001\u3059\u3079\u3066\u306e\u6761\u4ef6\u304c\u6e80\u305f\u3055\u308c\u305f\u308f\u3051\u3067\u306f\u306a\u3044",
+                finishing_description: "\u30df\u30c3\u30b7\u30e7\u30f3\u5b8c\u4e86\u3001\u5168\u6761\u4ef6\u9054\u6210",
+                unattended_description: "\u65b0\u3057\u3044\u30df\u30c3\u30b7\u30e7\u30f3"
+            },
             missions_filtered_out: "\u4e00\u90e8\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u306f\u9664\u5916\u3055\u308c\u308b\u53ef\u80fd\u6027\u304c\u3042\u308a\u307e\u3059\u3002\u30de\u30c3\u30d7\u30d5\u30a3\u30eb\u30bf\u30fc\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
             no_alliance_chat_impossible: "\u30c1\u30e3\u30c3\u30c8\u306f\u3001\u7d4c\u9a13\u8c4a\u5bcc\u306a\u30d7\u30ec\u30a4\u30e4\u30fc\u3068\u3064\u306a\u304c\u308b\u305f\u3081\u306e\u7d20\u6674\u3089\u3057\u3044\u65b9\u6cd5\u3067\u3059\u3002\xa0\u5f7c\u3089\u306f\u3042\u306a\u305f\u306e\u8cea\u554f\u306b\u7b54\u3048\u305f\u308a\u3001\u75c5\u9662\u3084\u5b66\u6821\u306a\u3069\u306e\u5efa\u7269\u306b\u30a2\u30af\u30bb\u30b9\u3059\u308b\u3053\u3068\u3067\u3042\u306a\u305f\u3092\u52a9\u3051\u3066\u304f\u308c\u308b\u3067\u3057\u3087\u3046\u3002",
             no_alliance_missions: "\u73fe\u5728\u3001\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u30df\u30c3\u30b7\u30e7\u30f3\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
@@ -12993,6 +13093,11 @@ Object.values || (Object.values = function (e) {
             },
             message: "\uba54\uc2dc\uc9c0",
             mission: "\uc784\ubb34",
+            mission_filters: {
+                attended_description: "\uc9c4\ud589 \uc911\uc778 \ubbf8\uc158, \ubaa8\ub4e0 \uc870\uac74\uc774 \ucda9\uc871\ub418\uc9c0 \uc54a\uc74c",
+                finishing_description: "\ubbf8\uc158 \uc644\ub8cc, \ubaa8\ub4e0 \uc870\uac74 \ucda9\uc871",
+                unattended_description: "\uc0c8\ub85c\uc6b4 \ubbf8\uc158"
+            },
             missions_filtered_out: "\uc77c\ubd80 \ubbf8\uc158\uc774 \ud544\ud130\ub9c1 \ub420 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \uc9c0\ub3c4 \ud544\ud130\ub97c \ud655\uc778\ud558\uc2ed\uc2dc\uc624.",
             no_alliance_chat_impossible: "\ucc44\ud305\uc740 \uacbd\ud5d8\uc774 \ub9ce\uc740 \ub2e4\ub978 \ud50c\ub808\uc774\uc5b4\uc640 \uc5f0\uacb0\ud558\ub294 \uc88b\uc740 \ubc29\ubc95\uc785\ub2c8\ub2e4. \uadf8\ub4e4\uc740 \uadc0\ud558\uc758 \uc9c8\ubb38\uc5d0 \ub2f5\ubcc0\ud558\uace0 \ubcd1\uc6d0 \ubc0f \ud559\uad50\uc640 \uac19\uc740 \uac74\ubb3c\uc5d0 \ub300\ud55c \uc561\uc138\uc2a4 \uad8c\ud55c\uc744 \ubd80\uc5ec\ud558\uc5ec \uadc0\ud558\ub97c \ub3c4\uc6b8 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
             no_alliance_missions: "\ud604\uc7ac \uc9c4\ud589 \uc911\uc778 \ub3d9\ub9f9 \uc784\ubb34\uac00 \uc5c6\uc2b5\ub2c8\ub2e4.",
@@ -13394,6 +13499,11 @@ Object.values || (Object.values = function (e) {
             },
             message: "Mesaj",
             mission: "Misiuni",
+            mission_filters: {
+                attended_description: "Misiuni \xeen curs de desf\u0103\u0219urare, Nu sunt \xeendeplinite toate condi\u021biile",
+                finishing_description: "Misiuni \xeencheiate, Toate condi\u021biile \xeendeplinite",
+                unattended_description: "Noi misiuni"
+            },
             missions_filtered_out: "Unele misiuni ar putea fi eliminate. V\u0103 rug\u0103m s\u0103 verifica\u021bi filtrele de hart\u0103.",
             no_alliance_chat_impossible: "Nu faci parte dintr-o alian\u021b\u0103.",
             no_alliance_missions: "\xcen prezent nu exist\u0103 misiuni de alian\u021b\u0103.",
@@ -13790,6 +13900,11 @@ Object.values || (Object.values = function (e) {
             },
             message: "Viesti",
             mission: "Teht\xe4v\xe4t",
+            mission_filters: {
+                attended_description: "Missions in Progress, Kaikki ehdot eiv\xe4t t\xe4yty.",
+                finishing_description: "Teht\xe4v\xe4t suoritettu, kaikki ehdot t\xe4ytetty",
+                unattended_description: "Uudet teht\xe4v\xe4t"
+            },
             missions_filtered_out: "Jotkut teht\xe4v\xe4t voidaan suodattaa pois. Tarkista karttasuodattimet.",
             no_alliance_chat_impossible: "Chat on loistava tapa luoda yhteyksi\xe4 muihin kokeneempiin pelaajiin.\xa0He voivat sek\xe4 vastata kysymyksiisi ett\xe4 auttaa sinua antamalla sinulle p\xe4\xe4syn rakennuksiin, kuten sairaaloihin ja kouluihin.",
             no_alliance_missions: "Ei liittoutumateht\xe4vi\xe4",
@@ -14209,6 +14324,11 @@ Object.values || (Object.values = function (e) {
             },
             message: "Spr\xe1va",
             mission: "Misie",
+            mission_filters: {
+                attended_description: "Misie prebiehaj\xfa, nie s\xfa splnen\xe9 v\u0161etky podmienky",
+                finishing_description: "Misie dokon\u010den\xe9, v\u0161etky podmienky splnen\xe9",
+                unattended_description: "Nov\xe9 misie"
+            },
             missions_filtered_out: "Niektor\xe9 misie m\xf4\u017eu by\u0165 odfiltrovan\xe9. Skontrolujte filtre m\xe1p.",
             no_alliance_chat_impossible: "Nie ste v aliancii.",
             no_alliance_missions: "Moment\xe1lne nie s\xfa \u017eiadne misie aliancie.",
@@ -14464,7 +14584,7 @@ Object.values || (Object.values = function (e) {
         }
 
         function n(e) {
-            var t = ze[e] = {};
+            var t = Ce[e] = {};
             return ue.each(e.match(he) || [], (function (e, i) {
                 t[i] = !0
             })), t
@@ -14646,7 +14766,7 @@ Object.values || (Object.values = function (e) {
             return e = t || e, "none" === ue.css(e, "display") || !ue.contains(e.ownerDocument, e)
         }
 
-        function C(e, t) {
+        function z(e, t) {
             for (var i, n, o, s = [], a = 0, r = e.length; a < r; a++)(n = e[a])
                 .style && (s[a] = ue._data(n, "olddisplay"), i = n.style.display, t ? (s[a] || "none" !== i ||
                     (n.style.display = ""), "" === n.style.display && x(n) && (s[a] = ue._data(n,
@@ -14658,7 +14778,7 @@ Object.values || (Object.values = function (e) {
             return e
         }
 
-        function z(e, t, i) {
+        function C(e, t, i) {
             var n = _t.exec(t);
             return n ? Math.max(0, n[1] - (i || 0)) + (n[2] || "px") : t
         }
@@ -14706,7 +14826,7 @@ Object.values || (Object.values = function (e) {
         function P(e, t, i, n) {
             var o;
             if (ue.isArray(t)) ue.each(t, (function (t, o) {
-                i || zt.test(e) ? n(e, o) : P(e + "[" + ("object" == typeof o ? t : "") + "]", o,
+                i || Ct.test(e) ? n(e, o) : P(e + "[" + ("object" == typeof o ? t : "") + "]", o,
                     i, n)
             }));
             else if (i || "object" !== ue.type(t)) n(e, t);
@@ -14972,9 +15092,9 @@ Object.values || (Object.values = function (e) {
                 return t.toUpperCase()
             },
             xe = function (e) {
-                (Y.addEventListener || "load" === e.type || "complete" === Y.readyState) && (Ce(), ue.ready())
+                (Y.addEventListener || "load" === e.type || "complete" === Y.readyState) && (ze(), ue.ready())
             },
-            Ce = function () {
+            ze = function () {
                 Y.addEventListener ? (Y.removeEventListener("DOMContentLoaded", xe, !1), e
                     .removeEventListener("load", xe, !1)) : (Y.detachEvent("onreadystatechange", xe), e
                     .detachEvent("onload", xe))
@@ -15278,7 +15398,7 @@ Object.values || (Object.values = function (e) {
                             } catch (t) {
                                 return setTimeout(e, 50)
                             }
-                            Ce(), ue.ready()
+                            ze(), ue.ready()
                         }
                     }()
                 }
@@ -15331,7 +15451,7 @@ Object.values || (Object.values = function (e) {
                             }
                         }
                     }
-                    return C(e.replace(me, "$1"), t, i, n)
+                    return z(e.replace(me, "$1"), t, i, n)
                 }
 
                 function n(e) {
@@ -15567,7 +15687,7 @@ Object.values || (Object.values = function (e) {
                     return n
                 }
 
-                function C(e, t, i, n) {
+                function z(e, t, i, n) {
                     var o, s, a, r, l, c = f(e);
                     if (!n && 1 === c.length) {
                         if ((s = c[0] = c[0].slice(0))
@@ -15588,7 +15708,7 @@ Object.values || (Object.values = function (e) {
                     return I(e, c)(n, t, !R, i, ge.test(e)), i
                 }
 
-                function z() {}
+                function C() {}
                 var S, T, A, E, P, j, I, M, D, N, L, O, R, $, B, F, H, W = "sizzle" + -new Date,
                     V = e.document,
                     q = 0,
@@ -15645,8 +15765,8 @@ Object.values || (Object.values = function (e) {
                     },
                     ke = /^[^{]+\{\s*\[native \w/,
                     xe = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,
-                    Ce = /^(?:input|select|textarea|button)$/i,
-                    ze = /^h\d$/i,
+                    ze = /^(?:input|select|textarea|button)$/i,
+                    Ce = /^h\d$/i,
                     Se = /'|\\/g,
                     Te = new RegExp("\\\\([\\da-f]{1,6}" + le + "?|(" + le + ")|.)", "ig"),
                     Ae = function (e, t, i) {
@@ -16029,10 +16149,10 @@ Object.values || (Object.values = function (e) {
                                 return !E.pseudos.empty(e)
                             },
                             header: function (e) {
-                                return ze.test(e.nodeName)
+                                return Ce.test(e.nodeName)
                             },
                             input: function (e) {
-                                return Ce.test(e.nodeName)
+                                return ze.test(e.nodeName)
                             },
                             button: function (e) {
                                 var t = e.nodeName.toLowerCase();
@@ -16090,16 +16210,16 @@ Object.values || (Object.values = function (e) {
                             s = G(e, k(o, n))
                         }
                         return s
-                    }, E.pseudos.nth = E.pseudos.eq, z.prototype = E.filters = E.pseudos, E.setFilters =
-                    new z, T.sortStable = W.split("")
+                    }, E.pseudos.nth = E.pseudos.eq, C.prototype = E.filters = E.pseudos, E.setFilters =
+                    new C, T.sortStable = W.split("")
                     .sort(J)
                     .join("") === W, N(), [0, 0].sort(J), T.detectDuplicates = Y, ue.find = i, ue.expr = i
                     .selectors, ue.expr[":"] = ue.expr.pseudos, ue.unique = i.uniqueSort, ue.text = i.getText,
                     ue.isXMLDoc = i.isXML, ue.contains = i.contains
             }(e);
-        var ze = {};
+        var Ce = {};
         ue.Callbacks = function (e) {
-            e = "string" == typeof e ? ze[e] || n(e) : ue.extend({}, e);
+            e = "string" == typeof e ? Ce[e] || n(e) : ue.extend({}, e);
             var i, o, s, a, r, l, c = [],
                 u = !e.once && [],
                 d = function (t) {
@@ -17529,10 +17649,10 @@ Object.values || (Object.values = function (e) {
                 }), e, i, arguments.length > 1)
             },
             show: function () {
-                return C(this, !0)
+                return z(this, !0)
             },
             hide: function () {
-                return C(this)
+                return z(this)
             },
             toggle: function (e) {
                 var t = "boolean" == typeof e;
@@ -17621,7 +17741,7 @@ Object.values || (Object.values = function (e) {
                 },
                 set: function (e, i, n) {
                     var o = n && ct(e);
-                    return z(e, i, n ? S(e, t, n, ue.support.boxSizing && "border-box" ===
+                    return C(e, i, n ? S(e, t, n, ue.support.boxSizing && "border-box" ===
                         ue.css(e, "boxSizing", !1, o), o) : 0)
                 }
             }
@@ -17671,10 +17791,10 @@ Object.values || (Object.values = function (e) {
                         i]; n < 4; n++) o[e + kt[n] + t] = s[n] || s[n - 2] || s[0];
                     return o
                 }
-            }, ft.test(e) || (ue.cssHooks[e + t].set = z)
+            }, ft.test(e) || (ue.cssHooks[e + t].set = C)
         }));
-        var Ct = /%20/g,
-            zt = /\[\]$/,
+        var zt = /%20/g,
+            Ct = /\[\]$/,
             St = /\r?\n/g,
             Tt = /^(?:submit|button|image|reset|file)$/i,
             At = /^(?:input|select|textarea|keygen)/i;
@@ -17722,7 +17842,7 @@ Object.values || (Object.values = function (e) {
             else
                 for (n in e) P(n, e[n], i, s);
             return o.join("&")
-                .replace(Ct, "+")
+                .replace(zt, "+")
         }, ue.each(
             "blur focus focusin focusout load resize scroll unload click dblclick mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave change select submit keydown keypress keyup error contextmenu"
             .split(" "), (function (e, t) {
@@ -19144,7 +19264,7 @@ Object.values || (Object.values = function (e) {
                         k = e.position.getScrollInfo(w),
                         x = (o.collision || "flip")
                         .split(" "),
-                        C = {};
+                        z = {};
                     return b = n(y), y[0].preventDefault && (o.at = "left top"), f = b.width, _ = b
                         .height, g = b.offset, v = e.extend({}, g), e.each(["my", "at"], (
                     function () {
@@ -19154,21 +19274,21 @@ Object.values || (Object.values = function (e) {
                                     .test(i[0]) ? ["center"].concat(i) : ["center", "center"]
                                     ), i[0] = c.test(i[0]) ? i[0] : "center", i[1] = u.test(i[
                                     1]) ? i[1] : "center", e = d.exec(i[0]), t = d.exec(i[1]),
-                                C[this] = [e ? e[0] : 0, t ? t[0] : 0], o[this] = [h.exec(i[
+                                z[this] = [e ? e[0] : 0, t ? t[0] : 0], o[this] = [h.exec(i[
                                     0])[0], h.exec(i[1])[0]]
                         })), 1 === x.length && (x[1] = x[0]), "right" === o.at[0] ? v.left += f :
                         "center" === o.at[0] && (v.left += f / 2), "bottom" === o.at[1] ? v.top += _ :
-                        "center" === o.at[1] && (v.top += _ / 2), p = t(C.at, f, _), v.left += p[0], v
+                        "center" === o.at[1] && (v.top += _ / 2), p = t(z.at, f, _), v.left += p[0], v
                         .top += p[1], this.each((function () {
                             var n, c, u = e(this),
                                 d = u.outerWidth(),
                                 h = u.outerHeight(),
                                 m = i(this, "marginLeft"),
                                 b = i(this, "marginTop"),
-                                z = d + m + i(this, "marginRight") + k.width,
+                                C = d + m + i(this, "marginRight") + k.width,
                                 S = h + b + i(this, "marginBottom") + k.height,
                                 T = e.extend({}, v),
-                                A = t(C.my, u.outerWidth(), u.outerHeight());
+                                A = t(z.my, u.outerWidth(), u.outerHeight());
                             "right" === o.my[0] ? T.left -= d : "center" === o.my[0] && (T
                                     .left -= d / 2), "bottom" === o.my[1] ? T.top -= h :
                                 "center" === o.my[1] && (T.top -= h / 2), T.left += A[0], T
@@ -19183,7 +19303,7 @@ Object.values || (Object.values = function (e) {
                                         elemWidth: d,
                                         elemHeight: h,
                                         collisionPosition: n,
-                                        collisionWidth: z,
+                                        collisionWidth: C,
                                         collisionHeight: S,
                                         offset: [p[0] + A[0], p[1] + A[1]],
                                         my: o.my,
@@ -23948,7 +24068,7 @@ Object.values || (Object.values = function (e) {
                 },
                 _generateHTML: function (e) {
                     var t, i, n, o, s, a, r, l, c, u, d, h, p, m, f, _, g, v, b, y, w, k, x,
-                        C, z, S, T, A, E, P, j, I, M, D, N, L, O, R, $, B = new Date,
+                        z, C, S, T, A, E, P, j, I, M, D, N, L, O, R, $, B = new Date,
                         F = this._daylightSavingAdjust(new Date(B.getFullYear(), B.getMonth(),
                             B.getDate())),
                         H = this._get(e, "isRTL"),
@@ -24003,11 +24123,11 @@ Object.values || (Object.values = function (e) {
                             "monthNamesShort"), _ = this._get(e, "beforeShowDay"), g = this
                         ._get(e, "showOtherMonths"), v = this._get(e, "selectOtherMonths"),
                         b = this._getDefaultDate(e), y = "", k = 0; k < U[0]; k++) {
-                        for (x = "", this.maxRows = 4, C = 0; C < U[1]; C++) {
-                            if (z = this._daylightSavingAdjust(new Date(ee, X, e
+                        for (x = "", this.maxRows = 4, z = 0; z < U[1]; z++) {
+                            if (C = this._daylightSavingAdjust(new Date(ee, X, e
                                 .selectedDay)), S = " ui-corner-all", T = "", G) {
                                 if (T += "<div class='ui-datepicker-group", U[1] > 1) switch (
-                                    C) {
+                                    z) {
                                 case 0:
                                     T += " ui-datepicker-group-first", S = " ui-corner-" +
                                         (H ? "right" : "left");
@@ -24025,7 +24145,7 @@ Object.values || (Object.values = function (e) {
                                 "<div class='ui-datepicker-header ui-widget-header ui-helper-clearfix" +
                                 S + "'>" + (/all|left/.test(S) && 0 === k ? H ? s : n : "") +
                                 (/all|right/.test(S) && 0 === k ? H ? n : s : "") + this
-                                ._generateMonthYearHeader(e, X, ee, J, Q, k > 0 || C > 0, m,
+                                ._generateMonthYearHeader(e, X, ee, J, Q, k > 0 || z > 0, m,
                                     f) +
                                 "</div><table class='ui-datepicker-calendar'><thead><tr>", A =
                                 d ? "<th class='ui-datepicker-week-col'>" + this._get(e,
@@ -24049,8 +24169,8 @@ Object.values || (Object.values = function (e) {
                                     J && D < J || Q && D > Q, L += "<td class='" + ((w + u +
                                         6) % 7 >= 5 ? " ui-datepicker-week-end" : "") + (R ?
                                         " ui-datepicker-other-month" : "") + (D.getTime() ===
-                                        z.getTime() && X === e.selectedMonth && e._keyEvent ||
-                                        b.getTime() === D.getTime() && b.getTime() === z
+                                        C.getTime() && X === e.selectedMonth && e._keyEvent ||
+                                        b.getTime() === D.getTime() && b.getTime() === C
                                         .getTime() ? " " + this._dayOverClass : "") + ($ ?
                                         " " + this._unselectableClass + " ui-state-disabled" :
                                         "") + (R && !g ? "" : " " + O[1] + (D.getTime() === Y
@@ -24072,7 +24192,7 @@ Object.values || (Object.values = function (e) {
                                     .getDate() + 1), D = this._daylightSavingAdjust(D);
                                 T += L + "</tr>"
                             }++X > 11 && (X = 0, ee++), x += T += "</tbody></table>" + (G ?
-                                "</div>" + (U[0] > 0 && C === U[1] - 1 ?
+                                "</div>" + (U[0] > 0 && z === U[1] - 1 ?
                                     "<div class='ui-datepicker-row-break'></div>" : "") :
                                 "")
                         }
@@ -26448,8 +26568,8 @@ Object.values || (Object.values = function (e) {
          * http://api.jqueryui.com/dialog/
          */
         ;
-        var k, x, C = "ui-effects-",
-            z = e;
+        var k, x, z = "ui-effects-",
+            C = e;
         e.effects = {
                 effect: {}
             },
@@ -26808,7 +26928,7 @@ Object.values || (Object.values = function (e) {
                         transparent: [null, null, null, 0],
                         _default: "#ffffff"
                     }
-            }(z),
+            }(C),
             function () {
                 function t(t) {
                     var i, n, o = t.ownerDocument.defaultView ? t.ownerDocument.defaultView
@@ -26844,7 +26964,7 @@ Object.values || (Object.values = function (e) {
                     (function (t, i) {
                         e.fx.step[i] = function (e) {
                             ("none" !== e.end && !e.setAttr || 1 === e.pos && !e
-                            .setAttr) && (z.style(e.elem, i, e.end), e.setAttr = !0)
+                            .setAttr) && (C.style(e.elem, i, e.end), e.setAttr = !0)
                         }
                     })), e.fn.addBack || (e.fn.addBack = function (e) {
                     return this.add(null == e ? this.prevObject : this.prevObject.filter(e))
@@ -26945,13 +27065,13 @@ Object.values || (Object.values = function (e) {
                 e.extend(e.effects, {
                     version: "1.11.4",
                     save: function (e, t) {
-                        for (var i = 0; i < t.length; i++) null !== t[i] && e.data(C + t[
+                        for (var i = 0; i < t.length; i++) null !== t[i] && e.data(z + t[
                             i], e[0].style[t[i]])
                     },
                     restore: function (e, t) {
                         var i, n;
                         for (n = 0; n < t.length; n++) null !== t[n] && (void 0 === (i = e
-                            .data(C + t[n])) && (i = ""), e.css(t[n], i))
+                            .data(z + t[n])) && (i = ""), e.css(t[n], i))
                     },
                     setMode: function (e, t) {
                         return "toggle" === t && (t = e.is(":hidden") ? "show" : "hide"),
@@ -28911,19 +29031,19 @@ Object.values || (Object.values = function (e) {
                     var w = r ? 0 : c,
                         k = w + h,
                         x = l.scrollLeft(),
-                        C = x + d,
-                        z = a.position(),
-                        S = z.top,
+                        z = x + d,
+                        C = a.position(),
+                        S = C.top,
                         T = S + a.height(),
-                        A = z.left,
+                        A = C.left,
                         E = A + a.width(),
                         P = !0 === i ? T : S,
                         j = !0 === i ? S : T,
                         I = !0 === i ? E : A,
                         M = !0 === i ? A : E;
-                    if ("both" === o) return !!p && j <= k && P >= w && M <= C && I >= x;
+                    if ("both" === o) return !!p && j <= k && P >= w && M <= z && I >= x;
                     if ("vertical" === o) return !!p && j <= k && P >= w;
-                    if ("horizontal" === o) return !!p && M <= C && I >= x
+                    if ("horizontal" === o) return !!p && M <= z && I >= x
                 }
             }
         }
@@ -30717,13 +30837,13 @@ Object.values || (Object.values = function (e) {
             return !e || e instanceof k ? e : new k(e, t)
         }
 
-        function C(e, t) {
+        function z(e, t) {
             if (e)
                 for (var i = t ? [e, t] : e, n = 0, o = i.length; n < o; n++) this.extend(i[n])
         }
 
-        function z(e, t) {
-            return e instanceof C ? e : new C(e, t)
+        function C(e, t) {
+            return e instanceof z ? e : new z(e, t)
         }
 
         function S(e, t, i) {
@@ -30832,7 +30952,7 @@ Object.values || (Object.values = function (e) {
             function n(e) {
                 var t;
                 if (qt) {
-                    if (!Ct || "mouse" === e.pointerType) return;
+                    if (!zt || "mouse" === e.pointerType) return;
                     t = ri
                 } else t = e.touches.length;
                 if (!(t > 1)) {
@@ -30845,7 +30965,7 @@ Object.values || (Object.values = function (e) {
             function o(e) {
                 if (r && !a.cancelBubble) {
                     if (qt) {
-                        if (!Ct || "mouse" === e.pointerType) return;
+                        if (!zt || "mouse" === e.pointerType) return;
                         var i, n, o = {};
                         for (n in a) i = a[n], o[n] = i && i.bind ? i.bind(a) : i;
                         a = o
@@ -30864,7 +30984,7 @@ Object.values || (Object.values = function (e) {
             var i = e[ui + li + t],
                 n = e[ui + ci + t],
                 o = e[ui + "dblclick" + t];
-            return e.removeEventListener(li, i, !1), e.removeEventListener(ci, n, !1), Ct || e
+            return e.removeEventListener(li, i, !1), e.removeEventListener(ci, n, !1), zt || e
                 .removeEventListener("dblclick", o, !1), this
         }
 
@@ -31078,7 +31198,7 @@ Object.values || (Object.values = function (e) {
             return ke(e), be(e), this
         }
 
-        function Ce(e, t) {
+        function ze(e, t) {
             if (!t) return new y(e.clientX, e.clientY);
             var i = me(t),
                 n = i.boundingClientRect;
@@ -31086,8 +31206,8 @@ Object.values || (Object.values = function (e) {
                 .clientTop)
         }
 
-        function ze(e) {
-            return Ct ? e.wheelDeltaY / 2 : e.deltaY && 0 === e.deltaMode ? -e.deltaY / yi : e
+        function Ce(e) {
+            return zt ? e.wheelDeltaY / 2 : e.deltaY && 0 === e.deltaMode ? -e.deltaY / yi : e
                 .deltaY && 1 === e.deltaMode ? 20 * -e.deltaY : e.deltaY && 2 === e.deltaMode ? 60 * -
                 e.deltaY : e.deltaX || e.deltaZ ? 0 : e.wheelDelta ? (e.wheelDeltaY || e.wheelDelta) /
                 2 : e.detail && Math.abs(e.detail) < 32765 ? 20 * -e.detail : e.detail ? e.detail / -
@@ -31622,13 +31742,13 @@ Object.values || (Object.values = function (e) {
             isValid: function () {
                 return !(!this.min || !this.max)
             }
-        }, C.prototype = {
+        }, z.prototype = {
             extend: function (e) {
                 var t, i, n = this._southWest,
                     o = this._northEast;
                 if (e instanceof S) t = e, i = e;
                 else {
-                    if (!(e instanceof C)) return e ? this.extend(T(e) || z(e)) : this;
+                    if (!(e instanceof z)) return e ? this.extend(T(e) || C(e)) : this;
                     if (t = e._southWest, i = e._northEast, !t || !i) return this
                 }
                 return n || o ? (n.lat = Math.min(t.lat, n.lat), n.lng = Math.min(t.lng, n
@@ -31641,7 +31761,7 @@ Object.values || (Object.values = function (e) {
                     i = this._northEast,
                     n = Math.abs(t.lat - i.lat) * e,
                     o = Math.abs(t.lng - i.lng) * e;
-                return new C(new S(t.lat - n, t.lng - o), new S(i.lat + n, i.lng + o))
+                return new z(new S(t.lat - n, t.lng - o), new S(i.lat + n, i.lng + o))
             },
             getCenter: function () {
                 return new S((this._southWest.lat + this._northEast.lat) / 2, (this._southWest
@@ -31672,14 +31792,14 @@ Object.values || (Object.values = function (e) {
                 return this._northEast.lat
             },
             contains: function (e) {
-                e = "number" == typeof e[0] || e instanceof S || "lat" in e ? T(e) : z(e);
+                e = "number" == typeof e[0] || e instanceof S || "lat" in e ? T(e) : C(e);
                 var t, i, n = this._southWest,
                     o = this._northEast;
-                return e instanceof C ? (t = e.getSouthWest(), i = e.getNorthEast()) : t = i =
+                return e instanceof z ? (t = e.getSouthWest(), i = e.getNorthEast()) : t = i =
                     e, t.lat >= n.lat && i.lat <= o.lat && t.lng >= n.lng && i.lng <= o.lng
             },
             intersects: function (e) {
-                e = z(e);
+                e = C(e);
                 var t = this._southWest,
                     i = this._northEast,
                     n = e.getSouthWest(),
@@ -31689,7 +31809,7 @@ Object.values || (Object.values = function (e) {
                 return s && a
             },
             overlaps: function (e) {
-                e = z(e);
+                e = C(e);
                 var t = this._southWest,
                     i = this._northEast,
                     n = e.getSouthWest(),
@@ -31703,7 +31823,7 @@ Object.values || (Object.values = function (e) {
                     .join(",")
             },
             equals: function (e, t) {
-                return !!e && (e = z(e), this._southWest.equals(e.getSouthWest(), t) && this
+                return !!e && (e = C(e), this._southWest.equals(e.getSouthWest(), t) && this
                     ._northEast.equals(e.getNorthEast(), t))
             },
             isValid: function () {
@@ -31726,7 +31846,7 @@ Object.values || (Object.values = function (e) {
             toBounds: function (e) {
                 var t = 180 * e / 40075017,
                     i = t / Math.cos(Math.PI / 180 * this.lat);
-                return z([this.lat - t, this.lng - i], [this.lat + t, this.lng + i])
+                return C([this.lat - t, this.lng - i], [this.lat + t, this.lng + i])
             },
             clone: function () {
                 return new S(this.lat, this.lng, this.alt)
@@ -31775,7 +31895,7 @@ Object.values || (Object.values = function (e) {
                     if (0 === n && 0 === o) return e;
                     var s = e.getSouthWest(),
                         a = e.getNorthEast();
-                    return new C(new S(s.lat - n, s.lng - o), new S(a.lat - n, a.lng - o))
+                    return new z(new S(s.lat - n, s.lng - o), new S(a.lat - n, a.lng - o))
                 }
             },
             mt = t({}, pt, {
@@ -31839,15 +31959,15 @@ Object.values || (Object.values = function (e) {
             wt = document.documentElement.style,
             kt = "ActiveXObject" in window,
             xt = kt && !document.addEventListener,
-            Ct = "msLaunchUri" in navigator && !("documentMode" in document),
-            zt = I("webkit"),
+            zt = "msLaunchUri" in navigator && !("documentMode" in document),
+            Ct = I("webkit"),
             St = I("android"),
             Tt = I("android 2") || I("android 3"),
             At = parseInt(/WebKit\/([0-9]+)|$/.exec(navigator.userAgent)[1], 10),
             Et = St && I("Google") && At < 537 && !("AudioNode" in window),
             Pt = !!window.opera,
             jt = I("chrome"),
-            It = I("gecko") && !zt && !Pt && !kt,
+            It = I("gecko") && !Ct && !Pt && !kt,
             Mt = !jt && I("safari"),
             Dt = I("phantom"),
             Nt = "OTransition" in wt,
@@ -31857,7 +31977,7 @@ Object.values || (Object.values = function (e) {
             $t = "MozPerspective" in wt,
             Bt = !window.L_DISABLE_3D && (Ot || Rt || $t) && !Nt && !Dt,
             Ft = "undefined" != typeof orientation || I("mobile"),
-            Ht = Ft && zt,
+            Ht = Ft && Ct,
             Wt = Ft && Rt,
             Vt = !window.PointerEvent && window.MSPointerEvent,
             qt = !(!window.PointerEvent && !Vt),
@@ -31884,8 +32004,8 @@ Object.values || (Object.values = function (e) {
             Xt = (Object.freeze || Object)({
                 ie: kt,
                 ielt9: xt,
-                edge: Ct,
-                webkit: zt,
+                edge: zt,
+                webkit: Ct,
                 android: St,
                 android23: Tt,
                 androidStock: Et,
@@ -31986,8 +32106,8 @@ Object.values || (Object.values = function (e) {
                 disableClickPropagation: we,
                 preventDefault: ke,
                 stop: xe,
-                getMousePosition: Ce,
-                getWheelDelta: ze,
+                getMousePosition: ze,
+                getWheelDelta: Ce,
                 fakeStop: Se,
                 skipped: Te,
                 isExternalTarget: Ae,
@@ -32024,7 +32144,7 @@ Object.values || (Object.values = function (e) {
                     return 1 - Math.pow(1 - e, this._easeOutPower)
                 }
             }),
-            Ci = dt.extend({
+            zi = dt.extend({
                 options: {
                     crs: bt,
                     center: void 0,
@@ -32096,7 +32216,7 @@ Object.values || (Object.values = function (e) {
                     })
                 },
                 _getBoundsCenterZoom: function (e, t) {
-                    t = t || {}, e = e.getBounds ? e.getBounds() : z(e);
+                    t = t || {}, e = e.getBounds ? e.getBounds() : C(e);
                     var i = w(t.paddingTopLeft || t.padding || [0, 0]),
                         n = w(t.paddingBottomRight || t.padding || [0, 0]),
                         o = this.getBoundsZoom(e, !1, i.add(n));
@@ -32117,7 +32237,7 @@ Object.values || (Object.values = function (e) {
                     }
                 },
                 fitBounds: function (e, t) {
-                    if (!(e = z(e))
+                    if (!(e = C(e))
                         .isValid()) throw new Error("Bounds are not valid.");
                     var i = this._getBoundsCenterZoom(e, t);
                     return this.setView(i.center, i.zoom, t)
@@ -32186,7 +32306,7 @@ Object.values || (Object.values = function (e) {
                     }
 
                     function u() {
-                        var i = (Date.now() - k) / C,
+                        var i = (Date.now() - k) / z,
                             n = c(i) * x;
                         i <= 1 ? (this._flyToFrame = _(u, this), this._move(this.unproject(d
                                 .add(h.subtract(d)
@@ -32212,7 +32332,7 @@ Object.values || (Object.values = function (e) {
                         w = n(0),
                         k = Date.now(),
                         x = (n(1) - w) / b,
-                        C = i.duration ? 1e3 * i.duration : 1e3 * x * .8;
+                        z = i.duration ? 1e3 * i.duration : 1e3 * x * .8;
                     return this._moveStart(!0, i.noMoveStart), u.call(this), this
                 },
                 flyToBounds: function (e, t) {
@@ -32220,7 +32340,7 @@ Object.values || (Object.values = function (e) {
                     return this.flyTo(i.center, i.zoom, t)
                 },
                 setMaxBounds: function (e) {
-                    return (e = z(e))
+                    return (e = C(e))
                         .isValid() ? (this.options.maxBounds && this.off("moveend", this
                                 ._panInsideMaxBounds), this.options.maxBounds = e, this
                             ._loaded && this._panInsideMaxBounds(), this.on("moveend", this
@@ -32242,7 +32362,7 @@ Object.values || (Object.values = function (e) {
                 panInsideBounds: function (e, t) {
                     this._enforcingBounds = !0;
                     var i = this.getCenter(),
-                        n = this._limitCenter(i, this._zoom, z(e));
+                        n = this._limitCenter(i, this._zoom, C(e));
                     return i.equals(n) || this.panTo(n, t), this._enforcingBounds = !1, this
                 },
                 panInside: function (e, t) {
@@ -32382,7 +32502,7 @@ Object.values || (Object.values = function (e) {
                 },
                 getBounds: function () {
                     var e = this.getPixelBounds();
-                    return new C(this.unproject(e.getBottomLeft()), this.unproject(e
+                    return new z(this.unproject(e.getBottomLeft()), this.unproject(e
                         .getTopRight()))
                 },
                 getMinZoom: function () {
@@ -32394,7 +32514,7 @@ Object.values || (Object.values = function (e) {
                         1 / 0 : this._layersMaxZoom : this.options.maxZoom
                 },
                 getBoundsZoom: function (e, t, i) {
-                    e = z(e), i = w(i || [0, 0]);
+                    e = C(e), i = w(i || [0, 0]);
                     var n = this.getZoom() || 0,
                         o = this.getMinZoom(),
                         s = this.getMaxZoom(),
@@ -32469,7 +32589,7 @@ Object.values || (Object.values = function (e) {
                     return this.options.crs.wrapLatLng(T(e))
                 },
                 wrapLatLngBounds: function (e) {
-                    return this.options.crs.wrapLatLngBounds(z(e))
+                    return this.options.crs.wrapLatLngBounds(C(e))
                 },
                 distance: function (e, t) {
                     return this.options.crs.distance(T(e), T(t))
@@ -32490,7 +32610,7 @@ Object.values || (Object.values = function (e) {
                     return this.layerPointToContainerPoint(this.latLngToLayerPoint(T(e)))
                 },
                 mouseEventToContainerPoint: function (e) {
-                    return Ce(e, this._container)
+                    return ze(e, this._container)
                 },
                 mouseEventToLayerPoint: function (e) {
                     return this.containerPointToLayerPoint(this.mouseEventToContainerPoint(e))
@@ -32799,7 +32919,7 @@ Object.values || (Object.values = function (e) {
                     }), this))
                 }
             }),
-            zi = v.extend({
+            Ci = v.extend({
                 options: {
                     position: "topright"
                 },
@@ -32836,9 +32956,9 @@ Object.values || (Object.values = function (e) {
                 }
             }),
             Si = function (e) {
-                return new zi(e)
+                return new Ci(e)
             };
-        Ci.include({
+        zi.include({
             addControl: function (e) {
                 return e.addTo(this), this
             },
@@ -32863,7 +32983,7 @@ Object.values || (Object.values = function (e) {
                     ._controlContainer
             }
         });
-        var Ti = zi.extend({
+        var Ti = Ci.extend({
                 options: {
                     collapsed: !0,
                     position: "topright",
@@ -32888,7 +33008,7 @@ Object.values || (Object.values = function (e) {
                     return this._container
                 },
                 addTo: function (e) {
-                    return zi.prototype.addTo.call(this, e), this._expandIfNotCollapsed()
+                    return Ci.prototype.addTo.call(this, e), this._expandIfNotCollapsed()
                 },
                 onRemove: function () {
                     this._map.off("zoomend", this._checkDisabledLayers, this);
@@ -33029,7 +33149,7 @@ Object.values || (Object.values = function (e) {
                     return this.collapse()
                 }
             }),
-            Ai = zi.extend({
+            Ai = Ci.extend({
                 options: {
                     position: "topleft",
                     zoomInText: "+",
@@ -33080,13 +33200,13 @@ Object.values || (Object.values = function (e) {
                         t)
                 }
             });
-        Ci.mergeOptions({
+        zi.mergeOptions({
             zoomControl: !0
-        }), Ci.addInitHook((function () {
+        }), zi.addInitHook((function () {
             this.options.zoomControl && (this.zoomControl = new Ai, this.addControl(this
                 .zoomControl))
         }));
-        var Ei = zi.extend({
+        var Ei = Ci.extend({
                 options: {
                     position: "bottomleft",
                     maxWidth: 100,
@@ -33142,7 +33262,7 @@ Object.values || (Object.values = function (e) {
                     return t * (i = i >= 10 ? 10 : i >= 5 ? 5 : i >= 3 ? 3 : i >= 2 ? 2 : 1)
                 }
             }),
-            Pi = zi.extend({
+            Pi = Ci.extend({
                 options: {
                     position: "bottomright",
                     prefix: '<a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>'
@@ -33178,12 +33298,12 @@ Object.values || (Object.values = function (e) {
                     }
                 }
             });
-        Ci.mergeOptions({
+        zi.mergeOptions({
                 attributionControl: !0
-            }), Ci.addInitHook((function () {
+            }), zi.addInitHook((function () {
                 this.options.attributionControl && (new Pi)
                     .addTo(this)
-            })), zi.Layers = Ti, zi.Zoom = Ai, zi.Scale = Ei, zi.Attribution = Pi, Si.layers =
+            })), Ci.Layers = Ti, Ci.Zoom = Ai, Ci.Scale = Ei, Ci.Attribution = Pi, Si.layers =
             function (e, t, i) {
                 return new Ti(e, t, i)
             }, Si.zoom = function (e) {
@@ -33432,7 +33552,7 @@ Object.values || (Object.values = function (e) {
                 }
             }
         });
-        Ci.include({
+        zi.include({
             addLayer: function (e) {
                 if (!e._layerAdd) throw new Error("The provided object is not a Layer.");
                 var t = n(e);
@@ -33562,7 +33682,7 @@ Object.values || (Object.values = function (e) {
                     return this.invoke("bringToBack")
                 },
                 getBounds: function () {
-                    var e = new C;
+                    var e = new z;
                     for (var t in this._layers) {
                         var i = this._layers[t];
                         e.extend(i.getBounds ? i.getBounds() : i.getLatLng())
@@ -33968,7 +34088,7 @@ Object.values || (Object.values = function (e) {
                 },
                 getBounds: function () {
                     var e = [this._radius, this._radiusY || this._radius];
-                    return new C(this._map.layerPointToLatLng(this._point.subtract(e)), this
+                    return new z(this._map.layerPointToLatLng(this._point.subtract(e)), this
                         ._map.layerPointToLatLng(this._point.add(e)))
                 },
                 setStyle: Xi.prototype.setStyle,
@@ -34049,7 +34169,7 @@ Object.values || (Object.values = function (e) {
                         .extend(e), this.redraw()
                 },
                 _setLatLngs: function (e) {
-                    this._bounds = new C, this._latlngs = this._convertLatLngs(e)
+                    this._bounds = new z, this._latlngs = this._convertLatLngs(e)
                 },
                 _defaultShape: function () {
                     return Be(this._latlngs) ? this._latlngs : this._latlngs[0]
@@ -34276,7 +34396,7 @@ Object.values || (Object.values = function (e) {
                     className: ""
                 },
                 initialize: function (e, t, i) {
-                    this._url = e, this._bounds = z(t), u(this, i)
+                    this._url = e, this._bounds = C(t), u(this, i)
                 },
                 onAdd: function () {
                     this._image || (this._initImage(), this.options.opacity < 1 && this
@@ -34306,7 +34426,7 @@ Object.values || (Object.values = function (e) {
                     return this._url = e, this._image && (this._image.src = e), this
                 },
                 setBounds: function (e) {
-                    return this._bounds = z(e), this._map && this._reset(), this
+                    return this._bounds = C(e), this._map && this._reset(), this
                 },
                 getEvents: function () {
                     var e = {
@@ -34584,9 +34704,9 @@ Object.values || (Object.values = function (e) {
                         ._getPopupAnchor() : [0, 0])
                 }
             });
-        Ci.mergeOptions({
+        zi.mergeOptions({
             closePopupOnClick: !0
-        }), Ci.include({
+        }), zi.include({
             openPopup: function (e, t, i) {
                 return e instanceof dn || (e = new dn(i)
                     .setContent(e)), t && e.setLatLng(t), this.hasLayer(e) ? this : (
@@ -34731,7 +34851,7 @@ Object.values || (Object.values = function (e) {
                     .sticky ? this._source._getTooltipAnchor() : [0, 0])
             }
         });
-        Ci.include({
+        zi.include({
             openTooltip: function (e, t, i) {
                 return e instanceof hn || (e = new hn(i)
                         .setContent(e)), t && e.setLatLng(t), this.hasLayer(e) ? this :
@@ -35133,7 +35253,7 @@ Object.values || (Object.values = function (e) {
                     }
                     if (!this.options.bounds) return !0;
                     var n = this._tileCoordsToBounds(e);
-                    return z(this.options.bounds)
+                    return C(this.options.bounds)
                         .overlaps(n)
                 },
                 _keyToBounds: function (e) {
@@ -35148,7 +35268,7 @@ Object.values || (Object.values = function (e) {
                 },
                 _tileCoordsToBounds: function (e) {
                     var t = this._tileCoordsToNwSe(e),
-                        i = new C(t[0], t[1]);
+                        i = new z(t[0], t[1]);
                     return this.options.noWrap || (i = this._map.wrapLatLngBounds(i)), i
                 },
                 _tileCoordsToKey: function (e) {
@@ -35786,7 +35906,7 @@ Object.values || (Object.values = function (e) {
                     J(e._path)
                 }
             });
-        Qt && kn.include(yn), Ci.include({
+        Qt && kn.include(yn), zi.include({
             getRenderer: function (e) {
                 var t = e.options.renderer || this._getPaneRenderer(e.options.pane) ||
                     this.options.renderer || this._renderer;
@@ -35812,17 +35932,17 @@ Object.values || (Object.values = function (e) {
                 return this.setLatLngs(this._boundsToLatLngs(e))
             },
             _boundsToLatLngs: function (e) {
-                return [(e = z(e))
+                return [(e = C(e))
                     .getSouthWest(), e.getNorthWest(), e.getNorthEast(), e
                     .getSouthEast()]
             }
         });
         kn.create = wn, kn.pointsToPath = j, sn.geometryToLayer = We, sn.coordsToLatLng = Ve, sn
             .coordsToLatLngs = qe, sn.latLngToCoords = Ue, sn.latLngsToCoords = Ze, sn.getFeature =
-            Ke, sn.asFeature = Ge, Ci.mergeOptions({
+            Ke, sn.asFeature = Ge, zi.mergeOptions({
                 boxZoom: !0
             });
-        var Cn = ji.extend({
+        var zn = ji.extend({
             initialize: function (e) {
                 this._map = e, this._container = e._container, this._pane = e._panes
                     .overlayPane, this._resetStateTimeout = 0, e.on("unload", this
@@ -35880,7 +36000,7 @@ Object.values || (Object.values = function (e) {
                 if ((1 === e.which || 1 === e.button) && (this._finish(), this._moved)) {
                     this._clearDeferredResetState(), this._resetStateTimeout = setTimeout(
                         i(this._resetState, this), 0);
-                    var t = new C(this._map.containerPointToLatLng(this._startPoint), this
+                    var t = new z(this._map.containerPointToLatLng(this._startPoint), this
                         ._map.containerPointToLatLng(this._point));
                     this._map.fitBounds(t)
                         .fire("boxzoomend", {
@@ -35892,10 +36012,10 @@ Object.values || (Object.values = function (e) {
                 27 === e.keyCode && this._finish()
             }
         });
-        Ci.addInitHook("addHandler", "boxZoom", Cn), Ci.mergeOptions({
+        zi.addInitHook("addHandler", "boxZoom", zn), zi.mergeOptions({
             doubleClickZoom: !0
         });
-        var zn = ji.extend({
+        var Cn = ji.extend({
             addHooks: function () {
                 this._map.on("dblclick", this._onDoubleClick, this)
             },
@@ -35911,7 +36031,7 @@ Object.values || (Object.values = function (e) {
                     .containerPoint, o)
             }
         });
-        Ci.addInitHook("addHandler", "doubleClickZoom", zn), Ci.mergeOptions({
+        zi.addInitHook("addHandler", "doubleClickZoom", Cn), zi.mergeOptions({
             dragging: !0,
             inertia: !Tt,
             inertiaDeceleration: 3400,
@@ -35952,7 +36072,7 @@ Object.values || (Object.values = function (e) {
                 var e = this._map;
                 if (e._stop(), this._map.options.maxBounds && this._map.options
                     .maxBoundsViscosity) {
-                    var t = z(this._map.options.maxBounds);
+                    var t = C(this._map.options.maxBounds);
                     this._offsetLimit = x(this._map.latLngToContainerPoint(t
                         .getNorthWest())
                         .multiplyBy(-1), this._map.latLngToContainerPoint(t
@@ -36042,7 +36162,7 @@ Object.values || (Object.values = function (e) {
                 }
             }
         });
-        Ci.addInitHook("addHandler", "dragging", Sn), Ci.mergeOptions({
+        zi.addInitHook("addHandler", "dragging", Sn), zi.mergeOptions({
             keyboard: !0,
             keyboardPanDelta: 80
         });
@@ -36134,7 +36254,7 @@ Object.values || (Object.values = function (e) {
                 }
             }
         });
-        Ci.addInitHook("addHandler", "keyboard", Tn), Ci.mergeOptions({
+        zi.addInitHook("addHandler", "keyboard", Tn), zi.mergeOptions({
             scrollWheelZoom: !0,
             wheelDebounceTime: 40,
             wheelPxPerZoomLevel: 60
@@ -36148,7 +36268,7 @@ Object.values || (Object.values = function (e) {
                 _e(this._map._container, "mousewheel", this._onWheelScroll, this)
             },
             _onWheelScroll: function (e) {
-                var t = ze(e),
+                var t = Ce(e),
                     n = this._map.options.wheelDebounceTime;
                 this._delta += t, this._lastMousePos = this._map
                     .mouseEventToContainerPoint(e), this._startTime || (this
@@ -36171,7 +36291,7 @@ Object.values || (Object.values = function (e) {
                         ._lastMousePos, t + a))
             }
         });
-        Ci.addInitHook("addHandler", "scrollWheelZoom", An), Ci.mergeOptions({
+        zi.addInitHook("addHandler", "scrollWheelZoom", An), zi.mergeOptions({
             tap: !0,
             tapTolerance: 15
         });
@@ -36230,7 +36350,7 @@ Object.values || (Object.values = function (e) {
                     !1, !1, 0, null), t.target.dispatchEvent(i)
             }
         });
-        Ut && !qt && Ci.addInitHook("addHandler", "tap", En), Ci.mergeOptions({
+        Ut && !qt && zi.addInitHook("addHandler", "tap", En), zi.mergeOptions({
             touchZoom: Ut && !Tt,
             bounceAtZoomLimits: !0
         });
@@ -36298,14 +36418,14 @@ Object.values || (Object.values = function (e) {
                         ._zoom))) : this._zooming = !1
             }
         });
-        Ci.addInitHook("addHandler", "touchZoom", Pn), Ci.BoxZoom = Cn, Ci.DoubleClickZoom = zn, Ci
-            .Drag = Sn, Ci.Keyboard = Tn, Ci.ScrollWheelZoom = An, Ci.Tap = En, Ci.TouchZoom = Pn,
-            Object.freeze = et, e.version = "1.4.0+HEAD.3337f36", e.Control = zi, e.control = Si, e
+        zi.addInitHook("addHandler", "touchZoom", Pn), zi.BoxZoom = zn, zi.DoubleClickZoom = Cn, zi
+            .Drag = Sn, zi.Keyboard = Tn, zi.ScrollWheelZoom = An, zi.Tap = En, zi.TouchZoom = Pn,
+            Object.freeze = et, e.version = "1.4.0+HEAD.3337f36", e.Control = Ci, e.control = Si, e
             .Browser = Xt, e.Evented = dt, e.Mixin = Mi, e.Util = ct, e.Class = v, e.Handler = ji, e
             .extend = t, e.bind = i, e.stamp = n, e.setOptions = u, e.DomEvent = ki, e.DomUtil = vi, e
             .PosAnimation = xi, e.Draggable = Oi, e.LineUtil = Ri, e.PolyUtil = $i, e.Point = y, e
             .point = w, e.Bounds = k, e.bounds = x, e.Transformation = A, e.transformation = E, e
-            .Projection = Hi, e.LatLng = S, e.latLng = T, e.LatLngBounds = C, e.latLngBounds = z, e
+            .Projection = Hi, e.LatLng = S, e.latLng = T, e.LatLngBounds = z, e.latLngBounds = C, e
             .CRS = pt, e.GeoJSON = sn, e.geoJSON = Ye, e.geoJson = rn, e.Layer = Ui, e.LayerGroup =
             Zi, e.layerGroup = function (e, t) {
                 return new Zi(e, t)
@@ -36338,8 +36458,8 @@ Object.values || (Object.values = function (e) {
                 return new on(e, t)
             }, e.Rectangle = xn, e.rectangle = function (e, t) {
                 return new xn(e, t)
-            }, e.Map = Ci, e.map = function (e, t) {
-                return new Ci(e, t)
+            }, e.Map = zi, e.map = function (e, t) {
+                return new zi(e, t)
             };
         var jn = window.L;
         e.noConflict = function () {
@@ -39244,17 +39364,17 @@ function (e, t) {
                                 var x = " " + v[0].className || "";
                                 if (0 === s.index()) {
                                     o += 1;
-                                    var C = v[0].label,
-                                        z = void 0 !== v.data("subtext") ?
+                                    var z = v[0].label,
+                                        C = void 0 !== v.data("subtext") ?
                                         '<small class="text-muted">' + v.data(
                                             "subtext") + "</small>" : "";
-                                    C = (v.data("icon") ? '<span class="' + i.options
+                                    z = (v.data("icon") ? '<span class="' + i.options
                                             .iconBase + " " + v.data("icon") +
                                             '"></span> ' : "") +
-                                        '<span class="text">' + l(C) + z + "</span>",
+                                        '<span class="text">' + l(z) + C + "</span>",
                                         0 !== t && n.length > 0 && (a++, n.push(r("",
                                             null, "divider", o + "div"))), a++, n
-                                        .push(r(C, null, "dropdown-header" + x, o))
+                                        .push(r(z, null, "dropdown-header" + x, o))
                                 }
                                 if (i.options.hideDisabled && w) return void a--;
                                 n.push(r(c(m, "opt " + h + x, p, f), t, "", o))
@@ -39438,7 +39558,7 @@ function (e, t) {
                         w = this.sizeInfo.menuPadding,
                         k = this.sizeInfo.menuExtras,
                         x = this.options.hideDisabled ? ".disabled" : "",
-                        C = function () {
+                        z = function () {
                             var t, i = c.$newElement.offset(),
                                 n = e(c.options.container);
                             c.options.container && !n.is("body") ? ((t = n.offset())
@@ -39452,8 +39572,8 @@ function (e, t) {
                                 .top - o[2], r = i.left - t.left - h.scrollLeft(), l = h
                                 .width() - r - m - t.left - o[1], s -= o[0], r -= o[3]
                         };
-                    if (C(), "auto" === this.options.size) {
-                        var z = function () {
+                    if (z(), "auto" === this.options.size) {
+                        var C = function () {
                             var h, p = function (t, i) {
                                     return function (n) {
                                         return i ? n.classList ? n.classList.contains(
@@ -39466,10 +39586,10 @@ function (e, t) {
                                 y = c.$menuInner[0].getElementsByTagName("li"),
                                 x = Array.prototype.filter ? Array.prototype.filter.call(
                                     y, p("hidden", !1)) : c.$lis.not(".hidden"),
-                                z = Array.prototype.filter ? Array.prototype.filter.call(
+                                C = Array.prototype.filter ? Array.prototype.filter.call(
                                     x, p("dropdown-header", !0)) : x.filter(
                                     ".dropdown-header");
-                            C(), t = a - k.vert, i = l - k.horiz, c.options.container ? (u
+                            z(), t = a - k.vert, i = l - k.horiz, c.options.container ? (u
                                     .data("height") || u.data("height", u.height()), n = u
                                     .data("height"), u.data("width") || u.data("width", u
                                         .width()), o = u.data("width")) : (n = u.height(),
@@ -39478,7 +39598,7 @@ function (e, t) {
                                 .$newElement.hasClass("dropup") && (t = s - k.vert),
                                 "auto" === c.options.dropdownAlignRight && u.toggleClass(
                                     "dropdown-menu-right", r > l && i - k.horiz < o - m),
-                                h = x.length + z.length > 3 ? 3 * f + k.vert - 2 : 0, u
+                                h = x.length + C.length > 3 ? 3 * f + k.vert - 2 : 0, u
                                 .css({
                                     "max-height": t + "px",
                                     overflow: "hidden",
@@ -39489,10 +39609,10 @@ function (e, t) {
                                     "min-height": Math.max(h - w.vert, 0) + "px"
                                 })
                         };
-                        z(), this.$searchbox.off("input.getSize propertychange.getSize")
-                            .on("input.getSize propertychange.getSize", z), h.off(
+                        C(), this.$searchbox.off("input.getSize propertychange.getSize")
+                            .on("input.getSize propertychange.getSize", C), h.off(
                                 "resize.getSize scroll.getSize")
-                            .on("resize.getSize scroll.getSize", z)
+                            .on("resize.getSize scroll.getSize", C)
                     } else if (this.options.size && "auto" != this.options.size && this.$lis
                         .not(x)
                         .length > this.options.size) {
@@ -40204,12 +40324,12 @@ function (e) {
         return e !== t && e.contains && e.contains(t)
     }
 
-    function C(e, t) {
+    function z(e, t) {
         var i = e.previousElementSibling;
         return t && i ? k(i, t) ? i : null : i
     }
 
-    function z(e, t) {
+    function C(e, t) {
         return t.parentNode.insertBefore(e, t)
     }
 
@@ -40341,11 +40461,11 @@ function (e) {
                 var o = t(e),
                     s = K(o, e),
                     a = e;
-                W(o, a), z(s, o), z(a, o)
+                W(o, a), C(s, o), C(a, o)
             }
             if (n && k(e, i) && k(e.parentNode, i)) {
-                var l = C(e, "li");
-                l || z(l = r("li"), e), d(l, e)
+                var l = z(e, "li");
+                l || C(l = r("li"), e), d(l, e)
             }
         }))
     }
@@ -40534,7 +40654,7 @@ function (e) {
                 o = l.selectedRange(),
                 s = o.commonAncestorContainer;
             if (!i) return !1;
-            o.deleteContents(), s && 3 !== s.nodeType && !F(s) ? z(i, s) : o.insertNode(i), l
+            o.deleteContents(), s && 3 !== s.nodeType && !F(s) ? C(i, s) : o.insertNode(i), l
                 .restoreRange()
         }, l.cloneSelected = function () {
             var e = l.selectedRange();
@@ -40699,13 +40819,13 @@ function (e) {
     function re(e, t) {
         var i;
         L(e, (function (e) {
-            H(e, !0) ? (i || z(i = r("p", {}, t), e), e.nodeType === ve && "" === e.nodeValue ||
+            H(e, !0) ? (i || C(i = r("p", {}, t), e), e.nodeType === ve && "" === e.nodeValue ||
                 d(i, e)) : i = null
         }), !1, !0)
     }
 
     function le(e, t) {
-        var i, a, l, _, x, C, S, N, L, R, W, q, U, K, Y, J, Q, ee, ie, ce, ue, de, fe, _e, ye, ke, xe, Te, Ae,
+        var i, a, l, _, x, z, S, N, L, R, W, q, U, K, Y, J, Q, ee, ie, ce, ue, de, fe, _e, ye, ke, xe, Te, Ae,
             Ee, je, Ie, Me, $e, Be, Fe, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, ot,
             st, at, rt, lt, ct, ut, dt, ht, pt, mt, ft = this,
             _t = {},
@@ -40717,7 +40837,7 @@ function (e) {
         ft.commands = n(!0, {}, t.commands || Pe);
         var kt = ft.opts = n(!0, {}, we, t);
         ft.opts.emoticons = t.emoticons || we.emoticons, xe = function () {
-            e._sceditor = ft, kt.locale && "en" !== kt.locale && Me(), z(a = r("div", {
+            e._sceditor = ft, kt.locale && "en" !== kt.locale && Me(), C(a = r("div", {
                     className: "sceditor-container"
                 }), e), y(a, "z-index", kt.zIndex), Le && A(a, "ie ie" + Le), ce = e.required, e
                 .required = !1;
@@ -40748,21 +40868,21 @@ function (e) {
                     "src", "javascript:false"), d(a, _), d(a, N), ft.dimensions(kt.width || j(e), kt
                     .height || I(e));
             var t = Le ? "ie ie" + Le : "";
-            t += ze ? " ios" : "", (S = _.contentDocument)
+            t += Ce ? " ios" : "", (S = _.contentDocument)
                 .open(), S.write(te("html", {
                     attrs: ' class="' + t + '"',
                     spellcheck: kt.spellcheck ? "" : 'spellcheck="false"',
                     charset: kt.charset,
                     style: kt.style
-                })), S.close(), C = S.body, x = _.contentWindow, ft.readOnly(!!kt.readOnly), (ze || Ce ||
-                    Le) && (I(C, "100%"), Le || p(C, "touchend", ft.focus));
+                })), S.close(), z = S.body, x = _.contentWindow, ft.readOnly(!!kt.readOnly), (Ce || ze ||
+                    Le) && (I(z, "100%"), Le || p(z, "touchend", ft.focus));
             var i = f(e, "tabindex");
             f(N, "tabindex", i), f(_, "tabindex", i), K = new oe(x), g(e), ft.val(e.value);
             var n = kt.placeholder || f(e, "placeholder");
-            n && (N.placeholder = n, f(C, "placeholder", n))
+            n && (N.placeholder = n, f(z, "placeholder", n))
         }, Be = function () {
-            kt.autoUpdate && (p(C, "blur", pt), p(N, "blur", pt)), null === kt.rtl && (kt.rtl = "rtl" ===
-                y(N, "direction")), ft.rtl(!!kt.rtl), kt.autoExpand && (p(C, "load", mt, be), p(C,
+            kt.autoUpdate && (p(z, "blur", pt), p(N, "blur", pt)), null === kt.rtl && (kt.rtl = "rtl" ===
+                y(N, "direction")), ft.rtl(!!kt.rtl), kt.autoExpand && (p(z, "load", mt, be), p(z,
                 "input keyup", mt)), kt.resizeEnabled && He(), f(a, "id", kt.id), ft.emoticons(kt
                 .emoticonsEnabled)
         }, Fe = function () {
@@ -40771,14 +40891,14 @@ function (e) {
                 n = "keydown keyup keypress focus blur contextmenu",
                 o = "onselectionchange" in S ? "selectionchange" :
                 "keyup focus blur contextmenu mouseup touchend click";
-            p(Ne, "click", Xe), t && (p(t, "reset", Ge), p(t, "submit", ft.updateOriginal, be)), p(C,
-                    "keypress", Ke), p(C, "keydown", Ue), p(C, "keydown", Ze), p(C, "keyup", nt), p(C,
-                    "blur", dt), p(C, "keyup", ht), p(C, "paste", Ve), p(C, i, Je), p(C, o, ot), p(C, n,
-                    Qe), kt.emoticonsCompat && De.getSelection && p(C, "keyup", lt), p(C, "blur", (
+            p(Ne, "click", Xe), t && (p(t, "reset", Ge), p(t, "submit", ft.updateOriginal, be)), p(z,
+                    "keypress", Ke), p(z, "keydown", Ue), p(z, "keydown", Ze), p(z, "keyup", nt), p(z,
+                    "blur", dt), p(z, "keyup", ht), p(z, "paste", Ve), p(z, i, Je), p(z, o, ot), p(z, n,
+                    Qe), kt.emoticonsCompat && De.getSelection && p(z, "keyup", lt), p(z, "blur", (
                     function () {
-                        ft.val() || A(C, "placeholder")
-                    })), p(C, "focus", (function () {
-                    E(C, "placeholder")
+                        ft.val() || A(z, "placeholder")
+                    })), p(z, "focus", (function () {
+                    E(z, "placeholder")
                 })), p(N, "blur", dt), p(N, "keyup", ht), p(N, "keydown", Ue), p(N, i, Je), p(N, n, Qe),
                 p(S, "mousedown", Ye), p(S, o, ot), p(S, "beforedeactivate keyup mouseup", Ee), p(S,
                     "keyup", nt), p(S, "focus", (function () {
@@ -40803,7 +40923,7 @@ function (e) {
                                 name: o,
                                 dispName: ft._(r.name || r.tooltip || o)
                             }, !0)
-                            .firstChild, ke && ke.create) ke.create(o) && (z(ke
+                            .firstChild, ke && ke.create) ke.create(o) && (C(ke
                             .create(o), s.firstChild), A(s, "has-icon"));
                         s._sceTxtMode = !!r.txtExec, s._sceWysiwygMode = !!r.exec,
                             P(s, "disabled", !r.exec), p(s, "click", (function (
@@ -40840,10 +40960,10 @@ function (e) {
                 w = 0,
                 k = 0,
                 x = j(a),
-                C = I(a),
-                z = !1,
+                z = I(a),
+                C = !1,
                 S = ft.rtl();
-            if (e = kt.resizeMinHeight || C / 1.5, t = kt.resizeMaxHeight || 2.5 * C, i = kt
+            if (e = kt.resizeMinHeight || z / 1.5, t = kt.resizeMaxHeight || 2.5 * z, i = kt
                 .resizeMinWidth || x / 1.25, n = kt.resizeMaxWidth || 1.25 * x, o = function (o) {
                     "touchmove" === o.type ? (o = De.event, b = o.changedTouches[0].pageX, y = o
                         .changedTouches[0].pageY) : (b = o.pageX, y = o.pageY);
@@ -40853,7 +40973,7 @@ function (e) {
                         0 && s > t && (s = t), e > 0 && s < e && (s = e), kt.resizeHeight || (s = !1), (
                             a || s) && ft.dimensions(a, s), o.preventDefault()
                 }, s = function (e) {
-                    z && (z = !1, g(c), E(a, "resizing"), m(Ne, u, o), m(Ne, h, s), e.preventDefault())
+                    C && (C = !1, g(c), E(a, "resizing"), m(Ne, u, o), m(Ne, h, s), e.preventDefault())
                 }, ke && ke.create) {
                 var T = ke.create("grip");
                 T && (d(l, T), A(l, "has-icon"))
@@ -40861,7 +40981,7 @@ function (e) {
             d(a, l), d(a, c), g(c), p(l, "touchstart mousedown", (function (e) {
                 "touchstart" === e.type ? (e = De.event, f = e.touches[0].pageX, _ = e
                         .touches[0].pageY) : (f = e.pageX, _ = e.pageY), w = j(a), k = I(a),
-                    z = !0, A(a, "resizing"), v(c), p(Ne, u, o), p(Ne, h, s), e
+                    C = !0, A(a, "resizing"), v(c), p(Ne, u, o), p(Ne, h, s), e
                     .preventDefault()
             }))
         }, We = function () {
@@ -40877,23 +40997,23 @@ function (e) {
                 }))
             }))
         }, at = function () {
-            var e, t, i = C.firstChild,
+            var e, t, i = z.firstChild,
                 n = !!kt.autofocusEnd;
             if (D(a)) {
                 if (ft.sourceMode()) return t = n ? N.value.length : 0, void N.setSelectionRange(t, t);
-                if (Z(C), n)
-                    for ((i = C.lastChild) || (i = r("p", {}, S), d(C, i)); i.lastChild;) i = i.lastChild,
+                if (Z(z), n)
+                    for ((i = z.lastChild) || (i = r("p", {}, S), d(z, i)); i.lastChild;) i = i.lastChild,
                         !Oe && k(i, "br") && i.previousSibling && (i = i.previousSibling);
                 e = S.createRange(), F(i) ? e.selectNodeContents(i) : (e.setStartBefore(i), n && e
-                    .setStartAfter(i)), e.collapse(!n), K.selectRange(e), ee = e, n && (C.scrollTop =
-                    C.scrollHeight), ft.focus()
+                    .setStartAfter(i)), e.collapse(!n), K.selectRange(e), ee = e, n && (z.scrollTop =
+                    z.scrollHeight), ft.focus()
             }
         }, ft.readOnly = function (e) {
-            return "boolean" != typeof e ? !N.readonly : (C.contentEditable = !e, N.readonly = !e, et(e),
+            return "boolean" != typeof e ? !N.readonly : (z.contentEditable = !e, N.readonly = !e, et(e),
                 ft)
         }, ft.rtl = function (e) {
             var t = e ? "rtl" : "ltr";
-            return "boolean" != typeof e ? "rtl" === f(N, "dir") : (f(C, "dir", t), f(N, "dir", t), E(a,
+            return "boolean" != typeof e ? "rtl" === f(N, "dir") : (f(z, "dir", t), f(N, "dir", t), E(a,
                 "rtl"), E(a, "ltr"), A(a, t), ke && ke.rtl && ke.rtl(e), ft)
         }, et = function (e) {
             var t = ft.inSourceMode() ? "_sceTxtMode" : "_sceWysiwygMode";
@@ -40927,7 +41047,7 @@ function (e) {
                     }
                 }
                 var n = Ne.createRange();
-                n.selectNodeContents(C);
+                n.selectNodeContents(z);
                 var o = n.getBoundingClientRect(),
                     s = S.documentElement.clientHeight - 1,
                     a = o.bottom - o.top,
@@ -40963,8 +41083,8 @@ function (e) {
         }, Xe = function (e) {
             3 !== e.which && L && !e.defaultPrevented && (pt(), ft.closeDropDown())
         }, Ve = function (e) {
-            var t = Le || Ce,
-                i = C,
+            var t = Le || ze,
+                i = z,
                 n = e.clipboardData,
                 o = function (e) {
                     var t = new FileReader;
@@ -41009,9 +41129,9 @@ function (e) {
             L && (u(L), L = null), !0 === e && ft.focus()
         }, ft.wysiwygEditorInsertHtml = function (e, t, i) {
             var n, o, s, a = I(_);
-            ft.focus(), !i && c(Q, "code") || (K.insertHTML(e, t), K.saveRange(), Te(), v(n = h(C,
-                    "#sceditor-end-marker")[0]), o = C.scrollTop, s = G(n)
-                .top + 1.5 * n.offsetHeight - a, g(n), (s > o || s + a < o) && (C.scrollTop = s), ut(!
+            ft.focus(), !i && c(Q, "code") || (K.insertHTML(e, t), K.saveRange(), Te(), v(n = h(z,
+                    "#sceditor-end-marker")[0]), o = z.scrollTop, s = G(n)
+                .top + 1.5 * n.offsetHeight - a, g(n), (s > o || s + a < o) && (z.scrollTop = s), ut(!
                     1), K.restoreRange(), nt())
         }, ft.wysiwygEditorInsertText = function (e, t) {
             ft.wysiwygEditorInsertHtml(X(e), X(t))
@@ -41046,25 +41166,25 @@ function (e) {
                     .replace(/&gt;/g, ">")
                     .replace(/&amp;/g, "&")), ft.wysiwygEditorInsertHtml(e), ft
         }, ft.getWysiwygEditorValue = function (e) {
-            for (var t, n = r("div", {}, S), o = C.childNodes, s = 0; s < o.length; s++) d(n, o[s]
+            for (var t, n = r("div", {}, S), o = z.childNodes, s = 0; s < o.length; s++) d(n, o[s]
                 .cloneNode(!0));
-            return d(C, n), V(n), u(n), t = n.innerHTML, !1 !== e && i.hasOwnProperty("toSource") && (t =
+            return d(z, n), V(n), u(n), t = n.innerHTML, !1 !== e && i.hasOwnProperty("toSource") && (t =
                 i.toSource(t, S)), t
         }, ft.getBody = function () {
-            return C
+            return z
         }, ft.getContentAreaContainer = function () {
             return _
         }, ft.getSourceEditorValue = function (e) {
             var t = N.value;
             return !1 !== e && "toHtml" in i && (t = i.toHtml(t)), t
         }, ft.setWysiwygEditorValue = function (e) {
-            e || (e = "<p>" + (Le ? "" : "<br />") + "</p>"), C.innerHTML = e, Te(), nt(), ut(), mt()
+            e || (e = "<p>" + (Le ? "" : "<br />") + "</p>"), z.innerHTML = e, Te(), nt(), ut(), mt()
         }, ft.setSourceEditorValue = function (e) {
             N.value = e, ut()
         }, ft.updateOriginal = function () {
             e.value = ft.val()
         }, Te = function () {
-            kt.emoticonsEnabled && ae(C, wt, kt.emoticonsCompat)
+            kt.emoticonsEnabled && ae(z, wt, kt.emoticonsCompat)
         }, ft.inSourceMode = function () {
             return T(a, "sourceMode")
         }, ft.sourceMode = function (e) {
@@ -41100,9 +41220,9 @@ function (e) {
                     if ((ee = K.cloneSelected()) && ee.collapsed) {
                         var e = ee.startContainer,
                             t = ee.startOffset;
-                        for (t && e.nodeType !== ve && (e = e.childNodes[t]); e && e.parentNode !== C;)
+                        for (t && e.nodeType !== ve && (e = e.childNodes[t]); e && e.parentNode !== z;)
                             e = e.parentNode;
-                        e && H(e, !0) && (K.saveRange(), re(C, S), K.restoreRange())
+                        e && H(e, !0) && (K.saveRange(), re(z, S), K.restoreRange())
                     }
                     M(a, "selectionchanged")
                 }
@@ -41157,12 +41277,12 @@ function (e) {
                 e.preventDefault()
             }
         }, nt = function () {
-            O(C, (function (e) {
+            O(z, (function (e) {
                 if (e.nodeType === ge && !/inline/.test(y(e, "display")) && !k(e,
                         ".sceditor-nlf") && $(e)) {
                     var t = r("p", {}, S);
                     return t.className = "sceditor-nlf", t.innerHTML = Oe ? "" : "<br />", d(
-                        C, t), !1
+                        z, t), !1
                 }
                 if (3 === e.nodeType && !/^\s*$/.test(e.nodeValue) || k(e, "br")) return !1
             }))
@@ -41196,7 +41316,7 @@ function (e) {
                 s]] || [], t));
             return ft
         }, ft.blur = function (e, t, i) {
-            return me(e) ? ft.bind("blur", e, t, i) : ft.sourceMode() ? N.blur() : C.blur(), ft
+            return me(e) ? ft.bind("blur", e, t, i) : ft.sourceMode() ? N.blur() : z.blur(), ft
         }, ft.focus = function (e, t, i) {
             if (me(e)) ft.bind("focus", e, t, i);
             else if (ft.inSourceMode()) N.focus();
@@ -41206,7 +41326,7 @@ function (e) {
                 var n, o = K.selectedRange();
                 ee || at(), !Oe && o && 1 === o.endOffset && o.collapsed && (n = o.endContainer) && 1 ===
                     n.childNodes.length && k(n.firstChild, "br") && (o.setStartBefore(n.firstChild), o
-                        .collapse(!0), K.selectRange(o)), x.focus(), C.focus(), R && (K.selectRange(R),
+                        .collapse(!0), K.selectRange(o)), x.focus(), z.focus(), R && (K.selectRange(R),
                         R = null)
             }
             return tt(), ft
@@ -41237,12 +41357,12 @@ function (e) {
             se(Q, K)
         }, ft.emoticons = function (e) {
             if (!e && !1 !== e) return kt.emoticonsEnabled;
-            (kt.emoticonsEnabled = e, e) ? (p(C, "keypress", rt), ft.sourceMode() || (K.saveRange(), Te(),
-                ut(!1), K.restoreRange())) : (s(h(C, "img[data-sceditor-emoticon]"), (function (e, t) {
+            (kt.emoticonsEnabled = e, e) ? (p(z, "keypress", rt), ft.sourceMode() || (K.saveRange(), Te(),
+                ut(!1), K.restoreRange())) : (s(h(z, "img[data-sceditor-emoticon]"), (function (e, t) {
                 var i = w(t, "sceditor-emoticon"),
                     n = S.createTextNode(i);
                 t.parentNode.replaceChild(n, t)
-            })), m(C, "keypress", rt), ut());
+            })), m(z, "keypress", rt), ut());
             return ft
         }, ft.css = function (e) {
             return ue || (ue = r("style", {
@@ -41389,7 +41509,7 @@ function (e) {
                     n = !i && K.hasSelection();
                 W = !1, e = !1 !== e && !S.getElementById("sceditor-start-marker"), q && (clearTimeout(q),
                         q = !1), n && e && K.saveRange(),
-                    (t = i ? N.value : C.innerHTML) !== ut.lastVal && (ut.lastVal = t, M(a,
+                    (t = i ? N.value : z.innerHTML) !== ut.lastVal && (ut.lastVal = t, M(a,
                         "valuechanged", {
                             rawValue: i ? ft.val() : t
                         })), n && e && K.removeMarkers()
@@ -41517,13 +41637,13 @@ function (e) {
             return i.documentMode && i.all && window.atob && (t = 10), 4 === t && i.documentMode && (t = 11),
                 t > 4 ? t : e
         }(),
-        Ce = "-ms-ime-align" in document.documentElement.style,
-        ze = /iPhone|iPod|iPad| wosbrowser\//i.test(ke),
+        ze = "-ms-ime-align" in document.documentElement.style,
+        Ce = /iPhone|iPod|iPad| wosbrowser\//i.test(ke),
         Se = ((de = document.createElement("div"))
             .contentEditable = !0, "contentEditable" in document.documentElement && "true" === de
             .contentEditable && (ue = /Opera Mobi|Opera Mini/i.test(ke), /Android/i.test(ke) && (ue = !1),
                 / Silk\//i.test(ke) && (ue = !(ce = /AppleWebKit\/(\d+)/.exec(ke)) || !ce[1] || ce[1] < 534),
-                ze && (ue = /OS [0-4](_\d)+ like Mac/i.test(ke)), /Firefox/i.test(ke) && (ue = !1),
+                Ce && (ue = /OS [0-4](_\d)+ like Mac/i.test(ke)), /Firefox/i.test(ke) && (ue = !1),
                 /OneBrowser/i.test(ke) && (ue = !1), "UCWEB" === navigator.vendor && (ue = !1), xe <= 9 && (
                     ue = !0), !ue)),
         Te =
@@ -41852,7 +41972,7 @@ function (e) {
                 exec: function () {
                     var e = c(this.currentNode(), "a");
                     if (e) {
-                        for (; e.firstChild;) z(e.firstChild, e);
+                        for (; e.firstChild;) C(e.firstChild, e);
                         u(e)
                     }
                 },
@@ -42089,7 +42209,7 @@ function (e) {
             commands: Pe,
             defaultOptions: we,
             ie: xe,
-            ios: ze,
+            ios: Ce,
             isWysiwygSupported: Se,
             regexEscape: Q,
             escapeEntities: X,
@@ -42312,12 +42432,12 @@ function (e) {
         return e !== t && e.contains && e.contains(t)
     }
 
-    function C(e, t) {
+    function z(e, t) {
         var i = e.previousElementSibling;
         return t && i ? k(i, t) ? i : null : i
     }
 
-    function z(e, t) {
+    function C(e, t) {
         return t.parentNode.insertBefore(e, t)
     }
 
@@ -42449,11 +42569,11 @@ function (e) {
                 var o = t(e),
                     s = K(o, e),
                     a = e;
-                W(o, a), z(s, o), z(a, o)
+                W(o, a), C(s, o), C(a, o)
             }
             if (n && k(e, i) && k(e.parentNode, i)) {
-                var l = C(e, "li");
-                l || z(l = r("li"), e), d(l, e)
+                var l = z(e, "li");
+                l || C(l = r("li"), e), d(l, e)
             }
         }))
     }
@@ -42642,7 +42762,7 @@ function (e) {
                 o = l.selectedRange(),
                 s = o.commonAncestorContainer;
             if (!i) return !1;
-            o.deleteContents(), s && 3 !== s.nodeType && !F(s) ? z(i, s) : o.insertNode(i), l
+            o.deleteContents(), s && 3 !== s.nodeType && !F(s) ? C(i, s) : o.insertNode(i), l
                 .restoreRange()
         }, l.cloneSelected = function () {
             var e = l.selectedRange();
@@ -42807,13 +42927,13 @@ function (e) {
     function re(e, t) {
         var i;
         L(e, (function (e) {
-            H(e, !0) ? (i || z(i = r("p", {}, t), e), e.nodeType === ve && "" === e.nodeValue ||
+            H(e, !0) ? (i || C(i = r("p", {}, t), e), e.nodeType === ve && "" === e.nodeValue ||
                 d(i, e)) : i = null
         }), !1, !0)
     }
 
     function le(e, t) {
-        var i, a, l, _, x, C, S, N, L, R, W, q, U, K, Y, J, Q, ee, ie, ce, ue, de, fe, _e, ye, ke, xe, Te, Ae,
+        var i, a, l, _, x, z, S, N, L, R, W, q, U, K, Y, J, Q, ee, ie, ce, ue, de, fe, _e, ye, ke, xe, Te, Ae,
             Ee, je, Ie, Me, $e, Be, Fe, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, ot,
             st, at, rt, lt, ct, ut, dt, ht, pt, mt, ft = this,
             _t = {},
@@ -42825,7 +42945,7 @@ function (e) {
         ft.commands = n(!0, {}, t.commands || Pe);
         var kt = ft.opts = n(!0, {}, we, t);
         ft.opts.emoticons = t.emoticons || we.emoticons, xe = function () {
-            e._sceditor = ft, kt.locale && "en" !== kt.locale && Me(), z(a = r("div", {
+            e._sceditor = ft, kt.locale && "en" !== kt.locale && Me(), C(a = r("div", {
                     className: "sceditor-container"
                 }), e), y(a, "z-index", kt.zIndex), Le && A(a, "ie ie" + Le), ce = e.required, e
                 .required = !1;
@@ -42856,21 +42976,21 @@ function (e) {
                     "src", "javascript:false"), d(a, _), d(a, N), ft.dimensions(kt.width || j(e), kt
                     .height || I(e));
             var t = Le ? "ie ie" + Le : "";
-            t += ze ? " ios" : "", (S = _.contentDocument)
+            t += Ce ? " ios" : "", (S = _.contentDocument)
                 .open(), S.write(te("html", {
                     attrs: ' class="' + t + '"',
                     spellcheck: kt.spellcheck ? "" : 'spellcheck="false"',
                     charset: kt.charset,
                     style: kt.style
-                })), S.close(), C = S.body, x = _.contentWindow, ft.readOnly(!!kt.readOnly), (ze || Ce ||
-                    Le) && (I(C, "100%"), Le || p(C, "touchend", ft.focus));
+                })), S.close(), z = S.body, x = _.contentWindow, ft.readOnly(!!kt.readOnly), (Ce || ze ||
+                    Le) && (I(z, "100%"), Le || p(z, "touchend", ft.focus));
             var i = f(e, "tabindex");
             f(N, "tabindex", i), f(_, "tabindex", i), K = new oe(x), g(e), ft.val(e.value);
             var n = kt.placeholder || f(e, "placeholder");
-            n && (N.placeholder = n, f(C, "placeholder", n))
+            n && (N.placeholder = n, f(z, "placeholder", n))
         }, Be = function () {
-            kt.autoUpdate && (p(C, "blur", pt), p(N, "blur", pt)), null === kt.rtl && (kt.rtl = "rtl" ===
-                y(N, "direction")), ft.rtl(!!kt.rtl), kt.autoExpand && (p(C, "load", mt, be), p(C,
+            kt.autoUpdate && (p(z, "blur", pt), p(N, "blur", pt)), null === kt.rtl && (kt.rtl = "rtl" ===
+                y(N, "direction")), ft.rtl(!!kt.rtl), kt.autoExpand && (p(z, "load", mt, be), p(z,
                 "input keyup", mt)), kt.resizeEnabled && He(), f(a, "id", kt.id), ft.emoticons(kt
                 .emoticonsEnabled)
         }, Fe = function () {
@@ -42879,14 +42999,14 @@ function (e) {
                 n = "keydown keyup keypress focus blur contextmenu",
                 o = "onselectionchange" in S ? "selectionchange" :
                 "keyup focus blur contextmenu mouseup touchend click";
-            p(Ne, "click", Xe), t && (p(t, "reset", Ge), p(t, "submit", ft.updateOriginal, be)), p(C,
-                    "keypress", Ke), p(C, "keydown", Ue), p(C, "keydown", Ze), p(C, "keyup", nt), p(C,
-                    "blur", dt), p(C, "keyup", ht), p(C, "paste", Ve), p(C, i, Je), p(C, o, ot), p(C, n,
-                    Qe), kt.emoticonsCompat && De.getSelection && p(C, "keyup", lt), p(C, "blur", (
+            p(Ne, "click", Xe), t && (p(t, "reset", Ge), p(t, "submit", ft.updateOriginal, be)), p(z,
+                    "keypress", Ke), p(z, "keydown", Ue), p(z, "keydown", Ze), p(z, "keyup", nt), p(z,
+                    "blur", dt), p(z, "keyup", ht), p(z, "paste", Ve), p(z, i, Je), p(z, o, ot), p(z, n,
+                    Qe), kt.emoticonsCompat && De.getSelection && p(z, "keyup", lt), p(z, "blur", (
                     function () {
-                        ft.val() || A(C, "placeholder")
-                    })), p(C, "focus", (function () {
-                    E(C, "placeholder")
+                        ft.val() || A(z, "placeholder")
+                    })), p(z, "focus", (function () {
+                    E(z, "placeholder")
                 })), p(N, "blur", dt), p(N, "keyup", ht), p(N, "keydown", Ue), p(N, i, Je), p(N, n, Qe),
                 p(S, "mousedown", Ye), p(S, o, ot), p(S, "beforedeactivate keyup mouseup", Ee), p(S,
                     "keyup", nt), p(S, "focus", (function () {
@@ -42911,7 +43031,7 @@ function (e) {
                                 name: o,
                                 dispName: ft._(r.name || r.tooltip || o)
                             }, !0)
-                            .firstChild, ke && ke.create) ke.create(o) && (z(ke
+                            .firstChild, ke && ke.create) ke.create(o) && (C(ke
                             .create(o), s.firstChild), A(s, "has-icon"));
                         s._sceTxtMode = !!r.txtExec, s._sceWysiwygMode = !!r.exec,
                             P(s, "disabled", !r.exec), p(s, "click", (function (
@@ -42948,10 +43068,10 @@ function (e) {
                 w = 0,
                 k = 0,
                 x = j(a),
-                C = I(a),
-                z = !1,
+                z = I(a),
+                C = !1,
                 S = ft.rtl();
-            if (e = kt.resizeMinHeight || C / 1.5, t = kt.resizeMaxHeight || 2.5 * C, i = kt
+            if (e = kt.resizeMinHeight || z / 1.5, t = kt.resizeMaxHeight || 2.5 * z, i = kt
                 .resizeMinWidth || x / 1.25, n = kt.resizeMaxWidth || 1.25 * x, o = function (o) {
                     "touchmove" === o.type ? (o = De.event, b = o.changedTouches[0].pageX, y = o
                         .changedTouches[0].pageY) : (b = o.pageX, y = o.pageY);
@@ -42961,7 +43081,7 @@ function (e) {
                         0 && s > t && (s = t), e > 0 && s < e && (s = e), kt.resizeHeight || (s = !1), (
                             a || s) && ft.dimensions(a, s), o.preventDefault()
                 }, s = function (e) {
-                    z && (z = !1, g(c), E(a, "resizing"), m(Ne, u, o), m(Ne, h, s), e.preventDefault())
+                    C && (C = !1, g(c), E(a, "resizing"), m(Ne, u, o), m(Ne, h, s), e.preventDefault())
                 }, ke && ke.create) {
                 var T = ke.create("grip");
                 T && (d(l, T), A(l, "has-icon"))
@@ -42969,7 +43089,7 @@ function (e) {
             d(a, l), d(a, c), g(c), p(l, "touchstart mousedown", (function (e) {
                 "touchstart" === e.type ? (e = De.event, f = e.touches[0].pageX, _ = e
                         .touches[0].pageY) : (f = e.pageX, _ = e.pageY), w = j(a), k = I(a),
-                    z = !0, A(a, "resizing"), v(c), p(Ne, u, o), p(Ne, h, s), e
+                    C = !0, A(a, "resizing"), v(c), p(Ne, u, o), p(Ne, h, s), e
                     .preventDefault()
             }))
         }, We = function () {
@@ -42985,23 +43105,23 @@ function (e) {
                 }))
             }))
         }, at = function () {
-            var e, t, i = C.firstChild,
+            var e, t, i = z.firstChild,
                 n = !!kt.autofocusEnd;
             if (D(a)) {
                 if (ft.sourceMode()) return t = n ? N.value.length : 0, void N.setSelectionRange(t, t);
-                if (Z(C), n)
-                    for ((i = C.lastChild) || (i = r("p", {}, S), d(C, i)); i.lastChild;) i = i.lastChild,
+                if (Z(z), n)
+                    for ((i = z.lastChild) || (i = r("p", {}, S), d(z, i)); i.lastChild;) i = i.lastChild,
                         !Oe && k(i, "br") && i.previousSibling && (i = i.previousSibling);
                 e = S.createRange(), F(i) ? e.selectNodeContents(i) : (e.setStartBefore(i), n && e
-                    .setStartAfter(i)), e.collapse(!n), K.selectRange(e), ee = e, n && (C.scrollTop =
-                    C.scrollHeight), ft.focus()
+                    .setStartAfter(i)), e.collapse(!n), K.selectRange(e), ee = e, n && (z.scrollTop =
+                    z.scrollHeight), ft.focus()
             }
         }, ft.readOnly = function (e) {
-            return "boolean" != typeof e ? !N.readonly : (C.contentEditable = !e, N.readonly = !e, et(e),
+            return "boolean" != typeof e ? !N.readonly : (z.contentEditable = !e, N.readonly = !e, et(e),
                 ft)
         }, ft.rtl = function (e) {
             var t = e ? "rtl" : "ltr";
-            return "boolean" != typeof e ? "rtl" === f(N, "dir") : (f(C, "dir", t), f(N, "dir", t), E(a,
+            return "boolean" != typeof e ? "rtl" === f(N, "dir") : (f(z, "dir", t), f(N, "dir", t), E(a,
                 "rtl"), E(a, "ltr"), A(a, t), ke && ke.rtl && ke.rtl(e), ft)
         }, et = function (e) {
             var t = ft.inSourceMode() ? "_sceTxtMode" : "_sceWysiwygMode";
@@ -43035,7 +43155,7 @@ function (e) {
                     }
                 }
                 var n = Ne.createRange();
-                n.selectNodeContents(C);
+                n.selectNodeContents(z);
                 var o = n.getBoundingClientRect(),
                     s = S.documentElement.clientHeight - 1,
                     a = o.bottom - o.top,
@@ -43071,8 +43191,8 @@ function (e) {
         }, Xe = function (e) {
             3 !== e.which && L && !e.defaultPrevented && (pt(), ft.closeDropDown())
         }, Ve = function (e) {
-            var t = Le || Ce,
-                i = C,
+            var t = Le || ze,
+                i = z,
                 n = e.clipboardData,
                 o = function (e) {
                     var t = new FileReader;
@@ -43117,9 +43237,9 @@ function (e) {
             L && (u(L), L = null), !0 === e && ft.focus()
         }, ft.wysiwygEditorInsertHtml = function (e, t, i) {
             var n, o, s, a = I(_);
-            ft.focus(), !i && c(Q, "code") || (K.insertHTML(e, t), K.saveRange(), Te(), v(n = h(C,
-                    "#sceditor-end-marker")[0]), o = C.scrollTop, s = G(n)
-                .top + 1.5 * n.offsetHeight - a, g(n), (s > o || s + a < o) && (C.scrollTop = s), ut(!
+            ft.focus(), !i && c(Q, "code") || (K.insertHTML(e, t), K.saveRange(), Te(), v(n = h(z,
+                    "#sceditor-end-marker")[0]), o = z.scrollTop, s = G(n)
+                .top + 1.5 * n.offsetHeight - a, g(n), (s > o || s + a < o) && (z.scrollTop = s), ut(!
                     1), K.restoreRange(), nt())
         }, ft.wysiwygEditorInsertText = function (e, t) {
             ft.wysiwygEditorInsertHtml(X(e), X(t))
@@ -43154,25 +43274,25 @@ function (e) {
                     .replace(/&gt;/g, ">")
                     .replace(/&amp;/g, "&")), ft.wysiwygEditorInsertHtml(e), ft
         }, ft.getWysiwygEditorValue = function (e) {
-            for (var t, n = r("div", {}, S), o = C.childNodes, s = 0; s < o.length; s++) d(n, o[s]
+            for (var t, n = r("div", {}, S), o = z.childNodes, s = 0; s < o.length; s++) d(n, o[s]
                 .cloneNode(!0));
-            return d(C, n), V(n), u(n), t = n.innerHTML, !1 !== e && i.hasOwnProperty("toSource") && (t =
+            return d(z, n), V(n), u(n), t = n.innerHTML, !1 !== e && i.hasOwnProperty("toSource") && (t =
                 i.toSource(t, S)), t
         }, ft.getBody = function () {
-            return C
+            return z
         }, ft.getContentAreaContainer = function () {
             return _
         }, ft.getSourceEditorValue = function (e) {
             var t = N.value;
             return !1 !== e && "toHtml" in i && (t = i.toHtml(t)), t
         }, ft.setWysiwygEditorValue = function (e) {
-            e || (e = "<p>" + (Le ? "" : "<br />") + "</p>"), C.innerHTML = e, Te(), nt(), ut(), mt()
+            e || (e = "<p>" + (Le ? "" : "<br />") + "</p>"), z.innerHTML = e, Te(), nt(), ut(), mt()
         }, ft.setSourceEditorValue = function (e) {
             N.value = e, ut()
         }, ft.updateOriginal = function () {
             e.value = ft.val()
         }, Te = function () {
-            kt.emoticonsEnabled && ae(C, wt, kt.emoticonsCompat)
+            kt.emoticonsEnabled && ae(z, wt, kt.emoticonsCompat)
         }, ft.inSourceMode = function () {
             return T(a, "sourceMode")
         }, ft.sourceMode = function (e) {
@@ -43208,9 +43328,9 @@ function (e) {
                     if ((ee = K.cloneSelected()) && ee.collapsed) {
                         var e = ee.startContainer,
                             t = ee.startOffset;
-                        for (t && e.nodeType !== ve && (e = e.childNodes[t]); e && e.parentNode !== C;)
+                        for (t && e.nodeType !== ve && (e = e.childNodes[t]); e && e.parentNode !== z;)
                             e = e.parentNode;
-                        e && H(e, !0) && (K.saveRange(), re(C, S), K.restoreRange())
+                        e && H(e, !0) && (K.saveRange(), re(z, S), K.restoreRange())
                     }
                     M(a, "selectionchanged")
                 }
@@ -43265,12 +43385,12 @@ function (e) {
                 e.preventDefault()
             }
         }, nt = function () {
-            O(C, (function (e) {
+            O(z, (function (e) {
                 if (e.nodeType === ge && !/inline/.test(y(e, "display")) && !k(e,
                         ".sceditor-nlf") && $(e)) {
                     var t = r("p", {}, S);
                     return t.className = "sceditor-nlf", t.innerHTML = Oe ? "" : "<br />", d(
-                        C, t), !1
+                        z, t), !1
                 }
                 if (3 === e.nodeType && !/^\s*$/.test(e.nodeValue) || k(e, "br")) return !1
             }))
@@ -43304,7 +43424,7 @@ function (e) {
                 s]] || [], t));
             return ft
         }, ft.blur = function (e, t, i) {
-            return me(e) ? ft.bind("blur", e, t, i) : ft.sourceMode() ? N.blur() : C.blur(), ft
+            return me(e) ? ft.bind("blur", e, t, i) : ft.sourceMode() ? N.blur() : z.blur(), ft
         }, ft.focus = function (e, t, i) {
             if (me(e)) ft.bind("focus", e, t, i);
             else if (ft.inSourceMode()) N.focus();
@@ -43314,7 +43434,7 @@ function (e) {
                 var n, o = K.selectedRange();
                 ee || at(), !Oe && o && 1 === o.endOffset && o.collapsed && (n = o.endContainer) && 1 ===
                     n.childNodes.length && k(n.firstChild, "br") && (o.setStartBefore(n.firstChild), o
-                        .collapse(!0), K.selectRange(o)), x.focus(), C.focus(), R && (K.selectRange(R),
+                        .collapse(!0), K.selectRange(o)), x.focus(), z.focus(), R && (K.selectRange(R),
                         R = null)
             }
             return tt(), ft
@@ -43345,12 +43465,12 @@ function (e) {
             se(Q, K)
         }, ft.emoticons = function (e) {
             if (!e && !1 !== e) return kt.emoticonsEnabled;
-            (kt.emoticonsEnabled = e, e) ? (p(C, "keypress", rt), ft.sourceMode() || (K.saveRange(), Te(),
-                ut(!1), K.restoreRange())) : (s(h(C, "img[data-sceditor-emoticon]"), (function (e, t) {
+            (kt.emoticonsEnabled = e, e) ? (p(z, "keypress", rt), ft.sourceMode() || (K.saveRange(), Te(),
+                ut(!1), K.restoreRange())) : (s(h(z, "img[data-sceditor-emoticon]"), (function (e, t) {
                 var i = w(t, "sceditor-emoticon"),
                     n = S.createTextNode(i);
                 t.parentNode.replaceChild(n, t)
-            })), m(C, "keypress", rt), ut());
+            })), m(z, "keypress", rt), ut());
             return ft
         }, ft.css = function (e) {
             return ue || (ue = r("style", {
@@ -43496,7 +43616,7 @@ function (e) {
                 var t, i = ft.sourceMode(),
                     n = !i && K.hasSelection();
                 W = !1, e = !1 !== e && !S.getElementById("sceditor-start-marker"), q && (clearTimeout(q),
-                        q = !1), n && e && K.saveRange(), (t = i ? N.value : C.innerHTML) !== ut
+                        q = !1), n && e && K.saveRange(), (t = i ? N.value : z.innerHTML) !== ut
                     .lastVal && (ut.lastVal = t, M(a, "valuechanged", {
                         rawValue: i ? ft.val() : t
                     })), n && e && K.removeMarkers()
@@ -43624,13 +43744,13 @@ function (e) {
             return i.documentMode && i.all && window.atob && (t = 10), 4 === t && i.documentMode && (t = 11),
                 t > 4 ? t : e
         }(),
-        Ce = "-ms-ime-align" in document.documentElement.style,
-        ze = /iPhone|iPod|iPad| wosbrowser\//i.test(ke),
+        ze = "-ms-ime-align" in document.documentElement.style,
+        Ce = /iPhone|iPod|iPad| wosbrowser\//i.test(ke),
         Se = ((de = document.createElement("div"))
             .contentEditable = !0, "contentEditable" in document.documentElement && "true" === de
             .contentEditable && (ue = /Opera Mobi|Opera Mini/i.test(ke), /Android/i.test(ke) && (ue = !1),
                 / Silk\//i.test(ke) && (ue = !(ce = /AppleWebKit\/(\d+)/.exec(ke)) || !ce[1] || ce[1] < 534),
-                ze && (ue = /OS [0-4](_\d)+ like Mac/i.test(ke)), /Firefox/i.test(ke) && (ue = !1),
+                Ce && (ue = /OS [0-4](_\d)+ like Mac/i.test(ke)), /Firefox/i.test(ke) && (ue = !1),
                 /OneBrowser/i.test(ke) && (ue = !1), "UCWEB" === navigator.vendor && (ue = !1), xe <= 9 && (
                     ue = !0), !ue)),
         Te =
@@ -43959,7 +44079,7 @@ function (e) {
                 exec: function () {
                     var e = c(this.currentNode(), "a");
                     if (e) {
-                        for (; e.firstChild;) z(e.firstChild, e);
+                        for (; e.firstChild;) C(e.firstChild, e);
                         u(e)
                     }
                 },
@@ -44196,7 +44316,7 @@ function (e) {
             commands: Pe,
             defaultOptions: we,
             ie: xe,
-            ios: ze,
+            ios: Ce,
             isWysiwygSupported: Se,
             regexEscape: Q,
             escapeEntities: X,
@@ -44497,7 +44617,7 @@ function (e) {
                         .opts.breakStartBlock && !1 !== n.breakStart || n && n.breakStart, c = o && k.opts
                         .breakEndBlock && !1 !== n.breakEnd || n && n.breakEnd, u = o && k.opts
                         .breakAfterBlock && !1 !== n.breakAfter || n && n.breakAfter, a = (n ? n.quoteType :
-                            null) || k.opts.quoteType || C.auto, n || t.type !== T)
+                            null) || k.opts.quoteType || z.auto, n || t.type !== T)
                         if (t.type === T) {
                             if (r && d.push("\n"), d.push("[" + t.name), t.attrs)
                                 for (i in t.attrs.defaultattr && (d.push("=", g(t.attrs.defaultattr, a,
@@ -44513,7 +44633,7 @@ function (e) {
 
         function g(e, t, i) {
             var o = /\s|=/.test(e);
-            return n(t) ? t(e, i) : t === C.never || t === C.auto && !o ? e : '"' + e.replace("\\", "\\\\")
+            return n(t) ? t(e, i) : t === z.never || t === z.auto && !o ? e : '"' + e.replace("\\", "\\\\")
                 .replace('"', '\\"') + '"'
         }
 
@@ -44676,7 +44796,7 @@ function (e) {
                 code: ["br", "p", "div"]
             };
         h.init = function () {
-                h.opts = this.opts, h.elementToBbcode = c, e(), this.commands = v(!0, {}, z, this.commands),
+                h.opts = this.opts, h.elementToBbcode = c, e(), this.commands = v(!0, {}, C, this.commands),
                     this.toBBCode = h.toSource, this.fromBBCode = h.toHtml
             }, h.toHtml = u.bind(null, !1), h.fragmentToHtml = u.bind(null, !0), h.toSource = d.bind(null, !
             1), h.fragmentToSource = d.bind(null, !0)
@@ -44694,12 +44814,12 @@ function (e) {
         w = y && y < 11,
         k = "data-sceditor-emoticon",
         x = e.command.get,
-        C = {
+        z = {
             always: 1,
             never: 2,
             auto: 3
         },
-        z = {
+        C = {
             bold: {
                 txtExec: ["[b]", "[/b]"]
             },
@@ -44897,7 +45017,7 @@ function (e) {
                 styles: {
                     "font-family": null
                 },
-                quoteType: C.never,
+                quoteType: z.never,
                 format: function (e, t) {
                     var i;
                     return g(e, "font") && (i = _(e, "face")) || (i = f(e, "font-family")), "[font=" + o(
@@ -44933,7 +45053,7 @@ function (e) {
                 styles: {
                     color: null
                 },
-                quoteType: C.never,
+                quoteType: z.never,
                 format: function (e, t) {
                     var i;
                     return g(e, "font") && (i = _(e, "color")) || (i = e.style.color || f(e, "color")),
@@ -45051,7 +45171,7 @@ function (e) {
                     }
                 },
                 allowedChildren: ["#"],
-                quoteType: C.never,
+                quoteType: z.never,
                 format: function (e, t) {
                     var i, n, o = "",
                         s = function (t) {
@@ -45076,7 +45196,7 @@ function (e) {
                         href: null
                     }
                 },
-                quoteType: C.never,
+                quoteType: z.never,
                 format: function (e, t) {
                     var i = _(e, "href");
                     return "mailto:" === i.substr(0, 7) ? '[email="' + i.substr(7) + '"]' + t +
@@ -45088,7 +45208,7 @@ function (e) {
                 }
             },
             email: {
-                quoteType: C.never,
+                quoteType: z.never,
                 html: function (e, t, i) {
                     return '<a href="mailto:' + (d(t.defaultattr, !0) || i) + '">' + i + "</a>"
                 }
@@ -45098,7 +45218,7 @@ function (e) {
                     blockquote: null
                 },
                 isInline: !1,
-                quoteType: C.never,
+                quoteType: z.never,
                 format: function (e, t) {
                     for (var i, n = "data-author", o = "", s = e.children, a = 0; !i && a < s.length; a++)
                         g(s[a], "cite") && (i = s[a]);
@@ -45199,7 +45319,7 @@ function (e) {
                 o = i.children.indexOf(e);
             return o > -1 && (t = i.children.length - o, n.children = i.children.splice(o, t)), n
         }
-    }, r.QuoteType = C, r.defaults = {
+    }, r.QuoteType = z, r.defaults = {
         breakBeforeBlock: !1,
         breakStartBlock: !1,
         breakEndBlock: !1,
@@ -45207,7 +45327,7 @@ function (e) {
         removeEmptyTags: !0,
         fixInvalidNesting: !0,
         fixInvalidChildren: !0,
-        quoteType: C.auto
+        quoteType: z.auto
     }, u.get = function (e) {
         return S[e] || null
     }, u.set = function (e, t) {
@@ -46754,7 +46874,7 @@ var tutorial = {
         };
     if (k) {
         window.name || (window.name = Math.floor(1e8 * Math.random()));
-        var C = {
+        var z = {
             _cookie: !0,
             _prefix: "",
             _expires: null,
@@ -46804,14 +46924,14 @@ var tutorial = {
                 this._path = this._domain = this._expires = null, this._secure = !1
             }
         };
-        w || (window.localCookieStorage = d({}, C, {
+        w || (window.localCookieStorage = d({}, z, {
             _prefix: b,
             _expires: 3650,
             _secure: !0
-        }), window.sessionCookieStorage = d({}, C, {
+        }), window.sessionCookieStorage = d({}, z, {
             _prefix: y + window.name + "_",
             _secure: !0
-        })), window.cookieStorage = d({}, C), v.cookieStorage = d({}, x, {
+        })), window.cookieStorage = d({}, z), v.cookieStorage = d({}, x, {
             _type: "cookieStorage",
             setExpires: function (e) {
                 return window.cookieStorage.setExpires(e), this
