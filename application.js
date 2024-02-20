@@ -301,7 +301,8 @@ function waterCalculator(e, t) {
                     amountOnSite: "javascript.water_on_site",
                     amountApproaching: "javascript.water_approaching",
                     amountSelected: "javascript.water_selected",
-                    amountMissing: "javascript.water_missing"
+                    amountMissing: "javascript.water_missing",
+                    aria_progress_bar_prefix: "javascript.water_process"
                 }
             },
             pump: {
@@ -310,7 +311,8 @@ function waterCalculator(e, t) {
                     amountOnSite: "javascript.pump_speed_on_site",
                     amountApproaching: "javascript.pump_speed_approaching",
                     amountSelected: "javascript.pump_speed_selected",
-                    amountMissing: "javascript.pump_speed_missing"
+                    amountMissing: "javascript.pump_speed_missing",
+                    aria_progress_bar_prefix: "javascript.pump_speed_process"
                 }
             },
             foam: {
@@ -319,7 +321,8 @@ function waterCalculator(e, t) {
                     amountOnSite: "javascript.foam_on_site",
                     amountApproaching: "javascript.foam_approaching",
                     amountSelected: "javascript.foam_selected",
-                    amountMissing: "javascript.foam_missing"
+                    amountMissing: "javascript.foam_missing",
+                    aria_progress_bar_prefix: "javascript.foam_process"
                 }
             }
         } [t = t || "water"],
@@ -358,27 +361,28 @@ function waterCalculator(e, t) {
         ".mission_water_bar_selected_" + e), v, g + _), waterCalculatorSetPercent(o.find(
         ".mission_water_bar_missing_" + e), 100, v + g + _);
     var w = i.translations;
-    const k = I18n.t(w.amountOnSite, {
+    const k = I18n.t(w.aria_progress_bar_prefix),
+        x = I18n.t(w.amountOnSite, {
             amount: number_format(parseInt(h))
         }),
-        x = I18n.t(w.amountApproaching, {
+        z = I18n.t(w.amountApproaching, {
             amount: number_format(parseInt(p))
         }),
-        z = I18n.t(w.amountSelected, {
+        C = I18n.t(w.amountSelected, {
             amount: number_format(parseInt(m))
         }),
-        C = I18n.t(w.amountMissing, {
+        S = I18n.t(w.amountMissing, {
             amount: number_format(parseInt(f))
         });
     o.find(".mission_water_bar_at_mission_" + e)
-        .html(k), o.find(".mission_water_bar_driving_" + e)
-        .html(x), o.find(".mission_water_bar_selected_" + e)
-        .html(z), o.find(".mission_water_bar_missing_" + e)
-        .html(C), o.find(".mission_water_bar_at_mission_" + e)
-        .attr("aria-valuetext", k), o.find(".mission_water_bar_driving_" + e)
-        .attr("aria-valuetext", x), o.find(".mission_water_bar_selected_" + e)
-        .attr("aria-valuetext", z), o.find(".mission_water_bar_missing_" + e)
-        .attr("aria-valuetext", C), v + g + _ >= 100 ? (o.find(".mission_water_bar_selected_" + e)
+        .html(x), o.find(".mission_water_bar_driving_" + e)
+        .html(z), o.find(".mission_water_bar_selected_" + e)
+        .html(C), o.find(".mission_water_bar_missing_" + e)
+        .html(S);
+    const T = [k];
+    parseInt(h) > 0 && T.push(x), parseInt(p) > 0 && T.push(z), parseInt(m) > 0 && T.push(C), parseInt(f) >
+        0 && T.push(S), o.attr("title", T.join(", ")), v + g + _ >= 100 ? (o.find(
+                ".mission_water_bar_selected_" + e)
             .addClass("progress-bar-success")
             .removeClass("progress-bar-danger"), o.find(".mission_water_progress_" + e)
             .addClass("progress-glow-success")
@@ -1067,10 +1071,10 @@ function buildingsVehicleLoadVisible() {
 
 function buildingsVehicleLoad(building_id) {
     $.get("/buildings/" + building_id + "/vehiclesMap", (function (data) {
-        buildingVehicleCache[building_id] = [], eval(data), vehicleContent = "", void 0 !==
-            buildingVehicleCache[building_id] && (vehicleContent = buildingVehicleCache[
-                building_id].join(""), buildingVehicleCache[building_id] = []),
-            $("#vehicle_building_" + building_id)
+        buildingVehicleCache[building_id] = [], eval(data), vehicleContent = "",
+            void 0 !== buildingVehicleCache[building_id] && (vehicleContent =
+                buildingVehicleCache[building_id].join(""), buildingVehicleCache[building_id] = []
+                ), $("#vehicle_building_" + building_id)
             .html(vehicleContent)
     }))
 }
@@ -1988,8 +1992,7 @@ function messageUnreadUpdate(e) {
         i = $("#message_top")
         .html();
     $("#message_top")
-        .html(t),
-        e > 0 ? ($("#message_top")
+        .html(t), e > 0 ? ($("#message_top")
             .addClass("message_new"), $("#main-navbar-toggle")
             .addClass("message_new")) : ($("#message_top")
             .removeClass("message_new"), $("#main-navbar-toggle")
@@ -4116,9 +4119,9 @@ Object.values || (Object.values = function (e) {
             message: "Nachricht",
             mission: "Eins\xe4tze",
             mission_filters: {
-                attended_description: "Einsatzen in Bearbeitung, nicht alle Bedingungen erf\xfcllt",
-                finishing_description: "Missionen abgeschlossen, alle Bedingungen erf\xfcllt",
-                unattended_description: "Neue Einsatzen"
+                attended_description: "Eins\xe4tze in Bearbeitung, nicht alle Bedingungen erf\xfcllt",
+                finishing_description: "Eins\xe4tze abgeschlossen, alle Bedingungen erf\xfcllt",
+                unattended_description: "Neue Eins\xe4tze"
             },
             missions_filtered_out: "Einige Eins\xe4tze k\xf6nnten herausgefiltert worden sein. Bitte \xfcberpr\xfcfe deinen Kartenfilter.",
             no_alliance_chat_impossible: "Der Chat erm\xf6glicht dir, dich mit anderen erfahrenen Spielern zu vernetzen. Sie k\xf6nnen sowohl deine Fragen zum Spiel beantworten als auch helfen, indem sie dir Zugriff auf ihre Geb\xe4ude wie Schulen oder Krankenh\xe4user geben.",
@@ -4425,6 +4428,11 @@ Object.values || (Object.values = function (e) {
                 separator: ",",
                 significant: !1,
                 strip_insignificant_zeros: !1
+            }
+        },
+        mission: {
+            type: {
+                alert: "Alarmieren"
             }
         }
     }, I18n.translations.en_US = {
@@ -5094,6 +5102,11 @@ Object.values || (Object.values = function (e) {
                 significant: !1,
                 strip_insignificant_zeros: !1
             }
+        },
+        mission: {
+            type: {
+                alert: "Dispatch"
+            }
         }
     }, I18n.translations.en_GB = {
         common: {
@@ -5630,6 +5643,11 @@ Object.values || (Object.values = function (e) {
                 significant: !1,
                 strip_insignificant_zeros: !1
             }
+        },
+        mission: {
+            type: {
+                alert: "Dispatch"
+            }
         }
     }, I18n.translations.nl_NL = {
         common: {
@@ -5888,7 +5906,7 @@ Object.values || (Object.values = function (e) {
                 ab_ruest: "Haakarmbak Hulpverlening",
                 ab_ruest_rw: "Hulpverleningsvoertuig of HVH",
                 abl2wasser_only: "Watertransportsysteem-haakarmbak",
-                ambulance: "Ambulance",
+                ambulance: "Ambulance Voertuigen",
                 ambulance_or_rapid_responder: "Ambulance of Rapid Responder",
                 any_traffic_car: "Signalisatie Voertuig (DA-RWS, DA-SIG of DM-RWS)",
                 any_traffic_unit: "Signalisatie Voertuig (DA-RWS, DA-SIG of DM-RWS)",
@@ -6075,6 +6093,11 @@ Object.values || (Object.values = function (e) {
                 separator: ",",
                 significant: !1,
                 strip_insignificant_zeros: !1
+            }
+        },
+        mission: {
+            type: {
+                alert: "Alarmeren"
             }
         }
     }, I18n.translations.es_ES = {
@@ -6499,6 +6522,11 @@ Object.values || (Object.values = function (e) {
                 separator: ",",
                 significant: !1,
                 strip_insignificant_zeros: !1
+            }
+        },
+        mission: {
+            type: {
+                alert: "Enviar"
             }
         }
     }, I18n.translations.en_AU = {
@@ -7039,6 +7067,11 @@ Object.values || (Object.values = function (e) {
                 significant: !1,
                 strip_insignificant_zeros: !1
             }
+        },
+        mission: {
+            type: {
+                alert: "Dispatch"
+            }
         }
     }, I18n.translations.sv_SE = {
         common: {
@@ -7486,6 +7519,11 @@ Object.values || (Object.values = function (e) {
                 separator: ",",
                 significant: !1,
                 strip_insignificant_zeros: !1
+            }
+        },
+        mission: {
+            type: {
+                alert: "Skicka ut"
             }
         }
     }, I18n.translations.pl_PL = {
@@ -7947,6 +7985,11 @@ Object.values || (Object.values = function (e) {
                 significant: !1,
                 strip_insignificant_zeros: !1
             }
+        },
+        mission: {
+            type: {
+                alert: "Wy\u015blij"
+            }
         }
     }, I18n.translations.it_IT = {
         common: {
@@ -8397,6 +8440,11 @@ Object.values || (Object.values = function (e) {
                 significant: !1,
                 strip_insignificant_zeros: !1
             }
+        },
+        mission: {
+            type: {
+                alert: "Assegna"
+            }
         }
     }, I18n.translations.fr_FR = {
         common: {
@@ -8839,6 +8887,11 @@ Object.values || (Object.values = function (e) {
                 significant: !1,
                 strip_insignificant_zeros: !1
             }
+        },
+        mission: {
+            type: {
+                alert: "D\xe9ployer"
+            }
         }
     }, I18n.translations.ru_RU = {
         common: {
@@ -9244,6 +9297,11 @@ Object.values || (Object.values = function (e) {
                 separator: ",",
                 significant: !1,
                 strip_insignificant_zeros: !1
+            }
+        },
+        mission: {
+            type: {
+                alert: "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c"
             }
         }
     }, I18n.translations.da_DK = {
@@ -9679,6 +9737,11 @@ Object.values || (Object.values = function (e) {
                 separator: ",",
                 significant: !1,
                 strip_insignificant_zeros: !1
+            }
+        },
+        mission: {
+            type: {
+                alert: "Send ud"
             }
         }
     }, I18n.translations.nb_NO = {
@@ -10124,6 +10187,11 @@ Object.values || (Object.values = function (e) {
                 significant: !1,
                 strip_insignificant_zeros: !1
             }
+        },
+        mission: {
+            type: {
+                alert: "Send ut"
+            }
         }
     }, I18n.translations.cs_CZ = {
         common: {
@@ -10567,6 +10635,11 @@ Object.values || (Object.values = function (e) {
                 significant: !1,
                 strip_insignificant_zeros: !1
             }
+        },
+        mission: {
+            type: {
+                alert: "V\xfdjezd"
+            }
         }
     }, I18n.translations.tr_TR = {
         common: {
@@ -10935,6 +11008,11 @@ Object.values || (Object.values = function (e) {
                 separator: ",",
                 significant: !1,
                 strip_insignificant_zeros: !1
+            }
+        },
+        mission: {
+            type: {
+                alert: "Sevk Et"
             }
         }
     }, I18n.translations.pt_PT = {
@@ -11372,6 +11450,11 @@ Object.values || (Object.values = function (e) {
                 significant: !1,
                 strip_insignificant_zeros: !1
             }
+        },
+        mission: {
+            type: {
+                alert: "Despachar"
+            }
         }
     }, I18n.translations.pt_BR = {
         common: {
@@ -11757,6 +11840,11 @@ Object.values || (Object.values = function (e) {
                 significant: !1,
                 strip_insignificant_zeros: !1
             }
+        },
+        mission: {
+            type: {
+                alert: "Despachar"
+            }
         }
     }, I18n.translations.uk_UA = {
         common: {
@@ -12130,6 +12218,11 @@ Object.values || (Object.values = function (e) {
                 separator: ",",
                 significant: !1,
                 strip_insignificant_zeros: !1
+            }
+        },
+        mission: {
+            type: {
+                alert: "\u0412\u0456\u0434\u043f\u0440\u0430\u0432\u0438\u0442\u0438"
             }
         }
     }, I18n.translations.es_MX = {
@@ -12505,6 +12598,11 @@ Object.values || (Object.values = function (e) {
                 separator: ".",
                 significant: !1,
                 strip_insignificant_zeros: !1
+            }
+        },
+        mission: {
+            type: {
+                alert: "Enviar"
             }
         }
     }, I18n.translations.ja_JP = {
@@ -12921,6 +13019,11 @@ Object.values || (Object.values = function (e) {
                 separator: ".",
                 significant: "\u8aa4",
                 strip_insignificant_zeros: "\u8aa4"
+            }
+        },
+        mission: {
+            type: {
+                alert: "\u6307\u4ee4"
             }
         }
     }, I18n.translations.ko_KR = {
@@ -13339,6 +13442,11 @@ Object.values || (Object.values = function (e) {
                 significant: "\uac70\uc9d3",
                 strip_insignificant_zeros: "\uac70\uc9d3"
             }
+        },
+        mission: {
+            type: {
+                alert: "\ud30c\uacac"
+            }
         }
     }, I18n.translations.ro_RO = {
         common: {
@@ -13727,6 +13835,11 @@ Object.values || (Object.values = function (e) {
                 separator: ",",
                 significant: !1,
                 strip_insignificant_zeros: !1
+            }
+        },
+        mission: {
+            type: {
+                alert: "Trimite unit\u0103\u021bi"
             }
         }
     }, I18n.translations.fi_FI = {
@@ -14163,6 +14276,11 @@ Object.values || (Object.values = function (e) {
                 significant: !1,
                 strip_insignificant_zeros: !1
             }
+        },
+        mission: {
+            type: {
+                alert: "L\xe4het\xe4"
+            }
         }
     }, I18n.translations.sk_SK = {
         common: {
@@ -14549,6 +14667,11 @@ Object.values || (Object.values = function (e) {
                 separator: ",",
                 significant: !1,
                 strip_insignificant_zeros: !1
+            }
+        },
+        mission: {
+            type: {
+                alert: "Vysla\u0165"
             }
         }
     }, I18n.translations.en = {
