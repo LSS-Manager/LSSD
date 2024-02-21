@@ -4121,7 +4121,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 attended_description: "Eins\xe4tze in Bearbeitung, nicht alle Bedingungen erf\xfcllt",
                 finishing_description: "Eins\xe4tze abgeschlossen, alle Bedingungen erf\xfcllt",
-                unattended_description: "Neue Eins\xe4tze"
+                unattended_description: "Unbeaufsichtigte Eins\xe4tze"
             },
             missions_filtered_out: "Einige Eins\xe4tze k\xf6nnten herausgefiltert worden sein. Bitte \xfcberpr\xfcfe deinen Kartenfilter.",
             no_alliance_chat_impossible: "Der Chat erm\xf6glicht dir, dich mit anderen erfahrenen Spielern zu vernetzen. Sie k\xf6nnen sowohl deine Fragen zum Spiel beantworten als auch helfen, indem sie dir Zugriff auf ihre Geb\xe4ude wie Schulen oder Krankenh\xe4user geben.",
@@ -4623,7 +4623,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 attended_description: "Missions in Progress, Not all conditions fulfilled",
                 finishing_description: "Missions Completed, All conditions fulfilled",
-                unattended_description: "New Missions"
+                unattended_description: "Unattended Missions"
             },
             missions_filtered_out: "Some missions might be filtered out. Please, check your map filters.",
             no_alliance_chat_impossible: "The Chat is a great way to link up with other more experienced players.\xa0They can both answer your questions and help you by giving you access to buildings like Hospitals and Schools",
@@ -5281,7 +5281,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 attended_description: "Missions in Progress, Not all conditions fulfilled",
                 finishing_description: "Missions Completed, All conditions fulfilled",
-                unattended_description: "New Missions"
+                unattended_description: "Unattended Missions"
             },
             missions_filtered_out: "Some missions might be filtered out. Please, check your map filters.",
             no_alliance_chat_impossible: "The Chat is a great way to link up with other more experienced players.\xa0They can both answer your questions and help you by giving you access to buildings like Hospitals and Schools",
@@ -5825,7 +5825,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 attended_description: "Inzetten in uitvoering, niet aan alle voorwaarden voldaan",
                 finishing_description: "Inzetten voltooid, alle voorwaarden vervuld",
-                unattended_description: "Nieuwe inzetten"
+                unattended_description: "Onbemande inzetten"
             },
             missions_filtered_out: "Sommige missies worden mogelijk uitgefilterd. Controleer alstublieft uw kaartfilters.",
             no_alliance_chat_impossible: "De Chat is een geweldige manier om in contact te komen met andere meer ervaren spelers.\xa0Zij kunnen zowel je vragen beantwoorden als je helpen door je toegang te geven tot gebouwen zoals Ziekenhuizen en Scholen",
@@ -6274,7 +6274,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 attended_description: "Misiones en curso, no se cumplen todas las condiciones",
                 finishing_description: "Misiones completadas, todas las condiciones cumplidas",
-                unattended_description: "Nuevas misiones"
+                unattended_description: "Misiones desatendidas"
             },
             missions_filtered_out: "Algunas misiones pueden ser filtradas. Por favor, revise los filtros de su mapa.",
             no_alliance_chat_impossible: "El chat es una forma estupenda de conectar con otros jugadores m\xe1s experimentados.\xa0Pueden responder a tus preguntas y ayudarte a acceder a edificios como hospitales y escuelas.",
@@ -6703,7 +6703,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 attended_description: "Missions in Progress, Not all conditions fulfilled",
                 finishing_description: "Missions Completed, All conditions fulfilled",
-                unattended_description: "New Missions"
+                unattended_description: "Unattended Missions"
             },
             missions_filtered_out: "Some missions might be filtered out. Please, check your map filters.",
             no_alliance_chat_impossible: "The Chat is a great way to link up with other more experienced players.\xa0They can both answer your questions and help you by giving you access to buildings like Hospitals and Schools",
@@ -7246,7 +7246,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 attended_description: "P\xe5g\xe5ende uppdrag, inte alla villkor uppfyllda",
                 finishing_description: "Uppdrag slutf\xf6rda, alla villkor uppfyllda",
-                unattended_description: "Nya uppdrag"
+                unattended_description: "Obevakade uppdrag"
             },
             missions_filtered_out: "Vissa uppdrag kan filtreras bort. Kontrollera dina kartfilter.",
             no_alliance_chat_impossible: "Chatten \xe4r ett bra s\xe4tt att f\xe5 kontakt med andra mer erfarna spelare.\xa0De kan b\xe5de svara p\xe5 dina fr\xe5gor och hj\xe4lpa dig genom att ge dig tillg\xe5ng till byggnader som sjukhus och skolor.",
@@ -7705,7 +7705,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 attended_description: "Misje w toku, nie wszystkie warunki zosta\u0142y spe\u0142nione",
                 finishing_description: "Misje uko\u0144czone, wszystkie warunki spe\u0142nione",
-                unattended_description: "Nowe misje"
+                unattended_description: "Misje bez nadzoru"
             },
             missions_filtered_out: "Niekt\xf3re misje mog\u0105 zosta\u0107 odfiltrowane. Prosz\u0119 sprawdzi\u0107 filtry map.",
             no_alliance_chat_impossible: "Czat to \u015bwietny spos\xf3b na nawi\u0105zanie kontaktu z innymi, bardziej do\u015bwiadczonymi graczami.\xa0Mog\u0105 oni odpowiedzie\u0107 na twoje pytania i pom\xf3c ci, daj\u0105c ci dost\u0119p do budynk\xf3w takich jak szpitale i szko\u0142y.",
@@ -8166,7 +8166,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 attended_description: "Missioni in corso, non tutte le condizioni sono soddisfatte",
                 finishing_description: "Missioni completate, tutte le condizioni soddisfatte",
-                unattended_description: "Nuove missioni"
+                unattended_description: "Missioni non presidiate"
             },
             missions_filtered_out: "Alcune missioni potrebbero essere filtrate. Per favore, controlla i filtri della tua mappa.",
             no_alliance_chat_impossible: "La chat \xe8 un ottimo modo per entrare in contatto con altri giocatori pi\xf9 esperti.\xa0Possono rispondere alle vostre domande e aiutarvi dandovi accesso a edifici come ospedali e scuole.",
@@ -8619,7 +8619,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 attended_description: "Missions en cours, toutes les conditions ne sont pas remplies",
                 finishing_description: "Missions termin\xe9es, toutes les conditions sont remplies",
-                unattended_description: "Nouvelles missions"
+                unattended_description: "Missions sans surveillance"
             },
             missions_filtered_out: "Certaines missions peuvent \xeatre filtr\xe9es. Veuillez v\xe9rifier les filtres de votre carte.",
             no_alliance_chat_impossible: "Le chat est un excellent moyen d'entrer en contact avec d'autres joueurs plus exp\xe9riment\xe9s.\xa0Ils peuvent \xe0 la fois r\xe9pondre \xe0 vos questions et vous aider en vous donnant acc\xe8s \xe0 des b\xe2timents comme les h\xf4pitaux et les \xe9coles.",
@@ -9062,7 +9062,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 attended_description: "\u041c\u0438\u0441\u0441\u0438\u0438 \u0432 \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u0435 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044f, \u043d\u0435 \u0432\u0441\u0435 \u0443\u0441\u043b\u043e\u0432\u0438\u044f \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u044b",
                 finishing_description: "\u041c\u0438\u0441\u0441\u0438\u0438 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u044b, \u0432\u0441\u0435 \u0443\u0441\u043b\u043e\u0432\u0438\u044f \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u044b",
-                unattended_description: "\u041d\u043e\u0432\u044b\u0435 \u043c\u0438\u0441\u0441\u0438\u0438"
+                unattended_description: "\u041c\u0438\u0441\u0441\u0438\u0438 \u0431\u0435\u0437 \u043f\u0440\u0438\u0441\u043c\u043e\u0442\u0440\u0430"
             },
             missions_filtered_out: "\u041d\u0435\u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u043c\u0438\u0441\u0441\u0438\u0438 \u043c\u043e\u0433\u0443\u0442 \u0431\u044b\u0442\u044c \u043e\u0442\u0444\u0438\u043b\u044c\u0442\u0440\u043e\u0432\u0430\u043d\u044b. \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u0440\u043e\u0432\u0435\u0440\u044c\u0442\u0435 \u0444\u0438\u043b\u044c\u0442\u0440\u044b \u0432\u0430\u0448\u0435\u0439 \u043a\u0430\u0440\u0442\u044b.",
             no_alliance_chat_impossible: "\u0427\u0430\u0442 - \u044d\u0442\u043e \u043e\u0442\u043b\u0438\u0447\u043d\u044b\u0439 \u0441\u043f\u043e\u0441\u043e\u0431 \u043f\u043e\u043e\u0431\u0449\u0430\u0442\u044c\u0441\u044f \u0441 \u0434\u0440\u0443\u0433\u0438\u043c\u0438, \u0431\u043e\u043b\u0435\u0435 \u043e\u043f\u044b\u0442\u043d\u044b\u043c\u0438 \u0438\u0433\u0440\u043e\u043a\u0430\u043c\u0438.\xa0\u041e\u043d\u0438 \u043c\u043e\u0433\u0443\u0442 \u043a\u0430\u043a \u043e\u0442\u0432\u0435\u0442\u0438\u0442\u044c \u043d\u0430 \u0432\u0430\u0448\u0438 \u0432\u043e\u043f\u0440\u043e\u0441\u044b, \u0442\u0430\u043a \u0438 \u043f\u043e\u043c\u043e\u0447\u044c \u0432\u0430\u043c, \u043f\u0440\u0435\u0434\u043e\u0441\u0442\u0430\u0432\u0438\u0432 \u0434\u043e\u0441\u0442\u0443\u043f \u043a \u0442\u0430\u043a\u0438\u043c \u0437\u0434\u0430\u043d\u0438\u044f\u043c, \u043a\u0430\u043a \u0431\u043e\u043b\u044c\u043d\u0438\u0446\u044b \u0438 \u0448\u043a\u043e\u043b\u044b.",
@@ -9477,7 +9477,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 attended_description: "Missioner i gang, ikke alle betingelser opfyldt",
                 finishing_description: "Missioner fuldf\xf8rt, alle betingelser opfyldt",
-                unattended_description: "Nye missioner"
+                unattended_description: "Uoverv\xe5gede missioner"
             },
             missions_filtered_out: "Nogle missioner kan blive filtreret ud. Tjek venligst dine kortfilter.",
             no_alliance_chat_impossible: "Chatten er en god m\xe5de at komme i kontakt med andre mere erfarne spillere p\xe5.\xa0De kan b\xe5de besvare dine sp\xf8rgsm\xe5l og hj\xe6lpe dig ved at give dig adgang til bygninger som hospitaler og skoler.",
@@ -9917,7 +9917,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 attended_description: "P\xe5g\xe5ende oppdrag, ikke alle betingelser er oppfylt",
                 finishing_description: "Oppdrag fullf\xf8rt, alle betingelser oppfylt",
-                unattended_description: "Nye oppdrag"
+                unattended_description: "Oppdrag uten tilsyn"
             },
             missions_filtered_out: "Noen oppdrag kan bli filtrert ut. Vennligst sjekk kartfiltrene dine.",
             no_alliance_chat_impossible: "Chatten er en fin m\xe5te \xe5 koble seg opp til andre mer erfarne spillere p\xe5. De kan b\xe5de svare p\xe5 sp\xf8rsm\xe5lene dine og hjelpe deg ved \xe5 gi deg tilgang til bygninger som sykehus og skoler",
@@ -10369,7 +10369,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 attended_description: "Prob\xedhaj\xedc\xed mise, nejsou spln\u011bny v\u0161echny podm\xednky",
                 finishing_description: "Mise spln\u011bny, v\u0161echny podm\xednky spln\u011bny",
-                unattended_description: "Nov\xe9 mise"
+                unattended_description: "Bezobslu\u017en\xe9 mise"
             },
             missions_filtered_out: "N\u011bkter\xe9 mise mohou b\xfdt odfiltrov\xe1ny. Zkontrolujte pros\xedm sv\xe9 mapov\xe9 filtry.",
             no_alliance_chat_impossible: "Chat je skv\u011bl\xfd zp\u016fsob, jak se spojit s dal\u0161\xedmi zku\u0161en\u011bj\u0161\xedmi hr\xe1\u010di.\xa0Ti v\xe1m mohou odpov\u011bd\u011bt na va\u0161e ot\xe1zky a tak\xe9 v\xe1m pomoci t\xedm, \u017ee v\xe1m zp\u0159\xedstupn\xed budovy, jako jsou nemocnice a \u0161koly.",
@@ -10792,7 +10792,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 attended_description: "G\xf6revler Devam Ediyor, T\xfcm ko\u015fullar yerine getirilmedi",
                 finishing_description: "G\xf6revler Tamamland\u0131, T\xfcm ko\u015fullar yerine getirildi",
-                unattended_description: "Yeni G\xf6revler"
+                unattended_description: "Kat\u0131l\u0131ms\u0131z G\xf6revler"
             },
             missions_filtered_out: "Baz\u0131 g\xf6revler filtrelenebilir. L\xfctfen harita filtrelerinizi kontrol edin.",
             no_alliance_chat_impossible: "Bir birlikte de\u011filsin.",
@@ -11186,7 +11186,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 attended_description: "Miss\xf5es em curso, nem todas as condi\xe7\xf5es foram cumpridas",
                 finishing_description: "Miss\xf5es conclu\xeddas, todas as condi\xe7\xf5es cumpridas",
-                unattended_description: "Novas miss\xf5es"
+                unattended_description: "Miss\xf5es n\xe3o assistidas"
             },
             missions_filtered_out: "Algumas miss\xf5es podem ser filtradas. Por favor, verifique seus filtros de mapa.",
             no_alliance_chat_impossible: "O Chat \xe9 uma \xf3tima forma de se ligar a outros jogadores mais experientes.\xa0Ambos podem responder \xe0s suas perguntas e ajud\xe1-lo dando-lhe acesso a edif\xedcios como Hospitais e Escolas.",
@@ -11618,7 +11618,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 attended_description: "Miss\xf5es em curso, nem todas as condi\xe7\xf5es foram cumpridas",
                 finishing_description: "Miss\xf5es conclu\xeddas, todas as condi\xe7\xf5es cumpridas",
-                unattended_description: "Novas miss\xf5es"
+                unattended_description: "Miss\xf5es n\xe3o assistidas"
             },
             missions_filtered_out: "Algumas miss\xf5es podem ser filtradas. Por favor, verifique seus filtros de mapa.",
             no_alliance_chat_impossible: "Voc\xea n\xe3o est\xe1 em uma alian\xe7a.",
@@ -12000,7 +12000,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 attended_description: "\u041c\u0456\u0441\u0456\u0457 \u0432 \u043f\u0440\u043e\u0446\u0435\u0441\u0456 \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u043d\u044f, \u043d\u0435 \u0432\u0441\u0456 \u0443\u043c\u043e\u0432\u0438 \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u0456",
                 finishing_description: "\u041c\u0456\u0441\u0456\u0457 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043e, \u0432\u0441\u0456 \u0443\u043c\u043e\u0432\u0438 \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u043e",
-                unattended_description: "\u041d\u043e\u0432\u0456 \u043c\u0456\u0441\u0456\u0457"
+                unattended_description: "\u041c\u0456\u0441\u0456\u0457 \u0431\u0435\u0437 \u043d\u0430\u0433\u043b\u044f\u0434\u0443"
             },
             missions_filtered_out: "\u0414\u0435\u044f\u043a\u0456 \u043c\u0456\u0441\u0456\u0457 \u043c\u043e\u0436\u0443\u0442\u044c \u0431\u0443\u0442\u0438 \u0432\u0456\u0434\u0444\u0456\u043b\u044c\u0442\u0440\u043e\u0432\u0430\u043d\u0456. \u041f\u0435\u0440\u0435\u0432\u0456\u0440\u0442\u0435 \u0441\u0432\u043e\u0457 \u0444\u0456\u043b\u044c\u0442\u0440\u0438 \u043d\u0430 \u043a\u0430\u0440\u0442\u0456.",
             no_alliance_chat_impossible: "\u0412\u0438 \u043d\u0435 \u043f\u0435\u0440\u0435\u0431\u0443\u0432\u0430\u0454\u0442\u0435 \u0432 \u0430\u043b\u044c\u044f\u043d\u0441\u0456.",
@@ -12378,7 +12378,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 attended_description: "Misiones en curso, no se cumplen todas las condiciones",
                 finishing_description: "Misiones completadas, todas las condiciones cumplidas",
-                unattended_description: "Nuevas misiones"
+                unattended_description: "Misiones desatendidas"
             },
             missions_filtered_out: "Algunas misiones pueden ser filtradas. Por favor, revise los filtros de su mapa.",
             no_alliance_chat_impossible: "No est\xe1s en una alianza.",
@@ -12778,7 +12778,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 attended_description: "\u9032\u884c\u4e2d\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u3001\u3059\u3079\u3066\u306e\u6761\u4ef6\u304c\u6e80\u305f\u3055\u308c\u305f\u308f\u3051\u3067\u306f\u306a\u3044",
                 finishing_description: "\u30df\u30c3\u30b7\u30e7\u30f3\u5b8c\u4e86\u3001\u5168\u6761\u4ef6\u9054\u6210",
-                unattended_description: "\u65b0\u3057\u3044\u30df\u30c3\u30b7\u30e7\u30f3"
+                unattended_description: "\u7121\u4eba\u30df\u30c3\u30b7\u30e7\u30f3"
             },
             missions_filtered_out: "\u4e00\u90e8\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u306f\u9664\u5916\u3055\u308c\u308b\u53ef\u80fd\u6027\u304c\u3042\u308a\u307e\u3059\u3002\u30de\u30c3\u30d7\u30d5\u30a3\u30eb\u30bf\u30fc\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
             no_alliance_chat_impossible: "\u30c1\u30e3\u30c3\u30c8\u306f\u3001\u7d4c\u9a13\u8c4a\u5bcc\u306a\u30d7\u30ec\u30a4\u30e4\u30fc\u3068\u3064\u306a\u304c\u308b\u305f\u3081\u306e\u7d20\u6674\u3089\u3057\u3044\u65b9\u6cd5\u3067\u3059\u3002\xa0\u5f7c\u3089\u306f\u3042\u306a\u305f\u306e\u8cea\u554f\u306b\u7b54\u3048\u305f\u308a\u3001\u75c5\u9662\u3084\u5b66\u6821\u306a\u3069\u306e\u5efa\u7269\u306b\u30a2\u30af\u30bb\u30b9\u3059\u308b\u3053\u3068\u3067\u3042\u306a\u305f\u3092\u52a9\u3051\u3066\u304f\u308c\u308b\u3067\u3057\u3087\u3046\u3002",
@@ -13199,7 +13199,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 attended_description: "\uc9c4\ud589 \uc911\uc778 \ubbf8\uc158, \ubaa8\ub4e0 \uc870\uac74\uc774 \ucda9\uc871\ub418\uc9c0 \uc54a\uc74c",
                 finishing_description: "\ubbf8\uc158 \uc644\ub8cc, \ubaa8\ub4e0 \uc870\uac74 \ucda9\uc871",
-                unattended_description: "\uc0c8\ub85c\uc6b4 \ubbf8\uc158"
+                unattended_description: "\ubb34\uc778 \ubbf8\uc158"
             },
             missions_filtered_out: "\uc77c\ubd80 \ubbf8\uc158\uc774 \ud544\ud130\ub9c1 \ub420 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \uc9c0\ub3c4 \ud544\ud130\ub97c \ud655\uc778\ud558\uc2ed\uc2dc\uc624.",
             no_alliance_chat_impossible: "\ucc44\ud305\uc740 \uacbd\ud5d8\uc774 \ub9ce\uc740 \ub2e4\ub978 \ud50c\ub808\uc774\uc5b4\uc640 \uc5f0\uacb0\ud558\ub294 \uc88b\uc740 \ubc29\ubc95\uc785\ub2c8\ub2e4. \uadf8\ub4e4\uc740 \uadc0\ud558\uc758 \uc9c8\ubb38\uc5d0 \ub2f5\ubcc0\ud558\uace0 \ubcd1\uc6d0 \ubc0f \ud559\uad50\uc640 \uac19\uc740 \uac74\ubb3c\uc5d0 \ub300\ud55c \uc561\uc138\uc2a4 \uad8c\ud55c\uc744 \ubd80\uc5ec\ud558\uc5ec \uadc0\ud558\ub97c \ub3c4\uc6b8 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
@@ -13610,7 +13610,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 attended_description: "Misiuni \xeen curs de desf\u0103\u0219urare, Nu sunt \xeendeplinite toate condi\u021biile",
                 finishing_description: "Misiuni \xeencheiate, Toate condi\u021biile \xeendeplinite",
-                unattended_description: "Noi misiuni"
+                unattended_description: "Misiuni nesupravegheate"
             },
             missions_filtered_out: "Unele misiuni ar putea fi eliminate. V\u0103 rug\u0103m s\u0103 verifica\u021bi filtrele de hart\u0103.",
             no_alliance_chat_impossible: "Nu faci parte dintr-o alian\u021b\u0103.",
@@ -14016,7 +14016,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 attended_description: "Missions in Progress, Kaikki ehdot eiv\xe4t t\xe4yty.",
                 finishing_description: "Teht\xe4v\xe4t suoritettu, kaikki ehdot t\xe4ytetty",
-                unattended_description: "Uudet teht\xe4v\xe4t"
+                unattended_description: "Valvomattomat teht\xe4v\xe4t"
             },
             missions_filtered_out: "Jotkut teht\xe4v\xe4t voidaan suodattaa pois. Tarkista karttasuodattimet.",
             no_alliance_chat_impossible: "Chat on loistava tapa luoda yhteyksi\xe4 muihin kokeneempiin pelaajiin.\xa0He voivat sek\xe4 vastata kysymyksiisi ett\xe4 auttaa sinua antamalla sinulle p\xe4\xe4syn rakennuksiin, kuten sairaaloihin ja kouluihin.",
@@ -14445,7 +14445,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 attended_description: "Misie prebiehaj\xfa, nie s\xfa splnen\xe9 v\u0161etky podmienky",
                 finishing_description: "Misie dokon\u010den\xe9, v\u0161etky podmienky splnen\xe9",
-                unattended_description: "Nov\xe9 misie"
+                unattended_description: "Misie bez dozoru"
             },
             missions_filtered_out: "Niektor\xe9 misie m\xf4\u017eu by\u0165 odfiltrovan\xe9. Skontrolujte filtre m\xe1p.",
             no_alliance_chat_impossible: "Nie ste v aliancii.",
