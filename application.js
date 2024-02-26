@@ -4062,7 +4062,6 @@ Object.values || (Object.values = function (e) {
             ambulance: "Krankentransporte",
             anti_abuse_active_link: "Klicke hier f\xfcr weitere Informationen.",
             anti_abuse_active_text: "Neue Eins\xe4tze werden in einem erweiterten Radius von 100km generiert, da zu viele Geb\xe4ude desselben Typs zu nah beieinander stehen.",
-            attended: "Bearbeitete Eins\xe4tze",
             cancel_alliance_event: "Verbands-Event abbrechen",
             cancel_alliance_event_confirm: "M\xf6chtest du das Verbands-Event wirklich abbrechen?",
             chat_history: "Chatverlauf",
@@ -4070,7 +4069,6 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Verbands-Event starten",
             create_alliance_operation: "Verbands-Gro\xdfeinsatz erstellen",
             emergency: "Notf\xe4lle",
-            finishing: "Eins\xe4tze in Durchf\xfchrung",
             join_alliance_infos: "Wenn du in einem Verband bist, k\xf6nnen andere Spieler dir Eins\xe4tze freigeben.",
             legacy_client_notice: "NUR iOS & ANDROID USER:<br>\nWenn du noch eine alte Version nutzt, aktualisiere bitte auf die neueste App-Version. Die alte Version kann zuk\xfcnftig zu Problemen mit dem Spiel und dem Login f\xfchren.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Karte",
@@ -4119,12 +4117,33 @@ Object.values || (Object.values = function (e) {
             message: "Nachricht",
             mission: "Eins\xe4tze",
             mission_filters: {
+                alliance_missions: "Verbandseins\xe4tze",
+                alliance_missions_event: "Event",
+                ambulance: "Krankentransporte",
+                attended: "Bearbeitete Eins\xe4tze",
                 attended_description: "Bearbeitete Eins\xe4tze, nicht alle Bedingungen erf\xfcllt",
+                emergency: "Notf\xe4lle",
+                finishing: "Eins\xe4tze in Durchf\xfchrung",
                 finishing_description: "Eins\xe4tze in Durchf\xfchrung, alle Bedingungen erf\xfcllt",
+                new: "Neue Eins\xe4tze",
+                new_description: "Neue Eins\xe4tze, die noch nicht begonnen wurden",
+                sicherheitswache: "Geplante Eins\xe4tze",
+                sorting: {
+                    age_asc: "Nach Alter (aufsteigend)",
+                    age_desc: "Nach Alter (absteigend)",
+                    caption_asc: "Alphabetisch (aufsteigend)",
+                    caption_desc: "Alphabetisch (absteigend)",
+                    credits_asc: "Durchschnittliche Credits (aufsteigend)",
+                    credits_desc: "Durchschnittliche Credits (absteigend)",
+                    patients_desc: "Anzahl der Patienten (absteigend)",
+                    prisoners_desc: "Anzahl der Gefangenen (absteigend)"
+                },
+                started: "Gestartete Eins\xe4tze",
+                started_description: "Begonnene, aber noch nicht abgeschlossene Eins\xe4tze",
+                unattended: "Unbearbeitete Eins\xe4tze",
                 unattended_description: "Unbearbeite Eins\xe4tze"
             },
             missions_filtered_out: "Einige Eins\xe4tze k\xf6nnten herausgefiltert worden sein. Bitte \xfcberpr\xfcfe deinen Kartenfilter.",
-            new: "Neue Eins\xe4tze",
             no_alliance_chat_impossible: "Der Chat erm\xf6glicht dir, dich mit anderen erfahrenen Spielern zu vernetzen. Sie k\xf6nnen sowohl deine Fragen zum Spiel beantworten als auch helfen, indem sie dir Zugriff auf ihre Geb\xe4ude wie Schulen oder Krankenh\xe4user geben.",
             no_alliance_missions: "Es liegen keine Verbandseins\xe4tze vor. ",
             no_alliance_missions_join: "Die Teilnahme an Verbandseins\xe4tzen erm\xf6glicht es dir, Credits zu verdienen - unabh\xe4ngig davon welches Fahrzeug du sendest. Im Verband kannst du sowohl Eins\xe4tze teilen, als auch auch anderen bei ihren Eins\xe4tzen helfen, um zus\xe4tzliche Credits zu erhalten",
@@ -4135,13 +4154,9 @@ Object.values || (Object.values = function (e) {
             restore_map: "Karte wiederherstellen",
             show_informations: "Gr\xfcn = Die Eins\xe4tze werden in der Leiste angezeigt. Rot = Die Eins\xe4tze werden nicht angezeigt.",
             sicherheitswache: "Geplante Eins\xe4tze",
-            sorting_ascending: "Nach Alter aufsteigend",
             sorting_default: "Standard",
-            sorting_descending: "Nach Alter absteigend",
             sorting_label: "Sortieren nach:",
-            started: "Gestartete Eins\xe4tze",
-            transport: "Transporte",
-            unattended: "Unbearbeitete Eins\xe4tze"
+            transport: "Transporte"
         },
         fms: {
             going: "Auf Anfahrt",
@@ -4560,7 +4575,6 @@ Object.values || (Object.values = function (e) {
             ambulance: "Patient transports",
             anti_abuse_active_link: "Click here for more information.",
             anti_abuse_active_text: "Missions will be generated within an extended radius of 100km, since too many stations of the same type are built too close to each other.",
-            attended: "Attended Missions",
             cancel_alliance_event: "Cancel alliance event",
             cancel_alliance_event_confirm: "Do you really want to cancel the alliance event?",
             chat_history: "Chat History",
@@ -4568,7 +4582,6 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Start alliance event",
             create_alliance_operation: "Create a large scale alliance mission",
             emergency: "Emergency",
-            finishing: "Missions in progress",
             join_alliance_infos: "If you are in an alliance, other players can freely give you missions.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Map",
@@ -4623,12 +4636,33 @@ Object.values || (Object.values = function (e) {
             message: "Message",
             mission: "Missions",
             mission_filters: {
-                attended_description: "Missions in Progress, Not all conditions fulfilled",
-                finishing_description: "Missions Completed, All conditions fulfilled",
+                alliance_missions: "Alliance Missions",
+                alliance_missions_event: "Event",
+                ambulance: "Patient transports",
+                attended: "Attended Missions",
+                attended_description: "Attended, Not all conditions fulfilled",
+                emergency: "Emergency",
+                finishing: "Missions in progress",
+                finishing_description: "Missions in Progress, All conditions fulfilled",
+                new: "New Missions",
+                new_description: "New Missions that have not been opened yet",
+                sicherheitswache: "Planned Appearances",
+                sorting: {
+                    age_asc: "Mission Age (ascending)",
+                    age_desc: "Mission Age (descending)",
+                    caption_asc: "Alphabetically (ascending)",
+                    caption_desc: "Alphabetically (descending)",
+                    credits_asc: "Average Credits (ascending)",
+                    credits_desc: "Average Credits (descending)",
+                    patients_desc: "Patients amount (descending)",
+                    prisoners_desc: "Prisoners amount (descending)"
+                },
+                started: "Started Missions",
+                started_description: "Missions that have been started, but not completed",
+                unattended: "Unattended Missions",
                 unattended_description: "Unattended Missions"
             },
             missions_filtered_out: "Some missions might be filtered out. Please, check your map filters.",
-            new: "New Missions",
             no_alliance_chat_impossible: "The Chat is a great way to link up with other more experienced players.\xa0They can both answer your questions and help you by giving you access to buildings like Hospitals and Schools",
             no_alliance_missions: "There are currently no alliance missions.",
             no_alliance_missions_join: "Participating in alliance missions will reward you with Credits - no matter what type of vehicle you send. By joining an alliance you can do both, share your own missions to get help from experienced alliance members and participate in other\u2019s shared missions for extra rewards.",
@@ -4640,13 +4674,9 @@ Object.values || (Object.values = function (e) {
             server_warning: "Server maintenance at 18:00 EDT. 6h downtime expected.",
             show_informations: "Green = The missions are shown in the list. Red = The missions aren't shown.",
             sicherheitswache: "Planned Appearances",
-            sorting_ascending: "Age asc.",
             sorting_default: "Default",
-            sorting_descending: "Age desc.",
             sorting_label: "Sort by:",
-            started: "Started Missions",
-            transport: "Transport",
-            unattended: "Unattended Missions"
+            transport: "Transport"
         },
         fms: {
             going: "Responding",
@@ -5226,7 +5256,6 @@ Object.values || (Object.values = function (e) {
             ambulance: "Patient transports",
             anti_abuse_active_link: "Click here for more information.",
             anti_abuse_active_text: "Missions will be generated within an extended radius of 100km, since too many stations of the same type are built too close to each other.",
-            attended: "Attended Missions",
             cancel_alliance_event: "Cancel alliance event",
             cancel_alliance_event_confirm: "Do you really want to cancel the alliance event?",
             chat_history: "Chat History",
@@ -5234,7 +5263,6 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Start alliance event",
             create_alliance_operation: "Create a large scale alliance mission",
             emergency: "Emergency",
-            finishing: "Missions in progress",
             join_alliance_infos: "If you are in an alliance, other players can freely give you missions.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Map",
@@ -5283,12 +5311,33 @@ Object.values || (Object.values = function (e) {
             message: "Message",
             mission: "Missions",
             mission_filters: {
-                attended_description: "Missions in Progress, Not all conditions fulfilled",
-                finishing_description: "Missions Completed, All conditions fulfilled",
+                alliance_missions: "Alliance Missions",
+                alliance_missions_event: "Event",
+                ambulance: "Patient transports",
+                attended: "Attended Missions",
+                attended_description: "Attended, Not all conditions fulfilled",
+                emergency: "Emergency",
+                finishing: "Missions in progress",
+                finishing_description: "Missions in Progress, All conditions fulfilled",
+                new: "New Missions",
+                new_description: "New Missions that have not been opened yet",
+                sicherheitswache: "Planned Appearances",
+                sorting: {
+                    age_asc: "Mission Age (ascending)",
+                    age_desc: "Mission Age (descending)",
+                    caption_asc: "Alphabetically (ascending)",
+                    caption_desc: "Alphabetically (descending)",
+                    credits_asc: "Average Credits (ascending)",
+                    credits_desc: "Average Credits (descending)",
+                    patients_desc: "Patients amount (descending)",
+                    prisoners_desc: "Prisoners amount (descending)"
+                },
+                started: "Started Missions",
+                started_description: "Missions that have been started, but not completed",
+                unattended: "Unattended Missions",
                 unattended_description: "Unattended Missions"
             },
             missions_filtered_out: "Some missions might be filtered out. Please, check your map filters.",
-            new: "New Missions",
             no_alliance_chat_impossible: "The Chat is a great way to link up with other more experienced players.\xa0They can both answer your questions and help you by giving you access to buildings like Hospitals and Schools",
             no_alliance_missions: "There are currently no alliance missions.",
             no_alliance_missions_join: "Participating in alliance missions will reward you with Credits - no matter what type of vehicle you send. By joining an alliance you can do both, share your own missions to get help from experienced alliance members and participate in other\u2019s shared missions for extra rewards.",
@@ -5300,13 +5349,9 @@ Object.values || (Object.values = function (e) {
             server_warning: "Server maintenance at 11 pm. 6h downtime expected.",
             show_informations: "Green = The missions are shown in the list. Red = The missions aren't shown.",
             sicherheitswache: "Planned Appearances",
-            sorting_ascending: "Age asc.",
             sorting_default: "Default",
-            sorting_descending: "Age desc.",
             sorting_label: "Sort by:",
-            started: "Started Missions",
-            transport: "Transport",
-            unattended: "Unattended Missions"
+            transport: "Transport"
         },
         fms: {
             going: "Responding",
@@ -5773,7 +5818,6 @@ Object.values || (Object.values = function (e) {
             ambulance: "Vervoer van pati\xebnten",
             anti_abuse_active_link: "Klik hier voor meer informatie.",
             anti_abuse_active_text: "Missies zullen binnen een grotere straal van 100\xa0km verschijnen, omdat te veel stations van hetzelfde type te dicht bij elkaar zijn gebouwd.",
-            attended: "Bijgewoonde missies",
             cancel_alliance_event: "Team-evenement annuleren",
             cancel_alliance_event_confirm: "Wil je het team-evenement echt annuleren?",
             chat_history: "Chat geschiedenis",
@@ -5781,7 +5825,6 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Team-Event starten",
             create_alliance_operation: "Grote inzet aanmaken",
             emergency: "Spoed",
-            finishing: "Missies in uitvoering",
             join_alliance_infos: "Wanneer je in een team zit kunnen andere spelers een incident vrijgeven.",
             legacy_client_notice: "ALLEEN iOS- & ANDROID-GEBRUIKERS:<br>\nAls u de verouderde app of een oude versie gebruikt, zorg er dan voor dat u update naar onze vernieuwde app-versie. De oude versies kunnen in de toekomst problemen veroorzaken met kernfuncties en logins.<br>\nAndroid: %{google_store_link} <br>iOS: %{ios_store_link}",
             map: "Kaart",
@@ -5829,12 +5872,33 @@ Object.values || (Object.values = function (e) {
             message: "Bericht",
             mission: "Incidenten",
             mission_filters: {
-                attended_description: "Inzetten in uitvoering, niet aan alle voorwaarden voldaan",
-                finishing_description: "Inzetten voltooid, alle voorwaarden vervuld",
+                alliance_missions: "Grote inzet",
+                alliance_missions_event: "Event",
+                ambulance: "Vervoer van pati\xebnten",
+                attended: "Bijgewoonde missies",
+                attended_description: "Verwerkte inzetten, niet aan alle voorwaarden voldaan",
+                emergency: "Spoed",
+                finishing: "Missies in uitvoering",
+                finishing_description: "Inzetten in uitvoering, aan alle voorwaarden is voldaan",
+                new: "Nieuwe missies",
+                new_description: "Nieuwe inzetten die nog niet zijn geopend",
+                sicherheitswache: "Geplande inzetten",
+                sorting: {
+                    age_asc: "Chronologische volgorde (oplopend)",
+                    age_desc: "Chronologische volgorde (aflopend)",
+                    caption_asc: "Alfabetisch (oplopend)",
+                    caption_desc: "Alfabetisch (aflopend)",
+                    credits_asc: "Gemiddelde credits (oplopend)",
+                    credits_desc: "Gemiddeld credits (aflopend)",
+                    patients_desc: "Aantal pati\xebnten (aflopend)",
+                    prisoners_desc: "Aantal gevangenen (aflopend)"
+                },
+                started: "Gestarte Inzetten",
+                started_description: "Inzetten die zijn gestart, maar niet voltooid",
+                unattended: "Onbemande inzetten",
                 unattended_description: "Onverwerkte inzetten"
             },
             missions_filtered_out: "Sommige missies worden mogelijk uitgefilterd. Controleer alstublieft uw kaartfilters.",
-            new: "Nieuwe missies",
             no_alliance_chat_impossible: "De Chat is een geweldige manier om in contact te komen met andere meer ervaren spelers.\xa0Zij kunnen zowel je vragen beantwoorden als je helpen door je toegang te geven tot gebouwen zoals Ziekenhuizen en Scholen",
             no_alliance_missions: "Er zijn geen team inzetten beschikbaar",
             no_alliance_missions_join: "Deelnemen aan missies van een team zal je belonen met credits - ongeacht het type voertuig dat je stuurt. Door lid te worden van een team kun je beide doen: je eigen missies delen om hulp te krijgen van ervaren teamleden en deelnemen aan de gedeelde missies van anderen voor extra beloningen.",
@@ -5846,13 +5910,9 @@ Object.values || (Object.values = function (e) {
             server_warning: "Serveronderhoud om 00.00 uur. We verwachten 6 uur offline te zijn.",
             show_informations: "Groen = Inzet wordt in de lijst weergegeven. Rood = Inzet wordt niet weergegeven.",
             sicherheitswache: "Geplande inzetten",
-            sorting_ascending: "Leeftijd opl.",
             sorting_default: "Standaard",
-            sorting_descending: "Leeftijd afl.",
             sorting_label: "Sorteren op:",
-            started: "Gestarte missies",
-            transport: "Transport",
-            unattended: "Onbemande missies"
+            transport: "Transport"
         },
         fms: {
             going: "Uitgerukt",
@@ -6226,7 +6286,6 @@ Object.values || (Object.values = function (e) {
             ambulance: "Transporte de pacientes",
             anti_abuse_active_link: "Haz clic aqu\xed para obtener m\xe1s informaci\xf3n.",
             anti_abuse_active_text: "Las misiones se generar\xe1n en un radio ampliado de 100\xa0km, ya que hay construidas demasiadas estaciones del mismo tipo muy pr\xf3ximas entre s\xed.",
-            attended: "Misiones a las que ha asistido",
             cancel_alliance_event: "Cancelar evento de alianza",
             cancel_alliance_event_confirm: "\xbfSeguro que quieres cancelar el evento de alianza?",
             chat_history: "Historial de chat",
@@ -6234,7 +6293,6 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Comenzar evento de alianza",
             create_alliance_operation: "Crea una misi\xf3n de alianza a gran escala",
             emergency: "Emergencia",
-            finishing: "Misiones en curso",
             join_alliance_infos: "Si est\xe1s en una alianza, otros jugadores podr\xe1n ofrecerte misiones.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Mapa",
@@ -6280,12 +6338,33 @@ Object.values || (Object.values = function (e) {
             message: "Mensaje",
             mission: "Misiones",
             mission_filters: {
-                attended_description: "Misiones en curso, no se cumplen todas las condiciones",
-                finishing_description: "Misiones completadas, todas las condiciones cumplidas",
+                alliance_missions: "Misiones de alianza",
+                alliance_missions_event: "Evento",
+                ambulance: "Transporte de pacientes",
+                attended: "Misiones a las que ha asistido",
+                attended_description: "Asistidos, No se cumplen todas las condiciones",
+                emergency: "Emergencia",
+                finishing: "Misiones en curso",
+                finishing_description: "Misiones en curso, todas las condiciones cumplidas",
+                new: "Nuevas misiones",
+                new_description: "Nuevas misiones que a\xfan no se han abierto",
+                sicherheitswache: "Misones planificadas",
+                sorting: {
+                    age_asc: "Edad de la misi\xf3n (ascendente)",
+                    age_desc: "Edad de la misi\xf3n (descendente)",
+                    caption_asc: "Alfab\xe9ticamente (ascendente)",
+                    caption_desc: "Alfab\xe9ticamente (descendente)",
+                    credits_asc: "Cr\xe9ditos medios (ascendente)",
+                    credits_desc: "Cr\xe9ditos medios (descendente)",
+                    patients_desc: "Cantidad de pacientes (descendente)",
+                    prisoners_desc: "Cantidad de presos (Descendente)"
+                },
+                started: "Misiones iniciadas",
+                started_description: "Misiones iniciadas pero no completadas",
+                unattended: "Misiones desatendidas",
                 unattended_description: "Misiones desatendidas"
             },
             missions_filtered_out: "Algunas misiones pueden ser filtradas. Por favor, revise los filtros de su mapa.",
-            new: "Nuevas misiones",
             no_alliance_chat_impossible: "El chat es una forma estupenda de conectar con otros jugadores m\xe1s experimentados.\xa0Pueden responder a tus preguntas y ayudarte a acceder a edificios como hospitales y escuelas.",
             no_alliance_missions: "No hay misiones de alianza.",
             no_alliance_missions_join: "Participar en las misiones de la alianza te recompensar\xe1 con cr\xe9ditos, independientemente del tipo de veh\xedculo que env\xedes. Al unirte a una alianza puedes hacer ambas cosas, compartir tus propias misiones para obtener ayuda de miembros experimentados de la alianza y participar en las misiones compartidas de otros para obtener recompensas extra.",
@@ -6297,13 +6376,9 @@ Object.values || (Object.values = function (e) {
             server_warning: "Mantenimiento del servidor a las 00:00. Se espera un tiempo de inactividad de 6 horas.",
             show_informations: "Verde: las misiones se mostrar\xe1n en la lista. Rojo: las misiones no se mostrar\xe1n.",
             sicherheitswache: "Misones planificadas",
-            sorting_ascending: "Edad asc.",
             sorting_default: "Por defecto",
-            sorting_descending: "Edad desc.",
             sorting_label: "Ordenar por:",
-            started: "Misiones iniciadas",
-            transport: "Transporte",
-            unattended: "Misiones desatendidas"
+            transport: "Transporte"
         },
         fms: {
             going: "Respondiendo",
@@ -6657,7 +6732,6 @@ Object.values || (Object.values = function (e) {
             ambulance: "Patient transports",
             anti_abuse_active_link: "Click here for more information.",
             anti_abuse_active_text: "Missions will be generated within an extended radius of 100km, since too many stations of the same type are built too close to each other.",
-            attended: "Attended Missions",
             cancel_alliance_event: "Cancel alliance event",
             cancel_alliance_event_confirm: "Do you really want to cancel the alliance event?",
             chat_history: "Chat History",
@@ -6665,7 +6739,6 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Start alliance event",
             create_alliance_operation: "Create a large scale alliance mission",
             emergency: "Emergency",
-            finishing: "Missions in progress",
             join_alliance_infos: "If you are in an alliance, other players can freely give you missions.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Map",
@@ -6711,12 +6784,33 @@ Object.values || (Object.values = function (e) {
             message: "Message",
             mission: "Missions",
             mission_filters: {
-                attended_description: "Missions in Progress, Not all conditions fulfilled",
-                finishing_description: "Missions Completed, All conditions fulfilled",
+                alliance_missions: "Alliance Missions",
+                alliance_missions_event: "Event",
+                ambulance: "Patient transports",
+                attended: "Attended Missions",
+                attended_description: "Attended, Not all conditions fulfilled",
+                emergency: "Emergency",
+                finishing: "Missions in progress",
+                finishing_description: "Missions in Progress, All conditions fulfilled",
+                new: "New Missions",
+                new_description: "New Missions that have not been opened yet",
+                sicherheitswache: "Planned Appearances",
+                sorting: {
+                    age_asc: "Mission Age (ascending)",
+                    age_desc: "Mission Age (descending)",
+                    caption_asc: "Alphabetically (ascending)",
+                    caption_desc: "Alphabetically (descending)",
+                    credits_asc: "Average Credits (ascending)",
+                    credits_desc: "Average Credits (descending)",
+                    patients_desc: "Prisoners amount (descending)",
+                    prisoners_desc: "Prisoners amount (descending)"
+                },
+                started: "Started Missions",
+                started_description: "Missions that have been started, but not completed",
+                unattended: "Unattended Missions",
                 unattended_description: "Unattended Missions"
             },
             missions_filtered_out: "Some missions might be filtered out. Please, check your map filters.",
-            new: "New Missions",
             no_alliance_chat_impossible: "The Chat is a great way to link up with other more experienced players.\xa0They can both answer your questions and help you by giving you access to buildings like Hospitals and Schools",
             no_alliance_missions: "There are currently no alliance missions.",
             no_alliance_missions_join: "Participating in alliance missions will reward you with Credits - no matter what type of vehicle you send. By joining an alliance you can do both, share your own missions to get help from experienced alliance members and participate in other\u2019s shared missions for extra rewards.",
@@ -6728,13 +6822,9 @@ Object.values || (Object.values = function (e) {
             server_warning: "Server maintenance at 08:00 AEST. 6h downtime expected.",
             show_informations: "Green = The missions are shown in the list. Red = The missions aren't shown.",
             sicherheitswache: "Planned Appearances",
-            sorting_ascending: "Age asc.",
             sorting_default: "Default",
-            sorting_descending: "Age desc.",
             sorting_label: "Sort by:",
-            started: "Started Missions",
-            transport: "Transport",
-            unattended: "Unattended Missions"
+            transport: "Transport"
         },
         fms: {
             going: "Responding",
@@ -7202,7 +7292,6 @@ Object.values || (Object.values = function (e) {
             ambulance: "Transport av patienter",
             anti_abuse_active_link: "Klicka h\xe4r f\xf6r mer information.",
             anti_abuse_active_text: "Uppdrag kan dyka upp p\xe5 upp till 100 km avst\xe5nd, eftersom det ligger f\xf6r m\xe5nga stationer av samma typ n\xe4ra varandra.",
-            attended: "Deltagit i uppdrag",
             cancel_alliance_event: "Avbryt alliansevenemanget",
             cancel_alliance_event_confirm: "Vill du verkligen avbryta alliansevenemanget?",
             chat_history: "Chatthistorik",
@@ -7210,7 +7299,6 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Starta evenemang",
             create_alliance_operation: "Skapa ett storskaligt uppdrag",
             emergency: "Akut",
-            finishing: "P\xe5g\xe5ende uppdrag",
             join_alliance_infos: "Om du \xe4r med i en allians kan andra spelare ge dig uppdrag.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Karta",
@@ -7256,12 +7344,33 @@ Object.values || (Object.values = function (e) {
             message: "Meddelande",
             mission: "Uppdrag",
             mission_filters: {
-                attended_description: "P\xe5g\xe5ende uppdrag, inte alla villkor uppfyllda",
-                finishing_description: "Uppdrag slutf\xf6rda, alla villkor uppfyllda",
+                alliance_missions: "Alliansuppdrag",
+                alliance_missions_event: "Evenemang",
+                ambulance: "Transport av patienter",
+                attended: "Deltagit i uppdrag",
+                attended_description: "Bearbetad, Inte alla villkor uppfyllda",
+                emergency: "Akut",
+                finishing: "P\xe5g\xe5ende uppdrag",
+                finishing_description: "P\xe5g\xe5ende uppdrag, alla villkor uppfyllda",
+                new: "Nya uppdrag",
+                new_description: "Nya uppdrag som \xe4nnu inte har \xf6ppnats",
+                sicherheitswache: "Planerade uppdrag",
+                sorting: {
+                    age_asc: "Uppdragets \xe5lder (stigande)",
+                    age_desc: "Uppdragets \xe5lder (fallande)",
+                    caption_asc: "Alfabetiskt (stigande)",
+                    caption_desc: "Alfabetiskt (fallande)",
+                    credits_asc: "Genomsnittliga krediter (stigande)",
+                    credits_desc: "Genomsnittliga krediter (fallande)",
+                    patients_desc: "Patienternas belopp (fallande)",
+                    prisoners_desc: "Antal f\xe5ngar (fallande)"
+                },
+                started: "P\xe5b\xf6rjade uppdrag",
+                started_description: "Uppdrag som har p\xe5b\xf6rjats men inte slutf\xf6rts",
+                unattended: "Obevakade uppdrag",
                 unattended_description: "Obevakade uppdrag"
             },
             missions_filtered_out: "Vissa uppdrag kan filtreras bort. Kontrollera dina kartfilter.",
-            new: "Nya uppdrag",
             no_alliance_chat_impossible: "Chatten \xe4r ett bra s\xe4tt att f\xe5 kontakt med andra mer erfarna spelare.\xa0De kan b\xe5de svara p\xe5 dina fr\xe5gor och hj\xe4lpa dig genom att ge dig tillg\xe5ng till byggnader som sjukhus och skolor.",
             no_alliance_missions: "Det finns inga alliansuppdrag just nu.",
             no_alliance_missions_join: "Om du deltar i alliansuppdrag f\xe5r du krediter - oavsett vilken typ av fordon du skickar. Genom att g\xe5 med i en allians kan du g\xf6ra b\xe5de och, dela dina egna uppdrag f\xf6r att f\xe5 hj\xe4lp av erfarna alliansmedlemmar och delta i andras delade uppdrag f\xf6r extra bel\xf6ningar.",
@@ -7273,13 +7382,9 @@ Object.values || (Object.values = function (e) {
             server_warning: "Vid midnatt sker serverunderh\xe5ll. Arbetet r\xe4knas p\xe5g\xe5 i cirka 6 timmar.",
             show_informations: "Gr\xf6nt = Uppdragen visas i listan. R\xf6tt = Uppdragen visas inte.",
             sicherheitswache: "Planerade uppdrag",
-            sorting_ascending: "\xc5lder (stigande)",
             sorting_default: "Standard",
-            sorting_descending: "\xc5lder (fallande)",
             sorting_label: "Sortering:",
-            started: "P\xe5b\xf6rjade uppdrag",
-            transport: "Transport",
-            unattended: "Obevakade uppdrag"
+            transport: "Transport"
         },
         fms: {
             going: "P\xe5 uppdrag",
@@ -7663,7 +7768,6 @@ Object.values || (Object.values = function (e) {
             ambulance: "Transport pacjent\xf3w",
             anti_abuse_active_link: "Kliknij tutaj, \u017ceby dowiedzie\u0107 si\u0119 wi\u0119cej.",
             anti_abuse_active_text: "Misje b\u0119d\u0105 si\u0119 pojawia\u0107 na rozszerzonym obszarze do 100 km, poniewa\u017c zbyt wiele posterunk\xf3w tego samego rodzaju jest umieszczonych zbyt blisko siebie.",
-            attended: "Uczestniczono w misjach",
             cancel_alliance_event: "Anuluj wydarzenie sojuszu",
             cancel_alliance_event_confirm: "Czy na pewno chcesz anulowa\u0107 wydarzenie sojuszu?",
             chat_history: "Historia czatu",
@@ -7671,7 +7775,6 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Rozpocznij wydarzenie sojuszu",
             create_alliance_operation: "Utw\xf3rz misj\u0119 sojuszu na du\u017c\u0105 skal\u0119",
             emergency: "Sytuacja wyj\u0105tkowa",
-            finishing: "Misje w toku",
             join_alliance_infos: "Je\u015bli nale\u017cysz do sojuszu, inni gracze mog\u0105 ci wyznacza\u0107 misje bez ogranicze\u0144.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Mapa",
@@ -7717,12 +7820,33 @@ Object.values || (Object.values = function (e) {
             message: "Wiadomo\u015b\u0107",
             mission: "Misje",
             mission_filters: {
-                attended_description: "Misje w toku, nie wszystkie warunki zosta\u0142y spe\u0142nione",
-                finishing_description: "Misje uko\u0144czone, wszystkie warunki spe\u0142nione",
+                alliance_missions: "Misje sojuszu",
+                alliance_missions_event: "Wydarzenie",
+                ambulance: "Transport pacjent\xf3w",
+                attended: "Uczestniczono w misjach",
+                attended_description: "Przetworzone, nie wszystkie warunki zosta\u0142y spe\u0142nione",
+                emergency: "Sytuacja wyj\u0105tkowa",
+                finishing: "Misje w toku",
+                finishing_description: "Misje w toku, wszystkie warunki spe\u0142nione",
+                new: "Nowe misje",
+                new_description: "Nowe misje, kt\xf3re nie zosta\u0142y jeszcze otwarte",
+                sicherheitswache: "Planowane misje",
+                sorting: {
+                    age_asc: "Wiek misji (rosn\u0105co)",
+                    age_desc: "Wiek misji (malej\u0105co)",
+                    caption_asc: "Alfabetycznie (rosn\u0105co)",
+                    caption_desc: "Alfabetycznie (malej\u0105co)",
+                    credits_asc: "\u015arednia liczba kredyt\xf3w (rosn\u0105co)",
+                    credits_desc: "\u015arednie kredyty (malej\u0105co)",
+                    patients_desc: "Kwota pacjent\xf3w (malej\u0105co)",
+                    prisoners_desc: "Liczba wi\u0119\u017ani\xf3w (malej\u0105co)"
+                },
+                started: "Rozpocz\u0119te misje",
+                started_description: "Misje, kt\xf3re zosta\u0142y rozpocz\u0119te, ale nie uko\u0144czone",
+                unattended: "Misje bez nadzoru",
                 unattended_description: "Misje bez nadzoru"
             },
             missions_filtered_out: "Niekt\xf3re misje mog\u0105 zosta\u0107 odfiltrowane. Prosz\u0119 sprawdzi\u0107 filtry map.",
-            new: "Nowe misje",
             no_alliance_chat_impossible: "Czat to \u015bwietny spos\xf3b na nawi\u0105zanie kontaktu z innymi, bardziej do\u015bwiadczonymi graczami.\xa0Mog\u0105 oni odpowiedzie\u0107 na twoje pytania i pom\xf3c ci, daj\u0105c ci dost\u0119p do budynk\xf3w takich jak szpitale i szko\u0142y.",
             no_alliance_missions: "W tej chwili nie ma misji sojuszu.",
             no_alliance_missions_join: "Udzia\u0142 w misjach sojuszu nagrodzi Ci\u0119 Kredytami - bez wzgl\u0119du na to, jaki pojazd wy\u015blesz. Do\u0142\u0105czaj\u0105c do sojuszu, mo\u017cesz robi\u0107 obie te rzeczy: dzieli\u0107 si\u0119 w\u0142asnymi misjami, aby uzyska\u0107 pomoc od do\u015bwiadczonych cz\u0142onk\xf3w sojuszu, oraz bra\u0107 udzia\u0142 we wsp\xf3lnych misjach innych, aby otrzyma\u0107 dodatkowe nagrody.",
@@ -7734,13 +7858,9 @@ Object.values || (Object.values = function (e) {
             server_warning: "Przewidujemy przerw\u0119 techniczn\u0105 o p\xf3\u0142nocy. Przewidywany czas w okolicach 6 godzin.",
             show_informations: "Zielony = misje s\u0105 pokazywane. Czerwony = misje nie s\u0105 pokazywane.",
             sicherheitswache: "Planowane misje",
-            sorting_ascending: "Wiek wzr.",
             sorting_default: "Domy\u015blnie",
-            sorting_descending: "Wiek mal.",
             sorting_label: "Sortuj wed\u0142ug:",
-            started: "Rozpocz\u0119te misje",
-            transport: "Transport",
-            unattended: "Misje bez nadzoru"
+            transport: "Transport"
         },
         fms: {
             going: "Reagowanie",
@@ -8124,7 +8244,6 @@ Object.values || (Object.values = function (e) {
             ambulance: "Trasporto di pazienti",
             anti_abuse_active_link: "Fai clic qui per maggiori informazioni.",
             anti_abuse_active_text: "Le missioni si generano all'interno di un raggio esteso di 100 Km, poich\xe9 troppe stazioni dello stesso tipo sono state costruite troppo vicine tra loro.",
-            attended: "Missioni frequentate",
             cancel_alliance_event: "Annulla evento dell'alleanza",
             cancel_alliance_event_confirm: "Vuoi davvero annullare l'evento dell'alleanza?",
             chat_history: "Cronologia chat",
@@ -8132,7 +8251,6 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Inizia evento dell'alleanza",
             create_alliance_operation: "Crea una missione dell'alleanza su larga scala",
             emergency: "Emergenza",
-            finishing: "Missioni in corso",
             join_alliance_infos: "Se fai parte di un'alleanza, altri giocatori possono assegnarti liberamente delle missioni.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Mappa",
@@ -8180,12 +8298,33 @@ Object.values || (Object.values = function (e) {
             message: "Messaggio",
             mission: "Missioni",
             mission_filters: {
-                attended_description: "Missioni in corso, non tutte le condizioni sono soddisfatte",
-                finishing_description: "Missioni completate, tutte le condizioni soddisfatte",
+                alliance_missions: "Missioni dell'alleanza",
+                alliance_missions_event: "Evento",
+                ambulance: "Trasporto di pazienti",
+                attended: "Missioni frequentate",
+                attended_description: "Elaborato, non tutte le condizioni sono soddisfatte",
+                emergency: "Emergenza",
+                finishing: "Missioni in corso",
+                finishing_description: "Missioni in corso, tutte le condizioni soddisfatte",
+                new: "Nuove missioni",
+                new_description: "Nuove missioni non ancora aperte",
+                sicherheitswache: "Missioni pianificate",
+                sorting: {
+                    age_asc: "Et\xe0 della missione (crescente)",
+                    age_desc: "Et\xe0 della missione (decrescente)",
+                    caption_asc: "In ordine alfabetico (crescente)",
+                    caption_desc: "In ordine alfabetico (decrescente)",
+                    credits_asc: "Crediti medi (in ordine crescente)",
+                    credits_desc: "Crediti medi (decrescenti)",
+                    patients_desc: "Importo dei pazienti (decrescente)",
+                    prisoners_desc: "Importo dei prigionieri (decrescente)"
+                },
+                started: "Missioni iniziate",
+                started_description: "Missioni avviate, ma non completate",
+                unattended: "Missioni non presidiate",
                 unattended_description: "Missioni non presidiate"
             },
             missions_filtered_out: "Alcune missioni potrebbero essere filtrate. Per favore, controlla i filtri della tua mappa.",
-            new: "Nuove missioni",
             no_alliance_chat_impossible: "La chat \xe8 un ottimo modo per entrare in contatto con altri giocatori pi\xf9 esperti.\xa0Possono rispondere alle vostre domande e aiutarvi dandovi accesso a edifici come ospedali e scuole.",
             no_alliance_missions: "Al momento non ci sono missioni dell'alleanza.",
             no_alliance_missions_join: "Partecipare alle missioni dell'alleanza vi ricompenser\xe0 con i Crediti, indipendentemente dal tipo di veicolo inviato. Unendovi a un'alleanza potrete fare entrambe le cose: condividere le vostre missioni per ricevere aiuto dai membri esperti dell'alleanza e partecipare alle missioni condivise dagli altri per ottenere ricompense extra.",
@@ -8197,13 +8336,9 @@ Object.values || (Object.values = function (e) {
             server_warning: "Manutenzione del server alle 00:00. Tempo di inattivit\xe0 previsto di 6 ore.",
             show_informations: "Verde = Le missioni vengono mostrate nell'elenco. Rosso = Le missioni non vengono mostrate.",
             sicherheitswache: "Missioni pianificate",
-            sorting_ascending: "Et\xe0 (cresc.)",
             sorting_default: "Predefinito",
-            sorting_descending: "Et\xe0 (decr.)",
             sorting_label: "Ordina per:",
-            started: "Missioni iniziate",
-            transport: "Trasporto",
-            unattended: "Missioni non presidiate"
+            transport: "Trasporto"
         },
         fms: {
             going: "In risposta",
@@ -8578,7 +8713,6 @@ Object.values || (Object.values = function (e) {
             ambulance: "Transports de patients",
             anti_abuse_active_link: "Cliquez ici pour plus d'informations.",
             anti_abuse_active_text: "Les missions vont appara\xeetre dans un rayon \xe9tendu de 100\xa0km, car trop de postes du m\xeame type ont \xe9t\xe9 construits trop pr\xe8s les uns des autres.",
-            attended: "Missions suivies",
             cancel_alliance_event: "Annuler l\u2019\xe9v\xe8nement d\u2019alliance",
             cancel_alliance_event_confirm: "Voulez-vous vraiment annuler l\u2019\xe9v\xe8nement d\u2019alliance\xa0?",
             chat_history: "Historique du salon",
@@ -8586,7 +8720,6 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Lancer l\u2019\xe9v\xe8nement d\u2019alliance",
             create_alliance_operation: "Cr\xe9er une mission d\u2019alliance majeure",
             emergency: "Urgence",
-            finishing: "Missions en cours",
             join_alliance_infos: "Si vous appartenez \xe0 une alliance, les autres joueurs peuvent vous confier des missions.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Carte",
@@ -8635,12 +8768,33 @@ Object.values || (Object.values = function (e) {
             message: "Message",
             mission: "Missions",
             mission_filters: {
-                attended_description: "Missions en cours, toutes les conditions ne sont pas remplies",
-                finishing_description: "Missions termin\xe9es, toutes les conditions sont remplies",
+                alliance_missions: "Missions d\u2019alliance",
+                alliance_missions_event: "\xc9v\xe8nement",
+                ambulance: "Transports de patients",
+                attended: "Missions suivies",
+                attended_description: "Trait\xe9e, toutes les conditions n'ont pas \xe9t\xe9 remplies",
+                emergency: "Urgence",
+                finishing: "Missions en cours",
+                finishing_description: "Missions en cours, toutes les conditions sont remplies",
+                new: "Nouvelles missions",
+                new_description: "Nouvelles missions qui n'ont pas encore \xe9t\xe9 ouvertes",
+                sicherheitswache: "Missions pr\xe9vues",
+                sorting: {
+                    age_asc: "\xc2ge de la mission (par ordre croissant)",
+                    age_desc: "Ordre chrono (d\xe9croissant)",
+                    caption_asc: "Par ordre alphab\xe9tique (croissant)",
+                    caption_desc: "Alphab\xe9tiquement (par ordre d\xe9croissant)",
+                    credits_asc: "Cr\xe9dits moyens (par ordre croissant)",
+                    credits_desc: "Cr\xe9dits moyens (par ordre d\xe9croissant)",
+                    patients_desc: "Montant pour les patients (par ordre d\xe9croissant)",
+                    prisoners_desc: "Nombre de prisonniers (par ordre d\xe9croissant)"
+                },
+                started: "Missions commenc\xe9es",
+                started_description: "Missions commenc\xe9es mais non achev\xe9es",
+                unattended: "Missions sans surveillance",
                 unattended_description: "Missions sans surveillance"
             },
             missions_filtered_out: "Certaines missions peuvent \xeatre filtr\xe9es. Veuillez v\xe9rifier les filtres de votre carte.",
-            new: "Nouvelles missions",
             no_alliance_chat_impossible: "Le chat est un excellent moyen d'entrer en contact avec d'autres joueurs plus exp\xe9riment\xe9s.\xa0Ils peuvent \xe0 la fois r\xe9pondre \xe0 vos questions et vous aider en vous donnant acc\xe8s \xe0 des b\xe2timents comme les h\xf4pitaux et les \xe9coles.",
             no_alliance_missions: "Aucune mission d\u2019alliance \xe0 afficher.",
             no_alliance_missions_join: "En participant \xe0 des missions d'alliance, vous recevrez des cr\xe9dits, quel que soit le type de v\xe9hicule que vous envoyez. En rejoignant une alliance, vous pouvez faire les deux, partager vos propres missions pour obtenir l'aide de membres exp\xe9riment\xe9s de l'alliance et participer aux missions partag\xe9es des autres pour obtenir des r\xe9compenses suppl\xe9mentaires.",
@@ -8652,13 +8806,9 @@ Object.values || (Object.values = function (e) {
             server_warning: "Maintenance des serveurs \xe0 00h00. Ceux-ci seront indisponibles durant une dur\xe9e approximative de 6h00.",
             show_informations: "Vert = les missions s\u2019affichent dans la liste. Rouge = les missions ne s\u2019affichent pas.",
             sicherheitswache: "Missions pr\xe9vues",
-            sorting_ascending: "Ordre chrono (croissant)",
             sorting_default: "Par d\xe9faut",
-            sorting_descending: "Ordre chrono (d\xe9croissant)",
             sorting_label: "Trier par\xa0:",
-            started: "Missions commenc\xe9es",
-            transport: "Transport",
-            unattended: "Missions sans surveillance"
+            transport: "Transport"
         },
         fms: {
             going: "En intervention",
@@ -9027,7 +9177,6 @@ Object.values || (Object.values = function (e) {
             ambulance: "\u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u043a\u0430 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432",
             anti_abuse_active_link: "\u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u0437\u0434\u0435\u0441\u044c, \u0447\u0442\u043e\u0431\u044b \u043f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u043f\u043e\u0434\u0440\u043e\u0431\u043d\u0443\u044e \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044e.",
             anti_abuse_active_text: "\u0417\u0430\u0434\u0430\u043d\u0438\u044f \u0431\u0443\u0434\u0443\u0442 \u043f\u043e\u044f\u0432\u043b\u044f\u0442\u044c\u0441\u044f \u0432 \u0440\u0430\u0434\u0438\u0443\u0441\u0435 100 \u043a\u043c, \u043f\u043e\u0441\u043a\u043e\u043b\u044c\u043a\u0443 \u0441\u043b\u0438\u0448\u043a\u043e\u043c \u043c\u0430\u043b\u043e \u0441\u0442\u0430\u043d\u0446\u0438\u0439 \u043e\u0434\u043d\u043e\u0433\u043e \u0442\u0438\u043f\u0430 \u0440\u0430\u0441\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u043e \u0431\u043b\u0438\u0437\u043a\u043e \u0434\u0440\u0443\u0433 \u043a \u0434\u0440\u0443\u0433\u0443.",
-            attended: "\u041f\u043e\u0441\u0435\u0449\u0435\u043d\u043d\u044b\u0435 \u043c\u0438\u0441\u0441\u0438\u0438",
             cancel_alliance_event: "\u041e\u0442\u043c\u0435\u043d\u0438\u0442\u044c \u0441\u043e\u0431\u044b\u0442\u0438\u0435 \u0430\u043b\u044c\u044f\u043d\u0441\u0430",
             cancel_alliance_event_confirm: "\u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b \u0447\u0442\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u043e\u0442\u043c\u0435\u043d\u0438\u0442\u044c \u0441\u043e\u0431\u044b\u0442\u0438\u0435 \u0430\u043b\u044c\u044f\u043d\u0441\u0430?",
             chat_history: "\u0418\u0441\u0442\u043e\u0440\u0438\u044f \u0447\u0430\u0442\u0430",
@@ -9035,7 +9184,6 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "\u041d\u0430\u0447\u0430\u0442\u044c \u0441\u043e\u0431\u044b\u0442\u0438\u0435 \u0430\u043b\u044c\u044f\u043d\u0441\u0430",
             create_alliance_operation: "\u0421\u043e\u0437\u0434\u0430\u0439\u0442\u0435 \u043a\u0440\u0443\u043f\u043d\u043e\u043c\u0430\u0441\u0448\u0442\u0430\u0431\u043d\u043e\u0435 \u0437\u0430\u0434\u0430\u043d\u0438\u0435 \u0430\u043b\u044c\u044f\u043d\u0441\u0430",
             emergency: "\u0427\u0440\u0435\u0437\u0432\u044b\u0447\u0430\u0439\u043d\u0430\u044f \u0441\u0438\u0442\u0443\u0430\u0446\u0438\u044f",
-            finishing: "\u0412\u044b\u043f\u043e\u043b\u043d\u044f\u0435\u043c\u044b\u0435 \u043c\u0438\u0441\u0441\u0438\u0438",
             join_alliance_infos: "\u0415\u0441\u043b\u0438 \u0432\u044b \u0441\u043e\u0441\u0442\u043e\u0438\u0442\u0435 \u0432 \u0430\u043b\u044c\u044f\u043d\u0441\u0435, \u0434\u0440\u0443\u0433\u0438\u0435 \u0438\u0433\u0440\u043e\u043a\u0438 \u043c\u043e\u0433\u0443\u0442 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u043e \u0434\u0430\u0432\u0430\u0442\u044c \u0432\u0430\u043c \u0437\u0430\u0434\u0430\u043d\u0438\u044f.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "\u041a\u0430\u0440\u0442\u0430",
@@ -9080,12 +9228,33 @@ Object.values || (Object.values = function (e) {
             message: "\u0421\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435",
             mission: "\u0417\u0430\u0434\u0430\u043d\u0438\u044f",
             mission_filters: {
-                attended_description: "\u041c\u0438\u0441\u0441\u0438\u0438 \u0432 \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u0435 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044f, \u043d\u0435 \u0432\u0441\u0435 \u0443\u0441\u043b\u043e\u0432\u0438\u044f \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u044b",
-                finishing_description: "\u041c\u0438\u0441\u0441\u0438\u0438 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u044b, \u0432\u0441\u0435 \u0443\u0441\u043b\u043e\u0432\u0438\u044f \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u044b",
+                alliance_missions: "\u0417\u0430\u0434\u0430\u043d\u0438\u044f \u0430\u043b\u044c\u044f\u043d\u0441\u0430",
+                alliance_missions_event: "\u0421\u043e\u0431\u044b\u0442\u0438\u0435",
+                ambulance: "\u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u043a\u0430 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432",
+                attended: "\u041f\u043e\u0441\u0435\u0449\u0435\u043d\u043d\u044b\u0435 \u043c\u0438\u0441\u0441\u0438\u0438",
+                attended_description: "\u041f\u0440\u0438\u0441\u0443\u0442\u0441\u0442\u0432\u043e\u0432\u0430\u043b, \u043d\u0435 \u0432\u0441\u0435 \u0443\u0441\u043b\u043e\u0432\u0438\u044f \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u044b",
+                emergency: "\u0427\u0440\u0435\u0437\u0432\u044b\u0447\u0430\u0439\u043d\u0430\u044f \u0441\u0438\u0442\u0443\u0430\u0446\u0438\u044f",
+                finishing: "\u0412\u044b\u043f\u043e\u043b\u043d\u044f\u0435\u043c\u044b\u0435 \u043c\u0438\u0441\u0441\u0438\u0438",
+                finishing_description: "\u041c\u0438\u0441\u0441\u0438\u0438 \u0432 \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u0435 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044f, \u0432\u0441\u0435 \u0443\u0441\u043b\u043e\u0432\u0438\u044f \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u044b",
+                new: "\u041d\u043e\u0432\u044b\u0435 \u043c\u0438\u0441\u0441\u0438\u0438",
+                new_description: "\u041d\u043e\u0432\u044b\u0435 \u043c\u0438\u0441\u0441\u0438\u0438, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u0435\u0449\u0435 \u043d\u0435 \u0431\u044b\u043b\u0438 \u043e\u0442\u043a\u0440\u044b\u0442\u044b",
+                sicherheitswache: "\u0417\u0430\u043f\u043b\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u0437\u0430\u0434\u0430\u043d\u0438\u044f",
+                sorting: {
+                    age_asc: "\u0412\u043e\u0437\u0440\u0430\u0441\u0442 \u043c\u0438\u0441\u0441\u0438\u0438 (\u043f\u043e \u0432\u043e\u0437\u0440\u0430\u0441\u0442\u0430\u043d\u0438\u044e)",
+                    age_desc: "\u0412\u043e\u0437\u0440\u0430\u0441\u0442 \u043c\u0438\u0441\u0441\u0438\u0438 (\u043f\u043e \u0443\u0431\u044b\u0432\u0430\u043d\u0438\u044e)",
+                    caption_asc: "\u041f\u043e \u0430\u043b\u0444\u0430\u0432\u0438\u0442\u0443 (\u043f\u043e \u0432\u043e\u0437\u0440\u0430\u0441\u0442\u0430\u043d\u0438\u044e)",
+                    caption_desc: "\u0412 \u0430\u043b\u0444\u0430\u0432\u0438\u0442\u043d\u043e\u043c \u043f\u043e\u0440\u044f\u0434\u043a\u0435 (\u043f\u043e \u0443\u0431\u044b\u0432\u0430\u043d\u0438\u044e)",
+                    credits_asc: "\u0421\u0440\u0435\u0434\u043d\u0438\u0435 \u043a\u0440\u0435\u0434\u0438\u0442\u044b (\u043f\u043e \u0432\u043e\u0437\u0440\u0430\u0441\u0442\u0430\u043d\u0438\u044e)",
+                    credits_desc: "\u0421\u0440\u0435\u0434\u043d\u0438\u0435 \u043a\u0440\u0435\u0434\u0438\u0442\u044b (\u043f\u043e \u0443\u0431\u044b\u0432\u0430\u043d\u0438\u044e)",
+                    patients_desc: "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432 (\u043f\u043e \u0443\u0431\u044b\u0432\u0430\u043d\u0438\u044e)",
+                    prisoners_desc: "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0437\u0430\u043a\u043b\u044e\u0447\u0435\u043d\u043d\u044b\u0445 (\u043f\u043e \u0443\u0431\u044b\u0432\u0430\u043d\u0438\u044e)"
+                },
+                started: "\u041d\u0430\u0447\u0430\u0442\u044b\u0435 \u043c\u0438\u0441\u0441\u0438\u0438",
+                started_description: "\u041c\u0438\u0441\u0441\u0438\u0438, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u0431\u044b\u043b\u0438 \u043d\u0430\u0447\u0430\u0442\u044b, \u043d\u043e \u043d\u0435 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u044b",
+                unattended: "\u041c\u0438\u0441\u0441\u0438\u0438 \u0431\u0435\u0437 \u043f\u0440\u0438\u0441\u043c\u043e\u0442\u0440\u0430",
                 unattended_description: "\u041c\u0438\u0441\u0441\u0438\u0438 \u0431\u0435\u0437 \u043f\u0440\u0438\u0441\u043c\u043e\u0442\u0440\u0430"
             },
             missions_filtered_out: "\u041d\u0435\u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u043c\u0438\u0441\u0441\u0438\u0438 \u043c\u043e\u0433\u0443\u0442 \u0431\u044b\u0442\u044c \u043e\u0442\u0444\u0438\u043b\u044c\u0442\u0440\u043e\u0432\u0430\u043d\u044b. \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u0440\u043e\u0432\u0435\u0440\u044c\u0442\u0435 \u0444\u0438\u043b\u044c\u0442\u0440\u044b \u0432\u0430\u0448\u0435\u0439 \u043a\u0430\u0440\u0442\u044b.",
-            new: "\u041d\u043e\u0432\u044b\u0435 \u043c\u0438\u0441\u0441\u0438\u0438",
             no_alliance_chat_impossible: "\u0427\u0430\u0442 - \u044d\u0442\u043e \u043e\u0442\u043b\u0438\u0447\u043d\u044b\u0439 \u0441\u043f\u043e\u0441\u043e\u0431 \u043f\u043e\u043e\u0431\u0449\u0430\u0442\u044c\u0441\u044f \u0441 \u0434\u0440\u0443\u0433\u0438\u043c\u0438, \u0431\u043e\u043b\u0435\u0435 \u043e\u043f\u044b\u0442\u043d\u044b\u043c\u0438 \u0438\u0433\u0440\u043e\u043a\u0430\u043c\u0438.\xa0\u041e\u043d\u0438 \u043c\u043e\u0433\u0443\u0442 \u043a\u0430\u043a \u043e\u0442\u0432\u0435\u0442\u0438\u0442\u044c \u043d\u0430 \u0432\u0430\u0448\u0438 \u0432\u043e\u043f\u0440\u043e\u0441\u044b, \u0442\u0430\u043a \u0438 \u043f\u043e\u043c\u043e\u0447\u044c \u0432\u0430\u043c, \u043f\u0440\u0435\u0434\u043e\u0441\u0442\u0430\u0432\u0438\u0432 \u0434\u043e\u0441\u0442\u0443\u043f \u043a \u0442\u0430\u043a\u0438\u043c \u0437\u0434\u0430\u043d\u0438\u044f\u043c, \u043a\u0430\u043a \u0431\u043e\u043b\u044c\u043d\u0438\u0446\u044b \u0438 \u0448\u043a\u043e\u043b\u044b.",
             no_alliance_missions: "\u0412 \u043d\u0430\u0441\u0442\u043e\u044f\u0449\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u0437\u0430\u0434\u0430\u043d\u0438\u0439 \u0430\u043b\u044c\u044f\u043d\u0441\u0430 \u043d\u0435\u0442.",
             no_alliance_missions_join: "\u0423\u0447\u0430\u0441\u0442\u0438\u0435 \u0432 \u043c\u0438\u0441\u0441\u0438\u044f\u0445 \u0430\u043b\u044c\u044f\u043d\u0441\u0430 \u043f\u0440\u0438\u043d\u0435\u0441\u0435\u0442 \u0432\u0430\u043c \u043a\u0440\u0435\u0434\u0438\u0442\u044b - \u043d\u0435\u0437\u0430\u0432\u0438\u0441\u0438\u043c\u043e \u043e\u0442 \u0442\u0438\u043f\u0430 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u043e\u0433\u043e \u0432\u0430\u043c\u0438 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u043e\u0433\u043e \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430. \u0412\u0441\u0442\u0443\u043f\u0438\u0432 \u0432 \u0430\u043b\u044c\u044f\u043d\u0441, \u0432\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0434\u0435\u043b\u0430\u0442\u044c \u0438 \u0442\u043e, \u0438 \u0434\u0440\u0443\u0433\u043e\u0435: \u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f \u0441\u0432\u043e\u0438\u043c\u0438 \u0437\u0430\u0434\u0430\u043d\u0438\u044f\u043c\u0438, \u043f\u043e\u043b\u0443\u0447\u0430\u044f \u043f\u043e\u043c\u043e\u0449\u044c \u043e\u0442 \u043e\u043f\u044b\u0442\u043d\u044b\u0445 \u0447\u043b\u0435\u043d\u043e\u0432 \u0430\u043b\u044c\u044f\u043d\u0441\u0430, \u0438 \u0443\u0447\u0430\u0441\u0442\u0432\u043e\u0432\u0430\u0442\u044c \u0432 \u043e\u0431\u0449\u0438\u0445 \u0437\u0430\u0434\u0430\u043d\u0438\u044f\u0445 \u0434\u0440\u0443\u0433\u0438\u0445, \u043f\u043e\u043b\u0443\u0447\u0430\u044f \u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0435 \u043d\u0430\u0433\u0440\u0430\u0434\u044b.",
@@ -9097,13 +9266,9 @@ Object.values || (Object.values = function (e) {
             server_warning: "Server maintenance at 1 am. 6h downtime expected.",
             show_informations: "\u0417\u0435\u043b\u0451\u043d\u044b\u0439 = \u0437\u0430\u0434\u0430\u043d\u0438\u044f \u043e\u0442\u043e\u0431\u0440\u0430\u0436\u0430\u044e\u0442\u0441\u044f \u0432 \u0441\u043f\u0438\u0441\u043a\u0435. \u041a\u0440\u0430\u0441\u043d\u044b\u0439 = \u0437\u0430\u0434\u0430\u043d\u0438\u044f \u043d\u0435 \u043e\u0442\u043e\u0431\u0440\u0430\u0436\u0430\u044e\u0442\u0441\u044f.",
             sicherheitswache: "\u0417\u0430\u043f\u043b\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u0437\u0430\u0434\u0430\u043d\u0438\u044f",
-            sorting_ascending: "\u0412\u043e\u0437\u0440\u0430\u0441\u0442 \u043f\u043e \u0432\u043e\u0437\u0440\u0430\u0441\u0442\u0430\u044e\u0449\u0435\u0439",
             sorting_default: "\u041f\u043e \u0443\u043c\u043e\u043b\u0447\u0430\u043d\u0438\u044e",
-            sorting_descending: "\u0412\u043e\u0437\u0440\u0430\u0441\u0442 \u043f\u043e \u0443\u0431\u044b\u0432\u0430\u044e\u0449\u0435\u0439",
             sorting_label: "\u0421\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u043a\u0430:",
-            started: "\u041d\u0430\u0447\u0430\u0442\u044b\u0435 \u043c\u0438\u0441\u0441\u0438\u0438",
-            transport: "\u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442",
-            unattended: "\u041c\u0438\u0441\u0441\u0438\u0438 \u0431\u0435\u0437 \u043f\u0440\u0438\u0441\u043c\u043e\u0442\u0440\u0430"
+            transport: "\u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442"
         },
         fms: {
             going: "\u0412\u044b\u0435\u0437\u0436\u0430\u0435\u0442",
@@ -9443,7 +9608,6 @@ Object.values || (Object.values = function (e) {
             ambulance: "Transport af patienter",
             anti_abuse_active_link: "Klik her for mere information.",
             anti_abuse_active_text: "Der vil opst\xe5 mange missioner indenfor en udvidet radius p\xe5 100 km, da der er bygget for mange stationer af den samme type for t\xe6t p\xe5 hinanden.",
-            attended: "Deltagelse i missioner",
             cancel_alliance_event: "Annull\xe9r alliancebegivenhed",
             cancel_alliance_event_confirm: "Er du sikker p\xe5, at du vil annullere alliancebegivenheden?",
             chat_history: "Chat-historik",
@@ -9451,7 +9615,6 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "P\xe5begynd alliancebegivenhed",
             create_alliance_operation: "Opret en stor alliancemission",
             emergency: "Krisesituation",
-            finishing: "Igangv\xe6rende missioner",
             join_alliance_infos: "Hvis du er i en alliance, kan andre spillere give dig missioner.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Kort",
@@ -9497,12 +9660,33 @@ Object.values || (Object.values = function (e) {
             message: "Meddelelse",
             mission: "Missioner",
             mission_filters: {
-                attended_description: "Missioner i gang, ikke alle betingelser opfyldt",
-                finishing_description: "Missioner fuldf\xf8rt, alle betingelser opfyldt",
+                alliance_missions: "Alliancemissioner",
+                alliance_missions_event: "Begivenhed",
+                ambulance: "Transport af patienter",
+                attended: "Deltagelse i missioner",
+                attended_description: "Forarbejdet, ikke alle betingelser opfyldt",
+                emergency: "Krisesituation",
+                finishing: "Igangv\xe6rende missioner",
+                finishing_description: "Igangv\xe6rende missioner, alle betingelser opfyldt",
+                new: "Nye missioner",
+                new_description: "Nye missioner, der ikke er blevet \xe5bnet endnu",
+                sicherheitswache: "Planlagte indsatser",
+                sorting: {
+                    age_asc: "Missionsalder (stigende)",
+                    age_desc: "Missionsalder (faldende)",
+                    caption_asc: "Alfabetisk (stigende)",
+                    caption_desc: "Alfabetisk (faldende)",
+                    credits_asc: "Gennemsnitlige kreditter (stigende)",
+                    credits_desc: "Gennemsnitlige kreditter (faldende)",
+                    patients_desc: "Patienternes bel\xf8b (faldende)",
+                    prisoners_desc: "Antal fanger (faldende)"
+                },
+                started: "P\xe5begyndte missioner",
+                started_description: "Missioner, der er p\xe5begyndt, men ikke afsluttet",
+                unattended: "Uoverv\xe5gede missioner",
                 unattended_description: "Uoverv\xe5gede missioner"
             },
             missions_filtered_out: "Nogle missioner kan blive filtreret ud. Tjek venligst dine kortfilter.",
-            new: "Nye missioner",
             no_alliance_chat_impossible: "Chatten er en god m\xe5de at komme i kontakt med andre mere erfarne spillere p\xe5.\xa0De kan b\xe5de besvare dine sp\xf8rgsm\xe5l og hj\xe6lpe dig ved at give dig adgang til bygninger som hospitaler og skoler.",
             no_alliance_missions: "Der er ingen alliancemissioner lige nu",
             no_alliance_missions_join: 'Hvis du deltager i alliancemissioner, f\xe5r du kreditter - uanset hvilken type k\xf8ret\xf8j du sender. Ved at slutte dig til en alliance kan du g\xf8re begge dele, dele dine egne missioner for at f\xe5 hj\xe6lp fra erfarne alliancemedlemmer og deltage i andres delte missioner for at f\xe5 ekstra bel\xf8nninger."',
@@ -9514,13 +9698,9 @@ Object.values || (Object.values = function (e) {
             server_warning: "Servervedligeholdelse kl. 00.00. 6 t. nedlukning forventet.",
             show_informations: "Gr\xf8n = Missionerne vises p\xe5 listen. R\xf8d = Missionerne vises ikke.",
             sicherheitswache: "Planlagte indsatser",
-            sorting_ascending: "Alder opadg.",
             sorting_default: "Standard",
-            sorting_descending: "Alder nedadg.",
             sorting_label: "Sorteret efter:",
-            started: "P\xe5begyndte missioner",
-            transport: "Transport",
-            unattended: "Uoverv\xe5gede missioner"
+            transport: "Transport"
         },
         fms: {
             going: "Rykker ud",
@@ -9885,7 +10065,6 @@ Object.values || (Object.values = function (e) {
             ambulance: "Pasienttransport",
             anti_abuse_active_link: "Klikk her for mer informasjon.",
             anti_abuse_active_text: "Oppdragene dukker opp innenfor en utvidet radius p\xe5 100 km fordi for mange stasjoner av samme variant er bygd i n\xe6rheten av hverandre.",
-            attended: "Deltakelse p\xe5 oppdrag",
             cancel_alliance_event: "Kansellere alliansehendelse",
             cancel_alliance_event_confirm: "Er du sikker p\xe5 at du vil kansellere alliansehendelsen?",
             chat_history: "Chatlogg",
@@ -9893,7 +10072,6 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Start alliansehendelse",
             create_alliance_operation: "Lag et allianseoppdrag i stor skala",
             emergency: "N\xf8dssituasjon",
-            finishing: "P\xe5g\xe5ende oppdrag",
             join_alliance_infos: "Hvis du er i en allianse, kan andre spillere gi deg oppdrag.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Kart",
@@ -9939,12 +10117,33 @@ Object.values || (Object.values = function (e) {
             message: "Melding",
             mission: "Oppdrag",
             mission_filters: {
-                attended_description: "P\xe5g\xe5ende oppdrag, ikke alle betingelser er oppfylt",
-                finishing_description: "Oppdrag fullf\xf8rt, alle betingelser oppfylt",
+                alliance_missions: "Allianseoppdrag",
+                alliance_missions_event: "Hendelse",
+                ambulance: "Pasienttransport",
+                attended: "Deltakelse p\xe5 oppdrag",
+                attended_description: "Bearbeidet, Ikke alle betingelser oppfylt",
+                emergency: "N\xf8dssituasjon",
+                finishing: "P\xe5g\xe5ende oppdrag",
+                finishing_description: "P\xe5g\xe5ende oppdrag, alle betingelser er oppfylt",
+                new: "Nye oppdrag",
+                new_description: "Nye oppdrag som ikke er \xe5pnet enn\xe5",
+                sicherheitswache: "Planlagte visninger",
+                sorting: {
+                    age_asc: "Oppdragets alder (stigende)",
+                    age_desc: "Oppdragets alder (synkende)",
+                    caption_asc: "Alfabetisk (stigende)",
+                    caption_desc: "Alfabetisk (fallende)",
+                    credits_asc: "Gjennomsnittlige studiepoeng (stigende)",
+                    credits_desc: "Gjennomsnittlige studiepoeng (synkende)",
+                    patients_desc: "Antall pasienter (synkende)",
+                    prisoners_desc: "Antall fanger (synkende)"
+                },
+                started: "P\xe5begynte oppdrag",
+                started_description: "Oppdrag som er p\xe5begynt, men ikke fullf\xf8rt",
+                unattended: "Oppdrag uten tilsyn",
                 unattended_description: "Oppdrag uten tilsyn"
             },
             missions_filtered_out: "Noen oppdrag kan bli filtrert ut. Vennligst sjekk kartfiltrene dine.",
-            new: "Nye oppdrag",
             no_alliance_chat_impossible: "Chatten er en fin m\xe5te \xe5 koble seg opp til andre mer erfarne spillere p\xe5. De kan b\xe5de svare p\xe5 sp\xf8rsm\xe5lene dine og hjelpe deg ved \xe5 gi deg tilgang til bygninger som sykehus og skoler",
             no_alliance_missions: "Du har for \xf8yeblikket ingen allianseoppdrag.",
             no_alliance_missions_join: "\xc5 delta i allianseoppdrag vil bel\xf8nne deg med kreditter - uansett hvilken type kj\xf8ret\xf8y du sender. Ved \xe5 bli med i en allianse kan du gj\xf8re begge deler, dele dine egne oppdrag for \xe5 f\xe5 hjelp fra erfarne alliansemedlemmer og delta i andres delte oppdrag for ekstra bel\xf8nninger.",
@@ -9956,13 +10155,9 @@ Object.values || (Object.values = function (e) {
             server_warning: "Servervedlikehold i natt klokken 00:00. Det vil vare i 6 timer.",
             show_informations: "Gr\xf8nn = oppdragene vises p\xe5 listen. R\xf8d = oppdragene vises ikke.",
             sicherheitswache: "Planlagte visninger",
-            sorting_ascending: "Nyeste f\xf8rst",
             sorting_default: "Standard",
-            sorting_descending: "Eldste f\xf8rst",
             sorting_label: "Sorter etter:",
-            started: "P\xe5begynte oppdrag",
-            transport: "Transport",
-            unattended: "Oppdrag uten tilsyn"
+            transport: "Transport"
         },
         fms: {
             going: "Rykker ut",
@@ -10338,7 +10533,6 @@ Object.values || (Object.values = function (e) {
             ambulance: "P\u0159evozy pacient\u016f",
             anti_abuse_active_link: "Kliknut\xedm zde zobrazte dal\u0161\xed informace.",
             anti_abuse_active_text: "Mise se objev\xed v roz\u0161\xed\u0159en\xe9m okruhu 100 km, proto\u017ee bylo postaveno p\u0159\xedli\u0161 mnoho stanic stejn\xe9ho typu bl\xedzko u sebe.",
-            attended: "Z\xfa\u010dastn\u011bn\xe9 misie",
             cancel_alliance_event: "Zru\u0161it alian\u010dn\xed akci",
             cancel_alliance_event_confirm: "Opravdu chcete alian\u010dn\xed akci zru\u0161it?",
             challenges: "V\xfdzvy",
@@ -10347,7 +10541,6 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Zah\xe1jit alian\u010dn\xed akci",
             create_alliance_operation: "Vytvo\u0159it velkou alian\u010dn\xed misi",
             emergency: "Stav nouze",
-            finishing: "Prob\xedhaj\xedc\xed mise",
             join_alliance_infos: "V alianci v\xe1m ostatn\xed hr\xe1\u010di m\u016f\u017eou d\xe1vat mise.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Mapa",
@@ -10393,12 +10586,33 @@ Object.values || (Object.values = function (e) {
             message: "Zpr\xe1va",
             mission: "Mise",
             mission_filters: {
-                attended_description: "Prob\xedhaj\xedc\xed mise, nejsou spln\u011bny v\u0161echny podm\xednky",
-                finishing_description: "Mise spln\u011bny, v\u0161echny podm\xednky spln\u011bny",
+                alliance_missions: "Alian\u010dn\xed mise",
+                alliance_missions_event: "Akce",
+                ambulance: "P\u0159evozy pacient\u016f",
+                attended: "Z\xfa\u010dastn\u011bn\xe9 misie",
+                attended_description: "Zpracov\xe1no, Ne v\u0161echny podm\xednky spln\u011bny",
+                emergency: "Stav nouze",
+                finishing: "Prob\xedhaj\xedc\xed mise",
+                finishing_description: "Mise prob\xedhaj\xed, v\u0161echny podm\xednky spln\u011bny",
+                new: "Nov\xe9 mise",
+                new_description: "Nov\xe9 mise, kter\xe9 je\u0161t\u011b nebyly otev\u0159eny",
+                sicherheitswache: "Pl\xe1novan\xe9 mise",
+                sorting: {
+                    age_asc: "V\u011bk mise (vzestupn\u011b)",
+                    age_desc: "V\u011bk mise (sestupn\u011b)",
+                    caption_asc: "Abecedn\u011b (vzestupn\u011b)",
+                    caption_desc: "Abecedn\u011b (sestupn\u011b)",
+                    credits_asc: "Pr\u016fm\u011brn\xe9 kredity (vzestupn\u011b)",
+                    credits_desc: "Pr\u016fm\u011brn\xe9 kredity (sestupn\u011b)",
+                    patients_desc: "Mno\u017estv\xed pacient\u016f (sestupn\u011b)",
+                    prisoners_desc: "Po\u010det v\u011bz\u0148\u016f (sestupn\u011b)"
+                },
+                started: "Zah\xe1jen\xe9 mise",
+                started_description: "Zah\xe1jen\xe9, ale nedokon\u010den\xe9 mise",
+                unattended: "Bezobslu\u017en\xe9 mise",
                 unattended_description: "Bezobslu\u017en\xe9 mise"
             },
             missions_filtered_out: "N\u011bkter\xe9 mise mohou b\xfdt odfiltrov\xe1ny. Zkontrolujte pros\xedm sv\xe9 mapov\xe9 filtry.",
-            new: "Nov\xe9 mise",
             no_alliance_chat_impossible: "Chat je skv\u011bl\xfd zp\u016fsob, jak se spojit s dal\u0161\xedmi zku\u0161en\u011bj\u0161\xedmi hr\xe1\u010di.\xa0Ti v\xe1m mohou odpov\u011bd\u011bt na va\u0161e ot\xe1zky a tak\xe9 v\xe1m pomoci t\xedm, \u017ee v\xe1m zp\u0159\xedstupn\xed budovy, jako jsou nemocnice a \u0161koly.",
             no_alliance_missions: "K dispozici nejsou \u017e\xe1dn\xe9 alian\u010dn\xed mise.",
             no_alliance_missions_join: "Za \xfa\u010dast v alian\u010dn\xedch mis\xedch z\xedsk\xe1te kredity - bez ohledu na to, jak\xfd typ vozidla po\u0161lete. Vstupem do aliance m\u016f\u017eete d\u011blat oboj\xed, sd\xedlet sv\xe9 vlastn\xed mise a z\xedskat tak pomoc od zku\u0161en\xfdch \u010dlen\u016f aliance a \xfa\u010dastnit se sd\xedlen\xfdch mis\xed ostatn\xedch za dal\u0161\xed odm\u011bny.",
@@ -10410,13 +10624,9 @@ Object.values || (Object.values = function (e) {
             server_warning: "\xdadr\u017eba serveru v 00:00. P\u0159edpokl\xe1d\xe1me 6hodinov\xe9 odstaven\xed.",
             show_informations: "Zelen\xe1 = Mise budou zobrazeny v seznamu. \u010cerven\xe1 = Mise nebudou zobrazeny.",
             sicherheitswache: "Pl\xe1novan\xe9 mise",
-            sorting_ascending: "V\u011bk vzest.",
             sorting_default: "V\xfdchoz\xed",
-            sorting_descending: "V\u011bk sest.",
             sorting_label: "Se\u0159adit podle:",
-            started: "Zah\xe1jen\xe9 mise",
-            transport: "P\u0159evoz",
-            unattended: "Bezobslu\u017en\xe9 mise"
+            transport: "P\u0159evoz"
         },
         fms: {
             going: "Na cest\u011b",
@@ -10765,7 +10975,6 @@ Object.values || (Object.values = function (e) {
             ambulance: "Hasta nakilleri",
             anti_abuse_active_link: "Click here for more information.",
             anti_abuse_active_text: "Missions will be generated within an extended radius of 100km, since too many stations of the same type are built too close to each other.",
-            attended: "Kat\u0131l\u0131nan G\xf6revler",
             cancel_alliance_event: "Cancel alliance event",
             cancel_alliance_event_confirm: "Do you really want to cancel the alliance event?",
             chat_history: "Sohbet Ge\xe7mi\u015fi",
@@ -10773,7 +10982,6 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Birlik etkinli\u011fi ba\u015flat",
             create_alliance_operation: "B\xfcy\xfck \xf6l\xe7ekli bir birlik g\xf6revi olu\u015ftur",
             emergency: "Acil Durum",
-            finishing: "Devam eden g\xf6revler",
             join_alliance_infos: "Bir birlikteysen di\u011fer oyuncular sana istedikleri gibi g\xf6revler verebilirler.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Harita",
@@ -10818,12 +11026,33 @@ Object.values || (Object.values = function (e) {
             message: "Mesaj",
             mission: "G\xf6revler",
             mission_filters: {
-                attended_description: "G\xf6revler Devam Ediyor, T\xfcm ko\u015fullar yerine getirilmedi",
-                finishing_description: "G\xf6revler Tamamland\u0131, T\xfcm ko\u015fullar yerine getirildi",
+                alliance_missions: "Birlik G\xf6revleri",
+                alliance_missions_event: "Etkinlik",
+                ambulance: "Hasta nakilleri",
+                attended: "Kat\u0131l\u0131nan G\xf6revler",
+                attended_description: "Kat\u0131ld\u0131, T\xfcm ko\u015fullar yerine getirilmedi",
+                emergency: "Acil Durum",
+                finishing: "Devam eden g\xf6revler",
+                finishing_description: "G\xf6revler Devam Ediyor, T\xfcm ko\u015fullar yerine getirildi",
+                new: "Yeni G\xf6revler",
+                new_description: "Hen\xfcz a\xe7\u0131lmam\u0131\u015f yeni g\xf6revler",
+                sicherheitswache: "Planlanan G\xf6sterimler",
+                sorting: {
+                    age_asc: "G\xf6rev Ya\u015f\u0131 (Artan)",
+                    age_desc: "G\xf6rev Ya\u015f\u0131 (Azalan)",
+                    caption_asc: "Alfabetik olarak (artan)",
+                    caption_desc: "Alfabetik olarak (azalan)",
+                    credits_asc: "Ortalama Krediler (Artan)",
+                    credits_desc: "Ortalama Krediler (azalan)",
+                    patients_desc: "Hasta miktar\u0131 (azalan)",
+                    prisoners_desc: "Mahkum miktar\u0131 (Azalan)"
+                },
+                started: "Ba\u015flayan G\xf6revler",
+                started_description: "Ba\u015flat\u0131lm\u0131\u015f ancak tamamlanmam\u0131\u015f g\xf6revler",
+                unattended: "Kat\u0131l\u0131ms\u0131z G\xf6revler",
                 unattended_description: "Kat\u0131l\u0131ms\u0131z G\xf6revler"
             },
             missions_filtered_out: "Baz\u0131 g\xf6revler filtrelenebilir. L\xfctfen harita filtrelerinizi kontrol edin.",
-            new: "Yeni G\xf6revler",
             no_alliance_chat_impossible: "Bir birlikte de\u011filsin.",
             no_alliance_missions: "\u015eu anda hi\xe7bir birlik g\xf6revi yok.",
             no_ambulance_missions: "Hasta nakli yoktur. Hasta nakilleri yaln\u0131zca bir ambulans\u0131n\u0131z ve bir hastaneniz oldu\u011funda ger\xe7ekle\u015febilir.",
@@ -10834,13 +11063,9 @@ Object.values || (Object.values = function (e) {
             server_warning: "Server maintenance at 18:00 UTC. 6h downtime expected.",
             show_informations: "Ye\u015fil = G\xf6revler liste i\xe7inde g\xf6sterilir. K\u0131rm\u0131z\u0131 = G\xf6revler g\xf6sterilmez.",
             sicherheitswache: "Planlanan G\xf6sterimler",
-            sorting_ascending: "Age asc.",
             sorting_default: "Default",
-            sorting_descending: "Age desc.",
             sorting_label: "Sort by:",
-            started: "Ba\u015flayan G\xf6revler",
-            transport: "Nakil",
-            unattended: "Kat\u0131l\u0131ms\u0131z G\xf6revler"
+            transport: "Nakil"
         },
         fms: {
             going: "M\xfcdahale ediyor",
@@ -11160,7 +11385,6 @@ Object.values || (Object.values = function (e) {
             ambulance: "Transporte de doentes",
             anti_abuse_active_link: "Clica aqui para mais informa\xe7\xf5es.",
             anti_abuse_active_text: "As miss\xf5es ser\xe3o geradas dentro de um raio aumentado de 100 km, uma vez que demasiadas esta\xe7\xf5es do mesmo tipo est\xe3o constru\xeddas demasiado perto umas das outras.",
-            attended: "Miss\xf5es frequentadas",
             cancel_alliance_event: "Cancelar evento de alian\xe7a",
             cancel_alliance_event_confirm: "Realmente desejas cancelar o evento de alian\xe7a?",
             chat_history: "Hist\xf3rico do chat",
@@ -11168,7 +11392,6 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Iniciar evento de alian\xe7a",
             create_alliance_operation: "Criar miss\xe3o de alian\xe7a em grande escala",
             emergency: "Emerg\xeancia",
-            finishing: "Miss\xf5es em curso",
             join_alliance_infos: "Se estiver numa alian\xe7a, outros jogadores podem compartilhar miss\xf5es consigo.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Mapa",
@@ -11214,12 +11437,33 @@ Object.values || (Object.values = function (e) {
             message: "Mensagem",
             mission: "Miss\xf5es",
             mission_filters: {
-                attended_description: "Miss\xf5es em curso, nem todas as condi\xe7\xf5es foram cumpridas",
-                finishing_description: "Miss\xf5es conclu\xeddas, todas as condi\xe7\xf5es cumpridas",
+                alliance_missions: "Miss\xf5es da alian\xe7a",
+                alliance_missions_event: "Evento",
+                ambulance: "Transporte de doentes",
+                attended: "Miss\xf5es frequentadas",
+                attended_description: "Processado, mas nem todas as condi\xe7\xf5es foram cumpridas",
+                emergency: "Emerg\xeancia",
+                finishing: "Miss\xf5es em curso",
+                finishing_description: "Miss\xf5es em curso, todas as condi\xe7\xf5es cumpridas",
+                new: "Novas miss\xf5es",
+                new_description: "Novas miss\xf5es que ainda n\xe3o foram abertas",
+                sicherheitswache: "Miss\xf5es planejadas",
+                sorting: {
+                    age_asc: "Idade da miss\xe3o (ascendente)",
+                    age_desc: "Idade da miss\xe3o (decrescente)",
+                    caption_asc: "Por ordem alfab\xe9tica (ascendente)",
+                    caption_desc: "Por ordem alfab\xe9tica (descendente)",
+                    credits_asc: "Cr\xe9ditos m\xe9dios (ordem crescente)",
+                    credits_desc: "Cr\xe9ditos m\xe9dios (ordem decrescente)",
+                    patients_desc: "Montante dos doentes (ordem decrescente)",
+                    prisoners_desc: "Quantidade de reclusos (decrescente)"
+                },
+                started: "Miss\xf5es iniciadas",
+                started_description: "Miss\xf5es que foram iniciadas, mas n\xe3o conclu\xeddas",
+                unattended: "Miss\xf5es n\xe3o assistidas",
                 unattended_description: "Miss\xf5es n\xe3o assistidas"
             },
             missions_filtered_out: "Algumas miss\xf5es podem ser filtradas. Por favor, verifique seus filtros de mapa.",
-            new: "Novas miss\xf5es",
             no_alliance_chat_impossible: "O Chat \xe9 uma \xf3tima forma de se ligar a outros jogadores mais experientes.\xa0Ambos podem responder \xe0s suas perguntas e ajud\xe1-lo dando-lhe acesso a edif\xedcios como Hospitais e Escolas.",
             no_alliance_missions: "De momento n\xe3o existem miss\xf5es de alian\xe7a.",
             no_alliance_missions_join: "A participa\xe7\xe3o em miss\xf5es de alian\xe7a ir\xe1 recompens\xe1-lo com Cr\xe9ditos - independentemente do tipo de ve\xedculo que enviar. Ao aderir a uma alian\xe7a pode fazer ambas, partilhar as suas pr\xf3prias miss\xf5es para obter ajuda de membros experientes da alian\xe7a e participar nas miss\xf5es partilhadas de outros para obter recompensas extra.",
@@ -11231,13 +11475,9 @@ Object.values || (Object.values = function (e) {
             server_warning: "Manuten\xe7\xe3o do servidor \xe0s 23h. 6h tempo de inatividade esperadas.",
             show_informations: "Verde = As miss\xf5es s\xe3o exibidas na lista. Vermelho = As miss\xf5es n\xe3o s\xe3o exibidas.",
             sicherheitswache: "Miss\xf5es planejadas",
-            sorting_ascending: "Idade asc.",
             sorting_default: "Padr\xe3o",
-            sorting_descending: "Idade desc.",
             sorting_label: "Classificar por:",
-            started: "Miss\xf5es iniciadas",
-            transport: "Transporte",
-            unattended: "Miss\xf5es n\xe3o assistidas"
+            transport: "Transporte"
         },
         fms: {
             going: "Em tr\xe2nsito",
@@ -11595,7 +11835,6 @@ Object.values || (Object.values = function (e) {
             ambulance: "Transporte de doentes",
             anti_abuse_active_link: "Clica aqui para mais informa\xe7\xf5es.",
             anti_abuse_active_text: "As miss\xf5es ser\xe3o geradas dentro de um raio aumentado de 100 km, uma vez que demasiadas esta\xe7\xf5es do mesmo tipo est\xe3o constru\xeddas demasiado perto umas das outras.",
-            attended: "Miss\xf5es frequentadas",
             cancel_alliance_event: "Cancelar evento de alian\xe7a",
             cancel_alliance_event_confirm: "Realmente desejas cancelar o evento de alian\xe7a?",
             chat_history: "Hist\xf3rico do chat",
@@ -11603,7 +11842,6 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Iniciar evento de alian\xe7a",
             create_alliance_operation: "Crie uma miss\xe3o de alian\xe7a de larga escala",
             emergency: "Emerg\xeancia",
-            finishing: "Miss\xf5es em curso",
             join_alliance_infos: "Se voc\xea estiver em uma alian\xe7a, outros jogadores podem lhe dar miss\xf5es livremente.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Mapa",
@@ -11648,12 +11886,33 @@ Object.values || (Object.values = function (e) {
             message: "Mensagem",
             mission: "Miss\xf5es",
             mission_filters: {
-                attended_description: "Miss\xf5es em curso, nem todas as condi\xe7\xf5es foram cumpridas",
-                finishing_description: "Miss\xf5es conclu\xeddas, todas as condi\xe7\xf5es cumpridas",
+                alliance_missions: "Miss\xf5es da alian\xe7a",
+                alliance_missions_event: "Evento",
+                ambulance: "Transporte de doentes",
+                attended: "Miss\xf5es frequentadas",
+                attended_description: "Participou, mas nem todas as condi\xe7\xf5es foram cumpridas",
+                emergency: "Emerg\xeancia",
+                finishing: "Miss\xf5es em curso",
+                finishing_description: "Miss\xf5es em curso, todas as condi\xe7\xf5es cumpridas",
+                new: "Novas miss\xf5es",
+                new_description: "Novas miss\xf5es que ainda n\xe3o foram abertas",
+                sicherheitswache: "Miss\xf5es planejadas",
+                sorting: {
+                    age_asc: "Idade da miss\xe3o (ascendente)",
+                    age_desc: "Idade da miss\xe3o (decrescente)",
+                    caption_asc: "Por ordem alfab\xe9tica (ascendente)",
+                    caption_desc: "Por ordem alfab\xe9tica (descendente)",
+                    credits_asc: "Cr\xe9ditos m\xe9dios (ordem crescente)",
+                    credits_desc: "Cr\xe9ditos m\xe9dios (ordem decrescente)",
+                    patients_desc: "Montante dos doentes (ordem decrescente)",
+                    prisoners_desc: "Quantidade de reclusos (decrescente)"
+                },
+                started: "Miss\xf5es iniciadas",
+                started_description: "Miss\xf5es que foram iniciadas, mas n\xe3o conclu\xeddas",
+                unattended: "Miss\xf5es n\xe3o assistidas",
                 unattended_description: "Miss\xf5es n\xe3o assistidas"
             },
             missions_filtered_out: "Algumas miss\xf5es podem ser filtradas. Por favor, verifique seus filtros de mapa.",
-            new: "Novas miss\xf5es",
             no_alliance_chat_impossible: "Voc\xea n\xe3o est\xe1 em uma alian\xe7a.",
             no_alliance_missions: "N\xe3o h\xe1 miss\xf5es de alian\xe7a no momento.",
             no_alliance_missions_join: "A participa\xe7\xe3o em miss\xf5es de alian\xe7a ir\xe1 recompens\xe1-lo com Cr\xe9ditos - independentemente do tipo de ve\xedculo que enviar. Ao aderir a uma alian\xe7a pode fazer ambas, partilhar as suas pr\xf3prias miss\xf5es para obter ajuda de membros experientes da alian\xe7a e participar nas miss\xf5es partilhadas de outros para obter recompensas extra.",
@@ -11665,13 +11924,9 @@ Object.values || (Object.values = function (e) {
             server_warning: "Manuten\xe7\xe3o do servidor \xe0s 7h da tarde. 6h de tempo de inatividade esperado.",
             show_informations: "Verde = As miss\xf5es s\xe3o exibidas na lista. Vermelho = As miss\xf5es n\xe3o s\xe3o exibidas.",
             sicherheitswache: "Miss\xf5es planejadas",
-            sorting_ascending: "Idade asc.",
             sorting_default: "Padr\xe3o",
-            sorting_descending: "Idade desc.",
             sorting_label: "Classificar por:",
-            started: "Miss\xf5es iniciadas",
-            transport: "Transporte",
-            unattended: "Miss\xf5es n\xe3o assistidas"
+            transport: "Transporte"
         },
         fms: {
             going: "Respondendo",
@@ -11979,7 +12234,6 @@ Object.values || (Object.values = function (e) {
             ambulance: "\u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u0430\u0446\u0456\u0454\u043d\u0442\u0456\u0432",
             anti_abuse_active_link: "Click here for more information.",
             anti_abuse_active_text: "Missions will be generated within an extended radius of 100km, since too many stations of the same type are built too close to each other.",
-            attended: "\u0412\u0456\u0434\u0432\u0456\u0434\u0430\u043d\u0456 \u043c\u0456\u0441\u0456\u0457",
             cancel_alliance_event: "\u0412\u0456\u0434\u043c\u0456\u043d\u0438\u0442\u0438 \u043f\u043e\u0434\u0456\u044e \u0430\u043b\u044c\u044f\u043d\u0441\u0443",
             cancel_alliance_event_confirm: "\u0412\u0438 \u0432\u043f\u0435\u0432\u043d\u0435\u043d\u0456 \u0449\u043e \u0445\u043e\u0447\u0435\u0442\u0435 \u0432\u0456\u0434\u043c\u0456\u043d\u0438\u0442\u0438 \u043f\u043e\u0434\u0456\u044e \u0430\u043b\u044c\u044f\u043d\u0441\u0443?",
             chat_history: "\u0406\u0441\u0442\u043e\u0440\u0456\u044f \u0447\u0430\u0442\u0443",
@@ -11987,7 +12241,6 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "\u0420\u043e\u0437\u043f\u043e\u0447\u0430\u0442\u0438 \u043f\u043e\u0434\u0456\u044e \u0430\u043b\u044c\u044f\u043d\u0441\u0443",
             create_alliance_operation: "\u0421\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u0432\u0435\u043b\u0438\u043a\u043e\u043c\u0430\u0441\u0448\u0442\u0430\u0431\u043d\u0435 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f \u0430\u043b\u044c\u044f\u043d\u0441\u0443",
             emergency: "\u041d\u0430\u0434\u0437\u0432\u0438\u0447\u0430\u0439\u043d\u0430 \u0441\u0438\u0442\u0443\u0430\u0446\u0456\u044f",
-            finishing: "\u041f\u043e\u0442\u043e\u0447\u043d\u0456 \u043c\u0456\u0441\u0456\u0457",
             join_alliance_infos: "\u042f\u043a\u0449\u043e \u0432\u0438 \u043f\u0435\u0440\u0435\u0431\u0443\u0432\u0430\u0454\u0442\u0435 \u0432 \u0430\u043b\u044c\u044f\u043d\u0441\u0456, \u0456\u043d\u0448\u0456 \u0433\u0440\u0430\u0432\u0446\u0456 \u043c\u043e\u0436\u0443\u0442\u044c \u0432\u0456\u043b\u044c\u043d\u043e \u0434\u0430\u0432\u0430\u0442\u0438 \u0432\u0430\u043c \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "\u041a\u0430\u0440\u0442\u0430",
@@ -12032,12 +12285,33 @@ Object.values || (Object.values = function (e) {
             message: "\u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f",
             mission: "\u0417\u0430\u0432\u0434\u0430\u043d\u043d\u044f",
             mission_filters: {
-                attended_description: "\u041c\u0456\u0441\u0456\u0457 \u0432 \u043f\u0440\u043e\u0446\u0435\u0441\u0456 \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u043d\u044f, \u043d\u0435 \u0432\u0441\u0456 \u0443\u043c\u043e\u0432\u0438 \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u0456",
-                finishing_description: "\u041c\u0456\u0441\u0456\u0457 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043e, \u0432\u0441\u0456 \u0443\u043c\u043e\u0432\u0438 \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u043e",
+                alliance_missions: "\u0417\u0430\u0432\u0434\u0430\u043d\u043d\u044f \u0430\u043b\u044c\u044f\u043d\u0441\u0443",
+                alliance_missions_event: "\u041f\u043e\u0434\u0456\u044f",
+                ambulance: "\u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u0430\u0446\u0456\u0454\u043d\u0442\u0456\u0432",
+                attended: "\u0412\u0456\u0434\u0432\u0456\u0434\u0430\u043d\u0456 \u043c\u0456\u0441\u0456\u0457",
+                attended_description: "\u041f\u0440\u0438\u0441\u0443\u0442\u043d\u0456\u0439, \u041d\u0435 \u0432\u0441\u0456 \u0443\u043c\u043e\u0432\u0438 \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u0456",
+                emergency: "\u041d\u0430\u0434\u0437\u0432\u0438\u0447\u0430\u0439\u043d\u0430 \u0441\u0438\u0442\u0443\u0430\u0446\u0456\u044f",
+                finishing: "\u041f\u043e\u0442\u043e\u0447\u043d\u0456 \u043c\u0456\u0441\u0456\u0457",
+                finishing_description: "\u041c\u0456\u0441\u0456\u0457 \u0432 \u043f\u0440\u043e\u0446\u0435\u0441\u0456 \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u043d\u044f, \u0432\u0441\u0456 \u0443\u043c\u043e\u0432\u0438 \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u0456",
+                new: "\u041d\u043e\u0432\u0456 \u043c\u0456\u0441\u0456\u0457",
+                new_description: "\u041d\u043e\u0432\u0456 \u043c\u0456\u0441\u0456\u0457, \u044f\u043a\u0456 \u0449\u0435 \u043d\u0435 \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u0456",
+                sicherheitswache: "\u0417\u0430\u043f\u043b\u0430\u043d\u043e\u0432\u0430\u043d\u0456 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f",
+                sorting: {
+                    age_asc: "\u0412\u0456\u043a \u043c\u0456\u0441\u0456\u0457 (\u0437\u0430 \u0437\u0440\u043e\u0441\u0442\u0430\u043d\u043d\u044f\u043c)",
+                    age_desc: "\u0412\u0456\u043a \u043c\u0456\u0441\u0456\u0457 (\u0437\u0430 \u0441\u043f\u0430\u0434\u0430\u043d\u043d\u044f\u043c)",
+                    caption_asc: "\u0417\u0430 \u0430\u043b\u0444\u0430\u0432\u0456\u0442\u043e\u043c (\u0437\u0430 \u0437\u0440\u043e\u0441\u0442\u0430\u043d\u043d\u044f\u043c)",
+                    caption_desc: "\u0417\u0430 \u0430\u043b\u0444\u0430\u0432\u0456\u0442\u043e\u043c (\u0437\u0430 \u0441\u043f\u0430\u0434\u0430\u043d\u043d\u044f\u043c)",
+                    credits_asc: "\u0421\u0435\u0440\u0435\u0434\u043d\u0456 \u043a\u0440\u0435\u0434\u0438\u0442\u0438 (\u0437\u0430 \u0437\u0440\u043e\u0441\u0442\u0430\u043d\u043d\u044f\u043c)",
+                    credits_desc: "\u0421\u0435\u0440\u0435\u0434\u043d\u0456 \u043a\u0440\u0435\u0434\u0438\u0442\u0438 (\u0437\u0430 \u0441\u043f\u0430\u0434\u0430\u043d\u043d\u044f\u043c)",
+                    patients_desc: "\u041a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u043f\u0430\u0446\u0456\u0454\u043d\u0442\u0456\u0432 (\u0437\u0430 \u0441\u043f\u0430\u0434\u0430\u043d\u043d\u044f\u043c)",
+                    prisoners_desc: "\u041a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u0443\u0432'\u044f\u0437\u043d\u0435\u043d\u0438\u0445 (\u0437\u0430 \u0441\u043f\u0430\u0434\u0430\u043d\u043d\u044f\u043c)"
+                },
+                started: "\u0420\u043e\u0437\u043f\u043e\u0447\u0430\u0442\u0456 \u043c\u0456\u0441\u0456\u0457",
+                started_description: "\u041c\u0456\u0441\u0456\u0457, \u044f\u043a\u0456 \u0431\u0443\u043b\u0438 \u0440\u043e\u0437\u043f\u043e\u0447\u0430\u0442\u0456, \u0430\u043b\u0435 \u043d\u0435 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0456",
+                unattended: "\u041c\u0456\u0441\u0456\u0457 \u0431\u0435\u0437 \u043d\u0430\u0433\u043b\u044f\u0434\u0443",
                 unattended_description: "\u041c\u0456\u0441\u0456\u0457 \u0431\u0435\u0437 \u043d\u0430\u0433\u043b\u044f\u0434\u0443"
             },
             missions_filtered_out: "\u0414\u0435\u044f\u043a\u0456 \u043c\u0456\u0441\u0456\u0457 \u043c\u043e\u0436\u0443\u0442\u044c \u0431\u0443\u0442\u0438 \u0432\u0456\u0434\u0444\u0456\u043b\u044c\u0442\u0440\u043e\u0432\u0430\u043d\u0456. \u041f\u0435\u0440\u0435\u0432\u0456\u0440\u0442\u0435 \u0441\u0432\u043e\u0457 \u0444\u0456\u043b\u044c\u0442\u0440\u0438 \u043d\u0430 \u043a\u0430\u0440\u0442\u0456.",
-            new: "\u041d\u043e\u0432\u0456 \u043c\u0456\u0441\u0456\u0457",
             no_alliance_chat_impossible: "\u0412\u0438 \u043d\u0435 \u043f\u0435\u0440\u0435\u0431\u0443\u0432\u0430\u0454\u0442\u0435 \u0432 \u0430\u043b\u044c\u044f\u043d\u0441\u0456.",
             no_alliance_missions: "\u041d\u0430 \u0434\u0430\u043d\u0438\u0439 \u043c\u043e\u043c\u0435\u043d\u0442 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f \u0430\u043b\u044c\u044f\u043d\u0441\u0443 \u0432\u0456\u0434\u0441\u0443\u0442\u043d\u0456.",
             no_ambulance_missions: "\u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u0430\u0446\u0456\u0454\u043d\u0442\u0456\u0432 \u043d\u0435 \u0432\u0456\u0434\u0431\u0443\u0432\u0430\u0454\u0442\u044c\u0441\u044f. \u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u0430\u0446\u0456\u0454\u043d\u0442\u0430 \u043c\u043e\u0436\u0435 \u0432\u0456\u0434\u0431\u0443\u0432\u0430\u0442\u0438\u0441\u044f \u043b\u0438\u0448\u0435 \u0442\u043e\u0434\u0456, \u043a\u043e\u043b\u0438 \u0443 \u0432\u0430\u0441 \u0454 \u0448\u0432\u0438\u0434\u043a\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0430 \u0442\u0430 \u043b\u0456\u043a\u0430\u0440\u043d\u044f.",
@@ -12048,13 +12322,9 @@ Object.values || (Object.values = function (e) {
             server_warning: "Server maintenance at 18:00 UTC. 6h downtime expected.",
             show_informations: "\u0417\u0435\u043b\u0435\u043d\u0438\u0439 = \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f \u0431\u0443\u0434\u0443\u0442\u044c \u043f\u043e\u043a\u0430\u0437\u0430\u043d\u0456 \u0443 \u0441\u043f\u0438\u0441\u043a\u0443. \u0427\u0435\u0440\u0432\u043e\u043d\u0438\u0439 = \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f \u043d\u0435 \u0431\u0443\u0434\u0443\u0442\u044c \u043f\u043e\u043a\u0430\u0437\u0430\u043d\u0456.",
             sicherheitswache: "\u0417\u0430\u043f\u043b\u0430\u043d\u043e\u0432\u0430\u043d\u0456 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f",
-            sorting_ascending: "Age asc.",
             sorting_default: "Default",
-            sorting_descending: "Age desc.",
             sorting_label: "Sort by:",
-            started: "\u0420\u043e\u0437\u043f\u043e\u0447\u0430\u0442\u0456 \u043c\u0456\u0441\u0456\u0457",
-            transport: "\u041f\u0435\u0440\u0435\u0432\u0435\u0437\u0435\u043d\u043d\u044f",
-            unattended: "\u041c\u0456\u0441\u0456\u0457 \u0431\u0435\u0437 \u043d\u0430\u0433\u043b\u044f\u0434\u0443"
+            transport: "\u041f\u0435\u0440\u0435\u0432\u0435\u0437\u0435\u043d\u043d\u044f"
         },
         fms: {
             going: "\u0412\u0438\u0457\u0436\u0434\u0436\u0430\u0454",
@@ -12359,7 +12629,6 @@ Object.values || (Object.values = function (e) {
             ambulance: "Transporte de pacientes",
             anti_abuse_active_link: "Haz clic aqu\xed para obtener m\xe1s informaci\xf3n.",
             anti_abuse_active_text: "Las misiones se generar\xe1n en un radio ampliado de 100\xa0km, ya que hay construidas demasiadas estaciones del mismo tipo muy pr\xf3ximas entre s\xed.",
-            attended: "Misiones a las que ha asistido",
             cancel_alliance_event: "Cancelar evento de alianza",
             cancel_alliance_event_confirm: "\xbfSeguro que quieres cancelar el evento de alianza?",
             chat_history: "Historial de chat",
@@ -12367,7 +12636,6 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Comenzar evento de alianza",
             create_alliance_operation: "Crea una misi\xf3n de alianza a gran escala",
             emergency: "Emergencia",
-            finishing: "Misiones en curso",
             join_alliance_infos: "Si est\xe1s en una alianza, otros jugadores podr\xe1n ofrecerte misiones.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Mapa",
@@ -12412,12 +12680,33 @@ Object.values || (Object.values = function (e) {
             message: "Mensaje",
             mission: "Misiones",
             mission_filters: {
-                attended_description: "Misiones en curso, no se cumplen todas las condiciones",
-                finishing_description: "Misiones completadas, todas las condiciones cumplidas",
+                alliance_missions: "Misiones de alianza",
+                alliance_missions_event: "Evento",
+                ambulance: "Transporte de pacientes",
+                attended: "Misiones a las que ha asistido",
+                attended_description: "Asistidos, No se cumplen todas las condiciones",
+                emergency: "Emergencia",
+                finishing: "Misiones en curso",
+                finishing_description: "Misiones en curso, todas las condiciones cumplidas",
+                new: "Nuevas misiones",
+                new_description: "Nuevas misiones que a\xfan no se han abierto",
+                sicherheitswache: "Misones planificadas",
+                sorting: {
+                    age_asc: "Edad de la misi\xf3n (ascendente)",
+                    age_desc: "Edad de la misi\xf3n (descendente)",
+                    caption_asc: "Alfab\xe9ticamente (ascendente)",
+                    caption_desc: "Alfab\xe9ticamente (descendente)",
+                    credits_asc: "Cr\xe9ditos medios (ascendente)",
+                    credits_desc: "Cr\xe9ditos medios (descendente)",
+                    patients_desc: "Cantidad de pacientes (descendente)",
+                    prisoners_desc: "Cantidad de presos (Descendente)"
+                },
+                started: "Misiones iniciadas",
+                started_description: "Misiones iniciadas pero no completadas",
+                unattended: "Misiones desatendidas",
                 unattended_description: "Misiones desatendidas"
             },
             missions_filtered_out: "Algunas misiones pueden ser filtradas. Por favor, revise los filtros de su mapa.",
-            new: "Nuevas misiones",
             no_alliance_chat_impossible: "No est\xe1s en una alianza.",
             no_alliance_missions: "No hay misiones de alianza.",
             no_alliance_missions_join: "Participar en las misiones de la alianza te recompensar\xe1 con cr\xe9ditos, independientemente del tipo de veh\xedculo que env\xedes. Al unirte a una alianza puedes hacer ambas cosas, compartir tus propias misiones para obtener ayuda de miembros experimentados de la alianza y participar en las misiones compartidas de otros para obtener recompensas extra.",
@@ -12429,13 +12718,9 @@ Object.values || (Object.values = function (e) {
             server_warning: "Mantenimiento del servidor a las 00:00. Se espera un tiempo de inactividad de 6 horas.",
             show_informations: "Verde: las misiones se mostrar\xe1n en la lista. Rojo: las misiones no se mostrar\xe1n.",
             sicherheitswache: "Misones planificadas",
-            sorting_ascending: "Edad asc.",
             sorting_default: "Por defecto",
-            sorting_descending: "Edad desc.",
             sorting_label: "Ordenar por:",
-            started: "Misiones iniciadas",
-            transport: "Transporte",
-            unattended: "Misiones desatendidas"
+            transport: "Transporte"
         },
         fms: {
             going: "Respondiendo",
@@ -12760,7 +13045,6 @@ Object.values || (Object.values = function (e) {
             ambulance: "\u60a3\u8005\u642c\u9001",
             anti_abuse_active_link: "\u8a73\u7d30\u306f\u3053\u3061\u3089\u3092\u3054\u89a7\u304f\u3060\u3055\u3044\u3002",
             anti_abuse_active_text: "\u540c\u3058\u7a2e\u985e\u306e\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u304c\u3042\u307e\u308a\u306b\u3082\u8fd1\u304f\u306b\u5efa\u8a2d\u3055\u308c\u3066\u3044\u308b\u305f\u3081\u3001\u30df\u30c3\u30b7\u30e7\u30f3\u306f\u534a\u5f84100km\u306e\u62e1\u5f35\u7bc4\u56f2\u5185\u3067\u767a\u751f\u3057\u307e\u3059\u3002",
-            attended: "\u53c2\u52a0\u30df\u30c3\u30b7\u30e7\u30f3",
             cancel_alliance_event: "\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u30a4\u30d9\u30f3\u30c8\u306e\u30ad\u30e3\u30f3\u30bb\u30eb",
             cancel_alliance_event_confirm: "\u672c\u5f53\u306b\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u30a4\u30d9\u30f3\u30c8\u3092\u30ad\u30e3\u30f3\u30bb\u30eb\u3057\u307e\u3059\u304b\uff1f ",
             chat_history: "\u30c1\u30e3\u30c3\u30c8\u5c65\u6b74",
@@ -12768,7 +13052,6 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u30a4\u30d9\u30f3\u30c8\u3092\u958b\u59cb",
             create_alliance_operation: "\u5927\u578b\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u4f5c\u6210",
             emergency: "\u7dca\u6025\u4e8b\u614b",
-            finishing: "\u9032\u884c\u4e2d\u306e\u30df\u30c3\u30b7\u30e7\u30f3",
             join_alliance_infos: "\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u306b\u6240\u5c5e\u3057\u3066\u3044\u308c\u3070\u3001\u4ed6\u306e\u30d7\u30ec\u30a4\u30e4\u30fc\u304c\u3042\u306a\u305f\u3078\u81ea\u7531\u306b\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u5272\u308a\u5f53\u3066\u3089\u308c\u307e\u3059\u3002",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "\u30de\u30c3\u30d7",
@@ -12814,12 +13097,33 @@ Object.values || (Object.values = function (e) {
             message: "\u30e1\u30c3\u30bb\u30fc\u30b8",
             mission: "\u30df\u30c3\u30b7\u30e7\u30f3",
             mission_filters: {
-                attended_description: "\u9032\u884c\u4e2d\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u3001\u3059\u3079\u3066\u306e\u6761\u4ef6\u304c\u6e80\u305f\u3055\u308c\u305f\u308f\u3051\u3067\u306f\u306a\u3044",
-                finishing_description: "\u30df\u30c3\u30b7\u30e7\u30f3\u5b8c\u4e86\u3001\u5168\u6761\u4ef6\u9054\u6210",
+                alliance_missions: "\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u30df\u30c3\u30b7\u30e7\u30f3",
+                alliance_missions_event: "\u30a4\u30d9\u30f3\u30c8",
+                ambulance: "\u60a3\u8005\u642c\u9001",
+                attended: "\u53c2\u52a0\u30df\u30c3\u30b7\u30e7\u30f3",
+                attended_description: "\u52a0\u5de5\u6e08\u307f\u3001\u3059\u3079\u3066\u306e\u6761\u4ef6\u3092\u6e80\u305f\u3057\u3066\u3044\u306a\u3044",
+                emergency: "\u7dca\u6025\u4e8b\u614b",
+                finishing: "\u9032\u884c\u4e2d\u306e\u30df\u30c3\u30b7\u30e7\u30f3",
+                finishing_description: "\u9032\u884c\u4e2d\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u3001\u3059\u3079\u3066\u306e\u6761\u4ef6\u9054\u6210",
+                new: "\u65b0\u3057\u3044\u30df\u30c3\u30b7\u30e7\u30f3",
+                new_description: "\u672a\u30aa\u30fc\u30d7\u30f3\u306e\u65b0\u30df\u30c3\u30b7\u30e7\u30f3",
+                sicherheitswache: "\u4e88\u5b9a\u3055\u308c\u3066\u3044\u308b\u30df\u30c3\u30b7\u30e7\u30f3",
+                sorting: {
+                    age_asc: "\u30df\u30c3\u30b7\u30e7\u30f3\u5e74\u9f62\uff08\u6607\u9806\uff09",
+                    age_desc: "\u30df\u30c3\u30b7\u30e7\u30f3\u5e74\u9f62\uff08\u964d\u9806\uff09",
+                    caption_asc: "\u30a2\u30eb\u30d5\u30a1\u30d9\u30c3\u30c8\u9806\uff08\u6607\u9806\uff09",
+                    caption_desc: "\u30a2\u30eb\u30d5\u30a1\u30d9\u30c3\u30c8\u9806\uff08\u964d\u9806\uff09",
+                    credits_asc: "\u5e73\u5747\u30af\u30ec\u30b8\u30c3\u30c8\uff08\u6607\u9806\uff09",
+                    credits_desc: "\u5e73\u5747\u30af\u30ec\u30b8\u30c3\u30c8\uff08\u964d\u9806\uff09",
+                    patients_desc: "\u60a3\u8005\u6570\uff08\u964d\u9806\uff09",
+                    prisoners_desc: "\u56da\u4eba\u6570\uff08\u964d\u9806\uff09"
+                },
+                started: "\u30df\u30c3\u30b7\u30e7\u30f3\u958b\u59cb",
+                started_description: "\u958b\u59cb\u3055\u308c\u305f\u304c\u5b8c\u4e86\u3057\u3066\u3044\u306a\u3044\u30df\u30c3\u30b7\u30e7\u30f3",
+                unattended: "\u7121\u4eba\u30df\u30c3\u30b7\u30e7\u30f3",
                 unattended_description: "\u7121\u4eba\u30df\u30c3\u30b7\u30e7\u30f3"
             },
             missions_filtered_out: "\u4e00\u90e8\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u306f\u9664\u5916\u3055\u308c\u308b\u53ef\u80fd\u6027\u304c\u3042\u308a\u307e\u3059\u3002\u30de\u30c3\u30d7\u30d5\u30a3\u30eb\u30bf\u30fc\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
-            new: "\u65b0\u3057\u3044\u30df\u30c3\u30b7\u30e7\u30f3",
             no_alliance_chat_impossible: "\u30c1\u30e3\u30c3\u30c8\u306f\u3001\u7d4c\u9a13\u8c4a\u5bcc\u306a\u30d7\u30ec\u30a4\u30e4\u30fc\u3068\u3064\u306a\u304c\u308b\u305f\u3081\u306e\u7d20\u6674\u3089\u3057\u3044\u65b9\u6cd5\u3067\u3059\u3002\xa0\u5f7c\u3089\u306f\u3042\u306a\u305f\u306e\u8cea\u554f\u306b\u7b54\u3048\u305f\u308a\u3001\u75c5\u9662\u3084\u5b66\u6821\u306a\u3069\u306e\u5efa\u7269\u306b\u30a2\u30af\u30bb\u30b9\u3059\u308b\u3053\u3068\u3067\u3042\u306a\u305f\u3092\u52a9\u3051\u3066\u304f\u308c\u308b\u3067\u3057\u3087\u3046\u3002",
             no_alliance_missions: "\u73fe\u5728\u3001\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u30df\u30c3\u30b7\u30e7\u30f3\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
             no_alliance_missions_join: "\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u53c2\u52a0\u3059\u308b\u3068\u3001\u3069\u306e\u3088\u3046\u306a\u8eca\u7a2e\u3067\u3042\u3063\u3066\u3082\u30af\u30ec\u30b8\u30c3\u30c8\u306e\u5831\u916c\u304c\u5f97\u3089\u308c\u307e\u3059\u3002\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u306b\u53c2\u52a0\u3059\u308b\u3053\u3068\u3067\u3001\u81ea\u5206\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u5171\u6709\u3057\u3066\u7d4c\u9a13\u8c4a\u5bcc\u306a\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u30e1\u30f3\u30d0\u30fc\u306e\u52a9\u3051\u3092\u5f97\u308b\u3053\u3068\u3068\u3001\u4ed6\u306e\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u306e\u5171\u6709\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u53c2\u52a0\u3057\u3066\u8ffd\u52a0\u5831\u916c\u3092\u5f97\u308b\u3053\u3068\u306e\u4e21\u65b9\u3092\u884c\u3046\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002",
@@ -12831,13 +13135,9 @@ Object.values || (Object.values = function (e) {
             server_warning: "Server maintenance at 7 am. 6h downtime expected.",
             show_informations: "\u7dd1 = \u30df\u30c3\u30b7\u30e7\u30f3\u304c\u30ea\u30b9\u30c8\u5185\u306b\u8868\u793a\u3055\u308c\u307e\u3059\u3002\u8d64 = \u30df\u30c3\u30b7\u30e7\u30f3\u304c\u8868\u793a\u3055\u308c\u307e\u305b\u3093\u3002",
             sicherheitswache: "\u4e88\u5b9a\u3055\u308c\u3066\u3044\u308b\u30df\u30c3\u30b7\u30e7\u30f3",
-            sorting_ascending: "\u5e74\u9f62\u6607\u9806",
             sorting_default: "\u30c7\u30d5\u30a9\u30eb\u30c8",
-            sorting_descending: "\u5e74\u9f62\u964d\u9806",
             sorting_label: "\u4e26\u3079\u66ff\u3048\uff1a",
-            started: "\u30df\u30c3\u30b7\u30e7\u30f3\u958b\u59cb",
-            transport: "\u8f38\u9001",
-            unattended: "\u7121\u4eba\u30df\u30c3\u30b7\u30e7\u30f3"
+            transport: "\u8f38\u9001"
         },
         fms: {
             going: "\u5fdc\u7b54\u4e2d",
@@ -13183,7 +13483,6 @@ Object.values || (Object.values = function (e) {
             ambulance: "\ud658\uc790 \uc774\uc1a1",
             anti_abuse_active_link: "\ub354 \ub9ce\uc740 \uc815\ubcf4\ub97c \ud655\uc778\ud558\ub824\uba74 \ud074\ub9ad\ud558\uc138\uc694.",
             anti_abuse_active_text: "\ub3d9\uc77c \uc720\ud615\uc758 \uad00\ud560\uc11c\uac00 \uac00\uae4c\uc6b4 \uac70\ub9ac\uc5d0 \ub108\ubb34 \ub9ce\uc774 \uc138\uc6cc\uc84c\uae30 \ub54c\ubb38\uc5d0 100km\uc758 \ud655\uc7a5\ub41c \ubc18\uacbd \ub0b4\uc5d0\uc11c \uc784\ubb34\uac00 \ubc1c\uc0dd\ud569\ub2c8\ub2e4.",
-            attended: "\ucd9c\uc11d\ud55c \ubbf8\uc158",
             cancel_alliance_event: "\ub3d9\ub9f9 \uc774\ubca4\ud2b8 \ucde8\uc18c",
             cancel_alliance_event_confirm: "\ub3d9\ub9f9 \uc774\ubca4\ud2b8\ub97c \ucde8\uc18c\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?",
             chat_history: "\ucc44\ud305 \uc774\ub825",
@@ -13191,7 +13490,6 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "\ub3d9\ub9f9 \uc774\ubca4\ud2b8 \uc2dc\uc791",
             create_alliance_operation: "\ub300\uaddc\ubaa8 \ub3d9\ub9f9 \uc784\ubb34 \uc0dd\uc131",
             emergency: "\uc751\uae09 \uc0c1\ud669",
-            finishing: "\uc9c4\ud589 \uc911\uc778 \ubbf8\uc158",
             join_alliance_infos: "\ub3d9\ub9f9\uc5d0 \uc18c\uc18d\ub41c \uc0c1\ud0dc\ub77c\uba74 \ub2e4\ub978 \ud50c\ub808\uc774\uc5b4\ub85c\ubd80\ud130 \uc784\ubb34\ub97c \uc790\uc720\ub86d\uac8c \ubc1b\uc744 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "\uc9c0\ub3c4",
@@ -13237,12 +13535,33 @@ Object.values || (Object.values = function (e) {
             message: "\uba54\uc2dc\uc9c0",
             mission: "\uc784\ubb34",
             mission_filters: {
-                attended_description: "\uc9c4\ud589 \uc911\uc778 \ubbf8\uc158, \ubaa8\ub4e0 \uc870\uac74\uc774 \ucda9\uc871\ub418\uc9c0 \uc54a\uc74c",
-                finishing_description: "\ubbf8\uc158 \uc644\ub8cc, \ubaa8\ub4e0 \uc870\uac74 \ucda9\uc871",
+                alliance_missions: "\ub3d9\ub9f9 \uc784\ubb34",
+                alliance_missions_event: "\uc774\ubca4\ud2b8",
+                ambulance: "\ud658\uc790 \uc774\uc1a1",
+                attended: "\ucd9c\uc11d\ud55c \ubbf8\uc158",
+                attended_description: "\ucc98\ub9ac\ub428, \ubaa8\ub4e0 \uc870\uac74\uc774 \ucda9\uc871\ub418\uc9c0 \uc54a\uc74c",
+                emergency: "\uc751\uae09 \uc0c1\ud669",
+                finishing: "\uc9c4\ud589 \uc911\uc778 \ubbf8\uc158",
+                finishing_description: "\uc9c4\ud589 \uc911\uc778 \ubbf8\uc158, \ubaa8\ub4e0 \uc870\uac74 \ucda9\uc871\ub428",
+                new: "\uc0c8\ub85c\uc6b4 \ubbf8\uc158",
+                new_description: "\uc544\uc9c1 \uc5f4\ub9ac\uc9c0 \uc54a\uc740 \uc0c8\ub85c\uc6b4 \ubbf8\uc158",
+                sicherheitswache: "\uacc4\ud68d\ub41c \ucd9c\ud604",
+                sorting: {
+                    age_asc: "\ubbf8\uc158 \uc5f0\ub839(\uc624\ub984\ucc28\uc21c)",
+                    age_desc: "\ubbf8\uc158 \uc5f0\ub839 (\ub0b4\ub9bc\ucc28\uc21c)",
+                    caption_asc: "\uc54c\ud30c\ubcb3\uc21c(\uc624\ub984\ucc28\uc21c)",
+                    caption_desc: "\uc54c\ud30c\ubcb3\uc21c(\ub0b4\ub9bc\ucc28\uc21c)",
+                    credits_asc: "\ud3c9\uade0 \ud06c\ub808\ub527(\uc624\ub984\ucc28\uc21c)",
+                    credits_desc: "\ud3c9\uade0 \ud06c\ub808\ub527(\ub0b4\ub9bc\ucc28\uc21c)",
+                    patients_desc: "\ud658\uc790 \uc218(\ub0b4\ub9bc\ucc28\uc21c)",
+                    prisoners_desc: "\ud3ec\ub85c \uc218(\ub0b4\ub9bc\ucc28\uc21c)"
+                },
+                started: "\ubbf8\uc158 \uc2dc\uc791",
+                started_description: "\uc2dc\uc791\ub418\uc5c8\uc9c0\ub9cc \uc644\ub8cc\ub418\uc9c0 \uc54a\uc740 \ubbf8\uc158",
+                unattended: "\ubb34\uc778 \ubbf8\uc158",
                 unattended_description: "\ubb34\uc778 \ubbf8\uc158"
             },
             missions_filtered_out: "\uc77c\ubd80 \ubbf8\uc158\uc774 \ud544\ud130\ub9c1 \ub420 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \uc9c0\ub3c4 \ud544\ud130\ub97c \ud655\uc778\ud558\uc2ed\uc2dc\uc624.",
-            new: "\uc0c8\ub85c\uc6b4 \ubbf8\uc158",
             no_alliance_chat_impossible: "\ucc44\ud305\uc740 \uacbd\ud5d8\uc774 \ub9ce\uc740 \ub2e4\ub978 \ud50c\ub808\uc774\uc5b4\uc640 \uc5f0\uacb0\ud558\ub294 \uc88b\uc740 \ubc29\ubc95\uc785\ub2c8\ub2e4. \uadf8\ub4e4\uc740 \uadc0\ud558\uc758 \uc9c8\ubb38\uc5d0 \ub2f5\ubcc0\ud558\uace0 \ubcd1\uc6d0 \ubc0f \ud559\uad50\uc640 \uac19\uc740 \uac74\ubb3c\uc5d0 \ub300\ud55c \uc561\uc138\uc2a4 \uad8c\ud55c\uc744 \ubd80\uc5ec\ud558\uc5ec \uadc0\ud558\ub97c \ub3c4\uc6b8 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
             no_alliance_missions: "\ud604\uc7ac \uc9c4\ud589 \uc911\uc778 \ub3d9\ub9f9 \uc784\ubb34\uac00 \uc5c6\uc2b5\ub2c8\ub2e4.",
             no_alliance_missions_join: "\ub3d9\ub9f9 \uc784\ubb34\uc5d0 \ucc38\uc5ec\ud558\uba74 \ubcf4\ub0b4\ub294 \ucc28\ub7c9 \uc720\ud615\uc5d0 \uc0c1\uad00\uc5c6\uc774 \ud06c\ub808\ub527\uc73c\ub85c \ubcf4\uc0c1\uc744 \ubc1b\uc2b5\ub2c8\ub2e4. \ub3d9\ub9f9\uc5d0 \uac00\uc785\ud558\uba74 \ub450 \uac00\uc9c0 \ubaa8\ub450\ub97c \uc218\ud589\ud560 \uc218 \uc788\uace0, \uacbd\ud5d8\uc774 \ud48d\ubd80\ud55c \ub3d9\ub9f9 \uad6c\uc131\uc6d0\uc758 \ub3c4\uc6c0\uc744 \ubc1b\uae30 \uc704\ud574 \uc790\uc2e0\uc758 \uc784\ubb34\ub97c \uacf5\uc720\ud558\uace0, \ucd94\uac00 \ubcf4\uc0c1\uc744 \uc704\ud574 \ub2e4\ub978 \uc0ac\ub78c\uc758 \uacf5\uc720 \uc784\ubb34\uc5d0 \ucc38\uc5ec\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
@@ -13254,13 +13573,9 @@ Object.values || (Object.values = function (e) {
             server_warning: "Server maintenance at 7 am. 6h downtime expected.",
             show_informations: "\ub179\uc0c9 = \uc784\ubb34\uac00 \ubaa9\ub85d\uc5d0 \ud45c\uc2dc\ub429\ub2c8\ub2e4. \uc801\uc0c9 = \uc784\ubb34\uac00 \ud45c\uc2dc\ub418\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.",
             sicherheitswache: "\uacc4\ud68d\ub41c \ucd9c\ud604",
-            sorting_ascending: "\uc624\ub984\ucc28\uc21c",
             sorting_default: "\uae30\ubcf8",
-            sorting_descending: "\ub0b4\ub9bc\ucc28\uc21c",
             sorting_label: "\uc815\ub82c \ubc29\uc2dd:",
-            started: "\ubbf8\uc158 \uc2dc\uc791",
-            transport: "\uc218\uc1a1",
-            unattended: "\ubb34\uc778 \ubbf8\uc158"
+            transport: "\uc218\uc1a1"
         },
         fms: {
             going: "\uc751\ub2f5 \uc911",
@@ -13597,7 +13912,6 @@ Object.values || (Object.values = function (e) {
             ambulance: "Transportul pacien\u021bilor",
             anti_abuse_active_link: "F\u0103 clic aici pentru mai multe informa\u021bii.",
             anti_abuse_active_text: "\xcentruc\xe2t prea multe sta\u021bii de acela\u0219ti tip sunt construite prea aproape una de alta, misiunile vor ap\u0103rea pe o raz\u0103 extins\u0103 de 100 km.",
-            attended: "Misiuni la care a participat",
             cancel_alliance_event: "Anuleaz\u0103 eveniment de alian\u021b\u0103",
             cancel_alliance_event_confirm: "E\u0219ti sigur c\u0103 vrei s\u0103 anulezi evenimentul de alian\u021b\u0103?",
             chat_history: "Istoric chat",
@@ -13605,7 +13919,6 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "\xcencepe eveniment de alian\u021b\u0103",
             create_alliance_operation: "Creeaz\u0103 o misiune de alian\u021b\u0103 pe scar\u0103 larg\u0103",
             emergency: "Urgen\u021b\u0103",
-            finishing: "Misiuni \xeen curs de desf\u0103\u0219urare",
             join_alliance_infos: "Dac\u0103 faci parte dintr-o alian\u021b\u0103, al\u021bi juc\u0103tori \xee\u021bi pot \xeencredin\u021ba misiuni dac\u0103 doresc.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Hart\u0103",
@@ -13650,12 +13963,33 @@ Object.values || (Object.values = function (e) {
             message: "Mesaj",
             mission: "Misiuni",
             mission_filters: {
-                attended_description: "Misiuni \xeen curs de desf\u0103\u0219urare, Nu sunt \xeendeplinite toate condi\u021biile",
-                finishing_description: "Misiuni \xeencheiate, Toate condi\u021biile \xeendeplinite",
+                alliance_missions: "Misiuni alian\u021b\u0103",
+                alliance_missions_event: "Eveniment",
+                ambulance: "Transportul pacien\u021bilor",
+                attended: "Misiuni la care a participat",
+                attended_description: "Prezent, Nu sunt \xeendeplinite toate condi\u021biile",
+                emergency: "Urgen\u021b\u0103",
+                finishing: "Misiuni \xeen curs de desf\u0103\u0219urare",
+                finishing_description: "Misiuni \xeen desf\u0103\u0219urare, Toate condi\u021biile \xeendeplinite",
+                new: "Noi misiuni",
+                new_description: "Misiuni noi care nu au fost \xeenc\u0103 deschise",
+                sicherheitswache: "Interven\u021bii planificate",
+                sorting: {
+                    age_asc: "V\xe2rsta misiunii (cresc\u0103tor)",
+                    age_desc: "V\xe2rsta misiunii (descresc\u0103tor)",
+                    caption_asc: "Alfabetic (cresc\u0103tor)",
+                    caption_desc: "Alfabetic (descresc\u0103tor)",
+                    credits_asc: "Media creditelor (cresc\u0103tor)",
+                    credits_desc: "Credite medii (descresc\u0103tor)",
+                    patients_desc: "Suma pacien\u021bilor (descresc\u0103tor)",
+                    prisoners_desc: "Suma de\u021binu\u021bilor (descresc\u0103tor)"
+                },
+                started: "Misiuni \xeencepute",
+                started_description: "Misiuni care au fost \xeencepute, dar care nu au fost finalizate",
+                unattended: "Misiuni nesupravegheate",
                 unattended_description: "Misiuni nesupravegheate"
             },
             missions_filtered_out: "Unele misiuni ar putea fi eliminate. V\u0103 rug\u0103m s\u0103 verifica\u021bi filtrele de hart\u0103.",
-            new: "Noi misiuni",
             no_alliance_chat_impossible: "Nu faci parte dintr-o alian\u021b\u0103.",
             no_alliance_missions: "\xcen prezent nu exist\u0103 misiuni de alian\u021b\u0103.",
             no_ambulance_missions: '"Nu exist\u0103 transporturi de pacien\u021bi. Transporturile vor putea fi efectuate atunci c\xe2nd vei aveao Ambulan\u021b\u0103 de tip B (BLS) \u0219i un spital."',
@@ -13666,13 +14000,9 @@ Object.values || (Object.values = function (e) {
             server_warning: "Server maintenance at 1 am. 6h downtime expected.",
             show_informations: "Verde = Misiunile sunt afi\u0219ate pe list\u0103. Ro\u0219u = Misiunile nu sunt afi\u0219ate.",
             sicherheitswache: "Interven\u021bii planificate",
-            sorting_ascending: "Dat\u0103, \xeen ordine cresc\u0103toare",
             sorting_default: "Implicit",
-            sorting_descending: "Dat\u0103, \xeen ordine descresc\u0103toare",
             sorting_label: "Sorteaz\u0103 dup\u0103:",
-            started: "Misiuni \xeencepute",
-            transport: "Transport",
-            unattended: "Misiuni nesupravegheate"
+            transport: "Transport"
         },
         fms: {
             going: "Pe drum",
@@ -14004,7 +14334,6 @@ Object.values || (Object.values = function (e) {
             ambulance: "Potilaskuljetukset",
             anti_abuse_active_link: "Lis\xe4tietoja saat napsauttamalla t\xe4t\xe4.",
             anti_abuse_active_text: "Teht\xe4vi\xe4 syntyy laajennetulla 100 km:n s\xe4teell\xe4, sill\xe4 liian monta samantyyppist\xe4 asemaa on rakennettu l\xe4hekk\xe4in.",
-            attended: "Osallistunut l\xe4hetyst\xf6ihin",
             cancel_alliance_event: "Peruuta liittoumatapahtuma",
             cancel_alliance_event_confirm: "Haluatko varmasti peruuttaa liittoumatapahtuman?",
             chat_history: "Chattihistoria",
@@ -14012,7 +14341,6 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Aloita liittoutumatapahtuma",
             create_alliance_operation: "Luo laaja liittoutumateht\xe4v\xe4",
             emergency: "H\xe4t\xe4tilanne",
-            finishing: "K\xe4ynniss\xe4 olevat teht\xe4v\xe4t",
             join_alliance_infos: "Jos kuulut johonkin liittoutumaan, muut pelaajat voivat antaa sinulle teht\xe4vi\xe4.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Kartta",
@@ -14058,12 +14386,33 @@ Object.values || (Object.values = function (e) {
             message: "Viesti",
             mission: "Teht\xe4v\xe4t",
             mission_filters: {
-                attended_description: "Missions in Progress, Kaikki ehdot eiv\xe4t t\xe4yty.",
-                finishing_description: "Teht\xe4v\xe4t suoritettu, kaikki ehdot t\xe4ytetty",
+                alliance_missions: "Liittoutuman teht\xe4v\xe4t",
+                alliance_missions_event: "Tapahtuma",
+                ambulance: "Potilaskuljetukset",
+                attended: "Osallistunut l\xe4hetyst\xf6ihin",
+                attended_description: "Jalostettu, kaikki ehdot eiv\xe4t t\xe4yty",
+                emergency: "H\xe4t\xe4tilanne",
+                finishing: "K\xe4ynniss\xe4 olevat teht\xe4v\xe4t",
+                finishing_description: "Teht\xe4v\xe4t k\xe4ynniss\xe4, kaikki ehdot t\xe4ytetty",
+                new: "Uudet teht\xe4v\xe4t",
+                new_description: "Uudet teht\xe4v\xe4t, joita ei ole viel\xe4 avattu",
+                sicherheitswache: "Suunnitellut teht\xe4v\xe4t",
+                sorting: {
+                    age_asc: "Teht\xe4v\xe4n ik\xe4 (nouseva)",
+                    age_desc: "Teht\xe4v\xe4n ik\xe4 (laskeva)",
+                    caption_asc: "Aakkosj\xe4rjestyksess\xe4 (nouseva)",
+                    caption_desc: "Aakkosj\xe4rjestyksess\xe4 (laskevasti)",
+                    credits_asc: "Keskim\xe4\xe4r\xe4iset hyvitykset (nouseva)",
+                    credits_desc: "Keskim\xe4\xe4r\xe4iset luotot (laskevasti)",
+                    patients_desc: "Potilaiden m\xe4\xe4r\xe4 (alenevassa j\xe4rjestyksess\xe4)",
+                    prisoners_desc: "Vankien m\xe4\xe4r\xe4 (laskeva)"
+                },
+                started: "Aloitetut teht\xe4v\xe4t",
+                started_description: "Teht\xe4v\xe4t, jotka on aloitettu, mutta joita ei ole saatettu p\xe4\xe4t\xf6kseen.",
+                unattended: "Valvomattomat teht\xe4v\xe4t",
                 unattended_description: "Valvomattomat teht\xe4v\xe4t"
             },
             missions_filtered_out: "Jotkut teht\xe4v\xe4t voidaan suodattaa pois. Tarkista karttasuodattimet.",
-            new: "Uudet teht\xe4v\xe4t",
             no_alliance_chat_impossible: "Chat on loistava tapa luoda yhteyksi\xe4 muihin kokeneempiin pelaajiin.\xa0He voivat sek\xe4 vastata kysymyksiisi ett\xe4 auttaa sinua antamalla sinulle p\xe4\xe4syn rakennuksiin, kuten sairaaloihin ja kouluihin.",
             no_alliance_missions: "Ei liittoutumateht\xe4vi\xe4",
             no_alliance_missions_join: "Saat liittoumateht\xe4viin osallistumisesta krediittej\xe4 riippumatta siit\xe4, mink\xe4 tyyppisen (tai miten monta) ajoneuvon l\xe4het\xe4t. Lis\xe4ksi, liittoumassa voit sek\xe4 jakaa omia teht\xe4vi\xe4si saadaksesi apua kokeneilta liittouman j\xe4senilt\xe4, ett\xe4 osallistua muiden yhteisiin teht\xe4viin saadaksesi hieman lis\xe4krediittej\xe4.",
@@ -14075,13 +14424,9 @@ Object.values || (Object.values = function (e) {
             server_warning: "Palvelinhuolto alkaa 01:00, palvelukatkon arvioitu kesto noin 6 tuntia",
             show_informations: "Vihre\xe4 = teht\xe4v\xe4t n\xe4kyv\xe4t luettelossa. Punainen = teht\xe4v\xe4t eiv\xe4t n\xe4y.",
             sicherheitswache: "Suunnitellut teht\xe4v\xe4t",
-            sorting_ascending: "Ik\xe4 nous.",
             sorting_default: "Oletus",
-            sorting_descending: "Ik\xe4 lask.",
             sorting_label: "Lajittelu:",
-            started: "Aloitetut teht\xe4v\xe4t",
-            transport: "Kuljetus",
-            unattended: "Valvomattomat teht\xe4v\xe4t"
+            transport: "Kuljetus"
         },
         fms: {
             going: "Matkalla",
@@ -14436,7 +14781,6 @@ Object.values || (Object.values = function (e) {
             ambulance: "Preprava pacientov",
             anti_abuse_active_link: "Ak chcete z\xedska\u0165 viac inform\xe1ci\xed, kliknite sem.",
             anti_abuse_active_text: "Misie bud\xfa vznika\u0165 v roz\u0161\xedrenom okruhu 100 km, preto\u017ee je bl\xedzko seba postaven\xfdch pr\xedli\u0161 ve\u013ea stan\xedc rovnak\xe9ho typu.",
-            attended: "Z\xfa\u010dastnen\xe9 misie",
             cancel_alliance_event: "Zru\u0161i\u0165 udalos\u0165 aliancie",
             cancel_alliance_event_confirm: "Naozaj chcete zru\u0161i\u0165 udalos\u0165 aliancie?",
             chat_history: "Hist\xf3ria chatu",
@@ -14444,7 +14788,6 @@ Object.values || (Object.values = function (e) {
             create_alliance_event: "Spusti\u0165 udalos\u0165 aliancie",
             create_alliance_operation: "Vytvorte rozsiahlu alian\u010dn\xfa misiu",
             emergency: "Mimoriadna udalos\u0165",
-            finishing: "Prebiehaj\xface misie",
             join_alliance_infos: "Ak ste v aliancii, ostatn\xed hr\xe1\u010di v\xe1m m\xf4\u017eu zadarmo d\xe1va\u0165 misie.",
             legacy_client_notice: "ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}",
             map: "Mapa",
@@ -14489,12 +14832,33 @@ Object.values || (Object.values = function (e) {
             message: "Spr\xe1va",
             mission: "Misie",
             mission_filters: {
-                attended_description: "Misie prebiehaj\xfa, nie s\xfa splnen\xe9 v\u0161etky podmienky",
-                finishing_description: "Misie dokon\u010den\xe9, v\u0161etky podmienky splnen\xe9",
+                alliance_missions: "Misie aliancie",
+                alliance_missions_event: "Udalos\u0165",
+                ambulance: "Preprava pacientov",
+                attended: "Z\xfa\u010dastnen\xe9 misie",
+                attended_description: "Z\xfa\u010dastnil sa, nie s\xfa splnen\xe9 v\u0161etky podmienky",
+                emergency: "Mimoriadna udalos\u0165",
+                finishing: "Prebiehaj\xface misie",
+                finishing_description: "Misie prebiehaj\xfa, v\u0161etky podmienky splnen\xe9",
+                new: "Nov\xe9 misie",
+                new_description: "Nov\xe9 misie, ktor\xe9 e\u0161te neboli otvoren\xe9",
+                sicherheitswache: "Pl\xe1novan\xe9 v\xfdskyty",
+                sorting: {
+                    age_asc: "Vek misie (vzostupne)",
+                    age_desc: "Vek misie (zostupne)",
+                    caption_asc: "Pod\u013ea abecedy (vzostupne)",
+                    caption_desc: "Abecedne (zostupne)",
+                    credits_asc: "Priemern\xe9 kredity (vzostupne)",
+                    credits_desc: "Priemern\xe9 kredity (zostupne)",
+                    patients_desc: "Po\u010det pacientov (zostupne)",
+                    prisoners_desc: "Mno\u017estvo v\xe4z\u0148ov (zostupne)"
+                },
+                started: "Za\u010dat\xe9 misie",
+                started_description: "Misie, ktor\xe9 sa za\u010dali, ale neboli dokon\u010den\xe9",
+                unattended: "Misie bez dozoru",
                 unattended_description: "Misie bez dozoru"
             },
             missions_filtered_out: "Niektor\xe9 misie m\xf4\u017eu by\u0165 odfiltrovan\xe9. Skontrolujte filtre m\xe1p.",
-            new: "Nov\xe9 misie",
             no_alliance_chat_impossible: "Nie ste v aliancii.",
             no_alliance_missions: "Moment\xe1lne nie s\xfa \u017eiadne misie aliancie.",
             no_ambulance_missions: "Zatia\u013e nem\xe1te \u017eiadne po\u017eiadavky na transport pacienta, objavia sa akon\xe1hle budete vlastni\u0165 stanicu ZZS a nemocnicu.",
@@ -14505,13 +14869,9 @@ Object.values || (Object.values = function (e) {
             server_warning: "\xdadr\u017eba servera o polnoci. O\u010dak\xe1va sa v\xfdpadok 6 hodiny.",
             show_informations: "Zelen\xe1 = Misie s\xfa zobrazen\xe9 v zozname. \u010cerven\xe1 = Misie nie s\xfa zobrazen\xe9.",
             sicherheitswache: "Pl\xe1novan\xe9 v\xfdskyty",
-            sorting_ascending: "Vek vzostupne",
             sorting_default: "Predvolen\xe9",
-            sorting_descending: "Vek zostupne",
             sorting_label: "Zoradi\u0165 pod\u013ea:",
-            started: "Za\u010dat\xe9 misie",
-            transport: "Transport",
-            unattended: "Misie bez dozoru"
+            transport: "Transport"
         },
         fms: {
             going: "Reagova\u0165",
@@ -15110,13 +15470,13 @@ Object.values || (Object.values = function (e) {
             })), Yt = ue.now()
         }
 
-        function $(e, t, i) {
+        function B(e, t, i) {
             for (var n, s = (ii[t] || [])
                     .concat(ii["*"]), o = 0, a = s.length; o < a; o++)
                 if (n = s[o].call(i, t, e)) return n
         }
 
-        function B(e, t, i) {
+        function $(e, t, i) {
             var n, s, o = 0,
                 a = ti.length,
                 r = ue.Deferred()
@@ -15155,7 +15515,7 @@ Object.values || (Object.values = function (e) {
                 u = c.props;
             for (F(u, c.opts.specialEasing); o < a; o++)
                 if (n = ti[o].call(c, e, u, c.opts)) return n;
-            return ue.map(u, $, c), ue.isFunction(c.opts.start) && c.opts.start.call(e, c), ue.fx.timer(ue
+            return ue.map(u, B, c), ue.isFunction(c.opts.start) && c.opts.start.call(e, c), ue.fx.timer(ue
                     .extend(l, {
                         elem: e,
                         anim: c,
@@ -15209,7 +15569,7 @@ Object.values || (Object.values = function (e) {
                     })), c.done((function () {
                         var t;
                         for (t in ue._removeData(e, "fxshow"), u) ue.style(e, t, u[t])
-                    })), u) a = $(h ? p[n] : 0, n, c), n in p || (p[n] = a.start, h && (a.end = a.start, a
+                    })), u) a = B(h ? p[n] : 0, n, c), n in p || (p[n] = a.start, h && (a.end = a.start, a
                     .start = "width" === n || "height" === n ? 1 : 0))
         }
 
@@ -15607,7 +15967,7 @@ Object.values || (Object.values = function (e) {
                                 if (s[2]) return se.apply(i, t.getElementsByTagName(e)), i;
                                 if ((a = s[3]) && T.getElementsByClassName && t.getElementsByClassName)
                                 return se.apply(i, t.getElementsByClassName(a)), i
-                            } if (T.qsa && (!$ || !$.test(e))) {
+                            } if (T.qsa && (!B || !B.test(e))) {
                             if (d = u = W, h = t, p = 9 === r && e, 1 === r && "object" !== t.nodeName
                                 .toLowerCase()) {
                                 for (c = f(e), (u = t.getAttribute("id")) ? d = u.replace(Se, "\\$&") : t
@@ -15880,7 +16240,7 @@ Object.values || (Object.values = function (e) {
                 }
 
                 function C() {}
-                var S, T, A, E, P, j, M, I, D, N, L, O, R, $, B, F, H, W = "sizzle" + -new Date,
+                var S, T, A, E, P, j, M, I, D, N, L, O, R, B, $, F, H, W = "sizzle" + -new Date,
                     V = e.document,
                     q = 0,
                     U = 0,
@@ -16018,27 +16378,27 @@ Object.values || (Object.values = function (e) {
                             }, E.find.CLASS = T.getElementsByClassName && function (e, t) {
                                 if (typeof t.getElementsByClassName !== Q && R) return t
                                     .getElementsByClassName(e)
-                            }, B = [], $ = [], (T.qsa = n(t.querySelectorAll)) && (a((function (e) {
+                            }, $ = [], B = [], (T.qsa = n(t.querySelectorAll)) && (a((function (e) {
                                 e.innerHTML =
                                     "<select><option selected=''></option></select>", e
                                     .querySelectorAll("[selected]")
-                                    .length || $.push("\\[" + le + "*(?:value|" + re + ")"), e
+                                    .length || B.push("\\[" + le + "*(?:value|" + re + ")"), e
                                     .querySelectorAll(":checked")
-                                    .length || $.push(":checked")
+                                    .length || B.push(":checked")
                             })), a((function (e) {
                                 var i = t.createElement("input");
                                 i.setAttribute("type", "hidden"), e.appendChild(i)
                                     .setAttribute("t", ""), e.querySelectorAll("[t^='']")
-                                    .length && $.push("[*^$]=" + le + "*(?:''|\"\")"), e
+                                    .length && B.push("[*^$]=" + le + "*(?:''|\"\")"), e
                                     .querySelectorAll(":enabled")
-                                    .length || $.push(":enabled", ":disabled"), e
-                                    .querySelectorAll("*,:x"), $.push(",.*:")
+                                    .length || B.push(":enabled", ":disabled"), e
+                                    .querySelectorAll("*,:x"), B.push(",.*:")
                             }))), (T.matchesSelector = n(F = O.webkitMatchesSelector || O
                                 .mozMatchesSelector || O.oMatchesSelector || O.msMatchesSelector)) && a((
                                 function (e) {
-                                    T.disconnectedMatch = F.call(e, "div"), F.call(e, "[s!='']:x"), B
+                                    T.disconnectedMatch = F.call(e, "div"), F.call(e, "[s!='']:x"), $
                                         .push("!=", pe)
-                                })), $ = $.length && new RegExp($.join("|")), B = B.length && new RegExp(B
+                                })), B = B.length && new RegExp(B.join("|")), $ = $.length && new RegExp($
                                 .join("|")), H = n(O.contains) || O.compareDocumentPosition ? function (e,
                                 t) {
                                 var i = 9 === e.nodeType ? e.documentElement : e,
@@ -16080,7 +16440,7 @@ Object.values || (Object.values = function (e) {
                         return i(e, null, null, t)
                     }, i.matchesSelector = function (e, t) {
                         if ((e.ownerDocument || e) !== L && N(e), t = t.replace(ve, "='$1']"), T
-                            .matchesSelector && R && (!B || !B.test(t)) && (!$ || !$.test(t))) try {
+                            .matchesSelector && R && (!$ || !$.test(t)) && (!B || !B.test(t))) try {
                             var n = F.call(e, t);
                             if (n || T.disconnectedMatch || e.document && 11 !== e.document.nodeType)
                                 return n
@@ -17014,8 +17374,8 @@ Object.values || (Object.values = function (e) {
                 }));
         var Oe = /^(?:input|select|textarea)$/i,
             Re = /^key/,
-            $e = /^(?:mouse|contextmenu)|click/,
-            Be = /^(?:focusinfocus|focusoutblur)$/,
+            Be = /^(?:mouse|contextmenu)|click/,
+            $e = /^(?:focusinfocus|focusoutblur)$/,
             Fe = /^([^.]*)(?:\.(.+)|)$/;
         ue.event = {
             global: {},
@@ -17078,7 +17438,7 @@ Object.values || (Object.values = function (e) {
                 var a, r, l, c, u, d, h, p = [s || Y],
                     m = le.call(i, "type") ? i.type : i,
                     f = le.call(i, "namespace") ? i.namespace.split(".") : [];
-                if (l = d = s = s || Y, 3 !== s.nodeType && 8 !== s.nodeType && !Be.test(m + ue.event
+                if (l = d = s = s || Y, 3 !== s.nodeType && 8 !== s.nodeType && !$e.test(m + ue.event
                         .triggered) && (m.indexOf(".") >= 0 && (f = m.split("."), m = f.shift(), f
                             .sort()), r = m.indexOf(":") < 0 && "on" + m, (i = i[ue.expando] ? i :
                             new ue.Event(m, "object" == typeof i && i))
@@ -17088,7 +17448,7 @@ Object.values || (Object.values = function (e) {
                         .makeArray(n, [i]), u = ue.event.special[m] || {}, o || !u.trigger || !1 !== u
                         .trigger.apply(s, n))) {
                     if (!o && !u.noBubble && !ue.isWindow(s)) {
-                        for (c = u.delegateType || m, Be.test(c + m) || (l = l.parentNode); l; l = l
+                        for (c = u.delegateType || m, $e.test(c + m) || (l = l.parentNode); l; l = l
                             .parentNode) p.push(l), d = l;
                         d === (s.ownerDocument || Y) && p.push(d.defaultView || d.parentWindow || e)
                     }
@@ -17153,7 +17513,7 @@ Object.values || (Object.values = function (e) {
                 var t, i, n, s = e.type,
                     o = e,
                     a = this.fixHooks[s];
-                for (a || (this.fixHooks[s] = a = $e.test(s) ? this.mouseHooks : Re.test(s) ? this
+                for (a || (this.fixHooks[s] = a = Be.test(s) ? this.mouseHooks : Re.test(s) ? this
                         .keyHooks : {}), n = a.props ? this.props.concat(a.props) : this.props, e =
                     new ue.Event(o), t = n.length; t--;) e[i = n[t]] = o[i];
                 return e.target || (e.target = o.srcElement || Y), 3 === e.target.nodeType && (e
@@ -18046,8 +18406,8 @@ Object.values || (Object.values = function (e) {
             Lt = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
             Ot = /^(?:GET|HEAD)$/,
             Rt = /^\/\//,
-            $t = /^([\w.+-]+:)(?:\/\/([^\/?#:]*)(?::(\d+)|)|)/,
-            Bt = ue.fn.load,
+            Bt = /^([\w.+-]+:)(?:\/\/([^\/?#:]*)(?::(\d+)|)|)/,
+            $t = ue.fn.load,
             Ft = {},
             Ht = {},
             Wt = "*/".concat("*");
@@ -18057,8 +18417,8 @@ Object.values || (Object.values = function (e) {
             (Pt = Y.createElement("a"))
             .href = "", Pt = Pt.href
         }
-        Et = $t.exec(Pt.toLowerCase()) || [], ue.fn.load = function (e, i, n) {
-            if ("string" != typeof e && Bt) return Bt.apply(this, arguments);
+        Et = Bt.exec(Pt.toLowerCase()) || [], ue.fn.load = function (e, i, n) {
+            if ("string" != typeof e && $t) return $t.apply(this, arguments);
             var s, o, a, r = this,
                 l = e.indexOf(" ");
             return l >= 0 && (s = e.slice(l, e.length), e = e.slice(0, l)), ue.isFunction(i) ? (n = i, i =
@@ -18197,7 +18557,7 @@ Object.values || (Object.values = function (e) {
                     .replace(Rt, Et[1] + "//"), h.type = i.method || i.type || h.method || h.type,
                     h.dataTypes = ue.trim(h.dataType || "*")
                     .toLowerCase()
-                    .match(he) || [""], null == h.crossDomain && (s = $t.exec(h.url
+                    .match(he) || [""], null == h.crossDomain && (s = Bt.exec(h.url
                     .toLowerCase()), h.crossDomain = !(!s || s[1] === Et[1] && s[2] === Et[2] && (
                             s[3] || ("http:" === s[1] ? "80" : "443")) === (Et[3] || (
                             "http:" === Et[1] ? "80" : "443")))), h.data && h.processData &&
@@ -18388,7 +18748,7 @@ Object.values || (Object.values = function (e) {
                         s[2] : +s[2]), i
                 }]
             };
-        ue.Animation = ue.extend(B, {
+        ue.Animation = ue.extend($, {
                 tweener: function (e, t) {
                     ue.isFunction(e) ? (t = e, e = ["*"]) : e = e.split(" ");
                     for (var i, n = 0, s = e.length; n < s; n++) i = e[n], ii[i] = ii[i] || [], ii[i]
@@ -18453,7 +18813,7 @@ Object.values || (Object.values = function (e) {
                     var s = ue.isEmptyObject(e),
                         o = ue.speed(t, i, n),
                         a = function () {
-                            var t = B(this, ue.extend({}, e), o);
+                            var t = $(this, ue.extend({}, e), o);
                             a.finish = function () {
                                 t.stop(!0)
                             }, (s || ue._data(this, "finish")) && t.stop(!0)
@@ -24239,9 +24599,9 @@ Object.values || (Object.values = function (e) {
                 },
                 _generateHTML: function (e) {
                     var t, i, n, s, o, a, r, l, c, u, d, h, p, m, f, _, g, v, b, y, w, k, x,
-                        z, C, S, T, A, E, P, j, M, I, D, N, L, O, R, $, B = new Date,
-                        F = this._daylightSavingAdjust(new Date(B.getFullYear(), B.getMonth(),
-                            B.getDate())),
+                        z, C, S, T, A, E, P, j, M, I, D, N, L, O, R, B, $ = new Date,
+                        F = this._daylightSavingAdjust(new Date($.getFullYear(), $.getMonth(),
+                            $.getDate())),
                         H = this._get(e, "isRTL"),
                         W = this._get(e, "showButtonPanel"),
                         V = this._get(e, "hideIfNoPrevNext"),
@@ -24336,23 +24696,23 @@ Object.values || (Object.values = function (e) {
                                     "<td class='ui-datepicker-week-col'>" + this._get(e,
                                         "calculateWeek")(D) + "</td>" : "", w = 0; w < 7; w++)
                                     O = _ ? _.apply(e.input ? e.input[0] : null, [D]) : [!0,
-                                        ""], $ = (R = D.getMonth() !== X) && !v || !O[0] ||
+                                        ""], B = (R = D.getMonth() !== X) && !v || !O[0] ||
                                     J && D < J || Q && D > Q, L += "<td class='" + ((w + u +
                                         6) % 7 >= 5 ? " ui-datepicker-week-end" : "") + (R ?
                                         " ui-datepicker-other-month" : "") + (D.getTime() ===
                                         C.getTime() && X === e.selectedMonth && e._keyEvent ||
                                         b.getTime() === D.getTime() && b.getTime() === C
-                                        .getTime() ? " " + this._dayOverClass : "") + ($ ?
+                                        .getTime() ? " " + this._dayOverClass : "") + (B ?
                                         " " + this._unselectableClass + " ui-state-disabled" :
                                         "") + (R && !g ? "" : " " + O[1] + (D.getTime() === Y
                                         .getTime() ? " " + this._currentClass : "") + (D
                                         .getTime() === F.getTime() ?
                                         " ui-datepicker-today" : "")) + "'" + (R && !g || !O[
                                             2] ? "" : " title='" + O[2].replace(/'/g,
-                                        "&#39;") + "'") + ($ ? "" :
+                                        "&#39;") + "'") + (B ? "" :
                                         " data-handler='selectDay' data-event='click' data-month='" +
                                         D.getMonth() + "' data-year='" + D.getFullYear() + "'"
-                                        ) + ">" + (R && !g ? "&#xa0;" : $ ?
+                                        ) + ">" + (R && !g ? "&#xa0;" : B ?
                                         "<span class='ui-state-default'>" + D.getDate() +
                                         "</span>" : "<a class='ui-state-default" + (D
                                             .getTime() === F.getTime() ?
@@ -31078,12 +31438,12 @@ Object.values || (Object.values = function (e) {
                     if (!(si.indexOf(e.target.tagName) < 0)) return;
                     ke(e)
                 }
-                B(e, t)
+                $(e, t)
             }));
             e["_leaflet_touchstart" + n] = s, e.addEventListener(ei, s, !1), ai || (document
                 .documentElement.addEventListener(ei, O, !0), document.documentElement
-                .addEventListener(ti, R, !0), document.documentElement.addEventListener(ii, $, !
-                0), document.documentElement.addEventListener(ni, $, !0), ai = !0)
+                .addEventListener(ti, R, !0), document.documentElement.addEventListener(ii, B, !
+                0), document.documentElement.addEventListener(ni, B, !0), ai = !0)
         }
 
         function O(e) {
@@ -31094,11 +31454,11 @@ Object.values || (Object.values = function (e) {
             oi[e.pointerId] && (oi[e.pointerId] = e)
         }
 
-        function $(e) {
+        function B(e) {
             delete oi[e.pointerId], ri--
         }
 
-        function B(e, t) {
+        function $(e, t) {
             for (var i in e.touches = [], oi) e.touches.push(oi[i]);
             e.changedTouches = [e], t(e)
         }
@@ -31106,14 +31466,14 @@ Object.values || (Object.values = function (e) {
         function F(e, t, i) {
             var n = function (e) {
                 (e.pointerType !== e.MSPOINTER_TYPE_MOUSE && "mouse" !== e.pointerType || 0 !== e
-                    .buttons) && B(e, t)
+                    .buttons) && $(e, t)
             };
             e["_leaflet_touchmove" + i] = n, e.addEventListener(ti, n, !1)
         }
 
         function H(e, t, i) {
             var n = function (e) {
-                B(e, t)
+                $(e, t)
             };
             e["_leaflet_touchend" + i] = n, e.addEventListener(ii, n, !1), e.addEventListener(ni, n, !
                 1)
@@ -31255,7 +31615,7 @@ Object.values || (Object.values = function (e) {
         }
 
         function re(e, t) {
-            e._leaflet_pos = t, Bt ? ae(e, t) : (e.style.left = t.x + "px", e.style.top = t.y + "px")
+            e._leaflet_pos = t, $t ? ae(e, t) : (e.style.left = t.x + "px", e.style.top = t.y + "px")
         }
 
         function le(e) {
@@ -31419,7 +31779,7 @@ Object.values || (Object.values = function (e) {
         }
 
         function je(e, t, i) {
-            return Math.sqrt($e(e, t, i, !0))
+            return Math.sqrt(Be(e, t, i, !0))
         }
 
         function Me(e, t) {
@@ -31433,7 +31793,7 @@ Object.values || (Object.values = function (e) {
 
         function Ie(e, t, i, n, s) {
             var o, a, r, l = 0;
-            for (a = n + 1; a <= s - 1; a++)(r = $e(e[a], e[n], e[s], !0)) > l && (o = a, l = r);
+            for (a = n + 1; a <= s - 1; a++)(r = Be(e[a], e[n], e[s], !0)) > l && (o = a, l = r);
             l > i && (t[o] = 1, Ie(e, t, i, n, o), Ie(e, t, i, o, s))
         }
 
@@ -31475,7 +31835,7 @@ Object.values || (Object.values = function (e) {
             return i * i + n * n
         }
 
-        function $e(e, t, i, n) {
+        function Be(e, t, i, n) {
             var s, o = t.x,
                 a = t.y,
                 r = i.x - o,
@@ -31486,12 +31846,12 @@ Object.values || (Object.values = function (e) {
                 new y(o, a)
         }
 
-        function Be(e) {
+        function $e(e) {
             return !st(e[0]) || "object" != typeof e[0][0] && void 0 !== e[0][0]
         }
 
         function Fe(e) {
-            return console.warn("Deprecated use of _flat, please use L.LineUtil.isFlat instead."), Be(
+            return console.warn("Deprecated use of _flat, please use L.LineUtil.isFlat instead."), $e(
                 e)
         }
 
@@ -32145,8 +32505,8 @@ Object.values || (Object.values = function (e) {
             Lt = 0 === navigator.platform.indexOf("Win"),
             Ot = kt && "transition" in wt,
             Rt = "WebKitCSSMatrix" in window && "m11" in new window.WebKitCSSMatrix && !Tt,
-            $t = "MozPerspective" in wt,
-            Bt = !window.L_DISABLE_3D && (Ot || Rt || $t) && !Nt && !Dt,
+            Bt = "MozPerspective" in wt,
+            $t = !window.L_DISABLE_3D && (Ot || Rt || Bt) && !Nt && !Dt,
             Ft = "undefined" != typeof orientation || M("mobile"),
             Ht = Ft && Ct,
             Wt = Ft && Rt,
@@ -32189,8 +32549,8 @@ Object.values || (Object.values = function (e) {
                 win: Lt,
                 ie3d: Ot,
                 webkit3d: Rt,
-                gecko3d: $t,
-                any3d: Bt,
+                gecko3d: Bt,
+                any3d: $t,
                 mobile: Ft,
                 mobileWebkit: Ht,
                 mobileWebkit3d: Wt,
@@ -32342,7 +32702,7 @@ Object.values || (Object.values = function (e) {
                         void 0 !== t.zoom && (this._zoom = this._limitZoom(t.zoom)), t
                         .center && void 0 !== t.zoom && this.setView(T(t.center), t.zoom, {
                             reset: !0
-                        }), this.callInitHooks(), this._zoomAnimated = hi && Bt && !Zt && this
+                        }), this.callInitHooks(), this._zoomAnimated = hi && $t && !Zt && this
                         .options.zoomAnimation, this._zoomAnimated && (this
                         ._createAnimProxy(), fe(this._proxy, pi, this._catchTransitionEnd,
                                 this)), this._addLayers(this.options.layers)
@@ -32367,11 +32727,11 @@ Object.values || (Object.values = function (e) {
                     }) : (this._zoom = e, this)
                 },
                 zoomIn: function (e, t) {
-                    return e = e || (Bt ? this.options.zoomDelta : 1), this.setZoom(this
+                    return e = e || ($t ? this.options.zoomDelta : 1), this.setZoom(this
                         ._zoom + e, t)
                 },
                 zoomOut: function (e, t) {
-                    return e = e || (Bt ? this.options.zoomDelta : 1), this.setZoom(this
+                    return e = e || ($t ? this.options.zoomDelta : 1), this.setZoom(this
                         ._zoom - e, t)
                 },
                 setZoomAround: function (e, t, i) {
@@ -32488,7 +32848,7 @@ Object.values || (Object.values = function (e) {
                             ._moveEnd(!0)
                     }
                     if (!1 === (i = i || {})
-                        .animate || !Bt) return this.setView(e, t, i);
+                        .animate || !$t) return this.setView(e, t, i);
                     this._stop();
                     var d = this.project(this.getCenter()),
                         h = this.project(e),
@@ -32695,7 +33055,7 @@ Object.values || (Object.values = function (e) {
                         .subtract(i),
                         c = x(this.project(r, n), this.project(a, n))
                         .getSize(),
-                        u = Bt ? this.options.zoomSnap : 1,
+                        u = $t ? this.options.zoomSnap : 1,
                         d = l.x / c.x,
                         h = l.y / c.y,
                         p = t ? Math.max(d, h) : Math.min(d, h);
@@ -32798,7 +33158,7 @@ Object.values || (Object.values = function (e) {
                 },
                 _initLayout: function () {
                     var e = this._container;
-                    this._fadeAnimated = this.options.fadeAnimation && Bt, X(e,
+                    this._fadeAnimated = this.options.fadeAnimation && $t, X(e,
                         "leaflet-container" + (Ut ? " leaflet-touch" : "") + (Gt ?
                             " leaflet-retina" : "") + (xt ? " leaflet-oldie" : "") + (It ?
                             " leaflet-safari" : "") + (this._fadeAnimated ?
@@ -32862,7 +33222,7 @@ Object.values || (Object.values = function (e) {
                     t(this._container,
                             "click dblclick mousedown mouseup mouseover mouseout mousemove contextmenu keypress",
                             this._handleDOMEvent, this), this.options.trackResize && t(window,
-                            "resize", this._onResize, this), Bt && this.options
+                            "resize", this._onResize, this), $t && this.options
                         .transform3DLimit && (e ? this.off : this.on)
                         .call(this, "moveend", this._onMoveEnd)
                 },
@@ -33017,7 +33377,7 @@ Object.values || (Object.values = function (e) {
                 _limitZoom: function (e) {
                     var t = this.getMinZoom(),
                         i = this.getMaxZoom(),
-                        n = Bt ? this.options.zoomSnap : 1;
+                        n = $t ? this.options.zoomSnap : 1;
                     return n && (e = Math.round(e / n) * n), Math.max(t, Math.min(i, e))
                 },
                 _onPanTransitionStep: function () {
@@ -33598,19 +33958,19 @@ Object.values || (Object.values = function (e) {
                 simplify: Pe,
                 pointToSegmentDistance: je,
                 closestPointOnSegment: function (e, t, i) {
-                    return $e(e, t, i)
+                    return Be(e, t, i)
                 },
                 clipSegment: Ne,
                 _getEdgeIntersection: Le,
                 _getBitCode: Oe,
-                _sqClosestPointOnSegment: $e,
-                isFlat: Be,
+                _sqClosestPointOnSegment: Be,
+                isFlat: $e,
                 _flat: Fe
             }),
-            $i = (Object.freeze || Object)({
+            Bi = (Object.freeze || Object)({
                 clipPolygon: He
             }),
-            Bi = {
+            $i = {
                 project: function (e) {
                     return new y(e.lng, e.lat)
                 },
@@ -33643,7 +34003,7 @@ Object.values || (Object.values = function (e) {
                 }
             },
             Hi = (Object.freeze || Object)({
-                LonLat: Bi,
+                LonLat: $i,
                 Mercator: Fi,
                 SphericalMercator: ft
             }),
@@ -33657,11 +34017,11 @@ Object.values || (Object.values = function (e) {
             }),
             Vi = t({}, mt, {
                 code: "EPSG:4326",
-                projection: Bi,
+                projection: $i,
                 transformation: E(1 / 180, 1, -1 / 180, .5)
             }),
             qi = t({}, pt, {
-                projection: Bi,
+                projection: $i,
                 transformation: E(1, 0, -1, 0),
                 scale: function (e) {
                     return Math.pow(2, e)
@@ -34311,7 +34671,7 @@ Object.values || (Object.values = function (e) {
                     return !this._latlngs.length
                 },
                 closestLayerPoint: function (e) {
-                    for (var t, i, n = 1 / 0, s = null, o = $e, a = 0, r = this._parts
+                    for (var t, i, n = 1 / 0, s = null, o = Be, a = 0, r = this._parts
                         .length; a < r; a++)
                         for (var l = this._parts[a], c = 1, u = l.length; c < u; c++) {
                             var d = o(e, t = l[c - 1], i = l[c], !0);
@@ -34343,10 +34703,10 @@ Object.values || (Object.values = function (e) {
                     this._bounds = new z, this._latlngs = this._convertLatLngs(e)
                 },
                 _defaultShape: function () {
-                    return Be(this._latlngs) ? this._latlngs : this._latlngs[0]
+                    return $e(this._latlngs) ? this._latlngs : this._latlngs[0]
                 },
                 _convertLatLngs: function (e) {
-                    for (var t = [], i = Be(e), n = 0, s = e.length; n < s; n++) i ? (t[n] =
+                    for (var t = [], i = $e(e), n = 0, s = e.length; n < s; n++) i ? (t[n] =
                         T(e[n]), this._bounds.extend(t[n])) : t[n] = this._convertLatLngs(
                         e[n]);
                     return t
@@ -34429,11 +34789,11 @@ Object.values || (Object.values = function (e) {
                     return i >= 2 && t[0] instanceof S && t[0].equals(t[i - 1]) && t.pop(), t
                 },
                 _setLatLngs: function (e) {
-                    nn.prototype._setLatLngs.call(this, e), Be(this._latlngs) && (this
+                    nn.prototype._setLatLngs.call(this, e), $e(this._latlngs) && (this
                         ._latlngs = [this._latlngs])
                 },
                 _defaultShape: function () {
-                    return Be(this._latlngs[0]) ? this._latlngs[0] : this._latlngs[0][0]
+                    return $e(this._latlngs[0]) ? this._latlngs[0] : this._latlngs[0][0]
                 },
                 _clipPoints: function () {
                     var e = this._renderer._bounds,
@@ -34503,7 +34863,7 @@ Object.values || (Object.values = function (e) {
             };
         Qi.include(an), tn.include(an), en.include(an), nn.include({
             toGeoJSON: function (e) {
-                var t = !Be(this._latlngs);
+                var t = !$e(this._latlngs);
                 return Ke(this, {
                     type: (t ? "Multi" : "") + "LineString",
                     coordinates: Ze(this._latlngs, t ? 1 : 0, !1, e)
@@ -34511,8 +34871,8 @@ Object.values || (Object.values = function (e) {
             }
         }), sn.include({
             toGeoJSON: function (e) {
-                var t = !Be(this._latlngs),
-                    i = t && !Be(this._latlngs[0]),
+                var t = !$e(this._latlngs),
+                    i = t && !$e(this._latlngs[0]),
                     n = Ze(this._latlngs, i ? 2 : t ? 1 : 0, !0, e);
                 return t || (n = [n]), Ke(this, {
                     type: (i ? "Multi" : "") + "Polygon",
@@ -35340,7 +35700,7 @@ Object.values || (Object.values = function (e) {
                         s = e.origin.multiplyBy(n)
                         .subtract(this._map._getNewPixelOrigin(t, i))
                         .round();
-                    Bt ? ae(e.el, s, n) : re(e.el, s)
+                    $t ? ae(e.el, s, n) : re(e.el, s)
                 },
                 _resetGrid: function () {
                     var e = this._map,
@@ -35695,7 +36055,7 @@ Object.values || (Object.values = function (e) {
                         .add(n)
                         .add(s)
                         .subtract(a);
-                    Bt ? ae(this._container, r, i) : re(this._container, r)
+                    $t ? ae(this._container, r, i) : re(this._container, r)
                 },
                 _reset: function () {
                     for (var e in this._update(), this._updateTransform(this._center, this
@@ -36594,7 +36954,7 @@ Object.values || (Object.values = function (e) {
             Object.freeze = et, e.version = "1.4.0+HEAD.3337f36", e.Control = Ci, e.control = Si, e
             .Browser = Xt, e.Evented = dt, e.Mixin = Ii, e.Util = ct, e.Class = v, e.Handler = ji, e
             .extend = t, e.bind = i, e.stamp = n, e.setOptions = u, e.DomEvent = ki, e.DomUtil = vi, e
-            .PosAnimation = xi, e.Draggable = Oi, e.LineUtil = Ri, e.PolyUtil = $i, e.Point = y, e
+            .PosAnimation = xi, e.Draggable = Oi, e.LineUtil = Ri, e.PolyUtil = Bi, e.Point = y, e
             .point = w, e.Bounds = k, e.bounds = x, e.Transformation = A, e.transformation = E, e
             .Projection = Hi, e.LatLng = S, e.latLng = T, e.LatLngBounds = z, e.latLngBounds = C, e
             .CRS = pt, e.GeoJSON = on, e.geoJSON = Ye, e.geoJson = rn, e.Layer = Ui, e.LayerGroup =
@@ -40589,11 +40949,11 @@ function (e) {
         return i
     }
 
-    function $(e) {
+    function B(e) {
         return e && (!k(e, "p,div") || e.className || f(e, "style") || !i(w(e)))
     }
 
-    function B(e, t) {
+    function $(e, t) {
         var i = r(t, {}, e.ownerDocument);
         for (o(e.attributes, (function (e, t) {
                 try {
@@ -40997,7 +41357,7 @@ function (e) {
 
     function le(e, t) {
         var i, a, l, _, x, z, S, N, L, R, W, q, U, K, Y, J, Q, ee, ie, ce, ue, de, fe, _e, ye, ke, xe, Te, Ae,
-            Ee, je, Me, Ie, $e, Be, Fe, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, st,
+            Ee, je, Me, Ie, Be, $e, Fe, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, st,
             ot, at, rt, lt, ct, ut, dt, ht, pt, mt, ft = this,
             _t = {},
             gt = [],
@@ -41013,7 +41373,7 @@ function (e) {
                 }), e), y(a, "z-index", kt.zIndex), Le && A(a, "ie ie" + Le), ce = e.required, e
                 .required = !1;
             var t = le.formats[kt.format];
-            "init" in (i = t ? new t : {}) && i.init.call(ft), Me(), We(), $e(), je(), Be(), Fe(), Se ||
+            "init" in (i = t ? new t : {}) && i.init.call(ft), Me(), We(), Be(), je(), $e(), Fe(), Se ||
                 ft.toggleSourceMode(), tt();
             var n = function () {
                 m(De, "load", n), kt.autofocus && at(), mt(), nt(), Y.call("ready"), "onReady" in i &&
@@ -41051,7 +41411,7 @@ function (e) {
             f(N, "tabindex", i), f(_, "tabindex", i), K = new se(x), g(e), ft.val(e.value);
             var n = kt.placeholder || f(e, "placeholder");
             n && (N.placeholder = n, f(z, "placeholder", n))
-        }, Be = function () {
+        }, $e = function () {
             kt.autoUpdate && (p(z, "blur", pt), p(N, "blur", pt)), null === kt.rtl && (kt.rtl = "rtl" ===
                 y(N, "direction")), ft.rtl(!!kt.rtl), kt.autoExpand && (p(z, "load", mt, be), p(z,
                 "input keyup", mt)), kt.resizeEnabled && He(), f(a, "id", kt.id), ft.emoticons(kt
@@ -41076,7 +41436,7 @@ function (e) {
                     R = null
                 })), p(a, "selectionchanged", ot), p(a, "selectionchanged", tt), p(a,
                     "selectionchanged valuechanged nodechanged pasteraw paste", Qe)
-        }, $e = function () {
+        }, Be = function () {
             var e, t = ft.commands,
                 i = (kt.toolbarExclude || "")
                 .split(","),
@@ -41435,7 +41795,7 @@ function (e) {
                 ke && ke.update && ke.update(s, t, e)
             }
         }, Ke = function (e) {
-            if (!e.defaultPrevented && (ft.closeDropDown(), 13 === e.which && !k(Q, "li,ul,ol") && $(
+            if (!e.defaultPrevented && (ft.closeDropDown(), 13 === e.which && !k(Q, "li,ul,ol") && B(
                 Q))) {
                 R = null;
                 var t = r("br", {}, S);
@@ -41450,7 +41810,7 @@ function (e) {
         }, nt = function () {
             O(z, (function (e) {
                 if (e.nodeType === ge && !/inline/.test(y(e, "display")) && !k(e,
-                        ".sceditor-nlf") && $(e)) {
+                        ".sceditor-nlf") && B(e)) {
                     var t = r("p", {}, S);
                     return t.className = "sceditor-nlf", t.innerHTML = Oe ? "" : "<br />", d(
                         z, t), !1
@@ -41668,12 +42028,12 @@ function (e) {
                 ft.clearBlockFormatting(n), e.preventDefault()
             }
         }, ct = function () {
-            for (var e = Q; !$(e) || H(e, !0);)
+            for (var e = Q; !B(e) || H(e, !0);)
                 if (!(e = e.parentNode) || k(e, "body")) return;
             return e
         }, ft.clearBlockFormatting = function (e) {
             return !(e = e || ct()) || k(e, "body") || (K.saveRange(), e.className = "", R = null, f(e,
-                "style", ""), k(e, "p,div,td") || B(e, "p"), K.restoreRange()), ft
+                "style", ""), k(e, "p,div,td") || $(e, "p"), K.restoreRange()), ft
         }, ut = function (e) {
             if (Y && (Y.hasHandler("valuechangedEvent") || ut.hasHandler)) {
                 var t, i = ft.sourceMode(),
@@ -42396,8 +42756,8 @@ function (e) {
                 traverse: L,
                 rTraverse: O,
                 parseHTML: R,
-                hasStyling: $,
-                convertElement: B,
+                hasStyling: B,
+                convertElement: $,
                 blockLevelList: ye,
                 canHaveChildren: F,
                 isInline: H,
@@ -42697,11 +43057,11 @@ function (e) {
         return i
     }
 
-    function $(e) {
+    function B(e) {
         return e && (!k(e, "p,div") || e.className || f(e, "style") || !i(w(e)))
     }
 
-    function B(e, t) {
+    function $(e, t) {
         var i = r(t, {}, e.ownerDocument);
         for (o(e.attributes, (function (e, t) {
                 try {
@@ -43105,7 +43465,7 @@ function (e) {
 
     function le(e, t) {
         var i, a, l, _, x, z, S, N, L, R, W, q, U, K, Y, J, Q, ee, ie, ce, ue, de, fe, _e, ye, ke, xe, Te, Ae,
-            Ee, je, Me, Ie, $e, Be, Fe, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, st,
+            Ee, je, Me, Ie, Be, $e, Fe, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, st,
             ot, at, rt, lt, ct, ut, dt, ht, pt, mt, ft = this,
             _t = {},
             gt = [],
@@ -43121,7 +43481,7 @@ function (e) {
                 }), e), y(a, "z-index", kt.zIndex), Le && A(a, "ie ie" + Le), ce = e.required, e
                 .required = !1;
             var t = le.formats[kt.format];
-            "init" in (i = t ? new t : {}) && i.init.call(ft), Me(), We(), $e(), je(), Be(), Fe(), Se ||
+            "init" in (i = t ? new t : {}) && i.init.call(ft), Me(), We(), Be(), je(), $e(), Fe(), Se ||
                 ft.toggleSourceMode(), tt();
             var n = function () {
                 m(De, "load", n), kt.autofocus && at(), mt(), nt(), Y.call("ready"), "onReady" in i &&
@@ -43159,7 +43519,7 @@ function (e) {
             f(N, "tabindex", i), f(_, "tabindex", i), K = new se(x), g(e), ft.val(e.value);
             var n = kt.placeholder || f(e, "placeholder");
             n && (N.placeholder = n, f(z, "placeholder", n))
-        }, Be = function () {
+        }, $e = function () {
             kt.autoUpdate && (p(z, "blur", pt), p(N, "blur", pt)), null === kt.rtl && (kt.rtl = "rtl" ===
                 y(N, "direction")), ft.rtl(!!kt.rtl), kt.autoExpand && (p(z, "load", mt, be), p(z,
                 "input keyup", mt)), kt.resizeEnabled && He(), f(a, "id", kt.id), ft.emoticons(kt
@@ -43184,7 +43544,7 @@ function (e) {
                     R = null
                 })), p(a, "selectionchanged", ot), p(a, "selectionchanged", tt), p(a,
                     "selectionchanged valuechanged nodechanged pasteraw paste", Qe)
-        }, $e = function () {
+        }, Be = function () {
             var e, t = ft.commands,
                 i = (kt.toolbarExclude || "")
                 .split(","),
@@ -43543,7 +43903,7 @@ function (e) {
                 ke && ke.update && ke.update(s, t, e)
             }
         }, Ke = function (e) {
-            if (!e.defaultPrevented && (ft.closeDropDown(), 13 === e.which && !k(Q, "li,ul,ol") && $(
+            if (!e.defaultPrevented && (ft.closeDropDown(), 13 === e.which && !k(Q, "li,ul,ol") && B(
                 Q))) {
                 R = null;
                 var t = r("br", {}, S);
@@ -43558,7 +43918,7 @@ function (e) {
         }, nt = function () {
             O(z, (function (e) {
                 if (e.nodeType === ge && !/inline/.test(y(e, "display")) && !k(e,
-                        ".sceditor-nlf") && $(e)) {
+                        ".sceditor-nlf") && B(e)) {
                     var t = r("p", {}, S);
                     return t.className = "sceditor-nlf", t.innerHTML = Oe ? "" : "<br />", d(
                         z, t), !1
@@ -43776,12 +44136,12 @@ function (e) {
                 ft.clearBlockFormatting(n), e.preventDefault()
             }
         }, ct = function () {
-            for (var e = Q; !$(e) || H(e, !0);)
+            for (var e = Q; !B(e) || H(e, !0);)
                 if (!(e = e.parentNode) || k(e, "body")) return;
             return e
         }, ft.clearBlockFormatting = function (e) {
             return !(e = e || ct()) || k(e, "body") || (K.saveRange(), e.className = "", R = null, f(e,
-                "style", ""), k(e, "p,div,td") || B(e, "p"), K.restoreRange()), ft
+                "style", ""), k(e, "p,div,td") || $(e, "p"), K.restoreRange()), ft
         }, ut = function (e) {
             if (Y && (Y.hasHandler("valuechangedEvent") || ut.hasHandler)) {
                 var t, i = ft.sourceMode(),
@@ -44503,8 +44863,8 @@ function (e) {
                 traverse: L,
                 rTraverse: O,
                 parseHTML: R,
-                hasStyling: $,
-                convertElement: B,
+                hasStyling: B,
+                convertElement: $,
                 blockLevelList: ye,
                 canHaveChildren: F,
                 isInline: H,
