@@ -223,8 +223,8 @@ function mission_participation_add(e) {
     $("#mission_participant_" + e)
         .removeClass("hidden"), $("#mission_participant_new_" + e)
         .addClass("hidden"), $(`#mission_${e}`)
-        .data("mission-participation-filter", "started"), missionParticipationFilters.started.missionIds.push(
-            e)
+        .data("mission-participation-filter", "started"), missionParticipationFilters.new.missionIds.delete(
+        e), missionParticipationFilters.started.missionIds.add(e)
 }
 
 function addMissionParticipations(e) {
@@ -1067,19 +1067,18 @@ function iconMapVehicleGenerate(e, t, i) {
 
 function missionMarkerBlukDraw() {
     $.each(patientBulkCache, (function (e, t) {
-            var i = "";
-            $.each(t, (function (e, t) {
-                    i += t
-                })), $("#mission_patients_" + e)
-                .append(i)
-        })), $.each(prisonerBulkCache, (function (e, t) {
-            var i = "";
-            $.each(t, (function (e, t) {
-                    i += t
-                })), $("#mission_prisoners_" + e)
-                .append(i)
-        })),
-        patientBulkCache = {}, prisonerBulkCache = {}
+        var i = "";
+        $.each(t, (function (e, t) {
+                i += t
+            })), $("#mission_patients_" + e)
+            .append(i)
+    })), $.each(prisonerBulkCache, (function (e, t) {
+        var i = "";
+        $.each(t, (function (e, t) {
+                i += t
+            })), $("#mission_prisoners_" + e)
+            .append(i)
+    })), patientBulkCache = {}, prisonerBulkCache = {}
 }
 
 function missionMarkerReset() {
@@ -1432,7 +1431,8 @@ function missionMarkerAdd(e) {
         $(h)
             .append(y);
         const i = missionListSorters[h];
-        i && i.reSort(), tutorial.callNewMissionListener(!0)
+        i && i.reSort(), tutorial.callNewMissionListener(!0), missionParticipationFilters.new.missionIds.add(e
+            .id)
     }
     var w = !1;
     if ($.each(mission_markers, (function (t, i) {
@@ -1616,9 +1616,10 @@ function missionDelete(e) {
         .addClass("mission_deleted"), missionTimerDelete(e);
     var t = [];
     $.each(mission_markers, (function (i, n) {
-        n.mission_id == e ? "undefined" == typeof mapkit ? n.remove() : map.removeAnnotation(n) :
-            t.push(n)
-    })), mission_markers = t, missionSelectionUpdateButtons()
+            n.mission_id == e ? "undefined" == typeof mapkit ? n.remove() : map.removeAnnotation(n) :
+                t.push(n)
+        })), mission_markers = t, missionParticipationFilters.new.missionIds.delete(e),
+        missionParticipationFilters.started.missionIds.delete(e), missionSelectionUpdateButtons()
 }
 
 function vehicleMarkerAdd(e) {
@@ -1982,8 +1983,7 @@ function updateSaleCountDown() {
             t = "% " + count_down_title + " " + getFormattedDuration(e) + " %";
         $("#sale_countdown")
             .html(t), $("#sale_countdown_mobile")
-            .html(t),
-            saleTimeout = setTimeout(updateSaleCountDown, 1e3)
+            .html(t), saleTimeout = setTimeout(updateSaleCountDown, 1e3)
     } else {
         $("#coins_top")
             .removeClass("saleHighlight");
@@ -2535,8 +2535,8 @@ function updateMissionStateButtons() {
 
 function updateMissionParticipationButtons() {
     const e = getActiveMissionIds([missionTypeFilters, missionStateFilters]),
-        t = e.filter((e => missionParticipationFilters.started.missionIds.includes(e))),
-        i = e.filter((e => missionParticipationFilters.new.missionIds.includes(e)));
+        t = e.filter((e => missionParticipationFilters.started.missionIds.has(e))),
+        i = e.filter((e => missionParticipationFilters.new.missionIds.has(e)));
     $("#mission_select_started .counter")
         .html(`${t.length}`), $("#mission_select_new .counter")
         .html(`${i.length}`)
@@ -2551,12 +2551,10 @@ function updateMissionsDisplayedCount() {
 }
 
 function getActiveMissionIds(e = [missionTypeFilters, missionStateFilters, missionParticipationFilters]) {
-    const t = e.flatMap((e => Object.values(e)))
+    const t = new Set(getAllMissionIds());
+    return e.flatMap((e => Object.values(e)))
         .filter((e => !e.active))
-        .flatMap((e => e.missionIds)),
-        i = getAllMissionIds()
-        .filter((e => !t.includes(e)));
-    return [...new Set(i)]
+        .forEach((e => e.missionIds.forEach((e => t.delete(e))))), [...t]
 }
 
 function missionSelection(e) {
@@ -4277,9 +4275,9 @@ Object.values || (Object.values = function (e) {
                 delimiter: ""
             }), this.toNumber(o, t)
         }, t.getFullScope = function (e, t) {
-            return t = this.prepareOptions(t), e.constructor === Array && (e = e.join(this
-                    .defaultSeparator)), t.scope && (e = [t.scope, e].join(this
-                .defaultSeparator)), e
+            return t = this.prepareOptions(t),
+                e.constructor === Array && (e = e.join(this.defaultSeparator)), t.scope && (e = [t
+                    .scope, e].join(this.defaultSeparator)), e
         }, t.t = t.translate, t.l = t.localize, t.p = t.pluralize, t
     })), I18n.translations || (I18n.translations = {}), I18n.translations.de_DE = {
         common: {
@@ -37689,14 +37687,11 @@ var building_markers = Array(),
     missionParticipationFilters = {
         new: {
             active: !0,
-            get missionIds() {
-                return getAllMissionIds()
-                    .filter((e => !missionParticipationFilters.started.missionIds.includes(e)))
-            }
+            missionIds: new Set
         },
         started: {
             active: !0,
-            missionIds: []
+            missionIds: new Set
         }
     };
 $((function () {
