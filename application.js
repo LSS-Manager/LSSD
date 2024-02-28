@@ -5154,7 +5154,9 @@ Object.values || (Object.values = function (e) {
                 gwl2wasser: "Water Carrier or Major Foam Tender",
                 gwl2wasser_all: "All Water Tankers",
                 gwl2wasser_only: "Water Tankers",
+                hazmat_drone: "Hazmat Drone",
                 heavy_air_tanker: "Heavy air tanker",
+                height_rescue: "Height Rescue Equipment",
                 helicopter_bucket: "Helicopter bucket",
                 hems: "HEMS",
                 hint: {
@@ -5172,6 +5174,7 @@ Object.values || (Object.values = function (e) {
                 long_distance_ambulance: "BLS ambulance",
                 mask_service_unit: "Mobile Air Unit",
                 mass_casualty_equipment: "Mass Casualty Equipment or Medical Equipment Trailer",
+                mobile_shelter: "Mobile shelter",
                 mtw: "MTW",
                 municipal_police: "Municipal Police Car or Municipal Police Van",
                 mzb: "Light Multi-Purpose Boat",
@@ -5220,7 +5223,8 @@ Object.values || (Object.values = function (e) {
                 water_amount_water_carrier: "Gallons of water - Only Water Carrier",
                 water_carrier: "Any Water Carriers",
                 water_damage_pump: "Water Pumps",
-                water_drop_helicopter: "Water drop helicopter"
+                water_drop_helicopter: "Water drop helicopter",
+                water_rescue_equipment: "Water Rescue Equipment"
             }
         },
         tutorial: {
@@ -8295,6 +8299,7 @@ Object.values || (Object.values = function (e) {
                 boot: "\u0141odzie (og\xf3lne)",
                 detention_unit: "Wi\u0119\u017aniarka",
                 division_chief_unit: "Samoch\xf3d dowodzenia i \u0142\u0105czno\u015bci",
+                drone: "Dron stra\u017cacki",
                 elw1_or_elw2: "SLOp lub Samoch\xf3d dowodzenia i \u0142\u0105czno\u015bci",
                 emergency_ambulance: "Ambulans lub \u015bmig\u0142owiec LPR",
                 fire_aviation_2: "Samolot ga\u015bniczy lub bambi bucket (jednostki powietrzne)",
@@ -8315,6 +8320,8 @@ Object.values || (Object.values = function (e) {
                 gw_taucher: "Samoch\xf3d SLRw",
                 gw_wasserrettung: "S.WOPR lub Quad",
                 gwl2wasser_only: "Samoch\xf3d w\u0119\u017cowy",
+                hazmat_drone: "Robot CBRNE",
+                height_rescue: "Skokochron",
                 helicopter_bucket: "Bambi Bucket",
                 hems: "\u015amig\u0142owiec LPR",
                 hint: {
@@ -8333,6 +8340,7 @@ Object.values || (Object.values = function (e) {
                 lf_only: "Samochody po\u017carnicze",
                 long_distance_ambulance: "Ambulans T",
                 mask_service_unit: "SPGaz",
+                mobile_shelter: "Pneumatic tent",
                 mtw: "MTW",
                 municipal_police: "Stra\u017c miejska",
                 mzb: "\u0141\xf3d\u017a wielozadaniowa",
@@ -8359,7 +8367,8 @@ Object.values || (Object.values = function (e) {
                 tlf_only: "Samoch\xf3d dla ratownictwa wodno-nurkowego",
                 traffic_car: "Radiow\xf3z WRD",
                 turntable_ladder: "SH lub SD",
-                water_amount: "Litry wody"
+                water_amount: "Litry wody",
+                water_rescue_equipment: "Sonar stra\u017cacki"
             }
         },
         tutorial: {
