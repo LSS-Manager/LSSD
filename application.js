@@ -92,10 +92,20 @@ function aao_check(e, t, i) {
                 .forEach((function (e) {
                     e.getAttribute("vehicle_type_id") === o && s.push(e)
                 }))
-        } else document.querySelectorAll(aao_source_element + " input")
-            .forEach((function (t) {
-                t.getAttribute(e) > 0 && s.push(t)
-            }));
+        } else {
+            const t = [];
+            document.querySelectorAll(aao_source_element + " input")
+                .forEach((function (i) {
+                    let n = !1;
+                    const o = vehiclesEquipmentDataById[i.value];
+                    if (o) {
+                        const i = o.state.equipments.filter((e => !t.includes(e.id) && e
+                                .isSelectPossible()))
+                            .find((t => t.aaoValues[e] > 0));
+                        i && (n = !0, t.push(i.id))
+                    }(i.getAttribute(e) > 0 || n) && s.push(i)
+                }))
+        }
         var a = [];
         "" != t.attr("building_ids") && (a = jQuery.parseJSON(t.attr("building_ids"))), s.forEach((function (
             t) {
@@ -140,6 +150,7 @@ function aaoNextAvailable(e, t) {
 
 function aao(e, t, i, n) {
     if (n > 0) {
+        const i = {};
         var s;
         if (-1 !== e.indexOf("vehicle_type_id_")) {
             var o = e.substring(16);
@@ -148,21 +159,38 @@ function aao(e, t, i, n) {
                     return $(this)
                         .attr("vehicle_type_id") === o
                 }))
-        } else s = $(aao_source_element + " input")
-            .filter((function () {
+        } else {
+            const n = $(aao_source_element + " input");
+            "auto_assign" === aaoEquipmentModes[t.attr("equipment_mode")] && $.each(n, ((t, n) => {
+                const s = $(n)
+                    .attr("value"),
+                    o = vehiclesEquipmentDataById[s];
+                if (o) {
+                    const t = o.state.equipments.filter((e => e.isSelectPossible()))
+                        .find((t => t.aaoValues[e] > 0));
+                    t && (i[s] = t)
+                }
+            })), s = n.filter((function () {
+                const t = $(this)
+                    .attr("value"),
+                    n = !!i[t];
                 return $(this)
-                    .attr(e) > 0
-            }));
+                    .attr(e) > 0 || n
+            }))
+        }
         s.each((function () {
+            const s = $(this)
+                .attr("value");
             if (n > 0) {
-                var i = [];
-                if ("" != t.attr("building_ids")) i = jQuery.parseJSON(t.attr("building_ids"));
-                aao_building_check(i, $(this)) && !$(this)
+                var o = [];
+                if ("" != t.attr("building_ids")) o = jQuery.parseJSON(t.attr("building_ids"));
+                if (aao_building_check(o, $(this)) && !$(this)
                     .prop("checked") && !$(this)
                     .prop("disabled") && $(this)
                     .attr("ignore_aao") <= 0 && ($(this)
                         .attr("vehicle_type_ignore_default_aao") <= 0 || -1 !== e.indexOf(
-                            "custom_")) && ("grtw0" == e && $("#vehicle_mode_" + $(this)
+                            "custom_"))) {
+                    "grtw0" == e && $("#vehicle_mode_" + $(this)
                             .val() + "_0")
                         .prop("checked", !0)
                         .change(), "grtw1" == e && $("#vehicle_mode_" + $(this)
@@ -173,9 +201,18 @@ function aao(e, t, i, n) {
                         e || "foam_amount" == e || "water_amount_water_carrier" == e ||
                         "water_amount_tlf_water_carrier" == e || "police_horse_count" == e ? $(
                             this)
-                        .attr(e) : 1, $(this)
+                        .attr(e) : 1;
+                    const t = i[s];
+                    if (t) {
+                        const e = vehiclesEquipmentDataById[s];
+                        t.selected = !0, e.updateSelectedEquipment(), e.applyEquipment({
+                            selectVehicle: !1
+                        })
+                    }
+                    $(this)
                         .prop("checked", !0), $(this)
-                        .change())
+                        .change()
+                }
             }
         }))
     }
@@ -185,7 +222,19 @@ function aao(e, t, i, n) {
 function mission_participation_add(e) {
     $("#mission_participant_" + e)
         .removeClass("hidden"), $("#mission_participant_new_" + e)
-        .addClass("hidden")
+        .addClass("hidden"), $(`#mission_${e}`)
+        .data("mission-participation-filter", "started"), missionParticipationFilters.started.missionIds.push(
+            e)
+}
+
+function addMissionParticipations(e) {
+    for (const t of e) mission_participation_add(t);
+    updateMissionStateButtons(), updateMissionParticipationButtons();
+    var t = filterMissionList();
+    $(".missionSideBarEntry")
+        .addClass("hidden"), $(".missionSideBarEntry")
+        .removeClass("missionSideBarEntryScrollInvisible")
+        .css("height", "auto"), t.removeClass("hidden"), updateMissionsDisplayedCount()
 }
 
 function vehicleDistance(e, t, i, n, s, o, a) {
@@ -1018,18 +1067,19 @@ function iconMapVehicleGenerate(e, t, i) {
 
 function missionMarkerBlukDraw() {
     $.each(patientBulkCache, (function (e, t) {
-        var i = "";
-        $.each(t, (function (e, t) {
-                i += t
-            })), $("#mission_patients_" + e)
-            .append(i)
-    })), $.each(prisonerBulkCache, (function (e, t) {
-        var i = "";
-        $.each(t, (function (e, t) {
-                i += t
-            })), $("#mission_prisoners_" + e)
-            .append(i)
-    })), patientBulkCache = {}, prisonerBulkCache = {}
+            var i = "";
+            $.each(t, (function (e, t) {
+                    i += t
+                })), $("#mission_patients_" + e)
+                .append(i)
+        })), $.each(prisonerBulkCache, (function (e, t) {
+            var i = "";
+            $.each(t, (function (e, t) {
+                    i += t
+                })), $("#mission_prisoners_" + e)
+                .append(i)
+        })),
+        patientBulkCache = {}, prisonerBulkCache = {}
 }
 
 function missionMarkerReset() {
@@ -1071,10 +1121,10 @@ function buildingsVehicleLoadVisible() {
 
 function buildingsVehicleLoad(building_id) {
     $.get("/buildings/" + building_id + "/vehiclesMap", (function (data) {
-        buildingVehicleCache[building_id] = [], eval(data), vehicleContent = "",
-            void 0 !== buildingVehicleCache[building_id] && (vehicleContent =
-                buildingVehicleCache[building_id].join(""), buildingVehicleCache[building_id] = []
-                ), $("#vehicle_building_" + building_id)
+        buildingVehicleCache[building_id] = [], eval(data), vehicleContent = "", void 0 !==
+            buildingVehicleCache[building_id] && (vehicleContent = buildingVehicleCache[
+                building_id].join(""), buildingVehicleCache[building_id] = []), $(
+                "#vehicle_building_" + building_id)
             .html(vehicleContent)
     }))
 }
@@ -1289,70 +1339,80 @@ function missionMarkerAdd(e) {
         "</s></small> " + c), "" != e.address && (c = c + ", <small  id='mission_address_" + e.id + "'>" +
         e.address + "</small>", s = s + " " + e.address);
     var u = 0;
-    if (e.sw_start_in > 0 && (u = 1e3 * e.sw_start_in, void 0 === mission_overview_timer && (
-            mission_overview_timer = setInterval(mission_overview_timer_call, 1e3))), $("#mission_" + e.id)
-        .length > 0) missionTimerDelete(e.id), $("#mission_bar_outer_" + e.id)
-        .attr("class", bar_class), $("#mission_bar_striper_" + e.id)
-        .attr("class", t), $("#mission_vehicle_state_" + e.id)
-        .attr("src", o), $("#mission_bar_" + e.id)
-        .css("width", e.live_current_value + "%"), $("#mission_" + e.id)
-        .attr("search_attribute", s), $("#mission_" + e.id)
-        .attr("mission_type_id", e.mtid), $("#mission_" + e.id)
-        .attr("data-overlay-index", e.overlay_index), $("#mission_" + e.id)
-        .attr("data-additive-overlays", e.additive_overlays || ""), $("#mission_panel_" + e.id)
-        .removeClass("mission_panel_red"), $("#mission_panel_" + e.id)
-        .removeClass("mission_panel_yellow"), $("#mission_panel_" + e.id)
-        .removeClass("mission_panel_green"), $("#mission_panel_" + e.id)
-        .addClass("mission_panel_" + l), (e.live_current_value > 0 || e.patients_count > 0 || e
-            .prisoners_count > 0 || e.handoff) && setTimeout((function () {
-            $("#mission_" + e.id)
-                .removeClass("mission_deleted")
-        }), 1e3), $("#mission_overview_countdown_" + e.id)
-        .attr("timeleft", u), u <= 0 && $("#mission_overview_countdown_" + e.id)
-        .html(""), $("#mission_caption_" + e.id)
-        .html(c), e.missing_text ? ($("#mission_missing_" + e.id)
-            .html(e.missing_text), $("#mission_missing_" + e.id)
-            .attr("class", "alert alert-danger")) : ($("#mission_missing_" + e.id)
-            .html(""), $("#mission_missing_" + e.id)
-            .attr("class", "")), e.missing_text_short ? ($("#mission_missing_short_" + e.id)
-            .html(e.missing_text_short), $("#mission_missing_short_" + e.id)
-            .attr("class", "alert alert-danger")) : ($("#mission_missing_short_" + e.id)
-            .html(""), $("#mission_missing_short_" + e.id)
-            .attr("class", "")), e.alliance_id && $("#mission_panel_" + e.id)
-        .addClass("panel-success");
-    else {
-        var d = "#mission_list";
-        e.kt ? (d = "#mission_list_krankentransporte", $("#ktw_no_transports")
-                .hide()) : e.sw ? d = "#mission_list_sicherheitswache" : e.user_id != user_id && null != e
-            .user_id ? ($("#alliance_no_mission")
-                .hide(), d = "#mission_list_alliance") : e.user_id != user_id && null == e.user_id ? ($(
-                    "#alliance_no_mission")
-                .hide(), d = "#mission_list_alliance_event") : $("#emergency_no")
-            .hide();
-        var h = "",
-            p = "";
-        e.missing_text && (h = "alert alert-danger", p = e.missing_text);
+    e.sw_start_in > 0 && (u = 1e3 * e.sw_start_in, void 0 === mission_overview_timer && (
+        mission_overview_timer = setInterval(mission_overview_timer_call, 1e3)));
+    var d = ["unattended", "attended", "finishing"][e.vehicle_state];
+    if ($("#mission_" + e.id)
+        .length > 0) {
+        missionTimerDelete(e.id), $("#mission_bar_outer_" + e.id)
+            .attr("class", bar_class), $("#mission_bar_striper_" + e.id)
+            .attr("class", t), $("#mission_vehicle_state_" + e.id)
+            .attr("src", o), $("#mission_bar_" + e.id)
+            .css("width", e.live_current_value + "%"), $("#mission_" + e.id)
+            .attr("search_attribute", s), $("#mission_" + e.id)
+            .attr("mission_type_id", e.mtid), $("#mission_" + e.id)
+            .attr("data-overlay-index", e.overlay_index), $("#mission_" + e.id)
+            .attr("data-additive-overlays", e.additive_overlays || ""), $("#mission_panel_" + e.id)
+            .removeClass("mission_panel_red"), $("#mission_panel_" + e.id)
+            .removeClass("mission_panel_yellow"), $("#mission_panel_" + e.id)
+            .removeClass("mission_panel_green"), $("#mission_panel_" + e.id)
+            .addClass("mission_panel_" + l), $("#mission_" + e.id)
+            .data("mission-state-filter", d), (e.live_current_value > 0 || e.patients_count > 0 || e
+                .prisoners_count > 0 || e.handoff) && setTimeout((function () {
+                $("#mission_" + e.id)
+                    .removeClass("mission_deleted")
+            }), 1e3), $("#mission_overview_countdown_" + e.id)
+            .attr("timeleft", u), u <= 0 && $("#mission_overview_countdown_" + e.id)
+            .html(""), $("#mission_caption_" + e.id)
+            .html(c), e.missing_text ? ($("#mission_missing_" + e.id)
+                .html(e.missing_text), $("#mission_missing_" + e.id)
+                .attr("class", "alert alert-danger")) : ($("#mission_missing_" + e.id)
+                .html(""), $("#mission_missing_" + e.id)
+                .attr("class", "")), e.missing_text_short ? ($("#mission_missing_short_" + e.id)
+                .html(e.missing_text_short), $("#mission_missing_short_" + e.id)
+                .attr("class", "alert alert-danger")) : ($("#mission_missing_short_" + e.id)
+                .html(""), $("#mission_missing_short_" + e.id)
+                .attr("class", "")), e.alliance_id && $("#mission_panel_" + e.id)
+            .addClass("panel-success"), updateMissionStateButtons(), $(`#mission_${e.id}`)
+            .data("sortable-by", getMissionSortableAttributes(e));
+        const i = "#" + $("#mission_" + e.id)
+            .parent()
+            .attr("id"),
+            n = missionListSorters[i];
+        n && n.reSort()
+    } else {
+        var h = "#mission_list",
+            p = "emergency";
+        e.kt ? (h = "#mission_list_krankentransporte", p = "krankentransporte") : e.sw ? (h =
+                "#mission_list_sicherheitswache", p = "sicherheitswache") : e.user_id != user_id && null != e
+            .user_id ? (h = "#mission_list_alliance", p = "alliance") : e.user_id != user_id && null == e
+            .user_id && (h = "#mission_list_alliance_event", p = "alliance_event");
         var m = "",
             f = "";
-        e.missing_text_short && (m = "alert alert-danger", f = e.missing_text_short);
-        var _ = "";
-        e.alliance_id && (_ = "panel-success");
-        var g = "";
+        e.missing_text && (m = "alert alert-danger", f = e.missing_text);
+        var _ = "",
+            g = "";
+        e.missing_text_short && (_ = "alert alert-danger", g = e.missing_text_short);
+        var v = "";
+        e.alliance_id && (v = "panel-success");
+        var b = "";
         $("#missions-panel-body")
             .offset()
             .top, $("#missions-panel-body")
             .height();
-        g = "missionSideBarEntryScrollInvisible";
-        var v = "<div search_attribute='" + (s = s.replace(/'/g, "&#039;")) + "' id='mission_" + e.id +
-            "' mission_id='" + e.id + "' mission_type_id='" + e.mtid +
-            "' class='missionSideBarEntry missionSideBarEntrySearchable " + g + "' latitude='" + e.latitude +
-            "' longitude='" + e.longitude + "' target_latitude='" + e.tlat + "' target_longitude='" + e.tlng +
-            "' data-overlay-index='" + e.overlay_index + "' data-additive-overlays='" + (e
-                .additive_overlays || "") + "'><div id='mission_panel_" + e.id +
-            "' class='panel panel-default " + _ + " mission_panel_" + l +
+        b = "missionSideBarEntryScrollInvisible";
+        var y = "<div search_attribute='" + (s = s.replace(/'/g, "&#039;")) + "' data-mission-type-filter='" +
+            p + "' data-mission-state-filter='" + d +
+            "' data-mission-participation-filter=new data-sortable-by='" + JSON.stringify(
+                getMissionSortableAttributes(e)) + "' id='mission_" + e.id + "' mission_id='" + e.id +
+            "' mission_type_id='" + e.mtid + "' class='missionSideBarEntry missionSideBarEntrySearchable " +
+            b + "' latitude='" + e.latitude + "' longitude='" + e.longitude + "' target_latitude='" + e.tlat +
+            "' target_longitude='" + e.tlng + "' data-overlay-index='" + e.overlay_index +
+            "' data-additive-overlays='" + (e.additive_overlays || "") + "'><div id='mission_panel_" + e.id +
+            "' class='panel panel-default " + v + " mission_panel_" + l +
             "'><div id='mission_panel_heading_" + e.id + "' class='panel-heading'><a href='/missions/" + e
-            .id + "' class='btn btn-default btn-xs lightbox-open' id='alarm_button_" + e.id + "'> " + I18n.t(
-                "javascript.alarm") + "</a> <span id='mission_participant_" + e.id +
+            .id + "' class='btn btn-default btn-xs lightbox-open mission-alarm-button' id='alarm_button_" + e
+            .id + "'> " + I18n.t("javascript.alarm") + "</a> <span id='mission_participant_" + e.id +
             "' class='glyphicon glyphicon-user hidden'></span><span id='mission_participant_new_" + e.id +
             "' class='glyphicon glyphicon-asterisk'></span> <a href='' id='mission_caption_" + e.id +
             "' class='map_position_mover' target_latitude='" + e.tlat + "' target_longitude='" + e.tlng +
@@ -1364,35 +1424,37 @@ function missionMarkerAdd(e) {
             bar_class + "'><div id='mission_bar_" + e.id +
             "' class='progress-bar progress-bar-danger' role='progressbar' aria-valuemin='0' aria-valuemax='100' style='width: " +
             e.live_current_value + "%;'><div class='" + t + "' id='mission_bar_striper_" + e.id +
-            "'></div></div></div><div id='mission_missing_" + e.id + "' class='" + h + "'>" + p +
-            "</div><div id='mission_missing_short_" + e.id + "' class='" + m + "'>" + f +
+            "'></div></div></div><div id='mission_missing_" + e.id + "' class='" + m + "'>" + f +
+            "</div><div id='mission_missing_short_" + e.id + "' class='" + _ + "'>" + g +
             "</div><div id='mission_pump_progress_" + e.id + "'></div><div id='mission_patients_" + e.id +
             "' class='row'></div><div class='mission_prisoners' id='mission_prisoners_" + e.id +
             "'></div></div></div></div></div>";
-        $(d)
-            .append(v), tutorial.callNewMissionListener(!0)
+        $(h)
+            .append(y);
+        const i = missionListSorters[h];
+        i && i.reSort(), tutorial.callNewMissionListener(!0)
     }
-    var b = !1;
+    var w = !1;
     if ($.each(mission_markers, (function (t, i) {
             i.mission_id == e.id && ("undefined" != typeof mapkit ? (i.url = {
                 1: o
             }, i.opacity = 1, i.title = e.caption, i.subtitle = e.address) : (i.setIcon(
                 icon_empty), i.setOpacity(1), iconMapGenerate(o, i), i.setTooltipContent(
-                c)), i.vehicle_state = e.vehicle_state, b = !0)
-        })), !b && "undefined" != typeof L) {
+                c)), i.vehicle_state = e.vehicle_state, w = !0)
+        })), !w && "undefined" != typeof L) {
         if ("undefined" != typeof mapkit) {
-            (y = new mapkit.ImageAnnotation(new mapkit.Coordinate(e.latitude, e.longitude), {
+            (k = new mapkit.ImageAnnotation(new mapkit.Coordinate(e.latitude, e.longitude), {
                 url: {
                     1: o
                 }
             }))
-            .title = e.caption, y.subtitle = e.address, map.addAnnotation(y), y.element.className =
-                "mapkit-marker", y.addEventListener("select", (function () {
+            .title = e.caption, k.subtitle = e.address, map.addAnnotation(k), k.element.className =
+                "mapkit-marker", k.addEventListener("select", (function () {
                     $("#alarm_button_" + e.id)
                         .click(), setTimeout(mapkitDeselectAnnotation, 1e3)
                 }))
         } else {
-            var y = L.marker([e.latitude, e.longitude], {
+            var k = L.marker([e.latitude, e.longitude], {
                     zIndexOffset: 1e4,
                     title: e.name,
                     icon: icon_empty
@@ -1401,27 +1463,27 @@ function missionMarkerAdd(e) {
                     permanent: mission_label,
                     opacity: 1
                 });
-            void 0 !== map && y.addTo(map_filters_service.getFilterLayerByMissionParams(e)), iconMapGenerate(
-                o, y), y.on("click", (function () {
+            void 0 !== map && k.addTo(map_filters_service.getFilterLayerByMissionParams(e)), iconMapGenerate(
+                o, k), k.on("click", (function () {
                 $("#alarm_button_" + e.id)
                     .click()
             }))
         }
-        y.mission_id = e.id, y.user_id = e.user_id, y.vehicle_state = e.vehicle_state, y.krankentransport = e
-            .kt, y.sicherheitswache = e.sw, y.involved = !0, mission_markers.push(y)
+        k.mission_id = e.id, k.user_id = e.user_id, k.vehicle_state = e.vehicle_state, k.krankentransport = e
+            .kt, k.sicherheitswache = e.sw, k.involved = !0, mission_markers.push(k)
     }
     if (n && $("#mission_" + e.id)
         .addClass("mission_alliance_distance_hide"), e.date_end > 0 && missionTimerStart(e), e
         .water_damage_pump_value) {
-        var w = "<div class='small' id='pumping_" + e.id + "'>" + I18n.t("javascript.water_pumping_process") +
+        var x = "<div class='small' id='pumping_" + e.id + "'>" + I18n.t("javascript.water_pumping_process") +
             " <div id='pumping_bar_outer_" + e.id +
             "' class='progress pumping_progress'><div id='pumping_bar_" + e.id +
             "' class='progress-bar progress-bar-info";
-        w += "' style='width: " + e.live_current_water_damage_pump_value +
+        x += "' style='width: " + e.live_current_water_damage_pump_value +
             "%;'><div id='pumping_bar_striper_" + e.id + "' class='" + t +
             "'></div></div></div><div  id='patients_missing_" + e.id + "'", $("#mission_pump_progress_" + e
                 .id)
-            .html(w)
+            .html(x)
     }
     e.pumping_date_end > 0 && ($("#pumping_bar_striper_" + e.id)
             .addClass("progress-striped-inner-active"), startProgressBar({
@@ -1430,9 +1492,23 @@ function missionMarkerAdd(e) {
                 startTime: 1e3 * e.pumping_date_start,
                 endTime: 1e3 * e.pumping_date_end
             })), missionSelectionUpdateButtons(), e.live_current_value <= 0 && e
-        .live_current_water_damage_pump_value <= 0 && missionFinish(e), missionMarkerBulkAdd || (
-            progressBarScrollUpdate(), "" != $("#search_input_field_missions")
+        .live_current_water_damage_pump_value <= 0 && missionFinish(e);
+    const z = getActiveMissionIds()
+        .includes(e.id);
+    $("#mission_" + e.id)
+        .toggleClass("hidden", !z), missionMarkerBulkAdd || (progressBarScrollUpdate(), "" != $(
+                "#search_input_field_missions")
             .val() && searchMission())
+}
+
+function getMissionSortableAttributes(e) {
+    return {
+        id: e.id,
+        caption: e.caption,
+        average_credits: e.average_credits,
+        prisoners_count: e.prisoners_count,
+        patients_count: e.patients_count
+    }
 }
 
 function missionTimerStart(e) {
@@ -1906,7 +1982,8 @@ function updateSaleCountDown() {
             t = "% " + count_down_title + " " + getFormattedDuration(e) + " %";
         $("#sale_countdown")
             .html(t), $("#sale_countdown_mobile")
-            .html(t), saleTimeout = setTimeout(updateSaleCountDown, 1e3)
+            .html(t),
+            saleTimeout = setTimeout(updateSaleCountDown, 1e3)
     } else {
         $("#coins_top")
             .removeClass("saleHighlight");
@@ -2093,7 +2170,7 @@ function missionSpeed(e) {
             t = "0.5x";
             break;
         case 8:
-            t = "0.14x"
+            t = "0.15x"
         }
         $("#mission_speed_value_label")
             .text(t), $("#mission_speed_pause")
@@ -2383,12 +2460,19 @@ function tellParent(e) {
 }
 
 function missionSelectionOnly(e) {
-    var t = ["mission_select_emergency", "mission_select_krankentransport", "mission_select_alliance",
-        "mission_select_alliance_event", "mission_select_sicherheitswache"];
-    $.each(t, (function (t, i) {
-        e.attr("id") == i ? missionSelectionActive($("#" + i)) : missionSelectionDeactive($("#" +
-            i))
-    })), missionSelectionSave()
+    var t = !!e.data("type-filter"),
+        i = !!e.data("state-filter"),
+        n = !!e.data("participation-filter");
+    t ? $(".mission_selection[data-type-filter]")
+        .each((function (e, t) {
+            missionSelectionDeactive($(t))
+        })) : i ? $(".mission_selection[data-state-filter]")
+        .each((function (e, t) {
+            missionSelectionDeactive($(t))
+        })) : n && $(".mission_selection[data-participation-filter]")
+        .each((function (e, t) {
+            missionSelectionDeactive($(t))
+        })), missionSelectionActive(e), missionSelectionSave()
 }
 
 function missionSelectionUpdateButtons() {
@@ -2403,27 +2487,76 @@ function missionSelectionUpdateButtons() {
         r = 0,
         l = 0,
         c = 0;
+    for (let e in missionTypeFilters) missionTypeFilters[e].missionIds = [];
     $.each(mission_markers, (function (u, d) {
-            d.krankentransport ? (i++, 0 == d.vehicle_state && n++) : d.sicherheitswache ? (l++, 0 ==
-                d.vehicle_state && c++) : d.user_id != user_id && null != d.user_id ? (s++, 0 == d
-                .vehicle_state && o++) : d.user_id != user_id && null == d.user_id ? (a++, 0 == d
-                .vehicle_state && r++) : (e++, 0 == d.vehicle_state && t++)
+            d.krankentransport ? (i++, missionTypeFilters.krankentransporte.missionIds.push(d
+                .mission_id), 0 == d.vehicle_state && n++) : d.sicherheitswache ? (l++,
+                missionTypeFilters.sicherheitswache.missionIds.push(d.mission_id), 0 == d
+                .vehicle_state && c++) : d.user_id != user_id && null != d.user_id ? (s++,
+                missionTypeFilters.alliance.missionIds.push(d.mission_id), 0 == d.vehicle_state &&
+                o++) : d.user_id != user_id && null == d.user_id ? (a++, missionTypeFilters
+                .alliance_event.missionIds.push(d.mission_id), 0 == d.vehicle_state && r++) : (
+                e++, missionTypeFilters.emergency.missionIds.push(d.mission_id), 0 == d
+                .vehicle_state && t++)
         })), $("#mission_select_emergency")
         .html(
-            '<img class="icon icons8-Siren-Filled" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAADcElEQVRoQ+2Z/XETMRDF91WAUwFQAaQCoAJIBSQVABUQKoBUgFNBQgVABSQVQCogqeAxz0ge5aw7Sau7GYax/rFnrK/frvbtSoY5Gsm1mb00s0MAvxxT7AwhuTKzn2Z2DuBt65xoHaD+AeR1WPTYM8dwDMlTM3vvndML8ihYT/t53OuVxBvyims+F8jcXun1hvbTAzKLV+bwRhfIwCsnACQAzY2kYuyzNzbigm6PBBCd6WMAn5oJkgEkpVJrALfeebpAvIsuMW4PsoRVe+b8fzxCUmWB2imAc49VSD43szdmpk8JQE27MrNLMzvzBjlJVReqCFYgqQmfhJVVN1UDhRwg6XxVs/ORPlIqrXlWO0cCoFymdrM5WkHLRfYwAToCIMhsCxBfzeypmd2ZmSRYElpVRAYvKofIqmoaezIFQ1JrXZjZFiAYYX0vRgZAk0mOpDau43Qtj9QCDDeaJET9JOPpuI0ZLybPmwgQO2aDXdYC8G1iwrQ8USk/6rma45LA3AI4KHgluzeXaiXe0N1hrjJehntmZq5yxwvyI8TGiynP1Xgj9gllykdvzeUFoTYAwDU+BxiCX+LxHYBkvKk1b4RkjI87ALU5o7ipoIK/zawYJ7nJPCCylttyhUB2e9oDEiXwC4CeRLjDlCTnZiX0gMRHgg8A9H22RjIqV7OIeECUsPQU5JLJwtFyG8kD4rZayXXJI0Sztz0gUhb3s00pa3uFZAck6LkybLa8JulWlgqPREW8AnCYqctkQD3iSWjulVBbkACgTjEZ7cRAkrSuAagSnb1NGWpQYApER3ADpPuINp4CbErynCL1Zt8aapK6nzwws4PchSvEkV5d1EftL1C0QHKnEET2WSYJRh275ofmSpCimIQqQOtvgQSie4U2PgqQFHbxDtKsKjUQ6kOyWt4ToFWTavUkrAYQVy5pBZm9fM8ok6sEagVZTHqT4+sqSqtBlirfMx6J14Smcr4FxGWp2thI+3mSbguI6+w6QeJbW3UV3ALiUhMnSDGXDOdtAdEfOXpMe9f7f0gJLnmlqc5XLSDNVipteOx3TwXRArJY+Z5RrmZhGQUhGZOf17BLjLsEcJSbeApkk/z+tTb2llYEmfMRrscopdyyB+mxrmfs3iMlC3is2jOmtJ9ijPQsvsRYj2rFTL7Efrxzjr43/wE/Kgjg5EADGQAAAABJRU5ErkJggg==" width="15" height="15"> (' +
-            t + "/" + e + ")"), $("#mission_select_krankentransport")
+            '<img class="icon icons8-Siren-Filled" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAADcElEQVRoQ+2Z/XETMRDF91WAUwFQAaQCoAJIBSQVABUQKoBUgFNBQgVABSQVQCogqeAxz0ge5aw7Sau7GYax/rFnrK/frvbtSoY5Gsm1mb00s0MAvxxT7AwhuTKzn2Z2DuBt65xoHaD+AeR1WPTYM8dwDMlTM3vvndML8ihYT/t53OuVxBvyims+F8jcXun1hvbTAzKLV+bwRhfIwCsnACQAzY2kYuyzNzbigm6PBBCd6WMAn5oJkgEkpVJrALfeebpAvIsuMW4PsoRVe+b8fzxCUmWB2imAc49VSD43szdmpk8JQE27MrNLMzvzBjlJVReqCFYgqQmfhJVVN1UDhRwg6XxVs/ORPlIqrXlWO0cCoFymdrM5WkHLRfYwAToCIMhsCxBfzeypmd2ZmSRYElpVRAYvKofIqmoaezIFQ1JrXZjZFiAYYX0vRgZAk0mOpDau43Qtj9QCDDeaJET9JOPpuI0ZLybPmwgQO2aDXdYC8G1iwrQ8USk/6rma45LA3AI4KHgluzeXaiXe0N1hrjJehntmZq5yxwvyI8TGiynP1Xgj9gllykdvzeUFoTYAwDU+BxiCX+LxHYBkvKk1b4RkjI87ALU5o7ipoIK/zawYJ7nJPCCylttyhUB2e9oDEiXwC4CeRLjDlCTnZiX0gMRHgg8A9H22RjIqV7OIeECUsPQU5JLJwtFyG8kD4rZayXXJI0Sztz0gUhb3s00pa3uFZAck6LkybLa8JulWlgqPREW8AnCYqctkQD3iSWjulVBbkACgTjEZ7cRAkrSuAagSnb1NGWpQYApER3ADpPuINp4CbErynCL1Zt8aapK6nzwws4PchSvEkV5d1EftL1C0QHKnEET2WSYJRh275ofmSpCimIQqQOtvgQSie4U2PgqQFHbxDtKsKjUQ6kOyWt4ToFWTavUkrAYQVy5pBZm9fM8ok6sEagVZTHqT4+sqSqtBlirfMx6J14Smcr4FxGWp2thI+3mSbguI6+w6QeJbW3UV3ALiUhMnSDGXDOdtAdEfOXpMe9f7f0gJLnmlqc5XLSDNVipteOx3TwXRArJY+Z5RrmZhGQUhGZOf17BLjLsEcJSbeApkk/z+tTb2llYEmfMRrscopdyyB+mxrmfs3iMlC3is2jOmtJ9ijPQsvsRYj2rFTL7Efrxzjr43/wE/Kgjg5EADGQAAAABJRU5ErkJggg==" width="15" height="15"> ' +
+            t + "/" + e), $("#mission_select_krankentransport")
         .html(
-            '<img class="icon icons8-Ambulance" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAC/UlEQVR4Xu2b7VUVMRCGZypQK0AqECsQKhArUCpAKsAOwArECsAOoALsQKgAOhjPe84sZ2/YbCab5N7dbPL3ZjOZJ28yk4/LtPLCK/efGoCmgJUTaFNgDgIQkfdEdEFEB9qfv0R0xswPpfu3cwWo8/dE9NZx9pmIPpaGMAcAN0T02TPSf5j5uKQK5gDgaWD0O58fmHm/dgAy5iAzFx2koo1bRk5E5gEg1BGLMzusc8LMV1Psvyhg4QAQMY6YGeEzqtQCAE5PCps1AQAEKABKAAxT8QIovfqaeheoJCI/iOjcqXbLzEfW9hcNAE6KCBa/r47DV8x8YoGweAAKAdL/4DiMvcRlCEItALCPuB2AEAyPVQBQFWAnCQhveqMeDI/VAOhBwM6yX0bD49YBuAlX7mgjIt+I6JcDwRseqwOgSjCHxyoBxITHagFYw2PtAILhsWoAI+GRusW3GIDU7XXO6CAiyBE2wuOqAKgSNk6eGgA9a1zFFNiJAny7sNKZYKzdYgqI7Uho25r6uw98A9CR3ZY0t2XHVUxTgHMBUzwMtjUgddXK/P1spkBmv8zNZQOgDxpOiQj39njZgYKXHLjn/1n6QcNU+1kAiAiesXwPYL9k5jPz0ERUTLGfDEBEcM6G8zZLMV9MWBrTVDbJfhIAEcEFA2QfUzAdQmoxtZfD/mQAOuf+OT191KmAc3iUQyICpD2n3n7qmpDLfgoAd/Th/IF7AysiOH7C8XMfQrIKBkZ/kv1oACPa/MLMWPFfFRFBZLg26Xp6pSz2g5ngSP/e+e7fPXKd7urwl1nsNwChE6HVTQGfwwOLELI+PGHdeIaiiyBOXrvsEE2WWASz2g++E/TMa3QCMf5OwX3SMNh3Hj+VCoPZ7AcBaBa2+ETIp3ATAIUw9BbH1+5vZramzaYo4XkLlGzfDCBCCcnzPmI9GqoaZT8KgELAPMf8R9LTZX3IzpAcYSdY9E8OuiZlsx8NwKTXBVVqABY0WEW62hRQBOuCGm0KWNBgFenq6hXwH/kYT1/4UtMbAAAAAElFTkSuQmCC" width="15" height="15"> (' +
-            n + "/" + i + ")"), $("#mission_select_alliance")
+            '<img class="icon icons8-Ambulance" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAC/UlEQVR4Xu2b7VUVMRCGZypQK0AqECsQKhArUCpAKsAOwArECsAOoALsQKgAOhjPe84sZ2/YbCab5N7dbPL3ZjOZJ28yk4/LtPLCK/efGoCmgJUTaFNgDgIQkfdEdEFEB9qfv0R0xswPpfu3cwWo8/dE9NZx9pmIPpaGMAcAN0T02TPSf5j5uKQK5gDgaWD0O58fmHm/dgAy5iAzFx2koo1bRk5E5gEg1BGLMzusc8LMV1Psvyhg4QAQMY6YGeEzqtQCAE5PCps1AQAEKABKAAxT8QIovfqaeheoJCI/iOjcqXbLzEfW9hcNAE6KCBa/r47DV8x8YoGweAAKAdL/4DiMvcRlCEItALCPuB2AEAyPVQBQFWAnCQhveqMeDI/VAOhBwM6yX0bD49YBuAlX7mgjIt+I6JcDwRseqwOgSjCHxyoBxITHagFYw2PtAILhsWoAI+GRusW3GIDU7XXO6CAiyBE2wuOqAKgSNk6eGgA9a1zFFNiJAny7sNKZYKzdYgqI7Uho25r6uw98A9CR3ZY0t2XHVUxTgHMBUzwMtjUgddXK/P1spkBmv8zNZQOgDxpOiQj39njZgYKXHLjn/1n6QcNU+1kAiAiesXwPYL9k5jPz0ERUTLGfDEBEcM6G8zZLMV9MWBrTVDbJfhIAEcEFA2QfUzAdQmoxtZfD/mQAOuf+OT191KmAc3iUQyICpD2n3n7qmpDLfgoAd/Th/IF7AysiOH7C8XMfQrIKBkZ/kv1oACPa/MLMWPFfFRFBZLg26Xp6pSz2g5ngSP/e+e7fPXKd7urwl1nsNwChE6HVTQGfwwOLELI+PGHdeIaiiyBOXrvsEE2WWASz2g++E/TMa3QCMf5OwX3SMNh3Hj+VCoPZ7AcBaBa2+ETIp3ATAIUw9BbH1+5vZramzaYo4XkLlGzfDCBCCcnzPmI9GqoaZT8KgELAPMf8R9LTZX3IzpAcYSdY9E8OuiZlsx8NwKTXBVVqABY0WEW62hRQBOuCGm0KWNBgFenq6hXwH/kYT1/4UtMbAAAAAElFTkSuQmCC" width="15" height="15"> ' +
+            n + "/" + i), $("#mission_select_alliance")
         .html(
-            '<img class="icon icons8-Sell" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAADz0lEQVRoQ+2a7VEUQRCGuyPQDIQIJAM1AjECIQIxAjUCIQIhAy4CIQIhAiECMYK2nq2eq7m92Z3euzmPHztVV1fAbE+//fbX9KISXGb2VkR+iMhB8JHW2x5E5FRVb0qCNXqamf3eI4ik5oOqHm4LxBCgqmHwUSNF9pnZ6PlhpWqCIspss6d2fnMgZvbSY+k4qPi1+/7T2P59APkpIiSGKWuhqqPA9wGk82UROVRVMs3gMjMyIEmkGnv7AEJ6fDOFDhF5lowQI5ci8j4IZiEiJ6r6vGIkqPzkbf/dtSZrGHxgBtI3VM0iQcNuvK12fvOCuLGmlQdnILNr7ci3ZteaXWt2rXELzDFSiBG60xc78pyo2EdVLU5xplR2bn2056+ipzbe9+jt/nbjoMZKNRcXZqT5yY0FzkAaG3RrcVVGfE7F/ZtxzVFvbHonInxuVPVqE218pvzJ5SKfYP42NOMdOmMQiI9qvjgABgq1RXpmyMzArbrMDKW/j8zATvxssmUaaHweGlKsAXELASAfst166r1TVRjoloNlH4emEdClqp4OIXGGYeCr7/krIucico1sMxsbJzFx4Tk8BEMwN7tgfrYEYmYffVMqOBxA3TivDdocFGB47cAqgim8mrjgTKxcGLViPACmuvFnhOYPWgBA4UEAyozOmvqCzSwHgwIYYVFQ8t6LW8eumRF/GAEXwoDMuToXLTyLfvyNz5mzcwuQNOJkA9aBhY2Xg8EQeTuDQVKcXakqgEtKwgIgulFrASD6ITu5NjI7pgACqqdtAeTI3Yooy+d1wCqwsFRywM2WADMgsMgZi2r6DSgxusWVIiEQnCkD9cHB2DsP9r6brbCQMUnGAwRGONo5kDGUnoLxCBINMUXM8DNrxc0yFvJ3mYA4pubsFUimXIpTfrXiZr14oCwkoCsJowkQM/vllTlZlW/uDrX3I7gbbOTKYeGV5wppm8qf6lCHtRUQXCIS1GOetqacx9cgC7mwJkA8AFMwp36M79qNkpQPewT0ZBY2AuKBiWL3UwvllMw3hYVJQAqVn+cpmrjCaAxMAeCs9v+7Ys3dhmTWul8KTmoeyRLk+/z9YBNAm7JQZcTbDApO6n3OUuX3jpeMQbZJi5/pQif1Zs4CBZCzUrMaZiEChIaMVnnwRWUBECDog0KABtoQDLa8JkxxzaJr+SEHEaGeBACQXK4KyMzSfSQxvtaGTAHRrI5kgYqL5YCIIS5MtBt0s6n4kZpZMA4LWyeNZnWk1wvlgErGpX4AIHQtjrDTHEgGCKvTnfKdWIIZGFreKSJKRvb8A3bBPSGKFTO6AAAAAElFTkSuQmCC" width="15" height="15"> (' +
-            o + "/" + s + ")"), $("#mission_select_alliance_event")
+            '<img class="icon icons8-Sell" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAADz0lEQVRoQ+2a7VEUQRCGuyPQDIQIJAM1AjECIQIxAjUCIQIhAy4CIQIhAiECMYK2nq2eq7m92Z3euzmPHztVV1fAbE+//fbX9KISXGb2VkR+iMhB8JHW2x5E5FRVb0qCNXqamf3eI4ik5oOqHm4LxBCgqmHwUSNF9pnZ6PlhpWqCIspss6d2fnMgZvbSY+k4qPi1+/7T2P59APkpIiSGKWuhqqPA9wGk82UROVRVMs3gMjMyIEmkGnv7AEJ6fDOFDhF5lowQI5ci8j4IZiEiJ6r6vGIkqPzkbf/dtSZrGHxgBtI3VM0iQcNuvK12fvOCuLGmlQdnILNr7ci3ZteaXWt2rXELzDFSiBG60xc78pyo2EdVLU5xplR2bn2056+ipzbe9+jt/nbjoMZKNRcXZqT5yY0FzkAaG3RrcVVGfE7F/ZtxzVFvbHonInxuVPVqE218pvzJ5SKfYP42NOMdOmMQiI9qvjgABgq1RXpmyMzArbrMDKW/j8zATvxssmUaaHweGlKsAXELASAfst166r1TVRjoloNlH4emEdClqp4OIXGGYeCr7/krIucico1sMxsbJzFx4Tk8BEMwN7tgfrYEYmYffVMqOBxA3TivDdocFGB47cAqgim8mrjgTKxcGLViPACmuvFnhOYPWgBA4UEAyozOmvqCzSwHgwIYYVFQ8t6LW8eumRF/GAEXwoDMuToXLTyLfvyNz5mzcwuQNOJkA9aBhY2Xg8EQeTuDQVKcXakqgEtKwgIgulFrASD6ITu5NjI7pgACqqdtAeTI3Yooy+d1wCqwsFRywM2WADMgsMgZi2r6DSgxusWVIiEQnCkD9cHB2DsP9r6brbCQMUnGAwRGONo5kDGUnoLxCBINMUXM8DNrxc0yFvJ3mYA4pubsFUimXIpTfrXiZr14oCwkoCsJowkQM/vllTlZlW/uDrX3I7gbbOTKYeGV5wppm8qf6lCHtRUQXCIS1GOetqacx9cgC7mwJkA8AFMwp36M79qNkpQPewT0ZBY2AuKBiWL3UwvllMw3hYVJQAqVn+cpmrjCaAxMAeCs9v+7Ys3dhmTWul8KTmoeyRLk+/z9YBNAm7JQZcTbDApO6n3OUuX3jpeMQbZJi5/pQif1Zs4CBZCzUrMaZiEChIaMVnnwRWUBECDog0KABtoQDLa8JkxxzaJr+SEHEaGeBACQXK4KyMzSfSQxvtaGTAHRrI5kgYqL5YCIIS5MtBt0s6n4kZpZMA4LWyeNZnWk1wvlgErGpX4AIHQtjrDTHEgGCKvTnfKdWIIZGFreKSJKRvb8A3bBPSGKFTO6AAAAAElFTkSuQmCC" width="15" height="15"> ' +
+            o + "/" + s), $("#mission_select_alliance_event")
         .html(
-            '<img class="icon icons8-Event-Accepted" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAD4UlEQVRoQ+1Zi1EUQRB9HYESgRqBRwQSgkQgRCBEIEQgRqBEIEQgRCBE4BGBGMGz3tq9zs3tsXO7c7cFxVRR5bm7vf368/qzhidy7IngQBEQknsAvgJ4DWAO4NDMrsYYobbMUiC/HEToPjezNyOBVJVZCoRS2syMZPvvkUCqymyBZK7u1DEFMgZE+myBzKJQToHkrl7SteCla+MrlNkbyimQlSGThtO2Q6v0faVA7gG8SMx9Z2ZisMGHZJHM2kBEv98AvAJwB+CgEv32yqwKZLDZKzz4DKSCETciQuz2kOClZN+IFhWErg2k74EKOq0l4jlHnj2SBAzJl95kquiNOpOGFskjB3I2CgWAqYH8dCC7jxYIyRmABgiAXTO7GQNmMo+QVP/0wZU/N7ODxwrkN4Am2QHcm9nOowNCUtbXkuLWlX/riwp5adDZWGh5Dpwk84la/Pwc+n8IVH5i+/IHwElfDm0MiLRyMFIoHbZCYSkYQ5fCrOvonr0+EP6uomVH0YTYpYkXPYFR+KjwHZtZZwh5yH323FHYCURRsdyoR1JgGUspVE6z658UQkNZbGtA3P2q5LK4zk5Y270W4SWPrV3ptw3kPYDvYiszm5HUby30LkiqICr89vV7XeraNhBZ+iOAL76gaIAAkOJaVjTXzKzpwR46JFVMxYTqEPQXR/l3YWaXXc8PTvYsD9SSpC8VK+mkrHZjZit7L/eiwrNvzaTNo8J0wbujgZDUi7WljHOtdZH/kBXfJdfa/MkMIQDhLXlQHr4Kena6l5d0j1ZSOmdmdhxyagCJai4vaN+1YCm3tADJO/ocsUDRJCMspVMvIfiIEMTShmsNIFJMvZVAdNYGZy/dp96rbSIdpEhCp7hTzjrshkRqAJmVVGhpKgXSe0nG4rzXE/68DKZiKjYMym8W3KOBPMxBq68mDWbxHpnkD2e0UzM7IanEV84cTgkk5pZSb6gBVVgqF+XZeeKV8ymBBGX35kai8EKzmeTKzZRAlrpakurLLrM8ClZUnHax3j85EcWlrcDQnMify9+XMFjbSbvFlRdK8s4QbOUkQPIPL7V07pPThJZTtGpKzPuqRyqCAtE5+yehdZt/DI0PL30vr3l9wdLOZgIU7c21mXVNoaLzoOD/yV5TsxJZCf0ufeh0S0cHsHIIS+rQftF39hLFhtyT1IGl+O9buybeaOrQ1EBijqnXogyxaI1nslH5yMw006w8JDXbxKS53DTWUGqojAyM2g4pqiRv1q2eMxoHlNwxrywMapOGVgrc64gAxLyxyi6aV+S57sFqqDVrP+dsJrrVX4DSCkne0ajbOff/BWtayMaN4VNfAAAAAElFTkSuQmCC" width="15" height="15"> (' +
-            r + "/" + a + ")"), $("#mission_select_sicherheitswache")
+            '<img class="icon icons8-Event-Accepted" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAD4UlEQVRoQ+1Zi1EUQRB9HYESgRqBRwQSgkQgRCBEIEQgRqBEIEQgRCBE4BGBGMGz3tq9zs3tsXO7c7cFxVRR5bm7vf368/qzhidy7IngQBEQknsAvgJ4DWAO4NDMrsYYobbMUiC/HEToPjezNyOBVJVZCoRS2syMZPvvkUCqymyBZK7u1DEFMgZE+myBzKJQToHkrl7SteCla+MrlNkbyimQlSGThtO2Q6v0faVA7gG8SMx9Z2ZisMGHZJHM2kBEv98AvAJwB+CgEv32yqwKZLDZKzz4DKSCETciQuz2kOClZN+IFhWErg2k74EKOq0l4jlHnj2SBAzJl95kquiNOpOGFskjB3I2CgWAqYH8dCC7jxYIyRmABgiAXTO7GQNmMo+QVP/0wZU/N7ODxwrkN4Am2QHcm9nOowNCUtbXkuLWlX/riwp5adDZWGh5Dpwk84la/Pwc+n8IVH5i+/IHwElfDm0MiLRyMFIoHbZCYSkYQ5fCrOvonr0+EP6uomVH0YTYpYkXPYFR+KjwHZtZZwh5yH323FHYCURRsdyoR1JgGUspVE6z658UQkNZbGtA3P2q5LK4zk5Y270W4SWPrV3ptw3kPYDvYiszm5HUby30LkiqICr89vV7XeraNhBZ+iOAL76gaIAAkOJaVjTXzKzpwR46JFVMxYTqEPQXR/l3YWaXXc8PTvYsD9SSpC8VK+mkrHZjZit7L/eiwrNvzaTNo8J0wbujgZDUi7WljHOtdZH/kBXfJdfa/MkMIQDhLXlQHr4Kena6l5d0j1ZSOmdmdhxyagCJai4vaN+1YCm3tADJO/ocsUDRJCMspVMvIfiIEMTShmsNIFJMvZVAdNYGZy/dp96rbSIdpEhCp7hTzjrshkRqAJmVVGhpKgXSe0nG4rzXE/68DKZiKjYMym8W3KOBPMxBq68mDWbxHpnkD2e0UzM7IanEV84cTgkk5pZSb6gBVVgqF+XZeeKV8ymBBGX35kai8EKzmeTKzZRAlrpakurLLrM8ClZUnHax3j85EcWlrcDQnMify9+XMFjbSbvFlRdK8s4QbOUkQPIPL7V07pPThJZTtGpKzPuqRyqCAtE5+yehdZt/DI0PL30vr3l9wdLOZgIU7c21mXVNoaLzoOD/yV5TsxJZCf0ufeh0S0cHsHIIS+rQftF39hLFhtyT1IGl+O9buybeaOrQ1EBijqnXogyxaI1nslH5yMw006w8JDXbxKS53DTWUGqojAyM2g4pqiRv1q2eMxoHlNwxrywMapOGVgrc64gAxLyxyi6aV+S57sFqqDVrP+dsJrrVX4DSCkne0ajbOff/BWtayMaN4VNfAAAAAElFTkSuQmCC" width="15" height="15"> ' +
+            r + "/" + a), $("#mission_select_sicherheitswache")
         .html(
-            '<img class="icon icons8-Clock-Filled" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAE8klEQVRoQ8Waj5EVNwzGpQoSKkioIFBBuAqSVBCoAKggUEG4CgIVBCoIV0GggkAFQAVifjvy4bdr+d/uTjxzM+/d83r1WZ8+y7JVDm5m9r2I/CQi90SEz/zxmfZORD77H5/fqyrfD2t6xEhmhsG/i8iDzPjeoQH2VkReqSqfd7VpQO6JX0TkmYj8uMuKbw9/8PHezHpuCpCZPfYXQ6czGjR8pqrXo4MPAXJq/TVBq1G7Un8o+GiEit2A3CsvZi3b+dyTXm91ATIzvPKw06g3rmYEOjP8WkR+9mdvfBxiLgkIcdjTXqrqo1bHKiAP/H86KPZeRPDe63Uwm9lLV0BsQckuJsbfwf/4Q+5rjQm6qglGC9C/DTAfRQQ64IVi87h74j++qMWDmQGKifmuguqdqt6Pfg8BddDsOS+fldfKBKCcLAUoadRC+hUBmRkz+mcw2hf3ClQ6rbm3iN2oPVXVjUhtADlFoFqpAebBiIyaGQKQxruvqiyeXc1tQVwiCjLeRXZRAlSLm80ALcvMDPr84f2eqyrfu1tjgjfxdAGoQTUWuGGa7QUE8gb9Lqh3C8jl8z/PjtczeK2qSam6Z9eN2eWh9DIzI15KQkGadDeJUw4IySwFIdJ8b1bNVoYMUy4DhPoRf6V4umVPDgjvlLLmKaplhhDUKVOY9nSDeh9U9S59FkCVwGMDljZnQ1QLAN2oKinPdDMzVK2UUSyClQBF/Cxq/Yg1ZpZ76AhA0Rq5eD8BiqT6zmzsnOghYulTYVIXCVdXt1IHdo2/jnij1NfM8tjc7SEPEXLHUpZ+B0Bwmox63aYVKR/IzCz7fhSgfCnIX3cFoIiTpOnwf1dbAapmyr0vMjOY83eh/1MARWhZrLrzroBupdh8q6pXvcYH47K8QOUtqyorMN4BEOoxXF6qTBRGTKmnLy/khQhDSf6v8VAuq6UJ2ewye2a3Me5ULHXYevN/ASL/IkaHPN8LKFpUKWhAueq2OfJWI3PnsWFQrsiIGJRL6VRuwkK5M0UhSlOSEc2ix4wonC3bjI/Mokw/lFb4ViVn/Uxl7Vxk+9SFNRnjGQkCVEosKX/91iM29KmwallYo9zokNRnlTXwLna9pbSlq5DogOLUxztEXN+dnAYxkBcf8y7N9anigGWrc/r2oaKCkRhVN5QV9bzYPrCJK5WuDsm9KqCibX9YXTKzaKvzbYPntGPNKanQri14K9CD8m8xk6hUfz6q6lI+6CmSXFRVWgbO/F4oKG62Lo2qVLFIUquq7Cpu9IB0UMQVNN8UIytJ9BdVvT1JPL3Q2AOm1Weq0JgtgLV0ZbgU3DK29XujFLypSo0W64cTypbBtd8dDOWB6HC6Xax3xasdp9DlVOVzGyJJT3PQd5ySUS9azVMXth2o0aE3QVzN2JXWaunhprN1JNlK/wHDkeSryuLJop0fp4SbOjPjNgoTVbv/UK3mtgAxcJQh5xgwEo8ycxce6zw0BggUa5WdOZzmwC1kRe+xfot+OTgy4XR/h5MLnl0f65ORpGP93mJmV22jC1CnUOwRtNazzSw8DdANyEFBCWa8dZ+gZWDv71Ds4UgxZQhQpoAoEOlJ7T5Br9GlfhxOc3lp+CrOFCD3FoIB/wFWytJnABFzjLe5kdI72DSg/AW+oqNSBPooHaEVSsoWfKhOVwJ5CKAVuHQls+eKJpn1oQvzV++Yjk+9aieJAAAAAElFTkSuQmCC" width="15" height="15"> (' +
-            c + "/" + l + ")")
+            '<img class="icon icons8-Clock-Filled" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAE8klEQVRoQ8Waj5EVNwzGpQoSKkioIFBBuAqSVBCoAKggUEG4CgIVBCoIV0GggkAFQAVifjvy4bdr+d/uTjxzM+/d83r1WZ8+y7JVDm5m9r2I/CQi90SEz/zxmfZORD77H5/fqyrfD2t6xEhmhsG/i8iDzPjeoQH2VkReqSqfd7VpQO6JX0TkmYj8uMuKbw9/8PHezHpuCpCZPfYXQ6czGjR8pqrXo4MPAXJq/TVBq1G7Un8o+GiEit2A3CsvZi3b+dyTXm91ATIzvPKw06g3rmYEOjP8WkR+9mdvfBxiLgkIcdjTXqrqo1bHKiAP/H86KPZeRPDe63Uwm9lLV0BsQckuJsbfwf/4Q+5rjQm6qglGC9C/DTAfRQQ64IVi87h74j++qMWDmQGKifmuguqdqt6Pfg8BddDsOS+fldfKBKCcLAUoadRC+hUBmRkz+mcw2hf3ClQ6rbm3iN2oPVXVjUhtADlFoFqpAebBiIyaGQKQxruvqiyeXc1tQVwiCjLeRXZRAlSLm80ALcvMDPr84f2eqyrfu1tjgjfxdAGoQTUWuGGa7QUE8gb9Lqh3C8jl8z/PjtczeK2qSam6Z9eN2eWh9DIzI15KQkGadDeJUw4IySwFIdJ8b1bNVoYMUy4DhPoRf6V4umVPDgjvlLLmKaplhhDUKVOY9nSDeh9U9S59FkCVwGMDljZnQ1QLAN2oKinPdDMzVK2UUSyClQBF/Cxq/Yg1ZpZ76AhA0Rq5eD8BiqT6zmzsnOghYulTYVIXCVdXt1IHdo2/jnij1NfM8tjc7SEPEXLHUpZ+B0Bwmox63aYVKR/IzCz7fhSgfCnIX3cFoIiTpOnwf1dbAapmyr0vMjOY83eh/1MARWhZrLrzroBupdh8q6pXvcYH47K8QOUtqyorMN4BEOoxXF6qTBRGTKmnLy/khQhDSf6v8VAuq6UJ2ewye2a3Me5ULHXYevN/ASL/IkaHPN8LKFpUKWhAueq2OfJWI3PnsWFQrsiIGJRL6VRuwkK5M0UhSlOSEc2ix4wonC3bjI/Mokw/lFb4ViVn/Uxl7Vxk+9SFNRnjGQkCVEosKX/91iM29KmwallYo9zokNRnlTXwLna9pbSlq5DogOLUxztEXN+dnAYxkBcf8y7N9anigGWrc/r2oaKCkRhVN5QV9bzYPrCJK5WuDsm9KqCibX9YXTKzaKvzbYPntGPNKanQri14K9CD8m8xk6hUfz6q6lI+6CmSXFRVWgbO/F4oKG62Lo2qVLFIUquq7Cpu9IB0UMQVNN8UIytJ9BdVvT1JPL3Q2AOm1Weq0JgtgLV0ZbgU3DK29XujFLypSo0W64cTypbBtd8dDOWB6HC6Xax3xasdp9DlVOVzGyJJT3PQd5ySUS9azVMXth2o0aE3QVzN2JXWaunhprN1JNlK/wHDkeSryuLJop0fp4SbOjPjNgoTVbv/UK3mtgAxcJQh5xgwEo8ycxce6zw0BggUa5WdOZzmwC1kRe+xfot+OTgy4XR/h5MLnl0f65ORpGP93mJmV22jC1CnUOwRtNazzSw8DdANyEFBCWa8dZ+gZWDv71Ds4UgxZQhQpoAoEOlJ7T5Br9GlfhxOc3lp+CrOFCD3FoIB/wFWytJnABFzjLe5kdI72DSg/AW+oqNSBPooHaEVSsoWfKhOVwJ5CKAVuHQls+eKJpn1oQvzV++Yjk+9aieJAAAAAElFTkSuQmCC" width="15" height="15"> ' +
+            c + "/" + l), updateMissionStateButtons(), updateMissionParticipationButtons(),
+        updateNoMissionsMessages(), updateMissionsDisplayedCount()
+}
+
+function updateMissionStateButtons() {
+    missionStateFilters.unattended.missionIds = [], missionStateFilters.attended.missionIds = [],
+        missionStateFilters.finishing.missionIds = [];
+    for (const e of mission_markers) 0 == e.vehicle_state && missionStateFilters.unattended.missionIds.push(e
+            .mission_id), 1 == e.vehicle_state && missionStateFilters.attended.missionIds.push(e.mission_id),
+        2 == e.vehicle_state && missionStateFilters.finishing.missionIds.push(e.mission_id);
+    const e = getActiveMissionIds([missionTypeFilters, missionParticipationFilters]),
+        t = e.filter((e => missionStateFilters.unattended.missionIds.includes(e))),
+        i = e.filter((e => missionStateFilters.attended.missionIds.includes(e))),
+        n = e.filter((e => missionStateFilters.finishing.missionIds.includes(e)));
+    $("#mission_select_unattended .counter")
+        .html(t.length), $("#mission_select_attended .counter")
+        .html(i.length), $("#mission_select_finishing .counter")
+        .html(n.length)
+}
+
+function updateMissionParticipationButtons() {
+    const e = getActiveMissionIds([missionTypeFilters, missionStateFilters]),
+        t = e.filter((e => missionParticipationFilters.started.missionIds.includes(e))),
+        i = e.filter((e => missionParticipationFilters.new.missionIds.includes(e)));
+    $("#mission_select_started .counter")
+        .html(`${t.length}`), $("#mission_select_new .counter")
+        .html(`${i.length}`)
+}
+
+function updateMissionsDisplayedCount() {
+    $(".missions-active-count")
+        .text(getActiveMissionIds()
+            .length), $(".missions-all-count")
+        .text(getAllMissionIds()
+            .length)
+}
+
+function getActiveMissionIds(e = [missionTypeFilters, missionStateFilters, missionParticipationFilters]) {
+    const t = e.flatMap((e => Object.values(e)))
+        .filter((e => !e.active))
+        .flatMap((e => e.missionIds)),
+        i = getAllMissionIds()
+        .filter((e => !t.includes(e)));
+    return [...new Set(i)]
 }
 
 function missionSelection(e) {
@@ -2433,33 +2566,111 @@ function missionSelection(e) {
 
 function missionSelectionActive(e) {
     e.addClass("btn-success")
-        .removeClass("btn-danger"), $("#" + e.attr("classShow") + " > .missionSideBarEntry")
+        .removeClass("btn-danger");
+    var t = filterMissionList();
+    $(".missionSideBarEntry")
+        .addClass("hidden"), $("#" + e.attr("classShow") + " > .missionSideBarEntry")
         .removeClass("missionSideBarEntryScrollInvisible")
-        .css("height", "auto"), $("#" + e.attr("classShow"))
-        .show(), progressBarScrollUpdate()
+        .css("height", "auto"), t.removeClass("hidden"), handleFilterChange(e, !0), progressBarScrollUpdate()
 }
 
 function missionSelectionDeactive(e) {
     e.removeClass("btn-success")
-        .addClass("btn-danger"), $("#" + e.attr("classShow"))
-        .hide(), progressBarScrollUpdate()
+        .addClass("btn-danger");
+    var t = filterMissionList();
+    $(".missionSideBarEntry")
+        .addClass("hidden"), t.removeClass("hidden"), handleFilterChange(e, !1), progressBarScrollUpdate()
 }
 
-function missionSelectionSave() {
-    deactive_buttons = [], $(".mission_selection")
-        .each((function () {
-            $(this)
-                .hasClass("btn-danger") && deactive_buttons.push($(this)
-                    .attr("id"))
-        })), mc_storage.setToCookieStorage(STORAGE_KEY_DEACTIVE_MISSION_SELECTION, deactive_buttons)
+function handleFilterChange(e, t) {
+    var i = e.data("type-filter"),
+        n = e.data("state-filter"),
+        s = e.data("participation-filter");
+    i && (missionTypeFilters[i].active = t), n && (missionStateFilters[n].active = t), s && (
+            missionParticipationFilters[s].active = t), updateMissionStateButtons(),
+        updateMissionParticipationButtons(), updateNoMissionsMessages(), updateMissionsDisplayedCount()
+}
+
+function handleMissionTypeFilterChange(e, t) {
+    missionTypeFilters[e].active = t, updateMissionStateButtons(), updateMissionParticipationButtons(),
+        updateNoMissionsMessages(), updateMissionsDisplayedCount()
+}
+
+function updateNoMissionsMessages() {
+    const e = missionTypeFilters.alliance.missionIds.length <= 0 && missionTypeFilters.alliance_event
+        .missionIds.length <= 0;
+    $("#ktw_no_transports")
+        .toggle(missionTypeFilters.krankentransporte.active && missionTypeFilters.krankentransporte.missionIds
+            .length <= 0), $("#alliance_no_mission")
+        .toggle((missionTypeFilters.alliance.active || missionTypeFilters.alliance_event.active) && e), $(
+            "#emergency_no")
+        .toggle(missionTypeFilters.emergency.active && missionTypeFilters.emergency.missionIds.length <= 0)
+}
+
+function filterMissionList() {
+    var e = $(".mission_selection[data-type-filter].btn-danger")
+        .map((function (e, t) {
+            return $(t)
+                .data("type-filter")
+        }))
+        .toArray(),
+        t = $(".mission_selection[data-state-filter].btn-danger")
+        .map((function (e, t) {
+            return $(t)
+                .data("state-filter")
+        }))
+        .toArray(),
+        i = $(".mission_selection[data-participation-filter].btn-danger")
+        .map((function (e, t) {
+            return $(t)
+                .data("participation-filter")
+        }))
+        .toArray();
+    return $(".missionSideBarEntry")
+        .filter((function (n, s) {
+            var o = $(s)
+                .data("mission-type-filter"),
+                a = $(s)
+                .data("mission-state-filter"),
+                r = $(s)
+                .data("mission-participation-filter");
+            return !e.includes(o) && !t.includes(a) && !i.includes(r)
+        }))
+}
+
+function missionSelectionSave(e) {
+    const t = {
+        type: [],
+        state: [],
+        participation: []
+    };
+    (e ? $(e) : $(".mission_selection.btn-danger"))
+    .each((function () {
+        const e = $(this)
+            .data("type-filter"),
+            i = $(this)
+            .data("state-filter"),
+            n = $(this)
+            .data("participation-filter");
+        e && t.type.push(e), i && t.state.push(i), n && t.participation.push(n)
+    })), debouncedSaveFilters({
+        inactive_filters: t
+    })
 }
 
 function missionSelectionLoad() {
-    deactive_selection = mc_storage.get(STORAGE_KEY_DEACTIVE_MISSION_SELECTION), deactive_selection && (
-        "string" == typeof deactive_selection && (deactive_selection = deactive_selection.split(",")), $
-        .each(deactive_selection, (function (e, t) {
-            missionSelectionDeactive($("#" + t))
-        })))
+    const e = mc_storage.get(STORAGE_KEY_DEACTIVE_MISSION_SELECTION_DEPRECATED);
+    if (e) {
+        missionSelectionSave(e.map((e => $(`#${e}`)))), mc_storage.removeFromCookieStorage(
+            STORAGE_KEY_DEACTIVE_MISSION_SELECTION_DEPRECATED)
+    }
+    if (deactive_selection = filtersData.inactive_filters, deactive_selection) {
+        const e = [...(deactive_selection.type || [])
+            .map((e => $(`[data-type-filter="${e}"]`))), ...(deactive_selection.state || [])
+            .map((e => $(`[data-state-filter="${e}"]`))), ...(deactive_selection.participation || [])
+            .map((e => $(`[data-participation-filter="${e}"]`)))];
+        for (const t of e) missionSelectionDeactive(t)
+    }
 }
 
 function leitstelleSelectionOnly(e) {
@@ -2929,6 +3140,98 @@ function updateButtonState(e, t) {
         .disabled && n(e)
 }
 
+function initSortable(e) {
+    function t(t, i) {
+        function s() {
+            return o(t, "asc")
+        }
+
+        function o(t, i) {
+            const {
+                tiebreakerKey: n
+            } = e;
+            return function (e, s) {
+                const o = a($(e)
+                    .data("sortable-by")[t], $(s)
+                    .data("sortable-by")[t]);
+                let r = o;
+                if (0 === o && n) {
+                    r = a($(e)
+                        .data("sortable-by")[n], $(s)
+                        .data("sortable-by")[n])
+                }
+                return "desc" === i ? r > 0 ? -1 : 1 : r < 0 ? -1 : 1
+            }
+        }
+
+        function a(e, t) {
+            return "string" == typeof e && "string" == typeof t ? e.toString()
+                .localeCompare(t.toString()) : e - t
+        }
+        n(i), sortFn = "custom" === i && e.customSort ? e.customSort : o(t, i), $(e.containerSelector + " " +
+                e.sortableElementSelector)
+            .sort(s())
+            .sort(sortFn)
+            .appendTo(e.containerSelector), e.$element.data("sort-direction", i)
+    }
+
+    function i(e) {
+        var t = e.find("option:selected")
+            .data();
+        return {
+            key: t.sortKey,
+            direction: t.sortDirection
+        }
+    }
+
+    function n(t) {
+        var i = "desc" === t ? "desc" : "asc";
+        e.$element.removeClass("desc asc")
+            .addClass(i)
+    }
+    if (e.initialSorting) {
+        const {
+            key: i,
+            direction: n
+        } = e.initialSorting;
+        t(i, n), e.$element.find(`option[data-sort-key="${i}"][data-sort-direction="${n}"]`)
+            .prop("selected", !0)
+    }
+    const s = "select" === e.type ? "change" : "click";
+    return e.$element.on(s, (function () {
+        const n = i(e.$element);
+        t(n.key, n.direction), e.afterSort && e.afterSort(n.key, n.direction)
+    })), {
+        reSort() {
+            const n = i(e.$element);
+            t(n.key, n.direction)
+        }
+    }
+}
+
+function saveMissionListSorting(e, t) {
+    return $.ajax({
+        url: "/missions/update_filters",
+        type: "PUT",
+        data: {
+            sorting: {
+                key: e,
+                direction: t
+            }
+        }
+    })
+}
+
+function saveMissionListFilters(e) {
+    return $.ajax({
+        url: "/missions/update_filters",
+        type: "PUT",
+        data: JSON.stringify(e),
+        dataType: "json",
+        contentType: "application/json"
+    })
+}
+
 function onAndroidBack() {
     return $("#close_tutorial_modal")
         .visible() ? ($("#close_tutorial_modal * .btn-danger")
@@ -3167,6 +3470,33 @@ function isValidDate(e, t) {
 
 function associate_mission_with_group() {}
 
+function getAllMissionIds() {
+    return mission_markers.map((e => e.mission_id))
+}
+
+function initCollapseButton(e, t) {
+    function i(t) {
+        t ? e.removeClass("glyphicon-menu-up")
+            .addClass("glyphicon-menu-down") : e.removeClass("glyphicon-menu-down")
+            .addClass("glyphicon-menu-up")
+    }
+    i(!!e.data("collapsed")), e.click((function (n) {
+        n.preventDefault();
+        const s = !e.data("collapsed");
+        i(s), t(s), e.data("collapsed", s)
+    }))
+}
+
+function debounce(e, t) {
+    let i;
+    return function (...n) {
+        const s = this;
+        clearTimeout(i), i = setTimeout((() => {
+            e.apply(s, n)
+        }), t)
+    }
+}
+
 function missionPositionMarkerAdd(e) {
     1 == mobile_bridge_use && mobileBridgeAdd("poi", [e])
 }
@@ -3309,7 +3639,7 @@ function initEquipment() {
             return $(this)
                 .data("vehicle-id")
         }))
-        .get())
+        .get()), aaoCheckAvailable()
 }
 
 function initVehiclesEquipment(e) {
@@ -3337,38 +3667,49 @@ function initVehiclesEquipment(e) {
 
     function i(e, t) {
         function i() {
-            s(), o(), a()
+            o(), a(), r()
         }
 
-        function s() {
-            Object.values(m.containersByTab)
+        function s({
+            selectVehicle: e = !0
+        } = {}) {
+            var i = f.equipments.some((function (e) {
+                return e.selected !== e.applied
+            }));
+            f.equipments.forEach((function (e) {
+                e.applied = e.selected
+            })), f.isEditMode = !1, o(), r(), t(f.vehicleId), e && i && d(f.vehicleId), u()
+        }
+
+        function o() {
+            Object.values(f.containersByTab)
                 .forEach((function (e) {
                     var t = e.querySelector(".change-payload-btn"),
                         i = e.querySelector(".apply-payload-btn"),
                         n = e.querySelector(".dispatch-vehicle-equipments");
-                    m.isEditMode ? (t.classList.add("hidden"), i.classList.remove("hidden"), n
+                    f.isEditMode ? (t.classList.add("hidden"), i.classList.remove("hidden"), n
                         .classList.remove("hidden")) : (t.classList.remove("hidden"), i.classList
                         .add("hidden"), n.classList.add("hidden"))
                 }))
         }
 
-        function o() {
-            var e = m.getSelectedEquipmentsSize();
-            Object.values(m.containersByTab)
+        function a() {
+            var e = f.getSelectedEquipmentsSize();
+            Object.values(f.containersByTab)
                 .forEach((function (t) {
                     const i = t.querySelector(".capacity-used-amount");
-                    i.textContent !== e && (i.textContent = e), m.equipments.forEach((function (e) {
+                    i.textContent !== e && (i.textContent = e), f.equipments.forEach((function (e) {
                         var i = t.querySelector(
                             '.equipment-checkbox[data-equipment-id="' + e.id + '"]');
                         i.checked = e.selected, i.disabled = !e.isSelectPossible()
                     }))
-                })), l(), r()
+                })), c(), l()
         }
 
-        function a() {
-            Object.values(m.containersByTab)
+        function r() {
+            Object.values(f.containersByTab)
                 .forEach((function (e) {
-                    m.equipments.forEach((function (t) {
+                    f.equipments.forEach((function (t) {
                         e.querySelector('.equipment-input[data-equipment-id="' + t.id +
                                 '"]')
                             .disabled = !t.selected
@@ -3376,20 +3717,20 @@ function initVehiclesEquipment(e) {
                 }))
         }
 
-        function r() {
-            Object.values(m.containersByTab)
+        function l() {
+            Object.values(f.containersByTab)
                 .forEach((function (e) {
                     var t = e.querySelector(".payload-error-indicator");
-                    m.hasUnavailableSelectedEquipments() ? t.classList.remove("hidden") : t.classList
+                    f.hasUnavailableSelectedEquipments() ? t.classList.remove("hidden") : t.classList
                         .add("hidden")
                 }))
         }
 
-        function l() {
-            var e = m.isApplyPossible(),
+        function c() {
+            var e = f.isApplyPossible(),
                 t = e ? I18n.t("javascript.vehicle_payload.apply_payload") : I18n.t(
                     "javascript.vehicle_payload.equipment_unavailable");
-            Object.values(m.containersByTab)
+            Object.values(f.containersByTab)
                 .forEach((function (i) {
                     var n = i.querySelector(".apply-payload-btn");
                     e ? n.classList.remove("disabled") : n.classList.add("disabled"), n.textContent =
@@ -3397,8 +3738,8 @@ function initVehiclesEquipment(e) {
                 }))
         }
 
-        function c() {
-            var e = m.equipments.filter((function (e) {
+        function u() {
+            var e = f.equipments.filter((function (e) {
                     return e.applied
                 }))
                 .map((function (e) {
@@ -3408,13 +3749,13 @@ function initVehiclesEquipment(e) {
                     return e[0]
                 }));
             $.ajax({
-                url: "/vehicles/" + m.vehicleId + "/aao_settings",
+                url: "/vehicles/" + f.vehicleId + "/aao_settings",
                 dataType: "json",
                 data: {
                     applied_equipment_ids: e
                 },
                 success: function (e) {
-                    var i = $("#vehicle_checkbox_" + m.vehicleId)[0],
+                    var i = $("#vehicle_checkbox_" + f.vehicleId)[0],
                         n = Array.from(i.attributes)
                         .map((function (e) {
                             return e.name
@@ -3444,37 +3785,37 @@ function initVehiclesEquipment(e) {
                         }))
                         .forEach((function (e) {
                             aao_available(e, !0)
-                        })), calculateWaterBar(m.equipments.filter((function (e) {
+                        })), calculateWaterBar(f.equipments.filter((function (e) {
                             return e.applied
                         })))
                 }
             })
         }
 
-        function u(e) {
+        function d(e) {
             var t = $(".vehicle_checkbox[value=" + e + "]");
             t.prop("checked", !0), handleVehicleSelect(t)
         }
-        var d = $('.dispatch-vehicle-equipments-container[data-vehicle-id="' + e + '"]'),
-            h = "2" === $("#vehicle_checkbox_" + e)
+        var h = $('.dispatch-vehicle-equipments-container[data-vehicle-id="' + e + '"]'),
+            p = "2" === $("#vehicle_checkbox_" + e)
             .attr("fms"),
-            p = "true" === $("#vehicle_checkbox_" + e)
+            m = "true" === $("#vehicle_checkbox_" + e)
             .attr("at_staging_area"),
-            m = {
+            f = {
                 vehicleId: e,
-                totalCapacity: parseInt(d.find(".capacity-total-amount")
+                totalCapacity: parseInt(h.find(".capacity-total-amount")
                     .text()),
                 isEditMode: !1,
                 containersByTab: {
-                    all: d[0]
+                    all: h[0]
                 },
-                equipments: d.find(".equipment-checkbox")
+                equipments: h.find(".equipment-checkbox")
                     .map((function () {
                         var e = $(this),
                             t = e.data("equipment-in-use"),
                             i = e.data("equipment-is-default"),
                             s = e.data("equipment-is-equiped"),
-                            o = i && h || s;
+                            o = i && p || s;
                         return {
                             id: e.data("equipment-id"),
                             size: e.data("equipment-size"),
@@ -3483,16 +3824,17 @@ function initVehiclesEquipment(e) {
                             selected: o,
                             applied: o,
                             missionValues: e.data("mission-values"),
+                            aaoValues: e.data("aao-values"),
                             isSelectPossible: function () {
-                                return !p && (!(this.inUse && !this.isDefault) && (!!this
+                                return !m && (!(this.inUse && !this.isDefault) && (!!this
                                     .selected || !(n.includes(this.id) && !this
-                                    .applied) && !(this.size > m.getFreeCapacity())))
+                                    .applied) && !(this.size > f.getFreeCapacity())))
                             }
                         }
                     }))
                     .get(),
                 getFreeCapacity: function () {
-                    return m.totalCapacity - m.getSelectedEquipmentsSize()
+                    return f.totalCapacity - f.getSelectedEquipmentsSize()
                 },
                 getSelectedEquipmentsSize: function () {
                     return this.equipments.filter((function (e) {
@@ -3522,27 +3864,22 @@ function initVehiclesEquipment(e) {
                     return !this.hasUnavailableSelectedEquipments()
                 }
             };
-        return i(), d.find(".change-payload-btn")
+        return i(), h.find(".change-payload-btn")
             .click((function (e) {
-                e.preventDefault(), m.isEditMode = !0, s()
-            })), d.find(".apply-payload-btn")
+                e.preventDefault(), f.isEditMode = !0, o()
+            })), h.find(".apply-payload-btn")
             .click((function (e) {
-                e.preventDefault();
-                var i = m.equipments.some((function (e) {
-                    return e.selected !== e.applied
-                }));
-                m.equipments.forEach((function (e) {
-                    e.applied = e.selected
-                })), m.isEditMode = !1, s(), a(), t(m.vehicleId), i && u(m.vehicleId), c()
-            })), d.find(".equipment-checkbox")
+                e.preventDefault(), s()
+            })), h.find(".equipment-checkbox")
             .on("change", (function () {
-                $this = $(this), m.equipments.find((function (e) {
+                $this = $(this), f.equipments.find((function (e) {
                         return e.id === $this.data("equipment-id")
                     }))
-                    .selected = $this.is(":checked"), o()
+                    .selected = $this.is(":checked"), a()
             })), {
-                state: m,
-                updateSelectedEquipment: o
+                state: f,
+                updateSelectedEquipment: a,
+                applyEquipment: s
             }
     }
     var n = [];
@@ -4122,11 +4459,14 @@ Object.values || (Object.values = function (e) {
                 ambulance: "Krankentransporte",
                 attended: "Bearbeitete Eins\xe4tze",
                 attended_description: "Bearbeitete Eins\xe4tze, nicht alle Bedingungen erf\xfcllt",
+                dropdown_collapsed_description: "Men\xfc mit Einsatzfiltern - geschlossen",
+                dropdown_open_description: "Men\xfc mit Einsatzfiltern - offen",
                 emergency: "Notf\xe4lle",
                 finishing: "Eins\xe4tze in Durchf\xfchrung",
                 finishing_description: "Eins\xe4tze in Durchf\xfchrung, alle Bedingungen erf\xfcllt",
                 new: "Neue Eins\xe4tze",
                 new_description: "Neue Eins\xe4tze, die noch nicht begonnen wurden",
+                showing: "Sichtbar:",
                 sicherheitswache: "Geplante Eins\xe4tze",
                 sorting: {
                     age_asc: "Nach Alter (aufsteigend)",
@@ -4641,19 +4981,22 @@ Object.values || (Object.values = function (e) {
                 ambulance: "Patient transports",
                 attended: "Attended Missions",
                 attended_description: "Attended, Not all conditions fulfilled",
+                dropdown_collapsed_description: "Menu containing mission filters - closed",
+                dropdown_open_description: "Menu containing mission filters - open",
                 emergency: "Emergency",
                 finishing: "Missions in progress",
                 finishing_description: "Missions in Progress, All conditions fulfilled",
                 new: "New Missions",
                 new_description: "New Missions that have not been opened yet",
+                showing: "Showing:",
                 sicherheitswache: "Planned Appearances",
                 sorting: {
                     age_asc: "Mission Age (ascending)",
                     age_desc: "Mission Age (descending)",
                     caption_asc: "Alphabetically (ascending)",
                     caption_desc: "Alphabetically (descending)",
-                    credits_asc: "Average Credits (ascending)",
-                    credits_desc: "Average Credits (descending)",
+                    credits_asc: "Average credits (ascending)",
+                    credits_desc: "Average credits (descending)",
                     patients_desc: "Patients amount (descending)",
                     prisoners_desc: "Prisoners amount (descending)"
                 },
@@ -5316,11 +5659,14 @@ Object.values || (Object.values = function (e) {
                 ambulance: "Patient transports",
                 attended: "Attended Missions",
                 attended_description: "Attended, Not all conditions fulfilled",
+                dropdown_collapsed_description: "Menu containing mission filters - closed",
+                dropdown_open_description: "Menu containing mission filters - open",
                 emergency: "Emergency",
                 finishing: "Missions in progress",
                 finishing_description: "Missions in Progress, All conditions fulfilled",
                 new: "New Missions",
                 new_description: "New Missions that have not been opened yet",
+                showing: "Showing:",
                 sicherheitswache: "Planned Appearances",
                 sorting: {
                     age_asc: "Mission Age (ascending)",
@@ -5877,11 +6223,14 @@ Object.values || (Object.values = function (e) {
                 ambulance: "Vervoer van pati\xebnten",
                 attended: "Bijgewoonde missies",
                 attended_description: "Verwerkte inzetten, niet aan alle voorwaarden voldaan",
+                dropdown_collapsed_description: "Menu met inzetfilters - gesloten",
+                dropdown_open_description: "Menu met inzet filters - open",
                 emergency: "Spoed",
-                finishing: "Missies in uitvoering",
+                finishing: "Inzetten in uitvoering",
                 finishing_description: "Inzetten in uitvoering, aan alle voorwaarden is voldaan",
                 new: "Nieuwe missies",
                 new_description: "Nieuwe inzetten die nog niet zijn geopend",
+                showing: "Zichtbaar:",
                 sicherheitswache: "Geplande inzetten",
                 sorting: {
                     age_asc: "Chronologische volgorde (oplopend)",
@@ -5895,7 +6244,7 @@ Object.values || (Object.values = function (e) {
                 },
                 started: "Gestarte Inzetten",
                 started_description: "Inzetten die zijn gestart, maar niet voltooid",
-                unattended: "Onbemande inzetten",
+                unattended: "Onbeheerde inzetten",
                 unattended_description: "Onverwerkte inzetten"
             },
             missions_filtered_out: "Sommige missies worden mogelijk uitgefilterd. Controleer alstublieft uw kaartfilters.",
@@ -6343,11 +6692,14 @@ Object.values || (Object.values = function (e) {
                 ambulance: "Transporte de pacientes",
                 attended: "Misiones a las que ha asistido",
                 attended_description: "Asistidos, No se cumplen todas las condiciones",
+                dropdown_collapsed_description: "Men\xfa con filtros de misi\xf3n - cerrado",
+                dropdown_open_description: "Men\xfa que contiene los filtros de misi\xf3n - abrir",
                 emergency: "Emergencia",
                 finishing: "Misiones en curso",
                 finishing_description: "Misiones en curso, todas las condiciones cumplidas",
                 new: "Nuevas misiones",
                 new_description: "Nuevas misiones que a\xfan no se han abierto",
+                showing: "Visible:",
                 sicherheitswache: "Misones planificadas",
                 sorting: {
                     age_asc: "Edad de la misi\xf3n (ascendente)",
@@ -6789,11 +7141,14 @@ Object.values || (Object.values = function (e) {
                 ambulance: "Patient transports",
                 attended: "Attended Missions",
                 attended_description: "Attended, Not all conditions fulfilled",
+                dropdown_collapsed_description: "Menu containing mission filters - closed",
+                dropdown_open_description: "Menu containing mission filters - open",
                 emergency: "Emergency",
                 finishing: "Missions in progress",
                 finishing_description: "Missions in Progress, All conditions fulfilled",
                 new: "New Missions",
                 new_description: "New Missions that have not been opened yet",
+                showing: "Showing:",
                 sicherheitswache: "Planned Appearances",
                 sorting: {
                     age_asc: "Mission Age (ascending)",
@@ -7349,11 +7704,14 @@ Object.values || (Object.values = function (e) {
                 ambulance: "Transport av patienter",
                 attended: "Deltagit i uppdrag",
                 attended_description: "Bearbetad, Inte alla villkor uppfyllda",
+                dropdown_collapsed_description: "Meny med uppdragsfilter - st\xe4ngd",
+                dropdown_open_description: "Meny med uppdragsfilter - \xf6ppna",
                 emergency: "Akut",
                 finishing: "P\xe5g\xe5ende uppdrag",
                 finishing_description: "P\xe5g\xe5ende uppdrag, alla villkor uppfyllda",
                 new: "Nya uppdrag",
                 new_description: "Nya uppdrag som \xe4nnu inte har \xf6ppnats",
+                showing: "Synlig:",
                 sicherheitswache: "Planerade uppdrag",
                 sorting: {
                     age_asc: "Uppdragets \xe5lder (stigande)",
@@ -7825,11 +8183,14 @@ Object.values || (Object.values = function (e) {
                 ambulance: "Transport pacjent\xf3w",
                 attended: "Uczestniczono w misjach",
                 attended_description: "Przetworzone, nie wszystkie warunki zosta\u0142y spe\u0142nione",
+                dropdown_collapsed_description: "Menu zawieraj\u0105ce filtry misji - zamkni\u0119te",
+                dropdown_open_description: "Menu zawieraj\u0105ce filtry misji - otw\xf3rz",
                 emergency: "Sytuacja wyj\u0105tkowa",
                 finishing: "Misje w toku",
                 finishing_description: "Misje w toku, wszystkie warunki spe\u0142nione",
                 new: "Nowe misje",
                 new_description: "Nowe misje, kt\xf3re nie zosta\u0142y jeszcze otwarte",
+                showing: "Widoczny:",
                 sicherheitswache: "Planowane misje",
                 sorting: {
                     age_asc: "Wiek misji (rosn\u0105co)",
@@ -8303,11 +8664,14 @@ Object.values || (Object.values = function (e) {
                 ambulance: "Trasporto di pazienti",
                 attended: "Missioni frequentate",
                 attended_description: "Elaborato, non tutte le condizioni sono soddisfatte",
+                dropdown_collapsed_description: "Menu contenente i filtri delle missioni - chiuso",
+                dropdown_open_description: "Menu contenente i filtri di missione - aprire",
                 emergency: "Emergenza",
                 finishing: "Missioni in corso",
                 finishing_description: "Missioni in corso, tutte le condizioni soddisfatte",
                 new: "Nuove missioni",
                 new_description: "Nuove missioni non ancora aperte",
+                showing: "Visibile:",
                 sicherheitswache: "Missioni pianificate",
                 sorting: {
                     age_asc: "Et\xe0 della missione (crescente)",
@@ -8773,11 +9137,14 @@ Object.values || (Object.values = function (e) {
                 ambulance: "Transports de patients",
                 attended: "Missions suivies",
                 attended_description: "Trait\xe9e, toutes les conditions n'ont pas \xe9t\xe9 remplies",
+                dropdown_collapsed_description: "Menu contenant les filtres de mission - ferm\xe9",
+                dropdown_open_description: "Menu contenant les filtres de mission - ouvrir",
                 emergency: "Urgence",
                 finishing: "Missions en cours",
                 finishing_description: "Missions en cours, toutes les conditions sont remplies",
                 new: "Nouvelles missions",
                 new_description: "Nouvelles missions qui n'ont pas encore \xe9t\xe9 ouvertes",
+                showing: "Visible :",
                 sicherheitswache: "Missions pr\xe9vues",
                 sorting: {
                     age_asc: "\xc2ge de la mission (par ordre croissant)",
@@ -9233,11 +9600,14 @@ Object.values || (Object.values = function (e) {
                 ambulance: "\u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u043a\u0430 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432",
                 attended: "\u041f\u043e\u0441\u0435\u0449\u0435\u043d\u043d\u044b\u0435 \u043c\u0438\u0441\u0441\u0438\u0438",
                 attended_description: "\u041f\u0440\u0438\u0441\u0443\u0442\u0441\u0442\u0432\u043e\u0432\u0430\u043b, \u043d\u0435 \u0432\u0441\u0435 \u0443\u0441\u043b\u043e\u0432\u0438\u044f \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u044b",
+                dropdown_collapsed_description: "\u041c\u0435\u043d\u044e, \u0441\u043e\u0434\u0435\u0440\u0436\u0430\u0449\u0435\u0435 \u0444\u0438\u043b\u044c\u0442\u0440\u044b \u043c\u0438\u0441\u0441\u0438\u0439 - \u0437\u0430\u043a\u0440\u044b\u0442\u043e",
+                dropdown_open_description: "\u041c\u0435\u043d\u044e, \u0441\u043e\u0434\u0435\u0440\u0436\u0430\u0449\u0435\u0435 \u0444\u0438\u043b\u044c\u0442\u0440\u044b \u043c\u0438\u0441\u0441\u0438\u0439 - o\u0442\u043a\u0440\u044b\u0442\u044c",
                 emergency: "\u0427\u0440\u0435\u0437\u0432\u044b\u0447\u0430\u0439\u043d\u0430\u044f \u0441\u0438\u0442\u0443\u0430\u0446\u0438\u044f",
                 finishing: "\u0412\u044b\u043f\u043e\u043b\u043d\u044f\u0435\u043c\u044b\u0435 \u043c\u0438\u0441\u0441\u0438\u0438",
                 finishing_description: "\u041c\u0438\u0441\u0441\u0438\u0438 \u0432 \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u0435 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044f, \u0432\u0441\u0435 \u0443\u0441\u043b\u043e\u0432\u0438\u044f \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u044b",
                 new: "\u041d\u043e\u0432\u044b\u0435 \u043c\u0438\u0441\u0441\u0438\u0438",
                 new_description: "\u041d\u043e\u0432\u044b\u0435 \u043c\u0438\u0441\u0441\u0438\u0438, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u0435\u0449\u0435 \u043d\u0435 \u0431\u044b\u043b\u0438 \u043e\u0442\u043a\u0440\u044b\u0442\u044b",
+                showing: "\u0412\u0438\u0434\u0438\u043c\u044b\u0439:",
                 sicherheitswache: "\u0417\u0430\u043f\u043b\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u0437\u0430\u0434\u0430\u043d\u0438\u044f",
                 sorting: {
                     age_asc: "\u0412\u043e\u0437\u0440\u0430\u0441\u0442 \u043c\u0438\u0441\u0441\u0438\u0438 (\u043f\u043e \u0432\u043e\u0437\u0440\u0430\u0441\u0442\u0430\u043d\u0438\u044e)",
@@ -9665,11 +10035,14 @@ Object.values || (Object.values = function (e) {
                 ambulance: "Transport af patienter",
                 attended: "Deltagelse i missioner",
                 attended_description: "Forarbejdet, ikke alle betingelser opfyldt",
+                dropdown_collapsed_description: "Menu med missionsfiltre - lukket",
+                dropdown_open_description: "Menu med missionsfiltre - \xc5bn",
                 emergency: "Krisesituation",
                 finishing: "Igangv\xe6rende missioner",
                 finishing_description: "Igangv\xe6rende missioner, alle betingelser opfyldt",
                 new: "Nye missioner",
                 new_description: "Nye missioner, der ikke er blevet \xe5bnet endnu",
+                showing: "Synlig:",
                 sicherheitswache: "Planlagte indsatser",
                 sorting: {
                     age_asc: "Missionsalder (stigende)",
@@ -10122,11 +10495,14 @@ Object.values || (Object.values = function (e) {
                 ambulance: "Pasienttransport",
                 attended: "Deltakelse p\xe5 oppdrag",
                 attended_description: "Bearbeidet, Ikke alle betingelser oppfylt",
+                dropdown_collapsed_description: "Meny med oppdragsfiltre - lukket",
+                dropdown_open_description: "Meny med oppdragsfiltre - \xc5pne",
                 emergency: "N\xf8dssituasjon",
                 finishing: "P\xe5g\xe5ende oppdrag",
                 finishing_description: "P\xe5g\xe5ende oppdrag, alle betingelser er oppfylt",
                 new: "Nye oppdrag",
                 new_description: "Nye oppdrag som ikke er \xe5pnet enn\xe5",
+                showing: "Synlig:",
                 sicherheitswache: "Planlagte visninger",
                 sorting: {
                     age_asc: "Oppdragets alder (stigende)",
@@ -10591,11 +10967,14 @@ Object.values || (Object.values = function (e) {
                 ambulance: "P\u0159evozy pacient\u016f",
                 attended: "Z\xfa\u010dastn\u011bn\xe9 misie",
                 attended_description: "Zpracov\xe1no, Ne v\u0161echny podm\xednky spln\u011bny",
+                dropdown_collapsed_description: "Menu obsahuj\xedc\xed filtry mis\xed - zav\u0159eno",
+                dropdown_open_description: "Nab\xeddka obsahuj\xedc\xed filtry mis\xed - otev\u0159\xedt",
                 emergency: "Stav nouze",
                 finishing: "Prob\xedhaj\xedc\xed mise",
                 finishing_description: "Mise prob\xedhaj\xed, v\u0161echny podm\xednky spln\u011bny",
                 new: "Nov\xe9 mise",
                 new_description: "Nov\xe9 mise, kter\xe9 je\u0161t\u011b nebyly otev\u0159eny",
+                showing: "Viditeln\xe9:",
                 sicherheitswache: "Pl\xe1novan\xe9 mise",
                 sorting: {
                     age_asc: "V\u011bk mise (vzestupn\u011b)",
@@ -11031,11 +11410,14 @@ Object.values || (Object.values = function (e) {
                 ambulance: "Hasta nakilleri",
                 attended: "Kat\u0131l\u0131nan G\xf6revler",
                 attended_description: "Kat\u0131ld\u0131, T\xfcm ko\u015fullar yerine getirilmedi",
+                dropdown_collapsed_description: "G\xf6rev filtrelerini i\xe7eren men\xfc - kapal\u0131",
+                dropdown_open_description: "G\xf6rev filtrelerini i\xe7eren men\xfc - a\xe7",
                 emergency: "Acil Durum",
                 finishing: "Devam eden g\xf6revler",
                 finishing_description: "G\xf6revler Devam Ediyor, T\xfcm ko\u015fullar yerine getirildi",
                 new: "Yeni G\xf6revler",
                 new_description: "Hen\xfcz a\xe7\u0131lmam\u0131\u015f yeni g\xf6revler",
+                showing: "G\xf6r\xfcn\xfcr:",
                 sicherheitswache: "Planlanan G\xf6sterimler",
                 sorting: {
                     age_asc: "G\xf6rev Ya\u015f\u0131 (Artan)",
@@ -11442,11 +11824,14 @@ Object.values || (Object.values = function (e) {
                 ambulance: "Transporte de doentes",
                 attended: "Miss\xf5es frequentadas",
                 attended_description: "Processado, mas nem todas as condi\xe7\xf5es foram cumpridas",
+                dropdown_collapsed_description: "Menu com filtros de miss\xe3o - fechado",
+                dropdown_open_description: "Menu com filtros de miss\xe3o - abrir",
                 emergency: "Emerg\xeancia",
                 finishing: "Miss\xf5es em curso",
                 finishing_description: "Miss\xf5es em curso, todas as condi\xe7\xf5es cumpridas",
                 new: "Novas miss\xf5es",
                 new_description: "Novas miss\xf5es que ainda n\xe3o foram abertas",
+                showing: "Vis\xedvel:",
                 sicherheitswache: "Miss\xf5es planejadas",
                 sorting: {
                     age_asc: "Idade da miss\xe3o (ascendente)",
@@ -11891,11 +12276,14 @@ Object.values || (Object.values = function (e) {
                 ambulance: "Transporte de doentes",
                 attended: "Miss\xf5es frequentadas",
                 attended_description: "Participou, mas nem todas as condi\xe7\xf5es foram cumpridas",
+                dropdown_collapsed_description: "Menu com filtros de miss\xe3o - fechado",
+                dropdown_open_description: "Menu com filtros de miss\xe3o - abrir",
                 emergency: "Emerg\xeancia",
                 finishing: "Miss\xf5es em curso",
                 finishing_description: "Miss\xf5es em curso, todas as condi\xe7\xf5es cumpridas",
                 new: "Novas miss\xf5es",
                 new_description: "Novas miss\xf5es que ainda n\xe3o foram abertas",
+                showing: "Vis\xedvel:",
                 sicherheitswache: "Miss\xf5es planejadas",
                 sorting: {
                     age_asc: "Idade da miss\xe3o (ascendente)",
@@ -12290,11 +12678,14 @@ Object.values || (Object.values = function (e) {
                 ambulance: "\u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u0430\u0446\u0456\u0454\u043d\u0442\u0456\u0432",
                 attended: "\u0412\u0456\u0434\u0432\u0456\u0434\u0430\u043d\u0456 \u043c\u0456\u0441\u0456\u0457",
                 attended_description: "\u041f\u0440\u0438\u0441\u0443\u0442\u043d\u0456\u0439, \u041d\u0435 \u0432\u0441\u0456 \u0443\u043c\u043e\u0432\u0438 \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u0456",
+                dropdown_collapsed_description: "\u041c\u0435\u043d\u044e \u0437 \u0444\u0456\u043b\u044c\u0442\u0440\u0430\u043c\u0438 \u043c\u0456\u0441\u0456\u0439 - \u0437\u0430\u043a\u0440\u0438\u0442\u043e",
+                dropdown_open_description: "\u041c\u0435\u043d\u044e \u0437 \u0444\u0456\u043b\u044c\u0442\u0440\u0430\u043c\u0438 \u043c\u0456\u0441\u0456\u0439 - \u0412\u0456\u0434\u043a\u0440\u0438\u0442\u0438",
                 emergency: "\u041d\u0430\u0434\u0437\u0432\u0438\u0447\u0430\u0439\u043d\u0430 \u0441\u0438\u0442\u0443\u0430\u0446\u0456\u044f",
                 finishing: "\u041f\u043e\u0442\u043e\u0447\u043d\u0456 \u043c\u0456\u0441\u0456\u0457",
                 finishing_description: "\u041c\u0456\u0441\u0456\u0457 \u0432 \u043f\u0440\u043e\u0446\u0435\u0441\u0456 \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u043d\u044f, \u0432\u0441\u0456 \u0443\u043c\u043e\u0432\u0438 \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u0456",
                 new: "\u041d\u043e\u0432\u0456 \u043c\u0456\u0441\u0456\u0457",
                 new_description: "\u041d\u043e\u0432\u0456 \u043c\u0456\u0441\u0456\u0457, \u044f\u043a\u0456 \u0449\u0435 \u043d\u0435 \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u0456",
+                showing: "\u041f\u043e\u043c\u0456\u0442\u043d\u043e:",
                 sicherheitswache: "\u0417\u0430\u043f\u043b\u0430\u043d\u043e\u0432\u0430\u043d\u0456 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f",
                 sorting: {
                     age_asc: "\u0412\u0456\u043a \u043c\u0456\u0441\u0456\u0457 (\u0437\u0430 \u0437\u0440\u043e\u0441\u0442\u0430\u043d\u043d\u044f\u043c)",
@@ -12685,11 +13076,14 @@ Object.values || (Object.values = function (e) {
                 ambulance: "Transporte de pacientes",
                 attended: "Misiones a las que ha asistido",
                 attended_description: "Asistidos, No se cumplen todas las condiciones",
+                dropdown_collapsed_description: "Men\xfa con filtros de misi\xf3n - cerrado",
+                dropdown_open_description: "Men\xfa que contiene los filtros de misi\xf3n - abrir",
                 emergency: "Emergencia",
                 finishing: "Misiones en curso",
                 finishing_description: "Misiones en curso, todas las condiciones cumplidas",
                 new: "Nuevas misiones",
                 new_description: "Nuevas misiones que a\xfan no se han abierto",
+                showing: "Visible:",
                 sicherheitswache: "Misones planificadas",
                 sorting: {
                     age_asc: "Edad de la misi\xf3n (ascendente)",
@@ -13102,11 +13496,14 @@ Object.values || (Object.values = function (e) {
                 ambulance: "\u60a3\u8005\u642c\u9001",
                 attended: "\u53c2\u52a0\u30df\u30c3\u30b7\u30e7\u30f3",
                 attended_description: "\u52a0\u5de5\u6e08\u307f\u3001\u3059\u3079\u3066\u306e\u6761\u4ef6\u3092\u6e80\u305f\u3057\u3066\u3044\u306a\u3044",
+                dropdown_collapsed_description: "\u30df\u30c3\u30b7\u30e7\u30f3\u30d5\u30a3\u30eb\u30bf\u30fc\u3092\u542b\u3080\u30e1\u30cb\u30e5\u30fc - \u7d42\u4e86",
+                dropdown_open_description: "\u30df\u30c3\u30b7\u30e7\u30f3\u30d5\u30a3\u30eb\u30bf\u30fc\u3092\u542b\u3080\u30e1\u30cb\u30e5\u30fc - \u958b\u304f",
                 emergency: "\u7dca\u6025\u4e8b\u614b",
                 finishing: "\u9032\u884c\u4e2d\u306e\u30df\u30c3\u30b7\u30e7\u30f3",
                 finishing_description: "\u9032\u884c\u4e2d\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u3001\u3059\u3079\u3066\u306e\u6761\u4ef6\u9054\u6210",
                 new: "\u65b0\u3057\u3044\u30df\u30c3\u30b7\u30e7\u30f3",
                 new_description: "\u672a\u30aa\u30fc\u30d7\u30f3\u306e\u65b0\u30df\u30c3\u30b7\u30e7\u30f3",
+                showing: "\u898b\u3048\u308b\uff1a",
                 sicherheitswache: "\u4e88\u5b9a\u3055\u308c\u3066\u3044\u308b\u30df\u30c3\u30b7\u30e7\u30f3",
                 sorting: {
                     age_asc: "\u30df\u30c3\u30b7\u30e7\u30f3\u5e74\u9f62\uff08\u6607\u9806\uff09",
@@ -13540,11 +13937,14 @@ Object.values || (Object.values = function (e) {
                 ambulance: "\ud658\uc790 \uc774\uc1a1",
                 attended: "\ucd9c\uc11d\ud55c \ubbf8\uc158",
                 attended_description: "\ucc98\ub9ac\ub428, \ubaa8\ub4e0 \uc870\uac74\uc774 \ucda9\uc871\ub418\uc9c0 \uc54a\uc74c",
+                dropdown_collapsed_description: "\ubbf8\uc158 \ud544\ud130\uac00 \ud3ec\ud568\ub41c \uba54\ub274 - \ub2eb\ud798",
+                dropdown_open_description: "\ubbf8\uc158 \ud544\ud130\uac00 \ud3ec\ud568\ub41c \uba54\ub274 - \uc5f4\uae30",
                 emergency: "\uc751\uae09 \uc0c1\ud669",
                 finishing: "\uc9c4\ud589 \uc911\uc778 \ubbf8\uc158",
                 finishing_description: "\uc9c4\ud589 \uc911\uc778 \ubbf8\uc158, \ubaa8\ub4e0 \uc870\uac74 \ucda9\uc871\ub428",
                 new: "\uc0c8\ub85c\uc6b4 \ubbf8\uc158",
                 new_description: "\uc544\uc9c1 \uc5f4\ub9ac\uc9c0 \uc54a\uc740 \uc0c8\ub85c\uc6b4 \ubbf8\uc158",
+                showing: "\ud45c\uc2dc\ub428:",
                 sicherheitswache: "\uacc4\ud68d\ub41c \ucd9c\ud604",
                 sorting: {
                     age_asc: "\ubbf8\uc158 \uc5f0\ub839(\uc624\ub984\ucc28\uc21c)",
@@ -13968,11 +14368,14 @@ Object.values || (Object.values = function (e) {
                 ambulance: "Transportul pacien\u021bilor",
                 attended: "Misiuni la care a participat",
                 attended_description: "Prezent, Nu sunt \xeendeplinite toate condi\u021biile",
+                dropdown_collapsed_description: "Meniul care con\u021bine filtre de misiune - \xeenchis",
+                dropdown_open_description: "Meniul care con\u021bine filtrele de misiune - open",
                 emergency: "Urgen\u021b\u0103",
                 finishing: "Misiuni \xeen curs de desf\u0103\u0219urare",
                 finishing_description: "Misiuni \xeen desf\u0103\u0219urare, Toate condi\u021biile \xeendeplinite",
                 new: "Noi misiuni",
                 new_description: "Misiuni noi care nu au fost \xeenc\u0103 deschise",
+                showing: "Vizibil:",
                 sicherheitswache: "Interven\u021bii planificate",
                 sorting: {
                     age_asc: "V\xe2rsta misiunii (cresc\u0103tor)",
@@ -14391,11 +14794,14 @@ Object.values || (Object.values = function (e) {
                 ambulance: "Potilaskuljetukset",
                 attended: "Osallistunut l\xe4hetyst\xf6ihin",
                 attended_description: "Jalostettu, kaikki ehdot eiv\xe4t t\xe4yty",
+                dropdown_collapsed_description: "Teht\xe4v\xe4suodattimia sis\xe4lt\xe4v\xe4 valikko - suljettu",
+                dropdown_open_description: "Teht\xe4v\xe4suodattimet sis\xe4lt\xe4v\xe4 valikko - avaa",
                 emergency: "H\xe4t\xe4tilanne",
                 finishing: "K\xe4ynniss\xe4 olevat teht\xe4v\xe4t",
                 finishing_description: "Teht\xe4v\xe4t k\xe4ynniss\xe4, kaikki ehdot t\xe4ytetty",
                 new: "Uudet teht\xe4v\xe4t",
                 new_description: "Uudet teht\xe4v\xe4t, joita ei ole viel\xe4 avattu",
+                showing: "N\xe4kyviss\xe4:",
                 sicherheitswache: "Suunnitellut teht\xe4v\xe4t",
                 sorting: {
                     age_asc: "Teht\xe4v\xe4n ik\xe4 (nouseva)",
@@ -14837,11 +15243,14 @@ Object.values || (Object.values = function (e) {
                 ambulance: "Preprava pacientov",
                 attended: "Z\xfa\u010dastnen\xe9 misie",
                 attended_description: "Z\xfa\u010dastnil sa, nie s\xfa splnen\xe9 v\u0161etky podmienky",
+                dropdown_collapsed_description: "Menu obsahuj\xface filtre misi\xed - zatvoren\xe9",
+                dropdown_open_description: "Menu obsahuj\xface filtre misi\xed - otvori\u0165",
                 emergency: "Mimoriadna udalos\u0165",
                 finishing: "Prebiehaj\xface misie",
                 finishing_description: "Misie prebiehaj\xfa, v\u0161etky podmienky splnen\xe9",
                 new: "Nov\xe9 misie",
                 new_description: "Nov\xe9 misie, ktor\xe9 e\u0161te neboli otvoren\xe9",
+                showing: "Vidite\u013en\xe9:",
                 sicherheitswache: "Pl\xe1novan\xe9 v\xfdskyty",
                 sorting: {
                     age_asc: "Vek misie (vzostupne)",
@@ -15365,7 +15774,7 @@ Object.values || (Object.values = function (e) {
                 for (s in t) P(e + "[" + s + "]", t[s], i, n)
         }
 
-        function j(e) {
+        function M(e) {
             return function (t, i) {
                 "string" != typeof t && (i = t, t = "*");
                 var n, s = 0,
@@ -15378,7 +15787,7 @@ Object.values || (Object.values = function (e) {
             }
         }
 
-        function M(e, t, i, n) {
+        function j(e, t, i, n) {
             function s(r) {
                 var l;
                 return o[r] = !0, ue.each(e[r] || [], (function (e, r) {
@@ -15470,13 +15879,13 @@ Object.values || (Object.values = function (e) {
             })), Yt = ue.now()
         }
 
-        function B(e, t, i) {
+        function $(e, t, i) {
             for (var n, s = (ii[t] || [])
                     .concat(ii["*"]), o = 0, a = s.length; o < a; o++)
                 if (n = s[o].call(i, t, e)) return n
         }
 
-        function $(e, t, i) {
+        function B(e, t, i) {
             var n, s, o = 0,
                 a = ti.length,
                 r = ue.Deferred()
@@ -15515,7 +15924,7 @@ Object.values || (Object.values = function (e) {
                 u = c.props;
             for (F(u, c.opts.specialEasing); o < a; o++)
                 if (n = ti[o].call(c, e, u, c.opts)) return n;
-            return ue.map(u, B, c), ue.isFunction(c.opts.start) && c.opts.start.call(e, c), ue.fx.timer(ue
+            return ue.map(u, $, c), ue.isFunction(c.opts.start) && c.opts.start.call(e, c), ue.fx.timer(ue
                     .extend(l, {
                         elem: e,
                         anim: c,
@@ -15569,7 +15978,7 @@ Object.values || (Object.values = function (e) {
                     })), c.done((function () {
                         var t;
                         for (t in ue._removeData(e, "fxshow"), u) ue.style(e, t, u[t])
-                    })), u) a = B(h ? p[n] : 0, n, c), n in p || (p[n] = a.start, h && (a.end = a.start, a
+                    })), u) a = $(h ? p[n] : 0, n, c), n in p || (p[n] = a.start, h && (a.end = a.start, a
                     .start = "width" === n || "height" === n ? 1 : 0))
         }
 
@@ -15967,7 +16376,7 @@ Object.values || (Object.values = function (e) {
                                 if (s[2]) return se.apply(i, t.getElementsByTagName(e)), i;
                                 if ((a = s[3]) && T.getElementsByClassName && t.getElementsByClassName)
                                 return se.apply(i, t.getElementsByClassName(a)), i
-                            } if (T.qsa && (!B || !B.test(e))) {
+                            } if (T.qsa && (!$ || !$.test(e))) {
                             if (d = u = W, h = t, p = 9 === r && e, 1 === r && "object" !== t.nodeName
                                 .toLowerCase()) {
                                 for (c = f(e), (u = t.getAttribute("id")) ? d = u.replace(Se, "\\$&") : t
@@ -16236,11 +16645,11 @@ Object.values || (Object.values = function (e) {
                                 break
                             }
                     }
-                    return M(e, c)(n, t, !R, i, ge.test(e)), i
+                    return j(e, c)(n, t, !R, i, ge.test(e)), i
                 }
 
                 function C() {}
-                var S, T, A, E, P, j, M, I, D, N, L, O, R, B, $, F, H, W = "sizzle" + -new Date,
+                var S, T, A, E, P, M, j, I, D, N, L, O, R, $, B, F, H, W = "sizzle" + -new Date,
                     V = e.document,
                     q = 0,
                     U = 0,
@@ -16317,14 +16726,14 @@ Object.values || (Object.values = function (e) {
                         }
                     }
                 }
-                for (S in j = i.isXML = function (e) {
+                for (S in M = i.isXML = function (e) {
                         var t = e && (e.ownerDocument || e)
                             .documentElement;
                         return !!t && "HTML" !== t.nodeName
                     }, T = i.support = {}, N = i.setDocument = function (e) {
                         var t = e ? e.ownerDocument || e : V;
                         return t !== L && 9 === t.nodeType && t.documentElement ? (L = t, O = t
-                            .documentElement, R = !j(t), T.attributes = a((function (e) {
+                            .documentElement, R = !M(t), T.attributes = a((function (e) {
                                 return e.innerHTML = "<a href='#'></a>", r(
                                     "type|href|height|width", c, "#" === e.firstChild
                                     .getAttribute("href")), r(re, l, null == e.getAttribute(
@@ -16378,27 +16787,27 @@ Object.values || (Object.values = function (e) {
                             }, E.find.CLASS = T.getElementsByClassName && function (e, t) {
                                 if (typeof t.getElementsByClassName !== Q && R) return t
                                     .getElementsByClassName(e)
-                            }, $ = [], B = [], (T.qsa = n(t.querySelectorAll)) && (a((function (e) {
+                            }, B = [], $ = [], (T.qsa = n(t.querySelectorAll)) && (a((function (e) {
                                 e.innerHTML =
                                     "<select><option selected=''></option></select>", e
                                     .querySelectorAll("[selected]")
-                                    .length || B.push("\\[" + le + "*(?:value|" + re + ")"), e
+                                    .length || $.push("\\[" + le + "*(?:value|" + re + ")"), e
                                     .querySelectorAll(":checked")
-                                    .length || B.push(":checked")
+                                    .length || $.push(":checked")
                             })), a((function (e) {
                                 var i = t.createElement("input");
                                 i.setAttribute("type", "hidden"), e.appendChild(i)
                                     .setAttribute("t", ""), e.querySelectorAll("[t^='']")
-                                    .length && B.push("[*^$]=" + le + "*(?:''|\"\")"), e
+                                    .length && $.push("[*^$]=" + le + "*(?:''|\"\")"), e
                                     .querySelectorAll(":enabled")
-                                    .length || B.push(":enabled", ":disabled"), e
-                                    .querySelectorAll("*,:x"), B.push(",.*:")
+                                    .length || $.push(":enabled", ":disabled"), e
+                                    .querySelectorAll("*,:x"), $.push(",.*:")
                             }))), (T.matchesSelector = n(F = O.webkitMatchesSelector || O
                                 .mozMatchesSelector || O.oMatchesSelector || O.msMatchesSelector)) && a((
                                 function (e) {
-                                    T.disconnectedMatch = F.call(e, "div"), F.call(e, "[s!='']:x"), $
+                                    T.disconnectedMatch = F.call(e, "div"), F.call(e, "[s!='']:x"), B
                                         .push("!=", pe)
-                                })), B = B.length && new RegExp(B.join("|")), $ = $.length && new RegExp($
+                                })), $ = $.length && new RegExp($.join("|")), B = B.length && new RegExp(B
                                 .join("|")), H = n(O.contains) || O.compareDocumentPosition ? function (e,
                                 t) {
                                 var i = 9 === e.nodeType ? e.documentElement : e,
@@ -16440,7 +16849,7 @@ Object.values || (Object.values = function (e) {
                         return i(e, null, null, t)
                     }, i.matchesSelector = function (e, t) {
                         if ((e.ownerDocument || e) !== L && N(e), t = t.replace(ve, "='$1']"), T
-                            .matchesSelector && R && (!$ || !$.test(t)) && (!B || !B.test(t))) try {
+                            .matchesSelector && R && (!B || !B.test(t)) && (!$ || !$.test(t))) try {
                             var n = F.call(e, t);
                             if (n || T.disconnectedMatch || e.document && 11 !== e.document.nodeType)
                                 return n
@@ -16610,7 +17019,7 @@ Object.values || (Object.values = function (e) {
                             not: o((function (e) {
                                 var t = [],
                                     i = [],
-                                    n = M(e.replace(me, "$1"));
+                                    n = j(e.replace(me, "$1"));
                                 return n[W] ? o((function (e, t, i, s) {
                                     for (var o, a = n(e, null, s, []), r = e
                                         .length; r--;)(o = a[r]) && (e[r] = !(t[r] =
@@ -16732,7 +17141,7 @@ Object.values || (Object.values = function (e) {
                         submit: !0,
                         reset: !0
                     }) E.pseudos[S] = p(S);
-                M = i.compile = function (e, t) {
+                j = i.compile = function (e, t) {
                         var i, n = [],
                             s = [],
                             o = G[e + " "];
@@ -17108,8 +17517,8 @@ Object.values || (Object.values = function (e) {
             }
         });
         var Ae, Ee, Pe = /[\t\r\n\f]/g,
-            je = /\r/g,
-            Me = /^(?:input|select|textarea|button|object)$/i,
+            Me = /\r/g,
+            je = /^(?:input|select|textarea|button|object)$/i,
             Ie = /^(?:a|area)$/i,
             De = /^(?:checked|selected)$/i,
             Ne = ue.support.getSetAttribute,
@@ -17211,7 +17620,7 @@ Object.values || (Object.values = function (e) {
                                     this, o, "value") !== t || (this.value = o))
                         }))) : o ? (n = ue.valHooks[o.type] || ue.valHooks[o.nodeName
                     .toLowerCase()]) && "get" in n && (i = n.get(o, "value")) !== t ? i : "string" ==
-                        typeof (i = o.value) ? i.replace(je, "") : null == i ? "" : i : void 0
+                        typeof (i = o.value) ? i.replace(Me, "") : null == i ? "" : i : void 0
                 }
             }), ue.extend({
                 valHooks: {
@@ -17288,7 +17697,7 @@ Object.values || (Object.values = function (e) {
                     tabIndex: {
                         get: function (e) {
                             var t = ue.find.attr(e, "tabindex");
-                            return t ? parseInt(t, 10) : Me.test(e.nodeName) || Ie.test(e.nodeName) &&
+                            return t ? parseInt(t, 10) : je.test(e.nodeName) || Ie.test(e.nodeName) &&
                                 e.href ? 0 : -1
                         }
                     }
@@ -17374,8 +17783,8 @@ Object.values || (Object.values = function (e) {
                 }));
         var Oe = /^(?:input|select|textarea)$/i,
             Re = /^key/,
-            Be = /^(?:mouse|contextmenu)|click/,
-            $e = /^(?:focusinfocus|focusoutblur)$/,
+            $e = /^(?:mouse|contextmenu)|click/,
+            Be = /^(?:focusinfocus|focusoutblur)$/,
             Fe = /^([^.]*)(?:\.(.+)|)$/;
         ue.event = {
             global: {},
@@ -17438,7 +17847,7 @@ Object.values || (Object.values = function (e) {
                 var a, r, l, c, u, d, h, p = [s || Y],
                     m = le.call(i, "type") ? i.type : i,
                     f = le.call(i, "namespace") ? i.namespace.split(".") : [];
-                if (l = d = s = s || Y, 3 !== s.nodeType && 8 !== s.nodeType && !$e.test(m + ue.event
+                if (l = d = s = s || Y, 3 !== s.nodeType && 8 !== s.nodeType && !Be.test(m + ue.event
                         .triggered) && (m.indexOf(".") >= 0 && (f = m.split("."), m = f.shift(), f
                             .sort()), r = m.indexOf(":") < 0 && "on" + m, (i = i[ue.expando] ? i :
                             new ue.Event(m, "object" == typeof i && i))
@@ -17448,7 +17857,7 @@ Object.values || (Object.values = function (e) {
                         .makeArray(n, [i]), u = ue.event.special[m] || {}, o || !u.trigger || !1 !== u
                         .trigger.apply(s, n))) {
                     if (!o && !u.noBubble && !ue.isWindow(s)) {
-                        for (c = u.delegateType || m, $e.test(c + m) || (l = l.parentNode); l; l = l
+                        for (c = u.delegateType || m, Be.test(c + m) || (l = l.parentNode); l; l = l
                             .parentNode) p.push(l), d = l;
                         d === (s.ownerDocument || Y) && p.push(d.defaultView || d.parentWindow || e)
                     }
@@ -17513,7 +17922,7 @@ Object.values || (Object.values = function (e) {
                 var t, i, n, s = e.type,
                     o = e,
                     a = this.fixHooks[s];
-                for (a || (this.fixHooks[s] = a = Be.test(s) ? this.mouseHooks : Re.test(s) ? this
+                for (a || (this.fixHooks[s] = a = $e.test(s) ? this.mouseHooks : Re.test(s) ? this
                         .keyHooks : {}), n = a.props ? this.props.concat(a.props) : this.props, e =
                     new ue.Event(o), t = n.length; t--;) e[i = n[t]] = o[i];
                 return e.target || (e.target = o.srcElement || Y), 3 === e.target.nodeType && (e
@@ -18398,16 +18807,16 @@ Object.values || (Object.values = function (e) {
                 return 1 === arguments.length ? this.off(e, "**") : this.off(t, e || "**", i)
             }
         });
-        var Et, Pt, jt = ue.now(),
-            Mt = /\?/,
+        var Et, Pt, Mt = ue.now(),
+            jt = /\?/,
             It = /#.*$/,
             Dt = /([?&])_=[^&]*/,
             Nt = /^(.*?):[ \t]*([^\r\n]*)\r?$/gm,
             Lt = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
             Ot = /^(?:GET|HEAD)$/,
             Rt = /^\/\//,
-            Bt = /^([\w.+-]+:)(?:\/\/([^\/?#:]*)(?::(\d+)|)|)/,
-            $t = ue.fn.load,
+            $t = /^([\w.+-]+:)(?:\/\/([^\/?#:]*)(?::(\d+)|)|)/,
+            Bt = ue.fn.load,
             Ft = {},
             Ht = {},
             Wt = "*/".concat("*");
@@ -18417,8 +18826,8 @@ Object.values || (Object.values = function (e) {
             (Pt = Y.createElement("a"))
             .href = "", Pt = Pt.href
         }
-        Et = Bt.exec(Pt.toLowerCase()) || [], ue.fn.load = function (e, i, n) {
-            if ("string" != typeof e && $t) return $t.apply(this, arguments);
+        Et = $t.exec(Pt.toLowerCase()) || [], ue.fn.load = function (e, i, n) {
+            if ("string" != typeof e && Bt) return Bt.apply(this, arguments);
             var s, o, a, r = this,
                 l = e.indexOf(" ");
             return l >= 0 && (s = e.slice(l, e.length), e = e.slice(0, l)), ue.isFunction(i) ? (n = i, i =
@@ -18484,8 +18893,8 @@ Object.values || (Object.values = function (e) {
             ajaxSetup: function (e, t) {
                 return t ? I(I(e, ue.ajaxSettings), t) : I(ue.ajaxSettings, e)
             },
-            ajaxPrefilter: j(Ft),
-            ajaxTransport: j(Ht),
+            ajaxPrefilter: M(Ft),
+            ajaxTransport: M(Ht),
             ajax: function (e, i) {
                 function n(e, i, n, s) {
                     var o, d, v, b, w, x = i;
@@ -18557,17 +18966,17 @@ Object.values || (Object.values = function (e) {
                     .replace(Rt, Et[1] + "//"), h.type = i.method || i.type || h.method || h.type,
                     h.dataTypes = ue.trim(h.dataType || "*")
                     .toLowerCase()
-                    .match(he) || [""], null == h.crossDomain && (s = Bt.exec(h.url
+                    .match(he) || [""], null == h.crossDomain && (s = $t.exec(h.url
                     .toLowerCase()), h.crossDomain = !(!s || s[1] === Et[1] && s[2] === Et[2] && (
                             s[3] || ("http:" === s[1] ? "80" : "443")) === (Et[3] || (
                             "http:" === Et[1] ? "80" : "443")))), h.data && h.processData &&
-                    "string" != typeof h.data && (h.data = ue.param(h.data, h.traditional)), M(Ft,
+                    "string" != typeof h.data && (h.data = ue.param(h.data, h.traditional)), j(Ft,
                         h, i, k), 2 === y) return k;
                 for (o in (c = h.global) && 0 == ue.active++ && ue.event.trigger("ajaxStart"), h
                     .type = h.type.toUpperCase(), h.hasContent = !Ot.test(h.type), a = h.url, h
-                    .hasContent || (h.data && (a = h.url += (Mt.test(a) ? "&" : "?") + h.data,
+                    .hasContent || (h.data && (a = h.url += (jt.test(a) ? "&" : "?") + h.data,
                         delete h.data), !1 === h.cache && (h.url = Dt.test(a) ? a.replace(Dt,
-                        "$1_=" + jt++) : a + (Mt.test(a) ? "&" : "?") + "_=" + jt++)), h
+                        "$1_=" + Mt++) : a + (jt.test(a) ? "&" : "?") + "_=" + Mt++)), h
                     .ifModified && (ue.lastModified[a] && k.setRequestHeader("If-Modified-Since",
                         ue.lastModified[a]), ue.etag[a] && k.setRequestHeader("If-None-Match",
                         ue.etag[a])), (h.data && h.hasContent && !1 !== h.contentType || i
@@ -18583,7 +18992,7 @@ Object.values || (Object.values = function (e) {
                         error: 1,
                         complete: 1
                     }) k[o](h[o]);
-                if (u = M(Ht, h, i, k)) {
+                if (u = j(Ht, h, i, k)) {
                     k.readyState = 1, c && m.trigger("ajaxSend", [k, h]), h.async && h.timeout >
                         0 && (l = setTimeout((function () {
                             k.abort("timeout")
@@ -18652,7 +19061,7 @@ Object.values || (Object.values = function (e) {
         ue.ajaxSetup({
             jsonp: "callback",
             jsonpCallback: function () {
-                var e = Vt.pop() || ue.expando + "_" + jt++;
+                var e = Vt.pop() || ue.expando + "_" + Mt++;
                 return this[e] = !0, e
             }
         }), ue.ajaxPrefilter("json jsonp", (function (i, n, s) {
@@ -18661,7 +19070,7 @@ Object.values || (Object.values = function (e) {
                 .indexOf("application/x-www-form-urlencoded") && qt.test(i.data) && "data");
             if (l || "jsonp" === i.dataTypes[0]) return o = i.jsonpCallback = ue.isFunction(i
                     .jsonpCallback) ? i.jsonpCallback() : i.jsonpCallback, l ? i[l] = i[l]
-                .replace(qt, "$1" + o) : !1 !== i.jsonp && (i.url += (Mt.test(i.url) ? "&" :
+                .replace(qt, "$1" + o) : !1 !== i.jsonp && (i.url += (jt.test(i.url) ? "&" :
                     "?") + i.jsonp + "=" + o), i.converters["script json"] = function () {
                     return r || ue.error(o + " was not called"), r[0]
                 }, i.dataTypes[0] = "json", a = e[o], e[o] = function () {
@@ -18748,7 +19157,7 @@ Object.values || (Object.values = function (e) {
                         s[2] : +s[2]), i
                 }]
             };
-        ue.Animation = ue.extend($, {
+        ue.Animation = ue.extend(B, {
                 tweener: function (e, t) {
                     ue.isFunction(e) ? (t = e, e = ["*"]) : e = e.split(" ");
                     for (var i, n = 0, s = e.length; n < s; n++) i = e[n], ii[i] = ii[i] || [], ii[i]
@@ -18813,7 +19222,7 @@ Object.values || (Object.values = function (e) {
                     var s = ue.isEmptyObject(e),
                         o = ue.speed(t, i, n),
                         a = function () {
-                            var t = $(this, ue.extend({}, e), o);
+                            var t = B(this, ue.extend({}, e), o);
                             a.finish = function () {
                                 t.stop(!0)
                             }, (s || ue._data(this, "finish")) && t.stop(!0)
@@ -24599,9 +25008,9 @@ Object.values || (Object.values = function (e) {
                 },
                 _generateHTML: function (e) {
                     var t, i, n, s, o, a, r, l, c, u, d, h, p, m, f, _, g, v, b, y, w, k, x,
-                        z, C, S, T, A, E, P, j, M, I, D, N, L, O, R, B, $ = new Date,
-                        F = this._daylightSavingAdjust(new Date($.getFullYear(), $.getMonth(),
-                            $.getDate())),
+                        z, C, S, T, A, E, P, M, j, I, D, N, L, O, R, $, B = new Date,
+                        F = this._daylightSavingAdjust(new Date(B.getFullYear(), B.getMonth(),
+                            B.getDate())),
                         H = this._get(e, "isRTL"),
                         W = this._get(e, "showButtonPanel"),
                         V = this._get(e, "hideIfNoPrevNext"),
@@ -24687,32 +25096,32 @@ Object.values || (Object.values = function (e) {
                                 "</span></th>";
                             for (T += A + "</tr></thead><tbody>", P = this._getDaysInMonth(ee,
                                     X), ee === e.selectedYear && X === e.selectedMonth && (e
-                                    .selectedDay = Math.min(e.selectedDay, P)), j = (this
-                                    ._getFirstDayOfMonth(ee, X) - u + 7) % 7, M = Math.ceil((
-                                    j + P) / 7), I = G && this.maxRows > M ? this.maxRows : M,
+                                    .selectedDay = Math.min(e.selectedDay, P)), M = (this
+                                    ._getFirstDayOfMonth(ee, X) - u + 7) % 7, j = Math.ceil((
+                                    M + P) / 7), I = G && this.maxRows > j ? this.maxRows : j,
                                 this.maxRows = I, D = this._daylightSavingAdjust(new Date(ee,
-                                    X, 1 - j)), N = 0; N < I; N++) {
+                                    X, 1 - M)), N = 0; N < I; N++) {
                                 for (T += "<tr>", L = d ?
                                     "<td class='ui-datepicker-week-col'>" + this._get(e,
                                         "calculateWeek")(D) + "</td>" : "", w = 0; w < 7; w++)
                                     O = _ ? _.apply(e.input ? e.input[0] : null, [D]) : [!0,
-                                        ""], B = (R = D.getMonth() !== X) && !v || !O[0] ||
+                                        ""], $ = (R = D.getMonth() !== X) && !v || !O[0] ||
                                     J && D < J || Q && D > Q, L += "<td class='" + ((w + u +
                                         6) % 7 >= 5 ? " ui-datepicker-week-end" : "") + (R ?
                                         " ui-datepicker-other-month" : "") + (D.getTime() ===
                                         C.getTime() && X === e.selectedMonth && e._keyEvent ||
                                         b.getTime() === D.getTime() && b.getTime() === C
-                                        .getTime() ? " " + this._dayOverClass : "") + (B ?
+                                        .getTime() ? " " + this._dayOverClass : "") + ($ ?
                                         " " + this._unselectableClass + " ui-state-disabled" :
                                         "") + (R && !g ? "" : " " + O[1] + (D.getTime() === Y
                                         .getTime() ? " " + this._currentClass : "") + (D
                                         .getTime() === F.getTime() ?
                                         " ui-datepicker-today" : "")) + "'" + (R && !g || !O[
                                             2] ? "" : " title='" + O[2].replace(/'/g,
-                                        "&#39;") + "'") + (B ? "" :
+                                        "&#39;") + "'") + ($ ? "" :
                                         " data-handler='selectDay' data-event='click' data-month='" +
                                         D.getMonth() + "' data-year='" + D.getFullYear() + "'"
-                                        ) + ">" + (R && !g ? "&#xa0;" : B ?
+                                        ) + ">" + (R && !g ? "&#xa0;" : $ ?
                                         "<span class='ui-state-default'>" + D.getDate() +
                                         "</span>" : "<a class='ui-state-default" + (D
                                             .getTime() === F.getTime() ?
@@ -29569,12 +29978,12 @@ Object.values || (Object.values = function (e) {
                         A = C.left,
                         E = A + a.width(),
                         P = !0 === i ? T : S,
-                        j = !0 === i ? S : T,
-                        M = !0 === i ? E : A,
+                        M = !0 === i ? S : T,
+                        j = !0 === i ? E : A,
                         I = !0 === i ? A : E;
-                    if ("both" === s) return !!p && j <= k && P >= w && I <= z && M >= x;
-                    if ("vertical" === s) return !!p && j <= k && P >= w;
-                    if ("horizontal" === s) return !!p && I <= z && M >= x
+                    if ("both" === s) return !!p && M <= k && P >= w && I <= z && j >= x;
+                    if ("vertical" === s) return !!p && M <= k && P >= w;
+                    if ("horizontal" === s) return !!p && I <= z && j >= x
                 }
             }
         }
@@ -31403,7 +31812,7 @@ Object.values || (Object.values = function (e) {
             return document.createElementNS("http://www.w3.org/2000/svg", e)
         }
 
-        function j(e, t) {
+        function M(e, t) {
             var i, n, s, o, a, r, l = "";
             for (i = 0, s = e.length; i < s; i++) {
                 for (n = 0, o = (a = e[i])
@@ -31414,7 +31823,7 @@ Object.values || (Object.values = function (e) {
             return l || "M0 0"
         }
 
-        function M(e) {
+        function j(e) {
             return navigator.userAgent.toLowerCase()
                 .indexOf(e) >= 0
         }
@@ -31438,12 +31847,12 @@ Object.values || (Object.values = function (e) {
                     if (!(si.indexOf(e.target.tagName) < 0)) return;
                     ke(e)
                 }
-                $(e, t)
+                B(e, t)
             }));
             e["_leaflet_touchstart" + n] = s, e.addEventListener(ei, s, !1), ai || (document
                 .documentElement.addEventListener(ei, O, !0), document.documentElement
-                .addEventListener(ti, R, !0), document.documentElement.addEventListener(ii, B, !
-                0), document.documentElement.addEventListener(ni, B, !0), ai = !0)
+                .addEventListener(ti, R, !0), document.documentElement.addEventListener(ii, $, !
+                0), document.documentElement.addEventListener(ni, $, !0), ai = !0)
         }
 
         function O(e) {
@@ -31454,11 +31863,11 @@ Object.values || (Object.values = function (e) {
             oi[e.pointerId] && (oi[e.pointerId] = e)
         }
 
-        function B(e) {
+        function $(e) {
             delete oi[e.pointerId], ri--
         }
 
-        function $(e, t) {
+        function B(e, t) {
             for (var i in e.touches = [], oi) e.touches.push(oi[i]);
             e.changedTouches = [e], t(e)
         }
@@ -31466,14 +31875,14 @@ Object.values || (Object.values = function (e) {
         function F(e, t, i) {
             var n = function (e) {
                 (e.pointerType !== e.MSPOINTER_TYPE_MOUSE && "mouse" !== e.pointerType || 0 !== e
-                    .buttons) && $(e, t)
+                    .buttons) && B(e, t)
             };
             e["_leaflet_touchmove" + i] = n, e.addEventListener(ti, n, !1)
         }
 
         function H(e, t, i) {
             var n = function (e) {
-                $(e, t)
+                B(e, t)
             };
             e["_leaflet_touchend" + i] = n, e.addEventListener(ii, n, !1), e.addEventListener(ni, n, !
                 1)
@@ -31615,7 +32024,7 @@ Object.values || (Object.values = function (e) {
         }
 
         function re(e, t) {
-            e._leaflet_pos = t, $t ? ae(e, t) : (e.style.left = t.x + "px", e.style.top = t.y + "px")
+            e._leaflet_pos = t, Bt ? ae(e, t) : (e.style.left = t.x + "px", e.style.top = t.y + "px")
         }
 
         function le(e) {
@@ -31686,7 +32095,7 @@ Object.values || (Object.values = function (e) {
                 },
                 r = a;
             qt && 0 === t.indexOf("touch") ? I(e, t, a, o) : !Ut || "dblclick" !== t || !W || qt &&
-                jt ? "addEventListener" in e ? "mousewheel" === t ? e.addEventListener("onwheel" in
+                Mt ? "addEventListener" in e ? "mousewheel" === t ? e.addEventListener("onwheel" in
                     e ? "wheel" : "mousewheel", a, !1) : "mouseenter" === t || "mouseleave" === t ? (
                     a = function (t) {
                         t = t || window.event, Ae(e, t) && r(t)
@@ -31701,7 +32110,7 @@ Object.values || (Object.values = function (e) {
             var o = t + n(i) + (s ? "_" + n(s) : ""),
                 a = e[bi] && e[bi][o];
             if (!a) return this;
-            qt && 0 === t.indexOf("touch") ? D(e, t, o) : !Ut || "dblclick" !== t || !V || qt && jt ?
+            qt && 0 === t.indexOf("touch") ? D(e, t, o) : !Ut || "dblclick" !== t || !V || qt && Mt ?
                 "removeEventListener" in e ? "mousewheel" === t ? e.removeEventListener("onwheel" in
                     e ? "wheel" : "mousewheel", a, !1) : e.removeEventListener("mouseenter" === t ?
                     "mouseover" : "mouseleave" === t ? "mouseout" : t, a, !1) : "detachEvent" in e &&
@@ -31775,14 +32184,14 @@ Object.values || (Object.values = function (e) {
         function Pe(e, t) {
             if (!t || !e.length) return e.slice();
             var i = t * t;
-            return Me(e = De(e, i), i)
+            return je(e = De(e, i), i)
         }
 
-        function je(e, t, i) {
-            return Math.sqrt(Be(e, t, i, !0))
+        function Me(e, t, i) {
+            return Math.sqrt($e(e, t, i, !0))
         }
 
-        function Me(e, t) {
+        function je(e, t) {
             var i = e.length,
                 n = new(typeof Uint8Array != void 0 + "" ? Uint8Array : Array)(i);
             n[0] = n[i - 1] = 1, Ie(e, n, t, 0, i - 1);
@@ -31793,7 +32202,7 @@ Object.values || (Object.values = function (e) {
 
         function Ie(e, t, i, n, s) {
             var o, a, r, l = 0;
-            for (a = n + 1; a <= s - 1; a++)(r = Be(e[a], e[n], e[s], !0)) > l && (o = a, l = r);
+            for (a = n + 1; a <= s - 1; a++)(r = $e(e[a], e[n], e[s], !0)) > l && (o = a, l = r);
             l > i && (t[o] = 1, Ie(e, t, i, n, o), Ie(e, t, i, o, s))
         }
 
@@ -31804,9 +32213,9 @@ Object.values || (Object.values = function (e) {
         }
 
         function Ne(e, t, i, n, s) {
-            var o, a, r, l = n ? Mi : Oe(e, i),
+            var o, a, r, l = n ? ji : Oe(e, i),
                 c = Oe(t, i);
-            for (Mi = c;;) {
+            for (ji = c;;) {
                 if (!(l | c)) return [e, t];
                 if (l & c) return !1;
                 r = Oe(a = Le(e, t, o = l || c, i, s), i), o === l ? (e = a, l = r) : (t = a, c = r)
@@ -31835,7 +32244,7 @@ Object.values || (Object.values = function (e) {
             return i * i + n * n
         }
 
-        function Be(e, t, i, n) {
+        function $e(e, t, i, n) {
             var s, o = t.x,
                 a = t.y,
                 r = i.x - o,
@@ -31846,12 +32255,12 @@ Object.values || (Object.values = function (e) {
                 new y(o, a)
         }
 
-        function $e(e) {
+        function Be(e) {
             return !st(e[0]) || "object" != typeof e[0][0] && void 0 !== e[0][0]
         }
 
         function Fe(e) {
-            return console.warn("Deprecated use of _flat, please use L.LineUtil.isFlat instead."), $e(
+            return console.warn("Deprecated use of _flat, please use L.LineUtil.isFlat instead."), Be(
                 e)
         }
 
@@ -32491,23 +32900,23 @@ Object.values || (Object.values = function (e) {
             kt = "ActiveXObject" in window,
             xt = kt && !document.addEventListener,
             zt = "msLaunchUri" in navigator && !("documentMode" in document),
-            Ct = M("webkit"),
-            St = M("android"),
-            Tt = M("android 2") || M("android 3"),
+            Ct = j("webkit"),
+            St = j("android"),
+            Tt = j("android 2") || j("android 3"),
             At = parseInt(/WebKit\/([0-9]+)|$/.exec(navigator.userAgent)[1], 10),
-            Et = St && M("Google") && At < 537 && !("AudioNode" in window),
+            Et = St && j("Google") && At < 537 && !("AudioNode" in window),
             Pt = !!window.opera,
-            jt = M("chrome"),
-            Mt = M("gecko") && !Ct && !Pt && !kt,
-            It = !jt && M("safari"),
-            Dt = M("phantom"),
+            Mt = j("chrome"),
+            jt = j("gecko") && !Ct && !Pt && !kt,
+            It = !Mt && j("safari"),
+            Dt = j("phantom"),
             Nt = "OTransition" in wt,
             Lt = 0 === navigator.platform.indexOf("Win"),
             Ot = kt && "transition" in wt,
             Rt = "WebKitCSSMatrix" in window && "m11" in new window.WebKitCSSMatrix && !Tt,
-            Bt = "MozPerspective" in wt,
-            $t = !window.L_DISABLE_3D && (Ot || Rt || Bt) && !Nt && !Dt,
-            Ft = "undefined" != typeof orientation || M("mobile"),
+            $t = "MozPerspective" in wt,
+            Bt = !window.L_DISABLE_3D && (Ot || Rt || $t) && !Nt && !Dt,
+            Ft = "undefined" != typeof orientation || j("mobile"),
             Ht = Ft && Ct,
             Wt = Ft && Rt,
             Vt = !window.PointerEvent && window.MSPointerEvent,
@@ -32515,7 +32924,7 @@ Object.values || (Object.values = function (e) {
             Ut = !window.L_NO_TOUCH && (qt || "ontouchstart" in window || window.DocumentTouch &&
                 document instanceof window.DocumentTouch),
             Zt = Ft && Pt,
-            Kt = Ft && Mt,
+            Kt = Ft && jt,
             Gt = (window.devicePixelRatio || window.screen.deviceXDPI / window.screen.logicalXDPI) >
             1,
             Yt = !!document.createElement("canvas")
@@ -32541,16 +32950,16 @@ Object.values || (Object.values = function (e) {
                 android23: Tt,
                 androidStock: Et,
                 opera: Pt,
-                chrome: jt,
-                gecko: Mt,
+                chrome: Mt,
+                gecko: jt,
                 safari: It,
                 phantom: Dt,
                 opera12: Nt,
                 win: Lt,
                 ie3d: Ot,
                 webkit3d: Rt,
-                gecko3d: Bt,
-                any3d: $t,
+                gecko3d: $t,
+                any3d: Bt,
                 mobile: Ft,
                 mobileWebkit: Ht,
                 mobileWebkit3d: Wt,
@@ -32627,7 +33036,7 @@ Object.values || (Object.values = function (e) {
                 getScale: me
             }),
             bi = "_leaflet_events",
-            yi = Lt && jt ? 2 * window.devicePixelRatio : Mt ? window.devicePixelRatio : 1,
+            yi = Lt && Mt ? 2 * window.devicePixelRatio : jt ? window.devicePixelRatio : 1,
             wi = {},
             ki = (Object.freeze || Object)({
                 on: fe,
@@ -32702,7 +33111,7 @@ Object.values || (Object.values = function (e) {
                         void 0 !== t.zoom && (this._zoom = this._limitZoom(t.zoom)), t
                         .center && void 0 !== t.zoom && this.setView(T(t.center), t.zoom, {
                             reset: !0
-                        }), this.callInitHooks(), this._zoomAnimated = hi && $t && !Zt && this
+                        }), this.callInitHooks(), this._zoomAnimated = hi && Bt && !Zt && this
                         .options.zoomAnimation, this._zoomAnimated && (this
                         ._createAnimProxy(), fe(this._proxy, pi, this._catchTransitionEnd,
                                 this)), this._addLayers(this.options.layers)
@@ -32727,11 +33136,11 @@ Object.values || (Object.values = function (e) {
                     }) : (this._zoom = e, this)
                 },
                 zoomIn: function (e, t) {
-                    return e = e || ($t ? this.options.zoomDelta : 1), this.setZoom(this
+                    return e = e || (Bt ? this.options.zoomDelta : 1), this.setZoom(this
                         ._zoom + e, t)
                 },
                 zoomOut: function (e, t) {
-                    return e = e || ($t ? this.options.zoomDelta : 1), this.setZoom(this
+                    return e = e || (Bt ? this.options.zoomDelta : 1), this.setZoom(this
                         ._zoom - e, t)
                 },
                 setZoomAround: function (e, t, i) {
@@ -32848,7 +33257,7 @@ Object.values || (Object.values = function (e) {
                             ._moveEnd(!0)
                     }
                     if (!1 === (i = i || {})
-                        .animate || !$t) return this.setView(e, t, i);
+                        .animate || !Bt) return this.setView(e, t, i);
                     this._stop();
                     var d = this.project(this.getCenter()),
                         h = this.project(e),
@@ -33055,7 +33464,7 @@ Object.values || (Object.values = function (e) {
                         .subtract(i),
                         c = x(this.project(r, n), this.project(a, n))
                         .getSize(),
-                        u = $t ? this.options.zoomSnap : 1,
+                        u = Bt ? this.options.zoomSnap : 1,
                         d = l.x / c.x,
                         h = l.y / c.y,
                         p = t ? Math.max(d, h) : Math.min(d, h);
@@ -33158,7 +33567,7 @@ Object.values || (Object.values = function (e) {
                 },
                 _initLayout: function () {
                     var e = this._container;
-                    this._fadeAnimated = this.options.fadeAnimation && $t, X(e,
+                    this._fadeAnimated = this.options.fadeAnimation && Bt, X(e,
                         "leaflet-container" + (Ut ? " leaflet-touch" : "") + (Gt ?
                             " leaflet-retina" : "") + (xt ? " leaflet-oldie" : "") + (It ?
                             " leaflet-safari" : "") + (this._fadeAnimated ?
@@ -33222,7 +33631,7 @@ Object.values || (Object.values = function (e) {
                     t(this._container,
                             "click dblclick mousedown mouseup mouseover mouseout mousemove contextmenu keypress",
                             this._handleDOMEvent, this), this.options.trackResize && t(window,
-                            "resize", this._onResize, this), $t && this.options
+                            "resize", this._onResize, this), Bt && this.options
                         .transform3DLimit && (e ? this.off : this.on)
                         .call(this, "moveend", this._onMoveEnd)
                 },
@@ -33377,7 +33786,7 @@ Object.values || (Object.values = function (e) {
                 _limitZoom: function (e) {
                     var t = this.getMinZoom(),
                         i = this.getMaxZoom(),
-                        n = $t ? this.options.zoomSnap : 1;
+                        n = Bt ? this.options.zoomSnap : 1;
                     return n && (e = Math.round(e / n) * n), Math.max(t, Math.min(i, e))
                 },
                 _onPanTransitionStep: function () {
@@ -33844,7 +34253,7 @@ Object.values || (Object.values = function (e) {
             }, Si.attribution = function (e) {
                 return new Pi(e)
             };
-        var ji = v.extend({
+        var Mi = v.extend({
             initialize: function (e) {
                 this._map = e
             },
@@ -33859,10 +34268,10 @@ Object.values || (Object.values = function (e) {
                 return !!this._enabled
             }
         });
-        ji.addTo = function (e, t) {
+        Mi.addTo = function (e, t) {
             return e.addHandler(t, this), this
         };
-        var Mi, Ii = {
+        var ji, Ii = {
                 Events: ut
             },
             Di = Ut ? "touchstart mousedown" : "mousedown",
@@ -33956,21 +34365,21 @@ Object.values || (Object.values = function (e) {
             }),
             Ri = (Object.freeze || Object)({
                 simplify: Pe,
-                pointToSegmentDistance: je,
+                pointToSegmentDistance: Me,
                 closestPointOnSegment: function (e, t, i) {
-                    return Be(e, t, i)
+                    return $e(e, t, i)
                 },
                 clipSegment: Ne,
                 _getEdgeIntersection: Le,
                 _getBitCode: Oe,
-                _sqClosestPointOnSegment: Be,
-                isFlat: $e,
+                _sqClosestPointOnSegment: $e,
+                isFlat: Be,
                 _flat: Fe
             }),
-            Bi = (Object.freeze || Object)({
+            $i = (Object.freeze || Object)({
                 clipPolygon: He
             }),
-            $i = {
+            Bi = {
                 project: function (e) {
                     return new y(e.lng, e.lat)
                 },
@@ -34003,7 +34412,7 @@ Object.values || (Object.values = function (e) {
                 }
             },
             Hi = (Object.freeze || Object)({
-                LonLat: $i,
+                LonLat: Bi,
                 Mercator: Fi,
                 SphericalMercator: ft
             }),
@@ -34017,11 +34426,11 @@ Object.values || (Object.values = function (e) {
             }),
             Vi = t({}, mt, {
                 code: "EPSG:4326",
-                projection: $i,
+                projection: Bi,
                 transformation: E(1 / 180, 1, -1 / 180, .5)
             }),
             qi = t({}, pt, {
-                projection: $i,
+                projection: Bi,
                 transformation: E(1, 0, -1, 0),
                 scale: function (e) {
                     return Math.pow(2, e)
@@ -34288,7 +34697,7 @@ Object.values || (Object.values = function (e) {
                         .replace(/marker-icon\.png["']?\)$/, "")
                 }
             }),
-            Ji = ji.extend({
+            Ji = Mi.extend({
                 initialize: function (e) {
                     this._marker = e
                 },
@@ -34671,7 +35080,7 @@ Object.values || (Object.values = function (e) {
                     return !this._latlngs.length
                 },
                 closestLayerPoint: function (e) {
-                    for (var t, i, n = 1 / 0, s = null, o = Be, a = 0, r = this._parts
+                    for (var t, i, n = 1 / 0, s = null, o = $e, a = 0, r = this._parts
                         .length; a < r; a++)
                         for (var l = this._parts[a], c = 1, u = l.length; c < u; c++) {
                             var d = o(e, t = l[c - 1], i = l[c], !0);
@@ -34703,10 +35112,10 @@ Object.values || (Object.values = function (e) {
                     this._bounds = new z, this._latlngs = this._convertLatLngs(e)
                 },
                 _defaultShape: function () {
-                    return $e(this._latlngs) ? this._latlngs : this._latlngs[0]
+                    return Be(this._latlngs) ? this._latlngs : this._latlngs[0]
                 },
                 _convertLatLngs: function (e) {
-                    for (var t = [], i = $e(e), n = 0, s = e.length; n < s; n++) i ? (t[n] =
+                    for (var t = [], i = Be(e), n = 0, s = e.length; n < s; n++) i ? (t[n] =
                         T(e[n]), this._bounds.extend(t[n])) : t[n] = this._convertLatLngs(
                         e[n]);
                     return t
@@ -34759,7 +35168,7 @@ Object.values || (Object.values = function (e) {
                     for (i = 0, o = this._parts.length; i < o; i++)
                         for (n = 0, s = (a = (r = this._parts[i])
                                 .length) - 1; n < a; s = n++)
-                            if ((t || 0 !== n) && je(e, r[s], r[n]) <= l) return !0;
+                            if ((t || 0 !== n) && Me(e, r[s], r[n]) <= l) return !0;
                     return !1
                 }
             });
@@ -34789,11 +35198,11 @@ Object.values || (Object.values = function (e) {
                     return i >= 2 && t[0] instanceof S && t[0].equals(t[i - 1]) && t.pop(), t
                 },
                 _setLatLngs: function (e) {
-                    nn.prototype._setLatLngs.call(this, e), $e(this._latlngs) && (this
+                    nn.prototype._setLatLngs.call(this, e), Be(this._latlngs) && (this
                         ._latlngs = [this._latlngs])
                 },
                 _defaultShape: function () {
-                    return $e(this._latlngs[0]) ? this._latlngs[0] : this._latlngs[0][0]
+                    return Be(this._latlngs[0]) ? this._latlngs[0] : this._latlngs[0][0]
                 },
                 _clipPoints: function () {
                     var e = this._renderer._bounds,
@@ -34863,7 +35272,7 @@ Object.values || (Object.values = function (e) {
             };
         Qi.include(an), tn.include(an), en.include(an), nn.include({
             toGeoJSON: function (e) {
-                var t = !$e(this._latlngs);
+                var t = !Be(this._latlngs);
                 return Ke(this, {
                     type: (t ? "Multi" : "") + "LineString",
                     coordinates: Ze(this._latlngs, t ? 1 : 0, !1, e)
@@ -34871,8 +35280,8 @@ Object.values || (Object.values = function (e) {
             }
         }), sn.include({
             toGeoJSON: function (e) {
-                var t = !$e(this._latlngs),
-                    i = t && !$e(this._latlngs[0]),
+                var t = !Be(this._latlngs),
+                    i = t && !Be(this._latlngs[0]),
                     n = Ze(this._latlngs, i ? 2 : t ? 1 : 0, !0, e);
                 return t || (n = [n]), Ke(this, {
                     type: (i ? "Multi" : "") + "Polygon",
@@ -35700,7 +36109,7 @@ Object.values || (Object.values = function (e) {
                         s = e.origin.multiplyBy(n)
                         .subtract(this._map._getNewPixelOrigin(t, i))
                         .round();
-                    $t ? ae(e.el, s, n) : re(e.el, s)
+                    Bt ? ae(e.el, s, n) : re(e.el, s)
                 },
                 _resetGrid: function () {
                     var e = this._map,
@@ -36055,7 +36464,7 @@ Object.values || (Object.values = function (e) {
                         .add(n)
                         .add(s)
                         .subtract(a);
-                    $t ? ae(this._container, r, i) : re(this._container, r)
+                    Bt ? ae(this._container, r, i) : re(this._container, r)
                 },
                 _reset: function () {
                     for (var e in this._update(), this._updateTransform(this._center, this
@@ -36416,7 +36825,7 @@ Object.values || (Object.values = function (e) {
                         "evenodd")) : t.setAttribute("fill", "none"))
                 },
                 _updatePoly: function (e, t) {
-                    this._setPath(e, j(e._parts, t))
+                    this._setPath(e, M(e._parts, t))
                 },
                 _updateCircle: function (e) {
                     var t = e._point,
@@ -36468,12 +36877,12 @@ Object.values || (Object.values = function (e) {
                     .getSouthEast()]
             }
         });
-        kn.create = wn, kn.pointsToPath = j, on.geometryToLayer = We, on.coordsToLatLng = Ve, on
+        kn.create = wn, kn.pointsToPath = M, on.geometryToLayer = We, on.coordsToLatLng = Ve, on
             .coordsToLatLngs = qe, on.latLngToCoords = Ue, on.latLngsToCoords = Ze, on.getFeature =
             Ke, on.asFeature = Ge, zi.mergeOptions({
                 boxZoom: !0
             });
-        var zn = ji.extend({
+        var zn = Mi.extend({
             initialize: function (e) {
                 this._map = e, this._container = e._container, this._pane = e._panes
                     .overlayPane, this._resetStateTimeout = 0, e.on("unload", this
@@ -36546,7 +36955,7 @@ Object.values || (Object.values = function (e) {
         zi.addInitHook("addHandler", "boxZoom", zn), zi.mergeOptions({
             doubleClickZoom: !0
         });
-        var Cn = ji.extend({
+        var Cn = Mi.extend({
             addHooks: function () {
                 this._map.on("dblclick", this._onDoubleClick, this)
             },
@@ -36571,7 +36980,7 @@ Object.values || (Object.values = function (e) {
             worldCopyJump: !1,
             maxBoundsViscosity: 0
         });
-        var Sn = ji.extend({
+        var Sn = Mi.extend({
             addHooks: function () {
                 if (!this._draggable) {
                     var e = this._map;
@@ -36697,7 +37106,7 @@ Object.values || (Object.values = function (e) {
             keyboard: !0,
             keyboardPanDelta: 80
         });
-        var Tn = ji.extend({
+        var Tn = Mi.extend({
             keyCodes: {
                 left: [37],
                 right: [39],
@@ -36790,7 +37199,7 @@ Object.values || (Object.values = function (e) {
             wheelDebounceTime: 40,
             wheelPxPerZoomLevel: 60
         });
-        var An = ji.extend({
+        var An = Mi.extend({
             addHooks: function () {
                 fe(this._map._container, "mousewheel", this._onWheelScroll, this), this
                     ._delta = 0
@@ -36826,7 +37235,7 @@ Object.values || (Object.values = function (e) {
             tap: !0,
             tapTolerance: 15
         });
-        var En = ji.extend({
+        var En = Mi.extend({
             addHooks: function () {
                 fe(this._map._container, "touchstart", this._onDown, this)
             },
@@ -36885,7 +37294,7 @@ Object.values || (Object.values = function (e) {
             touchZoom: Ut && !Tt,
             bounceAtZoomLimits: !0
         });
-        var Pn = ji.extend({
+        var Pn = Mi.extend({
             addHooks: function () {
                 X(this._map._container, "leaflet-touch-zoom"), fe(this._map._container,
                     "touchstart", this._onTouchStart, this)
@@ -36952,9 +37361,9 @@ Object.values || (Object.values = function (e) {
         zi.addInitHook("addHandler", "touchZoom", Pn), zi.BoxZoom = zn, zi.DoubleClickZoom = Cn, zi
             .Drag = Sn, zi.Keyboard = Tn, zi.ScrollWheelZoom = An, zi.Tap = En, zi.TouchZoom = Pn,
             Object.freeze = et, e.version = "1.4.0+HEAD.3337f36", e.Control = Ci, e.control = Si, e
-            .Browser = Xt, e.Evented = dt, e.Mixin = Ii, e.Util = ct, e.Class = v, e.Handler = ji, e
+            .Browser = Xt, e.Evented = dt, e.Mixin = Ii, e.Util = ct, e.Class = v, e.Handler = Mi, e
             .extend = t, e.bind = i, e.stamp = n, e.setOptions = u, e.DomEvent = ki, e.DomUtil = vi, e
-            .PosAnimation = xi, e.Draggable = Oi, e.LineUtil = Ri, e.PolyUtil = Bi, e.Point = y, e
+            .PosAnimation = xi, e.Draggable = Oi, e.LineUtil = Ri, e.PolyUtil = $i, e.Point = y, e
             .point = w, e.Bounds = k, e.bounds = x, e.Transformation = A, e.transformation = E, e
             .Projection = Hi, e.LatLng = S, e.latLng = T, e.LatLngBounds = z, e.latLngBounds = C, e
             .CRS = pt, e.GeoJSON = on, e.geoJSON = Ye, e.geoJson = rn, e.Layer = Ui, e.LayerGroup =
@@ -36992,9 +37401,9 @@ Object.values || (Object.values = function (e) {
             }, e.Map = zi, e.map = function (e, t) {
                 return new zi(e, t)
             };
-        var jn = window.L;
+        var Mn = window.L;
         e.noConflict = function () {
-            return window.L = jn, this
+            return window.L = Mn, this
         }, window.L = e
     })),
     function (e) {
@@ -37229,7 +37638,58 @@ var building_markers = Array(),
     i18nPrefix = null,
     shouldReloadAfterIFrameClose = !1,
     isIframe = window.self !== window.top,
-    vehiclesEquipmentDataById = {};
+    vehiclesEquipmentDataById = {},
+    filtersData = {},
+    missionListSorters = [],
+    missionTypeFilters = {
+        emergency: {
+            active: !0,
+            missionIds: []
+        },
+        krankentransporte: {
+            active: !0,
+            missionIds: []
+        },
+        alliance: {
+            active: !0,
+            missionIds: []
+        },
+        alliance_event: {
+            active: !0,
+            missionIds: []
+        },
+        sicherheitswache: {
+            active: !0,
+            missionIds: []
+        }
+    },
+    missionStateFilters = {
+        unattended: {
+            active: !0,
+            missionIds: []
+        },
+        attended: {
+            active: !0,
+            missionIds: []
+        },
+        finishing: {
+            active: !0,
+            missionIds: []
+        }
+    },
+    missionParticipationFilters = {
+        new: {
+            active: !0,
+            get missionIds() {
+                return getAllMissionIds()
+                    .filter((e => !missionParticipationFilters.started.missionIds.includes(e)))
+            }
+        },
+        started: {
+            active: !0,
+            missionIds: []
+        }
+    };
 $((function () {
     function onCoinsTop() {
         return !mobile_bridge_use || (mobileBridgeAdd("coins_window", {}), !1)
@@ -37838,6 +38298,9 @@ var mapKitFactoryVehicleAnnotation = function (e, t) {
     var i = document.createElement("img");
     return i.src = t.url[1], i
 };
+const debouncedSaveFilters = debounce((e => {
+    saveMissionListFilters(e)
+}), 300);
 Date.now || (Date.now = function () {
     return (new Date)
         .getTime()
@@ -37947,7 +38410,18 @@ function missionPositionMarkerAddAll() {}
  * Copyright 2011-2015 Twitter, Inc.
  * Licensed under the MIT license
  */
-if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requires jQuery");
+if ($(document)
+    .ready((function () {
+        $(document)
+            .delegate($.rails.linkClickSelector, "auxclick", (function (e) {
+                if (1 == e.button && !$.rails.allowAction($(this))) return $.rails
+                    .stopEverything(e)
+            })), $($.rails.linkClickSelector)
+            .on("click", (function (e) {
+                if (2 == e.which && !$.rails.allowAction($(this))) return $.rails
+                    .stopEverything(e)
+            }))
+    })), "undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requires jQuery");
 ! function () {
     "use strict";
     var e = jQuery.fn.jquery.split(" ")[0].split(".");
@@ -38987,7 +39461,8 @@ function (e) {
     var n = e.fn.scrollspy;
     e.fn.scrollspy = i, e.fn.scrollspy.Constructor = t, e.fn.scrollspy.noConflict = function () {
             return e.fn.scrollspy = n, this
-        }, e(window)
+        },
+        e(window)
         .on("load.bs.scrollspy.data-api", (function () {
             e('[data-spy="scroll"]')
                 .each((function () {
@@ -40887,7 +41362,7 @@ function (e) {
         (i = pe(i) ? !T(e, t) : i) ? A(e, t): E(e, t)
     }
 
-    function j(e, t) {
+    function M(e, t) {
         if (pe(t)) {
             var i = getComputedStyle(e),
                 n = a(i.paddingLeft) + a(i.paddingRight),
@@ -40897,7 +41372,7 @@ function (e) {
         y(e, "width", t)
     }
 
-    function M(e, t) {
+    function j(e, t) {
         if (pe(t)) {
             var i = getComputedStyle(e),
                 n = a(i.paddingTop) + a(i.paddingBottom),
@@ -40949,11 +41424,11 @@ function (e) {
         return i
     }
 
-    function B(e) {
+    function $(e) {
         return e && (!k(e, "p,div") || e.className || f(e, "style") || !i(w(e)))
     }
 
-    function $(e, t) {
+    function B(e, t) {
         var i = r(t, {}, e.ownerDocument);
         for (o(e.attributes, (function (e, t) {
                 try {
@@ -41134,20 +41609,20 @@ function (e) {
                 if (e in i[t]) return !0;
             return !1
         }, t.exists = function (e) {
-            return e in je && ("function" == typeof (e = je[e]) && "object" == typeof e.prototype)
+            return e in Me && ("function" == typeof (e = Me[e]) && "object" == typeof e.prototype)
         }, t.isRegistered = function (e) {
             if (t.exists(e))
                 for (var n = i.length; n--;)
-                    if (i[n] instanceof je[e]) return !0;
+                    if (i[n] instanceof Me[e]) return !0;
             return !1
         }, t.register = function (n) {
-            return !(!t.exists(n) || t.isRegistered(n)) && (n = new je[n], i.push(n), "init" in n && n
+            return !(!t.exists(n) || t.isRegistered(n)) && (n = new Me[n], i.push(n), "init" in n && n
                 .init.call(e), !0)
         }, t.deregister = function (n) {
             var s, o = i.length,
                 a = !1;
             if (!t.isRegistered(n)) return a;
-            for (; o--;) i[o] instanceof je[n] && (a = !0, "destroy" in (s = i.splice(o, 1)[0]) && s
+            for (; o--;) i[o] instanceof Me[n] && (a = !0, "destroy" in (s = i.splice(o, 1)[0]) && s
                 .destroy.call(e));
             return a
         }, t.destroy = function () {
@@ -41244,7 +41719,7 @@ function (e) {
         }, l.selectRange = function (t) {
             var i, n = e.getSelection(),
                 o = t.endContainer;
-            if (!Me && t.collapsed && o && !H(o, !0)) {
+            if (!je && t.collapsed && o && !H(o, !0)) {
                 for (i = o.lastChild; i && k(i, ".sceditor-ignore");) i = i.previousSibling;
                 if (k(i, "br")) {
                     var a = s.createRange();
@@ -41357,7 +41832,7 @@ function (e) {
 
     function le(e, t) {
         var i, a, l, _, x, z, S, N, L, R, W, q, U, K, Y, J, Q, ee, ie, ce, ue, de, fe, _e, ye, ke, xe, Te, Ae,
-            Ee, je, Me, Ie, Be, $e, Fe, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, st,
+            Ee, Me, je, Ie, $e, Be, Fe, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, st,
             ot, at, rt, lt, ct, ut, dt, ht, pt, mt, ft = this,
             _t = {},
             gt = [],
@@ -41373,14 +41848,14 @@ function (e) {
                 }), e), y(a, "z-index", kt.zIndex), Le && A(a, "ie ie" + Le), ce = e.required, e
                 .required = !1;
             var t = le.formats[kt.format];
-            "init" in (i = t ? new t : {}) && i.init.call(ft), Me(), We(), Be(), je(), $e(), Fe(), Se ||
+            "init" in (i = t ? new t : {}) && i.init.call(ft), je(), We(), $e(), Me(), Be(), Fe(), Se ||
                 ft.toggleSourceMode(), tt();
             var n = function () {
                 m(De, "load", n), kt.autofocus && at(), mt(), nt(), Y.call("ready"), "onReady" in i &&
                     i.onReady.call(ft)
             };
             p(De, "load", n), "complete" === Ne.readyState && n()
-        }, Me = function () {
+        }, je = function () {
             var e = kt.plugins;
             e = e ? e.toString()
                 .split(",") : [], Y = new ne(ft), e.forEach((function (e) {
@@ -41390,14 +41865,14 @@ function (e) {
             var e;
             (U = le.locale[kt.locale]) || (e = kt.locale.split("-"), U = le.locale[e[0]]), U && U
                 .dateFormat && (kt.dateFormat = U.dateFormat)
-        }, je = function () {
+        }, Me = function () {
             N = r("textarea"), _ = r("iframe", {
                     frameborder: 0,
                     allowfullscreen: !0
                 }), kt.startInSourceMode ? (A(a, "sourceMode"), g(_)) : (A(a, "wysiwygMode"), g(N)), kt
                 .spellcheck || f(a, "spellcheck", "false"), "https:" === De.location.protocol && f(_,
-                    "src", "javascript:false"), d(a, _), d(a, N), ft.dimensions(kt.width || j(e), kt
-                    .height || M(e));
+                    "src", "javascript:false"), d(a, _), d(a, N), ft.dimensions(kt.width || M(e), kt
+                    .height || j(e));
             var t = Le ? "ie ie" + Le : "";
             t += Ce ? " ios" : "", (S = _.contentDocument)
                 .open(), S.write(te("html", {
@@ -41406,12 +41881,12 @@ function (e) {
                     charset: kt.charset,
                     style: kt.style
                 })), S.close(), z = S.body, x = _.contentWindow, ft.readOnly(!!kt.readOnly), (Ce || ze ||
-                    Le) && (M(z, "100%"), Le || p(z, "touchend", ft.focus));
+                    Le) && (j(z, "100%"), Le || p(z, "touchend", ft.focus));
             var i = f(e, "tabindex");
             f(N, "tabindex", i), f(_, "tabindex", i), K = new se(x), g(e), ft.val(e.value);
             var n = kt.placeholder || f(e, "placeholder");
             n && (N.placeholder = n, f(z, "placeholder", n))
-        }, $e = function () {
+        }, Be = function () {
             kt.autoUpdate && (p(z, "blur", pt), p(N, "blur", pt)), null === kt.rtl && (kt.rtl = "rtl" ===
                 y(N, "direction")), ft.rtl(!!kt.rtl), kt.autoExpand && (p(z, "load", mt, be), p(z,
                 "input keyup", mt)), kt.resizeEnabled && He(), f(a, "id", kt.id), ft.emoticons(kt
@@ -41436,7 +41911,7 @@ function (e) {
                     R = null
                 })), p(a, "selectionchanged", ot), p(a, "selectionchanged", tt), p(a,
                     "selectionchanged valuechanged nodechanged pasteraw paste", Qe)
-        }, Be = function () {
+        }, $e = function () {
             var e, t = ft.commands,
                 i = (kt.toolbarExclude || "")
                 .split(","),
@@ -41490,8 +41965,8 @@ function (e) {
                 y = 0,
                 w = 0,
                 k = 0,
-                x = j(a),
-                z = M(a),
+                x = M(a),
+                z = j(a),
                 C = !1,
                 S = ft.rtl();
             if (e = kt.resizeMinHeight || z / 1.5, t = kt.resizeMaxHeight || 2.5 * z, i = kt
@@ -41511,7 +41986,7 @@ function (e) {
             }
             d(a, l), d(a, c), g(c), p(l, "touchstart mousedown", (function (e) {
                 "touchstart" === e.type ? (e = De.event, f = e.touches[0].pageX, _ = e
-                        .touches[0].pageY) : (f = e.pageX, _ = e.pageY), w = j(a), k = M(a),
+                        .touches[0].pageY) : (f = e.pageX, _ = e.pageY), w = M(a), k = j(a),
                     C = !0, A(a, "resizing"), v(c), p(Ne, u, s), p(Ne, h, o), e
                     .preventDefault()
             }))
@@ -41552,15 +42027,15 @@ function (e) {
                 P(n, "disabled", e || !n[t])
             }))
         }, ft.width = function (e, t) {
-            return e || 0 === e ? (ft.dimensions(e, null, t), ft) : j(a)
+            return e || 0 === e ? (ft.dimensions(e, null, t), ft) : M(a)
         }, ft.dimensions = function (e, t, i) {
             return t = !(!t && 0 !== t) && t, !1 === (e = !(!e && 0 !== e) && e) && !1 === t ? {
                 width: ft.width(),
                 height: ft.height()
-            } : (!1 !== e && (!1 !== i && (kt.width = e), j(a, e)), !1 !== t && (!1 !== i && (kt
-                .height = t), M(a, t)), ft)
+            } : (!1 !== e && (!1 !== i && (kt.width = e), M(a, e)), !1 !== t && (!1 !== i && (kt
+                .height = t), j(a, t)), ft)
         }, ft.height = function (e, t) {
-            return e || 0 === e ? (ft.dimensions(null, e, t), ft) : M(a)
+            return e || 0 === e ? (ft.dimensions(null, e, t), ft) : j(a)
         }, ft.maximize = function (e) {
             var t = "sceditor-maximize";
             return pe(e) ? T(a, t) : ((e = !!e) && (_e = De.pageYOffset), P(Ne.documentElement, t, e), P(
@@ -41571,7 +42046,7 @@ function (e) {
         }, ft.expandToContent = function (t) {
             if (!ft.maximize()) {
                 if (clearTimeout(fe), fe = !1, !de) {
-                    var i = kt.resizeMinHeight || kt.height || M(e);
+                    var i = kt.resizeMinHeight || kt.height || j(e);
                     de = {
                         min: i,
                         max: kt.resizeMaxHeight || 2 * i
@@ -41659,7 +42134,7 @@ function (e) {
         }, ft.closeDropDown = function (e) {
             L && (u(L), L = null), !0 === e && ft.focus()
         }, ft.wysiwygEditorInsertHtml = function (e, t, i) {
-            var n, s, o, a = M(_);
+            var n, s, o, a = j(_);
             ft.focus(), !i && c(Q, "code") || (K.insertHTML(e, t), K.saveRange(), Te(), v(n = h(z,
                     "#sceditor-end-marker")[0]), s = z.scrollTop, o = G(n)
                 .top + 1.5 * n.offsetHeight - a, g(n), (o > s || o + a < s) && (z.scrollTop = o), ut(!
@@ -41795,7 +42270,7 @@ function (e) {
                 ke && ke.update && ke.update(s, t, e)
             }
         }, Ke = function (e) {
-            if (!e.defaultPrevented && (ft.closeDropDown(), 13 === e.which && !k(Q, "li,ul,ol") && B(
+            if (!e.defaultPrevented && (ft.closeDropDown(), 13 === e.which && !k(Q, "li,ul,ol") && $(
                 Q))) {
                 R = null;
                 var t = r("br", {}, S);
@@ -41810,7 +42285,7 @@ function (e) {
         }, nt = function () {
             O(z, (function (e) {
                 if (e.nodeType === ge && !/inline/.test(y(e, "display")) && !k(e,
-                        ".sceditor-nlf") && B(e)) {
+                        ".sceditor-nlf") && $(e)) {
                     var t = r("p", {}, S);
                     return t.className = "sceditor-nlf", t.innerHTML = Oe ? "" : "<br />", d(
                         z, t), !1
@@ -42028,12 +42503,12 @@ function (e) {
                 ft.clearBlockFormatting(n), e.preventDefault()
             }
         }, ct = function () {
-            for (var e = Q; !B(e) || H(e, !0);)
+            for (var e = Q; !$(e) || H(e, !0);)
                 if (!(e = e.parentNode) || k(e, "body")) return;
             return e
         }, ft.clearBlockFormatting = function (e) {
             return !(e = e || ct()) || k(e, "body") || (K.saveRange(), e.className = "", R = null, f(e,
-                "style", ""), k(e, "p,div,td") || $(e, "p"), K.restoreRange()), ft
+                "style", ""), k(e, "p,div,td") || B(e, "p"), K.restoreRange()), ft
         }, ut = function (e) {
             if (Y && (Y.hasHandler("valuechangedEvent") || ut.hasHandler)) {
                 var t, i = ft.sourceMode(),
@@ -42687,9 +43162,9 @@ function (e) {
             },
             ignore: {}
         },
-        je = {};
-    ne.plugins = je;
-    var Me = xe && xe < 11,
+        Me = {};
+    ne.plugins = Me;
+    var je = xe && xe < 11,
         Ie = function (e, t, i) {
             var n, s, o, a, r, l = "",
                 c = e.startContainer,
@@ -42751,13 +43226,13 @@ function (e) {
                 removeAttr: _,
                 is: k,
                 closest: c,
-                width: j,
-                height: M,
+                width: M,
+                height: j,
                 traverse: L,
                 rTraverse: O,
                 parseHTML: R,
-                hasStyling: B,
-                convertElement: $,
+                hasStyling: $,
+                convertElement: B,
                 blockLevelList: ye,
                 canHaveChildren: F,
                 isInline: H,
@@ -42995,7 +43470,7 @@ function (e) {
         (i = pe(i) ? !T(e, t) : i) ? A(e, t): E(e, t)
     }
 
-    function j(e, t) {
+    function M(e, t) {
         if (pe(t)) {
             var i = getComputedStyle(e),
                 n = a(i.paddingLeft) + a(i.paddingRight),
@@ -43005,7 +43480,7 @@ function (e) {
         y(e, "width", t)
     }
 
-    function M(e, t) {
+    function j(e, t) {
         if (pe(t)) {
             var i = getComputedStyle(e),
                 n = a(i.paddingTop) + a(i.paddingBottom),
@@ -43057,11 +43532,11 @@ function (e) {
         return i
     }
 
-    function B(e) {
+    function $(e) {
         return e && (!k(e, "p,div") || e.className || f(e, "style") || !i(w(e)))
     }
 
-    function $(e, t) {
+    function B(e, t) {
         var i = r(t, {}, e.ownerDocument);
         for (o(e.attributes, (function (e, t) {
                 try {
@@ -43242,20 +43717,20 @@ function (e) {
                 if (e in i[t]) return !0;
             return !1
         }, t.exists = function (e) {
-            return e in je && ("function" == typeof (e = je[e]) && "object" == typeof e.prototype)
+            return e in Me && ("function" == typeof (e = Me[e]) && "object" == typeof e.prototype)
         }, t.isRegistered = function (e) {
             if (t.exists(e))
                 for (var n = i.length; n--;)
-                    if (i[n] instanceof je[e]) return !0;
+                    if (i[n] instanceof Me[e]) return !0;
             return !1
         }, t.register = function (n) {
-            return !(!t.exists(n) || t.isRegistered(n)) && (n = new je[n], i.push(n), "init" in n && n
+            return !(!t.exists(n) || t.isRegistered(n)) && (n = new Me[n], i.push(n), "init" in n && n
                 .init.call(e), !0)
         }, t.deregister = function (n) {
             var s, o = i.length,
                 a = !1;
             if (!t.isRegistered(n)) return a;
-            for (; o--;) i[o] instanceof je[n] && (a = !0, "destroy" in (s = i.splice(o, 1)[0]) && s
+            for (; o--;) i[o] instanceof Me[n] && (a = !0, "destroy" in (s = i.splice(o, 1)[0]) && s
                 .destroy.call(e));
             return a
         }, t.destroy = function () {
@@ -43352,7 +43827,7 @@ function (e) {
         }, l.selectRange = function (t) {
             var i, n = e.getSelection(),
                 o = t.endContainer;
-            if (!Me && t.collapsed && o && !H(o, !0)) {
+            if (!je && t.collapsed && o && !H(o, !0)) {
                 for (i = o.lastChild; i && k(i, ".sceditor-ignore");) i = i.previousSibling;
                 if (k(i, "br")) {
                     var a = s.createRange();
@@ -43465,7 +43940,7 @@ function (e) {
 
     function le(e, t) {
         var i, a, l, _, x, z, S, N, L, R, W, q, U, K, Y, J, Q, ee, ie, ce, ue, de, fe, _e, ye, ke, xe, Te, Ae,
-            Ee, je, Me, Ie, Be, $e, Fe, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, st,
+            Ee, Me, je, Ie, $e, Be, Fe, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, st,
             ot, at, rt, lt, ct, ut, dt, ht, pt, mt, ft = this,
             _t = {},
             gt = [],
@@ -43481,14 +43956,14 @@ function (e) {
                 }), e), y(a, "z-index", kt.zIndex), Le && A(a, "ie ie" + Le), ce = e.required, e
                 .required = !1;
             var t = le.formats[kt.format];
-            "init" in (i = t ? new t : {}) && i.init.call(ft), Me(), We(), Be(), je(), $e(), Fe(), Se ||
+            "init" in (i = t ? new t : {}) && i.init.call(ft), je(), We(), $e(), Me(), Be(), Fe(), Se ||
                 ft.toggleSourceMode(), tt();
             var n = function () {
                 m(De, "load", n), kt.autofocus && at(), mt(), nt(), Y.call("ready"), "onReady" in i &&
                     i.onReady.call(ft)
             };
             p(De, "load", n), "complete" === Ne.readyState && n()
-        }, Me = function () {
+        }, je = function () {
             var e = kt.plugins;
             e = e ? e.toString()
                 .split(",") : [], Y = new ne(ft), e.forEach((function (e) {
@@ -43498,14 +43973,14 @@ function (e) {
             var e;
             (U = le.locale[kt.locale]) || (e = kt.locale.split("-"), U = le.locale[e[0]]), U && U
                 .dateFormat && (kt.dateFormat = U.dateFormat)
-        }, je = function () {
+        }, Me = function () {
             N = r("textarea"), _ = r("iframe", {
                     frameborder: 0,
                     allowfullscreen: !0
                 }), kt.startInSourceMode ? (A(a, "sourceMode"), g(_)) : (A(a, "wysiwygMode"), g(N)), kt
                 .spellcheck || f(a, "spellcheck", "false"), "https:" === De.location.protocol && f(_,
-                    "src", "javascript:false"), d(a, _), d(a, N), ft.dimensions(kt.width || j(e), kt
-                    .height || M(e));
+                    "src", "javascript:false"), d(a, _), d(a, N), ft.dimensions(kt.width || M(e), kt
+                    .height || j(e));
             var t = Le ? "ie ie" + Le : "";
             t += Ce ? " ios" : "", (S = _.contentDocument)
                 .open(), S.write(te("html", {
@@ -43514,12 +43989,12 @@ function (e) {
                     charset: kt.charset,
                     style: kt.style
                 })), S.close(), z = S.body, x = _.contentWindow, ft.readOnly(!!kt.readOnly), (Ce || ze ||
-                    Le) && (M(z, "100%"), Le || p(z, "touchend", ft.focus));
+                    Le) && (j(z, "100%"), Le || p(z, "touchend", ft.focus));
             var i = f(e, "tabindex");
             f(N, "tabindex", i), f(_, "tabindex", i), K = new se(x), g(e), ft.val(e.value);
             var n = kt.placeholder || f(e, "placeholder");
             n && (N.placeholder = n, f(z, "placeholder", n))
-        }, $e = function () {
+        }, Be = function () {
             kt.autoUpdate && (p(z, "blur", pt), p(N, "blur", pt)), null === kt.rtl && (kt.rtl = "rtl" ===
                 y(N, "direction")), ft.rtl(!!kt.rtl), kt.autoExpand && (p(z, "load", mt, be), p(z,
                 "input keyup", mt)), kt.resizeEnabled && He(), f(a, "id", kt.id), ft.emoticons(kt
@@ -43544,7 +44019,7 @@ function (e) {
                     R = null
                 })), p(a, "selectionchanged", ot), p(a, "selectionchanged", tt), p(a,
                     "selectionchanged valuechanged nodechanged pasteraw paste", Qe)
-        }, Be = function () {
+        }, $e = function () {
             var e, t = ft.commands,
                 i = (kt.toolbarExclude || "")
                 .split(","),
@@ -43598,8 +44073,8 @@ function (e) {
                 y = 0,
                 w = 0,
                 k = 0,
-                x = j(a),
-                z = M(a),
+                x = M(a),
+                z = j(a),
                 C = !1,
                 S = ft.rtl();
             if (e = kt.resizeMinHeight || z / 1.5, t = kt.resizeMaxHeight || 2.5 * z, i = kt
@@ -43619,7 +44094,7 @@ function (e) {
             }
             d(a, l), d(a, c), g(c), p(l, "touchstart mousedown", (function (e) {
                 "touchstart" === e.type ? (e = De.event, f = e.touches[0].pageX, _ = e
-                        .touches[0].pageY) : (f = e.pageX, _ = e.pageY), w = j(a), k = M(a),
+                        .touches[0].pageY) : (f = e.pageX, _ = e.pageY), w = M(a), k = j(a),
                     C = !0, A(a, "resizing"), v(c), p(Ne, u, s), p(Ne, h, o), e
                     .preventDefault()
             }))
@@ -43660,15 +44135,15 @@ function (e) {
                 P(n, "disabled", e || !n[t])
             }))
         }, ft.width = function (e, t) {
-            return e || 0 === e ? (ft.dimensions(e, null, t), ft) : j(a)
+            return e || 0 === e ? (ft.dimensions(e, null, t), ft) : M(a)
         }, ft.dimensions = function (e, t, i) {
             return t = !(!t && 0 !== t) && t, !1 === (e = !(!e && 0 !== e) && e) && !1 === t ? {
                 width: ft.width(),
                 height: ft.height()
-            } : (!1 !== e && (!1 !== i && (kt.width = e), j(a, e)), !1 !== t && (!1 !== i && (kt
-                .height = t), M(a, t)), ft)
+            } : (!1 !== e && (!1 !== i && (kt.width = e), M(a, e)), !1 !== t && (!1 !== i && (kt
+                .height = t), j(a, t)), ft)
         }, ft.height = function (e, t) {
-            return e || 0 === e ? (ft.dimensions(null, e, t), ft) : M(a)
+            return e || 0 === e ? (ft.dimensions(null, e, t), ft) : j(a)
         }, ft.maximize = function (e) {
             var t = "sceditor-maximize";
             return pe(e) ? T(a, t) : ((e = !!e) && (_e = De.pageYOffset), P(Ne.documentElement, t, e), P(
@@ -43679,7 +44154,7 @@ function (e) {
         }, ft.expandToContent = function (t) {
             if (!ft.maximize()) {
                 if (clearTimeout(fe), fe = !1, !de) {
-                    var i = kt.resizeMinHeight || kt.height || M(e);
+                    var i = kt.resizeMinHeight || kt.height || j(e);
                     de = {
                         min: i,
                         max: kt.resizeMaxHeight || 2 * i
@@ -43767,7 +44242,7 @@ function (e) {
         }, ft.closeDropDown = function (e) {
             L && (u(L), L = null), !0 === e && ft.focus()
         }, ft.wysiwygEditorInsertHtml = function (e, t, i) {
-            var n, s, o, a = M(_);
+            var n, s, o, a = j(_);
             ft.focus(), !i && c(Q, "code") || (K.insertHTML(e, t), K.saveRange(), Te(), v(n = h(z,
                     "#sceditor-end-marker")[0]), s = z.scrollTop, o = G(n)
                 .top + 1.5 * n.offsetHeight - a, g(n), (o > s || o + a < s) && (z.scrollTop = o), ut(!
@@ -43903,7 +44378,7 @@ function (e) {
                 ke && ke.update && ke.update(s, t, e)
             }
         }, Ke = function (e) {
-            if (!e.defaultPrevented && (ft.closeDropDown(), 13 === e.which && !k(Q, "li,ul,ol") && B(
+            if (!e.defaultPrevented && (ft.closeDropDown(), 13 === e.which && !k(Q, "li,ul,ol") && $(
                 Q))) {
                 R = null;
                 var t = r("br", {}, S);
@@ -43918,7 +44393,7 @@ function (e) {
         }, nt = function () {
             O(z, (function (e) {
                 if (e.nodeType === ge && !/inline/.test(y(e, "display")) && !k(e,
-                        ".sceditor-nlf") && B(e)) {
+                        ".sceditor-nlf") && $(e)) {
                     var t = r("p", {}, S);
                     return t.className = "sceditor-nlf", t.innerHTML = Oe ? "" : "<br />", d(
                         z, t), !1
@@ -44136,12 +44611,12 @@ function (e) {
                 ft.clearBlockFormatting(n), e.preventDefault()
             }
         }, ct = function () {
-            for (var e = Q; !B(e) || H(e, !0);)
+            for (var e = Q; !$(e) || H(e, !0);)
                 if (!(e = e.parentNode) || k(e, "body")) return;
             return e
         }, ft.clearBlockFormatting = function (e) {
             return !(e = e || ct()) || k(e, "body") || (K.saveRange(), e.className = "", R = null, f(e,
-                "style", ""), k(e, "p,div,td") || $(e, "p"), K.restoreRange()), ft
+                "style", ""), k(e, "p,div,td") || B(e, "p"), K.restoreRange()), ft
         }, ut = function (e) {
             if (Y && (Y.hasHandler("valuechangedEvent") || ut.hasHandler)) {
                 var t, i = ft.sourceMode(),
@@ -44794,9 +45269,9 @@ function (e) {
             },
             ignore: {}
         },
-        je = {};
-    ne.plugins = je;
-    var Me = xe && xe < 11,
+        Me = {};
+    ne.plugins = Me;
+    var je = xe && xe < 11,
         Ie = function (e, t, i) {
             var n, s, o, a, r, l = "",
                 c = e.startContainer,
@@ -44858,13 +45333,13 @@ function (e) {
                 removeAttr: _,
                 is: k,
                 closest: c,
-                width: j,
-                height: M,
+                width: M,
+                height: j,
                 traverse: L,
                 rTraverse: O,
                 parseHTML: R,
-                hasStyling: B,
-                convertElement: $,
+                hasStyling: $,
+                convertElement: B,
                 blockLevelList: ye,
                 canHaveChildren: F,
                 isInline: H,
@@ -47584,7 +48059,7 @@ function (e) {
 }));
 var STORAGE_KEY_MOBILE_CLIENT_ID = "mc_mobile_client_id",
     STORAGE_KEY_UNIQUE_CLIENT_ID = "mc_unique_client_id",
-    STORAGE_KEY_DEACTIVE_MISSION_SELECTION = "deactive_m_selection",
+    STORAGE_KEY_DEACTIVE_MISSION_SELECTION_DEPRECATED = "deactive_m_selection",
     STORAGE_KEY_DEACTIVE_BUILDING_SELECTION = "deactive_selection",
     STORAGE_KEY_BIG_MAP_WINDOW_POSITIONS = "bigMapWindowPosition",
     mc_storage = {
@@ -47600,6 +48075,9 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = "mc_mobile_client_id",
         setToCookieStorage: function (e, t) {
             Storages.cookieStorage.setExpires(356)
                 .set(e, t)
+        },
+        removeFromCookieStorage: function (e) {
+            Storages.cookieStorage.remove(e)
         },
         getFromNameSpacedStorage: function (e, t) {
             return this.getFromStorages(this.getNameSpacedStorage(e), t)
@@ -48394,234 +48872,233 @@ mobile_map_filters_collection = {},
         };
         var p = o.prototype;
         n.extend(p, t.prototype), p.option = function (e) {
-                n.extend(this.options, e)
-            }, p._getOption = function (e) {
-                var t = this.constructor.compatOptions[e];
-                return t && void 0 !== this.options[t] ? this.options[t] : this.options[e]
-            }, o.compatOptions = {
-                initLayout: "isInitLayout",
-                horizontal: "isHorizontal",
-                layoutInstant: "isLayoutInstant",
-                originLeft: "isOriginLeft",
-                originTop: "isOriginTop",
-                resize: "isResizeBound",
-                resizeContainer: "isResizingContainer"
-            }, p._create = function () {
-                this.reloadItems(), this.stamps = [], this.stamp(this.options.stamp), n.extend(this
-                        .element.style, this.options.containerStyle), this._getOption("resize") &&
-                    this.bindResize()
-            }, p.reloadItems = function () {
-                this.items = this._itemize(this.element.children)
-            }, p._itemize = function (e) {
-                for (var t = this._filterFindItemElements(e), i = this.constructor.Item, n = [], s =
-                    0; s < t.length; s++) {
-                    var o = new i(t[s], this);
-                    n.push(o)
-                }
-                return n
-            }, p._filterFindItemElements = function (e) {
-                return n.filterFindElements(e, this.options.itemSelector)
-            }, p.getItemElements = function () {
-                return this.items.map((function (e) {
-                    return e.element
-                }))
-            }, p.layout = function () {
-                this._resetLayout(), this._manageStamps();
-                var e = this._getOption("layoutInstant"),
-                    t = void 0 !== e ? e : !this._isLayoutInited;
-                this.layoutItems(this.items, t), this._isLayoutInited = !0
-            }, p._init = p.layout, p._resetLayout = function () {
-                this.getSize()
-            }, p.getSize = function () {
-                this.size = i(this.element)
-            }, p._getMeasurement = function (e, t) {
-                var n, s = this.options[e];
-                s ? ("string" == typeof s ? n = this.element.querySelector(s) :
-                    s instanceof HTMLElement && (n = s), this[e] = n ? i(n)[t] : s) : this[e] = 0
-            }, p.layoutItems = function (e, t) {
-                e = this._getItemsForLayout(e), this._layoutItems(e, t), this._postLayout()
-            }, p._getItemsForLayout = function (e) {
-                return e.filter((function (e) {
-                    return !e.isIgnored
-                }))
-            }, p._layoutItems = function (e, t) {
-                if (this._emitCompleteOnItems("layout", e), e && e.length) {
-                    var i = [];
-                    e.forEach((function (e) {
-                        var n = this._getItemLayoutPosition(e);
-                        n.item = e, n.isInstant = t || e.isLayoutInstant, i.push(n)
-                    }), this), this._processLayoutQueue(i)
-                }
-            }, p._getItemLayoutPosition = function () {
-                return {
-                    x: 0,
-                    y: 0
-                }
-            }, p._processLayoutQueue = function (e) {
-                this.updateStagger(), e.forEach((function (e, t) {
-                    this._positionItem(e.item, e.x, e.y, e.isInstant, t)
-                }), this)
-            }, p.updateStagger = function () {
-                var e = this.options.stagger;
-                return null == e ? void(this.stagger = 0) : (this.stagger = r(e), this.stagger)
-            }, p._positionItem = function (e, t, i, n, s) {
-                n ? e.goTo(t, i) : (e.stagger(s * this.stagger), e.moveTo(t, i))
-            }, p._postLayout = function () {
-                this.resizeContainer()
-            }, p.resizeContainer = function () {
-                if (this._getOption("resizeContainer")) {
-                    var e = this._getContainerSize();
-                    e && (this._setContainerMeasure(e.width, !0), this._setContainerMeasure(e.height,
-                        !1))
-                }
-            }, p._getContainerSize = u, p._setContainerMeasure = function (e, t) {
-                if (void 0 !== e) {
-                    var i = this.size;
-                    i.isBorderBox && (e += t ? i.paddingLeft + i.paddingRight + i.borderLeftWidth + i
-                        .borderRightWidth : i.paddingBottom + i.paddingTop + i.borderTopWidth + i
-                        .borderBottomWidth), e = Math.max(e, 0), this.element.style[t ? "width" :
-                        "height"] = e + "px"
-                }
-            },
-            p._emitCompleteOnItems = function (e, t) {
-                function i() {
-                    s.dispatchEvent(e + "Complete", null, [t])
-                }
+            n.extend(this.options, e)
+        }, p._getOption = function (e) {
+            var t = this.constructor.compatOptions[e];
+            return t && void 0 !== this.options[t] ? this.options[t] : this.options[e]
+        }, o.compatOptions = {
+            initLayout: "isInitLayout",
+            horizontal: "isHorizontal",
+            layoutInstant: "isLayoutInstant",
+            originLeft: "isOriginLeft",
+            originTop: "isOriginTop",
+            resize: "isResizeBound",
+            resizeContainer: "isResizingContainer"
+        }, p._create = function () {
+            this.reloadItems(), this.stamps = [], this.stamp(this.options.stamp), n.extend(this
+                    .element.style, this.options.containerStyle), this._getOption("resize") &&
+                this.bindResize()
+        }, p.reloadItems = function () {
+            this.items = this._itemize(this.element.children)
+        }, p._itemize = function (e) {
+            for (var t = this._filterFindItemElements(e), i = this.constructor.Item, n = [], s =
+                0; s < t.length; s++) {
+                var o = new i(t[s], this);
+                n.push(o)
+            }
+            return n
+        }, p._filterFindItemElements = function (e) {
+            return n.filterFindElements(e, this.options.itemSelector)
+        }, p.getItemElements = function () {
+            return this.items.map((function (e) {
+                return e.element
+            }))
+        }, p.layout = function () {
+            this._resetLayout(), this._manageStamps();
+            var e = this._getOption("layoutInstant"),
+                t = void 0 !== e ? e : !this._isLayoutInited;
+            this.layoutItems(this.items, t), this._isLayoutInited = !0
+        }, p._init = p.layout, p._resetLayout = function () {
+            this.getSize()
+        }, p.getSize = function () {
+            this.size = i(this.element)
+        }, p._getMeasurement = function (e, t) {
+            var n, s = this.options[e];
+            s ? ("string" == typeof s ? n = this.element.querySelector(s) :
+                s instanceof HTMLElement && (n = s), this[e] = n ? i(n)[t] : s) : this[e] = 0
+        }, p.layoutItems = function (e, t) {
+            e = this._getItemsForLayout(e), this._layoutItems(e, t), this._postLayout()
+        }, p._getItemsForLayout = function (e) {
+            return e.filter((function (e) {
+                return !e.isIgnored
+            }))
+        }, p._layoutItems = function (e, t) {
+            if (this._emitCompleteOnItems("layout", e), e && e.length) {
+                var i = [];
+                e.forEach((function (e) {
+                    var n = this._getItemLayoutPosition(e);
+                    n.item = e, n.isInstant = t || e.isLayoutInstant, i.push(n)
+                }), this), this._processLayoutQueue(i)
+            }
+        }, p._getItemLayoutPosition = function () {
+            return {
+                x: 0,
+                y: 0
+            }
+        }, p._processLayoutQueue = function (e) {
+            this.updateStagger(), e.forEach((function (e, t) {
+                this._positionItem(e.item, e.x, e.y, e.isInstant, t)
+            }), this)
+        }, p.updateStagger = function () {
+            var e = this.options.stagger;
+            return null == e ? void(this.stagger = 0) : (this.stagger = r(e), this.stagger)
+        }, p._positionItem = function (e, t, i, n, s) {
+            n ? e.goTo(t, i) : (e.stagger(s * this.stagger), e.moveTo(t, i))
+        }, p._postLayout = function () {
+            this.resizeContainer()
+        }, p.resizeContainer = function () {
+            if (this._getOption("resizeContainer")) {
+                var e = this._getContainerSize();
+                e && (this._setContainerMeasure(e.width, !0), this._setContainerMeasure(e.height,
+                    !1))
+            }
+        }, p._getContainerSize = u, p._setContainerMeasure = function (e, t) {
+            if (void 0 !== e) {
+                var i = this.size;
+                i.isBorderBox && (e += t ? i.paddingLeft + i.paddingRight + i.borderLeftWidth + i
+                    .borderRightWidth : i.paddingBottom + i.paddingTop + i.borderTopWidth + i
+                    .borderBottomWidth), e = Math.max(e, 0), this.element.style[t ? "width" :
+                    "height"] = e + "px"
+            }
+        }, p._emitCompleteOnItems = function (e, t) {
+            function i() {
+                s.dispatchEvent(e + "Complete", null, [t])
+            }
 
-                function n() {
-                    ++a == o && i()
-                }
-                var s = this,
-                    o = t.length;
-                if (t && o) {
-                    var a = 0;
-                    t.forEach((function (t) {
-                        t.once(e, n)
-                    }))
-                } else i()
-            }, p.dispatchEvent = function (e, t, i) {
-                var n = t ? [t].concat(i) : i;
-                if (this.emitEvent(e, n), c)
-                    if (this.$element = this.$element || c(this.element), t) {
-                        var s = c.Event(t);
-                        s.type = e, this.$element.trigger(s, i)
-                    } else this.$element.trigger(e, i)
-            }, p.ignore = function (e) {
-                var t = this.getItem(e);
-                t && (t.isIgnored = !0)
-            }, p.unignore = function (e) {
-                var t = this.getItem(e);
-                t && delete t.isIgnored
-            }, p.stamp = function (e) {
-                (e = this._find(e)) && (this.stamps = this.stamps.concat(e), e.forEach(this.ignore,
-                    this))
-            }, p.unstamp = function (e) {
-                (e = this._find(e)) && e.forEach((function (e) {
-                    n.removeFrom(this.stamps, e), this.unignore(e)
-                }), this)
-            }, p._find = function (e) {
-                return e ? ("string" == typeof e && (e = this.element.querySelectorAll(e)), e = n
-                    .makeArray(e)) : void 0
-            }, p._manageStamps = function () {
-                this.stamps && this.stamps.length && (this._getBoundingRect(), this.stamps.forEach(
-                    this._manageStamp, this))
-            }, p._getBoundingRect = function () {
-                var e = this.element.getBoundingClientRect(),
-                    t = this.size;
-                this._boundingRect = {
-                    left: e.left + t.paddingLeft + t.borderLeftWidth,
-                    top: e.top + t.paddingTop + t.borderTopWidth,
-                    right: e.right - (t.paddingRight + t.borderRightWidth),
-                    bottom: e.bottom - (t.paddingBottom + t.borderBottomWidth)
-                }
-            }, p._manageStamp = u, p._getElementOffset = function (e) {
-                var t = e.getBoundingClientRect(),
-                    n = this._boundingRect,
-                    s = i(e);
-                return {
-                    left: t.left - n.left - s.marginLeft,
-                    top: t.top - n.top - s.marginTop,
-                    right: n.right - t.right - s.marginRight,
-                    bottom: n.bottom - t.bottom - s.marginBottom
-                }
-            }, p.handleEvent = n.handleEvent, p.bindResize = function () {
-                e.addEventListener("resize", this), this.isResizeBound = !0
-            }, p.unbindResize = function () {
-                e.removeEventListener("resize", this), this.isResizeBound = !1
-            }, p.onresize = function () {
-                this.resize()
-            }, n.debounceMethod(o, "onresize", 100), p.resize = function () {
-                this.isResizeBound && this.needsResizeLayout() && this.layout()
-            }, p.needsResizeLayout = function () {
-                var e = i(this.element);
-                return this.size && e && e.innerWidth !== this.size.innerWidth
-            }, p.addItems = function (e) {
-                var t = this._itemize(e);
-                return t.length && (this.items = this.items.concat(t)), t
-            }, p.appended = function (e) {
-                var t = this.addItems(e);
-                t.length && (this.layoutItems(t, !0), this.reveal(t))
-            }, p.prepended = function (e) {
-                var t = this._itemize(e);
-                if (t.length) {
-                    var i = this.items.slice(0);
-                    this.items = t.concat(i), this._resetLayout(), this._manageStamps(), this
-                        .layoutItems(t, !0), this.reveal(t), this.layoutItems(i)
-                }
-            }, p.reveal = function (e) {
-                if (this._emitCompleteOnItems("reveal", e), e && e.length) {
-                    var t = this.updateStagger();
-                    e.forEach((function (e, i) {
-                        e.stagger(i * t), e.reveal()
-                    }))
-                }
-            }, p.hide = function (e) {
-                if (this._emitCompleteOnItems("hide", e), e && e.length) {
-                    var t = this.updateStagger();
-                    e.forEach((function (e, i) {
-                        e.stagger(i * t), e.hide()
-                    }))
-                }
-            }, p.revealItemElements = function (e) {
-                var t = this.getItems(e);
-                this.reveal(t)
-            }, p.hideItemElements = function (e) {
-                var t = this.getItems(e);
-                this.hide(t)
-            }, p.getItem = function (e) {
-                for (var t = 0; t < this.items.length; t++) {
-                    var i = this.items[t];
-                    if (i.element == e) return i
-                }
-            }, p.getItems = function (e) {
-                e = n.makeArray(e);
-                var t = [];
-                return e.forEach((function (e) {
-                    var i = this.getItem(e);
-                    i && t.push(i)
-                }), this), t
-            }, p.remove = function (e) {
-                var t = this.getItems(e);
-                this._emitCompleteOnItems("remove", t), t && t.length && t.forEach((function (e) {
-                    e.remove(), n.removeFrom(this.items, e)
-                }), this)
-            }, p.destroy = function () {
-                var e = this.element.style;
-                e.height = "", e.position = "", e.width = "", this.items.forEach((function (e) {
-                    e.destroy()
-                })), this.unbindResize();
-                var t = this.element.outlayerGUID;
-                delete h[t], delete this.element.outlayerGUID, c && c.removeData(this.element, this
-                    .constructor.namespace)
-            }, o.data = function (e) {
-                var t = (e = n.getQueryElement(e)) && e.outlayerGUID;
-                return t && h[t]
-            }, o.create = function (e, t) {
-                var i = a(o);
-                return i.defaults = n.extend({}, o.defaults), n.extend(i.defaults, t), i
-                    .compatOptions = n.extend({}, o.compatOptions), i.namespace = e, i.data = o.data,
-                    i.Item = a(s), n.htmlInit(i, e), c && c.bridget && c.bridget(e, i), i
-            };
+            function n() {
+                ++a == o && i()
+            }
+            var s = this,
+                o = t.length;
+            if (t && o) {
+                var a = 0;
+                t.forEach((function (t) {
+                    t.once(e, n)
+                }))
+            } else i()
+        }, p.dispatchEvent = function (e, t, i) {
+            var n = t ? [t].concat(i) : i;
+            if (this.emitEvent(e, n), c)
+                if (this.$element = this.$element || c(this.element), t) {
+                    var s = c.Event(t);
+                    s.type = e, this.$element.trigger(s, i)
+                } else this.$element.trigger(e, i)
+        }, p.ignore = function (e) {
+            var t = this.getItem(e);
+            t && (t.isIgnored = !0)
+        }, p.unignore = function (e) {
+            var t = this.getItem(e);
+            t && delete t.isIgnored
+        }, p.stamp = function (e) {
+            (e = this._find(e)) && (this.stamps = this.stamps.concat(e), e.forEach(this.ignore,
+                this))
+        }, p.unstamp = function (e) {
+            (e = this._find(e)) && e.forEach((function (e) {
+                n.removeFrom(this.stamps, e), this.unignore(e)
+            }), this)
+        }, p._find = function (e) {
+            return e ? ("string" == typeof e && (e = this.element.querySelectorAll(e)), e = n
+                .makeArray(e)) : void 0
+        }, p._manageStamps = function () {
+            this.stamps && this.stamps.length && (this._getBoundingRect(), this.stamps.forEach(
+                this._manageStamp, this))
+        }, p._getBoundingRect = function () {
+            var e = this.element.getBoundingClientRect(),
+                t = this.size;
+            this._boundingRect = {
+                left: e.left + t.paddingLeft + t.borderLeftWidth,
+                top: e.top + t.paddingTop + t.borderTopWidth,
+                right: e.right - (t.paddingRight + t.borderRightWidth),
+                bottom: e.bottom - (t.paddingBottom + t.borderBottomWidth)
+            }
+        }, p._manageStamp = u, p._getElementOffset = function (e) {
+            var t = e.getBoundingClientRect(),
+                n = this._boundingRect,
+                s = i(e);
+            return {
+                left: t.left - n.left - s.marginLeft,
+                top: t.top - n.top - s.marginTop,
+                right: n.right - t.right - s.marginRight,
+                bottom: n.bottom - t.bottom - s.marginBottom
+            }
+        }, p.handleEvent = n.handleEvent, p.bindResize = function () {
+            e.addEventListener("resize", this), this.isResizeBound = !0
+        }, p.unbindResize = function () {
+            e.removeEventListener("resize", this), this.isResizeBound = !1
+        }, p.onresize = function () {
+            this.resize()
+        }, n.debounceMethod(o, "onresize", 100), p.resize = function () {
+            this.isResizeBound && this.needsResizeLayout() && this.layout()
+        }, p.needsResizeLayout = function () {
+            var e = i(this.element);
+            return this.size && e && e.innerWidth !== this.size.innerWidth
+        }, p.addItems = function (e) {
+            var t = this._itemize(e);
+            return t.length && (this.items = this.items.concat(t)), t
+        }, p.appended = function (e) {
+            var t = this.addItems(e);
+            t.length && (this.layoutItems(t, !0), this.reveal(t))
+        }, p.prepended = function (e) {
+            var t = this._itemize(e);
+            if (t.length) {
+                var i = this.items.slice(0);
+                this.items = t.concat(i), this._resetLayout(), this._manageStamps(), this
+                    .layoutItems(t, !0), this.reveal(t), this.layoutItems(i)
+            }
+        }, p.reveal = function (e) {
+            if (this._emitCompleteOnItems("reveal", e), e && e.length) {
+                var t = this.updateStagger();
+                e.forEach((function (e, i) {
+                    e.stagger(i * t), e.reveal()
+                }))
+            }
+        }, p.hide = function (e) {
+            if (this._emitCompleteOnItems("hide", e), e && e.length) {
+                var t = this.updateStagger();
+                e.forEach((function (e, i) {
+                    e.stagger(i * t), e.hide()
+                }))
+            }
+        }, p.revealItemElements = function (e) {
+            var t = this.getItems(e);
+            this.reveal(t)
+        }, p.hideItemElements = function (e) {
+            var t = this.getItems(e);
+            this.hide(t)
+        }, p.getItem = function (e) {
+            for (var t = 0; t < this.items.length; t++) {
+                var i = this.items[t];
+                if (i.element == e) return i
+            }
+        }, p.getItems = function (e) {
+            e = n.makeArray(e);
+            var t = [];
+            return e.forEach((function (e) {
+                var i = this.getItem(e);
+                i && t.push(i)
+            }), this), t
+        }, p.remove = function (e) {
+            var t = this.getItems(e);
+            this._emitCompleteOnItems("remove", t), t && t.length && t.forEach((function (e) {
+                e.remove(), n.removeFrom(this.items, e)
+            }), this)
+        }, p.destroy = function () {
+            var e = this.element.style;
+            e.height = "", e.position = "", e.width = "", this.items.forEach((function (e) {
+                e.destroy()
+            })), this.unbindResize();
+            var t = this.element.outlayerGUID;
+            delete h[t], delete this.element.outlayerGUID, c && c.removeData(this.element, this
+                .constructor.namespace)
+        }, o.data = function (e) {
+            var t = (e = n.getQueryElement(e)) && e.outlayerGUID;
+            return t && h[t]
+        }, o.create = function (e, t) {
+            var i = a(o);
+            return i.defaults = n.extend({}, o.defaults), n.extend(i.defaults, t), i
+                .compatOptions = n.extend({}, o.compatOptions), i.namespace = e, i.data = o.data,
+                i.Item = a(s), n.htmlInit(i, e), c && c.bridget && c.bridget(e, i), i
+        };
         var m = {
             ms: 1,
             s: 1e3

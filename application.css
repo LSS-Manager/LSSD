@@ -11974,11 +11974,22 @@ body.dodenherdenking .navbar-default .dropdown-menu {
 }
 
 #missions-panel-body {
-    height: 497px;
     overflow-x: hidden;
     overflow-y: scroll;
+    overscroll-behavior-y: contain;
     margin-bottom: 10px;
     padding: 0 20px 0 0
+}
+
+#missions {
+    height: 560px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden
+}
+
+.bigMap #missions {
+    height: auto
 }
 
 #missions-panel-body .panel-body {
@@ -12410,6 +12421,11 @@ body.dark #lightbox_close,
 body.dark .modal .close {
     color: #fff;
     opacity: 0.9
+}
+
+body.dark .mission-filters-top .mission-filters {
+    background-color: #505050;
+    border-color: #000
 }
 
 .modal-backdrop {
@@ -13355,6 +13371,94 @@ body.bigMap .big_map_window_head {
 
 body.bigMap .missions-panel-head strong {
     font-weight: normal
+}
+
+.mission-filters-block .mission-filters-row {
+    display: flex;
+    flex-wrap: wrap
+}
+
+.mission-filters-block .mission-filters-row:not(:last-child) {
+    margin-bottom: 8px
+}
+
+.mission-filters-block .mission-filters-row .mission-state-filters {
+    display: flex;
+    margin-right: 8px
+}
+
+.mission-filters-block .mission-filters-row .mission-state-filters .mission_selection {
+    display: flex;
+    align-items: center
+}
+
+.mission-filters-block .mission-filters-row .mission-state-filters .mission_selection .icon svg {
+    width: 100%;
+    height: 100%
+}
+
+.mission-filters-block .mission-filters-row .mission-state-filters .mission_selection#mission_select_unattended .icon {
+    fill: #d11919
+}
+
+.mission-filters-block .mission-filters-row .mission-state-filters .mission_selection#mission_select_attended .icon {
+    fill: #e8f82b
+}
+
+.mission-filters-block .mission-filters-row .mission-state-filters .mission_selection#mission_select_finishing .icon {
+    fill: #1bec19
+}
+
+.mission-filters-block .mission-filters-row .mission-state-filters .mission_selection .icon {
+    width: 13px;
+    height: 13px;
+    display: flex;
+    margin-right: 2px
+}
+
+.mission-filters-block .mission-filters-row .mission-state-filters .mission_selection .icon path {
+    stroke: #fff
+}
+
+.mission-filters-block .mission-filters-row .mission-participation-filters {
+    display: flex
+}
+
+.mission-filters-block .mission-filters-top {
+    margin-top: 5px
+}
+
+.mission-filters-block .mission-filters-top .missions-title {
+    vertical-align: top;
+    margin-right: 5px
+}
+
+.mission-filters-block .mission-filters-top #mission_speed_pause {
+    margin-right: 5px
+}
+
+.mission-filters-block .mission-filters-top .controls {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 4px 0
+}
+
+.mission-filters-block .mission-filters-top .controls .filters-info {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 5px
+}
+
+.mission-filters-block .mission-filters-top .controls .filters-info .title {
+    margin-right: 5px
+}
+
+.mission-filters-block .mission-filters-top .mission-filters {
+    padding: 10px 5px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px
 }
 
 body.bigMap #missions_outer {
@@ -16163,6 +16267,19 @@ body.dark .daily-bonuses .collect-possible-block {
 
 .sortable-link.no-sort {
     background-image: url(/images/bg.gif)
+}
+
+.mission-sorting {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: auto
+}
+
+.mission-sorting .missions-sortable-select {
+    height: 25px;
+    line-height: 25px;
+    font-size: 11px
 }
 
 .tasks_and_events_navbar .badge {
