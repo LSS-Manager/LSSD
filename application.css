@@ -11989,7 +11989,9 @@ body.dodenherdenking .navbar-default .dropdown-menu {
 }
 
 .bigMap #missions {
-    height: auto
+    height: auto;
+    margin: 0 -5px;
+    padding: 0 5px
 }
 
 #missions-panel-body .panel-body {
