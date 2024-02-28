@@ -232,7 +232,7 @@ function addMissionParticipations(e) {
     updateMissionStateButtons(), updateMissionParticipationButtons();
     var t = filterMissionList();
     $(".missionSideBarEntry")
-        .addClass("hidden"), $(".missionSideBarEntry")
+        .addClass("hidden"), useMissionScrollBarOptimization && $(".missionSideBarEntry")
         .removeClass("missionSideBarEntryScrollInvisible")
         .css("height", "auto"), t.removeClass("hidden"), updateMissionsDisplayedCount()
 }
@@ -1067,18 +1067,19 @@ function iconMapVehicleGenerate(e, t, i) {
 
 function missionMarkerBlukDraw() {
     $.each(patientBulkCache, (function (e, t) {
-        var i = "";
-        $.each(t, (function (e, t) {
-                i += t
-            })), $("#mission_patients_" + e)
-            .append(i)
-    })), $.each(prisonerBulkCache, (function (e, t) {
-        var i = "";
-        $.each(t, (function (e, t) {
-                i += t
-            })), $("#mission_prisoners_" + e)
-            .append(i)
-    })), patientBulkCache = {}, prisonerBulkCache = {}
+            var i = "";
+            $.each(t, (function (e, t) {
+                    i += t
+                })), $("#mission_patients_" + e)
+                .append(i)
+        })),
+        $.each(prisonerBulkCache, (function (e, t) {
+            var i = "";
+            $.each(t, (function (e, t) {
+                    i += t
+                })), $("#mission_prisoners_" + e)
+                .append(i)
+        })), patientBulkCache = {}, prisonerBulkCache = {}
 }
 
 function missionMarkerReset() {
@@ -1174,33 +1175,35 @@ function progressBarScrollUpdate() {
 }
 
 function missionScrollUpdate() {
-    var e = $("#missions-panel-body")
-        .offset()
-        .top - 5 * $("#missions-panel-body")
-        .height(),
-        t = $("#missions-panel-body")
-        .offset()
-        .top + 5 * $("#missions-panel-body")
-        .height();
-    $("#missions_outer")
-        .is(":visible") && $(".missionSideBarEntry")
-        .each((function () {
-            $(this)
-                .hasClass("missionSideBarEntryScrollInvisible") ? $(this)
-                .offset()
-                .top < t && $(this)
-                .offset()
-                .top > e && $(this)
-                .removeClass("missionSideBarEntryScrollInvisible")
-                .css("height", "auto") : ($(this)
+    if (useMissionScrollBarOptimization) {
+        var e = $("#missions-panel-body")
+            .offset()
+            .top - 5 * $("#missions-panel-body")
+            .height(),
+            t = $("#missions-panel-body")
+            .offset()
+            .top + 5 * $("#missions-panel-body")
+            .height();
+        $("#missions_outer")
+            .is(":visible") && $(".missionSideBarEntry")
+            .each((function () {
+                $(this)
+                    .hasClass("missionSideBarEntryScrollInvisible") ? $(this)
                     .offset()
-                    .top > t || $(this)
+                    .top < t && $(this)
                     .offset()
-                    .top < e) && ($(this)
-                    .css("height", $(this)
-                        .height() + "px"), $(this)
-                    .addClass("missionSideBarEntryScrollInvisible"))
-        }))
+                    .top > e && $(this)
+                    .removeClass("missionSideBarEntryScrollInvisible")
+                    .css("height", "auto") : ($(this)
+                        .offset()
+                        .top > t || $(this)
+                        .offset()
+                        .top < e) && ($(this)
+                        .css("height", $(this)
+                            .height() + "px"), $(this)
+                        .addClass("missionSideBarEntryScrollInvisible"))
+            }))
+    }
 }
 
 function patientMarkerAddCombined(e) {
@@ -1394,13 +1397,8 @@ function missionMarkerAdd(e) {
         e.missing_text_short && (_ = "alert alert-danger", g = e.missing_text_short);
         var v = "";
         e.alliance_id && (v = "panel-success");
-        var b = "";
-        $("#missions-panel-body")
-            .offset()
-            .top, $("#missions-panel-body")
-            .height();
-        b = "missionSideBarEntryScrollInvisible";
-        var y = "<div search_attribute='" + (s = s.replace(/'/g, "&#039;")) + "' data-mission-type-filter='" +
+        var b = useMissionScrollBarOptimization ? "missionSideBarEntryScrollInvisible" : "",
+            y = "<div search_attribute='" + (s = s.replace(/'/g, "&#039;")) + "' data-mission-type-filter='" +
             p + "' data-mission-state-filter='" + d +
             "' data-mission-participation-filter=new data-sortable-by='" + JSON.stringify(
                 getMissionSortableAttributes(e)) + "' id='mission_" + e.id + "' mission_id='" + e.id +
@@ -1502,13 +1500,16 @@ function missionMarkerAdd(e) {
 }
 
 function getMissionSortableAttributes(e) {
-    return {
-        id: e.id,
-        caption: e.caption,
-        average_credits: e.average_credits,
-        prisoners_count: e.prisoners_count,
-        patients_count: e.patients_count
-    }
+    var t = e.created_at;
+    return e.user_id != user_id && null != e.user_id && null != e.alliance_shared_at && e.alliance_shared_at >
+        0 && (t = e.alliance_shared_at), {
+            id: e.id,
+            caption: e.caption,
+            average_credits: e.average_credits,
+            prisoners_count: e.prisoners_count,
+            patients_count: e.patients_count,
+            age: t
+        }
 }
 
 function missionTimerStart(e) {
@@ -2567,7 +2568,8 @@ function missionSelectionActive(e) {
         .removeClass("btn-danger");
     var t = filterMissionList();
     $(".missionSideBarEntry")
-        .addClass("hidden"), $("#" + e.attr("classShow") + " > .missionSideBarEntry")
+        .addClass("hidden"), useMissionScrollBarOptimization && $("#" + e.attr("classShow") +
+            " > .missionSideBarEntry")
         .removeClass("missionSideBarEntryScrollInvisible")
         .css("height", "auto"), t.removeClass("hidden"), handleFilterChange(e, !0), progressBarScrollUpdate()
 }
@@ -2875,8 +2877,8 @@ function aao_available(e, t) {
                 .attr("class", "label label-success"), $("#available_aao_" + e)
                 .html("<span class='glyphicon glyphicon-ok' aria-hidden='true'></span>")) : ($(
                     "#available_aao_" + e)
-                .html("<span class=' glyphicon glyphicon-remove' aria-hidden='true'></span>"), $(
-                    "#available_aao_" + e)
+                .html("<span class=' glyphicon glyphicon-remove' aria-hidden='true'></span>"),
+                $("#available_aao_" + e)
                 .attr("class", "label label-danger"))
     }
 }
@@ -4275,9 +4277,9 @@ Object.values || (Object.values = function (e) {
                 delimiter: ""
             }), this.toNumber(o, t)
         }, t.getFullScope = function (e, t) {
-            return t = this.prepareOptions(t),
-                e.constructor === Array && (e = e.join(this.defaultSeparator)), t.scope && (e = [t
-                    .scope, e].join(this.defaultSeparator)), e
+            return t = this.prepareOptions(t), e.constructor === Array && (e = e.join(this
+                    .defaultSeparator)), t.scope && (e = [t.scope, e].join(this
+                .defaultSeparator)), e
         }, t.t = t.translate, t.l = t.localize, t.p = t.pluralize, t
     })), I18n.translations || (I18n.translations = {}), I18n.translations.de_DE = {
         common: {
@@ -37693,7 +37695,8 @@ var building_markers = Array(),
             active: !0,
             missionIds: new Set
         }
-    };
+    },
+    useMissionScrollBarOptimization = navigator.userAgent.includes('"os":"iOS"');
 $((function () {
     function onCoinsTop() {
         return !mobile_bridge_use || (mobileBridgeAdd("coins_window", {}), !1)
