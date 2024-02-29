@@ -1504,7 +1504,7 @@ function getMissionSortableAttributes(e) {
     return e.user_id != user_id && null != e.user_id && null != e.alliance_shared_at && e.alliance_shared_at >
         0 && (t = e.alliance_shared_at), {
             id: e.id,
-            caption: e.caption,
+            caption: e.caption.replace(/(&quot;|'|")+/g, ""),
             average_credits: e.average_credits,
             prisoners_count: e.prisoners_count,
             patients_count: e.patients_count,
@@ -2874,11 +2874,12 @@ function aao_available(e, t) {
         n > 0 && i ? $("#aao_timer_" + e)
             .html(formatTime(n)) : $("#aao_timer_" + e)
             .html("-"), i ? ($("#available_aao_" + e)
-                .attr("class", "label label-success"), $("#available_aao_" + e)
+                .attr("class", "label label-success"),
+                $("#available_aao_" + e)
                 .html("<span class='glyphicon glyphicon-ok' aria-hidden='true'></span>")) : ($(
                     "#available_aao_" + e)
-                .html("<span class=' glyphicon glyphicon-remove' aria-hidden='true'></span>"),
-                $("#available_aao_" + e)
+                .html("<span class=' glyphicon glyphicon-remove' aria-hidden='true'></span>"), $(
+                    "#available_aao_" + e)
                 .attr("class", "label label-danger"))
     }
 }
@@ -3168,11 +3169,18 @@ function initSortable(e) {
             return "string" == typeof e && "string" == typeof t ? e.toString()
                 .localeCompare(t.toString()) : e - t
         }
-        n(i), sortFn = "custom" === i && e.customSort ? e.customSort : o(t, i), $(e.containerSelector + " " +
-                e.sortableElementSelector)
-            .sort(s())
-            .sort(sortFn)
-            .appendTo(e.containerSelector), e.$element.data("sort-direction", i)
+        n(i), sortFn = "custom" === i && e.customSort ? e.customSort : o(t, i);
+        let r = $(e.containerSelector + " " + e.sortableElementSelector),
+            l = {};
+        r.each((function (e, t) {
+            l[t.id] = e
+        }));
+        var c = r.sort(s())
+            .sort(sortFn);
+        let u = !1;
+        c.each((function (e, t) {
+            u ||= !u && l[t.id] !== e
+        })), u && c.appendTo(e.containerSelector), e.$element.data("sort-direction", i)
     }
 
     function i(e) {
