@@ -1375,13 +1375,22 @@ function missionMarkerAdd(e) {
                 .attr("class", "alert alert-danger")) : ($("#mission_missing_short_" + e.id)
                 .html(""), $("#mission_missing_short_" + e.id)
                 .attr("class", "")), e.alliance_id && $("#mission_panel_" + e.id)
-            .addClass("panel-success"), updateMissionStateButtons(), $(`#mission_${e.id}`)
-            .data("sortable-by", getMissionSortableAttributes(e));
-        const i = "#" + $("#mission_" + e.id)
+            .addClass("panel-success"), updateMissionStateButtons();
+        let i = getMissionSortableAttributes(e);
+        $(`#mission_${e.id}`)
+            .data("sortable-by", i);
+        const n = "mission_" + e.id,
+            a = "#" + $("#" + n)
             .parent()
             .attr("id"),
-            n = missionListSorters[i];
-        n && n.reSort()
+            r = missionListSorters[a];
+        if (r) {
+            let e = r.findSuccessorElement(i, n);
+            null !== e ? $(e)
+                .before($("#" + n)) : $(a + " .missionSideBarEntry")
+                .last()
+                .after($("#" + n))
+        }
     } else {
         var h = "#mission_list",
             p = "emergency";
@@ -1397,15 +1406,17 @@ function missionMarkerAdd(e) {
         e.missing_text_short && (_ = "alert alert-danger", g = e.missing_text_short);
         var v = "";
         e.alliance_id && (v = "panel-success");
-        var b = useMissionScrollBarOptimization ? "missionSideBarEntryScrollInvisible" : "",
-            y = "<div search_attribute='" + (s = s.replace(/'/g, "&#039;")) + "' data-mission-type-filter='" +
-            p + "' data-mission-state-filter='" + d +
-            "' data-mission-participation-filter=new data-sortable-by='" + JSON.stringify(
-                getMissionSortableAttributes(e)) + "' id='mission_" + e.id + "' mission_id='" + e.id +
-            "' mission_type_id='" + e.mtid + "' class='missionSideBarEntry missionSideBarEntrySearchable " +
-            b + "' latitude='" + e.latitude + "' longitude='" + e.longitude + "' target_latitude='" + e.tlat +
-            "' target_longitude='" + e.tlng + "' data-overlay-index='" + e.overlay_index +
-            "' data-additive-overlays='" + (e.additive_overlays || "") + "'><div id='mission_panel_" + e.id +
+        var b = useMissionScrollBarOptimization ? "missionSideBarEntryScrollInvisible" : "";
+        s = s.replace(/'/g, "&#039;");
+        let i = getMissionSortableAttributes(e);
+        var y = "<div search_attribute='" + s + "' data-mission-type-filter='" + p +
+            "' data-mission-state-filter='" + d +
+            "' data-mission-participation-filter=new data-sortable-by='" + JSON.stringify(i) +
+            "' id='mission_" + e.id + "' mission_id='" + e.id + "' mission_type_id='" + e.mtid +
+            "' class='missionSideBarEntry missionSideBarEntrySearchable " + b + "' latitude='" + e.latitude +
+            "' longitude='" + e.longitude + "' target_latitude='" + e.tlat + "' target_longitude='" + e.tlng +
+            "' data-overlay-index='" + e.overlay_index + "' data-additive-overlays='" + (e
+                .additive_overlays || "") + "'><div id='mission_panel_" + e.id +
             "' class='panel panel-default " + v + " mission_panel_" + l +
             "'><div id='mission_panel_heading_" + e.id + "' class='panel-heading'><a href='/missions/" + e
             .id + "' class='btn btn-default btn-xs lightbox-open mission-alarm-button' id='alarm_button_" + e
@@ -1426,11 +1437,15 @@ function missionMarkerAdd(e) {
             "</div><div id='mission_pump_progress_" + e.id + "'></div><div id='mission_patients_" + e.id +
             "' class='row'></div><div class='mission_prisoners' id='mission_prisoners_" + e.id +
             "'></div></div></div></div></div>";
-        $(h)
+        const n = missionListSorters[h];
+        if (n) {
+            let e = n.findSuccessorElement(i);
+            null !== e ? $(e)
+                .before(y) : $(h)
+                .append(y)
+        } else $(h)
             .append(y);
-        const i = missionListSorters[h];
-        i && i.reSort(), tutorial.callNewMissionListener(!0), missionParticipationFilters.new.missionIds.add(e
-            .id)
+        tutorial.callNewMissionListener(!0), missionParticipationFilters.new.missionIds.add(e.id)
     }
     var w = !1;
     if ($.each(mission_markers, (function (t, i) {
@@ -2874,8 +2889,7 @@ function aao_available(e, t) {
         n > 0 && i ? $("#aao_timer_" + e)
             .html(formatTime(n)) : $("#aao_timer_" + e)
             .html("-"), i ? ($("#available_aao_" + e)
-                .attr("class", "label label-success"),
-                $("#available_aao_" + e)
+                .attr("class", "label label-success"), $("#available_aao_" + e)
                 .html("<span class='glyphicon glyphicon-ok' aria-hidden='true'></span>")) : ($(
                     "#available_aao_" + e)
                 .html("<span class=' glyphicon glyphicon-remove' aria-hidden='true'></span>"), $(
@@ -3142,48 +3156,48 @@ function updateButtonState(e, t) {
 }
 
 function initSortable(e) {
-    function t(t, i) {
-        function s() {
-            return o(t, "asc")
+    function t(t, n) {
+        function o() {
+            return a(t, "asc")
         }
 
-        function o(t, i) {
+        function a(t, n) {
             const {
-                tiebreakerKey: n
+                tiebreakerKey: s
             } = e;
-            return function (e, s) {
-                const o = a($(e)
-                    .data("sortable-by")[t], $(s)
+            return function (e, o) {
+                const a = i($(e)
+                    .data("sortable-by")[t], $(o)
                     .data("sortable-by")[t]);
-                let r = o;
-                if (0 === o && n) {
-                    r = a($(e)
-                        .data("sortable-by")[n], $(s)
-                        .data("sortable-by")[n])
+                let r = a;
+                if (0 === a && s) {
+                    r = i($(e)
+                        .data("sortable-by")[s], $(o)
+                        .data("sortable-by")[s])
                 }
-                return "desc" === i ? r > 0 ? -1 : 1 : r < 0 ? -1 : 1
+                return "desc" === n ? r > 0 ? -1 : 1 : r < 0 ? -1 : 1
             }
         }
-
-        function a(e, t) {
-            return "string" == typeof e && "string" == typeof t ? e.toString()
-                .localeCompare(t.toString()) : e - t
-        }
-        n(i), sortFn = "custom" === i && e.customSort ? e.customSort : o(t, i);
+        s(n), sortFn = "custom" === n && e.customSort ? e.customSort : a(t, n);
         let r = $(e.containerSelector + " " + e.sortableElementSelector),
             l = {};
         r.each((function (e, t) {
             l[t.id] = e
         }));
-        var c = r.sort(s())
+        var c = r.sort(o())
             .sort(sortFn);
         let u = !1;
         c.each((function (e, t) {
-            u ||= !u && l[t.id] !== e
-        })), u && c.appendTo(e.containerSelector), e.$element.data("sort-direction", i)
+            u || (u = l[t.id] !== e)
+        })), u && c.appendTo(e.containerSelector), e.$element.data("sort-direction", n)
     }
 
-    function i(e) {
+    function i(e, t) {
+        return "string" == typeof e && "string" == typeof t ? e.toString()
+            .localeCompare(t.toString()) : e - t
+    }
+
+    function n(e) {
         var t = e.find("option:selected")
             .data();
         return {
@@ -3192,7 +3206,7 @@ function initSortable(e) {
         }
     }
 
-    function n(t) {
+    function s(t) {
         var i = "desc" === t ? "desc" : "asc";
         e.$element.removeClass("desc asc")
             .addClass(i)
@@ -3205,14 +3219,34 @@ function initSortable(e) {
         t(i, n), e.$element.find(`option[data-sort-key="${i}"][data-sort-direction="${n}"]`)
             .prop("selected", !0)
     }
-    const s = "select" === e.type ? "change" : "click";
-    return e.$element.on(s, (function () {
-        const n = i(e.$element);
-        t(n.key, n.direction), e.afterSort && e.afterSort(n.key, n.direction)
+    const o = "select" === e.type ? "change" : "click";
+    return e.$element.on(o, (function () {
+        const i = n(e.$element);
+        t(i.key, i.direction), e.afterSort && e.afterSort(i.key, i.direction)
     })), {
-        reSort() {
-            const n = i(e.$element);
-            t(n.key, n.direction)
+        findSuccessorElement(t, s) {
+            let o = $(e.containerSelector + " " + e.sortableElementSelector);
+            const a = n(e.$element),
+                {
+                    tiebreakerKey: r
+                } = e;
+            let l = !1,
+                c = null,
+                u = a.key,
+                d = a.direction,
+                h = t[u],
+                p = r ? t[r] : "";
+            return o.each((function (e, t) {
+                if (!l && s !== t.id) {
+                    const e = i($(t)
+                        .data("sortable-by")[u], h);
+                    let n = e;
+                    if (0 === e && r) {
+                        n = i($(t)
+                            .data("sortable-by")[r], p)
+                    }("desc" === d && n < 0 || "desc" !== d && n > 0) && (c = t, l = !0)
+                }
+            })), c
         }
     }
 }
@@ -4205,11 +4239,11 @@ Object.values || (Object.values = function (e) {
                 b = (_ > 0 ? "-" : "+") + (g.toString()
                     .length < 2 ? "0" + g : g) + (v.toString()
                     .length < 2 ? "0" + v : v);
-            return h > 12 ? h -= 12 : 0 === h && (h = 12), i = (i = (i = (i = (i = (i = (i = (i =
-                                            (i = (i = (i = (i = (i = (i = (i = (i = (i = (i = (i =
-                                                                                        (i = (i =
-                                                                                                (i = (i =
-                                                                                                        i
+            return h > 12 ? h -= 12 : 0 === h && (h = 12),
+                i = (i = (i = (i = (i = (i = (i = (i = (i = (i = (i = (i = (i = (i = (i = (i = (
+                                                                                i = (i = (i = (i =
+                                                                                            (i = (i =
+                                                                                                    (i = i
                                                                                                         .replace(
                                                                                                             "%a",
                                                                                                             o
