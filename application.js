@@ -1394,10 +1394,12 @@ function missionMarkerAdd(e) {
     } else {
         var h = "#mission_list",
             p = "emergency";
-        e.kt ? (h = "#mission_list_krankentransporte", p = "krankentransporte") : e.sw ? (h =
-                "#mission_list_sicherheitswache", p = "sicherheitswache") : e.user_id != user_id && null != e
-            .user_id ? (h = "#mission_list_alliance", p = "alliance") : e.user_id != user_id && null == e
-            .user_id && (h = "#mission_list_alliance_event", p = "alliance_event");
+        e.kt ? (h = e.user_id != user_id ? "#mission_list_krankentransporte_alliance" :
+            "#mission_list_krankentransporte", p = "krankentransporte") : e.sw ? (h = e.user_id !=
+            user_id ? "#mission_list_sicherheitswache_alliance" : "#mission_list_sicherheitswache", p =
+            "sicherheitswache") : e.user_id != user_id && null != e.user_id ? (h =
+            "#mission_list_alliance", p = "alliance") : e.user_id != user_id && null == e.user_id && (h =
+            "#mission_list_alliance_event", p = "alliance_event");
         var m = "",
             f = "";
         e.missing_text && (m = "alert alert-danger", f = e.missing_text);
@@ -2883,7 +2885,8 @@ function aao_available(e, t) {
             var l = jQuery.parseJSON(r);
             $.each(l, (function (e, t) {
                 var o = aao_check("vehicle_type_id_" + e, s, t);
-                n = aao_maxtime(n, o), o || (i = !1)
+                n = aao_maxtime(n, o),
+                    o || (i = !1)
             }))
         }
         n > 0 && i ? $("#aao_timer_" + e)
@@ -4456,7 +4459,7 @@ Object.values || (Object.values = function (e) {
                 all_missions: "Eins\xe4tze",
                 alliance_buildings: "Verbandsgeb\xe4ude",
                 alliance_members: "Geb\xe4ude von Verbandsmitgliedern",
-                alliance_missions: "Vom Verband geteilt",
+                alliance_missions: "Vom Verband freigegeben",
                 ambulance_station_missions: "Rettungswache",
                 ambulance_station_small_missions: "Rettungswache (Kleinwache)",
                 building_complex: "Geb\xe4udekomplex",
@@ -4498,6 +4501,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 alliance_missions: "Verbandseins\xe4tze",
                 alliance_missions_event: "Event",
+                alliance_shared_missions: "Vom Verband freigegeben",
                 ambulance: "Krankentransporte",
                 attended: "Bearbeitete Eins\xe4tze",
                 attended_description: "Bearbeitete Eins\xe4tze, nicht alle Bedingungen erf\xfcllt",
@@ -5020,6 +5024,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 alliance_missions: "Alliance Missions",
                 alliance_missions_event: "Event",
+                alliance_shared_missions: "Shared by Alliance",
                 ambulance: "Patient transports",
                 attended: "Attended Missions",
                 attended_description: "Attended, Not all conditions fulfilled",
@@ -5702,6 +5707,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 alliance_missions: "Alliance Missions",
                 alliance_missions_event: "Event",
+                alliance_shared_missions: "Shared by Alliance",
                 ambulance: "Patient transports",
                 attended: "Attended Missions",
                 attended_description: "Attended, Not all conditions fulfilled",
@@ -6266,6 +6272,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 alliance_missions: "Grote inzet",
                 alliance_missions_event: "Event",
+                alliance_shared_missions: "Gedeeld door team",
                 ambulance: "Vervoer van pati\xebnten",
                 attended: "Bijgewoonde missies",
                 attended_description: "Verwerkte inzetten, niet aan alle voorwaarden voldaan",
@@ -6735,6 +6742,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 alliance_missions: "Misiones de alianza",
                 alliance_missions_event: "Evento",
+                alliance_shared_missions: "Compartido por la alianza",
                 ambulance: "Transporte de pacientes",
                 attended: "Misiones a las que ha asistido",
                 attended_description: "Asistidos, No se cumplen todas las condiciones",
@@ -7184,6 +7192,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 alliance_missions: "Alliance Missions",
                 alliance_missions_event: "Event",
+                alliance_shared_missions: "Shared by Alliance",
                 ambulance: "Patient transports",
                 attended: "Attended Missions",
                 attended_description: "Attended, Not all conditions fulfilled",
@@ -7747,6 +7756,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 alliance_missions: "Alliansuppdrag",
                 alliance_missions_event: "Evenemang",
+                alliance_shared_missions: "Delade av alliansen",
                 ambulance: "Transport av patienter",
                 attended: "Deltagit i uppdrag",
                 attended_description: "Bearbetad, Inte alla villkor uppfyllda",
@@ -8226,6 +8236,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 alliance_missions: "Misje sojuszu",
                 alliance_missions_event: "Wydarzenie",
+                alliance_shared_missions: "Dzielone przez sojusz",
                 ambulance: "Transport pacjent\xf3w",
                 attended: "Uczestniczono w misjach",
                 attended_description: "Przetworzone, nie wszystkie warunki zosta\u0142y spe\u0142nione",
@@ -8712,6 +8723,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 alliance_missions: "Missioni dell'alleanza",
                 alliance_missions_event: "Evento",
+                alliance_shared_missions: "Condivisa dall'alleanza",
                 ambulance: "Trasporto di pazienti",
                 attended: "Missioni frequentate",
                 attended_description: "Elaborato, non tutte le condizioni sono soddisfatte",
@@ -9185,6 +9197,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 alliance_missions: "Missions d\u2019alliance",
                 alliance_missions_event: "\xc9v\xe8nement",
+                alliance_shared_missions: "Partag\xe9es par l\u2019alliance",
                 ambulance: "Transports de patients",
                 attended: "Missions suivies",
                 attended_description: "Trait\xe9e, toutes les conditions n'ont pas \xe9t\xe9 remplies",
@@ -9648,6 +9661,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 alliance_missions: "\u0417\u0430\u0434\u0430\u043d\u0438\u044f \u0430\u043b\u044c\u044f\u043d\u0441\u0430",
                 alliance_missions_event: "\u0421\u043e\u0431\u044b\u0442\u0438\u0435",
+                alliance_shared_missions: "\u0421\u043e\u0432\u043c\u0435\u0441\u0442\u043d\u043e \u0441 \u0430\u043b\u044c\u044f\u043d\u0441\u043e\u043c",
                 ambulance: "\u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u043a\u0430 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432",
                 attended: "\u041f\u043e\u0441\u0435\u0449\u0435\u043d\u043d\u044b\u0435 \u043c\u0438\u0441\u0441\u0438\u0438",
                 attended_description: "\u041f\u0440\u0438\u0441\u0443\u0442\u0441\u0442\u0432\u043e\u0432\u0430\u043b, \u043d\u0435 \u0432\u0441\u0435 \u0443\u0441\u043b\u043e\u0432\u0438\u044f \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u044b",
@@ -10083,6 +10097,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 alliance_missions: "Alliancemissioner",
                 alliance_missions_event: "Begivenhed",
+                alliance_shared_missions: "Delt af alliance",
                 ambulance: "Transport af patienter",
                 attended: "Deltagelse i missioner",
                 attended_description: "Forarbejdet, ikke alle betingelser opfyldt",
@@ -10543,6 +10558,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 alliance_missions: "Allianseoppdrag",
                 alliance_missions_event: "Hendelse",
+                alliance_shared_missions: "Delt av allianse",
                 ambulance: "Pasienttransport",
                 attended: "Deltakelse p\xe5 oppdrag",
                 attended_description: "Bearbeidet, Ikke alle betingelser oppfylt",
@@ -11015,6 +11031,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 alliance_missions: "Alian\u010dn\xed mise",
                 alliance_missions_event: "Akce",
+                alliance_shared_missions: "Sd\xedleno alianc\xed",
                 ambulance: "P\u0159evozy pacient\u016f",
                 attended: "Z\xfa\u010dastn\u011bn\xe9 misie",
                 attended_description: "Zpracov\xe1no, Ne v\u0161echny podm\xednky spln\u011bny",
@@ -11458,6 +11475,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 alliance_missions: "Birlik G\xf6revleri",
                 alliance_missions_event: "Etkinlik",
+                alliance_shared_missions: "Birlik Payla\u015f\u0131mlar\u0131",
                 ambulance: "Hasta nakilleri",
                 attended: "Kat\u0131l\u0131nan G\xf6revler",
                 attended_description: "Kat\u0131ld\u0131, T\xfcm ko\u015fullar yerine getirilmedi",
@@ -11872,6 +11890,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 alliance_missions: "Miss\xf5es da alian\xe7a",
                 alliance_missions_event: "Evento",
+                alliance_shared_missions: "Partilhado pela alian\xe7a",
                 ambulance: "Transporte de doentes",
                 attended: "Miss\xf5es frequentadas",
                 attended_description: "Processado, mas nem todas as condi\xe7\xf5es foram cumpridas",
@@ -12324,6 +12343,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 alliance_missions: "Miss\xf5es da alian\xe7a",
                 alliance_missions_event: "Evento",
+                alliance_shared_missions: "Partilhado pela alian\xe7a",
                 ambulance: "Transporte de doentes",
                 attended: "Miss\xf5es frequentadas",
                 attended_description: "Participou, mas nem todas as condi\xe7\xf5es foram cumpridas",
@@ -12726,6 +12746,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 alliance_missions: "\u0417\u0430\u0432\u0434\u0430\u043d\u043d\u044f \u0430\u043b\u044c\u044f\u043d\u0441\u0443",
                 alliance_missions_event: "\u041f\u043e\u0434\u0456\u044f",
+                alliance_shared_missions: "\u0421\u043f\u0456\u043b\u044c\u043d\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u044c\u0441\u044f \u0430\u043b\u044c\u044f\u043d\u0441\u043e\u043c",
                 ambulance: "\u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u0430\u0446\u0456\u0454\u043d\u0442\u0456\u0432",
                 attended: "\u0412\u0456\u0434\u0432\u0456\u0434\u0430\u043d\u0456 \u043c\u0456\u0441\u0456\u0457",
                 attended_description: "\u041f\u0440\u0438\u0441\u0443\u0442\u043d\u0456\u0439, \u041d\u0435 \u0432\u0441\u0456 \u0443\u043c\u043e\u0432\u0438 \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u0456",
@@ -13124,6 +13145,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 alliance_missions: "Misiones de alianza",
                 alliance_missions_event: "Evento",
+                alliance_shared_missions: "Compartido por la alianza",
                 ambulance: "Transporte de pacientes",
                 attended: "Misiones a las que ha asistido",
                 attended_description: "Asistidos, No se cumplen todas las condiciones",
@@ -13544,6 +13566,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 alliance_missions: "\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u30df\u30c3\u30b7\u30e7\u30f3",
                 alliance_missions_event: "\u30a4\u30d9\u30f3\u30c8",
+                alliance_shared_missions: "\u540c\u76df\u304b\u3089\u5171\u6709",
                 ambulance: "\u60a3\u8005\u642c\u9001",
                 attended: "\u53c2\u52a0\u30df\u30c3\u30b7\u30e7\u30f3",
                 attended_description: "\u52a0\u5de5\u6e08\u307f\u3001\u3059\u3079\u3066\u306e\u6761\u4ef6\u3092\u6e80\u305f\u3057\u3066\u3044\u306a\u3044",
@@ -13985,6 +14008,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 alliance_missions: "\ub3d9\ub9f9 \uc784\ubb34",
                 alliance_missions_event: "\uc774\ubca4\ud2b8",
+                alliance_shared_missions: "\ub3d9\ub9f9\uc774 \uacf5\uc720",
                 ambulance: "\ud658\uc790 \uc774\uc1a1",
                 attended: "\ucd9c\uc11d\ud55c \ubbf8\uc158",
                 attended_description: "\ucc98\ub9ac\ub428, \ubaa8\ub4e0 \uc870\uac74\uc774 \ucda9\uc871\ub418\uc9c0 \uc54a\uc74c",
@@ -14416,6 +14440,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 alliance_missions: "Misiuni alian\u021b\u0103",
                 alliance_missions_event: "Eveniment",
+                alliance_shared_missions: "Partajat de alian\u021b\u0103",
                 ambulance: "Transportul pacien\u021bilor",
                 attended: "Misiuni la care a participat",
                 attended_description: "Prezent, Nu sunt \xeendeplinite toate condi\u021biile",
@@ -14842,6 +14867,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 alliance_missions: "Liittoutuman teht\xe4v\xe4t",
                 alliance_missions_event: "Tapahtuma",
+                alliance_shared_missions: "Liittoutuman jakama",
                 ambulance: "Potilaskuljetukset",
                 attended: "Osallistunut l\xe4hetyst\xf6ihin",
                 attended_description: "Jalostettu, kaikki ehdot eiv\xe4t t\xe4yty",
@@ -15291,6 +15317,7 @@ Object.values || (Object.values = function (e) {
             mission_filters: {
                 alliance_missions: "Misie aliancie",
                 alliance_missions_event: "Udalos\u0165",
+                alliance_shared_missions: "Zdie\u013ean\xe9 alianciou",
                 ambulance: "Preprava pacientov",
                 attended: "Z\xfa\u010dastnen\xe9 misie",
                 attended_description: "Z\xfa\u010dastnil sa, nie s\xfa splnen\xe9 v\u0161etky podmienky",
