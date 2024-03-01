@@ -2392,7 +2392,7 @@ function isLoggedIn() {
 }
 
 function mobileShow(e) {
-    if ("account" == e) mobileBridgeAdd("account_show", {});
+    if (currentMobileTab = e, "account" == e) mobileBridgeAdd("account_show", {});
     else {
         $(".overview_outer")
             .hide(), $("#" + e + "_outer")
@@ -2405,22 +2405,23 @@ function mobileShow(e) {
             .height() - 71 - $("#navbar-mobile-footer")
             .outerHeight();
         "map" == e && ($("#map")
-                .height(t), "undefined" == typeof mapkit && map.invalidateSize()), "missions" == e && $(
+            .height(t), "undefined" == typeof mapkit && map.invalidateSize()), "missions" == e && ($(
                 "#missions-panel-body")
             .height(t - $(".missions-panel-head")
-                .outerHeight(!0)), "buildings" == e && ($("#building_panel_body")
-                .css("max-height", "initial"), $("#building_panel_body")
-                .css("padding-bottom", "15px"), $("#building_panel_body")
-                .height(t - $("#building_panel_heading")
-                    .outerHeight(!0) - 50)), "chat" == e && ($("#chat_panel_body")
-                .css("max-height", "initial"), $("#chat_panel_body")
-                .css("padding-bottom", "15px"), $("#chat_panel_body")
-                .height(t - $("#chat_panel_heading")
-                    .outerHeight(!0) - 50)), "radio" == e && ($("#radio_panel_body")
-                .css("max-height", "initial"), $("#radio_panel_body")
-                .css("padding-bottom", "15px"), $("#radio_panel_body")
-                .height(t - $("#radio_panel_heading")
-                    .outerHeight(!0) - 50))
+                .outerHeight(!0) - 5), $("#missions")
+            .height("auto")), "buildings" == e && ($("#building_panel_body")
+            .css("max-height", "initial"), $("#building_panel_body")
+            .css("padding-bottom", "15px"), $("#building_panel_body")
+            .height(t - $("#building_panel_heading")
+                .outerHeight(!0) - 50)), "chat" == e && ($("#chat_panel_body")
+            .css("max-height", "initial"), $("#chat_panel_body")
+            .css("padding-bottom", "15px"), $("#chat_panel_body")
+            .height(t - $("#chat_panel_heading")
+                .outerHeight(!0) - 50)), "radio" == e && ($("#radio_panel_body")
+            .css("max-height", "initial"), $("#radio_panel_body")
+            .css("padding-bottom", "15px"), $("#radio_panel_body")
+            .height(t - $("#radio_panel_heading")
+                .outerHeight(!0) - 50))
     }
 }
 
@@ -2885,8 +2886,7 @@ function aao_available(e, t) {
             var l = jQuery.parseJSON(r);
             $.each(l, (function (e, t) {
                 var o = aao_check("vehicle_type_id_" + e, s, t);
-                n = aao_maxtime(n, o),
-                    o || (i = !1)
+                n = aao_maxtime(n, o), o || (i = !1)
             }))
         }
         n > 0 && i ? $("#aao_timer_" + e)
@@ -37765,7 +37765,8 @@ var building_markers = Array(),
             missionIds: new Set
         }
     },
-    useMissionScrollBarOptimization = navigator.userAgent.includes('"os":"iOS"');
+    useMissionScrollBarOptimization = navigator.userAgent.includes('"os":"iOS"'),
+    currentMobileTab = null;
 $((function () {
     function onCoinsTop() {
         return !mobile_bridge_use || (mobileBridgeAdd("coins_window", {}), !1)
