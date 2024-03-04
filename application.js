@@ -3678,18 +3678,18 @@ async function activateHelpshift(e, t) {
         })), t && Helpshift("open")
 }
 
-function initEquipment() {
+function initEquipment(e) {
     initVehiclesEquipment($(".dispatch-vehicle-equipments-container")
         .map((function () {
             return $(this)
                 .data("vehicle-id")
         }))
-        .get()), aaoCheckAvailable()
+        .get(), e), aaoCheckAvailable()
 }
 
-function initVehiclesEquipment(e) {
-    function t(e) {
-        n = s.flatMap((function (e) {
+function initVehiclesEquipment(e, t = {}) {
+    function i(e) {
+        s = o.flatMap((function (e) {
                 return e.state.equipments
             }))
             .filter((function (e) {
@@ -3697,12 +3697,12 @@ function initVehiclesEquipment(e) {
             }))
             .map((function (e) {
                 return e.id
-            })), s.filter((function (t) {
+            })), o.filter((function (t) {
                 return t.vehicleId !== e
             }))
             .forEach((function (e) {
                 e.state.equipments.filter((function (e) {
-                        return !e.applied && n.includes(e.id)
+                        return !e.applied && s.includes(e.id)
                     }))
                     .forEach((function (e) {
                         e.selected = !1
@@ -3710,51 +3710,51 @@ function initVehiclesEquipment(e) {
             }))
     }
 
-    function i(e, t) {
-        function i() {
-            o(), a(), r()
+    function n(e, i) {
+        function n() {
+            a(), r(), l()
         }
 
-        function s({
+        function o({
             selectVehicle: e = !0
         } = {}) {
-            var i = f.equipments.some((function (e) {
+            var t = _.equipments.some((function (e) {
                 return e.selected !== e.applied
             }));
-            f.equipments.forEach((function (e) {
+            _.equipments.forEach((function (e) {
                 e.applied = e.selected
-            })), f.isEditMode = !1, o(), r(), t(f.vehicleId), e && i && d(f.vehicleId), u()
+            })), _.isEditMode = !1, a(), l(), i(_.vehicleId), e && t && h(_.vehicleId), d()
         }
 
-        function o() {
-            Object.values(f.containersByTab)
+        function a() {
+            Object.values(_.containersByTab)
                 .forEach((function (e) {
                     var t = e.querySelector(".change-payload-btn"),
                         i = e.querySelector(".apply-payload-btn"),
                         n = e.querySelector(".dispatch-vehicle-equipments");
-                    f.isEditMode ? (t.classList.add("hidden"), i.classList.remove("hidden"), n
+                    _.isEditMode ? (t.classList.add("hidden"), i.classList.remove("hidden"), n
                         .classList.remove("hidden")) : (t.classList.remove("hidden"), i.classList
                         .add("hidden"), n.classList.add("hidden"))
                 }))
         }
 
-        function a() {
-            var e = f.getSelectedEquipmentsSize();
-            Object.values(f.containersByTab)
+        function r() {
+            var e = _.getSelectedEquipmentsSize();
+            Object.values(_.containersByTab)
                 .forEach((function (t) {
                     const i = t.querySelector(".capacity-used-amount");
-                    i.textContent !== e && (i.textContent = e), f.equipments.forEach((function (e) {
+                    i.textContent !== e && (i.textContent = e), _.equipments.forEach((function (e) {
                         var i = t.querySelector(
                             '.equipment-checkbox[data-equipment-id="' + e.id + '"]');
                         i.checked = e.selected, i.disabled = !e.isSelectPossible()
                     }))
-                })), c(), l()
+                })), u(), c()
         }
 
-        function r() {
-            Object.values(f.containersByTab)
+        function l() {
+            Object.values(_.containersByTab)
                 .forEach((function (e) {
-                    f.equipments.forEach((function (t) {
+                    _.equipments.forEach((function (t) {
                         e.querySelector('.equipment-input[data-equipment-id="' + t.id +
                                 '"]')
                             .disabled = !t.selected
@@ -3762,20 +3762,20 @@ function initVehiclesEquipment(e) {
                 }))
         }
 
-        function l() {
-            Object.values(f.containersByTab)
+        function c() {
+            Object.values(_.containersByTab)
                 .forEach((function (e) {
                     var t = e.querySelector(".payload-error-indicator");
-                    f.hasUnavailableSelectedEquipments() ? t.classList.remove("hidden") : t.classList
+                    _.hasUnavailableSelectedEquipments() ? t.classList.remove("hidden") : t.classList
                         .add("hidden")
                 }))
         }
 
-        function c() {
-            var e = f.isApplyPossible(),
+        function u() {
+            var e = _.isApplyPossible(),
                 t = e ? I18n.t("javascript.vehicle_payload.apply_payload") : I18n.t(
                     "javascript.vehicle_payload.equipment_unavailable");
-            Object.values(f.containersByTab)
+            Object.values(_.containersByTab)
                 .forEach((function (i) {
                     var n = i.querySelector(".apply-payload-btn");
                     e ? n.classList.remove("disabled") : n.classList.add("disabled"), n.textContent =
@@ -3783,45 +3783,45 @@ function initVehiclesEquipment(e) {
                 }))
         }
 
-        function u() {
-            var e = f.equipments.filter((function (e) {
+        function d() {
+            var e = _.equipments.filter((function (e) {
                     return e.applied
                 }))
                 .map((function (e) {
                     return e.id
                 })),
-                t = aao_types.map((function (e) {
+                i = aao_types.map((function (e) {
                     return e[0]
                 }));
             $.ajax({
-                url: "/vehicles/" + f.vehicleId + "/aao_settings",
+                url: "/vehicles/" + _.vehicleId + "/aao_settings",
                 dataType: "json",
                 data: {
                     applied_equipment_ids: e
                 },
                 success: function (e) {
-                    var i = $("#vehicle_checkbox_" + f.vehicleId)[0],
-                        n = Array.from(i.attributes)
+                    var n = $("#vehicle_checkbox_" + _.vehicleId)[0],
+                        s = Array.from(n.attributes)
                         .map((function (e) {
                             return e.name
                         }))
                         .filter((function (e) {
-                            return t.includes(e) || "data-equipment-types" === e
+                            return i.includes(e) || "data-equipment-types" === e
                         })),
-                        s = Object.keys(e)
+                        o = Object.keys(e)
                         .filter((function (e) {
-                            return t.includes(e) || "data-equipment-types" === e
+                            return i.includes(e) || "data-equipment-types" === e
                         }));
-                    n.forEach((function (e) {
-                        i.removeAttribute(e)
-                    })), s.forEach((function (t) {
-                        i.setAttribute(t, e[t])
+                    s.forEach((function (e) {
+                        n.removeAttribute(e)
+                    })), o.forEach((function (t) {
+                        n.setAttribute(t, e[t])
                     }));
-                    var o = [].concat(n, s),
-                        a = Array.from(new Set(o));
+                    var a = [].concat(s, o),
+                        r = Array.from(new Set(a));
                     Array.from(document.querySelectorAll(".aao"))
                         .filter((function (e) {
-                            return a.some((function (t) {
+                            return r.some((function (t) {
                                 return "1" === e.getAttribute(t)
                             }))
                         }))
@@ -3830,37 +3830,38 @@ function initVehiclesEquipment(e) {
                         }))
                         .forEach((function (e) {
                             aao_available(e, !0)
-                        })), calculateWaterBar(f.equipments.filter((function (e) {
+                        })), t.afterAaoUpdate && t.afterAaoUpdate(_.equipments.filter((function (
+                            e) {
                             return e.applied
                         })))
                 }
             })
         }
 
-        function d(e) {
+        function h(e) {
             var t = $(".vehicle_checkbox[value=" + e + "]");
             t.prop("checked", !0), handleVehicleSelect(t)
         }
-        var h = $('.dispatch-vehicle-equipments-container[data-vehicle-id="' + e + '"]'),
-            p = "2" === $("#vehicle_checkbox_" + e)
+        var p = $('.dispatch-vehicle-equipments-container[data-vehicle-id="' + e + '"]'),
+            m = "2" === $("#vehicle_checkbox_" + e)
             .attr("fms"),
-            m = "true" === $("#vehicle_checkbox_" + e)
+            f = "true" === $("#vehicle_checkbox_" + e)
             .attr("at_staging_area"),
-            f = {
+            _ = {
                 vehicleId: e,
-                totalCapacity: parseInt(h.find(".capacity-total-amount")
+                totalCapacity: parseInt(p.find(".capacity-total-amount")
                     .text()),
                 isEditMode: !1,
                 containersByTab: {
-                    all: h[0]
+                    all: p[0]
                 },
-                equipments: h.find(".equipment-checkbox")
+                equipments: p.find(".equipment-checkbox")
                     .map((function () {
                         var e = $(this),
                             t = e.data("equipment-in-use"),
                             i = e.data("equipment-is-default"),
-                            s = e.data("equipment-is-equiped"),
-                            o = i && p || s;
+                            n = e.data("equipment-is-equiped"),
+                            o = i && m || n;
                         return {
                             id: e.data("equipment-id"),
                             size: e.data("equipment-size"),
@@ -3871,15 +3872,15 @@ function initVehiclesEquipment(e) {
                             missionValues: e.data("mission-values"),
                             aaoValues: e.data("aao-values"),
                             isSelectPossible: function () {
-                                return !m && (!(this.inUse && !this.isDefault) && (!!this
-                                    .selected || !(n.includes(this.id) && !this
-                                    .applied) && !(this.size > f.getFreeCapacity())))
+                                return !f && (!(this.inUse && !this.isDefault) && (!!this
+                                    .selected || !(s.includes(this.id) && !this
+                                    .applied) && !(this.size > _.getFreeCapacity())))
                             }
                         }
                     }))
                     .get(),
                 getFreeCapacity: function () {
-                    return f.totalCapacity - f.getSelectedEquipmentsSize()
+                    return _.totalCapacity - _.getSelectedEquipmentsSize()
                 },
                 getSelectedEquipmentsSize: function () {
                     return this.equipments.filter((function (e) {
@@ -3909,31 +3910,31 @@ function initVehiclesEquipment(e) {
                     return !this.hasUnavailableSelectedEquipments()
                 }
             };
-        return i(), h.find(".change-payload-btn")
+        return n(), p.find(".change-payload-btn")
             .click((function (e) {
-                e.preventDefault(), f.isEditMode = !0, o()
-            })), h.find(".apply-payload-btn")
+                e.preventDefault(), _.isEditMode = !0, a()
+            })), p.find(".apply-payload-btn")
             .click((function (e) {
-                e.preventDefault(), s()
-            })), h.find(".equipment-checkbox")
+                e.preventDefault(), o()
+            })), p.find(".equipment-checkbox")
             .on("change", (function () {
-                $this = $(this), f.equipments.find((function (e) {
+                $this = $(this), _.equipments.find((function (e) {
                         return e.id === $this.data("equipment-id")
                     }))
-                    .selected = $this.is(":checked"), a()
+                    .selected = $this.is(":checked"), r()
             })), {
-                state: f,
-                updateSelectedEquipment: a,
-                applyEquipment: s
+                state: _,
+                updateSelectedEquipment: r,
+                applyEquipment: o
             }
     }
-    var n = [];
+    var s = [];
     e.forEach((function (e) {
-        vehicleData = i(e, t), vehiclesEquipmentDataById[e] = vehicleData
+        vehicleData = n(e, i), vehiclesEquipmentDataById[e] = vehicleData
     }));
-    var s = Object.values(vehiclesEquipmentDataById);
-    s.forEach((function (e) {
-        t(e.state.vehicleId)
+    var o = Object.values(vehiclesEquipmentDataById);
+    o.forEach((function (e) {
+        i(e.state.vehicleId)
     }))
 }
 var map, alliance_member_buildings_show, geocoder, directionsService, building_eval_unload;
@@ -9254,6 +9255,8 @@ Object.values || (Object.values = function (e) {
             waiting_for_vehicle: "En attente du v\xe9hicule \xe0 remorquer"
         },
         intervention_order: {
+            assigns_equipment_automatically: "Attribue automatiquement l'\xe9quipement",
+            assigns_equipment_automatically_hint: "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche. (Ne choisit pas exclusivement le mat\xe9riel)",
             automatic_text_color: "Couleur du texte automatique",
             back: "Retour",
             categories: {
