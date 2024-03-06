@@ -697,8 +697,10 @@ function radioMessage(e) {
                 .addClass("bigMapMenuButtonGreen")) : target = "radio_messages", $(".radio_message_vehicle_" +
                 e.id)
             .remove(), "" != e.mission_id && e.mission_id > 0 && (i = "<a href='/missions/" + e.mission_id +
-                "' class='btn btn-xs btn-default lightbox-open'>" + I18n.t("javascript.to_mission") + "</a> "
-                ), "" != e.target_building_id && e.target_building_id > 0) {
+                "?" + missionFilterQueryParams +
+                "' class='btn btn-xs btn-default lightbox-open mission-radio-button'>" + I18n.t(
+                    "javascript.to_mission") + "</a> "), "" != e.target_building_id && e.target_building_id >
+            0) {
             var n = buildingCaption(e.target_building_id);
             n || (n = I18n.t("javascript.to_building")), i = "<a href='/buildings/" + e.target_building_id +
                 "' class='btn btn-xs btn-default lightbox-open'>" + n + "</a> "
@@ -1067,19 +1069,19 @@ function iconMapVehicleGenerate(e, t, i) {
 
 function missionMarkerBlukDraw() {
     $.each(patientBulkCache, (function (e, t) {
-            var i = "";
-            $.each(t, (function (e, t) {
-                    i += t
-                })), $("#mission_patients_" + e)
-                .append(i)
-        })),
-        $.each(prisonerBulkCache, (function (e, t) {
-            var i = "";
-            $.each(t, (function (e, t) {
-                    i += t
-                })), $("#mission_prisoners_" + e)
-                .append(i)
-        })), patientBulkCache = {}, prisonerBulkCache = {}
+        var i = "";
+        $.each(t, (function (e, t) {
+                i += t
+            })),
+            $("#mission_patients_" + e)
+            .append(i)
+    })), $.each(prisonerBulkCache, (function (e, t) {
+        var i = "";
+        $.each(t, (function (e, t) {
+                i += t
+            })), $("#mission_prisoners_" + e)
+            .append(i)
+    })), patientBulkCache = {}, prisonerBulkCache = {}
 }
 
 function missionMarkerReset() {
@@ -1421,8 +1423,9 @@ function missionMarkerAdd(e) {
                 .additive_overlays || "") + "'><div id='mission_panel_" + e.id +
             "' class='panel panel-default " + v + " mission_panel_" + l +
             "'><div id='mission_panel_heading_" + e.id + "' class='panel-heading'><a href='/missions/" + e
-            .id + "' class='btn btn-default btn-xs lightbox-open mission-alarm-button' id='alarm_button_" + e
-            .id + "'> " + I18n.t("javascript.alarm") + "</a> <span id='mission_participant_" + e.id +
+            .id + "?" + missionFilterQueryParams +
+            "' class='btn btn-default btn-xs lightbox-open mission-alarm-button' id='alarm_button_" + e.id +
+            "'> " + I18n.t("javascript.alarm") + "</a> <span id='mission_participant_" + e.id +
             "' class='glyphicon glyphicon-user hidden'></span><span id='mission_participant_new_" + e.id +
             "' class='glyphicon glyphicon-asterisk'></span> <a href='' id='mission_caption_" + e.id +
             "' class='map_position_mover' target_latitude='" + e.tlat + "' target_longitude='" + e.tlng +
@@ -1969,7 +1972,8 @@ function tasksUpdate(e, t) {
         .html(I18n.t("javascript.new")), e > 0 || 1 == t ? ($("#completed_tasks_counter")
             .removeClass("hidden"), $("#menu_profile")
             .addClass("alliance_forum_new")) : ($("#completed_tasks_counter")
-            .addClass("hidden"), $("#menu_profile")
+            .addClass("hidden"),
+            $("#menu_profile")
             .removeClass("alliance_forum_new")), mobile_bridge_use && mobileBridgeAdd("update_task_counter", {
             count: e,
             new_tasks_present: t
@@ -2491,7 +2495,7 @@ function missionSelectionOnly(e) {
         })) : n && $(".mission_selection[data-participation-filter]")
         .each((function (e, t) {
             missionSelectionDeactive($(t))
-        })), missionSelectionActive(e), missionSelectionSave()
+        })), missionSelectionActive(e), missionSelectionSave(), updateMissionFilterQueryParams()
 }
 
 function missionSelectionUpdateButtons() {
@@ -2578,7 +2582,7 @@ function getActiveMissionIds(e = [missionTypeFilters, missionStateFilters, missi
 
 function missionSelection(e) {
     e.hasClass("btn-success") ? missionSelectionDeactive(e) : missionSelectionActive(e),
-    missionSelectionSave()
+    missionSelectionSave(), updateMissionFilterQueryParams()
 }
 
 function missionSelectionActive(e) {
@@ -3542,6 +3546,44 @@ function debounce(e, t) {
     }
 }
 
+function updateMissionFilterQueryParams(e) {
+    const t = $("#missions-sortable-select")
+        .find(":selected"),
+        i = MISSION_SORTER_QUERY_PARAMETER_MAP[t.data("sort-direction")];
+    let n = MISSION_SORTER_QUERY_PARAMETER_MAP[t.data("sort-key")];
+    var s = $(".mission_selection[data-type-filter].btn-danger")
+        .map((function (e, t) {
+            return MISSION_FILTER_QUERY_PARAMETER_MAP[$(t)
+                .data("type-filter")]
+        }))
+        .toArray()
+        .join("_"),
+        o = $(".mission_selection[data-state-filter].btn-danger")
+        .map((function (e, t) {
+            return MISSION_FILTER_QUERY_PARAMETER_MAP[$(t)
+                .data("state-filter")]
+        }))
+        .toArray()
+        .join("_"),
+        a = $(".mission_selection[data-participation-filter].btn-danger")
+        .map((function (e, t) {
+            return MISSION_FILTER_QUERY_PARAMETER_MAP[$(t)
+                .data("participation-filter")]
+        }))
+        .toArray()
+        .join("_");
+    missionFilterQueryParams = "sd=" + i + "&sk=" + n + "&ift=" + s + "&ifs=" + o + "&ifp=" + a;
+    (void 0 === e ? $(".mission-alarm-button, .mission-radio-button") : $(e +
+        " .mission-alarm-button, .mission-radio-button"))
+    .each((function (e, t) {
+        const i = $(t)
+            .attr("href")
+            .split("?")[0];
+        $(t)
+            .attr("href", i + "?" + missionFilterQueryParams)
+    }))
+}
+
 function missionPositionMarkerAdd(e) {
     1 == mobile_bridge_use && mobileBridgeAdd("poi", [e])
 }
@@ -4243,11 +4285,11 @@ Object.values || (Object.values = function (e) {
                 b = (_ > 0 ? "-" : "+") + (g.toString()
                     .length < 2 ? "0" + g : g) + (v.toString()
                     .length < 2 ? "0" + v : v);
-            return h > 12 ? h -= 12 : 0 === h && (h = 12),
-                i = (i = (i = (i = (i = (i = (i = (i = (i = (i = (i = (i = (i = (i = (i = (i = (
-                                                                                i = (i = (i = (i =
-                                                                                            (i = (i =
-                                                                                                    (i = i
+            return h > 12 ? h -= 12 : 0 === h && (h = 12), i = (i = (i = (i = (i = (i = (i = (i =
+                                            (i = (i = (i = (i = (i = (i = (i = (i = (i = (i = (i =
+                                                                                        (i = (i =
+                                                                                                (i = (i =
+                                                                                                        i
                                                                                                         .replace(
                                                                                                             "%a",
                                                                                                             o
@@ -37769,7 +37811,8 @@ var building_markers = Array(),
         }
     },
     useMissionScrollBarOptimization = navigator.userAgent.includes('"os":"iOS"'),
-    currentMobileTab = null;
+    currentMobileTab = null,
+    missionFilterQueryParams = "";
 $((function () {
     function onCoinsTop() {
         return !mobile_bridge_use || (mobileBridgeAdd("coins_window", {}), !1)
@@ -38501,7 +38544,26 @@ if ($(document)
                 if (2 == e.which && !$.rails.allowAction($(this))) return $.rails
                     .stopEverything(e)
             }))
-    })), "undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requires jQuery");
+    })), MISSION_SORTER_QUERY_PARAMETER_MAP = {
+        caption: "c",
+        age: "g",
+        average_credits: "ac",
+        prisoners_count: "pr",
+        patients_count: "pa",
+        asc: "a",
+        desc: "d"
+    }, MISSION_FILTER_QUERY_PARAMETER_MAP = {
+        emergency: "em",
+        krankentransporte: "kt",
+        alliance: "al",
+        alliance_event: "ae",
+        sicherheitswache: "sw",
+        unattended: "ua",
+        attended: "at",
+        finishing: "fi",
+        new: "ne",
+        started: "st"
+    }, "undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requires jQuery");
 ! function () {
     "use strict";
     var e = jQuery.fn.jquery.split(" ")[0].split(".");
@@ -39541,8 +39603,7 @@ function (e) {
     var n = e.fn.scrollspy;
     e.fn.scrollspy = i, e.fn.scrollspy.Constructor = t, e.fn.scrollspy.noConflict = function () {
             return e.fn.scrollspy = n, this
-        },
-        e(window)
+        }, e(window)
         .on("load.bs.scrollspy.data-api", (function () {
             e('[data-spy="scroll"]')
                 .each((function () {
