@@ -234,7 +234,7 @@ function addMissionParticipations(e) {
     $(".missionSideBarEntry")
         .addClass("hidden"), useMissionScrollBarOptimization && $(".missionSideBarEntry")
         .removeClass("missionSideBarEntryScrollInvisible")
-        .css("height", "auto"), t.removeClass("hidden"), updateMissionsDisplayedCount()
+        .css("height", "auto"), t.removeClass("hidden")
 }
 
 function vehicleDistance(e, t, i, n, s, o, a) {
@@ -1069,19 +1069,19 @@ function iconMapVehicleGenerate(e, t, i) {
 
 function missionMarkerBlukDraw() {
     $.each(patientBulkCache, (function (e, t) {
-        var i = "";
-        $.each(t, (function (e, t) {
-                i += t
-            })),
-            $("#mission_patients_" + e)
-            .append(i)
-    })), $.each(prisonerBulkCache, (function (e, t) {
-        var i = "";
-        $.each(t, (function (e, t) {
-                i += t
-            })), $("#mission_prisoners_" + e)
-            .append(i)
-    })), patientBulkCache = {}, prisonerBulkCache = {}
+            var i = "";
+            $.each(t, (function (e, t) {
+                    i += t
+                })), $("#mission_patients_" + e)
+                .append(i)
+        })),
+        $.each(prisonerBulkCache, (function (e, t) {
+            var i = "";
+            $.each(t, (function (e, t) {
+                    i += t
+                })), $("#mission_prisoners_" + e)
+                .append(i)
+        })), patientBulkCache = {}, prisonerBulkCache = {}
 }
 
 function missionMarkerReset() {
@@ -1972,9 +1972,9 @@ function tasksUpdate(e, t) {
         .html(I18n.t("javascript.new")), e > 0 || 1 == t ? ($("#completed_tasks_counter")
             .removeClass("hidden"), $("#menu_profile")
             .addClass("alliance_forum_new")) : ($("#completed_tasks_counter")
-            .addClass("hidden"),
-            $("#menu_profile")
-            .removeClass("alliance_forum_new")), mobile_bridge_use && mobileBridgeAdd("update_task_counter", {
+            .addClass("hidden"), $("#menu_profile")
+            .removeClass("alliance_forum_new")),
+        mobile_bridge_use && mobileBridgeAdd("update_task_counter", {
             count: e,
             new_tasks_present: t
         })
@@ -2537,7 +2537,7 @@ function missionSelectionUpdateButtons() {
         .html(
             '<img class="icon icons8-Clock-Filled" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAE8klEQVRoQ8Waj5EVNwzGpQoSKkioIFBBuAqSVBCoAKggUEG4CgIVBCoIV0GggkAFQAVifjvy4bdr+d/uTjxzM+/d83r1WZ8+y7JVDm5m9r2I/CQi90SEz/zxmfZORD77H5/fqyrfD2t6xEhmhsG/i8iDzPjeoQH2VkReqSqfd7VpQO6JX0TkmYj8uMuKbw9/8PHezHpuCpCZPfYXQ6czGjR8pqrXo4MPAXJq/TVBq1G7Un8o+GiEit2A3CsvZi3b+dyTXm91ATIzvPKw06g3rmYEOjP8WkR+9mdvfBxiLgkIcdjTXqrqo1bHKiAP/H86KPZeRPDe63Uwm9lLV0BsQckuJsbfwf/4Q+5rjQm6qglGC9C/DTAfRQQ64IVi87h74j++qMWDmQGKifmuguqdqt6Pfg8BddDsOS+fldfKBKCcLAUoadRC+hUBmRkz+mcw2hf3ClQ6rbm3iN2oPVXVjUhtADlFoFqpAebBiIyaGQKQxruvqiyeXc1tQVwiCjLeRXZRAlSLm80ALcvMDPr84f2eqyrfu1tjgjfxdAGoQTUWuGGa7QUE8gb9Lqh3C8jl8z/PjtczeK2qSam6Z9eN2eWh9DIzI15KQkGadDeJUw4IySwFIdJ8b1bNVoYMUy4DhPoRf6V4umVPDgjvlLLmKaplhhDUKVOY9nSDeh9U9S59FkCVwGMDljZnQ1QLAN2oKinPdDMzVK2UUSyClQBF/Cxq/Yg1ZpZ76AhA0Rq5eD8BiqT6zmzsnOghYulTYVIXCVdXt1IHdo2/jnij1NfM8tjc7SEPEXLHUpZ+B0Bwmox63aYVKR/IzCz7fhSgfCnIX3cFoIiTpOnwf1dbAapmyr0vMjOY83eh/1MARWhZrLrzroBupdh8q6pXvcYH47K8QOUtqyorMN4BEOoxXF6qTBRGTKmnLy/khQhDSf6v8VAuq6UJ2ewye2a3Me5ULHXYevN/ASL/IkaHPN8LKFpUKWhAueq2OfJWI3PnsWFQrsiIGJRL6VRuwkK5M0UhSlOSEc2ix4wonC3bjI/Mokw/lFb4ViVn/Uxl7Vxk+9SFNRnjGQkCVEosKX/91iM29KmwallYo9zokNRnlTXwLna9pbSlq5DogOLUxztEXN+dnAYxkBcf8y7N9anigGWrc/r2oaKCkRhVN5QV9bzYPrCJK5WuDsm9KqCibX9YXTKzaKvzbYPntGPNKanQri14K9CD8m8xk6hUfz6q6lI+6CmSXFRVWgbO/F4oKG62Lo2qVLFIUquq7Cpu9IB0UMQVNN8UIytJ9BdVvT1JPL3Q2AOm1Weq0JgtgLV0ZbgU3DK29XujFLypSo0W64cTypbBtd8dDOWB6HC6Xax3xasdp9DlVOVzGyJJT3PQd5ySUS9azVMXth2o0aE3QVzN2JXWaunhprN1JNlK/wHDkeSryuLJop0fp4SbOjPjNgoTVbv/UK3mtgAxcJQh5xgwEo8ycxce6zw0BggUa5WdOZzmwC1kRe+xfot+OTgy4XR/h5MLnl0f65ORpGP93mJmV22jC1CnUOwRtNazzSw8DdANyEFBCWa8dZ+gZWDv71Ds4UgxZQhQpoAoEOlJ7T5Br9GlfhxOc3lp+CrOFCD3FoIB/wFWytJnABFzjLe5kdI72DSg/AW+oqNSBPooHaEVSsoWfKhOVwJ5CKAVuHQls+eKJpn1oQvzV++Yjk+9aieJAAAAAElFTkSuQmCC" width="15" height="15"> ' +
             c + "/" + l), updateMissionStateButtons(), updateMissionParticipationButtons(),
-        updateNoMissionsMessages(), updateMissionsDisplayedCount()
+        updateNoMissionsMessages()
 }
 
 function updateMissionStateButtons() {
@@ -2563,14 +2563,6 @@ function updateMissionParticipationButtons() {
     $("#mission_select_started .counter")
         .html(`${t.length}`), $("#mission_select_new .counter")
         .html(`${i.length}`)
-}
-
-function updateMissionsDisplayedCount() {
-    $(".missions-active-count")
-        .text(getActiveMissionIds()
-            .length), $(".missions-all-count")
-        .text(getAllMissionIds()
-            .length)
 }
 
 function getActiveMissionIds(e = [missionTypeFilters, missionStateFilters, missionParticipationFilters]) {
@@ -2610,12 +2602,12 @@ function handleFilterChange(e, t) {
         s = e.data("participation-filter");
     i && (missionTypeFilters[i].active = t), n && (missionStateFilters[n].active = t), s && (
             missionParticipationFilters[s].active = t), updateMissionStateButtons(),
-        updateMissionParticipationButtons(), updateNoMissionsMessages(), updateMissionsDisplayedCount()
+        updateMissionParticipationButtons(), updateNoMissionsMessages()
 }
 
 function handleMissionTypeFilterChange(e, t) {
     missionTypeFilters[e].active = t, updateMissionStateButtons(), updateMissionParticipationButtons(),
-        updateNoMissionsMessages(), updateMissionsDisplayedCount()
+        updateNoMissionsMessages()
 }
 
 function updateNoMissionsMessages() {
