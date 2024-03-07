@@ -11310,6 +11310,10 @@ fieldset[disabled] .btn-danger:hover {
     animation-name: slideOutUp
 }
 
+body.bigMap #main_navbar {
+    margin-bottom: 0
+}
+
 #main_navbar {
     margin-bottom: 10px
 }
