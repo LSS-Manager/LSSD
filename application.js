@@ -3718,7 +3718,7 @@ function initEquipment(e) {
             return $(this)
                 .data("vehicle-id")
         }))
-        .get(), e), aaoCheckAvailable()
+        .get(), e)
 }
 
 function initVehiclesEquipment(e, t = {}) {
@@ -4247,9 +4247,9 @@ Object.values || (Object.values = function (e) {
                     /(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}):(\d{2})([\.,]\d{1,3})?)?(Z|\+00:?00)?/
                     )) {
                 for (var s = 1; s <= 6; s++) t[s] = parseInt(t[s], 10) || 0;
-                t[2] -= 1, n = t[7] ? 1e3 * ("0" + t[7]) : null,
-                    i = t[8] ? new Date(Date.UTC(t[1], t[2], t[3], t[4], t[5], t[6], n)) :
-                    new Date(t[1], t[2], t[3], t[4], t[5], t[6], n)
+                t[2] -= 1, n = t[7] ? 1e3 * ("0" + t[7]) : null, i = t[8] ? new Date(Date.UTC(t[
+                    1], t[2], t[3], t[4], t[5], t[6], n)) : new Date(t[1], t[2], t[3], t[4],
+                    t[5], t[6], n)
             } else "number" == typeof e ? (i = new Date)
                 .setTime(e) : e.match(
                     /([A-Z][a-z]{2}) ([A-Z][a-z]{2}) (\d+) (\d+:\d+:\d+) ([+-]\d+) (\d+)/) ? (i =
