@@ -8409,6 +8409,7 @@ Object.values || (Object.values = function (e) {
                 gw_wasserrettung: "S.WOPR lub Quad",
                 gwl2wasser_only: "Samoch\xf3d w\u0119\u017cowy",
                 hazmat_drone: "Robot CBRNE",
+                height_equipment: "Skokochron",
                 height_rescue: "Skokochron",
                 helicopter_bucket: "Bambi Bucket",
                 hems: "\u015amig\u0142owiec LPR",
@@ -37996,7 +37997,11 @@ $((function () {
             "fustkw_or_civil_patrolcar", I18n.t(
                 "intervention_order.vehicles.fustkw_or_civil_patrolcar")], ["traffic_patrol",
             I18n.t("intervention_order.vehicles.traffic_patrol")], ["police_horse_count", I18n
-            .t("intervention_order.vehicles.police_horse_count")]], $("#restore_map")
+            .t("intervention_order.vehicles.police_horse_count")], ["mobile_shelter", I18n.t(
+            "intervention_order.vehicles.mobile_shelter")], ["height_equipment", I18n.t(
+            "intervention_order.vehicles.height_equipment")], ["hazmat_drone", I18n.t(
+            "intervention_order.vehicles.hazmat_drone")], ["water_rescue_equipment", I18n.t(
+            "intervention_order.vehicles.water_rescue_equipment")]], $("#restore_map")
         .click((function () {
             mapViewRestore()
         })), $("#coins_top")
