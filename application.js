@@ -5049,6 +5049,7 @@ Object.values || (Object.values = function (e) {
                 technical_aid_organization: "THW",
                 technical_aid_organization_missions: "Technical Aid Organization",
                 technical_aid_organization_school: "THW Bundesschule",
+                tow_trucks: "Tow Truck Stations",
                 user_buildings: "My buildings",
                 user_missions: "My missions",
                 water_watch: "Water rescue",
