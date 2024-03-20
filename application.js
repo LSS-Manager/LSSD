@@ -10,6 +10,16 @@ function check_and_enable_apng_support() {
         "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACGFjVEwAAAABAAAAAcMq2TYAAAANSURBVAiZY2BgYPgPAAEEAQB9ssjfAAAAGmZjVEwAAAAAAAAAAQAAAAEAAAAAAAAAAAD6A+gBAbNU+2sAAAARZmRBVAAAAAEImWNgYGBgAAAABQAB6MzFdgAAAABJRU5ErkJggg=="
 }
 
+function check_and_initialize_locale_compare(e) {
+    try {
+        "foo".localeCompare("bar", "invalid_language_tag")
+    } catch (t) {
+        if ("RangeError" === t.name) try {
+            "foo".localeCompare("bar", e), localeCompareLanguage = e
+        } catch (e) {}
+    }
+}
+
 function searchMission() {
     var e = $("#search_input_field_missions")
         .attr("search_class"),
@@ -1069,19 +1079,18 @@ function iconMapVehicleGenerate(e, t, i) {
 
 function missionMarkerBlukDraw() {
     $.each(patientBulkCache, (function (e, t) {
-            var i = "";
-            $.each(t, (function (e, t) {
-                    i += t
-                })), $("#mission_patients_" + e)
-                .append(i)
-        })),
-        $.each(prisonerBulkCache, (function (e, t) {
-            var i = "";
-            $.each(t, (function (e, t) {
-                    i += t
-                })), $("#mission_prisoners_" + e)
-                .append(i)
-        })), patientBulkCache = {}, prisonerBulkCache = {}
+        var i = "";
+        $.each(t, (function (e, t) {
+                i += t
+            })), $("#mission_patients_" + e)
+            .append(i)
+    })), $.each(prisonerBulkCache, (function (e, t) {
+        var i = "";
+        $.each(t, (function (e, t) {
+                i += t
+            })), $("#mission_prisoners_" + e)
+            .append(i)
+    })), patientBulkCache = {}, prisonerBulkCache = {}
 }
 
 function missionMarkerReset() {
@@ -1969,12 +1978,12 @@ function creditsUpdate(e, t) {
 function tasksUpdate(e, t) {
     e > 0 ? $("#completed_tasks_counter")
         .html(e) : 1 == t && $("#completed_tasks_counter")
-        .html(I18n.t("javascript.new")), e > 0 || 1 == t ? ($("#completed_tasks_counter")
+        .html(I18n.t("javascript.new")),
+        e > 0 || 1 == t ? ($("#completed_tasks_counter")
             .removeClass("hidden"), $("#menu_profile")
             .addClass("alliance_forum_new")) : ($("#completed_tasks_counter")
             .addClass("hidden"), $("#menu_profile")
-            .removeClass("alliance_forum_new")),
-        mobile_bridge_use && mobileBridgeAdd("update_task_counter", {
+            .removeClass("alliance_forum_new")), mobile_bridge_use && mobileBridgeAdd("update_task_counter", {
             count: e,
             new_tasks_present: t
         })
@@ -3192,8 +3201,9 @@ function initSortable(e) {
     }
 
     function i(e, t) {
-        return "string" == typeof e && "string" == typeof t ? e.toString()
-            .localeCompare(t.toString()) : e - t
+        return "string" == typeof e && "string" == typeof t ? null === localeCompareLanguage ? e.toString()
+            .localeCompare(t.toString()) : e.toString()
+            .localeCompare(t.toString(), localeCompareLanguage) : e - t
     }
 
     function n(e) {
@@ -37806,7 +37816,8 @@ var building_markers = Array(),
     },
     useMissionScrollBarOptimization = navigator.userAgent.includes('"os":"iOS"'),
     currentMobileTab = null,
-    missionFilterQueryParams = "";
+    missionFilterQueryParams = "",
+    localeCompareLanguage = null;
 $((function () {
     function onCoinsTop() {
         return !mobile_bridge_use || (mobileBridgeAdd("coins_window", {}), !1)
