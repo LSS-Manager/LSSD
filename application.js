@@ -5200,6 +5200,7 @@ Object.values || (Object.values = function (e) {
                 brush_truck_4: "Type 4 engine",
                 brush_truck_5: "Type 6 engine",
                 brush_vehicle: "Wildland fire vehicle",
+                car_carrier: "Tow Trucks",
                 care_service_equipment: "Field Kitchen",
                 coastal_boat: "Coastal Boat",
                 coastal_guard_boat: "Coastal Guard Boat",
