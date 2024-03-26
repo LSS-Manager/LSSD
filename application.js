@@ -122,12 +122,8 @@ function aao_check(e, t, i) {
             i > 0 && (aao_building_check_native(a, t) && !t.checked && !t.disabled && t
                 .getAttribute("ignore_aao") <= 0 && (t.getAttribute(
                         "vehicle_type_ignore_default_aao") <= 0 || -1 !== e.indexOf(
-                    "custom_")) && (i -= "wasser_amount" == e || "wasser_amount_tlf" == e ||
-                    "water_damage_pump_value" == e || "water_damage_pump_value_only_pumps" ==
-                    e || "foam_amount" == e || "water_amount_water_carrier" == e ||
-                    "water_amount_tlf_water_carrier" == e || "police_horse_count" == e ? t
-                    .getAttribute(e) : 1), i <= 0 && (n = document.getElementById(
-                        "vehicle_sort_" + t.value)
+                    "custom_")) && (AAO_MULTIPLE_KEYS.includes(e) ? i -= t.getAttribute(e) :
+                    i -= 1), i <= 0 && (n = document.getElementById("vehicle_sort_" + t.value)
                     .getAttribute("timevalue")))
         }))
     }
@@ -206,12 +202,8 @@ function aao(e, t, i, n) {
                         .change(), "grtw1" == e && $("#vehicle_mode_" + $(this)
                             .val() + "_1")
                         .prop("checked", !0)
-                        .change(), n -= "wasser_amount" == e || "wasser_amount_tlf" == e ||
-                        "water_damage_pump_value" == e || "water_damage_pump_value_only_pumps" ==
-                        e || "foam_amount" == e || "water_amount_water_carrier" == e ||
-                        "water_amount_tlf_water_carrier" == e || "police_horse_count" == e ? $(
-                            this)
-                        .attr(e) : 1;
+                        .change(), AAO_MULTIPLE_KEYS.includes(e) ? n -= $(this)
+                        .attr(e) : n -= 1;
                     const t = i[s];
                     if (t) {
                         const e = vehiclesEquipmentDataById[s];
@@ -1978,8 +1970,7 @@ function creditsUpdate(e, t) {
 function tasksUpdate(e, t) {
     e > 0 ? $("#completed_tasks_counter")
         .html(e) : 1 == t && $("#completed_tasks_counter")
-        .html(I18n.t("javascript.new")),
-        e > 0 || 1 == t ? ($("#completed_tasks_counter")
+        .html(I18n.t("javascript.new")), e > 0 || 1 == t ? ($("#completed_tasks_counter")
             .removeClass("hidden"), $("#menu_profile")
             .addClass("alliance_forum_new")) : ($("#completed_tasks_counter")
             .addClass("hidden"), $("#menu_profile")
@@ -2897,7 +2888,8 @@ function aao_available(e, t) {
         n > 0 && i ? $("#aao_timer_" + e)
             .html(formatTime(n)) : $("#aao_timer_" + e)
             .html("-"), i ? ($("#available_aao_" + e)
-                .attr("class", "label label-success"), $("#available_aao_" + e)
+                .attr("class", "label label-success"),
+                $("#available_aao_" + e)
                 .html("<span class='glyphicon glyphicon-ok' aria-hidden='true'></span>")) : ($(
                     "#available_aao_" + e)
                 .html("<span class=' glyphicon glyphicon-remove' aria-hidden='true'></span>"), $(
@@ -37819,6 +37811,9 @@ var building_markers = Array(),
     currentMobileTab = null,
     missionFilterQueryParams = "",
     localeCompareLanguage = null;
+const AAO_MULTIPLE_KEYS = ["wasser_amount", "wasser_amount_tlf", "water_damage_pump_value",
+    "water_damage_pump_value_only_pumps", "foam_amount", "water_amount_water_carrier",
+    "water_amount_tlf_water_carrier", "police_horse_count", "car_carrier"];
 $((function () {
     function onCoinsTop() {
         return !mobile_bridge_use || (mobileBridgeAdd("coins_window", {}), !1)
@@ -38014,7 +38009,8 @@ $((function () {
             "intervention_order.vehicles.mobile_shelter")], ["height_equipment", I18n.t(
             "intervention_order.vehicles.height_equipment")], ["hazmat_drone", I18n.t(
             "intervention_order.vehicles.hazmat_drone")], ["water_rescue_equipment", I18n.t(
-            "intervention_order.vehicles.water_rescue_equipment")]], $("#restore_map")
+            "intervention_order.vehicles.water_rescue_equipment")], ["car_carrier", I18n.t(
+            "intervention_order.vehicles.car_carrier")]], $("#restore_map")
         .click((function () {
             mapViewRestore()
         })), $("#coins_top")
