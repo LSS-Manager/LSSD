@@ -8922,6 +8922,7 @@ Object.values || (Object.values = function (e) {
                 pump: "Carrelli Alluvionali",
                 pump_speed: "Capacit\xe0 di Pompaggio",
                 pump_speed_pump_only: "Capatit\xe0 di Pompaggio - Solo Carrelli Alluvionali",
+                rescue_dogs: "Unit\xe0 Cinofila SAR",
                 rescue_vehicle: "Polisoccorso",
                 rescue_vehicle_only: "CA / POLI",
                 rescueboat: "Barca di salvataggio grande",
