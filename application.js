@@ -10254,6 +10254,7 @@ Object.values || (Object.values = function (e) {
                 elw_police: "Indsatsleder Politi",
                 elw1_or_elw2: "Indsatsleder Brand eller Ledelses- og kommunikationsmodul",
                 emergency_ambulance: "Ambulance eller Rednings Helikopter",
+                energy_supply: "N\xf8dstr\xf8ms Forsyning",
                 fire_truck: "Brandbiler",
                 fireboat: "Stor brandb\xe5d",
                 fly_car: "Akutl\xe6ge",
