@@ -5123,6 +5123,7 @@ Object.values || (Object.values = function (e) {
             assigns_equipment_automatically_hint: "If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment. (Does not exclusively choose equipment)",
             automatic_text_color: "Automatic Text Color",
             back: "Back",
+            car_carrier: "Wrecker or Flatbed Carrier",
             categories: {
                 airport: "Airport",
                 bereitschaftspolizei: "Riot Police",
