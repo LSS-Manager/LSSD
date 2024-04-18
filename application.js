@@ -2199,6 +2199,7 @@ function missionSpeed(e) {
             .hide(), $("#mission_speed_play")
             .show()
     }
+    missionRequest()
 }
 
 function missionRequest() {
@@ -2216,7 +2217,8 @@ function missionRequest() {
             }
         }), 0 == mission_speed ? timeout = rand(12e4, 22e4) : 2 == mission_speed ? timeout = rand(31e3,
         45e3) : 3 == mission_speed ? timeout = rand(21e3, 25e3) : 4 == mission_speed ? timeout = rand(25e4,
-            35e4) : 5 == mission_speed ? timeout = rand(5e5, 7e5) : timeout = rand(31e3, 12e4), setTimeout(
+            35e4) : 5 == mission_speed ? timeout = rand(5e5, 7e5) : timeout = rand(31e3, 12e4), null !==
+        lastMissionTimeoutID && clearTimeout(lastMissionTimeoutID), lastMissionTimeoutID = setTimeout(
             "missionRequest()", timeout)
 }
 
@@ -37817,6 +37819,7 @@ var building_markers = Array(),
 const AAO_MULTIPLE_KEYS = ["wasser_amount", "wasser_amount_tlf", "water_damage_pump_value",
     "water_damage_pump_value_only_pumps", "foam_amount", "water_amount_water_carrier",
     "water_amount_tlf_water_carrier", "police_horse_count", "car_carrier"];
+var lastMissionTimeoutID = null;
 $((function () {
     function onCoinsTop() {
         return !mobile_bridge_use || (mobileBridgeAdd("coins_window", {}), !1)
