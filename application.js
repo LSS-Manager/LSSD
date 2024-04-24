@@ -4664,7 +4664,7 @@ Object.values || (Object.values = function (e) {
                 energy_supply: "NEA50",
                 energy_supply_2: "NEA200",
                 fire_truck: "L\xf6schfahrzeuge oder Tankl\xf6schfahrzeuge",
-                fukw: "F\xfcKw (F\xfchrungskraftwagen - Polizei)",
+                fukw: "F\xfcKW (F\xfchrungskraftwagen - Polizei)",
                 fustkw_or_civil_patrolcar: "FuStW oder Zivilstreifenwagen",
                 fustw_or_police_motorcycle: "Funkstreifenwagen oder Polizeimotorrad",
                 fwk: "Feuerwehrkran",
