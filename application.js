@@ -5730,6 +5730,7 @@ Object.values || (Object.values = function (e) {
                 fire_school_missions: "Fire Academy",
                 firehouse_missions: "Fire Station",
                 firehouse_small_missions: "Fire Station (Small)",
+                general_practitioner: "GP Surgery",
                 hospital_missions: "Hospital",
                 map_filters: "Points of Interest (POIs)",
                 mission_positions: "Points of Interest (POIs)",
