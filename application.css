@@ -17472,12 +17472,21 @@ body.dark .grid-container .grid-item .grid-item-text .line {
     align-items: center;
     padding-top: 0;
     padding-bottom: 0;
-    margin-right: 5px
+    margin-right: 5px;
+    height: 100%
 }
 
 .label-speedbutton .glyphicon {
     top: 0;
     bottom: 0
+}
+
+.mission-speed-dropdown-menu {
+    min-width: initial
+}
+
+.mission-speed-dropdown-menu .premium-icon {
+    vertical-align: initial
 }
 
 body.dark .nav-tabs>li.active>a,
@@ -17526,6 +17535,23 @@ body.dark .nav-tabs>li.active>a:focus {
 .form-group-extramargin .form-group {
     margin-left: auto;
     margin-right: auto
+}
+
+.vehicle-mode-label {
+    display: flex;
+    align-items: center
+}
+
+.vehicle-mode-label input {
+    margin: 0
+}
+
+.vehicle-mode-label .title {
+    margin-left: 3px
+}
+
+.mission-speed-error .btn {
+    margin-top: 5px
 }
 
 /*

@@ -1527,8 +1527,8 @@ function getMissionSortableAttributes(e) {
             id: e.id,
             caption: e.caption.replace(/(&quot;|'|")+/g, ""),
             average_credits: e.average_credits,
-            prisoners_count: e.prisoners_count,
-            patients_count: e.patients_count,
+            prisoners_count: [e.prisoners_count, e.possible_prisoners_count],
+            patients_count: [e.patients_count, e.possible_patients_count],
             age: t
         }
 }
@@ -2889,9 +2889,9 @@ function aao_available(e, t) {
         }
         n > 0 && i ? $("#aao_timer_" + e)
             .html(formatTime(n)) : $("#aao_timer_" + e)
-            .html("-"), i ? ($("#available_aao_" + e)
-                .attr("class", "label label-success"),
-                $("#available_aao_" + e)
+            .html("-"),
+            i ? ($("#available_aao_" + e)
+                .attr("class", "label label-success"), $("#available_aao_" + e)
                 .html("<span class='glyphicon glyphicon-ok' aria-hidden='true'></span>")) : ($(
                     "#available_aao_" + e)
                 .html("<span class=' glyphicon glyphicon-remove' aria-hidden='true'></span>"), $(
@@ -3158,49 +3158,60 @@ function updateButtonState(e, t) {
 }
 
 function initSortable(e) {
-    function t(t, n) {
-        function o() {
-            return a(t, "asc")
+    function t(t, s) {
+        function a() {
+            return r(t, "asc")
         }
 
-        function a(t, n) {
+        function r(t, s) {
             const {
-                tiebreakerKey: s
+                tiebreakerKey: o
             } = e;
-            return function (e, o) {
-                const a = i($(e)
-                    .data("sortable-by")[t], $(o)
+            return function (e, a) {
+                const r = i($(e)
+                    .data("sortable-by")[t], $(a)
                     .data("sortable-by")[t]);
-                let r = a;
-                if (0 === a && s) {
-                    r = i($(e)
-                        .data("sortable-by")[s], $(o)
-                        .data("sortable-by")[s])
+                let l = r;
+                if (0 === r && o) {
+                    l = n($(e)
+                        .data("sortable-by")[o], $(a)
+                        .data("sortable-by")[o])
                 }
-                return "desc" === n ? r > 0 ? -1 : 1 : r < 0 ? -1 : 1
+                return "desc" === s ? l > 0 ? -1 : 1 : l < 0 ? -1 : 1
             }
         }
-        s(n), sortFn = "custom" === n && e.customSort ? e.customSort : a(t, n);
-        let r = $(e.containerSelector + " " + e.sortableElementSelector),
-            l = {};
-        r.each((function (e, t) {
-            l[t.id] = e
+        o(s), sortFn = "custom" === s && e.customSort ? e.customSort : r(t, s);
+        let l = $(e.containerSelector + " " + e.sortableElementSelector),
+            c = {};
+        l.each((function (e, t) {
+            c[t.id] = e
         }));
-        var c = r.sort(o())
+        var u = l.sort(a())
             .sort(sortFn);
-        let u = !1;
-        c.each((function (e, t) {
-            u || (u = l[t.id] !== e)
-        })), u && c.appendTo(e.containerSelector), e.$element.data("sort-direction", n)
+        let d = !1;
+        u.each((function (e, t) {
+            d || (d = c[t.id] !== e)
+        })), d && u.appendTo(e.containerSelector), e.$element.data("sort-direction", s)
     }
 
     function i(e, t) {
+        const i = [e].flat(),
+            s = [t].flat(),
+            o = Math.min(i.length, s.length);
+        for (let e = 0; e < o; e++) {
+            const t = n(i[e], s[e]);
+            if (0 !== t) return t
+        }
+        return 0
+    }
+
+    function n(e, t) {
         return "string" == typeof e && "string" == typeof t ? null === localeCompareLanguage ? e.toString()
             .localeCompare(t.toString()) : e.toString()
             .localeCompare(t.toString(), localeCompareLanguage) : e - t
     }
 
-    function n(e) {
+    function s(e) {
         var t = e.find("option:selected")
             .data();
         return {
@@ -3209,7 +3220,7 @@ function initSortable(e) {
         }
     }
 
-    function s(t) {
+    function o(t) {
         var i = "desc" === t ? "desc" : "asc";
         e.$element.removeClass("desc asc")
             .addClass(i)
@@ -3222,34 +3233,34 @@ function initSortable(e) {
         t(i, n), e.$element.find(`option[data-sort-key="${i}"][data-sort-direction="${n}"]`)
             .prop("selected", !0), updateMissionFilterQueryParams(e.containerSelector)
     }
-    const o = "select" === e.type ? "change" : "click";
-    return e.$element.on(o, (function () {
-        const i = n(e.$element);
+    const a = "select" === e.type ? "change" : "click";
+    return e.$element.on(a, (function () {
+        const i = s(e.$element);
         t(i.key, i.direction), e.afterSort && e.afterSort(i.key, i.direction)
     })), {
-        findSuccessorElement(t, s) {
-            let o = $(e.containerSelector + " " + e.sortableElementSelector);
-            const a = n(e.$element),
+        findSuccessorElement(t, o) {
+            let a = $(e.containerSelector + " " + e.sortableElementSelector);
+            const r = s(e.$element),
                 {
-                    tiebreakerKey: r
+                    tiebreakerKey: l
                 } = e;
-            let l = !1,
-                c = null,
-                u = a.key,
-                d = a.direction,
-                h = t[u],
-                p = r ? t[r] : "";
-            return o.each((function (e, t) {
-                if (!l && s !== t.id) {
+            let c = !1,
+                u = null,
+                d = r.key,
+                h = r.direction,
+                p = t[d],
+                m = l ? t[l] : "";
+            return a.each((function (e, t) {
+                if (!c && o !== t.id) {
                     const e = i($(t)
-                        .data("sortable-by")[u], h);
-                    let n = e;
-                    if (0 === e && r) {
-                        n = i($(t)
-                            .data("sortable-by")[r], p)
-                    }("desc" === d && n < 0 || "desc" !== d && n > 0) && (c = t, l = !0)
+                        .data("sortable-by")[d], p);
+                    let s = e;
+                    if (0 === e && l) {
+                        s = n($(t)
+                            .data("sortable-by")[l], m)
+                    }("desc" === h && s < 0 || "desc" !== h && s > 0) && (u = t, c = !0)
                 }
-            })), c
+            })), u
         }
     }
 }
