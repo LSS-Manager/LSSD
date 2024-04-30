@@ -11298,7 +11298,7 @@ Object.values || (Object.values = function (e) {
                 fwk: "VYA nebo AJ",
                 gkw: "U\u017eitkov\xfd v\u016fz",
                 grtw: "Jednotka pro hromadn\xe1 ne\u0161t\u011bst\xed",
-                gw_gefahrgut: "Nebezpe\u010dn\xe9 l\xe1tky",
+                gw_gefahrgut: "TACH",
                 gw_hoehenrettung: "V\xfd\u0161kov\xe1 jednotka",
                 gw_messtechnik: "Detek\u010dn\xed jednotka",
                 gw_taucher: "Pot\xe1p\u011b\u010dsk\xfd automobil",
