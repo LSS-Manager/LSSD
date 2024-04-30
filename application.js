@@ -5735,7 +5735,7 @@ Object.values || (Object.values = function (e) {
                 ambulance_station_small_missions: "Ambulance station (Small station)",
                 building_complex: "Building Complex",
                 buildings_section: "Stations",
-                clinic_missions: "Clinic",
+                clinic_missions: "Urgent Treatment Center",
                 coastal_rescue_missions: "SAR",
                 dispatch_center_missions: "Dispatch Center",
                 fire_school_missions: "Fire Academy",
