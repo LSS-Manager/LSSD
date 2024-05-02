@@ -1,6 +1,6 @@
 {
   "name": "lssd",
-  "packageManager": "yarn@4.1.1",
+  "packageManager": "yarn@4.2.0",
   "scripts": {
     "download": "yarn node .download.js"
   },
