@@ -38575,8 +38575,9 @@ $((function () {
             }
             return !1
         }));
-    const timedEvents = [".credit-modifier-event", ".credit-patient-modifier-event",
-        ".coin-reduction-event", ".patient-time-modifier-event"];
+    const timedEvents = [".timed-event", ".credit-modifier-event",
+        ".credit-patient-modifier-event", ".coin-reduction-event",
+        ".patient-time-modifier-event"];
     for (const e of timedEvents) setupTimer({
         $timer: $(`${e} .timer`),
         onTimerEnd: function () {
