@@ -10677,6 +10677,8 @@ Object.values || (Object.values = function (e) {
                 riot_police: "Oppr\xf8rspoliti",
                 riot_police_missions: "Oppr\xf8rspoliti",
                 staging_area_missions: "Oppstillingsplass",
+                technical_aid: "Samfunnssikkerhet",
+                technical_aid_missions: "Sivilforsvarets oppdrag",
                 technical_aid_organization: "THW",
                 technical_aid_organization_school: "THW Bundesschule",
                 user_buildings: "Mine bygninger",
@@ -10761,6 +10763,7 @@ Object.values || (Object.values = function (e) {
                 firefighting: "Brannslukking",
                 police: "Politi",
                 rescue: "Redning",
+                technical_aid: "Sivilforsvaret",
                 water_rescue: "Vannredning"
             },
             category: "Kategori",
@@ -10859,6 +10862,7 @@ Object.values || (Object.values = function (e) {
                 swat: "Politi med v\xe5pentrening",
                 swat_armored_vehicle: "Pansret kj\xf8ret\xf8y",
                 swat_suv: "Delta kj\xf8ret\xf8y",
+                technical_aid: "Sivilforsvarsenheten",
                 thw_mtw: "Mannschaftstransportwagen Technischer Zug (MTW-TZ - THW)",
                 thw_mzkw: "Mehrzweckkraftwagen (MzKW)",
                 thw_tauchkraftwagen: "Dykkerbil",
@@ -38172,7 +38176,8 @@ $((function () {
             "intervention_order.vehicles.height_equipment")], ["hazmat_drone", I18n.t(
             "intervention_order.vehicles.hazmat_drone")], ["water_rescue_equipment", I18n.t(
             "intervention_order.vehicles.water_rescue_equipment")], ["car_carrier", I18n.t(
-            "intervention_order.vehicles.car_carrier")]], $("#restore_map")
+            "intervention_order.vehicles.car_carrier")], ["technical_aid", I18n.t(
+            "intervention_order.vehicles.technical_aid")]], $("#restore_map")
         .click((function () {
             mapViewRestore()
         })), $("#coins_top")
