@@ -4525,6 +4525,7 @@ Object.values || (Object.values = function (e) {
                 mission_positions: "Points of Interest (POIs)",
                 mission_positions_section: "POIs",
                 missions_section: "Eins\xe4tze",
+                mountain_rescue: "Bergwacht",
                 police_copter_station_missions: "Polizeihubschrauberstation",
                 police_horse: "Reiterstaffeln",
                 police_school_missions: "Polizeischule",
@@ -4712,6 +4713,11 @@ Object.values || (Object.values = function (e) {
                 mask_service_unit: "GW-A oder AB-Atemschutz",
                 mek_mtf: "MEK - MTF",
                 mek_zf: "MEK - ZF",
+                mountain_atv: "ATV",
+                mountain_command: "ELW Bergwacht",
+                mountain_equipment: "GW-Bergwacht",
+                mountain_paramedic_and_secondary_transport: "Bergrettungsfahrzeug",
+                mountain_rescue_dogs: "Hundestaffel (Bergwacht)",
                 mtw: "MTW",
                 mzb: "Mehrzweckboot",
                 naw: "NAW",
@@ -4725,6 +4731,7 @@ Object.values || (Object.values = function (e) {
                 police_car: "Funkstreifenwagen",
                 police_car_or_service_group_leader: "FuStW oder FuStW (DGL)",
                 police_horse_count: "Polizeipferde",
+                police_lift_helicopter: "Polizeihubschrauber mit verbauter Winde",
                 police_motorcycle: "Polizeimotorrad",
                 polizeihubschrauber: "Polizeihubschrauber",
                 pump: "Schmutzwasserpumpen",
@@ -4733,6 +4740,7 @@ Object.values || (Object.values = function (e) {
                 rescue_dogs: "Anh\xe4nger Hundetransport oder Rettungshundefahrzeug",
                 rescue_dogs_seg: "Rettungshundefahrzeug",
                 rescue_dogs_thw: "Anh\xe4nger Hundetransport",
+                rescue_lift_helicopter: "RTH mit verbauter Winde",
                 rescue_vehicle: "R\xfcstwagen oder HLF",
                 rescue_vehicle_only: "R\xfcstwagen",
                 rettungstreppe: "Rettungstreppe",
@@ -4755,6 +4763,10 @@ Object.values || (Object.values = function (e) {
                 thw_tauchkraftwagen_or_gw_taucher: "Tauchkraftwagen oder GW-Taucher",
                 tlf_only: "Tankl\xf6schfahrzeuge",
                 tm50: "TM 50",
+                trailers: {
+                    mountain_height_rescue: "Anh H\xf6henrettung (Bergwacht)",
+                    mountain_snow: "Anh Schneefahrzeug"
+                },
                 turboloescher: "Turbol\xf6scher",
                 turntable_ladder: "Drehleitern",
                 ulf: "ULF mit L\xf6scharm",
@@ -5648,6 +5660,11 @@ Object.values || (Object.values = function (e) {
         },
         javascript: {
             alarm: "Dispatch",
+            alliance_event_resource: {
+                winter: {
+                    event_start_mission: "Start Event: %{amount} Snowball"
+                }
+            },
             arrival: "Arrival",
             backalarm: "Cancel",
             coins: "Coins",
@@ -6271,7 +6288,7 @@ Object.values || (Object.values = function (e) {
             water_missing: "Nog nodig: %{amount} L.",
             water_on_site: "Ter plaatse: %{amount} L.",
             water_process: "Water benodigd",
-            water_pumping_process: "Water pomp process",
+            water_pumping_process: "Waterpomp proces",
             water_selected: "Geselecteerd: %{amount} L."
         },
         map: {
@@ -7400,6 +7417,7 @@ Object.values || (Object.values = function (e) {
                 elw1_or_elw2: "Support Vehicle or Mobile Command Vehicle",
                 elw2_or_ab_elw: "Rescue Pump or Rescue Support Unit and Fire engine",
                 emergency_ambulance: "Ambulance or Air Ambulance",
+                fire_aviation: "Airborne firefighting",
                 fire_truck: "Pumper or Light Tanker or Tanker",
                 fireboat: "Fire Boat",
                 fly_car: "MICA",
