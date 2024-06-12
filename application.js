@@ -5805,6 +5805,8 @@ Object.values || (Object.values = function (e) {
                     age_desc: "Newest",
                     caption_asc: "A to Z",
                     caption_desc: "Z to A",
+                    created_at_asc: "Created Asc",
+                    created_at_desc: "Created Desc",
                     credits_asc: "Min Credits",
                     credits_desc: "Max Credits",
                     patients_desc: "Patients",
