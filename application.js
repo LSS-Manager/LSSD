@@ -38194,7 +38194,9 @@ $((function () {
             "intervention_order.vehicles.hazmat_drone")], ["water_rescue_equipment", I18n.t(
             "intervention_order.vehicles.water_rescue_equipment")], ["car_carrier", I18n.t(
             "intervention_order.vehicles.car_carrier")], ["technical_aid", I18n.t(
-            "intervention_order.vehicles.technical_aid")]], $("#restore_map")
+            "intervention_order.vehicles.technical_aid")], ["lift", I18n.t(
+            "intervention_order.vehicles.lift")], ["mountain_height_rescue", I18n.t(
+            "intervention_order.vehicles.mountain_height_rescue")]], $("#restore_map")
         .click((function () {
             mapViewRestore()
         })), $("#coins_top")
@@ -48553,7 +48555,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = "mc_mobile_client_id",
                 case e.user_id == t && void 0 !== o[e.mtid]:
                     return i[o[e.mtid]];
                 case e.handoff:
-                    return i.coastal_rescue_missions;
+                    return i[e.filter_id];
                 case e.user_id != t || "alliance_missions" === e.filter_id:
                     return i.alliance_missions;
                 default:
@@ -49288,9 +49290,9 @@ mobile_map_filters_collection = {},
             if (void 0 !== e) {
                 var i = this.size;
                 i.isBorderBox && (e += t ? i.paddingLeft + i.paddingRight + i.borderLeftWidth + i
-                    .borderRightWidth : i.paddingBottom + i.paddingTop + i.borderTopWidth + i
-                    .borderBottomWidth), e = Math.max(e, 0), this.element.style[t ? "width" :
-                    "height"] = e + "px"
+                        .borderRightWidth : i.paddingBottom + i.paddingTop + i.borderTopWidth + i
+                        .borderBottomWidth),
+                    e = Math.max(e, 0), this.element.style[t ? "width" : "height"] = e + "px"
             }
         }, p._emitCompleteOnItems = function (e, t) {
             function i() {
