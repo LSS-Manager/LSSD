@@ -31,12 +31,12 @@ Tool: [js-beautify](https://github.com/beautify-web/js-beautify)
 | --------- | ----- |
 | File      | [application-60bf040476b078e7267b2b5d5418315b.js](https://missionchief.co.uk/assets/application-60bf040476b078e7267b2b5d5418315b.js) |
 | Server    | https://missionchief.co.uk |
-| Time      | 2024-06-17T10:20:48.312Z |
+| Time      | 2024-06-21T08:22:49.656Z |
 
 ## CSS
 | Attribute | Value |
 | --------- | ----- |
 | File      | [application-fcdb9f3e73b5c0084f30ecfc9f4de172.css](https://missionchief.co.uk/assets/application-fcdb9f3e73b5c0084f30ecfc9f4de172.css) |
 | Server    | https://missionchief.co.uk |
-| Time      | 2024-06-17T10:20:48.312Z |
+| Time      | 2024-06-21T08:22:49.656Z |
 <!-- /automated -->
