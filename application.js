@@ -159,11 +159,12 @@ function aao(e, t, i, n) {
         const i = {};
         var s;
         if (-1 !== e.indexOf("vehicle_type_id_")) {
-            var o = e.substring(16);
+            const t = parseAaoVehicleIds(e.substring(16));
             s = $(aao_source_element + " input")
                 .filter((function () {
-                    return $(this)
-                        .attr("vehicle_type_id") === o
+                    const e = parseInt($(this)
+                        .attr("vehicle_type_id"));
+                    return t.includes(e)
                 }))
         } else {
             const n = $(aao_source_element + " input");
@@ -1071,18 +1072,19 @@ function iconMapVehicleGenerate(e, t, i) {
 
 function missionMarkerBlukDraw() {
     $.each(patientBulkCache, (function (e, t) {
-        var i = "";
-        $.each(t, (function (e, t) {
-                i += t
-            })), $("#mission_patients_" + e)
-            .append(i)
-    })), $.each(prisonerBulkCache, (function (e, t) {
-        var i = "";
-        $.each(t, (function (e, t) {
-                i += t
-            })), $("#mission_prisoners_" + e)
-            .append(i)
-    })), patientBulkCache = {}, prisonerBulkCache = {}
+            var i = "";
+            $.each(t, (function (e, t) {
+                    i += t
+                })), $("#mission_patients_" + e)
+                .append(i)
+        })), $.each(prisonerBulkCache, (function (e, t) {
+            var i = "";
+            $.each(t, (function (e, t) {
+                    i += t
+                })), $("#mission_prisoners_" + e)
+                .append(i)
+        })), patientBulkCache = {},
+        prisonerBulkCache = {}
 }
 
 function missionMarkerReset() {
@@ -2883,14 +2885,14 @@ function aao_available(e, t) {
         if (void 0 !== r) {
             var l = jQuery.parseJSON(r);
             $.each(l, (function (e, t) {
-                var o = aao_check("vehicle_type_id_" + e, s, t);
+                vehicleIds = parseAaoVehicleIds(e);
+                var o = vehicleIds.some((e => aao_check("vehicle_type_id_" + e, s, t)));
                 n = aao_maxtime(n, o), o || (i = !1)
             }))
         }
         n > 0 && i ? $("#aao_timer_" + e)
             .html(formatTime(n)) : $("#aao_timer_" + e)
-            .html("-"),
-            i ? ($("#available_aao_" + e)
+            .html("-"), i ? ($("#available_aao_" + e)
                 .attr("class", "label label-success"), $("#available_aao_" + e)
                 .html("<span class='glyphicon glyphicon-ok' aria-hidden='true'></span>")) : ($(
                     "#available_aao_" + e)
@@ -2898,6 +2900,10 @@ function aao_available(e, t) {
                     "#available_aao_" + e)
                 .attr("class", "label label-danger"))
     }
+}
+
+function parseAaoVehicleIds(e) {
+    return [].concat(JSON.parse(e))
 }
 
 function unix_timestamp() {
