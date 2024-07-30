@@ -4417,6 +4417,7 @@ Object.values || (Object.values = function (e) {
             of: "von",
             off: "Aus",
             on: "An",
+            or: "oder",
             person: {
                 missing_education_for_vehicle: "Das Personal wird nur mit ausr\xfccken, wenn die ben\xf6tigte Ausbildung abgeschlossen ist. "
             },
@@ -4945,6 +4946,7 @@ Object.values || (Object.values = function (e) {
             of: "of",
             off: "Off",
             on: "On",
+            or: "or",
             person: {
                 missing_education_for_vehicle: "Personnel will only be dispatched with the vehicle if it has acquired the necessary education!"
             },
@@ -5655,6 +5657,7 @@ Object.values || (Object.values = function (e) {
             of: "of",
             off: "Off",
             on: "On",
+            or: "or",
             person: {
                 missing_education_for_vehicle: "Personnel will only be dispatched with the vehicle if it has acquired the necessary education!"
             },
@@ -6234,6 +6237,7 @@ Object.values || (Object.values = function (e) {
             of: "van",
             off: "Uit",
             on: "Aan",
+            or: "of",
             person: {
                 missing_education_for_vehicle: "Werknemers worden alleen uitgezonden met het voertuig als ze de vereiste opleiding voltooid hebben."
             },
@@ -6714,6 +6718,7 @@ Object.values || (Object.values = function (e) {
             of: "de",
             off: "No",
             on: "S\xed",
+            or: "o",
             person: {
                 missing_education_for_vehicle: "\xa1Los empleados solo acompa\xf1ar\xe1n al veh\xedculo si han recibido la formaci\xf3n necesaria!"
             },
@@ -7172,6 +7177,7 @@ Object.values || (Object.values = function (e) {
             of: "of",
             off: "Off",
             on: "On",
+            or: "or",
             person: {
                 missing_education_for_vehicle: "Personnel will only be dispatched with the vehicle if it has acquired the necessary education!"
             },
@@ -7745,6 +7751,7 @@ Object.values || (Object.values = function (e) {
             of: "av",
             off: "Av",
             on: "P\xe5",
+            or: "eller",
             person: {
                 missing_education_for_vehicle: "Endast personal med r\xe4tt utbildning skickas med fordonet!"
             },
@@ -8227,6 +8234,7 @@ Object.values || (Object.values = function (e) {
             of: "z",
             off: "Wy\u0142.",
             on: "W\u0142.",
+            or: "lub",
             person: {
                 missing_education_for_vehicle: "Personel zostanie wys\u0142any w tym poje\u017adzie tylko wtedy, je\u017celi przeszed\u0142 niezb\u0119dn\u0105 edukacj\u0119!"
             },
@@ -8727,6 +8735,7 @@ Object.values || (Object.values = function (e) {
             of: "di",
             off: "Off",
             on: "On",
+            or: "o",
             person: {
                 missing_education_for_vehicle: "Il personale uscir\xe0 con il veicolo solo dopo aver acquisito la formazione necessaria!"
             },
@@ -8908,7 +8917,7 @@ Object.values || (Object.values = function (e) {
             no_alliance_chat_impossible: "La chat \xe8 un ottimo modo per entrare in contatto con altri giocatori pi\xf9 esperti.\xa0Possono rispondere alle vostre domande e aiutarvi dandovi accesso a edifici come ospedali e scuole.",
             no_alliance_missions: "Al momento non ci sono missioni dell'alleanza.",
             no_alliance_missions_join: "Partecipare alle missioni dell'alleanza vi ricompenser\xe0 con i Crediti, indipendentemente dal tipo di veicolo inviato. Unendovi a un'alleanza potrete fare entrambe le cose: condividere le vostre missioni per ricevere aiuto dai membri esperti dell'alleanza e partecipare alle missioni condivise dagli altri per ottenere ricompense extra.",
-            no_ambulance_missions: "Non ci sono trasporti di pazienti. Il trasporto di pazienti pu\xf2 avvenire solo quando ci sono un'ambulanza e un ospedale.",
+            no_ambulance_missions: "Non ci sono pazienti da trasportare. I trasporti ordinari sono richiesti se si \xe8 in possesso di un ambulanza ordinaria e di un ospedale, i secondari urgenti sono richiesti se in possesso di un'ambulanza di soccorso avanzato (MSA) e almeno 2 ospedali ci cui 1 con almeno 1 paziente.",
             no_emergency_missions: "Non ci sono missioni di emergenza disponibili. Una missione di emergenza pu\xf2 verificarsi dopo aver creato la prima stazione.",
             no_radio_messages: "Nessun messaggio radio ricevuto.",
             radio_messages: "Radio",
@@ -9213,6 +9222,7 @@ Object.values || (Object.values = function (e) {
             of: "de",
             off: "OFF",
             on: "ON",
+            or: "ou",
             person: {
                 missing_education_for_vehicle: "Le personnel ne sera d\xe9ploy\xe9 avec le v\xe9hicule que s'il a re\xe7u la formation ad\xe9quate\xa0!"
             },
@@ -9690,6 +9700,7 @@ Object.values || (Object.values = function (e) {
             of: "\u0438\u0437",
             off: "\u0412\u044b\u043a\u043b",
             on: "\u0412\u043a\u043b",
+            or: "\u0438\u043b\u0438",
             person: {
                 missing_education_for_vehicle: "\u041f\u0435\u0440\u0441\u043e\u043d\u0430\u043b \u0441\u043c\u043e\u0436\u0435\u0442 \u043f\u0435\u0440\u0435\u043c\u0435\u0449\u0430\u0442\u044c\u0441\u044f \u043d\u0430 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0435, \u0442\u043e\u043b\u044c\u043a\u043e \u043f\u043e\u0441\u043b\u0435 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0438\u044f \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e\u0433\u043e \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u044f!"
             },
@@ -10130,6 +10141,7 @@ Object.values || (Object.values = function (e) {
             of: "af",
             off: "Fra",
             on: "Til",
+            or: "eller",
             person: {
                 missing_education_for_vehicle: "Personalet kan f\xf8rst sendes ud med k\xf8ret\xf8jet efter den n\xf8dvendige undervisning er fuldendt!"
             },
@@ -10600,6 +10612,7 @@ Object.values || (Object.values = function (e) {
             of: "av",
             off: "Av",
             on: "P\xe5",
+            or: "eller",
             person: {
                 missing_education_for_vehicle: "Personellet vil kun bli sendt ut med kj\xf8ret\xf8yet om de har f\xe5tt den n\xf8dvendige utdanningen!"
             },
@@ -11082,6 +11095,7 @@ Object.values || (Object.values = function (e) {
             of: "z",
             off: "Vyp.",
             on: "Zap.",
+            or: "nebo",
             person: {
                 missing_education_for_vehicle: "Person\xe1l bude vysl\xe1n s vozidlem pouze v p\u0159\xedpad\u011b, \u017ee dos\xe1hne pot\u0159ebn\xe9ho vzd\u011bl\xe1n\xed!"
             },
@@ -11555,6 +11569,7 @@ Object.values || (Object.values = function (e) {
             of: "/",
             off: "Kapal\u0131",
             on: "A\xe7\u0131k",
+            or: "veya",
             release_at: "I\xe7inde taburcu edildi",
             save: "Kaydet",
             search: "Ara",
@@ -11962,6 +11977,7 @@ Object.values || (Object.values = function (e) {
             of: "de",
             off: "Desligado",
             on: "Ligado",
+            or: "ou",
             person: {
                 missing_education_for_vehicle: "O pessoal s\xf3 ser\xe1 enviado com o ve\xedculo se tiver adquirido a educa\xe7\xe3o necess\xe1ria!"
             },
@@ -12430,6 +12446,7 @@ Object.values || (Object.values = function (e) {
             of: "de",
             off: "Desligado",
             on: "Ligado",
+            or: "ou",
             release_at: "Alta em",
             save: "Salvar",
             search: "Buscar",
@@ -12848,6 +12865,7 @@ Object.values || (Object.values = function (e) {
             of: "\u0437",
             off: "\u0412\u0456\u0434\u043a\u043b.",
             on: "\u0412\u043a\u043b.",
+            or: "\u0430\u0431\u043e",
             release_at: "\u0432\u0438\u043f\u0438\u0441\u0430\u043d\u0438\u0439 \u0432",
             save: "\u0417\u0431\u0435\u0440\u0435\u0433\u0442\u0438",
             search: "\u041f\u043e\u0448\u0443\u043a",
@@ -13257,6 +13275,7 @@ Object.values || (Object.values = function (e) {
             of: "de",
             off: "No",
             on: "S\xed",
+            or: "o",
             release_at: "Alta en",
             save: "Guardar",
             search: "Buscar",
@@ -13669,6 +13688,7 @@ Object.values || (Object.values = function (e) {
             of: "/",
             off: "\u30aa\u30d5",
             on: "\u30aa\u30f3",
+            or: "\u304b",
             person: {
                 missing_education_for_vehicle: "\u4eba\u54e1\u3092\u8eca\u4e21\u3067\u6d3e\u9063\u3067\u304d\u308b\u306e\u306f\u3001\u5fc5\u8981\u306a\u8a13\u7df4\u3092\u53d7\u3051\u305f\u5834\u5408\u306e\u307f\u3067\u3059\uff01"
             },
@@ -14119,6 +14139,7 @@ Object.values || (Object.values = function (e) {
             of: "/",
             off: "\ub054",
             on: "\ucf2c",
+            or: "\ub610\ub294",
             person: {
                 missing_education_for_vehicle: "\ud544\uc218 \uad50\uc721\uc744 \uc774\uc218\ud55c \uc778\uc6d0\ub9cc \ucc28\ub7c9\uacfc \ud568\uaed8 \ud30c\uacac\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4!"
             },
@@ -14567,6 +14588,7 @@ Object.values || (Object.values = function (e) {
             of: "din",
             off: "Dezactivat",
             on: "Activat",
+            or: "sau",
             release_at: "Externat \xeen",
             save: "Salveaz\u0103",
             search: "Caut\u0103",
@@ -14993,6 +15015,7 @@ Object.values || (Object.values = function (e) {
             of: "/",
             off: "Ei k\xe4yt\xf6ss\xe4",
             on: "K\xe4yt\xf6ss\xe4",
+            or: "tai",
             person: {
                 missing_education_for_vehicle: "Henkil\xf6st\xf6 l\xe4hetet\xe4\xe4n ajoneuvon mukana vain, jos se on saanut tarvittavan koulutuksen."
             },
@@ -15459,6 +15482,7 @@ Object.values || (Object.values = function (e) {
             of: "z",
             off: "Vyp.",
             on: "Zap.",
+            or: "alebo",
             release_at: "Prepusten\xfd v",
             save: "Ulo\u017ei\u0165",
             search: "Vyh\u013eada\u0165",
