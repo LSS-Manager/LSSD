@@ -2886,7 +2886,9 @@ function aao_available(e, t) {
             var l = jQuery.parseJSON(r);
             $.each(l, (function (e, t) {
                 vehicleIds = parseAaoVehicleIds(e);
-                var o = vehicleIds.some((e => aao_check("vehicle_type_id_" + e, s, t)));
+                var o = vehicleIds.map((e => aao_check("vehicle_type_id_" + e, s, t)))
+                    .filter((e => !!e))
+                    .sort(((e, t) => e.max_time - t.max_time))[0];
                 n = aao_maxtime(n, o), o || (i = !1)
             }))
         }
