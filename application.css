@@ -16016,8 +16016,19 @@ body.bigMap #search_input_field_missions {
 }
 
 .system_messages_content_container {
-    overflow-y: auto;
-    max-height: 110px
+    overflow-y: auto
+}
+
+.system_messages_content_container table {
+    margin-bottom: 0
+}
+
+.system_messages_content_container table td.system-message-row {
+    padding: 0
+}
+
+.system_messages_content_container table .system-message-content {
+    padding: 5px
 }
 
 .panel-body.system_messages_container {
