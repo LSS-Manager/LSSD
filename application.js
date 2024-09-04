@@ -4524,6 +4524,7 @@ Object.values || (Object.values = function (e) {
                 building_complex: "Geb\xe4udekomplex",
                 buildings_section: "Wachen",
                 clinic_missions: "Klinik",
+                coastal_rescue_missions: "Seenotrettungswache",
                 dispatch_center_missions: "Leitstelle",
                 factory_fire_brigade_missions: "Werkfeuerwehr",
                 fire_school_missions: "Feuerwehrschule",
@@ -4553,6 +4554,7 @@ Object.values || (Object.values = function (e) {
                 technical_aid_organization_school: "THW Bundesschule",
                 user_buildings: "Meine Geb\xe4ude",
                 user_missions: "Meine Eins\xe4tze",
+                water_rescue_heliport: "Hubschrauberstation (Seenotrettung)",
                 water_watch: "Wasserrettung",
                 water_watch_missions: "Wasserrettung"
             },
