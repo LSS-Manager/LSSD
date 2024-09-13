@@ -4525,6 +4525,7 @@ Object.values || (Object.values = function (e) {
                 buildings_section: "Wachen",
                 clinic_missions: "Klinik",
                 coastal_rescue_missions: "Seenotrettungswache",
+                coastal_rescue_school: "Schule f\xfcr Seefahrt und Seenotrettung",
                 dispatch_center_missions: "Leitstelle",
                 factory_fire_brigade_missions: "Werkfeuerwehr",
                 fire_school_missions: "Feuerwehrschule",
