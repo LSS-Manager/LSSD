@@ -401,17 +401,17 @@ function waterCalculator(e, t) {
         h = a + a * c,
         p = r + r * (u + c) + a * u,
         m = l + l * (d + u + c) + a * d + r * d,
-        f = o - (h + p + m),
-        _ = parseInt(h / o * 100),
+        _ = o - (h + p + m),
+        f = parseInt(h / o * 100),
         g = parseInt(p / o * 100),
         v = parseInt(m / o * 100),
-        b = parseInt(f / o * 100),
-        y = 100 - (_ + g + v + b);
-    y > 0 && (_ > 0 ? _ += y : g > 0 ? g += y : (v > 0 || b > 0) && (v += y)), waterCalculatorSetPercent(s
-        .find(".mission_water_bar_at_mission_" + e), _, 0), waterCalculatorSetPercent(s.find(
-        ".mission_water_bar_driving_" + e), g, _), waterCalculatorSetPercent(s.find(
-        ".mission_water_bar_selected_" + e), v, g + _), waterCalculatorSetPercent(s.find(
-        ".mission_water_bar_missing_" + e), 100, v + g + _);
+        b = parseInt(_ / o * 100),
+        y = 100 - (f + g + v + b);
+    y > 0 && (f > 0 ? f += y : g > 0 ? g += y : (v > 0 || b > 0) && (v += y)), waterCalculatorSetPercent(s
+        .find(".mission_water_bar_at_mission_" + e), f, 0), waterCalculatorSetPercent(s.find(
+        ".mission_water_bar_driving_" + e), g, f), waterCalculatorSetPercent(s.find(
+        ".mission_water_bar_selected_" + e), v, g + f), waterCalculatorSetPercent(s.find(
+        ".mission_water_bar_missing_" + e), 100, v + g + f);
     var w = i.translations;
     const k = I18n.t(w.aria_progress_bar_prefix),
         x = I18n.t(w.amountOnSite, {
@@ -424,7 +424,7 @@ function waterCalculator(e, t) {
             amount: number_format(parseInt(m))
         }),
         S = I18n.t(w.amountMissing, {
-            amount: number_format(parseInt(f))
+            amount: number_format(parseInt(_))
         });
     s.find(".mission_water_bar_at_mission_" + e)
         .html(x), s.find(".mission_water_bar_driving_" + e)
@@ -432,8 +432,8 @@ function waterCalculator(e, t) {
         .html(C), s.find(".mission_water_bar_missing_" + e)
         .html(S);
     const T = [k];
-    parseInt(h) > 0 && T.push(x), parseInt(p) > 0 && T.push(z), parseInt(m) > 0 && T.push(C), parseInt(f) >
-        0 && T.push(S), s.attr("title", T.join(", ")), v + g + _ >= 100 ? (s.find(
+    parseInt(h) > 0 && T.push(x), parseInt(p) > 0 && T.push(z), parseInt(m) > 0 && T.push(C), parseInt(_) >
+        0 && T.push(S), s.attr("title", T.join(", ")), v + g + f >= 100 ? (s.find(
                 ".mission_water_bar_selected_" + e)
             .addClass("progress-bar-success")
             .removeClass("progress-bar-danger"), s.find(".mission_water_progress_" + e)
@@ -1406,11 +1406,11 @@ function missionMarkerAdd(e) {
             "#mission_list_alliance", p = "alliance") : e.user_id != user_id && null == e.user_id && (h =
             "#mission_list_alliance_event", p = "alliance_event");
         var m = "",
-            f = "";
-        e.missing_text && (m = "alert alert-danger", f = e.missing_text);
-        var _ = "",
+            _ = "";
+        e.missing_text && (m = "alert alert-danger", _ = e.missing_text);
+        var f = "",
             g = "";
-        e.missing_text_short && (_ = "alert alert-danger", g = e.missing_text_short);
+        e.missing_text_short && (f = "alert alert-danger", g = e.missing_text_short);
         var v = "";
         e.alliance_id && (v = "panel-success");
         var b = useMissionScrollBarOptimization ? "missionSideBarEntryScrollInvisible" : "";
@@ -1440,8 +1440,8 @@ function missionMarkerAdd(e) {
             bar_class + "'><div id='mission_bar_" + e.id +
             "' class='progress-bar progress-bar-danger' role='progressbar' aria-valuemin='0' aria-valuemax='100' style='width: " +
             e.live_current_value + "%;'><div class='" + t + "' id='mission_bar_striper_" + e.id +
-            "'></div></div></div><div id='mission_missing_" + e.id + "' class='" + m + "'>" + f +
-            "</div><div id='mission_missing_short_" + e.id + "' class='" + _ + "'>" + g +
+            "'></div></div></div><div id='mission_missing_" + e.id + "' class='" + m + "'>" + _ +
+            "</div><div id='mission_missing_short_" + e.id + "' class='" + f + "'>" + g +
             "</div><div id='mission_pump_progress_" + e.id + "'></div><div id='mission_patients_" + e.id +
             "' class='row'></div><div class='mission_prisoners' id='mission_prisoners_" + e.id +
             "'></div></div></div></div></div>";
@@ -3775,32 +3775,32 @@ function initVehiclesEquipment(e, t = {}) {
         function o({
             selectVehicle: e = !0
         } = {}) {
-            var t = _.equipments.some((function (e) {
+            var t = f.equipments.some((function (e) {
                 return e.selected !== e.applied
             }));
-            _.equipments.forEach((function (e) {
+            f.equipments.forEach((function (e) {
                 e.applied = e.selected
-            })), _.isEditMode = !1, a(), l(), i(_.vehicleId), e && t && h(_.vehicleId), d()
+            })), f.isEditMode = !1, a(), l(), i(f.vehicleId), e && t && h(f.vehicleId), d()
         }
 
         function a() {
-            Object.values(_.containersByTab)
+            Object.values(f.containersByTab)
                 .forEach((function (e) {
                     var t = e.querySelector(".change-payload-btn"),
                         i = e.querySelector(".apply-payload-btn"),
                         n = e.querySelector(".dispatch-vehicle-equipments");
-                    _.isEditMode ? (t.classList.add("hidden"), i.classList.remove("hidden"), n
+                    f.isEditMode ? (t.classList.add("hidden"), i.classList.remove("hidden"), n
                         .classList.remove("hidden")) : (t.classList.remove("hidden"), i.classList
                         .add("hidden"), n.classList.add("hidden"))
                 }))
         }
 
         function r() {
-            var e = _.getSelectedEquipmentsSize();
-            Object.values(_.containersByTab)
+            var e = f.getSelectedEquipmentsSize();
+            Object.values(f.containersByTab)
                 .forEach((function (t) {
                     const i = t.querySelector(".capacity-used-amount");
-                    i.textContent !== e && (i.textContent = e), _.equipments.forEach((function (e) {
+                    i.textContent !== e && (i.textContent = e), f.equipments.forEach((function (e) {
                         var i = t.querySelector(
                             '.equipment-checkbox[data-equipment-id="' + e.id + '"]');
                         i.checked = e.selected, i.disabled = !e.isSelectPossible()
@@ -3809,9 +3809,9 @@ function initVehiclesEquipment(e, t = {}) {
         }
 
         function l() {
-            Object.values(_.containersByTab)
+            Object.values(f.containersByTab)
                 .forEach((function (e) {
-                    _.equipments.forEach((function (t) {
+                    f.equipments.forEach((function (t) {
                         e.querySelector('.equipment-input[data-equipment-id="' + t.id +
                                 '"]')
                             .disabled = !t.selected
@@ -3820,19 +3820,19 @@ function initVehiclesEquipment(e, t = {}) {
         }
 
         function c() {
-            Object.values(_.containersByTab)
+            Object.values(f.containersByTab)
                 .forEach((function (e) {
                     var t = e.querySelector(".payload-error-indicator");
-                    _.hasUnavailableSelectedEquipments() ? t.classList.remove("hidden") : t.classList
+                    f.hasUnavailableSelectedEquipments() ? t.classList.remove("hidden") : t.classList
                         .add("hidden")
                 }))
         }
 
         function u() {
-            var e = _.isApplyPossible(),
+            var e = f.isApplyPossible(),
                 t = e ? I18n.t("javascript.vehicle_payload.apply_payload") : I18n.t(
                     "javascript.vehicle_payload.equipment_unavailable");
-            Object.values(_.containersByTab)
+            Object.values(f.containersByTab)
                 .forEach((function (i) {
                     var n = i.querySelector(".apply-payload-btn");
                     e ? n.classList.remove("disabled") : n.classList.add("disabled"), n.textContent =
@@ -3841,7 +3841,7 @@ function initVehiclesEquipment(e, t = {}) {
         }
 
         function d() {
-            var e = _.equipments.filter((function (e) {
+            var e = f.equipments.filter((function (e) {
                     return e.applied
                 }))
                 .map((function (e) {
@@ -3851,13 +3851,13 @@ function initVehiclesEquipment(e, t = {}) {
                     return e[0]
                 }));
             $.ajax({
-                url: "/vehicles/" + _.vehicleId + "/aao_settings",
+                url: "/vehicles/" + f.vehicleId + "/aao_settings",
                 dataType: "json",
                 data: {
                     applied_equipment_ids: e
                 },
                 success: function (e) {
-                    var n = $("#vehicle_checkbox_" + _.vehicleId)[0],
+                    var n = $("#vehicle_checkbox_" + f.vehicleId)[0],
                         s = Array.from(n.attributes)
                         .map((function (e) {
                             return e.name
@@ -3887,7 +3887,7 @@ function initVehiclesEquipment(e, t = {}) {
                         }))
                         .forEach((function (e) {
                             aao_available(e, !0)
-                        })), t.afterAaoUpdate && t.afterAaoUpdate(_.equipments.filter((function (
+                        })), t.afterAaoUpdate && t.afterAaoUpdate(f.equipments.filter((function (
                             e) {
                             return e.applied
                         })))
@@ -3902,9 +3902,9 @@ function initVehiclesEquipment(e, t = {}) {
         var p = $('.dispatch-vehicle-equipments-container[data-vehicle-id="' + e + '"]'),
             m = "2" === $("#vehicle_checkbox_" + e)
             .attr("fms"),
-            f = "true" === $("#vehicle_checkbox_" + e)
+            _ = "true" === $("#vehicle_checkbox_" + e)
             .attr("at_staging_area"),
-            _ = {
+            f = {
                 vehicleId: e,
                 totalCapacity: parseInt(p.find(".capacity-total-amount")
                     .text()),
@@ -3929,15 +3929,15 @@ function initVehiclesEquipment(e, t = {}) {
                             missionValues: e.data("mission-values"),
                             aaoValues: e.data("aao-values"),
                             isSelectPossible: function () {
-                                return !f && (!(this.inUse && !this.isDefault) && (!!this
+                                return !_ && (!(this.inUse && !this.isDefault) && (!!this
                                     .selected || !(s.includes(this.id) && !this
-                                    .applied) && !(this.size > _.getFreeCapacity())))
+                                    .applied) && !(this.size > f.getFreeCapacity())))
                             }
                         }
                     }))
                     .get(),
                 getFreeCapacity: function () {
-                    return _.totalCapacity - _.getSelectedEquipmentsSize()
+                    return f.totalCapacity - f.getSelectedEquipmentsSize()
                 },
                 getSelectedEquipmentsSize: function () {
                     return this.equipments.filter((function (e) {
@@ -3969,18 +3969,18 @@ function initVehiclesEquipment(e, t = {}) {
             };
         return n(), p.find(".change-payload-btn")
             .click((function (e) {
-                e.preventDefault(), _.isEditMode = !0, a()
+                e.preventDefault(), f.isEditMode = !0, a()
             })), p.find(".apply-payload-btn")
             .click((function (e) {
                 e.preventDefault(), o()
             })), p.find(".equipment-checkbox")
             .on("change", (function () {
-                $this = $(this), _.equipments.find((function (e) {
+                $this = $(this), f.equipments.find((function (e) {
                         return e.id === $this.data("equipment-id")
                     }))
                     .selected = $this.is(":checked"), r()
             })), {
-                state: _,
+                state: f,
                 updateSelectedEquipment: r,
                 applyEquipment: o
             }
@@ -4293,11 +4293,11 @@ Object.values || (Object.values = function (e) {
                 h = d,
                 p = d > 11 ? 1 : 0,
                 m = e.getSeconds(),
-                f = e.getMinutes(),
-                _ = e.getTimezoneOffset(),
-                g = Math.floor(Math.abs(_ / 60)),
-                v = Math.abs(_) - 60 * g,
-                b = (_ > 0 ? "-" : "+") + (g.toString()
+                _ = e.getMinutes(),
+                f = e.getTimezoneOffset(),
+                g = Math.floor(Math.abs(f / 60)),
+                v = Math.abs(f) - 60 * g,
+                b = (f > 0 ? "-" : "+") + (g.toString()
                     .length < 2 ? "0" + g : g) + (v.toString()
                     .length < 2 ? "0" + v : v);
             return h > 12 ? h -= 12 : 0 === h && (h = 12), i = (i = (i = (i = (i = (i = (i = (i =
@@ -4349,8 +4349,8 @@ Object.values || (Object.values = function (e) {
                                                                 .replace("%-I", h))
                                                             .replace("%m", n(u)))
                                                         .replace("%-m", u))
-                                                    .replace("%M", n(f)))
-                                                .replace("%-M", f))
+                                                    .replace("%M", n(_)))
+                                                .replace("%-M", _))
                                             .replace("%p", a[p]))
                                         .replace("%S", n(m)))
                                     .replace("%-S", m))
@@ -4500,6 +4500,7 @@ Object.values || (Object.values = function (e) {
             alliance_event: "Event",
             alliance_missions: "Verbandseins\xe4tze",
             alliance_missions_event: "Event",
+            alliance_missions_post_loading: "Verbandseins\xe4tze werden geladen...",
             ambulance: "Krankentransporte",
             anti_abuse_active_link: "Klicke hier f\xfcr weitere Informationen.",
             anti_abuse_active_text: "Neue Eins\xe4tze werden in einem erweiterten Radius von 100km generiert, da zu viele Geb\xe4ude desselben Typs zu nah beieinander stehen.",
@@ -4524,6 +4525,7 @@ Object.values || (Object.values = function (e) {
                 building_complex: "Geb\xe4udekomplex",
                 buildings_section: "Wachen",
                 clinic_missions: "Klinik",
+                coastal_rescue: "Seenotrettungswache",
                 coastal_rescue_missions: "Seenotrettungswache",
                 coastal_rescue_school: "Schule f\xfcr Seefahrt und Seenotrettung",
                 dispatch_center_missions: "Leitstelle",
@@ -4601,14 +4603,17 @@ Object.values || (Object.values = function (e) {
                 }
             },
             missions_filtered_out: "Einige Eins\xe4tze k\xf6nnten herausgefiltert worden sein. Bitte \xfcberpr\xfcfe deinen Kartenfilter.",
+            missions_post_loading: "Eins\xe4tze werden geladen...",
             no_alliance_chat_impossible: "Der Chat erm\xf6glicht dir, dich mit anderen erfahrenen Spielern zu vernetzen. Sie k\xf6nnen sowohl deine Fragen zum Spiel beantworten als auch helfen, indem sie dir Zugriff auf ihre Geb\xe4ude wie Schulen oder Krankenh\xe4user geben.",
             no_alliance_missions: "Es liegen keine Verbandseins\xe4tze vor. ",
             no_alliance_missions_join: "Die Teilnahme an Verbandseins\xe4tzen erm\xf6glicht es dir, Credits zu verdienen - unabh\xe4ngig davon welches Fahrzeug du sendest. Im Verband kannst du sowohl Eins\xe4tze teilen, als auch auch anderen bei ihren Eins\xe4tzen helfen, um zus\xe4tzliche Credits zu erhalten",
             no_ambulance_missions: "Es liegen keine Krankentransporte vor. Krankentransporte k\xf6nnen auftreten, sobald Du einen KTW und ein Krankenhaus besitzt.",
             no_emergency_missions: "Es liegen keine Notfalleins\xe4tze vor. Notfalleins\xe4tze k\xf6nnen ab der ersten Wache auftreten.",
             no_radio_messages: "Es sind keine Funkspr\xfcche eingegangen.",
+            post_loading_error: "Es ist ein Fehler aufgetreten! Bitte versuch es erneut und lade die Seite erneut.",
             radio_messages: "Funk",
             restore_map: "Karte wiederherstellen",
+            retry: "Neuladen",
             show_informations: "Gr\xfcn = Die Eins\xe4tze werden in der Leiste angezeigt. Rot = Die Eins\xe4tze werden nicht angezeigt.",
             sicherheitswache: "Geplante Eins\xe4tze",
             sorting_default: "Standard",
@@ -5037,6 +5042,7 @@ Object.values || (Object.values = function (e) {
             alliance_event: "Event",
             alliance_missions: "Alliance Missions",
             alliance_missions_event: "Event",
+            alliance_missions_post_loading: "Alliance Missions are loading...",
             ambulance: "Patient transports",
             anti_abuse_active_link: "Click here for more information.",
             anti_abuse_active_text: "Missions will be generated within an extended radius of 100km, since too many stations of the same type are built too close to each other.",
@@ -5141,14 +5147,17 @@ Object.values || (Object.values = function (e) {
                 }
             },
             missions_filtered_out: "Some missions might be filtered out. Please, check your map filters.",
+            missions_post_loading: "Missions are loading...",
             no_alliance_chat_impossible: "The Chat is a great way to link up with other more experienced players.\xa0They can both answer your questions and help you by giving you access to buildings like Hospitals and Schools",
             no_alliance_missions: "There are currently no alliance missions.",
             no_alliance_missions_join: "Participating in alliance missions will reward you with Credits - no matter what type of vehicle you send. By joining an alliance you can do both, share your own missions to get help from experienced alliance members and participate in other\u2019s shared missions for extra rewards.",
             no_ambulance_missions: "There are no patient transports. Patient transports can only occur when you have an ambulance and a hospital.",
             no_emergency_missions: "There are no emergency missions available. An emergency mission can occur after you made your first station.",
             no_radio_messages: "You didn't receive any radio messages.",
+            post_loading_error: "Something went wrong! Please try again and press the reload button.",
             radio_messages: "Radio",
             restore_map: "Restore Map",
+            retry: "Reload",
             server_warning: "Server maintenance at 18:00 EDT. 6h downtime expected.",
             show_informations: "Green = The missions are shown in the list. Red = The missions aren't shown.",
             sicherheitswache: "Planned Appearances",
@@ -5747,6 +5756,7 @@ Object.values || (Object.values = function (e) {
             alliance_event: "Event",
             alliance_missions: "Alliance Missions",
             alliance_missions_event: "Event",
+            alliance_missions_post_loading: "Alliance Missions are loading...",
             ambulance: "Patient transports",
             anti_abuse_active_link: "Click here for more information.",
             anti_abuse_active_text: "Missions will be generated within an extended radius of 100km, since too many stations of the same type are built too close to each other.",
@@ -5845,14 +5855,17 @@ Object.values || (Object.values = function (e) {
                 }
             },
             missions_filtered_out: "Some missions might be filtered out. Please, check your map filters.",
+            missions_post_loading: "Missions are loading...",
             no_alliance_chat_impossible: "The Chat is a great way to link up with other more experienced players.\xa0They can both answer your questions and help you by giving you access to buildings like Hospitals and Schools",
             no_alliance_missions: "There are currently no alliance missions.",
             no_alliance_missions_join: "Participating in alliance missions will reward you with Credits - no matter what type of vehicle you send. By joining an alliance you can do both, share your own missions to get help from experienced alliance members and participate in other\u2019s shared missions for extra rewards.",
             no_ambulance_missions: "There are no patient transports. Patient transports can only occur when you have an ambulance and a hospital.",
             no_emergency_missions: "There are no emergency missions available. An emergency mission can occur after you made your first station.",
             no_radio_messages: "You didn't receive any radio messages.",
+            post_loading_error: "Something went wrong! Please try again and press the reload button.",
             radio_messages: "Radio",
             restore_map: "Restore Map",
+            retry: "Reload",
             server_warning: "Server maintenance at 11 pm. 6h downtime expected.",
             show_informations: "Green = The missions are shown in the list. Red = The missions aren't shown.",
             sicherheitswache: "Planned Appearances",
@@ -6323,6 +6336,7 @@ Object.values || (Object.values = function (e) {
             alliance_event: "Event",
             alliance_missions: "Grote inzet",
             alliance_missions_event: "Event",
+            alliance_missions_post_loading: "Alliantiemissies worden geladen...",
             ambulance: "Vervoer van pati\xebnten",
             anti_abuse_active_link: "Klik hier voor meer informatie.",
             anti_abuse_active_text: "Missies zullen binnen een grotere straal van 100\xa0km verschijnen, omdat te veel stations van hetzelfde type te dicht bij elkaar zijn gebouwd.",
@@ -6419,14 +6433,17 @@ Object.values || (Object.values = function (e) {
                 }
             },
             missions_filtered_out: "Sommige missies worden mogelijk uitgefilterd. Controleer alstublieft uw kaartfilters.",
+            missions_post_loading: "Inzetten worden geladen...",
             no_alliance_chat_impossible: "De Chat is een geweldige manier om in contact te komen met andere meer ervaren spelers.\xa0Zij kunnen zowel je vragen beantwoorden als je helpen door je toegang te geven tot gebouwen zoals Ziekenhuizen en Scholen",
             no_alliance_missions: "Er zijn geen team inzetten beschikbaar",
             no_alliance_missions_join: "Deelnemen aan missies van een team zal je belonen met credits - ongeacht het type voertuig dat je stuurt. Door lid te worden van een team kun je beide doen: je eigen missies delen om hulp te krijgen van ervaren teamleden en deelnemen aan de gedeelde missies van anderen voor extra beloningen.",
             no_ambulance_missions: "Er kan nog geen besteld vervoer plaatsvinden zonder een ziekenhuis en een zorgambulance.",
             no_emergency_missions: "Er hebben zich nog geen incidenten plaatsgevonden. Incidenten kunnen vanaf je eerste post plaatsvinden.",
             no_radio_messages: "Je hebt nog geen statusmeldingen ontvangen.",
+            post_loading_error: "Er is iets fout gegaan! Probeer het opnieuw en druk op de herlaadknop.",
             radio_messages: "Status",
             restore_map: "Kaart terugzetten",
+            retry: "Refresh",
             server_warning: "Serveronderhoud om 00.00 uur. We verwachten 6 uur offline te zijn.",
             show_informations: "Groen = Inzet wordt in de lijst weergegeven. Rood = Inzet wordt niet weergegeven.",
             sicherheitswache: "Geplande inzetten",
@@ -6804,6 +6821,7 @@ Object.values || (Object.values = function (e) {
             alliance_event: "Evento",
             alliance_missions: "Misiones de alianza",
             alliance_missions_event: "Evento",
+            alliance_missions_post_loading: "Las misiones de la Alianza se est\xe1n cargando...",
             ambulance: "Transporte de pacientes",
             anti_abuse_active_link: "Haz clic aqu\xed para obtener m\xe1s informaci\xf3n.",
             anti_abuse_active_text: "Las misiones se generar\xe1n en un radio ampliado de 100\xa0km, ya que hay construidas demasiadas estaciones del mismo tipo muy pr\xf3ximas entre s\xed.",
@@ -6898,14 +6916,17 @@ Object.values || (Object.values = function (e) {
                 }
             },
             missions_filtered_out: "Algunas misiones pueden ser filtradas. Por favor, revise los filtros de su mapa.",
+            missions_post_loading: "Las misiones se est\xe1n cargando...",
             no_alliance_chat_impossible: "El chat es una forma estupenda de conectar con otros jugadores m\xe1s experimentados.\xa0Pueden responder a tus preguntas y ayudarte a acceder a edificios como hospitales y escuelas.",
             no_alliance_missions: "No hay misiones de alianza.",
             no_alliance_missions_join: "Participar en las misiones de la alianza te recompensar\xe1 con cr\xe9ditos, independientemente del tipo de veh\xedculo que env\xedes. Al unirte a una alianza puedes hacer ambas cosas, compartir tus propias misiones para obtener ayuda de miembros experimentados de la alianza y participar en las misiones compartidas de otros para obtener recompensas extra.",
             no_ambulance_missions: "No hay transportes de pacientes. Los transportes de pacientes solo pueden ocurrir cuando tienes una unidad de transporte de ambulancia y un hospital, mientras que los transportes cr\xedticos solo ocurren cuando tienes una unidad de transporte cr\xedtico y 2 hospitales con un paciente.",
             no_emergency_missions: "No hay misiones de emergencia disponibles. Solo habr\xe1 misiones de emergencia despu\xe9s de que construyas tu primera instalaci\xf3n.",
             no_radio_messages: "No has recibido mensajes de radio.",
+            post_loading_error: "Algo ha ido mal. Por favor, int\xe9ntelo de nuevo y pulse el bot\xf3n de recarga.",
             radio_messages: "Radio",
             restore_map: "Restaurar mapa",
+            retry: "Recargar",
             server_warning: "Mantenimiento del servidor a las 00:00. Se espera un tiempo de inactividad de 6 horas.",
             show_informations: "Verde: las misiones se mostrar\xe1n en la lista. Rojo: las misiones no se mostrar\xe1n.",
             sicherheitswache: "Misones planificadas",
@@ -7263,6 +7284,7 @@ Object.values || (Object.values = function (e) {
             alliance_event: "Event",
             alliance_missions: "Alliance Missions",
             alliance_missions_event: "Event",
+            alliance_missions_post_loading: "Alliance Missions are loading...",
             ambulance: "Patient Transports",
             anti_abuse_active_link: "Click here for more information.",
             anti_abuse_active_text: "Missions will be generated within an extended radius of 100km, since too many stations of the same type are built too close to each other.",
@@ -7357,14 +7379,17 @@ Object.values || (Object.values = function (e) {
                 }
             },
             missions_filtered_out: "Some missions might be filtered out. Please, check your map filters.",
+            missions_post_loading: "Missions are loading...",
             no_alliance_chat_impossible: "The Chat is a great way to link up with other more experienced players.\xa0They can both answer your questions and help you by giving you access to buildings like Hospitals and Schools",
             no_alliance_missions: "There are currently no alliance missions.",
             no_alliance_missions_join: "Participating in alliance missions will reward you with Credits - no matter what type of vehicle you send. By joining an alliance you can do both, share your own missions to get help from experienced alliance members and participate in other\u2019s shared missions for extra rewards.",
             no_ambulance_missions: "There are no patient transports. Patient transports can only occur when you have an ambulance transport unit and a hospital, while critical transports only occur when you have a critical transport unit and 2 hospitals with a patient.",
             no_emergency_missions: "There are no emergency missions available. An emergency mission can occur after you made your first station.",
             no_radio_messages: "You didn't receive any radio messages.",
+            post_loading_error: "Something went wrong! Please try again and press the reload button.",
             radio_messages: "Radio",
             restore_map: "Restore Map",
+            retry: "Reload",
             server_warning: "Server maintenance at 08:00 AEST. 6h downtime expected.",
             show_informations: "Green = The missions are shown in the list. Red = The missions aren't shown.",
             sicherheitswache: "Planned Appearances",
@@ -7837,6 +7862,7 @@ Object.values || (Object.values = function (e) {
             alliance_event: "Evenemang",
             alliance_missions: "Alliansuppdrag",
             alliance_missions_event: "Evenemang",
+            alliance_missions_post_loading: "Alliansuppdragen laddas...",
             ambulance: "Patienttransporter",
             anti_abuse_active_link: "Klicka h\xe4r f\xf6r mer information.",
             anti_abuse_active_text: "Uppdrag kan dyka upp p\xe5 upp till 100 km avst\xe5nd, eftersom det ligger f\xf6r m\xe5nga stationer av samma typ n\xe4ra varandra.",
@@ -7931,14 +7957,17 @@ Object.values || (Object.values = function (e) {
                 }
             },
             missions_filtered_out: "Vissa uppdrag kan filtreras bort. Kontrollera dina kartfilter.",
+            missions_post_loading: "Uppdragen laddas...",
             no_alliance_chat_impossible: "Chatten \xe4r ett bra s\xe4tt att f\xe5 kontakt med andra mer erfarna spelare.\xa0De kan b\xe5de svara p\xe5 dina fr\xe5gor och hj\xe4lpa dig genom att ge dig tillg\xe5ng till byggnader som sjukhus och skolor.",
             no_alliance_missions: "Det finns inga alliansuppdrag just nu.",
             no_alliance_missions_join: "Om du deltar i alliansuppdrag f\xe5r du krediter - oavsett vilken typ av fordon du skickar. Genom att g\xe5 med i en allians kan du g\xf6ra b\xe5de och, dela dina egna uppdrag f\xf6r att f\xe5 hj\xe4lp av erfarna alliansmedlemmar och delta i andras delade uppdrag f\xf6r extra bel\xf6ningar.",
             no_ambulance_missions: "Det finns inga patienttransporter. Patienttransporter kan bara f\xf6rekomma n\xe4r man har en ambulanstransportenhet och ett sjukhus, medan kritiska transporter endast sker n\xe4r man har en kritisk transportenhet och 2 sjukhus med en patient.",
             no_emergency_missions: "Det finns inga akutuppdrag just nu. Ett akutuppdrag kan intr\xe4ffa efter att du gjort din f\xf6rsta station.",
             no_radio_messages: "Du har inga radiomeddelanden.",
+            post_loading_error: "N\xe5got gick fel! F\xf6rs\xf6k igen och tryck p\xe5 omladdningsknappen.",
             radio_messages: "Radio",
             restore_map: "\xc5terst\xe4ll karta",
+            retry: "Ladda om",
             server_warning: "Vid midnatt sker serverunderh\xe5ll. Arbetet r\xe4knas p\xe5g\xe5 i cirka 6 timmar.",
             show_informations: "Gr\xf6nt = Uppdragen visas i listan. R\xf6tt = Uppdragen visas inte.",
             sicherheitswache: "Planerade uppdrag",
@@ -8326,6 +8355,7 @@ Object.values || (Object.values = function (e) {
             alliance_event: "Wydarzenie",
             alliance_missions: "Misje sojuszu",
             alliance_missions_event: "Wydarzenie",
+            alliance_missions_post_loading: "Misje Sojuszu si\u0119 \u0142aduj\u0105...",
             ambulance: "Transporty pacjent\xf3w",
             anti_abuse_active_link: "Kliknij tutaj, \u017ceby dowiedzie\u0107 si\u0119 wi\u0119cej.",
             anti_abuse_active_text: "Misje b\u0119d\u0105 si\u0119 pojawia\u0107 na rozszerzonym obszarze do 100 km, poniewa\u017c zbyt wiele posterunk\xf3w tego samego rodzaju jest umieszczonych zbyt blisko siebie.",
@@ -8420,14 +8450,17 @@ Object.values || (Object.values = function (e) {
                 }
             },
             missions_filtered_out: "Niekt\xf3re misje mog\u0105 zosta\u0107 odfiltrowane. Prosz\u0119 sprawdzi\u0107 filtry map.",
+            missions_post_loading: "Misje si\u0119 \u0142aduj\u0105...",
             no_alliance_chat_impossible: "Czat to \u015bwietny spos\xf3b na nawi\u0105zanie kontaktu z innymi, bardziej do\u015bwiadczonymi graczami.\xa0Mog\u0105 oni odpowiedzie\u0107 na twoje pytania i pom\xf3c ci, daj\u0105c ci dost\u0119p do budynk\xf3w takich jak szpitale i szko\u0142y.",
             no_alliance_missions: "W tej chwili nie ma misji sojuszu.",
             no_alliance_missions_join: "Udzia\u0142 w misjach sojuszu nagrodzi Ci\u0119 Kredytami - bez wzgl\u0119du na to, jaki pojazd wy\u015blesz. Do\u0142\u0105czaj\u0105c do sojuszu, mo\u017cesz robi\u0107 obie te rzeczy: dzieli\u0107 si\u0119 w\u0142asnymi misjami, aby uzyska\u0107 pomoc od do\u015bwiadczonych cz\u0142onk\xf3w sojuszu, oraz bra\u0107 udzia\u0142 we wsp\xf3lnych misjach innych, aby otrzyma\u0107 dodatkowe nagrody.",
             no_ambulance_missions: "Nie ma transportu pacjent\xf3w. Transport pacjent\xf3w mo\u017ce mie\u0107 miejsce tylko wtedy, gdy posiadasz karetk\u0119 pogotowia i szpital, natomiast transport krytyczny ma miejsce tylko wtedy, gdy masz krytyczn\u0105 jednostk\u0119 transportu i 2 szpitale z pacjentem.",
             no_emergency_missions: "Brak misji z sytuacj\u0105 wyj\u0105tkow\u0105. Misja z sytuacj\u0105 wyj\u0105tkow\u0105 mo\u017ce si\u0119 pojawi\u0107, gdy wybudujesz pierwszy posterunek.",
             no_radio_messages: "Nie otrzymano wiadomo\u015bci drog\u0105 radiow\u0105.",
+            post_loading_error: "Co\u015b posz\u0142o nie tak! Spr\xf3buj ponownie i naci\u015bnij przycisk prze\u0142adowania.",
             radio_messages: "Radio",
             restore_map: "Przywr\xf3\u0107 map\u0119",
+            retry: "Od\u015bwie\u017c",
             server_warning: "Przewidujemy przerw\u0119 techniczn\u0105 o p\xf3\u0142nocy. Przewidywany czas w okolicach 6 godzin.",
             show_informations: "Zielony = misje s\u0105 pokazywane. Czerwony = misje nie s\u0105 pokazywane.",
             sicherheitswache: "Planowane misje",
@@ -8821,6 +8854,7 @@ Object.values || (Object.values = function (e) {
             alliance_event: "Evento",
             alliance_missions: "Missioni dell'alleanza",
             alliance_missions_event: "Evento",
+            alliance_missions_post_loading: "Le missioni dell'Alleanza si stanno caricando...",
             ambulance: "Trasporto di pazienti",
             anti_abuse_active_link: "Fai clic qui per maggiori informazioni.",
             anti_abuse_active_text: "Le missioni si generano all'interno di un raggio esteso di 100 Km, poich\xe9 troppe stazioni dello stesso tipo sono state costruite troppo vicine tra loro.",
@@ -8917,14 +8951,17 @@ Object.values || (Object.values = function (e) {
                 }
             },
             missions_filtered_out: "Alcune missioni potrebbero essere filtrate. Per favore, controlla i filtri della tua mappa.",
+            missions_post_loading: "Le missioni si stanno caricando...",
             no_alliance_chat_impossible: "La chat \xe8 un ottimo modo per entrare in contatto con altri giocatori pi\xf9 esperti.\xa0Possono rispondere alle vostre domande e aiutarvi dandovi accesso a edifici come ospedali e scuole.",
             no_alliance_missions: "Al momento non ci sono missioni dell'alleanza.",
             no_alliance_missions_join: "Partecipare alle missioni dell'alleanza vi ricompenser\xe0 con i Crediti, indipendentemente dal tipo di veicolo inviato. Unendovi a un'alleanza potrete fare entrambe le cose: condividere le vostre missioni per ricevere aiuto dai membri esperti dell'alleanza e partecipare alle missioni condivise dagli altri per ottenere ricompense extra.",
             no_ambulance_missions: "Non ci sono pazienti da trasportare. I trasporti ordinari sono richiesti se si \xe8 in possesso di un ambulanza ordinaria e di un ospedale, i secondari urgenti sono richiesti se in possesso di un'ambulanza di soccorso avanzato (MSA) e almeno 2 ospedali ci cui 1 con almeno 1 paziente.",
             no_emergency_missions: "Non ci sono missioni di emergenza disponibili. Una missione di emergenza pu\xf2 verificarsi dopo aver creato la prima stazione.",
             no_radio_messages: "Nessun messaggio radio ricevuto.",
+            post_loading_error: "Qualcosa \xe8 andato storto! Riprovare e premere il pulsante di ricarica.",
             radio_messages: "Radio",
             restore_map: "Ripristina mappa",
+            retry: "Ricarica",
             server_warning: "Manutenzione del server alle 00:00. Tempo di inattivit\xe0 previsto di 6 ore.",
             show_informations: "Verde = Le missioni vengono mostrate nell'elenco. Rosso = Le missioni non vengono mostrate.",
             sicherheitswache: "Missioni pianificate",
@@ -9304,6 +9341,7 @@ Object.values || (Object.values = function (e) {
             alliance_event: "\xc9v\xe8nement",
             alliance_missions: "Missions d\u2019alliance",
             alliance_missions_event: "\xc9v\xe8nement",
+            alliance_missions_post_loading: "Les missions de l'Alliance sont en cours de chargement...",
             ambulance: "Transports de patients",
             anti_abuse_active_link: "Cliquez ici pour plus d'informations.",
             anti_abuse_active_text: "Les missions vont appara\xeetre dans un rayon \xe9tendu de 100\xa0km, car trop de postes du m\xeame type ont \xe9t\xe9 construits trop pr\xe8s les uns des autres.",
@@ -9401,14 +9439,17 @@ Object.values || (Object.values = function (e) {
                 }
             },
             missions_filtered_out: "Certaines missions peuvent \xeatre filtr\xe9es. Veuillez v\xe9rifier les filtres de votre carte.",
+            missions_post_loading: "Les missions sont en cours de chargement...",
             no_alliance_chat_impossible: "Le chat est un excellent moyen d'entrer en contact avec d'autres joueurs plus exp\xe9riment\xe9s.\xa0Ils peuvent \xe0 la fois r\xe9pondre \xe0 vos questions et vous aider en vous donnant acc\xe8s \xe0 des b\xe2timents comme les h\xf4pitaux et les \xe9coles.",
             no_alliance_missions: "Aucune mission d\u2019alliance \xe0 afficher.",
             no_alliance_missions_join: "En participant \xe0 des missions d'alliance, vous recevrez des cr\xe9dits, quel que soit le type de v\xe9hicule que vous envoyez. En rejoignant une alliance, vous pouvez faire les deux, partager vos propres missions pour obtenir l'aide de membres exp\xe9riment\xe9s de l'alliance et participer aux missions partag\xe9es des autres pour obtenir des r\xe9compenses suppl\xe9mentaires.",
             no_ambulance_missions: "Il n'y a pas de transport de patient en attente. Les transports seront disponibles d\xe8s que vous aurez trois ambulances de transport ou de secours et un h\xf4pital.",
             no_emergency_missions: "Aucune mission d\u2019urgence \xe0 afficher. Vous pouvez recevoir des missions d\u2019urgence d\xe8s lors que vous avez construit votre premier poste.",
             no_radio_messages: "Vous n\u2019avez re\xe7u aucun message radio.",
+            post_loading_error: "Un probl\xe8me s'est produit ! Veuillez r\xe9essayer et appuyer sur le bouton de rechargement.",
             radio_messages: "Radio",
             restore_map: "Restaurer la carte",
+            retry: "Recharger",
             server_warning: "Maintenance des serveurs \xe0 00h00. Ceux-ci seront indisponibles durant une dur\xe9e approximative de 6h00.",
             show_informations: "Vert = les missions s\u2019affichent dans la liste. Rouge = les missions ne s\u2019affichent pas.",
             sicherheitswache: "Missions pr\xe9vues",
@@ -9783,6 +9824,7 @@ Object.values || (Object.values = function (e) {
             alliance_event: "\u0421\u043e\u0431\u044b\u0442\u0438\u0435",
             alliance_missions: "\u0417\u0430\u0434\u0430\u043d\u0438\u044f \u0430\u043b\u044c\u044f\u043d\u0441\u0430",
             alliance_missions_event: "\u0421\u043e\u0431\u044b\u0442\u0438\u0435",
+            alliance_missions_post_loading: "\u041c\u0438\u0441\u0441\u0438\u0438 \u0410\u043b\u044c\u044f\u043d\u0441\u0430 \u0437\u0430\u0433\u0440\u0443\u0436\u0430\u044e\u0442\u0441\u044f...",
             ambulance: "\u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u043a\u0430 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432",
             anti_abuse_active_link: "\u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u0437\u0434\u0435\u0441\u044c, \u0447\u0442\u043e\u0431\u044b \u043f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u043f\u043e\u0434\u0440\u043e\u0431\u043d\u0443\u044e \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044e.",
             anti_abuse_active_text: "\u0417\u0430\u0434\u0430\u043d\u0438\u044f \u0431\u0443\u0434\u0443\u0442 \u043f\u043e\u044f\u0432\u043b\u044f\u0442\u044c\u0441\u044f \u0432 \u0440\u0430\u0434\u0438\u0443\u0441\u0435 100 \u043a\u043c, \u043f\u043e\u0441\u043a\u043e\u043b\u044c\u043a\u0443 \u0441\u043b\u0438\u0448\u043a\u043e\u043c \u043c\u0430\u043b\u043e \u0441\u0442\u0430\u043d\u0446\u0438\u0439 \u043e\u0434\u043d\u043e\u0433\u043e \u0442\u0438\u043f\u0430 \u0440\u0430\u0441\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u043e \u0431\u043b\u0438\u0437\u043a\u043e \u0434\u0440\u0443\u0433 \u043a \u0434\u0440\u0443\u0433\u0443.",
@@ -9876,14 +9918,17 @@ Object.values || (Object.values = function (e) {
                 }
             },
             missions_filtered_out: "\u041d\u0435\u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u043c\u0438\u0441\u0441\u0438\u0438 \u043c\u043e\u0433\u0443\u0442 \u0431\u044b\u0442\u044c \u043e\u0442\u0444\u0438\u043b\u044c\u0442\u0440\u043e\u0432\u0430\u043d\u044b. \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u0440\u043e\u0432\u0435\u0440\u044c\u0442\u0435 \u0444\u0438\u043b\u044c\u0442\u0440\u044b \u0432\u0430\u0448\u0435\u0439 \u043a\u0430\u0440\u0442\u044b.",
+            missions_post_loading: "\u041c\u0438\u0441\u0441\u0438\u0438 \u0437\u0430\u0433\u0440\u0443\u0436\u0430\u044e\u0442\u0441\u044f...",
             no_alliance_chat_impossible: "\u0427\u0430\u0442 - \u044d\u0442\u043e \u043e\u0442\u043b\u0438\u0447\u043d\u044b\u0439 \u0441\u043f\u043e\u0441\u043e\u0431 \u043f\u043e\u043e\u0431\u0449\u0430\u0442\u044c\u0441\u044f \u0441 \u0434\u0440\u0443\u0433\u0438\u043c\u0438, \u0431\u043e\u043b\u0435\u0435 \u043e\u043f\u044b\u0442\u043d\u044b\u043c\u0438 \u0438\u0433\u0440\u043e\u043a\u0430\u043c\u0438.\xa0\u041e\u043d\u0438 \u043c\u043e\u0433\u0443\u0442 \u043a\u0430\u043a \u043e\u0442\u0432\u0435\u0442\u0438\u0442\u044c \u043d\u0430 \u0432\u0430\u0448\u0438 \u0432\u043e\u043f\u0440\u043e\u0441\u044b, \u0442\u0430\u043a \u0438 \u043f\u043e\u043c\u043e\u0447\u044c \u0432\u0430\u043c, \u043f\u0440\u0435\u0434\u043e\u0441\u0442\u0430\u0432\u0438\u0432 \u0434\u043e\u0441\u0442\u0443\u043f \u043a \u0442\u0430\u043a\u0438\u043c \u0437\u0434\u0430\u043d\u0438\u044f\u043c, \u043a\u0430\u043a \u0431\u043e\u043b\u044c\u043d\u0438\u0446\u044b \u0438 \u0448\u043a\u043e\u043b\u044b.",
             no_alliance_missions: "\u0412 \u043d\u0430\u0441\u0442\u043e\u044f\u0449\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u0437\u0430\u0434\u0430\u043d\u0438\u0439 \u0430\u043b\u044c\u044f\u043d\u0441\u0430 \u043d\u0435\u0442.",
             no_alliance_missions_join: "\u0423\u0447\u0430\u0441\u0442\u0438\u0435 \u0432 \u043c\u0438\u0441\u0441\u0438\u044f\u0445 \u0430\u043b\u044c\u044f\u043d\u0441\u0430 \u043f\u0440\u0438\u043d\u0435\u0441\u0435\u0442 \u0432\u0430\u043c \u043a\u0440\u0435\u0434\u0438\u0442\u044b - \u043d\u0435\u0437\u0430\u0432\u0438\u0441\u0438\u043c\u043e \u043e\u0442 \u0442\u0438\u043f\u0430 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u043e\u0433\u043e \u0432\u0430\u043c\u0438 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u043e\u0433\u043e \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430. \u0412\u0441\u0442\u0443\u043f\u0438\u0432 \u0432 \u0430\u043b\u044c\u044f\u043d\u0441, \u0432\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0434\u0435\u043b\u0430\u0442\u044c \u0438 \u0442\u043e, \u0438 \u0434\u0440\u0443\u0433\u043e\u0435: \u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f \u0441\u0432\u043e\u0438\u043c\u0438 \u0437\u0430\u0434\u0430\u043d\u0438\u044f\u043c\u0438, \u043f\u043e\u043b\u0443\u0447\u0430\u044f \u043f\u043e\u043c\u043e\u0449\u044c \u043e\u0442 \u043e\u043f\u044b\u0442\u043d\u044b\u0445 \u0447\u043b\u0435\u043d\u043e\u0432 \u0430\u043b\u044c\u044f\u043d\u0441\u0430, \u0438 \u0443\u0447\u0430\u0441\u0442\u0432\u043e\u0432\u0430\u0442\u044c \u0432 \u043e\u0431\u0449\u0438\u0445 \u0437\u0430\u0434\u0430\u043d\u0438\u044f\u0445 \u0434\u0440\u0443\u0433\u0438\u0445, \u043f\u043e\u043b\u0443\u0447\u0430\u044f \u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0435 \u043d\u0430\u0433\u0440\u0430\u0434\u044b.",
             no_ambulance_missions: "\u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u043a\u0438 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432 \u043d\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442. \u041f\u0435\u0440\u0435\u0432\u043e\u0437\u043a\u0430 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432 \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u0430 \u0442\u043e\u043b\u044c\u043a\u043e \u043f\u0440\u0438 \u043d\u0430\u043b\u0438\u0447\u0438\u0438 \u0441\u043a\u043e\u0440\u043e\u0439 \u043f\u043e\u043c\u043e\u0449\u0438 \u0438 \u0431\u043e\u043b\u044c\u043d\u0438\u0446\u044b.",
             no_emergency_missions: "\u041d\u0435\u0442 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b\u0445 \u0437\u0430\u0434\u0430\u043d\u0438\u0439 \u0427\u0421. \u0417\u0430\u0434\u0430\u043d\u0438\u0435 \u0427\u0421 \u043c\u043e\u0436\u0435\u0442 \u043f\u043e\u044f\u0432\u0438\u0442\u044c\u0441\u044f \u0442\u043e\u043b\u044c\u043a\u043e \u0442\u043e\u0433\u0434\u0430, \u043a\u043e\u0433\u0434\u0430 \u0432\u044b \u043f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u0435 \u0441\u0432\u043e\u044e \u043f\u0435\u0440\u0432\u0443\u044e \u0441\u0442\u0430\u043d\u0446\u0438\u044e.",
             no_radio_messages: "\u0412\u044b \u043d\u0435 \u043f\u043e\u043b\u0443\u0447\u0430\u043b\u0438 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0439 \u043f\u043e \u0440\u0430\u0434\u0438\u043e.",
+            post_loading_error: "\u0427\u0442\u043e-\u0442\u043e \u043f\u043e\u0448\u043b\u043e \u043d\u0435 \u0442\u0430\u043a! \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u043e\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u0435\u0449\u0435 \u0440\u0430\u0437 \u0438 \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \u043a\u043d\u043e\u043f\u043a\u0443 \u043f\u0435\u0440\u0435\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438.",
             radio_messages: "\u0420\u0430\u0434\u0438\u043e",
             restore_map: "\u0412\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c \u043a\u0430\u0440\u0442\u0443",
+            retry: "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u043f\u043e\u0432\u0442\u043e\u0440\u043d\u043e",
             server_warning: "Server maintenance at 1 am. 6h downtime expected.",
             show_informations: "\u0417\u0435\u043b\u0451\u043d\u044b\u0439 = \u0437\u0430\u0434\u0430\u043d\u0438\u044f \u043e\u0442\u043e\u0431\u0440\u0430\u0436\u0430\u044e\u0442\u0441\u044f \u0432 \u0441\u043f\u0438\u0441\u043a\u0435. \u041a\u0440\u0430\u0441\u043d\u044b\u0439 = \u0437\u0430\u0434\u0430\u043d\u0438\u044f \u043d\u0435 \u043e\u0442\u043e\u0431\u0440\u0430\u0436\u0430\u044e\u0442\u0441\u044f.",
             sicherheitswache: "\u0417\u0430\u043f\u043b\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u0437\u0430\u0434\u0430\u043d\u0438\u044f",
@@ -10227,6 +10272,7 @@ Object.values || (Object.values = function (e) {
             alliance_event: "Begivenhed",
             alliance_missions: "Alliancemissioner",
             alliance_missions_event: "Begivenhed",
+            alliance_missions_post_loading: "Alliance-missioner er ved at blive indl\xe6st...",
             ambulance: "Patient Transport",
             anti_abuse_active_link: "Klik her for mere information.",
             anti_abuse_active_text: "Der vil opst\xe5 mange missioner indenfor en udvidet radius p\xe5 100 km, da der er bygget for mange stationer af den samme type for t\xe6t p\xe5 hinanden.",
@@ -10321,14 +10367,17 @@ Object.values || (Object.values = function (e) {
                 }
             },
             missions_filtered_out: "Nogle missioner kan blive filtreret ud. Tjek venligst dine kortfilter.",
+            missions_post_loading: "Missionerne er ved at blive indl\xe6st.",
             no_alliance_chat_impossible: "Chatten er en god m\xe5de at komme i kontakt med andre mere erfarne spillere p\xe5.\xa0De kan b\xe5de besvare dine sp\xf8rgsm\xe5l og hj\xe6lpe dig ved at give dig adgang til bygninger som hospitaler og skoler.",
             no_alliance_missions: "Der er ingen alliancemissioner lige nu",
             no_alliance_missions_join: 'Hvis du deltager i alliancemissioner, f\xe5r du kreditter - uanset hvilken type k\xf8ret\xf8j du sender. Ved at slutte dig til en alliance kan du g\xf8re begge dele, dele dine egne missioner for at f\xe5 hj\xe6lp fra erfarne alliancemedlemmer og deltage i andres delte missioner for at f\xe5 ekstra bel\xf8nninger."',
             no_ambulance_missions: "Der er ingen patienttransport. Patienttransporter kan kun forekomme, n\xe5r man har en ambulancetransportenhed og et sygehus, mens kritiske transporter kun forekommer, n\xe5r man har en kritisk transportenhed og 2 sygehuse med en patient.",
             no_emergency_missions: "Der er ingen tilg\xe6ngelige krisemissioner. Der kan opst\xe5 krisemissioner, n\xe5r du har oprettet din f\xf8rste station.",
             no_radio_messages: "Du har ikke modtaget radiomeddelelser.",
+            post_loading_error: "Noget gik galt! Pr\xf8v igen, og tryk p\xe5 genindl\xe6sningsknappen.",
             radio_messages: "Radio",
             restore_map: "Gendan kort",
+            retry: "Genindl\xe6s",
             server_warning: "Servervedligeholdelse kl. 00.00. 6 t. nedlukning forventet.",
             show_informations: "Gr\xf8n = Missionerne vises p\xe5 listen. R\xf8d = Missionerne vises ikke.",
             sicherheitswache: "Planlagte indsatser",
@@ -10698,6 +10747,7 @@ Object.values || (Object.values = function (e) {
             alliance_event: "Hendelse",
             alliance_missions: "Allianseoppdrag",
             alliance_missions_event: "Hendelse",
+            alliance_missions_post_loading: "Allianseoppdrag lastes inn...",
             ambulance: "Pasienttransport",
             anti_abuse_active_link: "Klikk her for mer informasjon.",
             anti_abuse_active_text: "Oppdragene dukker opp innenfor en utvidet radius p\xe5 100 km fordi for mange stasjoner av samme variant er bygd i n\xe6rheten av hverandre.",
@@ -10795,14 +10845,17 @@ Object.values || (Object.values = function (e) {
                 }
             },
             missions_filtered_out: "Noen oppdrag kan bli filtrert ut. Vennligst sjekk kartfiltrene dine.",
+            missions_post_loading: "Oppdragene lastes inn...",
             no_alliance_chat_impossible: "Chatten er en fin m\xe5te \xe5 koble seg opp til andre mer erfarne spillere p\xe5. De kan b\xe5de svare p\xe5 sp\xf8rsm\xe5lene dine og hjelpe deg ved \xe5 gi deg tilgang til bygninger som sykehus og skoler",
             no_alliance_missions: "Du har for \xf8yeblikket ingen allianseoppdrag.",
             no_alliance_missions_join: "\xc5 delta i allianseoppdrag vil bel\xf8nne deg med kreditter - uansett hvilken type kj\xf8ret\xf8y du sender. Ved \xe5 bli med i en allianse kan du gj\xf8re begge deler, dele dine egne oppdrag for \xe5 f\xe5 hjelp fra erfarne alliansemedlemmer og delta i andres delte oppdrag for ekstra bel\xf8nninger.",
             no_ambulance_missions: "Det er ingen pasientoverflytninger bestilt. Overflytninger kan forekomme n\xe5r du har en Syketransport og et sykehus.",
             no_emergency_missions: "Du har ingen n\xf8doppdrag. Du kan f\xe5 n\xf8doppdrag etter at du bygger din f\xf8rste stasjon.",
             no_radio_messages: "Du har ikke f\xe5tt noen radiomeldinger.",
+            post_loading_error: "Noe gikk galt! Pr\xf8v igjen og trykk p\xe5 knappen Last inn p\xe5 nytt.",
             radio_messages: "Radio",
             restore_map: "Gjenopprett kart",
+            retry: "Last inn p\xe5 nytt",
             server_warning: "Servervedlikehold i natt klokken 00:00. Det vil vare i 6 timer.",
             show_informations: "Gr\xf8nn = oppdragene vises p\xe5 listen. R\xf8d = oppdragene vises ikke.",
             sicherheitswache: "Planlagte visninger",
@@ -11184,6 +11237,7 @@ Object.values || (Object.values = function (e) {
             alliance_event: "Akce",
             alliance_missions: "Alian\u010dn\xed mise",
             alliance_missions_event: "Akce",
+            alliance_missions_post_loading: "Alian\u010dn\xed mise se na\u010d\xedtaj\xed...",
             ambulance: "P\u0159evozy pacient\u016f",
             anti_abuse_active_link: "Kliknut\xedm zde zobrazte dal\u0161\xed informace.",
             anti_abuse_active_text: "Mise se objev\xed v roz\u0161\xed\u0159en\xe9m okruhu 100 km, proto\u017ee bylo postaveno p\u0159\xedli\u0161 mnoho stanic stejn\xe9ho typu bl\xedzko u sebe.",
@@ -11279,14 +11333,17 @@ Object.values || (Object.values = function (e) {
                 }
             },
             missions_filtered_out: "N\u011bkter\xe9 mise mohou b\xfdt odfiltrov\xe1ny. Zkontrolujte pros\xedm sv\xe9 mapov\xe9 filtry.",
+            missions_post_loading: "Mise se na\u010d\xedtaj\xed...",
             no_alliance_chat_impossible: "Chat je skv\u011bl\xfd zp\u016fsob, jak se spojit s dal\u0161\xedmi zku\u0161en\u011bj\u0161\xedmi hr\xe1\u010di.\xa0Ti v\xe1m mohou odpov\u011bd\u011bt na va\u0161e ot\xe1zky a tak\xe9 v\xe1m pomoci t\xedm, \u017ee v\xe1m zp\u0159\xedstupn\xed budovy, jako jsou nemocnice a \u0161koly.",
             no_alliance_missions: "K dispozici nejsou \u017e\xe1dn\xe9 alian\u010dn\xed mise.",
             no_alliance_missions_join: "Za \xfa\u010dast v alian\u010dn\xedch mis\xedch z\xedsk\xe1te kredity - bez ohledu na to, jak\xfd typ vozidla po\u0161lete. Vstupem do aliance m\u016f\u017eete d\u011blat oboj\xed, sd\xedlet sv\xe9 vlastn\xed mise a z\xedskat tak pomoc od zku\u0161en\xfdch \u010dlen\u016f aliance a \xfa\u010dastnit se sd\xedlen\xfdch mis\xed ostatn\xedch za dal\u0161\xed odm\u011bny.",
             no_ambulance_missions: "Neprov\xe1d\xed se \u017e\xe1dn\xe9 p\u0159evozy pacient\u016f. K p\u0159evoz\u016fm pacient\u016f m\u016f\u017ee doj\xedt pouze tehdy, kdy\u017e m\xe1te k dispozici jednotku pro p\u0159evoz pacient\u016f a nemocnici, zat\xedmco k urgentn\xedm p\u0159evoz\u016fm doch\xe1z\xed pouze tehdy, kdy\u017e m\xe1te k dispozici jednotku pro p\u0159evoz pacient\u016f a 2 nemocnice s pacientem.",
             no_emergency_missions: "Nouzov\xe9 mise nejsou k dispozici. Objev\xed se, a\u017e postav\xedte prvn\xed stanici.",
             no_radio_messages: "Na vys\xedla\u010dku v\xe1m nep\u0159i\u0161ly \u017e\xe1dn\xe9 zpr\xe1vy.",
+            post_loading_error: "N\u011bco se pokazilo! Zkuste to pros\xedm znovu a stiskn\u011bte tla\u010d\xedtko reload.",
             radio_messages: "Vys\xedla\u010dka",
             restore_map: "Obnovit mapu",
+            retry: "Obnovit",
             server_warning: "\xdadr\u017eba serveru v 00:00. P\u0159edpokl\xe1d\xe1me 6hodinov\xe9 odstaven\xed.",
             show_informations: "Zelen\xe1 = Mise budou zobrazeny v seznamu. \u010cerven\xe1 = Mise nebudou zobrazeny.",
             sicherheitswache: "Pl\xe1novan\xe9 mise",
@@ -11639,6 +11696,7 @@ Object.values || (Object.values = function (e) {
             alliance_event: "Etkinlik",
             alliance_missions: "Birlik G\xf6revleri",
             alliance_missions_event: "Etkinlik",
+            alliance_missions_post_loading: "\u0130ttifak G\xf6revleri y\xfckleniyor...",
             ambulance: "Hasta nakilleri",
             anti_abuse_active_link: "Click here for more information.",
             anti_abuse_active_text: "Missions will be generated within an extended radius of 100km, since too many stations of the same type are built too close to each other.",
@@ -11732,13 +11790,16 @@ Object.values || (Object.values = function (e) {
                 }
             },
             missions_filtered_out: "Baz\u0131 g\xf6revler filtrelenebilir. L\xfctfen harita filtrelerinizi kontrol edin.",
+            missions_post_loading: "G\xf6revler y\xfckleniyor...",
             no_alliance_chat_impossible: "Bir birlikte de\u011filsin.",
             no_alliance_missions: "\u015eu anda hi\xe7bir birlik g\xf6revi yok.",
             no_ambulance_missions: "Hasta nakli yoktur. Hasta nakilleri yaln\u0131zca bir ambulans\u0131n\u0131z ve bir hastaneniz oldu\u011funda ger\xe7ekle\u015febilir.",
             no_emergency_missions: "\u015eu anda hi\xe7bir acil durum g\xf6revi yok. \u0130lk istasyonunu yapt\u0131ktan sonra bir acil durum g\xf6revi alabilirsin.",
             no_radio_messages: "Hi\xe7bir radyo mesaj\u0131 almad\u0131n.",
+            post_loading_error: "Bir \u015feyler yanl\u0131\u015f gitti! L\xfctfen tekrar deneyin ve yeniden y\xfckle d\xfc\u011fmesine bas\u0131n.",
             radio_messages: "Radyo",
             restore_map: "Haritay\u0131 Geri Y\xfckle",
+            retry: "Yeniden y\xfckle",
             server_warning: "Server maintenance at 18:00 UTC. 6h downtime expected.",
             show_informations: "Ye\u015fil = G\xf6revler liste i\xe7inde g\xf6sterilir. K\u0131rm\u0131z\u0131 = G\xf6revler g\xf6sterilmez.",
             sicherheitswache: "Planlanan G\xf6sterimler",
@@ -12062,6 +12123,7 @@ Object.values || (Object.values = function (e) {
             alliance_event: "Evento",
             alliance_missions: "Miss\xf5es da alian\xe7a",
             alliance_missions_event: "Evento",
+            alliance_missions_post_loading: "As miss\xf5es da Alian\xe7a est\xe3o a carregar...",
             ambulance: "Transporte de pacientes",
             anti_abuse_active_link: "Clica aqui para mais informa\xe7\xf5es.",
             anti_abuse_active_text: "As miss\xf5es ser\xe3o geradas dentro de um raio aumentado de 100 km, uma vez que demasiadas esta\xe7\xf5es do mesmo tipo est\xe3o constru\xeddas demasiado perto umas das outras.",
@@ -12156,14 +12218,17 @@ Object.values || (Object.values = function (e) {
                 }
             },
             missions_filtered_out: "Algumas miss\xf5es podem ser filtradas. Por favor, verifique seus filtros de mapa.",
+            missions_post_loading: "As miss\xf5es est\xe3o a carregar...",
             no_alliance_chat_impossible: "O Chat \xe9 uma \xf3tima forma de se ligar a outros jogadores mais experientes.\xa0Ambos podem responder \xe0s suas perguntas e ajud\xe1-lo dando-lhe acesso a edif\xedcios como Hospitais e Escolas.",
             no_alliance_missions: "De momento n\xe3o existem miss\xf5es de alian\xe7a.",
             no_alliance_missions_join: "A participa\xe7\xe3o em miss\xf5es de alian\xe7a ir\xe1 recompens\xe1-lo com Cr\xe9ditos - independentemente do tipo de ve\xedculo que enviar. Ao aderir a uma alian\xe7a pode fazer ambas, partilhar as suas pr\xf3prias miss\xf5es para obter ajuda de membros experientes da alian\xe7a e participar nas miss\xf5es partilhadas de outros para obter recompensas extra.",
             no_ambulance_missions: "N\xe3o h\xe1 transporte de pacientes. Os transportes de pacientes s\xf3 podem ocorrer quando voc\xea tem uma unidade de transporte de ambul\xe2ncia e um hospital, enquanto os transportes cr\xedticos s\xf3 ocorrem quando voc\xea tem uma unidade de transporte cr\xedtico e 2 hospitais com um paciente.",
             no_emergency_missions: "N\xe3o h\xe1 miss\xf5es de emerg\xeancia dispon\xedveis. Poder\xe1 participar em miss\xf5es de emerg\xeancia depois de construir o seu primeiro corpo de bombeiros.",
             no_radio_messages: "N\xe3o existem mensagens via r\xe1dio",
+            post_loading_error: "Algo correu mal! Tente novamente e prima o bot\xe3o de recarga.",
             radio_messages: "R\xe1dio",
             restore_map: "Restaurar mapa",
+            retry: "Recarregar",
             server_warning: "Manuten\xe7\xe3o do servidor \xe0s 23h. 6h tempo de inatividade esperadas.",
             show_informations: "Verde = As miss\xf5es s\xe3o exibidas na lista. Vermelho = As miss\xf5es n\xe3o s\xe3o exibidas.",
             sicherheitswache: "Miss\xf5es planejadas",
@@ -12525,6 +12590,7 @@ Object.values || (Object.values = function (e) {
             alliance_event: "Evento",
             alliance_missions: "Miss\xf5es da alian\xe7a",
             alliance_missions_event: "Evento",
+            alliance_missions_post_loading: "As miss\xf5es da Alian\xe7a est\xe3o a carregar...",
             ambulance: "Transporte de doentes",
             anti_abuse_active_link: "Clica aqui para mais informa\xe7\xf5es.",
             anti_abuse_active_text: "As miss\xf5es ser\xe3o geradas dentro de um raio aumentado de 100 km, uma vez que demasiadas esta\xe7\xf5es do mesmo tipo est\xe3o constru\xeddas demasiado perto umas das outras.",
@@ -12618,14 +12684,17 @@ Object.values || (Object.values = function (e) {
                 }
             },
             missions_filtered_out: "Algumas miss\xf5es podem ser filtradas. Por favor, verifique seus filtros de mapa.",
+            missions_post_loading: "As miss\xf5es est\xe3o a carregar...",
             no_alliance_chat_impossible: "Voc\xea n\xe3o est\xe1 em uma alian\xe7a.",
             no_alliance_missions: "N\xe3o h\xe1 miss\xf5es de alian\xe7a no momento.",
             no_alliance_missions_join: "A participa\xe7\xe3o em miss\xf5es de alian\xe7a ir\xe1 recompens\xe1-lo com Cr\xe9ditos - independentemente do tipo de ve\xedculo que enviar. Ao aderir a uma alian\xe7a pode fazer ambas, partilhar as suas pr\xf3prias miss\xf5es para obter ajuda de membros experientes da alian\xe7a e participar nas miss\xf5es partilhadas de outros para obter recompensas extra.",
             no_ambulance_missions: "N\xe3o h\xe1 transporte de doentes. O transporte de doentes s\xf3 pode ser efectuado quando existe uma ambul\xe2ncia e um hospital.",
             no_emergency_missions: "N\xe3o h\xe1 miss\xf5es de emerg\xeancia dispon\xedveis. Voc\xea pode participar de uma miss\xe3o de emerg\xeancia depois que construir o seu primeiro corpo de bombeiros.",
             no_radio_messages: "Voc\xea n\xe3o recebeu mensagens de r\xe1dio.",
+            post_loading_error: "Algo correu mal! Tente novamente e prima o bot\xe3o de recarga.",
             radio_messages: "R\xe1dio",
             restore_map: "Restaurar mapa",
+            retry: "Recarregar",
             server_warning: "Manuten\xe7\xe3o do servidor \xe0s 7h da tarde. 6h de tempo de inatividade esperado.",
             show_informations: "Verde = As miss\xf5es s\xe3o exibidas na lista. Vermelho = As miss\xf5es n\xe3o s\xe3o exibidas.",
             sicherheitswache: "Miss\xf5es planejadas",
@@ -12937,6 +13006,7 @@ Object.values || (Object.values = function (e) {
             alliance_event: "\u041f\u043e\u0434\u0456\u044f",
             alliance_missions: "\u0417\u0430\u0432\u0434\u0430\u043d\u043d\u044f \u0430\u043b\u044c\u044f\u043d\u0441\u0443",
             alliance_missions_event: "\u041f\u043e\u0434\u0456\u044f",
+            alliance_missions_post_loading: "\u041c\u0456\u0441\u0456\u0457 \u0410\u043b\u044c\u044f\u043d\u0441\u0443 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u044e\u0442\u044c\u0441\u044f...",
             ambulance: "\u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u0430\u0446\u0456\u0454\u043d\u0442\u0456\u0432",
             anti_abuse_active_link: "Click here for more information.",
             anti_abuse_active_text: "Missions will be generated within an extended radius of 100km, since too many stations of the same type are built too close to each other.",
@@ -13030,13 +13100,16 @@ Object.values || (Object.values = function (e) {
                 }
             },
             missions_filtered_out: "\u0414\u0435\u044f\u043a\u0456 \u043c\u0456\u0441\u0456\u0457 \u043c\u043e\u0436\u0443\u0442\u044c \u0431\u0443\u0442\u0438 \u0432\u0456\u0434\u0444\u0456\u043b\u044c\u0442\u0440\u043e\u0432\u0430\u043d\u0456. \u041f\u0435\u0440\u0435\u0432\u0456\u0440\u0442\u0435 \u0441\u0432\u043e\u0457 \u0444\u0456\u043b\u044c\u0442\u0440\u0438 \u043d\u0430 \u043a\u0430\u0440\u0442\u0456.",
+            missions_post_loading: "\u041c\u0456\u0441\u0456\u0457 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u044e\u0442\u044c\u0441\u044f...",
             no_alliance_chat_impossible: "\u0412\u0438 \u043d\u0435 \u043f\u0435\u0440\u0435\u0431\u0443\u0432\u0430\u0454\u0442\u0435 \u0432 \u0430\u043b\u044c\u044f\u043d\u0441\u0456.",
             no_alliance_missions: "\u041d\u0430 \u0434\u0430\u043d\u0438\u0439 \u043c\u043e\u043c\u0435\u043d\u0442 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f \u0430\u043b\u044c\u044f\u043d\u0441\u0443 \u0432\u0456\u0434\u0441\u0443\u0442\u043d\u0456.",
             no_ambulance_missions: "\u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u0430\u0446\u0456\u0454\u043d\u0442\u0456\u0432 \u043d\u0435 \u0432\u0456\u0434\u0431\u0443\u0432\u0430\u0454\u0442\u044c\u0441\u044f. \u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u0430\u0446\u0456\u0454\u043d\u0442\u0430 \u043c\u043e\u0436\u0435 \u0432\u0456\u0434\u0431\u0443\u0432\u0430\u0442\u0438\u0441\u044f \u043b\u0438\u0448\u0435 \u0442\u043e\u0434\u0456, \u043a\u043e\u043b\u0438 \u0443 \u0432\u0430\u0441 \u0454 \u0448\u0432\u0438\u0434\u043a\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0430 \u0442\u0430 \u043b\u0456\u043a\u0430\u0440\u043d\u044f.",
             no_emergency_missions: "\u041d\u0435\u043c\u0430\u0454 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0438\u0445 \u0437\u0430\u0432\u0434\u0430\u043d\u044c \u0434\u043b\u044f \u0435\u043a\u0441\u0442\u0440\u0435\u043d\u0438\u0445 \u0441\u043b\u0443\u0436\u0431. \u0417\u0430\u0432\u0434\u0430\u043d\u043d\u044f \u0434\u043b\u044f \u0435\u043a\u0441\u0442\u0440\u0435\u043d\u0438\u0445 \u0441\u043b\u0443\u0436\u0431 \u043c\u043e\u0436\u0435 \u0437'\u044f\u0432\u0438\u0442\u0438\u0441\u044f \u0442\u043e\u0434\u0456, \u043a\u043e\u043b\u0438 \u0432\u0438 \u0437\u0431\u0443\u0434\u0443\u0454\u0442\u0435 \u0441\u0432\u043e\u044e \u043f\u0435\u0440\u0448\u0443 \u0441\u0442\u0430\u043d\u0446\u0456\u044e.",
             no_radio_messages: "\u0412\u0438 \u043d\u0435 \u043e\u0442\u0440\u0438\u043c\u0443\u0432\u0430\u043b\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u043f\u043e \u0440\u0430\u0434\u0456\u043e.",
+            post_loading_error: "\u0429\u043e\u0441\u044c \u043f\u0456\u0448\u043b\u043e \u043d\u0435 \u0442\u0430\u043a! \u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u0441\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u0449\u0435 \u0440\u0430\u0437 \u0456 \u043d\u0430\u0442\u0438\u0441\u043d\u0456\u0442\u044c \u043a\u043d\u043e\u043f\u043a\u0443 \u043f\u0435\u0440\u0435\u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f.",
             radio_messages: "\u0420\u0430\u0434\u0456\u043e",
             restore_map: "\u0412\u0456\u0434\u043d\u043e\u0432\u0438\u0442\u0438 \u043a\u0430\u0440\u0442\u0443",
+            retry: "\u041f\u0435\u0440\u0435\u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438",
             server_warning: "Server maintenance at 18:00 UTC. 6h downtime expected.",
             show_informations: "\u0417\u0435\u043b\u0435\u043d\u0438\u0439 = \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f \u0431\u0443\u0434\u0443\u0442\u044c \u043f\u043e\u043a\u0430\u0437\u0430\u043d\u0456 \u0443 \u0441\u043f\u0438\u0441\u043a\u0443. \u0427\u0435\u0440\u0432\u043e\u043d\u0438\u0439 = \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f \u043d\u0435 \u0431\u0443\u0434\u0443\u0442\u044c \u043f\u043e\u043a\u0430\u0437\u0430\u043d\u0456.",
             sicherheitswache: "\u0417\u0430\u043f\u043b\u0430\u043d\u043e\u0432\u0430\u043d\u0456 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f",
@@ -13345,6 +13418,7 @@ Object.values || (Object.values = function (e) {
             alliance_event: "Evento",
             alliance_missions: "Misiones de alianza",
             alliance_missions_event: "Evento",
+            alliance_missions_post_loading: "Las misiones de la Alianza se est\xe1n cargando...",
             ambulance: "Transporte de pacientes",
             anti_abuse_active_link: "Haz clic aqu\xed para obtener m\xe1s informaci\xf3n.",
             anti_abuse_active_text: "Las misiones se generar\xe1n en un radio ampliado de 100\xa0km, ya que hay construidas demasiadas estaciones del mismo tipo muy pr\xf3ximas entre s\xed.",
@@ -13438,14 +13512,17 @@ Object.values || (Object.values = function (e) {
                 }
             },
             missions_filtered_out: "Algunas misiones pueden ser filtradas. Por favor, revise los filtros de su mapa.",
+            missions_post_loading: "Las misiones se est\xe1n cargando...",
             no_alliance_chat_impossible: "No est\xe1s en una alianza.",
             no_alliance_missions: "No hay misiones de alianza.",
             no_alliance_missions_join: "Participar en las misiones de la alianza te recompensar\xe1 con cr\xe9ditos, independientemente del tipo de veh\xedculo que env\xedes. Al unirte a una alianza puedes hacer ambas cosas, compartir tus propias misiones para obtener ayuda de miembros experimentados de la alianza y participar en las misiones compartidas de otros para obtener recompensas extra.",
             no_ambulance_missions: "No hay transportes para pacientes. Estar\xe1n disponibles en cuanto poseas un veh\xedculo SVB y un hospital.",
             no_emergency_missions: "No hay misiones de emergencia disponibles. Solo habr\xe1 misiones de emergencia despu\xe9s de que construyas tu primera instalaci\xf3n.",
             no_radio_messages: "No has recibido mensajes de radio.",
+            post_loading_error: "Algo ha ido mal. Por favor, int\xe9ntelo de nuevo y pulse el bot\xf3n de recarga.",
             radio_messages: "Radio",
             restore_map: "Restaurar mapa",
+            retry: "Recargar",
             server_warning: "Mantenimiento del servidor a las 00:00. Se espera un tiempo de inactividad de 6 horas.",
             show_informations: "Verde: las misiones se mostrar\xe1n en la lista. Rojo: las misiones no se mostrar\xe1n.",
             sicherheitswache: "Misones planificadas",
@@ -13774,6 +13851,7 @@ Object.values || (Object.values = function (e) {
             alliance_event: "\u30a4\u30d9\u30f3\u30c8",
             alliance_missions: "\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u30df\u30c3\u30b7\u30e7\u30f3",
             alliance_missions_event: "\u30a4\u30d9\u30f3\u30c8",
+            alliance_missions_post_loading: "\u540c\u76df\u30df\u30c3\u30b7\u30e7\u30f3\u306e\u30ed\u30fc\u30c9\u4e2d...",
             ambulance: "\u60a3\u8005\u306e\u642c\u9001",
             anti_abuse_active_link: "\u8a73\u7d30\u306f\u3053\u3061\u3089\u3092\u3054\u89a7\u304f\u3060\u3055\u3044\u3002",
             anti_abuse_active_text: "\u540c\u3058\u7a2e\u985e\u306e\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u304c\u3042\u307e\u308a\u306b\u3082\u8fd1\u304f\u306b\u5efa\u8a2d\u3055\u308c\u3066\u3044\u308b\u305f\u3081\u3001\u30df\u30c3\u30b7\u30e7\u30f3\u306f\u534a\u5f84100km\u306e\u62e1\u5f35\u7bc4\u56f2\u5185\u3067\u767a\u751f\u3057\u307e\u3059\u3002",
@@ -13868,14 +13946,17 @@ Object.values || (Object.values = function (e) {
                 }
             },
             missions_filtered_out: "\u4e00\u90e8\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u306f\u9664\u5916\u3055\u308c\u308b\u53ef\u80fd\u6027\u304c\u3042\u308a\u307e\u3059\u3002\u30de\u30c3\u30d7\u30d5\u30a3\u30eb\u30bf\u30fc\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
+            missions_post_loading: "\u30df\u30c3\u30b7\u30e7\u30f3\u306f\u30ed\u30fc\u30c9\u4e2d...",
             no_alliance_chat_impossible: "\u30c1\u30e3\u30c3\u30c8\u306f\u3001\u7d4c\u9a13\u8c4a\u5bcc\u306a\u30d7\u30ec\u30a4\u30e4\u30fc\u3068\u3064\u306a\u304c\u308b\u305f\u3081\u306e\u7d20\u6674\u3089\u3057\u3044\u65b9\u6cd5\u3067\u3059\u3002\xa0\u5f7c\u3089\u306f\u3042\u306a\u305f\u306e\u8cea\u554f\u306b\u7b54\u3048\u305f\u308a\u3001\u75c5\u9662\u3084\u5b66\u6821\u306a\u3069\u306e\u5efa\u7269\u306b\u30a2\u30af\u30bb\u30b9\u3059\u308b\u3053\u3068\u3067\u3042\u306a\u305f\u3092\u52a9\u3051\u3066\u304f\u308c\u308b\u3067\u3057\u3087\u3046\u3002",
             no_alliance_missions: "\u73fe\u5728\u3001\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u30df\u30c3\u30b7\u30e7\u30f3\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
             no_alliance_missions_join: "\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u53c2\u52a0\u3059\u308b\u3068\u3001\u3069\u306e\u3088\u3046\u306a\u8eca\u7a2e\u3067\u3042\u3063\u3066\u3082\u30af\u30ec\u30b8\u30c3\u30c8\u306e\u5831\u916c\u304c\u5f97\u3089\u308c\u307e\u3059\u3002\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u306b\u53c2\u52a0\u3059\u308b\u3053\u3068\u3067\u3001\u81ea\u5206\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u5171\u6709\u3057\u3066\u7d4c\u9a13\u8c4a\u5bcc\u306a\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u30e1\u30f3\u30d0\u30fc\u306e\u52a9\u3051\u3092\u5f97\u308b\u3053\u3068\u3068\u3001\u4ed6\u306e\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u306e\u5171\u6709\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u53c2\u52a0\u3057\u3066\u8ffd\u52a0\u5831\u916c\u3092\u5f97\u308b\u3053\u3068\u306e\u4e21\u65b9\u3092\u884c\u3046\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002",
             no_ambulance_missions: "\u60a3\u8005\u306e\u642c\u9001\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u60a3\u8005\u306e\u8f38\u9001\u306f\u6551\u6025\u8eca\u8f38\u9001\u30e6\u30cb\u30c3\u30c8\u3068\u75c5\u9662\u304c\u3042\u308b\u5834\u5408\u306b\u306e\u307f\u767a\u751f\u3057\u307e\u3059\u304c\u3001\u91cd\u7be4\u306a\u8f38\u9001\u306f\u91cd\u8981\u306a\u8f38\u9001\u30e6\u30cb\u30c3\u30c8\u3068\u60a3\u8005\u3092\u53ce\u5bb9\u3059\u308b 2 \u3064\u306e\u75c5\u9662\u304c\u3042\u308b\u5834\u5408\u306b\u306e\u307f\u767a\u751f\u3057\u307e\u3059\u3002",
             no_emergency_missions: "\u53c2\u52a0\u3067\u304d\u308b\u7dca\u6025\u4e8b\u614b\u30df\u30c3\u30b7\u30e7\u30f3\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u6700\u521d\u306e\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u3092\u4f5c\u6210\u3057\u305f\u5f8c\u3001\u7dca\u6025\u4e8b\u614b\u30df\u30c3\u30b7\u30e7\u30f3\u304c\u767a\u751f\u3057\u307e\u3059\u3002",
             no_radio_messages: "\u7121\u7dda\u30e1\u30c3\u30bb\u30fc\u30b8\u3092\u508d\u53d7\u3057\u3066\u3044\u307e\u305b\u3093\u3002",
+            post_loading_error: "\u4f55\u304b\u554f\u984c\u304c\u767a\u751f\u3057\u307e\u3057\u305f\uff01\u30ea\u30ed\u30fc\u30c9\u30dc\u30bf\u30f3\u3092\u62bc\u3057\u3066\u518d\u8a66\u884c\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
             radio_messages: "\u7121\u7dda",
             restore_map: "\u30de\u30c3\u30d7\u3092\u30ea\u30b9\u30c8\u30a2",
+            retry: "\u30ea\u30ed\u30fc\u30c9",
             server_warning: "Server maintenance at 7 am. 6h downtime expected.",
             show_informations: "\u7dd1 = \u30df\u30c3\u30b7\u30e7\u30f3\u304c\u30ea\u30b9\u30c8\u5185\u306b\u8868\u793a\u3055\u308c\u307e\u3059\u3002\u8d64 = \u30df\u30c3\u30b7\u30e7\u30f3\u304c\u8868\u793a\u3055\u308c\u307e\u305b\u3093\u3002",
             sicherheitswache: "\u4e88\u5b9a\u3055\u308c\u3066\u3044\u308b\u30df\u30c3\u30b7\u30e7\u30f3",
@@ -14225,6 +14306,7 @@ Object.values || (Object.values = function (e) {
             alliance_event: "\uc774\ubca4\ud2b8",
             alliance_missions: "\ub3d9\ub9f9 \uc784\ubb34",
             alliance_missions_event: "\uc774\ubca4\ud2b8",
+            alliance_missions_post_loading: "\uc5bc\ub77c\uc774\uc5b8\uc2a4 \ubbf8\uc158 \ub85c\ub4dc \uc911...",
             ambulance: "\ud658\uc790 \uc774\uc1a1",
             anti_abuse_active_link: "\ub354 \ub9ce\uc740 \uc815\ubcf4\ub97c \ud655\uc778\ud558\ub824\uba74 \ud074\ub9ad\ud558\uc138\uc694.",
             anti_abuse_active_text: "\ub3d9\uc77c \uc720\ud615\uc758 \uad00\ud560\uc11c\uac00 \uac00\uae4c\uc6b4 \uac70\ub9ac\uc5d0 \ub108\ubb34 \ub9ce\uc774 \uc138\uc6cc\uc84c\uae30 \ub54c\ubb38\uc5d0 100km\uc758 \ud655\uc7a5\ub41c \ubc18\uacbd \ub0b4\uc5d0\uc11c \uc784\ubb34\uac00 \ubc1c\uc0dd\ud569\ub2c8\ub2e4.",
@@ -14319,14 +14401,17 @@ Object.values || (Object.values = function (e) {
                 }
             },
             missions_filtered_out: "\uc77c\ubd80 \ubbf8\uc158\uc774 \ud544\ud130\ub9c1 \ub420 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \uc9c0\ub3c4 \ud544\ud130\ub97c \ud655\uc778\ud558\uc2ed\uc2dc\uc624.",
+            missions_post_loading: "\ubbf8\uc158 \ub85c\ub4dc \uc911...",
             no_alliance_chat_impossible: "\ucc44\ud305\uc740 \uacbd\ud5d8\uc774 \ub9ce\uc740 \ub2e4\ub978 \ud50c\ub808\uc774\uc5b4\uc640 \uc5f0\uacb0\ud558\ub294 \uc88b\uc740 \ubc29\ubc95\uc785\ub2c8\ub2e4. \uadf8\ub4e4\uc740 \uadc0\ud558\uc758 \uc9c8\ubb38\uc5d0 \ub2f5\ubcc0\ud558\uace0 \ubcd1\uc6d0 \ubc0f \ud559\uad50\uc640 \uac19\uc740 \uac74\ubb3c\uc5d0 \ub300\ud55c \uc561\uc138\uc2a4 \uad8c\ud55c\uc744 \ubd80\uc5ec\ud558\uc5ec \uadc0\ud558\ub97c \ub3c4\uc6b8 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
             no_alliance_missions: "\ud604\uc7ac \uc9c4\ud589 \uc911\uc778 \ub3d9\ub9f9 \uc784\ubb34\uac00 \uc5c6\uc2b5\ub2c8\ub2e4.",
             no_alliance_missions_join: "\ub3d9\ub9f9 \uc784\ubb34\uc5d0 \ucc38\uc5ec\ud558\uba74 \ubcf4\ub0b4\ub294 \ucc28\ub7c9 \uc720\ud615\uc5d0 \uc0c1\uad00\uc5c6\uc774 \ud06c\ub808\ub527\uc73c\ub85c \ubcf4\uc0c1\uc744 \ubc1b\uc2b5\ub2c8\ub2e4. \ub3d9\ub9f9\uc5d0 \uac00\uc785\ud558\uba74 \ub450 \uac00\uc9c0 \ubaa8\ub450\ub97c \uc218\ud589\ud560 \uc218 \uc788\uace0, \uacbd\ud5d8\uc774 \ud48d\ubd80\ud55c \ub3d9\ub9f9 \uad6c\uc131\uc6d0\uc758 \ub3c4\uc6c0\uc744 \ubc1b\uae30 \uc704\ud574 \uc790\uc2e0\uc758 \uc784\ubb34\ub97c \uacf5\uc720\ud558\uace0, \ucd94\uac00 \ubcf4\uc0c1\uc744 \uc704\ud574 \ub2e4\ub978 \uc0ac\ub78c\uc758 \uacf5\uc720 \uc784\ubb34\uc5d0 \ucc38\uc5ec\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
             no_ambulance_missions: "\ud658\uc790 \uc774\uc1a1\uc740 \ubd88\uac00\ub2a5\ud569\ub2c8\ub2e4. \uad6c\uae09\ucc28\uc640 \ubcd1\uc6d0\uc774 \uc788\ub294 \uacbd\uc6b0\uc5d0\ub9cc \ud658\uc790 \uc774\uc1a1\uc744 \ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
             no_emergency_missions: "\uc774\uc6a9\ud560 \uc218 \uc788\ub294 \uae34\uae09 \uc784\ubb34\uac00 \uc5c6\uc2b5\ub2c8\ub2e4. \uae34\uae09 \uc784\ubb34\ub294 \uccab \ubc88\uc9f8 \uad00\ud560\uc11c\ub97c \uc0dd\uc131\ud55c \ud6c4 \ubc1c\uc0dd\ud569\ub2c8\ub2e4.",
             no_radio_messages: "\ubc1b\uc740 \ubb34\uc804 \uba54\uc2dc\uc9c0\uac00 \uc5c6\uc2b5\ub2c8\ub2e4.",
+            post_loading_error: "\ubb38\uc81c\uac00 \ubc1c\uc0dd\ud588\uc2b5\ub2c8\ub2e4! \ub2e4\uc2dc \uc2dc\ub3c4\ud558\uace0 \ub2e4\uc2dc \ub85c\ub4dc \ubc84\ud2bc\uc744 \ub20c\ub7ec\uc8fc\uc138\uc694.",
             radio_messages: "\ubb34\uc804\uae30",
             restore_map: "\uc9c0\ub3c4 \ubcf5\uc6d0",
+            retry: "\ub2e4\uc2dc \ubd88\ub7ec\uc624\uae30",
             server_warning: "Server maintenance at 7 am. 6h downtime expected.",
             show_informations: "\ub179\uc0c9 = \uc784\ubb34\uac00 \ubaa9\ub85d\uc5d0 \ud45c\uc2dc\ub429\ub2c8\ub2e4. \uc801\uc0c9 = \uc784\ubb34\uac00 \ud45c\uc2dc\ub418\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.",
             sicherheitswache: "\uacc4\ud68d\ub41c \ucd9c\ud604",
@@ -14667,6 +14752,7 @@ Object.values || (Object.values = function (e) {
             alliance_event: "Eveniment",
             alliance_missions: "Misiuni alian\u021b\u0103",
             alliance_missions_event: "Eveniment",
+            alliance_missions_post_loading: "Misiunile Alian\u021bei se \xeencarc\u0103...",
             ambulance: "Transportul pacien\u021bilor",
             anti_abuse_active_link: "F\u0103 clic aici pentru mai multe informa\u021bii.",
             anti_abuse_active_text: "\xcentruc\xe2t prea multe sta\u021bii de acela\u0219ti tip sunt construite prea aproape una de alta, misiunile vor ap\u0103rea pe o raz\u0103 extins\u0103 de 100 km.",
@@ -14760,13 +14846,16 @@ Object.values || (Object.values = function (e) {
                 }
             },
             missions_filtered_out: "Unele misiuni ar putea fi eliminate. V\u0103 rug\u0103m s\u0103 verifica\u021bi filtrele de hart\u0103.",
+            missions_post_loading: "Misiunile se \xeencarc\u0103...",
             no_alliance_chat_impossible: "Nu faci parte dintr-o alian\u021b\u0103.",
             no_alliance_missions: "\xcen prezent nu exist\u0103 misiuni de alian\u021b\u0103.",
             no_ambulance_missions: '"Nu exist\u0103 transporturi de pacien\u021bi. Transporturile vor putea fi efectuate atunci c\xe2nd vei aveao Ambulan\u021b\u0103 de tip B (BLS) \u0219i un spital."',
             no_emergency_missions: "Nu e disponibil\u0103 nicio misiune de urgen\u021b\u0103. O misiune de urgen\u021b\u0103 poate ap\u0103rea dup\u0103 ce \u021bi-ai construit prima sta\u021bie.",
             no_radio_messages: "Nu ai primit niciun mesaj radio.",
+            post_loading_error: "Ceva nu a mers bine! V\u0103 rug\u0103m s\u0103 \xeencerca\u021bi din nou \u0219i ap\u0103sa\u021bi butonul de re\xeenc\u0103rcare.",
             radio_messages: "Radio",
             restore_map: "Restabile\u0219te harta",
+            retry: "Re\xeencarc\u0103",
             server_warning: "Server maintenance at 1 am. 6h downtime expected.",
             show_informations: "Verde = Misiunile sunt afi\u0219ate pe list\u0103. Ro\u0219u = Misiunile nu sunt afi\u0219ate.",
             sicherheitswache: "Interven\u021bii planificate",
@@ -15102,6 +15191,7 @@ Object.values || (Object.values = function (e) {
             alliance_event: "Tapahtuma",
             alliance_missions: "Liittoutuman teht\xe4v\xe4t",
             alliance_missions_event: "Tapahtuma",
+            alliance_missions_post_loading: "Liittouman teht\xe4v\xe4t latautuvat...",
             ambulance: "Potilassiirto",
             anti_abuse_active_link: "Lis\xe4tietoja saat napsauttamalla t\xe4t\xe4.",
             anti_abuse_active_text: "Teht\xe4vi\xe4 syntyy laajennetulla 100 km:n s\xe4teell\xe4, sill\xe4 liian monta samantyyppist\xe4 asemaa on rakennettu l\xe4hekk\xe4in.",
@@ -15196,14 +15286,17 @@ Object.values || (Object.values = function (e) {
                 }
             },
             missions_filtered_out: "Jotkut teht\xe4v\xe4t voidaan suodattaa pois. Tarkista karttasuodattimet.",
+            missions_post_loading: "Teht\xe4v\xe4t latautuvat...",
             no_alliance_chat_impossible: "Chat on loistava tapa luoda yhteyksi\xe4 muihin kokeneempiin pelaajiin.\xa0He voivat sek\xe4 vastata kysymyksiisi ett\xe4 auttaa sinua antamalla sinulle p\xe4\xe4syn rakennuksiin, kuten sairaaloihin ja kouluihin.",
             no_alliance_missions: "Ei liittoutumateht\xe4vi\xe4",
             no_alliance_missions_join: "Saat liittoumateht\xe4viin osallistumisesta krediittej\xe4 riippumatta siit\xe4, mink\xe4 tyyppisen (tai miten monta) ajoneuvon l\xe4het\xe4t. Lis\xe4ksi, liittoumassa voit sek\xe4 jakaa omia teht\xe4vi\xe4si saadaksesi apua kokeneilta liittouman j\xe4senilt\xe4, ett\xe4 osallistua muiden yhteisiin teht\xe4viin saadaksesi hieman lis\xe4krediittej\xe4.",
             no_ambulance_missions: "Potilaskuljetuksia ei ole. Potilaskuljetuksia voi tapahtua vain silloin, kun sinulla on siirtoambulanssi ja sairaala, kun taas kriittisi\xe4 potilassiirtoja tapahtuu vain silloin, kun sinulla on Vaativan hoitotason siirtoambulanssi ja kaksi sairaalaa, joissa on potilas.",
             no_emergency_missions: "Ei h\xe4t\xe4teht\xe4vi\xe4 H\xe4t\xe4teht\xe4vi\xe4 syntyy, kun olet rakentanut ensimm\xe4isen asemasi.",
             no_radio_messages: "Et ole saanut radioviestej\xe4.",
+            post_loading_error: "Jokin meni pieleen! Yrit\xe4 uudelleen ja paina uudelleenlatauspainiketta.",
             radio_messages: "Radio",
             restore_map: "Palauta kartta",
+            retry: "Lataa uudelleen",
             server_warning: "Palvelinhuolto alkaa 01:00, palvelukatkon arvioitu kesto noin 6 tuntia",
             show_informations: "Vihre\xe4 = teht\xe4v\xe4t n\xe4kyv\xe4t luettelossa. Punainen = teht\xe4v\xe4t eiv\xe4t n\xe4y.",
             sicherheitswache: "Suunnitellut teht\xe4v\xe4t",
@@ -15562,6 +15655,7 @@ Object.values || (Object.values = function (e) {
             alliance_event: "Udalos\u0165",
             alliance_missions: "Misie aliancie",
             alliance_missions_event: "Udalos\u0165",
+            alliance_missions_post_loading: "Misie aliancie sa na\u010d\xedtavaj\xfa...",
             ambulance: "Preprava pacientov",
             anti_abuse_active_link: "Ak chcete z\xedska\u0165 viac inform\xe1ci\xed, kliknite sem.",
             anti_abuse_active_text: "Misie bud\xfa vznika\u0165 v roz\u0161\xedrenom okruhu 100 km, preto\u017ee je bl\xedzko seba postaven\xfdch pr\xedli\u0161 ve\u013ea stan\xedc rovnak\xe9ho typu.",
@@ -15655,13 +15749,16 @@ Object.values || (Object.values = function (e) {
                 }
             },
             missions_filtered_out: "Niektor\xe9 misie m\xf4\u017eu by\u0165 odfiltrovan\xe9. Skontrolujte filtre m\xe1p.",
+            missions_post_loading: "Misie sa na\u010d\xedtavaj\xfa...",
             no_alliance_chat_impossible: "Nie ste v aliancii.",
             no_alliance_missions: "Moment\xe1lne nie s\xfa \u017eiadne misie aliancie.",
             no_ambulance_missions: "Zatia\u013e nem\xe1te \u017eiadne po\u017eiadavky na transport pacienta, objavia sa akon\xe1hle budete vlastni\u0165 stanicu ZZS a nemocnicu.",
             no_emergency_missions: "Moment\xe1lne nie s\xfa \u017eiadne n\xfadzov\xe9 misie. N\xfadzov\xe1 misia sa m\xf4\u017ee vyskytn\xfa\u0165 iba v pr\xedpade, \u017ee vybudujete prv\xfa stanicu.",
             no_radio_messages: "Nedostali ste \u017eiadne r\xe1diov\xe9 spr\xe1vy.",
+            post_loading_error: "Nie\u010do sa pokazilo! Sk\xfaste to pros\xedm znova a stla\u010dte tla\u010didlo reload.",
             radio_messages: "Vysiela\u010dka",
             restore_map: "Obnovi\u0165 mapu",
+            retry: "Znovu na\u010d\xedta\u0165",
             server_warning: "\xdadr\u017eba servera o polnoci. O\u010dak\xe1va sa v\xfdpadok 6 hodiny.",
             show_informations: "Zelen\xe1 = Misie s\xfa zobrazen\xe9 v zozname. \u010cerven\xe1 = Misie nie s\xfa zobrazen\xe9.",
             sicherheitswache: "Pl\xe1novan\xe9 v\xfdskyty",
@@ -16023,11 +16120,11 @@ Object.values || (Object.values = function (e) {
                 .getElementsByTagName("tbody")[0] || e.appendChild(e.ownerDocument.createElement("tbody")) : e
         }
 
-        function f(e) {
+        function _(e) {
             return e.type = (null !== ue.find.attr(e, "type")) + "/" + e.type, e
         }
 
-        function _(e) {
+        function f(e) {
             var t = st.exec(e.type);
             return t ? e.type = t[1] : e.removeAttribute("type"), e
         }
@@ -16057,8 +16154,8 @@ Object.values || (Object.values = function (e) {
                         .events) ue.removeEvent(t, n, s.handle);
                     t.removeAttribute(ue.expando)
                 }
-                "script" === i && t.text !== e.text ? (f(t)
-                        .text = e.text, _(t)) : "object" === i ? (t.parentNode && (t.outerHTML = e.outerHTML),
+                "script" === i && t.text !== e.text ? (_(t)
+                        .text = e.text, f(t)) : "object" === i ? (t.parentNode && (t.outerHTML = e.outerHTML),
                         ue.support.html5Clone && e.innerHTML && !ue.trim(t.innerHTML) && (t.innerHTML = e
                             .innerHTML)) : "input" === i && tt.test(e.type) ? (t.defaultChecked = t.checked =
                         e.checked, t.value !== e.value && (t.value = e.value)) : "option" === i ? t
@@ -16106,7 +16203,7 @@ Object.values || (Object.values = function (e) {
         }
 
         function C(e, t, i) {
-            var n = _t.exec(t);
+            var n = ft.exec(t);
             return n ? Math.max(0, n[1] - (i || 0)) + (n[2] || "px") : t
         }
 
@@ -16408,8 +16505,8 @@ Object.values || (Object.values = function (e) {
             he = /\S+/g,
             pe = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,
             me = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/,
-            fe = /^<(\w+)\s*\/?>(?:<\/\1>|)$/,
-            _e = /^[\],:{}\s]*$/,
+            _e = /^<(\w+)\s*\/?>(?:<\/\1>|)$/,
+            fe = /^[\],:{}\s]*$/,
             ge = /(?:^|:|,)(?:\s*\[)+/g,
             ve = /\\(?:["\\\/bfnrt]|u[\da-fA-F]{4})/g,
             be = /"[^"\\\r\n]*"|true|false|null|-?(?:\d+\.|)\d+(?:[eE][+-]?\d+|)/g,
@@ -16440,7 +16537,7 @@ Object.values || (Object.values = function (e) {
                             .find(e);
                         if (s[1]) {
                             if (i = i instanceof ue ? i[0] : i, ue.merge(this, ue.parseHTML(s[1], i && i
-                                    .nodeType ? i.ownerDocument || i : Y, !0)), fe.test(s[1]) && ue
+                                    .nodeType ? i.ownerDocument || i : Y, !0)), _e.test(s[1]) && ue
                                 .isPlainObject(i))
                                 for (s in i) ue.isFunction(this[s]) ? this[s](i[s]) : this.attr(s, i[s]);
                             return this
@@ -16573,14 +16670,14 @@ Object.values || (Object.values = function (e) {
                 parseHTML: function (e, t, i) {
                     if (!e || "string" != typeof e) return null;
                     "boolean" == typeof t && (i = t, t = !1), t = t || Y;
-                    var n = fe.exec(e),
+                    var n = _e.exec(e),
                         s = !i && [];
                     return n ? [t.createElement(n[1])] : (n = ue.buildFragment([e], t, s), s && ue(s)
                         .remove(), ue.merge([], n.childNodes))
                 },
                 parseJSON: function (t) {
                     return e.JSON && e.JSON.parse ? e.JSON.parse(t) : null === t ? t : "string" ==
-                        typeof t && (t = ue.trim(t)) && _e.test(t.replace(ve, "@")
+                        typeof t && (t = ue.trim(t)) && fe.test(t.replace(ve, "@")
                             .replace(be, "]")
                             .replace(ge, "")) ? new Function("return " + t)() : void ue.error(
                             "Invalid JSON: " + t)
@@ -16766,9 +16863,9 @@ Object.values || (Object.values = function (e) {
                             } if (T.qsa && (!$ || !$.test(e))) {
                             if (d = u = W, h = t, p = 9 === r && e, 1 === r && "object" !== t.nodeName
                                 .toLowerCase()) {
-                                for (c = f(e), (u = t.getAttribute("id")) ? d = u.replace(Se, "\\$&") : t
+                                for (c = _(e), (u = t.getAttribute("id")) ? d = u.replace(Se, "\\$&") : t
                                     .setAttribute("id", d), d = "[id='" + d + "'] ", l = c.length; l--;) c[
-                                    l] = d + _(c[l]);
+                                    l] = d + f(c[l]);
                                 h = ge.test(e) && t.parentNode || t, p = c.join(",")
                             }
                             if (p) try {
@@ -16860,12 +16957,12 @@ Object.values || (Object.values = function (e) {
                     }))
                 }
 
-                function f(e, t) {
+                function _(e, t) {
                     var n, s, o, a, r, l, c, u = K[e + " "];
                     if (u) return t ? 0 : u.slice(0);
                     for (r = e, l = [], c = E.preFilter; r;) {
-                        for (a in n && !(s = fe.exec(r)) || (s && (r = r.slice(s[0].length) || r), l.push(
-                                o = [])), n = !1, (s = _e.exec(r)) && (n = s.shift(), o.push({
+                        for (a in n && !(s = _e.exec(r)) || (s && (r = r.slice(s[0].length) || r), l.push(
+                                o = [])), n = !1, (s = fe.exec(r)) && (n = s.shift(), o.push({
                                 value: n,
                                 type: s[0].replace(me, " ")
                             }), r = r.slice(n.length)), E.filter) !(s = we[a].exec(r)) || c[a] && !(s = c[a](
@@ -16880,7 +16977,7 @@ Object.values || (Object.values = function (e) {
                         .slice(0)
                 }
 
-                function _(e) {
+                function f(e) {
                     for (var t = 0, i = e.length, n = ""; t < i; t++) n += e[t].value;
                     return n
                 }
@@ -16926,16 +17023,16 @@ Object.values || (Object.values = function (e) {
                         var c, u, d, h = [],
                             p = [],
                             m = a.length,
-                            f = o || x(t || "*", r.nodeType ? [r] : r, []),
-                            _ = !e || !o && t ? f : b(f, h, e, r, l),
-                            g = i ? s || (o ? e : m || n) ? [] : a : _;
-                        if (i && i(_, g, r, l), n)
+                            _ = o || x(t || "*", r.nodeType ? [r] : r, []),
+                            f = !e || !o && t ? _ : b(_, h, e, r, l),
+                            g = i ? s || (o ? e : m || n) ? [] : a : f;
+                        if (i && i(f, g, r, l), n)
                             for (c = b(g, p), n(c, [], r, l), u = c.length; u--;)(d = c[u]) && (g[
-                                p[u]] = !(_[p[u]] = d));
+                                p[u]] = !(f[p[u]] = d));
                         if (o) {
                             if (s || e) {
                                 if (s) {
-                                    for (c = [], u = g.length; u--;)(d = g[u]) && c.push(_[u] =
+                                    for (c = [], u = g.length; u--;)(d = g[u]) && c.push(f[u] =
                                     d);
                                     s(null, g = [], c, l)
                                 }
@@ -16961,12 +17058,12 @@ Object.values || (Object.values = function (e) {
                         else {
                             if ((i = E.filter[e[r].type].apply(null, e[r].matches))[W]) {
                                 for (n = ++r; n < s && !E.relative[e[n].type]; n++);
-                                return y(r > 1 && v(u), r > 1 && _(e.slice(0, r - 1)
+                                return y(r > 1 && v(u), r > 1 && f(e.slice(0, r - 1)
                                         .concat({
                                             value: " " === e[r - 2].type ? "*" : ""
                                         }))
                                     .replace(me, "$1"), i, r < n && w(e.slice(r, n)), n < s && w(e = e
-                                        .slice(n)), n < s && _(e))
+                                        .slice(n)), n < s && f(e))
                             }
                             u.push(i)
                         } return v(u)
@@ -16978,14 +17075,14 @@ Object.values || (Object.values = function (e) {
                         a = e.length > 0,
                         r = function (o, r, l, c, u) {
                             var d, h, p, m = [],
-                                f = 0,
-                                _ = "0",
+                                _ = 0,
+                                f = "0",
                                 g = o && [],
                                 v = null != u,
                                 y = I,
                                 w = o || a && E.find.TAG("*", u && r.parentNode || r),
                                 k = q += null == y ? 1 : Math.random() || .1;
-                            for (v && (I = r !== L && r, A = n); null != (d = w[_]); _++) {
+                            for (v && (I = r !== L && r, A = n); null != (d = w[f]); f++) {
                                 if (a && d) {
                                     for (h = 0; p = e[h++];)
                                         if (p(d, r, l)) {
@@ -16993,16 +17090,16 @@ Object.values || (Object.values = function (e) {
                                             break
                                         } v && (q = k, A = ++n)
                                 }
-                                s && ((d = !p && d) && f--, o && g.push(d))
+                                s && ((d = !p && d) && _--, o && g.push(d))
                             }
-                            if (f += _, s && _ !== f) {
+                            if (_ += f, s && f !== _) {
                                 for (h = 0; p = t[h++];) p(g, m, r, l);
                                 if (o) {
-                                    if (f > 0)
-                                        for (; _--;) g[_] || m[_] || (m[_] = ie.call(c));
+                                    if (_ > 0)
+                                        for (; f--;) g[f] || m[f] || (m[f] = ie.call(c));
                                     m = b(m)
                                 }
-                                se.apply(c, m), v && !o && m.length > 0 && f + t.length > 1 && i.uniqueSort(c)
+                                se.apply(c, m), v && !o && m.length > 0 && _ + t.length > 1 && i.uniqueSort(c)
                             }
                             return v && (q = k, I = y), g
                         };
@@ -17015,7 +17112,7 @@ Object.values || (Object.values = function (e) {
                 }
 
                 function z(e, t, i, n) {
-                    var s, o, a, r, l, c = f(e);
+                    var s, o, a, r, l, c = _(e);
                     if (!n && 1 === c.length) {
                         if ((o = c[0] = c[0].slice(0))
                             .length > 2 && "ID" === (a = o[0])
@@ -17028,7 +17125,7 @@ Object.values || (Object.values = function (e) {
                                 .type]);)
                             if ((l = E.find[r]) && (n = l(a.matches[0].replace(Te, Ae), ge.test(o[0].type) &&
                                     t.parentNode || t))) {
-                                if (o.splice(s, 1), !(e = n.length && _(o))) return se.apply(i, n), i;
+                                if (o.splice(s, 1), !(e = n.length && f(o))) return se.apply(i, n), i;
                                 break
                             }
                     }
@@ -17070,8 +17167,8 @@ Object.values || (Object.values = function (e) {
                     pe = ":(" + ce + ")(?:\\(((['\"])((?:\\\\.|[^\\\\])*?)\\3|((?:\\\\.|[^\\\\()[\\]]|" + he
                     .replace(3, 8) + ")*)|.*)\\)|)",
                     me = new RegExp("^" + le + "+|((?:^|[^\\\\])(?:\\\\.)*)" + le + "+$", "g"),
-                    fe = new RegExp("^" + le + "*," + le + "*"),
-                    _e = new RegExp("^" + le + "*([>+~]|" + le + ")" + le + "*"),
+                    _e = new RegExp("^" + le + "*," + le + "*"),
+                    fe = new RegExp("^" + le + "*([>+~]|" + le + ")" + le + "*"),
                     ge = new RegExp(le + "*[+~]"),
                     ve = new RegExp("=" + le + "*([^\\]'\"]*)" + le + "*\\]", "g"),
                     be = new RegExp(pe),
@@ -17311,7 +17408,7 @@ Object.values || (Object.values = function (e) {
                             PSEUDO: function (e) {
                                 var i, n = !e[5] && e[2];
                                 return we.CHILD.test(e[0]) ? null : (e[3] && e[4] !== t ? e[2] = e[4] :
-                                    n && be.test(n) && (i = f(n, !0)) && (i = n.indexOf(")", n
+                                    n && be.test(n) && (i = _(n, !0)) && (i = n.indexOf(")", n
                                         .length - i) - n.length) && (e[0] = e[0].slice(0, i), e[2] = n
                                         .slice(0, i)), e.slice(0, 3))
                             }
@@ -17354,25 +17451,25 @@ Object.values || (Object.values = function (e) {
                                 return 1 === n && 0 === s ? function (e) {
                                     return !!e.parentNode
                                 } : function (t, i, l) {
-                                    var c, u, d, h, p, m, f = o !== a ? "nextSibling" :
+                                    var c, u, d, h, p, m, _ = o !== a ? "nextSibling" :
                                         "previousSibling",
-                                        _ = t.parentNode,
+                                        f = t.parentNode,
                                         g = r && t.nodeName.toLowerCase(),
                                         v = !l && !r;
-                                    if (_) {
+                                    if (f) {
                                         if (o) {
-                                            for (; f;) {
-                                                for (d = t; d = d[f];)
+                                            for (; _;) {
+                                                for (d = t; d = d[_];)
                                                     if (r ? d.nodeName.toLowerCase() === g : 1 === d
                                                         .nodeType) return !1;
-                                                m = f = "only" === e && !m && "nextSibling"
+                                                m = _ = "only" === e && !m && "nextSibling"
                                             }
                                             return !0
                                         }
-                                        if (m = [a ? _.firstChild : _.lastChild], a && v) {
-                                            for (p = (c = (u = _[W] || (_[W] = {}))[e] || [])[0] ===
-                                                q && c[1], h = c[0] === q && c[2], d = p && _
-                                                .childNodes[p]; d = ++p && d && d[f] || (h = p = 0) ||
+                                        if (m = [a ? f.firstChild : f.lastChild], a && v) {
+                                            for (p = (c = (u = f[W] || (f[W] = {}))[e] || [])[0] ===
+                                                q && c[1], h = c[0] === q && c[2], d = p && f
+                                                .childNodes[p]; d = ++p && d && d[_] || (h = p = 0) ||
                                                 m.pop();)
                                                 if (1 === d.nodeType && ++h && d === t) {
                                                     u[e] = [q, p, h];
@@ -17382,7 +17479,7 @@ Object.values || (Object.values = function (e) {
                                             h = c[1];
                                         else
                                             for (;
-                                                (d = ++p && d && d[f] || (h = p = 0) || m.pop()) && ((
+                                                (d = ++p && d && d[_] || (h = p = 0) || m.pop()) && ((
                                                     r ? d.nodeName.toLowerCase() !== g : 1 !== d
                                                     .nodeType) || !++h || (v && ((d[W] || (d[
                                                 W] = {}))[e] = [q, h]), d !== t)););
@@ -17533,7 +17630,7 @@ Object.values || (Object.values = function (e) {
                             s = [],
                             o = G[e + " "];
                         if (!o) {
-                            for (t || (t = f(e)), i = t.length; i--;)(o = w(t[i]))[W] ? n.push(o) : s.push(o);
+                            for (t || (t = _(e)), i = t.length; i--;)(o = w(t[i]))[W] ? n.push(o) : s.push(o);
                             o = G(e, k(s, n))
                         }
                         return o
@@ -18176,7 +18273,7 @@ Object.values || (Object.values = function (e) {
         ue.event = {
             global: {},
             add: function (e, i, n, s, o) {
-                var a, r, l, c, u, d, h, p, m, f, _, g = ue._data(e);
+                var a, r, l, c, u, d, h, p, m, _, f, g = ue._data(e);
                 if (g) {
                     for (n.handler && (n = (c = n)
                             .handler, o = c.selector), n.guid || (n.guid = ue.guid++), (r = g
@@ -18186,20 +18283,20 @@ Object.values || (Object.values = function (e) {
                                 .event.dispatch.apply(d.elem, arguments)
                         }, d.elem = e), l = (i = (i || "")
                             .match(he) || [""])
-                        .length; l--;) m = _ = (a = Fe.exec(i[l]) || [])[1], f = (a[2] || "")
+                        .length; l--;) m = f = (a = Fe.exec(i[l]) || [])[1], _ = (a[2] || "")
                         .split(".")
                         .sort(), m && (u = ue.event.special[m] || {}, m = (o ? u.delegateType : u
                                 .bindType) || m, u = ue.event.special[m] || {}, h = ue.extend({
                                 type: m,
-                                origType: _,
+                                origType: f,
                                 data: s,
                                 handler: n,
                                 guid: n.guid,
                                 selector: o,
                                 needsContext: o && ue.expr.match.needsContext.test(o),
-                                namespace: f.join(".")
+                                namespace: _.join(".")
                             }, c), (p = r[m]) || ((p = r[m] = [])
-                                .delegateCount = 0, u.setup && !1 !== u.setup.call(e, s, f, d) || (e
+                                .delegateCount = 0, u.setup && !1 !== u.setup.call(e, s, _, d) || (e
                                     .addEventListener ? e.addEventListener(m, d, !1) : e
                                     .attachEvent && e.attachEvent("on" + m, d))), u.add && (u.add
                                 .call(e, h), h.handler.guid || (h.handler.guid = n.guid)), o ? p
@@ -18208,38 +18305,38 @@ Object.values || (Object.values = function (e) {
                 }
             },
             remove: function (e, t, i, n, s) {
-                var o, a, r, l, c, u, d, h, p, m, f, _ = ue.hasData(e) && ue._data(e);
-                if (_ && (u = _.events)) {
+                var o, a, r, l, c, u, d, h, p, m, _, f = ue.hasData(e) && ue._data(e);
+                if (f && (u = f.events)) {
                     for (c = (t = (t || "")
                             .match(he) || [""])
                         .length; c--;)
-                        if (p = f = (r = Fe.exec(t[c]) || [])[1], m = (r[2] || "")
+                        if (p = _ = (r = Fe.exec(t[c]) || [])[1], m = (r[2] || "")
                             .split(".")
                             .sort(), p) {
                             for (d = ue.event.special[p] || {}, h = u[p = (n ? d.delegateType : d
                                     .bindType) || p] || [], r = r[2] && new RegExp("(^|\\.)" + m.join(
                                     "\\.(?:.*\\.|)") + "(\\.|$)"), l = o = h.length; o--;) a = h[o], !
-                                s && f !== a.origType || i && i.guid !== a.guid || r && !r.test(a
+                                s && _ !== a.origType || i && i.guid !== a.guid || r && !r.test(a
                                     .namespace) || n && n !== a.selector && ("**" !== n || !a
                                     .selector) || (h.splice(o, 1), a.selector && h.delegateCount--, d
                                     .remove && d.remove.call(e, a));
-                            l && !h.length && (d.teardown && !1 !== d.teardown.call(e, m, _.handle) ||
-                                ue.removeEvent(e, p, _.handle), delete u[p])
+                            l && !h.length && (d.teardown && !1 !== d.teardown.call(e, m, f.handle) ||
+                                ue.removeEvent(e, p, f.handle), delete u[p])
                         } else
                             for (p in u) ue.event.remove(e, p + t[c], i, n, !0);
-                    ue.isEmptyObject(u) && (delete _.handle, ue._removeData(e, "events"))
+                    ue.isEmptyObject(u) && (delete f.handle, ue._removeData(e, "events"))
                 }
             },
             trigger: function (i, n, s, o) {
                 var a, r, l, c, u, d, h, p = [s || Y],
                     m = le.call(i, "type") ? i.type : i,
-                    f = le.call(i, "namespace") ? i.namespace.split(".") : [];
+                    _ = le.call(i, "namespace") ? i.namespace.split(".") : [];
                 if (l = d = s = s || Y, 3 !== s.nodeType && 8 !== s.nodeType && !Be.test(m + ue.event
-                        .triggered) && (m.indexOf(".") >= 0 && (f = m.split("."), m = f.shift(), f
+                        .triggered) && (m.indexOf(".") >= 0 && (_ = m.split("."), m = _.shift(), _
                             .sort()), r = m.indexOf(":") < 0 && "on" + m, (i = i[ue.expando] ? i :
                             new ue.Event(m, "object" == typeof i && i))
-                        .isTrigger = o ? 2 : 3, i.namespace = f.join("."), i.namespace_re = i
-                        .namespace ? new RegExp("(^|\\.)" + f.join("\\.(?:.*\\.|)") + "(\\.|$)") :
+                        .isTrigger = o ? 2 : 3, i.namespace = _.join("."), i.namespace_re = i
+                        .namespace ? new RegExp("(^|\\.)" + _.join("\\.(?:.*\\.|)") + "(\\.|$)") :
                         null, i.result = t, i.target || (i.target = s), n = null == n ? [i] : ue
                         .makeArray(n, [i]), u = ue.event.special[m] || {}, o || !u.trigger || !1 !== u
                         .trigger.apply(s, n))) {
@@ -18808,11 +18905,11 @@ Object.values || (Object.values = function (e) {
                         }));
                     if (u && (n = (l = ue.buildFragment(e, this[0].ownerDocument, !1, !i && this))
                             .firstChild, 1 === l.childNodes.length && (l = n), n)) {
-                        for (o = (a = ue.map(y(l, "script"), f))
+                        for (o = (a = ue.map(y(l, "script"), _))
                             .length; c < u; c++) s = l, c !== h && (s = ue.clone(s, !0, !0), o && ue
                             .merge(a, y(s, "script"))), t.call(this[c], s, c);
                         if (o)
-                            for (r = a[a.length - 1].ownerDocument, ue.map(a, _), c = 0; c < o; c++)
+                            for (r = a[a.length - 1].ownerDocument, ue.map(a, f), c = 0; c < o; c++)
                                 s = a[c], nt.test(s.type || "") && !ue._data(s, "globalEval") && ue
                                 .contains(r, s) && (s.src ? ue._evalUrl(s.src) : ue.globalEval((s
                                         .text || s.textContent || s.innerHTML || "")
@@ -18850,8 +18947,8 @@ Object.values || (Object.values = function (e) {
                         .length > 0 && g(n, !l && y(e, "script")), n = r = s = null, o
                 },
                 buildFragment: function (e, t, i, n) {
-                    for (var s, o, a, r, l, c, u, d = e.length, h = p(t), m = [], f = 0; f < d; f++)
-                        if ((o = e[f]) || 0 === o)
+                    for (var s, o, a, r, l, c, u, d = e.length, h = p(t), m = [], _ = 0; _ < d; _++)
+                        if ((o = e[_]) || 0 === o)
                             if ("object" === ue.type(o)) ue.merge(m, o.nodeType ? [o] : o);
                             else if (Xe.test(o)) {
                         for (r = r || h.appendChild(t.createElement("div")), l = (Je.exec(o) || ["",
@@ -18868,7 +18965,7 @@ Object.values || (Object.values = function (e) {
                         r = h.lastChild
                     } else m.push(t.createTextNode(o));
                     for (r && h.removeChild(r), ue.support.appendChecked || ue.grep(y(m, "input"), w),
-                        f = 0; o = m[f++];)
+                        _ = 0; o = m[_++];)
                         if ((!n || -1 === ue.inArray(o, n)) && (a = ue.contains(o.ownerDocument, o),
                                 r = y(h.appendChild(o), "script"), a && g(r), i))
                             for (s = 0; o = r[s++];) nt.test(o.type || "") && i.push(o);
@@ -18944,8 +19041,8 @@ Object.values || (Object.values = function (e) {
             ht = /opacity\s*=\s*([^)]*)/,
             pt = /^(top|right|bottom|left)$/,
             mt = /^(none|table(?!-c[ea]).+)/,
-            ft = /^margin/,
-            _t = new RegExp("^(" + de + ")(.*)$", "i"),
+            _t = /^margin/,
+            ft = new RegExp("^(" + de + ")(.*)$", "i"),
             gt = new RegExp("^(" + de + ")(?!px)[a-z%]+$", "i"),
             vt = new RegExp("^([+-])=(" + de + ")", "i"),
             bt = {
@@ -19045,7 +19142,7 @@ Object.values || (Object.values = function (e) {
                 l = r ? r.getPropertyValue(i) || r[i] : t,
                 c = e.style;
             return r && ("" !== l || ue.contains(e.ownerDocument, e) || (l = ue.style(e, i)), gt.test(
-                l) && ft.test(i) && (s = c.width, o = c.minWidth, a = c.maxWidth, c.minWidth =
+                l) && _t.test(i) && (s = c.width, o = c.minWidth, a = c.maxWidth, c.minWidth =
                 c.maxWidth = c.width = l, l = r.width, c.width = s, c.minWidth = o, c
                 .maxWidth = a)), l
         }) : Y.documentElement.currentStyle && (ct = function (e) {
@@ -19118,7 +19215,7 @@ Object.values || (Object.values = function (e) {
                         i]; n < 4; n++) s[e + kt[n] + t] = o[n] || o[n - 2] || o[0];
                     return s
                 }
-            }, ft.test(e) || (ue.cssHooks[e + t].set = C)
+            }, _t.test(e) || (ue.cssHooks[e + t].set = C)
         }));
         var zt = /%20/g,
             Ct = /\[\]$/,
@@ -19293,10 +19390,10 @@ Object.values || (Object.values = function (e) {
                                 a] = w)), 204 === e || "HEAD" === h.type ? x = "nocontent" :
                             304 === e ? x = "notmodified" : (x = b.state, d = b.data, o = !(
                                 v = b.error))) : (v = x, !e && x || (x = "error", e < 0 && (
-                            e = 0))), k.status = e, k.statusText = (i || x) + "", o ? f
-                        .resolveWith(p, [d, x, k]) : f.rejectWith(p, [k, x, v]), k.statusCode(
+                            e = 0))), k.status = e, k.statusText = (i || x) + "", o ? _
+                        .resolveWith(p, [d, x, k]) : _.rejectWith(p, [k, x, v]), k.statusCode(
                             g), g = t, c && m.trigger(o ? "ajaxSuccess" : "ajaxError", [k, h,
-                            o ? d : v]), _.fireWith(p, [k, x]), c && (m.trigger(
+                            o ? d : v]), f.fireWith(p, [k, x]), c && (m.trigger(
                             "ajaxComplete", [k, h]), --ue.active || ue.event.trigger(
                             "ajaxStop")))
                 }
@@ -19304,8 +19401,8 @@ Object.values || (Object.values = function (e) {
                 var s, o, a, r, l, c, u, d, h = ue.ajaxSetup({}, i),
                     p = h.context || h,
                     m = h.context && (p.nodeType || p.jquery) ? ue(p) : ue.event,
-                    f = ue.Deferred(),
-                    _ = ue.Callbacks("once memory"),
+                    _ = ue.Deferred(),
+                    f = ue.Callbacks("once memory"),
                     g = h.statusCode || {},
                     v = {},
                     b = {},
@@ -19346,8 +19443,8 @@ Object.values || (Object.values = function (e) {
                             return u && u.abort(t), n(0, t), this
                         }
                     };
-                if (f.promise(k)
-                    .complete = _.add, k.success = k.done, k.error = k.fail, h.url = ((e || h
+                if (_.promise(k)
+                    .complete = f.add, k.success = k.done, k.error = k.fail, h.url = ((e || h
                         .url || Pt) + "")
                     .replace(It, "")
                     .replace(Rt, Et[1] + "//"), h.type = i.method || i.type || h.method || h.type,
@@ -20389,10 +20486,10 @@ Object.values || (Object.values = function (e) {
          *
          * http://api.jqueryui.com/mouse/
          */
-        var f = !1;
+        var _ = !1;
         e(document)
             .mouseup((function () {
-                f = !1
+                _ = !1
             }));
         e.widget("ui.mouse", {
             version: "1.11.4",
@@ -20420,7 +20517,7 @@ Object.values || (Object.values = function (e) {
                     .unbind("mouseup." + this.widgetName, this._mouseUpDelegate)
             },
             _mouseDown: function (t) {
-                if (!f) {
+                if (!_) {
                     this._mouseMoved = !1, this._mouseStarted && this._mouseUp(t), this
                         ._mouseDownEvent = t;
                     var i = this,
@@ -20446,7 +20543,7 @@ Object.values || (Object.values = function (e) {
                             }, this.document.bind("mousemove." + this.widgetName, this
                                 ._mouseMoveDelegate)
                             .bind("mouseup." + this.widgetName, this
-                            ._mouseUpDelegate), t.preventDefault(), f = !0, !0))
+                            ._mouseUpDelegate), t.preventDefault(), _ = !0, !0))
                 }
             },
             _mouseMove: function (t) {
@@ -20468,7 +20565,7 @@ Object.values || (Object.values = function (e) {
                     .unbind("mouseup." + this.widgetName, this._mouseUpDelegate), this
                     ._mouseStarted && (this._mouseStarted = !1, t.target === this
                         ._mouseDownEvent.target && e.data(t.target, this.widgetName +
-                            ".preventClickEvent", !0), this._mouseStop(t)), f = !1, !1
+                            ".preventClickEvent", !0), this._mouseStop(t)), _ = !1, !1
             },
             _mouseDistanceMet: function (e) {
                 return Math.max(Math.abs(this._mouseDownEvent.pageX - e.pageX), Math.abs(
@@ -20586,13 +20683,13 @@ Object.values || (Object.values = function (e) {
                 }, e.fn.position = function (s) {
                     if (!s || !s.of) return m.apply(this, arguments);
                     s = e.extend({}, s);
-                    var p, f, _, g, v, b, y = e(s.of),
+                    var p, _, f, g, v, b, y = e(s.of),
                         w = e.position.getWithinInfo(s.within),
                         k = e.position.getScrollInfo(w),
                         x = (s.collision || "flip")
                         .split(" "),
                         z = {};
-                    return b = n(y), y[0].preventDefault && (s.at = "left top"), f = b.width, _ = b
+                    return b = n(y), y[0].preventDefault && (s.at = "left top"), _ = b.width, f = b
                         .height, g = b.offset, v = e.extend({}, g), e.each(["my", "at"], (
                     function () {
                             var e, t, i = (s[this] || "")
@@ -20603,9 +20700,9 @@ Object.values || (Object.values = function (e) {
                                     1]) ? i[1] : "center", e = d.exec(i[0]), t = d.exec(i[1]),
                                 z[this] = [e ? e[0] : 0, t ? t[0] : 0], s[this] = [h.exec(i[
                                     0])[0], h.exec(i[1])[0]]
-                        })), 1 === x.length && (x[1] = x[0]), "right" === s.at[0] ? v.left += f :
-                        "center" === s.at[0] && (v.left += f / 2), "bottom" === s.at[1] ? v.top += _ :
-                        "center" === s.at[1] && (v.top += _ / 2), p = t(z.at, f, _), v.left += p[0], v
+                        })), 1 === x.length && (x[1] = x[0]), "right" === s.at[0] ? v.left += _ :
+                        "center" === s.at[0] && (v.left += _ / 2), "bottom" === s.at[1] ? v.top += f :
+                        "center" === s.at[1] && (v.top += f / 2), p = t(z.at, _, f), v.left += p[0], v
                         .top += p[1], this.each((function () {
                             var n, c, u = e(this),
                                 d = u.outerWidth(),
@@ -20625,8 +20722,8 @@ Object.values || (Object.values = function (e) {
                                     marginTop: b
                                 }, e.each(["left", "top"], (function (t, i) {
                                     e.ui.position[x[t]] && e.ui.position[x[t]][i](T, {
-                                        targetWidth: f,
-                                        targetHeight: _,
+                                        targetWidth: _,
+                                        targetHeight: f,
                                         elemWidth: d,
                                         elemHeight: h,
                                         collisionPosition: n,
@@ -20640,16 +20737,16 @@ Object.values || (Object.values = function (e) {
                                     })
                                 })), s.using && (c = function (e) {
                                     var t = g.left - T.left,
-                                        i = t + f - d,
+                                        i = t + _ - d,
                                         n = g.top - T.top,
-                                        o = n + _ - h,
+                                        o = n + f - h,
                                         l = {
                                             target: {
                                                 element: y,
                                                 left: g.left,
                                                 top: g.top,
-                                                width: f,
-                                                height: _
+                                                width: _,
+                                                height: f
                                             },
                                             element: {
                                                 element: u,
@@ -20663,8 +20760,8 @@ Object.values || (Object.values = function (e) {
                                             vertical: o < 0 ? "top" : n > 0 ? "bottom" :
                                                 "middle"
                                         };
-                                    f < d && r(t + i) < f && (l.horizontal = "center"),
-                                        _ < h && r(n + o) < _ && (l.vertical = "middle"),
+                                    _ < d && r(t + i) < _ && (l.horizontal = "center"),
+                                        f < h && r(n + o) < f && (l.vertical = "middle"),
                                         a(r(t), r(i)) > a(r(n), r(o)) ? l.important =
                                         "horizontal" : l.important = "vertical", s.using
                                         .call(this, e, l)
@@ -21301,22 +21398,22 @@ Object.values || (Object.values = function (e) {
             },
             drag: function (t, i, n) {
                 var s, o, a, r, l, c, u, d, h, p, m = n.options,
-                    f = m.snapTolerance,
-                    _ = i.offset.left,
-                    g = _ + n.helperProportions.width,
+                    _ = m.snapTolerance,
+                    f = i.offset.left,
+                    g = f + n.helperProportions.width,
                     v = i.offset.top,
                     b = v + n.helperProportions.height;
                 for (h = n.snapElements.length - 1; h >= 0; h--) c = (l = n.snapElements[
                         h].left - n.margins.left) + n.snapElements[h].width, d = (u = n
                         .snapElements[h].top - n.margins.top) + n.snapElements[h].height,
-                    g < l - f || _ > c + f || b < u - f || v > d + f || !e.contains(n
+                    g < l - _ || f > c + _ || b < u - _ || v > d + _ || !e.contains(n
                         .snapElements[h].item.ownerDocument, n.snapElements[h].item) ? (n
                         .snapElements[h].snapping && n.options.snap.release && n.options
                         .snap.release.call(n.element, t, e.extend(n._uiHash(), {
                             snapItem: n.snapElements[h].item
                         })), n.snapElements[h].snapping = !1) : ("inner" !== m.snapMode &&
-                        (s = Math.abs(u - b) <= f, o = Math.abs(d - v) <= f, a = Math.abs(
-                            l - g) <= f, r = Math.abs(c - _) <= f, s && (i.position
+                        (s = Math.abs(u - b) <= _, o = Math.abs(d - v) <= _, a = Math.abs(
+                            l - g) <= _, r = Math.abs(c - f) <= _, s && (i.position
                             .top = n._convertPositionTo("relative", {
                                 top: u - n.helperProportions.height,
                                 left: 0
@@ -21337,8 +21434,8 @@ Object.values || (Object.values = function (e) {
                                     left: c
                                 })
                             .left)), p = s || o || a || r, "outer" !== m.snapMode && (s =
-                            Math.abs(u - v) <= f, o = Math.abs(d - b) <= f, a = Math.abs(
-                                l - _) <= f, r = Math.abs(c - g) <= f, s && (i.position
+                            Math.abs(u - v) <= _, o = Math.abs(d - b) <= _, a = Math.abs(
+                                l - f) <= _, r = Math.abs(c - g) <= _, s && (i.position
                                 .top = n._convertPositionTo("relative", {
                                     top: u,
                                     left: 0
@@ -22292,11 +22389,11 @@ Object.values || (Object.values = function (e) {
                     h = Math.round((s.height - o.height) / u) * u,
                     p = o.width + d,
                     m = o.height + h,
-                    f = n.maxWidth && n.maxWidth < p,
-                    _ = n.maxHeight && n.maxHeight < m,
+                    _ = n.maxWidth && n.maxWidth < p,
+                    f = n.maxHeight && n.maxHeight < m,
                     g = n.minWidth && n.minWidth > p,
                     v = n.minHeight && n.minHeight > m;
-                n.grid = l, g && (p += c), v && (m += u), f && (p -= c), _ && (m -= u),
+                n.grid = l, g && (p += c), v && (m += u), _ && (p -= c), f && (m -= u),
                     /^(se|s|e)$/.test(r) ? (i.size.width = p, i.size.height = m) :
                     /^(ne)$/.test(r) ? (i.size.width = p, i.size.height = m, i.position
                         .top = a.top - h) : /^(sw)$/.test(r) ? (i.size.width = p, i.size
@@ -24292,7 +24389,7 @@ Object.values || (Object.values = function (e) {
          *
          * http://api.jqueryui.com/button/
          */
-        var _, g = "ui-button ui-widget ui-state-default ui-corner-all",
+        var f, g = "ui-button ui-widget ui-state-default ui-corner-all",
             v =
             "ui-button-icons-only ui-button-icon-only ui-button-text-icons ui-button-text-icon-primary ui-button-text-icon-secondary ui-button-text-only",
             b = function () {
@@ -24342,7 +24439,7 @@ Object.values || (Object.values = function (e) {
                         .buttonElement), this.buttonElement.addClass(g)
                     .attr("role", "button")
                     .bind("mouseenter" + this.eventNamespace, (function () {
-                        i.disabled || this === _ && e(this)
+                        i.disabled || this === f && e(this)
                             .addClass("ui-state-active")
                     }))
                     .bind("mouseleave" + this.eventNamespace, (function () {
@@ -24384,9 +24481,9 @@ Object.values || (Object.values = function (e) {
                             (function () {
                                 if (i.disabled) return !1;
                                 e(this)
-                                    .addClass("ui-state-active"), _ = this, t.document
+                                    .addClass("ui-state-active"), f = this, t.document
                                     .one("mouseup", (function () {
-                                        _ = null
+                                        f = null
                                     }))
                             }))
                         .bind("mouseup" + this.eventNamespace, (function () {
@@ -25070,8 +25167,8 @@ Object.values || (Object.values = function (e) {
                         h = (n ? n.dayNames : null) || this._defaults.dayNames,
                         p = (n ? n.monthNamesShort : null) || this._defaults.monthNamesShort,
                         m = (n ? n.monthNames : null) || this._defaults.monthNames,
-                        f = -1,
                         _ = -1,
+                        f = -1,
                         g = -1,
                         v = -1,
                         b = !1,
@@ -25123,21 +25220,21 @@ Object.values || (Object.values = function (e) {
                             v = w("o");
                             break;
                         case "m":
-                            _ = w("m");
+                            f = w("m");
                             break;
                         case "M":
-                            _ = k("M", p, m);
+                            f = k("M", p, m);
                             break;
                         case "y":
-                            f = w("y");
+                            _ = w("y");
                             break;
                         case "@":
-                            f = (r = new Date(w("@")))
-                                .getFullYear(), _ = r.getMonth() + 1, g = r.getDate();
+                            _ = (r = new Date(w("@")))
+                                .getFullYear(), f = r.getMonth() + 1, g = r.getDate();
                             break;
                         case "!":
-                            f = (r = new Date((w("!") - this._ticksTo1970) / 1e4))
-                                .getFullYear(), _ = r.getMonth() + 1, g = r.getDate();
+                            _ = (r = new Date((w("!") - this._ticksTo1970) / 1e4))
+                                .getFullYear(), f = r.getMonth() + 1, g = r.getDate();
                             break;
                         case "'":
                             y("'") ? x() : b = !0;
@@ -25147,16 +25244,16 @@ Object.values || (Object.values = function (e) {
                         }
                     if (l < i.length && (a = i.substr(l), !/^\s+/.test(a)))
                     throw "Extra/unparsed characters found in date: " + a;
-                    if (-1 === f ? f = (new Date)
-                        .getFullYear() : f < 100 && (f += (new Date)
+                    if (-1 === _ ? _ = (new Date)
+                        .getFullYear() : _ < 100 && (_ += (new Date)
                             .getFullYear() - (new Date)
-                            .getFullYear() % 100 + (f <= u ? 0 : -100)), v > -1)
-                        for (_ = 1, g = v;;) {
-                            if (g <= (o = this._getDaysInMonth(f, _ - 1))) break;
-                            _++, g -= o
+                            .getFullYear() % 100 + (_ <= u ? 0 : -100)), v > -1)
+                        for (f = 1, g = v;;) {
+                            if (g <= (o = this._getDaysInMonth(_, f - 1))) break;
+                            f++, g -= o
                         }
-                    if ((r = this._daylightSavingAdjust(new Date(f, _ - 1, g)))
-                        .getFullYear() !== f || r.getMonth() + 1 !== _ || r.getDate() !== g)
+                    if ((r = this._daylightSavingAdjust(new Date(_, f - 1, g)))
+                        .getFullYear() !== _ || r.getMonth() + 1 !== f || r.getDate() !== g)
                         throw "Invalid date";
                     return r
                 },
@@ -25394,7 +25491,7 @@ Object.values || (Object.values = function (e) {
                         }))
                 },
                 _generateHTML: function (e) {
-                    var t, i, n, s, o, a, r, l, c, u, d, h, p, m, f, _, g, v, b, y, w, k, x,
+                    var t, i, n, s, o, a, r, l, c, u, d, h, p, m, _, f, g, v, b, y, w, k, x,
                         z, C, S, T, A, E, P, M, j, I, D, N, L, O, R, $, B = new Date,
                         F = this._daylightSavingAdjust(new Date(B.getFullYear(), B.getMonth(),
                             B.getDate())),
@@ -25446,8 +25543,8 @@ Object.values || (Object.values = function (e) {
                             a + "</button>" : "") + (H ? "" : l) + "</div>" : "", u =
                         parseInt(this._get(e, "firstDay"), 10), u = isNaN(u) ? 0 : u, d = this
                         ._get(e, "showWeek"), h = this._get(e, "dayNames"), p = this._get(e,
-                            "dayNamesMin"), m = this._get(e, "monthNames"), f = this._get(e,
-                            "monthNamesShort"), _ = this._get(e, "beforeShowDay"), g = this
+                            "dayNamesMin"), m = this._get(e, "monthNames"), _ = this._get(e,
+                            "monthNamesShort"), f = this._get(e, "beforeShowDay"), g = this
                         ._get(e, "showOtherMonths"), v = this._get(e, "selectOtherMonths"),
                         b = this._getDefaultDate(e), y = "", k = 0; k < U[0]; k++) {
                         for (x = "", this.maxRows = 4, z = 0; z < U[1]; z++) {
@@ -25473,7 +25570,7 @@ Object.values || (Object.values = function (e) {
                                 S + "'>" + (/all|left/.test(S) && 0 === k ? H ? o : n : "") +
                                 (/all|right/.test(S) && 0 === k ? H ? n : o : "") + this
                                 ._generateMonthYearHeader(e, X, ee, J, Q, k > 0 || z > 0, m,
-                                    f) +
+                                    _) +
                                 "</div><table class='ui-datepicker-calendar'><thead><tr>", A =
                                 d ? "<th class='ui-datepicker-week-col'>" + this._get(e,
                                     "weekHeader") + "</th>" : "", w = 0; w < 7; w++) A +=
@@ -25491,7 +25588,7 @@ Object.values || (Object.values = function (e) {
                                 for (T += "<tr>", L = d ?
                                     "<td class='ui-datepicker-week-col'>" + this._get(e,
                                         "calculateWeek")(D) + "</td>" : "", w = 0; w < 7; w++)
-                                    O = _ ? _.apply(e.input ? e.input[0] : null, [D]) : [!0,
+                                    O = f ? f.apply(e.input ? e.input[0] : null, [D]) : [!0,
                                         ""], $ = (R = D.getMonth() !== X) && !v || !O[0] ||
                                     J && D < J || Q && D > Q, L += "<td class='" + ((w + u +
                                         6) % 7 >= 5 ? " ui-datepicker-week-end" : "") + (R ?
@@ -25528,12 +25625,12 @@ Object.values || (Object.values = function (e) {
                     return y += c, e._keyEvent = !1, y
                 },
                 _generateMonthYearHeader: function (e, t, i, n, s, o, a, r) {
-                    var l, c, u, d, h, p, m, f, _ = this._get(e, "changeMonth"),
+                    var l, c, u, d, h, p, m, _, f = this._get(e, "changeMonth"),
                         g = this._get(e, "changeYear"),
                         v = this._get(e, "showMonthAfterYear"),
                         b = "<div class='ui-datepicker-title'>",
                         y = "";
-                    if (o || !_) y += "<span class='ui-datepicker-month'>" + a[t] + "</span>";
+                    if (o || !f) y += "<span class='ui-datepicker-month'>" + a[t] + "</span>";
                     else {
                         for (l = n && n.getFullYear() === i, c = s && s.getFullYear() === i,
                             y +=
@@ -25543,7 +25640,7 @@ Object.values || (Object.values = function (e) {
                             " selected='selected'" : "") + ">" + r[u] + "</option>");
                         y += "</select>"
                     }
-                    if (v || (b += y + (!o && _ && g ? "" : "&#xa0;")), !e.yearshtml)
+                    if (v || (b += y + (!o && f && g ? "" : "&#xa0;")), !e.yearshtml)
                         if (e.yearshtml = "", o || !g) b +=
                             "<span class='ui-datepicker-year'>" + i + "</span>";
                         else {
@@ -25554,14 +25651,14 @@ Object.values || (Object.values = function (e) {
                                             10) : e.match(/[+\-].*/) ? h + parseInt(e, 10) :
                                         parseInt(e, 10);
                                     return isNaN(t) ? h : t
-                                }, m = p(d[0]), f = Math.max(m, p(d[1] || "")), m = n ? Math
-                                .max(m, n.getFullYear()) : m, f = s ? Math.min(f, s
-                                    .getFullYear()) : f, e.yearshtml +=
+                                }, m = p(d[0]), _ = Math.max(m, p(d[1] || "")), m = n ? Math
+                                .max(m, n.getFullYear()) : m, _ = s ? Math.min(_, s
+                                    .getFullYear()) : _, e.yearshtml +=
                                 "<select class='ui-datepicker-year' data-handler='selectYear' data-event='change'>"; m <=
-                                f; m++) e.yearshtml += "<option value='" + m + "'" + (m ===
+                                _; m++) e.yearshtml += "<option value='" + m + "'" + (m ===
                                 i ? " selected='selected'" : "") + ">" + m + "</option>";
                             e.yearshtml += "</select>", b += e.yearshtml, e.yearshtml = null
-                        } return b += this._get(e, "yearSuffix"), v && (b += (!o && _ && g ?
+                        } return b += this._get(e, "yearSuffix"), v && (b += (!o && f && g ?
                         "" : "&#xa0;") + y), b += "</div>"
                 },
                 _adjustInstDate: function (e, t, i) {
@@ -28590,21 +28687,21 @@ Object.values || (Object.values = function (e) {
                 h = r.test(d),
                 p = h ? "height" : "width",
                 m = h ? "top" : "left",
-                f = l.test(d),
-                _ = {},
+                _ = l.test(d),
+                f = {},
                 g = "show" === u;
             a.parent()
                 .is(".ui-effects-wrapper") ? e.effects.save(a.parent(), c) : e.effects.save(a, c),
                 a.show(), s = (n = e.effects.createWrapper(a)
                     .css({
                         overflow: "hidden"
-                    }))[p](), o = parseFloat(n.css(m)) || 0, _[p] = g ? s : 0, f || (a.css(h ?
+                    }))[p](), o = parseFloat(n.css(m)) || 0, f[p] = g ? s : 0, _ || (a.css(h ?
                         "bottom" : "right", 0)
                     .css(h ? "top" : "left", "auto")
                     .css({
                         position: "absolute"
-                    }), _[m] = g ? o : s + o), g && (n.css(p, 0), f || n.css(m, o + s)), n
-                .animate(_, {
+                    }), f[m] = g ? o : s + o), g && (n.css(p, 0), _ || n.css(m, o + s)), n
+                .animate(f, {
                     duration: t.duration,
                     easing: t.easing,
                     queue: !1,
@@ -28623,8 +28720,8 @@ Object.values || (Object.values = function (e) {
                 h = t.distance,
                 p = t.times || 5,
                 m = 2 * p + (u || c ? 1 : 0),
-                f = t.duration / m,
-                _ = t.easing,
+                _ = t.duration / m,
+                f = t.easing,
                 g = "up" === d || "down" === d ? "top" : "left",
                 v = "up" === d || "left" === d,
                 b = a.queue(),
@@ -28635,12 +28732,12 @@ Object.values || (Object.values = function (e) {
                         opacity: 1
                     })[g] = 0, a.css("opacity", 0)
                     .css(g, v ? 2 * -h : 2 * h)
-                    .animate(o, f, _)), c && (h /= Math.pow(2, p - 1)), (o = {})[g] = 0, n =
-                0; n < p; n++)(s = {})[g] = (v ? "-=" : "+=") + h, a.animate(s, f, _)
-                .animate(o, f, _), h = c ? 2 * h : h / 2;
+                    .animate(o, _, f)), c && (h /= Math.pow(2, p - 1)), (o = {})[g] = 0, n =
+                0; n < p; n++)(s = {})[g] = (v ? "-=" : "+=") + h, a.animate(s, _, f)
+                .animate(o, _, f), h = c ? 2 * h : h / 2;
             c && ((s = {
                 opacity: 0
-            })[g] = (v ? "-=" : "+=") + h, a.animate(s, f, _)), a.queue((function () {
+            })[g] = (v ? "-=" : "+=") + h, a.animate(s, _, f)), a.queue((function () {
                 c && a.hide(), e.effects.restore(a, r), e.effects.removeWrapper(a),
                 i()
             })), y > 1 && b.splice.apply(b, [1, 0].concat(b.splice(y, m + 1))), a.dequeue()
@@ -28703,21 +28800,21 @@ Object.values || (Object.values = function (e) {
                 h = d,
                 p = e(this),
                 m = "show" === e.effects.setMode(p, t.mode || "hide"),
-                f = p.show()
+                _ = p.show()
                 .css("visibility", "hidden")
                 .offset(),
-                _ = Math.ceil(p.outerWidth() / h),
+                f = Math.ceil(p.outerWidth() / h),
                 g = Math.ceil(p.outerHeight() / d),
                 v = [];
             for (o = 0; o < d; o++)
-                for (l = f.top + o * g, u = o - (d - 1) / 2, a = 0; a < h; a++) r = f.left + a *
-                    _, c = a - (h - 1) / 2, p.clone()
+                for (l = _.top + o * g, u = o - (d - 1) / 2, a = 0; a < h; a++) r = _.left + a *
+                    f, c = a - (h - 1) / 2, p.clone()
                     .appendTo("body")
                     .wrap("<div></div>")
                     .css({
                         position: "absolute",
                         visibility: "visible",
-                        left: -a * _,
+                        left: -a * f,
                         top: -o * g
                     })
                     .parent()
@@ -28725,14 +28822,14 @@ Object.values || (Object.values = function (e) {
                     .css({
                         position: "absolute",
                         overflow: "hidden",
-                        width: _,
+                        width: f,
                         height: g,
-                        left: r + (m ? c * _ : 0),
+                        left: r + (m ? c * f : 0),
                         top: l + (m ? u * g : 0),
                         opacity: m ? 0 : 1
                     })
                     .animate({
-                        left: r + (m ? 0 : c * _),
+                        left: r + (m ? 0 : c * f),
                         top: l + (m ? 0 : u * g),
                         opacity: m ? 1 : 0
                     }, t.duration || 500, t.easing, n)
@@ -28758,8 +28855,8 @@ Object.values || (Object.values = function (e) {
                 h = !!t.horizFirst,
                 p = l !== h,
                 m = p ? ["width", "height"] : ["height", "width"],
-                f = t.duration / 2,
-                _ = {},
+                _ = t.duration / 2,
+                f = {},
                 g = {};
             e.effects.save(o, a), o.show(), n = e.effects.createWrapper(o)
                 .css({
@@ -28771,8 +28868,8 @@ Object.values || (Object.values = function (e) {
                 } : {
                     height: u,
                     width: 0
-                }), _[m[0]] = l ? s[0] : u, g[m[1]] = l ? s[1] : 0, n.animate(_, f, t.easing)
-                .animate(g, f, t.easing, (function () {
+                }), f[m[0]] = l ? s[0] : u, g[m[1]] = l ? s[1] : 0, n.animate(f, _, t.easing)
+                .animate(g, _, t.easing, (function () {
                     c && o.hide(), e.effects.restore(o, a), e.effects.removeWrapper(o),
                     i()
                 }))
@@ -28807,8 +28904,8 @@ Object.values || (Object.values = function (e) {
                 h = ["borderLeftWidth", "borderRightWidth", "paddingLeft", "paddingRight"],
                 p = e.effects.setMode(a, t.mode || "effect"),
                 m = t.restore || "effect" !== p,
-                f = t.scale || "both",
-                _ = t.origin || ["middle", "center"],
+                _ = t.scale || "both",
+                f = t.origin || ["middle", "center"],
                 g = a.css("position"),
                 v = m ? r : l,
                 b = {
@@ -28833,20 +28930,20 @@ Object.values || (Object.values = function (e) {
                         y: a.to.height / n.height,
                         x: a.to.width / n.width
                     }
-                }, "box" !== f && "both" !== f || (o.from.y !== o.to.y && (v = v.concat(d), a
+                }, "box" !== _ && "both" !== _ || (o.from.y !== o.to.y && (v = v.concat(d), a
                     .from = e.effects.setTransition(a, d, o.from.y, a.from), a.to = e.effects
                     .setTransition(a, d, o.to.y, a.to)), o.from.x !== o.to.x && (v = v.concat(
                         h), a.from = e.effects.setTransition(a, h, o.from.x, a.from), a.to = e
-                    .effects.setTransition(a, h, o.to.x, a.to))), "content" !== f && "both" !==
-                f || o.from.y !== o.to.y && (v = v.concat(u)
+                    .effects.setTransition(a, h, o.to.x, a.to))), "content" !== _ && "both" !==
+                _ || o.from.y !== o.to.y && (v = v.concat(u)
                     .concat(c), a.from = e.effects.setTransition(a, u, o.from.y, a.from), a.to = e
                     .effects.setTransition(a, u, o.to.y, a.to)), e.effects.save(a, v), a.show(), e
                 .effects.createWrapper(a), a.css("overflow", "hidden")
-                .css(a.from), _ && (s = e.effects.getBaseline(_, n), a.from.top = (n.outerHeight -
+                .css(a.from), f && (s = e.effects.getBaseline(f, n), a.from.top = (n.outerHeight -
                         a.outerHeight()) * s.y, a.from.left = (n.outerWidth - a.outerWidth()) * s
                     .x, a.to.top = (n.outerHeight - a.to.outerHeight) * s.y, a.to.left = (n
-                        .outerWidth - a.to.outerWidth) * s.x), a.css(a.from), "content" !== f &&
-                "both" !== f || (d = d.concat(["marginTop", "marginBottom"])
+                        .outerWidth - a.to.outerWidth) * s.x), a.css(a.from), "content" !== _ &&
+                "both" !== _ || (d = d.concat(["marginTop", "marginBottom"])
                     .concat(u), h = h.concat(["marginLeft", "marginRight"]), c = r.concat(d)
                     .concat(h), a.find("*[width]")
                     .each((function () {
@@ -28986,15 +29083,15 @@ Object.values || (Object.values = function (e) {
                 h = "up" === r || "down" === r ? "top" : "left",
                 p = "up" === r || "left" === r,
                 m = {},
-                f = {},
                 _ = {},
+                f = {},
                 g = s.queue(),
                 v = g.length;
             for (e.effects.save(s, o), s.show(), e.effects.createWrapper(s), m[h] = (p ? "-=" :
-                    "+=") + l, f[h] = (p ? "+=" : "-=") + 2 * l, _[h] = (p ? "-=" : "+=") + 2 * l,
-                s.animate(m, d, t.easing), n = 1; n < c; n++) s.animate(f, d, t.easing)
-                .animate(_, d, t.easing);
-            s.animate(f, d, t.easing)
+                    "+=") + l, _[h] = (p ? "+=" : "-=") + 2 * l, f[h] = (p ? "-=" : "+=") + 2 * l,
+                s.animate(m, d, t.easing), n = 1; n < c; n++) s.animate(_, d, t.easing)
+                .animate(f, d, t.easing);
+            s.animate(_, d, t.easing)
                 .animate(m, d / 2, t.easing)
                 .queue((function () {
                     "hide" === a && s.hide(), e.effects.restore(s, o), e.effects
@@ -29359,70 +29456,70 @@ Object.values || (Object.values = function (e) {
                 }
 
                 function r(n) {
-                    var o, a, r, l, c, u, d, h, p, m, f = n.tBodies,
-                        _ = n.config,
-                        g = _.parsers,
+                    var o, a, r, l, c, u, d, h, p, m, _ = n.tBodies,
+                        f = n.config,
+                        g = f.parsers,
                         v = [];
-                    if (_.cache = {}, !g) return _.debug ? t(
+                    if (f.cache = {}, !g) return f.debug ? t(
                         "Warning: *Empty table!* Not building a cache") : "";
-                    for (_.debug && (m = new Date), _.showProcessing && x.isProcessing(n, !0), d =
-                        0; d < f.length; d++)
-                        if (_.cache[d] = {
+                    for (f.debug && (m = new Date), f.showProcessing && x.isProcessing(n, !0), d =
+                        0; d < _.length; d++)
+                        if (f.cache[d] = {
                                 row: [],
                                 normalized: []
-                            }, !e(f[d])
-                            .hasClass(_.cssInfoBlock)) {
-                            for (o = f[d] && f[d].rows.length || 0, a = f[d].rows[0] && f[d].rows[
+                            }, !e(_[d])
+                            .hasClass(f.cssInfoBlock)) {
+                            for (o = _[d] && _[d].rows.length || 0, a = _[d].rows[0] && _[d].rows[
                                     0].cells.length || 0, c = 0; c < o; ++c)
-                                if (p = [], (h = e(f[d].rows[c]))
-                                    .hasClass(_.cssChildRow) && 0 !== c) _.cache[d].row[_.cache[d]
-                                        .row.length - 1] = _.cache[d].row[_.cache[d].row.length -
+                                if (p = [], (h = e(_[d].rows[c]))
+                                    .hasClass(f.cssChildRow) && 0 !== c) f.cache[d].row[f.cache[d]
+                                        .row.length - 1] = f.cache[d].row[f.cache[d].row.length -
                                         1].add(h), h.prev()
-                                    .hasClass(_.cssChildRow) || h.prev()
+                                    .hasClass(f.cssChildRow) || h.prev()
                                     .addClass(x.css.cssHasChild);
                                 else {
-                                    for (_.cache[d].row.push(h), u = 0; u < a; ++u) void 0 !== g[
+                                    for (f.cache[d].row.push(h), u = 0; u < a; ++u) void 0 !== g[
                                         u] ? (r = s(n, h[0].cells[u], u), l = g[u].format(r,
                                             n, h[0].cells[u], u), p.push(l), "numeric" === (g[
                                             u].type || "")
                                         .toLowerCase() && (v[u] = Math.max(Math.abs(l) || 0,
-                                            v[u] || 0))) : _.debug && t(
+                                            v[u] || 0))) : f.debug && t(
                                         "No parser found for cell:", h[0].cells[u],
                                         "does it have a header?");
-                                    p.push(_.cache[d].normalized.length), _.cache[d].normalized
+                                    p.push(f.cache[d].normalized.length), f.cache[d].normalized
                                         .push(p)
-                                } _.cache[d].colMax = v
-                        } _.showProcessing && x.isProcessing(n), _.debug && i(
+                                } f.cache[d].colMax = v
+                        } f.showProcessing && x.isProcessing(n), f.debug && i(
                         "Building cache for " + o + " rows", m)
                 }
 
                 function l(t, s) {
-                    var o, a, r, l, c, u, d, h, p, m, f, _, g = t.config,
+                    var o, a, r, l, c, u, d, h, p, m, _, f, g = t.config,
                         v = g.widgetOptions,
                         b = t.tBodies,
                         y = [],
                         w = g.cache;
                     if (n(w)) return g.appender ? g.appender(t, y) : t.isUpdating ? g.$table
                         .trigger("updateComplete", t) : "";
-                    for (g.debug && (_ = new Date), p = 0; p < b.length; p++)
+                    for (g.debug && (f = new Date), p = 0; p < b.length; p++)
                         if ((c = e(b[p]))
                             .length && !c.hasClass(g.cssInfoBlock)) {
                             for (u = x.processTbody(t, c, !0), o = w[p].row, l = (r = (a = w[p]
                                         .normalized)
                                     .length) ? a[0].length - 1 : 0, d = 0; d < r; d++)
-                                if (f = a[d][l], y.push(o[f]), !g.appender || g.pager && (!g.pager
+                                if (_ = a[d][l], y.push(o[_]), !g.appender || g.pager && (!g.pager
                                         .removeRows || !v.pager_removeRows) && !g.pager.ajax)
-                                    for (m = o[f].length, h = 0; h < m; h++) u.append(o[f][h]);
+                                    for (m = o[_].length, h = 0; h < m; h++) u.append(o[_][h]);
                             x.processTbody(t, u, !1)
-                        } g.appender && g.appender(t, y), g.debug && i("Rebuilt table", _), s || g
+                        } g.appender && g.appender(t, y), g.debug && i("Rebuilt table", f), s || g
                         .appender || x.applyWidget(t), t.isUpdating && g.$table.trigger(
                             "updateComplete", t)
                 }
 
                 function c(t) {
                     var i, n, s, o, a, r, l, c, u, d, h, p, m = [],
-                        f = {},
-                        _ = 0,
+                        _ = {},
+                        f = 0,
                         g = e(t)
                         .children("thead, tfoot")
                         .children("tr");
@@ -29435,14 +29532,14 @@ Object.values || (Object.values = function (e) {
                                 if (void 0 === m[l][s]) {
                                     h = s;
                                     break
-                                } for (f[c] = h, _ = Math.max(h, _), e(a)
+                                } for (_[c] = h, f = Math.max(h, f), e(a)
                                 .attr({
                                     "data-column": h
                                 }), s = l; s < l + u; s++)
                                 for (void 0 === m[s] && (m[s] = []), p = m[s], o = h; o < h +
                                     d; o++) p[o] = "x"
                         }
-                    t.config.columns = _ + 1
+                    t.config.columns = f + 1
                 }
 
                 function u(e) {
@@ -29535,7 +29632,7 @@ Object.values || (Object.values = function (e) {
                         }))
                 }
 
-                function f(t) {
+                function _(t) {
                     if (t.config.widthFixed && 0 === e(t)
                         .find("colgroup")
                         .length) {
@@ -29554,7 +29651,7 @@ Object.values || (Object.values = function (e) {
                     }
                 }
 
-                function _(t, i) {
+                function f(t, i) {
                     var n, s, o, a = t.config,
                         r = i || a.sortList;
                     a.sortList = [], e.each(r, (function (t, i) {
@@ -29608,39 +29705,39 @@ Object.values || (Object.values = function (e) {
                 }
 
                 function b(e) {
-                    var t, s, o, a, r, l, c, u, d, h, p, m, f = 0,
-                        _ = e.config,
-                        v = _.textSorter || "",
-                        b = _.sortList,
+                    var t, s, o, a, r, l, c, u, d, h, p, m, _ = 0,
+                        f = e.config,
+                        v = f.textSorter || "",
+                        b = f.sortList,
                         y = b.length,
                         w = e.tBodies.length;
-                    if (!_.serverSideSorting && !n(_.cache)) {
-                        for (_.debug && (d = new Date), s = 0; s < w; s++) r = _.cache[s].colMax,
-                            (l = _.cache[s].normalized)
+                    if (!f.serverSideSorting && !n(f.cache)) {
+                        for (f.debug && (d = new Date), s = 0; s < w; s++) r = f.cache[s].colMax,
+                            (l = f.cache[s].normalized)
                             .length, u = l && l[0] ? l[0].length - 1 : 0, l.sort((function (i,
                             n) {
                                 for (t = 0; t < y; t++) {
-                                    if (a = b[t][0], c = b[t][1], f = 0 === c, _
+                                    if (a = b[t][0], c = b[t][1], _ = 0 === c, f
                                         .sortStable && i[a] === n[a] && 1 === y) return i[
                                         u] - n[u];
-                                    if ((o = /n/i.test(g(_.parsers, a))) && _.strings[a] ?
-                                        (o = "boolean" == typeof _.string[_.strings[a]] ?
-                                            (f ? 1 : -1) * (_.string[_.strings[a]] ? -1 :
-                                                1) : _.strings[a] && _.string[_.strings[
-                                                a]] || 0, h = _.numberSorter ? _
-                                            .numberSorter(i[a], n[a], f, r[a], e) : x[
-                                                "sortNumeric" + (f ? "Asc" : "Desc")](i[
-                                                a], n[a], o, r[a], a, e)) : (p = f ? i :
-                                            n, m = f ? n : i, h = "function" == typeof v ?
-                                            v(p[a], m[a], f, a, e) : "object" ==
+                                    if ((o = /n/i.test(g(f.parsers, a))) && f.strings[a] ?
+                                        (o = "boolean" == typeof f.string[f.strings[a]] ?
+                                            (_ ? 1 : -1) * (f.string[f.strings[a]] ? -1 :
+                                                1) : f.strings[a] && f.string[f.strings[
+                                                a]] || 0, h = f.numberSorter ? f
+                                            .numberSorter(i[a], n[a], _, r[a], e) : x[
+                                                "sortNumeric" + (_ ? "Asc" : "Desc")](i[
+                                                a], n[a], o, r[a], a, e)) : (p = _ ? i :
+                                            n, m = _ ? n : i, h = "function" == typeof v ?
+                                            v(p[a], m[a], _, a, e) : "object" ==
                                             typeof v && v.hasOwnProperty(a) ? v[a](p[a],
-                                                m[a], f, a, e) : x["sortNatural" + (f ?
-                                                "Asc" : "Desc")](i[a], n[a], a, e, _)), h)
+                                                m[a], _, a, e) : x["sortNatural" + (_ ?
+                                                "Asc" : "Desc")](i[a], n[a], a, e, f)), h)
                                         return h
                                 }
                                 return i[u] - n[u]
                             }));
-                        _.debug && i("Sorting on " + b.toString() + " and dir " + c + " time", d)
+                        f.debug && i("Sorting on " + b.toString() + " and dir " + c + " time", d)
                     }
                 }
 
@@ -29701,16 +29798,16 @@ Object.values || (Object.values = function (e) {
                             else {
                                 var u, d, m = r.filter("tr")
                                     .length,
-                                    f = [],
-                                    _ = r[0].cells.length,
+                                    _ = [],
+                                    f = r[0].cells.length,
                                     g = o.find("tbody")
                                     .index(r.parents("tbody")
                                         .filter(":first"));
                                 for (i.parsers || a(t), u = 0; u < m; u++) {
-                                    for (d = 0; d < _; d++) f[d] = i.parsers[d].format(s(
+                                    for (d = 0; d < f; d++) _[d] = i.parsers[d].format(s(
                                         t, r[u].cells[d], d), t, r[u].cells[d], d);
-                                    f.push(i.cache[g].row.length), i.cache[g].row.push([r[
-                                        u]]), i.cache[g].normalized.push(f), f = []
+                                    _.push(i.cache[g].row.length), i.cache[g].row.push([r[
+                                        u]]), i.cache[g].normalized.push(_), _ = []
                                 }
                                 w(o, l, c)
                             }
@@ -29720,7 +29817,7 @@ Object.values || (Object.values = function (e) {
                         }))
                         .bind("sorton" + i.namespace, (function (e, i, s, a) {
                             var c = t.config;
-                            e.stopPropagation(), o.trigger("sortStart", this), _(t, i), m(
+                            e.stopPropagation(), o.trigger("sortStart", this), f(t, i), m(
                                     t), c.delayInit && n(c.cache) && r(t), o.trigger(
                                     "sortBegin", this), b(t), l(t, a), o.trigger(
                                     "sortEnd", this)
@@ -29866,7 +29963,7 @@ Object.values || (Object.values = function (e) {
                             "aria-relevant": "all"
                         }), n.$table.find("caption")
                         .length && n.$table.attr("aria-labelledby", "theCaption"), n
-                        .widgetInit = {}, d(i), f(i), a(i), n.delayInit || r(i), x.bindEvents(
+                        .widgetInit = {}, d(i), _(i), a(i), n.delayInit || r(i), x.bindEvents(
                             i, n.$headers), k(i), n.supportsDataObject && void 0 !== l.data()
                         .sortlist ? n.sortList = l.data()
                         .sortlist : c && l.metadata() && l.metadata()
@@ -30342,13 +30439,13 @@ Object.values || (Object.values = function (e) {
                     p = !0 !== n || u.offsetWidth * u.offsetHeight;
                 if ("function" == typeof u.getBoundingClientRect) {
                     var m = u.getBoundingClientRect(),
-                        f = r ? m.top - c.top >= 0 && m.top < h + c.top : m.top >= 0 && m.top < h,
-                        _ = r ? m.bottom - c.top > 0 && m.bottom <= h + c.top : m.bottom > 0 && m
+                        _ = r ? m.top - c.top >= 0 && m.top < h + c.top : m.top >= 0 && m.top < h,
+                        f = r ? m.bottom - c.top > 0 && m.bottom <= h + c.top : m.bottom > 0 && m
                         .bottom <= h,
                         g = r ? m.left - c.left >= 0 && m.left < d + c.left : m.left >= 0 && m.left < d,
                         v = r ? m.right - c.left > 0 && m.right < d + c.left : m.right > 0 && m.right <=
                         d,
-                        b = i ? f || _ : f && _,
+                        b = i ? _ || f : _ && f,
                         y = i ? g || v : g && v;
                     b = m.top < 0 && m.bottom > h || b, y = m.left < 0 && m.right > d || y;
                     if ("both" === s) return p && b && y;
@@ -32119,14 +32216,14 @@ Object.values || (Object.values = function (e) {
             return window["webkit" + e] || window["moz" + e] || window["ms" + e]
         }
 
-        function f(e) {
+        function _(e) {
             var t = +new Date,
                 i = Math.max(0, 16 - (t - at));
             return at = t + i, window.setTimeout(e, i)
         }
 
-        function _(e, t, n) {
-            if (!n || rt !== f) return rt.call(window, i(e, t));
+        function f(e, t, n) {
+            if (!n || rt !== _) return rt.call(window, i(e, t));
             e.call(t)
         }
 
@@ -32419,21 +32516,21 @@ Object.values || (Object.values = function (e) {
         }
 
         function ce() {
-            fe(window, "dragstart", ke)
+            _e(window, "dragstart", ke)
         }
 
         function ue() {
-            _e(window, "dragstart", ke)
+            fe(window, "dragstart", ke)
         }
 
         function de(e) {
             for (; - 1 === e.tabIndex;) e = e.parentNode;
-            e.style && (he(), fi = e, _i = e.style.outline, e.style.outline = "none", fe(window,
+            e.style && (he(), _i = e, fi = e.style.outline, e.style.outline = "none", _e(window,
                 "keydown", he))
         }
 
         function he() {
-            fi && (fi.style.outline = _i, fi = void 0, _i = void 0, _e(window, "keydown", he))
+            _i && (_i.style.outline = fi, _i = void 0, fi = void 0, fe(window, "keydown", he))
         }
 
         function pe(e) {
@@ -32452,7 +32549,7 @@ Object.values || (Object.values = function (e) {
             }
         }
 
-        function fe(e, t, i, n) {
+        function _e(e, t, i, n) {
             if ("object" == typeof t)
                 for (var s in t) ge(e, s, t[s], i);
             else
@@ -32461,7 +32558,7 @@ Object.values || (Object.values = function (e) {
             return this
         }
 
-        function _e(e, t, i, n) {
+        function fe(e, t, i, n) {
             if ("object" == typeof t)
                 for (var s in t) ve(e, s, t[s], i);
             else if (t)
@@ -32514,7 +32611,7 @@ Object.values || (Object.values = function (e) {
         }
 
         function we(e) {
-            return fe(e, "mousedown touchstart dblclick", be), ge(e, "click", Se), this
+            return _e(e, "mousedown touchstart dblclick", be), ge(e, "click", Se), this
         }
 
         function ke(e) {
@@ -32738,7 +32835,7 @@ Object.values || (Object.values = function (e) {
         }
 
         function Je(e, t) {
-            return new fn(e, t)
+            return new _n(e, t)
         }
 
         function Qe(e) {
@@ -32765,7 +32862,7 @@ Object.values || (Object.values = function (e) {
             },
             ot = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=",
             at = 0,
-            rt = window.requestAnimationFrame || m("RequestAnimationFrame") || f,
+            rt = window.requestAnimationFrame || m("RequestAnimationFrame") || _,
             lt = window.cancelAnimationFrame || m("CancelAnimationFrame") || m(
                 "CancelRequestAnimationFrame") || function (e) {
                 window.clearTimeout(e)
@@ -32791,7 +32888,7 @@ Object.values || (Object.values = function (e) {
                 emptyImageUrl: ot,
                 requestFn: rt,
                 cancelFn: lt,
-                requestAnimFrame: _,
+                requestAnimFrame: f,
                 cancelAnimFrame: g
             });
         v.extend = function (e) {
@@ -33239,7 +33336,7 @@ Object.values || (Object.values = function (e) {
                     return this.R * l
                 }
             }),
-            ft = {
+            _t = {
                 R: 6378137,
                 MAX_LATITUDE: 85.0511287798,
                 project: function (e) {
@@ -33272,11 +33369,11 @@ Object.values || (Object.values = function (e) {
                     this._c)
             }
         };
-        var _t, gt, vt, bt = t({}, mt, {
+        var ft, gt, vt, bt = t({}, mt, {
                 code: "EPSG:3857",
-                projection: ft,
+                projection: _t,
                 transformation: function () {
-                    var e = .5 / (Math.PI * ft.R);
+                    var e = .5 / (Math.PI * _t.R);
                     return E(e, .5, -e, .5)
                 }()
             }),
@@ -33375,15 +33472,15 @@ Object.values || (Object.values = function (e) {
             hi = oe(["webkitTransition", "transition", "OTransition", "MozTransition",
                 "msTransition"]),
             pi = "webkitTransition" === hi || "OTransition" === hi ? hi + "End" : "transitionend";
-        if ("onselectstart" in document) _t = function () {
-            fe(window, "selectstart", ke)
-        }, gt = function () {
+        if ("onselectstart" in document) ft = function () {
             _e(window, "selectstart", ke)
+        }, gt = function () {
+            fe(window, "selectstart", ke)
         };
         else {
             var mi = oe(["userSelect", "WebkitUserSelect", "OUserSelect", "MozUserSelect",
                 "msUserSelect"]);
-            _t = function () {
+            ft = function () {
                 if (mi) {
                     var e = document.documentElement.style;
                     vt = e[mi], e[mi] = "none"
@@ -33392,7 +33489,7 @@ Object.values || (Object.values = function (e) {
                 mi && (document.documentElement.style[mi] = vt, vt = void 0)
             }
         }
-        var fi, _i, gi, vi = (Object.freeze || Object)({
+        var _i, fi, gi, vi = (Object.freeze || Object)({
                 TRANSFORM: di,
                 TRANSITION: hi,
                 TRANSITION_END: pi,
@@ -33413,7 +33510,7 @@ Object.values || (Object.values = function (e) {
                 setTransform: ae,
                 setPosition: re,
                 getPosition: le,
-                disableTextSelection: _t,
+                disableTextSelection: ft,
                 enableTextSelection: gt,
                 disableImageDrag: ce,
                 enableImageDrag: ue,
@@ -33426,8 +33523,8 @@ Object.values || (Object.values = function (e) {
             yi = Lt && Mt ? 2 * window.devicePixelRatio : jt ? window.devicePixelRatio : 1,
             wi = {},
             ki = (Object.freeze || Object)({
-                on: fe,
-                off: _e,
+                on: _e,
+                off: fe,
                 stopPropagation: be,
                 disableScrollPropagation: ye,
                 disableClickPropagation: we,
@@ -33438,8 +33535,8 @@ Object.values || (Object.values = function (e) {
                 fakeStop: Se,
                 skipped: Te,
                 isExternalTarget: Ae,
-                addListener: fe,
-                removeListener: _e
+                addListener: _e,
+                removeListener: fe
             }),
             xi = dt.extend({
                 run: function (e, t, i, n) {
@@ -33452,7 +33549,7 @@ Object.values || (Object.values = function (e) {
                     this._inProgress && (this._step(!0), this._complete())
                 },
                 _animate: function () {
-                    this._animId = _(this._animate, this), this._step()
+                    this._animId = f(this._animate, this), this._step()
                 },
                 _step: function (e) {
                     var t = +new Date - this._startTime,
@@ -33500,7 +33597,7 @@ Object.values || (Object.values = function (e) {
                             reset: !0
                         }), this.callInitHooks(), this._zoomAnimated = hi && Bt && !Zt && this
                         .options.zoomAnimation, this._zoomAnimated && (this
-                        ._createAnimProxy(), fe(this._proxy, pi, this._catchTransitionEnd,
+                        ._createAnimProxy(), _e(this._proxy, pi, this._catchTransitionEnd,
                                 this)), this._addLayers(this.options.layers)
                 },
                 setView: function (e, i, n) {
@@ -33602,8 +33699,8 @@ Object.values || (Object.values = function (e) {
                 },
                 flyTo: function (e, t, i) {
                     function n(e) {
-                        var t = (g * g - f * f + (e ? -1 : 1) * y * y * v * v) / (2 * (e ? g :
-                                f) * y * v),
+                        var t = (g * g - _ * _ + (e ? -1 : 1) * y * y * v * v) / (2 * (e ? g :
+                                _) * y * v),
                             i = Math.sqrt(t * t + 1) - t;
                         return i < 1e-9 ? -18 : Math.log(i)
                     }
@@ -33621,11 +33718,11 @@ Object.values || (Object.values = function (e) {
                     }
 
                     function r(e) {
-                        return f * (o(w) / o(w + b * e))
+                        return _ * (o(w) / o(w + b * e))
                     }
 
                     function l(e) {
-                        return f * (o(w) * a(w + b * e) - s(w)) / y
+                        return _ * (o(w) * a(w + b * e) - s(w)) / y
                     }
 
                     function c(e) {
@@ -33635,9 +33732,9 @@ Object.values || (Object.values = function (e) {
                     function u() {
                         var i = (Date.now() - k) / z,
                             n = c(i) * x;
-                        i <= 1 ? (this._flyToFrame = _(u, this), this._move(this.unproject(d
+                        i <= 1 ? (this._flyToFrame = f(u, this), this._move(this.unproject(d
                                 .add(h.subtract(d)
-                                    .multiplyBy(l(n) / v)), m), this.getScaleZoom(f /
+                                    .multiplyBy(l(n) / v)), m), this.getScaleZoom(_ /
                                 r(n), m), {
                                 flyTo: !0
                             })) : this._move(e, t)
@@ -33651,8 +33748,8 @@ Object.values || (Object.values = function (e) {
                         p = this.getSize(),
                         m = this._zoom;
                     e = T(e), t = void 0 === t ? m : t;
-                    var f = Math.max(p.x, p.y),
-                        g = f * this.getZoomScale(m, t),
+                    var _ = Math.max(p.x, p.y),
+                        g = _ * this.getZoomScale(m, t),
                         v = h.distanceTo(d) || 1,
                         b = 1.42,
                         y = b * b,
@@ -33950,7 +34047,7 @@ Object.values || (Object.values = function (e) {
                     if (!t) throw new Error("Map container not found.");
                     if (t._leaflet_id) throw new Error(
                         "Map container is already initialized.");
-                    fe(t, "scroll", this._onScroll, this), this._containerId = n(t)
+                    _e(t, "scroll", this._onScroll, this), this._containerId = n(t)
                 },
                 _initLayout: function () {
                     var e = this._container;
@@ -34014,7 +34111,7 @@ Object.values || (Object.values = function (e) {
                 },
                 _initEvents: function (e) {
                     this._targets = {}, this._targets[n(this._container)] = this;
-                    var t = e ? _e : fe;
+                    var t = e ? fe : _e;
                     t(this._container,
                             "click dblclick mousedown mouseup mouseover mouseout mousemove contextmenu keypress",
                             this._handleDOMEvent, this), this.options.trackResize && t(window,
@@ -34023,7 +34120,7 @@ Object.values || (Object.values = function (e) {
                         .call(this, "moveend", this._onMoveEnd)
                 },
                 _onResize: function () {
-                    g(this._resizeRequest), this._resizeRequest = _((function () {
+                    g(this._resizeRequest), this._resizeRequest = f((function () {
                         this.invalidateSize({
                             debounceMoveend: !0
                         })
@@ -34224,7 +34321,7 @@ Object.values || (Object.values = function (e) {
                         s = this._getCenterOffset(e)
                         ._divideBy(1 - 1 / n);
                     return !(!0 !== i.animate && !this.getSize()
-                        .contains(s) || (_((function () {
+                        .contains(s) || (f((function () {
                             this._moveStart(!0, !1)
                                 ._animateZoom(e, t, !0)
                         }), this), 0))
@@ -34241,7 +34338,7 @@ Object.values || (Object.values = function (e) {
                 _onZoomTransitionEnd: function () {
                     this._animatingZoom && (this._mapPane && ee(this._mapPane,
                         "leaflet-zoom-anim"), this._animatingZoom = !1, this._move(
-                        this._animateToCenter, this._animateToZoom), _((function () {
+                        this._animateToCenter, this._animateToZoom), f((function () {
                         this._moveEnd(!0)
                     }), this))
                 }
@@ -34374,13 +34471,13 @@ Object.values || (Object.values = function (e) {
                         i = this.options.collapsed;
                     t.setAttribute("aria-haspopup", !0), we(t), ye(t);
                     var n = this._section = Z("section", e + "-list");
-                    i && (this._map.on("click", this.collapse, this), St || fe(t, {
+                    i && (this._map.on("click", this.collapse, this), St || _e(t, {
                         mouseenter: this.expand,
                         mouseleave: this.collapse
                     }, this));
                     var s = this._layersLink = Z("a", e + "-toggle", t);
-                    s.href = "#", s.title = "Layers", Ut ? (fe(s, "click", xe), fe(s, "click",
-                            this.expand, this)) : fe(s, "focus", this.expand, this), i || this
+                    s.href = "#", s.title = "Layers", Ut ? (_e(s, "click", xe), _e(s, "click",
+                            this.expand, this)) : _e(s, "focus", this.expand, this), i || this
                         .expand(), this._baseLayersList = Z("div", e + "-base", n), this
                         ._separator = Z("div", e + "-separator", n), this._overlaysList = Z(
                             "div", e + "-overlays", n), t.appendChild(n)
@@ -34436,7 +34533,7 @@ Object.values || (Object.values = function (e) {
                             .type = "checkbox", t.className =
                             "leaflet-control-layers-selector", t.defaultChecked = s) : t =
                         this._createRadioElement("leaflet-base-layers", s), this
-                        ._layerControlInputs.push(t), t.layerId = n(e.layer), fe(t, "click",
+                        ._layerControlInputs.push(t), t.layerId = n(e.layer), _e(t, "click",
                             this._onInputClick, this);
                     var o = document.createElement("span");
                     o.innerHTML = " " + e.name;
@@ -34514,8 +34611,8 @@ Object.values || (Object.values = function (e) {
                 _createButton: function (e, t, i, n, s) {
                     var o = Z("a", i, n);
                     return o.innerHTML = e, o.href = "#", o.title = t, o.setAttribute("role",
-                        "button"), o.setAttribute("aria-label", t), we(o), fe(o, "click",
-                        xe), fe(o, "click", s, this), fe(o, "click", this._refocusOnMap,
+                        "button"), o.setAttribute("aria-label", t), we(o), _e(o, "click",
+                        xe), _e(o, "click", s, this), _e(o, "click", this._refocusOnMap,
                         this), o
                 },
                 _updateDisabled: function () {
@@ -34683,11 +34780,11 @@ Object.values || (Object.values = function (e) {
                         ._preventOutline = i
                 },
                 enable: function () {
-                    this._enabled || (fe(this._dragStartTarget, Di, this._onDown, this), this
+                    this._enabled || (_e(this._dragStartTarget, Di, this._onDown, this), this
                         ._enabled = !0)
                 },
                 disable: function () {
-                    this._enabled && (Oi._dragging === this && this.finishDrag(), _e(this
+                    this._enabled && (Oi._dragging === this && this.finishDrag(), fe(this
                             ._dragStartTarget, Di, this._onDown, this), this._enabled = !
                         1, this._moved = !1)
                 },
@@ -34696,12 +34793,12 @@ Object.values || (Object.values = function (e) {
                             "leaflet-zoom-anim") && !(Oi._dragging || e.shiftKey || 1 !==
                             e.which && 1 !== e.button && !e.touches || (Oi._dragging =
                                 this, this._preventOutline && de(this._element), ce(),
-                                _t(), this._moving)))) {
+                                ft(), this._moving)))) {
                         this.fire("down");
                         var t = e.touches ? e.touches[0] : e,
                             i = pe(this._element);
                         this._startPoint = new y(t.clientX, t.clientY), this._parentScale =
-                            me(i), fe(document, Li[e.type], this._onMove, this), fe(document,
+                            me(i), _e(document, Li[e.type], this._onMove, this), _e(document,
                                 Ni[e.type], this._onUp, this)
                     }
                 },
@@ -34726,7 +34823,7 @@ Object.values || (Object.values = function (e) {
                                             "leaflet-drag-target")), this._newPos = this
                                     ._startPos.add(i), this._moving = !0, g(this
                                     ._animRequest), this._lastEvent = e, this._animRequest =
-                                    _(this._updatePosition, this, !0)))
+                                    f(this._updatePosition, this, !0)))
                         }
                 },
                 _updatePosition: function () {
@@ -34742,8 +34839,8 @@ Object.values || (Object.values = function (e) {
                 finishDrag: function () {
                     for (var e in ee(document.body, "leaflet-dragging"), this._lastTarget && (
                             ee(this._lastTarget, "leaflet-drag-target"), this
-                            ._lastTarget = null), Li) _e(document, Li[e], this._onMove, this),
-                        _e(document, Ni[e], this._onUp, this);
+                            ._lastTarget = null), Li) fe(document, Li[e], this._onMove, this),
+                        fe(document, Ni[e], this._onUp, this);
                     ue(), gt(), this._moved && this._moving && (g(this._animRequest), this
                         .fire("dragend", {
                             distance: this._newPos.distanceTo(this._startPos)
@@ -34801,7 +34898,7 @@ Object.values || (Object.values = function (e) {
             Hi = (Object.freeze || Object)({
                 LonLat: Bi,
                 Mercator: Fi,
-                SphericalMercator: ft
+                SphericalMercator: _t
             }),
             Wi = t({}, mt, {
                 code: "EPSG:3395",
@@ -35133,7 +35230,7 @@ Object.values || (Object.values = function (e) {
                                 animate: !1
                             }), this._draggable._newPos._add(c), this._draggable._startPos
                             ._add(c), re(t._icon, this._draggable._newPos), this._onDrag(e),
-                            this._panRequest = _(this._adjustPan.bind(this, e))
+                            this._panRequest = f(this._adjustPan.bind(this, e))
                     }
                 },
                 _onDragStart: function () {
@@ -35143,7 +35240,7 @@ Object.values || (Object.values = function (e) {
                 },
                 _onPreDrag: function (e) {
                     this._marker.options.autoPan && (g(this._panRequest), this._panRequest =
-                        _(this._adjustPan.bind(this, e)))
+                        f(this._adjustPan.bind(this, e)))
                 },
                 _onDrag: function (e) {
                     var t = this._marker,
@@ -35973,11 +36070,11 @@ Object.values || (Object.values = function (e) {
                             "") + " leaflet-zoom-animated"),
                         i = this._wrapper = Z("div", e + "-content-wrapper", t);
                     if (this._contentNode = Z("div", e + "-content", i), we(i), ye(this
-                            ._contentNode), fe(i, "contextmenu", be), this._tipContainer = Z(
+                            ._contentNode), _e(i, "contextmenu", be), this._tipContainer = Z(
                             "div", e + "-tip-container", t), this._tip = Z("div", e + "-tip",
                             this._tipContainer), this.options.closeButton) {
                         var n = this._closeButton = Z("a", e + "-close-button", t);
-                        n.href = "#close", n.innerHTML = "&#215;", fe(n, "click", this
+                        n.href = "#close", n.innerHTML = "&#215;", _e(n, "click", this
                             ._onCloseButtonClick, this)
                     }
                 },
@@ -36379,7 +36476,7 @@ Object.values || (Object.values = function (e) {
                             }
                         }
                         i && !this._noPrune && this._pruneTiles(), t && (g(this._fadeFrame),
-                            this._fadeFrame = _(this._updateOpacity, this))
+                            this._fadeFrame = f(this._updateOpacity, this))
                     }
                 },
                 _onOpaqueTile: a,
@@ -36563,9 +36660,9 @@ Object.values || (Object.values = function (e) {
                                     })), 0 !== a.length) {
                                     this._loading || (this._loading = !0, this.fire(
                                         "loading"));
-                                    var f = document.createDocumentFragment();
-                                    for (h = 0; h < a.length; h++) this._addTile(a[h], f);
-                                    this._level.el.appendChild(f)
+                                    var _ = document.createDocumentFragment();
+                                    for (h = 0; h < a.length; h++) this._addTile(a[h], _);
+                                    this._level.el.appendChild(_)
                                 }
                             }
                         }
@@ -36625,7 +36722,7 @@ Object.values || (Object.values = function (e) {
                     var n = this._getTilePos(e),
                         s = this._tileCoordsToKey(e),
                         o = this.createTile(this._wrapCoords(e), i(this._tileReady, this, e));
-                    this._initTile(o), this.createTile.length < 2 && _(i(this._tileReady,
+                    this._initTile(o), this.createTile.length < 2 && f(i(this._tileReady,
                         this, e, null, o)), re(o, n), this._tiles[s] = {
                         el: o,
                         coords: e,
@@ -36643,13 +36740,13 @@ Object.values || (Object.values = function (e) {
                     });
                     var s = this._tileCoordsToKey(e);
                     (n = this._tiles[s]) && (n.loaded = +new Date, this._map._fadeAnimated ? (
-                            ne(n.el, 0), g(this._fadeFrame), this._fadeFrame = _(this
+                            ne(n.el, 0), g(this._fadeFrame), this._fadeFrame = f(this
                                 ._updateOpacity, this)) : (n.active = !0, this._pruneTiles()),
                         t || (X(n.el, "leaflet-tile-loaded"), this.fire("tileload", {
                             tile: n.el,
                             coords: e
                         })), this._noTilesToLoad() && (this._loading = !1, this.fire("load"),
-                            xt || !this._map._fadeAnimated ? _(this._pruneTiles, this) :
+                            xt || !this._map._fadeAnimated ? f(this._pruneTiles, this) :
                             setTimeout(i(this._pruneTiles, this), 250)))
                 },
                 _getTilePos: function (e) {
@@ -36674,7 +36771,7 @@ Object.values || (Object.values = function (e) {
                     return !0
                 }
             }),
-            fn = mn.extend({
+            _n = mn.extend({
                 options: {
                     minZoom: 0,
                     maxZoom: 18,
@@ -36701,7 +36798,7 @@ Object.values || (Object.values = function (e) {
                 },
                 createTile: function (e, t) {
                     var n = document.createElement("img");
-                    return fe(n, "load", i(this._tileOnLoad, this, t, n)), fe(n, "error", i(
+                    return _e(n, "load", i(this._tileOnLoad, this, t, n)), _e(n, "error", i(
                             this._tileOnError, this, t, n)), (this.options.crossOrigin ||
                             "" === this.options.crossOrigin) && (n.crossOrigin = !0 === this
                             .options.crossOrigin ? "" : this.options.crossOrigin), n.alt = "",
@@ -36758,7 +36855,7 @@ Object.values || (Object.values = function (e) {
                         ._tileReady.call(this, e, t, i)
                 }
             }),
-            _n = fn.extend({
+            fn = _n.extend({
                 defaultWmsParams: {
                     service: "WMS",
                     request: "GetMap",
@@ -36785,7 +36882,7 @@ Object.values || (Object.values = function (e) {
                     this._crs = this.options.crs || e.options.crs, this._wmsVersion =
                         parseFloat(this.wmsParams.version);
                     var t = this._wmsVersion >= 1.3 ? "crs" : "srs";
-                    this.wmsParams[t] = this._crs.code, fn.prototype.onAdd.call(this, e)
+                    this.wmsParams[t] = this._crs.code, _n.prototype.onAdd.call(this, e)
                 },
                 getTileUrl: function (e) {
                     var t = this._tileCoordsToNwSe(e),
@@ -36796,7 +36893,7 @@ Object.values || (Object.values = function (e) {
                         a = (this._wmsVersion >= 1.3 && this._crs === Vi ? [s.y, s.x, o.y, o
                             .x] : [s.x, s.y, o.x, o.y])
                         .join(","),
-                        r = fn.prototype.getTileUrl.call(this, e);
+                        r = _n.prototype.getTileUrl.call(this, e);
                     return r + d(this.wmsParams, r, this.options.uppercase) + (this.options
                         .uppercase ? "&BBOX=" : "&bbox=") + a
                 },
@@ -36804,8 +36901,8 @@ Object.values || (Object.values = function (e) {
                     return t(this.wmsParams, e), i || this.redraw(), this
                 }
             });
-        fn.WMS = _n, Je.wms = function (e, t) {
-            return new _n(e, t)
+        _n.WMS = fn, Je.wms = function (e, t) {
+            return new fn(e, t)
         };
         var gn = Ui.extend({
                 options: {
@@ -36886,13 +36983,13 @@ Object.values || (Object.values = function (e) {
                 },
                 _initContainer: function () {
                     var e = this._container = document.createElement("canvas");
-                    fe(e, "mousemove", s(this._onMouseMove, 32, this), this), fe(e,
+                    _e(e, "mousemove", s(this._onMouseMove, 32, this), this), _e(e,
                             "click dblclick mousedown mouseup contextmenu", this._onClick,
-                            this), fe(e, "mouseout", this._handleMouseOut, this), this._ctx =
+                            this), _e(e, "mouseout", this._handleMouseOut, this), this._ctx =
                         e.getContext("2d")
                 },
                 _destroyContainer: function () {
-                    g(this._redrawRequest), delete this._ctx, K(this._container), _e(this
+                    g(this._redrawRequest), delete this._ctx, K(this._container), fe(this
                         ._container), delete this._container
                 },
                 _updatePaths: function () {
@@ -36959,7 +37056,7 @@ Object.values || (Object.values = function (e) {
                 },
                 _requestRedraw: function (e) {
                     this._map && (this._extendRedrawBounds(e), this._redrawRequest = this
-                        ._redrawRequest || _(this._redraw, this))
+                        ._redrawRequest || f(this._redraw, this))
                 },
                 _extendRedrawBounds: function (e) {
                     if (e._pxBounds) {
@@ -37160,7 +37257,7 @@ Object.values || (Object.values = function (e) {
                         ._container.appendChild(this._rootGroup)
                 },
                 _destroyContainer: function () {
-                    K(this._container), _e(this._container), delete this._container,
+                    K(this._container), fe(this._container), delete this._container,
                         delete this._rootGroup, delete this._svgSize
                 },
                 _onZoomStart: function () {
@@ -37276,10 +37373,10 @@ Object.values || (Object.values = function (e) {
                         ._destroy, this)
             },
             addHooks: function () {
-                fe(this._container, "mousedown", this._onMouseDown, this)
+                _e(this._container, "mousedown", this._onMouseDown, this)
             },
             removeHooks: function () {
-                _e(this._container, "mousedown", this._onMouseDown, this)
+                fe(this._container, "mousedown", this._onMouseDown, this)
             },
             moved: function () {
                 return this._moved
@@ -37296,8 +37393,8 @@ Object.values || (Object.values = function (e) {
             },
             _onMouseDown: function (e) {
                 if (!e.shiftKey || 1 !== e.which && 1 !== e.button) return !1;
-                this._clearDeferredResetState(), this._resetState(), _t(), ce(), this
-                    ._startPoint = this._map.mouseEventToContainerPoint(e), fe(document, {
+                this._clearDeferredResetState(), this._resetState(), ft(), ce(), this
+                    ._startPoint = this._map.mouseEventToContainerPoint(e), _e(document, {
                         contextmenu: xe,
                         mousemove: this._onMouseMove,
                         mouseup: this._onMouseUp,
@@ -37316,7 +37413,7 @@ Object.values || (Object.values = function (e) {
             },
             _finish: function () {
                 this._moved && (K(this._box), ee(this._container, "leaflet-crosshair")),
-                    gt(), ue(), _e(document, {
+                    gt(), ue(), fe(document, {
                         contextmenu: xe,
                         mousemove: this._onMouseMove,
                         mouseup: this._onMouseUp,
@@ -37477,7 +37574,7 @@ Object.values || (Object.values = function (e) {
                         d = c / (i.inertiaDeceleration * a),
                         h = u.multiplyBy(-d / 2)
                         .round();
-                    h.x || h.y ? (h = t._limitOffset(h, t.options.maxBounds), _((
+                    h.x || h.y ? (h = t._limitOffset(h, t.options.maxBounds), f((
                         function () {
                             t.panBy(h, {
                                 duration: d,
@@ -37508,7 +37605,7 @@ Object.values || (Object.values = function (e) {
             },
             addHooks: function () {
                 var e = this._map._container;
-                e.tabIndex <= 0 && (e.tabIndex = "0"), fe(e, {
+                e.tabIndex <= 0 && (e.tabIndex = "0"), _e(e, {
                     focus: this._onFocus,
                     blur: this._onBlur,
                     mousedown: this._onMouseDown
@@ -37518,7 +37615,7 @@ Object.values || (Object.values = function (e) {
                 }, this)
             },
             removeHooks: function () {
-                this._removeHooks(), _e(this._map._container, {
+                this._removeHooks(), fe(this._map._container, {
                     focus: this._onFocus,
                     blur: this._onBlur,
                     mousedown: this._onMouseDown
@@ -37557,10 +37654,10 @@ Object.values || (Object.values = function (e) {
                 for (t = 0, i = s.zoomOut.length; t < i; t++) n[s.zoomOut[t]] = -e
             },
             _addHooks: function () {
-                fe(document, "keydown", this._onKeyDown, this)
+                _e(document, "keydown", this._onKeyDown, this)
             },
             _removeHooks: function () {
-                _e(document, "keydown", this._onKeyDown, this)
+                fe(document, "keydown", this._onKeyDown, this)
             },
             _onKeyDown: function (e) {
                 if (!(e.altKey || e.ctrlKey || e.metaKey)) {
@@ -37588,11 +37685,11 @@ Object.values || (Object.values = function (e) {
         });
         var An = Mi.extend({
             addHooks: function () {
-                fe(this._map._container, "mousewheel", this._onWheelScroll, this), this
+                _e(this._map._container, "mousewheel", this._onWheelScroll, this), this
                     ._delta = 0
             },
             removeHooks: function () {
-                _e(this._map._container, "mousewheel", this._onWheelScroll, this)
+                fe(this._map._container, "mousewheel", this._onWheelScroll, this)
             },
             _onWheelScroll: function (e) {
                 var t = Ce(e),
@@ -37624,10 +37721,10 @@ Object.values || (Object.values = function (e) {
         });
         var En = Mi.extend({
             addHooks: function () {
-                fe(this._map._container, "touchstart", this._onDown, this)
+                _e(this._map._container, "touchstart", this._onDown, this)
             },
             removeHooks: function () {
-                _e(this._map._container, "touchstart", this._onDown, this)
+                fe(this._map._container, "touchstart", this._onDown, this)
             },
             _onDown: function (e) {
                 if (e.touches) {
@@ -37642,7 +37739,7 @@ Object.values || (Object.values = function (e) {
                                 this._isTapValid() && (this._fireClick = !1, this
                                     ._onUp(), this._simulateEvent(
                                         "contextmenu", t))
-                            }), this), 1e3), this._simulateEvent("mousedown", t), fe(
+                            }), this), 1e3), this._simulateEvent("mousedown", t), _e(
                             document, {
                                 touchmove: this._onMove,
                                 touchend: this._onUp
@@ -37650,7 +37747,7 @@ Object.values || (Object.values = function (e) {
                 }
             },
             _onUp: function (e) {
-                if (clearTimeout(this._holdTimeout), _e(document, {
+                if (clearTimeout(this._holdTimeout), fe(document, {
                         touchmove: this._onMove,
                         touchend: this._onUp
                     }, this), this._fireClick && e && e.changedTouches) {
@@ -37683,11 +37780,11 @@ Object.values || (Object.values = function (e) {
         });
         var Pn = Mi.extend({
             addHooks: function () {
-                X(this._map._container, "leaflet-touch-zoom"), fe(this._map._container,
+                X(this._map._container, "leaflet-touch-zoom"), _e(this._map._container,
                     "touchstart", this._onTouchStart, this)
             },
             removeHooks: function () {
-                ee(this._map._container, "leaflet-touch-zoom"), _e(this._map._container,
+                ee(this._map._container, "leaflet-touch-zoom"), fe(this._map._container,
                     "touchstart", this._onTouchStart, this)
             },
             _onTouchStart: function (e) {
@@ -37702,7 +37799,7 @@ Object.values || (Object.values = function (e) {
                             ._pinchStartLatLng = t.containerPointToLatLng(i.add(n)
                                 ._divideBy(2))), this._startDist = i.distanceTo(n), this
                         ._startZoom = t.getZoom(), this._moved = !1, this._zooming = !0, t
-                        ._stop(), fe(document, "touchmove", this._onTouchMove, this), fe(
+                        ._stop(), _e(document, "touchmove", this._onTouchMove, this), _e(
                             document, "touchend", this._onTouchEnd, this), ke(e)
                 }
             },
@@ -37732,12 +37829,12 @@ Object.values || (Object.values = function (e) {
                         pinch: !0,
                         round: !1
                     });
-                    this._animRequest = _(r, this, !0), ke(e)
+                    this._animRequest = f(r, this, !0), ke(e)
                 }
             },
             _onTouchEnd: function () {
                 this._moved && this._zooming ? (this._zooming = !1, g(this._animRequest),
-                    _e(document, "touchmove", this._onTouchMove), _e(document,
+                    fe(document, "touchmove", this._onTouchMove), fe(document,
                         "touchend", this._onTouchEnd), this._map.options
                     .zoomAnimation ? this._map._animateZoom(this._center, this._map
                         ._limitZoom(this._zoom), !0, this._map.options.zoomSnap) :
@@ -37772,7 +37869,7 @@ Object.values || (Object.values = function (e) {
                 return new pn(e)
             }, e.Marker = Qi, e.marker = function (e, t) {
                 return new Qi(e, t)
-            }, e.TileLayer = fn, e.tileLayer = Je, e.GridLayer = mn, e.gridLayer = function (e) {
+            }, e.TileLayer = _n, e.tileLayer = Je, e.GridLayer = mn, e.gridLayer = function (e) {
                 return new mn(e)
             }, e.SVG = kn, e.svg = Xe, e.Renderer = gn, e.Canvas = vn, e.canvas = Qe, e.Path = Xi, e
             .CircleMarker = en, e.circleMarker = function (e, t) {
@@ -37830,69 +37927,69 @@ Object.values || (Object.values = function (e) {
             var n, l, c, u, d, h = 1732584193,
                 p = -271733879,
                 m = -1732584194,
-                f = 271733878;
-            for (n = 0; n < e.length; n += 16) l = h, c = p, u = m, d = f, p = r(p = r(p = r(p = r(p = a(p =
+                _ = 271733878;
+            for (n = 0; n < e.length; n += 16) l = h, c = p, u = m, d = _, p = r(p = r(p = r(p = r(p = a(p =
                             a(p = a(p = a(p = o(p = o(p = o(p = o(p = s(p = s(p = s(p = s(p, m = s(m,
-                                                    f = s(f, h = s(h, p, m, f,
+                                                    _ = s(_, h = s(h, p, m, _,
                                                             e[n], 7, -
                                                             680876936), p, m,
                                                         e[n + 1], 12, -
                                                         389564586), h, p, e[
                                                         n + 2], 17, 606105819
-                                                    ), f, h, e[n + 3], 22, -
-                                                1044525330), m = s(m, f = s(f,
-                                                h = s(h, p, m, f, e[n +
+                                                    ), _, h, e[n + 3], 22, -
+                                                1044525330), m = s(m, _ = s(_,
+                                                h = s(h, p, m, _, e[n +
                                                     4], 7, -176418897), p,
                                                 m, e[n + 5], 12,
                                                 1200080426), h, p, e[n +
-                                                6], 17, -1473231341), f, h, e[
+                                                6], 17, -1473231341), _, h, e[
                                                 n + 7], 22, -45705983), m = s(m,
-                                                f = s(f, h = s(h, p, m, f, e[n +
+                                                _ = s(_, h = s(h, p, m, _, e[n +
                                                         8], 7, 1770035416), p, m,
                                                     e[n + 9], 12, -1958414417), h,
-                                                p, e[n + 10], 17, -42063), f, h,
+                                                p, e[n + 10], 17, -42063), _, h,
                                             e[n + 11], 22, -1990404162), m = s(m,
-                                            f = s(f, h = s(h, p, m, f, e[n + 12],
+                                            _ = s(_, h = s(h, p, m, _, e[n + 12],
                                                 7, 1804603682), p, m, e[n +
                                                 13], 12, -40341101), h, p, e[n +
-                                                14], 17, -1502002290), f, h, e[n +
-                                            15], 22, 1236535329), m = o(m, f = o(f,
-                                                h = o(h, p, m, f, e[n + 1], 5, -
+                                                14], 17, -1502002290), _, h, e[n +
+                                            15], 22, 1236535329), m = o(m, _ = o(_,
+                                                h = o(h, p, m, _, e[n + 1], 5, -
                                                     165796510), p, m, e[n + 6], 9, -
                                                 1069501632), h, p, e[n + 11], 14,
-                                            643717713), f, h, e[n], 20, -373897302), m =
-                                        o(m, f = o(f, h = o(h, p, m, f, e[n + 5], 5, -
+                                            643717713), _, h, e[n], 20, -373897302), m =
+                                        o(m, _ = o(_, h = o(h, p, m, _, e[n + 5], 5, -
                                                     701558691), p, m, e[n + 10], 9,
                                                 38016083), h, p, e[n + 15], 14, -
-                                            660478335), f, h, e[n + 4], 20, -405537848),
-                                    m = o(m, f = o(f, h = o(h, p, m, f, e[n + 9], 5,
+                                            660478335), _, h, e[n + 4], 20, -405537848),
+                                    m = o(m, _ = o(_, h = o(h, p, m, _, e[n + 9], 5,
                                             568446438), p, m, e[n + 14], 9, -
-                                        1019803690), h, p, e[n + 3], 14, -187363961), f,
-                                    h, e[n + 8], 20, 1163531501), m = o(m, f = o(f, h = o(
-                                            h, p, m, f, e[n + 13], 5, -1444681467), p, m,
+                                        1019803690), h, p, e[n + 3], 14, -187363961), _,
+                                    h, e[n + 8], 20, 1163531501), m = o(m, _ = o(_, h = o(
+                                            h, p, m, _, e[n + 13], 5, -1444681467), p, m,
                                         e[n + 2], 9, -51403784), h, p, e[n + 7], 14,
-                                    1735328473), f, h, e[n + 12], 20, -1926607734), m = a(m,
-                                    f = a(f, h = a(h, p, m, f, e[n + 5], 4, -378558), p, m, e[
+                                    1735328473), _, h, e[n + 12], 20, -1926607734), m = a(m,
+                                    _ = a(_, h = a(h, p, m, _, e[n + 5], 4, -378558), p, m, e[
                                         n + 8], 11, -2022574463), h, p, e[n + 11], 16,
-                                    1839030562), f, h, e[n + 14], 23, -35309556), m = a(m, f = a(
-                                        f, h = a(h, p, m, f, e[n + 1], 4, -1530992060), p, m, e[
+                                    1839030562), _, h, e[n + 14], 23, -35309556), m = a(m, _ = a(
+                                        _, h = a(h, p, m, _, e[n + 1], 4, -1530992060), p, m, e[
                                             n + 4], 11, 1272893353), h, p, e[n + 7], 16, -
-                                    155497632), f, h, e[n + 10], 23, -1094730640), m = a(m, f = a(f,
-                                    h = a(h, p, m, f, e[n + 13], 4, 681279174), p, m, e[n], 11, -
-                                    358537222), h, p, e[n + 3], 16, -722521979), f, h, e[n + 6], 23,
-                                76029189), m = a(m, f = a(f, h = a(h, p, m, f, e[n + 9], 4, -
+                                    155497632), _, h, e[n + 10], 23, -1094730640), m = a(m, _ = a(_,
+                                    h = a(h, p, m, _, e[n + 13], 4, 681279174), p, m, e[n], 11, -
+                                    358537222), h, p, e[n + 3], 16, -722521979), _, h, e[n + 6], 23,
+                                76029189), m = a(m, _ = a(_, h = a(h, p, m, _, e[n + 9], 4, -
                                     640364487), p, m, e[n + 12], 11, -421815835), h, p, e[n + 15], 16,
-                                530742520), f, h, e[n + 2], 23, -995338651), m = r(m, f = r(f, h = r(
-                                h, p, m, f, e[n], 6, -198630844), p, m, e[n + 7], 10, 1126891415), h,
-                            p, e[n + 14], 15, -1416354905), f, h, e[n + 5], 21, -57434055), m = r(m, f =
-                            r(f, h = r(h, p, m, f, e[n + 12], 6, 1700485571), p, m, e[n + 3], 10, -
-                                1894986606), h, p, e[n + 10], 15, -1051523), f, h, e[n + 1], 21, -
-                        2054922799), m = r(m, f = r(f, h = r(h, p, m, f, e[n + 8], 6, 1873313359), p, m,
-                        e[n + 15], 10, -30611744), h, p, e[n + 6], 15, -1560198380), f, h, e[n + 13], 21,
-                    1309151649), m = r(m, f = r(f, h = r(h, p, m, f, e[n + 4], 6, -145523070), p, m, e[n +
-                    11], 10, -1120210379), h, p, e[n + 2], 15, 718787259), f, h, e[n + 9], 21, -343485551),
-                h = t(h, l), p = t(p, c), m = t(m, u), f = t(f, d);
-            return [h, p, m, f]
+                                530742520), _, h, e[n + 2], 23, -995338651), m = r(m, _ = r(_, h = r(
+                                h, p, m, _, e[n], 6, -198630844), p, m, e[n + 7], 10, 1126891415), h,
+                            p, e[n + 14], 15, -1416354905), _, h, e[n + 5], 21, -57434055), m = r(m, _ =
+                            r(_, h = r(h, p, m, _, e[n + 12], 6, 1700485571), p, m, e[n + 3], 10, -
+                                1894986606), h, p, e[n + 10], 15, -1051523), _, h, e[n + 1], 21, -
+                        2054922799), m = r(m, _ = r(_, h = r(h, p, m, _, e[n + 8], 6, 1873313359), p, m,
+                        e[n + 15], 10, -30611744), h, p, e[n + 6], 15, -1560198380), _, h, e[n + 13], 21,
+                    1309151649), m = r(m, _ = r(_, h = r(h, p, m, _, e[n + 4], 6, -145523070), p, m, e[n +
+                    11], 10, -1120210379), h, p, e[n + 2], 15, 718787259), _, h, e[n + 9], 21, -343485551),
+                h = t(h, l), p = t(p, c), m = t(m, u), _ = t(_, d);
+            return [h, p, m, _]
         }
 
         function c(e) {
@@ -37934,12 +38031,12 @@ Object.values || (Object.values = function (e) {
             return unescape(encodeURIComponent(e))
         }
 
-        function f(e) {
+        function _(e) {
             return d(m(e))
         }
 
-        function _(e) {
-            return p(f(e))
+        function f(e) {
+            return p(_(e))
         }
 
         function g(e, t) {
@@ -37951,7 +38048,7 @@ Object.values || (Object.values = function (e) {
         }
 
         function b(e, t, i) {
-            return t ? i ? g(t, e) : v(t, e) : i ? f(e) : _(e)
+            return t ? i ? g(t, e) : v(t, e) : i ? _(e) : f(e)
         }
         "function" == typeof define && define.amd ? define((function () {
             return b
@@ -39598,15 +39695,15 @@ function (e) {
                     d < m.left ? "right" : r, o.removeClass(p)
                     .addClass(r)
             }
-            var f = this.getCalculatedOffset(r, u, d, h);
-            this.applyPlacement(f, r);
-            var _ = function () {
+            var _ = this.getCalculatedOffset(r, u, d, h);
+            this.applyPlacement(_, r);
+            var f = function () {
                 var e = s.hoverState;
                 s.$element.trigger("shown.bs." + s.type), s.hoverState = null, "out" == e && s.leave(
                     s)
             };
-            e.support.transition && this.$tip.hasClass("fade") ? o.one("bsTransitionEnd", _)
-                .emulateTransitionEnd(i.TRANSITION_DURATION) : _()
+            e.support.transition && this.$tip.hasClass("fade") ? o.one("bsTransitionEnd", f)
+                .emulateTransitionEnd(i.TRANSITION_DURATION) : f()
         }
     }, i.prototype.applyPlacement = function (t, i) {
         var n = this.tip(),
@@ -40758,8 +40855,8 @@ function (e, t) {
                             var u, h = this.className || "",
                                 p = l(this.style.cssText),
                                 m = o.data("content") ? o.data("content") : o.html(),
-                                f = o.data("tokens") ? o.data("tokens") : null,
-                                _ = void 0 !== o.data("subtext") ?
+                                _ = o.data("tokens") ? o.data("tokens") : null,
+                                f = void 0 !== o.data("subtext") ?
                                 '<small class="text-muted">' + o.data("subtext") +
                                 "</small>" : "",
                                 g = void 0 !== o.data("icon") ? '<span class="' + i
@@ -40775,7 +40872,7 @@ function (e, t) {
                                 .data("prevHiddenIndex", void 0 !== u ? u : t),
                                 void a--;
                             if (o.data("content") || (m = g + '<span class="text">' +
-                                    m + _ + "</span>"), b && !0 !== o.data(
+                                    m + f + "</span>"), b && !0 !== o.data(
                                 "divider")) {
                                 if (i.options.hideDisabled && w) {
                                     if (void 0 === v.data("allOptionsDisabled")) {
@@ -40802,13 +40899,13 @@ function (e, t) {
                                         .push(r(z, null, "dropdown-header" + x, s))
                                 }
                                 if (i.options.hideDisabled && w) return void a--;
-                                n.push(r(c(m, "opt " + h + x, p, f), t, "", s))
+                                n.push(r(c(m, "opt " + h + x, p, _), t, "", s))
                             } else if (!0 === o.data("divider")) n.push(r("", t,
                                 "divider"));
                             else if (!0 === o.data("hidden")) u = o.data(
                                     "prevHiddenIndex"), o.next()
                                 .data("prevHiddenIndex", void 0 !== u ? u : t), n
-                                .push(r(c(m, h, p, f), t, "hidden is-hidden"));
+                                .push(r(c(m, h, p, _), t, "hidden is-hidden"));
                             else {
                                 var S = this.previousElementSibling && "OPTGROUP" ===
                                     this.previousElementSibling.tagName;
@@ -40819,7 +40916,7 @@ function (e, t) {
                                         S = !0)
                                 }
                                 S && (a++, n.push(r("", null, "divider", s + "div"))),
-                                    n.push(r(c(m, h, p, f), t))
+                                    n.push(r(c(m, h, p, _), t))
                             }
                             i.liObj[t] = a
                         }
@@ -40927,8 +41024,8 @@ function (e, t) {
                     d && n.appendChild(d), n.appendChild(s), h && n.appendChild(h), i
                         .appendChild(n), document.body.appendChild(i);
                     var m = r.offsetHeight,
-                        f = c ? c.offsetHeight : 0,
-                        _ = u ? u.offsetHeight : 0,
+                        _ = c ? c.offsetHeight : 0,
+                        f = u ? u.offsetHeight : 0,
                         g = d ? d.offsetHeight : 0,
                         v = h ? h.offsetHeight : 0,
                         b = e(o)
@@ -40955,8 +41052,8 @@ function (e, t) {
                         };
                     document.body.removeChild(i), this.sizeInfo = {
                         liHeight: m,
-                        headerHeight: f,
-                        searchHeight: _,
+                        headerHeight: _,
+                        searchHeight: f,
                         actionsHeight: g,
                         doneButtonHeight: v,
                         dividerHeight: b,
@@ -40974,8 +41071,8 @@ function (e, t) {
                         h = e(window),
                         p = this.$newElement[0].offsetHeight,
                         m = this.$newElement[0].offsetWidth,
-                        f = this.sizeInfo.liHeight,
-                        _ = this.sizeInfo.headerHeight,
+                        _ = this.sizeInfo.liHeight,
+                        f = this.sizeInfo.headerHeight,
                         g = this.sizeInfo.searchHeight,
                         v = this.sizeInfo.actionsHeight,
                         b = this.sizeInfo.doneButtonHeight,
@@ -41023,13 +41120,13 @@ function (e, t) {
                                 .$newElement.hasClass("dropup") && (t = o - k.vert),
                                 "auto" === c.options.dropdownAlignRight && u.toggleClass(
                                     "dropdown-menu-right", r > l && i - k.horiz < s - m),
-                                h = x.length + C.length > 3 ? 3 * f + k.vert - 2 : 0, u
+                                h = x.length + C.length > 3 ? 3 * _ + k.vert - 2 : 0, u
                                 .css({
                                     "max-height": t + "px",
                                     overflow: "hidden",
-                                    "min-height": h + _ + g + v + b + "px"
+                                    "min-height": h + f + g + v + b + "px"
                                 }), d.css({
-                                    "max-height": t - _ - g - v - b - w.vert + "px",
+                                    "max-height": t - f - g - v - b - w.vert + "px",
                                     "overflow-y": "auto",
                                     "min-height": Math.max(h - w.vert, 0) + "px"
                                 })
@@ -41051,12 +41148,12 @@ function (e, t) {
                             T = this.$lis.slice(0, S + 1)
                             .filter(".divider")
                             .length;
-                        t = f * this.options.size + T * y + w.vert, c.options.container ? (u
+                        t = _ * this.options.size + T * y + w.vert, c.options.container ? (u
                                 .data("height") || u.data("height", u.height()), n = u.data(
                                     "height")) : n = u.height(), c.options.dropupAuto && this
                             .$newElement.toggleClass("dropup", o > a && t - k.vert < n), u
                             .css({
-                                "max-height": t + _ + g + v + b + "px",
+                                "max-height": t + f + g + v + b + "px",
                                 overflow: "hidden",
                                 "min-height": ""
                             }), d.css({
@@ -41215,11 +41312,11 @@ function (e, t) {
                         if (t.multiple) {
                             if (u.prop("selected", !d), t.setSelected(o, !d), n
                                 .blur(), !1 !== p || !1 !== m) {
-                                var f = p < c.filter(":selected")
+                                var _ = p < c.filter(":selected")
                                     .length,
-                                    _ = m < h.find("option:selected")
+                                    f = m < h.find("option:selected")
                                     .length;
-                                if (p && f || m && _)
+                                if (p && _ || m && f)
                                     if (p && 1 == p) c.prop("selected", !1), u
                                         .prop("selected", !0), t.$menuInner.find(
                                             ".selected")
@@ -41249,10 +41346,10 @@ function (e, t) {
                                             0 : 1]), w = w.replace("{var}", b[
                                             2][m > 1 ? 0 : 1])), u.prop(
                                             "selected", !1), t.$menu.append(k),
-                                        p && f && (k.append(e("<div>" + y +
+                                        p && _ && (k.append(e("<div>" + y +
                                                 "</div>")), l = !1, t.$element
                                             .trigger("maxReached.bs.select")),
-                                        m && _ && (k.append(e("<div>" + w +
+                                        m && f && (k.append(e("<div>" + w +
                                                 "</div>")), l = !1, t.$element
                                             .trigger("maxReachedGrp.bs.select")),
                                         setTimeout((function () {
@@ -41629,7 +41726,7 @@ function (e) {
     }
 
     function o(e, t) {
-        if (Array.isArray(e) || "length" in e && fe(e.length))
+        if (Array.isArray(e) || "length" in e && _e(e.length))
             for (var i = 0; i < e.length; i++) t(i, e[i]);
         else Object.keys(e)
             .forEach((function (i) {
@@ -41694,12 +41791,12 @@ function (e) {
             }))
     }
 
-    function f(e, t, i) {
+    function _(e, t, i) {
         if (arguments.length < 3) return e.getAttribute(t);
-        null == i ? _(e, t) : e.setAttribute(t, i)
+        null == i ? f(e, t) : e.setAttribute(t, i)
     }
 
-    function _(e, t) {
+    function f(e, t) {
         e.removeAttribute(t)
     }
 
@@ -41734,8 +41831,8 @@ function (e) {
             if (1 === n) return o(e.attributes, (function (e, t) {
                 /^data\-/i.test(t.name) && (s[t.name.substr(5)] = t.value)
             })), s;
-            if (2 === n) return f(e, "data-" + t);
-            f(e, "data-" + t, String(i))
+            if (2 === n) return _(e, "data-" + t);
+            _(e, "data-" + t, String(i))
         }
     }
 
@@ -41844,14 +41941,14 @@ function (e) {
     }
 
     function $(e) {
-        return e && (!k(e, "p,div") || e.className || f(e, "style") || !i(w(e)))
+        return e && (!k(e, "p,div") || e.className || _(e, "style") || !i(w(e)))
     }
 
     function B(e, t) {
         var i = r(t, {}, e.ownerDocument);
         for (o(e.attributes, (function (e, t) {
                 try {
-                    f(i, t.name, t.value)
+                    _(i, t.name, t.value)
                 } catch (e) {}
             })); e.firstChild;) d(i, e.firstChild);
         return e.parentNode.replaceChild(i, e), i
@@ -41942,7 +42039,7 @@ function (e) {
 
     function Y(e, t) {
         var i, n, s = e.style;
-        if (_e[t] || (_e[t] = N(t)), n = s[t = _e[t]], "textAlign" === t) {
+        if (fe[t] || (fe[t] = N(t)), n = s[t = fe[t]], "textAlign" === t) {
             if (i = s.direction, n = n || y(e, t), y(e.parentNode, t) === n || "block" !== y(e, "display") ||
                 k(e, "hr,th")) return "";
             if (/right/i.test(n) && "rtl" === i || /left/i.test(n) && "ltr" === i) return ""
@@ -42168,17 +42265,17 @@ function (e) {
             i || e.sort((function (e, t) {
                 return e[0].length - t[0].length
             }));
-            var a, r, c, u, d, h, p, m, f = "(^|[\\s\xa0\u2002\u2003\u2009])",
-                _ = e.length,
+            var a, r, c, u, d, h, p, m, _ = "(^|[\\s\xa0\u2002\u2003\u2009])",
+                f = e.length,
                 g = s ? 1 : 0,
-                v = n || e[_ - 1][0].length;
+                v = n || e[f - 1][0].length;
             for (s && v++, o = o || "", d = (a = l.getOuterText(!0, v))
-                .length, a += o, t && (a += l.getOuterText(!1, v)); _--;)
-                if (m = (p = e[_][0])
+                .length, a += o, t && (a += l.getOuterText(!1, v)); f--;)
+                if (m = (p = e[f][0])
                     .length, u = Math.max(0, d - m - g), c = -1, s ? (r = a.substr(u)
-                        .match(new RegExp(f + Q(p) + f))) && (c = r.index + u + r[1].length) : c = a
+                        .match(new RegExp(_ + Q(p) + _))) && (c = r.index + u + r[1].length) : c = a
                     .indexOf(p, u), c > -1 && c <= d && c + m + g >= d) return h = d - c, l
-                    .selectOuterText(h, m - h - (/^\S/.test(o) ? 1 : 0)), l.insertHTML(e[_][1]), !0;
+                    .selectOuterText(h, m - h - (/^\S/.test(o) ? 1 : 0)), l.insertHTML(e[f][1]), !0;
             return !1
         }, l.compare = function (e, t) {
             return t || (t = l.selectedRange()), e && t ? 0 === e.compareBoundaryPoints(Range.END_TO_END,
@@ -42250,34 +42347,34 @@ function (e) {
     }
 
     function le(e, t) {
-        var i, a, l, _, x, z, S, N, L, R, W, q, U, K, Y, J, Q, ee, ie, ce, ue, de, fe, _e, ye, ke, xe, Te, Ae,
+        var i, a, l, f, x, z, S, N, L, R, W, q, U, K, Y, J, Q, ee, ie, ce, ue, de, _e, fe, ye, ke, xe, Te, Ae,
             Ee, Me, je, Ie, $e, Be, Fe, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, st,
-            ot, at, rt, lt, ct, ut, dt, ht, pt, mt, ft = this,
-            _t = {},
+            ot, at, rt, lt, ct, ut, dt, ht, pt, mt, _t = this,
+            ft = {},
             gt = [],
             vt = [],
             bt = {},
             yt = {},
             wt = {};
-        ft.commands = n(!0, {}, t.commands || Pe);
-        var kt = ft.opts = n(!0, {}, we, t);
-        ft.opts.emoticons = t.emoticons || we.emoticons, xe = function () {
-            e._sceditor = ft, kt.locale && "en" !== kt.locale && Ie(), C(a = r("div", {
+        _t.commands = n(!0, {}, t.commands || Pe);
+        var kt = _t.opts = n(!0, {}, we, t);
+        _t.opts.emoticons = t.emoticons || we.emoticons, xe = function () {
+            e._sceditor = _t, kt.locale && "en" !== kt.locale && Ie(), C(a = r("div", {
                     className: "sceditor-container"
                 }), e), y(a, "z-index", kt.zIndex), Le && A(a, "ie ie" + Le), ce = e.required, e
                 .required = !1;
             var t = le.formats[kt.format];
-            "init" in (i = t ? new t : {}) && i.init.call(ft), je(), We(), $e(), Me(), Be(), Fe(), Se ||
-                ft.toggleSourceMode(), tt();
+            "init" in (i = t ? new t : {}) && i.init.call(_t), je(), We(), $e(), Me(), Be(), Fe(), Se ||
+                _t.toggleSourceMode(), tt();
             var n = function () {
                 m(De, "load", n), kt.autofocus && at(), mt(), nt(), Y.call("ready"), "onReady" in i &&
-                    i.onReady.call(ft)
+                    i.onReady.call(_t)
             };
             p(De, "load", n), "complete" === Ne.readyState && n()
         }, je = function () {
             var e = kt.plugins;
             e = e ? e.toString()
-                .split(",") : [], Y = new ne(ft), e.forEach((function (e) {
+                .split(",") : [], Y = new ne(_t), e.forEach((function (e) {
                     Y.register(e.trim())
                 }))
         }, Ie = function () {
@@ -42285,30 +42382,30 @@ function (e) {
             (U = le.locale[kt.locale]) || (e = kt.locale.split("-"), U = le.locale[e[0]]), U && U
                 .dateFormat && (kt.dateFormat = U.dateFormat)
         }, Me = function () {
-            N = r("textarea"), _ = r("iframe", {
+            N = r("textarea"), f = r("iframe", {
                     frameborder: 0,
                     allowfullscreen: !0
-                }), kt.startInSourceMode ? (A(a, "sourceMode"), g(_)) : (A(a, "wysiwygMode"), g(N)), kt
-                .spellcheck || f(a, "spellcheck", "false"), "https:" === De.location.protocol && f(_,
-                    "src", "javascript:false"), d(a, _), d(a, N), ft.dimensions(kt.width || M(e), kt
+                }), kt.startInSourceMode ? (A(a, "sourceMode"), g(f)) : (A(a, "wysiwygMode"), g(N)), kt
+                .spellcheck || _(a, "spellcheck", "false"), "https:" === De.location.protocol && _(f,
+                    "src", "javascript:false"), d(a, f), d(a, N), _t.dimensions(kt.width || M(e), kt
                     .height || j(e));
             var t = Le ? "ie ie" + Le : "";
-            t += Ce ? " ios" : "", (S = _.contentDocument)
+            t += Ce ? " ios" : "", (S = f.contentDocument)
                 .open(), S.write(te("html", {
                     attrs: ' class="' + t + '"',
                     spellcheck: kt.spellcheck ? "" : 'spellcheck="false"',
                     charset: kt.charset,
                     style: kt.style
-                })), S.close(), z = S.body, x = _.contentWindow, ft.readOnly(!!kt.readOnly), (Ce || ze ||
-                    Le) && (j(z, "100%"), Le || p(z, "touchend", ft.focus));
-            var i = f(e, "tabindex");
-            f(N, "tabindex", i), f(_, "tabindex", i), K = new se(x), g(e), ft.val(e.value);
-            var n = kt.placeholder || f(e, "placeholder");
-            n && (N.placeholder = n, f(z, "placeholder", n))
+                })), S.close(), z = S.body, x = f.contentWindow, _t.readOnly(!!kt.readOnly), (Ce || ze ||
+                    Le) && (j(z, "100%"), Le || p(z, "touchend", _t.focus));
+            var i = _(e, "tabindex");
+            _(N, "tabindex", i), _(f, "tabindex", i), K = new se(x), g(e), _t.val(e.value);
+            var n = kt.placeholder || _(e, "placeholder");
+            n && (N.placeholder = n, _(z, "placeholder", n))
         }, Be = function () {
             kt.autoUpdate && (p(z, "blur", pt), p(N, "blur", pt)), null === kt.rtl && (kt.rtl = "rtl" ===
-                y(N, "direction")), ft.rtl(!!kt.rtl), kt.autoExpand && (p(z, "load", mt, be), p(z,
-                "input keyup", mt)), kt.resizeEnabled && He(), f(a, "id", kt.id), ft.emoticons(kt
+                y(N, "direction")), _t.rtl(!!kt.rtl), kt.autoExpand && (p(z, "load", mt, be), p(z,
+                "input keyup", mt)), kt.resizeEnabled && He(), _(a, "id", kt.id), _t.emoticons(kt
                 .emoticonsEnabled)
         }, Fe = function () {
             var t = e.form,
@@ -42316,12 +42413,12 @@ function (e) {
                 n = "keydown keyup keypress focus blur contextmenu",
                 s = "onselectionchange" in S ? "selectionchange" :
                 "keyup focus blur contextmenu mouseup touchend click";
-            p(Ne, "click", Xe), t && (p(t, "reset", Ge), p(t, "submit", ft.updateOriginal, be)), p(z,
+            p(Ne, "click", Xe), t && (p(t, "reset", Ge), p(t, "submit", _t.updateOriginal, be)), p(z,
                     "keypress", Ke), p(z, "keydown", Ue), p(z, "keydown", Ze), p(z, "keyup", nt), p(z,
                     "blur", dt), p(z, "keyup", ht), p(z, "paste", Ve), p(z, i, Je), p(z, s, st), p(z, n,
                     Qe), kt.emoticonsCompat && De.getSelection && p(z, "keyup", lt), p(z, "blur", (
                     function () {
-                        ft.val() || A(z, "placeholder")
+                        _t.val() || A(z, "placeholder")
                     })), p(z, "focus", (function () {
                     E(z, "placeholder")
                 })), p(N, "blur", dt), p(N, "keyup", ht), p(N, "keydown", Ue), p(N, i, Je), p(N, n, Qe),
@@ -42331,7 +42428,7 @@ function (e) {
                 })), p(a, "selectionchanged", ot), p(a, "selectionchanged", tt), p(a,
                     "selectionchanged valuechanged nodechanged pasteraw paste", Qe)
         }, $e = function () {
-            var e, t = ft.commands,
+            var e, t = _t.commands,
                 i = (kt.toolbarExclude || "")
                 .split(","),
                 n = kt.toolbar.split("|");
@@ -42346,7 +42443,7 @@ function (e) {
                     if (r && !(i.indexOf(s) > -1)) {
                         if (a = r.shortcut, o = te("toolbarButton", {
                                 name: s,
-                                dispName: ft._(r.name || r.tooltip || s)
+                                dispName: _t._(r.name || r.tooltip || s)
                             }, !0)
                             .firstChild, ke && ke.create) ke.create(s) && (C(ke
                             .create(s), o.firstChild), A(o, "has-icon"));
@@ -42356,9 +42453,9 @@ function (e) {
                                 T(o, "disabled") || Ae(o, r), tt(), e
                                     .preventDefault()
                             })), p(o, "mousedown", (function (e) {
-                                ft.closeDropDown(), e.preventDefault()
-                            })), r.tooltip && f(o, "title", ft._(r.tooltip) + (a ?
-                                " (" + a + ")" : "")), a && ft.addShortcut(a, s),
+                                _t.closeDropDown(), e.preventDefault()
+                            })), r.tooltip && _(o, "title", _t._(r.tooltip) + (a ?
+                                " (" + a + ")" : "")), a && _t.addShortcut(a, s),
                             r.state ? vt.push({
                                 name: s,
                                 state: r.state
@@ -42378,8 +42475,8 @@ function (e) {
                 }),
                 u = "touchmove mousemove",
                 h = "touchcancel touchend mouseup",
-                f = 0,
                 _ = 0,
+                f = 0,
                 b = 0,
                 y = 0,
                 w = 0,
@@ -42387,16 +42484,16 @@ function (e) {
                 x = M(a),
                 z = j(a),
                 C = !1,
-                S = ft.rtl();
+                S = _t.rtl();
             if (e = kt.resizeMinHeight || z / 1.5, t = kt.resizeMaxHeight || 2.5 * z, i = kt
                 .resizeMinWidth || x / 1.25, n = kt.resizeMaxWidth || 1.25 * x, s = function (s) {
                     "touchmove" === s.type ? (s = De.event, b = s.changedTouches[0].pageX, y = s
                         .changedTouches[0].pageY) : (b = s.pageX, y = s.pageY);
-                    var o = k + (y - _),
-                        a = S ? w - (b - f) : w + (b - f);
+                    var o = k + (y - f),
+                        a = S ? w - (b - _) : w + (b - _);
                     n > 0 && a > n && (a = n), i > 0 && a < i && (a = i), kt.resizeWidth || (a = !1), t >
                         0 && o > t && (o = t), e > 0 && o < e && (o = e), kt.resizeHeight || (o = !1), (
-                            a || o) && ft.dimensions(a, o), s.preventDefault()
+                            a || o) && _t.dimensions(a, o), s.preventDefault()
                 }, o = function (e) {
                     C && (C = !1, g(c), E(a, "resizing"), m(Ne, u, s), m(Ne, h, o), e.preventDefault())
                 }, ke && ke.create) {
@@ -42404,8 +42501,8 @@ function (e) {
                 T && (d(l, T), A(l, "has-icon"))
             }
             d(a, l), d(a, c), g(c), p(l, "touchstart mousedown", (function (e) {
-                "touchstart" === e.type ? (e = De.event, f = e.touches[0].pageX, _ = e
-                        .touches[0].pageY) : (f = e.pageX, _ = e.pageY), w = M(a), k = j(a),
+                "touchstart" === e.type ? (e = De.event, _ = e.touches[0].pageX, f = e
+                        .touches[0].pageY) : (_ = e.pageX, f = e.pageY), w = M(a), k = j(a),
                     C = !0, A(a, "resizing"), v(c), p(Ne, u, s), p(Ne, h, o), e
                     .preventDefault()
             }))
@@ -42425,46 +42522,46 @@ function (e) {
             var e, t, i = z.firstChild,
                 n = !!kt.autofocusEnd;
             if (D(a)) {
-                if (ft.sourceMode()) return t = n ? N.value.length : 0, void N.setSelectionRange(t, t);
+                if (_t.sourceMode()) return t = n ? N.value.length : 0, void N.setSelectionRange(t, t);
                 if (Z(z), n)
                     for ((i = z.lastChild) || (i = r("p", {}, S), d(z, i)); i.lastChild;) i = i.lastChild,
                         !Oe && k(i, "br") && i.previousSibling && (i = i.previousSibling);
                 e = S.createRange(), F(i) ? e.selectNodeContents(i) : (e.setStartBefore(i), n && e
                     .setStartAfter(i)), e.collapse(!n), K.selectRange(e), ee = e, n && (z.scrollTop =
-                    z.scrollHeight), ft.focus()
+                    z.scrollHeight), _t.focus()
             }
-        }, ft.readOnly = function (e) {
+        }, _t.readOnly = function (e) {
             return "boolean" != typeof e ? !N.readonly : (z.contentEditable = !e, N.readonly = !e, et(e),
-                ft)
-        }, ft.rtl = function (e) {
+                _t)
+        }, _t.rtl = function (e) {
             var t = e ? "rtl" : "ltr";
-            return "boolean" != typeof e ? "rtl" === f(N, "dir") : (f(z, "dir", t), f(N, "dir", t), E(a,
-                "rtl"), E(a, "ltr"), A(a, t), ke && ke.rtl && ke.rtl(e), ft)
+            return "boolean" != typeof e ? "rtl" === _(N, "dir") : (_(z, "dir", t), _(N, "dir", t), E(a,
+                "rtl"), E(a, "ltr"), A(a, t), ke && ke.rtl && ke.rtl(e), _t)
         }, et = function (e) {
-            var t = ft.inSourceMode() ? "_sceTxtMode" : "_sceWysiwygMode";
+            var t = _t.inSourceMode() ? "_sceTxtMode" : "_sceWysiwygMode";
             o(yt, (function (i, n) {
                 P(n, "disabled", e || !n[t])
             }))
-        }, ft.width = function (e, t) {
-            return e || 0 === e ? (ft.dimensions(e, null, t), ft) : M(a)
-        }, ft.dimensions = function (e, t, i) {
+        }, _t.width = function (e, t) {
+            return e || 0 === e ? (_t.dimensions(e, null, t), _t) : M(a)
+        }, _t.dimensions = function (e, t, i) {
             return t = !(!t && 0 !== t) && t, !1 === (e = !(!e && 0 !== e) && e) && !1 === t ? {
-                width: ft.width(),
-                height: ft.height()
+                width: _t.width(),
+                height: _t.height()
             } : (!1 !== e && (!1 !== i && (kt.width = e), M(a, e)), !1 !== t && (!1 !== i && (kt
-                .height = t), j(a, t)), ft)
-        }, ft.height = function (e, t) {
-            return e || 0 === e ? (ft.dimensions(null, e, t), ft) : j(a)
-        }, ft.maximize = function (e) {
+                .height = t), j(a, t)), _t)
+        }, _t.height = function (e, t) {
+            return e || 0 === e ? (_t.dimensions(null, e, t), _t) : j(a)
+        }, _t.maximize = function (e) {
             var t = "sceditor-maximize";
-            return pe(e) ? T(a, t) : ((e = !!e) && (_e = De.pageYOffset), P(Ne.documentElement, t, e), P(
-                Ne.body, t, e), P(a, t, e), ft.width(e ? "100%" : kt.width, !1), ft.height(e ?
-                "100%" : kt.height, !1), e || De.scrollTo(0, _e), mt(), ft)
+            return pe(e) ? T(a, t) : ((e = !!e) && (fe = De.pageYOffset), P(Ne.documentElement, t, e), P(
+                Ne.body, t, e), P(a, t, e), _t.width(e ? "100%" : kt.width, !1), _t.height(e ?
+                "100%" : kt.height, !1), e || De.scrollTo(0, fe), mt(), _t)
         }, mt = function () {
-            kt.autoExpand && !fe && (fe = setTimeout(ft.expandToContent, 200))
-        }, ft.expandToContent = function (t) {
-            if (!ft.maximize()) {
-                if (clearTimeout(fe), fe = !1, !de) {
+            kt.autoExpand && !_e && (_e = setTimeout(_t.expandToContent, 200))
+        }, _t.expandToContent = function (t) {
+            if (!_t.maximize()) {
+                if (clearTimeout(_e), _e = !1, !de) {
                     var i = kt.resizeMinHeight || kt.height || j(e);
                     de = {
                         min: i,
@@ -42476,21 +42573,21 @@ function (e) {
                 var s = n.getBoundingClientRect(),
                     o = S.documentElement.clientHeight - 1,
                     a = s.bottom - s.top,
-                    r = ft.height() + 1 + (a - o);
-                t || -1 === de.max || (r = Math.min(r, de.max)), ft.height(Math.ceil(Math.max(r, de.min)))
+                    r = _t.height() + 1 + (a - o);
+                t || -1 === de.max || (r = Math.min(r, de.max)), _t.height(Math.ceil(Math.max(r, de.min)))
             }
-        }, ft.destroy = function () {
+        }, _t.destroy = function () {
             if (Y) {
                 Y.destroy(), K = null, R = null, Y = null, L && u(L), m(Ne, "click", Xe);
                 var t = e.form;
-                t && (m(t, "reset", Ge), m(t, "submit", ft.updateOriginal)), u(N), u(l), u(a), delete e
+                t && (m(t, "reset", Ge), m(t, "submit", _t.updateOriginal)), u(N), u(l), u(a), delete e
                     ._sceditor, v(e), e.required = ce
             }
-        }, ft.createDropDown = function (e, t, i, s) {
+        }, _t.createDropDown = function (e, t, i, s) {
             var l, c = "sceditor-" + t;
-            ft.closeDropDown(!0), L && T(L, c) || (!1 !== s && o(h(i, ":not(input):not(textarea)"), (
+            _t.closeDropDown(!0), L && T(L, c) || (!1 !== s && o(h(i, ":not(input):not(textarea)"), (
                 function (e, t) {
-                    t.nodeType === ge && f(t, "unselectable", "on")
+                    t.nodeType === ge && _(t, "unselectable", "on")
                 })), l = n({
                 top: e.offsetTop,
                 left: e.offsetLeft,
@@ -42506,7 +42603,7 @@ function (e) {
                 }
             })))
         }, Xe = function (e) {
-            3 !== e.which && L && !e.defaultPrevented && (pt(), ft.closeDropDown())
+            3 !== e.which && L && !e.defaultPrevented && (pt(), _t.closeDropDown())
         }, Ve = function (e) {
             var t = Le || ze,
                 i = z,
@@ -42549,39 +42646,39 @@ function (e) {
             };
             "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, S, J)), Y.call("paste", n), I(a,
                 "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, J)), Y.call(
-                "pasteHtml", n), ft.wysiwygEditorInsertHtml(n.val, null, !0)
-        }, ft.closeDropDown = function (e) {
-            L && (u(L), L = null), !0 === e && ft.focus()
-        }, ft.wysiwygEditorInsertHtml = function (e, t, i) {
-            var n, s, o, a = j(_);
-            ft.focus(), !i && c(Q, "code") || (K.insertHTML(e, t), K.saveRange(), Te(), v(n = h(z,
+                "pasteHtml", n), _t.wysiwygEditorInsertHtml(n.val, null, !0)
+        }, _t.closeDropDown = function (e) {
+            L && (u(L), L = null), !0 === e && _t.focus()
+        }, _t.wysiwygEditorInsertHtml = function (e, t, i) {
+            var n, s, o, a = j(f);
+            _t.focus(), !i && c(Q, "code") || (K.insertHTML(e, t), K.saveRange(), Te(), v(n = h(z,
                     "#sceditor-end-marker")[0]), s = z.scrollTop, o = G(n)
                 .top + 1.5 * n.offsetHeight - a, g(n), (o > s || o + a < s) && (z.scrollTop = o), ut(!
                     1), K.restoreRange(), nt())
-        }, ft.wysiwygEditorInsertText = function (e, t) {
-            ft.wysiwygEditorInsertHtml(X(e), X(t))
-        }, ft.insertText = function (e, t) {
-            return ft.inSourceMode() ? ft.sourceEditorInsertText(e, t) : ft.wysiwygEditorInsertText(e, t),
-                ft
-        }, ft.sourceEditorInsertText = function (e, t) {
+        }, _t.wysiwygEditorInsertText = function (e, t) {
+            _t.wysiwygEditorInsertHtml(X(e), X(t))
+        }, _t.insertText = function (e, t) {
+            return _t.inSourceMode() ? _t.sourceEditorInsertText(e, t) : _t.wysiwygEditorInsertText(e, t),
+                _t
+        }, _t.sourceEditorInsertText = function (e, t) {
             var i, n, s = N.selectionStart,
                 o = N.selectionEnd;
             i = N.scrollTop, N.focus(), n = N.value, t && (e += n.substring(s, o) + t), N.value = n
                 .substring(0, s) + e + n.substring(o, n.length), N.selectionStart = s + e.length - (t ? t
                     .length : 0), N.selectionEnd = N.selectionStart, N.scrollTop = i, N.focus(), ut()
-        }, ft.getRangeHelper = function () {
+        }, _t.getRangeHelper = function () {
             return K
-        }, ft.sourceEditorCaret = function (e) {
+        }, _t.sourceEditorCaret = function (e) {
             return N.focus(), e ? (N.selectionStart = e.start, N.selectionEnd = e.end, this) : {
                 start: N.selectionStart,
                 end: N.selectionEnd
             }
-        }, ft.val = function (e, t) {
-            return he(e) ? (ft.inSourceMode() ? ft.setSourceEditorValue(e) : (!1 !== t && "toHtml" in i &&
-                    (e = i.toHtml(e)), ft.setWysiwygEditorValue(e)), ft) : ft.inSourceMode() ? ft
-                .getSourceEditorValue(!1) : ft.getWysiwygEditorValue(t)
-        }, ft.insert = function (e, t, n, s, o) {
-            if (ft.inSourceMode()) return ft.sourceEditorInsertText(e, t), ft;
+        }, _t.val = function (e, t) {
+            return he(e) ? (_t.inSourceMode() ? _t.setSourceEditorValue(e) : (!1 !== t && "toHtml" in i &&
+                    (e = i.toHtml(e)), _t.setWysiwygEditorValue(e)), _t) : _t.inSourceMode() ? _t
+                .getSourceEditorValue(!1) : _t.getWysiwygEditorValue(t)
+        }, _t.insert = function (e, t, n, s, o) {
+            if (_t.inSourceMode()) return _t.sourceEditorInsertText(e, t), _t;
             if (t) {
                 var a = K.selectedHtml();
                 !1 !== n && "fragmentToSource" in i && (a = i.fragmentToSource(a, S, J)), e += a + t
@@ -42589,53 +42686,53 @@ function (e) {
             return !1 !== n && "fragmentToHtml" in i && (e = i.fragmentToHtml(e, J)), !1 !== n && !0 ===
                 o && (e = e.replace(/&lt;/g, "<")
                     .replace(/&gt;/g, ">")
-                    .replace(/&amp;/g, "&")), ft.wysiwygEditorInsertHtml(e), ft
-        }, ft.getWysiwygEditorValue = function (e) {
+                    .replace(/&amp;/g, "&")), _t.wysiwygEditorInsertHtml(e), _t
+        }, _t.getWysiwygEditorValue = function (e) {
             for (var t, n = r("div", {}, S), s = z.childNodes, o = 0; o < s.length; o++) d(n, s[o]
                 .cloneNode(!0));
             return d(z, n), V(n), u(n), t = n.innerHTML, !1 !== e && i.hasOwnProperty("toSource") && (t =
                 i.toSource(t, S)), t
-        }, ft.getBody = function () {
+        }, _t.getBody = function () {
             return z
-        }, ft.getContentAreaContainer = function () {
-            return _
-        }, ft.getSourceEditorValue = function (e) {
+        }, _t.getContentAreaContainer = function () {
+            return f
+        }, _t.getSourceEditorValue = function (e) {
             var t = N.value;
             return !1 !== e && "toHtml" in i && (t = i.toHtml(t)), t
-        }, ft.setWysiwygEditorValue = function (e) {
+        }, _t.setWysiwygEditorValue = function (e) {
             e || (e = "<p>" + (Le ? "" : "<br />") + "</p>"), z.innerHTML = e, Te(), nt(), ut(), mt()
-        }, ft.setSourceEditorValue = function (e) {
+        }, _t.setSourceEditorValue = function (e) {
             N.value = e, ut()
-        }, ft.updateOriginal = function () {
-            e.value = ft.val()
+        }, _t.updateOriginal = function () {
+            e.value = _t.val()
         }, Te = function () {
             kt.emoticonsEnabled && ae(z, wt, kt.emoticonsCompat)
-        }, ft.inSourceMode = function () {
+        }, _t.inSourceMode = function () {
             return T(a, "sourceMode")
-        }, ft.sourceMode = function (e) {
-            var t = ft.inSourceMode();
-            return "boolean" != typeof e ? t : ((t && !e || !t && e) && ft.toggleSourceMode(), ft)
-        }, ft.toggleSourceMode = function () {
-            var e = ft.inSourceMode();
-            !Se && e || (e || (K.saveRange(), K.clear()), ft.blur(), e ? ft.setWysiwygEditorValue(ft
-                    .getSourceEditorValue()) : ft.setSourceEditorValue(ft.getWysiwygEditorValue()),
-                R = null, b(N), b(_), P(a, "wysiwygMode", e), P(a, "sourceMode", !e), et(), tt())
+        }, _t.sourceMode = function (e) {
+            var t = _t.inSourceMode();
+            return "boolean" != typeof e ? t : ((t && !e || !t && e) && _t.toggleSourceMode(), _t)
+        }, _t.toggleSourceMode = function () {
+            var e = _t.inSourceMode();
+            !Se && e || (e || (K.saveRange(), K.clear()), _t.blur(), e ? _t.setWysiwygEditorValue(_t
+                    .getSourceEditorValue()) : _t.setSourceEditorValue(_t.getWysiwygEditorValue()),
+                R = null, b(N), b(f), P(a, "wysiwygMode", e), P(a, "sourceMode", !e), et(), tt())
         }, it = function () {
             return N.focus(), N.value.substring(N.selectionStart, N.selectionEnd)
         }, Ae = function (e, t) {
-            ft.inSourceMode() ? t.txtExec && (Array.isArray(t.txtExec) ? ft.sourceEditorInsertText.apply(
-                ft, t.txtExec) : t.txtExec.call(ft, e, it())) : t.exec && (me(t.exec) ? t.exec.call(
-                ft, e) : ft.execCommand(t.exec, t.hasOwnProperty("execParam") ? t.execParam :
+            _t.inSourceMode() ? t.txtExec && (Array.isArray(t.txtExec) ? _t.sourceEditorInsertText.apply(
+                _t, t.txtExec) : t.txtExec.call(_t, e, it())) : t.exec && (me(t.exec) ? t.exec.call(
+                _t, e) : _t.execCommand(t.exec, t.hasOwnProperty("execParam") ? t.execParam :
                 null))
         }, Ee = function () {
             Le && (R = K.selectedRange())
-        }, ft.execCommand = function (e, t) {
+        }, _t.execCommand = function (e, t) {
             var i = !1,
-                n = ft.commands[e];
-            if (ft.focus(), !c(K.parentNode(), "code")) {
+                n = _t.commands[e];
+            if (_t.focus(), !c(K.parentNode(), "code")) {
                 try {
                     i = S.execCommand(e, !1, t)
-                } catch (e) {}!i && n && n.errorMessage && alert(ft._(n.errorMessage)), tt()
+                } catch (e) {}!i && n && n.errorMessage && alert(_t._(n.errorMessage)), tt()
             }
         }, st = function () {
             function e() {
@@ -42660,15 +42757,15 @@ function (e) {
                 oldNode: e,
                 newNode: J
             }))
-        }, ft.currentNode = function () {
+        }, _t.currentNode = function () {
             return J
-        }, ft.currentBlockNode = function () {
+        }, _t.currentBlockNode = function () {
             return Q
         }, tt = function () {
             var e, t, i = "active",
                 n = S,
-                s = ft.sourceMode();
-            if (ft.readOnly()) o(h(l, i), (function (e, t) {
+                s = _t.sourceMode();
+            if (_t.readOnly()) o(h(l, i), (function (e, t) {
                 E(t, i)
             }));
             else {
@@ -42683,13 +42780,13 @@ function (e) {
                             (r = n.queryCommandEnabled(u) ? 0 : -1) > -1 && (r = n.queryCommandState(
                                 u) ? 1 : 0)
                         } catch (e) {}
-                    } else d || (r = u.call(ft, t, e));
+                    } else d || (r = u.call(_t, t, e));
                     P(c, "disabled", d || r < 0), P(c, i, r > 0)
                 }
                 ke && ke.update && ke.update(s, t, e)
             }
         }, Ke = function (e) {
-            if (!e.defaultPrevented && (ft.closeDropDown(), 13 === e.which && !k(Q, "li,ul,ol") && $(
+            if (!e.defaultPrevented && (_t.closeDropDown(), 13 === e.which && !k(Q, "li,ul,ol") && $(
                 Q))) {
                 R = null;
                 var t = r("br", {}, S);
@@ -42712,39 +42809,39 @@ function (e) {
                 if (3 === e.nodeType && !/^\s*$/.test(e.nodeValue) || k(e, "br")) return !1
             }))
         }, Ge = function () {
-            ft.val(e.value)
+            _t.val(e.value)
         }, Ye = function () {
-            ft.closeDropDown(), R = null
-        }, ft._ = function () {
+            _t.closeDropDown(), R = null
+        }, _t._ = function () {
             var e, t = arguments;
             return U && U[t[0]] && (t[0] = U[t[0]]), t[0].replace(/\{(\d+)\}/g, (function (i, n) {
                 return t[n - 0 + 1] !== e ? t[n - 0 + 1] : "{" + n + "}"
             }))
         }, Qe = function (e) {
-            Y && Y.call(e.type + "Event", e, ft);
+            Y && Y.call(e.type + "Event", e, _t);
             var t = (e.target === N ? "scesrc" : "scewys") + e.type;
-            _t[t] && _t[t].forEach((function (t) {
-                t.call(ft, e)
+            ft[t] && ft[t].forEach((function (t) {
+                t.call(_t, e)
             }))
-        }, ft.bind = function (e, t, i, n) {
+        }, _t.bind = function (e, t, i, n) {
             for (var s = (e = e.split(" "))
                     .length; s--;)
                 if (me(t)) {
                     var o = "scewys" + e[s],
                         a = "scesrc" + e[s];
-                    i || (_t[o] = _t[o] || [], _t[o].push(t)), n || (_t[a] = _t[a] || [], _t[a].push(t)),
+                    i || (ft[o] = ft[o] || [], ft[o].push(t)), n || (ft[a] = ft[a] || [], ft[a].push(t)),
                         "valuechanged" === e[s] && (ut.hasHandler = !0)
-                } return ft
-        }, ft.unbind = function (e, t, i, n) {
+                } return _t
+        }, _t.unbind = function (e, t, i, n) {
             for (var o = (e = e.split(" "))
-                    .length; o--;) me(t) && (i || s(_t["scewys" + e[o]] || [], t), n || s(_t["scesrc" + e[
+                    .length; o--;) me(t) && (i || s(ft["scewys" + e[o]] || [], t), n || s(ft["scesrc" + e[
                 o]] || [], t));
-            return ft
-        }, ft.blur = function (e, t, i) {
-            return me(e) ? ft.bind("blur", e, t, i) : ft.sourceMode() ? N.blur() : z.blur(), ft
-        }, ft.focus = function (e, t, i) {
-            if (me(e)) ft.bind("focus", e, t, i);
-            else if (ft.inSourceMode()) N.focus();
+            return _t
+        }, _t.blur = function (e, t, i) {
+            return me(e) ? _t.bind("blur", e, t, i) : _t.sourceMode() ? N.blur() : z.blur(), _t
+        }, _t.focus = function (e, t, i) {
+            if (me(e)) _t.bind("focus", e, t, i);
+            else if (_t.inSourceMode()) N.focus();
             else {
                 if (h(S, ":focus")
                     .length) return;
@@ -42754,46 +42851,46 @@ function (e) {
                         .collapse(!0), K.selectRange(s)), x.focus(), z.focus(), R && (K.selectRange(R),
                         R = null)
             }
-            return tt(), ft
-        }, ft.keyDown = function (e, t, i) {
-            return ft.bind("keydown", e, t, i)
-        }, ft.keyPress = function (e, t, i) {
-            return ft.bind("keypress", e, t, i)
-        }, ft.keyUp = function (e, t, i) {
-            return ft.bind("keyup", e, t, i)
-        }, ft.nodeChanged = function (e) {
-            return ft.bind("nodechanged", e, !1, !0)
-        }, ft.selectionChanged = function (e) {
-            return ft.bind("selectionchanged", e, !1, !0)
-        }, ft.valueChanged = function (e, t, i) {
-            return ft.bind("valuechanged", e, t, i)
+            return tt(), _t
+        }, _t.keyDown = function (e, t, i) {
+            return _t.bind("keydown", e, t, i)
+        }, _t.keyPress = function (e, t, i) {
+            return _t.bind("keypress", e, t, i)
+        }, _t.keyUp = function (e, t, i) {
+            return _t.bind("keyup", e, t, i)
+        }, _t.nodeChanged = function (e) {
+            return _t.bind("nodechanged", e, !1, !0)
+        }, _t.selectionChanged = function (e) {
+            return _t.bind("selectionchanged", e, !1, !0)
+        }, _t.valueChanged = function (e, t, i) {
+            return _t.bind("valuechanged", e, t, i)
         }, rt = function (e) {
             var t = 0,
-                i = ft.emoticonsCache,
+                i = _t.emoticonsCache,
                 n = String.fromCharCode(e.which);
             c(Q, "code") || (i || (i = [], o(wt, (function (e, n) {
                     i[t++] = [e, n]
                 })), i.sort((function (e, t) {
                     return e[0].length - t[0].length
-                })), ft.emoticonsCache = i, ft.longestEmoticonCode = i[i.length - 1][0].length), K
-                .replaceKeyword(ft.emoticonsCache, !0, !0, ft.longestEmoticonCode, kt.emoticonsCompat,
+                })), _t.emoticonsCache = i, _t.longestEmoticonCode = i[i.length - 1][0].length), K
+                .replaceKeyword(_t.emoticonsCache, !0, !0, _t.longestEmoticonCode, kt.emoticonsCompat,
                     n) && (kt.emoticonsCompat && /^\s$/.test(n) || e.preventDefault()))
         }, lt = function () {
             oe(Q, K)
-        }, ft.emoticons = function (e) {
+        }, _t.emoticons = function (e) {
             if (!e && !1 !== e) return kt.emoticonsEnabled;
-            (kt.emoticonsEnabled = e, e) ? (p(z, "keypress", rt), ft.sourceMode() || (K.saveRange(), Te(),
+            (kt.emoticonsEnabled = e, e) ? (p(z, "keypress", rt), _t.sourceMode() || (K.saveRange(), Te(),
                 ut(!1), K.restoreRange())) : (o(h(z, "img[data-sceditor-emoticon]"), (function (e, t) {
                 var i = w(t, "sceditor-emoticon"),
                     n = S.createTextNode(i);
                 t.parentNode.replaceChild(n, t)
             })), m(z, "keypress", rt), ut());
-            return ft
-        }, ft.css = function (e) {
+            return _t
+        }, _t.css = function (e) {
             return ue || (ue = r("style", {
                 id: "inline"
             }, S), d(S.head, ue)), he(e) ? (ue.styleSheet ? ue.styleSheet.cssText = e : ue.innerHTML =
-                e, ft) : ue.styleSheet ? ue.styleSheet.cssText : ue.innerHTML
+                e, _t) : ue.styleSheet ? ue.styleSheet.cssText : ue.innerHTML
         }, Ue = function (e) {
             var t = [],
                 i = {
@@ -42901,14 +42998,14 @@ function (e) {
                 .toLowerCase();
             (e.ctrlKey || e.metaKey) && t.push("ctrl"), e.altKey && t.push("alt"), e.shiftKey && (t.push(
                     "shift"), s[o] ? a = s[o] : i[a] && (a = i[a])), a && (o < 16 || o > 18) && t.push(a),
-                t = t.join("+"), bt[t] && !1 === bt[t].call(ft) && (e.stopPropagation(), e
+                t = t.join("+"), bt[t] && !1 === bt[t].call(_t) && (e.stopPropagation(), e
                 .preventDefault())
-        }, ft.addShortcut = function (e, t) {
+        }, _t.addShortcut = function (e, t) {
             return e = e.toLowerCase(), he(t) ? bt[e] = function () {
-                return Ae(yt[t], ft.commands[t]), !1
-            } : bt[e] = t, ft
-        }, ft.removeShortcut = function (e) {
-            return delete bt[e.toLowerCase()], ft
+                return Ae(yt[t], _t.commands[t]), !1
+            } : bt[e] = t, _t
+        }, _t.removeShortcut = function (e) {
+            return delete bt[e.toLowerCase()], _t
         }, Ze = function (e) {
             var t, i, n;
             if (!kt.disableBlockRemove && 8 === e.which && (i = K.selectedRange()) && (t = i
@@ -42919,24 +43016,24 @@ function (e) {
                             .nodeType !== ve || t.nodeValue) return;
                     if (!(t = t.parentNode)) return
                 }
-                ft.clearBlockFormatting(n), e.preventDefault()
+                _t.clearBlockFormatting(n), e.preventDefault()
             }
         }, ct = function () {
             for (var e = Q; !$(e) || H(e, !0);)
                 if (!(e = e.parentNode) || k(e, "body")) return;
             return e
-        }, ft.clearBlockFormatting = function (e) {
-            return !(e = e || ct()) || k(e, "body") || (K.saveRange(), e.className = "", R = null, f(e,
-                "style", ""), k(e, "p,div,td") || B(e, "p"), K.restoreRange()), ft
+        }, _t.clearBlockFormatting = function (e) {
+            return !(e = e || ct()) || k(e, "body") || (K.saveRange(), e.className = "", R = null, _(e,
+                "style", ""), k(e, "p,div,td") || B(e, "p"), K.restoreRange()), _t
         }, ut = function (e) {
             if (Y && (Y.hasHandler("valuechangedEvent") || ut.hasHandler)) {
-                var t, i = ft.sourceMode(),
+                var t, i = _t.sourceMode(),
                     n = !i && K.hasSelection();
                 W = !1, e = !1 !== e && !S.getElementById("sceditor-start-marker"), q && (clearTimeout(q),
                         q = !1), n && e && K.saveRange(),
                     (t = i ? N.value : z.innerHTML) !== ut.lastVal && (ut.lastVal = t, I(a,
                         "valuechanged", {
-                            rawValue: i ? ft.val() : t
+                            rawValue: i ? _t.val() : t
                         })), n && e && K.removeMarkers()
             }
         }, dt = function () {
@@ -42954,15 +43051,15 @@ function (e) {
         }, Je = function (e) {
             (W = /start/i.test(e.type)) || ut()
         }, pt = function () {
-            ft.updateOriginal()
+            _t.updateOriginal()
         }, xe()
     }
     e = e && e.hasOwnProperty("default") ? e.default : e;
     var ce, ue, de, he = t.bind(null, "string"),
         pe = t.bind(null, "undefined"),
         me = t.bind(null, "function"),
-        fe = t.bind(null, "number"),
-        _e = {},
+        _e = t.bind(null, "number"),
+        fe = {},
         ge = 1,
         ve = 3,
         be = !0,
@@ -42974,7 +43071,7 @@ function (e) {
             style: "jquery.sceditor.default.css",
             fonts: "Arial,Arial Black,Comic Sans MS,Courier New,Georgia,Impact,Sans-serif,Serif,Times New Roman,Trebuchet MS,Verdana",
             colors: "#000000,#44B8FF,#1E92F7,#0074D9,#005DC2,#00369B,#b3d5f4|#444444,#C3FFFF,#9DF9FF,#7FDBFF,#68C4E8,#419DC1,#d9f4ff|#666666,#72FF84,#4CEA5E,#2ECC40,#17B529,#008E02,#c0f0c6|#888888,#FFFF44,#FFFA1E,#FFDC00,#E8C500,#C19E00,#fff5b3|#aaaaaa,#FFC95F,#FFA339,#FF851B,#E86E04,#C14700,#ffdbbb|#cccccc,#FF857A,#FF5F54,#FF4136,#E82A1F,#C10300,#ffc6c3|#eeeeee,#FF56FF,#FF30DC,#F012BE,#D900A7,#B20080,#fbb8ec|#ffffff,#F551FF,#CF2BE7,#B10DC9,#9A00B2,#9A00B2,#e8b6ef",
-            locale: f(document.documentElement, "lang") || "en",
+            locale: _(document.documentElement, "lang") || "en",
             charset: "utf-8",
             emoticonsCompat: !1,
             emoticonsEnabled: !0,
@@ -43423,14 +43520,14 @@ function (e) {
                                 u = l.emoticonsCompat,
                                 h = t.getRangeHelper(),
                                 m = u && " " !== h.getOuterText(!0, 1) ? " " : "",
-                                _ = u && " " !== h.getOuterText(!1, 1) ? " " : "",
+                                f = u && " " !== h.getOuterText(!1, 1) ? " " : "",
                                 g = r("div"),
                                 v = r("div"),
                                 b = 0,
                                 y = n({}, l.emoticons.dropdown, s ? l.emoticons.more : {});
                             return d(g, v), b = Math.sqrt(Object.keys(y)
                                 .length), p(g, "click", "img", (function (e) {
-                                t.insert(m + f(this, "alt") + _, null, !1)
+                                t.insert(m + _(this, "alt") + f, null, !1)
                                     .closeDropDown(!0), e.preventDefault()
                             })), o(y, (function (e, t) {
                                 d(v, r("img", {
@@ -43641,8 +43738,8 @@ function (e) {
             escapeUriScheme: ee,
             dom: {
                 css: y,
-                attr: f,
-                removeAttr: _,
+                attr: _,
+                removeAttr: f,
                 is: k,
                 closest: c,
                 width: M,
@@ -43737,7 +43834,7 @@ function (e) {
     }
 
     function o(e, t) {
-        if (Array.isArray(e) || "length" in e && fe(e.length))
+        if (Array.isArray(e) || "length" in e && _e(e.length))
             for (var i = 0; i < e.length; i++) t(i, e[i]);
         else Object.keys(e)
             .forEach((function (i) {
@@ -43802,12 +43899,12 @@ function (e) {
             }))
     }
 
-    function f(e, t, i) {
+    function _(e, t, i) {
         if (arguments.length < 3) return e.getAttribute(t);
-        null == i ? _(e, t) : e.setAttribute(t, i)
+        null == i ? f(e, t) : e.setAttribute(t, i)
     }
 
-    function _(e, t) {
+    function f(e, t) {
         e.removeAttribute(t)
     }
 
@@ -43842,8 +43939,8 @@ function (e) {
             if (1 === n) return o(e.attributes, (function (e, t) {
                 /^data\-/i.test(t.name) && (s[t.name.substr(5)] = t.value)
             })), s;
-            if (2 === n) return f(e, "data-" + t);
-            f(e, "data-" + t, String(i))
+            if (2 === n) return _(e, "data-" + t);
+            _(e, "data-" + t, String(i))
         }
     }
 
@@ -43952,14 +44049,14 @@ function (e) {
     }
 
     function $(e) {
-        return e && (!k(e, "p,div") || e.className || f(e, "style") || !i(w(e)))
+        return e && (!k(e, "p,div") || e.className || _(e, "style") || !i(w(e)))
     }
 
     function B(e, t) {
         var i = r(t, {}, e.ownerDocument);
         for (o(e.attributes, (function (e, t) {
                 try {
-                    f(i, t.name, t.value)
+                    _(i, t.name, t.value)
                 } catch (e) {}
             })); e.firstChild;) d(i, e.firstChild);
         return e.parentNode.replaceChild(i, e), i
@@ -44050,7 +44147,7 @@ function (e) {
 
     function Y(e, t) {
         var i, n, s = e.style;
-        if (_e[t] || (_e[t] = N(t)), n = s[t = _e[t]], "textAlign" === t) {
+        if (fe[t] || (fe[t] = N(t)), n = s[t = fe[t]], "textAlign" === t) {
             if (i = s.direction, n = n || y(e, t), y(e.parentNode, t) === n || "block" !== y(e, "display") ||
                 k(e, "hr,th")) return "";
             if (/right/i.test(n) && "rtl" === i || /left/i.test(n) && "ltr" === i) return ""
@@ -44276,17 +44373,17 @@ function (e) {
             i || e.sort((function (e, t) {
                 return e[0].length - t[0].length
             }));
-            var a, r, c, u, d, h, p, m, f = "(^|[\\s\xa0\u2002\u2003\u2009])",
-                _ = e.length,
+            var a, r, c, u, d, h, p, m, _ = "(^|[\\s\xa0\u2002\u2003\u2009])",
+                f = e.length,
                 g = s ? 1 : 0,
-                v = n || e[_ - 1][0].length;
+                v = n || e[f - 1][0].length;
             for (s && v++, o = o || "", d = (a = l.getOuterText(!0, v))
-                .length, a += o, t && (a += l.getOuterText(!1, v)); _--;)
-                if (m = (p = e[_][0])
+                .length, a += o, t && (a += l.getOuterText(!1, v)); f--;)
+                if (m = (p = e[f][0])
                     .length, u = Math.max(0, d - m - g), c = -1, s ? (r = a.substr(u)
-                        .match(new RegExp(f + Q(p) + f))) && (c = r.index + u + r[1].length) : c = a
+                        .match(new RegExp(_ + Q(p) + _))) && (c = r.index + u + r[1].length) : c = a
                     .indexOf(p, u), c > -1 && c <= d && c + m + g >= d) return h = d - c, l
-                    .selectOuterText(h, m - h - (/^\S/.test(o) ? 1 : 0)), l.insertHTML(e[_][1]), !0;
+                    .selectOuterText(h, m - h - (/^\S/.test(o) ? 1 : 0)), l.insertHTML(e[f][1]), !0;
             return !1
         }, l.compare = function (e, t) {
             return t || (t = l.selectedRange()), e && t ? 0 === e.compareBoundaryPoints(Range.END_TO_END,
@@ -44358,34 +44455,34 @@ function (e) {
     }
 
     function le(e, t) {
-        var i, a, l, _, x, z, S, N, L, R, W, q, U, K, Y, J, Q, ee, ie, ce, ue, de, fe, _e, ye, ke, xe, Te, Ae,
+        var i, a, l, f, x, z, S, N, L, R, W, q, U, K, Y, J, Q, ee, ie, ce, ue, de, _e, fe, ye, ke, xe, Te, Ae,
             Ee, Me, je, Ie, $e, Be, Fe, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, st,
-            ot, at, rt, lt, ct, ut, dt, ht, pt, mt, ft = this,
-            _t = {},
+            ot, at, rt, lt, ct, ut, dt, ht, pt, mt, _t = this,
+            ft = {},
             gt = [],
             vt = [],
             bt = {},
             yt = {},
             wt = {};
-        ft.commands = n(!0, {}, t.commands || Pe);
-        var kt = ft.opts = n(!0, {}, we, t);
-        ft.opts.emoticons = t.emoticons || we.emoticons, xe = function () {
-            e._sceditor = ft, kt.locale && "en" !== kt.locale && Ie(), C(a = r("div", {
+        _t.commands = n(!0, {}, t.commands || Pe);
+        var kt = _t.opts = n(!0, {}, we, t);
+        _t.opts.emoticons = t.emoticons || we.emoticons, xe = function () {
+            e._sceditor = _t, kt.locale && "en" !== kt.locale && Ie(), C(a = r("div", {
                     className: "sceditor-container"
                 }), e), y(a, "z-index", kt.zIndex), Le && A(a, "ie ie" + Le), ce = e.required, e
                 .required = !1;
             var t = le.formats[kt.format];
-            "init" in (i = t ? new t : {}) && i.init.call(ft), je(), We(), $e(), Me(), Be(), Fe(), Se ||
-                ft.toggleSourceMode(), tt();
+            "init" in (i = t ? new t : {}) && i.init.call(_t), je(), We(), $e(), Me(), Be(), Fe(), Se ||
+                _t.toggleSourceMode(), tt();
             var n = function () {
                 m(De, "load", n), kt.autofocus && at(), mt(), nt(), Y.call("ready"), "onReady" in i &&
-                    i.onReady.call(ft)
+                    i.onReady.call(_t)
             };
             p(De, "load", n), "complete" === Ne.readyState && n()
         }, je = function () {
             var e = kt.plugins;
             e = e ? e.toString()
-                .split(",") : [], Y = new ne(ft), e.forEach((function (e) {
+                .split(",") : [], Y = new ne(_t), e.forEach((function (e) {
                     Y.register(e.trim())
                 }))
         }, Ie = function () {
@@ -44393,30 +44490,30 @@ function (e) {
             (U = le.locale[kt.locale]) || (e = kt.locale.split("-"), U = le.locale[e[0]]), U && U
                 .dateFormat && (kt.dateFormat = U.dateFormat)
         }, Me = function () {
-            N = r("textarea"), _ = r("iframe", {
+            N = r("textarea"), f = r("iframe", {
                     frameborder: 0,
                     allowfullscreen: !0
-                }), kt.startInSourceMode ? (A(a, "sourceMode"), g(_)) : (A(a, "wysiwygMode"), g(N)), kt
-                .spellcheck || f(a, "spellcheck", "false"), "https:" === De.location.protocol && f(_,
-                    "src", "javascript:false"), d(a, _), d(a, N), ft.dimensions(kt.width || M(e), kt
+                }), kt.startInSourceMode ? (A(a, "sourceMode"), g(f)) : (A(a, "wysiwygMode"), g(N)), kt
+                .spellcheck || _(a, "spellcheck", "false"), "https:" === De.location.protocol && _(f,
+                    "src", "javascript:false"), d(a, f), d(a, N), _t.dimensions(kt.width || M(e), kt
                     .height || j(e));
             var t = Le ? "ie ie" + Le : "";
-            t += Ce ? " ios" : "", (S = _.contentDocument)
+            t += Ce ? " ios" : "", (S = f.contentDocument)
                 .open(), S.write(te("html", {
                     attrs: ' class="' + t + '"',
                     spellcheck: kt.spellcheck ? "" : 'spellcheck="false"',
                     charset: kt.charset,
                     style: kt.style
-                })), S.close(), z = S.body, x = _.contentWindow, ft.readOnly(!!kt.readOnly), (Ce || ze ||
-                    Le) && (j(z, "100%"), Le || p(z, "touchend", ft.focus));
-            var i = f(e, "tabindex");
-            f(N, "tabindex", i), f(_, "tabindex", i), K = new se(x), g(e), ft.val(e.value);
-            var n = kt.placeholder || f(e, "placeholder");
-            n && (N.placeholder = n, f(z, "placeholder", n))
+                })), S.close(), z = S.body, x = f.contentWindow, _t.readOnly(!!kt.readOnly), (Ce || ze ||
+                    Le) && (j(z, "100%"), Le || p(z, "touchend", _t.focus));
+            var i = _(e, "tabindex");
+            _(N, "tabindex", i), _(f, "tabindex", i), K = new se(x), g(e), _t.val(e.value);
+            var n = kt.placeholder || _(e, "placeholder");
+            n && (N.placeholder = n, _(z, "placeholder", n))
         }, Be = function () {
             kt.autoUpdate && (p(z, "blur", pt), p(N, "blur", pt)), null === kt.rtl && (kt.rtl = "rtl" ===
-                y(N, "direction")), ft.rtl(!!kt.rtl), kt.autoExpand && (p(z, "load", mt, be), p(z,
-                "input keyup", mt)), kt.resizeEnabled && He(), f(a, "id", kt.id), ft.emoticons(kt
+                y(N, "direction")), _t.rtl(!!kt.rtl), kt.autoExpand && (p(z, "load", mt, be), p(z,
+                "input keyup", mt)), kt.resizeEnabled && He(), _(a, "id", kt.id), _t.emoticons(kt
                 .emoticonsEnabled)
         }, Fe = function () {
             var t = e.form,
@@ -44424,12 +44521,12 @@ function (e) {
                 n = "keydown keyup keypress focus blur contextmenu",
                 s = "onselectionchange" in S ? "selectionchange" :
                 "keyup focus blur contextmenu mouseup touchend click";
-            p(Ne, "click", Xe), t && (p(t, "reset", Ge), p(t, "submit", ft.updateOriginal, be)), p(z,
+            p(Ne, "click", Xe), t && (p(t, "reset", Ge), p(t, "submit", _t.updateOriginal, be)), p(z,
                     "keypress", Ke), p(z, "keydown", Ue), p(z, "keydown", Ze), p(z, "keyup", nt), p(z,
                     "blur", dt), p(z, "keyup", ht), p(z, "paste", Ve), p(z, i, Je), p(z, s, st), p(z, n,
                     Qe), kt.emoticonsCompat && De.getSelection && p(z, "keyup", lt), p(z, "blur", (
                     function () {
-                        ft.val() || A(z, "placeholder")
+                        _t.val() || A(z, "placeholder")
                     })), p(z, "focus", (function () {
                     E(z, "placeholder")
                 })), p(N, "blur", dt), p(N, "keyup", ht), p(N, "keydown", Ue), p(N, i, Je), p(N, n, Qe),
@@ -44439,7 +44536,7 @@ function (e) {
                 })), p(a, "selectionchanged", ot), p(a, "selectionchanged", tt), p(a,
                     "selectionchanged valuechanged nodechanged pasteraw paste", Qe)
         }, $e = function () {
-            var e, t = ft.commands,
+            var e, t = _t.commands,
                 i = (kt.toolbarExclude || "")
                 .split(","),
                 n = kt.toolbar.split("|");
@@ -44454,7 +44551,7 @@ function (e) {
                     if (r && !(i.indexOf(s) > -1)) {
                         if (a = r.shortcut, o = te("toolbarButton", {
                                 name: s,
-                                dispName: ft._(r.name || r.tooltip || s)
+                                dispName: _t._(r.name || r.tooltip || s)
                             }, !0)
                             .firstChild, ke && ke.create) ke.create(s) && (C(ke
                             .create(s), o.firstChild), A(o, "has-icon"));
@@ -44464,9 +44561,9 @@ function (e) {
                                 T(o, "disabled") || Ae(o, r), tt(), e
                                     .preventDefault()
                             })), p(o, "mousedown", (function (e) {
-                                ft.closeDropDown(), e.preventDefault()
-                            })), r.tooltip && f(o, "title", ft._(r.tooltip) + (a ?
-                                " (" + a + ")" : "")), a && ft.addShortcut(a, s),
+                                _t.closeDropDown(), e.preventDefault()
+                            })), r.tooltip && _(o, "title", _t._(r.tooltip) + (a ?
+                                " (" + a + ")" : "")), a && _t.addShortcut(a, s),
                             r.state ? vt.push({
                                 name: s,
                                 state: r.state
@@ -44486,8 +44583,8 @@ function (e) {
                 }),
                 u = "touchmove mousemove",
                 h = "touchcancel touchend mouseup",
-                f = 0,
                 _ = 0,
+                f = 0,
                 b = 0,
                 y = 0,
                 w = 0,
@@ -44495,16 +44592,16 @@ function (e) {
                 x = M(a),
                 z = j(a),
                 C = !1,
-                S = ft.rtl();
+                S = _t.rtl();
             if (e = kt.resizeMinHeight || z / 1.5, t = kt.resizeMaxHeight || 2.5 * z, i = kt
                 .resizeMinWidth || x / 1.25, n = kt.resizeMaxWidth || 1.25 * x, s = function (s) {
                     "touchmove" === s.type ? (s = De.event, b = s.changedTouches[0].pageX, y = s
                         .changedTouches[0].pageY) : (b = s.pageX, y = s.pageY);
-                    var o = k + (y - _),
-                        a = S ? w - (b - f) : w + (b - f);
+                    var o = k + (y - f),
+                        a = S ? w - (b - _) : w + (b - _);
                     n > 0 && a > n && (a = n), i > 0 && a < i && (a = i), kt.resizeWidth || (a = !1), t >
                         0 && o > t && (o = t), e > 0 && o < e && (o = e), kt.resizeHeight || (o = !1), (
-                            a || o) && ft.dimensions(a, o), s.preventDefault()
+                            a || o) && _t.dimensions(a, o), s.preventDefault()
                 }, o = function (e) {
                     C && (C = !1, g(c), E(a, "resizing"), m(Ne, u, s), m(Ne, h, o), e.preventDefault())
                 }, ke && ke.create) {
@@ -44512,8 +44609,8 @@ function (e) {
                 T && (d(l, T), A(l, "has-icon"))
             }
             d(a, l), d(a, c), g(c), p(l, "touchstart mousedown", (function (e) {
-                "touchstart" === e.type ? (e = De.event, f = e.touches[0].pageX, _ = e
-                        .touches[0].pageY) : (f = e.pageX, _ = e.pageY), w = M(a), k = j(a),
+                "touchstart" === e.type ? (e = De.event, _ = e.touches[0].pageX, f = e
+                        .touches[0].pageY) : (_ = e.pageX, f = e.pageY), w = M(a), k = j(a),
                     C = !0, A(a, "resizing"), v(c), p(Ne, u, s), p(Ne, h, o), e
                     .preventDefault()
             }))
@@ -44533,46 +44630,46 @@ function (e) {
             var e, t, i = z.firstChild,
                 n = !!kt.autofocusEnd;
             if (D(a)) {
-                if (ft.sourceMode()) return t = n ? N.value.length : 0, void N.setSelectionRange(t, t);
+                if (_t.sourceMode()) return t = n ? N.value.length : 0, void N.setSelectionRange(t, t);
                 if (Z(z), n)
                     for ((i = z.lastChild) || (i = r("p", {}, S), d(z, i)); i.lastChild;) i = i.lastChild,
                         !Oe && k(i, "br") && i.previousSibling && (i = i.previousSibling);
                 e = S.createRange(), F(i) ? e.selectNodeContents(i) : (e.setStartBefore(i), n && e
                     .setStartAfter(i)), e.collapse(!n), K.selectRange(e), ee = e, n && (z.scrollTop =
-                    z.scrollHeight), ft.focus()
+                    z.scrollHeight), _t.focus()
             }
-        }, ft.readOnly = function (e) {
+        }, _t.readOnly = function (e) {
             return "boolean" != typeof e ? !N.readonly : (z.contentEditable = !e, N.readonly = !e, et(e),
-                ft)
-        }, ft.rtl = function (e) {
+                _t)
+        }, _t.rtl = function (e) {
             var t = e ? "rtl" : "ltr";
-            return "boolean" != typeof e ? "rtl" === f(N, "dir") : (f(z, "dir", t), f(N, "dir", t), E(a,
-                "rtl"), E(a, "ltr"), A(a, t), ke && ke.rtl && ke.rtl(e), ft)
+            return "boolean" != typeof e ? "rtl" === _(N, "dir") : (_(z, "dir", t), _(N, "dir", t), E(a,
+                "rtl"), E(a, "ltr"), A(a, t), ke && ke.rtl && ke.rtl(e), _t)
         }, et = function (e) {
-            var t = ft.inSourceMode() ? "_sceTxtMode" : "_sceWysiwygMode";
+            var t = _t.inSourceMode() ? "_sceTxtMode" : "_sceWysiwygMode";
             o(yt, (function (i, n) {
                 P(n, "disabled", e || !n[t])
             }))
-        }, ft.width = function (e, t) {
-            return e || 0 === e ? (ft.dimensions(e, null, t), ft) : M(a)
-        }, ft.dimensions = function (e, t, i) {
+        }, _t.width = function (e, t) {
+            return e || 0 === e ? (_t.dimensions(e, null, t), _t) : M(a)
+        }, _t.dimensions = function (e, t, i) {
             return t = !(!t && 0 !== t) && t, !1 === (e = !(!e && 0 !== e) && e) && !1 === t ? {
-                width: ft.width(),
-                height: ft.height()
+                width: _t.width(),
+                height: _t.height()
             } : (!1 !== e && (!1 !== i && (kt.width = e), M(a, e)), !1 !== t && (!1 !== i && (kt
-                .height = t), j(a, t)), ft)
-        }, ft.height = function (e, t) {
-            return e || 0 === e ? (ft.dimensions(null, e, t), ft) : j(a)
-        }, ft.maximize = function (e) {
+                .height = t), j(a, t)), _t)
+        }, _t.height = function (e, t) {
+            return e || 0 === e ? (_t.dimensions(null, e, t), _t) : j(a)
+        }, _t.maximize = function (e) {
             var t = "sceditor-maximize";
-            return pe(e) ? T(a, t) : ((e = !!e) && (_e = De.pageYOffset), P(Ne.documentElement, t, e), P(
-                Ne.body, t, e), P(a, t, e), ft.width(e ? "100%" : kt.width, !1), ft.height(e ?
-                "100%" : kt.height, !1), e || De.scrollTo(0, _e), mt(), ft)
+            return pe(e) ? T(a, t) : ((e = !!e) && (fe = De.pageYOffset), P(Ne.documentElement, t, e), P(
+                Ne.body, t, e), P(a, t, e), _t.width(e ? "100%" : kt.width, !1), _t.height(e ?
+                "100%" : kt.height, !1), e || De.scrollTo(0, fe), mt(), _t)
         }, mt = function () {
-            kt.autoExpand && !fe && (fe = setTimeout(ft.expandToContent, 200))
-        }, ft.expandToContent = function (t) {
-            if (!ft.maximize()) {
-                if (clearTimeout(fe), fe = !1, !de) {
+            kt.autoExpand && !_e && (_e = setTimeout(_t.expandToContent, 200))
+        }, _t.expandToContent = function (t) {
+            if (!_t.maximize()) {
+                if (clearTimeout(_e), _e = !1, !de) {
                     var i = kt.resizeMinHeight || kt.height || j(e);
                     de = {
                         min: i,
@@ -44584,21 +44681,21 @@ function (e) {
                 var s = n.getBoundingClientRect(),
                     o = S.documentElement.clientHeight - 1,
                     a = s.bottom - s.top,
-                    r = ft.height() + 1 + (a - o);
-                t || -1 === de.max || (r = Math.min(r, de.max)), ft.height(Math.ceil(Math.max(r, de.min)))
+                    r = _t.height() + 1 + (a - o);
+                t || -1 === de.max || (r = Math.min(r, de.max)), _t.height(Math.ceil(Math.max(r, de.min)))
             }
-        }, ft.destroy = function () {
+        }, _t.destroy = function () {
             if (Y) {
                 Y.destroy(), K = null, R = null, Y = null, L && u(L), m(Ne, "click", Xe);
                 var t = e.form;
-                t && (m(t, "reset", Ge), m(t, "submit", ft.updateOriginal)), u(N), u(l), u(a), delete e
+                t && (m(t, "reset", Ge), m(t, "submit", _t.updateOriginal)), u(N), u(l), u(a), delete e
                     ._sceditor, v(e), e.required = ce
             }
-        }, ft.createDropDown = function (e, t, i, s) {
+        }, _t.createDropDown = function (e, t, i, s) {
             var l, c = "sceditor-" + t;
-            ft.closeDropDown(!0), L && T(L, c) || (!1 !== s && o(h(i, ":not(input):not(textarea)"), (
+            _t.closeDropDown(!0), L && T(L, c) || (!1 !== s && o(h(i, ":not(input):not(textarea)"), (
                 function (e, t) {
-                    t.nodeType === ge && f(t, "unselectable", "on")
+                    t.nodeType === ge && _(t, "unselectable", "on")
                 })), l = n({
                 top: e.offsetTop,
                 left: e.offsetLeft,
@@ -44614,7 +44711,7 @@ function (e) {
                 }
             })))
         }, Xe = function (e) {
-            3 !== e.which && L && !e.defaultPrevented && (pt(), ft.closeDropDown())
+            3 !== e.which && L && !e.defaultPrevented && (pt(), _t.closeDropDown())
         }, Ve = function (e) {
             var t = Le || ze,
                 i = z,
@@ -44657,39 +44754,39 @@ function (e) {
             };
             "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, S, J)), Y.call("paste", n), I(a,
                 "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, J)), Y.call(
-                "pasteHtml", n), ft.wysiwygEditorInsertHtml(n.val, null, !0)
-        }, ft.closeDropDown = function (e) {
-            L && (u(L), L = null), !0 === e && ft.focus()
-        }, ft.wysiwygEditorInsertHtml = function (e, t, i) {
-            var n, s, o, a = j(_);
-            ft.focus(), !i && c(Q, "code") || (K.insertHTML(e, t), K.saveRange(), Te(), v(n = h(z,
+                "pasteHtml", n), _t.wysiwygEditorInsertHtml(n.val, null, !0)
+        }, _t.closeDropDown = function (e) {
+            L && (u(L), L = null), !0 === e && _t.focus()
+        }, _t.wysiwygEditorInsertHtml = function (e, t, i) {
+            var n, s, o, a = j(f);
+            _t.focus(), !i && c(Q, "code") || (K.insertHTML(e, t), K.saveRange(), Te(), v(n = h(z,
                     "#sceditor-end-marker")[0]), s = z.scrollTop, o = G(n)
                 .top + 1.5 * n.offsetHeight - a, g(n), (o > s || o + a < s) && (z.scrollTop = o), ut(!
                     1), K.restoreRange(), nt())
-        }, ft.wysiwygEditorInsertText = function (e, t) {
-            ft.wysiwygEditorInsertHtml(X(e), X(t))
-        }, ft.insertText = function (e, t) {
-            return ft.inSourceMode() ? ft.sourceEditorInsertText(e, t) : ft.wysiwygEditorInsertText(e, t),
-                ft
-        }, ft.sourceEditorInsertText = function (e, t) {
+        }, _t.wysiwygEditorInsertText = function (e, t) {
+            _t.wysiwygEditorInsertHtml(X(e), X(t))
+        }, _t.insertText = function (e, t) {
+            return _t.inSourceMode() ? _t.sourceEditorInsertText(e, t) : _t.wysiwygEditorInsertText(e, t),
+                _t
+        }, _t.sourceEditorInsertText = function (e, t) {
             var i, n, s = N.selectionStart,
                 o = N.selectionEnd;
             i = N.scrollTop, N.focus(), n = N.value, t && (e += n.substring(s, o) + t), N.value = n
                 .substring(0, s) + e + n.substring(o, n.length), N.selectionStart = s + e.length - (t ? t
                     .length : 0), N.selectionEnd = N.selectionStart, N.scrollTop = i, N.focus(), ut()
-        }, ft.getRangeHelper = function () {
+        }, _t.getRangeHelper = function () {
             return K
-        }, ft.sourceEditorCaret = function (e) {
+        }, _t.sourceEditorCaret = function (e) {
             return N.focus(), e ? (N.selectionStart = e.start, N.selectionEnd = e.end, this) : {
                 start: N.selectionStart,
                 end: N.selectionEnd
             }
-        }, ft.val = function (e, t) {
-            return he(e) ? (ft.inSourceMode() ? ft.setSourceEditorValue(e) : (!1 !== t && "toHtml" in i &&
-                    (e = i.toHtml(e)), ft.setWysiwygEditorValue(e)), ft) : ft.inSourceMode() ? ft
-                .getSourceEditorValue(!1) : ft.getWysiwygEditorValue(t)
-        }, ft.insert = function (e, t, n, s, o) {
-            if (ft.inSourceMode()) return ft.sourceEditorInsertText(e, t), ft;
+        }, _t.val = function (e, t) {
+            return he(e) ? (_t.inSourceMode() ? _t.setSourceEditorValue(e) : (!1 !== t && "toHtml" in i &&
+                    (e = i.toHtml(e)), _t.setWysiwygEditorValue(e)), _t) : _t.inSourceMode() ? _t
+                .getSourceEditorValue(!1) : _t.getWysiwygEditorValue(t)
+        }, _t.insert = function (e, t, n, s, o) {
+            if (_t.inSourceMode()) return _t.sourceEditorInsertText(e, t), _t;
             if (t) {
                 var a = K.selectedHtml();
                 !1 !== n && "fragmentToSource" in i && (a = i.fragmentToSource(a, S, J)), e += a + t
@@ -44697,53 +44794,53 @@ function (e) {
             return !1 !== n && "fragmentToHtml" in i && (e = i.fragmentToHtml(e, J)), !1 !== n && !0 ===
                 o && (e = e.replace(/&lt;/g, "<")
                     .replace(/&gt;/g, ">")
-                    .replace(/&amp;/g, "&")), ft.wysiwygEditorInsertHtml(e), ft
-        }, ft.getWysiwygEditorValue = function (e) {
+                    .replace(/&amp;/g, "&")), _t.wysiwygEditorInsertHtml(e), _t
+        }, _t.getWysiwygEditorValue = function (e) {
             for (var t, n = r("div", {}, S), s = z.childNodes, o = 0; o < s.length; o++) d(n, s[o]
                 .cloneNode(!0));
             return d(z, n), V(n), u(n), t = n.innerHTML, !1 !== e && i.hasOwnProperty("toSource") && (t =
                 i.toSource(t, S)), t
-        }, ft.getBody = function () {
+        }, _t.getBody = function () {
             return z
-        }, ft.getContentAreaContainer = function () {
-            return _
-        }, ft.getSourceEditorValue = function (e) {
+        }, _t.getContentAreaContainer = function () {
+            return f
+        }, _t.getSourceEditorValue = function (e) {
             var t = N.value;
             return !1 !== e && "toHtml" in i && (t = i.toHtml(t)), t
-        }, ft.setWysiwygEditorValue = function (e) {
+        }, _t.setWysiwygEditorValue = function (e) {
             e || (e = "<p>" + (Le ? "" : "<br />") + "</p>"), z.innerHTML = e, Te(), nt(), ut(), mt()
-        }, ft.setSourceEditorValue = function (e) {
+        }, _t.setSourceEditorValue = function (e) {
             N.value = e, ut()
-        }, ft.updateOriginal = function () {
-            e.value = ft.val()
+        }, _t.updateOriginal = function () {
+            e.value = _t.val()
         }, Te = function () {
             kt.emoticonsEnabled && ae(z, wt, kt.emoticonsCompat)
-        }, ft.inSourceMode = function () {
+        }, _t.inSourceMode = function () {
             return T(a, "sourceMode")
-        }, ft.sourceMode = function (e) {
-            var t = ft.inSourceMode();
-            return "boolean" != typeof e ? t : ((t && !e || !t && e) && ft.toggleSourceMode(), ft)
-        }, ft.toggleSourceMode = function () {
-            var e = ft.inSourceMode();
-            !Se && e || (e || (K.saveRange(), K.clear()), ft.blur(), e ? ft.setWysiwygEditorValue(ft
-                    .getSourceEditorValue()) : ft.setSourceEditorValue(ft.getWysiwygEditorValue()),
-                R = null, b(N), b(_), P(a, "wysiwygMode", e), P(a, "sourceMode", !e), et(), tt())
+        }, _t.sourceMode = function (e) {
+            var t = _t.inSourceMode();
+            return "boolean" != typeof e ? t : ((t && !e || !t && e) && _t.toggleSourceMode(), _t)
+        }, _t.toggleSourceMode = function () {
+            var e = _t.inSourceMode();
+            !Se && e || (e || (K.saveRange(), K.clear()), _t.blur(), e ? _t.setWysiwygEditorValue(_t
+                    .getSourceEditorValue()) : _t.setSourceEditorValue(_t.getWysiwygEditorValue()),
+                R = null, b(N), b(f), P(a, "wysiwygMode", e), P(a, "sourceMode", !e), et(), tt())
         }, it = function () {
             return N.focus(), N.value.substring(N.selectionStart, N.selectionEnd)
         }, Ae = function (e, t) {
-            ft.inSourceMode() ? t.txtExec && (Array.isArray(t.txtExec) ? ft.sourceEditorInsertText.apply(
-                ft, t.txtExec) : t.txtExec.call(ft, e, it())) : t.exec && (me(t.exec) ? t.exec.call(
-                ft, e) : ft.execCommand(t.exec, t.hasOwnProperty("execParam") ? t.execParam :
+            _t.inSourceMode() ? t.txtExec && (Array.isArray(t.txtExec) ? _t.sourceEditorInsertText.apply(
+                _t, t.txtExec) : t.txtExec.call(_t, e, it())) : t.exec && (me(t.exec) ? t.exec.call(
+                _t, e) : _t.execCommand(t.exec, t.hasOwnProperty("execParam") ? t.execParam :
                 null))
         }, Ee = function () {
             Le && (R = K.selectedRange())
-        }, ft.execCommand = function (e, t) {
+        }, _t.execCommand = function (e, t) {
             var i = !1,
-                n = ft.commands[e];
-            if (ft.focus(), !c(K.parentNode(), "code")) {
+                n = _t.commands[e];
+            if (_t.focus(), !c(K.parentNode(), "code")) {
                 try {
                     i = S.execCommand(e, !1, t)
-                } catch (e) {}!i && n && n.errorMessage && alert(ft._(n.errorMessage)), tt()
+                } catch (e) {}!i && n && n.errorMessage && alert(_t._(n.errorMessage)), tt()
             }
         }, st = function () {
             function e() {
@@ -44768,15 +44865,15 @@ function (e) {
                 oldNode: e,
                 newNode: J
             }))
-        }, ft.currentNode = function () {
+        }, _t.currentNode = function () {
             return J
-        }, ft.currentBlockNode = function () {
+        }, _t.currentBlockNode = function () {
             return Q
         }, tt = function () {
             var e, t, i = "active",
                 n = S,
-                s = ft.sourceMode();
-            if (ft.readOnly()) o(h(l, i), (function (e, t) {
+                s = _t.sourceMode();
+            if (_t.readOnly()) o(h(l, i), (function (e, t) {
                 E(t, i)
             }));
             else {
@@ -44791,13 +44888,13 @@ function (e) {
                             (r = n.queryCommandEnabled(u) ? 0 : -1) > -1 && (r = n.queryCommandState(
                                 u) ? 1 : 0)
                         } catch (e) {}
-                    } else d || (r = u.call(ft, t, e));
+                    } else d || (r = u.call(_t, t, e));
                     P(c, "disabled", d || r < 0), P(c, i, r > 0)
                 }
                 ke && ke.update && ke.update(s, t, e)
             }
         }, Ke = function (e) {
-            if (!e.defaultPrevented && (ft.closeDropDown(), 13 === e.which && !k(Q, "li,ul,ol") && $(
+            if (!e.defaultPrevented && (_t.closeDropDown(), 13 === e.which && !k(Q, "li,ul,ol") && $(
                 Q))) {
                 R = null;
                 var t = r("br", {}, S);
@@ -44820,39 +44917,39 @@ function (e) {
                 if (3 === e.nodeType && !/^\s*$/.test(e.nodeValue) || k(e, "br")) return !1
             }))
         }, Ge = function () {
-            ft.val(e.value)
+            _t.val(e.value)
         }, Ye = function () {
-            ft.closeDropDown(), R = null
-        }, ft._ = function () {
+            _t.closeDropDown(), R = null
+        }, _t._ = function () {
             var e, t = arguments;
             return U && U[t[0]] && (t[0] = U[t[0]]), t[0].replace(/\{(\d+)\}/g, (function (i, n) {
                 return t[n - 0 + 1] !== e ? t[n - 0 + 1] : "{" + n + "}"
             }))
         }, Qe = function (e) {
-            Y && Y.call(e.type + "Event", e, ft);
+            Y && Y.call(e.type + "Event", e, _t);
             var t = (e.target === N ? "scesrc" : "scewys") + e.type;
-            _t[t] && _t[t].forEach((function (t) {
-                t.call(ft, e)
+            ft[t] && ft[t].forEach((function (t) {
+                t.call(_t, e)
             }))
-        }, ft.bind = function (e, t, i, n) {
+        }, _t.bind = function (e, t, i, n) {
             for (var s = (e = e.split(" "))
                     .length; s--;)
                 if (me(t)) {
                     var o = "scewys" + e[s],
                         a = "scesrc" + e[s];
-                    i || (_t[o] = _t[o] || [], _t[o].push(t)), n || (_t[a] = _t[a] || [], _t[a].push(t)),
+                    i || (ft[o] = ft[o] || [], ft[o].push(t)), n || (ft[a] = ft[a] || [], ft[a].push(t)),
                         "valuechanged" === e[s] && (ut.hasHandler = !0)
-                } return ft
-        }, ft.unbind = function (e, t, i, n) {
+                } return _t
+        }, _t.unbind = function (e, t, i, n) {
             for (var o = (e = e.split(" "))
-                    .length; o--;) me(t) && (i || s(_t["scewys" + e[o]] || [], t), n || s(_t["scesrc" + e[
+                    .length; o--;) me(t) && (i || s(ft["scewys" + e[o]] || [], t), n || s(ft["scesrc" + e[
                 o]] || [], t));
-            return ft
-        }, ft.blur = function (e, t, i) {
-            return me(e) ? ft.bind("blur", e, t, i) : ft.sourceMode() ? N.blur() : z.blur(), ft
-        }, ft.focus = function (e, t, i) {
-            if (me(e)) ft.bind("focus", e, t, i);
-            else if (ft.inSourceMode()) N.focus();
+            return _t
+        }, _t.blur = function (e, t, i) {
+            return me(e) ? _t.bind("blur", e, t, i) : _t.sourceMode() ? N.blur() : z.blur(), _t
+        }, _t.focus = function (e, t, i) {
+            if (me(e)) _t.bind("focus", e, t, i);
+            else if (_t.inSourceMode()) N.focus();
             else {
                 if (h(S, ":focus")
                     .length) return;
@@ -44862,46 +44959,46 @@ function (e) {
                         .collapse(!0), K.selectRange(s)), x.focus(), z.focus(), R && (K.selectRange(R),
                         R = null)
             }
-            return tt(), ft
-        }, ft.keyDown = function (e, t, i) {
-            return ft.bind("keydown", e, t, i)
-        }, ft.keyPress = function (e, t, i) {
-            return ft.bind("keypress", e, t, i)
-        }, ft.keyUp = function (e, t, i) {
-            return ft.bind("keyup", e, t, i)
-        }, ft.nodeChanged = function (e) {
-            return ft.bind("nodechanged", e, !1, !0)
-        }, ft.selectionChanged = function (e) {
-            return ft.bind("selectionchanged", e, !1, !0)
-        }, ft.valueChanged = function (e, t, i) {
-            return ft.bind("valuechanged", e, t, i)
+            return tt(), _t
+        }, _t.keyDown = function (e, t, i) {
+            return _t.bind("keydown", e, t, i)
+        }, _t.keyPress = function (e, t, i) {
+            return _t.bind("keypress", e, t, i)
+        }, _t.keyUp = function (e, t, i) {
+            return _t.bind("keyup", e, t, i)
+        }, _t.nodeChanged = function (e) {
+            return _t.bind("nodechanged", e, !1, !0)
+        }, _t.selectionChanged = function (e) {
+            return _t.bind("selectionchanged", e, !1, !0)
+        }, _t.valueChanged = function (e, t, i) {
+            return _t.bind("valuechanged", e, t, i)
         }, rt = function (e) {
             var t = 0,
-                i = ft.emoticonsCache,
+                i = _t.emoticonsCache,
                 n = String.fromCharCode(e.which);
             c(Q, "code") || (i || (i = [], o(wt, (function (e, n) {
                     i[t++] = [e, n]
                 })), i.sort((function (e, t) {
                     return e[0].length - t[0].length
-                })), ft.emoticonsCache = i, ft.longestEmoticonCode = i[i.length - 1][0].length), K
-                .replaceKeyword(ft.emoticonsCache, !0, !0, ft.longestEmoticonCode, kt.emoticonsCompat,
+                })), _t.emoticonsCache = i, _t.longestEmoticonCode = i[i.length - 1][0].length), K
+                .replaceKeyword(_t.emoticonsCache, !0, !0, _t.longestEmoticonCode, kt.emoticonsCompat,
                     n) && (kt.emoticonsCompat && /^\s$/.test(n) || e.preventDefault()))
         }, lt = function () {
             oe(Q, K)
-        }, ft.emoticons = function (e) {
+        }, _t.emoticons = function (e) {
             if (!e && !1 !== e) return kt.emoticonsEnabled;
-            (kt.emoticonsEnabled = e, e) ? (p(z, "keypress", rt), ft.sourceMode() || (K.saveRange(), Te(),
+            (kt.emoticonsEnabled = e, e) ? (p(z, "keypress", rt), _t.sourceMode() || (K.saveRange(), Te(),
                 ut(!1), K.restoreRange())) : (o(h(z, "img[data-sceditor-emoticon]"), (function (e, t) {
                 var i = w(t, "sceditor-emoticon"),
                     n = S.createTextNode(i);
                 t.parentNode.replaceChild(n, t)
             })), m(z, "keypress", rt), ut());
-            return ft
-        }, ft.css = function (e) {
+            return _t
+        }, _t.css = function (e) {
             return ue || (ue = r("style", {
                 id: "inline"
             }, S), d(S.head, ue)), he(e) ? (ue.styleSheet ? ue.styleSheet.cssText = e : ue.innerHTML =
-                e, ft) : ue.styleSheet ? ue.styleSheet.cssText : ue.innerHTML
+                e, _t) : ue.styleSheet ? ue.styleSheet.cssText : ue.innerHTML
         }, Ue = function (e) {
             var t = [],
                 i = {
@@ -45009,14 +45106,14 @@ function (e) {
                 .toLowerCase();
             (e.ctrlKey || e.metaKey) && t.push("ctrl"), e.altKey && t.push("alt"), e.shiftKey && (t.push(
                     "shift"), s[o] ? a = s[o] : i[a] && (a = i[a])), a && (o < 16 || o > 18) && t.push(a),
-                t = t.join("+"), bt[t] && !1 === bt[t].call(ft) && (e.stopPropagation(), e
+                t = t.join("+"), bt[t] && !1 === bt[t].call(_t) && (e.stopPropagation(), e
                 .preventDefault())
-        }, ft.addShortcut = function (e, t) {
+        }, _t.addShortcut = function (e, t) {
             return e = e.toLowerCase(), he(t) ? bt[e] = function () {
-                return Ae(yt[t], ft.commands[t]), !1
-            } : bt[e] = t, ft
-        }, ft.removeShortcut = function (e) {
-            return delete bt[e.toLowerCase()], ft
+                return Ae(yt[t], _t.commands[t]), !1
+            } : bt[e] = t, _t
+        }, _t.removeShortcut = function (e) {
+            return delete bt[e.toLowerCase()], _t
         }, Ze = function (e) {
             var t, i, n;
             if (!kt.disableBlockRemove && 8 === e.which && (i = K.selectedRange()) && (t = i
@@ -45027,23 +45124,23 @@ function (e) {
                             .nodeType !== ve || t.nodeValue) return;
                     if (!(t = t.parentNode)) return
                 }
-                ft.clearBlockFormatting(n), e.preventDefault()
+                _t.clearBlockFormatting(n), e.preventDefault()
             }
         }, ct = function () {
             for (var e = Q; !$(e) || H(e, !0);)
                 if (!(e = e.parentNode) || k(e, "body")) return;
             return e
-        }, ft.clearBlockFormatting = function (e) {
-            return !(e = e || ct()) || k(e, "body") || (K.saveRange(), e.className = "", R = null, f(e,
-                "style", ""), k(e, "p,div,td") || B(e, "p"), K.restoreRange()), ft
+        }, _t.clearBlockFormatting = function (e) {
+            return !(e = e || ct()) || k(e, "body") || (K.saveRange(), e.className = "", R = null, _(e,
+                "style", ""), k(e, "p,div,td") || B(e, "p"), K.restoreRange()), _t
         }, ut = function (e) {
             if (Y && (Y.hasHandler("valuechangedEvent") || ut.hasHandler)) {
-                var t, i = ft.sourceMode(),
+                var t, i = _t.sourceMode(),
                     n = !i && K.hasSelection();
                 W = !1, e = !1 !== e && !S.getElementById("sceditor-start-marker"), q && (clearTimeout(q),
                         q = !1), n && e && K.saveRange(), (t = i ? N.value : z.innerHTML) !== ut
                     .lastVal && (ut.lastVal = t, I(a, "valuechanged", {
-                        rawValue: i ? ft.val() : t
+                        rawValue: i ? _t.val() : t
                     })), n && e && K.removeMarkers()
             }
         }, dt = function () {
@@ -45061,15 +45158,15 @@ function (e) {
         }, Je = function (e) {
             (W = /start/i.test(e.type)) || ut()
         }, pt = function () {
-            ft.updateOriginal()
+            _t.updateOriginal()
         }, xe()
     }
     e = e && e.hasOwnProperty("default") ? e.default : e;
     var ce, ue, de, he = t.bind(null, "string"),
         pe = t.bind(null, "undefined"),
         me = t.bind(null, "function"),
-        fe = t.bind(null, "number"),
-        _e = {},
+        _e = t.bind(null, "number"),
+        fe = {},
         ge = 1,
         ve = 3,
         be = !0,
@@ -45081,7 +45178,7 @@ function (e) {
             style: "jquery.sceditor.default.css",
             fonts: "Arial,Arial Black,Comic Sans MS,Courier New,Georgia,Impact,Sans-serif,Serif,Times New Roman,Trebuchet MS,Verdana",
             colors: "#000000,#44B8FF,#1E92F7,#0074D9,#005DC2,#00369B,#b3d5f4|#444444,#C3FFFF,#9DF9FF,#7FDBFF,#68C4E8,#419DC1,#d9f4ff|#666666,#72FF84,#4CEA5E,#2ECC40,#17B529,#008E02,#c0f0c6|#888888,#FFFF44,#FFFA1E,#FFDC00,#E8C500,#C19E00,#fff5b3|#aaaaaa,#FFC95F,#FFA339,#FF851B,#E86E04,#C14700,#ffdbbb|#cccccc,#FF857A,#FF5F54,#FF4136,#E82A1F,#C10300,#ffc6c3|#eeeeee,#FF56FF,#FF30DC,#F012BE,#D900A7,#B20080,#fbb8ec|#ffffff,#F551FF,#CF2BE7,#B10DC9,#9A00B2,#9A00B2,#e8b6ef",
-            locale: f(document.documentElement, "lang") || "en",
+            locale: _(document.documentElement, "lang") || "en",
             charset: "utf-8",
             emoticonsCompat: !1,
             emoticonsEnabled: !0,
@@ -45530,14 +45627,14 @@ function (e) {
                                 u = l.emoticonsCompat,
                                 h = t.getRangeHelper(),
                                 m = u && " " !== h.getOuterText(!0, 1) ? " " : "",
-                                _ = u && " " !== h.getOuterText(!1, 1) ? " " : "",
+                                f = u && " " !== h.getOuterText(!1, 1) ? " " : "",
                                 g = r("div"),
                                 v = r("div"),
                                 b = 0,
                                 y = n({}, l.emoticons.dropdown, s ? l.emoticons.more : {});
                             return d(g, v), b = Math.sqrt(Object.keys(y)
                                 .length), p(g, "click", "img", (function (e) {
-                                t.insert(m + f(this, "alt") + _, null, !1)
+                                t.insert(m + _(this, "alt") + f, null, !1)
                                     .closeDropDown(!0), e.preventDefault()
                             })), o(y, (function (e, t) {
                                 d(v, r("img", {
@@ -45748,8 +45845,8 @@ function (e) {
             escapeUriScheme: ee,
             dom: {
                 css: y,
-                attr: f,
-                removeAttr: _,
+                attr: _,
+                removeAttr: f,
                 is: k,
                 closest: c,
                 width: M,
@@ -45846,7 +45943,7 @@ function (e) {
                     }
                     s.removeChild(e)
                 }
-            }, f(s, "display", "none"), s.innerHTML = e.replace(/<\/div>\n/g, "</div>"), (t = s.firstChild) &&
+            }, _(s, "display", "none"), s.innerHTML = e.replace(/<\/div>\n/g, "</div>"), (t = s.firstChild) &&
             g(t, "div") && n(t, !0), (t = s.lastChild) && g(t, "div") && n(t), s.innerHTML
     }
 
@@ -46007,14 +46104,14 @@ function (e) {
                 .concat(t.children)))
         }
 
-        function f(e, i) {
+        function _(e, i) {
             var s, o, a, r, l, c, u, h, p, m = [];
             for (h = function (e) {
                     return !1 !== (!e || (e.isHtmlInline !== s ? e.isHtmlInline : e.isInline))
                 }; e.length > 0;)
                 if (o = e.shift()) {
                     if (o.type === T) p = o.children[o.children.length - 1] || {}, a = S[o.name], c = i && h(
-                            a), r = f(o.children, !1), a && a.html ? (h(a) || !h(S[p.name]) || a
+                            a), r = _(o.children, !1), a && a.html ? (h(a) || !h(S[p.name]) || a
                             .isPreFormatted || a.skipLastLineBreak || w || (r += "<br />"), n(a.html) ? l = a
                             .html.call(k, o, o.attrs, r) : (o.attrs[0] = r, l = t(a.html, o.attrs))) : l = o
                         .val + r + (o.closing ? o.closing.val : "");
@@ -46034,7 +46131,7 @@ function (e) {
                 } return u && m.push("</div>\n"), m.join("")
         }
 
-        function _(e) {
+        function f(e) {
             for (var t, i, n, s, o, a, r, l, c, u, d = []; e.length > 0;)
                 if (t = e.shift())
                     if (s = !(!(n = S[t.name]) || !1 !== n.isInline), o = n && n.isSelfClosing, r = s && k
@@ -46048,11 +46145,11 @@ function (e) {
                                 for (i in t.attrs.defaultattr && (d.push("=", g(t.attrs.defaultattr, a,
                                         "defaultattr")), delete t.attrs.defaultattr), t.attrs) t.attrs
                                     .hasOwnProperty(i) && d.push(" ", i, "=", g(t.attrs[i], a, i));
-                            d.push("]"), l && d.push("\n"), t.children && d.push(_(t.children)), o || n
+                            d.push("]"), l && d.push("\n"), t.children && d.push(f(t.children)), o || n
                                 .excludeClosing || (c && d.push("\n"), d.push("[/" + t.name + "]")), u && d
                                 .push("\n"), t.closing && o && d.push(t.closing.val)
                         } else d.push(t.val);
-            else d.push(t.val), t.children && d.push(_(t.children)), t.closing && d.push(t.closing.val);
+            else d.push(t.val), t.children && d.push(f(t.children)), t.closing && d.push(t.closing.val);
             return d.join("")
         }
 
@@ -46098,9 +46195,9 @@ function (e) {
                 n = k.opts;
             return n.fixInvalidNesting && p(i), h(i, null, t), n.removeEmptyTags && m(i), i
         }, k.toHTML = function (e, t) {
-            return f(k.parse(e, t), !0)
+            return _(k.parse(e, t), !0)
         }, k.toBBCode = function (e, t) {
-            return _(k.parse(e, t))
+            return f(k.parse(e, t))
         }
     }
 
@@ -46161,7 +46258,7 @@ function (e) {
             var s, a, r = e.nodeName.toLowerCase();
             return i = !!i, m[r] && m[r][i] && b(m[r][i], (function (i, r) {
                 r && (s = !1, b(r, (function (t, i) {
-                    if (_(e, t) && !(i && i.indexOf(_(e, t)) < 0)) return s = !0,
+                    if (f(e, t) && !(i && i.indexOf(f(e, t)) < 0)) return s = !0,
                         !1
                 })), !s) || (a = S[i].format, t = n(a) ? a.call(h, e, t) : o(a, t))
             })), t
@@ -46177,7 +46274,7 @@ function (e) {
                         u = x[c],
                         d = e.firstChild,
                         h = !0;
-                    if ("object" == typeof n && (h = n.indexOf(c) > -1, g(e, "img") && _(e,
+                    if ("object" == typeof n && (h = n.indexOf(c) > -1, g(e, "img") && f(e,
                             k) && (h = !0), h || (u = n)), 3 === r || 1 === r)
                         if (1 === r) {
                             if (g(e, ".sceditor-nlf") && (!d || !w && 1 === e.childNodes
@@ -46202,9 +46299,9 @@ function (e) {
                 .createElement("div"),
                 l = i.createElement("div"),
                 u = new r(h.opts.parserOptions);
-            for (l.innerHTML = t, f(a, "visibility", "hidden"), a.appendChild(l), i.body.appendChild(a), e &&
+            for (l.innerHTML = t, _(a, "visibility", "hidden"), a.appendChild(l), i.body.appendChild(a), e &&
                 (a.insertBefore(i.createTextNode("#"), a.firstChild), a.appendChild(i.createTextNode("#"))),
-                n && f(l, "whiteSpace", f(n, "whiteSpace")), o = l.getElementsByClassName(
+                n && _(l, "whiteSpace", _(n, "whiteSpace")), o = l.getElementsByClassName(
                 "sceditor-ignore"); o.length;) o[0].parentNode.removeChild(o[0]);
             return p.removeWhiteSpace(a), s = c(l), i.body.removeChild(a), s = u.toBBCode(s, !0), h.opts
                 .bbcodeTrim && (s = s.trim()), s
@@ -46230,8 +46327,8 @@ function (e) {
         h = e.escapeUriScheme,
         p = e.dom,
         m = e.utils,
-        f = p.css,
-        _ = p.attr,
+        _ = p.css,
+        f = p.attr,
         g = p.is,
         v = m.extend,
         b = m.each,
@@ -46445,7 +46542,7 @@ function (e) {
                 quoteType: z.never,
                 format: function (e, t) {
                     var i;
-                    return g(e, "font") && (i = _(e, "face")) || (i = f(e, "font-family")), "[font=" + s(
+                    return g(e, "font") && (i = f(e, "face")) || (i = _(e, "font-family")), "[font=" + s(
                         i) + "]" + t + "[/font]"
                 },
                 html: '<font face="{defaultattr}">{0}</font>'
@@ -46460,9 +46557,9 @@ function (e) {
                     "font-size": null
                 },
                 format: function (e, t) {
-                    var i = _(e, "size"),
+                    var i = f(e, "size"),
                         n = 2;
-                    return i || (i = f(e, "fontSize")), i.indexOf("px") > -1 ? ((i = i.replace("px", "") -
+                    return i || (i = _(e, "fontSize")), i.indexOf("px") > -1 ? ((i = i.replace("px", "") -
                             0) < 12 && (n = 1), i > 15 && (n = 3), i > 17 && (n = 4), i > 23 && (n =
                             5), i > 31 && (n = 6), i > 47 && (n = 7)) : n = i, "[size=" + n + "]" + t +
                         "[/size]"
@@ -46481,7 +46578,7 @@ function (e) {
                 quoteType: z.never,
                 format: function (e, t) {
                     var i;
-                    return g(e, "font") && (i = _(e, "color")) || (i = e.style.color || f(e, "color")),
+                    return g(e, "font") && (i = f(e, "color")) || (i = e.style.color || _(e, "color")),
                         "[color=" + c(i) + "]" + t + "[/color]"
                 },
                 html: function (e, t, i) {
@@ -46574,7 +46671,7 @@ function (e) {
                     }
                 },
                 format: function (e, t) {
-                    return _(e, k) + t
+                    return f(e, k) + t
                 },
                 html: "{0}"
             },
@@ -46602,9 +46699,9 @@ function (e) {
                         o = function (t) {
                             return e.style ? e.style[t] : null
                         };
-                    return _(e, k) ? t : (i = _(e, "width") || o("width"), n = _(e, "height") || o(
+                    return f(e, k) ? t : (i = f(e, "width") || o("width"), n = f(e, "height") || o(
                         "height"), (e.complete && (i || n) || i && n) && (s = "=" + p.width(e) +
-                        "x" + p.height(e)), "[img" + s + "]" + _(e, "src") + "[/img]")
+                        "x" + p.height(e)), "[img" + s + "]" + f(e, "src") + "[/img]")
                 },
                 html: function (e, t, i) {
                     var n, s, o, a, r = "";
@@ -46623,7 +46720,7 @@ function (e) {
                 },
                 quoteType: z.never,
                 format: function (e, t) {
-                    var i = _(e, "href");
+                    var i = f(e, "href");
                     return "mailto:" === i.substr(0, 7) ? '[email="' + i.substr(7) + '"]' + t +
                         "[/email]" : "[url=" + i + "]" + t + "[/url]"
                 },
@@ -46647,7 +46744,7 @@ function (e) {
                 format: function (e, t) {
                     for (var i, n = "data-author", s = "", o = e.children, a = 0; !i && a < o.length; a++)
                         g(o[a], "cite") && (i = o[a]);
-                    return (i || _(e, n)) && (s = i && i.textContent || _(e, n), _(e, n, s), i && e
+                    return (i || f(e, n)) && (s = i && i.textContent || f(e, n), f(e, n, s), i && e
                             .removeChild(i), t = this.elementToBbcode(e), s = "=" + s.replace(
                                 /(^\s+|\s+$)/g, ""), i && e.insertBefore(i, e.firstChild)), "[quote" + s +
                         "]" + t + "[/quote]"
@@ -46706,7 +46803,7 @@ function (e) {
                     }
                 },
                 format: function (e, t) {
-                    return (e = _(e, "data-youtube-id")) ? "[youtube]" + e + "[/youtube]" : t
+                    return (e = f(e, "data-youtube-id")) ? "[youtube]" + e + "[/youtube]" : t
                 },
                 html: '<iframe width="560" height="315" frameborder="0" src="https://www.youtube.com/embed/{0}?wmode=opaque" data-youtube-id="{0}" allowfullscreen></iframe>'
             },
@@ -46818,16 +46915,16 @@ function (e) {
                         .join("=");
                     this.json || '"' !== m.charAt(0) || (m = m.slice(1, -1));
                     try {
-                        var f = p[0].replace(d, decodeURIComponent);
-                        if (m = i.read ? i.read(m, f) : i(m, f) || m.replace(d, decodeURIComponent),
+                        var _ = p[0].replace(d, decodeURIComponent);
+                        if (m = i.read ? i.read(m, _) : i(m, _) || m.replace(d, decodeURIComponent),
                             this.json) try {
                             m = JSON.parse(m)
                         } catch (e) {}
-                        if (t === f) {
+                        if (t === _) {
                             a = m;
                             break
                         }
-                        t || (a[f] = m)
+                        t || (a[_] = m)
                     } catch (e) {}
                 }
                 return a
@@ -47056,15 +47153,15 @@ function (e) {
                     d < m.left ? "right" : r, o.removeClass(p)
                     .addClass(r)
             }
-            var f = this.getCalculatedOffset(r, u, d, h);
-            this.applyPlacement(f, r);
-            var _ = function () {
+            var _ = this.getCalculatedOffset(r, u, d, h);
+            this.applyPlacement(_, r);
+            var f = function () {
                 var e = s.hoverState;
                 s.$element.trigger("shown.bs." + s.type), s.hoverState = null, "out" == e && s.leave(
                     s)
             };
-            e.support.transition && this.$tip.hasClass("fade") ? o.one("bsTransitionEnd", _)
-                .emulateTransitionEnd(i.TRANSITION_DURATION) : _()
+            e.support.transition && this.$tip.hasClass("fade") ? o.one("bsTransitionEnd", f)
+                .emulateTransitionEnd(i.TRANSITION_DURATION) : f()
         }
     }, i.prototype.applyPlacement = function (t, i) {
         var n = this.tip(),
@@ -48222,7 +48319,7 @@ var tutorial = {
     function c(e) {
         var t, i;
         return !(!e || "[object Object]" !== p.call(e)) && (!(t = g(e)) || "function" == typeof (i = m
-            .call(t, "constructor") && t.constructor) && f.call(i) === _)
+            .call(t, "constructor") && t.constructor) && _.call(i) === f)
     }
 
     function u(e) {
@@ -48241,8 +48338,8 @@ var tutorial = {
     var h = {},
         p = h.toString,
         m = h.hasOwnProperty,
-        f = m.toString,
-        _ = f.call(Object),
+        _ = m.toString,
+        f = _.call(Object),
         g = Object.getPrototypeOf,
         v = {},
         b = "ls_",
@@ -48862,18 +48959,18 @@ mobile_map_filters_collection = {},
                         m = parseFloat(p);
                     r[h] = isNaN(m) ? 0 : m
                 }
-                var f = r.paddingLeft + r.paddingRight,
-                    _ = r.paddingTop + r.paddingBottom,
+                var _ = r.paddingLeft + r.paddingRight,
+                    f = r.paddingTop + r.paddingBottom,
                     g = r.marginLeft + r.marginRight,
                     v = r.marginTop + r.marginBottom,
                     b = r.borderLeftWidth + r.borderRightWidth,
                     y = r.borderTopWidth + r.borderBottomWidth,
                     w = u && a,
                     k = e(o.width);
-                !1 !== k && (r.width = k + (w ? 0 : f + b));
+                !1 !== k && (r.width = k + (w ? 0 : _ + b));
                 var x = e(o.height);
-                return !1 !== x && (r.height = x + (w ? 0 : _ + y)), r.innerWidth = r.width - (f + b),
-                    r.innerHeight = r.height - (_ + y), r.outerWidth = r.width + g, r.outerHeight = r
+                return !1 !== x && (r.height = x + (w ? 0 : f + y)), r.innerWidth = r.width - (_ + b),
+                    r.innerHeight = r.height - (f + y), r.outerWidth = r.width + g, r.outerHeight = r
                     .height + v, r
             }
         }
