@@ -25,7 +25,7 @@ const BEAUTIFIER_OPTIONS = {
 
 const PATH = path.resolve(__dirname);
 
-const GAME = 'https://missionchief.co.uk';
+const GAME = 'https://www.centro-de-mando.mx';
 
 let timestamp = 0;
 

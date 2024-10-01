@@ -29,14 +29,14 @@ Tool: [js-beautify](https://github.com/beautify-web/js-beautify)
 ## JS
 | Attribute | Value |
 | --------- | ----- |
-| File      | [application-97a57eed4b870f01717db93dd82e9d3c.js](https://missionchief.co.uk/assets/application-97a57eed4b870f01717db93dd82e9d3c.js) |
-| Server    | https://missionchief.co.uk |
-| Time      | 2024-10-01T10:23:32.829Z |
+| File      | [application-c45c1c002fdf58e373176e735f61c256.js](https://www.centro-de-mando.mx/assets/application-c45c1c002fdf58e373176e735f61c256.js) |
+| Server    | https://www.centro-de-mando.mx |
+| Time      | 2024-10-01T18:58:38.723Z |
 
 ## CSS
 | Attribute | Value |
 | --------- | ----- |
-| File      | [application-54c33085e251fc91207464b364396788.css](https://missionchief.co.uk/assets/application-54c33085e251fc91207464b364396788.css) |
-| Server    | https://missionchief.co.uk |
-| Time      | 2024-10-01T10:23:32.829Z |
+| File      | [application-54c33085e251fc91207464b364396788.css](https://www.centro-de-mando.mx/assets/application-54c33085e251fc91207464b364396788.css) |
+| Server    | https://www.centro-de-mando.mx |
+| Time      | 2024-10-01T18:58:38.723Z |
 <!-- /automated -->
