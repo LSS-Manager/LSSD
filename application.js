@@ -12,9 +12,8 @@ function massMissionMarkerAdd(e) {
     }));
     for (let e of t.values()) {
         let t = mission_markers_per_id.get(e.id);
-        void 0 === t ? console.log("Missing map marker for ", e.id, " skipping for now") : isMapKitMap() ? map
-            .addAnnotation(t) : t.addTo(map_filters_service.getFilterLayerByMissionParams(e)),
-            missionMarkerAdd(e)
+        void 0 === t || (isMapKitMap() ? map.addAnnotation(t) : t.addTo(map_filters_service
+            .getFilterLayerByMissionParams(e)), missionMarkerAdd(e))
     }
     tutorial.callNewMissionListener(!0), "" !== $(document.getElementById("search_input_field_missions"))
         .val() && searchMission(), t = null
@@ -785,7 +784,7 @@ function patientMarkerAdd(e) {
         i = "progress-striped-inner ";
     if (e.miliseconds_by_percent > 0 && (t = "progress patient_progress", i =
             "progress-striped-inner progress-striped-inner-active-resource-safe "), $(document.getElementById(
-            "#patient_" + e.id))
+            "patient_" + e.id))
         .length > 0) {
         patientTimerDelete(e.id);
         let n = $(document.getElementById("patient_bar_" + e.id));
@@ -1636,10 +1635,10 @@ function missionAlarmTrailerCheck(e) {
                     .length >= 1 && (e = !0);
                 e ? ($(".vehicle_not_tractive_message_" + $(this)
                         .val())
-                    .css("display", "none"),
-                    $(this)
+                    .css("display", "none"), $(this)
                     .attr("disabled", !1)) : ($(this)
-                    .attr("disabled", !0), $(".vehicle_not_tractive_message_" + $(this)
+                    .attr("disabled", !0),
+                    $(".vehicle_not_tractive_message_" + $(this)
                         .val())
                     .css("display", "inline"))
             }
