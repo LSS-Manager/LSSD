@@ -547,10 +547,11 @@ function massBuildingMarkerAddUpdated(e, t) {
     $.each(e, (function (e, t) {
             const n = t;
             buildingVehicleGraphicCacheAdd(n), building_marker_image = getBuildingMarkerIcon(n), n
-                .building_marker_image = building_marker_image, (!1 === mobile_bridge_use ||
-                    mixed_mobile_desktop_mode) && (s += prepareBuildingDomElementStr(n, i.get(t.id))),
-                !0 === mobile_bridge_use && 4 === mobile_version && sendMobileBridge(n),
-                building_markers_cache.push(n), building_markers_cache_per_id.set(n.id, n)
+                .building_marker_image = building_marker_image, !1 !== mobile_bridge_use && !
+                mixed_mobile_desktop_mode || n.user_id !== user_id || (s +=
+                    prepareBuildingDomElementStr(n, i.get(t.id))), !0 === mobile_bridge_use && 4 ===
+                mobile_version && sendMobileBridge(n), building_markers_cache.push(n),
+                building_markers_cache_per_id.set(n.id, n)
         })), n.innerHTML = s, document.getElementById("building_list")
         .appendChild(n.content), $.each(e, (function (e, t) {
             buildingMarkerAdd(t)
@@ -1635,8 +1636,7 @@ function missionAlarmTrailerCheck(e) {
                     .length >= 1 && (e = !0);
                 e ? ($(".vehicle_not_tractive_message_" + $(this)
                         .val())
-                    .css("display", "none"),
-                    $(this)
+                    .css("display", "none"), $(this)
                     .attr("disabled", !1)) : ($(this)
                     .attr("disabled", !0), $(".vehicle_not_tractive_message_" + $(this)
                         .val())
@@ -4071,8 +4071,8 @@ function isValidDate(e, t) {
     }
     if ("M" === n[0].toUpperCase() || "MM" === n[0].toUpperCase()) {
         if (s[0].length > 2) return !1;
-        1 === s[0].length && (s[0] = "0" + s[0]), 1 === s[1].length && (s[1] = "0" + s[1]), o = s[2] + "-" +
-            s[0] + "-" + s[1]
+        1 === s[0].length && (s[0] = "0" + s[0]), 1 === s[1].length && (s[1] = "0" + s[1]),
+            o = s[2] + "-" + s[0] + "-" + s[1]
     }
     if ("Y" === n[0].toUpperCase() || "YY" === n[0].toUpperCase() || "YYYY" === n[0].toUpperCase()) {
         if (2 !== s[0].length && 4 !== s[0].length) return !1;
