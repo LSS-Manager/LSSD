@@ -12,7 +12,8 @@ function massMissionMarkerAdd(e) {
     }));
     for (let e of t.values()) {
         let t = mission_markers_per_id.get(e.id);
-        isMapKitMap() ? map.addAnnotation(t) : t.addTo(map_filters_service.getFilterLayerByMissionParams(e)),
+        void 0 === t ? console.log("Missing map marker for ", e.id, " skipping for now") : isMapKitMap() ? map
+            .addAnnotation(t) : t.addTo(map_filters_service.getFilterLayerByMissionParams(e)),
             missionMarkerAdd(e)
     }
     tutorial.callNewMissionListener(!0), "" !== $(document.getElementById("search_input_field_missions"))
@@ -172,8 +173,8 @@ function missionMarkerAddSingle(e) {
             .kt, _.sicherheitswache = e.sw, _.involved = !0, mission_markers.push(_), mission_markers_per_id
             .set(_.mission_id, _)
     }
-    if (s && $(document.getElementById("mission_" + e.id)
-            .addClass("mission_alliance_distance_hide")), e.date_end > 0 && missionTimerStart(e), e
+    if (s && $(document.getElementById("mission_" + e.id))
+        .addClass("mission_alliance_distance_hide"), e.date_end > 0 && missionTimerStart(e), e
         .water_damage_pump_value) {
         var f = "<div class='small' id='pumping_" + e.id + "'>" + I18n.t("javascript.water_pumping_process") +
             " <div id='pumping_bar_outer_" + e.id +
@@ -1635,10 +1636,10 @@ function missionAlarmTrailerCheck(e) {
                     .length >= 1 && (e = !0);
                 e ? ($(".vehicle_not_tractive_message_" + $(this)
                         .val())
-                    .css("display", "none"), $(this)
+                    .css("display", "none"),
+                    $(this)
                     .attr("disabled", !1)) : ($(this)
-                    .attr("disabled", !0),
-                    $(".vehicle_not_tractive_message_" + $(this)
+                    .attr("disabled", !0), $(".vehicle_not_tractive_message_" + $(this)
                         .val())
                     .css("display", "inline"))
             }
@@ -9976,7 +9977,7 @@ Object.values || (Object.values = function (e) {
                 sicherheitswache: "Missions pr\xe9vues",
                 sorting: {
                     age_asc: "Le plus vieux (Partag\xe9)",
-                    age_desc: "Le plus vieux (Partag\xe9)",
+                    age_desc: "Le plus recent (Partag\xe9)",
                     caption_asc: "A \xe0 Z",
                     caption_desc: "Z \xe0 A",
                     created_at_asc: "Le plus vieux",
