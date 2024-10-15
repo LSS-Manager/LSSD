@@ -923,7 +923,7 @@ function vehicleCreateOnMap(e, t) {
     const n = new Date;
     let s;
     e.url_arrive = "/vehicles/" + t.id + "/arrive", isLeaflet() && e.setIcon(icon_empty), e.user_id = t
-        .user_id, e.sonderrechte = t.sr, e.rh = t.rh, e.polyline = t.polyline, e.current_step = 0, e
+        .user_id, e.sonderrechte = Number(t.sr), e.rh = t.rh, e.polyline = t.polyline, e.current_step = 0, e
         .timer_steps = n.getTime() - 1e3 * t.dd, e.vehicle_id = t.id, isLeaflet() ? e.bindTooltip(
             "<span class='vehicleMarkerLabelFms building_list_fms_" + t.fms_real + "'>" + t.fms + "</span>" +
             e.title, {
@@ -1635,10 +1635,10 @@ function missionAlarmTrailerCheck(e) {
                     .length >= 1 && (e = !0);
                 e ? ($(".vehicle_not_tractive_message_" + $(this)
                         .val())
-                    .css("display", "none"), $(this)
+                    .css("display", "none"),
+                    $(this)
                     .attr("disabled", !1)) : ($(this)
-                    .attr("disabled", !0),
-                    $(".vehicle_not_tractive_message_" + $(this)
+                    .attr("disabled", !0), $(".vehicle_not_tractive_message_" + $(this)
                         .val())
                     .css("display", "inline"))
             }
