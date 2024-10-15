@@ -1,3 +1,1121 @@
+function massMissionMarkerAdd(e) {
+    let t = new Map;
+    const i = document.createElement("template"),
+        n = new Map;
+    e.forEach((e => {
+        const s = identifyTargetForNative(e);
+        !1 === n.has(s) && n.set(s, document.createDocumentFragment());
+        processMissionElement(e, n.get(s), i), t.set(e.id, e)
+    })), n.forEach((function (e, t) {
+        document.getElementById(t)
+            .appendChild(e)
+    }));
+    for (let e of t.values()) {
+        let t = mission_markers_per_id.get(e.id);
+        isMapKitMap() ? map.addAnnotation(t) : t.addTo(map_filters_service.getFilterLayerByMissionParams(e)),
+            missionMarkerAdd(e)
+    }
+    tutorial.callNewMissionListener(!0), "" !== $(document.getElementById("search_input_field_missions"))
+        .val() && searchMission(), t = null
+}
+
+function processMissionElement(e, t, i) {
+    const n = parseSearchValue(e),
+        s = identifyMissionTypeFilter(e),
+        o = identifyMissionStateFilter(e),
+        a = identifyMissionSortAttributes(e),
+        r = identifyMissionPanelScrollVisible(e),
+        l = identifyMissionPanelAlliance(e),
+        c = identifyMissionPanelStyling(e),
+        u = identifyCaption(e),
+        d = identifyVehicleStateUrl(e),
+        h = identifyCountdownTimeleft(e),
+        p = identifyBarClassInner(e),
+        m = identifyMissionClass(e),
+        _ = identifyMissionText(e),
+        f = identifyMissionClassShort(e),
+        g = identifyMissionTextShort(e),
+        v = identifyHideAllianceDistance(e),
+        b = i.cloneNode();
+    b.innerHTML = prepareMissionDomElementStr(n, s, o, a, e, r, l, c, u, d, h, p, m, _, f, g, v), t.append(b
+        .content);
+    let y = e;
+    missionParticipationFilters.new.missionIds.add(e.id);
+    var w = !1;
+    const k = mission_markers_per_id.get(y.id);
+    if (k && ("undefined" != typeof mapkit ? (k.url = {
+                1: d
+            }, k.opacity = 1, k.title = y.caption, k.subtitle = y.address) : (k.setIcon(icon_empty), k
+                .setOpacity(1), iconMapGenerate(d, k), k.setTooltipContent(u)), k.vehicle_state = y
+            .vehicle_state, w = !0), !w && "undefined" != typeof L) {
+        var x;
+        if ("undefined" != typeof mapkit)(x = new mapkit.ImageAnnotation(new mapkit.Coordinate(y.latitude, y
+                .longitude), {
+                url: {
+                    1: d
+                }
+            }))
+            .title = y.caption, x.subtitle = y.address, missionMarkerBulkAdd || map.addAnnotation(x), x
+            .element.className = "mapkit-marker", x.addEventListener("select", (function () {
+                $(document.getElementById("alarm_button_" + y.id))
+                    .click(), setTimeout(mapkitDeselectAnnotation, 1e3)
+            }));
+        else iconMapGenerate(d, x = L.marker([y.latitude, y.longitude], {
+                zIndexOffset: 1e4,
+                title: y.name,
+                icon: icon_empty
+            })
+            .bindTooltip(u, {
+                permanent: mission_label,
+                opacity: 1
+            })), x.on("click", (function () {
+            $(document.getElementById("alarm_button_" + y.id))
+                .click()
+        }));
+        x.mission_id = y.id, x.user_id = y.user_id, x.vehicle_state = y.vehicle_state, x.krankentransport = y
+            .kt, x.sicherheitswache = y.sw, x.involved = !0, mission_markers.push(x), mission_markers_per_id
+            .set(x.mission_id, x)
+    }
+    if (y.date_end > 0 && missionTimerStart(y), y.water_damage_pump_value) {
+        var z = "<div class='small' id='pumping_" + y.id + "'>" + I18n.t("javascript.water_pumping_process") +
+            " <div id='pumping_bar_outer_" + y.id +
+            "' class='progress pumping_progress'><div id='pumping_bar_" + y.id +
+            "' class='progress-bar progress-bar-info";
+        z += "' style='width: " + y.live_current_water_damage_pump_value +
+            "%;'><div id='pumping_bar_striper_" + y.id + "' class='" + p +
+            "'></div></div></div><div  id='patients_missing_" + y.id + "'", $("#mission_pump_progress_" + y
+                .id)
+            .html(z)
+    }
+    y.pumping_date_end > 0 && ($("#pumping_bar_striper_" + y.id)
+        .addClass("progress-striped-inner-active"), startProgressBar({
+            $element: $("#pumping_bar_" + y.id),
+            missionValue: y.pumping_mission_value,
+            startTime: 1e3 * y.pumping_date_start,
+            endTime: 1e3 * y.pumping_date_end
+        })), y.live_current_value <= 0 && y.live_current_water_damage_pump_value <= 0 && missionFinish(y)
+}
+
+function missionMarkerAdd() {}
+
+function missionMarkerAddSingle(e) {
+    var t = "progress mission_progress",
+        i = "progress-striped-inner",
+        n = 0,
+        s = !1,
+        o = e.caption;
+    e.date_end > 0 && (i = "progress-striped-inner progress-striped-inner-active-resource-safe");
+    var a = "",
+        r = e.mission_type ? "generic" : "regular",
+        l = "generic" === r ? "mission_type" : "mtid";
+    a = void 0 !== mission_graphics_lookups[r][e[l]] && null != mission_graphics_lookups[r][e[l]] &&
+        void 0 !== mission_graphics_lookups[r][e[l]][e.vehicle_state] && "" != mission_graphics_lookups[r][e[
+            l]][e.vehicle_state] ? mission_graphics_lookups[r][e[l]][e.vehicle_state] : "/images/" + e.icon +
+        ".png";
+    var c = "red";
+    1 == e.vehicle_state && (c = "yellow"), 2 == e.vehicle_state && (c = "green"), e.user_id != user_id && (
+            0 != leitstelle_latitude && (n = leiststelleMinDistance(e.latitude, e.longitude)), null == e
+            .user_id ? (e.caption = "[" + I18n.t("map.alliance_event") + "] " + e.caption, o = o + " " + I18n
+                .t("map.alliance_event")) : (e.caption = "[" + I18n.t("map.alliance") + "] " + e.caption, o =
+                o + " " + I18n.t("map.alliance")), !1 !== alliance_mission_distance && n >
+            alliance_mission_distance && (s = !0)), 1 == mobile_bridge_use && 0 ==
+        mixed_mobile_desktop_mode && currentMarkerTypeFilterTurnedOn(e.filter_id) && (4 == mobile_version && (
+                -1 !== String(a)
+                .indexOf("//") ? e.app_icon_path = a : e.app_icon_path = currentHostname() + a),
+            mobileBridgeAdd("mission", e));
+    var u = e.caption;
+    "" != e.captionOld && (u = "<small id='mission_old_caption_" + e.id + "'><s>" + e.captionOld +
+        "</s></small> " + u), "" != e.address && (u = u + ", <small  id='mission_address_" + e.id + "'>" +
+        e.address + "</small>", o = o + " " + e.address);
+    var d = 0;
+    e.sw_start_in > 0 && (d = 1e3 * e.sw_start_in, void 0 === mission_overview_timer && (
+        mission_overview_timer = setInterval(mission_overview_timer_call, 1e3)));
+    const h = ["unattended", "attended", "finishing"][e.vehicle_state];
+    $(document.getElementById("mission_" + e.id))
+        .length > 0 ? updateExistingMissionElement(e, t, i, a, o, c, h, d, u) : addNewMissionElement(e, t, o,
+            h, c, u, a, d, i);
+    var p = !1;
+    const m = mission_markers_per_id.get(e.id);
+    if (m && ("undefined" != typeof mapkit ? (m.url = {
+                1: a
+            }, m.opacity = 1, m.title = e.caption, m.subtitle = e.address) : (m.setIcon(icon_empty), m
+                .setOpacity(1), iconMapGenerate(a, m), m.setTooltipContent(u)), m.vehicle_state = e
+            .vehicle_state, p = !0), !p && "undefined" != typeof L) {
+        if ("undefined" != typeof mapkit) {
+            (_ = new mapkit.ImageAnnotation(new mapkit.Coordinate(e.latitude, e.longitude), {
+                url: {
+                    1: a
+                }
+            }))
+            .title = e.caption, _.subtitle = e.address, map.addAnnotation(_), _.element.className =
+                "mapkit-marker", _.addEventListener("select", (function () {
+                    $(document.getElementById("alarm_button_" + e.id))
+                        .click(), setTimeout(mapkitDeselectAnnotation, 1e3)
+                }))
+        } else {
+            var _ = L.marker([e.latitude, e.longitude], {
+                    zIndexOffset: 1e4,
+                    title: e.name,
+                    icon: icon_empty
+                })
+                .bindTooltip(u, {
+                    permanent: mission_label,
+                    opacity: 1
+                });
+            void 0 !== map && _.addTo(map_filters_service.getFilterLayerByMissionParams(e)), iconMapGenerate(
+                a, _), _.on("click", (function () {
+                $(document.getElementById("alarm_button_" + e.id))
+                    .click()
+            }))
+        }
+        _.mission_id = e.id, _.user_id = e.user_id, _.vehicle_state = e.vehicle_state, _.krankentransport = e
+            .kt, _.sicherheitswache = e.sw, _.involved = !0, mission_markers.push(_), mission_markers_per_id
+            .set(_.mission_id, _)
+    }
+    if (s && $(document.getElementById("mission_" + e.id)
+            .addClass("mission_alliance_distance_hide")), e.date_end > 0 && missionTimerStart(e), e
+        .water_damage_pump_value) {
+        var f = "<div class='small' id='pumping_" + e.id + "'>" + I18n.t("javascript.water_pumping_process") +
+            " <div id='pumping_bar_outer_" + e.id +
+            "' class='progress pumping_progress'><div id='pumping_bar_" + e.id +
+            "' class='progress-bar progress-bar-info";
+        f += "' style='width: " + e.live_current_water_damage_pump_value +
+            "%;'><div id='pumping_bar_striper_" + e.id + "' class='" + i +
+            "'></div></div></div><div  id='patients_missing_" + e.id + "'", $("#mission_pump_progress_" + e
+                .id)
+            .html(f)
+    }
+    e.pumping_date_end > 0 && ($("#pumping_bar_striper_" + e.id)
+            .addClass("progress-striped-inner-active"), startProgressBar({
+                $element: $("#pumping_bar_" + e.id),
+                missionValue: e.pumping_mission_value,
+                startTime: 1e3 * e.pumping_date_start,
+                endTime: 1e3 * e.pumping_date_end
+            })), missionSelectionUpdateButtons(), e.live_current_value <= 0 && e
+        .live_current_water_damage_pump_value <= 0 && missionFinish(e);
+    const g = getActiveMissionIds()
+        .includes(e.id);
+    $(document.getElementById("mission_" + e.id))
+        .toggleClass("hidden", !g), missionMarkerBulkAdd || (progressBarScrollUpdate(), "" != $(document
+                .getElementById("search_input_field_missions"))
+            .val() && searchMission()), missionMarkerAdd(e)
+}
+
+function addNewMissionElement(e, t, i, n, s, o, a, r, l) {
+    var c = "#mission_list",
+        u = "emergency";
+    e.kt ? (c = e.user_id != user_id ? "#mission_list_krankentransporte_alliance" :
+        "#mission_list_krankentransporte", u = "krankentransporte") : e.sw ? (c = e.user_id != user_id ?
+        "#mission_list_sicherheitswache_alliance" : "#mission_list_sicherheitswache", u =
+        "sicherheitswache") : e.user_id != user_id && null != e.user_id ? (c = "#mission_list_alliance",
+        u = "alliance") : e.user_id != user_id && null == e.user_id && (c =
+        "#mission_list_alliance_event", u = "alliance_event");
+    var d = "",
+        h = "";
+    e.missing_text && (d = "alert alert-danger", h = e.missing_text);
+    var p = "",
+        m = "";
+    e.missing_text_short && (p = "alert alert-danger", m = e.missing_text_short);
+    var _ = "";
+    e.alliance_id && (_ = "panel-success");
+    var f = useMissionScrollBarOptimization ? "missionSideBarEntryScrollInvisible" : "";
+    i = i.replace(/'/g, "&#039;");
+    let g = getMissionSortableAttributes(e);
+    var v = prepareMissionDomElementStr(i, u, n, g, e, f, _, s, o, a, r, l, d, h, p, m, "");
+    const b = missionListSorters[c];
+    if (b) {
+        let e = b.findSuccessorElement(g);
+        null !== e ? $(e)
+            .before(v) : $(c)
+            .append(v)
+    } else $(c)
+        .append(v);
+    tutorial.callNewMissionListener(!0), missionParticipationFilters.new.missionIds.add(e.id)
+}
+
+function updateExistingMissionElement(e, t, i, n, s, o, a, r, l) {
+    missionTimerDelete(e.id);
+    const c = $(document.getElementById("mission_" + e.id)),
+        u = $(document.getElementById("mission_panel_" + e.id));
+    $(document.getElementById("mission_bar_outer_" + e.id))
+        .attr("class", t), $(document.getElementById("mission_bar_striper_" + e.id))
+        .attr("class", i), $(document.getElementById("mission_vehicle_state_" + e.id))
+        .attr("src", n), $(document.getElementById("mission_bar_" + e.id))
+        .css("width", e.live_current_value + "%"), c.attr("search_attribute", s), c.attr("mission_type_id", e
+            .mtid), c.attr("data-overlay-index", e.overlay_index), c.attr("data-additive-overlays", e
+            .additive_overlays || ""), c.data("mission-state-filter", a), u.removeClass("mission_panel_red"),
+        u.removeClass("mission_panel_yellow"), u.removeClass("mission_panel_green"), u.addClass(
+            "mission_panel_" + o), (e.live_current_value > 0 || e.patients_count > 0 || e.prisoners_count >
+            0 || e.handoff) && setTimeout((function () {
+            $(document.getElementById("mission_" + e.id))
+                .removeClass("mission_deleted")
+        }), 1e3), $(document.getElementById("mission_overview_countdown_" + e.id))
+        .attr("timeleft", r), r <= 0 && $(document.getElementById("mission_overview_countdown_" + e.id))
+        .html(""), $(document.getElementById("mission_caption_" + e.id))
+        .html(l);
+    const d = $(document.getElementById("mission_missing_" + e.id));
+    e.missing_text ? (d.html(e.missing_text), d.attr("class", "alert alert-danger")) : (d.html(""), d.attr(
+        "class", ""));
+    const h = $(document.getElementById("mission_missing_short_" + e.id));
+    e.missing_text_short ? (h.html(e.missing_text_short), h.attr("class", "alert alert-danger")) : (h.html(
+            ""), h.attr("class", "")), e.alliance_id && u.addClass("panel-success"),
+        updateMissionStateButtons();
+    let p = getMissionSortableAttributes(e);
+    c.data("sortable-by", p);
+    const m = "mission_" + e.id,
+        _ = "#" + $("#" + m)
+        .parent()
+        .attr("id"),
+        f = missionListSorters[_];
+    if (f) {
+        let e = f.findSuccessorElement(p, m);
+        null !== e ? $(e)
+            .before($("#" + m)) : $(_ + " .missionSideBarEntry")
+            .last()
+            .after($("#" + m))
+    }
+}
+
+function prepareMissionDomElementStr(e, t, i, n, s, o, a, r, l, c, u, d, h, p, m, _, f) {
+    return "<div search_attribute='" + e + "' data-mission-type-filter='" + t +
+        "' data-mission-state-filter='" + i + "' data-mission-participation-filter=new data-sortable-by='" +
+        JSON.stringify(n) + "' id='mission_" + s.id + "' mission_id='" + s.id + "' mission_type_id='" + s
+        .mtid + "' class='missionSideBarEntry missionSideBarEntrySearchable " + o + " " + f + "' latitude='" +
+        s.latitude + "' longitude='" + s.longitude + "' target_latitude='" + s.tlat + "' target_longitude='" +
+        s.tlng + "' data-overlay-index='" + s.overlay_index + "' data-additive-overlays='" + (s
+            .additive_overlays || "") + "'><div id='mission_panel_" + s.id + "' class='panel panel-default " +
+        a + " mission_panel_" + r + "'><div id='mission_panel_heading_" + s.id +
+        "' class='panel-heading'><a href='/missions/" + s.id + "?" + missionFilterQueryParams +
+        "' class='btn btn-default btn-xs lightbox-open mission-alarm-button' id='alarm_button_" + s.id +
+        "'> " + I18n.t("javascript.alarm") + "</a> <span id='mission_participant_" + s.id +
+        "' class='glyphicon glyphicon-user hidden'></span><span id='mission_participant_new_" + s.id +
+        "' class='glyphicon glyphicon-asterisk'></span> <a href='' id='mission_caption_" + s.id +
+        "' class='map_position_mover' target_latitude='" + s.tlat + "' target_longitude='" + s.tlng +
+        "' data-latitude='" + s.latitude + "' data-longitude='" + s.longitude + "'>" + l +
+        "</a></div><div class='panel-body'><div class='row'><div class='col-xs-1'><img src='" + c +
+        "' id='mission_vehicle_state_" + s.id +
+        "' class='mission_vehicle_state'></div><div class='col-xs-11'><div class='mission_overview_countdown' id='mission_overview_countdown_" +
+        s.id + "' timeleft='" + u + "'></div><div id='mission_bar_outer_" + s.id +
+        "' class='progress mission_progress'><div id='mission_bar_" + s.id +
+        "' class='progress-bar progress-bar-danger' role='progressbar' aria-valuemin='0' aria-valuemax='100' style='width: " +
+        s.live_current_value + "%;'><div class='" + d + "' id='mission_bar_striper_" + s.id +
+        "'></div></div></div><div id='mission_missing_" + s.id + "' class='" + h + "'>" + p +
+        "</div><div id='mission_missing_short_" + s.id + "' class='" + m + "'>" + _ +
+        "</div><div id='mission_pump_progress_" + s.id + "'></div><div id='mission_patients_" + s.id +
+        "' class='row'></div><div class='mission_prisoners' id='mission_prisoners_" + s.id +
+        "'></div></div></div></div></div>"
+}
+
+function getMissionSortableAttributes(e) {
+    var t = e.created_at;
+    return e.user_id != user_id && null != e.user_id && null != e.alliance_shared_at && e.alliance_shared_at >
+        0 && (t = e.alliance_shared_at), {
+            id: e.id,
+            caption: e.caption.replace(/(&quot;|'|")+/g, ""),
+            average_credits: e.average_credits,
+            prisoners_count: [e.prisoners_count, e.possible_prisoners_count],
+            patients_count: [e.patients_count, e.possible_patients_count],
+            age: t,
+            created_at: e.created_at
+        }
+}
+
+function parseSearchValue(e) {
+    var t = e.caption;
+    return null == e.user_id ? (e.caption = "[" + I18n.t("map.alliance_event") + "] " + e.caption, t = t +
+        " " + I18n.t("map.alliance_event")) : e.user_id !== user_id && (e.caption = "[" + I18n.t(
+        "map.alliance") + "] " + e.caption, t = t + " " + I18n.t("map.alliance")), "" != e.address && (t =
+        t + " " + e.address), t = t.replace(/'/g, "&#039;")
+}
+
+function identifyHide(e) {
+    return e.user_id !== user_id && !1 !== alliance_mission_distance && !1 !== leitstelle_latitude &&
+        leiststelleMinDistance(e.latitude, e.longitude) > alliance_mission_distance
+}
+
+function identifyMissionTextShort(e) {
+    var t = "";
+    return e.missing_text_short && (t = e.missing_text_short), t
+}
+
+function identifyMissionClassShort(e) {
+    var t = "";
+    return e.missing_text_short && (t = "alert alert-danger"), t
+}
+
+function identifyMissionText(e) {
+    var t = "";
+    return e.missing_text && (t = e.missing_text), t
+}
+
+function identifyMissionClass(e) {
+    var t = "";
+    return e.missing_text && (t = "alert alert-danger"), t
+}
+
+function identifyBarClassInner(e) {
+    var t = "progress-striped-inner";
+    return e.date_end > 0 && (t = "progress-striped-inner progress-striped-inner-active-resource-safe"), t
+}
+
+function identifyCountdownTimeleft(e) {
+    var t = 0;
+    return e.sw_start_in > 0 && (t = 1e3 * e.sw_start_in, void 0 === mission_overview_timer && (
+        mission_overview_timer = setInterval(mission_overview_timer_call, 1e3))), t
+}
+
+function identifyVehicleStateUrl(e) {
+    var t = e.mission_type ? "generic" : "regular",
+        i = "generic" === t ? "mission_type" : "mtid",
+        n = "";
+    return n = void 0 !== mission_graphics_lookups[t][e[i]] && null != mission_graphics_lookups[t][e[i]] &&
+        void 0 !== mission_graphics_lookups[t][e[i]][e.vehicle_state] && "" != mission_graphics_lookups[t][e[
+            i]][e.vehicle_state] ? mission_graphics_lookups[t][e[i]][e.vehicle_state] : "/images/" + e.icon +
+        ".png", 1 == mobile_bridge_use && 0 == mixed_mobile_desktop_mode && currentMarkerTypeFilterTurnedOn(e
+            .filter_id) && (4 == mobile_version && (-1 !== String(n)
+                .indexOf("//") ? e.app_icon_path = n : e.app_icon_path = currentHostname() + n),
+            mobileBridgeAdd("mission", e)), n
+}
+
+function identifyCaption(e) {
+    var t = e.caption;
+    return "" != e.captionOld && (t = "<small id='mission_old_caption_" + e.id + "'><s>" + e.captionOld +
+        "</s></small> " + t), "" != e.address && (t = t + ", <small  id='mission_address_" + e.id + "'>" +
+        e.address + "</small>"), t
+}
+
+function identifyMissionPanelStyling(e) {
+    var t = "red";
+    return 1 == e.vehicle_state && (t = "yellow"), 2 == e.vehicle_state && (t = "green"), t
+}
+
+function identifyMissionPanelAlliance(e) {
+    var t = "";
+    return e.alliance_id && (t = "panel-success"), t
+}
+
+function identifyMissionPanelScrollVisible() {
+    return useMissionScrollBarOptimization ? "missionSideBarEntryScrollInvisible" : ""
+}
+
+function identifyHideAllianceDistance(e) {
+    return identifyHide(e) ? "mission_alliance_distance_hide" : ""
+}
+
+function identifyMissionSortAttributes(e) {
+    return getMissionSortableAttributes(e)
+}
+
+function identifyTarget(e) {
+    return "#" + identifyTargetForNative(e)
+}
+
+function identifyTargetForNative(e) {
+    var t = "mission_list";
+    return e.kt ? t = e.user_id != user_id ? "mission_list_krankentransporte_alliance" :
+        "mission_list_krankentransporte" : e.sw ? t = e.user_id != user_id ?
+        "mission_list_sicherheitswache_alliance" : "mission_list_sicherheitswache" : e.user_id != user_id &&
+        null != e.user_id ? t = "mission_list_alliance" : e.user_id != user_id && null == e.user_id && (t =
+            "mission_list_alliance_event"), t
+}
+
+function identifyMissionTypeFilter(e) {
+    var t = "emergency";
+    return e.kt ? t = "krankentransporte" : e.sw ? t = "sicherheitswache" : e.user_id != user_id && null != e
+        .user_id ? t = "alliance" : e.user_id != user_id && null == e.user_id && (t = "alliance_event"), t
+}
+
+function identifyMissionStateFilter(e) {
+    return ["unattended", "attended", "finishing"][e.vehicle_state]
+}
+
+function missionMarkerBlukDraw() {
+    $.each(patientBulkCache, (function (e, t) {
+        var i = "";
+        $.each(t, (function (e, t) {
+                i += t
+            })), $(document.getElementById("mission_patients_" + e))
+            .append(i)
+    })), $.each(prisonerBulkCache, (function (e, t) {
+        var i = "";
+        $.each(t, (function (e, t) {
+                i += t
+            })), $(document.getElementById("mission_prisoners_" + e))
+            .append(i)
+    })), patientBulkCache = {}, prisonerBulkCache = {}
+}
+
+function missionSelectionUpdateButtons() {
+    if (missionMarkerBulkAdd || massAllianceMissionAdd || massMissionAdd) return !0;
+    var e = 0,
+        t = 0,
+        i = 0,
+        n = 0,
+        s = 0,
+        o = 0,
+        a = 0,
+        r = 0,
+        l = 0,
+        c = 0;
+    for (let e in missionTypeFilters) missionTypeFilters[e].missionIds = [];
+    mission_markers_per_id.forEach((function (u) {
+            u.krankentransport ? (i++, missionTypeFilters.krankentransporte.missionIds.push(u
+                .mission_id), 0 == u.vehicle_state && n++) : u.sicherheitswache ? (l++,
+                missionTypeFilters.sicherheitswache.missionIds.push(u.mission_id), 0 == u
+                .vehicle_state && c++) : u.user_id != user_id && null != u.user_id ? (s++,
+                missionTypeFilters.alliance.missionIds.push(u.mission_id), 0 == u.vehicle_state &&
+                o++) : u.user_id != user_id && null == u.user_id ? (a++, missionTypeFilters
+                .alliance_event.missionIds.push(u.mission_id), 0 == u.vehicle_state && r++) : (
+                e++, missionTypeFilters.emergency.missionIds.push(u.mission_id), 0 == u
+                .vehicle_state && t++)
+        })), $(document.getElementById("mission_select_emergency"))
+        .html(
+            '<img class="icon icons8-Siren-Filled" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAADcElEQVRoQ+2Z/XETMRDF91WAUwFQAaQCoAJIBSQVABUQKoBUgFNBQgVABSQVQCogqeAxz0ge5aw7Sau7GYax/rFnrK/frvbtSoY5Gsm1mb00s0MAvxxT7AwhuTKzn2Z2DuBt65xoHaD+AeR1WPTYM8dwDMlTM3vvndML8ihYT/t53OuVxBvyims+F8jcXun1hvbTAzKLV+bwRhfIwCsnACQAzY2kYuyzNzbigm6PBBCd6WMAn5oJkgEkpVJrALfeebpAvIsuMW4PsoRVe+b8fzxCUmWB2imAc49VSD43szdmpk8JQE27MrNLMzvzBjlJVReqCFYgqQmfhJVVN1UDhRwg6XxVs/ORPlIqrXlWO0cCoFymdrM5WkHLRfYwAToCIMhsCxBfzeypmd2ZmSRYElpVRAYvKofIqmoaezIFQ1JrXZjZFiAYYX0vRgZAk0mOpDau43Qtj9QCDDeaJET9JOPpuI0ZLybPmwgQO2aDXdYC8G1iwrQ8USk/6rma45LA3AI4KHgluzeXaiXe0N1hrjJehntmZq5yxwvyI8TGiynP1Xgj9gllykdvzeUFoTYAwDU+BxiCX+LxHYBkvKk1b4RkjI87ALU5o7ipoIK/zawYJ7nJPCCylttyhUB2e9oDEiXwC4CeRLjDlCTnZiX0gMRHgg8A9H22RjIqV7OIeECUsPQU5JLJwtFyG8kD4rZayXXJI0Sztz0gUhb3s00pa3uFZAck6LkybLa8JulWlgqPREW8AnCYqctkQD3iSWjulVBbkACgTjEZ7cRAkrSuAagSnb1NGWpQYApER3ADpPuINp4CbErynCL1Zt8aapK6nzwws4PchSvEkV5d1EftL1C0QHKnEET2WSYJRh275ofmSpCimIQqQOtvgQSie4U2PgqQFHbxDtKsKjUQ6kOyWt4ToFWTavUkrAYQVy5pBZm9fM8ok6sEagVZTHqT4+sqSqtBlirfMx6J14Smcr4FxGWp2thI+3mSbguI6+w6QeJbW3UV3ALiUhMnSDGXDOdtAdEfOXpMe9f7f0gJLnmlqc5XLSDNVipteOx3TwXRArJY+Z5RrmZhGQUhGZOf17BLjLsEcJSbeApkk/z+tTb2llYEmfMRrscopdyyB+mxrmfs3iMlC3is2jOmtJ9ijPQsvsRYj2rFTL7Efrxzjr43/wE/Kgjg5EADGQAAAABJRU5ErkJggg==" width="15" height="15"> ' +
+            t + "/" + e), $(document.getElementById("mission_select_krankentransport"))
+        .html(
+            '<img class="icon icons8-Ambulance" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAC/UlEQVR4Xu2b7VUVMRCGZypQK0AqECsQKhArUCpAKsAOwArECsAOoALsQKgAOhjPe84sZ2/YbCab5N7dbPL3ZjOZJ28yk4/LtPLCK/efGoCmgJUTaFNgDgIQkfdEdEFEB9qfv0R0xswPpfu3cwWo8/dE9NZx9pmIPpaGMAcAN0T02TPSf5j5uKQK5gDgaWD0O58fmHm/dgAy5iAzFx2koo1bRk5E5gEg1BGLMzusc8LMV1Psvyhg4QAQMY6YGeEzqtQCAE5PCps1AQAEKABKAAxT8QIovfqaeheoJCI/iOjcqXbLzEfW9hcNAE6KCBa/r47DV8x8YoGweAAKAdL/4DiMvcRlCEItALCPuB2AEAyPVQBQFWAnCQhveqMeDI/VAOhBwM6yX0bD49YBuAlX7mgjIt+I6JcDwRseqwOgSjCHxyoBxITHagFYw2PtAILhsWoAI+GRusW3GIDU7XXO6CAiyBE2wuOqAKgSNk6eGgA9a1zFFNiJAny7sNKZYKzdYgqI7Uho25r6uw98A9CR3ZY0t2XHVUxTgHMBUzwMtjUgddXK/P1spkBmv8zNZQOgDxpOiQj39njZgYKXHLjn/1n6QcNU+1kAiAiesXwPYL9k5jPz0ERUTLGfDEBEcM6G8zZLMV9MWBrTVDbJfhIAEcEFA2QfUzAdQmoxtZfD/mQAOuf+OT191KmAc3iUQyICpD2n3n7qmpDLfgoAd/Th/IF7AysiOH7C8XMfQrIKBkZ/kv1oACPa/MLMWPFfFRFBZLg26Xp6pSz2g5ngSP/e+e7fPXKd7urwl1nsNwChE6HVTQGfwwOLELI+PGHdeIaiiyBOXrvsEE2WWASz2g++E/TMa3QCMf5OwX3SMNh3Hj+VCoPZ7AcBaBa2+ETIp3ATAIUw9BbH1+5vZramzaYo4XkLlGzfDCBCCcnzPmI9GqoaZT8KgELAPMf8R9LTZX3IzpAcYSdY9E8OuiZlsx8NwKTXBVVqABY0WEW62hRQBOuCGm0KWNBgFenq6hXwH/kYT1/4UtMbAAAAAElFTkSuQmCC" width="15" height="15"> ' +
+            n + "/" + i), $(document.getElementById("mission_select_alliance"))
+        .html(
+            '<img class="icon icons8-Sell" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAADz0lEQVRoQ+2a7VEUQRCGuyPQDIQIJAM1AjECIQIxAjUCIQIhAy4CIQIhAiECMYK2nq2eq7m92Z3euzmPHztVV1fAbE+//fbX9KISXGb2VkR+iMhB8JHW2x5E5FRVb0qCNXqamf3eI4ik5oOqHm4LxBCgqmHwUSNF9pnZ6PlhpWqCIspss6d2fnMgZvbSY+k4qPi1+/7T2P59APkpIiSGKWuhqqPA9wGk82UROVRVMs3gMjMyIEmkGnv7AEJ6fDOFDhF5lowQI5ci8j4IZiEiJ6r6vGIkqPzkbf/dtSZrGHxgBtI3VM0iQcNuvK12fvOCuLGmlQdnILNr7ci3ZteaXWt2rXELzDFSiBG60xc78pyo2EdVLU5xplR2bn2056+ipzbe9+jt/nbjoMZKNRcXZqT5yY0FzkAaG3RrcVVGfE7F/ZtxzVFvbHonInxuVPVqE218pvzJ5SKfYP42NOMdOmMQiI9qvjgABgq1RXpmyMzArbrMDKW/j8zATvxssmUaaHweGlKsAXELASAfst166r1TVRjoloNlH4emEdClqp4OIXGGYeCr7/krIucico1sMxsbJzFx4Tk8BEMwN7tgfrYEYmYffVMqOBxA3TivDdocFGB47cAqgim8mrjgTKxcGLViPACmuvFnhOYPWgBA4UEAyozOmvqCzSwHgwIYYVFQ8t6LW8eumRF/GAEXwoDMuToXLTyLfvyNz5mzcwuQNOJkA9aBhY2Xg8EQeTuDQVKcXakqgEtKwgIgulFrASD6ITu5NjI7pgACqqdtAeTI3Yooy+d1wCqwsFRywM2WADMgsMgZi2r6DSgxusWVIiEQnCkD9cHB2DsP9r6brbCQMUnGAwRGONo5kDGUnoLxCBINMUXM8DNrxc0yFvJ3mYA4pubsFUimXIpTfrXiZr14oCwkoCsJowkQM/vllTlZlW/uDrX3I7gbbOTKYeGV5wppm8qf6lCHtRUQXCIS1GOetqacx9cgC7mwJkA8AFMwp36M79qNkpQPewT0ZBY2AuKBiWL3UwvllMw3hYVJQAqVn+cpmrjCaAxMAeCs9v+7Ys3dhmTWul8KTmoeyRLk+/z9YBNAm7JQZcTbDApO6n3OUuX3jpeMQbZJi5/pQif1Zs4CBZCzUrMaZiEChIaMVnnwRWUBECDog0KABtoQDLa8JkxxzaJr+SEHEaGeBACQXK4KyMzSfSQxvtaGTAHRrI5kgYqL5YCIIS5MtBt0s6n4kZpZMA4LWyeNZnWk1wvlgErGpX4AIHQtjrDTHEgGCKvTnfKdWIIZGFreKSJKRvb8A3bBPSGKFTO6AAAAAElFTkSuQmCC" width="15" height="15"> ' +
+            o + "/" + s), $(document.getElementById("mission_select_alliance_event"))
+        .html(
+            '<img class="icon icons8-Event-Accepted" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAD4UlEQVRoQ+1Zi1EUQRB9HYESgRqBRwQSgkQgRCBEIEQgRqBEIEQgRCBE4BGBGMGz3tq9zs3tsXO7c7cFxVRR5bm7vf368/qzhidy7IngQBEQknsAvgJ4DWAO4NDMrsYYobbMUiC/HEToPjezNyOBVJVZCoRS2syMZPvvkUCqymyBZK7u1DEFMgZE+myBzKJQToHkrl7SteCla+MrlNkbyimQlSGThtO2Q6v0faVA7gG8SMx9Z2ZisMGHZJHM2kBEv98AvAJwB+CgEv32yqwKZLDZKzz4DKSCETciQuz2kOClZN+IFhWErg2k74EKOq0l4jlHnj2SBAzJl95kquiNOpOGFskjB3I2CgWAqYH8dCC7jxYIyRmABgiAXTO7GQNmMo+QVP/0wZU/N7ODxwrkN4Am2QHcm9nOowNCUtbXkuLWlX/riwp5adDZWGh5Dpwk84la/Pwc+n8IVH5i+/IHwElfDm0MiLRyMFIoHbZCYSkYQ5fCrOvonr0+EP6uomVH0YTYpYkXPYFR+KjwHZtZZwh5yH323FHYCURRsdyoR1JgGUspVE6z658UQkNZbGtA3P2q5LK4zk5Y270W4SWPrV3ptw3kPYDvYiszm5HUby30LkiqICr89vV7XeraNhBZ+iOAL76gaIAAkOJaVjTXzKzpwR46JFVMxYTqEPQXR/l3YWaXXc8PTvYsD9SSpC8VK+mkrHZjZit7L/eiwrNvzaTNo8J0wbujgZDUi7WljHOtdZH/kBXfJdfa/MkMIQDhLXlQHr4Kena6l5d0j1ZSOmdmdhxyagCJai4vaN+1YCm3tADJO/ocsUDRJCMspVMvIfiIEMTShmsNIFJMvZVAdNYGZy/dp96rbSIdpEhCp7hTzjrshkRqAJmVVGhpKgXSe0nG4rzXE/68DKZiKjYMym8W3KOBPMxBq68mDWbxHpnkD2e0UzM7IanEV84cTgkk5pZSb6gBVVgqF+XZeeKV8ymBBGX35kai8EKzmeTKzZRAlrpakurLLrM8ClZUnHax3j85EcWlrcDQnMify9+XMFjbSbvFlRdK8s4QbOUkQPIPL7V07pPThJZTtGpKzPuqRyqCAtE5+yehdZt/DI0PL30vr3l9wdLOZgIU7c21mXVNoaLzoOD/yV5TsxJZCf0ufeh0S0cHsHIIS+rQftF39hLFhtyT1IGl+O9buybeaOrQ1EBijqnXogyxaI1nslH5yMw006w8JDXbxKS53DTWUGqojAyM2g4pqiRv1q2eMxoHlNwxrywMapOGVgrc64gAxLyxyi6aV+S57sFqqDVrP+dsJrrVX4DSCkne0ajbOff/BWtayMaN4VNfAAAAAElFTkSuQmCC" width="15" height="15"> ' +
+            r + "/" + a), $(document.getElementById("mission_select_sicherheitswache"))
+        .html(
+            '<img class="icon icons8-Clock-Filled" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAE8klEQVRoQ8Waj5EVNwzGpQoSKkioIFBBuAqSVBCoAKggUEG4CgIVBCoIV0GggkAFQAVifjvy4bdr+d/uTjxzM+/d83r1WZ8+y7JVDm5m9r2I/CQi90SEz/zxmfZORD77H5/fqyrfD2t6xEhmhsG/i8iDzPjeoQH2VkReqSqfd7VpQO6JX0TkmYj8uMuKbw9/8PHezHpuCpCZPfYXQ6czGjR8pqrXo4MPAXJq/TVBq1G7Un8o+GiEit2A3CsvZi3b+dyTXm91ATIzvPKw06g3rmYEOjP8WkR+9mdvfBxiLgkIcdjTXqrqo1bHKiAP/H86KPZeRPDe63Uwm9lLV0BsQckuJsbfwf/4Q+5rjQm6qglGC9C/DTAfRQQ64IVi87h74j++qMWDmQGKifmuguqdqt6Pfg8BddDsOS+fldfKBKCcLAUoadRC+hUBmRkz+mcw2hf3ClQ6rbm3iN2oPVXVjUhtADlFoFqpAebBiIyaGQKQxruvqiyeXc1tQVwiCjLeRXZRAlSLm80ALcvMDPr84f2eqyrfu1tjgjfxdAGoQTUWuGGa7QUE8gb9Lqh3C8jl8z/PjtczeK2qSam6Z9eN2eWh9DIzI15KQkGadDeJUw4IySwFIdJ8b1bNVoYMUy4DhPoRf6V4umVPDgjvlLLmKaplhhDUKVOY9nSDeh9U9S59FkCVwGMDljZnQ1QLAN2oKinPdDMzVK2UUSyClQBF/Cxq/Yg1ZpZ76AhA0Rq5eD8BiqT6zmzsnOghYulTYVIXCVdXt1IHdo2/jnij1NfM8tjc7SEPEXLHUpZ+B0Bwmox63aYVKR/IzCz7fhSgfCnIX3cFoIiTpOnwf1dbAapmyr0vMjOY83eh/1MARWhZrLrzroBupdh8q6pXvcYH47K8QOUtqyorMN4BEOoxXF6qTBRGTKmnLy/khQhDSf6v8VAuq6UJ2ewye2a3Me5ULHXYevN/ASL/IkaHPN8LKFpUKWhAueq2OfJWI3PnsWFQrsiIGJRL6VRuwkK5M0UhSlOSEc2ix4wonC3bjI/Mokw/lFb4ViVn/Uxl7Vxk+9SFNRnjGQkCVEosKX/91iM29KmwallYo9zokNRnlTXwLna9pbSlq5DogOLUxztEXN+dnAYxkBcf8y7N9anigGWrc/r2oaKCkRhVN5QV9bzYPrCJK5WuDsm9KqCibX9YXTKzaKvzbYPntGPNKanQri14K9CD8m8xk6hUfz6q6lI+6CmSXFRVWgbO/F4oKG62Lo2qVLFIUquq7Cpu9IB0UMQVNN8UIytJ9BdVvT1JPL3Q2AOm1Weq0JgtgLV0ZbgU3DK29XujFLypSo0W64cTypbBtd8dDOWB6HC6Xax3xasdp9DlVOVzGyJJT3PQd5ySUS9azVMXth2o0aE3QVzN2JXWaunhprN1JNlK/wHDkeSryuLJop0fp4SbOjPjNgoTVbv/UK3mtgAxcJQh5xgwEo8ycxce6zw0BggUa5WdOZzmwC1kRe+xfot+OTgy4XR/h5MLnl0f65ORpGP93mJmV22jC1CnUOwRtNazzSw8DdANyEFBCWa8dZ+gZWDv71Ds4UgxZQhQpoAoEOlJ7T5Br9GlfhxOc3lp+CrOFCD3FoIB/wFWytJnABFzjLe5kdI72DSg/AW+oqNSBPooHaEVSsoWfKhOVwJ5CKAVuHQls+eKJpn1oQvzV++Yjk+9aieJAAAAAElFTkSuQmCC" width="15" height="15"> ' +
+            c + "/" + l), updateMissionStateButtons(), updateMissionParticipationButtons(),
+        updateNoMissionsMessages()
+}
+
+function toggleMissionsSectionsOnAsyncLoading(e) {
+    toggleErrorMissionsSectionsOnAsyncLoading(!1), !1 !== massAllianceMissionAddCompleted && !1 !== e || $(
+            document.getElementById("missions-panel-body"))
+        .toggle(!e), $(document.getElementById("missions_loading"))
+        .toggle(e)
+}
+
+function toggleErrorMissionsSectionsOnAsyncLoading(e) {
+    $(document.getElementById("missions_loading"))
+        .toggle(!e), $(document.getElementById("missions_loading_error"))
+        .toggle(e), $(document.getElementById("emergency_no"))
+        .toggle(!e)
+}
+
+function toggleAllianceMissionsSectionsOnAsyncLoading(e) {
+    toggleErrorAllianceMissionsSectionsOnAsyncLoading(!1), !1 !== massMissionAddCompleted && !1 !== e || $(
+            document.getElementById("missions-panel-body"))
+        .toggle(!e), $(document.getElementById("alliance_missions_loading"))
+        .toggle(e)
+}
+
+function toggleErrorAllianceMissionsSectionsOnAsyncLoading(e) {
+    $(document.getElementById("alliance_missions_loading"))
+        .toggle(!e), $(document.getElementById("alliance_missions_loading_error"))
+        .toggle(e), $(document.getElementById("alliance_no_mission"))
+        .toggle(!e)
+}
+
+function massBuildingMarkerAdd(e, t) {
+    const i = new Map;
+    t.forEach((e => {
+        0 == i.has(e.b) && i.set(e.b, []), i.get(e.b)
+            .push(e)
+    }));
+    const n = document.createDocumentFragment(),
+        s = document.createElement("template");
+    $.each(e, (function (e, t) {
+            const o = t;
+            buildingVehicleGraphicCacheAdd(o), building_marker_image = getBuildingMarkerIcon(o), o
+                .building_marker_image = building_marker_image, (!1 === mobile_bridge_use ||
+                    mixed_mobile_desktop_mode) && processBuildingElement(o, n, s, i.get(t.id)), !0 ===
+                mobile_bridge_use && 4 === mobile_version && sendMobileBridge(o),
+                building_markers_cache.push(o), building_markers_cache_per_id.set(o.id, o)
+        })), document.getElementById("building_list")
+        .appendChild(n), $.each(e, (function (e, t) {
+            buildingMarkerAdd(t)
+        }))
+}
+
+function massBuildingMarkerAddUpdated(e, t) {
+    const i = new Map;
+    t.forEach((e => {
+        !1 === i.has(e.b) && i.set(e.b, []), i.get(e.b)
+            .push(e)
+    }));
+    const n = document.createElement("template");
+    let s = "";
+    $.each(e, (function (e, t) {
+            const n = t;
+            buildingVehicleGraphicCacheAdd(n), building_marker_image = getBuildingMarkerIcon(n), n
+                .building_marker_image = building_marker_image, (!1 === mobile_bridge_use ||
+                    mixed_mobile_desktop_mode) && (s += prepareBuildingDomElementStr(n, i.get(t.id))),
+                !0 === mobile_bridge_use && 4 === mobile_version && sendMobileBridge(n),
+                building_markers_cache.push(n), building_markers_cache_per_id.set(n.id, n)
+        })), n.innerHTML = s, document.getElementById("building_list")
+        .appendChild(n.content), $.each(e, (function (e, t) {
+            buildingMarkerAdd(t)
+        }))
+}
+
+function processBuildingElement(e, t, i, n) {
+    const s = i.cloneNode();
+    s.innerHTML = prepareBuildingDomElementStr(e, n), t.append(s.content)
+}
+
+function sendMobileBridge(e) {
+    e.name = e.name.replace("%", ""), -1 !== String(building_marker_image)
+        .indexOf("//") ? e.app_icon_path = building_marker_image : e.app_icon_path = currentHostname() +
+        building_marker_image, mobileBridgeAdd("building_add", e)
+}
+
+function buildingMarkerAdd() {}
+
+function buildingMarkerAddSingle(e) {
+    if (buildingVehicleGraphicCacheAdd(e), building_markers_cache_per_id.has(e.id)) return !0;
+    building_marker_image = getBuildingMarkerIcon(e), e.building_marker_image = building_marker_image, (!1 ===
+            mobile_bridge_use || mixed_mobile_desktop_mode) && constructBuildingListElement(e), !0 ===
+        mobile_bridge_use && 4 === mobile_version && sendMobileBridge(e), building_markers_cache.push(e),
+        building_markers_cache_per_id.set(e.id, e), buildingMarkerAdd(e)
+}
+
+function constructBuildingListElement(e) {
+    if (e.user_id !== user_id) return;
+    !0 === mobile_bridge_use && 4 === mobile_version && (e.name = e.name.replace("%", ""),
+        building_marker_image = getBuildingMarkerIcon(e), -1 !== String(building_marker_image)
+        .indexOf("//") ? e.app_icon_path = building_marker_image : e.app_icon_path = currentHostname() +
+        building_marker_image);
+    let t = prepareBuildingDomElementStr(e);
+    buildingMarkerBulkContentCache.push(t)
+}
+
+function prepareBuildingDomElementStr(e, t) {
+    let i = "<li  search_attribute= '" + e.name +
+        "' class='building_list_li buildings_searchable' building_type_id='" + e.building_type +
+        "' leitstelle_building_id='" + e.lbid +
+        "'><div class='building_list_caption' id='building_list_caption_" + e.id + "' >" + e.detail_button +
+        "<img class='building_marker_image' building_id='" + e.id + "' src='" + building_marker_image +
+        "'><a href='' class='map_position_mover' data-latitude='" + e.latitude + "' data-longitude='" + e
+        .longitude + "'>" + e.name + "</a>";
+    0 == e.show_vehicles_at_startpage && (i += hideVehicleBuildingHelpText(e.id)), i += "</div>";
+    let n = "<li>" + I18n.t("common.loading") + "</li>";
+    buildingVehicleCache.has(e.id) && (n = buildingVehicleCache.get(e.id)
+        .join(""), buildingVehicleCache.set(e.id, []));
+    let s = 0;
+    return t && (s = 1), i = i + "<ul id='vehicle_building_" + e.id +
+        "' class='building_list_vehicles' data-vehicles-loaded='" + s + "' data-building_id='" + e.id + "' ",
+        0 == e.show_vehicles_at_startpage && (i += "style='display: none' "), t && (n = t.map((e =>
+                prepareVehicleMarkerStr(e)))
+            .join("")), i = i + ">" + n + "</ul></li>", e.building_type == BUILDING_TYPE_LEITSTELLE && (
+            leitstelle_latitude = e.latitude, leitstelle_longitude = e.longitude, leitstelles.push([e
+                .latitude, e.longitude])), i
+}
+
+function buildingMarkerReset() {
+    leitstelle_latitude = !1, leitstelle_longitude = !1, leitstelles = [], $.each(building_markers, (
+            function (e, t) {
+                isLeaflet() ? map.removeLayer(t) : map.removeAnnotation(t)
+            })), $.each(building_timers, (function (e, t) {
+            window.clearTimeout(t)
+        })), mobile_bridge_use && mobileBridgeAdd("building_remove_all", {}), building_markers = Array(),
+        building_markers_cache = Array(), building_markers_cache_per_id = new Map,
+        buildingMarkerBulkContentCache = []
+}
+
+function building_maps_redraw() {
+    let e = [],
+        t = [];
+    const i = isLeaflet();
+    $.each(building_markers, (function (n, s) {
+        let o = [];
+        if (i) o = s.getLatLng();
+        else {
+            const e = s.coordinate;
+            o = [e.latitude, e.longitude]
+        }
+        mapIsVisible(o) ? (e.push(s.building_id), t.push(s)) : i ? map.removeLayer(s) : map
+            .removeAnnotation(s)
+    })), building_markers = t, building_markers_cache_per_id.forEach((t => {
+        -1 === $.inArray(t.id, e) && mapIsVisible([t.latitude, t.longitude]) &&
+            building_maps_draw(t)
+    }))
+}
+
+function building_maps_draw(e) {
+    let t, i = 5e3;
+    if (void 0 !== e.user_id && "undefined" != typeof user_id && user_id != e.user_id && (i = 1e3),
+        isMapKitMap()) {
+        (n = new mapkit.ImageAnnotation(new mapkit.Coordinate(e.latitude, e.longitude), {
+            url: {
+                1: flavouredAsset(e.building_marker_image)
+            }
+        }))
+        .title = e.name, n.addEventListener("select", (function () {
+            lightboxOpen("/buildings/" + e.id), setTimeout(mapkitDeselectAnnotation, 1e3)
+        })), map.addAnnotation(n), n.element.className = "mapkit-marker"
+    } else {
+        t = map_filters_service.getFilterLayerByBuildingParams(e);
+        var n = L.marker([e.latitude, e.longitude], {
+                zIndexOffset: i,
+                title: e.name,
+                icon: icon_empty
+            })
+            .bindTooltip(e.name)
+            .addTo(t);
+        void 0 !== e.opacity && n.setOpacity(e.opacity), iconMapGenerate(e.building_marker_image, n), n.on(
+            "click", (function () {
+                lightboxOpen("/buildings/" + e.id)
+            }))
+    }
+    n.building_id = e.id, building_markers.push(n)
+}
+
+function buildingMarkerBulkContentCacheDraw(e = !1) {
+    buildingMarkerBulkContentCache.length > 0 && $(document.getElementById("building_list"))
+        .append(buildingMarkerBulkContentCache.join("")), buildingMarkerBulkContentCache = [], e &&
+        buildingsVehicleLoadVisible()
+}
+
+function buildingsVehicleLoadVisible() {
+    if (massBuildingAdd) return !0;
+    const e = $(document.getElementById("building_panel_body"));
+    if (e.length <= 0) return !0;
+    const t = 3 * e.height(),
+        i = e.offset()
+        .top - t,
+        n = e.offset()
+        .top + t;
+    if (e.is(":visible")) {
+        const e = [];
+        $(".building_list_vehicles:visible")
+            .each((function () {
+                const t = $(this)
+                    .offset()
+                    .top;
+                t > i && t < n && "0" == $(this)
+                    .data("vehicles-loaded") && ($(this)
+                        .data("vehicles-loaded", "1"), e.push($(this)
+                            .data("building_id")))
+            })), e.length > 0 && batchBuildingsVehicleLoad(e)
+    }
+}
+
+function batchBuildingsVehicleLoad(building_id_array) {
+    $.post("/buildings/vehiclesMap", {
+        building_ids: building_id_array
+    }, (function (data) {
+        const arrLength = building_id_array.length;
+        eval(data);
+        let tpl = document.createElement("template");
+        for (var idx = 0; idx < arrLength; idx++) {
+            const e = building_id_array[idx];
+            let t = "";
+            buildingVehicleCache.has(e) ? (t = buildingVehicleCache.get(e)
+                .join(""), buildingVehicleCache[e] = []) : buildingVehicleCache.set(e, []);
+            const i = tpl.cloneNode();
+            i.innerHTML = t;
+            const n = document.createDocumentFragment();
+            n.append(i.content);
+            const s = document.getElementById("vehicle_building_" + e);
+            s.replaceChildren(n)
+        }
+    }))
+}
+
+function batchBuildingsVehicleLoadOld(building_id_array) {
+    $.post("/buildings/vehiclesMap", {
+        building_ids: building_id_array
+    }, (function (data) {
+        const arrLength = building_id_array.length;
+        for (var idx = 0; idx < arrLength; idx++) buildingVehicleCache.set(building_id_array[idx],
+            []);
+        eval(data);
+        for (var idx = 0; idx < arrLength; idx++) {
+            const e = building_id_array[idx];
+            let t = "";
+            buildingVehicleCache.has(e) && (t = buildingVehicleCache.get(e)
+                    .join(""), buildingVehicleCache.set(e, [])), $(document.getElementById(
+                    "vehicle_building_" + e))
+                .html(t)
+        }
+    }))
+}
+
+function buildingVehicleGraphicCacheAdd(e) {
+    void 0 !== e.vgi && "" !== e.vgi && null != e.vgi && (buildingVehicleGraphicCache[e.id] = e.vgi,
+        buildingVehicleGraphicCachePerId.set(e.id, e.vgi))
+}
+
+function getBuildingMarkerIcon(e) {
+    return e.building_marker_image ? e.building_marker_image : flavouredAsset(building_marker_image = e
+        .user_id == user_id ? e.icon : e.icon_other ? e.icon_other : OTHER_BUILDING_ICONS[e.building_type]
+        )
+}
+
+function toggleBuildingSectionsOnAsyncLoading(e) {
+    toggleErrorBuildingSectionsOnAsyncLoading(!1), $(document.getElementById("building_panel_heading"))
+        .toggle(!e), $(document.getElementById("building_panel_body"))
+        .toggle(!e), $(document.getElementById("buildings_loading"))
+        .toggle(e)
+}
+
+function toggleErrorBuildingSectionsOnAsyncLoading(e) {
+    $(document.getElementById("buildings_loading"))
+        .toggle(!e), $(document.getElementById("buildings_loading_error"))
+        .toggle(e)
+}
+
+function patientMarkerAddCombined(e) {
+    let t = "<div class='col-md-12' id='mission_patient_summary_" + e.mission_id + "'>";
+    t += "<img src='/images/icons8-dizzy_person_2.svg' class='mission_list_patient_icon'><strong>", t += e
+        .count, t = t + " " + I18n.t("javascript.patient") + "</strong>", e.untouched > 0 && (t = t + " - " +
+            e.untouched, t = t + " " + I18n.t("javascript.patient_untouched") + "</strong>"), $.each(e.errors,
+            (function (e, i) {
+                t = t + "<div class='alert alert-danger'><strong>" + i + "x</strong> " + e + "</div>"
+            })), t += "</div>", missionMarkerBulkAdd ? (void 0 === patientBulkCache[e.mission_id] && (
+            patientBulkCache[e.mission_id] = {}), patientBulkCache[e.mission_id][0] = t) : $(document
+            .getElementById("mission_patients_" + e.mission_id))
+        .html(t)
+}
+
+function patientMarkerAdd(e) {
+    $(document.getElementById("mission_patient_summary_" + e.mission_id))
+        .hide();
+    let t = "progress  patient_progress",
+        i = "progress-striped-inner ";
+    if (e.miliseconds_by_percent > 0 && (t = "progress patient_progress", i =
+            "progress-striped-inner progress-striped-inner-active-resource-safe "), $(document.getElementById(
+            "#patient_" + e.id))
+        .length > 0) {
+        patientTimerDelete(e.id);
+        let n = $(document.getElementById("patient_bar_" + e.id));
+        $(document.getElementById("patient_bar_outer_" + e.id))
+            .attr("class", t), $(document.getElementById("patient_bar_striper_" + e.id))
+            .attr("class", i), n.css("width", e.live_current_value + "%");
+        let s = $(document.getElementById("patients_missing_" + e.id));
+        e.missing_text ? (s.html(e.missing_text), s.attr("class", "alert alert-danger")) : (s.html(""), s
+                .attr("class", "")), e.target_percent <= 0 ? n.removeClass("progress-bar-warning")
+            .addClass("progress-bar-danger") : n.removeClass("progress-bar-danger")
+            .addClass("progress-bar-warning")
+    } else {
+        let n = "<div style='max-width:250px' class=' col-md-6 small'  id='patient_" + e.id + "'>" + e.name +
+            " <div id='patient_bar_outer_" + e.id + "' class='" + t + "'><div id='patient_bar_" + e.id +
+            "' class='progress-bar ";
+        e.target_percent <= 0 ? n += "progress-bar-danger" : n += "progress-bar-warning", n = n +
+            "' style='width: " + e.live_current_value + "%;'><div id='patient_bar_striper_" + e.id +
+            "' class='" + i + "'></div></div></div><div  id='patients_missing_" + e.id + "'", e
+            .missing_text && (n += "class='alert alert-danger'"), n += ">", e.missing_text && (n += e
+                .missing_text), n += "</div></div>", missionMarkerBulkAdd ? (void 0 === patientBulkCache[e
+                .mission_id] && (patientBulkCache[e.mission_id] = {}), patientBulkCache[e.mission_id][e
+                .id] = n) : $(document.getElementById("mission_patients_" + e.mission_id))
+            .append(n)
+    }
+    e.miliseconds_by_percent > 0 && patient_timers.push({
+        patient_id: e.id,
+        miliseconds_by_percent: e.miliseconds_by_percent,
+        params: e
+    }), e.live_current_value <= 0 && patientFinish(e), missionMarkerBulkAdd || progressBarScrollUpdate()
+}
+
+function prisonerMarkerAdd(e) {
+    if ($("#prisoner_" + e.id)
+        .length > 0) return;
+    const t = "<div id='prisoner_" + e.id + "' class='small col-md-6'>" + e.name + "</div>";
+    missionMarkerBulkAdd ? (void 0 === prisonerBulkCache[e.mission_id] && (prisonerBulkCache[e
+            .mission_id] = {}), prisonerBulkCache[e.mission_id][e.id] = t) : $(document.getElementById(
+            "mission_prisoners_" + e.mission_id))
+        .append(t)
+}
+
+function prepareVehicleMarkerStr(e) {
+    e.building_id = e.b, e.caption = e.c, e.vehicle_type_id = e.t;
+    var t = "";
+    1 == e.fms_real ? t = I18n.t("fms.ready_traveling") : 2 == e.fms_real ? t = I18n.t("fms.ready_home") :
+        3 == e.fms_real ? t = I18n.t("fms.going") : 4 == e.fms_real ? t = I18n.t("fms.on_place") : 5 == e
+        .fms_real ? t = I18n.t("fms.on_destination") : 6 == e.fms_real ? t = I18n.t("fms.not_ready") : 7 == e
+        .fms_real ? t = I18n.t("fms.patient_transported") : 8 == e.fms_real ? t = I18n.t(
+        "fms.on_destination") : 9 == e.fms_real ? t = I18n.t("fms.waiting_for_vehicle") : 0 == e.fms_real && (
+            t = "Notruf");
+    var i = '<img src="/images/icons8-location_off.svg" class="vehicle_search" vehicle_id="' + e.id +
+        '"><span title="' + t + '" class=" building_list_fms building_list_fms_' + e.fms_real + '">' + e.fms +
+        '</span>  <a href="/vehicles/' + e.id +
+        '" class="label label-default vehicle_building_list_button lightbox-open" id="vehicle_button_' + e
+        .id + '" vehicle_type_id="' + e.vehicle_type_id + '">' + e.caption + "</a>";
+    if (3 != e.fms_real && 4 != e.fms_real || (i += '<a href="/vehicles/' + e.id +
+            '/backalarm" class="btn btn-default btn-xs backalarm">' + I18n.t("javascript.backalarm") + "</a>",
+            e.back_alarm), $(document.getElementById("vehicle_overview_vehicle_" + e.id))
+        .html(e.fms)
+        .attr("class", "building_list_fms building_list_fms_" + e.fms_real)
+        .attr("title", t), "undefined" == typeof L) return "";
+    var n = '<li class="building_list_vehicle_element" vehicle_id="' + e.id + '" id="vehicle_list_' + e.id +
+        '">';
+    return n += i, n += "</li>"
+}
+
+function vehicleMarkerAdd(e) {
+    e.building_id = e.b, e.caption = e.c, e.vehicle_type_id = e.t;
+    var t = "";
+    1 == e.fms_real ? t = I18n.t("fms.ready_traveling") : 2 == e.fms_real ? t = I18n.t("fms.ready_home") :
+        3 == e.fms_real ? t = I18n.t("fms.going") : 4 == e.fms_real ? t = I18n.t("fms.on_place") : 5 == e
+        .fms_real ? t = I18n.t("fms.on_destination") : 6 == e.fms_real ? t = I18n.t("fms.not_ready") : 7 == e
+        .fms_real ? t = I18n.t("fms.patient_transported") : 8 == e.fms_real ? t = I18n.t(
+        "fms.on_destination") : 9 == e.fms_real ? t = I18n.t("fms.waiting_for_vehicle") : 0 == e.fms_real && (
+            t = "Notruf");
+    var i = '<img src="/images/icons8-location_off.svg" class="vehicle_search" vehicle_id="' + e.id +
+        '"><span title="' + t + '" class=" building_list_fms building_list_fms_' + e.fms_real + '">' + e.fms +
+        '</span>  <a href="/vehicles/' + e.id +
+        '" class="label label-default vehicle_building_list_button lightbox-open" id="vehicle_button_' + e
+        .id + '" vehicle_type_id="' + e.vehicle_type_id + '">' + e.caption + "</a>";
+    if (3 != e.fms_real && 4 != e.fms_real || (i += '<a href="/vehicles/' + e.id +
+            '/backalarm" class="btn btn-default btn-xs backalarm">' + I18n.t("javascript.backalarm") + "</a>",
+            e.back_alarm), $("#vehicle_overview_vehicle_" + e.id)
+        .html(e.fms)
+        .attr("class", "building_list_fms building_list_fms_" + e.fms_real)
+        .attr("title", t), "undefined" == typeof L) return !0;
+    if ($("#vehicle_list_" + e.id)
+        .length > 0 && (void 0 === e.bulkInsert || !e.bulkInsert)) $("#vehicle_list_" + e.id)
+        .html(i);
+    else {
+        var n = '<li class="building_list_vehicle_element" vehicle_id="' + e.id + '" id="vehicle_list_' + e
+            .id + '">';
+        n += i, n += "</li>", void 0 !== e.bulkInsert && e.bulkInsert ? (!1 === buildingVehicleCache.has(e
+                    .building_id) && buildingVehicleCache.set(e.building_id, []), buildingVehicleCache.get(e
+                    .building_id)
+                .push(n)) : $(document.getElementById("vehicle_building_" + e.building_id))
+            .append(n)
+    }
+}
+
+function vehicleCreateOnMap(e, t) {
+    if ("true" == t.ioverwrite || "undefined" == typeof user_id || t.user_id != user_id)
+        if (void 0 !== buildingVehicleGraphicCachePerId.get(t.b)) {
+            var i = buildingVehicleGraphicCachePerId.get(t.b);
+            void 0 !== vehicle_graphics_sorted[i] && void 0 !== vehicle_graphics_sorted[i][t.vtid] && null !=
+                vehicle_graphics_sorted[i][t.vtid] && (t.in = flavouredAsset(vehicle_graphics_sorted[i][t
+                        .vtid][0]), t.isr = flavouredAsset(vehicle_graphics_sorted[i][t.vtid][1]), t
+                    .apng_sonderrechte = flavouredAsset(vehicle_graphics_sorted[i][t.vtid][2]))
+        } else void 0 !== vehicle_graphics[t.vtid] && null != vehicle_graphics[t.vtid] && (t.in =
+            flavouredAsset(vehicle_graphics[t.vtid][0]), t.isr = flavouredAsset(vehicle_graphics[t.vtid][
+                1]), t.apng_sonderrechte = flavouredAsset(vehicle_graphics[t.vtid][2]));
+    null == e && ("undefined" != typeof mapkit ? ((e = new mapkit.ImageAnnotation(new mapkit.Coordinate(0,
+                0), {
+                    url: {
+                        1: t.in
+                    }
+                }))
+                .icon_normal = t.in, e.icon_sonderrechte = t.isr, map.addAnnotation(e), e.element.className =
+                "mapkit-marker", e.addEventListener("select", (function () {
+                    "undefined" == typeof user_id ? $("#signup_from")
+                        .effect("highlight", {}, 500) : lightboxOpen("/vehicles/" + t.id), setTimeout(
+                            mapkitDeselectAnnotation, 1e3)
+                }))) : (e = L.marker([0, 0], {
+                    title: t.name,
+                    icon: icon_empty
+                })
+                .addTo(map), iconMapVehicleGenerate(t.in, t.isr, e), e.on("click", (function () {
+                    "undefined" == typeof user_id ? $("#signup_from")
+                        .effect("highlight", {}, 500) : lightboxOpen("/vehicles/" + t.id)
+                }))), e.visible = !1, void 0 !== t.apng_sonderrechte && "true" == t.apng_sonderrechte ? e
+            .apng_sonderrechte = !0 : e.apng_sonderrechte = !1, e.vehicle_marker_deleted = !1,
+            mission_vehicles.push(e), mission_vehicles_per_vid.set(t.id, e), setInterval((function () {
+                vehicleSonderrechte(e)
+            }), 1e3)), "undefined" == typeof user_id || t.user_id == user_id ? e.title = t.caption : e.title =
+        "[" + I18n.t("map.alliance") + "] " + t.caption, t.dd < 0 && (t.dd = 0);
+    const n = new Date;
+    let s;
+    e.url_arrive = "/vehicles/" + t.id + "/arrive", isLeaflet() && e.setIcon(icon_empty), e.user_id = t
+        .user_id, e.sonderrechte = t.sr, e.rh = t.rh, e.polyline = t.polyline, e.current_step = 0, e
+        .timer_steps = n.getTime() - 1e3 * t.dd, e.vehicle_id = t.id, isLeaflet() ? e.bindTooltip(
+            "<span class='vehicleMarkerLabelFms building_list_fms_" + t.fms_real + "'>" + t.fms + "</span>" +
+            e.title, {
+                permanent: vehicle_label,
+                opacity: 1
+            }) : e.title = e.title, 4 === mobile_version && (-1 !== String(t.in)
+            .indexOf("//") ? (e.app_icon_path_normal = t.in, e.app_icon_path_sonderrechte = t.isr) : (e
+                .app_icon_path_normal = currentHostname() + t.in, e.app_icon_path_sonderrechte =
+                currentHostname() + t.isr)), e.visible || (e.visible = !0, isLeaflet() && e.setOpacity(1),
+            vehicle_markers.push(e), s = vehicle_markers.length - 1, vehicleDriveReal(s))
+}
+
+function vehicleSonderrechte(e) {
+    let t = [];
+    if (isMapKitMap()) {
+        let i = e.coordinate;
+        t[0] = i.latitude, t[1] = i.longitude
+    } else t = e.getLatLng();
+    !1 !== mapIsVisible(t) && void 0 !== e.icon_normal && void 0 !== e.icon_sonderrechte && (1 === e
+        .sonderrechte ? void 0 !== e.apng_sonderrechte && e.apng_sonderrechte && apng_supported ? 1 !== e
+        .sonderrechte_status && (isMapKitMap() ? e.url = {
+            1: e.icon_sonderrechte
+        } : e.setIcon(e.icon_sonderrechte), e.sonderrechte_status = 1) : void 0 !== e
+        .sonderrechte_status && 1 === e.sonderrechte_status ? (isMapKitMap() ? e.url = {
+            1: e.icon_normal
+        } : e.setIcon(e.icon_normal), e.sonderrechte_status = 0) : (isMapKitMap() ? e.url = {
+            1: e.icon_sonderrechte
+        } : e.setIcon(e.icon_sonderrechte), e.sonderrechte_status = 1) : void 0 !== e
+        .sonderrechte_status && 1 === e.sonderrechte_status && (isMapKitMap() ? e.url = {
+            1: e.icon_normal
+        } : e.setIcon(e.icon_normal), e.sonderrechte_status = 0))
+}
+
+function vehicleDriveReal(e) {
+    var t = vehicle_markers[e];
+    if (t.vehicle_marker_deleted) return !0;
+    var i = new Date;
+    0 == t.timer_steps && (t.timer_steps = i.getTime());
+    var n = 40;
+    if (void 0 !== routes[t.rh] && null != routes[t.rh] && void 0 !== routes[t.rh][t.current_step]) {
+        if (start_lat = routes[t.rh][t.current_step][0], start_lng = routes[t.rh][t.current_step][1],
+            void 0 !== routes[t.rh][t.current_step + 1]) {
+            var s = 0;
+            do {
+                if (end_lat = routes[t.rh][t.current_step + 1][0], end_lng = routes[t.rh][t.current_step + 1][
+                        1], offset_step = (i.getTime() - t.timer_steps) / (1e3 * routes[t.rh][t.current_step][
+                        2]) * 100, offset_step >= 100) {
+                    var o = i.getTime() - t.timer_steps - 1e3 * routes[t.rh][t.current_step][2];
+                    t.current_step++, t.timer_steps = i.getTime() - o, s += 1
+                }
+            } while (offset_step >= 100 && void 0 !== routes[t.rh][t.current_step + 1]);
+            "undefined" != typeof route_show && 1 != route_show || void 0 !== t.polyline && s > 0 && (
+                void 0 === t.delete_step_counter_cache && (t.delete_step_counter_cache = 0), void 0 === t
+                .latitude || mapIsVisible([t.latitude, t.longitude]) ? (spliceLatLngs(t.polyline, s + t
+                    .delete_step_counter_cache), t.delete_step_counter_cache = 0) : t
+                .delete_step_counter_cache = t.delete_step_counter_cache + s), void 0 !== routes[t.rh][t
+                .current_step] && void 0 !== routes[t.rh][t.current_step + 1] && (start_lat = routes[t.rh]
+                [t.current_step][0], start_lng = routes[t.rh][t.current_step][1], end_lat = routes[t.rh][t
+                    .current_step + 1][0], end_lng = routes[t.rh][t.current_step + 1][1], offset_step = (i
+                    .getTime() - t.timer_steps) / (1e3 * routes[t.rh][t.current_step][2]) * 100, diff_jb =
+                end_lat - start_lat, diff_kb = end_lng - start_lng, current_lat = start_lat + diff_jb * (
+                    offset_step / 100), current_lng = start_lng + diff_kb * (offset_step / 100), t
+                .latitude = current_lat, t.longitude = current_lng, 1 == mobile_bridge_use && 4 ==
+                mobile_version ? mobileBridgeAdd("vehicle_move", {
+                    id: t.vehicle_id,
+                    title: t.title,
+                    sonderrechte: t.sonderrechte,
+                    latitude: t.latitude,
+                    longitude: t.longitude,
+                    app_icon_path_normal: t.app_icon_path_normal,
+                    app_icon_path_sonderrechte: t.app_icon_path_sonderrechte
+                }) : (isNaN(current_lat) || isNaN(current_lng), mapIsVisible([current_lat,
+                    current_lng]) && (isMapKitMap() ? t.coordinate = new mapkit.Coordinate(current_lat,
+                        current_lng) : t.setLatLng([current_lat, current_lng])), mapIsVisible([
+                        current_lat, current_lng]) ? (1 == t.performance_invisible && (t
+                        .performance_invisible = !1, isLeaflet() ? t.addTo(map) : map.addAnnotation(t)
+                        ), isLeaflet() && (vehicle_label ? t.openTooltip() : t.closeTooltip())) : (n =
+                        1e3, isLeaflet() ? (t.closeTooltip(), map.removeLayer(t)) : 0 == t
+                        .performance_invisible && map.removeAnnotation(t), t.performance_invisible = !0),
+                    new_position = null))
+        } else t.current_step++;
+        setTimeout((function () {
+            vehicleDriveReal(e)
+        }), n)
+    } else vehicleArrive(t)
+}
+
+function isMapKitMap() {
+    return "undefined" != typeof mapkit
+}
+
+function isLeaflet() {
+    return "undefined" == typeof mapkit && void 0 !== map
+}
+
+function mapIsVisible(e) {
+    if (isMapKitMap()) {
+        const t = parseFloat(map.region.center.latitude),
+            i = parseFloat(map.region.span.latitudeDelta),
+            n = t - i,
+            s = t + i,
+            o = parseFloat(map.region.center.longitude),
+            a = parseFloat(map.region.span.longitudeDelta),
+            r = o - a,
+            l = o + a;
+        return n <= e[0] && s >= e[0] && r <= e[1] && l >= e[1]
+    }
+    return map.getBounds()
+        .contains(e)
+}
+
+function hide_all_except_mission(e, t, i) {
+    if (!0 === mobile_bridge_use || !1 === mouse_over_disable_inactive_elements) return !0;
+    const n = parseInt(e);
+    mission_markers_per_id.forEach((function (e) {
+        e.mission_id !== n ? isMapKitMap() ? (e.opacity = .2, e.displayPriority = 0) : (e
+            .setOpacity(.2), e.closeTooltip()) : isLeaflet() && (e.setOpacity(1), e
+            .openTooltip())
+    })), vehicle_label_backup = vehicle_label, vehicle_label = !1, $.each(vehicle_markers, (function (e,
+        t) {
+        t.visible && (isMapKitMap() ? (t.opacity = .2, t.selected = !1) : (t.setOpacity(.2), t
+            .closeTooltip()))
+    })), hide_all_buildings(), "null" !== t && (target_marker && (isMapKitMap() ? map.removeAnnotation(
+        target_marker) : map.removeLayer(target_marker), target_marker = !1), isMapKitMap() ? ((
+            target_marker = new mapkit.ImageAnnotation(new mapkit.Coordinate(parseFloat(t),
+                parseFloat(i)), {
+                url: {
+                    1: "/images/direction_down.png"
+                }
+            }))
+        .title = "Ziel", map.addAnnotation(target_marker)) : iconMapGenerate(
+        "/images/direction_down.png", target_marker = L.marker([i, i], {
+            title: "Ziel",
+            icon: icon_empty
+        })
+        .addTo(map)))
+}
+
+function show_hidden_markers() {
+    if (!0 === mobile_bridge_use || !1 === mouse_over_disable_inactive_elements) return !0;
+    target_marker && (isMapKitMap() ? map.removeAnnotation(target_marker) : map.removeLayer(target_marker),
+        target_marker = !1), vehicle_label = vehicle_label_backup, $.each(vehicle_markers, (function (e,
+        t) {
+        t.visible && (isMapKitMap() ? t.opacity = 1 : (t.setOpacity(1), vehicle_label ? t
+            .openTooltip() : t.closeTooltip()))
+    })), mission_markers_per_id.forEach((function (e) {
+        isMapKitMap() ? (e.opacity = 1, e.visible = !0) : (e.setOpacity(1), mission_label ? e
+            .openTooltip() : e.closeTooltip())
+    })), building_markers_cache_per_id.forEach((e => {
+        e.opacity = 1
+    })), $.each(building_markers, (function (e, t) {
+        isMapKitMap() ? (t.opacity = 1, t.visible = !0) : t.setOpacity(1)
+    }))
+}
+
+function hide_all_except_vehicle(e) {
+    if (!0 === mobile_bridge_use || !1 === mouse_over_disable_inactive_elements) return !0;
+    const t = parseInt(e);
+    mission_markers_per_id.forEach((function (e) {
+        isMapKitMap() ? (e.visible = !1, e.selected = !1) : (e.setOpacity(.2), e.closeTooltip())
+    })), $.each(vehicle_markers, (function (e, i) {
+        if (i.visible && i.vehicle_id !== t) isMapKitMap() ? (i.opacity = .2, i.selected = !1) : (
+            i.setOpacity(.2), i.closeTooltip());
+        else if (i.vehicle_id == t && !i.vehicle_marker_deleted) {
+            target_marker && (isMapKitMap() ? map.removeAnnotation(target_marker) : map
+                .removeLayer(target_marker), target_marker = !1);
+            const e = routes[i.rh][routes[i.rh].length - 1];
+            isMapKitMap() ? (i.visible = !0, (target_marker = new mapkit.ImageAnnotation(
+                    new mapkit.Coordinate(e[0], e[1]), {
+                        url: {
+                            1: "/images/direction_down.png"
+                        }
+                    }))
+                .title = "Ziel", map.addAnnotation(target_marker)) : (i.setOpacity(1),
+                iconMapGenerate("/images/direction_down.png", target_marker = L.marker([e[0],
+                        e[1]], {
+                        title: "Ziel",
+                        icon: icon_empty
+                    })
+                    .addTo(map)))
+        }
+    })), hide_all_buildings()
+}
+
+function hide_all_buildings() {
+    building_markers_cache_per_id.forEach((e => {
+        e.opacity = .2
+    })), $.each(building_markers, (function (e, t) {
+        "undefined" != typeof mapkit ? (t.opacity = .2, t.visible = !1) : t.setOpacity(.2)
+    }))
+}
+
 function check_and_enable_apng_support() {
     "use strict";
     var e = new Image,
@@ -519,7 +1637,8 @@ function missionAlarmTrailerCheck(e) {
                         .val())
                     .css("display", "none"), $(this)
                     .attr("disabled", !1)) : ($(this)
-                    .attr("disabled", !0), $(".vehicle_not_tractive_message_" + $(this)
+                    .attr("disabled", !0),
+                    $(".vehicle_not_tractive_message_" + $(this)
                         .val())
                     .css("display", "inline"))
             }
@@ -741,29 +1860,28 @@ function deleteRadioMessage(e) {
 }
 
 function vehicleSearch(e) {
-    if (!mobile_bridge_use || mixed_mobile_desktop_mode) {
-        if (mapViewExpanded) return mapViewExpandedWindow.vehicleSearch(e);
-        var t = !1;
-        $.each(mission_vehicles, (function (i, n) {
-            !n.vehicle_marker_deleted && n.visible && n.vehicle_id == e && (t = !0, "undefined" !=
-                typeof mapkit ? map.setCenterAnimated(new mapkit.Coordinate(n.latitude, n
-                    .longitude), !0) : map.setView([n.latitude, n.longitude]))
-        })), t || alert(I18n.t("javascript.not_found_map"))
-    } else mobileBridgeAdd("vehicle_center_on_map", {
+    if (mobile_bridge_use && !mixed_mobile_desktop_mode) return void mobileBridgeAdd(
+    "vehicle_center_on_map", {
         id: e
-    })
+    });
+    if (mapViewExpanded) return mapViewExpandedWindow.vehicleSearch(e);
+    var t = !1;
+    const i = mission_vehicles_per_vid.get(e);
+    i && !i.vehicle_marker_deleted && i.visible && (t = !0, isMapKitMap() ? map.setCenterAnimated(new mapkit
+        .Coordinate(i.latitude, i.longitude), !0) : map.setView([i.latitude, i.longitude])), t || alert(
+        I18n.t("javascript.not_found_map"))
 }
 
 function missionLabel() {
-    $.each(mission_markers, (function (e, t) {
-        t.getTooltip()
-            .options.permanent = mission_label, mission_label ? t.openTooltip() : t.closeTooltip()
+    mission_markers_per_id.forEach((function (e) {
+        e.getTooltip()
+            .options.permanent = mission_label, mission_label ? e.openTooltip() : e.closeTooltip()
     }))
 }
 
 function vehicleLabel() {
-    $.each(mission_vehicles, (function (e, t) {
-        t.vehicle_marker_deleted || (vehicle_label ? t.openTooltip() : t.closeTooltip())
+    mission_vehicles_per_vid.forEach((e => {
+        e.vehicle_marker_deleted || (vehicle_label ? e.openTooltip() : e.closeTooltip())
     }))
 }
 
@@ -782,18 +1900,6 @@ function mapMoveToSearch() {
                         parseFloat(t.lon)), !0)
             }))
         }))
-}
-
-function mapIsVisible(e) {
-    if ("undefined" != typeof mapkit) {
-        var t = parseFloat(map.region.center.latitude) - parseFloat(map.region.span.latitudeDelta),
-            i = parseFloat(map.region.center.latitude) + parseFloat(map.region.span.latitudeDelta),
-            n = parseFloat(map.region.center.longitude) - parseFloat(map.region.span.longitudeDelta),
-            s = parseFloat(map.region.center.longitude) + parseFloat(map.region.span.longitudeDelta);
-        return t <= e[0] && i >= e[0] && n <= e[1] && s >= e[1]
-    }
-    return map.getBounds()
-        .contains(e)
 }
 
 function buildingLoadContent(url) {
@@ -815,16 +1921,6 @@ function buildingResetContent() {
 
 function buildingResetContentWhenPossible() {
     buildingResetContentPossible && buildingResetContent()
-}
-
-function buildingMarkerReset() {
-    leitstelle_latitude = !1, leitstelle_longitude = !1, leitstelles = [], $.each(building_markers, (
-            function (e, t) {
-                "undefined" == typeof mapkit ? map.removeLayer(t) : map.removeAnnotation(t)
-            })), $.each(building_timers, (function (e, t) {
-            window.clearTimeout(t)
-        })), mobile_bridge_use && mobileBridgeAdd("building_remove_all", {}), building_markers = Array(),
-        building_markers_cache = Array(), buildingMarkerBulkContentCache = []
 }
 
 function iconAnchorCalculate(e) {
@@ -916,103 +2012,11 @@ function building_load_alliance_app(min_lat, max_lat, min_lng, max_lng) {
         }))
 }
 
-function building_maps_redraw() {
-    visibles = new Array, building_markers_new = new Array, $.each(building_markers, (function (e, t) {
-        var i = [];
-        if ("undefined" == typeof mapkit) i = t.getLatLng();
-        else {
-            var n = t.coordinate;
-            i = [n.latitude, n.longitude]
-        }
-        mapIsVisible(i) ? (visibles.push(t.building_id), building_markers_new.push(t)) :
-            "undefined" == typeof mapkit ? map.removeLayer(t) : map.removeAnnotation(t)
-    })), building_markers = building_markers_new, $.each(building_markers_cache, (function (e, t) {
-        -1 == $.inArray(t.id, visibles) && mapIsVisible([t.latitude, t.longitude]) &&
-            building_maps_draw(t)
-    }))
-}
-
-function building_maps_draw(e) {
-    var t = 5e3;
-    if (void 0 !== e.user_id && "undefined" != typeof user_id && user_id != e.user_id && (t = 1e3),
-        "undefined" != typeof mapkit) {
-        (i = new mapkit.ImageAnnotation(new mapkit.Coordinate(e.latitude, e.longitude), {
-            url: {
-                1: flavouredAsset(e.building_marker_image)
-            }
-        }))
-        .title = e.name, i.addEventListener("select", (function () {
-            lightboxOpen("/buildings/" + e.id), setTimeout(mapkitDeselectAnnotation, 1e3)
-        })), map.addAnnotation(i), i.element.className = "mapkit-marker"
-    } else {
-        map_layer = map_filters_service.getFilterLayerByBuildingParams(e);
-        var i = L.marker([e.latitude, e.longitude], {
-                zIndexOffset: t,
-                title: e.name,
-                icon: icon_empty
-            })
-            .bindTooltip(e.name)
-            .addTo(map_layer);
-        void 0 !== e.opacity && i.setOpacity(e.opacity), iconMapGenerate(e.building_marker_image, i), i.on(
-            "click", (function () {
-                lightboxOpen("/buildings/" + e.id)
-            }))
-    }
-    i.building_id = e.id, building_markers.push(i)
-}
-
 function buildingCaption(e) {
-    var t = !1;
-    return $.each(building_markers_cache, (function (i, n) {
-        n.id == e && (t = n.name)
-    })), t
-}
-
-function buildingVehicleGraphicCacheAdd(e) {
-    void 0 !== e.vgi && "" != e.vgi && null != e.vgi && (buildingVehicleGraphicCache[e.id] = e.vgi)
-}
-
-function buildingMarkerAdd(e) {
-    var t = !1;
-    if ($.each(building_markers_cache, (function (i, n) {
-            n.id == e.id && (t = !0)
-        })), buildingVehicleGraphicCacheAdd(e), t) return !0;
-    building_marker_image = getBuildingMarkerIcon(e), e.building_marker_image = building_marker_image, (0 ==
-            mobile_bridge_use || mixed_mobile_desktop_mode) && constructBuildingListElement(e), 1 ==
-        mobile_bridge_use && 4 == mobile_version && (e.name = e.name.replace("%", ""), -1 !== String(
-                building_marker_image)
-            .indexOf("//") ? e.app_icon_path = building_marker_image : e.app_icon_path = currentHostname() +
-            building_marker_image, mobileBridgeAdd("building_add", e)), building_markers_cache.push(e)
-}
-
-function constructBuildingListElement(e) {
-    if (e.user_id == user_id) {
-        1 == mobile_bridge_use && 4 == mobile_version && (e.name = e.name.replace("%", ""),
-            building_marker_image = getBuildingMarkerIcon(e), -1 !== String(building_marker_image)
-            .indexOf("//") ? e.app_icon_path = building_marker_image : e.app_icon_path =
-        currentHostname() + building_marker_image);
-        var t = "<li  search_attribute= '" + e.name +
-            "' class='building_list_li buildings_searchable' building_type_id='" + e.building_type +
-            "' leitstelle_building_id='" + e.lbid +
-            "'><div class='building_list_caption' id='building_list_caption_" + e.id + "' >" + e
-            .detail_button + "<img class='building_marker_image' building_id='" + e.id + "' src='" +
-            building_marker_image + "'><a href='' class='map_position_mover' data-latitude='" + e.latitude +
-            "' data-longitude='" + e.longitude + "'>" + e.name + "</a>";
-        0 == e.show_vehicles_at_startpage && (t += hideVehicleBuildingHelpText(e.id)), t += "</div>";
-        var i = "<li>" + I18n.t("common.loading") + "</li>";
-        void 0 !== buildingVehicleCache[e.id] && (i = buildingVehicleCache[e.id].join(""),
-                buildingVehicleCache[e.id] = []), t = t + "<ul id='vehicle_building_" + e.id +
-            "' class='building_list_vehicles' data-vehicles-loaded='0' data-building_id='" + e.id + "' ", 0 ==
-            e.show_vehicles_at_startpage && (t += "style='display: none' "), t = t + ">" + i + "</ul></li>", e
-            .building_type == BUILDING_TYPE_LEITSTELLE && (leitstelle_latitude = e.latitude,
-                leitstelle_longitude = e.longitude, leitstelles.push([e.latitude, e.longitude])),
-            buildingMarkerBulkContentCache.push(t)
-    }
-}
-
-function getBuildingMarkerIcon(e) {
-    return flavouredAsset(building_marker_image = e.user_id == user_id ? e.icon : e.icon_other ? e
-        .icon_other : OTHER_BUILDING_ICONS[e.building_type])
+    let t = !1;
+    const i = parseInt(e);
+    return building_markers_cache_per_id.has(i) && (t = building_markers_cache_per_id.get(i)
+        .name), t
 }
 
 function spliceLatLngs(e, t) {
@@ -1020,12 +2024,6 @@ function spliceLatLngs(e, t) {
     "undefined" != typeof mapkit ? ((i = e.points)
         .splice(0, t), e.points = i) : ((i = e.getLatLngs())
         .splice(0, t), e.setLatLngs(i))
-}
-
-function buildingMarkerBulkContentCacheDraw() {
-    $("#building_list")
-        .append(buildingMarkerBulkContentCache.join("")), buildingMarkerBulkContentCache = [],
-        buildingsVehicleLoadVisible()
 }
 
 function currentHostname() {
@@ -1070,89 +2068,30 @@ function iconMapVehicleGenerate(e, t, i) {
         }))
 }
 
-function missionMarkerBlukDraw() {
-    $.each(patientBulkCache, (function (e, t) {
-            var i = "";
-            $.each(t, (function (e, t) {
-                    i += t
-                })), $("#mission_patients_" + e)
-                .append(i)
-        })), $.each(prisonerBulkCache, (function (e, t) {
-            var i = "";
-            $.each(t, (function (e, t) {
-                    i += t
-                })), $("#mission_prisoners_" + e)
-                .append(i)
-        })), patientBulkCache = {},
-        prisonerBulkCache = {}
-}
-
 function missionMarkerReset() {
-    $.each(mission_markers, (function (e, t) {
-        "undefined" == typeof mapkit ? map.removeLayer(t) : map.removeAnnotation(t)
-    })), mission_markers = Array(), $.each(mission_timers, (function (e, t) {
+    mission_markers_per_id.forEach((function (e, t, i) {
+        "undefined" == typeof mapkit ? i.removeLayer(e) : i.removeAnnotation(e)
+    })), mission_markers = Array(), mission_markers_per_id = new Map, $.each(mission_timers, (function (e,
+        t) {
         window.clearInterval(t.timer)
     })), $.each(patient_timers, (function () {
         patient_timers = []
     })), mission_timers = Array()
 }
 
-function buildingsVehicleLoadVisible() {
-    if ($("#building_panel_body")
-        .length <= 0) return !0;
-    var e = $("#building_panel_body")
-        .offset()
-        .top - 3 * $("#building_panel_body")
-        .height(),
-        t = $("#building_panel_body")
-        .offset()
-        .top + 3 * $("#building_panel_body")
-        .height();
-    if ($("#building_panel_body")
-        .is(":visible")) {
-        var i = [];
-        $(".building_list_vehicles:visible")
-            .each((function () {
-                var n = $(this)
-                    .offset()
-                    .top;
-                n > e && n < t && "0" == $(this)
-                    .data("vehicles-loaded") && ($(this)
-                        .data("vehicles-loaded", "1"), i.push($(this)
-                            .data("building_id")))
-            })), i.length > 0 && batchBuildingsVehicleLoad(i)
-    }
-}
-
 function buildingsVehicleLoad(building_id) {
     $.get("/buildings/" + building_id + "/vehiclesMap", (function (data) {
-        buildingVehicleCache[building_id] = [], eval(data), vehicleContent = "", void 0 !==
-            buildingVehicleCache[building_id] && (vehicleContent = buildingVehicleCache[
-                building_id].join(""), buildingVehicleCache[building_id] = []), $(
-                "#vehicle_building_" + building_id)
+        buildingVehicleCache.set(building_id, []), eval(data), vehicleContent = "",
+            buildingVehicleCache.has(building_id) && (vehicleContent = buildingVehicleCache.get(
+                    building_id)
+                .join(""), buildingVehicleCache.set(building_id, [])), $("#vehicle_building_" +
+                building_id)
             .html(vehicleContent)
     }))
 }
 
-function batchBuildingsVehicleLoad(building_id_array) {
-    $.post("/buildings/vehiclesMap", {
-        building_ids: building_id_array
-    }, (function (data) {
-        for (var idx = 0; idx < building_id_array.length; idx++) buildingVehicleCache[
-            building_id_array[idx]] = [];
-        eval(data);
-        for (var idx = 0; idx < building_id_array.length; idx++) {
-            var building_id = building_id_array[idx],
-                vehicleContent = "";
-            void 0 !== buildingVehicleCache[building_id] && (vehicleContent =
-                    buildingVehicleCache[building_id].join(""), buildingVehicleCache[
-                    building_id] = []), $("#vehicle_building_" + building_id)
-                .html(vehicleContent)
-        }
-    }))
-}
-
 function progressBarScrollUpdate() {
+    if (missionMarkerBulkAdd || massAllianceMissionAdd || massMissionAdd) return !0;
     var e = [];
     $(".progress-striped-inner-active")
         .each((function () {
@@ -1211,70 +2150,6 @@ function missionScrollUpdate() {
     }
 }
 
-function patientMarkerAddCombined(e) {
-    var t = "<div class='col-md-12' id='mission_patient_summary_" + e.mission_id + "'>";
-    t += "<img src='/images/icons8-dizzy_person_2.svg' class='mission_list_patient_icon'><strong>", t = (t +=
-            e.count) + " " + I18n.t("javascript.patient") + "</strong>", e.untouched > 0 && (t = (t = t +
-            " - " + e.untouched) + " " + I18n.t("javascript.patient_untouched") + "</strong>"), $.each(e
-            .errors, (function (e, i) {
-                t = t + "<div class='alert alert-danger'><strong>" + i + "x</strong> " + e + "</div>"
-            })), t += "</div>", missionMarkerBulkAdd ? (void 0 === patientBulkCache[e.mission_id] && (
-            patientBulkCache[e.mission_id] = {}), patientBulkCache[e.mission_id][0] = t) : $(
-            "#mission_patients_" + e.mission_id)
-        .html(t)
-}
-
-function patientMarkerAdd(e) {
-    $("#mission_patient_summary_" + e.mission_id)
-        .hide();
-    var t = "progress  patient_progress",
-        i = "progress-striped-inner ";
-    if (e.miliseconds_by_percent > 0 && (t = "progress patient_progress", i =
-            "progress-striped-inner progress-striped-inner-active-resource-safe "), $("#patient_" + e.id)
-        .length > 0) patientTimerDelete(e.id), $("#patient_bar_outer_" + e.id)
-        .attr("class", t), $("#patient_bar_striper_" + e.id)
-        .attr("class", i), $("#patient_bar_" + e.id)
-        .css("width", e.live_current_value + "%"), e.missing_text ? ($("#patients_missing_" + e.id)
-            .html(e.missing_text), $("#patients_missing_" + e.id)
-            .attr("class", "alert alert-danger")) : ($("#patients_missing_" + e.id)
-            .html(""), $("#patients_missing_" + e.id)
-            .attr("class", "")), e.target_percent <= 0 ? $("#patient_bar_" + e.id)
-        .removeClass("progress-bar-warning")
-        .addClass("progress-bar-danger") : $("#patient_bar_" + e.id)
-        .removeClass("progress-bar-danger")
-        .addClass("progress-bar-warning");
-    else {
-        var n = "<div style='max-width:250px' class=' col-md-6 small'  id='patient_" + e.id + "'>" + e.name +
-            " <div id='patient_bar_outer_" + e.id + "' class='" + t + "'><div id='patient_bar_" + e.id +
-            "' class='progress-bar ";
-        e.target_percent <= 0 ? n += "progress-bar-danger" : n += "progress-bar-warning", n = n +
-            "' style='width: " + e.live_current_value + "%;'><div id='patient_bar_striper_" + e.id +
-            "' class='" + i + "'></div></div></div><div  id='patients_missing_" + e.id + "'", e
-            .missing_text && (n += "class='alert alert-danger'"), n += ">", e.missing_text && (n += e
-                .missing_text), n += "</div></div>", missionMarkerBulkAdd ? (void 0 === patientBulkCache[e
-                .mission_id] && (patientBulkCache[e.mission_id] = {}), patientBulkCache[e.mission_id][e
-                .id] = n) : $("#mission_patients_" + e.mission_id)
-            .append(n)
-    }
-    e.miliseconds_by_percent > 0 && patient_timers.push({
-        patient_id: e.id,
-        miliseconds_by_percent: e.miliseconds_by_percent,
-        params: e
-    }), e.live_current_value <= 0 && patientFinish(e), missionMarkerBulkAdd || progressBarScrollUpdate()
-}
-
-function prisonerMarkerAdd(e) {
-    if ($("#prisoner_" + e.id)
-        .length > 0);
-    else {
-        var t = "<div id='prisoner_" + e.id + "' class='small col-md-6'>" + e.name + "</div>";
-        missionMarkerBulkAdd ? (void 0 === prisonerBulkCache[e.mission_id] && (prisonerBulkCache[e
-                .mission_id] = {}), prisonerBulkCache[e.mission_id][e.id] = t) : $("#mission_prisoners_" + e
-                .mission_id)
-            .append(t)
-    }
-}
-
 function leiststelleMinDistance(e, t) {
     var i = -1;
     return $.each(leitstelles, (function (n, s) {
@@ -1284,17 +2159,18 @@ function leiststelleMinDistance(e, t) {
 }
 
 function missionMarkerDistanceUpdate() {
-    $.each(mission_markers, (function (e, t) {
-        if (user_id != t.user_id) {
-            var i = 0,
-                n = 0,
-                s = 0;
-            "undefined" == typeof mapkit ? (position = t.getLatLng(), n = position.lat, s =
-                    position.lng) : (position = t.coordinate, n = position.latitude, s = position
-                    .longitude), 0 != leitstelle_latitude && (i = leiststelleMinDistance(n, s)), !
-                1 !== alliance_mission_distance && i > alliance_mission_distance ? $("#mission_" +
-                    t.mission_id)
-                .addClass("mission_alliance_distance_hide") : $("#mission_" + t.mission_id)
+    mission_markers_per_id.forEach((function (e) {
+        if (user_id != e.user_id) {
+            var t = 0,
+                i = 0,
+                n = 0;
+            "undefined" == typeof mapkit ? (position = e.getLatLng(), i = position.lat, n =
+                    position.lng) : (position = e.coordinate, i = position.latitude, n = position
+                    .longitude), 0 != leitstelle_latitude && (t = leiststelleMinDistance(i, n)), !
+                1 !== alliance_mission_distance && t > alliance_mission_distance ? $(document
+                    .getElementById("mission_" + e.mission_id))
+                .addClass("mission_alliance_distance_hide") : $(document.getElementById(
+                    "mission_" + e.mission_id))
                 .removeClass("mission_alliance_distance_hide")
         }
     }))
@@ -1310,229 +2186,16 @@ function missionVehiclesShowNotInvolved(e) {
 }
 
 function missionInvolved(e, t) {
-    $.each(mission_markers, (function (i, n) {
-        n.mission_id == e && (t && !n.involved && (n.involved = t, missionVehiclesShowNotInvolved(
-            e)), n.involved = t)
-    }))
+    let i = mission_markers_per_id.get(e);
+    i && (t && !i.involved && (i.involved = t, missionVehiclesShowNotInvolved(e)), i.involved = t)
 }
 
-function missionMarkerAdd(e) {
-    bar_class = "progress mission_progress";
-    var t = "progress-striped-inner",
-        i = 0,
-        n = !1,
-        s = e.caption;
-    e.date_end > 0 && (t = "progress-striped-inner progress-striped-inner-active-resource-safe");
-    var o = "",
-        a = e.mission_type ? "generic" : "regular",
-        r = "generic" === a ? "mission_type" : "mtid";
-    o = void 0 !== mission_graphics_lookups[a][e[r]] && null != mission_graphics_lookups[a][e[r]] &&
-        void 0 !== mission_graphics_lookups[a][e[r]][e.vehicle_state] && "" != mission_graphics_lookups[a][e[
-            r]][e.vehicle_state] ? mission_graphics_lookups[a][e[r]][e.vehicle_state] : "/images/" + e.icon +
-        ".png";
-    var l = "red";
-    1 == e.vehicle_state && (l = "yellow"), 2 == e.vehicle_state && (l = "green"), e.user_id != user_id && (
-            0 != leitstelle_latitude && (i = leiststelleMinDistance(e.latitude, e.longitude)), null == e
-            .user_id ? (e.caption = "[" + I18n.t("map.alliance_event") + "] " + e.caption, s = s + " " + I18n
-                .t("map.alliance_event")) : (e.caption = "[" + I18n.t("map.alliance") + "] " + e.caption, s =
-                s + " " + I18n.t("map.alliance")), !1 !== alliance_mission_distance && i >
-            alliance_mission_distance && (n = !0)), 1 == mobile_bridge_use && 0 ==
-        mixed_mobile_desktop_mode && currentMarkerTypeFilterTurnedOn(e.filter_id) && (4 == mobile_version && (
-                -1 !== String(o)
-                .indexOf("//") ? e.app_icon_path = o : e.app_icon_path = currentHostname() + o),
-            mobileBridgeAdd("mission", e));
-    var c = e.caption;
-    "" != e.captionOld && (c = "<small id='mission_old_caption_" + e.id + "'><s>" + e.captionOld +
-        "</s></small> " + c), "" != e.address && (c = c + ", <small  id='mission_address_" + e.id + "'>" +
-        e.address + "</small>", s = s + " " + e.address);
-    var u = 0;
-    e.sw_start_in > 0 && (u = 1e3 * e.sw_start_in, void 0 === mission_overview_timer && (
-        mission_overview_timer = setInterval(mission_overview_timer_call, 1e3)));
-    var d = ["unattended", "attended", "finishing"][e.vehicle_state];
-    if ($("#mission_" + e.id)
-        .length > 0) {
-        missionTimerDelete(e.id), $("#mission_bar_outer_" + e.id)
-            .attr("class", bar_class), $("#mission_bar_striper_" + e.id)
-            .attr("class", t), $("#mission_vehicle_state_" + e.id)
-            .attr("src", o), $("#mission_bar_" + e.id)
-            .css("width", e.live_current_value + "%"), $("#mission_" + e.id)
-            .attr("search_attribute", s), $("#mission_" + e.id)
-            .attr("mission_type_id", e.mtid), $("#mission_" + e.id)
-            .attr("data-overlay-index", e.overlay_index), $("#mission_" + e.id)
-            .attr("data-additive-overlays", e.additive_overlays || ""), $("#mission_panel_" + e.id)
-            .removeClass("mission_panel_red"), $("#mission_panel_" + e.id)
-            .removeClass("mission_panel_yellow"), $("#mission_panel_" + e.id)
-            .removeClass("mission_panel_green"), $("#mission_panel_" + e.id)
-            .addClass("mission_panel_" + l), $("#mission_" + e.id)
-            .data("mission-state-filter", d), (e.live_current_value > 0 || e.patients_count > 0 || e
-                .prisoners_count > 0 || e.handoff) && setTimeout((function () {
-                $("#mission_" + e.id)
-                    .removeClass("mission_deleted")
-            }), 1e3), $("#mission_overview_countdown_" + e.id)
-            .attr("timeleft", u), u <= 0 && $("#mission_overview_countdown_" + e.id)
-            .html(""), $("#mission_caption_" + e.id)
-            .html(c), e.missing_text ? ($("#mission_missing_" + e.id)
-                .html(e.missing_text), $("#mission_missing_" + e.id)
-                .attr("class", "alert alert-danger")) : ($("#mission_missing_" + e.id)
-                .html(""), $("#mission_missing_" + e.id)
-                .attr("class", "")), e.missing_text_short ? ($("#mission_missing_short_" + e.id)
-                .html(e.missing_text_short), $("#mission_missing_short_" + e.id)
-                .attr("class", "alert alert-danger")) : ($("#mission_missing_short_" + e.id)
-                .html(""), $("#mission_missing_short_" + e.id)
-                .attr("class", "")), e.alliance_id && $("#mission_panel_" + e.id)
-            .addClass("panel-success"), updateMissionStateButtons();
-        let i = getMissionSortableAttributes(e);
-        $(`#mission_${e.id}`)
-            .data("sortable-by", i);
-        const n = "mission_" + e.id,
-            a = "#" + $("#" + n)
-            .parent()
-            .attr("id"),
-            r = missionListSorters[a];
-        if (r) {
-            let e = r.findSuccessorElement(i, n);
-            null !== e ? $(e)
-                .before($("#" + n)) : $(a + " .missionSideBarEntry")
-                .last()
-                .after($("#" + n))
-        }
-    } else {
-        var h = "#mission_list",
-            p = "emergency";
-        e.kt ? (h = e.user_id != user_id ? "#mission_list_krankentransporte_alliance" :
-            "#mission_list_krankentransporte", p = "krankentransporte") : e.sw ? (h = e.user_id !=
-            user_id ? "#mission_list_sicherheitswache_alliance" : "#mission_list_sicherheitswache", p =
-            "sicherheitswache") : e.user_id != user_id && null != e.user_id ? (h =
-            "#mission_list_alliance", p = "alliance") : e.user_id != user_id && null == e.user_id && (h =
-            "#mission_list_alliance_event", p = "alliance_event");
-        var m = "",
-            _ = "";
-        e.missing_text && (m = "alert alert-danger", _ = e.missing_text);
-        var f = "",
-            g = "";
-        e.missing_text_short && (f = "alert alert-danger", g = e.missing_text_short);
-        var v = "";
-        e.alliance_id && (v = "panel-success");
-        var b = useMissionScrollBarOptimization ? "missionSideBarEntryScrollInvisible" : "";
-        s = s.replace(/'/g, "&#039;");
-        let i = getMissionSortableAttributes(e);
-        var y = "<div search_attribute='" + s + "' data-mission-type-filter='" + p +
-            "' data-mission-state-filter='" + d +
-            "' data-mission-participation-filter=new data-sortable-by='" + JSON.stringify(i) +
-            "' id='mission_" + e.id + "' mission_id='" + e.id + "' mission_type_id='" + e.mtid +
-            "' class='missionSideBarEntry missionSideBarEntrySearchable " + b + "' latitude='" + e.latitude +
-            "' longitude='" + e.longitude + "' target_latitude='" + e.tlat + "' target_longitude='" + e.tlng +
-            "' data-overlay-index='" + e.overlay_index + "' data-additive-overlays='" + (e
-                .additive_overlays || "") + "'><div id='mission_panel_" + e.id +
-            "' class='panel panel-default " + v + " mission_panel_" + l +
-            "'><div id='mission_panel_heading_" + e.id + "' class='panel-heading'><a href='/missions/" + e
-            .id + "?" + missionFilterQueryParams +
-            "' class='btn btn-default btn-xs lightbox-open mission-alarm-button' id='alarm_button_" + e.id +
-            "'> " + I18n.t("javascript.alarm") + "</a> <span id='mission_participant_" + e.id +
-            "' class='glyphicon glyphicon-user hidden'></span><span id='mission_participant_new_" + e.id +
-            "' class='glyphicon glyphicon-asterisk'></span> <a href='' id='mission_caption_" + e.id +
-            "' class='map_position_mover' target_latitude='" + e.tlat + "' target_longitude='" + e.tlng +
-            "' data-latitude='" + e.latitude + "' data-longitude='" + e.longitude + "'>" + c +
-            "</a></div><div class='panel-body'><div class='row'><div class='col-xs-1'><img src='" + o +
-            "' id='mission_vehicle_state_" + e.id +
-            "' class='mission_vehicle_state'></div><div class='col-xs-11'><div class='mission_overview_countdown' id='mission_overview_countdown_" +
-            e.id + "' timeleft='" + u + "'></div><div id='mission_bar_outer_" + e.id + "' class='" +
-            bar_class + "'><div id='mission_bar_" + e.id +
-            "' class='progress-bar progress-bar-danger' role='progressbar' aria-valuemin='0' aria-valuemax='100' style='width: " +
-            e.live_current_value + "%;'><div class='" + t + "' id='mission_bar_striper_" + e.id +
-            "'></div></div></div><div id='mission_missing_" + e.id + "' class='" + m + "'>" + _ +
-            "</div><div id='mission_missing_short_" + e.id + "' class='" + f + "'>" + g +
-            "</div><div id='mission_pump_progress_" + e.id + "'></div><div id='mission_patients_" + e.id +
-            "' class='row'></div><div class='mission_prisoners' id='mission_prisoners_" + e.id +
-            "'></div></div></div></div></div>";
-        const n = missionListSorters[h];
-        if (n) {
-            let e = n.findSuccessorElement(i);
-            null !== e ? $(e)
-                .before(y) : $(h)
-                .append(y)
-        } else $(h)
-            .append(y);
-        tutorial.callNewMissionListener(!0), missionParticipationFilters.new.missionIds.add(e.id)
+function missionsInvolvedArr(e, t) {
+    for (let i in e) {
+        let e = mission_markers_per_id.get(i);
+        e && (t && !e.involved && (e.involved = t, missionVehiclesShowNotInvolved(e.mission_id)), e.involved =
+            t)
     }
-    var w = !1;
-    if ($.each(mission_markers, (function (t, i) {
-            i.mission_id == e.id && ("undefined" != typeof mapkit ? (i.url = {
-                1: o
-            }, i.opacity = 1, i.title = e.caption, i.subtitle = e.address) : (i.setIcon(
-                icon_empty), i.setOpacity(1), iconMapGenerate(o, i), i.setTooltipContent(
-                c)), i.vehicle_state = e.vehicle_state, w = !0)
-        })), !w && "undefined" != typeof L) {
-        if ("undefined" != typeof mapkit) {
-            (k = new mapkit.ImageAnnotation(new mapkit.Coordinate(e.latitude, e.longitude), {
-                url: {
-                    1: o
-                }
-            }))
-            .title = e.caption, k.subtitle = e.address, map.addAnnotation(k), k.element.className =
-                "mapkit-marker", k.addEventListener("select", (function () {
-                    $("#alarm_button_" + e.id)
-                        .click(), setTimeout(mapkitDeselectAnnotation, 1e3)
-                }))
-        } else {
-            var k = L.marker([e.latitude, e.longitude], {
-                    zIndexOffset: 1e4,
-                    title: e.name,
-                    icon: icon_empty
-                })
-                .bindTooltip(c, {
-                    permanent: mission_label,
-                    opacity: 1
-                });
-            void 0 !== map && k.addTo(map_filters_service.getFilterLayerByMissionParams(e)), iconMapGenerate(
-                o, k), k.on("click", (function () {
-                $("#alarm_button_" + e.id)
-                    .click()
-            }))
-        }
-        k.mission_id = e.id, k.user_id = e.user_id, k.vehicle_state = e.vehicle_state, k.krankentransport = e
-            .kt, k.sicherheitswache = e.sw, k.involved = !0, mission_markers.push(k)
-    }
-    if (n && $("#mission_" + e.id)
-        .addClass("mission_alliance_distance_hide"), e.date_end > 0 && missionTimerStart(e), e
-        .water_damage_pump_value) {
-        var x = "<div class='small' id='pumping_" + e.id + "'>" + I18n.t("javascript.water_pumping_process") +
-            " <div id='pumping_bar_outer_" + e.id +
-            "' class='progress pumping_progress'><div id='pumping_bar_" + e.id +
-            "' class='progress-bar progress-bar-info";
-        x += "' style='width: " + e.live_current_water_damage_pump_value +
-            "%;'><div id='pumping_bar_striper_" + e.id + "' class='" + t +
-            "'></div></div></div><div  id='patients_missing_" + e.id + "'", $("#mission_pump_progress_" + e
-                .id)
-            .html(x)
-    }
-    e.pumping_date_end > 0 && ($("#pumping_bar_striper_" + e.id)
-            .addClass("progress-striped-inner-active"), startProgressBar({
-                $element: $("#pumping_bar_" + e.id),
-                missionValue: e.pumping_mission_value,
-                startTime: 1e3 * e.pumping_date_start,
-                endTime: 1e3 * e.pumping_date_end
-            })), missionSelectionUpdateButtons(), e.live_current_value <= 0 && e
-        .live_current_water_damage_pump_value <= 0 && missionFinish(e);
-    const z = getActiveMissionIds()
-        .includes(e.id);
-    $("#mission_" + e.id)
-        .toggleClass("hidden", !z), missionMarkerBulkAdd || (progressBarScrollUpdate(), "" != $(
-                "#search_input_field_missions")
-            .val() && searchMission())
-}
-
-function getMissionSortableAttributes(e) {
-    var t = e.created_at;
-    return e.user_id != user_id && null != e.user_id && null != e.alliance_shared_at && e.alliance_shared_at >
-        0 && (t = e.alliance_shared_at), {
-            id: e.id,
-            caption: e.caption.replace(/(&quot;|'|")+/g, ""),
-            average_credits: e.average_credits,
-            prisoners_count: [e.prisoners_count, e.possible_prisoners_count],
-            patients_count: [e.patients_count, e.possible_patients_count],
-            age: t
-        }
 }
 
 function missionTimerStart(e) {
@@ -1638,55 +2301,26 @@ function missionDelete(e) {
             id: e
         }), $("#mission_" + e)
         .addClass("mission_deleted"), missionTimerDelete(e);
-    var t = [];
-    $.each(mission_markers, (function (i, n) {
-            n.mission_id == e ? "undefined" == typeof mapkit ? n.remove() : map.removeAnnotation(n) :
-                t.push(n)
-        })), mission_markers = t, missionParticipationFilters.new.missionIds.delete(e),
+    var t = mission_markers_per_id.get(parseInt(e));
+    t && (mission_markers_per_id.delete(t.mission_id), "undefined" == typeof mapkit ? t.remove() : map
+        .removeAnnotation(t));
+    var i = [];
+    $.each(mission_markers, (function (t, n) {
+            n.mission_id != e && i.push(n)
+        })), mission_markers = i, missionParticipationFilters.new.missionIds.delete(e),
         missionParticipationFilters.started.missionIds.delete(e), missionSelectionUpdateButtons()
-}
-
-function vehicleMarkerAdd(e) {
-    e.building_id = e.b, e.caption = e.c, e.vehicle_type_id = e.t;
-    var t = "";
-    1 == e.fms_real ? t = I18n.t("fms.ready_traveling") : 2 == e.fms_real ? t = I18n.t("fms.ready_home") :
-        3 == e.fms_real ? t = I18n.t("fms.going") : 4 == e.fms_real ? t = I18n.t("fms.on_place") : 5 == e
-        .fms_real ? t = I18n.t("fms.on_destination") : 6 == e.fms_real ? t = I18n.t("fms.not_ready") : 7 == e
-        .fms_real ? t = I18n.t("fms.patient_transported") : 8 == e.fms_real ? t = I18n.t(
-        "fms.on_destination") : 9 == e.fms_real ? t = I18n.t("fms.waiting_for_vehicle") : 0 == e.fms_real && (
-            t = "Notruf");
-    var i = '<img src="/images/icons8-location_off.svg" class="vehicle_search" vehicle_id="' + e.id +
-        '"><span title="' + t + '" class=" building_list_fms building_list_fms_' + e.fms_real + '">' + e.fms +
-        '</span>  <a href="/vehicles/' + e.id +
-        '" class="label label-default vehicle_building_list_button lightbox-open" id="vehicle_button_' + e
-        .id + '" vehicle_type_id="' + e.vehicle_type_id + '">' + e.caption + "</a>";
-    if (3 != e.fms_real && 4 != e.fms_real || (i += '<a href="/vehicles/' + e.id +
-            '/backalarm" class="btn btn-default btn-xs backalarm">' + I18n.t("javascript.backalarm") + "</a>",
-            e.back_alarm), $("#vehicle_overview_vehicle_" + e.id)
-        .html(e.fms)
-        .attr("class", "building_list_fms building_list_fms_" + e.fms_real)
-        .attr("title", t), "undefined" == typeof L) return !0;
-    if ($("#vehicle_list_" + e.id)
-        .length > 0 && (void 0 === e.bulkInsert || !e.bulkInsert)) $("#vehicle_list_" + e.id)
-        .html(i);
-    else {
-        var n = '<li class="building_list_vehicle_element" vehicle_id="' + e.id + '" id="vehicle_list_' + e
-            .id + '">';
-        n += i, n += "</li>", void 0 !== e.bulkInsert && e.bulkInsert ? (void 0 === buildingVehicleCache[e
-                .building_id] && (buildingVehicleCache[e.building_id] = []), buildingVehicleCache[e
-                .building_id].push(n)) : $("#vehicle_building_" + e.building_id)
-            .append(n)
-    }
 }
 
 function vehicleDrive(e) {
     e.isr = flavouredAsset(e.isr), e.in = flavouredAsset(e.in);
     var t = new Date,
         i = !0;
-    if ("" == e.mid || alliance_show_not_involved_vehicle || $.each(mission_markers, (function (n, s) {
-            if (s.mission_id == e.mid && !s.involved) return e.involved_created_at = t,
-                vehicles_not_involved.push(e), i = !1, !1
-        })), !i) return !1;
+    if ("" != e.mid && !alliance_show_not_involved_vehicle) {
+        const n = parseInt(e.mid),
+            s = mission_markers_per_id.get(n);
+        if (s && !s.involved) return e.involved_created_at = t, vehicles_not_involved.push(e), i = !1, !1
+    }
+    if (!i) return !1;
     if ($.each(vehicle_delay_timers, (function (t, i) {
             i.vehicle_id == e.id && window.clearTimeout(i.timer)
         })), e.dd >= 0) vehicleDriveAdd(e);
@@ -1707,13 +2341,12 @@ function vehicleDriveAdd(params) {
     if (!mobile_show_vehicle && 1 == mobile_bridge_use) return !0;
     if (!show_vehicle && 0 == mobile_bridge_use) return !0;
     var vehicle_marker = null;
-    if ($.each(mission_vehicles, (function (e, t) {
-            t.vehicle_id == params.id && ("undefined" == typeof mapkit ? map.removeLayer(t) : map
-                .removeAnnotation(t), mission_vehicles[e].vehicle_marker_deleted = !0,
-                "undefined" != typeof route_show && 1 != route_show || void 0 !== t.polyline && (
-                    "undefined" == typeof mapkit ? map.removeLayer(t.polyline) : map
-                    .removeOverlay(t.polyline)))
-        })), void 0 === routes[params.rh]) {
+    const mission_vehicle = mission_vehicles_per_vid.get(params.id);
+    if (mission_vehicle && ("undefined" == typeof mapkit ? map.removeLayer(mission_vehicle) : map
+            .removeAnnotation(mission_vehicle), mission_vehicle.vehicle_marker_deleted = !0, "undefined" !=
+            typeof route_show && 1 != route_show || void 0 !== mission_vehicle.polyline && ("undefined" ==
+                typeof mapkit ? map.removeLayer(mission_vehicle.polyline) : map.removeOverlay(mission_vehicle
+                    .polyline))), void 0 === routes[params.rh]) {
         if ("-1" == params.s) return $.get("/vehicles/" + params.id + "/routing", (function (data) {
             eval(data)
         })), !0;
@@ -1766,138 +2399,6 @@ function vehicle_image_reload() {
                 .attr("src", vehicle_graphics[$(this)
                     .attr("vehicle_type_id")][0])
         }))
-}
-
-function vehicleCreateOnMap(e, t) {
-    if ("true" == t.ioverwrite || "undefined" == typeof user_id || t.user_id != user_id)
-        if (void 0 !== buildingVehicleGraphicCache[t.b]) {
-            var i = buildingVehicleGraphicCache[t.b];
-            void 0 !== vehicle_graphics_sorted[i] && void 0 !== vehicle_graphics_sorted[i][t.vtid] && null !=
-                vehicle_graphics_sorted[i][t.vtid] && (t.in = flavouredAsset(vehicle_graphics_sorted[i][t
-                        .vtid][0]), t.isr = flavouredAsset(vehicle_graphics_sorted[i][t.vtid][1]), t
-                    .apng_sonderrechte = flavouredAsset(vehicle_graphics_sorted[i][t.vtid][2]))
-        } else void 0 !== vehicle_graphics[t.vtid] && null != vehicle_graphics[t.vtid] && (t.in =
-            flavouredAsset(vehicle_graphics[t.vtid][0]), t.isr = flavouredAsset(vehicle_graphics[t.vtid][
-                1]), t.apng_sonderrechte = flavouredAsset(vehicle_graphics[t.vtid][2]));
-    if (null == e) {
-        if ("undefined" != typeof mapkit) {
-            (e = new mapkit.ImageAnnotation(new mapkit.Coordinate(0, 0), {
-                url: {
-                    1: t.in
-                }
-            }))
-            .icon_normal = t.in, e.icon_sonderrechte = t.isr, map.addAnnotation(e), e.element.className =
-                "mapkit-marker", e.addEventListener("select", (function () {
-                    "undefined" == typeof user_id ? $("#signup_from")
-                        .effect("highlight", {}, 500) : lightboxOpen("/vehicles/" + t.id), setTimeout(
-                            mapkitDeselectAnnotation, 1e3)
-                }))
-        } else {
-            e = L.marker([0, 0], {
-                    title: t.name,
-                    icon: icon_empty
-                })
-                .addTo(map);
-            iconMapVehicleGenerate(t.in, t.isr, e), e.on("click", (function () {
-                "undefined" == typeof user_id ? $("#signup_from")
-                    .effect("highlight", {}, 500) : lightboxOpen("/vehicles/" + t.id)
-            }))
-        }
-        e.visible = !1, void 0 !== t.apng_sonderrechte && "true" == t.apng_sonderrechte ? e
-            .apng_sonderrechte = !0 : e.apng_sonderrechte = !1, e.vehicle_marker_deleted = !1,
-            mission_vehicles.push(e), setInterval((function () {
-                vehicleSonderrechte(e)
-            }), 1e3)
-    }
-    "undefined" == typeof user_id || t.user_id == user_id ? e.title = t.caption : e.title = "[" + I18n.t(
-        "map.alliance") + "] " + t.caption, t.dd < 0 && (t.dd = 0);
-    var n = new Date;
-    e.url_arrive = "/vehicles/" + t.id + "/arrive", "undefined" == typeof mapkit && e.setIcon(icon_empty), e
-        .user_id = t.user_id, e.sonderrechte = t.sr, e.rh = t.rh, e.polyline = t.polyline, e.current_step = 0,
-        e.timer_steps = n.getTime() - 1e3 * t.dd, e.vehicle_id = t.id, "undefined" == typeof mapkit ? e
-        .bindTooltip("<span class='vehicleMarkerLabelFms building_list_fms_" + t.fms_real + "'>" + t.fms +
-            "</span>" + e.title, {
-                permanent: vehicle_label,
-                opacity: 1
-            }) : e.title = e.title, 4 == mobile_version && (-1 !== String(t.in)
-            .indexOf("//") ? (e.app_icon_path_normal = t.in, e.app_icon_path_sonderrechte = t.isr) : (e
-                .app_icon_path_normal = currentHostname() + t.in, e.app_icon_path_sonderrechte =
-                currentHostname() + t.isr)), e.visible || (e.visible = !0, "undefined" == typeof mapkit && e
-            .setOpacity(1), vehicle_markers.push(e), vehicle_marker_id = vehicle_markers.length - 1,
-            vehicleDriveReal(vehicle_marker_id))
-}
-
-function vehicleSonderrechte(e) {
-    var t = [];
-    "undefined" != typeof mapkit ? (coordinate = e.coordinate, t[0] = coordinate.latitude, t[1] = coordinate
-            .longitude) : t = e.getLatLng(), mapIsVisible(t) && void 0 !== e.icon_normal && void 0 !== e
-        .icon_sonderrechte && (1 == e.sonderrechte ? void 0 !== e.apng_sonderrechte && e.apng_sonderrechte &&
-            apng_supported ? 1 != e.sonderrechte_status && ("undefined" != typeof mapkit ? e.url = {
-                1: e.icon_sonderrechte
-            } : e.setIcon(e.icon_sonderrechte), e.sonderrechte_status = 1) : void 0 !== e
-            .sonderrechte_status && 1 == e.sonderrechte_status ? ("undefined" != typeof mapkit ? e.url = {
-                1: e.icon_normal
-            } : e.setIcon(e.icon_normal), e.sonderrechte_status = 0) : ("undefined" != typeof mapkit ? e
-            .url = {
-                1: e.icon_sonderrechte
-            } : e.setIcon(e.icon_sonderrechte), e.sonderrechte_status = 1) : void 0 !== e
-            .sonderrechte_status && 1 == e.sonderrechte_status && ("undefined" != typeof mapkit ? e.url = {
-                1: e.icon_normal
-            } : e.setIcon(e.icon_normal), e.sonderrechte_status = 0))
-}
-
-function vehicleDriveReal(e) {
-    var t = vehicle_markers[e];
-    if (t.vehicle_marker_deleted) return !0;
-    var i = new Date;
-    0 == t.timer_steps && (t.timer_steps = i.getTime());
-    var n = 40;
-    if (void 0 !== routes[t.rh] && null != routes[t.rh] && void 0 !== routes[t.rh][t.current_step]) {
-        if (start_lat = routes[t.rh][t.current_step][0], start_lng = routes[t.rh][t.current_step][1],
-            void 0 !== routes[t.rh][t.current_step + 1]) {
-            var s = 0;
-            do {
-                if (end_lat = routes[t.rh][t.current_step + 1][0], end_lng = routes[t.rh][t.current_step + 1][
-                        1], offset_step = (i.getTime() - t.timer_steps) / (1e3 * routes[t.rh][t.current_step][
-                        2]) * 100, offset_step >= 100) {
-                    var o = i.getTime() - t.timer_steps - 1e3 * routes[t.rh][t.current_step][2];
-                    t.current_step++, t.timer_steps = i.getTime() - o, s += 1
-                }
-            } while (offset_step >= 100 && void 0 !== routes[t.rh][t.current_step + 1]);
-            "undefined" != typeof route_show && 1 != route_show || void 0 !== t.polyline && s > 0 && (
-                void 0 === t.delete_step_counter_cache && (t.delete_step_counter_cache = 0), void 0 === t
-                .latitude || mapIsVisible([t.latitude, t.longitude]) ? (spliceLatLngs(t.polyline, s + t
-                    .delete_step_counter_cache), t.delete_step_counter_cache = 0) : t
-                .delete_step_counter_cache = t.delete_step_counter_cache + s), void 0 !== routes[t.rh][t
-                .current_step] && void 0 !== routes[t.rh][t.current_step + 1] && (start_lat = routes[t.rh]
-                [t.current_step][0], start_lng = routes[t.rh][t.current_step][1], end_lat = routes[t.rh][t
-                    .current_step + 1][0], end_lng = routes[t.rh][t.current_step + 1][1], offset_step = (i
-                    .getTime() - t.timer_steps) / (1e3 * routes[t.rh][t.current_step][2]) * 100, diff_jb =
-                end_lat - start_lat, diff_kb = end_lng - start_lng, current_lat = start_lat + diff_jb * (
-                    offset_step / 100), current_lng = start_lng + diff_kb * (offset_step / 100), t
-                .latitude = current_lat, t.longitude = current_lng, 1 == mobile_bridge_use && 4 ==
-                mobile_version ? mobileBridgeAdd("vehicle_move", {
-                    id: t.vehicle_id,
-                    title: t.title,
-                    sonderrechte: t.sonderrechte,
-                    latitude: t.latitude,
-                    longitude: t.longitude,
-                    app_icon_path_normal: t.app_icon_path_normal,
-                    app_icon_path_sonderrechte: t.app_icon_path_sonderrechte
-                }) : (isNaN(current_lat) || isNaN(current_lng), mapIsVisible([current_lat,
-                    current_lng]) && ("undefined" != typeof mapkit ? t.coordinate = new mapkit.Coordinate(
-                        current_lat, current_lng) : t.setLatLng([current_lat, current_lng])),
-                    mapIsVisible([current_lat, current_lng]) ? (1 == t.performance_invisible && (t
-                        .performance_invisible = !1, "undefined" == typeof mapkit ? t.addTo(map) : map
-                        .addAnnotation(t)), "undefined" == typeof mapkit && (vehicle_label ? t
-                        .openTooltip() : t.closeTooltip())) : (n = 1e3, "undefined" == typeof mapkit ? (t
-                            .closeTooltip(), map.removeLayer(t)) : 0 == t.performance_invisible && map
-                        .removeAnnotation(t), t.performance_invisible = !0), new_position = null))
-        } else t.current_step++;
-        setTimeout((function () {
-            vehicleDriveReal(e)
-        }), n)
-    } else vehicleArrive(t)
 }
 
 function allianceChatBanCountdown(e, t) {
@@ -2166,7 +2667,7 @@ function rand(e, t) {
 }
 
 function missionSpeed(e) {
-    if (mission_speed = e, 6 == mission_speed) $("#mission_speed_pause")
+    if (6 == (mission_speed = e)) $("#mission_speed_pause")
         .show(), $("#mission_speed_play")
         .hide();
     else {
@@ -2206,8 +2707,8 @@ function missionSpeed(e) {
 
 function missionRequest() {
     var e = 0;
-    $.each(mission_markers, (function (t, i) {
-        1 == i.opacity && i.user_id == user_id && e++
+    mission_markers_per_id.forEach((function (t) {
+        1 == t.opacity && t.user_id == user_id && e++
     }));
     var t = mission_count_max;
     eventRunning && (t *= 2), 6 != mission_speed && "undefined" != typeof mission_count_max && t > e && $
@@ -2217,11 +2718,10 @@ function missionRequest() {
             error: function (e) {
                 401 == e.status && (window.location.href = "/")
             }
-        }), 0 == mission_speed ? timeout = rand(12e4, 22e4) : 2 == mission_speed ? timeout = rand(31e3,
-        45e3) : 3 == mission_speed ? timeout = rand(21e3, 25e3) : 4 == mission_speed ? timeout = rand(25e4,
-            35e4) : 5 == mission_speed ? timeout = rand(5e5, 7e5) : timeout = rand(31e3, 12e4), null !==
-        lastMissionTimeoutID && clearTimeout(lastMissionTimeoutID), lastMissionTimeoutID = setTimeout(
-            "missionRequest()", timeout)
+        }), timeout = 0 == mission_speed ? rand(12e4, 22e4) : 2 == mission_speed ? rand(31e3, 45e3) : 3 ==
+        mission_speed ? rand(21e3, 25e3) : 4 == mission_speed ? rand(25e4, 35e4) : 5 == mission_speed ? rand(
+            5e5, 7e5) : rand(31e3, 12e4), null !== lastMissionTimeoutID && clearTimeout(lastMissionTimeoutID),
+        lastMissionTimeoutID = setTimeout("missionRequest()", timeout)
 }
 
 function lightboxShowClose(e) {
@@ -2490,66 +2990,80 @@ function missionSelectionOnly(e) {
     var t = !!e.data("type-filter"),
         i = !!e.data("state-filter"),
         n = !!e.data("participation-filter");
-    t ? $(".mission_selection[data-type-filter]")
-        .each((function (e, t) {
-            missionSelectionDeactive($(t))
-        })) : i ? $(".mission_selection[data-state-filter]")
-        .each((function (e, t) {
-            missionSelectionDeactive($(t))
-        })) : n && $(".mission_selection[data-participation-filter]")
-        .each((function (e, t) {
-            missionSelectionDeactive($(t))
-        })), missionSelectionActive(e), missionSelectionSave(), updateMissionFilterQueryParams()
-}
-
-function missionSelectionUpdateButtons() {
-    if (missionMarkerBulkAdd) return !0;
-    var e = 0,
-        t = 0,
-        i = 0,
-        n = 0,
-        s = 0,
-        o = 0,
-        a = 0,
-        r = 0,
-        l = 0,
-        c = 0;
-    for (let e in missionTypeFilters) missionTypeFilters[e].missionIds = [];
-    $.each(mission_markers, (function (u, d) {
-            d.krankentransport ? (i++, missionTypeFilters.krankentransporte.missionIds.push(d
-                .mission_id), 0 == d.vehicle_state && n++) : d.sicherheitswache ? (l++,
-                missionTypeFilters.sicherheitswache.missionIds.push(d.mission_id), 0 == d
-                .vehicle_state && c++) : d.user_id != user_id && null != d.user_id ? (s++,
-                missionTypeFilters.alliance.missionIds.push(d.mission_id), 0 == d.vehicle_state &&
-                o++) : d.user_id != user_id && null == d.user_id ? (a++, missionTypeFilters
-                .alliance_event.missionIds.push(d.mission_id), 0 == d.vehicle_state && r++) : (
-                e++, missionTypeFilters.emergency.missionIds.push(d.mission_id), 0 == d
-                .vehicle_state && t++)
-        })), $("#mission_select_emergency")
-        .html(
-            '<img class="icon icons8-Siren-Filled" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAADcElEQVRoQ+2Z/XETMRDF91WAUwFQAaQCoAJIBSQVABUQKoBUgFNBQgVABSQVQCogqeAxz0ge5aw7Sau7GYax/rFnrK/frvbtSoY5Gsm1mb00s0MAvxxT7AwhuTKzn2Z2DuBt65xoHaD+AeR1WPTYM8dwDMlTM3vvndML8ihYT/t53OuVxBvyims+F8jcXun1hvbTAzKLV+bwRhfIwCsnACQAzY2kYuyzNzbigm6PBBCd6WMAn5oJkgEkpVJrALfeebpAvIsuMW4PsoRVe+b8fzxCUmWB2imAc49VSD43szdmpk8JQE27MrNLMzvzBjlJVReqCFYgqQmfhJVVN1UDhRwg6XxVs/ORPlIqrXlWO0cCoFymdrM5WkHLRfYwAToCIMhsCxBfzeypmd2ZmSRYElpVRAYvKofIqmoaezIFQ1JrXZjZFiAYYX0vRgZAk0mOpDau43Qtj9QCDDeaJET9JOPpuI0ZLybPmwgQO2aDXdYC8G1iwrQ8USk/6rma45LA3AI4KHgluzeXaiXe0N1hrjJehntmZq5yxwvyI8TGiynP1Xgj9gllykdvzeUFoTYAwDU+BxiCX+LxHYBkvKk1b4RkjI87ALU5o7ipoIK/zawYJ7nJPCCylttyhUB2e9oDEiXwC4CeRLjDlCTnZiX0gMRHgg8A9H22RjIqV7OIeECUsPQU5JLJwtFyG8kD4rZayXXJI0Sztz0gUhb3s00pa3uFZAck6LkybLa8JulWlgqPREW8AnCYqctkQD3iSWjulVBbkACgTjEZ7cRAkrSuAagSnb1NGWpQYApER3ADpPuINp4CbErynCL1Zt8aapK6nzwws4PchSvEkV5d1EftL1C0QHKnEET2WSYJRh275ofmSpCimIQqQOtvgQSie4U2PgqQFHbxDtKsKjUQ6kOyWt4ToFWTavUkrAYQVy5pBZm9fM8ok6sEagVZTHqT4+sqSqtBlirfMx6J14Smcr4FxGWp2thI+3mSbguI6+w6QeJbW3UV3ALiUhMnSDGXDOdtAdEfOXpMe9f7f0gJLnmlqc5XLSDNVipteOx3TwXRArJY+Z5RrmZhGQUhGZOf17BLjLsEcJSbeApkk/z+tTb2llYEmfMRrscopdyyB+mxrmfs3iMlC3is2jOmtJ9ijPQsvsRYj2rFTL7Efrxzjr43/wE/Kgjg5EADGQAAAABJRU5ErkJggg==" width="15" height="15"> ' +
-            t + "/" + e), $("#mission_select_krankentransport")
-        .html(
-            '<img class="icon icons8-Ambulance" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAC/UlEQVR4Xu2b7VUVMRCGZypQK0AqECsQKhArUCpAKsAOwArECsAOoALsQKgAOhjPe84sZ2/YbCab5N7dbPL3ZjOZJ28yk4/LtPLCK/efGoCmgJUTaFNgDgIQkfdEdEFEB9qfv0R0xswPpfu3cwWo8/dE9NZx9pmIPpaGMAcAN0T02TPSf5j5uKQK5gDgaWD0O58fmHm/dgAy5iAzFx2koo1bRk5E5gEg1BGLMzusc8LMV1Psvyhg4QAQMY6YGeEzqtQCAE5PCps1AQAEKABKAAxT8QIovfqaeheoJCI/iOjcqXbLzEfW9hcNAE6KCBa/r47DV8x8YoGweAAKAdL/4DiMvcRlCEItALCPuB2AEAyPVQBQFWAnCQhveqMeDI/VAOhBwM6yX0bD49YBuAlX7mgjIt+I6JcDwRseqwOgSjCHxyoBxITHagFYw2PtAILhsWoAI+GRusW3GIDU7XXO6CAiyBE2wuOqAKgSNk6eGgA9a1zFFNiJAny7sNKZYKzdYgqI7Uho25r6uw98A9CR3ZY0t2XHVUxTgHMBUzwMtjUgddXK/P1spkBmv8zNZQOgDxpOiQj39njZgYKXHLjn/1n6QcNU+1kAiAiesXwPYL9k5jPz0ERUTLGfDEBEcM6G8zZLMV9MWBrTVDbJfhIAEcEFA2QfUzAdQmoxtZfD/mQAOuf+OT191KmAc3iUQyICpD2n3n7qmpDLfgoAd/Th/IF7AysiOH7C8XMfQrIKBkZ/kv1oACPa/MLMWPFfFRFBZLg26Xp6pSz2g5ngSP/e+e7fPXKd7urwl1nsNwChE6HVTQGfwwOLELI+PGHdeIaiiyBOXrvsEE2WWASz2g++E/TMa3QCMf5OwX3SMNh3Hj+VCoPZ7AcBaBa2+ETIp3ATAIUw9BbH1+5vZramzaYo4XkLlGzfDCBCCcnzPmI9GqoaZT8KgELAPMf8R9LTZX3IzpAcYSdY9E8OuiZlsx8NwKTXBVVqABY0WEW62hRQBOuCGm0KWNBgFenq6hXwH/kYT1/4UtMbAAAAAElFTkSuQmCC" width="15" height="15"> ' +
-            n + "/" + i), $("#mission_select_alliance")
-        .html(
-            '<img class="icon icons8-Sell" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAADz0lEQVRoQ+2a7VEUQRCGuyPQDIQIJAM1AjECIQIxAjUCIQIhAy4CIQIhAiECMYK2nq2eq7m92Z3euzmPHztVV1fAbE+//fbX9KISXGb2VkR+iMhB8JHW2x5E5FRVb0qCNXqamf3eI4ik5oOqHm4LxBCgqmHwUSNF9pnZ6PlhpWqCIspss6d2fnMgZvbSY+k4qPi1+/7T2P59APkpIiSGKWuhqqPA9wGk82UROVRVMs3gMjMyIEmkGnv7AEJ6fDOFDhF5lowQI5ci8j4IZiEiJ6r6vGIkqPzkbf/dtSZrGHxgBtI3VM0iQcNuvK12fvOCuLGmlQdnILNr7ci3ZteaXWt2rXELzDFSiBG60xc78pyo2EdVLU5xplR2bn2056+ipzbe9+jt/nbjoMZKNRcXZqT5yY0FzkAaG3RrcVVGfE7F/ZtxzVFvbHonInxuVPVqE218pvzJ5SKfYP42NOMdOmMQiI9qvjgABgq1RXpmyMzArbrMDKW/j8zATvxssmUaaHweGlKsAXELASAfst166r1TVRjoloNlH4emEdClqp4OIXGGYeCr7/krIucico1sMxsbJzFx4Tk8BEMwN7tgfrYEYmYffVMqOBxA3TivDdocFGB47cAqgim8mrjgTKxcGLViPACmuvFnhOYPWgBA4UEAyozOmvqCzSwHgwIYYVFQ8t6LW8eumRF/GAEXwoDMuToXLTyLfvyNz5mzcwuQNOJkA9aBhY2Xg8EQeTuDQVKcXakqgEtKwgIgulFrASD6ITu5NjI7pgACqqdtAeTI3Yooy+d1wCqwsFRywM2WADMgsMgZi2r6DSgxusWVIiEQnCkD9cHB2DsP9r6brbCQMUnGAwRGONo5kDGUnoLxCBINMUXM8DNrxc0yFvJ3mYA4pubsFUimXIpTfrXiZr14oCwkoCsJowkQM/vllTlZlW/uDrX3I7gbbOTKYeGV5wppm8qf6lCHtRUQXCIS1GOetqacx9cgC7mwJkA8AFMwp36M79qNkpQPewT0ZBY2AuKBiWL3UwvllMw3hYVJQAqVn+cpmrjCaAxMAeCs9v+7Ys3dhmTWul8KTmoeyRLk+/z9YBNAm7JQZcTbDApO6n3OUuX3jpeMQbZJi5/pQif1Zs4CBZCzUrMaZiEChIaMVnnwRWUBECDog0KABtoQDLa8JkxxzaJr+SEHEaGeBACQXK4KyMzSfSQxvtaGTAHRrI5kgYqL5YCIIS5MtBt0s6n4kZpZMA4LWyeNZnWk1wvlgErGpX4AIHQtjrDTHEgGCKvTnfKdWIIZGFreKSJKRvb8A3bBPSGKFTO6AAAAAElFTkSuQmCC" width="15" height="15"> ' +
-            o + "/" + s), $("#mission_select_alliance_event")
-        .html(
-            '<img class="icon icons8-Event-Accepted" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAD4UlEQVRoQ+1Zi1EUQRB9HYESgRqBRwQSgkQgRCBEIEQgRqBEIEQgRCBE4BGBGMGz3tq9zs3tsXO7c7cFxVRR5bm7vf368/qzhidy7IngQBEQknsAvgJ4DWAO4NDMrsYYobbMUiC/HEToPjezNyOBVJVZCoRS2syMZPvvkUCqymyBZK7u1DEFMgZE+myBzKJQToHkrl7SteCla+MrlNkbyimQlSGThtO2Q6v0faVA7gG8SMx9Z2ZisMGHZJHM2kBEv98AvAJwB+CgEv32yqwKZLDZKzz4DKSCETciQuz2kOClZN+IFhWErg2k74EKOq0l4jlHnj2SBAzJl95kquiNOpOGFskjB3I2CgWAqYH8dCC7jxYIyRmABgiAXTO7GQNmMo+QVP/0wZU/N7ODxwrkN4Am2QHcm9nOowNCUtbXkuLWlX/riwp5adDZWGh5Dpwk84la/Pwc+n8IVH5i+/IHwElfDm0MiLRyMFIoHbZCYSkYQ5fCrOvonr0+EP6uomVH0YTYpYkXPYFR+KjwHZtZZwh5yH323FHYCURRsdyoR1JgGUspVE6z658UQkNZbGtA3P2q5LK4zk5Y270W4SWPrV3ptw3kPYDvYiszm5HUby30LkiqICr89vV7XeraNhBZ+iOAL76gaIAAkOJaVjTXzKzpwR46JFVMxYTqEPQXR/l3YWaXXc8PTvYsD9SSpC8VK+mkrHZjZit7L/eiwrNvzaTNo8J0wbujgZDUi7WljHOtdZH/kBXfJdfa/MkMIQDhLXlQHr4Kena6l5d0j1ZSOmdmdhxyagCJai4vaN+1YCm3tADJO/ocsUDRJCMspVMvIfiIEMTShmsNIFJMvZVAdNYGZy/dp96rbSIdpEhCp7hTzjrshkRqAJmVVGhpKgXSe0nG4rzXE/68DKZiKjYMym8W3KOBPMxBq68mDWbxHpnkD2e0UzM7IanEV84cTgkk5pZSb6gBVVgqF+XZeeKV8ymBBGX35kai8EKzmeTKzZRAlrpakurLLrM8ClZUnHax3j85EcWlrcDQnMify9+XMFjbSbvFlRdK8s4QbOUkQPIPL7V07pPThJZTtGpKzPuqRyqCAtE5+yehdZt/DI0PL30vr3l9wdLOZgIU7c21mXVNoaLzoOD/yV5TsxJZCf0ufeh0S0cHsHIIS+rQftF39hLFhtyT1IGl+O9buybeaOrQ1EBijqnXogyxaI1nslH5yMw006w8JDXbxKS53DTWUGqojAyM2g4pqiRv1q2eMxoHlNwxrywMapOGVgrc64gAxLyxyi6aV+S57sFqqDVrP+dsJrrVX4DSCkne0ajbOff/BWtayMaN4VNfAAAAAElFTkSuQmCC" width="15" height="15"> ' +
-            r + "/" + a), $("#mission_select_sicherheitswache")
-        .html(
-            '<img class="icon icons8-Clock-Filled" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAE8klEQVRoQ8Waj5EVNwzGpQoSKkioIFBBuAqSVBCoAKggUEG4CgIVBCoIV0GggkAFQAVifjvy4bdr+d/uTjxzM+/d83r1WZ8+y7JVDm5m9r2I/CQi90SEz/zxmfZORD77H5/fqyrfD2t6xEhmhsG/i8iDzPjeoQH2VkReqSqfd7VpQO6JX0TkmYj8uMuKbw9/8PHezHpuCpCZPfYXQ6czGjR8pqrXo4MPAXJq/TVBq1G7Un8o+GiEit2A3CsvZi3b+dyTXm91ATIzvPKw06g3rmYEOjP8WkR+9mdvfBxiLgkIcdjTXqrqo1bHKiAP/H86KPZeRPDe63Uwm9lLV0BsQckuJsbfwf/4Q+5rjQm6qglGC9C/DTAfRQQ64IVi87h74j++qMWDmQGKifmuguqdqt6Pfg8BddDsOS+fldfKBKCcLAUoadRC+hUBmRkz+mcw2hf3ClQ6rbm3iN2oPVXVjUhtADlFoFqpAebBiIyaGQKQxruvqiyeXc1tQVwiCjLeRXZRAlSLm80ALcvMDPr84f2eqyrfu1tjgjfxdAGoQTUWuGGa7QUE8gb9Lqh3C8jl8z/PjtczeK2qSam6Z9eN2eWh9DIzI15KQkGadDeJUw4IySwFIdJ8b1bNVoYMUy4DhPoRf6V4umVPDgjvlLLmKaplhhDUKVOY9nSDeh9U9S59FkCVwGMDljZnQ1QLAN2oKinPdDMzVK2UUSyClQBF/Cxq/Yg1ZpZ76AhA0Rq5eD8BiqT6zmzsnOghYulTYVIXCVdXt1IHdo2/jnij1NfM8tjc7SEPEXLHUpZ+B0Bwmox63aYVKR/IzCz7fhSgfCnIX3cFoIiTpOnwf1dbAapmyr0vMjOY83eh/1MARWhZrLrzroBupdh8q6pXvcYH47K8QOUtqyorMN4BEOoxXF6qTBRGTKmnLy/khQhDSf6v8VAuq6UJ2ewye2a3Me5ULHXYevN/ASL/IkaHPN8LKFpUKWhAueq2OfJWI3PnsWFQrsiIGJRL6VRuwkK5M0UhSlOSEc2ix4wonC3bjI/Mokw/lFb4ViVn/Uxl7Vxk+9SFNRnjGQkCVEosKX/91iM29KmwallYo9zokNRnlTXwLna9pbSlq5DogOLUxztEXN+dnAYxkBcf8y7N9anigGWrc/r2oaKCkRhVN5QV9bzYPrCJK5WuDsm9KqCibX9YXTKzaKvzbYPntGPNKanQri14K9CD8m8xk6hUfz6q6lI+6CmSXFRVWgbO/F4oKG62Lo2qVLFIUquq7Cpu9IB0UMQVNN8UIytJ9BdVvT1JPL3Q2AOm1Weq0JgtgLV0ZbgU3DK29XujFLypSo0W64cTypbBtd8dDOWB6HC6Xax3xasdp9DlVOVzGyJJT3PQd5ySUS9azVMXth2o0aE3QVzN2JXWaunhprN1JNlK/wHDkeSryuLJop0fp4SbOjPjNgoTVbv/UK3mtgAxcJQh5xgwEo8ycxce6zw0BggUa5WdOZzmwC1kRe+xfot+OTgy4XR/h5MLnl0f65ORpGP93mJmV22jC1CnUOwRtNazzSw8DdANyEFBCWa8dZ+gZWDv71Ds4UgxZQhQpoAoEOlJ7T5Br9GlfhxOc3lp+CrOFCD3FoIB/wFWytJnABFzjLe5kdI72DSg/AW+oqNSBPooHaEVSsoWfKhOVwJ5CKAVuHQls+eKJpn1oQvzV++Yjk+9aieJAAAAAElFTkSuQmCC" width="15" height="15"> ' +
-            c + "/" + l), updateMissionStateButtons(), updateMissionParticipationButtons(),
-        updateNoMissionsMessages()
+    if (t) {
+        var s = $(".mission_selection[data-type-filter]"),
+            o = e.hasClass("btn-danger"),
+            a = $(".mission_selection[data-type-filter]")
+            .filter((function () {
+                return $(this)
+                    .hasClass("btn-danger")
+            })),
+            r = $(".mission_selection[data-type-filter]")
+            .filter((function () {
+                return $(this)
+                    .hasClass("btn-success")
+            }));
+        $(".mission_selection[data-type-filter]")
+            .each((function () {
+                var t = $(this)
+                    .attr("id");
+                a.length == s.length - 1 ? o ? e.attr("id") == t ? missionSelectionActive($("#" +
+                    t)) : missionSelectionDeactive($("#" + t)) : missionSelectionActive($("#" + t)) :
+                    e.attr("id") == t && r.length == s.length ? missionSelectionActive($("#" + t)) :
+                    missionSelectionDeactive($("#" + t))
+            }))
+    } else if (i) {
+        s = $(".mission_selection[data-state-filter]"), o = e.hasClass("btn-danger"), a = $(
+                ".mission_selection[data-state-filter]")
+            .filter((function () {
+                return $(this)
+                    .hasClass("btn-danger")
+            })), r = $(".mission_selection[data-state-filter]")
+            .filter((function () {
+                return $(this)
+                    .hasClass("btn-success")
+            }));
+        $(".mission_selection[data-state-filter]")
+            .each((function () {
+                var t = $(this)
+                    .attr("id");
+                a.length == s.length - 1 ? o ? e.attr("id") == t ? missionSelectionActive($("#" +
+                    t)) : missionSelectionDeactive($("#" + t)) : missionSelectionActive($("#" + t)) :
+                    e.attr("id") == t && r.length == s.length ? missionSelectionActive($("#" + t)) :
+                    missionSelectionDeactive($("#" + t))
+            }))
+    } else if (n) {
+        s = $(".mission_selection[data-participation-filter]"), o = e.hasClass("btn-danger"), a = $(
+                ".mission_selection[data-participation-filter]")
+            .filter((function () {
+                return $(this)
+                    .hasClass("btn-danger")
+            })), r = $(".mission_selection[data-participation-filter]")
+            .filter((function () {
+                return $(this)
+                    .hasClass("btn-success")
+            }));
+        $(".mission_selection[data-participation-filter]")
+            .each((function () {
+                var t = $(this)
+                    .attr("id");
+                a.length == s.length - 1 ? o ? e.attr("id") == t ? missionSelectionActive($("#" +
+                    t)) : missionSelectionDeactive($("#" + t)) : missionSelectionActive($("#" + t)) :
+                    e.attr("id") == t && r.length == s.length ? missionSelectionActive($("#" + t)) :
+                    missionSelectionDeactive($("#" + t))
+            }))
+    }
+    missionSelectionActive(e), missionSelectionSave(), updateMissionFilterQueryParams()
 }
 
 function updateMissionStateButtons() {
+    if (missionMarkerBulkAdd || massAllianceMissionAdd || massMissionAdd) return !0;
     missionStateFilters.unattended.missionIds = [], missionStateFilters.attended.missionIds = [],
-        missionStateFilters.finishing.missionIds = [];
-    for (const e of mission_markers) 0 == e.vehicle_state && missionStateFilters.unattended.missionIds.push(e
-            .mission_id), 1 == e.vehicle_state && missionStateFilters.attended.missionIds.push(e.mission_id),
-        2 == e.vehicle_state && missionStateFilters.finishing.missionIds.push(e.mission_id);
+        missionStateFilters.finishing.missionIds = [], mission_markers_per_id.forEach((function (e) {
+            0 == e.vehicle_state && missionStateFilters.unattended.missionIds.push(e.mission_id), 1 ==
+                e.vehicle_state && missionStateFilters.attended.missionIds.push(e.mission_id), 2 == e
+                .vehicle_state && missionStateFilters.finishing.missionIds.push(e.mission_id)
+        }));
     const e = getActiveMissionIds([missionTypeFilters, missionParticipationFilters]),
         t = e.filter((e => missionStateFilters.unattended.missionIds.includes(e))),
         i = e.filter((e => missionStateFilters.attended.missionIds.includes(e))),
@@ -2617,12 +3131,13 @@ function handleMissionTypeFilterChange(e, t) {
 function updateNoMissionsMessages() {
     const e = missionTypeFilters.alliance.missionIds.length <= 0 && missionTypeFilters.alliance_event
         .missionIds.length <= 0;
-    $("#ktw_no_transports")
+    $(document.getElementById("ktw_no_transports"))
         .toggle(missionTypeFilters.krankentransporte.active && missionTypeFilters.krankentransporte.missionIds
-            .length <= 0), $("#alliance_no_mission")
-        .toggle((missionTypeFilters.alliance.active || missionTypeFilters.alliance_event.active) && e), $(
-            "#emergency_no")
-        .toggle(missionTypeFilters.emergency.active && missionTypeFilters.emergency.missionIds.length <= 0)
+            .length <= 0), $(document.getElementById("alliance_no_mission"))
+        .toggle(massAllianceMissionAddCompleted && (missionTypeFilters.alliance.active || missionTypeFilters
+            .alliance_event.active) && e), $(document.getElementById("emergency_no"))
+        .toggle(massMissionAddCompleted && missionTypeFilters.emergency.active && missionTypeFilters.emergency
+            .missionIds.length <= 0)
 }
 
 function filterMissionList() {
@@ -2719,12 +3234,25 @@ function leitstelleSelectionDeactive(e) {
 }
 
 function buildingSelectionOnly(e, t) {
+    var i = $("a[id^='building_selection_']"),
+        n = e.hasClass("btn-danger"),
+        s = i.filter((function () {
+            return $(this)
+                .hasClass("btn-danger")
+        })),
+        o = i.filter((function () {
+            return $(this)
+                .hasClass("btn-success")
+        }));
     $("a[id^='building_selection_']")
         .each((function () {
             var t = $(this)
                 .attr("id");
-            e.attr("id") == t ? buildingSelectionActive($("#" + t)) : buildingSelectionDeactive($(
-                "#" + t))
+            s.length == i.length - 1 ? n ? e.attr("id") == t ? buildingSelectionActive($("#" + t)) :
+                buildingSelectionDeactive($("#" + t)) : buildingSelectionActive($("#" + t)) : e.attr(
+                    "id") == t && o.length == i.length || s.length > 1 && o.length > 1 && e.attr(
+                "id") == t ? buildingSelectionActive($("#" + t)) : buildingSelectionDeactive($("#" +
+                    t))
         })), buildingSelectionSave(), buildingsVehicleLoadVisible(), t && t()
 }
 
@@ -3165,6 +3693,29 @@ function updateButtonState(e, t) {
         .disabled && n(e)
 }
 
+function initSorting() {
+    const e = ["#mission_list", "#mission_list_krankentransporte", "#mission_list_krankentransporte_alliance",
+            "#mission_list_sicherheitswache", "#mission_list_sicherheitswache_alliance",
+            "#mission_list_alliance", "#mission_list_alliance_event"],
+        t = debounce(((e, t) => {
+            saveMissionListSorting(e, t)
+        }), 100);
+    for (const i of e) missionListSorters[i] = initSortable({
+        initialSorting: filtersData.sorting || {
+            key: "id",
+            direction: "asc"
+        },
+        tiebreakerKey: "id",
+        $element: $(".missions-sortable-select"),
+        type: "select",
+        containerSelector: i,
+        sortableElementSelector: ".missionSideBarEntry",
+        afterSort: function (e, n) {
+            t(e, n), updateMissionFilterQueryParams(i), missionScrollUpdate()
+        }
+    })
+}
+
 function initSortable(e) {
     function t(t, s) {
         function a() {
@@ -3535,7 +4086,7 @@ function isValidDate(e, t) {
 function associate_mission_with_group() {}
 
 function getAllMissionIds() {
-    return mission_markers.map((e => e.mission_id))
+    return mission_markers_per_id.keys()
 }
 
 function initCollapseButton(e, t) {
@@ -4580,12 +5131,12 @@ Object.values || (Object.values = function (e) {
                 showing: "Sichtbar:",
                 sicherheitswache: "Geplante Eins\xe4tze",
                 sorting: {
-                    age_asc: "\xc4lteste",
-                    age_desc: "Neueste",
+                    age_asc: "\xc4lteste (Freigegeben)",
+                    age_desc: "Neueste (Freigegeben)",
                     caption_asc: "A bis Z",
                     caption_desc: "Z bis A",
-                    created_at_asc: "Neueste",
-                    created_at_desc: "\xc4lteste",
+                    created_at_asc: "\xc4lteste",
+                    created_at_desc: "Neueste",
                     credits_asc: "Min. Credits",
                     credits_desc: "Max. Credits",
                     patients_desc: "Patienten",
@@ -5125,12 +5676,12 @@ Object.values || (Object.values = function (e) {
                 showing: "Showing:",
                 sicherheitswache: "Planned Appearances",
                 sorting: {
-                    age_asc: "Oldest",
-                    age_desc: "Newest",
+                    age_asc: "Oldest (Shared)",
+                    age_desc: "Newest (Shared)",
                     caption_asc: "A to Z",
                     caption_desc: "Z to A",
-                    created_at_asc: "Newest",
-                    created_at_desc: "Oldest",
+                    created_at_asc: "Oldest",
+                    created_at_desc: "Newest",
                     credits_asc: "Min Credits",
                     credits_desc: "Max Credits",
                     patients_desc: "Patients",
@@ -5834,12 +6385,12 @@ Object.values || (Object.values = function (e) {
                 showing: "Showing:",
                 sicherheitswache: "Planned Appearances",
                 sorting: {
-                    age_asc: "Oldest",
-                    age_desc: "Newest",
+                    age_asc: "Oldest (Shared)",
+                    age_desc: "Newest (Shared)",
                     caption_asc: "A to Z",
                     caption_desc: "Z to A",
-                    created_at_asc: "Newest",
-                    created_at_desc: "Oldest",
+                    created_at_asc: "Oldest",
+                    created_at_desc: "Newest",
                     credits_asc: "Min Credits",
                     credits_desc: "Max Credits",
                     patients_desc: "Patients",
@@ -6413,12 +6964,12 @@ Object.values || (Object.values = function (e) {
                 showing: "Zichtbaar:",
                 sicherheitswache: "Geplande inzetten",
                 sorting: {
-                    age_asc: "Oudste",
-                    age_desc: "Nieuwste",
+                    age_asc: "Oudste (Vrijgegeven)",
+                    age_desc: "Nieuwste (Vrijgegeven)",
                     caption_asc: "A tot Z",
                     caption_desc: "Z tot A",
-                    created_at_asc: "Nieuwste",
-                    created_at_desc: "Oudste",
+                    created_at_asc: "Oudste",
+                    created_at_desc: "Nieuwste",
                     credits_asc: "Min. Credits",
                     credits_desc: "Max. Credits",
                     patients_desc: "Pati\xebnten",
@@ -6897,12 +7448,12 @@ Object.values || (Object.values = function (e) {
                 showing: "Visible:",
                 sicherheitswache: "Misones planificadas",
                 sorting: {
-                    age_asc: "El m\xe1s antiguo",
-                    age_desc: "Lo m\xe1s nuevo",
+                    age_asc: "El m\xe1s antiguo (Publicado)",
+                    age_desc: "Lo m\xe1s nuevo (Publicado)",
                     caption_asc: "A a la Z",
                     caption_desc: "Z a A",
-                    created_at_asc: "Lo m\xe1s nuevo",
-                    created_at_desc: "El m\xe1s antiguo",
+                    created_at_asc: "El m\xe1s antiguo",
+                    created_at_desc: "Lo m\xe1s nuevo",
                     credits_asc: "Cr\xe9ditos m\xednimos",
                     credits_desc: "Cr\xe9ditos m\xe1ximos",
                     patients_desc: "Pacientes",
@@ -7361,12 +7912,12 @@ Object.values || (Object.values = function (e) {
                 showing: "Showing:",
                 sicherheitswache: "Planned Appearances",
                 sorting: {
-                    age_asc: "Oldest",
-                    age_desc: "Newest",
+                    age_asc: "Oldest (Shared)",
+                    age_desc: "Newest (Shared)",
                     caption_asc: "A to Z",
                     caption_desc: "Z to A",
-                    created_at_asc: "Newest",
-                    created_at_desc: "Oldest",
+                    created_at_asc: "Oldest",
+                    created_at_desc: "Newest",
                     credits_asc: "Min Credits",
                     credits_desc: "Max Credits",
                     patients_desc: "Patients",
@@ -7940,12 +8491,12 @@ Object.values || (Object.values = function (e) {
                 showing: "Synlig:",
                 sicherheitswache: "Planerade uppdrag",
                 sorting: {
-                    age_asc: "\xc4ldsta",
-                    age_desc: "Nyaste",
+                    age_asc: "\xc4ldsta (Delad)",
+                    age_desc: "Nyaste (Delad)",
                     caption_asc: "A till \xd6",
                     caption_desc: "\xd6 till A",
-                    created_at_asc: "Nyaste",
-                    created_at_desc: "\xc4ldsta",
+                    created_at_asc: "\xc4ldsta",
+                    created_at_desc: "Nyaste",
                     credits_asc: "Min Krediter",
                     credits_desc: "Max antal krediter",
                     patients_desc: "Patienter",
@@ -8433,12 +8984,12 @@ Object.values || (Object.values = function (e) {
                 showing: "Widoczny:",
                 sicherheitswache: "Planowane misje",
                 sorting: {
-                    age_asc: "Najstarszy",
-                    age_desc: "Najnowsza",
+                    age_asc: "Najstarszy (Wsp\xf3lne)",
+                    age_desc: "Najnowsza (Wsp\xf3lne)",
                     caption_asc: "A do Z",
                     caption_desc: "Z do A",
-                    created_at_asc: "Najnowsza",
-                    created_at_desc: "Najstarszy",
+                    created_at_asc: "Najstarszy",
+                    created_at_desc: "Najnowsza",
                     credits_asc: "Kredyty minimalne",
                     credits_desc: "Maksymalna kredyt\xf3w",
                     patients_desc: "Pacjenci",
@@ -8935,12 +9486,12 @@ Object.values || (Object.values = function (e) {
                 showing: "Visibile:",
                 sicherheitswache: "Missioni pianificate",
                 sorting: {
-                    age_asc: "Il pi\xf9 vecchio",
-                    age_desc: "Pi\xf9 nuovo",
+                    age_asc: "Il pi\xf9 vecchio (Condiviso)",
+                    age_desc: "Pi\xf9 nuovo (Condiviso)",
                     caption_asc: "A alla Z",
                     caption_desc: "Z ad A",
-                    created_at_asc: "Pi\xf9 nuovo",
-                    created_at_desc: "Il pi\xf9 vecchio",
+                    created_at_asc: "Il pi\xf9 vecchio",
+                    created_at_desc: "Pi\xf9 nuovo",
                     credits_asc: "Crediti Min",
                     credits_desc: "Crediti massimi",
                     patients_desc: "Pazienti",
@@ -9424,12 +9975,12 @@ Object.values || (Object.values = function (e) {
                 showing: "Visible :",
                 sicherheitswache: "Missions pr\xe9vues",
                 sorting: {
-                    age_asc: "Le plus vieux",
-                    age_desc: "Le plus r\xe9cent",
+                    age_asc: "Le plus vieux (Partag\xe9)",
+                    age_desc: "Le plus vieux (Partag\xe9)",
                     caption_asc: "A \xe0 Z",
                     caption_desc: "Z \xe0 A",
-                    created_at_asc: "Le plus r\xe9cent",
-                    created_at_desc: "Le plus vieux",
+                    created_at_asc: "Le plus vieux",
+                    created_at_desc: "Le plus r\xe9cent",
                     credits_asc: "Cr\xe9dits minimums",
                     credits_desc: "Cr\xe9dits maximaux",
                     patients_desc: "Patients",
@@ -9903,12 +10454,12 @@ Object.values || (Object.values = function (e) {
                 showing: "\u0412\u0438\u0434\u0438\u043c\u044b\u0439:",
                 sicherheitswache: "\u0417\u0430\u043f\u043b\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u0437\u0430\u0434\u0430\u043d\u0438\u044f",
                 sorting: {
-                    age_asc: "\u0421\u0430\u043c\u044b\u0439 \u0441\u0442\u0430\u0440\u044b\u0439",
-                    age_desc: "\u041d\u043e\u0432\u0435\u0439\u0448\u0438\u0439",
+                    age_asc: "\u0421\u0430\u043c\u044b\u0439 \u0441\u0442\u0430\u0440\u044b\u0439 (\u041e\u0431\u0449\u0438\u0439)",
+                    age_desc: "\u041d\u043e\u0432\u0435\u0439\u0448\u0438\u0439 (\u041e\u0431\u0449\u0438\u0439)",
                     caption_asc: "\u041f\u043e \u0430\u043b\u0444\u0430\u0432\u0438\u0442\u0443 (\u043f\u043e \u0432\u043e\u0437\u0440\u0430\u0441\u0442\u0430\u043d\u0438\u044e)",
                     caption_desc: "\u0412 \u0430\u043b\u0444\u0430\u0432\u0438\u0442\u043d\u043e\u043c \u043f\u043e\u0440\u044f\u0434\u043a\u0435 (\u043f\u043e \u0443\u0431\u044b\u0432\u0430\u043d\u0438\u044e)",
-                    created_at_asc: "\u041d\u043e\u0432\u0435\u0439\u0448\u0438\u0439",
-                    created_at_desc: "\u0421\u0430\u043c\u044b\u0439 \u0441\u0442\u0430\u0440\u044b\u0439",
+                    created_at_asc: "\u0421\u0430\u043c\u044b\u0439 \u0441\u0442\u0430\u0440\u044b\u0439",
+                    created_at_desc: "\u041d\u043e\u0432\u0435\u0439\u0448\u0438\u0439",
                     credits_asc: "\u041c\u0438\u043d\u0438\u043c\u0430\u043b\u044c\u043d\u044b\u0435 \u043a\u0440\u0435\u0434\u0438\u0442\u044b",
                     credits_desc: "\u041c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u044b\u0435 \u043a\u0440\u0435\u0434\u0438\u0442\u044b",
                     patients_desc: "\u041f\u0430\u0446\u0438\u0435\u043d\u0442\u044b",
@@ -10353,12 +10904,12 @@ Object.values || (Object.values = function (e) {
                 showing: "Synlig:",
                 sicherheitswache: "Planlagte indsatser",
                 sorting: {
-                    age_asc: "\xc6ldste",
-                    age_desc: "Nyeste",
+                    age_asc: "\xc6ldste (Delt)",
+                    age_desc: "Nyeste (Delt)",
                     caption_asc: "A til Z",
                     caption_desc: "Z til A",
-                    created_at_asc: "Nyeste",
-                    created_at_desc: "\xc6ldste",
+                    created_at_asc: "\xc6ldste",
+                    created_at_desc: "Nyeste",
                     credits_asc: "Min kreditter",
                     credits_desc: "Max kreditter",
                     patients_desc: "Patienter",
@@ -10832,12 +11383,12 @@ Object.values || (Object.values = function (e) {
                 showing: "Synlig:",
                 sicherheitswache: "Planlagte visninger",
                 sorting: {
-                    age_asc: "Eldste",
-                    age_desc: "Nyeste",
+                    age_asc: "Eldste (Delte)",
+                    age_desc: "Nyeste (Delte)",
                     caption_asc: "A til \xc5",
                     caption_desc: "Z til A",
-                    created_at_asc: "Nyeste",
-                    created_at_desc: "Eldste",
+                    created_at_asc: "Eldste",
+                    created_at_desc: "Nyeste",
                     credits_asc: "Min studiepoeng",
                     credits_desc: "Maks studiepoeng",
                     patients_desc: "Pasienter",
@@ -11320,12 +11871,12 @@ Object.values || (Object.values = function (e) {
                 showing: "Viditeln\xe9:",
                 sicherheitswache: "Pl\xe1novan\xe9 mise",
                 sorting: {
-                    age_asc: "Nejstar\u0161\xed",
-                    age_desc: "Nejnov\u011bj\u0161\xed",
+                    age_asc: "Nejstar\u0161\xed (Sd\xedlen\xe9)",
+                    age_desc: "Nejnov\u011bj\u0161\xed (Sd\xedlen\xe9)",
                     caption_asc: "A do Z",
                     caption_desc: "Z do A",
-                    created_at_asc: "Nejnov\u011bj\u0161\xed",
-                    created_at_desc: "Nejstar\u0161\xed",
+                    created_at_asc: "Nejstar\u0161\xed",
+                    created_at_desc: "Nejnov\u011bj\u0161\xed",
                     credits_asc: "Min. kredit\u016f",
                     credits_desc: "Maxim\xe1ln\xed kredit\u016f",
                     patients_desc: "Pacienti",
@@ -11777,12 +12328,12 @@ Object.values || (Object.values = function (e) {
                 showing: "G\xf6r\xfcn\xfcr:",
                 sicherheitswache: "Planlanan G\xf6sterimler",
                 sorting: {
-                    age_asc: "En eski",
-                    age_desc: "En Yeni",
+                    age_asc: "En eski (Payla\u015f\u0131lan)",
+                    age_desc: "En Yeni (Payla\u015f\u0131lan)",
                     caption_asc: "A'dan Z'ye",
                     caption_desc: "Z'den A'ya",
-                    created_at_asc: "En Yeni",
-                    created_at_desc: "En eski",
+                    created_at_asc: "En eski",
+                    created_at_desc: "En Yeni",
                     credits_asc: "Min Krediler",
                     credits_desc: "Maksimum Kredi",
                     patients_desc: "Hastalar",
@@ -12206,12 +12757,12 @@ Object.values || (Object.values = function (e) {
                 showing: "Vis\xedvel:",
                 sicherheitswache: "Miss\xf5es planejadas",
                 sorting: {
-                    age_asc: "Mais antigo",
-                    age_desc: "Novidades",
+                    age_asc: "Mais antigo (Partilhado)",
+                    age_desc: "Novidades (Partilhado)",
                     caption_asc: "A a Z",
                     caption_desc: "Z a A",
-                    created_at_asc: "Novidades",
-                    created_at_desc: "Mais antigo",
+                    created_at_asc: "Mais antigo",
+                    created_at_desc: "Novidades",
                     credits_asc: "Cr\xe9ditos m\xednimos",
                     credits_desc: "Cr\xe9ditos m\xe1ximos",
                     patients_desc: "Pacientes",
@@ -12672,12 +13223,12 @@ Object.values || (Object.values = function (e) {
                 showing: "Vis\xedvel:",
                 sicherheitswache: "Miss\xf5es planejadas",
                 sorting: {
-                    age_asc: "Mais antigo",
-                    age_desc: "Novidades",
+                    age_asc: "Mais antigo (Partilhado)",
+                    age_desc: "Novidades (Partilhado)",
                     caption_asc: "A a Z",
                     caption_desc: "Z a A",
-                    created_at_asc: "Novidades",
-                    created_at_desc: "Mais antigo",
+                    created_at_asc: "Mais antigo",
+                    created_at_desc: "Novidades",
                     credits_asc: "Cr\xe9ditos m\xednimos",
                     credits_desc: "Cr\xe9ditos m\xe1ximos",
                     patients_desc: "Pacientes",
@@ -13088,12 +13639,12 @@ Object.values || (Object.values = function (e) {
                 showing: "\u041f\u043e\u043c\u0456\u0442\u043d\u043e:",
                 sicherheitswache: "\u0417\u0430\u043f\u043b\u0430\u043d\u043e\u0432\u0430\u043d\u0456 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f",
                 sorting: {
-                    age_asc: "\u041d\u0430\u0439\u0441\u0442\u0430\u0440\u0448\u0438\u0439",
-                    age_desc: "\u041d\u0430\u0439\u043d\u043e\u0432\u0456\u0448\u0438\u0439",
+                    age_asc: "\u041d\u0430\u0439\u0441\u0442\u0430\u0440\u0448\u0438\u0439 (\u0421\u043f\u0456\u043b\u044c\u043d\u0435)",
+                    age_desc: "\u041d\u0430\u0439\u043d\u043e\u0432\u0456\u0448\u0438\u0439 (\u0421\u043f\u0456\u043b\u044c\u043d\u0435)",
                     caption_asc: "\u0417\u0430 \u0430\u043b\u0444\u0430\u0432\u0456\u0442\u043e\u043c (\u0437\u0430 \u0437\u0440\u043e\u0441\u0442\u0430\u043d\u043d\u044f\u043c)",
                     caption_desc: "\u0417\u0430 \u0430\u043b\u0444\u0430\u0432\u0456\u0442\u043e\u043c (\u0437\u0430 \u0441\u043f\u0430\u0434\u0430\u043d\u043d\u044f\u043c)",
-                    created_at_asc: "\u041d\u0430\u0439\u043d\u043e\u0432\u0456\u0448\u0438\u0439",
-                    created_at_desc: "\u041d\u0430\u0439\u0441\u0442\u0430\u0440\u0448\u0438\u0439",
+                    created_at_asc: "\u041d\u0430\u0439\u0441\u0442\u0430\u0440\u0448\u0438\u0439",
+                    created_at_desc: "\u041d\u0430\u0439\u043d\u043e\u0432\u0456\u0448\u0438\u0439",
                     credits_asc: "\u041c\u0456\u043d\u0456\u043c\u0430\u043b\u044c\u043d\u0438\u0439 \u0442\u0438\u0442\u0440",
                     credits_desc: "\u041c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u0456 \u043a\u0440\u0435\u0434\u0438\u0442\u0438",
                     patients_desc: "\u041f\u0430\u0446\u0456\u0454\u043d\u0442\u0438",
@@ -13500,12 +14051,12 @@ Object.values || (Object.values = function (e) {
                 showing: "Visible:",
                 sicherheitswache: "Misones planificadas",
                 sorting: {
-                    age_asc: "El m\xe1s antiguo",
-                    age_desc: "Lo m\xe1s nuevo",
+                    age_asc: "El m\xe1s antiguo (Publicado)",
+                    age_desc: "Lo m\xe1s nuevo (Publicado)",
                     caption_asc: "A a la Z",
                     caption_desc: "Z a A",
-                    created_at_asc: "Lo m\xe1s nuevo",
-                    created_at_desc: "El m\xe1s antiguo",
+                    created_at_asc: "El m\xe1s antiguo",
+                    created_at_desc: "Lo m\xe1s nuevo",
                     credits_asc: "Cr\xe9ditos m\xednimos",
                     credits_desc: "Cr\xe9ditos m\xe1ximos",
                     patients_desc: "Pacientes",
@@ -13935,12 +14486,12 @@ Object.values || (Object.values = function (e) {
                 showing: "\u898b\u3048\u308b\uff1a",
                 sicherheitswache: "\u4e88\u5b9a\u3055\u308c\u3066\u3044\u308b\u30df\u30c3\u30b7\u30e7\u30f3",
                 sorting: {
-                    age_asc: "\u6700\u53e4\u306e",
-                    age_desc: "\u6700\u65b0",
+                    age_asc: "\u6700\u53e4\u306e (\u5171\u6709)",
+                    age_desc: "\u6700\u65b0 (\u5171\u6709)",
                     caption_asc: "\u30a2\u30eb\u30d5\u30a1\u30d9\u30c3\u30c8\u9806\uff08\u6607\u9806\uff09",
                     caption_desc: "\u30a2\u30eb\u30d5\u30a1\u30d9\u30c3\u30c8\u9806\uff08\u964d\u9806\uff09",
-                    created_at_asc: "\u6700\u65b0",
-                    created_at_desc: "\u6700\u53e4\u306e",
+                    created_at_asc: "\u6700\u53e4\u306e",
+                    created_at_desc: "\u6700\u65b0",
                     credits_asc: "\u6700\u5c0f\u5358\u4f4d",
                     credits_desc: "\u6700\u5927\u30af\u30ec\u30b8\u30c3\u30c8",
                     patients_desc: "\u60a3\u8005",
@@ -14391,12 +14942,12 @@ Object.values || (Object.values = function (e) {
                 showing: "\ud45c\uc2dc\ub428:",
                 sicherheitswache: "\uacc4\ud68d\ub41c \ucd9c\ud604",
                 sorting: {
-                    age_asc: "\uac00\uc7a5 \uc624\ub798\ub41c",
-                    age_desc: "\ucd5c\uc2e0",
+                    age_asc: "\uac00\uc7a5 \uc624\ub798\ub41c (\uacf5\uc720)",
+                    age_desc: "\ucd5c\uc2e0 (\uacf5\uc720)",
                     caption_asc: "\uc54c\ud30c\ubcb3\uc21c(\uc624\ub984\ucc28\uc21c)",
                     caption_desc: "\uc54c\ud30c\ubcb3\uc21c(\ub0b4\ub9bc\ucc28\uc21c)",
-                    created_at_asc: "\ucd5c\uc2e0",
-                    created_at_desc: "\uac00\uc7a5 \uc624\ub798\ub41c",
+                    created_at_asc: "\uac00\uc7a5 \uc624\ub798\ub41c",
+                    created_at_desc: "\ucd5c\uc2e0",
                     credits_asc: "\ucd5c\uc18c \ud06c\ub808\ub527",
                     credits_desc: "\ucd5c\ub300 \ud06c\ub808\ub527",
                     patients_desc: "\ud658\uc790",
@@ -14836,12 +15387,12 @@ Object.values || (Object.values = function (e) {
                 showing: "Vizibil:",
                 sicherheitswache: "Interven\u021bii planificate",
                 sorting: {
-                    age_asc: "Cel mai vechi",
-                    age_desc: "Cel mai nou",
+                    age_asc: "Cel mai vechi (Partajate)",
+                    age_desc: "Cel mai nou (Partajate)",
                     caption_asc: "A la Z",
                     caption_desc: "Z la A",
-                    created_at_asc: "Cel mai nou",
-                    created_at_desc: "Cel mai vechi",
+                    created_at_asc: "Cel mai vechi",
+                    created_at_desc: "Cel mai nou",
                     credits_asc: "Min Credite",
                     credits_desc: "Credite maxime",
                     patients_desc: "Pacien\u021bi",
@@ -15277,12 +15828,12 @@ Object.values || (Object.values = function (e) {
                 showing: "N\xe4kyviss\xe4:",
                 sicherheitswache: "Suunnitellut teht\xe4v\xe4t",
                 sorting: {
-                    age_asc: "Vanhin",
-                    age_desc: "Uusimmat",
+                    age_asc: "Vanhin (Julkaistu)",
+                    age_desc: "Uusimmat (Julkaistu)",
                     caption_asc: "A:sta Z:hen",
                     caption_desc: "Z:st\xe4 A:han",
-                    created_at_asc: "Uusimmat",
-                    created_at_desc: "Vanhin",
+                    created_at_asc: "Vanhin",
+                    created_at_desc: "Uusimmat",
                     credits_asc: "Min Krediitti\xe4",
                     credits_desc: "Max opintopisteet",
                     patients_desc: "Potilaat",
@@ -15740,12 +16291,12 @@ Object.values || (Object.values = function (e) {
                 showing: "Vidite\u013en\xe9:",
                 sicherheitswache: "Pl\xe1novan\xe9 v\xfdskyty",
                 sorting: {
-                    age_asc: "Najstar\u0161\xed",
-                    age_desc: "Najnov\u0161ie",
+                    age_asc: "Najstar\u0161\xed (Spolo\u010dn\xe1 str\xe1nka)",
+                    age_desc: "Najnov\u0161ie (Spolo\u010dn\xe1 str\xe1nka)",
                     caption_asc: "A po Z",
                     caption_desc: "Abecedne (zostupne)",
-                    created_at_asc: "Najnov\u0161ie",
-                    created_at_desc: "Najstar\u0161\xed",
+                    created_at_asc: "Najstar\u0161\xed",
+                    created_at_desc: "Najnov\u0161ie",
                     credits_asc: "Min. kredity",
                     credits_desc: "Maxim\xe1lny kreditov",
                     patients_desc: "Pacienti",
@@ -16261,18 +16812,18 @@ Object.values || (Object.values = function (e) {
             return i.remove(), n
         }
 
-        function P(e, t, i, n) {
+        function M(e, t, i, n) {
             var s;
             if (ue.isArray(t)) ue.each(t, (function (t, s) {
-                i || Ct.test(e) ? n(e, s) : P(e + "[" + ("object" == typeof s ? t : "") + "]", s,
+                i || Ct.test(e) ? n(e, s) : M(e + "[" + ("object" == typeof s ? t : "") + "]", s,
                     i, n)
             }));
             else if (i || "object" !== ue.type(t)) n(e, t);
             else
-                for (s in t) P(e + "[" + s + "]", t[s], i, n)
+                for (s in t) M(e + "[" + s + "]", t[s], i, n)
         }
 
-        function M(e) {
+        function P(e) {
             return function (t, i) {
                 "string" != typeof t && (i = t, t = "*");
                 var n, s = 0,
@@ -16285,7 +16836,7 @@ Object.values || (Object.values = function (e) {
             }
         }
 
-        function j(e, t, i, n) {
+        function I(e, t, i, n) {
             function s(r) {
                 var l;
                 return o[r] = !0, ue.each(e[r] || [], (function (e, r) {
@@ -16299,7 +16850,7 @@ Object.values || (Object.values = function (e) {
             return s(t.dataTypes[0]) || !o["*"] && s("*")
         }
 
-        function I(e, i) {
+        function j(e, i) {
             var n, s, o = ue.ajaxSettings.flatOptions || {};
             for (s in i) i[s] !== t && ((o[s] ? e : n || (n = {}))[s] = i[s]);
             return n && ue.extend(!0, e, n), e
@@ -16377,13 +16928,13 @@ Object.values || (Object.values = function (e) {
             })), Yt = ue.now()
         }
 
-        function $(e, t, i) {
+        function B(e, t, i) {
             for (var n, s = (ii[t] || [])
                     .concat(ii["*"]), o = 0, a = s.length; o < a; o++)
                 if (n = s[o].call(i, t, e)) return n
         }
 
-        function B(e, t, i) {
+        function $(e, t, i) {
             var n, s, o = 0,
                 a = ti.length,
                 r = ue.Deferred()
@@ -16422,7 +16973,7 @@ Object.values || (Object.values = function (e) {
                 u = c.props;
             for (F(u, c.opts.specialEasing); o < a; o++)
                 if (n = ti[o].call(c, e, u, c.opts)) return n;
-            return ue.map(u, $, c), ue.isFunction(c.opts.start) && c.opts.start.call(e, c), ue.fx.timer(ue
+            return ue.map(u, B, c), ue.isFunction(c.opts.start) && c.opts.start.call(e, c), ue.fx.timer(ue
                     .extend(l, {
                         elem: e,
                         anim: c,
@@ -16476,7 +17027,7 @@ Object.values || (Object.values = function (e) {
                     })), c.done((function () {
                         var t;
                         for (t in ue._removeData(e, "fxshow"), u) ue.style(e, t, u[t])
-                    })), u) a = $(h ? p[n] : 0, n, c), n in p || (p[n] = a.start, h && (a.end = a.start, a
+                    })), u) a = B(h ? p[n] : 0, n, c), n in p || (p[n] = a.start, h && (a.end = a.start, a
                     .start = "width" === n || "height" === n ? 1 : 0))
         }
 
@@ -16874,7 +17425,7 @@ Object.values || (Object.values = function (e) {
                                 if (s[2]) return se.apply(i, t.getElementsByTagName(e)), i;
                                 if ((a = s[3]) && T.getElementsByClassName && t.getElementsByClassName)
                                 return se.apply(i, t.getElementsByClassName(a)), i
-                            } if (T.qsa && (!$ || !$.test(e))) {
+                            } if (T.qsa && (!B || !B.test(e))) {
                             if (d = u = W, h = t, p = 9 === r && e, 1 === r && "object" !== t.nodeName
                                 .toLowerCase()) {
                                 for (c = _(e), (u = t.getAttribute("id")) ? d = u.replace(Se, "\\$&") : t
@@ -17065,7 +17616,7 @@ Object.values || (Object.values = function (e) {
                             }), a, !0), c = g((function (e) {
                                 return ae.call(t, e) > -1
                             }), a, !0), u = [function (e, i, n) {
-                                return !o && (n || i !== I) || ((t = i)
+                                return !o && (n || i !== j) || ((t = i)
                                     .nodeType ? l(e, i, n) : c(e, i, n))
                             }]; r < s; r++)
                         if (i = E.relative[e[r].type]) u = [g(v(u), i)];
@@ -17093,10 +17644,10 @@ Object.values || (Object.values = function (e) {
                                 f = "0",
                                 g = o && [],
                                 v = null != u,
-                                y = I,
+                                y = j,
                                 w = o || a && E.find.TAG("*", u && r.parentNode || r),
                                 k = q += null == y ? 1 : Math.random() || .1;
-                            for (v && (I = r !== L && r, A = n); null != (d = w[f]); f++) {
+                            for (v && (j = r !== L && r, A = n); null != (d = w[f]); f++) {
                                 if (a && d) {
                                     for (h = 0; p = e[h++];)
                                         if (p(d, r, l)) {
@@ -17115,7 +17666,7 @@ Object.values || (Object.values = function (e) {
                                 }
                                 se.apply(c, m), v && !o && m.length > 0 && _ + t.length > 1 && i.uniqueSort(c)
                             }
-                            return v && (q = k, I = y), g
+                            return v && (q = k, j = y), g
                         };
                     return s ? o(r) : r
                 }
@@ -17143,11 +17694,11 @@ Object.values || (Object.values = function (e) {
                                 break
                             }
                     }
-                    return j(e, c)(n, t, !R, i, ge.test(e)), i
+                    return I(e, c)(n, t, !R, i, ge.test(e)), i
                 }
 
                 function C() {}
-                var S, T, A, E, P, M, j, I, D, N, L, O, R, $, B, F, H, W = "sizzle" + -new Date,
+                var S, T, A, E, M, P, I, j, D, N, L, O, R, B, $, F, H, W = "sizzle" + -new Date,
                     V = e.document,
                     q = 0,
                     U = 0,
@@ -17224,14 +17775,14 @@ Object.values || (Object.values = function (e) {
                         }
                     }
                 }
-                for (S in M = i.isXML = function (e) {
+                for (S in P = i.isXML = function (e) {
                         var t = e && (e.ownerDocument || e)
                             .documentElement;
                         return !!t && "HTML" !== t.nodeName
                     }, T = i.support = {}, N = i.setDocument = function (e) {
                         var t = e ? e.ownerDocument || e : V;
                         return t !== L && 9 === t.nodeType && t.documentElement ? (L = t, O = t
-                            .documentElement, R = !M(t), T.attributes = a((function (e) {
+                            .documentElement, R = !P(t), T.attributes = a((function (e) {
                                 return e.innerHTML = "<a href='#'></a>", r(
                                     "type|href|height|width", c, "#" === e.firstChild
                                     .getAttribute("href")), r(re, l, null == e.getAttribute(
@@ -17285,27 +17836,27 @@ Object.values || (Object.values = function (e) {
                             }, E.find.CLASS = T.getElementsByClassName && function (e, t) {
                                 if (typeof t.getElementsByClassName !== Q && R) return t
                                     .getElementsByClassName(e)
-                            }, B = [], $ = [], (T.qsa = n(t.querySelectorAll)) && (a((function (e) {
+                            }, $ = [], B = [], (T.qsa = n(t.querySelectorAll)) && (a((function (e) {
                                 e.innerHTML =
                                     "<select><option selected=''></option></select>", e
                                     .querySelectorAll("[selected]")
-                                    .length || $.push("\\[" + le + "*(?:value|" + re + ")"), e
+                                    .length || B.push("\\[" + le + "*(?:value|" + re + ")"), e
                                     .querySelectorAll(":checked")
-                                    .length || $.push(":checked")
+                                    .length || B.push(":checked")
                             })), a((function (e) {
                                 var i = t.createElement("input");
                                 i.setAttribute("type", "hidden"), e.appendChild(i)
                                     .setAttribute("t", ""), e.querySelectorAll("[t^='']")
-                                    .length && $.push("[*^$]=" + le + "*(?:''|\"\")"), e
+                                    .length && B.push("[*^$]=" + le + "*(?:''|\"\")"), e
                                     .querySelectorAll(":enabled")
-                                    .length || $.push(":enabled", ":disabled"), e
-                                    .querySelectorAll("*,:x"), $.push(",.*:")
+                                    .length || B.push(":enabled", ":disabled"), e
+                                    .querySelectorAll("*,:x"), B.push(",.*:")
                             }))), (T.matchesSelector = n(F = O.webkitMatchesSelector || O
                                 .mozMatchesSelector || O.oMatchesSelector || O.msMatchesSelector)) && a((
                                 function (e) {
-                                    T.disconnectedMatch = F.call(e, "div"), F.call(e, "[s!='']:x"), B
+                                    T.disconnectedMatch = F.call(e, "div"), F.call(e, "[s!='']:x"), $
                                         .push("!=", pe)
-                                })), $ = $.length && new RegExp($.join("|")), B = B.length && new RegExp(B
+                                })), B = B.length && new RegExp(B.join("|")), $ = $.length && new RegExp($
                                 .join("|")), H = n(O.contains) || O.compareDocumentPosition ? function (e,
                                 t) {
                                 var i = 9 === e.nodeType ? e.documentElement : e,
@@ -17347,7 +17898,7 @@ Object.values || (Object.values = function (e) {
                         return i(e, null, null, t)
                     }, i.matchesSelector = function (e, t) {
                         if ((e.ownerDocument || e) !== L && N(e), t = t.replace(ve, "='$1']"), T
-                            .matchesSelector && R && (!B || !B.test(t)) && (!$ || !$.test(t))) try {
+                            .matchesSelector && R && (!$ || !$.test(t)) && (!B || !B.test(t))) try {
                             var n = F.call(e, t);
                             if (n || T.disconnectedMatch || e.document && 11 !== e.document.nodeType)
                                 return n
@@ -17373,17 +17924,17 @@ Object.values || (Object.values = function (e) {
                             for (; n--;) e.splice(i[n], 1)
                         }
                         return e
-                    }, P = i.getText = function (e) {
+                    }, M = i.getText = function (e) {
                         var t, i = "",
                             n = 0,
                             s = e.nodeType;
                         if (s) {
                             if (1 === s || 9 === s || 11 === s) {
                                 if ("string" == typeof e.textContent) return e.textContent;
-                                for (e = e.firstChild; e; e = e.nextSibling) i += P(e)
+                                for (e = e.firstChild; e; e = e.nextSibling) i += M(e)
                             } else if (3 === s || 4 === s) return e.nodeValue
                         } else
-                            for (; t = e[n]; n++) i += P(t);
+                            for (; t = e[n]; n++) i += M(t);
                         return i
                     }, E = i.selectors = {
                         cacheLength: 50,
@@ -17517,7 +18068,7 @@ Object.values || (Object.values = function (e) {
                             not: o((function (e) {
                                 var t = [],
                                     i = [],
-                                    n = j(e.replace(me, "$1"));
+                                    n = I(e.replace(me, "$1"));
                                 return n[W] ? o((function (e, t, i, s) {
                                     for (var o, a = n(e, null, s, []), r = e
                                         .length; r--;)(o = a[r]) && (e[r] = !(t[r] =
@@ -17534,7 +18085,7 @@ Object.values || (Object.values = function (e) {
                             })),
                             contains: o((function (e) {
                                 return function (t) {
-                                    return (t.textContent || t.innerText || P(t))
+                                    return (t.textContent || t.innerText || M(t))
                                         .indexOf(e) > -1
                                 }
                             })),
@@ -17639,7 +18190,7 @@ Object.values || (Object.values = function (e) {
                         submit: !0,
                         reset: !0
                     }) E.pseudos[S] = p(S);
-                j = i.compile = function (e, t) {
+                I = i.compile = function (e, t) {
                         var i, n = [],
                             s = [],
                             o = G[e + " "];
@@ -18014,10 +18565,10 @@ Object.values || (Object.values = function (e) {
                 return l(), o.promise(i)
             }
         });
-        var Ae, Ee, Pe = /[\t\r\n\f]/g,
-            Me = /\r/g,
-            je = /^(?:input|select|textarea|button|object)$/i,
-            Ie = /^(?:a|area)$/i,
+        var Ae, Ee, Me = /[\t\r\n\f]/g,
+            Pe = /\r/g,
+            Ie = /^(?:input|select|textarea|button|object)$/i,
+            je = /^(?:a|area)$/i,
             De = /^(?:checked|selected)$/i,
             Ne = ue.support.getSetAttribute,
             Le = ue.support.input;
@@ -18053,7 +18604,7 @@ Object.values || (Object.values = function (e) {
                             .match(he) || []; a < r; a++)
                             if (n = 1 === (i = this[a])
                                 .nodeType && (i.className ? (" " + i.className + " ")
-                                    .replace(Pe, " ") : " ")) {
+                                    .replace(Me, " ") : " ")) {
                                 for (o = 0; s = t[o++];) n.indexOf(" " + s + " ") < 0 && (n += s +
                                     " ");
                                 i.className = ue.trim(n)
@@ -18072,7 +18623,7 @@ Object.values || (Object.values = function (e) {
                             .match(he) || []; a < r; a++)
                             if (n = 1 === (i = this[a])
                                 .nodeType && (i.className ? (" " + i.className + " ")
-                                    .replace(Pe, " ") : "")) {
+                                    .replace(Me, " ") : "")) {
                                 for (o = 0; s = t[o++];)
                                     for (; n.indexOf(" " + s + " ") >= 0;) n = n.replace(" " + s +
                                         " ", " ");
@@ -18099,7 +18650,7 @@ Object.values || (Object.values = function (e) {
                 hasClass: function (e) {
                     for (var t = " " + e + " ", i = 0, n = this.length; i < n; i++)
                         if (1 === this[i].nodeType && (" " + this[i].className + " ")
-                            .replace(Pe, " ")
+                            .replace(Me, " ")
                             .indexOf(t) >= 0) return !0;
                     return !1
                 },
@@ -18118,7 +18669,7 @@ Object.values || (Object.values = function (e) {
                                     this, o, "value") !== t || (this.value = o))
                         }))) : o ? (n = ue.valHooks[o.type] || ue.valHooks[o.nodeName
                     .toLowerCase()]) && "get" in n && (i = n.get(o, "value")) !== t ? i : "string" ==
-                        typeof (i = o.value) ? i.replace(Me, "") : null == i ? "" : i : void 0
+                        typeof (i = o.value) ? i.replace(Pe, "") : null == i ? "" : i : void 0
                 }
             }), ue.extend({
                 valHooks: {
@@ -18195,7 +18746,7 @@ Object.values || (Object.values = function (e) {
                     tabIndex: {
                         get: function (e) {
                             var t = ue.find.attr(e, "tabindex");
-                            return t ? parseInt(t, 10) : je.test(e.nodeName) || Ie.test(e.nodeName) &&
+                            return t ? parseInt(t, 10) : Ie.test(e.nodeName) || je.test(e.nodeName) &&
                                 e.href ? 0 : -1
                         }
                     }
@@ -18281,8 +18832,8 @@ Object.values || (Object.values = function (e) {
                 }));
         var Oe = /^(?:input|select|textarea)$/i,
             Re = /^key/,
-            $e = /^(?:mouse|contextmenu)|click/,
-            Be = /^(?:focusinfocus|focusoutblur)$/,
+            Be = /^(?:mouse|contextmenu)|click/,
+            $e = /^(?:focusinfocus|focusoutblur)$/,
             Fe = /^([^.]*)(?:\.(.+)|)$/;
         ue.event = {
             global: {},
@@ -18345,7 +18896,7 @@ Object.values || (Object.values = function (e) {
                 var a, r, l, c, u, d, h, p = [s || Y],
                     m = le.call(i, "type") ? i.type : i,
                     _ = le.call(i, "namespace") ? i.namespace.split(".") : [];
-                if (l = d = s = s || Y, 3 !== s.nodeType && 8 !== s.nodeType && !Be.test(m + ue.event
+                if (l = d = s = s || Y, 3 !== s.nodeType && 8 !== s.nodeType && !$e.test(m + ue.event
                         .triggered) && (m.indexOf(".") >= 0 && (_ = m.split("."), m = _.shift(), _
                             .sort()), r = m.indexOf(":") < 0 && "on" + m, (i = i[ue.expando] ? i :
                             new ue.Event(m, "object" == typeof i && i))
@@ -18355,7 +18906,7 @@ Object.values || (Object.values = function (e) {
                         .makeArray(n, [i]), u = ue.event.special[m] || {}, o || !u.trigger || !1 !== u
                         .trigger.apply(s, n))) {
                     if (!o && !u.noBubble && !ue.isWindow(s)) {
-                        for (c = u.delegateType || m, Be.test(c + m) || (l = l.parentNode); l; l = l
+                        for (c = u.delegateType || m, $e.test(c + m) || (l = l.parentNode); l; l = l
                             .parentNode) p.push(l), d = l;
                         d === (s.ownerDocument || Y) && p.push(d.defaultView || d.parentWindow || e)
                     }
@@ -18420,7 +18971,7 @@ Object.values || (Object.values = function (e) {
                 var t, i, n, s = e.type,
                     o = e,
                     a = this.fixHooks[s];
-                for (a || (this.fixHooks[s] = a = $e.test(s) ? this.mouseHooks : Re.test(s) ? this
+                for (a || (this.fixHooks[s] = a = Be.test(s) ? this.mouseHooks : Re.test(s) ? this
                         .keyHooks : {}), n = a.props ? this.props.concat(a.props) : this.props, e =
                     new ue.Event(o), t = n.length; t--;) e[i = n[t]] = o[i];
                 return e.target || (e.target = o.srcElement || Y), 3 === e.target.nodeType && (e
@@ -19278,7 +19829,7 @@ Object.values || (Object.values = function (e) {
                 o(this.name, this.value)
             }));
             else
-                for (n in e) P(n, e[n], i, o);
+                for (n in e) M(n, e[n], i, o);
             return s.join("&")
                 .replace(zt, "+")
         }, ue.each(
@@ -19305,27 +19856,27 @@ Object.values || (Object.values = function (e) {
                 return 1 === arguments.length ? this.off(e, "**") : this.off(t, e || "**", i)
             }
         });
-        var Et, Pt, Mt = ue.now(),
-            jt = /\?/,
-            It = /#.*$/,
+        var Et, Mt, Pt = ue.now(),
+            It = /\?/,
+            jt = /#.*$/,
             Dt = /([?&])_=[^&]*/,
             Nt = /^(.*?):[ \t]*([^\r\n]*)\r?$/gm,
             Lt = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
             Ot = /^(?:GET|HEAD)$/,
             Rt = /^\/\//,
-            $t = /^([\w.+-]+:)(?:\/\/([^\/?#:]*)(?::(\d+)|)|)/,
-            Bt = ue.fn.load,
+            Bt = /^([\w.+-]+:)(?:\/\/([^\/?#:]*)(?::(\d+)|)|)/,
+            $t = ue.fn.load,
             Ft = {},
             Ht = {},
             Wt = "*/".concat("*");
         try {
-            Pt = G.href
+            Mt = G.href
         } catch (e) {
-            (Pt = Y.createElement("a"))
-            .href = "", Pt = Pt.href
+            (Mt = Y.createElement("a"))
+            .href = "", Mt = Mt.href
         }
-        Et = $t.exec(Pt.toLowerCase()) || [], ue.fn.load = function (e, i, n) {
-            if ("string" != typeof e && Bt) return Bt.apply(this, arguments);
+        Et = Bt.exec(Mt.toLowerCase()) || [], ue.fn.load = function (e, i, n) {
+            if ("string" != typeof e && $t) return $t.apply(this, arguments);
             var s, o, a, r = this,
                 l = e.indexOf(" ");
             return l >= 0 && (s = e.slice(l, e.length), e = e.slice(0, l)), ue.isFunction(i) ? (n = i, i =
@@ -19353,7 +19904,7 @@ Object.values || (Object.values = function (e) {
             lastModified: {},
             etag: {},
             ajaxSettings: {
-                url: Pt,
+                url: Mt,
                 type: "GET",
                 isLocal: Lt.test(Et[1]),
                 global: !0,
@@ -19389,10 +19940,10 @@ Object.values || (Object.values = function (e) {
                 }
             },
             ajaxSetup: function (e, t) {
-                return t ? I(I(e, ue.ajaxSettings), t) : I(ue.ajaxSettings, e)
+                return t ? j(j(e, ue.ajaxSettings), t) : j(ue.ajaxSettings, e)
             },
-            ajaxPrefilter: M(Ft),
-            ajaxTransport: M(Ht),
+            ajaxPrefilter: P(Ft),
+            ajaxTransport: P(Ht),
             ajax: function (e, i) {
                 function n(e, i, n, s) {
                     var o, d, v, b, w, x = i;
@@ -19459,22 +20010,22 @@ Object.values || (Object.values = function (e) {
                     };
                 if (_.promise(k)
                     .complete = f.add, k.success = k.done, k.error = k.fail, h.url = ((e || h
-                        .url || Pt) + "")
-                    .replace(It, "")
+                        .url || Mt) + "")
+                    .replace(jt, "")
                     .replace(Rt, Et[1] + "//"), h.type = i.method || i.type || h.method || h.type,
                     h.dataTypes = ue.trim(h.dataType || "*")
                     .toLowerCase()
-                    .match(he) || [""], null == h.crossDomain && (s = $t.exec(h.url
+                    .match(he) || [""], null == h.crossDomain && (s = Bt.exec(h.url
                     .toLowerCase()), h.crossDomain = !(!s || s[1] === Et[1] && s[2] === Et[2] && (
                             s[3] || ("http:" === s[1] ? "80" : "443")) === (Et[3] || (
                             "http:" === Et[1] ? "80" : "443")))), h.data && h.processData &&
-                    "string" != typeof h.data && (h.data = ue.param(h.data, h.traditional)), j(Ft,
+                    "string" != typeof h.data && (h.data = ue.param(h.data, h.traditional)), I(Ft,
                         h, i, k), 2 === y) return k;
                 for (o in (c = h.global) && 0 == ue.active++ && ue.event.trigger("ajaxStart"), h
                     .type = h.type.toUpperCase(), h.hasContent = !Ot.test(h.type), a = h.url, h
-                    .hasContent || (h.data && (a = h.url += (jt.test(a) ? "&" : "?") + h.data,
+                    .hasContent || (h.data && (a = h.url += (It.test(a) ? "&" : "?") + h.data,
                         delete h.data), !1 === h.cache && (h.url = Dt.test(a) ? a.replace(Dt,
-                        "$1_=" + Mt++) : a + (jt.test(a) ? "&" : "?") + "_=" + Mt++)), h
+                        "$1_=" + Pt++) : a + (It.test(a) ? "&" : "?") + "_=" + Pt++)), h
                     .ifModified && (ue.lastModified[a] && k.setRequestHeader("If-Modified-Since",
                         ue.lastModified[a]), ue.etag[a] && k.setRequestHeader("If-None-Match",
                         ue.etag[a])), (h.data && h.hasContent && !1 !== h.contentType || i
@@ -19490,7 +20041,7 @@ Object.values || (Object.values = function (e) {
                         error: 1,
                         complete: 1
                     }) k[o](h[o]);
-                if (u = j(Ht, h, i, k)) {
+                if (u = I(Ht, h, i, k)) {
                     k.readyState = 1, c && m.trigger("ajaxSend", [k, h]), h.async && h.timeout >
                         0 && (l = setTimeout((function () {
                             k.abort("timeout")
@@ -19559,7 +20110,7 @@ Object.values || (Object.values = function (e) {
         ue.ajaxSetup({
             jsonp: "callback",
             jsonpCallback: function () {
-                var e = Vt.pop() || ue.expando + "_" + Mt++;
+                var e = Vt.pop() || ue.expando + "_" + Pt++;
                 return this[e] = !0, e
             }
         }), ue.ajaxPrefilter("json jsonp", (function (i, n, s) {
@@ -19568,7 +20119,7 @@ Object.values || (Object.values = function (e) {
                 .indexOf("application/x-www-form-urlencoded") && qt.test(i.data) && "data");
             if (l || "jsonp" === i.dataTypes[0]) return o = i.jsonpCallback = ue.isFunction(i
                     .jsonpCallback) ? i.jsonpCallback() : i.jsonpCallback, l ? i[l] = i[l]
-                .replace(qt, "$1" + o) : !1 !== i.jsonp && (i.url += (jt.test(i.url) ? "&" :
+                .replace(qt, "$1" + o) : !1 !== i.jsonp && (i.url += (It.test(i.url) ? "&" :
                     "?") + i.jsonp + "=" + o), i.converters["script json"] = function () {
                     return r || ue.error(o + " was not called"), r[0]
                 }, i.dataTypes[0] = "json", a = e[o], e[o] = function () {
@@ -19655,7 +20206,7 @@ Object.values || (Object.values = function (e) {
                         s[2] : +s[2]), i
                 }]
             };
-        ue.Animation = ue.extend(B, {
+        ue.Animation = ue.extend($, {
                 tweener: function (e, t) {
                     ue.isFunction(e) ? (t = e, e = ["*"]) : e = e.split(" ");
                     for (var i, n = 0, s = e.length; n < s; n++) i = e[n], ii[i] = ii[i] || [], ii[i]
@@ -19720,7 +20271,7 @@ Object.values || (Object.values = function (e) {
                     var s = ue.isEmptyObject(e),
                         o = ue.speed(t, i, n),
                         a = function () {
-                            var t = B(this, ue.extend({}, e), o);
+                            var t = $(this, ue.extend({}, e), o);
                             a.finish = function () {
                                 t.stop(!0)
                             }, (s || ue._data(this, "finish")) && t.stop(!0)
@@ -25506,9 +26057,9 @@ Object.values || (Object.values = function (e) {
                 },
                 _generateHTML: function (e) {
                     var t, i, n, s, o, a, r, l, c, u, d, h, p, m, _, f, g, v, b, y, w, k, x,
-                        z, C, S, T, A, E, P, M, j, I, D, N, L, O, R, $, B = new Date,
-                        F = this._daylightSavingAdjust(new Date(B.getFullYear(), B.getMonth(),
-                            B.getDate())),
+                        z, C, S, T, A, E, M, P, I, j, D, N, L, O, R, B, $ = new Date,
+                        F = this._daylightSavingAdjust(new Date($.getFullYear(), $.getMonth(),
+                            $.getDate())),
                         H = this._get(e, "isRTL"),
                         W = this._get(e, "showButtonPanel"),
                         V = this._get(e, "hideIfNoPrevNext"),
@@ -25592,34 +26143,34 @@ Object.values || (Object.values = function (e) {
                                     " class='ui-datepicker-week-end'" : "") +
                                 "><span title='" + h[E = (w + u) % 7] + "'>" + p[E] +
                                 "</span></th>";
-                            for (T += A + "</tr></thead><tbody>", P = this._getDaysInMonth(ee,
+                            for (T += A + "</tr></thead><tbody>", M = this._getDaysInMonth(ee,
                                     X), ee === e.selectedYear && X === e.selectedMonth && (e
-                                    .selectedDay = Math.min(e.selectedDay, P)), M = (this
-                                    ._getFirstDayOfMonth(ee, X) - u + 7) % 7, j = Math.ceil((
-                                    M + P) / 7), I = G && this.maxRows > j ? this.maxRows : j,
-                                this.maxRows = I, D = this._daylightSavingAdjust(new Date(ee,
-                                    X, 1 - M)), N = 0; N < I; N++) {
+                                    .selectedDay = Math.min(e.selectedDay, M)), P = (this
+                                    ._getFirstDayOfMonth(ee, X) - u + 7) % 7, I = Math.ceil((
+                                    P + M) / 7), j = G && this.maxRows > I ? this.maxRows : I,
+                                this.maxRows = j, D = this._daylightSavingAdjust(new Date(ee,
+                                    X, 1 - P)), N = 0; N < j; N++) {
                                 for (T += "<tr>", L = d ?
                                     "<td class='ui-datepicker-week-col'>" + this._get(e,
                                         "calculateWeek")(D) + "</td>" : "", w = 0; w < 7; w++)
                                     O = f ? f.apply(e.input ? e.input[0] : null, [D]) : [!0,
-                                        ""], $ = (R = D.getMonth() !== X) && !v || !O[0] ||
+                                        ""], B = (R = D.getMonth() !== X) && !v || !O[0] ||
                                     J && D < J || Q && D > Q, L += "<td class='" + ((w + u +
                                         6) % 7 >= 5 ? " ui-datepicker-week-end" : "") + (R ?
                                         " ui-datepicker-other-month" : "") + (D.getTime() ===
                                         C.getTime() && X === e.selectedMonth && e._keyEvent ||
                                         b.getTime() === D.getTime() && b.getTime() === C
-                                        .getTime() ? " " + this._dayOverClass : "") + ($ ?
+                                        .getTime() ? " " + this._dayOverClass : "") + (B ?
                                         " " + this._unselectableClass + " ui-state-disabled" :
                                         "") + (R && !g ? "" : " " + O[1] + (D.getTime() === Y
                                         .getTime() ? " " + this._currentClass : "") + (D
                                         .getTime() === F.getTime() ?
                                         " ui-datepicker-today" : "")) + "'" + (R && !g || !O[
                                             2] ? "" : " title='" + O[2].replace(/'/g,
-                                        "&#39;") + "'") + ($ ? "" :
+                                        "&#39;") + "'") + (B ? "" :
                                         " data-handler='selectDay' data-event='click' data-month='" +
                                         D.getMonth() + "' data-year='" + D.getFullYear() + "'"
-                                        ) + ">" + (R && !g ? "&#xa0;" : $ ?
+                                        ) + ">" + (R && !g ? "&#xa0;" : B ?
                                         "<span class='ui-state-default'>" + D.getDate() +
                                         "</span>" : "<a class='ui-state-default" + (D
                                             .getTime() === F.getTime() ?
@@ -30475,13 +31026,13 @@ Object.values || (Object.values = function (e) {
                         T = S + a.height(),
                         A = C.left,
                         E = A + a.width(),
-                        P = !0 === i ? T : S,
-                        M = !0 === i ? S : T,
-                        j = !0 === i ? E : A,
-                        I = !0 === i ? A : E;
-                    if ("both" === s) return !!p && M <= k && P >= w && I <= z && j >= x;
-                    if ("vertical" === s) return !!p && M <= k && P >= w;
-                    if ("horizontal" === s) return !!p && I <= z && j >= x
+                        M = !0 === i ? T : S,
+                        P = !0 === i ? S : T,
+                        I = !0 === i ? E : A,
+                        j = !0 === i ? A : E;
+                    if ("both" === s) return !!p && P <= k && M >= w && j <= z && I >= x;
+                    if ("vertical" === s) return !!p && P <= k && M >= w;
+                    if ("horizontal" === s) return !!p && j <= z && I >= x
                 }
             }
         }
@@ -32306,11 +32857,11 @@ Object.values || (Object.values = function (e) {
             return new A(e, t, i, n)
         }
 
-        function P(e) {
+        function M(e) {
             return document.createElementNS("http://www.w3.org/2000/svg", e)
         }
 
-        function M(e, t) {
+        function P(e, t) {
             var i, n, s, o, a, r, l = "";
             for (i = 0, s = e.length; i < s; i++) {
                 for (n = 0, o = (a = e[i])
@@ -32321,12 +32872,12 @@ Object.values || (Object.values = function (e) {
             return l || "M0 0"
         }
 
-        function j(e) {
+        function I(e) {
             return navigator.userAgent.toLowerCase()
                 .indexOf(e) >= 0
         }
 
-        function I(e, t, i, n) {
+        function j(e, t, i, n) {
             return "touchstart" === t ? N(e, i, n) : "touchmove" === t ? F(e, i, n) : "touchend" ===
                 t && H(e, i, n), this
         }
@@ -32345,12 +32896,12 @@ Object.values || (Object.values = function (e) {
                     if (!(si.indexOf(e.target.tagName) < 0)) return;
                     ke(e)
                 }
-                B(e, t)
+                $(e, t)
             }));
             e["_leaflet_touchstart" + n] = s, e.addEventListener(ei, s, !1), ai || (document
                 .documentElement.addEventListener(ei, O, !0), document.documentElement
-                .addEventListener(ti, R, !0), document.documentElement.addEventListener(ii, $, !
-                0), document.documentElement.addEventListener(ni, $, !0), ai = !0)
+                .addEventListener(ti, R, !0), document.documentElement.addEventListener(ii, B, !
+                0), document.documentElement.addEventListener(ni, B, !0), ai = !0)
         }
 
         function O(e) {
@@ -32361,11 +32912,11 @@ Object.values || (Object.values = function (e) {
             oi[e.pointerId] && (oi[e.pointerId] = e)
         }
 
-        function $(e) {
+        function B(e) {
             delete oi[e.pointerId], ri--
         }
 
-        function B(e, t) {
+        function $(e, t) {
             for (var i in e.touches = [], oi) e.touches.push(oi[i]);
             e.changedTouches = [e], t(e)
         }
@@ -32373,14 +32924,14 @@ Object.values || (Object.values = function (e) {
         function F(e, t, i) {
             var n = function (e) {
                 (e.pointerType !== e.MSPOINTER_TYPE_MOUSE && "mouse" !== e.pointerType || 0 !== e
-                    .buttons) && B(e, t)
+                    .buttons) && $(e, t)
             };
             e["_leaflet_touchmove" + i] = n, e.addEventListener(ti, n, !1)
         }
 
         function H(e, t, i) {
             var n = function (e) {
-                B(e, t)
+                $(e, t)
             };
             e["_leaflet_touchend" + i] = n, e.addEventListener(ii, n, !1), e.addEventListener(ni, n, !
                 1)
@@ -32522,7 +33073,7 @@ Object.values || (Object.values = function (e) {
         }
 
         function re(e, t) {
-            e._leaflet_pos = t, Bt ? ae(e, t) : (e.style.left = t.x + "px", e.style.top = t.y + "px")
+            e._leaflet_pos = t, $t ? ae(e, t) : (e.style.left = t.x + "px", e.style.top = t.y + "px")
         }
 
         function le(e) {
@@ -32592,8 +33143,8 @@ Object.values || (Object.values = function (e) {
                     return i.call(s || e, t || window.event)
                 },
                 r = a;
-            qt && 0 === t.indexOf("touch") ? I(e, t, a, o) : !Ut || "dblclick" !== t || !W || qt &&
-                Mt ? "addEventListener" in e ? "mousewheel" === t ? e.addEventListener("onwheel" in
+            qt && 0 === t.indexOf("touch") ? j(e, t, a, o) : !Ut || "dblclick" !== t || !W || qt &&
+                Pt ? "addEventListener" in e ? "mousewheel" === t ? e.addEventListener("onwheel" in
                     e ? "wheel" : "mousewheel", a, !1) : "mouseenter" === t || "mouseleave" === t ? (
                     a = function (t) {
                         t = t || window.event, Ae(e, t) && r(t)
@@ -32608,7 +33159,7 @@ Object.values || (Object.values = function (e) {
             var o = t + n(i) + (s ? "_" + n(s) : ""),
                 a = e[bi] && e[bi][o];
             if (!a) return this;
-            qt && 0 === t.indexOf("touch") ? D(e, t, o) : !Ut || "dblclick" !== t || !V || qt && Mt ?
+            qt && 0 === t.indexOf("touch") ? D(e, t, o) : !Ut || "dblclick" !== t || !V || qt && Pt ?
                 "removeEventListener" in e ? "mousewheel" === t ? e.removeEventListener("onwheel" in
                     e ? "wheel" : "mousewheel", a, !1) : e.removeEventListener("mouseenter" === t ?
                     "mouseover" : "mouseleave" === t ? "mouseout" : t, a, !1) : "detachEvent" in e &&
@@ -32679,29 +33230,29 @@ Object.values || (Object.values = function (e) {
                 e))
         }
 
-        function Pe(e, t) {
+        function Me(e, t) {
             if (!t || !e.length) return e.slice();
             var i = t * t;
-            return je(e = De(e, i), i)
+            return Ie(e = De(e, i), i)
         }
 
-        function Me(e, t, i) {
-            return Math.sqrt($e(e, t, i, !0))
+        function Pe(e, t, i) {
+            return Math.sqrt(Be(e, t, i, !0))
         }
 
-        function je(e, t) {
+        function Ie(e, t) {
             var i = e.length,
                 n = new(typeof Uint8Array != void 0 + "" ? Uint8Array : Array)(i);
-            n[0] = n[i - 1] = 1, Ie(e, n, t, 0, i - 1);
+            n[0] = n[i - 1] = 1, je(e, n, t, 0, i - 1);
             var s, o = [];
             for (s = 0; s < i; s++) n[s] && o.push(e[s]);
             return o
         }
 
-        function Ie(e, t, i, n, s) {
+        function je(e, t, i, n, s) {
             var o, a, r, l = 0;
-            for (a = n + 1; a <= s - 1; a++)(r = $e(e[a], e[n], e[s], !0)) > l && (o = a, l = r);
-            l > i && (t[o] = 1, Ie(e, t, i, n, o), Ie(e, t, i, o, s))
+            for (a = n + 1; a <= s - 1; a++)(r = Be(e[a], e[n], e[s], !0)) > l && (o = a, l = r);
+            l > i && (t[o] = 1, je(e, t, i, n, o), je(e, t, i, o, s))
         }
 
         function De(e, t) {
@@ -32711,9 +33262,9 @@ Object.values || (Object.values = function (e) {
         }
 
         function Ne(e, t, i, n, s) {
-            var o, a, r, l = n ? ji : Oe(e, i),
+            var o, a, r, l = n ? Ii : Oe(e, i),
                 c = Oe(t, i);
-            for (ji = c;;) {
+            for (Ii = c;;) {
                 if (!(l | c)) return [e, t];
                 if (l & c) return !1;
                 r = Oe(a = Le(e, t, o = l || c, i, s), i), o === l ? (e = a, l = r) : (t = a, c = r)
@@ -32742,7 +33293,7 @@ Object.values || (Object.values = function (e) {
             return i * i + n * n
         }
 
-        function $e(e, t, i, n) {
+        function Be(e, t, i, n) {
             var s, o = t.x,
                 a = t.y,
                 r = i.x - o,
@@ -32753,12 +33304,12 @@ Object.values || (Object.values = function (e) {
                 new y(o, a)
         }
 
-        function Be(e) {
+        function $e(e) {
             return !st(e[0]) || "object" != typeof e[0][0] && void 0 !== e[0][0]
         }
 
         function Fe(e) {
-            return console.warn("Deprecated use of _flat, please use L.LineUtil.isFlat instead."), Be(
+            return console.warn("Deprecated use of _flat, please use L.LineUtil.isFlat instead."), $e(
                 e)
         }
 
@@ -33398,36 +33949,36 @@ Object.values || (Object.values = function (e) {
             kt = "ActiveXObject" in window,
             xt = kt && !document.addEventListener,
             zt = "msLaunchUri" in navigator && !("documentMode" in document),
-            Ct = j("webkit"),
-            St = j("android"),
-            Tt = j("android 2") || j("android 3"),
+            Ct = I("webkit"),
+            St = I("android"),
+            Tt = I("android 2") || I("android 3"),
             At = parseInt(/WebKit\/([0-9]+)|$/.exec(navigator.userAgent)[1], 10),
-            Et = St && j("Google") && At < 537 && !("AudioNode" in window),
-            Pt = !!window.opera,
-            Mt = j("chrome"),
-            jt = j("gecko") && !Ct && !Pt && !kt,
-            It = !Mt && j("safari"),
-            Dt = j("phantom"),
+            Et = St && I("Google") && At < 537 && !("AudioNode" in window),
+            Mt = !!window.opera,
+            Pt = I("chrome"),
+            It = I("gecko") && !Ct && !Mt && !kt,
+            jt = !Pt && I("safari"),
+            Dt = I("phantom"),
             Nt = "OTransition" in wt,
             Lt = 0 === navigator.platform.indexOf("Win"),
             Ot = kt && "transition" in wt,
             Rt = "WebKitCSSMatrix" in window && "m11" in new window.WebKitCSSMatrix && !Tt,
-            $t = "MozPerspective" in wt,
-            Bt = !window.L_DISABLE_3D && (Ot || Rt || $t) && !Nt && !Dt,
-            Ft = "undefined" != typeof orientation || j("mobile"),
+            Bt = "MozPerspective" in wt,
+            $t = !window.L_DISABLE_3D && (Ot || Rt || Bt) && !Nt && !Dt,
+            Ft = "undefined" != typeof orientation || I("mobile"),
             Ht = Ft && Ct,
             Wt = Ft && Rt,
             Vt = !window.PointerEvent && window.MSPointerEvent,
             qt = !(!window.PointerEvent && !Vt),
             Ut = !window.L_NO_TOUCH && (qt || "ontouchstart" in window || window.DocumentTouch &&
                 document instanceof window.DocumentTouch),
-            Zt = Ft && Pt,
-            Kt = Ft && jt,
+            Zt = Ft && Mt,
+            Kt = Ft && It,
             Gt = (window.devicePixelRatio || window.screen.deviceXDPI / window.screen.logicalXDPI) >
             1,
             Yt = !!document.createElement("canvas")
             .getContext,
-            Jt = !(!document.createElementNS || !P("svg")
+            Jt = !(!document.createElementNS || !M("svg")
                 .createSVGRect),
             Qt = !Jt && function () {
                 try {
@@ -33447,17 +33998,17 @@ Object.values || (Object.values = function (e) {
                 android: St,
                 android23: Tt,
                 androidStock: Et,
-                opera: Pt,
-                chrome: Mt,
-                gecko: jt,
-                safari: It,
+                opera: Mt,
+                chrome: Pt,
+                gecko: It,
+                safari: jt,
                 phantom: Dt,
                 opera12: Nt,
                 win: Lt,
                 ie3d: Ot,
                 webkit3d: Rt,
-                gecko3d: $t,
-                any3d: Bt,
+                gecko3d: Bt,
+                any3d: $t,
                 mobile: Ft,
                 mobileWebkit: Ht,
                 mobileWebkit3d: Wt,
@@ -33534,7 +34085,7 @@ Object.values || (Object.values = function (e) {
                 getScale: me
             }),
             bi = "_leaflet_events",
-            yi = Lt && Mt ? 2 * window.devicePixelRatio : jt ? window.devicePixelRatio : 1,
+            yi = Lt && Pt ? 2 * window.devicePixelRatio : It ? window.devicePixelRatio : 1,
             wi = {},
             ki = (Object.freeze || Object)({
                 on: _e,
@@ -33609,7 +34160,7 @@ Object.values || (Object.values = function (e) {
                         void 0 !== t.zoom && (this._zoom = this._limitZoom(t.zoom)), t
                         .center && void 0 !== t.zoom && this.setView(T(t.center), t.zoom, {
                             reset: !0
-                        }), this.callInitHooks(), this._zoomAnimated = hi && Bt && !Zt && this
+                        }), this.callInitHooks(), this._zoomAnimated = hi && $t && !Zt && this
                         .options.zoomAnimation, this._zoomAnimated && (this
                         ._createAnimProxy(), _e(this._proxy, pi, this._catchTransitionEnd,
                                 this)), this._addLayers(this.options.layers)
@@ -33634,11 +34185,11 @@ Object.values || (Object.values = function (e) {
                     }) : (this._zoom = e, this)
                 },
                 zoomIn: function (e, t) {
-                    return e = e || (Bt ? this.options.zoomDelta : 1), this.setZoom(this
+                    return e = e || ($t ? this.options.zoomDelta : 1), this.setZoom(this
                         ._zoom + e, t)
                 },
                 zoomOut: function (e, t) {
-                    return e = e || (Bt ? this.options.zoomDelta : 1), this.setZoom(this
+                    return e = e || ($t ? this.options.zoomDelta : 1), this.setZoom(this
                         ._zoom - e, t)
                 },
                 setZoomAround: function (e, t, i) {
@@ -33755,7 +34306,7 @@ Object.values || (Object.values = function (e) {
                             ._moveEnd(!0)
                     }
                     if (!1 === (i = i || {})
-                        .animate || !Bt) return this.setView(e, t, i);
+                        .animate || !$t) return this.setView(e, t, i);
                     this._stop();
                     var d = this.project(this.getCenter()),
                         h = this.project(e),
@@ -33962,7 +34513,7 @@ Object.values || (Object.values = function (e) {
                         .subtract(i),
                         c = x(this.project(r, n), this.project(a, n))
                         .getSize(),
-                        u = Bt ? this.options.zoomSnap : 1,
+                        u = $t ? this.options.zoomSnap : 1,
                         d = l.x / c.x,
                         h = l.y / c.y,
                         p = t ? Math.max(d, h) : Math.min(d, h);
@@ -34065,9 +34616,9 @@ Object.values || (Object.values = function (e) {
                 },
                 _initLayout: function () {
                     var e = this._container;
-                    this._fadeAnimated = this.options.fadeAnimation && Bt, X(e,
+                    this._fadeAnimated = this.options.fadeAnimation && $t, X(e,
                         "leaflet-container" + (Ut ? " leaflet-touch" : "") + (Gt ?
-                            " leaflet-retina" : "") + (xt ? " leaflet-oldie" : "") + (It ?
+                            " leaflet-retina" : "") + (xt ? " leaflet-oldie" : "") + (jt ?
                             " leaflet-safari" : "") + (this._fadeAnimated ?
                             " leaflet-fade-anim" : ""));
                     var t = U(e, "position");
@@ -34129,7 +34680,7 @@ Object.values || (Object.values = function (e) {
                     t(this._container,
                             "click dblclick mousedown mouseup mouseover mouseout mousemove contextmenu keypress",
                             this._handleDOMEvent, this), this.options.trackResize && t(window,
-                            "resize", this._onResize, this), Bt && this.options
+                            "resize", this._onResize, this), $t && this.options
                         .transform3DLimit && (e ? this.off : this.on)
                         .call(this, "moveend", this._onMoveEnd)
                 },
@@ -34284,7 +34835,7 @@ Object.values || (Object.values = function (e) {
                 _limitZoom: function (e) {
                     var t = this.getMinZoom(),
                         i = this.getMaxZoom(),
-                        n = Bt ? this.options.zoomSnap : 1;
+                        n = $t ? this.options.zoomSnap : 1;
                     return n && (e = Math.round(e / n) * n), Math.max(t, Math.min(i, e))
                 },
                 _onPanTransitionStep: function () {
@@ -34700,7 +35251,7 @@ Object.values || (Object.values = function (e) {
                     return t * (i = i >= 10 ? 10 : i >= 5 ? 5 : i >= 3 ? 3 : i >= 2 ? 2 : 1)
                 }
             }),
-            Pi = Ci.extend({
+            Mi = Ci.extend({
                 options: {
                     position: "bottomright",
                     prefix: '<a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>'
@@ -34739,9 +35290,9 @@ Object.values || (Object.values = function (e) {
         zi.mergeOptions({
                 attributionControl: !0
             }), zi.addInitHook((function () {
-                this.options.attributionControl && (new Pi)
+                this.options.attributionControl && (new Mi)
                     .addTo(this)
-            })), Ci.Layers = Ti, Ci.Zoom = Ai, Ci.Scale = Ei, Ci.Attribution = Pi, Si.layers =
+            })), Ci.Layers = Ti, Ci.Zoom = Ai, Ci.Scale = Ei, Ci.Attribution = Mi, Si.layers =
             function (e, t, i) {
                 return new Ti(e, t, i)
             }, Si.zoom = function (e) {
@@ -34749,9 +35300,9 @@ Object.values || (Object.values = function (e) {
             }, Si.scale = function (e) {
                 return new Ei(e)
             }, Si.attribution = function (e) {
-                return new Pi(e)
+                return new Mi(e)
             };
-        var Mi = v.extend({
+        var Pi = v.extend({
             initialize: function (e) {
                 this._map = e
             },
@@ -34766,10 +35317,10 @@ Object.values || (Object.values = function (e) {
                 return !!this._enabled
             }
         });
-        Mi.addTo = function (e, t) {
+        Pi.addTo = function (e, t) {
             return e.addHandler(t, this), this
         };
-        var ji, Ii = {
+        var Ii, ji = {
                 Events: ut
             },
             Di = Ut ? "touchstart mousedown" : "mousedown",
@@ -34862,22 +35413,22 @@ Object.values || (Object.values = function (e) {
                 }
             }),
             Ri = (Object.freeze || Object)({
-                simplify: Pe,
-                pointToSegmentDistance: Me,
+                simplify: Me,
+                pointToSegmentDistance: Pe,
                 closestPointOnSegment: function (e, t, i) {
-                    return $e(e, t, i)
+                    return Be(e, t, i)
                 },
                 clipSegment: Ne,
                 _getEdgeIntersection: Le,
                 _getBitCode: Oe,
-                _sqClosestPointOnSegment: $e,
-                isFlat: Be,
+                _sqClosestPointOnSegment: Be,
+                isFlat: $e,
                 _flat: Fe
             }),
-            $i = (Object.freeze || Object)({
+            Bi = (Object.freeze || Object)({
                 clipPolygon: He
             }),
-            Bi = {
+            $i = {
                 project: function (e) {
                     return new y(e.lng, e.lat)
                 },
@@ -34910,7 +35461,7 @@ Object.values || (Object.values = function (e) {
                 }
             },
             Hi = (Object.freeze || Object)({
-                LonLat: Bi,
+                LonLat: $i,
                 Mercator: Fi,
                 SphericalMercator: _t
             }),
@@ -34924,11 +35475,11 @@ Object.values || (Object.values = function (e) {
             }),
             Vi = t({}, mt, {
                 code: "EPSG:4326",
-                projection: Bi,
+                projection: $i,
                 transformation: E(1 / 180, 1, -1 / 180, .5)
             }),
             qi = t({}, pt, {
-                projection: Bi,
+                projection: $i,
                 transformation: E(1, 0, -1, 0),
                 scale: function (e) {
                     return Math.pow(2, e)
@@ -35195,7 +35746,7 @@ Object.values || (Object.values = function (e) {
                         .replace(/marker-icon\.png["']?\)$/, "")
                 }
             }),
-            Ji = Mi.extend({
+            Ji = Pi.extend({
                 initialize: function (e) {
                     this._marker = e
                 },
@@ -35578,7 +36129,7 @@ Object.values || (Object.values = function (e) {
                     return !this._latlngs.length
                 },
                 closestLayerPoint: function (e) {
-                    for (var t, i, n = 1 / 0, s = null, o = $e, a = 0, r = this._parts
+                    for (var t, i, n = 1 / 0, s = null, o = Be, a = 0, r = this._parts
                         .length; a < r; a++)
                         for (var l = this._parts[a], c = 1, u = l.length; c < u; c++) {
                             var d = o(e, t = l[c - 1], i = l[c], !0);
@@ -35610,10 +36161,10 @@ Object.values || (Object.values = function (e) {
                     this._bounds = new z, this._latlngs = this._convertLatLngs(e)
                 },
                 _defaultShape: function () {
-                    return Be(this._latlngs) ? this._latlngs : this._latlngs[0]
+                    return $e(this._latlngs) ? this._latlngs : this._latlngs[0]
                 },
                 _convertLatLngs: function (e) {
-                    for (var t = [], i = Be(e), n = 0, s = e.length; n < s; n++) i ? (t[n] =
+                    for (var t = [], i = $e(e), n = 0, s = e.length; n < s; n++) i ? (t[n] =
                         T(e[n]), this._bounds.extend(t[n])) : t[n] = this._convertLatLngs(
                         e[n]);
                     return t
@@ -35651,7 +36202,7 @@ Object.values || (Object.values = function (e) {
                 },
                 _simplifyPoints: function () {
                     for (var e = this._parts, t = this.options.smoothFactor, i = 0, n = e
-                            .length; i < n; i++) e[i] = Pe(e[i], t)
+                            .length; i < n; i++) e[i] = Me(e[i], t)
                 },
                 _update: function () {
                     this._map && (this._clipPoints(), this._simplifyPoints(), this
@@ -35666,7 +36217,7 @@ Object.values || (Object.values = function (e) {
                     for (i = 0, o = this._parts.length; i < o; i++)
                         for (n = 0, s = (a = (r = this._parts[i])
                                 .length) - 1; n < a; s = n++)
-                            if ((t || 0 !== n) && Me(e, r[s], r[n]) <= l) return !0;
+                            if ((t || 0 !== n) && Pe(e, r[s], r[n]) <= l) return !0;
                     return !1
                 }
             });
@@ -35696,11 +36247,11 @@ Object.values || (Object.values = function (e) {
                     return i >= 2 && t[0] instanceof S && t[0].equals(t[i - 1]) && t.pop(), t
                 },
                 _setLatLngs: function (e) {
-                    nn.prototype._setLatLngs.call(this, e), Be(this._latlngs) && (this
+                    nn.prototype._setLatLngs.call(this, e), $e(this._latlngs) && (this
                         ._latlngs = [this._latlngs])
                 },
                 _defaultShape: function () {
-                    return Be(this._latlngs[0]) ? this._latlngs[0] : this._latlngs[0][0]
+                    return $e(this._latlngs[0]) ? this._latlngs[0] : this._latlngs[0][0]
                 },
                 _clipPoints: function () {
                     var e = this._renderer._bounds,
@@ -35770,7 +36321,7 @@ Object.values || (Object.values = function (e) {
             };
         Qi.include(an), tn.include(an), en.include(an), nn.include({
             toGeoJSON: function (e) {
-                var t = !Be(this._latlngs);
+                var t = !$e(this._latlngs);
                 return Ke(this, {
                     type: (t ? "Multi" : "") + "LineString",
                     coordinates: Ze(this._latlngs, t ? 1 : 0, !1, e)
@@ -35778,8 +36329,8 @@ Object.values || (Object.values = function (e) {
             }
         }), sn.include({
             toGeoJSON: function (e) {
-                var t = !Be(this._latlngs),
-                    i = t && !Be(this._latlngs[0]),
+                var t = !$e(this._latlngs),
+                    i = t && !$e(this._latlngs[0]),
                     n = Ze(this._latlngs, i ? 2 : t ? 1 : 0, !0, e);
                 return t || (n = [n]), Ke(this, {
                     type: (i ? "Multi" : "") + "Polygon",
@@ -36607,7 +37158,7 @@ Object.values || (Object.values = function (e) {
                         s = e.origin.multiplyBy(n)
                         .subtract(this._map._getNewPixelOrigin(t, i))
                         .round();
-                    Bt ? ae(e.el, s, n) : re(e.el, s)
+                    $t ? ae(e.el, s, n) : re(e.el, s)
                 },
                 _resetGrid: function () {
                     var e = this._map,
@@ -36962,7 +37513,7 @@ Object.values || (Object.values = function (e) {
                         .add(n)
                         .add(s)
                         .subtract(a);
-                    Bt ? ae(this._container, r, i) : re(this._container, r)
+                    $t ? ae(this._container, r, i) : re(this._container, r)
                 },
                 _reset: function () {
                     for (var e in this._update(), this._updateTransform(this._center, this
@@ -37259,7 +37810,7 @@ Object.values || (Object.values = function (e) {
                     J(e._container)
                 }
             },
-            wn = Qt ? bn : P,
+            wn = Qt ? bn : M,
             kn = gn.extend({
                 getEvents: function () {
                     var e = gn.prototype.getEvents.call(this);
@@ -37323,7 +37874,7 @@ Object.values || (Object.values = function (e) {
                         "evenodd")) : t.setAttribute("fill", "none"))
                 },
                 _updatePoly: function (e, t) {
-                    this._setPath(e, M(e._parts, t))
+                    this._setPath(e, P(e._parts, t))
                 },
                 _updateCircle: function (e) {
                     var t = e._point,
@@ -37375,12 +37926,12 @@ Object.values || (Object.values = function (e) {
                     .getSouthEast()]
             }
         });
-        kn.create = wn, kn.pointsToPath = M, on.geometryToLayer = We, on.coordsToLatLng = Ve, on
+        kn.create = wn, kn.pointsToPath = P, on.geometryToLayer = We, on.coordsToLatLng = Ve, on
             .coordsToLatLngs = qe, on.latLngToCoords = Ue, on.latLngsToCoords = Ze, on.getFeature =
             Ke, on.asFeature = Ge, zi.mergeOptions({
                 boxZoom: !0
             });
-        var zn = Mi.extend({
+        var zn = Pi.extend({
             initialize: function (e) {
                 this._map = e, this._container = e._container, this._pane = e._panes
                     .overlayPane, this._resetStateTimeout = 0, e.on("unload", this
@@ -37453,7 +38004,7 @@ Object.values || (Object.values = function (e) {
         zi.addInitHook("addHandler", "boxZoom", zn), zi.mergeOptions({
             doubleClickZoom: !0
         });
-        var Cn = Mi.extend({
+        var Cn = Pi.extend({
             addHooks: function () {
                 this._map.on("dblclick", this._onDoubleClick, this)
             },
@@ -37478,7 +38029,7 @@ Object.values || (Object.values = function (e) {
             worldCopyJump: !1,
             maxBoundsViscosity: 0
         });
-        var Sn = Mi.extend({
+        var Sn = Pi.extend({
             addHooks: function () {
                 if (!this._draggable) {
                     var e = this._map;
@@ -37604,7 +38155,7 @@ Object.values || (Object.values = function (e) {
             keyboard: !0,
             keyboardPanDelta: 80
         });
-        var Tn = Mi.extend({
+        var Tn = Pi.extend({
             keyCodes: {
                 left: [37],
                 right: [39],
@@ -37697,7 +38248,7 @@ Object.values || (Object.values = function (e) {
             wheelDebounceTime: 40,
             wheelPxPerZoomLevel: 60
         });
-        var An = Mi.extend({
+        var An = Pi.extend({
             addHooks: function () {
                 _e(this._map._container, "mousewheel", this._onWheelScroll, this), this
                     ._delta = 0
@@ -37733,7 +38284,7 @@ Object.values || (Object.values = function (e) {
             tap: !0,
             tapTolerance: 15
         });
-        var En = Mi.extend({
+        var En = Pi.extend({
             addHooks: function () {
                 _e(this._map._container, "touchstart", this._onDown, this)
             },
@@ -37792,7 +38343,7 @@ Object.values || (Object.values = function (e) {
             touchZoom: Ut && !Tt,
             bounceAtZoomLimits: !0
         });
-        var Pn = Mi.extend({
+        var Mn = Pi.extend({
             addHooks: function () {
                 X(this._map._container, "leaflet-touch-zoom"), _e(this._map._container,
                     "touchstart", this._onTouchStart, this)
@@ -37856,12 +38407,12 @@ Object.values || (Object.values = function (e) {
                         ._zoom))) : this._zooming = !1
             }
         });
-        zi.addInitHook("addHandler", "touchZoom", Pn), zi.BoxZoom = zn, zi.DoubleClickZoom = Cn, zi
-            .Drag = Sn, zi.Keyboard = Tn, zi.ScrollWheelZoom = An, zi.Tap = En, zi.TouchZoom = Pn,
+        zi.addInitHook("addHandler", "touchZoom", Mn), zi.BoxZoom = zn, zi.DoubleClickZoom = Cn, zi
+            .Drag = Sn, zi.Keyboard = Tn, zi.ScrollWheelZoom = An, zi.Tap = En, zi.TouchZoom = Mn,
             Object.freeze = et, e.version = "1.4.0+HEAD.3337f36", e.Control = Ci, e.control = Si, e
-            .Browser = Xt, e.Evented = dt, e.Mixin = Ii, e.Util = ct, e.Class = v, e.Handler = Mi, e
+            .Browser = Xt, e.Evented = dt, e.Mixin = ji, e.Util = ct, e.Class = v, e.Handler = Pi, e
             .extend = t, e.bind = i, e.stamp = n, e.setOptions = u, e.DomEvent = ki, e.DomUtil = vi, e
-            .PosAnimation = xi, e.Draggable = Oi, e.LineUtil = Ri, e.PolyUtil = $i, e.Point = y, e
+            .PosAnimation = xi, e.Draggable = Oi, e.LineUtil = Ri, e.PolyUtil = Bi, e.Point = y, e
             .point = w, e.Bounds = k, e.bounds = x, e.Transformation = A, e.transformation = E, e
             .Projection = Hi, e.LatLng = S, e.latLng = T, e.LatLngBounds = z, e.latLngBounds = C, e
             .CRS = pt, e.GeoJSON = on, e.geoJSON = Ye, e.geoJson = rn, e.Layer = Ui, e.LayerGroup =
@@ -37899,9 +38450,9 @@ Object.values || (Object.values = function (e) {
             }, e.Map = zi, e.map = function (e, t) {
                 return new zi(e, t)
             };
-        var Mn = window.L;
+        var Pn = window.L;
         e.noConflict = function () {
-            return window.L = Mn, this
+            return window.L = Pn, this
         }, window.L = e
     })),
     function (e) {
@@ -38070,12 +38621,15 @@ Object.values || (Object.values = function (e) {
     }(this);
 var building_markers = Array(),
     building_markers_cache = Array(),
-    building_timers = Array(),
+    building_markers_cache_per_id = new Map,
+    building_draw_timeOut, building_timers = Array(),
     building_marker_image = "/images/building_fire.png",
     mission_markers = Array(),
+    mission_markers_per_id = new Map,
     mission_position_new_marker, mission_timers = Array(),
     patient_timers = Array(),
     mission_vehicles = Array(),
+    mission_vehicles_per_vid = new Map,
     vehicle_delay_timers = Array(),
     window_focus = !0,
     title_default = "",
@@ -38113,13 +38667,19 @@ var building_markers = Array(),
     show_vehicle = !1,
     alliance_ignore_fms = !1,
     buildingResetContentPossible = !0,
-    buildingVehicleCache = {},
+    buildingVehicleCache = new Map,
     aao_types = [],
     alliance_coadmin = !1,
     alliance_admin = !1,
     alliance_owner = !1,
     routes = {},
     missionMarkerBulkAdd = !1,
+    massMissionAdd = !1,
+    massMissionAddCompleted = !1,
+    massBuildingAdd = !1,
+    massBuildingAddCompleted = !1,
+    massAllianceMissionAdd = !1,
+    massAllianceMissionAddCompleted = !1,
     patientBulkCache = {},
     prisonerBulkCache = {},
     buildingMarkerBulkContentCache = [],
@@ -38127,6 +38687,7 @@ var building_markers = Array(),
     mapViewExpandedWindow = !1,
     alliance_chat_ban_countdown_timer, mission_overview_timer, mission_overview_last_count,
     buildingVehicleGraphicCache = {},
+    buildingVehicleGraphicCachePerId = new Map,
     TIME_MODIFIER_SONDERRECHTE = .8,
     TIME_MODIFIER_NORMAL = 1.1,
     sale_count_down = new Date(0),
@@ -38192,7 +38753,8 @@ var building_markers = Array(),
 const AAO_MULTIPLE_KEYS = ["wasser_amount", "wasser_amount_tlf", "water_damage_pump_value",
     "water_damage_pump_value_only_pumps", "foam_amount", "water_amount_water_carrier",
     "water_amount_tlf_water_carrier", "police_horse_count", "car_carrier"];
-var lastMissionTimeoutID = null;
+var lastMissionTimeoutID = null,
+    hideTimeOut, showTimeOut, mission_speed;
 $((function () {
     function onCoinsTop() {
         return !mobile_bridge_use || (mobileBridgeAdd("coins_window", {}), !1)
@@ -38392,7 +38954,8 @@ $((function () {
             "intervention_order.vehicles.car_carrier")], ["technical_aid", I18n.t(
             "intervention_order.vehicles.technical_aid")], ["lift", I18n.t(
             "intervention_order.vehicles.lift")], ["mountain_height_rescue", I18n.t(
-            "intervention_order.vehicles.mountain_height_rescue")]], $("#restore_map")
+            "intervention_order.vehicles.mountain_height_rescue")], ["any_rtw", I18n.t(
+            "intervention_order.vehicles.any_rtw")]], $("#restore_map")
         .click((function () {
             mapViewRestore()
         })), $("#coins_top")
@@ -38525,126 +39088,20 @@ $((function () {
                 .attr("building_id"))
         })), $("body")
         .on("mouseenter", ".building_list_vehicle_element", (function () {
-            if (1 == mobile_bridge_use || 0 == mouse_over_disable_inactive_elements)
-                return !0;
-            var e = $(this)
-                .attr("vehicle_id");
-            $.each(mission_markers, (function (e, t) {
-                "undefined" != typeof mapkit ? (t.opacity = .2, t.visible = !
-                    1, t.selected = !1) : (t.setOpacity(.2), t
-                    .closeTooltip())
-            })), $.each(vehicle_markers, (function (t, i) {
-                if (i.visible && i.vehicle_id != e) "undefined" !=
-                    typeof mapkit ? (i.opacity = .2, i.selected = !1) : (i
-                        .setOpacity(.2), i.closeTooltip());
-                else if (i.vehicle_id == e && !i.vehicle_marker_deleted) {
-                    target_marker && ("undefined" != typeof mapkit ? map
-                        .removeAnnotation(target_marker) : map
-                        .removeLayer(target_marker), target_marker = !1);
-                    var n = routes[i.rh][routes[i.rh].length - 1];
-                    "undefined" != typeof mapkit ? ((target_marker =
-                                new mapkit.ImageAnnotation(new mapkit
-                                    .Coordinate(n[0], n[1]), {
-                                        url: {
-                                            1: "/images/direction_down.png"
-                                        }
-                                    }))
-                            .title = "Ziel", map.addAnnotation(target_marker)
-                            ) : iconMapGenerate("/images/direction_down.png",
-                            target_marker = L.marker([n[0], n[1]], {
-                                title: "Ziel",
-                                icon: icon_empty
-                            })
-                            .addTo(map))
-                }
-            })), $.each(building_markers_cache, (function (e, t) {
-                t.opacity = .2
-            })), $.each(building_markers, (function (e, t) {
-                "undefined" != typeof mapkit ? (t.opacity = .2, t.visible = !
-                    1) : t.setOpacity(.2)
-            }))
+            hide_all_except_vehicle($(this)
+                .attr("vehicle_id"))
         })), $("body")
         .on("mouseleave", ".building_list_vehicle_element", (function () {
-            if (1 == mobile_bridge_use || 0 == mouse_over_disable_inactive_elements)
-                return !0;
-            target_marker && ("undefined" != typeof mapkit ? map.removeAnnotation(
-                    target_marker) : map.removeLayer(target_marker), target_marker = !
-                1), $.each(vehicle_markers, (function (e, t) {
-                t.visible && ("undefined" != typeof mapkit ? t.opacity = 1 : t
-                    .setOpacity(1))
-            })), $.each(mission_markers, (function (e, t) {
-                "undefined" != typeof mapkit ? (t.opacity = 1, t.visible = !
-                    0) : (t.setOpacity(1), mission_label ? t.openTooltip() : t
-                        .closeTooltip())
-            })), $.each(building_markers_cache, (function (e, t) {
-                t.opacity = 1
-            })), $.each(building_markers, (function (e, t) {
-                "undefined" != typeof mapkit ? (t.opacity = 1, t.visible = !
-                    0) : t.setOpacity(1)
-            }))
+            show_hidden_markers()
         })), $("body")
         .on("mouseenter", ".missionSideBarEntry", (function () {
-            if (1 == mobile_bridge_use || 0 == mouse_over_disable_inactive_elements)
-                return !0;
-            var e = $(this)
-                .attr("mission_id");
-            $.each(mission_markers, (function (t, i) {
-                    i.mission_id != e ? "undefined" != typeof mapkit ? (i
-                            .opacity = .2, i.visible = !1) : (i.setOpacity(.2), i
-                            .closeTooltip()) : "undefined" == typeof mapkit && i
-                        .openTooltip()
-                })), vehicle_label_backup = vehicle_label, vehicle_label = !1, $.each(
-                    vehicle_markers, (function (e, t) {
-                        t.visible && ("undefined" != typeof mapkit ? (t.opacity = .2,
-                            t.selected = !1) : (t.setOpacity(.2), t
-                            .closeTooltip()))
-                    })), $.each(building_markers_cache, (function (e, t) {
-                    t.opacity = .2
-                })), $.each(building_markers, (function (e, t) {
-                    "undefined" != typeof mapkit ? (t.opacity = .2, t.visible = !
-                        1) : t.setOpacity(.2)
-                })), "null" != $(this)
-                .attr("target_latitude") && (target_marker && ("undefined" !=
-                        typeof mapkit ? map.removeAnnotation(target_marker) : map
-                        .removeLayer(target_marker), target_marker = !1), "undefined" !=
-                    typeof mapkit ? ((target_marker = new mapkit.ImageAnnotation(
-                            new mapkit.Coordinate(parseFloat($(this)
-                                .attr("target_latitude")), parseFloat($(this)
-                                .attr("target_longitude"))), {
-                                url: {
-                                    1: "/images/direction_down.png"
-                                }
-                            }))
-                        .title = "Ziel", map.addAnnotation(target_marker)) :
-                    iconMapGenerate("/images/direction_down.png", target_marker = L
-                        .marker([$(this)
-                            .attr("target_latitude"), $(this)
-                            .attr("target_longitude")], {
-                            title: "Ziel",
-                            icon: icon_empty
-                        })
-                        .addTo(map)))
+            hide_all_except_mission($(this)
+                .attr("mission_id"), $(this)
+                .attr("target_latitude"), $(this)
+                .attr("target_longitude"))
         })), $("body")
         .on("mouseleave", ".missionSideBarEntry", (function () {
-            if (1 == mobile_bridge_use || 0 == mouse_over_disable_inactive_elements)
-                return !0;
-            target_marker && ("undefined" != typeof mapkit ? map.removeAnnotation(
-                    target_marker) : map.removeLayer(target_marker), target_marker = !
-                1), vehicle_label = vehicle_label_backup, $.each(vehicle_markers, (
-                function (e, t) {
-                    t.visible && ("undefined" != typeof mapkit ? t.opacity = 1 : (
-                        t.setOpacity(1), vehicle_label ? t.openTooltip() :
-                        t.closeTooltip()))
-                })), $.each(mission_markers, (function (e, t) {
-                "undefined" != typeof mapkit ? (t.opacity = 1, t.visible = !
-                    0) : (t.setOpacity(1), mission_label ? t.openTooltip() : t
-                        .closeTooltip())
-            })), $.each(building_markers_cache, (function (e, t) {
-                t.opacity = 1
-            })), $.each(building_markers, (function (e, t) {
-                "undefined" != typeof mapkit ? (t.opacity = 1, t.visible = !
-                    0) : t.setOpacity(1)
-            }))
+            show_hidden_markers()
         })), $("#buildings")
         .on("submit", "form.ajax", (function (event) {
             return buildingResetContentPossible = !1, building_eval_unload && (eval(
@@ -38939,6 +39396,7 @@ if ($(document)
         average_credits: "ac",
         prisoners_count: "pr",
         patients_count: "pa",
+        created_at: "cr",
         asc: "a",
         desc: "d"
     }, MISSION_FILTER_QUERY_PARAMETER_MAP = {
@@ -41888,11 +42346,11 @@ function (e) {
         s(i, t), e.className = i.join(" ")
     }
 
-    function P(e, t, i) {
+    function M(e, t, i) {
         (i = pe(i) ? !T(e, t) : i) ? A(e, t): E(e, t)
     }
 
-    function M(e, t) {
+    function P(e, t) {
         if (pe(t)) {
             var i = getComputedStyle(e),
                 n = a(i.paddingLeft) + a(i.paddingRight),
@@ -41902,7 +42360,7 @@ function (e) {
         y(e, "width", t)
     }
 
-    function j(e, t) {
+    function I(e, t) {
         if (pe(t)) {
             var i = getComputedStyle(e),
                 n = a(i.paddingTop) + a(i.paddingBottom),
@@ -41912,7 +42370,7 @@ function (e) {
         y(e, "height", t)
     }
 
-    function I(e, t, i) {
+    function j(e, t, i) {
         var n;
         me(window.CustomEvent) ? n = new CustomEvent(t, {
                 bubbles: !0,
@@ -41954,11 +42412,11 @@ function (e) {
         return i
     }
 
-    function $(e) {
+    function B(e) {
         return e && (!k(e, "p,div") || e.className || _(e, "style") || !i(w(e)))
     }
 
-    function B(e, t) {
+    function $(e, t) {
         var i = r(t, {}, e.ownerDocument);
         for (o(e.attributes, (function (e, t) {
                 try {
@@ -42139,20 +42597,20 @@ function (e) {
                 if (e in i[t]) return !0;
             return !1
         }, t.exists = function (e) {
-            return e in Me && ("function" == typeof (e = Me[e]) && "object" == typeof e.prototype)
+            return e in Pe && ("function" == typeof (e = Pe[e]) && "object" == typeof e.prototype)
         }, t.isRegistered = function (e) {
             if (t.exists(e))
                 for (var n = i.length; n--;)
-                    if (i[n] instanceof Me[e]) return !0;
+                    if (i[n] instanceof Pe[e]) return !0;
             return !1
         }, t.register = function (n) {
-            return !(!t.exists(n) || t.isRegistered(n)) && (n = new Me[n], i.push(n), "init" in n && n
+            return !(!t.exists(n) || t.isRegistered(n)) && (n = new Pe[n], i.push(n), "init" in n && n
                 .init.call(e), !0)
         }, t.deregister = function (n) {
             var s, o = i.length,
                 a = !1;
             if (!t.isRegistered(n)) return a;
-            for (; o--;) i[o] instanceof Me[n] && (a = !0, "destroy" in (s = i.splice(o, 1)[0]) && s
+            for (; o--;) i[o] instanceof Pe[n] && (a = !0, "destroy" in (s = i.splice(o, 1)[0]) && s
                 .destroy.call(e));
             return a
         }, t.destroy = function () {
@@ -42249,7 +42707,7 @@ function (e) {
         }, l.selectRange = function (t) {
             var i, n = e.getSelection(),
                 o = t.endContainer;
-            if (!je && t.collapsed && o && !H(o, !0)) {
+            if (!Ie && t.collapsed && o && !H(o, !0)) {
                 for (i = o.lastChild; i && k(i, ".sceditor-ignore");) i = i.previousSibling;
                 if (k(i, "br")) {
                     var a = s.createRange();
@@ -42269,11 +42727,11 @@ function (e) {
         }, l.selectOuterText = function (e, t) {
             var i, n, s = l.cloneSelected();
             if (!s) return !1;
-            s.collapse(!1), i = Ie(s, !0, e), n = Ie(s, !1, t), s.setStart(i.node, i.offset), s.setEnd(n
+            s.collapse(!1), i = je(s, !0, e), n = je(s, !1, t), s.setStart(i.node, i.offset), s.setEnd(n
                 .node, n.offset), l.selectRange(s)
         }, l.getOuterText = function (e, t) {
             var i = l.cloneSelected();
-            return i ? (i.collapse(!e), Ie(i, e, t)
+            return i ? (i.collapse(!e), je(i, e, t)
                 .text) : ""
         }, l.replaceKeyword = function (e, t, i, n, s, o) {
             i || e.sort((function (e, t) {
@@ -42362,7 +42820,7 @@ function (e) {
 
     function le(e, t) {
         var i, a, l, f, x, z, S, N, L, R, W, q, U, K, Y, J, Q, ee, ie, ce, ue, de, _e, fe, ye, ke, xe, Te, Ae,
-            Ee, Me, je, Ie, $e, Be, Fe, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, st,
+            Ee, Pe, Ie, je, Be, $e, Fe, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, st,
             ot, at, rt, lt, ct, ut, dt, ht, pt, mt, _t = this,
             ft = {},
             gt = [],
@@ -42370,39 +42828,39 @@ function (e) {
             bt = {},
             yt = {},
             wt = {};
-        _t.commands = n(!0, {}, t.commands || Pe);
+        _t.commands = n(!0, {}, t.commands || Me);
         var kt = _t.opts = n(!0, {}, we, t);
         _t.opts.emoticons = t.emoticons || we.emoticons, xe = function () {
-            e._sceditor = _t, kt.locale && "en" !== kt.locale && Ie(), C(a = r("div", {
+            e._sceditor = _t, kt.locale && "en" !== kt.locale && je(), C(a = r("div", {
                     className: "sceditor-container"
                 }), e), y(a, "z-index", kt.zIndex), Le && A(a, "ie ie" + Le), ce = e.required, e
                 .required = !1;
             var t = le.formats[kt.format];
-            "init" in (i = t ? new t : {}) && i.init.call(_t), je(), We(), $e(), Me(), Be(), Fe(), Se ||
+            "init" in (i = t ? new t : {}) && i.init.call(_t), Ie(), We(), Be(), Pe(), $e(), Fe(), Se ||
                 _t.toggleSourceMode(), tt();
             var n = function () {
                 m(De, "load", n), kt.autofocus && at(), mt(), nt(), Y.call("ready"), "onReady" in i &&
                     i.onReady.call(_t)
             };
             p(De, "load", n), "complete" === Ne.readyState && n()
-        }, je = function () {
+        }, Ie = function () {
             var e = kt.plugins;
             e = e ? e.toString()
                 .split(",") : [], Y = new ne(_t), e.forEach((function (e) {
                     Y.register(e.trim())
                 }))
-        }, Ie = function () {
+        }, je = function () {
             var e;
             (U = le.locale[kt.locale]) || (e = kt.locale.split("-"), U = le.locale[e[0]]), U && U
                 .dateFormat && (kt.dateFormat = U.dateFormat)
-        }, Me = function () {
+        }, Pe = function () {
             N = r("textarea"), f = r("iframe", {
                     frameborder: 0,
                     allowfullscreen: !0
                 }), kt.startInSourceMode ? (A(a, "sourceMode"), g(f)) : (A(a, "wysiwygMode"), g(N)), kt
                 .spellcheck || _(a, "spellcheck", "false"), "https:" === De.location.protocol && _(f,
-                    "src", "javascript:false"), d(a, f), d(a, N), _t.dimensions(kt.width || M(e), kt
-                    .height || j(e));
+                    "src", "javascript:false"), d(a, f), d(a, N), _t.dimensions(kt.width || P(e), kt
+                    .height || I(e));
             var t = Le ? "ie ie" + Le : "";
             t += Ce ? " ios" : "", (S = f.contentDocument)
                 .open(), S.write(te("html", {
@@ -42411,12 +42869,12 @@ function (e) {
                     charset: kt.charset,
                     style: kt.style
                 })), S.close(), z = S.body, x = f.contentWindow, _t.readOnly(!!kt.readOnly), (Ce || ze ||
-                    Le) && (j(z, "100%"), Le || p(z, "touchend", _t.focus));
+                    Le) && (I(z, "100%"), Le || p(z, "touchend", _t.focus));
             var i = _(e, "tabindex");
             _(N, "tabindex", i), _(f, "tabindex", i), K = new se(x), g(e), _t.val(e.value);
             var n = kt.placeholder || _(e, "placeholder");
             n && (N.placeholder = n, _(z, "placeholder", n))
-        }, Be = function () {
+        }, $e = function () {
             kt.autoUpdate && (p(z, "blur", pt), p(N, "blur", pt)), null === kt.rtl && (kt.rtl = "rtl" ===
                 y(N, "direction")), _t.rtl(!!kt.rtl), kt.autoExpand && (p(z, "load", mt, be), p(z,
                 "input keyup", mt)), kt.resizeEnabled && He(), _(a, "id", kt.id), _t.emoticons(kt
@@ -42441,7 +42899,7 @@ function (e) {
                     R = null
                 })), p(a, "selectionchanged", ot), p(a, "selectionchanged", tt), p(a,
                     "selectionchanged valuechanged nodechanged pasteraw paste", Qe)
-        }, $e = function () {
+        }, Be = function () {
             var e, t = _t.commands,
                 i = (kt.toolbarExclude || "")
                 .split(","),
@@ -42462,7 +42920,7 @@ function (e) {
                             .firstChild, ke && ke.create) ke.create(s) && (C(ke
                             .create(s), o.firstChild), A(o, "has-icon"));
                         o._sceTxtMode = !!r.txtExec, o._sceWysiwygMode = !!r.exec,
-                            P(o, "disabled", !r.exec), p(o, "click", (function (
+                            M(o, "disabled", !r.exec), p(o, "click", (function (
                             e) {
                                 T(o, "disabled") || Ae(o, r), tt(), e
                                     .preventDefault()
@@ -42495,8 +42953,8 @@ function (e) {
                 y = 0,
                 w = 0,
                 k = 0,
-                x = M(a),
-                z = j(a),
+                x = P(a),
+                z = I(a),
                 C = !1,
                 S = _t.rtl();
             if (e = kt.resizeMinHeight || z / 1.5, t = kt.resizeMaxHeight || 2.5 * z, i = kt
@@ -42516,7 +42974,7 @@ function (e) {
             }
             d(a, l), d(a, c), g(c), p(l, "touchstart mousedown", (function (e) {
                 "touchstart" === e.type ? (e = De.event, _ = e.touches[0].pageX, f = e
-                        .touches[0].pageY) : (_ = e.pageX, f = e.pageY), w = M(a), k = j(a),
+                        .touches[0].pageY) : (_ = e.pageX, f = e.pageY), w = P(a), k = I(a),
                     C = !0, A(a, "resizing"), v(c), p(Ne, u, s), p(Ne, h, o), e
                     .preventDefault()
             }))
@@ -42554,29 +43012,29 @@ function (e) {
         }, et = function (e) {
             var t = _t.inSourceMode() ? "_sceTxtMode" : "_sceWysiwygMode";
             o(yt, (function (i, n) {
-                P(n, "disabled", e || !n[t])
+                M(n, "disabled", e || !n[t])
             }))
         }, _t.width = function (e, t) {
-            return e || 0 === e ? (_t.dimensions(e, null, t), _t) : M(a)
+            return e || 0 === e ? (_t.dimensions(e, null, t), _t) : P(a)
         }, _t.dimensions = function (e, t, i) {
             return t = !(!t && 0 !== t) && t, !1 === (e = !(!e && 0 !== e) && e) && !1 === t ? {
                 width: _t.width(),
                 height: _t.height()
-            } : (!1 !== e && (!1 !== i && (kt.width = e), M(a, e)), !1 !== t && (!1 !== i && (kt
-                .height = t), j(a, t)), _t)
+            } : (!1 !== e && (!1 !== i && (kt.width = e), P(a, e)), !1 !== t && (!1 !== i && (kt
+                .height = t), I(a, t)), _t)
         }, _t.height = function (e, t) {
-            return e || 0 === e ? (_t.dimensions(null, e, t), _t) : j(a)
+            return e || 0 === e ? (_t.dimensions(null, e, t), _t) : I(a)
         }, _t.maximize = function (e) {
             var t = "sceditor-maximize";
-            return pe(e) ? T(a, t) : ((e = !!e) && (fe = De.pageYOffset), P(Ne.documentElement, t, e), P(
-                Ne.body, t, e), P(a, t, e), _t.width(e ? "100%" : kt.width, !1), _t.height(e ?
+            return pe(e) ? T(a, t) : ((e = !!e) && (fe = De.pageYOffset), M(Ne.documentElement, t, e), M(
+                Ne.body, t, e), M(a, t, e), _t.width(e ? "100%" : kt.width, !1), _t.height(e ?
                 "100%" : kt.height, !1), e || De.scrollTo(0, fe), mt(), _t)
         }, mt = function () {
             kt.autoExpand && !_e && (_e = setTimeout(_t.expandToContent, 200))
         }, _t.expandToContent = function (t) {
             if (!_t.maximize()) {
                 if (clearTimeout(_e), _e = !1, !de) {
-                    var i = kt.resizeMinHeight || kt.height || j(e);
+                    var i = kt.resizeMinHeight || kt.height || I(e);
                     de = {
                         min: i,
                         max: kt.resizeMaxHeight || 2 * i
@@ -42653,18 +43111,18 @@ function (e) {
             }
         }, qe = function (e) {
             var t = r("div", {}, S);
-            Y.call("pasteRaw", e), I(a, "pasteraw", e), e.html ? (t.innerHTML = e.html, V(t)) : t
+            Y.call("pasteRaw", e), j(a, "pasteraw", e), e.html ? (t.innerHTML = e.html, V(t)) : t
                 .innerHTML = X(e.text || "");
             var n = {
                 val: t.innerHTML
             };
-            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, S, J)), Y.call("paste", n), I(a,
+            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, S, J)), Y.call("paste", n), j(a,
                 "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, J)), Y.call(
                 "pasteHtml", n), _t.wysiwygEditorInsertHtml(n.val, null, !0)
         }, _t.closeDropDown = function (e) {
             L && (u(L), L = null), !0 === e && _t.focus()
         }, _t.wysiwygEditorInsertHtml = function (e, t, i) {
-            var n, s, o, a = j(f);
+            var n, s, o, a = I(f);
             _t.focus(), !i && c(Q, "code") || (K.insertHTML(e, t), K.saveRange(), Te(), v(n = h(z,
                     "#sceditor-end-marker")[0]), s = z.scrollTop, o = G(n)
                 .top + 1.5 * n.offsetHeight - a, g(n), (o > s || o + a < s) && (z.scrollTop = o), ut(!
@@ -42730,7 +43188,7 @@ function (e) {
             var e = _t.inSourceMode();
             !Se && e || (e || (K.saveRange(), K.clear()), _t.blur(), e ? _t.setWysiwygEditorValue(_t
                     .getSourceEditorValue()) : _t.setSourceEditorValue(_t.getWysiwygEditorValue()),
-                R = null, b(N), b(f), P(a, "wysiwygMode", e), P(a, "sourceMode", !e), et(), tt())
+                R = null, b(N), b(f), M(a, "wysiwygMode", e), M(a, "sourceMode", !e), et(), tt())
         }, it = function () {
             return N.focus(), N.value.substring(N.selectionStart, N.selectionEnd)
         }, Ae = function (e, t) {
@@ -42760,14 +43218,14 @@ function (e) {
                             e = e.parentNode;
                         e && H(e, !0) && (K.saveRange(), re(z, S), K.restoreRange())
                     }
-                    I(a, "selectionchanged")
+                    j(a, "selectionchanged")
                 }
                 ie = !1
             }
             ie || (ie = !0, "onselectionchange" in S ? e() : setTimeout(e, 100))
         }, ot = function () {
             var e, t = K.parentNode();
-            J !== t && (e = J, J = t, Q = K.getFirstBlockParent(t), I(a, "nodechanged", {
+            J !== t && (e = J, J = t, Q = K.getFirstBlockParent(t), j(a, "nodechanged", {
                 oldNode: e,
                 newNode: J
             }))
@@ -42795,12 +43253,12 @@ function (e) {
                                 u) ? 1 : 0)
                         } catch (e) {}
                     } else d || (r = u.call(_t, t, e));
-                    P(c, "disabled", d || r < 0), P(c, i, r > 0)
+                    M(c, "disabled", d || r < 0), M(c, i, r > 0)
                 }
                 ke && ke.update && ke.update(s, t, e)
             }
         }, Ke = function (e) {
-            if (!e.defaultPrevented && (_t.closeDropDown(), 13 === e.which && !k(Q, "li,ul,ol") && $(
+            if (!e.defaultPrevented && (_t.closeDropDown(), 13 === e.which && !k(Q, "li,ul,ol") && B(
                 Q))) {
                 R = null;
                 var t = r("br", {}, S);
@@ -42815,7 +43273,7 @@ function (e) {
         }, nt = function () {
             O(z, (function (e) {
                 if (e.nodeType === ge && !/inline/.test(y(e, "display")) && !k(e,
-                        ".sceditor-nlf") && $(e)) {
+                        ".sceditor-nlf") && B(e)) {
                     var t = r("p", {}, S);
                     return t.className = "sceditor-nlf", t.innerHTML = Oe ? "" : "<br />", d(
                         z, t), !1
@@ -43033,19 +43491,19 @@ function (e) {
                 _t.clearBlockFormatting(n), e.preventDefault()
             }
         }, ct = function () {
-            for (var e = Q; !$(e) || H(e, !0);)
+            for (var e = Q; !B(e) || H(e, !0);)
                 if (!(e = e.parentNode) || k(e, "body")) return;
             return e
         }, _t.clearBlockFormatting = function (e) {
             return !(e = e || ct()) || k(e, "body") || (K.saveRange(), e.className = "", R = null, _(e,
-                "style", ""), k(e, "p,div,td") || B(e, "p"), K.restoreRange()), _t
+                "style", ""), k(e, "p,div,td") || $(e, "p"), K.restoreRange()), _t
         }, ut = function (e) {
             if (Y && (Y.hasHandler("valuechangedEvent") || ut.hasHandler)) {
                 var t, i = _t.sourceMode(),
                     n = !i && K.hasSelection();
                 W = !1, e = !1 !== e && !S.getElementById("sceditor-start-marker"), q && (clearTimeout(q),
                         q = !1), n && e && K.saveRange(),
-                    (t = i ? N.value : z.innerHTML) !== ut.lastVal && (ut.lastVal = t, I(a,
+                    (t = i ? N.value : z.innerHTML) !== ut.lastVal && (ut.lastVal = t, j(a,
                         "valuechanged", {
                             rawValue: i ? _t.val() : t
                         })), n && e && K.removeMarkers()
@@ -43199,7 +43657,7 @@ function (e) {
             youtube: '<iframe width="560" height="315" frameborder="0" allowfullscreen src="https://www.youtube.com/embed/{id}?wmode=opaque&start={time}" data-youtube-id="{id}"></iframe>'
         },
         Ee = xe && xe < 11,
-        Pe = {
+        Me = {
             bold: {
                 exec: "bold",
                 tooltip: "Bold",
@@ -43271,7 +43729,7 @@ function (e) {
                 },
                 exec: function (e) {
                     var t = this;
-                    Pe.font._dropDown(t, e, (function (e) {
+                    Me.font._dropDown(t, e, (function (e) {
                         t.execCommand("fontname", e)
                     }))
                 },
@@ -43290,7 +43748,7 @@ function (e) {
                 },
                 exec: function (e) {
                     var t = this;
-                    Pe.size._dropDown(t, e, (function (e) {
+                    Me.size._dropDown(t, e, (function (e) {
                         t.execCommand("fontsize", e)
                     }))
                 },
@@ -43300,7 +43758,7 @@ function (e) {
                 _dropDown: function (e, t, i) {
                     var n = r("div"),
                         s = "",
-                        o = Pe.color;
+                        o = Me.color;
                     o._htmlCache || (e.opts.colors.split("|")
                         .forEach((function (e) {
                             s += '<div class="sceditor-color-column">', e.split(",")
@@ -43315,7 +43773,7 @@ function (e) {
                 },
                 exec: function (e) {
                     var t = this;
-                    Pe.color._dropDown(t, e, (function (e) {
+                    Me.color._dropDown(t, e, (function (e) {
                         t.execCommand("forecolor", e)
                     }))
                 },
@@ -43441,7 +43899,7 @@ function (e) {
                 },
                 exec: function (e) {
                     var t = this;
-                    Pe.image._dropDown(t, e, "", (function (e, i, n) {
+                    Me.image._dropDown(t, e, "", (function (e, i, n) {
                         var s = "";
                         i && (s += ' width="' + i + '"'), n && (s += ' height="' + n + '"'), t
                             .wysiwygEditorInsertHtml("<img" + s + ' src="' + e + '" />')
@@ -43464,7 +43922,7 @@ function (e) {
                 },
                 exec: function (e) {
                     var t = this;
-                    Pe.email._dropDown(t, e, (function (e, i) {
+                    Me.email._dropDown(t, e, (function (e, i) {
                         t.focus(), !t.getRangeHelper()
                             .selectedHtml() || i ? t.wysiwygEditorInsertHtml(
                                 '<a href="mailto:' + e + '">' + (i || e) + "</a>") : t
@@ -43492,7 +43950,7 @@ function (e) {
                 },
                 exec: function (e) {
                     var t = this;
-                    Pe.link._dropDown(t, e, (function (e, i) {
+                    Me.link._dropDown(t, e, (function (e, i) {
                         t.focus(), i || !t.getRangeHelper()
                             .selectedHtml() ? (i = i || e, t.wysiwygEditorInsertHtml(
                                 '<a href="' + e + '">' + i + "</a>")) : t.execCommand(
@@ -43560,7 +44018,7 @@ function (e) {
                     t.createDropDown(e, "emoticons", i(!1))
                 },
                 txtExec: function (e) {
-                    Pe.emoticon.exec.call(this, e)
+                    Me.emoticon.exec.call(this, e)
                 },
                 tooltip: "Insert an emoticon"
             },
@@ -43583,7 +44041,7 @@ function (e) {
                 },
                 exec: function (e) {
                     var t = this;
-                    Pe.youtube._dropDown(t, e, (function (e, i) {
+                    Me.youtube._dropDown(t, e, (function (e, i) {
                         t.wysiwygEditorInsertHtml(te("youtube", {
                             id: e,
                             time: i
@@ -43604,10 +44062,10 @@ function (e) {
                         .replace(/day/i, s)
                 },
                 exec: function () {
-                    this.insertText(Pe.date._date(this))
+                    this.insertText(Me.date._date(this))
                 },
                 txtExec: function () {
-                    this.insertText(Pe.date._date(this))
+                    this.insertText(Me.date._date(this))
                 },
                 tooltip: "Insert current date"
             },
@@ -43621,10 +44079,10 @@ function (e) {
                         ":" + i + ":" + n
                 },
                 exec: function () {
-                    this.insertText(Pe.time._time())
+                    this.insertText(Me.time._time())
                 },
                 txtExec: function () {
-                    this.insertText(Pe.time._time())
+                    this.insertText(Me.time._time())
                 },
                 tooltip: "Insert current time"
             },
@@ -43692,10 +44150,10 @@ function (e) {
             },
             ignore: {}
         },
-        Me = {};
-    ne.plugins = Me;
-    var je = xe && xe < 11,
-        Ie = function (e, t, i) {
+        Pe = {};
+    ne.plugins = Pe;
+    var Ie = xe && xe < 11,
+        je = function (e, t, i) {
             var n, s, o, a, r, l = "",
                 c = e.startContainer,
                 u = e.startOffset;
@@ -43716,16 +44174,16 @@ function (e) {
         Re = /^image\/(p?jpe?g|gif|png|bmp)$/i;
     le.locale = {}, le.formats = {}, le.icons = {}, le.command = {
             get: function (e) {
-                return Pe[e] || null
+                return Me[e] || null
             },
             set: function (e, t) {
-                return !(!e || !t) && ((t = n(Pe[e] || {}, t))
+                return !(!e || !t) && ((t = n(Me[e] || {}, t))
                     .remove = function () {
                         le.command.remove(e)
-                    }, Pe[e] = t, this)
+                    }, Me[e] = t, this)
             },
             remove: function (e) {
-                return Pe[e] && delete Pe[e], this
+                return Me[e] && delete Me[e], this
             }
         },
         /**
@@ -43742,7 +44200,7 @@ function (e) {
          */
         window.sceditor = {
             command: le.command,
-            commands: Pe,
+            commands: Me,
             defaultOptions: we,
             ie: xe,
             ios: Ce,
@@ -43756,13 +44214,13 @@ function (e) {
                 removeAttr: f,
                 is: k,
                 closest: c,
-                width: M,
-                height: j,
+                width: P,
+                height: I,
                 traverse: L,
                 rTraverse: O,
                 parseHTML: R,
-                hasStyling: $,
-                convertElement: B,
+                hasStyling: B,
+                convertElement: $,
                 blockLevelList: ye,
                 canHaveChildren: F,
                 isInline: H,
@@ -43996,11 +44454,11 @@ function (e) {
         s(i, t), e.className = i.join(" ")
     }
 
-    function P(e, t, i) {
+    function M(e, t, i) {
         (i = pe(i) ? !T(e, t) : i) ? A(e, t): E(e, t)
     }
 
-    function M(e, t) {
+    function P(e, t) {
         if (pe(t)) {
             var i = getComputedStyle(e),
                 n = a(i.paddingLeft) + a(i.paddingRight),
@@ -44010,7 +44468,7 @@ function (e) {
         y(e, "width", t)
     }
 
-    function j(e, t) {
+    function I(e, t) {
         if (pe(t)) {
             var i = getComputedStyle(e),
                 n = a(i.paddingTop) + a(i.paddingBottom),
@@ -44020,7 +44478,7 @@ function (e) {
         y(e, "height", t)
     }
 
-    function I(e, t, i) {
+    function j(e, t, i) {
         var n;
         me(window.CustomEvent) ? n = new CustomEvent(t, {
                 bubbles: !0,
@@ -44062,11 +44520,11 @@ function (e) {
         return i
     }
 
-    function $(e) {
+    function B(e) {
         return e && (!k(e, "p,div") || e.className || _(e, "style") || !i(w(e)))
     }
 
-    function B(e, t) {
+    function $(e, t) {
         var i = r(t, {}, e.ownerDocument);
         for (o(e.attributes, (function (e, t) {
                 try {
@@ -44247,20 +44705,20 @@ function (e) {
                 if (e in i[t]) return !0;
             return !1
         }, t.exists = function (e) {
-            return e in Me && ("function" == typeof (e = Me[e]) && "object" == typeof e.prototype)
+            return e in Pe && ("function" == typeof (e = Pe[e]) && "object" == typeof e.prototype)
         }, t.isRegistered = function (e) {
             if (t.exists(e))
                 for (var n = i.length; n--;)
-                    if (i[n] instanceof Me[e]) return !0;
+                    if (i[n] instanceof Pe[e]) return !0;
             return !1
         }, t.register = function (n) {
-            return !(!t.exists(n) || t.isRegistered(n)) && (n = new Me[n], i.push(n), "init" in n && n
+            return !(!t.exists(n) || t.isRegistered(n)) && (n = new Pe[n], i.push(n), "init" in n && n
                 .init.call(e), !0)
         }, t.deregister = function (n) {
             var s, o = i.length,
                 a = !1;
             if (!t.isRegistered(n)) return a;
-            for (; o--;) i[o] instanceof Me[n] && (a = !0, "destroy" in (s = i.splice(o, 1)[0]) && s
+            for (; o--;) i[o] instanceof Pe[n] && (a = !0, "destroy" in (s = i.splice(o, 1)[0]) && s
                 .destroy.call(e));
             return a
         }, t.destroy = function () {
@@ -44357,7 +44815,7 @@ function (e) {
         }, l.selectRange = function (t) {
             var i, n = e.getSelection(),
                 o = t.endContainer;
-            if (!je && t.collapsed && o && !H(o, !0)) {
+            if (!Ie && t.collapsed && o && !H(o, !0)) {
                 for (i = o.lastChild; i && k(i, ".sceditor-ignore");) i = i.previousSibling;
                 if (k(i, "br")) {
                     var a = s.createRange();
@@ -44377,11 +44835,11 @@ function (e) {
         }, l.selectOuterText = function (e, t) {
             var i, n, s = l.cloneSelected();
             if (!s) return !1;
-            s.collapse(!1), i = Ie(s, !0, e), n = Ie(s, !1, t), s.setStart(i.node, i.offset), s.setEnd(n
+            s.collapse(!1), i = je(s, !0, e), n = je(s, !1, t), s.setStart(i.node, i.offset), s.setEnd(n
                 .node, n.offset), l.selectRange(s)
         }, l.getOuterText = function (e, t) {
             var i = l.cloneSelected();
-            return i ? (i.collapse(!e), Ie(i, e, t)
+            return i ? (i.collapse(!e), je(i, e, t)
                 .text) : ""
         }, l.replaceKeyword = function (e, t, i, n, s, o) {
             i || e.sort((function (e, t) {
@@ -44470,7 +44928,7 @@ function (e) {
 
     function le(e, t) {
         var i, a, l, f, x, z, S, N, L, R, W, q, U, K, Y, J, Q, ee, ie, ce, ue, de, _e, fe, ye, ke, xe, Te, Ae,
-            Ee, Me, je, Ie, $e, Be, Fe, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, st,
+            Ee, Pe, Ie, je, Be, $e, Fe, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, st,
             ot, at, rt, lt, ct, ut, dt, ht, pt, mt, _t = this,
             ft = {},
             gt = [],
@@ -44478,39 +44936,39 @@ function (e) {
             bt = {},
             yt = {},
             wt = {};
-        _t.commands = n(!0, {}, t.commands || Pe);
+        _t.commands = n(!0, {}, t.commands || Me);
         var kt = _t.opts = n(!0, {}, we, t);
         _t.opts.emoticons = t.emoticons || we.emoticons, xe = function () {
-            e._sceditor = _t, kt.locale && "en" !== kt.locale && Ie(), C(a = r("div", {
+            e._sceditor = _t, kt.locale && "en" !== kt.locale && je(), C(a = r("div", {
                     className: "sceditor-container"
                 }), e), y(a, "z-index", kt.zIndex), Le && A(a, "ie ie" + Le), ce = e.required, e
                 .required = !1;
             var t = le.formats[kt.format];
-            "init" in (i = t ? new t : {}) && i.init.call(_t), je(), We(), $e(), Me(), Be(), Fe(), Se ||
+            "init" in (i = t ? new t : {}) && i.init.call(_t), Ie(), We(), Be(), Pe(), $e(), Fe(), Se ||
                 _t.toggleSourceMode(), tt();
             var n = function () {
                 m(De, "load", n), kt.autofocus && at(), mt(), nt(), Y.call("ready"), "onReady" in i &&
                     i.onReady.call(_t)
             };
             p(De, "load", n), "complete" === Ne.readyState && n()
-        }, je = function () {
+        }, Ie = function () {
             var e = kt.plugins;
             e = e ? e.toString()
                 .split(",") : [], Y = new ne(_t), e.forEach((function (e) {
                     Y.register(e.trim())
                 }))
-        }, Ie = function () {
+        }, je = function () {
             var e;
             (U = le.locale[kt.locale]) || (e = kt.locale.split("-"), U = le.locale[e[0]]), U && U
                 .dateFormat && (kt.dateFormat = U.dateFormat)
-        }, Me = function () {
+        }, Pe = function () {
             N = r("textarea"), f = r("iframe", {
                     frameborder: 0,
                     allowfullscreen: !0
                 }), kt.startInSourceMode ? (A(a, "sourceMode"), g(f)) : (A(a, "wysiwygMode"), g(N)), kt
                 .spellcheck || _(a, "spellcheck", "false"), "https:" === De.location.protocol && _(f,
-                    "src", "javascript:false"), d(a, f), d(a, N), _t.dimensions(kt.width || M(e), kt
-                    .height || j(e));
+                    "src", "javascript:false"), d(a, f), d(a, N), _t.dimensions(kt.width || P(e), kt
+                    .height || I(e));
             var t = Le ? "ie ie" + Le : "";
             t += Ce ? " ios" : "", (S = f.contentDocument)
                 .open(), S.write(te("html", {
@@ -44519,12 +44977,12 @@ function (e) {
                     charset: kt.charset,
                     style: kt.style
                 })), S.close(), z = S.body, x = f.contentWindow, _t.readOnly(!!kt.readOnly), (Ce || ze ||
-                    Le) && (j(z, "100%"), Le || p(z, "touchend", _t.focus));
+                    Le) && (I(z, "100%"), Le || p(z, "touchend", _t.focus));
             var i = _(e, "tabindex");
             _(N, "tabindex", i), _(f, "tabindex", i), K = new se(x), g(e), _t.val(e.value);
             var n = kt.placeholder || _(e, "placeholder");
             n && (N.placeholder = n, _(z, "placeholder", n))
-        }, Be = function () {
+        }, $e = function () {
             kt.autoUpdate && (p(z, "blur", pt), p(N, "blur", pt)), null === kt.rtl && (kt.rtl = "rtl" ===
                 y(N, "direction")), _t.rtl(!!kt.rtl), kt.autoExpand && (p(z, "load", mt, be), p(z,
                 "input keyup", mt)), kt.resizeEnabled && He(), _(a, "id", kt.id), _t.emoticons(kt
@@ -44549,7 +45007,7 @@ function (e) {
                     R = null
                 })), p(a, "selectionchanged", ot), p(a, "selectionchanged", tt), p(a,
                     "selectionchanged valuechanged nodechanged pasteraw paste", Qe)
-        }, $e = function () {
+        }, Be = function () {
             var e, t = _t.commands,
                 i = (kt.toolbarExclude || "")
                 .split(","),
@@ -44570,7 +45028,7 @@ function (e) {
                             .firstChild, ke && ke.create) ke.create(s) && (C(ke
                             .create(s), o.firstChild), A(o, "has-icon"));
                         o._sceTxtMode = !!r.txtExec, o._sceWysiwygMode = !!r.exec,
-                            P(o, "disabled", !r.exec), p(o, "click", (function (
+                            M(o, "disabled", !r.exec), p(o, "click", (function (
                             e) {
                                 T(o, "disabled") || Ae(o, r), tt(), e
                                     .preventDefault()
@@ -44603,8 +45061,8 @@ function (e) {
                 y = 0,
                 w = 0,
                 k = 0,
-                x = M(a),
-                z = j(a),
+                x = P(a),
+                z = I(a),
                 C = !1,
                 S = _t.rtl();
             if (e = kt.resizeMinHeight || z / 1.5, t = kt.resizeMaxHeight || 2.5 * z, i = kt
@@ -44624,7 +45082,7 @@ function (e) {
             }
             d(a, l), d(a, c), g(c), p(l, "touchstart mousedown", (function (e) {
                 "touchstart" === e.type ? (e = De.event, _ = e.touches[0].pageX, f = e
-                        .touches[0].pageY) : (_ = e.pageX, f = e.pageY), w = M(a), k = j(a),
+                        .touches[0].pageY) : (_ = e.pageX, f = e.pageY), w = P(a), k = I(a),
                     C = !0, A(a, "resizing"), v(c), p(Ne, u, s), p(Ne, h, o), e
                     .preventDefault()
             }))
@@ -44662,29 +45120,29 @@ function (e) {
         }, et = function (e) {
             var t = _t.inSourceMode() ? "_sceTxtMode" : "_sceWysiwygMode";
             o(yt, (function (i, n) {
-                P(n, "disabled", e || !n[t])
+                M(n, "disabled", e || !n[t])
             }))
         }, _t.width = function (e, t) {
-            return e || 0 === e ? (_t.dimensions(e, null, t), _t) : M(a)
+            return e || 0 === e ? (_t.dimensions(e, null, t), _t) : P(a)
         }, _t.dimensions = function (e, t, i) {
             return t = !(!t && 0 !== t) && t, !1 === (e = !(!e && 0 !== e) && e) && !1 === t ? {
                 width: _t.width(),
                 height: _t.height()
-            } : (!1 !== e && (!1 !== i && (kt.width = e), M(a, e)), !1 !== t && (!1 !== i && (kt
-                .height = t), j(a, t)), _t)
+            } : (!1 !== e && (!1 !== i && (kt.width = e), P(a, e)), !1 !== t && (!1 !== i && (kt
+                .height = t), I(a, t)), _t)
         }, _t.height = function (e, t) {
-            return e || 0 === e ? (_t.dimensions(null, e, t), _t) : j(a)
+            return e || 0 === e ? (_t.dimensions(null, e, t), _t) : I(a)
         }, _t.maximize = function (e) {
             var t = "sceditor-maximize";
-            return pe(e) ? T(a, t) : ((e = !!e) && (fe = De.pageYOffset), P(Ne.documentElement, t, e), P(
-                Ne.body, t, e), P(a, t, e), _t.width(e ? "100%" : kt.width, !1), _t.height(e ?
+            return pe(e) ? T(a, t) : ((e = !!e) && (fe = De.pageYOffset), M(Ne.documentElement, t, e), M(
+                Ne.body, t, e), M(a, t, e), _t.width(e ? "100%" : kt.width, !1), _t.height(e ?
                 "100%" : kt.height, !1), e || De.scrollTo(0, fe), mt(), _t)
         }, mt = function () {
             kt.autoExpand && !_e && (_e = setTimeout(_t.expandToContent, 200))
         }, _t.expandToContent = function (t) {
             if (!_t.maximize()) {
                 if (clearTimeout(_e), _e = !1, !de) {
-                    var i = kt.resizeMinHeight || kt.height || j(e);
+                    var i = kt.resizeMinHeight || kt.height || I(e);
                     de = {
                         min: i,
                         max: kt.resizeMaxHeight || 2 * i
@@ -44761,18 +45219,18 @@ function (e) {
             }
         }, qe = function (e) {
             var t = r("div", {}, S);
-            Y.call("pasteRaw", e), I(a, "pasteraw", e), e.html ? (t.innerHTML = e.html, V(t)) : t
+            Y.call("pasteRaw", e), j(a, "pasteraw", e), e.html ? (t.innerHTML = e.html, V(t)) : t
                 .innerHTML = X(e.text || "");
             var n = {
                 val: t.innerHTML
             };
-            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, S, J)), Y.call("paste", n), I(a,
+            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, S, J)), Y.call("paste", n), j(a,
                 "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, J)), Y.call(
                 "pasteHtml", n), _t.wysiwygEditorInsertHtml(n.val, null, !0)
         }, _t.closeDropDown = function (e) {
             L && (u(L), L = null), !0 === e && _t.focus()
         }, _t.wysiwygEditorInsertHtml = function (e, t, i) {
-            var n, s, o, a = j(f);
+            var n, s, o, a = I(f);
             _t.focus(), !i && c(Q, "code") || (K.insertHTML(e, t), K.saveRange(), Te(), v(n = h(z,
                     "#sceditor-end-marker")[0]), s = z.scrollTop, o = G(n)
                 .top + 1.5 * n.offsetHeight - a, g(n), (o > s || o + a < s) && (z.scrollTop = o), ut(!
@@ -44838,7 +45296,7 @@ function (e) {
             var e = _t.inSourceMode();
             !Se && e || (e || (K.saveRange(), K.clear()), _t.blur(), e ? _t.setWysiwygEditorValue(_t
                     .getSourceEditorValue()) : _t.setSourceEditorValue(_t.getWysiwygEditorValue()),
-                R = null, b(N), b(f), P(a, "wysiwygMode", e), P(a, "sourceMode", !e), et(), tt())
+                R = null, b(N), b(f), M(a, "wysiwygMode", e), M(a, "sourceMode", !e), et(), tt())
         }, it = function () {
             return N.focus(), N.value.substring(N.selectionStart, N.selectionEnd)
         }, Ae = function (e, t) {
@@ -44868,14 +45326,14 @@ function (e) {
                             e = e.parentNode;
                         e && H(e, !0) && (K.saveRange(), re(z, S), K.restoreRange())
                     }
-                    I(a, "selectionchanged")
+                    j(a, "selectionchanged")
                 }
                 ie = !1
             }
             ie || (ie = !0, "onselectionchange" in S ? e() : setTimeout(e, 100))
         }, ot = function () {
             var e, t = K.parentNode();
-            J !== t && (e = J, J = t, Q = K.getFirstBlockParent(t), I(a, "nodechanged", {
+            J !== t && (e = J, J = t, Q = K.getFirstBlockParent(t), j(a, "nodechanged", {
                 oldNode: e,
                 newNode: J
             }))
@@ -44903,12 +45361,12 @@ function (e) {
                                 u) ? 1 : 0)
                         } catch (e) {}
                     } else d || (r = u.call(_t, t, e));
-                    P(c, "disabled", d || r < 0), P(c, i, r > 0)
+                    M(c, "disabled", d || r < 0), M(c, i, r > 0)
                 }
                 ke && ke.update && ke.update(s, t, e)
             }
         }, Ke = function (e) {
-            if (!e.defaultPrevented && (_t.closeDropDown(), 13 === e.which && !k(Q, "li,ul,ol") && $(
+            if (!e.defaultPrevented && (_t.closeDropDown(), 13 === e.which && !k(Q, "li,ul,ol") && B(
                 Q))) {
                 R = null;
                 var t = r("br", {}, S);
@@ -44923,7 +45381,7 @@ function (e) {
         }, nt = function () {
             O(z, (function (e) {
                 if (e.nodeType === ge && !/inline/.test(y(e, "display")) && !k(e,
-                        ".sceditor-nlf") && $(e)) {
+                        ".sceditor-nlf") && B(e)) {
                     var t = r("p", {}, S);
                     return t.className = "sceditor-nlf", t.innerHTML = Oe ? "" : "<br />", d(
                         z, t), !1
@@ -45141,19 +45599,19 @@ function (e) {
                 _t.clearBlockFormatting(n), e.preventDefault()
             }
         }, ct = function () {
-            for (var e = Q; !$(e) || H(e, !0);)
+            for (var e = Q; !B(e) || H(e, !0);)
                 if (!(e = e.parentNode) || k(e, "body")) return;
             return e
         }, _t.clearBlockFormatting = function (e) {
             return !(e = e || ct()) || k(e, "body") || (K.saveRange(), e.className = "", R = null, _(e,
-                "style", ""), k(e, "p,div,td") || B(e, "p"), K.restoreRange()), _t
+                "style", ""), k(e, "p,div,td") || $(e, "p"), K.restoreRange()), _t
         }, ut = function (e) {
             if (Y && (Y.hasHandler("valuechangedEvent") || ut.hasHandler)) {
                 var t, i = _t.sourceMode(),
                     n = !i && K.hasSelection();
                 W = !1, e = !1 !== e && !S.getElementById("sceditor-start-marker"), q && (clearTimeout(q),
                         q = !1), n && e && K.saveRange(), (t = i ? N.value : z.innerHTML) !== ut
-                    .lastVal && (ut.lastVal = t, I(a, "valuechanged", {
+                    .lastVal && (ut.lastVal = t, j(a, "valuechanged", {
                         rawValue: i ? _t.val() : t
                     })), n && e && K.removeMarkers()
             }
@@ -45306,7 +45764,7 @@ function (e) {
             youtube: '<iframe width="560" height="315" frameborder="0" allowfullscreen src="https://www.youtube.com/embed/{id}?wmode=opaque&start={time}" data-youtube-id="{id}"></iframe>'
         },
         Ee = xe && xe < 11,
-        Pe = {
+        Me = {
             bold: {
                 exec: "bold",
                 tooltip: "Bold",
@@ -45378,7 +45836,7 @@ function (e) {
                 },
                 exec: function (e) {
                     var t = this;
-                    Pe.font._dropDown(t, e, (function (e) {
+                    Me.font._dropDown(t, e, (function (e) {
                         t.execCommand("fontname", e)
                     }))
                 },
@@ -45397,7 +45855,7 @@ function (e) {
                 },
                 exec: function (e) {
                     var t = this;
-                    Pe.size._dropDown(t, e, (function (e) {
+                    Me.size._dropDown(t, e, (function (e) {
                         t.execCommand("fontsize", e)
                     }))
                 },
@@ -45407,7 +45865,7 @@ function (e) {
                 _dropDown: function (e, t, i) {
                     var n = r("div"),
                         s = "",
-                        o = Pe.color;
+                        o = Me.color;
                     o._htmlCache || (e.opts.colors.split("|")
                         .forEach((function (e) {
                             s += '<div class="sceditor-color-column">', e.split(",")
@@ -45422,7 +45880,7 @@ function (e) {
                 },
                 exec: function (e) {
                     var t = this;
-                    Pe.color._dropDown(t, e, (function (e) {
+                    Me.color._dropDown(t, e, (function (e) {
                         t.execCommand("forecolor", e)
                     }))
                 },
@@ -45548,7 +46006,7 @@ function (e) {
                 },
                 exec: function (e) {
                     var t = this;
-                    Pe.image._dropDown(t, e, "", (function (e, i, n) {
+                    Me.image._dropDown(t, e, "", (function (e, i, n) {
                         var s = "";
                         i && (s += ' width="' + i + '"'), n && (s += ' height="' + n + '"'), t
                             .wysiwygEditorInsertHtml("<img" + s + ' src="' + e + '" />')
@@ -45571,7 +46029,7 @@ function (e) {
                 },
                 exec: function (e) {
                     var t = this;
-                    Pe.email._dropDown(t, e, (function (e, i) {
+                    Me.email._dropDown(t, e, (function (e, i) {
                         t.focus(), !t.getRangeHelper()
                             .selectedHtml() || i ? t.wysiwygEditorInsertHtml(
                                 '<a href="mailto:' + e + '">' + (i || e) + "</a>") : t
@@ -45599,7 +46057,7 @@ function (e) {
                 },
                 exec: function (e) {
                     var t = this;
-                    Pe.link._dropDown(t, e, (function (e, i) {
+                    Me.link._dropDown(t, e, (function (e, i) {
                         t.focus(), i || !t.getRangeHelper()
                             .selectedHtml() ? (i = i || e, t.wysiwygEditorInsertHtml(
                                 '<a href="' + e + '">' + i + "</a>")) : t.execCommand(
@@ -45667,7 +46125,7 @@ function (e) {
                     t.createDropDown(e, "emoticons", i(!1))
                 },
                 txtExec: function (e) {
-                    Pe.emoticon.exec.call(this, e)
+                    Me.emoticon.exec.call(this, e)
                 },
                 tooltip: "Insert an emoticon"
             },
@@ -45690,7 +46148,7 @@ function (e) {
                 },
                 exec: function (e) {
                     var t = this;
-                    Pe.youtube._dropDown(t, e, (function (e, i) {
+                    Me.youtube._dropDown(t, e, (function (e, i) {
                         t.wysiwygEditorInsertHtml(te("youtube", {
                             id: e,
                             time: i
@@ -45711,10 +46169,10 @@ function (e) {
                         .replace(/day/i, s)
                 },
                 exec: function () {
-                    this.insertText(Pe.date._date(this))
+                    this.insertText(Me.date._date(this))
                 },
                 txtExec: function () {
-                    this.insertText(Pe.date._date(this))
+                    this.insertText(Me.date._date(this))
                 },
                 tooltip: "Insert current date"
             },
@@ -45728,10 +46186,10 @@ function (e) {
                         ":" + i + ":" + n
                 },
                 exec: function () {
-                    this.insertText(Pe.time._time())
+                    this.insertText(Me.time._time())
                 },
                 txtExec: function () {
-                    this.insertText(Pe.time._time())
+                    this.insertText(Me.time._time())
                 },
                 tooltip: "Insert current time"
             },
@@ -45799,10 +46257,10 @@ function (e) {
             },
             ignore: {}
         },
-        Me = {};
-    ne.plugins = Me;
-    var je = xe && xe < 11,
-        Ie = function (e, t, i) {
+        Pe = {};
+    ne.plugins = Pe;
+    var Ie = xe && xe < 11,
+        je = function (e, t, i) {
             var n, s, o, a, r, l = "",
                 c = e.startContainer,
                 u = e.startOffset;
@@ -45823,16 +46281,16 @@ function (e) {
         Re = /^image\/(p?jpe?g|gif|png|bmp)$/i;
     le.locale = {}, le.formats = {}, le.icons = {}, le.command = {
             get: function (e) {
-                return Pe[e] || null
+                return Me[e] || null
             },
             set: function (e, t) {
-                return !(!e || !t) && ((t = n(Pe[e] || {}, t))
+                return !(!e || !t) && ((t = n(Me[e] || {}, t))
                     .remove = function () {
                         le.command.remove(e)
-                    }, Pe[e] = t, this)
+                    }, Me[e] = t, this)
             },
             remove: function (e) {
-                return Pe[e] && delete Pe[e], this
+                return Me[e] && delete Me[e], this
             }
         },
         /**
@@ -45849,7 +46307,7 @@ function (e) {
          */
         window.sceditor = {
             command: le.command,
-            commands: Pe,
+            commands: Me,
             defaultOptions: we,
             ie: xe,
             ios: Ce,
@@ -45863,13 +46321,13 @@ function (e) {
                 removeAttr: f,
                 is: k,
                 closest: c,
-                width: M,
-                height: j,
+                width: P,
+                height: I,
                 traverse: L,
                 rTraverse: O,
                 parseHTML: R,
-                hasStyling: $,
-                convertElement: B,
+                hasStyling: B,
+                convertElement: $,
                 blockLevelList: ye,
                 canHaveChildren: F,
                 isInline: H,
@@ -45987,8 +46445,8 @@ function (e) {
             var i, n, s, r = /\[([^\]\s=]+)(?:([^\]]+))?\]/,
                 l = /\[\/([^\[\]]+)\]/;
             return e === T && (i = t.match(r)) && (s = y(i[1]), i[2] && (i[2] = i[2].trim()) && (n = o(i[
-                2]))), e === P && (i = t.match(l)) && (s = y(i[1])), e === E && (s = "#newline"), s && (e !==
-                    T && e !== P || S[s]) || (e = A, s = "#"), new a(e, s, t, n)
+                2]))), e === M && (i = t.match(l)) && (s = y(i[1])), e === E && (s = "#newline"), s && (e !==
+                    T && e !== M || S[s]) || (e = A, s = "#"), new a(e, s, t, n)
         }
 
         function o(e) {
@@ -46022,13 +46480,13 @@ function (e) {
                 }, m = function (e) {
                     return h() && (i = S[h()
                         .name]) && i.closedBy && i.closedBy.indexOf(e) > -1
-                }; t = e.shift();) switch (a = e[0], c(h(), t) || t.type === P && h() && t.name === h()
+                }; t = e.shift();) switch (a = e[0], c(h(), t) || t.type === M && h() && t.name === h()
                 .name || (t.name = "#", t.type = A), t.type) {
             case T:
                 m(t.name) && d.pop(), p(t), (i = S[t.name]) && !i.isSelfClosing && (i.closedBy || l(t
-                    .name, P, e)) ? d.push(t) : i && i.isSelfClosing || (t.type = A);
+                    .name, M, e)) ? d.push(t) : i && i.isSelfClosing || (t.type = A);
                 break;
-            case P:
+            case M:
                 if (h() && t.name !== h()
                     .name && m("/" + t.name) && d.pop(), h() && t.name === h()
                     .name) h()
@@ -46047,7 +46505,7 @@ function (e) {
                 } else t.type = A, p(t);
                 break;
             case E:
-                h() && a && m((a.type === P ? "/" : "") + a.name) && (a.type === P && a.name === h()
+                h() && a && m((a.type === M ? "/" : "") + a.name) && (a.type === M && a.name === h()
                     .name || ((i = S[h()
                             .name]) && i.breakAfter || i && !1 === i.isInline && k.opts
                         .breakAfterBlock && !1 !== i.breakAfter) && d.pop()), p(t);
@@ -46109,7 +46567,7 @@ function (e) {
             for (var t, i, n = function (e) {
                     for (var t = e.length; t--;) {
                         var i = e[t].type;
-                        if (i === T || i === P) return !1;
+                        if (i === T || i === M) return !1;
                         if (i === A && /\S|\u00A0/.test(e[t].val)) return !1
                     }
                     return !0
@@ -46193,7 +46651,7 @@ function (e) {
                     type: T,
                     regex: /^\[[^\[\]]+\]/
                 }, {
-                    type: P,
+                    type: M,
                     regex: /^\[\/[^\[\]]+\]/
                 }];
             e: for (; e.length;) {
@@ -46842,7 +47300,7 @@ function (e) {
         T = "open",
         A = "content",
         E = "newline",
-        P = "close";
+        M = "close";
     a.prototype = {
         clone: function () {
             var e = this;

@@ -16303,6 +16303,29 @@ body.dark .daily-bonuses .collect-possible-block {
     margin-top: -1px
 }
 
+.task-tab-content .premium-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.task-tab-content .premium-info .reward-info {
+    display: flex;
+    align-items: center
+}
+
+.task-tab-content .premium-info .reward-info .potential-reward-title {
+    margin-right: 10px
+}
+
+.task-tab-content .premium-info .reward-info .get-premium-btn {
+    margin-left: 20px
+}
+
+.task-tab-content .premium-info .reward-info .reward-amount {
+    white-space: nowrap
+}
+
 .spinner {
     width: 20px;
     height: 20px;
@@ -17505,6 +17528,20 @@ body.dark .grid-container .grid-item .grid-item-text .line {
     vertical-align: initial
 }
 
+body.dark .mission-speed-dropdown-menu {
+    background-color: #505050;
+    border: 1px solid #000
+}
+
+body.dark .mission-speed-dropdown-menu li>a {
+    color: #fff
+}
+
+body.dark .mission-speed-dropdown-menu li>a:hover {
+    background-image: none;
+    background-color: #727272
+}
+
 body.dark .nav-tabs>li.active>a,
 body.dark .nav-tabs>li.active>a:focus {
     background-color: #c9302c
@@ -17568,6 +17605,46 @@ body.dark .nav-tabs>li.active>a:focus {
 
 .mission-speed-error .btn {
     margin-top: 5px
+}
+
+.dark-visible {
+    display: none
+}
+
+body.dark .light-visible {
+    display: none
+}
+
+body.dark .dark-visible {
+    display: initial
+}
+
+.extensions-mobile .length-requirements {
+    margin-top: 5px;
+    margin-bottom: 5px
+}
+
+.extensions-mobile .requirements {
+    display: flex;
+    margin-top: 5px;
+    margin-bottom: 5px
+}
+
+.extensions-mobile .requirements ul {
+    display: block;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0px
+}
+
+.extensions-mobile .requirements ul li {
+    list-style-position: inside
+}
+
+.extensions-mobile .extension-unlocks {
+    margin-top: 10px
 }
 
 /*
