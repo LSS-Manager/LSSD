@@ -991,7 +991,7 @@ function vehicleDriveReal(e) {
                 mobile_version ? mobileBridgeAdd("vehicle_move", {
                     id: t.vehicle_id,
                     title: t.title,
-                    sonderrechte: t.sonderrechte,
+                    sonderrechte: t.sonderrechte.toString(),
                     latitude: t.latitude,
                     longitude: t.longitude,
                     app_icon_path_normal: t.app_icon_path_normal,
@@ -1866,7 +1866,7 @@ function vehicleSearch(e) {
     });
     if (mapViewExpanded) return mapViewExpandedWindow.vehicleSearch(e);
     var t = !1;
-    const i = mission_vehicles_per_vid.get(e);
+    const i = mission_vehicles_per_vid.get(Number(e));
     i && !i.vehicle_marker_deleted && i.visible && (t = !0, isMapKitMap() ? map.setCenterAnimated(new mapkit
         .Coordinate(i.latitude, i.longitude), !0) : map.setView([i.latitude, i.longitude])), t || alert(
         I18n.t("javascript.not_found_map"))
