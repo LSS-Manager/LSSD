@@ -1056,7 +1056,7 @@ function hide_all_except_mission(e, t, i) {
                 }
             }))
         .title = "Ziel", map.addAnnotation(target_marker)) : iconMapGenerate(
-        "/images/direction_down.png", target_marker = L.marker([i, i], {
+        "/images/direction_down.png", target_marker = L.marker([t, i], {
             title: "Ziel",
             icon: icon_empty
         })
