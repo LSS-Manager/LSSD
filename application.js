@@ -2069,8 +2069,8 @@ function iconMapVehicleGenerate(e, t, i) {
 }
 
 function missionMarkerReset() {
-    mission_markers_per_id.forEach((function (e, t, i) {
-        "undefined" == typeof mapkit ? i.removeLayer(e) : i.removeAnnotation(e)
+    mission_markers_per_id.forEach((function (e) {
+        "undefined" == typeof mapkit ? map.removeLayer(e) : map.removeAnnotation(e)
     })), mission_markers = Array(), mission_markers_per_id = new Map, $.each(mission_timers, (function (e,
         t) {
         window.clearInterval(t.timer)
