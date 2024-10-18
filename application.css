@@ -17647,6 +17647,10 @@ body.dark .dark-visible {
     margin-top: 10px
 }
 
+.spawn-area-status-label {
+    margin-right: 5px
+}
+
 /*
 * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
 *
