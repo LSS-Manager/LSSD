@@ -39214,8 +39214,13 @@ $((function () {
         .on("click", ".map_position_mover", (function () {
             if (void 0 === $(this)
                 .attr("target_latitude") || "null" == $(this)
-                .attr("target_latitude")) mapViewExpanded ? mapViewExpandedWindow.map
-                .setView([$(this)
+                .attr("target_latitude")) mobile_bridge_use && mobileBridgeAdd(
+                    "center_on_map", {
+                        latitude: $(this)
+                            .data("latitude"),
+                        longitude: $(this)
+                            .data("longitude")
+                    }), mapViewExpanded ? mapViewExpandedWindow.map.setView([$(this)
                     .data("latitude"), $(this)
                     .data("longitude")]) : "undefined" != typeof mapkit ? map
                 .setCenterAnimated(new mapkit.Coordinate($(this)
@@ -39223,7 +39228,16 @@ $((function () {
                     .data("longitude")), !0) : map.setView([$(this)
                     .data("latitude"), $(this)
                     .data("longitude")]);
-            else if (mapViewExpanded) mapViewExpandedWindow.map.fitBounds([[$(this)
+            else if (mobile_bridge_use && mobileBridgeAdd("center_on_map", {
+                    latitude: $(this)
+                        .data("latitude"),
+                    longitude: $(this)
+                        .data("longitude"),
+                    target_latitude: $(this)
+                        .attr("target_latitude"),
+                    target_longitude: $(this)
+                        .attr("target_longitude")
+                }), mapViewExpanded) mapViewExpandedWindow.map.fitBounds([[$(this)
                 .data("latitude"), $(this)
                 .data("longitude")], [$(this)
                 .attr("target_latitude"), $(this)
