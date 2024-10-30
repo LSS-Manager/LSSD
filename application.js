@@ -40,7 +40,8 @@ function processMissionElement(e, t, i) {
     b.innerHTML = prepareMissionDomElementStr(n, s, o, a, e, r, l, c, u, d, h, p, m, _, f, g, v), t.append(b
         .content);
     let y = e;
-    missionParticipationFilters.new.missionIds.add(e.id);
+    missionParticipationFilters.started.missionIds.has(e.id) || missionParticipationFilters.new.missionIds
+        .add(e.id);
     var w = !1;
     const k = mission_markers_per_id.get(y.id);
     if (k && ("undefined" != typeof mapkit ? (k.url = {
@@ -99,8 +100,7 @@ function processMissionElement(e, t, i) {
 function missionMarkerAdd() {}
 
 function missionMarkerAddSingle(e) {
-    if (window.missionMarkerBulkAdd || window.massAllianceMissionAdd || window.massMissionAdd)
-    return void retryUpdate(e);
+    if (window.massAllianceMissionAdd || window.massMissionAdd) return void retryUpdate(e);
     var t = "progress mission_progress",
         i = "progress-striped-inner",
         n = 0,
@@ -240,7 +240,8 @@ function addNewMissionElement(e, t, i, n, s, o, a, r, l) {
             .append(v)
     } else $(c)
         .append(v);
-    tutorial.callNewMissionListener(!0), missionParticipationFilters.new.missionIds.add(e.id)
+    tutorial.callNewMissionListener(!0), missionParticipationFilters.started.missionIds.has(e.id) ||
+        missionParticipationFilters.new.missionIds.add(e.id)
 }
 
 function updateExistingMissionElement(e, t, i, n, s, o, a, r, l) {
@@ -287,19 +288,21 @@ function updateExistingMissionElement(e, t, i, n, s, o, a, r, l) {
 }
 
 function prepareMissionDomElementStr(e, t, i, n, s, o, a, r, l, c, u, d, h, p, m, _, f) {
+    var g = missionParticipationFilters.started.missionIds.has(s.id);
     return "<div search_attribute='" + e + "' data-mission-type-filter='" + t +
-        "' data-mission-state-filter='" + i + "' data-mission-participation-filter=new data-sortable-by='" +
-        JSON.stringify(n) + "' id='mission_" + s.id + "' mission_id='" + s.id + "' mission_type_id='" + s
-        .mtid + "' class='missionSideBarEntry missionSideBarEntrySearchable " + o + " " + f + "' latitude='" +
-        s.latitude + "' longitude='" + s.longitude + "' target_latitude='" + s.tlat + "' target_longitude='" +
-        s.tlng + "' data-overlay-index='" + s.overlay_index + "' data-additive-overlays='" + (s
-            .additive_overlays || "") + "'><div id='mission_panel_" + s.id + "' class='panel panel-default " +
-        a + " mission_panel_" + r + "'><div id='mission_panel_heading_" + s.id +
-        "' class='panel-heading'><a href='/missions/" + s.id + "?" + missionFilterQueryParams +
+        "' data-mission-state-filter='" + i + "' data-mission-participation-filter=" + (g ? "started" :
+        "new") + " data-sortable-by='" + JSON.stringify(n) + "' id='mission_" + s.id + "' mission_id='" + s
+        .id + "' mission_type_id='" + s.mtid + "' class='missionSideBarEntry missionSideBarEntrySearchable " +
+        o + " " + f + "' latitude='" + s.latitude + "' longitude='" + s.longitude + "' target_latitude='" + s
+        .tlat + "' target_longitude='" + s.tlng + "' data-overlay-index='" + s.overlay_index +
+        "' data-additive-overlays='" + (s.additive_overlays || "") + "'><div id='mission_panel_" + s.id +
+        "' class='panel panel-default " + a + " mission_panel_" + r + "'><div id='mission_panel_heading_" + s
+        .id + "' class='panel-heading'><a href='/missions/" + s.id + "?" + missionFilterQueryParams +
         "' class='btn btn-default btn-xs lightbox-open mission-alarm-button' id='alarm_button_" + s.id +
         "'> " + I18n.t("javascript.alarm") + "</a> <span id='mission_participant_" + s.id +
-        "' class='glyphicon glyphicon-user hidden'></span><span id='mission_participant_new_" + s.id +
-        "' class='glyphicon glyphicon-asterisk'></span> <a href='' id='mission_caption_" + s.id +
+        "' class='glyphicon glyphicon-user " + (g ? "" : "hidden") +
+        "'></span><span id='mission_participant_new_" + s.id + "' class='glyphicon glyphicon-asterisk " + (g ?
+            "hidden" : "") + "'></span> <a href='' id='mission_caption_" + s.id +
         "' class='map_position_mover' target_latitude='" + s.tlat + "' target_longitude='" + s.tlng +
         "' data-latitude='" + s.latitude + "' data-longitude='" + s.longitude + "'>" + l +
         "</a></div><div class='panel-body'><div class='row'><div class='col-xs-1'><img src='" + c +
