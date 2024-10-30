@@ -99,6 +99,8 @@ function processMissionElement(e, t, i) {
 function missionMarkerAdd() {}
 
 function missionMarkerAddSingle(e) {
+    if (window.missionMarkerBulkAdd || window.massAllianceMissionAdd || window.massMissionAdd)
+    return void retryUpdate(e);
     var t = "progress mission_progress",
         i = "progress-striped-inner",
         n = 0,
@@ -199,6 +201,14 @@ function missionMarkerAddSingle(e) {
         .toggleClass("hidden", !g), missionMarkerBulkAdd || (progressBarScrollUpdate(), "" != $(document
                 .getElementById("search_input_field_missions"))
             .val() && searchMission()), missionMarkerAdd(e)
+}
+
+function retryUpdate(e) {
+    void 0 === e.retry_count && (e.retry_count = 0), e.retry_count > 10 ? console.error(
+        "failed to update mission " + e.retry_count + " times cause async load is not finished") : (e
+        .retry_count = e.retry_count + 1, delay = 300 * e.retry_count, setTimeout((function () {
+            missionMarkerAddSingle(e)
+        }), delay))
 }
 
 function addNewMissionElement(e, t, i, n, s, o, a, r, l) {
@@ -4071,8 +4081,8 @@ function isValidDate(e, t) {
     }
     if ("M" === n[0].toUpperCase() || "MM" === n[0].toUpperCase()) {
         if (s[0].length > 2) return !1;
-        1 === s[0].length && (s[0] = "0" + s[0]), 1 === s[1].length && (s[1] = "0" + s[1]),
-            o = s[2] + "-" + s[0] + "-" + s[1]
+        1 === s[0].length && (s[0] = "0" + s[0]), 1 === s[1].length && (s[1] = "0" + s[1]), o = s[2] + "-" +
+            s[0] + "-" + s[1]
     }
     if ("Y" === n[0].toUpperCase() || "YY" === n[0].toUpperCase() || "YYYY" === n[0].toUpperCase()) {
         if (2 !== s[0].length && 4 !== s[0].length) return !1;
