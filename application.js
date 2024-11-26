@@ -4996,6 +4996,14 @@ Object.values || (Object.values = function (e) {
         },
         javascript: {
             alarm: "Alarm",
+            alliance_event_resource: {
+                christmas: {
+                    currency: "Event-Tickets",
+                    event_start_mission: "Startveranstaltung: %{amount} Allianz-Ticket"
+                },
+                info_bubble_text: "Dies ist ein tempor\xe4res Ereignis, das nur w\xe4hrend unseres Events verf\xfcgbar ist! Ermutige deine Allianzmitglieder dazu, Event-Eins\xe4tze zu erf\xfcllen, um die Tickets zu verdienen, die f\xfcr den Start dieser Events ben\xf6tigt werden. Weitere Informationen findest du auf der der Allianz-Events.",
+                info_bubble_text_additional: "Du hast derzeit %{amount} %{alliance_event_currency} !"
+            },
             arrival: "Ankunft",
             backalarm: "R\xfcckalarmieren",
             coins: "Coins",
@@ -5533,6 +5541,14 @@ Object.values || (Object.values = function (e) {
         },
         javascript: {
             alarm: "Dispatch",
+            alliance_event_resource: {
+                christmas: {
+                    currency: "Event Tickets",
+                    event_start_mission: "Start Event: %{amount} Event Ticket"
+                },
+                info_bubble_text: "This is a temporary event that is only available during our event! Encourage your alliance members to complete event missions in order to earn the tickets that are needed to start these events. Go to your alliance for more information.",
+                info_bubble_text_additional: "You currently have %{amount} %{alliance_event_currency}!"
+            },
             arrival: "Arrival",
             backalarm: "Cancel",
             coins: "Coins",
@@ -6250,6 +6266,12 @@ Object.values || (Object.values = function (e) {
         javascript: {
             alarm: "Dispatch",
             alliance_event_resource: {
+                christmas: {
+                    currency: "Event Tickets",
+                    event_start_mission: "Start Event: %{amount} Alliance Ticket"
+                },
+                info_bubble_text: "This is a temporary event that is only available during our event! Encourage your alliance members to complete event missions in order to earn the tickets that are needed to start these events. See the alliance event page for more information.",
+                info_bubble_text_additional: "You currently have %{amount} %{alliance_event_currency}!",
                 summer: {
                     event_start_mission: "Start Event: %{amount} Alliance Credit"
                 },
@@ -6834,6 +6856,14 @@ Object.values || (Object.values = function (e) {
         },
         javascript: {
             alarm: "Alarm",
+            alliance_event_resource: {
+                christmas: {
+                    currency: "Evenement Tickets",
+                    event_start_mission: "Begin Event: %{amount} Verband Ticket"
+                },
+                info_bubble_text: "Dit is een tijdelijk event dat alleen beschikbaar is tijdens ons evenement! Moedig je verbandleden aan om evenement inzetten te voltooien om de tickets te verdienen die nodig zijn om dit event te starten. Ga naar je verband pagina voor meer informatie.",
+                info_bubble_text_additional: "Je hebt momenteel %{amount} %{alliance_event_currency} !"
+            },
             arrival: "Aankomst",
             backalarm: "Retour post",
             coins: "Coins",
@@ -7320,6 +7350,14 @@ Object.values || (Object.values = function (e) {
         },
         javascript: {
             alarm: "Enviar",
+            alliance_event_resource: {
+                christmas: {
+                    currency: "Entradas",
+                    event_start_mission: "Inicio del evento: %{amount} Entradas para eventos"
+                },
+                info_bubble_text: "Se trata de un evento temporal que solo est\xe1 disponible durante nuestro evento. Anima a los miembros de tu alianza a completar las misiones del evento para conseguir los tickets necesarios para iniciar estos eventos. Consulta la p\xe1gina de eventos de alianza para obtener m\xe1s informaci\xf3n.",
+                info_bubble_text_additional: "\xa1Actualmente tiene %{amount} %{alliance_event_currency} !"
+            },
             arrival: "Llegada",
             backalarm: "Cancelar",
             coins: "Monedas",
@@ -7784,6 +7822,14 @@ Object.values || (Object.values = function (e) {
         },
         javascript: {
             alarm: "Dispatch",
+            alliance_event_resource: {
+                christmas: {
+                    currency: "Event Tickets",
+                    event_start_mission: "Start Event: %{amount} Alliance Ticket"
+                },
+                info_bubble_text: "This is a temporary event that is only available during our event! Encourage your alliance members to complete event missions in order to earn the tickets that are needed to start these events. See the alliance event page for more information.",
+                info_bubble_text_additional: "You currently have %{amount} %{alliance_event_currency}!"
+            },
             arrival: "Arrival",
             backalarm: "Cancel",
             coins: "Coins",
@@ -8363,6 +8409,14 @@ Object.values || (Object.values = function (e) {
         },
         javascript: {
             alarm: "Larmcentral",
+            alliance_event_resource: {
+                christmas: {
+                    currency: "Biljetter till evenemang",
+                    event_start_mission: "Starta evenemang: %{amount} Evenemangsbiljett"
+                },
+                info_bubble_text: "Detta \xe4r en tillf\xe4llig h\xe4ndelse som endast \xe4r tillg\xe4nglig under v\xe5rt evenemang! Uppmuntra dina alliansmedlemmar att slutf\xf6ra evenemangsuppdrag f\xf6r att tj\xe4na de biljetter som beh\xf6vs f\xf6r att starta dessa evenemang. Se sidan f\xf6r alliansevenemang f\xf6r mer information.",
+                info_bubble_text_additional: "Du har f\xf6r n\xe4rvarande %{amount} %{alliance_event_currency} !"
+            },
             arrival: "Ankomst",
             backalarm: "Avbryt",
             coins: "Mynt",
@@ -8851,6 +8905,14 @@ Object.values || (Object.values = function (e) {
         },
         javascript: {
             alarm: "Wy\u015blij",
+            alliance_event_resource: {
+                christmas: {
+                    currency: "Bilety na wydarzenia",
+                    event_start_mission: "Rozpocznij wydarzenie: %{amount} Bilet na wydarzenie"
+                },
+                info_bubble_text: "To tymczasowe wydarzenie jest dost\u0119pne tylko podczas naszego wydarzenia! Zach\u0119caj cz\u0142onk\xf3w sojuszu do wype\u0142niania misji eventowych w celu zdobycia bilet\xf3w potrzebnych do rozpocz\u0119cia tych wydarze\u0144. Wi\u0119cej informacji mo\u017cna znale\u017a\u0107 na stronie wydarzenia sojuszu.",
+                info_bubble_text_additional: "Aktualnie posiadasz %{amount} %{alliance_event_currency} !"
+            },
             arrival: "Przybycie",
             backalarm: "Anuluj",
             coins: "Monety",
@@ -9356,6 +9418,14 @@ Object.values || (Object.values = function (e) {
         },
         javascript: {
             alarm: "Assegna",
+            alliance_event_resource: {
+                christmas: {
+                    currency: "Biglietti per l'evento",
+                    event_start_mission: "Inizio evento: %{amount} Biglietto evento"
+                },
+                info_bubble_text: "Si tratta di un evento temporaneo disponibile solo durante il nostro evento! Incoraggiate i membri della vostra alleanza a completare le missioni evento per guadagnare i biglietti necessari per avviare questi eventi. Per ulteriori informazioni, consultare la pagina degli eventi dell'alleanza.",
+                info_bubble_text_additional: "Attualmente avete %{amount} %{alliance_event_currency} !"
+            },
             arrival: "Arrivo",
             backalarm: "Annulla",
             coins: "Monete",
@@ -9848,6 +9918,14 @@ Object.values || (Object.values = function (e) {
         },
         javascript: {
             alarm: "D\xe9ployer",
+            alliance_event_resource: {
+                christmas: {
+                    currency: "Billets d'\xe9v\xe9nements",
+                    event_start_mission: "D\xe9but de l'\xe9v\xe9nement : %{amount} Ticket d'\xe9v\xe9nement"
+                },
+                info_bubble_text: "Il s'agit d'un \xe9v\xe9nement temporaire qui n'est disponible que pendant notre \xe9v\xe9nement ! Encouragez les membres de votre alliance \xe0 accomplir les missions de l'\xe9v\xe9nement afin de gagner les tickets n\xe9cessaires pour lancer ces \xe9v\xe9nements. Consultez la page des \xe9v\xe9nements d'alliance pour plus d'informations.",
+                info_bubble_text_additional: "Vous avez actuellement %{amount} %{alliance_event_currency} !"
+            },
             arrival: "Arriv\xe9e",
             backalarm: "Annuler",
             coins: "Pi\xe8ces",
@@ -10776,6 +10854,14 @@ Object.values || (Object.values = function (e) {
         },
         javascript: {
             alarm: "Send ud",
+            alliance_event_resource: {
+                christmas: {
+                    currency: "Billetter til arrangementer",
+                    event_start_mission: "Start event: %{amount} Event-billet"
+                },
+                info_bubble_text: "Dette er en midlertidig begivenhed, som kun er tilg\xe6ngelig under vores begivenhed! Opfordr dine alliancemedlemmer til at gennemf\xf8re eventmissioner for at tjene de billetter, der er n\xf8dvendige for at starte disse events. Se siden med alliancebegivenheder for mere information.",
+                info_bubble_text_additional: "Du har i \xf8jeblikket %{amount} %{alliance_event_currency} !"
+            },
             arrival: "Ankomst",
             backalarm: "Annull\xe9r",
             coins: "M\xf8nter",
@@ -11252,6 +11338,14 @@ Object.values || (Object.values = function (e) {
         },
         javascript: {
             alarm: "Send ut",
+            alliance_event_resource: {
+                christmas: {
+                    currency: "Billetter til arrangementer",
+                    event_start_mission: "Start hendelse: %{amount} Eventbillett"
+                },
+                info_bubble_text: "Dette er en midlertidig hendelse som bare er tilgjengelig under arrangementet v\xe5rt! Oppfordre alliansemedlemmene dine til \xe5 fullf\xf8re hendelsesoppdrag for \xe5 tjene billettene som trengs for \xe5 starte disse hendelsene. Se alliansens hendelsesside for mer informasjon.",
+                info_bubble_text_additional: "Du har for \xf8yeblikket %{amount} %{alliance_event_currency} !"
+            },
             arrival: "Ankomst",
             backalarm: "Avbryt",
             coins: "Mynter",
@@ -11741,6 +11835,14 @@ Object.values || (Object.values = function (e) {
         },
         javascript: {
             alarm: "V\xfdjezd",
+            alliance_event_resource: {
+                christmas: {
+                    currency: "Vstupenky na ud\xe1lost",
+                    event_start_mission: "Zah\xe1jen\xed akce: %{amount} Vstupenka na akci"
+                },
+                info_bubble_text: "Jedn\xe1 se o do\u010dasnou akci, kter\xe1 je k dispozici pouze b\u011bhem na\u0161\xed akce! Povzbu\u010fte \u010dleny sv\xe9 aliance, aby plnili mise ud\xe1losti a z\xedskali tak vstupenky, kter\xe9 jsou pot\u0159ebn\xe9 pro spu\u0161t\u011bn\xed t\u011bchto ud\xe1lost\xed. V\xedce informac\xed naleznete na str\xe1nce ud\xe1losti aliance.",
+                info_bubble_text_additional: "V sou\u010dasn\xe9 dob\u011b m\xe1te %{amount} %{alliance_event_currency} !"
+            },
             arrival: "P\u0159\xedjezd",
             backalarm: "Zru\u0161it",
             coins: "Mince",
@@ -12631,6 +12733,14 @@ Object.values || (Object.values = function (e) {
         },
         javascript: {
             alarm: "Despachar",
+            alliance_event_resource: {
+                christmas: {
+                    currency: "Bilhetes para eventos",
+                    event_start_mission: "Iniciar evento: %{amount} Bilhete de evento"
+                },
+                info_bubble_text: "Este \xe9 um evento tempor\xe1rio que s\xf3 est\xe1 dispon\xedvel durante o nosso evento! Incentiva os membros da tua alian\xe7a a completarem miss\xf5es de evento para ganharem os bilhetes necess\xe1rios para iniciar estes eventos. Veja a p\xe1gina de eventos da alian\xe7a para mais informa\xe7\xf5es.",
+                info_bubble_text_additional: "Atualmente, tem %{amount} %{alliance_event_currency} !"
+            },
             arrival: "Chegada",
             backalarm: "Cancelar",
             coins: "Moedas",
@@ -13938,6 +14048,11 @@ Object.values || (Object.values = function (e) {
         },
         javascript: {
             alarm: "Enviar",
+            alliance_event_resource: {
+                christmas: {
+                    currency: "Entradas"
+                }
+            },
             arrival: "Llegada",
             backalarm: "Cancelar",
             coins: "Monedas",
@@ -14359,6 +14474,14 @@ Object.values || (Object.values = function (e) {
         },
         javascript: {
             alarm: "\u6307\u4ee4",
+            alliance_event_resource: {
+                christmas: {
+                    currency: "\u30a4\u30d9\u30f3\u30c8\u30c1\u30b1\u30c3\u30c8",
+                    event_start_mission: "\u30a4\u30d9\u30f3\u30c8\u958b\u59cb\uff1a %{amount} \u30a4\u30d9\u30f3\u30c8\u30c1\u30b1\u30c3\u30c8"
+                },
+                info_bubble_text: "\u3053\u308c\u306f\u30a4\u30d9\u30f3\u30c8\u671f\u9593\u4e2d\u306e\u307f\u306e\u81e8\u6642\u30a4\u30d9\u30f3\u30c8\u3067\u3059\uff01\u30a4\u30d9\u30f3\u30c8\u958b\u59cb\u306e\u305f\u3081\u306b\u5fc5\u8981\u306a\u30c1\u30b1\u30c3\u30c8\u3092\u7372\u5f97\u3059\u308b\u305f\u3081\u3001\u540c\u76df\u30e1\u30f3\u30d0\u30fc\u306b\u30a4\u30d9\u30f3\u30c8\u30df\u30c3\u30b7\u30e7\u30f3\u306e\u9054\u6210\u3092\u4fc3\u3057\u307e\u3057\u3087\u3046\u3002\u8a73\u3057\u304f\u306f\u540c\u76df\u30a4\u30d9\u30f3\u30c8\u30da\u30fc\u30b8\u3092\u3054\u89a7\u304f\u3060\u3055\u3044\u3002",
+                info_bubble_text_additional: "\u3042\u306a\u305f\u306f\u73fe\u5728\u3001%{amount} %{alliance_event_currency} \u3092\u6301\u3063\u3066\u3044\u308b\uff01"
+            },
             arrival: "\u5230\u7740",
             backalarm: "\u30ad\u30e3\u30f3\u30bb\u30eb",
             coins: "\u30b3\u30a4\u30f3",
@@ -14815,6 +14938,14 @@ Object.values || (Object.values = function (e) {
         },
         javascript: {
             alarm: "\ud30c\uacac",
+            alliance_event_resource: {
+                christmas: {
+                    currency: "\uc774\ubca4\ud2b8 \ud2f0\ucf13",
+                    event_start_mission: "\uc774\ubca4\ud2b8 \uc2dc\uc791: %{amount} \uc774\ubca4\ud2b8 \ud2f0\ucf13"
+                },
+                info_bubble_text: "\uc774\ubca4\ud2b8 \uae30\uac04 \ub3d9\uc548\uc5d0\ub9cc \ucc38\uc5ec\ud560 \uc218 \uc788\ub294 \ud55c\uc2dc\uc801\uc778 \uc774\ubca4\ud2b8\uc785\ub2c8\ub2e4! \uc774\ubca4\ud2b8 \uc2dc\uc791\uc5d0 \ud544\uc694\ud55c \ud2f0\ucf13\uc744 \ud68d\ub4dd\ud558\ub824\uba74 \ub3d9\ub9f9 \ud68c\uc6d0\ub4e4\uc774 \uc774\ubca4\ud2b8 \ubbf8\uc158\uc744 \uc644\ub8cc\ud558\ub3c4\ub85d \ub3c5\ub824\ud558\uc138\uc694. \uc790\uc138\ud55c \ub0b4\uc6a9\uc740 \uc5bc\ub77c\uc774\uc5b8\uc2a4 \uc774\ubca4\ud2b8 \ud398\uc774\uc9c0\ub97c \ucc38\uc870\ud558\uc138\uc694.",
+                info_bubble_text_additional: "\ud604\uc7ac %{amount} %{alliance_event_currency} !"
+            },
             arrival: "\ub3c4\ucc29",
             backalarm: "\ucde8\uc18c",
             coins: "\ucf54\uc778",
@@ -15700,6 +15831,14 @@ Object.values || (Object.values = function (e) {
         },
         javascript: {
             alarm: "L\xe4het\xe4",
+            alliance_event_resource: {
+                christmas: {
+                    currency: "Tapahtuman liput",
+                    event_start_mission: "Aloita tapahtuma: %{amount} Tapahtumalippu"
+                },
+                info_bubble_text: "T\xe4m\xe4 on v\xe4liaikainen tapahtuma, joka on k\xe4ytett\xe4viss\xe4 vain tapahtuman aikana! Kannusta liittolaisesi j\xe4seni\xe4 suorittamaan tapahtumateht\xe4vi\xe4 ansaitaksesi liput, joita tarvitaan n\xe4iden tapahtumien k\xe4ynnist\xe4miseen. Katso lis\xe4tietoja liittouman tapahtumasivulta.",
+                info_bubble_text_additional: "Sinulla on t\xe4ll\xe4 hetkell\xe4 %{amount} %{alliance_event_currency} !"
+            },
             arrival: "Saapumisaika",
             backalarm: "Peruuta",
             coins: "Kolikot",
@@ -16849,7 +16988,7 @@ Object.values || (Object.values = function (e) {
             }
         }
 
-        function I(e, t, i, n) {
+        function j(e, t, i, n) {
             function s(r) {
                 var l;
                 return o[r] = !0, ue.each(e[r] || [], (function (e, r) {
@@ -16863,7 +17002,7 @@ Object.values || (Object.values = function (e) {
             return s(t.dataTypes[0]) || !o["*"] && s("*")
         }
 
-        function j(e, i) {
+        function I(e, i) {
             var n, s, o = ue.ajaxSettings.flatOptions || {};
             for (s in i) i[s] !== t && ((o[s] ? e : n || (n = {}))[s] = i[s]);
             return n && ue.extend(!0, e, n), e
@@ -17629,7 +17768,7 @@ Object.values || (Object.values = function (e) {
                             }), a, !0), c = g((function (e) {
                                 return ae.call(t, e) > -1
                             }), a, !0), u = [function (e, i, n) {
-                                return !o && (n || i !== j) || ((t = i)
+                                return !o && (n || i !== I) || ((t = i)
                                     .nodeType ? l(e, i, n) : c(e, i, n))
                             }]; r < s; r++)
                         if (i = E.relative[e[r].type]) u = [g(v(u), i)];
@@ -17657,10 +17796,10 @@ Object.values || (Object.values = function (e) {
                                 f = "0",
                                 g = o && [],
                                 v = null != u,
-                                y = j,
+                                y = I,
                                 w = o || a && E.find.TAG("*", u && r.parentNode || r),
                                 k = q += null == y ? 1 : Math.random() || .1;
-                            for (v && (j = r !== L && r, A = n); null != (d = w[f]); f++) {
+                            for (v && (I = r !== L && r, A = n); null != (d = w[f]); f++) {
                                 if (a && d) {
                                     for (h = 0; p = e[h++];)
                                         if (p(d, r, l)) {
@@ -17679,7 +17818,7 @@ Object.values || (Object.values = function (e) {
                                 }
                                 se.apply(c, m), v && !o && m.length > 0 && _ + t.length > 1 && i.uniqueSort(c)
                             }
-                            return v && (q = k, j = y), g
+                            return v && (q = k, I = y), g
                         };
                     return s ? o(r) : r
                 }
@@ -17707,11 +17846,11 @@ Object.values || (Object.values = function (e) {
                                 break
                             }
                     }
-                    return I(e, c)(n, t, !R, i, ge.test(e)), i
+                    return j(e, c)(n, t, !R, i, ge.test(e)), i
                 }
 
                 function C() {}
-                var S, T, A, E, M, P, I, j, D, N, L, O, R, B, $, F, H, W = "sizzle" + -new Date,
+                var S, T, A, E, M, P, j, I, D, N, L, O, R, B, $, F, H, W = "sizzle" + -new Date,
                     V = e.document,
                     q = 0,
                     U = 0,
@@ -18081,7 +18220,7 @@ Object.values || (Object.values = function (e) {
                             not: o((function (e) {
                                 var t = [],
                                     i = [],
-                                    n = I(e.replace(me, "$1"));
+                                    n = j(e.replace(me, "$1"));
                                 return n[W] ? o((function (e, t, i, s) {
                                     for (var o, a = n(e, null, s, []), r = e
                                         .length; r--;)(o = a[r]) && (e[r] = !(t[r] =
@@ -18203,7 +18342,7 @@ Object.values || (Object.values = function (e) {
                         submit: !0,
                         reset: !0
                     }) E.pseudos[S] = p(S);
-                I = i.compile = function (e, t) {
+                j = i.compile = function (e, t) {
                         var i, n = [],
                             s = [],
                             o = G[e + " "];
@@ -18580,8 +18719,8 @@ Object.values || (Object.values = function (e) {
         });
         var Ae, Ee, Me = /[\t\r\n\f]/g,
             Pe = /\r/g,
-            Ie = /^(?:input|select|textarea|button|object)$/i,
-            je = /^(?:a|area)$/i,
+            je = /^(?:input|select|textarea|button|object)$/i,
+            Ie = /^(?:a|area)$/i,
             De = /^(?:checked|selected)$/i,
             Ne = ue.support.getSetAttribute,
             Le = ue.support.input;
@@ -18759,7 +18898,7 @@ Object.values || (Object.values = function (e) {
                     tabIndex: {
                         get: function (e) {
                             var t = ue.find.attr(e, "tabindex");
-                            return t ? parseInt(t, 10) : Ie.test(e.nodeName) || je.test(e.nodeName) &&
+                            return t ? parseInt(t, 10) : je.test(e.nodeName) || Ie.test(e.nodeName) &&
                                 e.href ? 0 : -1
                         }
                     }
@@ -19870,8 +20009,8 @@ Object.values || (Object.values = function (e) {
             }
         });
         var Et, Mt, Pt = ue.now(),
-            It = /\?/,
-            jt = /#.*$/,
+            jt = /\?/,
+            It = /#.*$/,
             Dt = /([?&])_=[^&]*/,
             Nt = /^(.*?):[ \t]*([^\r\n]*)\r?$/gm,
             Lt = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
@@ -19953,7 +20092,7 @@ Object.values || (Object.values = function (e) {
                 }
             },
             ajaxSetup: function (e, t) {
-                return t ? j(j(e, ue.ajaxSettings), t) : j(ue.ajaxSettings, e)
+                return t ? I(I(e, ue.ajaxSettings), t) : I(ue.ajaxSettings, e)
             },
             ajaxPrefilter: P(Ft),
             ajaxTransport: P(Ht),
@@ -20024,7 +20163,7 @@ Object.values || (Object.values = function (e) {
                 if (_.promise(k)
                     .complete = f.add, k.success = k.done, k.error = k.fail, h.url = ((e || h
                         .url || Mt) + "")
-                    .replace(jt, "")
+                    .replace(It, "")
                     .replace(Rt, Et[1] + "//"), h.type = i.method || i.type || h.method || h.type,
                     h.dataTypes = ue.trim(h.dataType || "*")
                     .toLowerCase()
@@ -20032,13 +20171,13 @@ Object.values || (Object.values = function (e) {
                     .toLowerCase()), h.crossDomain = !(!s || s[1] === Et[1] && s[2] === Et[2] && (
                             s[3] || ("http:" === s[1] ? "80" : "443")) === (Et[3] || (
                             "http:" === Et[1] ? "80" : "443")))), h.data && h.processData &&
-                    "string" != typeof h.data && (h.data = ue.param(h.data, h.traditional)), I(Ft,
+                    "string" != typeof h.data && (h.data = ue.param(h.data, h.traditional)), j(Ft,
                         h, i, k), 2 === y) return k;
                 for (o in (c = h.global) && 0 == ue.active++ && ue.event.trigger("ajaxStart"), h
                     .type = h.type.toUpperCase(), h.hasContent = !Ot.test(h.type), a = h.url, h
-                    .hasContent || (h.data && (a = h.url += (It.test(a) ? "&" : "?") + h.data,
+                    .hasContent || (h.data && (a = h.url += (jt.test(a) ? "&" : "?") + h.data,
                         delete h.data), !1 === h.cache && (h.url = Dt.test(a) ? a.replace(Dt,
-                        "$1_=" + Pt++) : a + (It.test(a) ? "&" : "?") + "_=" + Pt++)), h
+                        "$1_=" + Pt++) : a + (jt.test(a) ? "&" : "?") + "_=" + Pt++)), h
                     .ifModified && (ue.lastModified[a] && k.setRequestHeader("If-Modified-Since",
                         ue.lastModified[a]), ue.etag[a] && k.setRequestHeader("If-None-Match",
                         ue.etag[a])), (h.data && h.hasContent && !1 !== h.contentType || i
@@ -20054,7 +20193,7 @@ Object.values || (Object.values = function (e) {
                         error: 1,
                         complete: 1
                     }) k[o](h[o]);
-                if (u = I(Ht, h, i, k)) {
+                if (u = j(Ht, h, i, k)) {
                     k.readyState = 1, c && m.trigger("ajaxSend", [k, h]), h.async && h.timeout >
                         0 && (l = setTimeout((function () {
                             k.abort("timeout")
@@ -20132,7 +20271,7 @@ Object.values || (Object.values = function (e) {
                 .indexOf("application/x-www-form-urlencoded") && qt.test(i.data) && "data");
             if (l || "jsonp" === i.dataTypes[0]) return o = i.jsonpCallback = ue.isFunction(i
                     .jsonpCallback) ? i.jsonpCallback() : i.jsonpCallback, l ? i[l] = i[l]
-                .replace(qt, "$1" + o) : !1 !== i.jsonp && (i.url += (It.test(i.url) ? "&" :
+                .replace(qt, "$1" + o) : !1 !== i.jsonp && (i.url += (jt.test(i.url) ? "&" :
                     "?") + i.jsonp + "=" + o), i.converters["script json"] = function () {
                     return r || ue.error(o + " was not called"), r[0]
                 }, i.dataTypes[0] = "json", a = e[o], e[o] = function () {
@@ -26070,7 +26209,7 @@ Object.values || (Object.values = function (e) {
                 },
                 _generateHTML: function (e) {
                     var t, i, n, s, o, a, r, l, c, u, d, h, p, m, _, f, g, v, b, y, w, k, x,
-                        z, C, S, T, A, E, M, P, I, j, D, N, L, O, R, B, $ = new Date,
+                        z, C, S, T, A, E, M, P, j, I, D, N, L, O, R, B, $ = new Date,
                         F = this._daylightSavingAdjust(new Date($.getFullYear(), $.getMonth(),
                             $.getDate())),
                         H = this._get(e, "isRTL"),
@@ -26159,10 +26298,10 @@ Object.values || (Object.values = function (e) {
                             for (T += A + "</tr></thead><tbody>", M = this._getDaysInMonth(ee,
                                     X), ee === e.selectedYear && X === e.selectedMonth && (e
                                     .selectedDay = Math.min(e.selectedDay, M)), P = (this
-                                    ._getFirstDayOfMonth(ee, X) - u + 7) % 7, I = Math.ceil((
-                                    P + M) / 7), j = G && this.maxRows > I ? this.maxRows : I,
-                                this.maxRows = j, D = this._daylightSavingAdjust(new Date(ee,
-                                    X, 1 - P)), N = 0; N < j; N++) {
+                                    ._getFirstDayOfMonth(ee, X) - u + 7) % 7, j = Math.ceil((
+                                    P + M) / 7), I = G && this.maxRows > j ? this.maxRows : j,
+                                this.maxRows = I, D = this._daylightSavingAdjust(new Date(ee,
+                                    X, 1 - P)), N = 0; N < I; N++) {
                                 for (T += "<tr>", L = d ?
                                     "<td class='ui-datepicker-week-col'>" + this._get(e,
                                         "calculateWeek")(D) + "</td>" : "", w = 0; w < 7; w++)
@@ -31041,11 +31180,11 @@ Object.values || (Object.values = function (e) {
                         E = A + a.width(),
                         M = !0 === i ? T : S,
                         P = !0 === i ? S : T,
-                        I = !0 === i ? E : A,
-                        j = !0 === i ? A : E;
-                    if ("both" === s) return !!p && P <= k && M >= w && j <= z && I >= x;
+                        j = !0 === i ? E : A,
+                        I = !0 === i ? A : E;
+                    if ("both" === s) return !!p && P <= k && M >= w && I <= z && j >= x;
                     if ("vertical" === s) return !!p && P <= k && M >= w;
-                    if ("horizontal" === s) return !!p && j <= z && I >= x
+                    if ("horizontal" === s) return !!p && I <= z && j >= x
                 }
             }
         }
@@ -32885,12 +33024,12 @@ Object.values || (Object.values = function (e) {
             return l || "M0 0"
         }
 
-        function I(e) {
+        function j(e) {
             return navigator.userAgent.toLowerCase()
                 .indexOf(e) >= 0
         }
 
-        function j(e, t, i, n) {
+        function I(e, t, i, n) {
             return "touchstart" === t ? N(e, i, n) : "touchmove" === t ? F(e, i, n) : "touchend" ===
                 t && H(e, i, n), this
         }
@@ -33156,7 +33295,7 @@ Object.values || (Object.values = function (e) {
                     return i.call(s || e, t || window.event)
                 },
                 r = a;
-            qt && 0 === t.indexOf("touch") ? j(e, t, a, o) : !Ut || "dblclick" !== t || !W || qt &&
+            qt && 0 === t.indexOf("touch") ? I(e, t, a, o) : !Ut || "dblclick" !== t || !W || qt &&
                 Pt ? "addEventListener" in e ? "mousewheel" === t ? e.addEventListener("onwheel" in
                     e ? "wheel" : "mousewheel", a, !1) : "mouseenter" === t || "mouseleave" === t ? (
                     a = function (t) {
@@ -33246,26 +33385,26 @@ Object.values || (Object.values = function (e) {
         function Me(e, t) {
             if (!t || !e.length) return e.slice();
             var i = t * t;
-            return Ie(e = De(e, i), i)
+            return je(e = De(e, i), i)
         }
 
         function Pe(e, t, i) {
             return Math.sqrt(Be(e, t, i, !0))
         }
 
-        function Ie(e, t) {
+        function je(e, t) {
             var i = e.length,
                 n = new(typeof Uint8Array != void 0 + "" ? Uint8Array : Array)(i);
-            n[0] = n[i - 1] = 1, je(e, n, t, 0, i - 1);
+            n[0] = n[i - 1] = 1, Ie(e, n, t, 0, i - 1);
             var s, o = [];
             for (s = 0; s < i; s++) n[s] && o.push(e[s]);
             return o
         }
 
-        function je(e, t, i, n, s) {
+        function Ie(e, t, i, n, s) {
             var o, a, r, l = 0;
             for (a = n + 1; a <= s - 1; a++)(r = Be(e[a], e[n], e[s], !0)) > l && (o = a, l = r);
-            l > i && (t[o] = 1, je(e, t, i, n, o), je(e, t, i, o, s))
+            l > i && (t[o] = 1, Ie(e, t, i, n, o), Ie(e, t, i, o, s))
         }
 
         function De(e, t) {
@@ -33275,9 +33414,9 @@ Object.values || (Object.values = function (e) {
         }
 
         function Ne(e, t, i, n, s) {
-            var o, a, r, l = n ? Ii : Oe(e, i),
+            var o, a, r, l = n ? ji : Oe(e, i),
                 c = Oe(t, i);
-            for (Ii = c;;) {
+            for (ji = c;;) {
                 if (!(l | c)) return [e, t];
                 if (l & c) return !1;
                 r = Oe(a = Le(e, t, o = l || c, i, s), i), o === l ? (e = a, l = r) : (t = a, c = r)
@@ -33962,23 +34101,23 @@ Object.values || (Object.values = function (e) {
             kt = "ActiveXObject" in window,
             xt = kt && !document.addEventListener,
             zt = "msLaunchUri" in navigator && !("documentMode" in document),
-            Ct = I("webkit"),
-            St = I("android"),
-            Tt = I("android 2") || I("android 3"),
+            Ct = j("webkit"),
+            St = j("android"),
+            Tt = j("android 2") || j("android 3"),
             At = parseInt(/WebKit\/([0-9]+)|$/.exec(navigator.userAgent)[1], 10),
-            Et = St && I("Google") && At < 537 && !("AudioNode" in window),
+            Et = St && j("Google") && At < 537 && !("AudioNode" in window),
             Mt = !!window.opera,
-            Pt = I("chrome"),
-            It = I("gecko") && !Ct && !Mt && !kt,
-            jt = !Pt && I("safari"),
-            Dt = I("phantom"),
+            Pt = j("chrome"),
+            jt = j("gecko") && !Ct && !Mt && !kt,
+            It = !Pt && j("safari"),
+            Dt = j("phantom"),
             Nt = "OTransition" in wt,
             Lt = 0 === navigator.platform.indexOf("Win"),
             Ot = kt && "transition" in wt,
             Rt = "WebKitCSSMatrix" in window && "m11" in new window.WebKitCSSMatrix && !Tt,
             Bt = "MozPerspective" in wt,
             $t = !window.L_DISABLE_3D && (Ot || Rt || Bt) && !Nt && !Dt,
-            Ft = "undefined" != typeof orientation || I("mobile"),
+            Ft = "undefined" != typeof orientation || j("mobile"),
             Ht = Ft && Ct,
             Wt = Ft && Rt,
             Vt = !window.PointerEvent && window.MSPointerEvent,
@@ -33986,7 +34125,7 @@ Object.values || (Object.values = function (e) {
             Ut = !window.L_NO_TOUCH && (qt || "ontouchstart" in window || window.DocumentTouch &&
                 document instanceof window.DocumentTouch),
             Zt = Ft && Mt,
-            Kt = Ft && It,
+            Kt = Ft && jt,
             Gt = (window.devicePixelRatio || window.screen.deviceXDPI / window.screen.logicalXDPI) >
             1,
             Yt = !!document.createElement("canvas")
@@ -34013,8 +34152,8 @@ Object.values || (Object.values = function (e) {
                 androidStock: Et,
                 opera: Mt,
                 chrome: Pt,
-                gecko: It,
-                safari: jt,
+                gecko: jt,
+                safari: It,
                 phantom: Dt,
                 opera12: Nt,
                 win: Lt,
@@ -34098,7 +34237,7 @@ Object.values || (Object.values = function (e) {
                 getScale: me
             }),
             bi = "_leaflet_events",
-            yi = Lt && Pt ? 2 * window.devicePixelRatio : It ? window.devicePixelRatio : 1,
+            yi = Lt && Pt ? 2 * window.devicePixelRatio : jt ? window.devicePixelRatio : 1,
             wi = {},
             ki = (Object.freeze || Object)({
                 on: _e,
@@ -34631,7 +34770,7 @@ Object.values || (Object.values = function (e) {
                     var e = this._container;
                     this._fadeAnimated = this.options.fadeAnimation && $t, X(e,
                         "leaflet-container" + (Ut ? " leaflet-touch" : "") + (Gt ?
-                            " leaflet-retina" : "") + (xt ? " leaflet-oldie" : "") + (jt ?
+                            " leaflet-retina" : "") + (xt ? " leaflet-oldie" : "") + (It ?
                             " leaflet-safari" : "") + (this._fadeAnimated ?
                             " leaflet-fade-anim" : ""));
                     var t = U(e, "position");
@@ -35333,7 +35472,7 @@ Object.values || (Object.values = function (e) {
         Pi.addTo = function (e, t) {
             return e.addHandler(t, this), this
         };
-        var Ii, ji = {
+        var ji, Ii = {
                 Events: ut
             },
             Di = Ut ? "touchstart mousedown" : "mousedown",
@@ -38423,7 +38562,7 @@ Object.values || (Object.values = function (e) {
         zi.addInitHook("addHandler", "touchZoom", Mn), zi.BoxZoom = zn, zi.DoubleClickZoom = Cn, zi
             .Drag = Sn, zi.Keyboard = Tn, zi.ScrollWheelZoom = An, zi.Tap = En, zi.TouchZoom = Mn,
             Object.freeze = et, e.version = "1.4.0+HEAD.3337f36", e.Control = Ci, e.control = Si, e
-            .Browser = Xt, e.Evented = dt, e.Mixin = ji, e.Util = ct, e.Class = v, e.Handler = Pi, e
+            .Browser = Xt, e.Evented = dt, e.Mixin = Ii, e.Util = ct, e.Class = v, e.Handler = Pi, e
             .extend = t, e.bind = i, e.stamp = n, e.setOptions = u, e.DomEvent = ki, e.DomUtil = vi, e
             .PosAnimation = xi, e.Draggable = Oi, e.LineUtil = Ri, e.PolyUtil = Bi, e.Point = y, e
             .point = w, e.Bounds = k, e.bounds = x, e.Transformation = A, e.transformation = E, e
@@ -42387,7 +42526,7 @@ function (e) {
         y(e, "width", t)
     }
 
-    function I(e, t) {
+    function j(e, t) {
         if (pe(t)) {
             var i = getComputedStyle(e),
                 n = a(i.paddingTop) + a(i.paddingBottom),
@@ -42397,7 +42536,7 @@ function (e) {
         y(e, "height", t)
     }
 
-    function j(e, t, i) {
+    function I(e, t, i) {
         var n;
         me(window.CustomEvent) ? n = new CustomEvent(t, {
                 bubbles: !0,
@@ -42734,7 +42873,7 @@ function (e) {
         }, l.selectRange = function (t) {
             var i, n = e.getSelection(),
                 o = t.endContainer;
-            if (!Ie && t.collapsed && o && !H(o, !0)) {
+            if (!je && t.collapsed && o && !H(o, !0)) {
                 for (i = o.lastChild; i && k(i, ".sceditor-ignore");) i = i.previousSibling;
                 if (k(i, "br")) {
                     var a = s.createRange();
@@ -42754,11 +42893,11 @@ function (e) {
         }, l.selectOuterText = function (e, t) {
             var i, n, s = l.cloneSelected();
             if (!s) return !1;
-            s.collapse(!1), i = je(s, !0, e), n = je(s, !1, t), s.setStart(i.node, i.offset), s.setEnd(n
+            s.collapse(!1), i = Ie(s, !0, e), n = Ie(s, !1, t), s.setStart(i.node, i.offset), s.setEnd(n
                 .node, n.offset), l.selectRange(s)
         }, l.getOuterText = function (e, t) {
             var i = l.cloneSelected();
-            return i ? (i.collapse(!e), je(i, e, t)
+            return i ? (i.collapse(!e), Ie(i, e, t)
                 .text) : ""
         }, l.replaceKeyword = function (e, t, i, n, s, o) {
             i || e.sort((function (e, t) {
@@ -42847,7 +42986,7 @@ function (e) {
 
     function le(e, t) {
         var i, a, l, f, x, z, S, N, L, R, W, q, U, K, Y, J, Q, ee, ie, ce, ue, de, _e, fe, ye, ke, xe, Te, Ae,
-            Ee, Pe, Ie, je, Be, $e, Fe, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, st,
+            Ee, Pe, je, Ie, Be, $e, Fe, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, st,
             ot, at, rt, lt, ct, ut, dt, ht, pt, mt, _t = this,
             ft = {},
             gt = [],
@@ -42858,25 +42997,25 @@ function (e) {
         _t.commands = n(!0, {}, t.commands || Me);
         var kt = _t.opts = n(!0, {}, we, t);
         _t.opts.emoticons = t.emoticons || we.emoticons, xe = function () {
-            e._sceditor = _t, kt.locale && "en" !== kt.locale && je(), C(a = r("div", {
+            e._sceditor = _t, kt.locale && "en" !== kt.locale && Ie(), C(a = r("div", {
                     className: "sceditor-container"
                 }), e), y(a, "z-index", kt.zIndex), Le && A(a, "ie ie" + Le), ce = e.required, e
                 .required = !1;
             var t = le.formats[kt.format];
-            "init" in (i = t ? new t : {}) && i.init.call(_t), Ie(), We(), Be(), Pe(), $e(), Fe(), Se ||
+            "init" in (i = t ? new t : {}) && i.init.call(_t), je(), We(), Be(), Pe(), $e(), Fe(), Se ||
                 _t.toggleSourceMode(), tt();
             var n = function () {
                 m(De, "load", n), kt.autofocus && at(), mt(), nt(), Y.call("ready"), "onReady" in i &&
                     i.onReady.call(_t)
             };
             p(De, "load", n), "complete" === Ne.readyState && n()
-        }, Ie = function () {
+        }, je = function () {
             var e = kt.plugins;
             e = e ? e.toString()
                 .split(",") : [], Y = new ne(_t), e.forEach((function (e) {
                     Y.register(e.trim())
                 }))
-        }, je = function () {
+        }, Ie = function () {
             var e;
             (U = le.locale[kt.locale]) || (e = kt.locale.split("-"), U = le.locale[e[0]]), U && U
                 .dateFormat && (kt.dateFormat = U.dateFormat)
@@ -42887,7 +43026,7 @@ function (e) {
                 }), kt.startInSourceMode ? (A(a, "sourceMode"), g(f)) : (A(a, "wysiwygMode"), g(N)), kt
                 .spellcheck || _(a, "spellcheck", "false"), "https:" === De.location.protocol && _(f,
                     "src", "javascript:false"), d(a, f), d(a, N), _t.dimensions(kt.width || P(e), kt
-                    .height || I(e));
+                    .height || j(e));
             var t = Le ? "ie ie" + Le : "";
             t += Ce ? " ios" : "", (S = f.contentDocument)
                 .open(), S.write(te("html", {
@@ -42896,7 +43035,7 @@ function (e) {
                     charset: kt.charset,
                     style: kt.style
                 })), S.close(), z = S.body, x = f.contentWindow, _t.readOnly(!!kt.readOnly), (Ce || ze ||
-                    Le) && (I(z, "100%"), Le || p(z, "touchend", _t.focus));
+                    Le) && (j(z, "100%"), Le || p(z, "touchend", _t.focus));
             var i = _(e, "tabindex");
             _(N, "tabindex", i), _(f, "tabindex", i), K = new se(x), g(e), _t.val(e.value);
             var n = kt.placeholder || _(e, "placeholder");
@@ -42981,7 +43120,7 @@ function (e) {
                 w = 0,
                 k = 0,
                 x = P(a),
-                z = I(a),
+                z = j(a),
                 C = !1,
                 S = _t.rtl();
             if (e = kt.resizeMinHeight || z / 1.5, t = kt.resizeMaxHeight || 2.5 * z, i = kt
@@ -43001,7 +43140,7 @@ function (e) {
             }
             d(a, l), d(a, c), g(c), p(l, "touchstart mousedown", (function (e) {
                 "touchstart" === e.type ? (e = De.event, _ = e.touches[0].pageX, f = e
-                        .touches[0].pageY) : (_ = e.pageX, f = e.pageY), w = P(a), k = I(a),
+                        .touches[0].pageY) : (_ = e.pageX, f = e.pageY), w = P(a), k = j(a),
                     C = !0, A(a, "resizing"), v(c), p(Ne, u, s), p(Ne, h, o), e
                     .preventDefault()
             }))
@@ -43048,9 +43187,9 @@ function (e) {
                 width: _t.width(),
                 height: _t.height()
             } : (!1 !== e && (!1 !== i && (kt.width = e), P(a, e)), !1 !== t && (!1 !== i && (kt
-                .height = t), I(a, t)), _t)
+                .height = t), j(a, t)), _t)
         }, _t.height = function (e, t) {
-            return e || 0 === e ? (_t.dimensions(null, e, t), _t) : I(a)
+            return e || 0 === e ? (_t.dimensions(null, e, t), _t) : j(a)
         }, _t.maximize = function (e) {
             var t = "sceditor-maximize";
             return pe(e) ? T(a, t) : ((e = !!e) && (fe = De.pageYOffset), M(Ne.documentElement, t, e), M(
@@ -43061,7 +43200,7 @@ function (e) {
         }, _t.expandToContent = function (t) {
             if (!_t.maximize()) {
                 if (clearTimeout(_e), _e = !1, !de) {
-                    var i = kt.resizeMinHeight || kt.height || I(e);
+                    var i = kt.resizeMinHeight || kt.height || j(e);
                     de = {
                         min: i,
                         max: kt.resizeMaxHeight || 2 * i
@@ -43138,18 +43277,18 @@ function (e) {
             }
         }, qe = function (e) {
             var t = r("div", {}, S);
-            Y.call("pasteRaw", e), j(a, "pasteraw", e), e.html ? (t.innerHTML = e.html, V(t)) : t
+            Y.call("pasteRaw", e), I(a, "pasteraw", e), e.html ? (t.innerHTML = e.html, V(t)) : t
                 .innerHTML = X(e.text || "");
             var n = {
                 val: t.innerHTML
             };
-            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, S, J)), Y.call("paste", n), j(a,
+            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, S, J)), Y.call("paste", n), I(a,
                 "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, J)), Y.call(
                 "pasteHtml", n), _t.wysiwygEditorInsertHtml(n.val, null, !0)
         }, _t.closeDropDown = function (e) {
             L && (u(L), L = null), !0 === e && _t.focus()
         }, _t.wysiwygEditorInsertHtml = function (e, t, i) {
-            var n, s, o, a = I(f);
+            var n, s, o, a = j(f);
             _t.focus(), !i && c(Q, "code") || (K.insertHTML(e, t), K.saveRange(), Te(), v(n = h(z,
                     "#sceditor-end-marker")[0]), s = z.scrollTop, o = G(n)
                 .top + 1.5 * n.offsetHeight - a, g(n), (o > s || o + a < s) && (z.scrollTop = o), ut(!
@@ -43245,14 +43384,14 @@ function (e) {
                             e = e.parentNode;
                         e && H(e, !0) && (K.saveRange(), re(z, S), K.restoreRange())
                     }
-                    j(a, "selectionchanged")
+                    I(a, "selectionchanged")
                 }
                 ie = !1
             }
             ie || (ie = !0, "onselectionchange" in S ? e() : setTimeout(e, 100))
         }, ot = function () {
             var e, t = K.parentNode();
-            J !== t && (e = J, J = t, Q = K.getFirstBlockParent(t), j(a, "nodechanged", {
+            J !== t && (e = J, J = t, Q = K.getFirstBlockParent(t), I(a, "nodechanged", {
                 oldNode: e,
                 newNode: J
             }))
@@ -43530,7 +43669,7 @@ function (e) {
                     n = !i && K.hasSelection();
                 W = !1, e = !1 !== e && !S.getElementById("sceditor-start-marker"), q && (clearTimeout(q),
                         q = !1), n && e && K.saveRange(),
-                    (t = i ? N.value : z.innerHTML) !== ut.lastVal && (ut.lastVal = t, j(a,
+                    (t = i ? N.value : z.innerHTML) !== ut.lastVal && (ut.lastVal = t, I(a,
                         "valuechanged", {
                             rawValue: i ? _t.val() : t
                         })), n && e && K.removeMarkers()
@@ -44179,8 +44318,8 @@ function (e) {
         },
         Pe = {};
     ne.plugins = Pe;
-    var Ie = xe && xe < 11,
-        je = function (e, t, i) {
+    var je = xe && xe < 11,
+        Ie = function (e, t, i) {
             var n, s, o, a, r, l = "",
                 c = e.startContainer,
                 u = e.startOffset;
@@ -44242,7 +44381,7 @@ function (e) {
                 is: k,
                 closest: c,
                 width: P,
-                height: I,
+                height: j,
                 traverse: L,
                 rTraverse: O,
                 parseHTML: R,
@@ -44495,7 +44634,7 @@ function (e) {
         y(e, "width", t)
     }
 
-    function I(e, t) {
+    function j(e, t) {
         if (pe(t)) {
             var i = getComputedStyle(e),
                 n = a(i.paddingTop) + a(i.paddingBottom),
@@ -44505,7 +44644,7 @@ function (e) {
         y(e, "height", t)
     }
 
-    function j(e, t, i) {
+    function I(e, t, i) {
         var n;
         me(window.CustomEvent) ? n = new CustomEvent(t, {
                 bubbles: !0,
@@ -44842,7 +44981,7 @@ function (e) {
         }, l.selectRange = function (t) {
             var i, n = e.getSelection(),
                 o = t.endContainer;
-            if (!Ie && t.collapsed && o && !H(o, !0)) {
+            if (!je && t.collapsed && o && !H(o, !0)) {
                 for (i = o.lastChild; i && k(i, ".sceditor-ignore");) i = i.previousSibling;
                 if (k(i, "br")) {
                     var a = s.createRange();
@@ -44862,11 +45001,11 @@ function (e) {
         }, l.selectOuterText = function (e, t) {
             var i, n, s = l.cloneSelected();
             if (!s) return !1;
-            s.collapse(!1), i = je(s, !0, e), n = je(s, !1, t), s.setStart(i.node, i.offset), s.setEnd(n
+            s.collapse(!1), i = Ie(s, !0, e), n = Ie(s, !1, t), s.setStart(i.node, i.offset), s.setEnd(n
                 .node, n.offset), l.selectRange(s)
         }, l.getOuterText = function (e, t) {
             var i = l.cloneSelected();
-            return i ? (i.collapse(!e), je(i, e, t)
+            return i ? (i.collapse(!e), Ie(i, e, t)
                 .text) : ""
         }, l.replaceKeyword = function (e, t, i, n, s, o) {
             i || e.sort((function (e, t) {
@@ -44955,7 +45094,7 @@ function (e) {
 
     function le(e, t) {
         var i, a, l, f, x, z, S, N, L, R, W, q, U, K, Y, J, Q, ee, ie, ce, ue, de, _e, fe, ye, ke, xe, Te, Ae,
-            Ee, Pe, Ie, je, Be, $e, Fe, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, st,
+            Ee, Pe, je, Ie, Be, $e, Fe, He, We, Ve, qe, Ue, Ze, Ke, Ge, Ye, Je, Qe, Xe, et, tt, it, nt, st,
             ot, at, rt, lt, ct, ut, dt, ht, pt, mt, _t = this,
             ft = {},
             gt = [],
@@ -44966,25 +45105,25 @@ function (e) {
         _t.commands = n(!0, {}, t.commands || Me);
         var kt = _t.opts = n(!0, {}, we, t);
         _t.opts.emoticons = t.emoticons || we.emoticons, xe = function () {
-            e._sceditor = _t, kt.locale && "en" !== kt.locale && je(), C(a = r("div", {
+            e._sceditor = _t, kt.locale && "en" !== kt.locale && Ie(), C(a = r("div", {
                     className: "sceditor-container"
                 }), e), y(a, "z-index", kt.zIndex), Le && A(a, "ie ie" + Le), ce = e.required, e
                 .required = !1;
             var t = le.formats[kt.format];
-            "init" in (i = t ? new t : {}) && i.init.call(_t), Ie(), We(), Be(), Pe(), $e(), Fe(), Se ||
+            "init" in (i = t ? new t : {}) && i.init.call(_t), je(), We(), Be(), Pe(), $e(), Fe(), Se ||
                 _t.toggleSourceMode(), tt();
             var n = function () {
                 m(De, "load", n), kt.autofocus && at(), mt(), nt(), Y.call("ready"), "onReady" in i &&
                     i.onReady.call(_t)
             };
             p(De, "load", n), "complete" === Ne.readyState && n()
-        }, Ie = function () {
+        }, je = function () {
             var e = kt.plugins;
             e = e ? e.toString()
                 .split(",") : [], Y = new ne(_t), e.forEach((function (e) {
                     Y.register(e.trim())
                 }))
-        }, je = function () {
+        }, Ie = function () {
             var e;
             (U = le.locale[kt.locale]) || (e = kt.locale.split("-"), U = le.locale[e[0]]), U && U
                 .dateFormat && (kt.dateFormat = U.dateFormat)
@@ -44995,7 +45134,7 @@ function (e) {
                 }), kt.startInSourceMode ? (A(a, "sourceMode"), g(f)) : (A(a, "wysiwygMode"), g(N)), kt
                 .spellcheck || _(a, "spellcheck", "false"), "https:" === De.location.protocol && _(f,
                     "src", "javascript:false"), d(a, f), d(a, N), _t.dimensions(kt.width || P(e), kt
-                    .height || I(e));
+                    .height || j(e));
             var t = Le ? "ie ie" + Le : "";
             t += Ce ? " ios" : "", (S = f.contentDocument)
                 .open(), S.write(te("html", {
@@ -45004,7 +45143,7 @@ function (e) {
                     charset: kt.charset,
                     style: kt.style
                 })), S.close(), z = S.body, x = f.contentWindow, _t.readOnly(!!kt.readOnly), (Ce || ze ||
-                    Le) && (I(z, "100%"), Le || p(z, "touchend", _t.focus));
+                    Le) && (j(z, "100%"), Le || p(z, "touchend", _t.focus));
             var i = _(e, "tabindex");
             _(N, "tabindex", i), _(f, "tabindex", i), K = new se(x), g(e), _t.val(e.value);
             var n = kt.placeholder || _(e, "placeholder");
@@ -45089,7 +45228,7 @@ function (e) {
                 w = 0,
                 k = 0,
                 x = P(a),
-                z = I(a),
+                z = j(a),
                 C = !1,
                 S = _t.rtl();
             if (e = kt.resizeMinHeight || z / 1.5, t = kt.resizeMaxHeight || 2.5 * z, i = kt
@@ -45109,7 +45248,7 @@ function (e) {
             }
             d(a, l), d(a, c), g(c), p(l, "touchstart mousedown", (function (e) {
                 "touchstart" === e.type ? (e = De.event, _ = e.touches[0].pageX, f = e
-                        .touches[0].pageY) : (_ = e.pageX, f = e.pageY), w = P(a), k = I(a),
+                        .touches[0].pageY) : (_ = e.pageX, f = e.pageY), w = P(a), k = j(a),
                     C = !0, A(a, "resizing"), v(c), p(Ne, u, s), p(Ne, h, o), e
                     .preventDefault()
             }))
@@ -45156,9 +45295,9 @@ function (e) {
                 width: _t.width(),
                 height: _t.height()
             } : (!1 !== e && (!1 !== i && (kt.width = e), P(a, e)), !1 !== t && (!1 !== i && (kt
-                .height = t), I(a, t)), _t)
+                .height = t), j(a, t)), _t)
         }, _t.height = function (e, t) {
-            return e || 0 === e ? (_t.dimensions(null, e, t), _t) : I(a)
+            return e || 0 === e ? (_t.dimensions(null, e, t), _t) : j(a)
         }, _t.maximize = function (e) {
             var t = "sceditor-maximize";
             return pe(e) ? T(a, t) : ((e = !!e) && (fe = De.pageYOffset), M(Ne.documentElement, t, e), M(
@@ -45169,7 +45308,7 @@ function (e) {
         }, _t.expandToContent = function (t) {
             if (!_t.maximize()) {
                 if (clearTimeout(_e), _e = !1, !de) {
-                    var i = kt.resizeMinHeight || kt.height || I(e);
+                    var i = kt.resizeMinHeight || kt.height || j(e);
                     de = {
                         min: i,
                         max: kt.resizeMaxHeight || 2 * i
@@ -45246,18 +45385,18 @@ function (e) {
             }
         }, qe = function (e) {
             var t = r("div", {}, S);
-            Y.call("pasteRaw", e), j(a, "pasteraw", e), e.html ? (t.innerHTML = e.html, V(t)) : t
+            Y.call("pasteRaw", e), I(a, "pasteraw", e), e.html ? (t.innerHTML = e.html, V(t)) : t
                 .innerHTML = X(e.text || "");
             var n = {
                 val: t.innerHTML
             };
-            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, S, J)), Y.call("paste", n), j(a,
+            "fragmentToSource" in i && (n.val = i.fragmentToSource(n.val, S, J)), Y.call("paste", n), I(a,
                 "paste", n), "fragmentToHtml" in i && (n.val = i.fragmentToHtml(n.val, J)), Y.call(
                 "pasteHtml", n), _t.wysiwygEditorInsertHtml(n.val, null, !0)
         }, _t.closeDropDown = function (e) {
             L && (u(L), L = null), !0 === e && _t.focus()
         }, _t.wysiwygEditorInsertHtml = function (e, t, i) {
-            var n, s, o, a = I(f);
+            var n, s, o, a = j(f);
             _t.focus(), !i && c(Q, "code") || (K.insertHTML(e, t), K.saveRange(), Te(), v(n = h(z,
                     "#sceditor-end-marker")[0]), s = z.scrollTop, o = G(n)
                 .top + 1.5 * n.offsetHeight - a, g(n), (o > s || o + a < s) && (z.scrollTop = o), ut(!
@@ -45353,14 +45492,14 @@ function (e) {
                             e = e.parentNode;
                         e && H(e, !0) && (K.saveRange(), re(z, S), K.restoreRange())
                     }
-                    j(a, "selectionchanged")
+                    I(a, "selectionchanged")
                 }
                 ie = !1
             }
             ie || (ie = !0, "onselectionchange" in S ? e() : setTimeout(e, 100))
         }, ot = function () {
             var e, t = K.parentNode();
-            J !== t && (e = J, J = t, Q = K.getFirstBlockParent(t), j(a, "nodechanged", {
+            J !== t && (e = J, J = t, Q = K.getFirstBlockParent(t), I(a, "nodechanged", {
                 oldNode: e,
                 newNode: J
             }))
@@ -45638,7 +45777,7 @@ function (e) {
                     n = !i && K.hasSelection();
                 W = !1, e = !1 !== e && !S.getElementById("sceditor-start-marker"), q && (clearTimeout(q),
                         q = !1), n && e && K.saveRange(), (t = i ? N.value : z.innerHTML) !== ut
-                    .lastVal && (ut.lastVal = t, j(a, "valuechanged", {
+                    .lastVal && (ut.lastVal = t, I(a, "valuechanged", {
                         rawValue: i ? _t.val() : t
                     })), n && e && K.removeMarkers()
             }
@@ -46286,8 +46425,8 @@ function (e) {
         },
         Pe = {};
     ne.plugins = Pe;
-    var Ie = xe && xe < 11,
-        je = function (e, t, i) {
+    var je = xe && xe < 11,
+        Ie = function (e, t, i) {
             var n, s, o, a, r, l = "",
                 c = e.startContainer,
                 u = e.startOffset;
@@ -46349,7 +46488,7 @@ function (e) {
                 is: k,
                 closest: c,
                 width: P,
-                height: I,
+                height: j,
                 traverse: L,
                 rTraverse: O,
                 parseHTML: R,
