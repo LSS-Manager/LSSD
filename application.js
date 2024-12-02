@@ -989,35 +989,38 @@ function vehicleDriveReal(e) {
                     t.current_step++, t.timer_steps = i.getTime() - o, s += 1
                 }
             } while (offset_step >= 100 && void 0 !== routes[t.rh][t.current_step + 1]);
-            "undefined" != typeof route_show && 1 != route_show || void 0 !== t.polyline && s > 0 && (
-                void 0 === t.delete_step_counter_cache && (t.delete_step_counter_cache = 0), void 0 === t
-                .latitude || mapIsVisible([t.latitude, t.longitude]) ? (spliceLatLngs(t.polyline, s + t
-                    .delete_step_counter_cache), t.delete_step_counter_cache = 0) : t
-                .delete_step_counter_cache = t.delete_step_counter_cache + s), void 0 !== routes[t.rh][t
-                .current_step] && void 0 !== routes[t.rh][t.current_step + 1] && (start_lat = routes[t.rh]
-                [t.current_step][0], start_lng = routes[t.rh][t.current_step][1], end_lat = routes[t.rh][t
-                    .current_step + 1][0], end_lng = routes[t.rh][t.current_step + 1][1], offset_step = (i
-                    .getTime() - t.timer_steps) / (1e3 * routes[t.rh][t.current_step][2]) * 100, diff_jb =
-                end_lat - start_lat, diff_kb = end_lng - start_lng, current_lat = start_lat + diff_jb * (
-                    offset_step / 100), current_lng = start_lng + diff_kb * (offset_step / 100), t
-                .latitude = current_lat, t.longitude = current_lng, 1 == mobile_bridge_use && 4 ==
-                mobile_version ? mobileBridgeAdd("vehicle_move", {
-                    id: t.vehicle_id,
-                    title: t.title,
-                    sonderrechte: t.sonderrechte.toString(),
-                    latitude: t.latitude,
-                    longitude: t.longitude,
-                    app_icon_path_normal: t.app_icon_path_normal,
-                    app_icon_path_sonderrechte: t.app_icon_path_sonderrechte
-                }) : (isNaN(current_lat) || isNaN(current_lng), mapIsVisible([current_lat,
-                    current_lng]) && (isMapKitMap() ? t.coordinate = new mapkit.Coordinate(current_lat,
-                        current_lng) : t.setLatLng([current_lat, current_lng])), mapIsVisible([
-                        current_lat, current_lng]) ? (1 == t.performance_invisible && (t
-                        .performance_invisible = !1, isLeaflet() ? t.addTo(map) : map.addAnnotation(t)
-                        ), isLeaflet() && (vehicle_label ? t.openTooltip() : t.closeTooltip())) : (n =
-                        1e3, isLeaflet() ? (t.closeTooltip(), map.removeLayer(t)) : 0 == t
-                        .performance_invisible && map.removeAnnotation(t), t.performance_invisible = !0),
-                    new_position = null))
+            if ("undefined" != typeof route_show && 1 != route_show || void 0 !== t.polyline && s > 0 && (
+                    void 0 === t.delete_step_counter_cache && (t.delete_step_counter_cache = 0), void 0 === t
+                    .latitude || mapIsVisible([t.latitude, t.longitude]) ? (spliceLatLngs(t.polyline, s + t
+                        .delete_step_counter_cache), t.delete_step_counter_cache = 0) : t
+                    .delete_step_counter_cache = t.delete_step_counter_cache + s), void 0 !== routes[t.rh][t
+                    .current_step] && void 0 !== routes[t.rh][t.current_step + 1])
+                if (start_lat = routes[t.rh][t.current_step][0], start_lng = routes[t.rh][t.current_step][1],
+                    end_lat = routes[t.rh][t.current_step + 1][0], end_lng = routes[t.rh][t.current_step + 1][
+                        1], offset_step = (i.getTime() - t.timer_steps) / (1e3 * routes[t.rh][t.current_step][
+                        2]) * 100, diff_jb = end_lat - start_lat, diff_kb = end_lng - start_lng, current_lat =
+                    start_lat + diff_jb * (offset_step / 100), current_lng = start_lng + diff_kb * (
+                        offset_step / 100), t.latitude = current_lat, t.longitude = current_lng, 1 ==
+                    mobile_bridge_use && 4 == mobile_version) {
+                    mobileBridgeAdd("vehicle_move", {
+                        id: t.vehicle_id,
+                        title: t.title,
+                        sonderrechte: t.sonderrechte.toString(),
+                        latitude: t.latitude,
+                        longitude: t.longitude,
+                        app_icon_path_normal: t.app_icon_path_normal,
+                        app_icon_path_sonderrechte: t.app_icon_path_sonderrechte,
+                        current_step: t.current_step,
+                        r_id: t.rh
+                    })
+                } else isNaN(current_lat) || isNaN(current_lng), mapIsVisible([current_lat, current_lng]) && (
+                    isMapKitMap() ? t.coordinate = new mapkit.Coordinate(current_lat, current_lng) : t
+                    .setLatLng([current_lat, current_lng])), mapIsVisible([current_lat, current_lng]) ? (
+                    1 == t.performance_invisible && (t.performance_invisible = !1, isLeaflet() ? t.addTo(
+                        map) : map.addAnnotation(t)), isLeaflet() && (vehicle_label ? t.openTooltip() : t
+                        .closeTooltip())) : (n = 1e3, isLeaflet() ? (t.closeTooltip(), map.removeLayer(
+                    t)) : 0 == t.performance_invisible && map.removeAnnotation(t), t
+                    .performance_invisible = !0), new_position = null
         } else t.current_step++;
         setTimeout((function () {
             vehicleDriveReal(e)
@@ -2787,7 +2790,8 @@ function lightboxOpen(e) {
                     .find("#iframe-inside-container")
                     .css("height", a)
                     .css("width", o)
-            })), setTimeout('$("#lightbox_iframe_" + iframe_lightbox_number).focus();', 100)
+            })),
+            setTimeout('$("#lightbox_iframe_" + iframe_lightbox_number).focus();', 100)
     }
 }
 
@@ -2955,10 +2959,10 @@ function mobileBridgeAdd(e, t) {
     var i = !1;
     1 == mobile_bridge_use && 4 == mobile_version && "vehicle_move" == e && $.each(mobile_bridge_content, (
         function (n, s) {
-            "vehicle_move" == s.f && s.p.id == t.id && (i = !0, mobile_bridge_content[n] = {
+            if ("vehicle_move" == s.f && s.p.id == t.id) return i = !0, mobile_bridge_content[n] = {
                 f: e,
                 p: t
-            })
+            }, !1
         })), i || (mobile_bridge_content.push({
         f: e,
         p: t
@@ -4161,6 +4165,10 @@ function updateMissionFilterQueryParams(e) {
         $(t)
             .attr("href", i + "?" + missionFilterQueryParams)
     }))
+}
+
+function getRouteForVehicleRId(e) {
+    return null == e || "" === e ? routes : routes[e]
 }
 
 function missionPositionMarkerAdd(e) {
