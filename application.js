@@ -5337,6 +5337,7 @@ Object.values || (Object.values = function (e) {
                 pump: "Schmutzwasserpumpen",
                 pump_speed: "Pumpenleistung",
                 pump_speed_pump_only: "Pumpenleistung - Nur Schmutzwasserpumpen",
+                railway_fire: "Beliebige Bahnrettung",
                 rescue_dogs: "Anh\xe4nger Hundetransport oder Rettungshundefahrzeug",
                 rescue_dogs_seg: "Rettungshundefahrzeug",
                 rescue_dogs_thw: "Anh\xe4nger Hundetransport",
