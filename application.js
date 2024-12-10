@@ -5337,7 +5337,7 @@ Object.values || (Object.values = function (e) {
                 pump: "Schmutzwasserpumpen",
                 pump_speed: "Pumpenleistung",
                 pump_speed_pump_only: "Pumpenleistung - Nur Schmutzwasserpumpen",
-                railway_fire: "Beliebige Bahnrettung",
+                railway_fire: "Beliebiges Bahnrettungsfahrzeug",
                 rescue_dogs: "Anh\xe4nger Hundetransport oder Rettungshundefahrzeug",
                 rescue_dogs_seg: "Rettungshundefahrzeug",
                 rescue_dogs_thw: "Anh\xe4nger Hundetransport",
@@ -39116,7 +39116,8 @@ $((function () {
             "intervention_order.vehicles.technical_aid")], ["lift", I18n.t(
             "intervention_order.vehicles.lift")], ["mountain_height_rescue", I18n.t(
             "intervention_order.vehicles.mountain_height_rescue")], ["any_rtw", I18n.t(
-            "intervention_order.vehicles.any_rtw")]], $("#restore_map")
+            "intervention_order.vehicles.any_rtw")], ["railway_fire", I18n.t(
+            "intervention_order.vehicles.railway_fire")]], $("#restore_map")
         .click((function () {
             mapViewRestore()
         })), $("#coins_top")
