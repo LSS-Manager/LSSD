@@ -53,6 +53,7 @@ jobs:
 
             - name: Show changes
               run: |
+                  git status
                   git --no-pager diff --color-words
 
             - name: Create diff to mx version
