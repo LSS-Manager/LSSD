@@ -1,27 +1,6 @@
 const fs = require('fs/promises');
 const path = require('path');
 const jsdom = require('jsdom');
-const { js: beautifyJs, css: beautifyCss } = require('js-beautify');
-
-const BEAUTIFIER_OPTIONS = {
-    indent_size: '4',
-    indent_char: ' ',
-    max_preserve_newlines: '1',
-    preserve_newlines: true,
-    keep_array_indentation: true,
-    break_chained_methods: true,
-    indent_scripts: 'normal',
-    brace_style: 'collapse',
-    space_before_conditional: true,
-    unescape_strings: false,
-    jslint_happy: true,
-    end_with_newline: false,
-    wrap_line_length: '110',
-    indent_inner_html: true,
-    comma_first: false,
-    e4x: false,
-    indent_empty_lines: false,
-};
 
 const PATH = path.resolve(__dirname);
 
@@ -48,23 +27,21 @@ fetch(GAME)
         return files;
     })
     .then(async ({ js, css }) => ({
-        js: await fetch(`${GAME}${js}`)
-            .then(res => res.text())
-            .then(js => beautifyJs(js, BEAUTIFIER_OPTIONS)),
-        css: await fetch(`${GAME}${css}`)
-            .then(res => res.text())
-            .then(css => beautifyCss(css, BEAUTIFIER_OPTIONS)),
+        js: await fetch(`${GAME}${js}`).then(res => res.text()),
+        css: await fetch(`${GAME}${css}`).then(res => res.text()),
         jsPath: js,
         cssPath: css,
     }))
-    .then(({ js, css, jsPath, cssPath }) => Promise.all([
-        fs
-            .writeFile(path.resolve(PATH, 'application.js' + suffix), js)
-            .then(() => jsPath),
-        fs
-            .writeFile(path.resolve(PATH, 'application.css' + suffix), css)
-            .then(() => cssPath),
-    ]))
+    .then(({ js, css, jsPath, cssPath }) =>
+        Promise.all([
+            fs
+                .writeFile(path.resolve(PATH, `application${suffix}.js`), js)
+                .then(() => jsPath),
+            fs
+                .writeFile(path.resolve(PATH, `application${suffix}.css`), css)
+                .then(() => cssPath),
+        ])
+    )
     .then(([jsPath, cssPath]) =>
         fs
             .readFile(path.resolve(PATH, 'README.md'))
@@ -77,12 +54,6 @@ fetch(GAME)
                 /<!--\s*automated\s-->(.|\n)*?<!--\s*\/automated\s*-->/,
                 `
 <!-- automated -->
-## Beautify options
-Tool: [js-beautify](https://github.com/beautify-web/js-beautify)
-\`\`\`json
-${JSON.stringify(BEAUTIFIER_OPTIONS, null, 4)}
-\`\`\`
-
 ## JS
 | Attribute | Value |
 | --------- | ----- |
@@ -96,6 +67,11 @@ ${JSON.stringify(BEAUTIFIER_OPTIONS, null, 4)}
 | File      | [${cssPath.replace(/^\/assets\//, '')}](${GAME}${cssPath}) |
 | Server    | ${GAME} |
 | Time      | ${timestamp} |
+
+## Pretty-print
+Tool: [prettier](https://prettier.io)
+Options: [.prettierrc.json](./.prettierrc.json)
+
 <!-- /automated -->
 `.trim()
             )

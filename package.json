@@ -1,11 +1,12 @@
 {
-  "name": "lssd",
-  "packageManager": "yarn@4.6.0",
-  "scripts": {
-    "download": "yarn node .download.js"
-  },
-  "dependencies": {
-    "js-beautify": "1.14.9",
-    "jsdom": "22.1.0"
-  }
+    "name": "lssd",
+    "packageManager": "yarn@4.6.0",
+    "scripts": {
+        "download": "yarn node .download.js",
+        "prettier:write": "prettier --write --cache --cache-strategy content --ignore-path .prettierignore . "
+    },
+    "dependencies": {
+        "jsdom": "22.1.0",
+        "prettier": "^3.4.2"
+    }
 }
