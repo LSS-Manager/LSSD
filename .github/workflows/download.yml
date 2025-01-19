@@ -58,8 +58,10 @@ jobs:
 
             - name: Create diff to mx version
               run: |
-                  git diff --output=alt_js.diff application.js application.js.alt
-                  git diff --output=alt_css.diff application.css application.css.alt
+                  set -e
+                  git --no-pager diff --no-index application.js application.js.alt | tee alt_js.diff || true
+                  git --no-pager diff --no-index application.css application.css.alt |tee alt_css.diff || true
+                  exit 0
 
             - name: Check if there are changes
               run: |
