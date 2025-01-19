@@ -25,7 +25,10 @@ const BEAUTIFIER_OPTIONS = {
 
 const PATH = path.resolve(__dirname);
 
-const GAME = 'https://missionchief.co.uk';
+const defaultGame = 'https://missionchief.co.uk';
+const GAME = process.env.GAME || defaultGame;
+
+const suffix = GAME === defaultGame ? '' : '.alt';
 
 let timestamp = 0;
 
@@ -54,15 +57,14 @@ fetch(GAME)
         jsPath: js,
         cssPath: css,
     }))
-    .then(({ js, css, jsPath, cssPath }) => [
+    .then(({ js, css, jsPath, cssPath }) => Promise.all([
         fs
-            .writeFile(path.resolve(PATH, 'application.js'), js)
+            .writeFile(path.resolve(PATH, 'application.js' + suffix), js)
             .then(() => jsPath),
         fs
-            .writeFile(path.resolve(PATH, 'application.css'), css)
+            .writeFile(path.resolve(PATH, 'application.css' + suffix), css)
             .then(() => cssPath),
-    ])
-    .then(writing => Promise.all(writing))
+    ]))
     .then(([jsPath, cssPath]) =>
         fs
             .readFile(path.resolve(PATH, 'README.md'))

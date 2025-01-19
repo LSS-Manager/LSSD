@@ -5,3 +5,6 @@
 .pnp*
 
 node_modules/*
+
+application.js.alt
+application.css.alt

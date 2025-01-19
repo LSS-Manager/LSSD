@@ -43,6 +43,11 @@ jobs:
               run: |
                   yarn install --immutable
 
+            - name: Run Download Script on Mexico
+              run: |
+                 export GAME=https://centro-de-mando.mx
+                 yarn download
+
             - name: Run Download Script
               run: |
                   yarn download
@@ -50,6 +55,11 @@ jobs:
             - name: Show changes
               run: |
                   git --no-pager diff --color-words
+
+            - name: Create diff to mx version
+              run: |
+                  git diff --no-index --output=alt_js.diff application.js application.js.alt
+                  git diff --no-index --output=alt_css.diff application.css application.css.alt
 
             - name: Check if there are changes
               run: |
