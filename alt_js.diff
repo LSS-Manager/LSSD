@@ -1,0 +1,271 @@
+diff --git a/application.js b/application.js.alt
+index e8736e3..1f65905 100644
+--- a/application.js
++++ b/application.js.alt
+@@ -1290,71 +1290,62 @@ function aaoNextAvailable(e, t) {
+ }
+ 
+ function aao(e, t, i, n) {
+-    if (n > 0) {
+-        const i = {};
+-        var s;
+-        if (-1 !== e.indexOf("vehicle_type_id_")) {
+-            const t = parseAaoVehicleIds(e.substring(16));
+-            s = $(aao_source_element + " input")
+-                .filter((function () {
+-                    const e = parseInt($(this)
+-                        .attr("vehicle_type_id"));
+-                    return t.includes(e)
+-                }))
+-        } else {
+-            const n = $(aao_source_element + " input");
+-            "auto_assign" === aaoEquipmentModes[t.attr("equipment_mode")] && $.each(n, ((t, n) => {
+-                const s = $(n)
+-                    .attr("value"),
+-                    o = vehiclesEquipmentDataById[s];
+-                if (o) {
+-                    const t = o.state.equipments.filter((e => e.isSelectPossible()))
+-                        .find((t => t.aaoValues[e] > 0));
+-                    t && (i[s] = t)
+-                }
+-            })), s = n.filter((function () {
+-                const t = $(this)
+-                    .attr("value"),
+-                    n = !!i[t];
+-                return $(this)
+-                    .attr(e) > 0 || n
+-            }))
+-        }
+-        s.each((function () {
+-            const s = $(this)
+-                .attr("value");
+-            if (n > 0) {
+-                var o = [];
+-                if ("" != t.attr("building_ids")) o = jQuery.parseJSON(t.attr("building_ids"));
+-                if (aao_building_check(o, $(this)) && !$(this)
+-                    .prop("checked") && !$(this)
+-                    .prop("disabled") && $(this)
+-                    .attr("ignore_aao") <= 0 && ($(this)
+-                        .attr("vehicle_type_ignore_default_aao") <= 0 || -1 !== e.indexOf(
+-                            "custom_"))) {
+-                    "grtw0" == e && $("#vehicle_mode_" + $(this)
+-                            .val() + "_0")
+-                        .prop("checked", !0)
+-                        .change(), "grtw1" == e && $("#vehicle_mode_" + $(this)
+-                            .val() + "_1")
+-                        .prop("checked", !0)
+-                        .change(), AAO_MULTIPLE_KEYS.includes(e) ? n -= $(this)
+-                        .attr(e) : n -= 1;
+-                    const t = i[s];
+-                    if (t) {
+-                        const e = vehiclesEquipmentDataById[s];
+-                        t.selected = !0, e.updateSelectedEquipment(), e.applyEquipment({
+-                            selectVehicle: !1
+-                        })
+-                    }
+-                    $(this)
+-                        .prop("checked", !0), $(this)
+-                        .change()
+-                }
+-            }
++    return aao_check_update($(aao_source_element + " input"), e, t, i, n)
++}
++
++function aao_check_update(e, t, i, n, s) {
++    if (s <= 0) return "";
++    const o = {};
++    var a;
++    if (-1 !== t.indexOf("vehicle_type_id_")) {
++        const i = parseAaoVehicleIds(t.substring(16));
++        a = e.filter((function () {
++            const e = parseInt($(this)
++                .attr("vehicle_type_id"));
++            return i.includes(e)
++        }))
++    } else {
++        "auto_assign" === aaoEquipmentModes[i.attr("equipment_mode")] && $.each(e, ((e, i) => {
++            const n = $(i)
++                .attr("value"),
++                s = vehiclesEquipmentDataById[n];
++            if (s) {
++                const e = s.state.equipments.filter((e => e.isSelectPossible()))
++                    .find((e => e.aaoValues[t] > 0));
++                e && (o[n] = e)
++            }
++        })), a = e.filter((function (e, i) {
++            const n = $(i),
++                s = n.attr("value"),
++                a = !!o[s];
++            return n.attr(t) > 0 || a
+         }))
+     }
+-    return n > 0 ? I18n.t("javascript.missed_vehicle") + " " + n + " " + i + ". " : ""
++    return a.each((function (e, n) {
++        const a = $(n),
++            r = a.attr("value");
++        if (s <= 0) return "";
++        var l = [];
++        if ("" != i.attr("building_ids")) l = jQuery.parseJSON(i.attr("building_ids"));
++        if (aao_building_check(l, a) && !a.prop("checked") && !a.prop("disabled") && a.attr(
++                "ignore_aao") <= 0 && (a.attr("vehicle_type_ignore_default_aao") <= 0 || -1 !== t
++                .indexOf("custom_"))) {
++            "grtw0" == t && $("#vehicle_mode_" + a.val() + "_0")
++                .prop("checked", !0)
++                .change(), "grtw1" == t && $("#vehicle_mode_" + a.val() + "_1")
++                .prop("checked", !0)
++                .change(), AAO_MULTIPLE_KEYS.includes(t) ? s -= a.attr(t) : s -= 1;
++            const e = o[r];
++            if (e) {
++                const t = vehiclesEquipmentDataById[r];
++                e.selected = !0, t.updateSelectedEquipment(), t.applyEquipment({
++                    selectVehicle: !1
++                })
++            }
++            a.prop("checked", !0), existing_vehicles_per_checkbox_id.set(n.id, !0), 0 === s && a
++                .change()
++        }
++    })), s > 0 ? I18n.t("javascript.missed_vehicle") + " " + s + " " + n + ". " : ""
+ }
+ 
+ function mission_participation_add(e) {
+@@ -1624,7 +1615,8 @@ function missionAlarmTrailerCheck(e) {
+             } else $(".vehicle_checkbox[value=" + $(this)
+                     .attr("tractive_vehicle_id") + "]")
+                 .attr("trailer_vehicle_id", t)
+-        })), $("input.vehicle_checkbox[trailer=1][fms=2]" + (void 0 !== e ? "[building_id=" + e + "]" : ""))
++        })),
++        $("input.vehicle_checkbox[trailer=1][fms=2]" + (void 0 !== e ? "[building_id=" + e + "]" : ""))
+         .each((function () {
+             var e = !1;
+             if (!$(this)
+@@ -1741,6 +1733,15 @@ function vehicleSelectionReset() {
+         .change()
+ }
+ 
++function vehicleSelectionResetDocument() {
++    document.querySelectorAll(".vehicle_checkbox:checked")
++        .forEach((function (e) {
++            e.checked = !1;
++            vehicleResetTrailer($(e)), existing_vehicles_per_checkbox_id.set(e.id, !1)
++        })), $(".vehicle_checkbox:first")
++        .change()
++}
++
+ function vehicleResetTrailer(e) {
+     "1" == e.attr("trailer") && (e.prop("checked") || $("input.vehicle_checkbox[trailer_vehicle_id=" + e
+         .val() + "]")
+@@ -1748,13 +1749,17 @@ function vehicleResetTrailer(e) {
+ }
+ 
+ function aaoNearSelection(e, t, i, n, s, o) {
+-    for (missing = ""; n > 0;) {
+-        var a = aaoNextAvailable(t, o),
+-            r = aaoNextAvailable(i, o),
+-            l = aaoNextAvailable(e, o); - 1 != r && -1 != a && -1 != l ? a > l || r > l ? missing += aao(e, o,
+-                s[1], 1) : (missing += aao(t, o, s[1], 1), missing += aao(i, o, s[1], 1)) : -1 != r && -1 !=
+-            a ? (missing += aao(t, o, s[1], 1), missing += aao(i, o, s[1], 1)) : -1 != l ? missing += aao(e,
+-                o, s[1], 1) : (missing += aao(s[0], o, s[1], n), n = 0), n -= 1
++    missing = "";
++    const a = $(aao_source_element + " input");
++    for (; n > 0;) {
++        var r = aaoNextAvailable(t, o),
++            l = aaoNextAvailable(i, o),
++            c = aaoNextAvailable(e, o); - 1 != l && -1 != r && -1 != c ? r > c || l > c ? missing +=
++            aao_check_update(a, e, o, s[1], 1) : (missing += aao_check_update(a, t, o, s[1], 1), missing +=
++                aao_check_update(a, i, o, s[1], 1)) : -1 != l && -1 != r ? (missing += aao_check_update(a, t,
++                o, s[1], 1), missing += aao_check_update(a, i, o, s[1], 1)) : -1 != c ? missing +=
++            aao_check_update(a, e, o, s[1], 1) : (missing += aao_check_update(a, s[0], o, s[1], n), n = 0),
++            n -= 1
+     }
+     return missing
+ }
+@@ -1762,42 +1767,41 @@ function aaoNearSelection(e, t, i, n, s, o) {
+ function aaoClickHandler(e) {
+     var t = "",
+         i = $(e);
+-    "true" == i.attr("reset") && (vehicleSelectionReset(), $(".vehicle_checkbox")
+-        .each((function () {
+-            vehicleResetTrailer($(this))
+-        }))), $.each(aao_types, (function (e, n) {
+-        if ("naw_or_rtw_and_nef" == n[0] || "naw_or_rtw_and_nef_or_rth" == n[0]) {
+-            var s = "nef";
+-            "naw_or_rtw_and_nef" == n[0] && (s = "nef_only");
+-            var o = i.attr(n[0]);
+-            t += aaoNearSelection("naw", s, "rtw", o, n, i)
+-        } else if ("hlf_or_rw_and_lf" == n[0]) {
+-            o = i.attr(n[0]);
+-            t += aaoNearSelection("hlf_only", "rw_only", "lf_only", o, n, i)
++    "true" == i.attr("reset") && vehicleSelectionResetDocument();
++    const n = $(aao_source_element + " input");
++    $.each(aao_types, (function (e, s) {
++        if ("naw_or_rtw_and_nef" == s[0] || "naw_or_rtw_and_nef_or_rth" == s[0]) {
++            var o = "nef";
++            "naw_or_rtw_and_nef" == s[0] && (o = "nef_only");
++            var a = i.attr(s[0]);
++            t += aaoNearSelection("naw", o, "rtw", a, s, i)
++        } else if ("hlf_or_rw_and_lf" == s[0]) {
++            a = i.attr(s[0]);
++            t += aaoNearSelection("hlf_only", "rw_only", "lf_only", a, s, i)
+         } else {
+-            o = i.attr(n[0]);
+-            t += aao(n[0], i, n[1], o)
++            a = i.attr(s[0]);
++            t += aao_check_update(n, s[0], i, s[1], a)
+         }
+     }));
+-    var n = i.attr("custom");
+-    if ("" != n) {
+-        var s = jQuery.parseJSON(n);
+-        $.each(s, (function (e, n) {
+-            t += aao("custom_" + md5(e), i, e, n)
++    var s = i.attr("custom");
++    if ("" != s) {
++        var o = jQuery.parseJSON(s);
++        $.each(o, (function (e, s) {
++            t += aao_check_update(n, "custom_" + md5(e), i, e, s)
+         }))
+     }
+-    var o = i.attr("vehicle_type_ids"),
+-        a = i.attr("vehicle_type_captions");
+-    if (void 0 !== o && void 0 !== a) {
+-        var r = jQuery.parseJSON(o);
+-        a = jQuery.parseJSON(a);
+-        $.each(r, (function (e, n) {
+-            var s = a[e];
+-            t += aao("vehicle_type_id_" + e, i, s, n)
++    var a = i.attr("vehicle_type_ids"),
++        r = i.attr("vehicle_type_captions");
++    if (void 0 !== a && void 0 !== r) {
++        var l = jQuery.parseJSON(a);
++        r = jQuery.parseJSON(r);
++        $.each(l, (function (e, s) {
++            var o = r[e];
++            t += aao_check_update(n, "vehicle_type_id_" + e, i, o, s)
+         }))
+     }
+     return "" != t ? ("undefined" != typeof pressedKeys && (pressedKeys = {}), alert(t)) : aao_available(i
+-        .attr("aao_id"), !0), !1
++        .attr("aao_id"), !0), update_active_tab_inputs(), !1
+ }
+ 
+ function vehicleGroupClickHandler(vehicle_group_element) {
+@@ -2775,7 +2779,8 @@ function lightboxOpen(e) {
+             .css("height", n + "px"), $("#lightbox_box")
+             .attr("iframeWidth", o), $("#lightbox_box")
+             .attr("iframeHeight", a), $("#lightbox_box")
+-            .show(), $("#lightbox_box")
++            .show(),
++            $("#lightbox_box")
+             .append('<iframe class="lightbox_iframe" style="width:' + o + "px;height:" + a +
+                 'px" id="lightbox_iframe_' + iframe_lightbox_number + '"></iframe>'), $("#lightbox_iframe_" +
+                 iframe_lightbox_number)
+@@ -2790,8 +2795,7 @@ function lightboxOpen(e) {
+                     .find("#iframe-inside-container")
+                     .css("height", a)
+                     .css("width", o)
+-            })),
+-            setTimeout('$("#lightbox_iframe_" + iframe_lightbox_number).focus();', 100)
++            })), setTimeout('$("#lightbox_iframe_" + iframe_lightbox_number).focus();', 100)
+     }
+ }
+ 
