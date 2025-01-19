@@ -7,7 +7,7 @@ on:
         - cron: '0 0 * * *'        # Every day at midnight
 
 jobs:
-    build:
+    download:
         name: '[📥️] Download'
         runs-on: 'ubuntu-latest'
         steps:
@@ -58,8 +58,8 @@ jobs:
 
             - name: Create diff to mx version
               run: |
-                  git diff --no-index --output=alt_js.diff application.js application.js.alt
-                  git diff --no-index --output=alt_css.diff application.css application.css.alt
+                  git diff --output=alt_js.diff application.js application.js.alt
+                  git diff --output=alt_css.diff application.css application.css.alt
 
             - name: Check if there are changes
               run: |
