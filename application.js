@@ -7460,6 +7460,7 @@ Object.values ||
             ready_home: 'Available at Station',
             ready_traveling: 'Clear and Available',
             talking_wish: 'Transport Request',
+            transporting_car: 'Transporting Vehicle',
             waiting_for_vehicle: 'Awaiting vehicle to tow',
         },
         intervention_order: {
@@ -8999,6 +9000,8 @@ Object.values ||
                 bike_police: 'DB-Bike',
                 boot: 'WOA of BA-RB',
                 brush_truck: 'Terreinvaardige Tankautospuit',
+                car_carrier: 'Een Berger-K',
+                car_carrier_large: 'Een Berger-G',
                 coastal_boat: 'RB-K of RB-G',
                 division_chief_unit: 'Hoofdofficier van Dienst - Brandweer',
                 elw_airport: 'Airport Fire Officer / On Scene Commander',

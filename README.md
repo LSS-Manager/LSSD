@@ -8,9 +8,9 @@ Für mich und andere Entwickler eine kleine Übersicht der Einsätze aller Spiel
 
 | Attribute | Value                                                                                                                                |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| File      | [application-afffe98eeaf9f638e2789c09e91a3a60.js](https://missionchief.co.uk/assets/application-afffe98eeaf9f638e2789c09e91a3a60.js) |
+| File      | [application-54e486a93033e50eb810c20a832f6fcc.js](https://missionchief.co.uk/assets/application-54e486a93033e50eb810c20a832f6fcc.js) |
 | Server    | https://missionchief.co.uk                                                                                                           |
-| Time      | 2025-01-19T23:54:12.822Z                                                                                                             |
+| Time      | 2025-01-20T14:19:07.089Z                                                                                                             |
 
 ## CSS
 
@@ -18,7 +18,7 @@ Für mich und andere Entwickler eine kleine Übersicht der Einsätze aller Spiel
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | File      | [application-f5c2974eb24c1122f61b11891d93c7ba.css](https://missionchief.co.uk/assets/application-f5c2974eb24c1122f61b11891d93c7ba.css) |
 | Server    | https://missionchief.co.uk                                                                                                             |
-| Time      | 2025-01-19T23:54:12.822Z                                                                                                               |
+| Time      | 2025-01-20T14:19:07.089Z                                                                                                               |
 
 ## Pretty-print
 
