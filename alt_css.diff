@@ -1,5 +1,5 @@
 diff --git a/application.css b/application.alt.css
-index 80318b8..540acb8 100644
+index 80318b8..b3fb778 100644
 --- a/application.css
 +++ b/application.alt.css
 @@ -34,15 +34,15 @@
@@ -559,15 +559,10 @@ index 80318b8..540acb8 100644
      margin-left: 0;
  }
  .aao_btn {
-@@ -15136,17 +15136,12 @@ body.dark .dark-visible {
- }
- .spawn-area-status-label {
-     margin-right: 5px;
--}
--.crashed-cars-container .crashed-car-row {
--    display: flex;
--    align-items: center;
--    gap: 10px;
+@@ -15141,12 +15141,12 @@ body.dark .dark-visible {
+     display: flex;
+     align-items: center;
+     gap: 10px;
 -} /*!
 - * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
 - *
@@ -583,7 +578,7 @@ index 80318b8..540acb8 100644
  select.bs-select-hidden,
  select.selectpicker {
      display: none !important;
-@@ -15224,8 +15219,8 @@ select.selectpicker {
+@@ -15224,8 +15224,8 @@ select.selectpicker {
      margin-left: 0;
  }
  .bootstrap-select.btn-group.dropdown-menu-right,
@@ -594,7 +589,7 @@ index 80318b8..540acb8 100644
      float: right;
  }
  .form-group .bootstrap-select.btn-group,
-@@ -15446,7 +15441,7 @@ select.selectpicker {
+@@ -15446,7 +15446,7 @@ select.selectpicker {
      margin-bottom: 0;
      width: 100%;
      float: none;
@@ -603,7 +598,7 @@ index 80318b8..540acb8 100644
  div.sceditor-grip,
  .sceditor-button div {
      background-image: url('/images/famfamfam.png');
-@@ -15959,16 +15954,16 @@ div.sceditor-dropdown input[id='des'] {
+@@ -15959,16 +15959,16 @@ div.sceditor-dropdown input[id='des'] {
  .popover[class*='tour-'] .popover-navigation *[data-role='end'] {
      cursor: pointer;
  }
@@ -625,7 +620,7 @@ index 80318b8..540acb8 100644
      display: none;
  }
  .btn-tutorial {
-@@ -16140,7 +16135,7 @@ div.sceditor-dropdown input[id='des'] {
+@@ -16140,7 +16140,7 @@ div.sceditor-dropdown input[id='des'] {
      text-shadow: 1px 1px 2px black !important;
  }
  .policechief .seasonalbar .navbar-right > li > a > img {
