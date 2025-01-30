@@ -6696,7 +6696,8 @@ Object.values ||
                 fly_car: 'Rapid Response Vehicle / General Practitioner',
                 foam: 'Foam Tenders or RIV',
                 fukw: 'F\xfcKW (F\xfchrungskraftwagen - Polizei)',
-                fustkw_or_civil_patrolcar: 'FuStW oder Zivilstreifenwagen',
+                fustkw_or_civil_patrolcar:
+                    'Funkstreifenwagen oder Zivilstreifenwagen',
                 fustw_or_police_motorcycle:
                     'Funkstreifenwagen oder Polizeimotorrad',
                 fwk: 'Feuerwehrkran',
@@ -6846,7 +6847,7 @@ Object.values ||
             coins: 'Coins',
             credits: 'Credits',
             current_reward_for_you:
-                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event currency',
+                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'Tage',
             few_seconds: 'In wenigen Sekunden',
             finish_in: 'Ende in:',
@@ -6893,7 +6894,7 @@ Object.values ||
             to_building: 'Zum Geb\xe4ude',
             to_mission: 'Zum Einsatz',
             total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total Event currency earned:',
+            total_event_currency_earned: 'Total event credits earned:',
             understand: 'Verstanden',
             user_not_found: 'Der Spieler wurde nicht gefunden. ',
             vehicle_payload: {
@@ -7644,7 +7645,7 @@ Object.values ||
             coins: 'Coins',
             credits: 'Credits',
             current_reward_for_you:
-                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event currency',
+                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'days',
             few_seconds: 'in few seconds',
             finish_in: 'Finish in:',
@@ -7695,7 +7696,7 @@ Object.values ||
             to_building: 'View Building',
             to_mission: 'View Mission',
             total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total Event currency earned:',
+            total_event_currency_earned: 'Total event credits earned:',
             understand: 'Acknowledge',
             user_not_found: 'The player was not found.',
             vehicle_payload: {
@@ -8398,7 +8399,7 @@ Object.values ||
             coins: 'Coins',
             credits: 'Credits',
             current_reward_for_you:
-                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event currency',
+                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'days',
             few_seconds: 'in few seconds',
             finish_in: 'Finish in:',
@@ -8445,7 +8446,7 @@ Object.values ||
             to_building: 'View Building',
             to_mission: 'View Mission',
             total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total Event currency earned:',
+            total_event_currency_earned: 'Total event credits earned:',
             understand: 'Acknowledge',
             user_not_found: 'The player was not found.',
             vehicle_payload: {
@@ -9130,7 +9131,7 @@ Object.values ||
             coins: 'Coins',
             credits: 'Credits',
             current_reward_for_you:
-                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event currency',
+                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'dagen',
             few_seconds: 'Nog enkele seconden',
             finish_in: 'Duurt nog:',
@@ -9182,7 +9183,7 @@ Object.values ||
             to_building: 'Naar post',
             to_mission: 'Naar incident',
             total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total Event currency earned:',
+            total_event_currency_earned: 'Total event credits earned:',
             understand: 'Begrepen',
             user_not_found: 'De speler is niet gevonden.',
             vehicle_payload: {
@@ -9844,7 +9845,7 @@ Object.values ||
             coins: 'Monedas',
             credits: 'Cr\xe9ditos',
             current_reward_for_you:
-                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event currency',
+                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'd\xedas',
             few_seconds: 'en pocos segundos',
             finish_in: 'Termina en:',
@@ -9896,7 +9897,7 @@ Object.values ||
             to_building: 'Ver edificio',
             to_mission: 'Ver misi\xf3n',
             total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total Event currency earned:',
+            total_event_currency_earned: 'Total event credits earned:',
             understand: 'Recibido',
             user_not_found: 'No se ha encontrado al jugador.',
             vehicle_payload: {
@@ -10561,7 +10562,7 @@ Object.values ||
             coins: 'Coins',
             credits: 'Credits',
             current_reward_for_you:
-                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event currency',
+                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'days',
             few_seconds: 'in few seconds',
             finish_in: 'Finish in:',
@@ -10612,7 +10613,7 @@ Object.values ||
             to_building: 'View Building',
             to_mission: 'View Mission',
             total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total Event currency earned:',
+            total_event_currency_earned: 'Total event credits earned:',
             understand: 'Acknowledge',
             user_not_found: 'The player was not found.',
             vehicle_payload: {
@@ -11299,7 +11300,7 @@ Object.values ||
             coins: 'Mynt',
             credits: 'Krediter',
             current_reward_for_you:
-                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event currency',
+                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'dagar',
             few_seconds: 'om n\xe5gra sekunder',
             finish_in: 'Avsluta om:',
@@ -11350,7 +11351,7 @@ Object.values ||
             to_building: 'Visa byggnad',
             to_mission: 'Visa uppdrag',
             total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total Event currency earned:',
+            total_event_currency_earned: 'Total event credits earned:',
             understand: 'Acceptera',
             user_not_found: 'Spelaren kunde inte hittas.',
             vehicle_payload: {
@@ -12032,7 +12033,7 @@ Object.values ||
             coins: 'Monety',
             credits: 'Kredyty',
             current_reward_for_you:
-                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event currency',
+                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'dni',
             few_seconds: 'za kilka sekund',
             finish_in: 'Koniec za:',
@@ -12086,7 +12087,7 @@ Object.values ||
             to_building: 'Poka\u017c budynek',
             to_mission: 'Poka\u017c misj\u0119',
             total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total Event currency earned:',
+            total_event_currency_earned: 'Total event credits earned:',
             understand: 'Potwierd\u017a',
             user_not_found: 'Nie znaleziono gracza.',
             vehicle_payload: {
@@ -12766,7 +12767,7 @@ Object.values ||
             coins: 'Monete',
             credits: 'Crediti',
             current_reward_for_you:
-                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event currency',
+                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'giorni',
             few_seconds: 'in pochi secondi',
             finish_in: 'Finisce tra:',
@@ -12817,7 +12818,7 @@ Object.values ||
             to_building: 'Visualizza edificio',
             to_mission: 'Visualizza missione',
             total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total Event currency earned:',
+            total_event_currency_earned: 'Total event credits earned:',
             understand: 'Conferma',
             user_not_found: 'Il giocatore non \xe8 stato trovato.',
             vehicle_payload: {
@@ -13494,7 +13495,7 @@ Object.values ||
             coins: 'Pi\xe8ces',
             credits: 'Cr\xe9dits',
             current_reward_for_you:
-                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event currency',
+                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'jours',
             few_seconds: 'dans quelques secondes',
             finish_in: 'Terminer dans\xa0:',
@@ -13543,7 +13544,7 @@ Object.values ||
             to_building: 'Afficher le b\xe2timent',
             to_mission: 'Afficher la mission',
             total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total Event currency earned:',
+            total_event_currency_earned: 'Total event credits earned:',
             understand: 'Bien re\xe7u',
             user_not_found: 'Impossible de trouver le joueur.',
             vehicle_payload: {
@@ -13616,6 +13617,8 @@ Object.values ||
                 mission_positions: "Points d'int\xe9r\xeat (PI)",
                 mission_positions_section: 'PI',
                 missions_section: 'Missions',
+                mountain_rescue: 'Gendarmerie haute montagne',
+                mountain_rescue_heliport: 'DAG',
                 police_copter_station_missions:
                     'Forces a\xe9riennes de la Gendarmerie nationale',
                 police_depot: 'Police Depot',
@@ -14281,7 +14284,7 @@ Object.values ||
             coins: '\u041c\u043e\u043d\u0435\u0442\u044b',
             credits: '\u041a\u0440\u0435\u0434\u0438\u0442\u044b',
             current_reward_for_you:
-                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event currency',
+                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: '\u0434\u043d.',
             few_seconds:
                 '\u0447\u0435\u0440\u0435\u0437 \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0441\u0435\u043a\u0443\u043d\u0434',
@@ -14352,7 +14355,7 @@ Object.values ||
             to_mission:
                 '\u0421\u043c\u043e\u0442\u0440\u0435\u0442\u044c \u0437\u0430\u0434\u0430\u043d\u0438\u0435',
             total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total Event currency earned:',
+            total_event_currency_earned: 'Total event credits earned:',
             understand:
                 '\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c',
             user_not_found:
@@ -15093,7 +15096,7 @@ Object.values ||
             coins: 'M\xf8nter',
             credits: 'Kreditter',
             current_reward_for_you:
-                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event currency',
+                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'dage',
             few_seconds: 'om f\xe5 sekunder',
             finish_in: 'F\xe6rdig om:',
@@ -15145,7 +15148,7 @@ Object.values ||
             to_building: 'Se bygning',
             to_mission: 'Se mission',
             total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total Event currency earned:',
+            total_event_currency_earned: 'Total event credits earned:',
             understand: 'Forst\xe5et',
             user_not_found: 'Spilleren blev ikke fundet',
             vehicle_payload: {
@@ -15809,7 +15812,7 @@ Object.values ||
             coins: 'Mynter',
             credits: 'Kreditter',
             current_reward_for_you:
-                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event currency',
+                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'dager',
             few_seconds: 'om f\xe5 sekunder',
             finish_in: 'Fullf\xf8r om:',
@@ -15861,7 +15864,7 @@ Object.values ||
             to_building: 'Vis bygning',
             to_mission: 'Vis oppdrag',
             total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total Event currency earned:',
+            total_event_currency_earned: 'Total event credits earned:',
             understand: 'Bekreft',
             user_not_found: 'Spilleren ble ikke funnet.',
             vehicle_payload: {
@@ -16530,7 +16533,7 @@ Object.values ||
             coins: 'Mince',
             credits: 'Kredity',
             current_reward_for_you:
-                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event currency',
+                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'd',
             few_seconds: 'za p\xe1r sekund',
             finish_in: 'Konec za:',
@@ -16584,7 +16587,7 @@ Object.values ||
             to_building: 'Zobrazit budovu',
             to_mission: 'Zobrazit misi',
             total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total Event currency earned:',
+            total_event_currency_earned: 'Total event credits earned:',
             understand: 'OK',
             user_not_found: 'Hr\xe1\u010d nebyl nalezen.',
             vehicle_payload: {
@@ -17250,7 +17253,7 @@ Object.values ||
             coins: 'Alt\u0131n',
             credits: 'Krediler',
             current_reward_for_you:
-                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event currency',
+                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'g\xfcn',
             few_seconds: 'birka\xe7 saniyede',
             finish_in: 'Bitir:',
@@ -17298,7 +17301,7 @@ Object.values ||
             to_building: 'Yap\u0131y\u0131 G\xf6r\xfcnt\xfcle',
             to_mission: 'G\xf6revi G\xf6r\xfcnt\xfcle',
             total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total Event currency earned:',
+            total_event_currency_earned: 'Total event credits earned:',
             understand: 'Onayla',
             user_not_found: 'Oyuncu bulunamad\u0131.',
             vehicle_payload: {
@@ -17964,7 +17967,7 @@ Object.values ||
             coins: 'Moedas',
             credits: 'Cr\xe9ditos',
             current_reward_for_you:
-                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event currency',
+                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'dias',
             few_seconds: 'em alguns segundos',
             finish_in: 'Finaliza em:',
@@ -18016,7 +18019,7 @@ Object.values ||
             to_building: 'Ver edif\xedcio',
             to_mission: 'Ver miss\xe3o',
             total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total Event currency earned:',
+            total_event_currency_earned: 'Total event credits earned:',
             understand: 'Reconhecer',
             user_not_found: 'O jogador n\xe3o foi encontrado.',
             vehicle_payload: {
@@ -18670,7 +18673,7 @@ Object.values ||
             coins: 'Moedas',
             credits: 'Cr\xe9ditos',
             current_reward_for_you:
-                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event currency',
+                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'dias',
             few_seconds: 'em alguns segundos',
             finish_in: 'Finaliza em:',
@@ -18722,7 +18725,7 @@ Object.values ||
             to_building: 'Ver edif\xedcio',
             to_mission: 'Ver miss\xe3o',
             total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total Event currency earned:',
+            total_event_currency_earned: 'Total event credits earned:',
             understand: 'Reconhecer',
             user_not_found: 'O jogador n\xe3o foi encontrado.',
             vehicle_payload: {
@@ -19435,7 +19438,7 @@ Object.values ||
             coins: '\u041c\u043e\u043d\u0435\u0442\u0438',
             credits: '\u041a\u0440\u0435\u0434\u0438\u0442\u0438',
             current_reward_for_you:
-                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event currency',
+                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: '\u0434\u043d.',
             few_seconds:
                 '\u0447\u0435\u0440\u0435\u0437 \u0434\u0435\u043a\u0456\u043b\u044c\u043a\u0430 \u0441\u0435\u043a\u0443\u043d\u0434',
@@ -19500,7 +19503,7 @@ Object.values ||
             to_mission:
                 '\u041f\u0435\u0440\u0435\u0433\u043b\u044f\u0434 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f',
             total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total Event currency earned:',
+            total_event_currency_earned: 'Total event credits earned:',
             understand: '\u0412\u0438\u0437\u043d\u0430\u0442\u0438',
             user_not_found:
                 '\u0413\u0440\u0430\u0432\u0446\u044f \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e.',
@@ -20220,7 +20223,7 @@ Object.values ||
             coins: 'Monedas',
             credits: 'Cr\xe9ditos',
             current_reward_for_you:
-                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event currency',
+                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'd\xedas',
             few_seconds: 'en pocos segundos',
             finish_in: 'Termina en:',
@@ -20268,7 +20271,7 @@ Object.values ||
             to_building: 'Ver edificio',
             to_mission: 'Ver misi\xf3n',
             total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total Event currency earned:',
+            total_event_currency_earned: 'Total event credits earned:',
             understand: 'Recibido',
             user_not_found: 'No se ha encontrado al jugador.',
             vehicle_payload: {
@@ -20965,7 +20968,7 @@ Object.values ||
             coins: '\u30b3\u30a4\u30f3',
             credits: '\u30af\u30ec\u30b8\u30c3\u30c8',
             current_reward_for_you:
-                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event currency',
+                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: '\u65e5',
             few_seconds: '\u6570\u79d2\u5f8c',
             finish_in: '\u7d42\u4e86\u307e\u3067\uff1a',
@@ -21027,7 +21030,7 @@ Object.values ||
             to_building: '\u5efa\u7269\u3092\u898b\u308b',
             to_mission: '\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u898b\u308b',
             total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total Event currency earned:',
+            total_event_currency_earned: 'Total event credits earned:',
             understand: '\u627f\u8a8d',
             user_not_found:
                 '\u30d7\u30ec\u30a4\u30e4\u30fc\u304c\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f\u3002',
@@ -21750,7 +21753,7 @@ Object.values ||
             coins: '\ucf54\uc778',
             credits: '\ud06c\ub808\ub527',
             current_reward_for_you:
-                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event currency',
+                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: '\uc77c',
             few_seconds: '\uba87 \ucd08 \uc548\uc5d0',
             finish_in: '\uc644\ub8cc\uae4c\uc9c0:',
@@ -21807,7 +21810,7 @@ Object.values ||
             to_building: '\uac74\ubb3c \ubcf4\uae30',
             to_mission: '\uc784\ubb34 \ubcf4\uae30',
             total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total Event currency earned:',
+            total_event_currency_earned: 'Total event credits earned:',
             understand: '\ud655\uc778',
             user_not_found:
                 '\ud50c\ub808\uc774\uc5b4\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.',
@@ -22487,7 +22490,7 @@ Object.values ||
             coins: 'Monede',
             credits: 'Credite',
             current_reward_for_you:
-                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event currency',
+                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'zile',
             few_seconds: '\xeen c\xe2teva secunde',
             finish_in: 'Termin\u0103 \xeen:',
@@ -22541,7 +22544,7 @@ Object.values ||
             to_building: 'Vezi cl\u0103direa',
             to_mission: 'Vezi misiunea',
             total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total Event currency earned:',
+            total_event_currency_earned: 'Total event credits earned:',
             understand: 'Confirm\u0103',
             user_not_found: 'Juc\u0103torul nu a fost g\u0103sit.',
             vehicle_payload: {
@@ -23213,7 +23216,7 @@ Object.values ||
             coins: 'Kolikot',
             credits: 'Krediitit',
             current_reward_for_you:
-                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event currency',
+                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'p\xe4iv\xe4\xe4',
             few_seconds: 'muutaman sekunnin kuluttua',
             finish_in: 'P\xe4\xe4ttymiseen:',
@@ -23264,7 +23267,7 @@ Object.values ||
             to_building: 'N\xe4yt\xe4 rakennus',
             to_mission: 'N\xe4yt\xe4 teht\xe4v\xe4',
             total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total Event currency earned:',
+            total_event_currency_earned: 'Total event credits earned:',
             understand: 'Kuittaa',
             user_not_found: 'Pelaajaa ei l\xf6ytynyt.',
             vehicle_payload: {
@@ -23916,7 +23919,7 @@ Object.values ||
             coins: 'Mince',
             credits: 'Kredity',
             current_reward_for_you:
-                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event currency',
+                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'dn\xed',
             few_seconds: 'o nieko\u013eko sek\xfand',
             finish_in: 'Koniec:',
@@ -23969,7 +23972,7 @@ Object.values ||
             to_building: 'Zobrazi\u0165 budovu',
             to_mission: 'Zobrazi\u0165 misiu',
             total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total Event currency earned:',
+            total_event_currency_earned: 'Total event credits earned:',
             understand: 'Potvrdi\u0165 pr\xedjem',
             user_not_found: 'Hr\xe1\u010d sa nena\u0161iel.',
             vehicle_payload: {
@@ -24616,7 +24619,7 @@ Object.values ||
             coins: 'Coins',
             credits: 'Credits',
             current_reward_for_you:
-                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event currency',
+                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'days',
             few_seconds: 'in few seconds',
             finish_in: 'Finish in:',
@@ -24663,7 +24666,7 @@ Object.values ||
             to_building: 'View Building',
             to_mission: 'View Mission',
             total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total Event currency earned:',
+            total_event_currency_earned: 'Total event credits earned:',
             understand: 'Acknowledge',
             user_not_found: 'The player was not found.',
             vehicle_payload: {
@@ -25306,9 +25309,9 @@ Object.values ||
                 s,
                 a = 0,
                 o =
-                    typeof e.getElementsByTagName !== K ?
+                    typeof e.getElementsByTagName !== G ?
                         e.getElementsByTagName(i || '*')
-                    : typeof e.querySelectorAll !== K ?
+                    : typeof e.querySelectorAll !== G ?
                         e.querySelectorAll(i || '*')
                     :   t;
             if (!o)
@@ -25789,8 +25792,8 @@ Object.values ||
         }
         var U,
             Z,
-            K = typeof t,
-            G = e.location,
+            G = typeof t,
+            K = e.location,
             Y = e.document,
             J = Y.documentElement,
             Q = e.jQuery,
@@ -26510,7 +26513,7 @@ Object.values ||
                         r,
                         l,
                         c,
-                        d = K[e + ' '];
+                        d = G[e + ' '];
                     if (d) return t ? 0 : d.slice(0);
                     for (r = e, l = [], c = E.preFilter; r; ) {
                         for (o in ((n && !(s = fe.exec(r))) ||
@@ -26532,7 +26535,7 @@ Object.values ||
                     return (
                         t ? r.length
                         : r ? i.error(e)
-                        : K(e, l).slice(0)
+                        : G(e, l).slice(0)
                     );
                 }
                 function _(e) {
@@ -26847,8 +26850,8 @@ Object.values ||
                     V = 0,
                     U = 0,
                     Z = s(),
-                    K = s(),
                     G = s(),
+                    K = s(),
                     Y = !1,
                     J = function () {
                         return 0;
@@ -27797,11 +27800,11 @@ Object.values ||
                         var i,
                             n = [],
                             s = [],
-                            a = G[e + ' '];
+                            a = K[e + ' '];
                         if (!a) {
                             for (t || (t = f(e)), i = t.length; i--; )
                                 (a = w(t[i]))[q] ? n.push(a) : s.push(a);
-                            a = G(e, k(s, n));
+                            a = K(e, k(s, n));
                         }
                         return a;
                     }),
@@ -28184,7 +28187,7 @@ Object.values ||
                                     (e.getComputedStyle(n, null) || {})
                                         .marginRight
                                 ))),
-                            typeof u.style.zoom !== K &&
+                            typeof u.style.zoom !== G &&
                                 ((u.innerHTML = ''),
                                 (u.style.cssText =
                                     a +
@@ -28490,7 +28493,7 @@ Object.values ||
                                     (r = n ? r : !o.hasClass(s)),
                                         o[r ? 'addClass' : 'removeClass'](s);
                             else
-                                (i !== K && 'boolean' !== i) ||
+                                (i !== G && 'boolean' !== i) ||
                                     (this.className &&
                                         de._data(
                                             this,
@@ -28620,7 +28623,7 @@ Object.values ||
                         a,
                         o = e.nodeType;
                     if (e && 3 !== o && 8 !== o && 2 !== o)
-                        return typeof e.getAttribute === K ?
+                        return typeof e.getAttribute === G ?
                                 de.prop(e, i, n)
                             :   ((1 === o && de.isXMLDoc(e)) ||
                                     ((i = i.toLowerCase()),
@@ -28902,7 +28905,7 @@ Object.values ||
                                 ((u = g.handle =
                                     function (e) {
                                         return (
-                                                typeof de === K ||
+                                                typeof de === G ||
                                                     (e &&
                                                         de.event.triggered ===
                                                             e.type)
@@ -29319,7 +29322,7 @@ Object.values ||
                 :   function (e, t, i) {
                         var n = 'on' + t;
                         e.detachEvent &&
-                            (typeof e[n] === K && (e[n] = null),
+                            (typeof e[n] === G && (e[n] = null),
                             e.detachEvent(n, i));
                     }),
             (de.Event = function (e, t) {
@@ -29794,8 +29797,8 @@ Object.values ||
         var Ue =
                 'abbr|article|aside|audio|bdi|canvas|data|datalist|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|summary|time|video',
             Ze = / jQuery\d+="(?:null|\d+)"/g,
-            Ke = new RegExp('<(?:' + Ue + ')[\\s/>]', 'i'),
-            Ge = /^\s+/,
+            Ge = new RegExp('<(?:' + Ue + ')[\\s/>]', 'i'),
+            Ke = /^\s+/,
             Ye =
                 /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/gi,
             Je = /<([\w:]+)/,
@@ -29932,8 +29935,8 @@ Object.values ||
                             if (
                                 'string' == typeof e &&
                                 !et.test(e) &&
-                                (de.support.htmlSerialize || !Ke.test(e)) &&
-                                (de.support.leadingWhitespace || !Ge.test(e)) &&
+                                (de.support.htmlSerialize || !Ge.test(e)) &&
+                                (de.support.leadingWhitespace || !Ke.test(e)) &&
                                 !ot[(Je.exec(e) || ['', ''])[1].toLowerCase()]
                             ) {
                                 e = e.replace(Ye, '<$1></$2>');
@@ -30088,7 +30091,7 @@ Object.values ||
                         ((
                             de.support.html5Clone ||
                             de.isXMLDoc(e) ||
-                            !Ke.test('<' + e.nodeName + '>')
+                            !Ge.test('<' + e.nodeName + '>')
                         ) ?
                             (a = e.cloneNode(!0))
                         :   ((rt.innerHTML = e.outerHTML),
@@ -30158,8 +30161,8 @@ Object.values ||
                                     r = r.lastChild;
                                 if (
                                     (!de.support.leadingWhitespace &&
-                                        Ge.test(a) &&
-                                        m.push(t.createTextNode(Ge.exec(a)[0])),
+                                        Ke.test(a) &&
+                                        m.push(t.createTextNode(Ke.exec(a)[0])),
                                     !de.support.tbody)
                                 )
                                     for (
@@ -30237,7 +30240,7 @@ Object.values ||
                             l[s] &&
                                 (delete l[s],
                                 c ? delete i[r]
-                                : typeof i.removeAttribute !== K ?
+                                : typeof i.removeAttribute !== G ?
                                     i.removeAttribute(r)
                                 :   (i[r] = null),
                                 te.push(s));
@@ -30749,7 +30752,7 @@ Object.values ||
             $t = {},
             qt = '*/'.concat('*');
         try {
-            Pt = G.href;
+            Pt = K.href;
         } catch (e) {
             ((Pt = Y.createElement('a')).href = ''), (Pt = Pt.href);
         }
@@ -31182,8 +31185,8 @@ Object.values ||
             });
         var Ut,
             Zt,
-            Kt = 0,
-            Gt =
+            Gt = 0,
+            Kt =
                 e.ActiveXObject &&
                 function () {
                     var e;
@@ -31240,7 +31243,7 @@ Object.values ||
                                                     o &&
                                                         ((l.onreadystatechange =
                                                             de.noop),
-                                                        Gt && delete Ut[o]),
+                                                        Kt && delete Ut[o]),
                                                     s)
                                                 )
                                                     4 !== l.readyState &&
@@ -31276,11 +31279,11 @@ Object.values ||
                                     i.async ?
                                         4 === l.readyState ?
                                             setTimeout(n)
-                                        :   ((o = ++Kt),
-                                            Gt &&
+                                        :   ((o = ++Gt),
+                                            Kt &&
                                                 (Ut ||
                                                     ((Ut = {}),
-                                                    de(e).unload(Gt)),
+                                                    de(e).unload(Kt)),
                                                 (Ut[o] = n)),
                                             (l.onreadystatechange = n))
                                     :   n();
@@ -31599,7 +31602,7 @@ Object.values ||
                 return o ?
                         ((i = o.documentElement),
                         de.contains(i, a) ?
-                            (typeof a.getBoundingClientRect !== K &&
+                            (typeof a.getBoundingClientRect !== G &&
                                 (s = a.getBoundingClientRect()),
                             (n = V(o)),
                             {
@@ -40500,8 +40503,8 @@ Object.values ||
                         V = this._get(e, 'navigationAsDateFormat'),
                         U = this._getNumberOfMonths(e),
                         Z = this._get(e, 'showCurrentAtPos'),
-                        K = this._get(e, 'stepMonths'),
-                        G = 1 !== U[0] || 1 !== U[1],
+                        G = this._get(e, 'stepMonths'),
+                        K = 1 !== U[0] || 1 !== U[1],
                         Y = this._daylightSavingAdjust(
                             e.currentDay ?
                                 new Date(
@@ -40538,7 +40541,7 @@ Object.values ||
                                     this.formatDate(
                                         i,
                                         this._daylightSavingAdjust(
-                                            new Date(ee, X - K, 1)
+                                            new Date(ee, X - G, 1)
                                         ),
                                         this._getFormatConfig(e)
                                     )
@@ -40566,7 +40569,7 @@ Object.values ||
                                     this.formatDate(
                                         s,
                                         this._daylightSavingAdjust(
-                                            new Date(ee, X + K, 1)
+                                            new Date(ee, X + G, 1)
                                         ),
                                         this._getFormatConfig(e)
                                     )
@@ -40642,7 +40645,7 @@ Object.values ||
                                 )),
                                 (S = ' ui-corner-all'),
                                 (A = ''),
-                                G)
+                                K)
                             ) {
                                 if (
                                     ((A += "<div class='ui-datepicker-group"),
@@ -40728,7 +40731,7 @@ Object.values ||
                                         7,
                                     j = Math.ceil((M + P) / 7),
                                     I =
-                                        G && this.maxRows > j ?
+                                        K && this.maxRows > j ?
                                             this.maxRows
                                         :   j,
                                     this.maxRows = I,
@@ -40838,7 +40841,7 @@ Object.values ||
                             ++X > 11 && ((X = 0), ee++),
                                 (x += A +=
                                     '</tbody></table>' +
-                                    (G ?
+                                    (K ?
                                         '</div>' +
                                         (U[0] > 0 && C === U[1] - 1 ?
                                             "<div class='ui-datepicker-row-break'></div>"
@@ -51363,11 +51366,11 @@ Object.values ||
             var n = document.createElement(e);
             return (n.className = t || ''), i && i.appendChild(n), n;
         }
-        function K(e) {
+        function G(e) {
             var t = e.parentNode;
             t && t.removeChild(e);
         }
-        function G(e) {
+        function K(e) {
             for (; e.firstChild; ) e.removeChild(e.firstChild);
         }
         function Y(e) {
@@ -51804,7 +51807,7 @@ Object.values ||
                 case 'MultiPoint':
                     for (s = 0, a = r.length; s < a; s++)
                         (i = d(r[s])), l.push(c ? c(e, i) : new Qi(i));
-                    return new Ki(l);
+                    return new Gi(l);
                 case 'LineString':
                 case 'MultiLineString':
                     return (
@@ -51829,7 +51832,7 @@ Object.values ||
                         );
                         u && l.push(u);
                     }
-                    return new Ki(l);
+                    return new Gi(l);
                 default:
                     throw new Error('Invalid GeoJSON object.');
             }
@@ -51855,10 +51858,10 @@ Object.values ||
                 s.push(t ? Ze(e[a], t - 1, i, n) : Ue(e[a], n));
             return !t && i && s.push(s[0]), s;
         }
-        function Ke(e, i) {
-            return e.feature ? t({}, e.feature, { geometry: i }) : Ge(i);
+        function Ge(e, i) {
+            return e.feature ? t({}, e.feature, { geometry: i }) : Ke(i);
         }
-        function Ge(e) {
+        function Ke(e) {
             return 'Feature' === e.type || 'FeatureCollection' === e.type ?
                     e
                 :   { type: 'Feature', properties: {}, geometry: e };
@@ -52598,8 +52601,8 @@ Object.values ||
                     (window.DocumentTouch &&
                         document instanceof window.DocumentTouch)),
             Zt = Ft && Pt,
-            Kt = Ft && jt,
-            Gt =
+            Gt = Ft && jt,
+            Kt =
                 (window.devicePixelRatio ||
                     window.screen.deviceXDPI / window.screen.logicalXDPI) > 1,
             Yt = !!document.createElement('canvas').getContext,
@@ -52645,8 +52648,8 @@ Object.values ||
                 pointer: Vt,
                 touch: Ut,
                 mobileOpera: Zt,
-                mobileGecko: Kt,
-                retina: Gt,
+                mobileGecko: Gt,
+                retina: Kt,
                 canvas: Yt,
                 svg: Jt,
                 vml: Qt,
@@ -52723,8 +52726,8 @@ Object.values ||
                 get: V,
                 getStyle: U,
                 create: Z,
-                remove: K,
-                empty: G,
+                remove: G,
+                empty: K,
                 toFront: Y,
                 toBack: J,
                 hasClass: Q,
@@ -53255,7 +53258,7 @@ Object.values ||
                     for (e in (void 0 !== this._locationWatchId &&
                         this.stopLocate(),
                     this._stop(),
-                    K(this._mapPane),
+                    G(this._mapPane),
                     this._clearControlPos && this._clearControlPos(),
                     this._resizeRequest &&
                         (g(this._resizeRequest), (this._resizeRequest = null)),
@@ -53263,7 +53266,7 @@ Object.values ||
                     this._loaded && this.fire('unload'),
                     this._layers))
                         this._layers[e].remove();
-                    for (e in this._panes) K(this._panes[e]);
+                    for (e in this._panes) G(this._panes[e]);
                     return (
                         (this._layers = []),
                         (this._panes = []),
@@ -53459,7 +53462,7 @@ Object.values ||
                             e,
                             'leaflet-container' +
                                 (Ut ? ' leaflet-touch' : '') +
-                                (Gt ? ' leaflet-retina' : '') +
+                                (Kt ? ' leaflet-retina' : '') +
                                 (xt ? ' leaflet-oldie' : '') +
                                 (It ? ' leaflet-safari' : '') +
                                 (this._fadeAnimated ? ' leaflet-fade-anim' : '')
@@ -53820,7 +53823,7 @@ Object.values ||
                         this._on('unload', this._destroyAnimProxy, this);
                 },
                 _destroyAnimProxy: function () {
-                    K(this._proxy), delete this._proxy;
+                    G(this._proxy), delete this._proxy;
                 },
                 _catchTransitionEnd: function (e) {
                     this._animatingZoom &&
@@ -53913,7 +53916,7 @@ Object.values ||
                 },
                 remove: function () {
                     return this._map ?
-                            (K(this._container),
+                            (G(this._container),
                             this.onRemove && this.onRemove(this._map),
                             (this._map = null),
                             this)
@@ -53955,8 +53958,8 @@ Object.values ||
                     e('bottom', 'right');
             },
             _clearControlPos: function () {
-                for (var e in this._controlCorners) K(this._controlCorners[e]);
-                K(this._controlContainer),
+                for (var e in this._controlCorners) G(this._controlCorners[e]);
+                G(this._controlContainer),
                     delete this._controlCorners,
                     delete this._controlContainer;
             },
@@ -54116,8 +54119,8 @@ Object.values ||
                 },
                 _update: function () {
                     if (!this._container) return this;
-                    G(this._baseLayersList),
-                        G(this._overlaysList),
+                    K(this._baseLayersList),
+                        K(this._overlaysList),
                         (this._layerControlInputs = []);
                     var e,
                         t,
@@ -54959,7 +54962,7 @@ Object.values ||
                     return n(e);
                 },
             }),
-            Ki = Zi.extend({
+            Gi = Zi.extend({
                 addLayer: function (e) {
                     return this.hasLayer(e) ? this : (
                             (e.addEventParent(this),
@@ -54993,7 +54996,7 @@ Object.values ||
                     return e;
                 },
             }),
-            Gi = v.extend({
+            Ki = v.extend({
                 options: { popupAnchor: [0, 0], tooltipAnchor: [0, 0] },
                 initialize: function (e) {
                     d(this, e);
@@ -55045,12 +55048,12 @@ Object.values ||
                 },
                 _getIconUrl: function (e) {
                     return (
-                        (Gt && this.options[e + 'RetinaUrl']) ||
+                        (Kt && this.options[e + 'RetinaUrl']) ||
                         this.options[e + 'Url']
                     );
                 },
             }),
-            Yi = Gi.extend({
+            Yi = Ki.extend({
                 options: {
                     iconUrl: 'marker-icon.png',
                     iconRetinaUrl: 'marker-icon-2x.png',
@@ -55065,7 +55068,7 @@ Object.values ||
                     return (
                         Yi.imagePath || (Yi.imagePath = this._detectIconPath()),
                         (this.options.imagePath || Yi.imagePath) +
-                            Gi.prototype._getIconUrl.call(this, e)
+                            Ki.prototype._getIconUrl.call(this, e)
                     );
                 },
                 _detectIconPath: function () {
@@ -55306,12 +55309,12 @@ Object.values ||
                             mouseover: this._bringToFront,
                             mouseout: this._resetZIndex,
                         }),
-                        K(this._icon),
+                        G(this._icon),
                         this.removeInteractiveTarget(this._icon),
                         (this._icon = null);
                 },
                 _removeShadow: function () {
-                    this._shadow && K(this._shadow), (this._shadow = null);
+                    this._shadow && G(this._shadow), (this._shadow = null);
                 },
                 _setPos: function (e) {
                     re(this._icon, e),
@@ -55856,7 +55859,7 @@ Object.values ||
                     return c || nn.prototype._containsPoint.call(this, e, !0);
                 },
             }),
-            an = Ki.extend({
+            an = Gi.extend({
                 initialize: function (e, t) {
                     d(this, t), (this._layers = {}), e && this.addData(e);
                 },
@@ -55878,7 +55881,7 @@ Object.values ||
                     if (a.filter && !a.filter(e)) return this;
                     var o = qe(e, a);
                     return o ?
-                            ((o.feature = Ge(e)),
+                            ((o.feature = Ke(e)),
                             (o.defaultOptions = o.options),
                             this.resetStyle(o),
                             a.onEachFeature && a.onEachFeature(e, o),
@@ -55904,7 +55907,7 @@ Object.values ||
             }),
             on = {
                 toGeoJSON: function (e) {
-                    return Ke(this, {
+                    return Ge(this, {
                         type: 'Point',
                         coordinates: Ue(this.getLatLng(), e),
                     });
@@ -55916,7 +55919,7 @@ Object.values ||
             nn.include({
                 toGeoJSON: function (e) {
                     var t = !Be(this._latlngs);
-                    return Ke(this, {
+                    return Ge(this, {
                         type: (t ? 'Multi' : '') + 'LineString',
                         coordinates: Ze(this._latlngs, t ? 1 : 0, !1, e),
                     });
@@ -55936,7 +55939,7 @@ Object.values ||
                         );
                     return (
                         t || (n = [n]),
-                        Ke(this, {
+                        Ge(this, {
                             type: (i ? 'Multi' : '') + 'Polygon',
                             coordinates: n,
                         })
@@ -55950,7 +55953,7 @@ Object.values ||
                         this.eachLayer(function (i) {
                             t.push(i.toGeoJSON(e).geometry.coordinates);
                         }),
-                        Ke(this, { type: 'MultiPoint', coordinates: t })
+                        Ge(this, { type: 'MultiPoint', coordinates: t })
                     );
                 },
                 toGeoJSON: function (e) {
@@ -55967,7 +55970,7 @@ Object.values ||
                                 var s = t.toGeoJSON(e);
                                 if (i) n.push(s.geometry);
                                 else {
-                                    var a = Ge(s);
+                                    var a = Ke(s);
                                     'FeatureCollection' === a.type ?
                                         n.push.apply(n, a.features)
                                     :   n.push(a);
@@ -55975,7 +55978,7 @@ Object.values ||
                             }
                         }),
                         i ?
-                            Ke(this, {
+                            Ge(this, {
                                 geometries: n,
                                 type: 'GeometryCollection',
                             })
@@ -56008,7 +56011,7 @@ Object.values ||
                         this._reset();
                 },
                 onRemove: function () {
-                    K(this._image),
+                    G(this._image),
                         this.options.interactive &&
                             this.removeInteractiveTarget(this._image);
                 },
@@ -56172,10 +56175,10 @@ Object.values ||
                     e._fadeAnimated ?
                         (ne(this._container, 0),
                         (this._removeTimeout = setTimeout(
-                            i(K, void 0, this._container),
+                            i(G, void 0, this._container),
                             200
                         )))
-                    :   K(this._container);
+                    :   G(this._container);
                 },
                 getLatLng: function () {
                     return this._latlng;
@@ -56481,7 +56484,7 @@ Object.values ||
                 openPopup: function (e, t) {
                     if (
                         (e instanceof Ui || ((t = e), (e = this)),
-                        e instanceof Ki)
+                        e instanceof Gi)
                     )
                         for (var i in this._layers) {
                             e = this._layers[i];
@@ -56698,7 +56701,7 @@ Object.values ||
                 openTooltip: function (e, t) {
                     if (
                         (e instanceof Ui || ((t = e), (e = this)),
-                        e instanceof Ki)
+                        e instanceof Gi)
                     )
                         for (var i in this._layers) {
                             e = this._layers[i];
@@ -56780,7 +56783,7 @@ Object.values ||
                         this._tooltip.setLatLng(n);
                 },
             });
-        var pn = Gi.extend({
+        var pn = Ki.extend({
             options: {
                 iconSize: [12, 12],
                 html: !1,
@@ -56803,7 +56806,7 @@ Object.values ||
                 return null;
             },
         });
-        Gi.Default = Yi;
+        Ki.Default = Yi;
         var mn = Ui.extend({
                 options: {
                     tileSize: 256,
@@ -56837,7 +56840,7 @@ Object.values ||
                 },
                 onRemove: function (e) {
                     this._removeAllTiles(),
-                        K(this._container),
+                        G(this._container),
                         e._removeZoomLimit(this),
                         (this._container = null),
                         (this._tileZoom = void 0);
@@ -56975,7 +56978,7 @@ Object.values ||
                                 ((this._levels[i].el.style.zIndex =
                                     t - Math.abs(e - i)),
                                 this._onUpdateLevel(i))
-                            :   (K(this._levels[i].el),
+                            :   (G(this._levels[i].el),
                                 this._removeTilesAtZoom(i),
                                 this._onRemoveLevel(i),
                                 delete this._levels[i]);
@@ -57051,7 +57054,7 @@ Object.values ||
                 },
                 _invalidateAll: function () {
                     for (var e in this._levels)
-                        K(this._levels[e].el),
+                        G(this._levels[e].el),
                             this._onRemoveLevel(e),
                             delete this._levels[e];
                     this._removeAllTiles(), (this._tileZoom = void 0);
@@ -57291,7 +57294,7 @@ Object.values ||
                 _removeTile: function (e) {
                     var t = this._tiles[e];
                     t &&
-                        (K(t.el),
+                        (G(t.el),
                         delete this._tiles[e],
                         this.fire('tileunload', {
                             tile: t.el,
@@ -57392,7 +57395,7 @@ Object.values ||
                 initialize: function (e, t) {
                     (this._url = e),
                         (t = d(this, t)).detectRetina &&
-                            Gt &&
+                            Kt &&
                             t.maxZoom > 0 &&
                             ((t.tileSize = Math.floor(t.tileSize / 2)),
                             t.zoomReverse ?
@@ -57430,7 +57433,7 @@ Object.values ||
                 },
                 getTileUrl: function (e) {
                     var i = {
-                        r: Gt ? '@2x' : '',
+                        r: Kt ? '@2x' : '',
                         s: this._getSubdomain(e),
                         x: e.x,
                         y: e.y,
@@ -57472,7 +57475,7 @@ Object.values ||
                             (((t = this._tiles[e].el).onload = o),
                             (t.onerror = o),
                             t.complete ||
-                                ((t.src = at), K(t), delete this._tiles[e]));
+                                ((t.src = at), G(t), delete this._tiles[e]));
                 },
                 _removeTile: function (e) {
                     var t = this._tiles[e];
@@ -57502,7 +57505,7 @@ Object.values ||
                     this._url = e;
                     var n = t({}, this.defaultWmsParams);
                     for (var s in i) s in this.options || (n[s] = i[s]);
-                    var a = (i = d(this, i)).detectRetina && Gt ? 2 : 1,
+                    var a = (i = d(this, i)).detectRetina && Kt ? 2 : 1,
                         o = this.getTileSize();
                     (n.width = o.x * a),
                         (n.height = o.y * a),
@@ -57643,7 +57646,7 @@ Object.values ||
                 _destroyContainer: function () {
                     g(this._redrawRequest),
                         delete this._ctx,
-                        K(this._container),
+                        G(this._container),
                         _e(this._container),
                         delete this._container;
                 },
@@ -57661,13 +57664,13 @@ Object.values ||
                         var e = this._bounds,
                             t = this._container,
                             i = e.getSize(),
-                            n = Gt ? 2 : 1;
+                            n = Kt ? 2 : 1;
                         re(t, e.min),
                             (t.width = n * i.x),
                             (t.height = n * i.y),
                             (t.style.width = i.x + 'px'),
                             (t.style.height = i.y + 'px'),
-                            Gt && this._ctx.scale(2, 2),
+                            Kt && this._ctx.scale(2, 2),
                             this._ctx.translate(-e.min.x, -e.min.y),
                             this.fire('update');
                     }
@@ -57960,7 +57963,7 @@ Object.values ||
                 },
                 _removePath: function (e) {
                     var t = e._container;
-                    K(t),
+                    G(t),
                         e.removeInteractiveTarget(t),
                         delete this._layers[n(e)];
                 },
@@ -58035,7 +58038,7 @@ Object.values ||
                         this._container.appendChild(this._rootGroup);
                 },
                 _destroyContainer: function () {
-                    K(this._container),
+                    G(this._container),
                         _e(this._container),
                         delete this._container,
                         delete this._rootGroup,
@@ -58075,7 +58078,7 @@ Object.values ||
                         e.addInteractiveTarget(e._path);
                 },
                 _removePath: function (e) {
-                    K(e._path),
+                    G(e._path),
                         e.removeInteractiveTarget(e._path),
                         delete this._layers[n(e)];
                 },
@@ -58199,8 +58202,8 @@ Object.values ||
             (an.coordsToLatLngs = Ve),
             (an.latLngToCoords = Ue),
             (an.latLngsToCoords = Ze),
-            (an.getFeature = Ke),
-            (an.asFeature = Ge),
+            (an.getFeature = Ge),
+            (an.asFeature = Ke),
             Ci.mergeOptions({ boxZoom: !0 });
         var Cn = Mi.extend({
             initialize: function (e) {
@@ -58220,7 +58223,7 @@ Object.values ||
                 return this._moved;
             },
             _destroy: function () {
-                K(this._pane), delete this._pane;
+                G(this._pane), delete this._pane;
             },
             _resetState: function () {
                 (this._resetStateTimeout = 0), (this._moved = !1);
@@ -58264,7 +58267,7 @@ Object.values ||
             },
             _finish: function () {
                 this._moved &&
-                    (K(this._box), ee(this._container, 'leaflet-crosshair')),
+                    (G(this._box), ee(this._container, 'leaflet-crosshair')),
                     gt(),
                     de(),
                     _e(
@@ -58913,9 +58916,9 @@ Object.values ||
             (e.layerGroup = function (e, t) {
                 return new Zi(e, t);
             }),
-            (e.FeatureGroup = Ki),
+            (e.FeatureGroup = Gi),
             (e.featureGroup = function (e) {
-                return new Ki(e);
+                return new Gi(e);
             }),
             (e.ImageOverlay = ln),
             (e.imageOverlay = function (e, t, i) {
@@ -58934,9 +58937,9 @@ Object.values ||
             (e.tooltip = function (e, t) {
                 return new hn(e, t);
             }),
-            (e.Icon = Gi),
+            (e.Icon = Ki),
             (e.icon = function (e) {
-                return new Gi(e);
+                return new Ki(e);
             }),
             (e.DivIcon = pn),
             (e.divIcon = function (e) {
@@ -65595,7 +65598,7 @@ if (
                     n = !$(e, !0);
                 if (n && $(e.parentNode, !0)) {
                     var s = t(e),
-                        a = K(s, e),
+                        a = G(s, e),
                         o = e;
                     q(s, o), z(a, s), z(o, s);
                 }
@@ -65669,11 +65672,11 @@ if (
                     u = o;
                 }
         }
-        function K(e, t) {
+        function G(e, t) {
             var i = e.ownerDocument.createRange();
             return i.setStartBefore(e), i.setEndAfter(t), i.extractContents();
         }
-        function G(e) {
+        function K(e) {
             for (var t = 0, i = 0; e; )
                 (t += e.offsetLeft), (i += e.offsetTop), (e = e.offsetParent);
             return { left: t, top: i };
@@ -66195,7 +66198,7 @@ if (
                 q,
                 V,
                 U,
-                K,
+                G,
                 Y,
                 J,
                 Q,
@@ -66224,8 +66227,8 @@ if (
                 Ve,
                 Ue,
                 Ze,
-                Ke,
                 Ge,
+                Ke,
                 Ye,
                 Je,
                 Qe,
@@ -66336,7 +66339,7 @@ if (
                     var i = f(e, 'tabindex');
                     f(R, 'tabindex', i),
                         f(_, 'tabindex', i),
-                        (K = new se(x)),
+                        (G = new se(x)),
                         g(e),
                         ft.val(e.value);
                     var n = kt.placeholder || f(e, 'placeholder');
@@ -66363,9 +66366,9 @@ if (
                             );
                     p(Re, 'click', Xe),
                         t &&
-                            (p(t, 'reset', Ge),
+                            (p(t, 'reset', Ke),
                             p(t, 'submit', ft.updateOriginal, be)),
-                        p(C, 'keypress', Ke),
+                        p(C, 'keypress', Ge),
                         p(C, 'keydown', Ue),
                         p(C, 'keydown', Ze),
                         p(C, 'keyup', nt),
@@ -66598,7 +66601,7 @@ if (
                                 e.selectNodeContents(i)
                             :   (e.setStartBefore(i), n && e.setStartAfter(i)),
                             e.collapse(!n),
-                            K.selectRange(e),
+                            G.selectRange(e),
                             (ee = e),
                             n && (C.scrollTop = C.scrollHeight),
                             ft.focus();
@@ -66689,14 +66692,14 @@ if (
                 (ft.destroy = function () {
                     if (Y) {
                         Y.destroy(),
-                            (K = null),
+                            (G = null),
                             (L = null),
                             (Y = null),
                             N && d(N),
                             m(Re, 'click', Xe);
                         var t = e.form;
                         t &&
-                            (m(t, 'reset', Ge),
+                            (m(t, 'reset', Ke),
                             m(t, 'submit', ft.updateOriginal)),
                             d(R),
                             d(l),
@@ -66781,7 +66784,7 @@ if (
                     } else if (!ye) {
                         var c = i.scrollTop;
                         for (
-                            K.saveRange(), ye = Re.createDocumentFragment();
+                            G.saveRange(), ye = Re.createDocumentFragment();
                             i.firstChild;
 
                         )
@@ -66792,7 +66795,7 @@ if (
                                 u(i, ye),
                                 (i.scrollTop = c),
                                 (ye = !1),
-                                K.restoreRange(),
+                                G.restoreRange(),
                                 Ve({ html: e });
                         }, 0);
                     }
@@ -66824,16 +66827,16 @@ if (
                         o = j(_);
                     ft.focus(),
                         (!i && c(Q, 'code')) ||
-                            (K.insertHTML(e, t),
-                            K.saveRange(),
+                            (G.insertHTML(e, t),
+                            G.saveRange(),
                             Ae(),
                             v((n = h(C, '#sceditor-end-marker')[0])),
                             (s = C.scrollTop),
-                            (a = G(n).top + 1.5 * n.offsetHeight - o),
+                            (a = K(n).top + 1.5 * n.offsetHeight - o),
                             g(n),
                             (a > s || a + o < s) && (C.scrollTop = a),
                             dt(!1),
-                            K.restoreRange(),
+                            G.restoreRange(),
                             nt());
                 }),
                 (ft.wysiwygEditorInsertText = function (e, t) {
@@ -66865,7 +66868,7 @@ if (
                         dt();
                 }),
                 (ft.getRangeHelper = function () {
-                    return K;
+                    return G;
                 }),
                 (ft.sourceEditorCaret = function (e) {
                     return (
@@ -66893,7 +66896,7 @@ if (
                     if (ft.inSourceMode())
                         return ft.sourceEditorInsertText(e, t), ft;
                     if (t) {
-                        var o = K.selectedHtml();
+                        var o = G.selectedHtml();
                         !1 !== n &&
                             'fragmentToSource' in i &&
                             (o = i.fragmentToSource(o, S, J)),
@@ -66971,7 +66974,7 @@ if (
                 (ft.toggleSourceMode = function () {
                     var e = ft.inSourceMode();
                     (!Se && e) ||
-                        (e || (K.saveRange(), K.clear()),
+                        (e || (G.saveRange(), G.clear()),
                         ft.blur(),
                         e ?
                             ft.setWysiwygEditorValue(ft.getSourceEditorValue())
@@ -67007,12 +67010,12 @@ if (
                             ));
                 }),
                 (Ee = function () {
-                    Ne && (L = K.selectedRange());
+                    Ne && (L = G.selectedRange());
                 }),
                 (ft.execCommand = function (e, t) {
                     var i = !1,
                         n = ft.commands[e];
-                    if ((ft.focus(), !c(K.parentNode(), 'code'))) {
+                    if ((ft.focus(), !c(G.parentNode(), 'code'))) {
                         try {
                             i = S.execCommand(e, !1, t);
                         } catch (e) {}
@@ -67030,8 +67033,8 @@ if (
                             x.getSelection().rangeCount <= 0
                         )
                             ee = null;
-                        else if (K && !K.compare(ee)) {
-                            if ((ee = K.cloneSelected()) && ee.collapsed) {
+                        else if (G && !G.compare(ee)) {
+                            if ((ee = G.cloneSelected()) && ee.collapsed) {
                                 var e = ee.startContainer,
                                     t = ee.startOffset;
                                 for (
@@ -67044,7 +67047,7 @@ if (
                                     e = e.parentNode;
                                 e &&
                                     $(e, !0) &&
-                                    (K.saveRange(), re(C, S), K.restoreRange());
+                                    (G.saveRange(), re(C, S), G.restoreRange());
                             }
                             I(o, 'selectionchanged');
                         }
@@ -67056,11 +67059,11 @@ if (
                 }),
                 (at = function () {
                     var e,
-                        t = K.parentNode();
+                        t = G.parentNode();
                     J !== t &&
                         ((e = J),
                         (J = t),
-                        (Q = K.getFirstBlockParent(t)),
+                        (Q = G.getFirstBlockParent(t)),
                         I(o, 'nodechanged', { oldNode: e, newNode: J }));
                 }),
                 (ft.currentNode = function () {
@@ -67081,8 +67084,8 @@ if (
                         });
                     else {
                         s ||
-                            ((t = K.parentNode()),
-                            (e = K.getFirstBlockParent(t)));
+                            ((t = G.parentNode()),
+                            (e = G.getFirstBlockParent(t)));
                         for (var o = 0; o < vt.length; o++) {
                             var r = 0,
                                 c = yt[vt[o].name],
@@ -67105,7 +67108,7 @@ if (
                         ke && ke.update && ke.update(s, t, e);
                     }
                 }),
-                (Ke = function (e) {
+                (Ge = function (e) {
                     if (
                         !e.defaultPrevented &&
                         (ft.closeDropDown(),
@@ -67113,7 +67116,7 @@ if (
                     ) {
                         L = null;
                         var t = r('br', {}, S);
-                        if ((K.insertNode(t), !Oe)) {
+                        if ((G.insertNode(t), !Oe)) {
                             var i = t.parentNode,
                                 n = i.lastChild;
                             n &&
@@ -67123,7 +67126,7 @@ if (
                                 !$(i, !0) &&
                                     n === t &&
                                     $(t.previousSibling) &&
-                                    K.insertHTML('<br>');
+                                    G.insertHTML('<br>');
                         }
                         e.preventDefault();
                     }
@@ -67151,7 +67154,7 @@ if (
                             return !1;
                     });
                 }),
-                (Ge = function () {
+                (Ke = function () {
                     ft.val(e.value);
                 }),
                 (Ye = function () {
@@ -67209,7 +67212,7 @@ if (
                     else {
                         if (h(S, ':focus').length) return;
                         var n,
-                            s = K.selectedRange();
+                            s = G.selectedRange();
                         ee || ot(),
                             !Oe &&
                                 s &&
@@ -67220,10 +67223,10 @@ if (
                                 k(n.firstChild, 'br') &&
                                 (s.setStartBefore(n.firstChild),
                                 s.collapse(!0),
-                                K.selectRange(s)),
+                                G.selectRange(s)),
                             x.focus(),
                             C.focus(),
-                            L && (K.selectRange(L), (L = null));
+                            L && (G.selectRange(L), (L = null));
                     }
                     return tt(), ft;
                 }),
@@ -67261,7 +67264,7 @@ if (
                             (ft.emoticonsCache = i),
                             (ft.longestEmoticonCode =
                                 i[i.length - 1][0].length)),
-                        K.replaceKeyword(
+                        G.replaceKeyword(
                             ft.emoticonsCache,
                             !0,
                             !0,
@@ -67273,14 +67276,14 @@ if (
                                 e.preventDefault()));
                 }),
                 (lt = function () {
-                    ae(Q, K);
+                    ae(Q, G);
                 }),
                 (ft.emoticons = function (e) {
                     if (!e && !1 !== e) return kt.emoticonsEnabled;
                     ((kt.emoticonsEnabled = e), e) ?
                         (p(C, 'keypress', rt),
                         ft.sourceMode() ||
-                            (K.saveRange(), Ae(), dt(!1), K.restoreRange()))
+                            (G.saveRange(), Ae(), dt(!1), G.restoreRange()))
                     :   (a(
                             h(C, 'img[data-sceditor-emoticon]'),
                             function (e, t) {
@@ -67441,7 +67444,7 @@ if (
                     if (
                         !kt.disableBlockRemove &&
                         8 === e.which &&
-                        (i = K.selectedRange()) &&
+                        (i = G.selectedRange()) &&
                         ((t = i.startContainer),
                         0 === i.startOffset && (n = ct()) && !k(n, 'body'))
                     ) {
@@ -67466,12 +67469,12 @@ if (
                     return (
                         !(e = e || ct()) ||
                             k(e, 'body') ||
-                            (K.saveRange(),
+                            (G.saveRange(),
                             (e.className = ''),
                             (L = null),
                             f(e, 'style', ''),
                             k(e, 'p,div,td') || B(e, 'p'),
-                            K.restoreRange()),
+                            G.restoreRange()),
                         ft
                     );
                 }),
@@ -67482,19 +67485,19 @@ if (
                     ) {
                         var t,
                             i = ft.sourceMode(),
-                            n = !i && K.hasSelection();
+                            n = !i && G.hasSelection();
                         (q = !1),
                             (e =
                                 !1 !== e &&
                                 !S.getElementById('sceditor-start-marker')),
                             V && (clearTimeout(V), (V = !1)),
-                            n && e && K.saveRange(),
+                            n && e && G.saveRange(),
                             (t = i ? R.value : C.innerHTML) !== dt.lastVal &&
                                 ((dt.lastVal = t),
                                 I(o, 'valuechanged', {
                                     rawValue: i ? ft.val() : t,
                                 })),
-                            n && e && K.removeMarkers();
+                            n && e && G.removeMarkers();
                     }
                 }),
                 (ut = function () {
@@ -68448,8 +68451,8 @@ if (
                     findCommonAncestor: V,
                     getSibling: U,
                     removeWhiteSpace: Z,
-                    extractContents: K,
-                    getOffset: G,
+                    extractContents: G,
+                    getOffset: K,
                     getStyle: Y,
                     hasStyle: J,
                 },
@@ -68803,7 +68806,7 @@ if (
                     n = !$(e, !0);
                 if (n && $(e.parentNode, !0)) {
                     var s = t(e),
-                        a = K(s, e),
+                        a = G(s, e),
                         o = e;
                     q(s, o), z(a, s), z(o, s);
                 }
@@ -68877,11 +68880,11 @@ if (
                     u = o;
                 }
         }
-        function K(e, t) {
+        function G(e, t) {
             var i = e.ownerDocument.createRange();
             return i.setStartBefore(e), i.setEndAfter(t), i.extractContents();
         }
-        function G(e) {
+        function K(e) {
             for (var t = 0, i = 0; e; )
                 (t += e.offsetLeft), (i += e.offsetTop), (e = e.offsetParent);
             return { left: t, top: i };
@@ -69403,7 +69406,7 @@ if (
                 q,
                 V,
                 U,
-                K,
+                G,
                 Y,
                 J,
                 Q,
@@ -69432,8 +69435,8 @@ if (
                 Ve,
                 Ue,
                 Ze,
-                Ke,
                 Ge,
+                Ke,
                 Ye,
                 Je,
                 Qe,
@@ -69544,7 +69547,7 @@ if (
                     var i = f(e, 'tabindex');
                     f(R, 'tabindex', i),
                         f(_, 'tabindex', i),
-                        (K = new se(x)),
+                        (G = new se(x)),
                         g(e),
                         ft.val(e.value);
                     var n = kt.placeholder || f(e, 'placeholder');
@@ -69571,9 +69574,9 @@ if (
                             );
                     p(Re, 'click', Xe),
                         t &&
-                            (p(t, 'reset', Ge),
+                            (p(t, 'reset', Ke),
                             p(t, 'submit', ft.updateOriginal, be)),
-                        p(C, 'keypress', Ke),
+                        p(C, 'keypress', Ge),
                         p(C, 'keydown', Ue),
                         p(C, 'keydown', Ze),
                         p(C, 'keyup', nt),
@@ -69806,7 +69809,7 @@ if (
                                 e.selectNodeContents(i)
                             :   (e.setStartBefore(i), n && e.setStartAfter(i)),
                             e.collapse(!n),
-                            K.selectRange(e),
+                            G.selectRange(e),
                             (ee = e),
                             n && (C.scrollTop = C.scrollHeight),
                             ft.focus();
@@ -69897,14 +69900,14 @@ if (
                 (ft.destroy = function () {
                     if (Y) {
                         Y.destroy(),
-                            (K = null),
+                            (G = null),
                             (L = null),
                             (Y = null),
                             N && d(N),
                             m(Re, 'click', Xe);
                         var t = e.form;
                         t &&
-                            (m(t, 'reset', Ge),
+                            (m(t, 'reset', Ke),
                             m(t, 'submit', ft.updateOriginal)),
                             d(R),
                             d(l),
@@ -69989,7 +69992,7 @@ if (
                     } else if (!ye) {
                         var c = i.scrollTop;
                         for (
-                            K.saveRange(), ye = Re.createDocumentFragment();
+                            G.saveRange(), ye = Re.createDocumentFragment();
                             i.firstChild;
 
                         )
@@ -70000,7 +70003,7 @@ if (
                                 u(i, ye),
                                 (i.scrollTop = c),
                                 (ye = !1),
-                                K.restoreRange(),
+                                G.restoreRange(),
                                 Ve({ html: e });
                         }, 0);
                     }
@@ -70032,16 +70035,16 @@ if (
                         o = j(_);
                     ft.focus(),
                         (!i && c(Q, 'code')) ||
-                            (K.insertHTML(e, t),
-                            K.saveRange(),
+                            (G.insertHTML(e, t),
+                            G.saveRange(),
                             Ae(),
                             v((n = h(C, '#sceditor-end-marker')[0])),
                             (s = C.scrollTop),
-                            (a = G(n).top + 1.5 * n.offsetHeight - o),
+                            (a = K(n).top + 1.5 * n.offsetHeight - o),
                             g(n),
                             (a > s || a + o < s) && (C.scrollTop = a),
                             dt(!1),
-                            K.restoreRange(),
+                            G.restoreRange(),
                             nt());
                 }),
                 (ft.wysiwygEditorInsertText = function (e, t) {
@@ -70073,7 +70076,7 @@ if (
                         dt();
                 }),
                 (ft.getRangeHelper = function () {
-                    return K;
+                    return G;
                 }),
                 (ft.sourceEditorCaret = function (e) {
                     return (
@@ -70101,7 +70104,7 @@ if (
                     if (ft.inSourceMode())
                         return ft.sourceEditorInsertText(e, t), ft;
                     if (t) {
-                        var o = K.selectedHtml();
+                        var o = G.selectedHtml();
                         !1 !== n &&
                             'fragmentToSource' in i &&
                             (o = i.fragmentToSource(o, S, J)),
@@ -70179,7 +70182,7 @@ if (
                 (ft.toggleSourceMode = function () {
                     var e = ft.inSourceMode();
                     (!Se && e) ||
-                        (e || (K.saveRange(), K.clear()),
+                        (e || (G.saveRange(), G.clear()),
                         ft.blur(),
                         e ?
                             ft.setWysiwygEditorValue(ft.getSourceEditorValue())
@@ -70215,12 +70218,12 @@ if (
                             ));
                 }),
                 (Ee = function () {
-                    Ne && (L = K.selectedRange());
+                    Ne && (L = G.selectedRange());
                 }),
                 (ft.execCommand = function (e, t) {
                     var i = !1,
                         n = ft.commands[e];
-                    if ((ft.focus(), !c(K.parentNode(), 'code'))) {
+                    if ((ft.focus(), !c(G.parentNode(), 'code'))) {
                         try {
                             i = S.execCommand(e, !1, t);
                         } catch (e) {}
@@ -70238,8 +70241,8 @@ if (
                             x.getSelection().rangeCount <= 0
                         )
                             ee = null;
-                        else if (K && !K.compare(ee)) {
-                            if ((ee = K.cloneSelected()) && ee.collapsed) {
+                        else if (G && !G.compare(ee)) {
+                            if ((ee = G.cloneSelected()) && ee.collapsed) {
                                 var e = ee.startContainer,
                                     t = ee.startOffset;
                                 for (
@@ -70252,7 +70255,7 @@ if (
                                     e = e.parentNode;
                                 e &&
                                     $(e, !0) &&
-                                    (K.saveRange(), re(C, S), K.restoreRange());
+                                    (G.saveRange(), re(C, S), G.restoreRange());
                             }
                             I(o, 'selectionchanged');
                         }
@@ -70264,11 +70267,11 @@ if (
                 }),
                 (at = function () {
                     var e,
-                        t = K.parentNode();
+                        t = G.parentNode();
                     J !== t &&
                         ((e = J),
                         (J = t),
-                        (Q = K.getFirstBlockParent(t)),
+                        (Q = G.getFirstBlockParent(t)),
                         I(o, 'nodechanged', { oldNode: e, newNode: J }));
                 }),
                 (ft.currentNode = function () {
@@ -70289,8 +70292,8 @@ if (
                         });
                     else {
                         s ||
-                            ((t = K.parentNode()),
-                            (e = K.getFirstBlockParent(t)));
+                            ((t = G.parentNode()),
+                            (e = G.getFirstBlockParent(t)));
                         for (var o = 0; o < vt.length; o++) {
                             var r = 0,
                                 c = yt[vt[o].name],
@@ -70313,7 +70316,7 @@ if (
                         ke && ke.update && ke.update(s, t, e);
                     }
                 }),
-                (Ke = function (e) {
+                (Ge = function (e) {
                     if (
                         !e.defaultPrevented &&
                         (ft.closeDropDown(),
@@ -70321,7 +70324,7 @@ if (
                     ) {
                         L = null;
                         var t = r('br', {}, S);
-                        if ((K.insertNode(t), !Oe)) {
+                        if ((G.insertNode(t), !Oe)) {
                             var i = t.parentNode,
                                 n = i.lastChild;
                             n &&
@@ -70331,7 +70334,7 @@ if (
                                 !$(i, !0) &&
                                     n === t &&
                                     $(t.previousSibling) &&
-                                    K.insertHTML('<br>');
+                                    G.insertHTML('<br>');
                         }
                         e.preventDefault();
                     }
@@ -70359,7 +70362,7 @@ if (
                             return !1;
                     });
                 }),
-                (Ge = function () {
+                (Ke = function () {
                     ft.val(e.value);
                 }),
                 (Ye = function () {
@@ -70417,7 +70420,7 @@ if (
                     else {
                         if (h(S, ':focus').length) return;
                         var n,
-                            s = K.selectedRange();
+                            s = G.selectedRange();
                         ee || ot(),
                             !Oe &&
                                 s &&
@@ -70428,10 +70431,10 @@ if (
                                 k(n.firstChild, 'br') &&
                                 (s.setStartBefore(n.firstChild),
                                 s.collapse(!0),
-                                K.selectRange(s)),
+                                G.selectRange(s)),
                             x.focus(),
                             C.focus(),
-                            L && (K.selectRange(L), (L = null));
+                            L && (G.selectRange(L), (L = null));
                     }
                     return tt(), ft;
                 }),
@@ -70469,7 +70472,7 @@ if (
                             (ft.emoticonsCache = i),
                             (ft.longestEmoticonCode =
                                 i[i.length - 1][0].length)),
-                        K.replaceKeyword(
+                        G.replaceKeyword(
                             ft.emoticonsCache,
                             !0,
                             !0,
@@ -70481,14 +70484,14 @@ if (
                                 e.preventDefault()));
                 }),
                 (lt = function () {
-                    ae(Q, K);
+                    ae(Q, G);
                 }),
                 (ft.emoticons = function (e) {
                     if (!e && !1 !== e) return kt.emoticonsEnabled;
                     ((kt.emoticonsEnabled = e), e) ?
                         (p(C, 'keypress', rt),
                         ft.sourceMode() ||
-                            (K.saveRange(), Ae(), dt(!1), K.restoreRange()))
+                            (G.saveRange(), Ae(), dt(!1), G.restoreRange()))
                     :   (a(
                             h(C, 'img[data-sceditor-emoticon]'),
                             function (e, t) {
@@ -70649,7 +70652,7 @@ if (
                     if (
                         !kt.disableBlockRemove &&
                         8 === e.which &&
-                        (i = K.selectedRange()) &&
+                        (i = G.selectedRange()) &&
                         ((t = i.startContainer),
                         0 === i.startOffset && (n = ct()) && !k(n, 'body'))
                     ) {
@@ -70674,12 +70677,12 @@ if (
                     return (
                         !(e = e || ct()) ||
                             k(e, 'body') ||
-                            (K.saveRange(),
+                            (G.saveRange(),
                             (e.className = ''),
                             (L = null),
                             f(e, 'style', ''),
                             k(e, 'p,div,td') || B(e, 'p'),
-                            K.restoreRange()),
+                            G.restoreRange()),
                         ft
                     );
                 }),
@@ -70690,19 +70693,19 @@ if (
                     ) {
                         var t,
                             i = ft.sourceMode(),
-                            n = !i && K.hasSelection();
+                            n = !i && G.hasSelection();
                         (q = !1),
                             (e =
                                 !1 !== e &&
                                 !S.getElementById('sceditor-start-marker')),
                             V && (clearTimeout(V), (V = !1)),
-                            n && e && K.saveRange(),
+                            n && e && G.saveRange(),
                             (t = i ? R.value : C.innerHTML) !== dt.lastVal &&
                                 ((dt.lastVal = t),
                                 I(o, 'valuechanged', {
                                     rawValue: i ? ft.val() : t,
                                 })),
-                            n && e && K.removeMarkers();
+                            n && e && G.removeMarkers();
                     }
                 }),
                 (ut = function () {
@@ -71656,8 +71659,8 @@ if (
                     findCommonAncestor: V,
                     getSibling: U,
                     removeWhiteSpace: Z,
-                    extractContents: K,
-                    getOffset: G,
+                    extractContents: G,
+                    getOffset: K,
                     getStyle: Y,
                     hasStyle: J,
                 },
