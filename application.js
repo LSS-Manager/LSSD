@@ -6832,6 +6832,11 @@ Object.values ||
                     event_start_mission:
                         'Start Event: %{amount} Alliance Credit',
                 },
+                valentinesday: {
+                    currency: 'Event-Tickets',
+                    event_start_mission:
+                        'Startveranstaltung: %{amount} Allianz-Ticket',
+                },
                 winter: {
                     event_start_mission: 'Start Event: %{amount} Snowball',
                 },
@@ -7626,6 +7631,10 @@ Object.values ||
                     event_start_mission:
                         'Start Event: %{amount} Alliance Credit',
                 },
+                valentinesday: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 winter: {
                     event_start_mission: 'Start Event: %{amount} Snowball',
                 },
@@ -8376,6 +8385,10 @@ Object.values ||
                     event_start_mission:
                         'Start Event: %{amount} Alliance Credit',
                 },
+                valentinesday: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 winter: {
                     event_start_mission: 'Start Event: %{amount} Snowball',
                 },
@@ -9103,6 +9116,11 @@ Object.values ||
                     event_start_mission:
                         'Start Event: %{amount} Alliance Credit',
                 },
+                valentinesday: {
+                    currency: 'Evenement Tickets',
+                    event_start_mission:
+                        'Begin Event: %{amount} Verband Ticket',
+                },
                 winter: {
                     event_start_mission: 'Start Event: %{amount} Snowball',
                 },
@@ -9811,6 +9829,11 @@ Object.values ||
                 summer: {
                     event_start_mission:
                         'Start Event: %{amount} Alliance Credit',
+                },
+                valentinesday: {
+                    currency: 'Entradas',
+                    event_start_mission:
+                        'Inicio del evento: %{amount} Entradas para eventos',
                 },
                 winter: {
                     event_start_mission: 'Start Event: %{amount} Snowball',
@@ -10523,6 +10546,11 @@ Object.values ||
                 summer: {
                     event_start_mission:
                         'Start Event: %{amount} Alliance Credit',
+                },
+                valentinesday: {
+                    currency: 'Event Tickets',
+                    event_start_mission:
+                        'Start Event: %{amount} Alliance Ticket',
                 },
                 winter: {
                     event_start_mission: 'Start Event: %{amount} Snowball',
@@ -11257,6 +11285,11 @@ Object.values ||
                     event_start_mission:
                         'Start Event: %{amount} Alliance Credit',
                 },
+                valentinesday: {
+                    currency: 'Biljetter till evenemang',
+                    event_start_mission:
+                        'Starta evenemang: %{amount} Evenemangsbiljett',
+                },
                 winter: {
                     event_start_mission: 'Start Event: %{amount} Snowball',
                 },
@@ -11984,6 +12017,11 @@ Object.values ||
                 summer: {
                     event_start_mission:
                         'Start Event: %{amount} Alliance Credit',
+                },
+                valentinesday: {
+                    currency: 'Bilety na wydarzenia',
+                    event_start_mission:
+                        'Rozpocznij wydarzenie: %{amount} Bilet na wydarzenie',
                 },
                 winter: {
                     event_start_mission: 'Start Event: %{amount} Snowball',
@@ -12714,6 +12752,11 @@ Object.values ||
                     event_start_mission:
                         'Start Event: %{amount} Alliance Credit',
                 },
+                valentinesday: {
+                    currency: "Biglietti per l'evento",
+                    event_start_mission:
+                        'Inizio evento: %{amount} Biglietto evento',
+                },
                 winter: {
                     event_start_mission: 'Start Event: %{amount} Snowball',
                 },
@@ -13436,6 +13479,11 @@ Object.values ||
                 summer: {
                     event_start_mission:
                         'Start Event: %{amount} Alliance Credit',
+                },
+                valentinesday: {
+                    currency: "Billets d'\xe9v\xe9nements",
+                    event_start_mission:
+                        "D\xe9but de l'\xe9v\xe9nement : %{amount} Ticket d'\xe9v\xe9nement",
                 },
                 winter: {
                     event_start_mission: 'Start Event: %{amount} Snowball',
@@ -14219,6 +14267,10 @@ Object.values ||
                 summer: {
                     event_start_mission:
                         'Start Event: %{amount} Alliance Credit',
+                },
+                valentinesday: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
                 },
                 winter: {
                     event_start_mission: 'Start Event: %{amount} Snowball',
@@ -15028,6 +15080,10 @@ Object.values ||
                     event_start_mission:
                         'Start Event: %{amount} Alliance Credit',
                 },
+                valentinesday: {
+                    currency: 'Billetter til arrangementer',
+                    event_start_mission: 'Start event: %{amount} Event-billet',
+                },
                 winter: {
                     event_start_mission: 'Start Event: %{amount} Snowball',
                 },
@@ -15738,6 +15794,11 @@ Object.values ||
                 summer: {
                     event_start_mission:
                         'Start Event: %{amount} Alliance Credit',
+                },
+                valentinesday: {
+                    currency: 'Billetter til arrangementer',
+                    event_start_mission:
+                        'Start hendelse: %{amount} Eventbillett',
                 },
                 winter: {
                     event_start_mission: 'Start Event: %{amount} Snowball',
@@ -16455,6 +16516,11 @@ Object.values ||
                     event_start_mission:
                         'Start Event: %{amount} Alliance Credit',
                 },
+                valentinesday: {
+                    currency: 'Vstupenky na ud\xe1lost',
+                    event_start_mission:
+                        'Zah\xe1jen\xed akce: %{amount} Vstupenka na akci',
+                },
                 winter: {
                     event_start_mission: 'Start Event: %{amount} Snowball',
                 },
@@ -17171,6 +17237,10 @@ Object.values ||
                     event_start_mission:
                         'Start Event: %{amount} Alliance Credit',
                 },
+                valentinesday: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 winter: {
                     event_start_mission: 'Start Event: %{amount} Snowball',
                 },
@@ -17880,6 +17950,11 @@ Object.values ||
                     event_start_mission:
                         'Start Event: %{amount} Alliance Credit',
                 },
+                valentinesday: {
+                    currency: 'Bilhetes para eventos',
+                    event_start_mission:
+                        'Iniciar evento: %{amount} Bilhete de evento',
+                },
                 winter: {
                     event_start_mission: 'Start Event: %{amount} Snowball',
                 },
@@ -18581,6 +18656,10 @@ Object.values ||
                 summer: {
                     event_start_mission:
                         'Start Event: %{amount} Alliance Credit',
+                },
+                valentinesday: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
                 },
                 winter: {
                     event_start_mission: 'Start Event: %{amount} Snowball',
@@ -19342,6 +19421,10 @@ Object.values ||
                 summer: {
                     event_start_mission:
                         'Start Event: %{amount} Alliance Credit',
+                },
+                valentinesday: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
                 },
                 winter: {
                     event_start_mission: 'Start Event: %{amount} Snowball',
@@ -20124,6 +20207,10 @@ Object.values ||
                     event_start_mission:
                         'Start Event: %{amount} Alliance Credit',
                 },
+                valentinesday: {
+                    currency: 'Entradas',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 winter: {
                     event_start_mission: 'Start Event: %{amount} Snowball',
                 },
@@ -20862,6 +20949,12 @@ Object.values ||
                 summer: {
                     event_start_mission:
                         'Start Event: %{amount} Alliance Credit',
+                },
+                valentinesday: {
+                    currency:
+                        '\u30a4\u30d9\u30f3\u30c8\u30c1\u30b1\u30c3\u30c8',
+                    event_start_mission:
+                        '\u30a4\u30d9\u30f3\u30c8\u958b\u59cb\uff1a %{amount} \u30a4\u30d9\u30f3\u30c8\u30c1\u30b1\u30c3\u30c8',
                 },
                 winter: {
                     event_start_mission: 'Start Event: %{amount} Snowball',
@@ -21643,6 +21736,11 @@ Object.values ||
                     event_start_mission:
                         'Start Event: %{amount} Alliance Credit',
                 },
+                valentinesday: {
+                    currency: '\uc774\ubca4\ud2b8 \ud2f0\ucf13',
+                    event_start_mission:
+                        '\uc774\ubca4\ud2b8 \uc2dc\uc791: %{amount} \uc774\ubca4\ud2b8 \ud2f0\ucf13',
+                },
                 winter: {
                     event_start_mission: 'Start Event: %{amount} Snowball',
                 },
@@ -22376,6 +22474,10 @@ Object.values ||
                     event_start_mission:
                         'Start Event: %{amount} Alliance Credit',
                 },
+                valentinesday: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 winter: {
                     event_start_mission: 'Start Event: %{amount} Snowball',
                 },
@@ -23097,6 +23199,11 @@ Object.values ||
                     event_start_mission:
                         'Start Event: %{amount} Alliance Credit',
                 },
+                valentinesday: {
+                    currency: 'Tapahtuman liput',
+                    event_start_mission:
+                        'Aloita tapahtuma: %{amount} Tapahtumalippu',
+                },
                 winter: {
                     event_start_mission: 'Start Event: %{amount} Snowball',
                 },
@@ -23796,6 +23903,10 @@ Object.values ||
                     event_start_mission:
                         'Start Event: %{amount} Alliance Credit',
                 },
+                valentinesday: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 winter: {
                     event_start_mission: 'Start Event: %{amount} Snowball',
                 },
@@ -24491,6 +24602,10 @@ Object.values ||
                 summer: {
                     event_start_mission:
                         'Start Event: %{amount} Alliance Credit',
+                },
+                valentinesday: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
                 },
                 winter: {
                     event_start_mission: 'Start Event: %{amount} Snowball',
