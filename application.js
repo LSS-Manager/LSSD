@@ -6818,7 +6818,7 @@ Object.values ||
         javascript: {
             alarm: 'Alarm',
             alliance_event_pay_out_message:
-                'This will be paid out when all the alliance event missions are finished',
+                'This will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Event-Tickets',
@@ -7618,7 +7618,7 @@ Object.values ||
         javascript: {
             alarm: 'Dispatch',
             alliance_event_pay_out_message:
-                'This will be paid out when all the alliance event missions are finished',
+                'This will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Event Tickets',
@@ -8371,7 +8371,7 @@ Object.values ||
         javascript: {
             alarm: 'Dispatch',
             alliance_event_pay_out_message:
-                'This will be paid out when all the alliance event missions are finished',
+                'This will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Event Tickets',
@@ -9102,7 +9102,7 @@ Object.values ||
         javascript: {
             alarm: 'Alarm',
             alliance_event_pay_out_message:
-                'This will be paid out when all the alliance event missions are finished',
+                'This will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Evenement Tickets',
@@ -9816,7 +9816,7 @@ Object.values ||
         javascript: {
             alarm: 'Enviar',
             alliance_event_pay_out_message:
-                'This will be paid out when all the alliance event missions are finished',
+                'This will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Entradas',
@@ -10533,7 +10533,7 @@ Object.values ||
         javascript: {
             alarm: 'Dispatch',
             alliance_event_pay_out_message:
-                'This will be paid out when all the alliance event missions are finished',
+                'This will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Event Tickets',
@@ -11271,7 +11271,7 @@ Object.values ||
         javascript: {
             alarm: 'Larmcentral',
             alliance_event_pay_out_message:
-                'This will be paid out when all the alliance event missions are finished',
+                'This will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Biljetter till evenemang',
@@ -12004,7 +12004,7 @@ Object.values ||
         javascript: {
             alarm: 'Wy\u015blij',
             alliance_event_pay_out_message:
-                'This will be paid out when all the alliance event missions are finished',
+                'This will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Bilety na wydarzenia',
@@ -12738,7 +12738,7 @@ Object.values ||
         javascript: {
             alarm: 'Assegna',
             alliance_event_pay_out_message:
-                'This will be paid out when all the alliance event missions are finished',
+                'This will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: "Biglietti per l'evento",
@@ -13466,7 +13466,7 @@ Object.values ||
         javascript: {
             alarm: 'D\xe9ployer',
             alliance_event_pay_out_message:
-                'This will be paid out when all the alliance event missions are finished',
+                'This will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: "Billets d'\xe9v\xe9nements",
@@ -14256,7 +14256,7 @@ Object.values ||
         javascript: {
             alarm: '\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c',
             alliance_event_pay_out_message:
-                'This will be paid out when all the alliance event missions are finished',
+                'This will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Event Tickets',
@@ -15069,7 +15069,7 @@ Object.values ||
         javascript: {
             alarm: 'Send ud',
             alliance_event_pay_out_message:
-                'This will be paid out when all the alliance event missions are finished',
+                'This will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Billetter til arrangementer',
@@ -15783,7 +15783,7 @@ Object.values ||
         javascript: {
             alarm: 'Send ut',
             alliance_event_pay_out_message:
-                'This will be paid out when all the alliance event missions are finished',
+                'This will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Billetter til arrangementer',
@@ -16504,7 +16504,7 @@ Object.values ||
         javascript: {
             alarm: 'V\xfdjezd',
             alliance_event_pay_out_message:
-                'This will be paid out when all the alliance event missions are finished',
+                'This will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Vstupenky na ud\xe1lost',
@@ -17225,7 +17225,7 @@ Object.values ||
         javascript: {
             alarm: 'Sevk Et',
             alliance_event_pay_out_message:
-                'This will be paid out when all the alliance event missions are finished',
+                'This will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Event Tickets',
@@ -17938,7 +17938,7 @@ Object.values ||
         javascript: {
             alarm: 'Despachar',
             alliance_event_pay_out_message:
-                'This will be paid out when all the alliance event missions are finished',
+                'This will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Bilhetes para eventos',
@@ -18645,7 +18645,7 @@ Object.values ||
         javascript: {
             alarm: 'Despachar',
             alliance_event_pay_out_message:
-                'This will be paid out when all the alliance event missions are finished',
+                'This will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Event Tickets',
@@ -19410,7 +19410,7 @@ Object.values ||
         javascript: {
             alarm: '\u0412\u0456\u0434\u043f\u0440\u0430\u0432\u0438\u0442\u0438',
             alliance_event_pay_out_message:
-                'This will be paid out when all the alliance event missions are finished',
+                'This will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Event Tickets',
@@ -20195,7 +20195,7 @@ Object.values ||
         javascript: {
             alarm: 'Enviar',
             alliance_event_pay_out_message:
-                'This will be paid out when all the alliance event missions are finished',
+                'This will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Entradas',
@@ -20937,7 +20937,7 @@ Object.values ||
         javascript: {
             alarm: '\u6307\u4ee4',
             alliance_event_pay_out_message:
-                'This will be paid out when all the alliance event missions are finished',
+                'This will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency:
@@ -21724,7 +21724,7 @@ Object.values ||
         javascript: {
             alarm: '\ud30c\uacac',
             alliance_event_pay_out_message:
-                'This will be paid out when all the alliance event missions are finished',
+                'This will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: '\uc774\ubca4\ud2b8 \ud2f0\ucf13',
@@ -22462,7 +22462,7 @@ Object.values ||
         javascript: {
             alarm: 'Trimitere',
             alliance_event_pay_out_message:
-                'This will be paid out when all the alliance event missions are finished',
+                'This will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Event Tickets',
@@ -23187,7 +23187,7 @@ Object.values ||
         javascript: {
             alarm: 'L\xe4het\xe4',
             alliance_event_pay_out_message:
-                'This will be paid out when all the alliance event missions are finished',
+                'This will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Tapahtuman liput',
@@ -23891,7 +23891,7 @@ Object.values ||
         javascript: {
             alarm: 'Vysla\u0165',
             alliance_event_pay_out_message:
-                'This will be paid out when all the alliance event missions are finished',
+                'This will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Event Tickets',
@@ -24591,7 +24591,7 @@ Object.values ||
         javascript: {
             alarm: 'Dispatch',
             alliance_event_pay_out_message:
-                'This will be paid out when all the alliance event missions are finished',
+                'This will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Event Tickets',
