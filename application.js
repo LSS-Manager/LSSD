@@ -2039,78 +2039,74 @@ function aaoNextAvailable(e, t) {
     );
 }
 function aao(e, t, i, n) {
-    return aao_check_update($(aao_source_element + ' input'), e, t, i, n);
-}
-function aao_check_update(e, t, i, n, s) {
-    if (s <= 0) return '';
-    const a = {};
-    var o;
-    if (-1 !== t.indexOf('vehicle_type_id_')) {
-        const i = parseAaoVehicleIds(t.substring(16));
-        o = e.filter(function () {
-            const e = parseInt($(this).attr('vehicle_type_id'));
-            return i.includes(e);
-        });
-    } else {
-        'auto_assign' === aaoEquipmentModes[i.attr('equipment_mode')] &&
-            $.each(e, (e, i) => {
-                const n = $(i).attr('value'),
-                    s = vehiclesEquipmentDataById[n];
-                if (s) {
-                    const e = s.state.equipments
-                        .filter(e => e.isSelectPossible())
-                        .find(e => e.aaoValues[t] > 0);
-                    e && (a[n] = e);
-                }
-            }),
-            (o = e.filter(function (e, i) {
-                const n = $(i),
-                    s = n.attr('value'),
-                    o = !!a[s];
-                return n.attr(t) > 0 || o;
-            }));
-    }
-    return (
-        o.each(function (e, n) {
-            const o = $(n),
-                r = o.attr('value');
-            if (s <= 0) return '';
-            var l = [];
-            if ('' != i.attr('building_ids'))
-                l = jQuery.parseJSON(i.attr('building_ids'));
-            if (
-                aao_building_check(l, o) &&
-                !o.prop('checked') &&
-                !o.prop('disabled') &&
-                o.attr('ignore_aao') <= 0 &&
-                (o.attr('vehicle_type_ignore_default_aao') <= 0 ||
-                    -1 !== t.indexOf('custom_'))
-            ) {
-                'grtw0' == t &&
-                    $('#vehicle_mode_' + o.val() + '_0')
-                        .prop('checked', !0)
-                        .change(),
-                    'grtw1' == t &&
-                        $('#vehicle_mode_' + o.val() + '_1')
+    if (n > 0) {
+        const i = {};
+        var s;
+        if (-1 !== e.indexOf('vehicle_type_id_')) {
+            const t = parseAaoVehicleIds(e.substring(16));
+            s = $(aao_source_element + ' input').filter(function () {
+                const e = parseInt($(this).attr('vehicle_type_id'));
+                return t.includes(e);
+            });
+        } else {
+            const n = $(aao_source_element + ' input');
+            'auto_assign' === aaoEquipmentModes[t.attr('equipment_mode')] &&
+                $.each(n, (t, n) => {
+                    const s = $(n).attr('value'),
+                        a = vehiclesEquipmentDataById[s];
+                    if (a) {
+                        const t = a.state.equipments
+                            .filter(e => e.isSelectPossible())
+                            .find(t => t.aaoValues[e] > 0);
+                        t && (i[s] = t);
+                    }
+                }),
+                (s = n.filter(function () {
+                    const t = $(this).attr('value'),
+                        n = !!i[t];
+                    return $(this).attr(e) > 0 || n;
+                }));
+        }
+        s.each(function () {
+            const s = $(this).attr('value');
+            if (n > 0) {
+                var a = [];
+                if ('' != t.attr('building_ids'))
+                    a = jQuery.parseJSON(t.attr('building_ids'));
+                if (
+                    aao_building_check(a, $(this)) &&
+                    !$(this).prop('checked') &&
+                    !$(this).prop('disabled') &&
+                    $(this).attr('ignore_aao') <= 0 &&
+                    ($(this).attr('vehicle_type_ignore_default_aao') <= 0 ||
+                        -1 !== e.indexOf('custom_'))
+                ) {
+                    'grtw0' == e &&
+                        $('#vehicle_mode_' + $(this).val() + '_0')
                             .prop('checked', !0)
                             .change(),
-                    AAO_MULTIPLE_KEYS.includes(t) ? (s -= o.attr(t)) : (s -= 1);
-                const e = a[r];
-                if (e) {
-                    const t = vehiclesEquipmentDataById[r];
-                    (e.selected = !0),
-                        t.updateSelectedEquipment(),
-                        t.applyEquipment({ selectVehicle: !1 });
+                        'grtw1' == e &&
+                            $('#vehicle_mode_' + $(this).val() + '_1')
+                                .prop('checked', !0)
+                                .change(),
+                        AAO_MULTIPLE_KEYS.includes(e) ?
+                            (n -= $(this).attr(e))
+                        :   (n -= 1);
+                    const t = i[s];
+                    if (t) {
+                        const e = vehiclesEquipmentDataById[s];
+                        (t.selected = !0),
+                            e.updateSelectedEquipment(),
+                            e.applyEquipment({ selectVehicle: !1 });
+                    }
+                    $(this).prop('checked', !0), $(this).change();
                 }
-                o.prop('checked', !0),
-                    existing_vehicles_per_checkbox_id.set(n.id, !0),
-                    0 === s && o.change();
             }
-        }),
-        s > 0 ?
-            I18n.t('javascript.missed_vehicle') + ' ' + s + ' ' + n + '. '
-        :   ''
-    );
+        });
+    }
+    return n > 0 ?
+            I18n.t('javascript.missed_vehicle') + ' ' + n + ' ' + i + '. '
+        :   '';
 }
 function mission_participation_add(e) {
     $('#mission_participant_' + e).removeClass('hidden'),
@@ -2617,16 +2613,6 @@ function vehicleSelectionReset() {
     $('.vehicle_checkbox').attr('checked', !1),
         $('.vehicle_checkbox:first').change();
 }
-function vehicleSelectionResetDocument() {
-    document
-        .querySelectorAll('.vehicle_checkbox:checked')
-        .forEach(function (e) {
-            e.checked = !1;
-            vehicleResetTrailer($(e)),
-                existing_vehicles_per_checkbox_id.set(e.id, !1);
-        }),
-        $('.vehicle_checkbox:first').change();
-}
 function vehicleResetTrailer(e) {
     '1' == e.attr('trailer') &&
         (e.prop('checked') ||
@@ -2636,22 +2622,19 @@ function vehicleResetTrailer(e) {
         missionAlarmTrailerCheck());
 }
 function aaoNearSelection(e, t, i, n, s, a) {
-    missing = '';
-    const o = $(aao_source_element + ' input');
-    for (; n > 0; ) {
-        var r = aaoNextAvailable(t, a),
-            l = aaoNextAvailable(i, a),
-            c = aaoNextAvailable(e, a);
-        -1 != l && -1 != r && -1 != c ?
-            r > c || l > c ?
-                (missing += aao_check_update(o, e, a, s[1], 1))
-            :   ((missing += aao_check_update(o, t, a, s[1], 1)),
-                (missing += aao_check_update(o, i, a, s[1], 1)))
-        : -1 != l && -1 != r ?
-            ((missing += aao_check_update(o, t, a, s[1], 1)),
-            (missing += aao_check_update(o, i, a, s[1], 1)))
-        : -1 != c ? (missing += aao_check_update(o, e, a, s[1], 1))
-        : ((missing += aao_check_update(o, s[0], a, s[1], n)), (n = 0)),
+    for (missing = ''; n > 0; ) {
+        var o = aaoNextAvailable(t, a),
+            r = aaoNextAvailable(i, a),
+            l = aaoNextAvailable(e, a);
+        -1 != r && -1 != o && -1 != l ?
+            o > l || r > l ?
+                (missing += aao(e, a, s[1], 1))
+            :   ((missing += aao(t, a, s[1], 1)),
+                (missing += aao(i, a, s[1], 1)))
+        : -1 != r && -1 != o ?
+            ((missing += aao(t, a, s[1], 1)), (missing += aao(i, a, s[1], 1)))
+        : -1 != l ? (missing += aao(e, a, s[1], 1))
+        : ((missing += aao(s[0], a, s[1], n)), (n = 0)),
             (n -= 1);
     }
     return missing;
@@ -2659,47 +2642,56 @@ function aaoNearSelection(e, t, i, n, s, a) {
 function aaoClickHandler(e) {
     var t = '',
         i = $(e);
-    'true' == i.attr('reset') && vehicleSelectionResetDocument();
-    const n = $(aao_source_element + ' input');
-    $.each(aao_types, function (e, s) {
-        if (
-            'naw_or_rtw_and_nef' == s[0] ||
-            'naw_or_rtw_and_nef_or_rth' == s[0]
-        ) {
-            var a = 'nef';
-            'naw_or_rtw_and_nef' == s[0] && (a = 'nef_only');
-            var o = i.attr(s[0]);
-            t += aaoNearSelection('naw', a, 'rtw', o, s, i);
-        } else if ('hlf_or_rw_and_lf' == s[0]) {
-            o = i.attr(s[0]);
-            t += aaoNearSelection('hlf_only', 'rw_only', 'lf_only', o, s, i);
-        } else {
-            o = i.attr(s[0]);
-            t += aao_check_update(n, s[0], i, s[1], o);
-        }
-    });
-    var s = i.attr('custom');
-    if ('' != s) {
-        var a = jQuery.parseJSON(s);
-        $.each(a, function (e, s) {
-            t += aao_check_update(n, 'custom_' + md5(e), i, e, s);
+    'true' == i.attr('reset') &&
+        (vehicleSelectionReset(),
+        $('.vehicle_checkbox').each(function () {
+            vehicleResetTrailer($(this));
+        })),
+        $.each(aao_types, function (e, n) {
+            if (
+                'naw_or_rtw_and_nef' == n[0] ||
+                'naw_or_rtw_and_nef_or_rth' == n[0]
+            ) {
+                var s = 'nef';
+                'naw_or_rtw_and_nef' == n[0] && (s = 'nef_only');
+                var a = i.attr(n[0]);
+                t += aaoNearSelection('naw', s, 'rtw', a, n, i);
+            } else if ('hlf_or_rw_and_lf' == n[0]) {
+                a = i.attr(n[0]);
+                t += aaoNearSelection(
+                    'hlf_only',
+                    'rw_only',
+                    'lf_only',
+                    a,
+                    n,
+                    i
+                );
+            } else {
+                a = i.attr(n[0]);
+                t += aao(n[0], i, n[1], a);
+            }
+        });
+    var n = i.attr('custom');
+    if ('' != n) {
+        var s = jQuery.parseJSON(n);
+        $.each(s, function (e, n) {
+            t += aao('custom_' + md5(e), i, e, n);
         });
     }
-    var o = i.attr('vehicle_type_ids'),
-        r = i.attr('vehicle_type_captions');
-    if (void 0 !== o && void 0 !== r) {
-        var l = jQuery.parseJSON(o);
-        r = jQuery.parseJSON(r);
-        $.each(l, function (e, s) {
-            var a = r[e];
-            t += aao_check_update(n, 'vehicle_type_id_' + e, i, a, s);
+    var a = i.attr('vehicle_type_ids'),
+        o = i.attr('vehicle_type_captions');
+    if (void 0 !== a && void 0 !== o) {
+        var r = jQuery.parseJSON(a);
+        o = jQuery.parseJSON(o);
+        $.each(r, function (e, n) {
+            var s = o[e];
+            t += aao('vehicle_type_id_' + e, i, s, n);
         });
     }
     return (
         '' != t ?
             ('undefined' != typeof pressedKeys && (pressedKeys = {}), alert(t))
         :   aao_available(i.attr('aao_id'), !0),
-        update_active_tab_inputs(),
         !1
     );
 }
