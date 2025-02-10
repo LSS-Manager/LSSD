@@ -7244,7 +7244,7 @@ Object.values ||
         javascript: {
             alarm: 'Dispatch',
             alliance_event_pay_out_message:
-                'This will be paid out when the alliance event is finished.',
+                'This is shared between every member who took part in the event and will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Event Tickets',
@@ -8070,7 +8070,7 @@ Object.values ||
         javascript: {
             alarm: 'Dispatch',
             alliance_event_pay_out_message:
-                'This will be paid out when the alliance event is finished.',
+                'This is shared between every member who took part in the event and will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Event Tickets',
@@ -9904,7 +9904,7 @@ Object.values ||
         javascript: {
             alarm: 'Dispatch',
             alliance_event_pay_out_message:
-                'This will be paid out when the alliance event is finished.',
+                'This is shared between every member who took part in the event and will be paid out when the alliance event is finished.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Event Tickets',
