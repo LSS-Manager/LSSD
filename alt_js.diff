@@ -1,0 +1,88 @@
+diff --git a/application.js b/application.alt.js
+index 9d156c8..0ce2576 100644
+--- a/application.js
++++ b/application.alt.js
+@@ -2922,26 +2922,15 @@ function eventAnnounce(e) {
+             ' ' +
+             formatTime(e.end_in) +
+             '.';
+-        if (
+-            (null != e.start_username &&
+-                (t =
+-                    t +
+-                    ' ' +
+-                    I18n.t('javascript.start_username') +
+-                    ' ' +
+-                    e.start_username),
+-            !0 === e.seasonal_event)
+-        ) {
+-            var i = e.user_credits,
+-                n = e.user_event_currency,
+-                s = I18n.t('javascript.not_qualified');
+-            i > 0 && n > 0 && (s = I18n.t('javascript.qualified')),
+-                (t += "<div id='event_info_seasonal_event_details' "),
+-                showSeasonalEventDetails || (t += 'style="display: none ;"'),
+-                (t += `><br>\n                              ${I18n.t('javascript.total_credits_earned')} ${e.total_credits}\n                              <br>\n                              ${I18n.t('javascript.total_event_currency_earned')} ${e.total_event_currency}\n                              <br><br>\n                              ${s}\n                              <br>            \n                              ${I18n.t('javascript.current_reward_for_you', { credits: i, event_currency: n })}\n                              <br><br>\n                              ${I18n.t('javascript.alliance_event_pay_out_message')}\n                          </div>`),
+-                (t += `<div class="text-right visible-xs-block">\n                                    <a id="event_info_seasonal_event_show" ${showSeasonalEventDetails ? 'style="display: none;"' : ''} href="#" onclick="showLongSeasonalEventDetailsMobile()">${I18n.t('javascript.show_more')}</a>\n                                    <a id="event_info_seasonal_event_hide" ${showSeasonalEventDetails ? '' : 'style="display: none;"'} href="#" onclick="hideLongSeasonalEventDetailsMobile()">${I18n.t('javascript.show_less')}</a>\n                             </div>`);
+-        }
+-        (t += '</div>'), $('#eventInfo').html(t);
++        null != e.start_username &&
++            (t =
++                t +
++                ' ' +
++                I18n.t('javascript.start_username') +
++                ' ' +
++                e.start_username),
++            (t += '</div>'),
++            $('#eventInfo').html(t);
+     }
+     (e.end_in = e.end_in - 1),
+         (e.start_in = e.start_in - 1),
+@@ -3601,10 +3590,6 @@ function creditsUpdate(e, t) {
+     $('.credits-value').html(i),
+         '' == n || n == i || t || highlightElement($('#navigation_top'));
+ }
+-function eventCurrencyUpdate(e) {
+-    1 == mobile_bridge_use &&
+-        mobileBridgeAdd('amount', { value: number_format(e) });
+-}
+ function tasksUpdate(e, t) {
+     e > 0 ?
+         $('#completed_tasks_counter').html(e)
+@@ -7264,7 +7249,7 @@ Object.values ||
+             coins: 'Coins',
+             credits: 'Credits',
+             current_reward_for_you:
+-                '<b>Your current reward:</b> %{credits} Credits & %{event_currency} Event Credits',
++                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
+             days: 'days',
+             few_seconds: 'in few seconds',
+             finish_in: 'Finish in:',
+@@ -8098,7 +8083,7 @@ Object.values ||
+             coins: 'Coins',
+             credits: 'Credits',
+             current_reward_for_you:
+-                '<b>Your current reward:</b> %{credits} Credits & %{event_currency} Event Credits',
++                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
+             days: 'days',
+             few_seconds: 'in few seconds',
+             finish_in: 'Finish in:',
+@@ -9926,7 +9911,7 @@ Object.values ||
+             coins: 'Coins',
+             credits: 'Credits',
+             current_reward_for_you:
+-                '<b>Your current reward:</b> %{credits} Credits & %{event_currency} Event Credits',
++                '<b>Current Reward for you:</b> %{credits} Credits & %{event_currency} Event Credits',
+             days: 'days',
+             few_seconds: 'in few seconds',
+             finish_in: 'Finish in:',
+@@ -55661,9 +55646,6 @@ var lastMissionTimeoutID = null,
+     hideTimeOut,
+     showTimeOut,
+     mission_speed;
+-let showSeasonalEventDetails = !(
+-    !0 === mobile_bridge_use && 4 === mobile_version
+-);
+ $(function () {
+     function onCoinsTop() {
+         return !mobile_bridge_use || (mobileBridgeAdd('coins_window', {}), !1);
