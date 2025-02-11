@@ -1,0 +1,28 @@
+diff --git a/application.css b/application.alt.css
+index ef76868..ade5dc6 100644
+--- a/application.css
++++ b/application.alt.css
+@@ -14918,9 +14918,6 @@ body.dark .arrow {
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+ }
+-#event_market .grid-container .grid-item .grid-item-header.dark {
+-    border-bottom: 1px solid #000;
+-}
+ #event_market .grid-container .grid-item .grid-item-text {
+     grid-area: main;
+     display: flex;
+@@ -14928,13 +14925,6 @@ body.dark .arrow {
+     justify-content: center;
+     align-items: center;
+ }
+-#event_market .grid-container .grid-item .grid-item-text.dark {
+-    background-color: #505050;
+-    border-color: #000;
+-}
+-#event_market .grid-container .grid-item.dark {
+-    border-color: #000;
+-}
+ #event_buff_shop .grid-container {
+     display: grid;
+     grid-gap: 50px;

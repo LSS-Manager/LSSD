@@ -14918,12 +14918,22 @@ body.dark .arrow {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
+#event_market .grid-container .grid-item .grid-item-header.dark {
+    border-bottom: 1px solid #000;
+}
 #event_market .grid-container .grid-item .grid-item-text {
     grid-area: main;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+#event_market .grid-container .grid-item .grid-item-text.dark {
+    background-color: #505050;
+    border-color: #000;
+}
+#event_market .grid-container .grid-item.dark {
+    border-color: #000;
 }
 #event_buff_shop .grid-container {
     display: grid;
