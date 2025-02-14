@@ -16669,6 +16669,16 @@ i.bbcode-link-icon {
     .credits-value {
     padding-bottom: 3px;
 }
+.dark.design-v2.design-v2.design-v2.design-v2 .btn-default {
+    background-image: linear-gradient(to bottom, #505050 0, #000 100%);
+    color: #fff;
+    border: 1px solid #252525;
+}
+.dark.design-v2.design-v2.design-v2.design-v2 .btn-default:hover {
+    background-image: linear-gradient(to bottom, #000 0, #505050 100%);
+    background-position: 0 0;
+    color: #fff;
+}
 .dark.design-v2.design-v2.design-v2.design-v2 .nav-tabs > li > a {
     border-color: #000;
     background-color: #505050;
