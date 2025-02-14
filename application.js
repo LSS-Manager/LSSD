@@ -117,7 +117,7 @@ function processMissionElement(e, t, i) {
             mission_markers_per_id.set(x.mission_id, x);
     }
     if ((y.date_end > 0 && missionTimerStart(y), y.water_damage_pump_value)) {
-        var z =
+        var C =
             "<div class='small' id='pumping_" +
             y.id +
             "'>" +
@@ -127,7 +127,7 @@ function processMissionElement(e, t, i) {
             "' class='progress pumping_progress'><div id='pumping_bar_" +
             y.id +
             "' class='progress-bar progress-bar-info";
-        (z +=
+        (C +=
             "' style='width: " +
             y.live_current_water_damage_pump_value +
             "%;'><div id='pumping_bar_striper_" +
@@ -137,7 +137,7 @@ function processMissionElement(e, t, i) {
             "'></div></div></div><div  id='patients_missing_" +
             y.id +
             "'"),
-            $('#mission_pump_progress_' + y.id).html(z);
+            $('#mission_pump_progress_' + y.id).html(C);
     }
     y.pumping_date_end > 0 &&
         ($('#pumping_bar_striper_' + y.id).addClass(
@@ -2398,17 +2398,17 @@ function waterCalculator(e, t) {
     var w = i.translations;
     const k = I18n.t(w.aria_progress_bar_prefix),
         x = I18n.t(w.amountOnSite, { amount: number_format(parseInt(h)) }),
-        z = I18n.t(w.amountApproaching, { amount: number_format(parseInt(p)) }),
-        C = I18n.t(w.amountSelected, { amount: number_format(parseInt(m)) }),
+        C = I18n.t(w.amountApproaching, { amount: number_format(parseInt(p)) }),
+        z = I18n.t(w.amountSelected, { amount: number_format(parseInt(m)) }),
         S = I18n.t(w.amountMissing, { amount: number_format(parseInt(_)) });
     s.find('.mission_water_bar_at_mission_' + e).html(x),
-        s.find('.mission_water_bar_driving_' + e).html(z),
-        s.find('.mission_water_bar_selected_' + e).html(C),
+        s.find('.mission_water_bar_driving_' + e).html(C),
+        s.find('.mission_water_bar_selected_' + e).html(z),
         s.find('.mission_water_bar_missing_' + e).html(S);
     const T = [k];
     parseInt(h) > 0 && T.push(x),
-        parseInt(p) > 0 && T.push(z),
-        parseInt(m) > 0 && T.push(C),
+        parseInt(p) > 0 && T.push(C),
+        parseInt(m) > 0 && T.push(z),
         parseInt(_) > 0 && T.push(S),
         s.attr('title', T.join(', ')),
         v + g + f >= 100 ?
@@ -6618,6 +6618,15 @@ Object.values ||
                 'Wenn aktiv, kann die AAO den Fahrzeugen Ausr\xfcstung zuweisen. W\xe4hlt die n\xe4chstgelegene Einheit oder Ausr\xfcstung. (W\xe4hlt nicht ausschlie\xdflich Ausr\xfcstung)',
             automatic_text_color: 'Automatische Schriftfarbe',
             back: 'Zur\xfcck',
+            categories: {
+                bereitschaftspolizei: "Maintien de l'Ordre",
+                coastal_rescue: 'Sauvetage C\xf4tier',
+                disaster_response: 'R\xe9ponse aux catastrophes ',
+                firefighting: 'Sapeurs-pompiers',
+                police: 'Police',
+                rescue: 'Secours a Personne',
+                water_rescue: 'Secours nautique',
+            },
             category: 'Kategorie',
             colour: 'Farbe',
             column: 'Spalte',
@@ -6673,6 +6682,10 @@ Object.values ||
                 arff: 'Flugfeldl\xf6schfahrzeug',
                 battalion_chief_unit: 'Einsatzleitfahrzeuge 1',
                 boot: 'Boote (Allgemein)',
+                brush_truck: 'CCF',
+                brush_truck_1: 'CCFS',
+                brush_truck_2: 'CCFM',
+                brush_truck_3: 'CCFL',
                 care_service_equipment:
                     'Betreuungs- und Verpflegungsausstattung',
                 dekon_p: 'Dekon-P oder AB-Dekon-P',
@@ -6689,6 +6702,10 @@ Object.values ||
                 energy_supply: 'NEA50',
                 energy_supply_2: 'NEA200',
                 fire_truck: 'L\xf6schfahrzeuge oder Tankl\xf6schfahrzeuge',
+                fireboat: 'Grand bateau d\u2019incendie',
+                flood_equipment: 'CEEP ou MAI',
+                fly_car: 'VRM',
+                fly_car_any: 'VL SSSM / VLM',
                 fukw: 'F\xfcKW (F\xfchrungskraftwagen - Polizei)',
                 fustkw_or_civil_patrolcar:
                     'Funkstreifenwagen oder Zivilstreifenwagen',
@@ -6714,8 +6731,10 @@ Object.values ||
                 gwl2wasser_all: 'Alle Schlauchfahrzeuge',
                 gwl2wasser_only: 'Nur Schlauchwagen',
                 helicopter_bucket: 'Au\xdfenlastbeh\xe4lter (allgemein)',
+                hems: 'Services d\u2019urgence',
                 hlf_only: 'HLF',
                 hlf_or_rw_and_lf: 'HLF oder RW und LF',
+                hose_trucks: 'Camion d\xe9vidoir',
                 k9: 'Diensthundef\xfchrerkraftwagen',
                 kdow_lna: 'KdoW-LNA',
                 kdow_orgl: 'KdoW-OrgL',
@@ -6762,12 +6781,16 @@ Object.values ||
                 rescue_dogs_thw: 'Anh\xe4nger Hundetransport',
                 rescue_vehicle: 'R\xfcstwagen oder HLF',
                 rescue_vehicle_only: 'R\xfcstwagen',
+                rescueboat: 'Grand bateau de sauvetage',
                 rettungstreppe: 'Rettungstreppe',
                 rth_only: 'Rettungshubschrauber',
                 schlauchwagen: 'Schlauchwagen oder AB-Schlauch',
                 seg_elw: 'ELW 1 (SEG)',
                 sek_mtf: 'SEK - MTF',
                 sek_zf: 'SEK - ZF',
+                swat: 'SWAT',
+                swat_armored_vehicle: 'V\xe9hicule renforc\xe9 du SWAT',
+                swat_suv: 'SUV du SWAT',
                 thw_anh_mzab: 'Anh MzAB',
                 thw_anh_mzb: 'Anh MzB',
                 thw_anh_schlb: 'Anh SchlB',
@@ -6936,6 +6959,8 @@ Object.values ||
                 mission_positions_section: 'POIs',
                 missions_section: 'Eins\xe4tze',
                 mountain_missions: 'Bergrettung',
+                mountain_rescue: 'Gendarmerie haute montagne',
+                mountain_rescue_heliport: 'DAG',
                 police_copter_station_missions: 'Polizeihubschrauberstation',
                 police_horse: 'Reiterstaffeln',
                 police_school_missions: 'Polizeischule',
@@ -6949,6 +6974,9 @@ Object.values ||
                 riot_police: 'Bereitschaftspolizei',
                 riot_police_missions: 'Bereitschaftspolizei',
                 staging_area_missions: 'Bereitstellungsraum',
+                swat_airport: 'GIH',
+                technical_aid: 'U.I.I.S.C.',
+                technical_aid_missions: 'U.I.I.S.C.',
                 technical_aid_organization: 'THW',
                 technical_aid_organization_missions: 'THW',
                 technical_aid_organization_school: 'THW Bundesschule',
@@ -7023,6 +7051,8 @@ Object.values ||
             radio_messages: 'Funk',
             restore_map: 'Karte wiederherstellen',
             retry: 'Neuladen',
+            server_warning:
+                'Maintenance des serveurs \xe0 00h00. Ceux-ci seront indisponibles durant une dur\xe9e approximative de 6h00.',
             show_informations:
                 'Gr\xfcn = Die Eins\xe4tze werden in der Leiste angezeigt. Rot = Die Eins\xe4tze werden nicht angezeigt.',
             sicherheitswache: 'Geplante Eins\xe4tze',
@@ -7266,6 +7296,7 @@ Object.values ||
                 bereitschaftspolizei: 'Riot Police',
                 brush: 'Wildfire',
                 coastal_rescue: 'Coastal Rescue',
+                disaster_response: 'R\xe9ponse aux catastrophes ',
                 fbi: 'FBI & DEA',
                 firefighting: 'Firefighting',
                 police: 'Police',
@@ -7360,6 +7391,8 @@ Object.values ||
                 drone: 'Any drone unit',
                 elw1_or_elw2:
                     'Battalion Chief Unit, Mobile Command Vehicle or Mobile Command-Module',
+                elw2_or_ab_elw:
+                    "Pompe de secours ou unit\xe9 de secours en renfort et v\xe9hicule d'incendie",
                 elw3: 'Wildland MCCs',
                 elw_police: 'Police MCV',
                 emergency_ambulance: 'Emergency ambulance or Helicopter',
@@ -7377,6 +7410,7 @@ Object.values ||
                 fireboat: 'Large Fireboat',
                 flood_equipment: 'Flood Equipment',
                 fly_car: 'Fly-Car',
+                fly_car_any: 'VL SSSM / VLM',
                 foam: 'Foam Vehicles',
                 foam_amount: 'Gallons of foam',
                 fustkw_or_civil_patrolcar: 'Police Car or Civil Patrolcar',
@@ -7405,9 +7439,13 @@ Object.values ||
                     rescue_dogs:
                         'The ARR selects vehicles until it has the entered number of rescue dogs or more.',
                 },
+                hlf_only: 'FPTSR',
+                hlf_or_rw_and_lf:
+                    "FPTSR ou v\xe9hicule de secours lourd et v\xe9hicule d'incendie",
                 hose_trucks: 'Hose Truck',
                 k9: 'K-9 Unit',
                 kdow_orgl: 'EMS Chief',
+                ktw_or_rtw: 'Ambulance de secours ou Ambulance de transport',
                 ktw_or_rtw_2: 'patient transport or ambulance',
                 large_coastal_boat: 'Large Coastal Boat',
                 lebefkw: 'Leichter Befehlskraftwagen (leBefKw)',
@@ -7440,6 +7478,7 @@ Object.values ||
                 rescue_vehicle: 'Any Heavy Rescue unit',
                 rescue_vehicle_only: 'Heavy Rescue',
                 rescueboat: 'Large Rescue Boat',
+                rettungstreppe: "Moyen d'Acc\xe8s en Hauteur",
                 riot_police: 'Riot Police Van or Riot Police Bus',
                 road_rescue_or_fire_engine: 'Road Rescue or Fire Engine',
                 rth_only: 'Helicopter',
@@ -7620,6 +7659,8 @@ Object.values ||
                 mission_positions: 'Points of Interest (POIs)',
                 mission_positions_section: 'POIs',
                 missions_section: 'Missions',
+                mountain_rescue: 'Gendarmerie haute montagne',
+                mountain_rescue_heliport: 'DAG',
                 police_copter_station_missions: 'Police Aviation',
                 police_depot: 'Police Depot',
                 police_horse: 'Horse Stable',
@@ -7634,6 +7675,7 @@ Object.values ||
                 riot_police: 'Riot police',
                 riot_police_missions: 'Riot Police',
                 staging_area_missions: 'Staging area',
+                swat_airport: 'GIH',
                 swat_missions: 'GIGN',
                 technical_aid: 'Technical Aid Station',
                 technical_aid_missions: 'Technical Aid Missions',
@@ -8085,7 +8127,15 @@ Object.values ||
                 'If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment. (Does not exclusively choose equipment)',
             automatic_text_color: 'Automatic Text Color',
             back: 'Back',
-            categories: { water_rescue: 'Technical Rescue and SAR' },
+            categories: {
+                bereitschaftspolizei: "Maintien de l'Ordre",
+                coastal_rescue: 'Sauvetage C\xf4tier',
+                disaster_response: 'R\xe9ponse aux catastrophes ',
+                firefighting: 'Sapeurs-pompiers',
+                police: 'Police',
+                rescue: 'Secours a Personne',
+                water_rescue: 'Technical Rescue and SAR',
+            },
             category: 'Category',
             colour: 'Color',
             column: 'Column',
@@ -8142,6 +8192,10 @@ Object.values ||
                 arff: 'ARFF (Airport Fire Truck)',
                 battalion_chief_unit: 'Fire Officer',
                 boot: 'Boats (General)',
+                brush_truck: 'CCF',
+                brush_truck_1: 'CCFS',
+                brush_truck_2: 'CCFM',
+                brush_truck_3: 'CCFL',
                 coastal_helicopter: 'Coastguard Rescue Helicopter',
                 coastal_rescue:
                     'Coastal Rescue, Rope Rescue or Mud Rescue Vehicle',
@@ -8151,13 +8205,17 @@ Object.values ||
                 drone: 'Drone Equipment',
                 elw1_or_elw2: 'Fire Officer or ICCU',
                 elw2_or_ab_elw: 'ICCU / ACU',
+                elw3: 'VLHR',
                 emergency_ambulance: 'Emergency ambulance or Helicopter',
                 emergency_welfare: 'Any Crew Welfare Vehicle',
                 fire_truck: 'Fire engines',
                 fireboat: 'Large Fireboat',
                 flood_equipment: 'Flood Rescue',
                 fly_car: 'Rapid Response Vehicle / General Practitioner',
+                fly_car_any: 'VL SSSM / VLM',
                 foam: 'Foam Tenders or RIV',
+                fustw_or_police_motorcycle:
+                    'V\xe9hicule de patrouille ou Unit\xe9 motocycliste',
                 gkw: 'Utility Truck',
                 grtw: 'Mass Casualty Unit',
                 gw_gefahrgut: 'HazMat Unit or CBRN Vehicle',
@@ -8170,10 +8228,12 @@ Object.values ||
                 hlf_only: 'Rescue Pump',
                 hlf_or_rw_and_lf:
                     'Rescue Pump or Rescue Support Unit and Fire engine',
+                hose_trucks: 'Camion d\xe9vidoir',
                 joint_response_unit: 'Joint Response Unit',
                 k9: 'Any Dog Carrier',
                 kdow_orgl: 'OTL',
                 kdow_orgl_any: 'OTL / Ambulance Officer',
+                ktw_or_rtw: 'Ambulance de secours ou Ambulance de transport',
                 lebefkw: 'Leichter Befehlskraftwagen (leBefKw)',
                 lf_only: 'Water Ladder or L4P',
                 long_distance_ambulance: 'BLS ambulance',
@@ -8185,16 +8245,20 @@ Object.values ||
                 nef_only: 'Ambulance',
                 oil_unit: 'GW-\xd6l',
                 police_car: 'Police car',
+                police_motorcycle: 'Unit\xe9 motocycliste',
                 polizeihubschrauber: 'Police helicopter',
+                pump: 'Motopompes',
                 pump_speed: 'Pump Capacity',
                 pump_speed_pump_only: 'Pump Capacity - Only Pumps',
                 rescue_vehicle: 'Rescue Support Unit or Rescue Pump',
                 rescue_vehicle_only: 'Rescue Support Unit',
                 rescueboat: 'Large Rescue Boat',
+                rettungstreppe: "Moyen d'Acc\xe8s en Hauteur",
                 rth_only: 'HEMS',
                 schlauchwagen: 'Water Carrier',
                 search_and_rescue: 'SAR Units',
                 swat: 'Armed Response Vehicle',
+                swat_armored_vehicle: 'V\xe9hicule renforc\xe9 du SWAT',
                 swat_suv: 'Armed Response Vehicle (ARV)',
                 thw_mtw:
                     'Mannschaftstransportwagen Technischer Zug (MTW-TZ - THW)',
@@ -8202,6 +8266,7 @@ Object.values ||
                 thw_tauchkraftwagen: 'Dive Team',
                 tlf_only: 'Tanker Truck',
                 turntable_ladder: 'Aerial Appliance Truck',
+                water_amount: 'Litres d\u2019eau',
                 water_damage_pump: 'Water Pumps',
             },
         },
@@ -8293,8 +8358,12 @@ Object.values ||
                 change_payload: 'Change Payload',
             },
             vehicles_not_visible: 'Vehicles not visible. ',
+            water_approaching: 'En approche : %{amount} l',
+            water_missing: 'Manquante : %{amount} l',
+            water_on_site: 'Sur les lieux : %{amount} l',
             water_process: 'Water needed',
             water_pumping_process: 'Water pumping process',
+            water_selected: 'S\xe9lectionn\xe9e : %{amount} l',
         },
         map: {
             alliance: 'Alliance',
@@ -8350,6 +8419,8 @@ Object.values ||
                 mission_positions: 'Points of Interest (POIs)',
                 mission_positions_section: 'POIs',
                 missions_section: 'Missions',
+                mountain_rescue: 'Gendarmerie haute montagne',
+                mountain_rescue_heliport: 'DAG',
                 police_copter_station_missions: 'Police Aviation',
                 police_depot: 'Police Depot',
                 police_school_missions: 'Police training centre',
@@ -8362,6 +8433,7 @@ Object.values ||
                 riot_police: 'Riot Police',
                 riot_police_missions: 'Riot Police',
                 staging_area_missions: 'Staging Area',
+                swat_airport: 'GIH',
                 technical_aid: 'Search and Rescue HQ',
                 technical_aid_missions: 'SAR',
                 technical_aid_organization: 'THW',
@@ -8766,16 +8838,25 @@ Object.values ||
             waiting_for_vehicle: 'Wachten op trekkend voertuig.',
         },
         intervention_order: {
+            assigns_equipment_automatically:
+                "Attribue automatiquement l'\xe9quipement",
+            assigns_equipment_automatically_hint:
+                "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche. (Ne choisit pas exclusivement le mat\xe9riel)",
             automatic_text_color: 'Automatische tekstkleur',
             back: 'Terug',
             car_carrier: 'Elke Berger-K',
             car_carrier_large: 'Elke Berger-G',
             categories: {
+                bereitschaftspolizei: "Maintien de l'Ordre",
                 brush: 'NBB',
                 coastal_rescue: 'Kustwacht',
                 disaster_response: 'STH',
+                firefighting: 'Sapeurs-pompiers',
+                police: 'Police',
+                rescue: 'Secours a Personne',
                 technical_aid: 'Signalisatie',
                 traffic_police: 'Dienst Infra',
+                water_rescue: 'Secours nautique',
             },
             category: 'Categorie',
             colour: 'Kleur',
@@ -8819,6 +8900,8 @@ Object.values ||
             text_color: 'Tekstkleur',
             vehicles: {
                 ab_atemschutz_only: 'Adembeschermingshaakarmbak',
+                ab_einsatzleitung_only: 'Module de commandement',
+                ab_gefahrgut_only: 'Module risques chimiques',
                 ab_oel_only: 'Haakarmbak Milieu',
                 ab_ruest: 'Haakarmbak Hulpverlening',
                 ab_ruest_rw: 'Hulpverleningsvoertuig of HVH',
@@ -8837,14 +8920,22 @@ Object.values ||
                 bike_police: 'DB-Bike',
                 boot: 'WOA of BA-RB',
                 brush_truck: 'Terreinvaardige Tankautospuit',
+                brush_truck_1: 'CCFS',
+                brush_truck_2: 'CCFM',
+                brush_truck_3: 'CCFL',
                 car_carrier: 'Een Berger-K',
                 car_carrier_large: 'Een Berger-G',
                 coastal_boat: 'RB-K of RB-G',
                 division_chief_unit: 'Hoofdofficier van Dienst - Brandweer',
+                elw1_or_elw2: 'Chef de Groupe ou PC',
+                elw2_or_ab_elw:
+                    "Pompe de secours ou unit\xe9 de secours en renfort et v\xe9hicule d'incendie",
                 elw3: 'Commandovoertuig of haakarmbak',
                 elw_airport: 'Airport Fire Officer / On Scene Commander',
                 emergency_ambulance: 'MMT-Auto of Lifeliner',
                 fire_truck: 'Tankautospuit',
+                fireboat: 'Grand bateau d\u2019incendie',
+                flood_equipment: 'CEEP ou MAI',
                 fly_car: 'Rapid Responder',
                 fly_car_any: 'OVDG-RR of Rapid Responder',
                 foam: 'Schuimblusvoertuigen (SB, SBH of SBA)',
@@ -8853,6 +8944,8 @@ Object.values ||
                 fustw_or_police_motorcycle:
                     'Politie Noodhulp of Dienstmotor Politie',
                 gefkw: 'DB-AV',
+                gkw: 'V\xe9hicule Tout Usage',
+                grtw: 'Unit\xe9 accidents majeurs',
                 grukw: 'ME Flexbus',
                 gw_atemschutz_only: 'Adembeschermingsvoertuig',
                 gw_gefahrgut: 'Adviseur Gevaarlijke Stoffen',
@@ -8862,17 +8955,26 @@ Object.values ||
                 gw_taucher: 'Waterongevallenvoertuig',
                 gw_wasserrettung: 'Strandvoertuig (Quad, DAT-RB of KHV)',
                 gwl2wasser_only: 'Alleen Slangenwagen / Watertankwagen',
+                hems: 'Services d\u2019urgence',
                 hint: {
                     water_amount:
                         'In te voeren in Liters. Voorbeeld: Als je hier 4500 invoert zullen er voertuigen geselecteerd worden tot de gekozen waarde van 4500L is bereikt.',
                 },
+                hlf_only: 'FPTSR',
+                hlf_or_rw_and_lf:
+                    "FPTSR ou v\xe9hicule de secours lourd et v\xe9hicule d'incendie",
                 hondengeleider: 'Hondengeleider',
+                hose_trucks: 'Camion d\xe9vidoir',
+                k9: 'Brigade canine',
                 kdow_orgl: 'Officier van Dienst Geneeskunde',
                 kdow_orgl_any: 'OVD-G of OVDG-RR',
+                ktw_or_rtw: 'Ambulance de secours ou Ambulance de transport',
                 lebefkw: 'ME Commandovoertuig',
+                lf_only: 'Fourgons d\u2019incendie',
                 long_distance_ambulance: 'Zorgambulance',
                 mask_service_unit: 'Adembeschermingsvoertuig of haakarmbak',
                 mtw: 'Dienstauto / Dienstbus brandweer',
+                mzb: 'BLS',
                 nef_only: 'MMT-Auto',
                 oil_unit: 'Milieu wagen of haakarmbak milieu',
                 ovd_p: 'Officier van Dienst - Politie',
@@ -8887,11 +8989,20 @@ Object.values ||
                     'Pomp Capaciteit - Alleen Pomp Voertuigen',
                 rescue_vehicle: 'HV of TS-HV',
                 rescue_vehicle_only: 'Hulpverleningsvoertuig',
+                rescueboat: 'Grand bateau de sauvetage',
+                rettungstreppe: "Moyen d'Acc\xe8s en Hauteur",
                 rth_only: 'Lifeliner',
                 schlauchwagen:
                     'Slangenwagen / Watertankwagen of Watertransportsysteem-haakarmbak',
                 search_and_rescue: 'Dienstvoertuig USAR',
                 spokesman: 'Voorlichters',
+                swat: 'SWAT',
+                swat_armored_vehicle: 'V\xe9hicule renforc\xe9 du SWAT',
+                swat_suv: 'SUV du SWAT',
+                thw_mtw: 'Fourgon de la protection civile',
+                thw_mzkw: 'Camion de la protection civile',
+                thw_tauchkraftwagen: '\xc9quipe de plong\xe9e',
+                tlf_only: 'Camion-citerne',
                 traffic_car: 'Signalisatie Voertuig (DA-RWS, DA-SIG of DM-RWS)',
                 traffic_patrol: 'SIV-P of DM-P',
                 turntable_ladder: 'Redvoertuig',
@@ -9033,6 +9144,8 @@ Object.values ||
                 mission_positions: "Belangrijke plaatsen (POI's)",
                 mission_positions_section: "POI's",
                 missions_section: 'Incidenten',
+                mountain_rescue: 'Gendarmerie haute montagne',
+                mountain_rescue_heliport: 'DAG',
                 police_copter_station_missions: 'Politiehelikopter standplaats',
                 police_school_missions: 'Politie, Academie',
                 police_small_missions: 'Politie, Opkomstbureau (klein)',
@@ -9044,9 +9157,12 @@ Object.values ||
                 riot_police: 'Politie, Hoofdbureau',
                 riot_police_missions: 'Politie, Hoofdbureau',
                 staging_area_missions: 'Uitgangsstelling (UGS)',
+                swat_airport: 'GIH',
                 technical_aid: 'Steunpunt Rijkswaterstaat',
                 technical_aid_missions: 'RWS / Signalisatie Inzetten',
                 technical_aid_organization: 'THW',
+                technical_aid_organization_school:
+                    '\xc9cole de protection civile',
                 tow_trucks: 'Berger',
                 user_buildings: 'Mijn gebouwen',
                 user_missions: 'Mijn inzetten',
@@ -9352,12 +9468,17 @@ Object.values ||
             waiting_for_vehicle: 'Esperando a remolque',
         },
         intervention_order: {
+            assigns_equipment_automatically:
+                "Attribue automatiquement l'\xe9quipement",
+            assigns_equipment_automatically_hint:
+                "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche. (Ne choisit pas exclusivement le mat\xe9riel)",
             automatic_text_color: 'Color de texto autom\xe1tico',
             back: 'Atr\xe1s',
             categories: {
                 airport: 'Aeropuerto',
                 bereitschaftspolizei: 'Polic\xeda antidisturbios',
                 coastal_rescue: 'Rescate costero',
+                disaster_response: 'R\xe9ponse aux catastrophes ',
                 firefighting: 'Bomberos',
                 police: 'Polic\xeda',
                 rescue: 'Rescate',
@@ -9417,14 +9538,20 @@ Object.values ||
                 arff: 'ARFF',
                 battalion_chief_unit: 'Unidad de Mando y Comunicaciones',
                 boot: 'Botes (general)',
+                brush_truck: 'CCF',
+                brush_truck_1: 'CCFS',
+                brush_truck_2: 'CCFM',
+                brush_truck_3: 'CCFL',
                 division_chief_unit: 'Unidad de mando',
                 elw1_or_elw2:
                     'Unidad de Mando y Comunicaciones, unidad de mando o m\xf3dulo de mando m\xf3vil ',
                 elw2_or_ab_elw:
                     'Bomba de Rescate o Unidad de Apoyo de Rescate y Cami\xf3n de Bomberos',
+                elw3: 'VLHR',
                 emergency_ambulance: 'Ambulancia o Helic\xf3ptero',
                 fire_truck: 'Camiones de bomberos',
                 fireboat: 'Barco de bomberos grande',
+                flood_equipment: 'CEEP ou MAI',
                 fly_car: 'VIR',
                 fly_car_any: 'VIR / M\xe9dico de cabecera',
                 foam_amount: 'Litros de espuma',
@@ -9441,6 +9568,7 @@ Object.values ||
                 hlf_only: 'Veh\xedculo de rescate',
                 hlf_or_rw_and_lf:
                     'Veh\xedculo de rescate o veh\xedculo de rescate pesado y cami\xf3n de bomberos',
+                hose_trucks: 'Camion d\xe9vidoir',
                 k9: 'Unidad Canina',
                 kdow_orgl: 'Unidad log\xedstica de AMV',
                 kdow_orgl_any: 'Unidad log\xedstica de AMV',
@@ -9462,6 +9590,7 @@ Object.values ||
                 rescue_vehicle: 'Furgones de \xdatiles Varios',
                 rescue_vehicle_only: 'Furg\xf3n de \xdatiles Varios',
                 rescueboat: 'Barco de rescate grande',
+                rettungstreppe: "Moyen d'Acc\xe8s en Hauteur",
                 rth_only: 'HEMS',
                 schlauchwagen: 'Cami\xf3n cisterna',
                 swat: 'Fuerzas especiales (GEO)',
@@ -9613,6 +9742,8 @@ Object.values ||
                 mission_positions: 'Puntos de inter\xe9s (PI)',
                 mission_positions_section: 'PI',
                 missions_section: 'Misiones',
+                mountain_rescue: 'Gendarmerie haute montagne',
+                mountain_rescue_heliport: 'DAG',
                 police_copter_station_missions: 'Helipuerto Policial',
                 police_school_missions: 'Academia de Polic\xeda',
                 police_small_missions:
@@ -9626,6 +9757,9 @@ Object.values ||
                 riot_police: 'Polic\xeda antidisturbios',
                 riot_police_missions: 'Polic\xeda antidisturbios',
                 staging_area_missions: 'Zona de preparaci\xf3n',
+                swat_airport: 'GIH',
+                technical_aid: 'U.I.I.S.C.',
+                technical_aid_missions: 'U.I.I.S.C.',
                 technical_aid_organization: 'SAT',
                 technical_aid_organization_school: 'Academia SAT',
                 user_buildings: 'Mis edificios',
@@ -9714,6 +9848,22 @@ Object.values ||
                 separator: ',',
                 significant: !1,
                 strip_insignificant_zeros: !1,
+            },
+        },
+        policechief: {
+            tutorial: {
+                beginner: {
+                    building: {
+                        browser: {
+                            welcome:
+                                "Bienvenue sur Op\xe9rateur 112 Police! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
+                        },
+                        mobile: {
+                            welcome:
+                                "Bienvenue sur Op\xe9rateur 112 Police! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
+                        },
+                    },
+                },
             },
         },
         tutorial: {
@@ -9914,12 +10064,17 @@ Object.values ||
             waiting_for_vehicle: 'Awaiting vehicle to tow',
         },
         intervention_order: {
+            assigns_equipment_automatically:
+                "Attribue automatiquement l'\xe9quipement",
+            assigns_equipment_automatically_hint:
+                "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche. (Ne choisit pas exclusivement le mat\xe9riel)",
             automatic_text_color: 'Automatic Text Color',
             back: 'Back',
             categories: {
                 bereitschaftspolizei: 'Riot Police',
                 brush: 'Bushfire',
                 coastal_rescue: 'VMR',
+                disaster_response: 'R\xe9ponse aux catastrophes ',
                 firefighting: 'Firefighting',
                 police: 'Police',
                 rescue: 'Rescue',
@@ -9981,15 +10136,20 @@ Object.values ||
                 battalion_chief_unit: 'Support Vehicle',
                 boot: 'Boats (General)',
                 brush_truck: 'Bushfire Vehicles',
+                brush_truck_1: 'CCFS',
+                brush_truck_2: 'CCFM',
+                brush_truck_3: 'CCFL',
                 crew_carrier: 'Crew Carrier',
                 division_chief_unit: 'Mobile Command Vehicle',
                 elw1_or_elw2: 'Support Vehicle or Mobile Command Vehicle',
                 elw2_or_ab_elw:
                     'Rescue Pump or Rescue Support Unit and Fire engine',
+                elw3: 'VLHR',
                 emergency_ambulance: 'Ambulance or Air Ambulance',
                 fire_aviation: 'Airborne firefighting',
                 fire_truck: 'Pumper or Light Tanker or Tanker',
                 fireboat: 'Fire Boat',
+                flood_equipment: 'CEEP ou MAI',
                 fly_car: 'MICA',
                 fly_car_any: 'ICP / ICS / EMS Rescue',
                 foam: 'Foam Units or CAFSs',
@@ -10006,9 +10166,11 @@ Object.values ||
                 hlf_only: 'Rescue Pumper',
                 hlf_or_rw_and_lf:
                     'Rescue Pumper or Major Rescue Vehicle and Fire Engine',
+                hose_trucks: 'Camion d\xe9vidoir',
                 k9: 'K-9 Unit',
                 kdow_orgl: 'Paramedic Supervisor',
                 kdow_orgl_any: 'Required Paramedic Supervisor',
+                ktw_or_rtw: 'Ambulance de secours ou Ambulance de transport',
                 lebefkw: 'Leichter Befehlskraftwagen (leBefKw)',
                 lf_only: 'Fire Trucks',
                 long_distance_ambulance: 'BLS ambulance',
@@ -10021,6 +10183,7 @@ Object.values ||
                 police_horse: 'Mounted Police',
                 police_motorcycle: 'Police Motorcycle',
                 polizeihubschrauber: 'Police helicopter',
+                pump: 'Motopompes',
                 pump_speed: 'Pump Capacity',
                 pump_speed_pump_only: 'Pump Capacity - Only Pumps',
                 rescue_vehicle: 'Rescue',
@@ -10184,6 +10347,8 @@ Object.values ||
                 mission_positions: 'Points of Interest (POIs)',
                 mission_positions_section: 'POIs',
                 missions_section: 'Missions',
+                mountain_rescue: 'Gendarmerie haute montagne',
+                mountain_rescue_heliport: 'DAG',
                 police_copter_station_missions: 'Police Air Wing',
                 police_school_missions: 'Police Academy',
                 police_small_missions: 'Police Station (Small station)',
@@ -10195,6 +10360,9 @@ Object.values ||
                 riot_police: 'Riot Police',
                 riot_police_missions: 'Riot Police',
                 staging_area_missions: 'Staging Area',
+                swat_airport: 'GIH',
+                technical_aid: 'U.I.I.S.C.',
+                technical_aid_missions: 'U.I.I.S.C.',
                 technical_aid_organization: 'THW',
                 technical_aid_organization_school: 'THW Bundesschule',
                 user_buildings: 'My buildings',
@@ -10548,6 +10716,7 @@ Object.values ||
             coins_spend: 'Vill du verkligen spendera dina mynt?',
             congratulations: 'Grattis!',
             content: 'Inneh\xe5ll',
+            copy: 'Copier',
             credits: 'Krediter',
             custom_missions: 'Storskaligt uppdrag',
             delete: 'Ta bort',
@@ -10595,11 +10764,17 @@ Object.values ||
             waiting_for_vehicle: 'Inv\xe4ntar fordon att b\xe4rga',
         },
         intervention_order: {
+            assigns_equipment_automatically:
+                "Attribue automatiquement l'\xe9quipement",
+            assigns_equipment_automatically_hint:
+                "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche. (Ne choisit pas exclusivement le mat\xe9riel)",
             automatic_text_color: 'Automatisk textf\xe4rg',
             back: 'Tillbaka',
             categories: {
+                bereitschaftspolizei: "Maintien de l'Ordre",
                 brush: 'Skogsbrandk\xe5r',
                 coastal_rescue: 'Kustr\xe4ddning',
+                disaster_response: 'R\xe9ponse aux catastrophes ',
                 firefighting: 'Brandk\xe5r',
                 police: 'Polis',
                 rescue: 'R\xe4ddning',
@@ -10668,10 +10843,12 @@ Object.values ||
                 elw1_or_elw2: 'Brandbef\xe4l eller R\xe4ddningsledning',
                 elw2_or_ab_elw:
                     'R\xe4ddningspump eller st\xf6denhet och brandbil',
+                elw3: 'VLHR',
                 emergency_ambulance: 'Ambulans eller Helikopter',
                 fire_aviation: 'Brandflygsenhet',
                 fire_truck: 'Sl\xe4ckbilar',
                 fireboat: 'Stor brandb\xe5t',
+                flood_equipment: 'CEEP ou MAI',
                 fly_car: 'Akutl\xe4karbil',
                 fly_car_any:
                     'Jourl\xe4kare / Akutl\xe4karbil / FIP / IVPA / MC-Ambulans',
@@ -10715,6 +10892,7 @@ Object.values ||
                 rescue_vehicle: 'Lastv\xe4xlare',
                 rescue_vehicle_only: 'Lastv\xe4xlare',
                 rescueboat: 'Stor r\xe4ddningsb\xe5t',
+                rettungstreppe: "Moyen d'Acc\xe8s en Hauteur",
                 rth_only: 'Ambulanshelikopter',
                 schlauchwagen: 'Tankbil',
                 swat: 'Insatsfordon',
@@ -10860,6 +11038,8 @@ Object.values ||
                 mission_positions: 'Intressepunkter',
                 mission_positions_section: 'Intressepunkter',
                 missions_section: 'Uppdrag',
+                mountain_rescue: 'Gendarmerie haute montagne',
+                mountain_rescue_heliport: 'DAG',
                 police_copter_station_missions: 'Polisflyg',
                 police_school_missions: 'Polisskola',
                 police_small_missions: 'Polisstation (liten)',
@@ -10871,6 +11051,9 @@ Object.values ||
                 riot_police: 'Kravallpolis',
                 riot_police_missions: 'Kravallpolis',
                 staging_area_missions: 'Uppsamlingsomr\xe5de',
+                swat_airport: 'GIH',
+                technical_aid: 'U.I.I.S.C.',
+                technical_aid_missions: 'U.I.I.S.C.',
                 technical_aid_organization: 'MSB',
                 technical_aid_organization_school: 'Tr\xe4ningscentrum',
                 user_buildings: 'Mina byggnader',
@@ -11127,6 +11310,7 @@ Object.values ||
             coins_spend: 'Czy na pewno chcesz wyda\u0107 monety?',
             congratulations: 'Gratulacje!',
             content: 'Zawarto\u015b\u0107',
+            copy: 'Copier',
             credits: 'Kredyty',
             custom_missions: 'Misj\u0119 sojuszu na du\u017c\u0105 skal\u0119',
             delete: 'Usu\u0144',
@@ -11183,6 +11367,8 @@ Object.values ||
             battalion_chief_unit: 'Samoch\xf3d Oficera Operacyjnego lub SLRr',
             categories: {
                 bereitschaftspolizei: 'OPP',
+                coastal_rescue: 'Sauvetage C\xf4tier',
+                disaster_response: 'R\xe9ponse aux catastrophes ',
                 firefighting: 'Stra\u017c po\u017carna',
                 police: 'Policja',
                 rescue: 'Pogotowie',
@@ -11242,12 +11428,19 @@ Object.values ||
                 arff: 'SP LSP (samoch\xf3d po\u017carniczy lotniskowej stra\u017cy po\u017carnej)',
                 battalion_chief_unit: 'SLOp lub SLRr',
                 boot: '\u0141odzie (og\xf3lne)',
+                brush_truck: 'CCF',
+                brush_truck_1: 'CCFS',
+                brush_truck_2: 'CCFM',
+                brush_truck_3: 'CCFL',
                 detention_unit: 'Wi\u0119\u017aniarka',
                 division_chief_unit:
                     'Samoch\xf3d dowodzenia i \u0142\u0105czno\u015bci',
                 drone: 'Dron stra\u017cacki',
                 elw1_or_elw2:
                     'SLOp lub Samoch\xf3d dowodzenia i \u0142\u0105czno\u015bci',
+                elw2_or_ab_elw:
+                    "Pompe de secours ou unit\xe9 de secours en renfort et v\xe9hicule d'incendie",
+                elw3: 'VLHR',
                 emergency_ambulance: 'Ambulans lub \u015bmig\u0142owiec LPR',
                 fire_aviation_2:
                     'Samolot ga\u015bniczy lub bambi bucket (jednostki powietrzne)',
@@ -11304,11 +11497,15 @@ Object.values ||
                 police_car: 'Pojazd OPI',
                 police_motorcycle: 'Quad Policyjny',
                 polizeihubschrauber: 'Helikopter Policyjny',
+                pump: 'Motopompes',
                 pump_speed: 'Wydajno\u015b\u0107 pomp',
+                pump_speed_pump_only:
+                    'Capacit\xe9 de la pompe - Pompes uniquement',
                 rescue_dogs: 'Samoch\xf3d z psami ratowniczymi',
                 rescue_vehicle: 'Samoch\xf3d Ratownictwa Technicznego',
                 rescue_vehicle_only: 'Samoch\xf3d Ratownictwa Technicznego',
                 rescueboat: 'Du\u017ca \u0142\xf3d\u017a ratownicza',
+                rettungstreppe: "Moyen d'Acc\xe8s en Hauteur",
                 riot_police: 'Radiow\xf3z OPP',
                 rth_only: '\u015amig\u0142owiec',
                 schlauchwagen: 'Cysterna z wod\u0105',
@@ -11460,6 +11657,8 @@ Object.values ||
                 building_complex: 'Kompleks budynk\xf3w',
                 buildings_section: 'Posterunki',
                 clinic_missions: 'Klinika',
+                coastal_rescue: 'Sauvetage C\xf4tier',
+                coastal_rescue_missions: 'Mission c\xf4ti\xe8re',
                 dispatch_center_missions: 'Centrum Powiadamiania Ratunkowego',
                 fire_aviation: 'Stacje samolot\xf3w ga\u015bniczych',
                 fire_school_missions: 'Szko\u0142a Po\u017carnicza',
@@ -11470,6 +11669,8 @@ Object.values ||
                 mission_positions: 'U\u017cyteczne Miejsca (UM)',
                 mission_positions_section: 'UM',
                 missions_section: 'Misje',
+                mountain_rescue: 'Gendarmerie haute montagne',
+                mountain_rescue_heliport: 'DAG',
                 police_copter_station_missions: 'Lotnictwo policyjne',
                 police_school_missions: 'Szko\u0142a Policyjna',
                 police_small_missions: 'Posterunek Policji',
@@ -11482,6 +11683,9 @@ Object.values ||
                 riot_police_missions: 'Zgromadzenia publiczne (OPP)',
                 staging_area_missions:
                     'Miejsce koncentracji Si\u0142 i \u015arodk\xf3w',
+                swat_airport: 'GIH',
+                technical_aid: 'U.I.I.S.C.',
+                technical_aid_missions: 'U.I.I.S.C.',
                 technical_aid_organization: 'THW',
                 technical_aid_organization_school: 'THW Bundesschule',
                 user_buildings: 'Moje budynki',
@@ -11741,6 +11945,7 @@ Object.values ||
             coins_spend: 'Vuoi davvero spendere queste monete?',
             congratulations: 'Congratulazioni!',
             content: 'Contenuto',
+            copy: 'Copier',
             credits: 'Crediti',
             custom_missions: "Missione dell'alleanza su larga scala",
             delete: 'Elimina',
@@ -11788,11 +11993,17 @@ Object.values ||
             waiting_for_vehicle: 'In attesa del veicolo da trainare',
         },
         intervention_order: {
+            assigns_equipment_automatically:
+                "Attribue automatiquement l'\xe9quipement",
+            assigns_equipment_automatically_hint:
+                "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche. (Ne choisit pas exclusivement le mat\xe9riel)",
             automatic_text_color: 'Colore testo automatico',
             back: 'Indietro',
             categories: {
                 airport: 'Aeroporto',
+                bereitschaftspolizei: "Maintien de l'Ordre",
                 brush: 'Anticendio Boschivo',
+                coastal_rescue: 'Sauvetage C\xf4tier',
                 disaster_response: 'Risposta ai disastri',
                 firefighting: 'Antincendio',
                 police: 'Polizia',
@@ -11855,17 +12066,25 @@ Object.values ||
                 battalion_chief_unit: 'Funzionario',
                 boot: 'Barca',
                 brush_truck: 'Mezzo AIB',
+                brush_truck_1: 'CCFS',
+                brush_truck_2: 'CCFM',
+                brush_truck_3: 'CCFL',
                 commerce_police: 'Volante Finanza',
                 crew_carrier: 'AF/BUS',
                 division_chief_unit: 'Veicoli comando mobile',
                 elw1_or_elw2:
                     'Modulo - Funzionario, Veicoli comando mobile o Comando mobile ',
+                elw2_or_ab_elw:
+                    "Pompe de secours ou unit\xe9 de secours en renfort et v\xe9hicule d'incendie",
+                elw3: 'VLHR',
                 emergency_ambulance: 'Automedica (VLV) o Elisoccorso',
                 fbi_bomb_tech: 'Furgone artificieri',
                 fire_aviation: 'Unit\xe0 Aerea Antincendio',
                 fire_truck: 'APS/ABP',
                 fireboat: 'Barca antincendio grande',
+                flood_equipment: 'CEEP ou MAI',
                 fly_car: 'Fly-Car',
+                fly_car_any: 'VL SSSM / VLM',
                 foam: 'Carro Schiuma',
                 foam_amount: 'Quantit\xe0 di Schiuma in Litri',
                 fustw_or_police_motorcycle: 'Volante oppure Moto della Polizia',
@@ -11881,6 +12100,7 @@ Object.values ||
                 hems: 'Elisoccorso HEMS',
                 hlf_only: 'Autopompa',
                 hlf_or_rw_and_lf: 'Autopompa oppure Polisoccorso e Autobotte',
+                hose_trucks: 'Camion d\xe9vidoir',
                 k9: 'Seleziona qualsiasi unit\xe0 cinofila antidroga',
                 kdow_orgl: 'DTS',
                 ktw_or_rtw: 'Ambulanza ordinaria o BLSD',
@@ -11908,6 +12128,7 @@ Object.values ||
                 rescue_vehicle: 'Polisoccorso',
                 rescue_vehicle_only: 'CA / POLI',
                 rescueboat: 'Barca di salvataggio grande',
+                rettungstreppe: "Moyen d'Acc\xe8s en Hauteur",
                 rth_only: 'Elisoccorso',
                 schlauchwagen: 'Kilolitrica',
                 swat: 'Unit\xe0 speciali',
@@ -12061,6 +12282,8 @@ Object.values ||
                 mission_positions: 'Punti di interesse (PDI)',
                 mission_positions_section: 'PDI',
                 missions_section: 'Missioni',
+                mountain_rescue: 'Gendarmerie haute montagne',
+                mountain_rescue_heliport: 'DAG',
                 police_copter_station_missions: 'Reparto volo polizia',
                 police_school_missions: 'Scuola di polizia',
                 police_small_missions: 'Stazione di polizia (stazione piccola)',
@@ -12073,6 +12296,7 @@ Object.values ||
                 riot_police: 'Squadra antisommossa',
                 riot_police_missions: 'Squadra antisommossa',
                 staging_area_missions: 'Base temporanea',
+                swat_airport: 'GIH',
                 technical_aid: 'Protezione Civile',
                 technical_aid_missions: 'Protezione Civile',
                 technical_aid_organization: 'THW',
@@ -12962,6 +13186,7 @@ Object.values ||
             message_for_education:
                 '\u042d\u0442\u043e\u0442 \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u043a \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u043f\u0435\u0440\u0435\u043c\u0435\u0449\u0430\u0442\u044c\u0441\u044f \u043d\u0430 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0435, \u0442\u0430\u043a \u043a\u0430\u043a \u043d\u0435 \u043f\u0440\u043e\u0448\u0435\u043b \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e\u0435 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u0435!',
             name: '\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435',
+            no: 'Non',
             none: '\u041d\u0438 \u043e\u0434\u0438\u043d',
             of: '\u0438\u0437',
             off: '\u0412\u044b\u043a\u043b',
@@ -12981,6 +13206,7 @@ Object.values ||
                 '\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d',
             wrong_key:
                 '\u041d\u0435\u0432\u0435\u0440\u043d\u0430\u044f \u043a\u043b\u0430\u0432\u0438\u0448\u0430',
+            yes: 'Oui',
         },
         fms: {
             going: '\u0412\u044b\u0435\u0437\u0436\u0430\u0435\u0442',
@@ -13003,9 +13229,22 @@ Object.values ||
                 '\u041e\u0436\u0438\u0434\u0430\u0435\u0442 \u043c\u0430\u0448\u0438\u043d\u0443 \u0434\u043b\u044f \u0431\u0443\u043a\u0441\u0438\u0440\u043e\u0432\u043a\u0438',
         },
         intervention_order: {
+            assigns_equipment_automatically:
+                "Attribue automatiquement l'\xe9quipement",
+            assigns_equipment_automatically_hint:
+                "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche. (Ne choisit pas exclusivement le mat\xe9riel)",
             automatic_text_color:
                 '\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0446\u0432\u0435\u0442 \u0442\u0435\u043a\u0441\u0442\u0430',
             back: '\u041d\u0430\u0437\u0430\u0434',
+            categories: {
+                bereitschaftspolizei: "Maintien de l'Ordre",
+                coastal_rescue: 'Sauvetage C\xf4tier',
+                disaster_response: 'R\xe9ponse aux catastrophes ',
+                firefighting: 'Sapeurs-pompiers',
+                police: 'Police',
+                rescue: 'Secours a Personne',
+                water_rescue: 'Secours nautique',
+            },
             category: '\u041a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f',
             colour: '\u0426\u0432\u0435\u0442',
             column: '\u0421\u0442\u043e\u043b\u0431\u0435\u0446',
@@ -13073,18 +13312,24 @@ Object.values ||
                 battalion_chief_unit:
                     '\u041f\u043e\u0434\u0440\u0430\u0437\u0434\u0435\u043b\u0435\u043d\u0438\u0435 \u043a\u043e\u043c\u0430\u043d\u0434\u0438\u0440\u0430 \u0431\u0430\u0442\u0430\u043b\u044c\u043e\u043d\u0430',
                 boot: '\u0421\u0443\u0434\u0430 (\u043e\u0431\u0449\u0435\u0435)',
+                brush_truck: 'CCF',
+                brush_truck_1: 'CCFS',
+                brush_truck_2: 'CCFM',
+                brush_truck_3: 'CCFL',
                 division_chief_unit:
                     '\u041c\u043e\u0431\u0438\u043b\u044c\u043d\u044b\u0439 \u043a\u043e\u043c\u0430\u043d\u0434\u043d\u044b\u0439 \u043f\u0443\u043d\u043a\u0442',
                 elw1_or_elw2:
                     '\u041f\u043e\u0434\u0440\u0430\u0437\u0434\u0435\u043b\u0435\u043d\u0438\u0435 \u043a\u043e\u043c\u0430\u043d\u0434\u0438\u0440\u0430 \u0431\u0430\u0442\u0430\u043b\u044c\u043e\u043d\u0430, \u043c\u043e\u0431\u0438\u043b\u044c\u043d\u044b\u0439 \u043a\u043e\u043c\u0430\u043d\u0434\u043d\u044b\u0439 \u043f\u0443\u043d\u043a\u0442 \u0438\u043b\u0438 \u043c\u043e\u0431\u0438\u043b\u044c\u043d\u044b\u0439 \u043c\u043e\u0434\u0443\u043b\u044c \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u044f ',
                 elw2_or_ab_elw:
                     '\u041d\u0430\u0441\u043e\u0441 \u0438\u043b\u0438 \u0432\u0441\u043f\u043e\u043c\u043e\u0433\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u0441\u043f\u0430\u0441\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043f\u043e\u0434\u0440\u0430\u0437\u0434\u0435\u043b\u0435\u043d\u0438\u0435',
+                elw3: 'VLHR',
                 emergency_ambulance:
                     '\u041c\u0430\u0448\u0438\u043d\u0430 \u0441\u043a\u043e\u0440\u043e\u0439 \u043f\u043e\u043c\u043e\u0449\u0438 \u0418\u041b\u0418 \u0432\u0435\u0440\u0442\u043e\u043b\u0435\u0442',
                 fire_truck:
                     '\u041f\u043e\u0436\u0430\u0440\u043d\u044b\u0435 \u043c\u0430\u0448\u0438\u043d\u044b',
                 fireboat:
                     '\u0411\u043e\u043b\u044c\u0448\u043e\u0439 \u043f\u043e\u0436\u0430\u0440\u043d\u044b\u0439 \u043a\u0430\u0442\u0435\u0440',
+                flood_equipment: 'CEEP ou MAI',
                 fly_car:
                     '\u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u0438\u0439 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0438\u043b\u044c',
                 fly_car_any:
@@ -13111,6 +13356,7 @@ Object.values ||
                 hlf_only: '\u041f\u0421\u0410',
                 hlf_or_rw_and_lf:
                     '\u0421\u043f\u0430\u0441\u0430\u0442\u0435\u043b\u0438 \u0438\u043b\u0438 \u0442\u044f\u0436\u0451\u043b\u044b\u0435 \u0441\u043f\u0430\u0441\u0430\u0442\u0435\u043b\u0438 \u0438 \u043f\u043e\u0436\u0430\u0440\u043d\u044b\u0439 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0438\u043b\u044c',
+                hose_trucks: 'Camion d\xe9vidoir',
                 k9: '\u041f\u043e\u0434\u0440\u0430\u0437\u0434\u0435\u043b\u0435\u043d\u0438\u0435 \u043a\u0438\u043d\u043e\u043b\u043e\u0433\u043e\u0432',
                 kdow_orgl:
                     '\u0413\u043b\u0430\u0432\u0430 \u0441\u043a\u043e\u0440\u043e\u0439',
@@ -13136,12 +13382,17 @@ Object.values ||
                     '\u041f\u043e\u043b\u0438\u0446\u0435\u0439\u0441\u043a\u0438\u0439 \u043c\u043e\u0442\u043e\u0446\u0438\u043a\u043b',
                 polizeihubschrauber:
                     '\u041f\u043e\u043b\u0438\u0446\u0435\u0439\u0441\u043a\u0438\u0439 \u0432\u0435\u0440\u0442\u043e\u043b\u0451\u0442',
+                pump: 'Motopompes',
+                pump_speed: 'Capacit\xe9 de la pompe',
+                pump_speed_pump_only:
+                    'Capacit\xe9 de la pompe - Pompes uniquement',
                 rescue_vehicle:
                     '\u041c\u0430\u0448\u0438\u043d\u0430 \u0434\u043b\u044f \u0441\u043f\u0430\u0441\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0445 \u0440\u0430\u0431\u043e\u0442 \u0432 \u0442\u044f\u0436\u0451\u043b\u044b\u0445 \u0443\u0441\u043b\u043e\u0432\u0438\u044f\u0445',
                 rescue_vehicle_only:
                     '\u041f\u043e\u0434\u0440\u0430\u0437\u0434\u0435\u043b\u0435\u043d\u0438\u0435 \u0441\u043f\u0430\u0441\u0430\u0442\u0435\u043b\u0435\u0439 \u0432 \u0442\u044f\u0436\u0451\u043b\u044b\u0445 \u0443\u0441\u043b\u043e\u0432\u0438\u044f\u0445',
                 rescueboat:
                     '\u0411\u043e\u043b\u044c\u0448\u043e\u0435 \u0441\u043f\u0430\u0441\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u0441\u0443\u0434\u043d\u043e',
+                rettungstreppe: "Moyen d'Acc\xe8s en Hauteur",
                 rth_only:
                     '\u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u0438\u0439 \u0432\u0435\u0440\u0442\u043e\u043b\u0451\u0442',
                 schlauchwagen:
@@ -13167,6 +13418,22 @@ Object.values ||
         },
         javascript: {
             alarm: '\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c',
+            alliance_event_resource: {
+                christmas: {
+                    currency: "Billets d'\xe9v\xe9nements",
+                    event_start_mission:
+                        "D\xe9but de l'\xe9v\xe9nement : %{amount} Ticket d'\xe9v\xe9nement",
+                },
+                info_bubble_text:
+                    "Il s'agit d'un \xe9v\xe9nement temporaire qui n'est disponible que pendant notre \xe9v\xe9nement ! Encouragez les membres de votre alliance \xe0 accomplir les missions de l'\xe9v\xe9nement afin de gagner les tickets n\xe9cessaires pour lancer ces \xe9v\xe9nements. Consultez la page des \xe9v\xe9nements d'alliance pour plus d'informations.",
+                info_bubble_text_additional:
+                    'Vous avez actuellement %{amount} %{alliance_event_currency} !',
+                valentinesday: {
+                    currency: "Billets d'\xe9v\xe9nements",
+                    event_start_mission:
+                        "D\xe9but de l'\xe9v\xe9nement : %{amount} Ticket d'\xe9v\xe9nement",
+                },
+            },
             arrival: '\u041f\u0440\u0438\u0431\u044b\u0442\u0438\u0435',
             backalarm: '\u041e\u0442\u043c\u0435\u043d\u0438\u0442\u044c',
             coins: '\u041c\u043e\u043d\u0435\u0442\u044b',
@@ -13208,8 +13475,12 @@ Object.values ||
                 '\u041d\u0435 \u043f\u043e\u043b\u0443\u0447\u0438\u0432\u0448\u0438\u0435 \u043f\u043e\u043c\u043e\u0449\u0438 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u044b',
             poi_delete:
                 '\u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b, \u0447\u0442\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043b\u0438\u0442\u044c \u044d\u0442\u0443 \u0432\u0430\u0436\u043d\u0443\u044e \u0442\u043e\u0447\u043a\u0443: %{caption}?',
+            pump_speed_approaching: 'En approche : %{amount} l/min',
+            pump_speed_missing: 'Manquant : %{amount} l/min',
+            pump_speed_on_site: 'Sur place : %{amount} l/min',
             pump_speed_process:
                 '\u041f\u0440\u043e\u0446\u0435\u0441\u0441 \u043e\u0442\u043a\u0430\u0447\u043a\u0438 \u043f\u043e\u0432\u0440\u0435\u0436\u0434\u0435\u043d\u0438\u0439 \u043e\u0442 \u0432\u043e\u0434\u044b',
+            pump_speed_selected: 'S\xe9lectionn\xe9 : %{amount} l/min',
             reload: '\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u043f\u043e\u0432\u0442\u043e\u0440\u043d\u043e',
             sale: '\u0420\u0430\u0441\u043f\u0440\u043e\u0434\u0430\u0436\u0430',
             sale_ended:
@@ -13316,6 +13587,8 @@ Object.values ||
                     '\u041a\u043e\u043c\u043f\u043b\u0435\u043a\u0441 \u0417\u0434\u0430\u043d\u0438\u0439',
                 buildings_section: '\u0421\u0442\u0430\u043d\u0446\u0438\u0438',
                 clinic_missions: '\u041a\u043b\u0438\u043d\u0438\u043a\u0430',
+                coastal_rescue: 'Sauvetage C\xf4tier',
+                coastal_rescue_missions: 'Mission c\xf4ti\xe8re',
                 dispatch_center_missions:
                     '\u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440\u0441\u043a\u0438\u0439 \u043f\u0443\u043d\u043a\u0442',
                 fire_school_missions:
@@ -13333,6 +13606,8 @@ Object.values ||
                 mission_positions_section:
                     '\u0412\u0430\u0436\u043d\u044b\u0435 \u0442\u043e\u0447\u043a\u0438',
                 missions_section: '\u0417\u0430\u0434\u0430\u043d\u0438\u044f',
+                mountain_rescue: 'Gendarmerie haute montagne',
+                mountain_rescue_heliport: 'DAG',
                 police_copter_station_missions:
                     '\u041f\u043e\u043b\u0438\u0446\u0435\u0439\u0441\u043a\u0430\u044f \u0430\u0432\u0438\u0430\u0446\u0438\u044f',
                 police_school_missions:
@@ -13354,6 +13629,9 @@ Object.values ||
                     '\u0421\u043f\u0435\u0446\u043d\u0430\u0437 \u043f\u043e\u043b\u0438\u0446\u0438\u0438',
                 staging_area_missions:
                     '\u041f\u0443\u043d\u043a\u0442 \u0441\u0431\u043e\u0440\u0430',
+                swat_airport: 'GIH',
+                technical_aid: 'U.I.I.S.C.',
+                technical_aid_missions: 'U.I.I.S.C.',
                 technical_aid_organization: '\u041c\u0427\u0421',
                 technical_aid_organization_school:
                     '\u0412\u044b\u0441\u0448\u0430\u044f \u0448\u043a\u043e\u043b\u0430 \u041c\u0427\u0421',
@@ -13478,6 +13756,22 @@ Object.values ||
                 separator: ',',
                 significant: !1,
                 strip_insignificant_zeros: !1,
+            },
+        },
+        policechief: {
+            tutorial: {
+                beginner: {
+                    building: {
+                        browser: {
+                            welcome:
+                                "Bienvenue sur Op\xe9rateur 112 Police! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
+                        },
+                        mobile: {
+                            welcome:
+                                "Bienvenue sur Op\xe9rateur 112 Police! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
+                        },
+                    },
+                },
             },
         },
         tutorial: {
@@ -13632,6 +13926,7 @@ Object.values ||
             coins_spend: 'Er du sikker p\xe5, at du vil bruge disse m\xf8nter?',
             congratulations: 'Tillykke!',
             content: 'Indhold',
+            copy: 'Copier',
             credits: 'Kreditter',
             custom_missions: 'Stor alliancemission',
             delete: 'Slet',
@@ -13679,11 +13974,16 @@ Object.values ||
             waiting_for_vehicle: 'Venter p\xe5 bugseringsk\xf8ret\xf8j',
         },
         intervention_order: {
+            assigns_equipment_automatically:
+                "Attribue automatiquement l'\xe9quipement",
+            assigns_equipment_automatically_hint:
+                "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche. (Ne choisit pas exclusivement le mat\xe9riel)",
             automatic_text_color: 'Automatisk tekstfarve',
             back: 'Tilbage',
             categories: {
                 bereitschaftspolizei: 'Uropoliti',
                 coastal_rescue: 'Kystredning',
+                disaster_response: 'R\xe9ponse aux catastrophes ',
                 firefighting: 'Brandslukning',
                 police: 'Politi',
                 rescue: 'Redning',
@@ -13741,15 +14041,24 @@ Object.values ||
                 arff: 'ARFF (lufthavnsbrandbil)',
                 battalion_chief_unit: 'Indsatsleder Brand',
                 boot: 'B\xe5de (generelt)',
+                brush_truck: 'CCF',
+                brush_truck_1: 'CCFS',
+                brush_truck_2: 'CCFM',
+                brush_truck_3: 'CCFL',
                 division_chief_unit: 'Mobilkommando-k\xf8ret\xf8j',
                 elw1_or_elw2:
                     'Indsatsleder Brand eller Ledelses- og kommunikationsmodul',
+                elw2_or_ab_elw:
+                    "Pompe de secours ou unit\xe9 de secours en renfort et v\xe9hicule d'incendie",
+                elw3: 'VLHR',
                 elw_police: 'Indsatsleder Politi',
                 emergency_ambulance: 'Ambulance eller Rednings Helikopter',
                 energy_supply: 'N\xf8dstr\xf8ms Forsyning',
                 fire_truck: 'Brandbiler',
                 fireboat: 'Stor brandb\xe5d',
+                flood_equipment: 'CEEP ou MAI',
                 fly_car: 'Akutl\xe6ge',
+                fly_car_any: 'VL SSSM / VLM',
                 foam_amount: 'Liter af skum',
                 fustw_or_police_motorcycle:
                     'Patruljevogn eller Politimotorcykel',
@@ -13768,6 +14077,7 @@ Object.values ||
                 hose_trucks: 'Slange Tendere',
                 k9: 'Hundepatrulje',
                 kdow_orgl: 'Indsatsleder Sund',
+                ktw_or_rtw: 'Ambulance de secours ou Ambulance de transport',
                 lebefkw: 'Leichter Befehlskraftwagen (leBefKw)',
                 lf_only: 'Brandbiler',
                 long_distance_ambulance: 'Regionsambulance',
@@ -13779,11 +14089,13 @@ Object.values ||
                 police_car: 'Patruljebil',
                 police_motorcycle: 'Politimotorcykel',
                 polizeihubschrauber: 'Politihelikopter',
+                pump: 'Motopompes',
                 pump_speed: 'Pumpekapacitet',
                 pump_speed_pump_only: 'Pumpekapacitet - kun pumper',
                 rescue_vehicle: 'Redningsvogn',
                 rescue_vehicle_only: 'Tung redning',
                 rescueboat: 'Stor redningsb\xe5d',
+                rettungstreppe: "Moyen d'Acc\xe8s en Hauteur",
                 riot_police: 'Gruppevogn og Holl\xe6ndervogn',
                 rth_only: 'Rednings Helikopter',
                 schlauchwagen: 'Vandtankvogn',
@@ -13932,6 +14244,8 @@ Object.values ||
                 mission_positions: 'Interessepunkter (POI)',
                 mission_positions_section: 'POI',
                 missions_section: 'Missioner',
+                mountain_rescue: 'Gendarmerie haute montagne',
+                mountain_rescue_heliport: 'DAG',
                 police_copter_station_missions: 'Politihelikopterstation',
                 police_school_missions: 'Politiskole',
                 police_small_missions: 'Politistation (lille station)',
@@ -13943,6 +14257,9 @@ Object.values ||
                 riot_police: 'Uropoliti',
                 riot_police_missions: 'Uropoliti',
                 staging_area_missions: 'Opstillingsomr\xe5de',
+                swat_airport: 'GIH',
+                technical_aid: 'U.I.I.S.C.',
+                technical_aid_missions: 'U.I.I.S.C.',
                 technical_aid_organization: 'Beredskabskorps',
                 technical_aid_organization_school: 'THW Bundesschule',
                 user_buildings: 'Mine bygninger',
@@ -14199,6 +14516,7 @@ Object.values ||
             coins_spend: 'Er du sikker p\xe5 at du vil bruke disse myntene?',
             congratulations: 'Gratulerer!',
             content: 'Innhold',
+            copy: 'Copier',
             credits: 'Kreditter',
             custom_missions: 'Allianseoppdrag i stor skala',
             delete: 'Slett',
@@ -14246,12 +14564,17 @@ Object.values ||
             waiting_for_vehicle: 'Venter p\xe5 at bil taues',
         },
         intervention_order: {
+            assigns_equipment_automatically:
+                "Attribue automatiquement l'\xe9quipement",
+            assigns_equipment_automatically_hint:
+                "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche. (Ne choisit pas exclusivement le mat\xe9riel)",
             automatic_text_color: 'Automatisk tekstfarge',
             back: 'Tilbake',
             categories: {
                 airport: 'Flyplass',
                 bereitschaftspolizei: 'Oppr\xf8rspoliti',
                 coastal_rescue: 'Kystredning',
+                disaster_response: 'R\xe9ponse aux catastrophes ',
                 firefighting: 'Brannslukking',
                 police: 'Politi',
                 rescue: 'Redning',
@@ -14310,14 +14633,22 @@ Object.values ||
                 arff: 'Flyplassbrannbil',
                 battalion_chief_unit: 'Innsatsleder brann',
                 boot: 'B\xe5ter (generelt)',
+                brush_truck: 'CCF',
+                brush_truck_1: 'CCFS',
+                brush_truck_2: 'CCFM',
+                brush_truck_3: 'CCFL',
                 coastal_boat: 'Redningsb\xe5t',
                 coastal_guard_boat: 'Kystvaktb\xe5t',
                 coresponder: 'First responder bil',
                 division_chief_unit: 'Innsatsst\xf8ttebil',
                 elw1_or_elw2: 'Innsatsleder brann eller innsatsst\xf8ttebil',
+                elw2_or_ab_elw:
+                    "Pompe de secours ou unit\xe9 de secours en renfort et v\xe9hicule d'incendie",
+                elw3: 'VLHR',
                 emergency_ambulance: 'Ambulanse eller luftambulanse',
                 fire_truck: 'Brannbil',
                 fireboat: 'Brannb\xe5t',
+                flood_equipment: 'CEEP ou MAI',
                 fly_car: 'Legebil',
                 fly_car_any:
                     'Legebil / Akuttbil / First responder bil / Akutthjelper / Ambulansemotorsykkel',
@@ -14360,6 +14691,7 @@ Object.values ||
                 rescue_vehicle: 'Tungredningsbil',
                 rescue_vehicle_only: 'Tungredningsbil',
                 rescueboat: 'Ambulanseb\xe5t',
+                rettungstreppe: "Moyen d'Acc\xe8s en Hauteur",
                 rth_only: 'Luftambulanse',
                 schlauchwagen: 'Tankbil',
                 swat: 'Politi med v\xe5pentrening',
@@ -14508,6 +14840,8 @@ Object.values ||
                 mission_positions: 'Interessepunkt',
                 mission_positions_section: 'Interessepunkt',
                 missions_section: 'Oppdrag',
+                mountain_rescue: 'Gendarmerie haute montagne',
+                mountain_rescue_heliport: 'DAG',
                 police_copter_station_missions: 'Politiheliport',
                 police_school_missions: 'Politiskole',
                 police_small_missions: 'Politistasjon (liten)',
@@ -14520,6 +14854,7 @@ Object.values ||
                 riot_police_missions: 'Oppr\xf8rspoliti',
                 search_and_rescue_missions: 'USAR',
                 staging_area_missions: 'Oppstillingsplass',
+                swat_airport: 'GIH',
                 technical_aid: 'Samfunnssikkerhet',
                 technical_aid_missions: 'Sivilforsvarets',
                 technical_aid_organization: 'THW',
@@ -14780,6 +15115,7 @@ Object.values ||
             coins_spend: 'Opravdu chcete mince utratit?',
             congratulations: 'Blahop\u0159ejeme!',
             content: 'Obsah',
+            copy: 'Copier',
             credits: 'Kredity',
             custom_missions: 'Alian\u010dn\xed mise',
             delete: 'Odstranit',
@@ -14827,10 +15163,16 @@ Object.values ||
             waiting_for_vehicle: '\u010cek\xe1n\xed na odtah',
         },
         intervention_order: {
+            assigns_equipment_automatically:
+                "Attribue automatiquement l'\xe9quipement",
+            assigns_equipment_automatically_hint:
+                "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche. (Ne choisit pas exclusivement le mat\xe9riel)",
             automatic_text_color: 'Automatick\xe1 barva textu',
             back: 'Zp\u011bt',
             categories: {
                 bereitschaftspolizei: 'Po\u0159\xe1dkov\xe1 jednotka',
+                coastal_rescue: 'Sauvetage C\xf4tier',
+                disaster_response: 'R\xe9ponse aux catastrophes ',
                 firefighting: 'Hasi\u010dsk\xfd v\u016fz',
                 police: 'Policie',
                 rescue: 'Sanitka',
@@ -14891,16 +15233,23 @@ Object.values ||
                 abl2wasser_only: 'Modul s hadicemi',
                 ambulance: 'Sanitka RZP',
                 any_traffic_car: 'Vozidlo vy\u0161et\u0159ovatel\u016f DN',
+                arff: 'VIA (fourgon d\u2019incendie d\u2019a\xe9roport)',
                 battalion_chief_unit: 'Velitelsk\xfd automobil',
                 boot: 'P\u0159\xedv\u011bs se \u010dlunem',
+                brush_truck: 'CCF',
+                brush_truck_1: 'CCFS',
+                brush_truck_2: 'CCFM',
+                brush_truck_3: 'CCFL',
                 crew_carrier_or_fire_engine: 'CAS nebo DA',
                 division_chief_unit: 'MOS',
                 elw1_or_elw2: 'VEA nebo MOS',
                 elw2_or_ab_elw: 'MOS nebo \u0159\xedzen\xed provozu',
+                elw3: 'VLHR',
                 emergency_ambulance: 'Sanitka nebo vrtuln\xedk',
                 fbi_bomb_tech: 'Vozidlo pyrotechnika P\u010cR',
                 fire_truck: 'Hasi\u010dsk\xe9 vozy',
                 fireboat: 'Velk\xe1 hasi\u010dsk\xe1 lo\u010f',
+                flood_equipment: 'CEEP ou MAI',
                 fly_car: 'L\xe9ka\u0159sk\xe9 vozidlo RV',
                 fly_car_any: 'Samoch\xf3d Lekarza  / SRMed / Motoambulans',
                 foam_amount: 'Litry p\u011bny p\u011bna',
@@ -14917,9 +15266,14 @@ Object.values ||
                     'SUV VZS \u010c\u010cK nebo Dod\xe1vka VZS \u010c\u010cK',
                 gwl2wasser_only: 'Vozidlo s hadic\xed',
                 hems: 'LZS',
+                hlf_only: 'FPTSR',
+                hlf_or_rw_and_lf:
+                    "FPTSR ou v\xe9hicule de secours lourd et v\xe9hicule d'incendie",
+                hose_trucks: 'Camion d\xe9vidoir',
                 k9: 'Vozidlo Kynolog\u016f P\u010cR',
                 kdow_orgl: 'IP',
                 kdow_orgl_any: 'IP',
+                ktw_or_rtw: 'Ambulance de secours ou Ambulance de transport',
                 lebefkw: 'Leh\u010d\xed velitelsk\xe9 vozidlo',
                 lf_only: 'Hasi\u010dsk\xe9 vozy',
                 long_distance_ambulance: 'Sanitka DZS',
@@ -14932,6 +15286,7 @@ Object.values ||
                 police_horse: 'J\xedzdn\xed jednotka P\u010cR',
                 police_motorcycle: 'Policejn\xed motocykl',
                 polizeihubschrauber: 'Policejn\xed vrtuln\xedk',
+                pump: 'Motopompes',
                 pump_speed: 'Kapacita \u010derpadla',
                 pump_speed_pump_only:
                     'Kapacita \u010derpadla - pouze \u010derpadla',
@@ -14939,6 +15294,7 @@ Object.values ||
                 rescue_vehicle_only:
                     'T\u011b\u017ek\xe1 z\xe1chran\xe1\u0159sk\xe1 jednotka',
                 rescueboat: 'Velk\xe1 z\xe1chran\xe1\u0159sk\xe1 lo\u010f',
+                rettungstreppe: "Moyen d'Acc\xe8s en Hauteur",
                 road_rescue_or_fire_engine: 'CAS nebo RZA',
                 rth_only: 'Vrtuln\xedk LZS',
                 schlauchwagen: 'Kombinovan\xfd has\xedc\xed automobil',
@@ -15088,6 +15444,8 @@ Object.values ||
                 building_complex: 'Komplex budov',
                 buildings_section: 'Stanice',
                 clinic_missions: 'Klinika',
+                coastal_rescue: 'Sauvetage C\xf4tier',
+                coastal_rescue_missions: 'Mission c\xf4ti\xe8re',
                 dispatch_center_missions: 'Opera\u010dn\xed st\u0159edisko',
                 fire_school_missions:
                     '\u0160koln\xed a v\xfdcvikov\xe9 za\u0159\xedzen\xed HZS',
@@ -15099,6 +15457,8 @@ Object.values ||
                 mission_positions: 'Body z\xe1jmu (BZ)',
                 mission_positions_section: 'BZ',
                 missions_section: 'Mise',
+                mountain_rescue: 'Gendarmerie haute montagne',
+                mountain_rescue_heliport: 'DAG',
                 police_copter_station_missions:
                     'Z\xe1kladna Leteck\xe9 slu\u017eby P\u010cR',
                 police_horse: 'St\xe1je j\xedzdn\xed policie',
@@ -15114,6 +15474,9 @@ Object.values ||
                 riot_police: 'Po\u0159\xe1dkov\xe1 jednotka',
                 riot_police_missions: 'Po\u0159\xe1dkov\xe1 jednotka',
                 staging_area_missions: 'P\u0159\xedpravn\xe1 oblast',
+                swat_airport: 'GIH',
+                technical_aid: 'U.I.I.S.C.',
+                technical_aid_missions: 'U.I.I.S.C.',
                 technical_aid_organization: 'Technick\xe1 pomoc',
                 technical_aid_organization_school:
                     '\u0160kola technick\xe9 pomoci',
@@ -15371,13 +15734,16 @@ Object.values ||
             between: '%{minimum} ile %{maximum}',
             cancel: '\u0130ptal et',
             change_saved: 'De\u011fi\u015fiklikler kaydedildi',
+            click_for_more_info: "Cliquez ici pour plus d'informations.",
             coins_spend:
                 'Ger\xe7ekten bu alt\u0131nlar\u0131 harcamak istiyor musun?',
             congratulations: 'Tebrikler!',
             content: '\u0130\xe7erik',
+            copy: 'Copier',
             credits: 'Krediler',
             custom_missions: 'B\xfcy\xfck \xf6l\xe7ekli bir birlik g\xf6rev',
             delete: 'Sil',
+            description: 'Description',
             details: 'Ayr\u0131nt\u0131lar',
             edit: 'D\xfczenle',
             error: 'Hata',
@@ -15388,12 +15754,19 @@ Object.values ||
                 '%{user} \xe7evrim d\u0131\u015f\u0131: %{duration}',
             is_online: '%{user} \xe7evrim i\xe7i.',
             loading: 'Y\xfckleniyor...',
+            message_for_education:
+                "Cette personne ne sera pas d\xe9ploy\xe9e avec le v\xe9hicule car elle n'a pas re\xe7u la formation ad\xe9quate\xa0!",
             name: 'Ad',
+            no: 'Non',
             none: 'Yok',
             of: '/',
             off: 'Kapal\u0131',
             on: 'A\xe7\u0131k',
             or: 'veya',
+            person: {
+                missing_education_for_vehicle:
+                    "Le personnel ne sera d\xe9ploy\xe9 avec le v\xe9hicule que s'il a re\xe7u la formation ad\xe9quate\xa0!",
+            },
             release_at: 'I\xe7inde taburcu edildi',
             save: 'Kaydet',
             search: 'Ara',
@@ -15401,6 +15774,7 @@ Object.values ||
             time_in_minutes: 'Time in minutes',
             user_not_found: 'Kullan\u0131c\u0131 bulunmad\u0131',
             wrong_key: 'Yanl\u0131\u015f tu\u015f',
+            yes: 'Oui',
         },
         fms: {
             going: 'M\xfcdahale ediyor',
@@ -15416,8 +15790,21 @@ Object.values ||
                 'Ara\xe7 taraf\u0131ndan \xe7ekilmeyi bekliyor',
         },
         intervention_order: {
+            assigns_equipment_automatically:
+                "Attribue automatiquement l'\xe9quipement",
+            assigns_equipment_automatically_hint:
+                "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche. (Ne choisit pas exclusivement le mat\xe9riel)",
             automatic_text_color: 'Automatic Text Color',
             back: 'Geri',
+            categories: {
+                bereitschaftspolizei: "Maintien de l'Ordre",
+                coastal_rescue: 'Sauvetage C\xf4tier',
+                disaster_response: 'R\xe9ponse aux catastrophes ',
+                firefighting: 'Sapeurs-pompiers',
+                police: 'Police',
+                rescue: 'Secours a Personne',
+                water_rescue: 'Secours nautique',
+            },
             category: 'Kategori',
             colour: 'Renk',
             column: 'S\xfctun',
@@ -15474,14 +15861,25 @@ Object.values ||
                 arff: 'ARFF (Havaliman\u0131 \u0130tfaiye Arac\u0131)',
                 battalion_chief_unit: 'Tabur Amiri birimi',
                 boot: 'Botlar (Genel)',
+                brush_truck: 'CCF',
+                brush_truck_1: 'CCFS',
+                brush_truck_2: 'CCFM',
+                brush_truck_3: 'CCFL',
                 division_chief_unit: 'Mobil Komuta Arac\u0131',
                 elw1_or_elw2:
                     'Tabur Amiri Birimi, Mobil Komuta Arac\u0131 veya Mobil Komuta Mod\xfcl\xfc ',
+                elw2_or_ab_elw:
+                    "Pompe de secours ou unit\xe9 de secours en renfort et v\xe9hicule d'incendie",
+                elw3: 'VLHR',
                 emergency_ambulance:
                     'Acil durum ambulans\u0131 veya Helikopteri',
                 fire_truck: '\u0130tfaiye Ara\xe7lar\u0131',
                 fireboat: 'B\xfcy\xfck \u0130tfaiye Botlar\u0131',
+                flood_equipment: 'CEEP ou MAI',
                 fly_car: 'U\xe7an Araba',
+                fly_car_any: 'VL SSSM / VLM',
+                fustw_or_police_motorcycle:
+                    'V\xe9hicule de patrouille ou Unit\xe9 motocycliste',
                 gkw: 'Hizmet Kamyonu',
                 grtw: 'Mobil Hastane Arac\u0131',
                 gw_gefahrgut: 'Tehlikeli Madde',
@@ -15490,8 +15888,13 @@ Object.values ||
                 gw_wasserrettung: 'Su Toplama',
                 gwl2wasser_only: 'Hortumlu Ara\xe7',
                 hems: 'H\u0131z\u0131r Acil Helikopteri',
+                hlf_only: 'FPTSR',
+                hlf_or_rw_and_lf:
+                    "FPTSR ou v\xe9hicule de secours lourd et v\xe9hicule d'incendie",
+                hose_trucks: 'Camion d\xe9vidoir',
                 k9: 'Polis K-9 Arac\u0131',
                 kdow_orgl: 'H\u0131z\u0131r Acil Amiri',
+                ktw_or_rtw: 'Ambulance de secours ou Ambulance de transport',
                 lebefkw: 'Leichter Befehlskraftwagen (leBefKw)',
                 lf_only: '\u0130tfaiye Ara\xe7lar\u0131',
                 long_distance_ambulance: 'BLS ambulans\u0131',
@@ -15501,10 +15904,16 @@ Object.values ||
                 nef_only: 'Ambulans',
                 oil_unit: 'GW-\xd6l',
                 police_car: 'Devriye arabas\u0131',
+                police_motorcycle: 'Unit\xe9 motocycliste',
                 polizeihubschrauber: 'Polis helikopteri',
+                pump: 'Motopompes',
+                pump_speed: 'Capacit\xe9 de la pompe',
+                pump_speed_pump_only:
+                    'Capacit\xe9 de la pompe - Pompes uniquement',
                 rescue_vehicle: 'B\xfcy\xfck kurtarma arac\u0131',
                 rescue_vehicle_only: 'B\xfcy\xfck Kurtarma',
                 rescueboat: 'B\xfcy\xfck Kurtarma Botu',
+                rettungstreppe: "Moyen d'Acc\xe8s en Hauteur",
                 rth_only: 'Helikopter',
                 schlauchwagen: 'Su Tankeri',
                 swat: 'P\xd6H',
@@ -15516,10 +15925,27 @@ Object.values ||
                 thw_tauchkraftwagen: 'Dal\u0131\u015f Ekibi',
                 tlf_only: 'Tanker',
                 turntable_ladder: 'Platformlu kamyonlar',
+                water_amount: 'Litres d\u2019eau',
             },
         },
         javascript: {
             alarm: 'Sevk Et',
+            alliance_event_resource: {
+                christmas: {
+                    currency: "Billets d'\xe9v\xe9nements",
+                    event_start_mission:
+                        "D\xe9but de l'\xe9v\xe9nement : %{amount} Ticket d'\xe9v\xe9nement",
+                },
+                info_bubble_text:
+                    "Il s'agit d'un \xe9v\xe9nement temporaire qui n'est disponible que pendant notre \xe9v\xe9nement ! Encouragez les membres de votre alliance \xe0 accomplir les missions de l'\xe9v\xe9nement afin de gagner les tickets n\xe9cessaires pour lancer ces \xe9v\xe9nements. Consultez la page des \xe9v\xe9nements d'alliance pour plus d'informations.",
+                info_bubble_text_additional:
+                    'Vous avez actuellement %{amount} %{alliance_event_currency} !',
+                valentinesday: {
+                    currency: "Billets d'\xe9v\xe9nements",
+                    event_start_mission:
+                        "D\xe9but de l'\xe9v\xe9nement : %{amount} Ticket d'\xe9v\xe9nement",
+                },
+            },
             arrival: 'Var\u0131\u015f',
             backalarm: '\u0130ptal et',
             coins: 'Alt\u0131n',
@@ -15545,11 +15971,16 @@ Object.values ||
             patient_untouched: 'Tedavi edilmeyen hastalar',
             poi_delete:
                 '%{caption} \u0130lgili Alan\u0131n\u0131 silmek istedi\u011finden emin misin?',
+            pump_speed_approaching: 'En approche : %{amount} l/min',
+            pump_speed_missing: 'Manquant : %{amount} l/min',
+            pump_speed_on_site: 'Sur place : %{amount} l/min',
             pump_speed_process: 'Su Hasar\u0131 Pompa S\xfcreci',
+            pump_speed_selected: 'S\xe9lectionn\xe9 : %{amount} l/min',
             reload: 'Yeniden y\xfckle',
             sale: 'Sat\u0131\u015f',
             sale_ended: '\u0130ndirim sona erdi.',
             secounds: 'sn.',
+            show_less: 'Afficher plus',
             show_more: 'Daha g\xf6ster',
             sicherheitswache_error:
                 'T\xfcm kriterler sa\u011flanmad\u0131\u011f\u0131 i\xe7in g\xfcvenlik korumas\u0131 "%{caption}" ba\u015far\u0131l\u0131 olamad\u0131.',
@@ -15567,7 +15998,12 @@ Object.values ||
             understand: 'Onayla',
             user_not_found: 'Oyuncu bulunamad\u0131.',
             vehicles_not_visible: 'Ara\xe7lar g\xf6r\xfcnm\xfcyor. ',
+            water_approaching: 'En approche : %{amount} l',
+            water_missing: 'Manquante : %{amount} l',
+            water_on_site: 'Sur les lieux : %{amount} l',
+            water_process: 'Eau n\xe9cessaire',
             water_pumping_process: 'Gerekli pompa kapasitesi',
+            water_selected: 'S\xe9lectionn\xe9e : %{amount} l',
         },
         map: {
             alliance: 'Birlik',
@@ -15613,6 +16049,8 @@ Object.values ||
                 building_complex: 'Building Complex',
                 buildings_section: '\u0130stasyonlar',
                 clinic_missions: 'Klinik',
+                coastal_rescue: 'Sauvetage C\xf4tier',
+                coastal_rescue_missions: 'Mission c\xf4ti\xe8re',
                 dispatch_center_missions: 'Sevk Merkezi',
                 fire_school_missions: '\u0130tfaiye Akademisi',
                 firehouse_missions: '\u0130tfaiye \u0130stasyonu',
@@ -15623,6 +16061,8 @@ Object.values ||
                 mission_positions: "\u0130lgi Alanlar\u0131 (POI'ler)",
                 mission_positions_section: "POI'ler",
                 missions_section: 'G\xf6revler',
+                mountain_rescue: 'Gendarmerie haute montagne',
+                mountain_rescue_heliport: 'DAG',
                 police_copter_station_missions: 'Polis helikopter heliportu',
                 police_school_missions: 'Polis akademisi',
                 police_small_missions:
@@ -15636,6 +16076,9 @@ Object.values ||
                 riot_police: '\xc7evik Kuvvet',
                 riot_police_missions: '\xc7evik Kuvvet',
                 staging_area_missions: 'Toplanma Alan\u0131',
+                swat_airport: 'GIH',
+                technical_aid: 'U.I.I.S.C.',
+                technical_aid_missions: 'U.I.I.S.C.',
                 technical_aid_organization: 'THW',
                 technical_aid_organization_school: 'THW Bundesschule',
                 user_buildings: 'Yap\u0131lar\u0131m',
@@ -15697,6 +16140,8 @@ Object.values ||
             no_alliance_chat_impossible: 'Bir birlikte de\u011filsin.',
             no_alliance_missions:
                 '\u015eu anda hi\xe7bir birlik g\xf6revi yok.',
+            no_alliance_missions_join:
+                "En participant \xe0 des missions d'alliance, vous recevrez des cr\xe9dits, quel que soit le type de v\xe9hicule que vous envoyez. En rejoignant une alliance, vous pouvez faire les deux, partager vos propres missions pour obtenir l'aide de membres exp\xe9riment\xe9s de l'alliance et participer aux missions partag\xe9es des autres pour obtenir des r\xe9compenses suppl\xe9mentaires.",
             no_ambulance_missions:
                 'Hasta nakli yoktur. Hasta nakilleri yaln\u0131zca bir ambulans\u0131n\u0131z ve bir hastaneniz oldu\u011funda ger\xe7ekle\u015febilir.',
             no_emergency_missions:
@@ -15724,6 +16169,22 @@ Object.values ||
                 separator: ',',
                 significant: !1,
                 strip_insignificant_zeros: !1,
+            },
+        },
+        policechief: {
+            tutorial: {
+                beginner: {
+                    building: {
+                        browser: {
+                            welcome:
+                                "Bienvenue sur Op\xe9rateur 112 Police! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
+                        },
+                        mobile: {
+                            welcome:
+                                "Bienvenue sur Op\xe9rateur 112 Police! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
+                        },
+                    },
+                },
             },
         },
         tutorial: {
@@ -15826,6 +16287,11 @@ Object.values ||
                             'Bir g\xf6revi bitirdi\u011finizde kredi kazan\u0131rs\u0131n\u0131z. Kredi kazand\u0131k\xe7a terfiye daha da yakla\u015f\u0131rs\u0131n\u0131z.',
                         join_alliance:
                             'Terfiler ve bina istasyonlar\u0131, g\xf6rev t\xfcrleri veya ara\xe7lar gibi yeni \xf6zelliklerin kilidini a\xe7ar.',
+                        radio: {
+                            helpshift_id: '1540',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles',
+                            short: 'La radio diffuse des rapports p\xe9riodiques sur vos v\xe9hicules. Pour plus de d\xe9tails sur chaque statut, cliquez ici.',
+                        },
                         summary:
                             'G\xf6revleri ba\u015fkalar\u0131yla birlikte \xe7\xf6zmek i\xe7in bir ittifaka kat\u0131labilirsiniz. Ayr\u0131ca t\xfcm \xfcyelerin kat\u0131labilece\u011fi d\xfczenli ittifak etkinlikleri de var!',
                     },
@@ -15838,6 +16304,10 @@ Object.values ||
                             'Terfiler ve bina istasyonlar\u0131, g\xf6rev t\xfcrleri veya ara\xe7lar gibi yeni \xf6zelliklerin kilidini a\xe7ar.',
                         summary:
                             'G\xf6revleri ba\u015fkalar\u0131yla birlikte \xe7\xf6zmek i\xe7in bir ittifaka kat\u0131labilirsiniz. Ayr\u0131ca t\xfcm \xfcyelerin kat\u0131labilece\u011fi d\xfczenli ittifak etkinlikleri de var!',
+                    },
+                    reminder: {
+                        join_alliance:
+                            "Rejoindre une alliance pr\xe9sente de nombreux avantages : des r\xe9compenses suppl\xe9mentaires pour l'accomplissement des missions de l'alliance, le soutien de membres exp\xe9riment\xe9s pour les missions difficiles et vous pouvez utiliser les installations des autres membres comme les h\xf4pitaux et les \xe9coles ! Appuyez sur le bouton pour rejoindre une alliance maintenant !",
                     },
                 },
             },
@@ -15867,6 +16337,7 @@ Object.values ||
             coins_spend: 'Deseja mesmo gastar estas moedas?',
             congratulations: 'Parab\xe9ns!',
             content: 'Conte\xfado',
+            copy: 'Copier',
             credits: 'Cr\xe9ditos',
             custom_missions: 'Miss\xe3o de alian\xe7a em grande escala',
             delete: 'Apagar',
@@ -15914,11 +16385,18 @@ Object.values ||
             waiting_for_vehicle: 'Aguardando ve\xedculo para rebocar',
         },
         intervention_order: {
+            assigns_equipment_automatically:
+                "Attribue automatiquement l'\xe9quipement",
+            assigns_equipment_automatically_hint:
+                "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche. (Ne choisit pas exclusivement le mat\xe9riel)",
             automatic_text_color: 'Cor do Texto Autom\xe1tica',
             back: 'Voltar',
             categories: {
                 airport: 'Aeroporto',
+                bereitschaftspolizei: "Maintien de l'Ordre",
                 brush: 'Inc. Florestais',
+                coastal_rescue: 'Sauvetage C\xf4tier',
+                disaster_response: 'R\xe9ponse aux catastrophes ',
                 firefighting: 'Bombeiros',
                 police: 'Pol\xedcia',
                 rescue: 'Pr\xe9-Hospitalar',
@@ -15970,6 +16448,7 @@ Object.values ||
             text_color: 'Cor do Texto',
             vehicles: {
                 ab_atemschutz_only: 'M\xf3dulo SCBA',
+                ab_einsatzleitung_only: 'Module de commandement',
                 ab_gefahrgut_only: 'M\xf3dulo de PP',
                 ab_oel_only: 'M\xf3dulo de derramamento de \xf3leo',
                 ab_ruest: 'M\xf3dulo de resgate t\xe9cnico',
@@ -15980,14 +16459,21 @@ Object.values ||
                 bike_police: 'Ciclopatrulha',
                 boot: 'Barcos (geral)',
                 brush_truck: 'Ve\xedculos Florestais',
+                brush_truck_1: 'CCFS',
+                brush_truck_2: 'CCFM',
+                brush_truck_3: 'CCFL',
                 division_chief_unit: 'VCOC',
                 dozer_trailer: 'M\xe1quina de Rasto',
                 elw1_or_elw2: 'VCOT / VCOC',
+                elw2_or_ab_elw:
+                    "Pompe de secours ou unit\xe9 de secours en renfort et v\xe9hicule d'incendie",
+                elw3: 'VLHR',
                 emergency_ambulance: 'ABSC / Heli INEM',
                 fbi_bomb_tech: 'UEP/UI - CIEXSS',
                 fire_aviation: 'Meios A\xe9reos',
                 fire_truck: 'VFCI / VLCI / VUCI / VP',
                 fireboat: 'Barco de combate a inc\xeandio grande',
+                flood_equipment: 'CEEP ou MAI',
                 fly_car: 'Fly-Car',
                 fly_car_any: 'VMER / Mota INEM',
                 foam_amount: 'Espumifero (Qtd. de Litros)',
@@ -16003,8 +16489,10 @@ Object.values ||
                 hems: 'Heli INEM',
                 hlf_only: 'VUCI',
                 hlf_or_rw_and_lf: 'VUCI ou VSAT e VFCI / VLCI',
+                hose_trucks: 'Camion d\xe9vidoir',
                 k9: 'UEP/UI - GOC',
                 kdow_orgl: 'Chefe de SEM',
+                ktw_or_rtw: 'Ambulance de secours ou Ambulance de transport',
                 lebefkw: 'Leichter Befehlskraftwagen (leBefKw)',
                 lf_only: 'VFCI / VLCI',
                 long_distance_ambulance: 'ABTD',
@@ -16023,8 +16511,10 @@ Object.values ||
                 rescue_vehicle: 'VSAT / VUCI',
                 rescue_vehicle_only: 'VSAT',
                 rescueboat: 'Barco de resgate grande',
+                rettungstreppe: "Moyen d'Acc\xe8s en Hauteur",
                 rth_only: 'Heli INEM',
                 schlauchwagen: 'VTTU / VTTF',
+                swat: 'SWAT',
                 swat_armored_vehicle: 'UEP/UI - GOE/POE',
                 swat_suv: 'UEP/UI - CI/UI',
                 thw_mtw:
@@ -16091,6 +16581,8 @@ Object.values ||
                 'Processo de bombagem de danos causados pela \xe1gua',
             pump_speed_selected: 'Selecionado para o TO: %{amount} l/min',
             reload: 'Recarregar',
+            sale: 'Soldes',
+            sale_ended: 'Fin de l\u2019offre sp\xe9ciale',
             secounds: 'seg.',
             show_less: 'Mostrar menos',
             show_more: 'Mostrar mais',
@@ -16172,6 +16664,8 @@ Object.values ||
                 mission_positions: 'Pontos de interesse (PDI)',
                 mission_positions_section: 'PDI',
                 missions_section: 'Miss\xf5es',
+                mountain_rescue: 'Gendarmerie haute montagne',
+                mountain_rescue_heliport: 'DAG',
                 police_copter_station_missions: 'Avia\xe7\xe3o policial',
                 police_school_missions: 'Escola Pr\xe1tica de Pol\xedcia',
                 police_small_missions: 'Esquadra de Pol\xedcia (Pequena)',
@@ -16184,6 +16678,9 @@ Object.values ||
                 riot_police: 'Tropa de choque',
                 riot_police_missions: 'Tropa de choque',
                 staging_area_missions: 'Zona de Concentra\xe7\xe3o e Reserva',
+                swat_airport: 'GIH',
+                technical_aid: 'U.I.I.S.C.',
+                technical_aid_missions: 'U.I.I.S.C.',
                 technical_aid_organization: 'THW',
                 technical_aid_organization_school: 'THW Bundesschule',
                 user_buildings: 'Os meus edif\xedcios',
@@ -16443,9 +16940,11 @@ Object.values ||
             coins_spend: 'Deseja mesmo gastar estas moedas?',
             congratulations: 'Parab\xe9ns!',
             content: 'Conte\xfado',
+            copy: 'Copier',
             credits: 'Cr\xe9ditos',
             custom_missions: 'Miss\xe3o de alian\xe7a em grande escala',
             delete: 'Apagar',
+            description: 'Description',
             details: 'Detalhes',
             edit: 'Editar',
             error: 'Erro',
@@ -16454,6 +16953,8 @@ Object.values ||
             is_offline_with_duration: '%{user} est\xe1 offline: %{duration}',
             is_online: '%{user} est\xe1 online.',
             loading: 'Carregando...',
+            message_for_education:
+                "Cette personne ne sera pas d\xe9ploy\xe9e avec le v\xe9hicule car elle n'a pas re\xe7u la formation ad\xe9quate\xa0!",
             name: 'Nome',
             no: 'N\xe3o',
             none: 'Nenhum',
@@ -16461,6 +16962,10 @@ Object.values ||
             off: 'Desligado',
             on: 'Ligado',
             or: 'ou',
+            person: {
+                missing_education_for_vehicle:
+                    "Le personnel ne sera d\xe9ploy\xe9 avec le v\xe9hicule que s'il a re\xe7u la formation ad\xe9quate\xa0!",
+            },
             release_at: 'Alta em',
             save: 'Salvar',
             search: 'Buscar',
@@ -16483,8 +16988,21 @@ Object.values ||
             waiting_for_vehicle: 'Aguardando ve\xedculo para rebocar',
         },
         intervention_order: {
+            assigns_equipment_automatically:
+                "Attribue automatiquement l'\xe9quipement",
+            assigns_equipment_automatically_hint:
+                "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche. (Ne choisit pas exclusivement le mat\xe9riel)",
             automatic_text_color: 'Cor do Texto Autom\xe1tica',
             back: 'Voltar',
+            categories: {
+                bereitschaftspolizei: "Maintien de l'Ordre",
+                coastal_rescue: 'Sauvetage C\xf4tier',
+                disaster_response: 'R\xe9ponse aux catastrophes ',
+                firefighting: 'Sapeurs-pompiers',
+                police: 'Police',
+                rescue: 'Secours a Personne',
+                water_rescue: 'Secours nautique',
+            },
             category: 'Categoria',
             colour: 'Cor',
             column: 'Coluna',
@@ -16540,16 +17058,26 @@ Object.values ||
                 arff: 'Defesa Civil (caminh\xe3o de bombeiro para aeroportos)',
                 battalion_chief_unit: 'Viatura de batalh\xe3o',
                 boot: 'Barcos (geral)',
+                brush_truck: 'CCF',
+                brush_truck_1: 'CCFS',
+                brush_truck_2: 'CCFM',
+                brush_truck_3: 'CCFL',
                 division_chief_unit: 'Viatura de comando m\xf3vel',
                 elw1_or_elw2:
                     'Viatura de batalh\xe3o, viatura de comando m\xf3vel ou m\xf3dulo de comando m\xf3vel ',
+                elw2_or_ab_elw:
+                    "Pompe de secours ou unit\xe9 de secours en renfort et v\xe9hicule d'incendie",
+                elw3: 'VLHR',
                 emergency_ambulance:
                     'Ambul\xe2ncia de emerg\xeancia ou helic\xf3ptero de resgate',
                 fire_truck: 'Caminh\xf5es de bombeiro',
                 fireboat: 'Barco de combate a inc\xeandio grande',
+                flood_equipment: 'CEEP ou MAI',
                 fly_car: 'VIR',
                 fly_car_any: 'VIR ou M\xe9dico de Clinica Geral',
                 foam_amount: 'Litros de Espuma',
+                fustw_or_police_motorcycle:
+                    'V\xe9hicule de patrouille ou Unit\xe9 motocycliste',
                 gkw: 'Caminh\xe3o utilit\xe1rio',
                 grtw: 'Unidade para incidentes com m\xfaltiplas v\xedtimas',
                 gw_gefahrgut: 'Produtos Perigosos',
@@ -16558,6 +17086,10 @@ Object.values ||
                 gw_wasserrettung: 'Reten\xe7\xe3o de \xe1gua',
                 gwl2wasser_only: 'Ve\xedculo com mangueira',
                 hems: 'HEMS',
+                hlf_only: 'FPTSR',
+                hlf_or_rw_and_lf:
+                    "FPTSR ou v\xe9hicule de secours lourd et v\xe9hicule d'incendie",
+                hose_trucks: 'Camion d\xe9vidoir',
                 k9: 'Unidade de A\xe7\xf5es com C\xe3es',
                 kdow_orgl: 'Chefe de SEM',
                 ktw_or_rtw: 'USB ou SAMU',
@@ -16570,10 +17102,16 @@ Object.values ||
                 nef_only: 'Ambul\xe2ncia',
                 oil_unit: 'GW-\xd6l',
                 police_car: 'Carro de patrulha',
+                police_motorcycle: 'Unit\xe9 motocycliste',
                 polizeihubschrauber: 'Helic\xf3ptero de pol\xedcia',
+                pump: 'Motopompes',
+                pump_speed: 'Capacit\xe9 de la pompe',
+                pump_speed_pump_only:
+                    'Capacit\xe9 de la pompe - Pompes uniquement',
                 rescue_vehicle: 'Ve\xedculo de resgate pesado',
                 rescue_vehicle_only: 'Resgate pesado',
                 rescueboat: 'Barco de resgate grande',
+                rettungstreppe: "Moyen d'Acc\xe8s en Hauteur",
                 rth_only: 'Helic\xf3ptero de Resgate',
                 schlauchwagen: 'Caminh\xe3o pipa',
                 swat: 'Treinamento do Comando de Opera\xe7\xf5es Especiais',
@@ -16590,6 +17128,22 @@ Object.values ||
         },
         javascript: {
             alarm: 'Despachar',
+            alliance_event_resource: {
+                christmas: {
+                    currency: "Billets d'\xe9v\xe9nements",
+                    event_start_mission:
+                        "D\xe9but de l'\xe9v\xe9nement : %{amount} Ticket d'\xe9v\xe9nement",
+                },
+                info_bubble_text:
+                    "Il s'agit d'un \xe9v\xe9nement temporaire qui n'est disponible que pendant notre \xe9v\xe9nement ! Encouragez les membres de votre alliance \xe0 accomplir les missions de l'\xe9v\xe9nement afin de gagner les tickets n\xe9cessaires pour lancer ces \xe9v\xe9nements. Consultez la page des \xe9v\xe9nements d'alliance pour plus d'informations.",
+                info_bubble_text_additional:
+                    'Vous avez actuellement %{amount} %{alliance_event_currency} !',
+                valentinesday: {
+                    currency: "Billets d'\xe9v\xe9nements",
+                    event_start_mission:
+                        "D\xe9but de l'\xe9v\xe9nement : %{amount} Ticket d'\xe9v\xe9nement",
+                },
+            },
             arrival: 'Chegada',
             backalarm: 'Cancelar',
             coins: 'Moedas',
@@ -16618,12 +17172,17 @@ Object.values ||
             patient: 'Paciente',
             patient_untouched: 'Pacientes n\xe3o tratados',
             poi_delete: 'Tem certeza de que quer apagar o PDI: %{caption}?',
+            pump_speed_approaching: 'En approche : %{amount} l/min',
+            pump_speed_missing: 'Manquant : %{amount} l/min',
+            pump_speed_on_site: 'Sur place : %{amount} l/min',
             pump_speed_process:
                 'Processo de bombagem de danos causados pela \xe1gua',
+            pump_speed_selected: 'S\xe9lectionn\xe9 : %{amount} l/min',
             reload: 'Recarregar',
             sale: 'Promo\xe7\xf5es',
             sale_ended: 'Fin de l\u2019offre sp\xe9ciale',
             secounds: 'seg.',
+            show_less: 'Afficher plus',
             show_more: 'Mostrar mais',
             sicherheitswache_error:
                 'A guarda de seguran\xe7a "%{caption}" n\xe3o teve \xeaxito porque nem todos os crit\xe9rios foram atendidos.',
@@ -16645,6 +17204,7 @@ Object.values ||
             water_missing: 'Faltando: %{amount} l.',
             water_on_site: 'Em Cena: %{amount} l.',
             water_process: '\xc1gua necess\xe1ria',
+            water_pumping_process: "Processus de pompage de l'eau",
             water_selected: 'Selecionada: %{amount} l.',
         },
         map: {
@@ -16690,6 +17250,8 @@ Object.values ||
                 building_complex: 'Conjunto de Edif\xedcios',
                 buildings_section: 'Esta\xe7\xf5es',
                 clinic_missions: 'Cl\xednica',
+                coastal_rescue: 'Sauvetage C\xf4tier',
+                coastal_rescue_missions: 'Mission c\xf4ti\xe8re',
                 dispatch_center_missions: 'Central de Despacho',
                 fire_school_missions: 'Academia de bombeiros militar',
                 firehouse_missions: 'Unidade de bombeiros militar',
@@ -16700,6 +17262,8 @@ Object.values ||
                 mission_positions: 'Pontos de interesse (PDI)',
                 mission_positions_section: 'PDI',
                 missions_section: 'Miss\xf5es',
+                mountain_rescue: 'Gendarmerie haute montagne',
+                mountain_rescue_heliport: 'DAG',
                 police_copter_station_missions: 'Avia\xe7\xe3o policial',
                 police_school_missions: 'Academia de pol\xedcia militar',
                 police_small_missions:
@@ -16714,6 +17278,9 @@ Object.values ||
                 riot_police: 'Tropa de choque',
                 riot_police_missions: 'Tropa de choque',
                 staging_area_missions: '\xc1rea de concentra\xe7\xe3o',
+                swat_airport: 'GIH',
+                technical_aid: 'U.I.I.S.C.',
+                technical_aid_missions: 'U.I.I.S.C.',
                 technical_aid_organization: 'THW',
                 technical_aid_organization_school: 'THW Bundesschule',
                 user_buildings: 'Os meus edif\xedcios',
@@ -16805,6 +17372,22 @@ Object.values ||
                 separator: ',',
                 significant: !1,
                 strip_insignificant_zeros: !1,
+            },
+        },
+        policechief: {
+            tutorial: {
+                beginner: {
+                    building: {
+                        browser: {
+                            welcome:
+                                "Bienvenue sur Op\xe9rateur 112 Police! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
+                        },
+                        mobile: {
+                            welcome:
+                                "Bienvenue sur Op\xe9rateur 112 Police! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
+                        },
+                    },
+                },
             },
         },
         tutorial: {
@@ -16907,6 +17490,11 @@ Object.values ||
                             'Voc\xea receber\xe1 cr\xe9ditos ao concluir uma miss\xe3o. Ao ganhar cr\xe9ditos, voc\xea se aproxima de uma promo\xe7\xe3o.',
                         join_alliance:
                             'As promo\xe7\xf5es e as esta\xe7\xf5es de constru\xe7\xe3o desbloqueiam novos recursos, como tipos de miss\xe3o ou ve\xedculos.',
+                        radio: {
+                            helpshift_id: '1540',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles',
+                            short: 'La radio diffuse des rapports p\xe9riodiques sur vos v\xe9hicules. Pour plus de d\xe9tails sur chaque statut, cliquez ici.',
+                        },
                         summary:
                             'Voc\xea pode participar de uma alian\xe7a para resolver miss\xf5es junto com outras pessoas. Tamb\xe9m h\xe1 eventos regulares da alian\xe7a dos quais todos os membros podem participar!',
                     },
@@ -16919,6 +17507,10 @@ Object.values ||
                             'As promo\xe7\xf5es e as esta\xe7\xf5es de constru\xe7\xe3o desbloqueiam novos recursos, como tipos de miss\xe3o ou ve\xedculos.',
                         summary:
                             'Voc\xea pode participar de uma alian\xe7a para resolver miss\xf5es junto com outras pessoas. Tamb\xe9m h\xe1 eventos regulares da alian\xe7a dos quais todos os membros podem participar!',
+                    },
+                    reminder: {
+                        join_alliance:
+                            "Rejoindre une alliance pr\xe9sente de nombreux avantages : des r\xe9compenses suppl\xe9mentaires pour l'accomplissement des missions de l'alliance, le soutien de membres exp\xe9riment\xe9s pour les missions difficiles et vous pouvez utiliser les installations des autres membres comme les h\xf4pitaux et les \xe9coles ! Appuyez sur le bouton pour rejoindre une alliance maintenant !",
                     },
                 },
             },
@@ -16945,6 +17537,7 @@ Object.values ||
             cancel: '\u0421\u043a\u0430\u0441\u0443\u0432\u0430\u0442\u0438',
             change_saved:
                 '\u0417\u043c\u0456\u043d\u0438 \u0437\u0431\u0435\u0440\u0435\u0436\u0435\u043d\u043e',
+            click_for_more_info: "Cliquez ici pour plus d'informations.",
             coins_spend:
                 '\u0414\u0456\u0439\u0441\u043d\u043e \u0431\u0430\u0436\u0430\u0454\u0442\u0435 \u0432\u0438\u0442\u0440\u0430\u0442\u0438\u0442\u0438 \u0446\u0456 \u043c\u043e\u043d\u0435\u0442\u0438?',
             congratulations: '\u0412\u0456\u0442\u0430\u043d\u043d\u044f!',
@@ -16954,6 +17547,7 @@ Object.values ||
             custom_missions:
                 '\u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f \u0430\u043b\u044c\u044f\u043d\u0441\u0443 ',
             delete: '\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438',
+            description: 'Description',
             details: '\u041f\u043e\u0434\u0440\u043e\u0431\u0438\u0446\u0456',
             edit: '\u0420\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u0442\u0438',
             error: '\u041f\u043e\u043c\u0438\u043b\u043a\u0430',
@@ -16966,12 +17560,19 @@ Object.values ||
             is_online: '%{user} \u0432 \u043c\u0435\u0440\u0435\u0436\u0456.',
             loading:
                 '\u0417\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f...',
+            message_for_education:
+                "Cette personne ne sera pas d\xe9ploy\xe9e avec le v\xe9hicule car elle n'a pas re\xe7u la formation ad\xe9quate\xa0!",
             name: "\u0406\u043c'\u044f",
+            no: 'Non',
             none: '\u0416\u043e\u0434\u043d\u043e\u0433\u043e',
             of: '\u0437',
             off: '\u0412\u0456\u0434\u043a\u043b.',
             on: '\u0412\u043a\u043b.',
             or: '\u0430\u0431\u043e',
+            person: {
+                missing_education_for_vehicle:
+                    "Le personnel ne sera d\xe9ploy\xe9 avec le v\xe9hicule que s'il a re\xe7u la formation ad\xe9quate\xa0!",
+            },
             release_at:
                 '\u0432\u0438\u043f\u0438\u0441\u0430\u043d\u0438\u0439 \u0432',
             save: '\u0417\u0431\u0435\u0440\u0435\u0433\u0442\u0438',
@@ -16982,6 +17583,7 @@ Object.values ||
                 '\u041a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e.',
             wrong_key:
                 '\u041d\u0435\u0432\u0456\u0440\u043d\u0430 \u043a\u043b\u0430\u0432\u0456\u0448\u0430',
+            yes: 'Oui',
         },
         fms: {
             going: '\u0412\u0438\u0457\u0436\u0434\u0436\u0430\u0454',
@@ -17003,8 +17605,21 @@ Object.values ||
                 '\u041e\u0447\u0456\u043a\u0443\u0454 \u043c\u0430\u0448\u0438\u043d\u0443 \u0434\u043b\u044f \u0431\u0443\u043a\u0441\u0438\u0440\u0443\u0432\u0430\u043d\u043d\u044f',
         },
         intervention_order: {
+            assigns_equipment_automatically:
+                "Attribue automatiquement l'\xe9quipement",
+            assigns_equipment_automatically_hint:
+                "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche. (Ne choisit pas exclusivement le mat\xe9riel)",
             automatic_text_color: 'Automatic Text Color',
             back: '\u041d\u0430\u0437\u0430\u0434',
+            categories: {
+                bereitschaftspolizei: "Maintien de l'Ordre",
+                coastal_rescue: 'Sauvetage C\xf4tier',
+                disaster_response: 'R\xe9ponse aux catastrophes ',
+                firefighting: 'Sapeurs-pompiers',
+                police: 'Police',
+                rescue: 'Secours a Personne',
+                water_rescue: 'Secours nautique',
+            },
             category: '\u041a\u0430\u0442\u0435\u0433\u043e\u0440\u0456\u044f',
             colour: '\u041a\u043e\u043b\u0456\u0440',
             column: '\u0421\u0442\u043e\u0432\u043f\u0447\u0438\u043a',
@@ -17071,20 +17686,30 @@ Object.values ||
                 battalion_chief_unit:
                     '\u041f\u0456\u0434\u0440\u043e\u0437\u0434\u0456\u043b \u043a\u043e\u043c\u0430\u043d\u0434\u0438\u0440\u0430 \u0431\u0430\u0442\u0430\u043b\u044c\u0439\u043e\u043d\u0443',
                 boot: '\u0421\u0443\u0434\u043d\u0430 (\u0437\u0430\u0433\u0430\u043b\u044c\u043d\u0456)',
+                brush_truck: 'CCF',
+                brush_truck_1: 'CCFS',
+                brush_truck_2: 'CCFM',
+                brush_truck_3: 'CCFL',
                 division_chief_unit:
                     '\u041c\u043e\u0431\u0456\u043b\u044c\u043d\u0438\u0439 \u043a\u043e\u043c\u0430\u043d\u0434\u043d\u0438\u0439 \u043f\u0443\u043d\u043a\u0442',
                 elw1_or_elw2:
                     '\u041f\u0456\u0434\u0440\u043e\u0437\u0434\u0456\u043b \u043a\u043e\u043c\u0430\u043d\u0434\u0438\u0440\u0430 \u0431\u0430\u0442\u0430\u043b\u044c\u0439\u043e\u043d\u0443, \u043c\u043e\u0431\u0456\u043b\u044c\u043d\u0438\u0439 \u043a\u043e\u043c\u0430\u043d\u0434\u043d\u0438\u0439 \u043f\u0443\u043d\u043a\u0442 \u0430\u0431\u043e \u043c\u043e\u0431\u0456\u043b\u044c\u043d\u0438\u0439 \u043c\u043e\u0434\u0443\u043b\u044c \u0443\u043f\u0440\u0430\u0432\u043b\u0456\u043d\u043d\u044f ',
+                elw2_or_ab_elw:
+                    "Pompe de secours ou unit\xe9 de secours en renfort et v\xe9hicule d'incendie",
+                elw3: 'VLHR',
                 emergency_ambulance:
                     '\u041c\u0430\u0448\u0438\u043d\u0430 \u0447\u0438 \u0432\u0435\u0440\u0442\u043e\u043b\u0456\u0442 \u0448\u0432\u0438\u0434\u043a\u043e\u0457 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0438',
                 fire_truck:
                     '\u041f\u043e\u0436\u0435\u0436\u043d\u0456 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0456\u043b\u0456',
                 fireboat:
                     '\u0412\u0435\u043b\u0438\u043a\u0438\u0439 \u043f\u043e\u0436\u0435\u0436\u043d\u0438\u0439 \u043a\u0430\u0442\u0435\u0440',
+                flood_equipment: 'CEEP ou MAI',
                 fly_car:
                     '\u041b\u0435\u0442\u044e\u0447\u0438\u0439 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0456\u043b\u044c',
                 fly_car_any:
                     '\u041b\u0435\u0442\u044e\u0447\u0438\u0439 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0456\u043b\u044c / \u041b\u0456\u043a\u0430\u0440 \u0437\u0430\u0433\u0430\u043b\u044c\u043d\u043e\u0457 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0438',
+                fustw_or_police_motorcycle:
+                    'V\xe9hicule de patrouille ou Unit\xe9 motocycliste',
                 gkw: '\u0412\u0430\u043d\u0442\u0430\u0436\u0456\u0432\u043a\u0430',
                 grtw: '\u041f\u0456\u0434\u0440\u043e\u0437\u0434\u0456\u043b \u043f\u043e \u0440\u043e\u0431\u043e\u0442\u0456 \u0437 \u0432\u0435\u043b\u0438\u043a\u043e\u044e \u043a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044e \u043f\u043e\u0441\u0442\u0440\u0430\u0436\u0434\u0430\u043b\u0438\u0445',
                 gw_gefahrgut:
@@ -17098,6 +17723,10 @@ Object.values ||
                 gwl2wasser_only:
                     '\u041c\u0430\u0448\u0438\u043d\u0430 \u0456\u0437 \u0431\u0440\u0430\u043d\u0434\u0441\u043f\u043e\u0439\u043d\u0442\u043e\u043c',
                 hems: '\u0412\u0435\u0440\u0442\u043e\u043b\u0456\u0442 \u043d\u0435\u0432\u0456\u0434\u043a\u043b\u0430\u0434\u043d\u043e\u0457 \u043c\u0435\u0434\u0438\u0447\u043d\u043e\u0457 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0438',
+                hlf_only: 'FPTSR',
+                hlf_or_rw_and_lf:
+                    "FPTSR ou v\xe9hicule de secours lourd et v\xe9hicule d'incendie",
+                hose_trucks: 'Camion d\xe9vidoir',
                 k9: '\u041f\u0456\u0434\u0440\u043e\u0437\u0434\u0456\u043b \u043a\u0456\u043d\u043e\u043b\u043e\u0433\u0456\u0432',
                 kdow_orgl:
                     '\u041a\u0435\u0440\u0456\u0432\u043d\u0438\u043a \u0448\u0432\u0438\u0434\u043a\u043e\u0457',
@@ -17119,14 +17748,20 @@ Object.values ||
                     '\u041d\u0430\u0444\u0442\u043e\u0437\u0431\u0438\u0440\u043d\u0435 \u0441\u0443\u0434\u043d\u043e',
                 police_car:
                     '\u041f\u0430\u0442\u0440\u0443\u043b\u044c\u043d\u0438\u0439 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0456\u043b\u044c',
+                police_motorcycle: 'Unit\xe9 motocycliste',
                 polizeihubschrauber:
                     '\u041f\u043e\u043b\u0456\u0446\u0435\u0439\u0441\u044c\u043a\u0438\u0439 \u0432\u0435\u0440\u0442\u043e\u043b\u0456\u0442',
+                pump: 'Motopompes',
+                pump_speed: 'Capacit\xe9 de la pompe',
+                pump_speed_pump_only:
+                    'Capacit\xe9 de la pompe - Pompes uniquement',
                 rescue_vehicle:
                     '\u0412\u0430\u0436\u043a\u0430 \u0440\u044f\u0442\u0443\u0432\u0430\u043b\u044c\u043d\u0430 \u043c\u0430\u0448\u0438\u043d\u0430',
                 rescue_vehicle_only:
                     '\u041f\u0456\u0434\u0440\u043e\u0437\u0434\u0456\u043b \u043f\u043e\u0440\u044f\u0442\u0443\u043d\u043a\u0443 \u0443 \u0432\u0430\u0436\u043a\u0438\u0445 \u0443\u043c\u043e\u0432\u0430\u0445',
                 rescueboat:
                     '\u0412\u0435\u043b\u0438\u043a\u0435 \u0440\u044f\u0442\u0443\u0432\u0430\u043b\u044c\u043d\u0435 \u0441\u0443\u0434\u043d\u043e',
+                rettungstreppe: "Moyen d'Acc\xe8s en Hauteur",
                 rth_only:
                     '\u0412\u0435\u0440\u0442\u043e\u043b\u0456\u0442 \u0448\u0432\u0438\u0434\u043a\u043e\u0457 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0438',
                 schlauchwagen:
@@ -17146,10 +17781,27 @@ Object.values ||
                     '\u0410\u0432\u0442\u043e\u0446\u0438\u0441\u0442\u0435\u0440\u043d\u0430',
                 turntable_ladder:
                     '\u041f\u043e\u0436\u0435\u0436\u043d\u0456 \u0430\u0432\u0442\u043e\u0434\u0440\u0430\u0431\u0438\u043d\u0438',
+                water_amount: 'Litres d\u2019eau',
             },
         },
         javascript: {
             alarm: '\u0412\u0456\u0434\u043f\u0440\u0430\u0432\u0438\u0442\u0438',
+            alliance_event_resource: {
+                christmas: {
+                    currency: "Billets d'\xe9v\xe9nements",
+                    event_start_mission:
+                        "D\xe9but de l'\xe9v\xe9nement : %{amount} Ticket d'\xe9v\xe9nement",
+                },
+                info_bubble_text:
+                    "Il s'agit d'un \xe9v\xe9nement temporaire qui n'est disponible que pendant notre \xe9v\xe9nement ! Encouragez les membres de votre alliance \xe0 accomplir les missions de l'\xe9v\xe9nement afin de gagner les tickets n\xe9cessaires pour lancer ces \xe9v\xe9nements. Consultez la page des \xe9v\xe9nements d'alliance pour plus d'informations.",
+                info_bubble_text_additional:
+                    'Vous avez actuellement %{amount} %{alliance_event_currency} !',
+                valentinesday: {
+                    currency: "Billets d'\xe9v\xe9nements",
+                    event_start_mission:
+                        "D\xe9but de l'\xe9v\xe9nement : %{amount} Ticket d'\xe9v\xe9nement",
+                },
+            },
             arrival: '\u041f\u0440\u0438\u0431\u0443\u0442\u0442\u044f',
             backalarm: '\u0421\u043a\u0430\u0441\u0443\u0432\u0430\u0442\u0438',
             coins: '\u041c\u043e\u043d\u0435\u0442\u0438',
@@ -17184,13 +17836,18 @@ Object.values ||
                 '\u041d\u0435\u0432\u0438\u043b\u0456\u043a\u0443\u0432\u0430\u043d\u0456 \u043f\u0430\u0446\u0456\u0454\u043d\u0442\u0438',
             poi_delete:
                 '\u0414\u0456\u0439\u0441\u043d\u043e \u0432\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u0432\u0430\u0436\u043b\u0438\u0432\u0443 \u0442\u043e\u0447\u043a\u0443: %{caption}?',
+            pump_speed_approaching: 'En approche : %{amount} l/min',
+            pump_speed_missing: 'Manquant : %{amount} l/min',
+            pump_speed_on_site: 'Sur place : %{amount} l/min',
             pump_speed_process:
                 '\u041f\u0440\u043e\u0446\u0435\u0441 \u0440\u043e\u0431\u043e\u0442\u0438 \u043d\u0430\u0441\u043e\u0441\u0430 \u0434\u043b\u044f \u043f\u043e\u0448\u043a\u043e\u0434\u0436\u0435\u043d\u043d\u044f \u0432\u043e\u0434\u0438',
+            pump_speed_selected: 'S\xe9lectionn\xe9 : %{amount} l/min',
             reload: '\u041f\u0435\u0440\u0435\u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438',
             sale: '\u0420\u043e\u0437\u043f\u0440\u043e\u0434\u0430\u0436',
             sale_ended:
                 '\u0420\u043e\u0437\u043f\u0440\u043e\u0434\u0430\u0436 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043e',
             secounds: '\u0441\u0435\u043a.',
+            show_less: 'Afficher plus',
             show_more:
                 '\u041f\u043e\u043a\u0430\u0437\u0430\u0442\u0438 \u0431\u0456\u043b\u044c\u0448\u0435',
             sicherheitswache_error:
@@ -17217,8 +17874,13 @@ Object.values ||
                 '\u0413\u0440\u0430\u0432\u0446\u044f \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e.',
             vehicles_not_visible:
                 '\u041c\u0430\u0448\u0438\u043d\u0443 \u043d\u0435 \u0432\u0438\u0434\u043d\u043e. ',
+            water_approaching: 'En approche : %{amount} l',
+            water_missing: 'Manquante : %{amount} l',
+            water_on_site: 'Sur les lieux : %{amount} l',
+            water_process: 'Eau n\xe9cessaire',
             water_pumping_process:
                 '\u041d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0430 \u043f\u043e\u0442\u0443\u0436\u043d\u0456\u0441\u0442\u044c \u043d\u0430\u0441\u043e\u0441\u0430',
+            water_selected: 'S\xe9lectionn\xe9e : %{amount} l',
         },
         map: {
             alliance: '\u0410\u043b\u044c\u044f\u043d\u0441',
@@ -17281,6 +17943,8 @@ Object.values ||
                     '\u041a\u043e\u043c\u043f\u043b\u0435\u043a\u0441 \u0411\u0443\u0434\u0456\u0432\u0435\u043b\u044c',
                 buildings_section: '\u0421\u0442\u0430\u043d\u0446\u0456\u0457',
                 clinic_missions: '\u041a\u043b\u0456\u043d\u0456\u043a\u0430',
+                coastal_rescue: 'Sauvetage C\xf4tier',
+                coastal_rescue_missions: 'Mission c\xf4ti\xe8re',
                 dispatch_center_missions:
                     '\u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440\u0441\u044c\u043a\u0438\u0439 \u0446\u0435\u043d\u0442\u0440',
                 fire_school_missions:
@@ -17297,6 +17961,8 @@ Object.values ||
                 mission_positions_section: '\u0412\u0422',
                 missions_section:
                     '\u0417\u0430\u0432\u0434\u0430\u043d\u043d\u044f',
+                mountain_rescue: 'Gendarmerie haute montagne',
+                mountain_rescue_heliport: 'DAG',
                 police_copter_station_missions:
                     '\u041f\u043e\u043b\u0456\u0446\u0435\u0439\u0441\u044c\u043a\u0430 \u0430\u0432\u0456\u0430\u0446\u0456\u044f',
                 police_school_missions:
@@ -17318,6 +17984,9 @@ Object.values ||
                     '\u0421\u043f\u0435\u0446\u043d\u0430\u0437 \u043f\u043e\u043b\u0456\u0446\u0456\u0457',
                 staging_area_missions:
                     '\u041f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u043f\u043e\u0434\u0456\u043b\u0443',
+                swat_airport: 'GIH',
+                technical_aid: 'U.I.I.S.C.',
+                technical_aid_missions: 'U.I.I.S.C.',
                 technical_aid_organization: '\u041c\u041d\u0421',
                 technical_aid_organization_school:
                     '\u0412\u0438\u0449\u0430 \u0448\u043a\u043e\u043b\u0430 \u041c\u041d\u0421',
@@ -17406,6 +18075,8 @@ Object.values ||
                 '\u0412\u0438 \u043d\u0435 \u043f\u0435\u0440\u0435\u0431\u0443\u0432\u0430\u0454\u0442\u0435 \u0432 \u0430\u043b\u044c\u044f\u043d\u0441\u0456.',
             no_alliance_missions:
                 '\u041d\u0430 \u0434\u0430\u043d\u0438\u0439 \u043c\u043e\u043c\u0435\u043d\u0442 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f \u0430\u043b\u044c\u044f\u043d\u0441\u0443 \u0432\u0456\u0434\u0441\u0443\u0442\u043d\u0456.',
+            no_alliance_missions_join:
+                "En participant \xe0 des missions d'alliance, vous recevrez des cr\xe9dits, quel que soit le type de v\xe9hicule que vous envoyez. En rejoignant une alliance, vous pouvez faire les deux, partager vos propres missions pour obtenir l'aide de membres exp\xe9riment\xe9s de l'alliance et participer aux missions partag\xe9es des autres pour obtenir des r\xe9compenses suppl\xe9mentaires.",
             no_ambulance_missions:
                 '\u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u0430\u0446\u0456\u0454\u043d\u0442\u0456\u0432 \u043d\u0435 \u0432\u0456\u0434\u0431\u0443\u0432\u0430\u0454\u0442\u044c\u0441\u044f. \u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u0430\u0446\u0456\u0454\u043d\u0442\u0430 \u043c\u043e\u0436\u0435 \u0432\u0456\u0434\u0431\u0443\u0432\u0430\u0442\u0438\u0441\u044f \u043b\u0438\u0448\u0435 \u0442\u043e\u0434\u0456, \u043a\u043e\u043b\u0438 \u0443 \u0432\u0430\u0441 \u0454 \u0448\u0432\u0438\u0434\u043a\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0430 \u0442\u0430 \u043b\u0456\u043a\u0430\u0440\u043d\u044f.',
             no_emergency_missions:
@@ -17441,6 +18112,22 @@ Object.values ||
                 separator: ',',
                 significant: !1,
                 strip_insignificant_zeros: !1,
+            },
+        },
+        policechief: {
+            tutorial: {
+                beginner: {
+                    building: {
+                        browser: {
+                            welcome:
+                                "Bienvenue sur Op\xe9rateur 112 Police! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
+                        },
+                        mobile: {
+                            welcome:
+                                "Bienvenue sur Op\xe9rateur 112 Police! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
+                        },
+                    },
+                },
             },
         },
         tutorial: {
@@ -17543,6 +18230,11 @@ Object.values ||
                             '\u0417\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u043c\u0456\u0441\u0456\u0457 \u0432\u0438 \u043e\u0442\u0440\u0438\u043c\u0430\u0454\u0442\u0435 \u043a\u0440\u0435\u0434\u0438\u0442\u0438. \u0417\u0430\u0440\u043e\u0431\u043b\u044f\u044e\u0447\u0438 \u043a\u0440\u0435\u0434\u0438\u0442\u0438, \u0432\u0438 \u043d\u0430\u0431\u043b\u0438\u0436\u0430\u0454\u0442\u0435\u0441\u044c \u0434\u043e \u043f\u0456\u0434\u0432\u0438\u0449\u0435\u043d\u043d\u044f.',
                         join_alliance:
                             '\u041f\u0440\u043e\u043c\u043e-\u0430\u043a\u0446\u0456\u0457 \u0442\u0430 \u0431\u0443\u0434\u0456\u0432\u0435\u043b\u044c\u043d\u0456 \u0441\u0442\u0430\u043d\u0446\u0456\u0457 \u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u044e\u0442\u044c \u043d\u043e\u0432\u0456 \u043c\u043e\u0436\u043b\u0438\u0432\u043e\u0441\u0442\u0456, \u0442\u0430\u043a\u0456 \u044f\u043a \u0442\u0438\u043f\u0438 \u043c\u0456\u0441\u0456\u0439 \u0430\u0431\u043e \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u0456 \u0437\u0430\u0441\u043e\u0431\u0438.',
+                        radio: {
+                            helpshift_id: '1540',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles',
+                            short: 'La radio diffuse des rapports p\xe9riodiques sur vos v\xe9hicules. Pour plus de d\xe9tails sur chaque statut, cliquez ici.',
+                        },
                         summary:
                             '\u0412\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u0442\u0438\u0441\u044f \u0434\u043e \u0430\u043b\u044c\u044f\u043d\u0441\u0443, \u0449\u043e\u0431 \u0432\u0438\u0440\u0456\u0448\u0443\u0432\u0430\u0442\u0438 \u043c\u0456\u0441\u0456\u0457 \u0440\u0430\u0437\u043e\u043c \u0437 \u0456\u043d\u0448\u0438\u043c\u0438. \u0422\u0430\u043a\u043e\u0436 \u0432\u0456\u0434\u0431\u0443\u0432\u0430\u044e\u0442\u044c\u0441\u044f \u0440\u0435\u0433\u0443\u043b\u044f\u0440\u043d\u0456 \u0437\u0430\u0445\u043e\u0434\u0438 \u0430\u043b\u044c\u044f\u043d\u0441\u0443, \u0432 \u044f\u043a\u0438\u0445 \u043c\u043e\u0436\u0443\u0442\u044c \u0431\u0440\u0430\u0442\u0438 \u0443\u0447\u0430\u0441\u0442\u044c \u0443\u0441\u0456 \u0447\u043b\u0435\u043d\u0438!',
                     },
@@ -17555,6 +18247,10 @@ Object.values ||
                             '\u041f\u0440\u043e\u043c\u043e-\u0430\u043a\u0446\u0456\u0457 \u0442\u0430 \u0431\u0443\u0434\u0456\u0432\u0435\u043b\u044c\u043d\u0456 \u0441\u0442\u0430\u043d\u0446\u0456\u0457 \u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u044e\u0442\u044c \u043d\u043e\u0432\u0456 \u043c\u043e\u0436\u043b\u0438\u0432\u043e\u0441\u0442\u0456, \u0442\u0430\u043a\u0456 \u044f\u043a \u0442\u0438\u043f\u0438 \u043c\u0456\u0441\u0456\u0439 \u0430\u0431\u043e \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u0456 \u0437\u0430\u0441\u043e\u0431\u0438.',
                         summary:
                             '\u0412\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u0442\u0438\u0441\u044f \u0434\u043e \u0430\u043b\u044c\u044f\u043d\u0441\u0443, \u0449\u043e\u0431 \u0432\u0438\u0440\u0456\u0448\u0443\u0432\u0430\u0442\u0438 \u043c\u0456\u0441\u0456\u0457 \u0440\u0430\u0437\u043e\u043c \u0437 \u0456\u043d\u0448\u0438\u043c\u0438. \u0422\u0430\u043a\u043e\u0436 \u0432\u0456\u0434\u0431\u0443\u0432\u0430\u044e\u0442\u044c\u0441\u044f \u0440\u0435\u0433\u0443\u043b\u044f\u0440\u043d\u0456 \u0437\u0430\u0445\u043e\u0434\u0438 \u0430\u043b\u044c\u044f\u043d\u0441\u0443, \u0432 \u044f\u043a\u0438\u0445 \u043c\u043e\u0436\u0443\u0442\u044c \u0431\u0440\u0430\u0442\u0438 \u0443\u0447\u0430\u0441\u0442\u044c \u0443\u0441\u0456 \u0447\u043b\u0435\u043d\u0438!',
+                    },
+                    reminder: {
+                        join_alliance:
+                            "Rejoindre une alliance pr\xe9sente de nombreux avantages : des r\xe9compenses suppl\xe9mentaires pour l'accomplissement des missions de l'alliance, le soutien de membres exp\xe9riment\xe9s pour les missions difficiles et vous pouvez utiliser les installations des autres membres comme les h\xf4pitaux et les \xe9coles ! Appuyez sur le bouton pour rejoindre une alliance maintenant !",
                     },
                 },
             },
@@ -17591,6 +18287,7 @@ Object.values ||
             credits: 'Cr\xe9ditos',
             custom_missions: 'Misi\xf3n de alianza a gran escala',
             delete: 'Eliminar',
+            description: 'Description',
             details: 'Detalles',
             edit: 'Editar',
             error: 'Error',
@@ -17601,12 +18298,19 @@ Object.values ||
                 '%{user} no est\xe1 conectado: %{duration}',
             is_online: '%{user} est\xe1 conectado.',
             loading: 'Cargando...',
+            message_for_education:
+                "Cette personne ne sera pas d\xe9ploy\xe9e avec le v\xe9hicule car elle n'a pas re\xe7u la formation ad\xe9quate\xa0!",
             name: 'Nombre',
+            no: 'Non',
             none: 'Nada',
             of: 'de',
             off: 'No',
             on: 'S\xed',
             or: 'o',
+            person: {
+                missing_education_for_vehicle:
+                    "Le personnel ne sera d\xe9ploy\xe9 avec le v\xe9hicule que s'il a re\xe7u la formation ad\xe9quate\xa0!",
+            },
             release_at: 'Alta en',
             save: 'Guardar',
             search: 'Buscar',
@@ -17614,6 +18318,7 @@ Object.values ||
             time_in_minutes: 'Tiempo en minutos',
             user_not_found: 'Usuario no encontrado',
             wrong_key: 'Tecla equivocada',
+            yes: 'Oui',
         },
         fms: {
             going: 'Respondiendo',
@@ -17628,8 +18333,21 @@ Object.values ||
             waiting_for_vehicle: 'Esperando a remolque',
         },
         intervention_order: {
+            assigns_equipment_automatically:
+                "Attribue automatiquement l'\xe9quipement",
+            assigns_equipment_automatically_hint:
+                "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche. (Ne choisit pas exclusivement le mat\xe9riel)",
             automatic_text_color: 'Color de texto autom\xe1tico',
             back: 'Atr\xe1s',
+            categories: {
+                bereitschaftspolizei: "Maintien de l'Ordre",
+                coastal_rescue: 'Sauvetage C\xf4tier',
+                disaster_response: 'R\xe9ponse aux catastrophes ',
+                firefighting: 'Sapeurs-pompiers',
+                police: 'Police',
+                rescue: 'Secours a Personne',
+                water_rescue: 'Secours nautique',
+            },
             category: 'Categor\xeda',
             colour: 'Color',
             column: 'Columna',
@@ -17684,16 +18402,25 @@ Object.values ||
                 arff: 'CBA (Cami\xf3n de bomberos de aeropuerto)',
                 battalion_chief_unit: 'Unidad de Mando y Comunicaciones',
                 boot: 'Botes (general)',
+                brush_truck: 'CCF',
+                brush_truck_1: 'CCFS',
+                brush_truck_2: 'CCFM',
+                brush_truck_3: 'CCFL',
                 division_chief_unit: 'Unidad de mando',
                 elw1_or_elw2:
                     'Unidad de Mando y Comunicaciones, unidad de mando o m\xf3dulo de mando m\xf3vil ',
                 elw2_or_ab_elw:
                     'Bomba de Rescate o Unidad de Apoyo de Rescate y Cami\xf3n de Bomberos',
+                elw3: 'VLHR',
                 emergency_ambulance:
                     'Ambulancia o helic\xf3ptero de emergencia',
                 fire_truck: 'Camiones de bomberos',
                 fireboat: 'Barco de bomberos grande',
+                flood_equipment: 'CEEP ou MAI',
                 fly_car: 'Coche volador',
+                fly_car_any: 'VL SSSM / VLM',
+                fustw_or_police_motorcycle:
+                    'V\xe9hicule de patrouille ou Unit\xe9 motocycliste',
                 gkw: 'Cami\xf3n de usos m\xfaltiples',
                 grtw: 'Unidad para m\xfaltiples v\xedctimas',
                 gw_gefahrgut: 'Hazmat',
@@ -17705,8 +18432,10 @@ Object.values ||
                 hlf_only: 'Veh\xedculo de rescate',
                 hlf_or_rw_and_lf:
                     'Veh\xedculo de rescate o veh\xedculo de rescate pesado y cami\xf3n de bomberos',
+                hose_trucks: 'Camion d\xe9vidoir',
                 k9: 'Unidad canina',
                 kdow_orgl: 'Jefe de emergencias',
+                ktw_or_rtw: 'Ambulance de secours ou Ambulance de transport',
                 lebefkw: 'Veh\xedculo de mando ligero (leBefKw)',
                 lf_only: 'Camiones de bomberos',
                 long_distance_ambulance: 'Ambulancia SVB',
@@ -17716,10 +18445,16 @@ Object.values ||
                 nef_only: 'Ambulancia',
                 oil_unit: 'Cami\xf3n para fuegos de aceite',
                 police_car: 'Coche patrulla',
+                police_motorcycle: 'Unit\xe9 motocycliste',
                 polizeihubschrauber: 'Helic\xf3ptero de polic\xeda',
+                pump: 'Motopompes',
+                pump_speed: 'Capacit\xe9 de la pompe',
+                pump_speed_pump_only:
+                    'Capacit\xe9 de la pompe - Pompes uniquement',
                 rescue_vehicle: 'Furgones de \xdatiles Varios',
                 rescue_vehicle_only: 'Furg\xf3n de \xdatiles Varios',
                 rescueboat: 'Barco de rescate grande',
+                rettungstreppe: "Moyen d'Acc\xe8s en Hauteur",
                 rth_only: 'Helic\xf3ptero',
                 schlauchwagen: 'Cami\xf3n cisterna',
                 swat: 'Fuerzas especiales (GEO)',
@@ -17730,13 +18465,26 @@ Object.values ||
                 thw_tauchkraftwagen: 'Equipo de buceo',
                 tlf_only: 'Cami\xf3n cisterna',
                 turntable_ladder: 'Cami\xf3n AE',
+                water_amount: 'Litres d\u2019eau',
             },
         },
         javascript: {
             alarm: 'Enviar',
             alliance_event_resource: {
-                christmas: { currency: 'Entradas' },
-                valentinesday: { currency: 'Entradas' },
+                christmas: {
+                    currency: 'Entradas',
+                    event_start_mission:
+                        "D\xe9but de l'\xe9v\xe9nement : %{amount} Ticket d'\xe9v\xe9nement",
+                },
+                info_bubble_text:
+                    "Il s'agit d'un \xe9v\xe9nement temporaire qui n'est disponible que pendant notre \xe9v\xe9nement ! Encouragez les membres de votre alliance \xe0 accomplir les missions de l'\xe9v\xe9nement afin de gagner les tickets n\xe9cessaires pour lancer ces \xe9v\xe9nements. Consultez la page des \xe9v\xe9nements d'alliance pour plus d'informations.",
+                info_bubble_text_additional:
+                    'Vous avez actuellement %{amount} %{alliance_event_currency} !',
+                valentinesday: {
+                    currency: 'Entradas',
+                    event_start_mission:
+                        "D\xe9but de l'\xe9v\xe9nement : %{amount} Ticket d'\xe9v\xe9nement",
+                },
             },
             arrival: 'Llegada',
             backalarm: 'Cancelar',
@@ -17762,13 +18510,18 @@ Object.values ||
             patient: 'Paciente',
             patient_untouched: 'Pacientes no tratados',
             poi_delete: '\xbfSeguro que quieres eliminar el PI %{caption}?',
+            pump_speed_approaching: 'En approche : %{amount} l/min',
+            pump_speed_missing: 'Manquant : %{amount} l/min',
+            pump_speed_on_site: 'Sur place : %{amount} l/min',
             pump_speed_process:
                 'Proceso de bombeo de da\xf1os causados por el agua',
+            pump_speed_selected: 'S\xe9lectionn\xe9 : %{amount} l/min',
             reload: 'Recargar',
             sale: 'Rebajas',
             sale_ended: 'Oferta finalizada',
             secounds: 'seg.',
             show_less: 'Mostrar menos',
+            show_more: 'Voir plus',
             sicherheitswache_error:
                 'El guardia de seguridad %{caption} no ha completado su misi\xf3n, ya que no se han cumplido todos los criterios.',
             sicherheitswache_success:
@@ -17785,7 +18538,12 @@ Object.values ||
             understand: 'Recibido',
             user_not_found: 'No se ha encontrado al jugador.',
             vehicles_not_visible: 'Los veh\xedculos no est\xe1n visibles. ',
+            water_approaching: 'En approche : %{amount} l',
+            water_missing: 'Manquante : %{amount} l',
+            water_on_site: 'Sur les lieux : %{amount} l',
             water_process: 'Agua necesaria',
+            water_pumping_process: "Processus de pompage de l'eau",
+            water_selected: 'S\xe9lectionn\xe9e : %{amount} l',
         },
         map: {
             alliance: 'Alianza',
@@ -17832,6 +18590,8 @@ Object.values ||
                 building_complex: 'Complejo de edificios',
                 buildings_section: 'Instalaciones',
                 clinic_missions: 'Cl\xednica',
+                coastal_rescue: 'Sauvetage C\xf4tier',
+                coastal_rescue_missions: 'Mission c\xf4ti\xe8re',
                 dispatch_center_missions: 'Centralita',
                 fire_school_missions: 'Academia de bomberos',
                 firehouse_missions: 'Parque de bomberos',
@@ -17841,6 +18601,8 @@ Object.values ||
                 mission_positions: 'Puntos de inter\xe9s (PI)',
                 mission_positions_section: 'PI',
                 missions_section: 'Misiones',
+                mountain_rescue: 'Gendarmerie haute montagne',
+                mountain_rescue_heliport: 'DAG',
                 police_copter_station_missions: 'Helipuerto policial',
                 police_school_missions: 'Academia de polic\xeda',
                 police_small_missions:
@@ -17854,6 +18616,9 @@ Object.values ||
                 riot_police: 'Polic\xeda antidisturbios',
                 riot_police_missions: 'Polic\xeda antidisturbios',
                 staging_area_missions: 'Zona de preparaci\xf3n',
+                swat_airport: 'GIH',
+                technical_aid: 'U.I.I.S.C.',
+                technical_aid_missions: 'U.I.I.S.C.',
                 technical_aid_organization: 'SAT',
                 technical_aid_organization_school: 'Academia SAT',
                 user_buildings: 'Mis edificios',
@@ -17941,6 +18706,22 @@ Object.values ||
                 separator: '.',
                 significant: !1,
                 strip_insignificant_zeros: !1,
+            },
+        },
+        policechief: {
+            tutorial: {
+                beginner: {
+                    building: {
+                        browser: {
+                            welcome:
+                                "Bienvenue sur Op\xe9rateur 112 Police! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
+                        },
+                        mobile: {
+                            welcome:
+                                "Bienvenue sur Op\xe9rateur 112 Police! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
+                        },
+                    },
+                },
             },
         },
         tutorial: {
@@ -18043,6 +18824,11 @@ Object.values ||
                             'Recibir\xe1s cr\xe9ditos por terminar una misi\xf3n. Al ganar cr\xe9ditos te acercas a tu pr\xf3ximo ascenso.',
                         join_alliance:
                             'Obtener un ascenso a un nuevo rango y construir edificios desbloquea nuevas caracter\xedsticas como tipos de misiones y veh\xedculos.',
+                        radio: {
+                            helpshift_id: '1540',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles',
+                            short: 'La radio diffuse des rapports p\xe9riodiques sur vos v\xe9hicules. Pour plus de d\xe9tails sur chaque statut, cliquez ici.',
+                        },
                         summary:
                             'Puedes unirte a una alianza para realizar misiones con otros jugadores. Tambi\xe9n hay eventos de alianza regulares en los que puedes participar.',
                     },
@@ -18055,6 +18841,10 @@ Object.values ||
                             'Obtener un ascenso a un nuevo rango y construir edificios desbloquea nuevas caracter\xedsticas como tipos de misiones y veh\xedculos.',
                         summary:
                             'Puedes unirte a una alianza para realizar misiones con otros jugadores. Tambi\xe9n hay eventos de alianza regulares en los que puedes participar.',
+                    },
+                    reminder: {
+                        join_alliance:
+                            "Rejoindre une alliance pr\xe9sente de nombreux avantages : des r\xe9compenses suppl\xe9mentaires pour l'accomplissement des missions de l'alliance, le soutien de membres exp\xe9riment\xe9s pour les missions difficiles et vous pouvez utiliser les installations des autres membres comme les h\xf4pitaux et les \xe9coles ! Appuyez sur le bouton pour rejoindre une alliance maintenant !",
                     },
                 },
             },
@@ -18144,15 +18934,21 @@ Object.values ||
                 '\u727d\u5f15\u7528\u306e\u8eca\u4e21\u3092\u5f85\u6a5f\u4e2d',
         },
         intervention_order: {
+            assigns_equipment_automatically:
+                "Attribue automatiquement l'\xe9quipement",
+            assigns_equipment_automatically_hint:
+                "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche. (Ne choisit pas exclusivement le mat\xe9riel)",
             automatic_text_color:
                 '\u81ea\u52d5\u30c6\u30ad\u30b9\u30c8\u30ab\u30e9\u30fc',
             back: '\u623b\u308b',
             categories: {
                 bereitschaftspolizei: '\u5bfe\u66b4\u5f92\u8b66\u5bdf',
                 coastal_rescue: '\u6c34\u4e0a\u8b66\u5bdf',
+                disaster_response: 'R\xe9ponse aux catastrophes ',
                 firefighting: '\u6d88\u9632',
                 police: '\u8b66\u5bdf',
                 rescue: '\u6551\u52a9',
+                water_rescue: 'Secours nautique',
             },
             category: '\u30ab\u30c6\u30b4\u30ea\u30fc',
             colour: '\u30ab\u30e9\u30fc',
@@ -18218,24 +19014,36 @@ Object.values ||
                 battalion_chief_unit:
                     '\u6d88\u9632\u6307\u4ee4\u9577\u30e6\u30cb\u30c3\u30c8',
                 boot: '\u30dc\u30fc\u30c8\uff08\u4e00\u822c\uff09',
+                brush_truck: 'CCF',
+                brush_truck_1: 'CCFS',
+                brush_truck_2: 'CCFM',
+                brush_truck_3: 'CCFL',
                 damage_control:
                     '\u30c0\u30e1\u30fc\u30b8\u30fb\u30b3\u30f3\u30c8\u30ed\u30fc\u30eb\u30fb\u30ef\u30b4\u30f3',
                 division_chief_unit: '\u79fb\u52d5\u901a\u4fe1\u8eca\u4e21',
                 elw1_or_elw2:
                     '\u6d88\u9632\u53f8\u4ee4\u9577\u8eca\u4e21\u307e\u305f\u306f\u6307\u4ee4\u8eca',
+                elw2_or_ab_elw:
+                    "Pompe de secours ou unit\xe9 de secours en renfort et v\xe9hicule d'incendie",
+                elw3: 'VLHR',
                 emergency_ambulance:
                     '\u7dca\u6025\u6551\u6025\u8eca\u307e\u305f\u306f\u30d8\u30ea\u30b3\u30d7\u30bf\u30fc',
                 fire_truck: '\u6d88\u9632\u8eca',
                 fireboat: '\u706b\u707d\u7528\u5927\u578b\u30dc\u30fc\u30c8',
+                flood_equipment: 'CEEP ou MAI',
                 fly_car: '\u30c9\u30af\u30bf\u30fc\u30ab\u30fc',
                 fly_car_any:
                     '\u30c9\u30af\u30bf\u30fc\u30ab\u30fc / \u5bb6\u5ead\u533b',
                 foam_amount: '\u6ce1\u6cab\uff08\u30ea\u30c3\u30c8\u30eb\uff09',
+                fustw_or_police_motorcycle:
+                    'V\xe9hicule de patrouille ou Unit\xe9 motocycliste',
                 gkw: '\u5c0f\u578b\u30c8\u30e9\u30c3\u30af',
                 grtw: '\u5927\u578b\u30c8\u30e9\u30c3\u30af\u30e6\u30cb\u30c3\u30c8',
                 gw_atemschutz_only:
                     '\u7a7a\u6c17\u5145\u586b\u7167\u660e\u8eca',
                 gw_gefahrgut: '\u5371\u967a\u7269\u53d6\u6271\u8eca\u4e21',
+                gw_hoehenrettung: 'VGRIMP',
+                gw_messtechnik: 'GW-M',
                 gw_wasserrettung: '\u8caf\u6c34\u8eca\u4e21',
                 gwl2wasser_only: '\u30db\u30fc\u30b9\u8eca\u4e21',
                 hems: 'HEMS',
@@ -18246,10 +19054,12 @@ Object.values ||
                 hlf_only: '\u6551\u52a9\u5de5\u4f5c\u8eca',
                 hlf_or_rw_and_lf:
                     '\u6551\u52a9\u5de5\u4f5c\u8eca\u307e\u305f\u306f\u7279\u5225\u9ad8\u5ea6\u6551\u52a9\u90e8\u968a\u8eca\u4e21\u3068\u6d88\u9632\u8eca',
+                hose_trucks: 'Camion d\xe9vidoir',
                 k9: '\u8b66\u5bdf\u72ac\u30e6\u30cb\u30c3\u30c8',
                 kdow_orgl: '\u6551\u6025\u8eca\u6307\u63ee\u5b98',
                 ktw_or_rtw:
                     '\u4e00\u6b21\uff0f\u4e8c\u6b21\u6551\u547d\u51e6\u7f6e',
+                lebefkw: 'Camionnette de police',
                 lf_only: '\u6d88\u9632\u8eca',
                 long_distance_ambulance:
                     '\u4e00\u6642\u6551\u547d\u51e6\u7f6e\u6551\u6025\u8eca',
@@ -18257,7 +19067,9 @@ Object.values ||
                 mtw: '\u6d88\u9632\u968a\u54e1\u7528\u8eca\u4e21',
                 mzb: '\u591a\u76ee\u7684\u30dc\u30fc\u30c8',
                 nef_only: '\u6551\u6025\u8eca',
+                oil_unit: 'Camion d\u2019assainissement',
                 police_car: '\u30d1\u30c8\u30ab\u30fc',
+                police_motorcycle: 'Unit\xe9 motocycliste',
                 polizeihubschrauber:
                     '\u8b66\u5bdf\u30d8\u30ea\u30b3\u30d7\u30bf\u30fc',
                 pump: '\u30a8\u30f3\u30b8\u30f3-\u30dd\u30f3\u30d7',
@@ -18268,12 +19080,15 @@ Object.values ||
                 rescue_vehicle_only:
                     '\u7279\u5225\u9ad8\u5ea6\u6551\u52a9\u90e8\u968a\u8eca\u4e21\u306e\u307f',
                 rescueboat: '\u5927\u578b\u6551\u52a9\u30dc\u30fc\u30c8',
+                rettungstreppe: "Moyen d'Acc\xe8s en Hauteur",
                 rth_only: '\u30d8\u30ea\u30b3\u30d7\u30bf\u30fc',
                 schlauchwagen:
                     '\u30a6\u30a9\u30fc\u30bf\u30fc\u30bf\u30f3\u30ab\u30fc',
                 swat: 'SWAT',
                 swat_armored_vehicle: 'SWAT\u88c5\u7532\u8eca\u4e21',
                 swat_suv: 'SWAT SUV',
+                thw_mtw: 'Fourgon de la protection civile',
+                thw_mzkw: 'Camion de la protection civile',
                 thw_tauchkraftwagen: '\u6f5c\u6c34\u30c1\u30fc\u30e0',
                 tlf_only: '\u30bf\u30f3\u30ab\u30fc\u30c8\u30e9\u30c3\u30af',
                 turntable_ladder:
@@ -18357,6 +19172,7 @@ Object.values ||
             sicherheitswache_success:
                 '\u30bb\u30ad\u30e5\u30ea\u30c6\u30a3\u30fc\u30ac\u30fc\u30c9\u300c%{caption}\u300d\u306f\u7121\u4e8b\u884c\u308f\u308c\u307e\u3057\u305f\u3002%{credits}\u30af\u30ec\u30b8\u30c3\u30c8\u3092\u53d7\u3051\u53d6\u308a\u307e\u3059\u3002',
             start_alliance_mission_new: {
+                one: 'Commencez %{count} mission (%{price} Pi\xe8ces)',
                 other: '%{count}\u500b\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u958b\u59cb\u3059\u308b (%{price} \u30b3\u30a4\u30f3)',
             },
             start_in: '\u958b\u59cb\u307e\u3067\uff1a ',
@@ -18449,6 +19265,8 @@ Object.values ||
                 mission_positions: '\u5230\u7740\u5730\u70b9\uff08POI\uff09',
                 mission_positions_section: 'POI',
                 missions_section: '\u30df\u30c3\u30b7\u30e7\u30f3',
+                mountain_rescue: 'Gendarmerie haute montagne',
+                mountain_rescue_heliport: 'DAG',
                 police_copter_station_missions:
                     '\u8b66\u5bdf\u822a\u7a7a\u968a',
                 police_school_missions:
@@ -18466,6 +19284,9 @@ Object.values ||
                 riot_police_missions: '\u5bfe\u66b4\u5f92\u8b66\u5bdf',
                 staging_area_missions:
                     '\u30b9\u30c6\u30fc\u30b8\u30f3\u30b0\u30a8\u30ea\u30a2',
+                swat_airport: 'GIH',
+                technical_aid: 'U.I.I.S.C.',
+                technical_aid_missions: 'U.I.I.S.C.',
                 technical_aid_organization: '\u6280\u8853\u652f\u63f4\u968a',
                 technical_aid_organization_school:
                     'THW\u9023\u90a6\u5b66\u6821',
@@ -18568,6 +19389,22 @@ Object.values ||
                 separator: '.',
                 significant: '\u8aa4',
                 strip_insignificant_zeros: '\u8aa4',
+            },
+        },
+        policechief: {
+            tutorial: {
+                beginner: {
+                    building: {
+                        browser: {
+                            welcome:
+                                "Bienvenue sur Op\xe9rateur 112 Police! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
+                        },
+                        mobile: {
+                            welcome:
+                                "Bienvenue sur Op\xe9rateur 112 Police! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
+                        },
+                    },
+                },
             },
         },
         tutorial: {
@@ -18779,14 +19616,20 @@ Object.values ||
                 '\uacac\uc778 \ucc28\ub7c9 \uae30\ub2e4\ub9ac\ub294 \uc911',
         },
         intervention_order: {
+            assigns_equipment_automatically:
+                "Attribue automatiquement l'\xe9quipement",
+            assigns_equipment_automatically_hint:
+                "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche. (Ne choisit pas exclusivement le mat\xe9riel)",
             automatic_text_color: '\uc790\ub3d9 \uae00 \uc0c9\uc0c1',
             back: '\ub4a4\ub85c',
             categories: {
                 bereitschaftspolizei: '\uc9c4\uc555 \uacbd\ucc30',
                 coastal_rescue: '\ud574\uc548 \uad6c\uc870',
+                disaster_response: 'R\xe9ponse aux catastrophes ',
                 firefighting: '\uc18c\ubc29\ucc28',
                 police: '\uacbd\ucc30',
                 rescue: '\uad6c\uc870\ub300',
+                water_rescue: 'Secours nautique',
             },
             category: '\uce74\ud14c\uace0\ub9ac',
             colour: '\uc0c9\uc0c1',
@@ -18847,11 +19690,18 @@ Object.values ||
                 arff: '\ud56d\uacf5\uae30 \uad6c\uc870\uc6a9\uace0\uc131\ub2a5 \uc18c\ubc29\ucc28 \ub610\ub294 \uc2a4\ud305\uc5b4 HRET',
                 battalion_chief_unit: '\uc18c\ubc29\ub300\uc7a5 \uc720\ub2db',
                 boot: '\ubcf4\ud2b8(\uc77c\ubc18)',
+                brush_truck: 'CCF',
+                brush_truck_1: 'CCFS',
+                brush_truck_2: 'CCFM',
+                brush_truck_3: 'CCFL',
                 damage_control: '\ud53c\ud574 \ud1b5\uc81c \uc65c\uac74',
                 division_chief_unit:
                     '\uae30\ub3d9\ud615 \uc9c0\ud718\ucc28\ub7c9',
                 elw1_or_elw2:
                     '\uc18c\ubc29\ub300\uc7a5 \uc720\ub2db, \uae30\ub3d9\ud615 \uc9c0\ud718\ucc28\ub7c9 \ub610\ub294 \uae30\ub3d9\ud615 \uc9c0\ud718 \ubaa8\ub4c8 ',
+                elw2_or_ab_elw:
+                    "Pompe de secours ou unit\xe9 de secours en renfort et v\xe9hicule d'incendie",
+                elw3: 'VLHR',
                 emergency_ambulance:
                     '\uc751\uae09\uc6a9 \uad6c\uae09\ucc28 \ub610\ub294 \ud5ec\uae30',
                 fire_truck: '\uc18c\ubc29\ucc28',
@@ -18862,6 +19712,8 @@ Object.values ||
                 fly_car_any:
                     '\uae34\uae09 \uc774\uc1a1\ucc28 / \uc77c\ubc18\uc758',
                 foam_amount: '\uac70\ud488 \uc591 (\ub9ac\ud130)',
+                fustw_or_police_motorcycle:
+                    'V\xe9hicule de patrouille ou Unit\xe9 motocycliste',
                 gkw: '\ub2e4\uc6a9\ub3c4 \ud2b8\ub7ed',
                 grtw: '\ub300\ub7c9 \uc0ac\uc0c1\uc790\uc6a9 \uc720\ub2db',
                 gw_gefahrgut: '\uc0dd\ud654\ud559 \ucc28\ub7c9',
@@ -18874,6 +19726,7 @@ Object.values ||
                 hlf_only: '\uad6c\uc870 \uacf5\uc791\ucc28',
                 hlf_or_rw_and_lf:
                     '\uad6c\uc870 \uacf5\uc791\ucc28 \ub610\ub294 \uc911\uc7a5\ube44 \uad6c\uc870 \ucc28\ub7c9 \ubc0f \uc18c\ubc29\ucc28',
+                hose_trucks: 'Camion d\xe9vidoir',
                 k9: 'K-9 \uc720\ub2db',
                 kdow_orgl: '\uad6c\uae09 \uc9c0\ud718\ucc28',
                 kdow_orgl_any: '\uad6c\uae09 \uc9c0\ud718\ucc28',
@@ -18890,6 +19743,7 @@ Object.values ||
                 oil_unit:
                     '\uc791\uc5c5 \ucc28\ub7c9-\uae30\ub984 \uc720\ucd9c \ubc29\uc9c0',
                 police_car: '\uc21c\ucc30\ucc28',
+                police_motorcycle: 'Unit\xe9 motocycliste',
                 polizeihubschrauber: '\uacbd\ucc30 \ud5ec\uae30',
                 pump: '\uc5d4\uc9c4 \ud38c\ud504',
                 pump_speed: '\ud38c\ud504 \uc6a9\ub7c9',
@@ -18898,6 +19752,7 @@ Object.values ||
                 rescue_vehicle: '\uc911\uc7a5\ube44 \uad6c\uc870 \ucc28\ub7c9',
                 rescue_vehicle_only: '\uc911\uc7a5\ube44 \uad6c\uc870',
                 rescueboat: '\ub300\ud615 \uad6c\uc870 \ubcf4\ud2b8',
+                rettungstreppe: "Moyen d'Acc\xe8s en Hauteur",
                 rth_only: '\uad6c\uae09 \ud5ec\ub9ac\ucf65\ud130',
                 schlauchwagen: '\uc218\uc0c1 \ud0f1\ucee4',
                 swat: 'SWAT',
@@ -18981,6 +19836,7 @@ Object.values ||
             sicherheitswache_success:
                 '"%{caption}"\uc758 \ubcf4\uc548 \uacbd\ube44\ub97c \uc131\uacf5\uc801\uc73c\ub85c \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4. %{credits} \ud06c\ub808\ub527\uc744 \ubc1b\uc558\uc2b5\ub2c8\ub2e4.',
             start_alliance_mission_new: {
+                one: 'Commencez %{count} mission (%{price} Pi\xe8ces)',
                 other: '%{count} \uc784\ubb34 \uc2dc\uc791(%{price} \ucf54\uc778)',
             },
             start_in: '\uc2dc\uc791\uae4c\uc9c0: ',
@@ -19061,6 +19917,8 @@ Object.values ||
                 mission_positions: '\uad00\uc2ec \uc9c0\uc5ed(POI)',
                 mission_positions_section: 'POI',
                 missions_section: '\uc784\ubb34',
+                mountain_rescue: 'Gendarmerie haute montagne',
+                mountain_rescue_heliport: 'DAG',
                 police_copter_station_missions: '\uacbd\ucc30 \ud56d\uacf5',
                 police_school_missions: '\uacbd\ucc30 \ud559\uad50',
                 police_small_missions:
@@ -19075,6 +19933,9 @@ Object.values ||
                 riot_police: '\uc9c4\uc555 \uacbd\ucc30',
                 riot_police_missions: '\uc9c4\uc555 \uacbd\ucc30',
                 staging_area_missions: '\uc9d1\uacb0\uc9c0',
+                swat_airport: 'GIH',
+                technical_aid: 'U.I.I.S.C.',
+                technical_aid_missions: 'U.I.I.S.C.',
                 technical_aid_organization:
                     '\uae30\uc220 \uc9c0\uc6d0 \uae30\uad00(THW)',
                 technical_aid_organization_school:
@@ -19170,6 +20031,22 @@ Object.values ||
                 separator: '.',
                 significant: '\uac70\uc9d3',
                 strip_insignificant_zeros: '\uac70\uc9d3',
+            },
+        },
+        policechief: {
+            tutorial: {
+                beginner: {
+                    building: {
+                        browser: {
+                            welcome:
+                                "Bienvenue sur Op\xe9rateur 112 Police! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
+                        },
+                        mobile: {
+                            welcome:
+                                "Bienvenue sur Op\xe9rateur 112 Police! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
+                        },
+                    },
+                },
             },
         },
         tutorial: {
@@ -19290,6 +20167,10 @@ Object.values ||
                         summary:
                             '\ub3d9\ub9f9\uc5d0 \uac00\uc785\ud558\uc5ec \ub2e4\ub978 \uc0ac\ub78c\ub4e4\uacfc \ud568\uaed8 \ubbf8\uc158\uc744 \ud574\uacb0\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \ubaa8\ub4e0 \uba64\ubc84\uac00 \ucc38\uc5ec\ud560 \uc218 \uc788\ub294 \uc815\uae30 \ub3d9\ub9f9 \uc774\ubca4\ud2b8\ub3c4 \uc788\uc2b5\ub2c8\ub2e4!',
                     },
+                    reminder: {
+                        join_alliance:
+                            "Rejoindre une alliance pr\xe9sente de nombreux avantages : des r\xe9compenses suppl\xe9mentaires pour l'accomplissement des missions de l'alliance, le soutien de membres exp\xe9riment\xe9s pour les missions difficiles et vous pouvez utiliser les installations des autres membres comme les h\xf4pitaux et les \xe9coles ! Appuyez sur le bouton pour rejoindre une alliance maintenant !",
+                    },
                 },
             },
             commons: {
@@ -19325,6 +20206,7 @@ Object.values ||
             credits: 'Credite',
             custom_missions: 'Misiuni de alian\u021b\u0103',
             delete: '\u0218terge',
+            description: 'Description',
             details: 'Detalii',
             edit: 'Editeaz\u0103',
             error: 'Eroare',
@@ -19334,12 +20216,19 @@ Object.values ||
             is_offline_with_duration: '%{user} este offline: %{duration}',
             is_online: '%{user} este online.',
             loading: 'Se \xeencarc\u0103...',
+            message_for_education:
+                "Cette personne ne sera pas d\xe9ploy\xe9e avec le v\xe9hicule car elle n'a pas re\xe7u la formation ad\xe9quate\xa0!",
             name: 'Nume',
+            no: 'Non',
             none: 'Niciunul/niciuna',
             of: 'din',
             off: 'Dezactivat',
             on: 'Activat',
             or: 'sau',
+            person: {
+                missing_education_for_vehicle:
+                    "Le personnel ne sera d\xe9ploy\xe9 avec le v\xe9hicule que s'il a re\xe7u la formation ad\xe9quate\xa0!",
+            },
             release_at: 'Externat \xeen',
             save: 'Salveaz\u0103',
             search: 'Caut\u0103',
@@ -19347,6 +20236,7 @@ Object.values ||
             time_in_minutes: 'Timp \xeen minute',
             user_not_found: 'Utilizatorul nu a fost g\u0103sit',
             wrong_key: 'Tast\u0103 gre\u0219it\u0103',
+            yes: 'Oui',
         },
         fms: {
             going: 'Pe drum',
@@ -19362,8 +20252,21 @@ Object.values ||
                 'Se a\u0219teapt\u0103 vehicul pentru tractare',
         },
         intervention_order: {
+            assigns_equipment_automatically:
+                "Attribue automatiquement l'\xe9quipement",
+            assigns_equipment_automatically_hint:
+                "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche. (Ne choisit pas exclusivement le mat\xe9riel)",
             automatic_text_color: 'Culoare text automat\u0103',
             back: '\xcenapoi',
+            categories: {
+                bereitschaftspolizei: "Maintien de l'Ordre",
+                coastal_rescue: 'Sauvetage C\xf4tier',
+                disaster_response: 'R\xe9ponse aux catastrophes ',
+                firefighting: 'Sapeurs-pompiers',
+                police: 'Police',
+                rescue: 'Secours a Personne',
+                water_rescue: 'Secours nautique',
+            },
             category: 'Categorie',
             colour: 'Culoare',
             column: 'Coloan\u0103',
@@ -19422,17 +20325,25 @@ Object.values ||
                 arff: 'Salvare Aerian\u0103 \u0219i Lupt\u0103 \xeempotriva Incendiilor (Ma\u0219ina de pompieri a aeroportului)',
                 battalion_chief_unit: 'Unitate \u0218ef batalion',
                 boot: 'B\u0103rci (general)',
+                brush_truck: 'CCF',
+                brush_truck_1: 'CCFS',
+                brush_truck_2: 'CCFM',
+                brush_truck_3: 'CCFL',
                 division_chief_unit: 'Vehicul comand\u0103 for\u021be mobile',
                 elw1_or_elw2:
                     'Unitate \u0219ef batalion sau ma\u0219in\u0103 de comanda \u0219i control',
                 elw2_or_ab_elw: 'nul',
+                elw3: 'VLHR',
                 emergency_ambulance:
                     'Ambulan\u021b\u0103 de urgen\u021b\u0103 sau elicopter',
                 fire_truck: 'Ma\u0219ini de pompieri',
                 fireboat: 'Barc\u0103 de stins incendii mare',
+                flood_equipment: 'CEEP ou MAI',
                 fly_car: 'Vehicul EMS netransportant',
                 fly_car_any: 'Vehicul EMS netransportant / Medic generalist',
                 foam_amount: 'Litri de spum\u0103',
+                fustw_or_police_motorcycle:
+                    'V\xe9hicule de patrouille ou Unit\xe9 motocycliste',
                 gkw: 'Camionet\u0103 utilitar\u0103',
                 grtw: 'Unitate Victime multiple',
                 gw_atemschutz_only: 'Ma\u0219in\u0103 de suport logistic',
@@ -19447,6 +20358,7 @@ Object.values ||
                     'Ma\u0219in\u0103 de interven\u021bii accidente colective',
                 hlf_or_rw_and_lf:
                     'Ma\u0219in\u0103 de interven\u021bii accidente colective sau vehicul greu de salvare \u0219i pomp\u0103 de incendiu',
+                hose_trucks: 'Camion d\xe9vidoir',
                 k9: 'Unitate canin\u0103',
                 kdow_orgl: 'Unitate transport Supervizor',
                 kdow_orgl_any: 'Unitate transport Supervizor',
@@ -19461,10 +20373,16 @@ Object.values ||
                 nef_only: 'Ambulan\u021b\u0103',
                 oil_unit: 'Vehicul-colectare ulei',
                 police_car: 'Ma\u0219in\u0103 de patrulare',
+                police_motorcycle: 'Unit\xe9 motocycliste',
                 polizeihubschrauber: 'Elicopter de poli\u021bie',
+                pump: 'Motopompes',
+                pump_speed: 'Capacit\xe9 de la pompe',
+                pump_speed_pump_only:
+                    'Capacit\xe9 de la pompe - Pompes uniquement',
                 rescue_vehicle: 'Vehicul greu de salvare',
                 rescue_vehicle_only: 'Doar vehicol de salvare',
                 rescueboat: 'Barc\u0103 de salvare mare',
+                rettungstreppe: "Moyen d'Acc\xe8s en Hauteur",
                 rth_only: 'Elicopter SMURD',
                 schlauchwagen: 'Cistern\u0103 de ap\u0103',
                 swat: 'SIAS',
@@ -19481,6 +20399,22 @@ Object.values ||
         },
         javascript: {
             alarm: 'Trimitere',
+            alliance_event_resource: {
+                christmas: {
+                    currency: "Billets d'\xe9v\xe9nements",
+                    event_start_mission:
+                        "D\xe9but de l'\xe9v\xe9nement : %{amount} Ticket d'\xe9v\xe9nement",
+                },
+                info_bubble_text:
+                    "Il s'agit d'un \xe9v\xe9nement temporaire qui n'est disponible que pendant notre \xe9v\xe9nement ! Encouragez les membres de votre alliance \xe0 accomplir les missions de l'\xe9v\xe9nement afin de gagner les tickets n\xe9cessaires pour lancer ces \xe9v\xe9nements. Consultez la page des \xe9v\xe9nements d'alliance pour plus d'informations.",
+                info_bubble_text_additional:
+                    'Vous avez actuellement %{amount} %{alliance_event_currency} !',
+                valentinesday: {
+                    currency: "Billets d'\xe9v\xe9nements",
+                    event_start_mission:
+                        "D\xe9but de l'\xe9v\xe9nement : %{amount} Ticket d'\xe9v\xe9nement",
+                },
+            },
             arrival: 'Sosire',
             backalarm: 'Anuleaz\u0103',
             coins: 'Monede',
@@ -19510,12 +20444,18 @@ Object.values ||
             patient_untouched: 'Pacien\u021bi netrata\u021bi',
             poi_delete:
                 'E\u0219ti sigur c\u0103 vrei s\u0103 \u0219tergi Punctul de interes: %{caption}?',
+            pump_speed_approaching: 'En approche : %{amount} l/min',
+            pump_speed_missing: 'Manquant : %{amount} l/min',
+            pump_speed_on_site: 'Sur place : %{amount} l/min',
             pump_speed_process:
                 'Procesul de pompare a daunelor provocate de ap\u0103',
+            pump_speed_selected: 'S\xe9lectionn\xe9 : %{amount} l/min',
             reload: 'Re\xeencarc\u0103',
             sale: 'Promo\u021bie',
             sale_ended: 'Promo\u021bia s-a \xeencheiat',
             secounds: 'sec.',
+            show_less: 'Afficher plus',
+            show_more: 'Voir plus',
             sicherheitswache_error:
                 'Misiunea de securizare "%{caption}" nu a avut succes, deoarece nu au fost \xeendeplinite toate criteriile.',
             sicherheitswache_success:
@@ -19536,6 +20476,7 @@ Object.values ||
             water_approaching: 'Se apropie: %{amount} l.',
             water_missing: 'Lipsesc: %{amount} l.',
             water_on_site: 'La fa\u021ba locului: %{amount} l.',
+            water_process: 'Eau n\xe9cessaire',
             water_pumping_process: 'Capacitate de pompare necesar\u0103',
             water_selected: 'Selecta\u021bi: %{amount} l.',
         },
@@ -19586,6 +20527,8 @@ Object.values ||
                 building_complex: 'Complex de cl\u0103diri',
                 buildings_section: 'Sta\u021bii',
                 clinic_missions: 'Clinic\u0103',
+                coastal_rescue: 'Sauvetage C\xf4tier',
+                coastal_rescue_missions: 'Mission c\xf4ti\xe8re',
                 dispatch_center_missions: 'Dispecerat',
                 fire_school_missions: 'Academia de Pompieri',
                 firehouse_missions: 'Sta\u021bie de pompieri',
@@ -19595,6 +20538,8 @@ Object.values ||
                 mission_positions: 'Puncte de interes',
                 mission_positions_section: 'Puncte de interes',
                 missions_section: 'Misiuni',
+                mountain_rescue: 'Gendarmerie haute montagne',
+                mountain_rescue_heliport: 'DAG',
                 police_copter_station_missions:
                     'Transport aerian pentru for\u021bele de poli\u021bie',
                 police_school_missions: 'Academia de Poli\u021bie',
@@ -19612,6 +20557,9 @@ Object.values ||
                 riot_police_missions:
                     'For\u021be de poli\u021bie speciale \xeempotriva revoltelor stradale',
                 staging_area_missions: 'Zona de a\u0219teptare',
+                swat_airport: 'GIH',
+                technical_aid: 'U.I.I.S.C.',
+                technical_aid_missions: 'U.I.I.S.C.',
                 technical_aid_organization:
                     'Agen\u021bia Na\u021bional\u0103 de Asisten\u021b\u0103 Tehnic\u0103 (ANAT)',
                 technical_aid_organization_school: 'THW Bundesschule',
@@ -19675,6 +20623,8 @@ Object.values ||
                 'Nu faci parte dintr-o alian\u021b\u0103.',
             no_alliance_missions:
                 '\xcen prezent nu exist\u0103 misiuni de alian\u021b\u0103.',
+            no_alliance_missions_join:
+                "En participant \xe0 des missions d'alliance, vous recevrez des cr\xe9dits, quel que soit le type de v\xe9hicule que vous envoyez. En rejoignant une alliance, vous pouvez faire les deux, partager vos propres missions pour obtenir l'aide de membres exp\xe9riment\xe9s de l'alliance et participer aux missions partag\xe9es des autres pour obtenir des r\xe9compenses suppl\xe9mentaires.",
             no_ambulance_missions:
                 '"Nu exist\u0103 transporturi de pacien\u021bi. Transporturile vor putea fi efectuate atunci c\xe2nd vei aveao Ambulan\u021b\u0103 de tip B (BLS) \u0219i un spital."',
             no_emergency_missions:
@@ -19701,6 +20651,22 @@ Object.values ||
                 separator: ',',
                 significant: !1,
                 strip_insignificant_zeros: !1,
+            },
+        },
+        policechief: {
+            tutorial: {
+                beginner: {
+                    building: {
+                        browser: {
+                            welcome:
+                                "Bienvenue sur Op\xe9rateur 112 Police! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
+                        },
+                        mobile: {
+                            welcome:
+                                "Bienvenue sur Op\xe9rateur 112 Police! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
+                        },
+                    },
+                },
             },
         },
         tutorial: {
@@ -19803,6 +20769,11 @@ Object.values ||
                             'Ve\u021bi primi credite pentru c\u0103 a\u021bi terminat o misiune. C\xe2\u0219tig\xe2nd credite, v\u0103 apropia\u021bi de o promovare.',
                         join_alliance:
                             'Promo\u021biile \u0219i sta\u021biile de construc\u021bie deblocheaz\u0103 noi caracteristici, cum ar fi tipuri de misiuni sau vehicule.',
+                        radio: {
+                            helpshift_id: '1540',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles',
+                            short: 'La radio diffuse des rapports p\xe9riodiques sur vos v\xe9hicules. Pour plus de d\xe9tails sur chaque statut, cliquez ici.',
+                        },
                         summary:
                             'V\u0103 pute\u021bi al\u0103tura unei alian\u021be pentru a rezolva misiuni \xeempreun\u0103 cu al\u021bii. Exist\u0103, de asemenea, evenimente regulate ale alian\u021bei la care pot participa to\u021bi membrii!',
                     },
@@ -19815,6 +20786,10 @@ Object.values ||
                             'Promo\u021biile \u0219i sta\u021biile de construc\u021bie deblocheaz\u0103 noi caracteristici, cum ar fi tipuri de misiuni sau vehicule.',
                         summary:
                             'V\u0103 pute\u021bi al\u0103tura unei alian\u021be pentru a rezolva misiuni \xeempreun\u0103 cu al\u021bii. Exist\u0103, de asemenea, evenimente regulate ale alian\u021bei la care pot participa to\u021bi membrii!',
+                    },
+                    reminder: {
+                        join_alliance:
+                            "Rejoindre une alliance pr\xe9sente de nombreux avantages : des r\xe9compenses suppl\xe9mentaires pour l'accomplissement des missions de l'alliance, le soutien de membres exp\xe9riment\xe9s pour les missions difficiles et vous pouvez utiliser les installations des autres membres comme les h\xf4pitaux et les \xe9coles ! Appuyez sur le bouton pour rejoindre une alliance maintenant !",
                     },
                 },
             },
@@ -19894,10 +20869,17 @@ Object.values ||
             waiting_for_vehicle: 'Odottaa vetoautoa',
         },
         intervention_order: {
+            assigns_equipment_automatically:
+                "Attribue automatiquement l'\xe9quipement",
+            assigns_equipment_automatically_hint:
+                "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche. (Ne choisit pas exclusivement le mat\xe9riel)",
             automatic_text_color: 'Automaattinen tekstin v\xe4ri',
             back: 'Palaa',
             categories: {
                 airport: 'Lentokentt\xe4',
+                bereitschaftspolizei: "Maintien de l'Ordre",
+                coastal_rescue: 'Sauvetage C\xf4tier',
+                disaster_response: 'R\xe9ponse aux catastrophes ',
                 firefighting: 'Palokunta',
                 police: 'Poliisi',
                 rescue: 'Ambulanssi',
@@ -19955,12 +20937,20 @@ Object.values ||
                 arff: 'Lentokentt\xe4paloauto',
                 battalion_chief_unit: 'Johtoauto',
                 boot: 'Alukset (yleinen)',
+                brush_truck: 'CCF',
+                brush_truck_1: 'CCFS',
+                brush_truck_2: 'CCFM',
+                brush_truck_3: 'CCFL',
                 division_chief_unit: 'Johtokeskusauto',
                 elw1_or_elw2:
                     'johtoauto, johtokeskusauto tai johtokeskuskontti',
+                elw2_or_ab_elw:
+                    "Pompe de secours ou unit\xe9 de secours en renfort et v\xe9hicule d'incendie",
+                elw3: 'VLHR',
                 emergency_ambulance: 'Ambulanssi tai Helikopteri',
                 fire_truck: 'Paloautot',
                 fireboat: 'Iso sammutusalus',
+                flood_equipment: 'CEEP ou MAI',
                 fly_car: 'Ensivasteauto',
                 fly_car_any:
                     'EVA-yksikk\xf6, EVY-yksikk\xf6 tai Ensihoidon l\xe4\xe4k\xe4ri',
@@ -19982,6 +20972,7 @@ Object.values ||
                 k9: 'Koirayksikk\xf6',
                 kdow_orgl: 'Ensihoidon kentt\xe4johtaja',
                 kdow_orgl_any: 'Ensihoidon kentt\xe4johtaja',
+                ktw_or_rtw: 'Ambulance de secours ou Ambulance de transport',
                 lebefkw: 'Leichter Befehlskraftwagen (leBefKw)',
                 lf_only: 'Paloautot',
                 long_distance_ambulance: 'Perustason ambulanssi',
@@ -19999,6 +20990,7 @@ Object.values ||
                 rescue_vehicle: 'Raskas pelastusauto',
                 rescue_vehicle_only: 'Raskas pelastus',
                 rescueboat: 'Iso pelastusalus',
+                rettungstreppe: "Moyen d'Acc\xe8s en Hauteur",
                 rth_only: 'L\xe4\xe4k\xe4rihelikopteri (HEMS)',
                 schlauchwagen: 'S\xe4ili\xf6auto',
                 swat: 'VATI',
@@ -20149,6 +21141,8 @@ Object.values ||
                 mission_positions: 'Kohdepisteet',
                 mission_positions_section: 'Kohdepisteet',
                 missions_section: 'Teht\xe4v\xe4t',
+                mountain_rescue: 'Gendarmerie haute montagne',
+                mountain_rescue_heliport: 'DAG',
                 police_copter_station_missions: 'Poliisihelikopteritukikohta',
                 police_school_missions: 'Poliisiammattikorkeakoulu',
                 police_small_missions: 'Poliisiasema (pieni asema)',
@@ -20161,6 +21155,9 @@ Object.values ||
                 riot_police: 'Mellakkapoliisi',
                 riot_police_missions: 'Mellakkapoliisi',
                 staging_area_missions: 'Kokoontumispaikka',
+                swat_airport: 'GIH',
+                technical_aid: 'U.I.I.S.C.',
+                technical_aid_missions: 'U.I.I.S.C.',
                 technical_aid_organization: 'VPK',
                 technical_aid_organization_school: 'THW Bundesschule',
                 user_buildings: 'Omat rakennukset',
@@ -20423,6 +21420,7 @@ Object.values ||
             credits: 'Kredity',
             custom_missions: 'Rozsiahlu alian\u010dn\xfa misie',
             delete: 'Vymaza\u0165',
+            description: 'Description',
             details: 'Podrobnosti',
             edit: 'Upravi\u0165',
             error: 'Chyba',
@@ -20431,12 +21429,19 @@ Object.values ||
             is_offline_with_duration: '%{user} je offline: %{duration}',
             is_online: '%{user} je online.',
             loading: 'Na\u010d\xedtava sa...',
+            message_for_education:
+                "Cette personne ne sera pas d\xe9ploy\xe9e avec le v\xe9hicule car elle n'a pas re\xe7u la formation ad\xe9quate\xa0!",
             name: 'N\xe1zov',
+            no: 'Non',
             none: '\u017diadne',
             of: 'z',
             off: 'Vyp.',
             on: 'Zap.',
             or: 'alebo',
+            person: {
+                missing_education_for_vehicle:
+                    "Le personnel ne sera d\xe9ploy\xe9 avec le v\xe9hicule que s'il a re\xe7u la formation ad\xe9quate\xa0!",
+            },
             release_at: 'Prepusten\xfd v',
             save: 'Ulo\u017ei\u0165',
             search: 'Vyh\u013eada\u0165',
@@ -20444,6 +21449,7 @@ Object.values ||
             time_in_minutes: '\u010cas v min\xfatach',
             user_not_found: 'Pou\u017e\xedvate\u013e sa nena\u0161iel',
             wrong_key: 'Nespr\xe1vny k\u013e\xfa\u010d',
+            yes: 'Oui',
         },
         fms: {
             going: 'Reagova\u0165',
@@ -20458,8 +21464,21 @@ Object.values ||
             waiting_for_vehicle: '\u010cak\xe1 vle\u010dn\xe9 vozidlo',
         },
         intervention_order: {
+            assigns_equipment_automatically:
+                "Attribue automatiquement l'\xe9quipement",
+            assigns_equipment_automatically_hint:
+                "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche. (Ne choisit pas exclusivement le mat\xe9riel)",
             automatic_text_color: 'Automatick\xe1 farba textu',
             back: 'Sp\xe4\u0165',
+            categories: {
+                bereitschaftspolizei: "Maintien de l'Ordre",
+                coastal_rescue: 'Sauvetage C\xf4tier',
+                disaster_response: 'R\xe9ponse aux catastrophes ',
+                firefighting: 'Sapeurs-pompiers',
+                police: 'Police',
+                rescue: 'Secours a Personne',
+                water_rescue: 'Secours nautique',
+            },
             category: 'Kateg\xf3ria',
             colour: 'Farba',
             column: 'St\u013apec',
@@ -20514,17 +21533,27 @@ Object.values ||
                 arff: '\u0160HA (\u0161peci\xe1lny hasi\u010dsk\xfd automobil)',
                 battalion_chief_unit: 'VEA',
                 boot: '\u010clny (v\u0161eobecn\xe9)',
+                brush_truck: 'CCF',
+                brush_truck_1: 'CCFS',
+                brush_truck_2: 'CCFM',
+                brush_truck_3: 'CCFL',
                 division_chief_unit: 'Mobiln\xfd velite\u013esk\xfd automobil',
                 elw1_or_elw2:
                     'Velite\u013esk\xfd automobil, mobiln\xfd velite\u013esk\xfd automobil alebo mobiln\xfd velite\u013esk\xfd modul ',
+                elw2_or_ab_elw:
+                    "Pompe de secours ou unit\xe9 de secours en renfort et v\xe9hicule d'incendie",
+                elw3: 'VLHR',
                 emergency_ambulance:
                     'Sanitn\xe9 vozidlo alebo vrtu\u013en\xedk VZZS',
                 fire_truck: 'Hasi\u010dsk\xe9 automobily',
                 fireboat: 'Ve\u013ek\xfd hasi\u010dsk\xfd \u010dln',
+                flood_equipment: 'CEEP ou MAI',
                 fly_car: 'R\xfdchle v\xfdjazdov\xe9 vozidlo',
                 fly_car_any:
                     'R\xfdchle v\xfdjazdov\xe9 vozidlo / Lek\xe1rske vozidlo',
                 foam_amount: 'Litre penidla',
+                fustw_or_police_motorcycle:
+                    'V\xe9hicule de patrouille ou Unit\xe9 motocycliste',
                 gkw: '\xda\u017eitkov\xe9 vozidlo',
                 grtw: '\xdarazov\xe9 oddelenie',
                 gw_gefahrgut: 'EKOA',
@@ -20535,6 +21564,7 @@ Object.values ||
                 hems: 'Vrtu\u013en\xedk VZZS',
                 hlf_only: 'nula',
                 hlf_or_rw_and_lf: 'nula',
+                hose_trucks: 'Camion d\xe9vidoir',
                 k9: 'Jednotka K-9',
                 kdow_orgl: 'Velite\u013esk\xe9 vozidlo',
                 ktw_or_rtw: 'ambulancia DZS alebo RZP',
@@ -20547,10 +21577,16 @@ Object.values ||
                 nef_only: 'Sanitn\xe9 vozidlo',
                 oil_unit: 'GW-\xd6l',
                 police_car: 'Hliadkov\xe9 vozidlo',
+                police_motorcycle: 'Unit\xe9 motocycliste',
                 polizeihubschrauber: 'Policajn\xfd vrtu\u013en\xedk',
+                pump: 'Motopompes',
+                pump_speed: 'Capacit\xe9 de la pompe',
+                pump_speed_pump_only:
+                    'Capacit\xe9 de la pompe - Pompes uniquement',
                 rescue_vehicle: 'AHZS 4',
                 rescue_vehicle_only: 'AHZS 4',
                 rescueboat: 'Ve\u013ek\xfd z\xe1chrann\xfd \u010dln',
+                rettungstreppe: "Moyen d'Acc\xe8s en Hauteur",
                 rth_only: 'Vrtu\u013en\xedk VZZS',
                 schlauchwagen: 'KHA',
                 swat: 'SWAT',
@@ -20567,6 +21603,22 @@ Object.values ||
         },
         javascript: {
             alarm: 'Vysla\u0165',
+            alliance_event_resource: {
+                christmas: {
+                    currency: "Billets d'\xe9v\xe9nements",
+                    event_start_mission:
+                        "D\xe9but de l'\xe9v\xe9nement : %{amount} Ticket d'\xe9v\xe9nement",
+                },
+                info_bubble_text:
+                    "Il s'agit d'un \xe9v\xe9nement temporaire qui n'est disponible que pendant notre \xe9v\xe9nement ! Encouragez les membres de votre alliance \xe0 accomplir les missions de l'\xe9v\xe9nement afin de gagner les tickets n\xe9cessaires pour lancer ces \xe9v\xe9nements. Consultez la page des \xe9v\xe9nements d'alliance pour plus d'informations.",
+                info_bubble_text_additional:
+                    'Vous avez actuellement %{amount} %{alliance_event_currency} !',
+                valentinesday: {
+                    currency: "Billets d'\xe9v\xe9nements",
+                    event_start_mission:
+                        "D\xe9but de l'\xe9v\xe9nement : %{amount} Ticket d'\xe9v\xe9nement",
+                },
+            },
             arrival: 'Pr\xedchod',
             backalarm: 'Zru\u0161i\u0165',
             coins: 'Mince',
@@ -20595,11 +21647,17 @@ Object.values ||
             patient: 'Pacient',
             patient_untouched: 'Nelie\u010den\xed pacienti',
             poi_delete: 'Naozaj chcete vymaza\u0165 POI: %{caption}?',
+            pump_speed_approaching: 'En approche : %{amount} l/min',
+            pump_speed_missing: 'Manquant : %{amount} l/min',
+            pump_speed_on_site: 'Sur place : %{amount} l/min',
             pump_speed_process: 'Proces po\u0161kodenia \u010derpadla vodou',
+            pump_speed_selected: 'S\xe9lectionn\xe9 : %{amount} l/min',
             reload: 'Znovu na\u010d\xedta\u0165',
             sale: 'Preda\u0165',
             sale_ended: 'Predaj ukon\u010den\xfd',
             secounds: 'sek.',
+            show_less: 'Afficher plus',
+            show_more: 'Voir plus',
             sicherheitswache_error:
                 'Ochrana "%{caption}" nebola \xfaspe\u0161n\xe1, preto\u017ee neboli splnen\xe9 v\u0161etky krit\xe9ri\xe1.',
             sicherheitswache_success:
@@ -20621,6 +21679,7 @@ Object.values ||
             water_approaching: 'Na ceste %{amount} l',
             water_missing: 'Ch\xfdba %{amount} l',
             water_on_site: 'Na mieste %{amount} l',
+            water_process: 'Eau n\xe9cessaire',
             water_pumping_process: 'Potrebn\xe1 kapacita \u010derpadla',
             water_selected: 'Vybran\xe9 %{amount} l',
         },
@@ -20670,6 +21729,8 @@ Object.values ||
                 building_complex: 'V\xfdjazdov\xe9 centrum',
                 buildings_section: 'Stanice',
                 clinic_missions: 'Klinika',
+                coastal_rescue: 'Sauvetage C\xf4tier',
+                coastal_rescue_missions: 'Mission c\xf4ti\xe8re',
                 dispatch_center_missions: 'Dispe\u010dersk\xe9 centrum',
                 fire_school_missions: 'Hasi\u010dsk\xe1 akad\xe9mia',
                 firehouse_missions: 'Hasi\u010di',
@@ -20679,6 +21740,8 @@ Object.values ||
                 mission_positions: 'Body z\xe1ujmu (POI)',
                 mission_positions_section: 'POI',
                 missions_section: 'Misie',
+                mountain_rescue: 'Gendarmerie haute montagne',
+                mountain_rescue_heliport: 'DAG',
                 police_copter_station_missions: 'Policajn\xe9 letectvo',
                 police_school_missions: 'Policajn\xe1 akad\xe9mia',
                 police_small_missions: 'Policajn\xe1 stanica (mal\xe1 stanica)',
@@ -20691,6 +21754,9 @@ Object.values ||
                 riot_police: 'Poriadkov\xe1 pol\xedcia',
                 riot_police_missions: 'Poriadkov\xe1 pol\xedcia',
                 staging_area_missions: 'Sk\xfa\u0161obn\xe1 oblas\u0165',
+                swat_airport: 'GIH',
+                technical_aid: 'U.I.I.S.C.',
+                technical_aid_missions: 'U.I.I.S.C.',
                 technical_aid_organization: 'Organiz\xe1cia technickej pomoci',
                 technical_aid_organization_school: 'THW Bundesschule',
                 user_buildings: 'Moje budovy',
@@ -20752,6 +21818,8 @@ Object.values ||
             no_alliance_chat_impossible: 'Nie ste v aliancii.',
             no_alliance_missions:
                 'Moment\xe1lne nie s\xfa \u017eiadne misie aliancie.',
+            no_alliance_missions_join:
+                "En participant \xe0 des missions d'alliance, vous recevrez des cr\xe9dits, quel que soit le type de v\xe9hicule que vous envoyez. En rejoignant une alliance, vous pouvez faire les deux, partager vos propres missions pour obtenir l'aide de membres exp\xe9riment\xe9s de l'alliance et participer aux missions partag\xe9es des autres pour obtenir des r\xe9compenses suppl\xe9mentaires.",
             no_ambulance_missions:
                 'Zatia\u013e nem\xe1te \u017eiadne po\u017eiadavky na transport pacienta, objavia sa akon\xe1hle budete vlastni\u0165 stanicu ZZS a nemocnicu.',
             no_emergency_missions:
@@ -20780,6 +21848,22 @@ Object.values ||
                 separator: ',',
                 significant: !1,
                 strip_insignificant_zeros: !1,
+            },
+        },
+        policechief: {
+            tutorial: {
+                beginner: {
+                    building: {
+                        browser: {
+                            welcome:
+                                "Bienvenue sur Op\xe9rateur 112 Police! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
+                        },
+                        mobile: {
+                            welcome:
+                                "Bienvenue sur Op\xe9rateur 112 Police! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
+                        },
+                    },
+                },
             },
         },
         tutorial: {
@@ -20881,6 +21965,11 @@ Object.values ||
                             'Za dokon\u010denie misie z\xedskate kredity. Z\xedskavan\xedm kreditov sa pribli\u017eujete k pov\xfd\u0161eniu.',
                         join_alliance:
                             'Propag\xe1cia a budovanie stan\xedc odomykaj\xfa nov\xe9 funkcie, ako s\xfa typy misi\xed alebo vozidl\xe1.',
+                        radio: {
+                            helpshift_id: '1540',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles',
+                            short: 'La radio diffuse des rapports p\xe9riodiques sur vos v\xe9hicules. Pour plus de d\xe9tails sur chaque statut, cliquez ici.',
+                        },
                         summary:
                             'M\xf4\u017eete vst\xfapi\u0165 do aliancie a rie\u0161i\u0165 misie spolu s ostatn\xfdmi. Pravidelne sa konaj\xfa aj alian\u010dn\xe9 podujatia, na ktor\xfdch sa m\xf4\u017eu z\xfa\u010dastni\u0165 v\u0161etci \u010dlenovia!',
                     },
@@ -20893,6 +21982,10 @@ Object.values ||
                             'Propag\xe1cia a budovanie stan\xedc odomykaj\xfa nov\xe9 funkcie, ako s\xfa typy misi\xed alebo vozidl\xe1.',
                         summary:
                             'M\xf4\u017eete vst\xfapi\u0165 do aliancie a rie\u0161i\u0165 misie spolu s ostatn\xfdmi. Pravidelne sa konaj\xfa aj alian\u010dn\xe9 podujatia, na ktor\xfdch sa m\xf4\u017eu z\xfa\u010dastni\u0165 v\u0161etci \u010dlenovia!',
+                    },
+                    reminder: {
+                        join_alliance:
+                            "Rejoindre une alliance pr\xe9sente de nombreux avantages : des r\xe9compenses suppl\xe9mentaires pour l'accomplissement des missions de l'alliance, le soutien de membres exp\xe9riment\xe9s pour les missions difficiles et vous pouvez utiliser les installations des autres membres comme les h\xf4pitaux et les \xe9coles ! Appuyez sur le bouton pour rejoindre une alliance maintenant !",
                     },
                 },
             },
@@ -20910,6 +22003,444 @@ Object.values ||
         },
     }),
     (I18n.translations.en = {
+        common: {
+            add: 'Ajouter',
+            all: 'Tout',
+            around: 'Autour de %{target}',
+            back: 'Retour',
+            between: 'Entre %{minimum} et %{maximum}',
+            cancel: 'Annuler',
+            change_saved: 'Modifications enregistr\xe9es',
+            click_for_more_info: "Cliquez ici pour plus d'informations.",
+            coins_spend: 'Voulez-vous vraiment d\xe9penser ces pi\xe8ces\xa0?',
+            congratulations: 'F\xe9licitations\xa0!',
+            content: 'Contenu',
+            copy: 'Copier',
+            credits: 'Cr\xe9dits',
+            custom_missions: 'Mission d\u2019alliance majeure',
+            delete: 'Supprimer',
+            description: 'Description',
+            details: 'D\xe9tails',
+            edit: 'Modifier',
+            error: 'Erreur',
+            is_offline: '%{user} est hors ligne.',
+            is_offline_long:
+                'P\xe9riode prolong\xe9e\xa0: %{user} est hors ligne',
+            is_offline_with_duration: '%{user} est hors ligne: %{duration}',
+            is_online: '%{user} est en ligne.',
+            loading: 'Chargement...',
+            message_for_education:
+                "Cette personne ne sera pas d\xe9ploy\xe9e avec le v\xe9hicule car elle n'a pas re\xe7u la formation ad\xe9quate\xa0!",
+            name: 'Nom',
+            no: 'Non',
+            none: 'Aucun',
+            of: 'de',
+            off: 'OFF',
+            on: 'ON',
+            or: 'ou',
+            person: {
+                missing_education_for_vehicle:
+                    "Le personnel ne sera d\xe9ploy\xe9 avec le v\xe9hicule que s'il a re\xe7u la formation ad\xe9quate\xa0!",
+            },
+            release_at: 'Sort dans',
+            save: 'Enregistrer',
+            search: 'Rechercher',
+            show: 'Afficher',
+            time_in_minutes: 'Temps en minutes',
+            user_not_found: 'Utilisateur introuvable',
+            wrong_key: 'Cl\xe9 invalide',
+            yes: 'Oui',
+        },
+        fms: {
+            going: 'En intervention',
+            not_ready: 'Hors service',
+            on_destination: '\xc0 la destination de transport',
+            on_place: 'Sur les lieux',
+            patient_transported: 'Transporte le patient',
+            prisoner_transported: 'Transporte le prisonnier',
+            ready_home: 'Disponible au poste',
+            ready_traveling: 'Pr\xeat et op\xe9rationnel',
+            talking_wish: 'Demande de transport',
+            waiting_for_vehicle: 'En attente du v\xe9hicule \xe0 remorquer',
+        },
+        intervention_order: {
+            assigns_equipment_automatically:
+                "Attribue automatiquement l'\xe9quipement",
+            assigns_equipment_automatically_hint:
+                "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche. (Ne choisit pas exclusivement le mat\xe9riel)",
+            automatic_text_color: 'Couleur du texte automatique',
+            back: 'Retour',
+            categories: {
+                bereitschaftspolizei: "Maintien de l'Ordre",
+                coastal_rescue: 'Sauvetage C\xf4tier',
+                disaster_response: 'R\xe9ponse aux catastrophes ',
+                firefighting: 'Sapeurs-pompiers',
+                police: 'Police',
+                rescue: 'Secours a Personne',
+                water_rescue: 'Secours nautique',
+            },
+            category: 'Cat\xe9gorie',
+            colour: 'Couleur',
+            column: 'Colonne',
+            column_number: 'Num\xe9ro de colonne',
+            column_number_hint:
+                'Si un num\xe9ro de colonne est indiqu\xe9, l\u2019entr\xe9e de la R\xe9gulation d\u2019alertes et d\u2019interventions s\u2019affichera dans la colonne correspondante sur la page d\u2019alertes.',
+            create_intervention_order:
+                'Cr\xe9er une nouvelle R\xe9gulation d\u2019alertes et d\u2019interventions',
+            delete: 'Supprimer',
+            delete_all:
+                'Supprimer les R\xe9gulations d\u2019alertes et d\u2019interventions',
+            delete_all_confirm:
+                'Voulez-vous vraiment supprimer toute R\xe9gulation d\u2019alertes et d\u2019interventions\xa0? Les entr\xe9es existantes export\xe9es ne sont plus disponibles\xa0!',
+            description: 'Nom',
+            edit: 'Modifier',
+            export: {
+                export: 'Partager',
+                import: 'Importer',
+                import_done:
+                    'Les entr\xe9es s\xe9lectionn\xe9es ont \xe9t\xe9 import\xe9es et incorpor\xe9es \xe0 votre R\xe9gulation d\u2019alertes et d\u2019interventions.',
+                saved: 'Partager vos R\xe9gulations d\u2019alertes et d\u2019interventions',
+                saved_text:
+                    'Votre R\xe9gulation d\u2019alertes et d\u2019interventions est pr\xeate \xe0 l\u2019exportation. Gr\xe2ce \xe0 ce lien, un autre joueur peut importer cette R\xe9gulation d\u2019alertes et d\u2019interventions. Si d\u2019ici l\xe0 vous modifiez votre R\xe9gulation d\u2019alertes et d\u2019interventions, ce changement sera automatiquement appliqu\xe9 \xe0 l\u2019exportation.',
+            },
+            hotkey_hint:
+                'Choisissez un raccourci pour cette s\xe9lection de v\xe9hicules. Dans votre fen\xeatre de mission, appuyez sur\xa0: ALT + votre raccourci (ou sur Firefox\xa0: ALT + Shift + votre raccourci, ou sur Mac OS\xa0: CTRL + ALT + votre raccourci) pour choisir votre s\xe9lection de v\xe9hicules.',
+            intervention_order:
+                'Modifier les R\xe9gulations d\u2019alertes et d\u2019interventions',
+            name: 'Nom',
+            no_intervention_created:
+                'Vous n\u2019avez cr\xe9\xe9 aucune R\xe9gulation d\u2019alertes et d\u2019interventions \xe0 l\u2019heure actuelle.',
+            options: 'Options',
+            reset: 'R\xe9initialisez la s\xe9lection pr\xe9c\xe9dente dans la fen\xeatre d\u2019alertes.',
+            reset_hint:
+                'Si vous avez s\xe9lectionn\xe9 le v\xe9hicule dans la fen\xeatre de d\xe9ploiement, vous pouvez utiliser ce bouton pour la r\xe9initialiser.',
+            save: 'Enregistrer',
+            station: 'Poste',
+            station_hint:
+                'Quand un b\xe2timent est s\xe9lectionn\xe9, seuls les v\xe9hicules d\xe9pendant de celui-ci le sont \xe9galement.',
+            successfully_created:
+                'R\xe9gulation d\u2019alertes et d\u2019interventions cr\xe9\xe9e.',
+            successfully_deleted:
+                'R\xe9gulation d\u2019alertes et d\u2019interventions supprim\xe9e',
+            successfully_updated:
+                'R\xe9gulations d\u2019alertes et d\u2019interventions mises \xe0 jour.',
+            text_color: 'Couleur du texte',
+            vehicles: {
+                ab_atemschutz_only: 'Module ARI',
+                ab_einsatzleitung_only: 'Module de commandement',
+                ab_gefahrgut_only: 'Module risques chimiques',
+                ab_oel_only: 'Module mar\xe9e noire',
+                ab_ruest: 'Module tech/sauvetage',
+                abl2wasser_only: 'Module approv. lance \xe0 eau',
+                ambulance: 'ASSU / VSAV / AR',
+                arff: 'VIA (fourgon d\u2019incendie d\u2019a\xe9roport)',
+                battalion_chief_unit: 'Chef de groupe',
+                boot: 'Bateaux (g\xe9n\xe9raux)',
+                brush_truck: 'CCF',
+                brush_truck_1: 'CCFS',
+                brush_truck_2: 'CCFM',
+                brush_truck_3: 'CCFL',
+                division_chief_unit: 'V\xe9hicule poste de commandement',
+                elw1_or_elw2: 'Chef de Groupe ou PC',
+                elw2_or_ab_elw:
+                    "Pompe de secours ou unit\xe9 de secours en renfort et v\xe9hicule d'incendie",
+                elw3: 'VLHR',
+                emergency_ambulance:
+                    'Ambulance d\u2019urgence ou h\xe9licopt\xe8re',
+                fire_truck: 'Fourgons d\u2019incendie',
+                fireboat: 'Grand bateau d\u2019incendie',
+                flood_equipment: 'CEEP ou MAI',
+                fly_car: 'VRM',
+                fly_car_any: 'VL SSSM / VLM',
+                fustw_or_police_motorcycle:
+                    'V\xe9hicule de patrouille ou Unit\xe9 motocycliste',
+                gkw: 'V\xe9hicule Tout Usage',
+                grtw: 'Unit\xe9 accidents majeurs',
+                gw_gefahrgut: 'V\xe9hicules risques chimiques',
+                gw_hoehenrettung: 'VGRIMP',
+                gw_messtechnik: 'GW-M',
+                gw_wasserrettung: 'VPL',
+                gwl2wasser_only: 'V\xe9hicule \xe0 lance',
+                hems: 'Services d\u2019urgence',
+                hlf_only: 'FPTSR',
+                hlf_or_rw_and_lf:
+                    "FPTSR ou v\xe9hicule de secours lourd et v\xe9hicule d'incendie",
+                hose_trucks: 'Camion d\xe9vidoir',
+                k9: 'Brigade canine',
+                kdow_orgl: 'PC DSM',
+                ktw_or_rtw: 'Ambulance de secours ou Ambulance de transport',
+                lebefkw: 'Camionnette de police',
+                lf_only: 'Fourgons d\u2019incendie',
+                long_distance_ambulance: 'Ambulance Type A',
+                mask_service_unit: "V\xe9hicule d'Assistance Respiratoire",
+                mtw: 'VSAV',
+                mzb: 'BLS',
+                nef_only: 'Ambulance',
+                oil_unit: 'Camion d\u2019assainissement',
+                police_car: 'Voiture de patrouille',
+                police_motorcycle: 'Unit\xe9 motocycliste',
+                polizeihubschrauber: 'H\xe9licopt\xe8re de police',
+                pump: 'Motopompes',
+                pump_speed: 'Capacit\xe9 de la pompe',
+                pump_speed_pump_only:
+                    'Capacit\xe9 de la pompe - Pompes uniquement',
+                rescue_vehicle: 'V\xe9hicule de secours routier',
+                rescue_vehicle_only: 'Secours routier',
+                rescueboat: 'Grand bateau de sauvetage',
+                rettungstreppe: "Moyen d'Acc\xe8s en Hauteur",
+                rth_only: 'H\xe9licopt\xe8re',
+                schlauchwagen: 'Camion-citerne ou CCFS',
+                swat: 'SWAT',
+                swat_armored_vehicle: 'V\xe9hicule renforc\xe9 du SWAT',
+                swat_suv: 'SUV du SWAT',
+                thw_mtw: 'Fourgon de la protection civile',
+                thw_mzkw: 'Camion de la protection civile',
+                thw_tauchkraftwagen: '\xc9quipe de plong\xe9e',
+                tlf_only: 'Camion-citerne',
+                turntable_ladder: 'Moyen El\xe9vateur A\xe9rien',
+                water_amount: 'Litres d\u2019eau',
+            },
+        },
+        javascript: {
+            alarm: 'D\xe9ployer',
+            alliance_event_resource: {
+                christmas: {
+                    currency: "Billets d'\xe9v\xe9nements",
+                    event_start_mission:
+                        "D\xe9but de l'\xe9v\xe9nement : %{amount} Ticket d'\xe9v\xe9nement",
+                },
+                info_bubble_text:
+                    "Il s'agit d'un \xe9v\xe9nement temporaire qui n'est disponible que pendant notre \xe9v\xe9nement ! Encouragez les membres de votre alliance \xe0 accomplir les missions de l'\xe9v\xe9nement afin de gagner les tickets n\xe9cessaires pour lancer ces \xe9v\xe9nements. Consultez la page des \xe9v\xe9nements d'alliance pour plus d'informations.",
+                info_bubble_text_additional:
+                    'Vous avez actuellement %{amount} %{alliance_event_currency} !',
+                valentinesday: {
+                    currency: "Billets d'\xe9v\xe9nements",
+                    event_start_mission:
+                        "D\xe9but de l'\xe9v\xe9nement : %{amount} Ticket d'\xe9v\xe9nement",
+                },
+            },
+            arrival: 'Arriv\xe9e',
+            backalarm: 'Annuler',
+            coins: 'Pi\xe8ces',
+            credits: 'Cr\xe9dits',
+            days: 'jours',
+            few_seconds: 'dans quelques secondes',
+            finish_in: 'Terminer dans\xa0:',
+            foam_process: 'Mousse n\xe9cessaire',
+            helpshift: {
+                confirm_close_bubble:
+                    "Voulez-vous vraiment fermer le chat d'assistance ? Vous pouvez toujours le rouvrir \xe0 partir du menu d'aide.",
+            },
+            hours: 'h',
+            location_not_found: 'Introuvable',
+            messages: 'Messages',
+            minutes: 'min',
+            missed_vehicle: 'Il manque\xa0:',
+            mission_start_in: 'Commence dans\xa0:',
+            new: 'Neuf',
+            not_found_map: 'Impossible de trouver le v\xe9hicule sur la carte',
+            now: 'Maintenant',
+            patient: 'Patient',
+            patient_untouched: 'Patients non trait\xe9s',
+            poi_delete:
+                'Voulez-vous vraiment supprimer ce point d\u2019int\xe9r\xeat\xa0: %{caption}\xa0?',
+            pump_speed_approaching: 'En approche : %{amount} l/min',
+            pump_speed_missing: 'Manquant : %{amount} l/min',
+            pump_speed_on_site: 'Sur place : %{amount} l/min',
+            pump_speed_process:
+                'Processus de pompage en cas de d\xe9g\xe2ts des eaux',
+            pump_speed_selected: 'S\xe9lectionn\xe9 : %{amount} l/min',
+            reload: 'Recharger',
+            sale: 'Soldes',
+            sale_ended: 'Fin de l\u2019offre sp\xe9ciale',
+            secounds: 'sec.',
+            show_less: 'Afficher plus',
+            show_more: 'Voir plus',
+            sicherheitswache_error:
+                'Le garde de s\xe9curit\xe9 \xab\xa0%{caption}\xa0\xbb a \xe9chou\xe9 dans sa mission, car il ne r\xe9pondait pas \xe0 tous les crit\xe8res.',
+            sicherheitswache_success:
+                'Le garde de s\xe9curit\xe9 \xab\xa0%{caption}\xa0\xbb a rempli son objectif. Recevoir %{credits}\xa0cr\xe9dits.',
+            start_alliance_mission_new: {
+                one: 'Commencez %{count} mission (%{price} Pi\xe8ces)',
+                other: 'Commencez %{count} missions (%{price} Pi\xe8ces)',
+            },
+            start_in: 'Commencer dans\xa0: ',
+            start_username: 'Initiateur\xa0:',
+            time_left: 'Temps restant:',
+            to_building: 'Afficher le b\xe2timent',
+            to_mission: 'Afficher la mission',
+            understand: 'Bien re\xe7u',
+            user_not_found: 'Impossible de trouver le joueur.',
+            vehicles_not_visible: 'Les v\xe9hicules ne sont pas visibles. ',
+            water_approaching: 'En approche : %{amount} l',
+            water_missing: 'Manquante : %{amount} l',
+            water_on_site: 'Sur les lieux : %{amount} l',
+            water_process: 'Eau n\xe9cessaire',
+            water_pumping_process: "Processus de pompage de l'eau",
+            water_selected: 'S\xe9lectionn\xe9e : %{amount} l',
+        },
+        map: {
+            alliance: 'Alliance',
+            alliance_chat: 'Salon',
+            alliance_chat_banned:
+                'Il vous est actuellement interdit de discuter dans le salon de l\u2019alliance.',
+            alliance_chat_banned_admin: 'Interdiction \xe9mise par\xa0:',
+            alliance_chat_banned_timeleft: 'Temps restant\xa0:',
+            alliance_chat_radio_off: 'Radio de l\u2019alliance\xa0: OFF',
+            alliance_chat_radio_on: 'Radio de l\u2019alliance\xa0: ON',
+            alliance_event: '\xc9v\xe8nement',
+            alliance_missions: 'Missions d\u2019alliance',
+            alliance_missions_event: '\xc9v\xe8nement',
+            alliance_missions_post_loading:
+                "Les missions de l'Alliance sont en cours de chargement...",
+            ambulance: 'Transports de patients',
+            anti_abuse_active_link: "Cliquez ici pour plus d'informations.",
+            anti_abuse_active_text:
+                'Les missions vont appara\xeetre dans un rayon \xe9tendu de 100\xa0km, car trop de postes du m\xeame type ont \xe9t\xe9 construits trop pr\xe8s les uns des autres.',
+            cancel_alliance_event:
+                'Annuler l\u2019\xe9v\xe8nement d\u2019alliance',
+            cancel_alliance_event_confirm:
+                'Voulez-vous vraiment annuler l\u2019\xe9v\xe8nement d\u2019alliance\xa0?',
+            chat_history: 'Historique du salon',
+            congratulations:
+                'F\xe9licitations\xa0! Vous avez d\xe9sormais acc\xe8s \xe0 une promotion.',
+            create_alliance_event:
+                'Lancer l\u2019\xe9v\xe8nement d\u2019alliance',
+            create_alliance_operation:
+                'Cr\xe9er une mission d\u2019alliance majeure',
+            emergency: 'Urgence',
+            join_alliance_infos:
+                'Si vous appartenez \xe0 une alliance, les autres joueurs peuvent vous confier des missions.',
+            legacy_client_notice:
+                'ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}',
+            map: 'Carte',
+            map_filters: {
+                all_buildings: 'B\xe2timents',
+                all_missions: 'Missions',
+                alliance_buildings: 'B\xe2timents d\u2019alliance',
+                alliance_members: 'Membres',
+                alliance_missions: 'Partag\xe9es par l\u2019alliance',
+                ambulance_station_missions: 'Poste Ambulancier',
+                ambulance_station_small_missions: 'Poste Ambulancier (petit)',
+                building_complex: 'Complexe',
+                buildings_section: 'Postes',
+                clinic_missions: 'Clinic',
+                coastal_rescue: 'Sauvetage C\xf4tier',
+                coastal_rescue_missions: 'Mission c\xf4ti\xe8re',
+                dispatch_center_missions: 'Centre de Traitement des Appels',
+                fire_school_missions: 'Centre de Formation D\xe9partemental',
+                firehouse_missions: 'Centre de secours',
+                firehouse_small_missions: 'Centre de Premi\xe8re Intervention',
+                hospital_missions: 'Centre Hospitalier',
+                map_filters: "Points d'int\xe9r\xeat (PI)",
+                mission_positions: "Points d'int\xe9r\xeat (PI)",
+                mission_positions_section: 'PI',
+                missions_section: 'Missions',
+                mountain_rescue: 'Gendarmerie haute montagne',
+                mountain_rescue_heliport: 'DAG',
+                police_copter_station_missions:
+                    'Forces a\xe9riennes de la Gendarmerie nationale',
+                police_school_missions: 'Ecole de police',
+                police_small_missions: 'Police Municipale',
+                police_special_forces: 'Police special forces',
+                police_station_missions: 'Gendarmerie',
+                prison_missions: 'Prison',
+                rapid_deployment_group:
+                    'Groupe \xe0 configuration rapide (GCR)',
+                rescue_copter_station_missions:
+                    'Base H\xe9licopt\xe8re du SAMU',
+                riot_police: 'Compagnie de CRS',
+                riot_police_missions: "Maintien de l'Ordre",
+                staging_area_missions: 'Centre de Regroupement des Moyens',
+                swat_airport: 'GIH',
+                technical_aid: 'U.I.I.S.C.',
+                technical_aid_missions: 'U.I.I.S.C.',
+                technical_aid_organization: 'Protection civile',
+                technical_aid_organization_school:
+                    '\xc9cole de protection civile',
+                user_buildings: 'Mes b\xe2timents',
+                user_missions: 'Mes missions',
+                water_watch: 'Secours nautique',
+                water_watch_missions: 'Secours nautique',
+            },
+            message: 'Message',
+            mission: 'Missions',
+            mission_filters: {
+                alliance_missions: 'Missions d\u2019alliance',
+                alliance_missions_event: '\xc9v\xe8nement',
+                alliance_shared_missions: 'Partag\xe9es par l\u2019alliance',
+                ambulance: 'Transports de patients',
+                attended: 'Missions suivies',
+                attended_description:
+                    "Trait\xe9e, toutes les conditions n'ont pas \xe9t\xe9 remplies",
+                dropdown_collapsed_description:
+                    'Menu contenant les filtres de mission - ferm\xe9',
+                dropdown_open_description:
+                    'Menu contenant les filtres de mission - ouvrir',
+                emergency: 'Urgence',
+                finishing: 'Missions en cours',
+                finishing_description:
+                    'Missions en cours, toutes les conditions sont remplies',
+                new: 'Nouvelles missions',
+                new_description:
+                    "Nouvelles missions qui n'ont pas encore \xe9t\xe9 ouvertes",
+                showing: 'Visible :',
+                sicherheitswache: 'Missions pr\xe9vues',
+                sorting: {
+                    age_asc: 'Le plus vieux (Partag\xe9)',
+                    age_desc: 'Le plus recent (Partag\xe9)',
+                    caption_asc: 'A \xe0 Z',
+                    caption_desc: 'Z \xe0 A',
+                    created_at_asc: 'Le plus vieux',
+                    created_at_desc: 'Le plus r\xe9cent',
+                    credits_asc: 'Cr\xe9dits minimums',
+                    credits_desc: 'Cr\xe9dits maximaux',
+                    patients_desc: 'Patients',
+                    prisoners_desc: 'Prisonniers',
+                },
+                started: 'Missions commenc\xe9es',
+                started_description:
+                    'Missions commenc\xe9es mais non achev\xe9es',
+                unattended: 'Missions sans surveillance',
+                unattended_description: 'Missions sans surveillance',
+            },
+            mission_speed: {
+                premium_alert: {
+                    description:
+                        "Vous devez disposer d'un compte premium pour b\xe9n\xe9ficier de cette fonctionnalit\xe9.",
+                    title: "La vitesse de la mission n'a pas pu \xeatre s\xe9lectionn\xe9e",
+                },
+            },
+            missions_filtered_out:
+                'Certaines missions peuvent \xeatre filtr\xe9es. Veuillez v\xe9rifier les filtres de votre carte.',
+            missions_post_loading:
+                'Les missions sont en cours de chargement...',
+            no_alliance_chat_impossible:
+                "Le chat est un excellent moyen d'entrer en contact avec d'autres joueurs plus exp\xe9riment\xe9s.\xa0Ils peuvent \xe0 la fois r\xe9pondre \xe0 vos questions et vous aider en vous donnant acc\xe8s \xe0 des b\xe2timents comme les h\xf4pitaux et les \xe9coles.",
+            no_alliance_missions:
+                'Aucune mission d\u2019alliance \xe0 afficher.',
+            no_alliance_missions_join:
+                "En participant \xe0 des missions d'alliance, vous recevrez des cr\xe9dits, quel que soit le type de v\xe9hicule que vous envoyez. En rejoignant une alliance, vous pouvez faire les deux, partager vos propres missions pour obtenir l'aide de membres exp\xe9riment\xe9s de l'alliance et participer aux missions partag\xe9es des autres pour obtenir des r\xe9compenses suppl\xe9mentaires.",
+            no_ambulance_missions:
+                "Il n'y a pas de transport de patient en attente. Les transports seront disponibles d\xe8s que vous aurez trois ambulances de transport ou de secours et un h\xf4pital.",
+            no_emergency_missions:
+                'Aucune mission d\u2019urgence \xe0 afficher. Vous pouvez recevoir des missions d\u2019urgence d\xe8s lors que vous avez construit votre premier poste.',
+            no_radio_messages: 'Vous n\u2019avez re\xe7u aucun message radio.',
+            post_loading_error:
+                "Un probl\xe8me s'est produit ! Veuillez r\xe9essayer et appuyer sur le bouton de rechargement.",
+            radio_messages: 'Radio',
+            restore_map: 'Restaurer la carte',
+            retry: 'Recharger',
+            server_warning:
+                'Maintenance des serveurs \xe0 00h00. Ceux-ci seront indisponibles durant une dur\xe9e approximative de 6h00.',
+            show_informations:
+                'Vert = les missions s\u2019affichent dans la liste. Rouge = les missions ne s\u2019affichent pas.',
+            sicherheitswache: 'Missions pr\xe9vues',
+            sorting_default: 'Par d\xe9faut',
+            sorting_label: 'Trier par\xa0:',
+            transport: 'Transport',
+        },
+        mission: { type: { alert: 'D\xe9ployer' } },
         number: {
             format: {
                 delimiter: ',',
@@ -20917,6 +22448,160 @@ Object.values ||
                 separator: '.',
                 significant: !1,
                 strip_insignificant_zeros: !1,
+            },
+        },
+        policechief: {
+            tutorial: {
+                beginner: {
+                    building: {
+                        browser: {
+                            welcome:
+                                "Bienvenue sur Op\xe9rateur 112 Police! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
+                        },
+                        mobile: {
+                            welcome:
+                                "Bienvenue sur Op\xe9rateur 112 Police! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
+                        },
+                    },
+                },
+            },
+        },
+        tutorial: {
+            beginner: {
+                building: {
+                    browser: {
+                        build_building: {
+                            add_name:
+                                'S\xe9lectionnez un nom pour votre station (b\xe2timent). Vous pourrez le renommer plus tard.',
+                            build_with_credits:
+                                'Pour construire une station (b\xe2timent), vous avez besoin de cr\xe9dits, la monnaie du jeu. Vous pouvez gagner des cr\xe9dits gr\xe2ce \xe0 des missions, des connexions quotidiennes, des t\xe2ches et des \xe9v\xe9nements.',
+                            new_building:
+                                'D\xe9marrez le processus de construction de votre station (b\xe2timent).',
+                            select_building:
+                                'D\xe9cidez si vous souhaitez construire une caserne de pompiers ou un commissariat de police. Au d\xe9but, des petits b\xe2timents suffisent. Vous pourrez les mettre \xe0 niveau vers des stations plus grandes plus tard.',
+                            select_position:
+                                "D\xe9placez le marqueur \xe0 l'endroit exact de votre station (b\xe2timent).",
+                        },
+                        pick_location:
+                            'Choisissez un emplacement o\xf9 vous souhaitez construire votre premi\xe8re station (b\xe2timent).',
+                        welcome:
+                            "Bienvenue sur Op\xe9rateur 112! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
+                    },
+                    mobile: {
+                        build_building: {
+                            add_name:
+                                'S\xe9lectionnez un nom pour votre station (b\xe2timent). Vous pourrez le renommer plus tard.',
+                            build_with_credits:
+                                'Pour construire une station (b\xe2timent), vous avez besoin de cr\xe9dits, la monnaie du jeu. Vous pouvez gagner des cr\xe9dits gr\xe2ce \xe0 des missions, des connexions quotidiennes, des t\xe2ches et des \xe9v\xe9nements.',
+                            new_building:
+                                "Commencez par construire votre premi\xe8re station (b\xe2timent). Vous pouvez s\xe9lectionner son emplacement en le saisissant manuellement ou en d\xe9pla\xe7ant le marqueur de localisation sur la carte. Selon votre syst\xe8me d'exploitation, vous devrez peut-\xeatre maintenir le marqueur pendant un certain temps avant de pouvoir le d\xe9placer.",
+                            select_building:
+                                'D\xe9cidez si vous souhaitez construire une caserne de pompiers ou un commissariat de police. Au d\xe9but, des petits b\xe2timents suffisent. Vous pourrez les mettre \xe0 niveau vers des stations plus grandes plus tard.',
+                        },
+                        welcome:
+                            "Bienvenue sur Op\xe9rateur 112! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
+                    },
+                },
+                mission: {
+                    detail: {
+                        browser: {
+                            dispatch_menu:
+                                "C'est la fen\xeatre d'exp\xe9dition. Ici, vous pouvez envoyer des v\xe9hicules en mission.",
+                            dispatch_menu_buttons:
+                                "Envoyez un v\xe9hicule \xe0 une mission en cliquant sur le bouton d'envoi. D\xe8s que vous avez plus de missions, vous pouvez utiliser le bouton \xe0 c\xf4t\xe9 pour passer \xe0 la mission suivante.",
+                            dispatch_menu_mission_general:
+                                'Vous trouverez ici des informations g\xe9n\xe9rales sur la mission. Tant que vous n\'\xeates pas impliqu\xe9 dans la mission, <span class="glyphicon glyphicon-asterisk"></span> appara\xeetra devant elle, <span class="glyphicon glyphicon-user"></span> une fois que vous aurez envoy\xe9 le premier v\xe9hicule.',
+                            dispatch_menu_mission_progress:
+                                'Ici vous pouvez voir la progression de la mission. Ici, vous pouvez voir quels v\xe9hicules sont sur place et combien de temps il reste avant la fin de la mission.',
+                            dispatch_menu_mission_specific:
+                                'Ici, vous pouvez voir quels v\xe9hicules sont en route vers ou sur le lieu de la mission. Le num\xe9ro devant votre v\xe9hicule indique son \xe9tat.',
+                            dispatch_menu_vehicle_list:
+                                'Ici vous pouvez voir tous les v\xe9hicules disponibles pour la mission. S\xe9lectionnez un v\xe9hicule en cliquant sur la case \xe0 c\xf4t\xe9 de lui.',
+                        },
+                        mobile: {
+                            dispatch_menu:
+                                "C'est la fen\xeatre d'exp\xe9dition. Ici, vous pouvez envoyer des v\xe9hicules en mission.",
+                            dispatch_menu_buttons:
+                                "Envoyez un v\xe9hicule \xe0 une mission en cliquant sur le bouton d'envoi. D\xe8s que vous avez plus de missions, vous pouvez utiliser le bouton \xe0 c\xf4t\xe9 pour passer \xe0 la mission suivante.",
+                            dispatch_menu_mission_general:
+                                'Vous trouverez ici des informations g\xe9n\xe9rales sur la mission. Tant que vous n\'\xeates pas impliqu\xe9 dans la mission, <span class="glyphicon glyphicon-asterisk"></span> appara\xeetra devant elle, <span class="glyphicon glyphicon-user"></span> une fois que vous aurez envoy\xe9 le premier v\xe9hicule.',
+                            dispatch_menu_mission_progress:
+                                'Ici vous pouvez voir la progression de la mission. Ici, vous pouvez voir quels v\xe9hicules sont sur place et combien de temps il reste avant la fin de la mission.',
+                            dispatch_menu_mission_specific:
+                                'Ici, vous pouvez voir quels v\xe9hicules sont en route vers ou sur le lieu de la mission. Le num\xe9ro devant votre v\xe9hicule indique son \xe9tat.',
+                            dispatch_menu_vehicle_list:
+                                'Ici vous pouvez voir tous les v\xe9hicules disponibles pour la mission. S\xe9lectionnez un v\xe9hicule en cliquant sur la case \xe0 c\xf4t\xe9 de lui.',
+                        },
+                    },
+                    overview: {
+                        browser: {
+                            dispatch_button:
+                                'Cliquez sur le bouton \xab envoyer \xbb pour effectuer la mission.',
+                            first_mission:
+                                'Votre premier b\xe2timent est pr\xeat. Vous avez \xe9galement re\xe7u votre premi\xe8re mission !',
+                        },
+                        mobile: {
+                            dispatch_button:
+                                'Cliquez sur le bouton \xab envoyer \xbb pour effectuer la mission.',
+                            first_mission:
+                                'Votre premier b\xe2timent est pr\xeat. Vous avez \xe9galement re\xe7u votre premi\xe8re mission !',
+                        },
+                    },
+                },
+                rewards: {
+                    browser: {
+                        general:
+                            'Vous \xeates d\xe9sormais pr\xeat \xe0 accomplir vous-m\xeame votre mission. Pour vous aider \xe0 d\xe9marrer vos missions et votre expansion, vous recevez %{coins} pi\xe8ces. Bonne chance!',
+                    },
+                    mobile: {
+                        general:
+                            'Vous \xeates d\xe9sormais pr\xeat \xe0 accomplir vous-m\xeame votre mission. Pour vous aider \xe0 d\xe9marrer vos missions et votre expansion, vous recevez %{coins} pi\xe8ces. Bonne chance!',
+                    },
+                },
+                tips: {
+                    browser: {
+                        contact:
+                            'Si vous am\xe9liorez votre station, vous recevrez plus de place pour les nouveaux v\xe9hicules.',
+                        general:
+                            'Vous recevrez des cr\xe9dits pour avoir termin\xe9 une mission. En gagnant des cr\xe9dits, vous vous rapprochez de votre prochaine promotion.',
+                        join_alliance:
+                            '\xcatre promu \xe0 un nouveau rang et construire des stations lib\xe8re de nouvelles fonctionnalit\xe9s telles que des types de missions et des v\xe9hicules.',
+                        radio: {
+                            helpshift_id: '1540',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles',
+                            short: 'La radio diffuse des rapports p\xe9riodiques sur vos v\xe9hicules. Pour plus de d\xe9tails sur chaque statut, cliquez ici.',
+                        },
+                        summary:
+                            "Vous pouvez rejoindre une alliance pour partir en mission avec d'autres. Il existe \xe9galement des \xe9v\xe9nements d'alliance r\xe9guliers auxquels vous pouvez participer.",
+                    },
+                    mobile: {
+                        contact:
+                            'Si vous am\xe9liorez votre station, vous recevrez plus de place pour les nouveaux v\xe9hicules.',
+                        general:
+                            'Vous recevrez des cr\xe9dits pour avoir termin\xe9 une mission. En gagnant des cr\xe9dits, vous vous rapprochez de votre prochaine promotion.',
+                        join_alliance:
+                            '\xcatre promu \xe0 un nouveau rang et construire des stations lib\xe8re de nouvelles fonctionnalit\xe9s telles que des types de missions et des v\xe9hicules.',
+                        summary:
+                            "Vous pouvez rejoindre une alliance pour partir en mission avec d'autres. Il existe \xe9galement des \xe9v\xe9nements d'alliance r\xe9guliers auxquels vous pouvez participer.",
+                    },
+                    reminder: {
+                        join_alliance:
+                            "Rejoindre une alliance pr\xe9sente de nombreux avantages : des r\xe9compenses suppl\xe9mentaires pour l'accomplissement des missions de l'alliance, le soutien de membres exp\xe9riment\xe9s pour les missions difficiles et vous pouvez utiliser les installations des autres membres comme les h\xf4pitaux et les \xe9coles ! Appuyez sur le bouton pour rejoindre une alliance maintenant !",
+                    },
+                },
+            },
+            commons: {
+                collect: 'R\xe9cup\xe9rer',
+                continue: 'Non',
+                end: 'Fin',
+                next: 'Suiv.',
+                prev: 'Pr\xe9c.',
+                skip: 'Oui',
+                skip_hint:
+                    'Veux-tu vraiment passer le didacticiel ? Tu ne pourras pas y acc\xe9der par la suite. Tu renonceras ainsi \xe0 la r\xe9compense offerte pour avoir termin\xe9 le didacticiel.',
+            },
+            rewards: {
+                log: 'R\xe9compense pour avoir termin\xe9 le didacticiel.',
             },
         },
     }),
@@ -20947,7 +22632,7 @@ Object.values ||
             );
         }
         function n(e) {
-            var t = (Ce[e] = {});
+            var t = (ze[e] = {});
             return (
                 ue.each(e.match(he) || [], function (e, i) {
                     t[i] = !0;
@@ -21144,9 +22829,9 @@ Object.values ||
                 s,
                 o = 0,
                 a =
-                    typeof e.getElementsByTagName !== K ?
+                    typeof e.getElementsByTagName !== G ?
                         e.getElementsByTagName(i || '*')
-                    : typeof e.querySelectorAll !== K ?
+                    : typeof e.querySelectorAll !== G ?
                         e.querySelectorAll(i || '*')
                     :   t;
             if (!a)
@@ -21176,7 +22861,7 @@ Object.values ||
                     !ue.contains(e.ownerDocument, e)
             );
         }
-        function z(e, t) {
+        function C(e, t) {
             for (var i, n, s, o = [], a = 0, r = e.length; a < r; a++)
                 (n = e[a]).style &&
                     ((o[a] = ue._data(n, 'olddisplay')),
@@ -21202,7 +22887,7 @@ Object.values ||
                         (n.style.display = t ? o[a] || '' : 'none'));
             return e;
         }
-        function C(e, t, i) {
+        function z(e, t, i) {
             var n = ft.exec(t);
             return n ? Math.max(0, n[1] - (i || 0)) + (n[2] || 'px') : t;
         }
@@ -21281,7 +22966,7 @@ Object.values ||
             var s;
             if (ue.isArray(t))
                 ue.each(t, function (t, s) {
-                    i || Ct.test(e) ?
+                    i || zt.test(e) ?
                         n(e, s)
                     :   M(
                             e + '[' + ('object' == typeof s ? t : '') + ']',
@@ -21307,7 +22992,7 @@ Object.values ||
                         :   (e[n] = e[n] || []).push(i);
             };
         }
-        function j(e, t, i, n) {
+        function I(e, t, i, n) {
             function s(r) {
                 var l;
                 return (
@@ -21328,7 +23013,7 @@ Object.values ||
                 a = e === Ht;
             return s(t.dataTypes[0]) || (!o['*'] && s('*'));
         }
-        function I(e, i) {
+        function j(e, i) {
             var n,
                 s,
                 o = ue.ajaxSettings.flatOptions || {};
@@ -21363,7 +23048,7 @@ Object.values ||
             }
             if (a) return a !== c[0] && c.unshift(a), n[a];
         }
-        function N(e, t, i, n) {
+        function L(e, t, i, n) {
             var s,
                 o,
                 a,
@@ -21417,17 +23102,17 @@ Object.values ||
                     }
             return { state: 'success', data: t };
         }
-        function L() {
+        function N() {
             try {
                 return new e.XMLHttpRequest();
             } catch (e) {}
         }
-        function O() {
+        function R() {
             try {
                 return new e.ActiveXObject('Microsoft.XMLHTTP');
             } catch (e) {}
         }
-        function R() {
+        function O() {
             return (
                 setTimeout(function () {
                     Yt = t;
@@ -21454,7 +23139,7 @@ Object.values ||
                 l = function () {
                     if (s) return !1;
                     for (
-                        var t = Yt || R(),
+                        var t = Yt || O(),
                             i = Math.max(0, c.startTime + c.duration - t),
                             n = 1 - (i / c.duration || 0),
                             o = 0,
@@ -21474,7 +23159,7 @@ Object.values ||
                     opts: ue.extend(!0, { specialEasing: {} }, i),
                     originalProperties: t,
                     originalOptions: i,
-                    startTime: Yt || R(),
+                    startTime: Yt || O(),
                     duration: i.duration,
                     tweens: [],
                     createTween: function (t, i) {
@@ -21609,8 +23294,8 @@ Object.values ||
                                 (a.start =
                                     'width' === n || 'height' === n ? 1 : 0)));
         }
-        function W(e, t, i, n, s) {
-            return new W.prototype.init(e, t, i, n, s);
+        function q(e, t, i, n, s) {
+            return new q.prototype.init(e, t, i, n, s);
         }
         function V(e, t) {
             var i,
@@ -21620,15 +23305,15 @@ Object.values ||
                 n['margin' + (i = kt[s])] = n['padding' + i] = e;
             return t && (n.opacity = n.width = e), n;
         }
-        function q(e) {
+        function W(e) {
             return ue.isWindow(e) ? e : (
                     9 === e.nodeType && (e.defaultView || e.parentWindow)
                 );
         }
         var U,
             Z,
-            K = typeof t,
-            G = e.location,
+            G = typeof t,
+            K = e.location,
             Y = e.document,
             J = Y.documentElement,
             Q = e.jQuery,
@@ -21665,9 +23350,9 @@ Object.values ||
                 (Y.addEventListener ||
                     'load' === e.type ||
                     'complete' === Y.readyState) &&
-                    (ze(), ue.ready());
+                    (Ce(), ue.ready());
             },
-            ze = function () {
+            Ce = function () {
                 Y.addEventListener ?
                     (Y.removeEventListener('DOMContentLoaded', xe, !1),
                     e.removeEventListener('load', xe, !1))
@@ -22139,7 +23824,7 @@ Object.values ||
                                     } catch (t) {
                                         return setTimeout(e, 50);
                                     }
-                                    ze(), ue.ready();
+                                    Ce(), ue.ready();
                                 }
                             })();
                     }
@@ -22168,13 +23853,13 @@ Object.values ||
                 function i(e, t, i, n) {
                     var s, o, a, r, l, c, u, d, h, p;
                     if (
-                        ((t ? t.ownerDocument || t : V) !== L && N(t),
+                        ((t ? t.ownerDocument || t : V) !== N && L(t),
                         (i = i || []),
                         !e || 'string' != typeof e)
                     )
                         return i;
-                    if (1 !== (r = (t = t || L).nodeType) && 9 !== r) return [];
-                    if (R && !n) {
+                    if (1 !== (r = (t = t || N).nodeType) && 9 !== r) return [];
+                    if (O && !n) {
                         if ((s = xe.exec(e)))
                             if ((a = s[1])) {
                                 if (9 === r) {
@@ -22212,7 +23897,7 @@ Object.values ||
                             }
                         if (T.qsa && (!B || !B.test(e))) {
                             if (
-                                ((d = u = W),
+                                ((d = u = q),
                                 (h = t),
                                 (p = 9 === r && e),
                                 1 === r &&
@@ -22243,7 +23928,7 @@ Object.values ||
                                 }
                         }
                     }
-                    return z(e.replace(me, '$1'), t, i, n);
+                    return C(e.replace(me, '$1'), t, i, n);
                 }
                 function n(e) {
                     return ke.test(e + '');
@@ -22260,10 +23945,10 @@ Object.values ||
                     return e;
                 }
                 function o(e) {
-                    return (e[W] = !0), e;
+                    return (e[q] = !0), e;
                 }
                 function a(e) {
-                    var t = L.createElement('div');
+                    var t = N.createElement('div');
                     try {
                         return !!e(t);
                     } catch (e) {
@@ -22348,7 +24033,7 @@ Object.values ||
                         r,
                         l,
                         c,
-                        u = K[e + ' '];
+                        u = G[e + ' '];
                     if (u) return t ? 0 : u.slice(0);
                     for (r = e, l = [], c = E.preFilter; r; ) {
                         for (a in ((n && !(s = _e.exec(r))) ||
@@ -22370,7 +24055,7 @@ Object.values ||
                     return (
                         t ? r.length
                         : r ? i.error(e)
-                        : K(e, l).slice(0)
+                        : G(e, l).slice(0)
                     );
                 }
                 function f(e) {
@@ -22392,7 +24077,7 @@ Object.values ||
                                 var r,
                                     l,
                                     c,
-                                    u = q + ' ' + o;
+                                    u = W + ' ' + o;
                                 if (a) {
                                     for (; (t = t[n]); )
                                         if (
@@ -22404,7 +24089,7 @@ Object.values ||
                                     for (; (t = t[n]); )
                                         if (1 === t.nodeType || s)
                                             if (
-                                                (l = (c = t[W] || (t[W] = {}))[
+                                                (l = (c = t[q] || (t[q] = {}))[
                                                     n
                                                 ]) &&
                                                 l[0] === u
@@ -22443,8 +24128,8 @@ Object.values ||
                 }
                 function y(e, t, i, n, s, a) {
                     return (
-                        n && !n[W] && (n = y(n)),
-                        s && !s[W] && (s = y(s, a)),
+                        n && !n[q] && (n = y(n)),
+                        s && !s[q] && (s = y(s, a)),
                         o(function (o, a, r, l) {
                             var c,
                                 u,
@@ -22512,7 +24197,7 @@ Object.values ||
                             u = [
                                 function (e, i, n) {
                                     return (
-                                        (!o && (n || i !== I)) ||
+                                        (!o && (n || i !== j)) ||
                                         ((t = i).nodeType ?
                                             l(e, i, n)
                                         :   c(e, i, n))
@@ -22528,7 +24213,7 @@ Object.values ||
                                 (i = E.filter[e[r].type].apply(
                                     null,
                                     e[r].matches
-                                ))[W]
+                                ))[q]
                             ) {
                                 for (
                                     n = ++r;
@@ -22571,7 +24256,7 @@ Object.values ||
                                 f = '0',
                                 g = o && [],
                                 v = null != u,
-                                y = I,
+                                y = j,
                                 w =
                                     o ||
                                     (a &&
@@ -22579,9 +24264,9 @@ Object.values ||
                                             '*',
                                             (u && r.parentNode) || r
                                         )),
-                                k = (q += null == y ? 1 : Math.random() || 0.1);
+                                k = (W += null == y ? 1 : Math.random() || 0.1);
                             for (
-                                v && ((I = r !== L && r), (A = n));
+                                v && ((j = r !== N && r), (A = n));
                                 null != (d = w[f]);
                                 f++
                             ) {
@@ -22591,7 +24276,7 @@ Object.values ||
                                             c.push(d);
                                             break;
                                         }
-                                    v && ((q = k), (A = ++n));
+                                    v && ((W = k), (A = ++n));
                                 }
                                 s && ((d = !p && d) && _--, o && g.push(d));
                             }
@@ -22610,7 +24295,7 @@ Object.values ||
                                         _ + t.length > 1 &&
                                         i.uniqueSort(c);
                             }
-                            return v && ((q = k), (I = y)), g;
+                            return v && ((W = k), (j = y)), g;
                         };
                     return s ? o(r) : r;
                 }
@@ -22618,7 +24303,7 @@ Object.values ||
                     for (var s = 0, o = t.length; s < o; s++) i(e, t[s], n);
                     return n;
                 }
-                function z(e, t, i, n) {
+                function C(e, t, i, n) {
                     var s,
                         o,
                         a,
@@ -22631,7 +24316,7 @@ Object.values ||
                             'ID' === (a = o[0]).type &&
                             T.getById &&
                             9 === t.nodeType &&
-                            R &&
+                            O &&
                             E.relative[o[1].type]
                         ) {
                             if (
@@ -22660,33 +24345,33 @@ Object.values ||
                                 break;
                             }
                     }
-                    return j(e, c)(n, t, !R, i, ge.test(e)), i;
+                    return I(e, c)(n, t, !O, i, ge.test(e)), i;
                 }
-                function C() {}
+                function z() {}
                 var S,
                     T,
                     A,
                     E,
                     M,
                     P,
-                    j,
                     I,
+                    j,
                     D,
-                    N,
                     L,
-                    O,
+                    N,
                     R,
+                    O,
                     B,
                     $,
                     F,
                     H,
-                    W = 'sizzle' + -new Date(),
+                    q = 'sizzle' + -new Date(),
                     V = e.document,
-                    q = 0,
+                    W = 0,
                     U = 0,
                     Z = s(),
-                    K = s(),
                     G = s(),
+                    K = s(),
                     Y = !1,
                     J = function () {
                         return 0;
@@ -22778,8 +24463,8 @@ Object.values ||
                     },
                     ke = /^[^{]+\{\s*\[native \w/,
                     xe = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,
-                    ze = /^(?:input|select|textarea|button)$/i,
-                    Ce = /^h\d$/i,
+                    Ce = /^(?:input|select|textarea|button)$/i,
+                    ze = /^h\d$/i,
                     Se = /'|\\/g,
                     Te = new RegExp(
                         '\\\\([\\da-f]{1,6}' + le + '?|(' + le + ')|.)',
@@ -22822,15 +24507,15 @@ Object.values ||
                         return !!t && 'HTML' !== t.nodeName;
                     }),
                 (T = i.support = {}),
-                (N = i.setDocument =
+                (L = i.setDocument =
                     function (e) {
                         var t = e ? e.ownerDocument || e : V;
                         return (
-                                t !== L && 9 === t.nodeType && t.documentElement
+                                t !== N && 9 === t.nodeType && t.documentElement
                             ) ?
-                                ((L = t),
-                                (O = t.documentElement),
-                                (R = !P(t)),
+                                ((N = t),
+                                (R = t.documentElement),
+                                (O = !P(t)),
                                 (T.attributes = a(function (e) {
                                     return (
                                         (e.innerHTML = "<a href='#'></a>"),
@@ -22877,16 +24562,16 @@ Object.values ||
                                 })),
                                 (T.getById = a(function (e) {
                                     return (
-                                        (O.appendChild(e).id = W),
+                                        (R.appendChild(e).id = q),
                                         !t.getElementsByName ||
-                                            !t.getElementsByName(W).length
+                                            !t.getElementsByName(q).length
                                     );
                                 })),
                                 T.getById ?
                                     ((E.find.ID = function (e, t) {
                                         if (
                                             typeof t.getElementById !== Q &&
-                                            R
+                                            O
                                         ) {
                                             var i = t.getElementById(e);
                                             return i && i.parentNode ? [i] : [];
@@ -22939,7 +24624,7 @@ Object.values ||
                                         if (
                                             typeof t.getElementsByClassName !==
                                                 Q &&
-                                            R
+                                            O
                                         )
                                             return t.getElementsByClassName(e);
                                     }),
@@ -22982,10 +24667,10 @@ Object.values ||
                                     })),
                                 (T.matchesSelector = n(
                                     (F =
-                                        O.webkitMatchesSelector ||
-                                        O.mozMatchesSelector ||
-                                        O.oMatchesSelector ||
-                                        O.msMatchesSelector)
+                                        R.webkitMatchesSelector ||
+                                        R.mozMatchesSelector ||
+                                        R.oMatchesSelector ||
+                                        R.msMatchesSelector)
                                 )) &&
                                     a(function (e) {
                                         (T.disconnectedMatch = F.call(
@@ -22998,7 +24683,7 @@ Object.values ||
                                 (B = B.length && new RegExp(B.join('|'))),
                                 ($ = $.length && new RegExp($.join('|'))),
                                 (H =
-                                    n(O.contains) || O.compareDocumentPosition ?
+                                    n(R.contains) || R.compareDocumentPosition ?
                                         function (e, t) {
                                             var i =
                                                     9 === e.nodeType ?
@@ -23035,7 +24720,7 @@ Object.values ||
                                     );
                                 })),
                                 (J =
-                                    O.compareDocumentPosition ?
+                                    R.compareDocumentPosition ?
                                         function (e, i) {
                                             if (e === i) return (Y = !0), 0;
                                             var n =
@@ -23096,17 +24781,17 @@ Object.values ||
                                             );
                                         }),
                                 t)
-                            :   L;
+                            :   N;
                     }),
                 (i.matches = function (e, t) {
                     return i(e, null, null, t);
                 }),
                 (i.matchesSelector = function (e, t) {
                     if (
-                        ((e.ownerDocument || e) !== L && N(e),
+                        ((e.ownerDocument || e) !== N && L(e),
                         (t = t.replace(ve, "='$1']")),
                         T.matchesSelector &&
-                            R &&
+                            O &&
                             (!$ || !$.test(t)) &&
                             (!B || !B.test(t)))
                     )
@@ -23119,21 +24804,21 @@ Object.values ||
                             )
                                 return n;
                         } catch (e) {}
-                    return i(t, L, null, [e]).length > 0;
+                    return i(t, N, null, [e]).length > 0;
                 }),
                 (i.contains = function (e, t) {
-                    return (e.ownerDocument || e) !== L && N(e), H(e, t);
+                    return (e.ownerDocument || e) !== N && L(e), H(e, t);
                 }),
                 (i.attr = function (e, i) {
-                    (e.ownerDocument || e) !== L && N(e);
+                    (e.ownerDocument || e) !== N && L(e);
                     var n = E.attrHandle[i.toLowerCase()],
                         s =
                             n && ee.call(E.attrHandle, i.toLowerCase()) ?
-                                n(e, i, !R)
+                                n(e, i, !O)
                             :   t;
                     return (
                         s === t ?
-                            T.attributes || !R ? e.getAttribute(i)
+                            T.attributes || !O ? e.getAttribute(i)
                             : (s = e.getAttributeNode(i)) && s.specified ?
                                 s.value
                             :   null
@@ -23360,14 +25045,14 @@ Object.values ||
                                                         p =
                                                             (c =
                                                                 (u =
-                                                                    f[W] ||
-                                                                    (f[W] =
+                                                                    f[q] ||
+                                                                    (f[q] =
                                                                         {}))[
                                                                     e
                                                                 ] || [])[0] ===
-                                                                q && c[1],
+                                                                W && c[1],
                                                             h =
-                                                                c[0] === q &&
+                                                                c[0] === W &&
                                                                 c[2],
                                                             d =
                                                                 p &&
@@ -23385,15 +25070,15 @@ Object.values ||
                                                             ++h &&
                                                             d === t
                                                         ) {
-                                                            u[e] = [q, p, h];
+                                                            u[e] = [W, p, h];
                                                             break;
                                                         }
                                                 } else if (
                                                     v &&
-                                                    (c = (t[W] || (t[W] = {}))[
+                                                    (c = (t[q] || (t[q] = {}))[
                                                         e
                                                     ]) &&
-                                                    c[0] === q
+                                                    c[0] === W
                                                 )
                                                     h = c[1];
                                                 else
@@ -23411,11 +25096,11 @@ Object.values ||
                                                         :   1 !== d.nodeType) ||
                                                             !++h ||
                                                             (v &&
-                                                                ((d[W] ||
-                                                                    (d[W] =
+                                                                ((d[q] ||
+                                                                    (d[q] =
                                                                         {}))[
                                                                     e
-                                                                ] = [q, h]),
+                                                                ] = [W, h]),
                                                             d !== t));
 
                                                     );
@@ -23433,7 +25118,7 @@ Object.values ||
                                         E.setFilters[e.toLowerCase()] ||
                                         i.error('unsupported pseudo: ' + e);
                                 return (
-                                    s[W] ? s(t)
+                                    s[q] ? s(t)
                                     : s.length > 1 ?
                                         ((n = [e, e, '', t]),
                                         (
@@ -23463,8 +25148,8 @@ Object.values ||
                             not: o(function (e) {
                                 var t = [],
                                     i = [],
-                                    n = j(e.replace(me, '$1'));
-                                return n[W] ?
+                                    n = I(e.replace(me, '$1'));
+                                return n[q] ?
                                         o(function (e, t, i, s) {
                                             for (
                                                 var o,
@@ -23510,7 +25195,7 @@ Object.values ||
                                         do {
                                             if (
                                                 (i =
-                                                    R ?
+                                                    O ?
                                                         t.lang
                                                     :   t.getAttribute(
                                                             'xml:lang'
@@ -23535,12 +25220,12 @@ Object.values ||
                                 return i && i.slice(1) === t.id;
                             },
                             root: function (e) {
-                                return e === O;
+                                return e === R;
                             },
                             focus: function (e) {
                                 return (
-                                    e === L.activeElement &&
-                                    (!L.hasFocus || L.hasFocus()) &&
+                                    e === N.activeElement &&
+                                    (!N.hasFocus || N.hasFocus()) &&
                                     !!(e.type || e.href || ~e.tabIndex)
                                 );
                             },
@@ -23577,10 +25262,10 @@ Object.values ||
                                 return !E.pseudos.empty(e);
                             },
                             header: function (e) {
-                                return Ce.test(e.nodeName);
+                                return ze.test(e.nodeName);
                             },
                             input: function (e) {
-                                return ze.test(e.nodeName);
+                                return Ce.test(e.nodeName);
                             },
                             button: function (e) {
                                 var t = e.nodeName.toLowerCase();
@@ -23630,24 +25315,24 @@ Object.values ||
                 { radio: !0, checkbox: !0, file: !0, password: !0, image: !0 }))
                     E.pseudos[S] = h(S);
                 for (S in { submit: !0, reset: !0 }) E.pseudos[S] = p(S);
-                (j = i.compile =
+                (I = i.compile =
                     function (e, t) {
                         var i,
                             n = [],
                             s = [],
-                            o = G[e + ' '];
+                            o = K[e + ' '];
                         if (!o) {
                             for (t || (t = _(e)), i = t.length; i--; )
-                                (o = w(t[i]))[W] ? n.push(o) : s.push(o);
-                            o = G(e, k(s, n));
+                                (o = w(t[i]))[q] ? n.push(o) : s.push(o);
+                            o = K(e, k(s, n));
                         }
                         return o;
                     }),
                     (E.pseudos.nth = E.pseudos.eq),
-                    (C.prototype = E.filters = E.pseudos),
-                    (E.setFilters = new C()),
-                    (T.sortStable = W.split('').sort(J).join('') === W),
-                    N(),
+                    (z.prototype = E.filters = E.pseudos),
+                    (E.setFilters = new z()),
+                    (T.sortStable = q.split('').sort(J).join('') === q),
+                    L(),
                     [0, 0].sort(J),
                     (T.detectDuplicates = Y),
                     (ue.find = i),
@@ -23658,9 +25343,9 @@ Object.values ||
                     (ue.isXMLDoc = i.isXML),
                     (ue.contains = i.contains);
             })(e);
-        var Ce = {};
+        var ze = {};
         (ue.Callbacks = function (e) {
-            e = 'string' == typeof e ? Ce[e] || n(e) : ue.extend({}, e);
+            e = 'string' == typeof e ? ze[e] || n(e) : ue.extend({}, e);
             var i,
                 s,
                 o,
@@ -24022,7 +25707,7 @@ Object.values ||
                                     (e.getComputedStyle(n, null) || {})
                                         .marginRight
                                 ))),
-                            typeof d.style.zoom !== K &&
+                            typeof d.style.zoom !== G &&
                                 ((d.innerHTML = ''),
                                 (d.style.cssText =
                                     o +
@@ -24220,11 +25905,11 @@ Object.values ||
             Ee,
             Me = /[\t\r\n\f]/g,
             Pe = /\r/g,
-            je = /^(?:input|select|textarea|button|object)$/i,
-            Ie = /^(?:a|area)$/i,
+            Ie = /^(?:input|select|textarea|button|object)$/i,
+            je = /^(?:a|area)$/i,
             De = /^(?:checked|selected)$/i,
-            Ne = ue.support.getSetAttribute,
-            Le = ue.support.input;
+            Le = ue.support.getSetAttribute,
+            Ne = ue.support.input;
         ue.fn.extend({
             attr: function (e, t) {
                 return ue.access(this, ue.attr, e, t, arguments.length > 1);
@@ -24328,7 +26013,7 @@ Object.values ||
                                     (r = n ? r : !a.hasClass(s)),
                                         a[r ? 'addClass' : 'removeClass'](s);
                             else
-                                (i !== K && 'boolean' !== i) ||
+                                (i !== G && 'boolean' !== i) ||
                                     (this.className &&
                                         ue._data(
                                             this,
@@ -24458,7 +26143,7 @@ Object.values ||
                         o,
                         a = e.nodeType;
                     if (e && 3 !== a && 8 !== a && 2 !== a)
-                        return typeof e.getAttribute === K ?
+                        return typeof e.getAttribute === G ?
                                 ue.prop(e, i, n)
                             :   ((1 === a && ue.isXMLDoc(e)) ||
                                     ((i = i.toLowerCase()),
@@ -24495,14 +26180,14 @@ Object.values ||
                         for (; (i = o[s++]); )
                             (n = ue.propFix[i] || i),
                                 ue.expr.match.bool.test(i) ?
-                                    (Le && Ne) || !De.test(i) ?
+                                    (Ne && Le) || !De.test(i) ?
                                         (e[n] = !1)
                                     :   (e[ue.camelCase('default-' + i)] = e[
                                             n
                                         ] =
                                             !1)
                                 :   ue.attr(e, i, ''),
-                                e.removeAttribute(Ne ? i : n);
+                                e.removeAttribute(Le ? i : n);
                 },
                 attrHooks: {
                     type: {
@@ -24547,8 +26232,8 @@ Object.values ||
                             return (
                                 t ? parseInt(t, 10)
                                 : (
-                                    je.test(e.nodeName) ||
-                                    (Ie.test(e.nodeName) && e.href)
+                                    Ie.test(e.nodeName) ||
+                                    (je.test(e.nodeName) && e.href)
                                 ) ?
                                     0
                                 :   -1
@@ -24561,8 +26246,8 @@ Object.values ||
                 set: function (e, t, i) {
                     return (
                         !1 === t ? ue.removeAttr(e, i)
-                        : (Le && Ne) || !De.test(i) ?
-                            e.setAttribute((!Ne && ue.propFix[i]) || i, i)
+                        : (Ne && Le) || !De.test(i) ?
+                            e.setAttribute((!Le && ue.propFix[i]) || i, i)
                         :   (e[ue.camelCase('default-' + i)] = e[i] = !0),
                         i
                     );
@@ -24571,7 +26256,7 @@ Object.values ||
             ue.each(ue.expr.match.bool.source.match(/\w+/g), function (e, i) {
                 var n = ue.expr.attrHandle[i] || ue.find.attr;
                 ue.expr.attrHandle[i] =
-                    (Le && Ne) || !De.test(i) ?
+                    (Ne && Le) || !De.test(i) ?
                         function (e, i, s) {
                             var o = ue.expr.attrHandle[i],
                                 a =
@@ -24593,7 +26278,7 @@ Object.values ||
                             );
                         };
             }),
-            (Le && Ne) ||
+            (Ne && Le) ||
                 (ue.attrHooks.value = {
                     set: function (e, t, i) {
                         if (!ue.nodeName(e, 'input'))
@@ -24601,7 +26286,7 @@ Object.values ||
                         e.defaultValue = t;
                     },
                 }),
-            Ne ||
+            Le ||
                 ((Ae = {
                     set: function (e, i, n) {
                         var s = e.getAttributeNode(n);
@@ -24711,8 +26396,8 @@ Object.values ||
                                 :   e.value;
                         });
             });
-        var Oe = /^(?:input|select|textarea)$/i,
-            Re = /^key/,
+        var Re = /^(?:input|select|textarea)$/i,
+            Oe = /^key/,
             Be = /^(?:mouse|contextmenu)|click/,
             $e = /^(?:focusinfocus|focusoutblur)$/,
             Fe = /^([^.]*)(?:\.(.+)|)$/;
@@ -24740,7 +26425,7 @@ Object.values ||
                                 ((d = g.handle =
                                     function (e) {
                                         return (
-                                                typeof ue === K ||
+                                                typeof ue === G ||
                                                     (e &&
                                                         ue.event.triggered ===
                                                             e.type)
@@ -25023,7 +26708,7 @@ Object.values ||
                     a ||
                         (this.fixHooks[s] = a =
                             Be.test(s) ? this.mouseHooks
-                                : Re.test(s) ? this.keyHooks
+                                : Oe.test(s) ? this.keyHooks
                                 : {}),
                         n = a.props ? this.props.concat(a.props) : this.props,
                         e = new ue.Event(o),
@@ -25157,7 +26842,7 @@ Object.values ||
                 :   function (e, t, i) {
                         var n = 'on' + t;
                         e.detachEvent &&
-                            (typeof e[n] === K && (e[n] = null),
+                            (typeof e[n] === G && (e[n] = null),
                             e.detachEvent(n, i));
                     }),
             (ue.Event = function (e, t) {
@@ -25273,7 +26958,7 @@ Object.values ||
             ue.support.changeBubbles ||
                 (ue.event.special.change = {
                     setup: function () {
-                        if (Oe.test(this.nodeName))
+                        if (Re.test(this.nodeName))
                             return (
                                 ('checkbox' !== this.type &&
                                     'radio' !== this.type) ||
@@ -25308,7 +26993,7 @@ Object.values ||
                             'beforeactivate._change',
                             function (e) {
                                 var t = e.target;
-                                Oe.test(t.nodeName) &&
+                                Re.test(t.nodeName) &&
                                     !ue._data(t, 'changeBubbles') &&
                                     (ue.event.add(
                                         t,
@@ -25342,7 +27027,7 @@ Object.values ||
                     teardown: function () {
                         return (
                             ue.event.remove(this, '._change'),
-                            !Oe.test(this.nodeName)
+                            !Re.test(this.nodeName)
                         );
                     },
                 }),
@@ -25443,9 +27128,9 @@ Object.values ||
                 },
             });
         var He = /^.[^:#\[\.,]*$/,
-            We = /^(?:parents|prev(?:Until|All))/,
+            qe = /^(?:parents|prev(?:Until|All))/,
             Ve = ue.expr.match.needsContext,
-            qe = { children: !0, contents: !0, next: !0, prev: !0 };
+            We = { children: !0, contents: !0, next: !0, prev: !0 };
         ue.fn.extend({
             find: function (e) {
                 var t,
@@ -25588,8 +27273,8 @@ Object.values ||
                             'Until' !== e.slice(-5) && (n = i),
                             n && 'string' == typeof n && (s = ue.filter(n, s)),
                             this.length > 1 &&
-                                (qe[e] || (s = ue.unique(s)),
-                                We.test(e) && (s = s.reverse())),
+                                (We[e] || (s = ue.unique(s)),
+                                qe.test(e) && (s = s.reverse())),
                             this.pushStack(s)
                         );
                     };
@@ -25632,8 +27317,8 @@ Object.values ||
         var Ue =
                 'abbr|article|aside|audio|bdi|canvas|data|datalist|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|summary|time|video',
             Ze = / jQuery\d+="(?:null|\d+)"/g,
-            Ke = new RegExp('<(?:' + Ue + ')[\\s/>]', 'i'),
-            Ge = /^\s+/,
+            Ge = new RegExp('<(?:' + Ue + ')[\\s/>]', 'i'),
+            Ke = /^\s+/,
             Ye =
                 /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/gi,
             Je = /<([\w:]+)/,
@@ -25770,8 +27455,8 @@ Object.values ||
                             if (
                                 'string' == typeof e &&
                                 !et.test(e) &&
-                                (ue.support.htmlSerialize || !Ke.test(e)) &&
-                                (ue.support.leadingWhitespace || !Ge.test(e)) &&
+                                (ue.support.htmlSerialize || !Ge.test(e)) &&
+                                (ue.support.leadingWhitespace || !Ke.test(e)) &&
                                 !at[(Je.exec(e) || ['', ''])[1].toLowerCase()]
                             ) {
                                 e = e.replace(Ye, '<$1></$2>');
@@ -25926,7 +27611,7 @@ Object.values ||
                         ((
                             ue.support.html5Clone ||
                             ue.isXMLDoc(e) ||
-                            !Ke.test('<' + e.nodeName + '>')
+                            !Ge.test('<' + e.nodeName + '>')
                         ) ?
                             (o = e.cloneNode(!0))
                         :   ((rt.innerHTML = e.outerHTML),
@@ -25996,8 +27681,8 @@ Object.values ||
                                     r = r.lastChild;
                                 if (
                                     (!ue.support.leadingWhitespace &&
-                                        Ge.test(o) &&
-                                        m.push(t.createTextNode(Ge.exec(o)[0])),
+                                        Ke.test(o) &&
+                                        m.push(t.createTextNode(Ke.exec(o)[0])),
                                     !ue.support.tbody)
                                 )
                                     for (
@@ -26075,7 +27760,7 @@ Object.values ||
                             l[s] &&
                                 (delete l[s],
                                 c ? delete i[r]
-                                : typeof i.removeAttribute !== K ?
+                                : typeof i.removeAttribute !== G ?
                                     i.removeAttribute(r)
                                 :   (i[r] = null),
                                 te.push(s));
@@ -26184,10 +27869,10 @@ Object.values ||
                 );
             },
             show: function () {
-                return z(this, !0);
+                return C(this, !0);
             },
             hide: function () {
-                return z(this);
+                return C(this);
             },
             toggle: function (e) {
                 var t = 'boolean' == typeof e;
@@ -26356,7 +28041,7 @@ Object.values ||
                     },
                     set: function (e, i, n) {
                         var s = n && ct(e);
-                        return C(
+                        return z(
                             e,
                             i,
                             n ?
@@ -26472,11 +28157,11 @@ Object.values ||
                             return s;
                         },
                     }),
-                        _t.test(e) || (ue.cssHooks[e + t].set = C);
+                        _t.test(e) || (ue.cssHooks[e + t].set = z);
                 }
             );
-        var zt = /%20/g,
-            Ct = /\[\]$/,
+        var Ct = /%20/g,
+            zt = /\[\]$/,
             St = /\r?\n/g,
             Tt = /^(?:submit|button|image|reset|file)$/i,
             At = /^(?:input|select|textarea|keygen)/i;
@@ -26538,7 +28223,7 @@ Object.values ||
                         o(this.name, this.value);
                     });
                 else for (n in e) M(n, e[n], i, o);
-                return s.join('&').replace(zt, '+');
+                return s.join('&').replace(Ct, '+');
             }),
             ue.each(
                 'blur focus focusin focusout load resize scroll unload click dblclick mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave change select submit keydown keypress keyup error contextmenu'.split(
@@ -26574,20 +28259,20 @@ Object.values ||
         var Et,
             Mt,
             Pt = ue.now(),
-            jt = /\?/,
-            It = /#.*$/,
+            It = /\?/,
+            jt = /#.*$/,
             Dt = /([?&])_=[^&]*/,
-            Nt = /^(.*?):[ \t]*([^\r\n]*)\r?$/gm,
-            Lt = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
-            Ot = /^(?:GET|HEAD)$/,
-            Rt = /^\/\//,
+            Lt = /^(.*?):[ \t]*([^\r\n]*)\r?$/gm,
+            Nt = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
+            Rt = /^(?:GET|HEAD)$/,
+            Ot = /^\/\//,
             Bt = /^([\w.+-]+:)(?:\/\/([^\/?#:]*)(?::(\d+)|)|)/,
             $t = ue.fn.load,
             Ft = {},
             Ht = {},
-            Wt = '*/'.concat('*');
+            qt = '*/'.concat('*');
         try {
-            Mt = G.href;
+            Mt = K.href;
         } catch (e) {
             ((Mt = Y.createElement('a')).href = ''), (Mt = Mt.href);
         }
@@ -26654,14 +28339,14 @@ Object.values ||
                 ajaxSettings: {
                     url: Mt,
                     type: 'GET',
-                    isLocal: Lt.test(Et[1]),
+                    isLocal: Nt.test(Et[1]),
                     global: !0,
                     processData: !0,
                     async: !0,
                     contentType:
                         'application/x-www-form-urlencoded; charset=UTF-8',
                     accepts: {
-                        '*': Wt,
+                        '*': qt,
                         'text': 'text/plain',
                         'html': 'text/html',
                         'xml': 'application/xml, text/xml',
@@ -26683,8 +28368,8 @@ Object.values ||
                 },
                 ajaxSetup: function (e, t) {
                     return t ?
-                            I(I(e, ue.ajaxSettings), t)
-                        :   I(ue.ajaxSettings, e);
+                            j(j(e, ue.ajaxSettings), t)
+                        :   j(ue.ajaxSettings, e);
                 },
                 ajaxPrefilter: P(Ft),
                 ajaxTransport: P(Ht),
@@ -26704,7 +28389,7 @@ Object.values ||
                             (k.readyState = e > 0 ? 4 : 0),
                             (o = (e >= 200 && e < 300) || 304 === e),
                             n && (b = D(h, k, n)),
-                            (b = N(h, b, k, o)),
+                            (b = L(h, b, k, o)),
                             o ?
                                 (h.ifModified &&
                                     ((w =
@@ -26766,7 +28451,7 @@ Object.values ||
                                 var t;
                                 if (2 === y) {
                                     if (!d)
-                                        for (d = {}; (t = Nt.exec(r)); )
+                                        for (d = {}; (t = Lt.exec(r)); )
                                             d[t[1].toLowerCase()] = t[2];
                                     t = d[e.toLowerCase()];
                                 }
@@ -26802,8 +28487,8 @@ Object.values ||
                         (k.success = k.done),
                         (k.error = k.fail),
                         (h.url = ((e || h.url || Mt) + '')
-                            .replace(It, '')
-                            .replace(Rt, Et[1] + '//')),
+                            .replace(jt, '')
+                            .replace(Ot, Et[1] + '//')),
                         (h.type = i.method || i.type || h.method || h.type),
                         (h.dataTypes = ue
                             .trim(h.dataType || '*')
@@ -26824,7 +28509,7 @@ Object.values ||
                             h.processData &&
                             'string' != typeof h.data &&
                             (h.data = ue.param(h.data, h.traditional)),
-                        j(Ft, h, i, k),
+                        I(Ft, h, i, k),
                         2 === y)
                     )
                         return k;
@@ -26832,18 +28517,18 @@ Object.values ||
                         0 == ue.active++ &&
                         ue.event.trigger('ajaxStart'),
                     (h.type = h.type.toUpperCase()),
-                    (h.hasContent = !Ot.test(h.type)),
+                    (h.hasContent = !Rt.test(h.type)),
                     (a = h.url),
                     h.hasContent ||
                         (h.data &&
-                            ((a = h.url += (jt.test(a) ? '&' : '?') + h.data),
+                            ((a = h.url += (It.test(a) ? '&' : '?') + h.data),
                             delete h.data),
                         !1 === h.cache &&
                             (h.url =
                                 Dt.test(a) ?
                                     a.replace(Dt, '$1_=' + Pt++)
                                 :   a +
-                                    (jt.test(a) ? '&' : '?') +
+                                    (It.test(a) ? '&' : '?') +
                                     '_=' +
                                     Pt++)),
                     h.ifModified &&
@@ -26862,7 +28547,7 @@ Object.values ||
                         h.dataTypes[0] && h.accepts[h.dataTypes[0]] ?
                             h.accepts[h.dataTypes[0]] +
                                 ('*' !== h.dataTypes[0] ?
-                                    ', ' + Wt + '; q=0.01'
+                                    ', ' + qt + '; q=0.01'
                                 :   '')
                         :   h.accepts['*']
                     ),
@@ -26876,7 +28561,7 @@ Object.values ||
                     for (o in ((w = 'abort'),
                     { success: 1, error: 1, complete: 1 }))
                         k[o](h[o]);
-                    if ((u = j(Ht, h, i, k))) {
+                    if ((u = I(Ht, h, i, k))) {
                         (k.readyState = 1),
                             c && m.trigger('ajaxSend', [k, h]),
                             h.async &&
@@ -26962,7 +28647,7 @@ Object.values ||
                 }
             });
         var Vt = [],
-            qt = /(=)\?(?=&|$)|\?\?/;
+            Wt = /(=)\?(?=&|$)|\?\?/;
         ue.ajaxSetup({
             jsonp: 'callback',
             jsonpCallback: function () {
@@ -26976,12 +28661,12 @@ Object.values ||
                     r,
                     l =
                         !1 !== i.jsonp &&
-                        (qt.test(i.url) ? 'url' : (
+                        (Wt.test(i.url) ? 'url' : (
                             'string' == typeof i.data &&
                             !(i.contentType || '').indexOf(
                                 'application/x-www-form-urlencoded'
                             ) &&
-                            qt.test(i.data) &&
+                            Wt.test(i.data) &&
                             'data'
                         ));
                 if (l || 'jsonp' === i.dataTypes[0])
@@ -26992,10 +28677,10 @@ Object.values ||
                                     i.jsonpCallback()
                                 :   i.jsonpCallback),
                         l ?
-                            (i[l] = i[l].replace(qt, '$1' + o))
+                            (i[l] = i[l].replace(Wt, '$1' + o))
                         :   !1 !== i.jsonp &&
                             (i.url +=
-                                (jt.test(i.url) ? '&' : '?') +
+                                (It.test(i.url) ? '&' : '?') +
                                 i.jsonp +
                                 '=' +
                                 o),
@@ -27020,8 +28705,8 @@ Object.values ||
             });
         var Ut,
             Zt,
-            Kt = 0,
-            Gt =
+            Gt = 0,
+            Kt =
                 e.ActiveXObject &&
                 function () {
                     var e;
@@ -27030,9 +28715,9 @@ Object.values ||
         (ue.ajaxSettings.xhr =
             e.ActiveXObject ?
                 function () {
-                    return (!this.isLocal && L()) || O();
+                    return (!this.isLocal && N()) || R();
                 }
-            :   L),
+            :   N),
             (Zt = ue.ajaxSettings.xhr()),
             (ue.support.cors = !!Zt && 'withCredentials' in Zt),
             (Zt = ue.support.ajax = !!Zt) &&
@@ -27078,7 +28763,7 @@ Object.values ||
                                                     a &&
                                                         ((l.onreadystatechange =
                                                             ue.noop),
-                                                        Gt && delete Ut[a]),
+                                                        Kt && delete Ut[a]),
                                                     s)
                                                 )
                                                     4 !== l.readyState &&
@@ -27114,11 +28799,11 @@ Object.values ||
                                     i.async ?
                                         4 === l.readyState ?
                                             setTimeout(n)
-                                        :   ((a = ++Kt),
-                                            Gt &&
+                                        :   ((a = ++Gt),
+                                            Kt &&
                                                 (Ut ||
                                                     ((Ut = {}),
-                                                    ue(e).unload(Gt)),
+                                                    ue(e).unload(Kt)),
                                                 (Ut[a] = n)),
                                             (l.onreadystatechange = n))
                                     :   n();
@@ -27173,9 +28858,9 @@ Object.values ||
                 t ? ti.unshift(e) : ti.push(e);
             },
         })),
-            (ue.Tween = W),
-            (W.prototype = {
-                constructor: W,
+            (ue.Tween = q),
+            (q.prototype = {
+                constructor: q,
                 init: function (e, t, i, n, s, o) {
                     (this.elem = e),
                         (this.prop = i),
@@ -27186,14 +28871,14 @@ Object.values ||
                         (this.unit = o || (ue.cssNumber[i] ? '' : 'px'));
                 },
                 cur: function () {
-                    var e = W.propHooks[this.prop];
+                    var e = q.propHooks[this.prop];
                     return e && e.get ?
                             e.get(this)
-                        :   W.propHooks._default.get(this);
+                        :   q.propHooks._default.get(this);
                 },
                 run: function (e) {
                     var t,
-                        i = W.propHooks[this.prop];
+                        i = q.propHooks[this.prop];
                     return (
                         this.options.duration ?
                             (this.pos = t =
@@ -27210,13 +28895,13 @@ Object.values ||
                             this.options.step.call(this.elem, this.now, this),
                         i && i.set ?
                             i.set(this)
-                        :   W.propHooks._default.set(this),
+                        :   q.propHooks._default.set(this),
                         this
                     );
                 },
             }),
-            (W.prototype.init.prototype = W.prototype),
-            (W.propHooks = {
+            (q.prototype.init.prototype = q.prototype),
+            (q.propHooks = {
                 _default: {
                     get: function (e) {
                         var t;
@@ -27247,7 +28932,7 @@ Object.values ||
                     },
                 },
             }),
-            (W.propHooks.scrollTop = W.propHooks.scrollLeft =
+            (q.propHooks.scrollTop = q.propHooks.scrollLeft =
                 {
                     set: function (e) {
                         e.elem.nodeType &&
@@ -27394,7 +29079,7 @@ Object.values ||
                 },
             }),
             (ue.timers = []),
-            (ue.fx = W.prototype.init),
+            (ue.fx = q.prototype.init),
             (ue.fx.tick = function () {
                 var e,
                     i = ue.timers,
@@ -27437,9 +29122,9 @@ Object.values ||
                 return a ?
                         ((i = a.documentElement),
                         ue.contains(i, o) ?
-                            (typeof o.getBoundingClientRect !== K &&
+                            (typeof o.getBoundingClientRect !== G &&
                                 (s = o.getBoundingClientRect()),
-                            (n = q(a)),
+                            (n = W(a)),
                             {
                                 top:
                                     s.top +
@@ -27528,7 +29213,7 @@ Object.values ||
                         return ue.access(
                             this,
                             function (e, s, o) {
-                                var a = q(e);
+                                var a = W(e);
                                 if (o === t)
                                     return (
                                         a ?
@@ -28804,7 +30489,7 @@ Object.values ||
                         w = e.position.getWithinInfo(s.within),
                         k = e.position.getScrollInfo(w),
                         x = (s.collision || 'flip').split(' '),
-                        z = {};
+                        C = {};
                     return (
                         (b = n(y)),
                         y[0].preventDefault && (s.at = 'left top'),
@@ -28825,7 +30510,7 @@ Object.values ||
                                 (i[1] = u.test(i[1]) ? i[1] : 'center'),
                                 (e = d.exec(i[0])),
                                 (t = d.exec(i[1])),
-                                (z[this] = [e ? e[0] : 0, t ? t[0] : 0]),
+                                (C[this] = [e ? e[0] : 0, t ? t[0] : 0]),
                                 (s[this] = [h.exec(i[0])[0], h.exec(i[1])[0]]);
                         }),
                         1 === x.length && (x[1] = x[0]),
@@ -28835,7 +30520,7 @@ Object.values ||
                         'bottom' === s.at[1] ?
                             (v.top += f)
                         :   'center' === s.at[1] && (v.top += f / 2),
-                        (p = t(z.at, _, f)),
+                        (p = t(C.at, _, f)),
                         (v.left += p[0]),
                         (v.top += p[1]),
                         this.each(function () {
@@ -28846,10 +30531,10 @@ Object.values ||
                                 h = u.outerHeight(),
                                 m = i(this, 'marginLeft'),
                                 b = i(this, 'marginTop'),
-                                C = d + m + i(this, 'marginRight') + k.width,
+                                z = d + m + i(this, 'marginRight') + k.width,
                                 S = h + b + i(this, 'marginBottom') + k.height,
                                 T = e.extend({}, v),
-                                A = t(z.my, u.outerWidth(), u.outerHeight());
+                                A = t(C.my, u.outerWidth(), u.outerHeight());
                             'right' === s.my[0] ?
                                 (T.left -= d)
                             :   'center' === s.my[0] && (T.left -= d / 2),
@@ -28868,7 +30553,7 @@ Object.values ||
                                             elemWidth: d,
                                             elemHeight: h,
                                             collisionPosition: n,
-                                            collisionWidth: C,
+                                            collisionWidth: z,
                                             collisionHeight: S,
                                             offset: [p[0] + A[0], p[1] + A[1]],
                                             my: s.my,
@@ -36312,34 +37997,34 @@ Object.values ||
                         w,
                         k,
                         x,
-                        z,
                         C,
+                        z,
                         S,
                         T,
                         A,
                         E,
                         M,
                         P,
-                        j,
                         I,
+                        j,
                         D,
-                        N,
                         L,
-                        O,
+                        N,
                         R,
+                        O,
                         B,
                         $ = new Date(),
                         F = this._daylightSavingAdjust(
                             new Date($.getFullYear(), $.getMonth(), $.getDate())
                         ),
                         H = this._get(e, 'isRTL'),
-                        W = this._get(e, 'showButtonPanel'),
+                        q = this._get(e, 'showButtonPanel'),
                         V = this._get(e, 'hideIfNoPrevNext'),
-                        q = this._get(e, 'navigationAsDateFormat'),
+                        W = this._get(e, 'navigationAsDateFormat'),
                         U = this._getNumberOfMonths(e),
                         Z = this._get(e, 'showCurrentAtPos'),
-                        K = this._get(e, 'stepMonths'),
-                        G = 1 !== U[0] || 1 !== U[1],
+                        G = this._get(e, 'stepMonths'),
+                        K = 1 !== U[0] || 1 !== U[1],
                         Y = this._daylightSavingAdjust(
                             e.currentDay ?
                                 new Date(
@@ -36372,11 +38057,11 @@ Object.values ||
                             e.drawYear = ee,
                             i = this._get(e, 'prevText'),
                             i =
-                                q ?
+                                W ?
                                     this.formatDate(
                                         i,
                                         this._daylightSavingAdjust(
-                                            new Date(ee, X - K, 1)
+                                            new Date(ee, X - G, 1)
                                         ),
                                         this._getFormatConfig(e)
                                     )
@@ -36400,11 +38085,11 @@ Object.values ||
                                     '</span></a>',
                             s = this._get(e, 'nextText'),
                             s =
-                                q ?
+                                W ?
                                     this.formatDate(
                                         s,
                                         this._daylightSavingAdjust(
-                                            new Date(ee, X + K, 1)
+                                            new Date(ee, X + G, 1)
                                         ),
                                         this._getFormatConfig(e)
                                     )
@@ -36432,7 +38117,7 @@ Object.values ||
                                     Y
                                 :   F,
                             a =
-                                q ?
+                                W ?
                                     this.formatDate(
                                         a,
                                         r,
@@ -36446,7 +38131,7 @@ Object.values ||
                                     '</button>'
                                 ),
                             c =
-                                W ?
+                                q ?
                                     "<div class='ui-datepicker-buttonpane ui-widget-content'>" +
                                     (H ? l : '') +
                                     (this._isInRange(e, r) ?
@@ -36473,20 +38158,20 @@ Object.values ||
                         k < U[0];
                         k++
                     ) {
-                        for (x = '', this.maxRows = 4, z = 0; z < U[1]; z++) {
+                        for (x = '', this.maxRows = 4, C = 0; C < U[1]; C++) {
                             if (
-                                ((C = this._daylightSavingAdjust(
+                                ((z = this._daylightSavingAdjust(
                                     new Date(ee, X, e.selectedDay)
                                 )),
                                 (S = ' ui-corner-all'),
                                 (T = ''),
-                                G)
+                                K)
                             ) {
                                 if (
                                     ((T += "<div class='ui-datepicker-group"),
                                     U[1] > 1)
                                 )
-                                    switch (z) {
+                                    switch (C) {
                                         case 0:
                                             (T += ' ui-datepicker-group-first'),
                                                 (S =
@@ -36525,7 +38210,7 @@ Object.values ||
                                         ee,
                                         J,
                                         Q,
-                                        k > 0 || z > 0,
+                                        k > 0 || C > 0,
                                         m,
                                         _
                                     ) +
@@ -36564,22 +38249,22 @@ Object.values ||
                                             u +
                                             7) %
                                         7,
-                                    j = Math.ceil((P + M) / 7),
-                                    I =
-                                        G && this.maxRows > j ?
+                                    I = Math.ceil((P + M) / 7),
+                                    j =
+                                        K && this.maxRows > I ?
                                             this.maxRows
-                                        :   j,
-                                    this.maxRows = I,
+                                        :   I,
+                                    this.maxRows = j,
                                     D = this._daylightSavingAdjust(
                                         new Date(ee, X, 1 - P)
                                     ),
-                                    N = 0;
-                                N < I;
-                                N++
+                                    L = 0;
+                                L < j;
+                                L++
                             ) {
                                 for (
                                     T += '<tr>',
-                                        L =
+                                        N =
                                             d ?
                                                 "<td class='ui-datepicker-week-col'>" +
                                                 this._get(
@@ -36592,7 +38277,7 @@ Object.values ||
                                     w < 7;
                                     w++
                                 )
-                                    (O =
+                                    (R =
                                         f ?
                                             f.apply(
                                                 e.input ? e.input[0] : null,
@@ -36600,24 +38285,24 @@ Object.values ||
                                             )
                                         :   [!0, '']),
                                         (B =
-                                            ((R = D.getMonth() !== X) && !v) ||
-                                            !O[0] ||
+                                            ((O = D.getMonth() !== X) && !v) ||
+                                            !R[0] ||
                                             (J && D < J) ||
                                             (Q && D > Q)),
-                                        (L +=
+                                        (N +=
                                             "<td class='" +
                                             ((w + u + 6) % 7 >= 5 ?
                                                 ' ui-datepicker-week-end'
                                             :   '') +
-                                            (R ?
+                                            (O ?
                                                 ' ui-datepicker-other-month'
                                             :   '') +
                                             ((
-                                                (D.getTime() === C.getTime() &&
+                                                (D.getTime() === z.getTime() &&
                                                     X === e.selectedMonth &&
                                                     e._keyEvent) ||
                                                 (b.getTime() === D.getTime() &&
-                                                    b.getTime() === C.getTime())
+                                                    b.getTime() === z.getTime())
                                             ) ?
                                                 ' ' + this._dayOverClass
                                             :   '') +
@@ -36626,9 +38311,9 @@ Object.values ||
                                                 this._unselectableClass +
                                                 ' ui-state-disabled'
                                             :   '') +
-                                            (R && !g ? '' : (
+                                            (O && !g ? '' : (
                                                 ' ' +
-                                                O[1] +
+                                                R[1] +
                                                 (D.getTime() === Y.getTime() ?
                                                     ' ' + this._currentClass
                                                 :   '') +
@@ -36637,10 +38322,10 @@ Object.values ||
                                                 :   '')
                                             )) +
                                             "'" +
-                                            ((R && !g) || !O[2] ?
+                                            ((O && !g) || !R[2] ?
                                                 ''
                                             :   " title='" +
-                                                O[2].replace(/'/g, '&#39;') +
+                                                R[2].replace(/'/g, '&#39;') +
                                                 "'") +
                                             (B ? '' : (
                                                 " data-handler='selectDay' data-event='click' data-month='" +
@@ -36650,7 +38335,7 @@ Object.values ||
                                                 "'"
                                             )) +
                                             '>' +
-                                            (R && !g ? '&#xa0;'
+                                            (O && !g ? '&#xa0;'
                                             : B ?
                                                 "<span class='ui-state-default'>" +
                                                 D.getDate() +
@@ -36662,7 +38347,7 @@ Object.values ||
                                                 (D.getTime() === Y.getTime() ?
                                                     ' ui-state-active'
                                                 :   '') +
-                                                (R ?
+                                                (O ?
                                                     ' ui-priority-secondary'
                                                 :   '') +
                                                 "' href='#'>" +
@@ -36671,14 +38356,14 @@ Object.values ||
                                             '</td>'),
                                         D.setDate(D.getDate() + 1),
                                         (D = this._daylightSavingAdjust(D));
-                                T += L + '</tr>';
+                                T += N + '</tr>';
                             }
                             ++X > 11 && ((X = 0), ee++),
                                 (x += T +=
                                     '</tbody></table>' +
-                                    (G ?
+                                    (K ?
                                         '</div>' +
-                                        (U[0] > 0 && z === U[1] - 1 ?
+                                        (U[0] > 0 && C === U[1] - 1 ?
                                             "<div class='ui-datepicker-row-break'></div>"
                                         :   '')
                                     :   ''));
@@ -40047,8 +41732,8 @@ Object.values ||
          */
         var k,
             x,
-            z = 'ui-effects-',
-            C = e;
+            C = 'ui-effects-',
+            z = e;
         (e.effects = { effect: {} }),
             /*!
              * jQuery Color Animations v2.1.2
@@ -40591,7 +42276,7 @@ Object.values ||
                             transparent: [null, null, null, 0],
                             _default: '#ffffff',
                         });
-            })(C),
+            })(z),
             (function () {
                 function t(t) {
                     var i,
@@ -40646,7 +42331,7 @@ Object.values ||
                         e.fx.step[i] = function (e) {
                             (('none' !== e.end && !e.setAttr) ||
                                 (1 === e.pos && !e.setAttr)) &&
-                                (C.style(e.elem, i, e.end), (e.setAttr = !0));
+                                (z.style(e.elem, i, e.end), (e.setAttr = !0));
                         };
                     }
                 ),
@@ -40801,13 +42486,13 @@ Object.values ||
                     version: '1.11.4',
                     save: function (e, t) {
                         for (var i = 0; i < t.length; i++)
-                            null !== t[i] && e.data(z + t[i], e[0].style[t[i]]);
+                            null !== t[i] && e.data(C + t[i], e[0].style[t[i]]);
                     },
                     restore: function (e, t) {
                         var i, n;
                         for (n = 0; n < t.length; n++)
                             null !== t[n] &&
-                                (void 0 === (i = e.data(z + t[n])) && (i = ''),
+                                (void 0 === (i = e.data(C + t[n])) && (i = ''),
                                 e.css(t[n], i));
                     },
                     setMode: function (e, t) {
@@ -44228,20 +45913,20 @@ Object.values ||
                     var w = r ? 0 : c,
                         k = w + h,
                         x = l.scrollLeft(),
-                        z = x + d,
-                        C = a.position(),
-                        S = C.top,
+                        C = x + d,
+                        z = a.position(),
+                        S = z.top,
                         T = S + a.height(),
-                        A = C.left,
+                        A = z.left,
                         E = A + a.width(),
                         M = !0 === i ? T : S,
                         P = !0 === i ? S : T,
-                        j = !0 === i ? E : A,
-                        I = !0 === i ? A : E;
+                        I = !0 === i ? E : A,
+                        j = !0 === i ? A : E;
                     if ('both' === s)
-                        return !!p && P <= k && M >= w && I <= z && j >= x;
+                        return !!p && P <= k && M >= w && j <= C && I >= x;
                     if ('vertical' === s) return !!p && P <= k && M >= w;
-                    if ('horizontal' === s) return !!p && I <= z && j >= x;
+                    if ('horizontal' === s) return !!p && j <= C && I >= x;
                 }
             }
         };
@@ -46995,13 +48680,13 @@ Object.values ||
         function x(e, t) {
             return !e || e instanceof k ? e : new k(e, t);
         }
-        function z(e, t) {
+        function C(e, t) {
             if (e)
                 for (var i = t ? [e, t] : e, n = 0, s = i.length; n < s; n++)
                     this.extend(i[n]);
         }
-        function C(e, t) {
-            return e instanceof z ? e : new z(e, t);
+        function z(e, t) {
+            return e instanceof C ? e : new C(e, t);
         }
         function S(e, t, i) {
             if (isNaN(e) || isNaN(t))
@@ -47059,10 +48744,10 @@ Object.values ||
             }
             return l || 'M0 0';
         }
-        function j(e) {
+        function I(e) {
             return navigator.userAgent.toLowerCase().indexOf(e) >= 0;
         }
-        function I(e, t, i, n) {
+        function j(e, t, i, n) {
             return (
                 'touchstart' === t ? N(e, i, n)
                 : 'touchmove' === t ? F(e, i, n)
@@ -47096,16 +48781,16 @@ Object.values ||
             (e['_leaflet_touchstart' + n] = s),
                 e.addEventListener(ei, s, !1),
                 ai ||
-                    (document.documentElement.addEventListener(ei, O, !0),
-                    document.documentElement.addEventListener(ti, R, !0),
+                    (document.documentElement.addEventListener(ei, R, !0),
+                    document.documentElement.addEventListener(ti, O, !0),
                     document.documentElement.addEventListener(ii, B, !0),
                     document.documentElement.addEventListener(ni, B, !0),
                     (ai = !0));
         }
-        function O(e) {
+        function R(e) {
             (oi[e.pointerId] = e), ri++;
         }
-        function R(e) {
+        function O(e) {
             oi[e.pointerId] && (oi[e.pointerId] = e);
         }
         function B(e) {
@@ -47132,11 +48817,11 @@ Object.values ||
                 e.addEventListener(ii, n, !1),
                 e.addEventListener(ni, n, !1);
         }
-        function W(e, t, i) {
+        function q(e, t, i) {
             function n(e) {
                 var t;
-                if (qt) {
-                    if (!zt || 'mouse' === e.pointerType) return;
+                if (Wt) {
+                    if (!Ct || 'mouse' === e.pointerType) return;
                     t = ri;
                 } else t = e.touches.length;
                 if (!(t > 1)) {
@@ -47149,8 +48834,8 @@ Object.values ||
             }
             function s(e) {
                 if (r && !a.cancelBubble) {
-                    if (qt) {
-                        if (!zt || 'mouse' === e.pointerType) return;
+                    if (Wt) {
+                        if (!Ct || 'mouse' === e.pointerType) return;
                         var i,
                             n,
                             s = {};
@@ -47182,11 +48867,11 @@ Object.values ||
             return (
                 e.removeEventListener(li, i, !1),
                 e.removeEventListener(ci, n, !1),
-                zt || e.removeEventListener('dblclick', s, !1),
+                Ct || e.removeEventListener('dblclick', s, !1),
                 this
             );
         }
-        function q(e) {
+        function W(e) {
             return 'string' == typeof e ? document.getElementById(e) : e;
         }
         function U(e, t) {
@@ -47201,11 +48886,11 @@ Object.values ||
             var n = document.createElement(e);
             return (n.className = t || ''), i && i.appendChild(n), n;
         }
-        function K(e) {
+        function G(e) {
             var t = e.parentNode;
             t && t.removeChild(e);
         }
-        function G(e) {
+        function K(e) {
             for (; e.firstChild; ) e.removeChild(e.firstChild);
         }
         function Y(e) {
@@ -47280,7 +48965,7 @@ Object.values ||
         function ae(e, t, i) {
             var n = t || new y(0, 0);
             e.style[di] =
-                (Ot ?
+                (Rt ?
                     'translate(' + n.x + 'px,' + n.y + 'px)'
                 :   'translate3d(' + n.x + 'px,' + n.y + 'px,0)') +
                 (i ? ' scale(' + i + ')' : '');
@@ -47357,8 +49042,8 @@ Object.values ||
                     return i.call(s || e, t || window.event);
                 },
                 r = a;
-            qt && 0 === t.indexOf('touch') ? I(e, t, a, o)
-            : !Ut || 'dblclick' !== t || !W || (qt && Pt) ?
+            Wt && 0 === t.indexOf('touch') ? j(e, t, a, o)
+            : !Ut || 'dblclick' !== t || !q || (Wt && Pt) ?
                 'addEventListener' in e ?
                     'mousewheel' === t ?
                         e.addEventListener(
@@ -47382,7 +49067,7 @@ Object.values ||
                             }),
                         e.addEventListener(t, a, !1))
                 :   'attachEvent' in e && e.attachEvent('on' + t, a)
-            :   W(e, a, o),
+            :   q(e, a, o),
                 (e[bi] = e[bi] || {}),
                 (e[bi][o] = a);
         }
@@ -47390,8 +49075,8 @@ Object.values ||
             var o = t + n(i) + (s ? '_' + n(s) : ''),
                 a = e[bi] && e[bi][o];
             if (!a) return this;
-            qt && 0 === t.indexOf('touch') ? D(e, t, o)
-            : !Ut || 'dblclick' !== t || !V || (qt && Pt) ?
+            Wt && 0 === t.indexOf('touch') ? D(e, t, o)
+            : !Ut || 'dblclick' !== t || !V || (Wt && Pt) ?
                 'removeEventListener' in e ?
                     'mousewheel' === t ?
                         e.removeEventListener(
@@ -47438,7 +49123,7 @@ Object.values ||
         function xe(e) {
             return ke(e), be(e), this;
         }
-        function ze(e, t) {
+        function Ce(e, t) {
             if (!t) return new y(e.clientX, e.clientY);
             var i = me(t),
                 n = i.boundingClientRect;
@@ -47447,9 +49132,9 @@ Object.values ||
                 (e.clientY - n.top) / i.y - t.clientTop
             );
         }
-        function Ce(e) {
+        function ze(e) {
             return (
-                zt ? e.wheelDeltaY / 2
+                Ct ? e.wheelDeltaY / 2
                 : e.deltaY && 0 === e.deltaMode ? -e.deltaY / yi
                 : e.deltaY && 1 === e.deltaMode ? 20 * -e.deltaY
                 : e.deltaY && 2 === e.deltaMode ? 60 * -e.deltaY
@@ -47492,50 +49177,50 @@ Object.values ||
         function Me(e, t) {
             if (!t || !e.length) return e.slice();
             var i = t * t;
-            return je((e = De(e, i)), i);
+            return Ie((e = De(e, i)), i);
         }
         function Pe(e, t, i) {
             return Math.sqrt(Be(e, t, i, !0));
         }
-        function je(e, t) {
+        function Ie(e, t) {
             var i = e.length,
                 n = new (typeof Uint8Array != void 0 + '' ? Uint8Array : Array)(
                     i
                 );
-            (n[0] = n[i - 1] = 1), Ie(e, n, t, 0, i - 1);
+            (n[0] = n[i - 1] = 1), je(e, n, t, 0, i - 1);
             var s,
                 o = [];
             for (s = 0; s < i; s++) n[s] && o.push(e[s]);
             return o;
         }
-        function Ie(e, t, i, n, s) {
+        function je(e, t, i, n, s) {
             var o,
                 a,
                 r,
                 l = 0;
             for (a = n + 1; a <= s - 1; a++)
                 (r = Be(e[a], e[n], e[s], !0)) > l && ((o = a), (l = r));
-            l > i && ((t[o] = 1), Ie(e, t, i, n, o), Ie(e, t, i, o, s));
+            l > i && ((t[o] = 1), je(e, t, i, n, o), je(e, t, i, o, s));
         }
         function De(e, t) {
             for (var i = [e[0]], n = 1, s = 0, o = e.length; n < o; n++)
-                Re(e[n], e[s]) > t && (i.push(e[n]), (s = n));
+                Oe(e[n], e[s]) > t && (i.push(e[n]), (s = n));
             return s < o - 1 && i.push(e[o - 1]), i;
         }
-        function Ne(e, t, i, n, s) {
+        function Le(e, t, i, n, s) {
             var o,
                 a,
                 r,
-                l = n ? ji : Oe(e, i),
-                c = Oe(t, i);
-            for (ji = c; ; ) {
+                l = n ? Ii : Re(e, i),
+                c = Re(t, i);
+            for (Ii = c; ; ) {
                 if (!(l | c)) return [e, t];
                 if (l & c) return !1;
-                (r = Oe((a = Le(e, t, (o = l || c), i, s)), i)),
+                (r = Re((a = Ne(e, t, (o = l || c), i, s)), i)),
                     o === l ? ((e = a), (l = r)) : ((t = a), (c = r));
             }
         }
-        function Le(e, t, i, n, s) {
+        function Ne(e, t, i, n, s) {
             var o,
                 a,
                 r = t.x - e.x,
@@ -47550,7 +49235,7 @@ Object.values ||
                 new y(o, a, s)
             );
         }
-        function Oe(e, t) {
+        function Re(e, t) {
             var i = 0;
             return (
                 e.x < t.min.x ? (i |= 1) : e.x > t.max.x && (i |= 2),
@@ -47558,7 +49243,7 @@ Object.values ||
                 i
             );
         }
-        function Re(e, t) {
+        function Oe(e, t) {
             var i = t.x - e.x,
                 n = t.y - e.y;
             return i * i + n * n;
@@ -47604,7 +49289,7 @@ Object.values ||
                 u,
                 d,
                 h = [1, 4, 2, 8];
-            for (s = 0, c = e.length; s < c; s++) e[s]._code = Oe(e[s], t);
+            for (s = 0, c = e.length; s < c; s++) e[s]._code = Re(e[s], t);
             for (a = 0; a < 4; a++) {
                 for (
                     u = h[a], n = [], s = 0, o = (c = e.length) - 1;
@@ -47615,17 +49300,17 @@ Object.values ||
                         (l = e[o]),
                         r._code & u ?
                             l._code & u ||
-                            (((d = Le(l, r, u, t, i))._code = Oe(d, t)),
+                            (((d = Ne(l, r, u, t, i))._code = Re(d, t)),
                             n.push(d))
                         :   (l._code & u &&
-                                (((d = Le(l, r, u, t, i))._code = Oe(d, t)),
+                                (((d = Ne(l, r, u, t, i))._code = Re(d, t)),
                                 n.push(d)),
                             n.push(r));
                 e = n;
             }
             return e;
         }
-        function We(e, t) {
+        function qe(e, t) {
             var i,
                 n,
                 s,
@@ -47642,22 +49327,22 @@ Object.values ||
                 case 'MultiPoint':
                     for (s = 0, o = r.length; s < o; s++)
                         (i = u(r[s])), l.push(c ? c(e, i) : new Qi(i));
-                    return new Ki(l);
+                    return new Gi(l);
                 case 'LineString':
                 case 'MultiLineString':
                     return (
-                        (n = qe(r, 'LineString' === a.type ? 0 : 1, u)),
+                        (n = We(r, 'LineString' === a.type ? 0 : 1, u)),
                         new nn(n, t)
                     );
                 case 'Polygon':
                 case 'MultiPolygon':
                     return (
-                        (n = qe(r, 'Polygon' === a.type ? 1 : 2, u)),
+                        (n = We(r, 'Polygon' === a.type ? 1 : 2, u)),
                         new sn(n, t)
                     );
                 case 'GeometryCollection':
                     for (s = 0, o = a.geometries.length; s < o; s++) {
-                        var d = We(
+                        var d = qe(
                             {
                                 geometry: a.geometries[s],
                                 type: 'Feature',
@@ -47667,7 +49352,7 @@ Object.values ||
                         );
                         d && l.push(d);
                     }
-                    return new Ki(l);
+                    return new Gi(l);
                 default:
                     throw new Error('Invalid GeoJSON object.');
             }
@@ -47675,9 +49360,9 @@ Object.values ||
         function Ve(e) {
             return new S(e[1], e[0], e[2]);
         }
-        function qe(e, t, i) {
+        function We(e, t, i) {
             for (var n, s = [], o = 0, a = e.length; o < a; o++)
-                (n = t ? qe(e[o], t - 1, i) : (i || Ve)(e[o])), s.push(n);
+                (n = t ? We(e[o], t - 1, i) : (i || Ve)(e[o])), s.push(n);
             return s;
         }
         function Ue(e, t) {
@@ -47693,10 +49378,10 @@ Object.values ||
                 s.push(t ? Ze(e[o], t - 1, i, n) : Ue(e[o], n));
             return !t && i && s.push(s[0]), s;
         }
-        function Ke(e, i) {
-            return e.feature ? t({}, e.feature, { geometry: i }) : Ge(i);
+        function Ge(e, i) {
+            return e.feature ? t({}, e.feature, { geometry: i }) : Ke(i);
         }
-        function Ge(e) {
+        function Ke(e) {
             return 'Feature' === e.type || 'FeatureCollection' === e.type ?
                     e
                 :   { type: 'Feature', properties: {}, geometry: e };
@@ -48108,7 +49793,7 @@ Object.values ||
                     return !(!this.min || !this.max);
                 },
             }),
-            (z.prototype = {
+            (C.prototype = {
                 extend: function (e) {
                     var t,
                         i,
@@ -48116,8 +49801,8 @@ Object.values ||
                         s = this._northEast;
                     if (e instanceof S) (t = e), (i = e);
                     else {
-                        if (!(e instanceof z))
-                            return e ? this.extend(T(e) || C(e)) : this;
+                        if (!(e instanceof C))
+                            return e ? this.extend(T(e) || z(e)) : this;
                         if (((t = e._southWest), (i = e._northEast), !t || !i))
                             return this;
                     }
@@ -48137,7 +49822,7 @@ Object.values ||
                         i = this._northEast,
                         n = Math.abs(t.lat - i.lat) * e,
                         s = Math.abs(t.lng - i.lng) * e;
-                    return new z(
+                    return new C(
                         new S(t.lat - n, t.lng - s),
                         new S(i.lat + n, i.lng + s)
                     );
@@ -48180,13 +49865,13 @@ Object.values ||
                             'lat' in e
                         ) ?
                             T(e)
-                        :   C(e);
+                        :   z(e);
                     var t,
                         i,
                         n = this._southWest,
                         s = this._northEast;
                     return (
-                        e instanceof z ?
+                        e instanceof C ?
                             ((t = e.getSouthWest()), (i = e.getNorthEast()))
                         :   (t = i = e),
                         t.lat >= n.lat &&
@@ -48196,7 +49881,7 @@ Object.values ||
                     );
                 },
                 intersects: function (e) {
-                    e = C(e);
+                    e = z(e);
                     var t = this._southWest,
                         i = this._northEast,
                         n = e.getSouthWest(),
@@ -48206,7 +49891,7 @@ Object.values ||
                     return o && a;
                 },
                 overlaps: function (e) {
-                    e = C(e);
+                    e = z(e);
                     var t = this._southWest,
                         i = this._northEast,
                         n = e.getSouthWest(),
@@ -48226,7 +49911,7 @@ Object.values ||
                 equals: function (e, t) {
                     return (
                         !!e &&
-                        ((e = C(e)),
+                        ((e = z(e)),
                         this._southWest.equals(e.getSouthWest(), t) &&
                             this._northEast.equals(e.getNorthEast(), t))
                     );
@@ -48260,7 +49945,7 @@ Object.values ||
                 toBounds: function (e) {
                     var t = (180 * e) / 40075017,
                         i = t / Math.cos((Math.PI / 180) * this.lat);
-                    return C(
+                    return z(
                         [this.lat - t, this.lng - i],
                         [this.lat + t, this.lng + i]
                     );
@@ -48318,7 +50003,7 @@ Object.values ||
                     if (0 === n && 0 === s) return e;
                     var o = e.getSouthWest(),
                         a = e.getNorthEast();
-                    return new z(
+                    return new C(
                         new S(o.lat - n, o.lng - s),
                         new S(a.lat - n, a.lng - s)
                     );
@@ -48401,43 +50086,43 @@ Object.values ||
             wt = document.documentElement.style,
             kt = 'ActiveXObject' in window,
             xt = kt && !document.addEventListener,
-            zt = 'msLaunchUri' in navigator && !('documentMode' in document),
-            Ct = j('webkit'),
-            St = j('android'),
-            Tt = j('android 2') || j('android 3'),
+            Ct = 'msLaunchUri' in navigator && !('documentMode' in document),
+            zt = I('webkit'),
+            St = I('android'),
+            Tt = I('android 2') || I('android 3'),
             At = parseInt(
                 /WebKit\/([0-9]+)|$/.exec(navigator.userAgent)[1],
                 10
             ),
-            Et = St && j('Google') && At < 537 && !('AudioNode' in window),
+            Et = St && I('Google') && At < 537 && !('AudioNode' in window),
             Mt = !!window.opera,
-            Pt = j('chrome'),
-            jt = j('gecko') && !Ct && !Mt && !kt,
-            It = !Pt && j('safari'),
-            Dt = j('phantom'),
-            Nt = 'OTransition' in wt,
-            Lt = 0 === navigator.platform.indexOf('Win'),
-            Ot = kt && 'transition' in wt,
-            Rt =
+            Pt = I('chrome'),
+            It = I('gecko') && !zt && !Mt && !kt,
+            jt = !Pt && I('safari'),
+            Dt = I('phantom'),
+            Lt = 'OTransition' in wt,
+            Nt = 0 === navigator.platform.indexOf('Win'),
+            Rt = kt && 'transition' in wt,
+            Ot =
                 'WebKitCSSMatrix' in window &&
                 'm11' in new window.WebKitCSSMatrix() &&
                 !Tt,
             Bt = 'MozPerspective' in wt,
-            $t = !window.L_DISABLE_3D && (Ot || Rt || Bt) && !Nt && !Dt,
-            Ft = 'undefined' != typeof orientation || j('mobile'),
-            Ht = Ft && Ct,
-            Wt = Ft && Rt,
+            $t = !window.L_DISABLE_3D && (Rt || Ot || Bt) && !Lt && !Dt,
+            Ft = 'undefined' != typeof orientation || I('mobile'),
+            Ht = Ft && zt,
+            qt = Ft && Ot,
             Vt = !window.PointerEvent && window.MSPointerEvent,
-            qt = !(!window.PointerEvent && !Vt),
+            Wt = !(!window.PointerEvent && !Vt),
             Ut =
                 !window.L_NO_TOUCH &&
-                (qt ||
+                (Wt ||
                     'ontouchstart' in window ||
                     (window.DocumentTouch &&
                         document instanceof window.DocumentTouch)),
             Zt = Ft && Mt,
-            Kt = Ft && jt,
-            Gt =
+            Gt = Ft && It,
+            Kt =
                 (window.devicePixelRatio ||
                     window.screen.deviceXDPI / window.screen.logicalXDPI) > 1,
             Yt = !!document.createElement('canvas').getContext,
@@ -48460,31 +50145,31 @@ Object.values ||
             Xt = (Object.freeze || Object)({
                 ie: kt,
                 ielt9: xt,
-                edge: zt,
-                webkit: Ct,
+                edge: Ct,
+                webkit: zt,
                 android: St,
                 android23: Tt,
                 androidStock: Et,
                 opera: Mt,
                 chrome: Pt,
-                gecko: jt,
-                safari: It,
+                gecko: It,
+                safari: jt,
                 phantom: Dt,
-                opera12: Nt,
-                win: Lt,
-                ie3d: Ot,
-                webkit3d: Rt,
+                opera12: Lt,
+                win: Nt,
+                ie3d: Rt,
+                webkit3d: Ot,
                 gecko3d: Bt,
                 any3d: $t,
                 mobile: Ft,
                 mobileWebkit: Ht,
-                mobileWebkit3d: Wt,
+                mobileWebkit3d: qt,
                 msPointer: Vt,
-                pointer: qt,
+                pointer: Wt,
                 touch: Ut,
                 mobileOpera: Zt,
-                mobileGecko: Kt,
-                retina: Gt,
+                mobileGecko: Gt,
+                retina: Kt,
                 canvas: Yt,
                 svg: Jt,
                 vml: Qt,
@@ -48499,11 +50184,11 @@ Object.values ||
             ri = 0,
             li =
                 Vt ? 'MSPointerDown'
-                : qt ? 'pointerdown'
+                : Wt ? 'pointerdown'
                 : 'touchstart',
             ci =
                 Vt ? 'MSPointerUp'
-                : qt ? 'pointerup'
+                : Wt ? 'pointerup'
                 : 'touchend',
             ui = '_leaflet_',
             di = oe([
@@ -48558,11 +50243,11 @@ Object.values ||
                 TRANSFORM: di,
                 TRANSITION: hi,
                 TRANSITION_END: pi,
-                get: q,
+                get: W,
                 getStyle: U,
                 create: Z,
-                remove: K,
-                empty: G,
+                remove: G,
+                empty: K,
                 toFront: Y,
                 toBack: J,
                 hasClass: Q,
@@ -48586,8 +50271,8 @@ Object.values ||
             }),
             bi = '_leaflet_events',
             yi =
-                Lt && Pt ? 2 * window.devicePixelRatio
-                : jt ? window.devicePixelRatio
+                Nt && Pt ? 2 * window.devicePixelRatio
+                : It ? window.devicePixelRatio
                 : 1,
             wi = {},
             ki = (Object.freeze || Object)({
@@ -48598,8 +50283,8 @@ Object.values ||
                 disableClickPropagation: we,
                 preventDefault: ke,
                 stop: xe,
-                getMousePosition: ze,
-                getWheelDelta: Ce,
+                getMousePosition: Ce,
+                getWheelDelta: ze,
                 fakeStop: Se,
                 skipped: Te,
                 isExternalTarget: Ae,
@@ -48643,7 +50328,7 @@ Object.values ||
                     return 1 - Math.pow(1 - e, this._easeOutPower);
                 },
             }),
-            zi = dt.extend({
+            Ci = dt.extend({
                 options: {
                     crs: bt,
                     center: void 0,
@@ -48751,7 +50436,7 @@ Object.values ||
                     return this.setView(a, t, { zoom: i });
                 },
                 _getBoundsCenterZoom: function (e, t) {
-                    (t = t || {}), (e = e.getBounds ? e.getBounds() : C(e));
+                    (t = t || {}), (e = e.getBounds ? e.getBounds() : z(e));
                     var i = w(t.paddingTopLeft || t.padding || [0, 0]),
                         n = w(t.paddingBottomRight || t.padding || [0, 0]),
                         s = this.getBoundsZoom(e, !1, i.add(n));
@@ -48772,7 +50457,7 @@ Object.values ||
                     };
                 },
                 fitBounds: function (e, t) {
-                    if (!(e = C(e)).isValid())
+                    if (!(e = z(e)).isValid())
                         throw new Error('Bounds are not valid.');
                     var i = this._getBoundsCenterZoom(e, t);
                     return this.setView(i.center, i.zoom, t);
@@ -48853,7 +50538,7 @@ Object.values ||
                         return 1 - Math.pow(1 - e, 1.5);
                     }
                     function u() {
-                        var i = (Date.now() - k) / z,
+                        var i = (Date.now() - k) / C,
                             n = c(i) * x;
                         i <= 1 ?
                             ((this._flyToFrame = f(u, this)),
@@ -48883,7 +50568,7 @@ Object.values ||
                         w = n(0),
                         k = Date.now(),
                         x = (n(1) - w) / b,
-                        z = i.duration ? 1e3 * i.duration : 1e3 * x * 0.8;
+                        C = i.duration ? 1e3 * i.duration : 1e3 * x * 0.8;
                     return (
                         this._moveStart(!0, i.noMoveStart), u.call(this), this
                     );
@@ -48893,7 +50578,7 @@ Object.values ||
                     return this.flyTo(i.center, i.zoom, t);
                 },
                 setMaxBounds: function (e) {
-                    return (e = C(e)).isValid() ?
+                    return (e = z(e)).isValid() ?
                             (this.options.maxBounds &&
                                 this.off('moveend', this._panInsideMaxBounds),
                             (this.options.maxBounds = e),
@@ -48933,7 +50618,7 @@ Object.values ||
                 panInsideBounds: function (e, t) {
                     this._enforcingBounds = !0;
                     var i = this.getCenter(),
-                        n = this._limitCenter(i, this._zoom, C(e));
+                        n = this._limitCenter(i, this._zoom, z(e));
                     return (
                         i.equals(n) || this.panTo(n, t),
                         (this._enforcingBounds = !1),
@@ -49093,7 +50778,7 @@ Object.values ||
                     for (e in (void 0 !== this._locationWatchId &&
                         this.stopLocate(),
                     this._stop(),
-                    K(this._mapPane),
+                    G(this._mapPane),
                     this._clearControlPos && this._clearControlPos(),
                     this._resizeRequest &&
                         (g(this._resizeRequest), (this._resizeRequest = null)),
@@ -49101,7 +50786,7 @@ Object.values ||
                     this._loaded && this.fire('unload'),
                     this._layers))
                         this._layers[e].remove();
-                    for (e in this._panes) K(this._panes[e]);
+                    for (e in this._panes) G(this._panes[e]);
                     return (
                         (this._layers = []),
                         (this._panes = []),
@@ -49134,7 +50819,7 @@ Object.values ||
                 },
                 getBounds: function () {
                     var e = this.getPixelBounds();
-                    return new z(
+                    return new C(
                         this.unproject(e.getBottomLeft()),
                         this.unproject(e.getTopRight())
                     );
@@ -49154,7 +50839,7 @@ Object.values ||
                     );
                 },
                 getBoundsZoom: function (e, t, i) {
-                    (e = C(e)), (i = w(i || [0, 0]));
+                    (e = z(e)), (i = w(i || [0, 0]));
                     var n = this.getZoom() || 0,
                         s = this.getMinZoom(),
                         o = this.getMaxZoom(),
@@ -49247,7 +50932,7 @@ Object.values ||
                     return this.options.crs.wrapLatLng(T(e));
                 },
                 wrapLatLngBounds: function (e) {
-                    return this.options.crs.wrapLatLngBounds(C(e));
+                    return this.options.crs.wrapLatLngBounds(z(e));
                 },
                 distance: function (e, t) {
                     return this.options.crs.distance(T(e), T(t));
@@ -49268,7 +50953,7 @@ Object.values ||
                     );
                 },
                 mouseEventToContainerPoint: function (e) {
-                    return ze(e, this._container);
+                    return Ce(e, this._container);
                 },
                 mouseEventToLayerPoint: function (e) {
                     return this.containerPointToLayerPoint(
@@ -49281,7 +50966,7 @@ Object.values ||
                     );
                 },
                 _initContainer: function (e) {
-                    var t = (this._container = q(e));
+                    var t = (this._container = W(e));
                     if (!t) throw new Error('Map container not found.');
                     if (t._leaflet_id)
                         throw new Error(
@@ -49297,9 +50982,9 @@ Object.values ||
                             e,
                             'leaflet-container' +
                                 (Ut ? ' leaflet-touch' : '') +
-                                (Gt ? ' leaflet-retina' : '') +
+                                (Kt ? ' leaflet-retina' : '') +
                                 (xt ? ' leaflet-oldie' : '') +
-                                (It ? ' leaflet-safari' : '') +
+                                (jt ? ' leaflet-safari' : '') +
                                 (this._fadeAnimated ? ' leaflet-fade-anim' : '')
                         );
                     var t = U(e, 'position');
@@ -49658,7 +51343,7 @@ Object.values ||
                         this._on('unload', this._destroyAnimProxy, this);
                 },
                 _destroyAnimProxy: function () {
-                    K(this._proxy), delete this._proxy;
+                    G(this._proxy), delete this._proxy;
                 },
                 _catchTransitionEnd: function (e) {
                     this._animatingZoom &&
@@ -49716,7 +51401,7 @@ Object.values ||
                         }, this));
                 },
             }),
-            Ci = v.extend({
+            zi = v.extend({
                 options: { position: 'topright' },
                 initialize: function (e) {
                     u(this, e);
@@ -49751,7 +51436,7 @@ Object.values ||
                 },
                 remove: function () {
                     return this._map ?
-                            (K(this._container),
+                            (G(this._container),
                             this.onRemove && this.onRemove(this._map),
                             (this._map = null),
                             this)
@@ -49766,9 +51451,9 @@ Object.values ||
                 },
             }),
             Si = function (e) {
-                return new Ci(e);
+                return new zi(e);
             };
-        zi.include({
+        Ci.include({
             addControl: function (e) {
                 return e.addTo(this), this;
             },
@@ -49793,13 +51478,13 @@ Object.values ||
                     e('bottom', 'right');
             },
             _clearControlPos: function () {
-                for (var e in this._controlCorners) K(this._controlCorners[e]);
-                K(this._controlContainer),
+                for (var e in this._controlCorners) G(this._controlCorners[e]);
+                G(this._controlContainer),
                     delete this._controlCorners,
                     delete this._controlContainer;
             },
         });
-        var Ti = Ci.extend({
+        var Ti = zi.extend({
                 options: {
                     collapsed: !0,
                     position: 'topright',
@@ -49839,7 +51524,7 @@ Object.values ||
                 },
                 addTo: function (e) {
                     return (
-                        Ci.prototype.addTo.call(this, e),
+                        zi.prototype.addTo.call(this, e),
                         this._expandIfNotCollapsed()
                     );
                 },
@@ -49954,8 +51639,8 @@ Object.values ||
                 },
                 _update: function () {
                     if (!this._container) return this;
-                    G(this._baseLayersList),
-                        G(this._overlaysList),
+                    K(this._baseLayersList),
+                        K(this._overlaysList),
                         (this._layerControlInputs = []);
                     var e,
                         t,
@@ -50078,7 +51763,7 @@ Object.values ||
                     return this.collapse();
                 },
             }),
-            Ai = Ci.extend({
+            Ai = zi.extend({
                 options: {
                     position: 'topleft',
                     zoomInText: '+',
@@ -50167,13 +51852,13 @@ Object.values ||
                             X(this._zoomInButton, t);
                 },
             });
-        zi.mergeOptions({ zoomControl: !0 }),
-            zi.addInitHook(function () {
+        Ci.mergeOptions({ zoomControl: !0 }),
+            Ci.addInitHook(function () {
                 this.options.zoomControl &&
                     ((this.zoomControl = new Ai()),
                     this.addControl(this.zoomControl));
             });
-        var Ei = Ci.extend({
+        var Ei = zi.extend({
                 options: {
                     position: 'bottomleft',
                     maxWidth: 100,
@@ -50254,7 +51939,7 @@ Object.values ||
                     );
                 },
             }),
-            Mi = Ci.extend({
+            Mi = zi.extend({
                 options: {
                     position: 'bottomright',
                     prefix: '<a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>',
@@ -50302,14 +51987,14 @@ Object.values ||
                     }
                 },
             });
-        zi.mergeOptions({ attributionControl: !0 }),
-            zi.addInitHook(function () {
+        Ci.mergeOptions({ attributionControl: !0 }),
+            Ci.addInitHook(function () {
                 this.options.attributionControl && new Mi().addTo(this);
             }),
-            (Ci.Layers = Ti),
-            (Ci.Zoom = Ai),
-            (Ci.Scale = Ei),
-            (Ci.Attribution = Mi),
+            (zi.Layers = Ti),
+            (zi.Zoom = Ai),
+            (zi.Scale = Ei),
+            (zi.Attribution = Mi),
             (Si.layers = function (e, t, i) {
                 return new Ti(e, t, i);
             }),
@@ -50344,22 +52029,22 @@ Object.values ||
         Pi.addTo = function (e, t) {
             return e.addHandler(t, this), this;
         };
-        var ji,
-            Ii = { Events: ut },
+        var Ii,
+            ji = { Events: ut },
             Di = Ut ? 'touchstart mousedown' : 'mousedown',
-            Ni = {
+            Li = {
                 mousedown: 'mouseup',
                 touchstart: 'touchend',
                 pointerdown: 'touchend',
                 MSPointerDown: 'touchend',
             },
-            Li = {
+            Ni = {
                 mousedown: 'mousemove',
                 touchstart: 'touchmove',
                 pointerdown: 'touchmove',
                 MSPointerDown: 'touchmove',
             },
-            Oi = dt.extend({
+            Ri = dt.extend({
                 options: { clickTolerance: 3 },
                 initialize: function (e, t, i, n) {
                     u(this, n),
@@ -50374,7 +52059,7 @@ Object.values ||
                 },
                 disable: function () {
                     this._enabled &&
-                        (Oi._dragging === this && this.finishDrag(),
+                        (Ri._dragging === this && this.finishDrag(),
                         fe(this._dragStartTarget, Di, this._onDown, this),
                         (this._enabled = !1),
                         (this._moved = !1));
@@ -50386,12 +52071,12 @@ Object.values ||
                         ((this._moved = !1),
                         !Q(this._element, 'leaflet-zoom-anim') &&
                             !(
-                                Oi._dragging ||
+                                Ri._dragging ||
                                 e.shiftKey ||
                                 (1 !== e.which &&
                                     1 !== e.button &&
                                     !e.touches) ||
-                                ((Oi._dragging = this),
+                                ((Ri._dragging = this),
                                 this._preventOutline && de(this._element),
                                 ce(),
                                 ft(),
@@ -50403,8 +52088,8 @@ Object.values ||
                             i = pe(this._element);
                         (this._startPoint = new y(t.clientX, t.clientY)),
                             (this._parentScale = me(i)),
-                            _e(document, Li[e.type], this._onMove, this),
-                            _e(document, Ni[e.type], this._onUp, this);
+                            _e(document, Ni[e.type], this._onMove, this),
+                            _e(document, Li[e.type], this._onUp, this);
                     }
                 },
                 _onMove: function (e) {
@@ -50467,9 +52152,9 @@ Object.values ||
                     this._lastTarget &&
                         (ee(this._lastTarget, 'leaflet-drag-target'),
                         (this._lastTarget = null)),
-                    Li))
-                        fe(document, Li[e], this._onMove, this),
-                            fe(document, Ni[e], this._onUp, this);
+                    Ni))
+                        fe(document, Ni[e], this._onMove, this),
+                            fe(document, Li[e], this._onUp, this);
                     ue(),
                         gt(),
                         this._moved &&
@@ -50481,18 +52166,18 @@ Object.values ||
                                 ),
                             })),
                         (this._moving = !1),
-                        (Oi._dragging = !1);
+                        (Ri._dragging = !1);
                 },
             }),
-            Ri = (Object.freeze || Object)({
+            Oi = (Object.freeze || Object)({
                 simplify: Me,
                 pointToSegmentDistance: Pe,
                 closestPointOnSegment: function (e, t, i) {
                     return Be(e, t, i);
                 },
-                clipSegment: Ne,
-                _getEdgeIntersection: Le,
-                _getBitCode: Oe,
+                clipSegment: Le,
+                _getEdgeIntersection: Ne,
+                _getBitCode: Re,
                 _sqClosestPointOnSegment: Be,
                 isFlat: $e,
                 _flat: Fe,
@@ -50554,7 +52239,7 @@ Object.values ||
                 Mercator: Fi,
                 SphericalMercator: _t,
             }),
-            Wi = t({}, mt, {
+            qi = t({}, mt, {
                 code: 'EPSG:3395',
                 projection: Fi,
                 transformation: (function () {
@@ -50567,7 +52252,7 @@ Object.values ||
                 projection: $i,
                 transformation: E(1 / 180, 1, -1 / 180, 0.5),
             }),
-            qi = t({}, pt, {
+            Wi = t({}, pt, {
                 projection: $i,
                 transformation: E(1, 0, -1, 0),
                 scale: function (e) {
@@ -50584,11 +52269,11 @@ Object.values ||
                 infinite: !0,
             });
         (pt.Earth = mt),
-            (pt.EPSG3395 = Wi),
+            (pt.EPSG3395 = qi),
             (pt.EPSG3857 = bt),
             (pt.EPSG900913 = yt),
             (pt.EPSG4326 = Vi),
-            (pt.Simple = qi);
+            (pt.Simple = Wi);
         var Ui = dt.extend({
             options: {
                 pane: 'overlayPane',
@@ -50647,7 +52332,7 @@ Object.values ||
                 }
             },
         });
-        zi.include({
+        Ci.include({
             addLayer: function (e) {
                 if (!e._layerAdd)
                     throw new Error('The provided object is not a Layer.');
@@ -50797,7 +52482,7 @@ Object.values ||
                     return n(e);
                 },
             }),
-            Ki = Zi.extend({
+            Gi = Zi.extend({
                 addLayer: function (e) {
                     return this.hasLayer(e) ? this : (
                             (e.addEventParent(this),
@@ -50823,7 +52508,7 @@ Object.values ||
                     return this.invoke('bringToBack');
                 },
                 getBounds: function () {
-                    var e = new z();
+                    var e = new C();
                     for (var t in this._layers) {
                         var i = this._layers[t];
                         e.extend(i.getBounds ? i.getBounds() : i.getLatLng());
@@ -50831,7 +52516,7 @@ Object.values ||
                     return e;
                 },
             }),
-            Gi = v.extend({
+            Ki = v.extend({
                 options: { popupAnchor: [0, 0], tooltipAnchor: [0, 0] },
                 initialize: function (e) {
                     u(this, e);
@@ -50883,12 +52568,12 @@ Object.values ||
                 },
                 _getIconUrl: function (e) {
                     return (
-                        (Gt && this.options[e + 'RetinaUrl']) ||
+                        (Kt && this.options[e + 'RetinaUrl']) ||
                         this.options[e + 'Url']
                     );
                 },
             }),
-            Yi = Gi.extend({
+            Yi = Ki.extend({
                 options: {
                     iconUrl: 'marker-icon.png',
                     iconRetinaUrl: 'marker-icon-2x.png',
@@ -50903,7 +52588,7 @@ Object.values ||
                     return (
                         Yi.imagePath || (Yi.imagePath = this._detectIconPath()),
                         (this.options.imagePath || Yi.imagePath) +
-                            Gi.prototype._getIconUrl.call(this, e)
+                            Ki.prototype._getIconUrl.call(this, e)
                     );
                 },
                 _detectIconPath: function () {
@@ -50929,7 +52614,7 @@ Object.values ||
                 },
                 addHooks: function () {
                     var e = this._marker._icon;
-                    this._draggable || (this._draggable = new Oi(e, e, !0)),
+                    this._draggable || (this._draggable = new Ri(e, e, !0)),
                         this._draggable
                             .on(
                                 {
@@ -51144,12 +52829,12 @@ Object.values ||
                             mouseover: this._bringToFront,
                             mouseout: this._resetZIndex,
                         }),
-                        K(this._icon),
+                        G(this._icon),
                         this.removeInteractiveTarget(this._icon),
                         (this._icon = null);
                 },
                 _removeShadow: function () {
-                    this._shadow && K(this._shadow), (this._shadow = null);
+                    this._shadow && G(this._shadow), (this._shadow = null);
                 },
                 _setPos: function (e) {
                     re(this._icon, e),
@@ -51353,7 +53038,7 @@ Object.values ||
                 },
                 getBounds: function () {
                     var e = [this._radius, this._radiusY || this._radius];
-                    return new z(
+                    return new C(
                         this._map.layerPointToLatLng(this._point.subtract(e)),
                         this._map.layerPointToLatLng(this._point.add(e))
                     );
@@ -51475,7 +53160,7 @@ Object.values ||
                     );
                 },
                 _setLatLngs: function (e) {
-                    (this._bounds = new z()),
+                    (this._bounds = new C()),
                         (this._latlngs = this._convertLatLngs(e));
                 },
                 _defaultShape: function () {
@@ -51540,7 +53225,7 @@ Object.values ||
                                     i < o - 1;
                                     i++
                                 )
-                                    (a = Ne(r[i], r[i + 1], e, i, !0)) &&
+                                    (a = Le(r[i], r[i + 1], e, i, !0)) &&
                                         ((l[n] = l[n] || []),
                                         l[n].push(a[0]),
                                         (a[1] === r[i + 1] && i !== o - 2) ||
@@ -51694,7 +53379,7 @@ Object.values ||
                     return c || nn.prototype._containsPoint.call(this, e, !0);
                 },
             }),
-            on = Ki.extend({
+            on = Gi.extend({
                 initialize: function (e, t) {
                     u(this, t), (this._layers = {}), e && this.addData(e);
                 },
@@ -51714,9 +53399,9 @@ Object.values ||
                     }
                     var o = this.options;
                     if (o.filter && !o.filter(e)) return this;
-                    var a = We(e, o);
+                    var a = qe(e, o);
                     return a ?
-                            ((a.feature = Ge(e)),
+                            ((a.feature = Ke(e)),
                             (a.defaultOptions = a.options),
                             this.resetStyle(a),
                             o.onEachFeature && o.onEachFeature(e, a),
@@ -51742,7 +53427,7 @@ Object.values ||
             }),
             an = {
                 toGeoJSON: function (e) {
-                    return Ke(this, {
+                    return Ge(this, {
                         type: 'Point',
                         coordinates: Ue(this.getLatLng(), e),
                     });
@@ -51754,7 +53439,7 @@ Object.values ||
             nn.include({
                 toGeoJSON: function (e) {
                     var t = !$e(this._latlngs);
-                    return Ke(this, {
+                    return Ge(this, {
                         type: (t ? 'Multi' : '') + 'LineString',
                         coordinates: Ze(this._latlngs, t ? 1 : 0, !1, e),
                     });
@@ -51774,7 +53459,7 @@ Object.values ||
                         );
                     return (
                         t || (n = [n]),
-                        Ke(this, {
+                        Ge(this, {
                             type: (i ? 'Multi' : '') + 'Polygon',
                             coordinates: n,
                         })
@@ -51788,7 +53473,7 @@ Object.values ||
                         this.eachLayer(function (i) {
                             t.push(i.toGeoJSON(e).geometry.coordinates);
                         }),
-                        Ke(this, { type: 'MultiPoint', coordinates: t })
+                        Ge(this, { type: 'MultiPoint', coordinates: t })
                     );
                 },
                 toGeoJSON: function (e) {
@@ -51805,7 +53490,7 @@ Object.values ||
                                 var s = t.toGeoJSON(e);
                                 if (i) n.push(s.geometry);
                                 else {
-                                    var o = Ge(s);
+                                    var o = Ke(s);
                                     'FeatureCollection' === o.type ?
                                         n.push.apply(n, o.features)
                                     :   n.push(o);
@@ -51813,7 +53498,7 @@ Object.values ||
                             }
                         }),
                         i ?
-                            Ke(this, {
+                            Ge(this, {
                                 geometries: n,
                                 type: 'GeometryCollection',
                             })
@@ -51833,7 +53518,7 @@ Object.values ||
                     className: '',
                 },
                 initialize: function (e, t, i) {
-                    (this._url = e), (this._bounds = C(t)), u(this, i);
+                    (this._url = e), (this._bounds = z(t)), u(this, i);
                 },
                 onAdd: function () {
                     this._image ||
@@ -51846,7 +53531,7 @@ Object.values ||
                         this._reset();
                 },
                 onRemove: function () {
-                    K(this._image),
+                    G(this._image),
                         this.options.interactive &&
                             this.removeInteractiveTarget(this._image);
                 },
@@ -51875,7 +53560,7 @@ Object.values ||
                 },
                 setBounds: function (e) {
                     return (
-                        (this._bounds = C(e)), this._map && this._reset(), this
+                        (this._bounds = z(e)), this._map && this._reset(), this
                     );
                 },
                 getEvents: function () {
@@ -52010,10 +53695,10 @@ Object.values ||
                     e._fadeAnimated ?
                         (ne(this._container, 0),
                         (this._removeTimeout = setTimeout(
-                            i(K, void 0, this._container),
+                            i(G, void 0, this._container),
                             200
                         )))
-                    :   K(this._container);
+                    :   G(this._container);
                 },
                 getLatLng: function () {
                     return this._latlng;
@@ -52259,8 +53944,8 @@ Object.values ||
                     );
                 },
             });
-        zi.mergeOptions({ closePopupOnClick: !0 }),
-            zi.include({
+        Ci.mergeOptions({ closePopupOnClick: !0 }),
+            Ci.include({
                 openPopup: function (e, t, i) {
                     return (
                         e instanceof dn || (e = new dn(i).setContent(e)),
@@ -52319,7 +54004,7 @@ Object.values ||
                 openPopup: function (e, t) {
                     if (
                         (e instanceof Ui || ((t = e), (e = this)),
-                        e instanceof Ki)
+                        e instanceof Gi)
                     )
                         for (var i in this._layers) {
                             e = this._layers[i];
@@ -52478,7 +54163,7 @@ Object.values ||
                 );
             },
         });
-        zi.include({
+        Ci.include({
             openTooltip: function (e, t, i) {
                 return (
                     e instanceof hn || (e = new hn(i).setContent(e)),
@@ -52536,7 +54221,7 @@ Object.values ||
                 openTooltip: function (e, t) {
                     if (
                         (e instanceof Ui || ((t = e), (e = this)),
-                        e instanceof Ki)
+                        e instanceof Gi)
                     )
                         for (var i in this._layers) {
                             e = this._layers[i];
@@ -52618,7 +54303,7 @@ Object.values ||
                         this._tooltip.setLatLng(n);
                 },
             });
-        var pn = Gi.extend({
+        var pn = Ki.extend({
             options: {
                 iconSize: [12, 12],
                 html: !1,
@@ -52641,7 +54326,7 @@ Object.values ||
                 return null;
             },
         });
-        Gi.Default = Yi;
+        Ki.Default = Yi;
         var mn = Ui.extend({
                 options: {
                     tileSize: 256,
@@ -52675,7 +54360,7 @@ Object.values ||
                 },
                 onRemove: function (e) {
                     this._removeAllTiles(),
-                        K(this._container),
+                        G(this._container),
                         e._removeZoomLimit(this),
                         (this._container = null),
                         (this._tileZoom = void 0);
@@ -52813,7 +54498,7 @@ Object.values ||
                                 ((this._levels[i].el.style.zIndex =
                                     t - Math.abs(e - i)),
                                 this._onUpdateLevel(i))
-                            :   (K(this._levels[i].el),
+                            :   (G(this._levels[i].el),
                                 this._removeTilesAtZoom(i),
                                 this._onRemoveLevel(i),
                                 delete this._levels[i]);
@@ -52889,7 +54574,7 @@ Object.values ||
                 },
                 _invalidateAll: function () {
                     for (var e in this._levels)
-                        K(this._levels[e].el),
+                        G(this._levels[e].el),
                             this._onRemoveLevel(e),
                             delete this._levels[e];
                     this._removeAllTiles(), (this._tileZoom = void 0);
@@ -53097,7 +54782,7 @@ Object.values ||
                     }
                     if (!this.options.bounds) return !0;
                     var n = this._tileCoordsToBounds(e);
-                    return C(this.options.bounds).overlaps(n);
+                    return z(this.options.bounds).overlaps(n);
                 },
                 _keyToBounds: function (e) {
                     return this._tileCoordsToBounds(this._keyToTileCoords(e));
@@ -53111,7 +54796,7 @@ Object.values ||
                 },
                 _tileCoordsToBounds: function (e) {
                     var t = this._tileCoordsToNwSe(e),
-                        i = new z(t[0], t[1]);
+                        i = new C(t[0], t[1]);
                     return (
                         this.options.noWrap ||
                             (i = this._map.wrapLatLngBounds(i)),
@@ -53129,7 +54814,7 @@ Object.values ||
                 _removeTile: function (e) {
                     var t = this._tiles[e];
                     t &&
-                        (K(t.el),
+                        (G(t.el),
                         delete this._tiles[e],
                         this.fire('tileunload', {
                             tile: t.el,
@@ -53230,7 +54915,7 @@ Object.values ||
                 initialize: function (e, t) {
                     (this._url = e),
                         (t = u(this, t)).detectRetina &&
-                            Gt &&
+                            Kt &&
                             t.maxZoom > 0 &&
                             ((t.tileSize = Math.floor(t.tileSize / 2)),
                             t.zoomReverse ?
@@ -53268,7 +54953,7 @@ Object.values ||
                 },
                 getTileUrl: function (e) {
                     var i = {
-                        r: Gt ? '@2x' : '',
+                        r: Kt ? '@2x' : '',
                         s: this._getSubdomain(e),
                         x: e.x,
                         y: e.y,
@@ -53310,7 +54995,7 @@ Object.values ||
                             (((t = this._tiles[e].el).onload = a),
                             (t.onerror = a),
                             t.complete ||
-                                ((t.src = ot), K(t), delete this._tiles[e]));
+                                ((t.src = ot), G(t), delete this._tiles[e]));
                 },
                 _removeTile: function (e) {
                     var t = this._tiles[e];
@@ -53340,7 +55025,7 @@ Object.values ||
                     this._url = e;
                     var n = t({}, this.defaultWmsParams);
                     for (var s in i) s in this.options || (n[s] = i[s]);
-                    var o = (i = u(this, i)).detectRetina && Gt ? 2 : 1,
+                    var o = (i = u(this, i)).detectRetina && Kt ? 2 : 1,
                         a = this.getTileSize();
                     (n.width = a.x * o),
                         (n.height = a.y * o),
@@ -53481,7 +55166,7 @@ Object.values ||
                 _destroyContainer: function () {
                     g(this._redrawRequest),
                         delete this._ctx,
-                        K(this._container),
+                        G(this._container),
                         fe(this._container),
                         delete this._container;
                 },
@@ -53499,13 +55184,13 @@ Object.values ||
                         var e = this._bounds,
                             t = this._container,
                             i = e.getSize(),
-                            n = Gt ? 2 : 1;
+                            n = Kt ? 2 : 1;
                         re(t, e.min),
                             (t.width = n * i.x),
                             (t.height = n * i.y),
                             (t.style.width = i.x + 'px'),
                             (t.style.height = i.y + 'px'),
-                            Gt && this._ctx.scale(2, 2),
+                            Kt && this._ctx.scale(2, 2),
                             this._ctx.translate(-e.min.x, -e.min.y),
                             this.fire('update');
                     }
@@ -53798,7 +55483,7 @@ Object.values ||
                 },
                 _removePath: function (e) {
                     var t = e._container;
-                    K(t),
+                    G(t),
                         e.removeInteractiveTarget(t),
                         delete this._layers[n(e)];
                 },
@@ -53873,7 +55558,7 @@ Object.values ||
                         this._container.appendChild(this._rootGroup);
                 },
                 _destroyContainer: function () {
-                    K(this._container),
+                    G(this._container),
                         fe(this._container),
                         delete this._container,
                         delete this._rootGroup,
@@ -53913,7 +55598,7 @@ Object.values ||
                         e.addInteractiveTarget(e._path);
                 },
                 _removePath: function (e) {
-                    K(e._path),
+                    G(e._path),
                         e.removeInteractiveTarget(e._path),
                         delete this._layers[n(e)];
                 },
@@ -53987,7 +55672,7 @@ Object.values ||
                 },
             });
         Qt && kn.include(yn),
-            zi.include({
+            Ci.include({
                 getRenderer: function (e) {
                     var t =
                         e.options.renderer ||
@@ -54023,7 +55708,7 @@ Object.values ||
             },
             _boundsToLatLngs: function (e) {
                 return [
-                    (e = C(e)).getSouthWest(),
+                    (e = z(e)).getSouthWest(),
                     e.getNorthWest(),
                     e.getNorthEast(),
                     e.getSouthEast(),
@@ -54032,15 +55717,15 @@ Object.values ||
         });
         (kn.create = wn),
             (kn.pointsToPath = P),
-            (on.geometryToLayer = We),
+            (on.geometryToLayer = qe),
             (on.coordsToLatLng = Ve),
-            (on.coordsToLatLngs = qe),
+            (on.coordsToLatLngs = We),
             (on.latLngToCoords = Ue),
             (on.latLngsToCoords = Ze),
-            (on.getFeature = Ke),
-            (on.asFeature = Ge),
-            zi.mergeOptions({ boxZoom: !0 });
-        var zn = Pi.extend({
+            (on.getFeature = Ge),
+            (on.asFeature = Ke),
+            Ci.mergeOptions({ boxZoom: !0 });
+        var Cn = Pi.extend({
             initialize: function (e) {
                 (this._map = e),
                     (this._container = e._container),
@@ -54058,7 +55743,7 @@ Object.values ||
                 return this._moved;
             },
             _destroy: function () {
-                K(this._pane), delete this._pane;
+                G(this._pane), delete this._pane;
             },
             _resetState: function () {
                 (this._resetStateTimeout = 0), (this._moved = !1);
@@ -54102,7 +55787,7 @@ Object.values ||
             },
             _finish: function () {
                 this._moved &&
-                    (K(this._box), ee(this._container, 'leaflet-crosshair')),
+                    (G(this._box), ee(this._container, 'leaflet-crosshair')),
                     gt(),
                     ue(),
                     fe(
@@ -54126,7 +55811,7 @@ Object.values ||
                             i(this._resetState, this),
                             0
                         ));
-                    var t = new z(
+                    var t = new C(
                         this._map.containerPointToLatLng(this._startPoint),
                         this._map.containerPointToLatLng(this._point)
                     );
@@ -54139,9 +55824,9 @@ Object.values ||
                 27 === e.keyCode && this._finish();
             },
         });
-        zi.addInitHook('addHandler', 'boxZoom', zn),
-            zi.mergeOptions({ doubleClickZoom: !0 });
-        var Cn = Pi.extend({
+        Ci.addInitHook('addHandler', 'boxZoom', Cn),
+            Ci.mergeOptions({ doubleClickZoom: !0 });
+        var zn = Pi.extend({
             addHooks: function () {
                 this._map.on('dblclick', this._onDoubleClick, this);
             },
@@ -54158,8 +55843,8 @@ Object.values ||
                 :   t.setZoomAround(e.containerPoint, s);
             },
         });
-        zi.addInitHook('addHandler', 'doubleClickZoom', Cn),
-            zi.mergeOptions({
+        Ci.addInitHook('addHandler', 'doubleClickZoom', zn),
+            Ci.mergeOptions({
                 dragging: !0,
                 inertia: !Tt,
                 inertiaDeceleration: 3400,
@@ -54172,7 +55857,7 @@ Object.values ||
             addHooks: function () {
                 if (!this._draggable) {
                     var e = this._map;
-                    (this._draggable = new Oi(e._mapPane, e._container)),
+                    (this._draggable = new Ri(e._mapPane, e._container)),
                         this._draggable.on(
                             {
                                 dragstart: this._onDragStart,
@@ -54218,7 +55903,7 @@ Object.values ||
                     this._map.options.maxBounds &&
                         this._map.options.maxBoundsViscosity)
                 ) {
-                    var t = C(this._map.options.maxBounds);
+                    var t = z(this._map.options.maxBounds);
                     (this._offsetLimit = x(
                         this._map
                             .latLngToContainerPoint(t.getNorthWest())
@@ -54321,8 +56006,8 @@ Object.values ||
                 }
             },
         });
-        zi.addInitHook('addHandler', 'dragging', Sn),
-            zi.mergeOptions({ keyboard: !0, keyboardPanDelta: 80 });
+        Ci.addInitHook('addHandler', 'dragging', Sn),
+            Ci.mergeOptions({ keyboard: !0, keyboardPanDelta: 80 });
         var Tn = Pi.extend({
             keyCodes: {
                 left: [37],
@@ -54444,8 +56129,8 @@ Object.values ||
                 }
             },
         });
-        zi.addInitHook('addHandler', 'keyboard', Tn),
-            zi.mergeOptions({
+        Ci.addInitHook('addHandler', 'keyboard', Tn),
+            Ci.mergeOptions({
                 scrollWheelZoom: !0,
                 wheelDebounceTime: 40,
                 wheelPxPerZoomLevel: 60,
@@ -54469,7 +56154,7 @@ Object.values ||
                 );
             },
             _onWheelScroll: function (e) {
-                var t = Ce(e),
+                var t = ze(e),
                     n = this._map.options.wheelDebounceTime;
                 (this._delta += t),
                     (this._lastMousePos =
@@ -54501,8 +56186,8 @@ Object.values ||
                         :   e.setZoomAround(this._lastMousePos, t + a));
             },
         });
-        zi.addInitHook('addHandler', 'scrollWheelZoom', An),
-            zi.mergeOptions({ tap: !0, tapTolerance: 15 });
+        Ci.addInitHook('addHandler', 'scrollWheelZoom', An),
+            Ci.mergeOptions({ tap: !0, tapTolerance: 15 });
         var En = Pi.extend({
             addHooks: function () {
                 _e(this._map._container, 'touchstart', this._onDown, this);
@@ -54596,8 +56281,8 @@ Object.values ||
                     t.target.dispatchEvent(i);
             },
         });
-        Ut && !qt && zi.addInitHook('addHandler', 'tap', En),
-            zi.mergeOptions({ touchZoom: Ut && !Tt, bounceAtZoomLimits: !0 });
+        Ut && !Wt && Ci.addInitHook('addHandler', 'tap', En),
+            Ci.mergeOptions({ touchZoom: Ut && !Tt, bounceAtZoomLimits: !0 });
         var Mn = Pi.extend({
             addHooks: function () {
                 X(this._map._container, 'leaflet-touch-zoom'),
@@ -54703,21 +56388,21 @@ Object.values ||
                 :   (this._zooming = !1);
             },
         });
-        zi.addInitHook('addHandler', 'touchZoom', Mn),
-            (zi.BoxZoom = zn),
-            (zi.DoubleClickZoom = Cn),
-            (zi.Drag = Sn),
-            (zi.Keyboard = Tn),
-            (zi.ScrollWheelZoom = An),
-            (zi.Tap = En),
-            (zi.TouchZoom = Mn),
+        Ci.addInitHook('addHandler', 'touchZoom', Mn),
+            (Ci.BoxZoom = Cn),
+            (Ci.DoubleClickZoom = zn),
+            (Ci.Drag = Sn),
+            (Ci.Keyboard = Tn),
+            (Ci.ScrollWheelZoom = An),
+            (Ci.Tap = En),
+            (Ci.TouchZoom = Mn),
             (Object.freeze = et),
             (e.version = '1.4.0+HEAD.3337f36'),
-            (e.Control = Ci),
+            (e.Control = zi),
             (e.control = Si),
             (e.Browser = Xt),
             (e.Evented = dt),
-            (e.Mixin = Ii),
+            (e.Mixin = ji),
             (e.Util = ct),
             (e.Class = v),
             (e.Handler = Pi),
@@ -54728,8 +56413,8 @@ Object.values ||
             (e.DomEvent = ki),
             (e.DomUtil = vi),
             (e.PosAnimation = xi),
-            (e.Draggable = Oi),
-            (e.LineUtil = Ri),
+            (e.Draggable = Ri),
+            (e.LineUtil = Oi),
             (e.PolyUtil = Bi),
             (e.Point = y),
             (e.point = w),
@@ -54740,8 +56425,8 @@ Object.values ||
             (e.Projection = Hi),
             (e.LatLng = S),
             (e.latLng = T),
-            (e.LatLngBounds = z),
-            (e.latLngBounds = C),
+            (e.LatLngBounds = C),
+            (e.latLngBounds = z),
             (e.CRS = pt),
             (e.GeoJSON = on),
             (e.geoJSON = Ye),
@@ -54751,9 +56436,9 @@ Object.values ||
             (e.layerGroup = function (e, t) {
                 return new Zi(e, t);
             }),
-            (e.FeatureGroup = Ki),
+            (e.FeatureGroup = Gi),
             (e.featureGroup = function (e) {
-                return new Ki(e);
+                return new Gi(e);
             }),
             (e.ImageOverlay = ln),
             (e.imageOverlay = function (e, t, i) {
@@ -54772,9 +56457,9 @@ Object.values ||
             (e.tooltip = function (e, t) {
                 return new hn(e, t);
             }),
-            (e.Icon = Gi),
+            (e.Icon = Ki),
             (e.icon = function (e) {
-                return new Gi(e);
+                return new Ki(e);
             }),
             (e.DivIcon = pn),
             (e.divIcon = function (e) {
@@ -54816,9 +56501,9 @@ Object.values ||
             (e.rectangle = function (e, t) {
                 return new xn(e, t);
             }),
-            (e.Map = zi),
+            (e.Map = Ci),
             (e.map = function (e, t) {
-                return new zi(e, t);
+                return new Ci(e, t);
             });
         var Pn = window.L;
         (e.noConflict = function () {
@@ -59631,8 +61316,8 @@ if (
                                         var x = ' ' + v[0].className || '';
                                         if (0 === o.index()) {
                                             s += 1;
-                                            var z = v[0].label,
-                                                C =
+                                            var C = v[0].label,
+                                                z =
                                                     (
                                                         void 0 !==
                                                         v.data('subtext')
@@ -59641,7 +61326,7 @@ if (
                                                         v.data('subtext') +
                                                         '</small>'
                                                     :   '';
-                                            (z =
+                                            (C =
                                                 (v.data('icon') ?
                                                     '<span class="' +
                                                     i.options.iconBase +
@@ -59650,8 +61335,8 @@ if (
                                                     '"></span> '
                                                 :   '') +
                                                 '<span class="text">' +
-                                                l(z) +
-                                                C +
+                                                l(C) +
+                                                z +
                                                 '</span>'),
                                                 0 !== t &&
                                                     n.length > 0 &&
@@ -59667,7 +61352,7 @@ if (
                                                 a++,
                                                 n.push(
                                                     r(
-                                                        z,
+                                                        C,
                                                         null,
                                                         'dropdown-header' + x,
                                                         s
@@ -60091,7 +61776,7 @@ if (
                                     this.options.hideDisabled ?
                                         '.disabled'
                                     :   '',
-                                z = function () {
+                                C = function () {
                                     var t,
                                         i = c.$newElement.offset(),
                                         n = e(c.options.container);
@@ -60111,8 +61796,8 @@ if (
                                         (o -= s[0]),
                                         (r -= s[3]);
                                 };
-                            if ((z(), 'auto' === this.options.size)) {
-                                var C = function () {
+                            if ((C(), 'auto' === this.options.size)) {
+                                var z = function () {
                                     var h,
                                         p = function (t, i) {
                                             return function (n) {
@@ -60142,14 +61827,14 @@ if (
                                                     p('hidden', !1)
                                                 )
                                             :   c.$lis.not('.hidden'),
-                                        C =
+                                        z =
                                             Array.prototype.filter ?
                                                 Array.prototype.filter.call(
                                                     x,
                                                     p('dropdown-header', !0)
                                                 )
                                             :   x.filter('.dropdown-header');
-                                    z(),
+                                    C(),
                                         (t = a - k.vert),
                                         (i = l - k.horiz),
                                         c.options.container ?
@@ -60174,7 +61859,7 @@ if (
                                                 r > l && i - k.horiz < s - m
                                             ),
                                         (h =
-                                            x.length + C.length > 3 ?
+                                            x.length + z.length > 3 ?
                                                 3 * _ + k.vert - 2
                                             :   0),
                                         u.css({
@@ -60197,18 +61882,18 @@ if (
                                                 Math.max(h - w.vert, 0) + 'px',
                                         });
                                 };
-                                C(),
+                                z(),
                                     this.$searchbox
                                         .off(
                                             'input.getSize propertychange.getSize'
                                         )
                                         .on(
                                             'input.getSize propertychange.getSize',
-                                            C
+                                            z
                                         ),
                                     h
                                         .off('resize.getSize scroll.getSize')
-                                        .on('resize.getSize scroll.getSize', C);
+                                        .on('resize.getSize scroll.getSize', z);
                             } else if (
                                 this.options.size &&
                                 'auto' != this.options.size &&
@@ -61293,7 +62978,7 @@ if (
         function x(e, t) {
             return e !== t && e.contains && e.contains(t);
         }
-        function z(e, t) {
+        function C(e, t) {
             var i = e.previousElementSibling;
             return (
                 t && i ?
@@ -61302,7 +62987,7 @@ if (
                 :   i
             );
         }
-        function C(e, t) {
+        function z(e, t) {
             return t.parentNode.insertBefore(e, t);
         }
         function S(e) {
@@ -61331,7 +63016,7 @@ if (
             }
             y(e, 'width', t);
         }
-        function j(e, t) {
+        function I(e, t) {
             if (pe(t)) {
                 var i = getComputedStyle(e),
                     n = a(i.paddingTop) + a(i.paddingBottom),
@@ -61340,7 +63025,7 @@ if (
             }
             y(e, 'height', t);
         }
-        function I(e, t, i) {
+        function j(e, t, i) {
             var n;
             me(window.CustomEvent) ?
                 (n = new CustomEvent(t, {
@@ -61360,27 +63045,27 @@ if (
         function D(e) {
             return !!e.getClientRects().length;
         }
-        function N(e) {
+        function L(e) {
             return e.replace(/^-ms-/, 'ms-').replace(/-(\w)/g, function (e, t) {
                 return t.toUpperCase();
             });
         }
-        function L(e, t, i, n, s) {
+        function N(e, t, i, n, s) {
             for (e = s ? e.lastChild : e.firstChild; e; ) {
                 var o = s ? e.previousSibling : e.nextSibling;
                 if (
                     (!i && !1 === t(e)) ||
-                    (!n && !1 === L(e, t, i, n, s)) ||
+                    (!n && !1 === N(e, t, i, n, s)) ||
                     (i && !1 === t(e))
                 )
                     return !1;
                 e = o;
             }
         }
-        function O(e, t, i, n) {
-            L(e, t, i, n, !0);
+        function R(e, t, i, n) {
+            N(e, t, i, n, !0);
         }
-        function R(e, t) {
+        function O(e, t) {
             var i = (t = t || document).createDocumentFragment(),
                 n = r('div', {}, t);
             for (n.innerHTML = e; n.firstChild; ) d(i, n.firstChild);
@@ -61423,7 +63108,7 @@ if (
                 : ye.indexOf('|' + i + '|') < 0
             );
         }
-        function W(e, t) {
+        function q(e, t) {
             t.style.cssText = e.style.cssText + t.style.cssText;
         }
         function V(e) {
@@ -61431,22 +63116,22 @@ if (
                 for (; H(e.parentNode, !0); ) e = e.parentNode;
                 return e;
             };
-            L(e, function (e) {
+            N(e, function (e) {
                 var i = 'ul,ol',
                     n = !H(e, !0);
                 if (n && H(e.parentNode, !0)) {
                     var s = t(e),
-                        o = K(s, e),
+                        o = G(s, e),
                         a = e;
-                    W(s, a), C(o, s), C(a, s);
+                    q(s, a), z(o, s), z(a, s);
                 }
                 if (n && k(e, i) && k(e.parentNode, i)) {
-                    var l = z(e, 'li');
-                    l || C((l = r('li')), e), d(l, e);
+                    var l = C(e, 'li');
+                    l || z((l = r('li')), e), d(l, e);
                 }
             });
         }
-        function q(e, t) {
+        function W(e, t) {
             for (; (e = e.parentNode); ) if (x(e, t)) return e;
         }
         function U(e, t) {
@@ -61510,11 +63195,11 @@ if (
                     d = a;
                 }
         }
-        function K(e, t) {
+        function G(e, t) {
             var i = e.ownerDocument.createRange();
             return i.setStartBefore(e), i.setEndAfter(t), i.extractContents();
         }
-        function G(e) {
+        function K(e) {
             for (var t = 0, i = 0; e; )
                 (t += e.offsetLeft), (i += e.offsetTop), (e = e.offsetParent);
             return { left: t, top: i };
@@ -61524,7 +63209,7 @@ if (
                 n,
                 s = e.style;
             if (
-                (fe[t] || (fe[t] = N(t)),
+                (fe[t] || (fe[t] = L(t)),
                 (n = s[(t = fe[t])]),
                 'textAlign' === t)
             ) {
@@ -61590,7 +63275,7 @@ if (
                 Object.keys(t).forEach(function (e) {
                     n = n.replace(new RegExp(Q('{' + e + '}'), 'g'), t[e]);
                 }),
-                i && (n = R(n)),
+                i && (n = O(n)),
                 n
             );
         }
@@ -61700,7 +63385,7 @@ if (
                         u = s.createDocumentFragment();
                     if (
                         ('string' == typeof e ?
-                            (t && (e += l.selectedHtml() + t), (u = R(e)))
+                            (t && (e += l.selectedHtml() + t), (u = O(e)))
                         :   (d(u, e),
                             t &&
                                 (d(u, l.selectedRange().extractContents()),
@@ -61731,7 +63416,7 @@ if (
                     if (!i) return !1;
                     s.deleteContents(),
                         o && 3 !== o.nodeType && !F(o) ?
-                            C(i, o)
+                            z(i, o)
                         :   s.insertNode(i),
                         l.restoreRange();
                 }),
@@ -61821,7 +63506,7 @@ if (
                     var i,
                         n = e.getSelection(),
                         o = t.endContainer;
-                    if (!je && t.collapsed && o && !H(o, !0)) {
+                    if (!Ie && t.collapsed && o && !H(o, !0)) {
                         for (i = o.lastChild; i && k(i, '.sceditor-ignore'); )
                             i = i.previousSibling;
                         if (k(i, 'br')) {
@@ -61853,15 +63538,15 @@ if (
                         s = l.cloneSelected();
                     if (!s) return !1;
                     s.collapse(!1),
-                        (i = Ie(s, !0, e)),
-                        (n = Ie(s, !1, t)),
+                        (i = je(s, !0, e)),
+                        (n = je(s, !1, t)),
                         s.setStart(i.node, i.offset),
                         s.setEnd(n.node, n.offset),
                         l.selectRange(s);
                 }),
                 (l.getOuterText = function (e, t) {
                     var i = l.cloneSelected();
-                    return i ? (i.collapse(!e), Ie(i, e, t).text) : '';
+                    return i ? (i.collapse(!e), je(i, e, t).text) : '';
                 }),
                 (l.replaceKeyword = function (e, t, i, n, s, o) {
                     i ||
@@ -61994,7 +63679,7 @@ if (
                                     u = i ? l.search(r[c]) : l.indexOf(c);
                                 if (u > -1) {
                                     var d = l.indexOf(c, u),
-                                        h = R(t[c], n),
+                                        h = O(t[c], n),
                                         p = l.substr(d + c.length);
                                     h.appendChild(n.createTextNode(p)),
                                         (s.nodeValue = l.substr(0, d)),
@@ -62010,11 +63695,11 @@ if (
         }
         function re(e, t) {
             var i;
-            L(
+            N(
                 e,
                 function (e) {
                     H(e, !0) ?
-                        (i || C((i = r('p', {}, t)), e),
+                        (i || z((i = r('p', {}, t)), e),
                         (e.nodeType === ve && '' === e.nodeValue) || d(i, e))
                     :   (i = null);
                 },
@@ -62028,15 +63713,15 @@ if (
                 l,
                 f,
                 x,
-                z,
+                C,
                 S,
-                N,
                 L,
-                R,
-                W,
+                N,
+                O,
                 q,
+                W,
                 U,
-                K,
+                G,
                 Y,
                 J,
                 Q,
@@ -62054,19 +63739,19 @@ if (
                 Ae,
                 Ee,
                 Pe,
-                je,
                 Ie,
+                je,
                 Be,
                 $e,
                 Fe,
                 He,
-                We,
-                Ve,
                 qe,
+                Ve,
+                We,
                 Ue,
                 Ze,
-                Ke,
                 Ge,
+                Ke,
                 Ye,
                 Je,
                 Qe,
@@ -62098,19 +63783,19 @@ if (
             (_t.opts.emoticons = t.emoticons || we.emoticons),
                 (xe = function () {
                     (e._sceditor = _t),
-                        kt.locale && 'en' !== kt.locale && Ie(),
-                        C(
+                        kt.locale && 'en' !== kt.locale && je(),
+                        z(
                             (a = r('div', { className: 'sceditor-container' })),
                             e
                         ),
                         y(a, 'z-index', kt.zIndex),
-                        Le && A(a, 'ie ie' + Le),
+                        Ne && A(a, 'ie ie' + Ne),
                         (ce = e.required),
                         (e.required = !1);
                     var t = le.formats[kt.format];
                     'init' in (i = t ? new t() : {}) && i.init.call(_t),
-                        je(),
-                        We(),
+                        Ie(),
+                        qe(),
                         Be(),
                         Pe(),
                         $e(),
@@ -62125,9 +63810,9 @@ if (
                             Y.call('ready'),
                             'onReady' in i && i.onReady.call(_t);
                     };
-                    p(De, 'load', n), 'complete' === Ne.readyState && n();
+                    p(De, 'load', n), 'complete' === Le.readyState && n();
                 }),
-                (je = function () {
+                (Ie = function () {
                     var e = kt.plugins;
                     (e = e ? e.toString().split(',') : []),
                         (Y = new ne(_t)),
@@ -62135,29 +63820,29 @@ if (
                             Y.register(e.trim());
                         });
                 }),
-                (Ie = function () {
+                (je = function () {
                     var e;
                     (U = le.locale[kt.locale]) ||
                         ((e = kt.locale.split('-')), (U = le.locale[e[0]])),
                         U && U.dateFormat && (kt.dateFormat = U.dateFormat);
                 }),
                 (Pe = function () {
-                    (N = r('textarea')),
+                    (L = r('textarea')),
                         (f = r('iframe', {
                             frameborder: 0,
                             allowfullscreen: !0,
                         })),
                         kt.startInSourceMode ?
                             (A(a, 'sourceMode'), g(f))
-                        :   (A(a, 'wysiwygMode'), g(N)),
+                        :   (A(a, 'wysiwygMode'), g(L)),
                         kt.spellcheck || _(a, 'spellcheck', 'false'),
                         'https:' === De.location.protocol &&
                             _(f, 'src', 'javascript:false'),
                         d(a, f),
-                        d(a, N),
-                        _t.dimensions(kt.width || P(e), kt.height || j(e));
-                    var t = Le ? 'ie ie' + Le : '';
-                    (t += Ce ? ' ios' : ''),
+                        d(a, L),
+                        _t.dimensions(kt.width || P(e), kt.height || I(e));
+                    var t = Ne ? 'ie ie' + Ne : '';
+                    (t += ze ? ' ios' : ''),
                         (S = f.contentDocument).open(),
                         S.write(
                             te('html', {
@@ -62169,27 +63854,27 @@ if (
                             })
                         ),
                         S.close(),
-                        (z = S.body),
+                        (C = S.body),
                         (x = f.contentWindow),
                         _t.readOnly(!!kt.readOnly),
-                        (Ce || ze || Le) &&
-                            (j(z, '100%'), Le || p(z, 'touchend', _t.focus));
+                        (ze || Ce || Ne) &&
+                            (I(C, '100%'), Ne || p(C, 'touchend', _t.focus));
                     var i = _(e, 'tabindex');
-                    _(N, 'tabindex', i),
+                    _(L, 'tabindex', i),
                         _(f, 'tabindex', i),
-                        (K = new se(x)),
+                        (G = new se(x)),
                         g(e),
                         _t.val(e.value);
                     var n = kt.placeholder || _(e, 'placeholder');
-                    n && ((N.placeholder = n), _(z, 'placeholder', n));
+                    n && ((L.placeholder = n), _(C, 'placeholder', n));
                 }),
                 ($e = function () {
-                    kt.autoUpdate && (p(z, 'blur', pt), p(N, 'blur', pt)),
+                    kt.autoUpdate && (p(C, 'blur', pt), p(L, 'blur', pt)),
                         null === kt.rtl &&
-                            (kt.rtl = 'rtl' === y(N, 'direction')),
+                            (kt.rtl = 'rtl' === y(L, 'direction')),
                         _t.rtl(!!kt.rtl),
                         kt.autoExpand &&
-                            (p(z, 'load', mt, be), p(z, 'input keyup', mt)),
+                            (p(C, 'load', mt, be), p(C, 'input keyup', mt)),
                         kt.resizeEnabled && He(),
                         _(a, 'id', kt.id),
                         _t.emoticons(kt.emoticonsEnabled);
@@ -62202,40 +63887,40 @@ if (
                             'onselectionchange' in S ? 'selectionchange' : (
                                 'keyup focus blur contextmenu mouseup touchend click'
                             );
-                    p(Ne, 'click', Xe),
+                    p(Le, 'click', Xe),
                         t &&
-                            (p(t, 'reset', Ge),
+                            (p(t, 'reset', Ke),
                             p(t, 'submit', _t.updateOriginal, be)),
-                        p(z, 'keypress', Ke),
-                        p(z, 'keydown', Ue),
-                        p(z, 'keydown', Ze),
-                        p(z, 'keyup', nt),
-                        p(z, 'blur', dt),
-                        p(z, 'keyup', ht),
-                        p(z, 'paste', Ve),
-                        p(z, i, Je),
-                        p(z, s, st),
-                        p(z, n, Qe),
+                        p(C, 'keypress', Ge),
+                        p(C, 'keydown', Ue),
+                        p(C, 'keydown', Ze),
+                        p(C, 'keyup', nt),
+                        p(C, 'blur', dt),
+                        p(C, 'keyup', ht),
+                        p(C, 'paste', Ve),
+                        p(C, i, Je),
+                        p(C, s, st),
+                        p(C, n, Qe),
                         kt.emoticonsCompat &&
                             De.getSelection &&
-                            p(z, 'keyup', lt),
-                        p(z, 'blur', function () {
-                            _t.val() || A(z, 'placeholder');
+                            p(C, 'keyup', lt),
+                        p(C, 'blur', function () {
+                            _t.val() || A(C, 'placeholder');
                         }),
-                        p(z, 'focus', function () {
-                            E(z, 'placeholder');
+                        p(C, 'focus', function () {
+                            E(C, 'placeholder');
                         }),
-                        p(N, 'blur', dt),
-                        p(N, 'keyup', ht),
-                        p(N, 'keydown', Ue),
-                        p(N, i, Je),
-                        p(N, n, Qe),
+                        p(L, 'blur', dt),
+                        p(L, 'keyup', ht),
+                        p(L, 'keydown', Ue),
+                        p(L, i, Je),
+                        p(L, n, Qe),
                         p(S, 'mousedown', Ye),
                         p(S, s, st),
                         p(S, 'beforedeactivate keyup mouseup', Ee),
                         p(S, 'keyup', nt),
                         p(S, 'focus', function () {
-                            R = null;
+                            O = null;
                         }),
                         p(a, 'selectionchanged', ot),
                         p(a, 'selectionchanged', tt),
@@ -62277,7 +63962,7 @@ if (
                                             ke && ke.create)
                                         )
                                             ke.create(s) &&
-                                                (C(ke.create(s), o.firstChild),
+                                                (z(ke.create(s), o.firstChild),
                                                 A(o, 'has-icon'));
                                         (o._sceTxtMode = !!r.txtExec),
                                             (o._sceWysiwygMode = !!r.exec),
@@ -62337,12 +64022,12 @@ if (
                         w = 0,
                         k = 0,
                         x = P(a),
-                        z = j(a),
-                        C = !1,
+                        C = I(a),
+                        z = !1,
                         S = _t.rtl();
                     if (
-                        ((e = kt.resizeMinHeight || z / 1.5),
-                        (t = kt.resizeMaxHeight || 2.5 * z),
+                        ((e = kt.resizeMinHeight || C / 1.5),
+                        (t = kt.resizeMaxHeight || 2.5 * C),
                         (i = kt.resizeMinWidth || x / 1.25),
                         (n = kt.resizeMaxWidth || 1.25 * x),
                         (s = function (s) {
@@ -62363,12 +64048,12 @@ if (
                                 s.preventDefault();
                         }),
                         (o = function (e) {
-                            C &&
-                                ((C = !1),
+                            z &&
+                                ((z = !1),
                                 g(c),
                                 E(a, 'resizing'),
-                                m(Ne, u, s),
-                                m(Ne, h, o),
+                                m(Le, u, s),
+                                m(Le, h, o),
                                 e.preventDefault());
                         }),
                         ke && ke.create)
@@ -62386,16 +64071,16 @@ if (
                                 (f = e.touches[0].pageY))
                             :   ((_ = e.pageX), (f = e.pageY)),
                                 (w = P(a)),
-                                (k = j(a)),
-                                (C = !0),
+                                (k = I(a)),
+                                (z = !0),
                                 A(a, 'resizing'),
                                 v(c),
-                                p(Ne, u, s),
-                                p(Ne, h, o),
+                                p(Le, u, s),
+                                p(Le, h, o),
                                 e.preventDefault();
                         });
                 }),
-                (We = function () {
+                (qe = function () {
                     var e = kt.emoticons,
                         t = kt.emoticonsRoot || '';
                     e && (wt = n({}, e.more, e.dropdown, e.hidden)),
@@ -62414,23 +64099,23 @@ if (
                 (at = function () {
                     var e,
                         t,
-                        i = z.firstChild,
+                        i = C.firstChild,
                         n = !!kt.autofocusEnd;
                     if (D(a)) {
                         if (_t.sourceMode())
                             return (
-                                (t = n ? N.value.length : 0),
-                                void N.setSelectionRange(t, t)
+                                (t = n ? L.value.length : 0),
+                                void L.setSelectionRange(t, t)
                             );
-                        if ((Z(z), n))
+                        if ((Z(C), n))
                             for (
-                                (i = z.lastChild) ||
-                                ((i = r('p', {}, S)), d(z, i));
+                                (i = C.lastChild) ||
+                                ((i = r('p', {}, S)), d(C, i));
                                 i.lastChild;
 
                             )
                                 (i = i.lastChild),
-                                    !Oe &&
+                                    !Re &&
                                         k(i, 'br') &&
                                         i.previousSibling &&
                                         (i = i.previousSibling);
@@ -62439,26 +64124,26 @@ if (
                                 e.selectNodeContents(i)
                             :   (e.setStartBefore(i), n && e.setStartAfter(i)),
                             e.collapse(!n),
-                            K.selectRange(e),
+                            G.selectRange(e),
                             (ee = e),
-                            n && (z.scrollTop = z.scrollHeight),
+                            n && (C.scrollTop = C.scrollHeight),
                             _t.focus();
                     }
                 }),
                 (_t.readOnly = function (e) {
                     return 'boolean' != typeof e ?
-                            !N.readonly
-                        :   ((z.contentEditable = !e),
-                            (N.readonly = !e),
+                            !L.readonly
+                        :   ((C.contentEditable = !e),
+                            (L.readonly = !e),
                             et(e),
                             _t);
                 }),
                 (_t.rtl = function (e) {
                     var t = e ? 'rtl' : 'ltr';
                     return 'boolean' != typeof e ?
-                            'rtl' === _(N, 'dir')
-                        :   (_(z, 'dir', t),
-                            _(N, 'dir', t),
+                            'rtl' === _(L, 'dir')
+                        :   (_(C, 'dir', t),
+                            _(L, 'dir', t),
                             E(a, 'rtl'),
                             E(a, 'ltr'),
                             A(a, t),
@@ -62483,22 +64168,22 @@ if (
                         !1 === (e = !(!e && 0 !== e) && e) && !1 === t ?
                             { width: _t.width(), height: _t.height() }
                         :   (!1 !== e && (!1 !== i && (kt.width = e), P(a, e)),
-                            !1 !== t && (!1 !== i && (kt.height = t), j(a, t)),
+                            !1 !== t && (!1 !== i && (kt.height = t), I(a, t)),
                             _t)
                     );
                 }),
                 (_t.height = function (e, t) {
                     return e || 0 === e ?
                             (_t.dimensions(null, e, t), _t)
-                        :   j(a);
+                        :   I(a);
                 }),
                 (_t.maximize = function (e) {
                     var t = 'sceditor-maximize';
                     return pe(e) ?
                             T(a, t)
                         :   ((e = !!e) && (fe = De.pageYOffset),
-                            M(Ne.documentElement, t, e),
-                            M(Ne.body, t, e),
+                            M(Le.documentElement, t, e),
+                            M(Le.body, t, e),
                             M(a, t, e),
                             _t.width(e ? '100%' : kt.width, !1),
                             _t.height(e ? '100%' : kt.height, !1),
@@ -62514,11 +64199,11 @@ if (
                 (_t.expandToContent = function (t) {
                     if (!_t.maximize()) {
                         if ((clearTimeout(_e), (_e = !1), !de)) {
-                            var i = kt.resizeMinHeight || kt.height || j(e);
+                            var i = kt.resizeMinHeight || kt.height || I(e);
                             de = { min: i, max: kt.resizeMaxHeight || 2 * i };
                         }
-                        var n = Ne.createRange();
-                        n.selectNodeContents(z);
+                        var n = Le.createRange();
+                        n.selectNodeContents(C);
                         var s = n.getBoundingClientRect(),
                             o = S.documentElement.clientHeight - 1,
                             a = s.bottom - s.top,
@@ -62530,16 +64215,16 @@ if (
                 (_t.destroy = function () {
                     if (Y) {
                         Y.destroy(),
-                            (K = null),
-                            (R = null),
+                            (G = null),
+                            (O = null),
                             (Y = null),
-                            L && u(L),
-                            m(Ne, 'click', Xe);
+                            N && u(N),
+                            m(Le, 'click', Xe);
                         var t = e.form;
                         t &&
-                            (m(t, 'reset', Ge),
+                            (m(t, 'reset', Ke),
                             m(t, 'submit', _t.updateOriginal)),
-                            u(N),
+                            u(L),
                             u(l),
                             u(a),
                             delete e._sceditor,
@@ -62551,7 +64236,7 @@ if (
                     var l,
                         c = 'sceditor-' + t;
                     _t.closeDropDown(!0),
-                        (L && T(L, c)) ||
+                        (N && T(N, c)) ||
                             (!1 !== s &&
                                 o(
                                     h(i, ':not(input):not(textarea)'),
@@ -62569,37 +64254,37 @@ if (
                                 kt.dropDownCss
                             )),
                             y(
-                                (L = r('div', {
+                                (N = r('div', {
                                     className: 'sceditor-dropdown ' + c,
                                 })),
                                 l
                             ),
-                            d(L, i),
-                            d(a, L),
-                            p(L, 'click focusin', function (e) {
+                            d(N, i),
+                            d(a, N),
+                            p(N, 'click focusin', function (e) {
                                 e.stopPropagation();
                             }),
                             setTimeout(function () {
-                                if (L) {
-                                    var e = h(L, 'input,textarea')[0];
+                                if (N) {
+                                    var e = h(N, 'input,textarea')[0];
                                     e && e.focus();
                                 }
                             }));
                 }),
                 (Xe = function (e) {
                     3 !== e.which &&
-                        L &&
+                        N &&
                         !e.defaultPrevented &&
                         (pt(), _t.closeDropDown());
                 }),
                 (Ve = function (e) {
-                    var t = Le || ze,
-                        i = z,
+                    var t = Ne || Ce,
+                        i = C,
                         n = e.clipboardData,
                         s = function (e) {
                             var t = new FileReader();
                             (t.onload = function (e) {
-                                qe({
+                                We({
                                     html:
                                         '<img src="' + e.target.result + '" />',
                                 });
@@ -62612,17 +64297,17 @@ if (
                             r = n.items;
                         e.preventDefault();
                         for (var l = 0; l < a.length; l++) {
-                            if (De.FileReader && r && Re.test(r[l].type))
+                            if (De.FileReader && r && Oe.test(r[l].type))
                                 return s(n.items[l].getAsFile());
                             o[a[l]] = n.getData(a[l]);
                         }
                         (o.text = o['text/plain']),
                             (o.html = o['text/html']),
-                            qe(o);
+                            We(o);
                     } else if (!ye) {
                         var c = i.scrollTop;
                         for (
-                            K.saveRange(), ye = Ne.createDocumentFragment();
+                            G.saveRange(), ye = Le.createDocumentFragment();
                             i.firstChild;
 
                         )
@@ -62633,15 +64318,15 @@ if (
                                 d(i, ye),
                                 (i.scrollTop = c),
                                 (ye = !1),
-                                K.restoreRange(),
-                                qe({ html: e });
+                                G.restoreRange(),
+                                We({ html: e });
                         }, 0);
                     }
                 }),
-                (qe = function (e) {
+                (We = function (e) {
                     var t = r('div', {}, S);
                     Y.call('pasteRaw', e),
-                        I(a, 'pasteraw', e),
+                        j(a, 'pasteraw', e),
                         e.html ?
                             ((t.innerHTML = e.html), V(t))
                         :   (t.innerHTML = X(e.text || ''));
@@ -62649,32 +64334,32 @@ if (
                     'fragmentToSource' in i &&
                         (n.val = i.fragmentToSource(n.val, S, J)),
                         Y.call('paste', n),
-                        I(a, 'paste', n),
+                        j(a, 'paste', n),
                         'fragmentToHtml' in i &&
                             (n.val = i.fragmentToHtml(n.val, J)),
                         Y.call('pasteHtml', n),
                         _t.wysiwygEditorInsertHtml(n.val, null, !0);
                 }),
                 (_t.closeDropDown = function (e) {
-                    L && (u(L), (L = null)), !0 === e && _t.focus();
+                    N && (u(N), (N = null)), !0 === e && _t.focus();
                 }),
                 (_t.wysiwygEditorInsertHtml = function (e, t, i) {
                     var n,
                         s,
                         o,
-                        a = j(f);
+                        a = I(f);
                     _t.focus(),
                         (!i && c(Q, 'code')) ||
-                            (K.insertHTML(e, t),
-                            K.saveRange(),
+                            (G.insertHTML(e, t),
+                            G.saveRange(),
                             Te(),
-                            v((n = h(z, '#sceditor-end-marker')[0])),
-                            (s = z.scrollTop),
-                            (o = G(n).top + 1.5 * n.offsetHeight - a),
+                            v((n = h(C, '#sceditor-end-marker')[0])),
+                            (s = C.scrollTop),
+                            (o = K(n).top + 1.5 * n.offsetHeight - a),
                             g(n),
-                            (o > s || o + a < s) && (z.scrollTop = o),
+                            (o > s || o + a < s) && (C.scrollTop = o),
                             ut(!1),
-                            K.restoreRange(),
+                            G.restoreRange(),
                             nt());
                 }),
                 (_t.wysiwygEditorInsertText = function (e, t) {
@@ -62691,31 +64376,31 @@ if (
                 (_t.sourceEditorInsertText = function (e, t) {
                     var i,
                         n,
-                        s = N.selectionStart,
-                        o = N.selectionEnd;
-                    (i = N.scrollTop),
-                        N.focus(),
-                        (n = N.value),
+                        s = L.selectionStart,
+                        o = L.selectionEnd;
+                    (i = L.scrollTop),
+                        L.focus(),
+                        (n = L.value),
                         t && (e += n.substring(s, o) + t),
-                        (N.value =
+                        (L.value =
                             n.substring(0, s) + e + n.substring(o, n.length)),
-                        (N.selectionStart = s + e.length - (t ? t.length : 0)),
-                        (N.selectionEnd = N.selectionStart),
-                        (N.scrollTop = i),
-                        N.focus(),
+                        (L.selectionStart = s + e.length - (t ? t.length : 0)),
+                        (L.selectionEnd = L.selectionStart),
+                        (L.scrollTop = i),
+                        L.focus(),
                         ut();
                 }),
                 (_t.getRangeHelper = function () {
-                    return K;
+                    return G;
                 }),
                 (_t.sourceEditorCaret = function (e) {
                     return (
-                        N.focus(),
+                        L.focus(),
                         e ?
-                            ((N.selectionStart = e.start),
-                            (N.selectionEnd = e.end),
+                            ((L.selectionStart = e.start),
+                            (L.selectionEnd = e.end),
                             this)
-                        :   { start: N.selectionStart, end: N.selectionEnd }
+                        :   { start: L.selectionStart, end: L.selectionEnd }
                     );
                 }),
                 (_t.val = function (e, t) {
@@ -62734,7 +64419,7 @@ if (
                     if (_t.inSourceMode())
                         return _t.sourceEditorInsertText(e, t), _t;
                     if (t) {
-                        var a = K.selectedHtml();
+                        var a = G.selectedHtml();
                         !1 !== n &&
                             'fragmentToSource' in i &&
                             (a = i.fragmentToSource(a, S, J)),
@@ -62756,13 +64441,13 @@ if (
                 }),
                 (_t.getWysiwygEditorValue = function (e) {
                     for (
-                        var t, n = r('div', {}, S), s = z.childNodes, o = 0;
+                        var t, n = r('div', {}, S), s = C.childNodes, o = 0;
                         o < s.length;
                         o++
                     )
                         d(n, s[o].cloneNode(!0));
                     return (
-                        d(z, n),
+                        d(C, n),
                         V(n),
                         u(n),
                         (t = n.innerHTML),
@@ -62773,31 +64458,31 @@ if (
                     );
                 }),
                 (_t.getBody = function () {
-                    return z;
+                    return C;
                 }),
                 (_t.getContentAreaContainer = function () {
                     return f;
                 }),
                 (_t.getSourceEditorValue = function (e) {
-                    var t = N.value;
+                    var t = L.value;
                     return !1 !== e && 'toHtml' in i && (t = i.toHtml(t)), t;
                 }),
                 (_t.setWysiwygEditorValue = function (e) {
-                    e || (e = '<p>' + (Le ? '' : '<br />') + '</p>'),
-                        (z.innerHTML = e),
+                    e || (e = '<p>' + (Ne ? '' : '<br />') + '</p>'),
+                        (C.innerHTML = e),
                         Te(),
                         nt(),
                         ut(),
                         mt();
                 }),
                 (_t.setSourceEditorValue = function (e) {
-                    (N.value = e), ut();
+                    (L.value = e), ut();
                 }),
                 (_t.updateOriginal = function () {
                     e.value = _t.val();
                 }),
                 (Te = function () {
-                    kt.emoticonsEnabled && ae(z, wt, kt.emoticonsCompat);
+                    kt.emoticonsEnabled && ae(C, wt, kt.emoticonsCompat);
                 }),
                 (_t.inSourceMode = function () {
                     return T(a, 'sourceMode');
@@ -62812,13 +64497,13 @@ if (
                 (_t.toggleSourceMode = function () {
                     var e = _t.inSourceMode();
                     (!Se && e) ||
-                        (e || (K.saveRange(), K.clear()),
+                        (e || (G.saveRange(), G.clear()),
                         _t.blur(),
                         e ?
                             _t.setWysiwygEditorValue(_t.getSourceEditorValue())
                         :   _t.setSourceEditorValue(_t.getWysiwygEditorValue()),
-                        (R = null),
-                        b(N),
+                        (O = null),
+                        b(L),
                         b(f),
                         M(a, 'wysiwygMode', e),
                         M(a, 'sourceMode', !e),
@@ -62827,8 +64512,8 @@ if (
                 }),
                 (it = function () {
                     return (
-                        N.focus(),
-                        N.value.substring(N.selectionStart, N.selectionEnd)
+                        L.focus(),
+                        L.value.substring(L.selectionStart, L.selectionEnd)
                     );
                 }),
                 (Ae = function (e, t) {
@@ -62848,12 +64533,12 @@ if (
                             ));
                 }),
                 (Ee = function () {
-                    Le && (R = K.selectedRange());
+                    Ne && (O = G.selectedRange());
                 }),
                 (_t.execCommand = function (e, t) {
                     var i = !1,
                         n = _t.commands[e];
-                    if ((_t.focus(), !c(K.parentNode(), 'code'))) {
+                    if ((_t.focus(), !c(G.parentNode(), 'code'))) {
                         try {
                             i = S.execCommand(e, !1, t);
                         } catch (e) {}
@@ -62871,23 +64556,23 @@ if (
                             x.getSelection().rangeCount <= 0
                         )
                             ee = null;
-                        else if (K && !K.compare(ee)) {
-                            if ((ee = K.cloneSelected()) && ee.collapsed) {
+                        else if (G && !G.compare(ee)) {
+                            if ((ee = G.cloneSelected()) && ee.collapsed) {
                                 var e = ee.startContainer,
                                     t = ee.startOffset;
                                 for (
                                     t &&
                                     e.nodeType !== ve &&
                                     (e = e.childNodes[t]);
-                                    e && e.parentNode !== z;
+                                    e && e.parentNode !== C;
 
                                 )
                                     e = e.parentNode;
                                 e &&
                                     H(e, !0) &&
-                                    (K.saveRange(), re(z, S), K.restoreRange());
+                                    (G.saveRange(), re(C, S), G.restoreRange());
                             }
-                            I(a, 'selectionchanged');
+                            j(a, 'selectionchanged');
                         }
                         ie = !1;
                     }
@@ -62897,12 +64582,12 @@ if (
                 }),
                 (ot = function () {
                     var e,
-                        t = K.parentNode();
+                        t = G.parentNode();
                     J !== t &&
                         ((e = J),
                         (J = t),
-                        (Q = K.getFirstBlockParent(t)),
-                        I(a, 'nodechanged', { oldNode: e, newNode: J }));
+                        (Q = G.getFirstBlockParent(t)),
+                        j(a, 'nodechanged', { oldNode: e, newNode: J }));
                 }),
                 (_t.currentNode = function () {
                     return J;
@@ -62922,8 +64607,8 @@ if (
                         });
                     else {
                         s ||
-                            ((t = K.parentNode()),
-                            (e = K.getFirstBlockParent(t)));
+                            ((t = G.parentNode()),
+                            (e = G.getFirstBlockParent(t)));
                         for (var a = 0; a < vt.length; a++) {
                             var r = 0,
                                 c = yt[vt[a].name],
@@ -62946,15 +64631,15 @@ if (
                         ke && ke.update && ke.update(s, t, e);
                     }
                 }),
-                (Ke = function (e) {
+                (Ge = function (e) {
                     if (
                         !e.defaultPrevented &&
                         (_t.closeDropDown(),
                         13 === e.which && !k(Q, 'li,ul,ol') && B(Q))
                     ) {
-                        R = null;
+                        O = null;
                         var t = r('br', {}, S);
-                        if ((K.insertNode(t), !Oe)) {
+                        if ((G.insertNode(t), !Re)) {
                             var i = t.parentNode,
                                 n = i.lastChild;
                             n &&
@@ -62964,13 +64649,13 @@ if (
                                 !H(i, !0) &&
                                     n === t &&
                                     H(t.previousSibling) &&
-                                    K.insertHTML('<br>');
+                                    G.insertHTML('<br>');
                         }
                         e.preventDefault();
                     }
                 }),
                 (nt = function () {
-                    O(z, function (e) {
+                    R(C, function (e) {
                         if (
                             e.nodeType === ge &&
                             !/inline/.test(y(e, 'display')) &&
@@ -62980,8 +64665,8 @@ if (
                             var t = r('p', {}, S);
                             return (
                                 (t.className = 'sceditor-nlf'),
-                                (t.innerHTML = Oe ? '' : '<br />'),
-                                d(z, t),
+                                (t.innerHTML = Re ? '' : '<br />'),
+                                d(C, t),
                                 !1
                             );
                         }
@@ -62992,11 +64677,11 @@ if (
                             return !1;
                     });
                 }),
-                (Ge = function () {
+                (Ke = function () {
                     _t.val(e.value);
                 }),
                 (Ye = function () {
-                    _t.closeDropDown(), (R = null);
+                    _t.closeDropDown(), (O = null);
                 }),
                 (_t._ = function () {
                     var e,
@@ -63012,7 +64697,7 @@ if (
                 }),
                 (Qe = function (e) {
                     Y && Y.call(e.type + 'Event', e, _t);
-                    var t = (e.target === N ? 'scesrc' : 'scewys') + e.type;
+                    var t = (e.target === L ? 'scesrc' : 'scewys') + e.type;
                     ft[t] &&
                         ft[t].forEach(function (t) {
                             t.call(_t, e);
@@ -63039,20 +64724,20 @@ if (
                 (_t.blur = function (e, t, i) {
                     return (
                         me(e) ? _t.bind('blur', e, t, i)
-                        : _t.sourceMode() ? N.blur()
-                        : z.blur(),
+                        : _t.sourceMode() ? L.blur()
+                        : C.blur(),
                         _t
                     );
                 }),
                 (_t.focus = function (e, t, i) {
                     if (me(e)) _t.bind('focus', e, t, i);
-                    else if (_t.inSourceMode()) N.focus();
+                    else if (_t.inSourceMode()) L.focus();
                     else {
                         if (h(S, ':focus').length) return;
                         var n,
-                            s = K.selectedRange();
+                            s = G.selectedRange();
                         ee || at(),
-                            !Oe &&
+                            !Re &&
                                 s &&
                                 1 === s.endOffset &&
                                 s.collapsed &&
@@ -63061,10 +64746,10 @@ if (
                                 k(n.firstChild, 'br') &&
                                 (s.setStartBefore(n.firstChild),
                                 s.collapse(!0),
-                                K.selectRange(s)),
+                                G.selectRange(s)),
                             x.focus(),
-                            z.focus(),
-                            R && (K.selectRange(R), (R = null));
+                            C.focus(),
+                            O && (G.selectRange(O), (O = null));
                     }
                     return tt(), _t;
                 }),
@@ -63102,7 +64787,7 @@ if (
                             (_t.emoticonsCache = i),
                             (_t.longestEmoticonCode =
                                 i[i.length - 1][0].length)),
-                        K.replaceKeyword(
+                        G.replaceKeyword(
                             _t.emoticonsCache,
                             !0,
                             !0,
@@ -63114,23 +64799,23 @@ if (
                                 e.preventDefault()));
                 }),
                 (lt = function () {
-                    oe(Q, K);
+                    oe(Q, G);
                 }),
                 (_t.emoticons = function (e) {
                     if (!e && !1 !== e) return kt.emoticonsEnabled;
                     ((kt.emoticonsEnabled = e), e) ?
-                        (p(z, 'keypress', rt),
+                        (p(C, 'keypress', rt),
                         _t.sourceMode() ||
-                            (K.saveRange(), Te(), ut(!1), K.restoreRange()))
+                            (G.saveRange(), Te(), ut(!1), G.restoreRange()))
                     :   (o(
-                            h(z, 'img[data-sceditor-emoticon]'),
+                            h(C, 'img[data-sceditor-emoticon]'),
                             function (e, t) {
                                 var i = w(t, 'sceditor-emoticon'),
                                     n = S.createTextNode(i);
                                 t.parentNode.replaceChild(n, t);
                             }
                         ),
-                        m(z, 'keypress', rt),
+                        m(C, 'keypress', rt),
                         ut());
                     return _t;
                 }),
@@ -63282,7 +64967,7 @@ if (
                     if (
                         !kt.disableBlockRemove &&
                         8 === e.which &&
-                        (i = K.selectedRange()) &&
+                        (i = G.selectedRange()) &&
                         ((t = i.startContainer),
                         0 === i.startOffset && (n = ct()) && !k(n, 'body'))
                     ) {
@@ -63307,12 +64992,12 @@ if (
                     return (
                         !(e = e || ct()) ||
                             k(e, 'body') ||
-                            (K.saveRange(),
+                            (G.saveRange(),
                             (e.className = ''),
-                            (R = null),
+                            (O = null),
                             _(e, 'style', ''),
                             k(e, 'p,div,td') || $(e, 'p'),
-                            K.restoreRange()),
+                            G.restoreRange()),
                         _t
                     );
                 }),
@@ -63323,23 +65008,23 @@ if (
                     ) {
                         var t,
                             i = _t.sourceMode(),
-                            n = !i && K.hasSelection();
-                        (W = !1),
+                            n = !i && G.hasSelection();
+                        (q = !1),
                             (e =
                                 !1 !== e &&
                                 !S.getElementById('sceditor-start-marker')),
-                            q && (clearTimeout(q), (q = !1)),
-                            n && e && K.saveRange(),
-                            (t = i ? N.value : z.innerHTML) !== ut.lastVal &&
+                            W && (clearTimeout(W), (W = !1)),
+                            n && e && G.saveRange(),
+                            (t = i ? L.value : C.innerHTML) !== ut.lastVal &&
                                 ((ut.lastVal = t),
-                                I(a, 'valuechanged', {
+                                j(a, 'valuechanged', {
                                     rawValue: i ? _t.val() : t,
                                 })),
-                            n && e && K.removeMarkers();
+                            n && e && G.removeMarkers();
                     }
                 }),
                 (dt = function () {
-                    q && ut();
+                    W && ut();
                 }),
                 (ht = function (e) {
                     var t = e.which,
@@ -63347,7 +65032,7 @@ if (
                         n = 13 === i || 32 === i,
                         s = 8 === i || 46 === i;
                     (ht.lastChar = t),
-                        W ||
+                        q ||
                             (13 === t || 32 === t ?
                                 n ? (ht.triggerNext = !0)
                                 :   ut()
@@ -63355,13 +65040,13 @@ if (
                                 s ? (ht.triggerNext = !0)
                                 :   ut()
                             :   ht.triggerNext && (ut(), (ht.triggerNext = !1)),
-                            clearTimeout(q),
-                            (q = setTimeout(function () {
-                                W || ut();
+                            clearTimeout(W),
+                            (W = setTimeout(function () {
+                                q || ut();
                             }, 1500)));
                 }),
                 (Je = function (e) {
-                    (W = /start/i.test(e.type)) || ut();
+                    (q = /start/i.test(e.type)) || ut();
                 }),
                 (pt = function () {
                     _t.updateOriginal();
@@ -63482,8 +65167,8 @@ if (
                     t > 4 ? t : e
                 );
             })(),
-            ze = '-ms-ime-align' in document.documentElement.style,
-            Ce = /iPhone|iPod|iPad| wosbrowser\//i.test(ke),
+            Ce = '-ms-ime-align' in document.documentElement.style,
+            ze = /iPhone|iPod|iPad| wosbrowser\//i.test(ke),
             Se =
                 (((de = document.createElement('div')).contentEditable = !0),
                 'contentEditable' in document.documentElement &&
@@ -63495,7 +65180,7 @@ if (
                             !(ce = /AppleWebKit\/(\d+)/.exec(ke)) ||
                             !ce[1] ||
                             ce[1] < 534),
-                    Ce && (ue = /OS [0-4](_\d)+ like Mac/i.test(ke)),
+                    ze && (ue = /OS [0-4](_\d)+ like Mac/i.test(ke)),
                     /Firefox/i.test(ke) && (ue = !1),
                     /OneBrowser/i.test(ke) && (ue = !1),
                     'UCWEB' === navigator.vendor && (ue = !1),
@@ -63624,7 +65309,7 @@ if (
                                     (s += '</div>');
                             }),
                             (o._htmlCache = s)),
-                            d(n, R(o._htmlCache)),
+                            d(n, O(o._htmlCache)),
                             p(n, 'click', 'a', function (t) {
                                 i(w(this, 'color')),
                                     e.closeDropDown(!0),
@@ -63930,7 +65615,7 @@ if (
                     exec: function () {
                         var e = c(this.currentNode(), 'a');
                         if (e) {
-                            for (; e.firstChild; ) C(e.firstChild, e);
+                            for (; e.firstChild; ) z(e.firstChild, e);
                             u(e);
                         }
                     },
@@ -64191,8 +65876,8 @@ if (
             },
             Pe = {};
         ne.plugins = Pe;
-        var je = xe && xe < 11,
-            Ie = function (e, t, i) {
+        var Ie = xe && xe < 11,
+            je = function (e, t, i) {
                 var n,
                     s,
                     o,
@@ -64221,10 +65906,10 @@ if (
                 return { node: r || c, offset: u, text: l };
             },
             De = window,
-            Ne = document,
-            Le = xe,
-            Oe = Le && Le < 11,
-            Re = /^image\/(p?jpe?g|gif|png|bmp)$/i;
+            Le = document,
+            Ne = xe,
+            Re = Ne && Ne < 11,
+            Oe = /^image\/(p?jpe?g|gif|png|bmp)$/i;
         (le.locale = {}),
             (le.formats = {}),
             (le.icons = {}),
@@ -64263,7 +65948,7 @@ if (
                 commands: Me,
                 defaultOptions: we,
                 ie: xe,
-                ios: Ce,
+                ios: ze,
                 isWysiwygSupported: Se,
                 regexEscape: Q,
                 escapeEntities: X,
@@ -64275,22 +65960,22 @@ if (
                     is: k,
                     closest: c,
                     width: P,
-                    height: j,
-                    traverse: L,
-                    rTraverse: O,
-                    parseHTML: R,
+                    height: I,
+                    traverse: N,
+                    rTraverse: R,
+                    parseHTML: O,
                     hasStyling: B,
                     convertElement: $,
                     blockLevelList: ye,
                     canHaveChildren: F,
                     isInline: H,
-                    copyCSS: W,
+                    copyCSS: q,
                     fixNesting: V,
-                    findCommonAncestor: q,
+                    findCommonAncestor: W,
                     getSibling: U,
                     removeWhiteSpace: Z,
-                    extractContents: K,
-                    getOffset: G,
+                    extractContents: G,
+                    getOffset: K,
                     getStyle: Y,
                     hasStyle: J,
                 },
@@ -64501,7 +66186,7 @@ if (
         function x(e, t) {
             return e !== t && e.contains && e.contains(t);
         }
-        function z(e, t) {
+        function C(e, t) {
             var i = e.previousElementSibling;
             return (
                 t && i ?
@@ -64510,7 +66195,7 @@ if (
                 :   i
             );
         }
-        function C(e, t) {
+        function z(e, t) {
             return t.parentNode.insertBefore(e, t);
         }
         function S(e) {
@@ -64539,7 +66224,7 @@ if (
             }
             y(e, 'width', t);
         }
-        function j(e, t) {
+        function I(e, t) {
             if (pe(t)) {
                 var i = getComputedStyle(e),
                     n = a(i.paddingTop) + a(i.paddingBottom),
@@ -64548,7 +66233,7 @@ if (
             }
             y(e, 'height', t);
         }
-        function I(e, t, i) {
+        function j(e, t, i) {
             var n;
             me(window.CustomEvent) ?
                 (n = new CustomEvent(t, {
@@ -64568,27 +66253,27 @@ if (
         function D(e) {
             return !!e.getClientRects().length;
         }
-        function N(e) {
+        function L(e) {
             return e.replace(/^-ms-/, 'ms-').replace(/-(\w)/g, function (e, t) {
                 return t.toUpperCase();
             });
         }
-        function L(e, t, i, n, s) {
+        function N(e, t, i, n, s) {
             for (e = s ? e.lastChild : e.firstChild; e; ) {
                 var o = s ? e.previousSibling : e.nextSibling;
                 if (
                     (!i && !1 === t(e)) ||
-                    (!n && !1 === L(e, t, i, n, s)) ||
+                    (!n && !1 === N(e, t, i, n, s)) ||
                     (i && !1 === t(e))
                 )
                     return !1;
                 e = o;
             }
         }
-        function O(e, t, i, n) {
-            L(e, t, i, n, !0);
+        function R(e, t, i, n) {
+            N(e, t, i, n, !0);
         }
-        function R(e, t) {
+        function O(e, t) {
             var i = (t = t || document).createDocumentFragment(),
                 n = r('div', {}, t);
             for (n.innerHTML = e; n.firstChild; ) d(i, n.firstChild);
@@ -64631,7 +66316,7 @@ if (
                 : ye.indexOf('|' + i + '|') < 0
             );
         }
-        function W(e, t) {
+        function q(e, t) {
             t.style.cssText = e.style.cssText + t.style.cssText;
         }
         function V(e) {
@@ -64639,22 +66324,22 @@ if (
                 for (; H(e.parentNode, !0); ) e = e.parentNode;
                 return e;
             };
-            L(e, function (e) {
+            N(e, function (e) {
                 var i = 'ul,ol',
                     n = !H(e, !0);
                 if (n && H(e.parentNode, !0)) {
                     var s = t(e),
-                        o = K(s, e),
+                        o = G(s, e),
                         a = e;
-                    W(s, a), C(o, s), C(a, s);
+                    q(s, a), z(o, s), z(a, s);
                 }
                 if (n && k(e, i) && k(e.parentNode, i)) {
-                    var l = z(e, 'li');
-                    l || C((l = r('li')), e), d(l, e);
+                    var l = C(e, 'li');
+                    l || z((l = r('li')), e), d(l, e);
                 }
             });
         }
-        function q(e, t) {
+        function W(e, t) {
             for (; (e = e.parentNode); ) if (x(e, t)) return e;
         }
         function U(e, t) {
@@ -64718,11 +66403,11 @@ if (
                     d = a;
                 }
         }
-        function K(e, t) {
+        function G(e, t) {
             var i = e.ownerDocument.createRange();
             return i.setStartBefore(e), i.setEndAfter(t), i.extractContents();
         }
-        function G(e) {
+        function K(e) {
             for (var t = 0, i = 0; e; )
                 (t += e.offsetLeft), (i += e.offsetTop), (e = e.offsetParent);
             return { left: t, top: i };
@@ -64732,7 +66417,7 @@ if (
                 n,
                 s = e.style;
             if (
-                (fe[t] || (fe[t] = N(t)),
+                (fe[t] || (fe[t] = L(t)),
                 (n = s[(t = fe[t])]),
                 'textAlign' === t)
             ) {
@@ -64798,7 +66483,7 @@ if (
                 Object.keys(t).forEach(function (e) {
                     n = n.replace(new RegExp(Q('{' + e + '}'), 'g'), t[e]);
                 }),
-                i && (n = R(n)),
+                i && (n = O(n)),
                 n
             );
         }
@@ -64908,7 +66593,7 @@ if (
                         u = s.createDocumentFragment();
                     if (
                         ('string' == typeof e ?
-                            (t && (e += l.selectedHtml() + t), (u = R(e)))
+                            (t && (e += l.selectedHtml() + t), (u = O(e)))
                         :   (d(u, e),
                             t &&
                                 (d(u, l.selectedRange().extractContents()),
@@ -64939,7 +66624,7 @@ if (
                     if (!i) return !1;
                     s.deleteContents(),
                         o && 3 !== o.nodeType && !F(o) ?
-                            C(i, o)
+                            z(i, o)
                         :   s.insertNode(i),
                         l.restoreRange();
                 }),
@@ -65029,7 +66714,7 @@ if (
                     var i,
                         n = e.getSelection(),
                         o = t.endContainer;
-                    if (!je && t.collapsed && o && !H(o, !0)) {
+                    if (!Ie && t.collapsed && o && !H(o, !0)) {
                         for (i = o.lastChild; i && k(i, '.sceditor-ignore'); )
                             i = i.previousSibling;
                         if (k(i, 'br')) {
@@ -65061,15 +66746,15 @@ if (
                         s = l.cloneSelected();
                     if (!s) return !1;
                     s.collapse(!1),
-                        (i = Ie(s, !0, e)),
-                        (n = Ie(s, !1, t)),
+                        (i = je(s, !0, e)),
+                        (n = je(s, !1, t)),
                         s.setStart(i.node, i.offset),
                         s.setEnd(n.node, n.offset),
                         l.selectRange(s);
                 }),
                 (l.getOuterText = function (e, t) {
                     var i = l.cloneSelected();
-                    return i ? (i.collapse(!e), Ie(i, e, t).text) : '';
+                    return i ? (i.collapse(!e), je(i, e, t).text) : '';
                 }),
                 (l.replaceKeyword = function (e, t, i, n, s, o) {
                     i ||
@@ -65202,7 +66887,7 @@ if (
                                     u = i ? l.search(r[c]) : l.indexOf(c);
                                 if (u > -1) {
                                     var d = l.indexOf(c, u),
-                                        h = R(t[c], n),
+                                        h = O(t[c], n),
                                         p = l.substr(d + c.length);
                                     h.appendChild(n.createTextNode(p)),
                                         (s.nodeValue = l.substr(0, d)),
@@ -65218,11 +66903,11 @@ if (
         }
         function re(e, t) {
             var i;
-            L(
+            N(
                 e,
                 function (e) {
                     H(e, !0) ?
-                        (i || C((i = r('p', {}, t)), e),
+                        (i || z((i = r('p', {}, t)), e),
                         (e.nodeType === ve && '' === e.nodeValue) || d(i, e))
                     :   (i = null);
                 },
@@ -65236,15 +66921,15 @@ if (
                 l,
                 f,
                 x,
-                z,
+                C,
                 S,
-                N,
                 L,
-                R,
-                W,
+                N,
+                O,
                 q,
+                W,
                 U,
-                K,
+                G,
                 Y,
                 J,
                 Q,
@@ -65262,19 +66947,19 @@ if (
                 Ae,
                 Ee,
                 Pe,
-                je,
                 Ie,
+                je,
                 Be,
                 $e,
                 Fe,
                 He,
-                We,
-                Ve,
                 qe,
+                Ve,
+                We,
                 Ue,
                 Ze,
-                Ke,
                 Ge,
+                Ke,
                 Ye,
                 Je,
                 Qe,
@@ -65306,19 +66991,19 @@ if (
             (_t.opts.emoticons = t.emoticons || we.emoticons),
                 (xe = function () {
                     (e._sceditor = _t),
-                        kt.locale && 'en' !== kt.locale && Ie(),
-                        C(
+                        kt.locale && 'en' !== kt.locale && je(),
+                        z(
                             (a = r('div', { className: 'sceditor-container' })),
                             e
                         ),
                         y(a, 'z-index', kt.zIndex),
-                        Le && A(a, 'ie ie' + Le),
+                        Ne && A(a, 'ie ie' + Ne),
                         (ce = e.required),
                         (e.required = !1);
                     var t = le.formats[kt.format];
                     'init' in (i = t ? new t() : {}) && i.init.call(_t),
-                        je(),
-                        We(),
+                        Ie(),
+                        qe(),
                         Be(),
                         Pe(),
                         $e(),
@@ -65333,9 +67018,9 @@ if (
                             Y.call('ready'),
                             'onReady' in i && i.onReady.call(_t);
                     };
-                    p(De, 'load', n), 'complete' === Ne.readyState && n();
+                    p(De, 'load', n), 'complete' === Le.readyState && n();
                 }),
-                (je = function () {
+                (Ie = function () {
                     var e = kt.plugins;
                     (e = e ? e.toString().split(',') : []),
                         (Y = new ne(_t)),
@@ -65343,29 +67028,29 @@ if (
                             Y.register(e.trim());
                         });
                 }),
-                (Ie = function () {
+                (je = function () {
                     var e;
                     (U = le.locale[kt.locale]) ||
                         ((e = kt.locale.split('-')), (U = le.locale[e[0]])),
                         U && U.dateFormat && (kt.dateFormat = U.dateFormat);
                 }),
                 (Pe = function () {
-                    (N = r('textarea')),
+                    (L = r('textarea')),
                         (f = r('iframe', {
                             frameborder: 0,
                             allowfullscreen: !0,
                         })),
                         kt.startInSourceMode ?
                             (A(a, 'sourceMode'), g(f))
-                        :   (A(a, 'wysiwygMode'), g(N)),
+                        :   (A(a, 'wysiwygMode'), g(L)),
                         kt.spellcheck || _(a, 'spellcheck', 'false'),
                         'https:' === De.location.protocol &&
                             _(f, 'src', 'javascript:false'),
                         d(a, f),
-                        d(a, N),
-                        _t.dimensions(kt.width || P(e), kt.height || j(e));
-                    var t = Le ? 'ie ie' + Le : '';
-                    (t += Ce ? ' ios' : ''),
+                        d(a, L),
+                        _t.dimensions(kt.width || P(e), kt.height || I(e));
+                    var t = Ne ? 'ie ie' + Ne : '';
+                    (t += ze ? ' ios' : ''),
                         (S = f.contentDocument).open(),
                         S.write(
                             te('html', {
@@ -65377,27 +67062,27 @@ if (
                             })
                         ),
                         S.close(),
-                        (z = S.body),
+                        (C = S.body),
                         (x = f.contentWindow),
                         _t.readOnly(!!kt.readOnly),
-                        (Ce || ze || Le) &&
-                            (j(z, '100%'), Le || p(z, 'touchend', _t.focus));
+                        (ze || Ce || Ne) &&
+                            (I(C, '100%'), Ne || p(C, 'touchend', _t.focus));
                     var i = _(e, 'tabindex');
-                    _(N, 'tabindex', i),
+                    _(L, 'tabindex', i),
                         _(f, 'tabindex', i),
-                        (K = new se(x)),
+                        (G = new se(x)),
                         g(e),
                         _t.val(e.value);
                     var n = kt.placeholder || _(e, 'placeholder');
-                    n && ((N.placeholder = n), _(z, 'placeholder', n));
+                    n && ((L.placeholder = n), _(C, 'placeholder', n));
                 }),
                 ($e = function () {
-                    kt.autoUpdate && (p(z, 'blur', pt), p(N, 'blur', pt)),
+                    kt.autoUpdate && (p(C, 'blur', pt), p(L, 'blur', pt)),
                         null === kt.rtl &&
-                            (kt.rtl = 'rtl' === y(N, 'direction')),
+                            (kt.rtl = 'rtl' === y(L, 'direction')),
                         _t.rtl(!!kt.rtl),
                         kt.autoExpand &&
-                            (p(z, 'load', mt, be), p(z, 'input keyup', mt)),
+                            (p(C, 'load', mt, be), p(C, 'input keyup', mt)),
                         kt.resizeEnabled && He(),
                         _(a, 'id', kt.id),
                         _t.emoticons(kt.emoticonsEnabled);
@@ -65410,40 +67095,40 @@ if (
                             'onselectionchange' in S ? 'selectionchange' : (
                                 'keyup focus blur contextmenu mouseup touchend click'
                             );
-                    p(Ne, 'click', Xe),
+                    p(Le, 'click', Xe),
                         t &&
-                            (p(t, 'reset', Ge),
+                            (p(t, 'reset', Ke),
                             p(t, 'submit', _t.updateOriginal, be)),
-                        p(z, 'keypress', Ke),
-                        p(z, 'keydown', Ue),
-                        p(z, 'keydown', Ze),
-                        p(z, 'keyup', nt),
-                        p(z, 'blur', dt),
-                        p(z, 'keyup', ht),
-                        p(z, 'paste', Ve),
-                        p(z, i, Je),
-                        p(z, s, st),
-                        p(z, n, Qe),
+                        p(C, 'keypress', Ge),
+                        p(C, 'keydown', Ue),
+                        p(C, 'keydown', Ze),
+                        p(C, 'keyup', nt),
+                        p(C, 'blur', dt),
+                        p(C, 'keyup', ht),
+                        p(C, 'paste', Ve),
+                        p(C, i, Je),
+                        p(C, s, st),
+                        p(C, n, Qe),
                         kt.emoticonsCompat &&
                             De.getSelection &&
-                            p(z, 'keyup', lt),
-                        p(z, 'blur', function () {
-                            _t.val() || A(z, 'placeholder');
+                            p(C, 'keyup', lt),
+                        p(C, 'blur', function () {
+                            _t.val() || A(C, 'placeholder');
                         }),
-                        p(z, 'focus', function () {
-                            E(z, 'placeholder');
+                        p(C, 'focus', function () {
+                            E(C, 'placeholder');
                         }),
-                        p(N, 'blur', dt),
-                        p(N, 'keyup', ht),
-                        p(N, 'keydown', Ue),
-                        p(N, i, Je),
-                        p(N, n, Qe),
+                        p(L, 'blur', dt),
+                        p(L, 'keyup', ht),
+                        p(L, 'keydown', Ue),
+                        p(L, i, Je),
+                        p(L, n, Qe),
                         p(S, 'mousedown', Ye),
                         p(S, s, st),
                         p(S, 'beforedeactivate keyup mouseup', Ee),
                         p(S, 'keyup', nt),
                         p(S, 'focus', function () {
-                            R = null;
+                            O = null;
                         }),
                         p(a, 'selectionchanged', ot),
                         p(a, 'selectionchanged', tt),
@@ -65485,7 +67170,7 @@ if (
                                             ke && ke.create)
                                         )
                                             ke.create(s) &&
-                                                (C(ke.create(s), o.firstChild),
+                                                (z(ke.create(s), o.firstChild),
                                                 A(o, 'has-icon'));
                                         (o._sceTxtMode = !!r.txtExec),
                                             (o._sceWysiwygMode = !!r.exec),
@@ -65545,12 +67230,12 @@ if (
                         w = 0,
                         k = 0,
                         x = P(a),
-                        z = j(a),
-                        C = !1,
+                        C = I(a),
+                        z = !1,
                         S = _t.rtl();
                     if (
-                        ((e = kt.resizeMinHeight || z / 1.5),
-                        (t = kt.resizeMaxHeight || 2.5 * z),
+                        ((e = kt.resizeMinHeight || C / 1.5),
+                        (t = kt.resizeMaxHeight || 2.5 * C),
                         (i = kt.resizeMinWidth || x / 1.25),
                         (n = kt.resizeMaxWidth || 1.25 * x),
                         (s = function (s) {
@@ -65571,12 +67256,12 @@ if (
                                 s.preventDefault();
                         }),
                         (o = function (e) {
-                            C &&
-                                ((C = !1),
+                            z &&
+                                ((z = !1),
                                 g(c),
                                 E(a, 'resizing'),
-                                m(Ne, u, s),
-                                m(Ne, h, o),
+                                m(Le, u, s),
+                                m(Le, h, o),
                                 e.preventDefault());
                         }),
                         ke && ke.create)
@@ -65594,16 +67279,16 @@ if (
                                 (f = e.touches[0].pageY))
                             :   ((_ = e.pageX), (f = e.pageY)),
                                 (w = P(a)),
-                                (k = j(a)),
-                                (C = !0),
+                                (k = I(a)),
+                                (z = !0),
                                 A(a, 'resizing'),
                                 v(c),
-                                p(Ne, u, s),
-                                p(Ne, h, o),
+                                p(Le, u, s),
+                                p(Le, h, o),
                                 e.preventDefault();
                         });
                 }),
-                (We = function () {
+                (qe = function () {
                     var e = kt.emoticons,
                         t = kt.emoticonsRoot || '';
                     e && (wt = n({}, e.more, e.dropdown, e.hidden)),
@@ -65622,23 +67307,23 @@ if (
                 (at = function () {
                     var e,
                         t,
-                        i = z.firstChild,
+                        i = C.firstChild,
                         n = !!kt.autofocusEnd;
                     if (D(a)) {
                         if (_t.sourceMode())
                             return (
-                                (t = n ? N.value.length : 0),
-                                void N.setSelectionRange(t, t)
+                                (t = n ? L.value.length : 0),
+                                void L.setSelectionRange(t, t)
                             );
-                        if ((Z(z), n))
+                        if ((Z(C), n))
                             for (
-                                (i = z.lastChild) ||
-                                ((i = r('p', {}, S)), d(z, i));
+                                (i = C.lastChild) ||
+                                ((i = r('p', {}, S)), d(C, i));
                                 i.lastChild;
 
                             )
                                 (i = i.lastChild),
-                                    !Oe &&
+                                    !Re &&
                                         k(i, 'br') &&
                                         i.previousSibling &&
                                         (i = i.previousSibling);
@@ -65647,26 +67332,26 @@ if (
                                 e.selectNodeContents(i)
                             :   (e.setStartBefore(i), n && e.setStartAfter(i)),
                             e.collapse(!n),
-                            K.selectRange(e),
+                            G.selectRange(e),
                             (ee = e),
-                            n && (z.scrollTop = z.scrollHeight),
+                            n && (C.scrollTop = C.scrollHeight),
                             _t.focus();
                     }
                 }),
                 (_t.readOnly = function (e) {
                     return 'boolean' != typeof e ?
-                            !N.readonly
-                        :   ((z.contentEditable = !e),
-                            (N.readonly = !e),
+                            !L.readonly
+                        :   ((C.contentEditable = !e),
+                            (L.readonly = !e),
                             et(e),
                             _t);
                 }),
                 (_t.rtl = function (e) {
                     var t = e ? 'rtl' : 'ltr';
                     return 'boolean' != typeof e ?
-                            'rtl' === _(N, 'dir')
-                        :   (_(z, 'dir', t),
-                            _(N, 'dir', t),
+                            'rtl' === _(L, 'dir')
+                        :   (_(C, 'dir', t),
+                            _(L, 'dir', t),
                             E(a, 'rtl'),
                             E(a, 'ltr'),
                             A(a, t),
@@ -65691,22 +67376,22 @@ if (
                         !1 === (e = !(!e && 0 !== e) && e) && !1 === t ?
                             { width: _t.width(), height: _t.height() }
                         :   (!1 !== e && (!1 !== i && (kt.width = e), P(a, e)),
-                            !1 !== t && (!1 !== i && (kt.height = t), j(a, t)),
+                            !1 !== t && (!1 !== i && (kt.height = t), I(a, t)),
                             _t)
                     );
                 }),
                 (_t.height = function (e, t) {
                     return e || 0 === e ?
                             (_t.dimensions(null, e, t), _t)
-                        :   j(a);
+                        :   I(a);
                 }),
                 (_t.maximize = function (e) {
                     var t = 'sceditor-maximize';
                     return pe(e) ?
                             T(a, t)
                         :   ((e = !!e) && (fe = De.pageYOffset),
-                            M(Ne.documentElement, t, e),
-                            M(Ne.body, t, e),
+                            M(Le.documentElement, t, e),
+                            M(Le.body, t, e),
                             M(a, t, e),
                             _t.width(e ? '100%' : kt.width, !1),
                             _t.height(e ? '100%' : kt.height, !1),
@@ -65722,11 +67407,11 @@ if (
                 (_t.expandToContent = function (t) {
                     if (!_t.maximize()) {
                         if ((clearTimeout(_e), (_e = !1), !de)) {
-                            var i = kt.resizeMinHeight || kt.height || j(e);
+                            var i = kt.resizeMinHeight || kt.height || I(e);
                             de = { min: i, max: kt.resizeMaxHeight || 2 * i };
                         }
-                        var n = Ne.createRange();
-                        n.selectNodeContents(z);
+                        var n = Le.createRange();
+                        n.selectNodeContents(C);
                         var s = n.getBoundingClientRect(),
                             o = S.documentElement.clientHeight - 1,
                             a = s.bottom - s.top,
@@ -65738,16 +67423,16 @@ if (
                 (_t.destroy = function () {
                     if (Y) {
                         Y.destroy(),
-                            (K = null),
-                            (R = null),
+                            (G = null),
+                            (O = null),
                             (Y = null),
-                            L && u(L),
-                            m(Ne, 'click', Xe);
+                            N && u(N),
+                            m(Le, 'click', Xe);
                         var t = e.form;
                         t &&
-                            (m(t, 'reset', Ge),
+                            (m(t, 'reset', Ke),
                             m(t, 'submit', _t.updateOriginal)),
-                            u(N),
+                            u(L),
                             u(l),
                             u(a),
                             delete e._sceditor,
@@ -65759,7 +67444,7 @@ if (
                     var l,
                         c = 'sceditor-' + t;
                     _t.closeDropDown(!0),
-                        (L && T(L, c)) ||
+                        (N && T(N, c)) ||
                             (!1 !== s &&
                                 o(
                                     h(i, ':not(input):not(textarea)'),
@@ -65777,37 +67462,37 @@ if (
                                 kt.dropDownCss
                             )),
                             y(
-                                (L = r('div', {
+                                (N = r('div', {
                                     className: 'sceditor-dropdown ' + c,
                                 })),
                                 l
                             ),
-                            d(L, i),
-                            d(a, L),
-                            p(L, 'click focusin', function (e) {
+                            d(N, i),
+                            d(a, N),
+                            p(N, 'click focusin', function (e) {
                                 e.stopPropagation();
                             }),
                             setTimeout(function () {
-                                if (L) {
-                                    var e = h(L, 'input,textarea')[0];
+                                if (N) {
+                                    var e = h(N, 'input,textarea')[0];
                                     e && e.focus();
                                 }
                             }));
                 }),
                 (Xe = function (e) {
                     3 !== e.which &&
-                        L &&
+                        N &&
                         !e.defaultPrevented &&
                         (pt(), _t.closeDropDown());
                 }),
                 (Ve = function (e) {
-                    var t = Le || ze,
-                        i = z,
+                    var t = Ne || Ce,
+                        i = C,
                         n = e.clipboardData,
                         s = function (e) {
                             var t = new FileReader();
                             (t.onload = function (e) {
-                                qe({
+                                We({
                                     html:
                                         '<img src="' + e.target.result + '" />',
                                 });
@@ -65820,17 +67505,17 @@ if (
                             r = n.items;
                         e.preventDefault();
                         for (var l = 0; l < a.length; l++) {
-                            if (De.FileReader && r && Re.test(r[l].type))
+                            if (De.FileReader && r && Oe.test(r[l].type))
                                 return s(n.items[l].getAsFile());
                             o[a[l]] = n.getData(a[l]);
                         }
                         (o.text = o['text/plain']),
                             (o.html = o['text/html']),
-                            qe(o);
+                            We(o);
                     } else if (!ye) {
                         var c = i.scrollTop;
                         for (
-                            K.saveRange(), ye = Ne.createDocumentFragment();
+                            G.saveRange(), ye = Le.createDocumentFragment();
                             i.firstChild;
 
                         )
@@ -65841,15 +67526,15 @@ if (
                                 d(i, ye),
                                 (i.scrollTop = c),
                                 (ye = !1),
-                                K.restoreRange(),
-                                qe({ html: e });
+                                G.restoreRange(),
+                                We({ html: e });
                         }, 0);
                     }
                 }),
-                (qe = function (e) {
+                (We = function (e) {
                     var t = r('div', {}, S);
                     Y.call('pasteRaw', e),
-                        I(a, 'pasteraw', e),
+                        j(a, 'pasteraw', e),
                         e.html ?
                             ((t.innerHTML = e.html), V(t))
                         :   (t.innerHTML = X(e.text || ''));
@@ -65857,32 +67542,32 @@ if (
                     'fragmentToSource' in i &&
                         (n.val = i.fragmentToSource(n.val, S, J)),
                         Y.call('paste', n),
-                        I(a, 'paste', n),
+                        j(a, 'paste', n),
                         'fragmentToHtml' in i &&
                             (n.val = i.fragmentToHtml(n.val, J)),
                         Y.call('pasteHtml', n),
                         _t.wysiwygEditorInsertHtml(n.val, null, !0);
                 }),
                 (_t.closeDropDown = function (e) {
-                    L && (u(L), (L = null)), !0 === e && _t.focus();
+                    N && (u(N), (N = null)), !0 === e && _t.focus();
                 }),
                 (_t.wysiwygEditorInsertHtml = function (e, t, i) {
                     var n,
                         s,
                         o,
-                        a = j(f);
+                        a = I(f);
                     _t.focus(),
                         (!i && c(Q, 'code')) ||
-                            (K.insertHTML(e, t),
-                            K.saveRange(),
+                            (G.insertHTML(e, t),
+                            G.saveRange(),
                             Te(),
-                            v((n = h(z, '#sceditor-end-marker')[0])),
-                            (s = z.scrollTop),
-                            (o = G(n).top + 1.5 * n.offsetHeight - a),
+                            v((n = h(C, '#sceditor-end-marker')[0])),
+                            (s = C.scrollTop),
+                            (o = K(n).top + 1.5 * n.offsetHeight - a),
                             g(n),
-                            (o > s || o + a < s) && (z.scrollTop = o),
+                            (o > s || o + a < s) && (C.scrollTop = o),
                             ut(!1),
-                            K.restoreRange(),
+                            G.restoreRange(),
                             nt());
                 }),
                 (_t.wysiwygEditorInsertText = function (e, t) {
@@ -65899,31 +67584,31 @@ if (
                 (_t.sourceEditorInsertText = function (e, t) {
                     var i,
                         n,
-                        s = N.selectionStart,
-                        o = N.selectionEnd;
-                    (i = N.scrollTop),
-                        N.focus(),
-                        (n = N.value),
+                        s = L.selectionStart,
+                        o = L.selectionEnd;
+                    (i = L.scrollTop),
+                        L.focus(),
+                        (n = L.value),
                         t && (e += n.substring(s, o) + t),
-                        (N.value =
+                        (L.value =
                             n.substring(0, s) + e + n.substring(o, n.length)),
-                        (N.selectionStart = s + e.length - (t ? t.length : 0)),
-                        (N.selectionEnd = N.selectionStart),
-                        (N.scrollTop = i),
-                        N.focus(),
+                        (L.selectionStart = s + e.length - (t ? t.length : 0)),
+                        (L.selectionEnd = L.selectionStart),
+                        (L.scrollTop = i),
+                        L.focus(),
                         ut();
                 }),
                 (_t.getRangeHelper = function () {
-                    return K;
+                    return G;
                 }),
                 (_t.sourceEditorCaret = function (e) {
                     return (
-                        N.focus(),
+                        L.focus(),
                         e ?
-                            ((N.selectionStart = e.start),
-                            (N.selectionEnd = e.end),
+                            ((L.selectionStart = e.start),
+                            (L.selectionEnd = e.end),
                             this)
-                        :   { start: N.selectionStart, end: N.selectionEnd }
+                        :   { start: L.selectionStart, end: L.selectionEnd }
                     );
                 }),
                 (_t.val = function (e, t) {
@@ -65942,7 +67627,7 @@ if (
                     if (_t.inSourceMode())
                         return _t.sourceEditorInsertText(e, t), _t;
                     if (t) {
-                        var a = K.selectedHtml();
+                        var a = G.selectedHtml();
                         !1 !== n &&
                             'fragmentToSource' in i &&
                             (a = i.fragmentToSource(a, S, J)),
@@ -65964,13 +67649,13 @@ if (
                 }),
                 (_t.getWysiwygEditorValue = function (e) {
                     for (
-                        var t, n = r('div', {}, S), s = z.childNodes, o = 0;
+                        var t, n = r('div', {}, S), s = C.childNodes, o = 0;
                         o < s.length;
                         o++
                     )
                         d(n, s[o].cloneNode(!0));
                     return (
-                        d(z, n),
+                        d(C, n),
                         V(n),
                         u(n),
                         (t = n.innerHTML),
@@ -65981,31 +67666,31 @@ if (
                     );
                 }),
                 (_t.getBody = function () {
-                    return z;
+                    return C;
                 }),
                 (_t.getContentAreaContainer = function () {
                     return f;
                 }),
                 (_t.getSourceEditorValue = function (e) {
-                    var t = N.value;
+                    var t = L.value;
                     return !1 !== e && 'toHtml' in i && (t = i.toHtml(t)), t;
                 }),
                 (_t.setWysiwygEditorValue = function (e) {
-                    e || (e = '<p>' + (Le ? '' : '<br />') + '</p>'),
-                        (z.innerHTML = e),
+                    e || (e = '<p>' + (Ne ? '' : '<br />') + '</p>'),
+                        (C.innerHTML = e),
                         Te(),
                         nt(),
                         ut(),
                         mt();
                 }),
                 (_t.setSourceEditorValue = function (e) {
-                    (N.value = e), ut();
+                    (L.value = e), ut();
                 }),
                 (_t.updateOriginal = function () {
                     e.value = _t.val();
                 }),
                 (Te = function () {
-                    kt.emoticonsEnabled && ae(z, wt, kt.emoticonsCompat);
+                    kt.emoticonsEnabled && ae(C, wt, kt.emoticonsCompat);
                 }),
                 (_t.inSourceMode = function () {
                     return T(a, 'sourceMode');
@@ -66020,13 +67705,13 @@ if (
                 (_t.toggleSourceMode = function () {
                     var e = _t.inSourceMode();
                     (!Se && e) ||
-                        (e || (K.saveRange(), K.clear()),
+                        (e || (G.saveRange(), G.clear()),
                         _t.blur(),
                         e ?
                             _t.setWysiwygEditorValue(_t.getSourceEditorValue())
                         :   _t.setSourceEditorValue(_t.getWysiwygEditorValue()),
-                        (R = null),
-                        b(N),
+                        (O = null),
+                        b(L),
                         b(f),
                         M(a, 'wysiwygMode', e),
                         M(a, 'sourceMode', !e),
@@ -66035,8 +67720,8 @@ if (
                 }),
                 (it = function () {
                     return (
-                        N.focus(),
-                        N.value.substring(N.selectionStart, N.selectionEnd)
+                        L.focus(),
+                        L.value.substring(L.selectionStart, L.selectionEnd)
                     );
                 }),
                 (Ae = function (e, t) {
@@ -66056,12 +67741,12 @@ if (
                             ));
                 }),
                 (Ee = function () {
-                    Le && (R = K.selectedRange());
+                    Ne && (O = G.selectedRange());
                 }),
                 (_t.execCommand = function (e, t) {
                     var i = !1,
                         n = _t.commands[e];
-                    if ((_t.focus(), !c(K.parentNode(), 'code'))) {
+                    if ((_t.focus(), !c(G.parentNode(), 'code'))) {
                         try {
                             i = S.execCommand(e, !1, t);
                         } catch (e) {}
@@ -66079,23 +67764,23 @@ if (
                             x.getSelection().rangeCount <= 0
                         )
                             ee = null;
-                        else if (K && !K.compare(ee)) {
-                            if ((ee = K.cloneSelected()) && ee.collapsed) {
+                        else if (G && !G.compare(ee)) {
+                            if ((ee = G.cloneSelected()) && ee.collapsed) {
                                 var e = ee.startContainer,
                                     t = ee.startOffset;
                                 for (
                                     t &&
                                     e.nodeType !== ve &&
                                     (e = e.childNodes[t]);
-                                    e && e.parentNode !== z;
+                                    e && e.parentNode !== C;
 
                                 )
                                     e = e.parentNode;
                                 e &&
                                     H(e, !0) &&
-                                    (K.saveRange(), re(z, S), K.restoreRange());
+                                    (G.saveRange(), re(C, S), G.restoreRange());
                             }
-                            I(a, 'selectionchanged');
+                            j(a, 'selectionchanged');
                         }
                         ie = !1;
                     }
@@ -66105,12 +67790,12 @@ if (
                 }),
                 (ot = function () {
                     var e,
-                        t = K.parentNode();
+                        t = G.parentNode();
                     J !== t &&
                         ((e = J),
                         (J = t),
-                        (Q = K.getFirstBlockParent(t)),
-                        I(a, 'nodechanged', { oldNode: e, newNode: J }));
+                        (Q = G.getFirstBlockParent(t)),
+                        j(a, 'nodechanged', { oldNode: e, newNode: J }));
                 }),
                 (_t.currentNode = function () {
                     return J;
@@ -66130,8 +67815,8 @@ if (
                         });
                     else {
                         s ||
-                            ((t = K.parentNode()),
-                            (e = K.getFirstBlockParent(t)));
+                            ((t = G.parentNode()),
+                            (e = G.getFirstBlockParent(t)));
                         for (var a = 0; a < vt.length; a++) {
                             var r = 0,
                                 c = yt[vt[a].name],
@@ -66154,15 +67839,15 @@ if (
                         ke && ke.update && ke.update(s, t, e);
                     }
                 }),
-                (Ke = function (e) {
+                (Ge = function (e) {
                     if (
                         !e.defaultPrevented &&
                         (_t.closeDropDown(),
                         13 === e.which && !k(Q, 'li,ul,ol') && B(Q))
                     ) {
-                        R = null;
+                        O = null;
                         var t = r('br', {}, S);
-                        if ((K.insertNode(t), !Oe)) {
+                        if ((G.insertNode(t), !Re)) {
                             var i = t.parentNode,
                                 n = i.lastChild;
                             n &&
@@ -66172,13 +67857,13 @@ if (
                                 !H(i, !0) &&
                                     n === t &&
                                     H(t.previousSibling) &&
-                                    K.insertHTML('<br>');
+                                    G.insertHTML('<br>');
                         }
                         e.preventDefault();
                     }
                 }),
                 (nt = function () {
-                    O(z, function (e) {
+                    R(C, function (e) {
                         if (
                             e.nodeType === ge &&
                             !/inline/.test(y(e, 'display')) &&
@@ -66188,8 +67873,8 @@ if (
                             var t = r('p', {}, S);
                             return (
                                 (t.className = 'sceditor-nlf'),
-                                (t.innerHTML = Oe ? '' : '<br />'),
-                                d(z, t),
+                                (t.innerHTML = Re ? '' : '<br />'),
+                                d(C, t),
                                 !1
                             );
                         }
@@ -66200,11 +67885,11 @@ if (
                             return !1;
                     });
                 }),
-                (Ge = function () {
+                (Ke = function () {
                     _t.val(e.value);
                 }),
                 (Ye = function () {
-                    _t.closeDropDown(), (R = null);
+                    _t.closeDropDown(), (O = null);
                 }),
                 (_t._ = function () {
                     var e,
@@ -66220,7 +67905,7 @@ if (
                 }),
                 (Qe = function (e) {
                     Y && Y.call(e.type + 'Event', e, _t);
-                    var t = (e.target === N ? 'scesrc' : 'scewys') + e.type;
+                    var t = (e.target === L ? 'scesrc' : 'scewys') + e.type;
                     ft[t] &&
                         ft[t].forEach(function (t) {
                             t.call(_t, e);
@@ -66247,20 +67932,20 @@ if (
                 (_t.blur = function (e, t, i) {
                     return (
                         me(e) ? _t.bind('blur', e, t, i)
-                        : _t.sourceMode() ? N.blur()
-                        : z.blur(),
+                        : _t.sourceMode() ? L.blur()
+                        : C.blur(),
                         _t
                     );
                 }),
                 (_t.focus = function (e, t, i) {
                     if (me(e)) _t.bind('focus', e, t, i);
-                    else if (_t.inSourceMode()) N.focus();
+                    else if (_t.inSourceMode()) L.focus();
                     else {
                         if (h(S, ':focus').length) return;
                         var n,
-                            s = K.selectedRange();
+                            s = G.selectedRange();
                         ee || at(),
-                            !Oe &&
+                            !Re &&
                                 s &&
                                 1 === s.endOffset &&
                                 s.collapsed &&
@@ -66269,10 +67954,10 @@ if (
                                 k(n.firstChild, 'br') &&
                                 (s.setStartBefore(n.firstChild),
                                 s.collapse(!0),
-                                K.selectRange(s)),
+                                G.selectRange(s)),
                             x.focus(),
-                            z.focus(),
-                            R && (K.selectRange(R), (R = null));
+                            C.focus(),
+                            O && (G.selectRange(O), (O = null));
                     }
                     return tt(), _t;
                 }),
@@ -66310,7 +67995,7 @@ if (
                             (_t.emoticonsCache = i),
                             (_t.longestEmoticonCode =
                                 i[i.length - 1][0].length)),
-                        K.replaceKeyword(
+                        G.replaceKeyword(
                             _t.emoticonsCache,
                             !0,
                             !0,
@@ -66322,23 +68007,23 @@ if (
                                 e.preventDefault()));
                 }),
                 (lt = function () {
-                    oe(Q, K);
+                    oe(Q, G);
                 }),
                 (_t.emoticons = function (e) {
                     if (!e && !1 !== e) return kt.emoticonsEnabled;
                     ((kt.emoticonsEnabled = e), e) ?
-                        (p(z, 'keypress', rt),
+                        (p(C, 'keypress', rt),
                         _t.sourceMode() ||
-                            (K.saveRange(), Te(), ut(!1), K.restoreRange()))
+                            (G.saveRange(), Te(), ut(!1), G.restoreRange()))
                     :   (o(
-                            h(z, 'img[data-sceditor-emoticon]'),
+                            h(C, 'img[data-sceditor-emoticon]'),
                             function (e, t) {
                                 var i = w(t, 'sceditor-emoticon'),
                                     n = S.createTextNode(i);
                                 t.parentNode.replaceChild(n, t);
                             }
                         ),
-                        m(z, 'keypress', rt),
+                        m(C, 'keypress', rt),
                         ut());
                     return _t;
                 }),
@@ -66490,7 +68175,7 @@ if (
                     if (
                         !kt.disableBlockRemove &&
                         8 === e.which &&
-                        (i = K.selectedRange()) &&
+                        (i = G.selectedRange()) &&
                         ((t = i.startContainer),
                         0 === i.startOffset && (n = ct()) && !k(n, 'body'))
                     ) {
@@ -66515,12 +68200,12 @@ if (
                     return (
                         !(e = e || ct()) ||
                             k(e, 'body') ||
-                            (K.saveRange(),
+                            (G.saveRange(),
                             (e.className = ''),
-                            (R = null),
+                            (O = null),
                             _(e, 'style', ''),
                             k(e, 'p,div,td') || $(e, 'p'),
-                            K.restoreRange()),
+                            G.restoreRange()),
                         _t
                     );
                 }),
@@ -66531,23 +68216,23 @@ if (
                     ) {
                         var t,
                             i = _t.sourceMode(),
-                            n = !i && K.hasSelection();
-                        (W = !1),
+                            n = !i && G.hasSelection();
+                        (q = !1),
                             (e =
                                 !1 !== e &&
                                 !S.getElementById('sceditor-start-marker')),
-                            q && (clearTimeout(q), (q = !1)),
-                            n && e && K.saveRange(),
-                            (t = i ? N.value : z.innerHTML) !== ut.lastVal &&
+                            W && (clearTimeout(W), (W = !1)),
+                            n && e && G.saveRange(),
+                            (t = i ? L.value : C.innerHTML) !== ut.lastVal &&
                                 ((ut.lastVal = t),
-                                I(a, 'valuechanged', {
+                                j(a, 'valuechanged', {
                                     rawValue: i ? _t.val() : t,
                                 })),
-                            n && e && K.removeMarkers();
+                            n && e && G.removeMarkers();
                     }
                 }),
                 (dt = function () {
-                    q && ut();
+                    W && ut();
                 }),
                 (ht = function (e) {
                     var t = e.which,
@@ -66555,7 +68240,7 @@ if (
                         n = 13 === i || 32 === i,
                         s = 8 === i || 46 === i;
                     (ht.lastChar = t),
-                        W ||
+                        q ||
                             (13 === t || 32 === t ?
                                 n ? (ht.triggerNext = !0)
                                 :   ut()
@@ -66563,13 +68248,13 @@ if (
                                 s ? (ht.triggerNext = !0)
                                 :   ut()
                             :   ht.triggerNext && (ut(), (ht.triggerNext = !1)),
-                            clearTimeout(q),
-                            (q = setTimeout(function () {
-                                W || ut();
+                            clearTimeout(W),
+                            (W = setTimeout(function () {
+                                q || ut();
                             }, 1500)));
                 }),
                 (Je = function (e) {
-                    (W = /start/i.test(e.type)) || ut();
+                    (q = /start/i.test(e.type)) || ut();
                 }),
                 (pt = function () {
                     _t.updateOriginal();
@@ -66690,8 +68375,8 @@ if (
                     t > 4 ? t : e
                 );
             })(),
-            ze = '-ms-ime-align' in document.documentElement.style,
-            Ce = /iPhone|iPod|iPad| wosbrowser\//i.test(ke),
+            Ce = '-ms-ime-align' in document.documentElement.style,
+            ze = /iPhone|iPod|iPad| wosbrowser\//i.test(ke),
             Se =
                 (((de = document.createElement('div')).contentEditable = !0),
                 'contentEditable' in document.documentElement &&
@@ -66703,7 +68388,7 @@ if (
                             !(ce = /AppleWebKit\/(\d+)/.exec(ke)) ||
                             !ce[1] ||
                             ce[1] < 534),
-                    Ce && (ue = /OS [0-4](_\d)+ like Mac/i.test(ke)),
+                    ze && (ue = /OS [0-4](_\d)+ like Mac/i.test(ke)),
                     /Firefox/i.test(ke) && (ue = !1),
                     /OneBrowser/i.test(ke) && (ue = !1),
                     'UCWEB' === navigator.vendor && (ue = !1),
@@ -66832,7 +68517,7 @@ if (
                                     (s += '</div>');
                             }),
                             (o._htmlCache = s)),
-                            d(n, R(o._htmlCache)),
+                            d(n, O(o._htmlCache)),
                             p(n, 'click', 'a', function (t) {
                                 i(w(this, 'color')),
                                     e.closeDropDown(!0),
@@ -67138,7 +68823,7 @@ if (
                     exec: function () {
                         var e = c(this.currentNode(), 'a');
                         if (e) {
-                            for (; e.firstChild; ) C(e.firstChild, e);
+                            for (; e.firstChild; ) z(e.firstChild, e);
                             u(e);
                         }
                     },
@@ -67399,8 +69084,8 @@ if (
             },
             Pe = {};
         ne.plugins = Pe;
-        var je = xe && xe < 11,
-            Ie = function (e, t, i) {
+        var Ie = xe && xe < 11,
+            je = function (e, t, i) {
                 var n,
                     s,
                     o,
@@ -67429,10 +69114,10 @@ if (
                 return { node: r || c, offset: u, text: l };
             },
             De = window,
-            Ne = document,
-            Le = xe,
-            Oe = Le && Le < 11,
-            Re = /^image\/(p?jpe?g|gif|png|bmp)$/i;
+            Le = document,
+            Ne = xe,
+            Re = Ne && Ne < 11,
+            Oe = /^image\/(p?jpe?g|gif|png|bmp)$/i;
         (le.locale = {}),
             (le.formats = {}),
             (le.icons = {}),
@@ -67471,7 +69156,7 @@ if (
                 commands: Me,
                 defaultOptions: we,
                 ie: xe,
-                ios: Ce,
+                ios: ze,
                 isWysiwygSupported: Se,
                 regexEscape: Q,
                 escapeEntities: X,
@@ -67483,22 +69168,22 @@ if (
                     is: k,
                     closest: c,
                     width: P,
-                    height: j,
-                    traverse: L,
-                    rTraverse: O,
-                    parseHTML: R,
+                    height: I,
+                    traverse: N,
+                    rTraverse: R,
+                    parseHTML: O,
                     hasStyling: B,
                     convertElement: $,
                     blockLevelList: ye,
                     canHaveChildren: F,
                     isInline: H,
-                    copyCSS: W,
+                    copyCSS: q,
                     fixNesting: V,
-                    findCommonAncestor: q,
+                    findCommonAncestor: W,
                     getSibling: U,
                     removeWhiteSpace: Z,
-                    extractContents: K,
-                    getOffset: G,
+                    extractContents: G,
+                    getOffset: K,
                     getStyle: Y,
                     hasStyle: J,
                 },
@@ -68006,7 +69691,7 @@ if (
                             (a =
                                 (n ? n.quoteType : null) ||
                                 k.opts.quoteType ||
-                                z.auto),
+                                C.auto),
                             n || t.type !== T)
                         )
                             if (t.type === T) {
@@ -68053,7 +69738,7 @@ if (
                 var s = /\s|=/.test(e);
                 return (
                     n(t) ? t(e, i)
-                    : t === z.never || (t === z.auto && !s) ? e
+                    : t === C.never || (t === C.auto && !s) ? e
                     : '"' + e.replace('\\', '\\\\').replace('"', '\\"') + '"'
                 );
             }
@@ -68324,7 +70009,7 @@ if (
                 (h.opts = this.opts),
                     (h.elementToBbcode = c),
                     e(),
-                    (this.commands = v(!0, {}, C, this.commands)),
+                    (this.commands = v(!0, {}, z, this.commands)),
                     (this.toBBCode = h.toSource),
                     (this.fromBBCode = h.toHtml);
             }),
@@ -68346,8 +70031,8 @@ if (
             w = y && y < 11,
             k = 'data-sceditor-emoticon',
             x = e.command.get,
-            z = { always: 1, never: 2, auto: 3 },
-            C = {
+            C = { always: 1, never: 2, auto: 3 },
+            z = {
                 bold: { txtExec: ['[b]', '[/b]'] },
                 italic: { txtExec: ['[i]', '[/i]'] },
                 underline: { txtExec: ['[u]', '[/u]'] },
@@ -68493,7 +70178,7 @@ if (
                 'font': {
                     tags: { font: { face: null } },
                     styles: { 'font-family': null },
-                    quoteType: z.never,
+                    quoteType: C.never,
                     format: function (e, t) {
                         var i;
                         return (
@@ -68528,7 +70213,7 @@ if (
                 'color': {
                     tags: { font: { color: null } },
                     styles: { color: null },
-                    quoteType: z.never,
+                    quoteType: C.never,
                     format: function (e, t) {
                         var i;
                         return (
@@ -68632,7 +70317,7 @@ if (
                     allowsEmpty: !0,
                     tags: { img: { src: null } },
                     allowedChildren: ['#'],
-                    quoteType: z.never,
+                    quoteType: C.never,
                     format: function (e, t) {
                         var i,
                             n,
@@ -68669,7 +70354,7 @@ if (
                 'url': {
                     allowsEmpty: !0,
                     tags: { a: { href: null } },
-                    quoteType: z.never,
+                    quoteType: C.never,
                     format: function (e, t) {
                         var i = f(e, 'href');
                         return 'mailto:' === i.substr(0, 7) ?
@@ -68684,7 +70369,7 @@ if (
                     },
                 },
                 'email': {
-                    quoteType: z.never,
+                    quoteType: C.never,
                     html: function (e, t, i) {
                         return (
                             '<a href="mailto:' +
@@ -68698,7 +70383,7 @@ if (
                 'quote': {
                     tags: { blockquote: null },
                     isInline: !1,
-                    quoteType: z.never,
+                    quoteType: C.never,
                     format: function (e, t) {
                         for (
                             var i,
@@ -68845,7 +70530,7 @@ if (
                 );
             },
         }),
-            (r.QuoteType = z),
+            (r.QuoteType = C),
             (r.defaults = {
                 breakBeforeBlock: !1,
                 breakStartBlock: !1,
@@ -68854,7 +70539,7 @@ if (
                 removeEmptyTags: !0,
                 fixInvalidNesting: !0,
                 fixInvalidChildren: !0,
-                quoteType: z.auto,
+                quoteType: C.auto,
             }),
             (u.get = function (e) {
                 return S[e] || null;
@@ -71280,7 +72965,7 @@ var tutorial = {
         };
     if (k) {
         window.name || (window.name = Math.floor(1e8 * Math.random()));
-        var z = {
+        var C = {
             _cookie: !0,
             _prefix: '',
             _expires: null,
@@ -71339,16 +73024,16 @@ var tutorial = {
             },
         };
         w ||
-            ((window.localCookieStorage = d({}, z, {
+            ((window.localCookieStorage = d({}, C, {
                 _prefix: b,
                 _expires: 3650,
                 _secure: !0,
             })),
-            (window.sessionCookieStorage = d({}, z, {
+            (window.sessionCookieStorage = d({}, C, {
                 _prefix: y + window.name + '_',
                 _secure: !0,
             }))),
-            (window.cookieStorage = d({}, z)),
+            (window.cookieStorage = d({}, C)),
             (v.cookieStorage = d({}, x, {
                 _type: 'cookieStorage',
                 setExpires: function (e) {
