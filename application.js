@@ -4064,7 +4064,7 @@ function isLoggedIn() {
     return 'undefined' != typeof user_id && !isNaN(user_id);
 }
 function mobileShow(e) {
-    if (((currentMobileTab = e), 'account' == e))
+    if ((console.log('mobileShow'), (currentMobileTab = e), 'account' == e))
         mobileBridgeAdd('account_show', {});
     else {
         $('.overview_outer').hide(),
@@ -4076,11 +4076,15 @@ function mobileShow(e) {
                 .removeClass('btn-default')
                 .addClass('btn-success'),
             progressBarScrollUpdate();
-        var t =
-            $(window).height() - 71 - $('#navbar-mobile-footer').outerHeight();
-        'map' == e &&
-            ($('#map').height(t),
-            'undefined' == typeof mapkit && map.invalidateSize()),
+        let t = $(window).height() - magicValueAvailableSpace;
+        client_uses_design_v2 ?
+            (-1 === mobileClientNavigationBarHeight &&
+                (mobileClientNavigationBarHeight = calculateNavBarHeight()),
+            (t -= mobileClientNavigationBarHeight))
+        :   (t -= $('#navbar-mobile-footer').outerHeight()),
+            'map' == e &&
+                ($('#map').height(t),
+                'undefined' == typeof mapkit && map.invalidateSize()),
             'missions' == e &&
                 ($('#missions-panel-body').height(
                     t - $('.missions-panel-head').outerHeight(!0) - 5
@@ -5447,6 +5451,12 @@ function updateMissionFilterQueryParams(e) {
 }
 function getRouteForVehicleRId(e) {
     return null == e || '' === e ? routes : routes[e];
+}
+function calculateNavBarHeight() {
+    return isIOS() ? 85 : 70;
+}
+function isIOS() {
+    return navigator.userAgent.includes('"os":"iOS"');
 }
 function missionPositionMarkerAdd(e) {
     1 == mobile_bridge_use && mobileBridgeAdd('poi', [e]);
@@ -57347,8 +57357,11 @@ var lastMissionTimeoutID = null,
     showTimeOut,
     mission_speed;
 let showSeasonalEventDetails = !(
-    !0 === mobile_bridge_use && 4 === mobile_version
-);
+        !0 === mobile_bridge_use && 4 === mobile_version
+    ),
+    client_uses_design_v2 = !0,
+    magicValueAvailableSpace = 71,
+    mobileClientNavigationBarHeight = -1;
 $(function () {
     function onCoinsTop() {
         return !mobile_bridge_use || (mobileBridgeAdd('coins_window', {}), !1);
