@@ -4077,11 +4077,10 @@ function mobileShow(e) {
                 .addClass('btn-success'),
             progressBarScrollUpdate();
         let t = $(window).height() - magicValueAvailableSpace;
-        client_uses_design_v2 ?
-            (-1 === mobileClientNavigationBarHeight &&
-                (mobileClientNavigationBarHeight = calculateNavBarHeight()),
-            (t -= mobileClientNavigationBarHeight))
-        :   (t -= $('#navbar-mobile-footer').outerHeight()),
+        (t -=
+            client_uses_design_v2 ?
+                $('#design-v2-navbar-spacer').outerHeight()
+            :   $('#navbar-mobile-footer').outerHeight()),
             'map' == e &&
                 ($('#map').height(t),
                 'undefined' == typeof mapkit && map.invalidateSize()),
@@ -5451,9 +5450,6 @@ function updateMissionFilterQueryParams(e) {
 }
 function getRouteForVehicleRId(e) {
     return null == e || '' === e ? routes : routes[e];
-}
-function calculateNavBarHeight() {
-    return isIOS() ? 85 : 70;
 }
 function isIOS() {
     return navigator.userAgent.includes('"os":"iOS"');
@@ -7256,6 +7252,10 @@ Object.values ||
             alliance_event_pay_out_message:
                 'This is shared between every member who took part in the event and will be paid out when the alliance event is finished.',
             alliance_event_resource: {
+                carnival: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 christmas: {
                     currency: 'Event Tickets',
                     event_start_mission: 'Start Event: %{amount} Event Ticket',
@@ -12380,14 +12380,20 @@ Object.values ||
         },
         javascript: {
             alarm: 'D\xe9ployer',
+            alliance_event_pay_out_message:
+                "Ce montant est partag\xe9 entre tous les membres qui ont particip\xe9 \xe0 l'\xe9v\xe9nement et sera vers\xe9 \xe0 la fin de l'\xe9v\xe9nement de l'alliance.",
             alliance_event_resource: {
+                carnival: {
+                    currency: "Billets d'\xe9v\xe9nements",
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 christmas: {
                     currency: "Billets d'\xe9v\xe9nements",
                     event_start_mission:
                         "D\xe9but de l'\xe9v\xe9nement : %{amount} Ticket d'\xe9v\xe9nement",
                 },
                 info_bubble_text:
-                    "Il s'agit d'un \xe9v\xe9nement temporaire qui n'est disponible que pendant notre \xe9v\xe9nement ! Encouragez les membres de votre alliance \xe0 accomplir les missions de l'\xe9v\xe9nement afin de gagner les tickets n\xe9cessaires pour lancer ces \xe9v\xe9nements. Consultez la page des \xe9v\xe9nements d'alliance pour plus d'informations.",
+                    "Il s'agit d'un \xe9v\xe9nement temporaire qui n'est disponible que pendant notre \xe9v\xe9nement ! Encouragez les membres de votre alliance \xe0 accomplir les missions de l'\xe9v\xe9nement afin de gagner les tickets n\xe9cessaires pour lancer ces \xe9v\xe9nements. Rendez-vous dans votre alliance pour plus d'informations.",
                 info_bubble_text_additional:
                     'Vous avez actuellement %{amount} %{alliance_event_currency} !',
                 valentinesday: {
@@ -12400,6 +12406,8 @@ Object.values ||
             backalarm: 'Annuler',
             coins: 'Pi\xe8ces',
             credits: 'Cr\xe9dits',
+            current_reward_for_you:
+                "<b>Votre r\xe9compense actuelle :</b> %{credits} Cr\xe9dits &amp; %{event_currency} Cr\xe9dits d'\xe9v\xe9nement",
             days: 'jours',
             few_seconds: 'dans quelques secondes',
             finish_in: 'Terminer dans\xa0:',
@@ -12416,6 +12424,8 @@ Object.values ||
             mission_start_in: 'Commence dans\xa0:',
             new: 'Neuf',
             not_found_map: 'Impossible de trouver le v\xe9hicule sur la carte',
+            not_qualified:
+                '<b>Non qualifi\xe9:</b> Participer \xe0 une mission pour obtenir la r\xe9compense',
             now: 'Maintenant',
             patient: 'Patient',
             patient_untouched: 'Patients non trait\xe9s',
@@ -12427,6 +12437,8 @@ Object.values ||
             pump_speed_process:
                 'Processus de pompage en cas de d\xe9g\xe2ts des eaux',
             pump_speed_selected: 'S\xe9lectionn\xe9 : %{amount} l/min',
+            qualified:
+                "<b>Qualifi\xe9:</b> Vous avez particip\xe9 \xe0 l'\xe9v\xe9nement",
             reload: 'Recharger',
             sale: 'Soldes',
             sale_ended: 'Fin de l\u2019offre sp\xe9ciale',
@@ -12446,8 +12458,16 @@ Object.values ||
             time_left: 'Temps restant:',
             to_building: 'Afficher le b\xe2timent',
             to_mission: 'Afficher la mission',
+            total_credits_earned: 'Total des cr\xe9dits obtenus :',
+            total_event_currency_earned:
+                "Total des cr\xe9dits d'\xe9v\xe9nement obtenus :",
             understand: 'Bien re\xe7u',
             user_not_found: 'Impossible de trouver le joueur.',
+            vehicle_payload: {
+                apply_payload: 'Appliquer la charge utile',
+                change_payload: 'Modifier la charge utile',
+                equipment_unavailable: '\xc9quipement indisponible',
+            },
             vehicles_not_visible: 'Les v\xe9hicules ne sont pas visibles. ',
             water_approaching: 'En approche : %{amount} l',
             water_missing: 'Manquante : %{amount} l',
@@ -12739,6 +12759,10 @@ Object.values ||
                 lf_only: 'Fourgons d\u2019incendie',
                 long_distance_ambulance: 'Ambulance Type A',
                 mask_service_unit: "V\xe9hicule d'Assistance Respiratoire",
+                mountain_helicopter_bucket:
+                    "\xc9quipement de godet porteur d'eau",
+                mountain_helicopter_rescue_lift:
+                    '\xc9quipement de levage de sauvetage en montagne',
                 mtw: 'VSAV',
                 mzb: 'BLS',
                 nef_only: 'Ambulance',
@@ -13910,6 +13934,7 @@ Object.values ||
             ready_home: 'Tilg\xe6ngelig ved station',
             ready_traveling: 'Fri og ledig',
             talking_wish: 'Transportanmodning',
+            transporting_car: 'Bugsere K\xf8ret\xf8j',
             waiting_for_vehicle: 'Venter p\xe5 bugseringsk\xf8ret\xf8j',
         },
         intervention_order: {
@@ -20413,7 +20438,11 @@ Object.values ||
                 strip_insignificant_zeros: !1,
             },
         },
-        mission: { type: { alert: 'L\xe4het\xe4' } },
+        mission: {
+            type: {
+                alert: 'L\xe4het\xe4',
+            },
+        },
     }),
     (I18n.translations.sk_SK = {
         common: {
@@ -55675,8 +55704,7 @@ let showSeasonalEventDetails = !(
         !0 === mobile_bridge_use && 4 === mobile_version
     ),
     client_uses_design_v2 = !0,
-    magicValueAvailableSpace = 71,
-    mobileClientNavigationBarHeight = -1;
+    magicValueAvailableSpace = 71;
 $(function () {
     function onCoinsTop() {
         return !mobile_bridge_use || (mobileBridgeAdd('coins_window', {}), !1);
