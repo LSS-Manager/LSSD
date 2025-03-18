@@ -7392,7 +7392,7 @@ Object.values ||
                 foam_amount: 'Gallons of foam',
                 fustkw_or_civil_patrolcar: 'Police Car or Civil Patrolcar',
                 fustw_or_police_motorcycle: 'Patrol car or Police Motorcycle',
-                fwk: 'Fire Brigarde Cranes',
+                fwk: 'Fire Crane Equipment',
                 gefkw: 'DB-AV',
                 gkw: 'Utility Truck',
                 grtw: 'Mass Casualty Unit',
