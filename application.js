@@ -6838,16 +6838,22 @@ Object.values ||
         },
         javascript: {
             alarm: 'Alarm',
+            alliance_event_pay_out_message:
+                'Credits und Event-Credits werden w\xe4hrend des Events gesammelt und nach Abschluss gleichm\xe4\xdfig an alle teilnehmenden Mitglieder ausgezahlt.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Event-Tickets',
                     event_start_mission:
                         'Startveranstaltung: %{amount} Allianz-Ticket',
                 },
+                easter: {
+                    currency: 'Event-Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event-Ticket',
+                },
                 info_bubble_text:
-                    'Dies ist ein tempor\xe4res Ereignis, das nur w\xe4hrend unseres Events verf\xfcgbar ist! Ermutige deine Allianzmitglieder dazu, Event-Eins\xe4tze zu erf\xfcllen, um die Tickets zu verdienen, die f\xfcr den Start dieser Events ben\xf6tigt werden. Weitere Informationen findest du auf der der Allianz-Events.',
+                    'Dieses Ereignis ist nur f\xfcr eine begrenzte Zeit verf\xfcgbar! Schlie\xdfe mit deinen Verbandsmitgliedern Event-Eins\xe4tze ab, um Tickets zu verdienen und so Verband-Events zu starten. Weitere Informationen findest du in deinem Verband unter Event.',
                 info_bubble_text_additional:
-                    'Du hast derzeit %{amount} %{alliance_event_currency} !',
+                    ' Du hast derzeit %{amount} %{alliance_event_currency}!',
                 valentinesday: {
                     currency: 'Event-Tickets',
                     event_start_mission:
@@ -6858,6 +6864,8 @@ Object.values ||
             backalarm: 'R\xfcckalarmieren',
             coins: 'Coins',
             credits: 'Credits',
+            current_reward_for_you:
+                '<b>Ihre aktuelle Belohnung:</b> %{credits} Credits & %{event_currency} Event-Credits',
             days: 'Tage',
             few_seconds: 'In wenigen Sekunden',
             finish_in: 'Ende in:',
@@ -6878,6 +6886,8 @@ Object.values ||
             mission_start_in: 'Beginn in:',
             new: 'Neu',
             not_found_map: 'Das Fahrzeug wurde auf der Karte nicht gefunden',
+            not_qualified:
+                '<b>Nicht qualifiziert:</b> Nimm an einem Einsatz teil, um die Belohnung zu verdienen',
             now: 'Sofort',
             patient: 'Patienten',
             patient_untouched: 'unbehandelte Patienten',
@@ -6887,6 +6897,7 @@ Object.values ||
             pump_speed_on_site: 'Einsatzstelle: %{amount} l/min',
             pump_speed_process: 'Wasserschaden Pumpe Prozess',
             pump_speed_selected: 'Ausgew\xe4hlt: %{amount} l/min',
+            qualified: '<b>Qualifiziert:</b> Du hast am Event teilgenommen.',
             reload: 'Neuladen',
             sale: 'Sale',
             sale_ended: 'Sonderangebote beendet',
@@ -6906,6 +6917,8 @@ Object.values ||
             time_left: 'Verbleibende Zeit:',
             to_building: 'Zum Geb\xe4ude',
             to_mission: 'Zum Einsatz',
+            total_credits_earned: 'Insgesamt gesammelte Credits:',
+            total_event_currency_earned: 'Insgesamt gesammelte Event-Credit:',
             understand: 'Verstanden',
             user_not_found: 'Der Spieler wurde nicht gefunden. ',
             vehicle_payload: {
@@ -7529,6 +7542,10 @@ Object.values ||
                     currency: 'Event Tickets',
                     event_start_mission: 'Start Event: %{amount} Event Ticket',
                 },
+                easter: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 info_bubble_text:
                     'This is a temporary event that is only available during our event! Encourage your alliance members to complete event missions in order to earn the tickets that are needed to start these events. Go to your alliance for more information.',
                 info_bubble_text_additional:
@@ -7570,7 +7587,7 @@ Object.values ||
             new: 'New',
             not_found_map: "The vehicle hasn't been found on the map",
             not_qualified:
-                '<b>Not qualified:</b> Participate in a mission to earn the reward ',
+                '<b>Not qualified:</b> Participate in a mission to earn the reward',
             now: 'Now',
             patient: 'Patient',
             patient_untouched: 'Untreated patients',
@@ -8270,10 +8287,14 @@ Object.values ||
                     event_start_mission:
                         'Start Event: %{amount} Alliance Ticket',
                 },
+                easter: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 info_bubble_text:
                     'This is a temporary event that is only available during our event! Encourage your alliance members to complete event missions in order to earn the tickets that are needed to start these events. See the alliance event page for more information.',
                 info_bubble_text_additional:
-                    'You currently have %{amount} %{alliance_event_currency}!',
+                    ' You currently have %{amount} %{alliance_event_currency}!',
                 stpatricks: {
                     currency: 'Event Tickets',
                     event_start_mission: 'Start Event: %{amount} Event Ticket',
@@ -8962,16 +8983,22 @@ Object.values ||
         },
         javascript: {
             alarm: 'Alarm',
+            alliance_event_pay_out_message:
+                'Dit wordt verdeeld onder alle leden die hebben deelgenomen aan het verband-event en wordt uitbetaald wanneer het is afgelopen.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Evenement Tickets',
                     event_start_mission:
                         'Begin Event: %{amount} Verband Ticket',
                 },
+                easter: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Begin Event: %{amount} Event Ticket',
+                },
                 info_bubble_text:
-                    'Dit is een tijdelijk event dat alleen beschikbaar is tijdens ons evenement! Moedig je verbandleden aan om evenement inzetten te voltooien om de tickets te verdienen die nodig zijn om dit event te starten. Ga naar je verband pagina voor meer informatie.',
+                    'Dit is een tijdelijk event dat alleen beschikbaar is tijdens ons event! Moedig je verbandleden aan om event inzetten te voltooien om de tickets te verdienen die nodig zijn om dit event te starten. Ga naar je verband pagina voor meer informatie.',
                 info_bubble_text_additional:
-                    'Je hebt momenteel %{amount} %{alliance_event_currency} !',
+                    ' Je hebt momenteel %{amount} %{alliance_event_currency}!',
                 valentinesday: {
                     currency: 'Evenement Tickets',
                     event_start_mission:
@@ -8982,6 +9009,8 @@ Object.values ||
             backalarm: 'Retour post',
             coins: 'Coins',
             credits: 'Credits',
+            current_reward_for_you:
+                '<b>Je huidige beloning:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'dagen',
             few_seconds: 'Nog enkele seconden',
             finish_in: 'Duurt nog:',
@@ -9002,6 +9031,8 @@ Object.values ||
             mission_start_in: 'Begint in:',
             new: 'Nieuw',
             not_found_map: 'Het voertuig is niet gevonden op de kaart',
+            not_qualified:
+                '<b>Niet gekwalificeerd:</b> Doe mee aan een inzet om de beloning te verdienen',
             now: 'Nu',
             patient: 'Pati\xebnten',
             patient_untouched: 'onbehandelde pati\xebnten',
@@ -9012,6 +9043,8 @@ Object.values ||
             pump_speed_on_site: 'Ter plaatse: %{amount} l/min',
             pump_speed_process: 'Waterschade pomp proces',
             pump_speed_selected: 'Geselecteerd: %{amount} l/min',
+            qualified:
+                '<b>Gekwalificeerd:</b> Je hebt deelgenomen aan het verband event',
             reload: 'Refresh',
             sale: 'Sale',
             sale_ended: 'Uitverkoop voorbij',
@@ -9031,6 +9064,8 @@ Object.values ||
             time_left: 'Tijd over:',
             to_building: 'Naar post',
             to_mission: 'Naar incident',
+            total_credits_earned: 'Totaal aantal credits:',
+            total_event_currency_earned: 'Totaal aantal event-credits:',
             understand: 'Begrepen',
             user_not_found: 'De speler is niet gevonden.',
             vehicles_not_visible: 'Voertuig verborgen.',
@@ -9539,8 +9574,15 @@ Object.values ||
         },
         javascript: {
             alarm: 'Enviar',
+            alliance_event_pay_out_message:
+                'Esta cantidad se repartir\xe1 entre todos los miembros que hayan participado en el evento y se abonar\xe1 una vez finalizado el evento de la alianza.',
             alliance_event_resource: {
                 christmas: {
+                    currency: 'Entradas',
+                    event_start_mission:
+                        'Inicio del evento: %{amount} Entradas para eventos',
+                },
+                easter: {
                     currency: 'Entradas',
                     event_start_mission:
                         'Inicio del evento: %{amount} Entradas para eventos',
@@ -9548,7 +9590,7 @@ Object.values ||
                 info_bubble_text:
                     'Se trata de un evento temporal que solo est\xe1 disponible durante nuestro evento. Anima a los miembros de tu alianza a completar las misiones del evento para conseguir los tickets necesarios para iniciar estos eventos. Consulta la p\xe1gina de eventos de alianza para obtener m\xe1s informaci\xf3n.',
                 info_bubble_text_additional:
-                    '\xa1Actualmente tiene %{amount} %{alliance_event_currency} !',
+                    ' \xa1Actualmente tiene %{amount} %{alliance_event_currency}!',
                 valentinesday: {
                     currency: 'Entradas',
                     event_start_mission:
@@ -9559,6 +9601,8 @@ Object.values ||
             backalarm: 'Cancelar',
             coins: 'Monedas',
             credits: 'Cr\xe9ditos',
+            current_reward_for_you:
+                '<b>Tu recompensa actual:</b> %{credits} Cr\xe9ditos y %{event_currency} Cr\xe9ditos de evento',
             days: 'd\xedas',
             few_seconds: 'en pocos segundos',
             finish_in: 'Termina en:',
@@ -9579,6 +9623,8 @@ Object.values ||
             mission_start_in: 'Comienza en:',
             new: 'Nuevo',
             not_found_map: 'No se ha encontrado el veh\xedculo en el mapa',
+            not_qualified:
+                '<b>No cualificado:</b> Participa en una misi\xf3n para ganar la recompensa.',
             now: 'Ahora',
             patient: 'Paciente',
             patient_untouched: 'Pacientes no tratados',
@@ -9589,6 +9635,7 @@ Object.values ||
             pump_speed_process:
                 'Proceso de bombeo de da\xf1os causados por el agua',
             pump_speed_selected: 'Seleccionado: %{amount} l/min',
+            qualified: '<b>Calificado:</b> Ha participado en el evento',
             reload: 'Recargar',
             sale: 'Rebajas',
             sale_ended: 'Oferta finalizada',
@@ -9608,6 +9655,9 @@ Object.values ||
             time_left: 'Tiempo restante:',
             to_building: 'Ver edificio',
             to_mission: 'Ver misi\xf3n',
+            total_credits_earned: 'Total de cr\xe9ditos obtenidos:',
+            total_event_currency_earned:
+                'Total de cr\xe9ditos de evento obtenidos:',
             understand: 'Recibido',
             user_not_found: 'No se ha encontrado al jugador.',
             vehicles_not_visible: 'Los veh\xedculos no est\xe1n visibles. ',
@@ -10113,10 +10163,14 @@ Object.values ||
                     event_start_mission:
                         'Start Event: %{amount} Alliance Ticket',
                 },
+                easter: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 info_bubble_text:
                     'This is a temporary event that is only available during our event! Encourage your alliance members to complete event missions in order to earn the tickets that are needed to start these events. See the alliance event page for more information.',
                 info_bubble_text_additional:
-                    'You currently have %{amount} %{alliance_event_currency}!',
+                    ' You currently have %{amount} %{alliance_event_currency}!',
                 stpatricks: {
                     currency: 'Event Tickets',
                     event_start_mission: 'Start Event: %{amount} Event Ticket',
@@ -10796,8 +10850,15 @@ Object.values ||
         },
         javascript: {
             alarm: 'Larmcentral',
+            alliance_event_pay_out_message:
+                'Detta delas mellan alla medlemmar som deltog i evenemanget och kommer att betalas ut n\xe4r alliansevenemanget \xe4r avslutat.',
             alliance_event_resource: {
                 christmas: {
+                    currency: 'Biljetter till evenemang',
+                    event_start_mission:
+                        'Starta evenemang: %{amount} Evenemangsbiljett',
+                },
+                easter: {
                     currency: 'Biljetter till evenemang',
                     event_start_mission:
                         'Starta evenemang: %{amount} Evenemangsbiljett',
@@ -10805,7 +10866,7 @@ Object.values ||
                 info_bubble_text:
                     'Detta \xe4r en tillf\xe4llig h\xe4ndelse som endast \xe4r tillg\xe4nglig under v\xe5rt evenemang! Uppmuntra dina alliansmedlemmar att slutf\xf6ra evenemangsuppdrag f\xf6r att tj\xe4na de biljetter som beh\xf6vs f\xf6r att starta dessa evenemang. Se sidan f\xf6r alliansevenemang f\xf6r mer information.',
                 info_bubble_text_additional:
-                    'Du har f\xf6r n\xe4rvarande %{amount} %{alliance_event_currency} !',
+                    ' Du har f\xf6r n\xe4rvarande %{amount} %{alliance_event_currency}!',
                 valentinesday: {
                     currency: 'Biljetter till evenemang',
                     event_start_mission:
@@ -10816,6 +10877,8 @@ Object.values ||
             backalarm: 'Avbryt',
             coins: 'Mynt',
             credits: 'Krediter',
+            current_reward_for_you:
+                '<b>Din nuvarande bel\xf6ning:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'dagar',
             few_seconds: 'om n\xe5gra sekunder',
             finish_in: 'Avsluta om:',
@@ -10836,6 +10899,8 @@ Object.values ||
             mission_start_in: 'B\xf6rjar om:',
             new: 'Ny',
             not_found_map: 'Fordonet kunde inte hittas p\xe5 kartan',
+            not_qualified:
+                '<b>Inte kvalificerad:</b> Delta i ett uppdrag f\xf6r att f\xe5 bel\xf6ningen',
             now: 'Nu',
             patient: 'Patient',
             patient_untouched: 'Obehandlade patienter',
@@ -10845,6 +10910,7 @@ Object.values ||
             pump_speed_on_site: 'Ingen lokal: %{amount} l/min',
             pump_speed_process: 'Vattenskada Pump Process',
             pump_speed_selected: 'Vald: %{amount} l/min',
+            qualified: '<b>Kvalificerad:</b> Du deltog i evenemanget',
             reload: 'Ladda om',
             sale: 'Sale',
             sale_ended: 'Rean \xe4r slut',
@@ -10864,6 +10930,9 @@ Object.values ||
             time_left: 'Tid kvar:',
             to_building: 'Visa byggnad',
             to_mission: 'Visa uppdrag',
+            total_credits_earned: 'Totalt antal intj\xe4nade krediter',
+            total_event_currency_earned:
+                'Totalt antal intj\xe4nade h\xf6gskolepo\xe4ng:',
             understand: 'Acceptera',
             user_not_found: 'Spelaren kunde inte hittas.',
             vehicles_not_visible: 'Fordon syns inte. ',
@@ -11398,8 +11467,15 @@ Object.values ||
         },
         javascript: {
             alarm: 'Wy\u015blij',
+            alliance_event_pay_out_message:
+                'Jest ona dzielona mi\u0119dzy wszystkich cz\u0142onk\xf3w, kt\xf3rzy wzi\u0119li udzia\u0142 w wydarzeniu i zostanie wyp\u0142acona po zako\u0144czeniu wydarzenia sojuszu.',
             alliance_event_resource: {
                 christmas: {
+                    currency: 'Bilety na wydarzenia',
+                    event_start_mission:
+                        'Rozpocznij wydarzenie: %{amount} Bilet na wydarzenie',
+                },
+                easter: {
                     currency: 'Bilety na wydarzenia',
                     event_start_mission:
                         'Rozpocznij wydarzenie: %{amount} Bilet na wydarzenie',
@@ -11407,7 +11483,7 @@ Object.values ||
                 info_bubble_text:
                     'To tymczasowe wydarzenie jest dost\u0119pne tylko podczas naszego wydarzenia! Zach\u0119caj cz\u0142onk\xf3w sojuszu do wype\u0142niania misji eventowych w celu zdobycia bilet\xf3w potrzebnych do rozpocz\u0119cia tych wydarze\u0144. Wi\u0119cej informacji mo\u017cna znale\u017a\u0107 na stronie wydarzenia sojuszu.',
                 info_bubble_text_additional:
-                    'Aktualnie posiadasz %{amount} %{alliance_event_currency} !',
+                    ' Aktualnie posiadasz %{amount} %{alliance_event_currency}!',
                 valentinesday: {
                     currency: 'Bilety na wydarzenia',
                     event_start_mission:
@@ -11418,6 +11494,8 @@ Object.values ||
             backalarm: 'Anuluj',
             coins: 'Monety',
             credits: 'Kredyty',
+            current_reward_for_you:
+                '<b>Aktualna nagroda:</b> %{credits} Kredyty i %{event_currency} Kredyty wydarzenia',
             days: 'dni',
             few_seconds: 'za kilka sekund',
             finish_in: 'Koniec za:',
@@ -11438,6 +11516,8 @@ Object.values ||
             mission_start_in: 'Pocz\u0105tek za:',
             new: 'Nowy',
             not_found_map: 'Nie znaleziono pojazdu na mapie',
+            not_qualified:
+                '<b>Nie kwalifikuje si\u0119:</b> We\u017a udzia\u0142 w misji, aby zdoby\u0107 nagrod\u0119.',
             now: 'Teraz',
             patient: 'Pacjent',
             patient_untouched: 'Pacjenci bez opieki',
@@ -11448,6 +11528,8 @@ Object.values ||
             pump_speed_process:
                 'Proces pompowania uszkodze\u0144 spowodowanych przez wod\u0119',
             pump_speed_selected: 'Wybrano: : %{amount} l/min',
+            qualified:
+                '<b>Zakwalifikowany:</b> Wzi\u0105\u0142e\u015b udzia\u0142 w wydarzeniu',
             reload: 'Od\u015bwie\u017c',
             sale: 'Wyprzeda\u017c',
             sale_ended: 'Promocja zako\u0144czona',
@@ -11469,6 +11551,10 @@ Object.values ||
             time_left: 'Pozosta\u0142o czasu:',
             to_building: 'Poka\u017c budynek',
             to_mission: 'Poka\u017c misj\u0119',
+            total_credits_earned:
+                '\u0141\u0105czna liczba zdobytych kredyt\xf3w',
+            total_event_currency_earned:
+                '\u0141\u0105czna liczba zdobytych punkt\xf3w za wydarzenie:',
             understand: 'Potwierd\u017a',
             user_not_found: 'Nie znaleziono gracza.',
             vehicle_payload: {
@@ -11996,8 +12082,15 @@ Object.values ||
         },
         javascript: {
             alarm: 'Assegna',
+            alliance_event_pay_out_message:
+                "La somma viene suddivisa tra tutti i membri che hanno partecipato all'evento e sar\xe0 versata al termine dell'evento dell'alleanza.",
             alliance_event_resource: {
                 christmas: {
+                    currency: "Biglietti per l'evento",
+                    event_start_mission:
+                        'Inizio evento: %{amount} Biglietto evento',
+                },
+                easter: {
                     currency: "Biglietti per l'evento",
                     event_start_mission:
                         'Inizio evento: %{amount} Biglietto evento',
@@ -12005,7 +12098,7 @@ Object.values ||
                 info_bubble_text:
                     "Si tratta di un evento temporaneo disponibile solo durante il nostro evento! Incoraggiate i membri della vostra alleanza a completare le missioni evento per guadagnare i biglietti necessari per avviare questi eventi. Per ulteriori informazioni, consultare la pagina degli eventi dell'alleanza.",
                 info_bubble_text_additional:
-                    'Attualmente avete %{amount} %{alliance_event_currency} !',
+                    ' Attualmente avete %{amount} %{alliance_event_currency}!',
                 valentinesday: {
                     currency: "Biglietti per l'evento",
                     event_start_mission:
@@ -12016,6 +12109,8 @@ Object.values ||
             backalarm: 'Annulla',
             coins: 'Monete',
             credits: 'Crediti',
+            current_reward_for_you:
+                '<b>La tua ricompensa attuale:</b> %{credits} Crediti e %{event_currency} Crediti evento',
             days: 'giorni',
             few_seconds: 'in pochi secondi',
             finish_in: 'Finisce tra:',
@@ -12036,6 +12131,8 @@ Object.values ||
             mission_start_in: 'Inizia tra:',
             new: 'Nuovo',
             not_found_map: 'Il veicolo non \xe8 stato trovato sulla mappa',
+            not_qualified:
+                '<b>Non qualificato:</b> Partecipa a una missione per ottenere la ricompensa.',
             now: 'Adesso',
             patient: 'Paziente',
             patient_untouched: 'Pazienti non trattati',
@@ -12045,6 +12142,7 @@ Object.values ||
             pump_speed_on_site: 'Sul Posto: %{amount} l/min',
             pump_speed_process: 'Processo di pompaggio per danni da acqua',
             pump_speed_selected: 'Selezionati: %{amount} l/min',
+            qualified: "<b>Qualificato:</b> Hai partecipato all'evento",
             reload: 'Ricarica',
             sale: 'Sale',
             sale_ended: 'Vendita terminata',
@@ -12064,6 +12162,9 @@ Object.values ||
             time_left: 'Tempo rimanente:',
             to_building: 'Visualizza edificio',
             to_mission: 'Visualizza missione',
+            total_credits_earned: 'Totale crediti conseguiti:',
+            total_event_currency_earned:
+                "Totale crediti dell'evento guadagnati:",
             understand: 'Conferma',
             user_not_found: 'Il giocatore non \xe8 stato trovato.',
             vehicles_not_visible: 'Veicoli non visibili. ',
@@ -12608,10 +12709,15 @@ Object.values ||
                     event_start_mission:
                         "D\xe9but de l'\xe9v\xe9nement : %{amount} Ticket d'\xe9v\xe9nement",
                 },
+                easter: {
+                    currency: "Billets d'\xe9v\xe9nements",
+                    event_start_mission:
+                        "D\xe9but de l'\xe9v\xe9nement : %{amount} Ticket d'\xe9v\xe9nement",
+                },
                 info_bubble_text:
                     "Il s'agit d'un \xe9v\xe9nement temporaire qui n'est disponible que pendant notre \xe9v\xe9nement ! Encouragez les membres de votre alliance \xe0 accomplir les missions de l'\xe9v\xe9nement afin de gagner les tickets n\xe9cessaires pour lancer ces \xe9v\xe9nements. Rendez-vous dans votre alliance pour plus d'informations.",
                 info_bubble_text_additional:
-                    'Vous avez actuellement %{amount} %{alliance_event_currency} !',
+                    ' Vous avez actuellement %{amount} %{alliance_event_currency}!',
                 stpatricks: {
                     currency: "Billets d'\xe9v\xe9nements",
                     event_start_mission:
@@ -12628,7 +12734,7 @@ Object.values ||
             coins: 'Pi\xe8ces',
             credits: 'Cr\xe9dits',
             current_reward_for_you:
-                "<b>Votre r\xe9compense actuelle :</b> %{credits} Cr\xe9dits &amp; %{event_currency} Cr\xe9dits d'\xe9v\xe9nement",
+                "<b>Votre r\xe9compense actuelle :</b> %{credits} Cr\xe9dits & %{event_currency} Cr\xe9dits d'\xe9v\xe9nement",
             days: 'jours',
             few_seconds: 'dans quelques secondes',
             finish_in: 'Terminer dans\xa0:',
@@ -13906,15 +14012,22 @@ Object.values ||
         },
         javascript: {
             alarm: 'Send ud',
+            alliance_event_pay_out_message:
+                'Det deles mellem alle medlemmer, der deltog i arrangementet, og udbetales, n\xe5r alliancearrangementet er slut.',
             alliance_event_resource: {
                 christmas: {
                     currency: 'Billetter til arrangementer',
                     event_start_mission: 'Start event: %{amount} Event-billet',
                 },
+                easter: {
+                    currency: 'Billetter til arrangementer',
+                    event_start_mission:
+                        'Start begivenhed: %{amount} Begivenhedsbillet',
+                },
                 info_bubble_text:
                     'Dette er en midlertidig begivenhed, som kun er tilg\xe6ngelig under vores begivenhed! Opfordr dine alliancemedlemmer til at gennemf\xf8re eventmissioner for at tjene de billetter, der er n\xf8dvendige for at starte disse events. Se siden med alliancebegivenheder for mere information.',
                 info_bubble_text_additional:
-                    'Du har i \xf8jeblikket %{amount} %{alliance_event_currency} !',
+                    ' Du har i \xf8jeblikket %{amount} %{alliance_event_currency}!',
                 valentinesday: {
                     currency: 'Billetter til arrangementer',
                     event_start_mission: 'Start event: %{amount} Event-billet',
@@ -13924,6 +14037,8 @@ Object.values ||
             backalarm: 'Annull\xe9r',
             coins: 'M\xf8nter',
             credits: 'Kreditter',
+            current_reward_for_you:
+                '<b>Din nuv\xe6rende bel\xf8nning:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'dage',
             few_seconds: 'om f\xe5 sekunder',
             finish_in: 'F\xe6rdig om:',
@@ -13944,6 +14059,8 @@ Object.values ||
             mission_start_in: 'Begynder om:',
             new: 'Ny',
             not_found_map: 'K\xf8ret\xf8jet blev ikke fundet p\xe5 kortet',
+            not_qualified:
+                '<b>Ikke kvalificeret:</b> Deltag i en mission for at f\xe5 bel\xf8nningen.',
             now: 'Nu',
             patient: 'Patient',
             patient_untouched: 'Ubehandlede patienter',
@@ -13954,6 +14071,7 @@ Object.values ||
             pump_speed_on_site: 'P\xe5 stedet: %{amount} l/min',
             pump_speed_process: 'Proces for vandskadet pumpe',
             pump_speed_selected: 'Valgt: %{amount} l/min',
+            qualified: '<b>Kvalificeret:</b> Du deltog i begivenheden',
             reload: 'Genindl\xe6s',
             sale: 'Sale',
             sale_ended: 'Udsalg forbi ',
@@ -13973,6 +14091,8 @@ Object.values ||
             time_left: 'Tid tilbage:',
             to_building: 'Se bygning',
             to_mission: 'Se mission',
+            total_credits_earned: 'Samlet antal optjente credits:',
+            total_event_currency_earned: 'Samlet antal optjente event-point:',
             understand: 'Forst\xe5et',
             user_not_found: 'Spilleren blev ikke fundet',
             vehicles_not_visible: 'K\xf8ret\xf8jer ikke synlige. ',
@@ -14488,8 +14608,15 @@ Object.values ||
         },
         javascript: {
             alarm: 'Send ut',
+            alliance_event_pay_out_message:
+                'Dette deles mellom alle medlemmene som deltok i arrangementet, og utbetales n\xe5r alliansearrangementet er ferdig.',
             alliance_event_resource: {
                 christmas: {
+                    currency: 'Billetter til arrangementer',
+                    event_start_mission:
+                        'Start hendelse: %{amount} Eventbillett',
+                },
+                easter: {
                     currency: 'Billetter til arrangementer',
                     event_start_mission:
                         'Start hendelse: %{amount} Eventbillett',
@@ -14497,7 +14624,7 @@ Object.values ||
                 info_bubble_text:
                     'Dette er en midlertidig hendelse som bare er tilgjengelig under arrangementet v\xe5rt! Oppfordre alliansemedlemmene dine til \xe5 fullf\xf8re hendelsesoppdrag for \xe5 tjene billettene som trengs for \xe5 starte disse hendelsene. Se alliansens hendelsesside for mer informasjon.',
                 info_bubble_text_additional:
-                    'Du har for \xf8yeblikket %{amount} %{alliance_event_currency} !',
+                    ' Du har for \xf8yeblikket %{amount} %{alliance_event_currency}!',
                 valentinesday: {
                     currency: 'Billetter til arrangementer',
                     event_start_mission:
@@ -14508,6 +14635,8 @@ Object.values ||
             backalarm: 'Avbryt',
             coins: 'Mynter',
             credits: 'Kreditter',
+            current_reward_for_you:
+                '<b>Din n\xe5v\xe6rende bel\xf8nning:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'dager',
             few_seconds: 'om f\xe5 sekunder',
             finish_in: 'Fullf\xf8r om:',
@@ -14528,6 +14657,8 @@ Object.values ||
             mission_start_in: 'Starter om:',
             new: 'Ny',
             not_found_map: 'Fremkomstmiddelet ble ikke funnet p\xe5 kartet',
+            not_qualified:
+                '<b>Ikke kvalifisert:</b> Delta i et oppdrag for \xe5 tjene bel\xf8nningen',
             now: 'N\xe5',
             patient: 'Pasient',
             patient_untouched: 'Ubehandlede pasienter',
@@ -14538,6 +14669,7 @@ Object.values ||
             pump_speed_on_site: 'P\xe5 stedet: %{amount} l/min',
             pump_speed_process: 'Prosess for vannskadepumpe',
             pump_speed_selected: 'Valgt: %{amount} l/min',
+            qualified: '<b>Kvalifisert:</b> Du deltok i arrangementet',
             reload: 'Last inn p\xe5 nytt',
             sale: 'Salg',
             sale_ended: 'Salg avsluttet',
@@ -14557,6 +14689,9 @@ Object.values ||
             time_left: 'Gjenst\xe5ende tid:',
             to_building: 'Vis bygning',
             to_mission: 'Vis oppdrag',
+            total_credits_earned: '"Totalt opptjente kreditter',
+            total_event_currency_earned:
+                'Totalt antall opptjente arrangementspoeng:',
             understand: 'Bekreft',
             user_not_found: 'Spilleren ble ikke funnet.',
             vehicles_not_visible: 'Fremkomstmidler er ikke synlige. ',
@@ -15070,8 +15205,15 @@ Object.values ||
         },
         javascript: {
             alarm: 'V\xfdjezd',
+            alliance_event_pay_out_message:
+                'Tato \u010d\xe1stka se rozd\u011bl\xed mezi v\u0161echny \u010dleny, kte\u0159\xed se akce z\xfa\u010dastnili, a bude vyplacena po skon\u010den\xed akce aliance.',
             alliance_event_resource: {
                 christmas: {
+                    currency: 'Vstupenky na ud\xe1lost',
+                    event_start_mission:
+                        'Zah\xe1jen\xed akce: %{amount} Vstupenka na akci',
+                },
+                easter: {
                     currency: 'Vstupenky na ud\xe1lost',
                     event_start_mission:
                         'Zah\xe1jen\xed akce: %{amount} Vstupenka na akci',
@@ -15079,7 +15221,7 @@ Object.values ||
                 info_bubble_text:
                     'Jedn\xe1 se o do\u010dasnou akci, kter\xe1 je k dispozici pouze b\u011bhem na\u0161\xed akce! Povzbu\u010fte \u010dleny sv\xe9 aliance, aby plnili mise ud\xe1losti a z\xedskali tak vstupenky, kter\xe9 jsou pot\u0159ebn\xe9 pro spu\u0161t\u011bn\xed t\u011bchto ud\xe1lost\xed. V\xedce informac\xed naleznete na str\xe1nce ud\xe1losti aliance.',
                 info_bubble_text_additional:
-                    'V sou\u010dasn\xe9 dob\u011b m\xe1te %{amount} %{alliance_event_currency} !',
+                    ' V sou\u010dasn\xe9 dob\u011b m\xe1te %{amount} %{alliance_event_currency}!',
                 valentinesday: {
                     currency: 'Vstupenky na ud\xe1lost',
                     event_start_mission:
@@ -15090,6 +15232,8 @@ Object.values ||
             backalarm: 'Zru\u0161it',
             coins: 'Mince',
             credits: 'Kredity',
+            current_reward_for_you:
+                '<b>Va\u0161e aktu\xe1ln\xed odm\u011bna:</b> %{credits} kredit\u016f a %{event_currency} kredit\u016f za ud\xe1losti.',
             days: 'd',
             few_seconds: 'za p\xe1r sekund',
             finish_in: 'Konec za:',
@@ -15110,6 +15254,8 @@ Object.values ||
             mission_start_in: 'Za\u010dne za:',
             new: 'Nov\xfd',
             not_found_map: 'Vozidlo nebylo nalezeno nikde na map\u011b',
+            not_qualified:
+                '<b>Nen\xed kvalifikov\xe1no:</b> Z\xfa\u010dastn\u011bte se mise, abyste z\xedskali odm\u011bnu.',
             now: 'Te\u010f',
             patient: 'Pacient',
             patient_untouched: 'Neo\u0161et\u0159en\xed pacienti',
@@ -15120,6 +15266,8 @@ Object.values ||
             pump_speed_process:
                 'Proces \u010derp\xe1n\xed p\u0159i po\u0161kozen\xed vodou',
             pump_speed_selected: 'Zvoleno: %{amount} l',
+            qualified:
+                '<b>Kvalifikovan\xfd:</b> Z\xfa\u010dastnil jste se akce.',
             reload: 'Obnovit',
             sale: 'Prodej',
             sale_ended: 'Prodej ukon\u010den',
@@ -15141,6 +15289,10 @@ Object.values ||
             time_left: 'Zb\xfdvaj\xedc\xed \u010das:',
             to_building: 'Zobrazit budovu',
             to_mission: 'Zobrazit misi',
+            total_credits_earned:
+                'Celkov\xfd po\u010det z\xedskan\xfdch kredit\u016f:',
+            total_event_currency_earned:
+                'Celkov\xfd po\u010det z\xedskan\xfdch kredit\u016f za ud\xe1lost:',
             understand: 'OK',
             user_not_found: 'Hr\xe1\u010d nebyl nalezen.',
             vehicles_not_visible: 'Vozidla nejsou vid\u011bt. ',
@@ -16151,8 +16303,15 @@ Object.values ||
         },
         javascript: {
             alarm: 'Despachar',
+            alliance_event_pay_out_message:
+                'Este montante \xe9 partilhado entre todos os membros que participaram no evento e ser\xe1 pago quando o evento da alian\xe7a terminar.',
             alliance_event_resource: {
                 christmas: {
+                    currency: 'Bilhetes para eventos',
+                    event_start_mission:
+                        'Iniciar evento: %{amount} Bilhete de evento',
+                },
+                easter: {
                     currency: 'Bilhetes para eventos',
                     event_start_mission:
                         'Iniciar evento: %{amount} Bilhete de evento',
@@ -16160,7 +16319,7 @@ Object.values ||
                 info_bubble_text:
                     'Este \xe9 um evento tempor\xe1rio que s\xf3 est\xe1 dispon\xedvel durante o nosso evento! Incentiva os membros da tua alian\xe7a a completarem miss\xf5es de evento para ganharem os bilhetes necess\xe1rios para iniciar estes eventos. Veja a p\xe1gina de eventos da alian\xe7a para mais informa\xe7\xf5es.',
                 info_bubble_text_additional:
-                    'Atualmente, tem %{amount} %{alliance_event_currency} !',
+                    ' Atualmente, tem %{amount} %{alliance_event_currency}!',
                 valentinesday: {
                     currency: 'Bilhetes para eventos',
                     event_start_mission:
@@ -16171,6 +16330,8 @@ Object.values ||
             backalarm: 'Cancelar',
             coins: 'Moedas',
             credits: 'Cr\xe9ditos',
+            current_reward_for_you:
+                '<b>A sua recompensa atual:</b> %{credits} Cr\xe9ditos & %{event_currency} Cr\xe9ditos de Evento',
             days: 'dias',
             few_seconds: 'em alguns segundos',
             finish_in: 'Finaliza em:',
@@ -16191,6 +16352,8 @@ Object.values ||
             mission_start_in: 'Come\xe7a em:',
             new: 'Novo',
             not_found_map: 'O ve\xedculo n\xe3o foi encontrado no mapa',
+            not_qualified:
+                '<b>N\xe3o qualificado:</b> Participar numa miss\xe3o para ganhar a recompensa',
             now: 'Agora',
             patient: 'Paciente',
             patient_untouched: 'Pacientes n\xe3o tratados',
@@ -16201,6 +16364,7 @@ Object.values ||
             pump_speed_process:
                 'Processo de bombagem de danos causados pela \xe1gua',
             pump_speed_selected: 'Selecionado para o TO: %{amount} l/min',
+            qualified: '<b>Qualificado:</b> Participou no evento',
             reload: 'Recarregar',
             secounds: 'seg.',
             show_less: 'Mostrar menos',
@@ -16218,6 +16382,9 @@ Object.values ||
             time_left: 'Tempo restante:',
             to_building: 'Ver edif\xedcio',
             to_mission: 'Ver miss\xe3o',
+            total_credits_earned: 'Total de cr\xe9ditos obtidos:',
+            total_event_currency_earned:
+                'Total de cr\xe9ditos de eventos obtidos:',
             understand: 'Reconhecer',
             user_not_found: 'O jogador n\xe3o foi encontrado.',
             vehicles_not_visible: 'Ve\xedculos n\xe3o vis\xedveis. ',
@@ -16731,6 +16898,7 @@ Object.values ||
             poi_delete: 'Tem certeza de que quer apagar o PDI: %{caption}?',
             pump_speed_process:
                 'Processo de bombagem de danos causados pela \xe1gua',
+            qualified: '<b>Qualificado:</b> Participou no evento',
             reload: 'Recarregar',
             sale: 'Promo\xe7\xf5es',
             sale_ended: 'Fin de l\u2019offre sp\xe9ciale',
@@ -17847,6 +18015,7 @@ Object.values ||
             alarm: 'Enviar',
             alliance_event_resource: {
                 christmas: { currency: 'Entradas' },
+                easter: { currency: 'Entradas' },
                 valentinesday: { currency: 'Entradas' },
             },
             arrival: 'Llegada',
@@ -17869,12 +18038,15 @@ Object.values ||
             mission_start_in: 'Comienza en:',
             new: 'Nuevo',
             not_found_map: 'No se ha encontrado el veh\xedculo en el mapa',
+            not_qualified:
+                '<b>No cualificado:</b> Participa en una misi\xf3n para ganar la recompensa.',
             now: 'Ahora',
             patient: 'Paciente',
             patient_untouched: 'Pacientes no tratados',
             poi_delete: '\xbfSeguro que quieres eliminar el PI %{caption}?',
             pump_speed_process:
                 'Proceso de bombeo de da\xf1os causados por el agua',
+            qualified: '<b>Calificado:</b> Ha participado en el evento',
             reload: 'Recargar',
             sale: 'Rebajas',
             sale_ended: 'Oferta finalizada',
@@ -18395,8 +18567,16 @@ Object.values ||
         },
         javascript: {
             alarm: '\u6307\u4ee4',
+            alliance_event_pay_out_message:
+                '\u3053\u308c\u306f\u30a4\u30d9\u30f3\u30c8\u306b\u53c2\u52a0\u3057\u305f\u3059\u3079\u3066\u306e\u30e1\u30f3\u30d0\u30fc\u3067\u5171\u6709\u3055\u308c\u3001\u540c\u76df\u30a4\u30d9\u30f3\u30c8\u304c\u7d42\u4e86\u3057\u305f\u6642\u70b9\u3067\u652f\u6255\u308f\u308c\u308b\u3002',
             alliance_event_resource: {
                 christmas: {
+                    currency:
+                        '\u30a4\u30d9\u30f3\u30c8\u30c1\u30b1\u30c3\u30c8',
+                    event_start_mission:
+                        '\u30a4\u30d9\u30f3\u30c8\u958b\u59cb\uff1a %{amount} \u30a4\u30d9\u30f3\u30c8\u30c1\u30b1\u30c3\u30c8',
+                },
+                easter: {
                     currency:
                         '\u30a4\u30d9\u30f3\u30c8\u30c1\u30b1\u30c3\u30c8',
                     event_start_mission:
@@ -18405,7 +18585,7 @@ Object.values ||
                 info_bubble_text:
                     '\u3053\u308c\u306f\u30a4\u30d9\u30f3\u30c8\u671f\u9593\u4e2d\u306e\u307f\u306e\u81e8\u6642\u30a4\u30d9\u30f3\u30c8\u3067\u3059\uff01\u30a4\u30d9\u30f3\u30c8\u958b\u59cb\u306e\u305f\u3081\u306b\u5fc5\u8981\u306a\u30c1\u30b1\u30c3\u30c8\u3092\u7372\u5f97\u3059\u308b\u305f\u3081\u3001\u540c\u76df\u30e1\u30f3\u30d0\u30fc\u306b\u30a4\u30d9\u30f3\u30c8\u30df\u30c3\u30b7\u30e7\u30f3\u306e\u9054\u6210\u3092\u4fc3\u3057\u307e\u3057\u3087\u3046\u3002\u8a73\u3057\u304f\u306f\u540c\u76df\u30a4\u30d9\u30f3\u30c8\u30da\u30fc\u30b8\u3092\u3054\u89a7\u304f\u3060\u3055\u3044\u3002',
                 info_bubble_text_additional:
-                    '\u3042\u306a\u305f\u306f\u73fe\u5728\u3001%{amount} %{alliance_event_currency} \u3092\u6301\u3063\u3066\u3044\u308b\uff01',
+                    ' \u3042\u306a\u305f\u306f\u73fe\u5728\u3001%{amount} %{alliance_event_currency} \u3092\u6301\u3063\u3066\u3044\u308b\uff01',
                 valentinesday: {
                     currency:
                         '\u30a4\u30d9\u30f3\u30c8\u30c1\u30b1\u30c3\u30c8',
@@ -18417,6 +18597,8 @@ Object.values ||
             backalarm: '\u30ad\u30e3\u30f3\u30bb\u30eb',
             coins: '\u30b3\u30a4\u30f3',
             credits: '\u30af\u30ec\u30b8\u30c3\u30c8',
+            current_reward_for_you:
+                '<b>\u73fe\u5728\u306e\u5831\u916c\uff1a</b> %{credits} \u30af\u30ec\u30b8\u30c3\u30c8 & %{event_currency} \u30a4\u30d9\u30f3\u30c8\u30af\u30ec\u30b8\u30c3\u30c8',
             days: '\u65e5',
             few_seconds: '\u6570\u79d2\u5f8c',
             finish_in: '\u7d42\u4e86\u307e\u3067\uff1a',
@@ -18441,6 +18623,8 @@ Object.values ||
             new: '\u65b0\u7740',
             not_found_map:
                 '\u8eca\u4e21\u304c\u30de\u30c3\u30d7\u4e0a\u306b\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f',
+            not_qualified:
+                '<b>\u5bfe\u8c61\u5916\uff1a</b>\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u53c2\u52a0\u3057\u3066\u5831\u916c\u3092\u7372\u5f97\u3059\u308b\u3002',
             now: '\u4eca',
             patient: '\u60a3\u8005',
             patient_untouched:
@@ -18457,6 +18641,8 @@ Object.values ||
                 '\u6c34\u5bb3\u30dd\u30f3\u30d7\u306e\u30d7\u30ed\u30bb\u30b9',
             pump_speed_selected:
                 '\u9078\u3070\u308c\u305f\uff1a%{amount} \u30ea\u30c3\u30c8\u30eb',
+            qualified:
+                '<b>\u53c2\u52a0\u8cc7\u683c\uff1a</b> \u30a4\u30d9\u30f3\u30c8\u306b\u53c2\u52a0\u3057\u305f\u3002',
             reload: '\u30ea\u30ed\u30fc\u30c9',
             sale: '\u30bb\u30fc\u30eb',
             sale_ended: '\u30bb\u30fc\u30eb\u7d42\u4e86',
@@ -18475,6 +18661,10 @@ Object.values ||
             time_left: '\u6b8b\u308a\u6642\u9593\uff1a',
             to_building: '\u5efa\u7269\u3092\u898b\u308b',
             to_mission: '\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u898b\u308b',
+            total_credits_earned:
+                '\u300c\u7372\u5f97\u3057\u305f\u30af\u30ec\u30b8\u30c3\u30c8\u306e\u5408\u8a08\u300d',
+            total_event_currency_earned:
+                '\u7372\u5f97\u3057\u305f\u30a4\u30d9\u30f3\u30c8\u30fb\u30af\u30ec\u30b8\u30c3\u30c8\u306e\u5408\u8a08\uff1a',
             understand: '\u627f\u8a8d',
             user_not_found:
                 '\u30d7\u30ec\u30a4\u30e4\u30fc\u304c\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f\u3002',
@@ -19026,8 +19216,15 @@ Object.values ||
         },
         javascript: {
             alarm: '\ud30c\uacac',
+            alliance_event_pay_out_message:
+                '\uc774\ub294 \uc774\ubca4\ud2b8\uc5d0 \ucc38\uc5ec\ud55c \ubaa8\ub4e0 \ud68c\uc6d0\uc5d0\uac8c \uacf5\uc720\ub418\uba70, \uc81c\ud734 \uc774\ubca4\ud2b8\uac00 \uc885\ub8cc\ub418\uba74 \uc9c0\uae09\ub429\ub2c8\ub2e4.',
             alliance_event_resource: {
                 christmas: {
+                    currency: '\uc774\ubca4\ud2b8 \ud2f0\ucf13',
+                    event_start_mission:
+                        '\uc774\ubca4\ud2b8 \uc2dc\uc791: %{amount} \uc774\ubca4\ud2b8 \ud2f0\ucf13',
+                },
+                easter: {
                     currency: '\uc774\ubca4\ud2b8 \ud2f0\ucf13',
                     event_start_mission:
                         '\uc774\ubca4\ud2b8 \uc2dc\uc791: %{amount} \uc774\ubca4\ud2b8 \ud2f0\ucf13',
@@ -19035,7 +19232,7 @@ Object.values ||
                 info_bubble_text:
                     '\uc774\ubca4\ud2b8 \uae30\uac04 \ub3d9\uc548\uc5d0\ub9cc \ucc38\uc5ec\ud560 \uc218 \uc788\ub294 \ud55c\uc2dc\uc801\uc778 \uc774\ubca4\ud2b8\uc785\ub2c8\ub2e4! \uc774\ubca4\ud2b8 \uc2dc\uc791\uc5d0 \ud544\uc694\ud55c \ud2f0\ucf13\uc744 \ud68d\ub4dd\ud558\ub824\uba74 \ub3d9\ub9f9 \ud68c\uc6d0\ub4e4\uc774 \uc774\ubca4\ud2b8 \ubbf8\uc158\uc744 \uc644\ub8cc\ud558\ub3c4\ub85d \ub3c5\ub824\ud558\uc138\uc694. \uc790\uc138\ud55c \ub0b4\uc6a9\uc740 \uc5bc\ub77c\uc774\uc5b8\uc2a4 \uc774\ubca4\ud2b8 \ud398\uc774\uc9c0\ub97c \ucc38\uc870\ud558\uc138\uc694.',
                 info_bubble_text_additional:
-                    '\ud604\uc7ac %{amount} %{alliance_event_currency} !',
+                    ' \ud604\uc7ac %{amount} %{alliance_event_currency}!',
                 valentinesday: {
                     currency: '\uc774\ubca4\ud2b8 \ud2f0\ucf13',
                     event_start_mission:
@@ -19046,6 +19243,8 @@ Object.values ||
             backalarm: '\ucde8\uc18c',
             coins: '\ucf54\uc778',
             credits: '\ud06c\ub808\ub527',
+            current_reward_for_you:
+                '<b>\ud604\uc7ac \ubcf4\uc0c1:</b> %{credits} \ud06c\ub808\ub527 \ubc0f %{event_currency} \uc774\ubca4\ud2b8 \ud06c\ub808\ub527',
             days: '\uc77c',
             few_seconds: '\uba87 \ucd08 \uc548\uc5d0',
             finish_in: '\uc644\ub8cc\uae4c\uc9c0:',
@@ -19068,6 +19267,8 @@ Object.values ||
             new: '\uc0c8\ub85c\uc6b4',
             not_found_map:
                 '\uc9c0\ub3c4\uc0c1\uc5d0\uc11c \ucc28\ub7c9\uc744 \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4',
+            not_qualified:
+                '<b>\uc790\uaca9 \ubbf8\ub2ec:</b> \ubbf8\uc158\uc5d0 \ucc38\uc5ec\ud558\uc5ec \ubcf4\uc0c1\uc744 \ubc1b\uc73c\uc138\uc694.',
             now: '\uc9c0\uae08',
             patient: '\ud658\uc790',
             patient_untouched:
@@ -19081,6 +19282,8 @@ Object.values ||
             pump_speed_process:
                 '\uc218\ud574 \ud38c\ud504 \ud504\ub85c\uc138\uc2a4',
             pump_speed_selected: '\uc120\ud0dd\ub428: %{amount} \ub9ac\ud130',
+            qualified:
+                '<b>\uc790\uaca9:</b> \uc774\ubca4\ud2b8\uc5d0 \ucc38\uc5ec\ud588\uc2b5\ub2c8\ub2e4.',
             reload: '\ub2e4\uc2dc \ubd88\ub7ec\uc624\uae30',
             sale: '\ud560\uc778',
             sale_ended: '\ud560\uc778 \uc885\ub8cc',
@@ -19099,6 +19302,9 @@ Object.values ||
             time_left: '\ub0a8\uc740 \uc2dc\uac04:',
             to_building: '\uac74\ubb3c \ubcf4\uae30',
             to_mission: '\uc784\ubb34 \ubcf4\uae30',
+            total_credits_earned: '\ucd1d \ud68d\ub4dd \ud06c\ub808\ub527 ',
+            total_event_currency_earned:
+                '\ud68d\ub4dd\ud55c \ucd1d \uc774\ubca4\ud2b8 \ud06c\ub808\ub527:',
             understand: '\ud655\uc778',
             user_not_found:
                 '\ud50c\ub808\uc774\uc5b4\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.',
@@ -20127,8 +20333,15 @@ Object.values ||
         },
         javascript: {
             alarm: 'L\xe4het\xe4',
+            alliance_event_pay_out_message:
+                'T\xe4m\xe4 jaetaan jokaisen tapahtumaan osallistuneen j\xe4senen kesken ja maksetaan, kun liittouman tapahtuma on p\xe4\xe4ttynyt.',
             alliance_event_resource: {
                 christmas: {
+                    currency: 'Tapahtuman liput',
+                    event_start_mission:
+                        'Aloita tapahtuma: %{amount} Tapahtumalippu',
+                },
+                easter: {
                     currency: 'Tapahtuman liput',
                     event_start_mission:
                         'Aloita tapahtuma: %{amount} Tapahtumalippu',
@@ -20136,7 +20349,7 @@ Object.values ||
                 info_bubble_text:
                     'T\xe4m\xe4 on v\xe4liaikainen tapahtuma, joka on k\xe4ytett\xe4viss\xe4 vain tapahtuman aikana! Kannusta liittolaisesi j\xe4seni\xe4 suorittamaan tapahtumateht\xe4vi\xe4 ansaitaksesi liput, joita tarvitaan n\xe4iden tapahtumien k\xe4ynnist\xe4miseen. Katso lis\xe4tietoja liittouman tapahtumasivulta.',
                 info_bubble_text_additional:
-                    'Sinulla on t\xe4ll\xe4 hetkell\xe4 %{amount} %{alliance_event_currency} !',
+                    ' Sinulla on t\xe4ll\xe4 hetkell\xe4 %{amount} %{alliance_event_currency}!',
                 valentinesday: {
                     currency: 'Tapahtuman liput',
                     event_start_mission:
@@ -20147,6 +20360,8 @@ Object.values ||
             backalarm: 'Peruuta',
             coins: 'Kolikot',
             credits: 'Krediitit',
+            current_reward_for_you:
+                '<b>T\xe4m\xe4nhetkinen palkintosi:</b> %{credits} krediittej\xe4 & %{event_currency} tapahtumakrediittej\xe4.',
             days: 'p\xe4iv\xe4\xe4',
             few_seconds: 'muutaman sekunnin kuluttua',
             finish_in: 'P\xe4\xe4ttymiseen:',
@@ -20167,6 +20382,8 @@ Object.values ||
             mission_start_in: 'Alkamiseen:',
             new: 'Uusi',
             not_found_map: 'Ajoneuvoa ei l\xf6ytynyt kartalta.',
+            not_qualified:
+                '<b>Ei kelpaa:</b> Osallistu teht\xe4v\xe4\xe4n ansaitaksesi palkinnon.',
             now: 'Nyt',
             patient: 'Potilas',
             patient_untouched: 'Hoitamattomat potilaat',
@@ -20176,6 +20393,7 @@ Object.values ||
             pump_speed_on_site: 'Paikalla: %{amount} l/min',
             pump_speed_process: 'Vesivahingon pumppuprosessi',
             pump_speed_selected: 'Valittu: %{amount} l/min',
+            qualified: '<b>Kelpuutettu:</b> Osallistuit tapahtumaan.',
             reload: 'Lataa uudelleen',
             sale: 'Ale',
             sale_ended: 'Ale p\xe4\xe4ttynyt',
@@ -20195,6 +20413,9 @@ Object.values ||
             time_left: 'Aikaa j\xe4ljell\xe4:',
             to_building: 'N\xe4yt\xe4 rakennus',
             to_mission: 'N\xe4yt\xe4 teht\xe4v\xe4',
+            total_credits_earned: '"Ansaitut krediitit yhteens\xe4',
+            total_event_currency_earned:
+                'Ansaitut tapahtumapisteet yhteens\xe4:',
             understand: 'Kuittaa',
             user_not_found: 'Pelaajaa ei l\xf6ytynyt.',
             vehicles_not_visible: 'Ajoneuvoja ei n\xe4ytet\xe4. ',
