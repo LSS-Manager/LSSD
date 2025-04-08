@@ -3276,6 +3276,11 @@ function missionTimerDelete(e) {
         i.mission_id == e && window.clearInterval(i.timer);
     });
 }
+function missionsTimerDelete(e) {
+    $.each(mission_timers, function (t, i) {
+        e.includes(i.mission_id) && window.clearInterval(i.timer);
+    });
+}
 function patientTimerDelete(e) {
     var t = null;
     return (
@@ -3394,6 +3399,31 @@ function missionDelete(e) {
         missionParticipationFilters.new.missionIds.delete(e),
         missionParticipationFilters.started.missionIds.delete(e),
         missionSelectionUpdateButtons();
+}
+function missionsDelete(e) {
+    if (e && 0 !== e.length) {
+        e.forEach(e => {
+            $('#mission_' + e).addClass('mission_deleted'),
+                1 == mobile_bridge_use &&
+                    4 == mobile_version &&
+                    mobileBridgeAdd('mission_delete', { id: e });
+            var t = mission_markers_per_id.get(e);
+            t &&
+                (mission_markers_per_id.delete(t.mission_id),
+                'undefined' == typeof mapkit ?
+                    t.remove()
+                :   map.removeAnnotation(t)),
+                missionParticipationFilters.new.missionIds.delete(e),
+                missionParticipationFilters.started.missionIds.delete(e);
+        }),
+            missionsTimerDelete(e);
+        var t = [];
+        $.each(mission_markers, function (i, n) {
+            !1 === e.includes(n.mission_id) && t.push(n);
+        }),
+            (mission_markers = t),
+            missionSelectionUpdateButtons();
+    }
 }
 function vehicleDrive(e) {
     (e.isr = flavouredAsset(e.isr)), (e.in = flavouredAsset(e.in));
