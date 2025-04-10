@@ -11055,6 +11055,7 @@ body.dark .mission_overview_countdown {
 @media only screen and (max-width: 767px) {
     .money-block-web {
         display: flex !important;
+        flex-wrap: wrap !important;
     }
 }
 @media only screen and (min-width: 768px) {
@@ -11067,6 +11068,7 @@ body.dark .mission_overview_countdown {
 }
 .money-block-mobile {
     display: flex !important;
+    flex-wrap: wrap !important;
 }
 .money-block-mobile-vehicles {
     display: flex;
@@ -11082,6 +11084,9 @@ body.dark .mission_overview_countdown {
     height: 65%;
 }
 .money-block-mobile-vehicles a span.coins-value {
+    margin-top: 2px;
+}
+.money-block-mobile-vehicles a span.event_currency-value {
     margin-top: 2px;
 }
 .money-block-mobile-vehicles a span.credits-value {
@@ -11116,6 +11121,9 @@ body.dark .mission_overview_countdown {
     height: 65%;
 }
 .navbar-header .money-block a span.coins-value {
+    margin-top: 2px;
+}
+.navbar-header .money-block a span.event_currency-value {
     margin-top: 2px;
 }
 .navbar-header .money-block a span.credits-value {
@@ -16666,8 +16674,19 @@ i.bbcode-link-icon {
     .navbar-header
     .money-block
     a
+    .event_currency-value {
+    padding-right: 5px;
+    padding-bottom: 3px;
+}
+.design-v2.design-v2.design-v2.design-v2
+    .navbar-header
+    .money-block
+    a
     .credits-value {
     padding-bottom: 3px;
+}
+#event_buff_shop .money-block div {
+    height: 65%;
 }
 .dark.design-v2.design-v2.design-v2.design-v2 .btn-default {
     background-image: linear-gradient(to bottom, #505050 0, #000 100%);
