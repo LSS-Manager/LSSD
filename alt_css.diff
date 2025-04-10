@@ -1,5 +1,5 @@
 diff --git a/application.css b/application.alt.css
-index 47dba07..49dd32d 100644
+index 6ea82b5..49dd32d 100644
 --- a/application.css
 +++ b/application.alt.css
 @@ -11055,7 +11055,6 @@ body.dark .mission_overview_countdown {
@@ -28,7 +28,18 @@ index 47dba07..49dd32d 100644
  .money-block-mobile-vehicles a span.credits-value {
      margin-top: 2px;
  }
-@@ -11123,9 +11118,6 @@ body.dark .mission_overview_countdown {
+@@ -11106,9 +11101,7 @@ body.dark .mission_overview_countdown {
+     float: left;
+     align-items: center;
+     position: relative;
+-    margin-top: 8px;
+-    margin-bottom: 8px;
+-    gap: 8px 0px;
++    top: 9px;
+ }
+ .navbar-header .money-block a:hover {
+     text-decoration: none;
+@@ -11125,9 +11118,6 @@ body.dark .mission_overview_countdown {
  .navbar-header .money-block a span.coins-value {
      margin-top: 2px;
  }
@@ -38,7 +49,7 @@ index 47dba07..49dd32d 100644
  .navbar-header .money-block a span.credits-value {
      margin-top: 2px;
  }
-@@ -16670,14 +16662,6 @@ i.bbcode-link-icon {
+@@ -16672,14 +16662,6 @@ i.bbcode-link-icon {
      padding-right: 5px;
      padding-bottom: 3px;
  }
@@ -53,7 +64,7 @@ index 47dba07..49dd32d 100644
  .design-v2.design-v2.design-v2.design-v2
      .navbar-header
      .money-block
-@@ -16685,9 +16669,6 @@ i.bbcode-link-icon {
+@@ -16687,9 +16669,6 @@ i.bbcode-link-icon {
      .credits-value {
      padding-bottom: 3px;
  }
