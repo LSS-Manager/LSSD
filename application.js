@@ -6865,7 +6865,7 @@ Object.values ||
             coins: 'Coins',
             credits: 'Credits',
             current_reward_for_you:
-                '<b>Ihre aktuelle Belohnung:</b> %{credits} Credits & %{event_currency} Event-Credits',
+                '<b>Deine aktuelle Belohnung:</b> %{credits} Credits & %{event_currency} Event-Credits',
             days: 'Tage',
             few_seconds: 'In wenigen Sekunden',
             finish_in: 'Ende in:',
@@ -10717,6 +10717,7 @@ Object.values ||
         intervention_order: {
             automatic_text_color: 'Automatisk textf\xe4rg',
             back: 'Tillbaka',
+            car_carrier: 'B\xe4rgningsbil eller Flatb\xe4ddsf\xf6rare',
             categories: {
                 brush: 'Skogsbrandk\xe5r',
                 coastal_rescue: 'Kustr\xe4ddning',
