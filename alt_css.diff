@@ -1,7 +1,49 @@
 diff --git a/application.css b/application.alt.css
-index 6ea82b5..49dd32d 100644
+index 7f984d4..49dd32d 100644
 --- a/application.css
 +++ b/application.alt.css
+@@ -10367,25 +10367,19 @@ body.bigMap #main_navbar {
+ body {
+     background-color: #fafafa;
+ }
+-.koenigstag {
++body.koenigstag .navbar-default {
+     background-image: url(/images/koningsdagbar_2.png);
+     background-size: auto 100%;
+     background-color: #e75104;
+ }
+-.koenigstag .navbar-nav {
++body.koenigstag .navbar-nav {
+     background-color: rgba(1, 1, 1, 0.2);
+ }
+-.koenigstag .navbar-default .dropdown-menu {
+-    background-color: #e75104;
+-}
+ body.belgiumbar .navbar-default {
+     background-image: url(/images/belgiumbar.png);
+     background-size: auto 100%;
+ }
+-.dodenherdenking.navbar-default {
+-    background-color: #000000;
+-}
+-.dodenherdenking.navbar-default .dropdown-menu {
++body.dodenherdenking .navbar-default {
+     background-color: #000000;
+ }
+ .navbar-default a {
+@@ -10412,6 +10406,12 @@ body.belgiumbar .navbar-default {
+     left: 28px;
+     top: 0px;
+ }
++body.koenigstag .navbar-default .dropdown-menu {
++    background-color: #e75104;
++}
++body.dodenherdenking .navbar-default .dropdown-menu {
++    background-color: #000000;
++}
+ .navbar-default .dropdown-menu a {
+     color: #fff !important;
+ }
 @@ -11055,7 +11055,6 @@ body.dark .mission_overview_countdown {
  @media only screen and (max-width: 767px) {
      .money-block-web {

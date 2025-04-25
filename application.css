@@ -10367,19 +10367,25 @@ body.bigMap #main_navbar {
 body {
     background-color: #fafafa;
 }
-body.koenigstag .navbar-default {
+.koenigstag {
     background-image: url(/images/koningsdagbar_2.png);
     background-size: auto 100%;
     background-color: #e75104;
 }
-body.koenigstag .navbar-nav {
+.koenigstag .navbar-nav {
     background-color: rgba(1, 1, 1, 0.2);
+}
+.koenigstag .navbar-default .dropdown-menu {
+    background-color: #e75104;
 }
 body.belgiumbar .navbar-default {
     background-image: url(/images/belgiumbar.png);
     background-size: auto 100%;
 }
-body.dodenherdenking .navbar-default {
+.dodenherdenking.navbar-default {
+    background-color: #000000;
+}
+.dodenherdenking.navbar-default .dropdown-menu {
     background-color: #000000;
 }
 .navbar-default a {
@@ -10405,12 +10411,6 @@ body.dodenherdenking .navbar-default {
     position: absolute;
     left: 28px;
     top: 0px;
-}
-body.koenigstag .navbar-default .dropdown-menu {
-    background-color: #e75104;
-}
-body.dodenherdenking .navbar-default .dropdown-menu {
-    background-color: #000000;
 }
 .navbar-default .dropdown-menu a {
     color: #fff !important;
