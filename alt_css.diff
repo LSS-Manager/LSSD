@@ -1,5 +1,5 @@
 diff --git a/application.css b/application.alt.css
-index 488f196..49dd32d 100644
+index 7f984d4..49dd32d 100644
 --- a/application.css
 +++ b/application.alt.css
 @@ -10367,25 +10367,19 @@ body.bigMap #main_navbar {
@@ -91,48 +91,7 @@ index 488f196..49dd32d 100644
  .navbar-header .money-block a span.credits-value {
      margin-top: 2px;
  }
-@@ -15302,40 +15292,6 @@ body.dark .dark-visible {
-     display: flex;
-     align-items: center;
-     gap: 10px;
--}
--#manage_dispatch_centers_body .panel {
--    border: 1px solid #ccc;
--    border-radius: 5px;
--    overflow: hidden;
--}
--#manage_dispatch_centers_body .panel-header {
--    background-color: #f0f0f0;
--    padding: 8px;
--    display: flex;
--    align-items: center;
--    border-bottom: 1px solid #ccc;
--}
--#manage_dispatch_centers_body .panel-header .icon {
--    width: 20px;
--    height: 20px;
--    margin-right: 8px;
--}
--#manage_dispatch_centers_body .panel-body {
--    display: flex;
--    align-items: center;
--    padding: 10px;
--    gap: 8px;
--}
--#manage_dispatch_centers_body .count {
--    margin-left: auto;
--}
--.dark #manage_dispatch_centers_body .panel {
--    border-color: #000;
--}
--.dark #manage_dispatch_centers_body .panel-header {
--    background-image: linear-gradient(to bottom, #505050 0, #000 100%);
--    color: #ddd;
--    border-bottom: #000;
- } /*!
-  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
-  *
-@@ -16706,14 +16662,6 @@ i.bbcode-link-icon {
+@@ -16672,14 +16662,6 @@ i.bbcode-link-icon {
      padding-right: 5px;
      padding-bottom: 3px;
  }
@@ -147,7 +106,7 @@ index 488f196..49dd32d 100644
  .design-v2.design-v2.design-v2.design-v2
      .navbar-header
      .money-block
-@@ -16721,9 +16669,6 @@ i.bbcode-link-icon {
+@@ -16687,9 +16669,6 @@ i.bbcode-link-icon {
      .credits-value {
      padding-bottom: 3px;
  }

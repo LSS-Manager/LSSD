@@ -15302,40 +15302,6 @@ body.dark .dark-visible {
     display: flex;
     align-items: center;
     gap: 10px;
-}
-#manage_dispatch_centers_body .panel {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    overflow: hidden;
-}
-#manage_dispatch_centers_body .panel-header {
-    background-color: #f0f0f0;
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #ccc;
-}
-#manage_dispatch_centers_body .panel-header .icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 8px;
-}
-#manage_dispatch_centers_body .panel-body {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    gap: 8px;
-}
-#manage_dispatch_centers_body .count {
-    margin-left: auto;
-}
-.dark #manage_dispatch_centers_body .panel {
-    border-color: #000;
-}
-.dark #manage_dispatch_centers_body .panel-header {
-    background-image: linear-gradient(to bottom, #505050 0, #000 100%);
-    color: #ddd;
-    border-bottom: #000;
 } /*!
  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
  *
