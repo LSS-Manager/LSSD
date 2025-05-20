@@ -14086,6 +14086,13 @@ body.dark .daily-bonuses .collect-possible-block {
 .vehicle-prisons-filter {
     margin-bottom: 10px;
 }
+.vehicle-prisons-load-more {
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+.prison-select .btn {
+    margin: 1px;
+}
 #map_adress_search_form {
     margin-left: 0px;
 }
