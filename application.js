@@ -1690,7 +1690,9 @@ function vehicleDriveReal(e) {
                     (current_lng = start_lng + diff_kb * (offset_step / 100)),
                     (t.latitude = current_lat),
                     (t.longitude = current_lng),
-                    1 == mobile_bridge_use && 4 == mobile_version)
+                    !1 === mobile_use_web_map &&
+                        1 == mobile_bridge_use &&
+                        4 == mobile_version)
                 ) {
                     mobileBridgeAdd('vehicle_move', {
                         id: t.vehicle_id,
@@ -2843,14 +2845,41 @@ function vehicleSearch(e) {
     i &&
         !i.vehicle_marker_deleted &&
         i.visible &&
-        ((t = !0),
-        isMapKitMap() ?
-            map.setCenterAnimated(
-                new mapkit.Coordinate(i.latitude, i.longitude),
-                !0
-            )
-        :   map.setView([i.latitude, i.longitude])),
+        ((t = !0), centerMapOn(i.latitude, i.longitude)),
         t || alert(I18n.t('javascript.not_found_map'));
+}
+function centerMapOn(e, t, i) {
+    mapViewExpanded ? mapViewExpandedWindow.map.setView([e, t])
+    : isMapKitMap() ? map.setCenterAnimated(new mapkit.Coordinate(e, t), !0)
+    : map.setView([e, t], i);
+}
+function fitMapInBounds(e, t, i, n) {
+    if (mapViewExpanded)
+        mapViewExpandedWindow.map.fitBounds([
+            [e, t],
+            [i, n],
+        ]);
+    else if (isLeaflet())
+        map.fitBounds([
+            [e, t],
+            [i, n],
+        ]);
+    else {
+        let s = parseFloat(e - i),
+            a = parseFloat(t - n),
+            o = parseFloat(i) + s / 2,
+            r = parseFloat(n) + a / 2;
+        s < 0 && (s *= -1), a < 0 && (a *= -1);
+        const l = new mapkit.Coordinate(o, r),
+            c = new mapkit.CoordinateSpan(s + 0.05, a + 0.05),
+            u = new mapkit.CoordinateRegion(l, c);
+        map.setRegionAnimated(u, !0);
+    }
+}
+function fitMapInPrecalcBounds(e) {
+    mapViewExpanded ? mapViewExpandedWindow.map.fitBounds(e)
+    : isLeaflet() ? map.fitBounds(e)
+    : map.setRegionAnimated(e, !0);
 }
 function missionLabel() {
     mission_markers_per_id.forEach(function (e) {
@@ -2898,7 +2927,8 @@ function buildingLoadContent(url) {
             (eval(building_eval_unload), (building_eval_unload = null)),
         $.ajax({ url: url, cache: !1 }).success(function (e) {
             $('#buildings').html(e),
-                tutorial.callBuildingLoadContentListener(!0),
+                !1 === mobile_use_web_map &&
+                    tutorial.callBuildingLoadContentListener(!0),
                 bigMapWindowSizeChanged();
         });
 }
@@ -4096,10 +4126,15 @@ function isLoggedIn() {
     return 'undefined' != typeof user_id && !isNaN(user_id);
 }
 function mobileShow(e) {
-    if ((console.log('mobileShow'), (currentMobileTab = e), 'account' == e))
-        mobileBridgeAdd('account_show', {});
-    else {
-        $('.overview_outer').hide(),
+    currentMobileTab = e;
+    const t = $('#level_upgrade_hint_holder');
+    t.length > 0 && t.show();
+    let i = $(window).height();
+    'map' == e && mobile_use_web_map ?
+        ((i += magicValueAvailableSpace), $('#main_navbar').hide())
+    :   ((i -= magicValueAvailableSpace), $('#main_navbar').show()),
+        'account' != e ?
+            ($('.overview_outer').hide(),
             $('#' + e + '_outer').show(),
             $('.mobile-navbar-selector')
                 .addClass('btn-default')
@@ -4107,39 +4142,84 @@ function mobileShow(e) {
             $('.mobile-navbar-selector[target_element=' + e + ']')
                 .removeClass('btn-default')
                 .addClass('btn-success'),
-            progressBarScrollUpdate();
-        let t = $(window).height() - magicValueAvailableSpace;
-        (t -=
-            client_uses_design_v2 ?
-                $('#design-v2-navbar-spacer').outerHeight()
-            :   $('#navbar-mobile-footer').outerHeight()),
+            progressBarScrollUpdate(),
+            (i -=
+                client_uses_design_v2 ?
+                    $('#design-v2-navbar-spacer').outerHeight()
+                :   $('#navbar-mobile-footer').outerHeight()),
             'map' == e &&
-                ($('#map').height(t),
+                (t.length > 0 && t.hide(),
+                $('#map').height(i),
+                mobile_use_web_map &&
+                    ($('#map').height(i).width($(window).width()),
+                    $('#map_outer')
+                        .height(i)
+                        .width($(window).width())
+                        .removeClass('col-sm-12')),
                 'undefined' == typeof mapkit && map.invalidateSize()),
             'missions' == e &&
                 ($('#missions-panel-body').height(
-                    t - $('.missions-panel-head').outerHeight(!0) - 5
+                    i - $('.missions-panel-head').outerHeight(!0) - 5
                 ),
                 $('#missions').height('auto')),
             'buildings' == e &&
                 ($('#building_panel_body').css('max-height', 'initial'),
                 $('#building_panel_body').css('padding-bottom', '15px'),
                 $('#building_panel_body').height(
-                    t - $('#building_panel_heading').outerHeight(!0) - 50
+                    i - $('#building_panel_heading').outerHeight(!0) - 50
                 )),
             'chat' == e &&
                 ($('#chat_panel_body').css('max-height', 'initial'),
                 $('#chat_panel_body').css('padding-bottom', '15px'),
                 $('#chat_panel_body').height(
-                    t - $('#chat_panel_heading').outerHeight(!0) - 50
+                    i - $('#chat_panel_heading').outerHeight(!0) - 50
                 )),
             'radio' == e &&
                 ($('#radio_panel_body').css('max-height', 'initial'),
                 $('#radio_panel_body').css('padding-bottom', '15px'),
                 $('#radio_panel_body').height(
-                    t - $('#radio_panel_heading').outerHeight(!0) - 50
-                ));
-    }
+                    i - $('#radio_panel_heading').outerHeight(!0) - 50
+                )))
+        :   mobileBridgeAdd('account_show', {});
+}
+function startBuildingCreation() {
+    $('#build_new_building').click();
+}
+function proceedBuildingCreation() {
+    tutorial.callBuildingLoadContentListener(!0),
+        mobileBridgeAdd('navTo', { view: 'buildings' });
+}
+function cancelBuildingCreation() {
+    $('#building_back_button').click();
+}
+function startPOICreation() {
+    $('#build_new_poi').click();
+}
+function proceedPOICreation() {
+    mobileBridgeAdd('navTo', { view: 'buildings' });
+}
+function cancelPOICreation() {
+    $('#poi_cancel_button').click();
+}
+function startAllianceEventCreation() {
+    $('#btn-alliance-new-event').click(),
+        mobileBridgeAdd('navTo', { view: 'map' });
+}
+function proceedAllianceEventCreation() {
+    mobileBridgeAdd('navTo', { view: 'buildings' });
+}
+function cancelAllianceEventCreation() {
+    $('#alliance_event_cancel_button').click();
+}
+function startAllianceMissionCreation() {
+    $('#btn-alliance-new-mission').click(),
+        mobileBridgeAdd('navTo', { view: 'map' });
+}
+function proceedAllianceMissionCreation() {
+    mobileBridgeAdd('navTo', { view: 'buildings' });
+}
+function cancelAllianceMissionCreation() {
+    $('#alliance_mission_cancel_button').click();
 }
 function mobileBridgeRequest() {
     var e = mobile_bridge_content.splice(0, 50);
@@ -5532,10 +5612,15 @@ function updateMapFilterOptions(e) {
         $.ajax({
             type: 'PUT',
             url: '/map_filters/update_collection',
-            data: { map_filters: map_filters },
+            data: {
+                map_filters: map_filters,
+                mobile_use_web_map: mobile_use_web_map,
+            },
             cache: !1,
             success: function (e) {
-                1 == mobile_bridge_use &&
+                mobile_use_web_map ?
+                    map_filters_service.refreshLayers(e.map_filters)
+                :   1 == mobile_bridge_use &&
                     (clearMap(e.cleared_map_filters),
                     (alliance_member_buildings_show = map_filters.find(
                         function (e) {
@@ -29595,7 +29680,7 @@ Object.values ||
                 return new e.ActiveXObject('Microsoft.XMLHTTP');
             } catch (e) {}
         }
-        function N() {
+        function L() {
             return (
                 setTimeout(function () {
                     Yt = t;
@@ -29603,7 +29688,7 @@ Object.values ||
                 (Yt = ue.now())
             );
         }
-        function L(e, t, i) {
+        function N(e, t, i) {
             for (
                 var n, s = (ii[t] || []).concat(ii['*']), a = 0, o = s.length;
                 a < o;
@@ -29622,7 +29707,7 @@ Object.values ||
                 l = function () {
                     if (s) return !1;
                     for (
-                        var t = Yt || N(),
+                        var t = Yt || L(),
                             i = Math.max(0, c.startTime + c.duration - t),
                             n = 1 - (i / c.duration || 0),
                             a = 0,
@@ -29642,7 +29727,7 @@ Object.values ||
                     opts: ue.extend(!0, { specialEasing: {} }, i),
                     originalProperties: t,
                     originalOptions: i,
-                    startTime: Yt || N(),
+                    startTime: Yt || L(),
                     duration: i.duration,
                     tweens: [],
                     createTween: function (t, i) {
@@ -29672,7 +29757,7 @@ Object.values ||
             for (H(u, c.opts.specialEasing); a < o; a++)
                 if ((n = ti[a].call(c, e, u, c.opts))) return n;
             return (
-                ue.map(u, L, c),
+                ue.map(u, N, c),
                 ue.isFunction(c.opts.start) && c.opts.start.call(e, c),
                 ue.fx.timer(
                     ue.extend(l, { elem: e, anim: c, queue: c.opts.queue })
@@ -29769,7 +29854,7 @@ Object.values ||
                         ue.style(e, t, u[t]);
                 }),
                 u))
-                    (o = L(h ? p[n] : 0, n, c)),
+                    (o = N(h ? p[n] : 0, n, c)),
                         n in p ||
                             ((p[n] = o.start),
                             h &&
@@ -30342,7 +30427,7 @@ Object.values ||
                     )
                         return i;
                     if (1 !== (r = (t = t || B).nodeType) && 9 !== r) return [];
-                    if (N && !n) {
+                    if (L && !n) {
                         if ((s = xe.exec(e)))
                             if ((o = s[1])) {
                                 if (9 === r) {
@@ -30378,7 +30463,7 @@ Object.values ||
                                         i
                                     );
                             }
-                        if (z.qsa && (!L || !L.test(e))) {
+                        if (z.qsa && (!N || !N.test(e))) {
                             if (
                                 ((d = u = W),
                                 (h = t),
@@ -30799,7 +30884,7 @@ Object.values ||
                             'ID' === (o = a[0]).type &&
                             z.getById &&
                             9 === t.nodeType &&
-                            N &&
+                            L &&
                             E.relative[a[1].type]
                         ) {
                             if (
@@ -30828,7 +30913,7 @@ Object.values ||
                                 break;
                             }
                     }
-                    return I(e, c)(n, t, !N, i, ge.test(e)), i;
+                    return I(e, c)(n, t, !L, i, ge.test(e)), i;
                 }
                 function T() {}
                 var S,
@@ -30843,8 +30928,8 @@ Object.values ||
                     R,
                     B,
                     O,
-                    N,
                     L,
+                    N,
                     F,
                     H,
                     q,
@@ -30998,7 +31083,7 @@ Object.values ||
                             ) ?
                                 ((B = t),
                                 (O = t.documentElement),
-                                (N = !M(t)),
+                                (L = !M(t)),
                                 (z.attributes = o(function (e) {
                                     return (
                                         (e.innerHTML = "<a href='#'></a>"),
@@ -31054,7 +31139,7 @@ Object.values ||
                                     ((E.find.ID = function (e, t) {
                                         if (
                                             typeof t.getElementById !== Q &&
-                                            N
+                                            L
                                         ) {
                                             var i = t.getElementById(e);
                                             return i && i.parentNode ? [i] : [];
@@ -31107,19 +31192,19 @@ Object.values ||
                                         if (
                                             typeof t.getElementsByClassName !==
                                                 Q &&
-                                            N
+                                            L
                                         )
                                             return t.getElementsByClassName(e);
                                     }),
                                 (F = []),
-                                (L = []),
+                                (N = []),
                                 (z.qsa = n(t.querySelectorAll)) &&
                                     (o(function (e) {
                                         (e.innerHTML =
                                             "<select><option selected=''></option></select>"),
                                             e.querySelectorAll('[selected]')
                                                 .length ||
-                                                L.push(
+                                                N.push(
                                                     '\\[' +
                                                         le +
                                                         '*(?:value|' +
@@ -31127,7 +31212,7 @@ Object.values ||
                                                         ')'
                                                 ),
                                             e.querySelectorAll(':checked')
-                                                .length || L.push(':checked');
+                                                .length || N.push(':checked');
                                     }),
                                     o(function (e) {
                                         var i = t.createElement('input');
@@ -31137,16 +31222,16 @@ Object.values ||
                                                 .setAttribute('t', ''),
                                             e.querySelectorAll("[t^='']")
                                                 .length &&
-                                                L.push(
+                                                N.push(
                                                     '[*^$]=' +
                                                         le +
                                                         '*(?:\'\'|"")'
                                                 ),
                                             e.querySelectorAll(':enabled')
                                                 .length ||
-                                                L.push(':enabled', ':disabled'),
+                                                N.push(':enabled', ':disabled'),
                                             e.querySelectorAll('*,:x'),
-                                            L.push(',.*:');
+                                            N.push(',.*:');
                                     })),
                                 (z.matchesSelector = n(
                                     (H =
@@ -31163,7 +31248,7 @@ Object.values ||
                                             H.call(e, "[s!='']:x"),
                                             F.push('!=', pe);
                                     }),
-                                (L = L.length && new RegExp(L.join('|'))),
+                                (N = N.length && new RegExp(N.join('|'))),
                                 (F = F.length && new RegExp(F.join('|'))),
                                 (q =
                                     n(O.contains) || O.compareDocumentPosition ?
@@ -31274,9 +31359,9 @@ Object.values ||
                         ((e.ownerDocument || e) !== B && R(e),
                         (t = t.replace(ve, "='$1']")),
                         z.matchesSelector &&
-                            N &&
+                            L &&
                             (!F || !F.test(t)) &&
-                            (!L || !L.test(t)))
+                            (!N || !N.test(t)))
                     )
                         try {
                             var n = H.call(e, t);
@@ -31297,11 +31382,11 @@ Object.values ||
                     var n = E.attrHandle[i.toLowerCase()],
                         s =
                             n && ee.call(E.attrHandle, i.toLowerCase()) ?
-                                n(e, i, !N)
+                                n(e, i, !L)
                             :   t;
                     return (
                         s === t ?
-                            z.attributes || !N ? e.getAttribute(i)
+                            z.attributes || !L ? e.getAttribute(i)
                             : (s = e.getAttributeNode(i)) && s.specified ?
                                 s.value
                             :   null
@@ -31678,7 +31763,7 @@ Object.values ||
                                         do {
                                             if (
                                                 (i =
-                                                    N ?
+                                                    L ?
                                                         t.lang
                                                     :   t.getAttribute(
                                                             'xml:lang'
@@ -32880,8 +32965,8 @@ Object.values ||
                         });
             });
         var Oe = /^(?:input|select|textarea)$/i,
-            Ne = /^key/,
-            Le = /^(?:mouse|contextmenu)|click/,
+            Le = /^key/,
+            Ne = /^(?:mouse|contextmenu)|click/,
             Fe = /^(?:focusinfocus|focusoutblur)$/,
             He = /^([^.]*)(?:\.(.+)|)$/;
         (ue.event = {
@@ -33190,8 +33275,8 @@ Object.values ||
                 for (
                     o ||
                         (this.fixHooks[s] = o =
-                            Le.test(s) ? this.mouseHooks
-                                : Ne.test(s) ? this.keyHooks
+                            Ne.test(s) ? this.mouseHooks
+                                : Le.test(s) ? this.keyHooks
                                 : {}),
                         n = o.props ? this.props.concat(o.props) : this.props,
                         e = new ue.Event(a),
@@ -34748,8 +34833,8 @@ Object.values ||
             Rt = /^(.*?):[ \t]*([^\r\n]*)\r?$/gm,
             Bt = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
             Ot = /^(?:GET|HEAD)$/,
-            Nt = /^\/\//,
-            Lt = /^([\w.+-]+:)(?:\/\/([^\/?#:]*)(?::(\d+)|)|)/,
+            Lt = /^\/\//,
+            Nt = /^([\w.+-]+:)(?:\/\/([^\/?#:]*)(?::(\d+)|)|)/,
             Ft = ue.fn.load,
             Ht = {},
             qt = {},
@@ -34759,7 +34844,7 @@ Object.values ||
         } catch (e) {
             ((Pt = Y.createElement('a')).href = ''), (Pt = Pt.href);
         }
-        (Et = Lt.exec(Pt.toLowerCase()) || []),
+        (Et = Nt.exec(Pt.toLowerCase()) || []),
             (ue.fn.load = function (e, i, n) {
                 if ('string' != typeof e && Ft)
                     return Ft.apply(this, arguments);
@@ -34971,14 +35056,14 @@ Object.values ||
                         (k.error = k.fail),
                         (h.url = ((e || h.url || Pt) + '')
                             .replace(Dt, '')
-                            .replace(Nt, Et[1] + '//')),
+                            .replace(Lt, Et[1] + '//')),
                         (h.type = i.method || i.type || h.method || h.type),
                         (h.dataTypes = ue
                             .trim(h.dataType || '*')
                             .toLowerCase()
                             .match(he) || ['']),
                         null == h.crossDomain &&
-                            ((s = Lt.exec(h.url.toLowerCase())),
+                            ((s = Nt.exec(h.url.toLowerCase())),
                             (h.crossDomain = !(
                                 !s ||
                                 (s[1] === Et[1] &&
@@ -44494,8 +44579,8 @@ Object.values ||
                         R,
                         B,
                         O,
-                        N,
                         L,
+                        N,
                         F = new Date(),
                         H = this._daylightSavingAdjust(
                             new Date(F.getFullYear(), F.getMonth(), F.getDate())
@@ -44767,8 +44852,8 @@ Object.values ||
                                                 [j]
                                             )
                                         :   [!0, '']),
-                                        (L =
-                                            ((N = j.getMonth() !== X) && !v) ||
+                                        (N =
+                                            ((L = j.getMonth() !== X) && !v) ||
                                             !O[0] ||
                                             (J && j < J) ||
                                             (Q && j > Q)),
@@ -44777,7 +44862,7 @@ Object.values ||
                                             ((w + u + 6) % 7 >= 5 ?
                                                 ' ui-datepicker-week-end'
                                             :   '') +
-                                            (N ?
+                                            (L ?
                                                 ' ui-datepicker-other-month'
                                             :   '') +
                                             ((
@@ -44789,12 +44874,12 @@ Object.values ||
                                             ) ?
                                                 ' ' + this._dayOverClass
                                             :   '') +
-                                            (L ?
+                                            (N ?
                                                 ' ' +
                                                 this._unselectableClass +
                                                 ' ui-state-disabled'
                                             :   '') +
-                                            (N && !g ? '' : (
+                                            (L && !g ? '' : (
                                                 ' ' +
                                                 O[1] +
                                                 (j.getTime() === Y.getTime() ?
@@ -44805,12 +44890,12 @@ Object.values ||
                                                 :   '')
                                             )) +
                                             "'" +
-                                            ((N && !g) || !O[2] ?
+                                            ((L && !g) || !O[2] ?
                                                 ''
                                             :   " title='" +
                                                 O[2].replace(/'/g, '&#39;') +
                                                 "'") +
-                                            (L ? '' : (
+                                            (N ? '' : (
                                                 " data-handler='selectDay' data-event='click' data-month='" +
                                                 j.getMonth() +
                                                 "' data-year='" +
@@ -44818,8 +44903,8 @@ Object.values ||
                                                 "'"
                                             )) +
                                             '>' +
-                                            (N && !g ? '&#xa0;'
-                                            : L ?
+                                            (L && !g ? '&#xa0;'
+                                            : N ?
                                                 "<span class='ui-state-default'>" +
                                                 j.getDate() +
                                                 '</span>'
@@ -44830,7 +44915,7 @@ Object.values ||
                                                 (j.getTime() === Y.getTime() ?
                                                     ' ui-state-active'
                                                 :   '') +
-                                                (N ?
+                                                (L ?
                                                     ' ui-priority-secondary'
                                                 :   '') +
                                                 "' href='#'>" +
@@ -55663,7 +55748,7 @@ Object.values ||
             return Ie((e = je(e, i)), i);
         }
         function Me(e, t, i) {
-            return Math.sqrt(Le(e, t, i, !0));
+            return Math.sqrt(Ne(e, t, i, !0));
         }
         function Ie(e, t) {
             var i = e.length,
@@ -55682,12 +55767,12 @@ Object.values ||
                 r,
                 l = 0;
             for (o = n + 1; o <= s - 1; o++)
-                (r = Le(e[o], e[n], e[s], !0)) > l && ((a = o), (l = r));
+                (r = Ne(e[o], e[n], e[s], !0)) > l && ((a = o), (l = r));
             l > i && ((t[a] = 1), De(e, t, i, n, a), De(e, t, i, a, s));
         }
         function je(e, t) {
             for (var i = [e[0]], n = 1, s = 0, a = e.length; n < a; n++)
-                Ne(e[n], e[s]) > t && (i.push(e[n]), (s = n));
+                Le(e[n], e[s]) > t && (i.push(e[n]), (s = n));
             return s < a - 1 && i.push(e[a - 1]), i;
         }
         function Re(e, t, i, n, s) {
@@ -55726,12 +55811,12 @@ Object.values ||
                 i
             );
         }
-        function Ne(e, t) {
+        function Le(e, t) {
             var i = t.x - e.x,
                 n = t.y - e.y;
             return i * i + n * n;
         }
-        function Le(e, t, i, n) {
+        function Ne(e, t, i, n) {
             var s,
                 a = t.x,
                 o = t.y,
@@ -56586,15 +56671,15 @@ Object.values ||
             Rt = 'OTransition' in wt,
             Bt = 0 === navigator.platform.indexOf('Win'),
             Ot = kt && 'transition' in wt,
-            Nt =
+            Lt =
                 'WebKitCSSMatrix' in window &&
                 'm11' in new window.WebKitCSSMatrix() &&
                 !zt,
-            Lt = 'MozPerspective' in wt,
-            Ft = !window.L_DISABLE_3D && (Ot || Nt || Lt) && !Rt && !jt,
+            Nt = 'MozPerspective' in wt,
+            Ft = !window.L_DISABLE_3D && (Ot || Lt || Nt) && !Rt && !jt,
             Ht = 'undefined' != typeof orientation || I('mobile'),
             qt = Ht && Tt,
-            Wt = Ht && Nt,
+            Wt = Ht && Lt,
             $t = !window.PointerEvent && window.MSPointerEvent,
             Vt = !(!window.PointerEvent && !$t),
             Ut =
@@ -56641,8 +56726,8 @@ Object.values ||
                 opera12: Rt,
                 win: Bt,
                 ie3d: Ot,
-                webkit3d: Nt,
-                gecko3d: Lt,
+                webkit3d: Lt,
+                gecko3d: Nt,
                 any3d: Ft,
                 mobile: Ht,
                 mobileWebkit: qt,
@@ -58652,20 +58737,20 @@ Object.values ||
                         (Oi._dragging = !1);
                 },
             }),
-            Ni = (Object.freeze || Object)({
+            Li = (Object.freeze || Object)({
                 simplify: Pe,
                 pointToSegmentDistance: Me,
                 closestPointOnSegment: function (e, t, i) {
-                    return Le(e, t, i);
+                    return Ne(e, t, i);
                 },
                 clipSegment: Re,
                 _getEdgeIntersection: Be,
                 _getBitCode: Oe,
-                _sqClosestPointOnSegment: Le,
+                _sqClosestPointOnSegment: Ne,
                 isFlat: Fe,
                 _flat: He,
             }),
-            Li = (Object.freeze || Object)({ clipPolygon: qe }),
+            Ni = (Object.freeze || Object)({ clipPolygon: qe }),
             Fi = {
                 project: function (e) {
                     return new y(e.lng, e.lat);
@@ -59582,7 +59667,7 @@ Object.values ||
                             i,
                             n = 1 / 0,
                             s = null,
-                            a = Le,
+                            a = Ne,
                             o = 0,
                             r = this._parts.length;
                         o < r;
@@ -62897,8 +62982,8 @@ Object.values ||
             (e.DomUtil = vi),
             (e.PosAnimation = xi),
             (e.Draggable = Oi),
-            (e.LineUtil = Ni),
-            (e.PolyUtil = Li),
+            (e.LineUtil = Li),
+            (e.PolyUtil = Ni),
             (e.Point = y),
             (e.point = w),
             (e.Bounds = k),
@@ -63737,6 +63822,7 @@ var building_markers = Array(),
     alliance_mission_distance = !1,
     mobile_bridge_content = Array(),
     mobile_bridge_use = !1,
+    mobile_use_web_map = !1,
     mixed_mobile_desktop_mode = !1,
     mobile_version = 1,
     vehicle_markers = Array(),
@@ -64652,73 +64738,41 @@ $(function () {
             );
         }),
         $('body').on('click', '.map_position_mover', function () {
-            if (
-                void 0 === $(this).attr('target_latitude') ||
-                'null' == $(this).attr('target_latitude')
-            )
-                mobile_bridge_use &&
-                    mobileBridgeAdd('center_on_map', {
-                        latitude: $(this).data('latitude'),
-                        longitude: $(this).data('longitude'),
-                    }),
-                    mapViewExpanded ?
-                        mapViewExpandedWindow.map.setView([
-                            $(this).data('latitude'),
-                            $(this).data('longitude'),
-                        ])
-                    : 'undefined' != typeof mapkit ?
-                        map.setCenterAnimated(
-                            new mapkit.Coordinate(
-                                $(this).data('latitude'),
-                                $(this).data('longitude')
-                            ),
-                            !0
-                        )
-                    :   map.setView([
-                            $(this).data('latitude'),
-                            $(this).data('longitude'),
-                        ]);
-            else if (
-                (mobile_bridge_use &&
-                    mobileBridgeAdd('center_on_map', {
-                        latitude: $(this).data('latitude'),
-                        longitude: $(this).data('longitude'),
-                        target_latitude: $(this).attr('target_latitude'),
-                        target_longitude: $(this).attr('target_longitude'),
-                    }),
-                mapViewExpanded)
-            )
-                mapViewExpandedWindow.map.fitBounds([
-                    [$(this).data('latitude'), $(this).data('longitude')],
-                    [
+            return (
+                (
+                    void 0 === $(this).attr('target_latitude') ||
+                    'null' == $(this).attr('target_latitude')
+                ) ?
+                    (mobile_bridge_use &&
+                        (mobile_use_web_map ?
+                            mobileBridgeAdd('navTo', { view: 'map' })
+                        :   mobileBridgeAdd('center_on_map', {
+                                latitude: $(this).data('latitude'),
+                                longitude: $(this).data('longitude'),
+                            })),
+                    centerMapOn(
+                        $(this).data('latitude'),
+                        $(this).data('longitude')
+                    ))
+                :   (mobile_bridge_use &&
+                        (mobile_use_web_map ?
+                            mobileBridgeAdd('navTo', { view: 'map' })
+                        :   mobileBridgeAdd('center_on_map', {
+                                latitude: $(this).data('latitude'),
+                                longitude: $(this).data('longitude'),
+                                target_latitude:
+                                    $(this).attr('target_latitude'),
+                                target_longitude:
+                                    $(this).attr('target_longitude'),
+                            })),
+                    fitMapInBounds(
+                        $(this).data('latitude'),
+                        $(this).data('longitude'),
                         $(this).attr('target_latitude'),
-                        $(this).attr('target_longitude'),
-                    ],
-                ]);
-            else if ('undefined' == typeof mapkit)
-                map.fitBounds([
-                    [$(this).data('latitude'), $(this).data('longitude')],
-                    [
-                        $(this).attr('target_latitude'),
-                        $(this).attr('target_longitude'),
-                    ],
-                ]);
-            else {
-                var e =
-                        parseFloat($(this).data('latitude')) -
-                        parseFloat($(this).attr('target_latitude')),
-                    t =
-                        parseFloat($(this).data('latitude')) -
-                        parseFloat($(this).attr('target_latitude')),
-                    i = parseFloat($(this).attr('target_latitude')) + e / 2,
-                    n = parseFloat($(this).attr('target_longitude')) + t / 2;
-                e < 0 && (e *= -1), t < 0 && (t *= -1);
-                var s = new mapkit.Coordinate(i, n),
-                    a = new mapkit.CoordinateSpan(e + 0.05, t + 0.05),
-                    o = new mapkit.CoordinateRegion(s, a);
-                map.setRegionAnimated(o, !0);
-            }
-            return !1;
+                        $(this).attr('target_longitude')
+                    )),
+                !1
+            );
         });
     const timedEvents = [
         '.timed-event',
@@ -69574,13 +69628,13 @@ if (
         function O(e, t, i, n) {
             B(e, t, i, n, !0);
         }
-        function N(e, t) {
+        function L(e, t) {
             var i = (t = t || document).createDocumentFragment(),
                 n = r('div', {}, t);
             for (n.innerHTML = e; n.firstChild; ) d(i, n.firstChild);
             return i;
         }
-        function L(e) {
+        function N(e) {
             return (
                 e &&
                 (!k(e, 'p,div') || e.className || _(e, 'style') || !i(w(e)))
@@ -69784,7 +69838,7 @@ if (
                 Object.keys(t).forEach(function (e) {
                     n = n.replace(new RegExp(Q('{' + e + '}'), 'g'), t[e]);
                 }),
-                i && (n = N(n)),
+                i && (n = L(n)),
                 n
             );
         }
@@ -69894,7 +69948,7 @@ if (
                         u = s.createDocumentFragment();
                     if (
                         ('string' == typeof e ?
-                            (t && (e += l.selectedHtml() + t), (u = N(e)))
+                            (t && (e += l.selectedHtml() + t), (u = L(e)))
                         :   (d(u, e),
                             t &&
                                 (d(u, l.selectedRange().extractContents()),
@@ -70188,7 +70242,7 @@ if (
                                     u = i ? l.search(r[c]) : l.indexOf(c);
                                 if (u > -1) {
                                     var d = l.indexOf(c, u),
-                                        h = N(t[c], n),
+                                        h = L(t[c], n),
                                         p = l.substr(d + c.length);
                                     h.appendChild(n.createTextNode(p)),
                                         (s.nodeValue = l.substr(0, d)),
@@ -70226,7 +70280,7 @@ if (
                 S,
                 R,
                 B,
-                N,
+                L,
                 W,
                 V,
                 U,
@@ -70250,7 +70304,7 @@ if (
                 Me,
                 Ie,
                 De,
-                Le,
+                Ne,
                 Fe,
                 He,
                 qe,
@@ -70305,7 +70359,7 @@ if (
                     'init' in (i = t ? new t() : {}) && i.init.call(_t),
                         Ie(),
                         We(),
-                        Le(),
+                        Ne(),
                         Me(),
                         Fe(),
                         He(),
@@ -70429,7 +70483,7 @@ if (
                         p(S, 'beforedeactivate keyup mouseup', Ee),
                         p(S, 'keyup', nt),
                         p(S, 'focus', function () {
-                            N = null;
+                            L = null;
                         }),
                         p(o, 'selectionchanged', at),
                         p(o, 'selectionchanged', tt),
@@ -70439,7 +70493,7 @@ if (
                             Qe
                         );
                 }),
-                (Le = function () {
+                (Ne = function () {
                     var e,
                         t = _t.commands,
                         i = (kt.toolbarExclude || '').split(','),
@@ -70725,7 +70779,7 @@ if (
                     if (Y) {
                         Y.destroy(),
                             (Z = null),
-                            (N = null),
+                            (L = null),
                             (Y = null),
                             B && u(B),
                             m(Re, 'click', Xe);
@@ -70806,7 +70860,7 @@ if (
                             r = n.items;
                         e.preventDefault();
                         for (var l = 0; l < o.length; l++) {
-                            if (je.FileReader && r && Ne.test(r[l].type))
+                            if (je.FileReader && r && Le.test(r[l].type))
                                 return s(n.items[l].getAsFile());
                             a[o[l]] = n.getData(o[l]);
                         }
@@ -71011,7 +71065,7 @@ if (
                         e ?
                             _t.setWysiwygEditorValue(_t.getSourceEditorValue())
                         :   _t.setSourceEditorValue(_t.getWysiwygEditorValue()),
-                        (N = null),
+                        (L = null),
                         b(R),
                         b(f),
                         P(o, 'wysiwygMode', e),
@@ -71042,7 +71096,7 @@ if (
                             ));
                 }),
                 (Ee = function () {
-                    Be && (N = Z.selectedRange());
+                    Be && (L = Z.selectedRange());
                 }),
                 (_t.execCommand = function (e, t) {
                     var i = !1,
@@ -71144,9 +71198,9 @@ if (
                     if (
                         !e.defaultPrevented &&
                         (_t.closeDropDown(),
-                        13 === e.which && !k(Q, 'li,ul,ol') && L(Q))
+                        13 === e.which && !k(Q, 'li,ul,ol') && N(Q))
                     ) {
-                        N = null;
+                        L = null;
                         var t = r('br', {}, S);
                         if ((Z.insertNode(t), !Oe)) {
                             var i = t.parentNode,
@@ -71169,7 +71223,7 @@ if (
                             e.nodeType === ge &&
                             !/inline/.test(y(e, 'display')) &&
                             !k(e, '.sceditor-nlf') &&
-                            L(e)
+                            N(e)
                         ) {
                             var t = r('p', {}, S);
                             return (
@@ -71190,7 +71244,7 @@ if (
                     _t.val(e.value);
                 }),
                 (Ye = function () {
-                    _t.closeDropDown(), (N = null);
+                    _t.closeDropDown(), (L = null);
                 }),
                 (_t._ = function () {
                     var e,
@@ -71258,7 +71312,7 @@ if (
                                 Z.selectRange(s)),
                             x.focus(),
                             C.focus(),
-                            N && (Z.selectRange(N), (N = null));
+                            L && (Z.selectRange(L), (L = null));
                     }
                     return tt(), _t;
                 }),
@@ -71493,7 +71547,7 @@ if (
                     }
                 }),
                 (ct = function () {
-                    for (var e = Q; !L(e) || q(e, !0); )
+                    for (var e = Q; !N(e) || q(e, !0); )
                         if (!(e = e.parentNode) || k(e, 'body')) return;
                     return e;
                 }),
@@ -71503,7 +71557,7 @@ if (
                             k(e, 'body') ||
                             (Z.saveRange(),
                             (e.className = ''),
-                            (N = null),
+                            (L = null),
                             _(e, 'style', ''),
                             k(e, 'p,div,td') || F(e, 'p'),
                             Z.restoreRange()),
@@ -71818,7 +71872,7 @@ if (
                                     (s += '</div>');
                             }),
                             (a._htmlCache = s)),
-                            d(n, N(a._htmlCache)),
+                            d(n, L(a._htmlCache)),
                             p(n, 'click', 'a', function (t) {
                                 i(w(this, 'color')),
                                     e.closeDropDown(!0),
@@ -72418,7 +72472,7 @@ if (
             Re = document,
             Be = xe,
             Oe = Be && Be < 11,
-            Ne = /^image\/(p?jpe?g|gif|png|bmp)$/i;
+            Le = /^image\/(p?jpe?g|gif|png|bmp)$/i;
         (le.locale = {}),
             (le.formats = {}),
             (le.icons = {}),
@@ -72472,8 +72526,8 @@ if (
                     height: I,
                     traverse: B,
                     rTraverse: O,
-                    parseHTML: N,
-                    hasStyling: L,
+                    parseHTML: L,
+                    hasStyling: N,
                     convertElement: F,
                     blockLevelList: ye,
                     canHaveChildren: H,
@@ -72782,13 +72836,13 @@ if (
         function O(e, t, i, n) {
             B(e, t, i, n, !0);
         }
-        function N(e, t) {
+        function L(e, t) {
             var i = (t = t || document).createDocumentFragment(),
                 n = r('div', {}, t);
             for (n.innerHTML = e; n.firstChild; ) d(i, n.firstChild);
             return i;
         }
-        function L(e) {
+        function N(e) {
             return (
                 e &&
                 (!k(e, 'p,div') || e.className || _(e, 'style') || !i(w(e)))
@@ -72992,7 +73046,7 @@ if (
                 Object.keys(t).forEach(function (e) {
                     n = n.replace(new RegExp(Q('{' + e + '}'), 'g'), t[e]);
                 }),
-                i && (n = N(n)),
+                i && (n = L(n)),
                 n
             );
         }
@@ -73102,7 +73156,7 @@ if (
                         u = s.createDocumentFragment();
                     if (
                         ('string' == typeof e ?
-                            (t && (e += l.selectedHtml() + t), (u = N(e)))
+                            (t && (e += l.selectedHtml() + t), (u = L(e)))
                         :   (d(u, e),
                             t &&
                                 (d(u, l.selectedRange().extractContents()),
@@ -73396,7 +73450,7 @@ if (
                                     u = i ? l.search(r[c]) : l.indexOf(c);
                                 if (u > -1) {
                                     var d = l.indexOf(c, u),
-                                        h = N(t[c], n),
+                                        h = L(t[c], n),
                                         p = l.substr(d + c.length);
                                     h.appendChild(n.createTextNode(p)),
                                         (s.nodeValue = l.substr(0, d)),
@@ -73434,7 +73488,7 @@ if (
                 S,
                 R,
                 B,
-                N,
+                L,
                 W,
                 V,
                 U,
@@ -73458,7 +73512,7 @@ if (
                 Me,
                 Ie,
                 De,
-                Le,
+                Ne,
                 Fe,
                 He,
                 qe,
@@ -73513,7 +73567,7 @@ if (
                     'init' in (i = t ? new t() : {}) && i.init.call(_t),
                         Ie(),
                         We(),
-                        Le(),
+                        Ne(),
                         Me(),
                         Fe(),
                         He(),
@@ -73637,7 +73691,7 @@ if (
                         p(S, 'beforedeactivate keyup mouseup', Ee),
                         p(S, 'keyup', nt),
                         p(S, 'focus', function () {
-                            N = null;
+                            L = null;
                         }),
                         p(o, 'selectionchanged', at),
                         p(o, 'selectionchanged', tt),
@@ -73647,7 +73701,7 @@ if (
                             Qe
                         );
                 }),
-                (Le = function () {
+                (Ne = function () {
                     var e,
                         t = _t.commands,
                         i = (kt.toolbarExclude || '').split(','),
@@ -73933,7 +73987,7 @@ if (
                     if (Y) {
                         Y.destroy(),
                             (Z = null),
-                            (N = null),
+                            (L = null),
                             (Y = null),
                             B && u(B),
                             m(Re, 'click', Xe);
@@ -74014,7 +74068,7 @@ if (
                             r = n.items;
                         e.preventDefault();
                         for (var l = 0; l < o.length; l++) {
-                            if (je.FileReader && r && Ne.test(r[l].type))
+                            if (je.FileReader && r && Le.test(r[l].type))
                                 return s(n.items[l].getAsFile());
                             a[o[l]] = n.getData(o[l]);
                         }
@@ -74219,7 +74273,7 @@ if (
                         e ?
                             _t.setWysiwygEditorValue(_t.getSourceEditorValue())
                         :   _t.setSourceEditorValue(_t.getWysiwygEditorValue()),
-                        (N = null),
+                        (L = null),
                         b(R),
                         b(f),
                         P(o, 'wysiwygMode', e),
@@ -74250,7 +74304,7 @@ if (
                             ));
                 }),
                 (Ee = function () {
-                    Be && (N = Z.selectedRange());
+                    Be && (L = Z.selectedRange());
                 }),
                 (_t.execCommand = function (e, t) {
                     var i = !1,
@@ -74352,9 +74406,9 @@ if (
                     if (
                         !e.defaultPrevented &&
                         (_t.closeDropDown(),
-                        13 === e.which && !k(Q, 'li,ul,ol') && L(Q))
+                        13 === e.which && !k(Q, 'li,ul,ol') && N(Q))
                     ) {
-                        N = null;
+                        L = null;
                         var t = r('br', {}, S);
                         if ((Z.insertNode(t), !Oe)) {
                             var i = t.parentNode,
@@ -74377,7 +74431,7 @@ if (
                             e.nodeType === ge &&
                             !/inline/.test(y(e, 'display')) &&
                             !k(e, '.sceditor-nlf') &&
-                            L(e)
+                            N(e)
                         ) {
                             var t = r('p', {}, S);
                             return (
@@ -74398,7 +74452,7 @@ if (
                     _t.val(e.value);
                 }),
                 (Ye = function () {
-                    _t.closeDropDown(), (N = null);
+                    _t.closeDropDown(), (L = null);
                 }),
                 (_t._ = function () {
                     var e,
@@ -74466,7 +74520,7 @@ if (
                                 Z.selectRange(s)),
                             x.focus(),
                             C.focus(),
-                            N && (Z.selectRange(N), (N = null));
+                            L && (Z.selectRange(L), (L = null));
                     }
                     return tt(), _t;
                 }),
@@ -74701,7 +74755,7 @@ if (
                     }
                 }),
                 (ct = function () {
-                    for (var e = Q; !L(e) || q(e, !0); )
+                    for (var e = Q; !N(e) || q(e, !0); )
                         if (!(e = e.parentNode) || k(e, 'body')) return;
                     return e;
                 }),
@@ -74711,7 +74765,7 @@ if (
                             k(e, 'body') ||
                             (Z.saveRange(),
                             (e.className = ''),
-                            (N = null),
+                            (L = null),
                             _(e, 'style', ''),
                             k(e, 'p,div,td') || F(e, 'p'),
                             Z.restoreRange()),
@@ -75026,7 +75080,7 @@ if (
                                     (s += '</div>');
                             }),
                             (a._htmlCache = s)),
-                            d(n, N(a._htmlCache)),
+                            d(n, L(a._htmlCache)),
                             p(n, 'click', 'a', function (t) {
                                 i(w(this, 'color')),
                                     e.closeDropDown(!0),
@@ -75626,7 +75680,7 @@ if (
             Re = document,
             Be = xe,
             Oe = Be && Be < 11,
-            Ne = /^image\/(p?jpe?g|gif|png|bmp)$/i;
+            Le = /^image\/(p?jpe?g|gif|png|bmp)$/i;
         (le.locale = {}),
             (le.formats = {}),
             (le.icons = {}),
@@ -75680,8 +75734,8 @@ if (
                     height: I,
                     traverse: B,
                     rTraverse: O,
-                    parseHTML: N,
-                    hasStyling: L,
+                    parseHTML: L,
+                    hasStyling: N,
                     convertElement: F,
                     blockLevelList: ye,
                     canHaveChildren: H,
@@ -79915,6 +79969,17 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                                     filter_checked
                                 );
                             }, 0)));
+            },
+            refreshLayers: function (e) {
+                (o = !0),
+                    $.each(e, function (e, t) {
+                        void 0 !== i[t.filter_id] ?
+                            t.checked ?
+                                map.addLayer(i[t.filter_id])
+                            :   map.removeLayer(i[t.filter_id])
+                        :   console.log('missing filter layer: ' + t);
+                    }),
+                    (o = !1);
             },
             massFiltersChange: function (t, n) {
                 switch (((filters_keys = []), !0)) {
