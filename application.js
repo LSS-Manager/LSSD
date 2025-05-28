@@ -2968,7 +2968,7 @@ function eventAnnounce(e) {
             i > 0 && n > 0 && (s = I18n.t('javascript.qualified')),
                 (t += "<div id='event_info_seasonal_event_details' "),
                 showSeasonalEventDetails || (t += 'style="display: none ;"'),
-                (t += `><br>\n                              ${I18n.t('javascript.total_credits_earned')} ${e.total_credits}\n                              <br>\n                              ${I18n.t('javascript.total_event_currency_earned')} ${e.total_event_currency}\n                              <br><br>\n                              ${s}\n                              <br>            \n                              ${I18n.t('javascript.current_reward_for_you', { credits: i, event_currency: n })}\n                              <br><br>\n                              ${I18n.t('javascript.alliance_event_pay_out_message')}\n                          </div>`),
+                (t += `><br>\n                              ${I18n.t('javascript.total_credits_earned')} ${e.total_credits}\n                              <br>\n                              ${I18n.t('javascript.total_event_currency_earned')} ${e.total_event_currency}\n                              <br><br>\n                              ${s}\n                              <br>\n                              ${I18n.t('javascript.current_reward_for_you', { credits: i, event_currency: n })}\n                              <br><br>\n                              ${I18n.t('javascript.alliance_event_pay_out_message')}\n                          </div>`),
                 (t += `<div class="text-right visible-xs-block">\n                                    <a id="event_info_seasonal_event_show" ${showSeasonalEventDetails ? 'style="display: none;"' : ''} href="#" onclick="showLongSeasonalEventDetailsMobile()">${I18n.t('javascript.show_more')}</a>\n                                    <a id="event_info_seasonal_event_hide" ${showSeasonalEventDetails ? '' : 'style="display: none;"'} href="#" onclick="hideLongSeasonalEventDetailsMobile()">${I18n.t('javascript.show_less')}</a>\n                             </div>`);
         }
         (t += '</div>'), $('#eventInfo').html(t);
@@ -6922,6 +6922,8 @@ Object.values ||
                 energy_supply_2: 'NEA200',
                 fire_truck: 'Beliebiges LF oder TLF',
                 foam_amount: 'Sonderl\xf6schmittelmenge',
+                foam_amount_only_foam_vehicles:
+                    'Sonderl\xf6schmittelmenge - Nur Sonderl\xf6schmittelfahrzeuge',
                 fukw: 'F\xfcKW (Polizei)',
                 fustkw_or_civil_patrolcar: 'FuStW oder Zivilstreifenwagen',
                 fustw_or_police_motorcycle: 'FuStW oder Polizeimotorrad',
@@ -16670,11 +16672,14 @@ Object.values ||
             ready_home: 'Dispon\xedvel na esta\xe7\xe3o',
             ready_traveling: 'Livre e dispon\xedvel',
             talking_wish: 'Pedido de Transporte',
+            transporting_car: 'Ve\xedculo de transporte',
             waiting_for_vehicle: 'Aguardando ve\xedculo para rebocar',
         },
         intervention_order: {
             automatic_text_color: 'Cor do Texto Autom\xe1tica',
             back: 'Voltar',
+            car_carrier:
+                'Caminh\xe3o de reboque ou transportador de plataforma',
             categories: {
                 airport: 'Aeroporto',
                 brush: 'Inc. Florestais',
@@ -16739,6 +16744,8 @@ Object.values ||
                 bike_police: 'Ciclopatrulha',
                 boot: 'Barcos (geral)',
                 brush_truck: 'Ve\xedculos Florestais',
+                car_carrier: 'Todos os cami\xf5es de reboque',
+                car_carrier_large: 'Qualquer cami\xe3o rotativo',
                 division_chief_unit: 'VCOC',
                 dozer_trailer: 'M\xe1quina de Rasto',
                 elw1_or_elw2: 'VCOT / VCOC',
@@ -16962,6 +16969,8 @@ Object.values ||
                 staging_area_missions: 'Zona de Concentra\xe7\xe3o e Reserva',
                 technical_aid_organization: 'THW',
                 technical_aid_organization_school: 'THW Bundesschule',
+                tow_trucks: 'Cami\xf5es de reboque',
+                tow_trucks_missions: 'Cami\xf5es de reboque',
                 user_buildings: 'Os meus edif\xedcios',
                 user_missions: 'As minhas miss\xf5es',
                 water_watch: 'Resgate aqu\xe1tico',
@@ -56640,6 +56649,7 @@ const AAO_MULTIPLE_KEYS = [
     'water_damage_pump_value',
     'water_damage_pump_value_only_pumps',
     'foam_amount',
+    'foam_amount_only_foam_vehicles',
     'water_amount_water_carrier',
     'water_amount_tlf_water_carrier',
     'police_horse_count',
@@ -57188,6 +57198,12 @@ $(function () {
             [
                 'bomb_disposal_robot',
                 I18n.t('intervention_order.vehicles.bomb_disposal_robot'),
+            ],
+            [
+                'foam_amount_only_foam_vehicles',
+                I18n.t(
+                    'intervention_order.vehicles.foam_amount_only_foam_vehicles'
+                ),
             ],
         ]),
         $('#restore_map').click(function () {
