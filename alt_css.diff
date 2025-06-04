@@ -1,5 +1,5 @@
 diff --git a/application.css b/application.alt.css
-index 5bf5721..49dd32d 100644
+index 867de47..49dd32d 100644
 --- a/application.css
 +++ b/application.alt.css
 @@ -10367,25 +10367,19 @@ body.bigMap #main_navbar {
@@ -91,7 +91,23 @@ index 5bf5721..49dd32d 100644
  .navbar-header .money-block a span.credits-value {
      margin-top: 2px;
  }
-@@ -14086,13 +14076,6 @@ body.dark .daily-bonuses .collect-possible-block {
+@@ -14044,15 +14034,6 @@ body.dark .daily-bonuses .collect-possible-block {
+ .tasks_and_events_navbar .badge {
+     margin-top: -1px;
+ }
+-.task-tab-content .premium-info-mobile .reward-info {
+-    margin-top: 10px;
+-}
+-.task-tab-content .premium-info-mobile .reward-info .potential-reward-title {
+-    font-weight: bold;
+-}
+-.task-tab-content .premium-info-mobile .reward-info .reward-amount {
+-    margin: 10px 0 10px 0;
+-}
+ .task-tab-content .premium-info {
+     display: flex;
+     justify-content: space-between;
+@@ -14095,13 +14076,6 @@ body.dark .daily-bonuses .collect-possible-block {
  .vehicle-prisons-filter {
      margin-bottom: 10px;
  }
@@ -105,7 +121,7 @@ index 5bf5721..49dd32d 100644
  #map_adress_search_form {
      margin-left: 0px;
  }
-@@ -16679,14 +16662,6 @@ i.bbcode-link-icon {
+@@ -16688,14 +16662,6 @@ i.bbcode-link-icon {
      padding-right: 5px;
      padding-bottom: 3px;
  }
@@ -120,7 +136,7 @@ index 5bf5721..49dd32d 100644
  .design-v2.design-v2.design-v2.design-v2
      .navbar-header
      .money-block
-@@ -16694,9 +16669,6 @@ i.bbcode-link-icon {
+@@ -16703,9 +16669,6 @@ i.bbcode-link-icon {
      .credits-value {
      padding-bottom: 3px;
  }

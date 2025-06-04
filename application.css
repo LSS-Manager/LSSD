@@ -14044,6 +14044,15 @@ body.dark .daily-bonuses .collect-possible-block {
 .tasks_and_events_navbar .badge {
     margin-top: -1px;
 }
+.task-tab-content .premium-info-mobile .reward-info {
+    margin-top: 10px;
+}
+.task-tab-content .premium-info-mobile .reward-info .potential-reward-title {
+    font-weight: bold;
+}
+.task-tab-content .premium-info-mobile .reward-info .reward-amount {
+    margin: 10px 0 10px 0;
+}
 .task-tab-content .premium-info {
     display: flex;
     justify-content: space-between;
