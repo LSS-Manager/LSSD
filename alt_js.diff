@@ -1,5 +1,5 @@
 diff --git a/application.js b/application.alt.js
-index 27df0b4..c3cf0bc 100644
+index c5c52dd..c3cf0bc 100644
 --- a/application.js
 +++ b/application.alt.js
 @@ -27,8 +27,8 @@ function massMissionMarkerAdd(e) {
@@ -2662,6 +2662,15 @@ index 27df0b4..c3cf0bc 100644
                  );
              }),
              (t.getFullScope = function (e, t) {
+@@ -6880,7 +6885,7 @@ Object.values ||
+             assigns_equipment_automatically:
+                 'Weist Ausr\xfcstung automatisch zu',
+             assigns_equipment_automatically_hint:
+-                'Wenn aktiv, kann die AAO den Fahrzeugen Ausr\xfcstung zuweisen. W\xe4hlt die n\xe4chstgelegene Einheit oder Ausr\xfcstung.<br><i>(W\xe4hlt nicht ausschlie\xdflich Ausr\xfcstung und wirkt sich nur auf AAO aus, die mit %{icon} markiert sind)</i>',
++                'Wenn aktiv, kann die AAO den Fahrzeugen Ausr\xfcstung zuweisen. W\xe4hlt die n\xe4chstgelegene Einheit oder Ausr\xfcstung. (W\xe4hlt nicht ausschlie\xdflich Ausr\xfcstung)',
+             automatic_text_color: 'Automatische Schriftfarbe',
+             back: 'Zur\xfcck',
+             category: 'Kategorie',
 @@ -6932,41 +6937,42 @@ Object.values ||
                  ab_gefahrgut_only: 'AB-Gefahrgut',
                  ab_oel_only: 'AB-\xd6l',
@@ -2940,6 +2949,15 @@ index 27df0b4..c3cf0bc 100644
                      mobile: {
                          contact:
                              'Wenn du deine Wachen umbaust, bekommst du Platz f\xfcr neue Fahrzeuge. ',
+@@ -7557,7 +7532,7 @@ Object.values ||
+         intervention_order: {
+             assigns_equipment_automatically: 'Assigns Equipment Automatically',
+             assigns_equipment_automatically_hint:
+-                'If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment.<br><i>(Does not exclusively choose equipment and only affects ARRs marked with %{icon})</i>',
++                'If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment. (Does not exclusively choose equipment)',
+             automatic_text_color: 'Automatic Text Color',
+             back: 'Back',
+             car_carrier: 'Wrecker or Flatbed Carrier',
 @@ -7624,6 +7599,7 @@ Object.values ||
                  ab_gefahrgut_only: 'HazMat-Module',
                  ab_oel_only: 'Oil spill-Module',
@@ -3187,6 +3205,15 @@ index 27df0b4..c3cf0bc 100644
                      },
                      mobile: {
                          contact:
+@@ -8414,7 +8433,7 @@ Object.values ||
+         intervention_order: {
+             assigns_equipment_automatically: 'Assigns Equipment Automatically',
+             assigns_equipment_automatically_hint:
+-                'If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment.<br><i>(Does not exclusively choose equipment and only affects ARRs marked with %{icon})</i>',
++                'If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment. (Does not exclusively choose equipment)',
+             automatic_text_color: 'Automatic Text Color',
+             back: 'Back',
+             categories: { water_rescue: 'Technical Rescue and SAR' },
 @@ -8468,74 +8487,156 @@ Object.values ||
                  ab_gefahrgut_only: 'HazMat-Module',
                  ab_oel_only: 'Oil spill-Module',
@@ -3477,7 +3504,7 @@ index 27df0b4..c3cf0bc 100644
 +            assigns_equipment_automatically:
 +                'Weist Ausr\xfcstung automatisch zu',
              assigns_equipment_automatically_hint:
--                'Als ingeschakeld, kan de ARR uitrusting aan voertuigen toewijzen. Het kiest de dichtstbijzijnde eenheid of uitrusting. (Kiest niet exclusief uitrusting)',
+-                "Als ingeschakeld, kan de ARR uitrusting aan voertuigen toewijzen. Het kiest de dichtstbijzijnde eenheid of uitrusting.<br><i>(Kiest niet exclusief uitrusting en heeft alleen invloed op ARR's gemarkeerd met %{icon})</i>",
 +                'Wenn aktiv, kann die AAO den Fahrzeugen Ausr\xfcstung zuweisen. W\xe4hlt die n\xe4chstgelegene Einheit oder Ausr\xfcstung. (W\xe4hlt nicht ausschlie\xdflich Ausr\xfcstung)',
              automatic_text_color: 'Automatische tekstkleur',
              back: 'Terug',
@@ -4752,6 +4779,15 @@ index 27df0b4..c3cf0bc 100644
              credits: 'Kredyty',
              custom_missions: 'Misj\u0119 sojuszu na du\u017c\u0105 skal\u0119',
              delete: 'Usu\u0144',
+@@ -11700,7 +12044,7 @@ Object.values ||
+             assigns_equipment_automatically:
+                 'Automatycznie przypisuje urz\u0105dzenia',
+             assigns_equipment_automatically_hint:
+-                'Je\u015bli jest aktywna, ZR mo\u017ce przypisa\u0107 wyposa\u017cenie do pojazd\xf3w. Wybiera najbli\u017csz\u0105 jednostk\u0119 lub wyposa\u017cenie.<br><i>(Nie wybiera wy\u0142\u0105cznie wyposa\u017cenia i wp\u0142ywa tylko na ZR oznaczone %{icon}</i> ).',
++                'Je\u015bli jest aktywna, ZR mo\u017ce przypisa\u0107 wyposa\u017cenie do pojazd\xf3w. Wybiera najbli\u017csz\u0105 jednostk\u0119 lub wyposa\u017cenie. (Nie wybiera wy\u0142\u0105cznie wyposa\u017cenia)',
+             automatic_text_color: 'Automatyczny kolor tekstu',
+             back: 'Wstecz',
+             battalion_chief_unit: 'Samoch\xf3d Oficera Operacyjnego lub SLRr',
 @@ -11760,6 +12104,7 @@ Object.values ||
                  ab_gefahrgut_only: 'Modu\u0142 Rchem',
                  ab_oel_only: 'Modu\u0142 do sprz\u0105tania oleju',
@@ -5076,7 +5112,7 @@ index 27df0b4..c3cf0bc 100644
 -                "Assegna automaticamente l'attrezzatura",
 +                'Weist Ausr\xfcstung automatisch zu',
              assigns_equipment_automatically_hint:
--                "Se attivo, l'ARR pu\xf2 assegnare l'equipaggiamento ai veicoli. Sceglier\xe0 l'unit\xe0 o l'equipaggiamento pi\xf9 vicino. (Non sceglie in modo esclusivo l'equipaggiamento)",
+-                "Se attivo, l'ARR pu\xf2 assegnare l'equipaggiamento ai veicoli. Sceglier\xe0 l'unit\xe0 o l'equipaggiamento pi\xf9 vicino.<br><i>(Non sceglie in modo esclusivo l'equipaggiamento e influisce solo sulle ARR contrassegnate con %{icon})</i>",
 +                'Wenn aktiv, kann die AAO den Fahrzeugen Ausr\xfcstung zuweisen. W\xe4hlt die n\xe4chstgelegene Einheit oder Ausr\xfcstung. (W\xe4hlt nicht ausschlie\xdflich Ausr\xfcstung)',
              automatic_text_color: 'Colore testo automatico',
              back: 'Indietro',
@@ -5392,6 +5428,15 @@ index 27df0b4..c3cf0bc 100644
                      mobile: {
                          contact:
                              'Se migliori la tua stazione riceverai pi\xf9 spazio per i nuovi veicoli.',
+@@ -12995,7 +13432,7 @@ Object.values ||
+             assigns_equipment_automatically:
+                 "Attribue automatiquement l'\xe9quipement",
+             assigns_equipment_automatically_hint:
+-                "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche.<br><i>(Ne choisit pas exclusivement le mat\xe9riel et n'affecte que les ARR marqu\xe9s par %{icon})</i>",
++                "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche. (Ne choisit pas exclusivement le mat\xe9riel)",
+             automatic_text_color: 'Couleur du texte automatique',
+             back: 'Retour',
+             categories: {
 @@ -13060,6 +13497,7 @@ Object.values ||
                  ab_gefahrgut_only: 'Module risques chimiques',
                  ab_oel_only: 'Module mar\xe9e noire',
@@ -11871,7 +11916,7 @@ index 27df0b4..c3cf0bc 100644
                  h ?
                      ue(e).show()
                  :   c.done(function () {
-@@ -22648,16 +25286,16 @@ Object.values ||
+@@ -22648,18 +25286,18 @@ Object.values ||
                          ue.style(e, t, u[t]);
                  }),
                  u))
@@ -11892,9 +11937,18 @@ index 27df0b4..c3cf0bc 100644
 +        function $(e, t, i, n, s) {
 +            return new $.prototype.init(e, t, i, n, s);
          }
-         function V(e, t) {
+-        function q(e, t) {
++        function V(e, t) {
              var i,
-@@ -22672,10 +25310,10 @@ Object.values ||
+                 n = { height: e },
+                 s = 0;
+@@ -22667,15 +25305,15 @@ Object.values ||
+                 n['margin' + (i = kt[s])] = n['padding' + i] = e;
+             return t && (n.opacity = n.width = e), n;
+         }
+-        function V(e) {
++        function q(e) {
+             return ue.isWindow(e) ? e : (
                      9 === e.nodeType && (e.defaultView || e.parentWindow)
                  );
          }
@@ -12228,7 +12282,7 @@ index 27df0b4..c3cf0bc 100644
 -                    var s, o, a, r, l, c, u, d, h, p;
 +                    var s, a, o, r, l, c, u, d, h, p;
                      if (
--                        ((t ? t.ownerDocument || t : V) !== L && N(t),
+-                        ((t ? t.ownerDocument || t : q) !== L && N(t),
 +                        ((t ? t.ownerDocument || t : V) !== N && j(t),
                          (i = i || []),
                          !e || 'string' != typeof e)
@@ -12426,7 +12480,7 @@ index 27df0b4..c3cf0bc 100644
                                  var r,
                                      l,
                                      c,
--                                    u = q + ' ' + o;
+-                                    u = V + ' ' + o;
 -                                if (a) {
 +                                    u = q + ' ' + a;
 +                                if (o) {
@@ -12605,7 +12659,8 @@ index 27df0b4..c3cf0bc 100644
                                              '*',
                                              (u && r.parentNode) || r
                                          )),
-                                 k = (q += null == y ? 1 : Math.random() || 0.1);
+-                                k = (V += null == y ? 1 : Math.random() || 0.1);
++                                k = (q += null == y ? 1 : Math.random() || 0.1);
                              for (
 -                                v && ((I = r !== L && r), (A = n));
 +                                v && ((D = r !== N && r), (C = n));
@@ -12619,7 +12674,7 @@ index 27df0b4..c3cf0bc 100644
                                              c.push(d);
                                              break;
                                          }
--                                    v && ((q = k), (A = ++n));
+-                                    v && ((V = k), (A = ++n));
 +                                    v && ((q = k), (C = ++n));
                                  }
 -                                s && ((d = !p && d) && _--, o && g.push(d));
@@ -12642,7 +12697,7 @@ index 27df0b4..c3cf0bc 100644
                                          _ + t.length > 1 &&
                                          i.uniqueSort(c);
                              }
--                            return v && ((q = k), (I = y)), g;
+-                            return v && ((V = k), (I = y)), g;
 +                            return v && ((q = k), (D = y)), g;
                          };
 -                    return s ? o(r) : r;
@@ -12739,11 +12794,13 @@ index 27df0b4..c3cf0bc 100644
 +                    O,
                      H,
 -                    W = 'sizzle' + -new Date(),
-+                    $ = 'sizzle' + -new Date(),
-                     V = e.document,
-                     q = 0,
+-                    q = e.document,
+-                    V = 0,
 -                    U = 0,
 -                    Z = s(),
++                    $ = 'sizzle' + -new Date(),
++                    V = e.document,
++                    q = 0,
 +                    G = 0,
                      K = s(),
 -                    G = s(),
@@ -12788,9 +12845,10 @@ index 27df0b4..c3cf0bc 100644
                          );
                      };
                  try {
--                    se.apply((te = oe.call(V.childNodes)), V.childNodes),
+-                    se.apply((te = oe.call(q.childNodes)), q.childNodes),
+-                        te[q.childNodes.length].nodeType;
 +                    se.apply((te = ae.call(V.childNodes)), V.childNodes),
-                         te[V.childNodes.length].nodeType;
++                        te[V.childNodes.length].nodeType;
                  } catch (e) {
                      se = {
                          apply:
@@ -12815,7 +12873,8 @@ index 27df0b4..c3cf0bc 100644
 -                (N = i.setDocument =
 +                (j = i.setDocument =
                      function (e) {
-                         var t = e ? e.ownerDocument || e : V;
+-                        var t = e ? e.ownerDocument || e : q;
++                        var t = e ? e.ownerDocument || e : V;
                          return (
 -                                t !== L && 9 === t.nodeType && t.documentElement
 +                                t !== N && 9 === t.nodeType && t.documentElement
@@ -13020,13 +13079,17 @@ index 27df0b4..c3cf0bc 100644
                                          function (e, i) {
                                              if (e === i) return (Y = !0), 0;
                                              var n =
-@@ -24100,9 +26738,9 @@ Object.values ||
+@@ -24098,11 +26736,11 @@ Object.values ||
+                                                                 e
+                                                             ) === n)
                                                      ) ?
-                                                         e === t || H(V, e) ? -1
-                                                         : i === t || H(V, i) ? 1
+-                                                        e === t || H(q, e) ? -1
+-                                                        : i === t || H(q, i) ? 1
 -                                                        : D ?
 -                                                            ae.call(D, e) -
 -                                                            ae.call(D, i)
++                                                        e === t || H(V, e) ? -1
++                                                        : i === t || H(V, i) ? 1
 +                                                        : L ?
 +                                                            oe.call(L, e) -
 +                                                            oe.call(L, i)
@@ -13066,7 +13129,15 @@ index 27df0b4..c3cf0bc 100644
                                              for (n = e; (n = n.parentNode); )
                                                  r.unshift(n);
                                              for (n = i; (n = n.parentNode); )
-@@ -24143,22 +26781,22 @@ Object.values ||
+@@ -24137,28 +26775,28 @@ Object.values ||
+                                             for (; r[s] === l[s]; ) s++;
+                                             return (
+                                                 s ? d(r[s], l[s])
+-                                                : r[s] === q ? -1
+-                                                : l[s] === q ? 1
++                                                : r[s] === V ? -1
++                                                : l[s] === V ? 1
+                                                 : 0
                                              );
                                          }),
                                  t)
@@ -13245,7 +13316,7 @@ index 27df0b4..c3cf0bc 100644
                                                      for (; _; ) {
                                                          for (
                                                              d = t;
-@@ -24397,18 +27035,18 @@ Object.values ||
+@@ -24397,24 +27035,24 @@ Object.values ||
                                                  }
                                                  if (
                                                      ((m = [
@@ -13268,7 +13339,21 @@ index 27df0b4..c3cf0bc 100644
                                                                          {}))[
                                                                      e
                                                                  ] || [])[0] ===
-@@ -24437,7 +27075,7 @@ Object.values ||
+-                                                                V && c[1],
++                                                                q && c[1],
+                                                             h =
+-                                                                c[0] === V &&
++                                                                c[0] === q &&
+                                                                 c[2],
+                                                             d =
+                                                                 p &&
+@@ -24432,15 +27070,15 @@ Object.values ||
+                                                             ++h &&
+                                                             d === t
+                                                         ) {
+-                                                            u[e] = [V, p, h];
++                                                            u[e] = [q, p, h];
+                                                             break;
                                                          }
                                                  } else if (
                                                      v &&
@@ -13276,8 +13361,12 @@ index 27df0b4..c3cf0bc 100644
 +                                                    (c = (t[$] || (t[$] = {}))[
                                                          e
                                                      ]) &&
-                                                     c[0] === q
-@@ -24458,8 +27096,8 @@ Object.values ||
+-                                                    c[0] === V
++                                                    c[0] === q
+                                                 )
+                                                     h = c[1];
+                                                 else
+@@ -24458,11 +27096,11 @@ Object.values ||
                                                          :   1 !== d.nodeType) ||
                                                              !++h ||
                                                              (v &&
@@ -13287,7 +13376,11 @@ index 27df0b4..c3cf0bc 100644
 +                                                                    (d[$] =
                                                                          {}))[
                                                                      e
-                                                                 ] = [q, h]),
+-                                                                ] = [V, h]),
++                                                                ] = [q, h]),
+                                                             d !== t));
+ 
+                                                     );
 @@ -24480,7 +27118,7 @@ Object.values ||
                                          E.setFilters[e.toLowerCase()] ||
                                          i.error('unsupported pseudo: ' + e);
@@ -14699,26 +14792,41 @@ index 27df0b4..c3cf0bc 100644
                          return this;
                      }
                      return (
-@@ -26490,7 +29128,7 @@ Object.values ||
+@@ -26490,9 +29128,9 @@ Object.values ||
                  },
              });
          var He = /^.[^:#\[\.,]*$/,
 -            We = /^(?:parents|prev(?:Until|All))/,
+-            qe = ue.expr.match.needsContext,
+-            Ve = { children: !0, contents: !0, next: !0, prev: !0 };
 +            $e = /^(?:parents|prev(?:Until|All))/,
-             Ve = ue.expr.match.needsContext,
-             qe = { children: !0, contents: !0, next: !0, prev: !0 };
++            Ve = ue.expr.match.needsContext,
++            qe = { children: !0, contents: !0, next: !0, prev: !0 };
          ue.fn.extend({
-@@ -26540,8 +29178,8 @@ Object.values ||
+             find: function (e) {
+                 var t,
+@@ -26531,7 +29169,7 @@ Object.values ||
+             is: function (e) {
+                 return !!h(
+                     this,
+-                    'string' == typeof e && qe.test(e) ? ue(e) : e || [],
++                    'string' == typeof e && Ve.test(e) ? ue(e) : e || [],
+                     !1
+                 ).length;
+             },
+@@ -26540,9 +29178,9 @@ Object.values ||
                      var i,
                          n = 0,
                          s = this.length,
 -                        o = [],
 -                        a =
+-                            qe.test(e) || 'string' != typeof e ?
 +                        a = [],
 +                        o =
-                             Ve.test(e) || 'string' != typeof e ?
++                            Ve.test(e) || 'string' != typeof e ?
                                  ue(e, t || this.context)
                              :   0;
+                     n < s;
 @@ -26551,15 +29189,15 @@ Object.values ||
                      for (i = this[n]; i && i !== t; i = i.parentNode)
                          if (
@@ -14739,11 +14847,13 @@ index 27df0b4..c3cf0bc 100644
              },
              index: function (e) {
                  return (
-@@ -26636,7 +29274,7 @@ Object.values ||
+@@ -26635,8 +29273,8 @@ Object.values ||
+                             'Until' !== e.slice(-5) && (n = i),
                              n && 'string' == typeof n && (s = ue.filter(n, s)),
                              this.length > 1 &&
-                                 (qe[e] || (s = ue.unique(s)),
+-                                (Ve[e] || (s = ue.unique(s)),
 -                                We.test(e) && (s = s.reverse())),
++                                (qe[e] || (s = ue.unique(s)),
 +                                $e.test(e) && (s = s.reverse())),
                              this.pushStack(s)
                          );
@@ -15692,7 +15802,20 @@ index 27df0b4..c3cf0bc 100644
                              data: n,
                              success: s,
                          })
-@@ -28018,8 +30656,8 @@ Object.values ||
+@@ -28008,87 +30646,87 @@ Object.values ||
+                     };
+                 }
+             });
+-        var qt = [],
+-            Vt = /(=)\?(?=&|$)|\?\?/;
++        var Vt = [],
++            qt = /(=)\?(?=&|$)|\?\?/;
+         ue.ajaxSetup({
+             jsonp: 'callback',
+             jsonpCallback: function () {
+-                var e = qt.pop() || ue.expando + '_' + Pt++;
++                var e = Vt.pop() || ue.expando + '_' + Pt++;
+                 return (this[e] = !0), e;
              },
          }),
              ue.ajaxPrefilter('json jsonp', function (i, n, s) {
@@ -15703,7 +15826,15 @@ index 27df0b4..c3cf0bc 100644
                      r,
                      l =
                          !1 !== i.jsonp &&
-@@ -28033,62 +30671,62 @@ Object.values ||
+-                        (Vt.test(i.url) ? 'url' : (
++                        (qt.test(i.url) ? 'url' : (
+                             'string' == typeof i.data &&
+                             !(i.contentType || '').indexOf(
+                                 'application/x-www-form-urlencoded'
+                             ) &&
+-                            Vt.test(i.data) &&
++                            qt.test(i.data) &&
+                             'data'
                          ));
                  if (l || 'jsonp' === i.dataTypes[0])
                      return (
@@ -15714,7 +15845,7 @@ index 27df0b4..c3cf0bc 100644
                                      i.jsonpCallback()
                                  :   i.jsonpCallback),
                          l ?
--                            (i[l] = i[l].replace(qt, '$1' + o))
+-                            (i[l] = i[l].replace(Vt, '$1' + o))
 +                            (i[l] = i[l].replace(qt, '$1' + a))
                          :   !1 !== i.jsonp &&
                              (i.url +=
@@ -15741,7 +15872,7 @@ index 27df0b4..c3cf0bc 100644
 +                            (e[a] = o),
 +                                i[a] &&
                                      ((i.jsonpCallback = n.jsonpCallback),
--                                    Vt.push(o)),
+-                                    qt.push(o)),
 -                                r && ue.isFunction(a) && a(r[0]),
 -                                (r = a = t);
 +                                    Vt.push(a)),
@@ -15935,7 +16066,13 @@ index 27df0b4..c3cf0bc 100644
                  {
                      set: function (e) {
                          e.elem.nodeType &&
-@@ -28312,7 +30950,7 @@ Object.values ||
+@@ -28307,12 +30945,12 @@ Object.values ||
+                 ue.fn[t] = function (e, n, s) {
+                     return null == e || 'boolean' == typeof e ?
+                             i.apply(this, arguments)
+-                        :   this.animate(q(t, !0), e, n, s);
++                        :   this.animate(V(t, !0), e, n, s);
+                 };
              }),
              ue.fn.extend({
                  fadeTo: function (e, t, i, n) {
@@ -16032,6 +16169,19 @@ index 27df0b4..c3cf0bc 100644
                                  n[t] && n[t].finish && n[t].finish.call(this);
                              delete i.finish;
                          })
+@@ -28395,9 +31033,9 @@ Object.values ||
+             }),
+             ue.each(
+                 {
+-                    slideDown: q('show'),
+-                    slideUp: q('hide'),
+-                    slideToggle: q('toggle'),
++                    slideDown: V('show'),
++                    slideUp: V('hide'),
++                    slideToggle: V('toggle'),
+                     fadeIn: { opacity: 'show' },
+                     fadeOut: { opacity: 'hide' },
+                     fadeToggle: { opacity: 'toggle' },
 @@ -28441,7 +31079,7 @@ Object.values ||
                  },
              }),
@@ -16052,7 +16202,7 @@ index 27df0b4..c3cf0bc 100644
 -                        ue.contains(i, o) ?
 -                            (typeof o.getBoundingClientRect !== K &&
 -                                (s = o.getBoundingClientRect()),
--                            (n = q(a)),
+-                            (n = V(a)),
 +                    a = this[0],
 +                    o = a && a.ownerDocument;
 +                return o ?
@@ -16099,7 +16249,7 @@ index 27df0b4..c3cf0bc 100644
                          return ue.access(
                              this,
 -                            function (e, s, o) {
--                                var a = q(e);
+-                                var a = V(e);
 -                                if (o === t)
 +                            function (e, s, a) {
 +                                var o = q(e);
@@ -19978,13 +20128,15 @@ index 27df0b4..c3cf0bc 100644
                          ),
                          H = this._get(e, 'isRTL'),
 -                        W = this._get(e, 'showButtonPanel'),
-+                        $ = this._get(e, 'showButtonPanel'),
-                         V = this._get(e, 'hideIfNoPrevNext'),
-                         q = this._get(e, 'navigationAsDateFormat'),
+-                        q = this._get(e, 'hideIfNoPrevNext'),
+-                        V = this._get(e, 'navigationAsDateFormat'),
 -                        U = this._getNumberOfMonths(e),
 -                        Z = this._get(e, 'showCurrentAtPos'),
 -                        K = this._get(e, 'stepMonths'),
 -                        G = 1 !== U[0] || 1 !== U[1],
++                        $ = this._get(e, 'showButtonPanel'),
++                        V = this._get(e, 'hideIfNoPrevNext'),
++                        q = this._get(e, 'navigationAsDateFormat'),
 +                        G = this._getNumberOfMonths(e),
 +                        K = this._get(e, 'showCurrentAtPos'),
 +                        U = this._get(e, 'stepMonths'),
@@ -20009,7 +20161,12 @@ index 27df0b4..c3cf0bc 100644
                                      Q.getDate()
                                  )
                              ),
-@@ -37423,7 +40061,7 @@ Object.values ||
+@@ -37419,11 +40057,11 @@ Object.values ||
+                             e.drawYear = ee,
+                             i = this._get(e, 'prevText'),
+                             i =
+-                                V ?
++                                q ?
                                      this.formatDate(
                                          i,
                                          this._daylightSavingAdjust(
@@ -20018,7 +20175,21 @@ index 27df0b4..c3cf0bc 100644
                                          ),
                                          this._getFormatConfig(e)
                                      )
-@@ -37451,12 +40089,12 @@ Object.values ||
+@@ -37437,7 +40075,7 @@ Object.values ||
+                                     "'>" +
+                                     i +
+                                     '</span></a>'
+-                                : q ? ''
++                                : V ? ''
+                                 : "<a class='ui-datepicker-prev ui-corner-all ui-state-disabled' title='" +
+                                     i +
+                                     "'><span class='ui-icon ui-icon-circle-triangle-" +
+@@ -37447,16 +40085,16 @@ Object.values ||
+                                     '</span></a>',
+                             s = this._get(e, 'nextText'),
+                             s =
+-                                V ?
++                                q ?
                                      this.formatDate(
                                          s,
                                          this._daylightSavingAdjust(
@@ -20033,6 +20204,15 @@ index 27df0b4..c3cf0bc 100644
                                  this._canAdjustMonth(e, 1, ee, X) ?
                                      "<a class='ui-datepicker-next ui-corner-all' data-handler='next' data-event='click' title='" +
                                      s +
+@@ -37465,7 +40103,7 @@ Object.values ||
+                                     "'>" +
+                                     s +
+                                     '</span></a>'
+-                                : q ? ''
++                                : V ? ''
+                                 : "<a class='ui-datepicker-next ui-corner-all ui-state-disabled' title='" +
+                                     s +
+                                     "'><span class='ui-icon ui-icon-circle-triangle-" +
 @@ -37473,19 +40111,19 @@ Object.values ||
                                      "'>" +
                                      s +
@@ -20044,9 +20224,10 @@ index 27df0b4..c3cf0bc 100644
                                      Y
 -                                :   F,
 -                            a =
+-                                V ?
 +                                :   O,
 +                            o =
-                                 q ?
++                                q ?
                                      this.formatDate(
 -                                        a,
 +                                        o,
@@ -25480,8 +25661,9 @@ index 27df0b4..c3cf0bc 100644
 +        function $(e, t, i) {
              function n(e) {
                  var t;
-                 if (qt) {
+-                if (Vt) {
 -                    if (!zt || 'mouse' === e.pointerType) return;
++                if (qt) {
 +                    if (!xt || 'mouse' === e.pointerType) return;
                      t = ri;
                  } else t = e.touches.length;
@@ -25498,9 +25680,10 @@ index 27df0b4..c3cf0bc 100644
              }
              function s(e) {
 -                if (r && !a.cancelBubble) {
-+                if (r && !o.cancelBubble) {
-                     if (qt) {
+-                    if (Vt) {
 -                        if (!zt || 'mouse' === e.pointerType) return;
++                if (r && !o.cancelBubble) {
++                    if (qt) {
 +                        if (!xt || 'mouse' === e.pointerType) return;
                          var i,
                              n,
@@ -25523,7 +25706,15 @@ index 27df0b4..c3cf0bc 100644
                  r = !1,
                  l = 250;
              return (
-@@ -48229,14 +50867,14 @@ Object.values ||
+@@ -48222,21 +50860,21 @@ Object.values ||
+                 this
+             );
+         }
+-        function q(e, t) {
++        function V(e, t) {
+             var i = e[ui + li + t],
+                 n = e[ui + ci + t],
+                 s = e[ui + 'dblclick' + t];
              return (
                  e.removeEventListener(li, i, !1),
                  e.removeEventListener(ci, n, !1),
@@ -25532,7 +25723,8 @@ index 27df0b4..c3cf0bc 100644
                  this
              );
          }
-         function q(e) {
+-        function V(e) {
++        function q(e) {
              return 'string' == typeof e ? document.getElementById(e) : e;
          }
 -        function U(e, t) {
@@ -25635,8 +25827,8 @@ index 27df0b4..c3cf0bc 100644
                      return i.call(s || e, t || window.event);
                  },
 -                r = a;
--            qt && 0 === t.indexOf('touch') ? I(e, t, a, o)
--            : !Ut || 'dblclick' !== t || !W || (qt && Pt) ?
+-            Vt && 0 === t.indexOf('touch') ? I(e, t, a, o)
+-            : !Ut || 'dblclick' !== t || !W || (Vt && Pt) ?
 +                r = o;
 +            qt && 0 === t.indexOf('touch') ? D(e, t, o, a)
 +            : !Gt || 'dblclick' !== t || !$ || (qt && Pt) ?
@@ -25681,8 +25873,8 @@ index 27df0b4..c3cf0bc 100644
 -            var o = t + n(i) + (s ? '_' + n(s) : ''),
 -                a = e[bi] && e[bi][o];
 -            if (!a) return this;
--            qt && 0 === t.indexOf('touch') ? D(e, t, o)
--            : !Ut || 'dblclick' !== t || !V || (qt && Pt) ?
+-            Vt && 0 === t.indexOf('touch') ? D(e, t, o)
+-            : !Ut || 'dblclick' !== t || !q || (Vt && Pt) ?
 +            var a = t + n(i) + (s ? '_' + n(s) : ''),
 +                o = e[bi] && e[bi][a];
 +            if (!o) return this;
@@ -25705,7 +25897,7 @@ index 27df0b4..c3cf0bc 100644
                              !1
                          )
 -                :   'detachEvent' in e && e.detachEvent('on' + t, a)
--            :   V(e, o),
+-            :   q(e, o),
 -                (e[bi][o] = null);
 +                :   'detachEvent' in e && e.detachEvent('on' + t, o)
 +            :   V(e, a),
@@ -25978,9 +26170,10 @@ index 27df0b4..c3cf0bc 100644
 +                r = o ? o.coordinates : null,
                  l = [],
                  c = t && t.pointToLayer,
-                 u = (t && t.coordsToLatLng) || Ve;
+-                u = (t && t.coordsToLatLng) || qe;
 -            if (!r && !a) return null;
 -            switch (a.type) {
++                u = (t && t.coordsToLatLng) || Ve;
 +            if (!r && !o) return null;
 +            switch (o.type) {
                  case 'Point':
@@ -25994,14 +26187,14 @@ index 27df0b4..c3cf0bc 100644
                  case 'LineString':
                  case 'MultiLineString':
                      return (
--                        (n = qe(r, 'LineString' === a.type ? 0 : 1, u)),
+-                        (n = Ve(r, 'LineString' === a.type ? 0 : 1, u)),
 +                        (n = qe(r, 'LineString' === o.type ? 0 : 1, u)),
                          new nn(n, t)
                      );
                  case 'Polygon':
                  case 'MultiPolygon':
                      return (
--                        (n = qe(r, 'Polygon' === a.type ? 1 : 2, u)),
+-                        (n = Ve(r, 'Polygon' === a.type ? 1 : 2, u)),
 +                        (n = qe(r, 'Polygon' === o.type ? 1 : 2, u)),
                          new sn(n, t)
                      );
@@ -26026,13 +26219,15 @@ index 27df0b4..c3cf0bc 100644
                      throw new Error('Invalid GeoJSON object.');
              }
          }
-         function Ve(e) {
+-        function qe(e) {
 -            return new S(e[1], e[0], e[2]);
++        function Ve(e) {
 +            return new A(e[1], e[0], e[2]);
          }
-         function qe(e, t, i) {
+-        function Ve(e, t, i) {
 -            for (var n, s = [], o = 0, a = e.length; o < a; o++)
--                (n = t ? qe(e[o], t - 1, i) : (i || Ve)(e[o])), s.push(n);
+-                (n = t ? Ve(e[o], t - 1, i) : (i || qe)(e[o])), s.push(n);
++        function qe(e, t, i) {
 +            for (var n, s = [], a = 0, o = e.length; a < o; a++)
 +                (n = t ? qe(e[a], t - 1, i) : (i || Ve)(e[a])), s.push(n);
              return s;
@@ -26505,17 +26700,20 @@ index 27df0b4..c3cf0bc 100644
 -            Ft = 'undefined' != typeof orientation || j('mobile'),
 -            Ht = Ft && Ct,
 -            Wt = Ft && Rt,
+-            qt = !window.PointerEvent && window.MSPointerEvent,
+-            Vt = !(!window.PointerEvent && !qt),
+-            Ut =
 +            Rt = 'MozPerspective' in wt,
 +            Ft = !window.L_DISABLE_3D && (Wt || Bt || Rt) && !jt && !Lt,
 +            Ot = 'undefined' != typeof orientation || I('mobile'),
 +            Ht = Ot && St,
 +            $t = Ot && Bt,
-             Vt = !window.PointerEvent && window.MSPointerEvent,
-             qt = !(!window.PointerEvent && !Vt),
--            Ut =
++            Vt = !window.PointerEvent && window.MSPointerEvent,
++            qt = !(!window.PointerEvent && !Vt),
 +            Gt =
                  !window.L_NO_TOUCH &&
-                 (qt ||
+-                (Vt ||
++                (qt ||
                      'ontouchstart' in window ||
                      (window.DocumentTouch &&
                          document instanceof window.DocumentTouch)),
@@ -26528,7 +26726,7 @@ index 27df0b4..c3cf0bc 100644
                  (window.devicePixelRatio ||
                      window.screen.deviceXDPI / window.screen.logicalXDPI) > 1,
              Yt = !!document.createElement('canvas').getContext,
-@@ -49506,32 +52144,32 @@ Object.values ||
+@@ -49506,61 +52144,61 @@ Object.values ||
                  })(),
              Xt = (Object.freeze || Object)({
                  ie: kt,
@@ -26566,13 +26764,15 @@ index 27df0b4..c3cf0bc 100644
 +                mobile: Ot,
                  mobileWebkit: Ht,
 -                mobileWebkit3d: Wt,
-+                mobileWebkit3d: $t,
-                 msPointer: Vt,
-                 pointer: qt,
+-                msPointer: qt,
+-                pointer: Vt,
 -                touch: Ut,
 -                mobileOpera: Zt,
 -                mobileGecko: Kt,
 -                retina: Gt,
++                mobileWebkit3d: $t,
++                msPointer: Vt,
++                pointer: qt,
 +                touch: Gt,
 +                mobileOpera: Kt,
 +                mobileGecko: Ut,
@@ -26580,9 +26780,15 @@ index 27df0b4..c3cf0bc 100644
                  canvas: Yt,
                  svg: Jt,
                  vml: Qt,
-@@ -49541,8 +52179,8 @@ Object.values ||
-             ii = Vt ? 'MSPointerUp' : 'pointerup',
-             ni = Vt ? 'MSPointerCancel' : 'pointercancel',
+             }),
+-            ei = qt ? 'MSPointerDown' : 'pointerdown',
+-            ti = qt ? 'MSPointerMove' : 'pointermove',
+-            ii = qt ? 'MSPointerUp' : 'pointerup',
+-            ni = qt ? 'MSPointerCancel' : 'pointercancel',
++            ei = Vt ? 'MSPointerDown' : 'pointerdown',
++            ti = Vt ? 'MSPointerMove' : 'pointermove',
++            ii = Vt ? 'MSPointerUp' : 'pointerup',
++            ni = Vt ? 'MSPointerCancel' : 'pointercancel',
              si = ['INPUT', 'SELECT', 'OPTION'],
 -            oi = {},
 -            ai = !1,
@@ -26590,9 +26796,16 @@ index 27df0b4..c3cf0bc 100644
 +            oi = !1,
              ri = 0,
              li =
-                 Vt ? 'MSPointerDown'
-@@ -49553,14 +52191,14 @@ Object.values ||
-                 : qt ? 'pointerup'
+-                qt ? 'MSPointerDown'
+-                : Vt ? 'pointerdown'
++                Vt ? 'MSPointerDown'
++                : qt ? 'pointerdown'
+                 : 'touchstart',
+             ci =
+-                qt ? 'MSPointerUp'
+-                : Vt ? 'pointerup'
++                Vt ? 'MSPointerUp'
++                : qt ? 'pointerup'
                  : 'touchend',
              ui = '_leaflet_',
 -            di = oe([
@@ -26617,14 +26830,16 @@ index 27df0b4..c3cf0bc 100644
                  'userSelect',
                  'WebkitUserSelect',
                  'OUserSelect',
-@@ -49606,10 +52244,10 @@ Object.values ||
+@@ -49605,11 +52243,11 @@ Object.values ||
+                 TRANSFORM: di,
                  TRANSITION: hi,
                  TRANSITION_END: pi,
-                 get: q,
+-                get: V,
 -                getStyle: U,
 -                create: Z,
 -                remove: K,
 -                empty: G,
++                get: q,
 +                getStyle: G,
 +                create: K,
 +                remove: U,
@@ -26981,6 +27196,15 @@ index 27df0b4..c3cf0bc 100644
                  },
                  mouseEventToLayerPoint: function (e) {
                      return this.containerPointToLayerPoint(
+@@ -50328,7 +52966,7 @@ Object.values ||
+                     );
+                 },
+                 _initContainer: function (e) {
+-                    var t = (this._container = V(e));
++                    var t = (this._container = q(e));
+                     if (!t) throw new Error('Map container not found.');
+                     if (t._leaflet_id)
+                         throw new Error(
 @@ -50339,17 +52977,17 @@ Object.values ||
                  },
                  _initLayout: function () {
@@ -27682,14 +27906,16 @@ index 27df0b4..c3cf0bc 100644
                      return E(e, 0.5, -e, 0.5);
                  })(),
              }),
-             Vi = t({}, mt, {
+-            qi = t({}, mt, {
++            Vi = t({}, mt, {
                  code: 'EPSG:4326',
 -                projection: $i,
 +                projection: Fi,
                  transformation: E(1 / 180, 1, -1 / 180, 0.5),
              }),
-             qi = t({}, pt, {
+-            Vi = t({}, pt, {
 -                projection: $i,
++            qi = t({}, pt, {
 +                projection: Fi,
                  transformation: E(1, 0, -1, 0),
                  scale: function (e) {
@@ -27702,9 +27928,11 @@ index 27df0b4..c3cf0bc 100644
 +            (pt.EPSG3395 = $i),
              (pt.EPSG3857 = bt),
              (pt.EPSG900913 = yt),
-             (pt.EPSG4326 = Vi),
-             (pt.Simple = qi);
+-            (pt.EPSG4326 = qi),
+-            (pt.Simple = Vi);
 -        var Ui = dt.extend({
++            (pt.EPSG4326 = Vi),
++            (pt.Simple = qi);
 +        var Gi = dt.extend({
              options: {
                  pane: 'overlayPane',
@@ -29073,11 +29301,12 @@ index 27df0b4..c3cf0bc 100644
                          s = n.min,
 -                        o = n.max,
 -                        a = (
-+                        a = n.max,
-+                        o = (
-                             this._wmsVersion >= 1.3 && this._crs === Vi ?
+-                            this._wmsVersion >= 1.3 && this._crs === qi ?
 -                                [s.y, s.x, o.y, o.x]
 -                            :   [s.x, s.y, o.x, o.y]).join(','),
++                        a = n.max,
++                        o = (
++                            this._wmsVersion >= 1.3 && this._crs === Vi ?
 +                                [s.y, s.x, a.y, a.x]
 +                            :   [s.x, s.y, a.x, a.y]).join(','),
                          r = _n.prototype.getTileUrl.call(this, e);
@@ -29238,8 +29467,8 @@ index 27df0b4..c3cf0bc 100644
          (kn.create = wn),
              (kn.pointsToPath = P),
 -            (on.geometryToLayer = We),
--            (on.coordsToLatLng = Ve),
--            (on.coordsToLatLngs = qe),
+-            (on.coordsToLatLng = qe),
+-            (on.coordsToLatLngs = Ve),
 -            (on.latLngToCoords = Ue),
 -            (on.latLngsToCoords = Ze),
 -            (on.getFeature = Ke),
@@ -29480,7 +29709,7 @@ index 27df0b4..c3cf0bc 100644
                      t.target.dispatchEvent(i);
              },
          });
--        Ut && !qt && zi.addInitHook('addHandler', 'tap', En),
+-        Ut && !Vt && zi.addInitHook('addHandler', 'tap', En),
 -            zi.mergeOptions({ touchZoom: Ut && !Tt, bounceAtZoomLimits: !0 });
 +        Gt && !qt && xi.addInitHook('addHandler', 'tap', En),
 +            xi.mergeOptions({ touchZoom: Gt && !Tt, bounceAtZoomLimits: !0 });
@@ -32230,7 +32459,7 @@ index 27df0b4..c3cf0bc 100644
              return (
                  !!/11?|9/.test(e.nodeType) &&
                  '|iframe|area|base|basefont|br|col|frame|hr|img|input|wbr|isindex|link|meta|param|command|embed|keygen|source|track|object|'.indexOf(
-@@ -62472,7 +65141,7 @@ if (
+@@ -62472,45 +65141,45 @@ if (
                  : ye.indexOf('|' + i + '|') < 0
              );
          }
@@ -32238,8 +32467,9 @@ index 27df0b4..c3cf0bc 100644
 +        function $(e, t) {
              t.style.cssText = e.style.cssText + t.style.cssText;
          }
-         function V(e) {
-@@ -62480,37 +65149,37 @@ if (
+-        function q(e) {
++        function V(e) {
+             var t = function (e) {
                  for (; H(e.parentNode, !0); ) e = e.parentNode;
                  return e;
              };
@@ -32264,8 +32494,9 @@ index 27df0b4..c3cf0bc 100644
                  }
              });
          }
-         function q(e, t) {
+-        function V(e, t) {
 -            for (; (e = e.parentNode); ) if (x(e, t)) return e;
++        function q(e, t) {
 +            for (; (e = e.parentNode); ) if (z(e, t)) return e;
          }
 -        function U(e, t) {
@@ -32700,9 +32931,10 @@ index 27df0b4..c3cf0bc 100644
 -                L,
 -                R,
 -                W,
+-                V,
 +                B,
 +                $,
-                 q,
++                q,
 +                G,
                  U,
 -                K,
@@ -32730,9 +32962,10 @@ index 27df0b4..c3cf0bc 100644
 +                Oe,
                  He,
 -                We,
+-                qe,
 +                $e,
                  Ve,
-                 qe,
++                qe,
 +                Ge,
 +                Ke,
                  Ue,
@@ -32919,7 +33152,7 @@ index 27df0b4..c3cf0bc 100644
 -                        p(z, 'keyup', nt),
 -                        p(z, 'blur', dt),
 -                        p(z, 'keyup', ht),
--                        p(z, 'paste', Ve),
+-                        p(z, 'paste', qe),
 -                        p(z, i, Je),
 -                        p(z, s, st),
 -                        p(z, n, Qe),
@@ -33378,7 +33611,7 @@ index 27df0b4..c3cf0bc 100644
                                      h(i, ':not(input):not(textarea)'),
                                      function (e, t) {
                                          t.nodeType === ge &&
-@@ -63618,32 +66287,32 @@ if (
+@@ -63618,37 +66287,37 @@ if (
                                  kt.dropDownCss
                              )),
                              y(
@@ -33412,14 +33645,21 @@ index 27df0b4..c3cf0bc 100644
                          !e.defaultPrevented &&
                          (pt(), _t.closeDropDown());
                  }),
-                 (Ve = function (e) {
+-                (qe = function (e) {
 -                    var t = Le || ze,
 -                        i = z,
++                (Ve = function (e) {
 +                    var t = Ne || xe,
 +                        i = x,
                          n = e.clipboardData,
                          s = function (e) {
                              var t = new FileReader();
+                             (t.onload = function (e) {
+-                                Ve({
++                                qe({
+                                     html:
+                                         '<img src="' + e.target.result + '" />',
+                                 });
 @@ -63656,22 +66325,22 @@ if (
                                  t.readAsDataURL(e);
                          };
@@ -33440,7 +33680,7 @@ index 27df0b4..c3cf0bc 100644
                          }
 -                        (o.text = o['text/plain']),
 -                            (o.html = o['text/html']),
--                            qe(o);
+-                            Ve(o);
 +                        (a.text = a['text/plain']),
 +                            (a.html = a['text/html']),
 +                            qe(a);
@@ -33457,19 +33697,22 @@ index 27df0b4..c3cf0bc 100644
                                  (i.scrollTop = c),
                                  (ye = !1),
 -                                K.restoreRange(),
+-                                Ve({ html: e });
 +                                U.restoreRange(),
-                                 qe({ html: e });
++                                qe({ html: e });
                          }, 0);
                      }
                  }),
-                 (qe = function (e) {
+-                (Ve = function (e) {
 -                    var t = r('div', {}, S);
++                (qe = function (e) {
 +                    var t = r('div', {}, A);
                      Y.call('pasteRaw', e),
 -                        I(a, 'pasteraw', e),
 +                        D(o, 'pasteraw', e),
                          e.html ?
-                             ((t.innerHTML = e.html), V(t))
+-                            ((t.innerHTML = e.html), q(t))
++                            ((t.innerHTML = e.html), V(t))
                          :   (t.innerHTML = X(e.text || ''));
                      var n = { val: t.innerHTML };
                      'fragmentToSource' in i &&
@@ -33608,8 +33851,9 @@ index 27df0b4..c3cf0bc 100644
 +                        d(n, s[a].cloneNode(!0));
                      return (
 -                        d(z, n),
+-                        q(n),
 +                        d(x, n),
-                         V(n),
++                        V(n),
                          u(n),
                          (t = n.innerHTML),
                          !1 !== e &&
@@ -34082,7 +34326,7 @@ index 27df0b4..c3cf0bc 100644
                          _t
                      );
                  }),
-@@ -64372,19 +67041,19 @@ if (
+@@ -64372,23 +67041,23 @@ if (
                      ) {
                          var t,
                              i = _t.sourceMode(),
@@ -34093,10 +34337,11 @@ index 27df0b4..c3cf0bc 100644
                              (e =
                                  !1 !== e &&
 -                                !S.getElementById('sceditor-start-marker')),
-+                                !A.getElementById('sceditor-start-marker')),
-                             q && (clearTimeout(q), (q = !1)),
+-                            V && (clearTimeout(V), (V = !1)),
 -                            n && e && K.saveRange(),
 -                            (t = i ? N.value : z.innerHTML) !== ut.lastVal &&
++                                !A.getElementById('sceditor-start-marker')),
++                            q && (clearTimeout(q), (q = !1)),
 +                            n && e && U.saveRange(),
 +                            (t = i ? j.value : x.innerHTML) !== ut.lastVal &&
                                  ((ut.lastVal = t),
@@ -34109,6 +34354,11 @@ index 27df0b4..c3cf0bc 100644
                      }
                  }),
                  (dt = function () {
+-                    V && ut();
++                    q && ut();
+                 }),
+                 (ht = function (e) {
+                     var t = e.which,
 @@ -64396,7 +67065,7 @@ if (
                          n = 13 === i || 32 === i,
                          s = 8 === i || 46 === i;
@@ -34118,11 +34368,15 @@ index 27df0b4..c3cf0bc 100644
                              (13 === t || 32 === t ?
                                  n ? (ht.triggerNext = !0)
                                  :   ut()
-@@ -64406,16 +67075,16 @@ if (
+@@ -64404,18 +67073,18 @@ if (
+                                 s ? (ht.triggerNext = !0)
+                                 :   ut()
                              :   ht.triggerNext && (ut(), (ht.triggerNext = !1)),
-                             clearTimeout(q),
-                             (q = setTimeout(function () {
+-                            clearTimeout(V),
+-                            (V = setTimeout(function () {
 -                                W || ut();
++                            clearTimeout(q),
++                            (q = setTimeout(function () {
 +                                $ || ut();
                              }, 1500)));
                  }),
@@ -34442,13 +34696,15 @@ index 27df0b4..c3cf0bc 100644
 +                    canHaveChildren: O,
                      isInline: H,
 -                    copyCSS: W,
-+                    copyCSS: $,
-                     fixNesting: V,
-                     findCommonAncestor: q,
+-                    fixNesting: q,
+-                    findCommonAncestor: V,
 -                    getSibling: U,
 -                    removeWhiteSpace: Z,
 -                    extractContents: K,
 -                    getOffset: G,
++                    copyCSS: $,
++                    fixNesting: V,
++                    findCommonAncestor: q,
 +                    getSibling: G,
 +                    removeWhiteSpace: K,
 +                    extractContents: U,
@@ -34716,7 +34972,7 @@ index 27df0b4..c3cf0bc 100644
              return (
                  !!/11?|9/.test(e.nodeType) &&
                  '|iframe|area|base|basefont|br|col|frame|hr|img|input|wbr|isindex|link|meta|param|command|embed|keygen|source|track|object|'.indexOf(
-@@ -65680,7 +68349,7 @@ if (
+@@ -65680,45 +68349,45 @@ if (
                  : ye.indexOf('|' + i + '|') < 0
              );
          }
@@ -34724,8 +34980,9 @@ index 27df0b4..c3cf0bc 100644
 +        function $(e, t) {
              t.style.cssText = e.style.cssText + t.style.cssText;
          }
-         function V(e) {
-@@ -65688,37 +68357,37 @@ if (
+-        function q(e) {
++        function V(e) {
+             var t = function (e) {
                  for (; H(e.parentNode, !0); ) e = e.parentNode;
                  return e;
              };
@@ -34750,8 +35007,9 @@ index 27df0b4..c3cf0bc 100644
                  }
              });
          }
-         function q(e, t) {
+-        function V(e, t) {
 -            for (; (e = e.parentNode); ) if (x(e, t)) return e;
++        function q(e, t) {
 +            for (; (e = e.parentNode); ) if (z(e, t)) return e;
          }
 -        function U(e, t) {
@@ -35186,9 +35444,10 @@ index 27df0b4..c3cf0bc 100644
 -                L,
 -                R,
 -                W,
+-                V,
 +                B,
 +                $,
-                 q,
++                q,
 +                G,
                  U,
 -                K,
@@ -35216,9 +35475,10 @@ index 27df0b4..c3cf0bc 100644
 +                Oe,
                  He,
 -                We,
+-                qe,
 +                $e,
                  Ve,
-                 qe,
++                qe,
 +                Ge,
 +                Ke,
                  Ue,
@@ -35405,7 +35665,7 @@ index 27df0b4..c3cf0bc 100644
 -                        p(z, 'keyup', nt),
 -                        p(z, 'blur', dt),
 -                        p(z, 'keyup', ht),
--                        p(z, 'paste', Ve),
+-                        p(z, 'paste', qe),
 -                        p(z, i, Je),
 -                        p(z, s, st),
 -                        p(z, n, Qe),
@@ -35864,7 +36124,7 @@ index 27df0b4..c3cf0bc 100644
                                      h(i, ':not(input):not(textarea)'),
                                      function (e, t) {
                                          t.nodeType === ge &&
-@@ -66826,32 +69495,32 @@ if (
+@@ -66826,37 +69495,37 @@ if (
                                  kt.dropDownCss
                              )),
                              y(
@@ -35898,14 +36158,21 @@ index 27df0b4..c3cf0bc 100644
                          !e.defaultPrevented &&
                          (pt(), _t.closeDropDown());
                  }),
-                 (Ve = function (e) {
+-                (qe = function (e) {
 -                    var t = Le || ze,
 -                        i = z,
++                (Ve = function (e) {
 +                    var t = Ne || xe,
 +                        i = x,
                          n = e.clipboardData,
                          s = function (e) {
                              var t = new FileReader();
+                             (t.onload = function (e) {
+-                                Ve({
++                                qe({
+                                     html:
+                                         '<img src="' + e.target.result + '" />',
+                                 });
 @@ -66864,22 +69533,22 @@ if (
                                  t.readAsDataURL(e);
                          };
@@ -35926,7 +36193,7 @@ index 27df0b4..c3cf0bc 100644
                          }
 -                        (o.text = o['text/plain']),
 -                            (o.html = o['text/html']),
--                            qe(o);
+-                            Ve(o);
 +                        (a.text = a['text/plain']),
 +                            (a.html = a['text/html']),
 +                            qe(a);
@@ -35943,19 +36210,22 @@ index 27df0b4..c3cf0bc 100644
                                  (i.scrollTop = c),
                                  (ye = !1),
 -                                K.restoreRange(),
+-                                Ve({ html: e });
 +                                U.restoreRange(),
-                                 qe({ html: e });
++                                qe({ html: e });
                          }, 0);
                      }
                  }),
-                 (qe = function (e) {
+-                (Ve = function (e) {
 -                    var t = r('div', {}, S);
++                (qe = function (e) {
 +                    var t = r('div', {}, A);
                      Y.call('pasteRaw', e),
 -                        I(a, 'pasteraw', e),
 +                        D(o, 'pasteraw', e),
                          e.html ?
-                             ((t.innerHTML = e.html), V(t))
+-                            ((t.innerHTML = e.html), q(t))
++                            ((t.innerHTML = e.html), V(t))
                          :   (t.innerHTML = X(e.text || ''));
                      var n = { val: t.innerHTML };
                      'fragmentToSource' in i &&
@@ -36094,8 +36364,9 @@ index 27df0b4..c3cf0bc 100644
 +                        d(n, s[a].cloneNode(!0));
                      return (
 -                        d(z, n),
+-                        q(n),
 +                        d(x, n),
-                         V(n),
++                        V(n),
                          u(n),
                          (t = n.innerHTML),
                          !1 !== e &&
@@ -36568,7 +36839,7 @@ index 27df0b4..c3cf0bc 100644
                          _t
                      );
                  }),
-@@ -67580,19 +70249,19 @@ if (
+@@ -67580,23 +70249,23 @@ if (
                      ) {
                          var t,
                              i = _t.sourceMode(),
@@ -36579,10 +36850,11 @@ index 27df0b4..c3cf0bc 100644
                              (e =
                                  !1 !== e &&
 -                                !S.getElementById('sceditor-start-marker')),
-+                                !A.getElementById('sceditor-start-marker')),
-                             q && (clearTimeout(q), (q = !1)),
+-                            V && (clearTimeout(V), (V = !1)),
 -                            n && e && K.saveRange(),
 -                            (t = i ? N.value : z.innerHTML) !== ut.lastVal &&
++                                !A.getElementById('sceditor-start-marker')),
++                            q && (clearTimeout(q), (q = !1)),
 +                            n && e && U.saveRange(),
 +                            (t = i ? j.value : x.innerHTML) !== ut.lastVal &&
                                  ((ut.lastVal = t),
@@ -36595,6 +36867,11 @@ index 27df0b4..c3cf0bc 100644
                      }
                  }),
                  (dt = function () {
+-                    V && ut();
++                    q && ut();
+                 }),
+                 (ht = function (e) {
+                     var t = e.which,
 @@ -67604,7 +70273,7 @@ if (
                          n = 13 === i || 32 === i,
                          s = 8 === i || 46 === i;
@@ -36604,11 +36881,15 @@ index 27df0b4..c3cf0bc 100644
                              (13 === t || 32 === t ?
                                  n ? (ht.triggerNext = !0)
                                  :   ut()
-@@ -67614,16 +70283,16 @@ if (
+@@ -67612,18 +70281,18 @@ if (
+                                 s ? (ht.triggerNext = !0)
+                                 :   ut()
                              :   ht.triggerNext && (ut(), (ht.triggerNext = !1)),
-                             clearTimeout(q),
-                             (q = setTimeout(function () {
+-                            clearTimeout(V),
+-                            (V = setTimeout(function () {
 -                                W || ut();
++                            clearTimeout(q),
++                            (q = setTimeout(function () {
 +                                $ || ut();
                              }, 1500)));
                  }),
@@ -36928,13 +37209,15 @@ index 27df0b4..c3cf0bc 100644
 +                    canHaveChildren: O,
                      isInline: H,
 -                    copyCSS: W,
-+                    copyCSS: $,
-                     fixNesting: V,
-                     findCommonAncestor: q,
+-                    fixNesting: q,
+-                    findCommonAncestor: V,
 -                    getSibling: U,
 -                    removeWhiteSpace: Z,
 -                    extractContents: K,
 -                    getOffset: G,
++                    copyCSS: $,
++                    fixNesting: V,
++                    findCommonAncestor: q,
 +                    getSibling: G,
 +                    removeWhiteSpace: K,
 +                    extractContents: U,

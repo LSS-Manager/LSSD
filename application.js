@@ -6880,7 +6880,7 @@ Object.values ||
             assigns_equipment_automatically:
                 'Weist Ausr\xfcstung automatisch zu',
             assigns_equipment_automatically_hint:
-                'Wenn aktiv, kann die AAO den Fahrzeugen Ausr\xfcstung zuweisen. W\xe4hlt die n\xe4chstgelegene Einheit oder Ausr\xfcstung. (W\xe4hlt nicht ausschlie\xdflich Ausr\xfcstung)',
+                'Wenn aktiv, kann die AAO den Fahrzeugen Ausr\xfcstung zuweisen. W\xe4hlt die n\xe4chstgelegene Einheit oder Ausr\xfcstung.<br><i>(W\xe4hlt nicht ausschlie\xdflich Ausr\xfcstung und wirkt sich nur auf AAO aus, die mit %{icon} markiert sind)</i>',
             automatic_text_color: 'Automatische Schriftfarbe',
             back: 'Zur\xfcck',
             category: 'Kategorie',
@@ -7557,7 +7557,7 @@ Object.values ||
         intervention_order: {
             assigns_equipment_automatically: 'Assigns Equipment Automatically',
             assigns_equipment_automatically_hint:
-                'If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment. (Does not exclusively choose equipment)',
+                'If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment.<br><i>(Does not exclusively choose equipment and only affects ARRs marked with %{icon})</i>',
             automatic_text_color: 'Automatic Text Color',
             back: 'Back',
             car_carrier: 'Wrecker or Flatbed Carrier',
@@ -8414,7 +8414,7 @@ Object.values ||
         intervention_order: {
             assigns_equipment_automatically: 'Assigns Equipment Automatically',
             assigns_equipment_automatically_hint:
-                'If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment. (Does not exclusively choose equipment)',
+                'If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment.<br><i>(Does not exclusively choose equipment and only affects ARRs marked with %{icon})</i>',
             automatic_text_color: 'Automatic Text Color',
             back: 'Back',
             categories: { water_rescue: 'Technical Rescue and SAR' },
@@ -9131,7 +9131,7 @@ Object.values ||
         intervention_order: {
             assigns_equipment_automatically: 'Wijst uitrusting automatisch toe',
             assigns_equipment_automatically_hint:
-                'Als ingeschakeld, kan de ARR uitrusting aan voertuigen toewijzen. Het kiest de dichtstbijzijnde eenheid of uitrusting. (Kiest niet exclusief uitrusting)',
+                "Als ingeschakeld, kan de ARR uitrusting aan voertuigen toewijzen. Het kiest de dichtstbijzijnde eenheid of uitrusting.<br><i>(Kiest niet exclusief uitrusting en heeft alleen invloed op ARR's gemarkeerd met %{icon})</i>",
             automatic_text_color: 'Automatische tekstkleur',
             back: 'Terug',
             car_carrier: 'Elke Berger-K',
@@ -11700,7 +11700,7 @@ Object.values ||
             assigns_equipment_automatically:
                 'Automatycznie przypisuje urz\u0105dzenia',
             assigns_equipment_automatically_hint:
-                'Je\u015bli jest aktywna, ZR mo\u017ce przypisa\u0107 wyposa\u017cenie do pojazd\xf3w. Wybiera najbli\u017csz\u0105 jednostk\u0119 lub wyposa\u017cenie. (Nie wybiera wy\u0142\u0105cznie wyposa\u017cenia)',
+                'Je\u015bli jest aktywna, ZR mo\u017ce przypisa\u0107 wyposa\u017cenie do pojazd\xf3w. Wybiera najbli\u017csz\u0105 jednostk\u0119 lub wyposa\u017cenie.<br><i>(Nie wybiera wy\u0142\u0105cznie wyposa\u017cenia i wp\u0142ywa tylko na ZR oznaczone %{icon}</i> ).',
             automatic_text_color: 'Automatyczny kolor tekstu',
             back: 'Wstecz',
             battalion_chief_unit: 'Samoch\xf3d Oficera Operacyjnego lub SLRr',
@@ -12355,7 +12355,7 @@ Object.values ||
             assigns_equipment_automatically:
                 "Assegna automaticamente l'attrezzatura",
             assigns_equipment_automatically_hint:
-                "Se attivo, l'ARR pu\xf2 assegnare l'equipaggiamento ai veicoli. Sceglier\xe0 l'unit\xe0 o l'equipaggiamento pi\xf9 vicino. (Non sceglie in modo esclusivo l'equipaggiamento)",
+                "Se attivo, l'ARR pu\xf2 assegnare l'equipaggiamento ai veicoli. Sceglier\xe0 l'unit\xe0 o l'equipaggiamento pi\xf9 vicino.<br><i>(Non sceglie in modo esclusivo l'equipaggiamento e influisce solo sulle ARR contrassegnate con %{icon})</i>",
             automatic_text_color: 'Colore testo automatico',
             back: 'Indietro',
             categories: {
@@ -12995,7 +12995,7 @@ Object.values ||
             assigns_equipment_automatically:
                 "Attribue automatiquement l'\xe9quipement",
             assigns_equipment_automatically_hint:
-                "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche. (Ne choisit pas exclusivement le mat\xe9riel)",
+                "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche.<br><i>(Ne choisit pas exclusivement le mat\xe9riel et n'affecte que les ARR marqu\xe9s par %{icon})</i>",
             automatic_text_color: 'Couleur du texte automatique',
             back: 'Retour',
             categories: {
@@ -22659,7 +22659,7 @@ Object.values ||
         function W(e, t, i, n, s) {
             return new W.prototype.init(e, t, i, n, s);
         }
-        function V(e, t) {
+        function q(e, t) {
             var i,
                 n = { height: e },
                 s = 0;
@@ -22667,7 +22667,7 @@ Object.values ||
                 n['margin' + (i = kt[s])] = n['padding' + i] = e;
             return t && (n.opacity = n.width = e), n;
         }
-        function q(e) {
+        function V(e) {
             return ue.isWindow(e) ? e : (
                     9 === e.nodeType && (e.defaultView || e.parentWindow)
                 );
@@ -23215,7 +23215,7 @@ Object.values ||
                 function i(e, t, i, n) {
                     var s, o, a, r, l, c, u, d, h, p;
                     if (
-                        ((t ? t.ownerDocument || t : V) !== L && N(t),
+                        ((t ? t.ownerDocument || t : q) !== L && N(t),
                         (i = i || []),
                         !e || 'string' != typeof e)
                     )
@@ -23439,7 +23439,7 @@ Object.values ||
                                 var r,
                                     l,
                                     c,
-                                    u = q + ' ' + o;
+                                    u = V + ' ' + o;
                                 if (a) {
                                     for (; (t = t[n]); )
                                         if (
@@ -23626,7 +23626,7 @@ Object.values ||
                                             '*',
                                             (u && r.parentNode) || r
                                         )),
-                                k = (q += null == y ? 1 : Math.random() || 0.1);
+                                k = (V += null == y ? 1 : Math.random() || 0.1);
                             for (
                                 v && ((I = r !== L && r), (A = n));
                                 null != (d = w[f]);
@@ -23638,7 +23638,7 @@ Object.values ||
                                             c.push(d);
                                             break;
                                         }
-                                    v && ((q = k), (A = ++n));
+                                    v && ((V = k), (A = ++n));
                                 }
                                 s && ((d = !p && d) && _--, o && g.push(d));
                             }
@@ -23657,7 +23657,7 @@ Object.values ||
                                         _ + t.length > 1 &&
                                         i.uniqueSort(c);
                             }
-                            return v && ((q = k), (I = y)), g;
+                            return v && ((V = k), (I = y)), g;
                         };
                     return s ? o(r) : r;
                 }
@@ -23728,8 +23728,8 @@ Object.values ||
                     F,
                     H,
                     W = 'sizzle' + -new Date(),
-                    V = e.document,
-                    q = 0,
+                    q = e.document,
+                    V = 0,
                     U = 0,
                     Z = s(),
                     K = s(),
@@ -23844,8 +23844,8 @@ Object.values ||
                         );
                     };
                 try {
-                    se.apply((te = oe.call(V.childNodes)), V.childNodes),
-                        te[V.childNodes.length].nodeType;
+                    se.apply((te = oe.call(q.childNodes)), q.childNodes),
+                        te[q.childNodes.length].nodeType;
                 } catch (e) {
                     se = {
                         apply:
@@ -23871,7 +23871,7 @@ Object.values ||
                 (T = i.support = {}),
                 (N = i.setDocument =
                     function (e) {
-                        var t = e ? e.ownerDocument || e : V;
+                        var t = e ? e.ownerDocument || e : q;
                         return (
                                 t !== L && 9 === t.nodeType && t.documentElement
                             ) ?
@@ -24098,8 +24098,8 @@ Object.values ||
                                                                 e
                                                             ) === n)
                                                     ) ?
-                                                        e === t || H(V, e) ? -1
-                                                        : i === t || H(V, i) ? 1
+                                                        e === t || H(q, e) ? -1
+                                                        : i === t || H(q, i) ? 1
                                                         : D ?
                                                             ae.call(D, e) -
                                                             ae.call(D, i)
@@ -24137,8 +24137,8 @@ Object.values ||
                                             for (; r[s] === l[s]; ) s++;
                                             return (
                                                 s ? d(r[s], l[s])
-                                                : r[s] === V ? -1
-                                                : l[s] === V ? 1
+                                                : r[s] === q ? -1
+                                                : l[s] === q ? 1
                                                 : 0
                                             );
                                         }),
@@ -24412,9 +24412,9 @@ Object.values ||
                                                                         {}))[
                                                                     e
                                                                 ] || [])[0] ===
-                                                                q && c[1],
+                                                                V && c[1],
                                                             h =
-                                                                c[0] === q &&
+                                                                c[0] === V &&
                                                                 c[2],
                                                             d =
                                                                 p &&
@@ -24432,7 +24432,7 @@ Object.values ||
                                                             ++h &&
                                                             d === t
                                                         ) {
-                                                            u[e] = [q, p, h];
+                                                            u[e] = [V, p, h];
                                                             break;
                                                         }
                                                 } else if (
@@ -24440,7 +24440,7 @@ Object.values ||
                                                     (c = (t[W] || (t[W] = {}))[
                                                         e
                                                     ]) &&
-                                                    c[0] === q
+                                                    c[0] === V
                                                 )
                                                     h = c[1];
                                                 else
@@ -24462,7 +24462,7 @@ Object.values ||
                                                                     (d[W] =
                                                                         {}))[
                                                                     e
-                                                                ] = [q, h]),
+                                                                ] = [V, h]),
                                                             d !== t));
 
                                                     );
@@ -26491,8 +26491,8 @@ Object.values ||
             });
         var He = /^.[^:#\[\.,]*$/,
             We = /^(?:parents|prev(?:Until|All))/,
-            Ve = ue.expr.match.needsContext,
-            qe = { children: !0, contents: !0, next: !0, prev: !0 };
+            qe = ue.expr.match.needsContext,
+            Ve = { children: !0, contents: !0, next: !0, prev: !0 };
         ue.fn.extend({
             find: function (e) {
                 var t,
@@ -26531,7 +26531,7 @@ Object.values ||
             is: function (e) {
                 return !!h(
                     this,
-                    'string' == typeof e && Ve.test(e) ? ue(e) : e || [],
+                    'string' == typeof e && qe.test(e) ? ue(e) : e || [],
                     !1
                 ).length;
             },
@@ -26542,7 +26542,7 @@ Object.values ||
                         s = this.length,
                         o = [],
                         a =
-                            Ve.test(e) || 'string' != typeof e ?
+                            qe.test(e) || 'string' != typeof e ?
                                 ue(e, t || this.context)
                             :   0;
                     n < s;
@@ -26635,7 +26635,7 @@ Object.values ||
                             'Until' !== e.slice(-5) && (n = i),
                             n && 'string' == typeof n && (s = ue.filter(n, s)),
                             this.length > 1 &&
-                                (qe[e] || (s = ue.unique(s)),
+                                (Ve[e] || (s = ue.unique(s)),
                                 We.test(e) && (s = s.reverse())),
                             this.pushStack(s)
                         );
@@ -28008,12 +28008,12 @@ Object.values ||
                     };
                 }
             });
-        var Vt = [],
-            qt = /(=)\?(?=&|$)|\?\?/;
+        var qt = [],
+            Vt = /(=)\?(?=&|$)|\?\?/;
         ue.ajaxSetup({
             jsonp: 'callback',
             jsonpCallback: function () {
-                var e = Vt.pop() || ue.expando + '_' + Pt++;
+                var e = qt.pop() || ue.expando + '_' + Pt++;
                 return (this[e] = !0), e;
             },
         }),
@@ -28023,12 +28023,12 @@ Object.values ||
                     r,
                     l =
                         !1 !== i.jsonp &&
-                        (qt.test(i.url) ? 'url' : (
+                        (Vt.test(i.url) ? 'url' : (
                             'string' == typeof i.data &&
                             !(i.contentType || '').indexOf(
                                 'application/x-www-form-urlencoded'
                             ) &&
-                            qt.test(i.data) &&
+                            Vt.test(i.data) &&
                             'data'
                         ));
                 if (l || 'jsonp' === i.dataTypes[0])
@@ -28039,7 +28039,7 @@ Object.values ||
                                     i.jsonpCallback()
                                 :   i.jsonpCallback),
                         l ?
-                            (i[l] = i[l].replace(qt, '$1' + o))
+                            (i[l] = i[l].replace(Vt, '$1' + o))
                         :   !1 !== i.jsonp &&
                             (i.url +=
                                 (jt.test(i.url) ? '&' : '?') +
@@ -28058,7 +28058,7 @@ Object.values ||
                             (e[o] = a),
                                 i[o] &&
                                     ((i.jsonpCallback = n.jsonpCallback),
-                                    Vt.push(o)),
+                                    qt.push(o)),
                                 r && ue.isFunction(a) && a(r[0]),
                                 (r = a = t);
                         }),
@@ -28307,7 +28307,7 @@ Object.values ||
                 ue.fn[t] = function (e, n, s) {
                     return null == e || 'boolean' == typeof e ?
                             i.apply(this, arguments)
-                        :   this.animate(V(t, !0), e, n, s);
+                        :   this.animate(q(t, !0), e, n, s);
                 };
             }),
             ue.fn.extend({
@@ -28395,9 +28395,9 @@ Object.values ||
             }),
             ue.each(
                 {
-                    slideDown: V('show'),
-                    slideUp: V('hide'),
-                    slideToggle: V('toggle'),
+                    slideDown: q('show'),
+                    slideUp: q('hide'),
+                    slideToggle: q('toggle'),
                     fadeIn: { opacity: 'show' },
                     fadeOut: { opacity: 'hide' },
                     fadeToggle: { opacity: 'toggle' },
@@ -28486,7 +28486,7 @@ Object.values ||
                         ue.contains(i, o) ?
                             (typeof o.getBoundingClientRect !== K &&
                                 (s = o.getBoundingClientRect()),
-                            (n = q(a)),
+                            (n = V(a)),
                             {
                                 top:
                                     s.top +
@@ -28575,7 +28575,7 @@ Object.values ||
                         return ue.access(
                             this,
                             function (e, s, o) {
-                                var a = q(e);
+                                var a = V(e);
                                 if (o === t)
                                     return (
                                         a ?
@@ -37381,8 +37381,8 @@ Object.values ||
                         ),
                         H = this._get(e, 'isRTL'),
                         W = this._get(e, 'showButtonPanel'),
-                        V = this._get(e, 'hideIfNoPrevNext'),
-                        q = this._get(e, 'navigationAsDateFormat'),
+                        q = this._get(e, 'hideIfNoPrevNext'),
+                        V = this._get(e, 'navigationAsDateFormat'),
                         U = this._getNumberOfMonths(e),
                         Z = this._get(e, 'showCurrentAtPos'),
                         K = this._get(e, 'stepMonths'),
@@ -37419,7 +37419,7 @@ Object.values ||
                             e.drawYear = ee,
                             i = this._get(e, 'prevText'),
                             i =
-                                q ?
+                                V ?
                                     this.formatDate(
                                         i,
                                         this._daylightSavingAdjust(
@@ -37437,7 +37437,7 @@ Object.values ||
                                     "'>" +
                                     i +
                                     '</span></a>'
-                                : V ? ''
+                                : q ? ''
                                 : "<a class='ui-datepicker-prev ui-corner-all ui-state-disabled' title='" +
                                     i +
                                     "'><span class='ui-icon ui-icon-circle-triangle-" +
@@ -37447,7 +37447,7 @@ Object.values ||
                                     '</span></a>',
                             s = this._get(e, 'nextText'),
                             s =
-                                q ?
+                                V ?
                                     this.formatDate(
                                         s,
                                         this._daylightSavingAdjust(
@@ -37465,7 +37465,7 @@ Object.values ||
                                     "'>" +
                                     s +
                                     '</span></a>'
-                                : V ? ''
+                                : q ? ''
                                 : "<a class='ui-datepicker-next ui-corner-all ui-state-disabled' title='" +
                                     s +
                                     "'><span class='ui-icon ui-icon-circle-triangle-" +
@@ -37479,7 +37479,7 @@ Object.values ||
                                     Y
                                 :   F,
                             a =
-                                q ?
+                                V ?
                                     this.formatDate(
                                         a,
                                         r,
@@ -48182,7 +48182,7 @@ Object.values ||
         function W(e, t, i) {
             function n(e) {
                 var t;
-                if (qt) {
+                if (Vt) {
                     if (!zt || 'mouse' === e.pointerType) return;
                     t = ri;
                 } else t = e.touches.length;
@@ -48196,7 +48196,7 @@ Object.values ||
             }
             function s(e) {
                 if (r && !a.cancelBubble) {
-                    if (qt) {
+                    if (Vt) {
                         if (!zt || 'mouse' === e.pointerType) return;
                         var i,
                             n,
@@ -48222,7 +48222,7 @@ Object.values ||
                 this
             );
         }
-        function V(e, t) {
+        function q(e, t) {
             var i = e[ui + li + t],
                 n = e[ui + ci + t],
                 s = e[ui + 'dblclick' + t];
@@ -48233,7 +48233,7 @@ Object.values ||
                 this
             );
         }
-        function q(e) {
+        function V(e) {
             return 'string' == typeof e ? document.getElementById(e) : e;
         }
         function U(e, t) {
@@ -48404,8 +48404,8 @@ Object.values ||
                     return i.call(s || e, t || window.event);
                 },
                 r = a;
-            qt && 0 === t.indexOf('touch') ? I(e, t, a, o)
-            : !Ut || 'dblclick' !== t || !W || (qt && Pt) ?
+            Vt && 0 === t.indexOf('touch') ? I(e, t, a, o)
+            : !Ut || 'dblclick' !== t || !W || (Vt && Pt) ?
                 'addEventListener' in e ?
                     'mousewheel' === t ?
                         e.addEventListener(
@@ -48437,8 +48437,8 @@ Object.values ||
             var o = t + n(i) + (s ? '_' + n(s) : ''),
                 a = e[bi] && e[bi][o];
             if (!a) return this;
-            qt && 0 === t.indexOf('touch') ? D(e, t, o)
-            : !Ut || 'dblclick' !== t || !V || (qt && Pt) ?
+            Vt && 0 === t.indexOf('touch') ? D(e, t, o)
+            : !Ut || 'dblclick' !== t || !q || (Vt && Pt) ?
                 'removeEventListener' in e ?
                     'mousewheel' === t ?
                         e.removeEventListener(
@@ -48454,7 +48454,7 @@ Object.values ||
                             !1
                         )
                 :   'detachEvent' in e && e.detachEvent('on' + t, a)
-            :   V(e, o),
+            :   q(e, o),
                 (e[bi][o] = null);
         }
         function be(e) {
@@ -48681,7 +48681,7 @@ Object.values ||
                 r = a ? a.coordinates : null,
                 l = [],
                 c = t && t.pointToLayer,
-                u = (t && t.coordsToLatLng) || Ve;
+                u = (t && t.coordsToLatLng) || qe;
             if (!r && !a) return null;
             switch (a.type) {
                 case 'Point':
@@ -48693,13 +48693,13 @@ Object.values ||
                 case 'LineString':
                 case 'MultiLineString':
                     return (
-                        (n = qe(r, 'LineString' === a.type ? 0 : 1, u)),
+                        (n = Ve(r, 'LineString' === a.type ? 0 : 1, u)),
                         new nn(n, t)
                     );
                 case 'Polygon':
                 case 'MultiPolygon':
                     return (
-                        (n = qe(r, 'Polygon' === a.type ? 1 : 2, u)),
+                        (n = Ve(r, 'Polygon' === a.type ? 1 : 2, u)),
                         new sn(n, t)
                     );
                 case 'GeometryCollection':
@@ -48719,12 +48719,12 @@ Object.values ||
                     throw new Error('Invalid GeoJSON object.');
             }
         }
-        function Ve(e) {
+        function qe(e) {
             return new S(e[1], e[0], e[2]);
         }
-        function qe(e, t, i) {
+        function Ve(e, t, i) {
             for (var n, s = [], o = 0, a = e.length; o < a; o++)
-                (n = t ? qe(e[o], t - 1, i) : (i || Ve)(e[o])), s.push(n);
+                (n = t ? Ve(e[o], t - 1, i) : (i || qe)(e[o])), s.push(n);
             return s;
         }
         function Ue(e, t) {
@@ -49474,11 +49474,11 @@ Object.values ||
             Ft = 'undefined' != typeof orientation || j('mobile'),
             Ht = Ft && Ct,
             Wt = Ft && Rt,
-            Vt = !window.PointerEvent && window.MSPointerEvent,
-            qt = !(!window.PointerEvent && !Vt),
+            qt = !window.PointerEvent && window.MSPointerEvent,
+            Vt = !(!window.PointerEvent && !qt),
             Ut =
                 !window.L_NO_TOUCH &&
-                (qt ||
+                (Vt ||
                     'ontouchstart' in window ||
                     (window.DocumentTouch &&
                         document instanceof window.DocumentTouch)),
@@ -49526,8 +49526,8 @@ Object.values ||
                 mobile: Ft,
                 mobileWebkit: Ht,
                 mobileWebkit3d: Wt,
-                msPointer: Vt,
-                pointer: qt,
+                msPointer: qt,
+                pointer: Vt,
                 touch: Ut,
                 mobileOpera: Zt,
                 mobileGecko: Kt,
@@ -49536,21 +49536,21 @@ Object.values ||
                 svg: Jt,
                 vml: Qt,
             }),
-            ei = Vt ? 'MSPointerDown' : 'pointerdown',
-            ti = Vt ? 'MSPointerMove' : 'pointermove',
-            ii = Vt ? 'MSPointerUp' : 'pointerup',
-            ni = Vt ? 'MSPointerCancel' : 'pointercancel',
+            ei = qt ? 'MSPointerDown' : 'pointerdown',
+            ti = qt ? 'MSPointerMove' : 'pointermove',
+            ii = qt ? 'MSPointerUp' : 'pointerup',
+            ni = qt ? 'MSPointerCancel' : 'pointercancel',
             si = ['INPUT', 'SELECT', 'OPTION'],
             oi = {},
             ai = !1,
             ri = 0,
             li =
-                Vt ? 'MSPointerDown'
-                : qt ? 'pointerdown'
+                qt ? 'MSPointerDown'
+                : Vt ? 'pointerdown'
                 : 'touchstart',
             ci =
-                Vt ? 'MSPointerUp'
-                : qt ? 'pointerup'
+                qt ? 'MSPointerUp'
+                : Vt ? 'pointerup'
                 : 'touchend',
             ui = '_leaflet_',
             di = oe([
@@ -49605,7 +49605,7 @@ Object.values ||
                 TRANSFORM: di,
                 TRANSITION: hi,
                 TRANSITION_END: pi,
-                get: q,
+                get: V,
                 getStyle: U,
                 create: Z,
                 remove: K,
@@ -50328,7 +50328,7 @@ Object.values ||
                     );
                 },
                 _initContainer: function (e) {
-                    var t = (this._container = q(e));
+                    var t = (this._container = V(e));
                     if (!t) throw new Error('Map container not found.');
                     if (t._leaflet_id)
                         throw new Error(
@@ -51609,12 +51609,12 @@ Object.values ||
                     return E(e, 0.5, -e, 0.5);
                 })(),
             }),
-            Vi = t({}, mt, {
+            qi = t({}, mt, {
                 code: 'EPSG:4326',
                 projection: $i,
                 transformation: E(1 / 180, 1, -1 / 180, 0.5),
             }),
-            qi = t({}, pt, {
+            Vi = t({}, pt, {
                 projection: $i,
                 transformation: E(1, 0, -1, 0),
                 scale: function (e) {
@@ -51634,8 +51634,8 @@ Object.values ||
             (pt.EPSG3395 = Wi),
             (pt.EPSG3857 = bt),
             (pt.EPSG900913 = yt),
-            (pt.EPSG4326 = Vi),
-            (pt.Simple = qi);
+            (pt.EPSG4326 = qi),
+            (pt.Simple = Vi);
         var Ui = dt.extend({
             options: {
                 pane: 'overlayPane',
@@ -54407,7 +54407,7 @@ Object.values ||
                         s = n.min,
                         o = n.max,
                         a = (
-                            this._wmsVersion >= 1.3 && this._crs === Vi ?
+                            this._wmsVersion >= 1.3 && this._crs === qi ?
                                 [s.y, s.x, o.y, o.x]
                             :   [s.x, s.y, o.x, o.y]).join(','),
                         r = _n.prototype.getTileUrl.call(this, e);
@@ -55080,8 +55080,8 @@ Object.values ||
         (kn.create = wn),
             (kn.pointsToPath = P),
             (on.geometryToLayer = We),
-            (on.coordsToLatLng = Ve),
-            (on.coordsToLatLngs = qe),
+            (on.coordsToLatLng = qe),
+            (on.coordsToLatLngs = Ve),
             (on.latLngToCoords = Ue),
             (on.latLngsToCoords = Ze),
             (on.getFeature = Ke),
@@ -55643,7 +55643,7 @@ Object.values ||
                     t.target.dispatchEvent(i);
             },
         });
-        Ut && !qt && zi.addInitHook('addHandler', 'tap', En),
+        Ut && !Vt && zi.addInitHook('addHandler', 'tap', En),
             zi.mergeOptions({ touchZoom: Ut && !Tt, bounceAtZoomLimits: !0 });
         var Mn = Pi.extend({
             addHooks: function () {
@@ -62475,7 +62475,7 @@ if (
         function W(e, t) {
             t.style.cssText = e.style.cssText + t.style.cssText;
         }
-        function V(e) {
+        function q(e) {
             var t = function (e) {
                 for (; H(e.parentNode, !0); ) e = e.parentNode;
                 return e;
@@ -62495,7 +62495,7 @@ if (
                 }
             });
         }
-        function q(e, t) {
+        function V(e, t) {
             for (; (e = e.parentNode); ) if (x(e, t)) return e;
         }
         function U(e, t) {
@@ -63083,7 +63083,7 @@ if (
                 L,
                 R,
                 W,
-                q,
+                V,
                 U,
                 K,
                 Y,
@@ -63110,8 +63110,8 @@ if (
                 Fe,
                 He,
                 We,
-                Ve,
                 qe,
+                Ve,
                 Ue,
                 Ze,
                 Ke,
@@ -63261,7 +63261,7 @@ if (
                         p(z, 'keyup', nt),
                         p(z, 'blur', dt),
                         p(z, 'keyup', ht),
-                        p(z, 'paste', Ve),
+                        p(z, 'paste', qe),
                         p(z, i, Je),
                         p(z, s, st),
                         p(z, n, Qe),
@@ -63641,14 +63641,14 @@ if (
                         !e.defaultPrevented &&
                         (pt(), _t.closeDropDown());
                 }),
-                (Ve = function (e) {
+                (qe = function (e) {
                     var t = Le || ze,
                         i = z,
                         n = e.clipboardData,
                         s = function (e) {
                             var t = new FileReader();
                             (t.onload = function (e) {
-                                qe({
+                                Ve({
                                     html:
                                         '<img src="' + e.target.result + '" />',
                                 });
@@ -63667,7 +63667,7 @@ if (
                         }
                         (o.text = o['text/plain']),
                             (o.html = o['text/html']),
-                            qe(o);
+                            Ve(o);
                     } else if (!ye) {
                         var c = i.scrollTop;
                         for (
@@ -63683,16 +63683,16 @@ if (
                                 (i.scrollTop = c),
                                 (ye = !1),
                                 K.restoreRange(),
-                                qe({ html: e });
+                                Ve({ html: e });
                         }, 0);
                     }
                 }),
-                (qe = function (e) {
+                (Ve = function (e) {
                     var t = r('div', {}, S);
                     Y.call('pasteRaw', e),
                         I(a, 'pasteraw', e),
                         e.html ?
-                            ((t.innerHTML = e.html), V(t))
+                            ((t.innerHTML = e.html), q(t))
                         :   (t.innerHTML = X(e.text || ''));
                     var n = { val: t.innerHTML };
                     'fragmentToSource' in i &&
@@ -63812,7 +63812,7 @@ if (
                         d(n, s[o].cloneNode(!0));
                     return (
                         d(z, n),
-                        V(n),
+                        q(n),
                         u(n),
                         (t = n.innerHTML),
                         !1 !== e &&
@@ -64377,7 +64377,7 @@ if (
                             (e =
                                 !1 !== e &&
                                 !S.getElementById('sceditor-start-marker')),
-                            q && (clearTimeout(q), (q = !1)),
+                            V && (clearTimeout(V), (V = !1)),
                             n && e && K.saveRange(),
                             (t = i ? N.value : z.innerHTML) !== ut.lastVal &&
                                 ((ut.lastVal = t),
@@ -64388,7 +64388,7 @@ if (
                     }
                 }),
                 (dt = function () {
-                    q && ut();
+                    V && ut();
                 }),
                 (ht = function (e) {
                     var t = e.which,
@@ -64404,8 +64404,8 @@ if (
                                 s ? (ht.triggerNext = !0)
                                 :   ut()
                             :   ht.triggerNext && (ut(), (ht.triggerNext = !1)),
-                            clearTimeout(q),
-                            (q = setTimeout(function () {
+                            clearTimeout(V),
+                            (V = setTimeout(function () {
                                 W || ut();
                             }, 1500)));
                 }),
@@ -65334,8 +65334,8 @@ if (
                     canHaveChildren: F,
                     isInline: H,
                     copyCSS: W,
-                    fixNesting: V,
-                    findCommonAncestor: q,
+                    fixNesting: q,
+                    findCommonAncestor: V,
                     getSibling: U,
                     removeWhiteSpace: Z,
                     extractContents: K,
@@ -65683,7 +65683,7 @@ if (
         function W(e, t) {
             t.style.cssText = e.style.cssText + t.style.cssText;
         }
-        function V(e) {
+        function q(e) {
             var t = function (e) {
                 for (; H(e.parentNode, !0); ) e = e.parentNode;
                 return e;
@@ -65703,7 +65703,7 @@ if (
                 }
             });
         }
-        function q(e, t) {
+        function V(e, t) {
             for (; (e = e.parentNode); ) if (x(e, t)) return e;
         }
         function U(e, t) {
@@ -66291,7 +66291,7 @@ if (
                 L,
                 R,
                 W,
-                q,
+                V,
                 U,
                 K,
                 Y,
@@ -66318,8 +66318,8 @@ if (
                 Fe,
                 He,
                 We,
-                Ve,
                 qe,
+                Ve,
                 Ue,
                 Ze,
                 Ke,
@@ -66469,7 +66469,7 @@ if (
                         p(z, 'keyup', nt),
                         p(z, 'blur', dt),
                         p(z, 'keyup', ht),
-                        p(z, 'paste', Ve),
+                        p(z, 'paste', qe),
                         p(z, i, Je),
                         p(z, s, st),
                         p(z, n, Qe),
@@ -66849,14 +66849,14 @@ if (
                         !e.defaultPrevented &&
                         (pt(), _t.closeDropDown());
                 }),
-                (Ve = function (e) {
+                (qe = function (e) {
                     var t = Le || ze,
                         i = z,
                         n = e.clipboardData,
                         s = function (e) {
                             var t = new FileReader();
                             (t.onload = function (e) {
-                                qe({
+                                Ve({
                                     html:
                                         '<img src="' + e.target.result + '" />',
                                 });
@@ -66875,7 +66875,7 @@ if (
                         }
                         (o.text = o['text/plain']),
                             (o.html = o['text/html']),
-                            qe(o);
+                            Ve(o);
                     } else if (!ye) {
                         var c = i.scrollTop;
                         for (
@@ -66891,16 +66891,16 @@ if (
                                 (i.scrollTop = c),
                                 (ye = !1),
                                 K.restoreRange(),
-                                qe({ html: e });
+                                Ve({ html: e });
                         }, 0);
                     }
                 }),
-                (qe = function (e) {
+                (Ve = function (e) {
                     var t = r('div', {}, S);
                     Y.call('pasteRaw', e),
                         I(a, 'pasteraw', e),
                         e.html ?
-                            ((t.innerHTML = e.html), V(t))
+                            ((t.innerHTML = e.html), q(t))
                         :   (t.innerHTML = X(e.text || ''));
                     var n = { val: t.innerHTML };
                     'fragmentToSource' in i &&
@@ -67020,7 +67020,7 @@ if (
                         d(n, s[o].cloneNode(!0));
                     return (
                         d(z, n),
-                        V(n),
+                        q(n),
                         u(n),
                         (t = n.innerHTML),
                         !1 !== e &&
@@ -67585,7 +67585,7 @@ if (
                             (e =
                                 !1 !== e &&
                                 !S.getElementById('sceditor-start-marker')),
-                            q && (clearTimeout(q), (q = !1)),
+                            V && (clearTimeout(V), (V = !1)),
                             n && e && K.saveRange(),
                             (t = i ? N.value : z.innerHTML) !== ut.lastVal &&
                                 ((ut.lastVal = t),
@@ -67596,7 +67596,7 @@ if (
                     }
                 }),
                 (dt = function () {
-                    q && ut();
+                    V && ut();
                 }),
                 (ht = function (e) {
                     var t = e.which,
@@ -67612,8 +67612,8 @@ if (
                                 s ? (ht.triggerNext = !0)
                                 :   ut()
                             :   ht.triggerNext && (ut(), (ht.triggerNext = !1)),
-                            clearTimeout(q),
-                            (q = setTimeout(function () {
+                            clearTimeout(V),
+                            (V = setTimeout(function () {
                                 W || ut();
                             }, 1500)));
                 }),
@@ -68542,8 +68542,8 @@ if (
                     canHaveChildren: F,
                     isInline: H,
                     copyCSS: W,
-                    fixNesting: V,
-                    findCommonAncestor: q,
+                    fixNesting: q,
+                    findCommonAncestor: V,
                     getSibling: U,
                     removeWhiteSpace: Z,
                     extractContents: K,
