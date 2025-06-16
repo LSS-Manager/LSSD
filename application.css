@@ -10139,6 +10139,8 @@ body.bigMap #main_navbar {
     font-size: 12px;
     margin-right: 5px;
     padding: 0.2em 0.6em 0.3em;
+    word-break: break-all;
+    white-space: wrap;
 }
 .building_list_fms {
     display: inline;
@@ -13615,6 +13617,7 @@ a.ui-button:active,
     display: block;
     width: 100%;
     margin-bottom: 0;
+    word-break: break-all;
 }
 .searchHelperInvisble,
 .mission_alliance_distance_hide,

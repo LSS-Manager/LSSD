@@ -3554,6 +3554,15 @@ function educationCountdown(e, t) {
             educationCountdown(e, t);
         }, 1e3));
 }
+function educationCountdownInterval(e) {
+    setupTimerNew({
+        callerId: e,
+        $timer: $(`#${e}`),
+        onTimerEnd: function (e) {
+            e.text(I18n.t('javascript.few_seconds')), location.reload();
+        },
+    });
+}
 function highlightElement(e) {
     e.removeClass('highlight'),
         setTimeout(function () {
@@ -4885,34 +4894,6 @@ function faye_subscribe(channel_update) {
 function openExternalTelegramURL(e) {
     mobileBridgeAdd('openExternalURL', { url: e });
 }
-function setupTimer(e) {
-    if (e.$timer.length) {
-        var t = new Date(e.$timer.data('end-time'));
-        if (isDateValid(t) && !(Date.now() >= t)) {
-            updateTimer({ $timer: e.$timer, endTime: t, format: e.format });
-            var i = setInterval(function () {
-                Date.now() <= t ?
-                    updateTimer({
-                        $timer: e.$timer,
-                        endTime: t,
-                        format: e.format,
-                    })
-                :   (clearInterval(i), e.onTimerEnd());
-            }, 1e3);
-        }
-    }
-}
-function updateTimer(e) {
-    var t = e.endTime - Date.now(),
-        i =
-            'long' == e.format ?
-                formatTime(Math.round(t / 1e3))
-            :   getFormattedDuration(t);
-    e.$timer.text(i);
-}
-function isDateValid(e) {
-    return e instanceof Date && !isNaN(e);
-}
 function flavouredAsset(e, t) {
     function i(e, t) {
         var i = flavourAssetOverrides[gameFlavour] || [];
@@ -6156,6 +6137,66 @@ function getPrisonClassState(e, t) {
         : e.free_cells < i ? 'btn-warning'
         : 'btn-success'
     );
+}
+function setupTimerNew(e) {
+    if (!e.$timer.length) return;
+    let t = e.callerId;
+    if (!t) {
+        let i = e.$timer[0].id;
+        i || (t = new Date().getTime()), (t = `timer_${i}`);
+    }
+    if (startedIntervals.has(t)) return startedIntervals.get(t);
+    let i = new Date(e.$timer.data('end-time'));
+    if (!isDateValid(i) || Date.now() >= i) return;
+    updateTimer({
+        callerId: t,
+        $timer: e.$timer,
+        endTime: i,
+        format: e.format,
+    });
+    const n = setInterval(function () {
+        Date.now() <= i ?
+            updateTimer({
+                callerId: t,
+                $timer: e.$timer,
+                endTime: i,
+                format: e.format,
+            })
+        :   (stopTimer(t), e.onTimerEnd(e.$timer));
+    }, 1e3);
+    startedIntervals.set(t, n);
+}
+function setupTimer(e) {
+    if (e.$timer.length) {
+        var t = new Date(e.$timer.data('end-time'));
+        if (isDateValid(t) && !(Date.now() >= t)) {
+            updateTimer({ $timer: e.$timer, endTime: t, format: e.format });
+            var i = setInterval(function () {
+                Date.now() <= t ?
+                    updateTimer({
+                        $timer: e.$timer,
+                        endTime: t,
+                        format: e.format,
+                    })
+                :   (clearInterval(i), e.onTimerEnd());
+            }, 1e3);
+        }
+    }
+}
+function stopTimer(e, t) {
+    t && clearInterval(t),
+        e && startedIntervals.has(e) && clearInterval(startedIntervals.get(e));
+}
+function updateTimer(e) {
+    let t = e.endTime - Date.now(),
+        i =
+            'long' == e.format ?
+                formatTime(Math.round(t / 1e3))
+            :   getFormattedDuration(t);
+    e.$timer.text(i);
+}
+function isDateValid(e) {
+    return e instanceof Date && !isNaN(e);
 }
 var map,
     alliance_member_buildings_show,
@@ -63989,6 +64030,7 @@ let showSeasonalEventDetails = !(
     ),
     client_uses_design_v2 = !0,
     magicValueAvailableSpace = 71;
+const startedIntervals = new Map();
 $(function () {
     function onCoinsTop() {
         return !mobile_bridge_use || (mobileBridgeAdd('coins_window', {}), !1);
