@@ -1,5 +1,5 @@
 diff --git a/application.css b/application.alt.css
-index e10bb65..49dd32d 100644
+index 91cad0c..49dd32d 100644
 --- a/application.css
 +++ b/application.alt.css
 @@ -10139,8 +10139,6 @@ body.bigMap #main_navbar {
@@ -124,7 +124,7 @@ index e10bb65..49dd32d 100644
  .task-tab-content .premium-info {
      display: flex;
      justify-content: space-between;
-@@ -14098,13 +14076,6 @@ body.dark .daily-bonuses .collect-possible-block {
+@@ -14098,33 +14076,6 @@ body.dark .daily-bonuses .collect-possible-block {
  .vehicle-prisons-filter {
      margin-bottom: 10px;
  }
@@ -132,13 +132,33 @@ index e10bb65..49dd32d 100644
 -    margin-bottom: 10px;
 -    margin-left: 5px;
 -}
+-.glyphicon.spinning {
+-    animation: spin 1s infinite linear;
+-    -webkit-animation: spin2 1s infinite linear;
+-}
+-@keyframes spin {
+-    from {
+-        transform: scale(1) rotate(0deg);
+-    }
+-    to {
+-        transform: scale(1) rotate(360deg);
+-    }
+-}
+-@-webkit-keyframes spin2 {
+-    from {
+-        -webkit-transform: rotate(0deg);
+-    }
+-    to {
+-        -webkit-transform: rotate(360deg);
+-    }
+-}
 -.prison-select .btn {
 -    margin: 1px;
 -}
  #map_adress_search_form {
      margin-left: 0px;
  }
-@@ -16691,14 +16662,6 @@ i.bbcode-link-icon {
+@@ -16711,14 +16662,6 @@ i.bbcode-link-icon {
      padding-right: 5px;
      padding-bottom: 3px;
  }
@@ -153,12 +173,16 @@ index e10bb65..49dd32d 100644
  .design-v2.design-v2.design-v2.design-v2
      .navbar-header
      .money-block
-@@ -16706,9 +16669,6 @@ i.bbcode-link-icon {
+@@ -16726,13 +16669,6 @@ i.bbcode-link-icon {
      .credits-value {
      padding-bottom: 3px;
  }
 -#event_buff_shop .money-block div {
 -    height: 65%;
+-}
+-.dark.design-v2.design-v2.design-v2.design-v2 .navbar-header .money-block a {
+-    color: #fff;
+-    background: #505050;
 -}
  .dark.design-v2.design-v2.design-v2.design-v2 .btn-default {
      background-image: linear-gradient(to bottom, #505050 0, #000 100%);
