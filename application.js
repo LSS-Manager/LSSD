@@ -5747,15 +5747,14 @@ async function activateHelpshift(e, t) {
         t && Helpshift('open');
 }
 function initEquipment(e) {
-    console.log('initEquipment'),
-        initVehiclesEquipment(
-            $('.dispatch-vehicle-equipments-container')
-                .map(function () {
-                    return $(this).data('vehicle-id');
-                })
-                .get(),
-            e
-        );
+    initVehiclesEquipment(
+        $('.dispatch-vehicle-equipments-container')
+            .map(function () {
+                return $(this).data('vehicle-id');
+            })
+            .get(),
+        e
+    );
 }
 function initVehiclesEquipment(e, t = {}) {
     function i(e) {
@@ -8743,7 +8742,7 @@ Object.values ||
                 'If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment. (Does not exclusively choose equipment).',
             automatic_text_color: 'Automatic Text Color',
             back: 'Back',
-            car_carrier: 'Wrecker or Flatbed Carrier',
+            car_carrier: 'Recovery Vehicle or Flatbed Recovery Vehicle ',
             categories: {
                 airport: 'Airport',
                 bereitschaftspolizei: 'Riot Police',
@@ -9163,7 +9162,7 @@ Object.values ||
                     'Technical Aid Organization',
                 technical_aid_organization_school: 'THW Bundesschule',
                 tow_trucks: 'Recovery Centers',
-                tow_trucks_missions: 'Tow Trucks',
+                tow_trucks_missions: 'Recovery Vehicles ',
                 user_buildings: 'My buildings',
                 user_missions: 'My missions',
                 water_watch: 'Water Rescue',
