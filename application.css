@@ -11246,7 +11246,8 @@ body.dark th.tablesorter-headerAsc {
 .search_input_field,
 #search_input_field_missions,
 .search_input,
-#search_input_field_possible_mission {
+#search_input_field_possible_mission,
+#building_name_filter {
     background-image: url(/images/search_5a5753.svg);
     background-repeat: no-repeat;
     background-size: auto 100%;
@@ -15341,6 +15342,9 @@ body.dark .dark-visible {
     display: flex;
     align-items: center;
     gap: 10px;
+}
+.education_description_container {
+    margin-top: 10px;
 } /*!
  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
  *

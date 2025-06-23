@@ -1003,7 +1003,7 @@ function prepareBuildingDomElementStr(e, t) {
     let i =
         "<li  search_attribute= '" +
         e.name +
-        "' class='building_list_li buildings_searchable' building_type_id='" +
+        "' class='building_list building_list_li buildings_searchable' building_type_id='" +
         e.building_type +
         "' leitstelle_building_id='" +
         e.lbid +
@@ -4458,7 +4458,7 @@ function leitstelleSelectionActive(e) {
     (leitstelle_building_id = e.attr('leitstelle')),
         e.addClass('btn-success').removeClass('btn-danger'),
         $(
-            ".building_list_li[leitstelle_building_id='" +
+            ".building_list[leitstelle_building_id='" +
                 leitstelle_building_id +
                 "']"
         ).removeClass('hideLeitstelle');
@@ -4467,7 +4467,7 @@ function leitstelleSelectionDeactive(e) {
     (leitstelle_building_id = e.attr('leitstelle')),
         e.removeClass('btn-success').addClass('btn-danger'),
         $(
-            ".building_list_li[leitstelle_building_id='" +
+            ".building_list[leitstelle_building_id='" +
                 leitstelle_building_id +
                 "']"
         ).addClass('hideLeitstelle');
@@ -4509,23 +4509,23 @@ function buildingSelection(e, t) {
         t && t();
 }
 function buildingSelectionActive(button) {
-    (building_type_ids = eval(button.attr('building_type_ids'))),
-        button.addClass('btn-success').removeClass('btn-danger'),
+    var building_type_ids = eval(button.attr('building_type_ids'));
+    button.addClass('btn-success').removeClass('btn-danger'),
         $.each(building_type_ids, function (e, t) {
-            $(".building_list_li[building_type_id='" + t + "']").removeClass(
+            $(".building_list[building_type_id='" + t + "']").removeClass(
                 'building-filtered-by-type'
             );
         });
 }
 function buildingSelectionDeactive(button) {
-    (building_type_ids = eval(button.attr('building_type_ids'))),
-        'undefined' != typeof building_type_ids &&
-            (button.removeClass('btn-success').addClass('btn-danger'),
-            $.each(building_type_ids, function (e, t) {
-                $(".building_list_li[building_type_id='" + t + "']").addClass(
-                    'building-filtered-by-type'
-                );
-            }));
+    var building_type_ids = eval(button.attr('building_type_ids'));
+    void 0 !== building_type_ids &&
+        (button.removeClass('btn-success').addClass('btn-danger'),
+        $.each(building_type_ids, function (e, t) {
+            $(".building_list[building_type_id='" + t + "']").addClass(
+                'building-filtered-by-type'
+            );
+        }));
 }
 function buildingSelectionSave() {
     (deactive_buttons = []),
@@ -56684,6 +56684,7 @@ var building_markers = Array(),
     mission_markers = Array(),
     mission_markers_per_id = new Map(),
     mission_position_new_marker,
+    mission_position_markers_per_id = new Map(),
     mission_timers = Array(),
     patient_timers = Array(),
     mission_vehicles = Array(),
@@ -72693,15 +72694,16 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                 return e;
             },
             leafletMissionPositionMarkerAdd: function (t) {
+                if (mission_position_markers_per_id.get(t.id)) return;
                 var i = L.icon({
                     iconUrl: '/images/letter_p.png',
                     iconSize: [32, 37],
                     iconAnchor: iconAnchorCalculate([32, 37]),
                 });
-                marker = L.marker([t.latitude, t.longitude], {
+                let n = L.marker([t.latitude, t.longitude], {
                     icon: i,
                 }).bindTooltip(t.caption);
-                var n = function (e) {
+                var s = function (e) {
                     confirm(
                         I18n.t('javascript.poi_delete', { caption: t.caption })
                     ) &&
@@ -72715,28 +72717,29 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                             cache: !1,
                         }));
                 };
-                marker.on('click', n),
-                    (marker.id = t.id),
-                    marker.addTo(
-                        map_filters_service.getMapFiltersLayers().pois
-                    ),
-                    e.push(marker);
+                n.on('click', s),
+                    (n.id = t.id),
+                    n.addTo(map_filters_service.getMapFiltersLayers().pois),
+                    e.push(n),
+                    mission_position_markers_per_id.set(n.id, n);
             },
-            leafletMissionPositionMarkerDelete: function (t) {
-                (marker = map_filters_service
+            leafletMissionPositionMarkerDelete: function (e) {
+                let t = map_filters_service
                     .getMapFiltersLayers()
-                    .pois.getLayer(t)),
-                    map_filters_service
-                        .getMapFiltersLayers()
-                        .pois.removeLayer(t),
-                    (index = e.indexOf(marker)),
-                    -1 !== index && e.splice(index, 1);
+                    .pois.getLayer(e);
+                map_filters_service.getMapFiltersLayers().pois.removeLayer(e),
+                    mission_position_markers_per_id.delete(t.id);
             },
             mapkitMissionPositionMarkerAdd: function (t) {
+                if (mission_position_markers_per_id.get(t.id)) return;
                 var i = function () {
-                    confirm(
-                        I18n.t('javascript.poi_delete', { caption: t.caption })
-                    ) &&
+                    (
+                        confirm(
+                            I18n.t('javascript.poi_delete', {
+                                caption: t.caption,
+                            })
+                        )
+                    ) ?
                         (map_pois_service.mapkitMissionPositionMarkerDelete(
                             t.id
                         ),
@@ -72745,38 +72748,30 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                             type: 'POST',
                             data: { _method: 'delete' },
                             cache: !1,
-                        }));
+                        }))
+                    :   (this.selected = !1);
                 };
-                if ('undefined' != typeof mapkit) {
-                    var n = new mapkit.ImageAnnotation(
-                        new mapkit.Coordinate(t.latitude, t.longitude),
-                        {
-                            url: { 1: '/images/letter_p.png' },
-                            calloutEnabled: !0,
-                        }
-                    );
-                    n.addEventListener('select', i, n),
-                        map.addAnnotation(n),
-                        (n.element.className = 'mapkit-marker');
-                }
-                (n.id = t.id), e.push(n);
+                if (!1 === isMapKitMap()) return;
+                let n = new mapkit.ImageAnnotation(
+                    new mapkit.Coordinate(t.latitude, t.longitude),
+                    { url: { 1: '/images/letter_p.png' }, calloutEnabled: !0 }
+                );
+                n.addEventListener('select', i, n),
+                    (n.element.className = 'mapkit-marker'),
+                    map.addAnnotation(n),
+                    (n.id = t.id),
+                    e.push(n),
+                    mission_position_markers_per_id.set(n.id, n);
             },
-            mapkitMissionPositionMarkerDelete: function (t) {
-                var i = map_pois_service
-                    .getMissionPoiMarkersArray()
-                    .find(function (e) {
-                        return e.id === t;
-                    });
-                (e = e.filter(function (e) {
-                    return e.id !== i.id;
-                })),
-                    map.removeAnnotation(i);
+            mapkitMissionPositionMarkerDelete: function (e) {
+                const t = mission_position_markers_per_id.get(e);
+                t && map.removeAnnotation(t);
             },
             mapkitMissionPositionMarkerDeleteAll: function () {
-                $.each(e, function (e, t) {
-                    map.removeAnnotation(t);
+                mission_position_markers_per_id.forEach(function () {
+                    map.removeAnnotation(mission_marker);
                 }),
-                    (e = Array());
+                    (mission_position_markers_per_id = new Map());
             },
         };
     })(),

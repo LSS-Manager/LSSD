@@ -1,5 +1,5 @@
 diff --git a/application.css b/application.alt.css
-index 91cad0c..49dd32d 100644
+index 0cd0771..49dd32d 100644
 --- a/application.css
 +++ b/application.alt.css
 @@ -10139,8 +10139,6 @@ body.bigMap #main_navbar {
@@ -100,7 +100,17 @@ index 91cad0c..49dd32d 100644
  .navbar-header .money-block a span.credits-value {
      margin-top: 2px;
  }
-@@ -13617,7 +13605,6 @@ a.ui-button:active,
+@@ -11246,8 +11234,7 @@ body.dark th.tablesorter-headerAsc {
+ .search_input_field,
+ #search_input_field_missions,
+ .search_input,
+-#search_input_field_possible_mission,
+-#building_name_filter {
++#search_input_field_possible_mission {
+     background-image: url(/images/search_5a5753.svg);
+     background-repeat: no-repeat;
+     background-size: auto 100%;
+@@ -13618,7 +13605,6 @@ a.ui-button:active,
      display: block;
      width: 100%;
      margin-bottom: 0;
@@ -108,7 +118,7 @@ index 91cad0c..49dd32d 100644
  }
  .searchHelperInvisble,
  .mission_alliance_distance_hide,
-@@ -14047,15 +14034,6 @@ body.dark .daily-bonuses .collect-possible-block {
+@@ -14048,15 +14034,6 @@ body.dark .daily-bonuses .collect-possible-block {
  .tasks_and_events_navbar .badge {
      margin-top: -1px;
  }
@@ -124,7 +134,7 @@ index 91cad0c..49dd32d 100644
  .task-tab-content .premium-info {
      display: flex;
      justify-content: space-between;
-@@ -14098,33 +14076,6 @@ body.dark .daily-bonuses .collect-possible-block {
+@@ -14099,33 +14076,6 @@ body.dark .daily-bonuses .collect-possible-block {
  .vehicle-prisons-filter {
      margin-bottom: 10px;
  }
@@ -158,7 +168,17 @@ index 91cad0c..49dd32d 100644
  #map_adress_search_form {
      margin-left: 0px;
  }
-@@ -16711,14 +16662,6 @@ i.bbcode-link-icon {
+@@ -15342,9 +15292,6 @@ body.dark .dark-visible {
+     display: flex;
+     align-items: center;
+     gap: 10px;
+-}
+-.education_description_container {
+-    margin-top: 10px;
+ } /*!
+  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
+  *
+@@ -16715,14 +16662,6 @@ i.bbcode-link-icon {
      padding-right: 5px;
      padding-bottom: 3px;
  }
@@ -173,7 +193,7 @@ index 91cad0c..49dd32d 100644
  .design-v2.design-v2.design-v2.design-v2
      .navbar-header
      .money-block
-@@ -16726,13 +16669,6 @@ i.bbcode-link-icon {
+@@ -16730,13 +16669,6 @@ i.bbcode-link-icon {
      .credits-value {
      padding-bottom: 3px;
  }

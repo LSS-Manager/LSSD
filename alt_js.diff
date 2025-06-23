@@ -1,5 +1,5 @@
 diff --git a/application.js b/application.alt.js
-index 113ca02..c3cf0bc 100644
+index a8a0d3e..c3cf0bc 100644
 --- a/application.js
 +++ b/application.alt.js
 @@ -27,8 +27,8 @@ function massMissionMarkerAdd(e) {
@@ -365,6 +365,15 @@ index 113ca02..c3cf0bc 100644
      }),
          document.getElementById('building_list').appendChild(n),
          $.each(e, function (e, t) {
+@@ -1003,7 +1005,7 @@ function prepareBuildingDomElementStr(e, t) {
+     let i =
+         "<li  search_attribute= '" +
+         e.name +
+-        "' class='building_list building_list_li buildings_searchable' building_type_id='" +
++        "' class='building_list_li buildings_searchable' building_type_id='" +
+         e.building_type +
+         "' leitstelle_building_id='" +
+         e.lbid +
 @@ -1072,13 +1074,13 @@ function building_maps_redraw() {
          t = [];
      const i = isLeaflet();
@@ -1337,6 +1346,24 @@ index 113ca02..c3cf0bc 100644
      });
  }
  function missionSelectionSave(e) {
+@@ -4458,7 +4433,7 @@ function leitstelleSelectionActive(e) {
+     (leitstelle_building_id = e.attr('leitstelle')),
+         e.addClass('btn-success').removeClass('btn-danger'),
+         $(
+-            ".building_list[leitstelle_building_id='" +
++            ".building_list_li[leitstelle_building_id='" +
+                 leitstelle_building_id +
+                 "']"
+         ).removeClass('hideLeitstelle');
+@@ -4467,7 +4442,7 @@ function leitstelleSelectionDeactive(e) {
+     (leitstelle_building_id = e.attr('leitstelle')),
+         e.removeClass('btn-success').addClass('btn-danger'),
+         $(
+-            ".building_list[leitstelle_building_id='" +
++            ".building_list_li[leitstelle_building_id='" +
+                 leitstelle_building_id +
+                 "']"
+         ).addClass('hideLeitstelle');
 @@ -4478,7 +4453,7 @@ function buildingSelectionOnly(e, t) {
          s = i.filter(function () {
              return $(this).hasClass('btn-danger');
@@ -1357,6 +1384,41 @@ index 113ca02..c3cf0bc 100644
          ) ?
              buildingSelectionActive($('#' + t))
          :   buildingSelectionDeactive($('#' + t));
+@@ -4509,23 +4484,23 @@ function buildingSelection(e, t) {
+         t && t();
+ }
+ function buildingSelectionActive(button) {
+-    var building_type_ids = eval(button.attr('building_type_ids'));
+-    button.addClass('btn-success').removeClass('btn-danger'),
++    (building_type_ids = eval(button.attr('building_type_ids'))),
++        button.addClass('btn-success').removeClass('btn-danger'),
+         $.each(building_type_ids, function (e, t) {
+-            $(".building_list[building_type_id='" + t + "']").removeClass(
++            $(".building_list_li[building_type_id='" + t + "']").removeClass(
+                 'building-filtered-by-type'
+             );
+         });
+ }
+ function buildingSelectionDeactive(button) {
+-    var building_type_ids = eval(button.attr('building_type_ids'));
+-    void 0 !== building_type_ids &&
+-        (button.removeClass('btn-success').addClass('btn-danger'),
+-        $.each(building_type_ids, function (e, t) {
+-            $(".building_list[building_type_id='" + t + "']").addClass(
+-                'building-filtered-by-type'
+-            );
+-        }));
++    (building_type_ids = eval(button.attr('building_type_ids'))),
++        'undefined' != typeof building_type_ids &&
++            (button.removeClass('btn-success').addClass('btn-danger'),
++            $.each(building_type_ids, function (e, t) {
++                $(".building_list_li[building_type_id='" + t + "']").addClass(
++                    'building-filtered-by-type'
++                );
++            }));
+ }
+ function buildingSelectionSave() {
+     (deactive_buttons = []),
 @@ -4612,29 +4587,29 @@ function aao_available(e, t) {
      var s = $('#aao_' + e);
      if (t || !$('#available_aao_' + e).hasClass('label-success')) {
@@ -30055,7 +30117,15 @@ index 113ca02..c3cf0bc 100644
              );
          }
          function p(e) {
-@@ -56706,7 +59254,6 @@ var building_markers = Array(),
+@@ -56684,7 +59232,6 @@ var building_markers = Array(),
+     mission_markers = Array(),
+     mission_markers_per_id = new Map(),
+     mission_position_new_marker,
+-    mission_position_markers_per_id = new Map(),
+     mission_timers = Array(),
+     patient_timers = Array(),
+     mission_vehicles = Array(),
+@@ -56707,7 +59254,6 @@ var building_markers = Array(),
      alliance_mission_distance = !1,
      mobile_bridge_content = Array(),
      mobile_bridge_use = !1,
@@ -30063,7 +30133,7 @@ index 113ca02..c3cf0bc 100644
      mixed_mobile_desktop_mode = !1,
      mobile_version = 1,
      vehicle_markers = Array(),
-@@ -56789,7 +59336,6 @@ const AAO_MULTIPLE_KEYS = [
+@@ -56790,7 +59336,6 @@ const AAO_MULTIPLE_KEYS = [
      'water_damage_pump_value',
      'water_damage_pump_value_only_pumps',
      'foam_amount',
@@ -30071,7 +30141,7 @@ index 113ca02..c3cf0bc 100644
      'water_amount_water_carrier',
      'water_amount_tlf_water_carrier',
      'police_horse_count',
-@@ -56805,7 +59351,25 @@ let showSeasonalEventDetails = !(
+@@ -56806,7 +59351,25 @@ let showSeasonalEventDetails = !(
      ),
      client_uses_design_v2 = !0,
      magicValueAvailableSpace = 71;
@@ -30098,7 +30168,7 @@ index 113ca02..c3cf0bc 100644
  $(function () {
      function onCoinsTop() {
          return !mobile_bridge_use || (mobileBridgeAdd('coins_window', {}), !1);
-@@ -57328,24 +59892,6 @@ $(function () {
+@@ -57329,24 +59892,6 @@ $(function () {
                  'police_spikes',
                  I18n.t('intervention_order.vehicles.police_spikes'),
              ],
@@ -30123,7 +30193,7 @@ index 113ca02..c3cf0bc 100644
          ]),
          $('#restore_map').click(function () {
              mapViewRestore();
-@@ -57630,41 +60176,73 @@ $(function () {
+@@ -57631,41 +60176,73 @@ $(function () {
              );
          }),
          $('body').on('click', '.map_position_mover', function () {
@@ -30231,7 +30301,7 @@ index 113ca02..c3cf0bc 100644
          });
      const timedEvents = [
          '.timed-event',
-@@ -57920,22 +60498,22 @@ if (
+@@ -57921,22 +60498,22 @@ if (
              (n.TRANSITION_DURATION = 150),
              (n.prototype.close = function (t) {
                  function i() {
@@ -30266,7 +30336,7 @@ index 113ca02..c3cf0bc 100644
                                  .one('bsTransitionEnd', i)
                                  .emulateTransitionEnd(n.TRANSITION_DURATION)
                          :   i());
-@@ -57954,8 +60532,8 @@ if (
+@@ -57955,8 +60532,8 @@ if (
              return this.each(function () {
                  var n = e(this),
                      s = n.data('bs.button'),
@@ -30277,7 +30347,7 @@ index 113ca02..c3cf0bc 100644
                      'toggle' == t ? s.toggle() : t && s.setState(t);
              });
          }
-@@ -57970,12 +60548,12 @@ if (
+@@ -57971,12 +60548,12 @@ if (
                  var i = 'disabled',
                      n = this.$element,
                      s = n.is('input') ? 'val' : 'html',
@@ -30293,7 +30363,7 @@ index 113ca02..c3cf0bc 100644
                                  'loadingText' == t ?
                                      ((this.isLoading = !0),
                                      n.addClass(i).attr(i, i))
-@@ -58043,17 +60621,17 @@ if (
+@@ -58044,17 +60621,17 @@ if (
              return this.each(function () {
                  var n = e(this),
                      s = n.data('bs.carousel'),
@@ -30316,7 +30386,7 @@ index 113ca02..c3cf0bc 100644
              });
          }
          var i = function (t, i) {
-@@ -58166,12 +60744,12 @@ if (
+@@ -58167,12 +60744,12 @@ if (
              }),
              (i.prototype.slide = function (t, n) {
                  var s = this.$element.find('.item.active'),
@@ -30333,7 +30403,7 @@ index 113ca02..c3cf0bc 100644
                      u = e.Event('slide.bs.carousel', {
                          relatedTarget: c,
                          direction: r,
-@@ -58179,12 +60757,12 @@ if (
+@@ -58180,12 +60757,12 @@ if (
                  if ((this.$element.trigger(u), !u.isDefaultPrevented())) {
                      if (
                          ((this.sliding = !0),
@@ -30348,7 +30418,7 @@ index 113ca02..c3cf0bc 100644
                          );
                          d && d.addClass('active');
                      }
-@@ -58197,13 +60775,13 @@ if (
+@@ -58198,13 +60775,13 @@ if (
                              e.support.transition &&
                              this.$element.hasClass('slide')
                          ) ?
@@ -30366,7 +30436,7 @@ index 113ca02..c3cf0bc 100644
                                          .removeClass([t, r].join(' '))
                                          .addClass('active'),
                                          s.removeClass(['active', r].join(' ')),
-@@ -58214,10 +60792,10 @@ if (
+@@ -58215,10 +60792,10 @@ if (
                                  })
                                  .emulateTransitionEnd(i.TRANSITION_DURATION))
                          :   (s.removeClass('active'),
@@ -30379,7 +30449,7 @@ index 113ca02..c3cf0bc 100644
                          this
                      );
                  }
-@@ -58231,17 +60809,17 @@ if (
+@@ -58232,17 +60809,17 @@ if (
          var s = function (i) {
              var n,
                  s = e(this),
@@ -30403,7 +30473,7 @@ index 113ca02..c3cf0bc 100644
                      i.preventDefault();
              }
          };
-@@ -58268,14 +60846,14 @@ if (
+@@ -58269,14 +60846,14 @@ if (
              return this.each(function () {
                  var i = e(this),
                      s = i.data('bs.collapse'),
@@ -30421,7 +30491,7 @@ index 113ca02..c3cf0bc 100644
                      'string' == typeof t && s[t]();
              });
          }
-@@ -58316,19 +60894,19 @@ if (
+@@ -58317,19 +60894,19 @@ if (
                              ((t = s.data('bs.collapse')), t && t.transitioning)
                          )
                      ) {
@@ -30445,7 +30515,7 @@ index 113ca02..c3cf0bc 100644
                                  .attr('aria-expanded', !0),
                                  this.$trigger
                                      .removeClass('collapsed')
-@@ -58338,16 +60916,16 @@ if (
+@@ -58339,16 +60916,16 @@ if (
                                  this.$element
                                      .removeClass('collapsing')
                                      .addClass('collapse in')
@@ -30465,7 +30535,7 @@ index 113ca02..c3cf0bc 100644
                          }
                      }
                  }
-@@ -58416,9 +60994,9 @@ if (
+@@ -58417,9 +60994,9 @@ if (
                  function (n) {
                      var s = e(this);
                      s.attr('data-target') || n.preventDefault();
@@ -30478,7 +30548,7 @@ index 113ca02..c3cf0bc 100644
                  }
              );
      })(jQuery),
-@@ -58437,22 +61015,22 @@ if (
+@@ -58438,22 +61015,22 @@ if (
          function i(i) {
              (i && 3 === i.which) ||
                  (e(s).remove(),
@@ -30505,7 +30575,7 @@ index 113ca02..c3cf0bc 100644
                                      ))));
                  }));
          }
-@@ -58460,43 +61038,43 @@ if (
+@@ -58461,43 +61038,43 @@ if (
              return this.each(function () {
                  var i = e(this),
                      n = i.data('bs.dropdown');
@@ -30561,7 +30631,7 @@ index 113ca02..c3cf0bc 100644
                  if (
                      /(38|40|27|32)/.test(i.which) &&
                      !/input|textarea/i.test(i.target.tagName)
-@@ -58508,10 +61086,10 @@ if (
+@@ -58509,10 +61086,10 @@ if (
                          !n.is('.disabled, :disabled'))
                      ) {
                          var s = t(n),
@@ -30575,7 +30645,7 @@ index 113ca02..c3cf0bc 100644
                                  n.trigger('click')
                              );
                          var r = ' li:not(.disabled):visible a',
-@@ -58528,7 +61106,7 @@ if (
+@@ -58529,7 +61106,7 @@ if (
              });
          var r = e.fn.dropdown;
          (e.fn.dropdown = n),
@@ -30584,7 +30654,7 @@ index 113ca02..c3cf0bc 100644
              (e.fn.dropdown.noConflict = function () {
                  return (e.fn.dropdown = r), this;
              }),
-@@ -58541,12 +61119,12 @@ if (
+@@ -58542,12 +61119,12 @@ if (
                          e.stopPropagation();
                      }
                  )
@@ -30600,7 +30670,7 @@ index 113ca02..c3cf0bc 100644
                  );
      })(jQuery),
      (function (e) {
-@@ -58554,15 +61132,15 @@ if (
+@@ -58555,15 +61132,15 @@ if (
          function t(t, n) {
              return this.each(function () {
                  var s = e(this),
@@ -30620,7 +30690,7 @@ index 113ca02..c3cf0bc 100644
              });
          }
          var i = function (t, i) {
-@@ -58630,16 +61208,16 @@ if (
+@@ -58631,16 +61208,16 @@ if (
                                  s && n.$element[0].offsetWidth,
                                  n.$element.addClass('in'),
                                  n.enforceFocus();
@@ -30640,7 +30710,7 @@ index 113ca02..c3cf0bc 100644
                          }));
              }),
              (i.prototype.hide = function (t) {
-@@ -58715,7 +61293,7 @@ if (
+@@ -58716,7 +61293,7 @@ if (
                  var n = this,
                      s = this.$element.hasClass('fade') ? 'fade' : '';
                  if (this.isShown && this.options.backdrop) {
@@ -30649,7 +30719,7 @@ index 113ca02..c3cf0bc 100644
                      if (
                          ((this.$backdrop = e(document.createElement('div'))
                              .addClass('modal-backdrop ' + s)
-@@ -58733,12 +61311,12 @@ if (
+@@ -58734,12 +61311,12 @@ if (
                                          );
                              }, this)
                          ),
@@ -30664,7 +30734,7 @@ index 113ca02..c3cf0bc 100644
                          this.$backdrop
                              .one('bsTransitionEnd', t)
                              .emulateTransitionEnd(
-@@ -58747,16 +61325,16 @@ if (
+@@ -58748,16 +61325,16 @@ if (
                      :   t();
                  } else if (!this.isShown && this.$backdrop) {
                      this.$backdrop.removeClass('in');
@@ -30684,7 +30754,7 @@ index 113ca02..c3cf0bc 100644
                  } else t && t();
              }),
              (i.prototype.handleUpdate = function () {
-@@ -58815,26 +61393,26 @@ if (
+@@ -58816,26 +61393,26 @@ if (
                  function (i) {
                      var n = e(this),
                          s = n.attr('href'),
@@ -30718,7 +30788,7 @@ index 113ca02..c3cf0bc 100644
                  }
              );
      })(jQuery),
-@@ -58844,9 +61422,9 @@ if (
+@@ -58845,9 +61422,9 @@ if (
              return this.each(function () {
                  var n = e(this),
                      s = n.data('bs.tooltip'),
@@ -30730,7 +30800,7 @@ index 113ca02..c3cf0bc 100644
                      'string' == typeof t && s[t]());
              });
          }
-@@ -58899,20 +61477,20 @@ if (
+@@ -58900,20 +61477,20 @@ if (
                              ' on the window.document object!'
                      );
                  for (
@@ -30758,7 +30828,7 @@ index 113ca02..c3cf0bc 100644
                          this.$element.on(
                              r + '.' + this.type,
                              this.options.selector,
-@@ -59025,35 +61603,35 @@ if (
+@@ -59026,35 +61603,35 @@ if (
                      );
                      if (t.isDefaultPrevented() || !n) return;
                      var s = this,
@@ -30805,7 +30875,7 @@ index 113ca02..c3cf0bc 100644
                      if (c) {
                          var p = r,
                              m = this.getPosition(this.$viewport);
-@@ -59063,7 +61641,7 @@ if (
+@@ -59064,7 +61641,7 @@ if (
                              : 'right' == r && u.right + d > m.width ? 'left'
                              : 'left' == r && u.left - d < m.left ? 'right'
                              : r),
@@ -30814,7 +30884,7 @@ index 113ca02..c3cf0bc 100644
                      }
                      var _ = this.getCalculatedOffset(r, u, d, h);
                      this.applyPlacement(_, r);
-@@ -59074,7 +61652,7 @@ if (
+@@ -59075,7 +61652,7 @@ if (
                              'out' == e && s.leave(s);
                      };
                      e.support.transition && this.$tip.hasClass('fade') ?
@@ -30823,7 +30893,7 @@ index 113ca02..c3cf0bc 100644
                              .one('bsTransitionEnd', f)
                              .emulateTransitionEnd(i.TRANSITION_DURATION)
                      :   f();
-@@ -59083,12 +61661,12 @@ if (
+@@ -59084,12 +61661,12 @@ if (
              (i.prototype.applyPlacement = function (t, i) {
                  var n = this.tip(),
                      s = n[0].offsetWidth,
@@ -30840,7 +30910,7 @@ index 113ca02..c3cf0bc 100644
                      (t.left += r),
                      e.offset.setOffset(
                          n[0],
-@@ -59108,11 +61686,11 @@ if (
+@@ -59109,11 +61686,11 @@ if (
                      n.addClass('in');
                  var l = n[0].offsetWidth,
                      c = n[0].offsetHeight;
@@ -30854,7 +30924,7 @@ index 113ca02..c3cf0bc 100644
                      p = d ? 'offsetWidth' : 'offsetHeight';
                  n.offset(t), this.replaceArrow(h, n[0][p], d);
              }),
-@@ -59131,21 +61709,21 @@ if (
+@@ -59132,21 +61709,21 @@ if (
              }),
              (i.prototype.hide = function (t) {
                  function n() {
@@ -30884,7 +30954,7 @@ index 113ca02..c3cf0bc 100644
                                  .one('bsTransitionEnd', n)
                                  .emulateTransitionEnd(i.TRANSITION_DURATION)
                          :   n(),
-@@ -59174,8 +61752,8 @@ if (
+@@ -59175,8 +61752,8 @@ if (
                          width: s.right - s.left,
                          height: s.bottom - s.top,
                      }));
@@ -30895,7 +30965,7 @@ index 113ca02..c3cf0bc 100644
                          scroll:
                              n ?
                                  document.documentElement.scrollTop ||
-@@ -59189,7 +61767,7 @@ if (
+@@ -59190,7 +61767,7 @@ if (
                                  height: e(window).height(),
                              }
                          :   null;
@@ -30904,7 +30974,7 @@ index 113ca02..c3cf0bc 100644
              }),
              (i.prototype.getCalculatedOffset = function (e, t, i, n) {
                  return (
-@@ -59211,23 +61789,23 @@ if (
+@@ -59212,23 +61789,23 @@ if (
              (i.prototype.getViewportAdjustedDelta = function (e, t, i, n) {
                  var s = { top: 0, left: 0 };
                  if (!this.$viewport) return s;
@@ -30940,7 +31010,7 @@ index 113ca02..c3cf0bc 100644
                  }
                  return s;
              }),
-@@ -59311,9 +61889,9 @@ if (
+@@ -59312,9 +61889,9 @@ if (
              return this.each(function () {
                  var n = e(this),
                      s = n.data('bs.popover'),
@@ -30952,7 +31022,7 @@ index 113ca02..c3cf0bc 100644
                      'string' == typeof t && s[t]());
              });
          }
-@@ -59397,8 +61975,8 @@ if (
+@@ -59398,8 +61975,8 @@ if (
              return this.each(function () {
                  var n = e(this),
                      s = n.data('bs.scrollspy'),
@@ -30963,7 +31033,7 @@ index 113ca02..c3cf0bc 100644
                      'string' == typeof i && s[i]();
              });
          }
-@@ -59428,12 +62006,12 @@ if (
+@@ -59429,12 +62006,12 @@ if (
                          .map(function () {
                              var t = e(this),
                                  s = t.data('target') || t.attr('href'),
@@ -30981,7 +31051,7 @@ index 113ca02..c3cf0bc 100644
                                      ]) ||
                                  null
                              );
-@@ -59451,17 +62029,17 @@ if (
+@@ -59452,17 +62029,17 @@ if (
                      i = this.getScrollHeight(),
                      n = this.options.offset + i - this.$scrollElement.height(),
                      s = this.offsets,
@@ -31005,7 +31075,7 @@ index 113ca02..c3cf0bc 100644
              }),
              (t.prototype.activate = function (t) {
                  (this.activeTarget = t), this.clear();
-@@ -59524,12 +62102,12 @@ if (
+@@ -59525,12 +62102,12 @@ if (
                      !t.parent('li').hasClass('active'))
                  ) {
                      var s = i.find('.active:last a'),
@@ -31023,7 +31093,7 @@ index 113ca02..c3cf0bc 100644
                      ) {
                          var r = e(n);
                          this.activate(t.closest('li'), i),
-@@ -59547,8 +62125,8 @@ if (
+@@ -59548,8 +62125,8 @@ if (
                  }
              }),
              (i.prototype.activate = function (t, n, s) {
@@ -31034,7 +31104,7 @@ index 113ca02..c3cf0bc 100644
                          .removeClass('active')
                          .find('> .dropdown-menu > .active')
                          .removeClass('active')
-@@ -59571,18 +62149,18 @@ if (
+@@ -59572,18 +62149,18 @@ if (
                                  .attr('aria-expanded', !0),
                          s && s();
                  }
@@ -31060,7 +31130,7 @@ index 113ca02..c3cf0bc 100644
              });
          var n = e.fn.tab;
          (e.fn.tab = t),
-@@ -59603,8 +62181,8 @@ if (
+@@ -59604,8 +62181,8 @@ if (
              return this.each(function () {
                  var n = e(this),
                      s = n.data('bs.affix'),
@@ -31071,7 +31141,7 @@ index 113ca02..c3cf0bc 100644
                      'string' == typeof t && s[t]();
              });
          }
-@@ -59630,18 +62208,18 @@ if (
+@@ -59631,18 +62208,18 @@ if (
              (i.DEFAULTS = { offset: 0, target: window }),
              (i.prototype.getState = function (e, t, i, n) {
                  var s = this.$target.scrollTop(),
@@ -31096,7 +31166,7 @@ index 113ca02..c3cf0bc 100644
              }),
              (i.prototype.getPinnedOffset = function () {
                  if (this.pinnedOffset) return this.pinnedOffset;
-@@ -59658,15 +62236,15 @@ if (
+@@ -59659,15 +62236,15 @@ if (
                      var t = this.$element.height(),
                          n = this.options.offset,
                          s = n.top,
@@ -31117,7 +31187,7 @@ index 113ca02..c3cf0bc 100644
                      if (this.affixed != r) {
                          null != this.unpin && this.$element.css('top', '');
                          var l = 'affix' + (r ? '-' + r : ''),
-@@ -59683,7 +62261,7 @@ if (
+@@ -59684,7 +62261,7 @@ if (
                                      l.replace('affix', 'affixed') + '.bs.affix'
                                  );
                      }
@@ -31126,7 +31196,7 @@ index 113ca02..c3cf0bc 100644
                  }
              });
          var n = e.fn.affix;
-@@ -59833,10 +62411,10 @@ if (
+@@ -59834,10 +62411,10 @@ if (
                                                  s.attr('src', n[t]));
                                              break;
                                          case 'progress':
@@ -31139,7 +31209,7 @@ index 113ca02..c3cf0bc 100644
                                                  this.$ele
                                                      .find(
                                                          '[data-notify="progressbar"] > div'
-@@ -59861,11 +62439,11 @@ if (
+@@ -59862,11 +62439,11 @@ if (
                                                  )
                                                  .html(n[t]);
                                      }
@@ -31153,7 +31223,7 @@ index 113ca02..c3cf0bc 100644
                              },
                              close: function () {
                                  e.close();
-@@ -59954,7 +62532,7 @@ if (
+@@ -59955,7 +62532,7 @@ if (
                              zIndex: this.settings.z_index,
                          },
                          s = !1,
@@ -31162,7 +31232,7 @@ index 113ca02..c3cf0bc 100644
                      switch (
                          (e(
                              '[data-notify-position="' +
-@@ -59965,9 +62543,9 @@ if (
+@@ -59966,9 +62543,9 @@ if (
                          ).each(function () {
                              return (i = Math.max(
                                  i,
@@ -31174,7 +31244,7 @@ index 113ca02..c3cf0bc 100644
                              ));
                          }),
                          1 == this.settings.newest_on_top &&
-@@ -60162,23 +62740,23 @@ if (
+@@ -60163,23 +62740,23 @@ if (
                      n = t;
                  [].shift.apply(i);
                  var s,
@@ -31207,7 +31277,7 @@ index 113ca02..c3cf0bc 100644
                                  );
                                  (l.template = e.extend(
                                      {},
-@@ -60187,21 +62765,21 @@ if (
+@@ -60188,21 +62765,21 @@ if (
                                          e.fn.selectpicker.defaults.template
                                      :   {},
                                      t.data().template,
@@ -31235,7 +31305,7 @@ index 113ca02..c3cf0bc 100644
              }
              String.prototype.includes ||
                  (function () {
-@@ -60221,8 +62799,8 @@ if (
+@@ -60222,8 +62799,8 @@ if (
                              if (t && '[object RegExp]' == e.call(t))
                                  throw new TypeError();
                              var s = n.length,
@@ -31246,7 +31316,7 @@ index 113ca02..c3cf0bc 100644
                                  r =
                                      arguments.length > 1 ?
                                          arguments[1]
-@@ -60230,8 +62808,8 @@ if (
+@@ -60231,8 +62808,8 @@ if (
                                  l = r ? Number(r) : 0;
                              return (
                                  l != l && (l = 0),
@@ -31257,7 +31327,7 @@ index 113ca02..c3cf0bc 100644
                              );
                          };
                      t ?
-@@ -60260,16 +62838,16 @@ if (
+@@ -60261,16 +62838,16 @@ if (
                                      throw new TypeError();
                                  var n = i.length,
                                      s = String(e),
@@ -31279,7 +31349,7 @@ index 113ca02..c3cf0bc 100644
                                      if (i.charCodeAt(l + c) != s.charCodeAt(c))
                                          return !1;
                                  return !0;
-@@ -60296,7 +62874,7 @@ if (
+@@ -60297,7 +62874,7 @@ if (
                  );
              };
              var s = null,
@@ -31288,7 +31358,7 @@ index 113ca02..c3cf0bc 100644
                      try {
                          return new Event('change'), !0;
                      } catch (e) {
-@@ -60307,7 +62885,7 @@ if (
+@@ -60308,7 +62885,7 @@ if (
                  var t,
                      i = this[0];
                  i.dispatchEvent ?
@@ -31297,7 +31367,7 @@ index 113ca02..c3cf0bc 100644
                          (t = new Event(e, { bubbles: !0 }))
                      :   (t = document.createEvent('Event')).initEvent(
                              e,
-@@ -60356,7 +62934,7 @@ if (
+@@ -60357,7 +62934,7 @@ if (
                          .toUpperCase()
                          .startsWith(n[3].toUpperCase());
                  });
@@ -31306,7 +31376,7 @@ index 113ca02..c3cf0bc 100644
                      '&amp;': '&',
                      '&lt;': '<',
                      '&gt;': '>',
-@@ -60386,7 +62964,7 @@ if (
+@@ -60387,7 +62964,7 @@ if (
                      "'": '&#x27;',
                      '`': '&#x60;',
                  }),
@@ -31315,7 +31385,7 @@ index 113ca02..c3cf0bc 100644
                  u = function (t, i) {
                      n.useDefault ||
                          ((e.valHooks.select.set = n._set), (n.useDefault = !0)),
-@@ -60574,7 +63152,7 @@ if (
+@@ -60575,7 +63152,7 @@ if (
                                      this.options.header +
                                      '</div>'
                                  :   '',
@@ -31324,7 +31394,7 @@ index 113ca02..c3cf0bc 100644
                                  this.options.liveSearch ?
                                      '<div class="bs-searchbox"><input type="text" class="form-control" autocomplete="off"' +
                                      ((
-@@ -60587,7 +63165,7 @@ if (
+@@ -60588,7 +63165,7 @@ if (
                                          '"') +
                                      ' role="textbox" aria-label="Search"></div>'
                                  :   '',
@@ -31333,7 +31403,7 @@ index 113ca02..c3cf0bc 100644
                                  this.multiple && this.options.actionsBox ?
                                      '<div class="bs-actionsbox"><div class="btn-group btn-group-sm btn-block"><button type="button" class="actions-btn bs-select-all btn btn-default">' +
                                      this.options.selectAllText +
-@@ -60613,8 +63191,8 @@ if (
+@@ -60614,8 +63191,8 @@ if (
                                  this.options.template.caret +
                                  '</span></button><div class="dropdown-menu open" role="combobox">' +
                                  s +
@@ -31343,7 +31413,7 @@ index 113ca02..c3cf0bc 100644
                                  '<ul class="dropdown-menu inner" role="listbox" aria-expanded="false"></ul>' +
                                  r +
                                  '</div></div>';
-@@ -60633,8 +63211,8 @@ if (
+@@ -60634,8 +63211,8 @@ if (
                          var i = this,
                              n = [],
                              s = 0,
@@ -31354,7 +31424,7 @@ index 113ca02..c3cf0bc 100644
                              r = function (e, t, i, n) {
                                  return (
                                      '<li' +
-@@ -60652,18 +63230,18 @@ if (
+@@ -60653,18 +63230,18 @@ if (
                                      '</li>'
                                  );
                              },
@@ -31377,7 +31447,7 @@ index 113ca02..c3cf0bc 100644
                                      :   '') +
                                      ' role="option">' +
                                      n +
-@@ -60677,52 +63255,52 @@ if (
+@@ -60678,52 +63255,52 @@ if (
                          if (
                              this.options.title &&
                              !this.multiple &&
@@ -31448,7 +31518,7 @@ index 113ca02..c3cf0bc 100644
                                          b = 'OPTGROUP' === v[0].tagName,
                                          y = b && v[0].disabled,
                                          w = this.disabled || y;
-@@ -60734,24 +63312,24 @@ if (
+@@ -60735,24 +63312,24 @@ if (
                                              ((w && !b) || y))
                                      )
                                          return (
@@ -31478,7 +31548,7 @@ index 113ca02..c3cf0bc 100644
                                      ) {
                                          if (i.options.hideDisabled && w) {
                                              if (
-@@ -60766,13 +63344,13 @@ if (
+@@ -60767,13 +63344,13 @@ if (
                                                  );
                                              }
                                              if (v.data('allOptionsDisabled'))
@@ -31497,7 +31567,7 @@ index 113ca02..c3cf0bc 100644
                                                      (
                                                          void 0 !==
                                                          v.data('subtext')
-@@ -60781,7 +63359,7 @@ if (
+@@ -60782,7 +63359,7 @@ if (
                                                          v.data('subtext') +
                                                          '</small>'
                                                      :   '';
@@ -31506,7 +31576,7 @@ index 113ca02..c3cf0bc 100644
                                                  (v.data('icon') ?
                                                      '<span class="' +
                                                      i.options.iconBase +
-@@ -60790,12 +63368,12 @@ if (
+@@ -60791,12 +63368,12 @@ if (
                                                      '"></span> '
                                                  :   '') +
                                                  '<span class="text">' +
@@ -31522,7 +31592,7 @@ index 113ca02..c3cf0bc 100644
                                                      n.push(
                                                          r(
                                                              '',
-@@ -60804,31 +63382,31 @@ if (
+@@ -60805,31 +63382,31 @@ if (
                                                              s + 'div'
                                                          )
                                                      )),
@@ -31563,7 +31633,7 @@ index 113ca02..c3cf0bc 100644
                                                  .next()
                                                  .data(
                                                      'prevHiddenIndex',
-@@ -60842,16 +63420,16 @@ if (
+@@ -60843,16 +63420,16 @@ if (
                                                  )
                                              );
                                      else {
@@ -31583,7 +31653,7 @@ index 113ca02..c3cf0bc 100644
                                          ) {
                                              var T =
                                                  d.eq(u)[0]
-@@ -60859,10 +63437,10 @@ if (
+@@ -60860,10 +63437,10 @@ if (
                                              T &&
                                                  'OPTGROUP' === T.tagName &&
                                                  !T.disabled &&
@@ -31597,7 +31667,7 @@ index 113ca02..c3cf0bc 100644
                                              n.push(
                                                  r(
                                                      '',
-@@ -60873,7 +63451,7 @@ if (
+@@ -60874,7 +63451,7 @@ if (
                                              )),
                                              n.push(r(c(m, h, p, _), t));
                                      }
@@ -31606,7 +31676,7 @@ index 113ca02..c3cf0bc 100644
                                  }
                              }),
                              this.multiple ||
-@@ -60915,7 +63493,7 @@ if (
+@@ -60916,7 +63493,7 @@ if (
                              }),
                              this.togglePlaceholder(),
                              this.tabIndex();
@@ -31615,7 +31685,7 @@ index 113ca02..c3cf0bc 100644
                                  .map(function () {
                                      if (this.selected) {
                                          if (
-@@ -60962,10 +63540,10 @@ if (
+@@ -60963,10 +63540,10 @@ if (
                                      }
                                  })
                                  .toArray(),
@@ -31629,7 +31699,7 @@ index 113ca02..c3cf0bc 100644
                          if (
                              this.multiple &&
                              this.options.selectedTextFormat.indexOf('count') >
-@@ -60973,8 +63551,8 @@ if (
+@@ -60974,8 +63551,8 @@ if (
                          ) {
                              var r = this.options.selectedTextFormat.split('>');
                              if (
@@ -31640,7 +31710,7 @@ index 113ca02..c3cf0bc 100644
                              ) {
                                  i =
                                      this.options.hideDisabled ?
-@@ -60984,34 +63562,34 @@ if (
+@@ -60985,34 +63562,34 @@ if (
                                      '[data-divider="true"], [data-hidden="true"]' +
                                          i
                                  ).length;
@@ -31683,7 +31753,7 @@ index 113ca02..c3cf0bc 100644
                              this.$element.trigger('rendered.bs.select');
                      },
                      setStyle: function (e, t) {
-@@ -61035,8 +63613,8 @@ if (
+@@ -61036,8 +63613,8 @@ if (
                              var i = document.createElement('div'),
                                  n = document.createElement('div'),
                                  s = document.createElement('ul'),
@@ -31693,7 +31763,7 @@ index 113ca02..c3cf0bc 100644
                                  r = document.createElement('a'),
                                  l = document.createElement('span'),
                                  c =
-@@ -61082,14 +63660,14 @@ if (
+@@ -61083,14 +63660,14 @@ if (
                                      ' open'),
                                  (n.className = 'dropdown-menu open'),
                                  (s.className = 'dropdown-menu inner'),
@@ -31711,7 +31781,7 @@ index 113ca02..c3cf0bc 100644
                                  c && n.appendChild(c),
                                  u)
                              ) {
-@@ -61109,7 +63687,7 @@ if (
+@@ -61110,7 +63687,7 @@ if (
                                  f = u ? u.offsetHeight : 0,
                                  g = d ? d.offsetHeight : 0,
                                  v = h ? h.offsetHeight : 0,
@@ -31720,7 +31790,7 @@ index 113ca02..c3cf0bc 100644
                                  y =
                                      'function' == typeof getComputedStyle &&
                                      getComputedStyle(n),
-@@ -61158,7 +63736,7 @@ if (
+@@ -61159,7 +63736,7 @@ if (
                                              :   w.css('borderRightWidth')
                                          ),
                                  },
@@ -31729,7 +31799,7 @@ index 113ca02..c3cf0bc 100644
                                      vert:
                                          k.vert +
                                          parseInt(
-@@ -61193,7 +63771,7 @@ if (
+@@ -61194,7 +63771,7 @@ if (
                                      doneButtonHeight: v,
                                      dividerHeight: b,
                                      menuPadding: k,
@@ -31738,7 +31808,7 @@ index 113ca02..c3cf0bc 100644
                                  });
                          }
                      },
-@@ -61209,8 +63787,8 @@ if (
+@@ -61210,8 +63787,8 @@ if (
                                  i,
                                  n,
                                  s,
@@ -31748,7 +31818,7 @@ index 113ca02..c3cf0bc 100644
                                  r,
                                  l,
                                  c = this,
-@@ -61227,11 +63805,11 @@ if (
+@@ -61228,11 +63805,11 @@ if (
                                  y = this.sizeInfo.dividerHeight,
                                  w = this.sizeInfo.menuPadding,
                                  k = this.sizeInfo.menuExtras,
@@ -31762,7 +31832,7 @@ index 113ca02..c3cf0bc 100644
                                      var t,
                                          i = c.$newElement.offset(),
                                          n = e(c.options.container);
-@@ -61244,15 +63822,15 @@ if (
+@@ -61245,15 +63822,15 @@ if (
                                          )))
                                      :   (t = { top: 0, left: 0 });
                                      var s = c.options.windowPadding;
@@ -31783,7 +31853,7 @@ index 113ca02..c3cf0bc 100644
                                      var h,
                                          p = function (t, i) {
                                              return function (n) {
-@@ -61275,22 +63853,22 @@ if (
+@@ -61276,22 +63853,22 @@ if (
                                              c.$menuInner[0].getElementsByTagName(
                                                  'li'
                                              ),
@@ -31812,7 +31882,7 @@ index 113ca02..c3cf0bc 100644
                                          (i = l - k.horiz),
                                          c.options.container ?
                                              (u.data('height') ||
-@@ -61303,10 +63881,10 @@ if (
+@@ -61304,10 +63881,10 @@ if (
                                          c.options.dropupAuto &&
                                              c.$newElement.toggleClass(
                                                  'dropup',
@@ -31825,7 +31895,7 @@ index 113ca02..c3cf0bc 100644
                                          'auto' ===
                                              c.options.dropdownAlignRight &&
                                              u.toggleClass(
-@@ -61314,7 +63892,7 @@ if (
+@@ -61315,7 +63892,7 @@ if (
                                                  r > l && i - k.horiz < s - m
                                              ),
                                          (h =
@@ -31834,7 +31904,7 @@ index 113ca02..c3cf0bc 100644
                                                  3 * _ + k.vert - 2
                                              :   0),
                                          u.css({
-@@ -61337,33 +63915,33 @@ if (
+@@ -61338,33 +63915,33 @@ if (
                                                  Math.max(h - w.vert, 0) + 'px',
                                          });
                                  };
@@ -31875,7 +31945,7 @@ index 113ca02..c3cf0bc 100644
                                          .filter('.divider').length;
                                  (t = _ * this.options.size + T * y + w.vert),
                                      c.options.container ?
-@@ -61374,7 +63952,7 @@ if (
+@@ -61375,7 +63952,7 @@ if (
                                      c.options.dropupAuto &&
                                          this.$newElement.toggleClass(
                                              'dropup',
@@ -31884,7 +31954,7 @@ index 113ca02..c3cf0bc 100644
                                          ),
                                      u.css({
                                          'max-height': t + f + g + v + b + 'px',
-@@ -61437,8 +64015,8 @@ if (
+@@ -61438,8 +64015,8 @@ if (
                              i,
                              n,
                              s = this,
@@ -31895,7 +31965,7 @@ index 113ca02..c3cf0bc 100644
                                  s.$bsContainer
                                      .addClass(
                                          e
-@@ -61453,14 +64031,14 @@ if (
+@@ -61454,14 +64031,14 @@ if (
                                          e.hasClass('dropup')
                                      ),
                                      (t = e.offset()),
@@ -31916,7 +31986,7 @@ index 113ca02..c3cf0bc 100644
                                      (n =
                                          e.hasClass('dropup') ? 0 : (
                                              e[0].offsetHeight
-@@ -61474,14 +64052,14 @@ if (
+@@ -61475,14 +64052,14 @@ if (
                          this.$button.on('click', function () {
                              var t = e(this);
                              s.isDisabled() ||
@@ -31933,7 +32003,7 @@ index 113ca02..c3cf0bc 100644
                              }),
                              this.$element.on('hide.bs.select', function () {
                                  s.$menu.data('height', s.$menu.height()),
-@@ -61598,8 +64176,8 @@ if (
+@@ -61599,8 +64176,8 @@ if (
                              }),
                              this.$menuInner.on('click', 'li a', function (i) {
                                  var n = e(this),
@@ -31944,7 +32014,7 @@ index 113ca02..c3cf0bc 100644
                                      r = t.$element.prop('selectedIndex'),
                                      l = !0;
                                  if (
-@@ -61611,7 +64189,7 @@ if (
+@@ -61612,7 +64189,7 @@ if (
                                          !n.parent().hasClass('disabled'))
                                  ) {
                                      var c = t.$element.find('option'),
@@ -31953,7 +32023,7 @@ index 113ca02..c3cf0bc 100644
                                          d = u.prop('selected'),
                                          h = u.parent('optgroup'),
                                          p = t.options.maxOptions,
-@@ -61619,7 +64197,7 @@ if (
+@@ -61620,7 +64197,7 @@ if (
                                      if (t.multiple) {
                                          if (
                                              (u.prop('selected', !d),
@@ -31962,7 +32032,7 @@ index 113ca02..c3cf0bc 100644
                                              n.blur(),
                                              !1 !== p || !1 !== m)
                                          ) {
-@@ -61640,7 +64218,7 @@ if (
+@@ -61641,7 +64218,7 @@ if (
                                                              .removeClass(
                                                                  'selected'
                                                              ),
@@ -31971,7 +32041,7 @@ index 113ca02..c3cf0bc 100644
                                                  else if (m && 1 == m) {
                                                      h
                                                          .find('option:selected')
-@@ -61658,7 +64236,7 @@ if (
+@@ -61659,7 +64236,7 @@ if (
                                                          .removeClass(
                                                              'selected'
                                                          ),
@@ -31980,7 +32050,7 @@ index 113ca02..c3cf0bc 100644
                                                  } else {
                                                      var v =
                                                              (
-@@ -61731,7 +64309,7 @@ if (
+@@ -61732,7 +64309,7 @@ if (
                                                              )),
                                                          setTimeout(function () {
                                                              t.setSelected(
@@ -31989,7 +32059,7 @@ index 113ca02..c3cf0bc 100644
                                                                  !1
                                                              );
                                                          }, 10),
-@@ -61755,7 +64333,7 @@ if (
+@@ -61756,7 +64333,7 @@ if (
                                                  .removeClass('selected')
                                                  .find('a')
                                                  .attr('aria-selected', !1),
@@ -31998,7 +32068,7 @@ index 113ca02..c3cf0bc 100644
                                      (
                                          !t.multiple ||
                                          (t.multiple &&
-@@ -61765,14 +64343,14 @@ if (
+@@ -61766,14 +64343,14 @@ if (
                                      :   t.options.liveSearch &&
                                          t.$searchbox.focus(),
                                          l &&
@@ -32015,7 +32085,7 @@ index 113ca02..c3cf0bc 100644
                                              t.$element.triggerNative('change'));
                                  }
                              }),
-@@ -61871,13 +64449,13 @@ if (
+@@ -61872,13 +64449,13 @@ if (
                                          i.$searchbox.val())
                                      ) {
                                          var s,
@@ -32031,7 +32101,7 @@ index 113ca02..c3cf0bc 100644
                                                          ':a' +
                                                              i._searchStyle() +
                                                              '("' +
-@@ -61886,13 +64464,13 @@ if (
+@@ -61887,13 +64464,13 @@ if (
                                                              ) +
                                                              '")'
                                                      )
@@ -32047,7 +32117,7 @@ index 113ca02..c3cf0bc 100644
                                          )
                                              n.html(
                                                  i.options.noneResultsText.replace(
-@@ -61906,18 +64484,18 @@ if (
+@@ -61907,18 +64484,18 @@ if (
                                                  i.$lis.addClass('hidden');
                                          else {
                                              s.addClass('hidden');
@@ -32071,7 +32141,7 @@ index 113ca02..c3cf0bc 100644
                                                  : (
                                                      i.hasClass(
                                                          'dropdown-header'
-@@ -61928,10 +64506,10 @@ if (
+@@ -61929,10 +64506,10 @@ if (
                                                          i.data('optgroup')
                                                  ) ?
                                                      i.addClass('hidden')
@@ -32085,7 +32155,7 @@ index 113ca02..c3cf0bc 100644
                                                      .not('.hidden')
                                                      .first()
                                                      .addClass('active'),
-@@ -61963,20 +64541,20 @@ if (
+@@ -61964,20 +64541,20 @@ if (
                                      '.divider, .dropdown-header, .disabled, .hidden'
                                  ),
                                  s = n.length,
@@ -32111,7 +32181,7 @@ index 113ca02..c3cf0bc 100644
                                  this.render(!1),
                                  this.togglePlaceholder(),
                                  this.$element.triggerNative('change');
-@@ -61996,12 +64574,12 @@ if (
+@@ -61997,12 +64574,12 @@ if (
                          var i,
                              n,
                              s,
@@ -32129,7 +32199,7 @@ index 113ca02..c3cf0bc 100644
                              l =
                                  ':not(.disabled, .hidden, .dropdown-header, .divider)',
                              c = {
-@@ -62055,7 +64633,7 @@ if (
+@@ -62056,7 +64633,7 @@ if (
                                  105: '9',
                              };
                          if (
@@ -32138,7 +32208,7 @@ index 113ca02..c3cf0bc 100644
                              ((t.keyCode >= 48 && t.keyCode <= 57) ||
                                  (t.keyCode >= 96 && t.keyCode <= 105) ||
                                  (t.keyCode >= 65 && t.keyCode <= 90))
-@@ -62065,13 +64643,13 @@ if (
+@@ -62066,13 +64643,13 @@ if (
                                      r.$button.trigger('click')
                                  :   (r.setSize(),
                                      r.$menu.parent().addClass('open'),
@@ -32154,7 +32224,7 @@ index 113ca02..c3cf0bc 100644
                                  (t.preventDefault(),
                                  t.stopPropagation(),
                                  r.$menuInner.click(),
-@@ -62097,16 +64675,16 @@ if (
+@@ -62098,16 +64675,16 @@ if (
                                  r.$menuInner.data('prevIndex', n),
                                  r.options.liveSearch ?
                                      (t.preventDefault(),
@@ -32174,7 +32244,7 @@ index 113ca02..c3cf0bc 100644
                              var u,
                                  d = [];
                              (i = r.$lis.filter(l)).each(function (i) {
-@@ -62141,7 +64719,7 @@ if (
+@@ -62142,7 +64719,7 @@ if (
                              (/(13|32)/.test(t.keyCode.toString(10)) ||
                                  (/(^9$)/.test(t.keyCode.toString(10)) &&
                                      r.options.selectOnTab)) &&
@@ -32183,7 +32253,7 @@ index 113ca02..c3cf0bc 100644
                          ) {
                              if (
                                  (/(32)/.test(t.keyCode.toString(10)) ||
-@@ -62150,7 +64728,7 @@ if (
+@@ -62151,7 +64728,7 @@ if (
                              )
                                  /(32)/.test(t.keyCode.toString(10)) ||
                                      (r.$menuInner.find('.active a').click(),
@@ -32192,7 +32262,7 @@ index 113ca02..c3cf0bc 100644
                              else {
                                  var h = e(':focus');
                                  h.click(),
-@@ -62161,9 +64739,9 @@ if (
+@@ -62162,9 +64739,9 @@ if (
                              e(document).data('keycount', 0);
                          }
                          ((/(^9$|27)/.test(t.keyCode.toString(10)) &&
@@ -32204,7 +32274,7 @@ index 113ca02..c3cf0bc 100644
                              (r.$menu.parent().removeClass('open'),
                              r.options.container &&
                                  r.$newElement.removeClass('open'),
-@@ -62283,7 +64861,7 @@ if (
+@@ -62284,7 +64861,7 @@ if (
          }
          function n(e, t) {
              for (
@@ -32213,7 +32283,7 @@ index 113ca02..c3cf0bc 100644
                  s < arguments.length;
                  s++
              ) {
-@@ -62296,18 +64874,18 @@ if (
+@@ -62297,18 +64874,18 @@ if (
                                  'object' == typeof c &&
                                  Object.getPrototypeOf(c) === Object.prototype,
                              d = Array.isArray(c);
@@ -32236,7 +32306,7 @@ index 113ca02..c3cf0bc 100644
              if (Array.isArray(e) || ('length' in e && _e(e.length)))
                  for (var i = 0; i < e.length; i++) t(i, e[i]);
              else
-@@ -62315,13 +64893,13 @@ if (
+@@ -62316,13 +64893,13 @@ if (
                      t(i, e[i]);
                  });
          }
@@ -32252,7 +32322,7 @@ index 113ca02..c3cf0bc 100644
                      'style' === e ? (n.style.cssText = t)
                      : e in n ? (n[e] = t)
                      : n.setAttribute(e, t);
-@@ -62351,9 +64929,9 @@ if (
+@@ -62352,9 +64929,9 @@ if (
          }
          function p(e, t, i, n, s) {
              t.split(' ').forEach(function (t) {
@@ -32264,7 +32334,7 @@ index 113ca02..c3cf0bc 100644
                          n['_sce-event-' + t + i] ||
                          function (t) {
                              for (var s = t.target; s && s !== e; ) {
-@@ -62361,16 +64939,16 @@ if (
+@@ -62362,16 +64939,16 @@ if (
                                  s = s.parentNode;
                              }
                          }),
@@ -32287,7 +32357,7 @@ index 113ca02..c3cf0bc 100644
              });
          }
          function _(e, t, i) {
-@@ -62387,13 +64965,13 @@ if (
+@@ -62388,13 +64965,13 @@ if (
              y(e, 'display', '');
          }
          function b(e) {
@@ -32303,7 +32373,7 @@ index 113ca02..c3cf0bc 100644
                      y(e, t, i);
                  });
              } else {
-@@ -62407,7 +64985,7 @@ if (
+@@ -62408,7 +64985,7 @@ if (
              if (e.nodeType === ge) {
                  if (1 === n)
                      return (
@@ -32312,7 +32382,7 @@ index 113ca02..c3cf0bc 100644
                              /^data\-/i.test(t.name) &&
                                  (s[t.name.substr(5)] = t.value);
                          }),
-@@ -62430,10 +65008,10 @@ if (
+@@ -62431,10 +65008,10 @@ if (
                  i
              );
          }
@@ -32325,7 +32395,7 @@ index 113ca02..c3cf0bc 100644
              var i = e.previousElementSibling;
              return (
                  t && i ?
-@@ -62442,45 +65020,45 @@ if (
+@@ -62443,45 +65020,45 @@ if (
                  :   i
              );
          }
@@ -32383,7 +32453,7 @@ index 113ca02..c3cf0bc 100644
              var n;
              me(window.CustomEvent) ?
                  (n = new CustomEvent(t, {
-@@ -62497,45 +65075,45 @@ if (
+@@ -62498,45 +65075,45 @@ if (
                  ),
                  e.dispatchEvent(n);
          }
@@ -32441,7 +32511,7 @@ index 113ca02..c3cf0bc 100644
                      try {
                          _(i, t.name, t.value);
                      } catch (e) {}
-@@ -62546,7 +65124,7 @@ if (
+@@ -62547,7 +65124,7 @@ if (
                  d(i, e.firstChild);
              return e.parentNode.replaceChild(i, e), i;
          }
@@ -32450,7 +32520,7 @@ index 113ca02..c3cf0bc 100644
              return (
                  !!/11?|9/.test(e.nodeType) &&
                  '|iframe|area|base|basefont|br|col|frame|hr|img|input|wbr|isindex|link|meta|param|command|embed|keygen|source|track|object|'.indexOf(
-@@ -62563,7 +65141,7 @@ if (
+@@ -62564,7 +65141,7 @@ if (
                  : ye.indexOf('|' + i + '|') < 0
              );
          }
@@ -32459,7 +32529,7 @@ index 113ca02..c3cf0bc 100644
              t.style.cssText = e.style.cssText + t.style.cssText;
          }
          function V(e) {
-@@ -62571,37 +65149,37 @@ if (
+@@ -62572,37 +65149,37 @@ if (
                  for (; H(e.parentNode, !0); ) e = e.parentNode;
                  return e;
              };
@@ -32508,7 +32578,7 @@ index 113ca02..c3cf0bc 100644
                  r,
                  l = y(e, 'whiteSpace'),
                  c = /line$/i.test(l),
-@@ -62609,25 +65187,25 @@ if (
+@@ -62610,25 +65187,25 @@ if (
              if (!/pre(\-wrap)?$/i.test(l))
                  for (; d; ) {
                      if (
@@ -32544,7 +32614,7 @@ index 113ca02..c3cf0bc 100644
                          }
                          (t = t.replace(/\u200B/g, '')),
                              (s && H(s) && !r) ||
-@@ -62647,14 +65225,14 @@ if (
+@@ -62648,14 +65225,14 @@ if (
                                  ))
                              :   u(d);
                      }
@@ -32562,7 +32632,7 @@ index 113ca02..c3cf0bc 100644
              for (var t = 0, i = 0; e; )
                  (t += e.offsetLeft), (i += e.offsetTop), (e = e.offsetParent);
              return { left: t, top: i };
-@@ -62664,7 +65242,7 @@ if (
+@@ -62665,7 +65242,7 @@ if (
                  n,
                  s = e.style;
              if (
@@ -32571,7 +32641,7 @@ index 113ca02..c3cf0bc 100644
                  (n = s[(t = fe[t])]),
                  'textAlign' === t)
              ) {
-@@ -62725,12 +65303,12 @@ if (
+@@ -62726,12 +65303,12 @@ if (
                  :   e;
          }
          function te(e, t, i) {
@@ -32586,7 +32656,7 @@ index 113ca02..c3cf0bc 100644
                  n
              );
          }
-@@ -62756,12 +65334,12 @@ if (
+@@ -62757,12 +65334,12 @@ if (
                  },
                  s = function (t, s) {
                      t = [].slice.call(t);
@@ -32604,7 +32674,7 @@ index 113ca02..c3cf0bc 100644
                  };
              (t.call = function () {
                  s(arguments, !1);
-@@ -62798,15 +65376,15 @@ if (
+@@ -62799,15 +65376,15 @@ if (
                  }),
                  (t.deregister = function (n) {
                      var s,
@@ -32628,7 +32698,7 @@ index 113ca02..c3cf0bc 100644
                  }),
                  (t.destroy = function () {
                      for (var t = i.length; t--; )
-@@ -62818,8 +65396,8 @@ if (
+@@ -62819,8 +65396,8 @@ if (
              var i,
                  n,
                  s = t || e.contentDocument || e.document,
@@ -32639,7 +32709,7 @@ index 113ca02..c3cf0bc 100644
                  l = this;
              (l.insertHTML = function (e, t) {
                  var i, n;
-@@ -62840,7 +65418,7 @@ if (
+@@ -62841,7 +65418,7 @@ if (
                          u = s.createDocumentFragment();
                      if (
                          ('string' == typeof e ?
@@ -32648,7 +32718,7 @@ index 113ca02..c3cf0bc 100644
                          :   (d(u, e),
                              t &&
                                  (d(u, l.selectedRange().extractContents()),
-@@ -62849,13 +65427,13 @@ if (
+@@ -62850,13 +65427,13 @@ if (
                      ) {
                          for (; !H(c.lastChild, !0); ) c = c.lastChild;
                          if (
@@ -32664,7 +32734,7 @@ index 113ca02..c3cf0bc 100644
                              n)
                          ) {
                              var h = r('div');
-@@ -62867,11 +65445,11 @@ if (
+@@ -62868,11 +65445,11 @@ if (
                  (l.insertNode = function (e, t) {
                      var i = n(e, t),
                          s = l.selectedRange(),
@@ -32679,7 +32749,7 @@ index 113ca02..c3cf0bc 100644
                          :   s.insertNode(i),
                          l.restoreRange();
                  }),
-@@ -62937,12 +65515,12 @@ if (
+@@ -62938,12 +65515,12 @@ if (
                  }),
                  (l.insertMarkers = function () {
                      var e = l.selectedRange(),
@@ -32695,7 +32765,7 @@ index 113ca02..c3cf0bc 100644
                  }),
                  (l.getMarker = function (e) {
                      return s.getElementById(e);
-@@ -62952,7 +65530,7 @@ if (
+@@ -62953,7 +65530,7 @@ if (
                      t && u(t);
                  }),
                  (l.removeMarkers = function () {
@@ -32704,7 +32774,7 @@ index 113ca02..c3cf0bc 100644
                  }),
                  (l.saveRange = function () {
                      l.insertMarkers();
-@@ -62960,15 +65538,15 @@ if (
+@@ -62961,15 +65538,15 @@ if (
                  (l.selectRange = function (t) {
                      var i,
                          n = e.getSelection(),
@@ -32727,7 +32797,7 @@ index 113ca02..c3cf0bc 100644
                                      (t.setStartBefore(i), t.collapse(!0));
                          }
                      }
-@@ -62977,8 +65555,8 @@ if (
+@@ -62978,8 +65555,8 @@ if (
                  (l.restoreRange = function () {
                      var e,
                          t = l.selectedRange(),
@@ -32738,7 +32808,7 @@ index 113ca02..c3cf0bc 100644
                      if (!i || !n || !t) return !1;
                      (e = i.nextSibling === n),
                          (t = s.createRange()).setStartBefore(i),
-@@ -62993,22 +65571,22 @@ if (
+@@ -62994,22 +65571,22 @@ if (
                          s = l.cloneSelected();
                      if (!s) return !1;
                      s.collapse(!1),
@@ -32766,7 +32836,7 @@ index 113ca02..c3cf0bc 100644
                          r,
                          c,
                          u,
-@@ -63022,10 +65600,10 @@ if (
+@@ -63023,10 +65600,10 @@ if (
                          v = n || e[f - 1][0].length;
                      for (
                          s && v++,
@@ -32781,7 +32851,7 @@ index 113ca02..c3cf0bc 100644
                          f--;
  
                      )
-@@ -63034,18 +65612,18 @@ if (
+@@ -63035,18 +65612,18 @@ if (
                              (u = Math.max(0, d - m - g)),
                              (c = -1),
                              s ?
@@ -32803,7 +32873,7 @@ index 113ca02..c3cf0bc 100644
                                  ),
                                  l.insertHTML(e[f][1]),
                                  !0
-@@ -63071,15 +65649,15 @@ if (
+@@ -63072,15 +65649,15 @@ if (
                          :   t.empty && t.empty());
                  });
          }
@@ -32824,7 +32894,7 @@ index 113ca02..c3cf0bc 100644
                      if (
                          (r && i.test(r.nodeValue.slice(-1))) ||
                          (l && i.test((l.nodeValue || '')[0]))
-@@ -63089,20 +65667,20 @@ if (
+@@ -63090,20 +65667,20 @@ if (
                              p = c.startContainer,
                              m = r.nodeValue;
                          null === m && (m = r.innerText || ''),
@@ -32849,7 +32919,7 @@ index 113ca02..c3cf0bc 100644
                              d > -1 &&
                                  (c.setStart(l, d),
                                  c.collapse(!0),
-@@ -63110,16 +65688,16 @@ if (
+@@ -63111,16 +65688,16 @@ if (
                      }
                  }
          }
@@ -32871,7 +32941,7 @@ index 113ca02..c3cf0bc 100644
                      return t.length - e.length;
                  }),
                  (function e(s) {
-@@ -63128,13 +65706,13 @@ if (
+@@ -63129,13 +65706,13 @@ if (
                              (s.nodeType !== ge || k(s, 'code') || e(s),
                              s.nodeType === ve)
                          )
@@ -32888,7 +32958,7 @@ index 113ca02..c3cf0bc 100644
                                          p = l.substr(d + c.length);
                                      h.appendChild(n.createTextNode(p)),
                                          (s.nodeValue = l.substr(0, d)),
-@@ -63150,11 +65728,11 @@ if (
+@@ -63151,11 +65728,11 @@ if (
          }
          function re(e, t) {
              var i;
@@ -32902,7 +32972,7 @@ index 113ca02..c3cf0bc 100644
                          (e.nodeType === ve && '' === e.nodeValue) || d(i, e))
                      :   (i = null);
                  },
-@@ -63164,19 +65742,19 @@ if (
+@@ -63165,19 +65742,19 @@ if (
          }
          function le(e, t) {
              var i,
@@ -32929,7 +32999,7 @@ index 113ca02..c3cf0bc 100644
                  Y,
                  J,
                  Q,
-@@ -63189,24 +65767,24 @@ if (
+@@ -63190,24 +65767,24 @@ if (
                  fe,
                  ye,
                  ke,
@@ -32962,7 +33032,7 @@ index 113ca02..c3cf0bc 100644
                  Ye,
                  Je,
                  Qe,
-@@ -63216,8 +65794,8 @@ if (
+@@ -63217,8 +65794,8 @@ if (
                  it,
                  nt,
                  st,
@@ -32972,7 +33042,7 @@ index 113ca02..c3cf0bc 100644
                  rt,
                  lt,
                  ct,
-@@ -63236,38 +65814,38 @@ if (
+@@ -63237,38 +65814,38 @@ if (
              _t.commands = n(!0, {}, t.commands || Me);
              var kt = (_t.opts = n(!0, {}, we, t));
              (_t.opts.emoticons = t.emoticons || we.emoticons),
@@ -33026,7 +33096,7 @@ index 113ca02..c3cf0bc 100644
                      var e = kt.plugins;
                      (e = e ? e.toString().split(',') : []),
                          (Y = new ne(_t)),
-@@ -63275,31 +65853,31 @@ if (
+@@ -63276,31 +65853,31 @@ if (
                              Y.register(e.trim());
                          });
                  }),
@@ -33074,7 +33144,7 @@ index 113ca02..c3cf0bc 100644
                              te('html', {
                                  attrs: ' class="' + t + '"',
                                  spellcheck:
-@@ -63308,84 +65886,84 @@ if (
+@@ -63309,84 +65886,84 @@ if (
                                  style: kt.style,
                              })
                          ),
@@ -33207,7 +33277,7 @@ index 113ca02..c3cf0bc 100644
                      var e,
                          t = _t.commands,
                          i = (kt.toolbarExclude || '').split(','),
-@@ -63395,16 +65973,16 @@ if (
+@@ -63396,16 +65973,16 @@ if (
                          unselectable: 'on',
                      })),
                          kt.icons in le.icons && (ke = new le.icons[kt.icons]()),
@@ -33230,7 +33300,7 @@ index 113ca02..c3cf0bc 100644
                                                  'toolbarButton',
                                                  {
                                                      name: s,
-@@ -63417,30 +65995,30 @@ if (
+@@ -63418,30 +65995,30 @@ if (
                                              ke && ke.create)
                                          )
                                              ke.create(s) &&
@@ -33273,7 +33343,7 @@ index 113ca02..c3cf0bc 100644
                                              r.state ?
                                                  vt.push({
                                                      name: s,
-@@ -63451,13 +66029,13 @@ if (
+@@ -63452,13 +66029,13 @@ if (
                                                      name: s,
                                                      state: r.exec,
                                                  }),
@@ -33290,7 +33360,7 @@ index 113ca02..c3cf0bc 100644
                  }),
                  (He = function () {
                      var e,
-@@ -63465,7 +66043,7 @@ if (
+@@ -63466,7 +66043,7 @@ if (
                          i,
                          n,
                          s,
@@ -33299,7 +33369,7 @@ index 113ca02..c3cf0bc 100644
                          l = r('div', { className: 'sceditor-grip' }),
                          c = r('div', { className: 'sceditor-resize-cover' }),
                          u = 'touchmove mousemove',
-@@ -63476,70 +66054,70 @@ if (
+@@ -63477,70 +66054,70 @@ if (
                          y = 0,
                          w = 0,
                          k = 0,
@@ -33406,7 +33476,7 @@ index 113ca02..c3cf0bc 100644
                              (wt[e] = te('emoticon', {
                                  key: e,
                                  url: t + (i.url || i),
-@@ -63551,98 +66129,98 @@ if (
+@@ -63552,98 +66129,98 @@ if (
                                      );
                          });
                  }),
@@ -33538,7 +33608,7 @@ index 113ca02..c3cf0bc 100644
                              mt(),
                              _t);
                  }),
-@@ -63654,15 +66232,15 @@ if (
+@@ -63655,15 +66232,15 @@ if (
                  (_t.expandToContent = function (t) {
                      if (!_t.maximize()) {
                          if ((clearTimeout(_e), (_e = !1), !de)) {
@@ -33560,7 +33630,7 @@ index 113ca02..c3cf0bc 100644
                          t || -1 === de.max || (r = Math.min(r, de.max)),
                              _t.height(Math.ceil(Math.max(r, de.min)));
                      }
-@@ -63670,18 +66248,18 @@ if (
+@@ -63671,18 +66248,18 @@ if (
                  (_t.destroy = function () {
                      if (Y) {
                          Y.destroy(),
@@ -33586,7 +33656,7 @@ index 113ca02..c3cf0bc 100644
                              delete e._sceditor,
                              v(e),
                              (e.required = ce);
-@@ -63691,9 +66269,9 @@ if (
+@@ -63692,9 +66269,9 @@ if (
                      var l,
                          c = 'sceditor-' + t;
                      _t.closeDropDown(!0),
@@ -33598,7 +33668,7 @@ index 113ca02..c3cf0bc 100644
                                      h(i, ':not(input):not(textarea)'),
                                      function (e, t) {
                                          t.nodeType === ge &&
-@@ -63709,32 +66287,32 @@ if (
+@@ -63710,32 +66287,32 @@ if (
                                  kt.dropDownCss
                              )),
                              y(
@@ -33640,7 +33710,7 @@ index 113ca02..c3cf0bc 100644
                          n = e.clipboardData,
                          s = function (e) {
                              var t = new FileReader();
-@@ -63747,22 +66325,22 @@ if (
+@@ -63748,22 +66325,22 @@ if (
                                  t.readAsDataURL(e);
                          };
                      if (n && !t) {
@@ -33672,7 +33742,7 @@ index 113ca02..c3cf0bc 100644
                              i.firstChild;
  
                          )
-@@ -63773,48 +66351,48 @@ if (
+@@ -63774,48 +66351,48 @@ if (
                                  d(i, ye),
                                  (i.scrollTop = c),
                                  (ye = !1),
@@ -33736,7 +33806,7 @@ index 113ca02..c3cf0bc 100644
                              nt());
                  }),
                  (_t.wysiwygEditorInsertText = function (e, t) {
-@@ -63831,31 +66409,31 @@ if (
+@@ -63832,31 +66409,31 @@ if (
                  (_t.sourceEditorInsertText = function (e, t) {
                      var i,
                          n,
@@ -33785,7 +33855,7 @@ index 113ca02..c3cf0bc 100644
                      );
                  }),
                  (_t.val = function (e, t) {
-@@ -63870,22 +66448,22 @@ if (
+@@ -63871,22 +66448,22 @@ if (
                          : _t.getWysiwygEditorValue(t)
                      );
                  }),
@@ -33813,7 +33883,7 @@ index 113ca02..c3cf0bc 100644
                              (e = e
                                  .replace(/&lt;/g, '<')
                                  .replace(/&gt;/g, '>')
-@@ -63896,51 +66474,51 @@ if (
+@@ -63897,51 +66474,51 @@ if (
                  }),
                  (_t.getWysiwygEditorValue = function (e) {
                      for (
@@ -33878,7 +33948,7 @@ index 113ca02..c3cf0bc 100644
                  }),
                  (_t.sourceMode = function (e) {
                      var t = _t.inSourceMode();
-@@ -63951,27 +66529,27 @@ if (
+@@ -63952,27 +66529,27 @@ if (
                  }),
                  (_t.toggleSourceMode = function () {
                      var e = _t.inSourceMode();
@@ -33915,7 +33985,7 @@ index 113ca02..c3cf0bc 100644
                      _t.inSourceMode() ?
                          t.txtExec &&
                          (Array.isArray(t.txtExec) ?
-@@ -63988,14 +66566,14 @@ if (
+@@ -63989,14 +66566,14 @@ if (
                              ));
                  }),
                  (Ee = function () {
@@ -33933,7 +34003,7 @@ index 113ca02..c3cf0bc 100644
                          } catch (e) {}
                          !i &&
                              n &&
-@@ -64007,42 +66585,42 @@ if (
+@@ -64008,42 +66585,42 @@ if (
                  (st = function () {
                      function e() {
                          if (
@@ -33988,7 +34058,7 @@ index 113ca02..c3cf0bc 100644
                  }),
                  (_t.currentNode = function () {
                      return J;
-@@ -64054,20 +66632,20 @@ if (
+@@ -64055,20 +66632,20 @@ if (
                      var e,
                          t,
                          i = 'active',
@@ -34016,7 +34086,7 @@ index 113ca02..c3cf0bc 100644
                                  d =
                                      (s && !c._sceTxtMode) ||
                                      (!s && !c._sceWysiwygMode);
-@@ -64086,15 +66664,15 @@ if (
+@@ -64087,15 +66664,15 @@ if (
                          ke && ke.update && ke.update(s, t, e);
                      }
                  }),
@@ -34037,7 +34107,7 @@ index 113ca02..c3cf0bc 100644
                              var i = t.parentNode,
                                  n = i.lastChild;
                              n &&
-@@ -64104,24 +66682,24 @@ if (
+@@ -64105,24 +66682,24 @@ if (
                                  !H(i, !0) &&
                                      n === t &&
                                      H(t.previousSibling) &&
@@ -34068,7 +34138,7 @@ index 113ca02..c3cf0bc 100644
                                  !1
                              );
                          }
-@@ -64132,17 +66710,17 @@ if (
+@@ -64133,17 +66710,17 @@ if (
                              return !1;
                      });
                  }),
@@ -34089,7 +34159,7 @@ index 113ca02..c3cf0bc 100644
                          t[0].replace(/\{(\d+)\}/g, function (i, n) {
                              return t[n - 0 + 1] !== e ?
                                      t[n - 0 + 1]
-@@ -64152,7 +66730,7 @@ if (
+@@ -64153,7 +66730,7 @@ if (
                  }),
                  (Qe = function (e) {
                      Y && Y.call(e.type + 'Event', e, _t);
@@ -34098,7 +34168,7 @@ index 113ca02..c3cf0bc 100644
                      ft[t] &&
                          ft[t].forEach(function (t) {
                              t.call(_t, e);
-@@ -64161,38 +66739,38 @@ if (
+@@ -64162,38 +66739,38 @@ if (
                  (_t.bind = function (e, t, i, n) {
                      for (var s = (e = e.split(' ')).length; s--; )
                          if (me(t)) {
@@ -34151,7 +34221,7 @@ index 113ca02..c3cf0bc 100644
                                  s &&
                                  1 === s.endOffset &&
                                  s.collapsed &&
-@@ -64201,10 +66779,10 @@ if (
+@@ -64202,10 +66779,10 @@ if (
                                  k(n.firstChild, 'br') &&
                                  (s.setStartBefore(n.firstChild),
                                  s.collapse(!0),
@@ -34165,7 +34235,7 @@ index 113ca02..c3cf0bc 100644
                      }
                      return tt(), _t;
                  }),
-@@ -64233,7 +66811,7 @@ if (
+@@ -64234,7 +66811,7 @@ if (
                      c(Q, 'code') ||
                          (i ||
                              ((i = []),
@@ -34174,7 +34244,7 @@ index 113ca02..c3cf0bc 100644
                                  i[t++] = [e, n];
                              }),
                              i.sort(function (e, t) {
-@@ -64242,7 +66820,7 @@ if (
+@@ -64243,7 +66820,7 @@ if (
                              (_t.emoticonsCache = i),
                              (_t.longestEmoticonCode =
                                  i[i.length - 1][0].length)),
@@ -34183,7 +34253,7 @@ index 113ca02..c3cf0bc 100644
                              _t.emoticonsCache,
                              !0,
                              !0,
-@@ -64254,31 +66832,31 @@ if (
+@@ -64255,31 +66832,31 @@ if (
                                  e.preventDefault()));
                  }),
                  (lt = function () {
@@ -34224,7 +34294,7 @@ index 113ca02..c3cf0bc 100644
                          he(e) ?
                              (ue.styleSheet ?
                                  (ue.styleSheet.cssText = e)
-@@ -64288,7 +66866,7 @@ if (
+@@ -64289,7 +66866,7 @@ if (
                          : ue.innerHTML
                      );
                  }),
@@ -34233,7 +34303,7 @@ index 113ca02..c3cf0bc 100644
                      var t = [],
                          i = {
                              '`': '~',
-@@ -64390,14 +66968,14 @@ if (
+@@ -64391,14 +66968,14 @@ if (
                              104: '8',
                              105: '9',
                          },
@@ -34252,7 +34322,7 @@ index 113ca02..c3cf0bc 100644
                          (t = t.join('+')),
                          bt[t] &&
                              !1 === bt[t].call(_t) &&
-@@ -64408,7 +66986,7 @@ if (
+@@ -64409,7 +66986,7 @@ if (
                          (e = e.toLowerCase()),
                          he(t) ?
                              (bt[e] = function () {
@@ -34261,7 +34331,7 @@ index 113ca02..c3cf0bc 100644
                              })
                          :   (bt[e] = t),
                          _t
-@@ -64417,12 +66995,12 @@ if (
+@@ -64418,12 +66995,12 @@ if (
                  (_t.removeShortcut = function (e) {
                      return delete bt[e.toLowerCase()], _t;
                  }),
@@ -34276,7 +34346,7 @@ index 113ca02..c3cf0bc 100644
                          ((t = i.startContainer),
                          0 === i.startOffset && (n = ct()) && !k(n, 'body'))
                      ) {
-@@ -64439,7 +67017,7 @@ if (
+@@ -64440,7 +67017,7 @@ if (
                      }
                  }),
                  (ct = function () {
@@ -34285,7 +34355,7 @@ index 113ca02..c3cf0bc 100644
                          if (!(e = e.parentNode) || k(e, 'body')) return;
                      return e;
                  }),
-@@ -64447,12 +67025,12 @@ if (
+@@ -64448,12 +67025,12 @@ if (
                      return (
                          !(e = e || ct()) ||
                              k(e, 'body') ||
@@ -34302,7 +34372,7 @@ index 113ca02..c3cf0bc 100644
                          _t
                      );
                  }),
-@@ -64463,19 +67041,19 @@ if (
+@@ -64464,19 +67041,19 @@ if (
                      ) {
                          var t,
                              i = _t.sourceMode(),
@@ -34329,7 +34399,7 @@ index 113ca02..c3cf0bc 100644
                      }
                  }),
                  (dt = function () {
-@@ -64487,7 +67065,7 @@ if (
+@@ -64488,7 +67065,7 @@ if (
                          n = 13 === i || 32 === i,
                          s = 8 === i || 46 === i;
                      (ht.lastChar = t),
@@ -34338,7 +34408,7 @@ index 113ca02..c3cf0bc 100644
                              (13 === t || 32 === t ?
                                  n ? (ht.triggerNext = !0)
                                  :   ut()
-@@ -64497,16 +67075,16 @@ if (
+@@ -64498,16 +67075,16 @@ if (
                              :   ht.triggerNext && (ut(), (ht.triggerNext = !1)),
                              clearTimeout(q),
                              (q = setTimeout(function () {
@@ -34358,7 +34428,7 @@ index 113ca02..c3cf0bc 100644
          }
          e = e && e.hasOwnProperty('default') ? e.default : e;
          var ce,
-@@ -64606,7 +67184,7 @@ if (
+@@ -64607,7 +67184,7 @@ if (
                  dropDownCss: {},
              },
              ke = navigator.userAgent,
@@ -34367,7 +34437,7 @@ index 113ca02..c3cf0bc 100644
                  var e,
                      t = 3,
                      i = document,
-@@ -64622,9 +67200,9 @@ if (
+@@ -64623,9 +67200,9 @@ if (
                      t > 4 ? t : e
                  );
              })(),
@@ -34380,7 +34450,7 @@ index 113ca02..c3cf0bc 100644
                  (((de = document.createElement('div')).contentEditable = !0),
                  'contentEditable' in document.documentElement &&
                      'true' === de.contentEditable &&
-@@ -64635,15 +67213,15 @@ if (
+@@ -64636,15 +67213,15 @@ if (
                              !(ce = /AppleWebKit\/(\d+)/.exec(ke)) ||
                              !ce[1] ||
                              ce[1] < 534),
@@ -34399,7 +34469,7 @@ index 113ca02..c3cf0bc 100644
                  html: '<!DOCTYPE html><html{attrs}><head><style>.ie * {min-height: auto !important} .ie table td {height:15px} @supports (-ms-ime-align:auto) { * { min-height: auto !important; } }</style><meta http-equiv="Content-Type" content="text/html;charset={charset}" /><link rel="stylesheet" type="text/css" href="{style}" /></head><body contenteditable="true" {spellcheck}><p></p></body></html>',
                  toolbarButton:
                      '<a class="sceditor-button sceditor-button-{name}" data-sceditor-command="{name}" unselectable="on"><div unselectable="on">{dispName}</div></a>',
-@@ -64664,7 +67242,7 @@ if (
+@@ -64665,7 +67242,7 @@ if (
                  youtube:
                      '<iframe width="560" height="315" frameborder="0" allowfullscreen src="https://www.youtube.com/embed/{id}?wmode=opaque&start={time}" data-youtube-id="{id}"></iframe>',
              },
@@ -34408,7 +34478,7 @@ index 113ca02..c3cf0bc 100644
              Me = {
                  bold: { exec: 'bold', tooltip: 'Bold', shortcut: 'Ctrl+B' },
                  italic: {
-@@ -64749,8 +67327,8 @@ if (
+@@ -64750,8 +67327,8 @@ if (
                      _dropDown: function (e, t, i) {
                          var n = r('div'),
                              s = '',
@@ -34419,7 +34489,7 @@ index 113ca02..c3cf0bc 100644
                              (e.opts.colors.split('|').forEach(function (e) {
                                  (s += '<div class="sceditor-color-column">'),
                                      e.split(',').forEach(function (e) {
-@@ -64763,8 +67341,8 @@ if (
+@@ -64764,8 +67341,8 @@ if (
                                      }),
                                      (s += '</div>');
                              }),
@@ -34430,7 +34500,7 @@ index 113ca02..c3cf0bc 100644
                              p(n, 'click', 'a', function (t) {
                                  i(w(this, 'color')),
                                      e.closeDropDown(!0),
-@@ -64900,10 +67478,10 @@ if (
+@@ -64901,10 +67478,10 @@ if (
                              p(i, 'click', '.button', function (e) {
                                  var n = Number(h(i, '#rows')[0].value),
                                      s = Number(h(i, '#cols')[0].value),
@@ -34443,7 +34513,7 @@ index 113ca02..c3cf0bc 100644
                                          '<tr>' +
                                              Array(s + 1).join(
                                                  '<td>' +
-@@ -64912,8 +67490,8 @@ if (
+@@ -64913,8 +67490,8 @@ if (
                                              ) +
                                              '</tr>'
                                      )),
@@ -34454,7 +34524,7 @@ index 113ca02..c3cf0bc 100644
                                      t.closeDropDown(!0),
                                      e.preventDefault());
                              }),
-@@ -64950,12 +67528,12 @@ if (
+@@ -64951,12 +67528,12 @@ if (
                                  !0
                              )
                          );
@@ -34471,7 +34541,7 @@ index 113ca02..c3cf0bc 100644
                                          h(s, '#width')[0].value,
                                          h(s, '#height')[0].value
                                      ),
-@@ -65020,7 +67598,7 @@ if (
+@@ -65021,7 +67598,7 @@ if (
                  link: {
                      _dropDown: function (e, t, i) {
                          function n(t) {
@@ -34480,7 +34550,7 @@ index 113ca02..c3cf0bc 100644
                                  e.closeDropDown(!0),
                                  t.preventDefault();
                          }
-@@ -65037,13 +67615,13 @@ if (
+@@ -65038,13 +67615,13 @@ if (
                                  !0
                              )
                          );
@@ -34496,7 +34566,7 @@ index 113ca02..c3cf0bc 100644
                                  },
                                  be
                              ),
-@@ -65070,7 +67648,7 @@ if (
+@@ -65071,7 +67648,7 @@ if (
                      exec: function () {
                          var e = c(this.currentNode(), 'a');
                          if (e) {
@@ -34505,7 +34575,7 @@ index 113ca02..c3cf0bc 100644
                              u(e);
                          }
                      },
-@@ -65097,7 +67675,7 @@ if (
+@@ -65098,7 +67675,7 @@ if (
                      exec: function (e) {
                          var t = this,
                              i = function (s) {
@@ -34514,7 +34584,7 @@ index 113ca02..c3cf0bc 100644
                                      l = t.opts,
                                      c = l.emoticonsRoot || '',
                                      u = l.emoticonsCompat,
-@@ -65131,7 +67709,7 @@ if (
+@@ -65132,7 +67709,7 @@ if (
                                              .closeDropDown(!0),
                                              e.preventDefault();
                                      }),
@@ -34523,7 +34593,7 @@ index 113ca02..c3cf0bc 100644
                                          d(
                                              v,
                                              r('img', {
-@@ -65146,12 +67724,12 @@ if (
+@@ -65147,12 +67724,12 @@ if (
                                      !s &&
                                          l.emoticons.more &&
                                          (d(
@@ -34538,7 +34608,7 @@ index 113ca02..c3cf0bc 100644
                                              t.createDropDown(
                                                  e,
                                                  'more-emoticons',
-@@ -65159,7 +67737,7 @@ if (
+@@ -65160,7 +67737,7 @@ if (
                                              ),
                                                  n.preventDefault();
                                          }),
@@ -34547,7 +34617,7 @@ index 113ca02..c3cf0bc 100644
                                      g
                                  );
                              };
-@@ -65186,7 +67764,7 @@ if (
+@@ -65187,7 +67764,7 @@ if (
                          ),
                              p(n, 'click', '.button', function (t) {
                                  var s = h(n, '#link')[0].value,
@@ -34556,7 +34626,7 @@ index 113ca02..c3cf0bc 100644
                                          /(?:v=|v\/|embed\/|youtu.be\/)(.{11})/
                                      ),
                                      r = s.match(
-@@ -65194,12 +67772,12 @@ if (
+@@ -65195,12 +67772,12 @@ if (
                                      ),
                                      l = 0;
                                  r &&
@@ -34573,7 +34643,7 @@ index 113ca02..c3cf0bc 100644
                                      e.closeDropDown(!0),
                                      t.preventDefault();
                              }),
-@@ -65331,40 +67909,40 @@ if (
+@@ -65332,40 +67909,40 @@ if (
              },
              Pe = {};
          ne.plugins = Pe;
@@ -34628,7 +34698,7 @@ index 113ca02..c3cf0bc 100644
          (le.locale = {}),
              (le.formats = {}),
              (le.icons = {}),
-@@ -65402,9 +67980,9 @@ if (
+@@ -65403,9 +67980,9 @@ if (
                  command: le.command,
                  commands: Me,
                  defaultOptions: we,
@@ -34641,7 +34711,7 @@ index 113ca02..c3cf0bc 100644
                  regexEscape: Q,
                  escapeEntities: X,
                  escapeUriScheme: ee,
-@@ -65415,34 +67993,34 @@ if (
+@@ -65416,34 +67993,34 @@ if (
                      is: k,
                      closest: c,
                      width: P,
@@ -34690,7 +34760,7 @@ index 113ca02..c3cf0bc 100644
                                  new le(e, t));
                  },
                  instance: function (e) {
-@@ -65491,7 +68069,7 @@ if (
+@@ -65492,7 +68069,7 @@ if (
          }
          function n(e, t) {
              for (
@@ -34699,7 +34769,7 @@ index 113ca02..c3cf0bc 100644
                  s < arguments.length;
                  s++
              ) {
-@@ -65504,18 +68082,18 @@ if (
+@@ -65505,18 +68082,18 @@ if (
                                  'object' == typeof c &&
                                  Object.getPrototypeOf(c) === Object.prototype,
                              d = Array.isArray(c);
@@ -34722,7 +34792,7 @@ index 113ca02..c3cf0bc 100644
              if (Array.isArray(e) || ('length' in e && _e(e.length)))
                  for (var i = 0; i < e.length; i++) t(i, e[i]);
              else
-@@ -65523,13 +68101,13 @@ if (
+@@ -65524,13 +68101,13 @@ if (
                      t(i, e[i]);
                  });
          }
@@ -34738,7 +34808,7 @@ index 113ca02..c3cf0bc 100644
                      'style' === e ? (n.style.cssText = t)
                      : e in n ? (n[e] = t)
                      : n.setAttribute(e, t);
-@@ -65559,9 +68137,9 @@ if (
+@@ -65560,9 +68137,9 @@ if (
          }
          function p(e, t, i, n, s) {
              t.split(' ').forEach(function (t) {
@@ -34750,7 +34820,7 @@ index 113ca02..c3cf0bc 100644
                          n['_sce-event-' + t + i] ||
                          function (t) {
                              for (var s = t.target; s && s !== e; ) {
-@@ -65569,16 +68147,16 @@ if (
+@@ -65570,16 +68147,16 @@ if (
                                  s = s.parentNode;
                              }
                          }),
@@ -34773,7 +34843,7 @@ index 113ca02..c3cf0bc 100644
              });
          }
          function _(e, t, i) {
-@@ -65595,13 +68173,13 @@ if (
+@@ -65596,13 +68173,13 @@ if (
              y(e, 'display', '');
          }
          function b(e) {
@@ -34789,7 +34859,7 @@ index 113ca02..c3cf0bc 100644
                      y(e, t, i);
                  });
              } else {
-@@ -65615,7 +68193,7 @@ if (
+@@ -65616,7 +68193,7 @@ if (
              if (e.nodeType === ge) {
                  if (1 === n)
                      return (
@@ -34798,7 +34868,7 @@ index 113ca02..c3cf0bc 100644
                              /^data\-/i.test(t.name) &&
                                  (s[t.name.substr(5)] = t.value);
                          }),
-@@ -65638,10 +68216,10 @@ if (
+@@ -65639,10 +68216,10 @@ if (
                  i
              );
          }
@@ -34811,7 +34881,7 @@ index 113ca02..c3cf0bc 100644
              var i = e.previousElementSibling;
              return (
                  t && i ?
-@@ -65650,45 +68228,45 @@ if (
+@@ -65651,45 +68228,45 @@ if (
                  :   i
              );
          }
@@ -34869,7 +34939,7 @@ index 113ca02..c3cf0bc 100644
              var n;
              me(window.CustomEvent) ?
                  (n = new CustomEvent(t, {
-@@ -65705,45 +68283,45 @@ if (
+@@ -65706,45 +68283,45 @@ if (
                  ),
                  e.dispatchEvent(n);
          }
@@ -34927,7 +34997,7 @@ index 113ca02..c3cf0bc 100644
                      try {
                          _(i, t.name, t.value);
                      } catch (e) {}
-@@ -65754,7 +68332,7 @@ if (
+@@ -65755,7 +68332,7 @@ if (
                  d(i, e.firstChild);
              return e.parentNode.replaceChild(i, e), i;
          }
@@ -34936,7 +35006,7 @@ index 113ca02..c3cf0bc 100644
              return (
                  !!/11?|9/.test(e.nodeType) &&
                  '|iframe|area|base|basefont|br|col|frame|hr|img|input|wbr|isindex|link|meta|param|command|embed|keygen|source|track|object|'.indexOf(
-@@ -65771,7 +68349,7 @@ if (
+@@ -65772,7 +68349,7 @@ if (
                  : ye.indexOf('|' + i + '|') < 0
              );
          }
@@ -34945,7 +35015,7 @@ index 113ca02..c3cf0bc 100644
              t.style.cssText = e.style.cssText + t.style.cssText;
          }
          function V(e) {
-@@ -65779,37 +68357,37 @@ if (
+@@ -65780,37 +68357,37 @@ if (
                  for (; H(e.parentNode, !0); ) e = e.parentNode;
                  return e;
              };
@@ -34994,7 +35064,7 @@ index 113ca02..c3cf0bc 100644
                  r,
                  l = y(e, 'whiteSpace'),
                  c = /line$/i.test(l),
-@@ -65817,25 +68395,25 @@ if (
+@@ -65818,25 +68395,25 @@ if (
              if (!/pre(\-wrap)?$/i.test(l))
                  for (; d; ) {
                      if (
@@ -35030,7 +35100,7 @@ index 113ca02..c3cf0bc 100644
                          }
                          (t = t.replace(/\u200B/g, '')),
                              (s && H(s) && !r) ||
-@@ -65855,14 +68433,14 @@ if (
+@@ -65856,14 +68433,14 @@ if (
                                  ))
                              :   u(d);
                      }
@@ -35048,7 +35118,7 @@ index 113ca02..c3cf0bc 100644
              for (var t = 0, i = 0; e; )
                  (t += e.offsetLeft), (i += e.offsetTop), (e = e.offsetParent);
              return { left: t, top: i };
-@@ -65872,7 +68450,7 @@ if (
+@@ -65873,7 +68450,7 @@ if (
                  n,
                  s = e.style;
              if (
@@ -35057,7 +35127,7 @@ index 113ca02..c3cf0bc 100644
                  (n = s[(t = fe[t])]),
                  'textAlign' === t)
              ) {
-@@ -65933,12 +68511,12 @@ if (
+@@ -65934,12 +68511,12 @@ if (
                  :   e;
          }
          function te(e, t, i) {
@@ -35072,7 +35142,7 @@ index 113ca02..c3cf0bc 100644
                  n
              );
          }
-@@ -65964,12 +68542,12 @@ if (
+@@ -65965,12 +68542,12 @@ if (
                  },
                  s = function (t, s) {
                      t = [].slice.call(t);
@@ -35090,7 +35160,7 @@ index 113ca02..c3cf0bc 100644
                  };
              (t.call = function () {
                  s(arguments, !1);
-@@ -66006,15 +68584,15 @@ if (
+@@ -66007,15 +68584,15 @@ if (
                  }),
                  (t.deregister = function (n) {
                      var s,
@@ -35114,7 +35184,7 @@ index 113ca02..c3cf0bc 100644
                  }),
                  (t.destroy = function () {
                      for (var t = i.length; t--; )
-@@ -66026,8 +68604,8 @@ if (
+@@ -66027,8 +68604,8 @@ if (
              var i,
                  n,
                  s = t || e.contentDocument || e.document,
@@ -35125,7 +35195,7 @@ index 113ca02..c3cf0bc 100644
                  l = this;
              (l.insertHTML = function (e, t) {
                  var i, n;
-@@ -66048,7 +68626,7 @@ if (
+@@ -66049,7 +68626,7 @@ if (
                          u = s.createDocumentFragment();
                      if (
                          ('string' == typeof e ?
@@ -35134,7 +35204,7 @@ index 113ca02..c3cf0bc 100644
                          :   (d(u, e),
                              t &&
                                  (d(u, l.selectedRange().extractContents()),
-@@ -66057,13 +68635,13 @@ if (
+@@ -66058,13 +68635,13 @@ if (
                      ) {
                          for (; !H(c.lastChild, !0); ) c = c.lastChild;
                          if (
@@ -35150,7 +35220,7 @@ index 113ca02..c3cf0bc 100644
                              n)
                          ) {
                              var h = r('div');
-@@ -66075,11 +68653,11 @@ if (
+@@ -66076,11 +68653,11 @@ if (
                  (l.insertNode = function (e, t) {
                      var i = n(e, t),
                          s = l.selectedRange(),
@@ -35165,7 +35235,7 @@ index 113ca02..c3cf0bc 100644
                          :   s.insertNode(i),
                          l.restoreRange();
                  }),
-@@ -66145,12 +68723,12 @@ if (
+@@ -66146,12 +68723,12 @@ if (
                  }),
                  (l.insertMarkers = function () {
                      var e = l.selectedRange(),
@@ -35181,7 +35251,7 @@ index 113ca02..c3cf0bc 100644
                  }),
                  (l.getMarker = function (e) {
                      return s.getElementById(e);
-@@ -66160,7 +68738,7 @@ if (
+@@ -66161,7 +68738,7 @@ if (
                      t && u(t);
                  }),
                  (l.removeMarkers = function () {
@@ -35190,7 +35260,7 @@ index 113ca02..c3cf0bc 100644
                  }),
                  (l.saveRange = function () {
                      l.insertMarkers();
-@@ -66168,15 +68746,15 @@ if (
+@@ -66169,15 +68746,15 @@ if (
                  (l.selectRange = function (t) {
                      var i,
                          n = e.getSelection(),
@@ -35213,7 +35283,7 @@ index 113ca02..c3cf0bc 100644
                                      (t.setStartBefore(i), t.collapse(!0));
                          }
                      }
-@@ -66185,8 +68763,8 @@ if (
+@@ -66186,8 +68763,8 @@ if (
                  (l.restoreRange = function () {
                      var e,
                          t = l.selectedRange(),
@@ -35224,7 +35294,7 @@ index 113ca02..c3cf0bc 100644
                      if (!i || !n || !t) return !1;
                      (e = i.nextSibling === n),
                          (t = s.createRange()).setStartBefore(i),
-@@ -66201,22 +68779,22 @@ if (
+@@ -66202,22 +68779,22 @@ if (
                          s = l.cloneSelected();
                      if (!s) return !1;
                      s.collapse(!1),
@@ -35252,7 +35322,7 @@ index 113ca02..c3cf0bc 100644
                          r,
                          c,
                          u,
-@@ -66230,10 +68808,10 @@ if (
+@@ -66231,10 +68808,10 @@ if (
                          v = n || e[f - 1][0].length;
                      for (
                          s && v++,
@@ -35267,7 +35337,7 @@ index 113ca02..c3cf0bc 100644
                          f--;
  
                      )
-@@ -66242,18 +68820,18 @@ if (
+@@ -66243,18 +68820,18 @@ if (
                              (u = Math.max(0, d - m - g)),
                              (c = -1),
                              s ?
@@ -35289,7 +35359,7 @@ index 113ca02..c3cf0bc 100644
                                  ),
                                  l.insertHTML(e[f][1]),
                                  !0
-@@ -66279,15 +68857,15 @@ if (
+@@ -66280,15 +68857,15 @@ if (
                          :   t.empty && t.empty());
                  });
          }
@@ -35310,7 +35380,7 @@ index 113ca02..c3cf0bc 100644
                      if (
                          (r && i.test(r.nodeValue.slice(-1))) ||
                          (l && i.test((l.nodeValue || '')[0]))
-@@ -66297,20 +68875,20 @@ if (
+@@ -66298,20 +68875,20 @@ if (
                              p = c.startContainer,
                              m = r.nodeValue;
                          null === m && (m = r.innerText || ''),
@@ -35335,7 +35405,7 @@ index 113ca02..c3cf0bc 100644
                              d > -1 &&
                                  (c.setStart(l, d),
                                  c.collapse(!0),
-@@ -66318,16 +68896,16 @@ if (
+@@ -66319,16 +68896,16 @@ if (
                      }
                  }
          }
@@ -35357,7 +35427,7 @@ index 113ca02..c3cf0bc 100644
                      return t.length - e.length;
                  }),
                  (function e(s) {
-@@ -66336,13 +68914,13 @@ if (
+@@ -66337,13 +68914,13 @@ if (
                              (s.nodeType !== ge || k(s, 'code') || e(s),
                              s.nodeType === ve)
                          )
@@ -35374,7 +35444,7 @@ index 113ca02..c3cf0bc 100644
                                          p = l.substr(d + c.length);
                                      h.appendChild(n.createTextNode(p)),
                                          (s.nodeValue = l.substr(0, d)),
-@@ -66358,11 +68936,11 @@ if (
+@@ -66359,11 +68936,11 @@ if (
          }
          function re(e, t) {
              var i;
@@ -35388,7 +35458,7 @@ index 113ca02..c3cf0bc 100644
                          (e.nodeType === ve && '' === e.nodeValue) || d(i, e))
                      :   (i = null);
                  },
-@@ -66372,19 +68950,19 @@ if (
+@@ -66373,19 +68950,19 @@ if (
          }
          function le(e, t) {
              var i,
@@ -35415,7 +35485,7 @@ index 113ca02..c3cf0bc 100644
                  Y,
                  J,
                  Q,
-@@ -66397,24 +68975,24 @@ if (
+@@ -66398,24 +68975,24 @@ if (
                  fe,
                  ye,
                  ke,
@@ -35448,7 +35518,7 @@ index 113ca02..c3cf0bc 100644
                  Ye,
                  Je,
                  Qe,
-@@ -66424,8 +69002,8 @@ if (
+@@ -66425,8 +69002,8 @@ if (
                  it,
                  nt,
                  st,
@@ -35458,7 +35528,7 @@ index 113ca02..c3cf0bc 100644
                  rt,
                  lt,
                  ct,
-@@ -66444,38 +69022,38 @@ if (
+@@ -66445,38 +69022,38 @@ if (
              _t.commands = n(!0, {}, t.commands || Me);
              var kt = (_t.opts = n(!0, {}, we, t));
              (_t.opts.emoticons = t.emoticons || we.emoticons),
@@ -35512,7 +35582,7 @@ index 113ca02..c3cf0bc 100644
                      var e = kt.plugins;
                      (e = e ? e.toString().split(',') : []),
                          (Y = new ne(_t)),
-@@ -66483,31 +69061,31 @@ if (
+@@ -66484,31 +69061,31 @@ if (
                              Y.register(e.trim());
                          });
                  }),
@@ -35560,7 +35630,7 @@ index 113ca02..c3cf0bc 100644
                              te('html', {
                                  attrs: ' class="' + t + '"',
                                  spellcheck:
-@@ -66516,84 +69094,84 @@ if (
+@@ -66517,84 +69094,84 @@ if (
                                  style: kt.style,
                              })
                          ),
@@ -35693,7 +35763,7 @@ index 113ca02..c3cf0bc 100644
                      var e,
                          t = _t.commands,
                          i = (kt.toolbarExclude || '').split(','),
-@@ -66603,16 +69181,16 @@ if (
+@@ -66604,16 +69181,16 @@ if (
                          unselectable: 'on',
                      })),
                          kt.icons in le.icons && (ke = new le.icons[kt.icons]()),
@@ -35716,7 +35786,7 @@ index 113ca02..c3cf0bc 100644
                                                  'toolbarButton',
                                                  {
                                                      name: s,
-@@ -66625,30 +69203,30 @@ if (
+@@ -66626,30 +69203,30 @@ if (
                                              ke && ke.create)
                                          )
                                              ke.create(s) &&
@@ -35759,7 +35829,7 @@ index 113ca02..c3cf0bc 100644
                                              r.state ?
                                                  vt.push({
                                                      name: s,
-@@ -66659,13 +69237,13 @@ if (
+@@ -66660,13 +69237,13 @@ if (
                                                      name: s,
                                                      state: r.exec,
                                                  }),
@@ -35776,7 +35846,7 @@ index 113ca02..c3cf0bc 100644
                  }),
                  (He = function () {
                      var e,
-@@ -66673,7 +69251,7 @@ if (
+@@ -66674,7 +69251,7 @@ if (
                          i,
                          n,
                          s,
@@ -35785,7 +35855,7 @@ index 113ca02..c3cf0bc 100644
                          l = r('div', { className: 'sceditor-grip' }),
                          c = r('div', { className: 'sceditor-resize-cover' }),
                          u = 'touchmove mousemove',
-@@ -66684,70 +69262,70 @@ if (
+@@ -66685,70 +69262,70 @@ if (
                          y = 0,
                          w = 0,
                          k = 0,
@@ -35892,7 +35962,7 @@ index 113ca02..c3cf0bc 100644
                              (wt[e] = te('emoticon', {
                                  key: e,
                                  url: t + (i.url || i),
-@@ -66759,98 +69337,98 @@ if (
+@@ -66760,98 +69337,98 @@ if (
                                      );
                          });
                  }),
@@ -36024,7 +36094,7 @@ index 113ca02..c3cf0bc 100644
                              mt(),
                              _t);
                  }),
-@@ -66862,15 +69440,15 @@ if (
+@@ -66863,15 +69440,15 @@ if (
                  (_t.expandToContent = function (t) {
                      if (!_t.maximize()) {
                          if ((clearTimeout(_e), (_e = !1), !de)) {
@@ -36046,7 +36116,7 @@ index 113ca02..c3cf0bc 100644
                          t || -1 === de.max || (r = Math.min(r, de.max)),
                              _t.height(Math.ceil(Math.max(r, de.min)));
                      }
-@@ -66878,18 +69456,18 @@ if (
+@@ -66879,18 +69456,18 @@ if (
                  (_t.destroy = function () {
                      if (Y) {
                          Y.destroy(),
@@ -36072,7 +36142,7 @@ index 113ca02..c3cf0bc 100644
                              delete e._sceditor,
                              v(e),
                              (e.required = ce);
-@@ -66899,9 +69477,9 @@ if (
+@@ -66900,9 +69477,9 @@ if (
                      var l,
                          c = 'sceditor-' + t;
                      _t.closeDropDown(!0),
@@ -36084,7 +36154,7 @@ index 113ca02..c3cf0bc 100644
                                      h(i, ':not(input):not(textarea)'),
                                      function (e, t) {
                                          t.nodeType === ge &&
-@@ -66917,32 +69495,32 @@ if (
+@@ -66918,32 +69495,32 @@ if (
                                  kt.dropDownCss
                              )),
                              y(
@@ -36126,7 +36196,7 @@ index 113ca02..c3cf0bc 100644
                          n = e.clipboardData,
                          s = function (e) {
                              var t = new FileReader();
-@@ -66955,22 +69533,22 @@ if (
+@@ -66956,22 +69533,22 @@ if (
                                  t.readAsDataURL(e);
                          };
                      if (n && !t) {
@@ -36158,7 +36228,7 @@ index 113ca02..c3cf0bc 100644
                              i.firstChild;
  
                          )
-@@ -66981,48 +69559,48 @@ if (
+@@ -66982,48 +69559,48 @@ if (
                                  d(i, ye),
                                  (i.scrollTop = c),
                                  (ye = !1),
@@ -36222,7 +36292,7 @@ index 113ca02..c3cf0bc 100644
                              nt());
                  }),
                  (_t.wysiwygEditorInsertText = function (e, t) {
-@@ -67039,31 +69617,31 @@ if (
+@@ -67040,31 +69617,31 @@ if (
                  (_t.sourceEditorInsertText = function (e, t) {
                      var i,
                          n,
@@ -36271,7 +36341,7 @@ index 113ca02..c3cf0bc 100644
                      );
                  }),
                  (_t.val = function (e, t) {
-@@ -67078,22 +69656,22 @@ if (
+@@ -67079,22 +69656,22 @@ if (
                          : _t.getWysiwygEditorValue(t)
                      );
                  }),
@@ -36299,7 +36369,7 @@ index 113ca02..c3cf0bc 100644
                              (e = e
                                  .replace(/&lt;/g, '<')
                                  .replace(/&gt;/g, '>')
-@@ -67104,51 +69682,51 @@ if (
+@@ -67105,51 +69682,51 @@ if (
                  }),
                  (_t.getWysiwygEditorValue = function (e) {
                      for (
@@ -36364,7 +36434,7 @@ index 113ca02..c3cf0bc 100644
                  }),
                  (_t.sourceMode = function (e) {
                      var t = _t.inSourceMode();
-@@ -67159,27 +69737,27 @@ if (
+@@ -67160,27 +69737,27 @@ if (
                  }),
                  (_t.toggleSourceMode = function () {
                      var e = _t.inSourceMode();
@@ -36401,7 +36471,7 @@ index 113ca02..c3cf0bc 100644
                      _t.inSourceMode() ?
                          t.txtExec &&
                          (Array.isArray(t.txtExec) ?
-@@ -67196,14 +69774,14 @@ if (
+@@ -67197,14 +69774,14 @@ if (
                              ));
                  }),
                  (Ee = function () {
@@ -36419,7 +36489,7 @@ index 113ca02..c3cf0bc 100644
                          } catch (e) {}
                          !i &&
                              n &&
-@@ -67215,42 +69793,42 @@ if (
+@@ -67216,42 +69793,42 @@ if (
                  (st = function () {
                      function e() {
                          if (
@@ -36474,7 +36544,7 @@ index 113ca02..c3cf0bc 100644
                  }),
                  (_t.currentNode = function () {
                      return J;
-@@ -67262,20 +69840,20 @@ if (
+@@ -67263,20 +69840,20 @@ if (
                      var e,
                          t,
                          i = 'active',
@@ -36502,7 +36572,7 @@ index 113ca02..c3cf0bc 100644
                                  d =
                                      (s && !c._sceTxtMode) ||
                                      (!s && !c._sceWysiwygMode);
-@@ -67294,15 +69872,15 @@ if (
+@@ -67295,15 +69872,15 @@ if (
                          ke && ke.update && ke.update(s, t, e);
                      }
                  }),
@@ -36523,7 +36593,7 @@ index 113ca02..c3cf0bc 100644
                              var i = t.parentNode,
                                  n = i.lastChild;
                              n &&
-@@ -67312,24 +69890,24 @@ if (
+@@ -67313,24 +69890,24 @@ if (
                                  !H(i, !0) &&
                                      n === t &&
                                      H(t.previousSibling) &&
@@ -36554,7 +36624,7 @@ index 113ca02..c3cf0bc 100644
                                  !1
                              );
                          }
-@@ -67340,17 +69918,17 @@ if (
+@@ -67341,17 +69918,17 @@ if (
                              return !1;
                      });
                  }),
@@ -36575,7 +36645,7 @@ index 113ca02..c3cf0bc 100644
                          t[0].replace(/\{(\d+)\}/g, function (i, n) {
                              return t[n - 0 + 1] !== e ?
                                      t[n - 0 + 1]
-@@ -67360,7 +69938,7 @@ if (
+@@ -67361,7 +69938,7 @@ if (
                  }),
                  (Qe = function (e) {
                      Y && Y.call(e.type + 'Event', e, _t);
@@ -36584,7 +36654,7 @@ index 113ca02..c3cf0bc 100644
                      ft[t] &&
                          ft[t].forEach(function (t) {
                              t.call(_t, e);
-@@ -67369,38 +69947,38 @@ if (
+@@ -67370,38 +69947,38 @@ if (
                  (_t.bind = function (e, t, i, n) {
                      for (var s = (e = e.split(' ')).length; s--; )
                          if (me(t)) {
@@ -36637,7 +36707,7 @@ index 113ca02..c3cf0bc 100644
                                  s &&
                                  1 === s.endOffset &&
                                  s.collapsed &&
-@@ -67409,10 +69987,10 @@ if (
+@@ -67410,10 +69987,10 @@ if (
                                  k(n.firstChild, 'br') &&
                                  (s.setStartBefore(n.firstChild),
                                  s.collapse(!0),
@@ -36651,7 +36721,7 @@ index 113ca02..c3cf0bc 100644
                      }
                      return tt(), _t;
                  }),
-@@ -67441,7 +70019,7 @@ if (
+@@ -67442,7 +70019,7 @@ if (
                      c(Q, 'code') ||
                          (i ||
                              ((i = []),
@@ -36660,7 +36730,7 @@ index 113ca02..c3cf0bc 100644
                                  i[t++] = [e, n];
                              }),
                              i.sort(function (e, t) {
-@@ -67450,7 +70028,7 @@ if (
+@@ -67451,7 +70028,7 @@ if (
                              (_t.emoticonsCache = i),
                              (_t.longestEmoticonCode =
                                  i[i.length - 1][0].length)),
@@ -36669,7 +36739,7 @@ index 113ca02..c3cf0bc 100644
                              _t.emoticonsCache,
                              !0,
                              !0,
-@@ -67462,31 +70040,31 @@ if (
+@@ -67463,31 +70040,31 @@ if (
                                  e.preventDefault()));
                  }),
                  (lt = function () {
@@ -36710,7 +36780,7 @@ index 113ca02..c3cf0bc 100644
                          he(e) ?
                              (ue.styleSheet ?
                                  (ue.styleSheet.cssText = e)
-@@ -67496,7 +70074,7 @@ if (
+@@ -67497,7 +70074,7 @@ if (
                          : ue.innerHTML
                      );
                  }),
@@ -36719,7 +36789,7 @@ index 113ca02..c3cf0bc 100644
                      var t = [],
                          i = {
                              '`': '~',
-@@ -67598,14 +70176,14 @@ if (
+@@ -67599,14 +70176,14 @@ if (
                              104: '8',
                              105: '9',
                          },
@@ -36738,7 +36808,7 @@ index 113ca02..c3cf0bc 100644
                          (t = t.join('+')),
                          bt[t] &&
                              !1 === bt[t].call(_t) &&
-@@ -67616,7 +70194,7 @@ if (
+@@ -67617,7 +70194,7 @@ if (
                          (e = e.toLowerCase()),
                          he(t) ?
                              (bt[e] = function () {
@@ -36747,7 +36817,7 @@ index 113ca02..c3cf0bc 100644
                              })
                          :   (bt[e] = t),
                          _t
-@@ -67625,12 +70203,12 @@ if (
+@@ -67626,12 +70203,12 @@ if (
                  (_t.removeShortcut = function (e) {
                      return delete bt[e.toLowerCase()], _t;
                  }),
@@ -36762,7 +36832,7 @@ index 113ca02..c3cf0bc 100644
                          ((t = i.startContainer),
                          0 === i.startOffset && (n = ct()) && !k(n, 'body'))
                      ) {
-@@ -67647,7 +70225,7 @@ if (
+@@ -67648,7 +70225,7 @@ if (
                      }
                  }),
                  (ct = function () {
@@ -36771,7 +36841,7 @@ index 113ca02..c3cf0bc 100644
                          if (!(e = e.parentNode) || k(e, 'body')) return;
                      return e;
                  }),
-@@ -67655,12 +70233,12 @@ if (
+@@ -67656,12 +70233,12 @@ if (
                      return (
                          !(e = e || ct()) ||
                              k(e, 'body') ||
@@ -36788,7 +36858,7 @@ index 113ca02..c3cf0bc 100644
                          _t
                      );
                  }),
-@@ -67671,19 +70249,19 @@ if (
+@@ -67672,19 +70249,19 @@ if (
                      ) {
                          var t,
                              i = _t.sourceMode(),
@@ -36815,7 +36885,7 @@ index 113ca02..c3cf0bc 100644
                      }
                  }),
                  (dt = function () {
-@@ -67695,7 +70273,7 @@ if (
+@@ -67696,7 +70273,7 @@ if (
                          n = 13 === i || 32 === i,
                          s = 8 === i || 46 === i;
                      (ht.lastChar = t),
@@ -36824,7 +36894,7 @@ index 113ca02..c3cf0bc 100644
                              (13 === t || 32 === t ?
                                  n ? (ht.triggerNext = !0)
                                  :   ut()
-@@ -67705,16 +70283,16 @@ if (
+@@ -67706,16 +70283,16 @@ if (
                              :   ht.triggerNext && (ut(), (ht.triggerNext = !1)),
                              clearTimeout(q),
                              (q = setTimeout(function () {
@@ -36844,7 +36914,7 @@ index 113ca02..c3cf0bc 100644
          }
          e = e && e.hasOwnProperty('default') ? e.default : e;
          var ce,
-@@ -67814,7 +70392,7 @@ if (
+@@ -67815,7 +70392,7 @@ if (
                  dropDownCss: {},
              },
              ke = navigator.userAgent,
@@ -36853,7 +36923,7 @@ index 113ca02..c3cf0bc 100644
                  var e,
                      t = 3,
                      i = document,
-@@ -67830,9 +70408,9 @@ if (
+@@ -67831,9 +70408,9 @@ if (
                      t > 4 ? t : e
                  );
              })(),
@@ -36866,7 +36936,7 @@ index 113ca02..c3cf0bc 100644
                  (((de = document.createElement('div')).contentEditable = !0),
                  'contentEditable' in document.documentElement &&
                      'true' === de.contentEditable &&
-@@ -67843,15 +70421,15 @@ if (
+@@ -67844,15 +70421,15 @@ if (
                              !(ce = /AppleWebKit\/(\d+)/.exec(ke)) ||
                              !ce[1] ||
                              ce[1] < 534),
@@ -36885,7 +36955,7 @@ index 113ca02..c3cf0bc 100644
                  html: '<!DOCTYPE html><html{attrs}><head><style>.ie * {min-height: auto !important} .ie table td {height:15px} @supports (-ms-ime-align:auto) { * { min-height: auto !important; } }</style><meta http-equiv="Content-Type" content="text/html;charset={charset}" /><link rel="stylesheet" type="text/css" href="{style}" /></head><body contenteditable="true" {spellcheck}><p></p></body></html>',
                  toolbarButton:
                      '<a class="sceditor-button sceditor-button-{name}" data-sceditor-command="{name}" unselectable="on"><div unselectable="on">{dispName}</div></a>',
-@@ -67872,7 +70450,7 @@ if (
+@@ -67873,7 +70450,7 @@ if (
                  youtube:
                      '<iframe width="560" height="315" frameborder="0" allowfullscreen src="https://www.youtube.com/embed/{id}?wmode=opaque&start={time}" data-youtube-id="{id}"></iframe>',
              },
@@ -36894,7 +36964,7 @@ index 113ca02..c3cf0bc 100644
              Me = {
                  bold: { exec: 'bold', tooltip: 'Bold', shortcut: 'Ctrl+B' },
                  italic: {
-@@ -67957,8 +70535,8 @@ if (
+@@ -67958,8 +70535,8 @@ if (
                      _dropDown: function (e, t, i) {
                          var n = r('div'),
                              s = '',
@@ -36905,7 +36975,7 @@ index 113ca02..c3cf0bc 100644
                              (e.opts.colors.split('|').forEach(function (e) {
                                  (s += '<div class="sceditor-color-column">'),
                                      e.split(',').forEach(function (e) {
-@@ -67971,8 +70549,8 @@ if (
+@@ -67972,8 +70549,8 @@ if (
                                      }),
                                      (s += '</div>');
                              }),
@@ -36916,7 +36986,7 @@ index 113ca02..c3cf0bc 100644
                              p(n, 'click', 'a', function (t) {
                                  i(w(this, 'color')),
                                      e.closeDropDown(!0),
-@@ -68108,10 +70686,10 @@ if (
+@@ -68109,10 +70686,10 @@ if (
                              p(i, 'click', '.button', function (e) {
                                  var n = Number(h(i, '#rows')[0].value),
                                      s = Number(h(i, '#cols')[0].value),
@@ -36929,7 +36999,7 @@ index 113ca02..c3cf0bc 100644
                                          '<tr>' +
                                              Array(s + 1).join(
                                                  '<td>' +
-@@ -68120,8 +70698,8 @@ if (
+@@ -68121,8 +70698,8 @@ if (
                                              ) +
                                              '</tr>'
                                      )),
@@ -36940,7 +37010,7 @@ index 113ca02..c3cf0bc 100644
                                      t.closeDropDown(!0),
                                      e.preventDefault());
                              }),
-@@ -68158,12 +70736,12 @@ if (
+@@ -68159,12 +70736,12 @@ if (
                                  !0
                              )
                          );
@@ -36957,7 +37027,7 @@ index 113ca02..c3cf0bc 100644
                                          h(s, '#width')[0].value,
                                          h(s, '#height')[0].value
                                      ),
-@@ -68228,7 +70806,7 @@ if (
+@@ -68229,7 +70806,7 @@ if (
                  link: {
                      _dropDown: function (e, t, i) {
                          function n(t) {
@@ -36966,7 +37036,7 @@ index 113ca02..c3cf0bc 100644
                                  e.closeDropDown(!0),
                                  t.preventDefault();
                          }
-@@ -68245,13 +70823,13 @@ if (
+@@ -68246,13 +70823,13 @@ if (
                                  !0
                              )
                          );
@@ -36982,7 +37052,7 @@ index 113ca02..c3cf0bc 100644
                                  },
                                  be
                              ),
-@@ -68278,7 +70856,7 @@ if (
+@@ -68279,7 +70856,7 @@ if (
                      exec: function () {
                          var e = c(this.currentNode(), 'a');
                          if (e) {
@@ -36991,7 +37061,7 @@ index 113ca02..c3cf0bc 100644
                              u(e);
                          }
                      },
-@@ -68305,7 +70883,7 @@ if (
+@@ -68306,7 +70883,7 @@ if (
                      exec: function (e) {
                          var t = this,
                              i = function (s) {
@@ -37000,7 +37070,7 @@ index 113ca02..c3cf0bc 100644
                                      l = t.opts,
                                      c = l.emoticonsRoot || '',
                                      u = l.emoticonsCompat,
-@@ -68339,7 +70917,7 @@ if (
+@@ -68340,7 +70917,7 @@ if (
                                              .closeDropDown(!0),
                                              e.preventDefault();
                                      }),
@@ -37009,7 +37079,7 @@ index 113ca02..c3cf0bc 100644
                                          d(
                                              v,
                                              r('img', {
-@@ -68354,12 +70932,12 @@ if (
+@@ -68355,12 +70932,12 @@ if (
                                      !s &&
                                          l.emoticons.more &&
                                          (d(
@@ -37024,7 +37094,7 @@ index 113ca02..c3cf0bc 100644
                                              t.createDropDown(
                                                  e,
                                                  'more-emoticons',
-@@ -68367,7 +70945,7 @@ if (
+@@ -68368,7 +70945,7 @@ if (
                                              ),
                                                  n.preventDefault();
                                          }),
@@ -37033,7 +37103,7 @@ index 113ca02..c3cf0bc 100644
                                      g
                                  );
                              };
-@@ -68394,7 +70972,7 @@ if (
+@@ -68395,7 +70972,7 @@ if (
                          ),
                              p(n, 'click', '.button', function (t) {
                                  var s = h(n, '#link')[0].value,
@@ -37042,7 +37112,7 @@ index 113ca02..c3cf0bc 100644
                                          /(?:v=|v\/|embed\/|youtu.be\/)(.{11})/
                                      ),
                                      r = s.match(
-@@ -68402,12 +70980,12 @@ if (
+@@ -68403,12 +70980,12 @@ if (
                                      ),
                                      l = 0;
                                  r &&
@@ -37059,7 +37129,7 @@ index 113ca02..c3cf0bc 100644
                                      e.closeDropDown(!0),
                                      t.preventDefault();
                              }),
-@@ -68539,40 +71117,40 @@ if (
+@@ -68540,40 +71117,40 @@ if (
              },
              Pe = {};
          ne.plugins = Pe;
@@ -37114,7 +37184,7 @@ index 113ca02..c3cf0bc 100644
          (le.locale = {}),
              (le.formats = {}),
              (le.icons = {}),
-@@ -68610,9 +71188,9 @@ if (
+@@ -68611,9 +71188,9 @@ if (
                  command: le.command,
                  commands: Me,
                  defaultOptions: we,
@@ -37127,7 +37197,7 @@ index 113ca02..c3cf0bc 100644
                  regexEscape: Q,
                  escapeEntities: X,
                  escapeUriScheme: ee,
-@@ -68623,34 +71201,34 @@ if (
+@@ -68624,34 +71201,34 @@ if (
                      is: k,
                      closest: c,
                      width: P,
@@ -37176,7 +37246,7 @@ index 113ca02..c3cf0bc 100644
                                  new le(e, t));
                  },
                  instance: function (e) {
-@@ -68755,21 +71333,21 @@ if (
+@@ -68756,21 +71333,21 @@ if (
                      e.replace(/\\(.)/g, '$1').replace(/^(["'])(.*?)\1$/, '$2')
                  :   e;
          }
@@ -37207,7 +37277,7 @@ index 113ca02..c3cf0bc 100644
          }
          function r(e) {
              function i(e, t) {
-@@ -68782,15 +71360,15 @@ if (
+@@ -68783,15 +71360,15 @@ if (
                      e === T &&
                          (i = t.match(r)) &&
                          ((s = y(i[1])),
@@ -37228,7 +37298,7 @@ index 113ca02..c3cf0bc 100644
                  var t,
                      i =
                          /([^\s=]+)=(?:(?:(["'])((?:\\\2|[^\2])*?)\2)|((?:.(?!\s\S+=))*.))/g,
-@@ -68812,7 +71390,7 @@ if (
+@@ -68813,7 +71390,7 @@ if (
                  return !1;
              }
              function c(e, t) {
@@ -37237,7 +37307,7 @@ index 113ca02..c3cf0bc 100644
                  return (
                      !k.opts.fixInvalidChildren ||
                      !i ||
-@@ -68825,8 +71403,8 @@ if (
+@@ -68826,8 +71403,8 @@ if (
                          i,
                          n,
                          s,
@@ -37247,7 +37317,7 @@ index 113ca02..c3cf0bc 100644
                          r = [],
                          u = [],
                          d = [],
-@@ -68839,7 +71417,7 @@ if (
+@@ -68840,7 +71417,7 @@ if (
                          m = function (e) {
                              return (
                                  h() &&
@@ -37256,7 +37326,7 @@ index 113ca02..c3cf0bc 100644
                                  i.closedBy &&
                                  i.closedBy.indexOf(e) > -1
                              );
-@@ -68848,22 +71426,22 @@ if (
+@@ -68849,22 +71426,22 @@ if (
  
                  )
                      switch (
@@ -37283,7 +37353,7 @@ index 113ca02..c3cf0bc 100644
                              break;
                          case M:
                              if (
-@@ -68885,26 +71463,26 @@ if (
+@@ -68886,26 +71463,26 @@ if (
                                          r.push(s);
                                  }
                                  for (
@@ -37322,7 +37392,7 @@ index 113ca02..c3cf0bc 100644
                                          (i &&
                                              !1 === i.isInline &&
                                              k.opts.breakAfterBlock &&
-@@ -68920,41 +71498,41 @@ if (
+@@ -68921,41 +71498,41 @@ if (
              function h(e, t, i) {
                  var n,
                      s,
@@ -37377,7 +37447,7 @@ index 113ca02..c3cf0bc 100644
                                      (i ?
                                          !1 === r.isInline && (u = !0)
                                      :   (!1 === r.isInline &&
-@@ -68964,9 +71542,9 @@ if (
+@@ -68965,9 +71542,9 @@ if (
                                          r.breakAfter && (u = !0))),
                                  !i &&
                                      !c &&
@@ -37390,7 +37460,7 @@ index 113ca02..c3cf0bc 100644
                                      (!1 === r.isInline &&
                                          k.opts.breakBeforeBlock &&
                                          !1 !== r.breakBefore &&
-@@ -68983,30 +71561,30 @@ if (
+@@ -68984,30 +71561,30 @@ if (
              }
              function p(e, t, i, n) {
                  var s,
@@ -37429,7 +37499,7 @@ index 113ca02..c3cf0bc 100644
                                  u.children.splice(0, 1),
                                      l.splice(r + 1, 0, s, u);
                                  var m = u.children[0];
-@@ -69030,7 +71608,7 @@ if (
+@@ -69031,7 +71608,7 @@ if (
                              for (var t = e.length; t--; ) {
                                  var i = e[t].type;
                                  if (i === T || i === M) return !1;
@@ -37438,7 +37508,7 @@ index 113ca02..c3cf0bc 100644
                                      return !1;
                              }
                              return !0;
-@@ -69041,7 +71619,7 @@ if (
+@@ -69042,7 +71619,7 @@ if (
                  )
                      (t = e[s]) &&
                          t.type === T &&
@@ -37447,7 +37517,7 @@ index 113ca02..c3cf0bc 100644
                          m(t.children),
                          n(t.children) &&
                              i &&
-@@ -69051,8 +71629,8 @@ if (
+@@ -69052,8 +71629,8 @@ if (
              }
              function _(e, i) {
                  var s,
@@ -37457,7 +37527,7 @@ index 113ca02..c3cf0bc 100644
                      r,
                      l,
                      c,
-@@ -69073,29 +71651,29 @@ if (
+@@ -69074,29 +71651,29 @@ if (
                      e.length > 0;
  
                  )
@@ -37505,7 +37575,7 @@ index 113ca02..c3cf0bc 100644
                                  if (!i) {
                                      m.push('<br />');
                                      continue;
-@@ -69107,7 +71685,7 @@ if (
+@@ -69108,7 +71685,7 @@ if (
                                      (u = !1);
                                  continue;
                              }
@@ -37514,7 +37584,7 @@ index 113ca02..c3cf0bc 100644
                          }
                          c && !u ?
                              (m.push('<div>'), (u = !0))
-@@ -69117,11 +71695,11 @@ if (
+@@ -69118,11 +71695,11 @@ if (
                  return u && m.push('</div>\n'), m.join('');
              }
              function f(e) {
@@ -37529,7 +37599,7 @@ index 113ca02..c3cf0bc 100644
                              (r =
                                  (s &&
                                      k.opts.breakBeforeBlock &&
-@@ -69129,7 +71707,7 @@ if (
+@@ -69130,7 +71707,7 @@ if (
                                  (n && n.breakBefore)),
                              (l =
                                  (s &&
@@ -37538,7 +37608,7 @@ index 113ca02..c3cf0bc 100644
                                      k.opts.breakStartBlock &&
                                      !1 !== n.breakStart) ||
                                  (n && n.breakStart)),
-@@ -69143,10 +71721,10 @@ if (
+@@ -69144,10 +71721,10 @@ if (
                                      k.opts.breakAfterBlock &&
                                      !1 !== n.breakAfter) ||
                                  (n && n.breakAfter)),
@@ -37551,7 +37621,7 @@ index 113ca02..c3cf0bc 100644
                              n || t.type !== T)
                          )
                              if (t.type === T) {
-@@ -69160,7 +71738,7 @@ if (
+@@ -69161,7 +71738,7 @@ if (
                                              '=',
                                              g(
                                                  t.attrs.defaultattr,
@@ -37560,7 +37630,7 @@ index 113ca02..c3cf0bc 100644
                                                  'defaultattr'
                                              )
                                          ),
-@@ -69171,17 +71749,17 @@ if (
+@@ -69172,17 +71749,17 @@ if (
                                                  ' ',
                                                  i,
                                                  '=',
@@ -37581,7 +37651,7 @@ index 113ca02..c3cf0bc 100644
                              } else d.push(t.val);
                          else
                              d.push(t.val),
-@@ -69193,7 +71771,7 @@ if (
+@@ -69194,7 +71771,7 @@ if (
                  var s = /\s|=/.test(e);
                  return (
                      n(t) ? t(e, i)
@@ -37590,7 +37660,7 @@ index 113ca02..c3cf0bc 100644
                      : '"' + e.replace('\\', '\\\\').replace('"', '\\"') + '"'
                  );
              }
-@@ -69209,25 +71787,25 @@ if (
+@@ -69210,25 +71787,25 @@ if (
                      var t,
                          n,
                          s,
@@ -37625,7 +37695,7 @@ index 113ca02..c3cf0bc 100644
                  }),
                  (k.parse = function (e, t) {
                      var i = u(k.tokenize(e)),
-@@ -69271,20 +71849,20 @@ if (
+@@ -69272,20 +71849,20 @@ if (
          }
          function u() {
              function e() {
@@ -37651,7 +37721,7 @@ index 113ca02..c3cf0bc 100644
                                      (y[t] = y[t] || {}),
                                      (y[t][i] = y[t][i] || {}),
                                      (y[t][i][e] = n);
-@@ -69293,7 +71871,7 @@ if (
+@@ -69294,7 +71871,7 @@ if (
              }
              function t(e, t, i) {
                  var s,
@@ -37660,7 +37730,7 @@ index 113ca02..c3cf0bc 100644
                      r = p.getStyle;
                  return y[(i = !!i)] ?
                          (b(y[i], function (i, l) {
-@@ -69301,43 +71879,43 @@ if (
+@@ -69302,43 +71879,43 @@ if (
                                  r(e.parentNode, i) !== s &&
                                  b(l, function (i, r) {
                                      (!r || r.indexOf(s.toString()) > -1) &&
@@ -37721,7 +37791,7 @@ index 113ca02..c3cf0bc 100644
                      r = e.nodeName.toLowerCase();
                  return (
                      (i = !!i),
-@@ -69354,8 +71932,8 @@ if (
+@@ -69355,8 +71932,8 @@ if (
                                          return (s = !0), !1;
                                  }),
                                  !s)) ||
@@ -37732,7 +37802,7 @@ index 113ca02..c3cf0bc 100644
                          }),
                      t
                  );
-@@ -69367,10 +71945,10 @@ if (
+@@ -69368,10 +71945,10 @@ if (
                          p.traverse(
                              e,
                              function (e) {
@@ -37745,7 +37815,7 @@ index 113ca02..c3cf0bc 100644
                                      d = e.firstChild,
                                      h = !0;
                                  if (
-@@ -69389,18 +71967,18 @@ if (
+@@ -69390,18 +71967,18 @@ if (
                                                      /br/i.test(d.nodeName)))
                                          )
                                              return;
@@ -37771,7 +37841,7 @@ index 113ca02..c3cf0bc 100644
                                      } else s += e.nodeValue;
                              },
                              !1,
-@@ -69419,31 +71997,31 @@ if (
+@@ -69420,31 +71997,31 @@ if (
              }
              function d(e, t, i, n) {
                  var s,
@@ -37816,7 +37886,7 @@ index 113ca02..c3cf0bc 100644
                      (s = u.toBBCode(s, !0)),
                      h.opts.bbcodeTrim && (s = s.trim()),
                      s
-@@ -69453,7 +72031,7 @@ if (
+@@ -69454,7 +72031,7 @@ if (
              h.stripQuotes = s;
              var m = {},
                  y = {},
@@ -37825,7 +37895,7 @@ index 113ca02..c3cf0bc 100644
                      ul: ['li', 'ol', 'ul'],
                      ol: ['li', 'ol', 'ul'],
                      table: ['tr'],
-@@ -69464,7 +72042,7 @@ if (
+@@ -69465,7 +72042,7 @@ if (
                  (h.opts = this.opts),
                      (h.elementToBbcode = c),
                      e(),
@@ -37834,7 +37904,7 @@ index 113ca02..c3cf0bc 100644
                      (this.toBBCode = h.toSource),
                      (this.fromBBCode = h.toHtml);
              }),
-@@ -69485,9 +72063,9 @@ if (
+@@ -69486,9 +72063,9 @@ if (
              y = e.ie,
              w = y && y < 11,
              k = 'data-sceditor-emoticon',
@@ -37847,7 +37917,7 @@ index 113ca02..c3cf0bc 100644
                  bold: { txtExec: ['[b]', '[/b]'] },
                  italic: { txtExec: ['[i]', '[/i]'] },
                  underline: { txtExec: ['[u]', '[/u]'] },
-@@ -69501,7 +72079,7 @@ if (
+@@ -69502,7 +72079,7 @@ if (
                  font: {
                      txtExec: function (e) {
                          var t = this;
@@ -37856,7 +37926,7 @@ index 113ca02..c3cf0bc 100644
                              t.insertText('[font=' + e + ']', '[/font]');
                          });
                      },
-@@ -69509,7 +72087,7 @@ if (
+@@ -69510,7 +72087,7 @@ if (
                  size: {
                      txtExec: function (e) {
                          var t = this;
@@ -37865,7 +37935,7 @@ index 113ca02..c3cf0bc 100644
                              t.insertText('[size=' + e + ']', '[/size]');
                          });
                      },
-@@ -69517,7 +72095,7 @@ if (
+@@ -69518,7 +72095,7 @@ if (
                  color: {
                      txtExec: function (e) {
                          var t = this;
@@ -37874,7 +37944,7 @@ index 113ca02..c3cf0bc 100644
                              t.insertText('[color=' + e + ']', '[/color]');
                          });
                      },
-@@ -69546,7 +72124,7 @@ if (
+@@ -69547,7 +72124,7 @@ if (
                  image: {
                      txtExec: function (e, t) {
                          var i = this;
@@ -37883,7 +37953,7 @@ index 113ca02..c3cf0bc 100644
                              var s = '';
                              t && (s += ' width=' + t),
                                  n && (s += ' height=' + n),
-@@ -69557,7 +72135,7 @@ if (
+@@ -69558,7 +72135,7 @@ if (
                  email: {
                      txtExec: function (e, t) {
                          var i = this;
@@ -37892,7 +37962,7 @@ index 113ca02..c3cf0bc 100644
                              i.insertText(
                                  '[email=' + e + ']' + (n || t || e) + '[/email]'
                              );
-@@ -69567,7 +72145,7 @@ if (
+@@ -69568,7 +72145,7 @@ if (
                  link: {
                      txtExec: function (e, t) {
                          var i = this;
@@ -37901,7 +37971,7 @@ index 113ca02..c3cf0bc 100644
                              i.insertText(
                                  '[url=' + e + ']' + (n || t || e) + '[/url]'
                              );
-@@ -69578,7 +72156,7 @@ if (
+@@ -69579,7 +72156,7 @@ if (
                  youtube: {
                      txtExec: function (e) {
                          var t = this;
@@ -37910,7 +37980,7 @@ index 113ca02..c3cf0bc 100644
                              t.insertText('[youtube]' + e + '[/youtube]');
                          });
                      },
-@@ -69586,7 +72164,7 @@ if (
+@@ -69587,7 +72164,7 @@ if (
                  rtl: { txtExec: ['[rtl]', '[/rtl]'] },
                  ltr: { txtExec: ['[ltr]', '[/ltr]'] },
              },
@@ -37919,7 +37989,7 @@ index 113ca02..c3cf0bc 100644
                  'b': {
                      tags: { b: null, strong: null },
                      styles: {
-@@ -69633,7 +72211,7 @@ if (
+@@ -69634,7 +72211,7 @@ if (
                  'font': {
                      tags: { font: { face: null } },
                      styles: { 'font-family': null },
@@ -37928,7 +37998,7 @@ index 113ca02..c3cf0bc 100644
                      format: function (e, t) {
                          var i;
                          return (
-@@ -69668,7 +72246,7 @@ if (
+@@ -69669,7 +72246,7 @@ if (
                  'color': {
                      tags: { font: { color: null } },
                      styles: { color: null },
@@ -37937,7 +38007,7 @@ index 113ca02..c3cf0bc 100644
                      format: function (e, t) {
                          var i;
                          return (
-@@ -69772,17 +72350,17 @@ if (
+@@ -69773,17 +72350,17 @@ if (
                      allowsEmpty: !0,
                      tags: { img: { src: null } },
                      allowedChildren: ['#'],
@@ -37959,7 +38029,7 @@ index 113ca02..c3cf0bc 100644
                                  ((e.complete && (i || n)) || (i && n)) &&
                                      (s = '=' + p.width(e) + 'x' + p.height(e)),
                                  '[img' + s + ']' + f(e, 'src') + '[/img]')
-@@ -69791,17 +72369,17 @@ if (
+@@ -69792,17 +72369,17 @@ if (
                      html: function (e, t, i) {
                          var n,
                              s,
@@ -37982,7 +38052,7 @@ index 113ca02..c3cf0bc 100644
                              '<img' + r + ' src="' + h(i) + '" />'
                          );
                      },
-@@ -69809,7 +72387,7 @@ if (
+@@ -69810,7 +72387,7 @@ if (
                  'url': {
                      allowsEmpty: !0,
                      tags: { a: { href: null } },
@@ -37991,7 +38061,7 @@ index 113ca02..c3cf0bc 100644
                      format: function (e, t) {
                          var i = f(e, 'href');
                          return 'mailto:' === i.substr(0, 7) ?
-@@ -69824,7 +72402,7 @@ if (
+@@ -69825,7 +72402,7 @@ if (
                      },
                  },
                  'email': {
@@ -38000,7 +38070,7 @@ index 113ca02..c3cf0bc 100644
                      html: function (e, t, i) {
                          return (
                              '<a href="mailto:' +
-@@ -69838,18 +72416,18 @@ if (
+@@ -69839,18 +72416,18 @@ if (
                  'quote': {
                      tags: { blockquote: null },
                      isInline: !1,
@@ -38025,7 +38095,7 @@ index 113ca02..c3cf0bc 100644
                          return (
                              (i || f(e, n)) &&
                                  ((s = (i && i.textContent) || f(e, n)),
-@@ -69957,13 +72535,13 @@ if (
+@@ -69958,13 +72535,13 @@ if (
                  'ignore': {},
              },
              T = 'open',
@@ -38042,7 +38112,7 @@ index 113ca02..c3cf0bc 100644
                      e.type,
                      e.name,
                      e.val,
-@@ -69985,7 +72563,7 @@ if (
+@@ -69986,7 +72563,7 @@ if (
                  );
              },
          }),
@@ -38051,7 +38121,7 @@ index 113ca02..c3cf0bc 100644
              (r.defaults = {
                  breakBeforeBlock: !1,
                  breakStartBlock: !1,
-@@ -69994,27 +72572,27 @@ if (
+@@ -69995,27 +72572,27 @@ if (
                  removeEmptyTags: !0,
                  fixInvalidNesting: !0,
                  fixInvalidChildren: !0,
@@ -38086,7 +38156,7 @@ index 113ca02..c3cf0bc 100644
              }),
              (u.formatBBCodeString = t),
              (e.formats.bbcode = u),
-@@ -70042,24 +72620,24 @@ if (
+@@ -70043,24 +72620,24 @@ if (
              return t;
          }
          function t(i) {
@@ -38119,7 +38189,7 @@ index 113ca02..c3cf0bc 100644
                          } catch (e) {}
                          (s =
                              i.write ?
-@@ -70075,13 +72653,13 @@ if (
+@@ -70076,13 +72653,13 @@ if (
                                  decodeURIComponent
                              )).replace(/[\(\)]/g, escape));
                          var l = '';
@@ -38137,7 +38207,7 @@ index 113ca02..c3cf0bc 100644
                      for (
                          var u =
                                  document.cookie ?
-@@ -70111,13 +72689,13 @@ if (
+@@ -70112,13 +72689,13 @@ if (
                                      m = JSON.parse(m);
                                  } catch (e) {}
                              if (t === _) {
@@ -38154,7 +38224,7 @@ index 113ca02..c3cf0bc 100644
                  }
              }
              return (
-@@ -70224,9 +72802,9 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -70225,9 +72802,9 @@ var windowIsTurbolinked = 'Turbolinks' in window,
              return this.each(function () {
                  var n = e(this),
                      s = n.data('bs.tooltip'),
@@ -38166,7 +38236,7 @@ index 113ca02..c3cf0bc 100644
                      'string' == typeof t && s[t]());
              });
          }
-@@ -70279,20 +72857,20 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -70280,20 +72857,20 @@ var windowIsTurbolinked = 'Turbolinks' in window,
                              ' on the window.document object!'
                      );
                  for (
@@ -38194,7 +38264,7 @@ index 113ca02..c3cf0bc 100644
                          this.$element.on(
                              r + '.' + this.type,
                              this.options.selector,
-@@ -70411,35 +72989,35 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -70412,35 +72989,35 @@ var windowIsTurbolinked = 'Turbolinks' in window,
                      );
                      if (t.isDefaultPrevented() || !n) return;
                      var s = this,
@@ -38241,7 +38311,7 @@ index 113ca02..c3cf0bc 100644
                      if (c) {
                          var p = r,
                              m = this.getPosition(this.$viewport);
-@@ -70449,7 +73027,7 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -70450,7 +73027,7 @@ var windowIsTurbolinked = 'Turbolinks' in window,
                              : 'right' == r && u.right + d > m.width ? 'left'
                              : 'left' == r && u.left - d < m.left ? 'right'
                              : r),
@@ -38250,7 +38320,7 @@ index 113ca02..c3cf0bc 100644
                      }
                      var _ = this.getCalculatedOffset(r, u, d, h);
                      this.applyPlacement(_, r);
-@@ -70460,7 +73038,7 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -70461,7 +73038,7 @@ var windowIsTurbolinked = 'Turbolinks' in window,
                              'out' == e && s.leave(s);
                      };
                      e.support.transition && this.$tip.hasClass('fade') ?
@@ -38259,7 +38329,7 @@ index 113ca02..c3cf0bc 100644
                              .one('bsTransitionEnd', f)
                              .emulateTransitionEnd(i.TRANSITION_DURATION)
                      :   f();
-@@ -70469,12 +73047,12 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -70470,12 +73047,12 @@ var windowIsTurbolinked = 'Turbolinks' in window,
              (i.prototype.applyPlacement = function (t, i) {
                  var n = this.tip(),
                      s = n[0].offsetWidth,
@@ -38276,7 +38346,7 @@ index 113ca02..c3cf0bc 100644
                      (t.left += r),
                      e.offset.setOffset(
                          n[0],
-@@ -70494,11 +73072,11 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -70495,11 +73072,11 @@ var windowIsTurbolinked = 'Turbolinks' in window,
                      n.addClass('in');
                  var l = n[0].offsetWidth,
                      c = n[0].offsetHeight;
@@ -38290,7 +38360,7 @@ index 113ca02..c3cf0bc 100644
                      p = d ? 'offsetWidth' : 'offsetHeight';
                  n.offset(t), this.replaceArrow(h, n[0][p], d);
              }),
-@@ -70517,7 +73095,7 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -70518,7 +73095,7 @@ var windowIsTurbolinked = 'Turbolinks' in window,
              }),
              (i.prototype.hide = function (t) {
                  function n() {
@@ -38299,7 +38369,7 @@ index 113ca02..c3cf0bc 100644
                          s.$element &&
                              s.$element
                                  .removeAttr('aria-describedby')
-@@ -70525,13 +73103,13 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -70526,13 +73103,13 @@ var windowIsTurbolinked = 'Turbolinks' in window,
                          t && t();
                  }
                  var s = this,
@@ -38319,7 +38389,7 @@ index 113ca02..c3cf0bc 100644
                                  .one('bsTransitionEnd', n)
                                  .emulateTransitionEnd(i.TRANSITION_DURATION)
                          :   n(),
-@@ -70559,10 +73137,10 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -70560,10 +73137,10 @@ var windowIsTurbolinked = 'Turbolinks' in window,
                          width: s.right - s.left,
                          height: s.bottom - s.top,
                      }));
@@ -38333,7 +38403,7 @@ index 113ca02..c3cf0bc 100644
                          : t.offset(),
                      r = {
                          scroll:
-@@ -70578,7 +73156,7 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -70579,7 +73156,7 @@ var windowIsTurbolinked = 'Turbolinks' in window,
                                  height: e(window).height(),
                              }
                          :   null;
@@ -38342,7 +38412,7 @@ index 113ca02..c3cf0bc 100644
              }),
              (i.prototype.getCalculatedOffset = function (e, t, i, n) {
                  return (
-@@ -70600,23 +73178,23 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -70601,23 +73178,23 @@ var windowIsTurbolinked = 'Turbolinks' in window,
              (i.prototype.getViewportAdjustedDelta = function (e, t, i, n) {
                  var s = { top: 0, left: 0 };
                  if (!this.$viewport) return s;
@@ -38378,7 +38448,7 @@ index 113ca02..c3cf0bc 100644
                  }
                  return s;
              }),
-@@ -70701,9 +73279,9 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -70702,9 +73279,9 @@ var windowIsTurbolinked = 'Turbolinks' in window,
              return this.each(function () {
                  var n = e(this),
                      s = n.data('bs.popover'),
@@ -38390,7 +38460,7 @@ index 113ca02..c3cf0bc 100644
                      'string' == typeof t && s[t]());
              });
          }
-@@ -71032,18 +73610,18 @@ var bind = function (e, t) {
+@@ -71033,18 +73610,18 @@ var bind = function (e, t) {
                          :   this;
                  }),
                  (t.prototype.hideStep = function (t, i) {
@@ -38414,7 +38484,7 @@ index 113ca02..c3cf0bc 100644
                                          n.data('popover') ||
                                          (n = e('body')),
                                      n
-@@ -71058,27 +73636,27 @@ var bind = function (e, t) {
+@@ -71059,27 +73636,27 @@ var bind = function (e, t) {
                                                  '-element'
                                          )
                                          .removeData('bs.popover'),
@@ -38451,7 +38521,7 @@ index 113ca02..c3cf0bc 100644
                              '[object Number]' === {}.toString.call(n) && n > 0 ?
                                  (this._debug(
                                      'Wait ' +
-@@ -71089,24 +73667,24 @@ var bind = function (e, t) {
+@@ -71090,24 +73667,24 @@ var bind = function (e, t) {
                                  window.setTimeout(
                                      (function (e) {
                                          return function () {
@@ -38481,7 +38551,7 @@ index 113ca02..c3cf0bc 100644
                          (n = this._makePromise(
                              null != r.onShow ? r.onShow(this, e) : void 0
                          )),
-@@ -71132,7 +73710,7 @@ var bind = function (e, t) {
+@@ -71133,7 +73710,7 @@ var bind = function (e, t) {
                      )
                          return (
                              (l = this),
@@ -38490,7 +38560,7 @@ index 113ca02..c3cf0bc 100644
                                  if (l._isOrphan(r)) {
                                      if (!1 === r.orphan)
                                          return (
-@@ -71141,7 +73719,7 @@ var bind = function (e, t) {
+@@ -71142,7 +73719,7 @@ var bind = function (e, t) {
                                                      (l._current + 1) +
                                                      '.\nOrphan option is false and the element does not exist or is hidden.'
                                              ),
@@ -38499,7 +38569,7 @@ index 113ca02..c3cf0bc 100644
                                                  l._showPrevStep()
                                              :   l._showNextStep())
                                          );
-@@ -71170,12 +73748,12 @@ var bind = function (e, t) {
+@@ -71171,12 +73748,12 @@ var bind = function (e, t) {
                                  window.setTimeout(
                                      (function (e) {
                                          return function () {
@@ -38514,7 +38584,7 @@ index 113ca02..c3cf0bc 100644
                              n
                          );
                  }),
-@@ -71333,17 +73911,17 @@ var bind = function (e, t) {
+@@ -71334,17 +73911,17 @@ var bind = function (e, t) {
                      );
                  }),
                  (t.prototype._redirect = function (t, n, s) {
@@ -38536,7 +38606,7 @@ index 113ca02..c3cf0bc 100644
                              :   (this._debug('Error redirection loop to ' + s),
                                  this._removeState('redirect_to'),
                                  null != t.onRedirectError ?
-@@ -71379,13 +73957,13 @@ var bind = function (e, t) {
+@@ -71380,13 +73957,13 @@ var bind = function (e, t) {
                          );
                  }),
                  (t.prototype._showPopover = function (t, i) {
@@ -38554,7 +38624,7 @@ index 113ca02..c3cf0bc 100644
                          (n = e(t.element)).addClass(
                              'tour-' +
                                  this._options.name +
-@@ -71395,9 +73973,9 @@ var bind = function (e, t) {
+@@ -71396,9 +73973,9 @@ var bind = function (e, t) {
                                  i +
                                  '-element'
                          ),
@@ -38566,7 +38636,7 @@ index 113ca02..c3cf0bc 100644
                              e(t.reflexElement)
                                  .addClass('tour-step-element-reflex')
                                  .off(
-@@ -71438,23 +74016,23 @@ var bind = function (e, t) {
+@@ -71439,23 +74016,23 @@ var bind = function (e, t) {
                          'fixed' === n.css('position') &&
                              s.css('position', 'fixed'),
                          this._reposition(s, t),
@@ -38594,7 +38664,7 @@ index 113ca02..c3cf0bc 100644
                          this._isOrphan(t) && r.addClass('orphan'),
                          r.addClass(
                              'tour-' +
-@@ -71469,7 +74047,7 @@ var bind = function (e, t) {
+@@ -71470,7 +74047,7 @@ var bind = function (e, t) {
                                  'tour-' + this._options.name + '-reflex'
                              ),
                          t.prev < 0 &&
@@ -38603,7 +38673,7 @@ index 113ca02..c3cf0bc 100644
                                  .addClass('disabled')
                                  .prop('disabled', !0)
                                  .prop('tabindex', -1),
-@@ -71478,7 +74056,7 @@ var bind = function (e, t) {
+@@ -71479,7 +74056,7 @@ var bind = function (e, t) {
                                  .addClass('disabled')
                                  .prop('disabled', !0)
                                  .prop('tabindex', -1),
@@ -38612,7 +38682,7 @@ index 113ca02..c3cf0bc 100644
                          r.clone().wrap('<div>').parent().html()
                      );
                  }),
-@@ -71488,16 +74066,16 @@ var bind = function (e, t) {
+@@ -71489,16 +74066,16 @@ var bind = function (e, t) {
                          :   e;
                  }),
                  (t.prototype._reposition = function (t, n) {
@@ -38633,7 +38703,7 @@ index 113ca02..c3cf0bc 100644
                          u.top < 0 && (u.top = 0),
                          u.left < 0 && (u.left = 0),
                          t.offset(u),
-@@ -71511,7 +74089,7 @@ var bind = function (e, t) {
+@@ -71512,7 +74089,7 @@ var bind = function (e, t) {
                                  'left'
                              );
                      } else if (c !== u.top)
@@ -38642,7 +38712,7 @@ index 113ca02..c3cf0bc 100644
                  }),
                  (t.prototype._center = function (t) {
                      return t.css(
-@@ -71525,33 +74103,33 @@ var bind = function (e, t) {
+@@ -71526,33 +74103,33 @@ var bind = function (e, t) {
                          .css(n, t ? 50 * (1 - t / i) + '%' : '');
                  }),
                  (t.prototype._scrollIntoView = function (t) {
@@ -38683,7 +38753,7 @@ index 113ca02..c3cf0bc 100644
                                  '. Window height: ' +
                                  c +
                                  '.'
-@@ -71718,9 +74296,9 @@ var bind = function (e, t) {
+@@ -71719,9 +74296,9 @@ var bind = function (e, t) {
                      var n;
                  }),
                  (t.prototype._showBackground = function (t, n) {
@@ -38695,7 +38765,7 @@ index 113ca02..c3cf0bc 100644
                              h = e(i).width(),
                              d = [],
                              r = 0,
-@@ -71731,9 +74309,9 @@ var bind = function (e, t) {
+@@ -71732,9 +74309,9 @@ var bind = function (e, t) {
                          switch (
                              ((c = u[r]),
                              (s =
@@ -38708,7 +38778,7 @@ index 113ca02..c3cf0bc 100644
                                          class: 'tour-backdrop ' + c,
                                      }))),
                              e(t.backdropContainer).append(s),
-@@ -71756,7 +74334,7 @@ var bind = function (e, t) {
+@@ -71757,7 +74334,7 @@ var bind = function (e, t) {
                                              top: n.offset.top + n.height,
                                              left: 0,
                                          })
@@ -38717,7 +38787,7 @@ index 113ca02..c3cf0bc 100644
                                          .width(h)
                                  );
                                  break;
-@@ -71864,26 +74442,26 @@ var bind = function (e, t) {
+@@ -71865,26 +74442,26 @@ var bind = function (e, t) {
                      return this._getParams(e, '#');
                  }),
                  (t.prototype._getParams = function (e, t) {
@@ -38753,7 +38823,7 @@ index 113ca02..c3cf0bc 100644
                          )
                              return !1;
                          for (n in e)
-@@ -72095,12 +74673,12 @@ var tutorial = {
+@@ -72096,12 +74673,12 @@ var tutorial = {
              i,
              n,
              s,
@@ -38770,7 +38840,7 @@ index 113ca02..c3cf0bc 100644
          if (Array.isArray(c)) {
              for (n in ((t = {}), c))
                  if (c.hasOwnProperty(n)) {
-@@ -72113,7 +74691,7 @@ var tutorial = {
+@@ -72114,7 +74691,7 @@ var tutorial = {
                  }
              return t;
          }
@@ -38779,7 +38849,7 @@ index 113ca02..c3cf0bc 100644
              try {
                  if (!(t = JSON.parse(r.getItem(c))))
                      throw new ReferenceError(
-@@ -72122,7 +74700,7 @@ var tutorial = {
+@@ -72123,7 +74700,7 @@ var tutorial = {
              } catch (e) {
                  throw new ReferenceError(c + ' is not defined in this storage');
              }
@@ -38788,7 +38858,7 @@ index 113ca02..c3cf0bc 100644
                  if (void 0 === (t = t[l[n]]))
                      throw new ReferenceError(
                          [].slice.call(l, 0, n + 1).join('.') +
-@@ -72147,13 +74725,13 @@ var tutorial = {
+@@ -72148,13 +74725,13 @@ var tutorial = {
              i,
              n,
              s = this._type,
@@ -38805,7 +38875,7 @@ index 113ca02..c3cf0bc 100644
              throw new Error(
                  'Minimum 2 arguments must be given or first parameter must be an object'
              );
-@@ -72161,21 +74739,21 @@ var tutorial = {
+@@ -72162,21 +74739,21 @@ var tutorial = {
              for (n in l)
                  l.hasOwnProperty(n) &&
                      (c((e = l[n])) || this.alwaysUseJson ?
@@ -38834,7 +38904,7 @@ index 113ca02..c3cf0bc 100644
              (e = r[n]),
                  (t = isNaN(r[n + 1]) ? 'object' : 'array'),
                  (!i[e] ||
-@@ -72183,7 +74761,7 @@ var tutorial = {
+@@ -72184,7 +74761,7 @@ var tutorial = {
                      ('array' == t && !Array.isArray(i[e]))) &&
                      (i[e] = 'array' == t ? [] : {}),
                  (i = i[e]);
@@ -38843,7 +38913,7 @@ index 113ca02..c3cf0bc 100644
      }
      function i() {
          var e,
-@@ -72191,22 +74769,22 @@ var tutorial = {
+@@ -72192,22 +74769,22 @@ var tutorial = {
              i,
              n,
              s = this._type,
@@ -38873,7 +38943,7 @@ index 113ca02..c3cf0bc 100644
              if (void 0 === (t = t[r[i]]))
                  throw new ReferenceError(
                      [].slice.call(r, 1, i).join('.') +
-@@ -72215,11 +74793,11 @@ var tutorial = {
+@@ -72216,11 +74793,11 @@ var tutorial = {
          if (Array.isArray(r[i]))
              for (n in r[i]) r[i].hasOwnProperty(n) && delete t[r[i][n]];
          else delete t[r[i]];
@@ -38887,7 +38957,7 @@ index 113ca02..c3cf0bc 100644
          for (t in n) n.hasOwnProperty(t) && i.call(this, n[t]);
          if (e)
              for (t in v.namespaceStorages)
-@@ -72229,10 +74807,10 @@ var tutorial = {
+@@ -72230,10 +74807,10 @@ var tutorial = {
          var t,
              i = arguments.length,
              n = arguments,
@@ -38902,7 +38972,7 @@ index 113ca02..c3cf0bc 100644
              return !0;
          }
          try {
-@@ -72252,39 +74830,39 @@ var tutorial = {
+@@ -72253,39 +74830,39 @@ var tutorial = {
              return !0;
          }
      }
@@ -38955,7 +39025,7 @@ index 113ca02..c3cf0bc 100644
          return s;
      }
      function r(e) {
-@@ -72356,7 +74934,7 @@ var tutorial = {
+@@ -72357,7 +74934,7 @@ var tutorial = {
          y = 'ss_',
          w = l('localStorage'),
          k = 'undefined' != typeof Cookies,
@@ -38964,7 +39034,7 @@ index 113ca02..c3cf0bc 100644
              _type: '',
              _ns: '',
              _callMethod: function (e, t) {
-@@ -72389,8 +74967,8 @@ var tutorial = {
+@@ -72390,8 +74967,8 @@ var tutorial = {
                          n.hasOwnProperty(s) && this._callMethod(t, [s, n[s]]);
                      return n;
                  }
@@ -38975,7 +39045,7 @@ index 113ca02..c3cf0bc 100644
              },
              remove: function () {
                  if (arguments.length < 1)
-@@ -72412,15 +74990,15 @@ var tutorial = {
+@@ -72413,15 +74990,15 @@ var tutorial = {
              isSet: function () {
                  if (arguments.length < 1)
                      throw new Error('Minimum 1 argument must be given');
@@ -38994,7 +39064,7 @@ index 113ca02..c3cf0bc 100644
              _cookie: !0,
              _prefix: '',
              _expires: null,
-@@ -72479,17 +75057,17 @@ var tutorial = {
+@@ -72480,17 +75057,17 @@ var tutorial = {
              },
          };
          w ||
@@ -39016,7 +39086,7 @@ index 113ca02..c3cf0bc 100644
                  _type: 'cookieStorage',
                  setExpires: function (e) {
                      return window.cookieStorage.setExpires(e), this;
-@@ -72516,10 +75094,10 @@ var tutorial = {
+@@ -72517,10 +75094,10 @@ var tutorial = {
              return r(e);
          }),
          w ?
@@ -39031,7 +39101,7 @@ index 113ca02..c3cf0bc 100644
          (v.namespaceStorages = {}),
          (v.removeAllStorages = function (e) {
              v.localStorage.removeAll(e),
-@@ -72528,7 +75106,7 @@ var tutorial = {
+@@ -72529,7 +75106,7 @@ var tutorial = {
                  e || (v.namespaceStorages = {});
          }),
          (v.alwaysUseJsonInStorage = function (e) {
@@ -39040,7 +39110,7 @@ index 113ca02..c3cf0bc 100644
                  (v.localStorage.alwaysUseJson = e),
                  (v.sessionStorage.alwaysUseJson = e),
                  v.cookieStorage && (v.cookieStorage.alwaysUseJson = e);
-@@ -72562,17 +75140,17 @@ var tutorial = {
+@@ -72563,17 +75140,17 @@ var tutorial = {
          }
          function i(n) {
              function s() {}
@@ -39065,7 +39135,7 @@ index 113ca02..c3cf0bc 100644
                      } catch (e) {}
                      (i =
                          n.write ?
-@@ -72588,26 +75166,26 @@ var tutorial = {
+@@ -72589,26 +75166,26 @@ var tutorial = {
                              )
                              .replace(/[\(\)]/g, escape));
                      var r = '';
@@ -39101,7 +39171,7 @@ index 113ca02..c3cf0bc 100644
                              l = r.slice(1).join('=');
                          i || '"' !== l.charAt(0) || (l = l.slice(1, -1));
                          try {
-@@ -72623,15 +75201,15 @@ var tutorial = {
+@@ -72624,15 +75201,15 @@ var tutorial = {
                  }
              }
              return (
@@ -39121,7 +39191,132 @@ index 113ca02..c3cf0bc 100644
                  }),
                  (s.defaults = {}),
                  (s.withConverter = i),
-@@ -72786,15 +75364,15 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -72694,16 +75271,15 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+                 return e;
+             },
+             leafletMissionPositionMarkerAdd: function (t) {
+-                if (mission_position_markers_per_id.get(t.id)) return;
+                 var i = L.icon({
+                     iconUrl: '/images/letter_p.png',
+                     iconSize: [32, 37],
+                     iconAnchor: iconAnchorCalculate([32, 37]),
+                 });
+-                let n = L.marker([t.latitude, t.longitude], {
++                marker = L.marker([t.latitude, t.longitude], {
+                     icon: i,
+                 }).bindTooltip(t.caption);
+-                var s = function (e) {
++                var n = function (e) {
+                     confirm(
+                         I18n.t('javascript.poi_delete', { caption: t.caption })
+                     ) &&
+@@ -72717,29 +75293,28 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+                             cache: !1,
+                         }));
+                 };
+-                n.on('click', s),
+-                    (n.id = t.id),
+-                    n.addTo(map_filters_service.getMapFiltersLayers().pois),
+-                    e.push(n),
+-                    mission_position_markers_per_id.set(n.id, n);
+-            },
+-            leafletMissionPositionMarkerDelete: function (e) {
+-                let t = map_filters_service
++                marker.on('click', n),
++                    (marker.id = t.id),
++                    marker.addTo(
++                        map_filters_service.getMapFiltersLayers().pois
++                    ),
++                    e.push(marker);
++            },
++            leafletMissionPositionMarkerDelete: function (t) {
++                (marker = map_filters_service
+                     .getMapFiltersLayers()
+-                    .pois.getLayer(e);
+-                map_filters_service.getMapFiltersLayers().pois.removeLayer(e),
+-                    mission_position_markers_per_id.delete(t.id);
++                    .pois.getLayer(t)),
++                    map_filters_service
++                        .getMapFiltersLayers()
++                        .pois.removeLayer(t),
++                    (index = e.indexOf(marker)),
++                    -1 !== index && e.splice(index, 1);
+             },
+             mapkitMissionPositionMarkerAdd: function (t) {
+-                if (mission_position_markers_per_id.get(t.id)) return;
+                 var i = function () {
+-                    (
+-                        confirm(
+-                            I18n.t('javascript.poi_delete', {
+-                                caption: t.caption,
+-                            })
+-                        )
+-                    ) ?
++                    confirm(
++                        I18n.t('javascript.poi_delete', { caption: t.caption })
++                    ) &&
+                         (map_pois_service.mapkitMissionPositionMarkerDelete(
+                             t.id
+                         ),
+@@ -72748,30 +75323,38 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+                             type: 'POST',
+                             data: { _method: 'delete' },
+                             cache: !1,
+-                        }))
+-                    :   (this.selected = !1);
++                        }));
+                 };
+-                if (!1 === isMapKitMap()) return;
+-                let n = new mapkit.ImageAnnotation(
+-                    new mapkit.Coordinate(t.latitude, t.longitude),
+-                    { url: { 1: '/images/letter_p.png' }, calloutEnabled: !0 }
+-                );
+-                n.addEventListener('select', i, n),
+-                    (n.element.className = 'mapkit-marker'),
+-                    map.addAnnotation(n),
+-                    (n.id = t.id),
+-                    e.push(n),
+-                    mission_position_markers_per_id.set(n.id, n);
++                if ('undefined' != typeof mapkit) {
++                    var n = new mapkit.ImageAnnotation(
++                        new mapkit.Coordinate(t.latitude, t.longitude),
++                        {
++                            url: { 1: '/images/letter_p.png' },
++                            calloutEnabled: !0,
++                        }
++                    );
++                    n.addEventListener('select', i, n),
++                        map.addAnnotation(n),
++                        (n.element.className = 'mapkit-marker');
++                }
++                (n.id = t.id), e.push(n);
+             },
+-            mapkitMissionPositionMarkerDelete: function (e) {
+-                const t = mission_position_markers_per_id.get(e);
+-                t && map.removeAnnotation(t);
++            mapkitMissionPositionMarkerDelete: function (t) {
++                var i = map_pois_service
++                    .getMissionPoiMarkersArray()
++                    .find(function (e) {
++                        return e.id === t;
++                    });
++                (e = e.filter(function (e) {
++                    return e.id !== i.id;
++                })),
++                    map.removeAnnotation(i);
+             },
+             mapkitMissionPositionMarkerDeleteAll: function () {
+-                mission_position_markers_per_id.forEach(function () {
+-                    map.removeAnnotation(mission_marker);
++                $.each(e, function (e, t) {
++                    map.removeAnnotation(t);
+                 }),
+-                    (mission_position_markers_per_id = new Map());
++                    (e = Array());
+             },
+         };
+     })(),
+@@ -72781,15 +75364,15 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
              i = {},
              n = {},
              s = {},
@@ -39145,7 +39340,7 @@ index 113ca02..c3cf0bc 100644
                          (filter_layer = L.layerGroup()),
                              (n[
                                  map_filters_service.decorateFilterText(
-@@ -72825,8 +75403,8 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -72820,8 +75403,8 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
              },
              getFilterLayerByMissionParams: function (e) {
                  switch (!0) {
@@ -39156,7 +39351,7 @@ index 113ca02..c3cf0bc 100644
                      case e.handoff:
                          return i[e.filter_id];
                      case e.user_id != t || 'alliance_missions' === e.filter_id:
-@@ -72840,7 +75418,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -72835,7 +75418,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                      return i[t] === e.layer;
                  })),
                      (filter_checked = 'overlayadd' == e.type),
@@ -39165,7 +39360,7 @@ index 113ca02..c3cf0bc 100644
                          ($.ajax({
                              type: 'PUT',
                              url: '/map_filters',
-@@ -72854,7 +75432,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -72849,7 +75432,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                              'user_buildings' != filter_key &&
                              'all_missions' != filter_key &&
                              'user_missions' != filter_key) ||
@@ -39174,7 +39369,7 @@ index 113ca02..c3cf0bc 100644
                              setTimeout(function () {
                                  map_filters_service.massFiltersChange(
                                      filter_key,
-@@ -72862,17 +75440,6 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -72857,17 +75440,6 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                                  );
                              }, 0)));
              },
@@ -39192,7 +39387,7 @@ index 113ca02..c3cf0bc 100644
              massFiltersChange: function (t, n) {
                  switch (((filters_keys = []), !0)) {
                      case 'all_buildings' == t:
-@@ -72900,7 +75467,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -72895,7 +75467,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                          :   map.removeLayer(i[t])
                      :   console.log('missing filter layer: ' + t);
                  }),
@@ -39201,7 +39396,7 @@ index 113ca02..c3cf0bc 100644
              },
              decorateFilterText: function (t, i) {
                  var n = function (e, t, i) {
-@@ -72950,10 +75517,10 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -72945,10 +75517,10 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
          :   (e.jQueryBridget = t(e, e.jQuery));
      })(window, function (e, t) {
          'use strict';
@@ -39214,7 +39409,7 @@ index 113ca02..c3cf0bc 100644
                  return (
                      e.each(function (e, l) {
                          var c = r.data(l, i);
-@@ -72962,12 +75529,12 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -72957,12 +75529,12 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                              if (u && '_' != t.charAt(0)) {
                                  var d = u.apply(c, n);
                                  s = void 0 === s ? d : s;
@@ -39230,7 +39425,7 @@ index 113ca02..c3cf0bc 100644
                              );
                      }),
                      void 0 !== s ? s : e
-@@ -72978,12 +75545,12 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -72973,12 +75545,12 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                      var s = r.data(n, i);
                      s ?
                          (s.option(t), s._init())
@@ -39246,7 +39441,7 @@ index 113ca02..c3cf0bc 100644
                          r.isPlainObject(e) &&
                              (this.options = r.extend(!0, this.options, e));
                      }),
-@@ -72998,12 +75565,12 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -72993,12 +75565,12 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
              !e || (e && e.bridget) || (e.bridget = i);
          }
          var s = Array.prototype.slice,
@@ -39263,7 +39458,7 @@ index 113ca02..c3cf0bc 100644
                      };
          return n(t || e.jQuery), i;
      }),
-@@ -73046,9 +75613,9 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -73041,9 +75613,9 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                          s < i.length;
                          s++
                      ) {
@@ -39276,7 +39471,7 @@ index 113ca02..c3cf0bc 100644
                      }
                      return this;
                  }
-@@ -73113,29 +75680,29 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -73108,29 +75680,29 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                  var i = document.body || document.documentElement;
                  i.appendChild(t);
                  var s = n(t);
@@ -39313,7 +39508,7 @@ index 113ca02..c3cf0bc 100644
                          m = parseFloat(p);
                      r[h] = isNaN(m) ? 0 : m;
                  }
-@@ -73145,12 +75712,12 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -73140,12 +75712,12 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                      v = r.marginTop + r.marginBottom,
                      b = r.borderLeftWidth + r.borderRightWidth,
                      y = r.borderTopWidth + r.borderBottomWidth,
@@ -39330,7 +39525,7 @@ index 113ca02..c3cf0bc 100644
                      (r.innerWidth = r.width - (_ + b)),
                      (r.innerHeight = r.height - (f + y)),
                      (r.outerWidth = r.width + g),
-@@ -73159,7 +75726,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -73154,7 +75726,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                  );
              }
          }
@@ -39339,7 +39534,7 @@ index 113ca02..c3cf0bc 100644
              r =
                  'undefined' == typeof console ? t : (
                      function (e) {
-@@ -73182,7 +75749,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -73177,7 +75749,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
              ],
              c = l.length,
              u = !1;
@@ -39348,7 +39543,7 @@ index 113ca02..c3cf0bc 100644
      }),
      (function (e, t) {
          'use strict';
-@@ -73265,11 +75832,11 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -73260,11 +75832,11 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                              if (!n) return void s.push(e);
                              t(e, n) && s.push(e);
                              for (
@@ -39364,7 +39559,7 @@ index 113ca02..c3cf0bc 100644
                          }
                      }),
                      s
-@@ -73283,9 +75850,9 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -73278,9 +75850,9 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                      var e = this[s];
                      clearTimeout(e);
                      var t = arguments,
@@ -39376,7 +39571,7 @@ index 113ca02..c3cf0bc 100644
                      }, i);
                  };
              }),
-@@ -73306,24 +75873,24 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -73301,24 +75873,24 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
          return (
              (i.htmlInit = function (t, n) {
                  i.docReady(function () {
@@ -39409,7 +39604,7 @@ index 113ca02..c3cf0bc 100644
                                          ' on ' +
                                          e.className +
                                          ': ' +
-@@ -73367,25 +75934,25 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -73362,25 +75934,25 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                  return '-' + e.toLowerCase();
              });
          }
@@ -39444,7 +39639,7 @@ index 113ca02..c3cf0bc 100644
              },
              u = (n.prototype = Object.create(e.prototype));
          (u.constructor = n),
-@@ -73412,17 +75979,17 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -73407,17 +75979,17 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                      i = this.layout._getOption('originTop'),
                      n = e[t ? 'left' : 'right'],
                      s = e[i ? 'top' : 'bottom'],
@@ -39471,7 +39666,7 @@ index 113ca02..c3cf0bc 100644
              }),
              (u.layoutPosition = function () {
                  var e = this.layout.size,
-@@ -73430,10 +75997,10 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -73425,10 +75997,10 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                      i = this.layout._getOption('originLeft'),
                      n = this.layout._getOption('originTop'),
                      s = i ? 'paddingLeft' : 'paddingRight',
@@ -39485,7 +39680,7 @@ index 113ca02..c3cf0bc 100644
                  var l = n ? 'paddingTop' : 'paddingBottom',
                      c = n ? 'top' : 'bottom',
                      u = n ? 'bottom' : 'top',
-@@ -73461,10 +76028,10 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -73456,10 +76028,10 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                      n = this.position.y,
                      s = e == this.position.x && t == this.position.y;
                  if ((this.setPosition(e, t), !s || this.isTransitioning)) {
@@ -39499,7 +39694,7 @@ index 113ca02..c3cf0bc 100644
                          this.transition({
                              to: r,
                              onTransitionEnd: { transform: this.layoutPosition },
-@@ -73577,7 +76144,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -73572,7 +76144,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                      this.emitEvent('remove', [this]);
              }),
              (u.remove = function () {
@@ -39508,7 +39703,7 @@ index 113ca02..c3cf0bc 100644
                          (this.once('transitionEnd', function () {
                              this.removeElem();
                          }),
-@@ -73647,8 +76214,8 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -73642,8 +76214,8 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                      'fizzy-ui-utils/utils',
                      './item',
                  ],
@@ -39519,7 +39714,7 @@ index 113ca02..c3cf0bc 100644
                  }
              )
          : 'object' == typeof module && module.exports ?
-@@ -73668,7 +76235,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -73663,7 +76235,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
              ));
      })(window, function (e, t, i, n, s) {
          'use strict';
@@ -39528,7 +39723,7 @@ index 113ca02..c3cf0bc 100644
              var i = n.getQueryElement(e);
              if (i) {
                  (this.element = i),
-@@ -73689,7 +76256,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -73684,7 +76256,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                              (i || e)
                      );
          }
@@ -39537,7 +39732,7 @@ index 113ca02..c3cf0bc 100644
              function t() {
                  e.apply(this, arguments);
              }
-@@ -73711,9 +76278,9 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -73706,9 +76278,9 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
              u = function () {},
              d = 0,
              h = {};
@@ -39550,7 +39745,7 @@ index 113ca02..c3cf0bc 100644
                  containerStyle: { position: 'relative' },
                  initLayout: !0,
                  originLeft: !0,
-@@ -73724,7 +76291,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -73719,7 +76291,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                  hiddenStyle: { opacity: 0, transform: 'scale(0.001)' },
                  visibleStyle: { opacity: 1, transform: 'scale(1)' },
              });
@@ -39559,7 +39754,7 @@ index 113ca02..c3cf0bc 100644
          n.extend(p, t.prototype),
              (p.option = function (e) {
                  n.extend(this.options, e);
-@@ -73735,7 +76302,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -73730,7 +76302,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                          this.options[t]
                      :   this.options[e];
              }),
@@ -39568,7 +39763,7 @@ index 113ca02..c3cf0bc 100644
                  initLayout: 'isInitLayout',
                  horizontal: 'isHorizontal',
                  layoutInstant: 'isLayoutInstant',
-@@ -73763,8 +76330,8 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -73758,8 +76330,8 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                      s < t.length;
                      s++
                  ) {
@@ -39579,7 +39774,7 @@ index 113ca02..c3cf0bc 100644
                  }
                  return n;
              }),
-@@ -73876,12 +76443,12 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -73871,12 +76443,12 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                      s.dispatchEvent(e + 'Complete', null, [t]);
                  }
                  function n() {
@@ -39596,7 +39791,7 @@ index 113ca02..c3cf0bc 100644
                      t.forEach(function (t) {
                          t.once(e, n);
                      });
-@@ -73962,7 +76529,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -73957,7 +76529,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
              (p.onresize = function () {
                  this.resize();
              }),
@@ -39605,7 +39800,7 @@ index 113ca02..c3cf0bc 100644
              (p.resize = function () {
                  this.isResizeBound && this.needsResizeLayout() && this.layout();
              }),
-@@ -74054,26 +76621,26 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -74049,26 +76621,26 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                      delete this.element.outlayerGUID,
                      c && c.removeData(this.element, this.constructor.namespace);
              }),
@@ -39640,7 +39835,7 @@ index 113ca02..c3cf0bc 100644
      }),
      (function (e, t) {
          'function' == typeof define && define.amd ?
-@@ -74104,10 +76671,10 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -74099,10 +76671,10 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                  }
                  var n = (this.columnWidth += this.gutter),
                      s = this.containerWidth + this.gutter,
@@ -39655,7 +39850,7 @@ index 113ca02..c3cf0bc 100644
              }),
              (n.getContainerWidth = function () {
                  var e =
-@@ -74131,13 +76698,13 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -74126,13 +76698,13 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                              :   '_getTopColPosition'
                          ](i, e),
                          s = { x: this.columnWidth * n.col, y: n.y },
@@ -39673,7 +39868,7 @@ index 113ca02..c3cf0bc 100644
                  return s;
              }),
              (n._getTopColPosition = function (e) {
-@@ -74170,17 +76737,17 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -74165,17 +76737,17 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                  var i = t(e),
                      n = this._getElementOffset(e),
                      s = this._getOption('originLeft') ? n.left : n.right,
@@ -39697,7 +39892,7 @@ index 113ca02..c3cf0bc 100644
                      r >= c;
                      c++
                  )
-@@ -74541,15 +77108,22 @@ var originalTranslate = I18n.t.bind(I18n);
+@@ -74536,15 +77108,22 @@ var originalTranslate = I18n.t.bind(I18n);
          ],
          missionchief: [],
      });
