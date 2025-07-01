@@ -117,7 +117,7 @@ function processMissionElement(e, t, i) {
             mission_markers_per_id.set(x.mission_id, x);
     }
     if ((y.date_end > 0 && missionTimerStart(y), y.water_damage_pump_value)) {
-        var C =
+        var T =
             "<div class='small' id='pumping_" +
             y.id +
             "'>" +
@@ -127,7 +127,7 @@ function processMissionElement(e, t, i) {
             "' class='progress pumping_progress'><div id='pumping_bar_" +
             y.id +
             "' class='progress-bar progress-bar-info";
-        (C +=
+        (T +=
             "' style='width: " +
             y.live_current_water_damage_pump_value +
             "%;'><div id='pumping_bar_striper_" +
@@ -137,7 +137,7 @@ function processMissionElement(e, t, i) {
             "'></div></div></div><div  id='patients_missing_" +
             y.id +
             "'"),
-            $('#mission_pump_progress_' + y.id).html(C);
+            $('#mission_pump_progress_' + y.id).html(T);
     }
     y.pumping_date_end > 0 &&
         ($('#pumping_bar_striper_' + y.id).addClass(
@@ -2320,17 +2320,17 @@ function waterCalculator(e, t) {
     var w = i.translations;
     const k = I18n.t(w.aria_progress_bar_prefix),
         x = I18n.t(w.amountOnSite, { amount: number_format(parseInt(h)) }),
-        C = I18n.t(w.amountApproaching, { amount: number_format(parseInt(p)) }),
-        T = I18n.t(w.amountSelected, { amount: number_format(parseInt(m)) }),
+        T = I18n.t(w.amountApproaching, { amount: number_format(parseInt(p)) }),
+        C = I18n.t(w.amountSelected, { amount: number_format(parseInt(m)) }),
         S = I18n.t(w.amountMissing, { amount: number_format(parseInt(_)) });
     s.find('.mission_water_bar_at_mission_' + e).html(x),
-        s.find('.mission_water_bar_driving_' + e).html(C),
-        s.find('.mission_water_bar_selected_' + e).html(T),
+        s.find('.mission_water_bar_driving_' + e).html(T),
+        s.find('.mission_water_bar_selected_' + e).html(C),
         s.find('.mission_water_bar_missing_' + e).html(S);
     const z = [k];
     parseInt(h) > 0 && z.push(x),
-        parseInt(p) > 0 && z.push(C),
-        parseInt(m) > 0 && z.push(T),
+        parseInt(p) > 0 && z.push(T),
+        parseInt(m) > 0 && z.push(C),
         parseInt(_) > 0 && z.push(S),
         s.attr('title', z.join(', ')),
         v + g + f >= 100 ?
@@ -6971,6 +6971,7 @@ Object.values ||
                 rescue: 'Rescue',
                 search_and_rescue: 'Search and Rescue',
                 technical_aid: 'Technical Aid',
+                tow_trucks: 'Tow Trucks',
                 traffic_police: 'Traffic Police',
                 water_rescue: 'Water Rescue',
             },
@@ -7896,6 +7897,7 @@ Object.values ||
                 rescue: 'Rescue',
                 search_and_rescue: 'Search and Rescue',
                 technical_aid: 'Technical Aid',
+                tow_trucks: 'Tow Trucks',
                 traffic_police: 'Traffic Police',
                 water_rescue: 'Water Rescue',
             },
@@ -8754,6 +8756,7 @@ Object.values ||
                 rescue: 'Rescue',
                 search_and_rescue: 'Search and Rescue',
                 technical_aid: 'Technical Aid',
+                tow_trucks: 'Recovery Vehicles',
                 traffic_police: 'Traffic Police',
                 water_rescue: 'Technical Rescue and SAR',
             },
@@ -9649,6 +9652,7 @@ Object.values ||
                 rescue: 'Rescue',
                 search_and_rescue: 'Search and Rescue',
                 technical_aid: 'Signalisatie',
+                tow_trucks: 'Vrachtwagens',
                 traffic_police: 'Dienst Infra',
                 water_rescue: 'Water Rescue',
             },
@@ -10539,6 +10543,7 @@ Object.values ||
                 rescue: 'Rescate',
                 search_and_rescue: 'Search and Rescue',
                 technical_aid: 'Technical Aid',
+                tow_trucks: 'Gr\xfaas',
                 traffic_police: 'Traffic Police',
                 water_rescue: 'Rescate acu\xe1tico',
             },
@@ -11416,6 +11421,7 @@ Object.values ||
                 rescue: 'Rescue',
                 search_and_rescue: 'Search and Rescue',
                 technical_aid: 'Technical Aid',
+                tow_trucks: 'Tow Trucks',
                 traffic_police: 'Traffic Police',
                 water_rescue: 'SES',
             },
@@ -12284,6 +12290,7 @@ Object.values ||
                 rescue: 'R\xe4ddning',
                 search_and_rescue: 'Search and Rescue',
                 technical_aid: 'Technical Aid',
+                tow_trucks: 'B\xe4rgningsbilar',
                 traffic_police: 'Traffic Police',
                 water_rescue: 'Vattenr\xe4ddning',
             },
@@ -13156,6 +13163,7 @@ Object.values ||
                 rescue: 'Pogotowie',
                 search_and_rescue: 'Ratownictwo poszukiwawczo - ratownicze',
                 technical_aid: 'Technical Aid',
+                tow_trucks: 'Ci\u0119\u017car\xf3wki holownicze',
                 traffic_police: 'Traffic Police',
                 water_rescue: 'WOPR',
             },
@@ -14054,6 +14062,7 @@ Object.values ||
                 rescue: 'Soccorso',
                 search_and_rescue: 'Search and Rescue',
                 technical_aid: 'Protezione Civile',
+                tow_trucks: 'Tow Trucks',
                 traffic_police: 'Traffic Police',
                 water_rescue: 'Soccorso Acquatico VVF',
             },
@@ -14937,6 +14946,7 @@ Object.values ||
                 rescue: 'Secours a Personne',
                 search_and_rescue: 'Search and Rescue',
                 technical_aid: 'Technical Aid',
+                tow_trucks: 'Tow Trucks',
                 traffic_police: 'Traffic Police',
                 water_rescue: 'Secours nautique',
             },
@@ -15861,6 +15871,7 @@ Object.values ||
                 rescue: 'Rescue',
                 search_and_rescue: 'Search and Rescue',
                 technical_aid: 'Technical Aid',
+                tow_trucks: 'Tow Trucks',
                 traffic_police: 'Traffic Police',
                 water_rescue: 'Water Rescue',
             },
@@ -16882,6 +16893,7 @@ Object.values ||
                 rescue: 'Redning',
                 search_and_rescue: 'Search and Rescue',
                 technical_aid: 'Technical Aid',
+                tow_trucks: 'Bugseringsvogne',
                 traffic_police: 'Traffic Police',
                 water_rescue: 'Vandredning',
             },
@@ -17755,6 +17767,7 @@ Object.values ||
                 rescue: 'Redning',
                 search_and_rescue: 'Search and Rescue',
                 technical_aid: 'Sivilforsvaret',
+                tow_trucks: 'Slepebiler',
                 traffic_police: 'Traffic Police',
                 water_rescue: 'Vannredning',
             },
@@ -18628,6 +18641,7 @@ Object.values ||
                 rescue: 'Sanitka',
                 search_and_rescue: 'Search and Rescue',
                 technical_aid: 'Technical Aid',
+                tow_trucks: 'Tow Trucks',
                 traffic_police: 'Traffic Police',
                 water_rescue: 'Vodn\xed z\xe1chrann\xe1 slu\u017eba',
             },
@@ -19526,6 +19540,7 @@ Object.values ||
                 rescue: 'Rescue',
                 search_and_rescue: 'Search and Rescue',
                 technical_aid: 'Technical Aid',
+                tow_trucks: 'Tow Trucks',
                 traffic_police: 'Traffic Police',
                 water_rescue: 'Water Rescue',
             },
@@ -20396,6 +20411,7 @@ Object.values ||
                 rescue: 'Pr\xe9-Hospitalar',
                 search_and_rescue: 'Search and Rescue',
                 technical_aid: 'Technical Aid',
+                tow_trucks: 'Cami\xf5es de reboque',
                 traffic_police: 'Traffic Police',
                 water_rescue: 'Resgate aqu\xe1tico',
             },
@@ -21269,6 +21285,7 @@ Object.values ||
                 rescue: 'Rescue',
                 search_and_rescue: 'Search and Rescue',
                 technical_aid: 'Technical Aid',
+                tow_trucks: 'Tow Trucks',
                 traffic_police: 'Traffic Police',
                 water_rescue: 'Water Rescue',
             },
@@ -22157,6 +22174,7 @@ Object.values ||
                 rescue: 'Rescue',
                 search_and_rescue: 'Search and Rescue',
                 technical_aid: 'Technical Aid',
+                tow_trucks: 'Tow Trucks',
                 traffic_police: 'Traffic Police',
                 water_rescue: 'Water Rescue',
             },
@@ -23161,6 +23179,7 @@ Object.values ||
                 rescue: 'Rescue',
                 search_and_rescue: 'Search and Rescue',
                 technical_aid: 'Technical Aid',
+                tow_trucks: 'Tow Trucks',
                 traffic_police: 'Traffic Police',
                 water_rescue: 'Water Rescue',
             },
@@ -24043,6 +24062,7 @@ Object.values ||
                 rescue: '\u6551\u52a9',
                 search_and_rescue: 'Search and Rescue',
                 technical_aid: 'Technical Aid',
+                tow_trucks: '\u30ec\u30c3\u30ab\u30fc\u8eca',
                 traffic_police: 'Traffic Police',
                 water_rescue: 'Water Rescue',
             },
@@ -25004,6 +25024,7 @@ Object.values ||
                 rescue: '\uad6c\uc870\ub300',
                 search_and_rescue: 'Search and Rescue',
                 technical_aid: 'Technical Aid',
+                tow_trucks: 'Tow Trucks',
                 traffic_police: 'Traffic Police',
                 water_rescue: 'Water Rescue',
             },
@@ -25918,6 +25939,7 @@ Object.values ||
                 rescue: 'Rescue',
                 search_and_rescue: 'Search and Rescue',
                 technical_aid: 'Technical Aid',
+                tow_trucks: 'Tow Trucks',
                 traffic_police: 'Traffic Police',
                 water_rescue: 'Water Rescue',
             },
@@ -26811,6 +26833,7 @@ Object.values ||
                 rescue: 'Ambulanssi',
                 search_and_rescue: 'Search and Rescue',
                 technical_aid: 'Technical Aid',
+                tow_trucks: 'Tow Trucks',
                 traffic_police: 'Traffic Police',
                 water_rescue: 'Rajavartiolaitos',
             },
@@ -27683,6 +27706,7 @@ Object.values ||
                 rescue: 'Rescue',
                 search_and_rescue: 'Search and Rescue',
                 technical_aid: 'Technical Aid',
+                tow_trucks: 'Tow Trucks',
                 traffic_police: 'Traffic Police',
                 water_rescue: 'Water Rescue',
             },
@@ -28556,6 +28580,7 @@ Object.values ||
                 rescue: 'Rescue',
                 search_and_rescue: 'Search and Rescue',
                 technical_aid: 'Technical Aid',
+                tow_trucks: 'Tow Trucks',
                 traffic_police: 'Traffic Police',
                 water_rescue: 'Water Rescue',
             },
@@ -29362,7 +29387,7 @@ Object.values ||
             );
         }
         function n(e) {
-            var t = (Te[e] = {});
+            var t = (Ce[e] = {});
             return (
                 ue.each(e.match(he) || [], function (e, i) {
                     t[i] = !0;
@@ -29591,7 +29616,7 @@ Object.values ||
                     !ue.contains(e.ownerDocument, e)
             );
         }
-        function C(e, t) {
+        function T(e, t) {
             for (var i, n, s, a = [], o = 0, r = e.length; o < r; o++)
                 (n = e[o]).style &&
                     ((a[o] = ue._data(n, 'olddisplay')),
@@ -29617,7 +29642,7 @@ Object.values ||
                         (n.style.display = t ? a[o] || '' : 'none'));
             return e;
         }
-        function T(e, t, i) {
+        function C(e, t, i) {
             var n = ft.exec(t);
             return n ? Math.max(0, n[1] - (i || 0)) + (n[2] || 'px') : t;
         }
@@ -29696,7 +29721,7 @@ Object.values ||
             var s;
             if (ue.isArray(t))
                 ue.each(t, function (t, s) {
-                    i || Tt.test(e) ?
+                    i || Ct.test(e) ?
                         n(e, s)
                     :   P(
                             e + '[' + ('object' == typeof s ? t : '') + ']',
@@ -30080,9 +30105,9 @@ Object.values ||
                 (Y.addEventListener ||
                     'load' === e.type ||
                     'complete' === Y.readyState) &&
-                    (Ce(), ue.ready());
+                    (Te(), ue.ready());
             },
-            Ce = function () {
+            Te = function () {
                 Y.addEventListener ?
                     (Y.removeEventListener('DOMContentLoaded', xe, !1),
                     e.removeEventListener('load', xe, !1))
@@ -30554,7 +30579,7 @@ Object.values ||
                                     } catch (t) {
                                         return setTimeout(e, 50);
                                     }
-                                    Ce(), ue.ready();
+                                    Te(), ue.ready();
                                 }
                             })();
                     }
@@ -30658,7 +30683,7 @@ Object.values ||
                                 }
                         }
                     }
-                    return C(e.replace(me, '$1'), t, i, n);
+                    return T(e.replace(me, '$1'), t, i, n);
                 }
                 function n(e) {
                     return ke.test(e + '');
@@ -31033,7 +31058,7 @@ Object.values ||
                     for (var s = 0, a = t.length; s < a; s++) i(e, t[s], n);
                     return n;
                 }
-                function C(e, t, i, n) {
+                function T(e, t, i, n) {
                     var s,
                         a,
                         o,
@@ -31077,7 +31102,7 @@ Object.values ||
                     }
                     return I(e, c)(n, t, !O, i, ge.test(e)), i;
                 }
-                function T() {}
+                function C() {}
                 var S,
                     z,
                     A,
@@ -31193,8 +31218,8 @@ Object.values ||
                     },
                     ke = /^[^{]+\{\s*\[native \w/,
                     xe = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,
-                    Ce = /^(?:input|select|textarea|button)$/i,
-                    Te = /^h\d$/i,
+                    Te = /^(?:input|select|textarea|button)$/i,
+                    Ce = /^h\d$/i,
                     Se = /'|\\/g,
                     ze = new RegExp(
                         '\\\\([\\da-f]{1,6}' + le + '?|(' + le + ')|.)',
@@ -31992,10 +32017,10 @@ Object.values ||
                                 return !E.pseudos.empty(e);
                             },
                             header: function (e) {
-                                return Te.test(e.nodeName);
+                                return Ce.test(e.nodeName);
                             },
                             input: function (e) {
-                                return Ce.test(e.nodeName);
+                                return Te.test(e.nodeName);
                             },
                             button: function (e) {
                                 var t = e.nodeName.toLowerCase();
@@ -32059,8 +32084,8 @@ Object.values ||
                         return a;
                     }),
                     (E.pseudos.nth = E.pseudos.eq),
-                    (T.prototype = E.filters = E.pseudos),
-                    (E.setFilters = new T()),
+                    (C.prototype = E.filters = E.pseudos),
+                    (E.setFilters = new C()),
                     (z.sortStable = W.split('').sort(J).join('') === W),
                     R(),
                     [0, 0].sort(J),
@@ -32073,9 +32098,9 @@ Object.values ||
                     (ue.isXMLDoc = i.isXML),
                     (ue.contains = i.contains);
             })(e);
-        var Te = {};
+        var Ce = {};
         (ue.Callbacks = function (e) {
-            e = 'string' == typeof e ? Te[e] || n(e) : ue.extend({}, e);
+            e = 'string' == typeof e ? Ce[e] || n(e) : ue.extend({}, e);
             var i,
                 s,
                 a,
@@ -34599,10 +34624,10 @@ Object.values ||
                 );
             },
             show: function () {
-                return C(this, !0);
+                return T(this, !0);
             },
             hide: function () {
-                return C(this);
+                return T(this);
             },
             toggle: function (e) {
                 var t = 'boolean' == typeof e;
@@ -34771,7 +34796,7 @@ Object.values ||
                     },
                     set: function (e, i, n) {
                         var s = n && ct(e);
-                        return T(
+                        return C(
                             e,
                             i,
                             n ?
@@ -34887,11 +34912,11 @@ Object.values ||
                             return s;
                         },
                     }),
-                        _t.test(e) || (ue.cssHooks[e + t].set = T);
+                        _t.test(e) || (ue.cssHooks[e + t].set = C);
                 }
             );
-        var Ct = /%20/g,
-            Tt = /\[\]$/,
+        var Tt = /%20/g,
+            Ct = /\[\]$/,
             St = /\r?\n/g,
             zt = /^(?:submit|button|image|reset|file)$/i,
             At = /^(?:input|select|textarea|keygen)/i;
@@ -34953,7 +34978,7 @@ Object.values ||
                         a(this.name, this.value);
                     });
                 else for (n in e) P(n, e[n], i, a);
-                return s.join('&').replace(Ct, '+');
+                return s.join('&').replace(Tt, '+');
             }),
             ue.each(
                 'blur focus focusin focusout load resize scroll unload click dblclick mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave change select submit keydown keypress keyup error contextmenu'.split(
@@ -37219,7 +37244,7 @@ Object.values ||
                         w = e.position.getWithinInfo(s.within),
                         k = e.position.getScrollInfo(w),
                         x = (s.collision || 'flip').split(' '),
-                        C = {};
+                        T = {};
                     return (
                         (b = n(y)),
                         y[0].preventDefault && (s.at = 'left top'),
@@ -37240,7 +37265,7 @@ Object.values ||
                                 (i[1] = u.test(i[1]) ? i[1] : 'center'),
                                 (e = d.exec(i[0])),
                                 (t = d.exec(i[1])),
-                                (C[this] = [e ? e[0] : 0, t ? t[0] : 0]),
+                                (T[this] = [e ? e[0] : 0, t ? t[0] : 0]),
                                 (s[this] = [h.exec(i[0])[0], h.exec(i[1])[0]]);
                         }),
                         1 === x.length && (x[1] = x[0]),
@@ -37250,7 +37275,7 @@ Object.values ||
                         'bottom' === s.at[1] ?
                             (v.top += f)
                         :   'center' === s.at[1] && (v.top += f / 2),
-                        (p = t(C.at, _, f)),
+                        (p = t(T.at, _, f)),
                         (v.left += p[0]),
                         (v.top += p[1]),
                         this.each(function () {
@@ -37261,10 +37286,10 @@ Object.values ||
                                 h = u.outerHeight(),
                                 m = i(this, 'marginLeft'),
                                 b = i(this, 'marginTop'),
-                                T = d + m + i(this, 'marginRight') + k.width,
+                                C = d + m + i(this, 'marginRight') + k.width,
                                 S = h + b + i(this, 'marginBottom') + k.height,
                                 z = e.extend({}, v),
-                                A = t(C.my, u.outerWidth(), u.outerHeight());
+                                A = t(T.my, u.outerWidth(), u.outerHeight());
                             'right' === s.my[0] ?
                                 (z.left -= d)
                             :   'center' === s.my[0] && (z.left -= d / 2),
@@ -37283,7 +37308,7 @@ Object.values ||
                                             elemWidth: d,
                                             elemHeight: h,
                                             collisionPosition: n,
-                                            collisionWidth: T,
+                                            collisionWidth: C,
                                             collisionHeight: S,
                                             offset: [p[0] + A[0], p[1] + A[1]],
                                             my: s.my,
@@ -44727,8 +44752,8 @@ Object.values ||
                         w,
                         k,
                         x,
-                        C,
                         T,
+                        C,
                         S,
                         z,
                         A,
@@ -44888,9 +44913,9 @@ Object.values ||
                         k < U[0];
                         k++
                     ) {
-                        for (x = '', this.maxRows = 4, C = 0; C < U[1]; C++) {
+                        for (x = '', this.maxRows = 4, T = 0; T < U[1]; T++) {
                             if (
-                                ((T = this._daylightSavingAdjust(
+                                ((C = this._daylightSavingAdjust(
                                     new Date(ee, X, e.selectedDay)
                                 )),
                                 (S = ' ui-corner-all'),
@@ -44901,7 +44926,7 @@ Object.values ||
                                     ((z += "<div class='ui-datepicker-group"),
                                     U[1] > 1)
                                 )
-                                    switch (C) {
+                                    switch (T) {
                                         case 0:
                                             (z += ' ui-datepicker-group-first'),
                                                 (S =
@@ -44940,7 +44965,7 @@ Object.values ||
                                         ee,
                                         J,
                                         Q,
-                                        k > 0 || C > 0,
+                                        k > 0 || T > 0,
                                         m,
                                         _
                                     ) +
@@ -45028,11 +45053,11 @@ Object.values ||
                                                 ' ui-datepicker-other-month'
                                             :   '') +
                                             ((
-                                                (j.getTime() === T.getTime() &&
+                                                (j.getTime() === C.getTime() &&
                                                     X === e.selectedMonth &&
                                                     e._keyEvent) ||
                                                 (b.getTime() === j.getTime() &&
-                                                    b.getTime() === T.getTime())
+                                                    b.getTime() === C.getTime())
                                             ) ?
                                                 ' ' + this._dayOverClass
                                             :   '') +
@@ -45093,7 +45118,7 @@ Object.values ||
                                     '</tbody></table>' +
                                     (K ?
                                         '</div>' +
-                                        (U[0] > 0 && C === U[1] - 1 ?
+                                        (U[0] > 0 && T === U[1] - 1 ?
                                             "<div class='ui-datepicker-row-break'></div>"
                                         :   '')
                                     :   ''));
@@ -48462,8 +48487,8 @@ Object.values ||
          */
         var k,
             x,
-            C = 'ui-effects-',
-            T = e;
+            T = 'ui-effects-',
+            C = e;
         (e.effects = { effect: {} }),
             /*!
              * jQuery Color Animations v2.1.2
@@ -49006,7 +49031,7 @@ Object.values ||
                             transparent: [null, null, null, 0],
                             _default: '#ffffff',
                         });
-            })(T),
+            })(C),
             (function () {
                 function t(t) {
                     var i,
@@ -49061,7 +49086,7 @@ Object.values ||
                         e.fx.step[i] = function (e) {
                             (('none' !== e.end && !e.setAttr) ||
                                 (1 === e.pos && !e.setAttr)) &&
-                                (T.style(e.elem, i, e.end), (e.setAttr = !0));
+                                (C.style(e.elem, i, e.end), (e.setAttr = !0));
                         };
                     }
                 ),
@@ -49216,13 +49241,13 @@ Object.values ||
                     version: '1.11.4',
                     save: function (e, t) {
                         for (var i = 0; i < t.length; i++)
-                            null !== t[i] && e.data(C + t[i], e[0].style[t[i]]);
+                            null !== t[i] && e.data(T + t[i], e[0].style[t[i]]);
                     },
                     restore: function (e, t) {
                         var i, n;
                         for (n = 0; n < t.length; n++)
                             null !== t[n] &&
-                                (void 0 === (i = e.data(C + t[n])) && (i = ''),
+                                (void 0 === (i = e.data(T + t[n])) && (i = ''),
                                 e.css(t[n], i));
                     },
                     setMode: function (e, t) {
@@ -52643,20 +52668,20 @@ Object.values ||
                     var w = r ? 0 : c,
                         k = w + h,
                         x = l.scrollLeft(),
-                        C = x + d,
-                        T = o.position(),
-                        S = T.top,
+                        T = x + d,
+                        C = o.position(),
+                        S = C.top,
                         z = S + o.height(),
-                        A = T.left,
+                        A = C.left,
                         E = A + o.width(),
                         P = !0 === i ? z : S,
                         M = !0 === i ? S : z,
                         I = !0 === i ? E : A,
                         D = !0 === i ? A : E;
                     if ('both' === s)
-                        return !!p && M <= k && P >= w && D <= C && I >= x;
+                        return !!p && M <= k && P >= w && D <= T && I >= x;
                     if ('vertical' === s) return !!p && M <= k && P >= w;
-                    if ('horizontal' === s) return !!p && D <= C && I >= x;
+                    if ('horizontal' === s) return !!p && D <= T && I >= x;
                 }
             }
         };
@@ -55410,13 +55435,13 @@ Object.values ||
         function x(e, t) {
             return !e || e instanceof k ? e : new k(e, t);
         }
-        function C(e, t) {
+        function T(e, t) {
             if (e)
                 for (var i = t ? [e, t] : e, n = 0, s = i.length; n < s; n++)
                     this.extend(i[n]);
         }
-        function T(e, t) {
-            return e instanceof C ? e : new C(e, t);
+        function C(e, t) {
+            return e instanceof T ? e : new T(e, t);
         }
         function S(e, t, i) {
             if (isNaN(e) || isNaN(t))
@@ -55551,7 +55576,7 @@ Object.values ||
             function n(e) {
                 var t;
                 if (Vt) {
-                    if (!Ct || 'mouse' === e.pointerType) return;
+                    if (!Tt || 'mouse' === e.pointerType) return;
                     t = ri;
                 } else t = e.touches.length;
                 if (!(t > 1)) {
@@ -55565,7 +55590,7 @@ Object.values ||
             function s(e) {
                 if (r && !o.cancelBubble) {
                     if (Vt) {
-                        if (!Ct || 'mouse' === e.pointerType) return;
+                        if (!Tt || 'mouse' === e.pointerType) return;
                         var i,
                             n,
                             s = {};
@@ -55597,7 +55622,7 @@ Object.values ||
             return (
                 e.removeEventListener(li, i, !1),
                 e.removeEventListener(ci, n, !1),
-                Ct || e.removeEventListener('dblclick', s, !1),
+                Tt || e.removeEventListener('dblclick', s, !1),
                 this
             );
         }
@@ -55853,7 +55878,7 @@ Object.values ||
         function xe(e) {
             return ke(e), be(e), this;
         }
-        function Ce(e, t) {
+        function Te(e, t) {
             if (!t) return new y(e.clientX, e.clientY);
             var i = me(t),
                 n = i.boundingClientRect;
@@ -55862,9 +55887,9 @@ Object.values ||
                 (e.clientY - n.top) / i.y - t.clientTop
             );
         }
-        function Te(e) {
+        function Ce(e) {
             return (
-                Ct ? e.wheelDeltaY / 2
+                Tt ? e.wheelDeltaY / 2
                 : e.deltaY && 0 === e.deltaMode ? -e.deltaY / yi
                 : e.deltaY && 1 === e.deltaMode ? 20 * -e.deltaY
                 : e.deltaY && 2 === e.deltaMode ? 60 * -e.deltaY
@@ -56523,7 +56548,7 @@ Object.values ||
                     return !(!this.min || !this.max);
                 },
             }),
-            (C.prototype = {
+            (T.prototype = {
                 extend: function (e) {
                     var t,
                         i,
@@ -56531,8 +56556,8 @@ Object.values ||
                         s = this._northEast;
                     if (e instanceof S) (t = e), (i = e);
                     else {
-                        if (!(e instanceof C))
-                            return e ? this.extend(z(e) || T(e)) : this;
+                        if (!(e instanceof T))
+                            return e ? this.extend(z(e) || C(e)) : this;
                         if (((t = e._southWest), (i = e._northEast), !t || !i))
                             return this;
                     }
@@ -56552,7 +56577,7 @@ Object.values ||
                         i = this._northEast,
                         n = Math.abs(t.lat - i.lat) * e,
                         s = Math.abs(t.lng - i.lng) * e;
-                    return new C(
+                    return new T(
                         new S(t.lat - n, t.lng - s),
                         new S(i.lat + n, i.lng + s)
                     );
@@ -56595,13 +56620,13 @@ Object.values ||
                             'lat' in e
                         ) ?
                             z(e)
-                        :   T(e);
+                        :   C(e);
                     var t,
                         i,
                         n = this._southWest,
                         s = this._northEast;
                     return (
-                        e instanceof C ?
+                        e instanceof T ?
                             ((t = e.getSouthWest()), (i = e.getNorthEast()))
                         :   (t = i = e),
                         t.lat >= n.lat &&
@@ -56611,7 +56636,7 @@ Object.values ||
                     );
                 },
                 intersects: function (e) {
-                    e = T(e);
+                    e = C(e);
                     var t = this._southWest,
                         i = this._northEast,
                         n = e.getSouthWest(),
@@ -56621,7 +56646,7 @@ Object.values ||
                     return a && o;
                 },
                 overlaps: function (e) {
-                    e = T(e);
+                    e = C(e);
                     var t = this._southWest,
                         i = this._northEast,
                         n = e.getSouthWest(),
@@ -56641,7 +56666,7 @@ Object.values ||
                 equals: function (e, t) {
                     return (
                         !!e &&
-                        ((e = T(e)),
+                        ((e = C(e)),
                         this._southWest.equals(e.getSouthWest(), t) &&
                             this._northEast.equals(e.getNorthEast(), t))
                     );
@@ -56675,7 +56700,7 @@ Object.values ||
                 toBounds: function (e) {
                     var t = (180 * e) / 40075017,
                         i = t / Math.cos((Math.PI / 180) * this.lat);
-                    return T(
+                    return C(
                         [this.lat - t, this.lng - i],
                         [this.lat + t, this.lng + i]
                     );
@@ -56733,7 +56758,7 @@ Object.values ||
                     if (0 === n && 0 === s) return e;
                     var a = e.getSouthWest(),
                         o = e.getNorthEast();
-                    return new C(
+                    return new T(
                         new S(a.lat - n, a.lng - s),
                         new S(o.lat - n, o.lng - s)
                     );
@@ -56816,8 +56841,8 @@ Object.values ||
             wt = document.documentElement.style,
             kt = 'ActiveXObject' in window,
             xt = kt && !document.addEventListener,
-            Ct = 'msLaunchUri' in navigator && !('documentMode' in document),
-            Tt = I('webkit'),
+            Tt = 'msLaunchUri' in navigator && !('documentMode' in document),
+            Ct = I('webkit'),
             St = I('android'),
             zt = I('android 2') || I('android 3'),
             At = parseInt(
@@ -56827,7 +56852,7 @@ Object.values ||
             Et = St && I('Google') && At < 537 && !('AudioNode' in window),
             Pt = !!window.opera,
             Mt = I('chrome'),
-            It = I('gecko') && !Tt && !Pt && !kt,
+            It = I('gecko') && !Ct && !Pt && !kt,
             Dt = !Mt && I('safari'),
             jt = I('phantom'),
             Rt = 'OTransition' in wt,
@@ -56840,7 +56865,7 @@ Object.values ||
             Nt = 'MozPerspective' in wt,
             Ft = !window.L_DISABLE_3D && (Lt || Ot || Nt) && !Rt && !jt,
             Ht = 'undefined' != typeof orientation || I('mobile'),
-            qt = Ht && Tt,
+            qt = Ht && Ct,
             Wt = Ht && Ot,
             $t = !window.PointerEvent && window.MSPointerEvent,
             Vt = !(!window.PointerEvent && !$t),
@@ -56875,8 +56900,8 @@ Object.values ||
             Xt = (Object.freeze || Object)({
                 ie: kt,
                 ielt9: xt,
-                edge: Ct,
-                webkit: Tt,
+                edge: Tt,
+                webkit: Ct,
                 android: St,
                 android23: zt,
                 androidStock: Et,
@@ -57013,8 +57038,8 @@ Object.values ||
                 disableClickPropagation: we,
                 preventDefault: ke,
                 stop: xe,
-                getMousePosition: Ce,
-                getWheelDelta: Te,
+                getMousePosition: Te,
+                getWheelDelta: Ce,
                 fakeStop: Se,
                 skipped: ze,
                 isExternalTarget: Ae,
@@ -57058,7 +57083,7 @@ Object.values ||
                     return 1 - Math.pow(1 - e, this._easeOutPower);
                 },
             }),
-            Ci = dt.extend({
+            Ti = dt.extend({
                 options: {
                     crs: bt,
                     center: void 0,
@@ -57166,7 +57191,7 @@ Object.values ||
                     return this.setView(o, t, { zoom: i });
                 },
                 _getBoundsCenterZoom: function (e, t) {
-                    (t = t || {}), (e = e.getBounds ? e.getBounds() : T(e));
+                    (t = t || {}), (e = e.getBounds ? e.getBounds() : C(e));
                     var i = w(t.paddingTopLeft || t.padding || [0, 0]),
                         n = w(t.paddingBottomRight || t.padding || [0, 0]),
                         s = this.getBoundsZoom(e, !1, i.add(n));
@@ -57187,7 +57212,7 @@ Object.values ||
                     };
                 },
                 fitBounds: function (e, t) {
-                    if (!(e = T(e)).isValid())
+                    if (!(e = C(e)).isValid())
                         throw new Error('Bounds are not valid.');
                     var i = this._getBoundsCenterZoom(e, t);
                     return this.setView(i.center, i.zoom, t);
@@ -57268,7 +57293,7 @@ Object.values ||
                         return 1 - Math.pow(1 - e, 1.5);
                     }
                     function u() {
-                        var i = (Date.now() - k) / C,
+                        var i = (Date.now() - k) / T,
                             n = c(i) * x;
                         i <= 1 ?
                             ((this._flyToFrame = f(u, this)),
@@ -57298,7 +57323,7 @@ Object.values ||
                         w = n(0),
                         k = Date.now(),
                         x = (n(1) - w) / b,
-                        C = i.duration ? 1e3 * i.duration : 1e3 * x * 0.8;
+                        T = i.duration ? 1e3 * i.duration : 1e3 * x * 0.8;
                     return (
                         this._moveStart(!0, i.noMoveStart), u.call(this), this
                     );
@@ -57308,7 +57333,7 @@ Object.values ||
                     return this.flyTo(i.center, i.zoom, t);
                 },
                 setMaxBounds: function (e) {
-                    return (e = T(e)).isValid() ?
+                    return (e = C(e)).isValid() ?
                             (this.options.maxBounds &&
                                 this.off('moveend', this._panInsideMaxBounds),
                             (this.options.maxBounds = e),
@@ -57348,7 +57373,7 @@ Object.values ||
                 panInsideBounds: function (e, t) {
                     this._enforcingBounds = !0;
                     var i = this.getCenter(),
-                        n = this._limitCenter(i, this._zoom, T(e));
+                        n = this._limitCenter(i, this._zoom, C(e));
                     return (
                         i.equals(n) || this.panTo(n, t),
                         (this._enforcingBounds = !1),
@@ -57549,7 +57574,7 @@ Object.values ||
                 },
                 getBounds: function () {
                     var e = this.getPixelBounds();
-                    return new C(
+                    return new T(
                         this.unproject(e.getBottomLeft()),
                         this.unproject(e.getTopRight())
                     );
@@ -57569,7 +57594,7 @@ Object.values ||
                     );
                 },
                 getBoundsZoom: function (e, t, i) {
-                    (e = T(e)), (i = w(i || [0, 0]));
+                    (e = C(e)), (i = w(i || [0, 0]));
                     var n = this.getZoom() || 0,
                         s = this.getMinZoom(),
                         a = this.getMaxZoom(),
@@ -57662,7 +57687,7 @@ Object.values ||
                     return this.options.crs.wrapLatLng(z(e));
                 },
                 wrapLatLngBounds: function (e) {
-                    return this.options.crs.wrapLatLngBounds(T(e));
+                    return this.options.crs.wrapLatLngBounds(C(e));
                 },
                 distance: function (e, t) {
                     return this.options.crs.distance(z(e), z(t));
@@ -57683,7 +57708,7 @@ Object.values ||
                     );
                 },
                 mouseEventToContainerPoint: function (e) {
-                    return Ce(e, this._container);
+                    return Te(e, this._container);
                 },
                 mouseEventToLayerPoint: function (e) {
                     return this.containerPointToLayerPoint(
@@ -58131,7 +58156,7 @@ Object.values ||
                         }, this));
                 },
             }),
-            Ti = v.extend({
+            Ci = v.extend({
                 options: { position: 'topright' },
                 initialize: function (e) {
                     u(this, e);
@@ -58181,9 +58206,9 @@ Object.values ||
                 },
             }),
             Si = function (e) {
-                return new Ti(e);
+                return new Ci(e);
             };
-        Ci.include({
+        Ti.include({
             addControl: function (e) {
                 return e.addTo(this), this;
             },
@@ -58214,7 +58239,7 @@ Object.values ||
                     delete this._controlContainer;
             },
         });
-        var zi = Ti.extend({
+        var zi = Ci.extend({
                 options: {
                     collapsed: !0,
                     position: 'topright',
@@ -58254,7 +58279,7 @@ Object.values ||
                 },
                 addTo: function (e) {
                     return (
-                        Ti.prototype.addTo.call(this, e),
+                        Ci.prototype.addTo.call(this, e),
                         this._expandIfNotCollapsed()
                     );
                 },
@@ -58493,7 +58518,7 @@ Object.values ||
                     return this.collapse();
                 },
             }),
-            Ai = Ti.extend({
+            Ai = Ci.extend({
                 options: {
                     position: 'topleft',
                     zoomInText: '+',
@@ -58582,13 +58607,13 @@ Object.values ||
                             X(this._zoomInButton, t);
                 },
             });
-        Ci.mergeOptions({ zoomControl: !0 }),
-            Ci.addInitHook(function () {
+        Ti.mergeOptions({ zoomControl: !0 }),
+            Ti.addInitHook(function () {
                 this.options.zoomControl &&
                     ((this.zoomControl = new Ai()),
                     this.addControl(this.zoomControl));
             });
-        var Ei = Ti.extend({
+        var Ei = Ci.extend({
                 options: {
                     position: 'bottomleft',
                     maxWidth: 100,
@@ -58669,7 +58694,7 @@ Object.values ||
                     );
                 },
             }),
-            Pi = Ti.extend({
+            Pi = Ci.extend({
                 options: {
                     position: 'bottomright',
                     prefix: '<a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>',
@@ -58717,14 +58742,14 @@ Object.values ||
                     }
                 },
             });
-        Ci.mergeOptions({ attributionControl: !0 }),
-            Ci.addInitHook(function () {
+        Ti.mergeOptions({ attributionControl: !0 }),
+            Ti.addInitHook(function () {
                 this.options.attributionControl && new Pi().addTo(this);
             }),
-            (Ti.Layers = zi),
-            (Ti.Zoom = Ai),
-            (Ti.Scale = Ei),
-            (Ti.Attribution = Pi),
+            (Ci.Layers = zi),
+            (Ci.Zoom = Ai),
+            (Ci.Scale = Ei),
+            (Ci.Attribution = Pi),
             (Si.layers = function (e, t, i) {
                 return new zi(e, t, i);
             }),
@@ -59062,7 +59087,7 @@ Object.values ||
                 }
             },
         });
-        Ci.include({
+        Ti.include({
             addLayer: function (e) {
                 if (!e._layerAdd)
                     throw new Error('The provided object is not a Layer.');
@@ -59238,7 +59263,7 @@ Object.values ||
                     return this.invoke('bringToBack');
                 },
                 getBounds: function () {
-                    var e = new C();
+                    var e = new T();
                     for (var t in this._layers) {
                         var i = this._layers[t];
                         e.extend(i.getBounds ? i.getBounds() : i.getLatLng());
@@ -59768,7 +59793,7 @@ Object.values ||
                 },
                 getBounds: function () {
                     var e = [this._radius, this._radiusY || this._radius];
-                    return new C(
+                    return new T(
                         this._map.layerPointToLatLng(this._point.subtract(e)),
                         this._map.layerPointToLatLng(this._point.add(e))
                     );
@@ -59890,7 +59915,7 @@ Object.values ||
                     );
                 },
                 _setLatLngs: function (e) {
-                    (this._bounds = new C()),
+                    (this._bounds = new T()),
                         (this._latlngs = this._convertLatLngs(e));
                 },
                 _defaultShape: function () {
@@ -60248,7 +60273,7 @@ Object.values ||
                     className: '',
                 },
                 initialize: function (e, t, i) {
-                    (this._url = e), (this._bounds = T(t)), u(this, i);
+                    (this._url = e), (this._bounds = C(t)), u(this, i);
                 },
                 onAdd: function () {
                     this._image ||
@@ -60290,7 +60315,7 @@ Object.values ||
                 },
                 setBounds: function (e) {
                     return (
-                        (this._bounds = T(e)), this._map && this._reset(), this
+                        (this._bounds = C(e)), this._map && this._reset(), this
                     );
                 },
                 getEvents: function () {
@@ -60674,8 +60699,8 @@ Object.values ||
                     );
                 },
             });
-        Ci.mergeOptions({ closePopupOnClick: !0 }),
-            Ci.include({
+        Ti.mergeOptions({ closePopupOnClick: !0 }),
+            Ti.include({
                 openPopup: function (e, t, i) {
                     return (
                         e instanceof dn || (e = new dn(i).setContent(e)),
@@ -60893,7 +60918,7 @@ Object.values ||
                 );
             },
         });
-        Ci.include({
+        Ti.include({
             openTooltip: function (e, t, i) {
                 return (
                     e instanceof hn || (e = new hn(i).setContent(e)),
@@ -61512,7 +61537,7 @@ Object.values ||
                     }
                     if (!this.options.bounds) return !0;
                     var n = this._tileCoordsToBounds(e);
-                    return T(this.options.bounds).overlaps(n);
+                    return C(this.options.bounds).overlaps(n);
                 },
                 _keyToBounds: function (e) {
                     return this._tileCoordsToBounds(this._keyToTileCoords(e));
@@ -61526,7 +61551,7 @@ Object.values ||
                 },
                 _tileCoordsToBounds: function (e) {
                     var t = this._tileCoordsToNwSe(e),
-                        i = new C(t[0], t[1]);
+                        i = new T(t[0], t[1]);
                     return (
                         this.options.noWrap ||
                             (i = this._map.wrapLatLngBounds(i)),
@@ -62402,7 +62427,7 @@ Object.values ||
                 },
             });
         Qt && kn.include(yn),
-            Ci.include({
+            Ti.include({
                 getRenderer: function (e) {
                     var t =
                         e.options.renderer ||
@@ -62438,7 +62463,7 @@ Object.values ||
             },
             _boundsToLatLngs: function (e) {
                 return [
-                    (e = T(e)).getSouthWest(),
+                    (e = C(e)).getSouthWest(),
                     e.getNorthWest(),
                     e.getNorthEast(),
                     e.getSouthEast(),
@@ -62454,8 +62479,8 @@ Object.values ||
             (an.latLngsToCoords = Ge),
             (an.getFeature = Ze),
             (an.asFeature = Ke),
-            Ci.mergeOptions({ boxZoom: !0 });
-        var Cn = Mi.extend({
+            Ti.mergeOptions({ boxZoom: !0 });
+        var Tn = Mi.extend({
             initialize: function (e) {
                 (this._map = e),
                     (this._container = e._container),
@@ -62541,7 +62566,7 @@ Object.values ||
                             i(this._resetState, this),
                             0
                         ));
-                    var t = new C(
+                    var t = new T(
                         this._map.containerPointToLatLng(this._startPoint),
                         this._map.containerPointToLatLng(this._point)
                     );
@@ -62554,9 +62579,9 @@ Object.values ||
                 27 === e.keyCode && this._finish();
             },
         });
-        Ci.addInitHook('addHandler', 'boxZoom', Cn),
-            Ci.mergeOptions({ doubleClickZoom: !0 });
-        var Tn = Mi.extend({
+        Ti.addInitHook('addHandler', 'boxZoom', Tn),
+            Ti.mergeOptions({ doubleClickZoom: !0 });
+        var Cn = Mi.extend({
             addHooks: function () {
                 this._map.on('dblclick', this._onDoubleClick, this);
             },
@@ -62573,8 +62598,8 @@ Object.values ||
                 :   t.setZoomAround(e.containerPoint, s);
             },
         });
-        Ci.addInitHook('addHandler', 'doubleClickZoom', Tn),
-            Ci.mergeOptions({
+        Ti.addInitHook('addHandler', 'doubleClickZoom', Cn),
+            Ti.mergeOptions({
                 dragging: !0,
                 inertia: !zt,
                 inertiaDeceleration: 3400,
@@ -62633,7 +62658,7 @@ Object.values ||
                     this._map.options.maxBounds &&
                         this._map.options.maxBoundsViscosity)
                 ) {
-                    var t = T(this._map.options.maxBounds);
+                    var t = C(this._map.options.maxBounds);
                     (this._offsetLimit = x(
                         this._map
                             .latLngToContainerPoint(t.getNorthWest())
@@ -62736,8 +62761,8 @@ Object.values ||
                 }
             },
         });
-        Ci.addInitHook('addHandler', 'dragging', Sn),
-            Ci.mergeOptions({ keyboard: !0, keyboardPanDelta: 80 });
+        Ti.addInitHook('addHandler', 'dragging', Sn),
+            Ti.mergeOptions({ keyboard: !0, keyboardPanDelta: 80 });
         var zn = Mi.extend({
             keyCodes: {
                 left: [37],
@@ -62859,8 +62884,8 @@ Object.values ||
                 }
             },
         });
-        Ci.addInitHook('addHandler', 'keyboard', zn),
-            Ci.mergeOptions({
+        Ti.addInitHook('addHandler', 'keyboard', zn),
+            Ti.mergeOptions({
                 scrollWheelZoom: !0,
                 wheelDebounceTime: 40,
                 wheelPxPerZoomLevel: 60,
@@ -62884,7 +62909,7 @@ Object.values ||
                 );
             },
             _onWheelScroll: function (e) {
-                var t = Te(e),
+                var t = Ce(e),
                     n = this._map.options.wheelDebounceTime;
                 (this._delta += t),
                     (this._lastMousePos =
@@ -62916,8 +62941,8 @@ Object.values ||
                         :   e.setZoomAround(this._lastMousePos, t + o));
             },
         });
-        Ci.addInitHook('addHandler', 'scrollWheelZoom', An),
-            Ci.mergeOptions({ tap: !0, tapTolerance: 15 });
+        Ti.addInitHook('addHandler', 'scrollWheelZoom', An),
+            Ti.mergeOptions({ tap: !0, tapTolerance: 15 });
         var En = Mi.extend({
             addHooks: function () {
                 _e(this._map._container, 'touchstart', this._onDown, this);
@@ -63011,8 +63036,8 @@ Object.values ||
                     t.target.dispatchEvent(i);
             },
         });
-        Ut && !Vt && Ci.addInitHook('addHandler', 'tap', En),
-            Ci.mergeOptions({ touchZoom: Ut && !zt, bounceAtZoomLimits: !0 });
+        Ut && !Vt && Ti.addInitHook('addHandler', 'tap', En),
+            Ti.mergeOptions({ touchZoom: Ut && !zt, bounceAtZoomLimits: !0 });
         var Pn = Mi.extend({
             addHooks: function () {
                 X(this._map._container, 'leaflet-touch-zoom'),
@@ -63118,17 +63143,17 @@ Object.values ||
                 :   (this._zooming = !1);
             },
         });
-        Ci.addInitHook('addHandler', 'touchZoom', Pn),
-            (Ci.BoxZoom = Cn),
-            (Ci.DoubleClickZoom = Tn),
-            (Ci.Drag = Sn),
-            (Ci.Keyboard = zn),
-            (Ci.ScrollWheelZoom = An),
-            (Ci.Tap = En),
-            (Ci.TouchZoom = Pn),
+        Ti.addInitHook('addHandler', 'touchZoom', Pn),
+            (Ti.BoxZoom = Tn),
+            (Ti.DoubleClickZoom = Cn),
+            (Ti.Drag = Sn),
+            (Ti.Keyboard = zn),
+            (Ti.ScrollWheelZoom = An),
+            (Ti.Tap = En),
+            (Ti.TouchZoom = Pn),
             (Object.freeze = et),
             (e.version = '1.4.0+HEAD.3337f36'),
-            (e.Control = Ti),
+            (e.Control = Ci),
             (e.control = Si),
             (e.Browser = Xt),
             (e.Evented = dt),
@@ -63155,8 +63180,8 @@ Object.values ||
             (e.Projection = qi),
             (e.LatLng = S),
             (e.latLng = z),
-            (e.LatLngBounds = C),
-            (e.latLngBounds = T),
+            (e.LatLngBounds = T),
+            (e.latLngBounds = C),
             (e.CRS = pt),
             (e.GeoJSON = an),
             (e.geoJSON = Ye),
@@ -63231,9 +63256,9 @@ Object.values ||
             (e.rectangle = function (e, t) {
                 return new xn(e, t);
             }),
-            (e.Map = Ci),
+            (e.Map = Ti),
             (e.map = function (e, t) {
-                return new Ci(e, t);
+                return new Ti(e, t);
             });
         var Mn = window.L;
         (e.noConflict = function () {
@@ -68050,8 +68075,8 @@ if (
                                         var x = ' ' + v[0].className || '';
                                         if (0 === a.index()) {
                                             s += 1;
-                                            var C = v[0].label,
-                                                T =
+                                            var T = v[0].label,
+                                                C =
                                                     (
                                                         void 0 !==
                                                         v.data('subtext')
@@ -68060,7 +68085,7 @@ if (
                                                         v.data('subtext') +
                                                         '</small>'
                                                     :   '';
-                                            (C =
+                                            (T =
                                                 (v.data('icon') ?
                                                     '<span class="' +
                                                     i.options.iconBase +
@@ -68069,8 +68094,8 @@ if (
                                                     '"></span> '
                                                 :   '') +
                                                 '<span class="text">' +
-                                                l(C) +
-                                                T +
+                                                l(T) +
+                                                C +
                                                 '</span>'),
                                                 0 !== t &&
                                                     n.length > 0 &&
@@ -68086,7 +68111,7 @@ if (
                                                 o++,
                                                 n.push(
                                                     r(
-                                                        C,
+                                                        T,
                                                         null,
                                                         'dropdown-header' + x,
                                                         s
@@ -68510,7 +68535,7 @@ if (
                                     this.options.hideDisabled ?
                                         '.disabled'
                                     :   '',
-                                C = function () {
+                                T = function () {
                                     var t,
                                         i = c.$newElement.offset(),
                                         n = e(c.options.container);
@@ -68530,8 +68555,8 @@ if (
                                         (a -= s[0]),
                                         (r -= s[3]);
                                 };
-                            if ((C(), 'auto' === this.options.size)) {
-                                var T = function () {
+                            if ((T(), 'auto' === this.options.size)) {
+                                var C = function () {
                                     var h,
                                         p = function (t, i) {
                                             return function (n) {
@@ -68561,14 +68586,14 @@ if (
                                                     p('hidden', !1)
                                                 )
                                             :   c.$lis.not('.hidden'),
-                                        T =
+                                        C =
                                             Array.prototype.filter ?
                                                 Array.prototype.filter.call(
                                                     x,
                                                     p('dropdown-header', !0)
                                                 )
                                             :   x.filter('.dropdown-header');
-                                    C(),
+                                    T(),
                                         (t = o - k.vert),
                                         (i = l - k.horiz),
                                         c.options.container ?
@@ -68593,7 +68618,7 @@ if (
                                                 r > l && i - k.horiz < s - m
                                             ),
                                         (h =
-                                            x.length + T.length > 3 ?
+                                            x.length + C.length > 3 ?
                                                 3 * _ + k.vert - 2
                                             :   0),
                                         u.css({
@@ -68616,18 +68641,18 @@ if (
                                                 Math.max(h - w.vert, 0) + 'px',
                                         });
                                 };
-                                T(),
+                                C(),
                                     this.$searchbox
                                         .off(
                                             'input.getSize propertychange.getSize'
                                         )
                                         .on(
                                             'input.getSize propertychange.getSize',
-                                            T
+                                            C
                                         ),
                                     h
                                         .off('resize.getSize scroll.getSize')
-                                        .on('resize.getSize scroll.getSize', T);
+                                        .on('resize.getSize scroll.getSize', C);
                             } else if (
                                 this.options.size &&
                                 'auto' != this.options.size &&
@@ -69712,7 +69737,7 @@ if (
         function x(e, t) {
             return e !== t && e.contains && e.contains(t);
         }
-        function C(e, t) {
+        function T(e, t) {
             var i = e.previousElementSibling;
             return (
                 t && i ?
@@ -69721,7 +69746,7 @@ if (
                 :   i
             );
         }
-        function T(e, t) {
+        function C(e, t) {
             return t.parentNode.insertBefore(e, t);
         }
         function S(e) {
@@ -69857,11 +69882,11 @@ if (
                     var s = t(e),
                         a = Z(s, e),
                         o = e;
-                    W(s, o), T(a, s), T(o, s);
+                    W(s, o), C(a, s), C(o, s);
                 }
                 if (n && k(e, i) && k(e.parentNode, i)) {
-                    var l = C(e, 'li');
-                    l || T((l = r('li')), e), d(l, e);
+                    var l = T(e, 'li');
+                    l || C((l = r('li')), e), d(l, e);
                 }
             });
         }
@@ -70150,7 +70175,7 @@ if (
                     if (!i) return !1;
                     s.deleteContents(),
                         a && 3 !== a.nodeType && !H(a) ?
-                            T(i, a)
+                            C(i, a)
                         :   s.insertNode(i),
                         l.restoreRange();
                 }),
@@ -70433,7 +70458,7 @@ if (
                 e,
                 function (e) {
                     q(e, !0) ?
-                        (i || T((i = r('p', {}, t)), e),
+                        (i || C((i = r('p', {}, t)), e),
                         (e.nodeType === ve && '' === e.nodeValue) || d(i, e))
                     :   (i = null);
                 },
@@ -70447,7 +70472,7 @@ if (
                 l,
                 f,
                 x,
-                C,
+                T,
                 S,
                 R,
                 B,
@@ -70518,7 +70543,7 @@ if (
                 (xe = function () {
                     (e._sceditor = _t),
                         kt.locale && 'en' !== kt.locale && De(),
-                        T(
+                        C(
                             (o = r('div', { className: 'sceditor-container' })),
                             e
                         ),
@@ -70576,7 +70601,7 @@ if (
                         d(o, R),
                         _t.dimensions(kt.width || M(e), kt.height || I(e));
                     var t = Be ? 'ie ie' + Be : '';
-                    (t += Te ? ' ios' : ''),
+                    (t += Ce ? ' ios' : ''),
                         (S = f.contentDocument).open(),
                         S.write(
                             te('html', {
@@ -70588,11 +70613,11 @@ if (
                             })
                         ),
                         S.close(),
-                        (C = S.body),
+                        (T = S.body),
                         (x = f.contentWindow),
                         _t.readOnly(!!kt.readOnly),
-                        (Te || Ce || Be) &&
-                            (I(C, '100%'), Be || p(C, 'touchend', _t.focus));
+                        (Ce || Te || Be) &&
+                            (I(T, '100%'), Be || p(T, 'touchend', _t.focus));
                     var i = _(e, 'tabindex');
                     _(R, 'tabindex', i),
                         _(f, 'tabindex', i),
@@ -70600,15 +70625,15 @@ if (
                         g(e),
                         _t.val(e.value);
                     var n = kt.placeholder || _(e, 'placeholder');
-                    n && ((R.placeholder = n), _(C, 'placeholder', n));
+                    n && ((R.placeholder = n), _(T, 'placeholder', n));
                 }),
                 (Fe = function () {
-                    kt.autoUpdate && (p(C, 'blur', pt), p(R, 'blur', pt)),
+                    kt.autoUpdate && (p(T, 'blur', pt), p(R, 'blur', pt)),
                         null === kt.rtl &&
                             (kt.rtl = 'rtl' === y(R, 'direction')),
                         _t.rtl(!!kt.rtl),
                         kt.autoExpand &&
-                            (p(C, 'load', mt, be), p(C, 'input keyup', mt)),
+                            (p(T, 'load', mt, be), p(T, 'input keyup', mt)),
                         kt.resizeEnabled && qe(),
                         _(o, 'id', kt.id),
                         _t.emoticons(kt.emoticonsEnabled);
@@ -70625,24 +70650,24 @@ if (
                         t &&
                             (p(t, 'reset', Ke),
                             p(t, 'submit', _t.updateOriginal, be)),
-                        p(C, 'keypress', Ze),
-                        p(C, 'keydown', Ue),
-                        p(C, 'keydown', Ge),
-                        p(C, 'keyup', nt),
-                        p(C, 'blur', dt),
-                        p(C, 'keyup', ht),
-                        p(C, 'paste', $e),
-                        p(C, i, Je),
-                        p(C, s, st),
-                        p(C, n, Qe),
+                        p(T, 'keypress', Ze),
+                        p(T, 'keydown', Ue),
+                        p(T, 'keydown', Ge),
+                        p(T, 'keyup', nt),
+                        p(T, 'blur', dt),
+                        p(T, 'keyup', ht),
+                        p(T, 'paste', $e),
+                        p(T, i, Je),
+                        p(T, s, st),
+                        p(T, n, Qe),
                         kt.emoticonsCompat &&
                             je.getSelection &&
-                            p(C, 'keyup', lt),
-                        p(C, 'blur', function () {
-                            _t.val() || A(C, 'placeholder');
+                            p(T, 'keyup', lt),
+                        p(T, 'blur', function () {
+                            _t.val() || A(T, 'placeholder');
                         }),
-                        p(C, 'focus', function () {
-                            E(C, 'placeholder');
+                        p(T, 'focus', function () {
+                            E(T, 'placeholder');
                         }),
                         p(R, 'blur', dt),
                         p(R, 'keyup', ht),
@@ -70696,7 +70721,7 @@ if (
                                             ke && ke.create)
                                         )
                                             ke.create(s) &&
-                                                (T(ke.create(s), a.firstChild),
+                                                (C(ke.create(s), a.firstChild),
                                                 A(a, 'has-icon'));
                                         (a._sceTxtMode = !!r.txtExec),
                                             (a._sceWysiwygMode = !!r.exec),
@@ -70756,12 +70781,12 @@ if (
                         w = 0,
                         k = 0,
                         x = M(o),
-                        C = I(o),
-                        T = !1,
+                        T = I(o),
+                        C = !1,
                         S = _t.rtl();
                     if (
-                        ((e = kt.resizeMinHeight || C / 1.5),
-                        (t = kt.resizeMaxHeight || 2.5 * C),
+                        ((e = kt.resizeMinHeight || T / 1.5),
+                        (t = kt.resizeMaxHeight || 2.5 * T),
                         (i = kt.resizeMinWidth || x / 1.25),
                         (n = kt.resizeMaxWidth || 1.25 * x),
                         (s = function (s) {
@@ -70782,8 +70807,8 @@ if (
                                 s.preventDefault();
                         }),
                         (a = function (e) {
-                            T &&
-                                ((T = !1),
+                            C &&
+                                ((C = !1),
                                 g(c),
                                 E(o, 'resizing'),
                                 m(Re, u, s),
@@ -70806,7 +70831,7 @@ if (
                             :   ((_ = e.pageX), (f = e.pageY)),
                                 (w = M(o)),
                                 (k = I(o)),
-                                (T = !0),
+                                (C = !0),
                                 A(o, 'resizing'),
                                 v(c),
                                 p(Re, u, s),
@@ -70833,7 +70858,7 @@ if (
                 (ot = function () {
                     var e,
                         t,
-                        i = C.firstChild,
+                        i = T.firstChild,
                         n = !!kt.autofocusEnd;
                     if (j(o)) {
                         if (_t.sourceMode())
@@ -70841,10 +70866,10 @@ if (
                                 (t = n ? R.value.length : 0),
                                 void R.setSelectionRange(t, t)
                             );
-                        if ((G(C), n))
+                        if ((G(T), n))
                             for (
-                                (i = C.lastChild) ||
-                                ((i = r('p', {}, S)), d(C, i));
+                                (i = T.lastChild) ||
+                                ((i = r('p', {}, S)), d(T, i));
                                 i.lastChild;
 
                             )
@@ -70860,14 +70885,14 @@ if (
                             e.collapse(!n),
                             Z.selectRange(e),
                             (ee = e),
-                            n && (C.scrollTop = C.scrollHeight),
+                            n && (T.scrollTop = T.scrollHeight),
                             _t.focus();
                     }
                 }),
                 (_t.readOnly = function (e) {
                     return 'boolean' != typeof e ?
                             !R.readonly
-                        :   ((C.contentEditable = !e),
+                        :   ((T.contentEditable = !e),
                             (R.readonly = !e),
                             et(e),
                             _t);
@@ -70876,7 +70901,7 @@ if (
                     var t = e ? 'rtl' : 'ltr';
                     return 'boolean' != typeof e ?
                             'rtl' === _(R, 'dir')
-                        :   (_(C, 'dir', t),
+                        :   (_(T, 'dir', t),
                             _(R, 'dir', t),
                             E(o, 'rtl'),
                             E(o, 'ltr'),
@@ -70937,7 +70962,7 @@ if (
                             de = { min: i, max: kt.resizeMaxHeight || 2 * i };
                         }
                         var n = Re.createRange();
-                        n.selectNodeContents(C);
+                        n.selectNodeContents(T);
                         var s = n.getBoundingClientRect(),
                             a = S.documentElement.clientHeight - 1,
                             o = s.bottom - s.top,
@@ -71012,8 +71037,8 @@ if (
                         (pt(), _t.closeDropDown());
                 }),
                 ($e = function (e) {
-                    var t = Be || Ce,
-                        i = C,
+                    var t = Be || Te,
+                        i = T,
                         n = e.clipboardData,
                         s = function (e) {
                             var t = new FileReader();
@@ -71087,11 +71112,11 @@ if (
                             (Z.insertHTML(e, t),
                             Z.saveRange(),
                             ze(),
-                            v((n = h(C, '#sceditor-end-marker')[0])),
-                            (s = C.scrollTop),
+                            v((n = h(T, '#sceditor-end-marker')[0])),
+                            (s = T.scrollTop),
                             (a = K(n).top + 1.5 * n.offsetHeight - o),
                             g(n),
-                            (a > s || a + o < s) && (C.scrollTop = a),
+                            (a > s || a + o < s) && (T.scrollTop = a),
                             ut(!1),
                             Z.restoreRange(),
                             nt());
@@ -71175,13 +71200,13 @@ if (
                 }),
                 (_t.getWysiwygEditorValue = function (e) {
                     for (
-                        var t, n = r('div', {}, S), s = C.childNodes, a = 0;
+                        var t, n = r('div', {}, S), s = T.childNodes, a = 0;
                         a < s.length;
                         a++
                     )
                         d(n, s[a].cloneNode(!0));
                     return (
-                        d(C, n),
+                        d(T, n),
                         $(n),
                         u(n),
                         (t = n.innerHTML),
@@ -71192,7 +71217,7 @@ if (
                     );
                 }),
                 (_t.getBody = function () {
-                    return C;
+                    return T;
                 }),
                 (_t.getContentAreaContainer = function () {
                     return f;
@@ -71203,7 +71228,7 @@ if (
                 }),
                 (_t.setWysiwygEditorValue = function (e) {
                     e || (e = '<p>' + (Be ? '' : '<br />') + '</p>'),
-                        (C.innerHTML = e),
+                        (T.innerHTML = e),
                         ze(),
                         nt(),
                         ut(),
@@ -71216,7 +71241,7 @@ if (
                     e.value = _t.val();
                 }),
                 (ze = function () {
-                    kt.emoticonsEnabled && oe(C, wt, kt.emoticonsCompat);
+                    kt.emoticonsEnabled && oe(T, wt, kt.emoticonsCompat);
                 }),
                 (_t.inSourceMode = function () {
                     return z(o, 'sourceMode');
@@ -71298,13 +71323,13 @@ if (
                                     t &&
                                     e.nodeType !== ve &&
                                     (e = e.childNodes[t]);
-                                    e && e.parentNode !== C;
+                                    e && e.parentNode !== T;
 
                                 )
                                     e = e.parentNode;
                                 e &&
                                     q(e, !0) &&
-                                    (Z.saveRange(), re(C, S), Z.restoreRange());
+                                    (Z.saveRange(), re(T, S), Z.restoreRange());
                             }
                             D(o, 'selectionchanged');
                         }
@@ -71389,7 +71414,7 @@ if (
                     }
                 }),
                 (nt = function () {
-                    L(C, function (e) {
+                    L(T, function (e) {
                         if (
                             e.nodeType === ge &&
                             !/inline/.test(y(e, 'display')) &&
@@ -71400,7 +71425,7 @@ if (
                             return (
                                 (t.className = 'sceditor-nlf'),
                                 (t.innerHTML = Le ? '' : '<br />'),
-                                d(C, t),
+                                d(T, t),
                                 !1
                             );
                         }
@@ -71459,7 +71484,7 @@ if (
                     return (
                         me(e) ? _t.bind('blur', e, t, i)
                         : _t.sourceMode() ? R.blur()
-                        : C.blur(),
+                        : T.blur(),
                         _t
                     );
                 }),
@@ -71482,7 +71507,7 @@ if (
                                 s.collapse(!0),
                                 Z.selectRange(s)),
                             x.focus(),
-                            C.focus(),
+                            T.focus(),
                             O && (Z.selectRange(O), (O = null));
                     }
                     return tt(), _t;
@@ -71538,18 +71563,18 @@ if (
                 (_t.emoticons = function (e) {
                     if (!e && !1 !== e) return kt.emoticonsEnabled;
                     ((kt.emoticonsEnabled = e), e) ?
-                        (p(C, 'keypress', rt),
+                        (p(T, 'keypress', rt),
                         _t.sourceMode() ||
                             (Z.saveRange(), ze(), ut(!1), Z.restoreRange()))
                     :   (a(
-                            h(C, 'img[data-sceditor-emoticon]'),
+                            h(T, 'img[data-sceditor-emoticon]'),
                             function (e, t) {
                                 var i = w(t, 'sceditor-emoticon'),
                                     n = S.createTextNode(i);
                                 t.parentNode.replaceChild(n, t);
                             }
                         ),
-                        m(C, 'keypress', rt),
+                        m(T, 'keypress', rt),
                         ut());
                     return _t;
                 }),
@@ -71749,7 +71774,7 @@ if (
                                 !S.getElementById('sceditor-start-marker')),
                             V && (clearTimeout(V), (V = !1)),
                             n && e && Z.saveRange(),
-                            (t = i ? R.value : C.innerHTML) !== ut.lastVal &&
+                            (t = i ? R.value : T.innerHTML) !== ut.lastVal &&
                                 ((ut.lastVal = t),
                                 D(o, 'valuechanged', {
                                     rawValue: i ? _t.val() : t,
@@ -71901,8 +71926,8 @@ if (
                     t > 4 ? t : e
                 );
             })(),
-            Ce = '-ms-ime-align' in document.documentElement.style,
-            Te = /iPhone|iPod|iPad| wosbrowser\//i.test(ke),
+            Te = '-ms-ime-align' in document.documentElement.style,
+            Ce = /iPhone|iPod|iPad| wosbrowser\//i.test(ke),
             Se =
                 (((de = document.createElement('div')).contentEditable = !0),
                 'contentEditable' in document.documentElement &&
@@ -71914,7 +71939,7 @@ if (
                             !(ce = /AppleWebKit\/(\d+)/.exec(ke)) ||
                             !ce[1] ||
                             ce[1] < 534),
-                    Te && (ue = /OS [0-4](_\d)+ like Mac/i.test(ke)),
+                    Ce && (ue = /OS [0-4](_\d)+ like Mac/i.test(ke)),
                     /Firefox/i.test(ke) && (ue = !1),
                     /OneBrowser/i.test(ke) && (ue = !1),
                     'UCWEB' === navigator.vendor && (ue = !1),
@@ -72349,7 +72374,7 @@ if (
                     exec: function () {
                         var e = c(this.currentNode(), 'a');
                         if (e) {
-                            for (; e.firstChild; ) T(e.firstChild, e);
+                            for (; e.firstChild; ) C(e.firstChild, e);
                             u(e);
                         }
                     },
@@ -72682,7 +72707,7 @@ if (
                 commands: Pe,
                 defaultOptions: we,
                 ie: xe,
-                ios: Te,
+                ios: Ce,
                 isWysiwygSupported: Se,
                 regexEscape: Q,
                 escapeEntities: X,
@@ -72920,7 +72945,7 @@ if (
         function x(e, t) {
             return e !== t && e.contains && e.contains(t);
         }
-        function C(e, t) {
+        function T(e, t) {
             var i = e.previousElementSibling;
             return (
                 t && i ?
@@ -72929,7 +72954,7 @@ if (
                 :   i
             );
         }
-        function T(e, t) {
+        function C(e, t) {
             return t.parentNode.insertBefore(e, t);
         }
         function S(e) {
@@ -73065,11 +73090,11 @@ if (
                     var s = t(e),
                         a = Z(s, e),
                         o = e;
-                    W(s, o), T(a, s), T(o, s);
+                    W(s, o), C(a, s), C(o, s);
                 }
                 if (n && k(e, i) && k(e.parentNode, i)) {
-                    var l = C(e, 'li');
-                    l || T((l = r('li')), e), d(l, e);
+                    var l = T(e, 'li');
+                    l || C((l = r('li')), e), d(l, e);
                 }
             });
         }
@@ -73358,7 +73383,7 @@ if (
                     if (!i) return !1;
                     s.deleteContents(),
                         a && 3 !== a.nodeType && !H(a) ?
-                            T(i, a)
+                            C(i, a)
                         :   s.insertNode(i),
                         l.restoreRange();
                 }),
@@ -73641,7 +73666,7 @@ if (
                 e,
                 function (e) {
                     q(e, !0) ?
-                        (i || T((i = r('p', {}, t)), e),
+                        (i || C((i = r('p', {}, t)), e),
                         (e.nodeType === ve && '' === e.nodeValue) || d(i, e))
                     :   (i = null);
                 },
@@ -73655,7 +73680,7 @@ if (
                 l,
                 f,
                 x,
-                C,
+                T,
                 S,
                 R,
                 B,
@@ -73726,7 +73751,7 @@ if (
                 (xe = function () {
                     (e._sceditor = _t),
                         kt.locale && 'en' !== kt.locale && De(),
-                        T(
+                        C(
                             (o = r('div', { className: 'sceditor-container' })),
                             e
                         ),
@@ -73784,7 +73809,7 @@ if (
                         d(o, R),
                         _t.dimensions(kt.width || M(e), kt.height || I(e));
                     var t = Be ? 'ie ie' + Be : '';
-                    (t += Te ? ' ios' : ''),
+                    (t += Ce ? ' ios' : ''),
                         (S = f.contentDocument).open(),
                         S.write(
                             te('html', {
@@ -73796,11 +73821,11 @@ if (
                             })
                         ),
                         S.close(),
-                        (C = S.body),
+                        (T = S.body),
                         (x = f.contentWindow),
                         _t.readOnly(!!kt.readOnly),
-                        (Te || Ce || Be) &&
-                            (I(C, '100%'), Be || p(C, 'touchend', _t.focus));
+                        (Ce || Te || Be) &&
+                            (I(T, '100%'), Be || p(T, 'touchend', _t.focus));
                     var i = _(e, 'tabindex');
                     _(R, 'tabindex', i),
                         _(f, 'tabindex', i),
@@ -73808,15 +73833,15 @@ if (
                         g(e),
                         _t.val(e.value);
                     var n = kt.placeholder || _(e, 'placeholder');
-                    n && ((R.placeholder = n), _(C, 'placeholder', n));
+                    n && ((R.placeholder = n), _(T, 'placeholder', n));
                 }),
                 (Fe = function () {
-                    kt.autoUpdate && (p(C, 'blur', pt), p(R, 'blur', pt)),
+                    kt.autoUpdate && (p(T, 'blur', pt), p(R, 'blur', pt)),
                         null === kt.rtl &&
                             (kt.rtl = 'rtl' === y(R, 'direction')),
                         _t.rtl(!!kt.rtl),
                         kt.autoExpand &&
-                            (p(C, 'load', mt, be), p(C, 'input keyup', mt)),
+                            (p(T, 'load', mt, be), p(T, 'input keyup', mt)),
                         kt.resizeEnabled && qe(),
                         _(o, 'id', kt.id),
                         _t.emoticons(kt.emoticonsEnabled);
@@ -73833,24 +73858,24 @@ if (
                         t &&
                             (p(t, 'reset', Ke),
                             p(t, 'submit', _t.updateOriginal, be)),
-                        p(C, 'keypress', Ze),
-                        p(C, 'keydown', Ue),
-                        p(C, 'keydown', Ge),
-                        p(C, 'keyup', nt),
-                        p(C, 'blur', dt),
-                        p(C, 'keyup', ht),
-                        p(C, 'paste', $e),
-                        p(C, i, Je),
-                        p(C, s, st),
-                        p(C, n, Qe),
+                        p(T, 'keypress', Ze),
+                        p(T, 'keydown', Ue),
+                        p(T, 'keydown', Ge),
+                        p(T, 'keyup', nt),
+                        p(T, 'blur', dt),
+                        p(T, 'keyup', ht),
+                        p(T, 'paste', $e),
+                        p(T, i, Je),
+                        p(T, s, st),
+                        p(T, n, Qe),
                         kt.emoticonsCompat &&
                             je.getSelection &&
-                            p(C, 'keyup', lt),
-                        p(C, 'blur', function () {
-                            _t.val() || A(C, 'placeholder');
+                            p(T, 'keyup', lt),
+                        p(T, 'blur', function () {
+                            _t.val() || A(T, 'placeholder');
                         }),
-                        p(C, 'focus', function () {
-                            E(C, 'placeholder');
+                        p(T, 'focus', function () {
+                            E(T, 'placeholder');
                         }),
                         p(R, 'blur', dt),
                         p(R, 'keyup', ht),
@@ -73904,7 +73929,7 @@ if (
                                             ke && ke.create)
                                         )
                                             ke.create(s) &&
-                                                (T(ke.create(s), a.firstChild),
+                                                (C(ke.create(s), a.firstChild),
                                                 A(a, 'has-icon'));
                                         (a._sceTxtMode = !!r.txtExec),
                                             (a._sceWysiwygMode = !!r.exec),
@@ -73964,12 +73989,12 @@ if (
                         w = 0,
                         k = 0,
                         x = M(o),
-                        C = I(o),
-                        T = !1,
+                        T = I(o),
+                        C = !1,
                         S = _t.rtl();
                     if (
-                        ((e = kt.resizeMinHeight || C / 1.5),
-                        (t = kt.resizeMaxHeight || 2.5 * C),
+                        ((e = kt.resizeMinHeight || T / 1.5),
+                        (t = kt.resizeMaxHeight || 2.5 * T),
                         (i = kt.resizeMinWidth || x / 1.25),
                         (n = kt.resizeMaxWidth || 1.25 * x),
                         (s = function (s) {
@@ -73990,8 +74015,8 @@ if (
                                 s.preventDefault();
                         }),
                         (a = function (e) {
-                            T &&
-                                ((T = !1),
+                            C &&
+                                ((C = !1),
                                 g(c),
                                 E(o, 'resizing'),
                                 m(Re, u, s),
@@ -74014,7 +74039,7 @@ if (
                             :   ((_ = e.pageX), (f = e.pageY)),
                                 (w = M(o)),
                                 (k = I(o)),
-                                (T = !0),
+                                (C = !0),
                                 A(o, 'resizing'),
                                 v(c),
                                 p(Re, u, s),
@@ -74041,7 +74066,7 @@ if (
                 (ot = function () {
                     var e,
                         t,
-                        i = C.firstChild,
+                        i = T.firstChild,
                         n = !!kt.autofocusEnd;
                     if (j(o)) {
                         if (_t.sourceMode())
@@ -74049,10 +74074,10 @@ if (
                                 (t = n ? R.value.length : 0),
                                 void R.setSelectionRange(t, t)
                             );
-                        if ((G(C), n))
+                        if ((G(T), n))
                             for (
-                                (i = C.lastChild) ||
-                                ((i = r('p', {}, S)), d(C, i));
+                                (i = T.lastChild) ||
+                                ((i = r('p', {}, S)), d(T, i));
                                 i.lastChild;
 
                             )
@@ -74068,14 +74093,14 @@ if (
                             e.collapse(!n),
                             Z.selectRange(e),
                             (ee = e),
-                            n && (C.scrollTop = C.scrollHeight),
+                            n && (T.scrollTop = T.scrollHeight),
                             _t.focus();
                     }
                 }),
                 (_t.readOnly = function (e) {
                     return 'boolean' != typeof e ?
                             !R.readonly
-                        :   ((C.contentEditable = !e),
+                        :   ((T.contentEditable = !e),
                             (R.readonly = !e),
                             et(e),
                             _t);
@@ -74084,7 +74109,7 @@ if (
                     var t = e ? 'rtl' : 'ltr';
                     return 'boolean' != typeof e ?
                             'rtl' === _(R, 'dir')
-                        :   (_(C, 'dir', t),
+                        :   (_(T, 'dir', t),
                             _(R, 'dir', t),
                             E(o, 'rtl'),
                             E(o, 'ltr'),
@@ -74145,7 +74170,7 @@ if (
                             de = { min: i, max: kt.resizeMaxHeight || 2 * i };
                         }
                         var n = Re.createRange();
-                        n.selectNodeContents(C);
+                        n.selectNodeContents(T);
                         var s = n.getBoundingClientRect(),
                             a = S.documentElement.clientHeight - 1,
                             o = s.bottom - s.top,
@@ -74220,8 +74245,8 @@ if (
                         (pt(), _t.closeDropDown());
                 }),
                 ($e = function (e) {
-                    var t = Be || Ce,
-                        i = C,
+                    var t = Be || Te,
+                        i = T,
                         n = e.clipboardData,
                         s = function (e) {
                             var t = new FileReader();
@@ -74295,11 +74320,11 @@ if (
                             (Z.insertHTML(e, t),
                             Z.saveRange(),
                             ze(),
-                            v((n = h(C, '#sceditor-end-marker')[0])),
-                            (s = C.scrollTop),
+                            v((n = h(T, '#sceditor-end-marker')[0])),
+                            (s = T.scrollTop),
                             (a = K(n).top + 1.5 * n.offsetHeight - o),
                             g(n),
-                            (a > s || a + o < s) && (C.scrollTop = a),
+                            (a > s || a + o < s) && (T.scrollTop = a),
                             ut(!1),
                             Z.restoreRange(),
                             nt());
@@ -74383,13 +74408,13 @@ if (
                 }),
                 (_t.getWysiwygEditorValue = function (e) {
                     for (
-                        var t, n = r('div', {}, S), s = C.childNodes, a = 0;
+                        var t, n = r('div', {}, S), s = T.childNodes, a = 0;
                         a < s.length;
                         a++
                     )
                         d(n, s[a].cloneNode(!0));
                     return (
-                        d(C, n),
+                        d(T, n),
                         $(n),
                         u(n),
                         (t = n.innerHTML),
@@ -74400,7 +74425,7 @@ if (
                     );
                 }),
                 (_t.getBody = function () {
-                    return C;
+                    return T;
                 }),
                 (_t.getContentAreaContainer = function () {
                     return f;
@@ -74411,7 +74436,7 @@ if (
                 }),
                 (_t.setWysiwygEditorValue = function (e) {
                     e || (e = '<p>' + (Be ? '' : '<br />') + '</p>'),
-                        (C.innerHTML = e),
+                        (T.innerHTML = e),
                         ze(),
                         nt(),
                         ut(),
@@ -74424,7 +74449,7 @@ if (
                     e.value = _t.val();
                 }),
                 (ze = function () {
-                    kt.emoticonsEnabled && oe(C, wt, kt.emoticonsCompat);
+                    kt.emoticonsEnabled && oe(T, wt, kt.emoticonsCompat);
                 }),
                 (_t.inSourceMode = function () {
                     return z(o, 'sourceMode');
@@ -74506,13 +74531,13 @@ if (
                                     t &&
                                     e.nodeType !== ve &&
                                     (e = e.childNodes[t]);
-                                    e && e.parentNode !== C;
+                                    e && e.parentNode !== T;
 
                                 )
                                     e = e.parentNode;
                                 e &&
                                     q(e, !0) &&
-                                    (Z.saveRange(), re(C, S), Z.restoreRange());
+                                    (Z.saveRange(), re(T, S), Z.restoreRange());
                             }
                             D(o, 'selectionchanged');
                         }
@@ -74597,7 +74622,7 @@ if (
                     }
                 }),
                 (nt = function () {
-                    L(C, function (e) {
+                    L(T, function (e) {
                         if (
                             e.nodeType === ge &&
                             !/inline/.test(y(e, 'display')) &&
@@ -74608,7 +74633,7 @@ if (
                             return (
                                 (t.className = 'sceditor-nlf'),
                                 (t.innerHTML = Le ? '' : '<br />'),
-                                d(C, t),
+                                d(T, t),
                                 !1
                             );
                         }
@@ -74667,7 +74692,7 @@ if (
                     return (
                         me(e) ? _t.bind('blur', e, t, i)
                         : _t.sourceMode() ? R.blur()
-                        : C.blur(),
+                        : T.blur(),
                         _t
                     );
                 }),
@@ -74690,7 +74715,7 @@ if (
                                 s.collapse(!0),
                                 Z.selectRange(s)),
                             x.focus(),
-                            C.focus(),
+                            T.focus(),
                             O && (Z.selectRange(O), (O = null));
                     }
                     return tt(), _t;
@@ -74746,18 +74771,18 @@ if (
                 (_t.emoticons = function (e) {
                     if (!e && !1 !== e) return kt.emoticonsEnabled;
                     ((kt.emoticonsEnabled = e), e) ?
-                        (p(C, 'keypress', rt),
+                        (p(T, 'keypress', rt),
                         _t.sourceMode() ||
                             (Z.saveRange(), ze(), ut(!1), Z.restoreRange()))
                     :   (a(
-                            h(C, 'img[data-sceditor-emoticon]'),
+                            h(T, 'img[data-sceditor-emoticon]'),
                             function (e, t) {
                                 var i = w(t, 'sceditor-emoticon'),
                                     n = S.createTextNode(i);
                                 t.parentNode.replaceChild(n, t);
                             }
                         ),
-                        m(C, 'keypress', rt),
+                        m(T, 'keypress', rt),
                         ut());
                     return _t;
                 }),
@@ -74957,7 +74982,7 @@ if (
                                 !S.getElementById('sceditor-start-marker')),
                             V && (clearTimeout(V), (V = !1)),
                             n && e && Z.saveRange(),
-                            (t = i ? R.value : C.innerHTML) !== ut.lastVal &&
+                            (t = i ? R.value : T.innerHTML) !== ut.lastVal &&
                                 ((ut.lastVal = t),
                                 D(o, 'valuechanged', {
                                     rawValue: i ? _t.val() : t,
@@ -75109,8 +75134,8 @@ if (
                     t > 4 ? t : e
                 );
             })(),
-            Ce = '-ms-ime-align' in document.documentElement.style,
-            Te = /iPhone|iPod|iPad| wosbrowser\//i.test(ke),
+            Te = '-ms-ime-align' in document.documentElement.style,
+            Ce = /iPhone|iPod|iPad| wosbrowser\//i.test(ke),
             Se =
                 (((de = document.createElement('div')).contentEditable = !0),
                 'contentEditable' in document.documentElement &&
@@ -75122,7 +75147,7 @@ if (
                             !(ce = /AppleWebKit\/(\d+)/.exec(ke)) ||
                             !ce[1] ||
                             ce[1] < 534),
-                    Te && (ue = /OS [0-4](_\d)+ like Mac/i.test(ke)),
+                    Ce && (ue = /OS [0-4](_\d)+ like Mac/i.test(ke)),
                     /Firefox/i.test(ke) && (ue = !1),
                     /OneBrowser/i.test(ke) && (ue = !1),
                     'UCWEB' === navigator.vendor && (ue = !1),
@@ -75557,7 +75582,7 @@ if (
                     exec: function () {
                         var e = c(this.currentNode(), 'a');
                         if (e) {
-                            for (; e.firstChild; ) T(e.firstChild, e);
+                            for (; e.firstChild; ) C(e.firstChild, e);
                             u(e);
                         }
                     },
@@ -75890,7 +75915,7 @@ if (
                 commands: Pe,
                 defaultOptions: we,
                 ie: xe,
-                ios: Te,
+                ios: Ce,
                 isWysiwygSupported: Se,
                 regexEscape: Q,
                 escapeEntities: X,
@@ -76425,7 +76450,7 @@ if (
                             (o =
                                 (n ? n.quoteType : null) ||
                                 k.opts.quoteType ||
-                                C.auto),
+                                T.auto),
                             n || t.type !== z)
                         )
                             if (t.type === z) {
@@ -76472,7 +76497,7 @@ if (
                 var s = /\s|=/.test(e);
                 return (
                     n(t) ? t(e, i)
-                    : t === C.never || (t === C.auto && !s) ? e
+                    : t === T.never || (t === T.auto && !s) ? e
                     : '"' + e.replace('\\', '\\\\').replace('"', '\\"') + '"'
                 );
             }
@@ -76743,7 +76768,7 @@ if (
                 (h.opts = this.opts),
                     (h.elementToBbcode = c),
                     e(),
-                    (this.commands = v(!0, {}, T, this.commands)),
+                    (this.commands = v(!0, {}, C, this.commands)),
                     (this.toBBCode = h.toSource),
                     (this.fromBBCode = h.toHtml);
             }),
@@ -76765,8 +76790,8 @@ if (
             w = y && y < 11,
             k = 'data-sceditor-emoticon',
             x = e.command.get,
-            C = { always: 1, never: 2, auto: 3 },
-            T = {
+            T = { always: 1, never: 2, auto: 3 },
+            C = {
                 bold: { txtExec: ['[b]', '[/b]'] },
                 italic: { txtExec: ['[i]', '[/i]'] },
                 underline: { txtExec: ['[u]', '[/u]'] },
@@ -76912,7 +76937,7 @@ if (
                 'font': {
                     tags: { font: { face: null } },
                     styles: { 'font-family': null },
-                    quoteType: C.never,
+                    quoteType: T.never,
                     format: function (e, t) {
                         var i;
                         return (
@@ -76947,7 +76972,7 @@ if (
                 'color': {
                     tags: { font: { color: null } },
                     styles: { color: null },
-                    quoteType: C.never,
+                    quoteType: T.never,
                     format: function (e, t) {
                         var i;
                         return (
@@ -77051,7 +77076,7 @@ if (
                     allowsEmpty: !0,
                     tags: { img: { src: null } },
                     allowedChildren: ['#'],
-                    quoteType: C.never,
+                    quoteType: T.never,
                     format: function (e, t) {
                         var i,
                             n,
@@ -77088,7 +77113,7 @@ if (
                 'url': {
                     allowsEmpty: !0,
                     tags: { a: { href: null } },
-                    quoteType: C.never,
+                    quoteType: T.never,
                     format: function (e, t) {
                         var i = f(e, 'href');
                         return 'mailto:' === i.substr(0, 7) ?
@@ -77103,7 +77128,7 @@ if (
                     },
                 },
                 'email': {
-                    quoteType: C.never,
+                    quoteType: T.never,
                     html: function (e, t, i) {
                         return (
                             '<a href="mailto:' +
@@ -77117,7 +77142,7 @@ if (
                 'quote': {
                     tags: { blockquote: null },
                     isInline: !1,
-                    quoteType: C.never,
+                    quoteType: T.never,
                     format: function (e, t) {
                         for (
                             var i,
@@ -77264,7 +77289,7 @@ if (
                 );
             },
         }),
-            (r.QuoteType = C),
+            (r.QuoteType = T),
             (r.defaults = {
                 breakBeforeBlock: !1,
                 breakStartBlock: !1,
@@ -77273,7 +77298,7 @@ if (
                 removeEmptyTags: !0,
                 fixInvalidNesting: !0,
                 fixInvalidChildren: !0,
-                quoteType: C.auto,
+                quoteType: T.auto,
             }),
             (u.get = function (e) {
                 return S[e] || null;
@@ -79699,7 +79724,7 @@ var tutorial = {
         };
     if (k) {
         window.name || (window.name = Math.floor(1e8 * Math.random()));
-        var C = {
+        var T = {
             _cookie: !0,
             _prefix: '',
             _expires: null,
@@ -79758,16 +79783,16 @@ var tutorial = {
             },
         };
         w ||
-            ((window.localCookieStorage = d({}, C, {
+            ((window.localCookieStorage = d({}, T, {
                 _prefix: b,
                 _expires: 3650,
                 _secure: !0,
             })),
-            (window.sessionCookieStorage = d({}, C, {
+            (window.sessionCookieStorage = d({}, T, {
                 _prefix: y + window.name + '_',
                 _secure: !0,
             }))),
-            (window.cookieStorage = d({}, C)),
+            (window.cookieStorage = d({}, T)),
             (v.cookieStorage = d({}, x, {
                 _type: 'cookieStorage',
                 setExpires: function (e) {
