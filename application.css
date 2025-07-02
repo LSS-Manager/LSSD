@@ -14238,6 +14238,10 @@ body.bigMap .search-station-input {
 .tooltip-mc[data-tip] {
     position: relative;
 }
+.tooltip-mc {
+    cursor: pointer;
+    height: max-content;
+}
 .tooltip-mc[data-tip]:before {
     content: '';
     display: none;

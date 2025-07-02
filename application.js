@@ -112,6 +112,8 @@ function processMissionElement(e, t, i) {
             (x.vehicle_state = y.vehicle_state),
             (x.krankentransport = y.kt),
             (x.sicherheitswache = y.sw),
+            (x.ct = y.ct),
+            (x.pt = y.pt),
             (x.involved = !0),
             mission_markers.push(x),
             mission_markers_per_id.set(x.mission_id, x);
@@ -277,6 +279,8 @@ function missionMarkerAddSingle(e) {
             (_.vehicle_state = e.vehicle_state),
             (_.krankentransport = e.kt),
             (_.sicherheitswache = e.sw),
+            (_.ct = e.ct),
+            (_.pt = e.pt),
             (_.involved = !0),
             mission_markers.push(_),
             mission_markers_per_id.set(_.mission_id, _);
@@ -830,6 +834,8 @@ function missionSelectionUpdateButtons() {
         r = 0,
         l = 0,
         c = 0;
+    (criticalTransportMissionsPresent = !1),
+        (patientTransportMissionsPresent = !1);
     for (let e in missionTypeFilters) missionTypeFilters[e].missionIds = [];
     mission_markers_per_id.forEach(function (u) {
         u.krankentransport ?
@@ -850,7 +856,9 @@ function missionSelectionUpdateButtons() {
             0 == u.vehicle_state && r++)
         :   (e++,
             missionTypeFilters.emergency.missionIds.push(u.mission_id),
-            0 == u.vehicle_state && t++);
+            0 == u.vehicle_state && t++),
+            u.ct && (criticalTransportMissionsPresent = !0),
+            u.pt && (patientTransportMissionsPresent = !0);
     }),
         $(document.getElementById('mission_select_emergency')).html(
             '<img class="icon icons8-Siren-Filled" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAADcElEQVRoQ+2Z/XETMRDF91WAUwFQAaQCoAJIBSQVABUQKoBUgFNBQgVABSQVQCogqeAxz0ge5aw7Sau7GYax/rFnrK/frvbtSoY5Gsm1mb00s0MAvxxT7AwhuTKzn2Z2DuBt65xoHaD+AeR1WPTYM8dwDMlTM3vvndML8ihYT/t53OuVxBvyims+F8jcXun1hvbTAzKLV+bwRhfIwCsnACQAzY2kYuyzNzbigm6PBBCd6WMAn5oJkgEkpVJrALfeebpAvIsuMW4PsoRVe+b8fzxCUmWB2imAc49VSD43szdmpk8JQE27MrNLMzvzBjlJVReqCFYgqQmfhJVVN1UDhRwg6XxVs/ORPlIqrXlWO0cCoFymdrM5WkHLRfYwAToCIMhsCxBfzeypmd2ZmSRYElpVRAYvKofIqmoaezIFQ1JrXZjZFiAYYX0vRgZAk0mOpDau43Qtj9QCDDeaJET9JOPpuI0ZLybPmwgQO2aDXdYC8G1iwrQ8USk/6rma45LA3AI4KHgluzeXaiXe0N1hrjJehntmZq5yxwvyI8TGiynP1Xgj9gllykdvzeUFoTYAwDU+BxiCX+LxHYBkvKk1b4RkjI87ALU5o7ipoIK/zawYJ7nJPCCylttyhUB2e9oDEiXwC4CeRLjDlCTnZiX0gMRHgg8A9H22RjIqV7OIeECUsPQU5JLJwtFyG8kD4rZayXXJI0Sztz0gUhb3s00pa3uFZAck6LkybLa8JulWlgqPREW8AnCYqctkQD3iSWjulVBbkACgTjEZ7cRAkrSuAagSnb1NGWpQYApER3ADpPuINp4CbErynCL1Zt8aapK6nzwws4PchSvEkV5d1EftL1C0QHKnEET2WSYJRh275ofmSpCimIQqQOtvgQSie4U2PgqQFHbxDtKsKjUQ6kOyWt4ToFWTavUkrAYQVy5pBZm9fM8ok6sEagVZTHqT4+sqSqtBlirfMx6J14Smcr4FxGWp2thI+3mSbguI6+w6QeJbW3UV3ALiUhMnSDGXDOdtAdEfOXpMe9f7f0gJLnmlqc5XLSDNVipteOx3TwXRArJY+Z5RrmZhGQUhGZOf17BLjLsEcJSbeApkk/z+tTb2llYEmfMRrscopdyyB+mxrmfs3iMlC3is2jOmtJ9ijPQsvsRYj2rFTL7Efrxzjr43/wE/Kgjg5EADGQAAAABJRU5ErkJggg==" width="15" height="15"> ' +
@@ -4367,10 +4375,14 @@ function updateNoMissionsMessages() {
     const e =
         missionTypeFilters.alliance.missionIds.length <= 0 &&
         missionTypeFilters.alliance_event.missionIds.length <= 0;
-    $(document.getElementById('ktw_no_transports')).toggle(
+    $(document.getElementById('patient_no_transports')).toggle(
         missionTypeFilters.krankentransporte.active &&
-            missionTypeFilters.krankentransporte.missionIds.length <= 0
+            !1 === patientTransportMissionsPresent
     ),
+        $(document.getElementById('critical_no_transports')).toggle(
+            missionTypeFilters.krankentransporte.active &&
+                !1 === criticalTransportMissionsPresent
+        ),
         $(document.getElementById('alliance_no_mission')).toggle(
             massAllianceMissionAddCompleted &&
                 (missionTypeFilters.alliance.active ||
@@ -64066,6 +64078,8 @@ var building_markers = Array(),
     vehiclesEquipmentDataById = {},
     filtersData = {},
     missionListSorters = [],
+    criticalTransportMissionsPresent = !1,
+    patientTransportMissionsPresent = !1,
     missionTypeFilters = {
         emergency: { active: !0, missionIds: [] },
         krankentransporte: { active: !0, missionIds: [] },
