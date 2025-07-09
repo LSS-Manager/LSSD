@@ -1,5 +1,5 @@
 diff --git a/application.css b/application.alt.css
-index 7088c12..0cd0771 100644
+index 5f4f131..0cd0771 100644
 --- a/application.css
 +++ b/application.alt.css
 @@ -14238,10 +14238,6 @@ body.bigMap .search-station-input {
@@ -13,3 +13,50 @@ index 7088c12..0cd0771 100644
  .tooltip-mc[data-tip]:before {
      content: '';
      display: none;
+@@ -14491,15 +14487,6 @@ a.chat-username-dark.label-default {
+         margin-left: 43.75%;
+     }
+ }
+-.vehicle_image_to_all_account {
+-    margin-bottom: 0;
+-}
+-.vehicle_image_to_all_dc {
+-    margin-bottom: 0;
+-}
+-.vehicle_image_to_all_station {
+-    margin-bottom: 0;
+-}
+ .dispatch-vehicle-equipments .equipment-item label {
+     font-weight: normal;
+ }
+@@ -15249,10 +15236,6 @@ body.dark .grid-container .grid-item .grid-item-text .line {
+     top: 0;
+     bottom: 0;
+ }
+-.red-frame {
+-    border: 2px solid red;
+-    padding: 5px;
+-}
+ .mission-speed-dropdown-menu {
+     min-width: initial;
+ }
+@@ -15307,9 +15290,6 @@ body.dark .nav-tabs > li.active > a:focus {
+     margin-left: auto;
+     margin-right: auto;
+ }
+-#vehicle_graphic_for_the_same_type .bootstrap-select {
+-    width: unset !important;
+-}
+ .vehicle-mode-label {
+     display: flex;
+     align-items: center;
+@@ -15323,9 +15303,6 @@ body.dark .nav-tabs > li.active > a:focus {
+ .mission-speed-error .btn {
+     margin-top: 5px;
+ }
+-#vehicle_graphic_for_the_same_type .bootstrap-select {
+-    width: unset !important;
+-}
+ .dark-visible {
+     display: none;
+ }
