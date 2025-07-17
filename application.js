@@ -7251,7 +7251,7 @@ Object.values ||
         javascript: {
             alarm: 'Alarm',
             alliance_event_pay_out_message:
-                'Credits und Event-Credits werden w\xe4hrend des Events gesammelt und nach Abschluss gleichm\xe4\xdfig an alle teilnehmenden Mitglieder ausgezahlt.',
+                'Schlie\xdfe alle Eins\xe4tze mit deinem Verband ab, um einen Bonus zu erhalten!',
             alliance_event_resource: {
                 carnival: {
                     currency: 'Event Tickets',
@@ -7298,6 +7298,12 @@ Object.values ||
             current_reward_for_you:
                 '<b>Deine aktuelle Belohnung:</b> %{credits} Credits & %{event_currency} Event-Credits',
             days: 'Tage',
+            event: {
+                alliance_missions_completed:
+                    '<b> Insgesamt erledigte Eins\xe4tze:</b>  %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Teilgenommene Eins\xe4tze:</b> %{completedMissions}',
+            },
             few_seconds: 'In wenigen Sekunden',
             finish_in: 'Ende in:',
             foam_approaching: 'Anfahrt: %{amount}',
@@ -7322,6 +7328,8 @@ Object.values ||
             now: 'Sofort',
             patient: 'Patienten',
             patient_untouched: 'unbehandelte Patienten',
+            payout_received:
+                '<b>Du hast:</b> %{credits} Credits & %{event_currency} Event-Credits <b>erhalten:</b>',
             poi_delete: 'Wirklich den POI: "%{caption}" l\xf6schen?',
             pump_speed_approaching: 'Anfahrt: %{amount} l/min',
             pump_speed_missing: 'Fehlen: %{amount} l/min',
@@ -7348,9 +7356,11 @@ Object.values ||
             start_username: 'Gestartet von:',
             time_left: 'Verbleibende Zeit:',
             to_building: 'Zum Geb\xe4ude',
+            to_event: 'Zur\xfcck zu Events',
             to_mission: 'Zum Einsatz',
-            total_credits_earned: 'Insgesamt gesammelte Credits:',
-            total_event_currency_earned: 'Insgesamt gesammelte Event-Credit:',
+            total_credits_earned: '<b>Insgesamt gesammelte Credits:</b>',
+            total_event_currency_earned:
+                '<b>Insgesamt gesammelte Event-Credit:</b>',
             understand: 'Verstanden',
             user_not_found: 'Der Spieler wurde nicht gefunden. ',
             vehicle_payload: {
@@ -8124,7 +8134,7 @@ Object.values ||
         javascript: {
             alarm: 'Dispatch',
             alliance_event_pay_out_message:
-                'This is shared between every member who took part in the event and will be paid out when the alliance event is finished.',
+                'Complete all missions with your alliance to earn a bonus!',
             alliance_event_resource: {
                 carnival: {
                     currency: 'Event Tickets',
@@ -8169,6 +8179,12 @@ Object.values ||
             current_reward_for_you:
                 '<b>Your current reward:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'days',
+            event: {
+                alliance_missions_completed:
+                    '<b>Completed Missions:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Participated Missions:</b>  %{completedMissions}',
+            },
             few_seconds: 'in few seconds',
             finish_in: 'Finish in:',
             foam_approaching: 'Approaching: %{amount} gal.',
@@ -8193,6 +8209,8 @@ Object.values ||
             now: 'Now',
             patient: 'Patient',
             patient_untouched: 'Untreated patients',
+            payout_received:
+                '<b>Your have received:</b> %{credits} Credits & %{event_currency} Event Credits',
             poi_delete: 'Are you sure you want to delete the POI: %{caption}?',
             pump_speed_approaching: 'Approaching: %{amount} GPM',
             pump_speed_missing: 'Missing: %{amount} GPM',
@@ -8219,9 +8237,10 @@ Object.values ||
             start_username: 'Starter:',
             time_left: 'Time left:',
             to_building: 'View Building',
+            to_event: 'Back to events',
             to_mission: 'View Mission',
-            total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total event credits earned:',
+            total_credits_earned: '<b>Total credits earned:</b>',
+            total_event_currency_earned: '<b>Total event credits earned:</b>',
             understand: 'Acknowledge',
             user_not_found: 'The player was not found.',
             vehicle_payload: {
@@ -9002,7 +9021,7 @@ Object.values ||
         javascript: {
             alarm: 'Dispatch',
             alliance_event_pay_out_message:
-                'This is shared between every member who took part in the event and will be paid out when the alliance event is finished.',
+                'Complete all missions with your alliance to earn a bonus!',
             alliance_event_resource: {
                 carnival: {
                     currency: 'Event Tickets',
@@ -9048,6 +9067,12 @@ Object.values ||
             current_reward_for_you:
                 '<b>Your current reward:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'days',
+            event: {
+                alliance_missions_completed:
+                    '<b>Completed Missions:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Participated Missions:</b> %{completedMissions}',
+            },
             few_seconds: 'in few seconds',
             finish_in: 'Finish in:',
             foam_approaching: 'Approaching: %{amount} gal.',
@@ -9072,6 +9097,8 @@ Object.values ||
             now: 'Now',
             patient: 'Patient',
             patient_untouched: 'Untreated patients',
+            payout_received:
+                '<b>Your have received:</b> %{credits} Credits & %{event_currency} Event Credits',
             poi_delete: 'Are you sure you want to delete the POI: %{caption}?',
             pump_speed_approaching: 'Approaching: %{amount} l/min',
             pump_speed_missing: 'Missing: %{amount} l/min',
@@ -9098,9 +9125,10 @@ Object.values ||
             start_username: 'Starter:',
             time_left: 'Time left:',
             to_building: 'View Building',
+            to_event: 'Back to events',
             to_mission: 'View Mission',
-            total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total event credits earned:',
+            total_credits_earned: '<b>Total credits earned:</b>',
+            total_event_currency_earned: '<b>Total event credits earned:</b>',
             understand: 'Acknowledge',
             user_not_found: 'The player was not found.',
             vehicle_payload: {
@@ -9911,7 +9939,7 @@ Object.values ||
         javascript: {
             alarm: 'Alarm',
             alliance_event_pay_out_message:
-                'Dit wordt verdeeld onder alle leden die hebben deelgenomen aan het verband-event en wordt uitbetaald wanneer het is afgelopen.',
+                'Voltooi alle inzetten met je verband om een bonus te verdienen!',
             alliance_event_resource: {
                 carnival: {
                     currency: 'Event Tickets',
@@ -9958,6 +9986,12 @@ Object.values ||
             current_reward_for_you:
                 '<b>Je huidige beloning:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'dagen',
+            event: {
+                alliance_missions_completed:
+                    '<b>Voltooide inzetten:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Deelgenomen inzetten:</b> %{completedMissions}',
+            },
             few_seconds: 'Nog enkele seconden',
             finish_in: 'Duurt nog:',
             foam_approaching: 'Aanrijdend: %{amount} L.',
@@ -9982,6 +10016,8 @@ Object.values ||
             now: 'Nu',
             patient: 'Pati\xebnten',
             patient_untouched: 'onbehandelde pati\xebnten',
+            payout_received:
+                '<b>Je hebt:</b> %{credits} Credits & %{event_currency} Event Credits <b>ontvangen.</b>',
             poi_delete:
                 'Weet je zeker dat je dit Point of Interest: "%{caption}" wilt verwijderen?',
             pump_speed_approaching: 'Aanrijdend: %{amount} l/min',
@@ -10010,9 +10046,10 @@ Object.values ||
             start_username: 'Gestart door:',
             time_left: 'Tijd over:',
             to_building: 'Naar post',
+            to_event: 'Terug naar events',
             to_mission: 'Naar incident',
-            total_credits_earned: 'Totaal aantal credits:',
-            total_event_currency_earned: 'Totaal aantal event-credits:',
+            total_credits_earned: '<b>Totaal aantal credits:</b>',
+            total_event_currency_earned: '<b>Totaal aantal event-credits:</b>',
             understand: 'Begrepen',
             user_not_found: 'De speler is niet gevonden.',
             vehicle_payload: {
@@ -10796,7 +10833,7 @@ Object.values ||
         javascript: {
             alarm: 'Enviar',
             alliance_event_pay_out_message:
-                'Esta cantidad se repartir\xe1 entre todos los miembros que hayan participado en el evento y se abonar\xe1 una vez finalizado el evento de la alianza.',
+                '\xa1Completa todas las misiones con tu alianza para ganar una bonificaci\xf3n!',
             alliance_event_resource: {
                 carnival: {
                     currency: 'Event Tickets',
@@ -10846,6 +10883,12 @@ Object.values ||
             current_reward_for_you:
                 '<b>Tu recompensa actual:</b> %{credits} Cr\xe9ditos y %{event_currency} Cr\xe9ditos de evento',
             days: 'd\xedas',
+            event: {
+                alliance_missions_completed:
+                    '<b>Misiones completadas:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Misiones participantes:</b> %{completedMissions}',
+            },
             few_seconds: 'en pocos segundos',
             finish_in: 'Termina en:',
             foam_approaching: 'Aproxim\xe1ndose: %{amount} l',
@@ -10870,6 +10913,8 @@ Object.values ||
             now: 'Ahora',
             patient: 'Paciente',
             patient_untouched: 'Pacientes no tratados',
+            payout_received:
+                '<b>Ha recibido:</b> %{credits} Cr\xe9ditos y %{event_currency} Cr\xe9ditos de evento',
             poi_delete: '\xbfSeguro que quieres eliminar el PI %{caption}?',
             pump_speed_approaching: 'Aproximaci\xf3n: %{amount} l/min',
             pump_speed_missing: 'Falta: %{amount} l/min',
@@ -10897,10 +10942,11 @@ Object.values ||
             start_username: 'Usuario:',
             time_left: 'Tiempo restante:',
             to_building: 'Ver edificio',
+            to_event: 'Volver a eventos',
             to_mission: 'Ver misi\xf3n',
-            total_credits_earned: 'Total de cr\xe9ditos obtenidos:',
+            total_credits_earned: '<b>Total de cr\xe9ditos obtenidos:</b>',
             total_event_currency_earned:
-                'Total de cr\xe9ditos de evento obtenidos:',
+                '<b>Total de cr\xe9ditos de evento obtenidos:</b>',
             understand: 'Recibido',
             user_not_found: 'No se ha encontrado al jugador.',
             vehicle_payload: {
@@ -11683,7 +11729,7 @@ Object.values ||
         javascript: {
             alarm: 'Dispatch',
             alliance_event_pay_out_message:
-                'This is shared between every member who took part in the event and will be paid out when the alliance event is finished.',
+                'Complete all missions with your alliance to earn a bonus!',
             alliance_event_resource: {
                 carnival: {
                     currency: 'Event Tickets',
@@ -11730,6 +11776,12 @@ Object.values ||
             current_reward_for_you:
                 '<b>Your current reward:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'days',
+            event: {
+                alliance_missions_completed:
+                    '<b>Completed Missions:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Participated Missions:</b> %{completedMissions}',
+            },
             few_seconds: 'in few seconds',
             finish_in: 'Finish in:',
             foam_approaching: 'Approaching: %{amount} l.',
@@ -11754,6 +11806,8 @@ Object.values ||
             now: 'Now',
             patient: 'Patient',
             patient_untouched: 'Untreated patients',
+            payout_received:
+                '<b>Your have received:</b> %{credits} Credits & %{event_currency} Event Credits',
             poi_delete: 'Are you sure you want to delete the POI: %{caption}?',
             pump_speed_approaching: 'Approaching: %{amount} l/min',
             pump_speed_missing: 'Missing: %{amount} l/min',
@@ -11780,9 +11834,10 @@ Object.values ||
             start_username: 'Starter:',
             time_left: 'Time left:',
             to_building: 'View Building',
+            to_event: 'Back to events',
             to_mission: 'View Mission',
-            total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total event credits earned:',
+            total_credits_earned: '<b>Total credits earned:</b>',
+            total_event_currency_earned: '<b>Total event credits earned:</b>',
             understand: 'Acknowledge',
             user_not_found: 'The player was not found.',
             vehicle_payload: {
@@ -12562,7 +12617,7 @@ Object.values ||
         javascript: {
             alarm: 'Larmcentral',
             alliance_event_pay_out_message:
-                'Detta delas mellan alla medlemmar som deltog i evenemanget och kommer att betalas ut n\xe4r alliansevenemanget \xe4r avslutat.',
+                'Slutf\xf6r alla uppdrag med din allians f\xf6r att f\xe5 en bonus!',
             alliance_event_resource: {
                 carnival: {
                     currency: 'Event Tickets',
@@ -12612,6 +12667,12 @@ Object.values ||
             current_reward_for_you:
                 '<b>Din nuvarande bel\xf6ning:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'dagar',
+            event: {
+                alliance_missions_completed:
+                    '<b>Avslutade uppdrag:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Deltagande uppdrag:</b> %{completedMissions}',
+            },
             few_seconds: 'om n\xe5gra sekunder',
             finish_in: 'Avsluta om:',
             foam_approaching: 'P\xe5 v\xe4g: %{amount} l.',
@@ -12636,6 +12697,8 @@ Object.values ||
             now: 'Nu',
             patient: 'Patient',
             patient_untouched: 'Obehandlade patienter',
+            payout_received:
+                '<b>Du har f\xe5tt:</b> %{credits} Credits & %{event_currency} Event Credits',
             poi_delete: 'Vill du verkligen ta bort intressepunkten %{caption}?',
             pump_speed_approaching: 'Cirka: %{amount} l/min',
             pump_speed_missing: 'Saknas: %{amount} l/min',
@@ -12662,10 +12725,11 @@ Object.values ||
             start_username: 'Startad av:',
             time_left: 'Tid kvar:',
             to_building: 'Visa byggnad',
+            to_event: 'Tillbaka till evenemang',
             to_mission: 'Visa uppdrag',
-            total_credits_earned: 'Totalt antal intj\xe4nade krediter',
+            total_credits_earned: '<b>Totalt antal intj\xe4nade krediter</b>',
             total_event_currency_earned:
-                'Totalt antal intj\xe4nade h\xf6gskolepo\xe4ng:',
+                '<b>Totalt antal intj\xe4nade h\xf6gskolepo\xe4ng:</b>',
             understand: 'Acceptera',
             user_not_found: 'Spelaren kunde inte hittas.',
             vehicle_payload: {
@@ -13454,7 +13518,7 @@ Object.values ||
         javascript: {
             alarm: 'Wy\u015blij',
             alliance_event_pay_out_message:
-                'Jest ona dzielona mi\u0119dzy wszystkich cz\u0142onk\xf3w, kt\xf3rzy wzi\u0119li udzia\u0142 w wydarzeniu i zostanie wyp\u0142acona po zako\u0144czeniu wydarzenia sojuszu.',
+                'Uko\u0144cz wszystkie misje ze swoim sojuszem, aby zdoby\u0107 premi\u0119!',
             alliance_event_resource: {
                 carnival: {
                     currency: 'Event Tickets',
@@ -13504,6 +13568,12 @@ Object.values ||
             current_reward_for_you:
                 '<b>Aktualna nagroda:</b> %{credits} Kredyty i %{event_currency} Kredyty wydarzenia',
             days: 'dni',
+            event: {
+                alliance_missions_completed:
+                    '<b>Uko\u0144czone misje:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Uczestniczono w misjach:</b> %{completedMissions}',
+            },
             few_seconds: 'za kilka sekund',
             finish_in: 'Koniec za:',
             foam_approaching: 'W drodze: %{amount} l.',
@@ -13528,6 +13598,8 @@ Object.values ||
             now: 'Teraz',
             patient: 'Pacjent',
             patient_untouched: 'Pacjenci bez opieki',
+            payout_received:
+                '<b>Otrzyma\u0142e\u015b:</b> %{credits} Kredyty & %{event_currency} Kredyty eventowe',
             poi_delete: 'Czy na pewno chcesz usun\u0105\u0107 UM: %{caption}?',
             pump_speed_approaching: 'W drodze: %{amount} l/min',
             pump_speed_missing: 'Potrzebne: %{amount} l/min',
@@ -13558,11 +13630,12 @@ Object.values ||
             start_username: 'Inicjator:',
             time_left: 'Pozosta\u0142o czasu:',
             to_building: 'Poka\u017c budynek',
+            to_event: 'Powr\xf3t do wydarze\u0144',
             to_mission: 'Poka\u017c misj\u0119',
             total_credits_earned:
-                '\u0141\u0105czna liczba zdobytych kredyt\xf3w',
+                '<b>\u0141\u0105czna liczba zdobytych kredyt\xf3w</b>',
             total_event_currency_earned:
-                '\u0141\u0105czna liczba zdobytych punkt\xf3w za wydarzenie:',
+                '<b>\u0141\u0105czna liczba zdobytych punkt\xf3w za wydarzenie:</b>',
             understand: 'Potwierd\u017a',
             user_not_found: 'Nie znaleziono gracza.',
             vehicle_payload: {
@@ -14355,7 +14428,7 @@ Object.values ||
         javascript: {
             alarm: 'Assegna',
             alliance_event_pay_out_message:
-                "La somma viene suddivisa tra tutti i membri che hanno partecipato all'evento e sar\xe0 versata al termine dell'evento dell'alleanza.",
+                'Completa tutte le missioni con la tua alleanza per guadagnare un bonus!',
             alliance_event_resource: {
                 carnival: {
                     currency: 'Event Tickets',
@@ -14405,6 +14478,12 @@ Object.values ||
             current_reward_for_you:
                 '<b>La tua ricompensa attuale:</b> %{credits} Crediti e %{event_currency} Crediti evento',
             days: 'giorni',
+            event: {
+                alliance_missions_completed:
+                    '<b>Missioni completate:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Missioni partecipate:</b> %{completedMissions}',
+            },
             few_seconds: 'in pochi secondi',
             finish_in: 'Finisce tra:',
             foam_approaching: 'In Arrivo: %{amount} l.',
@@ -14429,6 +14508,8 @@ Object.values ||
             now: 'Adesso',
             patient: 'Paziente',
             patient_untouched: 'Pazienti non trattati',
+            payout_received:
+                '<b>Hai ricevuto:</b> %{credits} Crediti e %{event_currency} Crediti evento',
             poi_delete: 'Vuoi davvero eliminare il PDI: %{caption}?',
             pump_speed_approaching: 'In Arrivo: %{amount} l/min',
             pump_speed_missing: 'Mancanti: %{amount} l/min',
@@ -14455,10 +14536,11 @@ Object.values ||
             start_username: 'Avviatore:',
             time_left: 'Tempo rimanente:',
             to_building: 'Visualizza edificio',
+            to_event: 'Torna agli eventi',
             to_mission: 'Visualizza missione',
-            total_credits_earned: 'Totale crediti conseguiti:',
+            total_credits_earned: '<b>Totale crediti conseguiti:</b>',
             total_event_currency_earned:
-                "Totale crediti dell'evento guadagnati:",
+                "<b>Totale crediti dell'evento guadagnati:</b>",
             understand: 'Conferma',
             user_not_found: 'Il giocatore non \xe8 stato trovato.',
             vehicle_payload: {
@@ -15255,7 +15337,7 @@ Object.values ||
         javascript: {
             alarm: 'D\xe9ployer',
             alliance_event_pay_out_message:
-                "Ce montant est partag\xe9 entre tous les membres qui ont particip\xe9 \xe0 l'\xe9v\xe9nement et sera vers\xe9 \xe0 la fin de l'\xe9v\xe9nement de l'alliance.",
+                'Terminez toutes les missions avec votre alliance pour gagner un bonus !',
             alliance_event_resource: {
                 carnival: {
                     currency: "Billets d'\xe9v\xe9nements",
@@ -15307,6 +15389,12 @@ Object.values ||
             current_reward_for_you:
                 "<b>Votre r\xe9compense actuelle :</b> %{credits} Cr\xe9dits & %{event_currency} Cr\xe9dits d'\xe9v\xe9nement",
             days: 'jours',
+            event: {
+                alliance_missions_completed:
+                    '<b>Missions termin\xe9es:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Missions particip\xe9es :</b> %{completedMissions}',
+            },
             few_seconds: 'dans quelques secondes',
             finish_in: 'Terminer dans\xa0:',
             foam_approaching: 'Approaching: %{amount} gal.',
@@ -15331,6 +15419,8 @@ Object.values ||
             now: 'Maintenant',
             patient: 'Patient',
             patient_untouched: 'Patients non trait\xe9s',
+            payout_received:
+                "<b>Vous avez re\xe7u :</b> %{credits} Cr\xe9dits & %{event_currency} Cr\xe9dits d'\xe9v\xe9nements",
             poi_delete:
                 'Voulez-vous vraiment supprimer ce point d\u2019int\xe9r\xeat\xa0: %{caption}\xa0?',
             pump_speed_approaching: 'En approche : %{amount} l/min',
@@ -15360,10 +15450,11 @@ Object.values ||
             start_username: 'Initiateur\xa0:',
             time_left: 'Temps restant:',
             to_building: 'Afficher le b\xe2timent',
+            to_event: 'Retour aux \xe9v\xe9nements',
             to_mission: 'Afficher la mission',
-            total_credits_earned: 'Total des cr\xe9dits obtenus :',
+            total_credits_earned: '<b>Total des cr\xe9dits obtenus :</b>',
             total_event_currency_earned:
-                "Total des cr\xe9dits d'\xe9v\xe9nement obtenus :",
+                "<b>Total des cr\xe9dits d'\xe9v\xe9nement obtenus :</b>",
             understand: 'Bien re\xe7u',
             user_not_found: 'Impossible de trouver le joueur.',
             vehicle_payload: {
@@ -16232,7 +16323,7 @@ Object.values ||
         javascript: {
             alarm: '\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c',
             alliance_event_pay_out_message:
-                'This is shared between every member who took part in the event and will be paid out when the alliance event is finished.',
+                'Complete all missions with your alliance to earn a bonus!',
             alliance_event_resource: {
                 carnival: {
                     currency: 'Event Tickets',
@@ -16277,6 +16368,12 @@ Object.values ||
             current_reward_for_you:
                 '<b>Your current reward:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: '\u0434\u043d.',
+            event: {
+                alliance_missions_completed:
+                    '<b>Completed Missions:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Participated Missions:</b>  %{completedMissions}',
+            },
             few_seconds:
                 '\u0447\u0435\u0440\u0435\u0437 \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0441\u0435\u043a\u0443\u043d\u0434',
             finish_in:
@@ -16313,6 +16410,8 @@ Object.values ||
             patient: '\u041f\u0430\u0446\u0438\u0435\u043d\u0442',
             patient_untouched:
                 '\u041d\u0435 \u043f\u043e\u043b\u0443\u0447\u0438\u0432\u0448\u0438\u0435 \u043f\u043e\u043c\u043e\u0449\u0438 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u044b',
+            payout_received:
+                '<b>Your have received:</b> %{credits} Credits & %{event_currency} Event Credits',
             poi_delete:
                 '\u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b, \u0447\u0442\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043b\u0438\u0442\u044c \u044d\u0442\u0443 \u0432\u0430\u0436\u043d\u0443\u044e \u0442\u043e\u0447\u043a\u0443: %{caption}?',
             pump_speed_approaching: 'Approaching: %{amount} GPM',
@@ -16346,10 +16445,11 @@ Object.values ||
             time_left: '\u041e\u0441\u0442\u0430\u043b\u043e\u0441\u044c:',
             to_building:
                 '\u0421\u043c\u043e\u0442\u0440\u0435\u0442\u044c \u0437\u0434\u0430\u043d\u0438\u0435',
+            to_event: 'Back to events',
             to_mission:
                 '\u0421\u043c\u043e\u0442\u0440\u0435\u0442\u044c \u0437\u0430\u0434\u0430\u043d\u0438\u0435',
-            total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total event credits earned:',
+            total_credits_earned: '<b>Total credits earned:</b>',
+            total_event_currency_earned: '<b>Total event credits earned:</b>',
             understand:
                 '\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c',
             user_not_found:
@@ -17216,7 +17316,7 @@ Object.values ||
         javascript: {
             alarm: 'Send ud',
             alliance_event_pay_out_message:
-                'Det deles mellem alle medlemmer, der deltog i arrangementet, og udbetales, n\xe5r alliancearrangementet er slut.',
+                'Gennemf\xf8r alle missioner med din alliance for at f\xe5 en bonus!',
             alliance_event_resource: {
                 carnival: {
                     currency: 'Event Tickets',
@@ -17264,6 +17364,12 @@ Object.values ||
             current_reward_for_you:
                 '<b>Din nuv\xe6rende bel\xf8nning:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'dage',
+            event: {
+                alliance_missions_completed:
+                    '<b>Afsluttede missioner:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Deltagende missioner:</b> %{completedMissions}',
+            },
             few_seconds: 'om f\xe5 sekunder',
             finish_in: 'F\xe6rdig om:',
             foam_approaching: 'P\xe5 Vej: %{amount} l.',
@@ -17288,6 +17394,8 @@ Object.values ||
             now: 'Nu',
             patient: 'Patient',
             patient_untouched: 'Ubehandlede patienter',
+            payout_received:
+                '<b>Du har modtaget:</b> %{credits} Credits & %{event_currency} Event Credits',
             poi_delete:
                 'Er du sikker p\xe5, at du vil slette interessepunktet: %{caption}?',
             pump_speed_approaching: 'P\xe5 vej: %{amount} l/min',
@@ -17315,9 +17423,11 @@ Object.values ||
             start_username: 'Begynder:',
             time_left: 'Tid tilbage:',
             to_building: 'Se bygning',
+            to_event: 'Tilbage til begivenheder',
             to_mission: 'Se mission',
-            total_credits_earned: 'Samlet antal optjente credits:',
-            total_event_currency_earned: 'Samlet antal optjente event-point:',
+            total_credits_earned: '<b>Samlet antal optjente credits:</b>',
+            total_event_currency_earned:
+                '<b>Samlet antal optjente event-point:</b>',
             understand: 'Forst\xe5et',
             user_not_found: 'Spilleren blev ikke fundet',
             vehicle_payload: {
@@ -18097,7 +18207,7 @@ Object.values ||
         javascript: {
             alarm: 'Send ut',
             alliance_event_pay_out_message:
-                'Dette deles mellom alle medlemmene som deltok i arrangementet, og utbetales n\xe5r alliansearrangementet er ferdig.',
+                'Fullf\xf8r alle oppdrag med alliansen din for \xe5 tjene en bonus!',
             alliance_event_resource: {
                 carnival: {
                     currency: 'Event Tickets',
@@ -18147,6 +18257,12 @@ Object.values ||
             current_reward_for_you:
                 '<b>Din n\xe5v\xe6rende bel\xf8nning:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'dager',
+            event: {
+                alliance_missions_completed:
+                    '<b>Fullf\xf8rte oppdrag:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Deltok i oppdragene:</b> %{completedMissions}',
+            },
             few_seconds: 'om f\xe5 sekunder',
             finish_in: 'Fullf\xf8r om:',
             foam_approaching: 'P\xe5 vei: %{amount} l.',
@@ -18171,6 +18287,8 @@ Object.values ||
             now: 'N\xe5',
             patient: 'Pasient',
             patient_untouched: 'Ubehandlede pasienter',
+            payout_received:
+                '<b>Du har mottatt:</b> %{credits} Credits & %{event_currency} Event Credits',
             poi_delete:
                 'Er du sikker p\xe5 at du vil slette interessepunktet %{caption}?',
             pump_speed_approaching: 'N\xe6rmer seg: %{amount} l/min',
@@ -18198,10 +18316,11 @@ Object.values ||
             start_username: 'Starter:',
             time_left: 'Gjenst\xe5ende tid:',
             to_building: 'Vis bygning',
+            to_event: 'Tilbake til arrangementer',
             to_mission: 'Vis oppdrag',
-            total_credits_earned: '"Totalt opptjente kreditter',
+            total_credits_earned: '<b>Totalt opptjente kreditter:</b>',
             total_event_currency_earned:
-                'Totalt antall opptjente arrangementspoeng:',
+                '<b>Totalt antall opptjente arrangementspoeng:</b>',
             understand: 'Bekreft',
             user_not_found: 'Spilleren ble ikke funnet.',
             vehicle_payload: {
@@ -18983,7 +19102,7 @@ Object.values ||
         javascript: {
             alarm: 'V\xfdjezd',
             alliance_event_pay_out_message:
-                'Tato \u010d\xe1stka se rozd\u011bl\xed mezi v\u0161echny \u010dleny, kte\u0159\xed se akce z\xfa\u010dastnili, a bude vyplacena po skon\u010den\xed akce aliance.',
+                'Dokon\u010dete v\u0161echny mise se svou alianc\xed a z\xedskejte bonus!',
             alliance_event_resource: {
                 carnival: {
                     currency: 'Event Tickets',
@@ -19033,6 +19152,12 @@ Object.values ||
             current_reward_for_you:
                 '<b>Va\u0161e aktu\xe1ln\xed odm\u011bna:</b> %{credits} kredit\u016f a %{event_currency} kredit\u016f za ud\xe1losti.',
             days: 'd',
+            event: {
+                alliance_missions_completed:
+                    '<b>Spln\u011bn\xe9 mise:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Z\xfa\u010dastn\u011bn\xe9 mise:</b> %{completedMissions}',
+            },
             few_seconds: 'za p\xe1r sekund',
             finish_in: 'Konec za:',
             foam_approaching: 'Na m\xedst\u011b: %{amount} l',
@@ -19057,6 +19182,8 @@ Object.values ||
             now: 'Te\u010f',
             patient: 'Pacient',
             patient_untouched: 'Neo\u0161et\u0159en\xed pacienti',
+            payout_received:
+                '<b>Va\u0161e odm\u011bna:</b> %{credits} kredit\u016f a %{event_currency} kredit\u016f za ud\xe1losti.',
             poi_delete: 'Opravdu chcete odstranit bod z\xe1jmu: %{caption}?',
             pump_speed_approaching: 'P\u0159ibl\xed\u017een\xed: %{amount} l',
             pump_speed_missing: 'Chyb\xed: %{amount} l',
@@ -19087,11 +19214,12 @@ Object.values ||
             start_username: 'Zah\xe1jil u\u017eivatel:',
             time_left: 'Zb\xfdvaj\xedc\xed \u010das:',
             to_building: 'Zobrazit budovu',
+            to_event: 'Zp\u011bt na ud\xe1losti',
             to_mission: 'Zobrazit misi',
             total_credits_earned:
-                'Celkov\xfd po\u010det z\xedskan\xfdch kredit\u016f:',
+                '<b>Celkov\xfd po\u010det z\xedskan\xfdch kredit\u016f:</b>',
             total_event_currency_earned:
-                'Celkov\xfd po\u010det z\xedskan\xfdch kredit\u016f za ud\xe1lost:',
+                '<b>Celkov\xfd po\u010det z\xedskan\xfdch kredit\u016f za ud\xe1lost:</b>',
             understand: 'OK',
             user_not_found: 'Hr\xe1\u010d nebyl nalezen.',
             vehicle_payload: {
@@ -19884,7 +20012,7 @@ Object.values ||
         javascript: {
             alarm: 'Sevk Et',
             alliance_event_pay_out_message:
-                'This is shared between every member who took part in the event and will be paid out when the alliance event is finished.',
+                'Complete all missions with your alliance to earn a bonus!',
             alliance_event_resource: {
                 carnival: {
                     currency: 'Event Tickets',
@@ -19929,6 +20057,12 @@ Object.values ||
             current_reward_for_you:
                 '<b>Your current reward:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'g\xfcn',
+            event: {
+                alliance_missions_completed:
+                    '<b>Completed Missions:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Participated Missions:</b>  %{completedMissions}',
+            },
             few_seconds: 'birka\xe7 saniyede',
             finish_in: 'Bitir:',
             foam_approaching: 'Approaching: %{amount} gal.',
@@ -19953,6 +20087,8 @@ Object.values ||
             now: '\u015eimdi',
             patient: 'Hasta',
             patient_untouched: 'Tedavi edilmeyen hastalar',
+            payout_received:
+                '<b>Your have received:</b> %{credits} Credits & %{event_currency} Event Credits',
             poi_delete:
                 '%{caption} \u0130lgili Alan\u0131n\u0131 silmek istedi\u011finden emin misin?',
             pump_speed_approaching: 'Approaching: %{amount} GPM',
@@ -19980,9 +20116,10 @@ Object.values ||
             start_username: 'Ba\u015flatan:',
             time_left: 'Kalan s\xfcre:',
             to_building: 'Yap\u0131y\u0131 G\xf6r\xfcnt\xfcle',
+            to_event: 'Back to events',
             to_mission: 'G\xf6revi G\xf6r\xfcnt\xfcle',
-            total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total event credits earned:',
+            total_credits_earned: '<b>Total credits earned:</b>',
+            total_event_currency_earned: '<b>Total event credits earned:</b>',
             understand: 'Onayla',
             user_not_found: 'Oyuncu bulunamad\u0131.',
             vehicle_payload: {
@@ -20764,7 +20901,7 @@ Object.values ||
         javascript: {
             alarm: 'Despachar',
             alliance_event_pay_out_message:
-                'Este montante \xe9 partilhado entre todos os membros que participaram no evento e ser\xe1 pago quando o evento da alian\xe7a terminar.',
+                'Complete todas as miss\xf5es com a sua alian\xe7a para ganhar um b\xf3nus!',
             alliance_event_resource: {
                 carnival: {
                     currency: 'Event Tickets',
@@ -20814,6 +20951,12 @@ Object.values ||
             current_reward_for_you:
                 '<b>A sua recompensa atual:</b> %{credits} Cr\xe9ditos & %{event_currency} Cr\xe9ditos de Evento',
             days: 'dias',
+            event: {
+                alliance_missions_completed:
+                    '<b>Miss\xf5es conclu\xeddas:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Miss\xf5es Participadas:</b> %{completedMissions}',
+            },
             few_seconds: 'em alguns segundos',
             finish_in: 'Finaliza em:',
             foam_approaching: 'A caminho do TO: %{amount} l.',
@@ -20838,6 +20981,8 @@ Object.values ||
             now: 'Agora',
             patient: 'Paciente',
             patient_untouched: 'Pacientes n\xe3o tratados',
+            payout_received:
+                '<b>Recebeu:</b> %{credits} Cr\xe9ditos & %{event_currency} Cr\xe9ditos de evento',
             poi_delete: 'Tem certeza de que quer apagar o PDI: %{caption}?',
             pump_speed_approaching: 'A Caminho do TO: %{amount} l/min',
             pump_speed_missing: 'Em falta no TO: %{amount} l/min',
@@ -20865,10 +21010,11 @@ Object.values ||
             start_username: 'Iniciante:',
             time_left: 'Tempo restante:',
             to_building: 'Ver edif\xedcio',
+            to_event: 'Voltar aos eventos',
             to_mission: 'Ver miss\xe3o',
-            total_credits_earned: 'Total de cr\xe9ditos obtidos:',
+            total_credits_earned: '<b>Total de cr\xe9ditos obtidos:</b>',
             total_event_currency_earned:
-                'Total de cr\xe9ditos de eventos obtidos:',
+                '<b>Total de cr\xe9ditos de eventos obtidos:</b>',
             understand: 'Reconhecer',
             user_not_found: 'O jogador n\xe3o foi encontrado.',
             vehicle_payload: {
@@ -21648,7 +21794,7 @@ Object.values ||
         javascript: {
             alarm: 'Despachar',
             alliance_event_pay_out_message:
-                'This is shared between every member who took part in the event and will be paid out when the alliance event is finished.',
+                'Complete all missions with your alliance to earn a bonus!',
             alliance_event_resource: {
                 carnival: {
                     currency: 'Event Tickets',
@@ -21693,6 +21839,12 @@ Object.values ||
             current_reward_for_you:
                 '<b>Your current reward:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'dias',
+            event: {
+                alliance_missions_completed:
+                    '<b>Completed Missions:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Participated Missions:</b>  %{completedMissions}',
+            },
             few_seconds: 'em alguns segundos',
             finish_in: 'Finaliza em:',
             foam_approaching: 'Se aproximando: %{amount} l.',
@@ -21717,6 +21869,8 @@ Object.values ||
             now: 'Agora',
             patient: 'Paciente',
             patient_untouched: 'Pacientes n\xe3o tratados',
+            payout_received:
+                '<b>Your have received:</b> %{credits} Credits & %{event_currency} Event Credits',
             poi_delete: 'Tem certeza de que quer apagar o PDI: %{caption}?',
             pump_speed_approaching: 'Approaching: %{amount} GPM',
             pump_speed_missing: 'Missing: %{amount} GPM',
@@ -21744,9 +21898,10 @@ Object.values ||
             start_username: 'Iniciante:',
             time_left: 'Tempo restante:',
             to_building: 'Ver edif\xedcio',
+            to_event: 'Back to events',
             to_mission: 'Ver miss\xe3o',
-            total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total event credits earned:',
+            total_credits_earned: '<b>Total credits earned:</b>',
+            total_event_currency_earned: '<b>Total event credits earned:</b>',
             understand: 'Reconhecer',
             user_not_found: 'O jogador n\xe3o foi encontrado.',
             vehicle_payload: {
@@ -22587,7 +22742,7 @@ Object.values ||
         javascript: {
             alarm: '\u0412\u0456\u0434\u043f\u0440\u0430\u0432\u0438\u0442\u0438',
             alliance_event_pay_out_message:
-                'This is shared between every member who took part in the event and will be paid out when the alliance event is finished.',
+                'Complete all missions with your alliance to earn a bonus!',
             alliance_event_resource: {
                 carnival: {
                     currency: 'Event Tickets',
@@ -22632,6 +22787,12 @@ Object.values ||
             current_reward_for_you:
                 '<b>Your current reward:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: '\u0434\u043d.',
+            event: {
+                alliance_missions_completed:
+                    '<b>Completed Missions:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Participated Missions:</b>  %{completedMissions}',
+            },
             few_seconds:
                 '\u0447\u0435\u0440\u0435\u0437 \u0434\u0435\u043a\u0456\u043b\u044c\u043a\u0430 \u0441\u0435\u043a\u0443\u043d\u0434',
             finish_in:
@@ -22665,6 +22826,8 @@ Object.values ||
             patient: '\u041f\u0430\u0446\u0456\u0454\u043d\u0442',
             patient_untouched:
                 '\u041d\u0435\u0432\u0438\u043b\u0456\u043a\u0443\u0432\u0430\u043d\u0456 \u043f\u0430\u0446\u0456\u0454\u043d\u0442\u0438',
+            payout_received:
+                '<b>Your have received:</b> %{credits} Credits & %{event_currency} Event Credits',
             poi_delete:
                 '\u0414\u0456\u0439\u0441\u043d\u043e \u0432\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u0432\u0430\u0436\u043b\u0438\u0432\u0443 \u0442\u043e\u0447\u043a\u0443: %{caption}?',
             pump_speed_approaching: 'Approaching: %{amount} GPM',
@@ -22700,10 +22863,11 @@ Object.values ||
                 '\u0417\u0430\u043b\u0438\u0448\u0438\u043b\u043e\u0441\u044f \u0447\u0430\u0441\u0443:',
             to_building:
                 '\u041f\u0435\u0440\u0435\u0433\u043b\u044f\u0434 \u0431\u0443\u0434\u0456\u0432\u043b\u0456',
+            to_event: 'Back to events',
             to_mission:
                 '\u041f\u0435\u0440\u0435\u0433\u043b\u044f\u0434 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f',
-            total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total event credits earned:',
+            total_credits_earned: '<b>Total credits earned:</b>',
+            total_event_currency_earned: '<b>Total event credits earned:</b>',
             understand: '\u0412\u0438\u0437\u043d\u0430\u0442\u0438',
             user_not_found:
                 '\u0413\u0440\u0430\u0432\u0446\u044f \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e.',
@@ -23559,7 +23723,7 @@ Object.values ||
         javascript: {
             alarm: 'Enviar',
             alliance_event_pay_out_message:
-                'This is shared between every member who took part in the event and will be paid out when the alliance event is finished.',
+                'Complete all missions with your alliance to earn a bonus!',
             alliance_event_resource: {
                 carnival: {
                     currency: 'Event Tickets',
@@ -23604,6 +23768,12 @@ Object.values ||
             current_reward_for_you:
                 '<b>Your current reward:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'd\xedas',
+            event: {
+                alliance_missions_completed:
+                    '<b>Completed Missions:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Participated Missions:</b>  %{completedMissions}',
+            },
             few_seconds: 'en pocos segundos',
             finish_in: 'Termina en:',
             foam_approaching: 'Approaching: %{amount} gal.',
@@ -23628,6 +23798,8 @@ Object.values ||
             now: 'Ahora',
             patient: 'Paciente',
             patient_untouched: 'Pacientes no tratados',
+            payout_received:
+                '<b>Your have received:</b> %{credits} Credits & %{event_currency} Event Credits',
             poi_delete: '\xbfSeguro que quieres eliminar el PI %{caption}?',
             pump_speed_approaching: 'Approaching: %{amount} GPM',
             pump_speed_missing: 'Missing: %{amount} GPM',
@@ -23655,9 +23827,10 @@ Object.values ||
             start_username: 'Usuario:',
             time_left: 'Tiempo restante:',
             to_building: 'Ver edificio',
+            to_event: 'Back to events',
             to_mission: 'Ver misi\xf3n',
-            total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total event credits earned:',
+            total_credits_earned: '<b>Total credits earned:</b>',
+            total_event_currency_earned: '<b>Total event credits earned:</b>',
             understand: 'Recibido',
             user_not_found: 'No se ha encontrado al jugador.',
             vehicle_payload: {
@@ -24474,7 +24647,7 @@ Object.values ||
         javascript: {
             alarm: '\u6307\u4ee4',
             alliance_event_pay_out_message:
-                '\u3053\u308c\u306f\u30a4\u30d9\u30f3\u30c8\u306b\u53c2\u52a0\u3057\u305f\u3059\u3079\u3066\u306e\u30e1\u30f3\u30d0\u30fc\u3067\u5171\u6709\u3055\u308c\u3001\u540c\u76df\u30a4\u30d9\u30f3\u30c8\u304c\u7d42\u4e86\u3057\u305f\u6642\u70b9\u3067\u652f\u6255\u308f\u308c\u308b\u3002',
+                '\u30dc\u30fc\u30ca\u30b9\u3092\u7372\u5f97\u3059\u308b\u305f\u3081\u306b\u3001\u540c\u76df\u3067\u3059\u3079\u3066\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u5b8c\u4e86\u3059\u308b\uff01',
             alliance_event_resource: {
                 carnival: {
                     currency: 'Event Tickets',
@@ -24529,6 +24702,12 @@ Object.values ||
             current_reward_for_you:
                 '<b>\u73fe\u5728\u306e\u5831\u916c\uff1a</b> %{credits} \u30af\u30ec\u30b8\u30c3\u30c8 & %{event_currency} \u30a4\u30d9\u30f3\u30c8\u30af\u30ec\u30b8\u30c3\u30c8',
             days: '\u65e5',
+            event: {
+                alliance_missions_completed:
+                    '<b>\u5b8c\u4e86\u3057\u305f\u30df\u30c3\u30b7\u30e7\u30f3:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>\u53c2\u52a0\u3057\u305f\u30df\u30c3\u30b7\u30e7\u30f3</b> %{completedMissions}',
+            },
             few_seconds: '\u6570\u79d2\u5f8c',
             finish_in: '\u7d42\u4e86\u307e\u3067\uff1a',
             foam_approaching:
@@ -24558,6 +24737,8 @@ Object.values ||
             patient: '\u60a3\u8005',
             patient_untouched:
                 '\u6cbb\u7642\u3092\u53d7\u3051\u3066\u3044\u306a\u3044\u60a3\u8005',
+            payout_received:
+                '<b>\u5831\u916c\uff1a</b> %{credits} \u30af\u30ec\u30b8\u30c3\u30c8 & %{event_currency} \u30a4\u30d9\u30f3\u30c8\u30af\u30ec\u30b8\u30c3\u30c8',
             poi_delete:
                 '\u3053\u306e\u5230\u7740\u5730\u70b9\u300c\uff1a%{caption}\u300d\u3092\u524a\u9664\u3057\u307e\u3059\u304b\uff1f',
             pump_speed_approaching:
@@ -24591,11 +24772,12 @@ Object.values ||
             start_username: '\u30b9\u30bf\u30fc\u30bf\u30fc\uff1a',
             time_left: '\u6b8b\u308a\u6642\u9593\uff1a',
             to_building: '\u5efa\u7269\u3092\u898b\u308b',
+            to_event: '\u30a4\u30d9\u30f3\u30c8\u306b\u623b\u308b',
             to_mission: '\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u898b\u308b',
             total_credits_earned:
-                '\u300c\u7372\u5f97\u3057\u305f\u30af\u30ec\u30b8\u30c3\u30c8\u306e\u5408\u8a08\u300d',
+                '<b>\u300c\u7372\u5f97\u3057\u305f\u30af\u30ec\u30b8\u30c3\u30c8\u306e\u5408\u8a08\u300d</b>',
             total_event_currency_earned:
-                '\u7372\u5f97\u3057\u305f\u30a4\u30d9\u30f3\u30c8\u30fb\u30af\u30ec\u30b8\u30c3\u30c8\u306e\u5408\u8a08\uff1a',
+                '<b>\u7372\u5f97\u3057\u305f\u30a4\u30d9\u30f3\u30c8\u30fb\u30af\u30ec\u30b8\u30c3\u30c8\u306e\u5408\u8a08\uff1a</b>',
             understand: '\u627f\u8a8d',
             user_not_found:
                 '\u30d7\u30ec\u30a4\u30e4\u30fc\u304c\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f\u3002',
@@ -25439,7 +25621,7 @@ Object.values ||
         javascript: {
             alarm: '\ud30c\uacac',
             alliance_event_pay_out_message:
-                '\uc774\ub294 \uc774\ubca4\ud2b8\uc5d0 \ucc38\uc5ec\ud55c \ubaa8\ub4e0 \ud68c\uc6d0\uc5d0\uac8c \uacf5\uc720\ub418\uba70, \uc81c\ud734 \uc774\ubca4\ud2b8\uac00 \uc885\ub8cc\ub418\uba74 \uc9c0\uae09\ub429\ub2c8\ub2e4.',
+                '\ub3d9\ub9f9\uacfc \ud568\uaed8 \ubaa8\ub4e0 \ubbf8\uc158\uc744 \uc644\ub8cc\ud558\uace0 \ubcf4\ub108\uc2a4\ub97c \ud68d\ub4dd\ud558\uc138\uc694!',
             alliance_event_resource: {
                 carnival: {
                     currency: 'Event Tickets',
@@ -25489,6 +25671,12 @@ Object.values ||
             current_reward_for_you:
                 '<b>\ud604\uc7ac \ubcf4\uc0c1:</b> %{credits} \ud06c\ub808\ub527 \ubc0f %{event_currency} \uc774\ubca4\ud2b8 \ud06c\ub808\ub527',
             days: '\uc77c',
+            event: {
+                alliance_missions_completed:
+                    '<b>Completed Missions:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Participated Missions:</b>  %{completedMissions}',
+            },
             few_seconds: '\uba87 \ucd08 \uc548\uc5d0',
             finish_in: '\uc644\ub8cc\uae4c\uc9c0:',
             foam_approaching: '\uc811\uadfc \uc911: %{amount}\ub9ac\ud130',
@@ -25516,6 +25704,8 @@ Object.values ||
             patient: '\ud658\uc790',
             patient_untouched:
                 '\uce58\ub8cc\ubc1b\uc9c0 \uc54a\uc740 \ud658\uc790',
+            payout_received:
+                '<b>\ud604\uc7ac \ubcf4\uc0c1:</b> %{credits} \ud06c\ub808\ub527 \ubc0f %{event_currency} \uc774\ubca4\ud2b8 \ud06c\ub808\ub527',
             poi_delete:
                 '\uc774 \uad00\uc2ec \uc9c0\uc5ed(%{caption})\uc744(\ub97c) \uc0ad\uc81c\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?',
             pump_speed_approaching:
@@ -25546,10 +25736,12 @@ Object.values ||
             start_username: '\uc2dc\uc791\ud55c \uc0ac\uc6a9\uc790:',
             time_left: '\ub0a8\uc740 \uc2dc\uac04:',
             to_building: '\uac74\ubb3c \ubcf4\uae30',
+            to_event: 'Back to events',
             to_mission: '\uc784\ubb34 \ubcf4\uae30',
-            total_credits_earned: '\ucd1d \ud68d\ub4dd \ud06c\ub808\ub527 ',
+            total_credits_earned:
+                '<b>\ucd1d \ud68d\ub4dd \ud06c\ub808\ub527 </b>',
             total_event_currency_earned:
-                '\ud68d\ub4dd\ud55c \ucd1d \uc774\ubca4\ud2b8 \ud06c\ub808\ub527:',
+                '<b>\ud68d\ub4dd\ud55c \ucd1d \uc774\ubca4\ud2b8 \ud06c\ub808\ub527:</b>',
             understand: '\ud655\uc778',
             user_not_found:
                 '\ud50c\ub808\uc774\uc5b4\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.',
@@ -26360,7 +26552,7 @@ Object.values ||
         javascript: {
             alarm: 'Trimitere',
             alliance_event_pay_out_message:
-                'This is shared between every member who took part in the event and will be paid out when the alliance event is finished.',
+                'Complete all missions with your alliance to earn a bonus!',
             alliance_event_resource: {
                 carnival: {
                     currency: 'Event Tickets',
@@ -26405,6 +26597,12 @@ Object.values ||
             current_reward_for_you:
                 '<b>Your current reward:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'zile',
+            event: {
+                alliance_missions_completed:
+                    '<b>Completed Missions:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Participated Missions:</b>  %{completedMissions}',
+            },
             few_seconds: '\xeen c\xe2teva secunde',
             finish_in: 'Termin\u0103 \xeen:',
             foam_approaching: 'Se apropie: %{amount} l.',
@@ -26429,6 +26627,8 @@ Object.values ||
             now: 'Acum',
             patient: 'Pacient',
             patient_untouched: 'Pacien\u021bi netrata\u021bi',
+            payout_received:
+                '<b>Your have received:</b> %{credits} Credits & %{event_currency} Event Credits',
             poi_delete:
                 'E\u0219ti sigur c\u0103 vrei s\u0103 \u0219tergi Punctul de interes: %{caption}?',
             pump_speed_approaching: 'Approaching: %{amount} GPM',
@@ -26458,9 +26658,10 @@ Object.values ||
             start_username: 'Starter:',
             time_left: 'Timp r\u0103mas:',
             to_building: 'Vezi cl\u0103direa',
+            to_event: 'Back to events',
             to_mission: 'Vezi misiunea',
-            total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total event credits earned:',
+            total_credits_earned: '<b>Total credits earned:</b>',
+            total_event_currency_earned: '<b>Total event credits earned:</b>',
             understand: 'Confirm\u0103',
             user_not_found: 'Juc\u0103torul nu a fost g\u0103sit.',
             vehicle_payload: {
@@ -27251,7 +27452,7 @@ Object.values ||
         javascript: {
             alarm: 'L\xe4het\xe4',
             alliance_event_pay_out_message:
-                'T\xe4m\xe4 jaetaan jokaisen tapahtumaan osallistuneen j\xe4senen kesken ja maksetaan, kun liittouman tapahtuma on p\xe4\xe4ttynyt.',
+                'Suorita kaikki teht\xe4v\xe4t liittolaisesi kanssa ansaitaksesi bonuksen!',
             alliance_event_resource: {
                 carnival: {
                     currency: 'Event Tickets',
@@ -27301,6 +27502,12 @@ Object.values ||
             current_reward_for_you:
                 '<b>T\xe4m\xe4nhetkinen palkintosi:</b> %{credits} krediittej\xe4 & %{event_currency} tapahtumakrediittej\xe4.',
             days: 'p\xe4iv\xe4\xe4',
+            event: {
+                alliance_missions_completed:
+                    '<b>Suoritetut teht\xe4v\xe4t:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Osallistuneet operaatiot:</b> %{completedMissions}',
+            },
             few_seconds: 'muutaman sekunnin kuluttua',
             finish_in: 'P\xe4\xe4ttymiseen:',
             foam_approaching: 'Matkalla: %{amount} l vaahtoa',
@@ -27325,6 +27532,8 @@ Object.values ||
             now: 'Nyt',
             patient: 'Potilas',
             patient_untouched: 'Hoitamattomat potilaat',
+            payout_received:
+                '<b>T\xe4m\xe4nhetkinen palkintosi:</b> %{credits} krediittej\xe4 & %{event_currency} tapahtumakrediittej\xe4.',
             poi_delete: 'Haluatko varmasti poistaa kohdepisteen "%{caption}"?',
             pump_speed_approaching: 'L\xe4hestym\xe4ss\xe4: %{amount} l/min',
             pump_speed_missing: 'Puuttuu: %{amount} l/min',
@@ -27351,10 +27560,11 @@ Object.values ||
             start_username: 'Aloittaja:',
             time_left: 'Aikaa j\xe4ljell\xe4:',
             to_building: 'N\xe4yt\xe4 rakennus',
+            to_event: 'Takaisin tapahtumiin',
             to_mission: 'N\xe4yt\xe4 teht\xe4v\xe4',
-            total_credits_earned: '"Ansaitut krediitit yhteens\xe4',
+            total_credits_earned: '<b>Ansaitut krediitit yhteens\xe4:</b>',
             total_event_currency_earned:
-                'Ansaitut tapahtumapisteet yhteens\xe4:',
+                '<b>Ansaitut tapahtumapisteet yhteens\xe4:</b>',
             understand: 'Kuittaa',
             user_not_found: 'Pelaajaa ei l\xf6ytynyt.',
             vehicle_payload: {
@@ -28135,7 +28345,7 @@ Object.values ||
         javascript: {
             alarm: 'Vysla\u0165',
             alliance_event_pay_out_message:
-                'This is shared between every member who took part in the event and will be paid out when the alliance event is finished.',
+                'Complete all missions with your alliance to earn a bonus!',
             alliance_event_resource: {
                 carnival: {
                     currency: 'Event Tickets',
@@ -28180,6 +28390,12 @@ Object.values ||
             current_reward_for_you:
                 '<b>Your current reward:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'dn\xed',
+            event: {
+                alliance_missions_completed:
+                    '<b>Completed Missions:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Participated Missions:</b>  %{completedMissions}',
+            },
             few_seconds: 'o nieko\u013eko sek\xfand',
             finish_in: 'Koniec:',
             foam_approaching: 'Na ceste %{amount} l.',
@@ -28204,6 +28420,8 @@ Object.values ||
             now: 'Teraz',
             patient: 'Pacient',
             patient_untouched: 'Nelie\u010den\xed pacienti',
+            payout_received:
+                '<b>Your have received:</b> %{credits} Credits & %{event_currency} Event Credits',
             poi_delete: 'Naozaj chcete vymaza\u0165 POI: %{caption}?',
             pump_speed_approaching: 'Approaching: %{amount} GPM',
             pump_speed_missing: 'Missing: %{amount} GPM',
@@ -28232,9 +28450,10 @@ Object.values ||
             start_username: '\u0160tart\xe9r:',
             time_left: 'Zost\xe1vaj\xfaci \u010das:',
             to_building: 'Zobrazi\u0165 budovu',
+            to_event: 'Back to events',
             to_mission: 'Zobrazi\u0165 misiu',
-            total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total event credits earned:',
+            total_credits_earned: '<b>Total credits earned:</b>',
+            total_event_currency_earned: '<b>Total event credits earned:</b>',
             understand: 'Potvrdi\u0165 pr\xedjem',
             user_not_found: 'Hr\xe1\u010d sa nena\u0161iel.',
             vehicle_payload: {
@@ -29011,7 +29230,7 @@ Object.values ||
         javascript: {
             alarm: 'Dispatch',
             alliance_event_pay_out_message:
-                'This is shared between every member who took part in the event and will be paid out when the alliance event is finished.',
+                'Complete all missions with your alliance to earn a bonus!',
             alliance_event_resource: {
                 carnival: {
                     currency: 'Event Tickets',
@@ -29056,6 +29275,12 @@ Object.values ||
             current_reward_for_you:
                 '<b>Your current reward:</b> %{credits} Credits & %{event_currency} Event Credits',
             days: 'days',
+            event: {
+                alliance_missions_completed:
+                    '<b>Completed Missions:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Participated Missions:</b>  %{completedMissions}',
+            },
             few_seconds: 'in few seconds',
             finish_in: 'Finish in:',
             foam_approaching: 'Approaching: %{amount} gal.',
@@ -29080,6 +29305,8 @@ Object.values ||
             now: 'Now',
             patient: 'Patient',
             patient_untouched: 'Untreated patients',
+            payout_received:
+                '<b>Your have received:</b> %{credits} Credits & %{event_currency} Event Credits',
             poi_delete: 'Are you sure you want to delete the POI: %{caption}?',
             pump_speed_approaching: 'Approaching: %{amount} GPM',
             pump_speed_missing: 'Missing: %{amount} GPM',
@@ -29106,9 +29333,10 @@ Object.values ||
             start_username: 'Starter:',
             time_left: 'Time left:',
             to_building: 'View Building',
+            to_event: 'Back to events',
             to_mission: 'View Mission',
-            total_credits_earned: 'Total credits earned:',
-            total_event_currency_earned: 'Total event credits earned:',
+            total_credits_earned: '<b>Total credits earned:</b>',
+            total_event_currency_earned: '<b>Total event credits earned:</b>',
             understand: 'Acknowledge',
             user_not_found: 'The player was not found.',
             vehicle_payload: {
