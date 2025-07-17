@@ -2869,47 +2869,11 @@ function buildingResetContentWhenPossible() {
 function iconAnchorCalculate(e) {
     return [e[0] / 2, e[1]];
 }
-function eventAnnounce(e) {
-    if ((window.clearTimeout(eventTimer), e.end_in > 0)) {
-        eventRunning = !0;
-        var t =
-            "<div class='alert alert-info'>" +
-            e.running_text +
-            ' ' +
-            I18n.t('javascript.finish_in') +
-            ' ' +
-            formatTime(e.end_in) +
-            '.';
-        if (
-            (null != e.start_username &&
-                (t =
-                    t +
-                    ' ' +
-                    I18n.t('javascript.start_username') +
-                    ' ' +
-                    e.start_username),
-            !0 === e.seasonal_event)
-        ) {
-            var i = e.user_credits,
-                n = e.user_event_currency,
-                s = I18n.t('javascript.not_qualified');
-            i > 0 && n > 0 && (s = I18n.t('javascript.qualified')),
-                (t += "<div id='event_info_seasonal_event_details' "),
-                showSeasonalEventDetails || (t += 'style="display: none ;"'),
-                (t += `><br>\n                              ${I18n.t('javascript.total_credits_earned')} ${e.total_credits}\n                              <br>\n                              ${I18n.t('javascript.total_event_currency_earned')} ${e.total_event_currency}\n                              <br><br>\n                              ${s}\n                              <br>\n                              ${I18n.t('javascript.current_reward_for_you', { credits: i, event_currency: n })}\n                              <br><br>\n                              ${I18n.t('javascript.alliance_event_pay_out_message')}\n                          </div>`),
-                (t += `<div class="text-right visible-xs-block">\n                                    <a id="event_info_seasonal_event_show" ${showSeasonalEventDetails ? 'style="display: none;"' : ''} href="#" onclick="showLongSeasonalEventDetailsMobile()">${I18n.t('javascript.show_more')}</a>\n                                    <a id="event_info_seasonal_event_hide" ${showSeasonalEventDetails ? '' : 'style="display: none;"'} href="#" onclick="hideLongSeasonalEventDetailsMobile()">${I18n.t('javascript.show_less')}</a>\n                             </div>`);
-        }
-        (t += '</div>'), $('#eventInfo').html(t);
-    }
-    (e.end_in = e.end_in - 1),
-        (e.start_in = e.start_in - 1),
-        e.end_in > 0 ?
-            (eventTimer = window.setTimeout(function () {
-                eventAnnounce(e);
-            }, 1e3))
-        :   ((eventRunning = !1),
-            $('#navbar-inner').removeClass('navbar-inner-event'),
-            $('#eventInfo').html(''));
+function eventAnnounce(e, t) {
+    t && (e.onTimerEnd = t), startAllianceEventIntervalUpdate(e);
+}
+function updateCompletedMissions(e) {
+    eventCompletedMissions = e;
 }
 function alliance_ignore_fms_set(e, t) {
     (alliance_ignore_fms = e) ?
@@ -3616,6 +3580,11 @@ function eventGiftUpdate(e) {
         $('#event-calendar-navbar').addClass('daily_bonus_not_taken')
     :   $('#event-calendar-navbar').removeClass('daily_bonus_not_taken');
 }
+function seasonEventGiftUpdate(e) {
+    e ?
+        $('#event-calendar-navbar').addClass('daily_bonus_not_taken')
+    :   $('#event-calendar-navbar').removeClass('daily_bonus_not_taken');
+}
 function dailyRewardsUpdate(e) {
     e ?
         $('#daily_rewards_li').addClass('daily_bonus_not_taken')
@@ -3975,7 +3944,10 @@ function distance(e, t, i, n) {
     return (final = 1e3 * (s * l)), final;
 }
 function allianceMenu(e) {
-    1 == mobile_bridge_use && mobileBridgeAdd('alliance_menu', { show: e }),
+    1 == mobile_bridge_use &&
+        mobileBridgeAdd('alliance_menu', {
+            show: e,
+        }),
         e ?
             ($('.alliance_true').show(), $('.alliance_false').hide())
         :   ($('.alliance_true').hide(), $('.alliance_false').show());
@@ -5686,6 +5658,74 @@ function allianceChatBanCountdown(e, t) {
             }, 1e3));
     }
 }
+function startAllianceEventIntervalUpdate(e) {
+    const t = new Date(e.end_at);
+    if (!isDateValid(t)) return;
+    if (Date.now() > t) return;
+    const i = `event_timer_${e.id}`;
+    stopTimer(i), updateAllianceEventInfoBox(e);
+    const n = setInterval(function () {
+        Date.now() <= t ?
+            updateAllianceEventInfoBox(e)
+        :   stopAllianceEventIntervalUpdate(i, e);
+    }, 1e3);
+    startedIntervals.set(i, n);
+}
+function updateAllianceEventInfoBox(e) {
+    eventRunning = !0;
+    const t = new Date(e.end_at),
+        i = e.grace_period,
+        n = t - Date.now();
+    let s = e.running_text;
+    e.grace_period > 0 && i > n && (s = e.bonus_text);
+    let a = '';
+    currentEventTitle && (a = `${a} <h3>${currentEventTitle}</h3>`),
+        (a = `${a} <div class='alert alert-info'> ${s}<br>${I18n.t('javascript.finish_in')} ${getFormattedDuration(n)}.`),
+        null != e.start_username &&
+            (a = `${a} <br>${I18n.t('javascript.start_username')} ${e.start_username}`),
+        !0 === e.seasonal_event && (a += `${getSeasonalEventInfoBoxBody(e)}`),
+        (a += '</div>'),
+        $('#eventInfo').html(a);
+}
+function getSeasonalEventInfoBoxBody(e) {
+    let t = "<div id='event_info_seasonal_event_details'>",
+        i = e.total_credits,
+        n = e.total_event_currency,
+        s = 0,
+        a = 0;
+    const o = e.planned_missions,
+        r = e.missions_completed_by_alliance;
+    let l = eventCompletedMissions[currentUserId];
+    l || (l = 0);
+    let c = I18n.t('javascript.not_qualified');
+    if (l > 0) {
+        c = I18n.t('javascript.qualified');
+        const e = l / r;
+        (s = Math.floor(i * e)), (a = Math.floor(n * e));
+    }
+    return (
+        (t +=
+            shortEventInfoBox ?
+                `<br>\n        <div class="flex-row justify-between">\n          <span>      \n            ${I18n.t('javascript.event.alliance_missions_completed', { completedMissionsByAlliance: r, missionsInEvent: o })}\n          </span>\n          <a id="event_info_seasonal_event_show" class="btn btn-default btn-xs lightbox-open" href="/verband/${e.id}/seasonal_event_history" >${I18n.t('javascript.show_more')}</a>\n        </div>\n      </div>`
+            :   `<br>\n      ${I18n.t('javascript.total_credits_earned')} ${i}\n      <br>\n      ${I18n.t('javascript.total_event_currency_earned')} ${n}\n      <br>\n      ${I18n.t('javascript.event.alliance_missions_completed', { completedMissionsByAlliance: r, missionsInEvent: o })}\n      <br>\n      ${I18n.t('javascript.event.alliance_missions_participated', { completedMissionsByAlliance: r, completedMissions: l })}\n      <br><br>\n      ${c}\n      <br>\n      ${I18n.t('javascript.current_reward_for_you', { credits: s, event_currency: a })}\n      <br><br>\n      ${I18n.t('javascript.alliance_event_pay_out_message')}\n      </div>`),
+        t
+    );
+}
+function openEventHistoryDetails() {}
+function stopAllianceEventIntervalUpdate(e, t) {
+    stopTimer(e),
+        (eventRunning = !1),
+        $('#navbar-inner').removeClass('navbar-inner-event'),
+        $('#eventInfo').html(''),
+        t.onTimerEnd && t.onTimerEnd();
+}
+function receivedEventPayout(e) {
+    const t = `\n  <div class="alert alert-info">\n    <button type="button" class="close" aria-label="Close" onclick="onDismissPayoutInfo();">\n        <span aria-hidden="true">&times;</span>\n    </button>\n    <span>\n        ${I18n.t('javascript.current_reward_for_you', { credits: e.credits, event_currency: e.currency })}\n    </span>\n  </div>`;
+    $('#payoutInfo').html(t);
+}
+function onDismissPayoutInfo() {
+    $('#payoutInfo').html('');
+}
 async function submitHelpshiftState(e, t) {
     var i = new FormData();
     i.append('visible', e),
@@ -6244,11 +6284,6 @@ function updateTimer(e) {
 function isDateValid(e) {
     return e instanceof Date && !isNaN(e);
 }
-var map,
-    alliance_member_buildings_show,
-    geocoder,
-    directionsService,
-    building_eval_unload;
 Object.values ||
     (Object.values = function (e) {
         return Object.keys(e).map(function (t) {
@@ -64438,7 +64473,13 @@ Object.values ||
         : 'object' == typeof module && module.exports ? (module.exports = b)
         : (e.md5 = b);
     })(this);
-var building_markers = Array(),
+var currentUserId = -1,
+    map,
+    alliance_member_buildings_show,
+    geocoder,
+    directionsService,
+    building_eval_unload,
+    building_markers = Array(),
     building_markers_cache = Array(),
     building_markers_cache_per_id = new Map(),
     building_draw_timeOut,
@@ -64485,6 +64526,9 @@ var building_markers = Array(),
     patient_timer_last_call,
     eventTimer,
     eventRunning = !1,
+    eventCompletedMissions = {},
+    currentEventTitle,
+    shortEventInfoBox = !0,
     lightbox_static = !1,
     mobile_show_vehicle = !1,
     show_vehicle = !1,
@@ -64566,10 +64610,7 @@ var lastMissionTimeoutID = null,
     hideTimeOut,
     showTimeOut,
     mission_speed;
-let showSeasonalEventDetails = !(
-        !0 === mobile_bridge_use && 4 === mobile_version
-    ),
-    client_uses_design_v2 = !0,
+let client_uses_design_v2 = !0,
     magicValueAvailableSpace = 71;
 const startedIntervals = new Map();
 $(function () {
