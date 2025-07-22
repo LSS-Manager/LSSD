@@ -1,0 +1,44 @@
+diff --git a/application.js b/application.alt.js
+index 765d453..bde0b42 100644
+--- a/application.js
++++ b/application.alt.js
+@@ -7117,8 +7117,8 @@ Object.values ||
+                 elw_police: 'Police MCV',
+                 emergency_ambulance: 'NEF oder RTH',
+                 emergency_welfare: 'Any Emergency Welfare Vehicle',
+-                energy_supply: 'NEA50 (Beliebige HiOrg)',
+-                energy_supply_2: 'NEA200 (Beliebige HiOrg)',
++                energy_supply: 'NEA50',
++                energy_supply_2: 'NEA200',
+                 fbi_bomb_tech: 'FBI Bomb Technician Vehicle',
+                 fbi_drone: 'FBI Surveillance Drone',
+                 fbi_investigation_unit: 'FBI Investigation Wagon',
+@@ -19073,10 +19073,6 @@ Object.values ||
+                 mass_casualty_equipment:
+                     'Mass Casualty Equipment or Medical Equipment Trailer',
+                 mobile_shelter: 'Mobile shelter',
+-                mountain_atv_tractive: 'Horsk\xe1 \u010dty\u0159kolka',
+-                mountain_rescue_crew: 'Horsk\xe1 z\xe1chrann\xe1 dod\xe1vka',
+-                mountain_rescue_dogs: 'sala\u0161nick\xfd pes',
+-                mountain_snow: 'Sn\u011b\u017en\xfd sk\xfatr',
+                 mtw: 'Transportn\xed t\xfdmov\xfd v\u016fz',
+                 municipal_police:
+                     'Municipal Police Car or Municipal Police Van',
+@@ -19123,9 +19119,6 @@ Object.values ||
+                     'Traffic Car, Fast Traffic Car, Traffic Motorcycle and Road Rescue',
+                 traffic_patrol: 'Any Traffic Patrol Unit',
+                 trailers: {
+-                    mountain_atv:
+-                        'P\u0159\xedv\u011bs na horskou \u010dty\u0159kolku',
+-                    mountain_snow: 'Sn\u011bhov\xfd p\u0159\xedv\u011bs',
+                     pump: 'P\u0159\xedv\u011bs pro motorov\xe9 \u010derpadlo',
+                 },
+                 turntable_ladder: 'AZ nebo AP',
+@@ -19340,7 +19333,6 @@ Object.values ||
+                 mission_positions: 'Body z\xe1jmu (BZ)',
+                 mission_positions_section: 'BZ',
+                 missions_section: 'Mise',
+-                mountain_rescue: 'Horsk\xe1 z\xe1chrann\xe1 stanice',
+                 police_copter_station_missions:
+                     'Z\xe1kladna Leteck\xe9 slu\u017eby P\u010cR',
+                 police_depot: 'Police Depot',
