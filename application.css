@@ -11774,8 +11774,8 @@ body.bigMap #chat_outer .panel-heading,
 body.bigMap #radio_outer .panel-heading {
     border: none;
     padding: 5px 5px;
-    background-color: #424242;
-    color: white;
+    background-color: #f5f5f5;
+    color: #424242;
     margin: 0 -5px 5px -5px;
     background-image: none;
     border-radius: 0;
@@ -11785,6 +11785,7 @@ body.bigMapDark #buildings_outer .panel-heading,
 body.bigMapDark #chat_outer .panel-heading,
 body.bigMapDark #radio_outer .panel-heading {
     background-image: linear-gradient(to bottom, #505050 0, #000 100%);
+    color: white;
 }
 body.bigMap #buildings_outer .panel,
 body.bigMap #chat_outer .panel,
@@ -15192,20 +15193,20 @@ body.dark .grid-container .grid-item .grid-item-text .line {
     padding-bottom: 15px;
     margin-bottom: unset;
 }
-.settings .select.optional {
-    padding-top: 7px;
-    max-width: 80%;
-}
-.settings .integer.optional {
-    width: 80%;
-    padding-top: 7px;
-}
 .settings .select-container {
     display: flex;
     flex-direction: column;
+    max-width: 80%;
+    margin-bottom: 10px;
 }
-.settings .select-container .integer.optional {
-    margin-bottom: 0;
+.settings .select-container .form-control {
+    width: 100%;
+    box-sizing: border-box;
+}
+.settings .form-control {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
 }
 .settings .btn-success {
     margin: 3px;
@@ -15213,11 +15214,12 @@ body.dark .grid-container .grid-item .grid-item-text .line {
 .settings label {
     margin-top: 10px;
 }
-.settings label .integer.optional {
-    margin-bottom: 0;
-}
 .settings .check-box-label {
     font-weight: normal;
+    max-width: 80%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 .settings .settings-tab-body {
     margin-bottom: 70px;
@@ -15306,6 +15308,207 @@ body.dark .nav-tabs > li.active > a:focus {
 }
 .mission-speed-error .btn {
     margin-top: 5px;
+}
+#design_options .grid-container-options {
+    display: grid;
+}
+#design_options .grid-container-options .grid-item-options {
+    display: grid;
+    grid: 'header' 'main';
+}
+#design_options
+    .grid-container-options
+    .grid-item-options
+    .grid-item-design-options {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 10px;
+    padding-top: 10px;
+    width: 100%;
+}
+#design_options
+    .grid-container-options
+    .grid-item-options
+    .grid-item-design-options
+    #automatic,
+#design_options
+    .grid-container-options
+    .grid-item-options
+    .grid-item-design-options
+    #default,
+#design_options
+    .grid-container-options
+    .grid-item-options
+    .grid-item-design-options
+    #light,
+#design_options
+    .grid-container-options
+    .grid-item-options
+    .grid-item-design-options
+    #dark {
+    display: flex;
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#design_options
+    .grid-container-options
+    .grid-item-options
+    .grid-item-design-options
+    #automatic
+    .line,
+#design_options
+    .grid-container-options
+    .grid-item-options
+    .grid-item-design-options
+    #default
+    .line,
+#design_options
+    .grid-container-options
+    .grid-item-options
+    .grid-item-design-options
+    #light
+    .line,
+#design_options
+    .grid-container-options
+    .grid-item-options
+    .grid-item-design-options
+    #dark
+    .line {
+    border-top: 1px solid black;
+    width: 100%;
+}
+#design_options
+    .grid-container-options
+    .grid-item-options
+    .grid-item-design-options
+    .grid-item-design-options-img {
+    grid-area: header;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    width: 100%;
+}
+#design_options
+    .grid-container-options
+    .grid-item-options
+    .grid-item-design-options
+    .grid-item-design-options-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#design_options
+    .grid-container-options
+    .grid-item-options
+    .grid-item-design-options
+    label {
+    margin-left: 10px;
+}
+#design_options .grid-container {
+    display: grid;
+}
+#design_options .grid-container .grid-item {
+    display: grid;
+    grid: 'header' 'main';
+}
+#design_options .grid-container .grid-item .grid-item-switcher {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    padding: 10px;
+    border: 2px solid #000;
+    border-radius: 8px;
+}
+#design_options .grid-container .grid-item .grid-item-switcher .line {
+    border-top: 1px solid black;
+    width: 100%;
+}
+#design_options .grid-container .grid-item .grid-item-switcher-img {
+    grid-area: header;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    width: 100%;
+}
+#design_options .grid-container .grid-item .grid-item-switcher-button {
+    grid-area: main;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-weight: bold;
+}
+#design_options .grid-container .grid-item .grid-item-design-options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding-top: 10px;
+    width: 100%;
+}
+#design_options .grid-container .grid-item .grid-item-design-options #automatic,
+#design_options .grid-container .grid-item .grid-item-design-options #default,
+#design_options .grid-container .grid-item .grid-item-design-options #light,
+#design_options .grid-container .grid-item .grid-item-design-options #dark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 10px;
+}
+#design_options
+    .grid-container
+    .grid-item
+    .grid-item-design-options
+    #automatic
+    .line,
+#design_options
+    .grid-container
+    .grid-item
+    .grid-item-design-options
+    #default
+    .line,
+#design_options
+    .grid-container
+    .grid-item
+    .grid-item-design-options
+    #light
+    .line,
+#design_options
+    .grid-container
+    .grid-item
+    .grid-item-design-options
+    #dark
+    .line {
+    border-top: 1px solid black;
+    width: 100%;
+}
+#design_options
+    .grid-container
+    .grid-item
+    .grid-item-design-options
+    .grid-item-design-options-img {
+    grid-area: header;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    width: 100%;
+}
+#design_options
+    .grid-container
+    .grid-item
+    .grid-item-design-options
+    .grid-item-design-options-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#design_options .grid-container .grid-item .grid-item-design-options label {
+    margin-left: 10px;
 }
 .dark-visible {
     display: none;
