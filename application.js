@@ -15975,6 +15975,7 @@ Object.values ||
             categories: {
                 bereitschaftspolizei: 'Po\u0159\xe1dkov\xe1 jednotka',
                 firefighting: 'Hasi\u010dsk\xfd v\u016fz',
+                mountain_rescue: 'Horsk\xfd z\xe1chran\xe1\u0159',
                 police: 'Policie',
                 rescue: 'Sanitka',
                 water_rescue: 'Vodn\xed z\xe1chrann\xe1 slu\u017eba',
@@ -16067,7 +16068,9 @@ Object.values ||
                 lf_only: 'Hasi\u010dsk\xe9 vozy',
                 long_distance_ambulance: 'Sanitka DZS',
                 mask_service_unit: 'Protiplynov\xfd automobil',
+                mountain_atv: 'Horsk\xe1 \u010dty\u0159kolka',
                 mountain_atv_tractive: 'Horsk\xe1 \u010dty\u0159kolka',
+                mountain_rescue: 'Horsk\xe1 z\xe1chrann\xe1 dod\xe1vka',
                 mountain_rescue_crew: 'Horsk\xe1 z\xe1chrann\xe1 dod\xe1vka',
                 mountain_rescue_dogs: 'sala\u0161nick\xfd pes',
                 mountain_snow: 'Sn\u011b\u017en\xfd sk\xfatr',
@@ -16287,6 +16290,7 @@ Object.values ||
                 mission_positions: 'Body z\xe1jmu (BZ)',
                 mission_positions_section: 'BZ',
                 missions_section: 'Mise',
+                mountain_missions: 'Horsk\xe1 z\xe1chrann\xe1',
                 mountain_rescue: 'Horsk\xe1 z\xe1chrann\xe1 stanice',
                 police_copter_station_missions:
                     'Z\xe1kladna Leteck\xe9 slu\u017eby P\u010cR',
@@ -21420,6 +21424,7 @@ Object.values ||
                 arff: 'Lentokentt\xe4paloauto',
                 battalion_chief_unit: 'Johtoauto',
                 boot: 'Alukset (yleinen)',
+                border_patrol: 'Mik\xe4 tahansa RVL Partioauto',
                 division_chief_unit: 'Johtokeskusauto',
                 elw1_or_elw2:
                     'johtoauto, johtokeskusauto tai johtokeskuskontti',
@@ -21666,6 +21671,8 @@ Object.values ||
                 technical_aid_organization_school: 'THW Bundesschule',
                 user_buildings: 'Omat rakennukset',
                 user_missions: 'Omat teht\xe4v\xe4t',
+                water_rescue_2: 'Rajavartioasema',
+                water_rescue_school: 'Raja- ja Merivartiokoulu',
                 water_watch: 'Vesipelastus',
                 water_watch_missions: 'Vesipelastus',
             },
