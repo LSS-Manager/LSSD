@@ -1,8 +1,22 @@
 diff --git a/application.css b/application.alt.css
-index 469bc70..7088c12 100644
+index 1216de2..7088c12 100644
 --- a/application.css
 +++ b/application.alt.css
-@@ -11774,8 +11774,8 @@ body.bigMap #chat_outer .panel-heading,
+@@ -10139,12 +10139,9 @@ body.bigMap #main_navbar {
+     font-size: 12px;
+     margin-right: 5px;
+     padding: 0.2em 0.6em 0.3em;
+-    word-break: break-word;
++    word-break: break-all;
+     white-space: wrap;
+ }
+-.vehicle_caption {
+-    word-break: break-word;
+-}
+ .building_list_fms {
+     display: inline;
+     padding: 0.2em 0.6em 0.3em;
+@@ -11777,8 +11774,8 @@ body.bigMap #chat_outer .panel-heading,
  body.bigMap #radio_outer .panel-heading {
      border: none;
      padding: 5px 5px;
@@ -13,7 +27,7 @@ index 469bc70..7088c12 100644
      margin: 0 -5px 5px -5px;
      background-image: none;
      border-radius: 0;
-@@ -11785,7 +11785,6 @@ body.bigMapDark #buildings_outer .panel-heading,
+@@ -11788,7 +11785,6 @@ body.bigMapDark #buildings_outer .panel-heading,
  body.bigMapDark #chat_outer .panel-heading,
  body.bigMapDark #radio_outer .panel-heading {
      background-image: linear-gradient(to bottom, #505050 0, #000 100%);
@@ -21,7 +35,16 @@ index 469bc70..7088c12 100644
  }
  body.bigMap #buildings_outer .panel,
  body.bigMap #chat_outer .panel,
-@@ -15193,20 +15192,20 @@ body.dark .grid-container .grid-item .grid-item-text .line {
+@@ -13622,7 +13618,7 @@ a.ui-button:active,
+     display: block;
+     width: 100%;
+     margin-bottom: 0;
+-    word-break: break-word;
++    word-break: break-all;
+ }
+ .searchHelperInvisble,
+ .mission_alliance_distance_hide,
+@@ -15196,20 +15192,20 @@ body.dark .grid-container .grid-item .grid-item-text .line {
      padding-bottom: 15px;
      margin-bottom: unset;
  }
@@ -52,7 +75,7 @@ index 469bc70..7088c12 100644
  }
  .settings .btn-success {
      margin: 3px;
-@@ -15214,12 +15213,11 @@ body.dark .grid-container .grid-item .grid-item-text .line {
+@@ -15217,12 +15213,11 @@ body.dark .grid-container .grid-item .grid-item-text .line {
  .settings label {
      margin-top: 10px;
  }
@@ -68,7 +91,7 @@ index 469bc70..7088c12 100644
  }
  .settings .settings-tab-body {
      margin-bottom: 70px;
-@@ -15309,207 +15307,6 @@ body.dark .nav-tabs > li.active > a:focus {
+@@ -15312,207 +15307,6 @@ body.dark .nav-tabs > li.active > a:focus {
  .mission-speed-error .btn {
      margin-top: 5px;
  }
