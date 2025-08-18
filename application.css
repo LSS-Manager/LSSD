@@ -14495,6 +14495,15 @@ a.chat-username-dark.label-default {
         margin-left: 43.75%;
     }
 }
+.vehicle_image_to_all_account {
+    margin-bottom: 0;
+}
+.vehicle_image_to_all_dc {
+    margin-bottom: 0;
+}
+.vehicle_image_to_all_station {
+    margin-bottom: 0;
+}
 .dispatch-vehicle-equipments .equipment-item label {
     font-weight: normal;
 }
@@ -15245,6 +15254,10 @@ body.dark .grid-container .grid-item .grid-item-text .line {
     top: 0;
     bottom: 0;
 }
+.red-frame {
+    border: 2px solid red;
+    padding: 5px;
+}
 .mission-speed-dropdown-menu {
     min-width: initial;
 }
@@ -15299,6 +15312,9 @@ body.dark .nav-tabs > li.active > a:focus {
     margin-left: auto;
     margin-right: auto;
 }
+#vehicle_graphic_for_the_same_type .bootstrap-select {
+    width: unset !important;
+}
 .vehicle-mode-label {
     display: flex;
     align-items: center;
@@ -15311,6 +15327,9 @@ body.dark .nav-tabs > li.active > a:focus {
 }
 .mission-speed-error .btn {
     margin-top: 5px;
+}
+#vehicle_graphic_for_the_same_type .bootstrap-select {
+    width: unset !important;
 }
 #design_options .grid-container-options {
     display: grid;

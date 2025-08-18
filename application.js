@@ -6299,6 +6299,27 @@ function updateTimer(e) {
 function isDateValid(e) {
     return e instanceof Date && !isNaN(e);
 }
+function displayJsAlertInfo(e, t, i) {
+    if ('' === t) return;
+    let n = 'info';
+    switch (e) {
+        case 'notice':
+        case 'success':
+            n = 'success';
+            break;
+        case 'warning':
+            n = 'warning';
+            break;
+        case 'alert':
+        case 'error':
+            n = 'danger';
+            break;
+        default:
+            n = 'info';
+    }
+    const s = `\n  <div class="alert alert-${n} alert-dismissible js-alert" role="alert">\n    <button type="button" class="close" data-dismiss="alert" aria-label="Close">\n        <span aria-hidden="true">&times;</span>\n    </button>\n    <span>\n        ${t}\n    </span>\n  </div>`;
+    i && $('.js-alert').remove(), $('#infoBox').append(s);
+}
 Object.values ||
     (Object.values = function (e) {
         return Object.keys(e).map(function (t) {
