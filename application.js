@@ -21667,7 +21667,7 @@ Object.values ||
                 buildings_section: 'Asemat',
                 clinic_missions: 'Klinikka',
                 coastal_rescue: 'Rajavartiolaitos',
-                coastal_rescue_missions: 'Rajavartiolaitos',
+                coastal_rescue_missions: 'Meripelastus',
                 dispatch_center_missions: 'H\xe4t\xe4keskus',
                 fire_school_missions: 'Pelastajaoppilaitos',
                 firehouse_missions: 'Paloasema',

@@ -1,5 +1,5 @@
 diff --git a/application.js b/application.alt.js
-index c70351f..bde0b42 100644
+index 691056b..bde0b42 100644
 --- a/application.js
 +++ b/application.alt.js
 @@ -27,8 +27,8 @@ function massMissionMarkerAdd(e) {
@@ -12092,9 +12092,12 @@ index c70351f..bde0b42 100644
              vehicles_not_visible: 'Ajoneuvoja ei n\xe4ytet\xe4. ',
              water_approaching: 'Matkalla: %{amount} l vett\xe4',
              water_missing: 'Puuttuu: %{amount} l vett\xe4',
-@@ -21669,6 +27662,8 @@ Object.values ||
+@@ -21667,8 +27660,10 @@ Object.values ||
+                 buildings_section: 'Asemat',
+                 clinic_missions: 'Klinikka',
                  coastal_rescue: 'Rajavartiolaitos',
-                 coastal_rescue_missions: 'Rajavartiolaitos',
+-                coastal_rescue_missions: 'Meripelastus',
++                coastal_rescue_missions: 'Rajavartiolaitos',
                  dispatch_center_missions: 'H\xe4t\xe4keskus',
 +                factory_fire_brigade_missions: 'Factory Fire Brigade',
 +                federal_police_missions: 'Federal Police Station',
