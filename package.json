@@ -1,6 +1,6 @@
 {
     "name": "lssd",
-    "packageManager": "yarn@4.9.2",
+    "packageManager": "yarn@4.9.3",
     "scripts": {
         "download": "yarn node .download.js",
         "prettier:write": "prettier --write --cache --cache-strategy content --ignore-path .prettierignore . "
