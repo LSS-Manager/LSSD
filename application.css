@@ -15590,7 +15590,16 @@ body.dark .dark-visible {
     transition: opacity 0.2s;
     z-index: 11;
 }
-.slider::-webkit-slider-thumb,
+.slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 10%;
+    background: #4caf50;
+    cursor: pointer;
+    position: relative;
+    left: var(--thumb-right, 0%);
+}
 .slider::-moz-range-thumb {
     appearance: none;
     width: 20px;

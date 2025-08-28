@@ -10,15 +10,15 @@ Für mich und andere Entwickler eine kleine Übersicht der Einsätze aller Spiel
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | File      | [application-1ef015ab89e346f583bff24b613102a26fa64cf396b94027f6eb52808289bb69.js](https://missionchief.co.uk/assets/application-1ef015ab89e346f583bff24b613102a26fa64cf396b94027f6eb52808289bb69.js) |
 | Server    | https://missionchief.co.uk                                                                                                                                                                           |
-| Time      | 2025-08-28T12:48:45.836Z                                                                                                                                                                             |
+| Time      | 2025-08-28T14:22:49.697Z                                                                                                                                                                             |
 
 ## CSS
 
 | Attribute | Value                                                                                                                                                                                                  |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| File      | [application-b52209769e7d37b8b80ce5073551ddb370848e12e708ba9f669999739b4f22e7.css](https://missionchief.co.uk/assets/application-b52209769e7d37b8b80ce5073551ddb370848e12e708ba9f669999739b4f22e7.css) |
+| File      | [application-336ea086b0fd65ef91c2148a70ef293e8fc5716478131c16f8797d86b6b92bd4.css](https://missionchief.co.uk/assets/application-336ea086b0fd65ef91c2148a70ef293e8fc5716478131c16f8797d86b6b92bd4.css) |
 | Server    | https://missionchief.co.uk                                                                                                                                                                             |
-| Time      | 2025-08-28T12:48:45.836Z                                                                                                                                                                               |
+| Time      | 2025-08-28T14:22:49.697Z                                                                                                                                                                               |
 
 ## Pretty-print
 

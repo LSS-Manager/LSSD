@@ -1,5 +1,5 @@
 diff --git a/application.css b/application.alt.css
-index 8e579b9..7088c12 100644
+index 13ee5e3..7088c12 100644
 --- a/application.css
 +++ b/application.alt.css
 @@ -10139,12 +10139,9 @@ body.bigMap #main_navbar {
@@ -339,7 +339,7 @@ index 8e579b9..7088c12 100644
  .dark-visible {
      display: none;
  }
-@@ -15574,61 +15349,6 @@ body.dark .dark-visible {
+@@ -15574,70 +15349,6 @@ body.dark .dark-visible {
  }
  .education_description_container {
      margin-top: 10px;
@@ -359,7 +359,16 @@ index 8e579b9..7088c12 100644
 -    transition: opacity 0.2s;
 -    z-index: 11;
 -}
--.slider::-webkit-slider-thumb,
+-.slider::-webkit-slider-thumb {
+-    appearance: none;
+-    width: 20px;
+-    height: 20px;
+-    border-radius: 10%;
+-    background: #4caf50;
+-    cursor: pointer;
+-    position: relative;
+-    left: var(--thumb-right, 0%);
+-}
 -.slider::-moz-range-thumb {
 -    appearance: none;
 -    width: 20px;
