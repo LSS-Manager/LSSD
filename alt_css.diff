@@ -1,5 +1,5 @@
 diff --git a/application.css b/application.alt.css
-index 3a293c2..7088c12 100644
+index 8e579b9..7088c12 100644
 --- a/application.css
 +++ b/application.alt.css
 @@ -10139,12 +10139,9 @@ body.bigMap #main_navbar {
@@ -77,11 +77,11 @@ index 3a293c2..7088c12 100644
      flex-direction: column;
 -    max-width: 80%;
 -    margin-bottom: 10px;
- }
+-}
 -.settings .select-container .form-control {
 -    width: 100%;
 -    box-sizing: border-box;
--}
+ }
 -.settings .form-control {
 -    max-width: 100%;
 -    width: 100%;
@@ -339,3 +339,65 @@ index 3a293c2..7088c12 100644
  .dark-visible {
      display: none;
  }
+@@ -15574,61 +15349,6 @@ body.dark .dark-visible {
+ }
+ .education_description_container {
+     margin-top: 10px;
+-}
+-.slider-container {
+-    position: relative;
+-}
+-.slider {
+-    width: 100%;
+-    appearance: none;
+-    height: 10px;
+-    border-radius: 1px;
+-    background: #d3d3d3;
+-    outline: none;
+-    opacity: 0.7;
+-    -webkit-transition: 0.2s;
+-    transition: opacity 0.2s;
+-    z-index: 11;
+-}
+-.slider::-webkit-slider-thumb,
+-.slider::-moz-range-thumb {
+-    appearance: none;
+-    width: 20px;
+-    height: 20px;
+-    border-radius: 10%;
+-    background: #4caf50;
+-    cursor: pointer;
+-    position: relative;
+-    left: var(--thumb-right, 0%);
+-}
+-.scale {
+-    display: flex;
+-    justify-content: space-between;
+-    font-size: 12px;
+-    color: #555;
+-    margin-top: 3px;
+-}
+-span.speed-label {
+-    position: absolute;
+-}
+-.dark .scale {
+-    color: #d3d3d3;
+-}
+-.dots {
+-    display: flex;
+-    justify-content: space-between;
+-    position: relative;
+-    z-index: 1;
+-    top: 1px;
+-}
+-.dot {
+-    width: 2px;
+-    height: 8px;
+-    background-color: black;
+-    position: absolute;
+-}
+-.fit-error-label {
+-    display: inline-block;
+ } /*!
+  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
+  *
