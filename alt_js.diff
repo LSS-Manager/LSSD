@@ -1,5 +1,5 @@
 diff --git a/application.js b/application.alt.js
-index 4ae7a8b..bde0b42 100644
+index a57a1cc..bde0b42 100644
 --- a/application.js
 +++ b/application.alt.js
 @@ -4153,35 +4153,23 @@ function hideFAQButton(e) {
@@ -111,7 +111,47 @@ index 4ae7a8b..bde0b42 100644
                  fbi_bomb_tech: 'FBI Bomb Technician Vehicle',
                  fbi_drone: 'FBI Surveillance Drone',
                  fbi_investigation_unit: 'FBI Investigation Wagon',
-@@ -18951,7 +18915,6 @@ Object.values ||
+@@ -9859,10 +9823,7 @@ Object.values ||
+                 brush_vehicle: 'Wildland fire vehicle',
+                 car_carrier: 'Een Berger-K',
+                 car_carrier_large: 'Een Berger-G',
+-                care_service_command: 'DB-PC-LOG',
+-                care_service_crew: 'DB-VZ',
+                 care_service_equipment: 'Field Kitchen',
+-                clean_service_crew: 'DB-AH',
+                 coastal_boat: 'RB-K of RB-G',
+                 coastal_guard_boat: 'Coastal Guard Boat',
+                 coastal_helicopter: 'Coastal Helicopter',
+@@ -9892,8 +9853,6 @@ Object.values ||
+                 fbi_mobile_command: 'FBI Mobile Command Center',
+                 fbi_unit: 'FBI Unit',
+                 fire_aviation: 'Fire aviation',
+-                fire_equipment_carrier: 'DB-LOG',
+-                fire_equipment_carrier_2: 'VW-LOG',
+                 fire_investigation: 'Fire Investigation Units',
+                 fire_truck: 'Tankautospuit',
+                 fireboat: 'Large Fireboat',
+@@ -9959,11 +9918,6 @@ Object.values ||
+                 nef_only: 'MMT-Auto',
+                 oil_unit: 'Milieu wagen of haakarmbak milieu',
+                 ovd_p: 'Officier van Dienst - Politie',
+-                pod: {
+-                    care_service: 'VZH',
+-                    clean_service: 'VZH\u2010AH',
+-                    fire_equipment_carrier: 'BMH-LOG',
+-                },
+                 police_boat: 'Police Boat',
+                 police_car: 'Politie Noodhulp',
+                 police_car_3: 'NH-O',
+@@ -10186,7 +10140,6 @@ Object.values ||
+                 ambulance_station_small_missions: 'Ambulance, VWS-post',
+                 building_complex: 'Gebouwencomplex',
+                 buildings_section: 'Posten',
+-                care_service_missions: 'Verzorgingssysteem',
+                 clinic_missions: 'Clinic',
+                 coastal_rescue: 'Kustwacht',
+                 coastal_rescue_missions: 'Kustwacht',
+@@ -18962,7 +18915,6 @@ Object.values ||
                  coastal_rescue: 'Coastal Rescue',
                  fbi: 'FBI & DEA',
                  firefighting: 'Hasi\u010dsk\xfd v\u016fz',
@@ -119,7 +159,7 @@ index 4ae7a8b..bde0b42 100644
                  police: 'Policie',
                  rescue: 'Sanitka',
                  search_and_rescue: 'Search and Rescue',
-@@ -19110,12 +19073,6 @@ Object.values ||
+@@ -19121,12 +19073,6 @@ Object.values ||
                  mass_casualty_equipment:
                      'Mass Casualty Equipment or Medical Equipment Trailer',
                  mobile_shelter: 'Mobile shelter',
@@ -132,7 +172,7 @@ index 4ae7a8b..bde0b42 100644
                  mtw: 'Transportn\xed t\xfdmov\xfd v\u016fz',
                  municipal_police:
                      'Municipal Police Car or Municipal Police Van',
-@@ -19162,9 +19119,6 @@ Object.values ||
+@@ -19173,9 +19119,6 @@ Object.values ||
                      'Traffic Car, Fast Traffic Car, Traffic Motorcycle and Road Rescue',
                  traffic_patrol: 'Any Traffic Patrol Unit',
                  trailers: {
@@ -142,7 +182,7 @@ index 4ae7a8b..bde0b42 100644
                      pump: 'P\u0159\xedv\u011bs pro motorov\xe9 \u010derpadlo',
                  },
                  turntable_ladder: 'AZ nebo AP',
-@@ -19379,8 +19333,6 @@ Object.values ||
+@@ -19390,8 +19333,6 @@ Object.values ||
                  mission_positions: 'Body z\xe1jmu (BZ)',
                  mission_positions_section: 'BZ',
                  missions_section: 'Mise',
@@ -151,7 +191,7 @@ index 4ae7a8b..bde0b42 100644
                  police_copter_station_missions:
                      'Z\xe1kladna Leteck\xe9 slu\u017eby P\u010cR',
                  police_depot: 'Police Depot',
-@@ -27325,7 +27277,7 @@ Object.values ||
+@@ -27336,7 +27277,7 @@ Object.values ||
                  technical_aid: 'Technical Aid',
                  tow_trucks: 'Tow Trucks',
                  traffic_police: 'Traffic Police',
@@ -160,7 +200,7 @@ index 4ae7a8b..bde0b42 100644
              },
              category: 'Luokka',
              colour: 'V\xe4ri',
-@@ -27384,8 +27336,6 @@ Object.values ||
+@@ -27395,8 +27336,6 @@ Object.values ||
                  battalion_chief_unit: 'Johtoauto',
                  bike_police: 'DB-Bike',
                  boot: 'Alukset (yleinen)',
@@ -169,7 +209,7 @@ index 4ae7a8b..bde0b42 100644
                  brush_air_command: 'Wildland Lead Planes',
                  brush_truck: 'Wildland fire engine',
                  brush_truck_1: 'Type 3 engine',
-@@ -27710,7 +27660,7 @@ Object.values ||
+@@ -27721,7 +27660,7 @@ Object.values ||
                  buildings_section: 'Asemat',
                  clinic_missions: 'Klinikka',
                  coastal_rescue: 'Rajavartiolaitos',
@@ -178,7 +218,7 @@ index 4ae7a8b..bde0b42 100644
                  dispatch_center_missions: 'H\xe4t\xe4keskus',
                  factory_fire_brigade_missions: 'Factory Fire Brigade',
                  federal_police_missions: 'Federal Police Station',
-@@ -27748,8 +27698,6 @@ Object.values ||
+@@ -27759,8 +27698,6 @@ Object.values ||
                  tow_trucks_missions: 'Tow Trucks',
                  user_buildings: 'Omat rakennukset',
                  user_missions: 'Omat teht\xe4v\xe4t',
@@ -187,7 +227,7 @@ index 4ae7a8b..bde0b42 100644
                  water_watch: 'Vesipelastus',
                  water_watch_missions: 'Vesipelastus',
              },
-@@ -64659,7 +64607,6 @@ const AAO_MULTIPLE_KEYS = [
+@@ -64670,7 +64607,6 @@ const AAO_MULTIPLE_KEYS = [
      'car_large',
  ];
  var lastMissionTimeoutID = null,
@@ -195,7 +235,7 @@ index 4ae7a8b..bde0b42 100644
      hideTimeOut,
      showTimeOut,
      mission_speed;
-@@ -64998,7 +64945,6 @@ $(function () {
+@@ -65009,7 +64945,6 @@ $(function () {
              ],
              ['elw_police', I18n.t('intervention_order.vehicles.elw_police')],
              ['bike_police', I18n.t('intervention_order.vehicles.bike_police')],
