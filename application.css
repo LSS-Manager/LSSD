@@ -15610,6 +15610,26 @@ body.dark .dark-visible {
     position: relative;
     left: var(--thumb-right, 0%);
 }
+input[type='range']:disabled::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 10%;
+    background: grey;
+    cursor: pointer;
+    position: relative;
+    left: var(--thumb-right, 0%);
+}
+input[type='range']:disabled::-moz-range-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 10%;
+    background: grey;
+    cursor: pointer;
+    position: relative;
+    left: var(--thumb-right, 0%);
+}
 .scale {
     display: flex;
     justify-content: space-between;
@@ -15638,6 +15658,21 @@ span.speed-label {
 }
 .fit-error-label {
     display: inline-block;
+}
+.tick {
+    transition: opacity 0.2s ease;
+}
+input:invalid {
+    box-shadow: 0 0 5px 1px rgba(246, 106, 106, 0.87);
+}
+input.invalid {
+    box-shadow: 0 0 5px 1px rgba(246, 106, 106, 0.87);
+}
+.wrench-holder {
+    padding-top: 0px !important;
+    padding-bottom: 2px !important;
+    padding-left: 4px !important;
+    padding-right: 4px !important;
 } /*!
  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
  *
