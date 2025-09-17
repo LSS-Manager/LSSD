@@ -1102,7 +1102,7 @@ function building_maps_draw(e) {
         i = 5e3;
     if (
         (void 0 !== e.user_id &&
-            'undefined' != typeof user_id &&
+            void 0 !== user_id &&
             user_id != e.user_id &&
             (i = 1e3),
         isMapKitMap())
@@ -1493,11 +1493,7 @@ function vehicleMarkerAdd(e) {
     }
 }
 function vehicleCreateOnMap(e, t) {
-    if (
-        'true' == t.ioverwrite ||
-        'undefined' == typeof user_id ||
-        t.user_id != user_id
-    )
+    if ('true' == t.ioverwrite || void 0 === user_id || t.user_id != user_id)
         if (void 0 !== buildingVehicleGraphicCachePerId.get(t.b)) {
             var i = buildingVehicleGraphicCachePerId.get(t.b);
             void 0 !== vehicle_graphics_sorted[i] &&
@@ -1525,7 +1521,7 @@ function vehicleCreateOnMap(e, t) {
             map.addAnnotation(e),
             (e.element.className = 'mapkit-marker'),
             e.addEventListener('select', function () {
-                'undefined' == typeof user_id ?
+                void 0 === user_id ?
                     $('#signup_from').effect('highlight', {}, 500)
                 :   lightboxOpen('/vehicles/' + t.id),
                     setTimeout(mapkitDeselectAnnotation, 1e3);
@@ -1535,7 +1531,7 @@ function vehicleCreateOnMap(e, t) {
             )),
             iconMapVehicleGenerate(t.in, t.isr, e),
             e.on('click', function () {
-                'undefined' == typeof user_id ?
+                void 0 === user_id ?
                     $('#signup_from').effect('highlight', {}, 500)
                 :   lightboxOpen('/vehicles/' + t.id);
             })),
@@ -1549,7 +1545,7 @@ function vehicleCreateOnMap(e, t) {
         setInterval(function () {
             vehicleSonderrechte(e);
         }, 1e3)),
-        'undefined' == typeof user_id || t.user_id == user_id ?
+        void 0 === user_id || t.user_id == user_id ?
             (e.title = t.caption)
         :   (e.title = '[' + I18n.t('map.alliance') + '] ' + t.caption),
         t.dd < 0 && (t.dd = 0);
@@ -1563,6 +1559,8 @@ function vehicleCreateOnMap(e, t) {
         (e.polyline = t.polyline),
         (e.current_step = 0),
         (e.timer_steps = n.getTime() - 1e3 * t.dd),
+        (e.last_update = 0),
+        (e.end_date = 1e3 * t.ed),
         (e.vehicle_id = t.id),
         isLeaflet() ?
             e.bindTooltip(
@@ -1584,9 +1582,10 @@ function vehicleCreateOnMap(e, t) {
         e.visible ||
             ((e.visible = !0),
             isLeaflet() && e.setOpacity(1),
+            vehicle_markers_per_id.set(t.id, e),
             vehicle_markers.push(e),
             (s = vehicle_markers.length - 1),
-            vehicleDriveReal(s));
+            registerVehicleAnimate(s, e.end_date));
 }
 function vehicleSonderrechte(e) {
     let t = [];
@@ -1745,6 +1744,146 @@ function vehicleDriveReal(e) {
             vehicleDriveReal(e);
         }, n);
     } else vehicleArrive(t);
+}
+function vehicleAnimate(e) {
+    var t = vehicle_markers[e];
+    if (t.vehicle_marker_deleted) return !0;
+    var i = new Date();
+    let n = 40;
+    void 0 === t.latitude ||
+        mapIsVisible([t.latitude, t.longitude]) ||
+        (n = 1e3);
+    if (i.getTime() - t.last_update < n) return !0;
+    if (
+        ((t.last_update = i.getTime()),
+        0 == t.timer_steps && (t.timer_steps = i.getTime()),
+        !1 === vehicleStepsAvail(t))
+    )
+        return vehicleArrive(t), void deregisterVehicleAnim(e);
+    if (
+        ((start_lat = routes[t.rh][t.current_step][0]),
+        (start_lng = routes[t.rh][t.current_step][1]),
+        void 0 !== routes[t.rh][t.current_step + 1])
+    ) {
+        var s = 0;
+        do {
+            if (
+                ((end_lat = routes[t.rh][t.current_step + 1][0]),
+                (end_lng = routes[t.rh][t.current_step + 1][1]),
+                (offset_step =
+                    ((i.getTime() - t.timer_steps) /
+                        (1e3 * routes[t.rh][t.current_step][2])) *
+                    100),
+                offset_step >= 100)
+            ) {
+                var o =
+                    i.getTime() -
+                    t.timer_steps -
+                    1e3 * routes[t.rh][t.current_step][2];
+                t.current_step++, (t.timer_steps = i.getTime() - o), (s += 1);
+            }
+        } while (
+            offset_step >= 100 &&
+            void 0 !== routes[t.rh][t.current_step + 1]
+        );
+        if (
+            (('undefined' != typeof route_show && 1 != route_show) ||
+                (void 0 !== t.polyline &&
+                    s > 0 &&
+                    (void 0 === t.delete_step_counter_cache &&
+                        (t.delete_step_counter_cache = 0),
+                    (
+                        void 0 === t.latitude ||
+                        mapIsVisible([t.latitude, t.longitude])
+                    ) ?
+                        (spliceLatLngs(
+                            t.polyline,
+                            s + t.delete_step_counter_cache
+                        ),
+                        (t.delete_step_counter_cache = 0))
+                    :   (t.delete_step_counter_cache =
+                            t.delete_step_counter_cache + s))),
+            void 0 !== routes[t.rh][t.current_step] &&
+                void 0 !== routes[t.rh][t.current_step + 1])
+        )
+            if (
+                ((start_lat = routes[t.rh][t.current_step][0]),
+                (start_lng = routes[t.rh][t.current_step][1]),
+                (end_lat = routes[t.rh][t.current_step + 1][0]),
+                (end_lng = routes[t.rh][t.current_step + 1][1]),
+                (offset_step =
+                    ((i.getTime() - t.timer_steps) /
+                        (1e3 * routes[t.rh][t.current_step][2])) *
+                    100),
+                (diff_jb = end_lat - start_lat),
+                (diff_kb = end_lng - start_lng),
+                (current_lat = start_lat + diff_jb * (offset_step / 100)),
+                (current_lng = start_lng + diff_kb * (offset_step / 100)),
+                (t.latitude = current_lat),
+                (t.longitude = current_lng),
+                !1 === mobile_use_web_map &&
+                    1 == mobile_bridge_use &&
+                    4 == mobile_version)
+            ) {
+                mobileBridgeAdd('vehicle_move', {
+                    id: t.vehicle_id,
+                    title: t.title,
+                    sonderrechte: t.sonderrechte.toString(),
+                    latitude: t.latitude,
+                    longitude: t.longitude,
+                    app_icon_path_normal: t.app_icon_path_normal,
+                    app_icon_path_sonderrechte: t.app_icon_path_sonderrechte,
+                    current_step: t.current_step,
+                    r_id: t.rh,
+                });
+            } else
+                isNaN(current_lat) || isNaN(current_lng),
+                    mapIsVisible([current_lat, current_lng]) &&
+                        (isMapKitMap() ?
+                            (t.coordinate = new mapkit.Coordinate(
+                                current_lat,
+                                current_lng
+                            ))
+                        :   t.setLatLng([current_lat, current_lng])),
+                    mapIsVisible([current_lat, current_lng]) ?
+                        (1 == t.performance_invisible &&
+                            ((t.performance_invisible = !1),
+                            isLeaflet() ? t.addTo(map) : map.addAnnotation(t)),
+                        isLeaflet() &&
+                            (vehicle_label ?
+                                t.openTooltip()
+                            :   t.closeTooltip()))
+                    :   (isLeaflet() ?
+                            (t.closeTooltip(), map.removeLayer(t))
+                        :   0 == t.performance_invisible &&
+                            map.removeAnnotation(t),
+                        (t.performance_invisible = !0)),
+                    (new_position = null);
+    } else t.current_step++;
+}
+function vehicleArrive(e) {
+    void 0 !== e.polyline &&
+        ('undefined' != typeof mapkit ?
+            map.removeOverlay(e.polyline)
+        :   map.removeLayer(e.polyline)),
+        'undefined' != typeof mapkit ?
+            map.removeAnnotation(e)
+        :   map.removeLayer(e),
+        (e.vehicle_marker_deleted = !0),
+        1 == mobile_bridge_use &&
+            4 == mobile_version &&
+            mobileBridgeAdd('vehicle_remove', { id: e.vehicle_id });
+}
+function vehicleArriveById(e) {
+    var t = vehicle_markers[e];
+    t && vehicleArrive(t);
+}
+function vehicleStepsAvail(e) {
+    return (
+        void 0 !== routes[e.rh] &&
+        null != routes[e.rh] &&
+        void 0 !== routes[e.rh][e.current_step]
+    );
 }
 function isMapKitMap() {
     return 'undefined' != typeof mapkit;
@@ -3188,19 +3327,21 @@ function missionTimerStart(e) {
         (e.live_current_value_start = e.live_current_value),
         mission_timers.push({
             mission_id: e.id,
-            timer: window.setInterval(function () {
-                missionTimer(e);
-            }, 1e3),
+            timer_id: registerMissionProgressTimer(e.id, 1e3 * e.date_end, e),
         });
 }
 function missionTimerDelete(e) {
     $.each(mission_timers, function (t, i) {
-        i.mission_id == e && window.clearInterval(i.timer);
+        i.mission_id == e &&
+            (i.timer && window.clearInterval(i.timer),
+            i.timer_id && TickManager.deregisterObject(i.timer_id));
     });
 }
 function missionsTimerDelete(e) {
     $.each(mission_timers, function (t, i) {
-        e.includes(i.mission_id) && window.clearInterval(i.timer);
+        e.includes(i.mission_id) &&
+            (i.timer && window.clearInterval(i.timer),
+            i.timer_id && TickManager.deregisterObject(i.timer_id));
     });
 }
 function patientTimerDelete(e) {
@@ -3214,21 +3355,29 @@ function patientTimerDelete(e) {
     );
 }
 function missionTimer(e) {
-    e.live_current_value > e.tv ?
-        ((sum_time = e.date_end_calc - e.date_start),
-        (done_time = unix_timestamp() - e.date_start),
-        (percent_done = done_time / sum_time),
-        (percent_todo = 1 - percent_done),
-        (saved_current_value = e.live_current_value_start),
-        (e.live_current_value =
-            Math.ceil(percent_todo * (saved_current_value - e.tv)) + e.tv),
+    if (e.live_current_value > e.tv) {
+        if (
+            ((sum_time = e.date_end_calc - e.date_start),
+            (done_time = unix_timestamp() - e.date_start),
+            (percent_done = done_time / sum_time),
+            (percent_todo = 1 - percent_done),
+            (saved_current_value = e.live_current_value_start),
+            (e.live_current_value =
+                Math.ceil(percent_todo * (saved_current_value - e.tv)) + e.tv),
+            e.live_current_value <= 0)
+        )
+            return void missionFinish(e);
         ($('#mission_bar_' + e.id).visible(!0) || Math.random() < 0.3) &&
-            $('#mission_bar_' + e.id).css('width', e.live_current_value + '%'))
-    : e.live_current_value <= 0 && e.live_current_water_damage_pump_value <= 0 ?
-        missionFinish(e)
-    :   $('#mission_bar_striper_' + e.id)
-            .removeClass('progress-striped-inner-active')
-            .removeClass('progress-striped-inner-active-resource-safe');
+            $('#mission_bar_' + e.id).css('width', e.live_current_value + '%');
+    } else
+        (
+            e.live_current_value <= 0 &&
+            e.live_current_water_damage_pump_value <= 0
+        ) ?
+            missionFinish(e)
+        :   $('#mission_bar_striper_' + e.id)
+                .removeClass('progress-striped-inner-active')
+                .removeClass('progress-striped-inner-active-resource-safe');
 }
 function patientBarColor(e) {
     e.target_percent <= 0 ?
@@ -3474,67 +3623,6 @@ function vehicle_image_reload() {
                 );
     });
 }
-function missionCountdown(e, t) {
-    e < 0 ||
-        ($('#mission_countdown_' + t).html(formatTime(e, !1)),
-        (e -= 1),
-        setTimeout(function () {
-            missionCountdown(e, t);
-        }, 1e3));
-}
-function taskCountdown(e, t, i, n) {
-    e >= 0 &&
-        ($('#task_countdown_' + i + '-' + t + '-' + n).html(formatTime(e, !1)),
-        (e -= 1),
-        setTimeout(function () {
-            taskCountdown(e, t, i, n);
-        }, 1e3));
-}
-function vehicleArrivalCountdown(e, t, i) {
-    e < 0 ?
-        $('#vehicle_drive_' + t).html(
-            I18n.t('javascript.arrival') +
-                "... <a href='#' class='btn btn-xs btn-default' onclick='window.location.reload();'>" +
-                I18n.t('javascript.reload') +
-                '</a>'
-        )
-    :   (i > 0 ?
-            $('#vehicle_drive_' + t).html(
-                I18n.t('javascript.start_in') + formatTime(i, !1)
-            )
-        :   $('#vehicle_drive_' + t).html(formatTime(e, !1)),
-        (e -= 1),
-        (i -= 1),
-        setTimeout(function () {
-            vehicleArrivalCountdown(e, t, i);
-        }, 1e3));
-}
-function extensionCountdown(e, t) {
-    e < 0 ||
-        ($('#extension_countdown_' + t).html(formatTime(e, !1)),
-        (e -= 1),
-        setTimeout(function () {
-            extensionCountdown(e, t);
-        }, 1e3));
-}
-function educationCountdown(e, t) {
-    e < 0 ?
-        $('#education_schooling_' + t).html(I18n.t('javascript.few_seconds'))
-    :   ($('#education_schooling_' + t).html(formatTime(e, !1)),
-        (e -= 1),
-        setTimeout(function () {
-            educationCountdown(e, t);
-        }, 1e3));
-}
-function educationCountdownInterval(e) {
-    setupTimerNew({
-        callerId: e,
-        $timer: $(`#${e}`),
-        onTimerEnd: function (e) {
-            e.text(I18n.t('javascript.few_seconds')), location.reload();
-        },
-    });
-}
 function vehicleRefitCountdownInterval(e) {
     setupTimerNew({
         callerId: e,
@@ -3599,25 +3687,6 @@ function dailyRewardsUpdate(e) {
         $('#daily_rewards_li').addClass('daily_bonus_not_taken')
     :   $('#daily_rewards_li').removeClass('daily_bonus_not_taken');
 }
-function updateSaleCountDown() {
-    if (
-        (null != saleTimeout &&
-            (clearTimeout(saleTimeout), (saleTimeout = null)),
-        sale_count_down > Date.now())
-    ) {
-        var e = sale_count_down - Date.now(),
-            t = '% ' + count_down_title + ' ' + getFormattedDuration(e) + ' %';
-        $('#sale_countdown').html(t),
-            $('#sale_countdown_mobile').html(t),
-            (saleTimeout = setTimeout(updateSaleCountDown, 1e3));
-    } else {
-        $('#coins_top').removeClass('saleHighlight');
-        var i = $('#sale_countdown');
-        i && i.remove();
-        var n = $('#sale_countdown_mobile');
-        n && n.remove();
-    }
-}
 function setupSaleTimer(e, t, i) {
     var n = i - t,
         s = i - Date.now();
@@ -3641,22 +3710,11 @@ function updateSaleCountdownTimer(e, t) {
         I18n.t('javascript.time_left', { defaultValue: 'Time left:' }) +
         ' ' +
         getFormattedDuration(t);
-    e.find('.sale_countdown_timer').html(i);
+    e.find('.sale_countdown_timer').text(i);
 }
 function updateSaleCountdownProgressBar(e, t, i) {
     var n = Math.floor((100 / i) * t);
     e.find('.sale_countdown_progress_bar').animate({ width: n + '%' }, 500);
-}
-function getFormattedDuration(e) {
-    var t = Math.floor(e / 864e5),
-        i = Math.floor((e % 864e5) / 36e5),
-        n = Math.floor((e % 36e5) / 6e4),
-        s = Math.floor((e % 6e4) / 1e3),
-        o = '';
-    return (
-        t > 0 && (o = t + I18n.t('javascript.days').charAt(0) + ':'),
-        o + padding(i) + ':' + padding(n) + ':' + padding(s)
-    );
 }
 function coinsUpdate(e) {
     1 == mobile_bridge_use &&
@@ -3676,7 +3734,7 @@ function coinsUpdate(e) {
                 })),
             $('#coins_top_mobile .coins-value').html(i),
             $('#coins_top .coins-value').html(t),
-            updateSaleCountDown();
+            registerGlobalSaleTimer();
     } else {
         var n = $('#coins_top .coins-value').text();
         $('.coins-value').html(t),
@@ -3767,19 +3825,6 @@ function formatTime(e, t) {
             return countdown_message;
     } else countdown_message = '00';
     return countdown_message;
-}
-function vehicleArrive(e) {
-    void 0 !== e.polyline &&
-        ('undefined' != typeof mapkit ?
-            map.removeOverlay(e.polyline)
-        :   map.removeLayer(e.polyline)),
-        'undefined' != typeof mapkit ?
-            map.removeAnnotation(e)
-        :   map.removeLayer(e),
-        (e.vehicle_marker_deleted = !0),
-        1 == mobile_bridge_use &&
-            4 == mobile_version &&
-            mobileBridgeAdd('vehicle_remove', { id: e.vehicle_id });
 }
 function rand(e, t) {
     return (
@@ -4028,7 +4073,7 @@ function play(e) {
         } catch (e) {}
 }
 function isLoggedIn() {
-    return 'undefined' != typeof user_id && !isNaN(user_id);
+    return void 0 !== user_id && !isNaN(user_id);
 }
 function mobileShow(e) {
     currentMobileTab = e;
@@ -4837,9 +4882,6 @@ function bigMapWindowInfront(e) {
         i > n && ($('.bigMapWindow').css('zIndex', t), (i = t + 1)),
         e.css('zIndex') != i && e.css('zIndex', i + 1);
 }
-function padding(e) {
-    return ('0' + e.toString()).substr(-2);
-}
 function toggleVehicleBuilding(e) {
     var t = 0;
     $('#vehicle_building_' + e).is(':visible') ?
@@ -5137,14 +5179,9 @@ function onAndroidBack() {
 }
 function startProgressBar(e) {
     var t =
-            100 -
-            ((new Date() - e.startTime) / (e.endTime - e.startTime)) * 100,
-        i = t * (e.missionValue / 100);
-    e.$element.css('width', i + '%'),
-        t >= 0 &&
-            setTimeout(function () {
-                startProgressBar(e);
-            }, 1e3);
+        (100 - ((new Date() - e.startTime) / (e.endTime - e.startTime)) * 100) *
+        (e.missionValue / 100);
+    e.$element.css('width', t + '%');
 }
 function showEventInfo(e) {
     return (
@@ -5681,16 +5718,10 @@ function allianceChatBanCountdown(e, t) {
 }
 function startAllianceEventIntervalUpdate(e) {
     const t = new Date(e.end_at);
-    if (!isDateValid(t)) return;
-    if (Date.now() > t) return;
-    const i = `event_timer_${e.id}`;
-    stopTimer(i), updateAllianceEventInfoBox(e);
-    const n = setInterval(function () {
-        Date.now() <= t ?
-            updateAllianceEventInfoBox(e)
-        :   stopAllianceEventIntervalUpdate(i, e);
-    }, 1e3);
-    startedIntervals.set(i, n);
+    isDateValid(t) &&
+        (Date.now() > t ||
+            (updateAllianceEventInfoBox(e),
+            registerAllianceEventTimer(e.id, e, new Date(e.end_at))));
 }
 function updateAllianceEventInfoBox(e) {
     eventRunning = !0;
@@ -5716,7 +5747,7 @@ function getSeasonalEventInfoBoxBody(e) {
         o = 0;
     const a = e.planned_missions,
         r = e.missions_completed_by_alliance;
-    let l = eventCompletedMissions[currentUserId];
+    let l = eventCompletedMissions[user_id];
     l || (l = 0);
     let c = I18n.t('javascript.not_qualified');
     if (l > 0) {
@@ -5733,12 +5764,11 @@ function getSeasonalEventInfoBoxBody(e) {
     );
 }
 function openEventHistoryDetails() {}
-function stopAllianceEventIntervalUpdate(e, t) {
-    stopTimer(e),
-        (eventRunning = !1),
+function stopAllianceEventIntervalUpdate(e) {
+    (eventRunning = !1),
         $('#navbar-inner').removeClass('navbar-inner-event'),
         $('#eventInfo').html(''),
-        t.onTimerEnd && t.onTimerEnd();
+        e.onTimerEnd && e.onTimerEnd();
 }
 function receivedEventPayout(e) {
     const t = `\n  <div class="alert alert-info">\n    <button type="button" class="close" aria-label="Close" onclick="onDismissPayoutInfo();">\n        <span aria-hidden="true">&times;</span>\n    </button>\n    <span>\n        ${I18n.t('javascript.current_reward_for_you', { credits: e.credits, event_currency: e.currency })}\n    </span>\n  </div>`;
@@ -6245,34 +6275,6 @@ function getPrisonClassState(e, t) {
         : 'btn-success'
     );
 }
-function setupTimerNew(e) {
-    if (!e.$timer.length) return;
-    let t = e.callerId;
-    if (!t) {
-        let i = e.$timer[0].id;
-        i || (t = new Date().getTime()), (t = `timer_${i}`);
-    }
-    if (startedIntervals.has(t)) return startedIntervals.get(t);
-    let i = new Date(e.$timer.data('end-time'));
-    if (!isDateValid(i) || Date.now() >= i) return;
-    updateTimer({
-        callerId: t,
-        $timer: e.$timer,
-        endTime: i,
-        format: e.format,
-    });
-    const n = setInterval(function () {
-        Date.now() <= i ?
-            updateTimer({
-                callerId: t,
-                $timer: e.$timer,
-                endTime: i,
-                format: e.format,
-            })
-        :   (stopTimer(t), e.onTimerEnd(e.$timer));
-    }, 1e3);
-    startedIntervals.set(t, n);
-}
 function setupTimer(e) {
     if (e.$timer.length) {
         var t = new Date(e.$timer.data('end-time'));
@@ -6325,6 +6327,43 @@ function displayJsAlertInfo(e, t, i) {
     }
     const s = `\n  <div class="alert alert-${n} alert-dismissible js-alert" role="alert">\n    <button type="button" class="close" data-dismiss="alert" aria-label="Close">\n        <span aria-hidden="true">&times;</span>\n    </button>\n    <span>\n        ${t}\n    </span>\n  </div>`;
     i && $('.js-alert').remove(), $('#infoBox').append(s);
+}
+function getFormattedDuration(e) {
+    let t = Math.floor(e / 864e5),
+        i = Math.floor((e % 864e5) / 36e5),
+        n = Math.floor((e % 36e5) / 6e4),
+        s = Math.floor((e % 6e4) / 1e3),
+        o = '';
+    return (
+        t > 0 && (o = `${t} ${I18n.t('javascript.days')} `),
+        `${o}${padding(i)}:${padding(n)}:${padding(s)}`
+    );
+}
+function padding(e) {
+    return ('0' + e.toString()).substr(-2);
+}
+function detectDevicePerformance(e) {
+    function t() {
+        i++;
+        const s = performance.now();
+        if (s - n < 1e3) requestAnimationFrame(t);
+        else {
+            const t = i / ((s - n) / 1e3);
+            let o;
+            (o =
+                t >= 50 ? 1e3 / 60
+                : t >= 30 ? 1e3 / 30
+                : 1e3 / 15),
+                vehicleAnimDebug &&
+                    console.log(
+                        `Detected FPS: ${t.toFixed(1)}, using refresh rate: ${o.toFixed(1)}ms`
+                    ),
+                e(o);
+        }
+    }
+    let i = 0,
+        n = performance.now();
+    requestAnimationFrame(t);
 }
 function refreshInputOnSliderChanges(e, t, i) {
     (document.getElementById(e).value = t.value),
@@ -6438,6 +6477,332 @@ function hideElementWithEase(e) {
 }
 function showElementWithEase(e) {
     e.style.opacity = '1';
+}
+function timerUpdate(e, t, i) {
+    let n = I18n.t('javascript.few_seconds');
+    i > 0 && (n = getFormattedDuration(i)), t.text(n);
+}
+function registerEducationTimer(e, t, i) {
+    const n = `education_${e}`,
+        s = $(`#${t}`);
+    return (
+        TickManager.registerObject({
+            id: n,
+            elementId: t,
+            onTick: ({ id: e, params: t, remainingTime: i }) => {
+                educationOnTick(e, t.$element, i);
+            },
+            onEnd: function ({ id: e, params: t, remainingTime: i }) {
+                educationOnTick(e, t.$element, -1), location.reload();
+            },
+            endDate: i,
+            params: { $element: s },
+        }),
+        n
+    );
+}
+function educationOnTick(e, t, i) {
+    timerUpdate(e, t, i);
+}
+function registerVehicleTimer(e, t, i) {
+    const n = `vehicle_drive_${e}`,
+        s = $(`#vehicle_drive_${e}`);
+    return (
+        TickManager.registerObject({
+            id: n,
+            elementId: `#vehicle_drive_${e}`,
+            onTick: ({ id: e, params: t }) => {
+                vehicleArrivalTick(e, t.$element, t.start_date, t.end_date);
+            },
+            onEnd: function ({ id: e, params: t }) {
+                vehicleArrivalTick(e, t.$element, t.start_date, t.end_date);
+            },
+            endDate: i,
+            params: { end_date: i, start_date: t, $element: s },
+        }),
+        n
+    );
+}
+function vehicleArrivalTick(e, t, i, n) {
+    const s = Date.now();
+    let o = n - s,
+        a = i - s;
+    o < 0 ?
+        t.html(
+            I18n.t('javascript.arrival') +
+                "... <a href='#' class='btn btn-xs btn-default' onclick='window.location.reload();'>" +
+                I18n.t('javascript.reload') +
+                '</a>'
+        )
+    : a > 0 ? t.text(I18n.t('javascript.start_in') + getFormattedDuration(a))
+    : t.text(getFormattedDuration(o));
+}
+function registerExtensionTimer(e, t, i) {
+    const n = `extension_${e}`,
+        s = $(`#${t}`);
+    return (
+        TickManager.registerObject({
+            id: n,
+            elementId: t,
+            onTick: ({ id: e, params: t, remainingTime: i }) => {
+                extensionOnTick(e, t.$element, i);
+            },
+            onEnd: function ({ id: e, params: t, remainingTime: i }) {
+                extensionOnTick(e, t.$element, i), location.reload();
+            },
+            endDate: i,
+            params: { $element: s },
+        }),
+        n
+    );
+}
+function extensionOnTick(e, t, i) {
+    timerUpdate(e, t, i);
+}
+function registerTaskTimer(e, t, i) {
+    const n = `task_${e}`,
+        s = $(`#${t}`);
+    return (
+        TickManager.registerObject({
+            id: n,
+            elementId: t,
+            onTick: ({ id: e, params: t, remainingTime: i }) => {
+                taskProgressOnTick(e, t.$element, i);
+            },
+            onEnd: function ({ id: e, params: t, remainingTime: i }) {
+                taskProgressOnTick(e, t.$element, i);
+            },
+            endDate: i,
+            params: { $element: s },
+        }),
+        n
+    );
+}
+function taskProgressOnTick(e, t, i) {
+    timerUpdate(e, t, i);
+}
+function registerMissionCountdownTimer(e, t, i) {
+    const n = `mission_countdown_${e}`,
+        s = $(`#${t}`);
+    return (
+        TickManager.registerObject({
+            id: n,
+            elementId: t,
+            onTick: ({ id: e, params: t, remainingTime: i }) => {
+                missionCountdownOnTick(e, t.$element, i);
+            },
+            onEnd: function ({ id: e, params: t, remainingTime: i }) {
+                missionCountdownOnTick(e, t.$element, i);
+            },
+            endDate: i,
+            params: { $element: s },
+        }),
+        n
+    );
+}
+function missionCountdownOnTick(e, t, i) {
+    timerUpdate(e, t, i);
+}
+function registerMissionProgressTimer(e, t, i) {
+    const n = `mission_progress_${e}`;
+    return (
+        TickManager.registerObject({
+            id: n,
+            onTick: ({ params: e }) => {
+                missionProgressOnTick(e);
+            },
+            onEnd: function ({ params: e }) {
+                missionProgressOnTick(e);
+            },
+            endDate: t,
+            params: i,
+        }),
+        n
+    );
+}
+function missionProgressOnTick(e) {
+    missionTimer(e);
+}
+function registerMissionPumpingTimer(e, t, i) {
+    const n = `mission_pumping_${e}`,
+        s = $(`#${t}`);
+    return (
+        TickManager.registerObject({
+            id: n,
+            elementId: t,
+            onTick: ({ id: e, params: t, remainingTime: i }) => {
+                missionPumpingOnTick(e, t.$element, i);
+            },
+            onEnd: function ({ id: e, params: t, remainingTime: i }) {
+                missionPumpingOnTick(e, t.$element, i);
+            },
+            endDate: i,
+            params: { $element: s },
+        }),
+        n
+    );
+}
+function missionPumpingOnTick(e, t, i) {
+    timerUpdate(e, t, i);
+}
+function registerMissionPumpingProgressTimer(e, t, i) {
+    const n = `mission_pumping_progress_${e}`;
+    return (
+        TickManager.registerObject({
+            id: n,
+            onTick: ({ params: e }) => {
+                missionPumpingProgressOnTick(e);
+            },
+            onEnd: function ({ params: e }) {
+                missionPumpingProgressOnTick(e);
+            },
+            endDate: i,
+            params: t,
+        }),
+        n
+    );
+}
+function missionPumpingProgressOnTick(e) {
+    startProgressBar(e);
+}
+function registerPrisonerTransportationTimer(e, t, i) {
+    const n = `prisoner_transportation_${e}`,
+        s = $(`#${t}`);
+    return (
+        TickManager.registerObject({
+            id: n,
+            elementId: t,
+            onTick: ({ id: e, params: t, remainingTime: i }) => {
+                missionPrisonerTransportationOnTick(e, t.$element, i);
+            },
+            onEnd: function ({ id: e, params: t, remainingTime: i }) {
+                missionPrisonerTransportationOnTick(e, t.$element, i),
+                    location.reload();
+            },
+            endDate: i,
+            params: { $element: s },
+        }),
+        n
+    );
+}
+function missionPrisonerTransportationOnTick(e, t, i) {
+    timerUpdate(e, t, i);
+}
+function registerAllianceEventTimer(e, t, i) {
+    const n = `event_timer_${t.id}`;
+    return (
+        TickManager.registerObject({
+            id: n,
+            onTick: ({ params: e }) => {
+                updateAllianceEventInfoBox(e);
+            },
+            onEnd: function ({ params: e }) {
+                stopAllianceEventIntervalUpdate(e);
+            },
+            endDate: i,
+            params: t,
+        }),
+        n
+    );
+}
+function registerTimedEvent(e, t) {
+    TickManager.registerObject({
+        id: `timed_event_${t.attr('id')}`,
+        elementId: t.attr('id'),
+        onTick: ({ params: e, remainingTime: t }) => {
+            e.$element.text(getFormattedDuration(t));
+        },
+        onEnd: ({ params: e }) => {
+            $(e.eventSelector).remove();
+        },
+        endDate: t.data('end-time'),
+        params: { $element: t, eventSelector: e },
+    });
+}
+function registerPatientTimer() {}
+function registerGlobalSaleTimer() {
+    sale_count_down.getTime() - Date.now() <= 0 ||
+        TickManager.registerObject({
+            id: 'sale_countdown',
+            elementId: 'sale_countdown',
+            onTick: ({ remainingTime: e }) => {
+                globalSaleOnTick(e);
+            },
+            onEnd: ({ remainingTime: e }) => {
+                globalSaleOnTick(e);
+            },
+            endDate: sale_count_down.getTime(),
+        });
+}
+function globalSaleOnTick(e) {
+    let t = $('#sale_countdown'),
+        i = $('#sale_countdown_mobile');
+    if (e > 0) {
+        let n = `% ${count_down_title} ${getFormattedDuration(e)} %`;
+        return t.text(n), void i.text(n);
+    }
+    $('#coins_top').removeClass('saleHighlight'),
+        t && t.remove(),
+        i && i.remove();
+}
+function registerSaleTimer(e, t, i) {
+    const n = `sale_${e.attr('id')}`;
+    let s = i - t;
+    return (
+        TickManager.registerObject({
+            id: n,
+            elementId: e.attr('id'),
+            onTick: ({ params: e, remainingTime: t }) => {
+                saleOnTick(e, t);
+            },
+            onEnd: ({ params: e }) => {
+                saleEnded(e.$element);
+            },
+            endDate: i.getTime(),
+            params: { $element: e, totalDuration: s },
+        }),
+        n
+    );
+}
+function saleOnTick(e, t) {
+    updateSaleCountdownTimer(e.$element, t),
+        updateSaleCountdownProgressBar(e.$element, t, e.totalDuration);
+}
+function registerComplexBaseTimer(e, t, i) {
+    const n = `complex_base_${e}`,
+        s = $(`#${t}`);
+    return (
+        TickManager.registerObject({
+            id: n,
+            elementId: t,
+            onTick: ({ id: e, params: t, remainingTime: i }) => {
+                timerUpdate(e, t.$element, i);
+            },
+            onEnd: function ({ id: e, params: t }) {
+                timerUpdate(e, t.$element, -1), location.reload();
+            },
+            endDate: i,
+            params: { $element: s },
+        }),
+        n
+    );
+}
+function registerVehicleAnimate(e, t) {
+    VehicleTickManager.registerObject({
+        id: `vehicle_anim_${e}`,
+        endDate: t,
+        onTick: function ({ params: e }) {
+            vehicleAnimate(e.vehicle_marker_id);
+        },
+        onEnd: function ({ params: e }) {
+            vehicleAnimate(e.vehicle_marker_id),
+                vehicleArriveById(e.vehicle_marker_id);
+        },
+        params: { vehicle_marker_id: e },
+    });
+}
+function deregisterVehicleAnim(e) {
+    VehicleTickManager.deregisterObject(`vehicle_anim_${e}`);
 }
 Object.values ||
     (Object.values = function (e) {
@@ -24769,7 +25134,9 @@ Object.values ||
                 skip_hint:
                     'E\u0219ti sigur c\u0103 vrei s\u0103 anulezi tutorialul? Acesta nu poate fi accesat mai t\xe2rziu. Nu vei fi eligibil pentru recompensa de finalizare a tutorialului.',
             },
-            rewards: { log: 'Recompens\u0103 pentru terminarea tutorialului.' },
+            rewards: {
+                log: 'Recompens\u0103 pentru terminarea tutorialului.',
+            },
         },
     }),
     (I18n.translations.fi_FI = {
@@ -25540,7 +25907,9 @@ Object.values ||
                 skip_hint:
                     'Haluatko varmasti peruuttaa opetuspelin? Siihen ei voi palata my\xf6hemmin. Et saa opetuspelin suorituspalkintoa.',
             },
-            rewards: { log: 'Palkinto opetuspelin pelaamisesta loppuun.' },
+            rewards: {
+                log: 'Palkinto opetuspelin pelaamisesta loppuun.',
+            },
         },
     }),
     (I18n.translations.sk_SK = {
@@ -27535,17 +27904,17 @@ Object.values ||
                     }
             return { state: 'success', data: t };
         }
-        function N() {
+        function O() {
             try {
                 return new e.XMLHttpRequest();
             } catch (e) {}
         }
-        function L() {
+        function N() {
             try {
                 return new e.ActiveXObject('Microsoft.XMLHTTP');
             } catch (e) {}
         }
-        function O() {
+        function L() {
             return (
                 setTimeout(function () {
                     Yt = t;
@@ -27572,7 +27941,7 @@ Object.values ||
                 l = function () {
                     if (s) return !1;
                     for (
-                        var t = Yt || O(),
+                        var t = Yt || L(),
                             i = Math.max(0, c.startTime + c.duration - t),
                             n = 1 - (i / c.duration || 0),
                             o = 0,
@@ -27592,7 +27961,7 @@ Object.values ||
                     opts: de.extend(!0, { specialEasing: {} }, i),
                     originalProperties: t,
                     originalOptions: i,
-                    startTime: Yt || O(),
+                    startTime: Yt || L(),
                     duration: i.duration,
                     tweens: [],
                     createTween: function (t, i) {
@@ -28286,13 +28655,13 @@ Object.values ||
                 function i(e, t, i, n) {
                     var s, o, a, r, l, c, d, u, h, p;
                     if (
-                        ((t ? t.ownerDocument || t : q) !== N && R(t),
+                        ((t ? t.ownerDocument || t : q) !== O && R(t),
                         (i = i || []),
                         !e || 'string' != typeof e)
                     )
                         return i;
-                    if (1 !== (r = (t = t || N).nodeType) && 9 !== r) return [];
-                    if (O && !n) {
+                    if (1 !== (r = (t = t || O).nodeType) && 9 !== r) return [];
+                    if (L && !n) {
                         if ((s = xe.exec(e)))
                             if ((a = s[1])) {
                                 if (9 === r) {
@@ -28381,7 +28750,7 @@ Object.values ||
                     return (e[V] = !0), e;
                 }
                 function a(e) {
-                    var t = N.createElement('div');
+                    var t = O.createElement('div');
                     try {
                         return !!e(t);
                     } catch (e) {
@@ -28699,7 +29068,7 @@ Object.values ||
                                         )),
                                 k = (W += null == y ? 1 : Math.random() || 0.1);
                             for (
-                                v && ((j = r !== N && r), (A = n));
+                                v && ((j = r !== O && r), (A = n));
                                 null != (u = w[f]);
                                 f++
                             ) {
@@ -28749,7 +29118,7 @@ Object.values ||
                             'ID' === (a = o[0]).type &&
                             T.getById &&
                             9 === t.nodeType &&
-                            O &&
+                            L &&
                             E.relative[o[1].type]
                         ) {
                             if (
@@ -28778,7 +29147,7 @@ Object.values ||
                                 break;
                             }
                     }
-                    return I(e, c)(n, t, !O, i, ge.test(e)), i;
+                    return I(e, c)(n, t, !L, i, ge.test(e)), i;
                 }
                 function z() {}
                 var S,
@@ -28791,9 +29160,9 @@ Object.values ||
                     j,
                     D,
                     R,
+                    O,
                     N,
                     L,
-                    O,
                     B,
                     H,
                     $,
@@ -28944,11 +29313,11 @@ Object.values ||
                     function (e) {
                         var t = e ? e.ownerDocument || e : q;
                         return (
-                                t !== N && 9 === t.nodeType && t.documentElement
+                                t !== O && 9 === t.nodeType && t.documentElement
                             ) ?
-                                ((N = t),
-                                (L = t.documentElement),
-                                (O = !P(t)),
+                                ((O = t),
+                                (N = t.documentElement),
+                                (L = !P(t)),
                                 (T.attributes = a(function (e) {
                                     return (
                                         (e.innerHTML = "<a href='#'></a>"),
@@ -28995,7 +29364,7 @@ Object.values ||
                                 })),
                                 (T.getById = a(function (e) {
                                     return (
-                                        (L.appendChild(e).id = V),
+                                        (N.appendChild(e).id = V),
                                         !t.getElementsByName ||
                                             !t.getElementsByName(V).length
                                     );
@@ -29004,7 +29373,7 @@ Object.values ||
                                     ((E.find.ID = function (e, t) {
                                         if (
                                             typeof t.getElementById !== Q &&
-                                            O
+                                            L
                                         ) {
                                             var i = t.getElementById(e);
                                             return i && i.parentNode ? [i] : [];
@@ -29057,7 +29426,7 @@ Object.values ||
                                         if (
                                             typeof t.getElementsByClassName !==
                                                 Q &&
-                                            O
+                                            L
                                         )
                                             return t.getElementsByClassName(e);
                                     }),
@@ -29100,10 +29469,10 @@ Object.values ||
                                     })),
                                 (T.matchesSelector = n(
                                     ($ =
-                                        L.webkitMatchesSelector ||
-                                        L.mozMatchesSelector ||
-                                        L.oMatchesSelector ||
-                                        L.msMatchesSelector)
+                                        N.webkitMatchesSelector ||
+                                        N.mozMatchesSelector ||
+                                        N.oMatchesSelector ||
+                                        N.msMatchesSelector)
                                 )) &&
                                     a(function (e) {
                                         (T.disconnectedMatch = $.call(
@@ -29116,7 +29485,7 @@ Object.values ||
                                 (B = B.length && new RegExp(B.join('|'))),
                                 (H = H.length && new RegExp(H.join('|'))),
                                 (F =
-                                    n(L.contains) || L.compareDocumentPosition ?
+                                    n(N.contains) || N.compareDocumentPosition ?
                                         function (e, t) {
                                             var i =
                                                     9 === e.nodeType ?
@@ -29153,7 +29522,7 @@ Object.values ||
                                     );
                                 })),
                                 (J =
-                                    L.compareDocumentPosition ?
+                                    N.compareDocumentPosition ?
                                         function (e, i) {
                                             if (e === i) return (Y = !0), 0;
                                             var n =
@@ -29214,17 +29583,17 @@ Object.values ||
                                             );
                                         }),
                                 t)
-                            :   N;
+                            :   O;
                     }),
                 (i.matches = function (e, t) {
                     return i(e, null, null, t);
                 }),
                 (i.matchesSelector = function (e, t) {
                     if (
-                        ((e.ownerDocument || e) !== N && R(e),
+                        ((e.ownerDocument || e) !== O && R(e),
                         (t = t.replace(ve, "='$1']")),
                         T.matchesSelector &&
-                            O &&
+                            L &&
                             (!H || !H.test(t)) &&
                             (!B || !B.test(t)))
                     )
@@ -29237,21 +29606,21 @@ Object.values ||
                             )
                                 return n;
                         } catch (e) {}
-                    return i(t, N, null, [e]).length > 0;
+                    return i(t, O, null, [e]).length > 0;
                 }),
                 (i.contains = function (e, t) {
-                    return (e.ownerDocument || e) !== N && R(e), F(e, t);
+                    return (e.ownerDocument || e) !== O && R(e), F(e, t);
                 }),
                 (i.attr = function (e, i) {
-                    (e.ownerDocument || e) !== N && R(e);
+                    (e.ownerDocument || e) !== O && R(e);
                     var n = E.attrHandle[i.toLowerCase()],
                         s =
                             n && ee.call(E.attrHandle, i.toLowerCase()) ?
-                                n(e, i, !O)
+                                n(e, i, !L)
                             :   t;
                     return (
                         s === t ?
-                            T.attributes || !O ? e.getAttribute(i)
+                            T.attributes || !L ? e.getAttribute(i)
                             : (s = e.getAttributeNode(i)) && s.specified ?
                                 s.value
                             :   null
@@ -29628,7 +29997,7 @@ Object.values ||
                                         do {
                                             if (
                                                 (i =
-                                                    O ?
+                                                    L ?
                                                         t.lang
                                                     :   t.getAttribute(
                                                             'xml:lang'
@@ -29653,12 +30022,12 @@ Object.values ||
                                 return i && i.slice(1) === t.id;
                             },
                             root: function (e) {
-                                return e === L;
+                                return e === N;
                             },
                             focus: function (e) {
                                 return (
-                                    e === N.activeElement &&
-                                    (!N.hasFocus || N.hasFocus()) &&
+                                    e === O.activeElement &&
+                                    (!O.hasFocus || O.hasFocus()) &&
                                     !!(e.type || e.href || ~e.tabIndex)
                                 );
                             },
@@ -30342,7 +30711,7 @@ Object.values ||
             je = /^(?:a|area)$/i,
             De = /^(?:checked|selected)$/i,
             Re = de.support.getSetAttribute,
-            Ne = de.support.input;
+            Oe = de.support.input;
         de.fn.extend({
             attr: function (e, t) {
                 return de.access(this, de.attr, e, t, arguments.length > 1);
@@ -30613,7 +30982,7 @@ Object.values ||
                         for (; (i = o[s++]); )
                             (n = de.propFix[i] || i),
                                 de.expr.match.bool.test(i) ?
-                                    (Ne && Re) || !De.test(i) ?
+                                    (Oe && Re) || !De.test(i) ?
                                         (e[n] = !1)
                                     :   (e[de.camelCase('default-' + i)] = e[
                                             n
@@ -30679,7 +31048,7 @@ Object.values ||
                 set: function (e, t, i) {
                     return (
                         !1 === t ? de.removeAttr(e, i)
-                        : (Ne && Re) || !De.test(i) ?
+                        : (Oe && Re) || !De.test(i) ?
                             e.setAttribute((!Re && de.propFix[i]) || i, i)
                         :   (e[de.camelCase('default-' + i)] = e[i] = !0),
                         i
@@ -30689,7 +31058,7 @@ Object.values ||
             de.each(de.expr.match.bool.source.match(/\w+/g), function (e, i) {
                 var n = de.expr.attrHandle[i] || de.find.attr;
                 de.expr.attrHandle[i] =
-                    (Ne && Re) || !De.test(i) ?
+                    (Oe && Re) || !De.test(i) ?
                         function (e, i, s) {
                             var o = de.expr.attrHandle[i],
                                 a =
@@ -30711,7 +31080,7 @@ Object.values ||
                             );
                         };
             }),
-            (Ne && Re) ||
+            (Oe && Re) ||
                 (de.attrHooks.value = {
                     set: function (e, t, i) {
                         if (!de.nodeName(e, 'input'))
@@ -30829,8 +31198,8 @@ Object.values ||
                                 :   e.value;
                         });
             });
-        var Le = /^(?:input|select|textarea)$/i,
-            Oe = /^key/,
+        var Ne = /^(?:input|select|textarea)$/i,
+            Le = /^key/,
             Be = /^(?:mouse|contextmenu)|click/,
             He = /^(?:focusinfocus|focusoutblur)$/,
             $e = /^([^.]*)(?:\.(.+)|)$/;
@@ -31141,7 +31510,7 @@ Object.values ||
                     a ||
                         (this.fixHooks[s] = a =
                             Be.test(s) ? this.mouseHooks
-                                : Oe.test(s) ? this.keyHooks
+                                : Le.test(s) ? this.keyHooks
                                 : {}),
                         n = a.props ? this.props.concat(a.props) : this.props,
                         e = new de.Event(o),
@@ -31391,7 +31760,7 @@ Object.values ||
             de.support.changeBubbles ||
                 (de.event.special.change = {
                     setup: function () {
-                        if (Le.test(this.nodeName))
+                        if (Ne.test(this.nodeName))
                             return (
                                 ('checkbox' !== this.type &&
                                     'radio' !== this.type) ||
@@ -31426,7 +31795,7 @@ Object.values ||
                             'beforeactivate._change',
                             function (e) {
                                 var t = e.target;
-                                Le.test(t.nodeName) &&
+                                Ne.test(t.nodeName) &&
                                     !de._data(t, 'changeBubbles') &&
                                     (de.event.add(
                                         t,
@@ -31460,7 +31829,7 @@ Object.values ||
                     teardown: function () {
                         return (
                             de.event.remove(this, '._change'),
-                            !Le.test(this.nodeName)
+                            !Ne.test(this.nodeName)
                         );
                     },
                 }),
@@ -32696,9 +33065,9 @@ Object.values ||
             jt = /#.*$/,
             Dt = /([?&])_=[^&]*/,
             Rt = /^(.*?):[ \t]*([^\r\n]*)\r?$/gm,
-            Nt = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
-            Lt = /^(?:GET|HEAD)$/,
-            Ot = /^\/\//,
+            Ot = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
+            Nt = /^(?:GET|HEAD)$/,
+            Lt = /^\/\//,
             Bt = /^([\w.+-]+:)(?:\/\/([^\/?#:]*)(?::(\d+)|)|)/,
             Ht = de.fn.load,
             $t = {},
@@ -32772,7 +33141,7 @@ Object.values ||
                 ajaxSettings: {
                     url: Mt,
                     type: 'GET',
-                    isLocal: Nt.test(Et[1]),
+                    isLocal: Ot.test(Et[1]),
                     global: !0,
                     processData: !0,
                     async: !0,
@@ -32921,7 +33290,7 @@ Object.values ||
                         (k.error = k.fail),
                         (h.url = ((e || h.url || Mt) + '')
                             .replace(jt, '')
-                            .replace(Ot, Et[1] + '//')),
+                            .replace(Lt, Et[1] + '//')),
                         (h.type = i.method || i.type || h.method || h.type),
                         (h.dataTypes = de
                             .trim(h.dataType || '*')
@@ -32950,7 +33319,7 @@ Object.values ||
                         0 == de.active++ &&
                         de.event.trigger('ajaxStart'),
                     (h.type = h.type.toUpperCase()),
-                    (h.hasContent = !Lt.test(h.type)),
+                    (h.hasContent = !Nt.test(h.type)),
                     (a = h.url),
                     h.hasContent ||
                         (h.data &&
@@ -33148,9 +33517,9 @@ Object.values ||
         (de.ajaxSettings.xhr =
             e.ActiveXObject ?
                 function () {
-                    return (!this.isLocal && N()) || L();
+                    return (!this.isLocal && O()) || N();
                 }
-            :   N),
+            :   O),
             (Zt = de.ajaxSettings.xhr()),
             (de.support.cors = !!Zt && 'withCredentials' in Zt),
             (Zt = de.support.ajax = !!Zt) &&
@@ -42442,9 +42811,9 @@ Object.values ||
                         j,
                         D,
                         R,
+                        O,
                         N,
                         L,
-                        O,
                         B,
                         H = new Date(),
                         $ = this._daylightSavingAdjust(
@@ -42697,7 +43066,7 @@ Object.values ||
                             ) {
                                 for (
                                     T += '<tr>',
-                                        N =
+                                        O =
                                             u ?
                                                 "<td class='ui-datepicker-week-col'>" +
                                                 this._get(
@@ -42710,7 +43079,7 @@ Object.values ||
                                     w < 7;
                                     w++
                                 )
-                                    (L =
+                                    (N =
                                         f ?
                                             f.apply(
                                                 e.input ? e.input[0] : null,
@@ -42718,16 +43087,16 @@ Object.values ||
                                             )
                                         :   [!0, '']),
                                         (B =
-                                            ((O = D.getMonth() !== X) && !v) ||
-                                            !L[0] ||
+                                            ((L = D.getMonth() !== X) && !v) ||
+                                            !N[0] ||
                                             (J && D < J) ||
                                             (Q && D > Q)),
-                                        (N +=
+                                        (O +=
                                             "<td class='" +
                                             ((w + d + 6) % 7 >= 5 ?
                                                 ' ui-datepicker-week-end'
                                             :   '') +
-                                            (O ?
+                                            (L ?
                                                 ' ui-datepicker-other-month'
                                             :   '') +
                                             ((
@@ -42744,9 +43113,9 @@ Object.values ||
                                                 this._unselectableClass +
                                                 ' ui-state-disabled'
                                             :   '') +
-                                            (O && !g ? '' : (
+                                            (L && !g ? '' : (
                                                 ' ' +
-                                                L[1] +
+                                                N[1] +
                                                 (D.getTime() === Y.getTime() ?
                                                     ' ' + this._currentClass
                                                 :   '') +
@@ -42755,10 +43124,10 @@ Object.values ||
                                                 :   '')
                                             )) +
                                             "'" +
-                                            ((O && !g) || !L[2] ?
+                                            ((L && !g) || !N[2] ?
                                                 ''
                                             :   " title='" +
-                                                L[2].replace(/'/g, '&#39;') +
+                                                N[2].replace(/'/g, '&#39;') +
                                                 "'") +
                                             (B ? '' : (
                                                 " data-handler='selectDay' data-event='click' data-month='" +
@@ -42768,7 +43137,7 @@ Object.values ||
                                                 "'"
                                             )) +
                                             '>' +
-                                            (O && !g ? '&#xa0;'
+                                            (L && !g ? '&#xa0;'
                                             : B ?
                                                 "<span class='ui-state-default'>" +
                                                 D.getDate() +
@@ -42780,7 +43149,7 @@ Object.values ||
                                                 (D.getTime() === Y.getTime() ?
                                                     ' ui-state-active'
                                                 :   '') +
-                                                (O ?
+                                                (L ?
                                                     ' ui-priority-secondary'
                                                 :   '') +
                                                 "' href='#'>" +
@@ -42789,7 +43158,7 @@ Object.values ||
                                             '</td>'),
                                         D.setDate(D.getDate() + 1),
                                         (D = this._daylightSavingAdjust(D));
-                                T += N + '</tr>';
+                                T += O + '</tr>';
                             }
                             ++X > 11 && ((X = 0), ee++),
                                 (x += T +=
@@ -53214,16 +53583,16 @@ Object.values ||
             (e['_leaflet_touchstart' + n] = s),
                 e.addEventListener(ei, s, !1),
                 ai ||
-                    (document.documentElement.addEventListener(ei, N, !0),
-                    document.documentElement.addEventListener(ti, O, !0),
+                    (document.documentElement.addEventListener(ei, O, !0),
+                    document.documentElement.addEventListener(ti, N, !0),
                     document.documentElement.addEventListener(ii, B, !0),
                     document.documentElement.addEventListener(ni, B, !0),
                     (ai = !0));
         }
-        function N(e) {
+        function O(e) {
             (oi[e.pointerId] = e), ri++;
         }
-        function O(e) {
+        function N(e) {
             oi[e.pointerId] && (oi[e.pointerId] = e);
         }
         function B(e) {
@@ -53398,7 +53767,7 @@ Object.values ||
         function ae(e, t, i) {
             var n = t || new y(0, 0);
             e.style[ui] =
-                (Lt ?
+                (Nt ?
                     'translate(' + n.x + 'px,' + n.y + 'px)'
                 :   'translate3d(' + n.x + 'px,' + n.y + 'px,0)') +
                 (i ? ' scale(' + i + ')' : '');
@@ -53637,23 +54006,23 @@ Object.values ||
         }
         function De(e, t) {
             for (var i = [e[0]], n = 1, s = 0, o = e.length; n < o; n++)
-                Oe(e[n], e[s]) > t && (i.push(e[n]), (s = n));
+                Le(e[n], e[s]) > t && (i.push(e[n]), (s = n));
             return s < o - 1 && i.push(e[o - 1]), i;
         }
         function Re(e, t, i, n, s) {
             var o,
                 a,
                 r,
-                l = n ? Ii : Le(e, i),
-                c = Le(t, i);
+                l = n ? Ii : Ne(e, i),
+                c = Ne(t, i);
             for (Ii = c; ; ) {
                 if (!(l | c)) return [e, t];
                 if (l & c) return !1;
-                (r = Le((a = Ne(e, t, (o = l || c), i, s)), i)),
+                (r = Ne((a = Oe(e, t, (o = l || c), i, s)), i)),
                     o === l ? ((e = a), (l = r)) : ((t = a), (c = r));
             }
         }
-        function Ne(e, t, i, n, s) {
+        function Oe(e, t, i, n, s) {
             var o,
                 a,
                 r = t.x - e.x,
@@ -53668,7 +54037,7 @@ Object.values ||
                 new y(o, a, s)
             );
         }
-        function Le(e, t) {
+        function Ne(e, t) {
             var i = 0;
             return (
                 e.x < t.min.x ? (i |= 1) : e.x > t.max.x && (i |= 2),
@@ -53676,7 +54045,7 @@ Object.values ||
                 i
             );
         }
-        function Oe(e, t) {
+        function Le(e, t) {
             var i = t.x - e.x,
                 n = t.y - e.y;
             return i * i + n * n;
@@ -53722,7 +54091,7 @@ Object.values ||
                 d,
                 u,
                 h = [1, 4, 2, 8];
-            for (s = 0, c = e.length; s < c; s++) e[s]._code = Le(e[s], t);
+            for (s = 0, c = e.length; s < c; s++) e[s]._code = Ne(e[s], t);
             for (a = 0; a < 4; a++) {
                 for (
                     d = h[a], n = [], s = 0, o = (c = e.length) - 1;
@@ -53733,10 +54102,10 @@ Object.values ||
                         (l = e[o]),
                         r._code & d ?
                             l._code & d ||
-                            (((u = Ne(l, r, d, t, i))._code = Le(u, t)),
+                            (((u = Oe(l, r, d, t, i))._code = Ne(u, t)),
                             n.push(u))
                         :   (l._code & d &&
-                                (((u = Ne(l, r, d, t, i))._code = Le(u, t)),
+                                (((u = Oe(l, r, d, t, i))._code = Ne(u, t)),
                                 n.push(u)),
                             n.push(r));
                 e = n;
@@ -54534,17 +54903,17 @@ Object.values ||
             jt = !Pt && I('safari'),
             Dt = I('phantom'),
             Rt = 'OTransition' in wt,
-            Nt = 0 === navigator.platform.indexOf('Win'),
-            Lt = kt && 'transition' in wt,
-            Ot =
+            Ot = 0 === navigator.platform.indexOf('Win'),
+            Nt = kt && 'transition' in wt,
+            Lt =
                 'WebKitCSSMatrix' in window &&
                 'm11' in new window.WebKitCSSMatrix() &&
                 !Tt,
             Bt = 'MozPerspective' in wt,
-            Ht = !window.L_DISABLE_3D && (Lt || Ot || Bt) && !Rt && !Dt,
+            Ht = !window.L_DISABLE_3D && (Nt || Lt || Bt) && !Rt && !Dt,
             $t = 'undefined' != typeof orientation || I('mobile'),
             Ft = $t && zt,
-            Vt = $t && Ot,
+            Vt = $t && Lt,
             qt = !window.PointerEvent && window.MSPointerEvent,
             Wt = !(!window.PointerEvent && !qt),
             Ut =
@@ -54589,9 +54958,9 @@ Object.values ||
                 safari: jt,
                 phantom: Dt,
                 opera12: Rt,
-                win: Nt,
-                ie3d: Lt,
-                webkit3d: Ot,
+                win: Ot,
+                ie3d: Nt,
+                webkit3d: Lt,
                 gecko3d: Bt,
                 any3d: Ht,
                 mobile: $t,
@@ -54704,7 +55073,7 @@ Object.values ||
             }),
             bi = '_leaflet_events',
             yi =
-                Nt && Pt ? 2 * window.devicePixelRatio
+                Ot && Pt ? 2 * window.devicePixelRatio
                 : It ? window.devicePixelRatio
                 : 1,
             wi = {},
@@ -56471,13 +56840,13 @@ Object.values ||
                 pointerdown: 'touchend',
                 MSPointerDown: 'touchend',
             },
-            Ni = {
+            Oi = {
                 mousedown: 'mousemove',
                 touchstart: 'touchmove',
                 pointerdown: 'touchmove',
                 MSPointerDown: 'touchmove',
             },
-            Li = ut.extend({
+            Ni = ut.extend({
                 options: { clickTolerance: 3 },
                 initialize: function (e, t, i, n) {
                     d(this, n),
@@ -56492,7 +56861,7 @@ Object.values ||
                 },
                 disable: function () {
                     this._enabled &&
-                        (Li._dragging === this && this.finishDrag(),
+                        (Ni._dragging === this && this.finishDrag(),
                         fe(this._dragStartTarget, Di, this._onDown, this),
                         (this._enabled = !1),
                         (this._moved = !1));
@@ -56504,12 +56873,12 @@ Object.values ||
                         ((this._moved = !1),
                         !Q(this._element, 'leaflet-zoom-anim') &&
                             !(
-                                Li._dragging ||
+                                Ni._dragging ||
                                 e.shiftKey ||
                                 (1 !== e.which &&
                                     1 !== e.button &&
                                     !e.touches) ||
-                                ((Li._dragging = this),
+                                ((Ni._dragging = this),
                                 this._preventOutline && ue(this._element),
                                 ce(),
                                 ft(),
@@ -56521,7 +56890,7 @@ Object.values ||
                             i = pe(this._element);
                         (this._startPoint = new y(t.clientX, t.clientY)),
                             (this._parentScale = me(i)),
-                            _e(document, Ni[e.type], this._onMove, this),
+                            _e(document, Oi[e.type], this._onMove, this),
                             _e(document, Ri[e.type], this._onUp, this);
                     }
                 },
@@ -56585,8 +56954,8 @@ Object.values ||
                     this._lastTarget &&
                         (ee(this._lastTarget, 'leaflet-drag-target'),
                         (this._lastTarget = null)),
-                    Ni))
-                        fe(document, Ni[e], this._onMove, this),
+                    Oi))
+                        fe(document, Oi[e], this._onMove, this),
                             fe(document, Ri[e], this._onUp, this);
                     de(),
                         gt(),
@@ -56599,18 +56968,18 @@ Object.values ||
                                 ),
                             })),
                         (this._moving = !1),
-                        (Li._dragging = !1);
+                        (Ni._dragging = !1);
                 },
             }),
-            Oi = (Object.freeze || Object)({
+            Li = (Object.freeze || Object)({
                 simplify: Me,
                 pointToSegmentDistance: Pe,
                 closestPointOnSegment: function (e, t, i) {
                     return Be(e, t, i);
                 },
                 clipSegment: Re,
-                _getEdgeIntersection: Ne,
-                _getBitCode: Le,
+                _getEdgeIntersection: Oe,
+                _getBitCode: Ne,
                 _sqClosestPointOnSegment: Be,
                 isFlat: He,
                 _flat: $e,
@@ -57047,7 +57416,7 @@ Object.values ||
                 },
                 addHooks: function () {
                     var e = this._marker._icon;
-                    this._draggable || (this._draggable = new Li(e, e, !0)),
+                    this._draggable || (this._draggable = new Ni(e, e, !0)),
                         this._draggable
                             .on(
                                 {
@@ -60290,7 +60659,7 @@ Object.values ||
             addHooks: function () {
                 if (!this._draggable) {
                     var e = this._map;
-                    (this._draggable = new Li(e._mapPane, e._container)),
+                    (this._draggable = new Ni(e._mapPane, e._container)),
                         this._draggable.on(
                             {
                                 dragstart: this._onDragStart,
@@ -60846,8 +61215,8 @@ Object.values ||
             (e.DomEvent = ki),
             (e.DomUtil = vi),
             (e.PosAnimation = xi),
-            (e.Draggable = Li),
-            (e.LineUtil = Oi),
+            (e.Draggable = Ni),
+            (e.LineUtil = Li),
             (e.PolyUtil = Bi),
             (e.Point = y),
             (e.point = w),
@@ -61658,6 +62027,7 @@ Object.values ||
     })(this);
 const isSafari = void 0 !== window.safari;
 var currentUserId = -1,
+    user_id = -1,
     map,
     alliance_member_buildings_show,
     geocoder,
@@ -61699,6 +62069,7 @@ var currentUserId = -1,
     mixed_mobile_desktop_mode = !1,
     mobile_version = 1,
     vehicle_markers = Array(),
+    vehicle_markers_per_id = new Map(),
     icon_empty,
     vehicles_not_involved = Array(),
     alliance_show_not_involved_vehicle = !1,
@@ -61798,6 +62169,26 @@ var lastMissionTimeoutID = null,
 let client_uses_design_v2 = !0,
     magicValueAvailableSpace = 71;
 const startedIntervals = new Map();
+var pauseTick = !1,
+    pauseVehicleAnim = !1,
+    tickDebug = !1,
+    vehicleAnimDebug = !1,
+    requestAnimationFrame =
+        window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame,
+    cancelAnimationFrame =
+        window.cancelAnimationFrame ||
+        window.webkitCancelRequestAnimationFrame ||
+        window.webkitCancelAnimationFrame ||
+        window.mozCancelRequestAnimationFrame ||
+        window.mozCancelAnimationFrame ||
+        window.oCancelRequestAnimationFrame ||
+        window.oCancelAnimationFrame ||
+        window.msCancelRequestAnimationFrame ||
+        window.msCancelAnimationFrame;
 $(function () {
     function onCoinsTop() {
         return !mobile_bridge_use || (mobileBridgeAdd('coins_window', {}), !1);
@@ -67498,22 +67889,22 @@ if (
                 return t.toUpperCase();
             });
         }
-        function N(e, t, i, n, s) {
+        function O(e, t, i, n, s) {
             for (e = s ? e.lastChild : e.firstChild; e; ) {
                 var o = s ? e.previousSibling : e.nextSibling;
                 if (
                     (!i && !1 === t(e)) ||
-                    (!n && !1 === N(e, t, i, n, s)) ||
+                    (!n && !1 === O(e, t, i, n, s)) ||
                     (i && !1 === t(e))
                 )
                     return !1;
                 e = o;
             }
         }
-        function L(e, t, i, n) {
-            N(e, t, i, n, !0);
+        function N(e, t, i, n) {
+            O(e, t, i, n, !0);
         }
-        function O(e, t) {
+        function L(e, t) {
             var i = (t = t || document).createDocumentFragment(),
                 n = r('div', {}, t);
             for (n.innerHTML = e; n.firstChild; ) u(i, n.firstChild);
@@ -67564,7 +67955,7 @@ if (
                 for (; F(e.parentNode, !0); ) e = e.parentNode;
                 return e;
             };
-            N(e, function (e) {
+            O(e, function (e) {
                 var i = 'ul,ol',
                     n = !F(e, !0);
                 if (n && F(e.parentNode, !0)) {
@@ -67723,7 +68114,7 @@ if (
                 Object.keys(t).forEach(function (e) {
                     n = n.replace(new RegExp(Q('{' + e + '}'), 'g'), t[e]);
                 }),
-                i && (n = O(n)),
+                i && (n = L(n)),
                 n
             );
         }
@@ -67833,7 +68224,7 @@ if (
                         d = s.createDocumentFragment();
                     if (
                         ('string' == typeof e ?
-                            (t && (e += l.selectedHtml() + t), (d = O(e)))
+                            (t && (e += l.selectedHtml() + t), (d = L(e)))
                         :   (u(d, e),
                             t &&
                                 (u(d, l.selectedRange().extractContents()),
@@ -68127,7 +68518,7 @@ if (
                                     d = i ? l.search(r[c]) : l.indexOf(c);
                                 if (d > -1) {
                                     var u = l.indexOf(c, d),
-                                        h = O(t[c], n),
+                                        h = L(t[c], n),
                                         p = l.substr(u + c.length);
                                     h.appendChild(n.createTextNode(p)),
                                         (s.nodeValue = l.substr(0, u)),
@@ -68143,7 +68534,7 @@ if (
         }
         function re(e, t) {
             var i;
-            N(
+            O(
                 e,
                 function (e) {
                     F(e, !0) ?
@@ -68164,8 +68555,8 @@ if (
                 C,
                 S,
                 R,
-                N,
                 O,
+                L,
                 V,
                 W,
                 U,
@@ -68237,7 +68628,7 @@ if (
                             e
                         ),
                         y(a, 'z-index', kt.zIndex),
-                        Ne && A(a, 'ie ie' + Ne),
+                        Oe && A(a, 'ie ie' + Oe),
                         (ce = e.required),
                         (e.required = !1);
                     var t = le.formats[kt.format];
@@ -68289,7 +68680,7 @@ if (
                         u(a, f),
                         u(a, R),
                         _t.dimensions(kt.width || P(e), kt.height || I(e));
-                    var t = Ne ? 'ie ie' + Ne : '';
+                    var t = Oe ? 'ie ie' + Oe : '';
                     (t += ze ? ' ios' : ''),
                         (S = f.contentDocument).open(),
                         S.write(
@@ -68305,8 +68696,8 @@ if (
                         (C = S.body),
                         (x = f.contentWindow),
                         _t.readOnly(!!kt.readOnly),
-                        (ze || Ce || Ne) &&
-                            (I(C, '100%'), Ne || p(C, 'touchend', _t.focus));
+                        (ze || Ce || Oe) &&
+                            (I(C, '100%'), Oe || p(C, 'touchend', _t.focus));
                     var i = _(e, 'tabindex');
                     _(R, 'tabindex', i),
                         _(f, 'tabindex', i),
@@ -68368,7 +68759,7 @@ if (
                         p(S, 'beforedeactivate keyup mouseup', Ee),
                         p(S, 'keyup', nt),
                         p(S, 'focus', function () {
-                            O = null;
+                            L = null;
                         }),
                         p(a, 'selectionchanged', ot),
                         p(a, 'selectionchanged', tt),
@@ -68563,7 +68954,7 @@ if (
 
                             )
                                 (i = i.lastChild),
-                                    !Le &&
+                                    !Ne &&
                                         k(i, 'br') &&
                                         i.previousSibling &&
                                         (i = i.previousSibling);
@@ -68664,9 +69055,9 @@ if (
                     if (Y) {
                         Y.destroy(),
                             (G = null),
-                            (O = null),
+                            (L = null),
                             (Y = null),
-                            N && d(N),
+                            O && d(O),
                             m(Re, 'click', Xe);
                         var t = e.form;
                         t &&
@@ -68684,7 +69075,7 @@ if (
                     var l,
                         c = 'sceditor-' + t;
                     _t.closeDropDown(!0),
-                        (N && T(N, c)) ||
+                        (O && T(O, c)) ||
                             (!1 !== s &&
                                 o(
                                     h(i, ':not(input):not(textarea)'),
@@ -68702,31 +69093,31 @@ if (
                                 kt.dropDownCss
                             )),
                             y(
-                                (N = r('div', {
+                                (O = r('div', {
                                     className: 'sceditor-dropdown ' + c,
                                 })),
                                 l
                             ),
-                            u(N, i),
-                            u(a, N),
-                            p(N, 'click focusin', function (e) {
+                            u(O, i),
+                            u(a, O),
+                            p(O, 'click focusin', function (e) {
                                 e.stopPropagation();
                             }),
                             setTimeout(function () {
-                                if (N) {
-                                    var e = h(N, 'input,textarea')[0];
+                                if (O) {
+                                    var e = h(O, 'input,textarea')[0];
                                     e && e.focus();
                                 }
                             }));
                 }),
                 (Xe = function (e) {
                     3 !== e.which &&
-                        N &&
+                        O &&
                         !e.defaultPrevented &&
                         (pt(), _t.closeDropDown());
                 }),
                 (qe = function (e) {
-                    var t = Ne || Ce,
+                    var t = Oe || Ce,
                         i = C,
                         n = e.clipboardData,
                         s = function (e) {
@@ -68745,7 +69136,7 @@ if (
                             r = n.items;
                         e.preventDefault();
                         for (var l = 0; l < a.length; l++) {
-                            if (De.FileReader && r && Oe.test(r[l].type))
+                            if (De.FileReader && r && Le.test(r[l].type))
                                 return s(n.items[l].getAsFile());
                             o[a[l]] = n.getData(a[l]);
                         }
@@ -68789,7 +69180,7 @@ if (
                         _t.wysiwygEditorInsertHtml(n.val, null, !0);
                 }),
                 (_t.closeDropDown = function (e) {
-                    N && (d(N), (N = null)), !0 === e && _t.focus();
+                    O && (d(O), (O = null)), !0 === e && _t.focus();
                 }),
                 (_t.wysiwygEditorInsertHtml = function (e, t, i) {
                     var n,
@@ -68916,7 +69307,7 @@ if (
                     return !1 !== e && 'toHtml' in i && (t = i.toHtml(t)), t;
                 }),
                 (_t.setWysiwygEditorValue = function (e) {
-                    e || (e = '<p>' + (Ne ? '' : '<br />') + '</p>'),
+                    e || (e = '<p>' + (Oe ? '' : '<br />') + '</p>'),
                         (C.innerHTML = e),
                         Te(),
                         nt(),
@@ -68950,7 +69341,7 @@ if (
                         e ?
                             _t.setWysiwygEditorValue(_t.getSourceEditorValue())
                         :   _t.setSourceEditorValue(_t.getWysiwygEditorValue()),
-                        (O = null),
+                        (L = null),
                         b(R),
                         b(f),
                         M(a, 'wysiwygMode', e),
@@ -68981,7 +69372,7 @@ if (
                             ));
                 }),
                 (Ee = function () {
-                    Ne && (O = G.selectedRange());
+                    Oe && (L = G.selectedRange());
                 }),
                 (_t.execCommand = function (e, t) {
                     var i = !1,
@@ -69085,9 +69476,9 @@ if (
                         (_t.closeDropDown(),
                         13 === e.which && !k(Q, 'li,ul,ol') && B(Q))
                     ) {
-                        O = null;
+                        L = null;
                         var t = r('br', {}, S);
-                        if ((G.insertNode(t), !Le)) {
+                        if ((G.insertNode(t), !Ne)) {
                             var i = t.parentNode,
                                 n = i.lastChild;
                             n &&
@@ -69103,7 +69494,7 @@ if (
                     }
                 }),
                 (nt = function () {
-                    L(C, function (e) {
+                    N(C, function (e) {
                         if (
                             e.nodeType === ge &&
                             !/inline/.test(y(e, 'display')) &&
@@ -69113,7 +69504,7 @@ if (
                             var t = r('p', {}, S);
                             return (
                                 (t.className = 'sceditor-nlf'),
-                                (t.innerHTML = Le ? '' : '<br />'),
+                                (t.innerHTML = Ne ? '' : '<br />'),
                                 u(C, t),
                                 !1
                             );
@@ -69129,7 +69520,7 @@ if (
                     _t.val(e.value);
                 }),
                 (Ye = function () {
-                    _t.closeDropDown(), (O = null);
+                    _t.closeDropDown(), (L = null);
                 }),
                 (_t._ = function () {
                     var e,
@@ -69185,7 +69576,7 @@ if (
                         var n,
                             s = G.selectedRange();
                         ee || at(),
-                            !Le &&
+                            !Ne &&
                                 s &&
                                 1 === s.endOffset &&
                                 s.collapsed &&
@@ -69197,7 +69588,7 @@ if (
                                 G.selectRange(s)),
                             x.focus(),
                             C.focus(),
-                            O && (G.selectRange(O), (O = null));
+                            L && (G.selectRange(L), (L = null));
                     }
                     return tt(), _t;
                 }),
@@ -69442,7 +69833,7 @@ if (
                             k(e, 'body') ||
                             (G.saveRange(),
                             (e.className = ''),
-                            (O = null),
+                            (L = null),
                             _(e, 'style', ''),
                             k(e, 'p,div,td') || H(e, 'p'),
                             G.restoreRange()),
@@ -69757,7 +70148,7 @@ if (
                                     (s += '</div>');
                             }),
                             (o._htmlCache = s)),
-                            u(n, O(o._htmlCache)),
+                            u(n, L(o._htmlCache)),
                             p(n, 'click', 'a', function (t) {
                                 i(w(this, 'color')),
                                     e.closeDropDown(!0),
@@ -70355,9 +70746,9 @@ if (
             },
             De = window,
             Re = document,
-            Ne = xe,
-            Le = Ne && Ne < 11,
-            Oe = /^image\/(p?jpe?g|gif|png|bmp)$/i;
+            Oe = xe,
+            Ne = Oe && Oe < 11,
+            Le = /^image\/(p?jpe?g|gif|png|bmp)$/i;
         (le.locale = {}),
             (le.formats = {}),
             (le.icons = {}),
@@ -70409,9 +70800,9 @@ if (
                     closest: c,
                     width: P,
                     height: I,
-                    traverse: N,
-                    rTraverse: L,
-                    parseHTML: O,
+                    traverse: O,
+                    rTraverse: N,
+                    parseHTML: L,
                     hasStyling: B,
                     convertElement: H,
                     blockLevelList: ye,
@@ -70706,22 +71097,22 @@ if (
                 return t.toUpperCase();
             });
         }
-        function N(e, t, i, n, s) {
+        function O(e, t, i, n, s) {
             for (e = s ? e.lastChild : e.firstChild; e; ) {
                 var o = s ? e.previousSibling : e.nextSibling;
                 if (
                     (!i && !1 === t(e)) ||
-                    (!n && !1 === N(e, t, i, n, s)) ||
+                    (!n && !1 === O(e, t, i, n, s)) ||
                     (i && !1 === t(e))
                 )
                     return !1;
                 e = o;
             }
         }
-        function L(e, t, i, n) {
-            N(e, t, i, n, !0);
+        function N(e, t, i, n) {
+            O(e, t, i, n, !0);
         }
-        function O(e, t) {
+        function L(e, t) {
             var i = (t = t || document).createDocumentFragment(),
                 n = r('div', {}, t);
             for (n.innerHTML = e; n.firstChild; ) u(i, n.firstChild);
@@ -70772,7 +71163,7 @@ if (
                 for (; F(e.parentNode, !0); ) e = e.parentNode;
                 return e;
             };
-            N(e, function (e) {
+            O(e, function (e) {
                 var i = 'ul,ol',
                     n = !F(e, !0);
                 if (n && F(e.parentNode, !0)) {
@@ -70931,7 +71322,7 @@ if (
                 Object.keys(t).forEach(function (e) {
                     n = n.replace(new RegExp(Q('{' + e + '}'), 'g'), t[e]);
                 }),
-                i && (n = O(n)),
+                i && (n = L(n)),
                 n
             );
         }
@@ -71041,7 +71432,7 @@ if (
                         d = s.createDocumentFragment();
                     if (
                         ('string' == typeof e ?
-                            (t && (e += l.selectedHtml() + t), (d = O(e)))
+                            (t && (e += l.selectedHtml() + t), (d = L(e)))
                         :   (u(d, e),
                             t &&
                                 (u(d, l.selectedRange().extractContents()),
@@ -71335,7 +71726,7 @@ if (
                                     d = i ? l.search(r[c]) : l.indexOf(c);
                                 if (d > -1) {
                                     var u = l.indexOf(c, d),
-                                        h = O(t[c], n),
+                                        h = L(t[c], n),
                                         p = l.substr(u + c.length);
                                     h.appendChild(n.createTextNode(p)),
                                         (s.nodeValue = l.substr(0, u)),
@@ -71351,7 +71742,7 @@ if (
         }
         function re(e, t) {
             var i;
-            N(
+            O(
                 e,
                 function (e) {
                     F(e, !0) ?
@@ -71372,8 +71763,8 @@ if (
                 C,
                 S,
                 R,
-                N,
                 O,
+                L,
                 V,
                 W,
                 U,
@@ -71445,7 +71836,7 @@ if (
                             e
                         ),
                         y(a, 'z-index', kt.zIndex),
-                        Ne && A(a, 'ie ie' + Ne),
+                        Oe && A(a, 'ie ie' + Oe),
                         (ce = e.required),
                         (e.required = !1);
                     var t = le.formats[kt.format];
@@ -71497,7 +71888,7 @@ if (
                         u(a, f),
                         u(a, R),
                         _t.dimensions(kt.width || P(e), kt.height || I(e));
-                    var t = Ne ? 'ie ie' + Ne : '';
+                    var t = Oe ? 'ie ie' + Oe : '';
                     (t += ze ? ' ios' : ''),
                         (S = f.contentDocument).open(),
                         S.write(
@@ -71513,8 +71904,8 @@ if (
                         (C = S.body),
                         (x = f.contentWindow),
                         _t.readOnly(!!kt.readOnly),
-                        (ze || Ce || Ne) &&
-                            (I(C, '100%'), Ne || p(C, 'touchend', _t.focus));
+                        (ze || Ce || Oe) &&
+                            (I(C, '100%'), Oe || p(C, 'touchend', _t.focus));
                     var i = _(e, 'tabindex');
                     _(R, 'tabindex', i),
                         _(f, 'tabindex', i),
@@ -71576,7 +71967,7 @@ if (
                         p(S, 'beforedeactivate keyup mouseup', Ee),
                         p(S, 'keyup', nt),
                         p(S, 'focus', function () {
-                            O = null;
+                            L = null;
                         }),
                         p(a, 'selectionchanged', ot),
                         p(a, 'selectionchanged', tt),
@@ -71771,7 +72162,7 @@ if (
 
                             )
                                 (i = i.lastChild),
-                                    !Le &&
+                                    !Ne &&
                                         k(i, 'br') &&
                                         i.previousSibling &&
                                         (i = i.previousSibling);
@@ -71872,9 +72263,9 @@ if (
                     if (Y) {
                         Y.destroy(),
                             (G = null),
-                            (O = null),
+                            (L = null),
                             (Y = null),
-                            N && d(N),
+                            O && d(O),
                             m(Re, 'click', Xe);
                         var t = e.form;
                         t &&
@@ -71892,7 +72283,7 @@ if (
                     var l,
                         c = 'sceditor-' + t;
                     _t.closeDropDown(!0),
-                        (N && T(N, c)) ||
+                        (O && T(O, c)) ||
                             (!1 !== s &&
                                 o(
                                     h(i, ':not(input):not(textarea)'),
@@ -71910,31 +72301,31 @@ if (
                                 kt.dropDownCss
                             )),
                             y(
-                                (N = r('div', {
+                                (O = r('div', {
                                     className: 'sceditor-dropdown ' + c,
                                 })),
                                 l
                             ),
-                            u(N, i),
-                            u(a, N),
-                            p(N, 'click focusin', function (e) {
+                            u(O, i),
+                            u(a, O),
+                            p(O, 'click focusin', function (e) {
                                 e.stopPropagation();
                             }),
                             setTimeout(function () {
-                                if (N) {
-                                    var e = h(N, 'input,textarea')[0];
+                                if (O) {
+                                    var e = h(O, 'input,textarea')[0];
                                     e && e.focus();
                                 }
                             }));
                 }),
                 (Xe = function (e) {
                     3 !== e.which &&
-                        N &&
+                        O &&
                         !e.defaultPrevented &&
                         (pt(), _t.closeDropDown());
                 }),
                 (qe = function (e) {
-                    var t = Ne || Ce,
+                    var t = Oe || Ce,
                         i = C,
                         n = e.clipboardData,
                         s = function (e) {
@@ -71953,7 +72344,7 @@ if (
                             r = n.items;
                         e.preventDefault();
                         for (var l = 0; l < a.length; l++) {
-                            if (De.FileReader && r && Oe.test(r[l].type))
+                            if (De.FileReader && r && Le.test(r[l].type))
                                 return s(n.items[l].getAsFile());
                             o[a[l]] = n.getData(a[l]);
                         }
@@ -71997,7 +72388,7 @@ if (
                         _t.wysiwygEditorInsertHtml(n.val, null, !0);
                 }),
                 (_t.closeDropDown = function (e) {
-                    N && (d(N), (N = null)), !0 === e && _t.focus();
+                    O && (d(O), (O = null)), !0 === e && _t.focus();
                 }),
                 (_t.wysiwygEditorInsertHtml = function (e, t, i) {
                     var n,
@@ -72124,7 +72515,7 @@ if (
                     return !1 !== e && 'toHtml' in i && (t = i.toHtml(t)), t;
                 }),
                 (_t.setWysiwygEditorValue = function (e) {
-                    e || (e = '<p>' + (Ne ? '' : '<br />') + '</p>'),
+                    e || (e = '<p>' + (Oe ? '' : '<br />') + '</p>'),
                         (C.innerHTML = e),
                         Te(),
                         nt(),
@@ -72158,7 +72549,7 @@ if (
                         e ?
                             _t.setWysiwygEditorValue(_t.getSourceEditorValue())
                         :   _t.setSourceEditorValue(_t.getWysiwygEditorValue()),
-                        (O = null),
+                        (L = null),
                         b(R),
                         b(f),
                         M(a, 'wysiwygMode', e),
@@ -72189,7 +72580,7 @@ if (
                             ));
                 }),
                 (Ee = function () {
-                    Ne && (O = G.selectedRange());
+                    Oe && (L = G.selectedRange());
                 }),
                 (_t.execCommand = function (e, t) {
                     var i = !1,
@@ -72293,9 +72684,9 @@ if (
                         (_t.closeDropDown(),
                         13 === e.which && !k(Q, 'li,ul,ol') && B(Q))
                     ) {
-                        O = null;
+                        L = null;
                         var t = r('br', {}, S);
-                        if ((G.insertNode(t), !Le)) {
+                        if ((G.insertNode(t), !Ne)) {
                             var i = t.parentNode,
                                 n = i.lastChild;
                             n &&
@@ -72311,7 +72702,7 @@ if (
                     }
                 }),
                 (nt = function () {
-                    L(C, function (e) {
+                    N(C, function (e) {
                         if (
                             e.nodeType === ge &&
                             !/inline/.test(y(e, 'display')) &&
@@ -72321,7 +72712,7 @@ if (
                             var t = r('p', {}, S);
                             return (
                                 (t.className = 'sceditor-nlf'),
-                                (t.innerHTML = Le ? '' : '<br />'),
+                                (t.innerHTML = Ne ? '' : '<br />'),
                                 u(C, t),
                                 !1
                             );
@@ -72337,7 +72728,7 @@ if (
                     _t.val(e.value);
                 }),
                 (Ye = function () {
-                    _t.closeDropDown(), (O = null);
+                    _t.closeDropDown(), (L = null);
                 }),
                 (_t._ = function () {
                     var e,
@@ -72393,7 +72784,7 @@ if (
                         var n,
                             s = G.selectedRange();
                         ee || at(),
-                            !Le &&
+                            !Ne &&
                                 s &&
                                 1 === s.endOffset &&
                                 s.collapsed &&
@@ -72405,7 +72796,7 @@ if (
                                 G.selectRange(s)),
                             x.focus(),
                             C.focus(),
-                            O && (G.selectRange(O), (O = null));
+                            L && (G.selectRange(L), (L = null));
                     }
                     return tt(), _t;
                 }),
@@ -72650,7 +73041,7 @@ if (
                             k(e, 'body') ||
                             (G.saveRange(),
                             (e.className = ''),
-                            (O = null),
+                            (L = null),
                             _(e, 'style', ''),
                             k(e, 'p,div,td') || H(e, 'p'),
                             G.restoreRange()),
@@ -72965,7 +73356,7 @@ if (
                                     (s += '</div>');
                             }),
                             (o._htmlCache = s)),
-                            u(n, O(o._htmlCache)),
+                            u(n, L(o._htmlCache)),
                             p(n, 'click', 'a', function (t) {
                                 i(w(this, 'color')),
                                     e.closeDropDown(!0),
@@ -73563,9 +73954,9 @@ if (
             },
             De = window,
             Re = document,
-            Ne = xe,
-            Le = Ne && Ne < 11,
-            Oe = /^image\/(p?jpe?g|gif|png|bmp)$/i;
+            Oe = xe,
+            Ne = Oe && Oe < 11,
+            Le = /^image\/(p?jpe?g|gif|png|bmp)$/i;
         (le.locale = {}),
             (le.formats = {}),
             (le.icons = {}),
@@ -73617,9 +74008,9 @@ if (
                     closest: c,
                     width: P,
                     height: I,
-                    traverse: N,
-                    rTraverse: L,
-                    parseHTML: O,
+                    traverse: O,
+                    rTraverse: N,
+                    parseHTML: L,
                     hasStyling: B,
                     convertElement: H,
                     blockLevelList: ye,
@@ -79540,3 +79931,173 @@ var show_only_available = !0,
     sea_mission_alliance_rescue_txt = '',
     alliance_cells_txt = '',
     vehicle_data = new Map();
+const TickManager = (() => {
+        function e(e) {
+            tickDebug && console.log(e);
+        }
+        function t() {
+            c ||
+                (e('startInterval'),
+                (c = setInterval(function () {
+                    requestAnimationFrame(n);
+                }, u)));
+        }
+        function i() {
+            c &&
+                0 === l.size &&
+                (e('stopInterval'), clearInterval(c), (c = null));
+        }
+        function n() {
+            e(`tickAll: ${l.size} objects`);
+            const t = Date.now();
+            if (null !== d) {
+                e(`delta: ${t - d}`);
+            }
+            if (((d = t), pauseTick)) e(`ticks are paused. skipping at ${t}`);
+            else {
+                for (const [e, i] of l.entries())
+                    try {
+                        if (i.endDate) {
+                            const n = i.endDate - t;
+                            if (n <= 0) {
+                                a(i), l.delete(e);
+                                continue;
+                            }
+                            i.remainingTime = n;
+                        }
+                        o(i);
+                    } catch (e) {
+                        console.error(e);
+                    }
+                i();
+            }
+        }
+        function s({
+            id: i,
+            elementId: n,
+            onTick: s,
+            onEnd: a,
+            endDate: r,
+            params: c,
+        }) {
+            if (!i || 'function' != typeof s)
+                return void e(`Invalid object registration: ${i}`);
+            if (!r)
+                return void e(`Invalid or missing endDate for object: ${i}`);
+            r instanceof Date && (r = r.getTime());
+            const d = {
+                id: i,
+                elementId: n,
+                onTick: s,
+                onEnd: a,
+                endDate: r,
+                params: c,
+            };
+            (d.remainingTime = d.endDate - Date.now()), l.set(i, d), o(d), t();
+        }
+        function o(t) {
+            'function' == typeof t.onTick &&
+                (e(`onTick: ${t.id} remainingTime: ${t.remainingTime}`),
+                t.onTick(t));
+        }
+        function a(t) {
+            'function' == typeof t.onEnd &&
+                (e(`onEnd: ${t.id} remainingTime: ${t.remainingTime}`),
+                t.onEnd(t));
+        }
+        function r(e) {
+            l.delete(e), i();
+        }
+        const l = new Map();
+        let c = null,
+            d = null;
+        const u = 1e3;
+        return { registerObject: s, deregisterObject: r };
+    })(),
+    VehicleTickManager = (() => {
+        function e(e) {
+            vehicleAnimDebug && console.log(e);
+        }
+        function t() {
+            d ||
+                (e('startVehicleInterval'),
+                (d = setInterval(function () {
+                    requestAnimationFrame(n);
+                }, h)));
+        }
+        function i() {
+            d &&
+                0 === c.size &&
+                (e('stopVehicleInterval'), clearInterval(d), (d = null));
+        }
+        function n() {
+            e(`tickAll: ${c.size} objects`);
+            const t = Date.now();
+            if (null !== u) {
+                e(`delta: ${t - u}`);
+            }
+            if (((u = t), pauseVehicleAnim))
+                e(`ticks are paused. skipping at ${t}`);
+            else {
+                for (const [e, i] of c.entries())
+                    try {
+                        if (i.endDate) {
+                            const n = i.endDate - t;
+                            if (n <= 0) {
+                                a(i), c.delete(e);
+                                continue;
+                            }
+                            i.remainingTime = n;
+                        }
+                        o(i);
+                    } catch (e) {
+                        console.error(e);
+                    }
+                i();
+            }
+        }
+        function s({
+            id: i,
+            elementId: n,
+            onTick: s,
+            onEnd: a,
+            endDate: r,
+            params: l,
+        }) {
+            if (!i || 'function' != typeof s)
+                return void e(`Invalid object registration: ${i}`);
+            if (!r)
+                return void e(`Invalid or missing endDate for object: ${i}`);
+            r instanceof Date && (r = r.getTime());
+            const d = {
+                id: i,
+                elementId: n,
+                onTick: s,
+                onEnd: a,
+                endDate: r,
+                params: l,
+            };
+            (d.remainingTime = d.endDate - Date.now()), c.set(i, d), o(d), t();
+        }
+        function o(t) {
+            'function' == typeof t.onTick &&
+                (e(`onTick: ${t.id} remainingTime: ${t.remainingTime}`),
+                t.onTick(t));
+        }
+        function a(t) {
+            'function' == typeof t.onEnd &&
+                (e(`onEnd: ${t.id} remainingTime: ${t.remainingTime}`),
+                t.onEnd(t));
+        }
+        function r(e) {
+            c.delete(e), i();
+        }
+        function l(e) {
+            h = e;
+        }
+        const c = new Map();
+        let d = null,
+            u = null,
+            h = 1e3 / 24;
+        return { registerObject: s, deregisterObject: r, setRefreshRate: l };
+    })();
