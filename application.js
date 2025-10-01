@@ -1551,6 +1551,7 @@ function vehicleCreateOnMap(e, t) {
                     $('#signup_from').effect('highlight', {}, 500)
                 :   lightboxOpen('/vehicles/' + t.id);
             })),
+        (e.is_signup = t.isSignup),
         (e.visible = !1),
         void 0 !== t.apng_sonderrechte && 'true' == t.apng_sonderrechte ?
             (e.apng_sonderrechte = !0)
@@ -1601,6 +1602,7 @@ function vehicleCreateOnMap(e, t) {
             vehicle_markers_per_id.set(t.id, e),
             vehicle_markers.push(e),
             (s = vehicle_markers.length - 1),
+            e.is_signup && vehicleDriveReal(s),
             registerVehicleAnimate(s, e.end_date));
 }
 function vehicleSonderrechte(e) {
@@ -3513,22 +3515,24 @@ function missionsDelete(e) {
             missionSelectionUpdateButtons();
     }
 }
-function vehicleDrive(e) {
-    (e.isr = flavouredAsset(e.isr)), (e.in = flavouredAsset(e.in));
-    var t = new Date(),
-        i = !0;
+function vehicleDrive(e, t) {
+    (e.isSignup = t),
+        (e.isr = flavouredAsset(e.isr)),
+        (e.in = flavouredAsset(e.in));
+    var i = new Date(),
+        n = !0;
     if ('' != e.mid && !alliance_show_not_involved_vehicle) {
-        const n = parseInt(e.mid),
-            s = mission_markers_per_id.get(n);
+        const t = parseInt(e.mid),
+            s = mission_markers_per_id.get(t);
         if (s && !s.involved)
             return (
-                (e.involved_created_at = t),
+                (e.involved_created_at = i),
                 vehicles_not_involved.push(e),
-                (i = !1),
+                (n = !1),
                 !1
             );
     }
-    if (!i) return !1;
+    if (!n) return !1;
     if (
         ($.each(vehicle_delay_timers, function (t, i) {
             i.vehicle_id == e.id && window.clearTimeout(i.timer);
@@ -3537,12 +3541,12 @@ function vehicleDrive(e) {
     )
         vehicleDriveAdd(e);
     else {
-        var n = -1e3 * e.dd;
+        var s = -1e3 * e.dd;
         vehicle_delay_timers.push({
             vehicle_id: e.id,
             timer: setTimeout(function () {
                 vehicleDriveAdd(e);
-            }, n),
+            }, s),
         });
     }
 }
