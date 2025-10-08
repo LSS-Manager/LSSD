@@ -15846,6 +15846,8 @@ Object.values ||
                 battalion_chief_unit: 'Chef de groupe',
                 bike_police: 'DB-Bike',
                 boot: 'Bateaux (g\xe9n\xe9raux)',
+                breathing_protection_container:
+                    'Conteneur de protection respiratoire',
                 brush_air_command: 'Wildland Lead Planes',
                 brush_truck: 'CCF',
                 brush_truck_1: 'CCFS',
@@ -15855,6 +15857,7 @@ Object.values ||
                 brush_truck_5: 'Type 6 engine',
                 brush_vehicle: 'Wildland fire vehicle',
                 car_carrier: 'Tow Trucks',
+                carbon_dioxide: 'Dioxide de Carbone',
                 care_service_equipment: 'Field Kitchen',
                 coastal_boat: 'Coastal Boat',
                 coastal_guard_boat: 'Coastal Guard Boat',
@@ -15988,7 +15991,7 @@ Object.values ||
                 traffic_patrol: 'Any Traffic Patrol Unit',
                 trailers: { pump: 'Pump Trailer' },
                 turntable_ladder: 'Moyen El\xe9vateur A\xe9rien',
-                ventilation: 'Ventilation Units',
+                ventilation: 'Unit\xe9s de ventilation',
                 water_amount: 'Litres d\u2019eau',
                 water_amount_tlf_water_carrier:
                     'Gallons of water - Only TLF or Water Carrier',
