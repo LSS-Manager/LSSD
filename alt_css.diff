@@ -1,7 +1,16 @@
 diff --git a/application.css b/application.alt.css
-index 731121d..b672bd0 100644
+index 20619f7..b672bd0 100644
 --- a/application.css
 +++ b/application.alt.css
+@@ -11227,7 +11227,7 @@ body.dark th.tablesorter-headerAsc {
+     max-width: 92%;
+ }
+ .vehicle_overview .list-group-item {
+-    padding: 0 15px 3px 15px;
++    padding: 0 15px;
+ }
+ .vehicle_overview .list-group-item img {
+     max-height: 20px;
 @@ -15572,40 +15572,6 @@ body.dark .dark-visible {
      align-items: center;
      gap: 10px;
@@ -43,3 +52,20 @@ index 731121d..b672bd0 100644
  .education_description_container {
      margin-top: 10px;
  }
+@@ -15707,16 +15673,6 @@ input.invalid {
+     padding-bottom: 2px !important;
+     padding-left: 4px !important;
+     padding-right: 4px !important;
+-}
+-.vehicle-overview-2 {
+-    display: grid;
+-    grid-gap: 10px;
+-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+-    grid-auto-rows: 55px;
+-}
+-.vehicle-overview-2 .building_list_li {
+-    margin-bottom: 0px;
+-    grid-row-end: span 1;
+ } /*!
+  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
+  *

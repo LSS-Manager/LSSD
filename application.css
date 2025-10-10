@@ -11227,7 +11227,7 @@ body.dark th.tablesorter-headerAsc {
     max-width: 92%;
 }
 .vehicle_overview .list-group-item {
-    padding: 0 15px;
+    padding: 0 15px 3px 15px;
 }
 .vehicle_overview .list-group-item img {
     max-height: 20px;
@@ -15707,6 +15707,16 @@ input.invalid {
     padding-bottom: 2px !important;
     padding-left: 4px !important;
     padding-right: 4px !important;
+}
+.vehicle-overview-2 {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: 55px;
+}
+.vehicle-overview-2 .building_list_li {
+    margin-bottom: 0px;
+    grid-row-end: span 1;
 } /*!
  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
  *
