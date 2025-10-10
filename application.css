@@ -15717,6 +15717,11 @@ input.invalid {
 .vehicle-overview-2 .building_list_li {
     margin-bottom: 0px;
     grid-row-end: span 1;
+}
+.limit-3-rows {
+    max-height: calc(6em);
+    overflow-y: auto;
+    line-height: 2.4em;
 } /*!
  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
  *
