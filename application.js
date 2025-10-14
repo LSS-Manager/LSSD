@@ -7884,6 +7884,10 @@ Object.values ||
                     currency: 'Event-Tickets',
                     event_start_mission: 'Start Event: %{amount} Event-Ticket',
                 },
+                halloween: {
+                    currency: 'Event-Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event-Ticket',
+                },
                 info_bubble_text:
                     'Dieses Ereignis ist nur f\xfcr eine begrenzte Zeit verf\xfcgbar! Schlie\xdfe mit deinen Verbandsmitgliedern Event-Eins\xe4tze ab, um Tickets zu verdienen und so Verband-Events zu starten. Weitere Informationen findest du in deinem Verband unter Event.',
                 info_bubble_text_additional:
@@ -8777,6 +8781,10 @@ Object.values ||
                     event_start_mission: 'Start Event: %{amount} Event Ticket',
                 },
                 easter: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                halloween: {
                     currency: 'Event Tickets',
                     event_start_mission: 'Start Event: %{amount} Event Ticket',
                 },
@@ -9679,6 +9687,10 @@ Object.values ||
                         'Start Event: %{amount} Alliance Ticket',
                 },
                 easter: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                halloween: {
                     currency: 'Event Tickets',
                     event_start_mission: 'Start Event: %{amount} Event Ticket',
                 },
@@ -10626,6 +10638,10 @@ Object.values ||
                     currency: 'Event Tickets',
                     event_start_mission: 'Begin Event: %{amount} Event Ticket',
                 },
+                halloween: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Begin Event: %{amount} Event Ticket',
+                },
                 info_bubble_text:
                     'Dit is een tijdelijk event dat alleen beschikbaar is tijdens ons event! Moedig je verbandleden aan om event inzetten te voltooien om de tickets te verdienen die nodig zijn om dit event te starten. Ga naar je verband pagina voor meer informatie.',
                 info_bubble_text_additional:
@@ -11532,6 +11548,11 @@ Object.values ||
                         'Inicio del evento: %{amount} Entradas para eventos',
                 },
                 easter: {
+                    currency: 'Entradas',
+                    event_start_mission:
+                        'Inicio del evento: %{amount} Entradas para eventos',
+                },
+                halloween: {
                     currency: 'Entradas',
                     event_start_mission:
                         'Inicio del evento: %{amount} Entradas para eventos',
@@ -12447,6 +12468,10 @@ Object.values ||
                     currency: 'Event Tickets',
                     event_start_mission: 'Start Event: %{amount} Event Ticket',
                 },
+                halloween: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 info_bubble_text:
                     'This is a temporary event that is only available during our event! Encourage your alliance members to complete event missions in order to earn the tickets that are needed to start these events. See the alliance event page for more information.',
                 info_bubble_text_additional:
@@ -13347,6 +13372,11 @@ Object.values ||
                         'Starta evenemang: %{amount} Evenemangsbiljett',
                 },
                 easter: {
+                    currency: 'Biljetter till evenemang',
+                    event_start_mission:
+                        'Starta evenemang: %{amount} Evenemangsbiljett',
+                },
+                halloween: {
                     currency: 'Biljetter till evenemang',
                     event_start_mission:
                         'Starta evenemang: %{amount} Evenemangsbiljett',
@@ -14263,6 +14293,11 @@ Object.values ||
                         'Rozpocznij wydarzenie: %{amount} Bilet na wydarzenie',
                 },
                 easter: {
+                    currency: 'Bilety na wydarzenia',
+                    event_start_mission:
+                        'Rozpocznij wydarzenie: %{amount} Bilet na wydarzenie',
+                },
+                halloween: {
                     currency: 'Bilety na wydarzenia',
                     event_start_mission:
                         'Rozpocznij wydarzenie: %{amount} Bilet na wydarzenie',
@@ -15191,6 +15226,11 @@ Object.values ||
                     event_start_mission:
                         'Inizio evento: %{amount} Biglietto evento',
                 },
+                halloween: {
+                    currency: "Biglietti per l'evento",
+                    event_start_mission:
+                        'Inizio evento: %{amount} Biglietto evento',
+                },
                 info_bubble_text:
                     "Si tratta di un evento temporaneo disponibile solo durante il nostro evento! Incoraggiate i membri della vostra alleanza a completare le missioni evento per guadagnare i biglietti necessari per avviare questi eventi. Per ulteriori informazioni, consultare la pagina degli eventi dell'alleanza.",
                 info_bubble_text_additional:
@@ -16114,6 +16154,11 @@ Object.values ||
                         "D\xe9but de l'\xe9v\xe9nement : %{amount} Ticket d'\xe9v\xe9nement",
                 },
                 easter: {
+                    currency: "Billets d'\xe9v\xe9nements",
+                    event_start_mission:
+                        "D\xe9but de l'\xe9v\xe9nement : %{amount} Ticket d'\xe9v\xe9nement",
+                },
+                halloween: {
                     currency: "Billets d'\xe9v\xe9nements",
                     event_start_mission:
                         "D\xe9but de l'\xe9v\xe9nement : %{amount} Ticket d'\xe9v\xe9nement",
@@ -17112,6 +17157,10 @@ Object.values ||
                     event_start_mission: 'Start Event: %{amount} Event Ticket',
                 },
                 easter: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                halloween: {
                     currency: 'Event Tickets',
                     event_start_mission: 'Start Event: %{amount} Event Ticket',
                 },
@@ -18124,6 +18173,11 @@ Object.values ||
                     event_start_mission:
                         'Start begivenhed: %{amount} Begivenhedsbillet',
                 },
+                halloween: {
+                    currency: 'Billetter til arrangementer',
+                    event_start_mission:
+                        'Start begivenhed: %{amount} Begivenhedsbillet',
+                },
                 info_bubble_text:
                     'Dette er en midlertidig begivenhed, som kun er tilg\xe6ngelig under vores begivenhed! Opfordr dine alliancemedlemmer til at gennemf\xf8re eventmissioner for at tjene de billetter, der er n\xf8dvendige for at starte disse events. Se siden med alliancebegivenheder for mere information.',
                 info_bubble_text_additional:
@@ -19026,6 +19080,11 @@ Object.values ||
                         'Start hendelse: %{amount} Eventbillett',
                 },
                 easter: {
+                    currency: 'Billetter til arrangementer',
+                    event_start_mission:
+                        'Start hendelse: %{amount} Eventbillett',
+                },
+                halloween: {
                     currency: 'Billetter til arrangementer',
                     event_start_mission:
                         'Start hendelse: %{amount} Eventbillett',
@@ -19945,6 +20004,11 @@ Object.values ||
                         'Zah\xe1jen\xed akce: %{amount} Vstupenka na akci',
                 },
                 easter: {
+                    currency: 'Vstupenky na ud\xe1lost',
+                    event_start_mission:
+                        'Zah\xe1jen\xed akce: %{amount} Vstupenka na akci',
+                },
+                halloween: {
                     currency: 'Vstupenky na ud\xe1lost',
                     event_start_mission:
                         'Zah\xe1jen\xed akce: %{amount} Vstupenka na akci',
@@ -20874,6 +20938,10 @@ Object.values ||
                     currency: 'Event Tickets',
                     event_start_mission: 'Start Event: %{amount} Event Ticket',
                 },
+                halloween: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 info_bubble_text:
                     'This is a temporary event that is only available during our event! Encourage your alliance members to complete event missions in order to earn the tickets that are needed to start these events. Go to your alliance for more information.',
                 info_bubble_text_additional:
@@ -21791,6 +21859,11 @@ Object.values ||
                     event_start_mission:
                         'Iniciar evento: %{amount} Bilhete de evento',
                 },
+                halloween: {
+                    currency: 'Bilhetes para eventos',
+                    event_start_mission:
+                        'Iniciar evento: %{amount} Bilhete de evento',
+                },
                 info_bubble_text:
                     'Este \xe9 um evento tempor\xe1rio que s\xf3 est\xe1 dispon\xedvel durante o nosso evento! Incentiva os membros da tua alian\xe7a a completarem miss\xf5es de evento para ganharem os bilhetes necess\xe1rios para iniciar estes eventos. Veja a p\xe1gina de eventos da alian\xe7a para mais informa\xe7\xf5es.',
                 info_bubble_text_additional:
@@ -22696,6 +22769,10 @@ Object.values ||
                     event_start_mission: 'Start Event: %{amount} Event Ticket',
                 },
                 easter: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                halloween: {
                     currency: 'Event Tickets',
                     event_start_mission: 'Start Event: %{amount} Event Ticket',
                 },
@@ -23658,6 +23735,10 @@ Object.values ||
                     event_start_mission: 'Start Event: %{amount} Event Ticket',
                 },
                 easter: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                halloween: {
                     currency: 'Event Tickets',
                     event_start_mission: 'Start Event: %{amount} Event Ticket',
                 },
@@ -24657,6 +24738,10 @@ Object.values ||
                     currency: 'Entradas',
                     event_start_mission: 'Start Event: %{amount} Event Ticket',
                 },
+                halloween: {
+                    currency: 'Entradas',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 info_bubble_text:
                     'This is a temporary event that is only available during our event! Encourage your alliance members to complete event missions in order to earn the tickets that are needed to start these events. Go to your alliance for more information.',
                 info_bubble_text_additional:
@@ -25594,6 +25679,12 @@ Object.values ||
                         '\u30a4\u30d9\u30f3\u30c8\u958b\u59cb\uff1a %{amount} \u30a4\u30d9\u30f3\u30c8\u30c1\u30b1\u30c3\u30c8',
                 },
                 easter: {
+                    currency:
+                        '\u30a4\u30d9\u30f3\u30c8\u30c1\u30b1\u30c3\u30c8',
+                    event_start_mission:
+                        '\u30a4\u30d9\u30f3\u30c8\u958b\u59cb\uff1a %{amount} \u30a4\u30d9\u30f3\u30c8\u30c1\u30b1\u30c3\u30c8',
+                },
+                halloween: {
                     currency:
                         '\u30a4\u30d9\u30f3\u30c8\u30c1\u30b1\u30c3\u30c8',
                     event_start_mission:
@@ -26586,6 +26677,11 @@ Object.values ||
                     event_start_mission:
                         '\uc774\ubca4\ud2b8 \uc2dc\uc791: %{amount} \uc774\ubca4\ud2b8 \ud2f0\ucf13',
                 },
+                halloween: {
+                    currency: '\uc774\ubca4\ud2b8 \ud2f0\ucf13',
+                    event_start_mission:
+                        '\uc774\ubca4\ud2b8 \uc2dc\uc791: %{amount} \uc774\ubca4\ud2b8 \ud2f0\ucf13',
+                },
                 info_bubble_text:
                     '\uc774\ubca4\ud2b8 \uae30\uac04 \ub3d9\uc548\uc5d0\ub9cc \ucc38\uc5ec\ud560 \uc218 \uc788\ub294 \ud55c\uc2dc\uc801\uc778 \uc774\ubca4\ud2b8\uc785\ub2c8\ub2e4! \uc774\ubca4\ud2b8 \uc2dc\uc791\uc5d0 \ud544\uc694\ud55c \ud2f0\ucf13\uc744 \ud68d\ub4dd\ud558\ub824\uba74 \ub3d9\ub9f9 \ud68c\uc6d0\ub4e4\uc774 \uc774\ubca4\ud2b8 \ubbf8\uc158\uc744 \uc644\ub8cc\ud558\ub3c4\ub85d \ub3c5\ub824\ud558\uc138\uc694. \uc790\uc138\ud55c \ub0b4\uc6a9\uc740 \uc5bc\ub77c\uc774\uc5b8\uc2a4 \uc774\ubca4\ud2b8 \ud398\uc774\uc9c0\ub97c \ucc38\uc870\ud558\uc138\uc694.',
                 info_bubble_text_additional:
@@ -27531,6 +27627,10 @@ Object.values ||
                     currency: 'Event Tickets',
                     event_start_mission: 'Start Event: %{amount} Event Ticket',
                 },
+                halloween: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 info_bubble_text:
                     'This is a temporary event that is only available during our event! Encourage your alliance members to complete event missions in order to earn the tickets that are needed to start these events. Go to your alliance for more information.',
                 info_bubble_text_additional:
@@ -28449,6 +28549,11 @@ Object.values ||
                     event_start_mission:
                         'Aloita tapahtuma: %{amount} Tapahtumalippu',
                 },
+                halloween: {
+                    currency: 'Tapahtuman liput',
+                    event_start_mission:
+                        'Aloita tapahtuma: %{amount} Tapahtumalippu',
+                },
                 info_bubble_text:
                     'T\xe4m\xe4 on v\xe4liaikainen tapahtuma, joka on k\xe4ytett\xe4viss\xe4 vain tapahtuman aikana! Kannusta liittolaisesi j\xe4seni\xe4 suorittamaan tapahtumateht\xe4vi\xe4 ansaitaksesi liput, joita tarvitaan n\xe4iden tapahtumien k\xe4ynnist\xe4miseen. Katso lis\xe4tietoja liittouman tapahtumasivulta.',
                 info_bubble_text_additional:
@@ -29356,6 +29461,10 @@ Object.values ||
                     currency: 'Event Tickets',
                     event_start_mission: 'Start Event: %{amount} Event Ticket',
                 },
+                halloween: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 info_bubble_text:
                     'This is a temporary event that is only available during our event! Encourage your alliance members to complete event missions in order to earn the tickets that are needed to start these events. Go to your alliance for more information.',
                 info_bubble_text_additional:
@@ -30252,6 +30361,10 @@ Object.values ||
                     event_start_mission: 'Start Event: %{amount} Event Ticket',
                 },
                 easter: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                halloween: {
                     currency: 'Event Tickets',
                     event_start_mission: 'Start Event: %{amount} Event Ticket',
                 },
