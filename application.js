@@ -22036,7 +22036,7 @@ Object.values ||
                 mission_positions_section: 'PDI',
                 missions_section: 'Miss\xf5es',
                 mountain_missions: 'Miss\xf5es de Montanha',
-                mountain_rescue: 'GNR',
+                mountain_rescue: 'UEPS',
                 mountain_rescue_heliport: 'FAP',
                 police_copter_station_missions: 'Avia\xe7\xe3o policial',
                 police_depot: 'Police Depot',

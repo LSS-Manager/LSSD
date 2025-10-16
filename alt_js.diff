@@ -1,5 +1,5 @@
 diff --git a/application.js b/application.alt.js
-index 81eeb0f..0bd232e 100644
+index fb4a537..0bd232e 100644
 --- a/application.js
 +++ b/application.alt.js
 @@ -27,17 +27,17 @@ function massMissionMarkerAdd(e) {
@@ -10335,7 +10335,7 @@ index 81eeb0f..0bd232e 100644
                  mission_positions_section: 'PDI',
                  missions_section: 'Miss\xf5es',
 -                mountain_missions: 'Miss\xf5es de Montanha',
--                mountain_rescue: 'GNR',
+-                mountain_rescue: 'UEPS',
 -                mountain_rescue_heliport: 'FAP',
                  police_copter_station_missions: 'Avia\xe7\xe3o policial',
 -                police_depot: 'Police Depot',
