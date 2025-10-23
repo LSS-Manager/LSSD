@@ -8,17 +8,17 @@ Für mich und andere Entwickler eine kleine Übersicht der Einsätze aller Spiel
 
 | Attribute | Value                                                                                                                                                                                                |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| File      | [application-53fa2871851788046f734b6e912e68ee77168512844ab54c8f3838576d3794b0.js](https://missionchief.co.uk/assets/application-53fa2871851788046f734b6e912e68ee77168512844ab54c8f3838576d3794b0.js) |
+| File      | [application-791c99bdb5a2e834ec1835566cf619b483ff83ed379c1668e747a1f2a993ff1b.js](https://missionchief.co.uk/assets/application-791c99bdb5a2e834ec1835566cf619b483ff83ed379c1668e747a1f2a993ff1b.js) |
 | Server    | https://missionchief.co.uk                                                                                                                                                                           |
-| Time      | 2025-10-22T08:33:52.766Z                                                                                                                                                                             |
+| Time      | 2025-10-23T10:26:24.713Z                                                                                                                                                                             |
 
 ## CSS
 
 | Attribute | Value                                                                                                                                                                                                  |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| File      | [application-403eefe99c6f2b6a6e2d66baf0813b73ed63eaf79abbf5f15d297d46bee72d11.css](https://missionchief.co.uk/assets/application-403eefe99c6f2b6a6e2d66baf0813b73ed63eaf79abbf5f15d297d46bee72d11.css) |
+| File      | [application-3ec2d8ddc7f47c2bf174c163c618dff55f2cf0b4bc97a3c8c2bc8a7eaf1a56e8.css](https://missionchief.co.uk/assets/application-3ec2d8ddc7f47c2bf174c163c618dff55f2cf0b4bc97a3c8c2bc8a7eaf1a56e8.css) |
 | Server    | https://missionchief.co.uk                                                                                                                                                                             |
-| Time      | 2025-10-22T08:33:52.766Z                                                                                                                                                                               |
+| Time      | 2025-10-23T10:26:24.713Z                                                                                                                                                                               |
 
 ## Pretty-print
 

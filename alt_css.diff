@@ -1,5 +1,5 @@
 diff --git a/application.css b/application.alt.css
-index 486249f..b672bd0 100644
+index 60d03b4..b672bd0 100644
 --- a/application.css
 +++ b/application.alt.css
 @@ -11227,7 +11227,7 @@ body.dark th.tablesorter-headerAsc {
@@ -52,7 +52,7 @@ index 486249f..b672bd0 100644
  .education_description_container {
      margin-top: 10px;
  }
-@@ -15707,21 +15673,6 @@ input.invalid {
+@@ -15707,68 +15673,6 @@ input.invalid {
      padding-bottom: 2px !important;
      padding-left: 4px !important;
      padding-right: 4px !important;
@@ -71,6 +71,53 @@ index 486249f..b672bd0 100644
 -    max-height: calc(6em);
 -    overflow-y: auto;
 -    line-height: 2.4em;
+-}
+-.hospital-extension-boost-container {
+-    display: flex;
+-    gap: 5px;
+-    margin-bottom: 20px;
+-}
+-.hospital-extension-boost-container .extension-boost-select {
+-    width: auto;
+-    display: inline-block;
+-}
+-.hospital-extension-boost-container .boost-countdown {
+-    display: inline-flex;
+-    align-items: center;
+-    padding: 5px 10px;
+-    border-radius: 3px;
+-    color: #fff;
+-}
+-.hospital-extension-boost-container .boost-countdown .boost-arrow-icon {
+-    margin-right: 5px;
+-}
+-.transport-boost-badge {
+-    background-color: #5cb85c;
+-    color: white;
+-    padding: 6px 12px;
+-    border-radius: 4px;
+-    display: inline-block;
+-}
+-.transport-boost-badge .boost-timer-row {
+-    display: flex;
+-    align-items: center;
+-    gap: 5px;
+-}
+-tr.hospital-boost-active td {
+-    background-color: #dff0d8;
+-}
+-body.dark tr.hospital-boost-active td {
+-    background-color: #1b735c;
+-    color: #fff;
+-}
+-.well.hospital-boost-active {
+-    background-color: #dff0d8;
+-    border-color: #d6e9c6;
+-}
+-body.dark .well.hospital-boost-active {
+-    background-color: #1b735c;
+-    color: #fff;
+-    border-color: #155a49;
  } /*!
   * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
   *
