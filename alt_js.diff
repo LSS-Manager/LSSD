@@ -1,5 +1,5 @@
 diff --git a/application.js b/application.alt.js
-index cd805d3..0bd232e 100644
+index 0056528..0bd232e 100644
 --- a/application.js
 +++ b/application.alt.js
 @@ -27,17 +27,17 @@ function massMissionMarkerAdd(e) {
@@ -1525,10 +1525,15 @@ index cd805d3..0bd232e 100644
  function vehicleRefitCountdownInterval(e) {
      setupTimerNew({
          callerId: e,
-@@ -3730,6 +3599,25 @@ function dailyRewardsUpdate(e) {
-         $('#daily_rewards_li').addClass('daily_bonus_not_taken')
-     :   $('#daily_rewards_li').removeClass('daily_bonus_not_taken');
+@@ -3727,8 +3596,27 @@ function seasonEventGiftUpdate(e) {
  }
+ function dailyRewardsUpdate(e) {
+     e ?
+-        $('#menu_daily_rewards').addClass('daily_bonus_not_taken')
+-    :   $('#menu_daily_rewards').removeClass('daily_bonus_not_taken');
++        $('#daily_rewards_li').addClass('daily_bonus_not_taken')
++    :   $('#daily_rewards_li').removeClass('daily_bonus_not_taken');
++}
 +function updateSaleCountDown() {
 +    if (
 +        (null != saleTimeout &&
@@ -1547,10 +1552,9 @@ index cd805d3..0bd232e 100644
 +        var n = $('#sale_countdown_mobile');
 +        n && n.remove();
 +    }
-+}
+ }
  function setupSaleTimer(e, t, i) {
      var n = i - t,
-         s = i - Date.now();
 @@ -3753,12 +3641,23 @@ function updateSaleCountdownTimer(e, t) {
          I18n.t('javascript.time_left', { defaultValue: 'Time left:' }) +
          ' ' +
