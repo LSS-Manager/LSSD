@@ -1,5 +1,5 @@
 diff --git a/application.js b/application.alt.js
-index 4e933ad..0056528 100644
+index 2afc528..0056528 100644
 --- a/application.js
 +++ b/application.alt.js
 @@ -1,501 +1,3 @@
@@ -1695,6 +1695,15 @@ index 4e933ad..0056528 100644
  }
  function mapViewRestore() {
      mapViewExpanded &&
+@@ -3295,7 +2782,7 @@ function aaoClickHandler(e) {
+             }
+         });
+     var n = i.attr('custom');
+-    if (null != n && '' != n) {
++    if ('' != n) {
+         var s = jQuery.parseJSON(n);
+         $.each(s, function (e, n) {
+             t += aao('custom_' + md5(e), i, e, n);
 @@ -3592,8 +3079,14 @@ function premium(e) {
          $('#premium_c').hide('fast')),
          (user_premium = e);
