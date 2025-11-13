@@ -15733,11 +15733,6 @@ input.invalid {
     overflow-y: auto;
     line-height: 2.4em;
 }
-.limit-5-rows {
-    max-height: calc(15em);
-    overflow-y: auto;
-    line-height: 2.4em;
-}
 .hospital-extension-boost-container {
     display: flex;
     gap: 5px;

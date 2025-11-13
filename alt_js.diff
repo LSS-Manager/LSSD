@@ -1,22 +1,8 @@
 diff --git a/application.js b/application.alt.js
-index 2afc528..0056528 100644
+index b18bafa..0056528 100644
 --- a/application.js
 +++ b/application.alt.js
-@@ -1,501 +1,3 @@
--async function scheduleXYTask(e, t = {}) {
--    'scheduler' in globalThis ?
--        await scheduler.postTask(e, t)
--    :   setTimeout(function () {
--            e();
--        }, 0);
--}
--function yieldToMain() {
--    return globalThis.scheduler?.yield ?
--            scheduler.yield()
--        :   new Promise(e => {
--                setTimeout(e, 0);
--            });
--}
+@@ -1,487 +1,3 @@
 -function layerFactory(e) {
 -    function t(t, i) {
 -        var n = function () {
@@ -504,7 +490,7 @@ index 2afc528..0056528 100644
  function massMissionMarkerAdd(e) {
      let t = new Map();
      const i = document.createElement('template'),
-@@ -510,20 +12,17 @@ function massMissionMarkerAdd(e) {
+@@ -496,20 +12,17 @@ function massMissionMarkerAdd(e) {
          });
      for (let e of t.values()) {
          let t = mission_markers_per_id.get(e.id);
@@ -533,7 +519,7 @@ index 2afc528..0056528 100644
  }
  function processMissionElement(e, t, i) {
      const n = parseSearchValue(e),
-@@ -570,7 +69,7 @@ function processMissionElement(e, t, i) {
+@@ -556,7 +69,7 @@ function processMissionElement(e, t, i) {
      const k = mission_markers_per_id.get(y.id);
      if (
          (k &&
@@ -542,7 +528,7 @@ index 2afc528..0056528 100644
                  ((k.url = { 1: u }),
                  (k.opacity = 1),
                  (k.title = y.caption),
-@@ -581,27 +80,46 @@ function processMissionElement(e, t, i) {
+@@ -567,27 +80,46 @@ function processMissionElement(e, t, i) {
                  k.setTooltipContent(d)),
              (k.vehicle_state = y.vehicle_state),
              (w = !0)),
@@ -607,7 +593,7 @@ index 2afc528..0056528 100644
              "<div class='small' id='pumping_" +
              y.id +
              "'>" +
-@@ -611,7 +129,7 @@ function processMissionElement(e, t, i) {
+@@ -597,7 +129,7 @@ function processMissionElement(e, t, i) {
              "' class='progress pumping_progress'><div id='pumping_bar_" +
              y.id +
              "' class='progress-bar progress-bar-info";
@@ -616,7 +602,7 @@ index 2afc528..0056528 100644
              "' style='width: " +
              y.live_current_water_damage_pump_value +
              "%;'><div id='pumping_bar_striper_" +
-@@ -621,7 +139,7 @@ function processMissionElement(e, t, i) {
+@@ -607,7 +139,7 @@ function processMissionElement(e, t, i) {
              "'></div></div></div><div  id='patients_missing_" +
              y.id +
              "'"),
@@ -625,7 +611,7 @@ index 2afc528..0056528 100644
      }
      y.pumping_date_end > 0 &&
          ($('#pumping_bar_striper_' + y.id).addClass(
-@@ -637,10 +155,6 @@ function processMissionElement(e, t, i) {
+@@ -623,10 +155,6 @@ function processMissionElement(e, t, i) {
              y.live_current_water_damage_pump_value <= 0 &&
              missionFinish(y);
  }
@@ -636,7 +622,7 @@ index 2afc528..0056528 100644
  function missionMarkerAdd() {}
  function missionMarkerAddSingle(e) {
      if (window.massAllianceMissionAdd || window.massMissionAdd)
-@@ -687,10 +201,9 @@ function missionMarkerAddSingle(e) {
+@@ -673,10 +201,9 @@ function missionMarkerAddSingle(e) {
                  (-1 !== String(o).indexOf('//') ?
                      (e.app_icon_path = o)
                  :   (e.app_icon_path = currentHostname() + o)),
@@ -649,7 +635,7 @@ index 2afc528..0056528 100644
          (d =
              "<small id='mission_old_caption_" +
              e.id +
-@@ -698,7 +211,7 @@ function missionMarkerAddSingle(e) {
+@@ -684,7 +211,7 @@ function missionMarkerAddSingle(e) {
              e.captionOld +
              '</s></small> ' +
              d),
@@ -658,7 +644,7 @@ index 2afc528..0056528 100644
              ((d =
                  d +
                  ", <small  id='mission_address_" +
-@@ -719,30 +232,58 @@ function missionMarkerAddSingle(e) {
+@@ -705,30 +232,58 @@ function missionMarkerAddSingle(e) {
      $(document.getElementById('mission_' + e.id)).length > 0 ?
          updateExistingMissionElement(e, t, i, o, a, c, h, u, d)
      :   addNewMissionElement(e, t, a, h, c, d, o, u, i);
@@ -741,7 +727,7 @@ index 2afc528..0056528 100644
      }
      if (
          (s &&
-@@ -752,7 +293,7 @@ function missionMarkerAddSingle(e) {
+@@ -738,7 +293,7 @@ function missionMarkerAddSingle(e) {
          e.date_end > 0 && missionTimerStart(e),
          e.water_damage_pump_value)
      ) {
@@ -750,7 +736,7 @@ index 2afc528..0056528 100644
              "<div class='small' id='pumping_" +
              e.id +
              "'>" +
-@@ -762,7 +303,7 @@ function missionMarkerAddSingle(e) {
+@@ -748,7 +303,7 @@ function missionMarkerAddSingle(e) {
              "' class='progress pumping_progress'><div id='pumping_bar_" +
              e.id +
              "' class='progress-bar progress-bar-info";
@@ -759,7 +745,7 @@ index 2afc528..0056528 100644
              "' style='width: " +
              e.live_current_water_damage_pump_value +
              "%;'><div id='pumping_bar_striper_" +
-@@ -772,7 +313,7 @@ function missionMarkerAddSingle(e) {
+@@ -758,7 +313,7 @@ function missionMarkerAddSingle(e) {
              "'></div></div></div><div  id='patients_missing_" +
              e.id +
              "'"),
@@ -768,7 +754,7 @@ index 2afc528..0056528 100644
      }
      e.pumping_date_end > 0 &&
          ($('#pumping_bar_striper_' + e.id).addClass(
-@@ -788,8 +329,8 @@ function missionMarkerAddSingle(e) {
+@@ -774,8 +329,8 @@ function missionMarkerAddSingle(e) {
          e.live_current_value <= 0 &&
              e.live_current_water_damage_pump_value <= 0 &&
              missionFinish(e);
@@ -779,7 +765,7 @@ index 2afc528..0056528 100644
          missionMarkerBulkAdd ||
              (progressBarScrollUpdate(),
              '' !=
-@@ -969,7 +510,113 @@ function prepareMissionDomElementStr(
+@@ -955,7 +510,113 @@ function prepareMissionDomElementStr(
      f
  ) {
      var g = missionParticipationFilters.started.missionIds.has(s.id);
@@ -894,7 +880,7 @@ index 2afc528..0056528 100644
  }
  function getMissionSortableAttributes(e) {
      var t = e.created_at;
-@@ -1093,8 +740,7 @@ function identifyVehicleStateUrl(e) {
+@@ -1079,8 +740,7 @@ function identifyVehicleStateUrl(e) {
  function identifyCaption(e) {
      var t = e.caption;
      return (
@@ -904,7 +890,7 @@ index 2afc528..0056528 100644
              (t =
                  "<small id='mission_old_caption_" +
                  e.id +
-@@ -1102,7 +748,7 @@ function identifyCaption(e) {
+@@ -1088,7 +748,7 @@ function identifyCaption(e) {
                  e.captionOld +
                  '</s></small> ' +
                  t),
@@ -913,7 +899,7 @@ index 2afc528..0056528 100644
              (t =
                  t +
                  ", <small  id='mission_address_" +
-@@ -1286,179 +932,31 @@ function toggleErrorAllianceMissionsSectionsOnAsyncLoading(e) {
+@@ -1272,179 +932,31 @@ function toggleErrorAllianceMissionsSectionsOnAsyncLoading(e) {
          $(document.getElementById('alliance_missions_loading_error')).toggle(e),
          $(document.getElementById('alliance_no_mission')).toggle(!e);
  }
@@ -1116,7 +1102,7 @@ index 2afc528..0056528 100644
  function massBuildingMarkerAddUpdated(e, t) {
      const i = new Map();
      t.forEach(e => {
-@@ -1469,7 +967,8 @@ function massBuildingMarkerAddUpdated(e, t) {
+@@ -1455,7 +967,8 @@ function massBuildingMarkerAddUpdated(e, t) {
      $.each(e, function (e, t) {
          const n = t;
          buildingVehicleGraphicCacheAdd(n),
@@ -1126,7 +1112,7 @@ index 2afc528..0056528 100644
              (!1 !== mobile_bridge_use && !mixed_mobile_desktop_mode) ||
                  n.user_id !== user_id ||
                  (s += prepareBuildingDomElementStr(n, i.get(t.id))),
-@@ -1477,7 +976,7 @@ function massBuildingMarkerAddUpdated(e, t) {
+@@ -1463,7 +976,7 @@ function massBuildingMarkerAddUpdated(e, t) {
                  4 === mobile_version &&
                  sendMobileBridge(n),
              building_markers_cache.push(n),
@@ -1135,7 +1121,7 @@ index 2afc528..0056528 100644
      }),
          (n.innerHTML = s),
          document.getElementById('building_list').appendChild(n.content),
-@@ -1485,26 +984,31 @@ function massBuildingMarkerAddUpdated(e, t) {
+@@ -1471,26 +984,31 @@ function massBuildingMarkerAddUpdated(e, t) {
              buildingMarkerAdd(t);
          });
  }
@@ -1173,7 +1159,7 @@ index 2afc528..0056528 100644
          buildingMarkerAdd(e);
  }
  function constructBuildingListElement(e) {
-@@ -1512,17 +1016,15 @@ function constructBuildingListElement(e) {
+@@ -1498,17 +1016,15 @@ function constructBuildingListElement(e) {
      !0 === mobile_bridge_use &&
          4 === mobile_version &&
          ((e.name = e.name.replace('%', '')),
@@ -1196,7 +1182,7 @@ index 2afc528..0056528 100644
          "<li  search_attribute= '" +
          e.name +
          "' class='building_list building_list_li buildings_searchable' building_type_id='" +
-@@ -1536,7 +1038,7 @@ function prepareBuildingDomElementStr(e, t) {
+@@ -1522,7 +1038,7 @@ function prepareBuildingDomElementStr(e, t) {
          "<img class='building_marker_image' building_id='" +
          e.id +
          "' src='" +
@@ -1205,7 +1191,7 @@ index 2afc528..0056528 100644
          "'><a href='' class='map_position_mover' data-latitude='" +
          e.latitude +
          "' data-longitude='" +
-@@ -1545,32 +1047,32 @@ function prepareBuildingDomElementStr(e, t) {
+@@ -1531,32 +1047,32 @@ function prepareBuildingDomElementStr(e, t) {
          e.name +
          '</a>';
      0 == e.show_vehicles_at_startpage &&
@@ -1251,7 +1237,7 @@ index 2afc528..0056528 100644
      );
  }
  function buildingMarkerReset() {
-@@ -1586,65 +1088,67 @@ function buildingMarkerReset() {
+@@ -1572,65 +1088,67 @@ function buildingMarkerReset() {
          mobile_bridge_use && mobileBridgeAdd('building_remove_all', {}),
          (building_markers = Array()),
          (building_markers_cache = Array()),
@@ -1366,7 +1352,7 @@ index 2afc528..0056528 100644
  }
  function buildingMarkerBulkContentCacheDraw(e = !1) {
      buildingMarkerBulkContentCache.length > 0 &&
-@@ -1699,21 +1203,42 @@ function batchBuildingsVehicleLoad(building_id_array) {
+@@ -1685,21 +1203,42 @@ function batchBuildingsVehicleLoad(building_id_array) {
          }
      );
  }
@@ -1416,7 +1402,7 @@ index 2afc528..0056528 100644
  }
  function toggleBuildingSectionsOnAsyncLoading(e) {
      toggleErrorBuildingSectionsOnAsyncLoading(!1),
-@@ -1725,77 +1250,6 @@ function toggleErrorBuildingSectionsOnAsyncLoading(e) {
+@@ -1711,77 +1250,6 @@ function toggleErrorBuildingSectionsOnAsyncLoading(e) {
      $(document.getElementById('buildings_loading')).toggle(!e),
          $(document.getElementById('buildings_loading_error')).toggle(e);
  }
@@ -1494,7 +1480,7 @@ index 2afc528..0056528 100644
  function patientMarkerAddCombined(e) {
      let t =
          "<div class='col-md-12' id='mission_patient_summary_" +
-@@ -2075,7 +1529,7 @@ function vehicleCreateOnMap(e, t) {
+@@ -2061,7 +1529,7 @@ function vehicleCreateOnMap(e, t) {
                      vehicle_graphics[t.vtid][2]
                  )));
      null == e &&
@@ -1503,7 +1489,7 @@ index 2afc528..0056528 100644
              (((e = new mapkit.ImageAnnotation(new mapkit.Coordinate(0, 0), {
                  url: { 1: t.in },
              })).icon_normal = t.in),
-@@ -2449,6 +1903,26 @@ function vehicleStepsAvail(e) {
+@@ -2435,6 +1903,26 @@ function vehicleStepsAvail(e) {
          void 0 !== routes[e.rh][e.current_step]
      );
  }
@@ -1530,7 +1516,7 @@ index 2afc528..0056528 100644
  function hide_all_except_mission(e, t, i) {
      if (!0 === mobile_bridge_use || !1 === mouse_over_disable_inactive_elements)
          return !0;
-@@ -2486,8 +1960,7 @@ function hide_all_except_mission(e, t, i) {
+@@ -2472,8 +1960,7 @@ function hide_all_except_mission(e, t, i) {
                          title: 'Ziel',
                          icon: icon_empty,
                      }).addTo(map))
@@ -1540,7 +1526,7 @@ index 2afc528..0056528 100644
  }
  function show_hidden_markers() {
      if (!0 === mobile_bridge_use || !1 === mouse_over_disable_inactive_elements)
-@@ -2511,15 +1984,14 @@ function show_hidden_markers() {
+@@ -2497,15 +1984,14 @@ function show_hidden_markers() {
              :   (e.setOpacity(1),
                  mission_label ? e.openTooltip() : e.closeTooltip());
          }),
@@ -1558,7 +1544,7 @@ index 2afc528..0056528 100644
  }
  function hide_all_except_vehicle(e) {
      if (!0 === mobile_bridge_use || !1 === mouse_over_disable_inactive_elements)
-@@ -2559,15 +2031,14 @@ function hide_all_except_vehicle(e) {
+@@ -2545,15 +2031,14 @@ function hide_all_except_vehicle(e) {
                      ));
              }
          }),
@@ -1577,7 +1563,7 @@ index 2afc528..0056528 100644
                  ((t.opacity = 0.2), (t.visible = !1))
              :   t.setOpacity(0.2);
          });
-@@ -2608,10 +2079,8 @@ function mission_overview_timer_call() {
+@@ -2594,10 +2079,8 @@ function mission_overview_timer_call() {
          t = new Date().getTime();
      void 0 !== mission_overview_last_count &&
          (e = t - mission_overview_last_count),
@@ -1590,7 +1576,7 @@ index 2afc528..0056528 100644
              var t = $(this).attr('timeleft');
              t > 0 &&
                  ((t -= e) <= 0 ?
-@@ -2622,8 +2091,7 @@ function mission_overview_timer_call() {
+@@ -2608,8 +2091,7 @@ function mission_overview_timer_call() {
                              formatTime(Math.round(t / 1e3), !1)
                      ),
                  $(this).attr('timeleft', t));
@@ -1600,35 +1586,7 @@ index 2afc528..0056528 100644
  }
  function successfullMessage(e) {
      $('#important_messages_success').html(e),
-@@ -2698,8 +2166,7 @@ function aao_check(e, t, i) {
-                 });
-         }
-         var r = [];
--        t.attr('building_ids') &&
--            '' != t.attr('building_ids') &&
-+        '' != t.attr('building_ids') &&
-             (r = jQuery.parseJSON(t.attr('building_ids'))),
-             a.forEach(function (t) {
-                 i > 0 &&
-@@ -2727,7 +2194,7 @@ function aaoNextAvailable(e, t) {
-         $(aao_source_element + ' input[' + e + '|=1]').each(function () {
-             if (-1 == i) {
-                 var n = [];
--                if (t.attr('building_ids') && '' != t.attr('building_ids'))
-+                if ('' != t.attr('building_ids'))
-                     n = jQuery.parseJSON(t.attr('building_ids'));
-                 if (
-                     aao_building_check(n, $(this)) &&
-@@ -2783,7 +2250,7 @@ function aao(e, t, i, n) {
-                         .length > 0;
-             if (n > 0) {
-                 var o = [];
--                if (t.attr('building_ids') && '' != t.attr('building_ids'))
-+                if ('' != t.attr('building_ids'))
-                     o = jQuery.parseJSON(t.attr('building_ids'));
-                 if (aao_building_check(o, $(this))) {
-                     const t = $(this);
-@@ -2840,9 +2307,14 @@ function mission_participation_add(e) {
+@@ -2825,9 +2307,14 @@ function mission_participation_add(e) {
  }
  function addMissionParticipations(e) {
      for (const t of e) mission_participation_add(t);
@@ -1646,7 +1604,7 @@ index 2afc528..0056528 100644
  }
  function vehicleDistance(e, t, i, n, s, a, o) {
      return (
-@@ -3186,6 +2658,21 @@ function missionAlarmTrailerCheck(e) {
+@@ -3171,6 +2658,21 @@ function missionAlarmTrailerCheck(e) {
  function mapkitDeselectAnnotation() {
      map.selectedAnnotation = null;
  }
@@ -1668,7 +1626,7 @@ index 2afc528..0056528 100644
  function mapViewOnly() {
      $('#navbar-mobile-footer').hide(),
          $('#navbar-mobile-footer').removeClass('visible-xs'),
-@@ -3195,7 +2682,7 @@ function mapViewOnly() {
+@@ -3180,7 +2682,7 @@ function mapViewOnly() {
          $('#level_upgrade_hint').hide(),
          $('#bigMapMenu').hide(),
          $('#map').height($(window).height()).width($(window).width()),
@@ -1677,7 +1635,7 @@ index 2afc528..0056528 100644
  }
  function mapViewDesignBigMap() {
      $('#navbar-mobile-footer').hide(),
-@@ -3206,7 +2693,7 @@ function mapViewDesignBigMap() {
+@@ -3191,7 +2693,7 @@ function mapViewDesignBigMap() {
  }
  function mapViewResize() {
      $('#map').height($(window).height()).width($(window).width()),
@@ -1686,7 +1644,7 @@ index 2afc528..0056528 100644
  }
  function mapViewResizeDesignBigMap() {
      $('#map')
-@@ -3217,7 +2704,7 @@ function mapViewResizeDesignBigMap() {
+@@ -3202,7 +2704,7 @@ function mapViewResizeDesignBigMap() {
                  $(window).height() - parseInt($('#col_navbar_holder').height())
              )
              .width($(window).width()),
@@ -1695,16 +1653,7 @@ index 2afc528..0056528 100644
  }
  function mapViewRestore() {
      mapViewExpanded &&
-@@ -3295,7 +2782,7 @@ function aaoClickHandler(e) {
-             }
-         });
-     var n = i.attr('custom');
--    if (null != n && '' != n) {
-+    if ('' != n) {
-         var s = jQuery.parseJSON(n);
-         $.each(s, function (e, n) {
-             t += aao('custom_' + md5(e), i, e, n);
-@@ -3592,8 +3079,14 @@ function premium(e) {
+@@ -3577,8 +3079,14 @@ function premium(e) {
          $('#premium_c').hide('fast')),
          (user_premium = e);
  }
@@ -1720,7 +1669,7 @@ index 2afc528..0056528 100644
          var min_lat =
                  parseFloat(map.region.center.latitude) -
                  parseFloat(map.region.span.latitudeDelta),
-@@ -3608,7 +3101,7 @@ function building_load_alliance() {
+@@ -3593,7 +3101,7 @@ function building_load_alliance() {
                  parseFloat(map.region.span.longitudeDelta);
      else {
          if (
@@ -1729,7 +1678,7 @@ index 2afc528..0056528 100644
                  map_filters_service.getMapFiltersLayers().alliance_members
              )
          )
-@@ -3659,8 +3152,8 @@ function buildingCaption(e) {
+@@ -3644,8 +3152,8 @@ function buildingCaption(e) {
      let t = !1;
      const i = parseInt(e);
      return (
@@ -1740,7 +1689,7 @@ index 2afc528..0056528 100644
          t
      );
  }
-@@ -3839,13 +3332,13 @@ function missionMarkerDistanceUpdate() {
+@@ -3824,13 +3332,13 @@ function missionMarkerDistanceUpdate() {
      });
  }
  function missionVehiclesShowNotInvolved(e) {
@@ -1760,7 +1709,7 @@ index 2afc528..0056528 100644
          }),
          (vehicles_not_involved = temp_vehicles_not_involved);
  }
-@@ -3953,9 +3446,11 @@ function patientTimer() {
+@@ -3938,9 +3446,11 @@ function patientTimer() {
                  var n = i.params;
                  if (n.live_current_value > n.target_percent) {
                      var s = t / n.miliseconds_by_percent;
@@ -1775,7 +1724,7 @@ index 2afc528..0056528 100644
                          (n.live_current_value = n.live_current_value - s);
                  } else n.live_current_value < 0 && patientFinish(n);
              });
-@@ -4005,7 +3500,9 @@ function missionDelete(e) {
+@@ -3990,7 +3500,9 @@ function missionDelete(e) {
          $('#mission_' + e).addClass('mission_deleted'),
          missionTimerDelete(e);
      var t = mission_markers_per_id.get(parseInt(e));
@@ -1786,7 +1735,7 @@ index 2afc528..0056528 100644
      var i = [];
      $.each(mission_markers, function (t, n) {
          n.mission_id != e && i.push(n);
-@@ -4085,13 +3582,13 @@ function vehicleDriveAdd(params) {
+@@ -4070,13 +3582,13 @@ function vehicleDriveAdd(params) {
      const mission_vehicle = mission_vehicles_per_vid.get(params.id);
      if (
          (mission_vehicle &&
@@ -1802,7 +1751,7 @@ index 2afc528..0056528 100644
                          map.removeLayer(mission_vehicle.polyline)
                      :   map.removeOverlay(mission_vehicle.polyline)))),
          void 0 === routes[params.rh])
-@@ -4982,15 +4479,6 @@ function updateNoMissionsMessages() {
+@@ -4967,15 +4479,6 @@ function updateNoMissionsMessages() {
                  missionTypeFilters.emergency.missionIds.length <= 0
          );
  }
@@ -1818,7 +1767,7 @@ index 2afc528..0056528 100644
  function filterMissionList() {
      var e = $('.mission_selection[data-type-filter].btn-danger')
              .map(function (e, t) {
-@@ -6065,9 +5553,6 @@ function getRouteForVehicleRId(e) {
+@@ -6050,9 +5553,6 @@ function getRouteForVehicleRId(e) {
  function isIOS() {
      return navigator.userAgent.includes('"os":"iOS"');
  }
@@ -1828,32 +1777,7 @@ index 2afc528..0056528 100644
  function missionPositionMarkerAdd(e) {
      1 == mobile_bridge_use && mobileBridgeAdd('poi', [e]);
  }
-@@ -6341,24 +5826,6 @@ function receivedEventPayout(e) {
- function onDismissPayoutInfo() {
-     $('#payoutInfo').html('');
- }
--async function runAaosCacl(e, t) {
--    const i = e.map(
--        e =>
--            function () {
--                aao_available(e.getAttribute('aao_id'), t);
--            }
--    );
--    await runYieldingJobs(i);
--}
--async function runVgsCacl(e, t) {
--    const i = e.map(
--        e =>
--            function () {
--                vehicle_group_available(e.getAttribute('vehicle_group_id'), t);
--            }
--    );
--    await runYieldingJobs(i);
--}
- async function submitHelpshiftState(e, t) {
-     var i = new FormData();
-     i.append('visible', e),
-@@ -6857,6 +6324,125 @@ function getPrisonClassState(e, t) {
+@@ -6824,6 +6324,125 @@ function getPrisonClassState(e, t) {
          : 'btn-success'
      );
  }
@@ -1979,7 +1903,7 @@ index 2afc528..0056528 100644
  function refreshInputOnSliderChanges(e, t, i) {
      (document.getElementById(e).value = t.value),
          updateSliderScale(t.id, t.value, i);
-@@ -7296,296 +6882,6 @@ function registerVehicleAnimate(e, t) {
+@@ -7263,286 +6882,6 @@ function registerVehicleAnimate(e, t) {
  function deregisterVehicleAnim(e) {
      VehicleTickManager.deregisterObject(`vehicle_anim_${e}`);
  }
@@ -2101,16 +2025,6 @@ index 2afc528..0056528 100644
 -    let i = 0,
 -        n = performance.now();
 -    requestAnimationFrame(t);
--}
--async function scheduleJob(e, t = {}) {
--    await scheduleXYTask(e, t);
--}
--async function runYieldingJobs(e, t = 30) {
--    let i = performance.now();
--    for (const n of e)
--        n(),
--            performance.now() - i > t &&
--                (await yieldToMain(), (i = performance.now()));
 -}
 -function isParamPresent(e, t) {
 -    return (
@@ -2276,7 +2190,7 @@ index 2afc528..0056528 100644
  Object.values ||
      (Object.values = function (e) {
          return Object.keys(e).map(function (t) {
-@@ -8261,10 +7557,6 @@ Object.values ||
+@@ -8218,10 +7557,6 @@ Object.values ||
              details: 'Details',
              edit: 'Bearbeiten',
              error: 'Fehler',
@@ -2287,7 +2201,7 @@ index 2afc528..0056528 100644
              is_offline: '%{user} ist offline.',
              is_offline_long: '%{user}\xa0ist bereits l\xe4nger offline.',
              is_offline_with_duration: '%{user} ist offline: %{duration}',
-@@ -9228,10 +8520,6 @@ Object.values ||
+@@ -9185,10 +8520,6 @@ Object.values ||
              details: 'Details',
              edit: 'Edit',
              error: 'Error',
@@ -2298,7 +2212,7 @@ index 2afc528..0056528 100644
              is_offline: '%{user} is offline.',
              is_offline_long: 'Long time: %{user} is offline',
              is_offline_with_duration: '%{user} is offline: %{duration}',
-@@ -10126,10 +9414,6 @@ Object.values ||
+@@ -10083,10 +9414,6 @@ Object.values ||
              details: 'Details',
              edit: 'Edit',
              error: 'Error',
@@ -2309,7 +2223,7 @@ index 2afc528..0056528 100644
              is_offline: '%{user} is offline.',
              is_offline_long: 'Long time: %{user} is offline',
              is_offline_with_duration: '%{user} is offline: %{duration}',
-@@ -11052,10 +10336,6 @@ Object.values ||
+@@ -11009,10 +10336,6 @@ Object.values ||
              details: 'Details',
              edit: 'Bewerken',
              error: 'Error',
@@ -2320,7 +2234,7 @@ index 2afc528..0056528 100644
              is_offline: '%{user} is offline.',
              is_offline_long: '%{user} is al een lange tijd offline.',
              is_offline_with_duration: '%{user} is offline: %{duration}',
-@@ -11995,10 +11275,6 @@ Object.values ||
+@@ -11952,10 +11275,6 @@ Object.values ||
              details: 'Detalles',
              edit: 'Editar',
              error: 'Error',
@@ -2331,7 +2245,7 @@ index 2afc528..0056528 100644
              is_offline: '%{user} no est\xe1 conectado.',
              is_offline_long:
                  '%{user} no se ha conectado desde hace mucho tiempo',
-@@ -12063,7 +11339,6 @@ Object.values ||
+@@ -12020,7 +11339,6 @@ Object.values ||
                  coastal_rescue: 'Rescate costero',
                  fbi: 'FBI & DEA',
                  firefighting: 'Bomberos',
@@ -2339,7 +2253,7 @@ index 2afc528..0056528 100644
                  police: 'Polic\xeda',
                  rescue: 'Rescate',
                  search_and_rescue: 'Search and Rescue',
-@@ -12920,10 +12195,6 @@ Object.values ||
+@@ -12877,10 +12195,6 @@ Object.values ||
              details: 'Details',
              edit: 'Edit',
              error: 'Error',
@@ -2350,7 +2264,7 @@ index 2afc528..0056528 100644
              is_offline: '%{user} is offline.',
              is_offline_long: 'Long time: %{user} is offline',
              is_offline_with_duration: '%{user} is offline: %{duration}',
-@@ -13828,10 +13099,6 @@ Object.values ||
+@@ -13785,10 +13099,6 @@ Object.values ||
              details: 'Detaljer',
              edit: 'Redigera',
              error: 'Fel',
@@ -2361,7 +2275,7 @@ index 2afc528..0056528 100644
              is_offline: '%{user} \xe4r offline.',
              is_offline_long: 'L\xe4nge: %{user} \xe4r offline',
              is_offline_with_duration: '%{user} \xe4r offline: %{duration}',
-@@ -14743,10 +14010,6 @@ Object.values ||
+@@ -14700,10 +14010,6 @@ Object.values ||
              details: 'Szczeg\xf3\u0142y',
              edit: 'Edytuj',
              error: 'B\u0142\u0105d',
@@ -2372,7 +2286,7 @@ index 2afc528..0056528 100644
              is_offline: '%{user} jest offline.',
              is_offline_long: 'Od dawna: %{user} jest offline',
              is_offline_with_duration: '%{user} jest offline: %{duration}',
-@@ -15684,10 +14947,6 @@ Object.values ||
+@@ -15641,10 +14947,6 @@ Object.values ||
              details: 'Dettagli',
              edit: 'Modifica',
              error: 'Errore',
@@ -2383,7 +2297,7 @@ index 2afc528..0056528 100644
              is_offline: '%{user} non \xe8 in linea.',
              is_offline_long: 'Ora estesa: %{user} \xe8 offline',
              is_offline_with_duration: '%{user} non \xe8 in linea: %{duration}',
-@@ -16608,10 +15867,6 @@ Object.values ||
+@@ -16565,10 +15867,6 @@ Object.values ||
              details: 'D\xe9tails',
              edit: 'Modifier',
              error: 'Erreur',
@@ -2394,7 +2308,7 @@ index 2afc528..0056528 100644
              is_offline: '%{user} est hors ligne.',
              is_offline_long:
                  'P\xe9riode prolong\xe9e\xa0: %{user} est hors ligne',
-@@ -17569,10 +16824,6 @@ Object.values ||
+@@ -17526,10 +16824,6 @@ Object.values ||
                  '\u041f\u043e\u0434\u0440\u043e\u0431\u043d\u043e\u0441\u0442\u0438',
              edit: '\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c',
              error: '\u041e\u0448\u0438\u0431\u043a\u0430',
@@ -2405,7 +2319,7 @@ index 2afc528..0056528 100644
              is_offline: '%{user} \u043d\u0435 \u0432 \u0441\u0435\u0442\u0438.',
              is_offline_long:
                  '\u0414\u0430\u0432\u043d\u043e: %{user} \u043d\u0435 \u0432 \u0441\u0435\u0442\u0438',
-@@ -18646,10 +17897,6 @@ Object.values ||
+@@ -18603,10 +17897,6 @@ Object.values ||
              details: 'Detaljer',
              edit: 'Redig\xe9r',
              error: 'Fejl',
@@ -2416,7 +2330,7 @@ index 2afc528..0056528 100644
              is_offline: '%{user} er offline.',
              is_offline_long: 'Lang tid: %{user} er offline',
              is_offline_with_duration: '%{user} er offline: %{duration}',
-@@ -19562,10 +18809,6 @@ Object.values ||
+@@ -19519,10 +18809,6 @@ Object.values ||
              details: 'Info',
              edit: 'Rediger',
              error: 'Feil',
@@ -2427,7 +2341,7 @@ index 2afc528..0056528 100644
              is_offline: '%{user} er offline.',
              is_offline_long: 'Lenge: %{user} er offline',
              is_offline_with_duration: '%{user} er offline: %{duration}',
-@@ -20479,10 +19722,6 @@ Object.values ||
+@@ -20436,10 +19722,6 @@ Object.values ||
              details: 'Podrobnosti',
              edit: 'Upravit',
              error: 'Chyba',
@@ -2438,7 +2352,7 @@ index 2afc528..0056528 100644
              is_offline: '%{user} je offline.',
              is_offline_long: '%{user} je u\u017e dlouho offline',
              is_offline_with_duration: '%{user} je offline: %{duration}',
-@@ -21430,10 +20669,6 @@ Object.values ||
+@@ -21387,10 +20669,6 @@ Object.values ||
              details: 'Ayr\u0131nt\u0131lar',
              edit: 'D\xfczenle',
              error: 'Hata',
@@ -2449,7 +2363,7 @@ index 2afc528..0056528 100644
              is_offline: '%{user} \xe7evrim d\u0131\u015f\u0131.',
              is_offline_long:
                  'Uzun s\xfcre: %{user} \xe7evrim d\u0131\u015f\u0131',
-@@ -22342,10 +21577,6 @@ Object.values ||
+@@ -22299,10 +21577,6 @@ Object.values ||
              details: 'Detalhes',
              edit: 'Editar',
              error: 'Erro',
@@ -2460,7 +2374,7 @@ index 2afc528..0056528 100644
              is_offline: '%{user} est\xe1 offline.',
              is_offline_long: 'Tempo: %{user} est\xe1 offline',
              is_offline_with_duration: '%{user} est\xe1 offline: %{duration}',
-@@ -22410,7 +21641,6 @@ Object.values ||
+@@ -22367,7 +21641,6 @@ Object.values ||
                  coastal_rescue: 'Coastal Rescue',
                  fbi: 'FBI & DEA',
                  firefighting: 'Bombeiros',
@@ -2468,7 +2382,7 @@ index 2afc528..0056528 100644
                  police: 'Pol\xedcia',
                  rescue: 'Pr\xe9-Hospitalar',
                  search_and_rescue: 'Search and Rescue',
-@@ -22571,7 +21801,6 @@ Object.values ||
+@@ -22528,7 +21801,6 @@ Object.values ||
                  mountain_height_rescue: 'ESM',
                  mountain_helicopter_rescue_lift: 'Cesto-maca',
                  mountain_paramedic: 'Param\xe9dico de Montanha',
@@ -2476,7 +2390,7 @@ index 2afc528..0056528 100644
                  mountain_rescue_helicopter: 'AW101 Merlin',
                  mountain_rescue_lift: 'Cesto-maca',
                  mtw: 'MTW',
-@@ -23276,10 +22505,6 @@ Object.values ||
+@@ -23233,10 +22505,6 @@ Object.values ||
              details: 'Detalhes',
              edit: 'Editar',
              error: 'Erro',
@@ -2487,7 +2401,7 @@ index 2afc528..0056528 100644
              is_offline: '%{user} est\xe1 offline.',
              is_offline_long: 'Tempo: %{user} est\xe1 offline',
              is_offline_with_duration: '%{user} est\xe1 offline: %{duration}',
-@@ -24190,10 +23415,6 @@ Object.values ||
+@@ -24147,10 +23415,6 @@ Object.values ||
              details: '\u041f\u043e\u0434\u0440\u043e\u0431\u0438\u0446\u0456',
              edit: '\u0420\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u0442\u0438',
              error: '\u041f\u043e\u043c\u0438\u043b\u043a\u0430',
@@ -2498,7 +2412,7 @@ index 2afc528..0056528 100644
              is_offline:
                  '%{user} \u043d\u0435 \u0432 \u043c\u0435\u0440\u0435\u0436\u0456.',
              is_offline_long:
-@@ -25247,10 +24468,6 @@ Object.values ||
+@@ -25204,10 +24468,6 @@ Object.values ||
              details: 'Detalles',
              edit: 'Editar',
              error: 'Error',
@@ -2509,7 +2423,7 @@ index 2afc528..0056528 100644
              is_offline: '%{user} no est\xe1 conectado.',
              is_offline_long:
                  '%{user} no se ha conectado desde hace mucho tiempo',
-@@ -26161,10 +25378,6 @@ Object.values ||
+@@ -26118,10 +25378,6 @@ Object.values ||
              details: '\u8a73\u7d30',
              edit: '\u7de8\u96c6',
              error: '\u30a8\u30e9\u30fc',
@@ -2520,7 +2434,7 @@ index 2afc528..0056528 100644
              is_offline:
                  '%{user}\u306f\u30aa\u30d5\u30e9\u30a4\u30f3\u3067\u3059\u3002',
              is_offline_long:
-@@ -26238,7 +25451,8 @@ Object.values ||
+@@ -26195,7 +25451,8 @@ Object.values ||
                  coastal_rescue: '\u6c34\u4e0a\u8b66\u5bdf',
                  fbi: 'FBI & DEA',
                  firefighting: '\u6d88\u9632',
@@ -2530,7 +2444,7 @@ index 2afc528..0056528 100644
                  police: '\u8b66\u5bdf',
                  rescue: '\u6551\u52a9',
                  search_and_rescue: 'Search and Rescue',
-@@ -26413,7 +25627,8 @@ Object.values ||
+@@ -26370,7 +25627,8 @@ Object.values ||
                  mass_casualty_equipment:
                      'Mass Casualty Equipment or Medical Equipment Trailer',
                  mobile_shelter: 'Mobile shelter',
@@ -2540,7 +2454,7 @@ index 2afc528..0056528 100644
                  mtw: '\u6d88\u9632\u968a\u54e1\u7528\u8eca\u4e21',
                  municipal_police:
                      'Municipal Police Car or Municipal Police Van',
-@@ -26712,8 +25927,10 @@ Object.values ||
+@@ -26669,8 +25927,10 @@ Object.values ||
                  mission_positions: '\u5230\u7740\u5730\u70b9\uff08POI\uff09',
                  mission_positions_section: 'POI',
                  missions_section: '\u30df\u30c3\u30b7\u30e7\u30f3',
@@ -2553,7 +2467,7 @@ index 2afc528..0056528 100644
                  mountain_rescue_missions:
                      '\u5c71\u5cb3\u6551\u52a9\u4efb\u52d9 (Sangaku Ky\u016bjo Ninmu)',
                  police_copter_station_missions:
-@@ -27181,10 +26398,6 @@ Object.values ||
+@@ -27138,10 +26398,6 @@ Object.values ||
              details: '\uc138\ubd80 \uc0ac\ud56d',
              edit: '\ud3b8\uc9d1',
              error: '\uc624\ub958',
@@ -2564,7 +2478,7 @@ index 2afc528..0056528 100644
              is_offline:
                  '%{user} \ub2d8\uc740 \uc624\ud504\ub77c\uc778\uc785\ub2c8\ub2e4.',
              is_offline_long:
-@@ -28146,10 +27359,6 @@ Object.values ||
+@@ -28103,10 +27359,6 @@ Object.values ||
              details: 'Detalii',
              edit: 'Editeaz\u0103',
              error: 'Eroare',
@@ -2575,7 +2489,7 @@ index 2afc528..0056528 100644
              is_offline: '%{user} este offline.',
              is_offline_long:
                  'Perioad\u0103 \xeendelungat\u0103: %{user} este offline',
-@@ -29081,10 +28290,6 @@ Object.values ||
+@@ -29038,10 +28290,6 @@ Object.values ||
              details: 'Lis\xe4tiedot',
              edit: 'Muokkaa',
              error: 'Virhe',
@@ -2586,7 +2500,7 @@ index 2afc528..0056528 100644
              is_offline: '%{user} ei ole verkossa',
              is_offline_long: 'Kauan: %{user} ei ole verkossa',
              is_offline_with_duration: '%{user} ei ole verkossa: %{duration}',
-@@ -30000,10 +29205,6 @@ Object.values ||
+@@ -29957,10 +29205,6 @@ Object.values ||
              details: 'Podrobnosti',
              edit: 'Upravi\u0165',
              error: 'Chyba',
@@ -2597,7 +2511,7 @@ index 2afc528..0056528 100644
              is_offline: '%{user} je offline.',
              is_offline_long: 'Dlho: %{user} je offline',
              is_offline_with_duration: '%{user} je offline: %{duration}',
-@@ -30913,10 +30114,6 @@ Object.values ||
+@@ -30870,10 +30114,6 @@ Object.values ||
              details: 'Details',
              edit: 'Edit',
              error: 'Error',
@@ -2608,7 +2522,7 @@ index 2afc528..0056528 100644
              is_offline: '%{user} is offline.',
              is_offline_long: 'Long time: %{user} is offline',
              is_offline_with_duration: '%{user} is offline: %{duration}',
-@@ -32198,14 +31395,14 @@ Object.values ||
+@@ -32155,14 +31395,14 @@ Object.values ||
                  o = e === qt;
              return s(t.dataTypes[0]) || (!a['*'] && s('*'));
          }
@@ -2625,7 +2539,7 @@ index 2afc528..0056528 100644
              for (
                  var s, a, o, r, l = e.contents, c = e.dataTypes;
                  '*' === c[0];
-@@ -32292,12 +31489,12 @@ Object.values ||
+@@ -32249,12 +31489,12 @@ Object.values ||
                  return new e.XMLHttpRequest();
              } catch (e) {}
          }
@@ -2640,7 +2554,7 @@ index 2afc528..0056528 100644
              return (
                  setTimeout(function () {
                      Yt = t;
-@@ -32324,7 +31521,7 @@ Object.values ||
+@@ -32281,7 +31521,7 @@ Object.values ||
                  l = function () {
                      if (s) return !1;
                      for (
@@ -2649,7 +2563,7 @@ index 2afc528..0056528 100644
                              i = Math.max(0, c.startTime + c.duration - t),
                              n = 1 - (i / c.duration || 0),
                              a = 0,
-@@ -32344,7 +31541,7 @@ Object.values ||
+@@ -32301,7 +31541,7 @@ Object.values ||
                      opts: de.extend(!0, { specialEasing: {} }, i),
                      originalProperties: t,
                      originalOptions: i,
@@ -2658,7 +2572,7 @@ index 2afc528..0056528 100644
                      duration: i.duration,
                      tweens: [],
                      createTween: function (t, i) {
-@@ -33044,7 +32241,7 @@ Object.values ||
+@@ -33001,7 +32241,7 @@ Object.values ||
                      )
                          return i;
                      if (1 !== (r = (t = t || B).nodeType) && 9 !== r) return [];
@@ -2667,7 +2581,7 @@ index 2afc528..0056528 100644
                          if ((s = xe.exec(e)))
                              if ((o = s[1])) {
                                  if (9 === r) {
-@@ -33382,7 +32579,7 @@ Object.values ||
+@@ -33339,7 +32579,7 @@ Object.values ||
                              d = [
                                  function (e, i, n) {
                                      return (
@@ -2676,7 +2590,7 @@ index 2afc528..0056528 100644
                                          ((t = i).nodeType ?
                                              l(e, i, n)
                                          :   c(e, i, n))
-@@ -33441,7 +32638,7 @@ Object.values ||
+@@ -33398,7 +32638,7 @@ Object.values ||
                                  f = '0',
                                  g = a && [],
                                  v = null != d,
@@ -2685,7 +2599,7 @@ index 2afc528..0056528 100644
                                  w =
                                      a ||
                                      (o &&
-@@ -33451,7 +32648,7 @@ Object.values ||
+@@ -33408,7 +32648,7 @@ Object.values ||
                                          )),
                                  k = (V += null == y ? 1 : Math.random() || 0.1);
                              for (
@@ -2694,7 +2608,7 @@ index 2afc528..0056528 100644
                                  null != (u = w[f]);
                                  f++
                              ) {
-@@ -33480,7 +32677,7 @@ Object.values ||
+@@ -33437,7 +32677,7 @@ Object.values ||
                                          _ + t.length > 1 &&
                                          i.uniqueSort(c);
                              }
@@ -2703,7 +2617,7 @@ index 2afc528..0056528 100644
                          };
                      return s ? a(r) : r;
                  }
-@@ -33501,7 +32698,7 @@ Object.values ||
+@@ -33458,7 +32698,7 @@ Object.values ||
                              'ID' === (o = a[0]).type &&
                              z.getById &&
                              9 === t.nodeType &&
@@ -2712,7 +2626,7 @@ index 2afc528..0056528 100644
                              E.relative[a[1].type]
                          ) {
                              if (
-@@ -33530,7 +32727,7 @@ Object.values ||
+@@ -33487,7 +32727,7 @@ Object.values ||
                                  break;
                              }
                      }
@@ -2721,7 +2635,7 @@ index 2afc528..0056528 100644
                  }
                  function C() {}
                  var S,
-@@ -33540,12 +32737,12 @@ Object.values ||
+@@ -33497,12 +32737,12 @@ Object.values ||
                      P,
                      M,
                      I,
@@ -2736,7 +2650,7 @@ index 2afc528..0056528 100644
                      F,
                      N,
                      H,
-@@ -33699,8 +32896,8 @@ Object.values ||
+@@ -33656,8 +32896,8 @@ Object.values ||
                                  t !== B && 9 === t.nodeType && t.documentElement
                              ) ?
                                  ((B = t),
@@ -2747,7 +2661,7 @@ index 2afc528..0056528 100644
                                  (z.attributes = o(function (e) {
                                      return (
                                          (e.innerHTML = "<a href='#'></a>"),
-@@ -33747,7 +32944,7 @@ Object.values ||
+@@ -33704,7 +32944,7 @@ Object.values ||
                                  })),
                                  (z.getById = o(function (e) {
                                      return (
@@ -2756,7 +2670,7 @@ index 2afc528..0056528 100644
                                          !t.getElementsByName ||
                                              !t.getElementsByName($).length
                                      );
-@@ -33756,7 +32953,7 @@ Object.values ||
+@@ -33713,7 +32953,7 @@ Object.values ||
                                      ((E.find.ID = function (e, t) {
                                          if (
                                              typeof t.getElementById !== Q &&
@@ -2765,7 +2679,7 @@ index 2afc528..0056528 100644
                                          ) {
                                              var i = t.getElementById(e);
                                              return i && i.parentNode ? [i] : [];
-@@ -33809,7 +33006,7 @@ Object.values ||
+@@ -33766,7 +33006,7 @@ Object.values ||
                                          if (
                                              typeof t.getElementsByClassName !==
                                                  Q &&
@@ -2774,7 +2688,7 @@ index 2afc528..0056528 100644
                                          )
                                              return t.getElementsByClassName(e);
                                      }),
-@@ -33852,10 +33049,10 @@ Object.values ||
+@@ -33809,10 +33049,10 @@ Object.values ||
                                      })),
                                  (z.matchesSelector = n(
                                      (H =
@@ -2789,7 +2703,7 @@ index 2afc528..0056528 100644
                                  )) &&
                                      o(function (e) {
                                          (z.disconnectedMatch = H.call(
-@@ -33868,7 +33065,7 @@ Object.values ||
+@@ -33825,7 +33065,7 @@ Object.values ||
                                  (F = F.length && new RegExp(F.join('|'))),
                                  (N = N.length && new RegExp(N.join('|'))),
                                  (q =
@@ -2798,7 +2712,7 @@ index 2afc528..0056528 100644
                                          function (e, t) {
                                              var i =
                                                      9 === e.nodeType ?
-@@ -33905,7 +33102,7 @@ Object.values ||
+@@ -33862,7 +33102,7 @@ Object.values ||
                                      );
                                  })),
                                  (J =
@@ -2807,7 +2721,7 @@ index 2afc528..0056528 100644
                                          function (e, i) {
                                              if (e === i) return (Y = !0), 0;
                                              var n =
-@@ -33923,9 +33120,9 @@ Object.values ||
+@@ -33880,9 +33120,9 @@ Object.values ||
                                                      ) ?
                                                          e === t || q(W, e) ? -1
                                                          : i === t || q(W, i) ? 1
@@ -2820,7 +2734,7 @@ index 2afc528..0056528 100644
                                                          :   0
                                                      : 4 & n ? -1
                                                      : 1
-@@ -33947,9 +33144,9 @@ Object.values ||
+@@ -33904,9 +33144,9 @@ Object.values ||
                                                      : i === t ? 1
                                                      : a ? -1
                                                      : o ? 1
@@ -2833,7 +2747,7 @@ index 2afc528..0056528 100644
                                                      :   0
                                                  );
                                              if (a === o) return u(e, i);
-@@ -33976,7 +33173,7 @@ Object.values ||
+@@ -33933,7 +33173,7 @@ Object.values ||
                          ((e.ownerDocument || e) !== B && R(e),
                          (t = t.replace(ve, "='$1']")),
                          z.matchesSelector &&
@@ -2842,7 +2756,7 @@ index 2afc528..0056528 100644
                              (!N || !N.test(t)) &&
                              (!F || !F.test(t)))
                      )
-@@ -33999,11 +33196,11 @@ Object.values ||
+@@ -33956,11 +33196,11 @@ Object.values ||
                      var n = E.attrHandle[i.toLowerCase()],
                          s =
                              n && ee.call(E.attrHandle, i.toLowerCase()) ?
@@ -2856,7 +2770,7 @@ index 2afc528..0056528 100644
                              : (s = e.getAttributeNode(i)) && s.specified ?
                                  s.value
                              :   null
-@@ -34022,7 +33219,7 @@ Object.values ||
+@@ -33979,7 +33219,7 @@ Object.values ||
                          s = 0;
                      if (
                          ((Y = !z.detectDuplicates),
@@ -2865,7 +2779,7 @@ index 2afc528..0056528 100644
                          e.sort(J),
                          Y)
                      ) {
-@@ -34380,7 +33577,7 @@ Object.values ||
+@@ -34337,7 +33577,7 @@ Object.values ||
                                          do {
                                              if (
                                                  (i =
@@ -2874,7 +2788,7 @@ index 2afc528..0056528 100644
                                                          t.lang
                                                      :   t.getAttribute(
                                                              'xml:lang'
-@@ -34405,7 +33602,7 @@ Object.values ||
+@@ -34362,7 +33602,7 @@ Object.values ||
                                  return i && i.slice(1) === t.id;
                              },
                              root: function (e) {
@@ -2883,7 +2797,7 @@ index 2afc528..0056528 100644
                              },
                              focus: function (e) {
                                  return (
-@@ -35091,8 +34288,8 @@ Object.values ||
+@@ -35048,8 +34288,8 @@ Object.values ||
              Pe = /[\t\r\n\f]/g,
              Me = /\r/g,
              Ie = /^(?:input|select|textarea|button|object)$/i,
@@ -2894,7 +2808,7 @@ index 2afc528..0056528 100644
              Re = de.support.getSetAttribute,
              Be = de.support.input;
          de.fn.extend({
-@@ -35365,7 +34562,7 @@ Object.values ||
+@@ -35322,7 +34562,7 @@ Object.values ||
                          for (; (i = a[s++]); )
                              (n = de.propFix[i] || i),
                                  de.expr.match.bool.test(i) ?
@@ -2903,7 +2817,7 @@ index 2afc528..0056528 100644
                                          (e[n] = !1)
                                      :   (e[de.camelCase('default-' + i)] = e[
                                              n
-@@ -35418,7 +34615,7 @@ Object.values ||
+@@ -35375,7 +34615,7 @@ Object.values ||
                                  t ? parseInt(t, 10)
                                  : (
                                      Ie.test(e.nodeName) ||
@@ -2912,7 +2826,7 @@ index 2afc528..0056528 100644
                                  ) ?
                                      0
                                  :   -1
-@@ -35431,7 +34628,7 @@ Object.values ||
+@@ -35388,7 +34628,7 @@ Object.values ||
                  set: function (e, t, i) {
                      return (
                          !1 === t ? de.removeAttr(e, i)
@@ -2921,7 +2835,7 @@ index 2afc528..0056528 100644
                              e.setAttribute((!Re && de.propFix[i]) || i, i)
                          :   (e[de.camelCase('default-' + i)] = e[i] = !0),
                          i
-@@ -35441,7 +34638,7 @@ Object.values ||
+@@ -35398,7 +34638,7 @@ Object.values ||
              de.each(de.expr.match.bool.source.match(/\w+/g), function (e, i) {
                  var n = de.expr.attrHandle[i] || de.find.attr;
                  de.expr.attrHandle[i] =
@@ -2930,7 +2844,7 @@ index 2afc528..0056528 100644
                          function (e, i, s) {
                              var a = de.expr.attrHandle[i],
                                  o =
-@@ -35581,8 +34778,8 @@ Object.values ||
+@@ -35538,8 +34778,8 @@ Object.values ||
                                  :   e.value;
                          });
              });
@@ -2941,7 +2855,7 @@ index 2afc528..0056528 100644
              Fe = /^(?:mouse|contextmenu)|click/,
              Ne = /^(?:focusinfocus|focusoutblur)$/,
              He = /^([^.]*)(?:\.(.+)|)$/;
-@@ -35893,7 +35090,7 @@ Object.values ||
+@@ -35850,7 +35090,7 @@ Object.values ||
                      o ||
                          (this.fixHooks[s] = o =
                              Fe.test(s) ? this.mouseHooks
@@ -2950,7 +2864,7 @@ index 2afc528..0056528 100644
                                  : {}),
                          n = o.props ? this.props.concat(o.props) : this.props,
                          e = new de.Event(a),
-@@ -36143,7 +35340,7 @@ Object.values ||
+@@ -36100,7 +35340,7 @@ Object.values ||
              de.support.changeBubbles ||
                  (de.event.special.change = {
                      setup: function () {
@@ -2959,7 +2873,7 @@ index 2afc528..0056528 100644
                              return (
                                  ('checkbox' !== this.type &&
                                      'radio' !== this.type) ||
-@@ -36178,7 +35375,7 @@ Object.values ||
+@@ -36135,7 +35375,7 @@ Object.values ||
                              'beforeactivate._change',
                              function (e) {
                                  var t = e.target;
@@ -2968,7 +2882,7 @@ index 2afc528..0056528 100644
                                      !de._data(t, 'changeBubbles') &&
                                      (de.event.add(
                                          t,
-@@ -36212,7 +35409,7 @@ Object.values ||
+@@ -36169,7 +35409,7 @@ Object.values ||
                      teardown: function () {
                          return (
                              de.event.remove(this, '._change'),
@@ -2977,7 +2891,7 @@ index 2afc528..0056528 100644
                          );
                      },
                  }),
-@@ -37445,12 +36642,12 @@ Object.values ||
+@@ -37402,12 +36642,12 @@ Object.values ||
              Pt,
              Mt = de.now(),
              It = /\?/,
@@ -2994,7 +2908,7 @@ index 2afc528..0056528 100644
              Ft = /^([\w.+-]+:)(?:\/\/([^\/?#:]*)(?::(\d+)|)|)/,
              Nt = de.fn.load,
              Ht = {},
-@@ -37553,8 +36750,8 @@ Object.values ||
+@@ -37510,8 +36750,8 @@ Object.values ||
                  },
                  ajaxSetup: function (e, t) {
                      return t ?
@@ -3005,7 +2919,7 @@ index 2afc528..0056528 100644
                  },
                  ajaxPrefilter: M(Ht),
                  ajaxTransport: M(qt),
-@@ -37573,7 +36770,7 @@ Object.values ||
+@@ -37530,7 +36770,7 @@ Object.values ||
                              (r = s || ''),
                              (k.readyState = e > 0 ? 4 : 0),
                              (a = (e >= 200 && e < 300) || 304 === e),
@@ -3014,7 +2928,7 @@ index 2afc528..0056528 100644
                              (b = R(h, b, k, a)),
                              a ?
                                  (h.ifModified &&
-@@ -37672,8 +36869,8 @@ Object.values ||
+@@ -37629,8 +36869,8 @@ Object.values ||
                          (k.success = k.done),
                          (k.error = k.fail),
                          (h.url = ((e || h.url || Pt) + '')
@@ -3025,7 +2939,7 @@ index 2afc528..0056528 100644
                          (h.type = i.method || i.type || h.method || h.type),
                          (h.dataTypes = de
                              .trim(h.dataType || '*')
-@@ -37702,7 +36899,7 @@ Object.values ||
+@@ -37659,7 +36899,7 @@ Object.values ||
                          0 == de.active++ &&
                          de.event.trigger('ajaxStart'),
                      (h.type = h.type.toUpperCase()),
@@ -3034,7 +2948,7 @@ index 2afc528..0056528 100644
                      (o = h.url),
                      h.hasContent ||
                          (h.data &&
-@@ -37710,8 +36907,8 @@ Object.values ||
+@@ -37667,8 +36907,8 @@ Object.values ||
                              delete h.data),
                          !1 === h.cache &&
                              (h.url =
@@ -3045,7 +2959,7 @@ index 2afc528..0056528 100644
                                  :   o +
                                      (It.test(o) ? '&' : '?') +
                                      '_=' +
-@@ -37900,7 +37097,7 @@ Object.values ||
+@@ -37857,7 +37097,7 @@ Object.values ||
          (de.ajaxSettings.xhr =
              e.ActiveXObject ?
                  function () {
@@ -3054,7 +2968,7 @@ index 2afc528..0056528 100644
                  }
              :   B),
              (Gt = de.ajaxSettings.xhr()),
-@@ -47191,12 +46388,12 @@ Object.values ||
+@@ -47148,12 +46388,12 @@ Object.values ||
                          P,
                          M,
                          I,
@@ -3069,7 +2983,7 @@ index 2afc528..0056528 100644
                          F,
                          N = new Date(),
                          H = this._daylightSavingAdjust(
-@@ -47435,16 +46632,16 @@ Object.values ||
+@@ -47392,16 +46632,16 @@ Object.values ||
                                              7) %
                                          7,
                                      I = Math.ceil((M + P) / 7),
@@ -3090,7 +3004,7 @@ index 2afc528..0056528 100644
                                  R++
                              ) {
                                  for (
-@@ -47455,38 +46652,38 @@ Object.values ||
+@@ -47412,38 +46652,38 @@ Object.values ||
                                                  this._get(
                                                      e,
                                                      'calculateWeek'
@@ -3139,7 +3053,7 @@ index 2afc528..0056528 100644
                                                      b.getTime() === C.getTime())
                                              ) ?
                                                  ' ' + this._dayOverClass
-@@ -47496,51 +46693,51 @@ Object.values ||
+@@ -47453,51 +46693,51 @@ Object.values ||
                                                  this._unselectableClass +
                                                  ' ui-state-disabled'
                                              :   '') +
@@ -3207,7 +3121,7 @@ index 2afc528..0056528 100644
                                  z += B + '</tr>';
                              }
                              ++X > 11 && ((X = 0), ee++),
-@@ -55107,11 +54304,11 @@ Object.values ||
+@@ -55064,11 +54304,11 @@ Object.values ||
                          P = !0 === i ? z : S,
                          M = !0 === i ? S : z,
                          I = !0 === i ? E : A,
@@ -3222,7 +3136,7 @@ index 2afc528..0056528 100644
                  }
              }
          };
-@@ -57732,123 +56929,126 @@ Object.values ||
+@@ -57689,123 +56929,126 @@ Object.values ||
      (function (e, t) {
          'object' == typeof exports && 'undefined' != typeof module ? t(exports)
          : 'function' == typeof define && define.amd ? define(['exports'], t)
@@ -3420,7 +3334,7 @@ index 2afc528..0056528 100644
                  : null == e ? e
                  : 'object' == typeof e && 'x' in e && 'y' in e ? new y(e.x, e.y)
                  : new y(e, t, i)
-@@ -57880,7 +57080,7 @@ Object.values ||
+@@ -57837,7 +57080,7 @@ Object.values ||
          function z(e, t, i) {
              return (
                  e instanceof S ? e
@@ -3429,7 +3343,7 @@ index 2afc528..0056528 100644
                      3 === e.length ? new S(e[0], e[1], e[2])
                      : 2 === e.length ? new S(e[0], e[1])
                      : null
-@@ -57892,12 +57092,14 @@ Object.values ||
+@@ -57849,12 +57092,14 @@ Object.values ||
              );
          }
          function A(e, t, i, n) {
@@ -3450,7 +3364,7 @@ index 2afc528..0056528 100644
          }
          function E(e, t, i, n) {
              return new A(e, t, i, n);
-@@ -57906,194 +57108,234 @@ Object.values ||
+@@ -57863,194 +57108,234 @@ Object.values ||
              return document.createElementNS('http://www.w3.org/2000/svg', e);
          }
          function M(e, t) {
@@ -3823,7 +3737,7 @@ index 2afc528..0056528 100644
              for (
                  var t = document.documentElement.style, i = 0;
                  i < e.length;
-@@ -58102,55 +57344,54 @@ Object.values ||
+@@ -58059,55 +57344,54 @@ Object.values ||
                  if (e[i] in t) return e[i];
              return !1;
          }
@@ -3912,7 +3826,7 @@ index 2afc528..0056528 100644
              var t = e.getBoundingClientRect();
              return {
                  x: t.width / e.offsetWidth || 1,
-@@ -58158,132 +57399,125 @@ Object.values ||
+@@ -58115,132 +57399,125 @@ Object.values ||
                  boundingClientRect: t,
              };
          }
@@ -4131,7 +4045,7 @@ index 2afc528..0056528 100644
                  : e.deltaY && 1 === e.deltaMode ? 20 * -e.deltaY
                  : e.deltaY && 2 === e.deltaMode ? 60 * -e.deltaY
                  : e.deltaX || e.deltaZ ? 0
-@@ -58293,7 +57527,14 @@ Object.values ||
+@@ -58250,7 +57527,14 @@ Object.values ||
                  : 0
              );
          }
@@ -4147,7 +4061,7 @@ index 2afc528..0056528 100644
              var i = t.relatedTarget;
              if (!i) return !0;
              try {
-@@ -58303,148 +57544,80 @@ Object.values ||
+@@ -58260,148 +57544,80 @@ Object.values ||
              }
              return i !== e;
          }
@@ -4349,7 +4263,7 @@ index 2afc528..0056528 100644
              var i = 0;
              return (
                  e.x < t.min.x ? (i |= 1) : e.x > t.max.x && (i |= 2),
-@@ -58452,76 +57625,74 @@ Object.values ||
+@@ -58409,76 +57625,74 @@ Object.values ||
                  i
              );
          }
@@ -4480,7 +4394,7 @@ index 2afc528..0056528 100644
              var i,
                  n,
                  s,
-@@ -58530,30 +57701,30 @@ Object.values ||
+@@ -58487,30 +57701,30 @@ Object.values ||
                  r = o ? o.coordinates : null,
                  l = [],
                  c = t && t.pointToLayer,
@@ -4520,7 +4434,7 @@ index 2afc528..0056528 100644
                              {
                                  geometry: o.geometries[s],
                                  type: 'Feature',
-@@ -58563,169 +57734,147 @@ Object.values ||
+@@ -58520,169 +57734,147 @@ Object.values ||
                          );
                          u && l.push(u);
                      }
@@ -4786,7 +4700,7 @@ index 2afc528..0056528 100644
                  var t = Array.prototype.slice.call(arguments, 1),
                      i =
                          'function' == typeof e ? e : (
-@@ -58740,152 +57889,126 @@ Object.values ||
+@@ -58697,152 +57889,126 @@ Object.values ||
                      this
                  );
              });
@@ -5049,7 +4963,7 @@ index 2afc528..0056528 100644
                  };
          (y.prototype = {
              clone: function () {
-@@ -58955,12 +58078,12 @@ Object.values ||
+@@ -58912,12 +58078,12 @@ Object.values ||
                  return this.clone()._trunc();
              },
              _trunc: function () {
@@ -5066,7 +4980,7 @@ index 2afc528..0056528 100644
              },
              equals: function (e) {
                  return (e = w(e)).x === this.x && e.y === this.y;
-@@ -58973,42 +58096,34 @@ Object.values ||
+@@ -58930,42 +58096,34 @@ Object.values ||
                  );
              },
              toString: function () {
@@ -5122,7 +5036,7 @@ index 2afc528..0056528 100644
                  },
                  getTopLeft: function () {
                      return this.min;
-@@ -59023,10 +58138,10 @@ Object.values ||
+@@ -58980,10 +58138,10 @@ Object.values ||
                      var t, i;
                      return (
                          (
@@ -5136,7 +5050,7 @@ index 2afc528..0056528 100644
                          ) ?
                              ((t = e.min), (i = e.max))
                          :   (t = i = e),
-@@ -59041,37 +58156,24 @@ Object.values ||
+@@ -58998,37 +58156,24 @@ Object.values ||
                      var t = this.min,
                          i = this.max,
                          n = e.min,
@@ -5182,7 +5096,7 @@ index 2afc528..0056528 100644
              }),
              (T.prototype = {
                  extend: function (e) {
-@@ -59079,7 +58181,7 @@ Object.values ||
+@@ -59036,7 +58181,7 @@ Object.values ||
                          i,
                          n = this._southWest,
                          s = this._northEast;
@@ -5191,7 +5105,7 @@ index 2afc528..0056528 100644
                      else {
                          if (!(e instanceof T))
                              return e ? this.extend(z(e) || C(e)) : this;
-@@ -59100,11 +58202,11 @@ Object.values ||
+@@ -59057,11 +58202,11 @@ Object.values ||
                  pad: function (e) {
                      var t = this._southWest,
                          i = this._northEast,
@@ -5207,7 +5121,7 @@ index 2afc528..0056528 100644
                      );
                  },
                  getCenter: function () {
-@@ -59138,14 +58240,14 @@ Object.values ||
+@@ -59095,14 +58240,14 @@ Object.values ||
                      return this._northEast.lat;
                  },
                  contains: function (e) {
@@ -5227,7 +5141,7 @@ index 2afc528..0056528 100644
                      var t,
                          i,
                          n = this._southWest,
-@@ -59165,20 +58267,20 @@ Object.values ||
+@@ -59122,20 +58267,20 @@ Object.values ||
                      var t = this._southWest,
                          i = this._northEast,
                          n = e.getSouthWest(),
@@ -5256,7 +5170,7 @@ index 2afc528..0056528 100644
                  },
                  toBBoxString: function () {
                      return [
-@@ -59199,22 +58301,52 @@ Object.values ||
+@@ -59156,22 +58301,52 @@ Object.values ||
                  isValid: function () {
                      return !(!this._southWest || !this._northEast);
                  },
@@ -5319,7 +5233,7 @@ index 2afc528..0056528 100644
                  project: function (e) {
                      return this.projection.project(e);
                  },
-@@ -59228,59 +58360,19 @@ Object.values ||
+@@ -59185,59 +58360,19 @@ Object.values ||
                      return Math.log(e / 256) / Math.LN2;
                  },
                  getProjectedBounds: function (e) {
@@ -5389,7 +5303,7 @@ index 2afc528..0056528 100644
                          t,
                          e.alt
                      );
-@@ -59288,43 +58380,42 @@ Object.values ||
+@@ -59245,43 +58380,42 @@ Object.values ||
                  wrapLatLngBounds: function (e) {
                      var t = e.getCenter(),
                          i = this.wrapLatLng(t),
@@ -5454,7 +5368,7 @@ index 2afc528..0056528 100644
                      );
                  },
                  unproject: function (e) {
-@@ -59335,7 +58426,10 @@ Object.values ||
+@@ -59292,7 +58426,10 @@ Object.values ||
                          (e.x * t) / this.R
                      );
                  },
@@ -5466,7 +5380,7 @@ index 2afc528..0056528 100644
              };
          A.prototype = {
              transform: function (e, t) {
-@@ -59343,324 +58437,282 @@ Object.values ||
+@@ -59300,324 +58437,282 @@ Object.values ||
              },
              _transform: function (e, t) {
                  return (
@@ -6035,7 +5949,7 @@ index 2afc528..0056528 100644
                      center: void 0,
                      zoom: void 0,
                      minZoom: void 0,
-@@ -59678,14 +58730,14 @@ Object.values ||
+@@ -59635,14 +58730,14 @@ Object.values ||
                      trackResize: !0,
                  },
                  initialize: function (e, t) {
@@ -6052,7 +5966,7 @@ index 2afc528..0056528 100644
                          this._initEvents(),
                          t.maxBounds && this.setMaxBounds(t.maxBounds),
                          void 0 !== t.zoom &&
-@@ -59695,15 +58747,12 @@ Object.values ||
+@@ -59652,15 +58747,12 @@ Object.values ||
                              this.setView(z(t.center), t.zoom, { reset: !0 }),
                          this.callInitHooks(),
                          (this._zoomAnimated =
@@ -6071,7 +5985,7 @@ index 2afc528..0056528 100644
                                  this._catchTransitionEnd,
                                  this
                              )),
-@@ -59738,8 +58787,7 @@ Object.values ||
+@@ -59695,8 +58787,7 @@ Object.values ||
                              :   this._tryAnimatedPan(e, n.pan))
                          ) ?
                              (clearTimeout(this._sizeTimer), this)
@@ -6081,7 +5995,7 @@ index 2afc528..0056528 100644
                      );
                  },
                  setZoom: function (e, t) {
-@@ -59749,56 +58797,52 @@ Object.values ||
+@@ -59706,56 +58797,52 @@ Object.values ||
                  },
                  zoomIn: function (e, t) {
                      return (
@@ -6166,7 +6080,7 @@ index 2afc528..0056528 100644
                  },
                  fitWorld: function (e) {
                      return this.fitBounds(
-@@ -59813,54 +58857,49 @@ Object.values ||
+@@ -59770,54 +58857,49 @@ Object.values ||
                      return this.setView(e, this._zoom, { pan: t });
                  },
                  panBy: function (e, t) {
@@ -6260,7 +6174,7 @@ index 2afc528..0056528 100644
                      }
                      function s(e) {
                          return (Math.exp(e) - Math.exp(-e)) / 2;
-@@ -59869,74 +58908,66 @@ Object.values ||
+@@ -59826,74 +58908,66 @@ Object.values ||
                          return (Math.exp(e) + Math.exp(-e)) / 2;
                      }
                      function o(e) {
@@ -6384,7 +6298,7 @@ index 2afc528..0056528 100644
                  },
                  setMinZoom: function (e) {
                      var t = this.options.minZoom;
-@@ -59968,10 +58999,10 @@ Object.values ||
+@@ -59925,10 +58999,10 @@ Object.values ||
                  },
                  panInsideBounds: function (e, t) {
                      this._enforcingBounds = !0;
@@ -6398,7 +6312,7 @@ index 2afc528..0056528 100644
                          (this._enforcingBounds = !1),
                          this
                      );
-@@ -59981,24 +59012,28 @@ Object.values ||
+@@ -59938,24 +59012,28 @@ Object.values ||
                              (t = t || {}).paddingTopLeft || t.padding || [0, 0]
                          ),
                          n = w(t.paddingBottomRight || t.padding || [0, 0]),
@@ -6445,7 +6359,7 @@ index 2afc528..0056528 100644
                  },
                  invalidateSize: function (e) {
                      if (!this._loaded) return this;
-@@ -60006,26 +59041,25 @@ Object.values ||
+@@ -59963,26 +59041,25 @@ Object.values ||
                          { animate: !1, pan: !0 },
                          !0 === e ? { animate: !0 } : e
                      );
@@ -6483,7 +6397,7 @@ index 2afc528..0056528 100644
                          :   this;
                  },
                  stop: function () {
-@@ -60036,29 +59070,25 @@ Object.values ||
+@@ -59993,29 +59070,25 @@ Object.values ||
                      );
                  },
                  locate: function (e) {
@@ -6528,7 +6442,7 @@ index 2afc528..0056528 100644
                          this
                      );
                  },
-@@ -60075,61 +59105,45 @@ Object.values ||
+@@ -60032,61 +59105,45 @@ Object.values ||
                      );
                  },
                  _handleGeolocationError: function (e) {
@@ -6612,7 +6526,7 @@ index 2afc528..0056528 100644
                          this._containerId !== this._container._leaflet_id)
                      )
                          throw new Error(
-@@ -60142,18 +59156,19 @@ Object.values ||
+@@ -60099,18 +59156,19 @@ Object.values ||
                          (this._container._leaflet_id = void 0),
                              (this._containerId = void 0);
                      }
@@ -6636,7 +6550,7 @@ index 2afc528..0056528 100644
                      return (
                          (this._layers = []),
                          (this._panes = []),
-@@ -60163,26 +59178,21 @@ Object.values ||
+@@ -60120,26 +59178,21 @@ Object.values ||
                      );
                  },
                  createPane: function (e, t) {
@@ -6672,7 +6586,7 @@ index 2afc528..0056528 100644
                          :   this.layerPointToLatLng(this._getCenterLayerPoint())
                      );
                  },
-@@ -60216,25 +59226,21 @@ Object.values ||
+@@ -60173,25 +59226,21 @@ Object.values ||
                          s = this.getMinZoom(),
                          a = this.getMaxZoom(),
                          o = e.getNorthWest(),
@@ -6710,7 +6624,7 @@ index 2afc528..0056528 100644
                          Math.max(s, Math.min(a, n))
                      );
                  },
-@@ -60250,10 +59256,8 @@ Object.values ||
+@@ -60207,10 +59256,8 @@ Object.values ||
                      );
                  },
                  getPixelBounds: function (e, t) {
@@ -6723,7 +6637,7 @@ index 2afc528..0056528 100644
                  },
                  getPixelOrigin: function () {
                      return this._checkIfLoaded(), this._pixelOrigin;
-@@ -60281,9 +59285,9 @@ Object.values ||
+@@ -60238,9 +59285,9 @@ Object.values ||
                  },
                  getScaleZoom: function (e, t) {
                      var i = this.options.crs;
@@ -6736,7 +6650,7 @@ index 2afc528..0056528 100644
                  },
                  project: function (e, t) {
                      return (
-@@ -60298,9 +59302,8 @@ Object.values ||
+@@ -60255,9 +59302,8 @@ Object.values ||
                      );
                  },
                  layerPointToLatLng: function (e) {
@@ -6748,7 +6662,7 @@ index 2afc528..0056528 100644
                  },
                  latLngToLayerPoint: function (e) {
                      return this.project(z(e))
-@@ -60323,10 +59326,8 @@ Object.values ||
+@@ -60280,10 +59326,8 @@ Object.values ||
                      return w(e).add(this._getMapPanePos());
                  },
                  containerPointToLatLng: function (e) {
@@ -6761,7 +6675,7 @@ index 2afc528..0056528 100644
                  },
                  latLngToContainerPoint: function (e) {
                      return this.layerPointToContainerPoint(
-@@ -60334,7 +59335,7 @@ Object.values ||
+@@ -60291,7 +59335,7 @@ Object.values ||
                      );
                  },
                  mouseEventToContainerPoint: function (e) {
@@ -6770,7 +6684,7 @@ index 2afc528..0056528 100644
                  },
                  mouseEventToLayerPoint: function (e) {
                      return this.containerPointToLayerPoint(
-@@ -60347,35 +59348,31 @@ Object.values ||
+@@ -60304,35 +59348,31 @@ Object.values ||
                      );
                  },
                  _initContainer: function (e) {
@@ -6823,7 +6737,7 @@ index 2afc528..0056528 100644
                          (e.style.position = 'relative'),
                          this._initPanes(),
                          this._initControlPos && this._initControlPos();
-@@ -60387,28 +59384,27 @@ Object.values ||
+@@ -60344,28 +59384,27 @@ Object.values ||
                              'mapPane',
                              this._container
                          )),
@@ -6866,7 +6780,7 @@ index 2afc528..0056528 100644
                  },
                  _moveStart: function (e, t) {
                      return (
-@@ -60417,18 +59413,15 @@ Object.values ||
+@@ -60374,18 +59413,15 @@ Object.values ||
                          this
                      );
                  },
@@ -6889,7 +6803,7 @@ index 2afc528..0056528 100644
                      );
                  },
                  _moveEnd: function (e) {
-@@ -60436,13 +59429,13 @@ Object.values ||
+@@ -60393,13 +59429,13 @@ Object.values ||
                  },
                  _stop: function () {
                      return (
@@ -6905,7 +6819,7 @@ index 2afc528..0056528 100644
                  },
                  _getZoomSpan: function () {
                      return this.getMaxZoom() - this.getMinZoom();
-@@ -60456,17 +59449,18 @@ Object.values ||
+@@ -60413,17 +59449,18 @@ Object.values ||
                          throw new Error('Set map center and zoom first.');
                  },
                  _initEvents: function (e) {
@@ -6929,7 +6843,7 @@ index 2afc528..0056528 100644
                              this.options.transform3DLimit &&
                              (e ? this.off : this.on).call(
                                  this,
-@@ -60475,8 +59469,8 @@ Object.values ||
+@@ -60432,8 +59469,8 @@ Object.values ||
                              );
                  },
                  _onResize: function () {
@@ -6940,7 +6854,7 @@ index 2afc528..0056528 100644
                              this.invalidateSize({ debounceMoveend: !0 });
                          }, this));
                  },
-@@ -60493,7 +59487,7 @@ Object.values ||
+@@ -60450,7 +59487,7 @@ Object.values ||
                  _findEventTargets: function (e, t) {
                      for (
                          var i,
@@ -6949,7 +6863,7 @@ index 2afc528..0056528 100644
                              a = 'mouseout' === t || 'mouseover' === t,
                              o = e.target || e.srcElement,
                              r = !1;
-@@ -60501,38 +59495,30 @@ Object.values ||
+@@ -60458,38 +59495,30 @@ Object.values ||
  
                      ) {
                          if (
@@ -6999,7 +6913,7 @@ index 2afc528..0056528 100644
                  },
                  _mouseEvents: [
                      'click',
-@@ -60542,49 +59528,39 @@ Object.values ||
+@@ -60499,49 +59528,39 @@ Object.values ||
                      'contextmenu',
                  ],
                  _fireDOMEvent: function (e, i, n) {
@@ -7078,7 +6992,7 @@ index 2afc528..0056528 100644
                              )
                                  return;
                      }
-@@ -60610,7 +59586,7 @@ Object.values ||
+@@ -60567,7 +59586,7 @@ Object.values ||
                      );
                  },
                  _getMapPanePos: function () {
@@ -7087,7 +7001,7 @@ index 2afc528..0056528 100644
                  },
                  _moved: function () {
                      var e = this._getMapPanePos();
-@@ -60632,21 +59608,17 @@ Object.values ||
+@@ -60589,21 +59608,17 @@ Object.values ||
                          ._round();
                  },
                  _latLngToNewLayerPoint: function (e, t, i) {
@@ -7118,7 +7032,7 @@ index 2afc528..0056528 100644
                  },
                  _getCenterLayerPoint: function () {
                      return this.containerPointToLayerPoint(
-@@ -60659,43 +59631,35 @@ Object.values ||
+@@ -60616,43 +59631,35 @@ Object.values ||
                      );
                  },
                  _limitCenter: function (e, t, i) {
@@ -7181,7 +7095,7 @@ index 2afc528..0056528 100644
                              Math.round(e - t) / 2
                          :   Math.max(0, Math.ceil(e)) -
                                  Math.max(0, Math.floor(t));
-@@ -60703,7 +59667,7 @@ Object.values ||
+@@ -60660,7 +59667,7 @@ Object.values ||
                  _limitZoom: function (e) {
                      var t = this.getMinZoom(),
                          i = this.getMaxZoom(),
@@ -7190,7 +7104,7 @@ index 2afc528..0056528 100644
                      return (
                          n && (e = Math.round(e / n) * n),
                          Math.max(t, Math.min(i, e))
-@@ -60713,20 +59677,18 @@ Object.values ||
+@@ -60670,20 +59677,18 @@ Object.values ||
                      this.fire('move');
                  },
                  _onPanTransitionEnd: function () {
@@ -7218,7 +7132,7 @@ index 2afc528..0056528 100644
                          'div',
                          'leaflet-proxy leaflet-zoom-animated'
                      ));
-@@ -60734,9 +59696,9 @@ Object.values ||
+@@ -60691,9 +59696,9 @@ Object.values ||
                          this.on(
                              'zoomanim',
                              function (e) {
@@ -7230,7 +7144,7 @@ index 2afc528..0056528 100644
                                      this._proxy,
                                      this.project(e.center, e.zoom),
                                      this.getZoomScale(e.zoom, 1)
-@@ -60747,26 +59709,27 @@ Object.values ||
+@@ -60704,26 +59709,27 @@ Object.values ||
                              },
                              this
                          ),
@@ -7272,7 +7186,7 @@ index 2afc528..0056528 100644
                          this._onZoomTransitionEnd();
                  },
                  _nothingToAnimate: function () {
-@@ -60775,72 +59738,55 @@ Object.values ||
+@@ -60732,72 +59738,55 @@ Object.values ||
                      ).length;
                  },
                  _tryAnimatedZoom: function (e, t, i) {
@@ -7376,7 +7290,7 @@ index 2afc528..0056528 100644
                  },
                  getPosition: function () {
                      return this.options.position;
-@@ -60860,408 +59806,356 @@ Object.values ||
+@@ -60817,408 +59806,356 @@ Object.values ||
                  addTo: function (e) {
                      this.remove(), (this._map = e);
                      var t = (this._container = this.onAdd(e)),
@@ -8097,7 +8011,7 @@ index 2afc528..0056528 100644
                          n = this.options;
                      return (
                          (this._zoomInButton = this._createButton(
-@@ -61315,727 +60209,674 @@ Object.values ||
+@@ -61272,727 +60209,674 @@ Object.values ||
                          );
                  },
                  _createButton: function (e, t, i, n, s) {
@@ -9405,7 +9319,7 @@ index 2afc528..0056528 100644
                              this.fire('layerremove', { layer: e }))
                          :   this;
                  },
-@@ -62049,23 +60890,18 @@ Object.values ||
+@@ -62006,23 +60890,18 @@ Object.values ||
                      return this.invoke('bringToBack');
                  },
                  getBounds: function () {
@@ -9437,7 +9351,7 @@ index 2afc528..0056528 100644
                  },
                  createIcon: function (e) {
                      return this._createIcon('icon', e);
-@@ -62075,48 +60911,37 @@ Object.values ||
+@@ -62032,48 +60911,37 @@ Object.values ||
                  },
                  _createIcon: function (e, t) {
                      var i = this._getIconUrl(e);
@@ -9508,7 +9422,7 @@ index 2afc528..0056528 100644
                  },
                  _createImg: function (e, t) {
                      return (
-@@ -62125,12 +60950,12 @@ Object.values ||
+@@ -62082,12 +60950,12 @@ Object.values ||
                  },
                  _getIconUrl: function (e) {
                      return (
@@ -9523,7 +9437,7 @@ index 2afc528..0056528 100644
                  options: {
                      iconUrl: 'marker-icon.png',
                      iconRetinaUrl: 'marker-icon-2x.png',
-@@ -62143,48 +60968,35 @@ Object.values ||
+@@ -62100,48 +60968,35 @@ Object.values ||
                  },
                  _getIconUrl: function (e) {
                      return (
@@ -9584,7 +9498,7 @@ index 2afc528..0056528 100644
                          this._draggable
                              .on(
                                  {
-@@ -62196,7 +61008,7 @@ Object.values ||
+@@ -62153,7 +61008,7 @@ Object.values ||
                                  this
                              )
                              .enable(),
@@ -9593,7 +9507,7 @@ index 2afc528..0056528 100644
                  },
                  removeHooks: function () {
                      this._draggable
-@@ -62211,7 +61023,7 @@ Object.values ||
+@@ -62168,7 +61023,7 @@ Object.values ||
                          )
                          .disable(),
                          this._marker._icon &&
@@ -9602,7 +9516,7 @@ index 2afc528..0056528 100644
                  },
                  moved: function () {
                      return this._draggable && this._draggable._moved;
-@@ -62221,79 +61033,83 @@ Object.values ||
+@@ -62178,79 +61033,83 @@ Object.values ||
                          i = t._map,
                          n = this._marker.options.autoPanSpeed,
                          s = this._marker.options.autoPanPadding,
@@ -9721,7 +9635,7 @@ index 2afc528..0056528 100644
                  },
                  onAdd: function (e) {
                      (this._zoomAnimated =
-@@ -62334,9 +61150,6 @@ Object.values ||
+@@ -62291,9 +61150,6 @@ Object.values ||
                  setZIndexOffset: function (e) {
                      return (this.options.zIndexOffset = e), this.update();
                  },
@@ -9731,7 +9645,7 @@ index 2afc528..0056528 100644
                  setIcon: function (e) {
                      return (
                          (this.options.icon = e),
-@@ -62350,53 +61163,45 @@ Object.values ||
+@@ -62307,53 +61163,45 @@ Object.values ||
                      return this._icon;
                  },
                  update: function () {
@@ -9815,7 +9729,7 @@ index 2afc528..0056528 100644
                                  this._shadow
                              );
                  },
-@@ -62406,42 +61211,42 @@ Object.values ||
+@@ -62363,42 +61211,42 @@ Object.values ||
                              mouseover: this._bringToFront,
                              mouseout: this._resetZIndex,
                          }),
@@ -9878,7 +9792,7 @@ index 2afc528..0056528 100644
                  },
                  setOpacity: function (e) {
                      return (
-@@ -62452,8 +61257,7 @@ Object.values ||
+@@ -62409,8 +61257,7 @@ Object.values ||
                  },
                  _updateOpacity: function () {
                      var e = this.options.opacity;
@@ -9888,7 +9802,7 @@ index 2afc528..0056528 100644
                  },
                  _bringToFront: function () {
                      this._updateZIndex(this.options.riseOffset);
-@@ -62461,21 +61265,6 @@ Object.values ||
+@@ -62418,21 +61265,6 @@ Object.values ||
                  _resetZIndex: function () {
                      this._updateZIndex(0);
                  },
@@ -9910,7 +9824,7 @@ index 2afc528..0056528 100644
                  _getPopupAnchor: function () {
                      return this.options.icon.options.popupAnchor;
                  },
-@@ -62483,7 +61272,7 @@ Object.values ||
+@@ -62440,7 +61272,7 @@ Object.values ||
                      return this.options.icon.options.tooltipAnchor;
                  },
              }),
@@ -9919,7 +9833,7 @@ index 2afc528..0056528 100644
                  options: {
                      stroke: !0,
                      color: '#3388ff',
-@@ -62516,16 +61305,8 @@ Object.values ||
+@@ -62473,16 +61305,8 @@ Object.values ||
                  },
                  setStyle: function (e) {
                      return (
@@ -9938,7 +9852,7 @@ index 2afc528..0056528 100644
                          this
                      );
                  },
-@@ -62550,26 +61331,22 @@ Object.values ||
+@@ -62507,26 +61331,22 @@ Object.values ||
                  _clickTolerance: function () {
                      return (
                          (this.options.stroke ? this.options.weight / 2 : 0) +
@@ -9969,7 +9883,7 @@ index 2afc528..0056528 100644
                      );
                  },
                  getLatLng: function () {
-@@ -62586,7 +61363,7 @@ Object.values ||
+@@ -62543,7 +61363,7 @@ Object.values ||
                  setStyle: function (e) {
                      var t = (e && e.radius) || this._radius;
                      return (
@@ -9978,7 +9892,7 @@ index 2afc528..0056528 100644
                          this.setRadius(t),
                          this
                      );
-@@ -62598,11 +61375,11 @@ Object.values ||
+@@ -62555,11 +61375,11 @@ Object.values ||
                  _updateBounds: function () {
                      var e = this._radius,
                          t = this._radiusY || e,
@@ -9994,7 +9908,7 @@ index 2afc528..0056528 100644
                      );
                  },
                  _update: function () {
-@@ -62624,16 +61401,11 @@ Object.values ||
+@@ -62581,16 +61401,11 @@ Object.values ||
                      );
                  },
              }),
@@ -10014,7 +9928,7 @@ index 2afc528..0056528 100644
                          (this._latlng = z(e)),
                          isNaN(this.options.radius))
                      )
-@@ -62653,49 +61425,46 @@ Object.values ||
+@@ -62610,49 +61425,46 @@ Object.values ||
                          this._map.layerPointToLatLng(this._point.add(e))
                      );
                  },
@@ -10099,7 +10013,7 @@ index 2afc528..0056528 100644
                  },
                  getLatLngs: function () {
                      return this._latlngs;
-@@ -62708,32 +61477,57 @@ Object.values ||
+@@ -62665,32 +61477,57 @@ Object.values ||
                  },
                  closestLayerPoint: function (e) {
                      for (
@@ -10177,7 +10091,7 @@ index 2afc528..0056528 100644
                  },
                  getBounds: function () {
                      return this._bounds;
-@@ -62752,10 +61546,10 @@ Object.values ||
+@@ -62709,10 +61546,10 @@ Object.values ||
                          (this._latlngs = this._convertLatLngs(e));
                  },
                  _defaultShape: function () {
@@ -10190,7 +10104,7 @@ index 2afc528..0056528 100644
                          i ?
                              ((t[n] = z(e[n])), this._bounds.extend(t[n]))
                          :   (t[n] = this._convertLatLngs(e[n]));
-@@ -62764,18 +61558,14 @@ Object.values ||
+@@ -62721,18 +61558,14 @@ Object.values ||
                  _project: function () {
                      var e = new k();
                      (this._rings = []),
@@ -10217,7 +10131,7 @@ index 2afc528..0056528 100644
                  },
                  _projectLatlngs: function (e, t, i) {
                      var n,
-@@ -62798,29 +61588,31 @@ Object.values ||
+@@ -62755,29 +61588,31 @@ Object.values ||
                          this._pxBounds && this._pxBounds.intersects(e))
                      )
                          if (this.options.noClip) this._parts = this._rings;
@@ -10268,7 +10182,7 @@ index 2afc528..0056528 100644
                  },
                  _simplifyPoints: function () {
                      for (
-@@ -62831,7 +61623,7 @@ Object.values ||
+@@ -62788,7 +61623,7 @@ Object.values ||
                          i < n;
                          i++
                      )
@@ -10277,7 +10191,7 @@ index 2afc528..0056528 100644
                  },
                  _update: function () {
                      this._map &&
-@@ -62850,70 +61642,92 @@ Object.values ||
+@@ -62807,70 +61642,92 @@ Object.values ||
                          o,
                          r,
                          l = this._clickTolerance();
@@ -10407,7 +10321,7 @@ index 2afc528..0056528 100644
                  },
                  _updatePath: function () {
                      this._renderer._updatePoly(this, !0);
-@@ -62944,18 +61758,18 @@ Object.values ||
+@@ -62901,18 +61758,18 @@ Object.values ||
                                              (n.y - i.y) +
                                              i.x &&
                                      (c = !c);
@@ -10430,7 +10344,7 @@ index 2afc528..0056528 100644
                      if (s) {
                          for (t = 0, i = s.length; t < i; t++)
                              ((n = s[t]).geometries ||
-@@ -62965,22 +61779,23 @@ Object.values ||
+@@ -62922,22 +61779,23 @@ Object.values ||
                                  this.addData(n);
                          return this;
                      }
@@ -10468,7 +10382,7 @@ index 2afc528..0056528 100644
                  },
                  setStyle: function (e) {
                      return this.eachLayer(function (t) {
-@@ -62988,88 +61803,93 @@ Object.values ||
+@@ -62945,88 +61803,93 @@ Object.values ||
                      }, this);
                  },
                  _setLayerStyle: function (e, t) {
@@ -10623,7 +10537,7 @@ index 2afc528..0056528 100644
                  options: {
                      opacity: 1,
                      alt: '',
-@@ -63080,20 +61900,20 @@ Object.values ||
+@@ -63037,20 +61900,20 @@ Object.values ||
                      className: '',
                  },
                  initialize: function (e, t, i) {
@@ -10647,7 +10561,7 @@ index 2afc528..0056528 100644
                          this.options.interactive &&
                              this.removeInteractiveTarget(this._image);
                  },
-@@ -63108,10 +61928,10 @@ Object.values ||
+@@ -63065,10 +61928,10 @@ Object.values ||
                      return e.opacity && this.setOpacity(e.opacity), this;
                  },
                  bringToFront: function () {
@@ -10660,7 +10574,7 @@ index 2afc528..0056528 100644
                  },
                  setUrl: function (e) {
                      return (
-@@ -63145,16 +61965,16 @@ Object.values ||
+@@ -63102,16 +61965,16 @@ Object.values ||
                  },
                  _initImage: function () {
                      var e = 'IMG' === this._url.tagName,
@@ -10687,7 +10601,7 @@ index 2afc528..0056528 100644
                              (t.crossOrigin =
                                  !0 === this.options.crossOrigin ?
                                      ''
-@@ -63165,13 +61985,13 @@ Object.values ||
+@@ -63122,13 +61985,13 @@ Object.values ||
                          :   ((t.src = this._url), (t.alt = this.options.alt));
                  },
                  _animateZoom: function (e) {
@@ -10708,7 +10622,7 @@ index 2afc528..0056528 100644
                  },
                  _reset: function () {
                      var e = this._image,
-@@ -63184,12 +62004,12 @@ Object.values ||
+@@ -63141,12 +62004,12 @@ Object.values ||
                              )
                          ),
                          i = t.getSize();
@@ -10723,7 +10637,7 @@ index 2afc528..0056528 100644
                  },
                  _updateZIndex: function () {
                      this._image &&
-@@ -63204,130 +62024,63 @@ Object.values ||
+@@ -63161,130 +62024,63 @@ Object.values ||
                          this._url !== e &&
                          ((this._url = e), (this._image.src = e));
                  },
@@ -10880,7 +10794,7 @@ index 2afc528..0056528 100644
                  },
                  getLatLng: function () {
                      return this._latlng;
-@@ -63372,36 +62125,10 @@ Object.values ||
+@@ -63329,36 +62125,10 @@ Object.values ||
                      return !!this._map && this._map.hasLayer(this);
                  },
                  bringToFront: function () {
@@ -10919,7 +10833,7 @@ index 2afc528..0056528 100644
                  },
                  _updateContent: function () {
                      if (this._content) {
-@@ -63420,646 +62147,573 @@ Object.values ||
+@@ -63377,646 +62147,573 @@ Object.values ||
                      }
                  },
                  _updatePosition: function () {
@@ -12109,7 +12023,7 @@ index 2afc528..0056528 100644
                      updateWhenZooming: !0,
                      updateInterval: 200,
                      zIndex: 1,
-@@ -64074,20 +62728,21 @@ Object.values ||
+@@ -64031,20 +62728,21 @@ Object.values ||
                      keepBuffer: 2,
                  },
                  initialize: function (e) {
@@ -12134,7 +12048,7 @@ index 2afc528..0056528 100644
                          e._removeZoomLimit(this),
                          (this._container = null),
                          (this._tileZoom = void 0);
-@@ -64095,14 +62750,14 @@ Object.values ||
+@@ -64052,14 +62750,14 @@ Object.values ||
                  bringToFront: function () {
                      return (
                          this._map &&
@@ -12151,7 +12065,7 @@ index 2afc528..0056528 100644
                          this
                      );
                  },
-@@ -64123,14 +62778,8 @@ Object.values ||
+@@ -64080,14 +62778,8 @@ Object.values ||
                      return this._loading;
                  },
                  redraw: function () {
@@ -12167,7 +12081,7 @@ index 2afc528..0056528 100644
                          this
                      );
                  },
-@@ -64144,7 +62793,7 @@ Object.values ||
+@@ -64101,7 +62793,7 @@ Object.values ||
                      return (
                          this.options.updateWhenIdle ||
                              (this._onMove ||
@@ -12176,7 +12090,7 @@ index 2afc528..0056528 100644
                                      this._onMoveEnd,
                                      this.options.updateInterval,
                                      this
-@@ -64184,39 +62833,37 @@ Object.values ||
+@@ -64141,39 +62833,37 @@ Object.values ||
                          this._updateZIndex());
                  },
                  _updateOpacity: function () {
@@ -12239,7 +12153,7 @@ index 2afc528..0056528 100644
                              'div',
                              'leaflet-layer ' + (this.options.className || '')
                          )),
-@@ -64229,20 +62876,19 @@ Object.values ||
+@@ -64186,20 +62876,19 @@ Object.values ||
                          t = this.options.maxZoom;
                      if (void 0 !== e) {
                          for (var i in this._levels)
@@ -12269,7 +12183,7 @@ index 2afc528..0056528 100644
                                      'div',
                                      'leaflet-tile-container leaflet-zoom-animated',
                                      this._container
-@@ -64257,45 +62903,45 @@ Object.values ||
+@@ -64214,45 +62903,45 @@ Object.values ||
                                      s.getCenter(),
                                      s.getZoom()
                                  ),
@@ -12337,7 +12251,7 @@ index 2afc528..0056528 100644
                              for (e in this._tiles)
                                  this._tiles[e].retain || this._removeTile(e);
                          }
-@@ -64310,45 +62956,46 @@ Object.values ||
+@@ -64267,45 +62956,46 @@ Object.values ||
                  },
                  _invalidateAll: function () {
                      for (var e in this._levels)
@@ -12410,7 +12324,7 @@ index 2afc528..0056528 100644
                  },
                  _animateZoom: function (e) {
                      this._setView(e.center, e.zoom, !0, e.noUpdate);
-@@ -64364,19 +63011,14 @@ Object.values ||
+@@ -64321,19 +63011,14 @@ Object.values ||
                      );
                  },
                  _setView: function (e, t, i, n) {
@@ -12438,7 +12352,7 @@ index 2afc528..0056528 100644
                      (n && !a) ||
                          ((this._tileZoom = s),
                          this._abortLoading && this._abortLoading(),
-@@ -64392,12 +63034,12 @@ Object.values ||
+@@ -64349,12 +63034,12 @@ Object.values ||
                          this._setZoomTransform(this._levels[i], e, t);
                  },
                  _setZoomTransform: function (e, t, i) {
@@ -12457,7 +12371,7 @@ index 2afc528..0056528 100644
                  },
                  _resetGrid: function () {
                      var e = this._map,
-@@ -64429,34 +63071,33 @@ Object.values ||
+@@ -64386,34 +63071,33 @@ Object.values ||
                      this._map && !this._map._animatingZoom && this._update();
                  },
                  _getTiledPixelBounds: function (e) {
@@ -12510,7 +12424,7 @@ index 2afc528..0056528 100644
                              if (
                                  !(
                                      isFinite(s.min.x) &&
-@@ -64468,31 +63109,28 @@ Object.values ||
+@@ -64425,31 +63109,28 @@ Object.values ||
                                  throw new Error(
                                      'Attempted to load an infinite number of tiles'
                                  );
@@ -12562,7 +12476,7 @@ index 2afc528..0056528 100644
                                      }
                                  if (
                                      (o.sort(function (e, t) {
-@@ -64505,10 +63143,10 @@ Object.values ||
+@@ -64462,10 +63143,10 @@ Object.values ||
                                      this._loading ||
                                          ((this._loading = !0),
                                          this.fire('loading'));
@@ -12577,7 +12491,7 @@ index 2afc528..0056528 100644
                                  }
                              }
                          }
-@@ -64524,11 +63162,9 @@ Object.values ||
+@@ -64481,11 +63162,9 @@ Object.values ||
                          )
                              return !1;
                      }
@@ -12592,7 +12506,7 @@ index 2afc528..0056528 100644
                  },
                  _keyToBounds: function (e) {
                      return this._tileCoordsToBounds(this._keyToTileCoords(e));
-@@ -64536,27 +63172,31 @@ Object.values ||
+@@ -64493,27 +63172,31 @@ Object.values ||
                  _tileCoordsToNwSe: function (e) {
                      var t = this._map,
                          i = this.getTileSize(),
@@ -12632,7 +12546,7 @@ index 2afc528..0056528 100644
                          delete this._tiles[e],
                          this.fire('tileunload', {
                              tile: t.el,
-@@ -64564,55 +63204,58 @@ Object.values ||
+@@ -64521,55 +63204,58 @@ Object.values ||
                          }));
                  },
                  _initTile: function (e) {
@@ -12713,7 +12627,7 @@ index 2afc528..0056528 100644
                  },
                  _getTilePos: function (e) {
                      return e
-@@ -64621,8 +63264,8 @@ Object.values ||
+@@ -64578,8 +63264,8 @@ Object.values ||
                  },
                  _wrapCoords: function (e) {
                      var t = new y(
@@ -12724,7 +12638,7 @@ index 2afc528..0056528 100644
                      );
                      return (t.z = e.z), t;
                  },
-@@ -64639,7 +63282,7 @@ Object.values ||
+@@ -64596,7 +63282,7 @@ Object.values ||
                      return !0;
                  },
              }),
@@ -12733,7 +12647,7 @@ index 2afc528..0056528 100644
                  options: {
                      minZoom: 0,
                      maxZoom: 18,
-@@ -64650,34 +63293,20 @@ Object.values ||
+@@ -64607,34 +63293,20 @@ Object.values ||
                      zoomReverse: !1,
                      detectRetina: !1,
                      crossOrigin: !1,
@@ -12775,7 +12689,7 @@ index 2afc528..0056528 100644
                  },
                  setUrl: function (e, t) {
                      return (
-@@ -64688,42 +63317,38 @@ Object.values ||
+@@ -64645,42 +63317,38 @@ Object.values ||
                      );
                  },
                  createTile: function (e, t) {
@@ -12835,7 +12749,7 @@ index 2afc528..0056528 100644
                  },
                  _tileOnError: function (e, t, i) {
                      var n = this.options.errorTileUrl;
-@@ -64736,48 +63361,38 @@ Object.values ||
+@@ -64693,48 +63361,38 @@ Object.values ||
                      var e = this._tileZoom,
                          t = this.options.maxZoom;
                      return (
@@ -12899,7 +12813,7 @@ index 2afc528..0056528 100644
                  defaultWmsParams: {
                      service: 'WMS',
                      request: 'GetMap',
-@@ -64790,58 +63405,57 @@ Object.values ||
+@@ -64747,58 +63405,57 @@ Object.values ||
                  options: { crs: null, uppercase: !1 },
                  initialize: function (e, i) {
                      this._url = e;
@@ -12987,7 +12901,7 @@ index 2afc528..0056528 100644
                          this.getPane().appendChild(this._container),
                          this._update(),
                          this.on('update', this._updatePaths, this);
-@@ -64872,17 +63486,14 @@ Object.values ||
+@@ -64829,17 +63486,14 @@ Object.values ||
                  },
                  _updateTransform: function (e, t) {
                      var i = this._map.getZoomScale(t, this._zoom),
@@ -13011,7 +12925,7 @@ index 2afc528..0056528 100644
                  },
                  _reset: function () {
                      for (var e in (this._update(),
-@@ -64910,37 +63521,35 @@ Object.values ||
+@@ -64867,37 +63521,35 @@ Object.values ||
                          (this._zoom = this._map.getZoom());
                  },
              }),
@@ -13058,7 +12972,7 @@ index 2afc528..0056528 100644
                          delete this._container;
                  },
                  _updatePaths: function () {
-@@ -64952,46 +63561,50 @@ Object.values ||
+@@ -64909,46 +63561,50 @@ Object.values ||
                      }
                  },
                  _update: function () {
@@ -13135,7 +13049,7 @@ index 2afc528..0056528 100644
                          this._requestRedraw(e);
                  },
                  _updatePath: function (e) {
-@@ -65005,35 +63618,34 @@ Object.values ||
+@@ -64962,35 +63618,34 @@ Object.values ||
                  },
                  _updateDashArray: function (e) {
                      if ('string' == typeof e.options.dashArray) {
@@ -13189,7 +13103,7 @@ index 2afc528..0056528 100644
                  },
                  _redraw: function () {
                      (this._redrawRequest = null),
-@@ -65045,36 +63657,32 @@ Object.values ||
+@@ -65002,36 +63657,32 @@ Object.values ||
                          (this._redrawBounds = null);
                  },
                  _clear: function () {
@@ -13242,7 +13156,7 @@ index 2afc528..0056528 100644
                                  e._updatePath();
                      (this._drawing = !1), this._ctx.restore();
                  },
-@@ -65099,20 +63707,17 @@ Object.values ||
+@@ -65056,20 +63707,17 @@ Object.values ||
                      }
                  },
                  _updateCircle: function (e) {
@@ -13274,7 +13188,7 @@ index 2afc528..0056528 100644
                  },
                  _fillStroke: function (e, t) {
                      var i = t.options;
-@@ -65144,89 +63749,76 @@ Object.values ||
+@@ -65101,89 +63749,76 @@ Object.values ||
                      )
                          (t = s.layer).options.interactive &&
                              t._containsPoint(n) &&
@@ -13416,7 +13330,7 @@ index 2afc528..0056528 100644
                  try {
                      return (
                          document.namespaces.add(
-@@ -65239,148 +63831,148 @@ Object.values ||
+@@ -65196,148 +63831,148 @@ Object.values ||
                              );
                          }
                      );
@@ -13689,7 +13603,7 @@ index 2afc528..0056528 100644
                  },
                  _addPath: function (e) {
                      this._rootGroup || this._initContainer(),
-@@ -65388,39 +63980,39 @@ Object.values ||
+@@ -65345,39 +63980,39 @@ Object.values ||
                          e.addInteractiveTarget(e._path);
                  },
                  _removePath: function (e) {
@@ -13747,7 +13661,7 @@ index 2afc528..0056528 100644
                              ))
                          :   t.setAttribute('fill', 'none'));
                  },
-@@ -65435,65 +64027,63 @@ Object.values ||
+@@ -65392,65 +64027,63 @@ Object.values ||
                              i +
                              ',' +
                              (Math.max(Math.round(e._radiusY), 1) || i) +
@@ -13847,7 +13761,7 @@ index 2afc528..0056528 100644
              },
              setBounds: function (e) {
                  return this.setLatLngs(this._boundsToLatLngs(e));
-@@ -65507,17 +64097,17 @@ Object.values ||
+@@ -65464,17 +64097,17 @@ Object.values ||
                  ];
              },
          });
@@ -13876,7 +13790,7 @@ index 2afc528..0056528 100644
              initialize: function (e) {
                  (this._map = e),
                      (this._container = e._container),
-@@ -65526,16 +64116,16 @@ Object.values ||
+@@ -65483,16 +64116,16 @@ Object.values ||
                      e.on('unload', this._destroy, this);
              },
              addHooks: function () {
@@ -13896,7 +13810,7 @@ index 2afc528..0056528 100644
              },
              _resetState: function () {
                  (this._resetStateTimeout = 0), (this._moved = !1);
-@@ -65549,14 +64139,14 @@ Object.values ||
+@@ -65506,14 +64139,14 @@ Object.values ||
                  if (!e.shiftKey || (1 !== e.which && 1 !== e.button)) return !1;
                  this._clearDeferredResetState(),
                      this._resetState(),
@@ -13915,7 +13829,7 @@ index 2afc528..0056528 100644
                              mousemove: this._onMouseMove,
                              mouseup: this._onMouseUp,
                              keydown: this._onKeyDown,
-@@ -65567,24 +64157,25 @@ Object.values ||
+@@ -65524,24 +64157,25 @@ Object.values ||
              _onMouseMove: function (e) {
                  this._moved ||
                      ((this._moved = !0),
@@ -13952,7 +13866,7 @@ index 2afc528..0056528 100644
                              mousemove: this._onMouseMove,
                              mouseup: this._onMouseUp,
                              keydown: this._onKeyDown,
-@@ -65593,864 +64184,712 @@ Object.values ||
+@@ -65550,864 +64184,712 @@ Object.values ||
                      );
              },
              _onMouseUp: function (e) {
@@ -15512,7 +15426,7 @@ index 2afc528..0056528 100644
          }),
              (window.L = e);
      }),
-@@ -67165,1079 +65604,18 @@ Object.values ||
+@@ -67122,1079 +65604,18 @@ Object.values ||
              })
          : 'object' == typeof module && module.exports ? (module.exports = b)
          : (e.md5 = b);
@@ -16594,7 +16508,7 @@ index 2afc528..0056528 100644
      building_draw_timeOut,
      building_timers = Array(),
      building_marker_image = '/images/building_fire.png',
-@@ -68312,6 +65690,7 @@ var currentUserId = -1,
+@@ -68269,6 +65690,7 @@ var currentUserId = -1,
      alliance_chat_ban_countdown_timer,
      mission_overview_timer,
      mission_overview_last_count,
@@ -16602,7 +16516,7 @@ index 2afc528..0056528 100644
      buildingVehicleGraphicCachePerId = new Map(),
      TIME_MODIFIER_SONDERRECHTE = 0.8,
      TIME_MODIFIER_NORMAL = 1.1,
-@@ -68390,7 +65769,6 @@ var pauseTick = !1,
+@@ -68347,7 +65769,6 @@ var pauseTick = !1,
          window.oCancelAnimationFrame ||
          window.msCancelRequestAnimationFrame ||
          window.msCancelAnimationFrame;
@@ -16610,7 +16524,7 @@ index 2afc528..0056528 100644
  $(function () {
      function onCoinsTop() {
          return !mobile_bridge_use || (mobileBridgeAdd('coins_window', {}), !1);
-@@ -73973,7 +71351,7 @@ if (
+@@ -73930,7 +71351,7 @@ if (
              y(e, 'display', '');
          }
          function b(e) {
@@ -16619,7 +16533,7 @@ index 2afc528..0056528 100644
          }
          function y(e, t, i) {
              if (arguments.length < 3) {
-@@ -74066,7 +71444,7 @@ if (
+@@ -74023,7 +71444,7 @@ if (
              }
              y(e, 'height', t);
          }
@@ -16628,7 +16542,7 @@ index 2afc528..0056528 100644
              var n;
              me(window.CustomEvent) ?
                  (n = new CustomEvent(t, {
-@@ -74083,7 +71461,7 @@ if (
+@@ -74040,7 +71461,7 @@ if (
                  ),
                  e.dispatchEvent(n);
          }
@@ -16637,7 +16551,7 @@ index 2afc528..0056528 100644
              return !!e.getClientRects().length;
          }
          function R(e) {
-@@ -74103,10 +71481,10 @@ if (
+@@ -74060,10 +71481,10 @@ if (
                  e = a;
              }
          }
@@ -16650,7 +16564,7 @@ index 2afc528..0056528 100644
              var i = (t = t || document).createDocumentFragment(),
                  n = r('div', {}, t);
              for (n.innerHTML = e; n.firstChild; ) u(i, n.firstChild);
-@@ -74316,7 +71694,7 @@ if (
+@@ -74273,7 +71694,7 @@ if (
                  Object.keys(t).forEach(function (e) {
                      n = n.replace(new RegExp(Q('{' + e + '}'), 'g'), t[e]);
                  }),
@@ -16659,7 +16573,7 @@ index 2afc528..0056528 100644
                  n
              );
          }
-@@ -74426,7 +71804,7 @@ if (
+@@ -74383,7 +71804,7 @@ if (
                          d = s.createDocumentFragment();
                      if (
                          ('string' == typeof e ?
@@ -16668,7 +16582,7 @@ index 2afc528..0056528 100644
                          :   (u(d, e),
                              t &&
                                  (u(d, l.selectedRange().extractContents()),
-@@ -74579,15 +71957,15 @@ if (
+@@ -74536,15 +71957,15 @@ if (
                          s = l.cloneSelected();
                      if (!s) return !1;
                      s.collapse(!1),
@@ -16687,7 +16601,7 @@ index 2afc528..0056528 100644
                  }),
                  (l.replaceKeyword = function (e, t, i, n, s, a) {
                      i ||
-@@ -74720,7 +72098,7 @@ if (
+@@ -74677,7 +72098,7 @@ if (
                                      d = i ? l.search(r[c]) : l.indexOf(c);
                                  if (d > -1) {
                                      var u = l.indexOf(c, d),
@@ -16696,7 +16610,7 @@ index 2afc528..0056528 100644
                                          p = l.substr(u + c.length);
                                      h.appendChild(n.createTextNode(p)),
                                          (s.nodeValue = l.substr(0, u)),
-@@ -74758,7 +72136,7 @@ if (
+@@ -74715,7 +72136,7 @@ if (
                  S,
                  R,
                  B,
@@ -16705,7 +16619,7 @@ index 2afc528..0056528 100644
                  $,
                  V,
                  U,
-@@ -74781,7 +72159,7 @@ if (
+@@ -74738,7 +72159,7 @@ if (
                  Ee,
                  Me,
                  Ie,
@@ -16714,7 +16628,7 @@ index 2afc528..0056528 100644
                  Fe,
                  Ne,
                  He,
-@@ -74824,7 +72202,7 @@ if (
+@@ -74781,7 +72202,7 @@ if (
              (_t.opts.emoticons = t.emoticons || we.emoticons),
                  (xe = function () {
                      (e._sceditor = _t),
@@ -16723,7 +16637,7 @@ index 2afc528..0056528 100644
                          C(
                              (o = r('div', { className: 'sceditor-container' })),
                              e
-@@ -74844,14 +72222,14 @@ if (
+@@ -74801,14 +72222,14 @@ if (
                          Se || _t.toggleSourceMode(),
                          tt();
                      var n = function () {
@@ -16740,7 +16654,7 @@ index 2afc528..0056528 100644
                  }),
                  (Ie = function () {
                      var e = kt.plugins;
-@@ -74861,7 +72239,7 @@ if (
+@@ -74818,7 +72239,7 @@ if (
                              Y.register(e.trim());
                          });
                  }),
@@ -16749,7 +16663,7 @@ index 2afc528..0056528 100644
                      var e;
                      (U = le.locale[kt.locale]) ||
                          ((e = kt.locale.split('-')), (U = le.locale[e[0]])),
-@@ -74877,7 +72255,7 @@ if (
+@@ -74834,7 +72255,7 @@ if (
                              (A(o, 'sourceMode'), g(f))
                          :   (A(o, 'wysiwygMode'), g(R)),
                          kt.spellcheck || _(o, 'spellcheck', 'false'),
@@ -16758,7 +16672,7 @@ index 2afc528..0056528 100644
                              _(f, 'src', 'javascript:false'),
                          u(o, f),
                          u(o, R),
-@@ -74943,7 +72321,7 @@ if (
+@@ -74900,7 +72321,7 @@ if (
                          p(T, s, st),
                          p(T, n, Qe),
                          kt.emoticonsCompat &&
@@ -16767,7 +16681,7 @@ index 2afc528..0056528 100644
                              p(T, 'keyup', lt),
                          p(T, 'blur', function () {
                              _t.val() || A(T, 'placeholder');
-@@ -74961,7 +72339,7 @@ if (
+@@ -74918,7 +72339,7 @@ if (
                          p(S, 'beforedeactivate keyup mouseup', Ee),
                          p(S, 'keyup', nt),
                          p(S, 'focus', function () {
@@ -16776,7 +16690,7 @@ index 2afc528..0056528 100644
                          }),
                          p(o, 'selectionchanged', at),
                          p(o, 'selectionchanged', tt),
-@@ -75073,7 +72451,7 @@ if (
+@@ -75030,7 +72451,7 @@ if (
                          (n = kt.resizeMaxWidth || 1.25 * x),
                          (s = function (s) {
                              'touchmove' === s.type ?
@@ -16785,7 +16699,7 @@ index 2afc528..0056528 100644
                                  (b = s.changedTouches[0].pageX),
                                  (y = s.changedTouches[0].pageY))
                              :   ((b = s.pageX), (y = s.pageY));
-@@ -75107,7 +72485,7 @@ if (
+@@ -75064,7 +72485,7 @@ if (
                          g(c),
                          p(l, 'touchstart mousedown', function (e) {
                              'touchstart' === e.type ?
@@ -16794,7 +16708,7 @@ index 2afc528..0056528 100644
                                  (_ = e.touches[0].pageX),
                                  (f = e.touches[0].pageY))
                              :   ((_ = e.pageX), (f = e.pageY)),
-@@ -75142,7 +72520,7 @@ if (
+@@ -75099,7 +72520,7 @@ if (
                          t,
                          i = T.firstChild,
                          n = !!kt.autofocusEnd;
@@ -16803,7 +16717,7 @@ index 2afc528..0056528 100644
                          if (_t.sourceMode())
                              return (
                                  (t = n ? R.value.length : 0),
-@@ -75156,7 +72534,7 @@ if (
+@@ -75113,7 +72534,7 @@ if (
  
                              )
                                  (i = i.lastChild),
@@ -16812,7 +16726,7 @@ index 2afc528..0056528 100644
                                          k(i, 'br') &&
                                          i.previousSibling &&
                                          (i = i.previousSibling);
-@@ -75222,13 +72600,13 @@ if (
+@@ -75179,13 +72600,13 @@ if (
                      var t = 'sceditor-maximize';
                      return pe(e) ?
                              z(o, t)
@@ -16828,7 +16742,7 @@ index 2afc528..0056528 100644
                              mt(),
                              _t);
                  }),
-@@ -75257,7 +72635,7 @@ if (
+@@ -75214,7 +72635,7 @@ if (
                      if (Y) {
                          Y.destroy(),
                              (Z = null),
@@ -16837,7 +16751,7 @@ index 2afc528..0056528 100644
                              (Y = null),
                              B && d(B),
                              m(Re, 'click', Xe);
-@@ -75338,7 +72716,7 @@ if (
+@@ -75295,7 +72716,7 @@ if (
                              r = n.items;
                          e.preventDefault();
                          for (var l = 0; l < o.length; l++) {
@@ -16846,7 +16760,7 @@ index 2afc528..0056528 100644
                                  return s(n.items[l].getAsFile());
                              a[o[l]] = n.getData(o[l]);
                          }
-@@ -75367,7 +72745,7 @@ if (
+@@ -75324,7 +72745,7 @@ if (
                  (Ve = function (e) {
                      var t = r('div', {}, S);
                      Y.call('pasteRaw', e),
@@ -16855,7 +16769,7 @@ index 2afc528..0056528 100644
                          e.html ?
                              ((t.innerHTML = e.html), W(t))
                          :   (t.innerHTML = X(e.text || ''));
-@@ -75375,7 +72753,7 @@ if (
+@@ -75332,7 +72753,7 @@ if (
                      'fragmentToSource' in i &&
                          (n.val = i.fragmentToSource(n.val, S, J)),
                          Y.call('paste', n),
@@ -16864,7 +16778,7 @@ index 2afc528..0056528 100644
                          'fragmentToHtml' in i &&
                              (n.val = i.fragmentToHtml(n.val, J)),
                          Y.call('pasteHtml', n),
-@@ -75543,7 +72921,7 @@ if (
+@@ -75500,7 +72921,7 @@ if (
                          e ?
                              _t.setWysiwygEditorValue(_t.getSourceEditorValue())
                          :   _t.setSourceEditorValue(_t.getWysiwygEditorValue()),
@@ -16873,7 +16787,7 @@ index 2afc528..0056528 100644
                          b(R),
                          b(f),
                          P(o, 'wysiwygMode', e),
-@@ -75574,7 +72952,7 @@ if (
+@@ -75531,7 +72952,7 @@ if (
                              ));
                  }),
                  (Ee = function () {
@@ -16882,7 +16796,7 @@ index 2afc528..0056528 100644
                  }),
                  (_t.execCommand = function (e, t) {
                      var i = !1,
-@@ -75613,7 +72991,7 @@ if (
+@@ -75570,7 +72991,7 @@ if (
                                      q(e, !0) &&
                                      (Z.saveRange(), re(T, S), Z.restoreRange());
                              }
@@ -16891,7 +16805,7 @@ index 2afc528..0056528 100644
                          }
                          ie = !1;
                      }
-@@ -75628,7 +73006,7 @@ if (
+@@ -75585,7 +73006,7 @@ if (
                          ((e = J),
                          (J = t),
                          (Q = Z.getFirstBlockParent(t)),
@@ -16900,7 +16814,7 @@ index 2afc528..0056528 100644
                  }),
                  (_t.currentNode = function () {
                      return J;
-@@ -75678,9 +73056,9 @@ if (
+@@ -75635,9 +73056,9 @@ if (
                          (_t.closeDropDown(),
                          13 === e.which && !k(Q, 'li,ul,ol') && F(Q))
                      ) {
@@ -16912,7 +16826,7 @@ index 2afc528..0056528 100644
                              var i = t.parentNode,
                                  n = i.lastChild;
                              n &&
-@@ -75696,7 +73074,7 @@ if (
+@@ -75653,7 +73074,7 @@ if (
                      }
                  }),
                  (nt = function () {
@@ -16921,7 +16835,7 @@ index 2afc528..0056528 100644
                          if (
                              e.nodeType === ge &&
                              !/inline/.test(y(e, 'display')) &&
-@@ -75706,7 +73084,7 @@ if (
+@@ -75663,7 +73084,7 @@ if (
                              var t = r('p', {}, S);
                              return (
                                  (t.className = 'sceditor-nlf'),
@@ -16930,7 +16844,7 @@ index 2afc528..0056528 100644
                                  u(T, t),
                                  !1
                              );
-@@ -75722,7 +73100,7 @@ if (
+@@ -75679,7 +73100,7 @@ if (
                      _t.val(e.value);
                  }),
                  (Ye = function () {
@@ -16939,7 +16853,7 @@ index 2afc528..0056528 100644
                  }),
                  (_t._ = function () {
                      var e,
-@@ -75778,7 +73156,7 @@ if (
+@@ -75735,7 +73156,7 @@ if (
                          var n,
                              s = Z.selectedRange();
                          ee || ot(),
@@ -16948,7 +16862,7 @@ index 2afc528..0056528 100644
                                  s &&
                                  1 === s.endOffset &&
                                  s.collapsed &&
-@@ -75790,7 +73168,7 @@ if (
+@@ -75747,7 +73168,7 @@ if (
                                  Z.selectRange(s)),
                              x.focus(),
                              T.focus(),
@@ -16957,7 +16871,7 @@ index 2afc528..0056528 100644
                      }
                      return tt(), _t;
                  }),
-@@ -76035,7 +73413,7 @@ if (
+@@ -75992,7 +73413,7 @@ if (
                              k(e, 'body') ||
                              (Z.saveRange(),
                              (e.className = ''),
@@ -16966,7 +16880,7 @@ index 2afc528..0056528 100644
                              _(e, 'style', ''),
                              k(e, 'p,div,td') || N(e, 'p'),
                              Z.restoreRange()),
-@@ -76058,7 +73436,7 @@ if (
+@@ -76015,7 +73436,7 @@ if (
                              n && e && Z.saveRange(),
                              (t = i ? R.value : T.innerHTML) !== dt.lastVal &&
                                  ((dt.lastVal = t),
@@ -16975,7 +16889,7 @@ index 2afc528..0056528 100644
                                      rawValue: i ? _t.val() : t,
                                  })),
                              n && e && Z.removeMarkers();
-@@ -76350,7 +73728,7 @@ if (
+@@ -76307,7 +73728,7 @@ if (
                                      (s += '</div>');
                              }),
                              (a._htmlCache = s)),
@@ -16984,7 +16898,7 @@ index 2afc528..0056528 100644
                              p(n, 'click', 'a', function (t) {
                                  i(w(this, 'color')),
                                      e.closeDropDown(!0),
-@@ -76918,7 +74296,7 @@ if (
+@@ -76875,7 +74296,7 @@ if (
              Me = {};
          ne.plugins = Me;
          var Ie = xe && xe < 11,
@@ -16993,7 +16907,7 @@ index 2afc528..0056528 100644
                  var n,
                      s,
                      a,
-@@ -76946,11 +74324,11 @@ if (
+@@ -76903,11 +74324,11 @@ if (
                              (c = r.nextSibling));
                  return { node: r || c, offset: d, text: l };
              },
@@ -17008,7 +16922,7 @@ index 2afc528..0056528 100644
          (le.locale = {}),
              (le.formats = {}),
              (le.icons = {}),
-@@ -77003,8 +74381,8 @@ if (
+@@ -76960,8 +74381,8 @@ if (
                      width: M,
                      height: I,
                      traverse: B,
@@ -17019,7 +16933,7 @@ index 2afc528..0056528 100644
                      hasStyling: F,
                      convertElement: N,
                      blockLevelList: ye,
-@@ -77181,7 +74559,7 @@ if (
+@@ -77138,7 +74559,7 @@ if (
              y(e, 'display', '');
          }
          function b(e) {
@@ -17028,7 +16942,7 @@ index 2afc528..0056528 100644
          }
          function y(e, t, i) {
              if (arguments.length < 3) {
-@@ -77274,7 +74652,7 @@ if (
+@@ -77231,7 +74652,7 @@ if (
              }
              y(e, 'height', t);
          }
@@ -17037,7 +16951,7 @@ index 2afc528..0056528 100644
              var n;
              me(window.CustomEvent) ?
                  (n = new CustomEvent(t, {
-@@ -77291,7 +74669,7 @@ if (
+@@ -77248,7 +74669,7 @@ if (
                  ),
                  e.dispatchEvent(n);
          }
@@ -17046,7 +16960,7 @@ index 2afc528..0056528 100644
              return !!e.getClientRects().length;
          }
          function R(e) {
-@@ -77311,10 +74689,10 @@ if (
+@@ -77268,10 +74689,10 @@ if (
                  e = a;
              }
          }
@@ -17059,7 +16973,7 @@ index 2afc528..0056528 100644
              var i = (t = t || document).createDocumentFragment(),
                  n = r('div', {}, t);
              for (n.innerHTML = e; n.firstChild; ) u(i, n.firstChild);
-@@ -77524,7 +74902,7 @@ if (
+@@ -77481,7 +74902,7 @@ if (
                  Object.keys(t).forEach(function (e) {
                      n = n.replace(new RegExp(Q('{' + e + '}'), 'g'), t[e]);
                  }),
@@ -17068,7 +16982,7 @@ index 2afc528..0056528 100644
                  n
              );
          }
-@@ -77634,7 +75012,7 @@ if (
+@@ -77591,7 +75012,7 @@ if (
                          d = s.createDocumentFragment();
                      if (
                          ('string' == typeof e ?
@@ -17077,7 +16991,7 @@ index 2afc528..0056528 100644
                          :   (u(d, e),
                              t &&
                                  (u(d, l.selectedRange().extractContents()),
-@@ -77787,15 +75165,15 @@ if (
+@@ -77744,15 +75165,15 @@ if (
                          s = l.cloneSelected();
                      if (!s) return !1;
                      s.collapse(!1),
@@ -17096,7 +17010,7 @@ index 2afc528..0056528 100644
                  }),
                  (l.replaceKeyword = function (e, t, i, n, s, a) {
                      i ||
-@@ -77928,7 +75306,7 @@ if (
+@@ -77885,7 +75306,7 @@ if (
                                      d = i ? l.search(r[c]) : l.indexOf(c);
                                  if (d > -1) {
                                      var u = l.indexOf(c, d),
@@ -17105,7 +17019,7 @@ index 2afc528..0056528 100644
                                          p = l.substr(u + c.length);
                                      h.appendChild(n.createTextNode(p)),
                                          (s.nodeValue = l.substr(0, u)),
-@@ -77966,7 +75344,7 @@ if (
+@@ -77923,7 +75344,7 @@ if (
                  S,
                  R,
                  B,
@@ -17114,7 +17028,7 @@ index 2afc528..0056528 100644
                  $,
                  V,
                  U,
-@@ -77989,7 +75367,7 @@ if (
+@@ -77946,7 +75367,7 @@ if (
                  Ee,
                  Me,
                  Ie,
@@ -17123,7 +17037,7 @@ index 2afc528..0056528 100644
                  Fe,
                  Ne,
                  He,
-@@ -78032,7 +75410,7 @@ if (
+@@ -77989,7 +75410,7 @@ if (
              (_t.opts.emoticons = t.emoticons || we.emoticons),
                  (xe = function () {
                      (e._sceditor = _t),
@@ -17132,7 +17046,7 @@ index 2afc528..0056528 100644
                          C(
                              (o = r('div', { className: 'sceditor-container' })),
                              e
-@@ -78052,14 +75430,14 @@ if (
+@@ -78009,14 +75430,14 @@ if (
                          Se || _t.toggleSourceMode(),
                          tt();
                      var n = function () {
@@ -17149,7 +17063,7 @@ index 2afc528..0056528 100644
                  }),
                  (Ie = function () {
                      var e = kt.plugins;
-@@ -78069,7 +75447,7 @@ if (
+@@ -78026,7 +75447,7 @@ if (
                              Y.register(e.trim());
                          });
                  }),
@@ -17158,7 +17072,7 @@ index 2afc528..0056528 100644
                      var e;
                      (U = le.locale[kt.locale]) ||
                          ((e = kt.locale.split('-')), (U = le.locale[e[0]])),
-@@ -78085,7 +75463,7 @@ if (
+@@ -78042,7 +75463,7 @@ if (
                              (A(o, 'sourceMode'), g(f))
                          :   (A(o, 'wysiwygMode'), g(R)),
                          kt.spellcheck || _(o, 'spellcheck', 'false'),
@@ -17167,7 +17081,7 @@ index 2afc528..0056528 100644
                              _(f, 'src', 'javascript:false'),
                          u(o, f),
                          u(o, R),
-@@ -78151,7 +75529,7 @@ if (
+@@ -78108,7 +75529,7 @@ if (
                          p(T, s, st),
                          p(T, n, Qe),
                          kt.emoticonsCompat &&
@@ -17176,7 +17090,7 @@ index 2afc528..0056528 100644
                              p(T, 'keyup', lt),
                          p(T, 'blur', function () {
                              _t.val() || A(T, 'placeholder');
-@@ -78169,7 +75547,7 @@ if (
+@@ -78126,7 +75547,7 @@ if (
                          p(S, 'beforedeactivate keyup mouseup', Ee),
                          p(S, 'keyup', nt),
                          p(S, 'focus', function () {
@@ -17185,7 +17099,7 @@ index 2afc528..0056528 100644
                          }),
                          p(o, 'selectionchanged', at),
                          p(o, 'selectionchanged', tt),
-@@ -78281,7 +75659,7 @@ if (
+@@ -78238,7 +75659,7 @@ if (
                          (n = kt.resizeMaxWidth || 1.25 * x),
                          (s = function (s) {
                              'touchmove' === s.type ?
@@ -17194,7 +17108,7 @@ index 2afc528..0056528 100644
                                  (b = s.changedTouches[0].pageX),
                                  (y = s.changedTouches[0].pageY))
                              :   ((b = s.pageX), (y = s.pageY));
-@@ -78315,7 +75693,7 @@ if (
+@@ -78272,7 +75693,7 @@ if (
                          g(c),
                          p(l, 'touchstart mousedown', function (e) {
                              'touchstart' === e.type ?
@@ -17203,7 +17117,7 @@ index 2afc528..0056528 100644
                                  (_ = e.touches[0].pageX),
                                  (f = e.touches[0].pageY))
                              :   ((_ = e.pageX), (f = e.pageY)),
-@@ -78350,7 +75728,7 @@ if (
+@@ -78307,7 +75728,7 @@ if (
                          t,
                          i = T.firstChild,
                          n = !!kt.autofocusEnd;
@@ -17212,7 +17126,7 @@ index 2afc528..0056528 100644
                          if (_t.sourceMode())
                              return (
                                  (t = n ? R.value.length : 0),
-@@ -78364,7 +75742,7 @@ if (
+@@ -78321,7 +75742,7 @@ if (
  
                              )
                                  (i = i.lastChild),
@@ -17221,7 +17135,7 @@ index 2afc528..0056528 100644
                                          k(i, 'br') &&
                                          i.previousSibling &&
                                          (i = i.previousSibling);
-@@ -78430,13 +75808,13 @@ if (
+@@ -78387,13 +75808,13 @@ if (
                      var t = 'sceditor-maximize';
                      return pe(e) ?
                              z(o, t)
@@ -17237,7 +17151,7 @@ index 2afc528..0056528 100644
                              mt(),
                              _t);
                  }),
-@@ -78465,7 +75843,7 @@ if (
+@@ -78422,7 +75843,7 @@ if (
                      if (Y) {
                          Y.destroy(),
                              (Z = null),
@@ -17246,7 +17160,7 @@ index 2afc528..0056528 100644
                              (Y = null),
                              B && d(B),
                              m(Re, 'click', Xe);
-@@ -78546,7 +75924,7 @@ if (
+@@ -78503,7 +75924,7 @@ if (
                              r = n.items;
                          e.preventDefault();
                          for (var l = 0; l < o.length; l++) {
@@ -17255,7 +17169,7 @@ index 2afc528..0056528 100644
                                  return s(n.items[l].getAsFile());
                              a[o[l]] = n.getData(o[l]);
                          }
-@@ -78575,7 +75953,7 @@ if (
+@@ -78532,7 +75953,7 @@ if (
                  (Ve = function (e) {
                      var t = r('div', {}, S);
                      Y.call('pasteRaw', e),
@@ -17264,7 +17178,7 @@ index 2afc528..0056528 100644
                          e.html ?
                              ((t.innerHTML = e.html), W(t))
                          :   (t.innerHTML = X(e.text || ''));
-@@ -78583,7 +75961,7 @@ if (
+@@ -78540,7 +75961,7 @@ if (
                      'fragmentToSource' in i &&
                          (n.val = i.fragmentToSource(n.val, S, J)),
                          Y.call('paste', n),
@@ -17273,7 +17187,7 @@ index 2afc528..0056528 100644
                          'fragmentToHtml' in i &&
                              (n.val = i.fragmentToHtml(n.val, J)),
                          Y.call('pasteHtml', n),
-@@ -78751,7 +76129,7 @@ if (
+@@ -78708,7 +76129,7 @@ if (
                          e ?
                              _t.setWysiwygEditorValue(_t.getSourceEditorValue())
                          :   _t.setSourceEditorValue(_t.getWysiwygEditorValue()),
@@ -17282,7 +17196,7 @@ index 2afc528..0056528 100644
                          b(R),
                          b(f),
                          P(o, 'wysiwygMode', e),
-@@ -78782,7 +76160,7 @@ if (
+@@ -78739,7 +76160,7 @@ if (
                              ));
                  }),
                  (Ee = function () {
@@ -17291,7 +17205,7 @@ index 2afc528..0056528 100644
                  }),
                  (_t.execCommand = function (e, t) {
                      var i = !1,
-@@ -78821,7 +76199,7 @@ if (
+@@ -78778,7 +76199,7 @@ if (
                                      q(e, !0) &&
                                      (Z.saveRange(), re(T, S), Z.restoreRange());
                              }
@@ -17300,7 +17214,7 @@ index 2afc528..0056528 100644
                          }
                          ie = !1;
                      }
-@@ -78836,7 +76214,7 @@ if (
+@@ -78793,7 +76214,7 @@ if (
                          ((e = J),
                          (J = t),
                          (Q = Z.getFirstBlockParent(t)),
@@ -17309,7 +17223,7 @@ index 2afc528..0056528 100644
                  }),
                  (_t.currentNode = function () {
                      return J;
-@@ -78886,9 +76264,9 @@ if (
+@@ -78843,9 +76264,9 @@ if (
                          (_t.closeDropDown(),
                          13 === e.which && !k(Q, 'li,ul,ol') && F(Q))
                      ) {
@@ -17321,7 +17235,7 @@ index 2afc528..0056528 100644
                              var i = t.parentNode,
                                  n = i.lastChild;
                              n &&
-@@ -78904,7 +76282,7 @@ if (
+@@ -78861,7 +76282,7 @@ if (
                      }
                  }),
                  (nt = function () {
@@ -17330,7 +17244,7 @@ index 2afc528..0056528 100644
                          if (
                              e.nodeType === ge &&
                              !/inline/.test(y(e, 'display')) &&
-@@ -78914,7 +76292,7 @@ if (
+@@ -78871,7 +76292,7 @@ if (
                              var t = r('p', {}, S);
                              return (
                                  (t.className = 'sceditor-nlf'),
@@ -17339,7 +17253,7 @@ index 2afc528..0056528 100644
                                  u(T, t),
                                  !1
                              );
-@@ -78930,7 +76308,7 @@ if (
+@@ -78887,7 +76308,7 @@ if (
                      _t.val(e.value);
                  }),
                  (Ye = function () {
@@ -17348,7 +17262,7 @@ index 2afc528..0056528 100644
                  }),
                  (_t._ = function () {
                      var e,
-@@ -78986,7 +76364,7 @@ if (
+@@ -78943,7 +76364,7 @@ if (
                          var n,
                              s = Z.selectedRange();
                          ee || ot(),
@@ -17357,7 +17271,7 @@ index 2afc528..0056528 100644
                                  s &&
                                  1 === s.endOffset &&
                                  s.collapsed &&
-@@ -78998,7 +76376,7 @@ if (
+@@ -78955,7 +76376,7 @@ if (
                                  Z.selectRange(s)),
                              x.focus(),
                              T.focus(),
@@ -17366,7 +17280,7 @@ index 2afc528..0056528 100644
                      }
                      return tt(), _t;
                  }),
-@@ -79243,7 +76621,7 @@ if (
+@@ -79200,7 +76621,7 @@ if (
                              k(e, 'body') ||
                              (Z.saveRange(),
                              (e.className = ''),
@@ -17375,7 +17289,7 @@ index 2afc528..0056528 100644
                              _(e, 'style', ''),
                              k(e, 'p,div,td') || N(e, 'p'),
                              Z.restoreRange()),
-@@ -79266,7 +76644,7 @@ if (
+@@ -79223,7 +76644,7 @@ if (
                              n && e && Z.saveRange(),
                              (t = i ? R.value : T.innerHTML) !== dt.lastVal &&
                                  ((dt.lastVal = t),
@@ -17384,7 +17298,7 @@ index 2afc528..0056528 100644
                                      rawValue: i ? _t.val() : t,
                                  })),
                              n && e && Z.removeMarkers();
-@@ -79558,7 +76936,7 @@ if (
+@@ -79515,7 +76936,7 @@ if (
                                      (s += '</div>');
                              }),
                              (a._htmlCache = s)),
@@ -17393,7 +17307,7 @@ index 2afc528..0056528 100644
                              p(n, 'click', 'a', function (t) {
                                  i(w(this, 'color')),
                                      e.closeDropDown(!0),
-@@ -80126,7 +77504,7 @@ if (
+@@ -80083,7 +77504,7 @@ if (
              Me = {};
          ne.plugins = Me;
          var Ie = xe && xe < 11,
@@ -17402,7 +17316,7 @@ index 2afc528..0056528 100644
                  var n,
                      s,
                      a,
-@@ -80154,11 +77532,11 @@ if (
+@@ -80111,11 +77532,11 @@ if (
                              (c = r.nextSibling));
                  return { node: r || c, offset: d, text: l };
              },
@@ -17417,7 +17331,7 @@ index 2afc528..0056528 100644
          (le.locale = {}),
              (le.formats = {}),
              (le.icons = {}),
-@@ -80211,8 +77589,8 @@ if (
+@@ -80168,8 +77589,8 @@ if (
                      width: M,
                      height: I,
                      traverse: B,
@@ -17428,7 +17342,7 @@ index 2afc528..0056528 100644
                      hasStyling: F,
                      convertElement: N,
                      blockLevelList: ye,
-@@ -84280,32 +81658,33 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -84237,32 +81658,33 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
              },
              leafletMissionPositionMarkerAdd: function (t) {
                  if (mission_position_markers_per_id.get(t.id)) return;
@@ -17478,7 +17392,7 @@ index 2afc528..0056528 100644
              },
              leafletMissionPositionMarkerDelete: function (e) {
                  let t = map_filters_service
-@@ -84343,10 +81722,9 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -84300,10 +81722,9 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                  n.addEventListener('select', i, n),
                      (n.element.className = 'mapkit-marker'),
                      map.addAnnotation(n),
@@ -17491,7 +17405,7 @@ index 2afc528..0056528 100644
              },
              mapkitMissionPositionMarkerDelete: function (e) {
                  const t = mission_position_markers_per_id.get(e);
-@@ -84375,17 +81753,14 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -84332,17 +81753,14 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                      (a = o.mission_types_with_filter_ids),
                      (t = o.user_id),
                      $.each(o.sorted_map_filters, function () {
@@ -17517,7 +17431,7 @@ index 2afc528..0056528 100644
                      });
              },
              getMapFiltersLayersForMap: function () {
-@@ -84403,9 +81778,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -84360,9 +81778,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                      case null == e.user_id:
                          return i.alliance_buildings || map;
                      default:
@@ -17528,7 +17442,7 @@ index 2afc528..0056528 100644
                  }
              },
              getFilterLayerByMissionParams: function (e) {
-@@ -84417,16 +81790,9 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -84374,16 +81790,9 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                      case e.user_id != t || 'alliance_missions' === e.filter_id:
                          return i.alliance_missions;
                      default:
@@ -17546,7 +17460,7 @@ index 2afc528..0056528 100644
              onOverlayChanged: function (e) {
                  (filter_key = Object.keys(i).find(function (t) {
                      return i[t] === e.layer;
-@@ -84495,14 +81861,12 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -84452,14 +81861,12 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                      (o = !1);
              },
              decorateFilterText: function (t, i) {
