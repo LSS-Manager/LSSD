@@ -1,0 +1,30 @@
+diff --git a/application.css b/application.alt.css
+index 6dbd717..60d03b4 100644
+--- a/application.css
++++ b/application.alt.css
+@@ -9943,16 +9943,6 @@ body.bigMap #main_navbar {
+     position: absolute;
+     pointer-events: none;
+ }
+-.leaflet-dark-1 {
+-    filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+-}
+-.leaflet-dark-2 {
+-    filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg)
+-        saturate(0.3) brightness(0.7);
+-}
+-.cursor-clickable {
+-    cursor: pointer;
+-}
+ .arrow_box:after {
+     border-color: rgba(98, 196, 98, 0);
+     border-right-color: #62c462;
+@@ -16622,7 +16612,7 @@ div.sceditor-dropdown input[id='des'] {
+ .leaflet-control-layers-overlays {
+     width: 300px;
+ }
+-.leaflet-control-layers-overlays span {
++.leaflet-control-layers-overlays div {
+     position: relative;
+ }
+ .leaflet-control-layers-overlays .leaflet-control-layers-selector {
