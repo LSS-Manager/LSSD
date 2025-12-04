@@ -1,5 +1,5 @@
 diff --git a/application.css b/application.alt.css
-index 5d5c42b..60d03b4 100644
+index 5d5c42b..edaf075 100644
 --- a/application.css
 +++ b/application.alt.css
 @@ -9943,16 +9943,6 @@ body.bigMap #main_navbar {
@@ -19,19 +19,7 @@ index 5d5c42b..60d03b4 100644
  .arrow_box:after {
      border-color: rgba(98, 196, 98, 0);
      border-right-color: #62c462;
-@@ -15733,11 +15723,6 @@ input.invalid {
-     overflow-y: auto;
-     line-height: 2.4em;
- }
--.limit-5-rows {
--    max-height: calc(15em);
--    overflow-y: auto;
--    line-height: 2.4em;
--}
- .hospital-extension-boost-container {
-     display: flex;
-     gap: 5px;
-@@ -16627,7 +16612,7 @@ div.sceditor-dropdown input[id='des'] {
+@@ -16627,7 +16617,7 @@ div.sceditor-dropdown input[id='des'] {
  .leaflet-control-layers-overlays {
      width: 300px;
  }
