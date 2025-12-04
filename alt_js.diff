@@ -1,8 +1,8 @@
 diff --git a/application.js b/application.alt.js
-index 78a25df..53dee41 100644
+index db850e8..53dee41 100644
 --- a/application.js
 +++ b/application.alt.js
-@@ -1,501 +1,3 @@
+@@ -1,505 +1,3 @@
 -async function scheduleXYTask(e, t = {}) {
 -    'scheduler' in globalThis ?
 -        await scheduler.postTask(e, t)
@@ -192,26 +192,30 @@ index 78a25df..53dee41 100644
 -                    this._hideContainer(n);
 -            },
 -            _drawMarker: function (e) {
--                (e._point = this._map.latLngToLayerPoint(e.getLatLng())),
--                    (this._imageLookup = this._imageLookup || new Map());
--                var t = e.options.icon.options.iconUrl,
--                    i = this._imageLookup[t];
--                if (e.canvas_img) i.loaded && this._drawImage(e);
--                else if (i)
--                    (e.canvas_img = i.img),
--                        i.loaded ? this._drawImage(e) : i.queue.push(e);
--                else {
--                    var n = new Image();
--                    (n.src = t),
--                        (e.canvas_img = n),
--                        (i = { loaded: !1, img: n, queue: [e] }),
--                        (this._imageLookup[t] = i),
--                        (n.onload = function () {
--                            (i.loaded = !0),
--                                i.queue.forEach(function (e) {
--                                    this.hasLayer(e) && this._drawImage(e);
--                                }, this);
--                        }.bind(this));
+-                try {
+-                    (e._point = this._map.latLngToLayerPoint(e.getLatLng())),
+-                        (this._imageLookup = this._imageLookup || new Map());
+-                    var t = e.options.icon.options.iconUrl,
+-                        i = this._imageLookup[t];
+-                    if (e.canvas_img) this._drawImage(e);
+-                    else if (i)
+-                        (e.canvas_img = i.img),
+-                            i.loaded ? this._drawImage(e) : i.queue.push(e);
+-                    else {
+-                        var n = new Image();
+-                        (n.src = t),
+-                            (e.canvas_img = n),
+-                            (i = { loaded: !1, img: n, queue: [e] }),
+-                            (this._imageLookup[t] = i),
+-                            (n.onload = function () {
+-                                (i.loaded = !0),
+-                                    i.queue.forEach(function (e) {
+-                                        this.hasLayer(e) && this._drawImage(e);
+-                                    }, this);
+-                            }.bind(this));
+-                    }
+-                } catch (e) {
+-                    console.error(`failed to draw marker ${e.message}`);
 -                }
 -            },
 -            _drawImage: function (e) {
@@ -504,7 +508,7 @@ index 78a25df..53dee41 100644
  function massMissionMarkerAdd(e) {
      let t = new Map();
      const i = document.createElement('template'),
-@@ -510,20 +12,17 @@ function massMissionMarkerAdd(e) {
+@@ -514,20 +12,17 @@ function massMissionMarkerAdd(e) {
          });
      for (let e of t.values()) {
          let t = mission_markers_per_id.get(e.id);
@@ -533,7 +537,7 @@ index 78a25df..53dee41 100644
  }
  function processMissionElement(e, t, i) {
      const n = parseSearchValue(e),
-@@ -570,7 +69,7 @@ function processMissionElement(e, t, i) {
+@@ -574,7 +69,7 @@ function processMissionElement(e, t, i) {
      const k = mission_markers_per_id.get(y.id);
      if (
          (k &&
@@ -542,7 +546,7 @@ index 78a25df..53dee41 100644
                  ((k.url = { 1: u }),
                  (k.opacity = 1),
                  (k.title = y.caption),
-@@ -581,27 +80,46 @@ function processMissionElement(e, t, i) {
+@@ -585,27 +80,46 @@ function processMissionElement(e, t, i) {
                  k.setTooltipContent(d)),
              (k.vehicle_state = y.vehicle_state),
              (w = !0)),
@@ -607,7 +611,7 @@ index 78a25df..53dee41 100644
              "<div class='small' id='pumping_" +
              y.id +
              "'>" +
-@@ -611,7 +129,7 @@ function processMissionElement(e, t, i) {
+@@ -615,7 +129,7 @@ function processMissionElement(e, t, i) {
              "' class='progress pumping_progress'><div id='pumping_bar_" +
              y.id +
              "' class='progress-bar progress-bar-info";
@@ -616,7 +620,7 @@ index 78a25df..53dee41 100644
              "' style='width: " +
              y.live_current_water_damage_pump_value +
              "%;'><div id='pumping_bar_striper_" +
-@@ -621,7 +139,7 @@ function processMissionElement(e, t, i) {
+@@ -625,7 +139,7 @@ function processMissionElement(e, t, i) {
              "'></div></div></div><div  id='patients_missing_" +
              y.id +
              "'"),
@@ -625,7 +629,7 @@ index 78a25df..53dee41 100644
      }
      y.pumping_date_end > 0 &&
          ($('#pumping_bar_striper_' + y.id).addClass(
-@@ -637,10 +155,6 @@ function processMissionElement(e, t, i) {
+@@ -641,10 +155,6 @@ function processMissionElement(e, t, i) {
              y.live_current_water_damage_pump_value <= 0 &&
              missionFinish(y);
  }
@@ -636,7 +640,7 @@ index 78a25df..53dee41 100644
  function missionMarkerAdd() {}
  function missionMarkerAddSingle(e) {
      if (window.massAllianceMissionAdd || window.massMissionAdd)
-@@ -687,10 +201,9 @@ function missionMarkerAddSingle(e) {
+@@ -691,10 +201,9 @@ function missionMarkerAddSingle(e) {
                  (-1 !== String(o).indexOf('//') ?
                      (e.app_icon_path = o)
                  :   (e.app_icon_path = currentHostname() + o)),
@@ -649,7 +653,7 @@ index 78a25df..53dee41 100644
          (d =
              "<small id='mission_old_caption_" +
              e.id +
-@@ -698,7 +211,7 @@ function missionMarkerAddSingle(e) {
+@@ -702,7 +211,7 @@ function missionMarkerAddSingle(e) {
              e.captionOld +
              '</s></small> ' +
              d),
@@ -658,7 +662,7 @@ index 78a25df..53dee41 100644
              ((d =
                  d +
                  ", <small  id='mission_address_" +
-@@ -719,30 +232,58 @@ function missionMarkerAddSingle(e) {
+@@ -723,30 +232,58 @@ function missionMarkerAddSingle(e) {
      $(document.getElementById('mission_' + e.id)).length > 0 ?
          updateExistingMissionElement(e, t, i, o, a, c, h, u, d)
      :   addNewMissionElement(e, t, a, h, c, d, o, u, i);
@@ -741,7 +745,7 @@ index 78a25df..53dee41 100644
      }
      if (
          (s &&
-@@ -752,7 +293,7 @@ function missionMarkerAddSingle(e) {
+@@ -756,7 +293,7 @@ function missionMarkerAddSingle(e) {
          e.date_end > 0 && missionTimerStart(e),
          e.water_damage_pump_value)
      ) {
@@ -750,7 +754,7 @@ index 78a25df..53dee41 100644
              "<div class='small' id='pumping_" +
              e.id +
              "'>" +
-@@ -762,7 +303,7 @@ function missionMarkerAddSingle(e) {
+@@ -766,7 +303,7 @@ function missionMarkerAddSingle(e) {
              "' class='progress pumping_progress'><div id='pumping_bar_" +
              e.id +
              "' class='progress-bar progress-bar-info";
@@ -759,7 +763,7 @@ index 78a25df..53dee41 100644
              "' style='width: " +
              e.live_current_water_damage_pump_value +
              "%;'><div id='pumping_bar_striper_" +
-@@ -772,7 +313,7 @@ function missionMarkerAddSingle(e) {
+@@ -776,7 +313,7 @@ function missionMarkerAddSingle(e) {
              "'></div></div></div><div  id='patients_missing_" +
              e.id +
              "'"),
@@ -768,7 +772,7 @@ index 78a25df..53dee41 100644
      }
      e.pumping_date_end > 0 &&
          ($('#pumping_bar_striper_' + e.id).addClass(
-@@ -788,8 +329,8 @@ function missionMarkerAddSingle(e) {
+@@ -792,8 +329,8 @@ function missionMarkerAddSingle(e) {
          e.live_current_value <= 0 &&
              e.live_current_water_damage_pump_value <= 0 &&
              missionFinish(e);
@@ -779,7 +783,7 @@ index 78a25df..53dee41 100644
          missionMarkerBulkAdd ||
              (progressBarScrollUpdate(),
              '' !=
-@@ -969,7 +510,113 @@ function prepareMissionDomElementStr(
+@@ -973,7 +510,113 @@ function prepareMissionDomElementStr(
      f
  ) {
      var g = missionParticipationFilters.started.missionIds.has(s.id);
@@ -894,7 +898,7 @@ index 78a25df..53dee41 100644
  }
  function getMissionSortableAttributes(e) {
      var t = e.created_at;
-@@ -1093,8 +740,7 @@ function identifyVehicleStateUrl(e) {
+@@ -1097,8 +740,7 @@ function identifyVehicleStateUrl(e) {
  function identifyCaption(e) {
      var t = e.caption;
      return (
@@ -904,7 +908,7 @@ index 78a25df..53dee41 100644
              (t =
                  "<small id='mission_old_caption_" +
                  e.id +
-@@ -1102,7 +748,7 @@ function identifyCaption(e) {
+@@ -1106,7 +748,7 @@ function identifyCaption(e) {
                  e.captionOld +
                  '</s></small> ' +
                  t),
@@ -913,7 +917,7 @@ index 78a25df..53dee41 100644
              (t =
                  t +
                  ", <small  id='mission_address_" +
-@@ -1286,179 +932,31 @@ function toggleErrorAllianceMissionsSectionsOnAsyncLoading(e) {
+@@ -1290,179 +932,31 @@ function toggleErrorAllianceMissionsSectionsOnAsyncLoading(e) {
          $(document.getElementById('alliance_missions_loading_error')).toggle(e),
          $(document.getElementById('alliance_no_mission')).toggle(!e);
  }
@@ -1116,7 +1120,7 @@ index 78a25df..53dee41 100644
  function massBuildingMarkerAddUpdated(e, t) {
      const i = new Map();
      t.forEach(e => {
-@@ -1469,7 +967,8 @@ function massBuildingMarkerAddUpdated(e, t) {
+@@ -1473,7 +967,8 @@ function massBuildingMarkerAddUpdated(e, t) {
      $.each(e, function (e, t) {
          const n = t;
          buildingVehicleGraphicCacheAdd(n),
@@ -1126,7 +1130,7 @@ index 78a25df..53dee41 100644
              (!1 !== mobile_bridge_use && !mixed_mobile_desktop_mode) ||
                  n.user_id !== user_id ||
                  (s += prepareBuildingDomElementStr(n, i.get(t.id))),
-@@ -1477,7 +976,7 @@ function massBuildingMarkerAddUpdated(e, t) {
+@@ -1481,7 +976,7 @@ function massBuildingMarkerAddUpdated(e, t) {
                  4 === mobile_version &&
                  sendMobileBridge(n),
              building_markers_cache.push(n),
@@ -1135,7 +1139,7 @@ index 78a25df..53dee41 100644
      }),
          (n.innerHTML = s),
          document.getElementById('building_list').appendChild(n.content),
-@@ -1485,26 +984,31 @@ function massBuildingMarkerAddUpdated(e, t) {
+@@ -1489,26 +984,31 @@ function massBuildingMarkerAddUpdated(e, t) {
              buildingMarkerAdd(t);
          });
  }
@@ -1173,7 +1177,7 @@ index 78a25df..53dee41 100644
          buildingMarkerAdd(e);
  }
  function constructBuildingListElement(e) {
-@@ -1512,17 +1016,15 @@ function constructBuildingListElement(e) {
+@@ -1516,17 +1016,15 @@ function constructBuildingListElement(e) {
      !0 === mobile_bridge_use &&
          4 === mobile_version &&
          ((e.name = e.name.replace('%', '')),
@@ -1196,7 +1200,7 @@ index 78a25df..53dee41 100644
          "<li  search_attribute= '" +
          e.name +
          "' class='building_list building_list_li buildings_searchable' building_type_id='" +
-@@ -1536,7 +1038,7 @@ function prepareBuildingDomElementStr(e, t) {
+@@ -1540,7 +1038,7 @@ function prepareBuildingDomElementStr(e, t) {
          "<img class='building_marker_image' building_id='" +
          e.id +
          "' src='" +
@@ -1205,7 +1209,7 @@ index 78a25df..53dee41 100644
          "'><a href='' class='map_position_mover' data-latitude='" +
          e.latitude +
          "' data-longitude='" +
-@@ -1545,32 +1047,32 @@ function prepareBuildingDomElementStr(e, t) {
+@@ -1549,32 +1047,32 @@ function prepareBuildingDomElementStr(e, t) {
          e.name +
          '</a>';
      0 == e.show_vehicles_at_startpage &&
@@ -1251,7 +1255,7 @@ index 78a25df..53dee41 100644
      );
  }
  function buildingMarkerReset() {
-@@ -1586,65 +1088,67 @@ function buildingMarkerReset() {
+@@ -1590,65 +1088,67 @@ function buildingMarkerReset() {
          mobile_bridge_use && mobileBridgeAdd('building_remove_all', {}),
          (building_markers = Array()),
          (building_markers_cache = Array()),
@@ -1366,7 +1370,7 @@ index 78a25df..53dee41 100644
  }
  function buildingMarkerBulkContentCacheDraw(e = !1) {
      buildingMarkerBulkContentCache.length > 0 &&
-@@ -1699,21 +1203,42 @@ function batchBuildingsVehicleLoad(building_id_array) {
+@@ -1703,21 +1203,42 @@ function batchBuildingsVehicleLoad(building_id_array) {
          }
      );
  }
@@ -1416,7 +1420,7 @@ index 78a25df..53dee41 100644
  }
  function toggleBuildingSectionsOnAsyncLoading(e) {
      toggleErrorBuildingSectionsOnAsyncLoading(!1),
-@@ -1725,77 +1250,6 @@ function toggleErrorBuildingSectionsOnAsyncLoading(e) {
+@@ -1729,77 +1250,6 @@ function toggleErrorBuildingSectionsOnAsyncLoading(e) {
      $(document.getElementById('buildings_loading')).toggle(!e),
          $(document.getElementById('buildings_loading_error')).toggle(e);
  }
@@ -1494,7 +1498,7 @@ index 78a25df..53dee41 100644
  function patientMarkerAddCombined(e) {
      let t =
          "<div class='col-md-12' id='mission_patient_summary_" +
-@@ -2075,7 +1529,7 @@ function vehicleCreateOnMap(e, t) {
+@@ -2079,7 +1529,7 @@ function vehicleCreateOnMap(e, t) {
                      vehicle_graphics[t.vtid][2]
                  )));
      null == e &&
@@ -1503,7 +1507,7 @@ index 78a25df..53dee41 100644
              (((e = new mapkit.ImageAnnotation(new mapkit.Coordinate(0, 0), {
                  url: { 1: t.in },
              })).icon_normal = t.in),
-@@ -2449,6 +1903,26 @@ function vehicleStepsAvail(e) {
+@@ -2453,6 +1903,26 @@ function vehicleStepsAvail(e) {
          void 0 !== routes[e.rh][e.current_step]
      );
  }
@@ -1530,7 +1534,7 @@ index 78a25df..53dee41 100644
  function hide_all_except_mission(e, t, i) {
      if (!0 === mobile_bridge_use || !1 === mouse_over_disable_inactive_elements)
          return !0;
-@@ -2486,8 +1960,7 @@ function hide_all_except_mission(e, t, i) {
+@@ -2490,8 +1960,7 @@ function hide_all_except_mission(e, t, i) {
                          title: 'Ziel',
                          icon: icon_empty,
                      }).addTo(map))
@@ -1540,7 +1544,7 @@ index 78a25df..53dee41 100644
  }
  function show_hidden_markers() {
      if (!0 === mobile_bridge_use || !1 === mouse_over_disable_inactive_elements)
-@@ -2511,15 +1984,14 @@ function show_hidden_markers() {
+@@ -2515,15 +1984,14 @@ function show_hidden_markers() {
              :   (e.setOpacity(1),
                  mission_label ? e.openTooltip() : e.closeTooltip());
          }),
@@ -1558,7 +1562,7 @@ index 78a25df..53dee41 100644
  }
  function hide_all_except_vehicle(e) {
      if (!0 === mobile_bridge_use || !1 === mouse_over_disable_inactive_elements)
-@@ -2559,15 +2031,14 @@ function hide_all_except_vehicle(e) {
+@@ -2563,15 +2031,14 @@ function hide_all_except_vehicle(e) {
                      ));
              }
          }),
@@ -1577,7 +1581,7 @@ index 78a25df..53dee41 100644
                  ((t.opacity = 0.2), (t.visible = !1))
              :   t.setOpacity(0.2);
          });
-@@ -2608,10 +2079,8 @@ function mission_overview_timer_call() {
+@@ -2612,10 +2079,8 @@ function mission_overview_timer_call() {
          t = new Date().getTime();
      void 0 !== mission_overview_last_count &&
          (e = t - mission_overview_last_count),
@@ -1590,7 +1594,7 @@ index 78a25df..53dee41 100644
              var t = $(this).attr('timeleft');
              t > 0 &&
                  ((t -= e) <= 0 ?
-@@ -2622,8 +2091,7 @@ function mission_overview_timer_call() {
+@@ -2626,8 +2091,7 @@ function mission_overview_timer_call() {
                              formatTime(Math.round(t / 1e3), !1)
                      ),
                  $(this).attr('timeleft', t));
@@ -1600,7 +1604,7 @@ index 78a25df..53dee41 100644
  }
  function successfullMessage(e) {
      $('#important_messages_success').html(e),
-@@ -2632,7 +2100,7 @@ function successfullMessage(e) {
+@@ -2636,7 +2100,7 @@ function successfullMessage(e) {
              $('#important_messages_success').hide();
          }, 2e3);
  }
@@ -1609,7 +1613,7 @@ index 78a25df..53dee41 100644
      if (e.length <= 0) return !0;
      if (t.attr('building_id').indexOf('_') >= 0) {
          var i = t.attr('building_id').split('_'),
-@@ -2646,7 +2114,7 @@ function aao_building_check_old(e, t) {
+@@ -2650,7 +2114,7 @@ function aao_building_check_old(e, t) {
      }
      return e.indexOf(parseInt(t.attr('building_id'))) >= 0;
  }
@@ -1618,7 +1622,7 @@ index 78a25df..53dee41 100644
      if (e.length <= 0) return !0;
      if (t.getAttribute('building_id').indexOf('_') >= 0) {
          var i = t.getAttribute('building_id').split('_'),
-@@ -2660,7 +2128,7 @@ function aao_building_check_native_old(e, t) {
+@@ -2664,7 +2128,7 @@ function aao_building_check_native_old(e, t) {
      }
      return e.indexOf(parseInt(t.getAttribute('building_id'))) >= 0;
  }
@@ -1627,7 +1631,7 @@ index 78a25df..53dee41 100644
      const n = aaoEquipmentModes[t.attr('equipment_mode')];
      var s = -3;
      if (i > 0) {
-@@ -2668,17 +2136,18 @@ function aao_check_old(e, t, i) {
+@@ -2672,17 +2136,18 @@ function aao_check_old(e, t, i) {
          var a = [];
          if (-1 !== e.indexOf('vehicle_type_id_')) {
              var o = e.substring(16);
@@ -1653,7 +1657,7 @@ index 78a25df..53dee41 100644
                      if ('auto_assign' === n && r) {
                          const n = r.state.equipments.filter(
                              i =>
-@@ -2694,12 +2163,10 @@ function aao_check_old(e, t, i) {
+@@ -2698,12 +2163,10 @@ function aao_check_old(e, t, i) {
                                      t.push(equipment.id);
                      }
                      (s.getAttribute(e) > 0 || o) && a.push(s);
@@ -1668,7 +1672,7 @@ index 78a25df..53dee41 100644
              (r = jQuery.parseJSON(t.attr('building_ids'))),
              a.forEach(function (t) {
                  i > 0 &&
-@@ -2713,47 +2180,39 @@ function aao_check_old(e, t, i) {
+@@ -2717,47 +2180,39 @@ function aao_check_old(e, t, i) {
                          (AAO_MULTIPLE_KEYS.includes(e) ?
                              t.getAttribute(e) && (i -= t.getAttribute(e))
                          :   (i -= 1)),
@@ -1733,7 +1737,7 @@ index 78a25df..53dee41 100644
      if (n <= 0) return '';
      const s = {};
      var a;
-@@ -2768,7 +2227,7 @@ function aao_old(e, t, i, n) {
+@@ -2772,7 +2227,7 @@ function aao_old(e, t, i, n) {
          'auto_assign' === aaoEquipmentModes[t.attr('equipment_mode')] &&
              $.each(i, (t, i) => {
                  const n = $(i).attr('value'),
@@ -1742,7 +1746,7 @@ index 78a25df..53dee41 100644
                  if (a) {
                      const t = a.state.equipments
                          .filter(e => e.isSelectPossible())
-@@ -2791,7 +2250,7 @@ function aao_old(e, t, i, n) {
+@@ -2795,7 +2250,7 @@ function aao_old(e, t, i, n) {
                          .length > 0;
              if (n > 0) {
                  var o = [];
@@ -1751,7 +1755,7 @@ index 78a25df..53dee41 100644
                      o = jQuery.parseJSON(t.attr('building_ids'));
                  if (aao_building_check(o, $(this))) {
                      const t = $(this);
-@@ -2817,7 +2276,7 @@ function aao_old(e, t, i, n) {
+@@ -2821,7 +2276,7 @@ function aao_old(e, t, i, n) {
                              :   ((o = !0), (n -= 1)),
                              a)
                          ) {
@@ -1760,7 +1764,7 @@ index 78a25df..53dee41 100644
                              for (const a of s[i])
                                  a.isSelectPossible() &&
                                      !1 === a.selected &&
-@@ -2829,10 +2288,7 @@ function aao_old(e, t, i, n) {
+@@ -2833,10 +2288,7 @@ function aao_old(e, t, i, n) {
                                          (n -= a.aaoValues[e]),
                                      (o = !0));
                          }
@@ -1772,7 +1776,7 @@ index 78a25df..53dee41 100644
                      }
                  }
              }
-@@ -2851,9 +2307,14 @@ function mission_participation_add(e) {
+@@ -2855,9 +2307,14 @@ function mission_participation_add(e) {
  }
  function addMissionParticipations(e) {
      for (const t of e) mission_participation_add(t);
@@ -1790,7 +1794,7 @@ index 78a25df..53dee41 100644
  }
  function vehicleDistance(e, t, i, n, s, a, o) {
      return (
-@@ -2938,13 +2399,11 @@ function vehicleDistanceDraw(e, t, i, n) {
+@@ -2942,13 +2399,11 @@ function vehicleDistanceDraw(e, t, i, n) {
              '_' +
              i
      ).each(function () {
@@ -1809,7 +1813,7 @@ index 78a25df..53dee41 100644
      });
  }
  function vehicleDistanceDirect(e, t, i, n, s, a, o) {
-@@ -3056,12 +2515,12 @@ function waterCalculator(e, t) {
+@@ -3060,12 +2515,12 @@ function waterCalculator(e, t) {
          s.find('.mission_water_bar_driving_' + e).html(T),
          s.find('.mission_water_bar_selected_' + e).html(C),
          s.find('.mission_water_bar_missing_' + e).html(S);
@@ -1828,7 +1832,7 @@ index 78a25df..53dee41 100644
          v + g + f >= 100 ?
              (s
                  .find('.mission_water_bar_selected_' + e)
-@@ -3199,6 +2658,21 @@ function missionAlarmTrailerCheck(e) {
+@@ -3203,6 +2658,21 @@ function missionAlarmTrailerCheck(e) {
  function mapkitDeselectAnnotation() {
      map.selectedAnnotation = null;
  }
@@ -1850,7 +1854,7 @@ index 78a25df..53dee41 100644
  function mapViewOnly() {
      $('#navbar-mobile-footer').hide(),
          $('#navbar-mobile-footer').removeClass('visible-xs'),
-@@ -3208,7 +2682,7 @@ function mapViewOnly() {
+@@ -3212,7 +2682,7 @@ function mapViewOnly() {
          $('#level_upgrade_hint').hide(),
          $('#bigMapMenu').hide(),
          $('#map').height($(window).height()).width($(window).width()),
@@ -1859,7 +1863,7 @@ index 78a25df..53dee41 100644
  }
  function mapViewDesignBigMap() {
      $('#navbar-mobile-footer').hide(),
-@@ -3219,7 +2693,7 @@ function mapViewDesignBigMap() {
+@@ -3223,7 +2693,7 @@ function mapViewDesignBigMap() {
  }
  function mapViewResize() {
      $('#map').height($(window).height()).width($(window).width()),
@@ -1868,7 +1872,7 @@ index 78a25df..53dee41 100644
  }
  function mapViewResizeDesignBigMap() {
      $('#map')
-@@ -3230,7 +2704,7 @@ function mapViewResizeDesignBigMap() {
+@@ -3234,7 +2704,7 @@ function mapViewResizeDesignBigMap() {
                  $(window).height() - parseInt($('#col_navbar_holder').height())
              )
              .width($(window).width()),
@@ -1877,7 +1881,7 @@ index 78a25df..53dee41 100644
  }
  function mapViewRestore() {
      mapViewExpanded &&
-@@ -3257,7 +2731,7 @@ function vehicleResetTrailer(e) {
+@@ -3261,7 +2731,7 @@ function vehicleResetTrailer(e) {
              ).attr('trailer_vehicle_id', 0),
          missionAlarmTrailerCheck());
  }
@@ -1886,7 +1890,7 @@ index 78a25df..53dee41 100644
      for (missing = ''; n > 0; ) {
          var o = aaoNextAvailable(t, a),
              r = aaoNextAvailable(i, a),
-@@ -3275,7 +2749,7 @@ function aaoNearSelection_old(e, t, i, n, s, a) {
+@@ -3279,7 +2749,7 @@ function aaoNearSelection_old(e, t, i, n, s, a) {
      }
      return missing;
  }
@@ -1895,7 +1899,7 @@ index 78a25df..53dee41 100644
      var t = '',
          i = $(e);
      'true' == i.attr('reset') &&
-@@ -3308,7 +2782,7 @@ function aaoClickHandler_old(e) {
+@@ -3312,7 +2782,7 @@ function aaoClickHandler_old(e) {
              }
          });
      var n = i.attr('custom');
@@ -1904,7 +1908,7 @@ index 78a25df..53dee41 100644
          var s = jQuery.parseJSON(n);
          $.each(s, function (e, n) {
              t += aao('custom_' + md5(e), i, e, n);
-@@ -3325,13 +2799,13 @@ function aaoClickHandler_old(e) {
+@@ -3329,13 +2799,13 @@ function aaoClickHandler_old(e) {
          });
      }
      return (
@@ -1922,7 +1926,7 @@ index 78a25df..53dee41 100644
      var missing = [],
          vehicle_group_id = $(vehicle_group_element).attr('vehicle_group_id'),
          vehicle_ids = eval(
-@@ -3355,7 +2829,6 @@ function vehicleGroupClickHandler_old(vehicle_group_element) {
+@@ -3359,7 +2829,6 @@ function vehicleGroupClickHandler_old(vehicle_group_element) {
                      missing.join(', ') +
                      '. '
              )),
@@ -1930,7 +1934,7 @@ index 78a25df..53dee41 100644
          !1
      );
  }
-@@ -3606,8 +3079,14 @@ function premium(e) {
+@@ -3610,8 +3079,14 @@ function premium(e) {
          $('#premium_c').hide('fast')),
          (user_premium = e);
  }
@@ -1946,7 +1950,7 @@ index 78a25df..53dee41 100644
          var min_lat =
                  parseFloat(map.region.center.latitude) -
                  parseFloat(map.region.span.latitudeDelta),
-@@ -3622,7 +3101,7 @@ function building_load_alliance() {
+@@ -3626,7 +3101,7 @@ function building_load_alliance() {
                  parseFloat(map.region.span.longitudeDelta);
      else {
          if (
@@ -1955,7 +1959,7 @@ index 78a25df..53dee41 100644
                  map_filters_service.getMapFiltersLayers().alliance_members
              )
          )
-@@ -3673,8 +3152,8 @@ function buildingCaption(e) {
+@@ -3677,8 +3152,8 @@ function buildingCaption(e) {
      let t = !1;
      const i = parseInt(e);
      return (
@@ -1966,7 +1970,7 @@ index 78a25df..53dee41 100644
          t
      );
  }
-@@ -3853,13 +3332,13 @@ function missionMarkerDistanceUpdate() {
+@@ -3857,13 +3332,13 @@ function missionMarkerDistanceUpdate() {
      });
  }
  function missionVehiclesShowNotInvolved(e) {
@@ -1986,7 +1990,7 @@ index 78a25df..53dee41 100644
          }),
          (vehicles_not_involved = temp_vehicles_not_involved);
  }
-@@ -3967,9 +3446,11 @@ function patientTimer() {
+@@ -3971,9 +3446,11 @@ function patientTimer() {
                  var n = i.params;
                  if (n.live_current_value > n.target_percent) {
                      var s = t / n.miliseconds_by_percent;
@@ -2001,7 +2005,7 @@ index 78a25df..53dee41 100644
                          (n.live_current_value = n.live_current_value - s);
                  } else n.live_current_value < 0 && patientFinish(n);
              });
-@@ -4019,7 +3500,9 @@ function missionDelete(e) {
+@@ -4023,7 +3500,9 @@ function missionDelete(e) {
          $('#mission_' + e).addClass('mission_deleted'),
          missionTimerDelete(e);
      var t = mission_markers_per_id.get(parseInt(e));
@@ -2012,7 +2016,7 @@ index 78a25df..53dee41 100644
      var i = [];
      $.each(mission_markers, function (t, n) {
          n.mission_id != e && i.push(n);
-@@ -4099,13 +3582,13 @@ function vehicleDriveAdd(params) {
+@@ -4103,13 +3582,13 @@ function vehicleDriveAdd(params) {
      const mission_vehicle = mission_vehicles_per_vid.get(params.id);
      if (
          (mission_vehicle &&
@@ -2028,7 +2032,7 @@ index 78a25df..53dee41 100644
                          map.removeLayer(mission_vehicle.polyline)
                      :   map.removeOverlay(mission_vehicle.polyline)))),
          void 0 === routes[params.rh])
-@@ -4996,15 +4479,6 @@ function updateNoMissionsMessages() {
+@@ -5000,15 +4479,6 @@ function updateNoMissionsMessages() {
                  missionTypeFilters.emergency.missionIds.length <= 0
          );
  }
@@ -2044,7 +2048,7 @@ index 78a25df..53dee41 100644
  function filterMissionList() {
      var e = $('.mission_selection[data-type-filter].btn-danger')
              .map(function (e, t) {
-@@ -5180,7 +4654,7 @@ function searchStations() {
+@@ -5184,7 +4654,7 @@ function searchStations() {
          $(this).toggle(t);
      });
  }
@@ -2053,7 +2057,7 @@ index 78a25df..53dee41 100644
      var all_ok = !0,
          max_time = -1,
          vehicle_ids = eval(
-@@ -5199,11 +4673,26 @@ function vehicle_group_available_old(vehicle_group_id, calculate_time) {
+@@ -5203,11 +4673,26 @@ function vehicle_group_available_old(vehicle_group_id, calculate_time) {
                      max_time = aao_maxtime(max_time, { max_time: i });
                  }
              }),
@@ -2085,7 +2089,7 @@ index 78a25df..53dee41 100644
  }
  function aao_maxtime(e, t) {
      if (!t) return e;
-@@ -5212,7 +4701,7 @@ function aao_maxtime(e, t) {
+@@ -5216,7 +4701,7 @@ function aao_maxtime(e, t) {
      var i = parseInt(t.max_time);
      return e < i || (-1 == e && i >= 0) ? i : e;
  }
@@ -2094,7 +2098,7 @@ index 78a25df..53dee41 100644
      var i = !0,
          n = -1;
      void 0 === t && (t = !1);
-@@ -5297,7 +4786,18 @@ function aao_available_old(e, t) {
+@@ -5301,7 +4786,18 @@ function aao_available_old(e, t) {
                  (n = aao_maxtime(n, a)), a || (i = !1);
              });
          }
@@ -2114,7 +2118,7 @@ index 78a25df..53dee41 100644
      }
  }
  function parseAaoVehicleIds(e) {
-@@ -6053,9 +5553,6 @@ function getRouteForVehicleRId(e) {
+@@ -6057,9 +5553,6 @@ function getRouteForVehicleRId(e) {
  function isIOS() {
      return navigator.userAgent.includes('"os":"iOS"');
  }
@@ -2124,7 +2128,7 @@ index 78a25df..53dee41 100644
  function missionPositionMarkerAdd(e) {
      1 == mobile_bridge_use && mobileBridgeAdd('poi', [e]);
  }
-@@ -6329,734 +5826,6 @@ function receivedEventPayout(e) {
+@@ -6333,734 +5826,6 @@ function receivedEventPayout(e) {
  function onDismissPayoutInfo() {
      $('#payoutInfo').html('');
  }
@@ -2859,7 +2863,7 @@ index 78a25df..53dee41 100644
  async function submitHelpshiftState(e, t) {
      var i = new FormData();
      i.append('visible', e),
-@@ -7421,9 +6190,9 @@ function initVehiclesEquipment(e, t = {}) {
+@@ -7425,9 +6190,9 @@ function initVehiclesEquipment(e, t = {}) {
      }
      var s = [];
      e.forEach(function (e) {
@@ -2871,7 +2875,7 @@ index 78a25df..53dee41 100644
      a.forEach(function (e) {
          i(e.state.vehicleId);
      });
-@@ -7555,6 +6324,125 @@ function getPrisonClassState(e, t) {
+@@ -7559,6 +6324,125 @@ function getPrisonClassState(e, t) {
          : 'btn-success'
      );
  }
@@ -2997,7 +3001,7 @@ index 78a25df..53dee41 100644
  function refreshInputOnSliderChanges(e, t, i) {
      (document.getElementById(e).value = t.value),
          updateSliderScale(t.id, t.value, i);
-@@ -7994,303 +6882,6 @@ function registerVehicleAnimate(e, t) {
+@@ -7998,303 +6882,6 @@ function registerVehicleAnimate(e, t) {
  function deregisterVehicleAnim(e) {
      VehicleTickManager.deregisterObject(`vehicle_anim_${e}`);
  }
@@ -3301,7 +3305,7 @@ index 78a25df..53dee41 100644
  Object.values ||
      (Object.values = function (e) {
          return Object.keys(e).map(function (t) {
-@@ -32761,7 +31352,7 @@ Object.values ||
+@@ -32765,7 +31352,7 @@ Object.values ||
          }
          function o(e, i, n) {
              if (n === t && 1 === e.nodeType) {
@@ -3310,7 +3314,7 @@ index 78a25df..53dee41 100644
                  if ('string' == typeof (n = e.getAttribute(s))) {
                      try {
                          n =
-@@ -32894,9 +31485,9 @@ Object.values ||
+@@ -32898,9 +31485,9 @@ Object.values ||
                  s,
                  a = 0,
                  o =
@@ -3322,7 +3326,7 @@ index 78a25df..53dee41 100644
                          e.querySelectorAll(i || '*')
                      :   t;
              if (!o)
-@@ -32935,7 +31526,7 @@ Object.values ||
+@@ -32939,7 +31526,7 @@ Object.values ||
                          (a[o] || 'none' !== i || (n.style.display = ''),
                          '' === n.style.display &&
                              x(n) &&
@@ -3331,7 +3335,7 @@ index 78a25df..53dee41 100644
                      :   a[o] ||
                          ((s = x(n)),
                          ((i && 'none' !== i) || !s) &&
-@@ -32982,7 +31573,7 @@ Object.values ||
+@@ -32986,7 +31573,7 @@ Object.values ||
                              )));
              return o;
          }
@@ -3340,7 +3344,7 @@ index 78a25df..53dee41 100644
              var n = !0,
                  s = 'width' === t ? e.offsetWidth : e.offsetHeight,
                  a = ct(e),
-@@ -33000,7 +31591,7 @@ Object.values ||
+@@ -33004,7 +31591,7 @@ Object.values ||
              }
              return s + S(e, t, i || (o ? 'border' : 'content'), n, a) + 'px';
          }
@@ -3349,7 +3353,7 @@ index 78a25df..53dee41 100644
              var t = Y,
                  i = bt[e];
              return (
-@@ -33078,14 +31669,14 @@ Object.values ||
+@@ -33082,14 +31669,14 @@ Object.values ||
                  o = e === qt;
              return s(t.dataTypes[0]) || (!a['*'] && s('*'));
          }
@@ -3366,7 +3370,7 @@ index 78a25df..53dee41 100644
              for (
                  var s, a, o, r, l = e.contents, c = e.dataTypes;
                  '*' === c[0];
-@@ -33172,12 +31763,12 @@ Object.values ||
+@@ -33176,12 +31763,12 @@ Object.values ||
                  return new e.XMLHttpRequest();
              } catch (e) {}
          }
@@ -3381,7 +3385,7 @@ index 78a25df..53dee41 100644
              return (
                  setTimeout(function () {
                      Yt = t;
-@@ -33204,7 +31795,7 @@ Object.values ||
+@@ -33208,7 +31795,7 @@ Object.values ||
                  l = function () {
                      if (s) return !1;
                      for (
@@ -3390,7 +3394,7 @@ index 78a25df..53dee41 100644
                              i = Math.max(0, c.startTime + c.duration - t),
                              n = 1 - (i / c.duration || 0),
                              a = 0,
-@@ -33224,7 +31815,7 @@ Object.values ||
+@@ -33228,7 +31815,7 @@ Object.values ||
                      opts: de.extend(!0, { specialEasing: {} }, i),
                      originalProperties: t,
                      originalOptions: i,
@@ -3399,7 +3403,7 @@ index 78a25df..53dee41 100644
                      duration: i.duration,
                      tweens: [],
                      createTween: function (t, i) {
-@@ -33313,7 +31904,7 @@ Object.values ||
+@@ -33317,7 +31904,7 @@ Object.values ||
                      'none' === de.css(e, 'float') &&
                      ((
                          de.support.inlineBlockNeedsLayout &&
@@ -3408,7 +3412,7 @@ index 78a25df..53dee41 100644
                      ) ?
                          (u.zoom = 1)
                      :   (u.display = 'inline-block'))),
-@@ -33377,8 +31968,8 @@ Object.values ||
+@@ -33381,8 +31968,8 @@ Object.values ||
          }
          var U,
              G,
@@ -3419,7 +3423,7 @@ index 78a25df..53dee41 100644
              Y = e.document,
              J = Y.documentElement,
              Q = e.jQuery,
-@@ -33924,7 +32515,7 @@ Object.values ||
+@@ -33928,7 +32515,7 @@ Object.values ||
                      )
                          return i;
                      if (1 !== (r = (t = t || B).nodeType) && 9 !== r) return [];
@@ -3428,7 +3432,7 @@ index 78a25df..53dee41 100644
                          if ((s = xe.exec(e)))
                              if ((o = s[1])) {
                                  if (9 === r) {
-@@ -33949,7 +32540,7 @@ Object.values ||
+@@ -33953,7 +32540,7 @@ Object.values ||
                                      );
                                  if (
                                      (o = s[3]) &&
@@ -3437,7 +3441,7 @@ index 78a25df..53dee41 100644
                                      t.getElementsByClassName
                                  )
                                      return (
-@@ -33960,7 +32551,7 @@ Object.values ||
+@@ -33964,7 +32551,7 @@ Object.values ||
                                          i
                                      );
                              }
@@ -3446,7 +3450,7 @@ index 78a25df..53dee41 100644
                              if (
                                  ((u = d = $),
                                  (h = t),
-@@ -34098,7 +32689,7 @@ Object.values ||
+@@ -34102,7 +32689,7 @@ Object.values ||
                          r,
                          l,
                          c,
@@ -3455,7 +3459,7 @@ index 78a25df..53dee41 100644
                      if (d) return t ? 0 : d.slice(0);
                      for (r = e, l = [], c = E.preFilter; r; ) {
                          for (o in ((n && !(s = _e.exec(r))) ||
-@@ -34120,7 +32711,7 @@ Object.values ||
+@@ -34124,7 +32711,7 @@ Object.values ||
                      return (
                          t ? r.length
                          : r ? i.error(e)
@@ -3464,7 +3468,7 @@ index 78a25df..53dee41 100644
                      );
                  }
                  function f(e) {
-@@ -34161,12 +32752,12 @@ Object.values ||
+@@ -34165,12 +32752,12 @@ Object.values ||
                                              ) {
                                                  if (
                                                      !0 === (r = l[1]) ||
@@ -3479,7 +3483,7 @@ index 78a25df..53dee41 100644
                                                  !0 === l[1])
                                              )
                                                  return !0;
-@@ -34262,7 +32853,7 @@ Object.values ||
+@@ -34266,7 +32853,7 @@ Object.values ||
                              d = [
                                  function (e, i, n) {
                                      return (
@@ -3488,7 +3492,7 @@ index 78a25df..53dee41 100644
                                          ((t = i).nodeType ?
                                              l(e, i, n)
                                          :   c(e, i, n))
-@@ -34321,7 +32912,7 @@ Object.values ||
+@@ -34325,7 +32912,7 @@ Object.values ||
                                  f = '0',
                                  g = a && [],
                                  v = null != d,
@@ -3497,7 +3501,7 @@ index 78a25df..53dee41 100644
                                  w =
                                      a ||
                                      (o &&
-@@ -34331,7 +32922,7 @@ Object.values ||
+@@ -34335,7 +32922,7 @@ Object.values ||
                                          )),
                                  k = (V += null == y ? 1 : Math.random() || 0.1);
                              for (
@@ -3506,7 +3510,7 @@ index 78a25df..53dee41 100644
                                  null != (u = w[f]);
                                  f++
                              ) {
-@@ -34341,7 +32932,7 @@ Object.values ||
+@@ -34345,7 +32932,7 @@ Object.values ||
                                              c.push(u);
                                              break;
                                          }
@@ -3515,7 +3519,7 @@ index 78a25df..53dee41 100644
                                  }
                                  s && ((u = !p && u) && _--, a && g.push(u));
                              }
-@@ -34360,7 +32951,7 @@ Object.values ||
+@@ -34364,7 +32951,7 @@ Object.values ||
                                          _ + t.length > 1 &&
                                          i.uniqueSort(c);
                              }
@@ -3524,7 +3528,7 @@ index 78a25df..53dee41 100644
                          };
                      return s ? a(r) : r;
                  }
-@@ -34379,14 +32970,14 @@ Object.values ||
+@@ -34383,14 +32970,14 @@ Object.values ||
                          if (
                              (a = c[0] = c[0].slice(0)).length > 2 &&
                              'ID' === (o = a[0]).type &&
@@ -3542,7 +3546,7 @@ index 78a25df..53dee41 100644
                                      t
                                  ) || [])[0])
                              )
-@@ -34401,7 +32992,7 @@ Object.values ||
+@@ -34405,7 +32992,7 @@ Object.values ||
                              if (
                                  (l = E.find[r]) &&
                                  (n = l(
@@ -3551,7 +3555,7 @@ index 78a25df..53dee41 100644
                                      (ge.test(a[0].type) && t.parentNode) || t
                                  ))
                              ) {
-@@ -34410,22 +33001,22 @@ Object.values ||
+@@ -34414,22 +33001,22 @@ Object.values ||
                                  break;
                              }
                      }
@@ -3578,7 +3582,7 @@ index 78a25df..53dee41 100644
                      F,
                      N,
                      H,
-@@ -34435,8 +33026,8 @@ Object.values ||
+@@ -34439,8 +33026,8 @@ Object.values ||
                      V = 0,
                      U = 0,
                      G = s(),
@@ -3588,7 +3592,7 @@ index 78a25df..53dee41 100644
                      Y = !1,
                      J = function () {
                          return 0;
-@@ -34531,11 +33122,11 @@ Object.values ||
+@@ -34535,11 +33122,11 @@ Object.values ||
                      Te = /^(?:input|select|textarea|button)$/i,
                      Ce = /^h\d$/i,
                      Se = /'|\\/g,
@@ -3602,7 +3606,7 @@ index 78a25df..53dee41 100644
                          var n = '0x' + t - 65536;
                          return (
                              n != n || i ? t
-@@ -34571,7 +33162,7 @@ Object.values ||
+@@ -34575,7 +33162,7 @@ Object.values ||
                          var t = e && (e.ownerDocument || e).documentElement;
                          return !!t && 'HTML' !== t.nodeName;
                      }),
@@ -3611,7 +3615,7 @@ index 78a25df..53dee41 100644
                  (R = i.setDocument =
                      function (e) {
                          var t = e ? e.ownerDocument || e : W;
-@@ -34579,9 +33170,9 @@ Object.values ||
+@@ -34583,9 +33170,9 @@ Object.values ||
                                  t !== B && 9 === t.nodeType && t.documentElement
                              ) ?
                                  ((B = t),
@@ -3624,7 +3628,7 @@ index 78a25df..53dee41 100644
                                      return (
                                          (e.innerHTML = "<a href='#'></a>"),
                                          r(
-@@ -34601,7 +33192,7 @@ Object.values ||
+@@ -34605,7 +33192,7 @@ Object.values ||
                                          !e.getAttribute('className')
                                      );
                                  })),
@@ -3633,7 +3637,7 @@ index 78a25df..53dee41 100644
                                      return (
                                          (e.innerHTML = '<input>'),
                                          e.firstChild.setAttribute('value', ''),
-@@ -34609,14 +33200,14 @@ Object.values ||
+@@ -34613,14 +33200,14 @@ Object.values ||
                                              e.firstChild.getAttribute('value')
                                      );
                                  })),
@@ -3651,7 +3655,7 @@ index 78a25df..53dee41 100644
                                      return (
                                          (e.innerHTML =
                                              "<div class='a'></div><div class='a i'></div>"),
-@@ -34625,32 +33216,32 @@ Object.values ||
+@@ -34629,32 +33216,32 @@ Object.values ||
                                              e.getElementsByClassName('i').length
                                      );
                                  })),
@@ -3690,7 +3694,7 @@ index 78a25df..53dee41 100644
                                          return function (e) {
                                              var i =
                                                  typeof e.getAttributeNode !==
-@@ -34660,7 +33251,7 @@ Object.values ||
+@@ -34664,7 +33251,7 @@ Object.values ||
                                          };
                                      })),
                                  (E.find.TAG =
@@ -3699,7 +3703,7 @@ index 78a25df..53dee41 100644
                                          function (e, t) {
                                              if (
                                                  typeof t.getElementsByTagName !==
-@@ -34684,18 +33275,18 @@ Object.values ||
+@@ -34688,18 +33275,18 @@ Object.values ||
                                              return a;
                                          }),
                                  (E.find.CLASS =
@@ -3721,7 +3725,7 @@ index 78a25df..53dee41 100644
                                      (o(function (e) {
                                          (e.innerHTML =
                                              "<select><option selected=''></option></select>"),
-@@ -34730,15 +33321,15 @@ Object.values ||
+@@ -34734,15 +33321,15 @@ Object.values ||
                                              e.querySelectorAll('*,:x'),
                                              F.push(',.*:');
                                      })),
@@ -3743,7 +3747,7 @@ index 78a25df..53dee41 100644
                                              e,
                                              'div'
                                          )),
-@@ -34748,7 +33339,7 @@ Object.values ||
+@@ -34752,7 +33339,7 @@ Object.values ||
                                  (F = F.length && new RegExp(F.join('|'))),
                                  (N = N.length && new RegExp(N.join('|'))),
                                  (q =
@@ -3752,7 +3756,7 @@ index 78a25df..53dee41 100644
                                          function (e, t) {
                                              var i =
                                                      9 === e.nodeType ?
-@@ -34776,7 +33367,7 @@ Object.values ||
+@@ -34780,7 +33367,7 @@ Object.values ||
                                                      if (t === e) return !0;
                                              return !1;
                                          }),
@@ -3761,7 +3765,7 @@ index 78a25df..53dee41 100644
                                      return (
                                          1 &
                                          e.compareDocumentPosition(
-@@ -34785,7 +33376,7 @@ Object.values ||
+@@ -34789,7 +33376,7 @@ Object.values ||
                                      );
                                  })),
                                  (J =
@@ -3770,7 +3774,7 @@ index 78a25df..53dee41 100644
                                          function (e, i) {
                                              if (e === i) return (Y = !0), 0;
                                              var n =
-@@ -34796,16 +33387,16 @@ Object.values ||
+@@ -34800,16 +33387,16 @@ Object.values ||
                                                  n ?
                                                      (
                                                          1 & n ||
@@ -3791,7 +3795,7 @@ index 78a25df..53dee41 100644
                                                          :   0
                                                      : 4 & n ? -1
                                                      : 1
-@@ -34827,9 +33418,9 @@ Object.values ||
+@@ -34831,9 +33418,9 @@ Object.values ||
                                                      : i === t ? 1
                                                      : a ? -1
                                                      : o ? 1
@@ -3804,7 +3808,7 @@ index 78a25df..53dee41 100644
                                                      :   0
                                                  );
                                              if (a === o) return u(e, i);
-@@ -34855,8 +33446,8 @@ Object.values ||
+@@ -34859,8 +33446,8 @@ Object.values ||
                      if (
                          ((e.ownerDocument || e) !== B && R(e),
                          (t = t.replace(ve, "='$1']")),
@@ -3815,7 +3819,7 @@ index 78a25df..53dee41 100644
                              (!N || !N.test(t)) &&
                              (!F || !F.test(t)))
                      )
-@@ -34864,7 +33455,7 @@ Object.values ||
+@@ -34868,7 +33455,7 @@ Object.values ||
                              var n = H.call(e, t);
                              if (
                                  n ||
@@ -3824,7 +3828,7 @@ index 78a25df..53dee41 100644
                                  (e.document && 11 !== e.document.nodeType)
                              )
                                  return n;
-@@ -34879,11 +33470,11 @@ Object.values ||
+@@ -34883,11 +33470,11 @@ Object.values ||
                      var n = E.attrHandle[i.toLowerCase()],
                          s =
                              n && ee.call(E.attrHandle, i.toLowerCase()) ?
@@ -3838,7 +3842,7 @@ index 78a25df..53dee41 100644
                              : (s = e.getAttributeNode(i)) && s.specified ?
                                  s.value
                              :   null
-@@ -34901,8 +33492,8 @@ Object.values ||
+@@ -34905,8 +33492,8 @@ Object.values ||
                          n = 0,
                          s = 0;
                      if (
@@ -3849,7 +3853,7 @@ index 78a25df..53dee41 100644
                          e.sort(J),
                          Y)
                      ) {
-@@ -34943,10 +33534,10 @@ Object.values ||
+@@ -34947,10 +33534,10 @@ Object.values ||
                          preFilter: {
                              ATTR: function (e) {
                                  return (
@@ -3863,7 +3867,7 @@ index 78a25df..53dee41 100644
                                      )),
                                      '~=' === e[2] && (e[3] = ' ' + e[3] + ' '),
                                      e.slice(0, 4)
-@@ -34989,7 +33580,7 @@ Object.values ||
+@@ -34993,7 +33580,7 @@ Object.values ||
                          },
                          filter: {
                              TAG: function (e) {
@@ -3872,7 +3876,7 @@ index 78a25df..53dee41 100644
                                  return '*' === e ?
                                          function () {
                                              return !0;
-@@ -35254,13 +33845,13 @@ Object.values ||
+@@ -35258,13 +33845,13 @@ Object.values ||
                                  return (
                                      ye.test(e || '') ||
                                          i.error('unsupported lang: ' + e),
@@ -3888,7 +3892,7 @@ index 78a25df..53dee41 100644
                                                          t.lang
                                                      :   t.getAttribute(
                                                              'xml:lang'
-@@ -35285,7 +33876,7 @@ Object.values ||
+@@ -35289,7 +33876,7 @@ Object.values ||
                                  return i && i.slice(1) === t.id;
                              },
                              root: function (e) {
@@ -3897,7 +3901,7 @@ index 78a25df..53dee41 100644
                              },
                              focus: function (e) {
                                  return (
-@@ -35385,21 +33976,21 @@ Object.values ||
+@@ -35389,21 +33976,21 @@ Object.values ||
                          var i,
                              n = [],
                              s = [],
@@ -3923,7 +3927,7 @@ index 78a25df..53dee41 100644
                      (de.find = i),
                      (de.expr = i.selectors),
                      (de.expr[':'] = de.expr.pseudos),
-@@ -35772,7 +34363,7 @@ Object.values ||
+@@ -35776,7 +34363,7 @@ Object.values ||
                                      (e.getComputedStyle(n, null) || {})
                                          .marginRight
                                  ))),
@@ -3932,7 +3936,7 @@ index 78a25df..53dee41 100644
                                  ((u.innerHTML = ''),
                                  (u.style.cssText =
                                      a +
-@@ -35792,7 +34383,7 @@ Object.values ||
+@@ -35796,7 +34383,7 @@ Object.values ||
                  );
              })({}));
          var Se = /(?:\{[\s\S]*\}|\[[\s\S]*\])$/,
@@ -3941,7 +3945,7 @@ index 78a25df..53dee41 100644
          de.extend({
              cache: {},
              noData: {
-@@ -35966,13 +34557,13 @@ Object.values ||
+@@ -35970,13 +34557,13 @@ Object.values ||
                      return l(), a.promise(i);
                  },
              });
@@ -3958,7 +3962,7 @@ index 78a25df..53dee41 100644
              Re = de.support.getSetAttribute,
              Be = de.support.input;
          de.fn.extend({
-@@ -36078,7 +34669,7 @@ Object.values ||
+@@ -36082,7 +34669,7 @@ Object.values ||
                                      (r = n ? r : !o.hasClass(s)),
                                          o[r ? 'addClass' : 'removeClass'](s);
                              else
@@ -3967,7 +3971,7 @@ index 78a25df..53dee41 100644
                                      (this.className &&
                                          de._data(
                                              this,
-@@ -36208,7 +34799,7 @@ Object.values ||
+@@ -36212,7 +34799,7 @@ Object.values ||
                          a,
                          o = e.nodeType;
                      if (e && 3 !== o && 8 !== o && 2 !== o)
@@ -3976,7 +3980,7 @@ index 78a25df..53dee41 100644
                                  de.prop(e, i, n)
                              :   ((1 === o && de.isXMLDoc(e)) ||
                                      ((i = i.toLowerCase()),
-@@ -36216,7 +34807,7 @@ Object.values ||
+@@ -36220,7 +34807,7 @@ Object.values ||
                                          de.attrHooks[i] ||
                                          (de.expr.match.bool.test(i) ?
                                              Ee
@@ -3985,7 +3989,7 @@ index 78a25df..53dee41 100644
                                  n === t ?
                                      (
                                          s &&
-@@ -36245,7 +34836,7 @@ Object.values ||
+@@ -36249,7 +34836,7 @@ Object.values ||
                          for (; (i = a[s++]); )
                              (n = de.propFix[i] || i),
                                  de.expr.match.bool.test(i) ?
@@ -3994,7 +3998,7 @@ index 78a25df..53dee41 100644
                                          (e[n] = !1)
                                      :   (e[de.camelCase('default-' + i)] = e[
                                              n
-@@ -36298,7 +34889,7 @@ Object.values ||
+@@ -36302,7 +34889,7 @@ Object.values ||
                                  t ? parseInt(t, 10)
                                  : (
                                      Ie.test(e.nodeName) ||
@@ -4003,7 +4007,7 @@ index 78a25df..53dee41 100644
                                  ) ?
                                      0
                                  :   -1
-@@ -36311,7 +34902,7 @@ Object.values ||
+@@ -36315,7 +34902,7 @@ Object.values ||
                  set: function (e, t, i) {
                      return (
                          !1 === t ? de.removeAttr(e, i)
@@ -4012,7 +4016,7 @@ index 78a25df..53dee41 100644
                              e.setAttribute((!Re && de.propFix[i]) || i, i)
                          :   (e[de.camelCase('default-' + i)] = e[i] = !0),
                          i
-@@ -36321,7 +34912,7 @@ Object.values ||
+@@ -36325,7 +34912,7 @@ Object.values ||
              de.each(de.expr.match.bool.source.match(/\w+/g), function (e, i) {
                  var n = de.expr.attrHandle[i] || de.find.attr;
                  de.expr.attrHandle[i] =
@@ -4021,7 +4025,7 @@ index 78a25df..53dee41 100644
                          function (e, i, s) {
                              var a = de.expr.attrHandle[i],
                                  o =
-@@ -36347,12 +34938,12 @@ Object.values ||
+@@ -36351,12 +34938,12 @@ Object.values ||
                  (de.attrHooks.value = {
                      set: function (e, t, i) {
                          if (!de.nodeName(e, 'input'))
@@ -4036,7 +4040,7 @@ index 78a25df..53dee41 100644
                      set: function (e, i, n) {
                          var s = e.getAttributeNode(n);
                          return (
-@@ -36385,11 +34976,11 @@ Object.values ||
+@@ -36389,11 +34976,11 @@ Object.values ||
                          var n = e.getAttributeNode(i);
                          return n && n.specified ? n.value : t;
                      },
@@ -4050,7 +4054,7 @@ index 78a25df..53dee41 100644
                      },
                  }),
                  de.each(['width', 'height'], function (e, t) {
-@@ -36461,8 +35052,8 @@ Object.values ||
+@@ -36465,8 +35052,8 @@ Object.values ||
                                  :   e.value;
                          });
              });
@@ -4061,7 +4065,7 @@ index 78a25df..53dee41 100644
              Fe = /^(?:mouse|contextmenu)|click/,
              Ne = /^(?:focusinfocus|focusoutblur)$/,
              He = /^([^.]*)(?:\.(.+)|)$/;
-@@ -36490,7 +35081,7 @@ Object.values ||
+@@ -36494,7 +35081,7 @@ Object.values ||
                                  ((u = g.handle =
                                      function (e) {
                                          return (
@@ -4070,7 +4074,7 @@ index 78a25df..53dee41 100644
                                                      (e &&
                                                          de.event.triggered ===
                                                              e.type)
-@@ -36773,7 +35364,7 @@ Object.values ||
+@@ -36777,7 +35364,7 @@ Object.values ||
                      o ||
                          (this.fixHooks[s] = o =
                              Fe.test(s) ? this.mouseHooks
@@ -4079,7 +4083,7 @@ index 78a25df..53dee41 100644
                                  : {}),
                          n = o.props ? this.props.concat(o.props) : this.props,
                          e = new de.Event(a),
-@@ -36907,7 +35498,7 @@ Object.values ||
+@@ -36911,7 +35498,7 @@ Object.values ||
                  :   function (e, t, i) {
                          var n = 'on' + t;
                          e.detachEvent &&
@@ -4088,7 +4092,7 @@ index 78a25df..53dee41 100644
                              e.detachEvent(n, i));
                      }),
              (de.Event = function (e, t) {
-@@ -37023,7 +35614,7 @@ Object.values ||
+@@ -37027,7 +35614,7 @@ Object.values ||
              de.support.changeBubbles ||
                  (de.event.special.change = {
                      setup: function () {
@@ -4097,7 +4101,7 @@ index 78a25df..53dee41 100644
                              return (
                                  ('checkbox' !== this.type &&
                                      'radio' !== this.type) ||
-@@ -37058,7 +35649,7 @@ Object.values ||
+@@ -37062,7 +35649,7 @@ Object.values ||
                              'beforeactivate._change',
                              function (e) {
                                  var t = e.target;
@@ -4106,7 +4110,7 @@ index 78a25df..53dee41 100644
                                      !de._data(t, 'changeBubbles') &&
                                      (de.event.add(
                                          t,
-@@ -37092,7 +35683,7 @@ Object.values ||
+@@ -37096,7 +35683,7 @@ Object.values ||
                      teardown: function () {
                          return (
                              de.event.remove(this, '._change'),
@@ -4115,7 +4119,7 @@ index 78a25df..53dee41 100644
                          );
                      },
                  }),
-@@ -37382,8 +35973,8 @@ Object.values ||
+@@ -37386,8 +35973,8 @@ Object.values ||
          var Ue =
                  'abbr|article|aside|audio|bdi|canvas|data|datalist|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|summary|time|video',
              Ge = / jQuery\d+="(?:null|\d+)"/g,
@@ -4126,7 +4130,7 @@ index 78a25df..53dee41 100644
              Ye =
                  /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/gi,
              Je = /<([\w:]+)/,
-@@ -37520,8 +36111,8 @@ Object.values ||
+@@ -37524,8 +36111,8 @@ Object.values ||
                              if (
                                  'string' == typeof e &&
                                  !et.test(e) &&
@@ -4137,7 +4141,7 @@ index 78a25df..53dee41 100644
                                  !ot[(Je.exec(e) || ['', ''])[1].toLowerCase()]
                              ) {
                                  e = e.replace(Ye, '<$1></$2>');
-@@ -37676,7 +36267,7 @@ Object.values ||
+@@ -37680,7 +36267,7 @@ Object.values ||
                          ((
                              de.support.html5Clone ||
                              de.isXMLDoc(e) ||
@@ -4146,7 +4150,7 @@ index 78a25df..53dee41 100644
                          ) ?
                              (a = e.cloneNode(!0))
                          :   ((rt.innerHTML = e.outerHTML),
-@@ -37746,8 +36337,8 @@ Object.values ||
+@@ -37750,8 +36337,8 @@ Object.values ||
                                      r = r.lastChild;
                                  if (
                                      (!de.support.leadingWhitespace &&
@@ -4157,7 +4161,7 @@ index 78a25df..53dee41 100644
                                      !de.support.tbody)
                                  )
                                      for (
-@@ -37825,7 +36416,7 @@ Object.values ||
+@@ -37829,7 +36416,7 @@ Object.values ||
                              l[s] &&
                                  (delete l[s],
                                  c ? delete i[r]
@@ -4166,7 +4170,7 @@ index 78a25df..53dee41 100644
                                      i.removeAttribute(r)
                                  :   (i[r] = null),
                                  te.push(s));
-@@ -38100,9 +36691,9 @@ Object.values ||
+@@ -38104,9 +36691,9 @@ Object.values ||
                                          mt.test(de.css(e, 'display'))
                                  ) ?
                                      de.swap(e, yt, function () {
@@ -4178,7 +4182,7 @@ index 78a25df..53dee41 100644
                      },
                      set: function (e, i, n) {
                          var s = n && ct(e);
-@@ -38228,8 +36819,8 @@ Object.values ||
+@@ -38232,8 +36819,8 @@ Object.values ||
          var Tt = /%20/g,
              Ct = /\[\]$/,
              St = /\r?\n/g,
@@ -4189,7 +4193,7 @@ index 78a25df..53dee41 100644
          de.fn.extend({
              serialize: function () {
                  return de.param(this.serializeArray());
-@@ -38244,8 +36835,8 @@ Object.values ||
+@@ -38248,8 +36835,8 @@ Object.values ||
                          return (
                              this.name &&
                              !de(this).is(':disabled') &&
@@ -4200,7 +4204,7 @@ index 78a25df..53dee41 100644
                              (this.checked || !tt.test(e))
                          );
                      })
-@@ -38325,19 +36916,19 @@ Object.values ||
+@@ -38329,19 +36916,19 @@ Object.values ||
              Pt,
              Mt = de.now(),
              It = /\?/,
@@ -4225,7 +4229,7 @@ index 78a25df..53dee41 100644
          } catch (e) {
              ((Pt = Y.createElement('a')).href = ''), (Pt = Pt.href);
          }
-@@ -38433,8 +37024,8 @@ Object.values ||
+@@ -38437,8 +37024,8 @@ Object.values ||
                  },
                  ajaxSetup: function (e, t) {
                      return t ?
@@ -4236,7 +4240,7 @@ index 78a25df..53dee41 100644
                  },
                  ajaxPrefilter: M(Ht),
                  ajaxTransport: M(qt),
-@@ -38453,7 +37044,7 @@ Object.values ||
+@@ -38457,7 +37044,7 @@ Object.values ||
                              (r = s || ''),
                              (k.readyState = e > 0 ? 4 : 0),
                              (a = (e >= 200 && e < 300) || 304 === e),
@@ -4245,7 +4249,7 @@ index 78a25df..53dee41 100644
                              (b = R(h, b, k, a)),
                              a ?
                                  (h.ifModified &&
-@@ -38552,8 +37143,8 @@ Object.values ||
+@@ -38556,8 +37143,8 @@ Object.values ||
                          (k.success = k.done),
                          (k.error = k.fail),
                          (h.url = ((e || h.url || Pt) + '')
@@ -4256,7 +4260,7 @@ index 78a25df..53dee41 100644
                          (h.type = i.method || i.type || h.method || h.type),
                          (h.dataTypes = de
                              .trim(h.dataType || '*')
-@@ -38582,7 +37173,7 @@ Object.values ||
+@@ -38586,7 +37173,7 @@ Object.values ||
                          0 == de.active++ &&
                          de.event.trigger('ajaxStart'),
                      (h.type = h.type.toUpperCase()),
@@ -4265,7 +4269,7 @@ index 78a25df..53dee41 100644
                      (o = h.url),
                      h.hasContent ||
                          (h.data &&
-@@ -38590,8 +37181,8 @@ Object.values ||
+@@ -38594,8 +37181,8 @@ Object.values ||
                              delete h.data),
                          !1 === h.cache &&
                              (h.url =
@@ -4276,7 +4280,7 @@ index 78a25df..53dee41 100644
                                  :   o +
                                      (It.test(o) ? '&' : '?') +
                                      '_=' +
-@@ -38770,8 +37361,8 @@ Object.values ||
+@@ -38774,8 +37361,8 @@ Object.values ||
              });
          var Ut,
              Gt,
@@ -4287,7 +4291,7 @@ index 78a25df..53dee41 100644
                  e.ActiveXObject &&
                  function () {
                      var e;
-@@ -38780,7 +37371,7 @@ Object.values ||
+@@ -38784,7 +37371,7 @@ Object.values ||
          (de.ajaxSettings.xhr =
              e.ActiveXObject ?
                  function () {
@@ -4296,7 +4300,7 @@ index 78a25df..53dee41 100644
                  }
              :   B),
              (Gt = de.ajaxSettings.xhr()),
-@@ -38828,7 +37419,7 @@ Object.values ||
+@@ -38832,7 +37419,7 @@ Object.values ||
                                                      o &&
                                                          ((l.onreadystatechange =
                                                              de.noop),
@@ -4305,7 +4309,7 @@ index 78a25df..53dee41 100644
                                                      s)
                                                  )
                                                      4 !== l.readyState &&
-@@ -38864,11 +37455,11 @@ Object.values ||
+@@ -38868,11 +37455,11 @@ Object.values ||
                                      i.async ?
                                          4 === l.readyState ?
                                              setTimeout(n)
@@ -4320,7 +4324,7 @@ index 78a25df..53dee41 100644
                                                  (Ut[o] = n)),
                                              (l.onreadystatechange = n))
                                      :   n();
-@@ -39187,7 +37778,7 @@ Object.values ||
+@@ -39191,7 +37778,7 @@ Object.values ||
                  return o ?
                          ((i = o.documentElement),
                          de.contains(i, a) ?
@@ -4329,7 +4333,7 @@ index 78a25df..53dee41 100644
                                  (s = a.getBoundingClientRect()),
                              (n = V(o)),
                              {
-@@ -40598,21 +39189,21 @@ Object.values ||
+@@ -40602,21 +39189,21 @@ Object.values ||
                                  b = i(this, 'marginTop'),
                                  C = u + m + i(this, 'marginRight') + k.width,
                                  S = h + b + i(this, 'marginBottom') + k.height,
@@ -4361,7 +4365,7 @@ index 78a25df..53dee41 100644
                                              targetWidth: _,
                                              targetHeight: f,
                                              elemWidth: u,
-@@ -40620,7 +39211,7 @@ Object.values ||
+@@ -40624,7 +39211,7 @@ Object.values ||
                                              collisionPosition: n,
                                              collisionWidth: C,
                                              collisionHeight: S,
@@ -4370,7 +4374,7 @@ index 78a25df..53dee41 100644
                                              my: s.my,
                                              at: s.at,
                                              within: w,
-@@ -40629,9 +39220,9 @@ Object.values ||
+@@ -40633,9 +39220,9 @@ Object.values ||
                                  }),
                                  s.using &&
                                      (c = function (e) {
@@ -4382,7 +4386,7 @@ index 78a25df..53dee41 100644
                                              a = n + f - h,
                                              l = {
                                                  target: {
-@@ -40643,8 +39234,8 @@ Object.values ||
+@@ -40647,8 +39234,8 @@ Object.values ||
                                                  },
                                                  element: {
                                                      element: d,
@@ -4393,7 +4397,7 @@ index 78a25df..53dee41 100644
                                                      width: u,
                                                      height: h,
                                                  },
-@@ -40668,7 +39259,7 @@ Object.values ||
+@@ -40672,7 +39259,7 @@ Object.values ||
                                              :   (l.important = 'vertical'),
                                              s.using.call(this, e, l);
                                      }),
@@ -4402,7 +4406,7 @@ index 78a25df..53dee41 100644
                          })
                      );
                  }),
-@@ -48065,18 +46656,18 @@ Object.values ||
+@@ -48069,18 +46656,18 @@ Object.values ||
                          T,
                          C,
                          S,
@@ -4424,7 +4428,7 @@ index 78a25df..53dee41 100644
                          F,
                          N = new Date(),
                          H = this._daylightSavingAdjust(
-@@ -48088,8 +46679,8 @@ Object.values ||
+@@ -48092,8 +46679,8 @@ Object.values ||
                          V = this._get(e, 'navigationAsDateFormat'),
                          U = this._getNumberOfMonths(e),
                          G = this._get(e, 'showCurrentAtPos'),
@@ -4435,7 +4439,7 @@ index 78a25df..53dee41 100644
                          Y = this._daylightSavingAdjust(
                              e.currentDay ?
                                  new Date(
-@@ -48126,7 +46717,7 @@ Object.values ||
+@@ -48130,7 +46717,7 @@ Object.values ||
                                      this.formatDate(
                                          i,
                                          this._daylightSavingAdjust(
@@ -4444,7 +4448,7 @@ index 78a25df..53dee41 100644
                                          ),
                                          this._getFormatConfig(e)
                                      )
-@@ -48154,7 +46745,7 @@ Object.values ||
+@@ -48158,7 +46745,7 @@ Object.values ||
                                      this.formatDate(
                                          s,
                                          this._daylightSavingAdjust(
@@ -4453,7 +4457,7 @@ index 78a25df..53dee41 100644
                                          ),
                                          this._getFormatConfig(e)
                                      )
-@@ -48229,35 +46820,35 @@ Object.values ||
+@@ -48233,35 +46820,35 @@ Object.values ||
                                      new Date(ee, X, e.selectedDay)
                                  )),
                                  (S = ' ui-corner-all'),
@@ -4497,7 +4501,7 @@ index 78a25df..53dee41 100644
                                      "<div class='ui-datepicker-header ui-widget-header ui-helper-clearfix" +
                                      S +
                                      "'>" +
-@@ -48280,7 +46871,7 @@ Object.values ||
+@@ -48284,7 +46871,7 @@ Object.values ||
                                          _
                                      ) +
                                      "</div><table class='ui-datepicker-calendar'><thead><tr>",
@@ -4506,7 +4510,7 @@ index 78a25df..53dee41 100644
                                          u ?
                                              "<th class='ui-datepicker-week-col'>" +
                                              this._get(e, 'weekHeader') +
-@@ -48290,7 +46881,7 @@ Object.values ||
+@@ -48294,7 +46881,7 @@ Object.values ||
                                  w < 7;
                                  w++
                              )
@@ -4515,7 +4519,7 @@ index 78a25df..53dee41 100644
                                      "<th scope='col'" +
                                      ((w + d + 6) % 7 >= 5 ?
                                          " class='ui-datepicker-week-end'"
-@@ -48301,7 +46892,7 @@ Object.values ||
+@@ -48305,7 +46892,7 @@ Object.values ||
                                      p[E] +
                                      '</span></th>';
                              for (
@@ -4524,7 +4528,7 @@ index 78a25df..53dee41 100644
                                      P = this._getDaysInMonth(ee, X),
                                      ee === e.selectedYear &&
                                          X === e.selectedMonth &&
-@@ -48315,58 +46906,58 @@ Object.values ||
+@@ -48319,58 +46906,58 @@ Object.values ||
                                              7) %
                                          7,
                                      I = Math.ceil((M + P) / 7),
@@ -4599,7 +4603,7 @@ index 78a25df..53dee41 100644
                                                      b.getTime() === C.getTime())
                                              ) ?
                                                  ' ' + this._dayOverClass
-@@ -48376,57 +46967,57 @@ Object.values ||
+@@ -48380,57 +46967,57 @@ Object.values ||
                                                  this._unselectableClass +
                                                  ' ui-state-disabled'
                                              :   '') +
@@ -4676,7 +4680,7 @@ index 78a25df..53dee41 100644
                                          '</div>' +
                                          (U[0] > 0 && T === U[1] - 1 ?
                                              "<div class='ui-datepicker-row-break'></div>"
-@@ -55981,17 +54572,17 @@ Object.values ||
+@@ -55985,17 +54572,17 @@ Object.values ||
                          T = x + u,
                          C = o.position(),
                          S = C.top,
@@ -4703,7 +4707,7 @@ index 78a25df..53dee41 100644
                  }
              }
          };
-@@ -58612,123 +57203,126 @@ Object.values ||
+@@ -58616,123 +57203,126 @@ Object.values ||
      (function (e, t) {
          'object' == typeof exports && 'undefined' != typeof module ? t(exports)
          : 'function' == typeof define && define.amd ? define(['exports'], t)
@@ -4901,7 +4905,7 @@ index 78a25df..53dee41 100644
                  : null == e ? e
                  : 'object' == typeof e && 'x' in e && 'y' in e ? new y(e.x, e.y)
                  : new y(e, t, i)
-@@ -58757,10 +57351,10 @@ Object.values ||
+@@ -58761,10 +57351,10 @@ Object.values ||
                  );
              (this.lat = +e), (this.lng = +t), void 0 !== i && (this.alt = +i);
          }
@@ -4914,7 +4918,7 @@ index 78a25df..53dee41 100644
                      3 === e.length ? new S(e[0], e[1], e[2])
                      : 2 === e.length ? new S(e[0], e[1])
                      : null
-@@ -58771,209 +57365,251 @@ Object.values ||
+@@ -58775,209 +57365,251 @@ Object.values ||
                  : new S(e, t, i)
              );
          }
@@ -5312,7 +5316,7 @@ index 78a25df..53dee41 100644
              for (
                  var t = document.documentElement.style, i = 0;
                  i < e.length;
-@@ -58982,55 +57618,54 @@ Object.values ||
+@@ -58986,55 +57618,54 @@ Object.values ||
                  if (e[i] in t) return e[i];
              return !1;
          }
@@ -5401,7 +5405,7 @@ index 78a25df..53dee41 100644
              var t = e.getBoundingClientRect();
              return {
                  x: t.width / e.offsetWidth || 1,
-@@ -59038,132 +57673,125 @@ Object.values ||
+@@ -59042,132 +57673,125 @@ Object.values ||
                  boundingClientRect: t,
              };
          }
@@ -5620,7 +5624,7 @@ index 78a25df..53dee41 100644
                  : e.deltaY && 1 === e.deltaMode ? 20 * -e.deltaY
                  : e.deltaY && 2 === e.deltaMode ? 60 * -e.deltaY
                  : e.deltaX || e.deltaZ ? 0
-@@ -59173,7 +57801,14 @@ Object.values ||
+@@ -59177,7 +57801,14 @@ Object.values ||
                  : 0
              );
          }
@@ -5636,7 +5640,7 @@ index 78a25df..53dee41 100644
              var i = t.relatedTarget;
              if (!i) return !0;
              try {
-@@ -59183,148 +57818,80 @@ Object.values ||
+@@ -59187,148 +57818,80 @@ Object.values ||
              }
              return i !== e;
          }
@@ -5838,7 +5842,7 @@ index 78a25df..53dee41 100644
              var i = 0;
              return (
                  e.x < t.min.x ? (i |= 1) : e.x > t.max.x && (i |= 2),
-@@ -59332,76 +57899,74 @@ Object.values ||
+@@ -59336,76 +57899,74 @@ Object.values ||
                  i
              );
          }
@@ -5969,7 +5973,7 @@ index 78a25df..53dee41 100644
              var i,
                  n,
                  s,
-@@ -59410,30 +57975,30 @@ Object.values ||
+@@ -59414,30 +57975,30 @@ Object.values ||
                  r = o ? o.coordinates : null,
                  l = [],
                  c = t && t.pointToLayer,
@@ -6009,7 +6013,7 @@ index 78a25df..53dee41 100644
                              {
                                  geometry: o.geometries[s],
                                  type: 'Feature',
-@@ -59443,169 +58008,147 @@ Object.values ||
+@@ -59447,169 +58008,147 @@ Object.values ||
                          );
                          u && l.push(u);
                      }
@@ -6275,7 +6279,7 @@ index 78a25df..53dee41 100644
                  var t = Array.prototype.slice.call(arguments, 1),
                      i =
                          'function' == typeof e ? e : (
-@@ -59620,152 +58163,126 @@ Object.values ||
+@@ -59624,152 +58163,126 @@ Object.values ||
                      this
                  );
              });
@@ -6538,7 +6542,7 @@ index 78a25df..53dee41 100644
                  };
          (y.prototype = {
              clone: function () {
-@@ -59835,12 +58352,12 @@ Object.values ||
+@@ -59839,12 +58352,12 @@ Object.values ||
                  return this.clone()._trunc();
              },
              _trunc: function () {
@@ -6555,7 +6559,7 @@ index 78a25df..53dee41 100644
              },
              equals: function (e) {
                  return (e = w(e)).x === this.x && e.y === this.y;
-@@ -59853,42 +58370,34 @@ Object.values ||
+@@ -59857,42 +58370,34 @@ Object.values ||
                  );
              },
              toString: function () {
@@ -6611,7 +6615,7 @@ index 78a25df..53dee41 100644
                  },
                  getTopLeft: function () {
                      return this.min;
-@@ -59903,10 +58412,10 @@ Object.values ||
+@@ -59907,10 +58412,10 @@ Object.values ||
                      var t, i;
                      return (
                          (
@@ -6625,7 +6629,7 @@ index 78a25df..53dee41 100644
                          ) ?
                              ((t = e.min), (i = e.max))
                          :   (t = i = e),
-@@ -59921,37 +58430,24 @@ Object.values ||
+@@ -59925,37 +58430,24 @@ Object.values ||
                      var t = this.min,
                          i = this.max,
                          n = e.min,
@@ -6671,7 +6675,7 @@ index 78a25df..53dee41 100644
              }),
              (T.prototype = {
                  extend: function (e) {
-@@ -59959,10 +58455,10 @@ Object.values ||
+@@ -59963,10 +58455,10 @@ Object.values ||
                          i,
                          n = this._southWest,
                          s = this._northEast;
@@ -6684,7 +6688,7 @@ index 78a25df..53dee41 100644
                          if (((t = e._southWest), (i = e._northEast), !t || !i))
                              return this;
                      }
-@@ -59980,11 +58476,11 @@ Object.values ||
+@@ -59984,11 +58476,11 @@ Object.values ||
                  pad: function (e) {
                      var t = this._southWest,
                          i = this._northEast,
@@ -6700,7 +6704,7 @@ index 78a25df..53dee41 100644
                      );
                  },
                  getCenter: function () {
-@@ -60018,14 +58514,14 @@ Object.values ||
+@@ -60022,14 +58514,14 @@ Object.values ||
                      return this._northEast.lat;
                  },
                  contains: function (e) {
@@ -6720,7 +6724,7 @@ index 78a25df..53dee41 100644
                      var t,
                          i,
                          n = this._southWest,
-@@ -60045,20 +58541,20 @@ Object.values ||
+@@ -60049,20 +58541,20 @@ Object.values ||
                      var t = this._southWest,
                          i = this._northEast,
                          n = e.getSouthWest(),
@@ -6749,7 +6753,7 @@ index 78a25df..53dee41 100644
                  },
                  toBBoxString: function () {
                      return [
-@@ -60079,22 +58575,52 @@ Object.values ||
+@@ -60083,22 +58575,52 @@ Object.values ||
                  isValid: function () {
                      return !(!this._southWest || !this._northEast);
                  },
@@ -6812,7 +6816,7 @@ index 78a25df..53dee41 100644
                  project: function (e) {
                      return this.projection.project(e);
                  },
-@@ -60108,59 +58634,19 @@ Object.values ||
+@@ -60112,59 +58634,19 @@ Object.values ||
                      return Math.log(e / 256) / Math.LN2;
                  },
                  getProjectedBounds: function (e) {
@@ -6882,7 +6886,7 @@ index 78a25df..53dee41 100644
                          t,
                          e.alt
                      );
-@@ -60168,43 +58654,42 @@ Object.values ||
+@@ -60172,43 +58654,42 @@ Object.values ||
                  wrapLatLngBounds: function (e) {
                      var t = e.getCenter(),
                          i = this.wrapLatLng(t),
@@ -6947,7 +6951,7 @@ index 78a25df..53dee41 100644
                      );
                  },
                  unproject: function (e) {
-@@ -60215,332 +58700,293 @@ Object.values ||
+@@ -60219,332 +58700,293 @@ Object.values ||
                          (e.x * t) / this.R
                      );
                  },
@@ -7529,7 +7533,7 @@ index 78a25df..53dee41 100644
                      center: void 0,
                      zoom: void 0,
                      minZoom: void 0,
-@@ -60558,32 +59004,29 @@ Object.values ||
+@@ -60562,32 +59004,29 @@ Object.values ||
                      trackResize: !0,
                  },
                  initialize: function (e, t) {
@@ -7568,7 +7572,7 @@ index 78a25df..53dee41 100644
                                  this._catchTransitionEnd,
                                  this
                              )),
-@@ -60593,7 +59036,7 @@ Object.values ||
+@@ -60597,7 +59036,7 @@ Object.values ||
                      return (
                          (i = void 0 === i ? this._zoom : this._limitZoom(i)),
                          (e = this._limitCenter(
@@ -7577,7 +7581,7 @@ index 78a25df..53dee41 100644
                              i,
                              this.options.maxBounds
                          )),
-@@ -60618,8 +59061,7 @@ Object.values ||
+@@ -60622,8 +59061,7 @@ Object.values ||
                              :   this._tryAnimatedPan(e, n.pan))
                          ) ?
                              (clearTimeout(this._sizeTimer), this)
@@ -7587,7 +7591,7 @@ index 78a25df..53dee41 100644
                      );
                  },
                  setZoom: function (e, t) {
-@@ -60629,56 +59071,52 @@ Object.values ||
+@@ -60633,56 +59071,52 @@ Object.values ||
                  },
                  zoomIn: function (e, t) {
                      return (
@@ -7672,7 +7676,7 @@ index 78a25df..53dee41 100644
                  },
                  fitWorld: function (e) {
                      return this.fitBounds(
-@@ -60693,54 +59131,49 @@ Object.values ||
+@@ -60697,54 +59131,49 @@ Object.values ||
                      return this.setView(e, this._zoom, { pan: t });
                  },
                  panBy: function (e, t) {
@@ -7766,7 +7770,7 @@ index 78a25df..53dee41 100644
                      }
                      function s(e) {
                          return (Math.exp(e) - Math.exp(-e)) / 2;
-@@ -60749,74 +59182,66 @@ Object.values ||
+@@ -60753,74 +59182,66 @@ Object.values ||
                          return (Math.exp(e) + Math.exp(-e)) / 2;
                      }
                      function o(e) {
@@ -7890,7 +7894,7 @@ index 78a25df..53dee41 100644
                  },
                  setMinZoom: function (e) {
                      var t = this.options.minZoom;
-@@ -60848,10 +59273,10 @@ Object.values ||
+@@ -60852,10 +59273,10 @@ Object.values ||
                  },
                  panInsideBounds: function (e, t) {
                      this._enforcingBounds = !0;
@@ -7904,7 +7908,7 @@ index 78a25df..53dee41 100644
                          (this._enforcingBounds = !1),
                          this
                      );
-@@ -60861,24 +59286,28 @@ Object.values ||
+@@ -60865,24 +59286,28 @@ Object.values ||
                              (t = t || {}).paddingTopLeft || t.padding || [0, 0]
                          ),
                          n = w(t.paddingBottomRight || t.padding || [0, 0]),
@@ -7951,7 +7955,7 @@ index 78a25df..53dee41 100644
                  },
                  invalidateSize: function (e) {
                      if (!this._loaded) return this;
-@@ -60886,26 +59315,25 @@ Object.values ||
+@@ -60890,26 +59315,25 @@ Object.values ||
                          { animate: !1, pan: !0 },
                          !0 === e ? { animate: !0 } : e
                      );
@@ -7989,7 +7993,7 @@ index 78a25df..53dee41 100644
                          :   this;
                  },
                  stop: function () {
-@@ -60916,29 +59344,25 @@ Object.values ||
+@@ -60920,29 +59344,25 @@ Object.values ||
                      );
                  },
                  locate: function (e) {
@@ -8034,7 +8038,7 @@ index 78a25df..53dee41 100644
                          this
                      );
                  },
-@@ -60955,61 +59379,45 @@ Object.values ||
+@@ -60959,61 +59379,45 @@ Object.values ||
                      );
                  },
                  _handleGeolocationError: function (e) {
@@ -8118,7 +8122,7 @@ index 78a25df..53dee41 100644
                          this._containerId !== this._container._leaflet_id)
                      )
                          throw new Error(
-@@ -61022,18 +59430,19 @@ Object.values ||
+@@ -61026,18 +59430,19 @@ Object.values ||
                          (this._container._leaflet_id = void 0),
                              (this._containerId = void 0);
                      }
@@ -8142,7 +8146,7 @@ index 78a25df..53dee41 100644
                      return (
                          (this._layers = []),
                          (this._panes = []),
-@@ -61043,26 +59452,21 @@ Object.values ||
+@@ -61047,26 +59452,21 @@ Object.values ||
                      );
                  },
                  createPane: function (e, t) {
@@ -8178,7 +8182,7 @@ index 78a25df..53dee41 100644
                          :   this.layerPointToLatLng(this._getCenterLayerPoint())
                      );
                  },
-@@ -61096,25 +59500,21 @@ Object.values ||
+@@ -61100,25 +59500,21 @@ Object.values ||
                          s = this.getMinZoom(),
                          a = this.getMaxZoom(),
                          o = e.getNorthWest(),
@@ -8216,7 +8220,7 @@ index 78a25df..53dee41 100644
                          Math.max(s, Math.min(a, n))
                      );
                  },
-@@ -61130,10 +59530,8 @@ Object.values ||
+@@ -61134,10 +59530,8 @@ Object.values ||
                      );
                  },
                  getPixelBounds: function (e, t) {
@@ -8229,7 +8233,7 @@ index 78a25df..53dee41 100644
                  },
                  getPixelOrigin: function () {
                      return this._checkIfLoaded(), this._pixelOrigin;
-@@ -61161,14 +59559,14 @@ Object.values ||
+@@ -61165,14 +59559,14 @@ Object.values ||
                  },
                  getScaleZoom: function (e, t) {
                      var i = this.options.crs;
@@ -8248,7 +8252,7 @@ index 78a25df..53dee41 100644
                      );
                  },
                  unproject: function (e, t) {
-@@ -61178,23 +59576,22 @@ Object.values ||
+@@ -61182,23 +59576,22 @@ Object.values ||
                      );
                  },
                  layerPointToLatLng: function (e) {
@@ -8277,7 +8281,7 @@ index 78a25df..53dee41 100644
                  },
                  containerPointToLayerPoint: function (e) {
                      return w(e).subtract(this._getMapPanePos());
-@@ -61203,18 +59600,16 @@ Object.values ||
+@@ -61207,18 +59600,16 @@ Object.values ||
                      return w(e).add(this._getMapPanePos());
                  },
                  containerPointToLatLng: function (e) {
@@ -8300,7 +8304,7 @@ index 78a25df..53dee41 100644
                  },
                  mouseEventToLayerPoint: function (e) {
                      return this.containerPointToLayerPoint(
-@@ -61227,35 +59622,31 @@ Object.values ||
+@@ -61231,35 +59622,31 @@ Object.values ||
                      );
                  },
                  _initContainer: function (e) {
@@ -8353,7 +8357,7 @@ index 78a25df..53dee41 100644
                          (e.style.position = 'relative'),
                          this._initPanes(),
                          this._initControlPos && this._initControlPos();
-@@ -61267,28 +59658,27 @@ Object.values ||
+@@ -61271,28 +59658,27 @@ Object.values ||
                              'mapPane',
                              this._container
                          )),
@@ -8396,7 +8400,7 @@ index 78a25df..53dee41 100644
                  },
                  _moveStart: function (e, t) {
                      return (
-@@ -61297,18 +59687,15 @@ Object.values ||
+@@ -61301,18 +59687,15 @@ Object.values ||
                          this
                      );
                  },
@@ -8419,7 +8423,7 @@ index 78a25df..53dee41 100644
                      );
                  },
                  _moveEnd: function (e) {
-@@ -61316,13 +59703,13 @@ Object.values ||
+@@ -61320,13 +59703,13 @@ Object.values ||
                  },
                  _stop: function () {
                      return (
@@ -8435,7 +8439,7 @@ index 78a25df..53dee41 100644
                  },
                  _getZoomSpan: function () {
                      return this.getMaxZoom() - this.getMinZoom();
-@@ -61336,17 +59723,18 @@ Object.values ||
+@@ -61340,17 +59723,18 @@ Object.values ||
                          throw new Error('Set map center and zoom first.');
                  },
                  _initEvents: function (e) {
@@ -8459,7 +8463,7 @@ index 78a25df..53dee41 100644
                              this.options.transform3DLimit &&
                              (e ? this.off : this.on).call(
                                  this,
-@@ -61355,8 +59743,8 @@ Object.values ||
+@@ -61359,8 +59743,8 @@ Object.values ||
                              );
                  },
                  _onResize: function () {
@@ -8470,7 +8474,7 @@ index 78a25df..53dee41 100644
                              this.invalidateSize({ debounceMoveend: !0 });
                          }, this));
                  },
-@@ -61373,7 +59761,7 @@ Object.values ||
+@@ -61377,7 +59761,7 @@ Object.values ||
                  _findEventTargets: function (e, t) {
                      for (
                          var i,
@@ -8479,7 +8483,7 @@ index 78a25df..53dee41 100644
                              a = 'mouseout' === t || 'mouseover' === t,
                              o = e.target || e.srcElement,
                              r = !1;
-@@ -61381,38 +59769,30 @@ Object.values ||
+@@ -61385,38 +59769,30 @@ Object.values ||
  
                      ) {
                          if (
@@ -8529,7 +8533,7 @@ index 78a25df..53dee41 100644
                  },
                  _mouseEvents: [
                      'click',
-@@ -61422,49 +59802,39 @@ Object.values ||
+@@ -61426,49 +59802,39 @@ Object.values ||
                      'contextmenu',
                  ],
                  _fireDOMEvent: function (e, i, n) {
@@ -8608,7 +8612,7 @@ index 78a25df..53dee41 100644
                              )
                                  return;
                      }
-@@ -61490,7 +59860,7 @@ Object.values ||
+@@ -61494,7 +59860,7 @@ Object.values ||
                      );
                  },
                  _getMapPanePos: function () {
@@ -8617,7 +8621,7 @@ index 78a25df..53dee41 100644
                  },
                  _moved: function () {
                      var e = this._getMapPanePos();
-@@ -61512,21 +59882,17 @@ Object.values ||
+@@ -61516,21 +59882,17 @@ Object.values ||
                          ._round();
                  },
                  _latLngToNewLayerPoint: function (e, t, i) {
@@ -8648,7 +8652,7 @@ index 78a25df..53dee41 100644
                  },
                  _getCenterLayerPoint: function () {
                      return this.containerPointToLayerPoint(
-@@ -61539,43 +59905,35 @@ Object.values ||
+@@ -61543,43 +59905,35 @@ Object.values ||
                      );
                  },
                  _limitCenter: function (e, t, i) {
@@ -8711,7 +8715,7 @@ index 78a25df..53dee41 100644
                              Math.round(e - t) / 2
                          :   Math.max(0, Math.ceil(e)) -
                                  Math.max(0, Math.floor(t));
-@@ -61583,7 +59941,7 @@ Object.values ||
+@@ -61587,7 +59941,7 @@ Object.values ||
                  _limitZoom: function (e) {
                      var t = this.getMinZoom(),
                          i = this.getMaxZoom(),
@@ -8720,7 +8724,7 @@ index 78a25df..53dee41 100644
                      return (
                          n && (e = Math.round(e / n) * n),
                          Math.max(t, Math.min(i, e))
-@@ -61593,20 +59951,18 @@ Object.values ||
+@@ -61597,20 +59951,18 @@ Object.values ||
                      this.fire('move');
                  },
                  _onPanTransitionEnd: function () {
@@ -8748,7 +8752,7 @@ index 78a25df..53dee41 100644
                          'div',
                          'leaflet-proxy leaflet-zoom-animated'
                      ));
-@@ -61614,9 +59970,9 @@ Object.values ||
+@@ -61618,9 +59970,9 @@ Object.values ||
                          this.on(
                              'zoomanim',
                              function (e) {
@@ -8760,7 +8764,7 @@ index 78a25df..53dee41 100644
                                      this._proxy,
                                      this.project(e.center, e.zoom),
                                      this.getZoomScale(e.zoom, 1)
-@@ -61627,26 +59983,27 @@ Object.values ||
+@@ -61631,26 +59983,27 @@ Object.values ||
                              },
                              this
                          ),
@@ -8802,7 +8806,7 @@ index 78a25df..53dee41 100644
                          this._onZoomTransitionEnd();
                  },
                  _nothingToAnimate: function () {
-@@ -61655,72 +60012,55 @@ Object.values ||
+@@ -61659,72 +60012,55 @@ Object.values ||
                      ).length;
                  },
                  _tryAnimatedZoom: function (e, t, i) {
@@ -8906,7 +8910,7 @@ index 78a25df..53dee41 100644
                  },
                  getPosition: function () {
                      return this.options.position;
-@@ -61740,408 +60080,356 @@ Object.values ||
+@@ -61744,408 +60080,356 @@ Object.values ||
                  addTo: function (e) {
                      this.remove(), (this._map = e);
                      var t = (this._container = this.onAdd(e)),
@@ -9627,7 +9631,7 @@ index 78a25df..53dee41 100644
                          n = this.options;
                      return (
                          (this._zoomInButton = this._createButton(
-@@ -62195,727 +60483,674 @@ Object.values ||
+@@ -62199,727 +60483,674 @@ Object.values ||
                          );
                  },
                  _createButton: function (e, t, i, n, s) {
@@ -10935,7 +10939,7 @@ index 78a25df..53dee41 100644
                              this.fire('layerremove', { layer: e }))
                          :   this;
                  },
-@@ -62929,23 +61164,18 @@ Object.values ||
+@@ -62933,23 +61164,18 @@ Object.values ||
                      return this.invoke('bringToBack');
                  },
                  getBounds: function () {
@@ -10967,7 +10971,7 @@ index 78a25df..53dee41 100644
                  },
                  createIcon: function (e) {
                      return this._createIcon('icon', e);
-@@ -62955,48 +61185,37 @@ Object.values ||
+@@ -62959,48 +61185,37 @@ Object.values ||
                  },
                  _createIcon: function (e, t) {
                      var i = this._getIconUrl(e);
@@ -11038,7 +11042,7 @@ index 78a25df..53dee41 100644
                  },
                  _createImg: function (e, t) {
                      return (
-@@ -63005,12 +61224,12 @@ Object.values ||
+@@ -63009,12 +61224,12 @@ Object.values ||
                  },
                  _getIconUrl: function (e) {
                      return (
@@ -11053,7 +11057,7 @@ index 78a25df..53dee41 100644
                  options: {
                      iconUrl: 'marker-icon.png',
                      iconRetinaUrl: 'marker-icon-2x.png',
-@@ -63023,48 +61242,35 @@ Object.values ||
+@@ -63027,48 +61242,35 @@ Object.values ||
                  },
                  _getIconUrl: function (e) {
                      return (
@@ -11114,7 +11118,7 @@ index 78a25df..53dee41 100644
                          this._draggable
                              .on(
                                  {
-@@ -63076,7 +61282,7 @@ Object.values ||
+@@ -63080,7 +61282,7 @@ Object.values ||
                                  this
                              )
                              .enable(),
@@ -11123,7 +11127,7 @@ index 78a25df..53dee41 100644
                  },
                  removeHooks: function () {
                      this._draggable
-@@ -63091,7 +61297,7 @@ Object.values ||
+@@ -63095,7 +61297,7 @@ Object.values ||
                          )
                          .disable(),
                          this._marker._icon &&
@@ -11132,7 +11136,7 @@ index 78a25df..53dee41 100644
                  },
                  moved: function () {
                      return this._draggable && this._draggable._moved;
-@@ -63101,79 +61307,83 @@ Object.values ||
+@@ -63105,79 +61307,83 @@ Object.values ||
                          i = t._map,
                          n = this._marker.options.autoPanSpeed,
                          s = this._marker.options.autoPanPadding,
@@ -11251,7 +11255,7 @@ index 78a25df..53dee41 100644
                  },
                  onAdd: function (e) {
                      (this._zoomAnimated =
-@@ -63203,7 +61413,7 @@ Object.values ||
+@@ -63207,7 +61413,7 @@ Object.values ||
                  setLatLng: function (e) {
                      var t = this._latlng;
                      return (
@@ -11260,7 +11264,7 @@ index 78a25df..53dee41 100644
                          this.update(),
                          this.fire('move', {
                              oldLatLng: t,
-@@ -63214,9 +61424,6 @@ Object.values ||
+@@ -63218,9 +61424,6 @@ Object.values ||
                  setZIndexOffset: function (e) {
                      return (this.options.zIndexOffset = e), this.update();
                  },
@@ -11270,7 +11274,7 @@ index 78a25df..53dee41 100644
                  setIcon: function (e) {
                      return (
                          (this.options.icon = e),
-@@ -63230,53 +61437,45 @@ Object.values ||
+@@ -63234,53 +61437,45 @@ Object.values ||
                      return this._icon;
                  },
                  update: function () {
@@ -11354,7 +11358,7 @@ index 78a25df..53dee41 100644
                                  this._shadow
                              );
                  },
-@@ -63286,42 +61485,42 @@ Object.values ||
+@@ -63290,42 +61485,42 @@ Object.values ||
                              mouseover: this._bringToFront,
                              mouseout: this._resetZIndex,
                          }),
@@ -11417,7 +11421,7 @@ index 78a25df..53dee41 100644
                  },
                  setOpacity: function (e) {
                      return (
-@@ -63332,8 +61531,7 @@ Object.values ||
+@@ -63336,8 +61531,7 @@ Object.values ||
                  },
                  _updateOpacity: function () {
                      var e = this.options.opacity;
@@ -11427,7 +11431,7 @@ index 78a25df..53dee41 100644
                  },
                  _bringToFront: function () {
                      this._updateZIndex(this.options.riseOffset);
-@@ -63341,21 +61539,6 @@ Object.values ||
+@@ -63345,21 +61539,6 @@ Object.values ||
                  _resetZIndex: function () {
                      this._updateZIndex(0);
                  },
@@ -11449,7 +11453,7 @@ index 78a25df..53dee41 100644
                  _getPopupAnchor: function () {
                      return this.options.icon.options.popupAnchor;
                  },
-@@ -63363,7 +61546,7 @@ Object.values ||
+@@ -63367,7 +61546,7 @@ Object.values ||
                      return this.options.icon.options.tooltipAnchor;
                  },
              }),
@@ -11458,7 +11462,7 @@ index 78a25df..53dee41 100644
                  options: {
                      stroke: !0,
                      color: '#3388ff',
-@@ -63396,16 +61579,8 @@ Object.values ||
+@@ -63400,16 +61579,8 @@ Object.values ||
                  },
                  setStyle: function (e) {
                      return (
@@ -11477,7 +11481,7 @@ index 78a25df..53dee41 100644
                          this
                      );
                  },
-@@ -63430,26 +61605,22 @@ Object.values ||
+@@ -63434,26 +61605,22 @@ Object.values ||
                  _clickTolerance: function () {
                      return (
                          (this.options.stroke ? this.options.weight / 2 : 0) +
@@ -11510,7 +11514,7 @@ index 78a25df..53dee41 100644
                      );
                  },
                  getLatLng: function () {
-@@ -63466,7 +61637,7 @@ Object.values ||
+@@ -63470,7 +61637,7 @@ Object.values ||
                  setStyle: function (e) {
                      var t = (e && e.radius) || this._radius;
                      return (
@@ -11519,7 +11523,7 @@ index 78a25df..53dee41 100644
                          this.setRadius(t),
                          this
                      );
-@@ -63478,11 +61649,11 @@ Object.values ||
+@@ -63482,11 +61649,11 @@ Object.values ||
                  _updateBounds: function () {
                      var e = this._radius,
                          t = this._radiusY || e,
@@ -11535,7 +11539,7 @@ index 78a25df..53dee41 100644
                      );
                  },
                  _update: function () {
-@@ -63504,17 +61675,12 @@ Object.values ||
+@@ -63508,17 +61675,12 @@ Object.values ||
                      );
                  },
              }),
@@ -11557,7 +11561,7 @@ index 78a25df..53dee41 100644
                          isNaN(this.options.radius))
                      )
                          throw new Error('Circle radius cannot be NaN');
-@@ -63533,49 +61699,46 @@ Object.values ||
+@@ -63537,49 +61699,46 @@ Object.values ||
                          this._map.layerPointToLatLng(this._point.add(e))
                      );
                  },
@@ -11642,7 +11646,7 @@ index 78a25df..53dee41 100644
                  },
                  getLatLngs: function () {
                      return this._latlngs;
-@@ -63588,32 +61751,57 @@ Object.values ||
+@@ -63592,32 +61751,57 @@ Object.values ||
                  },
                  closestLayerPoint: function (e) {
                      for (
@@ -11720,7 +11724,7 @@ index 78a25df..53dee41 100644
                  },
                  getBounds: function () {
                      return this._bounds;
-@@ -63621,7 +61809,7 @@ Object.values ||
+@@ -63625,7 +61809,7 @@ Object.values ||
                  addLatLng: function (e, t) {
                      return (
                          (t = t || this._defaultShape()),
@@ -11729,7 +11733,7 @@ index 78a25df..53dee41 100644
                          t.push(e),
                          this._bounds.extend(e),
                          this.redraw()
-@@ -63632,30 +61820,26 @@ Object.values ||
+@@ -63636,30 +61820,26 @@ Object.values ||
                          (this._latlngs = this._convertLatLngs(e));
                  },
                  _defaultShape: function () {
@@ -11771,7 +11775,7 @@ index 78a25df..53dee41 100644
                  },
                  _projectLatlngs: function (e, t, i) {
                      var n,
-@@ -63678,29 +61862,31 @@ Object.values ||
+@@ -63682,29 +61862,31 @@ Object.values ||
                          this._pxBounds && this._pxBounds.intersects(e))
                      )
                          if (this.options.noClip) this._parts = this._rings;
@@ -11822,7 +11826,7 @@ index 78a25df..53dee41 100644
                  },
                  _simplifyPoints: function () {
                      for (
-@@ -63711,7 +61897,7 @@ Object.values ||
+@@ -63715,7 +61897,7 @@ Object.values ||
                          i < n;
                          i++
                      )
@@ -11831,7 +11835,7 @@ index 78a25df..53dee41 100644
                  },
                  _update: function () {
                      this._map &&
-@@ -63730,70 +61916,92 @@ Object.values ||
+@@ -63734,70 +61916,92 @@ Object.values ||
                          o,
                          r,
                          l = this._clickTolerance();
@@ -11961,7 +11965,7 @@ index 78a25df..53dee41 100644
                  },
                  _updatePath: function () {
                      this._renderer._updatePoly(this, !0);
-@@ -63824,18 +62032,18 @@ Object.values ||
+@@ -63828,18 +62032,18 @@ Object.values ||
                                              (n.y - i.y) +
                                              i.x &&
                                      (c = !c);
@@ -11984,7 +11988,7 @@ index 78a25df..53dee41 100644
                      if (s) {
                          for (t = 0, i = s.length; t < i; t++)
                              ((n = s[t]).geometries ||
-@@ -63845,22 +62053,23 @@ Object.values ||
+@@ -63849,22 +62053,23 @@ Object.values ||
                                  this.addData(n);
                          return this;
                      }
@@ -12022,7 +12026,7 @@ index 78a25df..53dee41 100644
                  },
                  setStyle: function (e) {
                      return this.eachLayer(function (t) {
-@@ -63868,88 +62077,93 @@ Object.values ||
+@@ -63872,88 +62077,93 @@ Object.values ||
                      }, this);
                  },
                  _setLayerStyle: function (e, t) {
@@ -12177,7 +12181,7 @@ index 78a25df..53dee41 100644
                  options: {
                      opacity: 1,
                      alt: '',
-@@ -63960,20 +62174,20 @@ Object.values ||
+@@ -63964,20 +62174,20 @@ Object.values ||
                      className: '',
                  },
                  initialize: function (e, t, i) {
@@ -12201,7 +12205,7 @@ index 78a25df..53dee41 100644
                          this.options.interactive &&
                              this.removeInteractiveTarget(this._image);
                  },
-@@ -63988,10 +62202,10 @@ Object.values ||
+@@ -63992,10 +62202,10 @@ Object.values ||
                      return e.opacity && this.setOpacity(e.opacity), this;
                  },
                  bringToFront: function () {
@@ -12214,7 +12218,7 @@ index 78a25df..53dee41 100644
                  },
                  setUrl: function (e) {
                      return (
-@@ -64025,16 +62239,16 @@ Object.values ||
+@@ -64029,16 +62239,16 @@ Object.values ||
                  },
                  _initImage: function () {
                      var e = 'IMG' === this._url.tagName,
@@ -12241,7 +12245,7 @@ index 78a25df..53dee41 100644
                              (t.crossOrigin =
                                  !0 === this.options.crossOrigin ?
                                      ''
-@@ -64045,13 +62259,13 @@ Object.values ||
+@@ -64049,13 +62259,13 @@ Object.values ||
                          :   ((t.src = this._url), (t.alt = this.options.alt));
                  },
                  _animateZoom: function (e) {
@@ -12262,7 +12266,7 @@ index 78a25df..53dee41 100644
                  },
                  _reset: function () {
                      var e = this._image,
-@@ -64064,12 +62278,12 @@ Object.values ||
+@@ -64068,12 +62278,12 @@ Object.values ||
                              )
                          ),
                          i = t.getSize();
@@ -12277,7 +12281,7 @@ index 78a25df..53dee41 100644
                  },
                  _updateZIndex: function () {
                      this._image &&
-@@ -64084,137 +62298,70 @@ Object.values ||
+@@ -64088,137 +62298,70 @@ Object.values ||
                          this._url !== e &&
                          ((this._url = e), (this._image.src = e));
                  },
@@ -12442,7 +12446,7 @@ index 78a25df..53dee41 100644
                          this._map &&
                              (this._updatePosition(), this._adjustPan()),
                          this
-@@ -64252,36 +62399,10 @@ Object.values ||
+@@ -64256,36 +62399,10 @@ Object.values ||
                      return !!this._map && this._map.hasLayer(this);
                  },
                  bringToFront: function () {
@@ -12481,7 +12485,7 @@ index 78a25df..53dee41 100644
                  },
                  _updateContent: function () {
                      if (this._content) {
-@@ -64300,646 +62421,573 @@ Object.values ||
+@@ -64304,646 +62421,573 @@ Object.values ||
                      }
                  },
                  _updatePosition: function () {
@@ -13671,7 +13675,7 @@ index 78a25df..53dee41 100644
                      updateWhenZooming: !0,
                      updateInterval: 200,
                      zIndex: 1,
-@@ -64954,20 +63002,21 @@ Object.values ||
+@@ -64958,20 +63002,21 @@ Object.values ||
                      keepBuffer: 2,
                  },
                  initialize: function (e) {
@@ -13696,7 +13700,7 @@ index 78a25df..53dee41 100644
                          e._removeZoomLimit(this),
                          (this._container = null),
                          (this._tileZoom = void 0);
-@@ -64975,14 +63024,14 @@ Object.values ||
+@@ -64979,14 +63024,14 @@ Object.values ||
                  bringToFront: function () {
                      return (
                          this._map &&
@@ -13713,7 +13717,7 @@ index 78a25df..53dee41 100644
                          this
                      );
                  },
-@@ -65003,14 +63052,8 @@ Object.values ||
+@@ -65007,14 +63052,8 @@ Object.values ||
                      return this._loading;
                  },
                  redraw: function () {
@@ -13729,7 +13733,7 @@ index 78a25df..53dee41 100644
                          this
                      );
                  },
-@@ -65024,7 +63067,7 @@ Object.values ||
+@@ -65028,7 +63067,7 @@ Object.values ||
                      return (
                          this.options.updateWhenIdle ||
                              (this._onMove ||
@@ -13738,7 +13742,7 @@ index 78a25df..53dee41 100644
                                      this._onMoveEnd,
                                      this.options.updateInterval,
                                      this
-@@ -65064,39 +63107,37 @@ Object.values ||
+@@ -65068,39 +63107,37 @@ Object.values ||
                          this._updateZIndex());
                  },
                  _updateOpacity: function () {
@@ -13801,7 +13805,7 @@ index 78a25df..53dee41 100644
                              'div',
                              'leaflet-layer ' + (this.options.className || '')
                          )),
-@@ -65109,20 +63150,19 @@ Object.values ||
+@@ -65113,20 +63150,19 @@ Object.values ||
                          t = this.options.maxZoom;
                      if (void 0 !== e) {
                          for (var i in this._levels)
@@ -13831,7 +13835,7 @@ index 78a25df..53dee41 100644
                                      'div',
                                      'leaflet-tile-container leaflet-zoom-animated',
                                      this._container
-@@ -65137,45 +63177,45 @@ Object.values ||
+@@ -65141,45 +63177,45 @@ Object.values ||
                                      s.getCenter(),
                                      s.getZoom()
                                  ),
@@ -13899,7 +13903,7 @@ index 78a25df..53dee41 100644
                              for (e in this._tiles)
                                  this._tiles[e].retain || this._removeTile(e);
                          }
-@@ -65190,45 +63230,46 @@ Object.values ||
+@@ -65194,45 +63230,46 @@ Object.values ||
                  },
                  _invalidateAll: function () {
                      for (var e in this._levels)
@@ -13972,7 +13976,7 @@ index 78a25df..53dee41 100644
                  },
                  _animateZoom: function (e) {
                      this._setView(e.center, e.zoom, !0, e.noUpdate);
-@@ -65244,19 +63285,14 @@ Object.values ||
+@@ -65248,19 +63285,14 @@ Object.values ||
                      );
                  },
                  _setView: function (e, t, i, n) {
@@ -14000,7 +14004,7 @@ index 78a25df..53dee41 100644
                      (n && !a) ||
                          ((this._tileZoom = s),
                          this._abortLoading && this._abortLoading(),
-@@ -65272,12 +63308,12 @@ Object.values ||
+@@ -65276,12 +63308,12 @@ Object.values ||
                          this._setZoomTransform(this._levels[i], e, t);
                  },
                  _setZoomTransform: function (e, t, i) {
@@ -14019,7 +14023,7 @@ index 78a25df..53dee41 100644
                  },
                  _resetGrid: function () {
                      var e = this._map,
-@@ -65309,34 +63345,33 @@ Object.values ||
+@@ -65313,34 +63345,33 @@ Object.values ||
                      this._map && !this._map._animatingZoom && this._update();
                  },
                  _getTiledPixelBounds: function (e) {
@@ -14072,7 +14076,7 @@ index 78a25df..53dee41 100644
                              if (
                                  !(
                                      isFinite(s.min.x) &&
-@@ -65348,31 +63383,28 @@ Object.values ||
+@@ -65352,31 +63383,28 @@ Object.values ||
                                  throw new Error(
                                      'Attempted to load an infinite number of tiles'
                                  );
@@ -14124,7 +14128,7 @@ index 78a25df..53dee41 100644
                                      }
                                  if (
                                      (o.sort(function (e, t) {
-@@ -65385,10 +63417,10 @@ Object.values ||
+@@ -65389,10 +63417,10 @@ Object.values ||
                                      this._loading ||
                                          ((this._loading = !0),
                                          this.fire('loading'));
@@ -14139,7 +14143,7 @@ index 78a25df..53dee41 100644
                                  }
                              }
                          }
-@@ -65404,11 +63436,9 @@ Object.values ||
+@@ -65408,11 +63436,9 @@ Object.values ||
                          )
                              return !1;
                      }
@@ -14154,7 +14158,7 @@ index 78a25df..53dee41 100644
                  },
                  _keyToBounds: function (e) {
                      return this._tileCoordsToBounds(this._keyToTileCoords(e));
-@@ -65416,27 +63446,31 @@ Object.values ||
+@@ -65420,27 +63446,31 @@ Object.values ||
                  _tileCoordsToNwSe: function (e) {
                      var t = this._map,
                          i = this.getTileSize(),
@@ -14194,7 +14198,7 @@ index 78a25df..53dee41 100644
                          delete this._tiles[e],
                          this.fire('tileunload', {
                              tile: t.el,
-@@ -65444,55 +63478,58 @@ Object.values ||
+@@ -65448,55 +63478,58 @@ Object.values ||
                          }));
                  },
                  _initTile: function (e) {
@@ -14275,7 +14279,7 @@ index 78a25df..53dee41 100644
                  },
                  _getTilePos: function (e) {
                      return e
-@@ -65501,8 +63538,8 @@ Object.values ||
+@@ -65505,8 +63538,8 @@ Object.values ||
                  },
                  _wrapCoords: function (e) {
                      var t = new y(
@@ -14286,7 +14290,7 @@ index 78a25df..53dee41 100644
                      );
                      return (t.z = e.z), t;
                  },
-@@ -65519,7 +63556,7 @@ Object.values ||
+@@ -65523,7 +63556,7 @@ Object.values ||
                      return !0;
                  },
              }),
@@ -14295,7 +14299,7 @@ index 78a25df..53dee41 100644
                  options: {
                      minZoom: 0,
                      maxZoom: 18,
-@@ -65530,34 +63567,20 @@ Object.values ||
+@@ -65534,34 +63567,20 @@ Object.values ||
                      zoomReverse: !1,
                      detectRetina: !1,
                      crossOrigin: !1,
@@ -14337,7 +14341,7 @@ index 78a25df..53dee41 100644
                  },
                  setUrl: function (e, t) {
                      return (
-@@ -65568,42 +63591,38 @@ Object.values ||
+@@ -65572,42 +63591,38 @@ Object.values ||
                      );
                  },
                  createTile: function (e, t) {
@@ -14397,7 +14401,7 @@ index 78a25df..53dee41 100644
                  },
                  _tileOnError: function (e, t, i) {
                      var n = this.options.errorTileUrl;
-@@ -65616,48 +63635,38 @@ Object.values ||
+@@ -65620,48 +63635,38 @@ Object.values ||
                      var e = this._tileZoom,
                          t = this.options.maxZoom;
                      return (
@@ -14461,7 +14465,7 @@ index 78a25df..53dee41 100644
                  defaultWmsParams: {
                      service: 'WMS',
                      request: 'GetMap',
-@@ -65670,58 +63679,57 @@ Object.values ||
+@@ -65674,58 +63679,57 @@ Object.values ||
                  options: { crs: null, uppercase: !1 },
                  initialize: function (e, i) {
                      this._url = e;
@@ -14549,7 +14553,7 @@ index 78a25df..53dee41 100644
                          this.getPane().appendChild(this._container),
                          this._update(),
                          this.on('update', this._updatePaths, this);
-@@ -65752,17 +63760,14 @@ Object.values ||
+@@ -65756,17 +63760,14 @@ Object.values ||
                  },
                  _updateTransform: function (e, t) {
                      var i = this._map.getZoomScale(t, this._zoom),
@@ -14573,7 +14577,7 @@ index 78a25df..53dee41 100644
                  },
                  _reset: function () {
                      for (var e in (this._update(),
-@@ -65790,37 +63795,35 @@ Object.values ||
+@@ -65794,37 +63795,35 @@ Object.values ||
                          (this._zoom = this._map.getZoom());
                  },
              }),
@@ -14620,7 +14624,7 @@ index 78a25df..53dee41 100644
                          delete this._container;
                  },
                  _updatePaths: function () {
-@@ -65832,46 +63835,50 @@ Object.values ||
+@@ -65836,46 +63835,50 @@ Object.values ||
                      }
                  },
                  _update: function () {
@@ -14697,7 +14701,7 @@ index 78a25df..53dee41 100644
                          this._requestRedraw(e);
                  },
                  _updatePath: function (e) {
-@@ -65885,35 +63892,34 @@ Object.values ||
+@@ -65889,35 +63892,34 @@ Object.values ||
                  },
                  _updateDashArray: function (e) {
                      if ('string' == typeof e.options.dashArray) {
@@ -14751,7 +14755,7 @@ index 78a25df..53dee41 100644
                  },
                  _redraw: function () {
                      (this._redrawRequest = null),
-@@ -65925,36 +63931,32 @@ Object.values ||
+@@ -65929,36 +63931,32 @@ Object.values ||
                          (this._redrawBounds = null);
                  },
                  _clear: function () {
@@ -14804,7 +14808,7 @@ index 78a25df..53dee41 100644
                                  e._updatePath();
                      (this._drawing = !1), this._ctx.restore();
                  },
-@@ -65979,20 +63981,17 @@ Object.values ||
+@@ -65983,20 +63981,17 @@ Object.values ||
                      }
                  },
                  _updateCircle: function (e) {
@@ -14836,7 +14840,7 @@ index 78a25df..53dee41 100644
                  },
                  _fillStroke: function (e, t) {
                      var i = t.options;
-@@ -66024,89 +64023,76 @@ Object.values ||
+@@ -66028,89 +64023,76 @@ Object.values ||
                      )
                          (t = s.layer).options.interactive &&
                              t._containsPoint(n) &&
@@ -14978,7 +14982,7 @@ index 78a25df..53dee41 100644
                  try {
                      return (
                          document.namespaces.add(
-@@ -66119,148 +64105,148 @@ Object.values ||
+@@ -66123,148 +64105,148 @@ Object.values ||
                              );
                          }
                      );
@@ -15251,7 +15255,7 @@ index 78a25df..53dee41 100644
                  },
                  _addPath: function (e) {
                      this._rootGroup || this._initContainer(),
-@@ -66268,39 +64254,39 @@ Object.values ||
+@@ -66272,39 +64254,39 @@ Object.values ||
                          e.addInteractiveTarget(e._path);
                  },
                  _removePath: function (e) {
@@ -15309,7 +15313,7 @@ index 78a25df..53dee41 100644
                              ))
                          :   t.setAttribute('fill', 'none'));
                  },
-@@ -66315,65 +64301,63 @@ Object.values ||
+@@ -66319,65 +64301,63 @@ Object.values ||
                              i +
                              ',' +
                              (Math.max(Math.round(e._radiusY), 1) || i) +
@@ -15409,7 +15413,7 @@ index 78a25df..53dee41 100644
              },
              setBounds: function (e) {
                  return this.setLatLngs(this._boundsToLatLngs(e));
-@@ -66387,17 +64371,17 @@ Object.values ||
+@@ -66391,17 +64371,17 @@ Object.values ||
                  ];
              },
          });
@@ -15438,7 +15442,7 @@ index 78a25df..53dee41 100644
              initialize: function (e) {
                  (this._map = e),
                      (this._container = e._container),
-@@ -66406,16 +64390,16 @@ Object.values ||
+@@ -66410,16 +64390,16 @@ Object.values ||
                      e.on('unload', this._destroy, this);
              },
              addHooks: function () {
@@ -15458,7 +15462,7 @@ index 78a25df..53dee41 100644
              },
              _resetState: function () {
                  (this._resetStateTimeout = 0), (this._moved = !1);
-@@ -66429,14 +64413,14 @@ Object.values ||
+@@ -66433,14 +64413,14 @@ Object.values ||
                  if (!e.shiftKey || (1 !== e.which && 1 !== e.button)) return !1;
                  this._clearDeferredResetState(),
                      this._resetState(),
@@ -15477,7 +15481,7 @@ index 78a25df..53dee41 100644
                              mousemove: this._onMouseMove,
                              mouseup: this._onMouseUp,
                              keydown: this._onKeyDown,
-@@ -66447,24 +64431,25 @@ Object.values ||
+@@ -66451,24 +64431,25 @@ Object.values ||
              _onMouseMove: function (e) {
                  this._moved ||
                      ((this._moved = !0),
@@ -15514,7 +15518,7 @@ index 78a25df..53dee41 100644
                              mousemove: this._onMouseMove,
                              mouseup: this._onMouseUp,
                              keydown: this._onKeyDown,
-@@ -66473,864 +64458,712 @@ Object.values ||
+@@ -66477,864 +64458,712 @@ Object.values ||
                      );
              },
              _onMouseUp: function (e) {
@@ -17074,7 +17078,7 @@ index 78a25df..53dee41 100644
          }),
              (window.L = e);
      }),
-@@ -68045,1088 +65878,18 @@ Object.values ||
+@@ -68049,1088 +65878,18 @@ Object.values ||
              })
          : 'object' == typeof module && module.exports ? (module.exports = b)
          : (e.md5 = b);
@@ -18165,7 +18169,7 @@ index 78a25df..53dee41 100644
      building_draw_timeOut,
      building_timers = Array(),
      building_marker_image = '/images/building_fire.png',
-@@ -69201,6 +65964,7 @@ var currentUserId = -1,
+@@ -69205,6 +65964,7 @@ var currentUserId = -1,
      alliance_chat_ban_countdown_timer,
      mission_overview_timer,
      mission_overview_last_count,
@@ -18173,7 +18177,7 @@ index 78a25df..53dee41 100644
      buildingVehicleGraphicCachePerId = new Map(),
      TIME_MODIFIER_SONDERRECHTE = 0.8,
      TIME_MODIFIER_NORMAL = 1.1,
-@@ -69212,8 +65976,7 @@ var currentUserId = -1,
+@@ -69216,8 +65976,7 @@ var currentUserId = -1,
      i18nPrefix = null,
      shouldReloadAfterIFrameClose = !1,
      isIframe = window.self !== window.top,
@@ -18183,7 +18187,7 @@ index 78a25df..53dee41 100644
      filtersData = {},
      missionListSorters = [],
      criticalTransportMissionsPresent = !1,
-@@ -69279,13 +66042,7 @@ var pauseTick = !1,
+@@ -69283,13 +66042,7 @@ var pauseTick = !1,
          window.oCancelRequestAnimationFrame ||
          window.oCancelAnimationFrame ||
          window.msCancelRequestAnimationFrame ||
@@ -18198,7 +18202,7 @@ index 78a25df..53dee41 100644
  $(function () {
      function onCoinsTop() {
          return !mobile_bridge_use || (mobileBridgeAdd('coins_window', {}), !1);
-@@ -69938,10 +66695,10 @@ $(function () {
+@@ -69942,10 +66695,10 @@ $(function () {
                      .removeClass('bigMapMenuButtonBlack');
          }),
          $('.aao').click(function () {
@@ -18211,7 +18215,7 @@ index 78a25df..53dee41 100644
          }),
          $('.btn_alliance_radio').click(function () {
              alliance_ignore_fms_set(!alliance_ignore_fms, !0);
-@@ -73342,12 +70099,12 @@ if (
+@@ -73346,12 +70099,12 @@ if (
                                              void 0 !==
                                                  (d = a.data('prevHiddenIndex'))
                                          ) {
@@ -18228,7 +18232,7 @@ index 78a25df..53dee41 100644
                                                  (S = !0);
                                          }
                                          S &&
-@@ -73851,10 +70608,10 @@ if (
+@@ -73855,10 +70608,10 @@ if (
                                          .last()
                                          .parent()
                                          .index(),
@@ -18241,7 +18245,7 @@ index 78a25df..53dee41 100644
                                      c.options.container ?
                                          (d.data('height') ||
                                              d.data('height', d.height()),
-@@ -74876,7 +71633,7 @@ if (
+@@ -74880,7 +71633,7 @@ if (
              y(e, 'display', '');
          }
          function b(e) {
@@ -18250,7 +18254,7 @@ index 78a25df..53dee41 100644
          }
          function y(e, t, i) {
              if (arguments.length < 3) {
-@@ -74937,10 +71694,10 @@ if (
+@@ -74941,10 +71694,10 @@ if (
          function S(e) {
              return e.className.trim().split(/\s+/);
          }
@@ -18263,7 +18267,7 @@ index 78a25df..53dee41 100644
              var i = S(e);
              i.indexOf(t) < 0 && i.push(t), (e.className = i.join(' '));
          }
-@@ -74949,7 +71706,7 @@ if (
+@@ -74953,7 +71706,7 @@ if (
              s(i, t), (e.className = i.join(' '));
          }
          function P(e, t, i) {
@@ -18272,7 +18276,7 @@ index 78a25df..53dee41 100644
          }
          function M(e, t) {
              if (pe(t)) {
-@@ -74969,7 +71726,7 @@ if (
+@@ -74973,7 +71726,7 @@ if (
              }
              y(e, 'height', t);
          }
@@ -18281,7 +18285,7 @@ index 78a25df..53dee41 100644
              var n;
              me(window.CustomEvent) ?
                  (n = new CustomEvent(t, {
-@@ -74986,7 +71743,7 @@ if (
+@@ -74990,7 +71743,7 @@ if (
                  ),
                  e.dispatchEvent(n);
          }
@@ -18290,7 +18294,7 @@ index 78a25df..53dee41 100644
              return !!e.getClientRects().length;
          }
          function R(e) {
-@@ -75006,10 +71763,10 @@ if (
+@@ -75010,10 +71763,10 @@ if (
                  e = a;
              }
          }
@@ -18303,7 +18307,7 @@ index 78a25df..53dee41 100644
              var i = (t = t || document).createDocumentFragment(),
                  n = r('div', {}, t);
              for (n.innerHTML = e; n.firstChild; ) u(i, n.firstChild);
-@@ -75065,7 +71822,7 @@ if (
+@@ -75069,7 +71822,7 @@ if (
                      n = !q(e, !0);
                  if (n && q(e.parentNode, !0)) {
                      var s = t(e),
@@ -18312,7 +18316,7 @@ index 78a25df..53dee41 100644
                          o = e;
                      $(s, o), C(a, s), C(o, s);
                  }
-@@ -75105,13 +71862,13 @@ if (
+@@ -75109,13 +71862,13 @@ if (
                      ) {
                          for (
                              n = U(u), s = U(u, !0), r = !1;
@@ -18328,7 +18332,7 @@ index 78a25df..53dee41 100644
                                      a = U(a, !0);
                              r =
                                  a.nodeType === ve ?
-@@ -75139,11 +71896,11 @@ if (
+@@ -75143,11 +71896,11 @@ if (
                      u = o;
                  }
          }
@@ -18342,7 +18346,7 @@ index 78a25df..53dee41 100644
              for (var t = 0, i = 0; e; )
                  (t += e.offsetLeft), (i += e.offsetTop), (e = e.offsetParent);
              return { left: t, top: i };
-@@ -75208,18 +71965,18 @@ if (
+@@ -75212,18 +71965,18 @@ if (
              var t,
                  i = /^[^\/]*:/i,
                  n = window.location;
@@ -18364,7 +18368,7 @@ index 78a25df..53dee41 100644
                  n
              );
          }
-@@ -75329,7 +72086,7 @@ if (
+@@ -75333,7 +72086,7 @@ if (
                          d = s.createDocumentFragment();
                      if (
                          ('string' == typeof e ?
@@ -18373,7 +18377,7 @@ index 78a25df..53dee41 100644
                          :   (u(d, e),
                              t &&
                                  (u(d, l.selectedRange().extractContents()),
-@@ -75482,15 +72239,15 @@ if (
+@@ -75486,15 +72239,15 @@ if (
                          s = l.cloneSelected();
                      if (!s) return !1;
                      s.collapse(!1),
@@ -18392,7 +18396,7 @@ index 78a25df..53dee41 100644
                  }),
                  (l.replaceKeyword = function (e, t, i, n, s, a) {
                      i ||
-@@ -75623,7 +72380,7 @@ if (
+@@ -75627,7 +72380,7 @@ if (
                                      d = i ? l.search(r[c]) : l.indexOf(c);
                                  if (d > -1) {
                                      var u = l.indexOf(c, d),
@@ -18401,7 +18405,7 @@ index 78a25df..53dee41 100644
                                          p = l.substr(u + c.length);
                                      h.appendChild(n.createTextNode(p)),
                                          (s.nodeValue = l.substr(0, u)),
-@@ -75661,11 +72418,11 @@ if (
+@@ -75665,11 +72418,11 @@ if (
                  S,
                  R,
                  B,
@@ -18415,7 +18419,7 @@ index 78a25df..53dee41 100644
                  Y,
                  J,
                  Q,
-@@ -75679,12 +72436,12 @@ if (
+@@ -75683,12 +72436,12 @@ if (
                  ye,
                  ke,
                  xe,
@@ -18430,7 +18434,7 @@ index 78a25df..53dee41 100644
                  Fe,
                  Ne,
                  He,
-@@ -75694,8 +72451,8 @@ if (
+@@ -75698,8 +72451,8 @@ if (
                  Ve,
                  Ue,
                  Ge,
@@ -18440,7 +18444,7 @@ index 78a25df..53dee41 100644
                  Ye,
                  Je,
                  Qe,
-@@ -75727,13 +72484,13 @@ if (
+@@ -75731,13 +72484,13 @@ if (
              (_t.opts.emoticons = t.emoticons || we.emoticons),
                  (xe = function () {
                      (e._sceditor = _t),
@@ -18456,7 +18460,7 @@ index 78a25df..53dee41 100644
                          (ce = e.required),
                          (e.required = !1);
                      var t = le.formats[kt.format];
-@@ -75747,14 +72504,14 @@ if (
+@@ -75751,14 +72504,14 @@ if (
                          Se || _t.toggleSourceMode(),
                          tt();
                      var n = function () {
@@ -18473,7 +18477,7 @@ index 78a25df..53dee41 100644
                  }),
                  (Ie = function () {
                      var e = kt.plugins;
-@@ -75764,7 +72521,7 @@ if (
+@@ -75768,7 +72521,7 @@ if (
                              Y.register(e.trim());
                          });
                  }),
@@ -18482,7 +18486,7 @@ index 78a25df..53dee41 100644
                      var e;
                      (U = le.locale[kt.locale]) ||
                          ((e = kt.locale.split('-')), (U = le.locale[e[0]])),
-@@ -75777,10 +72534,10 @@ if (
+@@ -75781,10 +72534,10 @@ if (
                              allowfullscreen: !0,
                          })),
                          kt.startInSourceMode ?
@@ -18496,7 +18500,7 @@ index 78a25df..53dee41 100644
                              _(f, 'src', 'javascript:false'),
                          u(o, f),
                          u(o, R),
-@@ -75806,7 +72563,7 @@ if (
+@@ -75810,7 +72563,7 @@ if (
                      var i = _(e, 'tabindex');
                      _(R, 'tabindex', i),
                          _(f, 'tabindex', i),
@@ -18505,7 +18509,7 @@ index 78a25df..53dee41 100644
                          g(e),
                          _t.val(e.value);
                      var n = kt.placeholder || _(e, 'placeholder');
-@@ -75833,9 +72590,9 @@ if (
+@@ -75837,9 +72590,9 @@ if (
                              );
                      p(Re, 'click', Xe),
                          t &&
@@ -18517,7 +18521,7 @@ index 78a25df..53dee41 100644
                          p(T, 'keydown', Ue),
                          p(T, 'keydown', Ge),
                          p(T, 'keyup', nt),
-@@ -75846,10 +72603,10 @@ if (
+@@ -75850,10 +72603,10 @@ if (
                          p(T, s, st),
                          p(T, n, Qe),
                          kt.emoticonsCompat &&
@@ -18530,7 +18534,7 @@ index 78a25df..53dee41 100644
                          }),
                          p(T, 'focus', function () {
                              E(T, 'placeholder');
-@@ -75864,7 +72621,7 @@ if (
+@@ -75868,7 +72621,7 @@ if (
                          p(S, 'beforedeactivate keyup mouseup', Ee),
                          p(S, 'keyup', nt),
                          p(S, 'focus', function () {
@@ -18539,7 +18543,7 @@ index 78a25df..53dee41 100644
                          }),
                          p(o, 'selectionchanged', at),
                          p(o, 'selectionchanged', tt),
-@@ -75907,12 +72664,12 @@ if (
+@@ -75911,12 +72664,12 @@ if (
                                          )
                                              ke.create(s) &&
                                                  (C(ke.create(s), a.firstChild),
@@ -18554,7 +18558,7 @@ index 78a25df..53dee41 100644
                                                      tt(),
                                                      e.preventDefault();
                                              }),
-@@ -75976,7 +72733,7 @@ if (
+@@ -75980,7 +72733,7 @@ if (
                          (n = kt.resizeMaxWidth || 1.25 * x),
                          (s = function (s) {
                              'touchmove' === s.type ?
@@ -18563,7 +18567,7 @@ index 78a25df..53dee41 100644
                                  (b = s.changedTouches[0].pageX),
                                  (y = s.changedTouches[0].pageY))
                              :   ((b = s.pageX), (y = s.pageY));
-@@ -76002,22 +72759,22 @@ if (
+@@ -76006,22 +72759,22 @@ if (
                          }),
                          ke && ke.create)
                      ) {
@@ -18590,7 +18594,7 @@ index 78a25df..53dee41 100644
                                  v(c),
                                  p(Re, d, s),
                                  p(Re, h, a),
-@@ -76045,7 +72802,7 @@ if (
+@@ -76049,7 +72802,7 @@ if (
                          t,
                          i = T.firstChild,
                          n = !!kt.autofocusEnd;
@@ -18599,7 +18603,7 @@ index 78a25df..53dee41 100644
                          if (_t.sourceMode())
                              return (
                                  (t = n ? R.value.length : 0),
-@@ -76059,7 +72816,7 @@ if (
+@@ -76063,7 +72816,7 @@ if (
  
                              )
                                  (i = i.lastChild),
@@ -18608,7 +18612,7 @@ index 78a25df..53dee41 100644
                                          k(i, 'br') &&
                                          i.previousSibling &&
                                          (i = i.previousSibling);
-@@ -76068,7 +72825,7 @@ if (
+@@ -76072,7 +72825,7 @@ if (
                                  e.selectNodeContents(i)
                              :   (e.setStartBefore(i), n && e.setStartAfter(i)),
                              e.collapse(!n),
@@ -18617,7 +18621,7 @@ index 78a25df..53dee41 100644
                              (ee = e),
                              n && (T.scrollTop = T.scrollHeight),
                              _t.focus();
-@@ -76090,7 +72847,7 @@ if (
+@@ -76094,7 +72847,7 @@ if (
                              _(R, 'dir', t),
                              E(o, 'rtl'),
                              E(o, 'ltr'),
@@ -18626,7 +18630,7 @@ index 78a25df..53dee41 100644
                              ke && ke.rtl && ke.rtl(e),
                              _t);
                  }),
-@@ -76124,14 +72881,14 @@ if (
+@@ -76128,14 +72881,14 @@ if (
                  (_t.maximize = function (e) {
                      var t = 'sceditor-maximize';
                      return pe(e) ?
@@ -18644,7 +18648,7 @@ index 78a25df..53dee41 100644
                              mt(),
                              _t);
                  }),
-@@ -76159,14 +72916,14 @@ if (
+@@ -76163,14 +72916,14 @@ if (
                  (_t.destroy = function () {
                      if (Y) {
                          Y.destroy(),
@@ -18662,7 +18666,7 @@ index 78a25df..53dee41 100644
                              m(t, 'submit', _t.updateOriginal)),
                              d(R),
                              d(l),
-@@ -76180,7 +72937,7 @@ if (
+@@ -76184,7 +72937,7 @@ if (
                      var l,
                          c = 'sceditor-' + t;
                      _t.closeDropDown(!0),
@@ -18671,7 +18675,7 @@ index 78a25df..53dee41 100644
                              (!1 !== s &&
                                  a(
                                      h(i, ':not(input):not(textarea)'),
-@@ -76241,7 +72998,7 @@ if (
+@@ -76245,7 +72998,7 @@ if (
                              r = n.items;
                          e.preventDefault();
                          for (var l = 0; l < o.length; l++) {
@@ -18680,7 +18684,7 @@ index 78a25df..53dee41 100644
                                  return s(n.items[l].getAsFile());
                              a[o[l]] = n.getData(o[l]);
                          }
-@@ -76251,7 +73008,7 @@ if (
+@@ -76255,7 +73008,7 @@ if (
                      } else if (!ye) {
                          var c = i.scrollTop;
                          for (
@@ -18689,7 +18693,7 @@ index 78a25df..53dee41 100644
                              i.firstChild;
  
                          )
-@@ -76262,7 +73019,7 @@ if (
+@@ -76266,7 +73019,7 @@ if (
                                  u(i, ye),
                                  (i.scrollTop = c),
                                  (ye = !1),
@@ -18698,7 +18702,7 @@ index 78a25df..53dee41 100644
                                  Ve({ html: e });
                          }, 0);
                      }
-@@ -76270,7 +73027,7 @@ if (
+@@ -76274,7 +73027,7 @@ if (
                  (Ve = function (e) {
                      var t = r('div', {}, S);
                      Y.call('pasteRaw', e),
@@ -18707,7 +18711,7 @@ index 78a25df..53dee41 100644
                          e.html ?
                              ((t.innerHTML = e.html), W(t))
                          :   (t.innerHTML = X(e.text || ''));
-@@ -76278,7 +73035,7 @@ if (
+@@ -76282,7 +73035,7 @@ if (
                      'fragmentToSource' in i &&
                          (n.val = i.fragmentToSource(n.val, S, J)),
                          Y.call('paste', n),
@@ -18716,7 +18720,7 @@ index 78a25df..53dee41 100644
                          'fragmentToHtml' in i &&
                              (n.val = i.fragmentToHtml(n.val, J)),
                          Y.call('pasteHtml', n),
-@@ -76294,16 +73051,16 @@ if (
+@@ -76298,16 +73051,16 @@ if (
                          o = I(f);
                      _t.focus(),
                          (!i && c(Q, 'code')) ||
@@ -18738,7 +18742,7 @@ index 78a25df..53dee41 100644
                              nt());
                  }),
                  (_t.wysiwygEditorInsertText = function (e, t) {
-@@ -76335,7 +73092,7 @@ if (
+@@ -76339,7 +73092,7 @@ if (
                          dt();
                  }),
                  (_t.getRangeHelper = function () {
@@ -18747,7 +18751,7 @@ index 78a25df..53dee41 100644
                  }),
                  (_t.sourceEditorCaret = function (e) {
                      return (
-@@ -76363,7 +73120,7 @@ if (
+@@ -76367,7 +73120,7 @@ if (
                      if (_t.inSourceMode())
                          return _t.sourceEditorInsertText(e, t), _t;
                      if (t) {
@@ -18756,7 +18760,7 @@ index 78a25df..53dee41 100644
                          !1 !== n &&
                              'fragmentToSource' in i &&
                              (o = i.fragmentToSource(o, S, J)),
-@@ -76414,7 +73171,7 @@ if (
+@@ -76418,7 +73171,7 @@ if (
                  (_t.setWysiwygEditorValue = function (e) {
                      e || (e = '<p>' + (Be ? '' : '<br />') + '</p>'),
                          (T.innerHTML = e),
@@ -18765,7 +18769,7 @@ index 78a25df..53dee41 100644
                          nt(),
                          dt(),
                          mt();
-@@ -76425,11 +73182,11 @@ if (
+@@ -76429,11 +73182,11 @@ if (
                  (_t.updateOriginal = function () {
                      e.value = _t.val();
                  }),
@@ -18779,7 +18783,7 @@ index 78a25df..53dee41 100644
                  }),
                  (_t.sourceMode = function (e) {
                      var t = _t.inSourceMode();
-@@ -76441,12 +73198,12 @@ if (
+@@ -76445,12 +73198,12 @@ if (
                  (_t.toggleSourceMode = function () {
                      var e = _t.inSourceMode();
                      (!Se && e) ||
@@ -18794,7 +18798,7 @@ index 78a25df..53dee41 100644
                          b(R),
                          b(f),
                          P(o, 'wysiwygMode', e),
-@@ -76460,7 +73217,7 @@ if (
+@@ -76464,7 +73217,7 @@ if (
                          R.value.substring(R.selectionStart, R.selectionEnd)
                      );
                  }),
@@ -18803,7 +18807,7 @@ index 78a25df..53dee41 100644
                      _t.inSourceMode() ?
                          t.txtExec &&
                          (Array.isArray(t.txtExec) ?
-@@ -76477,12 +73234,12 @@ if (
+@@ -76481,12 +73234,12 @@ if (
                              ));
                  }),
                  (Ee = function () {
@@ -18818,7 +18822,7 @@ index 78a25df..53dee41 100644
                          try {
                              i = S.execCommand(e, !1, t);
                          } catch (e) {}
-@@ -76500,8 +73257,8 @@ if (
+@@ -76504,8 +73257,8 @@ if (
                              x.getSelection().rangeCount <= 0
                          )
                              ee = null;
@@ -18829,7 +18833,7 @@ index 78a25df..53dee41 100644
                                  var e = ee.startContainer,
                                      t = ee.startOffset;
                                  for (
-@@ -76514,9 +73271,9 @@ if (
+@@ -76518,9 +73271,9 @@ if (
                                      e = e.parentNode;
                                  e &&
                                      q(e, !0) &&
@@ -18841,7 +18845,7 @@ index 78a25df..53dee41 100644
                          }
                          ie = !1;
                      }
-@@ -76526,12 +73283,12 @@ if (
+@@ -76530,12 +73283,12 @@ if (
                  }),
                  (at = function () {
                      var e,
@@ -18857,7 +18861,7 @@ index 78a25df..53dee41 100644
                  }),
                  (_t.currentNode = function () {
                      return J;
-@@ -76551,8 +73308,8 @@ if (
+@@ -76555,8 +73308,8 @@ if (
                          });
                      else {
                          s ||
@@ -18868,7 +18872,7 @@ index 78a25df..53dee41 100644
                          for (var o = 0; o < vt.length; o++) {
                              var r = 0,
                                  c = yt[vt[o].name],
-@@ -76575,15 +73332,15 @@ if (
+@@ -76579,15 +73332,15 @@ if (
                          ke && ke.update && ke.update(s, t, e);
                      }
                  }),
@@ -18887,7 +18891,7 @@ index 78a25df..53dee41 100644
                              var i = t.parentNode,
                                  n = i.lastChild;
                              n &&
-@@ -76593,13 +73350,13 @@ if (
+@@ -76597,13 +73350,13 @@ if (
                                  !q(i, !0) &&
                                      n === t &&
                                      q(t.previousSibling) &&
@@ -18903,7 +18907,7 @@ index 78a25df..53dee41 100644
                          if (
                              e.nodeType === ge &&
                              !/inline/.test(y(e, 'display')) &&
-@@ -76609,7 +73366,7 @@ if (
+@@ -76613,7 +73366,7 @@ if (
                              var t = r('p', {}, S);
                              return (
                                  (t.className = 'sceditor-nlf'),
@@ -18912,7 +18916,7 @@ index 78a25df..53dee41 100644
                                  u(T, t),
                                  !1
                              );
-@@ -76621,11 +73378,11 @@ if (
+@@ -76625,11 +73378,11 @@ if (
                              return !1;
                      });
                  }),
@@ -18926,7 +18930,7 @@ index 78a25df..53dee41 100644
                  }),
                  (_t._ = function () {
                      var e,
-@@ -76679,9 +73436,9 @@ if (
+@@ -76683,9 +73436,9 @@ if (
                      else {
                          if (h(S, ':focus').length) return;
                          var n,
@@ -18938,7 +18942,7 @@ index 78a25df..53dee41 100644
                                  s &&
                                  1 === s.endOffset &&
                                  s.collapsed &&
-@@ -76690,10 +73447,10 @@ if (
+@@ -76694,10 +73447,10 @@ if (
                                  k(n.firstChild, 'br') &&
                                  (s.setStartBefore(n.firstChild),
                                  s.collapse(!0),
@@ -18951,7 +18955,7 @@ index 78a25df..53dee41 100644
                      }
                      return tt(), _t;
                  }),
-@@ -76731,7 +73488,7 @@ if (
+@@ -76735,7 +73488,7 @@ if (
                              (_t.emoticonsCache = i),
                              (_t.longestEmoticonCode =
                                  i[i.length - 1][0].length)),
@@ -18960,7 +18964,7 @@ index 78a25df..53dee41 100644
                              _t.emoticonsCache,
                              !0,
                              !0,
-@@ -76743,14 +73500,14 @@ if (
+@@ -76747,14 +73500,14 @@ if (
                                  e.preventDefault()));
                  }),
                  (lt = function () {
@@ -18977,7 +18981,7 @@ index 78a25df..53dee41 100644
                      :   (a(
                              h(T, 'img[data-sceditor-emoticon]'),
                              function (e, t) {
-@@ -76897,7 +73654,7 @@ if (
+@@ -76901,7 +73654,7 @@ if (
                          (e = e.toLowerCase()),
                          he(t) ?
                              (bt[e] = function () {
@@ -18986,7 +18990,7 @@ index 78a25df..53dee41 100644
                              })
                          :   (bt[e] = t),
                          _t
-@@ -76911,7 +73668,7 @@ if (
+@@ -76915,7 +73668,7 @@ if (
                      if (
                          !kt.disableBlockRemove &&
                          8 === e.which &&
@@ -18995,7 +18999,7 @@ index 78a25df..53dee41 100644
                          ((t = i.startContainer),
                          0 === i.startOffset && (n = ct()) && !k(n, 'body'))
                      ) {
-@@ -76936,12 +73693,12 @@ if (
+@@ -76940,12 +73693,12 @@ if (
                      return (
                          !(e = e || ct()) ||
                              k(e, 'body') ||
@@ -19011,7 +19015,7 @@ index 78a25df..53dee41 100644
                          _t
                      );
                  }),
-@@ -76952,19 +73709,19 @@ if (
+@@ -76956,19 +73709,19 @@ if (
                      ) {
                          var t,
                              i = _t.sourceMode(),
@@ -19035,7 +19039,7 @@ index 78a25df..53dee41 100644
                      }
                  }),
                  (ut = function () {
-@@ -77130,9 +73887,9 @@ if (
+@@ -77134,9 +73887,9 @@ if (
                      'UCWEB' === navigator.vendor && (de = !1),
                      xe <= 9 && (de = !0),
                      !de)),
@@ -19047,7 +19051,7 @@ index 78a25df..53dee41 100644
                  html: '<!DOCTYPE html><html{attrs}><head><style>.ie * {min-height: auto !important} .ie table td {height:15px} @supports (-ms-ime-align:auto) { * { min-height: auto !important; } }</style><meta http-equiv="Content-Type" content="text/html;charset={charset}" /><link rel="stylesheet" type="text/css" href="{style}" /></head><body contenteditable="true" {spellcheck}><p></p></body></html>',
                  toolbarButton:
                      '<a class="sceditor-button sceditor-button-{name}" data-sceditor-command="{name}" unselectable="on"><div unselectable="on">{dispName}</div></a>',
-@@ -77253,7 +74010,7 @@ if (
+@@ -77257,7 +74010,7 @@ if (
                                      (s += '</div>');
                              }),
                              (a._htmlCache = s)),
@@ -19056,7 +19060,7 @@ index 78a25df..53dee41 100644
                              p(n, 'click', 'a', function (t) {
                                  i(w(this, 'color')),
                                      e.closeDropDown(!0),
-@@ -77821,7 +74578,7 @@ if (
+@@ -77825,7 +74578,7 @@ if (
              Me = {};
          ne.plugins = Me;
          var Ie = xe && xe < 11,
@@ -19065,7 +19069,7 @@ index 78a25df..53dee41 100644
                  var n,
                      s,
                      a,
-@@ -77849,11 +74606,11 @@ if (
+@@ -77853,11 +74606,11 @@ if (
                              (c = r.nextSibling));
                  return { node: r || c, offset: d, text: l };
              },
@@ -19080,7 +19084,7 @@ index 78a25df..53dee41 100644
          (le.locale = {}),
              (le.formats = {}),
              (le.icons = {}),
-@@ -77906,8 +74663,8 @@ if (
+@@ -77910,8 +74663,8 @@ if (
                      width: M,
                      height: I,
                      traverse: B,
@@ -19091,7 +19095,7 @@ index 78a25df..53dee41 100644
                      hasStyling: F,
                      convertElement: N,
                      blockLevelList: ye,
-@@ -77918,8 +74675,8 @@ if (
+@@ -77922,8 +74675,8 @@ if (
                      findCommonAncestor: V,
                      getSibling: U,
                      removeWhiteSpace: G,
@@ -19102,7 +19106,7 @@ index 78a25df..53dee41 100644
                      getStyle: Y,
                      hasStyle: J,
                  },
-@@ -78084,7 +74841,7 @@ if (
+@@ -78088,7 +74841,7 @@ if (
              y(e, 'display', '');
          }
          function b(e) {
@@ -19111,7 +19115,7 @@ index 78a25df..53dee41 100644
          }
          function y(e, t, i) {
              if (arguments.length < 3) {
-@@ -78145,10 +74902,10 @@ if (
+@@ -78149,10 +74902,10 @@ if (
          function S(e) {
              return e.className.trim().split(/\s+/);
          }
@@ -19124,7 +19128,7 @@ index 78a25df..53dee41 100644
              var i = S(e);
              i.indexOf(t) < 0 && i.push(t), (e.className = i.join(' '));
          }
-@@ -78157,7 +74914,7 @@ if (
+@@ -78161,7 +74914,7 @@ if (
              s(i, t), (e.className = i.join(' '));
          }
          function P(e, t, i) {
@@ -19133,7 +19137,7 @@ index 78a25df..53dee41 100644
          }
          function M(e, t) {
              if (pe(t)) {
-@@ -78177,7 +74934,7 @@ if (
+@@ -78181,7 +74934,7 @@ if (
              }
              y(e, 'height', t);
          }
@@ -19142,7 +19146,7 @@ index 78a25df..53dee41 100644
              var n;
              me(window.CustomEvent) ?
                  (n = new CustomEvent(t, {
-@@ -78194,7 +74951,7 @@ if (
+@@ -78198,7 +74951,7 @@ if (
                  ),
                  e.dispatchEvent(n);
          }
@@ -19151,7 +19155,7 @@ index 78a25df..53dee41 100644
              return !!e.getClientRects().length;
          }
          function R(e) {
-@@ -78214,10 +74971,10 @@ if (
+@@ -78218,10 +74971,10 @@ if (
                  e = a;
              }
          }
@@ -19164,7 +19168,7 @@ index 78a25df..53dee41 100644
              var i = (t = t || document).createDocumentFragment(),
                  n = r('div', {}, t);
              for (n.innerHTML = e; n.firstChild; ) u(i, n.firstChild);
-@@ -78273,7 +75030,7 @@ if (
+@@ -78277,7 +75030,7 @@ if (
                      n = !q(e, !0);
                  if (n && q(e.parentNode, !0)) {
                      var s = t(e),
@@ -19173,7 +19177,7 @@ index 78a25df..53dee41 100644
                          o = e;
                      $(s, o), C(a, s), C(o, s);
                  }
-@@ -78313,13 +75070,13 @@ if (
+@@ -78317,13 +75070,13 @@ if (
                      ) {
                          for (
                              n = U(u), s = U(u, !0), r = !1;
@@ -19189,7 +19193,7 @@ index 78a25df..53dee41 100644
                                      a = U(a, !0);
                              r =
                                  a.nodeType === ve ?
-@@ -78347,11 +75104,11 @@ if (
+@@ -78351,11 +75104,11 @@ if (
                      u = o;
                  }
          }
@@ -19203,7 +19207,7 @@ index 78a25df..53dee41 100644
              for (var t = 0, i = 0; e; )
                  (t += e.offsetLeft), (i += e.offsetTop), (e = e.offsetParent);
              return { left: t, top: i };
-@@ -78416,18 +75173,18 @@ if (
+@@ -78420,18 +75173,18 @@ if (
              var t,
                  i = /^[^\/]*:/i,
                  n = window.location;
@@ -19225,7 +19229,7 @@ index 78a25df..53dee41 100644
                  n
              );
          }
-@@ -78537,7 +75294,7 @@ if (
+@@ -78541,7 +75294,7 @@ if (
                          d = s.createDocumentFragment();
                      if (
                          ('string' == typeof e ?
@@ -19234,7 +19238,7 @@ index 78a25df..53dee41 100644
                          :   (u(d, e),
                              t &&
                                  (u(d, l.selectedRange().extractContents()),
-@@ -78690,15 +75447,15 @@ if (
+@@ -78694,15 +75447,15 @@ if (
                          s = l.cloneSelected();
                      if (!s) return !1;
                      s.collapse(!1),
@@ -19253,7 +19257,7 @@ index 78a25df..53dee41 100644
                  }),
                  (l.replaceKeyword = function (e, t, i, n, s, a) {
                      i ||
-@@ -78831,7 +75588,7 @@ if (
+@@ -78835,7 +75588,7 @@ if (
                                      d = i ? l.search(r[c]) : l.indexOf(c);
                                  if (d > -1) {
                                      var u = l.indexOf(c, d),
@@ -19262,7 +19266,7 @@ index 78a25df..53dee41 100644
                                          p = l.substr(u + c.length);
                                      h.appendChild(n.createTextNode(p)),
                                          (s.nodeValue = l.substr(0, u)),
-@@ -78869,11 +75626,11 @@ if (
+@@ -78873,11 +75626,11 @@ if (
                  S,
                  R,
                  B,
@@ -19276,7 +19280,7 @@ index 78a25df..53dee41 100644
                  Y,
                  J,
                  Q,
-@@ -78887,12 +75644,12 @@ if (
+@@ -78891,12 +75644,12 @@ if (
                  ye,
                  ke,
                  xe,
@@ -19291,7 +19295,7 @@ index 78a25df..53dee41 100644
                  Fe,
                  Ne,
                  He,
-@@ -78902,8 +75659,8 @@ if (
+@@ -78906,8 +75659,8 @@ if (
                  Ve,
                  Ue,
                  Ge,
@@ -19301,7 +19305,7 @@ index 78a25df..53dee41 100644
                  Ye,
                  Je,
                  Qe,
-@@ -78935,13 +75692,13 @@ if (
+@@ -78939,13 +75692,13 @@ if (
              (_t.opts.emoticons = t.emoticons || we.emoticons),
                  (xe = function () {
                      (e._sceditor = _t),
@@ -19317,7 +19321,7 @@ index 78a25df..53dee41 100644
                          (ce = e.required),
                          (e.required = !1);
                      var t = le.formats[kt.format];
-@@ -78955,14 +75712,14 @@ if (
+@@ -78959,14 +75712,14 @@ if (
                          Se || _t.toggleSourceMode(),
                          tt();
                      var n = function () {
@@ -19334,7 +19338,7 @@ index 78a25df..53dee41 100644
                  }),
                  (Ie = function () {
                      var e = kt.plugins;
-@@ -78972,7 +75729,7 @@ if (
+@@ -78976,7 +75729,7 @@ if (
                              Y.register(e.trim());
                          });
                  }),
@@ -19343,7 +19347,7 @@ index 78a25df..53dee41 100644
                      var e;
                      (U = le.locale[kt.locale]) ||
                          ((e = kt.locale.split('-')), (U = le.locale[e[0]])),
-@@ -78985,10 +75742,10 @@ if (
+@@ -78989,10 +75742,10 @@ if (
                              allowfullscreen: !0,
                          })),
                          kt.startInSourceMode ?
@@ -19357,7 +19361,7 @@ index 78a25df..53dee41 100644
                              _(f, 'src', 'javascript:false'),
                          u(o, f),
                          u(o, R),
-@@ -79014,7 +75771,7 @@ if (
+@@ -79018,7 +75771,7 @@ if (
                      var i = _(e, 'tabindex');
                      _(R, 'tabindex', i),
                          _(f, 'tabindex', i),
@@ -19366,7 +19370,7 @@ index 78a25df..53dee41 100644
                          g(e),
                          _t.val(e.value);
                      var n = kt.placeholder || _(e, 'placeholder');
-@@ -79041,9 +75798,9 @@ if (
+@@ -79045,9 +75798,9 @@ if (
                              );
                      p(Re, 'click', Xe),
                          t &&
@@ -19378,7 +19382,7 @@ index 78a25df..53dee41 100644
                          p(T, 'keydown', Ue),
                          p(T, 'keydown', Ge),
                          p(T, 'keyup', nt),
-@@ -79054,10 +75811,10 @@ if (
+@@ -79058,10 +75811,10 @@ if (
                          p(T, s, st),
                          p(T, n, Qe),
                          kt.emoticonsCompat &&
@@ -19391,7 +19395,7 @@ index 78a25df..53dee41 100644
                          }),
                          p(T, 'focus', function () {
                              E(T, 'placeholder');
-@@ -79072,7 +75829,7 @@ if (
+@@ -79076,7 +75829,7 @@ if (
                          p(S, 'beforedeactivate keyup mouseup', Ee),
                          p(S, 'keyup', nt),
                          p(S, 'focus', function () {
@@ -19400,7 +19404,7 @@ index 78a25df..53dee41 100644
                          }),
                          p(o, 'selectionchanged', at),
                          p(o, 'selectionchanged', tt),
-@@ -79115,12 +75872,12 @@ if (
+@@ -79119,12 +75872,12 @@ if (
                                          )
                                              ke.create(s) &&
                                                  (C(ke.create(s), a.firstChild),
@@ -19415,7 +19419,7 @@ index 78a25df..53dee41 100644
                                                      tt(),
                                                      e.preventDefault();
                                              }),
-@@ -79184,7 +75941,7 @@ if (
+@@ -79188,7 +75941,7 @@ if (
                          (n = kt.resizeMaxWidth || 1.25 * x),
                          (s = function (s) {
                              'touchmove' === s.type ?
@@ -19424,7 +19428,7 @@ index 78a25df..53dee41 100644
                                  (b = s.changedTouches[0].pageX),
                                  (y = s.changedTouches[0].pageY))
                              :   ((b = s.pageX), (y = s.pageY));
-@@ -79210,22 +75967,22 @@ if (
+@@ -79214,22 +75967,22 @@ if (
                          }),
                          ke && ke.create)
                      ) {
@@ -19451,7 +19455,7 @@ index 78a25df..53dee41 100644
                                  v(c),
                                  p(Re, d, s),
                                  p(Re, h, a),
-@@ -79253,7 +76010,7 @@ if (
+@@ -79257,7 +76010,7 @@ if (
                          t,
                          i = T.firstChild,
                          n = !!kt.autofocusEnd;
@@ -19460,7 +19464,7 @@ index 78a25df..53dee41 100644
                          if (_t.sourceMode())
                              return (
                                  (t = n ? R.value.length : 0),
-@@ -79267,7 +76024,7 @@ if (
+@@ -79271,7 +76024,7 @@ if (
  
                              )
                                  (i = i.lastChild),
@@ -19469,7 +19473,7 @@ index 78a25df..53dee41 100644
                                          k(i, 'br') &&
                                          i.previousSibling &&
                                          (i = i.previousSibling);
-@@ -79276,7 +76033,7 @@ if (
+@@ -79280,7 +76033,7 @@ if (
                                  e.selectNodeContents(i)
                              :   (e.setStartBefore(i), n && e.setStartAfter(i)),
                              e.collapse(!n),
@@ -19478,7 +19482,7 @@ index 78a25df..53dee41 100644
                              (ee = e),
                              n && (T.scrollTop = T.scrollHeight),
                              _t.focus();
-@@ -79298,7 +76055,7 @@ if (
+@@ -79302,7 +76055,7 @@ if (
                              _(R, 'dir', t),
                              E(o, 'rtl'),
                              E(o, 'ltr'),
@@ -19487,7 +19491,7 @@ index 78a25df..53dee41 100644
                              ke && ke.rtl && ke.rtl(e),
                              _t);
                  }),
-@@ -79332,14 +76089,14 @@ if (
+@@ -79336,14 +76089,14 @@ if (
                  (_t.maximize = function (e) {
                      var t = 'sceditor-maximize';
                      return pe(e) ?
@@ -19505,7 +19509,7 @@ index 78a25df..53dee41 100644
                              mt(),
                              _t);
                  }),
-@@ -79367,14 +76124,14 @@ if (
+@@ -79371,14 +76124,14 @@ if (
                  (_t.destroy = function () {
                      if (Y) {
                          Y.destroy(),
@@ -19523,7 +19527,7 @@ index 78a25df..53dee41 100644
                              m(t, 'submit', _t.updateOriginal)),
                              d(R),
                              d(l),
-@@ -79388,7 +76145,7 @@ if (
+@@ -79392,7 +76145,7 @@ if (
                      var l,
                          c = 'sceditor-' + t;
                      _t.closeDropDown(!0),
@@ -19532,7 +19536,7 @@ index 78a25df..53dee41 100644
                              (!1 !== s &&
                                  a(
                                      h(i, ':not(input):not(textarea)'),
-@@ -79449,7 +76206,7 @@ if (
+@@ -79453,7 +76206,7 @@ if (
                              r = n.items;
                          e.preventDefault();
                          for (var l = 0; l < o.length; l++) {
@@ -19541,7 +19545,7 @@ index 78a25df..53dee41 100644
                                  return s(n.items[l].getAsFile());
                              a[o[l]] = n.getData(o[l]);
                          }
-@@ -79459,7 +76216,7 @@ if (
+@@ -79463,7 +76216,7 @@ if (
                      } else if (!ye) {
                          var c = i.scrollTop;
                          for (
@@ -19550,7 +19554,7 @@ index 78a25df..53dee41 100644
                              i.firstChild;
  
                          )
-@@ -79470,7 +76227,7 @@ if (
+@@ -79474,7 +76227,7 @@ if (
                                  u(i, ye),
                                  (i.scrollTop = c),
                                  (ye = !1),
@@ -19559,7 +19563,7 @@ index 78a25df..53dee41 100644
                                  Ve({ html: e });
                          }, 0);
                      }
-@@ -79478,7 +76235,7 @@ if (
+@@ -79482,7 +76235,7 @@ if (
                  (Ve = function (e) {
                      var t = r('div', {}, S);
                      Y.call('pasteRaw', e),
@@ -19568,7 +19572,7 @@ index 78a25df..53dee41 100644
                          e.html ?
                              ((t.innerHTML = e.html), W(t))
                          :   (t.innerHTML = X(e.text || ''));
-@@ -79486,7 +76243,7 @@ if (
+@@ -79490,7 +76243,7 @@ if (
                      'fragmentToSource' in i &&
                          (n.val = i.fragmentToSource(n.val, S, J)),
                          Y.call('paste', n),
@@ -19577,7 +19581,7 @@ index 78a25df..53dee41 100644
                          'fragmentToHtml' in i &&
                              (n.val = i.fragmentToHtml(n.val, J)),
                          Y.call('pasteHtml', n),
-@@ -79502,16 +76259,16 @@ if (
+@@ -79506,16 +76259,16 @@ if (
                          o = I(f);
                      _t.focus(),
                          (!i && c(Q, 'code')) ||
@@ -19599,7 +19603,7 @@ index 78a25df..53dee41 100644
                              nt());
                  }),
                  (_t.wysiwygEditorInsertText = function (e, t) {
-@@ -79543,7 +76300,7 @@ if (
+@@ -79547,7 +76300,7 @@ if (
                          dt();
                  }),
                  (_t.getRangeHelper = function () {
@@ -19608,7 +19612,7 @@ index 78a25df..53dee41 100644
                  }),
                  (_t.sourceEditorCaret = function (e) {
                      return (
-@@ -79571,7 +76328,7 @@ if (
+@@ -79575,7 +76328,7 @@ if (
                      if (_t.inSourceMode())
                          return _t.sourceEditorInsertText(e, t), _t;
                      if (t) {
@@ -19617,7 +19621,7 @@ index 78a25df..53dee41 100644
                          !1 !== n &&
                              'fragmentToSource' in i &&
                              (o = i.fragmentToSource(o, S, J)),
-@@ -79622,7 +76379,7 @@ if (
+@@ -79626,7 +76379,7 @@ if (
                  (_t.setWysiwygEditorValue = function (e) {
                      e || (e = '<p>' + (Be ? '' : '<br />') + '</p>'),
                          (T.innerHTML = e),
@@ -19626,7 +19630,7 @@ index 78a25df..53dee41 100644
                          nt(),
                          dt(),
                          mt();
-@@ -79633,11 +76390,11 @@ if (
+@@ -79637,11 +76390,11 @@ if (
                  (_t.updateOriginal = function () {
                      e.value = _t.val();
                  }),
@@ -19640,7 +19644,7 @@ index 78a25df..53dee41 100644
                  }),
                  (_t.sourceMode = function (e) {
                      var t = _t.inSourceMode();
-@@ -79649,12 +76406,12 @@ if (
+@@ -79653,12 +76406,12 @@ if (
                  (_t.toggleSourceMode = function () {
                      var e = _t.inSourceMode();
                      (!Se && e) ||
@@ -19655,7 +19659,7 @@ index 78a25df..53dee41 100644
                          b(R),
                          b(f),
                          P(o, 'wysiwygMode', e),
-@@ -79668,7 +76425,7 @@ if (
+@@ -79672,7 +76425,7 @@ if (
                          R.value.substring(R.selectionStart, R.selectionEnd)
                      );
                  }),
@@ -19664,7 +19668,7 @@ index 78a25df..53dee41 100644
                      _t.inSourceMode() ?
                          t.txtExec &&
                          (Array.isArray(t.txtExec) ?
-@@ -79685,12 +76442,12 @@ if (
+@@ -79689,12 +76442,12 @@ if (
                              ));
                  }),
                  (Ee = function () {
@@ -19679,7 +19683,7 @@ index 78a25df..53dee41 100644
                          try {
                              i = S.execCommand(e, !1, t);
                          } catch (e) {}
-@@ -79708,8 +76465,8 @@ if (
+@@ -79712,8 +76465,8 @@ if (
                              x.getSelection().rangeCount <= 0
                          )
                              ee = null;
@@ -19690,7 +19694,7 @@ index 78a25df..53dee41 100644
                                  var e = ee.startContainer,
                                      t = ee.startOffset;
                                  for (
-@@ -79722,9 +76479,9 @@ if (
+@@ -79726,9 +76479,9 @@ if (
                                      e = e.parentNode;
                                  e &&
                                      q(e, !0) &&
@@ -19702,7 +19706,7 @@ index 78a25df..53dee41 100644
                          }
                          ie = !1;
                      }
-@@ -79734,12 +76491,12 @@ if (
+@@ -79738,12 +76491,12 @@ if (
                  }),
                  (at = function () {
                      var e,
@@ -19718,7 +19722,7 @@ index 78a25df..53dee41 100644
                  }),
                  (_t.currentNode = function () {
                      return J;
-@@ -79759,8 +76516,8 @@ if (
+@@ -79763,8 +76516,8 @@ if (
                          });
                      else {
                          s ||
@@ -19729,7 +19733,7 @@ index 78a25df..53dee41 100644
                          for (var o = 0; o < vt.length; o++) {
                              var r = 0,
                                  c = yt[vt[o].name],
-@@ -79783,15 +76540,15 @@ if (
+@@ -79787,15 +76540,15 @@ if (
                          ke && ke.update && ke.update(s, t, e);
                      }
                  }),
@@ -19748,7 +19752,7 @@ index 78a25df..53dee41 100644
                              var i = t.parentNode,
                                  n = i.lastChild;
                              n &&
-@@ -79801,13 +76558,13 @@ if (
+@@ -79805,13 +76558,13 @@ if (
                                  !q(i, !0) &&
                                      n === t &&
                                      q(t.previousSibling) &&
@@ -19764,7 +19768,7 @@ index 78a25df..53dee41 100644
                          if (
                              e.nodeType === ge &&
                              !/inline/.test(y(e, 'display')) &&
-@@ -79817,7 +76574,7 @@ if (
+@@ -79821,7 +76574,7 @@ if (
                              var t = r('p', {}, S);
                              return (
                                  (t.className = 'sceditor-nlf'),
@@ -19773,7 +19777,7 @@ index 78a25df..53dee41 100644
                                  u(T, t),
                                  !1
                              );
-@@ -79829,11 +76586,11 @@ if (
+@@ -79833,11 +76586,11 @@ if (
                              return !1;
                      });
                  }),
@@ -19787,7 +19791,7 @@ index 78a25df..53dee41 100644
                  }),
                  (_t._ = function () {
                      var e,
-@@ -79887,9 +76644,9 @@ if (
+@@ -79891,9 +76644,9 @@ if (
                      else {
                          if (h(S, ':focus').length) return;
                          var n,
@@ -19799,7 +19803,7 @@ index 78a25df..53dee41 100644
                                  s &&
                                  1 === s.endOffset &&
                                  s.collapsed &&
-@@ -79898,10 +76655,10 @@ if (
+@@ -79902,10 +76655,10 @@ if (
                                  k(n.firstChild, 'br') &&
                                  (s.setStartBefore(n.firstChild),
                                  s.collapse(!0),
@@ -19812,7 +19816,7 @@ index 78a25df..53dee41 100644
                      }
                      return tt(), _t;
                  }),
-@@ -79939,7 +76696,7 @@ if (
+@@ -79943,7 +76696,7 @@ if (
                              (_t.emoticonsCache = i),
                              (_t.longestEmoticonCode =
                                  i[i.length - 1][0].length)),
@@ -19821,7 +19825,7 @@ index 78a25df..53dee41 100644
                              _t.emoticonsCache,
                              !0,
                              !0,
-@@ -79951,14 +76708,14 @@ if (
+@@ -79955,14 +76708,14 @@ if (
                                  e.preventDefault()));
                  }),
                  (lt = function () {
@@ -19838,7 +19842,7 @@ index 78a25df..53dee41 100644
                      :   (a(
                              h(T, 'img[data-sceditor-emoticon]'),
                              function (e, t) {
-@@ -80105,7 +76862,7 @@ if (
+@@ -80109,7 +76862,7 @@ if (
                          (e = e.toLowerCase()),
                          he(t) ?
                              (bt[e] = function () {
@@ -19847,7 +19851,7 @@ index 78a25df..53dee41 100644
                              })
                          :   (bt[e] = t),
                          _t
-@@ -80119,7 +76876,7 @@ if (
+@@ -80123,7 +76876,7 @@ if (
                      if (
                          !kt.disableBlockRemove &&
                          8 === e.which &&
@@ -19856,7 +19860,7 @@ index 78a25df..53dee41 100644
                          ((t = i.startContainer),
                          0 === i.startOffset && (n = ct()) && !k(n, 'body'))
                      ) {
-@@ -80144,12 +76901,12 @@ if (
+@@ -80148,12 +76901,12 @@ if (
                      return (
                          !(e = e || ct()) ||
                              k(e, 'body') ||
@@ -19872,7 +19876,7 @@ index 78a25df..53dee41 100644
                          _t
                      );
                  }),
-@@ -80160,19 +76917,19 @@ if (
+@@ -80164,19 +76917,19 @@ if (
                      ) {
                          var t,
                              i = _t.sourceMode(),
@@ -19896,7 +19900,7 @@ index 78a25df..53dee41 100644
                      }
                  }),
                  (ut = function () {
-@@ -80338,9 +77095,9 @@ if (
+@@ -80342,9 +77095,9 @@ if (
                      'UCWEB' === navigator.vendor && (de = !1),
                      xe <= 9 && (de = !0),
                      !de)),
@@ -19908,7 +19912,7 @@ index 78a25df..53dee41 100644
                  html: '<!DOCTYPE html><html{attrs}><head><style>.ie * {min-height: auto !important} .ie table td {height:15px} @supports (-ms-ime-align:auto) { * { min-height: auto !important; } }</style><meta http-equiv="Content-Type" content="text/html;charset={charset}" /><link rel="stylesheet" type="text/css" href="{style}" /></head><body contenteditable="true" {spellcheck}><p></p></body></html>',
                  toolbarButton:
                      '<a class="sceditor-button sceditor-button-{name}" data-sceditor-command="{name}" unselectable="on"><div unselectable="on">{dispName}</div></a>',
-@@ -80461,7 +77218,7 @@ if (
+@@ -80465,7 +77218,7 @@ if (
                                      (s += '</div>');
                              }),
                              (a._htmlCache = s)),
@@ -19917,7 +19921,7 @@ index 78a25df..53dee41 100644
                              p(n, 'click', 'a', function (t) {
                                  i(w(this, 'color')),
                                      e.closeDropDown(!0),
-@@ -81029,7 +77786,7 @@ if (
+@@ -81033,7 +77786,7 @@ if (
              Me = {};
          ne.plugins = Me;
          var Ie = xe && xe < 11,
@@ -19926,7 +19930,7 @@ index 78a25df..53dee41 100644
                  var n,
                      s,
                      a,
-@@ -81057,11 +77814,11 @@ if (
+@@ -81061,11 +77814,11 @@ if (
                              (c = r.nextSibling));
                  return { node: r || c, offset: d, text: l };
              },
@@ -19941,7 +19945,7 @@ index 78a25df..53dee41 100644
          (le.locale = {}),
              (le.formats = {}),
              (le.icons = {}),
-@@ -81114,8 +77871,8 @@ if (
+@@ -81118,8 +77871,8 @@ if (
                      width: M,
                      height: I,
                      traverse: B,
@@ -19952,7 +19956,7 @@ index 78a25df..53dee41 100644
                      hasStyling: F,
                      convertElement: N,
                      blockLevelList: ye,
-@@ -81126,8 +77883,8 @@ if (
+@@ -81130,8 +77883,8 @@ if (
                      findCommonAncestor: V,
                      getSibling: U,
                      removeWhiteSpace: G,
@@ -19963,7 +19967,7 @@ index 78a25df..53dee41 100644
                      getStyle: Y,
                      hasStyle: J,
                  },
-@@ -81268,14 +78025,14 @@ if (
+@@ -81272,14 +78025,14 @@ if (
                      r = /\[([^\]\s=]+)(?:([^\]]+))?\]/,
                      l = /\[\/([^\[\]]+)\]/;
                  return (
@@ -19981,7 +19985,7 @@ index 78a25df..53dee41 100644
                      new o(e, s, t, n)
                  );
              }
-@@ -81340,10 +78097,10 @@ if (
+@@ -81344,10 +78097,10 @@ if (
                          ((o = e[0]),
                          c(h(), t) ||
                              (t.type === P && h() && t.name === h().name) ||
@@ -19994,7 +19998,7 @@ index 78a25df..53dee41 100644
                              m(t.name) && u.pop(),
                                  p(t),
                                  (
-@@ -81352,7 +78109,7 @@ if (
+@@ -81356,7 +78109,7 @@ if (
                                      (i.closedBy || l(t.name, P, e))
                                  ) ?
                                      u.push(t)
@@ -20003,7 +20007,7 @@ index 78a25df..53dee41 100644
                              break;
                          case P:
                              if (
-@@ -81363,7 +78120,7 @@ if (
+@@ -81367,7 +78120,7 @@ if (
                                  h() && t.name === h().name)
                              )
                                  (h().closing = t), u.pop();
@@ -20012,7 +20016,7 @@ index 78a25df..53dee41 100644
                                  for (; (n = u.pop()); ) {
                                      if (n.name === t.name) {
                                          n.closing = t;
-@@ -81386,7 +78143,7 @@ if (
+@@ -81390,7 +78143,7 @@ if (
                                  )
                                      u.push(r[a]);
                                  r.length = 0;
@@ -20021,7 +20025,7 @@ index 78a25df..53dee41 100644
                              break;
                          case E:
                              h() &&
-@@ -81442,7 +78199,7 @@ if (
+@@ -81446,7 +78199,7 @@ if (
                                              (d = !0),
                                          o.breakStart && (d = !0))),
                                  s &&
@@ -20030,7 +20034,7 @@ index 78a25df..53dee41 100644
                                      (r = S[s.name]) &&
                                      (i ?
                                          !1 === r.isInline && (d = !0)
-@@ -81454,7 +78211,7 @@ if (
+@@ -81458,7 +78211,7 @@ if (
                                  !i &&
                                      !c &&
                                      a &&
@@ -20039,7 +20043,7 @@ index 78a25df..53dee41 100644
                                      (r = S[a.name]) &&
                                      (!1 === r.isInline &&
                                          k.opts.breakBeforeBlock &&
-@@ -81468,7 +78225,7 @@ if (
+@@ -81472,7 +78225,7 @@ if (
                                  continue;
                              }
                              d && e.splice(p, 1), (c = !1);
@@ -20048,7 +20052,7 @@ index 78a25df..53dee41 100644
              }
              function p(e, t, i, n) {
                  var s,
-@@ -81482,7 +78239,7 @@ if (
+@@ -81486,7 +78239,7 @@ if (
                          return !t || !1 !== t.isInline;
                      };
                  for (t = t || [], n = n || e, a = 0; a < e.length; a++)
@@ -20057,7 +20061,7 @@ index 78a25df..53dee41 100644
                          if (i && !u(s)) {
                              if (
                                  ((d = (o = b(t)).splitAt(s)),
-@@ -81518,8 +78275,8 @@ if (
+@@ -81522,8 +78275,8 @@ if (
                          n = function (e) {
                              for (var t = e.length; t--; ) {
                                  var i = e[t].type;
@@ -20068,7 +20072,7 @@ index 78a25df..53dee41 100644
                                      return !1;
                              }
                              return !0;
-@@ -81529,7 +78286,7 @@ if (
+@@ -81533,7 +78286,7 @@ if (
  
                  )
                      (t = e[s]) &&
@@ -20077,7 +20081,7 @@ index 78a25df..53dee41 100644
                          ((i = S[t.name]),
                          m(t.children),
                          n(t.children) &&
-@@ -81563,7 +78320,7 @@ if (
+@@ -81567,7 +78320,7 @@ if (
  
                  )
                      if ((a = e.shift())) {
@@ -20086,7 +20090,7 @@ index 78a25df..53dee41 100644
                              (p = a.children[a.children.length - 1] || {}),
                                  (o = S[a.name]),
                                  (c = i && h(o)),
-@@ -81636,9 +78393,9 @@ if (
+@@ -81640,9 +78393,9 @@ if (
                                  (n ? n.quoteType : null) ||
                                  k.opts.quoteType ||
                                  T.auto),
@@ -20098,7 +20102,7 @@ index 78a25df..53dee41 100644
                                  if (
                                      (r && u.push('\n'),
                                      u.push('[' + t.name),
-@@ -81700,9 +78457,9 @@ if (
+@@ -81704,9 +78457,9 @@ if (
                          s,
                          a = [],
                          o = [
@@ -20110,7 +20114,7 @@ index 78a25df..53dee41 100644
                              { type: P, regex: /^\[\/[^\[\]]+\]/ },
                          ];
                      e: for (; e.length; ) {
-@@ -81714,7 +78471,7 @@ if (
+@@ -81718,7 +78471,7 @@ if (
                                  a.push(i(n, t[0])), (e = e.substr(t[0].length));
                                  continue e;
                              }
@@ -20119,7 +20123,7 @@ index 78a25df..53dee41 100644
                      }
                      return a;
                  }),
-@@ -82445,8 +79202,8 @@ if (
+@@ -82449,8 +79202,8 @@ if (
                  },
                  'ignore': {},
              },
@@ -20130,7 +20134,7 @@ index 78a25df..53dee41 100644
              E = 'newline',
              P = 'close';
          (o.prototype = {
-@@ -85183,32 +81940,33 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -85187,32 +81940,33 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
              },
              leafletMissionPositionMarkerAdd: function (t) {
                  if (mission_position_markers_per_id.get(t.id)) return;
@@ -20180,7 +20184,7 @@ index 78a25df..53dee41 100644
              },
              leafletMissionPositionMarkerDelete: function (e) {
                  let t = map_filters_service
-@@ -85246,10 +82004,9 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -85250,10 +82004,9 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                  n.addEventListener('select', i, n),
                      (n.element.className = 'mapkit-marker'),
                      map.addAnnotation(n),
@@ -20193,7 +20197,7 @@ index 78a25df..53dee41 100644
              },
              mapkitMissionPositionMarkerDelete: function (e) {
                  const t = mission_position_markers_per_id.get(e);
-@@ -85278,17 +82035,14 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -85282,17 +82035,14 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                      (a = o.mission_types_with_filter_ids),
                      (t = o.user_id),
                      $.each(o.sorted_map_filters, function () {
@@ -20219,7 +20223,7 @@ index 78a25df..53dee41 100644
                      });
              },
              getMapFiltersLayersForMap: function () {
-@@ -85306,9 +82060,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -85310,9 +82060,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                      case null == e.user_id:
                          return i.alliance_buildings || map;
                      default:
@@ -20230,7 +20234,7 @@ index 78a25df..53dee41 100644
                  }
              },
              getFilterLayerByMissionParams: function (e) {
-@@ -85320,16 +82072,9 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -85324,16 +82072,9 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                      case e.user_id != t || 'alliance_missions' === e.filter_id:
                          return i.alliance_missions;
                      default:
@@ -20248,7 +20252,7 @@ index 78a25df..53dee41 100644
              onOverlayChanged: function (e) {
                  (filter_key = Object.keys(i).find(function (t) {
                      return i[t] === e.layer;
-@@ -85398,14 +82143,12 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -85402,14 +82143,12 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                      (o = !1);
              },
              decorateFilterText: function (t, i) {
