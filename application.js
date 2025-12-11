@@ -7260,19 +7260,22 @@ function initVehiclesEquipment(e, t = {}) {
         }
         function l() {
             Object.values(f.containersByTab).forEach(function (e) {
-                f.equipments.forEach(function (t) {
-                    e.querySelector(
-                        '.equipment-input[data-equipment-id="' + t.id + '"]'
-                    ).disabled = !t.selected;
-                });
+                e &&
+                    f.equipments.forEach(function (t) {
+                        e.querySelector(
+                            '.equipment-input[data-equipment-id="' + t.id + '"]'
+                        ).disabled = !t.selected;
+                    });
             });
         }
         function c() {
             Object.values(f.containersByTab).forEach(function (e) {
-                var t = e.querySelector('.payload-error-indicator');
-                f.hasUnavailableSelectedEquipments() ?
-                    t.classList.remove('hidden')
-                :   t.classList.add('hidden');
+                if (e) {
+                    var t = e.querySelector('.payload-error-indicator');
+                    f.hasUnavailableSelectedEquipments() ?
+                        t.classList.remove('hidden')
+                    :   t.classList.add('hidden');
+                }
             });
         }
         function d() {
@@ -7284,11 +7287,13 @@ function initVehiclesEquipment(e, t = {}) {
                             'javascript.vehicle_payload.equipment_unavailable'
                         );
             Object.values(f.containersByTab).forEach(function (i) {
-                var n = i.querySelector('.apply-payload-btn');
-                e ?
-                    n.classList.remove('disabled')
-                :   n.classList.add('disabled'),
-                    (n.textContent = t);
+                if (i) {
+                    var n = i.querySelector('.apply-payload-btn');
+                    e ?
+                        n.classList.remove('disabled')
+                    :   n.classList.add('disabled'),
+                        (n.textContent = t);
+                }
             });
         }
         function u() {
