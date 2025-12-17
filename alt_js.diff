@@ -1,7 +1,22 @@
 diff --git a/application.js b/application.alt.js
-index 9d064dd..449d07e 100644
+index 272fcb7..449d07e 100644
 --- a/application.js
 +++ b/application.alt.js
+@@ -87,12 +87,12 @@ function layerFactory(e) {
+                 var t = e.options.icon.options.iconSize,
+                     i = e._point,
+                     n = t[0] / 2,
+-                    s = t[1];
++                    s = t[1] / 2;
+                 return {
+                     minX: i.x - n,
+                     minY: i.y - s,
+                     maxX: i.x + n,
+-                    maxY: i.y + s / 2,
++                    maxY: i.y + s,
+                 };
+             },
+             compareMinX: function (e, t) {
 @@ -110,7 +110,7 @@ function layerFactory(e) {
                  });
              },
@@ -2759,6 +2774,15 @@ index 9d064dd..449d07e 100644
                  user_buildings: 'Meine Geb\xe4ude',
                  user_missions: 'Meine Eins\xe4tze',
                  water_rescue_heliport: 'Hubschrauberstation (Seenotrettung)',
+@@ -9647,7 +9519,7 @@ Object.values ||
+             no_ambulance_missions:
+                 'Es liegen keine Krankentransporte vor. Krankentransporte k\xf6nnen auftreten, sobald Du einen KTW und ein Krankenhaus besitzt.',
+             no_critical_transport_missions:
+-                'Es liegen keine Intensivverlegungen vor.\u2028 Diese k\xf6nnen auftreten, sobald du einen ITW \u2028und zwei Krankenh\xe4user mit Patienten in Behandlung besitzt.',
++                'Es liegen keine Intensivverlegungen vor.\u2028Diese k\xf6nnen auftreten, sobald du einen ITW\u2028und zwei Krankenh\xe4user mit Patienten in Behandlung besitzt.',
+             no_emergency_missions:
+                 'Es liegen keine Notfalleins\xe4tze vor. Notfalleins\xe4tze k\xf6nnen ab der ersten Wache auftreten.',
+             no_radio_messages: 'Es sind keine Funkspr\xfcche eingegangen.',
 @@ -9656,8 +9528,6 @@ Object.values ||
              radio_messages: 'Funk',
              restore_map: 'Karte wiederherstellen',
