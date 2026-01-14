@@ -1,0 +1,64 @@
+diff --git a/application.js b/application.alt.js
+index 9bbb0b4..4825ffe 100644
+--- a/application.js
++++ b/application.alt.js
+@@ -430,26 +430,20 @@ function isMapKitMap() {
+ function isLeaflet() {
+     return 'undefined' == typeof mapkit && void 0 !== map;
+ }
+-function isMapLeaflet(e) {
+-    return void 0 !== e;
+-}
+ function mapIsVisible(e) {
+-    return markerIsVisibleOnMap(map, e);
+-}
+-function markerIsVisibleOnMap(e, t) {
+-    if (xy_map) return xy_map.isVisible(t);
+-    if (!isMapLeaflet(e) && e.region) {
+-        const i = parseFloat(e.region.center.latitude),
+-            n = parseFloat(e.region.span.latitudeDelta),
+-            s = i - n,
+-            a = i + n,
+-            o = parseFloat(e.region.center.longitude),
+-            r = parseFloat(e.region.span.longitudeDelta),
+-            l = o - r,
+-            c = o + r;
+-        return s <= t[0] && a >= t[0] && l <= t[1] && c >= t[1];
++    if (xy_map) return xy_map.isVisible(e);
++    if (isMapKitMap()) {
++        const t = parseFloat(map.region.center.latitude),
++            i = parseFloat(map.region.span.latitudeDelta),
++            n = t - i,
++            s = t + i,
++            a = parseFloat(map.region.center.longitude),
++            o = parseFloat(map.region.span.longitudeDelta),
++            r = a - o,
++            l = a + o;
++        return n <= e[0] && s >= e[0] && r <= e[1] && l >= e[1];
+     }
+-    return e.getBounds().pad(0.5).contains(t);
++    return map.getBounds().pad(0.5).contains(e);
+ }
+ function zoom_change() {
+     building_maps_redraw(), building_load_alliance();
+@@ -16775,7 +16769,7 @@ Object.values ||
+                 hazmat_drone: 'Hazmat Drone',
+                 heavy_air_tanker: 'Heavy air tanker',
+                 height_rescue: 'Height Rescue Equipment',
+-                heli_tech: 'Verricello',
++                heli_tech: 'Tecnico di elisoccorso',
+                 helicopter_bucket: 'Helicopter bucket',
+                 hems: 'Elisoccorso HEMS',
+                 hint: {
+@@ -70020,11 +70014,6 @@ $(function () {
+                     'intervention_order.vehicles.foam_amount_only_foam_vehicles'
+                 ),
+             ],
+-            ['heli_tech', I18n.t('intervention_order.vehicles.heli_tech')],
+-            [
+-                'mountain_snow_dogs',
+-                I18n.t('intervention_order.vehicles.mountain_snow_dogs'),
+-            ],
+         ]),
+         $('#restore_map').click(function () {
+             mapViewRestore();
