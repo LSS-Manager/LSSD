@@ -15784,6 +15784,19 @@ body.dark .well.hospital-boost-active {
     background-color: #1b735c;
     color: #fff;
     border-color: #155a49;
+}
+.alert-container {
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    z-index: 1000;
+    pointer-events: none;
+}
+.alert-container .alert {
+    pointer-events: auto;
+}
+#main_container {
+    position: relative;
 } /*!
  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
  *
