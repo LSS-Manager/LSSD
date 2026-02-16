@@ -10465,6 +10465,13 @@ body.belgiumbar .navbar-default {
     background-color: #c9302c;
     color: #fff;
 }
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:focus,
+.nav-pills > li.active > a:hover {
+    background-image: none;
+    background-color: #c9302c;
+    color: #fff;
+}
 .settings_nav_bar .nav-tabs > li.settings.active > a,
 .settings_nav_bar .nav-tabs > li.settings.active > a:focus,
 .settings_nav_bar .nav-tabs > li.settings.active > a:hover {
@@ -15784,6 +15791,113 @@ body.dark .well.hospital-boost-active {
     background-color: #1b735c;
     color: #fff;
     border-color: #155a49;
+}
+.nav-pills-heading {
+    padding: 5px;
+    margin-bottom: 10px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    border-color: #f5f5f5;
+    background-image: -webkit-linear-gradient(top, #f5f5f5 0, #e8e8e8 100%);
+    background-image: -o-linear-gradient(top, #f5f5f5 0, #e8e8e8 100%);
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        from(#f5f5f5),
+        to(#e8e8e8)
+    );
+    background-image: linear-gradient(to bottom, #f5f5f5 0, #e8e8e8 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#ffe8e8e8', GradientType=0);
+    background-repeat: repeat-x;
+}
+.poi-map {
+    height: 650px !important;
+}
+.virtual-scroll-container {
+    height: 450px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    position: relative;
+}
+.virtual-content {
+    position: relative;
+}
+.virtual-item {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    transition: background-color 0.1s ease;
+}
+.poi-filters {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+.virtual-item.row-even {
+    background-color: #eee;
+}
+.dark .virtual-item.row-even {
+    color: #505050;
+}
+.virtual-item:hover {
+    background-color: #e3f2fd !important;
+}
+.dark .virtual-item:hover {
+    background-color: #e3f2fd !important;
+    color: #505050;
+}
+.virtual-item-main {
+    display: flex;
+    align-items: flex-start;
+}
+.checkbox-menu {
+    position: absolute;
+    border: 1px solid lightgray;
+    background-color: white;
+    overflow-y: auto;
+    max-height: 300px;
+}
+.checkbox-menu li label {
+    display: block;
+    padding: 3px 10px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+    margin: 0;
+    transition: background-color 0.4s ease;
+}
+.checkbox-menu li input {
+    margin: 0px 5px;
+    top: 2px;
+    position: relative;
+}
+.checkbox-menu li.active label {
+    background-color: #cbcbff;
+    font-weight: bold;
+}
+.checkbox-menu li label:hover,
+.checkbox-menu li label:focus {
+    background-color: #f5f5f5;
+}
+.checkbox-menu li.active label:hover,
+.checkbox-menu li.active label:focus {
+    background-color: #b8b8ff;
+}
+.nav.black-links > li > a {
+    color: #333;
+}
+.nav.black-links > li.active > a {
+    color: #fff;
 } /*!
  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
  *
