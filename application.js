@@ -1369,7 +1369,6 @@ function postRenderBlock() {
         progressBarScrollUpdate(),
         updateMissionStateButtons(),
         initSorting(),
-        initFiltersDisplayControl(),
         updateNoMissionsMessages(),
         scheduleLoadVehiclesOnTheMove();
 }
