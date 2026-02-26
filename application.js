@@ -16432,7 +16432,7 @@ Object.values ||
         mission: {
             needed_other: 'Il nous manque',
             needed_personnel: 'Personnel manquant',
-            needed_vehicles: 'V\xe9hicules manquants',
+            needed_vehicles: 'V\xe9hicule(s) manquant(s)',
             type: { alert: 'D\xe9ployer' },
         },
         number: {

@@ -1,5 +1,5 @@
 diff --git a/application.js b/application.alt.js
-index 3550dd9..94063c6 100644
+index e97cc94..94063c6 100644
 --- a/application.js
 +++ b/application.alt.js
 @@ -110,7 +110,7 @@ function layerFactory(e) {
@@ -6052,6 +6052,15 @@ index 3550dd9..94063c6 100644
                  user_buildings: 'Mes b\xe2timents',
                  user_missions: 'Mes missions',
                  water_watch: 'Secours nautique',
+@@ -16432,7 +18458,7 @@ Object.values ||
+         mission: {
+             needed_other: 'Il nous manque',
+             needed_personnel: 'Personnel manquant',
+-            needed_vehicles: 'V\xe9hicule(s) manquant(s)',
++            needed_vehicles: 'V\xe9hicules manquants',
+             type: { alert: 'D\xe9ployer' },
+         },
+         number: {
 @@ -16495,6 +18521,138 @@ Object.values ||
                          welcome:
                              "Bienvenue sur Op\xe9rateur 112! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
