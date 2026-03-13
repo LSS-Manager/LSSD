@@ -15749,10 +15749,14 @@ input.invalid {
     display: flex;
     gap: 5px;
     margin-bottom: 20px;
+    align-items: center;
 }
 .hospital-extension-boost-container .extension-boost-select {
     width: auto;
     display: inline-block;
+}
+.hospital-extension-boost-container .boost-buy-btn {
+    white-space: nowrap;
 }
 .hospital-extension-boost-container .boost-countdown {
     display: inline-flex;
@@ -15763,6 +15767,22 @@ input.invalid {
 }
 .hospital-extension-boost-container .boost-countdown .boost-arrow-icon {
     margin-right: 5px;
+}
+@media (max-width: 767px) {
+    .hospital-extension-boost-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    .hospital-extension-boost-container .extension-boost-select,
+    .hospital-extension-boost-container .boost-buy-btn,
+    .hospital-extension-boost-container .boost-countdown,
+    .hospital-extension-boost-container .btn {
+        width: 100% !important;
+        margin-left: 0 !important;
+        display: flex;
+        justify-content: center;
+    }
 }
 .transport-boost-badge {
     background-color: #5cb85c;
