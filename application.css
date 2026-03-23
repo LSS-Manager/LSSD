@@ -15281,6 +15281,11 @@ body.dark .grid-container .grid-item .grid-item-text .line {
 .mission-speed-dropdown-menu .premium-icon {
     vertical-align: initial;
 }
+.leitstelle-dropdown-menu {
+    min-width: 150px;
+    max-height: 200px;
+    overflow-y: auto;
+}
 body.dark .mission-speed-dropdown-menu {
     background-color: #505050;
     border: 1px solid #000;
@@ -15289,6 +15294,17 @@ body.dark .mission-speed-dropdown-menu li > a {
     color: #fff;
 }
 body.dark .mission-speed-dropdown-menu li > a:hover {
+    background-image: none;
+    background-color: #727272;
+}
+body.dark .leitstelle-dropdown-menu {
+    background-color: #505050;
+    border: 1px solid #000;
+}
+body.dark .leitstelle-dropdown-menu li > a {
+    color: #fff;
+}
+body.dark .leitstelle-dropdown-menu li > a:hover {
     background-image: none;
     background-color: #727272;
 }
@@ -15918,6 +15934,36 @@ body.dark .well.hospital-boost-active {
 }
 .nav.black-links > li.active > a {
     color: #fff;
+}
+.toast-container {
+    position: absolute;
+    z-index: 1000;
+    pointer-events: none;
+    width: 350px;
+}
+.toast-right {
+    right: 15px;
+}
+.toast-top {
+    top: 15px;
+}
+.toast-bottom {
+    bottom: 15px;
+}
+.toast-left {
+    left: 15px;
+}
+.toast-container .alert {
+    pointer-events: auto;
+}
+.toast-container .toast {
+    pointer-events: auto;
+}
+#main_container {
+    position: relative;
+}
+.building_leitstelle_set_dropdown_item {
+    margin-top: 5px !important;
 } /*!
  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
  *
