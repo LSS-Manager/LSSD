@@ -11569,11 +11569,6 @@ body.bigMap #map_outer {
     padding-right: 0;
     position: absolute;
 }
-body.bigMap #missions_outer {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
 body.bigMap #level_upgrade_hint {
     margin: 0;
 }
@@ -11748,16 +11743,20 @@ body.bigMap .missions-panel-head strong {
     flex-wrap: wrap;
 }
 body.bigMap #missions_outer {
-    top: 55px;
-    left: 0px;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 400px;
     height: 50%;
+    min-height: 300px;
 }
 body.bigMap #buildings_outer {
-    top: 55px;
+    position: absolute;
+    top: 0;
     right: 0px;
     width: 400px;
     height: 50%;
+    min-height: 300px;
 }
 body.bigMap #chat_outer {
     bottom: 0px;
