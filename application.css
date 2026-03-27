@@ -15995,6 +15995,9 @@ body.dark .well.hospital-boost-active {
 .nav.black-links > li.active > a {
     color: #fff;
 }
+.realative-container {
+    position: relative;
+}
 .toast-container {
     position: absolute;
     z-index: 1000;
