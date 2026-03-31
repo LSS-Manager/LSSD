@@ -15326,6 +15326,9 @@ body.dark .nav-tabs > li.active > a:focus {
 .aao_btn {
     min-height: 24px;
 }
+.aao_btn-disabled {
+    cursor: not-allowed;
+}
 .aao_btn > span {
     vertical-align: middle;
 }
