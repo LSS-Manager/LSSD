@@ -16033,6 +16033,12 @@ body.dark .well.hospital-boost-active {
 }
 .leitstelle-dropdown-search-filter {
     width: 100%;
+}
+#aao_spinner {
+    position: absolute;
+    right: 10px;
+    top: 40px;
+    z-index: 1000;
 } /*!
  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
  *

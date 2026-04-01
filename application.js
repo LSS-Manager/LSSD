@@ -2891,7 +2891,7 @@ function aao_check_old(e, t, i) {
             get_elements_for_aao(aao_source_element + ' input').forEach(
                 function (s) {
                     let o = !1;
-                    const r = vehiclesEquipmentDataById.get(s.value);
+                    const r = vehiclesEquipmentDataById.get(parseInt(s.value));
                     if ('auto_assign' === n && r) {
                         const n = r.state.equipments.filter(
                             i =>
@@ -2980,7 +2980,7 @@ function aao_old(e, t, i, n) {
         const i = $(aao_source_element + ' input');
         'auto_assign' === aaoEquipmentModes[t.attr('equipment_mode')] &&
             $.each(i, (t, i) => {
-                const n = $(i).attr('value'),
+                const n = parseInt($(i).attr('value')),
                     a = vehiclesEquipmentDataById.get(n);
                 if (a) {
                     const t = a.state.equipments
@@ -6492,11 +6492,40 @@ function scheduleAAOCalc(e) {
             });
         }, 30));
 }
-async function aaoCheckAvailable(e) {
+function scheduleSpecificAAOCalc(e, t) {
+    void 0 === e && (e = calculte_aao_time_settings),
+        window.clearTimeout(timeout_specific_aao_calc),
+        (timeout_specific_aao_calc = window.setTimeout(function () {
+            setLoadingStateToAllAao(t).then(() => {
+                aaoCheckAvailable(e, t);
+            });
+        }, 30));
+}
+function showAAOLoadingState() {
+    const e = document.getElementById('aao_spinner');
+    e && (e.style.display = '');
+}
+function hideAAOLoadingState() {
+    const e = document.getElementById('aao_spinner');
+    e && (e.style.display = 'none');
+}
+function scheduleShowAAOLoadingState() {
+    window.clearTimeout(timeout_aao_loading),
+        (timeout_aao_loading = window.setTimeout(function () {
+            showAAOLoadingState();
+        }, 10));
+}
+function scheduleHideAAOLoadingState() {
+    window.clearTimeout(timeout_aao_loading),
+        (timeout_aao_loading = window.setTimeout(function () {
+            hideAAOLoadingState();
+        }, 300));
+}
+async function aaoCheckAvailable(e, t) {
     void 0 === e && (e = calculte_aao_time_settings),
         clearElementsForAAOCheckCache(),
         scheduleJob(function () {
-            runAaosCacl(e), runVgsCacl(e);
+            runAaosCacl(e, t), runVgsCacl(e, t);
         }).then(async function () {
             await scheduleJob(function () {
                 force_aao_update = !1;
@@ -6512,19 +6541,24 @@ function shouldSplitItChunks(e) {
         get_elements_for_aao(aao_source_element + ' input').length > 100
     );
 }
-async function runAaosCacl(e) {
-    const t = findVisibleVGorAAO('.calculate_aao_time'),
-        i = md5(`aao_${t.length + performance.now()}`);
-    if ((aao_check_cache.set(i, []), shouldSplitItChunks(t.length)))
-        return runAaosInChunks(i, t, e);
+async function runAaosCacl(e, t) {
+    let i = findVisibleVGorAAO('.calculate_aao_time');
+    t &&
+        t.length > 0 &&
+        (i = i.filter(function (e) {
+            return t.includes(e.getAttribute('aao_id'));
+        }));
+    const n = md5(`aao_${i.length + performance.now()}`);
+    if ((aao_check_cache.set(n, []), shouldSplitItChunks(i.length)))
+        return runAaosInChunks(n, i, e);
     {
-        t.forEach(t => {
+        i.forEach(t => {
             aao_check_cache
-                .get(i)
+                .get(n)
                 .push(aao_available(t.getAttribute('aao_id'), e));
         });
-        const n = [createReflowAAOJob(i)];
-        await runYieldingJobs(n);
+        const t = [createReflowAAOJob(n)];
+        await runYieldingJobs(t);
     }
 }
 async function runAaosInChunks(e, t, i) {
@@ -6539,15 +6573,20 @@ async function runAaosInChunks(e, t, i) {
     }));
     n.push(createReflowAAOJob(e)), await runYieldingJobs(n);
 }
-async function runVgsCacl(e) {
-    const t = findVisibleVGorAAO('.calculate_vg_time'),
-        i = md5(`vg_${t.length + performance.now()}`);
-    if ((aao_check_cache.set(i, []), shouldSplitItChunks(t.length)))
-        return runVgsInChunks(i, t, e);
+async function runVgsCacl(e, t) {
+    let i = findVisibleVGorAAO('.calculate_vg_time');
+    t &&
+        t.length > 0 &&
+        (i = i.filter(function (e) {
+            return t.includes(e.getAttribute('vehicle_group_id'));
+        }));
+    const n = md5(`vg_${i.length + performance.now()}`);
+    if ((aao_check_cache.set(n, []), shouldSplitItChunks(i.length)))
+        return runVgsInChunks(n, i, e);
     {
-        t.forEach(t => {
+        i.forEach(t => {
             aao_check_cache
-                .get(i)
+                .get(n)
                 .push(
                     vehicle_group_available_new(
                         t.getAttribute('vehicle_group_id'),
@@ -6555,8 +6594,8 @@ async function runVgsCacl(e) {
                     )
                 );
         });
-        const n = [createReflowVGJob(i)];
-        await runYieldingJobs(n);
+        const t = [createReflowVGJob(n)];
+        await runYieldingJobs(t);
     }
 }
 async function runVgsInChunks(e, t, i) {
@@ -6726,29 +6765,35 @@ function vehicleGroupClickHandler_new(vehicle_group_element) {
         !1
     );
 }
-async function setLoadingStateToAllAao() {
+async function setLoadingStateToAllAao(e) {
     if (!update_all_aao_settings && !force_aao_update) return;
-    const e = findVisibleVGorAAO('.calculate_aao_time'),
-        t = md5(`aao_${e.length + performance.now()}`);
-    aao_check_cache.set(t, []),
-        e.forEach(e => {
-            aao_check_cache
-                .get(t)
-                .push({ aao_id: e.getAttribute('aao_id'), loading: !0 });
-        });
-    const i = findVisibleVGorAAO('.calculate_vg_time'),
-        n = md5(`vg_${i.length + performance.now()}`);
+    let t = [];
+    e && (t = e);
+    const i = findVisibleVGorAAO('.calculate_aao_time'),
+        n = md5(`aao_${i.length + performance.now()}`);
     aao_check_cache.set(n, []),
         i.forEach(e => {
-            aao_check_cache
-                .get(n)
-                .push({
-                    vehicle_group_id: e.getAttribute('vehicle_group_id'),
-                    loading: !0,
-                });
+            let i = e.getAttribute('aao_id');
+            (0 === t.length || t.includes(i)) &&
+                aao_check_cache.get(n).push({ aao_id: i, loading: !0 });
         });
-    const s = [createReflowAAOJob(t), createReflowVGJob(n)];
-    await runYieldingJobs(s);
+    const s = findVisibleVGorAAO('.calculate_vg_time'),
+        a = md5(`vg_${s.length + performance.now()}`);
+    aao_check_cache.set(a, []),
+        s.forEach(e => {
+            let i = e.getAttribute('vehicle_group_id');
+            (0 === t.length || t.includes(i)) &&
+                aao_check_cache
+                    .get(a)
+                    .push({ vehicle_group_id: i, loading: !0 });
+        });
+    const o = [];
+    if (0 !== t.length || 0 !== s.length) {
+        let e = { type: 'reflow', func: showAAOLoadingState };
+        o.push(e);
+    }
+    o.push(createReflowAAOJob(n), createReflowVGJob(a)),
+        await runYieldingJobs(o);
 }
 async function setLoadingStateToAao(e) {
     if (force_aao_update || update_all_aao_settings || !e)
@@ -6920,15 +6965,10 @@ function update_aao(e) {
         o = document.getElementById(`aao_timer_${t}`),
         r = document.getElementById(`available_aao_${t}`),
         l = document.getElementById(`available_aao_${t}_icon`);
-    if (a) {
-        if (s)
-            return (
-                l.setAttribute('class', 'glyphicon glyphicon-time'),
-                r.setAttribute('class', 'label label-default'),
-                a.classList.add('aao_btn-disabled'),
-                void (o && (o.textContent = '-'))
-            );
-        a.classList.remove('aao_btn-disabled'),
+    a &&
+        (s ?
+            a.classList.add('aao_btn-disabled')
+        :   (a.classList.remove('aao_btn-disabled'),
             o && (o.textContent = n > 0 && i ? formatTime(n) : '-'),
             r &&
                 l &&
@@ -6936,8 +6976,8 @@ function update_aao(e) {
                     (l.setAttribute('class', 'glyphicon glyphicon-ok'),
                     r.setAttribute('class', 'label label-success'))
                 :   (l.setAttribute('class', 'glyphicon glyphicon-remove'),
-                    r.setAttribute('class', 'label label-danger')));
-    }
+                    r.setAttribute('class', 'label label-danger'))),
+            scheduleHideAAOLoadingState()));
 }
 function update_vg(e) {
     if (!e) return;
@@ -6949,15 +6989,10 @@ function update_vg(e) {
         o = document.getElementById(`vehicle_group_timer_${t}`),
         r = document.getElementById(`available_${t}`),
         l = document.getElementById(`vehicle_group_${t}_icon`);
-    if (a) {
-        if (s)
-            return (
-                l.setAttribute('class', 'glyphicon glyphicon-time'),
-                r.setAttribute('class', 'label label-default'),
-                a.setAttribute('disabled', 'disabled'),
-                void (o && (o.textContent = '-'))
-            );
-        a.removeAttribute('disabled'),
+    a &&
+        (s ?
+            a.classList.add('aao_btn-disabled')
+        :   (a.classList.remove('aao_btn-disabled'),
             o && (o.textContent = n > 0 && i ? formatTime(n) : '-'),
             r &&
                 l &&
@@ -6965,8 +7000,8 @@ function update_vg(e) {
                     (l.setAttribute('class', 'glyphicon glyphicon-ok'),
                     r.setAttribute('class', 'label label-success'))
                 :   (l.setAttribute('class', 'glyphicon glyphicon-remove'),
-                    r.setAttribute('class', 'label label-danger')));
-    }
+                    r.setAttribute('class', 'label label-danger'))),
+            scheduleHideAAOLoadingState()));
 }
 function get_elements_for_aao(e) {
     return (
@@ -6988,18 +7023,19 @@ function aao(e, t, i, n) {
     return new_aao ? aao_select(e, t, i, n) : aao_old(e, t, i, n);
 }
 function aao_select(e, t, i, n) {
-    if (n <= 0) return '';
-    const s = {};
-    let a,
-        o = [];
+    if (n <= 0 || '' === n || void 0 === n) return '';
+    let s = parseInt(n);
+    const a = {};
+    let o,
+        r = [];
     if (
         (t.getAttribute('building_ids') &&
             '' !== t.getAttribute('building_ids') &&
-            (o = jQuery.parseJSON(t.getAttribute('building_ids'))),
+            (r = jQuery.parseJSON(t.getAttribute('building_ids'))),
         -1 !== e.indexOf('vehicle_type_id_'))
     ) {
         const t = parseAaoVehicleIds(e.substring(16));
-        a = get_elements_for_aao(aao_source_element + ' input').filter(
+        o = get_elements_for_aao(aao_source_element + ' input').filter(
             function (e) {
                 const i = parseInt(e.getAttribute('vehicle_type_id'));
                 return t.includes(i);
@@ -7009,37 +7045,37 @@ function aao_select(e, t, i, n) {
         const i = get_elements_for_aao(aao_source_element + ' input');
         'auto_assign' === aaoEquipmentModes[t.getAttribute('equipment_mode')] &&
             $.each(i, (t, i) => {
-                const n = i.getAttribute('value'),
-                    a = vehiclesEquipmentDataById.get(n);
-                if (a) {
-                    const t = a.state.equipments
+                const n = parseInt(i.getAttribute('value')),
+                    s = vehiclesEquipmentDataById.get(n);
+                if (s) {
+                    const t = s.state.equipments
                         .filter(e => e.isSelectPossible())
                         .filter(t => t.aaoValues[e] > 0);
-                    t.length > 0 && (s[n] = t);
+                    t.length > 0 && (a[n] = t);
                 }
             }),
-            (a = i.filter(function (t) {
+            (o = i.filter(function (t) {
                 const i = t.getAttribute('value'),
-                    n = s[i];
+                    n = a[i];
                 return t.getAttribute(e) > 0 || (n && n.length > 0);
             }));
     }
     return (
-        a.forEach(function (t) {
+        o.forEach(function (t) {
             const i = $(t),
-                a = t.getAttribute('value'),
-                r =
-                    s[a] &&
-                    s[a].filter(e => e.isSelectPossible() && !1 === e.selected)
+                n = parseInt(t.getAttribute('value')),
+                o =
+                    a[n] &&
+                    a[n].filter(e => e.isSelectPossible() && !1 === e.selected)
                         .length > 0;
-            if (n > 0 && aao_building_check_native_new(o, t)) {
+            if (s > 0 && aao_building_check_native_new(r, t)) {
                 const t = i,
-                    o = i[0];
+                    r = i[0];
                 if (
-                    (!o.checked || r) &&
-                    !o.disabled &&
-                    o.getAttribute('ignore_aao') <= 0 &&
-                    (o.getAttribute('vehicle_type_ignore_default_aao') <= 0 ||
+                    (!r.checked || o) &&
+                    !r.disabled &&
+                    r.getAttribute('ignore_aao') <= 0 &&
+                    (r.getAttribute('vehicle_type_ignore_default_aao') <= 0 ||
                         -1 !== e.indexOf('custom_'))
                 ) {
                     let i = !1;
@@ -7052,34 +7088,42 @@ function aao_select(e, t, i, n) {
                             $('#vehicle_mode_' + t.val() + '_1')
                                 .prop('checked', !0)
                                 .change(),
-                        AAO_MULTIPLE_KEYS.includes(e) ?
-                            o.getAttribute(e) &&
-                            ((i = !0), (n -= o.getAttribute(e)))
-                        :   ((i = !0), (n -= 1)),
-                        r)
-                    ) {
-                        const t = vehiclesEquipmentDataById.get(a);
+                        AAO_MULTIPLE_KEYS.includes(e))
+                    )
+                        r.getAttribute(e) &&
+                            ((i = !0), (s -= r.getAttribute(e)));
+                    else if (o) {
+                        const t = vehiclesEquipmentDataById.get(n);
                         if (t)
-                            for (const o of s[a])
+                            for (const o of a[n])
                                 o.isSelectPossible() &&
                                     !1 === o.selected &&
+                                    s > 0 &&
                                     ((o.selected = !0),
                                     t.updateSelectedEquipment(),
                                     t.applyEquipment({ selectVehicle: !1 }),
-                                    AAO_MULTIPLE_KEYS.includes(e) &&
-                                        o.aaoValues[e] &&
-                                        (n -= o.aaoValues[e]),
+                                    (
+                                        AAO_MULTIPLE_KEYS.includes(e) &&
+                                        o.aaoValues[e]
+                                    ) ?
+                                        (s -= o.aaoValues[e])
+                                    : (
+                                        AAO_MULTIPLE_KEYS.includes(e) &&
+                                        o.missionValues[e]
+                                    ) ?
+                                        (s -= o.missionValues[e])
+                                    :   (s -= 1),
                                     (i = !0));
-                    }
+                    } else (i = !0), (s -= 1);
                     i &&
-                        (o.setAttribute('aao-select', 'true'),
-                        (o.checked = !0),
+                        (r.setAttribute('aao-select', 'true'),
+                        (r.checked = !0),
                         t.change());
                 }
             }
         }),
-        n > 0 ?
-            I18n.t('javascript.missed_vehicle') + ' ' + n + ' ' + i + '. '
+        s > 0 ?
+            I18n.t('javascript.missed_vehicle') + ' ' + s + ' ' + i + '. '
         :   ''
     );
 }
@@ -7087,67 +7131,95 @@ function aao_check(e, t, i) {
     return new_aao ? aao_check_new(e, t, i) : aao_check_old(e, t, i);
 }
 function aao_check_new(e, t, i) {
-    const n = t[0];
-    let s = [],
-        a = -3;
-    if (i > 0) {
-        n.getAttribute('building_ids') &&
-            '' !== n.getAttribute('building_ids') &&
-            (s = jQuery.parseJSON(n.getAttribute('building_ids')));
-        const t = aaoEquipmentModes[n.getAttribute('equipment_mode')];
-        a = 0;
-        let o = get_elements_for_aao_key(e);
-        if (void 0 === o) {
-            if (((o = []), -1 !== e.indexOf('vehicle_type_id_'))) {
+    let n = -3;
+    if (i <= 0 || '' === i || void 0 === i) return { max_time: n };
+    let s = parseInt(i);
+    const a = t[0];
+    let o = [];
+    if (s > 0) {
+        a.getAttribute('building_ids') &&
+            '' !== a.getAttribute('building_ids') &&
+            (o = jQuery.parseJSON(a.getAttribute('building_ids')));
+        const t = aaoEquipmentModes[a.getAttribute('equipment_mode')];
+        let i = `aao_${e}_eq_${t}`;
+        n = 0;
+        const r = {};
+        let l = get_elements_for_aao_key(i);
+        if (void 0 === l) {
+            if (((l = []), -1 !== e.indexOf('vehicle_type_id_'))) {
                 let t = e.substring(16);
                 get_elements_for_aao(aao_source_element + ' input').forEach(
                     function (e) {
-                        e.getAttribute('vehicle_type_id') === t && o.push(e);
+                        e.getAttribute('vehicle_type_id') === t && l.push(e);
                     }
                 );
-            } else {
-                const n = [];
+            } else
                 get_elements_for_aao(aao_source_element + ' input').forEach(
-                    function (s) {
-                        let a = !1;
-                        const r = vehiclesEquipmentDataById.get(s.value);
-                        if ('auto_assign' === t && r) {
-                            const t = r.state.equipments.filter(
+                    function (i) {
+                        let n,
+                            s = parseInt(i.value),
+                            a = !1;
+                        if (
+                            (s && (n = vehiclesEquipmentDataById.get(s)),
+                            'auto_assign' === t && n)
+                        ) {
+                            const t = n.state.equipments.filter(
                                 t =>
-                                    !n.includes(t.id) &&
                                     t.isSelectPossible() &&
+                                    !1 === t.selected &&
                                     t.aaoValues[e] > 0
                             );
-                            if (t.length > 0) {
-                                a = !0;
-                                for (let s of t)
-                                    AAO_MULTIPLE_KEYS.includes(e) &&
-                                        !1 === s.selected &&
-                                        (i -= s.aaoValues[e]),
-                                        n.push(s.id);
-                            }
+                            t.length > 0 && ((r[s] = t), (a = !0));
                         }
-                        (s.getAttribute(e) > 0 || a) && o.push(s);
+                        (i.getAttribute(e) > 0 || a) && l.push(i);
                     }
                 );
-            }
-            set_elements_for_aao_key(e, o);
+            set_elements_for_aao_key(i, l);
         }
-        o.forEach(function (t) {
-            i > 0 &&
-                (aao_building_check_native_new(s, t) &&
-                    !t.checked &&
-                    !t.disabled &&
-                    t.getAttribute('ignore_aao') <= 0 &&
-                    (t.getAttribute('vehicle_type_ignore_default_aao') <= 0 ||
-                        -1 !== e.indexOf('custom_')) &&
-                    (AAO_MULTIPLE_KEYS.includes(e) ?
-                        t.getAttribute(e) && (i -= t.getAttribute(e))
-                    :   (i -= 1)),
-                i <= 0 && (a = getVehicleTravelTime(t.value)));
+        let c = [];
+        l.forEach(function (t) {
+            if (s > 0) {
+                let i = parseInt(t.value);
+                if (aao_building_check_native_new(o, t)) {
+                    let n = [];
+                    r[i] &&
+                        (n = r[i].filter(
+                            e => e.isSelectPossible() && !1 === e.selected
+                        ));
+                    const a = n.length > 0;
+                    if (
+                        (!t.checked || a) &&
+                        !t.disabled &&
+                        t.getAttribute('ignore_aao') <= 0 &&
+                        (t.getAttribute('vehicle_type_ignore_default_aao') <=
+                            0 ||
+                            -1 !== e.indexOf('custom_'))
+                    )
+                        if (AAO_MULTIPLE_KEYS.includes(e))
+                            t.getAttribute(e) && (s -= t.getAttribute(e));
+                        else if (a)
+                            for (let t of n)
+                                !c.includes(t.id) &&
+                                    s > 0 &&
+                                    ((
+                                        AAO_MULTIPLE_KEYS.includes(e) &&
+                                        t.aaoValues[e]
+                                    ) ?
+                                        (s -= t.aaoValues[e])
+                                    : (
+                                        AAO_MULTIPLE_KEYS.includes(e) &&
+                                        t.missionValues[e]
+                                    ) ?
+                                        (s -= t.missionValues[e])
+                                    :   (s -= 1),
+                                    c.push(t.id));
+                        else s -= 1;
+                }
+                s <= 0 && (n = getVehicleTravelTime(t.value));
+            }
         });
     }
-    return !(i > 0) && { max_time: a };
+    return !(s > 0) && { max_time: n };
 }
 function aao_building_check_native(e, t) {
     return new_aao ?
@@ -7182,21 +7254,22 @@ function aaoNearSelection(e, t, i, n, s, a) {
         :   aaoNearSelection_old(e, t, i, n, s, a);
 }
 function aaoNearSelection_new(e, t, i, n, s, a) {
-    let o = '';
-    for (; n > 0; ) {
-        let r = aaoNextAvailable_new(t, a),
+    let o = '',
+        r = parseInt(n);
+    for (; r > 0; ) {
+        let n = aaoNextAvailable_new(t, a),
             l = aaoNextAvailable_new(i, a),
             c = aaoNextAvailable_new(e, a);
-        -1 != l && -1 != r && -1 != c ?
-            r > c || l > c ?
+        -1 != l && -1 != n && -1 != c ?
+            n > c || l > c ?
                 (o += aao_select(e, a, s[1], 1))
             :   ((o += aao_select(t, a, s[1], 1)),
                 (o += aao_select(i, a, s[1], 1)))
-        : -1 != l && -1 != r ?
+        : -1 != l && -1 != n ?
             ((o += aao_select(t, a, s[1], 1)), (o += aao_select(i, a, s[1], 1)))
         : -1 != c ? (o += aao_select(e, a, s[1], 1))
-        : ((o += aao_select(s[0], a, s[1], n)), (n = 0)),
-            (n -= 1);
+        : ((o += aao_select(s[0], a, s[1], r)), (r = 0)),
+            (r -= 1);
     }
     return o;
 }
@@ -7485,18 +7558,18 @@ function initVehiclesEquipment(e, t = {}) {
                         });
                     var o = [].concat(s, a),
                         r = Array.from(new Set(o));
-                    Array.from(document.querySelectorAll('.aao'))
-                        .filter(function (e) {
-                            return r.some(function (t) {
-                                return '1' === e.getAttribute(t);
-                            });
-                        })
-                        .map(function (e) {
-                            return e.getAttribute('aao_id');
-                        })
-                        .forEach(function (e) {
-                            aao_available(e, !0);
-                        }),
+                    scheduleSpecificAAOCalc(
+                        !0,
+                        findVisibleVGorAAO('.calculate_aao_time')
+                            .filter(function (e) {
+                                return r.some(function (t) {
+                                    return '1' === e.getAttribute(t);
+                                });
+                            })
+                            .map(function (e) {
+                                return e.getAttribute('aao_id');
+                            })
+                    ),
                         t.afterAaoUpdate &&
                             t.afterAaoUpdate(
                                 b.equipments.filter(function (e) {
@@ -30298,7 +30371,7 @@ Object.values ||
             )
                 if ((n = s[a].call(i, t, e))) return n;
         }
-        function F(e, t, i) {
+        function O(e, t, i) {
             var n,
                 s,
                 a = 0,
@@ -30356,7 +30429,7 @@ Object.values ||
                     },
                 }),
                 u = c.props;
-            for (O(u, c.opts.specialEasing); a < o; a++)
+            for (F(u, c.opts.specialEasing); a < o; a++)
                 if ((n = ti[a].call(c, e, u, c.opts))) return n;
             return (
                 ue.map(u, R, c),
@@ -30371,7 +30444,7 @@ Object.values ||
                     .always(c.opts.always)
             );
         }
-        function O(e, t) {
+        function F(e, t) {
             var i, n, s, a, o;
             for (i in e)
                 if (
@@ -31532,8 +31605,8 @@ Object.values ||
                     W,
                     N,
                     R,
-                    F,
                     O,
+                    F,
                     $,
                     H = 'sizzle' + -new Date(),
                     V = e.document,
@@ -31798,7 +31871,7 @@ Object.values ||
                                         )
                                             return t.getElementsByClassName(e);
                                     }),
-                                (F = []),
+                                (O = []),
                                 (R = []),
                                 (S.qsa = n(t.querySelectorAll)) &&
                                     (o(function (e) {
@@ -31836,22 +31909,22 @@ Object.values ||
                                             R.push(',.*:');
                                     })),
                                 (S.matchesSelector = n(
-                                    (O =
+                                    (F =
                                         W.webkitMatchesSelector ||
                                         W.mozMatchesSelector ||
                                         W.oMatchesSelector ||
                                         W.msMatchesSelector)
                                 )) &&
                                     o(function (e) {
-                                        (S.disconnectedMatch = O.call(
+                                        (S.disconnectedMatch = F.call(
                                             e,
                                             'div'
                                         )),
-                                            O.call(e, "[s!='']:x"),
-                                            F.push('!=', pe);
+                                            F.call(e, "[s!='']:x"),
+                                            O.push('!=', pe);
                                     }),
                                 (R = R.length && new RegExp(R.join('|'))),
-                                (F = F.length && new RegExp(F.join('|'))),
+                                (O = O.length && new RegExp(O.join('|'))),
                                 ($ =
                                     n(W.contains) || W.compareDocumentPosition ?
                                         function (e, t) {
@@ -31962,11 +32035,11 @@ Object.values ||
                         (t = t.replace(ve, "='$1']")),
                         S.matchesSelector &&
                             N &&
-                            (!F || !F.test(t)) &&
+                            (!O || !O.test(t)) &&
                             (!R || !R.test(t)))
                     )
                         try {
-                            var n = O.call(e, t);
+                            var n = F.call(e, t);
                             if (
                                 n ||
                                 S.disconnectedMatch ||
@@ -33569,8 +33642,8 @@ Object.values ||
         var We = /^(?:input|select|textarea)$/i,
             Ne = /^key/,
             Re = /^(?:mouse|contextmenu)|click/,
-            Fe = /^(?:focusinfocus|focusoutblur)$/,
-            Oe = /^([^.]*)(?:\.(.+)|)$/;
+            Oe = /^(?:focusinfocus|focusoutblur)$/,
+            Fe = /^([^.]*)(?:\.(.+)|)$/;
         (ue.event = {
             global: {},
             add: function (e, i, n, s, a) {
@@ -33611,7 +33684,7 @@ Object.values ||
                         l--;
 
                     )
-                        (m = f = (o = Oe.exec(i[l]) || [])[1]),
+                        (m = f = (o = Fe.exec(i[l]) || [])[1]),
                             (_ = (o[2] || '').split('.').sort()),
                             m &&
                                 ((u = ue.event.special[m] || {}),
@@ -33667,7 +33740,7 @@ Object.values ||
                 if (f && (u = f.events)) {
                     for (c = (t = (t || '').match(he) || ['']).length; c--; )
                         if (
-                            ((p = _ = (r = Oe.exec(t[c]) || [])[1]),
+                            ((p = _ = (r = Fe.exec(t[c]) || [])[1]),
                             (m = (r[2] || '').split('.').sort()),
                             p)
                         ) {
@@ -33728,7 +33801,7 @@ Object.values ||
                     ((l = d = s = s || Y),
                     3 !== s.nodeType &&
                         8 !== s.nodeType &&
-                        !Fe.test(m + ue.event.triggered) &&
+                        !Oe.test(m + ue.event.triggered) &&
                         (m.indexOf('.') >= 0 &&
                             ((_ = m.split('.')), (m = _.shift()), _.sort()),
                         (r = m.indexOf(':') < 0 && 'on' + m),
@@ -33757,7 +33830,7 @@ Object.values ||
                     if (!a && !u.noBubble && !ue.isWindow(s)) {
                         for (
                             c = u.delegateType || m,
-                                Fe.test(c + m) || (l = l.parentNode);
+                                Oe.test(c + m) || (l = l.parentNode);
                             l;
                             l = l.parentNode
                         )
@@ -35437,8 +35510,8 @@ Object.values ||
             Wt = /^(?:GET|HEAD)$/,
             Nt = /^\/\//,
             Rt = /^([\w.+-]+:)(?:\/\/([^\/?#:]*)(?::(\d+)|)|)/,
-            Ft = ue.fn.load,
-            Ot = {},
+            Ot = ue.fn.load,
+            Ft = {},
             $t = {},
             Ht = '*/'.concat('*');
         try {
@@ -35448,8 +35521,8 @@ Object.values ||
         }
         (Ct = Rt.exec(Mt.toLowerCase()) || []),
             (ue.fn.load = function (e, i, n) {
-                if ('string' != typeof e && Ft)
-                    return Ft.apply(this, arguments);
+                if ('string' != typeof e && Ot)
+                    return Ot.apply(this, arguments);
                 var s,
                     a,
                     o,
@@ -35541,7 +35614,7 @@ Object.values ||
                             L(L(e, ue.ajaxSettings), t)
                         :   L(ue.ajaxSettings, e);
                 },
-                ajaxPrefilter: P(Ot),
+                ajaxPrefilter: P(Ft),
                 ajaxTransport: P($t),
                 ajax: function (e, i) {
                     function n(e, i, n, s) {
@@ -35679,7 +35752,7 @@ Object.values ||
                             h.processData &&
                             'string' != typeof h.data &&
                             (h.data = ue.param(h.data, h.traditional)),
-                        I(Ot, h, i, k),
+                        I(Ft, h, i, k),
                         2 === y)
                     )
                         return k;
@@ -36018,7 +36091,7 @@ Object.values ||
                     },
                 ],
             };
-        (ue.Animation = ue.extend(F, {
+        (ue.Animation = ue.extend(O, {
             tweener: function (e, t) {
                 ue.isFunction(e) ? ((t = e), (e = ['*'])) : (e = e.split(' '));
                 for (var i, n = 0, s = e.length; n < s; n++)
@@ -36130,7 +36203,7 @@ Object.values ||
                     var s = ue.isEmptyObject(e),
                         a = ue.speed(t, i, n),
                         o = function () {
-                            var t = F(this, ue.extend({}, e), a);
+                            var t = O(this, ue.extend({}, e), a);
                             (o.finish = function () {
                                 t.stop(!0);
                             }),
@@ -45183,9 +45256,9 @@ Object.values ||
                         W,
                         N,
                         R,
-                        F = new Date(),
-                        O = this._daylightSavingAdjust(
-                            new Date(F.getFullYear(), F.getMonth(), F.getDate())
+                        O = new Date(),
+                        F = this._daylightSavingAdjust(
+                            new Date(O.getFullYear(), O.getMonth(), O.getDate())
                         ),
                         $ = this._get(e, 'isRTL'),
                         H = this._get(e, 'showButtonPanel'),
@@ -45285,7 +45358,7 @@ Object.values ||
                             r =
                                 this._get(e, 'gotoCurrent') && e.currentDay ?
                                     Y
-                                :   O,
+                                :   F,
                             o =
                                 q ?
                                     this.formatDate(
@@ -45487,7 +45560,7 @@ Object.values ||
                                                 (D.getTime() === Y.getTime() ?
                                                     ' ' + this._currentClass
                                                 :   '') +
-                                                (D.getTime() === O.getTime() ?
+                                                (D.getTime() === F.getTime() ?
                                                     ' ui-datepicker-today'
                                                 :   '')
                                             )) +
@@ -45511,7 +45584,7 @@ Object.values ||
                                                 D.getDate() +
                                                 '</span>'
                                             :   "<a class='ui-state-default" +
-                                                (D.getTime() === O.getTime() ?
+                                                (D.getTime() === F.getTime() ?
                                                     ' ui-state-highlight'
                                                 :   '') +
                                                 (D.getTime() === Y.getTime() ?
@@ -55985,10 +56058,10 @@ Object.values ||
                 e.addEventListener('click', i), { dblclick: t, simDblclick: i }
             );
         }
-        function F(e) {
+        function O(e) {
             return 'string' == typeof e ? document.getElementById(e) : e;
         }
-        function O(e, t) {
+        function F(e, t) {
             var i = e.style[t] || (e.currentStyle && e.currentStyle[t]);
             return (
                     'auto' ===
@@ -56570,14 +56643,14 @@ Object.values ||
                 (n = t ? Re(e[a], t - 1, i) : (i || Ne)(e[a])), s.push(n);
             return s;
         }
-        function Fe(e, t) {
+        function Oe(e, t) {
             return void 0 !== (e = S(e)).alt ?
                     [l(e.lng, t), l(e.lat, t), l(e.alt, t)]
                 :   [l(e.lng, t), l(e.lat, t)];
         }
-        function Oe(e, t, i, n) {
+        function Fe(e, t, i, n) {
             for (var s = [], a = 0, o = e.length; a < o; a++)
-                s.push(t ? Oe(e[a], Le(e[a]) ? 0 : t - 1, i, n) : Fe(e[a], n));
+                s.push(t ? Fe(e[a], Le(e[a]) ? 0 : t - 1, i, n) : Oe(e[a], n));
             return !t && i && 0 < s.length && s.push(s[0].slice()), s;
         }
         function $e(e, i) {
@@ -56592,7 +56665,7 @@ Object.values ||
             return new Ii(e, t);
         }
         function qe(e, t) {
-            return new Oi(e, t);
+            return new Fi(e, t);
         }
         function Ge(e) {
             return Ut.canvas ? new Vi(e) : null;
@@ -57386,8 +57459,8 @@ Object.values ||
             Wt = !window.PointerEvent && window.MSPointerEvent,
             Nt = !(!window.PointerEvent && !Wt),
             Rt = 'ontouchstart' in window || !!window.TouchEvent,
-            Ft = !window.L_NO_TOUCH && (Rt || Nt),
-            Ot = Zi && Tt,
+            Ot = !window.L_NO_TOUCH && (Rt || Nt),
+            Ft = Zi && Tt,
             $t = Zi && St,
             Ht =
                 1 <
@@ -57441,9 +57514,9 @@ Object.values ||
                 mobileWebkit3d: Bt,
                 msPointer: Wt,
                 pointer: Nt,
-                touch: Ft,
+                touch: Ot,
                 touchNative: Rt,
-                mobileOpera: Ot,
+                mobileOpera: Ft,
                 mobileGecko: $t,
                 retina: Ht,
                 passiveEvents: Vt,
@@ -57543,8 +57616,8 @@ Object.values ||
                 TRANSFORM: si,
                 TRANSITION: ai,
                 TRANSITION_END: oi,
-                get: F,
-                getStyle: O,
+                get: O,
+                getStyle: F,
                 create: $,
                 remove: H,
                 empty: V,
@@ -58332,7 +58405,7 @@ Object.values ||
                     );
                 },
                 _initContainer: function (e) {
-                    if (!(e = this._container = F(e)))
+                    if (!(e = this._container = O(e)))
                         throw new Error('Map container not found.');
                     if (e._leaflet_id)
                         throw new Error(
@@ -58356,7 +58429,7 @@ Object.values ||
                                     (this._fadeAnimated ? ' leaflet-fade-anim'
                                     :   '')
                             ),
-                            O(e, 'position'));
+                            F(e, 'position'));
                     'absolute' !== t &&
                         'relative' !== t &&
                         'fixed' !== t &&
@@ -60149,7 +60222,7 @@ Object.values ||
                             'leaflet-default-icon-path',
                             document.body
                         ),
-                        t = O(e, 'background-image') || O(e, 'backgroundImage');
+                        t = F(e, 'background-image') || F(e, 'backgroundImage');
                     return (
                         document.body.removeChild(e),
                         (t = this._stripUrl(t)) ? t
@@ -60982,7 +61055,7 @@ Object.values ||
             toGeoJSON: function (e) {
                 return $e(this, {
                     type: 'Point',
-                    coordinates: Fe(this.getLatLng(), e),
+                    coordinates: Oe(this.getLatLng(), e),
                 });
             },
         }),
@@ -60994,7 +61067,7 @@ Object.values ||
                     var t = !Le(this._latlngs);
                     return $e(this, {
                         type: (t ? 'Multi' : '') + 'LineString',
-                        coordinates: Oe(this._latlngs, t ? 1 : 0, !1, e),
+                        coordinates: Fe(this._latlngs, t ? 1 : 0, !1, e),
                     });
                 },
             }),
@@ -61002,7 +61075,7 @@ Object.values ||
                 toGeoJSON: function (e) {
                     var t = !Le(this._latlngs),
                         i = t && !Le(this._latlngs[0]);
-                    e = Oe(
+                    e = Fe(
                         this._latlngs,
                         i ? 2
                         : t ? 1
@@ -61600,7 +61673,7 @@ Object.values ||
                             :   ((e = this._map),
                                 (t =
                                     parseInt(
-                                        O(this._container, 'marginBottom'),
+                                        F(this._container, 'marginBottom'),
                                         10
                                     ) || 0),
                                 (t = this._container.offsetHeight + t),
@@ -62040,7 +62113,7 @@ Object.values ||
                     },
                 }));
         zi.Default = xi;
-        var Fi = Mt.extend({
+        var Oi = Mt.extend({
                 options: {
                     tileSize: 256,
                     opacity: 1,
@@ -62624,7 +62697,7 @@ Object.values ||
                     return !0;
                 },
             }),
-            Oi = Fi.extend({
+            Fi = Oi.extend({
                 options: {
                     minZoom: 0,
                     maxZoom: 18,
@@ -62754,15 +62827,15 @@ Object.values ||
                     if (t)
                         return (
                             t.el.setAttribute('src', Qe),
-                            Fi.prototype._removeTile.call(this, e)
+                            Oi.prototype._removeTile.call(this, e)
                         );
                 },
                 _tileReady: function (e, t, i) {
                     if (this._map && (!i || i.getAttribute('src') !== Qe))
-                        return Fi.prototype._tileReady.call(this, e, t, i);
+                        return Oi.prototype._tileReady.call(this, e, t, i);
                 },
             }),
-            $i = Oi.extend({
+            $i = Fi.extend({
                 defaultWmsParams: {
                     service: 'WMS',
                     request: 'GetMap',
@@ -62789,7 +62862,7 @@ Object.values ||
                         (this._wmsVersion = parseFloat(this.wmsParams.version));
                     var t = 1.3 <= this._wmsVersion ? 'crs' : 'srs';
                     (this.wmsParams[t] = this._crs.code),
-                        Oi.prototype.onAdd.call(this, e);
+                        Fi.prototype.onAdd.call(this, e);
                 },
                 getTileUrl: function (e) {
                     var t = this._tileCoordsToNwSe(e),
@@ -62804,7 +62877,7 @@ Object.values ||
                             [t.y, t.x, i.y, i.x]
                         :   [t.x, t.y, i.x, i.y]).join(',');
                     return (
-                        (i = Oi.prototype.getTileUrl.call(this, e)) +
+                        (i = Fi.prototype.getTileUrl.call(this, e)) +
                         h(this.wmsParams, i, this.options.uppercase) +
                         (this.options.uppercase ? '&BBOX=' : '&bbox=') +
                         t
@@ -62814,7 +62887,7 @@ Object.values ||
                     return t(this.wmsParams, e), i || this.redraw(), this;
                 },
             });
-        (Oi.WMS = $i),
+        (Fi.WMS = $i),
             (qe.wms = function (e, t) {
                 return new $i(e, t);
             });
@@ -63497,8 +63570,8 @@ Object.values ||
             (Ii.geometryToLayer = Be),
             (Ii.coordsToLatLng = Ne),
             (Ii.coordsToLatLngs = Re),
-            (Ii.latLngToCoords = Fe),
-            (Ii.latLngsToCoords = Oe),
+            (Ii.latLngToCoords = Oe),
+            (Ii.latLngsToCoords = Fe),
             (Ii.getFeature = $e),
             (Ii.asFeature = He),
             hi.mergeOptions({ boxZoom: !0 });
@@ -64337,7 +64410,7 @@ Object.values ||
                 (e.Evented = st),
                 (e.FeatureGroup = ki),
                 (e.GeoJSON = Ii),
-                (e.GridLayer = Fi),
+                (e.GridLayer = Oi),
                 (e.Handler = yt),
                 (e.Icon = zi),
                 (e.ImageOverlay = Li),
@@ -64361,7 +64434,7 @@ Object.values ||
                 (e.Renderer = Hi),
                 (e.SVG = Ki),
                 (e.SVGOverlay = ji),
-                (e.TileLayer = Oi),
+                (e.TileLayer = Fi),
                 (e.Tooltip = Ni),
                 (e.Transformation = E),
                 (e.Util = it),
@@ -64386,7 +64459,7 @@ Object.values ||
                 (e.geoJSON = Ve),
                 (e.geoJson = It),
                 (e.gridLayer = function (e) {
-                    return new Fi(e);
+                    return new Oi(e);
                 }),
                 (e.icon = function (e) {
                     return new zi(e);
@@ -66419,6 +66492,8 @@ var pauseTick = !1,
     aao_check_cache = new Map(),
     calculte_aao_time_settings = !1,
     timeout_aao_calc = null,
+    timeout_specific_aao_calc = null,
+    timeout_aao_loading = null,
     update_all_aao_settings = !1,
     new_aao = !0,
     force_aao_update = !1;
@@ -72174,7 +72249,7 @@ if (
                 (!k(e, 'p,div') || e.className || _(e, 'style') || !i(w(e)))
             );
         }
-        function F(e, t) {
+        function O(e, t) {
             var i = r(t, {}, e.ownerDocument);
             for (
                 a(e.attributes, function (e, t) {
@@ -72188,7 +72263,7 @@ if (
                 d(i, e.firstChild);
             return e.parentNode.replaceChild(i, e), i;
         }
-        function O(e) {
+        function F(e) {
             return (
                 !!/11?|9/.test(e.nodeType) &&
                 '|iframe|area|base|basefont|br|col|frame|hr|img|input|wbr|isindex|link|meta|param|command|embed|keygen|source|track|object|'.indexOf(
@@ -72491,7 +72566,7 @@ if (
                     ) {
                         for (; !$(c.lastChild, !0); ) c = c.lastChild;
                         if (
-                            (O(c) ?
+                            (F(c) ?
                                 c.lastChild ||
                                 d(c, document.createTextNode('\u200b'))
                             :   (c = u),
@@ -72512,7 +72587,7 @@ if (
                         a = s.commonAncestorContainer;
                     if (!i) return !1;
                     s.deleteContents(),
-                        a && 3 !== a.nodeType && !O(a) ?
+                        a && 3 !== a.nodeType && !F(a) ?
                             T(i, a)
                         :   s.insertNode(i),
                         l.restoreRange();
@@ -72839,8 +72914,8 @@ if (
                 Ie,
                 Le,
                 Re,
-                Fe,
                 Oe,
+                Fe,
                 $e,
                 He,
                 Ve,
@@ -72895,8 +72970,8 @@ if (
                         He(),
                         Re(),
                         Pe(),
-                        Fe(),
                         Oe(),
+                        Fe(),
                         Ae || _t.toggleSourceMode(),
                         tt();
                     var n = function () {
@@ -72965,7 +73040,7 @@ if (
                     var n = kt.placeholder || _(e, 'placeholder');
                     n && ((j.placeholder = n), _(x, 'placeholder', n));
                 }),
-                (Fe = function () {
+                (Oe = function () {
                     kt.autoUpdate && (p(x, 'blur', pt), p(j, 'blur', pt)),
                         null === kt.rtl &&
                             (kt.rtl = 'rtl' === y(j, 'direction')),
@@ -72976,7 +73051,7 @@ if (
                         _(o, 'id', kt.id),
                         _t.emoticons(kt.emoticonsEnabled);
                 }),
-                (Oe = function () {
+                (Fe = function () {
                     var t = e.form,
                         i = 'compositionstart compositionend',
                         n = 'keydown keyup keypress focus blur contextmenu',
@@ -73217,7 +73292,7 @@ if (
                                         i.previousSibling &&
                                         (i = i.previousSibling);
                         (e = A.createRange()),
-                            O(i) ?
+                            F(i) ?
                                 e.selectNodeContents(i)
                             :   (e.setStartBefore(i), n && e.setStartAfter(i)),
                             e.collapse(!n),
@@ -74093,7 +74168,7 @@ if (
                             (e.className = ''),
                             (N = null),
                             _(e, 'style', ''),
-                            k(e, 'p,div,td') || F(e, 'p'),
+                            k(e, 'p,div,td') || O(e, 'p'),
                             U.restoreRange()),
                         _t
                     );
@@ -75062,9 +75137,9 @@ if (
                     rTraverse: W,
                     parseHTML: N,
                     hasStyling: R,
-                    convertElement: F,
+                    convertElement: O,
                     blockLevelList: ye,
-                    canHaveChildren: O,
+                    canHaveChildren: F,
                     isInline: $,
                     copyCSS: H,
                     fixNesting: V,
@@ -75382,7 +75457,7 @@ if (
                 (!k(e, 'p,div') || e.className || _(e, 'style') || !i(w(e)))
             );
         }
-        function F(e, t) {
+        function O(e, t) {
             var i = r(t, {}, e.ownerDocument);
             for (
                 a(e.attributes, function (e, t) {
@@ -75396,7 +75471,7 @@ if (
                 d(i, e.firstChild);
             return e.parentNode.replaceChild(i, e), i;
         }
-        function O(e) {
+        function F(e) {
             return (
                 !!/11?|9/.test(e.nodeType) &&
                 '|iframe|area|base|basefont|br|col|frame|hr|img|input|wbr|isindex|link|meta|param|command|embed|keygen|source|track|object|'.indexOf(
@@ -75699,7 +75774,7 @@ if (
                     ) {
                         for (; !$(c.lastChild, !0); ) c = c.lastChild;
                         if (
-                            (O(c) ?
+                            (F(c) ?
                                 c.lastChild ||
                                 d(c, document.createTextNode('\u200b'))
                             :   (c = u),
@@ -75720,7 +75795,7 @@ if (
                         a = s.commonAncestorContainer;
                     if (!i) return !1;
                     s.deleteContents(),
-                        a && 3 !== a.nodeType && !O(a) ?
+                        a && 3 !== a.nodeType && !F(a) ?
                             T(i, a)
                         :   s.insertNode(i),
                         l.restoreRange();
@@ -76047,8 +76122,8 @@ if (
                 Ie,
                 Le,
                 Re,
-                Fe,
                 Oe,
+                Fe,
                 $e,
                 He,
                 Ve,
@@ -76103,8 +76178,8 @@ if (
                         He(),
                         Re(),
                         Pe(),
-                        Fe(),
                         Oe(),
+                        Fe(),
                         Ae || _t.toggleSourceMode(),
                         tt();
                     var n = function () {
@@ -76173,7 +76248,7 @@ if (
                     var n = kt.placeholder || _(e, 'placeholder');
                     n && ((j.placeholder = n), _(x, 'placeholder', n));
                 }),
-                (Fe = function () {
+                (Oe = function () {
                     kt.autoUpdate && (p(x, 'blur', pt), p(j, 'blur', pt)),
                         null === kt.rtl &&
                             (kt.rtl = 'rtl' === y(j, 'direction')),
@@ -76184,7 +76259,7 @@ if (
                         _(o, 'id', kt.id),
                         _t.emoticons(kt.emoticonsEnabled);
                 }),
-                (Oe = function () {
+                (Fe = function () {
                     var t = e.form,
                         i = 'compositionstart compositionend',
                         n = 'keydown keyup keypress focus blur contextmenu',
@@ -76425,7 +76500,7 @@ if (
                                         i.previousSibling &&
                                         (i = i.previousSibling);
                         (e = A.createRange()),
-                            O(i) ?
+                            F(i) ?
                                 e.selectNodeContents(i)
                             :   (e.setStartBefore(i), n && e.setStartAfter(i)),
                             e.collapse(!n),
@@ -77301,7 +77376,7 @@ if (
                             (e.className = ''),
                             (N = null),
                             _(e, 'style', ''),
-                            k(e, 'p,div,td') || F(e, 'p'),
+                            k(e, 'p,div,td') || O(e, 'p'),
                             U.restoreRange()),
                         _t
                     );
@@ -78270,9 +78345,9 @@ if (
                     rTraverse: W,
                     parseHTML: N,
                     hasStyling: R,
-                    convertElement: F,
+                    convertElement: O,
                     blockLevelList: ye,
-                    canHaveChildren: O,
+                    canHaveChildren: F,
                     isInline: $,
                     copyCSS: H,
                     fixNesting: V,
