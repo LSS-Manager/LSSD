@@ -1,0 +1,3466 @@
+diff --git a/application.js b/application.alt.js
+index 49226c5..89ea939 100644
+--- a/application.js
++++ b/application.alt.js
+@@ -9402,7 +9402,6 @@ function selectEncoding() {
+     (I18n.translations.de_DE = {
+         common: {
+             add: 'Hinzuf\xfcgen',
+-            add_all: 'Alle hinzuf\xfcgen',
+             all: 'Alle',
+             around: 'Rund um %{target}',
+             arrives_in: 'Ankunft in',
+@@ -9416,16 +9415,12 @@ function selectEncoding() {
+             content: 'Inhalt',
+             copy: 'Kopieren',
+             credits: 'Credits',
+-            credits_max: 'Max. Credits',
+-            credits_min: 'Min. Credits',
+             custom_missions: 'Verbands-Gro\xdfeinsatz',
+             delete: 'L\xf6schen',
+             description: 'Beschreibung',
+             details: 'Details',
+             edit: 'Bearbeiten',
+             error: 'Fehler',
+-            filtered_count: 'Gefiltert: %{count}',
+-            filters: 'Filter',
+             graphic_image: {
+                 upload_requirements:
+                     'Unterst\xfctzte Formate: %{formats}. Bild darf nicht gr\xf6\xdfer sein als: %{size}. Bild sollte folgenden Dimensionen entsprechen: %{dimensions}.',
+@@ -9439,7 +9434,6 @@ function selectEncoding() {
+             loading: 'Lade...',
+             message_for_education:
+                 'Die Person wird nicht mit ausr\xfccken, da die ben\xf6tigte Ausbildung fehlt.',
+-            missions_per_page: '%{count} Eins\xe4tze',
+             name: 'Name',
+             no: 'Nein',
+             none: 'Keine',
+@@ -9452,19 +9446,10 @@ function selectEncoding() {
+                     'Das Personal wird nur mit ausr\xfccken, wenn die ben\xf6tigte Ausbildung abgeschlossen ist. ',
+             },
+             release_at: 'Entlassung in',
+-            remove_all: 'Alle entfernen',
+             save: 'Speichern',
+             search: 'Suchen',
+             show: 'Anzeigen',
+             sort: 'Sortieren:',
+-            sort_by: {
+-                credits: 'Credits',
+-                default: 'Standard',
+-                mission_type: 'Einsatzart',
+-                name: 'Name',
+-                poi: 'POI',
+-                requirements: 'Voraussetzungen',
+-            },
+             sorting: {
+                 caption_asc: 'A bis Z',
+                 caption_desc: 'Z bis A',
+@@ -9480,7 +9465,6 @@ function selectEncoding() {
+                 },
+             },
+             time_in_minutes: 'Zeit in Minuten',
+-            total_count: 'Insgesamt: %{count}',
+             type: 'Art:',
+             user_not_found: 'User nicht gefunden',
+             wrong_key: 'Key falsch',
+@@ -9837,7 +9821,6 @@ function selectEncoding() {
+                 },
+             },
+             arrival: 'Ankunft',
+-            available_vehicles_count: 'Du hast %{count} Fahrzeuge',
+             backalarm: 'R\xfcckalarmieren',
+             coins: 'Coins',
+             collapse: 'Ausblenden',
+@@ -9893,7 +9876,6 @@ function selectEncoding() {
+             sale: 'Sale',
+             sale_ended: 'Sonderangebote beendet',
+             secounds: 'Sek.',
+-            selected_vehicles_count: 'Du hast %{count} Fahrzeuge ausgew\xe4hlt',
+             show_all: 'Alle anzeigen',
+             show_less: 'Weniger anzeigen',
+             show_more: 'Mehr anzeigen',
+@@ -10426,7 +10408,6 @@ function selectEncoding() {
+     (I18n.translations.en_US = {
+         common: {
+             add: 'Add',
+-            add_all: 'Add all',
+             all: 'All',
+             around: 'Around %{target}',
+             back: 'Back',
+@@ -10439,16 +10420,12 @@ function selectEncoding() {
+             content: 'Content',
+             copy: 'Copy',
+             credits: 'Credits',
+-            credits_max: 'Max Credits',
+-            credits_min: 'Min Credits',
+             custom_missions: 'Large Scale Alliance Mission',
+             delete: 'Delete',
+             description: 'Description',
+             details: 'Details',
+             edit: 'Edit',
+             error: 'Error',
+-            filtered_count: 'Filtered: %{count}',
+-            filters: 'Filters',
+             graphic_image: {
+                 upload_requirements:
+                     'Supported formats: %{formats}. Image size cannot be bigger than: %{size}. Image should fit: %{dimensions}.',
+@@ -10462,7 +10439,6 @@ function selectEncoding() {
+             loading: 'Loading...',
+             message_for_education:
+                 'This person will not be dispatched with the vehicle because it is missing the necessary education!',
+-            missions_per_page: '%{count} missions',
+             name: 'Name',
+             no: 'no',
+             none: 'None',
+@@ -10475,19 +10451,10 @@ function selectEncoding() {
+                     'Personnel will only be dispatched with the vehicle if it has acquired the necessary education!',
+             },
+             release_at: 'Release in',
+-            remove_all: 'Remove all',
+             save: 'Save',
+             search: 'Search',
+             show: 'Show',
+             sort: 'Sort:',
+-            sort_by: {
+-                credits: 'Credits',
+-                default: 'Default',
+-                mission_type: 'Mission Type',
+-                name: 'Name',
+-                poi: 'POI',
+-                requirements: 'Requirements',
+-            },
+             sorting: {
+                 caption_asc: 'A to Z',
+                 caption_desc: 'Z to A',
+@@ -10503,7 +10470,6 @@ function selectEncoding() {
+                 },
+             },
+             time_in_minutes: 'Time in minutes',
+-            total_count: 'Total: %{count}',
+             type: 'Type:',
+             user_not_found: 'User not found',
+             wrong_key: 'Wrong key',
+@@ -10799,7 +10765,6 @@ function selectEncoding() {
+                 },
+             },
+             arrival: 'Arrival',
+-            available_vehicles_count: 'You have %{count} vehicles',
+             backalarm: 'Cancel',
+             coins: 'Coins',
+             collapse: 'Collapse',
+@@ -10855,7 +10820,6 @@ function selectEncoding() {
+             sale: 'Sale',
+             sale_ended: 'Sale ended',
+             secounds: 'sec.',
+-            selected_vehicles_count: "You've selected %{count} vehicles",
+             show_all: 'Show All',
+             show_less: 'Show Less',
+             show_more: 'Show More',
+@@ -11381,7 +11345,6 @@ function selectEncoding() {
+     (I18n.translations.en_GB = {
+         common: {
+             add: 'Add',
+-            add_all: 'Add all',
+             all: 'All',
+             around: 'Around %{target}',
+             back: 'Back',
+@@ -11394,16 +11357,12 @@ function selectEncoding() {
+             content: 'Content',
+             copy: 'Copy',
+             credits: 'Credits',
+-            credits_max: 'Max Credits',
+-            credits_min: 'Min Credits',
+             custom_missions: 'Large Scale Alliance Mission',
+             delete: 'Delete',
+             description: 'Description',
+             details: 'Details',
+             edit: 'Edit',
+             error: 'Error',
+-            filtered_count: 'Filtered: %{count}',
+-            filters: 'Filters',
+             graphic_image: {
+                 upload_requirements:
+                     'Supported formats: %{formats}. Image size cannot be bigger than: %{size}. Image should fit: %{dimensions}.',
+@@ -11417,7 +11376,6 @@ function selectEncoding() {
+             loading: 'Loading...',
+             message_for_education:
+                 'This person will not be dispatched with the vehicle because it is missing the necessary education!',
+-            missions_per_page: '%{count} missions',
+             name: 'Name',
+             no: 'no',
+             none: 'None',
+@@ -11430,19 +11388,10 @@ function selectEncoding() {
+                     'Personnel will only be dispatched with the vehicle if it has acquired the necessary education!',
+             },
+             release_at: 'Release in',
+-            remove_all: 'Remove all',
+             save: 'Save',
+             search: 'Search',
+             show: 'Show',
+             sort: 'Sort:',
+-            sort_by: {
+-                credits: 'Credits',
+-                default: 'Default',
+-                mission_type: 'Mission Type',
+-                name: 'Name',
+-                poi: 'POI',
+-                requirements: 'Requirements',
+-            },
+             sorting: {
+                 caption_asc: 'A to Z',
+                 caption_desc: 'Z to A',
+@@ -11458,7 +11407,6 @@ function selectEncoding() {
+                 },
+             },
+             time_in_minutes: 'Time in minutes',
+-            total_count: 'Total: %{count}',
+             type: 'Type:',
+             user_not_found: 'User not found',
+             wrong_key: 'Wrong key',
+@@ -11774,7 +11722,6 @@ function selectEncoding() {
+                 },
+             },
+             arrival: 'Arrival',
+-            available_vehicles_count: 'You have %{count} vehicles',
+             backalarm: 'Cancel',
+             coins: 'Coins',
+             collapse: 'Collapse',
+@@ -11830,7 +11777,6 @@ function selectEncoding() {
+             sale: 'Sale',
+             sale_ended: 'Sale ended',
+             secounds: 'sec.',
+-            selected_vehicles_count: "You've selected %{count} vehicles",
+             show_all: 'Show All',
+             show_less: 'Show Less',
+             show_more: 'Show More',
+@@ -12373,7 +12319,6 @@ function selectEncoding() {
+     (I18n.translations.nl_NL = {
+         common: {
+             add: 'Toevoegen',
+-            add_all: 'Alles toevoegen',
+             all: 'Allemaal',
+             around: 'Rond %{target}',
+             back: 'Terug',
+@@ -12386,16 +12331,12 @@ function selectEncoding() {
+             content: 'Inhoud',
+             copy: 'kopi\xebren',
+             credits: 'Credits',
+-            credits_max: 'Max. Credits',
+-            credits_min: 'Min. Credits',
+             custom_missions: 'Grote inzet ',
+             delete: 'Verwijderen',
+             description: 'Beschrijving',
+             details: 'Details',
+             edit: 'Bewerken',
+             error: 'Error',
+-            filtered_count: 'Gefilterd: %{count}',
+-            filters: 'Filters',
+             graphic_image: {
+                 upload_requirements:
+                     'Ondersteunde formaten: %{formats}. Afbeelding mag niet groter zijn dan: %{size}. Afbeelding moet voldoen aan de volgende afmetingen: %{dimensions}.',
+@@ -12409,7 +12350,6 @@ function selectEncoding() {
+             loading: 'Laden...',
+             message_for_education:
+                 'Deze werknemer wordt niet uitgezonden met het voertuig omdat de vereiste opleiding niet voltooid is.',
+-            missions_per_page: '%{count} inzetten',
+             name: 'Naam',
+             no: 'Nee',
+             none: 'Geen',
+@@ -12422,19 +12362,10 @@ function selectEncoding() {
+                     'Werknemers worden alleen uitgezonden met het voertuig als ze de vereiste opleiding voltooid hebben.',
+             },
+             release_at: 'Ontslagen in',
+-            remove_all: 'Alles verwijderen',
+             save: 'Opslaan',
+             search: 'Zoeken',
+             show: 'Bekijken',
+             sort: 'Sorteren:',
+-            sort_by: {
+-                credits: 'Credits',
+-                default: 'Standaard',
+-                mission_type: 'Incident keuze',
+-                name: 'Naam',
+-                poi: 'Point of Interest',
+-                requirements: 'Vereisten',
+-            },
+             sorting: {
+                 caption_asc: 'A tot Z',
+                 caption_desc: 'Z tot A',
+@@ -12450,7 +12381,6 @@ function selectEncoding() {
+                 },
+             },
+             time_in_minutes: 'Tijd in minuten',
+-            total_count: 'Totaal: %{count}',
+             type: 'Type:',
+             user_not_found: 'Gebruiker niet gevonden',
+             wrong_key: 'Verkeerde key',
+@@ -12791,7 +12721,6 @@ function selectEncoding() {
+                 },
+             },
+             arrival: 'Aankomst',
+-            available_vehicles_count: 'Je hebt %{count} voertuigen',
+             backalarm: 'Retour post',
+             coins: 'Coins',
+             collapse: 'Verbergen',
+@@ -12849,7 +12778,6 @@ function selectEncoding() {
+             sale: 'Sale',
+             sale_ended: 'Uitverkoop voorbij',
+             secounds: 'seconden',
+-            selected_vehicles_count: 'Je hebt %{count} voertuigen geselecteerd',
+             show_all: 'Toon alles',
+             show_less: 'Toon minder',
+             show_more: 'Toon meer',
+@@ -13377,7 +13305,6 @@ function selectEncoding() {
+     (I18n.translations.es_ES = {
+         common: {
+             add: 'A\xf1adir',
+-            add_all: 'Suma todo',
+             all: 'Todos',
+             around: 'En %{target}',
+             back: 'Atr\xe1s',
+@@ -13391,16 +13318,12 @@ function selectEncoding() {
+             content: 'Contenido',
+             copy: 'Copiar',
+             credits: 'Cr\xe9ditos',
+-            credits_max: 'Cr\xe9ditos m\xe1ximos',
+-            credits_min: 'Cr\xe9ditos m\xednimos',
+             custom_missions: 'Misi\xf3n de alianza a gran escala',
+             delete: 'Eliminar',
+             description: 'Descripci\xf3n',
+             details: 'Detalles',
+             edit: 'Editar',
+             error: 'Error',
+-            filtered_count: 'Filtrado: %{count}',
+-            filters: 'Filtros',
+             graphic_image: {
+                 upload_requirements:
+                     'Formatos compatibles: %{formats}. El tama\xf1o de la imagen no debe superar: %{size}. La imagen debe tener las siguientes dimensiones: %{dimensions}.',
+@@ -13416,7 +13339,6 @@ function selectEncoding() {
+             loading: 'Cargando...',
+             message_for_education:
+                 '\xa1Esta persona no acompa\xf1ar\xe1 al veh\xedculo porque no ha recibido la formaci\xf3n necesaria!',
+-            missions_per_page: '%{count} misiones',
+             name: 'Nombre',
+             no: 'no',
+             none: 'Nada',
+@@ -13429,19 +13351,10 @@ function selectEncoding() {
+                     '\xa1Los empleados solo acompa\xf1ar\xe1n al veh\xedculo si han recibido la formaci\xf3n necesaria!',
+             },
+             release_at: 'Alta en',
+-            remove_all: 'Eliminar todo',
+             save: 'Guardar',
+             search: 'Buscar',
+             show: 'Mostrar',
+             sort: 'Ordenar:',
+-            sort_by: {
+-                credits: 'Cr\xe9ditos',
+-                default: 'Por defecto',
+-                mission_type: 'Tipo de misi\xf3n',
+-                name: 'Nombre',
+-                poi: 'PI',
+-                requirements: 'Requisitos',
+-            },
+             sorting: {
+                 caption_asc: 'A a la Z',
+                 caption_desc: 'Z a A',
+@@ -13457,7 +13370,6 @@ function selectEncoding() {
+                 },
+             },
+             time_in_minutes: 'Tiempo en minutos',
+-            total_count: 'Total: %{count}',
+             type: 'Escriba:',
+             user_not_found: 'Usuario no encontrado',
+             wrong_key: 'Tecla equivocada',
+@@ -13768,7 +13680,6 @@ function selectEncoding() {
+                 },
+             },
+             arrival: 'Llegada',
+-            available_vehicles_count: 'Usted tiene %{count} veh\xedculos',
+             backalarm: 'Cancelar',
+             coins: 'Monedas',
+             collapse: 'Colapso',
+@@ -13825,7 +13736,6 @@ function selectEncoding() {
+             sale: 'Rebajas',
+             sale_ended: 'Oferta finalizada',
+             secounds: 'seg.',
+-            selected_vehicles_count: 'Ha seleccionado %{count} veh\xedculos',
+             show_all: 'Mostrar todo',
+             show_less: 'Mostrar menos',
+             show_more: 'Mostrar m\xe1s',
+@@ -14357,7 +14267,6 @@ function selectEncoding() {
+     (I18n.translations.en_AU = {
+         common: {
+             add: 'Add',
+-            add_all: 'Add all',
+             all: 'All',
+             around: 'Around %{target}',
+             back: 'Back',
+@@ -14370,16 +14279,12 @@ function selectEncoding() {
+             content: 'Content',
+             copy: 'copy',
+             credits: 'Credits',
+-            credits_max: 'Max Credits',
+-            credits_min: 'Min Credits',
+             custom_missions: 'Large Scale Alliance Mission',
+             delete: 'Delete',
+             description: 'Description',
+             details: 'Details',
+             edit: 'Edit',
+             error: 'Error',
+-            filtered_count: 'Filtered: %{count}',
+-            filters: 'Filters',
+             graphic_image: {
+                 upload_requirements:
+                     'Supported formats: %{formats}. Image size cannot be bigger than: %{size}. Image should fit: %{dimensions}.',
+@@ -14393,7 +14298,6 @@ function selectEncoding() {
+             loading: 'Loading...',
+             message_for_education:
+                 'This person will not be dispatched with the vehicle because it is missing the necessary education!',
+-            missions_per_page: '%{count} missions',
+             name: 'Name',
+             no: 'no',
+             none: 'None',
+@@ -14406,19 +14310,10 @@ function selectEncoding() {
+                     'Personnel will only be dispatched with the vehicle if it has acquired the necessary education!',
+             },
+             release_at: 'Release in',
+-            remove_all: 'Remove all',
+             save: 'Save',
+             search: 'Search',
+             show: 'Show',
+             sort: 'Sort:',
+-            sort_by: {
+-                credits: 'Credits',
+-                default: 'Default',
+-                mission_type: 'Mission Type',
+-                name: 'Name',
+-                poi: 'POI',
+-                requirements: 'Requirements',
+-            },
+             sorting: {
+                 caption_asc: 'A to Z',
+                 caption_desc: 'Z to A',
+@@ -14434,7 +14329,6 @@ function selectEncoding() {
+                 },
+             },
+             time_in_minutes: 'Time in minutes',
+-            total_count: 'Total: %{count}',
+             type: 'Type:',
+             user_not_found: 'User not found',
+             wrong_key: 'Wrong key',
+@@ -14739,7 +14633,6 @@ function selectEncoding() {
+                 },
+             },
+             arrival: 'Arrival',
+-            available_vehicles_count: 'You have %{count} vehicles',
+             backalarm: 'Cancel',
+             coins: 'Coins',
+             collapse: 'Collapse',
+@@ -14795,7 +14688,6 @@ function selectEncoding() {
+             sale: 'Sale',
+             sale_ended: 'Sale ended',
+             secounds: 'sec.',
+-            selected_vehicles_count: "You've selected %{count} vehicles",
+             show_all: 'Show All',
+             show_less: 'Show Less',
+             show_more: 'Show More',
+@@ -15321,7 +15213,6 @@ function selectEncoding() {
+     (I18n.translations.sv_SE = {
+         common: {
+             add: 'L\xe4gg till',
+-            add_all: 'L\xe4gg till alla',
+             all: 'All',
+             around: 'Runt %{target}',
+             back: 'Tillbaka',
+@@ -15334,16 +15225,12 @@ function selectEncoding() {
+             content: 'Inneh\xe5ll',
+             copy: 'Copy',
+             credits: 'Krediter',
+-            credits_max: 'Max antal krediter',
+-            credits_min: 'Min Krediter',
+             custom_missions: 'Storskaligt uppdrag',
+             delete: 'Ta bort',
+             description: 'Beskrivning',
+             details: 'Detaljer',
+             edit: 'Redigera',
+             error: 'Fel',
+-            filtered_count: 'Filtrerad: %{count}',
+-            filters: 'Filter',
+             graphic_image: {
+                 upload_requirements:
+                     'St\xf6dda format: %{formats}. Bilden f\xe5r inte vara st\xf6rre \xe4n: %{size}. Bilden b\xf6r ha f\xf6ljande dimensioner: %{dimensions}.',
+@@ -15357,7 +15244,6 @@ function selectEncoding() {
+             loading: 'Laddar \u2026',
+             message_for_education:
+                 'Personen saknar r\xe4tt utbildning och skickas d\xe4rf\xf6r inte med fordonet!',
+-            missions_per_page: '%{count} uppdrag',
+             name: 'Namn',
+             no: 'Nej',
+             none: 'Ingen',
+@@ -15370,19 +15256,10 @@ function selectEncoding() {
+                     'Endast personal med r\xe4tt utbildning skickas med fordonet!',
+             },
+             release_at: 'Utskriven i',
+-            remove_all: 'Ta bort alla',
+             save: 'Spara',
+             search: 'S\xf6k',
+             show: 'Visa',
+             sort: 'Sortera:',
+-            sort_by: {
+-                credits: 'Krediter',
+-                default: 'Standard',
+-                mission_type: 'Uppdragstyp',
+-                name: 'Namn',
+-                poi: 'Intressepunkt',
+-                requirements: 'Krav',
+-            },
+             sorting: {
+                 caption_asc: 'A till \xd6',
+                 caption_desc: 'Z till A',
+@@ -15398,7 +15275,6 @@ function selectEncoding() {
+                 },
+             },
+             time_in_minutes: 'Tid i minuter',
+-            total_count: 'Totalt: %{count}',
+             type: 'Typ:',
+             user_not_found: 'Anv\xe4ndaren kunde inte hittas',
+             wrong_key: 'Fel kod',
+@@ -15713,7 +15589,6 @@ function selectEncoding() {
+                 },
+             },
+             arrival: 'Ankomst',
+-            available_vehicles_count: 'Du har %{count} fordon',
+             backalarm: 'Avbryt',
+             coins: 'Mynt',
+             collapse: 'Kollaps',
+@@ -15769,7 +15644,6 @@ function selectEncoding() {
+             sale: 'Sale',
+             sale_ended: 'Rean \xe4r slut',
+             secounds: 'sek',
+-            selected_vehicles_count: 'Du har valt %{count} fordon',
+             show_all: 'Visa alla',
+             show_less: 'Visa mindre',
+             show_more: 'Visa mer',
+@@ -16295,7 +16169,6 @@ function selectEncoding() {
+     (I18n.translations.pl_PL = {
+         common: {
+             add: 'Dodaj',
+-            add_all: 'Dodaj wszystko',
+             all: 'Wszystkie',
+             around: 'Wok\xf3\u0142 %{target}',
+             back: 'Wstecz',
+@@ -16309,16 +16182,12 @@ function selectEncoding() {
+             content: 'Zawarto\u015b\u0107',
+             copy: 'Copy',
+             credits: 'Kredyty',
+-            credits_max: 'Maksymalna kredyt\xf3w',
+-            credits_min: 'Kredyty minimalne',
+             custom_missions: 'Misj\u0119 sojuszu na du\u017c\u0105 skal\u0119',
+             delete: 'Usu\u0144',
+             description: 'Opis',
+             details: 'Szczeg\xf3\u0142y',
+             edit: 'Edytuj',
+             error: 'B\u0142\u0105d',
+-            filtered_count: 'Filtrowane: %{count}',
+-            filters: 'Filtry',
+             graphic_image: {
+                 upload_requirements:
+                     'Obs\u0142ugiwane formaty: %{formats}. Obraz nie mo\u017ce by\u0107 wi\u0119kszy ni\u017c: %{size}. Obraz powinien mie\u0107 nast\u0119puj\u0105ce wymiary: %{dimensions}.',
+@@ -16332,7 +16201,6 @@ function selectEncoding() {
+             loading: 'Wczytywanie\u2026',
+             message_for_education:
+                 'Wskazana osoba nie zostanie wys\u0142ana w tym poje\u017adzie, poniewa\u017c brakuje jej niezb\u0119dnej edukacji!',
+-            missions_per_page: '%{count} misje',
+             name: 'Nazwa',
+             no: 'Nie',
+             none: 'Brak',
+@@ -16345,19 +16213,10 @@ function selectEncoding() {
+                     'Personel zostanie wys\u0142any w tym poje\u017adzie tylko wtedy, je\u017celi przeszed\u0142 niezb\u0119dn\u0105 edukacj\u0119!',
+             },
+             release_at: 'Zwolnienie w',
+-            remove_all: 'Usu\u0144 wszystko',
+             save: 'Zapisz',
+             search: 'Wyszukaj',
+             show: 'Poka\u017c',
+             sort: 'Sortuj:',
+-            sort_by: {
+-                credits: 'Kredyty',
+-                default: 'Domy\u015blnie',
+-                mission_type: 'Rodzaj misji',
+-                name: 'Nazwa',
+-                poi: 'UM',
+-                requirements: 'Wymagania',
+-            },
+             sorting: {
+                 caption_asc: 'A do Z',
+                 caption_desc: 'Z do A',
+@@ -16373,7 +16232,6 @@ function selectEncoding() {
+                 },
+             },
+             time_in_minutes: 'Czas w minutach',
+-            total_count: '\u0141\u0105cznie: %{count}',
+             type: 'Typ:',
+             user_not_found: 'Nie znaleziono u\u017cytkownika',
+             wrong_key: 'Nieprawid\u0142owy klawisz',
+@@ -16691,7 +16549,6 @@ function selectEncoding() {
+                 },
+             },
+             arrival: 'Przybycie',
+-            available_vehicles_count: 'Masz pojazdy %{count}',
+             backalarm: 'Anuluj',
+             coins: 'Monety',
+             collapse: 'Upadek',
+@@ -16749,7 +16606,6 @@ function selectEncoding() {
+             sale: 'Wyprzeda\u017c',
+             sale_ended: 'Promocja zako\u0144czona',
+             secounds: 's',
+-            selected_vehicles_count: 'Wybrano pojazdy %{count}',
+             show_all: 'Poka\u017c wszystko',
+             show_less: 'Poka\u017c mniej',
+             show_more: 'Poka\u017c wi\u0119cej',
+@@ -17290,7 +17146,6 @@ function selectEncoding() {
+     (I18n.translations.it_IT = {
+         common: {
+             add: 'Aggiungi',
+-            add_all: 'Aggiungi tutti',
+             all: 'Tutte',
+             around: 'Intorno %{target}',
+             back: 'Indietro',
+@@ -17303,16 +17158,12 @@ function selectEncoding() {
+             content: 'Contenuto',
+             copy: 'Copy',
+             credits: 'Crediti',
+-            credits_max: 'Crediti massimi',
+-            credits_min: 'Crediti Min',
+             custom_missions: "Missione dell'alleanza su larga scala",
+             delete: 'Elimina',
+             description: 'Descrizione',
+             details: 'Dettagli',
+             edit: 'Modifica',
+             error: 'Errore',
+-            filtered_count: 'Filtrato: %{count}',
+-            filters: 'Filtri',
+             graphic_image: {
+                 upload_requirements:
+                     "Formati supportati: %{formats}. L'immagine non deve superare le dimensioni di: %{size}. L'immagine deve avere le seguenti dimensioni: %{dimensions}.",
+@@ -17326,7 +17177,6 @@ function selectEncoding() {
+             loading: 'Caricamento...',
+             message_for_education:
+                 'Questa persona non uscir\xe0 con il veicolo perch\xe9 non ha ricevuto la formazione necessaria!',
+-            missions_per_page: '%{count} missioni',
+             name: 'Nome',
+             no: 'no',
+             none: 'Nessuno',
+@@ -17339,19 +17189,10 @@ function selectEncoding() {
+                     'Il personale uscir\xe0 con il veicolo solo dopo aver acquisito la formazione necessaria!',
+             },
+             release_at: 'Dimissione in',
+-            remove_all: 'Rimuovere tutti',
+             save: 'Salva',
+             search: 'Cerca',
+             show: 'Mostra',
+             sort: 'Ordinamento:',
+-            sort_by: {
+-                credits: 'Crediti',
+-                default: 'Predefinito',
+-                mission_type: 'Tipo di missione',
+-                name: 'Nome',
+-                poi: 'PDI',
+-                requirements: 'Requisiti',
+-            },
+             sorting: {
+                 caption_asc: 'A - Z',
+                 caption_desc: 'Z ad A',
+@@ -17367,7 +17208,6 @@ function selectEncoding() {
+                 },
+             },
+             time_in_minutes: 'Tempo in minuti',
+-            total_count: 'Totale: %{count}',
+             type: 'Tipo:',
+             user_not_found: "Impossibile trovare l'utente",
+             wrong_key: 'Codice errato',
+@@ -17683,7 +17523,6 @@ function selectEncoding() {
+                 },
+             },
+             arrival: 'Arrivo',
+-            available_vehicles_count: 'Avete %{count} veicoli',
+             backalarm: 'Annulla',
+             coins: 'Monete',
+             collapse: 'Crollo',
+@@ -17739,7 +17578,6 @@ function selectEncoding() {
+             sale: 'Sale',
+             sale_ended: 'Vendita terminata',
+             secounds: 'sec.',
+-            selected_vehicles_count: 'Avete selezionato i veicoli %{count}',
+             show_all: 'Mostra tutto',
+             show_less: 'Mostra meno',
+             show_more: 'Mostra tutto',
+@@ -18274,7 +18112,6 @@ function selectEncoding() {
+     (I18n.translations.fr_FR = {
+         common: {
+             add: 'Ajouter',
+-            add_all: 'Ajouter tout',
+             all: 'Tout',
+             around: 'Autour de %{target}',
+             back: 'Retour',
+@@ -18287,16 +18124,12 @@ function selectEncoding() {
+             content: 'Contenu',
+             copy: 'Copier',
+             credits: 'Cr\xe9dits',
+-            credits_max: 'Cr\xe9dits maximaux',
+-            credits_min: 'Cr\xe9dits minimums',
+             custom_missions: 'Mission d\u2019alliance majeure',
+             delete: 'Supprimer',
+             description: 'Description',
+             details: 'D\xe9tails',
+             edit: 'Modifier',
+             error: 'Erreur',
+-            filtered_count: 'Filtr\xe9 : %{count}',
+-            filters: 'Filtres',
+             graphic_image: {
+                 upload_requirements:
+                     "Formats pris en charge : %{formats}. La taille de l'image ne doit pas d\xe9passer : %{size}. L'image doit respecter les dimensions suivantes : %{dimensions}.",
+@@ -18311,7 +18144,6 @@ function selectEncoding() {
+             loading: 'Chargement...',
+             message_for_education:
+                 "Cette personne ne sera pas d\xe9ploy\xe9e avec le v\xe9hicule car elle n'a pas re\xe7u la formation ad\xe9quate\xa0!",
+-            missions_per_page: '%{count} missions',
+             name: 'Nom',
+             no: 'Non',
+             none: 'Aucun',
+@@ -18324,19 +18156,10 @@ function selectEncoding() {
+                     "Le personnel ne sera d\xe9ploy\xe9 avec le v\xe9hicule que s'il a re\xe7u la formation ad\xe9quate\xa0!",
+             },
+             release_at: 'Sort dans',
+-            remove_all: 'Supprimer tout',
+             save: 'Enregistrer',
+             search: 'Rechercher',
+             show: 'Afficher',
+             sort: 'Trier :',
+-            sort_by: {
+-                credits: 'Cr\xe9dits',
+-                default: 'D\xe9faut',
+-                mission_type: 'Type de mission',
+-                name: 'Nom',
+-                poi: 'Point d\u2019int\xe9r\xeat',
+-                requirements: 'Exigences',
+-            },
+             sorting: {
+                 caption_asc: 'A \xe0 Z',
+                 caption_desc: 'Z \xe0 A',
+@@ -18352,7 +18175,6 @@ function selectEncoding() {
+                 },
+             },
+             time_in_minutes: 'Temps en minutes',
+-            total_count: 'Total : %{count}',
+             type: 'Type :',
+             user_not_found: 'Utilisateur introuvable',
+             wrong_key: 'Cl\xe9 invalide',
+@@ -18679,7 +18501,6 @@ function selectEncoding() {
+                 },
+             },
+             arrival: 'Arriv\xe9e',
+-            available_vehicles_count: 'Vous disposez de %{count} v\xe9hicules',
+             backalarm: 'Annuler',
+             coins: 'Pi\xe8ces',
+             collapse: 'Masquer',
+@@ -18738,8 +18559,6 @@ function selectEncoding() {
+             sale: 'Soldes',
+             sale_ended: 'Fin de l\u2019offre sp\xe9ciale',
+             secounds: 'sec.',
+-            selected_vehicles_count:
+-                'Vous avez s\xe9lectionn\xe9 %{count} v\xe9hicules',
+             show_all: 'Tout afficher',
+             show_less: 'Afficher plus',
+             show_more: 'Voir plus',
+@@ -19282,8 +19101,6 @@ function selectEncoding() {
+     (I18n.translations.ru_RU = {
+         common: {
+             add: '\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c',
+-            add_all:
+-                '\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0432\u0441\u0435',
+             all: '\u0412\u0441\u0435',
+             around: '\u041e\u043a\u043e\u043b\u043e %{target}',
+             back: '\u041d\u0430\u0437\u0430\u0434',
+@@ -19302,10 +19119,6 @@ function selectEncoding() {
+                 '\u0421\u043e\u0434\u0435\u0440\u0436\u0438\u043c\u043e\u0435',
+             copy: '\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c',
+             credits: '\u041a\u0440\u0435\u0434\u0438\u0442\u044b',
+-            credits_max:
+-                '\u041c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u044b\u0435 \u043a\u0440\u0435\u0434\u0438\u0442\u044b',
+-            credits_min:
+-                '\u041c\u0438\u043d\u0438\u043c\u0430\u043b\u044c\u043d\u044b\u0435 \u043a\u0440\u0435\u0434\u0438\u0442\u044b',
+             custom_missions:
+                 '\u043a\u0440\u0443\u043f\u043d\u043e\u043c\u0430\u0441\u0448\u0442\u0430\u0431\u043d\u043e\u0435 \u0437\u0430\u0434\u0430\u043d\u0438\u0435 \u0430\u043b\u044c\u044f\u043d\u0441\u0430',
+             delete: '\u0423\u0434\u0430\u043b\u0438\u0442\u044c',
+@@ -19314,9 +19127,6 @@ function selectEncoding() {
+                 '\u041f\u043e\u0434\u0440\u043e\u0431\u043d\u043e\u0441\u0442\u0438',
+             edit: '\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c',
+             error: '\u041e\u0448\u0438\u0431\u043a\u0430',
+-            filtered_count:
+-                '\u041e\u0442\u0444\u0438\u043b\u044c\u0442\u0440\u043e\u0432\u0430\u043d\u043e: %{count}',
+-            filters: '\u0444\u0438\u043b\u044c\u0442\u0440\u043e\u0432',
+             graphic_image: {
+                 upload_requirements:
+                     '\u041f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u043c\u044b\u0435 \u0444\u043e\u0440\u043c\u0430\u0442\u044b: %{formats}. \u0420\u0430\u0437\u043c\u0435\u0440 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f \u043d\u0435 \u0434\u043e\u043b\u0436\u0435\u043d \u043f\u0440\u0435\u0432\u044b\u0448\u0430\u0442\u044c: %{size}. \u0418\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435 \u0434\u043e\u043b\u0436\u043d\u043e \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u043e\u0432\u0430\u0442\u044c \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0438\u043c \u0440\u0430\u0437\u043c\u0435\u0440\u0430\u043c: %{dimensions}.',
+@@ -19333,7 +19143,6 @@ function selectEncoding() {
+                 '\u0417\u0430\u0433\u0440\u0443\u0436\u0430\u0435\u0442\u0441\u044f...',
+             message_for_education:
+                 '\u042d\u0442\u043e\u0442 \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u043a \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u043f\u0435\u0440\u0435\u043c\u0435\u0449\u0430\u0442\u044c\u0441\u044f \u043d\u0430 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0435, \u0442\u0430\u043a \u043a\u0430\u043a \u043d\u0435 \u043f\u0440\u043e\u0448\u0435\u043b \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e\u0435 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u0435!',
+-            missions_per_page: '%{count} \u043c\u0438\u0441\u0441\u0438\u0438',
+             name: '\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435',
+             no: 'no',
+             none: '\u041d\u0438 \u043e\u0434\u0438\u043d',
+@@ -19346,23 +19155,10 @@ function selectEncoding() {
+                     '\u041f\u0435\u0440\u0441\u043e\u043d\u0430\u043b \u0441\u043c\u043e\u0436\u0435\u0442 \u043f\u0435\u0440\u0435\u043c\u0435\u0449\u0430\u0442\u044c\u0441\u044f \u043d\u0430 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0435, \u0442\u043e\u043b\u044c\u043a\u043e \u043f\u043e\u0441\u043b\u0435 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0438\u044f \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e\u0433\u043e \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u044f!',
+             },
+             release_at: '\u0432\u044b\u043f\u0438\u0441\u0430\u043d \u0432',
+-            remove_all:
+-                '\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u0432\u0441\u0435',
+             save: '\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c',
+             search: '\u0418\u0441\u043a\u0430\u0442\u044c',
+             show: '\u041f\u043e\u043a\u0430\u0437\u0430\u0442\u044c',
+             sort: 'Sort:',
+-            sort_by: {
+-                credits: '\u041a\u0440\u0435\u0434\u0438\u0442\u044b',
+-                default:
+-                    '\u041f\u043e \u0443\u043c\u043e\u043b\u0447\u0430\u043d\u0438\u044e',
+-                mission_type:
+-                    '\u0422\u0438\u043f \u0437\u0430\u0434\u0430\u043d\u0438\u044f',
+-                name: '\u0418\u043c\u044f',
+-                poi: '\u0432\u0430\u0436\u043d\u043e\u0439 \u0442\u043e\u0447\u043a\u0438',
+-                requirements:
+-                    '\u0422\u0440\u0435\u0431\u043e\u0432\u0430\u043d\u0438\u044f',
+-            },
+             sorting: {
+                 caption_asc: 'A to Z',
+                 caption_desc: 'Z to A',
+@@ -19379,7 +19175,6 @@ function selectEncoding() {
+             },
+             time_in_minutes:
+                 '\u0412\u0440\u0435\u043c\u044f \u0432 \u043c\u0438\u043d\u0443\u0442\u0430\u0445',
+-            total_count: '\u0412\u0441\u0435\u0433\u043e: %{count}',
+             type: '\u0422\u0438\u043f:',
+             user_not_found:
+                 '\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d',
+@@ -19744,8 +19539,6 @@ function selectEncoding() {
+                 },
+             },
+             arrival: '\u041f\u0440\u0438\u0431\u044b\u0442\u0438\u0435',
+-            available_vehicles_count:
+-                '\u0423 \u0432\u0430\u0441 \u0435\u0441\u0442\u044c \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u044b\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430 %{count}',
+             backalarm: '\u041e\u0442\u043c\u0435\u043d\u0438\u0442\u044c',
+             coins: '\u041c\u043e\u043d\u0435\u0442\u044b',
+             collapse: 'Collapse',
+@@ -19816,8 +19609,6 @@ function selectEncoding() {
+             sale_ended:
+                 '\u0410\u043a\u0446\u0438\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0430',
+             secounds: '\u0441\u0435\u043a.',
+-            selected_vehicles_count:
+-                '\u0412\u044b \u0432\u044b\u0431\u0440\u0430\u043b\u0438 %{count} \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u044b\u0445 \u0441\u0440\u0435\u0434\u0441\u0442\u0432',
+             show_all: 'Show All',
+             show_less: '\u0411\u043e\u043b\u044c\u0448\u0435',
+             show_more: '\u041c\u0435\u043d\u044c\u0448\u0435',
+@@ -20436,7 +20227,6 @@ function selectEncoding() {
+     (I18n.translations.da_DK = {
+         common: {
+             add: 'Tilf\xf8j',
+-            add_all: 'Tilf\xf8j alle',
+             all: 'Alle',
+             around: 'Omkring %{target}',
+             back: 'Tilbage',
+@@ -20449,16 +20239,12 @@ function selectEncoding() {
+             content: 'Indhold',
+             copy: 'Copy',
+             credits: 'Kreditter',
+-            credits_max: 'Max kreditter',
+-            credits_min: 'Min kreditter',
+             custom_missions: 'Stor alliancemission',
+             delete: 'Slet',
+             description: 'Beskrivelse',
+             details: 'Detaljer',
+             edit: 'Redig\xe9r',
+             error: 'Fejl',
+-            filtered_count: 'Filtreret: %{count}',
+-            filters: 'Filtre',
+             graphic_image: {
+                 upload_requirements:
+                     'Underst\xf8ttede formater: %{formats}. Billedet m\xe5 ikke v\xe6re st\xf8rre end: %{size}. Billedet skal have f\xf8lgende dimensioner: %{dimensions}.',
+@@ -20472,7 +20258,6 @@ function selectEncoding() {
+             loading: 'Indl\xe6ser ...',
+             message_for_education:
+                 'Denne person vil ikke blive sendt ud med k\xf8ret\xf8jet, fordi vedkommende ikke har gennemf\xf8rt den n\xf8dvendige undervisning!',
+-            missions_per_page: '%{count} Missioner',
+             name: 'Navn',
+             no: 'Nej',
+             none: 'Ingen',
+@@ -20485,19 +20270,10 @@ function selectEncoding() {
+                     'Personalet kan f\xf8rst sendes ud med k\xf8ret\xf8jet efter den n\xf8dvendige undervisning er fuldendt!',
+             },
+             release_at: 'Udskrivning i',
+-            remove_all: 'Fjern alle',
+             save: 'Gem',
+             search: 'S\xf8g',
+             show: 'Vis',
+             sort: 'Sortere:',
+-            sort_by: {
+-                credits: 'Kreditter',
+-                default: 'Standard',
+-                mission_type: 'Missionstype',
+-                name: 'Navn',
+-                poi: 'Interessepunkt',
+-                requirements: 'Krav',
+-            },
+             sorting: {
+                 caption_asc: 'A til Z',
+                 caption_desc: 'Z til A',
+@@ -20513,7 +20289,6 @@ function selectEncoding() {
+                 },
+             },
+             time_in_minutes: 'Tid i minutter',
+-            total_count: 'I alt: %{count}',
+             type: 'Type:',
+             user_not_found: 'Bruger ikke fundet',
+             wrong_key: 'Forkert n\xf8gle',
+@@ -20831,7 +20606,6 @@ function selectEncoding() {
+                 },
+             },
+             arrival: 'Ankomst',
+-            available_vehicles_count: 'Du har %{count} k\xf8ret\xf8jer',
+             backalarm: 'Annull\xe9r',
+             coins: 'M\xf8nter',
+             collapse: 'Kollaps',
+@@ -20888,7 +20662,6 @@ function selectEncoding() {
+             sale: 'Sale',
+             sale_ended: 'Udsalg forbi ',
+             secounds: 'sek.',
+-            selected_vehicles_count: 'Du har valgt %{count} k\xf8ret\xf8jer',
+             show_all: 'Vis alle',
+             show_less: 'Vis mindre',
+             show_more: 'Vis mere',
+@@ -21416,7 +21189,6 @@ function selectEncoding() {
+     (I18n.translations.nb_NO = {
+         common: {
+             add: 'Legg til',
+-            add_all: 'Legg til alle',
+             all: 'Alle',
+             around: 'Rundt %{target}',
+             back: 'Tilbake',
+@@ -21429,16 +21201,12 @@ function selectEncoding() {
+             content: 'Innhold',
+             copy: 'Copy',
+             credits: 'Kreditter',
+-            credits_max: 'Maks studiepoeng',
+-            credits_min: 'Min studiepoeng',
+             custom_missions: 'Allianseoppdrag i stor skala',
+             delete: 'Slett',
+             description: 'Beskrivelse',
+             details: 'Info',
+             edit: 'Rediger',
+             error: 'Feil',
+-            filtered_count: 'Filtrert: %{count}',
+-            filters: 'Filtre',
+             graphic_image: {
+                 upload_requirements:
+                     'St\xf8ttede formater: %{formats}. Bildet m\xe5 ikke v\xe6re st\xf8rre enn: %{size}. Bildet b\xf8r ha f\xf8lgende dimensjoner: %{dimensions}.',
+@@ -21452,7 +21220,6 @@ function selectEncoding() {
+             loading: 'Laster inn \u2026',
+             message_for_education:
+                 'Denne personen vil ikke bli sendt ut med kj\xf8ret\xf8yet p\xe5 grunn av mangel p\xe5 n\xf8dvendig utdanningen!',
+-            missions_per_page: '%{count} oppdrag',
+             name: 'Navn',
+             no: 'Nei',
+             none: 'Ingen',
+@@ -21465,19 +21232,10 @@ function selectEncoding() {
+                     'Personellet vil kun bli sendt ut med kj\xf8ret\xf8yet om de har f\xe5tt den n\xf8dvendige utdanningen!',
+             },
+             release_at: 'Utskrivning i',
+-            remove_all: 'Fjern alle',
+             save: 'Lagre',
+             search: 'S\xf8k',
+             show: 'Vis',
+             sort: 'Sortere:',
+-            sort_by: {
+-                credits: 'Kreditt',
+-                default: 'Standard',
+-                mission_type: 'Oppdragstype',
+-                name: 'Navn',
+-                poi: 'Interessepunkt',
+-                requirements: 'Krav',
+-            },
+             sorting: {
+                 caption_asc: 'A til \xc5',
+                 caption_desc: 'Z til A',
+@@ -21493,7 +21251,6 @@ function selectEncoding() {
+                 },
+             },
+             time_in_minutes: 'Tid i minutter',
+-            total_count: 'Totalt: %{count}',
+             type: 'Type:',
+             user_not_found: 'Brukeren ble ikke funnet',
+             wrong_key: 'Feil n\xf8kkel',
+@@ -21810,7 +21567,6 @@ function selectEncoding() {
+                 },
+             },
+             arrival: 'Ankomst',
+-            available_vehicles_count: 'Du har %{count} kj\xf8ret\xf8y',
+             backalarm: 'Avbryt',
+             coins: 'Mynter',
+             collapse: 'Kollaps',
+@@ -21867,7 +21623,6 @@ function selectEncoding() {
+             sale: 'Salg',
+             sale_ended: 'Salg avsluttet',
+             secounds: 'sek.',
+-            selected_vehicles_count: 'Du har valgt %{count} kj\xf8ret\xf8y',
+             show_all: 'Vis alle',
+             show_less: 'Vis f\xe6rre',
+             show_more: 'Vis flere',
+@@ -22395,7 +22150,6 @@ function selectEncoding() {
+     (I18n.translations.cs_CZ = {
+         common: {
+             add: 'P\u0159idat',
+-            add_all: 'P\u0159idat v\u0161echny',
+             all: 'V\u0161echny',
+             around: 'V okol\xed %{target}',
+             back: 'Zp\u011bt',
+@@ -22409,16 +22163,12 @@ function selectEncoding() {
+             content: 'Obsah',
+             copy: 'Copy',
+             credits: 'Kredity',
+-            credits_max: 'Maxim\xe1ln\xed kredit\u016f',
+-            credits_min: 'Min. kredit\u016f',
+             custom_missions: 'Alian\u010dn\xed mise',
+             delete: 'Odstranit',
+             description: 'Popis',
+             details: 'Podrobnosti',
+             edit: 'Upravit',
+             error: 'Chyba',
+-            filtered_count: 'Filtrov\xe1no: %{count}',
+-            filters: 'Filtr\u016f',
+             graphic_image: {
+                 upload_requirements:
+                     'Podporovan\xe9 form\xe1ty: %{formats}. Obr\xe1zek nesm\xed b\xfdt v\u011bt\u0161\xed ne\u017e: %{size}. Obr\xe1zek by m\u011bl m\xedt n\xe1sleduj\xedc\xed rozm\u011bry: %{dimensions}.',
+@@ -22432,7 +22182,6 @@ function selectEncoding() {
+             loading: 'Na\u010d\xedt\xe1n\xed\u2026',
+             message_for_education:
+                 'Tato osoba nebude vysl\xe1na s vozidlem, proto\u017ee j\xed chyb\xed pot\u0159ebn\xe9 vzd\u011bl\xe1n\xed!',
+-            missions_per_page: '%{count} mise',
+             name: 'N\xe1zev',
+             no: 'Ne',
+             none: 'Nic',
+@@ -22445,19 +22194,10 @@ function selectEncoding() {
+                     'Person\xe1l bude vysl\xe1n s vozidlem pouze v p\u0159\xedpad\u011b, \u017ee dos\xe1hne pot\u0159ebn\xe9ho vzd\u011bl\xe1n\xed!',
+             },
+             release_at: 'Propu\u0161t\u011bn\xed v',
+-            remove_all: 'Odstran\u011bn\xed v\u0161ech',
+             save: 'Ulo\u017eit',
+             search: 'Hledat',
+             show: 'Zobrazit',
+             sort: 'T\u0159\xeddit:',
+-            sort_by: {
+-                credits: 'Kredity',
+-                default: 'V\xfdchoz\xed',
+-                mission_type: 'Typ mise',
+-                name: 'N\xe1zev',
+-                poi: 'Bodu z\xe1jmu',
+-                requirements: 'Po\u017eadavky',
+-            },
+             sorting: {
+                 caption_asc: 'A do Z',
+                 caption_desc: 'Z do A',
+@@ -22473,7 +22213,6 @@ function selectEncoding() {
+                 },
+             },
+             time_in_minutes: '\u010cas (min)',
+-            total_count: 'Celkem: %{count}',
+             type: 'Typ:',
+             user_not_found: 'U\u017eivatel nenalezen',
+             wrong_key: 'Nespr\xe1vn\xe1 kl\xe1vesa',
+@@ -22797,7 +22536,6 @@ function selectEncoding() {
+                 },
+             },
+             arrival: 'P\u0159\xedjezd',
+-            available_vehicles_count: 'M\xe1te k dispozici vozidla %{count}',
+             backalarm: 'Zru\u0161it',
+             coins: 'Mince',
+             collapse: 'Sbalit',
+@@ -22857,7 +22595,6 @@ function selectEncoding() {
+             sale: 'Prodej',
+             sale_ended: 'Prodej ukon\u010den',
+             secounds: 's',
+-            selected_vehicles_count: 'Vybrali jste vozidla %{count}',
+             show_all: 'Zobrazit v\u0161e',
+             show_less: 'Zobrazit m\xe9n\u011b',
+             show_more: 'Zobrazit v\xedce',
+@@ -23409,7 +23146,6 @@ function selectEncoding() {
+     (I18n.translations.tr_TR = {
+         common: {
+             add: 'Ekle',
+-            add_all: 'T\xfcm\xfcn\xfc ekle',
+             all: 'T\xfcm\xfc',
+             around: 'Etraf\u0131nda %{target}',
+             back: 'Geri',
+@@ -23423,16 +23159,12 @@ function selectEncoding() {
+             content: '\u0130\xe7erik',
+             copy: 'Copy',
+             credits: 'Krediler',
+-            credits_max: 'Maksimum Kredi',
+-            credits_min: 'Min Krediler',
+             custom_missions: 'B\xfcy\xfck \xf6l\xe7ekli bir birlik g\xf6rev',
+             delete: 'Sil',
+             description: 'Description',
+             details: 'Ayr\u0131nt\u0131lar',
+             edit: 'D\xfczenle',
+             error: 'Hata',
+-            filtered_count: 'Filtrelendi: %{count}',
+-            filters: 'Filtreleri',
+             graphic_image: {
+                 upload_requirements:
+                     'Desteklenen formatlar: %{formats}. Resim boyutu %{size} boyutunu ge\xe7memelidir. Resim a\u015fa\u011f\u0131daki boyutlara uygun olmal\u0131d\u0131r: %{dimensions}.',
+@@ -23448,7 +23180,6 @@ function selectEncoding() {
+             loading: 'Y\xfckleniyor...',
+             message_for_education:
+                 'This person will not be dispatched with the vehicle because it is missing the necessary education!',
+-            missions_per_page: '%{count} G\xd6REVLER',
+             name: 'Ad',
+             no: 'no',
+             none: 'Yok',
+@@ -23461,19 +23192,10 @@ function selectEncoding() {
+                     'Personnel will only be dispatched with the vehicle if it has acquired the necessary education!',
+             },
+             release_at: 'I\xe7inde taburcu edildi',
+-            remove_all: 'T\xfcm\xfcn\xfc kald\u0131r\u0131n',
+             save: 'Kaydet',
+             search: 'Ara',
+             show: 'G\xf6ster',
+             sort: 'Sort:',
+-            sort_by: {
+-                credits: 'Krediler',
+-                default: 'Default',
+-                mission_type: 'G\xf6rev t\xfcr\xfc',
+-                name: 'Ad',
+-                poi: '\u0130lgili Alan',
+-                requirements: 'Gereklilikler',
+-            },
+             sorting: {
+                 caption_asc: 'A to Z',
+                 caption_desc: 'Z to A',
+@@ -23489,7 +23211,6 @@ function selectEncoding() {
+                 },
+             },
+             time_in_minutes: 'Time in minutes',
+-            total_count: 'Toplam: %{count}',
+             type: 'Tip:',
+             user_not_found: 'Kullan\u0131c\u0131 bulunmad\u0131',
+             wrong_key: 'Yanl\u0131\u015f tu\u015f',
+@@ -23789,7 +23510,6 @@ function selectEncoding() {
+                 },
+             },
+             arrival: 'Var\u0131\u015f',
+-            available_vehicles_count: '%{count} ara\xe7lar\u0131n\u0131z var',
+             backalarm: '\u0130ptal et',
+             coins: 'Alt\u0131n',
+             collapse: 'Collapse',
+@@ -23846,8 +23566,6 @@ function selectEncoding() {
+             sale: 'Sat\u0131\u015f',
+             sale_ended: '\u0130ndirim sona erdi.',
+             secounds: 'sn.',
+-            selected_vehicles_count:
+-                '%{count} ara\xe7lar\u0131n\u0131 se\xe7tiniz',
+             show_all: 'Show All',
+             show_less: 'Show Less',
+             show_more: 'Daha g\xf6ster',
+@@ -24380,7 +24098,6 @@ function selectEncoding() {
+     (I18n.translations.pt_PT = {
+         common: {
+             add: 'Adicionar',
+-            add_all: 'Acrescentar tudo',
+             all: 'Tudo',
+             around: 'Em redor %{target}',
+             back: 'Voltar',
+@@ -24393,16 +24110,12 @@ function selectEncoding() {
+             content: 'Conte\xfado',
+             copy: 'Copy',
+             credits: 'Cr\xe9ditos',
+-            credits_max: 'Cr\xe9ditos m\xe1ximos',
+-            credits_min: 'Cr\xe9ditos m\xednimos',
+             custom_missions: 'Miss\xe3o de alian\xe7a em grande escala',
+             delete: 'Apagar',
+             description: 'Descri\xe7\xe3o',
+             details: 'Detalhes',
+             edit: 'Editar',
+             error: 'Erro',
+-            filtered_count: 'Filtrado: %{count}',
+-            filters: 'Filtros',
+             graphic_image: {
+                 upload_requirements:
+                     'Formatos suportados: %{formats}. A imagem n\xe3o pode ser maior do que: %{size}. A imagem deve corresponder \xe0s seguintes dimens\xf5es: %{dimensions}.',
+@@ -24416,7 +24129,6 @@ function selectEncoding() {
+             loading: 'Carregando...',
+             message_for_education:
+                 'Esta pessoa n\xe3o ser\xe1 enviada com o ve\xedculo porque n\xe3o possui a educa\xe7\xe3o necess\xe1ria!',
+-            missions_per_page: '%{count} miss\xf5es',
+             name: 'Nome',
+             no: 'N\xe3o',
+             none: 'Nenhum',
+@@ -24429,19 +24141,10 @@ function selectEncoding() {
+                     'O pessoal s\xf3 ser\xe1 enviado com o ve\xedculo se tiver adquirido a educa\xe7\xe3o necess\xe1ria!',
+             },
+             release_at: 'Alta em',
+-            remove_all: 'Remover tudo',
+             save: 'Salvar',
+             search: 'Procurar',
+             show: 'Exibir',
+             sort: 'Ordenar:',
+-            sort_by: {
+-                credits: 'Cr\xe9ditos',
+-                default: 'Padr\xe3o',
+-                mission_type: 'Tipo de miss\xe3o',
+-                name: 'Nome',
+-                poi: 'PDI',
+-                requirements: 'Requisitos',
+-            },
+             sorting: {
+                 caption_asc: 'A a Z',
+                 caption_desc: 'Z a A',
+@@ -24457,7 +24160,6 @@ function selectEncoding() {
+                 },
+             },
+             time_in_minutes: 'Tempo em minutos',
+-            total_count: 'Total: %{count}',
+             type: 'Tipo:',
+             user_not_found: 'Usu\xe1rio n\xe3o encontrado',
+             wrong_key: 'Chave errada',
+@@ -24773,7 +24475,6 @@ function selectEncoding() {
+                 },
+             },
+             arrival: 'Chegada',
+-            available_vehicles_count: 'Tem %{count} ve\xedculos',
+             backalarm: 'Cancelar',
+             coins: 'Moedas',
+             collapse: 'Colapso',
+@@ -24830,7 +24531,6 @@ function selectEncoding() {
+             sale: 'Sale',
+             sale_ended: 'Sale ended',
+             secounds: 'seg.',
+-            selected_vehicles_count: 'Selecionou %{count} ve\xedculos',
+             show_all: 'Mostrar tudo',
+             show_less: 'Mostrar menos',
+             show_more: 'Mostrar mais',
+@@ -25363,7 +25063,6 @@ function selectEncoding() {
+     (I18n.translations.pt_BR = {
+         common: {
+             add: 'Adicionar',
+-            add_all: 'Acrescentar tudo',
+             all: 'Tudo',
+             around: 'Em redor %{target}',
+             back: 'Voltar',
+@@ -25376,16 +25075,12 @@ function selectEncoding() {
+             content: 'Conte\xfado',
+             copy: 'Copy',
+             credits: 'Cr\xe9ditos',
+-            credits_max: 'Cr\xe9ditos m\xe1ximos',
+-            credits_min: 'Cr\xe9ditos m\xednimos',
+             custom_missions: 'Miss\xe3o de alian\xe7a em grande escala',
+             delete: 'Apagar',
+             description: 'Description',
+             details: 'Detalhes',
+             edit: 'Editar',
+             error: 'Erro',
+-            filtered_count: 'Filtrado: %{count}',
+-            filters: 'Filtros',
+             graphic_image: {
+                 upload_requirements:
+                     'Formatos suportados: %{formats}. A imagem n\xe3o pode ser maior que: %{size}. A imagem deve ter as seguintes dimens\xf5es: %{dimensions}.',
+@@ -25399,7 +25094,6 @@ function selectEncoding() {
+             loading: 'Carregando...',
+             message_for_education:
+                 'This person will not be dispatched with the vehicle because it is missing the necessary education!',
+-            missions_per_page: '%{count} miss\xf5es',
+             name: 'Nome',
+             no: 'N\xe3o',
+             none: 'Nenhum',
+@@ -25412,19 +25106,10 @@ function selectEncoding() {
+                     'Personnel will only be dispatched with the vehicle if it has acquired the necessary education!',
+             },
+             release_at: 'Alta em',
+-            remove_all: 'Remover tudo',
+             save: 'Salvar',
+             search: 'Buscar',
+             show: 'Exibir',
+             sort: 'Ordenar:',
+-            sort_by: {
+-                credits: 'Cr\xe9ditos',
+-                default: 'Padr\xe3o',
+-                mission_type: 'Tipo de miss\xe3o',
+-                name: 'Nome',
+-                poi: 'PDI',
+-                requirements: 'Requisitos',
+-            },
+             sorting: {
+                 caption_asc: 'A to Z',
+                 caption_desc: 'Z to A',
+@@ -25440,7 +25125,6 @@ function selectEncoding() {
+                 },
+             },
+             time_in_minutes: 'Tempo em minutos',
+-            total_count: 'Total: %{count}',
+             type: 'Tipo:',
+             user_not_found: 'Usu\xe1rio n\xe3o encontrado',
+             wrong_key: 'Chave errada',
+@@ -25740,7 +25424,6 @@ function selectEncoding() {
+                 },
+             },
+             arrival: 'Chegada',
+-            available_vehicles_count: 'Tem %{count} ve\xedculos',
+             backalarm: 'Cancelar',
+             coins: 'Moedas',
+             collapse: 'Colapso',
+@@ -25797,7 +25480,6 @@ function selectEncoding() {
+             sale: 'Promo\xe7\xf5es',
+             sale_ended: 'Fin de l\u2019offre sp\xe9ciale',
+             secounds: 'seg.',
+-            selected_vehicles_count: 'Selecionou %{count} ve\xedculos',
+             show_all: 'Mostrar tudo',
+             show_less: 'Show Less',
+             show_more: 'Mostrar mais',
+@@ -26331,7 +26013,6 @@ function selectEncoding() {
+     (I18n.translations.uk_UA = {
+         common: {
+             add: '\u0414\u043e\u0434\u0430\u0442\u0438',
+-            add_all: '\u0414\u043e\u0434\u0430\u0442\u0438 \u0432\u0441\u0435',
+             all: '\u0412\u0441\u0456',
+             around: '\u041d\u0430\u0432\u043a\u043e\u043b\u043e %{target}',
+             back: '\u041d\u0430\u0437\u0430\u0434',
+@@ -26346,10 +26027,6 @@ function selectEncoding() {
+             content: '\u0412\u043c\u0456\u0441\u0442',
+             copy: '\u041a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438',
+             credits: '\u041a\u0440\u0435\u0434\u0438\u0442\u0438',
+-            credits_max:
+-                '\u041c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u0456 \u043a\u0440\u0435\u0434\u0438\u0442\u0438',
+-            credits_min:
+-                '\u041c\u0456\u043d\u0456\u043c\u0430\u043b\u044c\u043d\u0438\u0439 \u0442\u0438\u0442\u0440',
+             custom_missions:
+                 '\u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f \u0430\u043b\u044c\u044f\u043d\u0441\u0443 ',
+             delete: '\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438',
+@@ -26357,9 +26034,6 @@ function selectEncoding() {
+             details: '\u041f\u043e\u0434\u0440\u043e\u0431\u0438\u0446\u0456',
+             edit: '\u0420\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u0442\u0438',
+             error: '\u041f\u043e\u043c\u0438\u043b\u043a\u0430',
+-            filtered_count:
+-                '\u0412\u0456\u0434\u0444\u0456\u043b\u044c\u0442\u0440\u043e\u0432\u0430\u043d\u0438\u0439: %{count}',
+-            filters: '\u0444\u0456\u043b\u044c\u0442\u0440\u0456\u0432',
+             graphic_image: {
+                 upload_requirements:
+                     '\u041f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0432\u0430\u043d\u0456 \u0444\u043e\u0440\u043c\u0430\u0442\u0438: %{formats}. \u0420\u043e\u0437\u043c\u0456\u0440 \u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f \u043d\u0435 \u043f\u043e\u0432\u0438\u043d\u0435\u043d \u043f\u0435\u0440\u0435\u0432\u0438\u0449\u0443\u0432\u0430\u0442\u0438: %{size}. \u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f \u043f\u043e\u0432\u0438\u043d\u043d\u043e \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u0430\u0442\u0438 \u0442\u0430\u043a\u0438\u043c \u0440\u043e\u0437\u043c\u0456\u0440\u0430\u043c: %{dimensions}.',
+@@ -26377,7 +26051,6 @@ function selectEncoding() {
+                 '\u0417\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f...',
+             message_for_education:
+                 'This person will not be dispatched with the vehicle because it is missing the necessary education!',
+-            missions_per_page: '%{count} \u043c\u0456\u0441\u0456\u0457',
+             name: "\u0406\u043c'\u044f",
+             no: 'no',
+             none: '\u0416\u043e\u0434\u043d\u043e\u0433\u043e',
+@@ -26391,21 +26064,10 @@ function selectEncoding() {
+             },
+             release_at:
+                 '\u0432\u0438\u043f\u0438\u0441\u0430\u043d\u0438\u0439 \u0432',
+-            remove_all:
+-                '\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u0432\u0441\u0435',
+             save: '\u0417\u0431\u0435\u0440\u0435\u0433\u0442\u0438',
+             search: '\u041f\u043e\u0448\u0443\u043a',
+             show: '\u041f\u043e\u043a\u0430\u0437\u0430\u0442\u0438',
+             sort: 'Sort:',
+-            sort_by: {
+-                credits: '\u041a\u0440\u0435\u0434\u0438\u0442\u0438',
+-                default: 'Default',
+-                mission_type:
+-                    '\u0422\u0438\u043f \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f',
+-                name: '\u0406\u043c\u2019\u044f',
+-                poi: '\u0432\u0430\u0436\u043b\u0438\u0432\u043e\u0457 \u0442\u043e\u0447\u043a\u0438',
+-                requirements: '\u0412\u0438\u043c\u043e\u0433\u0438',
+-            },
+             sorting: {
+                 caption_asc: 'A to Z',
+                 caption_desc: 'Z to A',
+@@ -26421,7 +26083,6 @@ function selectEncoding() {
+                 },
+             },
+             time_in_minutes: 'Time in minutes',
+-            total_count: '\u0412\u0441\u044c\u043e\u0433\u043e: %{count}',
+             type: '\u0414\u0440\u0443\u043a\u0443\u0439:',
+             user_not_found:
+                 '\u041a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e.',
+@@ -26772,8 +26433,6 @@ function selectEncoding() {
+                 },
+             },
+             arrival: '\u041f\u0440\u0438\u0431\u0443\u0442\u0442\u044f',
+-            available_vehicles_count:
+-                '\u0423 \u0432\u0430\u0441 \u0454 %{count} \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u0438\u0445 \u0437\u0430\u0441\u043e\u0431\u0456\u0432',
+             backalarm: '\u0421\u043a\u0430\u0441\u0443\u0432\u0430\u0442\u0438',
+             coins: '\u041c\u043e\u043d\u0435\u0442\u0438',
+             collapse: 'Collapse',
+@@ -26841,8 +26500,6 @@ function selectEncoding() {
+             sale_ended:
+                 '\u0420\u043e\u0437\u043f\u0440\u043e\u0434\u0430\u0436 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043e',
+             secounds: '\u0441\u0435\u043a.',
+-            selected_vehicles_count:
+-                '\u0412\u0438 \u043e\u0431\u0440\u0430\u043b\u0438 %{count} \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u0438\u0445 \u0437\u0430\u0441\u043e\u0431\u0456\u0432',
+             show_all: 'Show All',
+             show_less: 'Show Less',
+             show_more:
+@@ -27456,7 +27113,6 @@ function selectEncoding() {
+     (I18n.translations.es_MX = {
+         common: {
+             add: 'A\xf1adir',
+-            add_all: 'Suma todo',
+             all: 'Todos',
+             around: 'En %{target}',
+             back: 'Atr\xe1s',
+@@ -27470,16 +27126,12 @@ function selectEncoding() {
+             content: 'Contenido',
+             copy: 'Copiar',
+             credits: 'Cr\xe9ditos',
+-            credits_max: 'Cr\xe9ditos m\xe1ximos',
+-            credits_min: 'Cr\xe9ditos m\xednimos',
+             custom_missions: 'Misi\xf3n de alianza a gran escala',
+             delete: 'Eliminar',
+             description: 'Description',
+             details: 'Detalles',
+             edit: 'Editar',
+             error: 'Error',
+-            filtered_count: 'Filtrado: %{count}',
+-            filters: 'Filtros',
+             graphic_image: {
+                 upload_requirements:
+                     'Formatos compatibles: %{formats}. El tama\xf1o de la imagen no debe superar: %{size}. La imagen debe tener las siguientes dimensiones: %{dimensions}.',
+@@ -27495,7 +27147,6 @@ function selectEncoding() {
+             loading: 'Cargando...',
+             message_for_education:
+                 'This person will not be dispatched with the vehicle because it is missing the necessary education!',
+-            missions_per_page: '%{count} misiones',
+             name: 'Nombre',
+             no: 'no',
+             none: 'Nada',
+@@ -27508,19 +27159,10 @@ function selectEncoding() {
+                     'Personnel will only be dispatched with the vehicle if it has acquired the necessary education!',
+             },
+             release_at: 'Alta en',
+-            remove_all: 'Eliminar todo',
+             save: 'Guardar',
+             search: 'Buscar',
+             show: 'Mostrar',
+             sort: 'Ordenar:',
+-            sort_by: {
+-                credits: 'Cr\xe9ditos',
+-                default: 'Por defecto',
+-                mission_type: 'Tipo de misi\xf3n',
+-                name: 'Nombre',
+-                poi: 'PI',
+-                requirements: 'Requisitos',
+-            },
+             sorting: {
+                 caption_asc: 'A a la Z',
+                 caption_desc: 'Z to A',
+@@ -27536,7 +27178,6 @@ function selectEncoding() {
+                 },
+             },
+             time_in_minutes: 'Tiempo en minutos',
+-            total_count: 'Total: %{count}',
+             type: 'Escriba:',
+             user_not_found: 'Usuario no encontrado',
+             wrong_key: 'Tecla equivocada',
+@@ -27837,7 +27478,6 @@ function selectEncoding() {
+                 },
+             },
+             arrival: 'Llegada',
+-            available_vehicles_count: 'Usted tiene %{count} veh\xedculos',
+             backalarm: 'Cancelar',
+             coins: 'Monedas',
+             collapse: 'Colapso',
+@@ -27894,7 +27534,6 @@ function selectEncoding() {
+             sale: 'Rebajas',
+             sale_ended: 'Oferta finalizada',
+             secounds: 'seg.',
+-            selected_vehicles_count: 'Ha seleccionado %{count} veh\xedculos',
+             show_all: 'Mostrar todo',
+             show_less: 'Mostrar menos',
+             show_more: 'Show More',
+@@ -28424,7 +28063,6 @@ function selectEncoding() {
+     (I18n.translations.ja_JP = {
+         common: {
+             add: '\u8ffd\u52a0',
+-            add_all: '\u3059\u3079\u3066\u8ffd\u52a0',
+             all: '\u3059\u3079\u3066',
+             around: '\u5468\u8fba %{target}',
+             back: '\u623b\u308b',
+@@ -28441,17 +28079,12 @@ function selectEncoding() {
+             content: '\u30b3\u30f3\u30c6\u30f3\u30c4',
+             copy: '\u30b3\u30d4\u30fc',
+             credits: '\u30af\u30ec\u30b8\u30c3\u30c8',
+-            credits_max: '\u6700\u5927\u30af\u30ec\u30b8\u30c3\u30c8',
+-            credits_min: '\u6700\u5c0f\u5358\u4f4d',
+             custom_missions: '\u30a2\u30e9\u30a4\u30a2\u30f3\u30b9\u30df\u30c3',
+             delete: '\u524a\u9664',
+             description: '\u8aac\u660e',
+             details: '\u8a73\u7d30',
+             edit: '\u7de8\u96c6',
+             error: '\u30a8\u30e9\u30fc',
+-            filtered_count:
+-                '\u30d5\u30a3\u30eb\u30bf\u30fc\u3092\u901a\u3057\u305f\uff1a %{count}',
+-            filters: '\u30d5\u30a3\u30eb\u30bf\u30fc',
+             graphic_image: {
+                 upload_requirements:
+                     '\u30b5\u30dd\u30fc\u30c8\u3055\u308c\u3066\u3044\u308b\u30d5\u30a9\u30fc\u30de\u30c3\u30c8\uff1a%{formats}\u3002\u753b\u50cf\u306e\u30b5\u30a4\u30ba\u306f %{size} \u3092\u8d85\u3048\u3066\u306f\u3044\u3051\u307e\u305b\u3093\u3002\u753b\u50cf\u306f %{dimensions} \u306e\u5bf8\u6cd5\u306b\u6e96\u62e0\u3057\u3066\u3044\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002',
+@@ -28469,7 +28102,6 @@ function selectEncoding() {
+             loading: '\u30ed\u30fc\u30c9\u4e2d\u2026',
+             message_for_education:
+                 '\u3053\u306e\u4eba\u54e1\u306f\u3001\u5fc5\u8981\u306a\u8a13\u7df4\u3092\u53d7\u3051\u3066\u3044\u306a\u3044\u305f\u3081\u3001\u8eca\u4e21\u3067\u6d3e\u9063\u3067\u304d\u307e\u305b\u3093\uff01',
+-            missions_per_page: '%{count} \u30df\u30c3\u30b7\u30e7\u30f3',
+             name: '\u540d\u524d',
+             no: '\u3044\u3044\u3048',
+             none: '\u306a\u3057',
+@@ -28482,20 +28114,10 @@ function selectEncoding() {
+                     '\u4eba\u54e1\u3092\u8eca\u4e21\u3067\u6d3e\u9063\u3067\u304d\u308b\u306e\u306f\u3001\u5fc5\u8981\u306a\u8a13\u7df4\u3092\u53d7\u3051\u305f\u5834\u5408\u306e\u307f\u3067\u3059\uff01',
+             },
+             release_at: '\u9000\u9662',
+-            remove_all: '\u3059\u3079\u3066\u524a\u9664',
+             save: '\u4fdd\u5b58',
+             search: '\u691c\u7d22',
+             show: '\u8868\u793a',
+             sort: '\u30bd\u30fc\u30c8',
+-            sort_by: {
+-                credits: '\u6761\u4ef6',
+-                default: '\u30c7\u30d5\u30a9\u30eb\u30c8',
+-                mission_type:
+-                    '\u30df\u30c3\u30b7\u30e7\u30f3\u30bf\u30a4\u30d7',
+-                name: '\u540d\u79f0',
+-                poi: '\u5230\u7740\u5730\u70b9\u30bf\u30a4\u30d7',
+-                requirements: '\u8981\u4ef6',
+-            },
+             sorting: {
+                 caption_asc: 'A\uff5eZ',
+                 caption_desc: 'Z\uff5eA',
+@@ -28511,7 +28133,6 @@ function selectEncoding() {
+                 },
+             },
+             time_in_minutes: '\u6642\u9593\uff08\u5206\uff09',
+-            total_count: '\u30c8\u30fc\u30bf\u30eb\u3060\uff1a %{count}',
+             type: '\u30bf\u30a4\u30d7\u3067\u3059\u3002',
+             user_not_found:
+                 '\u30e6\u30fc\u30b6\u30fc\u304c\u898b\u3064\u304b\u308a\u307e\u305b\u3093',
+@@ -28856,7 +28477,6 @@ function selectEncoding() {
+                 },
+             },
+             arrival: '\u5230\u7740',
+-            available_vehicles_count: '%{count} \u8eca\u4e21',
+             backalarm: '\u30ad\u30e3\u30f3\u30bb\u30eb',
+             coins: '\u30b3\u30a4\u30f3',
+             collapse: '\u5d29\u58ca',
+@@ -28926,8 +28546,6 @@ function selectEncoding() {
+             sale: '\u30bb\u30fc\u30eb',
+             sale_ended: '\u30bb\u30fc\u30eb\u7d42\u4e86',
+             secounds: '\u79d2',
+-            selected_vehicles_count:
+-                '%{count} \u8eca\u3092\u9078\u629e\u3057\u307e\u3057\u305f',
+             show_all: '\u3059\u3079\u3066\u8868\u793a',
+             show_less: '\u6298\u308a\u305f\u305f\u3080',
+             show_more: '\u5c55\u958b',
+@@ -29510,7 +29128,6 @@ function selectEncoding() {
+     (I18n.translations.ko_KR = {
+         common: {
+             add: '\ucd94\uac00',
+-            add_all: '\ubaa8\ub450 \ucd94\uac00',
+             all: '\ubaa8\ub450',
+             around: '\uc8fc\ubcc0 %{target}',
+             back: '\ub4a4\ub85c',
+@@ -29525,16 +29142,12 @@ function selectEncoding() {
+             content: '\ub0b4\uc6a9',
+             copy: '\ubcf5\uc0ac',
+             credits: '\ud06c\ub808\ub527',
+-            credits_max: '\ucd5c\ub300 \ud06c\ub808\ub527',
+-            credits_min: '\ucd5c\uc18c \ud06c\ub808\ub527',
+             custom_missions: '\ub300\uaddc\ubaa8 \ub3d9\ub9f9 \uc784\ubb34 ',
+             delete: '\uc0ad\uc81c',
+             description: '\uc124\uba85',
+             details: '\uc138\ubd80 \uc0ac\ud56d',
+             edit: '\ud3b8\uc9d1',
+             error: '\uc624\ub958',
+-            filtered_count: '\ud544\ud130\ub9c1\ub428: %{count}',
+-            filters: '\ud544\ud130',
+             graphic_image: {
+                 upload_requirements:
+                     '\uc9c0\uc6d0\ub418\ub294 \ud615\uc2dd: %{formats}. \uc774\ubbf8\uc9c0\ub294 \ub2e4\uc74c \ud06c\uae30\ubcf4\ub2e4 \ucee4\uc11c\ub294 \uc548 \ub429\ub2c8\ub2e4: %{size}. \uc774\ubbf8\uc9c0\ub294 \ub2e4\uc74c \uce58\uc218\ub97c \ub530\ub77c\uc57c \ud569\ub2c8\ub2e4: %{dimensions}.',
+@@ -29552,7 +29165,6 @@ function selectEncoding() {
+             loading: '\ub85c\ub529 \uc911...',
+             message_for_education:
+                 '\uc774 \uc778\uc6d0\uc740 \ud544\uc218 \uad50\uc721\uc744 \uc774\uc218\ud558\uc9c0 \uc54a\uc544 \ucc28\ub7c9\uacfc \ud568\uaed8 \ud30c\uacac\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4!',
+-            missions_per_page: '%{count} \ubbf8\uc158',
+             name: '\uc774\ub984',
+             no: '\uc544\ub2c8',
+             none: '\uc5c6\uc74c',
+@@ -29565,19 +29177,10 @@ function selectEncoding() {
+                     '\ud544\uc218 \uad50\uc721\uc744 \uc774\uc218\ud55c \uc778\uc6d0\ub9cc \ucc28\ub7c9\uacfc \ud568\uaed8 \ud30c\uacac\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4!',
+             },
+             release_at: '\ud1f4\uc6d0',
+-            remove_all: '\ubaa8\ub450 \uc81c\uac70',
+             save: '\uc800\uc7a5',
+             search: '\ud0d0\uc0c9',
+             show: '\ubcf4\uae30',
+             sort: '\uc815\ub82c:',
+-            sort_by: {
+-                credits: '\ud06c\ub808\ub527',
+-                default: '\uae30\ubcf8',
+-                mission_type: '\uc784\ubb34 \uc720\ud615',
+-                name: '\uc774\ub984',
+-                poi: '\uad00\uc2ec \uc9c0\uc5ed \uc720\ud615',
+-                requirements: '\uc694\uad6c \uc0ac\ud56d',
+-            },
+             sorting: {
+                 caption_asc: 'A to Z',
+                 caption_desc: 'Z to A',
+@@ -29593,7 +29196,6 @@ function selectEncoding() {
+                 },
+             },
+             time_in_minutes: '\ubd84 \ub2e8\uc704 \uc2dc\uac04',
+-            total_count: '\ud569\uacc4: %{count}',
+             type: '\uc720\ud615:',
+             user_not_found:
+                 '\uc720\uc800\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc74c',
+@@ -29917,8 +29519,6 @@ function selectEncoding() {
+                 },
+             },
+             arrival: '\ub3c4\ucc29',
+-            available_vehicles_count:
+-                '%{count} \ucc28\ub7c9\uc774 \uc788\uc2b5\ub2c8\ub2e4.',
+             backalarm: '\ucde8\uc18c',
+             coins: '\ucf54\uc778',
+             collapse: '\uc811\uae30',
+@@ -29983,8 +29583,6 @@ function selectEncoding() {
+             sale: '\ud560\uc778',
+             sale_ended: '\ud560\uc778 \uc885\ub8cc',
+             secounds: '\ucd08',
+-            selected_vehicles_count:
+-                '%{count} \ucc28\ub7c9\uc744 \uc120\ud0dd\ud558\uc168\uc2b5\ub2c8\ub2e4.',
+             show_all: '\ubaa8\ub450 \ubcf4\uae30',
+             show_less: '\uac00\ub9ac\uae30',
+             show_more: '\ub354 \ubcf4\uae30',
+@@ -30535,7 +30133,6 @@ function selectEncoding() {
+     (I18n.translations.ro_RO = {
+         common: {
+             add: 'Adaug\u0103',
+-            add_all: 'Ad\u0103uga\u021bi toate',
+             all: 'Toate',
+             around: '\xcen jurul %{target}',
+             back: '\xcenapoi',
+@@ -30549,16 +30146,12 @@ function selectEncoding() {
+             content: 'Con\u0163inut',
+             copy: 'Copiaz\u0103',
+             credits: 'Credite',
+-            credits_max: 'Credite maxime',
+-            credits_min: 'Min Credite',
+             custom_missions: 'Misiuni de alian\u021b\u0103',
+             delete: '\u0218terge',
+             description: 'Description',
+             details: 'Detalii',
+             edit: 'Editeaz\u0103',
+             error: 'Eroare',
+-            filtered_count: 'Filtrat: %{count}',
+-            filters: 'Filtrele',
+             graphic_image: {
+                 upload_requirements:
+                     'Formate acceptate: %{formats}. Imaginea nu trebuie s\u0103 dep\u0103\u0219easc\u0103 dimensiunea: %{size}. Imaginea trebuie s\u0103 corespund\u0103 urm\u0103toarelor dimensiuni: %{dimensions}.',
+@@ -30573,7 +30166,6 @@ function selectEncoding() {
+             loading: 'Se \xeencarc\u0103...',
+             message_for_education:
+                 'This person will not be dispatched with the vehicle because it is missing the necessary education!',
+-            missions_per_page: '%{count} misiuni',
+             name: 'Nume',
+             no: 'no',
+             none: 'Niciunul/niciuna',
+@@ -30586,19 +30178,10 @@ function selectEncoding() {
+                     'Personnel will only be dispatched with the vehicle if it has acquired the necessary education!',
+             },
+             release_at: 'Externat \xeen',
+-            remove_all: 'Elimina\u021bi toate',
+             save: 'Salveaz\u0103',
+             search: 'Caut\u0103',
+             show: 'Arat\u0103',
+             sort: 'Sort:',
+-            sort_by: {
+-                credits: 'Credite',
+-                default: 'Implicit\u0103',
+-                mission_type: 'Tip misiune',
+-                name: 'Nume',
+-                poi: 'Punct de interes',
+-                requirements: 'Cerin\u021be',
+-            },
+             sorting: {
+                 caption_asc: 'A to Z',
+                 caption_desc: 'Z to A',
+@@ -30614,7 +30197,6 @@ function selectEncoding() {
+                 },
+             },
+             time_in_minutes: 'Timp \xeen minute',
+-            total_count: 'Total: %{count}',
+             type: 'Tip:',
+             user_not_found: 'Utilizatorul nu a fost g\u0103sit',
+             wrong_key: 'Tast\u0103 gre\u0219it\u0103',
+@@ -30927,7 +30509,6 @@ function selectEncoding() {
+                 },
+             },
+             arrival: 'Sosire',
+-            available_vehicles_count: 'Ave\u021bi %{count} vehicule',
+             backalarm: 'Anuleaz\u0103',
+             coins: 'Monede',
+             collapse: 'Collapse',
+@@ -30985,7 +30566,6 @@ function selectEncoding() {
+             sale: 'Promo\u021bie',
+             sale_ended: 'Promo\u021bia s-a \xeencheiat',
+             secounds: 'sec.',
+-            selected_vehicles_count: 'A\u021bi selectat %{count} vehicule',
+             show_all: 'Arat\u0103 tot',
+             show_less: 'Show Less',
+             show_more: 'Show More',
+@@ -31526,7 +31106,6 @@ function selectEncoding() {
+     (I18n.translations.fi_FI = {
+         common: {
+             add: 'Lis\xe4\xe4',
+-            add_all: 'Lis\xe4\xe4 kaikki',
+             all: 'Kaikki',
+             around: 'Alueella %{target}',
+             back: 'Palaa',
+@@ -31541,16 +31120,12 @@ function selectEncoding() {
+             content: 'Sis\xe4lt\xf6',
+             copy: 'Kopioi',
+             credits: 'Krediitti\xe4',
+-            credits_max: 'Max opintopisteet',
+-            credits_min: 'Min Krediitti\xe4',
+             custom_missions: 'Laaja liittoutumateht\xe4v\xe4',
+             delete: 'Poista',
+             description: 'Kuvaus',
+             details: 'Lis\xe4tiedot',
+             edit: 'Muokkaa',
+             error: 'Virhe',
+-            filtered_count: 'Suodatettu: %{count}',
+-            filters: 'Suodattimet',
+             graphic_image: {
+                 upload_requirements:
+                     'Tuetut tiedostomuodot: %{formats}. Kuvan koko ei saa olla suurempi kuin: %{size}. Kuvan tulisi olla seuraavien mittojen mukainen: %{dimensions}.',
+@@ -31564,7 +31139,6 @@ function selectEncoding() {
+             loading: 'Ladataan...',
+             message_for_education:
+                 'T\xe4t\xe4 ty\xf6ntekij\xe4\xe4 ei l\xe4hetet\xe4 ajoneuvon mukana, koska h\xe4nelt\xe4 puuttuu tarvittava koulutus.',
+-            missions_per_page: '%{count} teht\xe4v\xe4t',
+             name: 'Nimi',
+             no: 'Ei',
+             none: 'Ei mit\xe4\xe4n',
+@@ -31577,19 +31151,10 @@ function selectEncoding() {
+                     'Henkil\xf6st\xf6 l\xe4hetet\xe4\xe4n ajoneuvon mukana vain, jos se on saanut tarvittavan koulutuksen.',
+             },
+             release_at: 'Vapauttaminen',
+-            remove_all: 'Poista kaikki',
+             save: 'Tallenna',
+             search: 'Haku',
+             show: 'N\xe4yt\xe4',
+             sort: 'Lajittele:',
+-            sort_by: {
+-                credits: 'Krediitti\xe4 ',
+-                default: 'Oletusarvo',
+-                mission_type: 'Teht\xe4v\xe4n tyyppi',
+-                name: 'Nimi',
+-                poi: 'Kohdepisteen',
+-                requirements: 'Vaatimukset',
+-            },
+             sorting: {
+                 caption_asc: 'A - Z',
+                 caption_desc: 'Z - A',
+@@ -31605,7 +31170,6 @@ function selectEncoding() {
+                 },
+             },
+             time_in_minutes: 'Aika minuuteissa',
+-            total_count: 'Yhteens\xe4: %{count}',
+             type: 'Tyyppi:',
+             user_not_found: 'K\xe4ytt\xe4j\xe4\xe4 ei l\xf6ytynyt',
+             wrong_key: 'V\xe4\xe4r\xe4 avain',
+@@ -31914,7 +31478,6 @@ function selectEncoding() {
+                 },
+             },
+             arrival: 'Saapumisaika',
+-            available_vehicles_count: 'Sinulla on %{count} ajoneuvot',
+             backalarm: 'Peruuta',
+             coins: 'Kolikot',
+             collapse: 'Romahdus',
+@@ -31970,7 +31533,6 @@ function selectEncoding() {
+             sale: 'Ale',
+             sale_ended: 'Ale p\xe4\xe4ttynyt',
+             secounds: 's',
+-            selected_vehicles_count: 'Olet valinnut %{count} ajoneuvot',
+             show_all: 'N\xe4yt\xe4 kaikki',
+             show_less: 'N\xe4yt\xe4 enemm\xe4n',
+             show_more: 'N\xe4yt\xe4 v\xe4hemm\xe4n',
+@@ -32504,7 +32066,6 @@ function selectEncoding() {
+     (I18n.translations.sk_SK = {
+         common: {
+             add: 'Prida\u0165',
+-            add_all: 'Prida\u0165 v\u0161etky',
+             all: 'V\u0161etky',
+             around: 'Okolo %{target}',
+             back: 'Sp\xe4\u0165',
+@@ -32518,16 +32079,12 @@ function selectEncoding() {
+             content: 'Obsah',
+             copy: 'Kop\xedrova\u0165',
+             credits: 'Kredity',
+-            credits_max: 'Maxim\xe1lny kreditov',
+-            credits_min: 'Min. kredity',
+             custom_missions: 'Rozsiahlu alian\u010dn\xfa misie',
+             delete: 'Vymaza\u0165',
+             description: 'Description',
+             details: 'Podrobnosti',
+             edit: 'Upravi\u0165',
+             error: 'Chyba',
+-            filtered_count: 'Filtrovan\xe9: %{count}',
+-            filters: 'Filtrov',
+             graphic_image: {
+                 upload_requirements:
+                     'Podporovan\xe9 form\xe1ty: %{formats}. Obr\xe1zok nesmie by\u0165 v\xe4\u010d\u0161\xed ako: %{size}. Obr\xe1zok by mal ma\u0165 nasleduj\xface rozmery: %{dimensions}.',
+@@ -32541,7 +32098,6 @@ function selectEncoding() {
+             loading: 'Na\u010d\xedtava sa...',
+             message_for_education:
+                 'This person will not be dispatched with the vehicle because it is missing the necessary education!',
+-            missions_per_page: '%{count} misie',
+             name: 'N\xe1zov',
+             no: 'no',
+             none: '\u017diadne',
+@@ -32554,19 +32110,10 @@ function selectEncoding() {
+                     'Personnel will only be dispatched with the vehicle if it has acquired the necessary education!',
+             },
+             release_at: 'Prepusten\xfd v',
+-            remove_all: 'Odstr\xe1\u0148te v\u0161etky',
+             save: 'Ulo\u017ei\u0165',
+             search: 'Vyh\u013eada\u0165',
+             show: 'Zobrazi\u0165',
+             sort: 'Sort:',
+-            sort_by: {
+-                credits: 'Kreditor',
+-                default: 'Predvolen\xe9',
+-                mission_type: 'Typ misie',
+-                name: 'N\xe1zov',
+-                poi: 'POI',
+-                requirements: 'Po\u017eiadavky',
+-            },
+             sorting: {
+                 caption_asc: 'A to Z',
+                 caption_desc: 'Z to A',
+@@ -32582,7 +32129,6 @@ function selectEncoding() {
+                 },
+             },
+             time_in_minutes: '\u010cas v min\xfatach',
+-            total_count: 'Celkom: %{count}',
+             type: 'Type:',
+             user_not_found: 'Pou\u017e\xedvate\u013e sa nena\u0161iel',
+             wrong_key: 'Nespr\xe1vny k\u013e\xfa\u010d',
+@@ -32884,8 +32430,6 @@ function selectEncoding() {
+                 },
+             },
+             arrival: 'Pr\xedchod',
+-            available_vehicles_count:
+-                'M\xe1te k dispoz\xedcii vozidl\xe1 %{count}',
+             backalarm: 'Zru\u0161i\u0165',
+             coins: 'Mince',
+             collapse: 'Collapse',
+@@ -32941,7 +32485,6 @@ function selectEncoding() {
+             sale: 'Preda\u0165',
+             sale_ended: 'Predaj ukon\u010den\xfd',
+             secounds: 'sek.',
+-            selected_vehicles_count: 'Vybrali ste vozidl\xe1 %{count}',
+             show_all: 'Show All',
+             show_less: 'Show Less',
+             show_more: 'Show More',
+@@ -33478,7 +33021,6 @@ function selectEncoding() {
+     (I18n.translations.en = {
+         common: {
+             add: 'Add',
+-            add_all: 'Add all',
+             all: 'All',
+             around: 'Around %{target}',
+             back: 'Back',
+@@ -33491,16 +33033,12 @@ function selectEncoding() {
+             content: 'Content',
+             copy: 'Copy',
+             credits: 'Credits',
+-            credits_max: 'Max Credits',
+-            credits_min: 'Min Credits',
+             custom_missions: 'Large Scale Alliance Mission',
+             delete: 'Delete',
+             description: 'Description',
+             details: 'Details',
+             edit: 'Edit',
+             error: 'Error',
+-            filtered_count: 'Filtered: %{count}',
+-            filters: 'Filters',
+             graphic_image: {
+                 upload_requirements:
+                     'Supported formats: %{formats}. Image size cannot be bigger than: %{size}. Image should fit: %{dimensions}.',
+@@ -33514,7 +33052,6 @@ function selectEncoding() {
+             loading: 'Loading...',
+             message_for_education:
+                 'This person will not be dispatched with the vehicle because it is missing the necessary education!',
+-            missions_per_page: '%{count} missions',
+             name: 'Name',
+             no: 'no',
+             none: 'None',
+@@ -33527,19 +33064,10 @@ function selectEncoding() {
+                     'Personnel will only be dispatched with the vehicle if it has acquired the necessary education!',
+             },
+             release_at: 'Release in',
+-            remove_all: 'Remove all',
+             save: 'Save',
+             search: 'Search',
+             show: 'Show',
+             sort: 'Sort:',
+-            sort_by: {
+-                credits: 'Credits',
+-                default: 'Default',
+-                mission_type: 'Mission Type',
+-                name: 'Name',
+-                poi: 'POI',
+-                requirements: 'Requirements',
+-            },
+             sorting: {
+                 caption_asc: 'A to Z',
+                 caption_desc: 'Z to A',
+@@ -33555,7 +33083,6 @@ function selectEncoding() {
+                 },
+             },
+             time_in_minutes: 'Time in minutes',
+-            total_count: 'Total: %{count}',
+             type: 'Type:',
+             user_not_found: 'User not found',
+             wrong_key: 'Wrong key',
+@@ -33851,7 +33378,6 @@ function selectEncoding() {
+                 },
+             },
+             arrival: 'Arrival',
+-            available_vehicles_count: 'You have %{count} vehicles',
+             backalarm: 'Cancel',
+             coins: 'Coins',
+             collapse: 'Collapse',
+@@ -33907,7 +33433,6 @@ function selectEncoding() {
+             sale: 'Sale',
+             sale_ended: 'Sale ended',
+             secounds: 'sec.',
+-            selected_vehicles_count: "You've selected %{count} vehicles",
+             show_all: 'Show All',
+             show_less: 'Show Less',
+             show_more: 'Show More',
+@@ -34873,7 +34398,7 @@ function selectEncoding() {
+             }
+             if (o) return (o !== c[0] && c.unshift(o), n[o]);
+         }
+-        function R(e, t, i, n) {
++        function L(e, t, i, n) {
+             var s,
+                 a,
+                 o,
+@@ -34927,7 +34452,7 @@ function selectEncoding() {
+                     }
+             return { state: 'success', data: t };
+         }
+-        function L() {
++        function R() {
+             try {
+                 return new e.XMLHttpRequest();
+             } catch (e) {}
+@@ -35683,12 +35208,12 @@ function selectEncoding() {
+                 function i(e, t, i, n) {
+                     var s, a, o, r, l, c, d, u, h, p;
+                     if (
+-                        ((t ? t.ownerDocument || t : W) !== L && R(t),
++                        ((t ? t.ownerDocument || t : W) !== R && L(t),
+                         (i = i || []),
+                         !e || 'string' != typeof e)
+                     )
+                         return i;
+-                    if (1 !== (r = (t = t || L).nodeType) && 9 !== r) return [];
++                    if (1 !== (r = (t = t || R).nodeType) && 9 !== r) return [];
+                     if (O && !n) {
+                         if ((s = xe.exec(e)))
+                             if ((o = s[1])) {
+@@ -35778,7 +35303,7 @@ function selectEncoding() {
+                     return ((e[$] = !0), e);
+                 }
+                 function o(e) {
+-                    var t = L.createElement('div');
++                    var t = R.createElement('div');
+                     try {
+                         return !!e(t);
+                     } catch (e) {
+@@ -36094,7 +35619,7 @@ function selectEncoding() {
+                                         )),
+                                 k = (V += null == y ? 1 : Math.random() || 0.1);
+                             for (
+-                                v && ((D = r !== L && r), (z = n));
++                                v && ((D = r !== R && r), (z = n));
+                                 null != (u = w[f]);
+                                 f++
+                             ) {
+@@ -36184,8 +35709,8 @@ function selectEncoding() {
+                     I,
+                     D,
+                     j,
+-                    R,
+                     L,
++                    R,
+                     B,
+                     O,
+                     F,
+@@ -36333,13 +35858,13 @@ function selectEncoding() {
+                         return !!t && 'HTML' !== t.nodeName;
+                     }),
+                 (A = i.support = {}),
+-                (R = i.setDocument =
++                (L = i.setDocument =
+                     function (e) {
+                         var t = e ? e.ownerDocument || e : W;
+                         return (
+-                                t !== L && 9 === t.nodeType && t.documentElement
++                                t !== R && 9 === t.nodeType && t.documentElement
+                             ) ?
+-                                ((L = t),
++                                ((R = t),
+                                 (B = t.documentElement),
+                                 (O = !M(t)),
+                                 (A.attributes = o(function (e) {
+@@ -36607,14 +36132,14 @@ function selectEncoding() {
+                                             );
+                                         }),
+                                 t)
+-                            :   L;
++                            :   R;
+                     }),
+                 (i.matches = function (e, t) {
+                     return i(e, null, null, t);
+                 }),
+                 (i.matchesSelector = function (e, t) {
+                     if (
+-                        ((e.ownerDocument || e) !== L && R(e),
++                        ((e.ownerDocument || e) !== R && L(e),
+                         (t = t.replace(ve, "='$1']")),
+                         A.matchesSelector &&
+                             O &&
+@@ -36630,13 +36155,13 @@ function selectEncoding() {
+                             )
+                                 return n;
+                         } catch (e) {}
+-                    return i(t, L, null, [e]).length > 0;
++                    return i(t, R, null, [e]).length > 0;
+                 }),
+                 (i.contains = function (e, t) {
+-                    return ((e.ownerDocument || e) !== L && R(e), q(e, t));
++                    return ((e.ownerDocument || e) !== R && L(e), q(e, t));
+                 }),
+                 (i.attr = function (e, i) {
+-                    (e.ownerDocument || e) !== L && R(e);
++                    (e.ownerDocument || e) !== R && L(e);
+                     var n = E.attrHandle[i.toLowerCase()],
+                         s =
+                             n && ee.call(E.attrHandle, i.toLowerCase()) ?
+@@ -37045,8 +36570,8 @@ function selectEncoding() {
+                             },
+                             focus: function (e) {
+                                 return (
+-                                    e === L.activeElement &&
+-                                    (!L.hasFocus || L.hasFocus()) &&
++                                    e === R.activeElement &&
++                                    (!R.hasFocus || R.hasFocus()) &&
+                                     !!(e.type || e.href || ~e.tabIndex)
+                                 );
+                             },
+@@ -37153,7 +36678,7 @@ function selectEncoding() {
+                     (C.prototype = E.filters = E.pseudos),
+                     (E.setFilters = new C()),
+                     (A.sortStable = $.split('').sort(J).join('') === $),
+-                    R(),
++                    L(),
+                     [0, 0].sort(J),
+                     (A.detectDuplicates = Y),
+                     (de.find = i),
+@@ -37731,8 +37256,8 @@ function selectEncoding() {
+             Ie = /^(?:input|select|textarea|button|object)$/i,
+             De = /^(?:a|area)$/i,
+             je = /^(?:checked|selected)$/i,
+-            Re = de.support.getSetAttribute,
+-            Le = de.support.input;
++            Le = de.support.getSetAttribute,
++            Re = de.support.input;
+         (de.fn.extend({
+             attr: function (e, t) {
+                 return de.access(this, de.attr, e, t, arguments.length > 1);
+@@ -38001,14 +37526,14 @@ function selectEncoding() {
+                         for (; (i = a[s++]); )
+                             ((n = de.propFix[i] || i),
+                                 de.expr.match.bool.test(i) ?
+-                                    (Le && Re) || !je.test(i) ?
++                                    (Re && Le) || !je.test(i) ?
+                                         (e[n] = !1)
+                                     :   (e[de.camelCase('default-' + i)] = e[
+                                             n
+                                         ] =
+                                             !1)
+                                 :   de.attr(e, i, ''),
+-                                e.removeAttribute(Re ? i : n));
++                                e.removeAttribute(Le ? i : n));
+                 },
+                 attrHooks: {
+                     type: {
+@@ -38067,8 +37592,8 @@ function selectEncoding() {
+                 set: function (e, t, i) {
+                     return (
+                         !1 === t ? de.removeAttr(e, i)
+-                        : (Le && Re) || !je.test(i) ?
+-                            e.setAttribute((!Re && de.propFix[i]) || i, i)
++                        : (Re && Le) || !je.test(i) ?
++                            e.setAttribute((!Le && de.propFix[i]) || i, i)
+                         :   (e[de.camelCase('default-' + i)] = e[i] = !0),
+                         i
+                     );
+@@ -38077,7 +37602,7 @@ function selectEncoding() {
+             de.each(de.expr.match.bool.source.match(/\w+/g), function (e, i) {
+                 var n = de.expr.attrHandle[i] || de.find.attr;
+                 de.expr.attrHandle[i] =
+-                    (Le && Re) || !je.test(i) ?
++                    (Re && Le) || !je.test(i) ?
+                         function (e, i, s) {
+                             var a = de.expr.attrHandle[i],
+                                 o =
+@@ -38099,7 +37624,7 @@ function selectEncoding() {
+                             );
+                         };
+             }),
+-            (Le && Re) ||
++            (Re && Le) ||
+                 (de.attrHooks.value = {
+                     set: function (e, t, i) {
+                         if (!de.nodeName(e, 'input'))
+@@ -38107,7 +37632,7 @@ function selectEncoding() {
+                         e.defaultValue = t;
+                     },
+                 }),
+-            Re ||
++            Le ||
+                 ((ze = {
+                     set: function (e, i, n) {
+                         var s = e.getAttributeNode(n);
+@@ -40074,8 +39599,8 @@ function selectEncoding() {
+             It = /\?/,
+             Dt = /#.*$/,
+             jt = /([?&])_=[^&]*/,
+-            Rt = /^(.*?):[ \t]*([^\r\n]*)\r?$/gm,
+-            Lt = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
++            Lt = /^(.*?):[ \t]*([^\r\n]*)\r?$/gm,
++            Rt = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
+             Bt = /^(?:GET|HEAD)$/,
+             Ot = /^\/\//,
+             Ft = /^([\w.+-]+:)(?:\/\/([^\/?#:]*)(?::(\d+)|)|)/,
+@@ -40151,7 +39676,7 @@ function selectEncoding() {
+                 ajaxSettings: {
+                     url: Pt,
+                     type: 'GET',
+-                    isLocal: Lt.test(Et[1]),
++                    isLocal: Rt.test(Et[1]),
+                     global: !0,
+                     processData: !0,
+                     async: !0,
+@@ -40201,7 +39726,7 @@ function selectEncoding() {
+                             (k.readyState = e > 0 ? 4 : 0),
+                             (a = (e >= 200 && e < 300) || 304 === e),
+                             n && (b = j(h, k, n)),
+-                            (b = R(h, b, k, a)),
++                            (b = L(h, b, k, a)),
+                             a ?
+                                 (h.ifModified &&
+                                     ((w =
+@@ -40263,7 +39788,7 @@ function selectEncoding() {
+                                 var t;
+                                 if (2 === y) {
+                                     if (!u)
+-                                        for (u = {}; (t = Rt.exec(r)); )
++                                        for (u = {}; (t = Lt.exec(r)); )
+                                             u[t[1].toLowerCase()] = t[2];
+                                     t = u[e.toLowerCase()];
+                                 }
+@@ -40527,9 +40052,9 @@ function selectEncoding() {
+         ((de.ajaxSettings.xhr =
+             e.ActiveXObject ?
+                 function () {
+-                    return (!this.isLocal && L()) || B();
++                    return (!this.isLocal && R()) || B();
+                 }
+-            :   L),
++            :   R),
+             (Gt = de.ajaxSettings.xhr()),
+             (de.support.cors = !!Gt && 'withCredentials' in Gt),
+             (Gt = de.support.ajax = !!Gt) &&
+@@ -49824,8 +49349,8 @@ function selectEncoding() {
+                         I,
+                         D,
+                         j,
+-                        R,
+                         L,
++                        R,
+                         B,
+                         O,
+                         F,
+@@ -50074,13 +49599,13 @@ function selectEncoding() {
+                                     j = this._daylightSavingAdjust(
+                                         new Date(ee, X, 1 - M)
+                                     ),
+-                                    R = 0;
+-                                R < D;
+-                                R++
++                                    L = 0;
++                                L < D;
++                                L++
+                             ) {
+                                 for (
+                                     A += '<tr>',
+-                                        L =
++                                        R =
+                                             u ?
+                                                 "<td class='ui-datepicker-week-col'>" +
+                                                 this._get(
+@@ -50105,7 +49630,7 @@ function selectEncoding() {
+                                             !B[0] ||
+                                             (J && j < J) ||
+                                             (Q && j > Q)),
+-                                        (L +=
++                                        (R +=
+                                             "<td class='" +
+                                             ((w + d + 6) % 7 >= 5 ?
+                                                 ' ui-datepicker-week-end'
+@@ -50172,7 +49697,7 @@ function selectEncoding() {
+                                             '</td>'),
+                                         j.setDate(j.getDate() + 1),
+                                         (j = this._daylightSavingAdjust(j)));
+-                                A += L + '</tr>';
++                                A += R + '</tr>';
+                             }
+                             (++X > 11 && ((X = 0), ee++),
+                                 (x += A +=
+@@ -61131,7 +60656,7 @@ function selectEncoding() {
+                 De(e)
+             );
+         }
+-        function Re(e, t) {
++        function Le(e, t) {
+             var i, n, s, a, o, r;
+             if (!e || 0 === e.length) throw new Error('latlngs not passed');
+             De(e) ||
+@@ -61172,7 +60697,7 @@ function selectEncoding() {
+                     }
+             return A([(c = t.unproject(w(r))).lat + l.lat, c.lng + l.lng]);
+         }
+-        function Le(e, t) {
++        function Re(e, t) {
+             var i,
+                 n,
+                 s,
+@@ -61204,7 +60729,7 @@ function selectEncoding() {
+                     );
+                 case 'GeometryCollection':
+                     for (s = 0, a = o.geometries.length; s < a; s++) {
+-                        var u = Le(
++                        var u = Re(
+                             {
+                                 geometry: o.geometries[s],
+                                 type: 'Feature',
+@@ -61217,7 +60742,7 @@ function selectEncoding() {
+                     return new ki(l);
+                 case 'FeatureCollection':
+                     for (s = 0, a = o.features.length; s < a; s++) {
+-                        var h = Le(o.features[s], t);
++                        var h = Re(o.features[s], t);
+                         h && l.push(h);
+                     }
+                     return new ki(l);
+@@ -62047,8 +61572,8 @@ function selectEncoding() {
+             jt =
+                 ((gt = 'MozPerspective' in gt),
+                 !window.L_DISABLE_3D && (It || Dt || gt) && !Pt && !Et),
+-            Rt = (Ki = 'undefined' != typeof orientation || I('mobile')) && wt,
+-            Lt = Ki && Dt,
++            Lt = (Ki = 'undefined' != typeof orientation || I('mobile')) && wt,
++            Rt = Ki && Dt,
+             Bt = !window.PointerEvent && window.MSPointerEvent,
+             Ot = !(!window.PointerEvent && !Bt),
+             Ft = 'ontouchstart' in window || !!window.TouchEvent,
+@@ -62103,8 +61628,8 @@ function selectEncoding() {
+                 gecko3d: gt,
+                 any3d: jt,
+                 mobile: Ki,
+-                mobileWebkit: Rt,
+-                mobileWebkit3d: Lt,
++                mobileWebkit: Lt,
++                mobileWebkit3d: Rt,
+                 msPointer: Bt,
+                 pointer: Ot,
+                 touch: Nt,
+@@ -64382,7 +63907,7 @@ function selectEncoding() {
+                     _sqClosestPointOnSegment: Ie,
+                     isFlat: De,
+                     _flat: je,
+-                    polylineCenter: Re,
++                    polylineCenter: Le,
+                 }),
+                 (Tt = {
+                     project: function (e) {
+@@ -65395,7 +64920,7 @@ function selectEncoding() {
+                 },
+                 getCenter: function () {
+                     if (this._map)
+-                        return Re(this._defaultShape(), this._map.options.crs);
++                        return Le(this._defaultShape(), this._map.options.crs);
+                     throw new Error(
+                         'Must add layer to map before using getCenter()'
+                     );
+@@ -65632,7 +65157,7 @@ function selectEncoding() {
+                     }
+                     var a,
+                         o = this.options;
+-                    return (o.filter && !o.filter(e)) || !(a = Le(e, o)) ?
++                    return (o.filter && !o.filter(e)) || !(a = Re(e, o)) ?
+                             this
+                         :   ((a.feature = $e(e)),
+                             (a.defaultOptions = a.options),
+@@ -65925,7 +65450,7 @@ function selectEncoding() {
+                     }
+                 },
+             }),
+-            Ri = Di.extend({
++            Li = Di.extend({
+                 _initImage: function () {
+                     var e = (this._image = this._url);
+                     (Z(e, 'leaflet-image-layer'),
+@@ -65935,7 +65460,7 @@ function selectEncoding() {
+                         (e.onmousemove = r));
+                 },
+             }),
+-            Li = Pt.extend({
++            Ri = Pt.extend({
+                 options: {
+                     interactive: !1,
+                     offset: [0, 0],
+@@ -66131,7 +65656,7 @@ function selectEncoding() {
+                         );
+                     },
+                 }),
+-                Li.extend({
++                Ri.extend({
+                     options: {
+                         pane: 'popupPane',
+                         offset: [0, 7],
+@@ -66158,11 +65683,11 @@ function selectEncoding() {
+                                 e._popup.options.autoClose &&
+                                 e.removeLayer(e._popup),
+                             (e._popup = this),
+-                            Li.prototype.openOn.call(this, e)
++                            Ri.prototype.openOn.call(this, e)
+                         );
+                     },
+                     onAdd: function (e) {
+-                        (Li.prototype.onAdd.call(this, e),
++                        (Ri.prototype.onAdd.call(this, e),
+                             e.fire('popupopen', { popup: this }),
+                             this._source &&
+                                 (this._source.fire(
+@@ -66174,7 +65699,7 @@ function selectEncoding() {
+                                     this._source.on('preclick', me)));
+                     },
+                     onRemove: function (e) {
+-                        (Li.prototype.onRemove.call(this, e),
++                        (Ri.prototype.onRemove.call(this, e),
+                             e.fire('popupclose', { popup: this }),
+                             this._source &&
+                                 (this._source.fire(
+@@ -66186,7 +65711,7 @@ function selectEncoding() {
+                                     this._source.off('preclick', me)));
+                     },
+                     getEvents: function () {
+-                        var e = Li.prototype.getEvents.call(this);
++                        var e = Ri.prototype.getEvents.call(this);
+                         return (
+                             (void 0 !== this.options.closeOnClick ?
+                                 this.options.closeOnClick
+@@ -66418,7 +65943,7 @@ function selectEncoding() {
+                         13 === e.originalEvent.keyCode && this._openPopup(e);
+                     },
+                 }),
+-                Li.extend({
++                Ri.extend({
+                     options: {
+                         pane: 'tooltipPane',
+                         offset: [0, 0],
+@@ -66428,7 +65953,7 @@ function selectEncoding() {
+                         opacity: 0.9,
+                     },
+                     onAdd: function (e) {
+-                        (Li.prototype.onAdd.call(this, e),
++                        (Ri.prototype.onAdd.call(this, e),
+                             this.setOpacity(this.options.opacity),
+                             e.fire('tooltipopen', { tooltip: this }),
+                             this._source &&
+@@ -66440,7 +65965,7 @@ function selectEncoding() {
+                                 )));
+                     },
+                     onRemove: function (e) {
+-                        (Li.prototype.onRemove.call(this, e),
++                        (Ri.prototype.onRemove.call(this, e),
+                             e.fire('tooltipclose', { tooltip: this }),
+                             this._source &&
+                                 (this.removeEventParent(this._source),
+@@ -66451,7 +65976,7 @@ function selectEncoding() {
+                                 )));
+                     },
+                     getEvents: function () {
+-                        var e = Li.prototype.getEvents.call(this);
++                        var e = Ri.prototype.getEvents.call(this);
+                         return (
+                             this.options.permanent || (e.preclick = this.close),
+                             e
+@@ -68190,7 +67715,7 @@ function selectEncoding() {
+         });
+         ((Gi.create = Ui),
+             (Gi.pointsToPath = M),
+-            (Ii.geometryToLayer = Le),
++            (Ii.geometryToLayer = Re),
+             (Ii.coordsToLatLng = Oe),
+             (Ii.coordsToLatLngs = Fe),
+             (Ii.latLngToCoords = Ne),
+@@ -68516,7 +68041,7 @@ function selectEncoding() {
+                     },
+                 })),
+             Yi =
+-                ((Rt =
++                ((Lt =
+                     (hi.addInitHook('addHandler', 'dragging', Ki),
+                     hi.mergeOptions({ keyboard: !0, keyboardPanDelta: 80 }),
+                     yt.extend({
+@@ -68668,8 +68193,8 @@ function selectEncoding() {
+                             }
+                         },
+                     }))),
+-                (Lt =
+-                    (hi.addInitHook('addHandler', 'keyboard', Rt),
++                (Rt =
++                    (hi.addInitHook('addHandler', 'keyboard', Lt),
+                     hi.mergeOptions({
+                         scrollWheelZoom: !0,
+                         wheelDebounceTime: 40,
+@@ -68745,7 +68270,7 @@ function selectEncoding() {
+                         },
+                     }))),
+                 (Bt =
+-                    (hi.addInitHook('addHandler', 'scrollWheelZoom', Lt),
++                    (hi.addInitHook('addHandler', 'scrollWheelZoom', Rt),
+                     hi.mergeOptions({
+                         tapHold: Zt.touchNative && Zt.safari && Zt.mobile,
+                         tapTolerance: 15,
+@@ -69012,8 +68537,8 @@ function selectEncoding() {
+                 (hi.BoxZoom = gt),
+                 (hi.DoubleClickZoom = jt),
+                 (hi.Drag = Ki),
+-                (hi.Keyboard = Rt),
+-                (hi.ScrollWheelZoom = Lt),
++                (hi.Keyboard = Lt),
++                (hi.ScrollWheelZoom = Rt),
+                 (hi.TapHold = Bt),
+                 (hi.TouchZoom = Ot),
+                 (e.Bounds = k),
+@@ -69025,7 +68550,7 @@ function selectEncoding() {
+                 (e.Class = b),
+                 (e.Control = pi),
+                 (e.DivIcon = Fi),
+-                (e.DivOverlay = Li),
++                (e.DivOverlay = Ri),
+                 (e.DomEvent = bt),
+                 (e.DomUtil = vt),
+                 (e.Draggable = bi),
+@@ -69055,7 +68580,7 @@ function selectEncoding() {
+                 (e.Rectangle = Zi),
+                 (e.Renderer = $i),
+                 (e.SVG = Gi),
+-                (e.SVGOverlay = Ri),
++                (e.SVGOverlay = Li),
+                 (e.TileLayer = Hi),
+                 (e.Tooltip = Oi),
+                 (e.Transformation = z),
+@@ -69117,7 +68642,7 @@ function selectEncoding() {
+                 (e.stamp = s),
+                 (e.svg = Ge),
+                 (e.svgOverlay = function (e, t, i) {
+-                    return new Ri(e, t, i);
++                    return new Li(e, t, i);
+                 }),
+                 (e.tileLayer = Ve),
+                 (e.tooltip = function (e, t) {
+@@ -76868,17 +76393,17 @@ if (
+         function j(e) {
+             return !!e.getClientRects().length;
+         }
+-        function R(e) {
++        function L(e) {
+             return e.replace(/^-ms-/, 'ms-').replace(/-(\w)/g, function (e, t) {
+                 return t.toUpperCase();
+             });
+         }
+-        function L(e, t, i, n, s) {
++        function R(e, t, i, n, s) {
+             for (e = s ? e.lastChild : e.firstChild; e; ) {
+                 var a = s ? e.previousSibling : e.nextSibling;
+                 if (
+                     (!i && !1 === t(e)) ||
+-                    (!n && !1 === L(e, t, i, n, s)) ||
++                    (!n && !1 === R(e, t, i, n, s)) ||
+                     (i && !1 === t(e))
+                 )
+                     return !1;
+@@ -76886,7 +76411,7 @@ if (
+             }
+         }
+         function B(e, t, i, n) {
+-            L(e, t, i, n, !0);
++            R(e, t, i, n, !0);
+         }
+         function O(e, t) {
+             var i = (t = t || document).createDocumentFragment(),
+@@ -76938,7 +76463,7 @@ if (
+                 for (; q(e.parentNode, !0); ) e = e.parentNode;
+                 return e;
+             };
+-            L(e, function (e) {
++            R(e, function (e) {
+                 var i = 'ul,ol',
+                     n = !q(e, !0);
+                 if (n && q(e.parentNode, !0)) {
+@@ -77030,7 +76555,7 @@ if (
+                 n,
+                 s = e.style;
+             if (
+-                (fe[t] || (fe[t] = R(t)),
++                (fe[t] || (fe[t] = L(t)),
+                 (n = s[(t = fe[t])]),
+                 'textAlign' === t)
+             ) {
+@@ -77514,7 +77039,7 @@ if (
+         }
+         function re(e, t) {
+             var i;
+-            L(
++            R(
+                 e,
+                 function (e) {
+                     q(e, !0) ?
+@@ -77534,8 +77059,8 @@ if (
+                 x,
+                 T,
+                 S,
+-                R,
+                 L,
++                R,
+                 O,
+                 $,
+                 V,
+@@ -77608,7 +77133,7 @@ if (
+                             e
+                         ),
+                         y(o, 'z-index', kt.zIndex),
+-                        Le && z(o, 'ie ie' + Le),
++                        Re && z(o, 'ie ie' + Re),
+                         (ce = e.required),
+                         (e.required = !1));
+                     var t = le.formats[kt.format];
+@@ -77629,7 +77154,7 @@ if (
+                             Y.call('ready'),
+                             'onReady' in i && i.onReady.call(_t));
+                     };
+-                    (p(je, 'load', n), 'complete' === Re.readyState && n());
++                    (p(je, 'load', n), 'complete' === Le.readyState && n());
+                 }),
+                 (Ie = function () {
+                     var e = kt.plugins;
+@@ -77646,21 +77171,21 @@ if (
+                         U && U.dateFormat && (kt.dateFormat = U.dateFormat));
+                 }),
+                 (Me = function () {
+-                    ((R = r('textarea')),
++                    ((L = r('textarea')),
+                         (f = r('iframe', {
+                             frameborder: 0,
+                             allowfullscreen: !0,
+                         })),
+                         kt.startInSourceMode ?
+                             (z(o, 'sourceMode'), g(f))
+-                        :   (z(o, 'wysiwygMode'), g(R)),
++                        :   (z(o, 'wysiwygMode'), g(L)),
+                         kt.spellcheck || _(o, 'spellcheck', 'false'),
+                         'https:' === je.location.protocol &&
+                             _(f, 'src', 'javascript:false'),
+                         u(o, f),
+-                        u(o, R),
++                        u(o, L),
+                         _t.dimensions(kt.width || M(e), kt.height || I(e)));
+-                    var t = Le ? 'ie ie' + Le : '';
++                    var t = Re ? 'ie ie' + Re : '';
+                     ((t += Ce ? ' ios' : ''),
+                         (S = f.contentDocument).open(),
+                         S.write(
+@@ -77676,21 +77201,21 @@ if (
+                         (T = S.body),
+                         (x = f.contentWindow),
+                         _t.readOnly(!!kt.readOnly),
+-                        (Ce || Te || Le) &&
+-                            (I(T, '100%'), Le || p(T, 'touchend', _t.focus)));
++                        (Ce || Te || Re) &&
++                            (I(T, '100%'), Re || p(T, 'touchend', _t.focus)));
+                     var i = _(e, 'tabindex');
+-                    (_(R, 'tabindex', i),
++                    (_(L, 'tabindex', i),
+                         _(f, 'tabindex', i),
+                         (Z = new se(x)),
+                         g(e),
+                         _t.val(e.value));
+                     var n = kt.placeholder || _(e, 'placeholder');
+-                    n && ((R.placeholder = n), _(T, 'placeholder', n));
++                    n && ((L.placeholder = n), _(T, 'placeholder', n));
+                 }),
+                 (Ne = function () {
+-                    (kt.autoUpdate && (p(T, 'blur', pt), p(R, 'blur', pt)),
++                    (kt.autoUpdate && (p(T, 'blur', pt), p(L, 'blur', pt)),
+                         null === kt.rtl &&
+-                            (kt.rtl = 'rtl' === y(R, 'direction')),
++                            (kt.rtl = 'rtl' === y(L, 'direction')),
+                         _t.rtl(!!kt.rtl),
+                         kt.autoExpand &&
+                             (p(T, 'load', mt, be), p(T, 'input keyup', mt)),
+@@ -77706,7 +77231,7 @@ if (
+                             'onselectionchange' in S ? 'selectionchange' : (
+                                 'keyup focus blur contextmenu mouseup touchend click'
+                             );
+-                    (p(Re, 'click', Xe),
++                    (p(Le, 'click', Xe),
+                         t &&
+                             (p(t, 'reset', Ke),
+                             p(t, 'submit', _t.updateOriginal, be)),
+@@ -77729,11 +77254,11 @@ if (
+                         p(T, 'focus', function () {
+                             E(T, 'placeholder');
+                         }),
+-                        p(R, 'blur', ut),
+-                        p(R, 'keyup', ht),
+-                        p(R, 'keydown', Ue),
+-                        p(R, i, Je),
+-                        p(R, n, Qe),
++                        p(L, 'blur', ut),
++                        p(L, 'keyup', ht),
++                        p(L, 'keydown', Ue),
++                        p(L, i, Je),
++                        p(L, n, Qe),
+                         p(S, 'mousedown', Ye),
+                         p(S, s, st),
+                         p(S, 'beforedeactivate keyup mouseup', Ee),
+@@ -77871,8 +77396,8 @@ if (
+                                 ((C = !1),
+                                 g(c),
+                                 E(o, 'resizing'),
+-                                m(Re, d, s),
+-                                m(Re, h, a),
++                                m(Le, d, s),
++                                m(Le, h, a),
+                                 e.preventDefault());
+                         }),
+                         ke && ke.create)
+@@ -77894,8 +77419,8 @@ if (
+                                 (C = !0),
+                                 z(o, 'resizing'),
+                                 v(c),
+-                                p(Re, d, s),
+-                                p(Re, h, a),
++                                p(Le, d, s),
++                                p(Le, h, a),
+                                 e.preventDefault());
+                         }));
+                 }),
+@@ -77923,8 +77448,8 @@ if (
+                     if (j(o)) {
+                         if (_t.sourceMode())
+                             return (
+-                                (t = n ? R.value.length : 0),
+-                                void R.setSelectionRange(t, t)
++                                (t = n ? L.value.length : 0),
++                                void L.setSelectionRange(t, t)
+                             );
+                         if ((G(T), n))
+                             for (
+@@ -77950,18 +77475,18 @@ if (
+                 }),
+                 (_t.readOnly = function (e) {
+                     return 'boolean' != typeof e ?
+-                            !R.readonly
++                            !L.readonly
+                         :   ((T.contentEditable = !e),
+-                            (R.readonly = !e),
++                            (L.readonly = !e),
+                             et(e),
+                             _t);
+                 }),
+                 (_t.rtl = function (e) {
+                     var t = e ? 'rtl' : 'ltr';
+                     return 'boolean' != typeof e ?
+-                            'rtl' === _(R, 'dir')
++                            'rtl' === _(L, 'dir')
+                         :   (_(T, 'dir', t),
+-                            _(R, 'dir', t),
++                            _(L, 'dir', t),
+                             E(o, 'rtl'),
+                             E(o, 'ltr'),
+                             z(o, t),
+@@ -78000,8 +77525,8 @@ if (
+                     return pe(e) ?
+                             A(o, t)
+                         :   ((e = !!e) && (fe = je.pageYOffset),
+-                            P(Re.documentElement, t, e),
+-                            P(Re.body, t, e),
++                            P(Le.documentElement, t, e),
++                            P(Le.body, t, e),
+                             P(o, t, e),
+                             _t.width(e ? '100%' : kt.width, !1),
+                             _t.height(e ? '100%' : kt.height, !1),
+@@ -78020,7 +77545,7 @@ if (
+                             var i = kt.resizeMinHeight || kt.height || I(e);
+                             ue = { min: i, max: kt.resizeMaxHeight || 2 * i };
+                         }
+-                        var n = Re.createRange();
++                        var n = Le.createRange();
+                         n.selectNodeContents(T);
+                         var s = n.getBoundingClientRect(),
+                             a = S.documentElement.clientHeight - 1,
+@@ -78036,13 +77561,13 @@ if (
+                             (Z = null),
+                             (O = null),
+                             (Y = null),
+-                            L && d(L),
+-                            m(Re, 'click', Xe));
++                            R && d(R),
++                            m(Le, 'click', Xe));
+                         var t = e.form;
+                         (t &&
+                             (m(t, 'reset', Ke),
+                             m(t, 'submit', _t.updateOriginal)),
+-                            d(R),
++                            d(L),
+                             d(l),
+                             d(o),
+                             delete e._sceditor,
+@@ -78054,7 +77579,7 @@ if (
+                     var l,
+                         c = 'sceditor-' + t;
+                     (_t.closeDropDown(!0),
+-                        (L && A(L, c)) ||
++                        (R && A(R, c)) ||
+                             (!1 !== s &&
+                                 a(
+                                     h(i, ':not(input):not(textarea)'),
+@@ -78072,31 +77597,31 @@ if (
+                                 kt.dropDownCss
+                             )),
+                             y(
+-                                (L = r('div', {
++                                (R = r('div', {
+                                     className: 'sceditor-dropdown ' + c,
+                                 })),
+                                 l
+                             ),
+-                            u(L, i),
+-                            u(o, L),
+-                            p(L, 'click focusin', function (e) {
++                            u(R, i),
++                            u(o, R),
++                            p(R, 'click focusin', function (e) {
+                                 e.stopPropagation();
+                             }),
+                             setTimeout(function () {
+-                                if (L) {
+-                                    var e = h(L, 'input,textarea')[0];
++                                if (R) {
++                                    var e = h(R, 'input,textarea')[0];
+                                     e && e.focus();
+                                 }
+                             })));
+                 }),
+                 (Xe = function (e) {
+                     3 !== e.which &&
+-                        L &&
++                        R &&
+                         !e.defaultPrevented &&
+                         (pt(), _t.closeDropDown());
+                 }),
+                 (We = function (e) {
+-                    var t = Le || Te,
++                    var t = Re || Te,
+                         i = T,
+                         n = e.clipboardData,
+                         s = function (e) {
+@@ -78125,7 +77650,7 @@ if (
+                     } else if (!ye) {
+                         var c = i.scrollTop;
+                         for (
+-                            Z.saveRange(), ye = Re.createDocumentFragment();
++                            Z.saveRange(), ye = Le.createDocumentFragment();
+                             i.firstChild;
+                         )
+                             u(ye, i.firstChild);
+@@ -78158,7 +77683,7 @@ if (
+                         _t.wysiwygEditorInsertHtml(n.val, null, !0));
+                 }),
+                 (_t.closeDropDown = function (e) {
+-                    (L && (d(L), (L = null)), !0 === e && _t.focus());
++                    (R && (d(R), (R = null)), !0 === e && _t.focus());
+                 }),
+                 (_t.wysiwygEditorInsertHtml = function (e, t, i) {
+                     var n,
+@@ -78193,18 +77718,18 @@ if (
+                 (_t.sourceEditorInsertText = function (e, t) {
+                     var i,
+                         n,
+-                        s = R.selectionStart,
+-                        a = R.selectionEnd;
+-                    ((i = R.scrollTop),
+-                        R.focus(),
+-                        (n = R.value),
++                        s = L.selectionStart,
++                        a = L.selectionEnd;
++                    ((i = L.scrollTop),
++                        L.focus(),
++                        (n = L.value),
+                         t && (e += n.substring(s, a) + t),
+-                        (R.value =
++                        (L.value =
+                             n.substring(0, s) + e + n.substring(a, n.length)),
+-                        (R.selectionStart = s + e.length - (t ? t.length : 0)),
+-                        (R.selectionEnd = R.selectionStart),
+-                        (R.scrollTop = i),
+-                        R.focus(),
++                        (L.selectionStart = s + e.length - (t ? t.length : 0)),
++                        (L.selectionEnd = L.selectionStart),
++                        (L.scrollTop = i),
++                        L.focus(),
+                         dt());
+                 }),
+                 (_t.getRangeHelper = function () {
+@@ -78212,12 +77737,12 @@ if (
+                 }),
+                 (_t.sourceEditorCaret = function (e) {
+                     return (
+-                        R.focus(),
++                        L.focus(),
+                         e ?
+-                            ((R.selectionStart = e.start),
+-                            (R.selectionEnd = e.end),
++                            ((L.selectionStart = e.start),
++                            (L.selectionEnd = e.end),
+                             this)
+-                        :   { start: R.selectionStart, end: R.selectionEnd }
++                        :   { start: L.selectionStart, end: L.selectionEnd }
+                     );
+                 }),
+                 (_t.val = function (e, t) {
+@@ -78281,11 +77806,11 @@ if (
+                     return f;
+                 }),
+                 (_t.getSourceEditorValue = function (e) {
+-                    var t = R.value;
++                    var t = L.value;
+                     return (!1 !== e && 'toHtml' in i && (t = i.toHtml(t)), t);
+                 }),
+                 (_t.setWysiwygEditorValue = function (e) {
+-                    (e || (e = '<p>' + (Le ? '' : '<br />') + '</p>'),
++                    (e || (e = '<p>' + (Re ? '' : '<br />') + '</p>'),
+                         (T.innerHTML = e),
+                         Ae(),
+                         nt(),
+@@ -78293,7 +77818,7 @@ if (
+                         mt());
+                 }),
+                 (_t.setSourceEditorValue = function (e) {
+-                    ((R.value = e), dt());
++                    ((L.value = e), dt());
+                 }),
+                 (_t.updateOriginal = function () {
+                     e.value = _t.val();
+@@ -78320,7 +77845,7 @@ if (
+                             _t.setWysiwygEditorValue(_t.getSourceEditorValue())
+                         :   _t.setSourceEditorValue(_t.getWysiwygEditorValue()),
+                         (O = null),
+-                        b(R),
++                        b(L),
+                         b(f),
+                         P(o, 'wysiwygMode', e),
+                         P(o, 'sourceMode', !e),
+@@ -78329,8 +77854,8 @@ if (
+                 }),
+                 (it = function () {
+                     return (
+-                        R.focus(),
+-                        R.value.substring(R.selectionStart, R.selectionEnd)
++                        L.focus(),
++                        L.value.substring(L.selectionStart, L.selectionEnd)
+                     );
+                 }),
+                 (ze = function (e, t) {
+@@ -78350,7 +77875,7 @@ if (
+                             ));
+                 }),
+                 (Ee = function () {
+-                    Le && (O = Z.selectedRange());
++                    Re && (O = Z.selectedRange());
+                 }),
+                 (_t.execCommand = function (e, t) {
+                     var i = !1,
+@@ -78513,7 +78038,7 @@ if (
+                 }),
+                 (Qe = function (e) {
+                     Y && Y.call(e.type + 'Event', e, _t);
+-                    var t = (e.target === R ? 'scesrc' : 'scewys') + e.type;
++                    var t = (e.target === L ? 'scesrc' : 'scewys') + e.type;
+                     ft[t] &&
+                         ft[t].forEach(function (t) {
+                             t.call(_t, e);
+@@ -78541,14 +78066,14 @@ if (
+                 (_t.blur = function (e, t, i) {
+                     return (
+                         me(e) ? _t.bind('blur', e, t, i)
+-                        : _t.sourceMode() ? R.blur()
++                        : _t.sourceMode() ? L.blur()
+                         : T.blur(),
+                         _t
+                     );
+                 }),
+                 (_t.focus = function (e, t, i) {
+                     if (me(e)) _t.bind('focus', e, t, i);
+-                    else if (_t.inSourceMode()) R.focus();
++                    else if (_t.inSourceMode()) L.focus();
+                     else {
+                         if (h(S, ':focus').length) return;
+                         var n,
+@@ -78832,7 +78357,7 @@ if (
+                                 !S.getElementById('sceditor-start-marker')),
+                             V && (clearTimeout(V), (V = !1)),
+                             n && e && Z.saveRange(),
+-                            (t = i ? R.value : T.innerHTML) !== dt.lastVal &&
++                            (t = i ? L.value : T.innerHTML) !== dt.lastVal &&
+                                 ((dt.lastVal = t),
+                                 D(o, 'valuechanged', {
+                                     rawValue: i ? _t.val() : t,
+@@ -79722,9 +79247,9 @@ if (
+                 return { node: r || c, offset: d, text: l };
+             },
+             je = window,
+-            Re = document,
+-            Le = xe,
+-            Be = Le && Le < 11,
++            Le = document,
++            Re = xe,
++            Be = Re && Re < 11,
+             Oe = /^image\/(p?jpe?g|gif|png|bmp)$/i;
+         ((le.locale = {}),
+             (le.formats = {}),
+@@ -79777,7 +79302,7 @@ if (
+                     closest: c,
+                     width: M,
+                     height: I,
+-                    traverse: L,
++                    traverse: R,
+                     rTraverse: B,
+                     parseHTML: O,
+                     hasStyling: F,
+@@ -80068,17 +79593,17 @@ if (
+         function j(e) {
+             return !!e.getClientRects().length;
+         }
+-        function R(e) {
++        function L(e) {
+             return e.replace(/^-ms-/, 'ms-').replace(/-(\w)/g, function (e, t) {
+                 return t.toUpperCase();
+             });
+         }
+-        function L(e, t, i, n, s) {
++        function R(e, t, i, n, s) {
+             for (e = s ? e.lastChild : e.firstChild; e; ) {
+                 var a = s ? e.previousSibling : e.nextSibling;
+                 if (
+                     (!i && !1 === t(e)) ||
+-                    (!n && !1 === L(e, t, i, n, s)) ||
++                    (!n && !1 === R(e, t, i, n, s)) ||
+                     (i && !1 === t(e))
+                 )
+                     return !1;
+@@ -80086,7 +79611,7 @@ if (
+             }
+         }
+         function B(e, t, i, n) {
+-            L(e, t, i, n, !0);
++            R(e, t, i, n, !0);
+         }
+         function O(e, t) {
+             var i = (t = t || document).createDocumentFragment(),
+@@ -80138,7 +79663,7 @@ if (
+                 for (; q(e.parentNode, !0); ) e = e.parentNode;
+                 return e;
+             };
+-            L(e, function (e) {
++            R(e, function (e) {
+                 var i = 'ul,ol',
+                     n = !q(e, !0);
+                 if (n && q(e.parentNode, !0)) {
+@@ -80230,7 +79755,7 @@ if (
+                 n,
+                 s = e.style;
+             if (
+-                (fe[t] || (fe[t] = R(t)),
++                (fe[t] || (fe[t] = L(t)),
+                 (n = s[(t = fe[t])]),
+                 'textAlign' === t)
+             ) {
+@@ -80714,7 +80239,7 @@ if (
+         }
+         function re(e, t) {
+             var i;
+-            L(
++            R(
+                 e,
+                 function (e) {
+                     q(e, !0) ?
+@@ -80734,8 +80259,8 @@ if (
+                 x,
+                 T,
+                 S,
+-                R,
+                 L,
++                R,
+                 O,
+                 $,
+                 V,
+@@ -80808,7 +80333,7 @@ if (
+                             e
+                         ),
+                         y(o, 'z-index', kt.zIndex),
+-                        Le && z(o, 'ie ie' + Le),
++                        Re && z(o, 'ie ie' + Re),
+                         (ce = e.required),
+                         (e.required = !1));
+                     var t = le.formats[kt.format];
+@@ -80829,7 +80354,7 @@ if (
+                             Y.call('ready'),
+                             'onReady' in i && i.onReady.call(_t));
+                     };
+-                    (p(je, 'load', n), 'complete' === Re.readyState && n());
++                    (p(je, 'load', n), 'complete' === Le.readyState && n());
+                 }),
+                 (Ie = function () {
+                     var e = kt.plugins;
+@@ -80846,21 +80371,21 @@ if (
+                         U && U.dateFormat && (kt.dateFormat = U.dateFormat));
+                 }),
+                 (Me = function () {
+-                    ((R = r('textarea')),
++                    ((L = r('textarea')),
+                         (f = r('iframe', {
+                             frameborder: 0,
+                             allowfullscreen: !0,
+                         })),
+                         kt.startInSourceMode ?
+                             (z(o, 'sourceMode'), g(f))
+-                        :   (z(o, 'wysiwygMode'), g(R)),
++                        :   (z(o, 'wysiwygMode'), g(L)),
+                         kt.spellcheck || _(o, 'spellcheck', 'false'),
+                         'https:' === je.location.protocol &&
+                             _(f, 'src', 'javascript:false'),
+                         u(o, f),
+-                        u(o, R),
++                        u(o, L),
+                         _t.dimensions(kt.width || M(e), kt.height || I(e)));
+-                    var t = Le ? 'ie ie' + Le : '';
++                    var t = Re ? 'ie ie' + Re : '';
+                     ((t += Ce ? ' ios' : ''),
+                         (S = f.contentDocument).open(),
+                         S.write(
+@@ -80876,21 +80401,21 @@ if (
+                         (T = S.body),
+                         (x = f.contentWindow),
+                         _t.readOnly(!!kt.readOnly),
+-                        (Ce || Te || Le) &&
+-                            (I(T, '100%'), Le || p(T, 'touchend', _t.focus)));
++                        (Ce || Te || Re) &&
++                            (I(T, '100%'), Re || p(T, 'touchend', _t.focus)));
+                     var i = _(e, 'tabindex');
+-                    (_(R, 'tabindex', i),
++                    (_(L, 'tabindex', i),
+                         _(f, 'tabindex', i),
+                         (Z = new se(x)),
+                         g(e),
+                         _t.val(e.value));
+                     var n = kt.placeholder || _(e, 'placeholder');
+-                    n && ((R.placeholder = n), _(T, 'placeholder', n));
++                    n && ((L.placeholder = n), _(T, 'placeholder', n));
+                 }),
+                 (Ne = function () {
+-                    (kt.autoUpdate && (p(T, 'blur', pt), p(R, 'blur', pt)),
++                    (kt.autoUpdate && (p(T, 'blur', pt), p(L, 'blur', pt)),
+                         null === kt.rtl &&
+-                            (kt.rtl = 'rtl' === y(R, 'direction')),
++                            (kt.rtl = 'rtl' === y(L, 'direction')),
+                         _t.rtl(!!kt.rtl),
+                         kt.autoExpand &&
+                             (p(T, 'load', mt, be), p(T, 'input keyup', mt)),
+@@ -80906,7 +80431,7 @@ if (
+                             'onselectionchange' in S ? 'selectionchange' : (
+                                 'keyup focus blur contextmenu mouseup touchend click'
+                             );
+-                    (p(Re, 'click', Xe),
++                    (p(Le, 'click', Xe),
+                         t &&
+                             (p(t, 'reset', Ke),
+                             p(t, 'submit', _t.updateOriginal, be)),
+@@ -80929,11 +80454,11 @@ if (
+                         p(T, 'focus', function () {
+                             E(T, 'placeholder');
+                         }),
+-                        p(R, 'blur', ut),
+-                        p(R, 'keyup', ht),
+-                        p(R, 'keydown', Ue),
+-                        p(R, i, Je),
+-                        p(R, n, Qe),
++                        p(L, 'blur', ut),
++                        p(L, 'keyup', ht),
++                        p(L, 'keydown', Ue),
++                        p(L, i, Je),
++                        p(L, n, Qe),
+                         p(S, 'mousedown', Ye),
+                         p(S, s, st),
+                         p(S, 'beforedeactivate keyup mouseup', Ee),
+@@ -81071,8 +80596,8 @@ if (
+                                 ((C = !1),
+                                 g(c),
+                                 E(o, 'resizing'),
+-                                m(Re, d, s),
+-                                m(Re, h, a),
++                                m(Le, d, s),
++                                m(Le, h, a),
+                                 e.preventDefault());
+                         }),
+                         ke && ke.create)
+@@ -81094,8 +80619,8 @@ if (
+                                 (C = !0),
+                                 z(o, 'resizing'),
+                                 v(c),
+-                                p(Re, d, s),
+-                                p(Re, h, a),
++                                p(Le, d, s),
++                                p(Le, h, a),
+                                 e.preventDefault());
+                         }));
+                 }),
+@@ -81123,8 +80648,8 @@ if (
+                     if (j(o)) {
+                         if (_t.sourceMode())
+                             return (
+-                                (t = n ? R.value.length : 0),
+-                                void R.setSelectionRange(t, t)
++                                (t = n ? L.value.length : 0),
++                                void L.setSelectionRange(t, t)
+                             );
+                         if ((G(T), n))
+                             for (
+@@ -81150,18 +80675,18 @@ if (
+                 }),
+                 (_t.readOnly = function (e) {
+                     return 'boolean' != typeof e ?
+-                            !R.readonly
++                            !L.readonly
+                         :   ((T.contentEditable = !e),
+-                            (R.readonly = !e),
++                            (L.readonly = !e),
+                             et(e),
+                             _t);
+                 }),
+                 (_t.rtl = function (e) {
+                     var t = e ? 'rtl' : 'ltr';
+                     return 'boolean' != typeof e ?
+-                            'rtl' === _(R, 'dir')
++                            'rtl' === _(L, 'dir')
+                         :   (_(T, 'dir', t),
+-                            _(R, 'dir', t),
++                            _(L, 'dir', t),
+                             E(o, 'rtl'),
+                             E(o, 'ltr'),
+                             z(o, t),
+@@ -81200,8 +80725,8 @@ if (
+                     return pe(e) ?
+                             A(o, t)
+                         :   ((e = !!e) && (fe = je.pageYOffset),
+-                            P(Re.documentElement, t, e),
+-                            P(Re.body, t, e),
++                            P(Le.documentElement, t, e),
++                            P(Le.body, t, e),
+                             P(o, t, e),
+                             _t.width(e ? '100%' : kt.width, !1),
+                             _t.height(e ? '100%' : kt.height, !1),
+@@ -81220,7 +80745,7 @@ if (
+                             var i = kt.resizeMinHeight || kt.height || I(e);
+                             ue = { min: i, max: kt.resizeMaxHeight || 2 * i };
+                         }
+-                        var n = Re.createRange();
++                        var n = Le.createRange();
+                         n.selectNodeContents(T);
+                         var s = n.getBoundingClientRect(),
+                             a = S.documentElement.clientHeight - 1,
+@@ -81236,13 +80761,13 @@ if (
+                             (Z = null),
+                             (O = null),
+                             (Y = null),
+-                            L && d(L),
+-                            m(Re, 'click', Xe));
++                            R && d(R),
++                            m(Le, 'click', Xe));
+                         var t = e.form;
+                         (t &&
+                             (m(t, 'reset', Ke),
+                             m(t, 'submit', _t.updateOriginal)),
+-                            d(R),
++                            d(L),
+                             d(l),
+                             d(o),
+                             delete e._sceditor,
+@@ -81254,7 +80779,7 @@ if (
+                     var l,
+                         c = 'sceditor-' + t;
+                     (_t.closeDropDown(!0),
+-                        (L && A(L, c)) ||
++                        (R && A(R, c)) ||
+                             (!1 !== s &&
+                                 a(
+                                     h(i, ':not(input):not(textarea)'),
+@@ -81272,31 +80797,31 @@ if (
+                                 kt.dropDownCss
+                             )),
+                             y(
+-                                (L = r('div', {
++                                (R = r('div', {
+                                     className: 'sceditor-dropdown ' + c,
+                                 })),
+                                 l
+                             ),
+-                            u(L, i),
+-                            u(o, L),
+-                            p(L, 'click focusin', function (e) {
++                            u(R, i),
++                            u(o, R),
++                            p(R, 'click focusin', function (e) {
+                                 e.stopPropagation();
+                             }),
+                             setTimeout(function () {
+-                                if (L) {
+-                                    var e = h(L, 'input,textarea')[0];
++                                if (R) {
++                                    var e = h(R, 'input,textarea')[0];
+                                     e && e.focus();
+                                 }
+                             })));
+                 }),
+                 (Xe = function (e) {
+                     3 !== e.which &&
+-                        L &&
++                        R &&
+                         !e.defaultPrevented &&
+                         (pt(), _t.closeDropDown());
+                 }),
+                 (We = function (e) {
+-                    var t = Le || Te,
++                    var t = Re || Te,
+                         i = T,
+                         n = e.clipboardData,
+                         s = function (e) {
+@@ -81325,7 +80850,7 @@ if (
+                     } else if (!ye) {
+                         var c = i.scrollTop;
+                         for (
+-                            Z.saveRange(), ye = Re.createDocumentFragment();
++                            Z.saveRange(), ye = Le.createDocumentFragment();
+                             i.firstChild;
+                         )
+                             u(ye, i.firstChild);
+@@ -81358,7 +80883,7 @@ if (
+                         _t.wysiwygEditorInsertHtml(n.val, null, !0));
+                 }),
+                 (_t.closeDropDown = function (e) {
+-                    (L && (d(L), (L = null)), !0 === e && _t.focus());
++                    (R && (d(R), (R = null)), !0 === e && _t.focus());
+                 }),
+                 (_t.wysiwygEditorInsertHtml = function (e, t, i) {
+                     var n,
+@@ -81393,18 +80918,18 @@ if (
+                 (_t.sourceEditorInsertText = function (e, t) {
+                     var i,
+                         n,
+-                        s = R.selectionStart,
+-                        a = R.selectionEnd;
+-                    ((i = R.scrollTop),
+-                        R.focus(),
+-                        (n = R.value),
++                        s = L.selectionStart,
++                        a = L.selectionEnd;
++                    ((i = L.scrollTop),
++                        L.focus(),
++                        (n = L.value),
+                         t && (e += n.substring(s, a) + t),
+-                        (R.value =
++                        (L.value =
+                             n.substring(0, s) + e + n.substring(a, n.length)),
+-                        (R.selectionStart = s + e.length - (t ? t.length : 0)),
+-                        (R.selectionEnd = R.selectionStart),
+-                        (R.scrollTop = i),
+-                        R.focus(),
++                        (L.selectionStart = s + e.length - (t ? t.length : 0)),
++                        (L.selectionEnd = L.selectionStart),
++                        (L.scrollTop = i),
++                        L.focus(),
+                         dt());
+                 }),
+                 (_t.getRangeHelper = function () {
+@@ -81412,12 +80937,12 @@ if (
+                 }),
+                 (_t.sourceEditorCaret = function (e) {
+                     return (
+-                        R.focus(),
++                        L.focus(),
+                         e ?
+-                            ((R.selectionStart = e.start),
+-                            (R.selectionEnd = e.end),
++                            ((L.selectionStart = e.start),
++                            (L.selectionEnd = e.end),
+                             this)
+-                        :   { start: R.selectionStart, end: R.selectionEnd }
++                        :   { start: L.selectionStart, end: L.selectionEnd }
+                     );
+                 }),
+                 (_t.val = function (e, t) {
+@@ -81481,11 +81006,11 @@ if (
+                     return f;
+                 }),
+                 (_t.getSourceEditorValue = function (e) {
+-                    var t = R.value;
++                    var t = L.value;
+                     return (!1 !== e && 'toHtml' in i && (t = i.toHtml(t)), t);
+                 }),
+                 (_t.setWysiwygEditorValue = function (e) {
+-                    (e || (e = '<p>' + (Le ? '' : '<br />') + '</p>'),
++                    (e || (e = '<p>' + (Re ? '' : '<br />') + '</p>'),
+                         (T.innerHTML = e),
+                         Ae(),
+                         nt(),
+@@ -81493,7 +81018,7 @@ if (
+                         mt());
+                 }),
+                 (_t.setSourceEditorValue = function (e) {
+-                    ((R.value = e), dt());
++                    ((L.value = e), dt());
+                 }),
+                 (_t.updateOriginal = function () {
+                     e.value = _t.val();
+@@ -81520,7 +81045,7 @@ if (
+                             _t.setWysiwygEditorValue(_t.getSourceEditorValue())
+                         :   _t.setSourceEditorValue(_t.getWysiwygEditorValue()),
+                         (O = null),
+-                        b(R),
++                        b(L),
+                         b(f),
+                         P(o, 'wysiwygMode', e),
+                         P(o, 'sourceMode', !e),
+@@ -81529,8 +81054,8 @@ if (
+                 }),
+                 (it = function () {
+                     return (
+-                        R.focus(),
+-                        R.value.substring(R.selectionStart, R.selectionEnd)
++                        L.focus(),
++                        L.value.substring(L.selectionStart, L.selectionEnd)
+                     );
+                 }),
+                 (ze = function (e, t) {
+@@ -81550,7 +81075,7 @@ if (
+                             ));
+                 }),
+                 (Ee = function () {
+-                    Le && (O = Z.selectedRange());
++                    Re && (O = Z.selectedRange());
+                 }),
+                 (_t.execCommand = function (e, t) {
+                     var i = !1,
+@@ -81713,7 +81238,7 @@ if (
+                 }),
+                 (Qe = function (e) {
+                     Y && Y.call(e.type + 'Event', e, _t);
+-                    var t = (e.target === R ? 'scesrc' : 'scewys') + e.type;
++                    var t = (e.target === L ? 'scesrc' : 'scewys') + e.type;
+                     ft[t] &&
+                         ft[t].forEach(function (t) {
+                             t.call(_t, e);
+@@ -81741,14 +81266,14 @@ if (
+                 (_t.blur = function (e, t, i) {
+                     return (
+                         me(e) ? _t.bind('blur', e, t, i)
+-                        : _t.sourceMode() ? R.blur()
++                        : _t.sourceMode() ? L.blur()
+                         : T.blur(),
+                         _t
+                     );
+                 }),
+                 (_t.focus = function (e, t, i) {
+                     if (me(e)) _t.bind('focus', e, t, i);
+-                    else if (_t.inSourceMode()) R.focus();
++                    else if (_t.inSourceMode()) L.focus();
+                     else {
+                         if (h(S, ':focus').length) return;
+                         var n,
+@@ -82032,7 +81557,7 @@ if (
+                                 !S.getElementById('sceditor-start-marker')),
+                             V && (clearTimeout(V), (V = !1)),
+                             n && e && Z.saveRange(),
+-                            (t = i ? R.value : T.innerHTML) !== dt.lastVal &&
++                            (t = i ? L.value : T.innerHTML) !== dt.lastVal &&
+                                 ((dt.lastVal = t),
+                                 D(o, 'valuechanged', {
+                                     rawValue: i ? _t.val() : t,
+@@ -82922,9 +82447,9 @@ if (
+                 return { node: r || c, offset: d, text: l };
+             },
+             je = window,
+-            Re = document,
+-            Le = xe,
+-            Be = Le && Le < 11,
++            Le = document,
++            Re = xe,
++            Be = Re && Re < 11,
+             Oe = /^image\/(p?jpe?g|gif|png|bmp)$/i;
+         ((le.locale = {}),
+             (le.formats = {}),
+@@ -82977,7 +82502,7 @@ if (
+                     closest: c,
+                     width: M,
+                     height: I,
+-                    traverse: L,
++                    traverse: R,
+                     rTraverse: B,
+                     parseHTML: O,
+                     hasStyling: F,
