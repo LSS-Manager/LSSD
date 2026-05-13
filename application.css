@@ -10465,20 +10465,6 @@ body.belgiumbar .navbar-default {
     background-color: #c9302c;
     color: #fff;
 }
-.nav-pills > li.active > a,
-.nav-pills > li.active > a:focus,
-.nav-pills > li.active > a:hover {
-    background-image: none;
-    background-color: #c9302c;
-    color: #fff;
-}
-.nav-pills > li.active > a,
-.nav-pills > li.active > a:focus,
-.nav-pills > li.active > a:hover {
-    background-image: none;
-    background-color: #c9302c;
-    color: #fff;
-}
 .settings_nav_bar .nav-tabs > li.settings.active > a,
 .settings_nav_bar .nav-tabs > li.settings.active > a:focus,
 .settings_nav_bar .nav-tabs > li.settings.active > a:hover {
@@ -15858,10 +15844,38 @@ body.dark .well.hospital-boost-active {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#ffe8e8e8', GradientType=0);
     background-repeat: repeat-x;
 }
+.dark .nav-pills-heading {
+    background-color: #323232;
+    background-image: -webkit-linear-gradient(top, #323232 0, #323232 100%);
+    background-image: -o-linear-gradient(top, #323232 0, #323232 100%);
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        from(#323232),
+        to(#323232)
+    );
+    background-image: linear-gradient(to bottom, #323232 0, #323232 100%);
+}
 .nav.black-links > li > a {
     color: #333;
 }
+.dark .nav.black-links > li > a {
+    color: #fff;
+}
 .nav.black-links > li.active > a {
+    color: #fff;
+}
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:focus,
+.nav-pills > li.active > a:hover {
+    background-image: none;
+    background-color: #c9302c;
+    color: #fff;
+}
+.dark .nav-pills > li > a:hover {
+    background-image: none;
+    background-color: #c56360;
     color: #fff;
 }
 .toast-container {
