@@ -1,0 +1,29 @@
+diff --git a/application.css b/application.alt.css
+index 2863e84..d28c524 100644
+--- a/application.css
++++ b/application.alt.css
+@@ -14317,6 +14317,9 @@ body.bigMap .search-station-input {
+ .specializations-tab-content {
+     margin-top: 10px;
+ }
++.specializations-tab-content .specializations-mobile {
++    display: none;
++}
+ .specializations-mobile .specialization-item h3 {
+     margin-top: 0;
+ }
+@@ -14324,6 +14327,14 @@ body.bigMap .search-station-input {
+     margin-top: 10px;
+     margin-bottom: 10px;
+ }
++@media (max-width: 767px) {
++    .specializations-tab-content .specializations-desktop {
++        display: none;
++    }
++    .specializations-tab-content .specializations-mobile {
++        display: block;
++    }
++}
+ .info-bubble-with-button {
+     display: flex;
+     flex-direction: row;
