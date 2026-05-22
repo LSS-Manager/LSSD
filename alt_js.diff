@@ -1,0 +1,36 @@
+diff --git a/application.js b/application.alt.js
+index 450e57d..f987eb2 100644
+--- a/application.js
++++ b/application.alt.js
+@@ -8361,11 +8361,10 @@ function updateAAOsTime(e) {
+                 if (t && 'true' == t.getAttribute('all_ok')) {
+                     const e = parseInt(t.getAttribute('max_travel_time')) || 0,
+                         i = Math.max(e, n);
+-                    if (e !== i) {
+-                        t.setAttribute('max_travel_time', `${i}`);
+-                        const e = t.querySelector('.aao_timer');
+-                        e && (e.textContent = formatTime(i));
+-                    }
++                    e !== i &&
++                        (t.setAttribute('max_travel_time', `${i}`),
++                        (t.querySelector('.aao_timer').textContent =
++                            formatTime(i)));
+                 }
+             }),
+             vehicleAAOTraveTimeToUpdate.delete(t)));
+@@ -79422,7 +79421,6 @@ if (
+                                     )),
+                                     (a += '</table>'),
+                                     t.wysiwygEditorInsertHtml(a),
+-                                    W(t.getBody()),
+                                     t.closeDropDown(!0),
+                                     e.preventDefault());
+                             }),
+@@ -82623,7 +82621,6 @@ if (
+                                     )),
+                                     (a += '</table>'),
+                                     t.wysiwygEditorInsertHtml(a),
+-                                    W(t.getBody()),
+                                     t.closeDropDown(!0),
+                                     e.preventDefault());
+                             }),
