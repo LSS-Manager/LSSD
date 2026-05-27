@@ -1,5 +1,5 @@
 diff --git a/application.js b/application.alt.js
-index 450e57d..f987eb2 100644
+index 58c608a..f987eb2 100644
 --- a/application.js
 +++ b/application.alt.js
 @@ -8361,11 +8361,10 @@ function updateAAOsTime(e) {
@@ -18,7 +18,48 @@ index 450e57d..f987eb2 100644
                  }
              }),
              vehicleAAOTraveTimeToUpdate.delete(t)));
-@@ -79422,7 +79421,6 @@ if (
+@@ -22210,10 +22209,6 @@ function updateAAOsTime(e) {
+                 abl2wasser_only: 'Modul s hadicemi',
+                 air_tanker: 'Air tanker',
+                 ambulance: 'Sanitka RZP',
+-                ambulance_and_fire_rescue:
+-                    'Kombinovan\xe1 z\xe1chrann\xe1 jednotka',
+-                ambulance_mass_casualty:
+-                    'Jednotka pro vybaven\xed hromadn\xfdch ob\u011bt\xed',
+                 any_rtw: 'Any Ambulance Unit',
+                 any_traffic_car: 'Vozidlo vy\u0161et\u0159ovatel\u016f DN',
+                 any_traffic_unit: 'Any Traffic Unit',
+@@ -22251,9 +22246,6 @@ function updateAAOsTime(e) {
+                 elw_police: 'Police MCV',
+                 emergency_ambulance: 'Sanitka nebo vrtuln\xedk',
+                 emergency_welfare: 'Any Emergency Welfare Vehicle',
+-                ems_mobile_command: 'Z\xe1chran\xe1\u0159',
+-                ems_operations_support:
+-                    'Jednotka podpory z\xe1chrann\xe9 slu\u017eby',
+                 energy_supply: 'Energy Generator Trailer',
+                 energy_supply_2: 'Large Energy Supply Trailer',
+                 fbi_bomb_tech: 'Vozidlo pyrotechnika P\u010cR',
+@@ -22313,7 +22305,7 @@ function updateAAOsTime(e) {
+                 long_distance_ambulance: 'Sanitka DZS',
+                 mask_service_unit: 'Protiplynov\xfd automobil',
+                 mass_casualty_equipment:
+-                    'Vybaven\xed pro hromadn\xe9 ob\u011bti',
++                    'Mass Casualty Equipment or Medical Equipment Trailer',
+                 mobile_shelter: 'Mobile shelter',
+                 mountain_atv: 'Horsk\xe1 \u010dty\u0159kolka',
+                 mountain_atv_tractive: 'Horsk\xe1 \u010dty\u0159kolka',
+@@ -22370,10 +22362,6 @@ function updateAAOsTime(e) {
+                     'Traffic Car, Fast Traffic Car, Traffic Motorcycle and Road Rescue',
+                 traffic_patrol: 'Any Traffic Patrol Unit',
+                 trailers: {
+-                    ambulance_mass_casualty_large:
+-                        'Velk\xfd p\u0159\xedv\u011bs pro hromadn\xe9 ob\u011bti',
+-                    ambulance_mass_casualty_small:
+-                        'Mal\xfd p\u0159\xedv\u011bs pro hromadn\xe9 ob\u011bti',
+                     mountain_atv:
+                         'P\u0159\xedv\u011bs na horskou \u010dty\u0159kolku',
+                     mountain_snow: 'Sn\u011bhov\xfd p\u0159\xedv\u011bs',
+@@ -79433,7 +79421,6 @@ if (
                                      )),
                                      (a += '</table>'),
                                      t.wysiwygEditorInsertHtml(a),
@@ -26,7 +67,7 @@ index 450e57d..f987eb2 100644
                                      t.closeDropDown(!0),
                                      e.preventDefault());
                              }),
-@@ -82623,7 +82621,6 @@ if (
+@@ -82634,7 +82621,6 @@ if (
                                      )),
                                      (a += '</table>'),
                                      t.wysiwygEditorInsertHtml(a),
