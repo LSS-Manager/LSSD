@@ -1,7 +1,82 @@
 diff --git a/application.js b/application.alt.js
-index 58c608a..f987eb2 100644
+index c17b78e..f987eb2 100644
 --- a/application.js
 +++ b/application.alt.js
+@@ -516,9 +516,6 @@ function mapExpand(e) {
+         $('#radio_outer').removeClass('col-sm-4'),
+         $('#radio_outer').addClass('col-sm-12'));
+ }
+-function toggleViewportFilter() {
+-    mapViewportFilter = !mapViewportFilter;
+-}
+ function massMissionMarkerAdd(e) {
+     let t = new Map();
+     const i = document.createElement('template'),
+@@ -3289,22 +3286,25 @@ function setTitle() {
+         :   (document.title = 'Kein Focus'));
+ }
+ function mapMoveToSearch() {
+-    const e = $('#map_adress_search').val();
+-    mapAdressSearchLocation(e, function (t) {
+-        t.length <= 0 ?
+-            alert(`${I18n.t('javascript.location_not_found')}\n\n${e}`)
+-        :   xy_map.zoomTo(t[0], t[1]);
+-    });
+-}
+-function mapAdressSearchLocation(e, t) {
+-    e &&
+-        $.getJSON(
+-            `https://reverse.missionchief.com/search?format=json&limit=1&q=${e}`,
+-            function (e) {
+-                let i = [];
+-                (e.length > 0 && (i = [e[0].lat, e[0].lon]), t(i));
+-            }
+-        );
++    $.getJSON(
++        'https://reverse.missionchief.com/search?format=json&limit=1&q=' +
++            $('#map_adress_search').val(),
++        function (e) {
++            e.length <= 0 ?
++                alert(I18n.t('javascript.location_not_found'))
++            :   $.each(e, function (e, t) {
++                    'undefined' == typeof mapkit ?
++                        map.panTo([t.lat, t.lon])
++                    :   map.setCenterAnimated(
++                            new mapkit.Coordinate(
++                                parseFloat(t.lat),
++                                parseFloat(t.lon)
++                            ),
++                            !0
++                        );
++                });
++        }
++    );
+ }
+ function buildingLoadContent(url) {
+     ($('#buildings').html(I18n.t('common.loading')),
+@@ -7859,18 +7859,18 @@ function isDateValid(e) {
+     return e instanceof Date && !isNaN(e);
+ }
+ function displayJsAlertInfo(e, t, i, n = {}) {
+-    const s = 'js-alert',
++    const s = '.js-alert',
+         a = createJsAlert(e, t, s, n);
+-    i && $(`.${s}`).alert('close');
++    i && $(s).alert('close');
+     let o = 'infoBox';
+     (n.infoBoxId && (o = n.infoBoxId),
+         $(`#${o}`).append(a),
+         registerDelayedAlertsRemoval());
+ }
+ function displayJsToast(e, t, i, n = {}) {
+-    const s = 'js-toast',
++    const s = '.js-toast',
+         a = createJsAlert(e, t, s, n);
+-    i && $(`.${s}`).alert('close');
++    i && $(s).alert('close');
+     let o = 'toast_layer';
+     (n.infoBoxId && (o = n.infoBoxId),
+         $(`#${o}`).append(a),
 @@ -8361,11 +8361,10 @@ function updateAAOsTime(e) {
                  if (t && 'true' == t.getAttribute('all_ok')) {
                      const e = parseInt(t.getAttribute('max_travel_time')) || 0,
@@ -59,7 +134,1444 @@ index 58c608a..f987eb2 100644
                      mountain_atv:
                          'P\u0159\xedv\u011bs na horskou \u010dty\u0159kolku',
                      mountain_snow: 'Sn\u011bhov\xfd p\u0159\xedv\u011bs',
-@@ -79433,7 +79421,6 @@ if (
+@@ -34576,12 +34564,12 @@ function updateAAOsTime(e) {
+                     }
+             return { state: 'success', data: t };
+         }
+-        function B() {
++        function R() {
+             try {
+                 return new e.XMLHttpRequest();
+             } catch (e) {}
+         }
+-        function R() {
++        function B() {
+             try {
+                 return new e.ActiveXObject('Microsoft.XMLHTTP');
+             } catch (e) {}
+@@ -35332,12 +35320,12 @@ function updateAAOsTime(e) {
+                 function i(e, t, i, n) {
+                     var s, a, o, r, l, c, d, u, h, p;
+                     if (
+-                        ((t ? t.ownerDocument || t : W) !== B && L(t),
++                        ((t ? t.ownerDocument || t : W) !== R && L(t),
+                         (i = i || []),
+                         !e || 'string' != typeof e)
+                     )
+                         return i;
+-                    if (1 !== (r = (t = t || B).nodeType) && 9 !== r) return [];
++                    if (1 !== (r = (t = t || R).nodeType) && 9 !== r) return [];
+                     if (O && !n) {
+                         if ((s = xe.exec(e)))
+                             if ((o = s[1])) {
+@@ -35427,7 +35415,7 @@ function updateAAOsTime(e) {
+                     return ((e[$] = !0), e);
+                 }
+                 function o(e) {
+-                    var t = B.createElement('div');
++                    var t = R.createElement('div');
+                     try {
+                         return !!e(t);
+                     } catch (e) {
+@@ -35743,7 +35731,7 @@ function updateAAOsTime(e) {
+                                         )),
+                                 k = (V += null == y ? 1 : Math.random() || 0.1);
+                             for (
+-                                v && ((D = r !== B && r), (z = n));
++                                v && ((D = r !== R && r), (z = n));
+                                 null != (u = w[f]);
+                                 f++
+                             ) {
+@@ -35834,8 +35822,8 @@ function updateAAOsTime(e) {
+                     D,
+                     j,
+                     L,
+-                    B,
+                     R,
++                    B,
+                     O,
+                     F,
+                     N,
+@@ -35986,10 +35974,10 @@ function updateAAOsTime(e) {
+                     function (e) {
+                         var t = e ? e.ownerDocument || e : W;
+                         return (
+-                                t !== B && 9 === t.nodeType && t.documentElement
++                                t !== R && 9 === t.nodeType && t.documentElement
+                             ) ?
+-                                ((B = t),
+-                                (R = t.documentElement),
++                                ((R = t),
++                                (B = t.documentElement),
+                                 (O = !P(t)),
+                                 (A.attributes = o(function (e) {
+                                     return (
+@@ -36037,7 +36025,7 @@ function updateAAOsTime(e) {
+                                 })),
+                                 (A.getById = o(function (e) {
+                                     return (
+-                                        (R.appendChild(e).id = $),
++                                        (B.appendChild(e).id = $),
+                                         !t.getElementsByName ||
+                                             !t.getElementsByName($).length
+                                     );
+@@ -36142,10 +36130,10 @@ function updateAAOsTime(e) {
+                                     })),
+                                 (A.matchesSelector = n(
+                                     (H =
+-                                        R.webkitMatchesSelector ||
+-                                        R.mozMatchesSelector ||
+-                                        R.oMatchesSelector ||
+-                                        R.msMatchesSelector)
++                                        B.webkitMatchesSelector ||
++                                        B.mozMatchesSelector ||
++                                        B.oMatchesSelector ||
++                                        B.msMatchesSelector)
+                                 )) &&
+                                     o(function (e) {
+                                         ((A.disconnectedMatch = H.call(
+@@ -36158,7 +36146,7 @@ function updateAAOsTime(e) {
+                                 (F = F.length && new RegExp(F.join('|'))),
+                                 (N = N.length && new RegExp(N.join('|'))),
+                                 (q =
+-                                    n(R.contains) || R.compareDocumentPosition ?
++                                    n(B.contains) || B.compareDocumentPosition ?
+                                         function (e, t) {
+                                             var i =
+                                                     9 === e.nodeType ?
+@@ -36195,7 +36183,7 @@ function updateAAOsTime(e) {
+                                     );
+                                 })),
+                                 (J =
+-                                    R.compareDocumentPosition ?
++                                    B.compareDocumentPosition ?
+                                         function (e, i) {
+                                             if (e === i) return ((Y = !0), 0);
+                                             var n =
+@@ -36256,14 +36244,14 @@ function updateAAOsTime(e) {
+                                             );
+                                         }),
+                                 t)
+-                            :   B;
++                            :   R;
+                     }),
+                 (i.matches = function (e, t) {
+                     return i(e, null, null, t);
+                 }),
+                 (i.matchesSelector = function (e, t) {
+                     if (
+-                        ((e.ownerDocument || e) !== B && L(e),
++                        ((e.ownerDocument || e) !== R && L(e),
+                         (t = t.replace(ve, "='$1']")),
+                         A.matchesSelector &&
+                             O &&
+@@ -36279,13 +36267,13 @@ function updateAAOsTime(e) {
+                             )
+                                 return n;
+                         } catch (e) {}
+-                    return i(t, B, null, [e]).length > 0;
++                    return i(t, R, null, [e]).length > 0;
+                 }),
+                 (i.contains = function (e, t) {
+-                    return ((e.ownerDocument || e) !== B && L(e), q(e, t));
++                    return ((e.ownerDocument || e) !== R && L(e), q(e, t));
+                 }),
+                 (i.attr = function (e, i) {
+-                    (e.ownerDocument || e) !== B && L(e);
++                    (e.ownerDocument || e) !== R && L(e);
+                     var n = E.attrHandle[i.toLowerCase()],
+                         s =
+                             n && ee.call(E.attrHandle, i.toLowerCase()) ?
+@@ -36690,12 +36678,12 @@ function updateAAOsTime(e) {
+                                 return i && i.slice(1) === t.id;
+                             },
+                             root: function (e) {
+-                                return e === R;
++                                return e === B;
+                             },
+                             focus: function (e) {
+                                 return (
+-                                    e === B.activeElement &&
+-                                    (!B.hasFocus || B.hasFocus()) &&
++                                    e === R.activeElement &&
++                                    (!R.hasFocus || R.hasFocus()) &&
+                                     !!(e.type || e.href || ~e.tabIndex)
+                                 );
+                             },
+@@ -37381,7 +37369,7 @@ function updateAAOsTime(e) {
+             De = /^(?:a|area)$/i,
+             je = /^(?:checked|selected)$/i,
+             Le = de.support.getSetAttribute,
+-            Be = de.support.input;
++            Re = de.support.input;
+         (de.fn.extend({
+             attr: function (e, t) {
+                 return de.access(this, de.attr, e, t, arguments.length > 1);
+@@ -37650,7 +37638,7 @@ function updateAAOsTime(e) {
+                         for (; (i = a[s++]); )
+                             ((n = de.propFix[i] || i),
+                                 de.expr.match.bool.test(i) ?
+-                                    (Be && Le) || !je.test(i) ?
++                                    (Re && Le) || !je.test(i) ?
+                                         (e[n] = !1)
+                                     :   (e[de.camelCase('default-' + i)] = e[
+                                             n
+@@ -37716,7 +37704,7 @@ function updateAAOsTime(e) {
+                 set: function (e, t, i) {
+                     return (
+                         !1 === t ? de.removeAttr(e, i)
+-                        : (Be && Le) || !je.test(i) ?
++                        : (Re && Le) || !je.test(i) ?
+                             e.setAttribute((!Le && de.propFix[i]) || i, i)
+                         :   (e[de.camelCase('default-' + i)] = e[i] = !0),
+                         i
+@@ -37726,7 +37714,7 @@ function updateAAOsTime(e) {
+             de.each(de.expr.match.bool.source.match(/\w+/g), function (e, i) {
+                 var n = de.expr.attrHandle[i] || de.find.attr;
+                 de.expr.attrHandle[i] =
+-                    (Be && Le) || !je.test(i) ?
++                    (Re && Le) || !je.test(i) ?
+                         function (e, i, s) {
+                             var a = de.expr.attrHandle[i],
+                                 o =
+@@ -37748,7 +37736,7 @@ function updateAAOsTime(e) {
+                             );
+                         };
+             }),
+-            (Be && Le) ||
++            (Re && Le) ||
+                 (de.attrHooks.value = {
+                     set: function (e, t, i) {
+                         if (!de.nodeName(e, 'input'))
+@@ -37866,7 +37854,7 @@ function updateAAOsTime(e) {
+                                 :   e.value;
+                         }));
+             }));
+-        var Re = /^(?:input|select|textarea)$/i,
++        var Be = /^(?:input|select|textarea)$/i,
+             Oe = /^key/,
+             Fe = /^(?:mouse|contextmenu)|click/,
+             Ne = /^(?:focusinfocus|focusoutblur)$/,
+@@ -38426,7 +38414,7 @@ function updateAAOsTime(e) {
+             de.support.changeBubbles ||
+                 (de.event.special.change = {
+                     setup: function () {
+-                        if (Re.test(this.nodeName))
++                        if (Be.test(this.nodeName))
+                             return (
+                                 ('checkbox' !== this.type &&
+                                     'radio' !== this.type) ||
+@@ -38461,7 +38449,7 @@ function updateAAOsTime(e) {
+                             'beforeactivate._change',
+                             function (e) {
+                                 var t = e.target;
+-                                Re.test(t.nodeName) &&
++                                Be.test(t.nodeName) &&
+                                     !de._data(t, 'changeBubbles') &&
+                                     (de.event.add(
+                                         t,
+@@ -38495,7 +38483,7 @@ function updateAAOsTime(e) {
+                     teardown: function () {
+                         return (
+                             de.event.remove(this, '._change'),
+-                            !Re.test(this.nodeName)
++                            !Be.test(this.nodeName)
+                         );
+                     },
+                 }),
+@@ -39724,8 +39712,8 @@ function updateAAOsTime(e) {
+             Dt = /#.*$/,
+             jt = /([?&])_=[^&]*/,
+             Lt = /^(.*?):[ \t]*([^\r\n]*)\r?$/gm,
+-            Bt = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
+-            Rt = /^(?:GET|HEAD)$/,
++            Rt = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
++            Bt = /^(?:GET|HEAD)$/,
+             Ot = /^\/\//,
+             Ft = /^([\w.+-]+:)(?:\/\/([^\/?#:]*)(?::(\d+)|)|)/,
+             Nt = de.fn.load,
+@@ -39800,7 +39788,7 @@ function updateAAOsTime(e) {
+                 ajaxSettings: {
+                     url: Mt,
+                     type: 'GET',
+-                    isLocal: Bt.test(Et[1]),
++                    isLocal: Rt.test(Et[1]),
+                     global: !0,
+                     processData: !0,
+                     async: !0,
+@@ -39978,7 +39966,7 @@ function updateAAOsTime(e) {
+                         0 == de.active++ &&
+                         de.event.trigger('ajaxStart'),
+                     (h.type = h.type.toUpperCase()),
+-                    (h.hasContent = !Rt.test(h.type)),
++                    (h.hasContent = !Bt.test(h.type)),
+                     (o = h.url),
+                     h.hasContent ||
+                         (h.data &&
+@@ -40176,9 +40164,9 @@ function updateAAOsTime(e) {
+         ((de.ajaxSettings.xhr =
+             e.ActiveXObject ?
+                 function () {
+-                    return (!this.isLocal && B()) || R();
++                    return (!this.isLocal && R()) || B();
+                 }
+-            :   B),
++            :   R),
+             (Gt = de.ajaxSettings.xhr()),
+             (de.support.cors = !!Gt && 'withCredentials' in Gt),
+             (Gt = de.support.ajax = !!Gt) &&
+@@ -49474,8 +49462,8 @@ function updateAAOsTime(e) {
+                         D,
+                         j,
+                         L,
+-                        B,
+                         R,
++                        B,
+                         O,
+                         F,
+                         N = new Date(),
+@@ -49729,7 +49717,7 @@ function updateAAOsTime(e) {
+                             ) {
+                                 for (
+                                     A += '<tr>',
+-                                        B =
++                                        R =
+                                             u ?
+                                                 "<td class='ui-datepicker-week-col'>" +
+                                                 this._get(
+@@ -49742,7 +49730,7 @@ function updateAAOsTime(e) {
+                                     w < 7;
+                                     w++
+                                 )
+-                                    ((R =
++                                    ((B =
+                                         f ?
+                                             f.apply(
+                                                 e.input ? e.input[0] : null,
+@@ -49751,10 +49739,10 @@ function updateAAOsTime(e) {
+                                         :   [!0, '']),
+                                         (F =
+                                             ((O = j.getMonth() !== X) && !v) ||
+-                                            !R[0] ||
++                                            !B[0] ||
+                                             (J && j < J) ||
+                                             (Q && j > Q)),
+-                                        (B +=
++                                        (R +=
+                                             "<td class='" +
+                                             ((w + d + 6) % 7 >= 5 ?
+                                                 ' ui-datepicker-week-end'
+@@ -49778,7 +49766,7 @@ function updateAAOsTime(e) {
+                                             :   '') +
+                                             (O && !g ? '' : (
+                                                 ' ' +
+-                                                R[1] +
++                                                B[1] +
+                                                 (j.getTime() === Y.getTime() ?
+                                                     ' ' + this._currentClass
+                                                 :   '') +
+@@ -49787,10 +49775,10 @@ function updateAAOsTime(e) {
+                                                 :   '')
+                                             )) +
+                                             "'" +
+-                                            ((O && !g) || !R[2] ?
++                                            ((O && !g) || !B[2] ?
+                                                 ''
+                                             :   " title='" +
+-                                                R[2].replace(/'/g, '&#39;') +
++                                                B[2].replace(/'/g, '&#39;') +
+                                                 "'") +
+                                             (F ? '' : (
+                                                 " data-handler='selectDay' data-event='click' data-month='" +
+@@ -49821,7 +49809,7 @@ function updateAAOsTime(e) {
+                                             '</td>'),
+                                         j.setDate(j.getDate() + 1),
+                                         (j = this._daylightSavingAdjust(j)));
+-                                A += B + '</tr>';
++                                A += R + '</tr>';
+                             }
+                             (++X > 11 && ((X = 0), ee++),
+                                 (x += A +=
+@@ -60226,9 +60214,9 @@ function updateAAOsTime(e) {
+                 'touchstart' !== t ||
+                     ii ||
+                     (document.addEventListener(Kt, j, !0),
+-                    document.addEventListener(Yt, B, !0),
+-                    document.addEventListener(Jt, R, !0),
+-                    document.addEventListener(Qt, R, !0),
++                    document.addEventListener(Yt, R, !0),
++                    document.addEventListener(Jt, B, !0),
++                    document.addEventListener(Qt, B, !0),
+                     (ii = !0)),
+                 ei[t] ?
+                     ((i = ei[t].bind(this, i)),
+@@ -60240,10 +60228,10 @@ function updateAAOsTime(e) {
+         function j(e) {
+             ti[e.pointerId] = e;
+         }
+-        function B(e) {
++        function R(e) {
+             ti[e.pointerId] && (ti[e.pointerId] = e);
+         }
+-        function R(e) {
++        function B(e) {
+             delete ti[e.pointerId];
+         }
+         function O(e, t) {
+@@ -60821,7 +60809,7 @@ function updateAAOsTime(e) {
+                     }
+             return A([(c = t.unproject(w(r))).lat + l.lat, c.lng + l.lng]);
+         }
+-        function Be(e, t) {
++        function Re(e, t) {
+             var i,
+                 n,
+                 s,
+@@ -60834,10 +60822,10 @@ function updateAAOsTime(e) {
+             if (!r && !o) return null;
+             switch (o.type) {
+                 case 'Point':
+-                    return Re(c, e, (i = d(r)), t);
++                    return Be(c, e, (i = d(r)), t);
+                 case 'MultiPoint':
+                     for (s = 0, a = r.length; s < a; s++)
+-                        ((i = d(r[s])), l.push(Re(c, e, i, t)));
++                        ((i = d(r[s])), l.push(Be(c, e, i, t)));
+                     return new ki(l);
+                 case 'LineString':
+                 case 'MultiLineString':
+@@ -60853,7 +60841,7 @@ function updateAAOsTime(e) {
+                     );
+                 case 'GeometryCollection':
+                     for (s = 0, a = o.geometries.length; s < a; s++) {
+-                        var u = Be(
++                        var u = Re(
+                             {
+                                 geometry: o.geometries[s],
+                                 type: 'Feature',
+@@ -60866,7 +60854,7 @@ function updateAAOsTime(e) {
+                     return new ki(l);
+                 case 'FeatureCollection':
+                     for (s = 0, a = o.features.length; s < a; s++) {
+-                        var h = Be(o.features[s], t);
++                        var h = Re(o.features[s], t);
+                         h && l.push(h);
+                     }
+                     return new ki(l);
+@@ -60874,7 +60862,7 @@ function updateAAOsTime(e) {
+                     throw new Error('Invalid GeoJSON object.');
+             }
+         }
+-        function Re(e, t, i, n) {
++        function Be(e, t, i, n) {
+             return e ? e(t, i) : new Si(i, n && n.markersInheritOptions && n);
+         }
+         function Oe(e) {
+@@ -61697,9 +61685,9 @@ function updateAAOsTime(e) {
+                 ((gt = 'MozPerspective' in gt),
+                 !window.L_DISABLE_3D && (It || Dt || gt) && !Mt && !Et),
+             Lt = (Ki = 'undefined' != typeof orientation || I('mobile')) && wt,
+-            Bt = Ki && Dt,
+-            Rt = !window.PointerEvent && window.MSPointerEvent,
+-            Ot = !(!window.PointerEvent && !Rt),
++            Rt = Ki && Dt,
++            Bt = !window.PointerEvent && window.MSPointerEvent,
++            Ot = !(!window.PointerEvent && !Bt),
+             Ft = 'ontouchstart' in window || !!window.TouchEvent,
+             Nt = !window.L_NO_TOUCH && (Ft || Ot),
+             Ht = Ki && Ct,
+@@ -61753,8 +61741,8 @@ function updateAAOsTime(e) {
+                 any3d: jt,
+                 mobile: Ki,
+                 mobileWebkit: Lt,
+-                mobileWebkit3d: Bt,
+-                msPointer: Rt,
++                mobileWebkit3d: Rt,
++                msPointer: Bt,
+                 pointer: Ot,
+                 touch: Nt,
+                 touchNative: Ft,
+@@ -65281,7 +65269,7 @@ function updateAAOsTime(e) {
+                     }
+                     var a,
+                         o = this.options;
+-                    return (o.filter && !o.filter(e)) || !(a = Be(e, o)) ?
++                    return (o.filter && !o.filter(e)) || !(a = Re(e, o)) ?
+                             this
+                         :   ((a.feature = $e(e)),
+                             (a.defaultOptions = a.options),
+@@ -65584,7 +65572,7 @@ function updateAAOsTime(e) {
+                         (e.onmousemove = r));
+                 },
+             }),
+-            Bi = Mt.extend({
++            Ri = Mt.extend({
+                 options: {
+                     interactive: !1,
+                     offset: [0, 0],
+@@ -65756,7 +65744,7 @@ function updateAAOsTime(e) {
+                     return [0, 0];
+                 },
+             }),
+-            Ri =
++            Bi =
+                 (hi.include({
+                     _initOverlay: function (e, t, i, n) {
+                         var s = t;
+@@ -65780,7 +65768,7 @@ function updateAAOsTime(e) {
+                         );
+                     },
+                 }),
+-                Bi.extend({
++                Ri.extend({
+                     options: {
+                         pane: 'popupPane',
+                         offset: [0, 7],
+@@ -65807,11 +65795,11 @@ function updateAAOsTime(e) {
+                                 e._popup.options.autoClose &&
+                                 e.removeLayer(e._popup),
+                             (e._popup = this),
+-                            Bi.prototype.openOn.call(this, e)
++                            Ri.prototype.openOn.call(this, e)
+                         );
+                     },
+                     onAdd: function (e) {
+-                        (Bi.prototype.onAdd.call(this, e),
++                        (Ri.prototype.onAdd.call(this, e),
+                             e.fire('popupopen', { popup: this }),
+                             this._source &&
+                                 (this._source.fire(
+@@ -65823,7 +65811,7 @@ function updateAAOsTime(e) {
+                                     this._source.on('preclick', me)));
+                     },
+                     onRemove: function (e) {
+-                        (Bi.prototype.onRemove.call(this, e),
++                        (Ri.prototype.onRemove.call(this, e),
+                             e.fire('popupclose', { popup: this }),
+                             this._source &&
+                                 (this._source.fire(
+@@ -65835,7 +65823,7 @@ function updateAAOsTime(e) {
+                                     this._source.off('preclick', me)));
+                     },
+                     getEvents: function () {
+-                        var e = Bi.prototype.getEvents.call(this);
++                        var e = Ri.prototype.getEvents.call(this);
+                         return (
+                             (void 0 !== this.options.closeOnClick ?
+                                 this.options.closeOnClick
+@@ -65976,7 +65964,7 @@ function updateAAOsTime(e) {
+                 hi.include({
+                     openPopup: function (e, t, i) {
+                         return (
+-                            this._initOverlay(Ri, e, t, i).openOn(this),
++                            this._initOverlay(Bi, e, t, i).openOn(this),
+                             this
+                         );
+                     },
+@@ -65992,7 +65980,7 @@ function updateAAOsTime(e) {
+                     bindPopup: function (e, t) {
+                         return (
+                             (this._popup = this._initOverlay(
+-                                Ri,
++                                Bi,
+                                 this._popup,
+                                 e,
+                                 t
+@@ -66067,7 +66055,7 @@ function updateAAOsTime(e) {
+                         13 === e.originalEvent.keyCode && this._openPopup(e);
+                     },
+                 }),
+-                Bi.extend({
++                Ri.extend({
+                     options: {
+                         pane: 'tooltipPane',
+                         offset: [0, 0],
+@@ -66077,7 +66065,7 @@ function updateAAOsTime(e) {
+                         opacity: 0.9,
+                     },
+                     onAdd: function (e) {
+-                        (Bi.prototype.onAdd.call(this, e),
++                        (Ri.prototype.onAdd.call(this, e),
+                             this.setOpacity(this.options.opacity),
+                             e.fire('tooltipopen', { tooltip: this }),
+                             this._source &&
+@@ -66089,7 +66077,7 @@ function updateAAOsTime(e) {
+                                 )));
+                     },
+                     onRemove: function (e) {
+-                        (Bi.prototype.onRemove.call(this, e),
++                        (Ri.prototype.onRemove.call(this, e),
+                             e.fire('tooltipclose', { tooltip: this }),
+                             this._source &&
+                                 (this.removeEventParent(this._source),
+@@ -66100,7 +66088,7 @@ function updateAAOsTime(e) {
+                                 )));
+                     },
+                     getEvents: function () {
+-                        var e = Bi.prototype.getEvents.call(this);
++                        var e = Ri.prototype.getEvents.call(this);
+                         return (
+                             this.options.permanent || (e.preclick = this.close),
+                             e
+@@ -67839,7 +67827,7 @@ function updateAAOsTime(e) {
+         });
+         ((Gi.create = Ui),
+             (Gi.pointsToPath = P),
+-            (Ii.geometryToLayer = Be),
++            (Ii.geometryToLayer = Re),
+             (Ii.coordsToLatLng = Oe),
+             (Ii.coordsToLatLngs = Fe),
+             (Ii.latLngToCoords = Ne),
+@@ -68317,7 +68305,7 @@ function updateAAOsTime(e) {
+                             }
+                         },
+                     }))),
+-                (Bt =
++                (Rt =
+                     (hi.addInitHook('addHandler', 'keyboard', Lt),
+                     hi.mergeOptions({
+                         scrollWheelZoom: !0,
+@@ -68393,8 +68381,8 @@ function updateAAOsTime(e) {
+                                         )));
+                         },
+                     }))),
+-                (Rt =
+-                    (hi.addInitHook('addHandler', 'scrollWheelZoom', Bt),
++                (Bt =
++                    (hi.addInitHook('addHandler', 'scrollWheelZoom', Rt),
+                     hi.mergeOptions({
+                         tapHold: Zt.touchNative && Zt.safari && Zt.mobile,
+                         tapTolerance: 15,
+@@ -68495,7 +68483,7 @@ function updateAAOsTime(e) {
+                         },
+                     }))),
+                 (Ot =
+-                    (hi.addInitHook('addHandler', 'tapHold', Rt),
++                    (hi.addInitHook('addHandler', 'tapHold', Bt),
+                     hi.mergeOptions({
+                         touchZoom: Zt.touch,
+                         bounceAtZoomLimits: !0,
+@@ -68662,8 +68650,8 @@ function updateAAOsTime(e) {
+                 (hi.DoubleClickZoom = jt),
+                 (hi.Drag = Ki),
+                 (hi.Keyboard = Lt),
+-                (hi.ScrollWheelZoom = Bt),
+-                (hi.TapHold = Rt),
++                (hi.ScrollWheelZoom = Rt),
++                (hi.TapHold = Bt),
+                 (hi.TouchZoom = Ot),
+                 (e.Bounds = k),
+                 (e.Browser = Zt),
+@@ -68674,7 +68662,7 @@ function updateAAOsTime(e) {
+                 (e.Class = b),
+                 (e.Control = pi),
+                 (e.DivIcon = Fi),
+-                (e.DivOverlay = Bi),
++                (e.DivOverlay = Ri),
+                 (e.DomEvent = bt),
+                 (e.DomUtil = vt),
+                 (e.Draggable = bi),
+@@ -68698,7 +68686,7 @@ function updateAAOsTime(e) {
+                 (e.PolyUtil = kt),
+                 (e.Polygon = Pi),
+                 (e.Polyline = Mi),
+-                (e.Popup = Ri),
++                (e.Popup = Bi),
+                 (e.PosAnimation = ui),
+                 (e.Projection = St),
+                 (e.Rectangle = Zi),
+@@ -68757,7 +68745,7 @@ function updateAAOsTime(e) {
+                     return new Mi(e, t);
+                 }),
+                 (e.popup = function (e, t) {
+-                    return new Ri(e, t);
++                    return new Bi(e, t);
+                 }),
+                 (e.rectangle = function (e, t) {
+                     return new Zi(e, t);
+@@ -70146,8 +70134,8 @@ class XYMap {
+     isMarkerVisible(e) {
+         return this.#t.isMarkerVisible(e);
+     }
+-    isVisible(e, t = !0) {
+-        return this.#t.isVisible(e, t);
++    isVisible(e) {
++        return this.#t.isVisible(e);
+     }
+     getCenter() {
+         return this.#t.getCenter();
+@@ -70431,10 +70419,6 @@ class XYLeafletWrapper {
+             let t = this.#d(e);
+             this.#i.addControl(new t());
+         }
+-        if (e.viewport_filter) {
+-            let t = this.#u(e);
+-            this.#i.addControl(new t());
+-        }
+         const n = L.control.scale();
+         ((n.filter_id = 'scale_control'),
+             this.addLayer(n),
+@@ -70451,8 +70435,8 @@ class XYLeafletWrapper {
+                 );
+                 return (
+                     (t.style.backgroundColor = 'white'),
+-                    (t.style.width = '30px'),
+-                    (t.style.height = '30px'),
++                    (t.style.width = '26px'),
++                    (t.style.height = '26px'),
+                     (t.onclick = function () {
+                         mapExpand(
+                             3 == e.user_design_mode ||
+@@ -70465,39 +70449,6 @@ class XYLeafletWrapper {
+             },
+         });
+     }
+-    #u(e) {
+-        return L.Control.extend({
+-            options: { position: 'topleft' },
+-            onAdd: function () {
+-                let t = L.DomUtil.create(
+-                    'div',
+-                    'leaflet-bar leaflet-control leaflet-control-custom map-viewport-filter cursor-clickable'
+-                );
+-                return (
+-                    (t.title = 'Toggle viewport filter'),
+-                    (t.style.backgroundColor = 'white'),
+-                    (t.style.width = '30px'),
+-                    (t.style.height = '30px'),
+-                    (t.onclick = function () {
+-                        (toggleViewportFilter(),
+-                            t.classList.add(
+-                                mapViewportFilter ?
+-                                    'map-viewport-filter-active'
+-                                :   'map-viewport-filter'
+-                            ),
+-                            t.classList.remove(
+-                                mapViewportFilter ?
+-                                    'map-viewport-filter'
+-                                :   'map-viewport-filter-active'
+-                            ),
+-                            e.viewport_filter_toggle_callback &&
+-                                e.viewport_filter_toggle_callback());
+-                    }),
+-                    t
+-                );
+-            },
+-        });
+-    }
+     #c(e, t) {
+         const i = MAP_EVENT_MAPPING[e][this.mapProvider];
+         i && this.#i.addEventListener(i, t);
+@@ -70522,7 +70473,7 @@ class XYLeafletWrapper {
+         return (
+             n.setOpacity(1),
+             this.mapProvider === MapProviders.LEAFLET &&
+-                this.#h(e.flavour_url, n),
++                this.#u(e.flavour_url, n),
+             n.bindTooltip(i, e.tooltipParams),
+             void 0 !== e.opacity && n.setOpacity(e.opacity),
+             n.on('click', t),
+@@ -70530,7 +70481,7 @@ class XYLeafletWrapper {
+             n
+         );
+     }
+-    #h(e, t) {
++    #u(e, t) {
+         var i = new Image();
+         ((i.src = e),
+             $(i).load(function () {
+@@ -70572,14 +70523,14 @@ class XYLeafletWrapper {
+ }
+ class XYLeafletCanvasWrapper {
+     #i = void 0;
+-    #p = void 0;
++    #h = void 0;
+     #e = {};
+     #s = void 0;
+     constructor(e) {
+         this.mapProvider = e;
+     }
+     init(e) {
+-        ((this.#e = e), this.#m(e));
++        ((this.#e = e), this.#p(e));
+     }
+     initFilters(e) {
+         try {
+@@ -70599,14 +70550,14 @@ class XYLeafletCanvasWrapper {
+         return !0;
+     }
+     getCanvasLayer() {
+-        return (this.#p || (this.#p = L.canvasIconLayer()), this.#p);
++        return (this.#h || (this.#h = L.canvasIconLayer()), this.#h);
+     }
+     isMarkerVisible(e) {
+         const t = e.getLatLng();
+         return this.isVisible(t);
+     }
+-    isVisible(e, t = !0) {
+-        return this.#o(e, t);
++    isVisible(e) {
++        return this.#o(e);
+     }
+     getCenter() {
+         return this.#i.getCenter();
+@@ -70639,19 +70590,19 @@ class XYLeafletCanvasWrapper {
+         e ? e.addTo(this.#i) : console.log('marker is missing');
+     }
+     removeMarker(e) {
+-        (e.closeTooltip(), this.#p.removeMarker(e, !0));
++        (e.closeTooltip(), this.#h.removeMarker(e, !0));
+     }
+     removeMarkerFromMap(e) {
+         this.#i.removeLayer(e);
+     }
+     removeMarkers(e) {
+         (e.forEach(e => {
+-            (e.closeTooltip(), this.#p.removeMarker(e, !1));
++            (e.closeTooltip(), this.#h.removeMarker(e, !1));
+         }),
+             this.redraw());
+     }
+     updateMarker(e, t) {
+-        this.#_(e, t);
++        this.#m(e, t);
+     }
+     showMarker(e, t = !1) {
+         e.setOpacity(1);
+@@ -70672,16 +70623,16 @@ class XYLeafletCanvasWrapper {
+         'string' != typeof e && this.#i.removeLayer(e);
+     }
+     showLayer(e) {
+-        'string' == typeof e && this.#p.showGroup(e);
++        'string' == typeof e && this.#h.showGroup(e);
+     }
+     hideLayer(e) {
+-        'string' == typeof e && this.#p.hideGroup(e);
++        'string' == typeof e && this.#h.hideGroup(e);
+     }
+     hasLayer(e) {
+-        return !!e && this.#p.hasGroup(e);
++        return !!e && this.#h.hasGroup(e);
+     }
+     redraw() {
+-        this.#p._redraw();
++        this.#h._redraw();
+     }
+     zoomTo(e, t) {
+         this.#i.setView([e, t], this.#i.getZoom());
+@@ -70698,7 +70649,7 @@ class XYLeafletCanvasWrapper {
+         }
+     }
+     setColorScheme(e) {}
+-    #m(e) {
++    #p(e) {
+         let t = '';
+         !e.osm_mode ||
+             (1 != e.osm_mode && 2 != e.osm_mode) ||
+@@ -70718,15 +70669,11 @@ class XYLeafletCanvasWrapper {
+             let t = this.#d(e);
+             this.#i.addControl(new t());
+         }
+-        if (e.viewport_filter) {
+-            let t = this.#u(e);
+-            this.#i.addControl(new t());
+-        }
+         (this.addLayer(L.control.scale()),
+-            (this.#p = L.canvasIconLayer({ padding: DEFAULT_PADDING })),
++            (this.#h = L.canvasIconLayer({ padding: DEFAULT_PADDING })),
+             '' !== t && i.getContainer() && i.getContainer().classList.add(t),
+             (map = this.#i),
+-            this.addLayer(this.#p));
++            this.addLayer(this.#h));
+     }
+     #d(e) {
+         return L.Control.extend({
+@@ -70738,49 +70685,14 @@ class XYLeafletCanvasWrapper {
+                 );
+                 return (
+                     (t.style.backgroundColor = 'white'),
+-                    (t.style.width = '30px'),
+-                    (t.style.height = '30px'),
+-                    (t.onclick = function (t) {
+-                        (t.stopPropagation(),
+-                            mapExpand(
+-                                3 == e.user_design_mode ||
+-                                    4 == e.user_design_mode ||
+-                                    6 == e.user_design_mode
+-                            ));
+-                    }),
+-                    t
+-                );
+-            },
+-        });
+-    }
+-    #u(e) {
+-        return L.Control.extend({
+-            options: { position: 'topleft' },
+-            onAdd: function () {
+-                let t = L.DomUtil.create(
+-                    'div',
+-                    'leaflet-bar leaflet-control leaflet-control-custom map-viewport-filter cursor-clickable'
+-                );
+-                return (
+-                    (t.title = 'Toggle viewport filter'),
+-                    (t.style.backgroundColor = 'white'),
+-                    (t.style.width = '30px'),
+-                    (t.style.height = '30px'),
+-                    (t.onclick = function (i) {
+-                        (i.stopPropagation(),
+-                            toggleViewportFilter(),
+-                            t.classList.add(
+-                                mapViewportFilter ?
+-                                    'map-viewport-filter-active'
+-                                :   'map-viewport-filter'
+-                            ),
+-                            t.classList.remove(
+-                                mapViewportFilter ?
+-                                    'map-viewport-filter'
+-                                :   'map-viewport-filter-active'
+-                            ),
+-                            e.viewport_filter_toggle_callback &&
+-                                e.viewport_filter_toggle_callback());
++                    (t.style.width = '26px'),
++                    (t.style.height = '26px'),
++                    (t.onclick = function () {
++                        mapExpand(
++                            3 == e.user_design_mode ||
++                                4 == e.user_design_mode ||
++                                6 == e.user_design_mode
++                        );
+                     }),
+                     t
+                 );
+@@ -70791,10 +70703,9 @@ class XYLeafletCanvasWrapper {
+         const i = MAP_EVENT_MAPPING[e][this.mapProvider];
+         i && this.#i.addEventListener(i, t);
+     }
+-    #o(e, t = !0) {
+-        let i = e,
+-            n = this.#i.getBounds();
+-        return (t && (n = n.pad(this.#i.options.padding)), n.contains(i));
++    #o(e) {
++        let t = e;
++        return this.#i.getBounds().pad(this.#i.options.padding).contains(t);
+     }
+     #r(e, t) {
+         let i = e.name;
+@@ -70813,12 +70724,12 @@ class XYLeafletCanvasWrapper {
+             n.setOpacity(1),
+             n.bindTooltip(i, e.tooltipParams),
+             void 0 !== e.opacity && n.setOpacity(e.opacity),
+-            t && n.on('click', t),
++            n.on('click', t),
+             e.layer_id && (n.layer_id = e.layer_id),
+             n
+         );
+     }
+-    #_(e, t) {
++    #m(e, t) {
+         return (
+             t.setOpacity(1),
+             (t.canvas_img = null),
+@@ -70842,14 +70753,14 @@ class XYLeafletCanvasWrapper {
+     }
+ }
+ class XYMapKitWrapper {
+-    #f = void 0;
++    #_ = void 0;
+     #e = {};
+     #s = void 0;
+     constructor(e) {
+         this.mapProvider = e;
+     }
+     init(e) {
+-        ((this.#e = e), this.#g(e));
++        ((this.#e = e), this.#f(e));
+     }
+     initFilters(e) {
+         try {
+@@ -70877,22 +70788,22 @@ class XYMapKitWrapper {
+         return this.isVisible(i);
+     }
+     isVisible(e) {
+-        return this.#v(e);
++        return this.#g(e);
+     }
+     getCenter() {
+-        return this.#f.center;
++        return this.#_.center;
+     }
+     getRegion() {
+-        return this.#f.region;
++        return this.#_.region;
+     }
+     setRegion(e) {
+-        return this.#f.setRegionAnimated(e, !0);
++        return this.#_.setRegionAnimated(e, !0);
+     }
+     getMapViewType() {
+-        return this.#f.mapType;
++        return this.#_.mapType;
+     }
+     createMapMarker(e, t) {
+-        return this.#b(e, t);
++        return this.#v(e, t);
+     }
+     createMapMarkerAddAddToMap(e, t, i) {
+         const n = this.createMapMarker(e, t);
+@@ -70903,7 +70814,7 @@ class XYMapKitWrapper {
+             t.forEach(e => {
+                 e.layer_id && (e.visible = this.isFilterEnabled(e.layer_id));
+             }),
+-            this.#f.addAnnotations(t));
++            this.#_.addAnnotations(t));
+     }
+     addMarkerToLayer(e, t) {
+         this.addMarkerToMap(t);
+@@ -70913,20 +70824,20 @@ class XYMapKitWrapper {
+             (this.#s &&
+                 e.layer_id &&
+                 (e.visible = this.isFilterEnabled(e.layer_id)),
+-            this.#f.addAnnotation(e))
++            this.#_.addAnnotation(e))
+         :   console.log('marker is missing');
+     }
+     removeMarker(e) {
+-        this.#f.removeAnnotation(e);
++        this.#_.removeAnnotation(e);
+     }
+     removeMarkerFromMap(e) {
+-        this.#f.removeAnnotation(e);
++        this.#_.removeAnnotation(e);
+     }
+     removeMarkers(e) {
+-        this.#f.removeAnnotations(e);
++        this.#_.removeAnnotations(e);
+     }
+     updateMarker(e, t) {
+-        this.#y(e, t);
++        this.#b(e, t);
+     }
+     showMarker(e, t = !1) {
+         this.#s ?
+@@ -70965,7 +70876,7 @@ class XYMapKitWrapper {
+     }
+     redraw() {}
+     zoomTo(e, t) {
+-        this.#f.setCenterAnimated(new mapkit.Coordinate(e, t), !0);
++        this.#_.setCenterAnimated(new mapkit.Coordinate(e, t), !0);
+     }
+     addEventListener(e, t) {
+         switch (e) {
+@@ -70979,9 +70890,9 @@ class XYMapKitWrapper {
+         }
+     }
+     setColorScheme(e) {
+-        this.#f.colorScheme = e;
++        this.#_.colorScheme = e;
+     }
+-    #g(e) {
++    #f(e) {
+         mapkit.init({
+             authorizationCallback: function (e) {
+                 var t = new XMLHttpRequest();
+@@ -70994,7 +70905,7 @@ class XYMapKitWrapper {
+         });
+         let t = new mapkit.Coordinate(e.coordinates[0], e.coordinates[1]),
+             i = new mapkit.CoordinateSpan(0.1, 0.1);
+-        this.#f = new mapkit.Map(e.map_name, {
++        this.#_ = new mapkit.Map(e.map_name, {
+             region: new mapkit.CoordinateRegion(t, i),
+             showsUserLocationControl: !0,
+             _allowWheelToZoom: !0,
+@@ -71002,18 +70913,18 @@ class XYMapKitWrapper {
+             mapType: e.map_type,
+         });
+         let n = !1;
+-        (this.#f.addEventListener('region-change-start', () => {
++        (this.#_.addEventListener('region-change-start', () => {
+             ((n = !0),
+-                this.#f.selectedAnnotation &&
+-                    (this.#f.selectedAnnotation.selected = !1));
++                this.#_.selectedAnnotation &&
++                    (this.#_.selectedAnnotation.selected = !1));
+         }),
+-            this.#f.addEventListener('region-change-end', () => {
++            this.#_.addEventListener('region-change-end', () => {
+                 ((n = !1),
+-                    this.#f.selectedAnnotation &&
+-                        (this.#f.selectedAnnotation.selected = !1));
++                    this.#_.selectedAnnotation &&
++                        (this.#_.selectedAnnotation.selected = !1));
+             }),
+             e.clustering &&
+-                this.#f.addEventListener('select', e => {
++                this.#_.addEventListener('select', e => {
+                     const t = e.annotation;
+                     if (t)
+                         if (n) t.selected = !1;
+@@ -71026,17 +70937,17 @@ class XYMapKitWrapper {
+                                     e,
+                                     new mapkit.CoordinateSpan(0.02, 0.02)
+                                 );
+-                            this.#f.setRegionAnimated(i, !0);
++                            this.#_.setRegionAnimated(i, !0);
+                         }
+                 }),
+-            (map = this.#f));
++            (map = this.#_));
+     }
+     #c(e, t) {
+         const i = MAP_EVENT_MAPPING[e][this.mapProvider];
+-        i && (e === MapEventTypes.WHEEL || this.#f.addEventListener(i, t));
++        i && (e === MapEventTypes.WHEEL || this.#_.addEventListener(i, t));
+     }
+-    #v(e) {
+-        const t = this.#f.visibleMapRect,
++    #g(e) {
++        const t = this.#_.visibleMapRect,
+             i = t.size.width * DEFAULT_PADDING,
+             n = t.size.height * DEFAULT_PADDING,
+             s = new mapkit.MapRect(
+@@ -71053,7 +70964,7 @@ class XYMapKitWrapper {
+             a.y <= s.origin.y + s.size.height
+         );
+     }
+-    #b(e, t) {
++    #v(e, t) {
+         let i = new mapkit.ImageAnnotation(
+             new mapkit.Coordinate(e.latitude, e.longitude),
+             {
+@@ -71098,7 +71009,7 @@ class XYMapKitWrapper {
+             i
+         );
+     }
+-    #y(e, t) {
++    #b(e, t) {
+         return (
+             (t.url = { 1: e.flavour_url }),
+             (t.opacity = 1),
+@@ -71204,9 +71115,8 @@ var mission_position_markers_per_id = new Map(),
+     prisonerBulkCache = {},
+     buildingMarkerBulkContentCache = [],
+     mapViewExpanded = !1,
+-    mapViewExpandedWindow = !1;
+-let mapViewportFilter = !1;
+-var alliance_chat_ban_countdown_timer,
++    mapViewExpandedWindow = !1,
++    alliance_chat_ban_countdown_timer,
+     mission_overview_timer,
+     mission_overview_last_count,
+     buildingVehicleGraphicCachePerId = new Map(),
+@@ -71306,81 +71216,6 @@ let missionsWorker,
+     beta_player = !1,
+     new_map_filters = !1,
+     betaOptions = {};
+-const CACHE_PRESETS = {
+-        conservative: {
+-            dom: {
+-                enabled: !0,
+-                maxEntries: 20,
+-                maxEstimatedBytes: 4194304,
+-                ttlMs: 6e4,
+-                demoteToHtmlOnEvict: !0,
+-            },
+-            html: {
+-                enabled: !0,
+-                maxEntries: 150,
+-                maxEstimatedBytes: 4194304,
+-                ttlMs: 6e5,
+-            },
+-        },
+-        balanced: {
+-            dom: {
+-                enabled: !0,
+-                maxEntries: 50,
+-                maxEstimatedBytes: 10485760,
+-                ttlMs: 18e4,
+-                demoteToHtmlOnEvict: !0,
+-            },
+-            html: {
+-                enabled: !0,
+-                maxEntries: 400,
+-                maxEstimatedBytes: 8388608,
+-                ttlMs: 12e5,
+-            },
+-        },
+-        aggressive: {
+-            dom: {
+-                enabled: !0,
+-                maxEntries: 120,
+-                maxEstimatedBytes: 25165824,
+-                ttlMs: 3e5,
+-                demoteToHtmlOnEvict: !0,
+-            },
+-            html: {
+-                enabled: !0,
+-                maxEntries: 1e3,
+-                maxEstimatedBytes: 16777216,
+-                ttlMs: 18e5,
+-            },
+-        },
+-    },
+-    virtualListCacheConfig = {
+-        enabled: !0,
+-        dom: {
+-            enabled: !0,
+-            maxEntries: 60,
+-            maxEstimatedBytes: 12582912,
+-            ttlMs: 18e4,
+-            demoteToHtmlOnEvict: !0,
+-        },
+-        html: {
+-            enabled: !0,
+-            maxEntries: 2e3,
+-            maxEstimatedBytes: 20971520,
+-            ttlMs: 12e5,
+-        },
+-        estimator: {
+-            domBytesPerElement: 1500,
+-            domBytesPerAttribute: 80,
+-            domBytesPerTextChar: 2,
+-            htmlBytesPerChar: 2,
+-        },
+-        cleanup: {
+-            removeInlineListeners: !1,
+-            clearKnownExpandoProps: !0,
+-            clearDatasetKeys: [],
+-            onBeforeDomEvict: null,
+-        },
+-    };
+ $(function () {
+     function onCoinsTop() {
+         return !mobile_bridge_use || (mobileBridgeAdd('coins_window', {}), !1);
+@@ -72278,14 +72113,6 @@ $(function () {
+         $('body').on('click', '.lightbox-open', function () {
+             return (lightboxOpen($(this).attr('href')), !1);
+         }),
+-        $('#build_new_poi_lightbox').on('click', function () {
+-            let e = $(this).attr('href');
+-            if (xy_map) {
+-                const t = xy_map.getCenter();
+-                t && (e += `?tlat=${t.lat}&tlng=${t.lng}`);
+-            }
+-            return (lightboxOpen(e), !1);
+-        }),
+         $('body').on('click', '.radio_message_close', function () {
+             return (
+                 $(
+@@ -77191,20 +77018,20 @@ if (
+                 return t.toUpperCase();
+             });
+         }
+-        function B(e, t, i, n, s) {
++        function R(e, t, i, n, s) {
+             for (e = s ? e.lastChild : e.firstChild; e; ) {
+                 var a = s ? e.previousSibling : e.nextSibling;
+                 if (
+                     (!i && !1 === t(e)) ||
+-                    (!n && !1 === B(e, t, i, n, s)) ||
++                    (!n && !1 === R(e, t, i, n, s)) ||
+                     (i && !1 === t(e))
+                 )
+                     return !1;
+                 e = a;
+             }
+         }
+-        function R(e, t, i, n) {
+-            B(e, t, i, n, !0);
++        function B(e, t, i, n) {
++            R(e, t, i, n, !0);
+         }
+         function O(e, t) {
+             var i = (t = t || document).createDocumentFragment(),
+@@ -77256,7 +77083,7 @@ if (
+                 for (; q(e.parentNode, !0); ) e = e.parentNode;
+                 return e;
+             };
+-            B(e, function (e) {
++            R(e, function (e) {
+                 var i = 'ul,ol',
+                     n = !q(e, !0);
+                 if (n && q(e.parentNode, !0)) {
+@@ -77832,7 +77659,7 @@ if (
+         }
+         function re(e, t) {
+             var i;
+-            B(
++            R(
+                 e,
+                 function (e) {
+                     q(e, !0) ?
+@@ -77853,7 +77680,7 @@ if (
+                 T,
+                 S,
+                 L,
+-                B,
++                R,
+                 O,
+                 $,
+                 V,
+@@ -77926,7 +77753,7 @@ if (
+                             e
+                         ),
+                         y(o, 'z-index', kt.zIndex),
+-                        Be && z(o, 'ie ie' + Be),
++                        Re && z(o, 'ie ie' + Re),
+                         (ce = e.required),
+                         (e.required = !1));
+                     var t = le.formats[kt.format];
+@@ -77978,7 +77805,7 @@ if (
+                         u(o, f),
+                         u(o, L),
+                         _t.dimensions(kt.width || P(e), kt.height || I(e)));
+-                    var t = Be ? 'ie ie' + Be : '';
++                    var t = Re ? 'ie ie' + Re : '';
+                     ((t += Ce ? ' ios' : ''),
+                         (S = f.contentDocument).open(),
+                         S.write(
+@@ -77994,8 +77821,8 @@ if (
+                         (T = S.body),
+                         (x = f.contentWindow),
+                         _t.readOnly(!!kt.readOnly),
+-                        (Ce || Te || Be) &&
+-                            (I(T, '100%'), Be || p(T, 'touchend', _t.focus)));
++                        (Ce || Te || Re) &&
++                            (I(T, '100%'), Re || p(T, 'touchend', _t.focus)));
+                     var i = _(e, 'tabindex');
+                     (_(L, 'tabindex', i),
+                         _(f, 'tabindex', i),
+@@ -78251,7 +78078,7 @@ if (
+                                 i.lastChild;
+                             )
+                                 ((i = i.lastChild),
+-                                    !Re &&
++                                    !Be &&
+                                         k(i, 'br') &&
+                                         i.previousSibling &&
+                                         (i = i.previousSibling));
+@@ -78354,7 +78181,7 @@ if (
+                             (Z = null),
+                             (O = null),
+                             (Y = null),
+-                            B && d(B),
++                            R && d(R),
+                             m(Le, 'click', Xe));
+                         var t = e.form;
+                         (t &&
+@@ -78372,7 +78199,7 @@ if (
+                     var l,
+                         c = 'sceditor-' + t;
+                     (_t.closeDropDown(!0),
+-                        (B && A(B, c)) ||
++                        (R && A(R, c)) ||
+                             (!1 !== s &&
+                                 a(
+                                     h(i, ':not(input):not(textarea)'),
+@@ -78390,31 +78217,31 @@ if (
+                                 kt.dropDownCss
+                             )),
+                             y(
+-                                (B = r('div', {
++                                (R = r('div', {
+                                     className: 'sceditor-dropdown ' + c,
+                                 })),
+                                 l
+                             ),
+-                            u(B, i),
+-                            u(o, B),
+-                            p(B, 'click focusin', function (e) {
++                            u(R, i),
++                            u(o, R),
++                            p(R, 'click focusin', function (e) {
+                                 e.stopPropagation();
+                             }),
+                             setTimeout(function () {
+-                                if (B) {
+-                                    var e = h(B, 'input,textarea')[0];
++                                if (R) {
++                                    var e = h(R, 'input,textarea')[0];
+                                     e && e.focus();
+                                 }
+                             })));
+                 }),
+                 (Xe = function (e) {
+                     3 !== e.which &&
+-                        B &&
++                        R &&
+                         !e.defaultPrevented &&
+                         (pt(), _t.closeDropDown());
+                 }),
+                 (We = function (e) {
+-                    var t = Be || Te,
++                    var t = Re || Te,
+                         i = T,
+                         n = e.clipboardData,
+                         s = function (e) {
+@@ -78476,7 +78303,7 @@ if (
+                         _t.wysiwygEditorInsertHtml(n.val, null, !0));
+                 }),
+                 (_t.closeDropDown = function (e) {
+-                    (B && (d(B), (B = null)), !0 === e && _t.focus());
++                    (R && (d(R), (R = null)), !0 === e && _t.focus());
+                 }),
+                 (_t.wysiwygEditorInsertHtml = function (e, t, i) {
+                     var n,
+@@ -78603,7 +78430,7 @@ if (
+                     return (!1 !== e && 'toHtml' in i && (t = i.toHtml(t)), t);
+                 }),
+                 (_t.setWysiwygEditorValue = function (e) {
+-                    (e || (e = '<p>' + (Be ? '' : '<br />') + '</p>'),
++                    (e || (e = '<p>' + (Re ? '' : '<br />') + '</p>'),
+                         (T.innerHTML = e),
+                         Ae(),
+                         nt(),
+@@ -78668,7 +78495,7 @@ if (
+                             ));
+                 }),
+                 (Ee = function () {
+-                    Be && (O = Z.selectedRange());
++                    Re && (O = Z.selectedRange());
+                 }),
+                 (_t.execCommand = function (e, t) {
+                     var i = !1,
+@@ -78773,7 +78600,7 @@ if (
+                     ) {
+                         O = null;
+                         var t = r('br', {}, S);
+-                        if ((Z.insertNode(t), !Re)) {
++                        if ((Z.insertNode(t), !Be)) {
+                             var i = t.parentNode,
+                                 n = i.lastChild;
+                             (n &&
+@@ -78789,7 +78616,7 @@ if (
+                     }
+                 }),
+                 (nt = function () {
+-                    R(T, function (e) {
++                    B(T, function (e) {
+                         if (
+                             e.nodeType === ge &&
+                             !/inline/.test(y(e, 'display')) &&
+@@ -78799,7 +78626,7 @@ if (
+                             var t = r('p', {}, S);
+                             return (
+                                 (t.className = 'sceditor-nlf'),
+-                                (t.innerHTML = Re ? '' : '<br />'),
++                                (t.innerHTML = Be ? '' : '<br />'),
+                                 u(T, t),
+                                 !1
+                             );
+@@ -78872,7 +78699,7 @@ if (
+                         var n,
+                             s = Z.selectedRange();
+                         (ee || ot(),
+-                            !Re &&
++                            !Be &&
+                                 s &&
+                                 1 === s.endOffset &&
+                                 s.collapsed &&
+@@ -79594,7 +79421,6 @@ if (
                                      )),
                                      (a += '</table>'),
                                      t.wysiwygEditorInsertHtml(a),
@@ -67,7 +1579,240 @@ index 58c608a..f987eb2 100644
                                      t.closeDropDown(!0),
                                      e.preventDefault());
                              }),
-@@ -82634,7 +82621,6 @@ if (
+@@ -80042,8 +79868,8 @@ if (
+             },
+             je = window,
+             Le = document,
+-            Be = xe,
+-            Re = Be && Be < 11,
++            Re = xe,
++            Be = Re && Re < 11,
+             Oe = /^image\/(p?jpe?g|gif|png|bmp)$/i;
+         ((le.locale = {}),
+             (le.formats = {}),
+@@ -80096,8 +79922,8 @@ if (
+                     closest: c,
+                     width: P,
+                     height: I,
+-                    traverse: B,
+-                    rTraverse: R,
++                    traverse: R,
++                    rTraverse: B,
+                     parseHTML: O,
+                     hasStyling: F,
+                     convertElement: N,
+@@ -80392,20 +80218,20 @@ if (
+                 return t.toUpperCase();
+             });
+         }
+-        function B(e, t, i, n, s) {
++        function R(e, t, i, n, s) {
+             for (e = s ? e.lastChild : e.firstChild; e; ) {
+                 var a = s ? e.previousSibling : e.nextSibling;
+                 if (
+                     (!i && !1 === t(e)) ||
+-                    (!n && !1 === B(e, t, i, n, s)) ||
++                    (!n && !1 === R(e, t, i, n, s)) ||
+                     (i && !1 === t(e))
+                 )
+                     return !1;
+                 e = a;
+             }
+         }
+-        function R(e, t, i, n) {
+-            B(e, t, i, n, !0);
++        function B(e, t, i, n) {
++            R(e, t, i, n, !0);
+         }
+         function O(e, t) {
+             var i = (t = t || document).createDocumentFragment(),
+@@ -80457,7 +80283,7 @@ if (
+                 for (; q(e.parentNode, !0); ) e = e.parentNode;
+                 return e;
+             };
+-            B(e, function (e) {
++            R(e, function (e) {
+                 var i = 'ul,ol',
+                     n = !q(e, !0);
+                 if (n && q(e.parentNode, !0)) {
+@@ -81033,7 +80859,7 @@ if (
+         }
+         function re(e, t) {
+             var i;
+-            B(
++            R(
+                 e,
+                 function (e) {
+                     q(e, !0) ?
+@@ -81054,7 +80880,7 @@ if (
+                 T,
+                 S,
+                 L,
+-                B,
++                R,
+                 O,
+                 $,
+                 V,
+@@ -81127,7 +80953,7 @@ if (
+                             e
+                         ),
+                         y(o, 'z-index', kt.zIndex),
+-                        Be && z(o, 'ie ie' + Be),
++                        Re && z(o, 'ie ie' + Re),
+                         (ce = e.required),
+                         (e.required = !1));
+                     var t = le.formats[kt.format];
+@@ -81179,7 +81005,7 @@ if (
+                         u(o, f),
+                         u(o, L),
+                         _t.dimensions(kt.width || P(e), kt.height || I(e)));
+-                    var t = Be ? 'ie ie' + Be : '';
++                    var t = Re ? 'ie ie' + Re : '';
+                     ((t += Ce ? ' ios' : ''),
+                         (S = f.contentDocument).open(),
+                         S.write(
+@@ -81195,8 +81021,8 @@ if (
+                         (T = S.body),
+                         (x = f.contentWindow),
+                         _t.readOnly(!!kt.readOnly),
+-                        (Ce || Te || Be) &&
+-                            (I(T, '100%'), Be || p(T, 'touchend', _t.focus)));
++                        (Ce || Te || Re) &&
++                            (I(T, '100%'), Re || p(T, 'touchend', _t.focus)));
+                     var i = _(e, 'tabindex');
+                     (_(L, 'tabindex', i),
+                         _(f, 'tabindex', i),
+@@ -81452,7 +81278,7 @@ if (
+                                 i.lastChild;
+                             )
+                                 ((i = i.lastChild),
+-                                    !Re &&
++                                    !Be &&
+                                         k(i, 'br') &&
+                                         i.previousSibling &&
+                                         (i = i.previousSibling));
+@@ -81555,7 +81381,7 @@ if (
+                             (Z = null),
+                             (O = null),
+                             (Y = null),
+-                            B && d(B),
++                            R && d(R),
+                             m(Le, 'click', Xe));
+                         var t = e.form;
+                         (t &&
+@@ -81573,7 +81399,7 @@ if (
+                     var l,
+                         c = 'sceditor-' + t;
+                     (_t.closeDropDown(!0),
+-                        (B && A(B, c)) ||
++                        (R && A(R, c)) ||
+                             (!1 !== s &&
+                                 a(
+                                     h(i, ':not(input):not(textarea)'),
+@@ -81591,31 +81417,31 @@ if (
+                                 kt.dropDownCss
+                             )),
+                             y(
+-                                (B = r('div', {
++                                (R = r('div', {
+                                     className: 'sceditor-dropdown ' + c,
+                                 })),
+                                 l
+                             ),
+-                            u(B, i),
+-                            u(o, B),
+-                            p(B, 'click focusin', function (e) {
++                            u(R, i),
++                            u(o, R),
++                            p(R, 'click focusin', function (e) {
+                                 e.stopPropagation();
+                             }),
+                             setTimeout(function () {
+-                                if (B) {
+-                                    var e = h(B, 'input,textarea')[0];
++                                if (R) {
++                                    var e = h(R, 'input,textarea')[0];
+                                     e && e.focus();
+                                 }
+                             })));
+                 }),
+                 (Xe = function (e) {
+                     3 !== e.which &&
+-                        B &&
++                        R &&
+                         !e.defaultPrevented &&
+                         (pt(), _t.closeDropDown());
+                 }),
+                 (We = function (e) {
+-                    var t = Be || Te,
++                    var t = Re || Te,
+                         i = T,
+                         n = e.clipboardData,
+                         s = function (e) {
+@@ -81677,7 +81503,7 @@ if (
+                         _t.wysiwygEditorInsertHtml(n.val, null, !0));
+                 }),
+                 (_t.closeDropDown = function (e) {
+-                    (B && (d(B), (B = null)), !0 === e && _t.focus());
++                    (R && (d(R), (R = null)), !0 === e && _t.focus());
+                 }),
+                 (_t.wysiwygEditorInsertHtml = function (e, t, i) {
+                     var n,
+@@ -81804,7 +81630,7 @@ if (
+                     return (!1 !== e && 'toHtml' in i && (t = i.toHtml(t)), t);
+                 }),
+                 (_t.setWysiwygEditorValue = function (e) {
+-                    (e || (e = '<p>' + (Be ? '' : '<br />') + '</p>'),
++                    (e || (e = '<p>' + (Re ? '' : '<br />') + '</p>'),
+                         (T.innerHTML = e),
+                         Ae(),
+                         nt(),
+@@ -81869,7 +81695,7 @@ if (
+                             ));
+                 }),
+                 (Ee = function () {
+-                    Be && (O = Z.selectedRange());
++                    Re && (O = Z.selectedRange());
+                 }),
+                 (_t.execCommand = function (e, t) {
+                     var i = !1,
+@@ -81974,7 +81800,7 @@ if (
+                     ) {
+                         O = null;
+                         var t = r('br', {}, S);
+-                        if ((Z.insertNode(t), !Re)) {
++                        if ((Z.insertNode(t), !Be)) {
+                             var i = t.parentNode,
+                                 n = i.lastChild;
+                             (n &&
+@@ -81990,7 +81816,7 @@ if (
+                     }
+                 }),
+                 (nt = function () {
+-                    R(T, function (e) {
++                    B(T, function (e) {
+                         if (
+                             e.nodeType === ge &&
+                             !/inline/.test(y(e, 'display')) &&
+@@ -82000,7 +81826,7 @@ if (
+                             var t = r('p', {}, S);
+                             return (
+                                 (t.className = 'sceditor-nlf'),
+-                                (t.innerHTML = Re ? '' : '<br />'),
++                                (t.innerHTML = Be ? '' : '<br />'),
+                                 u(T, t),
+                                 !1
+                             );
+@@ -82073,7 +81899,7 @@ if (
+                         var n,
+                             s = Z.selectedRange();
+                         (ee || ot(),
+-                            !Re &&
++                            !Be &&
+                                 s &&
+                                 1 === s.endOffset &&
+                                 s.collapsed &&
+@@ -82795,7 +82621,6 @@ if (
                                      )),
                                      (a += '</table>'),
                                      t.wysiwygEditorInsertHtml(a),
@@ -75,3 +1820,446 @@ index 58c608a..f987eb2 100644
                                      t.closeDropDown(!0),
                                      e.preventDefault());
                              }),
+@@ -83243,8 +83068,8 @@ if (
+             },
+             je = window,
+             Le = document,
+-            Be = xe,
+-            Re = Be && Be < 11,
++            Re = xe,
++            Be = Re && Re < 11,
+             Oe = /^image\/(p?jpe?g|gif|png|bmp)$/i;
+         ((le.locale = {}),
+             (le.formats = {}),
+@@ -83297,8 +83122,8 @@ if (
+                     closest: c,
+                     width: P,
+                     height: I,
+-                    traverse: B,
+-                    rTraverse: R,
++                    traverse: R,
++                    rTraverse: B,
+                     parseHTML: O,
+                     hasStyling: F,
+                     convertElement: N,
+@@ -87650,13 +87475,11 @@ const xy_map_filters_service = (function () {
+         a = {},
+         o = {},
+         r = {},
+-        l = !1,
+-        c = !1;
++        l = !1;
+     return {
+         initialize: function (l) {
+             if (
+-                ((c = !0 === l.local_only || 'true' === l.local_only),
+-                (o = l.building_types_collection),
++                ((o = l.building_types_collection),
+                 (e = l.mission_types_collection),
+                 (r = l.mission_types_with_filter_ids),
+                 (t = l.user_id),
+@@ -87672,11 +87495,11 @@ const xy_map_filters_service = (function () {
+                     e.checked ?
+                         xy_map.showLayer(this.getLayerByLayerId(e.filter_id))
+                     :   xy_map.hideLayer(this.getLayerByLayerId(e.filter_id)));
+-            const d = document.createDocumentFragment();
++            const c = document.createDocumentFragment();
+             (this.getMapFiltersForDOM().forEach(e => {
+-                d.appendChild(e);
++                c.appendChild(e);
+             }),
+-                i.replaceChildren(d),
++                i.replaceChildren(c),
+                 $(i).on('change', "input[type='checkbox']", function (e) {
+                     xy_map_filters_service.onFilterChanged(e);
+                 }),
+@@ -87731,16 +87554,15 @@ const xy_map_filters_service = (function () {
+             ((filter_key = e.target.value),
+                 (filter_checked = e.target.checked),
+                 l ||
+-                    (!1 === c &&
+-                        $.ajax({
+-                            type: 'PUT',
+-                            url: '/map_filters',
+-                            data: {
+-                                filter_id: filter_key,
+-                                checked: filter_checked,
+-                            },
+-                            cache: !1,
+-                        }),
++                    ($.ajax({
++                        type: 'PUT',
++                        url: '/map_filters',
++                        data: {
++                            filter_id: filter_key,
++                            checked: filter_checked,
++                        },
++                        cache: !1,
++                    }),
+                     (
+                         'all_buildings' == filter_key ||
+                         'user_buildings' == filter_key ||
+@@ -89640,79 +89462,6 @@ const TickManager = (() => {
+             i || (e(...n), (i = setTimeout(() => (i = !1), t)));
+         };
+     };
+-class LruTier {
+-    constructor(e) {
+-        ((this.options = e),
+-            (this.map = new Map()),
+-            (this.totalEstimatedBytes = 0));
+-    }
+-    _now() {
+-        return Date.now();
+-    }
+-    _isExpired(e) {
+-        const t = this.options.ttlMs || 6e4;
+-        return t > 0 && this._now() - e.touchedAt > t;
+-    }
+-    _touch(e, t) {
+-        return (
+-            (t.touchedAt = this._now()),
+-            this.map.delete(e),
+-            this.map.set(e, t),
+-            t
+-        );
+-    }
+-    get(e) {
+-        const t = this.map.get(e);
+-        return (
+-            t ?
+-                this._isExpired(t) ?
+-                    (this.delete(e), null)
+-                :   (this._touch(e, t), t.value)
+-            :   null
+-        );
+-    }
+-    set(e, t, i, n) {
+-        if (this.map.has(e)) {
+-            const t = this.map.get(e);
+-            ((this.totalEstimatedBytes -= t.estimatedBytes),
+-                this.map.delete(e));
+-        }
+-        (this.map.set(e, {
+-            value: t,
+-            estimatedBytes: i,
+-            touchedAt: this._now(),
+-            onEvict: n,
+-        }),
+-            (this.totalEstimatedBytes += i),
+-            this._evict());
+-    }
+-    delete(e) {
+-        const t = this.map.get(e);
+-        return (
+-            !!t &&
+-            (this.map.delete(e),
+-            (this.totalEstimatedBytes -= t.estimatedBytes),
+-            t.onEvict && t.onEvict(t.value),
+-            !0)
+-        );
+-    }
+-    _evict() {
+-        for (
+-            ;
+-            this.map.size > this.options.maxEntries ||
+-            this.totalEstimatedBytes > this.options.maxEstimatedBytes;
+-        ) {
+-            const e = this.map.keys().next().value;
+-            this.delete(e);
+-        }
+-    }
+-    pruneExpired() {
+-        for (const [e, t] of this.map) this._isExpired(t) && this.delete(e);
+-    }
+-    clear() {
+-        for (const e of [...this.map.keys()]) this.delete(e);
+-    }
+-}
+ class XYVirtualScroller {
+     constructor(e, t, i = {}) {
+         if (
+@@ -89723,24 +89472,13 @@ class XYVirtualScroller {
+             (this.onRowHoverEnter = i.onRowHoverEnter || null),
+             (this.onRowHoverLeave = i.onRowHoverLeave || null),
+             (this.onItemClick = i.onItemClick || null),
+-            (this.onScrollCallback = i.onScrollCallback || null),
+             (this.template =
+                 i.template || document.getElementById('item-template') || null),
+             (this.items = t),
+             (this.options = i),
+             (this.bufferPx = i.bufferPx || 400),
+-            (this.enableCache = i.enableCache || !1),
+-            (this.cacheKey = i.cacheKey || 'id'),
+-            (this.cacheOptions = i.cacheOptions || virtualListCacheConfig),
+-            (this.isItemDirtyFn = i.isItemDirtyFn || null),
+-            (this.markItemDirtyFn = i.markItemDirtyFn || null),
+-            (this.vlCache = null),
+-            this.enableCache &&
+-                (this.vlCache = new XYVirtualListTwoTierCache(
+-                    this.cacheOptions
+-                )),
+             (this.dirty = !1),
+-            (this.viewportHeight = e.clientHeight || 350),
++            (this.viewportHeight = e.clientHeight),
+             (this.count = t.length),
+             0 === this.count)
+         )
+@@ -89768,20 +89506,14 @@ class XYVirtualScroller {
+                 this.ticking ||
+                     ((this.ticking = !0),
+                     requestAnimationFrame(() => {
+-                        (this.onScroll(),
+-                            (this.ticking = !1),
+-                            this.onScrollCallback && this.onScrollCallback());
++                        (this.onScroll(), (this.ticking = !1));
+                     }));
+             }),
+             this.attachEvents(),
+-            this.onScroll(),
+-            (this.itemsUpdateTimeout = null));
++            this.onScroll());
+     }
+     attachEvents() {
+-        (this.content.addEventListener(
+-            'mousedown',
+-            this.handleClick.bind(this)
+-        ),
++        (this.content.addEventListener('click', this.handleClick.bind(this)),
+             this.content.addEventListener(
+                 'mouseenter',
+                 this.handleMouseEnter.bind(this),
+@@ -89794,23 +89526,17 @@ class XYVirtualScroller {
+             ));
+     }
+     handleClick(e) {
+-        (0 == e.button || e.button,
+-            1 == e.button || e.button,
+-            2 == e.button || e.button);
+-        const t = e.target.closest('.virtual-item-indicator');
++        const t = e.target.closest('.virtual-item');
+         if (!t || !this.content.contains(t)) return;
+         const i = Number(t.dataset.index);
+         if (Number.isNaN(i) || !this.items[i]) return;
+         const n = e.target.closest('[data-v-item-action]');
+-        if (n && this.onItemClick)
+-            return (
+-                e.preventDefault(),
+-                void this.onItemClick(i, this.items[i], n, e)
+-            );
+-        this.onRowClick && !n && this.onRowClick(i, this.items[i], e);
++        n && this.onItemClick ?
++            this.onItemClick(i, this.items[i], n, e)
++        :   this.onRowClick && !n && this.onRowClick(i, this.items[i], e);
+     }
+     handleMouseEnter(e) {
+-        const t = e.target.closest('.virtual-item-indicator');
++        const t = e.target.closest('.virtual-item');
+         if (!t || !this.content.contains(t)) return;
+         const i = Number(t.dataset.index);
+         !Number.isNaN(i) &&
+@@ -89819,7 +89545,7 @@ class XYVirtualScroller {
+             this.onRowHoverEnter(i, this.items[i], t, e);
+     }
+     handleMouseLeave(e) {
+-        const t = e.target.closest('.virtual-item-indicator');
++        const t = e.target.closest('.virtual-item');
+         if (!t || !this.content.contains(t)) return;
+         const i = Number(t.dataset.index);
+         !Number.isNaN(i) &&
+@@ -89862,50 +89588,15 @@ class XYVirtualScroller {
+             i = this.endIndex;
+         if (this.count > 0)
+             for (let n = t; n <= i; n++) {
+-                const t = this.buildItemNodeCached(n);
+-                if (t instanceof HTMLElement)
+-                    ((t.dataset.index = n), e.appendChild(t));
+-                else {
+-                    const t = document.createElement('span');
+-                    ((t.textContent =
+-                        'Error: renderItem must return an HTMLElement'),
+-                        e.appendChild(t));
+-                }
++                const t = this.buildItemNode(n);
++                ((t.dataset.index = n), e.appendChild(t));
+             }
+         this.content.insertBefore(e, this.bottomSpacer);
+         const n = this.prefixSums[t],
+             s = this.totalHeight - this.prefixSums[i + 1];
+         ((this.topSpacer.style.height = `${n}px`),
+             (this.bottomSpacer.style.height = `${s}px`),
+-            requestAnimationFrame(() => {
+-                this.updateHeights();
+-            }));
+-    }
+-    buildItemNodeCached(e) {
+-        const t = this.items[e][this.cacheKey];
+-        let i = null;
+-        return (
+-            this.enableCache ?
+-                ((i = this._restoreRow(t)),
+-                (i && !this._isItemDirty(e)) || (i = this.buildItemNode(e)),
+-                this._storeRow(t, i),
+-                this._markItemDirty(e, !1))
+-            :   (i = this.buildItemNode(e)),
+-            i
+-        );
+-    }
+-    _isItemDirty(e) {
+-        const t = this.items[e],
+-            i = t[this.cacheKey];
+-        return (
+-            this.isItemDirtyFn && (t.dirty = this.isItemDirtyFn(i)),
+-            t.dirty
+-        );
+-    }
+-    _markItemDirty(e, t) {
+-        const i = this.items[e],
+-            n = i[this.cacheKey];
+-        (this.markItemDirtyFn && this.markItemDirtyFn(n, t), (i.dirty = t));
++            requestAnimationFrame(() => this.updateHeights()));
+     }
+     buildItemNode(e) {
+         const t = this.items[e];
+@@ -89913,12 +89604,11 @@ class XYVirtualScroller {
+             const i = this.renderItemFn(e, t);
+             return (
+                 (i && i instanceof HTMLElement) ||
+-                    console.error(`renderItem must return an HTMLElement ${i}`),
++                    console.error('renderItem must return an HTMLElement'),
+                 i
+             );
+         }
+-        this.renderItemFn ||
+-            this.template ||
++        this.template ||
+             console.error('No renderItem function or template provided');
+         const i = this.template.content.cloneNode(!0).firstElementChild;
+         return (
+@@ -89953,7 +89643,6 @@ class XYVirtualScroller {
+             (this.bottomSpacer.style.height = `${n}px`));
+     }
+     setItems(e, t = {}) {
+-        this.itemsUpdateTimeout && clearTimeout(this.itemsUpdateTimeout);
+         const i = t.preserveScroll ? this._captureAnchor() : null;
+         if (
+             ((this.items = e),
+@@ -90029,11 +89718,9 @@ class XYVirtualScroller {
+     }
+     updateItem(e, t) {
+         ((this.items[e] = t),
++            this.rebuildPrefixSums(),
+             this._markAsDirty(),
+-            this.itemsUpdateTimeout && clearTimeout(this.itemsUpdateTimeout),
+-            (this.itemsUpdateTimeout = setTimeout(() => {
+-                (this.rebuildPrefixSums(), this.onScroll());
+-            }, 100)));
++            this.onScroll());
+     }
+     findItemIndexById(e) {
+         return this.items.findIndex(t => t.id === e);
+@@ -90051,15 +89738,6 @@ class XYVirtualScroller {
+     getFirstItem() {
+         return this.items[0];
+     }
+-    getVisibleItems() {
+-        const e = this.container.scrollTop,
+-            t = e + this.viewportHeight,
+-            i = Math.max(0, e - this.bufferPx),
+-            n = t + this.bufferPx,
+-            s = this.findIndexForOffset(i),
+-            a = this.findIndexForOffset(n);
+-        return this.items.slice(s, a + 1);
+-    }
+     _markAsDirty() {
+         this.dirty = !0;
+     }
+@@ -90081,88 +89759,4 @@ class XYVirtualScroller {
+             n = Math.max(0, i + e.offsetWithinItem);
+         this.container.scrollTop = n;
+     }
+-    updateViewport() {
+-        const e = this._captureAnchor();
+-        ((this.viewportHeight = this.container.clientHeight),
+-            this._markAsDirty(),
+-            requestAnimationFrame(() => {
+-                ((e.index = Math.min(e.index, this.count - 1)),
+-                    this._restoreAnchor(e),
+-                    this.onScroll());
+-            }));
+-    }
+-    _storeRow(e, t) {
+-        const i = t.outerHTML;
+-        this.vlCache.putDom(e, t, i);
+-    }
+-    _restoreRow(e) {
+-        const t = this.vlCache.get(e);
+-        if (!t) return null;
+-        if ('dom' === t.type) return t.value;
+-        const i = document.createElement('template');
+-        return ((i.innerHTML = t.value), i.firstElementChild);
+-    }
+-}
+-class XYVirtualListTwoTierCache {
+-    constructor(e) {
+-        ((this.config = e),
+-            (this.domTier = new LruTier(e.dom)),
+-            (this.htmlTier = new LruTier(e.html)));
+-    }
+-    estimateHtmlBytes(e) {
+-        return e.length * this.config.estimator.htmlBytesPerChar;
+-    }
+-    estimateDomBytes(e) {
+-        const t = e.querySelectorAll('*').length + 1,
+-            i = [...e.querySelectorAll('*'), e].reduce(
+-                (e, t) => e + t.attributes.length,
+-                0
+-            ),
+-            n = e.textContent ? e.textContent.length : 0;
+-        return (
+-            t * this.config.estimator.domBytesPerElement +
+-            i * this.config.estimator.domBytesPerAttribute +
+-            n * this.config.estimator.domBytesPerTextChar
+-        );
+-    }
+-    get(e) {
+-        const t = this.config.dom.enabled ? this.domTier.get(e) : null;
+-        if (t) return { type: 'dom', value: t };
+-        const i = this.config.html.enabled ? this.htmlTier.get(e) : null;
+-        return i ? { type: 'html', value: i } : null;
+-    }
+-    putHtml(e, t) {
+-        this.config.html.enabled &&
+-            this.htmlTier.set(e, t, this.estimateHtmlBytes(t), null);
+-    }
+-    putDom(e, t, i = null) {
+-        if (!this.config.dom.enabled)
+-            return void (null != i && this.putHtml(e, i));
+-        const n = t => {
+-            if (
+-                (this.config.cleanup &&
+-                    'function' == typeof this.config.cleanup.onBeforeDomEvict &&
+-                    this.config.cleanup.onBeforeDomEvict(t, e),
+-                this.config.dom.demoteToHtmlOnEvict &&
+-                    null != i &&
+-                    (this.htmlTier.get(e) || this.putHtml(e, i)),
+-                this.config.cleanup?.clearKnownExpandoProps)
+-            )
+-                for (const e of Object.keys(t))
+-                    if (e.startsWith('__'))
+-                        try {
+-                            t[e] = null;
+-                        } catch {}
+-        };
+-        this.domTier.set(e, t, this.estimateDomBytes(t), n);
+-    }
+-    delete(e) {
+-        (this.domTier.delete(e), this.htmlTier.delete(e));
+-    }
+-    prune() {
+-        (this.domTier.pruneExpired(), this.htmlTier.pruneExpired());
+-    }
+-    clear() {
+-        (this.domTier.clear(), this.htmlTier.clear());
+-    }
+ }

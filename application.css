@@ -11018,6 +11018,14 @@ body.dark .mission_overview_countdown {
     background-image: url(/images/expand.png);
     background-size: 100% 100%;
 }
+.map-viewport-filter {
+    background-image: url(/images/t_filters_inactive.svg);
+    background-size: 98% 98%;
+}
+.map-viewport-filter-active {
+    background-image: url(/images/t_filters_active.svg);
+    background-size: 100% 100%;
+}
 .mission-success {
     display: flex;
     padding: 10px;
@@ -11036,7 +11044,8 @@ body.dark .mission_overview_countdown {
     height: 24px;
     margin-top: -5px;
 }
-#map_adress_search {
+#map_adress_search,
+#poi_map_adress_search {
     height: 24px;
     margin-top: 4px;
 }
@@ -14141,7 +14150,8 @@ body.dark .daily-bonuses .collect-possible-block {
 .prison-select .btn {
     margin: 1px;
 }
-#map_adress_search_form {
+#map_adress_search_form,
+#poi_map_adress_search_form {
     margin-left: 0px;
 }
 .navbar-nav > li > a > span {
@@ -15917,13 +15927,25 @@ body.dark .well.hospital-boost-active {
     transition: background-color 0.1s ease;
 }
 .poi-filters {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 8px 12px;
-    border-bottom: 1px solid #eee;
     background: #fff;
-    display: flex;
-    justify-content: space-between;
+}
+.poi-filters li label {
+    background: #fff;
+}
+.poi-filters li a {
+    background: #fff;
+}
+.dark .poi-filters {
+    background: #505050 !important;
+    color: #ddd !important;
+}
+.dark .poi-filters li label {
+    background: #505050 !important;
+    color: #ddd !important;
+}
+.dark .poi-filters li a {
+    background: #505050 !important;
+    color: #ddd !important;
 }
 .virtual-item.row-even {
     background-color: #eee;
@@ -15932,11 +15954,10 @@ body.dark .well.hospital-boost-active {
     color: #505050;
 }
 .virtual-item:hover {
-    background-color: #e3f2fd !important;
+    background-color: #99a0a4 !important;
 }
 .dark .virtual-item:hover {
-    background-color: #e3f2fd !important;
-    color: #505050;
+    background-color: #99a0a4 !important;
 }
 .virtual-item-main {
     display: flex;
@@ -16009,11 +16030,15 @@ body.dark .well.hospital-boost-active {
 }
 .checkbox-menu li label:hover,
 .checkbox-menu li label:focus {
-    background-color: #f5f5f5;
+    background-color: #99a0a4;
+}
+.dark .checkbox-menu li label:hover .dark .checkbox-menu li label:focus {
+    color: #333;
+    background-color: #99a0a4 !important;
 }
 .checkbox-menu li.active label:hover,
 .checkbox-menu li.active label:focus {
-    background-color: #b8b8ff;
+    background-color: #99a0a4;
 }
 .nav.black-links > li > a {
     color: #333;
