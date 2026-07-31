@@ -16167,6 +16167,12 @@ tr.hidden {
 .btn-red {
     background-color: #c56360 !important;
     color: #0f0f0f !important;
+}
+.popover {
+    background-color: #fafafa;
+}
+.dark .popover {
+    background-color: #505050;
 } /*!
  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
  *

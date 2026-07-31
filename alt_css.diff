@@ -1,5 +1,5 @@
 diff --git a/application.css b/application.alt.css
-index e65d060..371fbf4 100644
+index c417287..a093a3a 100644
 --- a/application.css
 +++ b/application.alt.css
 @@ -1,3 +1,4 @@
@@ -3087,17 +3087,17 @@ index e65d060..371fbf4 100644
  }
  .vehicle-group-container {
      display: flex;
-@@ -16167,7 +16714,8 @@ tr.hidden {
- .btn-red {
-     background-color: #c56360 !important;
-     color: #0f0f0f !important;
+@@ -16173,7 +16720,8 @@ tr.hidden {
+ }
+ .dark .popover {
+     background-color: #505050;
 -} /*!
 +}
 +/*!
   * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
   *
   * Copyright 2013-2017 bootstrap-select
-@@ -16250,8 +16798,8 @@ select.selectpicker {
+@@ -16256,8 +16804,8 @@ select.selectpicker {
      margin-left: 0;
  }
  .bootstrap-select.btn-group.dropdown-menu-right,
@@ -3108,7 +3108,7 @@ index e65d060..371fbf4 100644
      float: right;
  }
  .form-group .bootstrap-select.btn-group,
-@@ -16472,7 +17020,18 @@ select.selectpicker {
+@@ -16478,7 +17026,18 @@ select.selectpicker {
      margin-bottom: 0;
      width: 100%;
      float: none;
@@ -3128,7 +3128,7 @@ index e65d060..371fbf4 100644
  div.sceditor-grip,
  .sceditor-button div {
      background-image: url('/images/famfamfam.png');
-@@ -16608,6 +17167,21 @@ div.sceditor-grip {
+@@ -16614,6 +17173,21 @@ div.sceditor-grip {
  .rtl div.sceditor-grip {
      background-position: 0px -650px;
  }
@@ -3150,7 +3150,7 @@ index e65d060..371fbf4 100644
  .sceditor-container {
      display: -ms-flexbox;
      display: flex;
-@@ -16730,6 +17304,9 @@ body.sceditor-maximize {
+@@ -16736,6 +17310,9 @@ body.sceditor-maximize {
      border-radius: 0;
      background-clip: padding-box;
  }
@@ -3160,7 +3160,7 @@ index e65d060..371fbf4 100644
  div.sceditor-dropdown {
      position: absolute;
      border: 1px solid #ccc;
-@@ -16855,6 +17432,9 @@ div.sceditor-more-emoticons {
+@@ -16861,6 +17438,9 @@ div.sceditor-more-emoticons {
  .sceditor-color-option:hover {
      border: 1px solid #aaa;
  }
@@ -3170,7 +3170,7 @@ index e65d060..371fbf4 100644
  div.sceditor-toolbar {
      flex-shrink: 0;
      overflow: hidden;
-@@ -16957,12 +17537,36 @@ div.sceditor-group {
+@@ -16963,12 +17543,36 @@ div.sceditor-group {
      right: auto;
      left: 0;
  }
@@ -3207,7 +3207,7 @@ index e65d060..371fbf4 100644
  .tour-backdrop {
      position: absolute;
      z-index: 1100;
-@@ -16985,18 +17589,19 @@ div.sceditor-dropdown input[id='des'] {
+@@ -16991,18 +17595,19 @@ div.sceditor-dropdown input[id='des'] {
  .popover[class*='tour-'] .popover-navigation *[data-role='end'] {
      cursor: pointer;
  }
@@ -3232,7 +3232,7 @@ index e65d060..371fbf4 100644
  .btn-tutorial {
      margin-right: 5px;
  }
-@@ -17007,12 +17612,15 @@ div.sceditor-dropdown input[id='des'] {
+@@ -17013,12 +17618,15 @@ div.sceditor-dropdown input[id='des'] {
      border: 1px solid grey;
      overflow: hidden;
  }
@@ -3248,7 +3248,7 @@ index e65d060..371fbf4 100644
  .leaflet-control-layers-overlays .leaflet-control-layers-selector {
      position: absolute;
      left: 0;
-@@ -17020,10 +17628,12 @@ div.sceditor-dropdown input[id='des'] {
+@@ -17026,10 +17634,12 @@ div.sceditor-dropdown input[id='des'] {
      bottom: 0;
      margin: auto;
  }
@@ -3261,7 +3261,7 @@ index e65d060..371fbf4 100644
  .list.collapsed a::before {
      width: 0;
      height: 0;
-@@ -17031,19 +17641,39 @@ div.sceditor-dropdown input[id='des'] {
+@@ -17037,19 +17647,39 @@ div.sceditor-dropdown input[id='des'] {
      border-width: 8px 8px 0 8px;
      border-color: dimgray transparent transparent transparent;
  }
@@ -3302,7 +3302,7 @@ index e65d060..371fbf4 100644
  .list__element::after {
      content: '';
      position: absolute;
-@@ -17053,111 +17683,158 @@ div.sceditor-dropdown input[id='des'] {
+@@ -17059,111 +17689,158 @@ div.sceditor-dropdown input[id='des'] {
      height: 1px;
      background: grey;
  }
@@ -3461,7 +3461,7 @@ index e65d060..371fbf4 100644
  .policechief .seasonalbar .navbar-right > li,
  .policechief .seasonalbar .navbar-right > li > div,
  .policechief .seasonalbar .navbar-right > li > a,
-@@ -17165,12 +17842,18 @@ div.sceditor-dropdown input[id='des'] {
+@@ -17171,12 +17848,18 @@ div.sceditor-dropdown input[id='des'] {
  .policechief .seasonalbar .navbar-right > li > a > span {
      text-shadow: 1px 1px 2px black !important;
  }
@@ -3480,7 +3480,7 @@ index e65d060..371fbf4 100644
  .policechief .easterIframe {
      background-image: url(/images/pc_easter_background.png);
      width: 100%;
-@@ -17179,10 +17862,14 @@ div.sceditor-dropdown input[id='des'] {
+@@ -17185,10 +17868,14 @@ div.sceditor-dropdown input[id='des'] {
      color: white;
      padding: 10px;
  }
@@ -3495,7 +3495,7 @@ index e65d060..371fbf4 100644
  .policechief .oneyear_eventIframe {
      background-image: url(/images/pc_oneyear_event_background.png);
      width: 100%;
-@@ -17191,10 +17878,14 @@ div.sceditor-dropdown input[id='des'] {
+@@ -17197,10 +17884,14 @@ div.sceditor-dropdown input[id='des'] {
      color: white;
      padding: 10px;
  }
@@ -3510,7 +3510,7 @@ index e65d060..371fbf4 100644
  .policechief .spring_eventIframe {
      background-image: url(/images/pc_spring_event_background.png);
      width: 100%;
-@@ -17203,10 +17894,14 @@ div.sceditor-dropdown input[id='des'] {
+@@ -17209,10 +17900,14 @@ div.sceditor-dropdown input[id='des'] {
      color: white;
      padding: 10px;
  }
@@ -3525,7 +3525,7 @@ index e65d060..371fbf4 100644
  .policechief .fall_eventIframe {
      background-image: url(/images/pc_fall_event_background.png);
      width: 100%;
-@@ -17215,17 +17910,25 @@ div.sceditor-dropdown input[id='des'] {
+@@ -17221,17 +17916,25 @@ div.sceditor-dropdown input[id='des'] {
      color: white;
      padding: 10px;
  }
@@ -3551,7 +3551,7 @@ index e65d060..371fbf4 100644
  body.dark.policechief .nav-tabs > li.active > a,
  body.dark.policechief .nav-tabs > li.active > a:focus,
  body.dark.policechief .nav-tabs > li.active > a:hover {
-@@ -17298,9 +18001,11 @@ i.bbcode-link-icon {
+@@ -17304,9 +18007,11 @@ i.bbcode-link-icon {
      flex-direction: row;
      gap: 15px;
  }
@@ -3563,7 +3563,7 @@ index e65d060..371fbf4 100644
  .social-media-nav-icon {
      width: 19px;
  }
-@@ -17314,32 +18019,45 @@ i.bbcode-link-icon {
+@@ -17320,32 +18025,45 @@ i.bbcode-link-icon {
      display: none;
      cursor: pointer;
  }
@@ -3609,7 +3609,7 @@ index e65d060..371fbf4 100644
  .design-v2.design-v2.design-v2.design-v2 .btn-success {
      background-image: -webkit-linear-gradient(top, #71af63 0, #629f55 100%);
      background-image: -o-linear-gradient(top, #71af63 0, #629f55 100%);
-@@ -17354,13 +18072,19 @@ i.bbcode-link-icon {
+@@ -17360,13 +18078,19 @@ i.bbcode-link-icon {
      background-color: #629f55;
      color: white;
  }
@@ -3629,7 +3629,7 @@ index e65d060..371fbf4 100644
  .design-v2.design-v2.design-v2.design-v2 #mission_speed_pause,
  .design-v2.design-v2.design-v2.design-v2 #mission_speed_play {
      border-radius: 5px;
-@@ -17368,6 +18092,8 @@ i.bbcode-link-icon {
+@@ -17374,6 +18098,8 @@ i.bbcode-link-icon {
      min-height: 20px;
      box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.12);
  }
@@ -3638,7 +3638,7 @@ index e65d060..371fbf4 100644
  .design-v2.design-v2.design-v2.design-v2 #mission_speed_play {
      background-image: -webkit-linear-gradient(top, #71af63 0, #629f55 100%);
      background-image: -o-linear-gradient(top, #71af63 0, #629f55 100%);
-@@ -17381,15 +18107,21 @@ i.bbcode-link-icon {
+@@ -17387,15 +18113,21 @@ i.bbcode-link-icon {
      background-image: linear-gradient(180deg, #71af63 0%, #629f55 100%);
      background-color: #629f55;
  }
@@ -3660,7 +3660,7 @@ index e65d060..371fbf4 100644
  .design-v2.design-v2.design-v2.design-v2 .nav-tabs > li.active > a,
  .design-v2.design-v2.design-v2.design-v2 .nav-tabs > li.active > a:focus,
  .design-v2.design-v2.design-v2.design-v2 .nav-tabs > li.active > a:hover {
-@@ -17397,49 +18129,71 @@ i.bbcode-link-icon {
+@@ -17403,49 +18135,71 @@ i.bbcode-link-icon {
      color: white;
      box-shadow: none;
  }
@@ -3732,7 +3732,7 @@ index e65d060..371fbf4 100644
  .design-v2.design-v2.design-v2.design-v2 .search-station-input {
      padding-left: 24px;
      padding-top: 2px;
-@@ -17449,32 +18203,46 @@ i.bbcode-link-icon {
+@@ -17455,32 +18209,46 @@ i.bbcode-link-icon {
      background-position-x: 5px;
      background-image: url('/images/buttons/magnifyingglass-dark.svg');
  }
@@ -3779,7 +3779,7 @@ index e65d060..371fbf4 100644
  .design-v2.design-v2.design-v2.design-v2 #main-navbar-toggle.news_new,
  .design-v2.design-v2.design-v2.design-v2 #main-navbar-toggle.alliance_forum_new,
  .design-v2.design-v2.design-v2.design-v2
-@@ -17491,6 +18259,8 @@ i.bbcode-link-icon {
+@@ -17497,6 +18265,8 @@ i.bbcode-link-icon {
      border: 1px solid rgba(84, 107, 46, 0.65);
      background: linear-gradient(180deg, #71af63 0%, #629f55 100%);
  }
@@ -3788,7 +3788,7 @@ index e65d060..371fbf4 100644
  .design-v2.design-v2.design-v2.design-v2 #main-navbar-toggle.news_new .icon-bar,
  .design-v2.design-v2.design-v2.design-v2
      #main-navbar-toggle.alliance_forum_new
-@@ -17518,6 +18288,8 @@ i.bbcode-link-icon {
+@@ -17524,6 +18294,8 @@ i.bbcode-link-icon {
      .icon-bar {
      background-color: white;
  }
@@ -3797,7 +3797,7 @@ index e65d060..371fbf4 100644
  .design-v2.design-v2.design-v2.design-v2 .navbar-header .money-block a {
      border-radius: 5px;
      border: 1px solid rgba(0, 0, 0, 0.65);
-@@ -17529,6 +18301,8 @@ i.bbcode-link-icon {
+@@ -17535,6 +18307,8 @@ i.bbcode-link-icon {
      align-items: center;
      padding: 3px 6px;
  }
@@ -3806,7 +3806,7 @@ index e65d060..371fbf4 100644
  .design-v2.design-v2.design-v2.design-v2
      .navbar-header
      .money-block
-@@ -17537,6 +18311,8 @@ i.bbcode-link-icon {
+@@ -17543,6 +18317,8 @@ i.bbcode-link-icon {
      padding-right: 5px;
      padding-bottom: 3px;
  }
@@ -3815,7 +3815,7 @@ index e65d060..371fbf4 100644
  .design-v2.design-v2.design-v2.design-v2
      .navbar-header
      .money-block
-@@ -17545,6 +18321,8 @@ i.bbcode-link-icon {
+@@ -17551,6 +18327,8 @@ i.bbcode-link-icon {
      padding-right: 5px;
      padding-bottom: 3px;
  }
@@ -3824,7 +3824,7 @@ index e65d060..371fbf4 100644
  .design-v2.design-v2.design-v2.design-v2
      .navbar-header
      .money-block
-@@ -17552,28 +18330,40 @@ i.bbcode-link-icon {
+@@ -17558,28 +18336,40 @@ i.bbcode-link-icon {
      .credits-value {
      padding-bottom: 3px;
  }
@@ -3865,7 +3865,7 @@ index e65d060..371fbf4 100644
  .dark.design-v2.design-v2.design-v2.design-v2 .nav-tabs > li.active > a,
  .dark.design-v2.design-v2.design-v2.design-v2 .nav-tabs > li.active > a:focus,
  .dark.design-v2.design-v2.design-v2.design-v2 .nav-tabs > li.active > a:hover {
-@@ -17581,71 +18371,112 @@ i.bbcode-link-icon {
+@@ -17587,71 +18377,112 @@ i.bbcode-link-icon {
      color: white;
      box-shadow: none;
  }
