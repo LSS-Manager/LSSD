@@ -2907,18 +2907,18 @@ function waterCalculator(e, t) {
     const k = I18n.t(w.aria_progress_bar_prefix),
         x = I18n.t(w.amountOnSite, { amount: number_format(parseInt(h)) }),
         C = I18n.t(w.amountApproaching, { amount: number_format(parseInt(p)) }),
-        z = I18n.t(w.amountSelected, { amount: number_format(parseInt(m)) }),
-        T = I18n.t(w.amountMissing, { amount: number_format(parseInt(_)) });
+        T = I18n.t(w.amountSelected, { amount: number_format(parseInt(m)) }),
+        S = I18n.t(w.amountMissing, { amount: number_format(parseInt(_)) });
     (s.find('.mission_water_bar_at_mission_' + e).html(x),
         s.find('.mission_water_bar_driving_' + e).html(C),
-        s.find('.mission_water_bar_selected_' + e).html(z),
-        s.find('.mission_water_bar_missing_' + e).html(T));
-    const S = [k];
-    (parseInt(h) > 0 && S.push(x),
-        parseInt(p) > 0 && S.push(C),
-        parseInt(m) > 0 && S.push(z),
-        parseInt(_) > 0 && S.push(T),
-        s.attr('title', S.join(', ')),
+        s.find('.mission_water_bar_selected_' + e).html(T),
+        s.find('.mission_water_bar_missing_' + e).html(S));
+    const z = [k];
+    (parseInt(h) > 0 && z.push(x),
+        parseInt(p) > 0 && z.push(C),
+        parseInt(m) > 0 && z.push(T),
+        parseInt(_) > 0 && z.push(S),
+        s.attr('title', z.join(', ')),
         v + g + f >= 100 ?
             (s
                 .find('.mission_water_bar_selected_' + e)
@@ -9122,6 +9122,7 @@ function updateAAOsTime(e) {
             ready_home: 'Einsatzbereit auf Wache',
             ready_traveling: 'Einsatzbereit \xfcber Funk',
             talking_wish: 'Sprechwunsch',
+            transporting_car: 'Transporting Vehicle',
             waiting_for_vehicle: 'Warte auf Zugfahrzeug',
         },
         intervention_order: {
@@ -9131,6 +9132,11 @@ function updateAAOsTime(e) {
                 'Wenn aktiv, kann die AAO den Fahrzeugen Ausr\xfcstung zuweisen. W\xe4hlt die n\xe4chstgelegene Einheit oder Ausr\xfcstung. <br><i>(W\xe4hlt nicht ausschlie\xdflich Ausr\xfcstung und wirkt sich nur auf AAO aus, die mit %{icon} markiert sind)</i>',
             automatic_text_color: 'Automatische Schriftfarbe',
             back: 'Zur\xfcck',
+            car_carrier: 'Recovery Vehicle or Flatbed Recovery Vehicle',
+            categories: {
+                tow_trucks: 'Recovery Vehicles',
+                water_rescue: 'Technical Rescue and SAR',
+            },
             category: 'Kategorie',
             colour: 'Farbe',
             column: 'Spalte',
@@ -9156,6 +9162,7 @@ function updateAAOsTime(e) {
                 saved_text:
                     'Deine AAO wurde f\xfcr den Export vorbereitet. \xdcber den Link kann ein anderer Spieler die AAO bei sich importieren. Solltest du deine AAO in der Zwischenzeit ver\xe4ndern, so wird diese \xc4nderung auch im Export automatisch \xfcbernommen. ',
             },
+            flood_equipment: 'Flood Rescue Units',
             hotkey_hint:
                 'W\xe4hle einen Tastencode f\xfcr diese Auswahl an Fahrzeugen. Im Alarmierungsfenster kannst du dann mit ALT + Taste deiner Wahl (bzw. im Firefox: ALT + SHIFT + Taste deiner Wahl - bzw. unter Mac OS: CTRL + ALT + Taste deiner Wahl) direkt diese Fahrzeugauswahl aufrufen. ',
             intervention_order: 'Alarm und Ausr\xfcckeordnung bearbeiten',
@@ -9187,11 +9194,27 @@ function updateAAOsTime(e) {
                 ambulance: 'RTW',
                 animal_rescue: 'Beliebiges Tierrettungsfahrzeug',
                 animal_rescue_trailer: 'Anh Tierrettung',
+                any_traffic_car: 'Any Traffic Car',
                 arff: 'FLF',
                 battalion_chief_unit: 'ELW 1',
+                bomb_disposal: 'EOD Response Vehicles',
+                bomb_disposal_command: 'EOD Commanders',
+                bomb_disposal_crew: 'EOD Response Vehicles',
+                bomb_disposal_diver_crew: 'Marine EOD Response Vehicles',
+                bomb_disposal_diver_equipment: 'Marine EOD Equipment Vans',
+                bomb_disposal_equipment: 'EOD Medium Equipment Vans',
+                bomb_disposal_equipment_2: 'EOD Heavy Equipment Vehicles',
+                bomb_disposal_heavy_equipment: 'EOD Heavy Equipment Vehicles',
                 boot: 'Beliebiges Boot',
+                car_carrier: 'Any Recovery Vehicle',
+                car_carrier_large: 'Any HGV Recovery Vehicle',
                 care_service_equipment:
                     'Betreuungs- und Verpflegungsausstattung',
+                coastal_helicopter: 'Coastguard Rescue Helicopter',
+                coastal_rescue:
+                    'Coastal Rescue, Rope Rescue or Mud Rescue Vehicle',
+                coresponder: 'Co-Responder Vehicle',
+                crew_carrier: 'Crew Carrier',
                 dekon_p: 'Dekon-P oder AB-Dekon-P',
                 division_chief_unit: 'ELW 2',
                 dlk_or_tm50: 'DLK 23 oder TM 50',
@@ -9202,9 +9225,14 @@ function updateAAOsTime(e) {
                 elw2_or_elw2_drone: 'ELW 2 oder ELW 2 Drohne',
                 elw3: 'ELW 3',
                 emergency_ambulance: 'NEF oder RTH',
+                emergency_welfare: 'Any Crew Welfare Vehicle',
                 energy_supply: 'NEA50 (Beliebige HiOrg)',
                 energy_supply_2: 'NEA200 (Beliebige HiOrg)',
                 fire_truck: 'Beliebiges LF oder TLF',
+                fireboat: 'Large Fireboat',
+                flood_equipment: 'Flood Rescue',
+                fly_car: 'Rapid Response Vehicle / General Practitioner',
+                foam: 'Foam Tenders or RIV',
                 foam_amount: 'Sonderl\xf6schmittelmenge',
                 foam_amount_only_foam_vehicles:
                     'Sonderl\xf6schmittelmenge - Nur Sonderl\xf6schmittelfahrzeuge',
@@ -9228,15 +9256,19 @@ function updateAAOsTime(e) {
                 gw_taucher: 'GW-Taucher',
                 gw_wasserrettung: 'GW-Wasserrettung',
                 gw_werkfeuerwehr: 'GW-Werkfeuerwehr',
+                gwl2wasser: 'Water Carrier or Major Foam Tender',
                 gwl2wasser_all: 'Beliebiges Schlauchfahrzeug',
                 gwl2wasser_only: 'Nur Schlauchwagen',
                 helicopter_bucket: 'Au\xdfenlastbeh\xe4lter (allgemein)',
+                hems: 'HEMS',
                 highway_police_patrol: 'FuStW (AP)',
                 hlf_only: 'HLF 10 oder HLF 20',
                 hlf_or_rw_and_lf: 'HLF oder RW und LF',
+                joint_response_unit: 'Joint Response Unit',
                 k9: 'DHuF\xfcKW',
                 kdow_lna: 'KdoW-LNA',
                 kdow_orgl: 'KdoW-OrgL',
+                kdow_orgl_any: 'OTL / Ambulance Officer',
                 ktw_b: 'KTW Typ B',
                 ktw_or_rtw: 'RTW oder KTW',
                 ktw_or_rtw_2: 'RTW, KTW oder ITW',
@@ -9245,6 +9277,8 @@ function updateAAOsTime(e) {
                 lift: 'Beliebiger Hubschrauber mit Winde',
                 long_distance_ambulance: 'KTW',
                 mask_service_unit: 'GW-A oder AB-Atemschutz',
+                mass_casualty_equipment:
+                    'Mass Casualty Equipment or Medical Equipment Trailer',
                 mek_mtf: 'MEK - MTF',
                 mek_zf: 'MEK - ZF',
                 mountain_atv: 'ATV',
@@ -9269,6 +9303,8 @@ function updateAAOsTime(e) {
                 police_car_or_service_group_leader: 'FuStW oder FuStW (DGL)',
                 police_horse_count: 'Beliebiger Pferdetransporter',
                 police_motorcycle: 'Polizeimotorrad',
+                police_patrol_and_prisoner_transport: 'Cell Van',
+                police_prisoner_transport: 'Cell Van',
                 polizeihubschrauber: 'Polizeihubschrauber',
                 pump: 'Schmutzwasserpumpen',
                 pump_speed: 'Pumpenleistung',
@@ -9280,12 +9316,17 @@ function updateAAOsTime(e) {
                 rescue_dogs_thw: 'Anh Hund',
                 rescue_vehicle: 'Beliebiges HLF oder RW',
                 rescue_vehicle_only: 'RW',
+                rescueboat: 'Large Rescue Boat',
                 rettungstreppe: 'Rettungstreppe',
                 rth_only: 'RTH',
                 schlauchwagen: 'Schlauchwagen oder AB-Schlauch',
+                search_and_rescue: 'SAR Units',
+                search_and_rescue_command: 'Any Control Van',
                 seg_elw: 'ELW 1 (SEG)',
                 sek_mtf: 'SEK - MTF',
                 sek_zf: 'SEK - ZF',
+                swat: 'Armed Response Vehicle',
+                swat_suv: 'Armed Response Vehicle (ARV)',
                 thw_anh_mzab: 'Anh MzAB',
                 thw_anh_mzb: 'Anh MzB',
                 thw_anh_schlb: 'Anh SchlB',
@@ -9344,6 +9385,10 @@ function updateAAOsTime(e) {
                     ' Du hast derzeit %{amount} %{alliance_event_currency}!',
                 info_bubble_text_disabled:
                     'Das Event kann nicht mehr gestartet werden, da das Oster-Event um Mitternacht endet',
+                stpatricks: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 summer: {
                     currency: 'Event-Tickets',
                     event_start_mission: 'Start Event: %{amount} Event-Ticket',
@@ -9446,6 +9491,7 @@ function updateAAOsTime(e) {
             user_not_found: 'Der Spieler wurde nicht gefunden. ',
             vehicle_payload: {
                 apply_payload: 'Ladung best\xe4tigen',
+                change_payload: 'Change Payload',
                 equipment_unavailable: 'Ausr\xfcstung nicht verf\xfcgbar',
                 hide_payload: 'Ladung verbergen',
                 show_payload: 'Ladung anzeigen',
@@ -9503,6 +9549,7 @@ function updateAAOsTime(e) {
                 ambulance_station_missions: 'Rettungswache',
                 ambulance_station_small_missions: 'Rettungswache (Kleinwache)',
                 animal_rescue_missions: 'Tierrettung',
+                bomb_disposal_missions: 'Bomb Disposal HQ',
                 building_complex: 'Geb\xe4udekomplex',
                 buildings_section: 'Wachen',
                 clinic_missions: 'Klinik',
@@ -9510,11 +9557,13 @@ function updateAAOsTime(e) {
                 coastal_rescue_missions: 'Seenotrettungswache',
                 coastal_rescue_school:
                     'Schule f\xfcr Seefahrt und Seenotrettung',
+                custody_suite: 'Custody Suite',
                 dispatch_center_missions: 'Leitstelle',
                 factory_fire_brigade_missions: 'Werkfeuerwehr',
                 fire_school_missions: 'Feuerwehrschule',
                 firehouse_missions: 'Feuerwache',
                 firehouse_small_missions: 'Feuerwache (Kleinwache)',
+                general_practitioner: 'GP Surgery',
                 highway_police: 'Autobahnpolizei',
                 highway_police_missions: 'Autobahnpolizei',
                 hospital_missions: 'Notaufnahme',
@@ -9524,6 +9573,7 @@ function updateAAOsTime(e) {
                 missions_section: 'Eins\xe4tze',
                 mountain_missions: 'Bergrettung',
                 police_copter_station_missions: 'Polizeihubschrauberstation',
+                police_depot: 'Police Depot',
                 police_horse: 'Reiterstaffeln',
                 police_school_missions: 'Polizeischule',
                 police_small_missions: 'Polizeiwache (Kleinwache)',
@@ -9536,9 +9586,13 @@ function updateAAOsTime(e) {
                 riot_police: 'Bereitschaftspolizei',
                 riot_police_missions: 'Bereitschaftspolizei',
                 staging_area_missions: 'Bereitstellungsraum',
+                technical_aid: 'Search and Rescue HQ',
+                technical_aid_missions: 'SAR',
                 technical_aid_organization: 'THW',
                 technical_aid_organization_missions: 'THW',
                 technical_aid_organization_school: 'THW Bundesschule',
+                tow_trucks: 'Recovery Centers',
+                tow_trucks_missions: 'Recovery Vehicles',
                 user_buildings: 'Meine Geb\xe4ude',
                 user_missions: 'Meine Eins\xe4tze',
                 water_rescue_heliport: 'Hubschrauberstation (Seenotrettung)',
@@ -9621,6 +9675,8 @@ function updateAAOsTime(e) {
             radio_messages: 'Funk',
             restore_map: 'Karte wiederherstellen',
             retry: 'Neuladen',
+            server_warning:
+                'Server maintenance at 11 pm. 6h downtime expected.',
             show_informations:
                 'Gr\xfcn = Die Eins\xe4tze werden in der Leiste angezeigt. Rot = Die Eins\xe4tze werden nicht angezeigt.',
             sicherheitswache: 'Geplante Eins\xe4tze',
@@ -9693,6 +9749,103 @@ function updateAAOsTime(e) {
                         },
                         welcome:
                             'Willkommen zum Leitstellenspiel! Als Disponent/in in einer Leitstelle f\xfcr Rettungs- und Sicherheitsdienste bearbeitest du Notrufe, um der Bev\xf6lkerung zu helfen und sie zu sch\xfctzen! Dazu baust du Wachen und entsendest verschiedene Fahrzeugtypen und ausgebildetes Personal auf diverse Eins\xe4tze.',
+                    },
+                    tooltip: {
+                        ambulance_station: {
+                            helpshift_id: '1714',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station',
+                            short: 'Houses vehicles need for EMS-related missions. \nExtensions can be built, which unlocks purchasing of specialized units.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        ambulance_station_small: {
+                            helpshift_id: '1715',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station',
+                            short: 'Houses vehicles for EMS-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        clinic: {
+                            helpshift_id: '1719',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-clinic',
+                            short: 'Houses vehicles need for EMS-related missions.\nPatients can be transported here, however it is less specialized than the hospital.',
+                        },
+                        dispatch_center: {
+                            helpshift_id: '1497',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=gameplay&f=what-is-the-dispatch-center-good-for',
+                            short: 'Gives you an overview of all your buildings and allows you to group them in a dispatch area.',
+                        },
+                        firehouse: {
+                            helpshift_id: '1709',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions. \nExtensions can be built, which unlocks purchasing of specialized units. ',
+                        },
+                        firehouse_small: {
+                            helpshift_id: '1710',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        fireschool: {
+                            helpshift_id: '1711',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-academy',
+                            short: 'Allows for training firefighters to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        hazard_response_ems: {
+                            helpshift_id: '1736',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hart-base',
+                            short: 'Houses specialized EMS units that respond to Hazard-related missions. \nPersonell needs to be trained in order to operate these specialized units.',
+                        },
+                        home_response_location: {
+                            helpshift_id: '1665',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-home-response-location-hrl-uk-game-version',
+                            short: 'This building houses rescue workers which are on call.',
+                        },
+                        hospital: {
+                            helpshift_id: '1718',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hospital',
+                            short: 'For more severe conditions, patients can be transported here. \nAdditional credits can be earned with patients treated.',
+                        },
+                        police_copter_station: {
+                            helpshift_id: '1731',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-helicopter-station',
+                            short: 'Houses aircrafts for police-related missions.\nA helicopter needs to be purchased separately. ',
+                        },
+                        police_depot: {
+                            helpshift_id: '1741',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version',
+                            short: 'Houses specialist police units that are often stored in large police depots. \nYou can only build one of these per 50 police buildings. Prison cells are available in this building.',
+                        },
+                        police_school: {
+                            helpshift_id: '1724',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-academy',
+                            short: 'Allows for training police officers to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        police_small: {
+                            helpshift_id: '1723',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-police-station',
+                            short: 'Houses vehicles needed for police-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        police_station: {
+                            helpshift_id: '1722',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-station',
+                            short: 'Houses vehicles needed for police-related missions. \nExtensions can be built, which unlocks purchasing of specialized units ',
+                        },
+                        prison: {
+                            helpshift_id: '1734',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-prison',
+                            short: 'Prisoners can be transported here. \nA Prison can only be built with alliance funds.',
+                        },
+                        rescue_copter_station: {
+                            helpshift_id: '1720',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-helicopter-station',
+                            short: 'Houses helicopters for treatment of patients with very serious injuries. \nA helicopter needs to be purchased separately. ',
+                        },
+                        rescue_school: {
+                            helpshift_id: '1716',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-rescue-academy',
+                            short: 'Allows for training EMS personnel to perform advanced treatments and using specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        staging_area: {
+                            helpshift_id: '1732',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-staging-area',
+                            short: 'The staging area can be built for free and will remain for 24 hours. \nDuring this time, units can be temporarily stationed here and dispatched to a mission.',
+                        },
                     },
                 },
                 mission: {
@@ -9958,6 +10111,7 @@ function updateAAOsTime(e) {
                 saved_text:
                     'Your Alarm and Response Regulation has been prepared for export. Via the link another player can import the Alarm and Response Regulation. If you change your Alarm and Response Regualtion in the meantime, this change will automatically be applied in the export.',
             },
+            flood_equipment: 'Flood Rescue Units',
             hotkey_hint:
                 'Choose a hotkey for this vehicle selection. Press at your window mission: ALT + your hotkey (or at Firefox: ALT + SHIFT + your hotkey or at mac os: ctrl + alt + your hotkey) to choose your vehicle selection.',
             intervention_order: 'Edit Alarm and Response Regulations',
@@ -9993,6 +10147,14 @@ function updateAAOsTime(e) {
                 arff: 'ARFF (Airport Fire Truck)',
                 battalion_chief_unit: 'Battalion Chief unit',
                 bike_police: 'DB-Bike',
+                bomb_disposal: 'EOD Response Vehicles',
+                bomb_disposal_command: 'EOD Commanders',
+                bomb_disposal_crew: 'EOD Response Vehicles',
+                bomb_disposal_diver_crew: 'Marine EOD Response Vehicles',
+                bomb_disposal_diver_equipment: 'Marine EOD Equipment Vans',
+                bomb_disposal_equipment: 'EOD Medium Equipment Vans',
+                bomb_disposal_equipment_2: 'EOD Heavy Equipment Vehicles',
+                bomb_disposal_heavy_equipment: 'EOD Heavy Equipment Vehicles',
                 boot: 'Light boats (General)',
                 brush_air_command: 'Wildland Lead Planes',
                 brush_truck: 'Wildland fire engine',
@@ -10003,6 +10165,7 @@ function updateAAOsTime(e) {
                 brush_truck_5: 'Type 6 engine',
                 brush_vehicle: 'Wildland fire vehicle',
                 car_carrier: 'Tow Trucks',
+                car_carrier_large: 'Any HGV Recovery Vehicle',
                 care_service_equipment: 'Field Kitchen',
                 coastal_boat: 'Coastal Boat',
                 coastal_guard_boat: 'Coastal Guard Boat',
@@ -10010,6 +10173,7 @@ function updateAAOsTime(e) {
                 coastal_prisoner_bus: 'Coast Guard Prisoner Bus',
                 coastal_rescue: 'Coastal Rescue Vehicles',
                 commerce_police: 'Commerce Police Car',
+                coresponder: 'Co-Responder Vehicle',
                 crew_carrier: 'Crew Carrier',
                 crew_carrier_or_fire_engine: 'Crew Carrier or Fire Engine',
                 damage_control: 'Damage Control Wagon',
@@ -10020,6 +10184,7 @@ function updateAAOsTime(e) {
                 drone: 'Any drone unit',
                 elw1_or_elw2:
                     'Battalion Chief Unit, Mobile Command Vehicle or Mobile Command-Module',
+                elw2_or_ab_elw: 'ICCU / ACU',
                 elw3: 'Wildland MCCs',
                 elw_police: 'Police MCV',
                 emergency_ambulance: 'Emergency ambulance or Helicopter',
@@ -10073,9 +10238,14 @@ function updateAAOsTime(e) {
                     rescue_dogs:
                         'The ARR selects vehicles until it has the entered number of rescue dogs or more.',
                 },
+                hlf_only: 'Rescue Pump',
+                hlf_or_rw_and_lf:
+                    'Rescue Pump or Rescue Support Unit and Fire engine',
                 hose_trucks: 'Hose Truck',
+                joint_response_unit: 'Joint Response Unit',
                 k9: 'K-9 Unit',
                 kdow_orgl: 'EMS Chief',
+                kdow_orgl_any: 'OTL / Ambulance Officer',
                 ktw_or_rtw_2: 'patient transport or ambulance',
                 large_coastal_boat: 'Large Coastal Boat',
                 lebefkw: 'Leichter Befehlskraftwagen (leBefKw)',
@@ -10106,12 +10276,15 @@ function updateAAOsTime(e) {
                 police_horse: 'Mounted Police',
                 police_horse_count: 'Police Horses',
                 police_motorcycle: 'Police Motorcycle',
+                police_patrol_and_prisoner_transport: 'Cell Van',
+                police_prisoner_transport: 'Cell Van',
                 police_spikes: 'Spike Strap Equipment',
                 polizeihubschrauber: 'Police helicopter',
                 pump: 'Engine-Pumps',
                 pump_speed: 'Pump Capacity',
                 pump_speed_pump_only: 'Pump Capacity - Only Pumps',
                 quint_or_dlk_and_lf: 'Quint or Platform Truck and Fire Engine',
+                rescue_dogs: 'Rescue Dogs',
                 rescue_vehicle: 'Any Heavy Rescue unit',
                 rescue_vehicle_only: 'Heavy Rescue',
                 rescueboat: 'Large Rescue Boat',
@@ -10120,6 +10293,7 @@ function updateAAOsTime(e) {
                 rth_only: 'Helicopter',
                 schlauchwagen: 'Water Tanker or Foam Tender',
                 search_and_rescue: 'SAR Equipments',
+                search_and_rescue_command: 'Any Control Van',
                 sheriff_unit: 'Police Supervisor / Sheriff',
                 smoke_jumper: 'Smoke Jumper Planes',
                 swat: 'SWAT',
@@ -10345,17 +10519,20 @@ function updateAAOsTime(e) {
                 ambulance_station_missions: 'Ambulance Station',
                 ambulance_station_small_missions:
                     'Ambulance station (Small station)',
+                bomb_disposal_missions: 'Bomb Disposal HQ',
                 building_complex: 'Building Complex',
                 buildings_section: 'Stations',
                 clinic_missions: 'Clinic',
                 coastal_rescue: 'Coastal Rescue',
                 coastal_rescue_missions: 'Coastal Rescue',
+                custody_suite: 'Custody Suite',
                 dispatch_center_missions: 'Dispatch Center',
                 factory_fire_brigade_missions: 'Factory Fire Brigade',
                 federal_police_missions: 'Federal Police Station',
                 fire_school_missions: 'Fire academy',
                 firehouse_missions: 'Fire Station',
                 firehouse_small_missions: 'Fire Station (Small)',
+                general_practitioner: 'GP Surgery',
                 hospital_missions: 'Hospital',
                 map_filters: 'Map filters list',
                 mission_positions: 'Points of Interest (POIs)',
@@ -10605,6 +10782,16 @@ function updateAAOsTime(e) {
                             link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-academy',
                             short: 'Allows for training firefighters to operate specialized vehicles. Specialized vehicles are occasionally needed in missions. ',
                         },
+                        hazard_response_ems: {
+                            helpshift_id: '1736',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hart-base',
+                            short: 'Houses specialized EMS units that respond to Hazard-related missions. \nPersonell needs to be trained in order to operate these specialized units.',
+                        },
+                        home_response_location: {
+                            helpshift_id: '1665',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-home-response-location-hrl-uk-game-version',
+                            short: 'This building houses rescue workers which are on call.',
+                        },
                         hospital: {
                             helpshift_id: '1718',
                             link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hospital',
@@ -10614,6 +10801,11 @@ function updateAAOsTime(e) {
                             helpshift_id: '1731',
                             link: 'https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1731-what-is-a-police-helicopter-station/?p=all&s=buildings&f=what-is-a-police-station',
                             short: 'Houses police air wing for police-related missions. The police air wing does not come with the building.',
+                        },
+                        police_depot: {
+                            helpshift_id: '1741',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version',
+                            short: 'Houses specialist police units that are often stored in large police depots. \nYou can only build one of these per 50 police buildings. Prison cells are available in this building.',
                         },
                         police_school: {
                             helpshift_id: '1724',
@@ -11712,6 +11904,7 @@ function updateAAOsTime(e) {
                 technical_aid: 'Signalisatie',
                 tow_trucks: 'Vrachtwagens',
                 traffic_police: 'Dienst Infra',
+                water_rescue: 'Technical Rescue and SAR',
             },
             category: 'Categorie',
             colour: 'Kleur',
@@ -11737,6 +11930,7 @@ function updateAAOsTime(e) {
                 saved_text:
                     'Jouw A&U worden voor export voorbereid. Met de link kunnen andere spelers de A&U importeren. Wanneer je tussentijds je eigen A&U regels veranderd, zullen deze veranderingen automatisch in de export worden meegenomen.',
             },
+            flood_equipment: 'Flood Rescue Units',
             hazard_response_disinfection_large: 'DB-GO, TS-GO of GOH-DC',
             hotkey_hint:
                 'Kies een letter voor deze inzet. In het alarmeringsscherm kun je dan met ALT + Letter naar keuze snel een keuze maken. (In Firefox: ALT + SHIFT + Letter naar keuze, Op Mac OS: CTRL + ALT + Letter)',
@@ -11758,6 +11952,8 @@ function updateAAOsTime(e) {
             text_color: 'Tekstkleur',
             vehicles: {
                 ab_atemschutz_only: 'Adembeschermingshaakarmbak',
+                ab_einsatzleitung_only: 'Command-Module',
+                ab_gefahrgut_only: 'HazMat-Module',
                 ab_oel_only: 'Haakarmbak Milieu',
                 ab_ruest: 'Haakarmbak Hulpverlening',
                 ab_ruest_rw: 'Hulpverleningsvoertuig of HVH',
@@ -11775,6 +11971,13 @@ function updateAAOsTime(e) {
                 battalion_chief_unit: 'Officier van Dienst Brandweer',
                 bike_police: 'DB-Bike',
                 bomb_disposal: 'EOD Eenheden',
+                bomb_disposal_command: 'EOD Commanders',
+                bomb_disposal_crew: 'EOD Response Vehicles',
+                bomb_disposal_diver_crew: 'Marine EOD Response Vehicles',
+                bomb_disposal_diver_equipment: 'Marine EOD Equipment Vans',
+                bomb_disposal_equipment: 'EOD Medium Equipment Vans',
+                bomb_disposal_equipment_2: 'EOD Heavy Equipment Vehicles',
+                bomb_disposal_heavy_equipment: 'EOD Heavy Equipment Vehicles',
                 bomb_disposal_robot: 'RC-Explosievenrobot',
                 boot: 'WOA of BA-RB',
                 brush_truck: 'Terreinvaardige Tankautospuit',
@@ -11786,12 +11989,21 @@ function updateAAOsTime(e) {
                 clean_service: 'Hygi\xebnemedewerker',
                 clean_service_crew: 'DB-AH',
                 coastal_boat: 'RB-K of RB-G',
+                coastal_helicopter: 'Coastguard Rescue Helicopter',
+                coastal_rescue:
+                    'Coastal Rescue, Rope Rescue or Mud Rescue Vehicle',
+                coresponder: 'Co-Responder Vehicle',
+                crew_carrier: 'Crew Carrier',
                 division_chief_unit: 'Hoofdofficier van Dienst - Brandweer',
+                drone: 'Drone Equipment',
                 drone_fire: 'DB-TDV',
                 drone_police: 'DB-DRONE',
+                elw1_or_elw2: 'Fire Officer or ICCU',
+                elw2_or_ab_elw: 'ICCU / ACU',
                 elw3: 'Commandovoertuig of haakarmbak',
                 elw_airport: 'Airport Fire Officer / On Scene Commander',
                 emergency_ambulance: 'MMT-Auto of Lifeliner',
+                emergency_welfare: 'Any Crew Welfare Vehicle',
                 fire_breathing_protection: 'RC-Adembescherming',
                 fire_equipment_carrier: 'DB-LOG',
                 fire_equipment_carrier_2: 'VW-LOG',
@@ -11799,6 +12011,8 @@ function updateAAOsTime(e) {
                 fire_truck: 'Tankautospuit',
                 fire_water_carrier: 'RC-Slangen',
                 fire_water_carrier_2: 'RC-Slangen-Klein',
+                fireboat: 'Large Fireboat',
+                flood_equipment: 'Flood Rescue',
                 fly_car: 'Rapid Responder',
                 fly_car_any: 'OVDG-RR of Rapid Responder',
                 foam: 'Schuimblusvoertuigen (SB, SBH of SBA)',
@@ -11807,6 +12021,8 @@ function updateAAOsTime(e) {
                 fustw_or_police_motorcycle:
                     'Politie Noodhulp of Dienstmotor Politie',
                 gefkw: 'DB-AV',
+                gkw: 'Utility Truck',
+                grtw: 'Mass Casualty Unit',
                 grukw: 'ME Flexbus',
                 gw_atemschutz_only: 'Adembeschermingsvoertuig',
                 gw_gefahrgut: 'Adviseur Gevaarlijke Stoffen',
@@ -11815,26 +12031,37 @@ function updateAAOsTime(e) {
                 gw_oel_only: 'Milieu wagen',
                 gw_taucher: 'Waterongevallenvoertuig',
                 gw_wasserrettung: 'Strandvoertuig (Quad, DAT-RB of KHV)',
+                gwl2wasser: 'Water Carrier or Major Foam Tender',
                 gwl2wasser_only: 'Alleen Slangenwagen / Watertankwagen',
                 hazard_response_disinfection: 'DB-BO, TS-BO of BOH-DC',
                 hazard_response_material:
                     'GSH, DB-GS of RC-Gevaarlijke Stoffen',
                 hazard_response_suits: 'GPH, DB-GP of RC-Gaspakken',
+                hems: 'HEMS',
                 hint: {
                     water_amount:
                         'In te voeren in Liters. Voorbeeld: Als je hier 4500 invoert zullen er voertuigen geselecteerd worden tot de gekozen waarde van 4500L is bereikt.',
                 },
+                hlf_only: 'Rescue Pump',
+                hlf_or_rw_and_lf:
+                    'Rescue Pump or Rescue Support Unit and Fire engine',
                 hondengeleider: 'Hondengeleider',
                 industrial_response_engine: 'SB-BA, SB-IB of AS',
                 industrial_response_fire_engine: 'Industri\xeble Tankautospuit',
                 industrial_services: 'Industri\xeble Brandbestrijding & IBGS',
+                joint_response_unit: 'Joint Response Unit',
+                k9: 'Any Dog Carrier',
                 kdow_orgl: 'Officier van Dienst Geneeskunde',
                 kdow_orgl_any: 'OVD-G of OVDG-RR',
                 lebefkw: 'ME Commandovoertuig',
+                lf_only: 'Water Ladder or L4P',
                 long_distance_ambulance: 'Zorgambulance',
                 mask_service_unit: 'Adembeschermingsvoertuig of haakarmbak',
+                mass_casualty_equipment:
+                    'Mass Casualty Equipment or Medical Equipment Trailer',
                 military_police: 'KMAR Eenheden',
                 mtw: 'Dienstauto / Dienstbus brandweer',
+                mzb: 'Multi-Purpose Boat',
                 nef_only: 'MMT-Auto',
                 oil_unit: 'Milieu wagen of haakarmbak milieu',
                 ovd_p: 'Officier van Dienst - Politie',
@@ -11847,6 +12074,8 @@ function updateAAOsTime(e) {
                 police_car_3: 'NH-O',
                 police_horse: 'VW-BB of BB-A',
                 police_motorcycle: 'Dienstmotor Politie',
+                police_patrol_and_prisoner_transport: 'Cell Van',
+                police_prisoner_transport: 'Cell Van',
                 polizeihubschrauber: 'Politiehelikopter',
                 pump: 'Pompvoertuigen',
                 pump_speed: 'Pomp Capaciteit',
@@ -11856,13 +12085,23 @@ function updateAAOsTime(e) {
                 railway_fire: 'Incidentenbestrijding spoor',
                 railway_fire_engine: 'Incidentenbestrijder',
                 railway_fire_equipment_container: 'Herspoorunit',
+                rescue_dogs: 'Rescue Dogs',
                 rescue_vehicle: 'HV of TS-HV',
                 rescue_vehicle_only: 'Hulpverleningsvoertuig',
+                rescueboat: 'Large Rescue Boat',
                 rth_only: 'Lifeliner',
                 schlauchwagen:
                     'Slangenwagen / Watertankwagen of Watertransportsysteem-haakarmbak',
                 search_and_rescue: 'Dienstvoertuig USAR',
+                search_and_rescue_command: 'Any Control Van',
                 spokesman: 'Voorlichters',
+                swat: 'Armed Response Vehicle',
+                swat_suv: 'Armed Response Vehicle (ARV)',
+                thw_mtw:
+                    'Mannschaftstransportwagen Technischer Zug (MTW-TZ - THW)',
+                thw_mzkw: 'Mehrzweckkraftwagen (MzKW)',
+                thw_tauchkraftwagen: 'Dive Team',
+                tlf_only: 'Tanker Truck',
                 traffic_car: 'Signalisatie Voertuig (DA-RWS, DA-SIG of DM-RWS)',
                 traffic_patrol: 'SIV-P of DM-P',
                 turntable_ladder: 'Redvoertuig',
@@ -11899,6 +12138,10 @@ function updateAAOsTime(e) {
                     ' Je hebt momenteel %{amount} %{alliance_event_currency}!',
                 info_bubble_text_disabled:
                     'Dit event kan niet meer gestart worden omdat de eindtijd van het Paasevenement minder dan 3 uur weg is.',
+                stpatricks: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 summer: {
                     currency: 'Event Tickets',
                     event_start_mission: 'Begin Event: %{amount} Event Ticket',
@@ -12056,17 +12299,20 @@ function updateAAOsTime(e) {
                 alliance_missions: 'Gedeeld door team',
                 ambulance_station_missions: 'Ambulance, standplaats',
                 ambulance_station_small_missions: 'Ambulance, VWS-post',
+                bomb_disposal_missions: 'Bomb Disposal HQ',
                 building_complex: 'Gebouwencomplex',
                 buildings_section: 'Posten',
                 care_service_missions: 'Verzorgingssysteem',
                 clinic_missions: 'Clinic',
                 coastal_rescue: 'Kustwacht',
                 coastal_rescue_missions: 'Kustwacht',
+                custody_suite: 'Custody Suite',
                 dispatch_center_missions: 'Meldkamer',
                 fire_aviation: 'Militaire hangars',
                 fire_school_missions: 'Brandweer, Academie',
                 firehouse_missions: 'Brandweer, Kazerne',
                 firehouse_small_missions: 'Brandweer, Kazerne (klein)',
+                general_practitioner: 'GP Surgery',
                 hazard_response_fire_missions: 'IBGS',
                 hospital_missions: 'Spoedeisende hulp',
                 industrial_response_fire_missions:
@@ -12079,6 +12325,7 @@ function updateAAOsTime(e) {
                 mission_positions_section: "POI's",
                 missions_section: 'Incidenten',
                 police_copter_station_missions: 'Politiehelikopter standplaats',
+                police_depot: 'Police Depot',
                 police_school_missions: 'Politie, Academie',
                 police_small_missions: 'Politie, Opkomstbureau (klein)',
                 police_special_forces: 'Police special forces',
@@ -12095,6 +12342,7 @@ function updateAAOsTime(e) {
                 technical_aid: 'Steunpunt Rijkswaterstaat',
                 technical_aid_missions: 'RWS / Signalisatie Inzetten',
                 technical_aid_organization: 'THW',
+                technical_aid_organization_school: 'THW Bundesschule',
                 tow_trucks: 'Berger',
                 tow_trucks_missions: 'Berger',
                 user_buildings: 'Mijn gebouwen',
@@ -12140,6 +12388,13 @@ function updateAAOsTime(e) {
                     'Inzetten die zijn gestart, maar niet voltooid',
                 unattended: 'Onbeheerde inzetten',
                 unattended_description: 'Onverwerkte inzetten',
+            },
+            mission_range: {
+                premium_alert: {
+                    description:
+                        'You need to have a premium account for this feature.',
+                    title: 'Mission generation range could not be selected.',
+                },
             },
             mission_speed: {
                 premium_alert: {
@@ -12241,6 +12496,103 @@ function updateAAOsTime(e) {
                         },
                         welcome:
                             'Welkom bij Meldkamerspel! In een meldkamer voor hulpdiensten behandel je noodoproepen om de burgers te helpen en te beschermen. Hiervoor bouw je posten en stuur je verschillende soorten voertuigen en opgeleid personeel naar verschillende inzetten.',
+                    },
+                    tooltip: {
+                        ambulance_station: {
+                            helpshift_id: '1714',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station',
+                            short: 'Houses vehicles need for EMS-related missions. \nExtensions can be built, which unlocks purchasing of specialized units.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        ambulance_station_small: {
+                            helpshift_id: '1715',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station',
+                            short: 'Houses vehicles for EMS-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        clinic: {
+                            helpshift_id: '1719',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-clinic',
+                            short: 'Houses vehicles need for EMS-related missions.\nPatients can be transported here, however it is less specialized than the hospital.',
+                        },
+                        dispatch_center: {
+                            helpshift_id: '1497',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=gameplay&f=what-is-the-dispatch-center-good-for',
+                            short: 'Gives you an overview of all your buildings and allows you to group them in a dispatch area.',
+                        },
+                        firehouse: {
+                            helpshift_id: '1709',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions. \nExtensions can be built, which unlocks purchasing of specialized units. ',
+                        },
+                        firehouse_small: {
+                            helpshift_id: '1710',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        fireschool: {
+                            helpshift_id: '1711',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-academy',
+                            short: 'Allows for training firefighters to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        hazard_response_ems: {
+                            helpshift_id: '1736',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hart-base',
+                            short: 'Houses specialized EMS units that respond to Hazard-related missions. \nPersonell needs to be trained in order to operate these specialized units.',
+                        },
+                        home_response_location: {
+                            helpshift_id: '1665',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-home-response-location-hrl-uk-game-version',
+                            short: 'This building houses rescue workers which are on call.',
+                        },
+                        hospital: {
+                            helpshift_id: '1718',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hospital',
+                            short: 'For more severe conditions, patients can be transported here. \nAdditional credits can be earned with patients treated.',
+                        },
+                        police_copter_station: {
+                            helpshift_id: '1731',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-helicopter-station',
+                            short: 'Houses aircrafts for police-related missions.\nA helicopter needs to be purchased separately. ',
+                        },
+                        police_depot: {
+                            helpshift_id: '1741',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version',
+                            short: 'Houses specialist police units that are often stored in large police depots. \nYou can only build one of these per 50 police buildings. Prison cells are available in this building.',
+                        },
+                        police_school: {
+                            helpshift_id: '1724',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-academy',
+                            short: 'Allows for training police officers to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        police_small: {
+                            helpshift_id: '1723',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-police-station',
+                            short: 'Houses vehicles needed for police-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        police_station: {
+                            helpshift_id: '1722',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-station',
+                            short: 'Houses vehicles needed for police-related missions. \nExtensions can be built, which unlocks purchasing of specialized units ',
+                        },
+                        prison: {
+                            helpshift_id: '1734',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-prison',
+                            short: 'Prisoners can be transported here. \nA Prison can only be built with alliance funds.',
+                        },
+                        rescue_copter_station: {
+                            helpshift_id: '1720',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-helicopter-station',
+                            short: 'Houses helicopters for treatment of patients with very serious injuries. \nA helicopter needs to be purchased separately. ',
+                        },
+                        rescue_school: {
+                            helpshift_id: '1716',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-rescue-academy',
+                            short: 'Allows for training EMS personnel to perform advanced treatments and using specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        staging_area: {
+                            helpshift_id: '1732',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-staging-area',
+                            short: 'The staging area can be built for free and will remain for 24 hours. \nDuring this time, units can be temporarily stationed here and dispatched to a mission.',
+                        },
                     },
                 },
                 mission: {
@@ -12497,6 +12849,7 @@ function updateAAOsTime(e) {
                 saved_text:
                     'Las normas de alerta y respuesta est\xe1n preparadas para ser exportadas. Mediante el enlace, otro jugador podr\xe1 importarlas. Mientras tanto, si cambias alguna norma, el cambio se aplicar\xe1 autom\xe1ticamente a lo exportado.',
             },
+            flood_equipment: 'Flood Rescue Units',
             hotkey_hint:
                 'Elije una tecla para esta selecci\xf3n de veh\xedculos. En la ventana de la misi\xf3n, pulsa ALT + tu tecla (ALT + SHIFT + tu tecla en Firefox o CTRL + ALT + tu tecla en MacOS) para seleccionarla.',
             intervention_order: 'Editar normas de alerta y respuesta',
@@ -12526,23 +12879,41 @@ function updateAAOsTime(e) {
                 abl2wasser_only: 'M\xf3dulo de mangueras',
                 air_tanker: 'Hidroavi\xf3n',
                 ambulance: 'Ambulancia SVB',
+                any_traffic_car: 'Any Traffic Car',
                 arff: 'ARFF',
                 battalion_chief_unit: 'Unidad de Mando y Comunicaciones',
+                bomb_disposal: 'EOD Response Vehicles',
+                bomb_disposal_command: 'EOD Commanders',
+                bomb_disposal_crew: 'EOD Response Vehicles',
+                bomb_disposal_diver_crew: 'Marine EOD Response Vehicles',
+                bomb_disposal_diver_equipment: 'Marine EOD Equipment Vans',
+                bomb_disposal_equipment: 'EOD Medium Equipment Vans',
+                bomb_disposal_equipment_2: 'EOD Heavy Equipment Vehicles',
+                bomb_disposal_heavy_equipment: 'EOD Heavy Equipment Vehicles',
                 boot: 'Botes (general)',
                 car_carrier: 'Cada veh\xedculo de remolque',
                 car_carrier_large: 'Cualquier cami\xf3n rotatorio',
+                coastal_helicopter: 'Coastguard Rescue Helicopter',
+                coastal_rescue:
+                    'Coastal Rescue, Rope Rescue or Mud Rescue Vehicle',
+                coresponder: 'Co-Responder Vehicle',
+                crew_carrier: 'Crew Carrier',
                 division_chief_unit: 'Unidad de mando',
+                drone: 'Drone Equipment',
                 elw1_or_elw2:
                     'Unidad de Mando y Comunicaciones, unidad de mando o m\xf3dulo de mando m\xf3vil ',
                 elw2_or_ab_elw:
                     'Bomba de Rescate o Unidad de Apoyo de Rescate y Cami\xf3n de Bomberos',
                 emergency_ambulance: 'Ambulancia o Helic\xf3ptero',
+                emergency_welfare: 'Any Crew Welfare Vehicle',
                 fire_helicopter: 'Helic\xf3ptero con Bambi',
                 fire_helicopter_2: 'Brigadas Helic\xf3ptero',
                 fire_truck: 'Camiones de bomberos',
                 fireboat: 'Barco de bomberos grande',
+                flood_equipment: 'Flood Rescue',
                 fly_car: 'VIR',
                 fly_car_any: 'VIR / M\xe9dico de cabecera',
+                foam: 'Foam Tenders or RIV',
                 foam_amount: 'Litros de espuma',
                 fustw_or_police_motorcycle:
                     'Coche patrulla o Moto de Polic\xeda',
@@ -12552,12 +12923,14 @@ function updateAAOsTime(e) {
                 gw_hoehenrettung: 'Cami\xf3n de rescate en altura',
                 gw_messtechnik: 'Cami\xf3n de medici\xf3n',
                 gw_wasserrettung: 'Retenci\xf3n de agua',
+                gwl2wasser: 'Water Carrier or Major Foam Tender',
                 gwl2wasser_only: 'Veh\xedculo con manguera',
                 helicopter_bucket: 'Cesta Bambi',
                 hems: 'HEMS',
                 hlf_only: 'Veh\xedculo de rescate',
                 hlf_or_rw_and_lf:
                     'Veh\xedculo de rescate o veh\xedculo de rescate pesado y cami\xf3n de bomberos',
+                joint_response_unit: 'Joint Response Unit',
                 k9: 'Unidad Canina',
                 kdow_orgl: 'Unidad log\xedstica de AMV',
                 kdow_orgl_any: 'Unidad log\xedstica de AMV',
@@ -12566,21 +12939,28 @@ function updateAAOsTime(e) {
                 lf_only: 'Camiones de bomberos',
                 long_distance_ambulance: 'Ambulancia Convencional',
                 mask_service_unit: 'Unidad a\xe9rea',
+                mass_casualty_equipment:
+                    'Mass Casualty Equipment or Medical Equipment Trailer',
                 mtw: 'Cami\xf3n de transporte',
                 mzb: 'Barco multiusos',
                 nef_only: 'Ambulancia',
                 oil_unit: 'Cami\xf3n para fuegos de aceite',
                 police_car: 'Coche patrulla',
                 police_motorcycle: 'Moto de Polic\xeda',
+                police_patrol_and_prisoner_transport: 'Cell Van',
+                police_prisoner_transport: 'Cell Van',
                 polizeihubschrauber: 'Helic\xf3ptero de Polic\xeda',
                 pump: 'Camiones bomba y remolques',
                 pump_speed: 'Capacidad de bombeo',
                 pump_speed_pump_only: 'Capacidad de bombeo - S\xf3lo bombas',
+                rescue_dogs: 'Rescue Dogs',
                 rescue_vehicle: 'Furgones de \xdatiles Varios',
                 rescue_vehicle_only: 'Furg\xf3n de \xdatiles Varios',
                 rescueboat: 'Barco de rescate grande',
                 rth_only: 'HEMS',
                 schlauchwagen: 'Cami\xf3n cisterna',
+                search_and_rescue: 'SAR Units',
+                search_and_rescue_command: 'Any Control Van',
                 swat: 'Fuerzas especiales (GEO)',
                 swat_armored_vehicle: 'Unidad GEO',
                 swat_suv: 'Unidad GOES',
@@ -12629,6 +13009,10 @@ function updateAAOsTime(e) {
                     ' \xa1Actualmente tiene %{amount} %{alliance_event_currency}!',
                 info_bubble_text_disabled:
                     'El evento ya no puede iniciarse porque faltan menos de 3 horas para que finalice la Semana Santa.',
+                stpatricks: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 summer: {
                     currency: 'Entradas',
                     event_start_mission:
@@ -12793,16 +13177,19 @@ function updateAAOsTime(e) {
                 ambulance_station_missions: 'Parque de ambulancias',
                 ambulance_station_small_missions:
                     'Parque de ambulancias (peque\xf1o)',
+                bomb_disposal_missions: 'Bomb Disposal HQ',
                 building_complex: 'Complejo de edificios',
                 buildings_section: 'Instalaciones',
                 clinic_missions: 'Cl\xednica',
                 coastal_rescue: 'Rescate costero',
                 coastal_rescue_missions: 'Rescate costero',
+                custody_suite: 'Custody Suite',
                 dispatch_center_missions: 'Centralita',
                 fire_aviation_station: 'Base A\xe9rea de Bomberos',
                 fire_school_missions: 'Academia de bomberos',
                 firehouse_missions: 'Parque de bomberos',
                 firehouse_small_missions: 'Parque de bomberos (peque\xf1o)',
+                general_practitioner: 'GP Surgery',
                 hospital_missions: 'Hospital',
                 map_filters: 'Lista de filtros de mapa',
                 mission_positions: 'Puntos de inter\xe9s (PI)',
@@ -12811,6 +13198,7 @@ function updateAAOsTime(e) {
                 mountain_missions: 'Rescate de monta\xf1a',
                 mountain_rescue: 'Estaci\xf3n de GREIM',
                 police_copter_station_missions: 'Helipuerto Policial',
+                police_depot: 'Police Depot',
                 police_school_missions: 'Academia de Polic\xeda',
                 police_small_missions:
                     'Comisar\xeda de polic\xeda (peque\xf1o)',
@@ -12823,6 +13211,8 @@ function updateAAOsTime(e) {
                 riot_police: 'Polic\xeda antidisturbios',
                 riot_police_missions: 'Polic\xeda antidisturbios',
                 staging_area_missions: 'Zona de preparaci\xf3n',
+                technical_aid: 'Search and Rescue HQ',
+                technical_aid_missions: 'SAR',
                 technical_aid_organization: 'SAT',
                 technical_aid_organization_school: 'Academia SAT',
                 tow_trucks: 'Estaciones de remolque',
@@ -12870,6 +13260,13 @@ function updateAAOsTime(e) {
                 started_description: 'Misiones iniciadas pero no completadas',
                 unattended: 'Misiones desatendidas',
                 unattended_description: 'Misiones desatendidas',
+            },
+            mission_range: {
+                premium_alert: {
+                    description:
+                        'You need to have a premium account for this feature.',
+                    title: 'Mission generation range could not be selected.',
+                },
             },
             mission_speed: {
                 premium_alert: {
@@ -12922,6 +13319,22 @@ function updateAAOsTime(e) {
                 strip_insignificant_zeros: !1,
             },
         },
+        policechief: {
+            tutorial: {
+                beginner: {
+                    building: {
+                        browser: {
+                            welcome:
+                                'Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions.',
+                        },
+                        mobile: {
+                            welcome:
+                                'Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions.',
+                        },
+                    },
+                },
+            },
+        },
         tutorial: {
             beginner: {
                 building: {
@@ -12956,6 +13369,103 @@ function updateAAOsTime(e) {
                         },
                         welcome:
                             '\xa1Bienvenidos a Centro de Mando! Al trabajar en un centro de despacho de servicios de emergencia, usted atiende llamadas de emergencia para ayudar y proteger a la ciudadan\xeda. Para ello, construyes edificios y env\xedas varios tipos de veh\xedculos y personal capacitado a una variedad de misiones.',
+                    },
+                    tooltip: {
+                        ambulance_station: {
+                            helpshift_id: '1714',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station',
+                            short: 'Houses vehicles need for EMS-related missions. \nExtensions can be built, which unlocks purchasing of specialized units.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        ambulance_station_small: {
+                            helpshift_id: '1715',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station',
+                            short: 'Houses vehicles for EMS-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        clinic: {
+                            helpshift_id: '1719',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-clinic',
+                            short: 'Houses vehicles need for EMS-related missions.\nPatients can be transported here, however it is less specialized than the hospital.',
+                        },
+                        dispatch_center: {
+                            helpshift_id: '1497',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=gameplay&f=what-is-the-dispatch-center-good-for',
+                            short: 'Gives you an overview of all your buildings and allows you to group them in a dispatch area.',
+                        },
+                        firehouse: {
+                            helpshift_id: '1709',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions. \nExtensions can be built, which unlocks purchasing of specialized units. ',
+                        },
+                        firehouse_small: {
+                            helpshift_id: '1710',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        fireschool: {
+                            helpshift_id: '1711',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-academy',
+                            short: 'Allows for training firefighters to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        hazard_response_ems: {
+                            helpshift_id: '1736',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hart-base',
+                            short: 'Houses specialized EMS units that respond to Hazard-related missions. \nPersonell needs to be trained in order to operate these specialized units.',
+                        },
+                        home_response_location: {
+                            helpshift_id: '1665',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-home-response-location-hrl-uk-game-version',
+                            short: 'This building houses rescue workers which are on call.',
+                        },
+                        hospital: {
+                            helpshift_id: '1718',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hospital',
+                            short: 'For more severe conditions, patients can be transported here. \nAdditional credits can be earned with patients treated.',
+                        },
+                        police_copter_station: {
+                            helpshift_id: '1731',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-helicopter-station',
+                            short: 'Houses aircrafts for police-related missions.\nA helicopter needs to be purchased separately. ',
+                        },
+                        police_depot: {
+                            helpshift_id: '1741',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version',
+                            short: 'Houses specialist police units that are often stored in large police depots. \nYou can only build one of these per 50 police buildings. Prison cells are available in this building.',
+                        },
+                        police_school: {
+                            helpshift_id: '1724',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-academy',
+                            short: 'Allows for training police officers to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        police_small: {
+                            helpshift_id: '1723',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-police-station',
+                            short: 'Houses vehicles needed for police-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        police_station: {
+                            helpshift_id: '1722',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-station',
+                            short: 'Houses vehicles needed for police-related missions. \nExtensions can be built, which unlocks purchasing of specialized units ',
+                        },
+                        prison: {
+                            helpshift_id: '1734',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-prison',
+                            short: 'Prisoners can be transported here. \nA Prison can only be built with alliance funds.',
+                        },
+                        rescue_copter_station: {
+                            helpshift_id: '1720',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-helicopter-station',
+                            short: 'Houses helicopters for treatment of patients with very serious injuries. \nA helicopter needs to be purchased separately. ',
+                        },
+                        rescue_school: {
+                            helpshift_id: '1716',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-rescue-academy',
+                            short: 'Allows for training EMS personnel to perform advanced treatments and using specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        staging_area: {
+                            helpshift_id: '1732',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-staging-area',
+                            short: 'The staging area can be built for free and will remain for 24 hours. \nDuring this time, units can be temporarily stationed here and dispatched to a mission.',
+                        },
                     },
                 },
                 mission: {
@@ -13166,8 +13676,12 @@ function updateAAOsTime(e) {
             waiting_for_vehicle: 'Awaiting vehicle to tow',
         },
         intervention_order: {
+            assigns_equipment_automatically: 'Assigns Equipment Automatically',
+            assigns_equipment_automatically_hint:
+                'If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment. <br><i>(Does not exclusively choose equipment and only affects ARRs marked with %{icon})</i>',
             automatic_text_color: 'Automatic Text Color',
             back: 'Back',
+            car_carrier: 'Recovery Vehicle or Flatbed Recovery Vehicle',
             categories: {
                 bereitschaftspolizei: 'Riot Police',
                 brush: 'Bushfire',
@@ -13175,6 +13689,7 @@ function updateAAOsTime(e) {
                 firefighting: 'Firefighting',
                 police: 'Police',
                 rescue: 'Rescue',
+                tow_trucks: 'Recovery Vehicles',
                 water_rescue: 'SES',
             },
             category: 'Category',
@@ -13201,6 +13716,7 @@ function updateAAOsTime(e) {
                 saved_text:
                     'Your Alarm and Response Regulation has been prepared for export. Via the link another player can import the Alarm and Response Regulation. If you change your Alarm and Response Regualtion in the meantime, this change will automatically be applied in the export.',
             },
+            flood_equipment: 'Flood Rescue Units',
             hotkey_hint:
                 'Choose a hotkey for this vehicle selection. Press at your window mission: ALT + your hotkey (or at Firefox: ALT + SHIFT + your hotkey or at mac os: ctrl + alt + your hotkey) to choose your vehicle selection.',
             intervention_order: 'Edit Alarm and Response Regulations',
@@ -13232,6 +13748,14 @@ function updateAAOsTime(e) {
                 any_traffic_car: 'Traffic Car',
                 arff: 'ULFV Crash Tender',
                 battalion_chief_unit: 'Support Vehicle',
+                bomb_disposal: 'EOD Response Vehicles',
+                bomb_disposal_command: 'EOD Commanders',
+                bomb_disposal_crew: 'EOD Response Vehicles',
+                bomb_disposal_diver_crew: 'Marine EOD Response Vehicles',
+                bomb_disposal_diver_equipment: 'Marine EOD Equipment Vans',
+                bomb_disposal_equipment: 'EOD Medium Equipment Vans',
+                bomb_disposal_equipment_2: 'EOD Heavy Equipment Vehicles',
+                bomb_disposal_heavy_equipment: 'EOD Heavy Equipment Vehicles',
                 boot: 'Boats (General)',
                 brush_truck: 'Bushfire Vehicles',
                 car_carrier: 'Any Wrecker',
@@ -13241,15 +13765,21 @@ function updateAAOsTime(e) {
                 coastal_helicopter: 'Coastal Helicopter',
                 coastal_helicopter_2: 'Coastal Helicopter Large',
                 coastal_plane: 'Coastal Guard Plane',
+                coastal_rescue:
+                    'Coastal Rescue, Rope Rescue or Mud Rescue Vehicle',
+                coresponder: 'Co-Responder Vehicle',
                 crew_carrier: 'Crew Carrier',
                 division_chief_unit: 'Mobile Command Vehicle',
+                drone: 'Drone Equipment',
                 elw1_or_elw2: 'Support Vehicle or Mobile Command Vehicle',
                 elw2_or_ab_elw:
                     'Rescue Pump or Rescue Support Unit and Fire engine',
                 emergency_ambulance: 'Ambulance or Air Ambulance',
+                emergency_welfare: 'Any Crew Welfare Vehicle',
                 fire_aviation: 'Airborne firefighting',
                 fire_truck: 'Pumper or Light Tanker or Tanker',
                 fireboat: 'Fire Boat',
+                flood_equipment: 'Flood Rescue',
                 fly_car: 'MICA',
                 fly_car_any: 'ICP / ICS / EMS Rescue',
                 foam: 'Foam Units or CAFSs',
@@ -13261,11 +13791,13 @@ function updateAAOsTime(e) {
                 gw_hoehenrettung: 'GW-H\xf6henrettung',
                 gw_messtechnik: 'GW-Messtechnik',
                 gw_wasserrettung: 'SES Vehicle',
+                gwl2wasser: 'Water Carrier or Major Foam Tender',
                 gwl2wasser_only: 'Bulk Water Tanker',
                 hems: 'Air Ambulance',
                 hlf_only: 'Rescue Pumper',
                 hlf_or_rw_and_lf:
                     'Rescue Pumper or Major Rescue Vehicle and Fire Engine',
+                joint_response_unit: 'Joint Response Unit',
                 k9: 'K-9 Unit',
                 kdow_orgl: 'Paramedic Supervisor',
                 kdow_orgl_any: 'Required Paramedic Supervisor',
@@ -13273,6 +13805,8 @@ function updateAAOsTime(e) {
                 lf_only: 'Fire Trucks',
                 long_distance_ambulance: 'BLS ambulance',
                 mask_service_unit: 'BASU',
+                mass_casualty_equipment:
+                    'Mass Casualty Equipment or Medical Equipment Trailer',
                 mtw: 'MTW',
                 mzb: 'Rescue Boat',
                 nef_only: 'Ambulance',
@@ -13280,15 +13814,20 @@ function updateAAOsTime(e) {
                 police_car: 'Patrol Car',
                 police_horse: 'Mounted Police',
                 police_motorcycle: 'Police Motorcycle',
+                police_patrol_and_prisoner_transport: 'Cell Van',
+                police_prisoner_transport: 'Cell Van',
                 polizeihubschrauber: 'Police helicopter',
                 pump_speed: 'Pump Capacity',
                 pump_speed_pump_only: 'Pump Capacity - Only Pumps',
+                rescue_dogs: 'Rescue Dogs',
                 rescue_vehicle: 'Rescue',
                 rescue_vehicle_only: 'Rescue',
                 rescueboat: 'Marine Rescue Boat',
                 rettungstreppe: 'Emergency Stairs',
                 rth_only: 'Air Ambulance',
                 schlauchwagen: 'Bulk Water Tanker',
+                search_and_rescue: 'SAR Units',
+                search_and_rescue_command: 'Any Control Van',
                 swat: 'TOG',
                 swat_armored_vehicle: 'TOG Armoured Vehicle',
                 swat_suv: 'TOG SUV',
@@ -13435,6 +13974,8 @@ function updateAAOsTime(e) {
                 'You currently have %{current}/%{total} custom mission ranges. With a premium subscription, you can make a custom mission range for every mission type available.',
             user_not_found: 'The player was not found.',
             vehicle_payload: {
+                apply_payload: 'Apply Payload',
+                change_payload: 'Change Payload',
                 hide_payload: 'Hide Payload',
                 show_payload: 'Show Payload',
             },
@@ -13489,21 +14030,25 @@ function updateAAOsTime(e) {
                 ambulance_station_missions: 'Ambulance Station',
                 ambulance_station_small_missions:
                     'Ambulance station (Small station)',
+                bomb_disposal_missions: 'Bomb Disposal HQ',
                 building_complex: 'Building Complex',
                 buildings_section: 'Stations',
                 clinic_missions: 'Clinic',
                 coastal_rescue: 'Volunteer Marine Rescue',
                 coastal_rescue_missions: 'VMR Missions',
+                custody_suite: 'Custody Suite',
                 dispatch_center_missions: 'Dispatch Center',
                 fire_school_missions: 'Fire Academy',
                 firehouse_missions: 'Fire Station',
                 firehouse_small_missions: 'Fire Station (Small)',
+                general_practitioner: 'GP Surgery',
                 hospital_missions: 'Hospital',
                 map_filters: 'Map filters list',
                 mission_positions: 'Points of Interest (POIs)',
                 mission_positions_section: 'POIs',
                 missions_section: 'Missions',
                 police_copter_station_missions: 'Police Air Wing',
+                police_depot: 'Police Depot',
                 police_school_missions: 'Police Academy',
                 police_small_missions: 'Police Station (Small station)',
                 police_special_forces: 'Police special forces',
@@ -13514,6 +14059,8 @@ function updateAAOsTime(e) {
                 riot_police: 'Riot Police',
                 riot_police_missions: 'Riot Police',
                 staging_area_missions: 'Staging Area',
+                technical_aid: 'Search and Rescue HQ',
+                technical_aid_missions: 'SAR',
                 technical_aid_organization: 'THW',
                 technical_aid_organization_school: 'THW Bundesschule',
                 tow_trucks: 'Tow Trucks Stations',
@@ -13683,6 +14230,11 @@ function updateAAOsTime(e) {
                             link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station',
                             short: 'Houses vehicles for medical-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station.',
                         },
+                        clinic: {
+                            helpshift_id: '1719',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-clinic',
+                            short: 'Houses vehicles need for EMS-related missions.\nPatients can be transported here, however it is less specialized than the hospital.',
+                        },
                         coastal_rescue: {
                             helpshift_id: '1832',
                             link: 'https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1832-what-is-a-coastal-rescue-station/?p=alll',
@@ -13713,6 +14265,16 @@ function updateAAOsTime(e) {
                             link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-academy',
                             short: 'Allows for training firefighters to operate specialized vehicles. Specialized vehicles are occasionally needed in missions. ',
                         },
+                        hazard_response_ems: {
+                            helpshift_id: '1736',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hart-base',
+                            short: 'Houses specialized EMS units that respond to Hazard-related missions. \nPersonell needs to be trained in order to operate these specialized units.',
+                        },
+                        home_response_location: {
+                            helpshift_id: '1665',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-home-response-location-hrl-uk-game-version',
+                            short: 'This building houses rescue workers which are on call.',
+                        },
                         hospital: {
                             helpshift_id: '1718',
                             link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hospital',
@@ -13722,6 +14284,11 @@ function updateAAOsTime(e) {
                             helpshift_id: '1731',
                             link: 'https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1731-what-is-a-police-helicopter-station/?p=all&s=buildings&f=what-is-a-police-station',
                             short: 'Houses police air wing for police-related missions. The police air wing does not come with the building.',
+                        },
+                        police_depot: {
+                            helpshift_id: '1741',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version',
+                            short: 'Houses specialist police units that are often stored in large police depots. \nYou can only build one of these per 50 police buildings. Prison cells are available in this building.',
                         },
                         police_school: {
                             helpshift_id: '1724',
@@ -13900,6 +14467,7 @@ function updateAAOsTime(e) {
             coins_spend: 'Vill du verkligen spendera dina mynt?',
             congratulations: 'Grattis!',
             content: 'Inneh\xe5ll',
+            copy: 'Copy',
             credits: 'Krediter',
             credits_max: 'Max antal krediter',
             credits_min: 'Min Krediter',
@@ -13977,6 +14545,9 @@ function updateAAOsTime(e) {
             waiting_for_vehicle: 'Inv\xe4ntar fordon att b\xe4rga',
         },
         intervention_order: {
+            assigns_equipment_automatically: 'Assigns Equipment Automatically',
+            assigns_equipment_automatically_hint:
+                'If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment. <br><i>(Does not exclusively choose equipment and only affects ARRs marked with %{icon})</i>',
             automatic_text_color: 'Automatisk textf\xe4rg',
             back: 'Tillbaka',
             car_carrier: 'B\xe4rgningsbil eller Flatb\xe4ddsf\xf6rare',
@@ -14015,6 +14586,7 @@ function updateAAOsTime(e) {
                 saved_text:
                     'Ditt utryckningsf\xf6rfarande har f\xf6rberetts f\xf6r exportering. Med l\xe4nken kan en annan spelare importera utryckningsf\xf6rfarandet. Om du \xe4ndrar utryckningsf\xf6rfarandet kommer exporten ocks\xe5 att \xe4ndras.',
             },
+            flood_equipment: 'Flood Rescue Units',
             hotkey_hint:
                 'V\xe4lj en snabbtangent f\xf6r det h\xe4r fordonsvalet. Tryck i uppdragsf\xf6nstret: Alt + snabbtangenten (eller i Firefox: Alt + Skift + snabbtangenten, eller i Mac OS: Cmd + Alt + snabbtangenten) f\xf6r att v\xe4lja fordon.',
             intervention_order: '\xc4ndra utryckningsf\xf6rfarande',
@@ -14041,8 +14613,17 @@ function updateAAOsTime(e) {
                 ab_ruest: 'Teknik/r\xe4ddning-modul',
                 abl2wasser_only: 'Slang-modul',
                 ambulance: 'Ambulans',
+                any_traffic_car: 'Any Traffic Car',
                 arff: 'Haveribil',
                 battalion_chief_unit: 'Brandbef\xe4l',
+                bomb_disposal: 'EOD Response Vehicles',
+                bomb_disposal_command: 'EOD Commanders',
+                bomb_disposal_crew: 'EOD Response Vehicles',
+                bomb_disposal_diver_crew: 'Marine EOD Response Vehicles',
+                bomb_disposal_diver_equipment: 'Marine EOD Equipment Vans',
+                bomb_disposal_equipment: 'EOD Medium Equipment Vans',
+                bomb_disposal_equipment_2: 'EOD Heavy Equipment Vehicles',
+                bomb_disposal_heavy_equipment: 'EOD Heavy Equipment Vehicles',
                 boot: 'B\xe5tar (allm\xe4nt)',
                 brush_truck: 'Skogsbrandsfordon',
                 brush_truck_1: 'Terr\xe4ngbil',
@@ -14052,15 +14633,22 @@ function updateAAOsTime(e) {
                 car_carrier_large: 'Alla Rotator lastbil',
                 coastal_guard_boat:
                     '\xd6vervakningsfartyg eller Kombinationsfartyg',
+                coastal_helicopter: 'Coastguard Rescue Helicopter',
+                coastal_rescue:
+                    'Coastal Rescue, Rope Rescue or Mud Rescue Vehicle',
                 coresponder: 'FIP',
+                crew_carrier: 'Crew Carrier',
                 division_chief_unit: 'R\xe4ddningsledning',
+                drone: 'Drone Equipment',
                 elw1_or_elw2: 'Brandbef\xe4l eller R\xe4ddningsledning',
                 elw2_or_ab_elw:
                     'R\xe4ddningspump eller st\xf6denhet och brandbil',
                 emergency_ambulance: 'Ambulans eller Helikopter',
+                emergency_welfare: 'Any Crew Welfare Vehicle',
                 fire_aviation: 'Brandflygsenhet',
                 fire_truck: 'Sl\xe4ckbilar',
                 fireboat: 'Stor brandb\xe5t',
+                flood_equipment: 'Flood Rescue',
                 fly_car: 'Akutl\xe4karbil',
                 fly_car_any:
                     'Jourl\xe4kare / Akutl\xe4karbil / FIP / IVPA / MC-Ambulans',
@@ -14074,12 +14662,14 @@ function updateAAOsTime(e) {
                 gw_messtechnik: 'M\xe4tteknik',
                 gw_taucher: 'Dykbil',
                 gw_wasserrettung: 'Vattenr\xe4ddning',
+                gwl2wasser: 'Water Carrier or Major Foam Tender',
                 gwl2wasser_only: 'Slangfordon',
                 hems: 'Ambulanshelikopter',
                 hlf_only: 'R\xe4ddningsbil',
                 hlf_or_rw_and_lf:
                     'R\xe4ddningsbil eller tyngre r\xe4ddningsbil och brandbil',
                 hose_trucks: 'Valfri slangbil',
+                joint_response_unit: 'Joint Response Unit',
                 k9: 'Hundenhet',
                 kdow_orgl: 'Ambulansledningsfordon',
                 kdow_orgl_any: 'Ambulansledningsfordon',
@@ -14090,6 +14680,8 @@ function updateAAOsTime(e) {
                 lf_only: 'Sl\xe4ckbilar',
                 long_distance_ambulance: 'L\xe4ttv\xe5rdsambulans',
                 mask_service_unit: 'Mobil luftenhet',
+                mass_casualty_equipment:
+                    'Mass Casualty Equipment or Medical Equipment Trailer',
                 mountain_cave_command: 'Grottr\xe4ddare',
                 mountain_height_rescue: 'Bergsh\xf6jdsr\xe4ddnings-SUV',
                 mountain_rescue_dogs: 'Fj\xe4llr\xe4ddarhund',
@@ -14101,15 +14693,20 @@ function updateAAOsTime(e) {
                 police_car: 'Radiobil',
                 police_horse: 'Polish\xe4star',
                 police_motorcycle: 'Polismotorcykel',
+                police_patrol_and_prisoner_transport: 'Cell Van',
+                police_prisoner_transport: 'Cell Van',
                 polizeihubschrauber: 'Polishelikopter',
                 pump: 'Valfri pumpbil',
                 pump_speed: 'Pumpens kapacitet',
                 pump_speed_pump_only: 'Pumpkapacitet - endast pumpar',
+                rescue_dogs: 'Rescue Dogs',
                 rescue_vehicle: 'Lastv\xe4xlare',
                 rescue_vehicle_only: 'Lastv\xe4xlare',
                 rescueboat: 'Stor r\xe4ddningsb\xe5t',
                 rth_only: 'Ambulanshelikopter',
                 schlauchwagen: 'Tankbil',
+                search_and_rescue: 'SAR Units',
+                search_and_rescue_command: 'Any Control Van',
                 search_and_rescue_helicopter: 'SAR-Helikopter',
                 swat: 'Insatsfordon',
                 swat_armored_vehicle: 'Bepansrat insatsfordon',
@@ -14154,6 +14751,10 @@ function updateAAOsTime(e) {
                     ' Du har f\xf6r n\xe4rvarande %{amount} %{alliance_event_currency}!',
                 info_bubble_text_disabled:
                     'Evenemanget kan inte startas l\xe4ngre eftersom p\xe5skh\xe4ndelsens sluttid \xe4r mindre \xe4n 3 timmar bort.',
+                stpatricks: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 summer: {
                     currency: 'Biljetter till evenemang',
                     event_start_mission:
@@ -14258,6 +14859,8 @@ function updateAAOsTime(e) {
                 'Du kan f\xf6r n\xe4rvarande ha %{current}/%{total} anpassade uppdragsomr\xe5den. Med en premiumprenumeration kan du g\xf6ra ett anpassat uppdragsomr\xe5de tillg\xe4ngligt f\xf6r varje uppdragstyp.',
             user_not_found: 'Spelaren kunde inte hittas.',
             vehicle_payload: {
+                apply_payload: 'Apply Payload',
+                change_payload: 'Change Payload',
                 hide_payload: 'D\xf6lj nyttolast',
                 show_payload: 'Visa nyttolast',
             },
@@ -14310,16 +14913,19 @@ function updateAAOsTime(e) {
                 alliance_missions: 'Delade av alliansen',
                 ambulance_station_missions: 'Ambulansstation',
                 ambulance_station_small_missions: 'Ambulansstation (liten)',
+                bomb_disposal_missions: 'Bomb Disposal HQ',
                 building_complex: 'Byggnadskomplex',
                 buildings_section: 'Stationer',
                 clinic_missions: 'Klinik',
                 coastal_rescue: 'Kustr\xe4ddning',
                 coastal_rescue_missions: 'Kustr\xe4ddning',
                 coastal_rescue_small: 'Kustn\xe4ra volont\xe4rgrupper',
+                custody_suite: 'Custody Suite',
                 dispatch_center_missions: 'Larmcentral',
                 fire_school_missions: 'R\xe4ddningsskola',
                 firehouse_missions: 'Brandstation',
                 firehouse_small_missions: 'Brandstation (liten)',
+                general_practitioner: 'GP Surgery',
                 hospital_missions: 'Sjukhus',
                 map_filters: 'Intressepunkter',
                 mission_positions: 'Intressepunkter',
@@ -14328,6 +14934,7 @@ function updateAAOsTime(e) {
                 mountain_rescue: 'Fj\xe4llr\xe4ddningen',
                 mountain_rescue_missions: 'Fj\xe4llr\xe4ddning',
                 police_copter_station_missions: 'Polisflyg',
+                police_depot: 'Police Depot',
                 police_school_missions: 'Polisskola',
                 police_small_missions: 'Polisstation (liten)',
                 police_special_forces: 'Insatsstyrka',
@@ -14338,6 +14945,8 @@ function updateAAOsTime(e) {
                 riot_police: 'Kravallpolis',
                 riot_police_missions: 'Kravallpolis',
                 staging_area_missions: 'Uppsamlingsomr\xe5de',
+                technical_aid: 'Search and Rescue HQ',
+                technical_aid_missions: 'SAR',
                 technical_aid_organization: 'MSB',
                 technical_aid_organization_school: 'Tr\xe4ningscentrum',
                 tow_trucks: 'B\xe4rgningsbilar',
@@ -14384,6 +14993,13 @@ function updateAAOsTime(e) {
                     'Uppdrag som har p\xe5b\xf6rjats men inte slutf\xf6rts',
                 unattended: 'Obevakade uppdrag',
                 unattended_description: 'Obevakade uppdrag',
+            },
+            mission_range: {
+                premium_alert: {
+                    description:
+                        'You need to have a premium account for this feature.',
+                    title: 'Mission generation range could not be selected.',
+                },
             },
             mission_speed: {
                 premium_alert: {
@@ -14486,6 +15102,103 @@ function updateAAOsTime(e) {
                         },
                         welcome:
                             'V\xe4lkommen till Larmcentralen-spelet! Genom att arbeta p\xe5 en larmcentral f\xf6r r\xe4ddningstj\xe4nster hanterar du n\xf6dsamtal f\xf6r att hj\xe4lpa och skydda allm\xe4nheten. F\xf6r att kunna bygga stationer och skicka ut flera typer av fordon och utbildad personal till en m\xe4ngd olika uppdrag',
+                    },
+                    tooltip: {
+                        ambulance_station: {
+                            helpshift_id: '1714',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station',
+                            short: 'Houses vehicles need for EMS-related missions. \nExtensions can be built, which unlocks purchasing of specialized units.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        ambulance_station_small: {
+                            helpshift_id: '1715',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station',
+                            short: 'Houses vehicles for EMS-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        clinic: {
+                            helpshift_id: '1719',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-clinic',
+                            short: 'Houses vehicles need for EMS-related missions.\nPatients can be transported here, however it is less specialized than the hospital.',
+                        },
+                        dispatch_center: {
+                            helpshift_id: '1497',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=gameplay&f=what-is-the-dispatch-center-good-for',
+                            short: 'Gives you an overview of all your buildings and allows you to group them in a dispatch area.',
+                        },
+                        firehouse: {
+                            helpshift_id: '1709',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions. \nExtensions can be built, which unlocks purchasing of specialized units. ',
+                        },
+                        firehouse_small: {
+                            helpshift_id: '1710',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        fireschool: {
+                            helpshift_id: '1711',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-academy',
+                            short: 'Allows for training firefighters to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        hazard_response_ems: {
+                            helpshift_id: '1736',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hart-base',
+                            short: 'Houses specialized EMS units that respond to Hazard-related missions. \nPersonell needs to be trained in order to operate these specialized units.',
+                        },
+                        home_response_location: {
+                            helpshift_id: '1665',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-home-response-location-hrl-uk-game-version',
+                            short: 'This building houses rescue workers which are on call.',
+                        },
+                        hospital: {
+                            helpshift_id: '1718',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hospital',
+                            short: 'For more severe conditions, patients can be transported here. \nAdditional credits can be earned with patients treated.',
+                        },
+                        police_copter_station: {
+                            helpshift_id: '1731',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-helicopter-station',
+                            short: 'Houses aircrafts for police-related missions.\nA helicopter needs to be purchased separately. ',
+                        },
+                        police_depot: {
+                            helpshift_id: '1741',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version',
+                            short: 'Houses specialist police units that are often stored in large police depots. \nYou can only build one of these per 50 police buildings. Prison cells are available in this building.',
+                        },
+                        police_school: {
+                            helpshift_id: '1724',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-academy',
+                            short: 'Allows for training police officers to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        police_small: {
+                            helpshift_id: '1723',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-police-station',
+                            short: 'Houses vehicles needed for police-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        police_station: {
+                            helpshift_id: '1722',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-station',
+                            short: 'Houses vehicles needed for police-related missions. \nExtensions can be built, which unlocks purchasing of specialized units ',
+                        },
+                        prison: {
+                            helpshift_id: '1734',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-prison',
+                            short: 'Prisoners can be transported here. \nA Prison can only be built with alliance funds.',
+                        },
+                        rescue_copter_station: {
+                            helpshift_id: '1720',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-helicopter-station',
+                            short: 'Houses helicopters for treatment of patients with very serious injuries. \nA helicopter needs to be purchased separately. ',
+                        },
+                        rescue_school: {
+                            helpshift_id: '1716',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-rescue-academy',
+                            short: 'Allows for training EMS personnel to perform advanced treatments and using specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        staging_area: {
+                            helpshift_id: '1732',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-staging-area',
+                            short: 'The staging area can be built for free and will remain for 24 hours. \nDuring this time, units can be temporarily stationed here and dispatched to a mission.',
+                        },
                     },
                 },
                 mission: {
@@ -14619,6 +15332,7 @@ function updateAAOsTime(e) {
             coins_spend: 'Czy na pewno chcesz wyda\u0107 monety?',
             congratulations: 'Gratulacje!',
             content: 'Zawarto\u015b\u0107',
+            copy: 'Copy',
             credits: 'Kredyty',
             credits_max: 'Maksymalna kredyt\xf3w',
             credits_min: 'Kredyty minimalne',
@@ -14739,6 +15453,7 @@ function updateAAOsTime(e) {
                 saved_text:
                     'Zasada reagowania zosta\u0142a przygotowana do eksportu. Za pomoc\u0105 tego linku mo\u017cesz zaimportowa\u0107 zasad\u0119 reagowania. Je\u015bli w mi\u0119dzyczasie zmienisz zasad\u0119 reagowania, zostanie ona automatycznie uwzgl\u0119dniona w eksporcie.',
             },
+            flood_equipment: 'Flood Rescue Units',
             hotkey_hint:
                 'Wybierz skr\xf3t dla tego zestawu pojazd\xf3w. Naci\u015bnij w oknie misji: ALT + skr\xf3t (lub w przegl\u0105darce Firefox: ALT + SHIFT + skr\xf3t lub w systemie macOS: Ctrl + Alt + skr\xf3t), aby wybra\u0107 zestaw pojazd\xf3w.',
             intervention_order: 'Edytuj zasady reagowania',
@@ -14768,16 +15483,31 @@ function updateAAOsTime(e) {
                 any_traffic_car: 'Pojazd WRD',
                 arff: 'SP LSP (samoch\xf3d po\u017carniczy lotniskowej stra\u017cy po\u017carnej)',
                 battalion_chief_unit: 'SLOp lub SLRr',
+                bomb_disposal: 'EOD Response Vehicles',
+                bomb_disposal_command: 'EOD Commanders',
+                bomb_disposal_crew: 'EOD Response Vehicles',
+                bomb_disposal_diver_crew: 'Marine EOD Response Vehicles',
+                bomb_disposal_diver_equipment: 'Marine EOD Equipment Vans',
+                bomb_disposal_equipment: 'EOD Medium Equipment Vans',
+                bomb_disposal_equipment_2: 'EOD Heavy Equipment Vehicles',
+                bomb_disposal_heavy_equipment: 'EOD Heavy Equipment Vehicles',
                 boot: '\u0141odzie (og\xf3lne)',
                 car_carrier: 'Dowolny pojazd holowniczy',
                 car_carrier_large: 'Rotator',
+                coastal_helicopter: 'Coastguard Rescue Helicopter',
+                coastal_rescue:
+                    'Coastal Rescue, Rope Rescue or Mud Rescue Vehicle',
+                coresponder: 'Co-Responder Vehicle',
+                crew_carrier: 'Crew Carrier',
                 detention_unit: 'Wi\u0119\u017aniarka',
                 division_chief_unit:
                     'Samoch\xf3d dowodzenia i \u0142\u0105czno\u015bci',
                 drone: 'Dron stra\u017cacki',
                 elw1_or_elw2:
                     'SLOp lub Samoch\xf3d dowodzenia i \u0142\u0105czno\u015bci',
+                elw2_or_ab_elw: 'ICCU / ACU',
                 emergency_ambulance: 'Ambulans lub \u015bmig\u0142owiec LPR',
+                emergency_welfare: 'Any Crew Welfare Vehicle',
                 fire_aviation_2:
                     'Samolot ga\u015bniczy lub bambi bucket (jednostki powietrzne)',
                 fire_truck: 'Samochody po\u017carnicze',
@@ -14797,6 +15527,7 @@ function updateAAOsTime(e) {
                 gw_messtechnik: 'GW-Messtechnik',
                 gw_taucher: 'Samoch\xf3d SLRw',
                 gw_wasserrettung: 'S.WOPR lub Quad',
+                gwl2wasser: 'Water Carrier or Major Foam Tender',
                 gwl2wasser_only: 'Samoch\xf3d w\u0119\u017cowy',
                 hazmat_drone: 'Robot CBRNE',
                 height_equipment: 'Skokochron',
@@ -14817,13 +15548,17 @@ function updateAAOsTime(e) {
                 hlf_or_rw_and_lf:
                     'GBARt lub samoch\xf3d ratownictwa technicznego oraz samoch\xf3d ga\u015bniczy',
                 hose_trucks: 'Pojazd z w\u0119\u017cami',
+                joint_response_unit: 'Joint Response Unit',
                 k9: 'Jednostka z psami',
                 kdow_orgl: 'Szef s\u0142u\u017cb ratownictwa medycznego',
+                kdow_orgl_any: 'OTL / Ambulance Officer',
                 ktw_or_rtw: 'Ambulans P, S lub T',
                 lebefkw: 'Leichter Befehlskraftwagen (leBefKw)',
                 lf_only: 'Samochody po\u017carnicze',
                 long_distance_ambulance: 'Ambulans T',
                 mask_service_unit: 'SPGaz',
+                mass_casualty_equipment:
+                    'Mass Casualty Equipment or Medical Equipment Trailer',
                 mobile_shelter: 'Namiot pneumatyczny',
                 mountain_atv: 'ATV',
                 mountain_cave_command: 'Dow\xf3dztwo Jaskiniowe',
@@ -14837,8 +15572,11 @@ function updateAAOsTime(e) {
                 oil_unit: 'Jednostka do sprz\u0105tania oleju',
                 police_car: 'Pojazd OPI',
                 police_motorcycle: 'Quad Policyjny',
+                police_patrol_and_prisoner_transport: 'Cell Van',
+                police_prisoner_transport: 'Cell Van',
                 polizeihubschrauber: 'Helikopter Policyjny',
                 pump_speed: 'Wydajno\u015b\u0107 pomp',
+                pump_speed_pump_only: 'Pump Capacity - Only Pumps',
                 rescue_dogs: 'Samoch\xf3d z psami ratowniczymi',
                 rescue_vehicle: 'Samoch\xf3d Ratownictwa Technicznego',
                 rescue_vehicle_only: 'Samoch\xf3d Ratownictwa Technicznego',
@@ -14847,6 +15585,7 @@ function updateAAOsTime(e) {
                 rth_only: '\u015amig\u0142owiec',
                 schlauchwagen: 'Cysterna z wod\u0105',
                 search_and_rescue: 'Samoch\xf3d poszukiwawczo - ratowniczy',
+                search_and_rescue_command: 'Any Control Van',
                 swat: 'SPKP',
                 swat_armored_vehicle: 'Opanerzony Pojazd SPKP',
                 swat_suv: 'SUV SPKP',
@@ -14886,6 +15625,7 @@ function updateAAOsTime(e) {
                     },
                 },
                 water_amount: 'Litry wody',
+                water_damage_pump: 'Water Pumps',
                 water_rescue_equipment: 'Sonar stra\u017cacki',
             },
         },
@@ -14920,6 +15660,10 @@ function updateAAOsTime(e) {
                     ' Aktualnie posiadasz %{amount} %{alliance_event_currency}!',
                 info_bubble_text_disabled:
                     'Wydarzenie nie mo\u017ce ju\u017c zosta\u0107 uruchomione, poniewa\u017c czas zako\u0144czenia wydarzenia wielkanocnego jest kr\xf3tszy ni\u017c 3 godziny.',
+                stpatricks: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 summer: {
                     currency: 'Bilety na wydarzenia',
                     event_start_mission:
@@ -15091,14 +15835,19 @@ function updateAAOsTime(e) {
                 ambulance_station_missions: 'Stacja Pogotowia Ratunkowego',
                 ambulance_station_small_missions:
                     'Podstacja Pogotowia Ratunkowego',
+                bomb_disposal_missions: 'Bomb Disposal HQ',
                 building_complex: 'Kompleks budynk\xf3w',
                 buildings_section: 'Posterunki',
                 clinic_missions: 'Klinika',
+                coastal_rescue: 'Lifeboat Stations',
+                coastal_rescue_missions: 'SAR',
+                custody_suite: 'Custody Suite',
                 dispatch_center_missions: 'Centrum Powiadamiania Ratunkowego',
                 fire_aviation: 'Stacje samolot\xf3w ga\u015bniczych',
                 fire_school_missions: 'Szko\u0142a Po\u017carnicza',
                 firehouse_missions: 'Jednostka Ratowniczo-Ga\u015bnicza',
                 firehouse_small_missions: 'Remiza',
+                general_practitioner: 'GP Surgery',
                 hospital_missions: 'Szpital',
                 map_filters: 'U\u017cyteczne Miejsca (UM)',
                 mission_positions: 'U\u017cyteczne Miejsca (UM)',
@@ -15106,6 +15855,7 @@ function updateAAOsTime(e) {
                 missions_section: 'Misje',
                 mountain_rescue: 'GOPR',
                 police_copter_station_missions: 'Lotnictwo policyjne',
+                police_depot: 'Police Depot',
                 police_school_missions: 'Szko\u0142a Policyjna',
                 police_small_missions: 'Posterunek Policji',
                 police_special_forces: 'Jednostki specjalne policji',
@@ -15118,6 +15868,8 @@ function updateAAOsTime(e) {
                 riot_police_missions: 'Zgromadzenia publiczne (OPP)',
                 staging_area_missions:
                     'Miejsce koncentracji Si\u0142 i \u015arodk\xf3w',
+                technical_aid: 'Search and Rescue HQ',
+                technical_aid_missions: 'SAR',
                 technical_aid_organization: 'THW',
                 technical_aid_organization_school: 'THW Bundesschule',
                 tow_trucks: 'Pomoc drogowa',
@@ -15167,6 +15919,13 @@ function updateAAOsTime(e) {
                     'Misje, kt\xf3re zosta\u0142y rozpocz\u0119te, ale nie uko\u0144czone',
                 unattended: 'Misje bez nadzoru',
                 unattended_description: 'Misje bez nadzoru',
+            },
+            mission_range: {
+                premium_alert: {
+                    description:
+                        'You need to have a premium account for this feature.',
+                    title: 'Mission generation range could not be selected.',
+                },
             },
             mission_speed: {
                 premium_alert: {
@@ -15270,6 +16029,103 @@ function updateAAOsTime(e) {
                         },
                         welcome:
                             'Witamy w operatorratunkowy! Pracuj\u0105c w centrum dyspozytorskim dla s\u0142u\u017cb ratunkowych, zajmujesz si\u0119 po\u0142\u0105czeniami alarmowymi, aby pomaga\u0107 i chroni\u0107 spo\u0142ecze\u0144stwo. W tym celu budujesz stacje i wysy\u0142asz kilka rodzaj\xf3w pojazd\xf3w oraz wyszkolony personel do r\xf3\u017cnych misji.',
+                    },
+                    tooltip: {
+                        ambulance_station: {
+                            helpshift_id: '1714',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station',
+                            short: 'Houses vehicles need for EMS-related missions. \nExtensions can be built, which unlocks purchasing of specialized units.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        ambulance_station_small: {
+                            helpshift_id: '1715',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station',
+                            short: 'Houses vehicles for EMS-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        clinic: {
+                            helpshift_id: '1719',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-clinic',
+                            short: 'Houses vehicles need for EMS-related missions.\nPatients can be transported here, however it is less specialized than the hospital.',
+                        },
+                        dispatch_center: {
+                            helpshift_id: '1497',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=gameplay&f=what-is-the-dispatch-center-good-for',
+                            short: 'Gives you an overview of all your buildings and allows you to group them in a dispatch area.',
+                        },
+                        firehouse: {
+                            helpshift_id: '1709',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions. \nExtensions can be built, which unlocks purchasing of specialized units. ',
+                        },
+                        firehouse_small: {
+                            helpshift_id: '1710',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        fireschool: {
+                            helpshift_id: '1711',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-academy',
+                            short: 'Allows for training firefighters to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        hazard_response_ems: {
+                            helpshift_id: '1736',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hart-base',
+                            short: 'Houses specialized EMS units that respond to Hazard-related missions. \nPersonell needs to be trained in order to operate these specialized units.',
+                        },
+                        home_response_location: {
+                            helpshift_id: '1665',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-home-response-location-hrl-uk-game-version',
+                            short: 'This building houses rescue workers which are on call.',
+                        },
+                        hospital: {
+                            helpshift_id: '1718',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hospital',
+                            short: 'For more severe conditions, patients can be transported here. \nAdditional credits can be earned with patients treated.',
+                        },
+                        police_copter_station: {
+                            helpshift_id: '1731',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-helicopter-station',
+                            short: 'Houses aircrafts for police-related missions.\nA helicopter needs to be purchased separately. ',
+                        },
+                        police_depot: {
+                            helpshift_id: '1741',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version',
+                            short: 'Houses specialist police units that are often stored in large police depots. \nYou can only build one of these per 50 police buildings. Prison cells are available in this building.',
+                        },
+                        police_school: {
+                            helpshift_id: '1724',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-academy',
+                            short: 'Allows for training police officers to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        police_small: {
+                            helpshift_id: '1723',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-police-station',
+                            short: 'Houses vehicles needed for police-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        police_station: {
+                            helpshift_id: '1722',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-station',
+                            short: 'Houses vehicles needed for police-related missions. \nExtensions can be built, which unlocks purchasing of specialized units ',
+                        },
+                        prison: {
+                            helpshift_id: '1734',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-prison',
+                            short: 'Prisoners can be transported here. \nA Prison can only be built with alliance funds.',
+                        },
+                        rescue_copter_station: {
+                            helpshift_id: '1720',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-helicopter-station',
+                            short: 'Houses helicopters for treatment of patients with very serious injuries. \nA helicopter needs to be purchased separately. ',
+                        },
+                        rescue_school: {
+                            helpshift_id: '1716',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-rescue-academy',
+                            short: 'Allows for training EMS personnel to perform advanced treatments and using specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        staging_area: {
+                            helpshift_id: '1732',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-staging-area',
+                            short: 'The staging area can be built for free and will remain for 24 hours. \nDuring this time, units can be temporarily stationed here and dispatched to a mission.',
+                        },
                     },
                 },
                 mission: {
@@ -15402,6 +16258,7 @@ function updateAAOsTime(e) {
             coins_spend: 'Vuoi davvero spendere queste monete?',
             congratulations: 'Congratulazioni!',
             content: 'Contenuto',
+            copy: 'Copy',
             credits: 'Crediti',
             credits_max: 'Crediti massimi',
             credits_min: 'Crediti Min',
@@ -15475,6 +16332,7 @@ function updateAAOsTime(e) {
             ready_home: 'Disponibile alla stazione',
             ready_traveling: 'Pronto e disponibile',
             talking_wish: 'Richiesta trasporto',
+            transporting_car: 'Transporting Vehicle',
             waiting_for_vehicle: 'In attesa del veicolo da trainare',
         },
         intervention_order: {
@@ -15484,6 +16342,7 @@ function updateAAOsTime(e) {
                 "Se attivo, l'ARR pu\xf2 assegnare l'equipaggiamento ai veicoli. Sceglier\xe0 l'unit\xe0 o l'equipaggiamento pi\xf9 vicino. (Non seleziona esclusivamente l'hardware).",
             automatic_text_color: 'Colore testo automatico',
             back: 'Indietro',
+            car_carrier: 'Recovery Vehicle or Flatbed Recovery Vehicle',
             categories: {
                 airport: 'Aeroporto',
                 brush: 'Anticendio Boschivo',
@@ -15493,6 +16352,7 @@ function updateAAOsTime(e) {
                 police: 'Polizia',
                 rescue: 'Soccorso',
                 technical_aid: 'Protezione Civile',
+                tow_trucks: 'Recovery Vehicles',
                 water_rescue: 'Soccorso Acquatico VVF',
             },
             category: 'Categoria',
@@ -15520,6 +16380,7 @@ function updateAAOsTime(e) {
                 saved_text:
                     "La regola di allarme e risposta \xe8 pronta per l'esportazione. Tramite il link un altro giocatore pu\xf2 importare la regola di allarme e risposta. Se nel frattempo modifichi una regola di allarme e risposta, tale modifica verr\xe0 automaticamente applicata nell'esportazione.",
             },
+            flood_equipment: 'Flood Rescue Units',
             hotkey_hint:
                 'Scegli un tasto di scelta rapida per questa selezione di veicoli. Premi durante la missione su Windows: ALT + tasto di scelta rapida (o su Firefox: ALT + SHIFT + tasto di scelta rapida oppure su Mac OS: ctrl + alt + tasto di scelta rapida) per scegliere la tua selezione di veicoli.',
             intervention_order: 'Modifica le regole di allarme e risposta',
@@ -15548,21 +16409,40 @@ function updateAAOsTime(e) {
                 ab_ruest: 'Modulo - Soccorso/Tecniche',
                 abl2wasser_only: 'Modulo - Alimentazione tubi',
                 ambulance: 'Ambulanza BLSD',
+                any_traffic_car: 'Any Traffic Car',
                 arff: 'ARFF (mezzo antincendio aeroportuale)',
                 battalion_chief_unit: 'Funzionario',
+                bomb_disposal: 'EOD Response Vehicles',
+                bomb_disposal_command: 'EOD Commanders',
+                bomb_disposal_crew: 'EOD Response Vehicles',
+                bomb_disposal_diver_crew: 'Marine EOD Response Vehicles',
+                bomb_disposal_diver_equipment: 'Marine EOD Equipment Vans',
+                bomb_disposal_equipment: 'EOD Medium Equipment Vans',
+                bomb_disposal_equipment_2: 'EOD Heavy Equipment Vehicles',
+                bomb_disposal_heavy_equipment: 'EOD Heavy Equipment Vehicles',
                 boot: 'Barca',
                 brush_truck: 'Mezzo AIB',
+                car_carrier: 'Any Recovery Vehicle',
+                car_carrier_large: 'Any HGV Recovery Vehicle',
+                coastal_helicopter: 'Coastguard Rescue Helicopter',
+                coastal_rescue:
+                    'Coastal Rescue, Rope Rescue or Mud Rescue Vehicle',
                 commerce_police: 'Volante Finanza',
+                coresponder: 'Co-Responder Vehicle',
                 crew_carrier: 'AF/BUS',
                 detention_unit: 'Trasporto detenuti',
                 division_chief_unit: 'Veicoli comando mobile',
+                drone: 'Drone Equipment',
                 elw1_or_elw2:
                     'Modulo - Funzionario, Veicoli comando mobile o Comando mobile ',
+                elw2_or_ab_elw: 'ICCU / ACU',
                 emergency_ambulance: 'Automedica (VLV) o Elisoccorso',
+                emergency_welfare: 'Any Crew Welfare Vehicle',
                 fbi_bomb_tech: 'Furgone artificieri',
                 fire_aviation: 'Unit\xe0 Aerea Antincendio',
                 fire_truck: 'APS/ABP',
                 fireboat: 'Barca antincendio grande',
+                flood_equipment: 'Flood Rescue',
                 fly_car: 'Fly-Car',
                 foam: 'Carro Schiuma',
                 foam_amount: 'Quantit\xe0 di Schiuma in Litri',
@@ -15575,18 +16455,23 @@ function updateAAOsTime(e) {
                 gw_messtechnik: 'GW-Messtechnik',
                 gw_taucher: 'Camion Tecnico NSSA',
                 gw_wasserrettung: 'Ritenzione delle acque',
+                gwl2wasser: 'Water Carrier or Major Foam Tender',
                 gwl2wasser_only: 'Autocarro per tubazioni',
                 heli_tech: 'Verricello',
                 hems: 'Elisoccorso HEMS',
                 hlf_only: 'Autopompa',
                 hlf_or_rw_and_lf: 'Autopompa oppure Polisoccorso e Autobotte',
+                joint_response_unit: 'Joint Response Unit',
                 k9: 'Seleziona qualsiasi unit\xe0 cinofila antidroga',
                 kdow_orgl: 'DTS',
+                kdow_orgl_any: 'OTL / Ambulance Officer',
                 ktw_or_rtw: 'Ambulanza ordinaria o BLSD',
                 lebefkw: 'Leichter Befehlskraftwagen (leBefKw)',
                 lf_only: 'Mezzi antincendio',
                 long_distance_ambulance: 'Ambulanza ordinaria',
                 mask_service_unit: 'Carro aria',
+                mass_casualty_equipment:
+                    'Mass Casualty Equipment or Medical Equipment Trailer',
                 mountain_drone: 'Attrezzatura per droni',
                 mountain_rescue_drone: 'Drone',
                 mountain_snow_dogs: 'Cane da Valanga',
@@ -15602,6 +16487,8 @@ function updateAAOsTime(e) {
                 oil_unit: 'GW-\xd6l',
                 police_car: 'Auto di pattuglia',
                 police_motorcycle: 'Moto della Polizia',
+                police_patrol_and_prisoner_transport: 'Cell Van',
+                police_prisoner_transport: 'Cell Van',
                 polizeihubschrauber: 'Elicottero della polizia',
                 pump: 'Carrelli Alluvionali',
                 pump_speed: 'Capacit\xe0 di Pompaggio',
@@ -15613,6 +16500,8 @@ function updateAAOsTime(e) {
                 rescueboat: 'Barca di salvataggio grande',
                 rth_only: 'Elisoccorso',
                 schlauchwagen: 'Kilolitrica',
+                search_and_rescue: 'SAR Units',
+                search_and_rescue_command: 'Any Control Van',
                 swat: 'Unit\xe0 speciali',
                 swat_armored_vehicle: 'Veicolo Antisommossa',
                 swat_suv: 'UOPI Suv',
@@ -15658,6 +16547,10 @@ function updateAAOsTime(e) {
                     ' Attualmente avete %{amount} %{alliance_event_currency}!',
                 info_bubble_text_disabled:
                     "L'evento non pu\xf2 pi\xf9 essere avviato perch\xe9 mancano meno di 3 ore alla fine dell'evento di Pasqua.",
+                stpatricks: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 summer: {
                     currency: "Biglietti per l'evento",
                     event_start_mission:
@@ -15823,16 +16716,19 @@ function updateAAOsTime(e) {
                 ambulance_station_missions: 'Stazione ambulanze',
                 ambulance_station_small_missions:
                     'Stazione ambulanze (stazione piccola)',
+                bomb_disposal_missions: 'Bomb Disposal HQ',
                 building_complex: 'Complesso di edifici',
                 buildings_section: 'Stazioni',
                 clinic_missions: 'Clinica',
                 coastal_rescue: 'Guardia Costiera',
                 coastal_rescue_missions: 'Guardia Costiera',
+                custody_suite: 'Custody Suite',
                 dispatch_center_missions: 'Centrale operativa',
                 fire_school_missions: 'Scuola dei vigili del fuoco',
                 firehouse_missions: 'Caserma dei vigili del fuoco',
                 firehouse_small_missions:
                     'Caserma dei vigili del fuoco (piccola)',
+                general_practitioner: 'GP Surgery',
                 hospital_missions: 'Ospedale',
                 map_filters: 'Punti di interesse (PDI)',
                 mission_positions: 'Punti di interesse (PDI)',
@@ -15840,6 +16736,7 @@ function updateAAOsTime(e) {
                 missions_section: 'Missioni',
                 mountain_missions: 'Soccorso Alpino',
                 police_copter_station_missions: 'Reparto volo polizia',
+                police_depot: 'Police Depot',
                 police_school_missions: 'Scuola di polizia',
                 police_small_missions: 'Stazione di polizia (stazione piccola)',
                 police_special_forces: 'Forze di polizia speciali',
@@ -15856,6 +16753,8 @@ function updateAAOsTime(e) {
                 technical_aid_missions: 'Protezione Civile',
                 technical_aid_organization: 'THW',
                 technical_aid_organization_school: 'THW Bundesschule',
+                tow_trucks: 'Recovery Centers',
+                tow_trucks_missions: 'Recovery Vehicles',
                 user_buildings: 'I miei edifici',
                 user_missions: 'Le mie missioni',
                 water_watch: 'Soccorso acquatico',
@@ -15899,6 +16798,13 @@ function updateAAOsTime(e) {
                 started_description: 'Missioni avviate, ma non completate',
                 unattended: 'Missioni non presidiate',
                 unattended_description: 'Missioni non presidiate',
+            },
+            mission_range: {
+                premium_alert: {
+                    description:
+                        'You need to have a premium account for this feature.',
+                    title: 'Mission generation range could not be selected.',
+                },
             },
             mission_speed: {
                 premium_alert: {
@@ -16002,6 +16908,103 @@ function updateAAOsTime(e) {
                         },
                         welcome:
                             'Benvenuto su Operatore112! Lavorando in una Centrale Operativa di Soccorso ti occuperai delle chiamate di emergenza per aiutare e proteggere la popolazione. Per fare ci\xf2, costruisci stazioni e invia diverse tipologie di veicoli e personale addestrato in una variet\xe0 di missioni.',
+                    },
+                    tooltip: {
+                        ambulance_station: {
+                            helpshift_id: '1714',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station',
+                            short: 'Houses vehicles need for EMS-related missions. \nExtensions can be built, which unlocks purchasing of specialized units.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        ambulance_station_small: {
+                            helpshift_id: '1715',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station',
+                            short: 'Houses vehicles for EMS-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        clinic: {
+                            helpshift_id: '1719',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-clinic',
+                            short: 'Houses vehicles need for EMS-related missions.\nPatients can be transported here, however it is less specialized than the hospital.',
+                        },
+                        dispatch_center: {
+                            helpshift_id: '1497',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=gameplay&f=what-is-the-dispatch-center-good-for',
+                            short: 'Gives you an overview of all your buildings and allows you to group them in a dispatch area.',
+                        },
+                        firehouse: {
+                            helpshift_id: '1709',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions. \nExtensions can be built, which unlocks purchasing of specialized units. ',
+                        },
+                        firehouse_small: {
+                            helpshift_id: '1710',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        fireschool: {
+                            helpshift_id: '1711',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-academy',
+                            short: 'Allows for training firefighters to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        hazard_response_ems: {
+                            helpshift_id: '1736',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hart-base',
+                            short: 'Houses specialized EMS units that respond to Hazard-related missions. \nPersonell needs to be trained in order to operate these specialized units.',
+                        },
+                        home_response_location: {
+                            helpshift_id: '1665',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-home-response-location-hrl-uk-game-version',
+                            short: 'This building houses rescue workers which are on call.',
+                        },
+                        hospital: {
+                            helpshift_id: '1718',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hospital',
+                            short: 'For more severe conditions, patients can be transported here. \nAdditional credits can be earned with patients treated.',
+                        },
+                        police_copter_station: {
+                            helpshift_id: '1731',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-helicopter-station',
+                            short: 'Houses aircrafts for police-related missions.\nA helicopter needs to be purchased separately. ',
+                        },
+                        police_depot: {
+                            helpshift_id: '1741',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version',
+                            short: 'Houses specialist police units that are often stored in large police depots. \nYou can only build one of these per 50 police buildings. Prison cells are available in this building.',
+                        },
+                        police_school: {
+                            helpshift_id: '1724',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-academy',
+                            short: 'Allows for training police officers to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        police_small: {
+                            helpshift_id: '1723',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-police-station',
+                            short: 'Houses vehicles needed for police-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        police_station: {
+                            helpshift_id: '1722',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-station',
+                            short: 'Houses vehicles needed for police-related missions. \nExtensions can be built, which unlocks purchasing of specialized units ',
+                        },
+                        prison: {
+                            helpshift_id: '1734',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-prison',
+                            short: 'Prisoners can be transported here. \nA Prison can only be built with alliance funds.',
+                        },
+                        rescue_copter_station: {
+                            helpshift_id: '1720',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-helicopter-station',
+                            short: 'Houses helicopters for treatment of patients with very serious injuries. \nA helicopter needs to be purchased separately. ',
+                        },
+                        rescue_school: {
+                            helpshift_id: '1716',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-rescue-academy',
+                            short: 'Allows for training EMS personnel to perform advanced treatments and using specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        staging_area: {
+                            helpshift_id: '1732',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-staging-area',
+                            short: 'The staging area can be built for free and will remain for 24 hours. \nDuring this time, units can be temporarily stationed here and dispatched to a mission.',
+                        },
                     },
                 },
                 mission: {
@@ -16209,6 +17212,7 @@ function updateAAOsTime(e) {
             ready_home: 'Disponible au poste',
             ready_traveling: 'Pr\xeat et op\xe9rationnel',
             talking_wish: 'Demande de transport',
+            transporting_car: 'Transporting Vehicle',
             waiting_for_vehicle: 'En attente du v\xe9hicule \xe0 remorquer',
         },
         intervention_order: {
@@ -16218,6 +17222,7 @@ function updateAAOsTime(e) {
                 "Lorsqu'il est actif, ARR peut attribuer des \xe9quipements aux v\xe9hicules. S\xe9lectionne l\u2019unit\xe9 ou l\u2019\xe9quipement le plus proche. (Ne choisit pas exclusivement le mat\xe9riel).",
             automatic_text_color: 'Couleur du texte automatique',
             back: 'Retour',
+            car_carrier: 'Recovery Vehicle or Flatbed Recovery Vehicle',
             categories: {
                 bereitschaftspolizei: "Maintien de l'Ordre",
                 coastal_rescue: 'Sauvetage C\xf4tier',
@@ -16226,6 +17231,7 @@ function updateAAOsTime(e) {
                 mountain_rescue: 'Sauvetage en Montagne',
                 police: 'Police',
                 rescue: 'Secours a Personne',
+                tow_trucks: 'Recovery Vehicles',
                 water_rescue: 'Secours nautique',
             },
             category: 'Cat\xe9gorie',
@@ -16254,6 +17260,7 @@ function updateAAOsTime(e) {
                 saved_text:
                     'Votre R\xe9gulation d\u2019alertes et d\u2019interventions est pr\xeate \xe0 l\u2019exportation. Gr\xe2ce \xe0 ce lien, un autre joueur peut importer cette R\xe9gulation d\u2019alertes et d\u2019interventions. Si d\u2019ici l\xe0 vous modifiez votre R\xe9gulation d\u2019alertes et d\u2019interventions, ce changement sera automatiquement appliqu\xe9 \xe0 l\u2019exportation.',
             },
+            flood_equipment: 'Flood Rescue Units',
             hotkey_hint:
                 'Choisissez un raccourci pour cette s\xe9lection de v\xe9hicules. Dans votre fen\xeatre de mission, appuyez sur\xa0: ALT + votre raccourci (ou sur Firefox\xa0: ALT + Shift + votre raccourci, ou sur Mac OS\xa0: CTRL + ALT + votre raccourci) pour choisir votre s\xe9lection de v\xe9hicules.',
             intervention_order:
@@ -16284,8 +17291,17 @@ function updateAAOsTime(e) {
                 ab_ruest: 'Module tech/sauvetage',
                 abl2wasser_only: 'Module approv. lance \xe0 eau',
                 ambulance: 'ASSU / VSAV / AR',
+                any_traffic_car: 'Any Traffic Car',
                 arff: 'VIA (fourgon d\u2019incendie d\u2019a\xe9roport)',
                 battalion_chief_unit: 'Chef de groupe',
+                bomb_disposal: 'EOD Response Vehicles',
+                bomb_disposal_command: 'EOD Commanders',
+                bomb_disposal_crew: 'EOD Response Vehicles',
+                bomb_disposal_diver_crew: 'Marine EOD Response Vehicles',
+                bomb_disposal_diver_equipment: 'Marine EOD Equipment Vans',
+                bomb_disposal_equipment: 'EOD Medium Equipment Vans',
+                bomb_disposal_equipment_2: 'EOD Heavy Equipment Vehicles',
+                bomb_disposal_heavy_equipment: 'EOD Heavy Equipment Vehicles',
                 boot: 'Bateaux (g\xe9n\xe9raux)',
                 breathing_protection_container:
                     'Conteneur de protection respiratoire',
@@ -16293,21 +17309,31 @@ function updateAAOsTime(e) {
                 brush_truck_1: 'CCFS',
                 brush_truck_2: 'CCFM',
                 brush_truck_3: 'CCFL',
+                car_carrier: 'Any Recovery Vehicle',
+                car_carrier_large: 'Any HGV Recovery Vehicle',
                 carbon_dioxide: 'Dioxide de Carbone',
+                coastal_helicopter: 'Coastguard Rescue Helicopter',
+                coastal_rescue:
+                    'Coastal Rescue, Rope Rescue or Mud Rescue Vehicle',
+                coresponder: 'Co-Responder Vehicle',
+                crew_carrier: 'Crew Carrier',
                 decontamination: 'CEDM',
                 decontamination_personnel: 'CEDM ou CMIR',
                 division_chief_unit: 'V\xe9hicule poste de commandement',
+                drone: 'Drone Equipment',
                 elw1_or_elw2: 'Chef de Groupe ou PC',
                 elw2_or_ab_elw:
                     "Pompe de secours ou unit\xe9 de secours en renfort et v\xe9hicule d'incendie",
                 elw3: 'VLHR',
                 emergency_ambulance:
                     'Ambulance d\u2019urgence ou h\xe9licopt\xe8re',
+                emergency_welfare: 'Any Crew Welfare Vehicle',
                 fire_truck: 'Fourgons d\u2019incendie',
                 fireboat: 'Grand bateau d\u2019incendie',
                 flood_equipment: 'CEEP ou MAI',
                 fly_car: 'VRM',
                 fly_car_any: 'VL SSSM / VLM',
+                foam: 'Foam Tenders or RIV',
                 fustw_or_police_motorcycle:
                     'V\xe9hicule de patrouille ou Unit\xe9 motocycliste',
                 gkw: 'V\xe9hicule Tout Usage',
@@ -16316,19 +17342,24 @@ function updateAAOsTime(e) {
                 gw_hoehenrettung: 'VGRIMP',
                 gw_messtechnik: 'GW-M',
                 gw_wasserrettung: 'VPL',
+                gwl2wasser: 'Water Carrier or Major Foam Tender',
                 gwl2wasser_only: 'V\xe9hicule \xe0 lance',
                 hems: 'Services d\u2019urgence',
                 hlf_only: 'FPTSR',
                 hlf_or_rw_and_lf:
                     "FPTSR ou v\xe9hicule de secours lourd et v\xe9hicule d'incendie",
                 hose_trucks: 'Camion d\xe9vidoir',
+                joint_response_unit: 'Joint Response Unit',
                 k9: 'Brigade canine',
                 kdow_orgl: 'PC DSM ou CENOVI',
+                kdow_orgl_any: 'OTL / Ambulance Officer',
                 ktw_or_rtw: 'Ambulance de secours ou Ambulance de transport',
                 lebefkw: 'Camionnette de police',
                 lf_only: 'Fourgons d\u2019incendie',
                 long_distance_ambulance: 'Ambulance Type A',
                 mask_service_unit: "V\xe9hicule d'Assistance Respiratoire",
+                mass_casualty_equipment:
+                    'Mass Casualty Equipment or Medical Equipment Trailer',
                 mountain_helicopter_bucket:
                     "\xc9quipement de godet porteur d'eau",
                 mountain_helicopter_rescue_lift:
@@ -16339,17 +17370,22 @@ function updateAAOsTime(e) {
                 oil_unit: 'Camion d\u2019assainissement',
                 police_car: 'Voiture de patrouille',
                 police_motorcycle: 'Unit\xe9 motocycliste',
+                police_patrol_and_prisoner_transport: 'Cell Van',
+                police_prisoner_transport: 'Cell Van',
                 polizeihubschrauber: 'H\xe9licopt\xe8re de police',
                 pump: 'Motopompes',
                 pump_speed: 'Capacit\xe9 de la pompe',
                 pump_speed_pump_only:
                     'Capacit\xe9 de la pompe - Pompes uniquement',
+                rescue_dogs: 'Rescue Dogs',
                 rescue_vehicle: 'V\xe9hicule de secours routier',
                 rescue_vehicle_only: 'Secours routier',
                 rescueboat: 'Grand bateau de sauvetage',
                 rettungstreppe: "Moyen d'Acc\xe8s en Hauteur",
                 rth_only: 'H\xe9licopt\xe8re',
                 schlauchwagen: 'Camion-citerne ou CCFS',
+                search_and_rescue: 'SAR Units',
+                search_and_rescue_command: 'Any Control Van',
                 swat: 'SWAT',
                 swat_armored_vehicle: 'V\xe9hicule renforc\xe9 du SWAT',
                 swat_suv: 'SUV du SWAT',
@@ -16360,6 +17396,7 @@ function updateAAOsTime(e) {
                 turntable_ladder: 'Moyen El\xe9vateur A\xe9rien',
                 ventilation: 'Unit\xe9s de ventilation',
                 water_amount: 'Litres d\u2019eau',
+                water_damage_pump: 'Water Pumps',
             },
         },
         javascript: {
@@ -16569,15 +17606,18 @@ function updateAAOsTime(e) {
                 alliance_missions: 'Partag\xe9es par l\u2019alliance',
                 ambulance_station_missions: 'Poste Ambulancier',
                 ambulance_station_small_missions: 'Poste Ambulancier (petit)',
+                bomb_disposal_missions: 'Bomb Disposal HQ',
                 building_complex: 'Complexe',
                 buildings_section: 'Postes',
                 clinic_missions: 'Clinic',
                 coastal_rescue: 'Sauvetage C\xf4tier',
                 coastal_rescue_missions: 'Mission c\xf4ti\xe8re',
+                custody_suite: 'Custody Suite',
                 dispatch_center_missions: 'Centre de Traitement des Appels',
                 fire_school_missions: 'Centre de Formation D\xe9partemental',
                 firehouse_missions: 'Centre de secours',
                 firehouse_small_missions: 'Centre de Premi\xe8re Intervention',
+                general_practitioner: 'GP Surgery',
                 hospital_missions: 'Centre Hospitalier',
                 map_filters: "Points d'int\xe9r\xeat (PI)",
                 mission_positions: "Points d'int\xe9r\xeat (PI)",
@@ -16587,6 +17627,7 @@ function updateAAOsTime(e) {
                 mountain_rescue: 'Gendarmerie haute montagne',
                 mountain_rescue_heliport: 'DAG',
                 police_copter_station_missions: 'FAG',
+                police_depot: 'Police Depot',
                 police_school_missions: 'Ecole de police',
                 police_small_missions: 'Police Municipale',
                 police_special_forces: 'Police special forces',
@@ -16605,6 +17646,8 @@ function updateAAOsTime(e) {
                 technical_aid_organization: 'Protection civile',
                 technical_aid_organization_school:
                     '\xc9cole de protection civile',
+                tow_trucks: 'Recovery Centers',
+                tow_trucks_missions: 'Recovery Vehicles',
                 user_buildings: 'Mes b\xe2timents',
                 user_missions: 'Mes missions',
                 water_watch: 'Secours nautique',
@@ -16761,6 +17804,103 @@ function updateAAOsTime(e) {
                         },
                         welcome:
                             "Bienvenue sur Op\xe9rateur 112! En travaillant dans un centre de r\xe9partition des services d'urgence, vous traitez les appels d'urgence pour aider et prot\xe9ger le public. Pour ce faire, construisez des stations (b\xe2timents) et envoyez plusieurs types de v\xe9hicules et du personnel qualifi\xe9 dans diverses missions.",
+                    },
+                    tooltip: {
+                        ambulance_station: {
+                            helpshift_id: '1714',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station',
+                            short: 'Houses vehicles need for EMS-related missions. \nExtensions can be built, which unlocks purchasing of specialized units.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        ambulance_station_small: {
+                            helpshift_id: '1715',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station',
+                            short: 'Houses vehicles for EMS-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        clinic: {
+                            helpshift_id: '1719',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-clinic',
+                            short: 'Houses vehicles need for EMS-related missions.\nPatients can be transported here, however it is less specialized than the hospital.',
+                        },
+                        dispatch_center: {
+                            helpshift_id: '1497',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=gameplay&f=what-is-the-dispatch-center-good-for',
+                            short: 'Gives you an overview of all your buildings and allows you to group them in a dispatch area.',
+                        },
+                        firehouse: {
+                            helpshift_id: '1709',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions. \nExtensions can be built, which unlocks purchasing of specialized units. ',
+                        },
+                        firehouse_small: {
+                            helpshift_id: '1710',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        fireschool: {
+                            helpshift_id: '1711',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-academy',
+                            short: 'Allows for training firefighters to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        hazard_response_ems: {
+                            helpshift_id: '1736',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hart-base',
+                            short: 'Houses specialized EMS units that respond to Hazard-related missions. \nPersonell needs to be trained in order to operate these specialized units.',
+                        },
+                        home_response_location: {
+                            helpshift_id: '1665',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-home-response-location-hrl-uk-game-version',
+                            short: 'This building houses rescue workers which are on call.',
+                        },
+                        hospital: {
+                            helpshift_id: '1718',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hospital',
+                            short: 'For more severe conditions, patients can be transported here. \nAdditional credits can be earned with patients treated.',
+                        },
+                        police_copter_station: {
+                            helpshift_id: '1731',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-helicopter-station',
+                            short: 'Houses aircrafts for police-related missions.\nA helicopter needs to be purchased separately. ',
+                        },
+                        police_depot: {
+                            helpshift_id: '1741',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version',
+                            short: 'Houses specialist police units that are often stored in large police depots. \nYou can only build one of these per 50 police buildings. Prison cells are available in this building.',
+                        },
+                        police_school: {
+                            helpshift_id: '1724',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-academy',
+                            short: 'Allows for training police officers to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        police_small: {
+                            helpshift_id: '1723',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-police-station',
+                            short: 'Houses vehicles needed for police-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        police_station: {
+                            helpshift_id: '1722',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-station',
+                            short: 'Houses vehicles needed for police-related missions. \nExtensions can be built, which unlocks purchasing of specialized units ',
+                        },
+                        prison: {
+                            helpshift_id: '1734',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-prison',
+                            short: 'Prisoners can be transported here. \nA Prison can only be built with alliance funds.',
+                        },
+                        rescue_copter_station: {
+                            helpshift_id: '1720',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-helicopter-station',
+                            short: 'Houses helicopters for treatment of patients with very serious injuries. \nA helicopter needs to be purchased separately. ',
+                        },
+                        rescue_school: {
+                            helpshift_id: '1716',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-rescue-academy',
+                            short: 'Allows for training EMS personnel to perform advanced treatments and using specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        staging_area: {
+                            helpshift_id: '1732',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-staging-area',
+                            short: 'The staging area can be built for free and will remain for 24 hours. \nDuring this time, units can be temporarily stationed here and dispatched to a mission.',
+                        },
                     },
                 },
                 mission: {
@@ -16929,12 +18069,15 @@ function updateAAOsTime(e) {
             is_offline_with_duration:
                 '%{user} \u043d\u0435 \u0432 \u0441\u0435\u0442\u0438: %{duration}',
             is_online: '%{user} \u0432 \u0441\u0435\u0442\u0438.',
+            load_next: 'Load more',
+            load_remaining: 'Load remaining',
             loading:
                 '\u0417\u0430\u0433\u0440\u0443\u0436\u0430\u0435\u0442\u0441\u044f...',
             message_for_education:
                 '\u042d\u0442\u043e\u0442 \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u043a \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u043f\u0435\u0440\u0435\u043c\u0435\u0449\u0430\u0442\u044c\u0441\u044f \u043d\u0430 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0435, \u0442\u0430\u043a \u043a\u0430\u043a \u043d\u0435 \u043f\u0440\u043e\u0448\u0435\u043b \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e\u0435 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u0435!',
             missions_per_page: '%{count} \u043c\u0438\u0441\u0441\u0438\u0438',
             name: '\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435',
+            no: 'no',
             none: '\u041d\u0438 \u043e\u0434\u0438\u043d',
             of: '\u0438\u0437',
             off: '\u0412\u044b\u043a\u043b',
@@ -16950,6 +18093,7 @@ function updateAAOsTime(e) {
             save: '\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c',
             search: '\u0418\u0441\u043a\u0430\u0442\u044c',
             show: '\u041f\u043e\u043a\u0430\u0437\u0430\u0442\u044c',
+            sort: 'Sort:',
             sort_by: {
                 credits: '\u041a\u0440\u0435\u0434\u0438\u0442\u044b',
                 default:
@@ -16961,6 +18105,12 @@ function updateAAOsTime(e) {
                 requirements:
                     '\u0422\u0440\u0435\u0431\u043e\u0432\u0430\u043d\u0438\u044f',
             },
+            sorting: {
+                caption_asc: 'A to Z',
+                caption_desc: 'Z to A',
+                date_asc: 'Oldest',
+                date_desc: 'Newest',
+            },
             time_in_minutes:
                 '\u0412\u0440\u0435\u043c\u044f \u0432 \u043c\u0438\u043d\u0443\u0442\u0430\u0445',
             total_count: '\u0412\u0441\u0435\u0433\u043e: %{count}',
@@ -16969,6 +18119,7 @@ function updateAAOsTime(e) {
                 '\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d',
             wrong_key:
                 '\u041d\u0435\u0432\u0435\u0440\u043d\u0430\u044f \u043a\u043b\u0430\u0432\u0438\u0448\u0430',
+            yes: 'yes',
         },
         fms: {
             going: '\u0412\u044b\u0435\u0437\u0436\u0430\u0435\u0442',
@@ -16987,13 +18138,22 @@ function updateAAOsTime(e) {
                 '\u041d\u0435 \u0438\u043c\u0435\u0435\u0442 \u0437\u0430\u0434\u0430\u043d\u0438\u0439 \u0438 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e',
             talking_wish:
                 '\u0417\u0430\u044f\u0432\u043a\u0430 \u043d\u0430 \u043f\u0435\u0440\u0435\u0432\u043e\u0437\u043a\u0443',
+            transporting_car: 'Transporting Vehicle',
             waiting_for_vehicle:
                 '\u041e\u0436\u0438\u0434\u0430\u0435\u0442 \u043c\u0430\u0448\u0438\u043d\u0443 \u0434\u043b\u044f \u0431\u0443\u043a\u0441\u0438\u0440\u043e\u0432\u043a\u0438',
         },
         intervention_order: {
+            assigns_equipment_automatically: 'Assigns Equipment Automatically',
+            assigns_equipment_automatically_hint:
+                'If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment. <br><i>(Does not exclusively choose equipment and only affects ARRs marked with %{icon})</i>',
             automatic_text_color:
                 '\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0446\u0432\u0435\u0442 \u0442\u0435\u043a\u0441\u0442\u0430',
             back: '\u041d\u0430\u0437\u0430\u0434',
+            car_carrier: 'Recovery Vehicle or Flatbed Recovery Vehicle',
+            categories: {
+                tow_trucks: 'Recovery Vehicles',
+                water_rescue: 'Technical Rescue and SAR',
+            },
             category: '\u041a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f',
             colour: '\u0426\u0432\u0435\u0442',
             column: '\u0421\u0442\u043e\u043b\u0431\u0435\u0446',
@@ -17021,6 +18181,7 @@ function updateAAOsTime(e) {
                 saved_text:
                     '\u041f\u0440\u0430\u0432\u0438\u043b\u043e \u0418\u0418\u0420 \u043f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u043b\u0435\u043d\u043e \u043a \u044d\u043a\u0441\u043f\u043e\u0440\u0442\u0443. \u0414\u0440\u0443\u0433\u043e\u0439 \u0438\u0433\u0440\u043e\u043a \u0441\u043c\u043e\u0436\u0435\u0442 \u0438\u043c\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043f\u0440\u0430\u0432\u0438\u043b\u043e \u0418\u0418\u0420, \u0432\u043e\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0432\u0448\u0438\u0441\u044c \u044d\u0442\u043e\u0439 \u0441\u0441\u044b\u043b\u043a\u043e\u0439. \u0415\u0441\u043b\u0438 \u0432 \u044d\u0442\u043e\u043c \u0432\u0440\u0435\u043c\u044f \u0432\u044b \u0438\u0437\u043c\u0435\u043d\u0438\u0442\u0435 \u0441\u0432\u043e\u0451 \u043f\u0440\u0430\u0432\u0438\u043b\u043e \u0418\u0418\u0420, \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f \u0431\u0443\u0434\u0443\u0442 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438 \u043f\u0440\u0438\u043c\u0435\u043d\u0435\u043d\u044b \u043a \u044d\u043a\u0441\u043f\u043e\u0440\u0442\u0438\u0440\u0443\u0435\u043c\u043e\u043c\u0443 \u043f\u0440\u0430\u0432\u0438\u043b\u0443.',
             },
+            flood_equipment: 'Flood Rescue Units',
             hotkey_hint:
                 '\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0433\u043e\u0440\u044f\u0447\u0443\u044e \u043a\u043b\u0430\u0432\u0438\u0448\u0443 \u0434\u043b\u044f \u0432\u044b\u0434\u0435\u043b\u0435\u043d\u0438\u044f \u044d\u0442\u043e\u0439 \u043c\u0430\u0448\u0438\u043d\u044b. \u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u0432 \u043e\u043a\u043d\u0435 \u0437\u0430\u0434\u0430\u043d\u0438\u044f: ALT + \u0433\u043e\u0440\u044f\u0447\u0430\u044f \u043a\u043b\u0430\u0432\u0438\u0448\u0430 (\u0438\u043b\u0438 \u0432 Firefox: ALT + SHIFT + \u0433\u043e\u0440\u044f\u0447\u0430\u044f \u043a\u043b\u0430\u0432\u0438\u0448\u0430, \u0438\u043b\u0438 \u0432 mac os: ctrl + alt + \u0433\u043e\u0440\u044f\u0447\u0430\u044f \u043a\u043b\u0430\u0432\u0438\u0448\u0430), \u0447\u0442\u043e\u0431\u044b \u0432\u044b\u0434\u0435\u043b\u0438\u0442\u044c \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u0443\u044e \u043c\u0430\u0448\u0438\u043d\u0443.',
             intervention_order:
@@ -17059,26 +18220,46 @@ function updateAAOsTime(e) {
                     '\u041c\u043e\u0434\u0443\u043b\u044c \u043f\u043e\u0434\u0430\u0447\u0438 \u0448\u043b\u0430\u043d\u0433\u0430',
                 ambulance:
                     '\u0420\u0435\u0430\u043d\u0438\u043c\u043e\u0431\u0438\u043b\u044c',
+                any_traffic_car: 'Any Traffic Car',
                 arff: '\u0410\u041f\u0421\u0420 (\u043f\u043e\u0436\u0430\u0440\u043d\u0430\u044f \u043c\u0430\u0448\u0438\u043d\u0430 \u0430\u044d\u0440\u043e\u043f\u043e\u0440\u0442\u0430)',
                 battalion_chief_unit:
                     '\u041f\u043e\u0434\u0440\u0430\u0437\u0434\u0435\u043b\u0435\u043d\u0438\u0435 \u043a\u043e\u043c\u0430\u043d\u0434\u0438\u0440\u0430 \u0431\u0430\u0442\u0430\u043b\u044c\u043e\u043d\u0430',
+                bomb_disposal: 'EOD Response Vehicles',
+                bomb_disposal_command: 'EOD Commanders',
+                bomb_disposal_crew: 'EOD Response Vehicles',
+                bomb_disposal_diver_crew: 'Marine EOD Response Vehicles',
+                bomb_disposal_diver_equipment: 'Marine EOD Equipment Vans',
+                bomb_disposal_equipment: 'EOD Medium Equipment Vans',
+                bomb_disposal_equipment_2: 'EOD Heavy Equipment Vehicles',
+                bomb_disposal_heavy_equipment: 'EOD Heavy Equipment Vehicles',
                 boot: '\u0421\u0443\u0434\u0430 (\u043e\u0431\u0449\u0435\u0435)',
+                car_carrier: 'Any Recovery Vehicle',
+                car_carrier_large: 'Any HGV Recovery Vehicle',
+                coastal_helicopter: 'Coastguard Rescue Helicopter',
+                coastal_rescue:
+                    'Coastal Rescue, Rope Rescue or Mud Rescue Vehicle',
+                coresponder: 'Co-Responder Vehicle',
+                crew_carrier: 'Crew Carrier',
                 division_chief_unit:
                     '\u041c\u043e\u0431\u0438\u043b\u044c\u043d\u044b\u0439 \u043a\u043e\u043c\u0430\u043d\u0434\u043d\u044b\u0439 \u043f\u0443\u043d\u043a\u0442',
+                drone: 'Drone Equipment',
                 elw1_or_elw2:
                     '\u041f\u043e\u0434\u0440\u0430\u0437\u0434\u0435\u043b\u0435\u043d\u0438\u0435 \u043a\u043e\u043c\u0430\u043d\u0434\u0438\u0440\u0430 \u0431\u0430\u0442\u0430\u043b\u044c\u043e\u043d\u0430, \u043c\u043e\u0431\u0438\u043b\u044c\u043d\u044b\u0439 \u043a\u043e\u043c\u0430\u043d\u0434\u043d\u044b\u0439 \u043f\u0443\u043d\u043a\u0442 \u0438\u043b\u0438 \u043c\u043e\u0431\u0438\u043b\u044c\u043d\u044b\u0439 \u043c\u043e\u0434\u0443\u043b\u044c \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u044f ',
                 elw2_or_ab_elw:
                     '\u041d\u0430\u0441\u043e\u0441 \u0438\u043b\u0438 \u0432\u0441\u043f\u043e\u043c\u043e\u0433\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u0441\u043f\u0430\u0441\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043f\u043e\u0434\u0440\u0430\u0437\u0434\u0435\u043b\u0435\u043d\u0438\u0435',
                 emergency_ambulance:
                     '\u041c\u0430\u0448\u0438\u043d\u0430 \u0441\u043a\u043e\u0440\u043e\u0439 \u043f\u043e\u043c\u043e\u0449\u0438 \u0418\u041b\u0418 \u0432\u0435\u0440\u0442\u043e\u043b\u0435\u0442',
+                emergency_welfare: 'Any Crew Welfare Vehicle',
                 fire_truck:
                     '\u041f\u043e\u0436\u0430\u0440\u043d\u044b\u0435 \u043c\u0430\u0448\u0438\u043d\u044b',
                 fireboat:
                     '\u0411\u043e\u043b\u044c\u0448\u043e\u0439 \u043f\u043e\u0436\u0430\u0440\u043d\u044b\u0439 \u043a\u0430\u0442\u0435\u0440',
+                flood_equipment: 'Flood Rescue',
                 fly_car:
                     '\u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u0438\u0439 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0438\u043b\u044c',
                 fly_car_any:
                     '\u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u0438\u0439 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0438\u043b\u044c / \u0422\u0435\u0440\u0430\u043f\u0435\u0432\u0442',
+                foam: 'Foam Tenders or RIV',
                 foam_amount:
                     '\u041b\u0438\u0442\u0440\u043e\u0432 \u043f\u0435\u043d\u044b',
                 fustw_or_police_motorcycle:
@@ -17095,15 +18276,18 @@ function updateAAOsTime(e) {
                     '\u0410\u0432\u0442\u043e\u043c\u043e\u0431\u0438\u043b\u044c \u0432\u043e\u0434\u043e\u043b\u0430\u0437\u043e\u0432',
                 gw_wasserrettung:
                     '\u0410\u0432\u0442\u043e\u043c\u043e\u0431\u0438\u043b\u044c \u0441\u043f\u0430\u0441\u0435\u043d\u0438\u044f \u043d\u0430 \u0432\u043e\u0434\u0435',
+                gwl2wasser: 'Water Carrier or Major Foam Tender',
                 gwl2wasser_only:
                     '\u041c\u0430\u0448\u0438\u043d\u0430 \u0441 \u0431\u0440\u0430\u043d\u0434\u0441\u043f\u043e\u0439\u043d\u0442\u043e\u043c',
                 hems: '\u0412\u0435\u0440\u0442\u043e\u043b\u0451\u0442 \u043d\u0435\u043e\u0442\u043b\u043e\u0436\u043d\u043e\u0439 \u043c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u043e\u0439 \u043f\u043e\u043c\u043e\u0449\u0438',
                 hlf_only: '\u041f\u0421\u0410',
                 hlf_or_rw_and_lf:
                     '\u0421\u043f\u0430\u0441\u0430\u0442\u0435\u043b\u0438 \u0438\u043b\u0438 \u0442\u044f\u0436\u0451\u043b\u044b\u0435 \u0441\u043f\u0430\u0441\u0430\u0442\u0435\u043b\u0438 \u0438 \u043f\u043e\u0436\u0430\u0440\u043d\u044b\u0439 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0438\u043b\u044c',
+                joint_response_unit: 'Joint Response Unit',
                 k9: '\u041f\u043e\u0434\u0440\u0430\u0437\u0434\u0435\u043b\u0435\u043d\u0438\u0435 \u043a\u0438\u043d\u043e\u043b\u043e\u0433\u043e\u0432',
                 kdow_orgl:
                     '\u0413\u043b\u0430\u0432\u0430 \u0441\u043a\u043e\u0440\u043e\u0439',
+                kdow_orgl_any: 'OTL / Ambulance Officer',
                 ktw_or_rtw:
                     '\u0421\u043a\u043e\u0440\u044b\u0435 \u0438 \u0440\u0435\u0430\u043d\u0438\u043c\u043e\u0431\u0438\u043b\u0438',
                 lebefkw:
@@ -17114,6 +18298,8 @@ function updateAAOsTime(e) {
                     '\u0420\u0435\u0430\u043d\u0438\u043c\u043e\u0431\u0438\u043b\u044c',
                 mask_service_unit:
                     '\u041c\u043e\u0431\u0438\u043b\u044c\u043d\u043e\u0435 \u0432\u043e\u0437\u0434\u0443\u0448\u043d\u043e\u0435 \u043f\u043e\u0434\u0440\u0430\u0437\u0434\u0435\u043b\u0435\u043d\u0438\u0435',
+                mass_casualty_equipment:
+                    'Mass Casualty Equipment or Medical Equipment Trailer',
                 mtw: '\u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0451\u0440',
                 mzb: '\u0421\u043f\u0430\u0441\u0430\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u043b\u043e\u0434\u043a\u0430',
                 nef_only:
@@ -17124,8 +18310,13 @@ function updateAAOsTime(e) {
                     '\u041f\u0430\u0442\u0440\u0443\u043b\u044c\u043d\u044b\u0439 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0438\u043b\u044c',
                 police_motorcycle:
                     '\u041f\u043e\u043b\u0438\u0446\u0435\u0439\u0441\u043a\u0438\u0439 \u043c\u043e\u0442\u043e\u0446\u0438\u043a\u043b',
+                police_patrol_and_prisoner_transport: 'Cell Van',
+                police_prisoner_transport: 'Cell Van',
                 polizeihubschrauber:
                     '\u041f\u043e\u043b\u0438\u0446\u0435\u0439\u0441\u043a\u0438\u0439 \u0432\u0435\u0440\u0442\u043e\u043b\u0451\u0442',
+                pump_speed: 'Pump Capacity',
+                pump_speed_pump_only: 'Pump Capacity - Only Pumps',
+                rescue_dogs: 'Rescue Dogs',
                 rescue_vehicle:
                     '\u041c\u0430\u0448\u0438\u043d\u0430 \u0434\u043b\u044f \u0441\u043f\u0430\u0441\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0445 \u0440\u0430\u0431\u043e\u0442 \u0432 \u0442\u044f\u0436\u0451\u043b\u044b\u0445 \u0443\u0441\u043b\u043e\u0432\u0438\u044f\u0445',
                 rescue_vehicle_only:
@@ -17136,6 +18327,8 @@ function updateAAOsTime(e) {
                     '\u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u0438\u0439 \u0432\u0435\u0440\u0442\u043e\u043b\u0451\u0442',
                 schlauchwagen:
                     '\u0426\u0438\u0441\u0442\u0435\u0440\u043d\u0430 \u0441 \u0432\u043e\u0434\u043e\u0439',
+                search_and_rescue: 'SAR Units',
+                search_and_rescue_command: 'Any Control Van',
                 swat: '\u0421\u043f\u0435\u0446\u043d\u0430\u0437',
                 swat_armored_vehicle:
                     '\u0411\u0440\u043e\u043d\u0435\u043c\u043e\u0431\u0438\u043b\u044c \u0441\u043f\u0435\u0446\u043d\u0430\u0437\u0430',
@@ -17153,18 +18346,73 @@ function updateAAOsTime(e) {
                     '\u041f\u043b\u0430\u0442\u0444\u043e\u0440\u043c\u044b',
                 water_amount:
                     '\u041b\u0438\u0442\u0440\u043e\u0432 \u0432\u043e\u0434\u044b',
+                water_damage_pump: 'Water Pumps',
             },
         },
         javascript: {
             alarm: '\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c',
+            alliance_event_pay_out_message:
+                'Complete all missions with your alliance to earn a bonus!',
+            alliance_event_resource: {
+                christmas: {
+                    currency: 'Event Tickets',
+                    event_start_mission:
+                        'Start Event: %{amount} Alliance Ticket',
+                },
+                easter: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                football: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                halloween: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                info_bubble_text:
+                    'This is a temporary event that is only available during our event! Encourage your alliance members to complete event missions in order to earn the tickets that are needed to start these events. See the alliance event page for more information.',
+                info_bubble_text_additional:
+                    ' You currently have %{amount} %{alliance_event_currency}!',
+                info_bubble_text_disabled:
+                    "The event can't be started anymore because the Easter event's end time is less than 3 hours away.",
+                stpatricks: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                summer: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                valentines: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                winter: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+            },
             arrival: '\u041f\u0440\u0438\u0431\u044b\u0442\u0438\u0435',
             available_vehicles_count:
                 '\u0423 \u0432\u0430\u0441 \u0435\u0441\u0442\u044c \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u044b\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430 %{count}',
             backalarm: '\u041e\u0442\u043c\u0435\u043d\u0438\u0442\u044c',
             coins: '\u041c\u043e\u043d\u0435\u0442\u044b',
+            collapse: 'Collapse',
             credits: '\u041a\u0440\u0435\u0434\u0438\u0442\u044b',
+            current_reward_for_you:
+                '<b>Your current reward:</b> %{credits} Credits & %{event_currency} Event Credits',
             day: '\u0434\u0435\u043d\u044c',
             days: '\u0434\u043d.',
+            donate_event_credits_hint:
+                'You will donate: <strong>%{event_credits} event credits</strong> (%{alliance_credits} alliance credits).',
+            event: {
+                alliance_missions_completed:
+                    '<b>Completed Missions:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Participated Missions:</b> %{completedMissions}',
+            },
             few_seconds:
                 '\u0447\u0435\u0440\u0435\u0437 \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0441\u0435\u043a\u0443\u043d\u0434',
             finish_in:
@@ -17195,23 +18443,38 @@ function updateAAOsTime(e) {
             new: '\u041d\u043e\u0432\u044b\u0439',
             not_found_map:
                 '\u041c\u0430\u0448\u0438\u043d\u0430 \u043d\u0435 \u043e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u0430 \u043d\u0430 \u043a\u0430\u0440\u0442\u0435',
+            not_qualified:
+                '<b>Not qualified:</b> Participate in a mission to earn the reward ',
             now: '\u0421\u0435\u0439\u0447\u0430\u0441',
             patient: '\u041f\u0430\u0446\u0438\u0435\u043d\u0442',
             patient_untouched:
                 '\u041d\u0435 \u043f\u043e\u043b\u0443\u0447\u0438\u0432\u0448\u0438\u0435 \u043f\u043e\u043c\u043e\u0449\u0438 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u044b',
+            payout_received:
+                '<b>Your have received:</b> %{credits} Credits & %{event_currency} Event Credits',
             poi_delete:
                 '\u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b, \u0447\u0442\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043b\u0438\u0442\u044c \u044d\u0442\u0443 \u0432\u0430\u0436\u043d\u0443\u044e \u0442\u043e\u0447\u043a\u0443: %{caption}?',
+            pois: {
+                count_filtered: 'You have filtered %{count} POIs.',
+                count_total: 'You have %{count} POIs.',
+            },
+            pump_speed_approaching: 'Approaching: %{amount} l/min',
+            pump_speed_missing: 'Missing: %{amount} l/min',
+            pump_speed_on_site: 'On scene: %{amount} l/min',
             pump_speed_process:
                 '\u041f\u0440\u043e\u0446\u0435\u0441\u0441 \u043e\u0442\u043a\u0430\u0447\u043a\u0438 \u043f\u043e\u0432\u0440\u0435\u0436\u0434\u0435\u043d\u0438\u0439 \u043e\u0442 \u0432\u043e\u0434\u044b',
+            pump_speed_selected: 'Selected: %{amount} l/min',
+            qualified: '<b>Qualified:</b> You took part in the event',
             reload: '\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u043f\u043e\u0432\u0442\u043e\u0440\u043d\u043e',
             sale: '\u0420\u0430\u0441\u043f\u0440\u043e\u0434\u0430\u0436\u0430',
             sale_ended:
                 '\u0410\u043a\u0446\u0438\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0430',
             secounds: '\u0441\u0435\u043a.',
+            select_amount_button: 'Select amount',
             select_amount_event_credits_hint:
                 '\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0441\u0443\u043c\u043c\u0443 \u043a\u0440\u0435\u0434\u0438\u0442\u043e\u0432 \u043d\u0430 \u0441\u043e\u0431\u044b\u0442\u0438\u044f, \u043a\u043e\u0442\u043e\u0440\u0443\u044e \u0432\u044b \u0445\u043e\u0442\u0438\u0442\u0435 \u043a\u043e\u043d\u0432\u0435\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c',
             selected_vehicles_count:
                 '\u0412\u044b \u0432\u044b\u0431\u0440\u0430\u043b\u0438 %{count} \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u044b\u0445 \u0441\u0440\u0435\u0434\u0441\u0442\u0432',
+            show_all: 'Show All',
             show_less: '\u0411\u043e\u043b\u044c\u0448\u0435',
             show_more: '\u041c\u0435\u043d\u044c\u0448\u0435',
             sicherheitswache_error:
@@ -17230,8 +18493,11 @@ function updateAAOsTime(e) {
             time_left: '\u041e\u0441\u0442\u0430\u043b\u043e\u0441\u044c:',
             to_building:
                 '\u0421\u043c\u043e\u0442\u0440\u0435\u0442\u044c \u0437\u0434\u0430\u043d\u0438\u0435',
+            to_event: 'Back to events',
             to_mission:
                 '\u0421\u043c\u043e\u0442\u0440\u0435\u0442\u044c \u0437\u0430\u0434\u0430\u043d\u0438\u0435',
+            total_credits_earned: '<b>Total credits earned:</b>',
+            total_event_currency_earned: '<b>Total event credits earned:</b>',
             understand:
                 '\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c',
             update_mission_count:
@@ -17239,6 +18505,8 @@ function updateAAOsTime(e) {
             user_not_found:
                 '\u0418\u0433\u0440\u043e\u043a \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d.',
             vehicle_payload: {
+                apply_payload: 'Apply Payload',
+                change_payload: 'Change Payload',
                 hide_payload:
                     '\u0421\u043a\u0440\u044b\u0442\u044c \u043f\u043e\u043b\u0435\u0437\u043d\u0443\u044e \u043d\u0430\u0433\u0440\u0443\u0437\u043a\u0443',
                 show_payload:
@@ -17268,6 +18536,10 @@ function updateAAOsTime(e) {
                 '\u0417\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043b:',
             alliance_chat_banned_timeleft:
                 '\u041e\u0441\u0442\u0430\u043b\u043e\u0441\u044c \u0432\u0440\u0435\u043c\u0435\u043d\u0438:',
+            alliance_chat_destroy_alert:
+                'Do you really want to delete this message?',
+            alliance_chat_destroy_confirmation: 'This message has been deleted',
+            alliance_chat_manage_messages: 'Manage messages',
             alliance_chat_radio_off:
                 '\u0420\u0430\u0434\u0438\u043e \u0430\u043b\u044c\u044f\u043d\u0441\u0430: \u0412\u044b\u043a\u043b',
             alliance_chat_radio_on:
@@ -17317,10 +18589,14 @@ function updateAAOsTime(e) {
                     '\u0421\u0442\u0430\u043d\u0446\u0438\u044f \u0441\u043a\u043e\u0440\u043e\u0439 \u043f\u043e\u043c\u043e\u0449\u0438',
                 ambulance_station_small_missions:
                     '\u0421\u0442\u0430\u043d\u0446\u0438\u044f \u0441\u043a\u043e\u0440\u043e\u0439 \u043f\u043e\u043c\u043e\u0449\u0438 (\u043c\u0430\u043b\u0430\u044f)',
+                bomb_disposal_missions: 'Bomb Disposal HQ',
                 building_complex:
                     '\u041a\u043e\u043c\u043f\u043b\u0435\u043a\u0441 \u0417\u0434\u0430\u043d\u0438\u0439',
                 buildings_section: '\u0421\u0442\u0430\u043d\u0446\u0438\u0438',
                 clinic_missions: '\u041a\u043b\u0438\u043d\u0438\u043a\u0430',
+                coastal_rescue: 'Lifeboat Stations',
+                coastal_rescue_missions: 'SAR',
+                custody_suite: 'Custody Suite',
                 dispatch_center_missions:
                     '\u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440\u0441\u043a\u0438\u0439 \u043f\u0443\u043d\u043a\u0442',
                 fire_school_missions:
@@ -17329,6 +18605,7 @@ function updateAAOsTime(e) {
                     '\u041f\u043e\u0436\u0430\u0440\u043d\u0430\u044f \u0441\u0442\u0430\u043d\u0446\u0438\u044f',
                 firehouse_small_missions:
                     '\u041f\u043e\u0436\u0430\u0440\u043d\u0430\u044f \u0441\u0442\u0430\u043d\u0446\u0438\u044f (\u043c\u0430\u043b\u0430\u044f)',
+                general_practitioner: 'GP Surgery',
                 hospital_missions:
                     '\u0411\u043e\u043b\u044c\u043d\u0438\u0446\u0430',
                 map_filters:
@@ -17340,6 +18617,7 @@ function updateAAOsTime(e) {
                 missions_section: '\u0417\u0430\u0434\u0430\u043d\u0438\u044f',
                 police_copter_station_missions:
                     '\u041f\u043e\u043b\u0438\u0446\u0435\u0439\u0441\u043a\u0430\u044f \u0430\u0432\u0438\u0430\u0446\u0438\u044f',
+                police_depot: 'Police Depot',
                 police_school_missions:
                     '\u0410\u043a\u0430\u0434\u0435\u043c\u0438\u044f \u043f\u043e\u043b\u0438\u0446\u0438\u0438',
                 police_small_missions:
@@ -17359,9 +18637,13 @@ function updateAAOsTime(e) {
                     '\u0421\u043f\u0435\u0446\u043d\u0430\u0437 \u043f\u043e\u043b\u0438\u0446\u0438\u0438',
                 staging_area_missions:
                     '\u041f\u0443\u043d\u043a\u0442 \u0441\u0431\u043e\u0440\u0430',
+                technical_aid: 'Search and Rescue HQ',
+                technical_aid_missions: 'SAR',
                 technical_aid_organization: '\u041c\u0427\u0421',
                 technical_aid_organization_school:
                     '\u0412\u044b\u0441\u0448\u0430\u044f \u0448\u043a\u043e\u043b\u0430 \u041c\u0427\u0421',
+                tow_trucks: 'Recovery Centers',
+                tow_trucks_missions: 'Recovery Vehicles',
                 user_buildings:
                     '\u041c\u043e\u0438 \u0437\u0434\u0430\u043d\u0438\u044f',
                 user_missions:
@@ -17431,6 +18713,13 @@ function updateAAOsTime(e) {
                 unattended_description:
                     '\u041c\u0438\u0441\u0441\u0438\u0438 \u0431\u0435\u0437 \u043f\u0440\u0438\u0441\u043c\u043e\u0442\u0440\u0430',
             },
+            mission_range: {
+                premium_alert: {
+                    description:
+                        'You need to have a premium account for this feature.',
+                    title: 'Mission generation range could not be selected.',
+                },
+            },
             mission_speed: {
                 premium_alert: {
                     description:
@@ -17450,6 +18739,8 @@ function updateAAOsTime(e) {
                 '\u0423\u0447\u0430\u0441\u0442\u0438\u0435 \u0432 \u043c\u0438\u0441\u0441\u0438\u044f\u0445 \u0430\u043b\u044c\u044f\u043d\u0441\u0430 \u043f\u0440\u0438\u043d\u0435\u0441\u0435\u0442 \u0432\u0430\u043c \u043a\u0440\u0435\u0434\u0438\u0442\u044b - \u043d\u0435\u0437\u0430\u0432\u0438\u0441\u0438\u043c\u043e \u043e\u0442 \u0442\u0438\u043f\u0430 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u043e\u0433\u043e \u0432\u0430\u043c\u0438 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u043e\u0433\u043e \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430. \u0412\u0441\u0442\u0443\u043f\u0438\u0432 \u0432 \u0430\u043b\u044c\u044f\u043d\u0441, \u0432\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0434\u0435\u043b\u0430\u0442\u044c \u0438 \u0442\u043e, \u0438 \u0434\u0440\u0443\u0433\u043e\u0435: \u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f \u0441\u0432\u043e\u0438\u043c\u0438 \u0437\u0430\u0434\u0430\u043d\u0438\u044f\u043c\u0438, \u043f\u043e\u043b\u0443\u0447\u0430\u044f \u043f\u043e\u043c\u043e\u0449\u044c \u043e\u0442 \u043e\u043f\u044b\u0442\u043d\u044b\u0445 \u0447\u043b\u0435\u043d\u043e\u0432 \u0430\u043b\u044c\u044f\u043d\u0441\u0430, \u0438 \u0443\u0447\u0430\u0441\u0442\u0432\u043e\u0432\u0430\u0442\u044c \u0432 \u043e\u0431\u0449\u0438\u0445 \u0437\u0430\u0434\u0430\u043d\u0438\u044f\u0445 \u0434\u0440\u0443\u0433\u0438\u0445, \u043f\u043e\u043b\u0443\u0447\u0430\u044f \u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0435 \u043d\u0430\u0433\u0440\u0430\u0434\u044b.',
             no_ambulance_missions:
                 '\u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u043a\u0438 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432 \u043d\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442. \u041f\u0435\u0440\u0435\u0432\u043e\u0437\u043a\u0430 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432 \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u0430 \u0442\u043e\u043b\u044c\u043a\u043e \u043f\u0440\u0438 \u043d\u0430\u043b\u0438\u0447\u0438\u0438 \u0441\u043a\u043e\u0440\u043e\u0439 \u043f\u043e\u043c\u043e\u0449\u0438 \u0438 \u0431\u043e\u043b\u044c\u043d\u0438\u0446\u044b.',
+            no_critical_transport_missions:
+                'There are no Interfacility Transfers. They can only occur when you have a Critical Care Transfer Ambulance and 2 hospitals with patients in treatment.',
             no_emergency_missions:
                 '\u041d\u0435\u0442 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b\u0445 \u0437\u0430\u0434\u0430\u043d\u0438\u0439 \u0427\u0421. \u0417\u0430\u0434\u0430\u043d\u0438\u0435 \u0427\u0421 \u043c\u043e\u0436\u0435\u0442 \u043f\u043e\u044f\u0432\u0438\u0442\u044c\u0441\u044f \u0442\u043e\u043b\u044c\u043a\u043e \u0442\u043e\u0433\u0434\u0430, \u043a\u043e\u0433\u0434\u0430 \u0432\u044b \u043f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u0435 \u0441\u0432\u043e\u044e \u043f\u0435\u0440\u0432\u0443\u044e \u0441\u0442\u0430\u043d\u0446\u0438\u044e.',
             no_radio_messages:
@@ -17491,6 +18782,22 @@ function updateAAOsTime(e) {
                 strip_insignificant_zeros: !1,
             },
         },
+        policechief: {
+            tutorial: {
+                beginner: {
+                    building: {
+                        browser: {
+                            welcome:
+                                'Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions.',
+                        },
+                        mobile: {
+                            welcome:
+                                'Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions.',
+                        },
+                    },
+                },
+            },
+        },
         tutorial: {
             beginner: {
                 building: {
@@ -17525,6 +18832,103 @@ function updateAAOsTime(e) {
                         },
                         welcome:
                             '\u0414\u043e\u0431\u0440\u043e \u043f\u043e\u0436\u0430\u043b\u043e\u0432\u0430\u0442\u044c \u0432 \u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440 112 - \u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f! \u0420\u0430\u0431\u043e\u0442\u0430\u044f \u0432 \u0434\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440\u0441\u043a\u043e\u043c \u0446\u0435\u043d\u0442\u0440\u0435 \u0430\u0432\u0430\u0440\u0438\u0439\u043d\u043e-\u0441\u043f\u0430\u0441\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0439 \u0441\u043b\u0443\u0436\u0431\u044b, \u0432\u044b \u043f\u0440\u0438\u043d\u0438\u043c\u0430\u0435\u0442\u0435 \u044d\u043a\u0441\u0442\u0440\u0435\u043d\u043d\u044b\u0435 \u0432\u044b\u0437\u043e\u0432\u044b \u0434\u043b\u044f \u043e\u043a\u0430\u0437\u0430\u043d\u0438\u044f \u043f\u043e\u043c\u043e\u0449\u0438 \u0438 \u0437\u0430\u0449\u0438\u0442\u044b \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u0438\u044f. \u0414\u043b\u044f \u044d\u0442\u043e\u0433\u043e \u0432\u044b \u0441\u0442\u0440\u043e\u0438\u0442\u0435 \u0441\u0442\u0430\u043d\u0446\u0438\u0438 \u0438 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u0435\u0442\u0435 \u043d\u0430 \u0440\u0430\u0437\u043b\u0438\u0447\u043d\u044b\u0435 \u0437\u0430\u0434\u0430\u043d\u0438\u044f \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0432\u0438\u0434\u043e\u0432 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u044b\u0445 \u0441\u0440\u0435\u0434\u0441\u0442\u0432 \u0438 \u043e\u0431\u0443\u0447\u0435\u043d\u043d\u044b\u0439 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b.',
+                    },
+                    tooltip: {
+                        ambulance_station: {
+                            helpshift_id: '1714',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station',
+                            short: 'Houses vehicles need for EMS-related missions. \nExtensions can be built, which unlocks purchasing of specialized units.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        ambulance_station_small: {
+                            helpshift_id: '1715',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station',
+                            short: 'Houses vehicles for EMS-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        clinic: {
+                            helpshift_id: '1719',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-clinic',
+                            short: 'Houses vehicles need for EMS-related missions.\nPatients can be transported here, however it is less specialized than the hospital.',
+                        },
+                        dispatch_center: {
+                            helpshift_id: '1497',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=gameplay&f=what-is-the-dispatch-center-good-for',
+                            short: 'Gives you an overview of all your buildings and allows you to group them in a dispatch area.',
+                        },
+                        firehouse: {
+                            helpshift_id: '1709',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions. \nExtensions can be built, which unlocks purchasing of specialized units. ',
+                        },
+                        firehouse_small: {
+                            helpshift_id: '1710',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        fireschool: {
+                            helpshift_id: '1711',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-academy',
+                            short: 'Allows for training firefighters to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        hazard_response_ems: {
+                            helpshift_id: '1736',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hart-base',
+                            short: 'Houses specialized EMS units that respond to Hazard-related missions. \nPersonell needs to be trained in order to operate these specialized units.',
+                        },
+                        home_response_location: {
+                            helpshift_id: '1665',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-home-response-location-hrl-uk-game-version',
+                            short: 'This building houses rescue workers which are on call.',
+                        },
+                        hospital: {
+                            helpshift_id: '1718',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hospital',
+                            short: 'For more severe conditions, patients can be transported here. \nAdditional credits can be earned with patients treated.',
+                        },
+                        police_copter_station: {
+                            helpshift_id: '1731',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-helicopter-station',
+                            short: 'Houses aircrafts for police-related missions.\nA helicopter needs to be purchased separately. ',
+                        },
+                        police_depot: {
+                            helpshift_id: '1741',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version',
+                            short: 'Houses specialist police units that are often stored in large police depots. \nYou can only build one of these per 50 police buildings. Prison cells are available in this building.',
+                        },
+                        police_school: {
+                            helpshift_id: '1724',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-academy',
+                            short: 'Allows for training police officers to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        police_small: {
+                            helpshift_id: '1723',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-police-station',
+                            short: 'Houses vehicles needed for police-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        police_station: {
+                            helpshift_id: '1722',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-station',
+                            short: 'Houses vehicles needed for police-related missions. \nExtensions can be built, which unlocks purchasing of specialized units ',
+                        },
+                        prison: {
+                            helpshift_id: '1734',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-prison',
+                            short: 'Prisoners can be transported here. \nA Prison can only be built with alliance funds.',
+                        },
+                        rescue_copter_station: {
+                            helpshift_id: '1720',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-helicopter-station',
+                            short: 'Houses helicopters for treatment of patients with very serious injuries. \nA helicopter needs to be purchased separately. ',
+                        },
+                        rescue_school: {
+                            helpshift_id: '1716',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-rescue-academy',
+                            short: 'Allows for training EMS personnel to perform advanced treatments and using specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        staging_area: {
+                            helpshift_id: '1732',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-staging-area',
+                            short: 'The staging area can be built for free and will remain for 24 hours. \nDuring this time, units can be temporarily stationed here and dispatched to a mission.',
+                        },
                     },
                 },
                 mission: {
@@ -17659,6 +19063,7 @@ function updateAAOsTime(e) {
             coins_spend: 'Er du sikker p\xe5, at du vil bruge disse m\xf8nter?',
             congratulations: 'Tillykke!',
             content: 'Indhold',
+            copy: 'Copy',
             credits: 'Kreditter',
             credits_max: 'Max kreditter',
             credits_min: 'Min kreditter',
@@ -17736,6 +19141,9 @@ function updateAAOsTime(e) {
             waiting_for_vehicle: 'Venter p\xe5 bugseringsk\xf8ret\xf8j',
         },
         intervention_order: {
+            assigns_equipment_automatically: 'Assigns Equipment Automatically',
+            assigns_equipment_automatically_hint:
+                'If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment. <br><i>(Does not exclusively choose equipment and only affects ARRs marked with %{icon})</i>',
             automatic_text_color: 'Automatisk tekstfarve',
             back: 'Tilbage',
             car_carrier: 'Grillvogn eller Ladvogn',
@@ -17773,6 +19181,7 @@ function updateAAOsTime(e) {
                 saved_text:
                     'Dine alarm- og beredskabsreguleringer er klar til eksport. Med linket kan en anden spiller importere alarm- og beredskabsreguleringerne. Hvis du i mellemtiden \xe6ndrer dine alarm- og beredskabsreguleringer, bliver denne \xe6ndring automatisk brugt i eksporten.',
             },
+            flood_equipment: 'Flood Rescue Units',
             hotkey_hint:
                 'V\xe6lg en genvejstast for dette k\xf8ret\xf8jsvalg. Tryk f\xf8lgende i dit missionsvindue: ALT + din genvejstast (eller med Firefox: ALT + SHIFT + din genvejstast eller p\xe5 Mac OS: CTRL + ALT + din genvejstast) for at v\xe6lge k\xf8ret\xf8j(er).',
             intervention_order: 'Redig\xe9r alarm- og beredskabsreguleringer',
@@ -17806,26 +19215,42 @@ function updateAAOsTime(e) {
                 ab_ruest: 'Teknologi-/redningsmodul',
                 abl2wasser_only: 'Brandslangemodul',
                 ambulance: 'ALS-ambulance',
+                any_traffic_car: 'Any Traffic Car',
                 arff: 'ARFF (lufthavnsbrandbil)',
                 battalion_chief_unit: 'Indsatsleder Brand',
                 bomb_disposal: 'Mangler af EOD-udrykningsk\xf8ret\xf8j',
                 bomb_disposal_command: 'Mangler af EOD-ledere',
+                bomb_disposal_crew: 'EOD Response Vehicles',
                 bomb_disposal_diver_crew: 'Mangler af EOD-dykkerk\xf8ret\xf8j',
                 bomb_disposal_diver_equipment:
                     'Mangler af Marine EOD-k\xf8ret\xf8j',
                 bomb_disposal_equipment: 'Mangler af EOD-spr\xe6ngningsvogn',
+                bomb_disposal_equipment_2: 'EOD Heavy Equipment Vehicles',
+                bomb_disposal_heavy_equipment: 'EOD Heavy Equipment Vehicles',
                 boot: 'B\xe5de (generelt)',
+                car_carrier: 'Any Recovery Vehicle',
+                car_carrier_large: 'Any HGV Recovery Vehicle',
+                coastal_helicopter: 'Coastguard Rescue Helicopter',
+                coastal_rescue:
+                    'Coastal Rescue, Rope Rescue or Mud Rescue Vehicle',
+                coresponder: 'Co-Responder Vehicle',
+                crew_carrier: 'Crew Carrier',
                 division_chief_unit: 'Mobilkommando-k\xf8ret\xf8j',
+                drone: 'Drone Equipment',
                 elw1_or_elw2:
                     'Indsatsleder Brand eller Ledelses- og kommunikationsmodul',
+                elw2_or_ab_elw: 'ICCU / ACU',
                 elw_police: 'Indsatsleder Politi',
                 emergency_ambulance: 'Ambulance eller Rednings Helikopter',
+                emergency_welfare: 'Any Crew Welfare Vehicle',
                 energy_supply: 'N\xf8dstr\xf8ms Forsyning',
                 fire_engine_and_water_carrier: 'Tankspr\xf8jte',
                 fire_truck: 'Brandbiler',
                 fire_water_sprayer: 'Tankspr\xf8jte',
                 fireboat: 'Stor brandb\xe5d',
+                flood_equipment: 'Flood Rescue',
                 fly_car: 'Akutl\xe6ge',
+                foam: 'Foam Tenders or RIV',
                 foam_amount: 'Liter af skum',
                 fustw_or_police_motorcycle:
                     'Patruljevogn eller Politimotorcykel',
@@ -17836,33 +19261,43 @@ function updateAAOsTime(e) {
                 gw_messtechnik: 'GW-Messtechnik',
                 gw_taucher: 'Dykkerbil',
                 gw_wasserrettung: 'Overfladeredderbil',
+                gwl2wasser: 'Water Carrier or Major Foam Tender',
                 gwl2wasser_only: 'Brandslangek\xf8ret\xf8j',
                 hems: 'Rednings Helikopter',
                 hlf_only: 'Specialspr\xf8jte',
                 hlf_or_rw_and_lf:
                     'Specialspr\xf8jte eller Tung Redningsvogn og Autospr\xf8jte',
                 hose_trucks: 'Slange Tendere',
+                joint_response_unit: 'Joint Response Unit',
                 k9: 'Hundepatrulje',
                 kdow_orgl: 'Indsatsleder Sund',
+                kdow_orgl_any: 'OTL / Ambulance Officer',
                 lebefkw: 'Leichter Befehlskraftwagen (leBefKw)',
                 lf_only: 'Brandbiler',
                 long_distance_ambulance: 'Regionsambulance',
                 mask_service_unit: 'H\xf8jtrykskompressor',
+                mass_casualty_equipment:
+                    'Mass Casualty Equipment or Medical Equipment Trailer',
                 mtw: 'Mandskabstransport',
                 mzb: 'B\xe5dtrailer',
                 nef_only: 'Ambulance',
                 oil_unit: 'GW-\xd6l',
                 police_car: 'Patruljebil',
                 police_motorcycle: 'Politimotorcykel',
+                police_patrol_and_prisoner_transport: 'Cell Van',
+                police_prisoner_transport: 'Cell Van',
                 polizeihubschrauber: 'Politihelikopter',
                 pump_speed: 'Pumpekapacitet',
                 pump_speed_pump_only: 'Pumpekapacitet - kun pumper',
+                rescue_dogs: 'Rescue Dogs',
                 rescue_vehicle: 'Redningsvogn',
                 rescue_vehicle_only: 'Tung redning',
                 rescueboat: 'Stor redningsb\xe5d',
                 riot_police: 'Gruppevogn og Holl\xe6ndervogn',
                 rth_only: 'Rednings Helikopter',
                 schlauchwagen: 'Vandtankvogn',
+                search_and_rescue: 'SAR Units',
+                search_and_rescue_command: 'Any Control Van',
                 swat: 'AKS',
                 swat_armored_vehicle: 'AKS Pansret mandskabsvogn',
                 swat_suv: 'AKS Patruljevogn',
@@ -17905,6 +19340,10 @@ function updateAAOsTime(e) {
                     ' Du har i \xf8jeblikket %{amount} %{alliance_event_currency}!',
                 info_bubble_text_disabled:
                     'Begivenheden kan ikke l\xe6ngere startes, fordi p\xe5skeeventens sluttidspunkt er ved midnat.',
+                stpatricks: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 summer: {
                     currency: 'Billetter til arrangementer',
                     event_start_mission:
@@ -18009,6 +19448,8 @@ function updateAAOsTime(e) {
                 'Du har i \xf8jeblikket brugerdefinerede missionomr\xe5der for %{current}/%{total}. Med et premiumabonnement kan du g\xf8re et brugerdefineret missionomr\xe5de tilg\xe6ngeligt for hver missionstype.',
             user_not_found: 'Spilleren blev ikke fundet',
             vehicle_payload: {
+                apply_payload: 'Apply Payload',
+                change_payload: 'Change Payload',
                 hide_payload: 'Skjul nyttelast',
                 show_payload: 'Vis nyttelast',
             },
@@ -18069,16 +19510,19 @@ function updateAAOsTime(e) {
                 clinic_missions: 'Klinik',
                 coastal_rescue: 'Kystredning',
                 coastal_rescue_missions: 'Kystredning',
+                custody_suite: 'Custody Suite',
                 dispatch_center_missions: 'Alarmcentral',
                 fire_school_missions: 'Brandakademi',
                 firehouse_missions: 'Brandstation',
                 firehouse_small_missions: 'Brandstation (lille station)',
+                general_practitioner: 'GP Surgery',
                 hospital_missions: 'Hospital',
                 map_filters: 'Liste over kortfiltre',
                 mission_positions: 'Interessepunkter (POI)',
                 mission_positions_section: 'POI',
                 missions_section: 'Missioner',
                 police_copter_station_missions: 'Politihelikopterstation',
+                police_depot: 'Police Depot',
                 police_school_missions: 'Politiskole',
                 police_small_missions: 'Politistation (lille station)',
                 police_special_forces: 'Politiets specialstyrke',
@@ -18089,6 +19533,8 @@ function updateAAOsTime(e) {
                 riot_police: 'Uropoliti',
                 riot_police_missions: 'Uropoliti',
                 staging_area_missions: 'Opstillingsomr\xe5de',
+                technical_aid: 'Search and Rescue HQ',
+                technical_aid_missions: 'SAR',
                 technical_aid_organization: 'Beredskabskorps',
                 technical_aid_organization_school: 'THW Bundesschule',
                 tow_trucks: 'Vejhj\xe6lps Station',
@@ -18137,6 +19583,13 @@ function updateAAOsTime(e) {
                     'Missioner, der er p\xe5begyndt, men ikke afsluttet',
                 unattended: 'Uoverv\xe5gede missioner',
                 unattended_description: 'Uoverv\xe5gede missioner',
+            },
+            mission_range: {
+                premium_alert: {
+                    description:
+                        'You need to have a premium account for this feature.',
+                    title: 'Mission generation range could not be selected.',
+                },
             },
             mission_speed: {
                 premium_alert: {
@@ -18238,6 +19691,103 @@ function updateAAOsTime(e) {
                         },
                         welcome:
                             'Velkommen til Alarmcentral spillet! N\xe5r du arbejder i en alarmcentral, h\xe5ndterer du n\xf8dopkald for at hj\xe6lpe og beskytte offentligheden. For at g\xf8re det bygger du stationer og sender flere typer k\xf8ret\xf8jer og uddannet personale til en r\xe6kke forskellige missioner',
+                    },
+                    tooltip: {
+                        ambulance_station: {
+                            helpshift_id: '1714',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station',
+                            short: 'Houses vehicles need for EMS-related missions. \nExtensions can be built, which unlocks purchasing of specialized units.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        ambulance_station_small: {
+                            helpshift_id: '1715',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station',
+                            short: 'Houses vehicles for EMS-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        clinic: {
+                            helpshift_id: '1719',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-clinic',
+                            short: 'Houses vehicles need for EMS-related missions.\nPatients can be transported here, however it is less specialized than the hospital.',
+                        },
+                        dispatch_center: {
+                            helpshift_id: '1497',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=gameplay&f=what-is-the-dispatch-center-good-for',
+                            short: 'Gives you an overview of all your buildings and allows you to group them in a dispatch area.',
+                        },
+                        firehouse: {
+                            helpshift_id: '1709',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions. \nExtensions can be built, which unlocks purchasing of specialized units. ',
+                        },
+                        firehouse_small: {
+                            helpshift_id: '1710',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        fireschool: {
+                            helpshift_id: '1711',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-academy',
+                            short: 'Allows for training firefighters to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        hazard_response_ems: {
+                            helpshift_id: '1736',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hart-base',
+                            short: 'Houses specialized EMS units that respond to Hazard-related missions. \nPersonell needs to be trained in order to operate these specialized units.',
+                        },
+                        home_response_location: {
+                            helpshift_id: '1665',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-home-response-location-hrl-uk-game-version',
+                            short: 'This building houses rescue workers which are on call.',
+                        },
+                        hospital: {
+                            helpshift_id: '1718',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hospital',
+                            short: 'For more severe conditions, patients can be transported here. \nAdditional credits can be earned with patients treated.',
+                        },
+                        police_copter_station: {
+                            helpshift_id: '1731',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-helicopter-station',
+                            short: 'Houses aircrafts for police-related missions.\nA helicopter needs to be purchased separately. ',
+                        },
+                        police_depot: {
+                            helpshift_id: '1741',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version',
+                            short: 'Houses specialist police units that are often stored in large police depots. \nYou can only build one of these per 50 police buildings. Prison cells are available in this building.',
+                        },
+                        police_school: {
+                            helpshift_id: '1724',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-academy',
+                            short: 'Allows for training police officers to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        police_small: {
+                            helpshift_id: '1723',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-police-station',
+                            short: 'Houses vehicles needed for police-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        police_station: {
+                            helpshift_id: '1722',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-station',
+                            short: 'Houses vehicles needed for police-related missions. \nExtensions can be built, which unlocks purchasing of specialized units ',
+                        },
+                        prison: {
+                            helpshift_id: '1734',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-prison',
+                            short: 'Prisoners can be transported here. \nA Prison can only be built with alliance funds.',
+                        },
+                        rescue_copter_station: {
+                            helpshift_id: '1720',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-helicopter-station',
+                            short: 'Houses helicopters for treatment of patients with very serious injuries. \nA helicopter needs to be purchased separately. ',
+                        },
+                        rescue_school: {
+                            helpshift_id: '1716',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-rescue-academy',
+                            short: 'Allows for training EMS personnel to perform advanced treatments and using specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        staging_area: {
+                            helpshift_id: '1732',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-staging-area',
+                            short: 'The staging area can be built for free and will remain for 24 hours. \nDuring this time, units can be temporarily stationed here and dispatched to a mission.',
+                        },
                     },
                 },
                 mission: {
@@ -18370,6 +19920,7 @@ function updateAAOsTime(e) {
             coins_spend: 'Er du sikker p\xe5 at du vil bruke disse myntene?',
             congratulations: 'Gratulerer!',
             content: 'Innhold',
+            copy: 'Copy',
             credits: 'Kreditter',
             credits_max: 'Maks studiepoeng',
             credits_min: 'Min studiepoeng',
@@ -18489,6 +20040,7 @@ function updateAAOsTime(e) {
                 saved_text:
                     'Alarm og respons-reguleringen er klargjort for eksport. Via koblingen kan andre spillere importere Alarm og respons-reguleringen. Hvis du i mellomtiden endrer Alarm og respons-reguleringen, reflekteres endringene i automatisk i eksporten.',
             },
+            flood_equipment: 'Flood Rescue Units',
             hotkey_hint:
                 'Velg en snarvei for dette fremkomstmiddelvalget. Oppgi i oppdragsvinduet: ALT + snarveien (eller i Firefox: ALT + SHIFT + snarveien, eller p\xe5 mac os: ctrl + alt + snarveien) for \xe5 velge fremkomstmiddelvalget.',
             intervention_order: 'Rediger Alarm og respons-reguleringer',
@@ -18518,20 +20070,37 @@ function updateAAOsTime(e) {
                 any_traffic_car: 'Utrykningspolitibil',
                 arff: 'Flyplassbrannbil',
                 battalion_chief_unit: 'Innsatsleder brann',
+                bomb_disposal: 'EOD Response Vehicles',
+                bomb_disposal_command: 'EOD Commanders',
+                bomb_disposal_crew: 'EOD Response Vehicles',
+                bomb_disposal_diver_crew: 'Marine EOD Response Vehicles',
+                bomb_disposal_diver_equipment: 'Marine EOD Equipment Vans',
+                bomb_disposal_equipment: 'EOD Medium Equipment Vans',
+                bomb_disposal_equipment_2: 'EOD Heavy Equipment Vehicles',
+                bomb_disposal_heavy_equipment: 'EOD Heavy Equipment Vehicles',
                 boot: 'B\xe5ter (generelt)',
                 car_carrier: 'Ethvert bergningsbil eller planbil',
                 car_carrier_large: 'Ethvert tungberger eller rotator',
                 coastal_boat: 'Redningsb\xe5t',
                 coastal_guard_boat: 'Kystvaktb\xe5t',
+                coastal_helicopter: 'Coastguard Rescue Helicopter',
+                coastal_rescue:
+                    'Coastal Rescue, Rope Rescue or Mud Rescue Vehicle',
                 coresponder: 'First responder bil',
+                crew_carrier: 'Crew Carrier',
                 division_chief_unit: 'Innsatsst\xf8ttebil',
+                drone: 'Drone Equipment',
                 elw1_or_elw2: 'Innsatsleder brann eller innsatsst\xf8ttebil',
+                elw2_or_ab_elw: 'ICCU / ACU',
                 emergency_ambulance: 'Ambulanse eller luftambulanse',
+                emergency_welfare: 'Any Crew Welfare Vehicle',
                 fire_truck: 'Brannbil',
                 fireboat: 'Brannb\xe5t',
+                flood_equipment: 'Flood Rescue',
                 fly_car: 'Legebil',
                 fly_car_any:
                     'Legebil / Akuttbil / First responder bil / Akutthjelper / Ambulansemotorsykkel',
+                foam: 'Foam Tenders or RIV',
                 foam_amount: 'Liter med skum',
                 fustw_or_police_motorcycle:
                     'Patruljebil eller Politimotorsykkel',
@@ -18543,12 +20112,14 @@ function updateAAOsTime(e) {
                 gw_messtechnik: 'GW-Messtechnik',
                 gw_taucher: 'Dykkerbil',
                 gw_wasserrettung: 'Dykkerbil',
+                gwl2wasser: 'Water Carrier or Major Foam Tender',
                 gwl2wasser_only: 'Tankbil',
                 hems: 'Luftambulanse',
                 hlf_only: 'Redningsbil',
                 hlf_or_rw_and_lf:
                     'Redningsbil eller Tungredningsbil og Brannbil',
                 hose_trucks: 'Slangebil eller Slangetilhenger',
+                joint_response_unit: 'Joint Response Unit',
                 k9: 'Hundepatrulje',
                 kdow_orgl: 'Innsatsleder Helse',
                 kdow_orgl_any: 'Innsatslederbil helse',
@@ -18557,6 +20128,8 @@ function updateAAOsTime(e) {
                 lf_only: 'Brannbil',
                 long_distance_ambulance: 'Syketransport',
                 mask_service_unit: 'R\xf8ykdykkerbil',
+                mass_casualty_equipment:
+                    'Mass Casualty Equipment or Medical Equipment Trailer',
                 mountain_atv: 'Fjellrednings-ATV',
                 mountain_command: 'Fjellredningskommando',
                 mountain_height_rescue: 'Klatreutstyr',
@@ -18570,16 +20143,21 @@ function updateAAOsTime(e) {
                 police_boat: 'Politib\xe5t',
                 police_car: 'Patruljebil',
                 police_motorcycle: 'Politimotorsykkel',
+                police_patrol_and_prisoner_transport: 'Cell Van',
+                police_prisoner_transport: 'Cell Van',
                 polizeihubschrauber: 'Politihelikopter',
                 pump: 'Tilhengerpumpe eller Slangebil med pumpe',
                 pump_speed: 'Pumpekapasitet',
                 pump_speed_pump_only: 'Pumpekapasitet - Kun pumper',
                 rescue_coordinator: 'Fjellredningskoordinator',
+                rescue_dogs: 'Rescue Dogs',
                 rescue_vehicle: 'Tungredningsbil',
                 rescue_vehicle_only: 'Tungredningsbil',
                 rescueboat: 'Ambulanseb\xe5t',
                 rth_only: 'Luftambulanse',
                 schlauchwagen: 'Tankbil',
+                search_and_rescue: 'SAR Units',
+                search_and_rescue_command: 'Any Control Van',
                 swat: 'Politi med v\xe5pentrening',
                 swat_armored_vehicle: 'Pansret kj\xf8ret\xf8y',
                 swat_suv: 'Delta kj\xf8ret\xf8y',
@@ -18625,6 +20203,10 @@ function updateAAOsTime(e) {
                     ' Du har for \xf8yeblikket %{amount} %{alliance_event_currency}!',
                 info_bubble_text_disabled:
                     'Arrangementet kan ikke startes lenger fordi p\xe5skearrangementets sluttidspunkt er mindre enn 3 timer unna.',
+                stpatricks: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 summer: {
                     currency: 'Billetter til arrangementer',
                     event_start_mission:
@@ -18784,15 +20366,18 @@ function updateAAOsTime(e) {
                 alliance_missions: 'Delt av allianse',
                 ambulance_station_missions: 'Ambulansestasjon',
                 ambulance_station_small_missions: 'Ambulansestasjon (liten)',
+                bomb_disposal_missions: 'Bomb Disposal HQ',
                 building_complex: 'Bygningskompleks',
                 buildings_section: 'Stasjoner',
                 clinic_missions: 'Legevakt',
                 coastal_rescue: 'Kystredning',
                 coastal_rescue_missions: 'Kystredning',
+                custody_suite: 'Custody Suite',
                 dispatch_center_missions: 'N\xf8detatssenter',
                 fire_school_missions: 'Brannskole',
                 firehouse_missions: 'Brannstasjon',
                 firehouse_small_missions: 'Brannstasjon (liten)',
+                general_practitioner: 'GP Surgery',
                 hospital_missions: 'Sykehus',
                 map_filters: 'Kartfilterliste',
                 mission_positions: 'Interessepunkt',
@@ -18801,6 +20386,7 @@ function updateAAOsTime(e) {
                 mountain_rescue: 'Fjellredningsstasjon',
                 mountain_rescue_missions: 'Fjellredning',
                 police_copter_station_missions: 'Politiheliport',
+                police_depot: 'Police Depot',
                 police_school_missions: 'Politiskole',
                 police_small_missions: 'Politistasjon (liten)',
                 police_special_forces: 'Politiets spesialstyrker',
@@ -18861,6 +20447,13 @@ function updateAAOsTime(e) {
                     'Oppdrag som er p\xe5begynt, men ikke fullf\xf8rt',
                 unattended: 'Oppdrag uten tilsyn',
                 unattended_description: 'Oppdrag uten tilsyn',
+            },
+            mission_range: {
+                premium_alert: {
+                    description:
+                        'You need to have a premium account for this feature.',
+                    title: 'Mission generation range could not be selected.',
+                },
             },
             mission_speed: {
                 premium_alert: {
@@ -18964,6 +20557,103 @@ function updateAAOsTime(e) {
                         },
                         welcome:
                             'Velkommen til n\xf8dsentralspillet! Du jobber p\xe5 en n\xf8dmeldingssentral for n\xf8detatene og h\xe5ndterer n\xf8dsamtaler for \xe5 hjelpe og beskytte publikum. For \xe5 gj\xf8re dette bygger du stasjoner og sender ut ulike typer kj\xf8ret\xf8y og oppl\xe6rt personell til forskjellige oppdrag.',
+                    },
+                    tooltip: {
+                        ambulance_station: {
+                            helpshift_id: '1714',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station',
+                            short: 'Houses vehicles need for EMS-related missions. \nExtensions can be built, which unlocks purchasing of specialized units.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        ambulance_station_small: {
+                            helpshift_id: '1715',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station',
+                            short: 'Houses vehicles for EMS-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        clinic: {
+                            helpshift_id: '1719',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-clinic',
+                            short: 'Houses vehicles need for EMS-related missions.\nPatients can be transported here, however it is less specialized than the hospital.',
+                        },
+                        dispatch_center: {
+                            helpshift_id: '1497',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=gameplay&f=what-is-the-dispatch-center-good-for',
+                            short: 'Gives you an overview of all your buildings and allows you to group them in a dispatch area.',
+                        },
+                        firehouse: {
+                            helpshift_id: '1709',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions. \nExtensions can be built, which unlocks purchasing of specialized units. ',
+                        },
+                        firehouse_small: {
+                            helpshift_id: '1710',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        fireschool: {
+                            helpshift_id: '1711',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-academy',
+                            short: 'Allows for training firefighters to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        hazard_response_ems: {
+                            helpshift_id: '1736',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hart-base',
+                            short: 'Houses specialized EMS units that respond to Hazard-related missions. \nPersonell needs to be trained in order to operate these specialized units.',
+                        },
+                        home_response_location: {
+                            helpshift_id: '1665',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-home-response-location-hrl-uk-game-version',
+                            short: 'This building houses rescue workers which are on call.',
+                        },
+                        hospital: {
+                            helpshift_id: '1718',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hospital',
+                            short: 'For more severe conditions, patients can be transported here. \nAdditional credits can be earned with patients treated.',
+                        },
+                        police_copter_station: {
+                            helpshift_id: '1731',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-helicopter-station',
+                            short: 'Houses aircrafts for police-related missions.\nA helicopter needs to be purchased separately. ',
+                        },
+                        police_depot: {
+                            helpshift_id: '1741',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version',
+                            short: 'Houses specialist police units that are often stored in large police depots. \nYou can only build one of these per 50 police buildings. Prison cells are available in this building.',
+                        },
+                        police_school: {
+                            helpshift_id: '1724',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-academy',
+                            short: 'Allows for training police officers to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        police_small: {
+                            helpshift_id: '1723',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-police-station',
+                            short: 'Houses vehicles needed for police-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        police_station: {
+                            helpshift_id: '1722',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-station',
+                            short: 'Houses vehicles needed for police-related missions. \nExtensions can be built, which unlocks purchasing of specialized units ',
+                        },
+                        prison: {
+                            helpshift_id: '1734',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-prison',
+                            short: 'Prisoners can be transported here. \nA Prison can only be built with alliance funds.',
+                        },
+                        rescue_copter_station: {
+                            helpshift_id: '1720',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-helicopter-station',
+                            short: 'Houses helicopters for treatment of patients with very serious injuries. \nA helicopter needs to be purchased separately. ',
+                        },
+                        rescue_school: {
+                            helpshift_id: '1716',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-rescue-academy',
+                            short: 'Allows for training EMS personnel to perform advanced treatments and using specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        staging_area: {
+                            helpshift_id: '1732',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-staging-area',
+                            short: 'The staging area can be built for free and will remain for 24 hours. \nDuring this time, units can be temporarily stationed here and dispatched to a mission.',
+                        },
                     },
                 },
                 mission: {
@@ -19097,6 +20787,7 @@ function updateAAOsTime(e) {
             coins_spend: 'Opravdu chcete mince utratit?',
             congratulations: 'Blahop\u0159ejeme!',
             content: 'Obsah',
+            copy: 'Copy',
             credits: 'Kredity',
             credits_max: 'Maxim\xe1ln\xed kredit\u016f',
             credits_min: 'Min. kredit\u016f',
@@ -19170,6 +20861,7 @@ function updateAAOsTime(e) {
             ready_home: 'K dispozici',
             ready_traveling: 'K dispozici (na cest\u011b)',
             talking_wish: '\u017d\xe1dost o p\u0159evoz',
+            transporting_car: 'Transporting Vehicle',
             waiting_for_vehicle: '\u010cek\xe1n\xed na odtah',
         },
         intervention_order: {
@@ -19179,12 +20871,14 @@ function updateAAOsTime(e) {
                 'Pokud je aktivn\xed, ARR m\u016f\u017ee p\u0159i\u0159adit vybaven\xed k vozidl\u016fm. Vybere nejbli\u017e\u0161\xed jednotku nebo vybaven\xed. (Nevyb\xedr\xe1 v\xfdhradn\u011b vybaven\xed)',
             automatic_text_color: 'Automatick\xe1 barva textu',
             back: 'Zp\u011bt',
+            car_carrier: 'Recovery Vehicle or Flatbed Recovery Vehicle',
             categories: {
                 bereitschaftspolizei: 'Po\u0159\xe1dkov\xe1 jednotka',
                 firefighting: 'Hasi\u010dsk\xfd v\u016fz',
                 mountain_rescue: 'Horsk\xfd z\xe1chran\xe1\u0159',
                 police: 'Policie',
                 rescue: 'Sanitka',
+                tow_trucks: 'Recovery Vehicles',
                 water_rescue: 'Vodn\xed z\xe1chrann\xe1 slu\u017eba',
             },
             category: 'Kategorie',
@@ -19213,6 +20907,7 @@ function updateAAOsTime(e) {
                 saved_text:
                     'Pravidlo nouzov\xe9ho v\xfdjezdu je p\u0159ipraven\xe9 k exportu. Ostatn\xed hr\xe1\u010di mohou pravidlo importovat pomoc\xed odkazu. Pokud mezit\xedm pravidlo zm\u011bn\xedte, zm\u011bna se automaticky prom\xedtne i do exportu.',
             },
+            flood_equipment: 'Flood Rescue Units',
             hotkey_hint:
                 'P\u0159i\u0159a\u010fte tomuto v\xfdb\u011bru kl\xe1vesu. V okn\u011b s mis\xed stiskn\u011bte: ALT + kl\xe1vesa (nebo ve Firefoxu: ALT + SHIFT + kl\xe1vesa, nebo na Mac OS: CTRL + ALT + kl\xe1vesa), a t\xedm prove\u010fte p\u0159ednastaven\xfd v\xfdb\u011br vozidel.',
             intervention_order: 'Upravit pravidla nouzov\xfdch v\xfdjezd\u016f',
@@ -19248,13 +20943,31 @@ function updateAAOsTime(e) {
                     'Dod\xe1vka pro mimo\u0159\xe1dnou ud\xe1lost',
                 ambulance_mass_casualty_large: 'Velkokapacitn\xed vozidlo',
                 any_traffic_car: 'Vozidlo vy\u0161et\u0159ovatel\u016f DN',
+                arff: 'ARFF (Airport Fire Truck)',
                 battalion_chief_unit: 'Velitelsk\xfd automobil',
+                bomb_disposal: 'EOD Response Vehicles',
+                bomb_disposal_command: 'EOD Commanders',
+                bomb_disposal_crew: 'EOD Response Vehicles',
+                bomb_disposal_diver_crew: 'Marine EOD Response Vehicles',
+                bomb_disposal_diver_equipment: 'Marine EOD Equipment Vans',
+                bomb_disposal_equipment: 'EOD Medium Equipment Vans',
+                bomb_disposal_equipment_2: 'EOD Heavy Equipment Vehicles',
+                bomb_disposal_heavy_equipment: 'EOD Heavy Equipment Vehicles',
                 boot: 'P\u0159\xedv\u011bs se \u010dlunem',
+                car_carrier: 'Any Recovery Vehicle',
+                car_carrier_large: 'Any HGV Recovery Vehicle',
+                coastal_helicopter: 'Coastguard Rescue Helicopter',
+                coastal_rescue:
+                    'Coastal Rescue, Rope Rescue or Mud Rescue Vehicle',
+                coresponder: 'Co-Responder Vehicle',
+                crew_carrier: 'Crew Carrier',
                 crew_carrier_or_fire_engine: 'CAS nebo DA',
                 division_chief_unit: 'MOS',
+                drone: 'Drone Equipment',
                 elw1_or_elw2: 'VEA nebo MOS',
                 elw2_or_ab_elw: 'MOS nebo \u0159\xedzen\xed provozu',
                 emergency_ambulance: 'Sanitka nebo vrtuln\xedk',
+                emergency_welfare: 'Any Crew Welfare Vehicle',
                 ems_mobile_command: 'Vedouc\xed z\xe1sahu',
                 ems_operations_support:
                     'Jednotka podpory z\xe1chrann\xe9 slu\u017eby',
@@ -19263,8 +20976,10 @@ function updateAAOsTime(e) {
                 fire_helicopter: 'Hasi\u010dsk\xfd vrtuln\xedk S-70M',
                 fire_truck: 'Hasi\u010dsk\xe9 vozy',
                 fireboat: 'Velk\xe1 hasi\u010dsk\xe1 lo\u010f',
+                flood_equipment: 'Flood Rescue',
                 fly_car: 'L\xe9ka\u0159sk\xe9 vozidlo RV',
                 fly_car_any: 'Samoch\xf3d Lekarza  / SRMed / Motoambulans',
+                foam: 'Foam Tenders or RIV',
                 foam_amount: 'Litry p\u011bny p\u011bna',
                 fustw_or_police_motorcycle:
                     'Policejn\xed automobil nebo Policejn\xed motocykl',
@@ -19277,10 +20992,15 @@ function updateAAOsTime(e) {
                 gw_taucher: 'Pot\xe1p\u011b\u010dsk\xfd automobil',
                 gw_wasserrettung:
                     'SUV VZS \u010c\u010cK nebo Dod\xe1vka VZS \u010c\u010cK',
+                gwl2wasser: 'Water Carrier or Major Foam Tender',
                 gwl2wasser_only: 'Vozidlo s hadic\xed',
                 heli_tank: 'Mobiln\xed n\xe1dr\u017e',
                 helicopter_bucket: 'Bambi vak',
                 hems: 'LZS',
+                hlf_only: 'Rescue Pump',
+                hlf_or_rw_and_lf:
+                    'Rescue Pump or Rescue Support Unit and Fire engine',
+                joint_response_unit: 'Joint Response Unit',
                 k9: 'Vozidlo Kynolog\u016f P\u010cR',
                 kdow_orgl: 'IP',
                 kdow_orgl_any: 'IP',
@@ -19303,10 +21023,13 @@ function updateAAOsTime(e) {
                 police_car: 'Hl\xeddkov\xfd v\u016fz',
                 police_horse: 'J\xedzdn\xed jednotka P\u010cR',
                 police_motorcycle: 'Policejn\xed motocykl',
+                police_patrol_and_prisoner_transport: 'Cell Van',
+                police_prisoner_transport: 'Cell Van',
                 polizeihubschrauber: 'Policejn\xed vrtuln\xedk',
                 pump_speed: 'Kapacita \u010derpadla',
                 pump_speed_pump_only:
                     'Kapacita \u010derpadla - pouze \u010derpadla',
+                rescue_dogs: 'Rescue Dogs',
                 rescue_vehicle: 'Technick\xfd automobil',
                 rescue_vehicle_only:
                     'T\u011b\u017ek\xe1 z\xe1chran\xe1\u0159sk\xe1 jednotka',
@@ -19314,6 +21037,8 @@ function updateAAOsTime(e) {
                 road_rescue_or_fire_engine: 'CAS nebo RZA',
                 rth_only: 'Vrtuln\xedk LZS',
                 schlauchwagen: 'Kombinovan\xfd has\xedc\xed automobil',
+                search_and_rescue: 'SAR Units',
+                search_and_rescue_command: 'Any Control Van',
                 swat: 'URNA',
                 swat_armored_vehicle: 'Obrn\u011bn\xe9 vozidlo URNA',
                 swat_suv: 'URNA SUV',
@@ -19370,6 +21095,10 @@ function updateAAOsTime(e) {
                     ' V sou\u010dasn\xe9 dob\u011b m\xe1te %{amount} %{alliance_event_currency}!',
                 info_bubble_text_disabled:
                     'Akci ji\u017e nelze spustit, proto\u017ee \u010das ukon\u010den\xed velikono\u010dn\xed akce je o p\u016flnoci.',
+                stpatricks: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 summer: {
                     currency: 'Vstupenky na ud\xe1lost',
                     event_start_mission:
@@ -19548,9 +21277,13 @@ function updateAAOsTime(e) {
                     'V\xfdjezdov\xe9 stanovi\u0161t\u011b ZZS',
                 ambulance_station_small_missions:
                     'V\xfdjezdov\xe9 stanovi\u0161t\u011b ZZS (mal\xe1)',
+                bomb_disposal_missions: 'Bomb Disposal HQ',
                 building_complex: 'Komplex budov',
                 buildings_section: 'Stanice',
                 clinic_missions: 'Klinika',
+                coastal_rescue: 'Lifeboat Stations',
+                coastal_rescue_missions: 'SAR',
+                custody_suite: 'Custody Suite',
                 dispatch_center_missions: 'Opera\u010dn\xed st\u0159edisko',
                 fire_copter_station: 'Leteck\xe1 z\xe1kladna HZS',
                 fire_school_missions:
@@ -19558,6 +21291,7 @@ function updateAAOsTime(e) {
                 firehouse_missions: 'Po\u017e\xe1rn\xed stanice',
                 firehouse_small_missions:
                     'Po\u017e\xe1rn\xed stanice (mal\xe1)',
+                general_practitioner: 'GP Surgery',
                 hospital_missions: 'Nemocnice',
                 map_filters: 'Seznam filtr\u016f mapy',
                 mission_positions: 'Body z\xe1jmu (BZ)',
@@ -19567,6 +21301,7 @@ function updateAAOsTime(e) {
                 mountain_rescue: 'Horsk\xe1 z\xe1chrann\xe1 stanice',
                 police_copter_station_missions:
                     'Z\xe1kladna Leteck\xe9 slu\u017eby P\u010cR',
+                police_depot: 'Police Depot',
                 police_horse: 'St\xe1je j\xedzdn\xed policie',
                 police_school_missions: 'Policejn\xed Akademie',
                 police_small_missions:
@@ -19580,9 +21315,13 @@ function updateAAOsTime(e) {
                 riot_police: 'Po\u0159\xe1dkov\xe1 jednotka',
                 riot_police_missions: 'Po\u0159\xe1dkov\xe1 jednotka',
                 staging_area_missions: 'P\u0159\xedpravn\xe1 oblast',
+                technical_aid: 'Search and Rescue HQ',
+                technical_aid_missions: 'SAR',
                 technical_aid_organization: 'Technick\xe1 pomoc',
                 technical_aid_organization_school:
                     '\u0160kola technick\xe9 pomoci',
+                tow_trucks: 'Recovery Centers',
+                tow_trucks_missions: 'Recovery Vehicles',
                 user_buildings: 'Moje budovy',
                 user_missions: 'Moje mise',
                 water_watch: 'Vodn\xed z\xe1chrann\xe1 slu\u017eba',
@@ -19628,6 +21367,13 @@ function updateAAOsTime(e) {
                     'Zah\xe1jen\xe9, ale nedokon\u010den\xe9 mise',
                 unattended: 'Bezobslu\u017en\xe9 mise',
                 unattended_description: 'Bezobslu\u017en\xe9 mise',
+            },
+            mission_range: {
+                premium_alert: {
+                    description:
+                        'You need to have a premium account for this feature.',
+                    title: 'Mission generation range could not be selected.',
+                },
             },
             mission_speed: {
                 premium_alert: {
@@ -19732,6 +21478,103 @@ function updateAAOsTime(e) {
                         },
                         welcome:
                             'V\xedtejte v Opera\u010dn\xedm st\u0159edisku! \xdakolem dispe\u010dinku z\xe1chrann\xfdch slo\u017eek je \u0159e\u0161it t\xeds\u0148ov\xe1 vol\xe1n\xed s nutnost\xed pomoci a zajistit ochranu ve\u0159ejnosti. Za t\xedmto \xfa\u010delem stav\xedte stanice a vys\xedl\xe1te mnoho typ\u016f vozidel a vy\u0161kolen\xfd person\xe1l na r\u016fzn\xe9 mise.',
+                    },
+                    tooltip: {
+                        ambulance_station: {
+                            helpshift_id: '1714',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station',
+                            short: 'Houses vehicles need for EMS-related missions. \nExtensions can be built, which unlocks purchasing of specialized units.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        ambulance_station_small: {
+                            helpshift_id: '1715',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station',
+                            short: 'Houses vehicles for EMS-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        clinic: {
+                            helpshift_id: '1719',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-clinic',
+                            short: 'Houses vehicles need for EMS-related missions.\nPatients can be transported here, however it is less specialized than the hospital.',
+                        },
+                        dispatch_center: {
+                            helpshift_id: '1497',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=gameplay&f=what-is-the-dispatch-center-good-for',
+                            short: 'Gives you an overview of all your buildings and allows you to group them in a dispatch area.',
+                        },
+                        firehouse: {
+                            helpshift_id: '1709',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions. \nExtensions can be built, which unlocks purchasing of specialized units. ',
+                        },
+                        firehouse_small: {
+                            helpshift_id: '1710',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        fireschool: {
+                            helpshift_id: '1711',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-academy',
+                            short: 'Allows for training firefighters to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        hazard_response_ems: {
+                            helpshift_id: '1736',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hart-base',
+                            short: 'Houses specialized EMS units that respond to Hazard-related missions. \nPersonell needs to be trained in order to operate these specialized units.',
+                        },
+                        home_response_location: {
+                            helpshift_id: '1665',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-home-response-location-hrl-uk-game-version',
+                            short: 'This building houses rescue workers which are on call.',
+                        },
+                        hospital: {
+                            helpshift_id: '1718',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hospital',
+                            short: 'For more severe conditions, patients can be transported here. \nAdditional credits can be earned with patients treated.',
+                        },
+                        police_copter_station: {
+                            helpshift_id: '1731',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-helicopter-station',
+                            short: 'Houses aircrafts for police-related missions.\nA helicopter needs to be purchased separately. ',
+                        },
+                        police_depot: {
+                            helpshift_id: '1741',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version',
+                            short: 'Houses specialist police units that are often stored in large police depots. \nYou can only build one of these per 50 police buildings. Prison cells are available in this building.',
+                        },
+                        police_school: {
+                            helpshift_id: '1724',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-academy',
+                            short: 'Allows for training police officers to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        police_small: {
+                            helpshift_id: '1723',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-police-station',
+                            short: 'Houses vehicles needed for police-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        police_station: {
+                            helpshift_id: '1722',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-station',
+                            short: 'Houses vehicles needed for police-related missions. \nExtensions can be built, which unlocks purchasing of specialized units ',
+                        },
+                        prison: {
+                            helpshift_id: '1734',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-prison',
+                            short: 'Prisoners can be transported here. \nA Prison can only be built with alliance funds.',
+                        },
+                        rescue_copter_station: {
+                            helpshift_id: '1720',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-helicopter-station',
+                            short: 'Houses helicopters for treatment of patients with very serious injuries. \nA helicopter needs to be purchased separately. ',
+                        },
+                        rescue_school: {
+                            helpshift_id: '1716',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-rescue-academy',
+                            short: 'Allows for training EMS personnel to perform advanced treatments and using specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        staging_area: {
+                            helpshift_id: '1732',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-staging-area',
+                            short: 'The staging area can be built for free and will remain for 24 hours. \nDuring this time, units can be temporarily stationed here and dispatched to a mission.',
+                        },
                     },
                 },
                 mission: {
@@ -19860,15 +21703,18 @@ function updateAAOsTime(e) {
             between: '%{minimum} ile %{maximum}',
             cancel: '\u0130ptal et',
             change_saved: 'De\u011fi\u015fiklikler kaydedildi',
+            click_for_more_info: 'Click here for more information.',
             coins_spend:
                 'Ger\xe7ekten bu alt\u0131nlar\u0131 harcamak istiyor musun?',
             congratulations: 'Tebrikler!',
             content: '\u0130\xe7erik',
+            copy: 'Copy',
             credits: 'Krediler',
             credits_max: 'Maksimum Kredi',
             credits_min: 'Min Krediler',
             custom_missions: 'B\xfcy\xfck \xf6l\xe7ekli bir birlik g\xf6rev',
             delete: 'Sil',
+            description: 'Description',
             details: 'Ayr\u0131nt\u0131lar',
             edit: 'D\xfczenle',
             error: 'Hata',
@@ -19884,19 +21730,29 @@ function updateAAOsTime(e) {
             is_offline_with_duration:
                 '%{user} \xe7evrim d\u0131\u015f\u0131: %{duration}',
             is_online: '%{user} \xe7evrim i\xe7i.',
+            load_next: 'Load more',
+            load_remaining: 'Load remaining',
             loading: 'Y\xfckleniyor...',
+            message_for_education:
+                'This person will not be dispatched with the vehicle because it is missing the necessary education!',
             missions_per_page: '%{count} G\xd6REVLER',
             name: 'Ad',
+            no: 'no',
             none: 'Yok',
             of: '/',
             off: 'Kapal\u0131',
             on: 'A\xe7\u0131k',
             or: 'veya',
+            person: {
+                missing_education_for_vehicle:
+                    'Personnel will only be dispatched with the vehicle if it has acquired the necessary education!',
+            },
             release_at: 'I\xe7inde taburcu edildi',
             remove_all: 'T\xfcm\xfcn\xfc kald\u0131r\u0131n',
             save: 'Kaydet',
             search: 'Ara',
             show: 'G\xf6ster',
+            sort: 'Sort:',
             sort_by: {
                 credits: 'Krediler',
                 default: 'Default',
@@ -19905,11 +21761,18 @@ function updateAAOsTime(e) {
                 poi: '\u0130lgili Alan',
                 requirements: 'Gereklilikler',
             },
+            sorting: {
+                caption_asc: 'A to Z',
+                caption_desc: 'Z to A',
+                date_asc: 'Oldest',
+                date_desc: 'Newest',
+            },
             time_in_minutes: 'Time in minutes',
             total_count: 'Toplam: %{count}',
             type: 'Tip:',
             user_not_found: 'Kullan\u0131c\u0131 bulunmad\u0131',
             wrong_key: 'Yanl\u0131\u015f tu\u015f',
+            yes: 'yes',
         },
         fms: {
             going: 'M\xfcdahale ediyor',
@@ -19921,12 +21784,21 @@ function updateAAOsTime(e) {
             ready_home: '\u0130stasyonda Haz\u0131r',
             ready_traveling: 'Bo\u015fta ve Kullan\u0131labilir',
             talking_wish: 'Nakil Talebi',
+            transporting_car: 'Transporting Vehicle',
             waiting_for_vehicle:
                 'Ara\xe7 taraf\u0131ndan \xe7ekilmeyi bekliyor',
         },
         intervention_order: {
+            assigns_equipment_automatically: 'Assigns Equipment Automatically',
+            assigns_equipment_automatically_hint:
+                'If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment. <br><i>(Does not exclusively choose equipment and only affects ARRs marked with %{icon})</i>',
             automatic_text_color: 'Automatic Text Color',
             back: 'Geri',
+            car_carrier: 'Recovery Vehicle or Flatbed Recovery Vehicle',
+            categories: {
+                tow_trucks: 'Recovery Vehicles',
+                water_rescue: 'Technical Rescue and SAR',
+            },
             category: 'Kategori',
             colour: 'Renk',
             column: 'S\xfctun',
@@ -19951,6 +21823,7 @@ function updateAAOsTime(e) {
                 saved_text:
                     'Alarm ve M\xfcdahale D\xfczenlemesi d\u0131\u015fa aktar\u0131m i\xe7in haz\u0131rland\u0131. Bu ba\u011flant\u0131 ile ba\u015fka bir oyuncu Alarm ve M\xfcdahale D\xfczenlemesini i\xe7e aktarabilir. Bu esnada Alarm ve M\xfcdahale D\xfczenlemesini de\u011fi\u015ftirirsen bu de\u011fi\u015fiklik d\u0131\u015fa aktar\u0131mda otomatik olarak uygulanacak.',
             },
+            flood_equipment: 'Flood Rescue Units',
             hotkey_hint:
                 "Bu ara\xe7 se\xe7imi i\xe7in bir k\u0131sayol tu\u015fu se\xe7. Pencerendeki g\xf6reve bas: ALT + k\u0131sayol tu\u015fun (veya Firefox'ta: ALT + SHIFT + k\u0131sayol tu\u015fun veya Mac i\u015fletim sisteminde: ctrl + alt + k\u0131sayol tu\u015fun) ile ara\xe7 se\xe7imini yap.",
             intervention_order:
@@ -19981,42 +21854,78 @@ function updateAAOsTime(e) {
                 ab_ruest: 'Teknik/Kurtarma Mod\xfcl\xfc',
                 abl2wasser_only: 'Hortumla Besleme Mod\xfcl\xfc',
                 ambulance: 'ALS ambulans\u0131',
+                any_traffic_car: 'Any Traffic Car',
                 arff: 'ARFF (Havaliman\u0131 \u0130tfaiye Arac\u0131)',
                 battalion_chief_unit: 'Tabur Amiri birimi',
+                bomb_disposal: 'EOD Response Vehicles',
+                bomb_disposal_command: 'EOD Commanders',
+                bomb_disposal_crew: 'EOD Response Vehicles',
+                bomb_disposal_diver_crew: 'Marine EOD Response Vehicles',
+                bomb_disposal_diver_equipment: 'Marine EOD Equipment Vans',
+                bomb_disposal_equipment: 'EOD Medium Equipment Vans',
+                bomb_disposal_equipment_2: 'EOD Heavy Equipment Vehicles',
+                bomb_disposal_heavy_equipment: 'EOD Heavy Equipment Vehicles',
                 boot: 'Botlar (Genel)',
+                car_carrier: 'Any Recovery Vehicle',
+                car_carrier_large: 'Any HGV Recovery Vehicle',
+                coastal_helicopter: 'Coastguard Rescue Helicopter',
+                coastal_rescue:
+                    'Coastal Rescue, Rope Rescue or Mud Rescue Vehicle',
+                coresponder: 'Co-Responder Vehicle',
+                crew_carrier: 'Crew Carrier',
                 division_chief_unit: 'Mobil Komuta Arac\u0131',
+                drone: 'Drone Equipment',
                 elw1_or_elw2:
                     'Tabur Amiri Birimi, Mobil Komuta Arac\u0131 veya Mobil Komuta Mod\xfcl\xfc ',
+                elw2_or_ab_elw: 'ICCU / ACU',
                 emergency_ambulance:
                     'Acil durum ambulans\u0131 veya Helikopteri',
+                emergency_welfare: 'Any Crew Welfare Vehicle',
                 fire_truck: '\u0130tfaiye Ara\xe7lar\u0131',
                 fireboat: 'B\xfcy\xfck \u0130tfaiye Botlar\u0131',
+                flood_equipment: 'Flood Rescue',
                 fly_car: 'U\xe7an Araba',
+                foam: 'Foam Tenders or RIV',
                 gkw: 'Hizmet Kamyonu',
                 grtw: 'Mobil Hastane Arac\u0131',
                 gw_gefahrgut: 'Tehlikeli Madde',
                 gw_hoehenrettung: 'GW-H\xf6henrettung',
                 gw_messtechnik: 'GW-Messtechnik',
                 gw_wasserrettung: 'Su Toplama',
+                gwl2wasser: 'Water Carrier or Major Foam Tender',
                 gwl2wasser_only: 'Hortumlu Ara\xe7',
                 hems: 'H\u0131z\u0131r Acil Helikopteri',
+                hlf_only: 'Rescue Pump',
+                hlf_or_rw_and_lf:
+                    'Rescue Pump or Rescue Support Unit and Fire engine',
+                joint_response_unit: 'Joint Response Unit',
                 k9: 'Polis K-9 Arac\u0131',
                 kdow_orgl: 'H\u0131z\u0131r Acil Amiri',
+                kdow_orgl_any: 'OTL / Ambulance Officer',
                 lebefkw: 'Leichter Befehlskraftwagen (leBefKw)',
                 lf_only: '\u0130tfaiye Ara\xe7lar\u0131',
                 long_distance_ambulance: 'BLS ambulans\u0131',
                 mask_service_unit: 'Mobil Hava Birimi',
+                mass_casualty_equipment:
+                    'Mass Casualty Equipment or Medical Equipment Trailer',
                 mtw: 'MTW',
                 mzb: '\xc7ok Ama\xe7l\u0131 Bot',
                 nef_only: 'Ambulans',
                 oil_unit: 'GW-\xd6l',
                 police_car: 'Devriye arabas\u0131',
+                police_patrol_and_prisoner_transport: 'Cell Van',
+                police_prisoner_transport: 'Cell Van',
                 polizeihubschrauber: 'Polis helikopteri',
+                pump_speed: 'Pump Capacity',
+                pump_speed_pump_only: 'Pump Capacity - Only Pumps',
+                rescue_dogs: 'Rescue Dogs',
                 rescue_vehicle: 'B\xfcy\xfck kurtarma arac\u0131',
                 rescue_vehicle_only: 'B\xfcy\xfck Kurtarma',
                 rescueboat: 'B\xfcy\xfck Kurtarma Botu',
                 rth_only: 'Helikopter',
                 schlauchwagen: 'Su Tankeri',
+                search_and_rescue: 'SAR Units',
+                search_and_rescue_command: 'Any Control Van',
                 swat: 'P\xd6H',
                 swat_armored_vehicle: 'P\xd6H Z\u0131rhl\u0131 Arac\u0131',
                 swat_suv: 'P\xd6H SUV',
@@ -20026,17 +21935,72 @@ function updateAAOsTime(e) {
                 thw_tauchkraftwagen: 'Dal\u0131\u015f Ekibi',
                 tlf_only: 'Tanker',
                 turntable_ladder: 'Platformlu kamyonlar',
+                water_damage_pump: 'Water Pumps',
             },
         },
         javascript: {
             alarm: 'Sevk Et',
+            alliance_event_pay_out_message:
+                'Complete all missions with your alliance to earn a bonus!',
+            alliance_event_resource: {
+                christmas: {
+                    currency: 'Event Tickets',
+                    event_start_mission:
+                        'Start Event: %{amount} Alliance Ticket',
+                },
+                easter: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                football: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                halloween: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                info_bubble_text:
+                    'This is a temporary event that is only available during our event! Encourage your alliance members to complete event missions in order to earn the tickets that are needed to start these events. See the alliance event page for more information.',
+                info_bubble_text_additional:
+                    ' You currently have %{amount} %{alliance_event_currency}!',
+                info_bubble_text_disabled:
+                    "The event can't be started anymore because the Easter event's end time is less than 3 hours away.",
+                stpatricks: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                summer: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                valentines: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                winter: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+            },
             arrival: 'Var\u0131\u015f',
             available_vehicles_count: '%{count} ara\xe7lar\u0131n\u0131z var',
             backalarm: '\u0130ptal et',
             coins: 'Alt\u0131n',
+            collapse: 'Collapse',
             credits: 'Krediler',
+            current_reward_for_you:
+                '<b>Your current reward:</b> %{credits} Credits & %{event_currency} Event Credits',
             day: 'g\xfcn',
             days: 'g\xfcn',
+            donate_event_credits_hint:
+                'You will donate: <strong>%{event_credits} event credits</strong> (%{alliance_credits} alliance credits).',
+            event: {
+                alliance_missions_completed:
+                    '<b>Completed Missions:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Participated Missions:</b> %{completedMissions}',
+            },
             few_seconds: 'birka\xe7 saniyede',
             finish_in: 'Bitir:',
             foam_process: 'K\xf6p\xfck \u0130htiyac\u0131',
@@ -20052,18 +22016,36 @@ function updateAAOsTime(e) {
             mission_start_in: 'Ba\u015fl\u0131yor:',
             new: 'Yeni',
             not_found_map: 'Ara\xe7 haritada bulunamad\u0131',
+            not_qualified:
+                '<b>Not qualified:</b> Participate in a mission to earn the reward ',
             now: '\u015eimdi',
             patient: 'Hasta',
             patient_untouched: 'Tedavi edilmeyen hastalar',
+            payout_received:
+                '<b>Your have received:</b> %{credits} Credits & %{event_currency} Event Credits',
             poi_delete:
                 '%{caption} \u0130lgili Alan\u0131n\u0131 silmek istedi\u011finden emin misin?',
+            pois: {
+                count_filtered: 'You have filtered %{count} POIs.',
+                count_total: 'You have %{count} POIs.',
+            },
+            pump_speed_approaching: 'Approaching: %{amount} l/min',
+            pump_speed_missing: 'Missing: %{amount} l/min',
+            pump_speed_on_site: 'On scene: %{amount} l/min',
             pump_speed_process: 'Su Hasar\u0131 Pompa S\xfcreci',
+            pump_speed_selected: 'Selected: %{amount} l/min',
+            qualified: '<b>Qualified:</b> You took part in the event',
             reload: 'Yeniden y\xfckle',
             sale: 'Sat\u0131\u015f',
             sale_ended: '\u0130ndirim sona erdi.',
             secounds: 'sn.',
+            select_amount_button: 'Select amount',
+            select_amount_event_credits_hint:
+                'Select the amount of event credits you want to convert',
             selected_vehicles_count:
                 '%{count} ara\xe7lar\u0131n\u0131 se\xe7tiniz',
+            show_all: 'Show All',
+            show_less: 'Show Less',
             show_more: 'Daha g\xf6ster',
             sicherheitswache_error:
                 'T\xfcm kriterler sa\u011flanmad\u0131\u011f\u0131 i\xe7in g\xfcvenlik korumas\u0131 "%{caption}" ba\u015far\u0131l\u0131 olamad\u0131.',
@@ -20077,16 +22059,22 @@ function updateAAOsTime(e) {
             start_username: 'Ba\u015flatan:',
             time_left: 'Kalan s\xfcre:',
             to_building: 'Yap\u0131y\u0131 G\xf6r\xfcnt\xfcle',
+            to_event: 'Back to events',
             to_mission: 'G\xf6revi G\xf6r\xfcnt\xfcle',
+            total_credits_earned: '<b>Total credits earned:</b>',
+            total_event_currency_earned: '<b>Total event credits earned:</b>',
             understand: 'Onayla',
             update_mission_count:
                 '\u015eu anda %{current} / %{total} adet \xf6zel g\xf6rev aral\u0131\u011f\u0131na sahip olabilirsiniz. Premium abonelikle, mevcut her g\xf6rev t\xfcr\xfc i\xe7in \xf6zel bir g\xf6rev aral\u0131\u011f\u0131 olu\u015fturabilirsiniz.',
             user_not_found: 'Oyuncu bulunamad\u0131.',
             vehicle_payload: {
+                apply_payload: 'Apply Payload',
+                change_payload: 'Change Payload',
                 hide_payload: 'Y\xfck\xfc Gizle',
                 show_payload: 'Y\xfck\xfc G\xf6ster',
             },
             vehicles_not_visible: 'Ara\xe7lar g\xf6r\xfcnm\xfcyor. ',
+            water_process: 'Water needed',
             water_pumping_process: 'Gerekli pompa kapasitesi',
         },
         map: {
@@ -20096,6 +22084,10 @@ function updateAAOsTime(e) {
                 '\u015eu anda birlik sohbetinde yasakl\u0131s\u0131n.',
             alliance_chat_banned_admin: 'Yasaklayan:',
             alliance_chat_banned_timeleft: 'Kalan s\xfcre:',
+            alliance_chat_destroy_alert:
+                'Do you really want to delete this message?',
+            alliance_chat_destroy_confirmation: 'This message has been deleted',
+            alliance_chat_manage_messages: 'Manage messages',
             alliance_chat_radio_off: 'Birlik Radyosu: Kapal\u0131',
             alliance_chat_radio_on: 'Birlik Radyosu: A\xe7\u0131k',
             alliance_event: 'Etkinlik',
@@ -20130,20 +22122,26 @@ function updateAAOsTime(e) {
                 ambulance_station_missions: 'Ambulans \u0130stasyonu',
                 ambulance_station_small_missions:
                     'Ambulans istasyonu (K\xfc\xe7\xfck istasyon)',
+                bomb_disposal_missions: 'Bomb Disposal HQ',
                 building_complex: 'Building Complex',
                 buildings_section: '\u0130stasyonlar',
                 clinic_missions: 'Klinik',
+                coastal_rescue: 'Lifeboat Stations',
+                coastal_rescue_missions: 'SAR',
+                custody_suite: 'Custody Suite',
                 dispatch_center_missions: 'Sevk Merkezi',
                 fire_school_missions: '\u0130tfaiye Akademisi',
                 firehouse_missions: '\u0130tfaiye \u0130stasyonu',
                 firehouse_small_missions:
                     '\u0130tfaiye \u0130stasyonu (K\xfc\xe7\xfck)',
+                general_practitioner: 'GP Surgery',
                 hospital_missions: 'Hastane',
                 map_filters: 'Harita filtreleri listesi',
                 mission_positions: "\u0130lgi Alanlar\u0131 (POI'ler)",
                 mission_positions_section: "POI'ler",
                 missions_section: 'G\xf6revler',
                 police_copter_station_missions: 'Polis helikopter heliportu',
+                police_depot: 'Police Depot',
                 police_school_missions: 'Polis akademisi',
                 police_small_missions:
                     'Polis Karakolu (K\xfc\xe7\xfck karakol)',
@@ -20156,8 +22154,12 @@ function updateAAOsTime(e) {
                 riot_police: '\xc7evik Kuvvet',
                 riot_police_missions: '\xc7evik Kuvvet',
                 staging_area_missions: 'Toplanma Alan\u0131',
+                technical_aid: 'Search and Rescue HQ',
+                technical_aid_missions: 'SAR',
                 technical_aid_organization: 'THW',
                 technical_aid_organization_school: 'THW Bundesschule',
+                tow_trucks: 'Recovery Centers',
+                tow_trucks_missions: 'Recovery Vehicles',
                 user_buildings: 'Yap\u0131lar\u0131m',
                 user_missions: 'G\xf6revlerim',
                 water_watch: 'Su Kurtarma',
@@ -20204,6 +22206,13 @@ function updateAAOsTime(e) {
                 unattended: 'Kat\u0131l\u0131ms\u0131z G\xf6revler',
                 unattended_description: 'Kat\u0131l\u0131ms\u0131z G\xf6revler',
             },
+            mission_range: {
+                premium_alert: {
+                    description:
+                        'You need to have a premium account for this feature.',
+                    title: 'Mission generation range could not be selected.',
+                },
+            },
             mission_speed: {
                 premium_alert: {
                     description:
@@ -20217,8 +22226,12 @@ function updateAAOsTime(e) {
             no_alliance_chat_impossible: 'Bir birlikte de\u011filsin.',
             no_alliance_missions:
                 '\u015eu anda hi\xe7bir birlik g\xf6revi yok.',
+            no_alliance_missions_join:
+                'Participating in alliance missions will reward you with Credits - no matter what type of vehicle you send. By joining an alliance you can do both, share your own missions to get help from experienced alliance members and participate in other\u2019s shared missions for extra rewards.',
             no_ambulance_missions:
                 'Hasta nakli yoktur. Hasta nakilleri yaln\u0131zca bir ambulans\u0131n\u0131z ve bir hastaneniz oldu\u011funda ger\xe7ekle\u015febilir.',
+            no_critical_transport_missions:
+                'There are no Interfacility Transfers. They can only occur when you have a Critical Care Transfer Ambulance and 2 hospitals with patients in treatment.',
             no_emergency_missions:
                 '\u015eu anda hi\xe7bir acil durum g\xf6revi yok. \u0130lk istasyonunu yapt\u0131ktan sonra bir acil durum g\xf6revi alabilirsin.',
             no_radio_messages: 'Hi\xe7bir radyo mesaj\u0131 almad\u0131n.',
@@ -20249,6 +22262,22 @@ function updateAAOsTime(e) {
                 separator: ',',
                 significant: !1,
                 strip_insignificant_zeros: !1,
+            },
+        },
+        policechief: {
+            tutorial: {
+                beginner: {
+                    building: {
+                        browser: {
+                            welcome:
+                                'Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions.',
+                        },
+                        mobile: {
+                            welcome:
+                                'Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions.',
+                        },
+                    },
+                },
             },
         },
         tutorial: {
@@ -20285,6 +22314,103 @@ function updateAAOsTime(e) {
                         },
                         welcome:
                             "112 Merkez - Kaydol'ye ho\u015f geldiniz! Acil durum hizmetleri i\xe7in bir sevk merkezinde \xe7al\u0131\u015farak halka yard\u0131m etmek ve onlar\u0131 korumak i\xe7in acil durum \xe7a\u011fr\u0131lar\u0131yla ilgileniyorsunuz. Bunun i\xe7in istasyonlar in\u015fa ediyor ve \xe7e\u015fitli g\xf6revlere \xe7e\u015fitli tipte ara\xe7lar ve e\u011fitimli personel g\xf6nderiyorsunuz.",
+                    },
+                    tooltip: {
+                        ambulance_station: {
+                            helpshift_id: '1714',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station',
+                            short: 'Houses vehicles need for EMS-related missions. \nExtensions can be built, which unlocks purchasing of specialized units.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        ambulance_station_small: {
+                            helpshift_id: '1715',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station',
+                            short: 'Houses vehicles for EMS-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        clinic: {
+                            helpshift_id: '1719',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-clinic',
+                            short: 'Houses vehicles need for EMS-related missions.\nPatients can be transported here, however it is less specialized than the hospital.',
+                        },
+                        dispatch_center: {
+                            helpshift_id: '1497',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=gameplay&f=what-is-the-dispatch-center-good-for',
+                            short: 'Gives you an overview of all your buildings and allows you to group them in a dispatch area.',
+                        },
+                        firehouse: {
+                            helpshift_id: '1709',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions. \nExtensions can be built, which unlocks purchasing of specialized units. ',
+                        },
+                        firehouse_small: {
+                            helpshift_id: '1710',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        fireschool: {
+                            helpshift_id: '1711',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-academy',
+                            short: 'Allows for training firefighters to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        hazard_response_ems: {
+                            helpshift_id: '1736',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hart-base',
+                            short: 'Houses specialized EMS units that respond to Hazard-related missions. \nPersonell needs to be trained in order to operate these specialized units.',
+                        },
+                        home_response_location: {
+                            helpshift_id: '1665',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-home-response-location-hrl-uk-game-version',
+                            short: 'This building houses rescue workers which are on call.',
+                        },
+                        hospital: {
+                            helpshift_id: '1718',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hospital',
+                            short: 'For more severe conditions, patients can be transported here. \nAdditional credits can be earned with patients treated.',
+                        },
+                        police_copter_station: {
+                            helpshift_id: '1731',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-helicopter-station',
+                            short: 'Houses aircrafts for police-related missions.\nA helicopter needs to be purchased separately. ',
+                        },
+                        police_depot: {
+                            helpshift_id: '1741',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version',
+                            short: 'Houses specialist police units that are often stored in large police depots. \nYou can only build one of these per 50 police buildings. Prison cells are available in this building.',
+                        },
+                        police_school: {
+                            helpshift_id: '1724',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-academy',
+                            short: 'Allows for training police officers to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        police_small: {
+                            helpshift_id: '1723',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-police-station',
+                            short: 'Houses vehicles needed for police-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        police_station: {
+                            helpshift_id: '1722',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-station',
+                            short: 'Houses vehicles needed for police-related missions. \nExtensions can be built, which unlocks purchasing of specialized units ',
+                        },
+                        prison: {
+                            helpshift_id: '1734',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-prison',
+                            short: 'Prisoners can be transported here. \nA Prison can only be built with alliance funds.',
+                        },
+                        rescue_copter_station: {
+                            helpshift_id: '1720',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-helicopter-station',
+                            short: 'Houses helicopters for treatment of patients with very serious injuries. \nA helicopter needs to be purchased separately. ',
+                        },
+                        rescue_school: {
+                            helpshift_id: '1716',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-rescue-academy',
+                            short: 'Allows for training EMS personnel to perform advanced treatments and using specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        staging_area: {
+                            helpshift_id: '1732',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-staging-area',
+                            short: 'The staging area can be built for free and will remain for 24 hours. \nDuring this time, units can be temporarily stationed here and dispatched to a mission.',
+                        },
                     },
                 },
                 mission: {
@@ -20361,6 +22487,11 @@ function updateAAOsTime(e) {
                             link: 'https://xyrality.helpshift.com/hc/tr/23-mission-chief/faq/1885-how-do-critical-transport-missions-work/',
                             short: 'How do critical transport missions work?',
                         },
+                        radio: {
+                            helpshift_id: '1540',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles',
+                            short: 'The radio displays status updates of your vehicles. For more detailed information on each status click here.',
+                        },
                         summary:
                             'G\xf6revleri ba\u015fkalar\u0131yla birlikte \xe7\xf6zmek i\xe7in bir ittifaka kat\u0131labilirsiniz. Ayr\u0131ca t\xfcm \xfcyelerin kat\u0131labilece\u011fi d\xfczenli ittifak etkinlikleri de var!',
                     },
@@ -20378,6 +22509,10 @@ function updateAAOsTime(e) {
                             'Terfiler ve bina istasyonlar\u0131, g\xf6rev t\xfcrleri veya ara\xe7lar gibi yeni \xf6zelliklerin kilidini a\xe7ar.',
                         summary:
                             'G\xf6revleri ba\u015fkalar\u0131yla birlikte \xe7\xf6zmek i\xe7in bir ittifaka kat\u0131labilirsiniz. Ayr\u0131ca t\xfcm \xfcyelerin kat\u0131labilece\u011fi d\xfczenli ittifak etkinlikleri de var!',
+                    },
+                    reminder: {
+                        join_alliance:
+                            'Joining an alliance has many benefits: extra rewards for completing alliance missions, support from experienced members for difficult missions and you can use facilities of other members like hospitals and schools! Press the button to join an alliance now!',
                     },
                 },
             },
@@ -20408,6 +22543,7 @@ function updateAAOsTime(e) {
             coins_spend: 'Deseja mesmo gastar estas moedas?',
             congratulations: 'Parab\xe9ns!',
             content: 'Conte\xfado',
+            copy: 'Copy',
             credits: 'Cr\xe9ditos',
             credits_max: 'Cr\xe9ditos m\xe1ximos',
             credits_min: 'Cr\xe9ditos m\xednimos',
@@ -20529,6 +22665,7 @@ function updateAAOsTime(e) {
                 saved_text:
                     'Seu Regulamento de Alarme e Resposta foi preparado para exporta\xe7\xe3o. Por meio do link, outro jogador pode importar o Regulamento de Alarme e Resposta. Se voc\xea alterar seu Regulamento de Alarme e Resposta neste intervalo, essa altera\xe7\xe3o ser\xe1 automaticamente aplicada \xe0 exporta\xe7\xe3o.',
             },
+            flood_equipment: 'Flood Rescue Units',
             hotkey_hint:
                 'Escolha uma tecla de atalho para selecionar este ve\xedculo. Carregue na janela de miss\xe3o: ALT + a sua tecla de atalho (ou no Firefox: ALT + SHIFT + a sua tecla de atalho, ou no mac os: ctrl + alt + a sua tecla de atalho) para escolher a sele\xe7\xe3o do seu ve\xedculo.',
             intervention_order: 'Editar Regulamentos de Alarme e Resposta',
@@ -20551,28 +22688,48 @@ function updateAAOsTime(e) {
             text_color: 'Cor do Texto',
             vehicles: {
                 ab_atemschutz_only: 'M\xf3dulo SCBA',
+                ab_einsatzleitung_only: 'Command-Module',
                 ab_gefahrgut_only: 'M\xf3dulo de PP',
                 ab_oel_only: 'M\xf3dulo de derramamento de \xf3leo',
                 ab_ruest: 'M\xf3dulo de resgate t\xe9cnico',
                 abl2wasser_only: 'M\xf3dulo de fornecimento de mangueiras',
                 ambulance: 'ABSC',
+                any_traffic_car: 'Any Traffic Car',
                 arff: 'VIM ou VIM T2 necess\xe1rios:',
                 battalion_chief_unit: 'VCOT',
                 bike_police: 'Ciclopatrulha',
+                bomb_disposal: 'EOD Response Vehicles',
+                bomb_disposal_command: 'EOD Commanders',
+                bomb_disposal_crew: 'EOD Response Vehicles',
+                bomb_disposal_diver_crew: 'Marine EOD Response Vehicles',
+                bomb_disposal_diver_equipment: 'Marine EOD Equipment Vans',
+                bomb_disposal_equipment: 'EOD Medium Equipment Vans',
+                bomb_disposal_equipment_2: 'EOD Heavy Equipment Vehicles',
+                bomb_disposal_heavy_equipment: 'EOD Heavy Equipment Vehicles',
                 boot: 'Barcos (geral)',
                 brush_truck: 'Ve\xedculos Florestais',
                 car_carrier: 'Todos os cami\xf5es de reboque',
                 car_carrier_large: 'Qualquer cami\xe3o rotativo',
+                coastal_helicopter: 'Coastguard Rescue Helicopter',
+                coastal_rescue:
+                    'Coastal Rescue, Rope Rescue or Mud Rescue Vehicle',
+                coresponder: 'Co-Responder Vehicle',
+                crew_carrier: 'Crew Carrier',
                 division_chief_unit: 'VCOC',
                 dozer_trailer: 'M\xe1quina de Rasto',
+                drone: 'Drone Equipment',
                 elw1_or_elw2: 'VCOT / VCOC',
+                elw2_or_ab_elw: 'ICCU / ACU',
                 emergency_ambulance: 'ABSC / Heli INEM',
+                emergency_welfare: 'Any Crew Welfare Vehicle',
                 fbi_bomb_tech: 'UEP/UI - CIEXSS',
                 fire_aviation: 'Meios A\xe9reos',
                 fire_truck: 'VFCI / VLCI / VUCI / VP',
                 fireboat: 'Barco de combate a inc\xeandio grande',
+                flood_equipment: 'Flood Rescue',
                 fly_car: 'Fly-Car',
                 fly_car_any: 'VMER / Mota INEM',
+                foam: 'Foam Tenders or RIV',
                 foam_amount: 'Espumifero (Qtd. de Litros)',
                 fustw_or_police_motorcycle: 'CP / EPRI',
                 fwk: 'VSAE',
@@ -20582,16 +22739,21 @@ function updateAAOsTime(e) {
                 gw_hoehenrettung: 'GW-H\xf6henrettung',
                 gw_messtechnik: 'GW-Messtechnik',
                 gw_wasserrettung: 'Reten\xe7\xe3o de \xe1gua',
+                gwl2wasser: 'Water Carrier or Major Foam Tender',
                 gwl2wasser_only: 'VTTU',
                 hems: 'Heli INEM',
                 hlf_only: 'VUCI',
                 hlf_or_rw_and_lf: 'VUCI ou VSAT e VFCI / VLCI',
+                joint_response_unit: 'Joint Response Unit',
                 k9: 'UEP/UI - GOC',
                 kdow_orgl: 'Chefe de SEM',
+                kdow_orgl_any: 'OTL / Ambulance Officer',
                 lebefkw: 'Leichter Befehlskraftwagen (leBefKw)',
                 lf_only: 'VFCI / VLCI',
                 long_distance_ambulance: 'ABTD',
                 mask_service_unit: 'UAAR',
+                mass_casualty_equipment:
+                    'Mass Casualty Equipment or Medical Equipment Trailer',
                 mountain_atv: 'VTT',
                 mountain_cave_command: 'Comando de Cavernas',
                 mountain_command: 'Comando de Montanha',
@@ -20607,16 +22769,22 @@ function updateAAOsTime(e) {
                 oil_unit: 'GW-\xd6l',
                 police_car: 'CP',
                 police_motorcycle: 'EPRI',
+                police_patrol_and_prisoner_transport: 'Cell Van',
+                police_prisoner_transport: 'Cell Van',
                 polizeihubschrauber: 'Helic\xf3ptero de pol\xedcia',
                 pump: 'Moto Bomba:',
                 pump_speed: 'Capacidade de bombagem',
                 pump_speed_pump_only:
                     'Capacidade de bombagem - Apenas Moto Bombas',
+                rescue_dogs: 'Rescue Dogs',
                 rescue_vehicle: 'VSAT / VUCI',
                 rescue_vehicle_only: 'VSAT',
                 rescueboat: 'Barco de resgate grande',
                 rth_only: 'Heli INEM',
                 schlauchwagen: 'VTTU / VTTF',
+                search_and_rescue: 'SAR Units',
+                search_and_rescue_command: 'Any Control Van',
+                swat: 'Armed Response Vehicle',
                 swat_armored_vehicle: 'UEP/UI - GOE/POE',
                 swat_suv: 'UEP/UI - CI/UI',
                 thw_mtw:
@@ -20662,6 +22830,10 @@ function updateAAOsTime(e) {
                     ' Atualmente, tem %{amount} %{alliance_event_currency}!',
                 info_bubble_text_disabled:
                     'O evento j\xe1 n\xe3o pode ser iniciado porque faltam menos de 3 horas para o fim do evento da P\xe1scoa.',
+                stpatricks: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 summer: {
                     currency: 'Bilhetes para eventos',
                     event_start_mission:
@@ -20735,6 +22907,8 @@ function updateAAOsTime(e) {
             pump_speed_selected: 'Selecionado para o TO: %{amount} l/min',
             qualified: '<b>Qualificado:</b> Participou no evento',
             reload: 'Recarregar',
+            sale: 'Sale',
+            sale_ended: 'Sale ended',
             secounds: 'seg.',
             select_amount_button: 'Selecione quantidade',
             select_amount_event_credits_hint:
@@ -20821,16 +22995,19 @@ function updateAAOsTime(e) {
                 alliance_missions: 'Partilhado pela alian\xe7a',
                 ambulance_station_missions: 'Posto PEM/AEM',
                 ambulance_station_small_missions: 'Posto PEM/AEM (Pequeno)',
+                bomb_disposal_missions: 'Bomb Disposal HQ',
                 building_complex: 'Conjunto de Edif\xedcios',
                 buildings_section: 'Esta\xe7\xf5es',
                 clinic_missions: 'Centro de Sa\xfade',
                 coastal_rescue: 'Salvamento Costeiro/Mar\xedtimo',
                 coastal_rescue_missions:
                     'Miss\xf5es de Salvamento Costeiro/Mar\xedtimo',
+                custody_suite: 'Custody Suite',
                 dispatch_center_missions: 'Centro de Comando',
                 fire_school_missions: 'Escola de Forma\xe7\xe3o de Bombeiros',
                 firehouse_missions: 'Corpo de Bombeiros',
                 firehouse_small_missions: 'Corpo de Bombeiros (Pequeno)',
+                general_practitioner: 'GP Surgery',
                 hospital_missions: 'Hospital',
                 map_filters: 'Lista de filtros do mapa',
                 mission_positions: 'Pontos de interesse (PDI)',
@@ -20840,6 +23017,7 @@ function updateAAOsTime(e) {
                 mountain_rescue: 'UEPS',
                 mountain_rescue_heliport: 'FAP',
                 police_copter_station_missions: 'Avia\xe7\xe3o policial',
+                police_depot: 'Police Depot',
                 police_school_missions: 'Escola Pr\xe1tica de Pol\xedcia',
                 police_small_missions: 'Esquadra de Pol\xedcia (Pequena)',
                 police_special_forces: 'Unidade Especial de Pol\xedcia',
@@ -20851,6 +23029,8 @@ function updateAAOsTime(e) {
                 riot_police: 'Tropa de choque',
                 riot_police_missions: 'Tropa de choque',
                 staging_area_missions: 'Zona de Concentra\xe7\xe3o e Reserva',
+                technical_aid: 'Search and Rescue HQ',
+                technical_aid_missions: 'SAR',
                 technical_aid_organization: 'THW',
                 technical_aid_organization_school: 'THW Bundesschule',
                 tow_trucks: 'Cami\xf5es de reboque',
@@ -20900,6 +23080,13 @@ function updateAAOsTime(e) {
                     'Miss\xf5es que foram iniciadas, mas n\xe3o conclu\xeddas',
                 unattended: 'Miss\xf5es n\xe3o assistidas',
                 unattended_description: 'Miss\xf5es n\xe3o assistidas',
+            },
+            mission_range: {
+                premium_alert: {
+                    description:
+                        'You need to have a premium account for this feature.',
+                    title: 'Mission generation range could not be selected.',
+                },
             },
             mission_speed: {
                 premium_alert: {
@@ -21003,6 +23190,103 @@ function updateAAOsTime(e) {
                         },
                         welcome:
                             'Bem-vindo ao Jogo Operador 112! Trabalhando num centro de comando de servi\xe7os de emerg\xeancia, lidas com chamadas de emerg\xeancia para ajudar e proteger o p\xfablico. Para isso, constr\xf3i eedificios e envia v\xe1rios tipos de ve\xedculos e pessoal treinado para uma variedade de miss\xf5es.',
+                    },
+                    tooltip: {
+                        ambulance_station: {
+                            helpshift_id: '1714',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station',
+                            short: 'Houses vehicles need for EMS-related missions. \nExtensions can be built, which unlocks purchasing of specialized units.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        ambulance_station_small: {
+                            helpshift_id: '1715',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station',
+                            short: 'Houses vehicles for EMS-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        clinic: {
+                            helpshift_id: '1719',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-clinic',
+                            short: 'Houses vehicles need for EMS-related missions.\nPatients can be transported here, however it is less specialized than the hospital.',
+                        },
+                        dispatch_center: {
+                            helpshift_id: '1497',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=gameplay&f=what-is-the-dispatch-center-good-for',
+                            short: 'Gives you an overview of all your buildings and allows you to group them in a dispatch area.',
+                        },
+                        firehouse: {
+                            helpshift_id: '1709',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions. \nExtensions can be built, which unlocks purchasing of specialized units. ',
+                        },
+                        firehouse_small: {
+                            helpshift_id: '1710',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        fireschool: {
+                            helpshift_id: '1711',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-academy',
+                            short: 'Allows for training firefighters to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        hazard_response_ems: {
+                            helpshift_id: '1736',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hart-base',
+                            short: 'Houses specialized EMS units that respond to Hazard-related missions. \nPersonell needs to be trained in order to operate these specialized units.',
+                        },
+                        home_response_location: {
+                            helpshift_id: '1665',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-home-response-location-hrl-uk-game-version',
+                            short: 'This building houses rescue workers which are on call.',
+                        },
+                        hospital: {
+                            helpshift_id: '1718',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hospital',
+                            short: 'For more severe conditions, patients can be transported here. \nAdditional credits can be earned with patients treated.',
+                        },
+                        police_copter_station: {
+                            helpshift_id: '1731',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-helicopter-station',
+                            short: 'Houses aircrafts for police-related missions.\nA helicopter needs to be purchased separately. ',
+                        },
+                        police_depot: {
+                            helpshift_id: '1741',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version',
+                            short: 'Houses specialist police units that are often stored in large police depots. \nYou can only build one of these per 50 police buildings. Prison cells are available in this building.',
+                        },
+                        police_school: {
+                            helpshift_id: '1724',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-academy',
+                            short: 'Allows for training police officers to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        police_small: {
+                            helpshift_id: '1723',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-police-station',
+                            short: 'Houses vehicles needed for police-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        police_station: {
+                            helpshift_id: '1722',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-station',
+                            short: 'Houses vehicles needed for police-related missions. \nExtensions can be built, which unlocks purchasing of specialized units ',
+                        },
+                        prison: {
+                            helpshift_id: '1734',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-prison',
+                            short: 'Prisoners can be transported here. \nA Prison can only be built with alliance funds.',
+                        },
+                        rescue_copter_station: {
+                            helpshift_id: '1720',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-helicopter-station',
+                            short: 'Houses helicopters for treatment of patients with very serious injuries. \nA helicopter needs to be purchased separately. ',
+                        },
+                        rescue_school: {
+                            helpshift_id: '1716',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-rescue-academy',
+                            short: 'Allows for training EMS personnel to perform advanced treatments and using specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        staging_area: {
+                            helpshift_id: '1732',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-staging-area',
+                            short: 'The staging area can be built for free and will remain for 24 hours. \nDuring this time, units can be temporarily stationed here and dispatched to a mission.',
+                        },
                     },
                 },
                 mission: {
@@ -21135,11 +23419,13 @@ function updateAAOsTime(e) {
             coins_spend: 'Deseja mesmo gastar estas moedas?',
             congratulations: 'Parab\xe9ns!',
             content: 'Conte\xfado',
+            copy: 'Copy',
             credits: 'Cr\xe9ditos',
             credits_max: 'Cr\xe9ditos m\xe1ximos',
             credits_min: 'Cr\xe9ditos m\xednimos',
             custom_missions: 'Miss\xe3o de alian\xe7a em grande escala',
             delete: 'Apagar',
+            description: 'Description',
             details: 'Detalhes',
             edit: 'Editar',
             error: 'Erro',
@@ -21154,7 +23440,10 @@ function updateAAOsTime(e) {
             is_offline_with_duration: '%{user} est\xe1 offline: %{duration}',
             is_online: '%{user} est\xe1 online.',
             load_next: 'Carregar mais',
+            load_remaining: 'Load remaining',
             loading: 'Carregando...',
+            message_for_education:
+                'This person will not be dispatched with the vehicle because it is missing the necessary education!',
             missions_per_page: '%{count} miss\xf5es',
             name: 'Nome',
             no: 'N\xe3o',
@@ -21163,6 +23452,10 @@ function updateAAOsTime(e) {
             off: 'Desligado',
             on: 'Ligado',
             or: 'ou',
+            person: {
+                missing_education_for_vehicle:
+                    'Personnel will only be dispatched with the vehicle if it has acquired the necessary education!',
+            },
             release_at: 'Alta em',
             remove_all: 'Remover tudo',
             save: 'Salvar',
@@ -21176,6 +23469,12 @@ function updateAAOsTime(e) {
                 name: 'Nome',
                 poi: 'PDI',
                 requirements: 'Requisitos',
+            },
+            sorting: {
+                caption_asc: 'A to Z',
+                caption_desc: 'Z to A',
+                date_asc: 'Oldest',
+                date_desc: 'Newest',
             },
             time_in_minutes: 'Tempo em minutos',
             total_count: 'Total: %{count}',
@@ -21194,11 +23493,20 @@ function updateAAOsTime(e) {
             ready_home: 'Dispon\xedvel na esta\xe7\xe3o',
             ready_traveling: 'Livre e dispon\xedvel',
             talking_wish: 'Solicita\xe7\xe3o de transporte',
+            transporting_car: 'Transporting Vehicle',
             waiting_for_vehicle: 'Aguardando ve\xedculo para rebocar',
         },
         intervention_order: {
+            assigns_equipment_automatically: 'Assigns Equipment Automatically',
+            assigns_equipment_automatically_hint:
+                'If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment. <br><i>(Does not exclusively choose equipment and only affects ARRs marked with %{icon})</i>',
             automatic_text_color: 'Cor do Texto Autom\xe1tica',
             back: 'Voltar',
+            car_carrier: 'Recovery Vehicle or Flatbed Recovery Vehicle',
+            categories: {
+                tow_trucks: 'Recovery Vehicles',
+                water_rescue: 'Technical Rescue and SAR',
+            },
             category: 'Categoria',
             colour: 'Cor',
             column: 'Coluna',
@@ -21225,6 +23533,7 @@ function updateAAOsTime(e) {
                 saved_text:
                     'Seu Regulamento de Alarme e Resposta foi preparado para exporta\xe7\xe3o. Por meio do link, outro jogador pode importar o Regulamento de Alarme e Resposta. Se voc\xea alterar seu Regulamento de Alarme e Resposta neste intervalo, essa altera\xe7\xe3o ser\xe1 automaticamente aplicada \xe0 exporta\xe7\xe3o.',
             },
+            flood_equipment: 'Flood Rescue Units',
             hotkey_hint:
                 'Escolha uma tecla de atalho para selecionar este ve\xedculo. Pressione na sua janela de miss\xe3o: ALT + sua tecla de atalho (ou no Firefox: ALT + SHIFT + sua tecla de atalho, ou no mac os: ctrl + alt + sua tecla de atalho) para escolher a sele\xe7\xe3o do seu ve\xedculo.',
             intervention_order: 'Editar Regulamentos de Alarme e Resposta',
@@ -21253,18 +23562,39 @@ function updateAAOsTime(e) {
                 ab_ruest: 'M\xf3dulo de resgate t\xe9cnico',
                 abl2wasser_only: 'M\xf3dulo de fornecimento de mangueiras',
                 ambulance: 'Ambul\xe2ncia de SAV',
+                any_traffic_car: 'Any Traffic Car',
                 arff: 'Defesa Civil (caminh\xe3o de bombeiro para aeroportos)',
                 battalion_chief_unit: 'Viatura de batalh\xe3o',
+                bomb_disposal: 'EOD Response Vehicles',
+                bomb_disposal_command: 'EOD Commanders',
+                bomb_disposal_crew: 'EOD Response Vehicles',
+                bomb_disposal_diver_crew: 'Marine EOD Response Vehicles',
+                bomb_disposal_diver_equipment: 'Marine EOD Equipment Vans',
+                bomb_disposal_equipment: 'EOD Medium Equipment Vans',
+                bomb_disposal_equipment_2: 'EOD Heavy Equipment Vehicles',
+                bomb_disposal_heavy_equipment: 'EOD Heavy Equipment Vehicles',
                 boot: 'Barcos (geral)',
+                car_carrier: 'Any Recovery Vehicle',
+                car_carrier_large: 'Any HGV Recovery Vehicle',
+                coastal_helicopter: 'Coastguard Rescue Helicopter',
+                coastal_rescue:
+                    'Coastal Rescue, Rope Rescue or Mud Rescue Vehicle',
+                coresponder: 'Co-Responder Vehicle',
+                crew_carrier: 'Crew Carrier',
                 division_chief_unit: 'Viatura de comando m\xf3vel',
+                drone: 'Drone Equipment',
                 elw1_or_elw2:
                     'Viatura de batalh\xe3o, viatura de comando m\xf3vel ou m\xf3dulo de comando m\xf3vel ',
+                elw2_or_ab_elw: 'ICCU / ACU',
                 emergency_ambulance:
                     'Ambul\xe2ncia de emerg\xeancia ou helic\xf3ptero de resgate',
+                emergency_welfare: 'Any Crew Welfare Vehicle',
                 fire_truck: 'Caminh\xf5es de bombeiro',
                 fireboat: 'Barco de combate a inc\xeandio grande',
+                flood_equipment: 'Flood Rescue',
                 fly_car: 'VIR',
                 fly_car_any: 'VIR ou M\xe9dico de Clinica Geral',
+                foam: 'Foam Tenders or RIV',
                 foam_amount: 'Litros de Espuma',
                 gkw: 'Caminh\xe3o utilit\xe1rio',
                 grtw: 'Unidade para incidentes com m\xfaltiplas v\xedtimas',
@@ -21272,26 +23602,41 @@ function updateAAOsTime(e) {
                 gw_hoehenrettung: 'GW-H\xf6henrettung',
                 gw_messtechnik: 'GW-Messtechnik',
                 gw_wasserrettung: 'Reten\xe7\xe3o de \xe1gua',
+                gwl2wasser: 'Water Carrier or Major Foam Tender',
                 gwl2wasser_only: 'Ve\xedculo com mangueira',
                 hems: 'HEMS',
+                hlf_only: 'Rescue Pump',
+                hlf_or_rw_and_lf:
+                    'Rescue Pump or Rescue Support Unit and Fire engine',
+                joint_response_unit: 'Joint Response Unit',
                 k9: 'Unidade de A\xe7\xf5es com C\xe3es',
                 kdow_orgl: 'Chefe de SEM',
+                kdow_orgl_any: 'OTL / Ambulance Officer',
                 ktw_or_rtw: 'USB ou SAMU',
                 lebefkw: 'Leichter Befehlskraftwagen (leBefKw)',
                 lf_only: 'Caminh\xf5es de bombeiro',
                 long_distance_ambulance: 'Ambul\xe2ncia de SBV',
                 mask_service_unit: 'Unidade a\xe9rea m\xf3vel',
+                mass_casualty_equipment:
+                    'Mass Casualty Equipment or Medical Equipment Trailer',
                 mtw: 'MTW',
                 mzb: 'Barco multiuso',
                 nef_only: 'Ambul\xe2ncia',
                 oil_unit: 'GW-\xd6l',
                 police_car: 'Carro de patrulha',
+                police_patrol_and_prisoner_transport: 'Cell Van',
+                police_prisoner_transport: 'Cell Van',
                 polizeihubschrauber: 'Helic\xf3ptero de pol\xedcia',
+                pump_speed: 'Pump Capacity',
+                pump_speed_pump_only: 'Pump Capacity - Only Pumps',
+                rescue_dogs: 'Rescue Dogs',
                 rescue_vehicle: 'Ve\xedculo de resgate pesado',
                 rescue_vehicle_only: 'Resgate pesado',
                 rescueboat: 'Barco de resgate grande',
                 rth_only: 'Helic\xf3ptero de Resgate',
                 schlauchwagen: 'Caminh\xe3o pipa',
+                search_and_rescue: 'SAR Units',
+                search_and_rescue_command: 'Any Control Van',
                 swat: 'Treinamento do Comando de Opera\xe7\xf5es Especiais',
                 swat_armored_vehicle: 'Ve\xedculo blindado da SWAT',
                 swat_suv: 'SUV da SWAT',
@@ -21302,20 +23647,72 @@ function updateAAOsTime(e) {
                 tlf_only: 'Caminh\xe3o tanque',
                 turntable_ladder: 'Caminh\xe3o plataforma',
                 water_amount: 'Litros de \xe1gua',
+                water_damage_pump: 'Water Pumps',
             },
         },
         javascript: {
             alarm: 'Despachar',
+            alliance_event_pay_out_message:
+                'Complete all missions with your alliance to earn a bonus!',
+            alliance_event_resource: {
+                christmas: {
+                    currency: 'Event Tickets',
+                    event_start_mission:
+                        'Start Event: %{amount} Alliance Ticket',
+                },
+                easter: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                football: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                halloween: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                info_bubble_text:
+                    'This is a temporary event that is only available during our event! Encourage your alliance members to complete event missions in order to earn the tickets that are needed to start these events. See the alliance event page for more information.',
+                info_bubble_text_additional:
+                    ' You currently have %{amount} %{alliance_event_currency}!',
+                info_bubble_text_disabled:
+                    "The event can't be started anymore because the Easter event's end time is less than 3 hours away.",
+                stpatricks: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                summer: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                valentines: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                winter: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+            },
             arrival: 'Chegada',
             available_vehicles_count: 'Tem %{count} ve\xedculos',
             backalarm: 'Cancelar',
             coins: 'Moedas',
             collapse: 'Colapso',
             credits: 'Cr\xe9ditos',
+            current_reward_for_you:
+                '<b>Your current reward:</b> %{credits} Credits & %{event_currency} Event Credits',
             day: 'dia',
             days: 'dias',
             donate_event_credits_hint:
                 'Voc\xea vai doar: %{event_credits} cr\xe9ditos de evento</strong> (%{alliance_credits} cr\xe9ditos de alian\xe7a.',
+            event: {
+                alliance_missions_completed:
+                    '<b>Completed Missions:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Participated Missions:</b> %{completedMissions}',
+            },
             few_seconds: 'em alguns segundos',
             finish_in: 'Finaliza em:',
             foam_approaching: 'Se aproximando: %{amount} l.',
@@ -21335,12 +23732,24 @@ function updateAAOsTime(e) {
             mission_start_in: 'Come\xe7a em:',
             new: 'Novo',
             not_found_map: 'O ve\xedculo n\xe3o foi encontrado no mapa',
+            not_qualified:
+                '<b>Not qualified:</b> Participate in a mission to earn the reward ',
             now: 'Agora',
             patient: 'Paciente',
             patient_untouched: 'Pacientes n\xe3o tratados',
+            payout_received:
+                '<b>Your have received:</b> %{credits} Credits & %{event_currency} Event Credits',
             poi_delete: 'Tem certeza de que quer apagar o PDI: %{caption}?',
+            pois: {
+                count_filtered: 'You have filtered %{count} POIs.',
+                count_total: 'You have %{count} POIs.',
+            },
+            pump_speed_approaching: 'Approaching: %{amount} l/min',
+            pump_speed_missing: 'Missing: %{amount} l/min',
+            pump_speed_on_site: 'On scene: %{amount} l/min',
             pump_speed_process:
                 'Processo de bombagem de danos causados pela \xe1gua',
+            pump_speed_selected: 'Selected: %{amount} l/min',
             qualified: '<b>Qualificado:</b> Participou no evento',
             reload: 'Recarregar',
             sale: 'Promo\xe7\xf5es',
@@ -21351,6 +23760,7 @@ function updateAAOsTime(e) {
                 'Selecione a quantidade de cr\xe9ditos de evento que voc\xea deseja converter',
             selected_vehicles_count: 'Selecionou %{count} ve\xedculos',
             show_all: 'Mostrar tudo',
+            show_less: 'Show Less',
             show_more: 'Mostrar mais',
             sicherheitswache_error:
                 'A guarda de seguran\xe7a "%{caption}" n\xe3o teve \xeaxito porque nem todos os crit\xe9rios foram atendidos.',
@@ -21364,12 +23774,17 @@ function updateAAOsTime(e) {
             start_username: 'Iniciante:',
             time_left: 'Tempo restante:',
             to_building: 'Ver edif\xedcio',
+            to_event: 'Back to events',
             to_mission: 'Ver miss\xe3o',
+            total_credits_earned: '<b>Total credits earned:</b>',
+            total_event_currency_earned: '<b>Total event credits earned:</b>',
             understand: 'Reconhecer',
             update_mission_count:
                 'Voc\xea pode atualmente ter intervalos de miss\xe3o personalizados %{current}/%{total}. Com uma assinatura premium, voc\xea pode fazer um intervalo de miss\xe3o personalizado dispon\xedvel para cada tipo de miss\xe3o.',
             user_not_found: 'O jogador n\xe3o foi encontrado.',
             vehicle_payload: {
+                apply_payload: 'Apply Payload',
+                change_payload: 'Change Payload',
                 hide_payload: 'Ocultar carga \xfatil',
                 show_payload: 'Mostrar carga \xfatil',
             },
@@ -21378,6 +23793,7 @@ function updateAAOsTime(e) {
             water_missing: 'Faltando: %{amount} l.',
             water_on_site: 'Em Cena: %{amount} l.',
             water_process: '\xc1gua necess\xe1ria',
+            water_pumping_process: 'Water pumping process',
             water_selected: 'Selecionada: %{amount} l.',
         },
         map: {
@@ -21387,6 +23803,10 @@ function updateAAOsTime(e) {
                 'Voc\xea est\xe1 banido do chat da alian\xe7a no momento.',
             alliance_chat_banned_admin: 'Banido por:',
             alliance_chat_banned_timeleft: 'Tempo restante:',
+            alliance_chat_destroy_alert:
+                'Do you really want to delete this message?',
+            alliance_chat_destroy_confirmation: 'This message has been deleted',
+            alliance_chat_manage_messages: 'Manage messages',
             alliance_chat_radio_off: 'R\xe1dio da alian\xe7a: Desligado',
             alliance_chat_radio_on: 'R\xe1dio da alian\xe7a: Ligado',
             alliance_event: 'Evento',
@@ -21420,20 +23840,26 @@ function updateAAOsTime(e) {
                 alliance_missions: 'Partilhado pela alian\xe7a',
                 ambulance_station_missions: 'Bases do SAMU',
                 ambulance_station_small_missions: 'Bases do SAMU (pequena)',
+                bomb_disposal_missions: 'Bomb Disposal HQ',
                 building_complex: 'Conjunto de Edif\xedcios',
                 buildings_section: 'Esta\xe7\xf5es',
                 clinic_missions: 'Cl\xednica',
+                coastal_rescue: 'Lifeboat Stations',
+                coastal_rescue_missions: 'SAR',
+                custody_suite: 'Custody Suite',
                 dispatch_center_missions: 'Central de Despacho',
                 fire_school_missions: 'Academia de bombeiros militar',
                 firehouse_missions: 'Unidade de bombeiros militar',
                 firehouse_small_missions:
                     'Unidade de bombeiros militar (pequena)',
+                general_practitioner: 'GP Surgery',
                 hospital_missions: 'Hospital',
                 map_filters: 'Lista de filtros do mapa',
                 mission_positions: 'Pontos de interesse (PDI)',
                 mission_positions_section: 'PDI',
                 missions_section: 'Miss\xf5es',
                 police_copter_station_missions: 'Avia\xe7\xe3o policial',
+                police_depot: 'Police Depot',
                 police_school_missions: 'Academia de pol\xedcia militar',
                 police_small_missions:
                     'Delegacias de pol\xedcia militar (pequena)',
@@ -21447,8 +23873,12 @@ function updateAAOsTime(e) {
                 riot_police: 'Tropa de choque',
                 riot_police_missions: 'Tropa de choque',
                 staging_area_missions: '\xc1rea de concentra\xe7\xe3o',
+                technical_aid: 'Search and Rescue HQ',
+                technical_aid_missions: 'SAR',
                 technical_aid_organization: 'THW',
                 technical_aid_organization_school: 'THW Bundesschule',
+                tow_trucks: 'Recovery Centers',
+                tow_trucks_missions: 'Recovery Vehicles',
                 user_buildings: 'Os meus edif\xedcios',
                 user_missions: 'As minhas miss\xf5es',
                 water_watch: 'Resgate aqu\xe1tico',
@@ -21495,6 +23925,13 @@ function updateAAOsTime(e) {
                 unattended: 'Miss\xf5es n\xe3o assistidas',
                 unattended_description: 'Miss\xf5es n\xe3o assistidas',
             },
+            mission_range: {
+                premium_alert: {
+                    description:
+                        'You need to have a premium account for this feature.',
+                    title: 'Mission generation range could not be selected.',
+                },
+            },
             mission_speed: {
                 premium_alert: {
                     description:
@@ -21513,6 +23950,8 @@ function updateAAOsTime(e) {
                 'A participa\xe7\xe3o em miss\xf5es de alian\xe7a ir\xe1 recompens\xe1-lo com Cr\xe9ditos - independentemente do tipo de ve\xedculo que enviar. Ao aderir a uma alian\xe7a pode fazer ambas, partilhar as suas pr\xf3prias miss\xf5es para obter ajuda de membros experientes da alian\xe7a e participar nas miss\xf5es partilhadas de outros para obter recompensas extra.',
             no_ambulance_missions:
                 'N\xe3o h\xe1 transporte de doentes. O transporte de doentes s\xf3 pode ser efectuado quando existe uma ambul\xe2ncia e um hospital.',
+            no_critical_transport_missions:
+                'There are no Interfacility Transfers. They can only occur when you have a Critical Care Transfer Ambulance and 2 hospitals with patients in treatment.',
             no_emergency_missions:
                 'N\xe3o h\xe1 miss\xf5es de emerg\xeancia dispon\xedveis. Voc\xea pode participar de uma miss\xe3o de emerg\xeancia depois que construir o seu primeiro corpo de bombeiros.',
             no_radio_messages: 'Voc\xea n\xe3o recebeu mensagens de r\xe1dio.',
@@ -21543,6 +23982,22 @@ function updateAAOsTime(e) {
                 separator: ',',
                 significant: !1,
                 strip_insignificant_zeros: !1,
+            },
+        },
+        policechief: {
+            tutorial: {
+                beginner: {
+                    building: {
+                        browser: {
+                            welcome:
+                                'Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions.',
+                        },
+                        mobile: {
+                            welcome:
+                                'Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions.',
+                        },
+                    },
+                },
             },
         },
         tutorial: {
@@ -21579,6 +24034,103 @@ function updateAAOsTime(e) {
                         },
                         welcome:
                             'Bem-vindo ao Operador 193! Trabalhando em um centro de despacho para servi\xe7os de emerg\xeancia, voc\xea lida com chamadas de emerg\xeancia para ajudar e proteger o p\xfablico. Para isso, voc\xea constr\xf3i esta\xe7\xf5es e envia v\xe1rios tipos de ve\xedculos e pessoal treinado para v\xe1rias miss\xf5es.',
+                    },
+                    tooltip: {
+                        ambulance_station: {
+                            helpshift_id: '1714',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station',
+                            short: 'Houses vehicles need for EMS-related missions. \nExtensions can be built, which unlocks purchasing of specialized units.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        ambulance_station_small: {
+                            helpshift_id: '1715',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station',
+                            short: 'Houses vehicles for EMS-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        clinic: {
+                            helpshift_id: '1719',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-clinic',
+                            short: 'Houses vehicles need for EMS-related missions.\nPatients can be transported here, however it is less specialized than the hospital.',
+                        },
+                        dispatch_center: {
+                            helpshift_id: '1497',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=gameplay&f=what-is-the-dispatch-center-good-for',
+                            short: 'Gives you an overview of all your buildings and allows you to group them in a dispatch area.',
+                        },
+                        firehouse: {
+                            helpshift_id: '1709',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions. \nExtensions can be built, which unlocks purchasing of specialized units. ',
+                        },
+                        firehouse_small: {
+                            helpshift_id: '1710',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        fireschool: {
+                            helpshift_id: '1711',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-academy',
+                            short: 'Allows for training firefighters to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        hazard_response_ems: {
+                            helpshift_id: '1736',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hart-base',
+                            short: 'Houses specialized EMS units that respond to Hazard-related missions. \nPersonell needs to be trained in order to operate these specialized units.',
+                        },
+                        home_response_location: {
+                            helpshift_id: '1665',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-home-response-location-hrl-uk-game-version',
+                            short: 'This building houses rescue workers which are on call.',
+                        },
+                        hospital: {
+                            helpshift_id: '1718',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hospital',
+                            short: 'For more severe conditions, patients can be transported here. \nAdditional credits can be earned with patients treated.',
+                        },
+                        police_copter_station: {
+                            helpshift_id: '1731',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-helicopter-station',
+                            short: 'Houses aircrafts for police-related missions.\nA helicopter needs to be purchased separately. ',
+                        },
+                        police_depot: {
+                            helpshift_id: '1741',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version',
+                            short: 'Houses specialist police units that are often stored in large police depots. \nYou can only build one of these per 50 police buildings. Prison cells are available in this building.',
+                        },
+                        police_school: {
+                            helpshift_id: '1724',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-academy',
+                            short: 'Allows for training police officers to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        police_small: {
+                            helpshift_id: '1723',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-police-station',
+                            short: 'Houses vehicles needed for police-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        police_station: {
+                            helpshift_id: '1722',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-station',
+                            short: 'Houses vehicles needed for police-related missions. \nExtensions can be built, which unlocks purchasing of specialized units ',
+                        },
+                        prison: {
+                            helpshift_id: '1734',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-prison',
+                            short: 'Prisoners can be transported here. \nA Prison can only be built with alliance funds.',
+                        },
+                        rescue_copter_station: {
+                            helpshift_id: '1720',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-helicopter-station',
+                            short: 'Houses helicopters for treatment of patients with very serious injuries. \nA helicopter needs to be purchased separately. ',
+                        },
+                        rescue_school: {
+                            helpshift_id: '1716',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-rescue-academy',
+                            short: 'Allows for training EMS personnel to perform advanced treatments and using specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        staging_area: {
+                            helpshift_id: '1732',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-staging-area',
+                            short: 'The staging area can be built for free and will remain for 24 hours. \nDuring this time, units can be temporarily stationed here and dispatched to a mission.',
+                        },
                     },
                 },
                 mission: {
@@ -21655,6 +24207,11 @@ function updateAAOsTime(e) {
                             link: 'https://xyrality.helpshift.com/hc/pt/23-mission-chief/faq/1885-how-do-critical-transport-missions-work/',
                             short: 'Como funcionam as miss\xf5es de transporte cr\xedtico?',
                         },
+                        radio: {
+                            helpshift_id: '1540',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles',
+                            short: 'The radio displays status updates of your vehicles. For more detailed information on each status click here.',
+                        },
                         summary:
                             'Voc\xea pode participar de uma alian\xe7a para resolver miss\xf5es junto com outras pessoas. Tamb\xe9m h\xe1 eventos regulares da alian\xe7a dos quais todos os membros podem participar!',
                     },
@@ -21672,6 +24229,10 @@ function updateAAOsTime(e) {
                             'As promo\xe7\xf5es e as esta\xe7\xf5es de constru\xe7\xe3o desbloqueiam novos recursos, como tipos de miss\xe3o ou ve\xedculos.',
                         summary:
                             'Voc\xea pode participar de uma alian\xe7a para resolver miss\xf5es junto com outras pessoas. Tamb\xe9m h\xe1 eventos regulares da alian\xe7a dos quais todos os membros podem participar!',
+                    },
+                    reminder: {
+                        join_alliance:
+                            'Joining an alliance has many benefits: extra rewards for completing alliance missions, support from experienced members for difficult missions and you can use facilities of other members like hospitals and schools! Press the button to join an alliance now!',
                     },
                 },
             },
@@ -21699,6 +24260,7 @@ function updateAAOsTime(e) {
             cancel: '\u0421\u043a\u0430\u0441\u0443\u0432\u0430\u0442\u0438',
             change_saved:
                 '\u0417\u043c\u0456\u043d\u0438 \u0437\u0431\u0435\u0440\u0435\u0436\u0435\u043d\u043e',
+            click_for_more_info: 'Click here for more information.',
             coins_spend:
                 '\u0414\u0456\u0439\u0441\u043d\u043e \u0431\u0430\u0436\u0430\u0454\u0442\u0435 \u0432\u0438\u0442\u0440\u0430\u0442\u0438\u0442\u0438 \u0446\u0456 \u043c\u043e\u043d\u0435\u0442\u0438?',
             congratulations: '\u0412\u0456\u0442\u0430\u043d\u043d\u044f!',
@@ -21712,6 +24274,7 @@ function updateAAOsTime(e) {
             custom_missions:
                 '\u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f \u0430\u043b\u044c\u044f\u043d\u0441\u0443 ',
             delete: '\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438',
+            description: 'Description',
             details: '\u041f\u043e\u0434\u0440\u043e\u0431\u0438\u0446\u0456',
             edit: '\u0420\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u0442\u0438',
             error: '\u041f\u043e\u043c\u0438\u043b\u043a\u0430',
@@ -21729,15 +24292,24 @@ function updateAAOsTime(e) {
             is_offline_with_duration:
                 '%{user} \u043d\u0435 \u0432 \u043c\u0435\u0440\u0435\u0436\u0456: %{duration}',
             is_online: '%{user} \u0432 \u043c\u0435\u0440\u0435\u0436\u0456.',
+            load_next: 'Load more',
+            load_remaining: 'Load remaining',
             loading:
                 '\u0417\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f...',
+            message_for_education:
+                'This person will not be dispatched with the vehicle because it is missing the necessary education!',
             missions_per_page: '%{count} \u043c\u0456\u0441\u0456\u0457',
             name: "\u0406\u043c'\u044f",
+            no: 'no',
             none: '\u0416\u043e\u0434\u043d\u043e\u0433\u043e',
             of: '\u0437',
             off: '\u0412\u0456\u0434\u043a\u043b.',
             on: '\u0412\u043a\u043b.',
             or: '\u0430\u0431\u043e',
+            person: {
+                missing_education_for_vehicle:
+                    'Personnel will only be dispatched with the vehicle if it has acquired the necessary education!',
+            },
             release_at:
                 '\u0432\u0438\u043f\u0438\u0441\u0430\u043d\u0438\u0439 \u0432',
             remove_all:
@@ -21745,6 +24317,7 @@ function updateAAOsTime(e) {
             save: '\u0417\u0431\u0435\u0440\u0435\u0433\u0442\u0438',
             search: '\u041f\u043e\u0448\u0443\u043a',
             show: '\u041f\u043e\u043a\u0430\u0437\u0430\u0442\u0438',
+            sort: 'Sort:',
             sort_by: {
                 credits: '\u041a\u0440\u0435\u0434\u0438\u0442\u0438',
                 default: 'Default',
@@ -21754,6 +24327,12 @@ function updateAAOsTime(e) {
                 poi: '\u0432\u0430\u0436\u043b\u0438\u0432\u043e\u0457 \u0442\u043e\u0447\u043a\u0438',
                 requirements: '\u0412\u0438\u043c\u043e\u0433\u0438',
             },
+            sorting: {
+                caption_asc: 'A to Z',
+                caption_desc: 'Z to A',
+                date_asc: 'Oldest',
+                date_desc: 'Newest',
+            },
             time_in_minutes: 'Time in minutes',
             total_count: '\u0412\u0441\u044c\u043e\u0433\u043e: %{count}',
             type: '\u0414\u0440\u0443\u043a\u0443\u0439:',
@@ -21761,6 +24340,7 @@ function updateAAOsTime(e) {
                 '\u041a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e.',
             wrong_key:
                 '\u041d\u0435\u0432\u0456\u0440\u043d\u0430 \u043a\u043b\u0430\u0432\u0456\u0448\u0430',
+            yes: 'yes',
         },
         fms: {
             going: '\u0412\u0438\u0457\u0436\u0434\u0436\u0430\u0454',
@@ -21778,12 +24358,21 @@ function updateAAOsTime(e) {
                 '\u041d\u0435 \u043c\u0430\u0454 \u0437\u0430\u0432\u0434\u0430\u043d\u044c \u0456 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e',
             talking_wish:
                 '\u0417\u0430\u043f\u0438\u0442 \u043d\u0430 \u043f\u0435\u0440\u0435\u0432\u0435\u0437\u0435\u043d\u043d\u044f',
+            transporting_car: 'Transporting Vehicle',
             waiting_for_vehicle:
                 '\u041e\u0447\u0456\u043a\u0443\u0454 \u043c\u0430\u0448\u0438\u043d\u0443 \u0434\u043b\u044f \u0431\u0443\u043a\u0441\u0438\u0440\u0443\u0432\u0430\u043d\u043d\u044f',
         },
         intervention_order: {
+            assigns_equipment_automatically: 'Assigns Equipment Automatically',
+            assigns_equipment_automatically_hint:
+                'If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment. <br><i>(Does not exclusively choose equipment and only affects ARRs marked with %{icon})</i>',
             automatic_text_color: 'Automatic Text Color',
             back: '\u041d\u0430\u0437\u0430\u0434',
+            car_carrier: 'Recovery Vehicle or Flatbed Recovery Vehicle',
+            categories: {
+                tow_trucks: 'Recovery Vehicles',
+                water_rescue: 'Technical Rescue and SAR',
+            },
             category: '\u041a\u0430\u0442\u0435\u0433\u043e\u0440\u0456\u044f',
             colour: '\u041a\u043e\u043b\u0456\u0440',
             column: '\u0421\u0442\u043e\u0432\u043f\u0447\u0438\u043a',
@@ -21811,6 +24400,7 @@ function updateAAOsTime(e) {
                 saved_text:
                     '\u0412\u0430\u0448\u0435 \u043f\u0440\u0430\u0432\u0438\u043b\u043e \u041f\u0406\u0420 \u043f\u0456\u0434\u0433\u043e\u0442\u043e\u0432\u043b\u0435\u043d\u0435 \u0434\u043e \u0435\u043a\u0441\u043f\u043e\u0440\u0442\u0443. \u0417\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f, \u0456\u043d\u0448\u0438\u0439 \u0433\u0440\u0430\u0432\u0435\u0446\u044c \u0437\u043c\u043e\u0436\u0435 \u0435\u043a\u0441\u043f\u043e\u0440\u0442\u0443\u0432\u0430\u0442\u0438 \u043f\u0440\u0430\u0432\u0438\u043b\u043e \u041f\u0406\u0420. \u042f\u043a\u0449\u043e \u043f\u0440\u043e\u0442\u044f\u0433\u043e\u043c \u0446\u044c\u043e\u0433\u043e \u0447\u0430\u0441\u0443 \u0432\u0438 \u0437\u043c\u0456\u043d\u0438\u0442\u0435 \u0441\u0432\u043e\u0454 \u043f\u0440\u0430\u0432\u0438\u043b\u043e \u041f\u0406\u0420, \u0437\u043c\u0456\u043d\u0443 \u0431\u0443\u0434\u0435 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e \u0437\u0430\u0441\u0442\u043e\u0441\u043e\u0432\u0430\u043d\u043e \u0434\u043e \u043f\u0440\u0430\u0432\u0438\u043b\u0430, \u0449\u043e \u0435\u043a\u0441\u043f\u043e\u0440\u0442\u0443\u0454\u0442\u044c\u0441\u044f.',
             },
+            flood_equipment: 'Flood Rescue Units',
             hotkey_hint:
                 '\u0412\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u0433\u0430\u0440\u044f\u0447\u0443 \u043a\u043b\u0430\u0432\u0456\u0448\u0443 \u0434\u043b\u044f \u0432\u0438\u0431\u0440\u0430\u043d\u043e\u0457 \u043c\u0430\u0448\u0438\u043d\u0438. \u041d\u0430\u0442\u0438\u0441\u043d\u0456\u0442\u044c \u0443 \u0432\u0456\u043a\u043d\u0456 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f: ALT + \u0432\u0430\u0448\u0430 \u0433\u0430\u0440\u044f\u0447\u0430 \u043a\u043b\u0430\u0432\u0456\u0448\u0430 (\u0430\u0431\u043e \u0443 Firefox: ALT + SHIFT + \u0432\u0430\u0448\u0430 \u0433\u0430\u0440\u044f\u0447\u0430 \u043a\u043b\u0430\u0432\u0456\u0448\u0430 \u0430\u0431\u043e \u0443 mac os: ctrl + alt + \u0432\u0430\u0448\u0430 \u0433\u0430\u0440\u044f\u0447\u0430 \u043a\u043b\u0430\u0432\u0456\u0448\u0430), \u0449\u043e\u0431 \u0432\u0438\u0434\u0456\u043b\u0438\u0442\u0438 \u0432\u0438\u0431\u0440\u0430\u043d\u0443 \u043c\u0430\u0448\u0438\u043d\u0443.',
             intervention_order:
@@ -21848,24 +24438,45 @@ function updateAAOsTime(e) {
                     '\u041c\u043e\u0434\u0443\u043b\u044c \u043f\u043e\u0434\u0430\u0447\u0456 \u0448\u043b\u0430\u043d\u0433\u0443',
                 ambulance:
                     '\u0420\u0435\u0430\u043d\u0456\u043c\u043e\u0431\u0456\u043b\u044c',
+                any_traffic_car: 'Any Traffic Car',
                 arff: '\u0410\u0420\u0406\u041f (\u043f\u043e\u0436\u0435\u0436\u043d\u0430 \u043c\u0430\u0448\u0438\u043d\u0430 \u0430\u0435\u0440\u043e\u043f\u043e\u0440\u0442\u0443)',
                 battalion_chief_unit:
                     '\u041f\u0456\u0434\u0440\u043e\u0437\u0434\u0456\u043b \u043a\u043e\u043c\u0430\u043d\u0434\u0438\u0440\u0430 \u0431\u0430\u0442\u0430\u043b\u044c\u0439\u043e\u043d\u0443',
+                bomb_disposal: 'EOD Response Vehicles',
+                bomb_disposal_command: 'EOD Commanders',
+                bomb_disposal_crew: 'EOD Response Vehicles',
+                bomb_disposal_diver_crew: 'Marine EOD Response Vehicles',
+                bomb_disposal_diver_equipment: 'Marine EOD Equipment Vans',
+                bomb_disposal_equipment: 'EOD Medium Equipment Vans',
+                bomb_disposal_equipment_2: 'EOD Heavy Equipment Vehicles',
+                bomb_disposal_heavy_equipment: 'EOD Heavy Equipment Vehicles',
                 boot: '\u0421\u0443\u0434\u043d\u0430 (\u0437\u0430\u0433\u0430\u043b\u044c\u043d\u0456)',
+                car_carrier: 'Any Recovery Vehicle',
+                car_carrier_large: 'Any HGV Recovery Vehicle',
+                coastal_helicopter: 'Coastguard Rescue Helicopter',
+                coastal_rescue:
+                    'Coastal Rescue, Rope Rescue or Mud Rescue Vehicle',
+                coresponder: 'Co-Responder Vehicle',
+                crew_carrier: 'Crew Carrier',
                 division_chief_unit:
                     '\u041c\u043e\u0431\u0456\u043b\u044c\u043d\u0438\u0439 \u043a\u043e\u043c\u0430\u043d\u0434\u043d\u0438\u0439 \u043f\u0443\u043d\u043a\u0442',
+                drone: 'Drone Equipment',
                 elw1_or_elw2:
                     '\u041f\u0456\u0434\u0440\u043e\u0437\u0434\u0456\u043b \u043a\u043e\u043c\u0430\u043d\u0434\u0438\u0440\u0430 \u0431\u0430\u0442\u0430\u043b\u044c\u0439\u043e\u043d\u0443, \u043c\u043e\u0431\u0456\u043b\u044c\u043d\u0438\u0439 \u043a\u043e\u043c\u0430\u043d\u0434\u043d\u0438\u0439 \u043f\u0443\u043d\u043a\u0442 \u0430\u0431\u043e \u043c\u043e\u0431\u0456\u043b\u044c\u043d\u0438\u0439 \u043c\u043e\u0434\u0443\u043b\u044c \u0443\u043f\u0440\u0430\u0432\u043b\u0456\u043d\u043d\u044f ',
+                elw2_or_ab_elw: 'ICCU / ACU',
                 emergency_ambulance:
                     '\u041c\u0430\u0448\u0438\u043d\u0430 \u0447\u0438 \u0432\u0435\u0440\u0442\u043e\u043b\u0456\u0442 \u0448\u0432\u0438\u0434\u043a\u043e\u0457 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0438',
+                emergency_welfare: 'Any Crew Welfare Vehicle',
                 fire_truck:
                     '\u041f\u043e\u0436\u0435\u0436\u043d\u0456 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0456\u043b\u0456',
                 fireboat:
                     '\u0412\u0435\u043b\u0438\u043a\u0438\u0439 \u043f\u043e\u0436\u0435\u0436\u043d\u0438\u0439 \u043a\u0430\u0442\u0435\u0440',
+                flood_equipment: 'Flood Rescue',
                 fly_car:
                     '\u041b\u0435\u0442\u044e\u0447\u0438\u0439 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0456\u043b\u044c',
                 fly_car_any:
                     '\u041b\u0435\u0442\u044e\u0447\u0438\u0439 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0456\u043b\u044c / \u041b\u0456\u043a\u0430\u0440 \u0437\u0430\u0433\u0430\u043b\u044c\u043d\u043e\u0457 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0438',
+                foam: 'Foam Tenders or RIV',
                 gkw: '\u0412\u0430\u043d\u0442\u0430\u0436\u0456\u0432\u043a\u0430',
                 grtw: '\u041f\u0456\u0434\u0440\u043e\u0437\u0434\u0456\u043b \u043f\u043e \u0440\u043e\u0431\u043e\u0442\u0456 \u0437 \u0432\u0435\u043b\u0438\u043a\u043e\u044e \u043a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044e \u043f\u043e\u0441\u0442\u0440\u0430\u0436\u0434\u0430\u043b\u0438\u0445',
                 gw_gefahrgut:
@@ -21876,12 +24487,18 @@ function updateAAOsTime(e) {
                     '\u041c\u0435\u0442\u0440\u043e\u043b\u043e\u0433\u0456\u0447\u043d\u0438\u0439 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0456\u043b\u044c',
                 gw_wasserrettung:
                     '\u0412\u043e\u043b\u043e\u0433\u043e\u0443\u0442\u0440\u0438\u043c\u0430\u043d\u043d\u044f',
+                gwl2wasser: 'Water Carrier or Major Foam Tender',
                 gwl2wasser_only:
                     '\u041c\u0430\u0448\u0438\u043d\u0430 \u0456\u0437 \u0431\u0440\u0430\u043d\u0434\u0441\u043f\u043e\u0439\u043d\u0442\u043e\u043c',
                 hems: '\u0412\u0435\u0440\u0442\u043e\u043b\u0456\u0442 \u043d\u0435\u0432\u0456\u0434\u043a\u043b\u0430\u0434\u043d\u043e\u0457 \u043c\u0435\u0434\u0438\u0447\u043d\u043e\u0457 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0438',
+                hlf_only: 'Rescue Pump',
+                hlf_or_rw_and_lf:
+                    'Rescue Pump or Rescue Support Unit and Fire engine',
+                joint_response_unit: 'Joint Response Unit',
                 k9: '\u041f\u0456\u0434\u0440\u043e\u0437\u0434\u0456\u043b \u043a\u0456\u043d\u043e\u043b\u043e\u0433\u0456\u0432',
                 kdow_orgl:
                     '\u041a\u0435\u0440\u0456\u0432\u043d\u0438\u043a \u0448\u0432\u0438\u0434\u043a\u043e\u0457',
+                kdow_orgl_any: 'OTL / Ambulance Officer',
                 ktw_or_rtw:
                     '\u0420\u0435\u0430\u043d\u0456\u043c\u043e\u0431\u0456\u043b\u044c BLS \u0447\u0438 ALS',
                 lebefkw:
@@ -21892,6 +24509,8 @@ function updateAAOsTime(e) {
                     '\u0420\u0435\u0430\u043d\u0456\u043c\u043e\u0431\u0456\u043b\u044c',
                 mask_service_unit:
                     '\u041c\u043e\u0431\u0456\u043b\u044c\u043d\u0438\u0439 \u043f\u043e\u0432\u0456\u0442\u0440\u044f\u043d\u0438\u0439 \u043f\u0456\u0434\u0440\u043e\u0437\u0434\u0456\u043b',
+                mass_casualty_equipment:
+                    'Mass Casualty Equipment or Medical Equipment Trailer',
                 mtw: '\u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0435\u0440',
                 mzb: '\u0411\u0430\u0433\u0430\u0442\u043e\u0446\u0456\u043b\u044c\u043e\u0432\u0435 \u0441\u0443\u0434\u043d\u043e',
                 nef_only:
@@ -21900,8 +24519,13 @@ function updateAAOsTime(e) {
                     '\u041d\u0430\u0444\u0442\u043e\u0437\u0431\u0438\u0440\u043d\u0435 \u0441\u0443\u0434\u043d\u043e',
                 police_car:
                     '\u041f\u0430\u0442\u0440\u0443\u043b\u044c\u043d\u0438\u0439 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0456\u043b\u044c',
+                police_patrol_and_prisoner_transport: 'Cell Van',
+                police_prisoner_transport: 'Cell Van',
                 polizeihubschrauber:
                     '\u041f\u043e\u043b\u0456\u0446\u0435\u0439\u0441\u044c\u043a\u0438\u0439 \u0432\u0435\u0440\u0442\u043e\u043b\u0456\u0442',
+                pump_speed: 'Pump Capacity',
+                pump_speed_pump_only: 'Pump Capacity - Only Pumps',
+                rescue_dogs: 'Rescue Dogs',
                 rescue_vehicle:
                     '\u0412\u0430\u0436\u043a\u0430 \u0440\u044f\u0442\u0443\u0432\u0430\u043b\u044c\u043d\u0430 \u043c\u0430\u0448\u0438\u043d\u0430',
                 rescue_vehicle_only:
@@ -21912,6 +24536,8 @@ function updateAAOsTime(e) {
                     '\u0412\u0435\u0440\u0442\u043e\u043b\u0456\u0442 \u0448\u0432\u0438\u0434\u043a\u043e\u0457 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0438',
                 schlauchwagen:
                     '\u0410\u0432\u0442\u043e\u0446\u0438\u0441\u0442\u0435\u0440\u043d\u0430',
+                search_and_rescue: 'SAR Units',
+                search_and_rescue_command: 'Any Control Van',
                 swat: '\u0421\u043f\u0435\u0446\u043d\u0430\u0437',
                 swat_armored_vehicle:
                     '\u0411\u0440\u043e\u043d\u044c\u043e\u0432\u0430\u043d\u0438\u0439 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0456\u043b\u044c \u0441\u043f\u0435\u0446\u043d\u0430\u0437\u0443',
@@ -21927,18 +24553,73 @@ function updateAAOsTime(e) {
                     '\u0410\u0432\u0442\u043e\u0446\u0438\u0441\u0442\u0435\u0440\u043d\u0430',
                 turntable_ladder:
                     '\u041f\u043e\u0436\u0435\u0436\u043d\u0456 \u0430\u0432\u0442\u043e\u0434\u0440\u0430\u0431\u0438\u043d\u0438',
+                water_damage_pump: 'Water Pumps',
             },
         },
         javascript: {
             alarm: '\u0412\u0456\u0434\u043f\u0440\u0430\u0432\u0438\u0442\u0438',
+            alliance_event_pay_out_message:
+                'Complete all missions with your alliance to earn a bonus!',
+            alliance_event_resource: {
+                christmas: {
+                    currency: 'Event Tickets',
+                    event_start_mission:
+                        'Start Event: %{amount} Alliance Ticket',
+                },
+                easter: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                football: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                halloween: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                info_bubble_text:
+                    'This is a temporary event that is only available during our event! Encourage your alliance members to complete event missions in order to earn the tickets that are needed to start these events. See the alliance event page for more information.',
+                info_bubble_text_additional:
+                    ' You currently have %{amount} %{alliance_event_currency}!',
+                info_bubble_text_disabled:
+                    "The event can't be started anymore because the Easter event's end time is less than 3 hours away.",
+                stpatricks: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                summer: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                valentines: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                winter: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+            },
             arrival: '\u041f\u0440\u0438\u0431\u0443\u0442\u0442\u044f',
             available_vehicles_count:
                 '\u0423 \u0432\u0430\u0441 \u0454 %{count} \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u0438\u0445 \u0437\u0430\u0441\u043e\u0431\u0456\u0432',
             backalarm: '\u0421\u043a\u0430\u0441\u0443\u0432\u0430\u0442\u0438',
             coins: '\u041c\u043e\u043d\u0435\u0442\u0438',
+            collapse: 'Collapse',
             credits: '\u041a\u0440\u0435\u0434\u0438\u0442\u0438',
+            current_reward_for_you:
+                '<b>Your current reward:</b> %{credits} Credits & %{event_currency} Event Credits',
             day: '\u0434\u0435\u043d\u044c',
             days: '\u0434\u043d.',
+            donate_event_credits_hint:
+                'You will donate: <strong>%{event_credits} event credits</strong> (%{alliance_credits} alliance credits).',
+            event: {
+                alliance_missions_completed:
+                    '<b>Completed Missions:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Participated Missions:</b> %{completedMissions}',
+            },
             few_seconds:
                 '\u0447\u0435\u0440\u0435\u0437 \u0434\u0435\u043a\u0456\u043b\u044c\u043a\u0430 \u0441\u0435\u043a\u0443\u043d\u0434',
             finish_in:
@@ -21962,21 +24643,39 @@ function updateAAOsTime(e) {
             new: '\u041d\u043e\u0432\u0438\u0439',
             not_found_map:
                 '\u041c\u0430\u0448\u0438\u043d\u0443 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u043d\u0430 \u043a\u0430\u0440\u0442\u0456',
+            not_qualified:
+                '<b>Not qualified:</b> Participate in a mission to earn the reward ',
             now: '\u0417\u0430\u0440\u0430\u0437',
             patient: '\u041f\u0430\u0446\u0456\u0454\u043d\u0442',
             patient_untouched:
                 '\u041d\u0435\u0432\u0438\u043b\u0456\u043a\u0443\u0432\u0430\u043d\u0456 \u043f\u0430\u0446\u0456\u0454\u043d\u0442\u0438',
+            payout_received:
+                '<b>Your have received:</b> %{credits} Credits & %{event_currency} Event Credits',
             poi_delete:
                 '\u0414\u0456\u0439\u0441\u043d\u043e \u0432\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u0432\u0430\u0436\u043b\u0438\u0432\u0443 \u0442\u043e\u0447\u043a\u0443: %{caption}?',
+            pois: {
+                count_filtered: 'You have filtered %{count} POIs.',
+                count_total: 'You have %{count} POIs.',
+            },
+            pump_speed_approaching: 'Approaching: %{amount} l/min',
+            pump_speed_missing: 'Missing: %{amount} l/min',
+            pump_speed_on_site: 'On scene: %{amount} l/min',
             pump_speed_process:
                 '\u041f\u0440\u043e\u0446\u0435\u0441 \u0440\u043e\u0431\u043e\u0442\u0438 \u043d\u0430\u0441\u043e\u0441\u0430 \u0434\u043b\u044f \u043f\u043e\u0448\u043a\u043e\u0434\u0436\u0435\u043d\u043d\u044f \u0432\u043e\u0434\u0438',
+            pump_speed_selected: 'Selected: %{amount} l/min',
+            qualified: '<b>Qualified:</b> You took part in the event',
             reload: '\u041f\u0435\u0440\u0435\u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438',
             sale: '\u0420\u043e\u0437\u043f\u0440\u043e\u0434\u0430\u0436',
             sale_ended:
                 '\u0420\u043e\u0437\u043f\u0440\u043e\u0434\u0430\u0436 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043e',
             secounds: '\u0441\u0435\u043a.',
+            select_amount_button: 'Select amount',
+            select_amount_event_credits_hint:
+                'Select the amount of event credits you want to convert',
             selected_vehicles_count:
                 '\u0412\u0438 \u043e\u0431\u0440\u0430\u043b\u0438 %{count} \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u0438\u0445 \u0437\u0430\u0441\u043e\u0431\u0456\u0432',
+            show_all: 'Show All',
+            show_less: 'Show Less',
             show_more:
                 '\u041f\u043e\u043a\u0430\u0437\u0430\u0442\u0438 \u0431\u0456\u043b\u044c\u0448\u0435',
             sicherheitswache_error:
@@ -21996,14 +24695,19 @@ function updateAAOsTime(e) {
                 '\u0417\u0430\u043b\u0438\u0448\u0438\u043b\u043e\u0441\u044f \u0447\u0430\u0441\u0443:',
             to_building:
                 '\u041f\u0435\u0440\u0435\u0433\u043b\u044f\u0434 \u0431\u0443\u0434\u0456\u0432\u043b\u0456',
+            to_event: 'Back to events',
             to_mission:
                 '\u041f\u0435\u0440\u0435\u0433\u043b\u044f\u0434 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f',
+            total_credits_earned: '<b>Total credits earned:</b>',
+            total_event_currency_earned: '<b>Total event credits earned:</b>',
             understand: '\u0412\u0438\u0437\u043d\u0430\u0442\u0438',
             update_mission_count:
                 '\u041d\u0430\u0440\u0430\u0437\u0456 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043c\u0430\u0442\u0438 %{current} / %{total} \u0432\u043b\u0430\u0441\u043d\u0438\u0445 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0456\u0432 \u043c\u0456\u0441\u0456\u0439. \u0417 \u043f\u0440\u0435\u043c\u0456\u0443\u043c-\u043f\u0456\u0434\u043f\u0438\u0441\u043a\u043e\u044e \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u0432\u043b\u0430\u0441\u043d\u0438\u0439 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d \u043c\u0456\u0441\u0456\u0439 \u0434\u043b\u044f \u043a\u043e\u0436\u043d\u043e\u0433\u043e \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u0442\u0438\u043f\u0443 \u043c\u0456\u0441\u0456\u0439.',
             user_not_found:
                 '\u0413\u0440\u0430\u0432\u0446\u044f \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e.',
             vehicle_payload: {
+                apply_payload: 'Apply Payload',
+                change_payload: 'Change Payload',
                 hide_payload:
                     '\u041f\u0440\u0438\u0445\u043e\u0432\u0430\u0442\u0438 \u043a\u043e\u0440\u0438\u0441\u043d\u0435 \u043d\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f',
                 show_payload:
@@ -22011,6 +24715,7 @@ function updateAAOsTime(e) {
             },
             vehicles_not_visible:
                 '\u041c\u0430\u0448\u0438\u043d\u0443 \u043d\u0435 \u0432\u0438\u0434\u043d\u043e. ',
+            water_process: 'Water needed',
             water_pumping_process:
                 '\u041d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0430 \u043f\u043e\u0442\u0443\u0436\u043d\u0456\u0441\u0442\u044c \u043d\u0430\u0441\u043e\u0441\u0430',
         },
@@ -22023,6 +24728,10 @@ function updateAAOsTime(e) {
                 '\u0417\u0430\u0431\u043b\u043e\u043a\u0443\u0432\u0430\u0432:',
             alliance_chat_banned_timeleft:
                 '\u0417\u0430\u043b\u0438\u0448\u0438\u043b\u043e\u0441\u044f \u0447\u0430\u0441\u0443:',
+            alliance_chat_destroy_alert:
+                'Do you really want to delete this message?',
+            alliance_chat_destroy_confirmation: 'This message has been deleted',
+            alliance_chat_manage_messages: 'Manage messages',
             alliance_chat_radio_off:
                 '\u0420\u0430\u0434\u0456\u043e \u0430\u043b\u044c\u044f\u043d\u0441\u0443: \u0412\u0456\u0434\u043a\u043b.',
             alliance_chat_radio_on:
@@ -22071,10 +24780,14 @@ function updateAAOsTime(e) {
                     '\u0421\u0442\u0430\u043d\u0446\u0456\u044f \u0448\u0432\u0438\u0434\u043a\u043e\u0457 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0438',
                 ambulance_station_small_missions:
                     '\u041f\u0456\u0434\u0441\u0442\u0430\u043d\u0446\u0456\u044f \u0448\u0432\u0438\u0434\u043a\u043e\u0457 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0438',
+                bomb_disposal_missions: 'Bomb Disposal HQ',
                 building_complex:
                     '\u041a\u043e\u043c\u043f\u043b\u0435\u043a\u0441 \u0411\u0443\u0434\u0456\u0432\u0435\u043b\u044c',
                 buildings_section: '\u0421\u0442\u0430\u043d\u0446\u0456\u0457',
                 clinic_missions: '\u041a\u043b\u0456\u043d\u0456\u043a\u0430',
+                coastal_rescue: 'Lifeboat Stations',
+                coastal_rescue_missions: 'SAR',
+                custody_suite: 'Custody Suite',
                 dispatch_center_missions:
                     '\u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440\u0441\u044c\u043a\u0438\u0439 \u0446\u0435\u043d\u0442\u0440',
                 fire_school_missions:
@@ -22083,6 +24796,7 @@ function updateAAOsTime(e) {
                     '\u041f\u043e\u0436\u0435\u0436\u043d\u0430 \u0447\u0430\u0441\u0442\u0438\u043d\u0430',
                 firehouse_small_missions:
                     '\u041f\u043e\u0436\u0435\u0436\u043d\u0430 \u0447\u0430\u0441\u0442\u0438\u043d\u0430 (\u043c\u0430\u043b\u0430)',
+                general_practitioner: 'GP Surgery',
                 hospital_missions: '\u041b\u0456\u043a\u0430\u0440\u043d\u044f',
                 map_filters:
                     '\u0421\u043f\u0438\u0441\u043e\u043a \u0444\u0456\u043b\u044c\u0442\u0440\u0456\u0432 \u043a\u0430\u0440\u0442\u0438',
@@ -22093,6 +24807,7 @@ function updateAAOsTime(e) {
                     '\u0417\u0430\u0432\u0434\u0430\u043d\u043d\u044f',
                 police_copter_station_missions:
                     '\u041f\u043e\u043b\u0456\u0446\u0435\u0439\u0441\u044c\u043a\u0430 \u0430\u0432\u0456\u0430\u0446\u0456\u044f',
+                police_depot: 'Police Depot',
                 police_school_missions:
                     '\u041f\u043e\u043b\u0456\u0446\u0435\u0439\u0441\u044c\u043a\u0430 \u0430\u043a\u0430\u0434\u0435\u043c\u0456\u044f',
                 police_small_missions:
@@ -22112,9 +24827,13 @@ function updateAAOsTime(e) {
                     '\u0421\u043f\u0435\u0446\u043d\u0430\u0437 \u043f\u043e\u043b\u0456\u0446\u0456\u0457',
                 staging_area_missions:
                     '\u041f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u043f\u043e\u0434\u0456\u043b\u0443',
+                technical_aid: 'Search and Rescue HQ',
+                technical_aid_missions: 'SAR',
                 technical_aid_organization: '\u041c\u041d\u0421',
                 technical_aid_organization_school:
                     '\u0412\u0438\u0449\u0430 \u0448\u043a\u043e\u043b\u0430 \u041c\u041d\u0421',
+                tow_trucks: 'Recovery Centers',
+                tow_trucks_missions: 'Recovery Vehicles',
                 user_buildings:
                     '\u041c\u043e\u0457 \u0431\u0443\u0434\u0456\u0432\u043b\u0456',
                 user_missions:
@@ -22185,6 +24904,13 @@ function updateAAOsTime(e) {
                 unattended_description:
                     '\u041c\u0456\u0441\u0456\u0457 \u0431\u0435\u0437 \u043d\u0430\u0433\u043b\u044f\u0434\u0443',
             },
+            mission_range: {
+                premium_alert: {
+                    description:
+                        'You need to have a premium account for this feature.',
+                    title: 'Mission generation range could not be selected.',
+                },
+            },
             mission_speed: {
                 premium_alert: {
                     description:
@@ -22200,8 +24926,12 @@ function updateAAOsTime(e) {
                 '\u0412\u0438 \u043d\u0435 \u043f\u0435\u0440\u0435\u0431\u0443\u0432\u0430\u0454\u0442\u0435 \u0432 \u0430\u043b\u044c\u044f\u043d\u0441\u0456.',
             no_alliance_missions:
                 '\u041d\u0430 \u0434\u0430\u043d\u0438\u0439 \u043c\u043e\u043c\u0435\u043d\u0442 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f \u0430\u043b\u044c\u044f\u043d\u0441\u0443 \u0432\u0456\u0434\u0441\u0443\u0442\u043d\u0456.',
+            no_alliance_missions_join:
+                'Participating in alliance missions will reward you with Credits - no matter what type of vehicle you send. By joining an alliance you can do both, share your own missions to get help from experienced alliance members and participate in other\u2019s shared missions for extra rewards.',
             no_ambulance_missions:
                 '\u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u0430\u0446\u0456\u0454\u043d\u0442\u0456\u0432 \u043d\u0435 \u0432\u0456\u0434\u0431\u0443\u0432\u0430\u0454\u0442\u044c\u0441\u044f. \u0422\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u0430\u0446\u0456\u0454\u043d\u0442\u0430 \u043c\u043e\u0436\u0435 \u0432\u0456\u0434\u0431\u0443\u0432\u0430\u0442\u0438\u0441\u044f \u043b\u0438\u0448\u0435 \u0442\u043e\u0434\u0456, \u043a\u043e\u043b\u0438 \u0443 \u0432\u0430\u0441 \u0454 \u0448\u0432\u0438\u0434\u043a\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0430 \u0442\u0430 \u043b\u0456\u043a\u0430\u0440\u043d\u044f.',
+            no_critical_transport_missions:
+                'There are no Interfacility Transfers. They can only occur when you have a Critical Care Transfer Ambulance and 2 hospitals with patients in treatment.',
             no_emergency_missions:
                 "\u041d\u0435\u043c\u0430\u0454 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0438\u0445 \u0437\u0430\u0432\u0434\u0430\u043d\u044c \u0434\u043b\u044f \u0435\u043a\u0441\u0442\u0440\u0435\u043d\u0438\u0445 \u0441\u043b\u0443\u0436\u0431. \u0417\u0430\u0432\u0434\u0430\u043d\u043d\u044f \u0434\u043b\u044f \u0435\u043a\u0441\u0442\u0440\u0435\u043d\u0438\u0445 \u0441\u043b\u0443\u0436\u0431 \u043c\u043e\u0436\u0435 \u0437'\u044f\u0432\u0438\u0442\u0438\u0441\u044f \u0442\u043e\u0434\u0456, \u043a\u043e\u043b\u0438 \u0432\u0438 \u0437\u0431\u0443\u0434\u0443\u0454\u0442\u0435 \u0441\u0432\u043e\u044e \u043f\u0435\u0440\u0448\u0443 \u0441\u0442\u0430\u043d\u0446\u0456\u044e.",
             no_radio_messages:
@@ -22243,6 +24973,22 @@ function updateAAOsTime(e) {
                 strip_insignificant_zeros: !1,
             },
         },
+        policechief: {
+            tutorial: {
+                beginner: {
+                    building: {
+                        browser: {
+                            welcome:
+                                'Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions.',
+                        },
+                        mobile: {
+                            welcome:
+                                'Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions.',
+                        },
+                    },
+                },
+            },
+        },
         tutorial: {
             beginner: {
                 building: {
@@ -22277,6 +25023,103 @@ function updateAAOsTime(e) {
                         },
                         welcome:
                             '\u041b\u0430\u0441\u043a\u0430\u0432\u043e \u043f\u0440\u043e\u0441\u0438\u043c\u043e \u0434\u043e \u0413\u0440\u0430 \u0414\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440 101 \u2014 \u0420\u0435\u0454\u0441\u0442\u0440\u0430\u0446\u0456\u044f! \u041f\u0440\u0430\u0446\u044e\u044e\u0447\u0438 \u0432 \u0434\u0438\u0441\u043f\u0435\u0442\u0447\u0435\u0440\u0441\u044c\u043a\u043e\u043c\u0443 \u0446\u0435\u043d\u0442\u0440\u0456 \u0435\u043a\u0441\u0442\u0440\u0435\u043d\u0438\u0445 \u0441\u043b\u0443\u0436\u0431, \u0442\u0438 \u043c\u0430\u0454\u0448 \u0441\u043f\u0440\u0430\u0432\u0443 \u0437 \u0435\u043a\u0441\u0442\u0440\u0435\u043d\u0438\u043c\u0438 \u0432\u0438\u043a\u043b\u0438\u043a\u0430\u043c\u0438, \u0449\u043e\u0431 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0442\u0438 \u0442\u0430 \u0437\u0430\u0445\u0438\u0441\u0442\u0438\u0442\u0438 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u043d\u044f. \u0414\u043b\u044f \u0446\u044c\u043e\u0433\u043e \u0432\u0438 \u0431\u0443\u0434\u0443\u0454\u0442\u0435 \u0441\u0442\u0430\u043d\u0446\u0456\u0457 \u0442\u0430 \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043b\u044f\u0454\u0442\u0435 \u043a\u0456\u043b\u044c\u043a\u0430 \u0432\u0438\u0434\u0456\u0432 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u0438\u0445 \u0437\u0430\u0441\u043e\u0431\u0456\u0432 \u0456 \u043d\u0430\u0432\u0447\u0435\u043d\u0438\u0439 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b \u043d\u0430 \u0440\u0456\u0437\u043d\u0456 \u043c\u0456\u0441\u0456\u0457.',
+                    },
+                    tooltip: {
+                        ambulance_station: {
+                            helpshift_id: '1714',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station',
+                            short: 'Houses vehicles need for EMS-related missions. \nExtensions can be built, which unlocks purchasing of specialized units.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        ambulance_station_small: {
+                            helpshift_id: '1715',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station',
+                            short: 'Houses vehicles for EMS-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        clinic: {
+                            helpshift_id: '1719',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-clinic',
+                            short: 'Houses vehicles need for EMS-related missions.\nPatients can be transported here, however it is less specialized than the hospital.',
+                        },
+                        dispatch_center: {
+                            helpshift_id: '1497',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=gameplay&f=what-is-the-dispatch-center-good-for',
+                            short: 'Gives you an overview of all your buildings and allows you to group them in a dispatch area.',
+                        },
+                        firehouse: {
+                            helpshift_id: '1709',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions. \nExtensions can be built, which unlocks purchasing of specialized units. ',
+                        },
+                        firehouse_small: {
+                            helpshift_id: '1710',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        fireschool: {
+                            helpshift_id: '1711',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-academy',
+                            short: 'Allows for training firefighters to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        hazard_response_ems: {
+                            helpshift_id: '1736',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hart-base',
+                            short: 'Houses specialized EMS units that respond to Hazard-related missions. \nPersonell needs to be trained in order to operate these specialized units.',
+                        },
+                        home_response_location: {
+                            helpshift_id: '1665',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-home-response-location-hrl-uk-game-version',
+                            short: 'This building houses rescue workers which are on call.',
+                        },
+                        hospital: {
+                            helpshift_id: '1718',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hospital',
+                            short: 'For more severe conditions, patients can be transported here. \nAdditional credits can be earned with patients treated.',
+                        },
+                        police_copter_station: {
+                            helpshift_id: '1731',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-helicopter-station',
+                            short: 'Houses aircrafts for police-related missions.\nA helicopter needs to be purchased separately. ',
+                        },
+                        police_depot: {
+                            helpshift_id: '1741',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version',
+                            short: 'Houses specialist police units that are often stored in large police depots. \nYou can only build one of these per 50 police buildings. Prison cells are available in this building.',
+                        },
+                        police_school: {
+                            helpshift_id: '1724',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-academy',
+                            short: 'Allows for training police officers to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        police_small: {
+                            helpshift_id: '1723',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-police-station',
+                            short: 'Houses vehicles needed for police-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        police_station: {
+                            helpshift_id: '1722',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-station',
+                            short: 'Houses vehicles needed for police-related missions. \nExtensions can be built, which unlocks purchasing of specialized units ',
+                        },
+                        prison: {
+                            helpshift_id: '1734',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-prison',
+                            short: 'Prisoners can be transported here. \nA Prison can only be built with alliance funds.',
+                        },
+                        rescue_copter_station: {
+                            helpshift_id: '1720',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-helicopter-station',
+                            short: 'Houses helicopters for treatment of patients with very serious injuries. \nA helicopter needs to be purchased separately. ',
+                        },
+                        rescue_school: {
+                            helpshift_id: '1716',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-rescue-academy',
+                            short: 'Allows for training EMS personnel to perform advanced treatments and using specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        staging_area: {
+                            helpshift_id: '1732',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-staging-area',
+                            short: 'The staging area can be built for free and will remain for 24 hours. \nDuring this time, units can be temporarily stationed here and dispatched to a mission.',
+                        },
                     },
                 },
                 mission: {
@@ -22353,6 +25196,11 @@ function updateAAOsTime(e) {
                             link: 'https://xyrality.helpshift.com/hc/uk/23-mission-chief/faq/1885-how-do-critical-transport-missions-work/',
                             short: 'How do critical transport missions work?',
                         },
+                        radio: {
+                            helpshift_id: '1540',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles',
+                            short: 'The radio displays status updates of your vehicles. For more detailed information on each status click here.',
+                        },
                         summary:
                             '\u0412\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u0442\u0438\u0441\u044f \u0434\u043e \u0430\u043b\u044c\u044f\u043d\u0441\u0443, \u0449\u043e\u0431 \u0432\u0438\u0440\u0456\u0448\u0443\u0432\u0430\u0442\u0438 \u043c\u0456\u0441\u0456\u0457 \u0440\u0430\u0437\u043e\u043c \u0437 \u0456\u043d\u0448\u0438\u043c\u0438. \u0422\u0430\u043a\u043e\u0436 \u0432\u0456\u0434\u0431\u0443\u0432\u0430\u044e\u0442\u044c\u0441\u044f \u0440\u0435\u0433\u0443\u043b\u044f\u0440\u043d\u0456 \u0437\u0430\u0445\u043e\u0434\u0438 \u0430\u043b\u044c\u044f\u043d\u0441\u0443, \u0432 \u044f\u043a\u0438\u0445 \u043c\u043e\u0436\u0443\u0442\u044c \u0431\u0440\u0430\u0442\u0438 \u0443\u0447\u0430\u0441\u0442\u044c \u0443\u0441\u0456 \u0447\u043b\u0435\u043d\u0438!',
                     },
@@ -22370,6 +25218,10 @@ function updateAAOsTime(e) {
                             '\u041f\u0440\u043e\u043c\u043e-\u0430\u043a\u0446\u0456\u0457 \u0442\u0430 \u0431\u0443\u0434\u0456\u0432\u0435\u043b\u044c\u043d\u0456 \u0441\u0442\u0430\u043d\u0446\u0456\u0457 \u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u044e\u0442\u044c \u043d\u043e\u0432\u0456 \u043c\u043e\u0436\u043b\u0438\u0432\u043e\u0441\u0442\u0456, \u0442\u0430\u043a\u0456 \u044f\u043a \u0442\u0438\u043f\u0438 \u043c\u0456\u0441\u0456\u0439 \u0430\u0431\u043e \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u0456 \u0437\u0430\u0441\u043e\u0431\u0438.',
                         summary:
                             '\u0412\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u0442\u0438\u0441\u044f \u0434\u043e \u0430\u043b\u044c\u044f\u043d\u0441\u0443, \u0449\u043e\u0431 \u0432\u0438\u0440\u0456\u0448\u0443\u0432\u0430\u0442\u0438 \u043c\u0456\u0441\u0456\u0457 \u0440\u0430\u0437\u043e\u043c \u0437 \u0456\u043d\u0448\u0438\u043c\u0438. \u0422\u0430\u043a\u043e\u0436 \u0432\u0456\u0434\u0431\u0443\u0432\u0430\u044e\u0442\u044c\u0441\u044f \u0440\u0435\u0433\u0443\u043b\u044f\u0440\u043d\u0456 \u0437\u0430\u0445\u043e\u0434\u0438 \u0430\u043b\u044c\u044f\u043d\u0441\u0443, \u0432 \u044f\u043a\u0438\u0445 \u043c\u043e\u0436\u0443\u0442\u044c \u0431\u0440\u0430\u0442\u0438 \u0443\u0447\u0430\u0441\u0442\u044c \u0443\u0441\u0456 \u0447\u043b\u0435\u043d\u0438!',
+                    },
+                    reminder: {
+                        join_alliance:
+                            'Joining an alliance has many benefits: extra rewards for completing alliance missions, support from experienced members for difficult missions and you can use facilities of other members like hospitals and schools! Press the button to join an alliance now!',
                     },
                 },
             },
@@ -22409,6 +25261,7 @@ function updateAAOsTime(e) {
             credits_min: 'Cr\xe9ditos m\xednimos',
             custom_missions: 'Misi\xf3n de alianza a gran escala',
             delete: 'Eliminar',
+            description: 'Description',
             details: 'Detalles',
             edit: 'Editar',
             error: 'Error',
@@ -22424,14 +25277,23 @@ function updateAAOsTime(e) {
             is_offline_with_duration:
                 '%{user} no est\xe1 conectado: %{duration}',
             is_online: '%{user} est\xe1 conectado.',
+            load_next: 'Load more',
+            load_remaining: 'Load remaining',
             loading: 'Cargando...',
+            message_for_education:
+                'This person will not be dispatched with the vehicle because it is missing the necessary education!',
             missions_per_page: '%{count} misiones',
             name: 'Nombre',
+            no: 'no',
             none: 'Nada',
             of: 'de',
             off: 'No',
             on: 'S\xed',
             or: 'o',
+            person: {
+                missing_education_for_vehicle:
+                    'Personnel will only be dispatched with the vehicle if it has acquired the necessary education!',
+            },
             release_at: 'Alta en',
             remove_all: 'Eliminar todo',
             save: 'Guardar',
@@ -22446,12 +25308,18 @@ function updateAAOsTime(e) {
                 poi: 'PI',
                 requirements: 'Requisitos',
             },
-            sorting: { caption_asc: 'A a la Z' },
+            sorting: {
+                caption_asc: 'A a la Z',
+                caption_desc: 'Z to A',
+                date_asc: 'Oldest',
+                date_desc: 'Newest',
+            },
             time_in_minutes: 'Tiempo en minutos',
             total_count: 'Total: %{count}',
             type: 'Escriba:',
             user_not_found: 'Usuario no encontrado',
             wrong_key: 'Tecla equivocada',
+            yes: 'yes',
         },
         fms: {
             going: 'Respondiendo',
@@ -22463,11 +25331,20 @@ function updateAAOsTime(e) {
             ready_home: 'Disponible en la instalaci\xf3n',
             ready_traveling: 'Listo y disponible',
             talking_wish: 'Petici\xf3n de transporte',
+            transporting_car: 'Transporting Vehicle',
             waiting_for_vehicle: 'Esperando a remolque',
         },
         intervention_order: {
+            assigns_equipment_automatically: 'Assigns Equipment Automatically',
+            assigns_equipment_automatically_hint:
+                'If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment. <br><i>(Does not exclusively choose equipment and only affects ARRs marked with %{icon})</i>',
             automatic_text_color: 'Color de texto autom\xe1tico',
             back: 'Atr\xe1s',
+            car_carrier: 'Recovery Vehicle or Flatbed Recovery Vehicle',
+            categories: {
+                tow_trucks: 'Recovery Vehicles',
+                water_rescue: 'Technical Rescue and SAR',
+            },
             category: 'Categor\xeda',
             colour: 'Color',
             column: 'Columna',
@@ -22493,6 +25370,7 @@ function updateAAOsTime(e) {
                 saved_text:
                     'Las normas de alerta y respuesta est\xe1n preparadas para ser exportadas. Mediante el enlace, otro jugador podr\xe1 importarlas. Mientras tanto, si cambias alguna norma, el cambio se aplicar\xe1 autom\xe1ticamente a lo exportado.',
             },
+            flood_equipment: 'Flood Rescue Units',
             hotkey_hint:
                 'Elije una tecla para esta selecci\xf3n de veh\xedculos. En la ventana de la misi\xf3n, pulsa ALT + tu tecla (ALT + SHIFT + tu tecla en Firefox o CTRL + ALT + tu tecla en MacOS) para seleccionarla.',
             intervention_order: 'Editar normas de alerta y respuesta',
@@ -22521,47 +25399,79 @@ function updateAAOsTime(e) {
                 ab_ruest: 'M\xf3dulo tecnol\xf3gico de rescate',
                 abl2wasser_only: 'M\xf3dulo de mangueras',
                 ambulance: 'UVI m\xf3vil',
+                any_traffic_car: 'Any Traffic Car',
                 arff: 'CBA (Cami\xf3n de bomberos de aeropuerto)',
                 battalion_chief_unit: 'Unidad de Mando y Comunicaciones',
+                bomb_disposal: 'EOD Response Vehicles',
+                bomb_disposal_command: 'EOD Commanders',
+                bomb_disposal_crew: 'EOD Response Vehicles',
+                bomb_disposal_diver_crew: 'Marine EOD Response Vehicles',
+                bomb_disposal_diver_equipment: 'Marine EOD Equipment Vans',
+                bomb_disposal_equipment: 'EOD Medium Equipment Vans',
+                bomb_disposal_equipment_2: 'EOD Heavy Equipment Vehicles',
+                bomb_disposal_heavy_equipment: 'EOD Heavy Equipment Vehicles',
                 boot: 'Botes (general)',
+                car_carrier: 'Any Recovery Vehicle',
+                car_carrier_large: 'Any HGV Recovery Vehicle',
+                coastal_helicopter: 'Coastguard Rescue Helicopter',
+                coastal_rescue:
+                    'Coastal Rescue, Rope Rescue or Mud Rescue Vehicle',
+                coresponder: 'Co-Responder Vehicle',
+                crew_carrier: 'Crew Carrier',
                 division_chief_unit: 'Unidad de mando',
+                drone: 'Drone Equipment',
                 elw1_or_elw2:
                     'Unidad de Mando y Comunicaciones, unidad de mando o m\xf3dulo de mando m\xf3vil ',
                 elw2_or_ab_elw:
                     'Bomba de Rescate o Unidad de Apoyo de Rescate y Cami\xf3n de Bomberos',
                 emergency_ambulance:
                     'Ambulancia o helic\xf3ptero de emergencia',
+                emergency_welfare: 'Any Crew Welfare Vehicle',
                 fire_truck: 'Camiones de bomberos',
                 fireboat: 'Barco de bomberos grande',
+                flood_equipment: 'Flood Rescue',
                 fly_car: 'Coche volador',
+                foam: 'Foam Tenders or RIV',
                 gkw: 'Cami\xf3n de usos m\xfaltiples',
                 grtw: 'Unidad para m\xfaltiples v\xedctimas',
                 gw_gefahrgut: 'Hazmat',
                 gw_hoehenrettung: 'Cami\xf3n de rescate en altura',
                 gw_messtechnik: 'Cami\xf3n de medici\xf3n',
                 gw_wasserrettung: 'Retenci\xf3n de agua',
+                gwl2wasser: 'Water Carrier or Major Foam Tender',
                 gwl2wasser_only: 'Veh\xedculo con manguera',
                 hems: 'HSEM',
                 hlf_only: 'Veh\xedculo de rescate',
                 hlf_or_rw_and_lf:
                     'Veh\xedculo de rescate o veh\xedculo de rescate pesado y cami\xf3n de bomberos',
+                joint_response_unit: 'Joint Response Unit',
                 k9: 'Unidad canina',
                 kdow_orgl: 'Jefe de emergencias',
+                kdow_orgl_any: 'OTL / Ambulance Officer',
                 lebefkw: 'Veh\xedculo de mando ligero (leBefKw)',
                 lf_only: 'Camiones de bomberos',
                 long_distance_ambulance: 'Ambulancia SVB',
                 mask_service_unit: 'Unidad a\xe9rea',
+                mass_casualty_equipment:
+                    'Mass Casualty Equipment or Medical Equipment Trailer',
                 mtw: 'Cami\xf3n de transporte',
                 mzb: 'Barco multiusos',
                 nef_only: 'Ambulancia',
                 oil_unit: 'Cami\xf3n para fuegos de aceite',
                 police_car: 'Coche patrulla',
+                police_patrol_and_prisoner_transport: 'Cell Van',
+                police_prisoner_transport: 'Cell Van',
                 polizeihubschrauber: 'Helic\xf3ptero de polic\xeda',
+                pump_speed: 'Pump Capacity',
+                pump_speed_pump_only: 'Pump Capacity - Only Pumps',
+                rescue_dogs: 'Rescue Dogs',
                 rescue_vehicle: 'Furgones de \xdatiles Varios',
                 rescue_vehicle_only: 'Furg\xf3n de \xdatiles Varios',
                 rescueboat: 'Barco de rescate grande',
                 rth_only: 'Helic\xf3ptero',
                 schlauchwagen: 'Cami\xf3n cisterna',
+                search_and_rescue: 'SAR Units',
+                search_and_rescue_command: 'Any Control Van',
                 swat: 'Fuerzas especiales (GEO)',
                 swat_armored_vehicle: 'Veh\xedculo blindado de los GEO',
                 swat_suv: 'Todoterreno de los GEO',
@@ -22570,16 +25480,53 @@ function updateAAOsTime(e) {
                 thw_tauchkraftwagen: 'Equipo de buceo',
                 tlf_only: 'Cami\xf3n cisterna',
                 turntable_ladder: 'Cami\xf3n AE',
+                water_damage_pump: 'Water Pumps',
             },
         },
         javascript: {
             alarm: 'Enviar',
+            alliance_event_pay_out_message:
+                'Complete all missions with your alliance to earn a bonus!',
             alliance_event_resource: {
-                christmas: { currency: 'Entradas' },
-                easter: { currency: 'Entradas' },
-                halloween: { currency: 'Entradas' },
-                summer: { currency: 'Entradas' },
-                winter: { currency: 'Entradas' },
+                christmas: {
+                    currency: 'Entradas',
+                    event_start_mission:
+                        'Start Event: %{amount} Alliance Ticket',
+                },
+                easter: {
+                    currency: 'Entradas',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                football: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                halloween: {
+                    currency: 'Entradas',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                info_bubble_text:
+                    'This is a temporary event that is only available during our event! Encourage your alliance members to complete event missions in order to earn the tickets that are needed to start these events. See the alliance event page for more information.',
+                info_bubble_text_additional:
+                    ' You currently have %{amount} %{alliance_event_currency}!',
+                info_bubble_text_disabled:
+                    "The event can't be started anymore because the Easter event's end time is less than 3 hours away.",
+                stpatricks: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                summer: {
+                    currency: 'Entradas',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                valentines: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                winter: {
+                    currency: 'Entradas',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
             },
             arrival: 'Llegada',
             available_vehicles_count: 'Usted tiene %{count} veh\xedculos',
@@ -22587,8 +25534,18 @@ function updateAAOsTime(e) {
             coins: 'Monedas',
             collapse: 'Colapso',
             credits: 'Cr\xe9ditos',
+            current_reward_for_you:
+                '<b>Your current reward:</b> %{credits} Credits & %{event_currency} Event Credits',
             day: 'd\xeda',
             days: 'd\xedas',
+            donate_event_credits_hint:
+                'You will donate: <strong>%{event_credits} event credits</strong> (%{alliance_credits} alliance credits).',
+            event: {
+                alliance_missions_completed:
+                    '<b>Completed Missions:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Participated Missions:</b> %{completedMissions}',
+            },
             few_seconds: 'en pocos segundos',
             finish_in: 'Termina en:',
             foam_process: 'Se necesita espuma',
@@ -22609,9 +25566,19 @@ function updateAAOsTime(e) {
             now: 'Ahora',
             patient: 'Paciente',
             patient_untouched: 'Pacientes no tratados',
+            payout_received:
+                '<b>Your have received:</b> %{credits} Credits & %{event_currency} Event Credits',
             poi_delete: '\xbfSeguro que quieres eliminar el PI %{caption}?',
+            pois: {
+                count_filtered: 'You have filtered %{count} POIs.',
+                count_total: 'You have %{count} POIs.',
+            },
+            pump_speed_approaching: 'Approaching: %{amount} l/min',
+            pump_speed_missing: 'Missing: %{amount} l/min',
+            pump_speed_on_site: 'On scene: %{amount} l/min',
             pump_speed_process:
                 'Proceso de bombeo de da\xf1os causados por el agua',
+            pump_speed_selected: 'Selected: %{amount} l/min',
             qualified: '<b>Calificado:</b> Ha participado en el evento',
             reload: 'Recargar',
             sale: 'Rebajas',
@@ -22623,6 +25590,7 @@ function updateAAOsTime(e) {
             selected_vehicles_count: 'Ha seleccionado %{count} veh\xedculos',
             show_all: 'Mostrar todo',
             show_less: 'Mostrar menos',
+            show_more: 'Show More',
             sicherheitswache_error:
                 'El guardia de seguridad %{caption} no ha completado su misi\xf3n, ya que no se han cumplido todos los criterios.',
             sicherheitswache_success:
@@ -22635,17 +25603,23 @@ function updateAAOsTime(e) {
             start_username: 'Usuario:',
             time_left: 'Tiempo restante:',
             to_building: 'Ver edificio',
+            to_event: 'Back to events',
             to_mission: 'Ver misi\xf3n',
+            total_credits_earned: '<b>Total credits earned:</b>',
+            total_event_currency_earned: '<b>Total event credits earned:</b>',
             understand: 'Recibido',
             update_mission_count:
                 'Actualmente puedes tener rangos de misi\xf3n personalizados %{current}/%{total}. Con una suscripci\xf3n premium, puedes hacer disponible un rango de misi\xf3n personalizado para cada tipo de misi\xf3n.',
             user_not_found: 'No se ha encontrado al jugador.',
             vehicle_payload: {
+                apply_payload: 'Apply Payload',
+                change_payload: 'Change Payload',
                 hide_payload: 'Ocultar carga \xfatil',
                 show_payload: 'Mostrar carga \xfatil',
             },
             vehicles_not_visible: 'Los veh\xedculos no est\xe1n visibles. ',
             water_process: 'Agua necesaria',
+            water_pumping_process: 'Water pumping process',
         },
         map: {
             alliance: 'Alianza',
@@ -22654,6 +25628,10 @@ function updateAAOsTime(e) {
                 'Tienes prohibido entrar al chat de la alianza.',
             alliance_chat_banned_admin: 'Prohibici\xf3n emitida por:',
             alliance_chat_banned_timeleft: 'Tiempo restante:',
+            alliance_chat_destroy_alert:
+                'Do you really want to delete this message?',
+            alliance_chat_destroy_confirmation: 'This message has been deleted',
+            alliance_chat_manage_messages: 'Manage messages',
             alliance_chat_radio_off: 'Radio de la alianza: No',
             alliance_chat_radio_on: 'Radio de la alianza: S\xed',
             alliance_event: 'Evento',
@@ -22689,19 +25667,25 @@ function updateAAOsTime(e) {
                 ambulance_station_missions: 'Parque de ambulancias',
                 ambulance_station_small_missions:
                     'Parque de ambulancias (peque\xf1o)',
+                bomb_disposal_missions: 'Bomb Disposal HQ',
                 building_complex: 'Complejo de edificios',
                 buildings_section: 'Instalaciones',
                 clinic_missions: 'Cl\xednica',
+                coastal_rescue: 'Lifeboat Stations',
+                coastal_rescue_missions: 'SAR',
+                custody_suite: 'Custody Suite',
                 dispatch_center_missions: 'Centralita',
                 fire_school_missions: 'Academia de bomberos',
                 firehouse_missions: 'Parque de bomberos',
                 firehouse_small_missions: 'Parque de bomberos (peque\xf1o)',
+                general_practitioner: 'GP Surgery',
                 hospital_missions: 'Hospital',
                 map_filters: 'Lista de filtros de mapa',
                 mission_positions: 'Puntos de inter\xe9s (PI)',
                 mission_positions_section: 'PI',
                 missions_section: 'Misiones',
                 police_copter_station_missions: 'Helipuerto policial',
+                police_depot: 'Police Depot',
                 police_school_missions: 'Academia de polic\xeda',
                 police_small_missions:
                     'Comisar\xeda de polic\xeda (peque\xf1o)',
@@ -22714,8 +25698,12 @@ function updateAAOsTime(e) {
                 riot_police: 'Polic\xeda antidisturbios',
                 riot_police_missions: 'Polic\xeda antidisturbios',
                 staging_area_missions: 'Zona de preparaci\xf3n',
+                technical_aid: 'Search and Rescue HQ',
+                technical_aid_missions: 'SAR',
                 technical_aid_organization: 'SAT',
                 technical_aid_organization_school: 'Academia SAT',
+                tow_trucks: 'Recovery Centers',
+                tow_trucks_missions: 'Recovery Vehicles',
                 user_buildings: 'Mis edificios',
                 user_missions: 'Mis misiones',
                 water_watch: 'Rescate acu\xe1tico',
@@ -22759,6 +25747,13 @@ function updateAAOsTime(e) {
                 started_description: 'Misiones iniciadas pero no completadas',
                 unattended: 'Misiones desatendidas',
                 unattended_description: 'Misiones desatendidas',
+            },
+            mission_range: {
+                premium_alert: {
+                    description:
+                        'You need to have a premium account for this feature.',
+                    title: 'Mission generation range could not be selected.',
+                },
             },
             mission_speed: {
                 premium_alert: {
@@ -22810,6 +25805,22 @@ function updateAAOsTime(e) {
                 strip_insignificant_zeros: !1,
             },
         },
+        policechief: {
+            tutorial: {
+                beginner: {
+                    building: {
+                        browser: {
+                            welcome:
+                                'Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions.',
+                        },
+                        mobile: {
+                            welcome:
+                                'Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions.',
+                        },
+                    },
+                },
+            },
+        },
         tutorial: {
             beginner: {
                 building: {
@@ -22844,6 +25855,103 @@ function updateAAOsTime(e) {
                         },
                         welcome:
                             '\xa1Bienvenidos a Centro de Mando! Al trabajar en un centro de despacho de servicios de emergencia, usted atiende llamadas de emergencia para ayudar y proteger a la ciudadan\xeda. Para ello, construyes edificios y env\xedas varios tipos de veh\xedculos y personal capacitado a una variedad de misiones.',
+                    },
+                    tooltip: {
+                        ambulance_station: {
+                            helpshift_id: '1714',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station',
+                            short: 'Houses vehicles need for EMS-related missions. \nExtensions can be built, which unlocks purchasing of specialized units.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        ambulance_station_small: {
+                            helpshift_id: '1715',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station',
+                            short: 'Houses vehicles for EMS-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        clinic: {
+                            helpshift_id: '1719',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-clinic',
+                            short: 'Houses vehicles need for EMS-related missions.\nPatients can be transported here, however it is less specialized than the hospital.',
+                        },
+                        dispatch_center: {
+                            helpshift_id: '1497',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=gameplay&f=what-is-the-dispatch-center-good-for',
+                            short: 'Gives you an overview of all your buildings and allows you to group them in a dispatch area.',
+                        },
+                        firehouse: {
+                            helpshift_id: '1709',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions. \nExtensions can be built, which unlocks purchasing of specialized units. ',
+                        },
+                        firehouse_small: {
+                            helpshift_id: '1710',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        fireschool: {
+                            helpshift_id: '1711',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-academy',
+                            short: 'Allows for training firefighters to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        hazard_response_ems: {
+                            helpshift_id: '1736',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hart-base',
+                            short: 'Houses specialized EMS units that respond to Hazard-related missions. \nPersonell needs to be trained in order to operate these specialized units.',
+                        },
+                        home_response_location: {
+                            helpshift_id: '1665',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-home-response-location-hrl-uk-game-version',
+                            short: 'This building houses rescue workers which are on call.',
+                        },
+                        hospital: {
+                            helpshift_id: '1718',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hospital',
+                            short: 'For more severe conditions, patients can be transported here. \nAdditional credits can be earned with patients treated.',
+                        },
+                        police_copter_station: {
+                            helpshift_id: '1731',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-helicopter-station',
+                            short: 'Houses aircrafts for police-related missions.\nA helicopter needs to be purchased separately. ',
+                        },
+                        police_depot: {
+                            helpshift_id: '1741',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version',
+                            short: 'Houses specialist police units that are often stored in large police depots. \nYou can only build one of these per 50 police buildings. Prison cells are available in this building.',
+                        },
+                        police_school: {
+                            helpshift_id: '1724',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-academy',
+                            short: 'Allows for training police officers to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        police_small: {
+                            helpshift_id: '1723',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-police-station',
+                            short: 'Houses vehicles needed for police-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        police_station: {
+                            helpshift_id: '1722',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-station',
+                            short: 'Houses vehicles needed for police-related missions. \nExtensions can be built, which unlocks purchasing of specialized units ',
+                        },
+                        prison: {
+                            helpshift_id: '1734',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-prison',
+                            short: 'Prisoners can be transported here. \nA Prison can only be built with alliance funds.',
+                        },
+                        rescue_copter_station: {
+                            helpshift_id: '1720',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-helicopter-station',
+                            short: 'Houses helicopters for treatment of patients with very serious injuries. \nA helicopter needs to be purchased separately. ',
+                        },
+                        rescue_school: {
+                            helpshift_id: '1716',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-rescue-academy',
+                            short: 'Allows for training EMS personnel to perform advanced treatments and using specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        staging_area: {
+                            helpshift_id: '1732',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-staging-area',
+                            short: 'The staging area can be built for free and will remain for 24 hours. \nDuring this time, units can be temporarily stationed here and dispatched to a mission.',
+                        },
                     },
                 },
                 mission: {
@@ -22920,6 +26028,11 @@ function updateAAOsTime(e) {
                             link: 'https://xyrality.helpshift.com/hc/es/23-mission-chief/faq/1885-how-do-critical-transport-missions-work/',
                             short: '\xbfC\xf3mo funcionan las misiones de transporte cr\xedtico?',
                         },
+                        radio: {
+                            helpshift_id: '1540',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles',
+                            short: 'The radio displays status updates of your vehicles. For more detailed information on each status click here.',
+                        },
                         summary:
                             'Puedes unirte a una alianza para realizar misiones con otros jugadores. Tambi\xe9n hay eventos de alianza regulares en los que puedes participar.',
                     },
@@ -22937,6 +26050,10 @@ function updateAAOsTime(e) {
                             'Obtener un ascenso a un nuevo rango y construir edificios desbloquea nuevas caracter\xedsticas como tipos de misiones y veh\xedculos.',
                         summary:
                             'Puedes unirte a una alianza para realizar misiones con otros jugadores. Tambi\xe9n hay eventos de alianza regulares en los que puedes participar.',
+                    },
+                    reminder: {
+                        join_alliance:
+                            'Joining an alliance has many benefits: extra rewards for completing alliance missions, support from experienced members for difficult missions and you can use facilities of other members like hospitals and schools! Press the button to join an alliance now!',
                     },
                 },
             },
@@ -23076,6 +26193,7 @@ function updateAAOsTime(e) {
                 police: '\u8b66\u5bdf',
                 rescue: '\u6551\u52a9',
                 tow_trucks: '\u30ec\u30c3\u30ab\u30fc\u8eca',
+                water_rescue: 'Technical Rescue and SAR',
             },
             category: '\u30ab\u30c6\u30b4\u30ea\u30fc',
             colour: '\u30ab\u30e9\u30fc',
@@ -23103,6 +26221,7 @@ function updateAAOsTime(e) {
                 saved_text:
                     '\u8b66\u5831\u3068\u5fdc\u7b54\u7ba1\u7406\u306e\u30a8\u30af\u30b9\u30dd\u30fc\u30c8\u6e96\u5099\u304c\u3067\u304d\u307e\u3057\u305f\u3002\u4ed6\u306e\u30d7\u30ec\u30a4\u30e4\u30fc\u306f\u30ea\u30f3\u30af\u3092\u8fbf\u3063\u3066\u8b66\u5831\u3068\u5fdc\u7b54\u7ba1\u7406\u304c\u30a4\u30f3\u30dd\u30fc\u30c8\u3067\u304d\u307e\u3059\u3002\u305d\u306e\u9593\u8b66\u5831\u3068\u5fdc\u7b54\u7ba1\u7406\u3092\u5909\u66f4\u3057\u305f\u5834\u5408\u3001\u3053\u306e\u5909\u66f4\u306f\u30a8\u30af\u30b9\u30dd\u30fc\u30c8\u5185\u306b\u81ea\u52d5\u7684\u306b\u9069\u7528\u3055\u308c\u307e\u3059\u3002',
             },
+            flood_equipment: 'Flood Rescue Units',
             hotkey_hint:
                 '\u8eca\u4e21\u30bb\u30af\u30b7\u30e7\u30f3\u306e\u30db\u30c3\u30c8\u30ad\u30fc\u3092\u9078\u629e\u3057\u3066\u304f\u3060\u3055\u3044\u3002\u30df\u30c3\u30b7\u30e7\u30f3\u753b\u9762\u306e\u30dc\u30bf\u30f3\u3092\u62bc\u3057\u3066\u304f\u3060\u3055\u3044\uff1aALT + \u5272\u308a\u5f53\u3066\u305f\u30db\u30c3\u30c8\u30ad\u30fc \uff08Firefox\u306e\u5834\u5408\uff1aALT + SHIFT + \u5272\u308a\u5f53\u3066\u305f\u30db\u30c3\u30c8\u30ad\u30fc\u3001mac os\u306e\u5834\u5408\uff1actrl + alt + \u5272\u308a\u5f53\u3066\u305f\u30db\u30c3\u30c8\u30ad\u30fc\uff09\u3067\u8eca\u4e21\u30bb\u30af\u30b7\u30e7\u30f3\u3092\u9078\u629e\u3057\u307e\u3059\u3002',
             intervention_order:
@@ -23139,32 +26258,54 @@ function updateAAOsTime(e) {
                 abl2wasser_only:
                     '\u30db\u30fc\u30b9\u30b5\u30d7\u30e9\u30a4\u30e2\u30b8\u30e5\u30fc\u30eb',
                 ambulance: 'ALS\u6551\u6025\u8eca',
+                any_traffic_car: 'Any Traffic Car',
                 arff: '\u7a7a\u6e2f\u7528\u6d88\u9632\u8eca',
                 battalion_chief_unit:
                     '\u6d88\u9632\u6307\u4ee4\u9577\u30e6\u30cb\u30c3\u30c8',
+                bomb_disposal: 'EOD Response Vehicles',
+                bomb_disposal_command: 'EOD Commanders',
+                bomb_disposal_crew: 'EOD Response Vehicles',
+                bomb_disposal_diver_crew: 'Marine EOD Response Vehicles',
+                bomb_disposal_diver_equipment: 'Marine EOD Equipment Vans',
+                bomb_disposal_equipment: 'EOD Medium Equipment Vans',
+                bomb_disposal_equipment_2: 'EOD Heavy Equipment Vehicles',
+                bomb_disposal_heavy_equipment: 'EOD Heavy Equipment Vehicles',
                 boot: '\u30dc\u30fc\u30c8\uff08\u4e00\u822c\uff09',
                 car_carrier: '\u3042\u3089\u3086\u308b\u30ec\u30c3\u30ab\u30fc',
                 car_carrier_large:
                     '\u3042\u3089\u3086\u308b\u30ed\u30fc\u30c6\u30fc\u30bf\u30fb\u30c8\u30e9\u30c3\u30af',
+                coastal_helicopter: 'Coastguard Rescue Helicopter',
+                coastal_rescue:
+                    'Coastal Rescue, Rope Rescue or Mud Rescue Vehicle',
+                coresponder: 'Co-Responder Vehicle',
+                crew_carrier: 'Crew Carrier',
                 damage_control:
                     '\u30c0\u30e1\u30fc\u30b8\u30fb\u30b3\u30f3\u30c8\u30ed\u30fc\u30eb\u30fb\u30ef\u30b4\u30f3',
                 division_chief_unit: '\u79fb\u52d5\u901a\u4fe1\u8eca\u4e21',
+                drone: 'Drone Equipment',
                 elw1_or_elw2:
                     '\u6d88\u9632\u53f8\u4ee4\u9577\u8eca\u4e21\u307e\u305f\u306f\u6307\u4ee4\u8eca',
+                elw2_or_ab_elw: 'ICCU / ACU',
                 emergency_ambulance:
                     '\u7dca\u6025\u6551\u6025\u8eca\u307e\u305f\u306f\u30d8\u30ea\u30b3\u30d7\u30bf\u30fc',
+                emergency_welfare: 'Any Crew Welfare Vehicle',
                 fire_truck: '\u6d88\u9632\u8eca',
                 fireboat: '\u706b\u707d\u7528\u5927\u578b\u30dc\u30fc\u30c8',
+                flood_equipment: 'Flood Rescue',
                 fly_car: '\u30c9\u30af\u30bf\u30fc\u30ab\u30fc',
                 fly_car_any:
                     '\u30c9\u30af\u30bf\u30fc\u30ab\u30fc / \u5bb6\u5ead\u533b',
+                foam: 'Foam Tenders or RIV',
                 foam_amount: '\u6ce1\u6cab\uff08\u30ea\u30c3\u30c8\u30eb\uff09',
                 gkw: '\u5c0f\u578b\u30c8\u30e9\u30c3\u30af',
                 grtw: '\u5927\u578b\u30c8\u30e9\u30c3\u30af\u30e6\u30cb\u30c3\u30c8',
                 gw_atemschutz_only:
                     '\u7a7a\u6c17\u5145\u586b\u7167\u660e\u8eca',
                 gw_gefahrgut: '\u5371\u967a\u7269\u53d6\u6271\u8eca\u4e21',
+                gw_hoehenrettung: 'GW-H\xf6henrettung',
+                gw_messtechnik: 'GW-Messtechnik',
                 gw_wasserrettung: '\u8caf\u6c34\u8eca\u4e21',
+                gwl2wasser: 'Water Carrier or Major Foam Tender',
                 gwl2wasser_only: '\u30db\u30fc\u30b9\u8eca\u4e21',
                 hems: 'HEMS',
                 hint: {
@@ -23174,25 +26315,34 @@ function updateAAOsTime(e) {
                 hlf_only: '\u6551\u52a9\u5de5\u4f5c\u8eca',
                 hlf_or_rw_and_lf:
                     '\u6551\u52a9\u5de5\u4f5c\u8eca\u307e\u305f\u306f\u7279\u5225\u9ad8\u5ea6\u6551\u52a9\u90e8\u968a\u8eca\u4e21\u3068\u6d88\u9632\u8eca',
+                joint_response_unit: 'Joint Response Unit',
                 k9: '\u8b66\u5bdf\u72ac\u30e6\u30cb\u30c3\u30c8',
                 kdow_orgl: '\u6551\u6025\u8eca\u6307\u63ee\u5b98',
+                kdow_orgl_any: 'OTL / Ambulance Officer',
                 ktw_or_rtw:
                     '\u4e00\u6b21\uff0f\u4e8c\u6b21\u6551\u547d\u51e6\u7f6e',
+                lebefkw: 'Leichter Befehlskraftwagen (leBefKw)',
                 lf_only: '\u6d88\u9632\u8eca',
                 long_distance_ambulance:
                     '\u4e00\u6642\u6551\u547d\u51e6\u7f6e\u6551\u6025\u8eca',
                 mask_service_unit: '\u7a7a\u6c17\u5145\u586b\u7167\u660e\u8eca',
+                mass_casualty_equipment:
+                    'Mass Casualty Equipment or Medical Equipment Trailer',
                 mountain_rescue_drone: '\u7121\u4eba\u822a\u7a7a\u6a5f\u968a',
                 mtw: '\u6d88\u9632\u968a\u54e1\u7528\u8eca\u4e21',
                 mzb: '\u591a\u76ee\u7684\u30dc\u30fc\u30c8',
                 nef_only: '\u6551\u6025\u8eca',
+                oil_unit: 'GW-\xd6l',
                 police_car: '\u30d1\u30c8\u30ab\u30fc',
+                police_patrol_and_prisoner_transport: 'Cell Van',
+                police_prisoner_transport: 'Cell Van',
                 polizeihubschrauber:
                     '\u8b66\u5bdf\u30d8\u30ea\u30b3\u30d7\u30bf\u30fc',
                 pump: '\u30a8\u30f3\u30b8\u30f3-\u30dd\u30f3\u30d7',
                 pump_speed: '\u30dd\u30f3\u30d7\u5bb9\u91cf',
                 pump_speed_pump_only:
                     '\u30dd\u30f3\u30d7\u5bb9\u91cf - \u30dd\u30f3\u30d7\u306e\u307f',
+                rescue_dogs: 'Rescue Dogs',
                 rescue_vehicle: '\u5927\u578b\u6551\u52a9\u8eca\u4e21',
                 rescue_vehicle_only:
                     '\u7279\u5225\u9ad8\u5ea6\u6551\u52a9\u90e8\u968a\u8eca\u4e21\u306e\u307f',
@@ -23200,9 +26350,14 @@ function updateAAOsTime(e) {
                 rth_only: '\u30d8\u30ea\u30b3\u30d7\u30bf\u30fc',
                 schlauchwagen:
                     '\u30a6\u30a9\u30fc\u30bf\u30fc\u30bf\u30f3\u30ab\u30fc',
+                search_and_rescue: 'SAR Units',
+                search_and_rescue_command: 'Any Control Van',
                 swat: 'SWAT',
                 swat_armored_vehicle: 'SWAT\u88c5\u7532\u8eca\u4e21',
                 swat_suv: 'SWAT SUV',
+                thw_mtw:
+                    'Mannschaftstransportwagen Technischer Zug (MTW-TZ - THW)',
+                thw_mzkw: 'Mehrzweckkraftwagen (MzKW)',
                 thw_tauchkraftwagen: '\u6f5c\u6c34\u30c1\u30fc\u30e0',
                 tlf_only: '\u30bf\u30f3\u30ab\u30fc\u30c8\u30e9\u30c3\u30af',
                 turntable_ladder:
@@ -23246,6 +26401,10 @@ function updateAAOsTime(e) {
                     ' \u3042\u306a\u305f\u306f\u73fe\u5728\u3001%{amount} %{alliance_event_currency} \u3092\u6301\u3063\u3066\u3044\u308b\uff01',
                 info_bubble_text_disabled:
                     '\u30a4\u30fc\u30b9\u30bf\u30fc\u30a4\u30d9\u30f3\u30c8\u306e\u7d42\u4e86\u6642\u523b\u307e\u30673\u6642\u9593\u3092\u5207\u3063\u305f\u305f\u3081\u3001\u3053\u308c\u4ee5\u4e0a\u30a4\u30d9\u30f3\u30c8\u3092\u958b\u59cb\u3059\u308b\u3053\u3068\u306f\u3067\u304d\u306a\u3044\u3002',
+                stpatricks: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 summer: {
                     currency:
                         '\u30a4\u30d9\u30f3\u30c8\u30c1\u30b1\u30c3\u30c8',
@@ -23352,6 +26511,7 @@ function updateAAOsTime(e) {
             sicherheitswache_success:
                 '\u30bb\u30ad\u30e5\u30ea\u30c6\u30a3\u30fc\u30ac\u30fc\u30c9\u300c%{caption}\u300d\u306f\u7121\u4e8b\u884c\u308f\u308c\u307e\u3057\u305f\u3002%{credits}\u30af\u30ec\u30b8\u30c3\u30c8\u3092\u53d7\u3051\u53d6\u308a\u307e\u3059\u3002',
             start_alliance_mission_new: {
+                one: 'Start %{count} mission (%{price} Coins)',
                 other: '%{count}\u500b\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u958b\u59cb\u3059\u308b (%{price} \u30b3\u30a4\u30f3)',
             },
             start_in: '\u958b\u59cb\u307e\u3067\uff1a ',
@@ -23448,12 +26608,14 @@ function updateAAOsTime(e) {
                     '\u6551\u6025\u8eca\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3',
                 ambulance_station_small_missions:
                     '\u6551\u6025\u8eca\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\uff08\u5c0f\u578b\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\uff09',
+                bomb_disposal_missions: 'Bomb Disposal HQ',
                 building_complex: '\u9023\u7d50\u5efa\u9020\u7269',
                 buildings_section: '\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3',
                 clinic_missions: '\u30af\u30ea\u30cb\u30c3\u30af',
                 coastal_rescue: '\u6c34\u4e0a\u8b66\u5bdf',
                 coastal_rescue_missions:
                     '\u6cbf\u5cb8\u6551\u52a9\u30df\u30c3\u30b7\u30e7\u30f3',
+                custody_suite: 'Custody Suite',
                 dispatch_center_missions:
                     '\u6307\u4ee4\u30bb\u30f3\u30bf\u30fc',
                 fire_school_missions:
@@ -23461,6 +26623,7 @@ function updateAAOsTime(e) {
                 firehouse_missions: '\u6d88\u9632\u5c40',
                 firehouse_small_missions:
                     '\u6d88\u9632\u5c40\uff08\u5c0f\uff09',
+                general_practitioner: 'GP Surgery',
                 hospital_missions: '\u75c5\u9662',
                 map_filters:
                     '\u30de\u30c3\u30d7\u30d5\u30a3\u30eb\u30bf\u30fc\u306e\u4e00\u89a7',
@@ -23473,6 +26636,7 @@ function updateAAOsTime(e) {
                     '\u5c71\u5cb3\u6551\u52a9\u4efb\u52d9 (Sangaku Ky\u016bjo Ninmu)',
                 police_copter_station_missions:
                     '\u8b66\u5bdf\u822a\u7a7a\u968a',
+                police_depot: 'Police Depot',
                 police_school_missions:
                     '\u8b66\u5bdf\u30a2\u30ab\u30c7\u30df\u30fc',
                 police_small_missions:
@@ -23488,6 +26652,8 @@ function updateAAOsTime(e) {
                 riot_police_missions: '\u5bfe\u66b4\u5f92\u8b66\u5bdf',
                 staging_area_missions:
                     '\u30b9\u30c6\u30fc\u30b8\u30f3\u30b0\u30a8\u30ea\u30a2',
+                technical_aid: 'Search and Rescue HQ',
+                technical_aid_missions: 'SAR',
                 technical_aid_organization: '\u6280\u8853\u652f\u63f4\u968a',
                 technical_aid_organization_school:
                     'THW\u9023\u90a6\u5b66\u6821',
@@ -23548,6 +26714,13 @@ function updateAAOsTime(e) {
                 unattended_description:
                     '\u7121\u4eba\u30df\u30c3\u30b7\u30e7\u30f3',
             },
+            mission_range: {
+                premium_alert: {
+                    description:
+                        'You need to have a premium account for this feature.',
+                    title: 'Mission generation range could not be selected.',
+                },
+            },
             mission_speed: {
                 premium_alert: {
                     description:
@@ -23603,6 +26776,22 @@ function updateAAOsTime(e) {
                 strip_insignificant_zeros: '\u8aa4',
             },
         },
+        policechief: {
+            tutorial: {
+                beginner: {
+                    building: {
+                        browser: {
+                            welcome:
+                                'Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions.',
+                        },
+                        mobile: {
+                            welcome:
+                                'Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions.',
+                        },
+                    },
+                },
+            },
+        },
         tutorial: {
             beginner: {
                 building: {
@@ -23637,6 +26826,103 @@ function updateAAOsTime(e) {
                         },
                         welcome:
                             '\u30df\u30c3\u30b7\u30e7\u30f3\u30c1\u30fc\u30d5 - \u30b5\u30a4\u30f3\u30a2\u30c3\u30d7\u3078\u3088\u3046\u3053\u305d\uff01\u7dca\u6025\u30b5\u30fc\u30d3\u30b9\u306e\u6d3e\u9063\u30bb\u30f3\u30bf\u30fc\u3067\u50cd\u304f\u3042\u306a\u305f\u306f\u3001\u5e02\u6c11\u3092\u52a9\u3051\u3001\u4fdd\u8b77\u3059\u308b\u305f\u3081\u306b\u7dca\u6025\u901a\u5831\u306b\u5bfe\u5fdc\u3057\u307e\u3059\u3002\u305d\u306e\u305f\u3081\u306b\u30b9\u30c6\u30fc\u30b7\u30e7\u30f3\u3092\u5efa\u8a2d\u3057\u3001\u3055\u307e\u3056\u307e\u306a\u7a2e\u985e\u306e\u8eca\u4e21\u3084\u8a13\u7df4\u3092\u53d7\u3051\u305f\u4eba\u54e1\u3092\u3055\u307e\u3056\u307e\u306a\u30df\u30c3\u30b7\u30e7\u30f3\u306b\u6d3e\u9063\u3057\u307e\u3059\u3002',
+                    },
+                    tooltip: {
+                        ambulance_station: {
+                            helpshift_id: '1714',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station',
+                            short: 'Houses vehicles need for EMS-related missions. \nExtensions can be built, which unlocks purchasing of specialized units.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        ambulance_station_small: {
+                            helpshift_id: '1715',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station',
+                            short: 'Houses vehicles for EMS-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        clinic: {
+                            helpshift_id: '1719',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-clinic',
+                            short: 'Houses vehicles need for EMS-related missions.\nPatients can be transported here, however it is less specialized than the hospital.',
+                        },
+                        dispatch_center: {
+                            helpshift_id: '1497',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=gameplay&f=what-is-the-dispatch-center-good-for',
+                            short: 'Gives you an overview of all your buildings and allows you to group them in a dispatch area.',
+                        },
+                        firehouse: {
+                            helpshift_id: '1709',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions. \nExtensions can be built, which unlocks purchasing of specialized units. ',
+                        },
+                        firehouse_small: {
+                            helpshift_id: '1710',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        fireschool: {
+                            helpshift_id: '1711',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-academy',
+                            short: 'Allows for training firefighters to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        hazard_response_ems: {
+                            helpshift_id: '1736',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hart-base',
+                            short: 'Houses specialized EMS units that respond to Hazard-related missions. \nPersonell needs to be trained in order to operate these specialized units.',
+                        },
+                        home_response_location: {
+                            helpshift_id: '1665',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-home-response-location-hrl-uk-game-version',
+                            short: 'This building houses rescue workers which are on call.',
+                        },
+                        hospital: {
+                            helpshift_id: '1718',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hospital',
+                            short: 'For more severe conditions, patients can be transported here. \nAdditional credits can be earned with patients treated.',
+                        },
+                        police_copter_station: {
+                            helpshift_id: '1731',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-helicopter-station',
+                            short: 'Houses aircrafts for police-related missions.\nA helicopter needs to be purchased separately. ',
+                        },
+                        police_depot: {
+                            helpshift_id: '1741',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version',
+                            short: 'Houses specialist police units that are often stored in large police depots. \nYou can only build one of these per 50 police buildings. Prison cells are available in this building.',
+                        },
+                        police_school: {
+                            helpshift_id: '1724',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-academy',
+                            short: 'Allows for training police officers to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        police_small: {
+                            helpshift_id: '1723',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-police-station',
+                            short: 'Houses vehicles needed for police-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        police_station: {
+                            helpshift_id: '1722',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-station',
+                            short: 'Houses vehicles needed for police-related missions. \nExtensions can be built, which unlocks purchasing of specialized units ',
+                        },
+                        prison: {
+                            helpshift_id: '1734',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-prison',
+                            short: 'Prisoners can be transported here. \nA Prison can only be built with alliance funds.',
+                        },
+                        rescue_copter_station: {
+                            helpshift_id: '1720',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-helicopter-station',
+                            short: 'Houses helicopters for treatment of patients with very serious injuries. \nA helicopter needs to be purchased separately. ',
+                        },
+                        rescue_school: {
+                            helpshift_id: '1716',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-rescue-academy',
+                            short: 'Allows for training EMS personnel to perform advanced treatments and using specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        staging_area: {
+                            helpshift_id: '1732',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-staging-area',
+                            short: 'The staging area can be built for free and will remain for 24 hours. \nDuring this time, units can be temporarily stationed here and dispatched to a mission.',
+                        },
                     },
                 },
                 mission: {
@@ -23797,6 +27083,8 @@ function updateAAOsTime(e) {
                 '%{user} \ub2d8\uc740 \uc624\ud504\ub77c\uc778\uc785\ub2c8\ub2e4: %{duration}',
             is_online:
                 '%{user} \ub2d8\uc774 \uc628\ub77c\uc778\uc785\ub2c8\ub2e4.',
+            load_next: 'Load more',
+            load_remaining: 'Load remaining',
             loading: '\ub85c\ub529 \uc911...',
             message_for_education:
                 '\uc774 \uc778\uc6d0\uc740 \ud544\uc218 \uad50\uc721\uc744 \uc774\uc218\ud558\uc9c0 \uc54a\uc544 \ucc28\ub7c9\uacfc \ud568\uaed8 \ud30c\uacac\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4!',
@@ -23826,6 +27114,12 @@ function updateAAOsTime(e) {
                 poi: '\uad00\uc2ec \uc9c0\uc5ed \uc720\ud615',
                 requirements: '\uc694\uad6c \uc0ac\ud56d',
             },
+            sorting: {
+                caption_asc: 'A to Z',
+                caption_desc: 'Z to A',
+                date_asc: 'Oldest',
+                date_desc: 'Newest',
+            },
             time_in_minutes: '\ubd84 \ub2e8\uc704 \uc2dc\uac04',
             total_count: '\ud569\uacc4: %{count}',
             type: '\uc720\ud615:',
@@ -23845,18 +27139,25 @@ function updateAAOsTime(e) {
                 '\uad00\ud560\uc11c\uc5d0\uc11c \uc774\uc6a9 \uac00\ub2a5',
             ready_traveling: '\uc644\ub8cc \ubc0f \uc774\uc6a9 \uac00\ub2a5',
             talking_wish: '\uc218\uc1a1 \uc694\uccad',
+            transporting_car: 'Transporting Vehicle',
             waiting_for_vehicle:
                 '\uacac\uc778 \ucc28\ub7c9 \uae30\ub2e4\ub9ac\ub294 \uc911',
         },
         intervention_order: {
+            assigns_equipment_automatically: 'Assigns Equipment Automatically',
+            assigns_equipment_automatically_hint:
+                'If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment. <br><i>(Does not exclusively choose equipment and only affects ARRs marked with %{icon})</i>',
             automatic_text_color: '\uc790\ub3d9 \uae00 \uc0c9\uc0c1',
             back: '\ub4a4\ub85c',
+            car_carrier: 'Recovery Vehicle or Flatbed Recovery Vehicle',
             categories: {
                 bereitschaftspolizei: '\uc9c4\uc555 \uacbd\ucc30',
                 coastal_rescue: '\ud574\uc548 \uad6c\uc870',
                 firefighting: '\uc18c\ubc29\ucc28',
                 police: '\uacbd\ucc30',
                 rescue: '\uad6c\uc870\ub300',
+                tow_trucks: 'Recovery Vehicles',
+                water_rescue: 'Technical Rescue and SAR',
             },
             category: '\uce74\ud14c\uace0\ub9ac',
             colour: '\uc0c9\uc0c1',
@@ -23884,6 +27185,7 @@ function updateAAOsTime(e) {
                 saved_text:
                     '\uacbd\ubcf4 \ubc0f \ub300\uc751 \uaddc\uc815\uc744 \ub0b4\ubcf4\ub0bc \uc900\ube44\ub97c \ub9c8\ucce4\uc2b5\ub2c8\ub2e4. \ub9c1\ud06c\ub97c \ud1b5\ud574 \ub2e4\ub978 \ud50c\ub808\uc774\uc5b4\uac00 \uc81c\uc791\ud55c \uacbd\ubcf4 \ubc0f \ub300\uc751 \uaddc\uc815\uc744 \uac00\uc838\uc62c \uc218 \uc788\uc2b5\ub2c8\ub2e4. \uc774 \uae30\uac04 \ub3d9\uc548 \uacbd\ubcf4 \ubc0f \ub300\uc751 \uaddc\uc815\uc744 \ubcc0\uacbd\ud560 \uacbd\uc6b0 \ubcc0\uacbd\ub41c \ub0b4\uc6a9\uc774 \ub0b4\ubcf4\ub0b4\ub294 \ud56d\ubaa9\uc5d0 \uc790\ub3d9\uc73c\ub85c \uc801\uc6a9\ub429\ub2c8\ub2e4.',
             },
+            flood_equipment: 'Flood Rescue Units',
             hotkey_hint:
                 '\uc774 \ucc28\ub7c9\uc744 \uc120\ud0dd\ud560 \ub2e8\ucd95\ud0a4\ub97c \uc9c0\uc815\ud558\uc138\uc694. \uc784\ubb34 \ucc3d\uc5d0\uc11c: ALT + \ub2e8\ucd95\ud0a4(Firefox\uc758 \uacbd\uc6b0: ALT + SHIFT + \ub2e8\ucd95\ud0a4, Mac os\uc758 \uacbd\uc6b0: ctrl + alt + \ub2e8\ucd95\ud0a4)\ub97c \ub20c\ub7ec \uc120\ud0dd\ud55c \ucc28\ub7c9\uc744 \uc9c0\uc815\ud558\uc138\uc694.',
             intervention_order:
@@ -23916,16 +27218,35 @@ function updateAAOsTime(e) {
                 abl2wasser_only: '\ud638\uc2a4 \uc9c0\uc6d0 \ubaa8\ub4c8',
                 ambulance:
                     '\uace0\uae09 \uc778\uba85 \uc9c0\uc6d0(ALS) \uad6c\uae09\ucc28',
+                any_traffic_car: 'Any Traffic Car',
                 arff: '\ud56d\uacf5\uae30 \uad6c\uc870\uc6a9\uace0\uc131\ub2a5 \uc18c\ubc29\ucc28 \ub610\ub294 \uc2a4\ud305\uc5b4 HRET',
                 battalion_chief_unit: '\uc18c\ubc29\ub300\uc7a5 \uc720\ub2db',
+                bomb_disposal: 'EOD Response Vehicles',
+                bomb_disposal_command: 'EOD Commanders',
+                bomb_disposal_crew: 'EOD Response Vehicles',
+                bomb_disposal_diver_crew: 'Marine EOD Response Vehicles',
+                bomb_disposal_diver_equipment: 'Marine EOD Equipment Vans',
+                bomb_disposal_equipment: 'EOD Medium Equipment Vans',
+                bomb_disposal_equipment_2: 'EOD Heavy Equipment Vehicles',
+                bomb_disposal_heavy_equipment: 'EOD Heavy Equipment Vehicles',
                 boot: '\ubcf4\ud2b8(\uc77c\ubc18)',
+                car_carrier: 'Any Recovery Vehicle',
+                car_carrier_large: 'Any HGV Recovery Vehicle',
+                coastal_helicopter: 'Coastguard Rescue Helicopter',
+                coastal_rescue:
+                    'Coastal Rescue, Rope Rescue or Mud Rescue Vehicle',
+                coresponder: 'Co-Responder Vehicle',
+                crew_carrier: 'Crew Carrier',
                 damage_control: '\ud53c\ud574 \ud1b5\uc81c \uc65c\uac74',
                 division_chief_unit:
                     '\uae30\ub3d9\ud615 \uc9c0\ud718\ucc28\ub7c9',
+                drone: 'Drone Equipment',
                 elw1_or_elw2:
                     '\uc18c\ubc29\ub300\uc7a5 \uc720\ub2db, \uae30\ub3d9\ud615 \uc9c0\ud718\ucc28\ub7c9 \ub610\ub294 \uae30\ub3d9\ud615 \uc9c0\ud718 \ubaa8\ub4c8 ',
+                elw2_or_ab_elw: 'ICCU / ACU',
                 emergency_ambulance:
                     '\uc751\uae09\uc6a9 \uad6c\uae09\ucc28 \ub610\ub294 \ud5ec\uae30',
+                emergency_welfare: 'Any Crew Welfare Vehicle',
                 fire_truck: '\uc18c\ubc29\ucc28',
                 fireboat: '\ub300\ud615 \uc18c\ubc29 \ubcf4\ud2b8',
                 flood_equipment:
@@ -23933,6 +27254,7 @@ function updateAAOsTime(e) {
                 fly_car: '\uae34\uae09 \uc774\uc1a1\ucc28',
                 fly_car_any:
                     '\uae34\uae09 \uc774\uc1a1\ucc28 / \uc77c\ubc18\uc758',
+                foam: 'Foam Tenders or RIV',
                 foam_amount: '\uac70\ud488 \uc591 (\ub9ac\ud130)',
                 gkw: '\ub2e4\uc6a9\ub3c4 \ud2b8\ub7ed',
                 grtw: '\ub300\ub7c9 \uc0ac\uc0c1\uc790\uc6a9 \uc720\ub2db',
@@ -23941,11 +27263,13 @@ function updateAAOsTime(e) {
                     '\uc791\uc5c5 \ucc28\ub7c9-\ub85c\ud504 \uad6c\uc870\ucc28',
                 gw_messtechnik: '\uc791\uc5c5 \ucc28\ub7c9-\uce21\ub7c9\ucc28',
                 gw_wasserrettung: '\uc720\uc218 \uad00\ub9ac',
+                gwl2wasser: 'Water Carrier or Major Foam Tender',
                 gwl2wasser_only: '\ud638\uc2a4 \ucc28\ub7c9',
                 hems: '\uae34\uae09 \uc758\ub8cc \uc11c\ube44\uc2a4(\ud5ec\uae30)',
                 hlf_only: '\uad6c\uc870 \uacf5\uc791\ucc28',
                 hlf_or_rw_and_lf:
                     '\uad6c\uc870 \uacf5\uc791\ucc28 \ub610\ub294 \uc911\uc7a5\ube44 \uad6c\uc870 \ucc28\ub7c9 \ubc0f \uc18c\ubc29\ucc28',
+                joint_response_unit: 'Joint Response Unit',
                 k9: 'K-9 \uc720\ub2db',
                 kdow_orgl: '\uad6c\uae09 \uc9c0\ud718\ucc28',
                 kdow_orgl_any: '\uad6c\uae09 \uc9c0\ud718\ucc28',
@@ -23956,22 +27280,29 @@ function updateAAOsTime(e) {
                     '\uae30\ubcf8 \uc778\uba85 \uc9c0\uc6d0(BLS) \uad6c\uae09\ucc28',
                 mask_service_unit:
                     '\uc774\ub3d9\uc2dd \ud638\ud761 \uc7a5\ube44',
+                mass_casualty_equipment:
+                    'Mass Casualty Equipment or Medical Equipment Trailer',
                 mtw: '\uc18c\ubc29 \ubd80\uc11c \ucc28\ub7c9(MTW)',
                 mzb: '\ub2e4\ubaa9\uc801 \ubcf4\ud2b8',
                 nef_only: '\uad6c\uae09\ucc28',
                 oil_unit:
                     '\uc791\uc5c5 \ucc28\ub7c9-\uae30\ub984 \uc720\ucd9c \ubc29\uc9c0',
                 police_car: '\uc21c\ucc30\ucc28',
+                police_patrol_and_prisoner_transport: 'Cell Van',
+                police_prisoner_transport: 'Cell Van',
                 polizeihubschrauber: '\uacbd\ucc30 \ud5ec\uae30',
                 pump: '\uc5d4\uc9c4 \ud38c\ud504',
                 pump_speed: '\ud38c\ud504 \uc6a9\ub7c9',
                 pump_speed_pump_only:
                     '\ud38c\ud504 \uc6a9\ub7c9 - \ud38c\ud504\ub9cc',
+                rescue_dogs: 'Rescue Dogs',
                 rescue_vehicle: '\uc911\uc7a5\ube44 \uad6c\uc870 \ucc28\ub7c9',
                 rescue_vehicle_only: '\uc911\uc7a5\ube44 \uad6c\uc870',
                 rescueboat: '\ub300\ud615 \uad6c\uc870 \ubcf4\ud2b8',
                 rth_only: '\uad6c\uae09 \ud5ec\ub9ac\ucf65\ud130',
                 schlauchwagen: '\uc218\uc0c1 \ud0f1\ucee4',
+                search_and_rescue: 'SAR Units',
+                search_and_rescue_command: 'Any Control Van',
                 swat: 'SWAT',
                 swat_armored_vehicle: 'SWAT \ubb34\uc7a5 \ucc28\ub7c9',
                 swat_suv: 'SWAT SUV',
@@ -24000,6 +27331,10 @@ function updateAAOsTime(e) {
                     event_start_mission:
                         '\uc774\ubca4\ud2b8 \uc2dc\uc791: %{amount} \uc774\ubca4\ud2b8 \ud2f0\ucf13',
                 },
+                football: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 halloween: {
                     currency: '\uc774\ubca4\ud2b8 \ud2f0\ucf13',
                     event_start_mission:
@@ -24011,10 +27346,18 @@ function updateAAOsTime(e) {
                     ' \ud604\uc7ac %{amount} %{alliance_event_currency}!',
                 info_bubble_text_disabled:
                     '\ubd80\ud65c\uc808 \uc774\ubca4\ud2b8 \uc885\ub8cc \uc2dc\uac04\uc774 3\uc2dc\uac04\ub3c4 \ucc44 \ub0a8\uc9c0 \uc54a\uc558\uae30 \ub54c\ubb38\uc5d0 \uc774\ubca4\ud2b8\ub97c \ub354 \uc774\uc0c1 \uc2dc\uc791\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.',
+                stpatricks: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 summer: {
                     currency: '\uc774\ubca4\ud2b8 \ud2f0\ucf13',
                     event_start_mission:
                         '\uc774\ubca4\ud2b8 \uc2dc\uc791: %{amount} \uc774\ubca4\ud2b8 \ud2f0\ucf13',
+                },
+                valentines: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
                 },
                 winter: {
                     currency: '\uc774\ubca4\ud2b8 \ud2f0\ucf13',
@@ -24033,6 +27376,14 @@ function updateAAOsTime(e) {
                 '<b>\ud604\uc7ac \ubcf4\uc0c1:</b> %{credits} \ud06c\ub808\ub527 \ubc0f %{event_currency} \uc774\ubca4\ud2b8 \ud06c\ub808\ub527',
             day: '\ub0a0',
             days: '\uc77c',
+            donate_event_credits_hint:
+                'You will donate: <strong>%{event_credits} event credits</strong> (%{alliance_credits} alliance credits).',
+            event: {
+                alliance_missions_completed:
+                    '<b>Completed Missions:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Participated Missions:</b> %{completedMissions}',
+            },
             few_seconds: '\uba87 \ucd08 \uc548\uc5d0',
             finish_in: '\uc644\ub8cc\uae4c\uc9c0:',
             foam_approaching: '\uc811\uadfc \uc911: %{amount}\ub9ac\ud130',
@@ -24067,6 +27418,7 @@ function updateAAOsTime(e) {
             pois: {
                 count_filtered:
                     '%{count} POI\ub97c \ud544\ud130\ub9c1\ud588\uc2b5\ub2c8\ub2e4.',
+                count_total: 'You have %{count} POIs.',
             },
             pump_speed_approaching:
                 '\uc811\uadfc \uc911: %{amount} \ub9ac\ud130/\ubd84',
@@ -24095,12 +27447,14 @@ function updateAAOsTime(e) {
             sicherheitswache_success:
                 '"%{caption}"\uc758 \ubcf4\uc548 \uacbd\ube44\ub97c \uc131\uacf5\uc801\uc73c\ub85c \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4. %{credits} \ud06c\ub808\ub527\uc744 \ubc1b\uc558\uc2b5\ub2c8\ub2e4.',
             start_alliance_mission_new: {
+                one: 'Start %{count} mission (%{price} Coins)',
                 other: '%{count} \uc784\ubb34 \uc2dc\uc791(%{price} \ucf54\uc778)',
             },
             start_in: '\uc2dc\uc791\uae4c\uc9c0: ',
             start_username: '\uc2dc\uc791\ud55c \uc0ac\uc6a9\uc790:',
             time_left: '\ub0a8\uc740 \uc2dc\uac04:',
             to_building: '\uac74\ubb3c \ubcf4\uae30',
+            to_event: 'Back to events',
             to_mission: '\uc784\ubb34 \ubcf4\uae30',
             total_credits_earned:
                 '<b>\ucd1d \ud68d\ub4dd \ud06c\ub808\ub527 </b>',
@@ -24112,6 +27466,8 @@ function updateAAOsTime(e) {
             user_not_found:
                 '\ud50c\ub808\uc774\uc5b4\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.',
             vehicle_payload: {
+                apply_payload: 'Apply Payload',
+                change_payload: 'Change Payload',
                 hide_payload: '\ud398\uc774\ub85c\ub4dc \uc228\uae30\uae30',
                 show_payload: '\ud398\uc774\ub85c\ub4dc \ud45c\uc2dc',
             },
@@ -24132,6 +27488,10 @@ function updateAAOsTime(e) {
                 '\ud604\uc7ac \ub3d9\ub9f9 \ucc44\ud305 \uae08\uc9c0 \uc0c1\ud0dc\uc785\ub2c8\ub2e4.',
             alliance_chat_banned_admin: '\ucc28\ub2e8\uc790:',
             alliance_chat_banned_timeleft: '\ub0a8\uc740 \uc2dc\uac04:',
+            alliance_chat_destroy_alert:
+                'Do you really want to delete this message?',
+            alliance_chat_destroy_confirmation: 'This message has been deleted',
+            alliance_chat_manage_messages: 'Manage messages',
             alliance_chat_radio_off: '\ub3d9\ub9f9 \ubb34\uc804: \ub054',
             alliance_chat_radio_on: '\ub3d9\ub9f9 \ubb34\uc804: \ucf2c',
             alliance_event: '\uc774\ubca4\ud2b8',
@@ -24170,22 +27530,26 @@ function updateAAOsTime(e) {
                 ambulance_station_missions: '\uc751\uae09\uc2e4',
                 ambulance_station_small_missions:
                     '\uc751\uae09\uc2e4(\uc18c\ud615 \uad00\ud560\uc11c)',
+                bomb_disposal_missions: 'Bomb Disposal HQ',
                 building_complex: '\ubcf5\ud569 \uac74\ubb3c',
                 buildings_section: '\uad00\ud560\uc11c',
                 clinic_missions: '\ud074\ub9ac\ub2c9',
                 coastal_rescue: '\ud574\uc548 \uad6c\uc870',
                 coastal_rescue_missions:
                     '\uc218\uc0c1 \uad6c\uc870 \uc784\ubb34',
+                custody_suite: 'Custody Suite',
                 dispatch_center_missions: '\uc9c0\ud718\uc13c\ud130',
                 fire_school_missions: '\uc18c\ubc29\ud559\uad50',
                 firehouse_missions: '\uc18c\ubc29\uc11c',
                 firehouse_small_missions: '\uc18c\ubc29\uc11c(\uc18c\ud615)',
+                general_practitioner: 'GP Surgery',
                 hospital_missions: '\ubcd1\uc6d0',
                 map_filters: '\uc9c0\ub3c4 \ud544\ud130 \ubaa9\ub85d',
                 mission_positions: '\uad00\uc2ec \uc9c0\uc5ed(POI)',
                 mission_positions_section: 'POI',
                 missions_section: '\uc784\ubb34',
                 police_copter_station_missions: '\uacbd\ucc30 \ud56d\uacf5',
+                police_depot: 'Police Depot',
                 police_school_missions: '\uacbd\ucc30 \ud559\uad50',
                 police_small_missions:
                     '\uacbd\ucc30\uc11c(\uc18c\ud615 \uad00\ud560\uc11c)',
@@ -24199,10 +27563,14 @@ function updateAAOsTime(e) {
                 riot_police: '\uc9c4\uc555 \uacbd\ucc30',
                 riot_police_missions: '\uc9c4\uc555 \uacbd\ucc30',
                 staging_area_missions: '\uc9d1\uacb0\uc9c0',
+                technical_aid: 'Search and Rescue HQ',
+                technical_aid_missions: 'SAR',
                 technical_aid_organization:
                     '\uae30\uc220 \uc9c0\uc6d0 \uae30\uad00(THW)',
                 technical_aid_organization_school:
                     'THW \uc5f0\ubc29 \ud559\uad50',
+                tow_trucks: 'Recovery Centers',
+                tow_trucks_missions: 'Recovery Vehicles',
                 user_buildings: '\ub0b4 \uac74\ubb3c',
                 user_missions: '\ub0b4 \uc784\ubb34',
                 water_watch: '\uc218\uc0c1 \uad6c\uc870',
@@ -24251,6 +27619,13 @@ function updateAAOsTime(e) {
                 unattended: '\ubb34\uc778 \ubbf8\uc158',
                 unattended_description: '\ubb34\uc778 \ubbf8\uc158',
             },
+            mission_range: {
+                premium_alert: {
+                    description:
+                        'You need to have a premium account for this feature.',
+                    title: 'Mission generation range could not be selected.',
+                },
+            },
             mission_speed: {
                 premium_alert: {
                     description:
@@ -24269,6 +27644,8 @@ function updateAAOsTime(e) {
                 '\ub3d9\ub9f9 \uc784\ubb34\uc5d0 \ucc38\uc5ec\ud558\uba74 \ubcf4\ub0b4\ub294 \ucc28\ub7c9 \uc720\ud615\uc5d0 \uc0c1\uad00\uc5c6\uc774 \ud06c\ub808\ub527\uc73c\ub85c \ubcf4\uc0c1\uc744 \ubc1b\uc2b5\ub2c8\ub2e4. \ub3d9\ub9f9\uc5d0 \uac00\uc785\ud558\uba74 \ub450 \uac00\uc9c0 \ubaa8\ub450\ub97c \uc218\ud589\ud560 \uc218 \uc788\uace0, \uacbd\ud5d8\uc774 \ud48d\ubd80\ud55c \ub3d9\ub9f9 \uad6c\uc131\uc6d0\uc758 \ub3c4\uc6c0\uc744 \ubc1b\uae30 \uc704\ud574 \uc790\uc2e0\uc758 \uc784\ubb34\ub97c \uacf5\uc720\ud558\uace0, \ucd94\uac00 \ubcf4\uc0c1\uc744 \uc704\ud574 \ub2e4\ub978 \uc0ac\ub78c\uc758 \uacf5\uc720 \uc784\ubb34\uc5d0 \ucc38\uc5ec\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.',
             no_ambulance_missions:
                 '\ud658\uc790 \uc774\uc1a1\uc740 \ubd88\uac00\ub2a5\ud569\ub2c8\ub2e4. \uad6c\uae09\ucc28\uc640 \ubcd1\uc6d0\uc774 \uc788\ub294 \uacbd\uc6b0\uc5d0\ub9cc \ud658\uc790 \uc774\uc1a1\uc744 \ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.',
+            no_critical_transport_missions:
+                'There are no Interfacility Transfers. They can only occur when you have a Critical Care Transfer Ambulance and 2 hospitals with patients in treatment.',
             no_emergency_missions:
                 '\uc774\uc6a9\ud560 \uc218 \uc788\ub294 \uae34\uae09 \uc784\ubb34\uac00 \uc5c6\uc2b5\ub2c8\ub2e4. \uae34\uae09 \uc784\ubb34\ub294 \uccab \ubc88\uc9f8 \uad00\ud560\uc11c\ub97c \uc0dd\uc131\ud55c \ud6c4 \ubc1c\uc0dd\ud569\ub2c8\ub2e4.',
             no_radio_messages:
@@ -24300,6 +27677,22 @@ function updateAAOsTime(e) {
                 separator: '.',
                 significant: '\uac70\uc9d3',
                 strip_insignificant_zeros: '\uac70\uc9d3',
+            },
+        },
+        policechief: {
+            tutorial: {
+                beginner: {
+                    building: {
+                        browser: {
+                            welcome:
+                                'Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions.',
+                        },
+                        mobile: {
+                            welcome:
+                                'Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions.',
+                        },
+                    },
+                },
             },
         },
         tutorial: {
@@ -24336,6 +27729,103 @@ function updateAAOsTime(e) {
                         },
                         welcome:
                             '\ubbf8\uc158 \uce58\ud504 - \uac00\uc785 \uc5d0 \uc624\uc2e0 \uac83\uc744 \ud658\uc601\ud569\ub2c8\ub2e4! \uc751\uae09 \uc11c\ube44\uc2a4 \ub514\uc2a4\ud328\uce58 \uc13c\ud130\uc5d0\uc11c \uadfc\ubb34\ud558\ub294 \uc5ec\ub7ec\ubd84\uc740 \ub300\uc911\uc744 \ub3d5\uace0 \ubcf4\ud638\ud558\uae30 \uc704\ud574 \uae34\uae09 \uc694\uccad\uc5d0 \ub300\uc751\ud569\ub2c8\ub2e4. \uc774\ub97c \uc704\ud574 \uc2a4\ud14c\uc774\uc158\uc744 \uac74\uc124\ud558\uace0 \uc5ec\ub7ec \uc885\ub958\uc758 \ucc28\ub7c9\uacfc \ud6c8\ub828\ub41c \uc778\ub825\uc744 \ub2e4\uc591\ud55c \uc784\ubb34\uc5d0 \ud30c\uacac\ud569\ub2c8\ub2e4.',
+                    },
+                    tooltip: {
+                        ambulance_station: {
+                            helpshift_id: '1714',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station',
+                            short: 'Houses vehicles need for EMS-related missions. \nExtensions can be built, which unlocks purchasing of specialized units.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        ambulance_station_small: {
+                            helpshift_id: '1715',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station',
+                            short: 'Houses vehicles for EMS-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        clinic: {
+                            helpshift_id: '1719',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-clinic',
+                            short: 'Houses vehicles need for EMS-related missions.\nPatients can be transported here, however it is less specialized than the hospital.',
+                        },
+                        dispatch_center: {
+                            helpshift_id: '1497',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=gameplay&f=what-is-the-dispatch-center-good-for',
+                            short: 'Gives you an overview of all your buildings and allows you to group them in a dispatch area.',
+                        },
+                        firehouse: {
+                            helpshift_id: '1709',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions. \nExtensions can be built, which unlocks purchasing of specialized units. ',
+                        },
+                        firehouse_small: {
+                            helpshift_id: '1710',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        fireschool: {
+                            helpshift_id: '1711',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-academy',
+                            short: 'Allows for training firefighters to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        hazard_response_ems: {
+                            helpshift_id: '1736',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hart-base',
+                            short: 'Houses specialized EMS units that respond to Hazard-related missions. \nPersonell needs to be trained in order to operate these specialized units.',
+                        },
+                        home_response_location: {
+                            helpshift_id: '1665',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-home-response-location-hrl-uk-game-version',
+                            short: 'This building houses rescue workers which are on call.',
+                        },
+                        hospital: {
+                            helpshift_id: '1718',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hospital',
+                            short: 'For more severe conditions, patients can be transported here. \nAdditional credits can be earned with patients treated.',
+                        },
+                        police_copter_station: {
+                            helpshift_id: '1731',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-helicopter-station',
+                            short: 'Houses aircrafts for police-related missions.\nA helicopter needs to be purchased separately. ',
+                        },
+                        police_depot: {
+                            helpshift_id: '1741',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version',
+                            short: 'Houses specialist police units that are often stored in large police depots. \nYou can only build one of these per 50 police buildings. Prison cells are available in this building.',
+                        },
+                        police_school: {
+                            helpshift_id: '1724',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-academy',
+                            short: 'Allows for training police officers to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        police_small: {
+                            helpshift_id: '1723',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-police-station',
+                            short: 'Houses vehicles needed for police-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        police_station: {
+                            helpshift_id: '1722',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-station',
+                            short: 'Houses vehicles needed for police-related missions. \nExtensions can be built, which unlocks purchasing of specialized units ',
+                        },
+                        prison: {
+                            helpshift_id: '1734',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-prison',
+                            short: 'Prisoners can be transported here. \nA Prison can only be built with alliance funds.',
+                        },
+                        rescue_copter_station: {
+                            helpshift_id: '1720',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-helicopter-station',
+                            short: 'Houses helicopters for treatment of patients with very serious injuries. \nA helicopter needs to be purchased separately. ',
+                        },
+                        rescue_school: {
+                            helpshift_id: '1716',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-rescue-academy',
+                            short: 'Allows for training EMS personnel to perform advanced treatments and using specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        staging_area: {
+                            helpshift_id: '1732',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-staging-area',
+                            short: 'The staging area can be built for free and will remain for 24 hours. \nDuring this time, units can be temporarily stationed here and dispatched to a mission.',
+                        },
                     },
                 },
                 mission: {
@@ -24435,6 +27925,10 @@ function updateAAOsTime(e) {
                         summary:
                             '\ub3d9\ub9f9\uc5d0 \uac00\uc785\ud558\uc5ec \ub2e4\ub978 \uc0ac\ub78c\ub4e4\uacfc \ud568\uaed8 \ubbf8\uc158\uc744 \ud574\uacb0\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \ubaa8\ub4e0 \uba64\ubc84\uac00 \ucc38\uc5ec\ud560 \uc218 \uc788\ub294 \uc815\uae30 \ub3d9\ub9f9 \uc774\ubca4\ud2b8\ub3c4 \uc788\uc2b5\ub2c8\ub2e4!',
                     },
+                    reminder: {
+                        join_alliance:
+                            'Joining an alliance has many benefits: extra rewards for completing alliance missions, support from experienced members for difficult missions and you can use facilities of other members like hospitals and schools! Press the button to join an alliance now!',
+                    },
                 },
             },
             commons: {
@@ -24473,6 +27967,7 @@ function updateAAOsTime(e) {
             credits_min: 'Min Credite',
             custom_missions: 'Misiuni de alian\u021b\u0103',
             delete: '\u0218terge',
+            description: 'Description',
             details: 'Detalii',
             edit: 'Editeaz\u0103',
             error: 'Eroare',
@@ -24487,19 +27982,29 @@ function updateAAOsTime(e) {
                 'Perioad\u0103 \xeendelungat\u0103: %{user} este offline',
             is_offline_with_duration: '%{user} este offline: %{duration}',
             is_online: '%{user} este online.',
+            load_next: 'Load more',
+            load_remaining: 'Load remaining',
             loading: 'Se \xeencarc\u0103...',
+            message_for_education:
+                'This person will not be dispatched with the vehicle because it is missing the necessary education!',
             missions_per_page: '%{count} misiuni',
             name: 'Nume',
+            no: 'no',
             none: 'Niciunul/niciuna',
             of: 'din',
             off: 'Dezactivat',
             on: 'Activat',
             or: 'sau',
+            person: {
+                missing_education_for_vehicle:
+                    'Personnel will only be dispatched with the vehicle if it has acquired the necessary education!',
+            },
             release_at: 'Externat \xeen',
             remove_all: 'Elimina\u021bi toate',
             save: 'Salveaz\u0103',
             search: 'Caut\u0103',
             show: 'Arat\u0103',
+            sort: 'Sort:',
             sort_by: {
                 credits: 'Credite',
                 default: 'Implicit\u0103',
@@ -24508,11 +28013,18 @@ function updateAAOsTime(e) {
                 poi: 'Punct de interes',
                 requirements: 'Cerin\u021be',
             },
+            sorting: {
+                caption_asc: 'A to Z',
+                caption_desc: 'Z to A',
+                date_asc: 'Oldest',
+                date_desc: 'Newest',
+            },
             time_in_minutes: 'Timp \xeen minute',
             total_count: 'Total: %{count}',
             type: 'Tip:',
             user_not_found: 'Utilizatorul nu a fost g\u0103sit',
             wrong_key: 'Tast\u0103 gre\u0219it\u0103',
+            yes: 'yes',
         },
         fms: {
             going: 'Pe drum',
@@ -24524,12 +28036,21 @@ function updateAAOsTime(e) {
             ready_home: 'Disponibil la sta\u021bie',
             ready_traveling: 'Liber \u0219i disponibil',
             talking_wish: 'Solicitare transport',
+            transporting_car: 'Transporting Vehicle',
             waiting_for_vehicle:
                 'Se a\u0219teapt\u0103 vehicul pentru tractare',
         },
         intervention_order: {
+            assigns_equipment_automatically: 'Assigns Equipment Automatically',
+            assigns_equipment_automatically_hint:
+                'If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment. <br><i>(Does not exclusively choose equipment and only affects ARRs marked with %{icon})</i>',
             automatic_text_color: 'Culoare text automat\u0103',
             back: '\xcenapoi',
+            car_carrier: 'Recovery Vehicle or Flatbed Recovery Vehicle',
+            categories: {
+                tow_trucks: 'Recovery Vehicles',
+                water_rescue: 'Technical Rescue and SAR',
+            },
             category: 'Categorie',
             colour: 'Culoare',
             column: 'Coloan\u0103',
@@ -24556,6 +28077,7 @@ function updateAAOsTime(e) {
                 saved_text:
                     'Regulamentul t\u0103u de Alarm\u0103 \u0219i R\u0103spuns a fost preg\u0103tit pentru exportare. Un alt juc\u0103tor poate importa Regulamentul de Alarm\u0103 \u0219i R\u0103spuns prin intermediul linkului. Dac\u0103, \xeentre timp, modifici Regulamentul de Alarm\u0103 \u0219i R\u0103spuns, aceast\u0103 modificare se va aplica automat la exportare.',
             },
+            flood_equipment: 'Flood Rescue Units',
             hotkey_hint:
                 'Alege o tast\u0103 rapid\u0103 pentru selectarea acestui vehicul. Apas\u0103 \xeen fereastra misiunii: ALT + tasta ta rapid\u0103 (sau \xeen Firefox: ALT + SHIFT + tasta ta rapid\u0103; sau pe mac os: ctrl + alt + tasta ta rapid\u0103) pentru selectarea vehiculului.',
             intervention_order:
@@ -24587,19 +28109,39 @@ function updateAAOsTime(e) {
                 abl2wasser_only: 'Modul alimentare furtun',
                 ambulance:
                     'Ambulan\u021b\u0103 ALS (asisten\u021b\u0103 avansat\u0103 \xeen vederea men\u021binerii func\u021biilor vitale)',
+                any_traffic_car: 'Any Traffic Car',
                 arff: 'Salvare Aerian\u0103 \u0219i Lupt\u0103 \xeempotriva Incendiilor (Ma\u0219ina de pompieri a aeroportului)',
                 battalion_chief_unit: 'Unitate \u0218ef batalion',
+                bomb_disposal: 'EOD Response Vehicles',
+                bomb_disposal_command: 'EOD Commanders',
+                bomb_disposal_crew: 'EOD Response Vehicles',
+                bomb_disposal_diver_crew: 'Marine EOD Response Vehicles',
+                bomb_disposal_diver_equipment: 'Marine EOD Equipment Vans',
+                bomb_disposal_equipment: 'EOD Medium Equipment Vans',
+                bomb_disposal_equipment_2: 'EOD Heavy Equipment Vehicles',
+                bomb_disposal_heavy_equipment: 'EOD Heavy Equipment Vehicles',
                 boot: 'B\u0103rci (general)',
+                car_carrier: 'Any Recovery Vehicle',
+                car_carrier_large: 'Any HGV Recovery Vehicle',
+                coastal_helicopter: 'Coastguard Rescue Helicopter',
+                coastal_rescue:
+                    'Coastal Rescue, Rope Rescue or Mud Rescue Vehicle',
+                coresponder: 'Co-Responder Vehicle',
+                crew_carrier: 'Crew Carrier',
                 division_chief_unit: 'Vehicul comand\u0103 for\u021be mobile',
+                drone: 'Drone Equipment',
                 elw1_or_elw2:
                     'Unitate \u0219ef batalion sau ma\u0219in\u0103 de comanda \u0219i control',
                 elw2_or_ab_elw: 'nul',
                 emergency_ambulance:
                     'Ambulan\u021b\u0103 de urgen\u021b\u0103 sau elicopter',
+                emergency_welfare: 'Any Crew Welfare Vehicle',
                 fire_truck: 'Ma\u0219ini de pompieri',
                 fireboat: 'Barc\u0103 de stins incendii mare',
+                flood_equipment: 'Flood Rescue',
                 fly_car: 'Vehicul EMS netransportant',
                 fly_car_any: 'Vehicul EMS netransportant / Medic generalist',
+                foam: 'Foam Tenders or RIV',
                 foam_amount: 'Litri de spum\u0103',
                 gkw: 'Camionet\u0103 utilitar\u0103',
                 grtw: 'Unitate Victime multiple',
@@ -24609,12 +28151,14 @@ function updateAAOsTime(e) {
                     'Vehicul pentru salvare \u0219i evacuare de la \xeen\u0103l\u021bime (cu fr\xe2nghia)',
                 gw_messtechnik: 'Vehicul-metrologie',
                 gw_wasserrettung: 'Ma\u0219in\u0103 de salvare acvatic\u0103',
+                gwl2wasser: 'Water Carrier or Major Foam Tender',
                 gwl2wasser_only: 'Vehicul cu furtun',
                 hems: 'Elicopter SMURD',
                 hlf_only:
                     'Ma\u0219in\u0103 de interven\u021bii accidente colective',
                 hlf_or_rw_and_lf:
                     'Ma\u0219in\u0103 de interven\u021bii accidente colective sau vehicul greu de salvare \u0219i pomp\u0103 de incendiu',
+                joint_response_unit: 'Joint Response Unit',
                 k9: 'Unitate canin\u0103',
                 kdow_orgl: 'Unitate transport Supervizor',
                 kdow_orgl_any: 'Unitate transport Supervizor',
@@ -24624,17 +28168,26 @@ function updateAAOsTime(e) {
                 long_distance_ambulance:
                     'Ambulan\u021b\u0103 BLS (asisten\u021b\u0103 de baz\u0103 pentru men\u021binerea func\u021biilor vitale)',
                 mask_service_unit: 'Unitate Aer mobil',
+                mass_casualty_equipment:
+                    'Mass Casualty Equipment or Medical Equipment Trailer',
                 mtw: 'Transportor blindat pentru personal',
                 mzb: 'Vas multifunc\u021bional',
                 nef_only: 'Ambulan\u021b\u0103',
                 oil_unit: 'Vehicul-colectare ulei',
                 police_car: 'Ma\u0219in\u0103 de patrulare',
+                police_patrol_and_prisoner_transport: 'Cell Van',
+                police_prisoner_transport: 'Cell Van',
                 polizeihubschrauber: 'Elicopter de poli\u021bie',
+                pump_speed: 'Pump Capacity',
+                pump_speed_pump_only: 'Pump Capacity - Only Pumps',
+                rescue_dogs: 'Rescue Dogs',
                 rescue_vehicle: 'Vehicul greu de salvare',
                 rescue_vehicle_only: 'Doar vehicol de salvare',
                 rescueboat: 'Barc\u0103 de salvare mare',
                 rth_only: 'Elicopter SMURD',
                 schlauchwagen: 'Cistern\u0103 de ap\u0103',
+                search_and_rescue: 'SAR Units',
+                search_and_rescue_command: 'Any Control Van',
                 swat: 'SIAS',
                 swat_armored_vehicle: 'Vehicul blindat SIAS',
                 swat_suv: 'SUV SIAS',
@@ -24645,17 +28198,72 @@ function updateAAOsTime(e) {
                 tlf_only: 'Camion cistern\u0103',
                 turntable_ladder: 'Camioane cu platform\u0103',
                 water_amount: 'Litri de ap\u0103',
+                water_damage_pump: 'Water Pumps',
             },
         },
         javascript: {
             alarm: 'Trimitere',
+            alliance_event_pay_out_message:
+                'Complete all missions with your alliance to earn a bonus!',
+            alliance_event_resource: {
+                christmas: {
+                    currency: 'Event Tickets',
+                    event_start_mission:
+                        'Start Event: %{amount} Alliance Ticket',
+                },
+                easter: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                football: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                halloween: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                info_bubble_text:
+                    'This is a temporary event that is only available during our event! Encourage your alliance members to complete event missions in order to earn the tickets that are needed to start these events. See the alliance event page for more information.',
+                info_bubble_text_additional:
+                    ' You currently have %{amount} %{alliance_event_currency}!',
+                info_bubble_text_disabled:
+                    "The event can't be started anymore because the Easter event's end time is less than 3 hours away.",
+                stpatricks: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                summer: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                valentines: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                winter: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+            },
             arrival: 'Sosire',
             available_vehicles_count: 'Ave\u021bi %{count} vehicule',
             backalarm: 'Anuleaz\u0103',
             coins: 'Monede',
+            collapse: 'Collapse',
             credits: 'Credite',
+            current_reward_for_you:
+                '<b>Your current reward:</b> %{credits} Credits & %{event_currency} Event Credits',
             day: 'zi',
             days: 'zile',
+            donate_event_credits_hint:
+                'You will donate: <strong>%{event_credits} event credits</strong> (%{alliance_credits} alliance credits).',
+            event: {
+                alliance_missions_completed:
+                    '<b>Completed Missions:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Participated Missions:</b> %{completedMissions}',
+            },
             few_seconds: '\xeen c\xe2teva secunde',
             finish_in: 'Termin\u0103 \xeen:',
             foam_approaching: 'Se apropie: %{amount} l.',
@@ -24675,21 +28283,37 @@ function updateAAOsTime(e) {
             mission_start_in: '\xcencepe \xeen:',
             new: 'Nou',
             not_found_map: 'Vehiculul nu a fost g\u0103sit pe hart\u0103',
+            not_qualified:
+                '<b>Not qualified:</b> Participate in a mission to earn the reward ',
             now: 'Acum',
             patient: 'Pacient',
             patient_untouched: 'Pacien\u021bi netrata\u021bi',
+            payout_received:
+                '<b>Your have received:</b> %{credits} Credits & %{event_currency} Event Credits',
             poi_delete:
                 'E\u0219ti sigur c\u0103 vrei s\u0103 \u0219tergi Punctul de interes: %{caption}?',
+            pois: {
+                count_filtered: 'You have filtered %{count} POIs.',
+                count_total: 'You have %{count} POIs.',
+            },
+            pump_speed_approaching: 'Approaching: %{amount} l/min',
+            pump_speed_missing: 'Missing: %{amount} l/min',
+            pump_speed_on_site: 'On scene: %{amount} l/min',
             pump_speed_process:
                 'Procesul de pompare a daunelor provocate de ap\u0103',
+            pump_speed_selected: 'Selected: %{amount} l/min',
+            qualified: '<b>Qualified:</b> You took part in the event',
             reload: 'Re\xeencarc\u0103',
             sale: 'Promo\u021bie',
             sale_ended: 'Promo\u021bia s-a \xeencheiat',
             secounds: 'sec.',
+            select_amount_button: 'Select amount',
             select_amount_event_credits_hint:
                 'Selecta\u021bi num\u0103rul de credite de eveniment pe care dori\u021bi s\u0103 le converti\u021bi',
             selected_vehicles_count: 'A\u021bi selectat %{count} vehicule',
             show_all: 'Arat\u0103 tot',
+            show_less: 'Show Less',
+            show_more: 'Show More',
             sicherheitswache_error:
                 'Misiunea de securizare "%{caption}" nu a avut succes, deoarece nu au fost \xeendeplinite toate criteriile.',
             sicherheitswache_success:
@@ -24703,12 +28327,17 @@ function updateAAOsTime(e) {
             start_username: 'Starter:',
             time_left: 'Timp r\u0103mas:',
             to_building: 'Vezi cl\u0103direa',
+            to_event: 'Back to events',
             to_mission: 'Vezi misiunea',
+            total_credits_earned: '<b>Total credits earned:</b>',
+            total_event_currency_earned: '<b>Total event credits earned:</b>',
             understand: 'Confirm\u0103',
             update_mission_count:
                 '\xcen prezent, po\u021bi avea %{current} / %{total} intervale de misiuni personalizate. Cu un abonament premium, po\u021bi crea un interval de misiuni personalizat pentru fiecare tip de misiune disponibil.',
             user_not_found: 'Juc\u0103torul nu a fost g\u0103sit.',
             vehicle_payload: {
+                apply_payload: 'Apply Payload',
+                change_payload: 'Change Payload',
                 hide_payload: 'Ascunde\u021bi sarcina util\u0103',
                 show_payload: 'Afi\u0219a\u021bi sarcina util\u0103',
             },
@@ -24716,6 +28345,7 @@ function updateAAOsTime(e) {
             water_approaching: 'Se apropie: %{amount} l.',
             water_missing: 'Lipsesc: %{amount} l.',
             water_on_site: 'La fa\u021ba locului: %{amount} l.',
+            water_process: 'Water needed',
             water_pumping_process: 'Capacitate de pompare necesar\u0103',
             water_selected: 'Selecta\u021bi: %{amount} l.',
         },
@@ -24726,6 +28356,10 @@ function updateAAOsTime(e) {
                 '\xcen prezent, \xee\u021bi este interzis accesul la chatul alian\u021bei.',
             alliance_chat_banned_admin: 'Interzis de:',
             alliance_chat_banned_timeleft: 'Timp r\u0103mas:',
+            alliance_chat_destroy_alert:
+                'Do you really want to delete this message?',
+            alliance_chat_destroy_confirmation: 'This message has been deleted',
+            alliance_chat_manage_messages: 'Manage messages',
             alliance_chat_radio_off: 'Radio alian\u021b\u0103: Dezactivat',
             alliance_chat_radio_on: 'Radio alian\u021b\u0103: Activat',
             alliance_event: 'Eveniment',
@@ -24763,13 +28397,18 @@ function updateAAOsTime(e) {
                     'Sta\u021bie de ambulan\u021b\u0103',
                 ambulance_station_small_missions:
                     'Sta\u021bie de ambulan\u021b\u0103 (sta\u021bie mic\u0103)',
+                bomb_disposal_missions: 'Bomb Disposal HQ',
                 building_complex: 'Complex de cl\u0103diri',
                 buildings_section: 'Sta\u021bii',
                 clinic_missions: 'Clinic\u0103',
+                coastal_rescue: 'Lifeboat Stations',
+                coastal_rescue_missions: 'SAR',
+                custody_suite: 'Custody Suite',
                 dispatch_center_missions: 'Dispecerat',
                 fire_school_missions: 'Academia de Pompieri',
                 firehouse_missions: 'Sta\u021bie de pompieri',
                 firehouse_small_missions: 'Sta\u021bie de pompieri (mic\u0103)',
+                general_practitioner: 'GP Surgery',
                 hospital_missions: 'Spital',
                 map_filters: 'Lista filtrelor de hart\u0103',
                 mission_positions: 'Puncte de interes',
@@ -24777,6 +28416,7 @@ function updateAAOsTime(e) {
                 missions_section: 'Misiuni',
                 police_copter_station_missions:
                     'Transport aerian pentru for\u021bele de poli\u021bie',
+                police_depot: 'Police Depot',
                 police_school_missions: 'Academia de Poli\u021bie',
                 police_small_missions:
                     'Sec\u021bie de poli\u0163ie (sec\u021bie mic\u0103)',
@@ -24792,9 +28432,13 @@ function updateAAOsTime(e) {
                 riot_police_missions:
                     'For\u021be de poli\u021bie speciale \xeempotriva revoltelor stradale',
                 staging_area_missions: 'Zona de a\u0219teptare',
+                technical_aid: 'Search and Rescue HQ',
+                technical_aid_missions: 'SAR',
                 technical_aid_organization:
                     'Agen\u021bia Na\u021bional\u0103 de Asisten\u021b\u0103 Tehnic\u0103 (ANAT)',
                 technical_aid_organization_school: 'THW Bundesschule',
+                tow_trucks: 'Recovery Centers',
+                tow_trucks_missions: 'Recovery Vehicles',
                 user_buildings: 'Cl\u0103dirile mele',
                 user_missions: 'Misiunile mele',
                 water_watch: 'Salvare acvatic\u0103',
@@ -24841,6 +28485,13 @@ function updateAAOsTime(e) {
                 unattended: 'Misiuni nesupravegheate',
                 unattended_description: 'Misiuni nesupravegheate',
             },
+            mission_range: {
+                premium_alert: {
+                    description:
+                        'You need to have a premium account for this feature.',
+                    title: 'Mission generation range could not be selected.',
+                },
+            },
             mission_speed: {
                 premium_alert: {
                     description:
@@ -24855,8 +28506,12 @@ function updateAAOsTime(e) {
                 'Nu faci parte dintr-o alian\u021b\u0103.',
             no_alliance_missions:
                 '\xcen prezent nu exist\u0103 misiuni de alian\u021b\u0103.',
+            no_alliance_missions_join:
+                'Participating in alliance missions will reward you with Credits - no matter what type of vehicle you send. By joining an alliance you can do both, share your own missions to get help from experienced alliance members and participate in other\u2019s shared missions for extra rewards.',
             no_ambulance_missions:
                 '"Nu exist\u0103 transporturi de pacien\u021bi. Transporturile vor putea fi efectuate atunci c\xe2nd vei aveao Ambulan\u021b\u0103 de tip B (BLS) \u0219i un spital."',
+            no_critical_transport_missions:
+                'There are no Interfacility Transfers. They can only occur when you have a Critical Care Transfer Ambulance and 2 hospitals with patients in treatment.',
             no_emergency_missions:
                 'Nu e disponibil\u0103 nicio misiune de urgen\u021b\u0103. O misiune de urgen\u021b\u0103 poate ap\u0103rea dup\u0103 ce \u021bi-ai construit prima sta\u021bie.',
             no_radio_messages: 'Nu ai primit niciun mesaj radio.',
@@ -24886,6 +28541,22 @@ function updateAAOsTime(e) {
                 separator: ',',
                 significant: !1,
                 strip_insignificant_zeros: !1,
+            },
+        },
+        policechief: {
+            tutorial: {
+                beginner: {
+                    building: {
+                        browser: {
+                            welcome:
+                                'Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions.',
+                        },
+                        mobile: {
+                            welcome:
+                                'Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions.',
+                        },
+                    },
+                },
             },
         },
         tutorial: {
@@ -24922,6 +28593,103 @@ function updateAAOsTime(e) {
                         },
                         welcome:
                             'Bine a\u021bi venit la Dispecerat 112 - \xcenregistreaz\u0103-te! Lucr\xe2nd \xeentr-un centru de dispecerat pentru serviciile de urgen\u021b\u0103, v\u0103 ocupa\u021bi de apelurile de urgen\u021b\u0103 pentru a ajuta \u0219i proteja publicul. Pentru a face acest lucru, construi\u021bi sta\u021bii \u0219i trimite\u021bi mai multe tipuri de vehicule \u0219i personal instruit \xeen diverse misiuni.',
+                    },
+                    tooltip: {
+                        ambulance_station: {
+                            helpshift_id: '1714',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station',
+                            short: 'Houses vehicles need for EMS-related missions. \nExtensions can be built, which unlocks purchasing of specialized units.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        ambulance_station_small: {
+                            helpshift_id: '1715',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station',
+                            short: 'Houses vehicles for EMS-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        clinic: {
+                            helpshift_id: '1719',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-clinic',
+                            short: 'Houses vehicles need for EMS-related missions.\nPatients can be transported here, however it is less specialized than the hospital.',
+                        },
+                        dispatch_center: {
+                            helpshift_id: '1497',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=gameplay&f=what-is-the-dispatch-center-good-for',
+                            short: 'Gives you an overview of all your buildings and allows you to group them in a dispatch area.',
+                        },
+                        firehouse: {
+                            helpshift_id: '1709',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions. \nExtensions can be built, which unlocks purchasing of specialized units. ',
+                        },
+                        firehouse_small: {
+                            helpshift_id: '1710',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        fireschool: {
+                            helpshift_id: '1711',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-academy',
+                            short: 'Allows for training firefighters to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        hazard_response_ems: {
+                            helpshift_id: '1736',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hart-base',
+                            short: 'Houses specialized EMS units that respond to Hazard-related missions. \nPersonell needs to be trained in order to operate these specialized units.',
+                        },
+                        home_response_location: {
+                            helpshift_id: '1665',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-home-response-location-hrl-uk-game-version',
+                            short: 'This building houses rescue workers which are on call.',
+                        },
+                        hospital: {
+                            helpshift_id: '1718',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hospital',
+                            short: 'For more severe conditions, patients can be transported here. \nAdditional credits can be earned with patients treated.',
+                        },
+                        police_copter_station: {
+                            helpshift_id: '1731',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-helicopter-station',
+                            short: 'Houses aircrafts for police-related missions.\nA helicopter needs to be purchased separately. ',
+                        },
+                        police_depot: {
+                            helpshift_id: '1741',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version',
+                            short: 'Houses specialist police units that are often stored in large police depots. \nYou can only build one of these per 50 police buildings. Prison cells are available in this building.',
+                        },
+                        police_school: {
+                            helpshift_id: '1724',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-academy',
+                            short: 'Allows for training police officers to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        police_small: {
+                            helpshift_id: '1723',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-police-station',
+                            short: 'Houses vehicles needed for police-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        police_station: {
+                            helpshift_id: '1722',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-station',
+                            short: 'Houses vehicles needed for police-related missions. \nExtensions can be built, which unlocks purchasing of specialized units ',
+                        },
+                        prison: {
+                            helpshift_id: '1734',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-prison',
+                            short: 'Prisoners can be transported here. \nA Prison can only be built with alliance funds.',
+                        },
+                        rescue_copter_station: {
+                            helpshift_id: '1720',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-helicopter-station',
+                            short: 'Houses helicopters for treatment of patients with very serious injuries. \nA helicopter needs to be purchased separately. ',
+                        },
+                        rescue_school: {
+                            helpshift_id: '1716',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-rescue-academy',
+                            short: 'Allows for training EMS personnel to perform advanced treatments and using specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        staging_area: {
+                            helpshift_id: '1732',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-staging-area',
+                            short: 'The staging area can be built for free and will remain for 24 hours. \nDuring this time, units can be temporarily stationed here and dispatched to a mission.',
+                        },
                     },
                 },
                 mission: {
@@ -24998,6 +28766,11 @@ function updateAAOsTime(e) {
                             link: 'https://xyrality.helpshift.com/hc/ro/23-mission-chief/faq/1885-how-do-critical-transport-missions-work/',
                             short: 'How do critical transport missions work?',
                         },
+                        radio: {
+                            helpshift_id: '1540',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles',
+                            short: 'The radio displays status updates of your vehicles. For more detailed information on each status click here.',
+                        },
                         summary:
                             'V\u0103 pute\u021bi al\u0103tura unei alian\u021be pentru a rezolva misiuni \xeempreun\u0103 cu al\u021bii. Exist\u0103, de asemenea, evenimente regulate ale alian\u021bei la care pot participa to\u021bi membrii!',
                     },
@@ -25015,6 +28788,10 @@ function updateAAOsTime(e) {
                             'Promo\u021biile \u0219i sta\u021biile de construc\u021bie deblocheaz\u0103 noi caracteristici, cum ar fi tipuri de misiuni sau vehicule.',
                         summary:
                             'V\u0103 pute\u021bi al\u0103tura unei alian\u021be pentru a rezolva misiuni \xeempreun\u0103 cu al\u021bii. Exist\u0103, de asemenea, evenimente regulate ale alian\u021bei la care pot participa to\u021bi membrii!',
+                    },
+                    reminder: {
+                        join_alliance:
+                            'Joining an alliance has many benefits: extra rewards for completing alliance missions, support from experienced members for difficult missions and you can use facilities of other members like hospitals and schools! Press the button to join an alliance now!',
                     },
                 },
             },
@@ -25121,16 +28898,22 @@ function updateAAOsTime(e) {
             ready_home: 'K\xe4ytett\xe4viss\xe4 asemalla',
             ready_traveling: 'Vapaana',
             talking_wish: 'Kuljetuspyynt\xf6',
+            transporting_car: 'Transporting Vehicle',
             waiting_for_vehicle: 'Odottaa vetoautoa',
         },
         intervention_order: {
+            assigns_equipment_automatically: 'Assigns Equipment Automatically',
+            assigns_equipment_automatically_hint:
+                'If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment. <br><i>(Does not exclusively choose equipment and only affects ARRs marked with %{icon})</i>',
             automatic_text_color: 'Automaattinen tekstin v\xe4ri',
             back: 'Palaa',
+            car_carrier: 'Recovery Vehicle or Flatbed Recovery Vehicle',
             categories: {
                 airport: 'Lentokentt\xe4',
                 firefighting: 'Palokunta',
                 police: 'Poliisi',
                 rescue: 'Ambulanssi',
+                tow_trucks: 'Recovery Vehicles',
                 water_rescue: 'RVL',
             },
             category: 'Luokka',
@@ -25156,6 +28939,7 @@ function updateAAOsTime(e) {
                 saved_text:
                     'H\xe4lytysj\xe4rjestely on valmis vienti\xe4 varten. Toinen pelaaja voi tuoda h\xe4lytysj\xe4rjestelyn linkin kautta. Jos muutat h\xe4lytysj\xe4rjestely\xe4 t\xe4ll\xe4 v\xe4lin, muutos vaikuttaa my\xf6s vientiin.',
             },
+            flood_equipment: 'Flood Rescue Units',
             hotkey_hint:
                 'Valitse pikan\xe4pp\xe4in t\xe4m\xe4n ajoneuvon valintaa varten. Valitse ajoneuvo painamalla teht\xe4v\xe4ikkunassa: ALT + pikan\xe4pp\xe4in (Firefox: ALT + VAIHTO + pikan\xe4pp\xe4in; mac os: ctrl + alt + pikan\xe4pp\xe4in).',
             intervention_order: 'Muokkaa h\xe4lytysj\xe4rjestely\xe4',
@@ -25183,20 +28967,41 @@ function updateAAOsTime(e) {
                 ab_ruest: 'Tekniikka-/pelastusmoduuli',
                 abl2wasser_only: 'Letkumoduuli',
                 ambulance: 'Hoitotason ambulanssi',
+                any_traffic_car: 'Any Traffic Car',
                 arff: 'Lentokentt\xe4paloauto',
                 battalion_chief_unit: 'Johtoauto',
+                bomb_disposal: 'EOD Response Vehicles',
+                bomb_disposal_command: 'EOD Commanders',
+                bomb_disposal_crew: 'EOD Response Vehicles',
+                bomb_disposal_diver_crew: 'Marine EOD Response Vehicles',
+                bomb_disposal_diver_equipment: 'Marine EOD Equipment Vans',
+                bomb_disposal_equipment: 'EOD Medium Equipment Vans',
+                bomb_disposal_equipment_2: 'EOD Heavy Equipment Vehicles',
+                bomb_disposal_heavy_equipment: 'EOD Heavy Equipment Vehicles',
                 boot: 'Alukset (yleinen)',
                 border: 'Mik\xe4 tahansa RVL Partioauto',
                 border_dogs: 'Mik\xe4 koiraper\xe4vaunu',
+                car_carrier: 'Any Recovery Vehicle',
+                car_carrier_large: 'Any HGV Recovery Vehicle',
+                coastal_helicopter: 'Coastguard Rescue Helicopter',
+                coastal_rescue:
+                    'Coastal Rescue, Rope Rescue or Mud Rescue Vehicle',
+                coresponder: 'Co-Responder Vehicle',
+                crew_carrier: 'Crew Carrier',
                 division_chief_unit: 'Johtokeskusauto',
+                drone: 'Drone Equipment',
                 elw1_or_elw2:
                     'johtoauto, johtokeskusauto tai johtokeskuskontti',
+                elw2_or_ab_elw: 'ICCU / ACU',
                 emergency_ambulance: 'Ambulanssi tai Helikopteri',
+                emergency_welfare: 'Any Crew Welfare Vehicle',
                 fire_truck: 'Paloautot',
                 fireboat: 'Iso sammutusalus',
+                flood_equipment: 'Flood Rescue',
                 fly_car: 'Ensivasteauto',
                 fly_car_any:
                     'EVA-yksikk\xf6, EVY-yksikk\xf6 tai Ensihoidon l\xe4\xe4k\xe4ri',
+                foam: 'Foam Tenders or RIV',
                 foam_amount: 'Litraa vaahtoa',
                 fustw_or_police_motorcycle:
                     'Partioauto tai Poliisimoottoripy\xf6r\xe4',
@@ -25206,12 +29011,14 @@ function updateAAOsTime(e) {
                 gw_hoehenrettung: 'GW-H\xf6henrettung',
                 gw_messtechnik: 'GW-Messtechnik',
                 gw_wasserrettung: 'Vesipelastus',
+                gwl2wasser: 'Water Carrier or Major Foam Tender',
                 gwl2wasser_only: 'Letkuauto',
                 hems: 'L\xe4\xe4k\xe4rihelikopteri (HEMS)',
                 hlf_only: 'Pelastusauto',
                 hlf_or_rw_and_lf:
                     'Pelastusauto tai Raskas pelastusauto ja Sammutusauto',
                 hose_trucks: 'Letkuyksikk\xf6',
+                joint_response_unit: 'Joint Response Unit',
                 k9: 'Koirayksikk\xf6',
                 kdow_orgl: 'Ensihoidon kentt\xe4johtaja',
                 kdow_orgl_any: 'Ensihoidon kentt\xe4johtaja',
@@ -25219,21 +29026,28 @@ function updateAAOsTime(e) {
                 lf_only: 'Paloautot',
                 long_distance_ambulance: 'Perustason ambulanssi',
                 mask_service_unit: 'Paineilmalaiteyksikk\xf6',
+                mass_casualty_equipment:
+                    'Mass Casualty Equipment or Medical Equipment Trailer',
                 mtw: 'Miehist\xf6nkuljetusauto',
                 mzb: 'Monitoimialus',
                 nef_only: 'Ambulanssi',
                 oil_unit: 'GW-\xd6l',
                 police_car: 'Partioauto',
                 police_motorcycle: 'Poliisimoottoripy\xf6r\xe4',
+                police_patrol_and_prisoner_transport: 'Cell Van',
+                police_prisoner_transport: 'Cell Van',
                 polizeihubschrauber: 'Poliisihelikopteri',
                 pump: 'Suurtehopumppu',
                 pump_speed: 'Pumpun kapasiteetti',
                 pump_speed_pump_only: 'Pumpun kapasiteetti - Vain pumput',
+                rescue_dogs: 'Rescue Dogs',
                 rescue_vehicle: 'Raskas pelastusauto',
                 rescue_vehicle_only: 'Raskas pelastus',
                 rescueboat: 'Iso pelastusalus',
                 rth_only: 'L\xe4\xe4k\xe4rihelikopteri (HEMS)',
                 schlauchwagen: 'S\xe4ili\xf6auto',
+                search_and_rescue: 'SAR Units',
+                search_and_rescue_command: 'Any Control Van',
                 swat: 'VATI',
                 swat_armored_vehicle: 'VATI miehist\xf6nkuljetusajoneuvo',
                 swat_suv: 'VATI-partio',
@@ -25278,6 +29092,10 @@ function updateAAOsTime(e) {
                     ' Sinulla on t\xe4ll\xe4 hetkell\xe4 %{amount} %{alliance_event_currency}!',
                 info_bubble_text_disabled:
                     'Tapahtumaa ei voi en\xe4\xe4 aloittaa, koska p\xe4\xe4si\xe4istapahtuman p\xe4\xe4ttymisaika on alle 3 tunnin p\xe4\xe4ss\xe4.',
+                stpatricks: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
                 summer: {
                     currency: 'Tapahtuman liput',
                     event_start_mission:
@@ -25382,6 +29200,8 @@ function updateAAOsTime(e) {
                 'Sinulla voi t\xe4ll\xe4 hetkell\xe4 olla %{current}/%{total} mukautetut teht\xe4vien alueet. Premium-tilauksen avulla voit luoda mukautetun teht\xe4vien alueen jokaiselle teht\xe4vien tyypille.',
             user_not_found: 'Pelaajaa ei l\xf6ytynyt.',
             vehicle_payload: {
+                apply_payload: 'Apply Payload',
+                change_payload: 'Change Payload',
                 hide_payload: 'Piilota hy\xf6tykuorma',
                 show_payload: 'N\xe4yt\xe4 hy\xf6tykuorma',
             },
@@ -25439,21 +29259,25 @@ function updateAAOsTime(e) {
                 ambulance_station_missions: 'Ambulanssiasema',
                 ambulance_station_small_missions:
                     'Ambulanssiasema (pieni asema)',
+                bomb_disposal_missions: 'Bomb Disposal HQ',
                 building_complex: 'Rakennuskompleksi',
                 buildings_section: 'Asemat',
                 clinic_missions: 'Terveyskeskus',
                 coastal_rescue: 'Rajavartiolaitos',
                 coastal_rescue_missions: 'Meripelastus',
+                custody_suite: 'Custody Suite',
                 dispatch_center_missions: 'H\xe4t\xe4keskus',
                 fire_school_missions: 'Pelastajaoppilaitos',
                 firehouse_missions: 'Paloasema',
                 firehouse_small_missions: 'Paloasema (pieni)',
+                general_practitioner: 'GP Surgery',
                 hospital_missions: 'Sairaala',
                 map_filters: 'Karttasuodatinlista',
                 mission_positions: 'Kohdepisteet',
                 mission_positions_section: 'Kohdepisteet',
                 missions_section: 'Teht\xe4v\xe4t',
                 police_copter_station_missions: 'Poliisihelikopteritukikohta',
+                police_depot: 'Police Depot',
                 police_school_missions: 'Poliisiammattikorkeakoulu',
                 police_small_missions: 'Poliisiasema (pieni asema)',
                 police_special_forces: 'Poliisin erikoisjoukot',
@@ -25465,8 +29289,12 @@ function updateAAOsTime(e) {
                 riot_police: 'Mellakkapoliisi',
                 riot_police_missions: 'Mellakkapoliisi',
                 staging_area_missions: 'Kokoontumispaikka',
+                technical_aid: 'Search and Rescue HQ',
+                technical_aid_missions: 'SAR',
                 technical_aid_organization: 'VPK',
                 technical_aid_organization_school: 'THW Bundesschule',
+                tow_trucks: 'Recovery Centers',
+                tow_trucks_missions: 'Recovery Vehicles',
                 user_buildings: 'Omat rakennukset',
                 user_missions: 'Omat teht\xe4v\xe4t',
                 water_rescue_2_missions: 'Rajavartioasema',
@@ -25514,6 +29342,13 @@ function updateAAOsTime(e) {
                     'Teht\xe4v\xe4t, jotka on aloitettu, mutta joita ei ole saatettu p\xe4\xe4t\xf6kseen.',
                 unattended: 'Valvomattomat teht\xe4v\xe4t',
                 unattended_description: 'Valvomattomat teht\xe4v\xe4t',
+            },
+            mission_range: {
+                premium_alert: {
+                    description:
+                        'You need to have a premium account for this feature.',
+                    title: 'Mission generation range could not be selected.',
+                },
             },
             mission_speed: {
                 premium_alert: {
@@ -25615,6 +29450,103 @@ function updateAAOsTime(e) {
                         },
                         welcome:
                             'Tervetuloa hatakeskuspeli! Ty\xf6skentelet h\xe4t\xe4keskuksessa, jossa k\xe4sittelet h\xe4t\xe4puheluita auttaaksesi ja suojellaksesi yleis\xf6\xe4. T\xe4t\xe4 varten rakennat asemia ja l\xe4het\xe4t erityyppisi\xe4 ajoneuvoja ja koulutettua henkil\xf6kuntaa erilaisiin teht\xe4viin.',
+                    },
+                    tooltip: {
+                        ambulance_station: {
+                            helpshift_id: '1714',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station',
+                            short: 'Houses vehicles need for EMS-related missions. \nExtensions can be built, which unlocks purchasing of specialized units.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        ambulance_station_small: {
+                            helpshift_id: '1715',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station',
+                            short: 'Houses vehicles for EMS-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        clinic: {
+                            helpshift_id: '1719',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-clinic',
+                            short: 'Houses vehicles need for EMS-related missions.\nPatients can be transported here, however it is less specialized than the hospital.',
+                        },
+                        dispatch_center: {
+                            helpshift_id: '1497',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=gameplay&f=what-is-the-dispatch-center-good-for',
+                            short: 'Gives you an overview of all your buildings and allows you to group them in a dispatch area.',
+                        },
+                        firehouse: {
+                            helpshift_id: '1709',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions. \nExtensions can be built, which unlocks purchasing of specialized units. ',
+                        },
+                        firehouse_small: {
+                            helpshift_id: '1710',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        fireschool: {
+                            helpshift_id: '1711',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-academy',
+                            short: 'Allows for training firefighters to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        hazard_response_ems: {
+                            helpshift_id: '1736',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hart-base',
+                            short: 'Houses specialized EMS units that respond to Hazard-related missions. \nPersonell needs to be trained in order to operate these specialized units.',
+                        },
+                        home_response_location: {
+                            helpshift_id: '1665',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-home-response-location-hrl-uk-game-version',
+                            short: 'This building houses rescue workers which are on call.',
+                        },
+                        hospital: {
+                            helpshift_id: '1718',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hospital',
+                            short: 'For more severe conditions, patients can be transported here. \nAdditional credits can be earned with patients treated.',
+                        },
+                        police_copter_station: {
+                            helpshift_id: '1731',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-helicopter-station',
+                            short: 'Houses aircrafts for police-related missions.\nA helicopter needs to be purchased separately. ',
+                        },
+                        police_depot: {
+                            helpshift_id: '1741',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version',
+                            short: 'Houses specialist police units that are often stored in large police depots. \nYou can only build one of these per 50 police buildings. Prison cells are available in this building.',
+                        },
+                        police_school: {
+                            helpshift_id: '1724',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-academy',
+                            short: 'Allows for training police officers to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        police_small: {
+                            helpshift_id: '1723',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-police-station',
+                            short: 'Houses vehicles needed for police-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        police_station: {
+                            helpshift_id: '1722',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-station',
+                            short: 'Houses vehicles needed for police-related missions. \nExtensions can be built, which unlocks purchasing of specialized units ',
+                        },
+                        prison: {
+                            helpshift_id: '1734',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-prison',
+                            short: 'Prisoners can be transported here. \nA Prison can only be built with alliance funds.',
+                        },
+                        rescue_copter_station: {
+                            helpshift_id: '1720',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-helicopter-station',
+                            short: 'Houses helicopters for treatment of patients with very serious injuries. \nA helicopter needs to be purchased separately. ',
+                        },
+                        rescue_school: {
+                            helpshift_id: '1716',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-rescue-academy',
+                            short: 'Allows for training EMS personnel to perform advanced treatments and using specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        staging_area: {
+                            helpshift_id: '1732',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-staging-area',
+                            short: 'The staging area can be built for free and will remain for 24 hours. \nDuring this time, units can be temporarily stationed here and dispatched to a mission.',
+                        },
                     },
                 },
                 mission: {
@@ -25754,6 +29686,7 @@ function updateAAOsTime(e) {
             credits_min: 'Min. kredity',
             custom_missions: 'Rozsiahlu alian\u010dn\xfa misie',
             delete: 'Vymaza\u0165',
+            description: 'Description',
             details: 'Podrobnosti',
             edit: 'Upravi\u0165',
             error: 'Chyba',
@@ -25767,19 +29700,29 @@ function updateAAOsTime(e) {
             is_offline_long: 'Dlho: %{user} je offline',
             is_offline_with_duration: '%{user} je offline: %{duration}',
             is_online: '%{user} je online.',
+            load_next: 'Load more',
+            load_remaining: 'Load remaining',
             loading: 'Na\u010d\xedtava sa...',
+            message_for_education:
+                'This person will not be dispatched with the vehicle because it is missing the necessary education!',
             missions_per_page: '%{count} misie',
             name: 'N\xe1zov',
+            no: 'no',
             none: '\u017diadne',
             of: 'z',
             off: 'Vyp.',
             on: 'Zap.',
             or: 'alebo',
+            person: {
+                missing_education_for_vehicle:
+                    'Personnel will only be dispatched with the vehicle if it has acquired the necessary education!',
+            },
             release_at: 'Prepusten\xfd v',
             remove_all: 'Odstr\xe1\u0148te v\u0161etky',
             save: 'Ulo\u017ei\u0165',
             search: 'Vyh\u013eada\u0165',
             show: 'Zobrazi\u0165',
+            sort: 'Sort:',
             sort_by: {
                 credits: 'Kreditor',
                 default: 'Predvolen\xe9',
@@ -25788,10 +29731,18 @@ function updateAAOsTime(e) {
                 poi: 'POI',
                 requirements: 'Po\u017eiadavky',
             },
+            sorting: {
+                caption_asc: 'A to Z',
+                caption_desc: 'Z to A',
+                date_asc: 'Oldest',
+                date_desc: 'Newest',
+            },
             time_in_minutes: '\u010cas v min\xfatach',
             total_count: 'Celkom: %{count}',
+            type: 'Type:',
             user_not_found: 'Pou\u017e\xedvate\u013e sa nena\u0161iel',
             wrong_key: 'Nespr\xe1vny k\u013e\xfa\u010d',
+            yes: 'yes',
         },
         fms: {
             going: 'Reagova\u0165',
@@ -25803,11 +29754,20 @@ function updateAAOsTime(e) {
             ready_home: 'Dostupn\xe9 na stanici',
             ready_traveling: 'Jasn\xe9 a dostupn\xe9',
             talking_wish: 'Po\u017eiadavka na transport',
+            transporting_car: 'Transporting Vehicle',
             waiting_for_vehicle: '\u010cak\xe1 vle\u010dn\xe9 vozidlo',
         },
         intervention_order: {
+            assigns_equipment_automatically: 'Assigns Equipment Automatically',
+            assigns_equipment_automatically_hint:
+                'If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment. <br><i>(Does not exclusively choose equipment and only affects ARRs marked with %{icon})</i>',
             automatic_text_color: 'Automatick\xe1 farba textu',
             back: 'Sp\xe4\u0165',
+            car_carrier: 'Recovery Vehicle or Flatbed Recovery Vehicle',
+            categories: {
+                tow_trucks: 'Recovery Vehicles',
+                water_rescue: 'Technical Rescue and SAR',
+            },
             category: 'Kateg\xf3ria',
             colour: 'Farba',
             column: 'St\u013apec',
@@ -25833,6 +29793,7 @@ function updateAAOsTime(e) {
                 saved_text:
                     'Va\u0161e riadenie alarmov a reakci\xed bolo pripraven\xe9 na export. Cez odkaz m\xf4\u017ee in\xfd hr\xe1\u010d importova\u0165 riadenie alarmov a reakci\xed. Ak medzit\xfdm zmen\xedte svoje riadenia alarmov a reakci\xed, aplikuje sa t\xe1to zmena automaticky v exporte.',
             },
+            flood_equipment: 'Flood Rescue Units',
             hotkey_hint:
                 'Vyberte kl\xe1vesov\xfa skratku na tento v\xfdber vozidla. Stla\u010dte pri okne svojej misie: ALT + v\xe1\u0161 kl\xe1ves (alebo vo Firefox: ALT + SHIFT + v\xe1\u0161 kl\xe1ves alebo v OS Mac: ctrl + alt + v\xe1\u0161 kl\xe1ves) a zvo\u013ete svoj v\xfdber vozidla.',
             intervention_order: 'Upravi\u0165 riadenie alarmov a reakci\xed',
@@ -25861,19 +29822,40 @@ function updateAAOsTime(e) {
                 ab_ruest: 'Modul tech./z\xe1chrany',
                 abl2wasser_only: 'Modul hadicov\xe9ho pr\xedvodu',
                 ambulance: 'Sanitn\xe9 vozidlo',
+                any_traffic_car: 'Any Traffic Car',
                 arff: '\u0160HA (\u0161peci\xe1lny hasi\u010dsk\xfd automobil)',
                 battalion_chief_unit: 'VEA',
+                bomb_disposal: 'EOD Response Vehicles',
+                bomb_disposal_command: 'EOD Commanders',
+                bomb_disposal_crew: 'EOD Response Vehicles',
+                bomb_disposal_diver_crew: 'Marine EOD Response Vehicles',
+                bomb_disposal_diver_equipment: 'Marine EOD Equipment Vans',
+                bomb_disposal_equipment: 'EOD Medium Equipment Vans',
+                bomb_disposal_equipment_2: 'EOD Heavy Equipment Vehicles',
+                bomb_disposal_heavy_equipment: 'EOD Heavy Equipment Vehicles',
                 boot: '\u010clny (v\u0161eobecn\xe9)',
+                car_carrier: 'Any Recovery Vehicle',
+                car_carrier_large: 'Any HGV Recovery Vehicle',
+                coastal_helicopter: 'Coastguard Rescue Helicopter',
+                coastal_rescue:
+                    'Coastal Rescue, Rope Rescue or Mud Rescue Vehicle',
+                coresponder: 'Co-Responder Vehicle',
+                crew_carrier: 'Crew Carrier',
                 division_chief_unit: 'Mobiln\xfd velite\u013esk\xfd automobil',
+                drone: 'Drone Equipment',
                 elw1_or_elw2:
                     'Velite\u013esk\xfd automobil, mobiln\xfd velite\u013esk\xfd automobil alebo mobiln\xfd velite\u013esk\xfd modul ',
+                elw2_or_ab_elw: 'ICCU / ACU',
                 emergency_ambulance:
                     'Sanitn\xe9 vozidlo alebo vrtu\u013en\xedk VZZS',
+                emergency_welfare: 'Any Crew Welfare Vehicle',
                 fire_truck: 'Hasi\u010dsk\xe9 automobily',
                 fireboat: 'Ve\u013ek\xfd hasi\u010dsk\xfd \u010dln',
+                flood_equipment: 'Flood Rescue',
                 fly_car: 'R\xfdchle v\xfdjazdov\xe9 vozidlo',
                 fly_car_any:
                     'R\xfdchle v\xfdjazdov\xe9 vozidlo / Lek\xe1rske vozidlo',
+                foam: 'Foam Tenders or RIV',
                 foam_amount: 'Litre penidla',
                 gkw: '\xda\u017eitkov\xe9 vozidlo',
                 grtw: '\xdarazov\xe9 oddelenie',
@@ -25881,28 +29863,40 @@ function updateAAOsTime(e) {
                 gw_hoehenrettung: 'GW-H\xf6henrettung',
                 gw_messtechnik: 'GW-Messtechnik',
                 gw_wasserrettung: 'Vozidlo vodnej z\xe1chrany',
+                gwl2wasser: 'Water Carrier or Major Foam Tender',
                 gwl2wasser_only: 'Automobilov\xe1 strieka\u010dka',
                 hems: 'Vrtu\u013en\xedk VZZS',
                 hlf_only: 'nula',
                 hlf_or_rw_and_lf: 'nula',
+                joint_response_unit: 'Joint Response Unit',
                 k9: 'Jednotka K-9',
                 kdow_orgl: 'Velite\u013esk\xe9 vozidlo',
+                kdow_orgl_any: 'OTL / Ambulance Officer',
                 ktw_or_rtw: 'ambulancia DZS alebo RZP',
                 lebefkw: 'Leichter Befehlskraftwagen (leBefKw)',
                 lf_only: 'Kombinovan\xe9 hasi\u010dsk\xe9 automobily',
                 long_distance_ambulance: 'Sanitn\xe9 vozidlo',
                 mask_service_unit: 'Auton\xf3mny d\xfdchac\xed pr\xedstroj',
+                mass_casualty_equipment:
+                    'Mass Casualty Equipment or Medical Equipment Trailer',
                 mtw: 'Automobil na prepravu hasi\u010dov',
                 mzb: 'Viac\xfa\u010delov\xfd \u010dln',
                 nef_only: 'Sanitn\xe9 vozidlo',
                 oil_unit: 'GW-\xd6l',
                 police_car: 'Hliadkov\xe9 vozidlo',
+                police_patrol_and_prisoner_transport: 'Cell Van',
+                police_prisoner_transport: 'Cell Van',
                 polizeihubschrauber: 'Policajn\xfd vrtu\u013en\xedk',
+                pump_speed: 'Pump Capacity',
+                pump_speed_pump_only: 'Pump Capacity - Only Pumps',
+                rescue_dogs: 'Rescue Dogs',
                 rescue_vehicle: 'AHZS 4',
                 rescue_vehicle_only: 'AHZS 4',
                 rescueboat: 'Ve\u013ek\xfd z\xe1chrann\xfd \u010dln',
                 rth_only: 'Vrtu\u013en\xedk VZZS',
                 schlauchwagen: 'KHA',
+                search_and_rescue: 'SAR Units',
+                search_and_rescue_command: 'Any Control Van',
                 swat: 'SWAT',
                 swat_armored_vehicle: 'Obrnen\xe9 vozidlo SWAT',
                 swat_suv: 'SUV SWAT',
@@ -25913,18 +29907,73 @@ function updateAAOsTime(e) {
                 tlf_only: 'Kombinovan\xfd hasi\u010dsk\xfd automobil',
                 turntable_ladder: 'AR',
                 water_amount: 'Litre vody',
+                water_damage_pump: 'Water Pumps',
             },
         },
         javascript: {
             alarm: 'Vysla\u0165',
+            alliance_event_pay_out_message:
+                'Complete all missions with your alliance to earn a bonus!',
+            alliance_event_resource: {
+                christmas: {
+                    currency: 'Event Tickets',
+                    event_start_mission:
+                        'Start Event: %{amount} Alliance Ticket',
+                },
+                easter: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                football: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                halloween: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                info_bubble_text:
+                    'This is a temporary event that is only available during our event! Encourage your alliance members to complete event missions in order to earn the tickets that are needed to start these events. See the alliance event page for more information.',
+                info_bubble_text_additional:
+                    ' You currently have %{amount} %{alliance_event_currency}!',
+                info_bubble_text_disabled:
+                    "The event can't be started anymore because the Easter event's end time is less than 3 hours away.",
+                stpatricks: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                summer: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                valentines: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                winter: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+            },
             arrival: 'Pr\xedchod',
             available_vehicles_count:
                 'M\xe1te k dispoz\xedcii vozidl\xe1 %{count}',
             backalarm: 'Zru\u0161i\u0165',
             coins: 'Mince',
+            collapse: 'Collapse',
             credits: 'Kredity',
+            current_reward_for_you:
+                '<b>Your current reward:</b> %{credits} Credits & %{event_currency} Event Credits',
             day: 'de\u0148',
             days: 'dn\xed',
+            donate_event_credits_hint:
+                'You will donate: <strong>%{event_credits} event credits</strong> (%{alliance_credits} alliance credits).',
+            event: {
+                alliance_missions_completed:
+                    '<b>Completed Missions:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Participated Missions:</b> %{completedMissions}',
+            },
             few_seconds: 'o nieko\u013eko sek\xfand',
             finish_in: 'Koniec:',
             foam_approaching: 'Na ceste %{amount} l.',
@@ -25944,18 +29993,35 @@ function updateAAOsTime(e) {
             mission_start_in: 'Za\u010diatok:',
             new: 'Nov\xfd',
             not_found_map: 'Vozidlo sa nena\u0161lo na mape',
+            not_qualified:
+                '<b>Not qualified:</b> Participate in a mission to earn the reward ',
             now: 'Teraz',
             patient: 'Pacient',
             patient_untouched: 'Nelie\u010den\xed pacienti',
+            payout_received:
+                '<b>Your have received:</b> %{credits} Credits & %{event_currency} Event Credits',
             poi_delete: 'Naozaj chcete vymaza\u0165 POI: %{caption}?',
+            pois: {
+                count_filtered: 'You have filtered %{count} POIs.',
+                count_total: 'You have %{count} POIs.',
+            },
+            pump_speed_approaching: 'Approaching: %{amount} l/min',
+            pump_speed_missing: 'Missing: %{amount} l/min',
+            pump_speed_on_site: 'On scene: %{amount} l/min',
             pump_speed_process: 'Proces po\u0161kodenia \u010derpadla vodou',
+            pump_speed_selected: 'Selected: %{amount} l/min',
+            qualified: '<b>Qualified:</b> You took part in the event',
             reload: 'Znovu na\u010d\xedta\u0165',
             sale: 'Preda\u0165',
             sale_ended: 'Predaj ukon\u010den\xfd',
             secounds: 'sek.',
+            select_amount_button: 'Select amount',
             select_amount_event_credits_hint:
                 'Vyberte po\u010det kreditov udalosti, ktor\xe9 chcete previes\u0165',
             selected_vehicles_count: 'Vybrali ste vozidl\xe1 %{count}',
+            show_all: 'Show All',
+            show_less: 'Show Less',
+            show_more: 'Show More',
             sicherheitswache_error:
                 'Ochrana "%{caption}" nebola \xfaspe\u0161n\xe1, preto\u017ee neboli splnen\xe9 v\u0161etky krit\xe9ri\xe1.',
             sicherheitswache_success:
@@ -25970,12 +30036,17 @@ function updateAAOsTime(e) {
             start_username: '\u0160tart\xe9r:',
             time_left: 'Zost\xe1vaj\xfaci \u010das:',
             to_building: 'Zobrazi\u0165 budovu',
+            to_event: 'Back to events',
             to_mission: 'Zobrazi\u0165 misiu',
+            total_credits_earned: '<b>Total credits earned:</b>',
+            total_event_currency_earned: '<b>Total event credits earned:</b>',
             understand: 'Potvrdi\u0165 pr\xedjem',
             update_mission_count:
                 'Aktu\xe1lne m\xf4\u017eete ma\u0165 vlastn\xe9 rozsahy misie %{current}/%{total}. S pr\xe9miov\xfdm predplatn\xfdm m\xf4\u017eete vytvori\u0165 vlastn\xfd rozsah misie pre ka\u017ed\xfd typ misie.',
             user_not_found: 'Hr\xe1\u010d sa nena\u0161iel.',
             vehicle_payload: {
+                apply_payload: 'Apply Payload',
+                change_payload: 'Change Payload',
                 hide_payload:
                     'Skry\u0165 u\u017eito\u010dn\xe9 za\u0165a\u017eenie',
                 show_payload:
@@ -25985,6 +30056,7 @@ function updateAAOsTime(e) {
             water_approaching: 'Na ceste %{amount} l',
             water_missing: 'Ch\xfdba %{amount} l',
             water_on_site: 'Na mieste %{amount} l',
+            water_process: 'Water needed',
             water_pumping_process: 'Potrebn\xe1 kapacita \u010derpadla',
             water_selected: 'Vybran\xe9 %{amount} l',
         },
@@ -25995,6 +30067,10 @@ function updateAAOsTime(e) {
                 'Moment\xe1lne m\xe1te zak\xe1zan\xfd alian\u010dn\xfd chat.',
             alliance_chat_banned_admin: 'Z\xe1kaz od:',
             alliance_chat_banned_timeleft: 'Zost\xe1vaj\xfaci \u010das:',
+            alliance_chat_destroy_alert:
+                'Do you really want to delete this message?',
+            alliance_chat_destroy_confirmation: 'This message has been deleted',
+            alliance_chat_manage_messages: 'Manage messages',
             alliance_chat_radio_off: 'Alian\u010dn\xe1 vysiela\u010dka: Vyp.',
             alliance_chat_radio_on: 'Alian\u010dn\xe1 vysiela\u010dka: Zap.',
             alliance_event: 'Udalos\u0165',
@@ -26031,19 +30107,25 @@ function updateAAOsTime(e) {
                 ambulance_station_missions: 'Stanica ZZS',
                 ambulance_station_small_missions:
                     'Stanica ZZS (mal\xe1 stanica)',
+                bomb_disposal_missions: 'Bomb Disposal HQ',
                 building_complex: 'V\xfdjazdov\xe9 centrum',
                 buildings_section: 'Stanice',
                 clinic_missions: 'Klinika',
+                coastal_rescue: 'Lifeboat Stations',
+                coastal_rescue_missions: 'SAR',
+                custody_suite: 'Custody Suite',
                 dispatch_center_missions: 'Dispe\u010dersk\xe9 centrum',
                 fire_school_missions: 'Hasi\u010dsk\xe1 akad\xe9mia',
                 firehouse_missions: 'Hasi\u010di',
                 firehouse_small_missions: 'Hasi\u010di (mal\xe1)',
+                general_practitioner: 'GP Surgery',
                 hospital_missions: 'Nemocnica',
                 map_filters: 'Zoznam filtrov mapy',
                 mission_positions: 'Body z\xe1ujmu (POI)',
                 mission_positions_section: 'POI',
                 missions_section: 'Misie',
                 police_copter_station_missions: 'Policajn\xe9 letectvo',
+                police_depot: 'Police Depot',
                 police_school_missions: 'Policajn\xe1 akad\xe9mia',
                 police_small_missions: 'Policajn\xe1 stanica (mal\xe1 stanica)',
                 police_special_forces:
@@ -26055,8 +30137,12 @@ function updateAAOsTime(e) {
                 riot_police: 'Poriadkov\xe1 pol\xedcia',
                 riot_police_missions: 'Poriadkov\xe1 pol\xedcia',
                 staging_area_missions: 'Sk\xfa\u0161obn\xe1 oblas\u0165',
+                technical_aid: 'Search and Rescue HQ',
+                technical_aid_missions: 'SAR',
                 technical_aid_organization: 'Organiz\xe1cia technickej pomoci',
                 technical_aid_organization_school: 'THW Bundesschule',
+                tow_trucks: 'Recovery Centers',
+                tow_trucks_missions: 'Recovery Vehicles',
                 user_buildings: 'Moje budovy',
                 user_missions: 'Moje misie',
                 water_watch: 'Vodn\xe1 z\xe1chrann\xe1 slu\u017eba',
@@ -26103,6 +30189,13 @@ function updateAAOsTime(e) {
                 unattended: 'Misie bez dozoru',
                 unattended_description: 'Misie bez dozoru',
             },
+            mission_range: {
+                premium_alert: {
+                    description:
+                        'You need to have a premium account for this feature.',
+                    title: 'Mission generation range could not be selected.',
+                },
+            },
             mission_speed: {
                 premium_alert: {
                     description:
@@ -26116,8 +30209,12 @@ function updateAAOsTime(e) {
             no_alliance_chat_impossible: 'Nie ste v aliancii.',
             no_alliance_missions:
                 'Moment\xe1lne nie s\xfa \u017eiadne misie aliancie.',
+            no_alliance_missions_join:
+                'Participating in alliance missions will reward you with Credits - no matter what type of vehicle you send. By joining an alliance you can do both, share your own missions to get help from experienced alliance members and participate in other\u2019s shared missions for extra rewards.',
             no_ambulance_missions:
                 'Zatia\u013e nem\xe1te \u017eiadne po\u017eiadavky na transport pacienta, objavia sa akon\xe1hle budete vlastni\u0165 stanicu ZZS a nemocnicu.',
+            no_critical_transport_missions:
+                'There are no Interfacility Transfers. They can only occur when you have a Critical Care Transfer Ambulance and 2 hospitals with patients in treatment.',
             no_emergency_missions:
                 'Moment\xe1lne nie s\xfa \u017eiadne n\xfadzov\xe9 misie. N\xfadzov\xe1 misia sa m\xf4\u017ee vyskytn\xfa\u0165 iba v pr\xedpade, \u017ee vybudujete prv\xfa stanicu.',
             no_radio_messages:
@@ -26149,6 +30246,22 @@ function updateAAOsTime(e) {
                 separator: ',',
                 significant: !1,
                 strip_insignificant_zeros: !1,
+            },
+        },
+        policechief: {
+            tutorial: {
+                beginner: {
+                    building: {
+                        browser: {
+                            welcome:
+                                'Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions.',
+                        },
+                        mobile: {
+                            welcome:
+                                'Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions.',
+                        },
+                    },
+                },
             },
         },
         tutorial: {
@@ -26184,6 +30297,103 @@ function updateAAOsTime(e) {
                         },
                         welcome:
                             'Vitajte v Dispe\u010dersk\xe9 centrum - Prihl\xe1si\u0165! Pr\xe1ca na dispe\u010dingu z\xe1chrannej slu\u017eby je spojen\xe1 s rie\u0161en\xedm ties\u0148ov\xfdch volan\xed s cie\u013eom pom\xf4c\u0165 a chr\xe1ni\u0165 verejnos\u0165. Za t\xfdmto \xfa\u010delom budujete stanice a vysielate nieko\u013eko typov vozidiel a vy\u0161kolen\xfdch pracovn\xedkov na r\xf4zne misie.',
+                    },
+                    tooltip: {
+                        ambulance_station: {
+                            helpshift_id: '1714',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station',
+                            short: 'Houses vehicles need for EMS-related missions. \nExtensions can be built, which unlocks purchasing of specialized units.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        ambulance_station_small: {
+                            helpshift_id: '1715',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station',
+                            short: 'Houses vehicles for EMS-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        clinic: {
+                            helpshift_id: '1719',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-clinic',
+                            short: 'Houses vehicles need for EMS-related missions.\nPatients can be transported here, however it is less specialized than the hospital.',
+                        },
+                        dispatch_center: {
+                            helpshift_id: '1497',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=gameplay&f=what-is-the-dispatch-center-good-for',
+                            short: 'Gives you an overview of all your buildings and allows you to group them in a dispatch area.',
+                        },
+                        firehouse: {
+                            helpshift_id: '1709',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions. \nExtensions can be built, which unlocks purchasing of specialized units. ',
+                        },
+                        firehouse_small: {
+                            helpshift_id: '1710',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        fireschool: {
+                            helpshift_id: '1711',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-academy',
+                            short: 'Allows for training firefighters to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        hazard_response_ems: {
+                            helpshift_id: '1736',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hart-base',
+                            short: 'Houses specialized EMS units that respond to Hazard-related missions. \nPersonell needs to be trained in order to operate these specialized units.',
+                        },
+                        home_response_location: {
+                            helpshift_id: '1665',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-home-response-location-hrl-uk-game-version',
+                            short: 'This building houses rescue workers which are on call.',
+                        },
+                        hospital: {
+                            helpshift_id: '1718',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hospital',
+                            short: 'For more severe conditions, patients can be transported here. \nAdditional credits can be earned with patients treated.',
+                        },
+                        police_copter_station: {
+                            helpshift_id: '1731',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-helicopter-station',
+                            short: 'Houses aircrafts for police-related missions.\nA helicopter needs to be purchased separately. ',
+                        },
+                        police_depot: {
+                            helpshift_id: '1741',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version',
+                            short: 'Houses specialist police units that are often stored in large police depots. \nYou can only build one of these per 50 police buildings. Prison cells are available in this building.',
+                        },
+                        police_school: {
+                            helpshift_id: '1724',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-academy',
+                            short: 'Allows for training police officers to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        police_small: {
+                            helpshift_id: '1723',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-police-station',
+                            short: 'Houses vehicles needed for police-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        police_station: {
+                            helpshift_id: '1722',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-station',
+                            short: 'Houses vehicles needed for police-related missions. \nExtensions can be built, which unlocks purchasing of specialized units ',
+                        },
+                        prison: {
+                            helpshift_id: '1734',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-prison',
+                            short: 'Prisoners can be transported here. \nA Prison can only be built with alliance funds.',
+                        },
+                        rescue_copter_station: {
+                            helpshift_id: '1720',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-helicopter-station',
+                            short: 'Houses helicopters for treatment of patients with very serious injuries. \nA helicopter needs to be purchased separately. ',
+                        },
+                        rescue_school: {
+                            helpshift_id: '1716',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-rescue-academy',
+                            short: 'Allows for training EMS personnel to perform advanced treatments and using specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        staging_area: {
+                            helpshift_id: '1732',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-staging-area',
+                            short: 'The staging area can be built for free and will remain for 24 hours. \nDuring this time, units can be temporarily stationed here and dispatched to a mission.',
+                        },
                     },
                 },
                 mission: {
@@ -26260,6 +30470,11 @@ function updateAAOsTime(e) {
                             link: 'https://xyrality.helpshift.com/hc/sk/23-mission-chief/faq/1885-how-do-critical-transport-missions-work/',
                             short: 'How do critical transport missions work?',
                         },
+                        radio: {
+                            helpshift_id: '1540',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles',
+                            short: 'The radio displays status updates of your vehicles. For more detailed information on each status click here.',
+                        },
                         summary:
                             'M\xf4\u017eete vst\xfapi\u0165 do aliancie a rie\u0161i\u0165 misie spolu s ostatn\xfdmi. Pravidelne sa konaj\xfa aj alian\u010dn\xe9 podujatia, na ktor\xfdch sa m\xf4\u017eu z\xfa\u010dastni\u0165 v\u0161etci \u010dlenovia!',
                     },
@@ -26278,6 +30493,10 @@ function updateAAOsTime(e) {
                         summary:
                             'M\xf4\u017eete vst\xfapi\u0165 do aliancie a rie\u0161i\u0165 misie spolu s ostatn\xfdmi. Pravidelne sa konaj\xfa aj alian\u010dn\xe9 podujatia, na ktor\xfdch sa m\xf4\u017eu z\xfa\u010dastni\u0165 v\u0161etci \u010dlenovia!',
                     },
+                    reminder: {
+                        join_alliance:
+                            'Joining an alliance has many benefits: extra rewards for completing alliance missions, support from experienced members for difficult missions and you can use facilities of other members like hospitals and schools! Press the button to join an alliance now!',
+                    },
                 },
             },
             commons: {
@@ -26294,6 +30513,549 @@ function updateAAOsTime(e) {
         },
     }),
     (I18n.translations.en = {
+        common: {
+            add: 'Add',
+            add_all: 'Add all',
+            all: 'All',
+            around: 'Around %{target}',
+            back: 'Back',
+            between: 'Between %{minimum} and %{maximum}',
+            cancel: 'Cancel',
+            change_saved: 'Changes saved',
+            click_for_more_info: 'Click here for more information.',
+            coins_spend: 'Do you really want to spend these coins?',
+            congratulations: 'Congratulations!',
+            content: 'Content',
+            copy: 'Copy',
+            credits: 'Credits',
+            credits_max: 'Max Credits',
+            credits_min: 'Min Credits',
+            custom_missions: 'Large Scale Alliance Mission',
+            delete: 'Delete',
+            description: 'Description',
+            details: 'Details',
+            edit: 'Edit',
+            error: 'Error',
+            filtered_count: 'Filtered: %{count}',
+            filters: 'Filters',
+            graphic_image: {
+                upload_requirements:
+                    'Supported formats: %{formats}. Image size cannot be bigger than: %{size}. Image should fit: %{dimensions}.',
+            },
+            is_offline: '%{user} is offline.',
+            is_offline_long: 'Long time: %{user} is offline',
+            is_offline_with_duration: '%{user} is offline: %{duration}',
+            is_online: '%{user} is online.',
+            load_next: 'Load more',
+            load_remaining: 'Load remaining',
+            loading: 'Loading...',
+            message_for_education:
+                'This person will not be dispatched with the vehicle because it is missing the necessary education!',
+            missions_per_page: '%{count} missions',
+            name: 'Name',
+            no: 'no',
+            none: 'None',
+            of: 'of',
+            off: 'Off',
+            on: 'On',
+            or: 'or',
+            person: {
+                missing_education_for_vehicle:
+                    'Personnel will only be dispatched with the vehicle if it has acquired the necessary education!',
+            },
+            release_at: 'Release in',
+            remove_all: 'Remove all',
+            save: 'Save',
+            search: 'Search',
+            show: 'Show',
+            sort: 'Sort:',
+            sort_by: {
+                credits: 'Credits',
+                default: 'Default',
+                mission_type: 'Mission Type',
+                name: 'Name',
+                poi: 'POI',
+                requirements: 'Requirements',
+            },
+            sorting: {
+                caption_asc: 'A to Z',
+                caption_desc: 'Z to A',
+                date_asc: 'Oldest',
+                date_desc: 'Newest',
+            },
+            time_in_minutes: 'Time in minutes',
+            total_count: 'Total: %{count}',
+            type: 'Type:',
+            user_not_found: 'User not found',
+            wrong_key: 'Wrong key',
+            yes: 'yes',
+        },
+        fms: {
+            going: 'Responding',
+            not_ready: 'Out of Service',
+            on_destination: 'At the transport destination',
+            on_place: 'On Scene',
+            patient_transported: 'Transporting Patient',
+            prisoner_transported: 'Transporting Prisoner',
+            ready_home: 'Available at Station',
+            ready_traveling: 'Clear and Available',
+            talking_wish: 'Transport Request',
+            transporting_car: 'Transporting Vehicle',
+            waiting_for_vehicle: 'Awaiting vehicle to tow',
+        },
+        intervention_order: {
+            assigns_equipment_automatically: 'Assigns Equipment Automatically',
+            assigns_equipment_automatically_hint:
+                'If active, the ARR can assign equipment to vehicles. Will choose the closest unit or equipment. <br><i>(Does not exclusively choose equipment and only affects ARRs marked with %{icon})</i>',
+            automatic_text_color: 'Automatic Text Color',
+            back: 'Back',
+            car_carrier: 'Recovery Vehicle or Flatbed Recovery Vehicle',
+            categories: {
+                tow_trucks: 'Recovery Vehicles',
+                water_rescue: 'Technical Rescue and SAR',
+            },
+            category: 'Category',
+            colour: 'Color',
+            column: 'Column',
+            column_number: 'Column number',
+            column_number_hint:
+                'If a column number is given, the Alarm and Response entry will be displayed in the corresponding column on the alert page.',
+            create_intervention_order:
+                'Create new Alarm and Response Regulation',
+            custom_type_captions: 'Select own categories to add:',
+            delete: 'Delete',
+            delete_all: 'Delete Alarm and Response Regulations completely',
+            delete_all_confirm:
+                'Are you sure you want to delete the whole alarm and response regulation? Existing exported entries are no longer available!',
+            description: 'Name',
+            edit: 'Edit',
+            export: {
+                export: 'Share',
+                import: 'Import',
+                import_done:
+                    'The selected entries have been imported and written to your Alarm and Response plan .',
+                saved: 'Share Alarm and Response Regulations',
+                saved_text:
+                    'Your Alarm and Response Regulation has been prepared for export. Via the link another player can import the Alarm and Response Regulation. If you change your Alarm and Response Regualtion in the meantime, this change will automatically be applied in the export.',
+            },
+            flood_equipment: 'Flood Rescue Units',
+            hotkey_hint:
+                'Choose a hotkey for this vehicle selection. Press at your window mission: ALT + your hotkey (or at Firefox: ALT + SHIFT + your hotkey or at mac os: ctrl + alt + your hotkey) to choose your vehicle selection.',
+            intervention_order: 'Edit Alarm and Response Regulations',
+            name: 'Name',
+            no_intervention_created:
+                "You haven't created any Alarm and Response Regulation yet.",
+            options: 'Options',
+            reset: 'Reset the previous selection in the alarm window.',
+            reset_hint:
+                'If you have selected the vehicle in the dispatch window, you can use this button to reset it.',
+            save: 'Save',
+            station: 'Station',
+            station_hint:
+                'When a building is selected, only vehicles of the corresponding building will be selected.',
+            successfully_created:
+                'Alarm and Response Regulation successfully created.',
+            successfully_deleted: 'Alarm and Response Regulation deleted',
+            successfully_updated:
+                'Alarm and Response Regulations successfully updated.',
+            text_color: 'Text Color',
+            vehicles: {
+                ab_atemschutz_only: 'BASU-Module',
+                ab_einsatzleitung_only: 'Command-Module',
+                ab_gefahrgut_only: 'HazMat-Module',
+                ab_oel_only: 'Oil spill-Module',
+                ab_ruest: 'Tech/Rescue-Module',
+                abl2wasser_only: 'Hose-Supply-Module',
+                ambulance: 'Ambulance',
+                any_traffic_car: 'Any Traffic Car',
+                arff: 'ARFF (Airport Fire Truck)',
+                battalion_chief_unit: 'Fire Officer',
+                bomb_disposal: 'EOD Response Vehicles',
+                bomb_disposal_command: 'EOD Commanders',
+                bomb_disposal_crew: 'EOD Response Vehicles',
+                bomb_disposal_diver_crew: 'Marine EOD Response Vehicles',
+                bomb_disposal_diver_equipment: 'Marine EOD Equipment Vans',
+                bomb_disposal_equipment: 'EOD Medium Equipment Vans',
+                bomb_disposal_equipment_2: 'EOD Heavy Equipment Vehicles',
+                bomb_disposal_heavy_equipment: 'EOD Heavy Equipment Vehicles',
+                boot: 'Boats (General)',
+                car_carrier: 'Any Recovery Vehicle',
+                car_carrier_large: 'Any HGV Recovery Vehicle',
+                coastal_helicopter: 'Coastguard Rescue Helicopter',
+                coastal_rescue:
+                    'Coastal Rescue, Rope Rescue or Mud Rescue Vehicle',
+                coresponder: 'Co-Responder Vehicle',
+                crew_carrier: 'Crew Carrier',
+                division_chief_unit: 'ICCU',
+                drone: 'Drone Equipment',
+                elw1_or_elw2: 'Fire Officer or ICCU',
+                elw2_or_ab_elw: 'ICCU / ACU',
+                emergency_ambulance: 'Emergency ambulance or Helicopter',
+                emergency_welfare: 'Any Crew Welfare Vehicle',
+                fire_truck: 'Fire engines',
+                fireboat: 'Large Fireboat',
+                flood_equipment: 'Flood Rescue',
+                fly_car: 'Rapid Response Vehicle / General Practitioner',
+                foam: 'Foam Tenders or RIV',
+                gkw: 'Utility Truck',
+                grtw: 'Mass Casualty Unit',
+                gw_gefahrgut: 'HazMat Unit or CBRN Vehicle',
+                gw_hoehenrettung: 'GW-H\xf6henrettung',
+                gw_messtechnik: 'GW-Messtechnik',
+                gw_wasserrettung: '4x4 Units',
+                gwl2wasser: 'Water Carrier or Major Foam Tender',
+                gwl2wasser_only: 'Hose Vehicle',
+                hems: 'HEMS',
+                hlf_only: 'Rescue Pump',
+                hlf_or_rw_and_lf:
+                    'Rescue Pump or Rescue Support Unit and Fire engine',
+                joint_response_unit: 'Joint Response Unit',
+                k9: 'Any Dog Carrier',
+                kdow_orgl: 'OTL',
+                kdow_orgl_any: 'OTL / Ambulance Officer',
+                lebefkw: 'Leichter Befehlskraftwagen (leBefKw)',
+                lf_only: 'Water Ladder or L4P',
+                long_distance_ambulance: 'BLS ambulance',
+                mask_service_unit: 'Breathing Apparatus Support Unit',
+                mass_casualty_equipment:
+                    'Mass Casualty Equipment or Medical Equipment Trailer',
+                mtw: 'MTW',
+                mzb: 'Multi-Purpose Boat',
+                nef_only: 'Ambulance',
+                oil_unit: 'GW-\xd6l',
+                police_car: 'Police car',
+                police_patrol_and_prisoner_transport: 'Cell Van',
+                police_prisoner_transport: 'Cell Van',
+                polizeihubschrauber: 'Police helicopter',
+                pump_speed: 'Pump Capacity',
+                pump_speed_pump_only: 'Pump Capacity - Only Pumps',
+                rescue_dogs: 'Rescue Dogs',
+                rescue_vehicle: 'Rescue Support Unit or Rescue Pump',
+                rescue_vehicle_only: 'Rescue Support Unit',
+                rescueboat: 'Large Rescue Boat',
+                rth_only: 'HEMS',
+                schlauchwagen: 'Water Carrier',
+                search_and_rescue: 'SAR Units',
+                search_and_rescue_command: 'Any Control Van',
+                swat: 'Armed Response Vehicle',
+                swat_suv: 'Armed Response Vehicle (ARV)',
+                thw_mtw:
+                    'Mannschaftstransportwagen Technischer Zug (MTW-TZ - THW)',
+                thw_mzkw: 'Mehrzweckkraftwagen (MzKW)',
+                thw_tauchkraftwagen: 'Dive Team',
+                tlf_only: 'Tanker Truck',
+                turntable_ladder: 'Aerial Appliance Truck',
+                water_damage_pump: 'Water Pumps',
+            },
+        },
+        javascript: {
+            alarm: 'Dispatch',
+            alliance_event_pay_out_message:
+                'Complete all missions with your alliance to earn a bonus!',
+            alliance_event_resource: {
+                christmas: {
+                    currency: 'Event Tickets',
+                    event_start_mission:
+                        'Start Event: %{amount} Alliance Ticket',
+                },
+                easter: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                football: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                halloween: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                info_bubble_text:
+                    'This is a temporary event that is only available during our event! Encourage your alliance members to complete event missions in order to earn the tickets that are needed to start these events. See the alliance event page for more information.',
+                info_bubble_text_additional:
+                    ' You currently have %{amount} %{alliance_event_currency}!',
+                info_bubble_text_disabled:
+                    "The event can't be started anymore because the Easter event's end time is less than 3 hours away.",
+                stpatricks: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                summer: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                valentines: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+                winter: {
+                    currency: 'Event Tickets',
+                    event_start_mission: 'Start Event: %{amount} Event Ticket',
+                },
+            },
+            arrival: 'Arrival',
+            available_vehicles_count: 'You have %{count} vehicles',
+            backalarm: 'Cancel',
+            coins: 'Coins',
+            collapse: 'Collapse',
+            credits: 'Credits',
+            current_reward_for_you:
+                '<b>Your current reward:</b> %{credits} Credits & %{event_currency} Event Credits',
+            day: 'day',
+            days: 'days',
+            donate_event_credits_hint:
+                'You will donate: <strong>%{event_credits} event credits</strong> (%{alliance_credits} alliance credits).',
+            event: {
+                alliance_missions_completed:
+                    '<b>Completed Missions:</b> %{completedMissionsByAlliance}/%{missionsInEvent}',
+                alliance_missions_participated:
+                    '<b>Participated Missions:</b> %{completedMissions}',
+            },
+            few_seconds: 'in few seconds',
+            finish_in: 'Finish in:',
+            foam_process: 'Foam Needed',
+            helpshift: {
+                confirm_close_bubble:
+                    'Do you really want to dismiss support chat? You can always reopen it from the help-menu',
+            },
+            hours: 'H',
+            location_not_found: 'Not found',
+            messages: 'Messages',
+            minutes: 'min.',
+            missed_vehicle: 'It lacks:',
+            mission_start_in: 'Starts in:',
+            new: 'New',
+            not_found_map: "The vehicle hasn't been found on the map",
+            not_qualified:
+                '<b>Not qualified:</b> Participate in a mission to earn the reward ',
+            now: 'Now',
+            patient: 'Patient',
+            patient_untouched: 'Untreated patients',
+            payout_received:
+                '<b>Your have received:</b> %{credits} Credits & %{event_currency} Event Credits',
+            poi_delete: 'Are you sure you want to delete the POI: %{caption}?',
+            pois: {
+                count_filtered: 'You have filtered %{count} POIs.',
+                count_total: 'You have %{count} POIs.',
+            },
+            pump_speed_approaching: 'Approaching: %{amount} l/min',
+            pump_speed_missing: 'Missing: %{amount} l/min',
+            pump_speed_on_site: 'On scene: %{amount} l/min',
+            pump_speed_process: 'Water Damage Pump Process',
+            pump_speed_selected: 'Selected: %{amount} l/min',
+            qualified: '<b>Qualified:</b> You took part in the event',
+            reload: 'Reload',
+            sale: 'Sale',
+            sale_ended: 'Sale ended',
+            secounds: 'sec.',
+            select_amount_button: 'Select amount',
+            select_amount_event_credits_hint:
+                'Select the amount of event credits you want to convert',
+            selected_vehicles_count: "You've selected %{count} vehicles",
+            show_all: 'Show All',
+            show_less: 'Show Less',
+            show_more: 'Show More',
+            sicherheitswache_error:
+                'The security guard "%{caption}" was not successful, because not all the criteria were met.',
+            sicherheitswache_success:
+                'The security guard "%{caption}" has been successfully carried out. Receive %{credits} Credits.',
+            start_alliance_mission_new: {
+                one: 'Start %{count} mission (%{price} Coins)',
+                other: 'Start %{count} missions (%{price} Coins)',
+            },
+            start_in: 'Start in: ',
+            start_username: 'Starter:',
+            time_left: 'Time left:',
+            to_building: 'View Building',
+            to_event: 'Back to events',
+            to_mission: 'View Mission',
+            total_credits_earned: '<b>Total credits earned:</b>',
+            total_event_currency_earned: '<b>Total event credits earned:</b>',
+            understand: 'Acknowledge',
+            update_mission_count:
+                'You currently have %{current}/%{total} custom mission ranges. With a premium subscription, you can make a custom mission range for every mission type available.',
+            user_not_found: 'The player was not found.',
+            vehicle_payload: {
+                apply_payload: 'Apply Payload',
+                change_payload: 'Change Payload',
+                hide_payload: 'Hide Payload',
+                show_payload: 'Show Payload',
+            },
+            vehicles_not_visible: 'Vehicles not visible. ',
+            water_process: 'Water needed',
+            water_pumping_process: 'Water pumping process',
+        },
+        map: {
+            alliance: 'Alliance',
+            alliance_chat: 'Chat',
+            alliance_chat_banned:
+                'You are currently banned from the alliance chat.',
+            alliance_chat_banned_admin: 'Banned by:',
+            alliance_chat_banned_timeleft: 'Time remaining:',
+            alliance_chat_destroy_alert:
+                'Do you really want to delete this message?',
+            alliance_chat_destroy_confirmation: 'This message has been deleted',
+            alliance_chat_manage_messages: 'Manage messages',
+            alliance_chat_radio_off: 'Alliance Radio: Off',
+            alliance_chat_radio_on: 'Alliance Radio: On',
+            alliance_event: 'Event',
+            alliance_missions: 'Alliance Missions',
+            alliance_missions_event: 'Event',
+            alliance_missions_post_loading: 'Alliance Missions are loading...',
+            ambulance: 'Patient transports',
+            anti_abuse_active_link: 'Click here for more information.',
+            anti_abuse_active_text:
+                'Missions will be generated within an extended radius of 100km, since too many stations of the same type are built too close to each other.',
+            cancel_alliance_event: 'Cancel alliance event',
+            cancel_alliance_event_confirm:
+                'Do you really want to cancel the alliance event?',
+            chat_history: 'Chat History',
+            congratulations: 'Congratulations! You can now be promoted.',
+            create_alliance_event: 'Start alliance event',
+            create_alliance_operation: 'Create a large scale alliance mission',
+            emergency: 'Emergency',
+            join_alliance_infos:
+                'If you are in an alliance, other players can freely give you missions.',
+            legacy_client_notice:
+                'ONLY iOS & ANDROID USERS:<br>\nIf you are using the legacy app or an old version, please make sure to update to our updated app version. The old versions might cause problems in the future with core functions and logins.<br>\nAndroid:\xa0%{google_store_link} <br>iOS:\xa0%{ios_store_link}',
+            map: 'Map',
+            map_filters: {
+                all_buildings: 'Buildings',
+                all_missions: 'Missions',
+                alliance_buildings: 'Alliance Buildings',
+                alliance_members: 'Members',
+                alliance_missions: 'Shared by Alliance',
+                ambulance_station_missions: 'Ambulance Station',
+                ambulance_station_small_missions:
+                    'Ambulance station (Small station)',
+                bomb_disposal_missions: 'Bomb Disposal HQ',
+                building_complex: 'Building Complex',
+                buildings_section: 'Stations',
+                clinic_missions: 'Urgent Treatment Center',
+                coastal_rescue: 'Lifeboat Stations',
+                coastal_rescue_missions: 'SAR',
+                custody_suite: 'Custody Suite',
+                dispatch_center_missions: 'Dispatch Center',
+                fire_school_missions: 'Fire Academy',
+                firehouse_missions: 'Fire Station',
+                firehouse_small_missions: 'Fire Station (Small)',
+                general_practitioner: 'GP Surgery',
+                hospital_missions: 'Hospital',
+                map_filters: 'Points of Interest (POIs)',
+                mission_positions: 'Points of Interest (POIs)',
+                mission_positions_section: 'POIs',
+                missions_section: 'Missions',
+                police_copter_station_missions: 'Police Aviation',
+                police_depot: 'Police Depot',
+                police_school_missions: 'Police training centre',
+                police_small_missions: 'Police Station (Small station)',
+                police_special_forces: 'Police special forces',
+                police_station_missions: 'Police Station',
+                prison_missions: 'Prison',
+                rapid_deployment_group: 'Rapid Setup Group (SEG)',
+                rescue_copter_station_missions: 'Medical Helicopter Station',
+                riot_police: 'Riot Police',
+                riot_police_missions: 'Riot Police',
+                staging_area_missions: 'Staging Area',
+                technical_aid: 'Search and Rescue HQ',
+                technical_aid_missions: 'SAR',
+                technical_aid_organization: 'THW',
+                technical_aid_organization_school: 'THW Bundesschule',
+                tow_trucks: 'Recovery Centers',
+                tow_trucks_missions: 'Recovery Vehicles',
+                user_buildings: 'My buildings',
+                user_missions: 'My missions',
+                water_watch: 'Water Rescue',
+                water_watch_missions: 'Water Rescue',
+            },
+            message: 'Message',
+            mission: 'Missions',
+            mission_filters: {
+                alliance_missions: 'Alliance Missions',
+                alliance_missions_event: 'Event',
+                alliance_shared_missions: 'Shared by Alliance',
+                ambulance: 'Patient transports',
+                attended: 'Attended Missions',
+                attended_description: 'Attended, Not all conditions fulfilled',
+                dropdown_collapsed_description:
+                    'Menu containing mission filters - closed',
+                dropdown_open_description:
+                    'Menu containing mission filters - open',
+                emergency: 'Emergency',
+                finishing: 'Missions in progress',
+                finishing_description:
+                    'Missions in Progress, All conditions fulfilled',
+                new: 'New Missions',
+                new_description: 'New Missions that have not been opened yet',
+                showing: 'Showing:',
+                sicherheitswache: 'Planned Appearances',
+                sorting: {
+                    age_asc: 'Oldest (Shared)',
+                    age_desc: 'Newest (Shared)',
+                    caption_asc: 'A to Z',
+                    caption_desc: 'Z to A',
+                    created_at_asc: 'Oldest',
+                    created_at_desc: 'Newest',
+                    credits_asc: 'Min Credits',
+                    credits_desc: 'Max Credits',
+                    patients_desc: 'Patients',
+                    prisoners_desc: 'Prisoners',
+                },
+                started: 'Started Missions',
+                started_description:
+                    'Missions that have been started, but not completed',
+                unattended: 'Unattended Missions',
+                unattended_description: 'Unattended Missions',
+            },
+            mission_range: {
+                premium_alert: {
+                    description:
+                        'You need to have a premium account for this feature.',
+                    title: 'Mission generation range could not be selected.',
+                },
+            },
+            mission_speed: {
+                premium_alert: {
+                    description:
+                        'You need to have a premium account for this feature.',
+                    title: 'Mission speed could not be selected',
+                },
+            },
+            missions_filtered_out:
+                'Some missions might be filtered out. Please, check your map filters.',
+            missions_post_loading: 'Missions are loading...',
+            no_alliance_chat_impossible:
+                'The Chat is a great way to link up with other more experienced players.\xa0They can both answer your questions and help you by giving you access to buildings like Hospitals and Schools',
+            no_alliance_missions: 'There are currently no alliance missions.',
+            no_alliance_missions_join:
+                'Participating in alliance missions will reward you with Credits - no matter what type of vehicle you send. By joining an alliance you can do both, share your own missions to get help from experienced alliance members and participate in other\u2019s shared missions for extra rewards.',
+            no_ambulance_missions:
+                'There are no patient transports. Patient transports can only occur when you have an ambulance and a hospital.',
+            no_critical_transport_missions:
+                'There are no Interfacility Transfers. They can only occur when you have a Critical Care Transfer Ambulance and 2 hospitals with patients in treatment.',
+            no_emergency_missions:
+                'There are no emergency missions available. An emergency mission can occur after you made your first station.',
+            no_radio_messages: "You didn't receive any radio messages.",
+            post_loading_error:
+                'Something went wrong! Please try again and press the reload button.',
+            radio_messages: 'Radio',
+            restore_map: 'Restore Map',
+            retry: 'Reload',
+            server_warning:
+                'Server maintenance at 11 pm. 6h downtime expected.',
+            show_informations:
+                "Green = The missions are shown in the list. Red = The missions aren't shown.",
+            sicherheitswache: 'Planned Appearances',
+            sorting_default: 'Default',
+            sorting_label: 'Sort by:',
+            transport: 'Transport',
+        },
+        mission: {
+            needed_other: 'We are missing',
+            needed_personnel: 'Missing Personnel',
+            needed_vehicles: 'Missing Vehicles',
+            type: { alert: 'Dispatch' },
+        },
         number: {
             format: {
                 delimiter: ',',
@@ -26302,6 +31064,270 @@ function updateAAOsTime(e) {
                 significant: !1,
                 strip_insignificant_zeros: !1,
             },
+        },
+        policechief: {
+            tutorial: {
+                beginner: {
+                    building: {
+                        browser: {
+                            welcome:
+                                'Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions.',
+                        },
+                        mobile: {
+                            welcome:
+                                'Welcome to Police Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions.',
+                        },
+                    },
+                },
+            },
+        },
+        tutorial: {
+            beginner: {
+                building: {
+                    browser: {
+                        build_building: {
+                            add_name:
+                                'Choose a name for your station. You can rename it later.',
+                            build_with_credits:
+                                'To build a station you need credits, the currency of the game. You can earn credits through missions, daily logins, tasks and events.',
+                            new_building:
+                                'Start the building process of your station.',
+                            select_building:
+                                'Decide if you want to build a fire station or a police station. In the beginning small stations are sufficient. You can upgrade them to normal stations later.',
+                            select_position:
+                                'Move the location marker to the location where you want the station to be.',
+                        },
+                        pick_location:
+                            'Pick a location where you want to build your first station.',
+                        welcome:
+                            'Welcome to Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions.',
+                    },
+                    mobile: {
+                        build_building: {
+                            add_name:
+                                'Choose a name for your station. You can rename it later.',
+                            build_with_credits:
+                                'To build a station you need credits, the currency of the game. You can earn credits through missions, daily logins, tasks and events.',
+                            new_building:
+                                'Begin with building your first station. You can choose its location by entering it manually or by moving the location marker on the map. Depending on your operating system, you might have to hold the marker for a while before you can move it.',
+                            select_building:
+                                'Decide if you want to build a fire station or a police station. In the beginning small stations are sufficient. You can upgrade them to normal stations later.',
+                        },
+                        welcome:
+                            'Welcome to Mission Chief! Working in a dispatch centre for emergency services you deal with emergency calls to help and protect the public. In order to so, you build stations and send out several types of vehicles and trained personnel to various missions.',
+                    },
+                    tooltip: {
+                        ambulance_station: {
+                            helpshift_id: '1714',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-an-ambulance-station',
+                            short: 'Houses vehicles need for EMS-related missions. \nExtensions can be built, which unlocks purchasing of specialized units.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        ambulance_station_small: {
+                            helpshift_id: '1715',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-ambulance-station',
+                            short: 'Houses vehicles for EMS-related missions. \nOnly one extensions can be built, however it can be upgraded to a regular station.\nAccess to a hospital or clinic is needed to complete most missions. ',
+                        },
+                        clinic: {
+                            helpshift_id: '1719',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-clinic',
+                            short: 'Houses vehicles need for EMS-related missions.\nPatients can be transported here, however it is less specialized than the hospital.',
+                        },
+                        dispatch_center: {
+                            helpshift_id: '1497',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=gameplay&f=what-is-the-dispatch-center-good-for',
+                            short: 'Gives you an overview of all your buildings and allows you to group them in a dispatch area.',
+                        },
+                        firehouse: {
+                            helpshift_id: '1709',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions. \nExtensions can be built, which unlocks purchasing of specialized units. ',
+                        },
+                        firehouse_small: {
+                            helpshift_id: '1710',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-station',
+                            short: 'Houses vehicles needed for fire-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        fireschool: {
+                            helpshift_id: '1711',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-fire-academy',
+                            short: 'Allows for training firefighters to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        hazard_response_ems: {
+                            helpshift_id: '1736',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hart-base',
+                            short: 'Houses specialized EMS units that respond to Hazard-related missions. \nPersonell needs to be trained in order to operate these specialized units.',
+                        },
+                        home_response_location: {
+                            helpshift_id: '1665',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-home-response-location-hrl-uk-game-version',
+                            short: 'This building houses rescue workers which are on call.',
+                        },
+                        hospital: {
+                            helpshift_id: '1718',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-hospital',
+                            short: 'For more severe conditions, patients can be transported here. \nAdditional credits can be earned with patients treated.',
+                        },
+                        police_copter_station: {
+                            helpshift_id: '1731',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-helicopter-station',
+                            short: 'Houses aircrafts for police-related missions.\nA helicopter needs to be purchased separately. ',
+                        },
+                        police_depot: {
+                            helpshift_id: '1741',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&l=en&s=buildings&f=what-is-the-large-police-depot-uk-version',
+                            short: 'Houses specialist police units that are often stored in large police depots. \nYou can only build one of these per 50 police buildings. Prison cells are available in this building.',
+                        },
+                        police_school: {
+                            helpshift_id: '1724',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-academy',
+                            short: 'Allows for training police officers to operate specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        police_small: {
+                            helpshift_id: '1723',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-small-police-station',
+                            short: 'Houses vehicles needed for police-related missions.\nOnly one extension can be built, however it can be upgraded to a regular station.',
+                        },
+                        police_station: {
+                            helpshift_id: '1722',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-police-station',
+                            short: 'Houses vehicles needed for police-related missions. \nExtensions can be built, which unlocks purchasing of specialized units ',
+                        },
+                        prison: {
+                            helpshift_id: '1734',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-prison',
+                            short: 'Prisoners can be transported here. \nA Prison can only be built with alliance funds.',
+                        },
+                        rescue_copter_station: {
+                            helpshift_id: '1720',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-helicopter-station',
+                            short: 'Houses helicopters for treatment of patients with very serious injuries. \nA helicopter needs to be purchased separately. ',
+                        },
+                        rescue_school: {
+                            helpshift_id: '1716',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-rescue-academy',
+                            short: 'Allows for training EMS personnel to perform advanced treatments and using specialized vehicles.\nSpecialized vehicles are occasionally needed in missions. ',
+                        },
+                        staging_area: {
+                            helpshift_id: '1732',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?p=all&s=buildings&f=what-is-a-staging-area',
+                            short: 'The staging area can be built for free and will remain for 24 hours. \nDuring this time, units can be temporarily stationed here and dispatched to a mission.',
+                        },
+                    },
+                },
+                mission: {
+                    detail: {
+                        browser: {
+                            dispatch_menu:
+                                'This is the dispatch window. Here you can send vehicles on missions.',
+                            dispatch_menu_buttons:
+                                'Send a vehicle to a mission by clicking the dispatch button. As soon as you have more missions you can use the button next to it to additionaly go to the next mission.',
+                            dispatch_menu_mission_general:
+                                'Here you can find general information about the mission. As long as you are not involved in the mission, <span class="glyphicon glyphicon-asterisk"></span> is displayed in front of the mission name, <span class="glyphicon glyphicon-user"></span> as soon as you have sent the first vehicle.',
+                            dispatch_menu_mission_progress:
+                                'Here you can see the progress of the mission. As soon as personnel is on site, they get displayed here and you can see how much time is still needed for completing the mission.',
+                            dispatch_menu_mission_specific:
+                                'Here you can see which vehicles are on their way to or at the mission. The number in front of a vehicle indicates its deployment status.',
+                            dispatch_menu_vehicle_list:
+                                'Here you can see all vehicles available for the mission. Select a vehicle by clicking on the check box next to it.',
+                        },
+                        mobile: {
+                            dispatch_menu:
+                                'This is the dispatch window. Here you can send vehicles on missions.',
+                            dispatch_menu_buttons:
+                                'Send a vehicle to a mission by clicking the dispatch button. As soon as you have more missions you can use the button next to it to additionaly go to the next mission.',
+                            dispatch_menu_mission_general:
+                                'Here you can find general information about the mission. As long as you are not involved in the mission, <span class="glyphicon glyphicon-asterisk"></span> is displayed in front of the mission name, <span class="glyphicon glyphicon-user"></span> as soon as you have sent the first vehicle.',
+                            dispatch_menu_mission_progress:
+                                'Here you can see the progress of the mission. As soon as personnel is on site, they get displayed here and you can see how much time is still needed for completing the mission.',
+                            dispatch_menu_mission_specific:
+                                'Here you can see which vehicles are on their way to or at the mission. The number in front of a vehicle indicates its deployment status.',
+                            dispatch_menu_vehicle_list:
+                                'Here you can see all vehicles available for the mission. Select a vehicle by clicking on the check box next to it.',
+                        },
+                    },
+                    overview: {
+                        browser: {
+                            dispatch_button:
+                                'Attend to the mission by first clicking on the "Dispatch" button.',
+                            first_mission:
+                                'Your first building is ready. You also received your first mission!',
+                        },
+                        mobile: {
+                            dispatch_button:
+                                'Attend to the mission by first clicking on the "Dispatch" button.',
+                            first_mission:
+                                'Your first building is ready. You also received your first mission!',
+                        },
+                    },
+                },
+                rewards: {
+                    browser: {
+                        general:
+                            'You are now ready to start taking care of missions on your own. To help you get started with your missions and expansion, you receive %{coins} coins. Good luck!',
+                    },
+                    mobile: {
+                        general:
+                            'You are now ready to start taking care of missions on your own. To help you get started with your missions and expansion, you receive %{coins} coins. Good luck!',
+                    },
+                },
+                tips: {
+                    browser: {
+                        contact:
+                            'If you upgrade your stations, you get space for new vehicles.',
+                        general:
+                            'You will receive credits for finishing a mission. By earning credits you get closer to a promotion.',
+                        join_alliance:
+                            'Promotions and building stations unlock new features like mission types or vehicles.',
+                        no_ambulance_missions: {
+                            helpshift_id: '1884',
+                            link: 'https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1884-how-do-patient-transport-missions-work/',
+                            short: 'How do patient transport missions work?',
+                        },
+                        no_critical_transport_missions: {
+                            helpshift_id: '1885',
+                            link: 'https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1885-how-do-critical-transport-missions-work/',
+                            short: 'How do critical transport missions work?',
+                        },
+                        radio: {
+                            helpshift_id: '1540',
+                            link: 'https://xyrality.helpshift.com/a/mission-chief/?s=gameplay&f=what-are-the-small-numbers-in-the-colored-boxes-next-to-the-vehicles',
+                            short: 'The radio displays status updates of your vehicles. For more detailed information on each status click here.',
+                        },
+                        summary:
+                            'You can join an alliance to solve missions together with others. There are also regular alliance events in which all members can participate!',
+                    },
+                    daily_bonus: {
+                        helpshift_id: '1829',
+                        link: 'https://xyrality.helpshift.com/hc/en/23-mission-chief/faq/1829-what-is-the-daily-login-bonus/',
+                        short: 'What is the Daily login bonus?',
+                    },
+                    mobile: {
+                        contact:
+                            'If you upgrade your stations, you get space for new vehicles.',
+                        general:
+                            'You will receive credits for finishing a mission. By earning credits you get closer to a promotion.',
+                        join_alliance:
+                            'Promotions and building stations unlock new features like mission types or vehicles.',
+                        summary:
+                            'You can join an alliance to solve missions together with others. There are also regular alliance events in which all members can participate!',
+                    },
+                    reminder: {
+                        join_alliance:
+                            'Joining an alliance has many benefits: extra rewards for completing alliance missions, support from experienced members for difficult missions and you can use facilities of other members like hospitals and schools! Press the button to join an alliance now!',
+                    },
+                },
+            },
+            commons: {
+                collect: 'Collect',
+                continue: 'No',
+                end: 'End',
+                next: 'Next',
+                prev: 'Prev',
+                skip: 'Yes',
+                skip_hint:
+                    "Do you really want to cancel the tutorial? It can't be accessed at any later time. You will not be eligible for the tutorial completion reward.",
+            },
+            rewards: { log: 'Reward for finishing the tutorial.' },
         },
     }),
     /*!
@@ -26331,7 +31357,7 @@ function updateAAOsTime(e) {
             );
         }
         function n(e) {
-            var t = (ze[e] = {});
+            var t = (Te[e] = {});
             return (
                 de.each(e.match(he) || [], function (e, i) {
                     t[i] = !0;
@@ -26395,7 +31421,7 @@ function updateAAOsTime(e) {
         }
         function a(e, i, n) {
             if (n === t && 1 === e.nodeType) {
-                var s = 'data-' + i.replace(Se, '-$1').toLowerCase();
+                var s = 'data-' + i.replace(ze, '-$1').toLowerCase();
                 if ('string' == typeof (n = e.getAttribute(s))) {
                     try {
                         n =
@@ -26403,7 +31429,7 @@ function updateAAOsTime(e) {
                             ('false' !== n &&
                                 ('null' === n ? null
                                 : +n + '' === n ? +n
-                                : Te.test(n) ? de.parseJSON(n)
+                                : Se.test(n) ? de.parseJSON(n)
                                 : n));
                     } catch (e) {}
                     de.data(e, i, n);
@@ -26445,7 +31471,7 @@ function updateAAOsTime(e) {
                     return (e === t) !== i;
                 });
             if ('string' == typeof t) {
-                if (He.test(t)) return de.filter(t, e, i);
+                if ($e.test(t)) return de.filter(t, e, i);
                 t = de.filter(t, e);
             }
             return de.grep(e, function (e) {
@@ -26529,9 +31555,9 @@ function updateAAOsTime(e) {
                 s,
                 o = 0,
                 a =
-                    typeof e.getElementsByTagName !== K ?
+                    typeof e.getElementsByTagName !== G ?
                         e.getElementsByTagName(i || '*')
-                    : typeof e.querySelectorAll !== K ?
+                    : typeof e.querySelectorAll !== G ?
                         e.querySelectorAll(i || '*')
                     :   t;
             if (!a)
@@ -26586,11 +31612,11 @@ function updateAAOsTime(e) {
                         (n.style.display = t ? o[a] || '' : 'none'));
             return e;
         }
-        function z(e, t, i) {
+        function T(e, t, i) {
             var n = ft.exec(t);
             return n ? Math.max(0, n[1] - (i || 0)) + (n[2] || 'px') : t;
         }
-        function T(e, t, i, n, s) {
+        function S(e, t, i, n, s) {
             for (
                 var o =
                         i === (n ? 'border' : 'content') ? 4
@@ -26616,7 +31642,7 @@ function updateAAOsTime(e) {
                             ))));
             return a;
         }
-        function S(e, t, i) {
+        function z(e, t, i) {
             var n = !0,
                 s = 'width' === t ? e.offsetWidth : e.offsetHeight,
                 o = ct(e),
@@ -26632,7 +31658,7 @@ function updateAAOsTime(e) {
                 ((n = a && (de.support.boxSizingReliable || s === e.style[t])),
                     (s = parseFloat(s) || 0));
             }
-            return s + T(e, t, i || (a ? 'border' : 'content'), n, o) + 'px';
+            return s + S(e, t, i || (a ? 'border' : 'content'), n, o) + 'px';
         }
         function A(e) {
             var t = Y,
@@ -26665,7 +31691,7 @@ function updateAAOsTime(e) {
             var s;
             if (de.isArray(t))
                 de.each(t, function (t, s) {
-                    i || zt.test(e) ?
+                    i || Tt.test(e) ?
                         n(e, s)
                     :   M(
                             e + '[' + ('object' == typeof s ? t : '') + ']',
@@ -26677,7 +31703,7 @@ function updateAAOsTime(e) {
             else if (i || 'object' !== de.type(t)) n(e, t);
             else for (s in t) M(e + '[' + s + ']', t[s], i, n);
         }
-        function I(e) {
+        function P(e) {
             return function (t, i) {
                 'string' != typeof t && ((i = t), (t = '*'));
                 var n,
@@ -26691,7 +31717,7 @@ function updateAAOsTime(e) {
                         :   (e[n] = e[n] || []).push(i);
             };
         }
-        function P(e, t, i, n) {
+        function I(e, t, i, n) {
             function s(r) {
                 var l;
                 return (
@@ -26709,17 +31735,17 @@ function updateAAOsTime(e) {
                 );
             }
             var o = {},
-                a = e === Ht;
+                a = e === $t;
             return s(t.dataTypes[0]) || (!o['*'] && s('*'));
         }
-        function j(e, i) {
+        function D(e, i) {
             var n,
                 s,
                 o = de.ajaxSettings.flatOptions || {};
             for (s in i) i[s] !== t && ((o[s] ? e : n || (n = {}))[s] = i[s]);
             return (n && de.extend(!0, e, n), e);
         }
-        function D(e, i, n) {
+        function j(e, i, n) {
             for (var s, o, a, r, l = e.contents, c = e.dataTypes; '*' === c[0];)
                 (c.shift(),
                     o === t &&
@@ -26744,7 +31770,7 @@ function updateAAOsTime(e) {
             }
             if (a) return (a !== c[0] && c.unshift(a), n[a]);
         }
-        function L(e, t, i, n) {
+        function R(e, t, i, n) {
             var s,
                 o,
                 a,
@@ -26803,7 +31829,7 @@ function updateAAOsTime(e) {
                 return new e.XMLHttpRequest();
             } catch (e) {}
         }
-        function N() {
+        function L() {
             try {
                 return new e.ActiveXObject('Microsoft.XMLHTTP');
             } catch (e) {}
@@ -26816,7 +31842,7 @@ function updateAAOsTime(e) {
                 (Yt = de.now())
             );
         }
-        function R(e, t, i) {
+        function N(e, t, i) {
             for (
                 var n, s = (ii[t] || []).concat(ii['*']), o = 0, a = s.length;
                 o < a;
@@ -26824,7 +31850,7 @@ function updateAAOsTime(e) {
             )
                 if ((n = s[o].call(i, t, e))) return n;
         }
-        function $(e, t, i) {
+        function H(e, t, i) {
             var n,
                 s,
                 o = 0,
@@ -26885,7 +31911,7 @@ function updateAAOsTime(e) {
             for (F(d, c.opts.specialEasing); o < a; o++)
                 if ((n = ti[o].call(c, e, d, c.opts))) return n;
             return (
-                de.map(d, R, c),
+                de.map(d, N, c),
                 de.isFunction(c.opts.start) && c.opts.start.call(e, c),
                 de.fx.timer(
                     de.extend(l, { elem: e, anim: c, queue: c.opts.queue })
@@ -26911,7 +31937,7 @@ function updateAAOsTime(e) {
                         i in e || ((e[i] = o[i]), (t[i] = s));
                 else t[n] = s;
         }
-        function H(e, t, i) {
+        function $(e, t, i) {
             var n,
                 s,
                 o,
@@ -26982,7 +32008,7 @@ function updateAAOsTime(e) {
                         de.style(e, t, d[t]);
                 }),
                 d))
-                    ((a = R(h ? p[n] : 0, n, c)),
+                    ((a = N(h ? p[n] : 0, n, c)),
                         n in p ||
                             ((p[n] = a.start),
                             h &&
@@ -26993,7 +32019,7 @@ function updateAAOsTime(e) {
         function V(e, t, i, n, s) {
             return new V.prototype.init(e, t, i, n, s);
         }
-        function W(e, t) {
+        function q(e, t) {
             var i,
                 n = { height: e },
                 s = 0;
@@ -27001,15 +32027,15 @@ function updateAAOsTime(e) {
                 n['margin' + (i = kt[s])] = n['padding' + i] = e;
             return (t && (n.opacity = n.width = e), n);
         }
-        function q(e) {
+        function W(e) {
             return de.isWindow(e) ? e : (
                     9 === e.nodeType && (e.defaultView || e.parentWindow)
                 );
         }
         var U,
             Z,
-            K = typeof t,
-            G = e.location,
+            G = typeof t,
+            K = e.location,
             Y = e.document,
             J = Y.documentElement,
             Q = e.jQuery,
@@ -27554,7 +32580,7 @@ function updateAAOsTime(e) {
                 function i(e, t, i, n) {
                     var s, o, a, r, l, c, d, u, h, p;
                     if (
-                        ((t ? t.ownerDocument || t : W) !== O && L(t),
+                        ((t ? t.ownerDocument || t : q) !== O && R(t),
                         (i = i || []),
                         !e || 'string' != typeof e)
                     )
@@ -27573,7 +32599,7 @@ function updateAAOsTime(e) {
                                 } else if (
                                     t.ownerDocument &&
                                     (o = t.ownerDocument.getElementById(a)) &&
-                                    H(t, o) &&
+                                    $(t, o) &&
                                     o.id === a
                                 )
                                     return (i.push(o), i);
@@ -27585,7 +32611,7 @@ function updateAAOsTime(e) {
                                     );
                                 if (
                                     (a = s[3]) &&
-                                    S.getElementsByClassName &&
+                                    z.getElementsByClassName &&
                                     t.getElementsByClassName
                                 )
                                     return (
@@ -27596,7 +32622,7 @@ function updateAAOsTime(e) {
                                         i
                                     );
                             }
-                        if (S.qsa && (!R || !R.test(e))) {
+                        if (z.qsa && (!N || !N.test(e))) {
                             if (
                                 ((u = d = V),
                                 (h = t),
@@ -27607,7 +32633,7 @@ function updateAAOsTime(e) {
                                 for (
                                     c = _(e),
                                         (d = t.getAttribute('id')) ?
-                                            (u = d.replace(Te, '\\$&'))
+                                            (u = d.replace(Se, '\\$&'))
                                         :   t.setAttribute('id', u),
                                         u = "[id='" + u + "'] ",
                                         l = c.length;
@@ -27733,7 +32759,7 @@ function updateAAOsTime(e) {
                         r,
                         l,
                         c,
-                        d = K[e + ' '];
+                        d = G[e + ' '];
                     if (d) return t ? 0 : d.slice(0);
                     for (r = e, l = [], c = E.preFilter; r;) {
                         for (a in ((n && !(s = _e.exec(r))) ||
@@ -27755,7 +32781,7 @@ function updateAAOsTime(e) {
                     return (
                         t ? r.length
                         : r ? i.error(e)
-                        : K(e, l).slice(0)
+                        : G(e, l).slice(0)
                     );
                 }
                 function f(e) {
@@ -27777,7 +32803,7 @@ function updateAAOsTime(e) {
                                 var r,
                                     l,
                                     c,
-                                    d = q + ' ' + o;
+                                    d = W + ' ' + o;
                                 if (a) {
                                     for (; (t = t[n]);)
                                         if (
@@ -27896,7 +32922,7 @@ function updateAAOsTime(e) {
                             d = [
                                 function (e, i, n) {
                                     return (
-                                        (!o && (n || i !== j)) ||
+                                        (!o && (n || i !== D)) ||
                                         ((t = i).nodeType ?
                                             l(e, i, n)
                                         :   c(e, i, n))
@@ -27955,7 +32981,7 @@ function updateAAOsTime(e) {
                                 f = '0',
                                 g = o && [],
                                 v = null != d,
-                                y = j,
+                                y = D,
                                 w =
                                     o ||
                                     (a &&
@@ -27963,9 +32989,9 @@ function updateAAOsTime(e) {
                                             '*',
                                             (d && r.parentNode) || r
                                         )),
-                                k = (q += null == y ? 1 : Math.random() || 0.1);
+                                k = (W += null == y ? 1 : Math.random() || 0.1);
                             for (
-                                v && ((j = r !== O && r), (A = n));
+                                v && ((D = r !== O && r), (A = n));
                                 null != (u = w[f]);
                                 f++
                             ) {
@@ -27975,7 +33001,7 @@ function updateAAOsTime(e) {
                                             c.push(u);
                                             break;
                                         }
-                                    v && ((q = k), (A = ++n));
+                                    v && ((W = k), (A = ++n));
                                 }
                                 s && ((u = !p && u) && _--, o && g.push(u));
                             }
@@ -27994,7 +33020,7 @@ function updateAAOsTime(e) {
                                         _ + t.length > 1 &&
                                         i.uniqueSort(c));
                             }
-                            return (v && ((q = k), (j = y)), g);
+                            return (v && ((W = k), (D = y)), g);
                         };
                     return s ? o(r) : r;
                 }
@@ -28013,14 +33039,14 @@ function updateAAOsTime(e) {
                         if (
                             (o = c[0] = c[0].slice(0)).length > 2 &&
                             'ID' === (a = o[0]).type &&
-                            S.getById &&
+                            z.getById &&
                             9 === t.nodeType &&
                             B &&
                             E.relative[o[1].type]
                         ) {
                             if (
                                 !(t = (E.find.ID(
-                                    a.matches[0].replace(Se, Ae),
+                                    a.matches[0].replace(ze, Ae),
                                     t
                                 ) || [])[0])
                             )
@@ -28034,7 +33060,7 @@ function updateAAOsTime(e) {
                             if (
                                 (l = E.find[r]) &&
                                 (n = l(
-                                    a.matches[0].replace(Se, Ae),
+                                    a.matches[0].replace(ze, Ae),
                                     (ge.test(o[0].type) && t.parentNode) || t
                                 ))
                             ) {
@@ -28043,33 +33069,33 @@ function updateAAOsTime(e) {
                                 break;
                             }
                     }
-                    return (P(e, c)(n, t, !B, i, ge.test(e)), i);
+                    return (I(e, c)(n, t, !B, i, ge.test(e)), i);
                 }
-                function z() {}
-                var T,
-                    S,
+                function T() {}
+                var S,
+                    z,
                     A,
                     E,
                     M,
-                    I,
                     P,
-                    j,
+                    I,
                     D,
-                    L,
-                    O,
-                    N,
-                    B,
+                    j,
                     R,
-                    $,
-                    F,
+                    O,
+                    L,
+                    B,
+                    N,
                     H,
+                    F,
+                    $,
                     V = 'sizzle' + -new Date(),
-                    W = e.document,
-                    q = 0,
+                    q = e.document,
+                    W = 0,
                     U = 0,
                     Z = s(),
-                    K = s(),
                     G = s(),
+                    K = s(),
                     Y = !1,
                     J = function () {
                         return 0;
@@ -28162,9 +33188,9 @@ function updateAAOsTime(e) {
                     ke = /^[^{]+\{\s*\[native \w/,
                     xe = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,
                     Ce = /^(?:input|select|textarea|button)$/i,
-                    ze = /^h\d$/i,
-                    Te = /'|\\/g,
-                    Se = new RegExp(
+                    Te = /^h\d$/i,
+                    Se = /'|\\/g,
+                    ze = new RegExp(
                         '\\\\([\\da-f]{1,6}' + le + '?|(' + le + ')|.)',
                         'ig'
                     ),
@@ -28180,8 +33206,8 @@ function updateAAOsTime(e) {
                         );
                     };
                 try {
-                    (se.apply((te = oe.call(W.childNodes)), W.childNodes),
-                        te[W.childNodes.length].nodeType);
+                    (se.apply((te = oe.call(q.childNodes)), q.childNodes),
+                        te[q.childNodes.length].nodeType);
                 } catch (e) {
                     se = {
                         apply:
@@ -28198,22 +33224,22 @@ function updateAAOsTime(e) {
                                 },
                     };
                 }
-                for (T in ((I = i.isXML =
+                for (S in ((P = i.isXML =
                     function (e) {
                         var t = e && (e.ownerDocument || e).documentElement;
                         return !!t && 'HTML' !== t.nodeName;
                     }),
-                (S = i.support = {}),
-                (L = i.setDocument =
+                (z = i.support = {}),
+                (R = i.setDocument =
                     function (e) {
-                        var t = e ? e.ownerDocument || e : W;
+                        var t = e ? e.ownerDocument || e : q;
                         return (
                                 t !== O && 9 === t.nodeType && t.documentElement
                             ) ?
                                 ((O = t),
-                                (N = t.documentElement),
-                                (B = !I(t)),
-                                (S.attributes = a(function (e) {
+                                (L = t.documentElement),
+                                (B = !P(t)),
+                                (z.attributes = a(function (e) {
                                     return (
                                         (e.innerHTML = "<a href='#'></a>"),
                                         r(
@@ -28233,7 +33259,7 @@ function updateAAOsTime(e) {
                                         !e.getAttribute('className')
                                     );
                                 })),
-                                (S.input = a(function (e) {
+                                (z.input = a(function (e) {
                                     return (
                                         (e.innerHTML = '<input>'),
                                         e.firstChild.setAttribute('value', ''),
@@ -28241,14 +33267,14 @@ function updateAAOsTime(e) {
                                             e.firstChild.getAttribute('value')
                                     );
                                 })),
-                                r('value', d, S.attributes && S.input),
-                                (S.getElementsByTagName = a(function (e) {
+                                r('value', d, z.attributes && z.input),
+                                (z.getElementsByTagName = a(function (e) {
                                     return (
                                         e.appendChild(t.createComment('')),
                                         !e.getElementsByTagName('*').length
                                     );
                                 })),
-                                (S.getElementsByClassName = a(function (e) {
+                                (z.getElementsByClassName = a(function (e) {
                                     return (
                                         (e.innerHTML =
                                             "<div class='a'></div><div class='a i'></div>"),
@@ -28257,14 +33283,14 @@ function updateAAOsTime(e) {
                                             e.getElementsByClassName('i').length
                                     );
                                 })),
-                                (S.getById = a(function (e) {
+                                (z.getById = a(function (e) {
                                     return (
-                                        (N.appendChild(e).id = V),
+                                        (L.appendChild(e).id = V),
                                         !t.getElementsByName ||
                                             !t.getElementsByName(V).length
                                     );
                                 })),
-                                S.getById ?
+                                z.getById ?
                                     ((E.find.ID = function (e, t) {
                                         if (
                                             typeof t.getElementById !== Q &&
@@ -28275,14 +33301,14 @@ function updateAAOsTime(e) {
                                         }
                                     }),
                                     (E.filter.ID = function (e) {
-                                        var t = e.replace(Se, Ae);
+                                        var t = e.replace(ze, Ae);
                                         return function (e) {
                                             return e.getAttribute('id') === t;
                                         };
                                     }))
                                 :   (delete E.find.ID,
                                     (E.filter.ID = function (e) {
-                                        var t = e.replace(Se, Ae);
+                                        var t = e.replace(ze, Ae);
                                         return function (e) {
                                             var i =
                                                 typeof e.getAttributeNode !==
@@ -28292,7 +33318,7 @@ function updateAAOsTime(e) {
                                         };
                                     })),
                                 (E.find.TAG =
-                                    S.getElementsByTagName ?
+                                    z.getElementsByTagName ?
                                         function (e, t) {
                                             if (
                                                 typeof t.getElementsByTagName !==
@@ -28316,7 +33342,7 @@ function updateAAOsTime(e) {
                                             return o;
                                         }),
                                 (E.find.CLASS =
-                                    S.getElementsByClassName &&
+                                    z.getElementsByClassName &&
                                     function (e, t) {
                                         if (
                                             typeof t.getElementsByClassName !==
@@ -28325,15 +33351,15 @@ function updateAAOsTime(e) {
                                         )
                                             return t.getElementsByClassName(e);
                                     }),
-                                ($ = []),
-                                (R = []),
-                                (S.qsa = n(t.querySelectorAll)) &&
+                                (H = []),
+                                (N = []),
+                                (z.qsa = n(t.querySelectorAll)) &&
                                     (a(function (e) {
                                         ((e.innerHTML =
                                             "<select><option selected=''></option></select>"),
                                             e.querySelectorAll('[selected]')
                                                 .length ||
-                                                R.push(
+                                                N.push(
                                                     '\\[' +
                                                         le +
                                                         '*(?:value|' +
@@ -28341,7 +33367,7 @@ function updateAAOsTime(e) {
                                                         ')'
                                                 ),
                                             e.querySelectorAll(':checked')
-                                                .length || R.push(':checked'));
+                                                .length || N.push(':checked'));
                                     }),
                                     a(function (e) {
                                         var i = t.createElement('input');
@@ -28351,36 +33377,36 @@ function updateAAOsTime(e) {
                                                 .setAttribute('t', ''),
                                             e.querySelectorAll("[t^='']")
                                                 .length &&
-                                                R.push(
+                                                N.push(
                                                     '[*^$]=' +
                                                         le +
                                                         '*(?:\'\'|"")'
                                                 ),
                                             e.querySelectorAll(':enabled')
                                                 .length ||
-                                                R.push(':enabled', ':disabled'),
+                                                N.push(':enabled', ':disabled'),
                                             e.querySelectorAll('*,:x'),
-                                            R.push(',.*:'));
+                                            N.push(',.*:'));
                                     })),
-                                (S.matchesSelector = n(
+                                (z.matchesSelector = n(
                                     (F =
-                                        N.webkitMatchesSelector ||
-                                        N.mozMatchesSelector ||
-                                        N.oMatchesSelector ||
-                                        N.msMatchesSelector)
+                                        L.webkitMatchesSelector ||
+                                        L.mozMatchesSelector ||
+                                        L.oMatchesSelector ||
+                                        L.msMatchesSelector)
                                 )) &&
                                     a(function (e) {
-                                        ((S.disconnectedMatch = F.call(
+                                        ((z.disconnectedMatch = F.call(
                                             e,
                                             'div'
                                         )),
                                             F.call(e, "[s!='']:x"),
-                                            $.push('!=', pe));
+                                            H.push('!=', pe));
                                     }),
-                                (R = R.length && new RegExp(R.join('|'))),
-                                ($ = $.length && new RegExp($.join('|'))),
-                                (H =
-                                    n(N.contains) || N.compareDocumentPosition ?
+                                (N = N.length && new RegExp(N.join('|'))),
+                                (H = H.length && new RegExp(H.join('|'))),
+                                ($ =
+                                    n(L.contains) || L.compareDocumentPosition ?
                                         function (e, t) {
                                             var i =
                                                     9 === e.nodeType ?
@@ -28408,7 +33434,7 @@ function updateAAOsTime(e) {
                                                     if (t === e) return !0;
                                             return !1;
                                         }),
-                                (S.sortDetached = a(function (e) {
+                                (z.sortDetached = a(function (e) {
                                     return (
                                         1 &
                                         e.compareDocumentPosition(
@@ -28417,7 +33443,7 @@ function updateAAOsTime(e) {
                                     );
                                 })),
                                 (J =
-                                    N.compareDocumentPosition ?
+                                    L.compareDocumentPosition ?
                                         function (e, i) {
                                             if (e === i) return ((Y = !0), 0);
                                             var n =
@@ -28428,16 +33454,16 @@ function updateAAOsTime(e) {
                                                 n ?
                                                     (
                                                         1 & n ||
-                                                        (!S.sortDetached &&
+                                                        (!z.sortDetached &&
                                                             i.compareDocumentPosition(
                                                                 e
                                                             ) === n)
                                                     ) ?
-                                                        e === t || H(W, e) ? -1
-                                                        : i === t || H(W, i) ? 1
-                                                        : D ?
-                                                            ae.call(D, e) -
-                                                            ae.call(D, i)
+                                                        e === t || $(q, e) ? -1
+                                                        : i === t || $(q, i) ? 1
+                                                        : j ?
+                                                            ae.call(j, e) -
+                                                            ae.call(j, i)
                                                         :   0
                                                     : 4 & n ? -1
                                                     : 1
@@ -28459,9 +33485,9 @@ function updateAAOsTime(e) {
                                                     : i === t ? 1
                                                     : o ? -1
                                                     : a ? 1
-                                                    : D ?
-                                                        ae.call(D, e) -
-                                                        ae.call(D, i)
+                                                    : j ?
+                                                        ae.call(j, e) -
+                                                        ae.call(j, i)
                                                     :   0
                                                 );
                                             if (o === a) return u(e, i);
@@ -28472,8 +33498,8 @@ function updateAAOsTime(e) {
                                             for (; r[s] === l[s];) s++;
                                             return (
                                                 s ? u(r[s], l[s])
-                                                : r[s] === W ? -1
-                                                : l[s] === W ? 1
+                                                : r[s] === q ? -1
+                                                : l[s] === q ? 1
                                                 : 0
                                             );
                                         }),
@@ -28485,18 +33511,18 @@ function updateAAOsTime(e) {
                 }),
                 (i.matchesSelector = function (e, t) {
                     if (
-                        ((e.ownerDocument || e) !== O && L(e),
+                        ((e.ownerDocument || e) !== O && R(e),
                         (t = t.replace(ve, "='$1']")),
-                        S.matchesSelector &&
+                        z.matchesSelector &&
                             B &&
-                            (!$ || !$.test(t)) &&
-                            (!R || !R.test(t)))
+                            (!H || !H.test(t)) &&
+                            (!N || !N.test(t)))
                     )
                         try {
                             var n = F.call(e, t);
                             if (
                                 n ||
-                                S.disconnectedMatch ||
+                                z.disconnectedMatch ||
                                 (e.document && 11 !== e.document.nodeType)
                             )
                                 return n;
@@ -28504,10 +33530,10 @@ function updateAAOsTime(e) {
                     return i(t, O, null, [e]).length > 0;
                 }),
                 (i.contains = function (e, t) {
-                    return ((e.ownerDocument || e) !== O && L(e), H(e, t));
+                    return ((e.ownerDocument || e) !== O && R(e), $(e, t));
                 }),
                 (i.attr = function (e, i) {
-                    (e.ownerDocument || e) !== O && L(e);
+                    (e.ownerDocument || e) !== O && R(e);
                     var n = E.attrHandle[i.toLowerCase()],
                         s =
                             n && ee.call(E.attrHandle, i.toLowerCase()) ?
@@ -28515,7 +33541,7 @@ function updateAAOsTime(e) {
                             :   t;
                     return (
                         s === t ?
-                            S.attributes || !B ? e.getAttribute(i)
+                            z.attributes || !B ? e.getAttribute(i)
                             : (s = e.getAttributeNode(i)) && s.specified ?
                                 s.value
                             :   null
@@ -28533,8 +33559,8 @@ function updateAAOsTime(e) {
                         n = 0,
                         s = 0;
                     if (
-                        ((Y = !S.detectDuplicates),
-                        (D = !S.sortStable && e.slice(0)),
+                        ((Y = !z.detectDuplicates),
+                        (j = !z.sortStable && e.slice(0)),
                         e.sort(J),
                         Y)
                     ) {
@@ -28575,9 +33601,9 @@ function updateAAOsTime(e) {
                         preFilter: {
                             ATTR: function (e) {
                                 return (
-                                    (e[1] = e[1].replace(Se, Ae)),
+                                    (e[1] = e[1].replace(ze, Ae)),
                                     (e[3] = (e[4] || e[5] || '').replace(
-                                        Se,
+                                        ze,
                                         Ae
                                     )),
                                     '~=' === e[2] && (e[3] = ' ' + e[3] + ' '),
@@ -28621,7 +33647,7 @@ function updateAAOsTime(e) {
                         },
                         filter: {
                             TAG: function (e) {
-                                var t = e.replace(Se, Ae).toLowerCase();
+                                var t = e.replace(ze, Ae).toLowerCase();
                                 return '*' === e ?
                                         function () {
                                             return !0;
@@ -28743,9 +33769,9 @@ function updateAAOsTime(e) {
                                                                         {}))[
                                                                     e
                                                                 ] || [])[0] ===
-                                                                q && c[1],
+                                                                W && c[1],
                                                             h =
-                                                                c[0] === q &&
+                                                                c[0] === W &&
                                                                 c[2],
                                                             u =
                                                                 p &&
@@ -28762,7 +33788,7 @@ function updateAAOsTime(e) {
                                                             ++h &&
                                                             u === t
                                                         ) {
-                                                            d[e] = [q, p, h];
+                                                            d[e] = [W, p, h];
                                                             break;
                                                         }
                                                 } else if (
@@ -28770,7 +33796,7 @@ function updateAAOsTime(e) {
                                                     (c = (t[V] || (t[V] = {}))[
                                                         e
                                                     ]) &&
-                                                    c[0] === q
+                                                    c[0] === W
                                                 )
                                                     h = c[1];
                                                 else
@@ -28792,7 +33818,7 @@ function updateAAOsTime(e) {
                                                                     (u[V] =
                                                                         {}))[
                                                                     e
-                                                                ] = [q, h]),
+                                                                ] = [W, h]),
                                                             u !== t));
                                                     );
                                                 return (
@@ -28838,7 +33864,7 @@ function updateAAOsTime(e) {
                             not: o(function (e) {
                                 var t = [],
                                     i = [],
-                                    n = P(e.replace(me, '$1'));
+                                    n = I(e.replace(me, '$1'));
                                 return n[V] ?
                                         o(function (e, t, i, s) {
                                             for (
@@ -28878,7 +33904,7 @@ function updateAAOsTime(e) {
                                 return (
                                     ye.test(e || '') ||
                                         i.error('unsupported lang: ' + e),
-                                    (e = e.replace(Se, Ae).toLowerCase()),
+                                    (e = e.replace(ze, Ae).toLowerCase()),
                                     function (t) {
                                         var i;
                                         do {
@@ -28909,7 +33935,7 @@ function updateAAOsTime(e) {
                                 return i && i.slice(1) === t.id;
                             },
                             root: function (e) {
-                                return e === N;
+                                return e === L;
                             },
                             focus: function (e) {
                                 return (
@@ -28951,7 +33977,7 @@ function updateAAOsTime(e) {
                                 return !E.pseudos.empty(e);
                             },
                             header: function (e) {
-                                return ze.test(e.nodeName);
+                                return Te.test(e.nodeName);
                             },
                             input: function (e) {
                                 return Ce.test(e.nodeName);
@@ -29002,28 +34028,28 @@ function updateAAOsTime(e) {
                         },
                     }),
                 { radio: !0, checkbox: !0, file: !0, password: !0, image: !0 }))
-                    E.pseudos[T] = h(T);
-                for (T in { submit: !0, reset: !0 }) E.pseudos[T] = p(T);
-                ((P = i.compile =
+                    E.pseudos[S] = h(S);
+                for (S in { submit: !0, reset: !0 }) E.pseudos[S] = p(S);
+                ((I = i.compile =
                     function (e, t) {
                         var i,
                             n = [],
                             s = [],
-                            o = G[e + ' '];
+                            o = K[e + ' '];
                         if (!o) {
                             for (t || (t = _(e)), i = t.length; i--;)
                                 (o = w(t[i]))[V] ? n.push(o) : s.push(o);
-                            o = G(e, k(s, n));
+                            o = K(e, k(s, n));
                         }
                         return o;
                     }),
                     (E.pseudos.nth = E.pseudos.eq),
-                    (z.prototype = E.filters = E.pseudos),
-                    (E.setFilters = new z()),
-                    (S.sortStable = V.split('').sort(J).join('') === V),
-                    L(),
+                    (T.prototype = E.filters = E.pseudos),
+                    (E.setFilters = new T()),
+                    (z.sortStable = V.split('').sort(J).join('') === V),
+                    R(),
                     [0, 0].sort(J),
-                    (S.detectDuplicates = Y),
+                    (z.detectDuplicates = Y),
                     (de.find = i),
                     (de.expr = i.selectors),
                     (de.expr[':'] = de.expr.pseudos),
@@ -29032,9 +34058,9 @@ function updateAAOsTime(e) {
                     (de.isXMLDoc = i.isXML),
                     (de.contains = i.contains));
             })(e));
-        var ze = {};
+        var Te = {};
         ((de.Callbacks = function (e) {
-            e = 'string' == typeof e ? ze[e] || n(e) : de.extend({}, e);
+            e = 'string' == typeof e ? Te[e] || n(e) : de.extend({}, e);
             var i,
                 s,
                 o,
@@ -29396,7 +34422,7 @@ function updateAAOsTime(e) {
                                     (e.getComputedStyle(n, null) || {})
                                         .marginRight
                                 ))),
-                            typeof u.style.zoom !== K &&
+                            typeof u.style.zoom !== G &&
                                 ((u.innerHTML = ''),
                                 (u.style.cssText =
                                     o +
@@ -29415,8 +34441,8 @@ function updateAAOsTime(e) {
                     t
                 );
             })({})));
-        var Te = /(?:\{[\s\S]*\}|\[[\s\S]*\])$/,
-            Se = /([A-Z])/g;
+        var Se = /(?:\{[\s\S]*\}|\[[\s\S]*\])$/,
+            ze = /([A-Z])/g;
         (de.extend({
             cache: {},
             noData: {
@@ -29592,11 +34618,11 @@ function updateAAOsTime(e) {
         var Ae,
             Ee,
             Me = /[\t\r\n\f]/g,
-            Ie = /\r/g,
-            Pe = /^(?:input|select|textarea|button|object)$/i,
-            je = /^(?:a|area)$/i,
-            De = /^(?:checked|selected)$/i,
-            Le = de.support.getSetAttribute,
+            Pe = /\r/g,
+            Ie = /^(?:input|select|textarea|button|object)$/i,
+            De = /^(?:a|area)$/i,
+            je = /^(?:checked|selected)$/i,
+            Re = de.support.getSetAttribute,
             Oe = de.support.input;
         (de.fn.extend({
             attr: function (e, t) {
@@ -29700,7 +34726,7 @@ function updateAAOsTime(e) {
                                     ((r = n ? r : !a.hasClass(s)),
                                         a[r ? 'addClass' : 'removeClass'](s));
                             else
-                                (i !== K && 'boolean' !== i) ||
+                                (i !== G && 'boolean' !== i) ||
                                     (this.className &&
                                         de._data(
                                             this,
@@ -29763,7 +34789,7 @@ function updateAAOsTime(e) {
                             (i = n.get(o, 'value')) !== t
                         ) ?
                             i
-                        : 'string' == typeof (i = o.value) ? i.replace(Ie, '')
+                        : 'string' == typeof (i = o.value) ? i.replace(Pe, '')
                         : null == i ? ''
                         : i
                     :   void 0
@@ -29829,7 +34855,7 @@ function updateAAOsTime(e) {
                         o,
                         a = e.nodeType;
                     if (e && 3 !== a && 8 !== a && 2 !== a)
-                        return typeof e.getAttribute === K ?
+                        return typeof e.getAttribute === G ?
                                 de.prop(e, i, n)
                             :   ((1 === a && de.isXMLDoc(e)) ||
                                     ((i = i.toLowerCase()),
@@ -29866,14 +34892,14 @@ function updateAAOsTime(e) {
                         for (; (i = o[s++]);)
                             ((n = de.propFix[i] || i),
                                 de.expr.match.bool.test(i) ?
-                                    (Oe && Le) || !De.test(i) ?
+                                    (Oe && Re) || !je.test(i) ?
                                         (e[n] = !1)
                                     :   (e[de.camelCase('default-' + i)] = e[
                                             n
                                         ] =
                                             !1)
                                 :   de.attr(e, i, ''),
-                                e.removeAttribute(Le ? i : n));
+                                e.removeAttribute(Re ? i : n));
                 },
                 attrHooks: {
                     type: {
@@ -29918,8 +34944,8 @@ function updateAAOsTime(e) {
                             return (
                                 t ? parseInt(t, 10)
                                 : (
-                                    Pe.test(e.nodeName) ||
-                                    (je.test(e.nodeName) && e.href)
+                                    Ie.test(e.nodeName) ||
+                                    (De.test(e.nodeName) && e.href)
                                 ) ?
                                     0
                                 :   -1
@@ -29932,8 +34958,8 @@ function updateAAOsTime(e) {
                 set: function (e, t, i) {
                     return (
                         !1 === t ? de.removeAttr(e, i)
-                        : (Oe && Le) || !De.test(i) ?
-                            e.setAttribute((!Le && de.propFix[i]) || i, i)
+                        : (Oe && Re) || !je.test(i) ?
+                            e.setAttribute((!Re && de.propFix[i]) || i, i)
                         :   (e[de.camelCase('default-' + i)] = e[i] = !0),
                         i
                     );
@@ -29942,7 +34968,7 @@ function updateAAOsTime(e) {
             de.each(de.expr.match.bool.source.match(/\w+/g), function (e, i) {
                 var n = de.expr.attrHandle[i] || de.find.attr;
                 de.expr.attrHandle[i] =
-                    (Oe && Le) || !De.test(i) ?
+                    (Oe && Re) || !je.test(i) ?
                         function (e, i, s) {
                             var o = de.expr.attrHandle[i],
                                 a =
@@ -29964,7 +34990,7 @@ function updateAAOsTime(e) {
                             );
                         };
             }),
-            (Oe && Le) ||
+            (Oe && Re) ||
                 (de.attrHooks.value = {
                     set: function (e, t, i) {
                         if (!de.nodeName(e, 'input'))
@@ -29972,7 +34998,7 @@ function updateAAOsTime(e) {
                         e.defaultValue = t;
                     },
                 }),
-            Le ||
+            Re ||
                 ((Ae = {
                     set: function (e, i, n) {
                         var s = e.getAttributeNode(n);
@@ -30082,10 +35108,10 @@ function updateAAOsTime(e) {
                                 :   e.value;
                         }));
             }));
-        var Ne = /^(?:input|select|textarea)$/i,
+        var Le = /^(?:input|select|textarea)$/i,
             Be = /^key/,
-            Re = /^(?:mouse|contextmenu)|click/,
-            $e = /^(?:focusinfocus|focusoutblur)$/,
+            Ne = /^(?:mouse|contextmenu)|click/,
+            He = /^(?:focusinfocus|focusoutblur)$/,
             Fe = /^([^.]*)(?:\.(.+)|)$/;
         ((de.event = {
             global: {},
@@ -30111,7 +35137,7 @@ function updateAAOsTime(e) {
                                 ((u = g.handle =
                                     function (e) {
                                         return (
-                                                typeof de === K ||
+                                                typeof de === G ||
                                                     (e &&
                                                         de.event.triggered ===
                                                             e.type)
@@ -30242,7 +35268,7 @@ function updateAAOsTime(e) {
                     ((l = u = s = s || Y),
                     3 !== s.nodeType &&
                         8 !== s.nodeType &&
-                        !$e.test(m + de.event.triggered) &&
+                        !He.test(m + de.event.triggered) &&
                         (m.indexOf('.') >= 0 &&
                             ((_ = m.split('.')), (m = _.shift()), _.sort()),
                         (r = m.indexOf(':') < 0 && 'on' + m),
@@ -30271,7 +35297,7 @@ function updateAAOsTime(e) {
                     if (!o && !d.noBubble && !de.isWindow(s)) {
                         for (
                             c = d.delegateType || m,
-                                $e.test(c + m) || (l = l.parentNode);
+                                He.test(c + m) || (l = l.parentNode);
                             l;
                             l = l.parentNode
                         )
@@ -30390,7 +35416,7 @@ function updateAAOsTime(e) {
                 for (
                     a ||
                         (this.fixHooks[s] = a =
-                            Re.test(s) ? this.mouseHooks
+                            Ne.test(s) ? this.mouseHooks
                                 : Be.test(s) ? this.keyHooks
                                 : {}),
                         n = a.props ? this.props.concat(a.props) : this.props,
@@ -30526,7 +35552,7 @@ function updateAAOsTime(e) {
                 :   function (e, t, i) {
                         var n = 'on' + t;
                         e.detachEvent &&
-                            (typeof e[n] === K && (e[n] = null),
+                            (typeof e[n] === G && (e[n] = null),
                             e.detachEvent(n, i));
                     }),
             (de.Event = function (e, t) {
@@ -30642,7 +35668,7 @@ function updateAAOsTime(e) {
             de.support.changeBubbles ||
                 (de.event.special.change = {
                     setup: function () {
-                        if (Ne.test(this.nodeName))
+                        if (Le.test(this.nodeName))
                             return (
                                 ('checkbox' !== this.type &&
                                     'radio' !== this.type) ||
@@ -30677,7 +35703,7 @@ function updateAAOsTime(e) {
                             'beforeactivate._change',
                             function (e) {
                                 var t = e.target;
-                                Ne.test(t.nodeName) &&
+                                Le.test(t.nodeName) &&
                                     !de._data(t, 'changeBubbles') &&
                                     (de.event.add(
                                         t,
@@ -30711,7 +35737,7 @@ function updateAAOsTime(e) {
                     teardown: function () {
                         return (
                             de.event.remove(this, '._change'),
-                            !Ne.test(this.nodeName)
+                            !Le.test(this.nodeName)
                         );
                     },
                 }),
@@ -30811,10 +35837,10 @@ function updateAAOsTime(e) {
                     if (i) return de.event.trigger(e, t, i, !0);
                 },
             }));
-        var He = /^.[^:#\[\.,]*$/,
+        var $e = /^.[^:#\[\.,]*$/,
             Ve = /^(?:parents|prev(?:Until|All))/,
-            We = de.expr.match.needsContext,
-            qe = { children: !0, contents: !0, next: !0, prev: !0 };
+            qe = de.expr.match.needsContext,
+            We = { children: !0, contents: !0, next: !0, prev: !0 };
         (de.fn.extend({
             find: function (e) {
                 var t,
@@ -30853,7 +35879,7 @@ function updateAAOsTime(e) {
             is: function (e) {
                 return !!h(
                     this,
-                    'string' == typeof e && We.test(e) ? de(e) : e || [],
+                    'string' == typeof e && qe.test(e) ? de(e) : e || [],
                     !1
                 ).length;
             },
@@ -30864,7 +35890,7 @@ function updateAAOsTime(e) {
                         s = this.length,
                         o = [],
                         a =
-                            We.test(e) || 'string' != typeof e ?
+                            qe.test(e) || 'string' != typeof e ?
                                 de(e, t || this.context)
                             :   0;
                     n < s;
@@ -30957,7 +35983,7 @@ function updateAAOsTime(e) {
                             'Until' !== e.slice(-5) && (n = i),
                             n && 'string' == typeof n && (s = de.filter(n, s)),
                             this.length > 1 &&
-                                (qe[e] || (s = de.unique(s)),
+                                (We[e] || (s = de.unique(s)),
                                 Ve.test(e) && (s = s.reverse())),
                             this.pushStack(s)
                         );
@@ -31000,8 +36026,8 @@ function updateAAOsTime(e) {
         var Ue =
                 'abbr|article|aside|audio|bdi|canvas|data|datalist|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|summary|time|video',
             Ze = / jQuery\d+="(?:null|\d+)"/g,
-            Ke = new RegExp('<(?:' + Ue + ')[\\s/>]', 'i'),
-            Ge = /^\s+/,
+            Ge = new RegExp('<(?:' + Ue + ')[\\s/>]', 'i'),
+            Ke = /^\s+/,
             Ye =
                 /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/gi,
             Je = /<([\w:]+)/,
@@ -31137,8 +36163,8 @@ function updateAAOsTime(e) {
                             if (
                                 'string' == typeof e &&
                                 !et.test(e) &&
-                                (de.support.htmlSerialize || !Ke.test(e)) &&
-                                (de.support.leadingWhitespace || !Ge.test(e)) &&
+                                (de.support.htmlSerialize || !Ge.test(e)) &&
+                                (de.support.leadingWhitespace || !Ke.test(e)) &&
                                 !at[(Je.exec(e) || ['', ''])[1].toLowerCase()]
                             ) {
                                 e = e.replace(Ye, '<$1></$2>');
@@ -31293,7 +36319,7 @@ function updateAAOsTime(e) {
                         ((
                             de.support.html5Clone ||
                             de.isXMLDoc(e) ||
-                            !Ke.test('<' + e.nodeName + '>')
+                            !Ge.test('<' + e.nodeName + '>')
                         ) ?
                             (o = e.cloneNode(!0))
                         :   ((rt.innerHTML = e.outerHTML),
@@ -31362,8 +36388,8 @@ function updateAAOsTime(e) {
                                     r = r.lastChild;
                                 if (
                                     (!de.support.leadingWhitespace &&
-                                        Ge.test(o) &&
-                                        m.push(t.createTextNode(Ge.exec(o)[0])),
+                                        Ke.test(o) &&
+                                        m.push(t.createTextNode(Ke.exec(o)[0])),
                                     !de.support.tbody)
                                 )
                                     for (
@@ -31438,7 +36464,7 @@ function updateAAOsTime(e) {
                             l[s] &&
                                 (delete l[s],
                                 c ? delete i[r]
-                                : typeof i.removeAttribute !== K ?
+                                : typeof i.removeAttribute !== G ?
                                     i.removeAttribute(r)
                                 :   (i[r] = null),
                                 te.push(s));
@@ -31712,17 +36738,17 @@ function updateAAOsTime(e) {
                                         mt.test(de.css(e, 'display'))
                                 ) ?
                                     de.swap(e, yt, function () {
-                                        return S(e, t, n);
+                                        return z(e, t, n);
                                     })
-                                :   S(e, t, n);
+                                :   z(e, t, n);
                     },
                     set: function (e, i, n) {
                         var s = n && ct(e);
-                        return z(
+                        return T(
                             e,
                             i,
                             n ?
-                                T(
+                                S(
                                     e,
                                     t,
                                     n,
@@ -31834,13 +36860,13 @@ function updateAAOsTime(e) {
                             return s;
                         },
                     }),
-                        _t.test(e) || (de.cssHooks[e + t].set = z));
+                        _t.test(e) || (de.cssHooks[e + t].set = T));
                 }
             ));
         var Ct = /%20/g,
-            zt = /\[\]$/,
-            Tt = /\r?\n/g,
-            St = /^(?:submit|button|image|reset|file)$/i,
+            Tt = /\[\]$/,
+            St = /\r?\n/g,
+            zt = /^(?:submit|button|image|reset|file)$/i,
             At = /^(?:input|select|textarea|keygen)/i;
         (de.fn.extend({
             serialize: function () {
@@ -31857,7 +36883,7 @@ function updateAAOsTime(e) {
                             this.name &&
                             !de(this).is(':disabled') &&
                             At.test(this.nodeName) &&
-                            !St.test(e) &&
+                            !zt.test(e) &&
                             (this.checked || !tt.test(e))
                         );
                     })
@@ -31869,10 +36895,10 @@ function updateAAOsTime(e) {
                                 de.map(i, function (e) {
                                     return {
                                         name: t.name,
-                                        value: e.replace(Tt, '\r\n'),
+                                        value: e.replace(St, '\r\n'),
                                     };
                                 })
-                            :   { name: t.name, value: i.replace(Tt, '\r\n') }
+                            :   { name: t.name, value: i.replace(St, '\r\n') }
                         );
                     })
                     .get();
@@ -31935,28 +36961,28 @@ function updateAAOsTime(e) {
             }));
         var Et,
             Mt,
-            It = de.now(),
-            Pt = /\?/,
-            jt = /#.*$/,
-            Dt = /([?&])_=[^&]*/,
-            Lt = /^(.*?):[ \t]*([^\r\n]*)\r?$/gm,
+            Pt = de.now(),
+            It = /\?/,
+            Dt = /#.*$/,
+            jt = /([?&])_=[^&]*/,
+            Rt = /^(.*?):[ \t]*([^\r\n]*)\r?$/gm,
             Ot = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
-            Nt = /^(?:GET|HEAD)$/,
+            Lt = /^(?:GET|HEAD)$/,
             Bt = /^\/\//,
-            Rt = /^([\w.+-]+:)(?:\/\/([^\/?#:]*)(?::(\d+)|)|)/,
-            $t = de.fn.load,
+            Nt = /^([\w.+-]+:)(?:\/\/([^\/?#:]*)(?::(\d+)|)|)/,
+            Ht = de.fn.load,
             Ft = {},
-            Ht = {},
+            $t = {},
             Vt = '*/'.concat('*');
         try {
-            Mt = G.href;
+            Mt = K.href;
         } catch (e) {
             (((Mt = Y.createElement('a')).href = ''), (Mt = Mt.href));
         }
-        ((Et = Rt.exec(Mt.toLowerCase()) || []),
+        ((Et = Nt.exec(Mt.toLowerCase()) || []),
             (de.fn.load = function (e, i, n) {
-                if ('string' != typeof e && $t)
-                    return $t.apply(this, arguments);
+                if ('string' != typeof e && Ht)
+                    return Ht.apply(this, arguments);
                 var s,
                     o,
                     a,
@@ -32045,11 +37071,11 @@ function updateAAOsTime(e) {
                 },
                 ajaxSetup: function (e, t) {
                     return t ?
-                            j(j(e, de.ajaxSettings), t)
-                        :   j(de.ajaxSettings, e);
+                            D(D(e, de.ajaxSettings), t)
+                        :   D(de.ajaxSettings, e);
                 },
-                ajaxPrefilter: I(Ft),
-                ajaxTransport: I(Ht),
+                ajaxPrefilter: P(Ft),
+                ajaxTransport: P($t),
                 ajax: function (e, i) {
                     function n(e, i, n, s) {
                         var o,
@@ -32065,8 +37091,8 @@ function updateAAOsTime(e) {
                             (r = s || ''),
                             (k.readyState = e > 0 ? 4 : 0),
                             (o = (e >= 200 && e < 300) || 304 === e),
-                            n && (b = D(h, k, n)),
-                            (b = L(h, b, k, o)),
+                            n && (b = j(h, k, n)),
+                            (b = R(h, b, k, o)),
                             o ?
                                 (h.ifModified &&
                                     ((w =
@@ -32128,7 +37154,7 @@ function updateAAOsTime(e) {
                                 var t;
                                 if (2 === y) {
                                     if (!u)
-                                        for (u = {}; (t = Lt.exec(r));)
+                                        for (u = {}; (t = Rt.exec(r));)
                                             u[t[1].toLowerCase()] = t[2];
                                     t = u[e.toLowerCase()];
                                 }
@@ -32164,7 +37190,7 @@ function updateAAOsTime(e) {
                         (k.success = k.done),
                         (k.error = k.fail),
                         (h.url = ((e || h.url || Mt) + '')
-                            .replace(jt, '')
+                            .replace(Dt, '')
                             .replace(Bt, Et[1] + '//')),
                         (h.type = i.method || i.type || h.method || h.type),
                         (h.dataTypes = de
@@ -32172,7 +37198,7 @@ function updateAAOsTime(e) {
                             .toLowerCase()
                             .match(he) || ['']),
                         null == h.crossDomain &&
-                            ((s = Rt.exec(h.url.toLowerCase())),
+                            ((s = Nt.exec(h.url.toLowerCase())),
                             (h.crossDomain = !(
                                 !s ||
                                 (s[1] === Et[1] &&
@@ -32186,7 +37212,7 @@ function updateAAOsTime(e) {
                             h.processData &&
                             'string' != typeof h.data &&
                             (h.data = de.param(h.data, h.traditional)),
-                        P(Ft, h, i, k),
+                        I(Ft, h, i, k),
                         2 === y)
                     )
                         return k;
@@ -32194,20 +37220,20 @@ function updateAAOsTime(e) {
                         0 == de.active++ &&
                         de.event.trigger('ajaxStart'),
                     (h.type = h.type.toUpperCase()),
-                    (h.hasContent = !Nt.test(h.type)),
+                    (h.hasContent = !Lt.test(h.type)),
                     (a = h.url),
                     h.hasContent ||
                         (h.data &&
-                            ((a = h.url += (Pt.test(a) ? '&' : '?') + h.data),
+                            ((a = h.url += (It.test(a) ? '&' : '?') + h.data),
                             delete h.data),
                         !1 === h.cache &&
                             (h.url =
-                                Dt.test(a) ?
-                                    a.replace(Dt, '$1_=' + It++)
+                                jt.test(a) ?
+                                    a.replace(jt, '$1_=' + Pt++)
                                 :   a +
-                                    (Pt.test(a) ? '&' : '?') +
+                                    (It.test(a) ? '&' : '?') +
                                     '_=' +
-                                    It++)),
+                                    Pt++)),
                     h.ifModified &&
                         (de.lastModified[a] &&
                             k.setRequestHeader(
@@ -32238,7 +37264,7 @@ function updateAAOsTime(e) {
                     for (o in ((w = 'abort'),
                     { success: 1, error: 1, complete: 1 }))
                         k[o](h[o]);
-                    if ((d = P(Ht, h, i, k))) {
+                    if ((d = I($t, h, i, k))) {
                         ((k.readyState = 1),
                             c && m.trigger('ajaxSend', [k, h]),
                             h.async &&
@@ -32323,12 +37349,12 @@ function updateAAOsTime(e) {
                     };
                 }
             }));
-        var Wt = [],
-            qt = /(=)\?(?=&|$)|\?\?/;
+        var qt = [],
+            Wt = /(=)\?(?=&|$)|\?\?/;
         (de.ajaxSetup({
             jsonp: 'callback',
             jsonpCallback: function () {
-                var e = Wt.pop() || de.expando + '_' + It++;
+                var e = qt.pop() || de.expando + '_' + Pt++;
                 return ((this[e] = !0), e);
             },
         }),
@@ -32338,12 +37364,12 @@ function updateAAOsTime(e) {
                     r,
                     l =
                         !1 !== i.jsonp &&
-                        (qt.test(i.url) ? 'url' : (
+                        (Wt.test(i.url) ? 'url' : (
                             'string' == typeof i.data &&
                             !(i.contentType || '').indexOf(
                                 'application/x-www-form-urlencoded'
                             ) &&
-                            qt.test(i.data) &&
+                            Wt.test(i.data) &&
                             'data'
                         ));
                 if (l || 'jsonp' === i.dataTypes[0])
@@ -32354,10 +37380,10 @@ function updateAAOsTime(e) {
                                     i.jsonpCallback()
                                 :   i.jsonpCallback),
                         l ?
-                            (i[l] = i[l].replace(qt, '$1' + o))
+                            (i[l] = i[l].replace(Wt, '$1' + o))
                         :   !1 !== i.jsonp &&
                             (i.url +=
-                                (Pt.test(i.url) ? '&' : '?') +
+                                (It.test(i.url) ? '&' : '?') +
                                 i.jsonp +
                                 '=' +
                                 o),
@@ -32373,7 +37399,7 @@ function updateAAOsTime(e) {
                             ((e[o] = a),
                                 i[o] &&
                                     ((i.jsonpCallback = n.jsonpCallback),
-                                    Wt.push(o)),
+                                    qt.push(o)),
                                 r && de.isFunction(a) && a(r[0]),
                                 (r = a = t));
                         }),
@@ -32382,8 +37408,8 @@ function updateAAOsTime(e) {
             }));
         var Ut,
             Zt,
-            Kt = 0,
-            Gt =
+            Gt = 0,
+            Kt =
                 e.ActiveXObject &&
                 function () {
                     var e;
@@ -32392,7 +37418,7 @@ function updateAAOsTime(e) {
         ((de.ajaxSettings.xhr =
             e.ActiveXObject ?
                 function () {
-                    return (!this.isLocal && O()) || N();
+                    return (!this.isLocal && O()) || L();
                 }
             :   O),
             (Zt = de.ajaxSettings.xhr()),
@@ -32440,7 +37466,7 @@ function updateAAOsTime(e) {
                                                     a &&
                                                         ((l.onreadystatechange =
                                                             de.noop),
-                                                        Gt && delete Ut[a]),
+                                                        Kt && delete Ut[a]),
                                                     s)
                                                 )
                                                     4 !== l.readyState &&
@@ -32476,11 +37502,11 @@ function updateAAOsTime(e) {
                                     i.async ?
                                         4 === l.readyState ?
                                             setTimeout(n)
-                                        :   ((a = ++Kt),
-                                            Gt &&
+                                        :   ((a = ++Gt),
+                                            Kt &&
                                                 (Ut ||
                                                     ((Ut = {}),
-                                                    de(e).unload(Gt)),
+                                                    de(e).unload(Kt)),
                                                 (Ut[a] = n)),
                                             (l.onreadystatechange = n))
                                     :   n());
@@ -32495,7 +37521,7 @@ function updateAAOsTime(e) {
             Qt = /^(?:toggle|show|hide)$/,
             Xt = new RegExp('^(?:([+-])=|)(' + ue + ')([a-z%]*)$', 'i'),
             ei = /queueHooks$/,
-            ti = [H],
+            ti = [$],
             ii = {
                 '*': [
                     function (e, t) {
@@ -32525,7 +37551,7 @@ function updateAAOsTime(e) {
                     },
                 ],
             };
-        ((de.Animation = de.extend($, {
+        ((de.Animation = de.extend(H, {
             tweener: function (e, t) {
                 de.isFunction(e) ? ((t = e), (e = ['*'])) : (e = e.split(' '));
                 for (var i, n = 0, s = e.length; n < s; n++)
@@ -32622,7 +37648,7 @@ function updateAAOsTime(e) {
                 de.fn[t] = function (e, n, s) {
                     return null == e || 'boolean' == typeof e ?
                             i.apply(this, arguments)
-                        :   this.animate(W(t, !0), e, n, s);
+                        :   this.animate(q(t, !0), e, n, s);
                 };
             }),
             de.fn.extend({
@@ -32637,7 +37663,7 @@ function updateAAOsTime(e) {
                     var s = de.isEmptyObject(e),
                         o = de.speed(t, i, n),
                         a = function () {
-                            var t = $(this, de.extend({}, e), o);
+                            var t = H(this, de.extend({}, e), o);
                             ((a.finish = function () {
                                 t.stop(!0);
                             }),
@@ -32709,9 +37735,9 @@ function updateAAOsTime(e) {
             }),
             de.each(
                 {
-                    slideDown: W('show'),
-                    slideUp: W('hide'),
-                    slideToggle: W('toggle'),
+                    slideDown: q('show'),
+                    slideUp: q('hide'),
+                    slideToggle: q('toggle'),
                     fadeIn: { opacity: 'show' },
                     fadeOut: { opacity: 'hide' },
                     fadeToggle: { opacity: 'toggle' },
@@ -32798,9 +37824,9 @@ function updateAAOsTime(e) {
                 return a ?
                         ((i = a.documentElement),
                         de.contains(i, o) ?
-                            (typeof o.getBoundingClientRect !== K &&
+                            (typeof o.getBoundingClientRect !== G &&
                                 (s = o.getBoundingClientRect()),
-                            (n = q(a)),
+                            (n = W(a)),
                             {
                                 top:
                                     s.top +
@@ -32888,7 +37914,7 @@ function updateAAOsTime(e) {
                         return de.access(
                             this,
                             function (e, s, o) {
-                                var a = q(e);
+                                var a = W(e);
                                 if (o === t)
                                     return (
                                         a ?
@@ -34205,30 +39231,30 @@ function updateAAOsTime(e) {
                                 h = d.outerHeight(),
                                 m = i(this, 'marginLeft'),
                                 b = i(this, 'marginTop'),
-                                z = u + m + i(this, 'marginRight') + k.width,
-                                T = h + b + i(this, 'marginBottom') + k.height,
-                                S = e.extend({}, v),
+                                T = u + m + i(this, 'marginRight') + k.width,
+                                S = h + b + i(this, 'marginBottom') + k.height,
+                                z = e.extend({}, v),
                                 A = t(C.my, d.outerWidth(), d.outerHeight());
                             ('right' === s.my[0] ?
-                                (S.left -= u)
-                            :   'center' === s.my[0] && (S.left -= u / 2),
+                                (z.left -= u)
+                            :   'center' === s.my[0] && (z.left -= u / 2),
                                 'bottom' === s.my[1] ?
-                                    (S.top -= h)
-                                :   'center' === s.my[1] && (S.top -= h / 2),
-                                (S.left += A[0]),
-                                (S.top += A[1]),
-                                o || ((S.left = l(S.left)), (S.top = l(S.top))),
+                                    (z.top -= h)
+                                :   'center' === s.my[1] && (z.top -= h / 2),
+                                (z.left += A[0]),
+                                (z.top += A[1]),
+                                o || ((z.left = l(z.left)), (z.top = l(z.top))),
                                 (n = { marginLeft: m, marginTop: b }),
                                 e.each(['left', 'top'], function (t, i) {
                                     e.ui.position[x[t]] &&
-                                        e.ui.position[x[t]][i](S, {
+                                        e.ui.position[x[t]][i](z, {
                                             targetWidth: _,
                                             targetHeight: f,
                                             elemWidth: u,
                                             elemHeight: h,
                                             collisionPosition: n,
-                                            collisionWidth: z,
-                                            collisionHeight: T,
+                                            collisionWidth: T,
+                                            collisionHeight: S,
                                             offset: [p[0] + A[0], p[1] + A[1]],
                                             my: s.my,
                                             at: s.at,
@@ -34238,9 +39264,9 @@ function updateAAOsTime(e) {
                                 }),
                                 s.using &&
                                     (c = function (e) {
-                                        var t = g.left - S.left,
+                                        var t = g.left - z.left,
                                             i = t + _ - u,
-                                            n = g.top - S.top,
+                                            n = g.top - z.top,
                                             o = n + f - h,
                                             l = {
                                                 target: {
@@ -34252,8 +39278,8 @@ function updateAAOsTime(e) {
                                                 },
                                                 element: {
                                                     element: d,
-                                                    left: S.left,
-                                                    top: S.top,
+                                                    left: z.left,
+                                                    top: z.top,
                                                     width: u,
                                                     height: h,
                                                 },
@@ -34277,7 +39303,7 @@ function updateAAOsTime(e) {
                                             :   (l.important = 'vertical'),
                                             s.using.call(this, e, l));
                                     }),
-                                d.offset(e.extend(S, { using: c })));
+                                d.offset(e.extend(z, { using: c })));
                         })
                     );
                 }),
@@ -41676,33 +46702,33 @@ function updateAAOsTime(e) {
                         k,
                         x,
                         C,
-                        z,
                         T,
                         S,
+                        z,
                         A,
                         E,
                         M,
-                        I,
                         P,
-                        j,
+                        I,
                         D,
-                        L,
-                        O,
-                        N,
-                        B,
+                        j,
                         R,
-                        $ = new Date(),
+                        O,
+                        L,
+                        B,
+                        N,
+                        H = new Date(),
                         F = this._daylightSavingAdjust(
-                            new Date($.getFullYear(), $.getMonth(), $.getDate())
+                            new Date(H.getFullYear(), H.getMonth(), H.getDate())
                         ),
-                        H = this._get(e, 'isRTL'),
+                        $ = this._get(e, 'isRTL'),
                         V = this._get(e, 'showButtonPanel'),
-                        W = this._get(e, 'hideIfNoPrevNext'),
-                        q = this._get(e, 'navigationAsDateFormat'),
+                        q = this._get(e, 'hideIfNoPrevNext'),
+                        W = this._get(e, 'navigationAsDateFormat'),
                         U = this._getNumberOfMonths(e),
                         Z = this._get(e, 'showCurrentAtPos'),
-                        K = this._get(e, 'stepMonths'),
-                        G = 1 !== U[0] || 1 !== U[1],
+                        G = this._get(e, 'stepMonths'),
+                        K = 1 !== U[0] || 1 !== U[1],
                         Y = this._daylightSavingAdjust(
                             e.currentDay ?
                                 new Date(
@@ -41734,11 +46760,11 @@ function updateAAOsTime(e) {
                             e.drawYear = ee,
                             i = this._get(e, 'prevText'),
                             i =
-                                q ?
+                                W ?
                                     this.formatDate(
                                         i,
                                         this._daylightSavingAdjust(
-                                            new Date(ee, X - K, 1)
+                                            new Date(ee, X - G, 1)
                                         ),
                                         this._getFormatConfig(e)
                                     )
@@ -41748,25 +46774,25 @@ function updateAAOsTime(e) {
                                     "<a class='ui-datepicker-prev ui-corner-all' data-handler='prev' data-event='click' title='" +
                                     i +
                                     "'><span class='ui-icon ui-icon-circle-triangle-" +
-                                    (H ? 'e' : 'w') +
+                                    ($ ? 'e' : 'w') +
                                     "'>" +
                                     i +
                                     '</span></a>'
-                                : W ? ''
+                                : q ? ''
                                 : "<a class='ui-datepicker-prev ui-corner-all ui-state-disabled' title='" +
                                     i +
                                     "'><span class='ui-icon ui-icon-circle-triangle-" +
-                                    (H ? 'e' : 'w') +
+                                    ($ ? 'e' : 'w') +
                                     "'>" +
                                     i +
                                     '</span></a>',
                             s = this._get(e, 'nextText'),
                             s =
-                                q ?
+                                W ?
                                     this.formatDate(
                                         s,
                                         this._daylightSavingAdjust(
-                                            new Date(ee, X + K, 1)
+                                            new Date(ee, X + G, 1)
                                         ),
                                         this._getFormatConfig(e)
                                     )
@@ -41776,15 +46802,15 @@ function updateAAOsTime(e) {
                                     "<a class='ui-datepicker-next ui-corner-all' data-handler='next' data-event='click' title='" +
                                     s +
                                     "'><span class='ui-icon ui-icon-circle-triangle-" +
-                                    (H ? 'w' : 'e') +
+                                    ($ ? 'w' : 'e') +
                                     "'>" +
                                     s +
                                     '</span></a>'
-                                : W ? ''
+                                : q ? ''
                                 : "<a class='ui-datepicker-next ui-corner-all ui-state-disabled' title='" +
                                     s +
                                     "'><span class='ui-icon ui-icon-circle-triangle-" +
-                                    (H ? 'w' : 'e') +
+                                    ($ ? 'w' : 'e') +
                                     "'>" +
                                     s +
                                     '</span></a>',
@@ -41794,7 +46820,7 @@ function updateAAOsTime(e) {
                                     Y
                                 :   F,
                             a =
-                                q ?
+                                W ?
                                     this.formatDate(
                                         a,
                                         r,
@@ -41810,13 +46836,13 @@ function updateAAOsTime(e) {
                             c =
                                 V ?
                                     "<div class='ui-datepicker-buttonpane ui-widget-content'>" +
-                                    (H ? l : '') +
+                                    ($ ? l : '') +
                                     (this._isInRange(e, r) ?
                                         "<button type='button' class='ui-datepicker-current ui-state-default ui-priority-secondary ui-corner-all' data-handler='today' data-event='click'>" +
                                         a +
                                         '</button>'
                                     :   '') +
-                                    (H ? '' : l) +
+                                    ($ ? '' : l) +
                                     '</div>'
                                 :   '',
                             d = parseInt(this._get(e, 'firstDay'), 10),
@@ -41837,49 +46863,49 @@ function updateAAOsTime(e) {
                     ) {
                         for (x = '', this.maxRows = 4, C = 0; C < U[1]; C++) {
                             if (
-                                ((z = this._daylightSavingAdjust(
+                                ((T = this._daylightSavingAdjust(
                                     new Date(ee, X, e.selectedDay)
                                 )),
-                                (T = ' ui-corner-all'),
-                                (S = ''),
-                                G)
+                                (S = ' ui-corner-all'),
+                                (z = ''),
+                                K)
                             ) {
                                 if (
-                                    ((S += "<div class='ui-datepicker-group"),
+                                    ((z += "<div class='ui-datepicker-group"),
                                     U[1] > 1)
                                 )
                                     switch (C) {
                                         case 0:
-                                            ((S +=
+                                            ((z +=
                                                 ' ui-datepicker-group-first'),
-                                                (T =
+                                                (S =
                                                     ' ui-corner-' +
-                                                    (H ? 'right' : 'left')));
+                                                    ($ ? 'right' : 'left')));
                                             break;
                                         case U[1] - 1:
-                                            ((S += ' ui-datepicker-group-last'),
-                                                (T =
+                                            ((z += ' ui-datepicker-group-last'),
+                                                (S =
                                                     ' ui-corner-' +
-                                                    (H ? 'left' : 'right')));
+                                                    ($ ? 'left' : 'right')));
                                             break;
                                         default:
-                                            ((S +=
+                                            ((z +=
                                                 ' ui-datepicker-group-middle'),
-                                                (T = ''));
+                                                (S = ''));
                                     }
-                                S += "'>";
+                                z += "'>";
                             }
                             for (
-                                S +=
+                                z +=
                                     "<div class='ui-datepicker-header ui-widget-header ui-helper-clearfix" +
-                                    T +
+                                    S +
                                     "'>" +
-                                    (/all|left/.test(T) && 0 === k ?
-                                        H ? o
+                                    (/all|left/.test(S) && 0 === k ?
+                                        $ ? o
                                         :   n
                                     :   '') +
-                                    (/all|right/.test(T) && 0 === k ?
-                                        H ? n
+                                    (/all|right/.test(S) && 0 === k ?
+                                        $ ? n
                                         :   o
                                     :   '') +
                                     this._generateMonthYearHeader(
@@ -41914,7 +46940,7 @@ function updateAAOsTime(e) {
                                     p[E] +
                                     '</span></th>';
                             for (
-                                S += A + '</tr></thead><tbody>',
+                                z += A + '</tr></thead><tbody>',
                                     M = this._getDaysInMonth(ee, X),
                                     ee === e.selectedYear &&
                                         X === e.selectedMonth &&
@@ -41922,51 +46948,51 @@ function updateAAOsTime(e) {
                                             e.selectedDay,
                                             M
                                         )),
-                                    I =
+                                    P =
                                         (this._getFirstDayOfMonth(ee, X) -
                                             d +
                                             7) %
                                         7,
-                                    P = Math.ceil((I + M) / 7),
-                                    j =
-                                        G && this.maxRows > P ?
+                                    I = Math.ceil((P + M) / 7),
+                                    D =
+                                        K && this.maxRows > I ?
                                             this.maxRows
-                                        :   P,
-                                    this.maxRows = j,
-                                    D = this._daylightSavingAdjust(
-                                        new Date(ee, X, 1 - I)
+                                        :   I,
+                                    this.maxRows = D,
+                                    j = this._daylightSavingAdjust(
+                                        new Date(ee, X, 1 - P)
                                     ),
-                                    L = 0;
-                                L < j;
-                                L++
+                                    R = 0;
+                                R < D;
+                                R++
                             ) {
                                 for (
-                                    S += '<tr>',
+                                    z += '<tr>',
                                         O =
                                             u ?
                                                 "<td class='ui-datepicker-week-col'>" +
                                                 this._get(
                                                     e,
                                                     'calculateWeek'
-                                                )(D) +
+                                                )(j) +
                                                 '</td>'
                                             :   '',
                                         w = 0;
                                     w < 7;
                                     w++
                                 )
-                                    ((N =
+                                    ((L =
                                         f ?
                                             f.apply(
                                                 e.input ? e.input[0] : null,
-                                                [D]
+                                                [j]
                                             )
                                         :   [!0, '']),
-                                        (R =
-                                            ((B = D.getMonth() !== X) && !v) ||
-                                            !N[0] ||
-                                            (J && D < J) ||
-                                            (Q && D > Q)),
+                                        (N =
+                                            ((B = j.getMonth() !== X) && !v) ||
+                                            !L[0] ||
+                                            (J && j < J) ||
+                                            (Q && j > Q)),
                                         (O +=
                                             "<td class='" +
                                             ((w + d + 6) % 7 >= 5 ?
@@ -41976,70 +47002,70 @@ function updateAAOsTime(e) {
                                                 ' ui-datepicker-other-month'
                                             :   '') +
                                             ((
-                                                (D.getTime() === z.getTime() &&
+                                                (j.getTime() === T.getTime() &&
                                                     X === e.selectedMonth &&
                                                     e._keyEvent) ||
-                                                (b.getTime() === D.getTime() &&
-                                                    b.getTime() === z.getTime())
+                                                (b.getTime() === j.getTime() &&
+                                                    b.getTime() === T.getTime())
                                             ) ?
                                                 ' ' + this._dayOverClass
                                             :   '') +
-                                            (R ?
+                                            (N ?
                                                 ' ' +
                                                 this._unselectableClass +
                                                 ' ui-state-disabled'
                                             :   '') +
                                             (B && !g ? '' : (
                                                 ' ' +
-                                                N[1] +
-                                                (D.getTime() === Y.getTime() ?
+                                                L[1] +
+                                                (j.getTime() === Y.getTime() ?
                                                     ' ' + this._currentClass
                                                 :   '') +
-                                                (D.getTime() === F.getTime() ?
+                                                (j.getTime() === F.getTime() ?
                                                     ' ui-datepicker-today'
                                                 :   '')
                                             )) +
                                             "'" +
-                                            ((B && !g) || !N[2] ?
+                                            ((B && !g) || !L[2] ?
                                                 ''
                                             :   " title='" +
-                                                N[2].replace(/'/g, '&#39;') +
+                                                L[2].replace(/'/g, '&#39;') +
                                                 "'") +
-                                            (R ? '' : (
+                                            (N ? '' : (
                                                 " data-handler='selectDay' data-event='click' data-month='" +
-                                                D.getMonth() +
+                                                j.getMonth() +
                                                 "' data-year='" +
-                                                D.getFullYear() +
+                                                j.getFullYear() +
                                                 "'"
                                             )) +
                                             '>' +
                                             (B && !g ? '&#xa0;'
-                                            : R ?
+                                            : N ?
                                                 "<span class='ui-state-default'>" +
-                                                D.getDate() +
+                                                j.getDate() +
                                                 '</span>'
                                             :   "<a class='ui-state-default" +
-                                                (D.getTime() === F.getTime() ?
+                                                (j.getTime() === F.getTime() ?
                                                     ' ui-state-highlight'
                                                 :   '') +
-                                                (D.getTime() === Y.getTime() ?
+                                                (j.getTime() === Y.getTime() ?
                                                     ' ui-state-active'
                                                 :   '') +
                                                 (B ?
                                                     ' ui-priority-secondary'
                                                 :   '') +
                                                 "' href='#'>" +
-                                                D.getDate() +
+                                                j.getDate() +
                                                 '</a>') +
                                             '</td>'),
-                                        D.setDate(D.getDate() + 1),
-                                        (D = this._daylightSavingAdjust(D)));
-                                S += O + '</tr>';
+                                        j.setDate(j.getDate() + 1),
+                                        (j = this._daylightSavingAdjust(j)));
+                                z += O + '</tr>';
                             }
                             (++X > 11 && ((X = 0), ee++),
-                                (x += S +=
+                                (x += z +=
                                     '</tbody></table>' +
-                                    (G ?
+                                    (K ?
                                         '</div>' +
                                         (U[0] > 0 && C === U[1] - 1 ?
                                             "<div class='ui-datepicker-row-break'></div>"
@@ -45419,7 +50445,7 @@ function updateAAOsTime(e) {
          */ var k,
             x,
             C = 'ui-effects-',
-            z = e;
+            T = e;
         ((e.effects = { effect: {} }),
             /*!
              * jQuery Color Animations v2.1.2
@@ -45961,7 +50987,7 @@ function updateAAOsTime(e) {
                             transparent: [null, null, null, 0],
                             _default: '#ffffff',
                         }));
-            })(z),
+            })(T),
             (function () {
                 function t(t) {
                     var i,
@@ -46016,7 +51042,7 @@ function updateAAOsTime(e) {
                         e.fx.step[i] = function (e) {
                             (('none' !== e.end && !e.setAttr) ||
                                 (1 === e.pos && !e.setAttr)) &&
-                                (z.style(e.elem, i, e.end), (e.setAttr = !0));
+                                (T.style(e.elem, i, e.end), (e.setAttr = !0));
                         };
                     }
                 ),
@@ -49601,19 +54627,19 @@ function updateAAOsTime(e) {
                         k = w + h,
                         x = l.scrollLeft(),
                         C = x + u,
-                        z = a.position(),
-                        T = z.top,
-                        S = T + a.height(),
-                        A = z.left,
+                        T = a.position(),
+                        S = T.top,
+                        z = S + a.height(),
+                        A = T.left,
                         E = A + a.width(),
-                        M = !0 === i ? S : T,
-                        I = !0 === i ? T : S,
-                        P = !0 === i ? E : A,
-                        j = !0 === i ? A : E;
+                        M = !0 === i ? z : S,
+                        P = !0 === i ? S : z,
+                        I = !0 === i ? E : A,
+                        D = !0 === i ? A : E;
                     if ('both' === s)
-                        return !!p && I <= k && M >= w && j <= C && P >= x;
-                    if ('vertical' === s) return !!p && I <= k && M >= w;
-                    if ('horizontal' === s) return !!p && j <= C && P >= x;
+                        return !!p && P <= k && M >= w && D <= C && I >= x;
+                    if ('vertical' === s) return !!p && P <= k && M >= w;
+                    if ('horizontal' === s) return !!p && D <= C && I >= x;
                 }
             }
         };
@@ -52271,7 +57297,7 @@ function updateAAOsTime(e) {
         }
         function s(e) {
             return (
-                '_leaflet_id' in e || (e._leaflet_id = ++Ge),
+                '_leaflet_id' in e || (e._leaflet_id = ++Ke),
                 e._leaflet_id
             );
         }
@@ -52310,7 +57336,7 @@ function updateAAOsTime(e) {
         }
         function u(e, t) {
             for (var i in (Object.prototype.hasOwnProperty.call(e, 'options') ||
-                (e.options = e.options ? Ke(e.options) : {}),
+                (e.options = e.options ? Ge(e.options) : {}),
             t))
                 e.options[i] = t[i];
             return e.options;
@@ -52381,28 +57407,28 @@ function updateAAOsTime(e) {
                 for (var i = t ? [e, t] : e, n = 0, s = i.length; n < s; n++)
                     this.extend(i[n]);
         }
-        function z(e, t) {
+        function T(e, t) {
             return e instanceof C ? e : new C(e, t);
         }
-        function T(e, t, i) {
+        function S(e, t, i) {
             if (isNaN(e) || isNaN(t))
                 throw new Error(
                     'Invalid LatLng object: (' + e + ', ' + t + ')'
                 );
             ((this.lat = +e), (this.lng = +t), void 0 !== i && (this.alt = +i));
         }
-        function S(e, t, i) {
+        function z(e, t, i) {
             return (
-                e instanceof T ? e
+                e instanceof S ? e
                 : Je(e) && 'object' != typeof e[0] ?
-                    3 === e.length ? new T(e[0], e[1], e[2])
-                    : 2 === e.length ? new T(e[0], e[1])
+                    3 === e.length ? new S(e[0], e[1], e[2])
+                    : 2 === e.length ? new S(e[0], e[1])
                     : null
                 : null == e ? e
                 : 'object' == typeof e && 'lat' in e ?
-                    new T(e.lat, 'lng' in e ? e.lng : e.lon, e.alt)
+                    new S(e.lat, 'lng' in e ? e.lng : e.lon, e.alt)
                 : void 0 === t ? null
-                : new T(e, t, i)
+                : new S(e, t, i)
             );
         }
         function A(e, t, i, n) {
@@ -52419,30 +57445,30 @@ function updateAAOsTime(e) {
         function M(e) {
             return document.createElementNS('http://www.w3.org/2000/svg', e);
         }
-        function I(e, t) {
+        function P(e, t) {
             for (var i, n, s, o, a = '', r = 0, l = e.length; r < l; r++) {
                 for (i = 0, n = (s = e[r]).length; i < n; i++)
                     a += (i ? 'L' : 'M') + (o = s[i]).x + ' ' + o.y;
                 a +=
                     t ?
-                        Kt.svg ?
+                        Gt.svg ?
                             'z'
                         :   'x'
                     :   '';
             }
             return a || 'M0 0';
         }
-        function P(e) {
+        function I(e) {
             return 0 <= navigator.userAgent.toLowerCase().indexOf(e);
         }
-        function j(e, t, i) {
+        function D(e, t, i) {
             return (
                 'touchstart' !== t ||
                     ii ||
-                    (document.addEventListener(Gt, D, !0),
-                    document.addEventListener(Yt, O, !0),
-                    document.addEventListener(Jt, N, !0),
-                    document.addEventListener(Qt, N, !0),
+                    (document.addEventListener(Kt, j, !0),
+                    document.addEventListener(Yt, R, !0),
+                    document.addEventListener(Jt, O, !0),
+                    document.addEventListener(Qt, O, !0),
                     (ii = !0)),
                 ei[t] ?
                     ((i = ei[t].bind(this, i)),
@@ -52451,13 +57477,13 @@ function updateAAOsTime(e) {
                 :   (console.warn('wrong event specified:', t), r)
             );
         }
-        function D(e) {
+        function j(e) {
             ti[e.pointerId] = e;
         }
-        function O(e) {
+        function R(e) {
             ti[e.pointerId] && (ti[e.pointerId] = e);
         }
-        function N(e) {
+        function O(e) {
             delete ti[e.pointerId];
         }
         function B(e, t) {
@@ -52466,7 +57492,7 @@ function updateAAOsTime(e) {
                 ((t.changedTouches = [t]), e(t));
             }
         }
-        function R(e, t) {
+        function N(e, t) {
             function i(e) {
                 var i;
                 1 !== e.detail ?
@@ -52515,7 +57541,7 @@ function updateAAOsTime(e) {
                 { dblclick: t, simDblclick: i }
             );
         }
-        function $(e) {
+        function H(e) {
             return 'string' == typeof e ? document.getElementById(e) : e;
         }
         function F(e, t) {
@@ -52536,7 +57562,7 @@ function updateAAOsTime(e) {
                     null
                 :   i;
         }
-        function H(e, t, i) {
+        function $(e, t, i) {
             return (
                 ((e = document.createElement(e)).className = t || ''),
                 i && i.appendChild(e),
@@ -52547,10 +57573,10 @@ function updateAAOsTime(e) {
             var t = e.parentNode;
             t && t.removeChild(e);
         }
-        function W(e) {
+        function q(e) {
             for (; e.firstChild;) e.removeChild(e.firstChild);
         }
-        function q(e) {
+        function W(e) {
             var t = e.parentNode;
             t && t.lastChild !== e && t.appendChild(e);
         }
@@ -52564,14 +57590,14 @@ function updateAAOsTime(e) {
                 :   0 < (e = J(e)).length &&
                         new RegExp('(^|\\s)' + t + '(\\s|$)').test(e);
         }
-        function K(e, t) {
+        function G(e, t) {
             var i;
             if (void 0 !== e.classList)
                 for (var n = d(t), s = 0, o = n.length; s < o; s++)
                     e.classList.add(n[s]);
             else Z(e, t) || Y(e, ((i = J(e)) ? i + ' ' : '') + t);
         }
-        function G(e, t) {
+        function K(e, t) {
             void 0 !== e.classList ?
                 e.classList.remove(t)
             :   Y(e, c((' ' + J(e) + ' ').replace(' ' + t + ' ', ' ')));
@@ -52620,14 +57646,14 @@ function updateAAOsTime(e) {
         function ee(e, t, i) {
             ((t = t || new y(0, 0)),
                 (e.style[si] =
-                    (Kt.ie3d ?
+                    (Gt.ie3d ?
                         'translate(' + t.x + 'px,' + t.y + 'px)'
                     :   'translate3d(' + t.x + 'px,' + t.y + 'px,0)') +
                     (i ? ' scale(' + i + ')' : '')));
         }
         function te(e, t) {
             ((e._leaflet_pos = t),
-                Kt.any3d ?
+                Gt.any3d ?
                     ee(e, t)
                 :   ((e.style.left = t.x + 'px'), (e.style.top = t.y + 'px')));
         }
@@ -52705,9 +57731,9 @@ function updateAAOsTime(e) {
                     function (t) {
                         return i.call(n || e, t || window.event);
                     }),
-                !Kt.touchNative && Kt.pointer && 0 === t.indexOf('touch') ?
-                    (o = j(e, t, o))
-                : Kt.touch && 'dblclick' === t ? (o = R(e, o))
+                !Gt.touchNative && Gt.pointer && 0 === t.indexOf('touch') ?
+                    (o = D(e, t, o))
+                : Gt.touch && 'dblclick' === t ? (o = N(e, o))
                 : 'addEventListener' in e ?
                     (
                         'touchstart' === t ||
@@ -52718,7 +57744,7 @@ function updateAAOsTime(e) {
                         e.addEventListener(
                             ci[t] || t,
                             o,
-                            !!Kt.passiveEvents && { passive: !1 }
+                            !!Gt.passiveEvents && { passive: !1 }
                         )
                     : 'mouseenter' === t || 'mouseleave' === t ?
                         e.addEventListener(
@@ -52737,13 +57763,13 @@ function updateAAOsTime(e) {
             var a, r;
             ((o = o || t + s(i) + (n ? '_' + s(n) : '')),
                 (i = e[li] && e[li][o]) &&
-                    (!Kt.touchNative && Kt.pointer && 0 === t.indexOf('touch') ?
+                    (!Gt.touchNative && Gt.pointer && 0 === t.indexOf('touch') ?
                         ((n = e),
                         (r = i),
                         Xt[(a = t)] ?
                             n.removeEventListener(Xt[a], r, !1)
                         :   console.warn('wrong event specified:', a))
-                    : Kt.touch && 'dblclick' === t ?
+                    : Gt.touch && 'dblclick' === t ?
                         ((n = i),
                         (r = e).removeEventListener('dblclick', n.dblclick),
                         r.removeEventListener('click', n.simDblclick))
@@ -52796,7 +57822,7 @@ function updateAAOsTime(e) {
         }
         function we(e) {
             return (
-                Kt.edge ? e.wheelDeltaY / 2
+                Gt.edge ? e.wheelDeltaY / 2
                 : e.deltaY && 0 === e.deltaMode ? -e.deltaY / di
                 : e.deltaY && 1 === e.deltaMode ? 20 * -e.deltaY
                 : e.deltaY && 2 === e.deltaMode ? 60 * -e.deltaY
@@ -52826,7 +57852,7 @@ function updateAAOsTime(e) {
                 u < h;
                 u++
             )
-                e[u]._code = Ie(e[u], t);
+                e[u]._code = Pe(e[u], t);
             for (o = 0; o < 4; o++) {
                 for (
                     l = d[o], n = [], u = 0, s = (h = e.length) - 1;
@@ -52837,39 +57863,39 @@ function updateAAOsTime(e) {
                         (r = e[s]),
                         a._code & l ?
                             r._code & l ||
-                            (((c = Me(r, a, l, t, i))._code = Ie(c, t)),
+                            (((c = Me(r, a, l, t, i))._code = Pe(c, t)),
                             n.push(c))
                         :   (r._code & l &&
-                                (((c = Me(r, a, l, t, i))._code = Ie(c, t)),
+                                (((c = Me(r, a, l, t, i))._code = Pe(c, t)),
                                 n.push(c)),
                             n.push(a)));
                 e = n;
             }
             return e;
         }
-        function ze(e, t) {
+        function Te(e, t) {
             var i, n, s, o, a, r, l;
             if (!e || 0 === e.length) throw new Error('latlngs not passed');
-            je(e) ||
+            De(e) ||
                 (console.warn(
                     'latlngs are not flat! Only the first ring will be used'
                 ),
                 (e = e[0]));
             for (
-                var c = S([0, 0]),
-                    d = z(e),
+                var c = z([0, 0]),
+                    d = T(e),
                     u =
                         (d.getNorthWest().distanceTo(d.getSouthWest()) *
                             d.getNorthEast().distanceTo(d.getNorthWest()) <
-                            1700 && (c = Te(e)),
+                            1700 && (c = Se(e)),
                         e.length),
                     h = [],
                     p = 0;
                 p < u;
                 p++
             ) {
-                var m = S(e[p]);
-                h.push(t.project(S([m.lat - c.lat, m.lng - c.lng])));
+                var m = z(e[p]);
+                h.push(t.project(z([m.lat - c.lat, m.lng - c.lng])));
             }
             for (p = a = r = l = 0, i = u - 1; p < u; i = p++)
                 ((n = h[p]),
@@ -52880,17 +57906,17 @@ function updateAAOsTime(e) {
                     (a += 3 * o));
             return (
                 (d = 0 === a ? h[0] : [r / a, l / a]),
-                S([(d = t.unproject(w(d))).lat + c.lat, d.lng + c.lng])
+                z([(d = t.unproject(w(d))).lat + c.lat, d.lng + c.lng])
             );
         }
-        function Te(e) {
+        function Se(e) {
             for (var t = 0, i = 0, n = 0, s = 0; s < e.length; s++) {
-                var o = S(e[s]);
+                var o = z(e[s]);
                 ((t += o.lat), (i += o.lng), n++);
             }
-            return S([t / n, i / n]);
+            return z([t / n, i / n]);
         }
-        function Se(e, t) {
+        function ze(e, t) {
             if (t && e.length) {
                 var i = (e = (function (e, t) {
                         for (
@@ -52916,7 +57942,7 @@ function updateAAOsTime(e) {
                             l,
                             c = 0;
                         for (r = s + 1; r <= o - 1; r++)
-                            c < (l = Pe(t[r], t[s], t[o], !0)) &&
+                            c < (l = Ie(t[r], t[s], t[o], !0)) &&
                                 ((a = r), (c = l));
                         n < c &&
                             ((i[a] = 1), e(t, i, n, s, a), e(t, i, n, a, o));
@@ -52929,18 +57955,18 @@ function updateAAOsTime(e) {
             return e.slice();
         }
         function Ae(e, t, i) {
-            return Math.sqrt(Pe(e, t, i, !0));
+            return Math.sqrt(Ie(e, t, i, !0));
         }
         function Ee(e, t, i, n, s) {
             var o,
                 a,
                 r,
-                l = n ? ri : Ie(e, i),
-                c = Ie(t, i);
+                l = n ? ri : Pe(e, i),
+                c = Pe(t, i);
             for (ri = c; ;) {
                 if (!(l | c)) return [e, t];
                 if (l & c) return !1;
-                ((r = Ie((a = Me(e, t, (o = l || c), i, s)), i)),
+                ((r = Pe((a = Me(e, t, (o = l || c), i, s)), i)),
                     o === l ? ((e = a), (l = r)) : ((t = a), (c = r)));
             }
         }
@@ -52958,7 +57984,7 @@ function updateAAOsTime(e) {
                 new y(o, a, s)
             );
         }
-        function Ie(e, t) {
+        function Pe(e, t) {
             var i = 0;
             return (
                 e.x < t.min.x ? (i |= 1) : e.x > t.max.x && (i |= 2),
@@ -52966,7 +57992,7 @@ function updateAAOsTime(e) {
                 i
             );
         }
-        function Pe(e, t, i, n) {
+        function Ie(e, t, i, n) {
             var s = t.x,
                 o = ((t = t.y), i.x - s),
                 a = i.y - t,
@@ -52981,42 +58007,42 @@ function updateAAOsTime(e) {
                 n ? o * o + a * a : new y(s, t)
             );
         }
-        function je(e) {
+        function De(e) {
             return (
                 !Je(e[0]) || ('object' != typeof e[0][0] && void 0 !== e[0][0])
             );
         }
-        function De(e) {
+        function je(e) {
             return (
                 console.warn(
                     'Deprecated use of _flat, please use L.LineUtil.isFlat instead.'
                 ),
-                je(e)
+                De(e)
             );
         }
-        function Le(e, t) {
+        function Re(e, t) {
             var i, n, s, o, a, r;
             if (!e || 0 === e.length) throw new Error('latlngs not passed');
-            je(e) ||
+            De(e) ||
                 (console.warn(
                     'latlngs are not flat! Only the first ring will be used'
                 ),
                 (e = e[0]));
             for (
-                var l = S([0, 0]),
-                    c = z(e),
+                var l = z([0, 0]),
+                    c = T(e),
                     d =
                         (c.getNorthWest().distanceTo(c.getSouthWest()) *
                             c.getNorthEast().distanceTo(c.getNorthWest()) <
-                            1700 && (l = Te(e)),
+                            1700 && (l = Se(e)),
                         e.length),
                     u = [],
                     h = 0;
                 h < d;
                 h++
             ) {
-                var p = S(e[h]);
-                u.push(t.project(S([p.lat - l.lat, p.lng - l.lng])));
+                var p = z(e[h]);
+                u.push(t.project(z([p.lat - l.lat, p.lng - l.lng])));
             }
             for (i = h = 0; h < d - 1; h++) i += u[h].distanceTo(u[h + 1]) / 2;
             if (0 === i) r = u[0];
@@ -53033,7 +58059,7 @@ function updateAAOsTime(e) {
                         ];
                         break;
                     }
-            return S([(c = t.unproject(w(r))).lat + l.lat, c.lng + l.lng]);
+            return z([(c = t.unproject(w(r))).lat + l.lat, c.lng + l.lng]);
         }
         function Oe(e, t) {
             var i,
@@ -53048,22 +58074,22 @@ function updateAAOsTime(e) {
             if (!r && !a) return null;
             switch (a.type) {
                 case 'Point':
-                    return Ne(c, e, (i = d(r)), t);
+                    return Le(c, e, (i = d(r)), t);
                 case 'MultiPoint':
                     for (s = 0, o = r.length; s < o; s++)
-                        ((i = d(r[s])), l.push(Ne(c, e, i, t)));
+                        ((i = d(r[s])), l.push(Le(c, e, i, t)));
                     return new ki(l);
                 case 'LineString':
                 case 'MultiLineString':
                     return (
-                        (n = Re(r, 'LineString' === a.type ? 0 : 1, d)),
+                        (n = Ne(r, 'LineString' === a.type ? 0 : 1, d)),
                         new Mi(n, t)
                     );
                 case 'Polygon':
                 case 'MultiPolygon':
                     return (
-                        (n = Re(r, 'Polygon' === a.type ? 1 : 2, d)),
-                        new Ii(n, t)
+                        (n = Ne(r, 'Polygon' === a.type ? 1 : 2, d)),
+                        new Pi(n, t)
                     );
                 case 'GeometryCollection':
                     for (s = 0, o = a.geometries.length; s < o; s++) {
@@ -53088,28 +58114,28 @@ function updateAAOsTime(e) {
                     throw new Error('Invalid GeoJSON object.');
             }
         }
-        function Ne(e, t, i, n) {
-            return e ? e(t, i) : new Ti(i, n && n.markersInheritOptions && n);
+        function Le(e, t, i, n) {
+            return e ? e(t, i) : new Si(i, n && n.markersInheritOptions && n);
         }
         function Be(e) {
-            return new T(e[1], e[0], e[2]);
+            return new S(e[1], e[0], e[2]);
         }
-        function Re(e, t, i) {
+        function Ne(e, t, i) {
             for (var n, s = [], o = 0, a = e.length; o < a; o++)
-                ((n = t ? Re(e[o], t - 1, i) : (i || Be)(e[o])), s.push(n));
+                ((n = t ? Ne(e[o], t - 1, i) : (i || Be)(e[o])), s.push(n));
             return s;
         }
-        function $e(e, t) {
-            return void 0 !== (e = S(e)).alt ?
+        function He(e, t) {
+            return void 0 !== (e = z(e)).alt ?
                     [l(e.lng, t), l(e.lat, t), l(e.alt, t)]
                 :   [l(e.lng, t), l(e.lat, t)];
         }
         function Fe(e, t, i, n) {
             for (var s = [], o = 0, a = e.length; o < a; o++)
-                s.push(t ? Fe(e[o], je(e[o]) ? 0 : t - 1, i, n) : $e(e[o], n));
+                s.push(t ? Fe(e[o], De(e[o]) ? 0 : t - 1, i, n) : He(e[o], n));
             return (!t && i && 0 < s.length && s.push(s[0].slice()), s);
         }
-        function He(e, i) {
+        function $e(e, i) {
             return e.feature ? t({}, e.feature, { geometry: i }) : Ve(i);
         }
         function Ve(e) {
@@ -53117,24 +58143,24 @@ function updateAAOsTime(e) {
                     e
                 :   { type: 'Feature', properties: {}, geometry: e };
         }
-        function We(e, t) {
-            return new Pi(e, t);
-        }
         function qe(e, t) {
+            return new Ii(e, t);
+        }
+        function We(e, t) {
             return new Fi(e, t);
         }
         function Ue(e) {
-            return Kt.canvas ? new Wi(e) : null;
+            return Gt.canvas ? new qi(e) : null;
         }
         function Ze(e) {
-            return Kt.svg || Kt.vml ? new Zi(e) : null;
+            return Gt.svg || Gt.vml ? new Zi(e) : null;
         }
-        var Ke =
+        var Ge =
                 Object.create ||
                 function (e) {
                     return ((i.prototype = e), new i());
                 },
-            Ge = 0,
+            Ke = 0,
             Ye = /\{ *([\w_ -]+) *\}/g,
             Je =
                 Array.isArray ||
@@ -53157,10 +58183,10 @@ function updateAAOsTime(e) {
             it = {
                 __proto__: null,
                 extend: t,
-                create: Ke,
+                create: Ge,
                 bind: n,
                 get lastId() {
-                    return Ge;
+                    return Ke;
                 },
                 stamp: s,
                 throttle: o,
@@ -53188,7 +58214,7 @@ function updateAAOsTime(e) {
             }
             var n,
                 s = (i.__super__ = this.prototype),
-                o = Ke(s);
+                o = Ge(s);
             for (n in (((o.constructor = i).prototype = o), this))
                 Object.prototype.hasOwnProperty.call(this, n) &&
                     'prototype' !== n &&
@@ -53212,7 +58238,7 @@ function updateAAOsTime(e) {
                 delete o.statics,
                 delete o.includes,
                 o.options &&
-                    ((o.options = s.options ? Ke(s.options) : {}),
+                    ((o.options = s.options ? Ge(s.options) : {}),
                     t(o.options, e.options)),
                 (o._initHooks = []),
                 (o.callInitHooks = function () {
@@ -53593,10 +58619,10 @@ function updateAAOsTime(e) {
                         i,
                         n = this._southWest,
                         s = this._northEast;
-                    if (e instanceof T) i = t = e;
+                    if (e instanceof S) i = t = e;
                     else {
                         if (!(e instanceof C))
-                            return e ? this.extend(S(e) || z(e)) : this;
+                            return e ? this.extend(z(e) || T(e)) : this;
                         if (((t = e._southWest), (i = e._northEast), !t || !i))
                             return this;
                     }
@@ -53606,8 +58632,8 @@ function updateAAOsTime(e) {
                             (n.lng = Math.min(t.lng, n.lng)),
                             (s.lat = Math.max(i.lat, s.lat)),
                             (s.lng = Math.max(i.lng, s.lng)))
-                        :   ((this._southWest = new T(t.lat, t.lng)),
-                            (this._northEast = new T(i.lat, i.lng))),
+                        :   ((this._southWest = new S(t.lat, t.lng)),
+                            (this._northEast = new S(i.lat, i.lng))),
                         this
                     );
                 },
@@ -53617,12 +58643,12 @@ function updateAAOsTime(e) {
                         n = Math.abs(t.lat - i.lat) * e;
                     e = Math.abs(t.lng - i.lng) * e;
                     return new C(
-                        new T(t.lat - n, t.lng - e),
-                        new T(i.lat + n, i.lng + e)
+                        new S(t.lat - n, t.lng - e),
+                        new S(i.lat + n, i.lng + e)
                     );
                 },
                 getCenter: function () {
-                    return new T(
+                    return new S(
                         (this._southWest.lat + this._northEast.lat) / 2,
                         (this._southWest.lng + this._northEast.lng) / 2
                     );
@@ -53634,10 +58660,10 @@ function updateAAOsTime(e) {
                     return this._northEast;
                 },
                 getNorthWest: function () {
-                    return new T(this.getNorth(), this.getWest());
+                    return new S(this.getNorth(), this.getWest());
                 },
                 getSouthEast: function () {
-                    return new T(this.getSouth(), this.getEast());
+                    return new S(this.getSouth(), this.getEast());
                 },
                 getWest: function () {
                     return this._southWest.lng;
@@ -53655,11 +58681,11 @@ function updateAAOsTime(e) {
                     e = (
                         (
                             'number' == typeof e[0] ||
-                                e instanceof T ||
+                                e instanceof S ||
                                 'lat' in e
                         ) ?
-                            S
-                        :   z)(e);
+                            z
+                        :   T)(e);
                     var t,
                         i,
                         n = this._southWest,
@@ -53675,7 +58701,7 @@ function updateAAOsTime(e) {
                     );
                 },
                 intersects: function (e) {
-                    e = z(e);
+                    e = T(e);
                     var t = this._southWest,
                         i = this._northEast,
                         n = e.getSouthWest(),
@@ -53686,7 +58712,7 @@ function updateAAOsTime(e) {
                     return s && e;
                 },
                 overlaps: function (e) {
-                    e = z(e);
+                    e = T(e);
                     var t = this._southWest,
                         i = this._northEast,
                         n = e.getSouthWest(),
@@ -53705,7 +58731,7 @@ function updateAAOsTime(e) {
                 equals: function (e, t) {
                     return (
                         !!e &&
-                        ((e = z(e)),
+                        ((e = T(e)),
                         this._southWest.equals(e.getSouthWest(), t) &&
                             this._northEast.equals(e.getNorthEast(), t))
                     );
@@ -53752,11 +58778,11 @@ function updateAAOsTime(e) {
                             ))
                         );
                 },
-                infinite: !(T.prototype = {
+                infinite: !(S.prototype = {
                     equals: function (e, t) {
                         return (
                             !!e &&
-                            ((e = S(e)),
+                            ((e = z(e)),
                             Math.max(
                                 Math.abs(this.lat - e.lat),
                                 Math.abs(this.lng - e.lng)
@@ -53773,7 +58799,7 @@ function updateAAOsTime(e) {
                         );
                     },
                     distanceTo: function (e) {
-                        return rt.distance(this, S(e));
+                        return rt.distance(this, z(e));
                     },
                     wrap: function () {
                         return rt.wrapLatLng(this);
@@ -53782,18 +58808,18 @@ function updateAAOsTime(e) {
                         var t =
                             (e = (180 * e) / 40075017) /
                             Math.cos((Math.PI / 180) * this.lat);
-                        return z(
+                        return T(
                             [this.lat - e, this.lng - t],
                             [this.lat + e, this.lng + t]
                         );
                     },
                     clone: function () {
-                        return new T(this.lat, this.lng, this.alt);
+                        return new S(this.lat, this.lng, this.alt);
                     },
                 }),
                 wrapLatLng: function (e) {
                     var t = this.wrapLng ? a(e.lng, this.wrapLng, !0) : e.lng;
-                    return new T(
+                    return new S(
                         this.wrapLat ? a(e.lat, this.wrapLat, !0) : e.lat,
                         t,
                         e.alt
@@ -53809,8 +58835,8 @@ function updateAAOsTime(e) {
                         :   ((i = e.getSouthWest()),
                             (e = e.getNorthEast()),
                             new C(
-                                new T(i.lat - n, i.lng - t),
-                                new T(e.lat - n, e.lng - t)
+                                new S(i.lat - n, i.lng - t),
+                                new S(e.lat - n, e.lng - t)
                             ));
                 },
             },
@@ -53843,7 +58869,7 @@ function updateAAOsTime(e) {
                 },
                 unproject: function (e) {
                     var t = 180 / Math.PI;
-                    return new T(
+                    return new S(
                         (2 * Math.atan(Math.exp(e.y / this.R)) - Math.PI / 2) *
                             t,
                         (e.x * t) / this.R
@@ -53885,44 +58911,44 @@ function updateAAOsTime(e) {
             vt = 'ActiveXObject' in window,
             bt = vt && !document.addEventListener,
             yt = 'msLaunchUri' in navigator && !('documentMode' in document),
-            wt = P('webkit'),
-            kt = P('android'),
-            xt = P('android 2') || P('android 3'),
+            wt = I('webkit'),
+            kt = I('android'),
+            xt = I('android 2') || I('android 3'),
             Ct = parseInt(
                 /WebKit\/([0-9]+)|$/.exec(navigator.userAgent)[1],
                 10
             ),
-            zt =
+            Tt =
                 ((Ct =
-                    kt && P('Google') && Ct < 537 && !('AudioNode' in window)),
+                    kt && I('Google') && Ct < 537 && !('AudioNode' in window)),
                 !!window.opera),
-            Tt = !yt && P('chrome'),
-            St = P('gecko') && !wt && !zt && !vt,
-            At = !Tt && P('safari'),
-            Et = P('phantom'),
+            St = !yt && I('chrome'),
+            zt = I('gecko') && !wt && !Tt && !vt,
+            At = !St && I('safari'),
+            Et = I('phantom'),
             Mt = 'OTransition' in gt,
-            It = 0 === navigator.platform.indexOf('Win'),
-            Pt = vt && 'transition' in gt,
-            jt =
+            Pt = 0 === navigator.platform.indexOf('Win'),
+            It = vt && 'transition' in gt,
+            Dt =
                 'WebKitCSSMatrix' in window &&
                 'm11' in new window.WebKitCSSMatrix() &&
                 !xt,
-            Dt =
+            jt =
                 ((gt = 'MozPerspective' in gt),
-                !window.L_DISABLE_3D && (Pt || jt || gt) && !Mt && !Et),
-            Lt = (Gi = 'undefined' != typeof orientation || P('mobile')) && wt,
-            Ot = Gi && jt,
-            Nt = !window.PointerEvent && window.MSPointerEvent,
-            Bt = !(!window.PointerEvent && !Nt),
-            Rt = 'ontouchstart' in window || !!window.TouchEvent,
-            $t = !window.L_NO_TOUCH && (Rt || Bt),
-            Ft = Gi && zt,
-            Ht = Gi && St,
+                !window.L_DISABLE_3D && (It || Dt || gt) && !Mt && !Et),
+            Rt = (Ki = 'undefined' != typeof orientation || I('mobile')) && wt,
+            Ot = Ki && Dt,
+            Lt = !window.PointerEvent && window.MSPointerEvent,
+            Bt = !(!window.PointerEvent && !Lt),
+            Nt = 'ontouchstart' in window || !!window.TouchEvent,
+            Ht = !window.L_NO_TOUCH && (Nt || Bt),
+            Ft = Ki && Tt,
+            $t = Ki && zt,
             Vt =
                 1 <
                 (window.devicePixelRatio ||
                     window.screen.deviceXDPI / window.screen.logicalXDPI),
-            Wt = (function () {
+            qt = (function () {
                 var e = !1;
                 try {
                     var t = Object.defineProperty({}, 'passive', {
@@ -53939,14 +58965,14 @@ function updateAAOsTime(e) {
                 } catch (e) {}
                 return e;
             })(),
-            qt = !!document.createElement('canvas').getContext,
+            Wt = !!document.createElement('canvas').getContext,
             Ut = !(!document.createElementNS || !M('svg').createSVGRect),
             Zt =
                 !!Ut &&
                 (((Zt = document.createElement('div')).innerHTML = '<svg/>'),
                 'http://www.w3.org/2000/svg' ===
                     (Zt.firstChild && Zt.firstChild.namespaceURI)),
-            Kt = {
+            Gt = {
                 ie: vt,
                 ielt9: bt,
                 edge: yt,
@@ -53954,29 +58980,29 @@ function updateAAOsTime(e) {
                 android: kt,
                 android23: xt,
                 androidStock: Ct,
-                opera: zt,
-                chrome: Tt,
-                gecko: St,
+                opera: Tt,
+                chrome: St,
+                gecko: zt,
                 safari: At,
                 phantom: Et,
                 opera12: Mt,
-                win: It,
-                ie3d: Pt,
-                webkit3d: jt,
+                win: Pt,
+                ie3d: It,
+                webkit3d: Dt,
                 gecko3d: gt,
-                any3d: Dt,
-                mobile: Gi,
-                mobileWebkit: Lt,
+                any3d: jt,
+                mobile: Ki,
+                mobileWebkit: Rt,
                 mobileWebkit3d: Ot,
-                msPointer: Nt,
+                msPointer: Lt,
                 pointer: Bt,
-                touch: $t,
-                touchNative: Rt,
+                touch: Ht,
+                touchNative: Nt,
                 mobileOpera: Ft,
-                mobileGecko: Ht,
+                mobileGecko: $t,
                 retina: Vt,
-                passiveEvents: Wt,
-                canvas: qt,
+                passiveEvents: qt,
+                canvas: Wt,
                 svg: Ut,
                 vml:
                     !Ut &&
@@ -53998,12 +59024,12 @@ function updateAAOsTime(e) {
                 mac: 0 === navigator.platform.indexOf('Mac'),
                 linux: 0 === navigator.platform.indexOf('Linux'),
             },
-            Gt = Kt.msPointer ? 'MSPointerDown' : 'pointerdown',
-            Yt = Kt.msPointer ? 'MSPointerMove' : 'pointermove',
-            Jt = Kt.msPointer ? 'MSPointerUp' : 'pointerup',
-            Qt = Kt.msPointer ? 'MSPointerCancel' : 'pointercancel',
+            Kt = Gt.msPointer ? 'MSPointerDown' : 'pointerdown',
+            Yt = Gt.msPointer ? 'MSPointerMove' : 'pointermove',
+            Jt = Gt.msPointer ? 'MSPointerUp' : 'pointerup',
+            Qt = Gt.msPointer ? 'MSPointerCancel' : 'pointercancel',
             Xt = {
-                touchstart: Gt,
+                touchstart: Kt,
                 touchmove: Yt,
                 touchend: Jt,
                 touchcancel: Qt,
@@ -54072,16 +59098,16 @@ function updateAAOsTime(e) {
                 TRANSFORM: si,
                 TRANSITION: oi,
                 TRANSITION_END: ai,
-                get: $,
+                get: H,
                 getStyle: F,
-                create: H,
+                create: $,
                 remove: V,
-                empty: W,
-                toFront: q,
+                empty: q,
+                toFront: W,
                 toBack: U,
                 hasClass: Z,
-                addClass: K,
-                removeClass: G,
+                addClass: G,
+                removeClass: K,
                 setClass: Y,
                 getClass: J,
                 setOpacity: Q,
@@ -54110,8 +59136,8 @@ function updateAAOsTime(e) {
                 wheel: !('onwheel' in window) && 'mousewheel',
             },
             di =
-                Kt.linux && Kt.chrome ? window.devicePixelRatio
-                : Kt.mac ? 3 * window.devicePixelRatio
+                Gt.linux && Gt.chrome ? window.devicePixelRatio
+                : Gt.mac ? 3 * window.devicePixelRatio
                 : 0 < window.devicePixelRatio ? 2 * window.devicePixelRatio
                 : 1,
             ui =
@@ -54206,12 +59232,12 @@ function updateAAOsTime(e) {
                             (this._zoom = this._limitZoom(t.zoom)),
                         t.center &&
                             void 0 !== t.zoom &&
-                            this.setView(S(t.center), t.zoom, { reset: !0 }),
+                            this.setView(z(t.center), t.zoom, { reset: !0 }),
                         this.callInitHooks(),
                         (this._zoomAnimated =
                             oi &&
-                            Kt.any3d &&
-                            !Kt.mobileOpera &&
+                            Gt.any3d &&
+                            !Gt.mobileOpera &&
                             this.options.zoomAnimation),
                         this._zoomAnimated &&
                             (this._createAnimProxy(),
@@ -54227,7 +59253,7 @@ function updateAAOsTime(e) {
                     return (
                         (i = void 0 === i ? this._zoom : this._limitZoom(i)),
                         (e = this._limitCenter(
-                            S(e),
+                            z(e),
                             i,
                             this.options.maxBounds
                         )),
@@ -54263,13 +59289,13 @@ function updateAAOsTime(e) {
                 },
                 zoomIn: function (e, t) {
                     return (
-                        (e = e || (Kt.any3d ? this.options.zoomDelta : 1)),
+                        (e = e || (Gt.any3d ? this.options.zoomDelta : 1)),
                         this.setZoom(this._zoom + e, t)
                     );
                 },
                 zoomOut: function (e, t) {
                     return (
-                        (e = e || (Kt.any3d ? this.options.zoomDelta : 1)),
+                        (e = e || (Gt.any3d ? this.options.zoomDelta : 1)),
                         this.setZoom(this._zoom - e, t)
                     );
                 },
@@ -54283,7 +59309,7 @@ function updateAAOsTime(e) {
                     return this.setView(n, t, { zoom: i });
                 },
                 _getBoundsCenterZoom: function (e, t) {
-                    ((t = t || {}), (e = e.getBounds ? e.getBounds() : z(e)));
+                    ((t = t || {}), (e = e.getBounds ? e.getBounds() : T(e)));
                     var i = w(t.paddingTopLeft || t.padding || [0, 0]),
                         n = w(t.paddingBottomRight || t.padding || [0, 0]),
                         s = this.getBoundsZoom(e, !1, i.add(n));
@@ -54307,7 +59333,7 @@ function updateAAOsTime(e) {
                             });
                 },
                 fitBounds: function (e, t) {
-                    if ((e = z(e)).isValid())
+                    if ((e = T(e)).isValid())
                         return (
                             (e = this._getBoundsCenterZoom(e, t)),
                             this.setView(e.center, e.zoom, t)
@@ -54343,7 +59369,7 @@ function updateAAOsTime(e) {
                                     )),
                                 t.noMoveStart || this.fire('movestart'),
                                 !1 !== t.animate ?
-                                    (K(this._mapPane, 'leaflet-pan-anim'),
+                                    (G(this._mapPane, 'leaflet-pan-anim'),
                                     (i = this._getMapPanePos()
                                         .subtract(e)
                                         .round()),
@@ -54388,7 +59414,7 @@ function updateAAOsTime(e) {
                             _
                         );
                     }
-                    if (!1 === (i = i || {}).animate || !Kt.any3d)
+                    if (!1 === (i = i || {}).animate || !Gt.any3d)
                         return this.setView(e, t, i);
                     this._stop();
                     var r = this.project(this.getCenter()),
@@ -54396,7 +59422,7 @@ function updateAAOsTime(e) {
                         c = this.getSize(),
                         d = this._zoom,
                         u =
-                            ((e = S(e)),
+                            ((e = z(e)),
                             (t = void 0 === t ? d : t),
                             Math.max(c.x, c.y)),
                         h = u * this.getZoomScale(d, t),
@@ -54442,7 +59468,7 @@ function updateAAOsTime(e) {
                 },
                 setMaxBounds: function (e) {
                     return (
-                        (e = z(e)),
+                        (e = T(e)),
                         this.listens('moveend', this._panInsideMaxBounds) &&
                             this.off('moveend', this._panInsideMaxBounds),
                         e.isValid() ?
@@ -54483,7 +59509,7 @@ function updateAAOsTime(e) {
                 panInsideBounds: function (e, t) {
                     this._enforcingBounds = !0;
                     var i = this.getCenter();
-                    e = this._limitCenter(i, this._zoom, z(e));
+                    e = this._limitCenter(i, this._zoom, T(e));
                     return (
                         i.equals(e) || this.panTo(e, t),
                         (this._enforcingBounds = !1),
@@ -54609,7 +59635,7 @@ function updateAAOsTime(e) {
                     if (this._container._leaflet_id) {
                         var t,
                             i,
-                            n = new T(e.coords.latitude, e.coords.longitude),
+                            n = new S(e.coords.latitude, e.coords.longitude),
                             s = n.toBounds(2 * e.coords.accuracy),
                             o = this._locateOptions,
                             a =
@@ -54678,7 +59704,7 @@ function updateAAOsTime(e) {
                 },
                 createPane: function (e, t) {
                     return (
-                        (t = H(
+                        (t = $(
                             'div',
                             'leaflet-pane' +
                                 (e ?
@@ -54725,7 +59751,7 @@ function updateAAOsTime(e) {
                     );
                 },
                 getBoundsZoom: function (e, t, i) {
-                    ((e = z(e)), (i = w(i || [0, 0])));
+                    ((e = T(e)), (i = w(i || [0, 0])));
                     var n = this.getZoom() || 0,
                         s = this.getMinZoom(),
                         o = this.getMaxZoom(),
@@ -54737,7 +59763,7 @@ function updateAAOsTime(e) {
                                 this.project(e, n),
                                 this.project(a, n)
                             ).getSize()),
-                            (a = Kt.any3d ? this.options.zoomSnap : 1),
+                            (a = Gt.any3d ? this.options.zoomSnap : 1),
                             i.x / e.x);
                     ((i = i.y / e.y),
                         (e = t ? Math.max(r, i) : Math.min(r, i)),
@@ -54802,7 +59828,7 @@ function updateAAOsTime(e) {
                 project: function (e, t) {
                     return (
                         (t = void 0 === t ? this._zoom : t),
-                        this.options.crs.latLngToPoint(S(e), t)
+                        this.options.crs.latLngToPoint(z(e), t)
                     );
                 },
                 unproject: function (e, t) {
@@ -54818,18 +59844,18 @@ function updateAAOsTime(e) {
                     );
                 },
                 latLngToLayerPoint: function (e) {
-                    return this.project(S(e))
+                    return this.project(z(e))
                         ._round()
                         ._subtract(this.getPixelOrigin());
                 },
                 wrapLatLng: function (e) {
-                    return this.options.crs.wrapLatLng(S(e));
+                    return this.options.crs.wrapLatLng(z(e));
                 },
                 wrapLatLngBounds: function (e) {
-                    return this.options.crs.wrapLatLngBounds(z(e));
+                    return this.options.crs.wrapLatLngBounds(T(e));
                 },
                 distance: function (e, t) {
-                    return this.options.crs.distance(S(e), S(t));
+                    return this.options.crs.distance(z(e), z(t));
                 },
                 containerPointToLayerPoint: function (e) {
                     return w(e).subtract(this._getMapPanePos());
@@ -54845,7 +59871,7 @@ function updateAAOsTime(e) {
                 },
                 latLngToContainerPoint: function (e) {
                     return this.layerPointToContainerPoint(
-                        this.latLngToLayerPoint(S(e))
+                        this.latLngToLayerPoint(z(e))
                     );
                 },
                 mouseEventToContainerPoint: function (e) {
@@ -54862,7 +59888,7 @@ function updateAAOsTime(e) {
                     );
                 },
                 _initContainer: function (e) {
-                    if (!(e = this._container = $(e)))
+                    if (!(e = this._container = H(e)))
                         throw new Error('Map container not found.');
                     if (e._leaflet_id)
                         throw new Error(
@@ -54875,14 +59901,14 @@ function updateAAOsTime(e) {
                     var e = this._container,
                         t =
                             ((this._fadeAnimated =
-                                this.options.fadeAnimation && Kt.any3d),
-                            K(
+                                this.options.fadeAnimation && Gt.any3d),
+                            G(
                                 e,
                                 'leaflet-container' +
-                                    (Kt.touch ? ' leaflet-touch' : '') +
-                                    (Kt.retina ? ' leaflet-retina' : '') +
-                                    (Kt.ielt9 ? ' leaflet-oldie' : '') +
-                                    (Kt.safari ? ' leaflet-safari' : '') +
+                                    (Gt.touch ? ' leaflet-touch' : '') +
+                                    (Gt.retina ? ' leaflet-retina' : '') +
+                                    (Gt.ielt9 ? ' leaflet-oldie' : '') +
+                                    (Gt.safari ? ' leaflet-safari' : '') +
                                     (this._fadeAnimated ? ' leaflet-fade-anim'
                                     :   '')
                             ),
@@ -54910,8 +59936,8 @@ function updateAAOsTime(e) {
                         this.createPane('tooltipPane'),
                         this.createPane('popupPane'),
                         this.options.markerZoomAnimation ||
-                            (K(e.markerPane, 'leaflet-zoom-hide'),
-                            K(e.shadowPane, 'leaflet-zoom-hide')));
+                            (G(e.markerPane, 'leaflet-zoom-hide'),
+                            G(e.shadowPane, 'leaflet-zoom-hide')));
                 },
                 _resetView: function (e, t, i) {
                     te(this._mapPane, new y(0, 0));
@@ -54981,7 +60007,7 @@ function updateAAOsTime(e) {
                     ),
                         this.options.trackResize &&
                             t(window, 'resize', this._onResize, this),
-                        Kt.any3d &&
+                        Gt.any3d &&
                             this.options.transform3DLimit &&
                             (e ? this.off : this.on).call(
                                 this,
@@ -55217,7 +60243,7 @@ function updateAAOsTime(e) {
                 _limitZoom: function (e) {
                     var t = this.getMinZoom(),
                         i = this.getMaxZoom(),
-                        n = Kt.any3d ? this.options.zoomSnap : 1;
+                        n = Gt.any3d ? this.options.zoomSnap : 1;
                     return (
                         n && (e = Math.round(e / n) * n),
                         Math.max(t, Math.min(i, e))
@@ -55227,7 +60253,7 @@ function updateAAOsTime(e) {
                     this.fire('move');
                 },
                 _onPanTransitionEnd: function () {
-                    (G(this._mapPane, 'leaflet-pan-anim'),
+                    (K(this._mapPane, 'leaflet-pan-anim'),
                         this.fire('moveend'));
                 },
                 _tryAnimatedPan: function (e, t) {
@@ -55241,7 +60267,7 @@ function updateAAOsTime(e) {
                     );
                 },
                 _createAnimProxy: function () {
-                    var e = (this._proxy = H(
+                    var e = (this._proxy = $(
                         'div',
                         'leaflet-proxy leaflet-zoom-animated'
                     ));
@@ -55319,7 +60345,7 @@ function updateAAOsTime(e) {
                             ((this._animatingZoom = !0),
                             (this._animateToCenter = e),
                             (this._animateToZoom = t),
-                            K(this._mapPane, 'leaflet-zoom-anim')),
+                            G(this._mapPane, 'leaflet-zoom-anim')),
                         this.fire('zoomanim', {
                             center: e,
                             zoom: t,
@@ -55338,7 +60364,7 @@ function updateAAOsTime(e) {
                 },
                 _onZoomTransitionEnd: function () {
                     this._animatingZoom &&
-                        (this._mapPane && G(this._mapPane, 'leaflet-zoom-anim'),
+                        (this._mapPane && K(this._mapPane, 'leaflet-zoom-anim'),
                         (this._animatingZoom = !1),
                         this._move(
                             this._animateToCenter,
@@ -55378,7 +60404,7 @@ function updateAAOsTime(e) {
                         i = this.getPosition();
                     e = e._controlCorners[i];
                     return (
-                        K(t, 'leaflet-control'),
+                        G(t, 'leaflet-control'),
                         -1 !== i.indexOf('bottom') ?
                             e.insertBefore(t, e.firstChild)
                         :   e.appendChild(t),
@@ -55414,11 +60440,11 @@ function updateAAOsTime(e) {
                     },
                     _initControlPos: function () {
                         function e(e, s) {
-                            t[e + s] = H('div', i + e + ' ' + i + s, n);
+                            t[e + s] = $('div', i + e + ' ' + i + s, n);
                         }
                         var t = (this._controlCorners = {}),
                             i = 'leaflet-',
-                            n = (this._controlContainer = H(
+                            n = (this._controlContainer = $(
                                 'div',
                                 i + 'control-container',
                                 this._container
@@ -55518,19 +60544,19 @@ function updateAAOsTime(e) {
                         );
                     },
                     expand: function () {
-                        (K(this._container, 'leaflet-control-layers-expanded'),
+                        (G(this._container, 'leaflet-control-layers-expanded'),
                             (this._section.style.height = null));
                         var e =
                             this._map.getSize().y -
                             (this._container.offsetTop + 50);
                         return (
                             e < this._section.clientHeight ?
-                                (K(
+                                (G(
                                     this._section,
                                     'leaflet-control-layers-scrollbar'
                                 ),
                                 (this._section.style.height = e + 'px'))
-                            :   G(
+                            :   K(
                                     this._section,
                                     'leaflet-control-layers-scrollbar'
                                 ),
@@ -55540,7 +60566,7 @@ function updateAAOsTime(e) {
                     },
                     collapse: function () {
                         return (
-                            G(
+                            K(
                                 this._container,
                                 'leaflet-control-layers-expanded'
                             ),
@@ -55549,13 +60575,13 @@ function updateAAOsTime(e) {
                     },
                     _initLayout: function () {
                         var e = 'leaflet-control-layers',
-                            t = (this._container = H('div', e)),
+                            t = (this._container = $('div', e)),
                             i = this.options.collapsed,
                             n =
                                 (t.setAttribute('aria-haspopup', !0),
                                 fe(t),
                                 _e(t),
-                                (this._section = H('section', e + '-list'))),
+                                (this._section = $('section', e + '-list'))),
                             s =
                                 (i &&
                                     (this._map.on('click', this.collapse, this),
@@ -55567,7 +60593,7 @@ function updateAAOsTime(e) {
                                         },
                                         this
                                     )),
-                                (this._layersLink = H('a', e + '-toggle', t)));
+                                (this._layersLink = $('a', e + '-toggle', t)));
                         ((s.href = '#'),
                             (s.title = 'Layers'),
                             s.setAttribute('role', 'button'),
@@ -55585,9 +60611,9 @@ function updateAAOsTime(e) {
                                 this
                             ),
                             i || this.expand(),
-                            (this._baseLayersList = H('div', e + '-base', n)),
-                            (this._separator = H('div', e + '-separator', n)),
-                            (this._overlaysList = H('div', e + '-overlays', n)),
+                            (this._baseLayersList = $('div', e + '-base', n)),
+                            (this._separator = $('div', e + '-separator', n)),
+                            (this._overlaysList = $('div', e + '-overlays', n)),
                             t.appendChild(n));
                     },
                     _getLayer: function (e) {
@@ -55625,8 +60651,8 @@ function updateAAOsTime(e) {
                     },
                     _update: function () {
                         if (this._container) {
-                            (W(this._baseLayersList),
-                                W(this._overlaysList),
+                            (q(this._baseLayersList),
+                                q(this._overlaysList),
                                 (this._layerControlInputs = []));
                             for (
                                 var e, t, i, n = 0, s = 0;
@@ -55776,7 +60802,7 @@ function updateAAOsTime(e) {
                 },
                 onAdd: function (e) {
                     var t = 'leaflet-control-zoom',
-                        i = H('div', t + ' leaflet-bar'),
+                        i = $('div', t + ' leaflet-bar'),
                         n = this.options;
                     return (
                         (this._zoomInButton = this._createButton(
@@ -55839,7 +60865,7 @@ function updateAAOsTime(e) {
                 },
                 _createButton: function (e, t, i, n, s) {
                     return (
-                        ((i = H('a', i, n)).innerHTML = e),
+                        ((i = $('a', i, n)).innerHTML = e),
                         (i.href = '#'),
                         (i.title = t),
                         i.setAttribute('role', 'button'),
@@ -55854,8 +60880,8 @@ function updateAAOsTime(e) {
                 _updateDisabled: function () {
                     var e = this._map,
                         t = 'leaflet-disabled';
-                    (G(this._zoomInButton, t),
-                        G(this._zoomOutButton, t),
+                    (K(this._zoomInButton, t),
+                        K(this._zoomOutButton, t),
                         this._zoomInButton.setAttribute(
                             'aria-disabled',
                             'false'
@@ -55865,13 +60891,13 @@ function updateAAOsTime(e) {
                             'false'
                         ),
                         (!this._disabled && e._zoom !== e.getMinZoom()) ||
-                            (K(this._zoomOutButton, t),
+                            (G(this._zoomOutButton, t),
                             this._zoomOutButton.setAttribute(
                                 'aria-disabled',
                                 'true'
                             )),
                         (!this._disabled && e._zoom !== e.getMaxZoom()) ||
-                            (K(this._zoomInButton, t),
+                            (G(this._zoomInButton, t),
                             this._zoomInButton.setAttribute(
                                 'aria-disabled',
                                 'true'
@@ -55894,7 +60920,7 @@ function updateAAOsTime(e) {
                     },
                     onAdd: function (e) {
                         var t = 'leaflet-control-scale',
-                            i = H('div', t),
+                            i = $('div', t),
                             n = this.options;
                         return (
                             this._addScales(n, t + '-line', i),
@@ -55915,8 +60941,8 @@ function updateAAOsTime(e) {
                         );
                     },
                     _addScales: function (e, t, i) {
-                        (e.metric && (this._mScale = H('div', t, i)),
-                            e.imperial && (this._iScale = H('div', t, i)));
+                        (e.metric && (this._mScale = $('div', t, i)),
+                            e.imperial && (this._iScale = $('div', t, i)));
                     },
                     _update: function () {
                         var e = (t = this._map).getSize().y / 2,
@@ -55973,7 +60999,7 @@ function updateAAOsTime(e) {
                     position: 'bottomright',
                     prefix:
                         '<a href="https://leafletjs.com" title="A JavaScript library for interactive maps">' +
-                        (Kt.inlineSvg ?
+                        (Gt.inlineSvg ?
                             '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" class="leaflet-attribution-flag"><path fill="#4C7BE1" d="M0 0h12v4H0z"/><path fill="#FFD500" d="M0 4h12v3H0z"/><path fill="#E0BC00" d="M0 7h12v1H0z"/></svg> '
                         :   '') +
                         'Leaflet</a>',
@@ -55983,7 +61009,7 @@ function updateAAOsTime(e) {
                 },
                 onAdd: function (e) {
                     for (var t in (((e.attributionControl = this)._container =
-                        H('div', 'leaflet-control-attribution')),
+                        $('div', 'leaflet-control-attribution')),
                     fe(this._container),
                     e._layers))
                         e._layers[t].getAttribution &&
@@ -56095,7 +61121,7 @@ function updateAAOsTime(e) {
                         return (e.addHandler(t, this), this);
                     }),
                     { Events: nt })),
-                Kt.touch ? 'touchstart mousedown' : 'mousedown'),
+                Gt.touch ? 'touchstart mousedown' : 'mousedown'),
             bi = st.extend({
                 options: { clickTolerance: 3 },
                 initialize: function (e, t, i, n) {
@@ -56177,14 +61203,14 @@ function updateAAOsTime(e) {
                             this._moved ||
                                 (this.fire('dragstart'),
                                 (this._moved = !0),
-                                K(document.body, 'leaflet-dragging'),
+                                G(document.body, 'leaflet-dragging'),
                                 (this._lastTarget = e.target || e.srcElement),
                                 window.SVGElementInstance &&
                                     this._lastTarget instanceof
                                         window.SVGElementInstance &&
                                     (this._lastTarget =
                                         this._lastTarget.correspondingUseElement),
-                                K(this._lastTarget, 'leaflet-drag-target')),
+                                G(this._lastTarget, 'leaflet-drag-target')),
                             (this._newPos = this._startPos.add(t)),
                             (this._moving = !0),
                             (this._lastEvent = e),
@@ -56200,9 +61226,9 @@ function updateAAOsTime(e) {
                     this._enabled && this.finishDrag();
                 },
                 finishDrag: function (e) {
-                    (G(document.body, 'leaflet-dragging'),
+                    (K(document.body, 'leaflet-dragging'),
                         this._lastTarget &&
-                            (G(this._lastTarget, 'leaflet-drag-target'),
+                            (K(this._lastTarget, 'leaflet-drag-target'),
                             (this._lastTarget = null)),
                         de(document, 'mousemove touchmove', this._onMove, this),
                         de(
@@ -56229,34 +61255,34 @@ function updateAAOsTime(e) {
                 ((kt = {
                     __proto__: null,
                     clipPolygon: Ce,
-                    polygonCenter: ze,
-                    centroid: Te,
+                    polygonCenter: Te,
+                    centroid: Se,
                 }),
                 (xt = {
                     __proto__: null,
-                    simplify: Se,
+                    simplify: ze,
                     pointToSegmentDistance: Ae,
                     closestPointOnSegment: function (e, t, i) {
-                        return Pe(e, t, i);
+                        return Ie(e, t, i);
                     },
                     clipSegment: Ee,
                     _getEdgeIntersection: Me,
-                    _getBitCode: Ie,
-                    _sqClosestPointOnSegment: Pe,
-                    isFlat: je,
-                    _flat: De,
-                    polylineCenter: Le,
+                    _getBitCode: Pe,
+                    _sqClosestPointOnSegment: Ie,
+                    isFlat: De,
+                    _flat: je,
+                    polylineCenter: Re,
                 }),
                 (Ct = {
                     project: function (e) {
                         return new y(e.lng, e.lat);
                     },
                     unproject: function (e) {
-                        return new T(e.y, e.x);
+                        return new S(e.y, e.x);
                     },
                     bounds: new k([-180, -90], [180, 90]),
                 }),
-                (zt = {
+                (Tt = {
                     R: 6378137,
                     R_MINOR: 6356752.314245179,
                     bounds: new k(
@@ -56293,22 +61319,22 @@ function updateAAOsTime(e) {
                                 (t = Math.pow((1 - t) / (1 + t), o / 2)),
                                 (r += c =
                                     Math.PI / 2 - 2 * Math.atan(a * t) - r));
-                        return new T(r * i, (e.x * i) / n);
+                        return new S(r * i, (e.x * i) / n);
                     },
                 }),
-                (Tt = {
+                (St = {
                     __proto__: null,
                     LonLat: Ct,
-                    Mercator: zt,
+                    Mercator: Tt,
                     SphericalMercator: lt,
                 }),
                 (At = t({}, rt, {
                     code: 'EPSG:3395',
-                    projection: zt,
+                    projection: Tt,
                     transformation: E(
-                        (St = 0.5 / (Math.PI * zt.R)),
+                        (zt = 0.5 / (Math.PI * Tt.R)),
                         0.5,
-                        -St,
+                        -zt,
                         0.5
                     ),
                 })),
@@ -56649,7 +61675,7 @@ function updateAAOsTime(e) {
                 },
                 _getIconUrl: function (e) {
                     return (
-                        (Kt.retina && this.options[e + 'RetinaUrl']) ||
+                        (Gt.retina && this.options[e + 'RetinaUrl']) ||
                         this.options[e + 'Url']
                     );
                 },
@@ -56683,7 +61709,7 @@ function updateAAOsTime(e) {
                     );
                 },
                 _detectIconPath: function () {
-                    var e = H(
+                    var e = $(
                             'div',
                             'leaflet-default-icon-path',
                             document.body
@@ -56702,7 +61728,7 @@ function updateAAOsTime(e) {
                     );
                 },
             }),
-            zi = yt.extend({
+            Ti = yt.extend({
                 initialize: function (e) {
                     this._marker = e;
                 },
@@ -56720,7 +61746,7 @@ function updateAAOsTime(e) {
                                 this
                             )
                             .enable(),
-                        K(e, 'leaflet-marker-draggable'));
+                        G(e, 'leaflet-marker-draggable'));
                 },
                 removeHooks: function () {
                     (this._draggable
@@ -56735,7 +61761,7 @@ function updateAAOsTime(e) {
                         )
                         .disable(),
                         this._marker._icon &&
-                            G(this._marker._icon, 'leaflet-marker-draggable'));
+                            K(this._marker._icon, 'leaflet-marker-draggable'));
                 },
                 moved: function () {
                     return this._draggable && this._draggable._moved;
@@ -56796,7 +61822,7 @@ function updateAAOsTime(e) {
                         this._marker.fire('moveend').fire('dragend', e));
                 },
             }),
-            Ti = Mt.extend({
+            Si = Mt.extend({
                 options: {
                     icon: new Ci(),
                     interactive: !0,
@@ -56817,7 +61843,7 @@ function updateAAOsTime(e) {
                     autoPanSpeed: 10,
                 },
                 initialize: function (e, t) {
-                    (u(this, t), (this._latlng = S(e)));
+                    (u(this, t), (this._latlng = z(e)));
                 },
                 onAdd: function (e) {
                     ((this._zoomAnimated =
@@ -56847,7 +61873,7 @@ function updateAAOsTime(e) {
                 setLatLng: function (e) {
                     var t = this._latlng;
                     return (
-                        (this._latlng = S(e)),
+                        (this._latlng = z(e)),
                         this.update(),
                         this.fire('move', {
                             oldLatLng: t,
@@ -56899,7 +61925,7 @@ function updateAAOsTime(e) {
                             (n = !0),
                             t.title && (e.title = t.title),
                             'IMG' === e.tagName && (e.alt = t.alt || '')),
-                        K(e, i),
+                        G(e, i),
                         t.keyboard &&
                             ((e.tabIndex = '0'),
                             e.setAttribute('role', 'button')),
@@ -56913,7 +61939,7 @@ function updateAAOsTime(e) {
                             ce(e, 'focus', this._panOnFocus, this),
                         t.icon.createShadow(this._shadow))) !== this._shadow &&
                         (this._removeShadow(), (s = !0)),
-                        e && (K(e, i), (e.alt = '')),
+                        e && (G(e, i), (e.alt = '')),
                         (this._shadow = e),
                         t.opacity < 1 && this._updateOpacity(),
                         n && this.getPane().appendChild(this._icon),
@@ -56957,14 +61983,14 @@ function updateAAOsTime(e) {
                 _initInteraction: function () {
                     var e;
                     this.options.interactive &&
-                        (K(this._icon, 'leaflet-interactive'),
+                        (G(this._icon, 'leaflet-interactive'),
                         this.addInteractiveTarget(this._icon),
-                        zi &&
+                        Ti &&
                             ((e = this.options.draggable),
                             this.dragging &&
                                 ((e = this.dragging.enabled()),
                                 this.dragging.disable()),
-                            (this.dragging = new zi(this)),
+                            (this.dragging = new Ti(this)),
                             e && this.dragging.enable()));
                 },
                 setOpacity: function (e) {
@@ -57007,7 +62033,7 @@ function updateAAOsTime(e) {
                     return this.options.icon.options.tooltipAnchor;
                 },
             }),
-            Si = Mt.extend({
+            zi = Mt.extend({
                 options: {
                     stroke: !0,
                     color: '#3388ff',
@@ -57081,17 +62107,17 @@ function updateAAOsTime(e) {
                     );
                 },
             }),
-            Ai = Si.extend({
+            Ai = zi.extend({
                 options: { fill: !0, radius: 10 },
                 initialize: function (e, t) {
                     (u(this, t),
-                        (this._latlng = S(e)),
+                        (this._latlng = z(e)),
                         (this._radius = this.options.radius));
                 },
                 setLatLng: function (e) {
                     var t = this._latlng;
                     return (
-                        (this._latlng = S(e)),
+                        (this._latlng = z(e)),
                         this.redraw(),
                         this.fire('move', {
                             oldLatLng: t,
@@ -57114,7 +62140,7 @@ function updateAAOsTime(e) {
                 setStyle: function (e) {
                     var t = (e && e.radius) || this._radius;
                     return (
-                        Si.prototype.setStyle.call(this, e),
+                        zi.prototype.setStyle.call(this, e),
                         this.setRadius(t),
                         this
                     );
@@ -57162,7 +62188,7 @@ function updateAAOsTime(e) {
                                     t({}, n, { radius: i })
                                 :   i)
                         ),
-                        (this._latlng = S(e)),
+                        (this._latlng = z(e)),
                         isNaN(this.options.radius))
                     )
                         throw new Error('Circle radius cannot be NaN');
@@ -57181,7 +62207,7 @@ function updateAAOsTime(e) {
                         this._map.layerPointToLatLng(this._point.add(e))
                     );
                 },
-                setStyle: Si.prototype.setStyle,
+                setStyle: zi.prototype.setStyle,
                 _project: function () {
                     var e,
                         t,
@@ -57220,7 +62246,7 @@ function updateAAOsTime(e) {
                         this._updateBounds());
                 },
             }),
-            Mi = Si.extend({
+            Mi = zi.extend({
                 options: { smoothFactor: 1, noClip: !1 },
                 initialize: function (e, t) {
                     (u(this, t), this._setLatLngs(e));
@@ -57238,7 +62264,7 @@ function updateAAOsTime(e) {
                     for (
                         var t = 1 / 0,
                             i = null,
-                            n = Pe,
+                            n = Ie,
                             s = 0,
                             o = this._parts.length;
                         s < o;
@@ -57258,7 +62284,7 @@ function updateAAOsTime(e) {
                 },
                 getCenter: function () {
                     if (this._map)
-                        return Le(this._defaultShape(), this._map.options.crs);
+                        return Re(this._defaultShape(), this._map.options.crs);
                     throw new Error(
                         'Must add layer to map before using getCenter()'
                     );
@@ -57269,7 +62295,7 @@ function updateAAOsTime(e) {
                 addLatLng: function (e, t) {
                     return (
                         (t = t || this._defaultShape()),
-                        (e = S(e)),
+                        (e = z(e)),
                         t.push(e),
                         this._bounds.extend(e),
                         this.redraw()
@@ -57280,12 +62306,12 @@ function updateAAOsTime(e) {
                         (this._latlngs = this._convertLatLngs(e)));
                 },
                 _defaultShape: function () {
-                    return je(this._latlngs) ? this._latlngs : this._latlngs[0];
+                    return De(this._latlngs) ? this._latlngs : this._latlngs[0];
                 },
                 _convertLatLngs: function (e) {
-                    for (var t = [], i = je(e), n = 0, s = e.length; n < s; n++)
+                    for (var t = [], i = De(e), n = 0, s = e.length; n < s; n++)
                         i ?
-                            ((t[n] = S(e[n])), this._bounds.extend(t[n]))
+                            ((t[n] = z(e[n])), this._bounds.extend(t[n]))
                         :   (t[n] = this._convertLatLngs(e[n]));
                     return t;
                 },
@@ -57308,7 +62334,7 @@ function updateAAOsTime(e) {
                 _projectLatlngs: function (e, t, i) {
                     var n,
                         s,
-                        o = e[0] instanceof T,
+                        o = e[0] instanceof S,
                         a = e.length;
                     if (o) {
                         for (s = [], n = 0; n < a; n++)
@@ -57359,7 +62385,7 @@ function updateAAOsTime(e) {
                         i < n;
                         i++
                     )
-                        e[i] = Se(e[i], t);
+                        e[i] = ze(e[i], t);
                 },
                 _update: function () {
                     this._map &&
@@ -57391,15 +62417,15 @@ function updateAAOsTime(e) {
                     return !1;
                 },
             });
-        Mi._flat = De;
-        var Ii = Mi.extend({
+        Mi._flat = je;
+        var Pi = Mi.extend({
                 options: { fill: !0 },
                 isEmpty: function () {
                     return !this._latlngs.length || !this._latlngs[0].length;
                 },
                 getCenter: function () {
                     if (this._map)
-                        return ze(this._defaultShape(), this._map.options.crs);
+                        return Te(this._defaultShape(), this._map.options.crs);
                     throw new Error(
                         'Must add layer to map before using getCenter()'
                     );
@@ -57409,7 +62435,7 @@ function updateAAOsTime(e) {
                         .length;
                     return (
                         2 <= t &&
-                            e[0] instanceof T &&
+                            e[0] instanceof S &&
                             e[0].equals(e[t - 1]) &&
                             e.pop(),
                         e
@@ -57417,11 +62443,11 @@ function updateAAOsTime(e) {
                 },
                 _setLatLngs: function (e) {
                     (Mi.prototype._setLatLngs.call(this, e),
-                        je(this._latlngs) && (this._latlngs = [this._latlngs]));
+                        De(this._latlngs) && (this._latlngs = [this._latlngs]));
                 },
                 _defaultShape: function () {
                     return (
-                        je(this._latlngs[0]) ?
+                        De(this._latlngs[0]) ?
                             this._latlngs
                         :   this._latlngs[0])[0];
                 },
@@ -57475,7 +62501,7 @@ function updateAAOsTime(e) {
                     return c || Mi.prototype._containsPoint.call(this, e, !0);
                 },
             }),
-            Pi = ki.extend({
+            Ii = ki.extend({
                 initialize: function (e, t) {
                     (u(this, t), (this._layers = {}), e && this.addData(e));
                 },
@@ -57521,30 +62547,30 @@ function updateAAOsTime(e) {
                         e.setStyle(t));
                 },
             });
-        ((It = {
+        ((Pt = {
             toGeoJSON: function (e) {
-                return He(this, {
+                return $e(this, {
                     type: 'Point',
-                    coordinates: $e(this.getLatLng(), e),
+                    coordinates: He(this.getLatLng(), e),
                 });
             },
         }),
-            Ti.include(It),
-            Ei.include(It),
-            Ai.include(It),
+            Si.include(Pt),
+            Ei.include(Pt),
+            Ai.include(Pt),
             Mi.include({
                 toGeoJSON: function (e) {
-                    var t = !je(this._latlngs);
-                    return He(this, {
+                    var t = !De(this._latlngs);
+                    return $e(this, {
                         type: (t ? 'Multi' : '') + 'LineString',
                         coordinates: Fe(this._latlngs, t ? 1 : 0, !1, e),
                     });
                 },
             }),
-            Ii.include({
+            Pi.include({
                 toGeoJSON: function (e) {
-                    var t = !je(this._latlngs),
-                        i = t && !je(this._latlngs[0]);
+                    var t = !De(this._latlngs),
+                        i = t && !De(this._latlngs[0]);
                     e = Fe(
                         this._latlngs,
                         i ? 2
@@ -57553,7 +62579,7 @@ function updateAAOsTime(e) {
                         !0,
                         e
                     );
-                    return He(this, {
+                    return $e(this, {
                         type: (i ? 'Multi' : '') + 'Polygon',
                         coordinates: (e = t ? e : [e]),
                     });
@@ -57566,7 +62592,7 @@ function updateAAOsTime(e) {
                         this.eachLayer(function (i) {
                             t.push(i.toGeoJSON(e).geometry.coordinates);
                         }),
-                        He(this, { type: 'MultiPoint', coordinates: t })
+                        $e(this, { type: 'MultiPoint', coordinates: t })
                     );
                 },
                 toGeoJSON: function (e) {
@@ -57589,15 +62615,15 @@ function updateAAOsTime(e) {
                                     :   i.push(n));
                             }),
                             t ?
-                                He(this, {
+                                $e(this, {
                                     geometries: i,
                                     type: 'GeometryCollection',
                                 })
                             :   { type: 'FeatureCollection', features: i });
                 },
             }));
-        Pt = We;
-        var ji = Mt.extend({
+        It = qe;
+        var Di = Mt.extend({
                 options: {
                     opacity: 1,
                     alt: '',
@@ -57608,14 +62634,14 @@ function updateAAOsTime(e) {
                     className: '',
                 },
                 initialize: function (e, t, i) {
-                    ((this._url = e), (this._bounds = z(t)), u(this, i));
+                    ((this._url = e), (this._bounds = T(t)), u(this, i));
                 },
                 onAdd: function () {
                     (this._image ||
                         (this._initImage(),
                         this.options.opacity < 1 && this._updateOpacity()),
                         this.options.interactive &&
-                            (K(this._image, 'leaflet-interactive'),
+                            (G(this._image, 'leaflet-interactive'),
                             this.addInteractiveTarget(this._image)),
                         this.getPane().appendChild(this._image),
                         this._reset());
@@ -57636,7 +62662,7 @@ function updateAAOsTime(e) {
                     return (e.opacity && this.setOpacity(e.opacity), this);
                 },
                 bringToFront: function () {
-                    return (this._map && q(this._image), this);
+                    return (this._map && W(this._image), this);
                 },
                 bringToBack: function () {
                     return (this._map && U(this._image), this);
@@ -57650,7 +62676,7 @@ function updateAAOsTime(e) {
                 },
                 setBounds: function (e) {
                     return (
-                        (this._bounds = z(e)),
+                        (this._bounds = T(e)),
                         this._map && this._reset(),
                         this
                     );
@@ -57677,10 +62703,10 @@ function updateAAOsTime(e) {
                 },
                 _initImage: function () {
                     var e = 'IMG' === this._url.tagName,
-                        t = (this._image = e ? this._url : H('img'));
-                    (K(t, 'leaflet-image-layer'),
-                        this._zoomAnimated && K(t, 'leaflet-zoom-animated'),
-                        this.options.className && K(t, this.options.className),
+                        t = (this._image = e ? this._url : $('img'));
+                    (G(t, 'leaflet-image-layer'),
+                        this._zoomAnimated && G(t, 'leaflet-zoom-animated'),
+                        this.options.className && G(t, this.options.className),
                         (t.onselectstart = r),
                         (t.onmousemove = r),
                         (t.onload = n(this.fire, this, 'load')),
@@ -57740,7 +62766,7 @@ function updateAAOsTime(e) {
                     return this._bounds.getCenter();
                 },
             }),
-            Di = ji.extend({
+            ji = Di.extend({
                 options: {
                     autoplay: !0,
                     loop: !0,
@@ -57750,11 +62776,11 @@ function updateAAOsTime(e) {
                 },
                 _initImage: function () {
                     var e = 'VIDEO' === this._url.tagName,
-                        t = (this._image = e ? this._url : H('video'));
+                        t = (this._image = e ? this._url : $('video'));
                     if (
-                        (K(t, 'leaflet-image-layer'),
-                        this._zoomAnimated && K(t, 'leaflet-zoom-animated'),
-                        this.options.className && K(t, this.options.className),
+                        (G(t, 'leaflet-image-layer'),
+                        this._zoomAnimated && G(t, 'leaflet-zoom-animated'),
+                        this.options.className && G(t, this.options.className),
                         (t.onselectstart = r),
                         (t.onmousemove = r),
                         (t.onloadeddata = n(this.fire, this, 'load')),
@@ -57782,18 +62808,18 @@ function updateAAOsTime(e) {
                             (t.muted = !!this.options.muted),
                             (t.playsInline = !!this.options.playsInline));
                         for (var a = 0; a < this._url.length; a++) {
-                            var l = H('source');
+                            var l = $('source');
                             ((l.src = this._url[a]), t.appendChild(l));
                         }
                     }
                 },
             }),
-            Li = ji.extend({
+            Ri = Di.extend({
                 _initImage: function () {
                     var e = (this._image = this._url);
-                    (K(e, 'leaflet-image-layer'),
-                        this._zoomAnimated && K(e, 'leaflet-zoom-animated'),
-                        this.options.className && K(e, this.options.className),
+                    (G(e, 'leaflet-image-layer'),
+                        this._zoomAnimated && G(e, 'leaflet-zoom-animated'),
+                        this.options.className && G(e, this.options.className),
                         (e.onselectstart = r),
                         (e.onmousemove = r));
                 },
@@ -57807,8 +62833,8 @@ function updateAAOsTime(e) {
                     content: '',
                 },
                 initialize: function (e, t) {
-                    (e && (e instanceof T || Je(e)) ?
-                        ((this._latlng = S(e)), u(this, t))
+                    (e && (e instanceof S || Je(e)) ?
+                        ((this._latlng = z(e)), u(this, t))
                     :   (u(this, e), (this._source = t)),
                         this.options.content &&
                             (this._content = this.options.content));
@@ -57846,7 +62872,7 @@ function updateAAOsTime(e) {
                         e._fadeAnimated && Q(this._container, 1),
                         this.bringToFront(),
                         this.options.interactive &&
-                            (K(this._container, 'leaflet-interactive'),
+                            (G(this._container, 'leaflet-interactive'),
                             this.addInteractiveTarget(this._container)));
                 },
                 onRemove: function (e) {
@@ -57858,7 +62884,7 @@ function updateAAOsTime(e) {
                         )))
                     :   V(this._container),
                         this.options.interactive &&
-                            (G(this._container, 'leaflet-interactive'),
+                            (K(this._container, 'leaflet-interactive'),
                             this.removeInteractiveTarget(this._container)));
                 },
                 getLatLng: function () {
@@ -57866,7 +62892,7 @@ function updateAAOsTime(e) {
                 },
                 setLatLng: function (e) {
                     return (
-                        (this._latlng = S(e)),
+                        (this._latlng = z(e)),
                         this._map &&
                             (this._updatePosition(), this._adjustPan()),
                         this
@@ -57904,7 +62930,7 @@ function updateAAOsTime(e) {
                     return !!this._map && this._map.hasLayer(this);
                 },
                 bringToFront: function () {
-                    return (this._map && q(this._container), this);
+                    return (this._map && W(this._container), this);
                 },
                 bringToBack: function () {
                     return (this._map && U(this._container), this);
@@ -57970,7 +62996,7 @@ function updateAAOsTime(e) {
                     return [0, 0];
                 },
             }),
-            Ni =
+            Li =
                 (hi.include({
                     _initOverlay: function (e, t, i, n) {
                         var s = t;
@@ -58033,7 +63059,7 @@ function updateAAOsTime(e) {
                                     { popup: this },
                                     !0
                                 ),
-                                this._source instanceof Si ||
+                                this._source instanceof zi ||
                                     this._source.on('preclick', me)));
                     },
                     onRemove: function (e) {
@@ -58045,7 +63071,7 @@ function updateAAOsTime(e) {
                                     { popup: this },
                                     !0
                                 ),
-                                this._source instanceof Si ||
+                                this._source instanceof zi ||
                                     this._source.off('preclick', me)));
                     },
                     getEvents: function () {
@@ -58062,35 +63088,35 @@ function updateAAOsTime(e) {
                     },
                     _initLayout: function () {
                         var e = 'leaflet-popup',
-                            t = (this._container = H(
+                            t = (this._container = $(
                                 'div',
                                 e +
                                     ' ' +
                                     (this.options.className || '') +
                                     ' leaflet-zoom-animated'
                             )),
-                            i = (this._wrapper = H(
+                            i = (this._wrapper = $(
                                 'div',
                                 e + '-content-wrapper',
                                 t
                             ));
-                        ((this._contentNode = H('div', e + '-content', i)),
+                        ((this._contentNode = $('div', e + '-content', i)),
                             fe(t),
                             _e(this._contentNode),
                             ce(t, 'contextmenu', me),
-                            (this._tipContainer = H(
+                            (this._tipContainer = $(
                                 'div',
                                 e + '-tip-container',
                                 t
                             )),
-                            (this._tip = H(
+                            (this._tip = $(
                                 'div',
                                 e + '-tip',
                                 this._tipContainer
                             )),
                             this.options.closeButton &&
                                 ((i = this._closeButton =
-                                    H(
+                                    $(
                                         'a',
                                         e + '-close-button',
                                         t
@@ -58125,7 +63151,7 @@ function updateAAOsTime(e) {
                                     e.offsetHeight)),
                                 this.options.maxHeight),
                             s = 'leaflet-popup-scrolled';
-                        ((n && n < i ? ((t.height = n + 'px'), K) : G)(e, s),
+                        ((n && n < i ? ((t.height = n + 'px'), G) : K)(e, s),
                             (this._containerWidth =
                                 this._container.offsetWidth));
                     },
@@ -58190,7 +63216,7 @@ function updateAAOsTime(e) {
                 hi.include({
                     openPopup: function (e, t, i) {
                         return (
-                            this._initOverlay(Ni, e, t, i).openOn(this),
+                            this._initOverlay(Li, e, t, i).openOn(this),
                             this
                         );
                     },
@@ -58206,7 +63232,7 @@ function updateAAOsTime(e) {
                     bindPopup: function (e, t) {
                         return (
                             (this._popup = this._initOverlay(
-                                Ni,
+                                Li,
                                 this._popup,
                                 e,
                                 t
@@ -58267,7 +63293,7 @@ function updateAAOsTime(e) {
                             this._map &&
                             (ve(e),
                             (t = e.layer || e.target),
-                            this._popup._source !== t || t instanceof Si ?
+                            this._popup._source !== t || t instanceof zi ?
                                 ((this._popup._source = t),
                                 this.openPopup(e.latlng))
                             : this._map.hasLayer(this._popup) ?
@@ -58326,7 +63352,7 @@ function updateAAOsTime(e) {
                             (this.options.className || '') +
                             ' leaflet-zoom-' +
                             (this._zoomAnimated ? 'animated' : 'hide');
-                        ((this._contentNode = this._container = H('div', e)),
+                        ((this._contentNode = this._container = $('div', e)),
                             this._container.setAttribute('role', 'tooltip'),
                             this._container.setAttribute(
                                 'id',
@@ -58361,11 +63387,11 @@ function updateAAOsTime(e) {
                             .subtract(w(t, i, !0))
                             .add(l)
                             .add(c)),
-                            G(n, 'leaflet-tooltip-right'),
-                            G(n, 'leaflet-tooltip-left'),
-                            G(n, 'leaflet-tooltip-top'),
-                            G(n, 'leaflet-tooltip-bottom'),
-                            K(n, 'leaflet-tooltip-' + o),
+                            K(n, 'leaflet-tooltip-right'),
+                            K(n, 'leaflet-tooltip-left'),
+                            K(n, 'leaflet-tooltip-top'),
+                            K(n, 'leaflet-tooltip-bottom'),
+                            G(n, 'leaflet-tooltip-' + o),
                             te(n, e));
                     },
                     _updatePosition: function () {
@@ -58396,7 +63422,7 @@ function updateAAOsTime(e) {
                         );
                     },
                 })),
-            Ri =
+            Ni =
                 (hi.include({
                     openTooltip: function (e, t, i) {
                         return (
@@ -58576,7 +63602,7 @@ function updateAAOsTime(e) {
                         var t = this.options;
                         return (
                             t.html instanceof Element ?
-                                (W(e), e.appendChild(t.html))
+                                (q(e), e.appendChild(t.html))
                             :   (e.innerHTML = !1 !== t.html ? t.html : ''),
                             t.bgPos &&
                                 ((t = w(t.bgPos)),
@@ -58591,11 +63617,11 @@ function updateAAOsTime(e) {
                     },
                 }));
         xi.Default = Ci;
-        var $i = Mt.extend({
+        var Hi = Mt.extend({
                 options: {
                     tileSize: 256,
                     opacity: 1,
-                    updateWhenIdle: Kt.mobile,
+                    updateWhenIdle: Gt.mobile,
                     updateWhenZooming: !0,
                     updateInterval: 200,
                     zIndex: 1,
@@ -58631,7 +63657,7 @@ function updateAAOsTime(e) {
                 bringToFront: function () {
                     return (
                         this._map &&
-                            (q(this._container), this._setAutoZIndex(Math.max)),
+                            (W(this._container), this._setAutoZIndex(Math.max)),
                         this
                     );
                 },
@@ -58724,7 +63750,7 @@ function updateAAOsTime(e) {
                         this._updateZIndex());
                 },
                 _updateOpacity: function () {
-                    if (this._map && !Kt.ielt9) {
+                    if (this._map && !Gt.ielt9) {
                         Q(this._container, this.options.opacity);
                         var e,
                             t = +new Date(),
@@ -58756,7 +63782,7 @@ function updateAAOsTime(e) {
                 _onOpaqueTile: r,
                 _initContainer: function () {
                     this._container ||
-                        ((this._container = H(
+                        ((this._container = $(
                             'div',
                             'leaflet-layer ' + (this.options.className || '')
                         )),
@@ -58782,7 +63808,7 @@ function updateAAOsTime(e) {
                             s = this._map;
                         return (
                             n ||
-                                (((n = this._levels[e] = {}).el = H(
+                                (((n = this._levels[e] = {}).el = $(
                                     'div',
                                     'leaflet-tile-container leaflet-zoom-animated',
                                     this._container
@@ -58937,7 +63963,7 @@ function updateAAOsTime(e) {
                         .multiplyBy(n)
                         .subtract(this._map._getNewPixelOrigin(t, i))
                         .round();
-                    Kt.any3d ? ee(e.el, t, n) : te(e.el, t);
+                    Gt.any3d ? ee(e.el, t, n) : te(e.el, t);
                 },
                 _resetGrid: function () {
                     var e = this._map,
@@ -59066,7 +64092,7 @@ function updateAAOsTime(e) {
                     return (
                         !this.options.bounds ||
                         ((t = this._tileCoordsToBounds(e)),
-                        z(this.options.bounds).overlaps(t))
+                        T(this.options.bounds).overlaps(t))
                     );
                 },
                 _keyToBounds: function (e) {
@@ -59103,13 +64129,13 @@ function updateAAOsTime(e) {
                         }));
                 },
                 _initTile: function (e) {
-                    K(e, 'leaflet-tile');
+                    G(e, 'leaflet-tile');
                     var t = this.getTileSize();
                     ((e.style.width = t.x + 'px'),
                         (e.style.height = t.y + 'px'),
                         (e.onselectstart = r),
                         (e.onmousemove = r),
-                        Kt.ielt9 &&
+                        Gt.ielt9 &&
                             this.options.opacity < 1 &&
                             Q(e, this.options.opacity));
                 },
@@ -59144,12 +64170,12 @@ function updateAAOsTime(e) {
                             (this._fadeFrame = g(this._updateOpacity, this)))
                         :   ((i.active = !0), this._pruneTiles()),
                         t ||
-                            (K(i.el, 'leaflet-tile-loaded'),
+                            (G(i.el, 'leaflet-tile-loaded'),
                             this.fire('tileload', { tile: i.el, coords: e })),
                         this._noTilesToLoad() &&
                             ((this._loading = !1),
                             this.fire('load'),
-                            Kt.ielt9 || !this._map._fadeAnimated ?
+                            Gt.ielt9 || !this._map._fadeAnimated ?
                                 g(this._pruneTiles, this)
                             :   setTimeout(n(this._pruneTiles, this), 250)));
                 },
@@ -59178,7 +64204,7 @@ function updateAAOsTime(e) {
                     return !0;
                 },
             }),
-            Fi = $i.extend({
+            Fi = Hi.extend({
                 options: {
                     minZoom: 0,
                     maxZoom: 18,
@@ -59195,7 +64221,7 @@ function updateAAOsTime(e) {
                     ((this._url = e),
                         (
                             (t = u(this, t)).detectRetina &&
-                            Kt.retina &&
+                            Gt.retina &&
                             0 < t.maxZoom
                         ) ?
                             ((t.tileSize = Math.floor(t.tileSize / 2)),
@@ -59246,7 +64272,7 @@ function updateAAOsTime(e) {
                 },
                 getTileUrl: function (e) {
                     var i = {
-                        r: Kt.retina ? '@2x' : '',
+                        r: Gt.retina ? '@2x' : '',
                         s: this._getSubdomain(e),
                         x: e.x,
                         y: e.y,
@@ -59262,7 +64288,7 @@ function updateAAOsTime(e) {
                     );
                 },
                 _tileOnLoad: function (e, t) {
-                    Kt.ielt9 ? setTimeout(n(e, this, null, t), 0) : e(null, t);
+                    Gt.ielt9 ? setTimeout(n(e, this, null, t), 0) : e(null, t);
                 },
                 _tileOnError: function (e, t, i) {
                     var n = this.options.errorTileUrl;
@@ -59308,15 +64334,15 @@ function updateAAOsTime(e) {
                     if (t)
                         return (
                             t.el.setAttribute('src', Qe),
-                            $i.prototype._removeTile.call(this, e)
+                            Hi.prototype._removeTile.call(this, e)
                         );
                 },
                 _tileReady: function (e, t, i) {
                     if (this._map && (!i || i.getAttribute('src') !== Qe))
-                        return $i.prototype._tileReady.call(this, e, t, i);
+                        return Hi.prototype._tileReady.call(this, e, t, i);
                 },
             }),
-            Hi = Fi.extend({
+            $i = Fi.extend({
                 defaultWmsParams: {
                     service: 'WMS',
                     request: 'GetMap',
@@ -59332,7 +64358,7 @@ function updateAAOsTime(e) {
                     var n,
                         s = t({}, this.defaultWmsParams);
                     for (n in i) n in this.options || (s[n] = i[n]);
-                    e = (i = u(this, i)).detectRetina && Kt.retina ? 2 : 1;
+                    e = (i = u(this, i)).detectRetina && Gt.retina ? 2 : 1;
                     var o = this.getTileSize();
                     ((s.width = o.x * e),
                         (s.height = o.y * e),
@@ -59370,9 +64396,9 @@ function updateAAOsTime(e) {
                     return (t(this.wmsParams, e), i || this.redraw(), this);
                 },
             });
-        ((Fi.WMS = Hi),
-            (qe.wms = function (e, t) {
-                return new Hi(e, t);
+        ((Fi.WMS = $i),
+            (We.wms = function (e, t) {
+                return new $i(e, t);
             }));
         var Vi = Mt.extend({
                 options: { padding: 0.1 },
@@ -59382,7 +64408,7 @@ function updateAAOsTime(e) {
                 onAdd: function () {
                     (this._container ||
                         (this._initContainer(),
-                        K(this._container, 'leaflet-zoom-animated')),
+                        G(this._container, 'leaflet-zoom-animated')),
                         this.getPane().appendChild(this._container),
                         this._update(),
                         this.on('update', this._updatePaths, this));
@@ -59422,7 +64448,7 @@ function updateAAOsTime(e) {
                         .multiplyBy(-i)
                         .add(s)
                         .subtract(this._map._getNewPixelOrigin(e, t));
-                    Kt.any3d ?
+                    Gt.any3d ?
                         ee(this._container, n, i)
                     :   te(this._container, n);
                 },
@@ -59452,7 +64478,7 @@ function updateAAOsTime(e) {
                         (this._zoom = this._map.getZoom()));
                 },
             }),
-            Wi = Vi.extend({
+            qi = Vi.extend({
                 options: { tolerance: 0 },
                 getEvents: function () {
                     var e = Vi.prototype.getEvents.call(this);
@@ -59500,13 +64526,13 @@ function updateAAOsTime(e) {
                         (e = this._bounds),
                         (t = this._container),
                         (i = e.getSize()),
-                        (n = Kt.retina ? 2 : 1),
+                        (n = Gt.retina ? 2 : 1),
                         te(t, e.min),
                         (t.width = n * i.x),
                         (t.height = n * i.y),
                         (t.style.width = i.x + 'px'),
                         (t.style.height = i.y + 'px'),
-                        Kt.retina && this._ctx.scale(2, 2),
+                        Gt.retina && this._ctx.scale(2, 2),
                         this._ctx.translate(-e.min.x, -e.min.y),
                         this.fire('update'));
                 },
@@ -59702,7 +64728,7 @@ function updateAAOsTime(e) {
                 _handleMouseOut: function (e) {
                     var t = this._hoveredLayer;
                     t &&
-                        (G(this._container, 'leaflet-interactive'),
+                        (K(this._container, 'leaflet-interactive'),
                         this._fireEvent([t], e, 'mouseout'),
                         (this._hoveredLayer = null),
                         (this._mouseHoverThrottled = !1));
@@ -59716,7 +64742,7 @@ function updateAAOsTime(e) {
                         (s !== this._hoveredLayer &&
                             (this._handleMouseOut(e),
                             s &&
-                                (K(this._container, 'leaflet-interactive'),
+                                (G(this._container, 'leaflet-interactive'),
                                 this._fireEvent([s], e, 'mouseover'),
                                 (this._hoveredLayer = s))),
                             this._fireEvent(
@@ -59768,7 +64794,7 @@ function updateAAOsTime(e) {
                             this._requestRedraw(e)));
                 },
             }),
-            qi = (function () {
+            Wi = (function () {
                 try {
                     return (
                         document.namespaces.add(
@@ -59791,9 +64817,9 @@ function updateAAOsTime(e) {
                 };
             })(),
             Ui =
-                ((jt = {
+                ((Dt = {
                     _initContainer: function () {
-                        this._container = H('div', 'leaflet-vml-container');
+                        this._container = $('div', 'leaflet-vml-container');
                     },
                     _update: function () {
                         this._map._animatingZoom ||
@@ -59801,14 +64827,14 @@ function updateAAOsTime(e) {
                             this.fire('update'));
                     },
                     _initPath: function (e) {
-                        var t = (e._container = qi('shape'));
-                        (K(
+                        var t = (e._container = Wi('shape'));
+                        (G(
                             t,
                             'leaflet-vml-shape ' +
                                 (this.options.className || '')
                         ),
                             (t.coordsize = '1 1'),
-                            (e._path = qi('path')),
+                            (e._path = Wi('path')),
                             t.appendChild(e._path),
                             this._updateStyle(e),
                             (this._layers[s(e)] = e));
@@ -59832,7 +64858,7 @@ function updateAAOsTime(e) {
                         ((s.stroked = !!n.stroke),
                             (s.filled = !!n.fill),
                             n.stroke ?
-                                ((t = t || (e._stroke = qi('stroke'))),
+                                ((t = t || (e._stroke = Wi('stroke'))),
                                 s.appendChild(t),
                                 (t.weight = n.weight + 'px'),
                                 (t.color = n.color),
@@ -59850,7 +64876,7 @@ function updateAAOsTime(e) {
                                 (t.joinstyle = n.lineJoin))
                             :   t && (s.removeChild(t), (e._stroke = null)),
                             n.fill ?
-                                ((i = i || (e._fill = qi('fill'))),
+                                ((i = i || (e._fill = Wi('fill'))),
                                 s.appendChild(i),
                                 (i.color = n.fillColor || n.color),
                                 (i.opacity = n.fillOpacity))
@@ -59879,13 +64905,13 @@ function updateAAOsTime(e) {
                         e._path.v = t;
                     },
                     _bringToFront: function (e) {
-                        q(e._container);
+                        W(e._container);
                     },
                     _bringToBack: function (e) {
                         U(e._container);
                     },
                 }),
-                Kt.vml ? qi : M),
+                Gt.vml ? Wi : M),
             Zi = Vi.extend({
                 _initContainer: function () {
                     ((this._container = Ui('svg')),
@@ -59919,8 +64945,8 @@ function updateAAOsTime(e) {
                 },
                 _initPath: function (e) {
                     var t = (e._path = Ui('path'));
-                    (e.options.className && K(t, e.options.className),
-                        e.options.interactive && K(t, 'leaflet-interactive'),
+                    (e.options.className && G(t, e.options.className),
+                        e.options.interactive && G(t, 'leaflet-interactive'),
                         this._updateStyle(e),
                         (this._layers[s(e)] = e));
                 },
@@ -59967,7 +64993,7 @@ function updateAAOsTime(e) {
                         :   t.setAttribute('fill', 'none'));
                 },
                 _updatePoly: function (e, t) {
-                    this._setPath(e, I(e._parts, t));
+                    this._setPath(e, P(e._parts, t));
                 },
                 _updateCircle: function (e) {
                     var t = e._point,
@@ -59997,13 +65023,13 @@ function updateAAOsTime(e) {
                     e._path.setAttribute('d', t);
                 },
                 _bringToFront: function (e) {
-                    q(e._path);
+                    W(e._path);
                 },
                 _bringToBack: function (e) {
                     U(e._path);
                 },
             });
-        (Kt.vml && Zi.include(jt),
+        (Gt.vml && Zi.include(Dt),
             hi.include({
                 getRenderer: function (e) {
                     return (
@@ -60033,16 +65059,16 @@ function updateAAOsTime(e) {
                     return (this.options.preferCanvas && Ue(e)) || Ze(e);
                 },
             }));
-        var Ki = Ii.extend({
+        var Gi = Pi.extend({
             initialize: function (e, t) {
-                Ii.prototype.initialize.call(this, this._boundsToLatLngs(e), t);
+                Pi.prototype.initialize.call(this, this._boundsToLatLngs(e), t);
             },
             setBounds: function (e) {
                 return this.setLatLngs(this._boundsToLatLngs(e));
             },
             _boundsToLatLngs: function (e) {
                 return [
-                    (e = z(e)).getSouthWest(),
+                    (e = T(e)).getSouthWest(),
                     e.getNorthWest(),
                     e.getNorthEast(),
                     e.getSouthEast(),
@@ -60050,14 +65076,14 @@ function updateAAOsTime(e) {
             },
         });
         ((Zi.create = Ui),
-            (Zi.pointsToPath = I),
-            (Pi.geometryToLayer = Oe),
-            (Pi.coordsToLatLng = Be),
-            (Pi.coordsToLatLngs = Re),
-            (Pi.latLngToCoords = $e),
-            (Pi.latLngsToCoords = Fe),
-            (Pi.getFeature = He),
-            (Pi.asFeature = Ve),
+            (Zi.pointsToPath = P),
+            (Ii.geometryToLayer = Oe),
+            (Ii.coordsToLatLng = Be),
+            (Ii.coordsToLatLngs = Ne),
+            (Ii.latLngToCoords = He),
+            (Ii.latLngsToCoords = Fe),
+            (Ii.getFeature = $e),
+            (Ii.asFeature = Ve),
             hi.mergeOptions({ boxZoom: !0 }));
         ((gt = yt.extend({
             initialize: function (e) {
@@ -60109,8 +65135,8 @@ function updateAAOsTime(e) {
             _onMouseMove: function (e) {
                 (this._moved ||
                     ((this._moved = !0),
-                    (this._box = H('div', 'leaflet-zoom-box', this._container)),
-                    K(this._container, 'leaflet-crosshair'),
+                    (this._box = $('div', 'leaflet-zoom-box', this._container)),
+                    G(this._container, 'leaflet-crosshair'),
                     this._map.fire('boxzoomstart')),
                     (this._point = this._map.mouseEventToContainerPoint(e)));
                 var t = (e = new k(this._point, this._startPoint)).getSize();
@@ -60120,7 +65146,7 @@ function updateAAOsTime(e) {
             },
             _finish: function () {
                 (this._moved &&
-                    (V(this._box), G(this._container, 'leaflet-crosshair')),
+                    (V(this._box), K(this._container, 'leaflet-crosshair')),
                     ht(),
                     se(),
                     de(
@@ -60160,7 +65186,7 @@ function updateAAOsTime(e) {
         })),
             hi.addInitHook('addHandler', 'boxZoom', gt),
             hi.mergeOptions({ doubleClickZoom: !0 }),
-            (Dt = yt.extend({
+            (jt = yt.extend({
                 addHooks: function () {
                     this._map.on('dblclick', this._onDoubleClick, this);
                 },
@@ -60177,8 +65203,8 @@ function updateAAOsTime(e) {
                     :   t.setZoomAround(e.containerPoint, i);
                 },
             })));
-        var Gi =
-                (hi.addInitHook('addHandler', 'doubleClickZoom', Dt),
+        var Ki =
+                (hi.addInitHook('addHandler', 'doubleClickZoom', jt),
                 hi.mergeOptions({
                     dragging: !0,
                     inertia: !0,
@@ -60218,7 +65244,7 @@ function updateAAOsTime(e) {
                                 ),
                                 e.on('zoomend', this._onZoomEnd, this),
                                 e.whenReady(this._onZoomEnd, this))),
-                            K(
+                            G(
                                 this._map._container,
                                 'leaflet-grab leaflet-touch-drag'
                             ),
@@ -60227,8 +65253,8 @@ function updateAAOsTime(e) {
                             (this._times = []));
                     },
                     removeHooks: function () {
-                        (G(this._map._container, 'leaflet-grab'),
-                            G(this._map._container, 'leaflet-touch-drag'),
+                        (K(this._map._container, 'leaflet-grab'),
+                            K(this._map._container, 'leaflet-touch-drag'),
                             this._draggable.disable());
                     },
                     moved: function () {
@@ -60245,7 +65271,7 @@ function updateAAOsTime(e) {
                                 this._map.options.maxBounds &&
                                 this._map.options.maxBoundsViscosity
                             ) ?
-                                ((e = z(this._map.options.maxBounds)),
+                                ((e = T(this._map.options.maxBounds)),
                                 (this._offsetLimit = x(
                                     this._map
                                         .latLngToContainerPoint(
@@ -60377,8 +65403,8 @@ function updateAAOsTime(e) {
                     },
                 })),
             Yi =
-                ((Lt =
-                    (hi.addInitHook('addHandler', 'dragging', Gi),
+                ((Rt =
+                    (hi.addInitHook('addHandler', 'dragging', Ki),
                     hi.mergeOptions({ keyboard: !0, keyboardPanDelta: 80 }),
                     yt.extend({
                         keyCodes: {
@@ -60530,7 +65556,7 @@ function updateAAOsTime(e) {
                         },
                     }))),
                 (Ot =
-                    (hi.addInitHook('addHandler', 'keyboard', Lt),
+                    (hi.addInitHook('addHandler', 'keyboard', Rt),
                     hi.mergeOptions({
                         scrollWheelZoom: !0,
                         wheelDebounceTime: 40,
@@ -60605,10 +65631,10 @@ function updateAAOsTime(e) {
                                         )));
                         },
                     }))),
-                (Nt =
+                (Lt =
                     (hi.addInitHook('addHandler', 'scrollWheelZoom', Ot),
                     hi.mergeOptions({
-                        tapHold: Kt.touchNative && Kt.safari && Kt.mobile,
+                        tapHold: Gt.touchNative && Gt.safari && Gt.mobile,
                         tapTolerance: 15,
                     }),
                     yt.extend({
@@ -60707,14 +65733,14 @@ function updateAAOsTime(e) {
                         },
                     }))),
                 (Bt =
-                    (hi.addInitHook('addHandler', 'tapHold', Nt),
+                    (hi.addInitHook('addHandler', 'tapHold', Lt),
                     hi.mergeOptions({
-                        touchZoom: Kt.touch,
+                        touchZoom: Gt.touch,
                         bounceAtZoomLimits: !0,
                     }),
                     yt.extend({
                         addHooks: function () {
-                            (K(this._map._container, 'leaflet-touch-zoom'),
+                            (G(this._map._container, 'leaflet-touch-zoom'),
                                 ce(
                                     this._map._container,
                                     'touchstart',
@@ -60723,7 +65749,7 @@ function updateAAOsTime(e) {
                                 ));
                         },
                         removeHooks: function () {
-                            (G(this._map._container, 'leaflet-touch-zoom'),
+                            (K(this._map._container, 'leaflet-touch-zoom'),
                                 de(
                                     this._map._container,
                                     'touchstart',
@@ -60871,57 +65897,57 @@ function updateAAOsTime(e) {
                     }))),
                 hi.addInitHook('addHandler', 'touchZoom', Bt),
                 (hi.BoxZoom = gt),
-                (hi.DoubleClickZoom = Dt),
-                (hi.Drag = Gi),
-                (hi.Keyboard = Lt),
+                (hi.DoubleClickZoom = jt),
+                (hi.Drag = Ki),
+                (hi.Keyboard = Rt),
                 (hi.ScrollWheelZoom = Ot),
-                (hi.TapHold = Nt),
+                (hi.TapHold = Lt),
                 (hi.TouchZoom = Bt),
                 (e.Bounds = k),
-                (e.Browser = Kt),
+                (e.Browser = Gt),
                 (e.CRS = at),
-                (e.Canvas = Wi),
+                (e.Canvas = qi),
                 (e.Circle = Ei),
                 (e.CircleMarker = Ai),
                 (e.Class = b),
                 (e.Control = pi),
-                (e.DivIcon = Ri),
+                (e.DivIcon = Ni),
                 (e.DivOverlay = Oi),
                 (e.DomEvent = bt),
                 (e.DomUtil = vt),
                 (e.Draggable = bi),
                 (e.Evented = st),
                 (e.FeatureGroup = ki),
-                (e.GeoJSON = Pi),
-                (e.GridLayer = $i),
+                (e.GeoJSON = Ii),
+                (e.GridLayer = Hi),
                 (e.Handler = yt),
                 (e.Icon = xi),
-                (e.ImageOverlay = ji),
-                (e.LatLng = T),
+                (e.ImageOverlay = Di),
+                (e.LatLng = S),
                 (e.LatLngBounds = C),
                 (e.Layer = Mt),
                 (e.LayerGroup = wi),
                 (e.LineUtil = xt),
                 (e.Map = hi),
-                (e.Marker = Ti),
+                (e.Marker = Si),
                 (e.Mixin = wt),
-                (e.Path = Si),
+                (e.Path = zi),
                 (e.Point = y),
                 (e.PolyUtil = kt),
-                (e.Polygon = Ii),
+                (e.Polygon = Pi),
                 (e.Polyline = Mi),
-                (e.Popup = Ni),
+                (e.Popup = Li),
                 (e.PosAnimation = ui),
-                (e.Projection = Tt),
-                (e.Rectangle = Ki),
+                (e.Projection = St),
+                (e.Rectangle = Gi),
                 (e.Renderer = Vi),
                 (e.SVG = Zi),
-                (e.SVGOverlay = Li),
+                (e.SVGOverlay = Ri),
                 (e.TileLayer = Fi),
                 (e.Tooltip = Bi),
                 (e.Transformation = A),
                 (e.Util = it),
-                (e.VideoOverlay = Di),
+                (e.VideoOverlay = ji),
                 (e.bind = n),
                 (e.bounds = x),
                 (e.canvas = Ue),
@@ -60933,25 +65959,25 @@ function updateAAOsTime(e) {
                 }),
                 (e.control = xe),
                 (e.divIcon = function (e) {
-                    return new Ri(e);
+                    return new Ni(e);
                 }),
                 (e.extend = t),
                 (e.featureGroup = function (e, t) {
                     return new ki(e, t);
                 }),
-                (e.geoJSON = We),
-                (e.geoJson = Pt),
+                (e.geoJSON = qe),
+                (e.geoJson = It),
                 (e.gridLayer = function (e) {
-                    return new $i(e);
+                    return new Hi(e);
                 }),
                 (e.icon = function (e) {
                     return new xi(e);
                 }),
                 (e.imageOverlay = function (e, t, i) {
-                    return new ji(e, t, i);
+                    return new Di(e, t, i);
                 }),
-                (e.latLng = S),
-                (e.latLngBounds = z),
+                (e.latLng = z),
+                (e.latLngBounds = T),
                 (e.layerGroup = function (e, t) {
                     return new wi(e, t);
                 }),
@@ -60959,35 +65985,35 @@ function updateAAOsTime(e) {
                     return new hi(e, t);
                 }),
                 (e.marker = function (e, t) {
-                    return new Ti(e, t);
+                    return new Si(e, t);
                 }),
                 (e.point = w),
                 (e.polygon = function (e, t) {
-                    return new Ii(e, t);
+                    return new Pi(e, t);
                 }),
                 (e.polyline = function (e, t) {
                     return new Mi(e, t);
                 }),
                 (e.popup = function (e, t) {
-                    return new Ni(e, t);
+                    return new Li(e, t);
                 }),
                 (e.rectangle = function (e, t) {
-                    return new Ki(e, t);
+                    return new Gi(e, t);
                 }),
                 (e.setOptions = u),
                 (e.stamp = s),
                 (e.svg = Ze),
                 (e.svgOverlay = function (e, t, i) {
-                    return new Li(e, t, i);
+                    return new Ri(e, t, i);
                 }),
-                (e.tileLayer = qe),
+                (e.tileLayer = We),
                 (e.tooltip = function (e, t) {
                     return new Bi(e, t);
                 }),
                 (e.transformation = E),
                 (e.version = '1.9.4'),
                 (e.videoOverlay = function (e, t, i) {
-                    return new Di(e, t, i);
+                    return new ji(e, t, i);
                 }),
                 window.L);
         ((e.noConflict = function () {
@@ -67680,7 +72706,7 @@ if (
                                         if (0 === o.index()) {
                                             s += 1;
                                             var C = v[0].label,
-                                                z =
+                                                T =
                                                     (
                                                         void 0 !==
                                                         v.data('subtext')
@@ -67699,7 +72725,7 @@ if (
                                                 :   '') +
                                                 '<span class="text">' +
                                                 l(C) +
-                                                z +
+                                                T +
                                                 '</span>'),
                                                 0 !== t &&
                                                     n.length > 0 &&
@@ -67750,26 +72776,26 @@ if (
                                                 )
                                             ));
                                     else {
-                                        var T =
+                                        var S =
                                             this.previousElementSibling &&
                                             'OPTGROUP' ===
                                                 this.previousElementSibling
                                                     .tagName;
                                         if (
-                                            !T &&
+                                            !S &&
                                             i.options.hideDisabled &&
                                             void 0 !==
                                                 (d = o.data('prevHiddenIndex'))
                                         ) {
-                                            var S =
+                                            var z =
                                                 u.eq(d)[0]
                                                     .previousElementSibling;
-                                            S &&
-                                                'OPTGROUP' === S.tagName &&
-                                                !S.disabled &&
-                                                (T = !0);
+                                            z &&
+                                                'OPTGROUP' === z.tagName &&
+                                                !z.disabled &&
+                                                (S = !0);
                                         }
-                                        (T &&
+                                        (S &&
                                             (a++,
                                             n.push(
                                                 r(
@@ -68160,7 +73186,7 @@ if (
                                         (r -= s[3]));
                                 };
                             if ((C(), 'auto' === this.options.size)) {
-                                var z = function () {
+                                var T = function () {
                                     var h,
                                         p = function (t, i) {
                                             return function (n) {
@@ -68190,7 +73216,7 @@ if (
                                                     p('hidden', !1)
                                                 )
                                             :   c.$lis.not('.hidden'),
-                                        z =
+                                        T =
                                             Array.prototype.filter ?
                                                 Array.prototype.filter.call(
                                                     x,
@@ -68222,7 +73248,7 @@ if (
                                                 r > l && i - k.horiz < s - m
                                             ),
                                         (h =
-                                            x.length + z.length > 3 ?
+                                            x.length + T.length > 3 ?
                                                 3 * _ + k.vert - 2
                                             :   0),
                                         d.css({
@@ -68245,27 +73271,27 @@ if (
                                                 Math.max(h - w.vert, 0) + 'px',
                                         }));
                                 };
-                                (z(),
+                                (T(),
                                     this.$searchbox
                                         .off(
                                             'input.getSize propertychange.getSize'
                                         )
                                         .on(
                                             'input.getSize propertychange.getSize',
-                                            z
+                                            T
                                         ),
                                     h
                                         .off('resize.getSize scroll.getSize')
                                         .on(
                                             'resize.getSize scroll.getSize',
-                                            z
+                                            T
                                         ));
                             } else if (
                                 this.options.size &&
                                 'auto' != this.options.size &&
                                 this.$lis.not(x).length > this.options.size
                             ) {
-                                var T = this.$lis
+                                var S = this.$lis
                                         .not('.divider')
                                         .not(x)
                                         .children()
@@ -68273,10 +73299,10 @@ if (
                                         .last()
                                         .parent()
                                         .index(),
-                                    S = this.$lis
-                                        .slice(0, T + 1)
+                                    z = this.$lis
+                                        .slice(0, S + 1)
                                         .filter('.divider').length;
-                                ((t = _ * this.options.size + S * y + w.vert),
+                                ((t = _ * this.options.size + z * y + w.vert),
                                     c.options.container ?
                                         (d.data('height') ||
                                             d.data('height', d.height()),
@@ -69304,7 +74330,7 @@ if (
             y(e, 'display', '');
         }
         function b(e) {
-            D(e) ? g(e) : v(e);
+            j(e) ? g(e) : v(e);
         }
         function y(e, t, i) {
             if (arguments.length < 3) {
@@ -69359,27 +74385,27 @@ if (
                 :   i
             );
         }
-        function z(e, t) {
+        function T(e, t) {
             return t.parentNode.insertBefore(e, t);
         }
-        function T(e) {
+        function S(e) {
             return e.className.trim().split(/\s+/);
         }
-        function S(e, t) {
+        function z(e, t) {
             return k(e, '.' + t);
         }
         function A(e, t) {
-            var i = T(e);
+            var i = S(e);
             (i.indexOf(t) < 0 && i.push(t), (e.className = i.join(' ')));
         }
         function E(e, t) {
-            var i = T(e);
+            var i = S(e);
             (s(i, t), (e.className = i.join(' ')));
         }
         function M(e, t, i) {
-            (i = pe(i) ? !S(e, t) : i) ? A(e, t) : E(e, t);
+            (i = pe(i) ? !z(e, t) : i) ? A(e, t) : E(e, t);
         }
-        function I(e, t) {
+        function P(e, t) {
             if (pe(t)) {
                 var i = getComputedStyle(e),
                     n = a(i.paddingLeft) + a(i.paddingRight),
@@ -69388,7 +74414,7 @@ if (
             }
             y(e, 'width', t);
         }
-        function P(e, t) {
+        function I(e, t) {
             if (pe(t)) {
                 var i = getComputedStyle(e),
                     n = a(i.paddingTop) + a(i.paddingBottom),
@@ -69397,7 +74423,7 @@ if (
             }
             y(e, 'height', t);
         }
-        function j(e, t, i) {
+        function D(e, t, i) {
             var n;
             (me(window.CustomEvent) ?
                 (n = new CustomEvent(t, {
@@ -69414,10 +74440,10 @@ if (
                 ),
                 e.dispatchEvent(n));
         }
-        function D(e) {
+        function j(e) {
             return !!e.getClientRects().length;
         }
-        function L(e) {
+        function R(e) {
             return e.replace(/^-ms-/, 'ms-').replace(/-(\w)/g, function (e, t) {
                 return t.toUpperCase();
             });
@@ -69434,7 +74460,7 @@ if (
                 e = o;
             }
         }
-        function N(e, t, i, n) {
+        function L(e, t, i, n) {
             O(e, t, i, n, !0);
         }
         function B(e, t) {
@@ -69443,13 +74469,13 @@ if (
             for (n.innerHTML = e; n.firstChild;) u(i, n.firstChild);
             return i;
         }
-        function R(e) {
+        function N(e) {
             return (
                 e &&
                 (!k(e, 'p,div') || e.className || _(e, 'style') || !i(w(e)))
             );
         }
-        function $(e, t) {
+        function H(e, t) {
             var i = r(t, {}, e.ownerDocument);
             for (
                 o(e.attributes, function (e, t) {
@@ -69470,7 +74496,7 @@ if (
                 ) < 0
             );
         }
-        function H(e, t) {
+        function $(e, t) {
             var i,
                 n = (e || {}).nodeType || ve;
             return (
@@ -69482,27 +74508,27 @@ if (
         function V(e, t) {
             t.style.cssText = e.style.cssText + t.style.cssText;
         }
-        function W(e) {
+        function q(e) {
             var t = function (e) {
-                for (; H(e.parentNode, !0);) e = e.parentNode;
+                for (; $(e.parentNode, !0);) e = e.parentNode;
                 return e;
             };
             O(e, function (e) {
                 var i = 'ul,ol',
-                    n = !H(e, !0);
-                if (n && H(e.parentNode, !0)) {
+                    n = !$(e, !0);
+                if (n && $(e.parentNode, !0)) {
                     var s = t(e),
-                        o = K(s, e),
+                        o = G(s, e),
                         a = e;
-                    (V(s, a), z(o, s), z(a, s));
+                    (V(s, a), T(o, s), T(a, s));
                 }
                 if (n && k(e, i) && k(e.parentNode, i)) {
                     var l = C(e, 'li');
-                    (l || z((l = r('li')), e), u(l, e));
+                    (l || T((l = r('li')), e), u(l, e));
                 }
             });
         }
-        function q(e, t) {
+        function W(e, t) {
             for (; (e = e.parentNode);) if (x(e, t)) return e;
         }
         function U(e, t) {
@@ -69532,25 +74558,25 @@ if (
                     ) {
                         for (
                             n = U(u), s = U(u, !0), r = !1;
-                            S(s, 'sceditor-ignore');
+                            z(s, 'sceditor-ignore');
                         )
                             s = U(s, !0);
-                        if (H(u) && s) {
+                        if ($(u) && s) {
                             for (o = s; o.lastChild;)
-                                for (o = o.lastChild; S(o, 'sceditor-ignore');)
+                                for (o = o.lastChild; z(o, 'sceditor-ignore');)
                                     o = U(o, !0);
                             r =
                                 o.nodeType === ve ?
                                     /[\t\n\r ]$/.test(o.nodeValue)
-                                :   !H(o);
+                                :   !$(o);
                         }
                         ((t = t.replace(/\u200B/g, '')),
-                            (s && H(s) && !r) ||
+                            (s && $(s) && !r) ||
                                 (t = t.replace(
                                     c ? /^[\t ]+/ : /^[\t\n\r ]+/,
                                     ''
                                 )),
-                            (n && H(n)) ||
+                            (n && $(n)) ||
                                 (t = t.replace(
                                     c ? /[\t ]+$/ : /[\t\n\r ]+$/,
                                     ''
@@ -69565,11 +74591,11 @@ if (
                     u = a;
                 }
         }
-        function K(e, t) {
+        function G(e, t) {
             var i = e.ownerDocument.createRange();
             return (i.setStartBefore(e), i.setEndAfter(t), i.extractContents());
         }
-        function G(e) {
+        function K(e) {
             for (var t = 0, i = 0; e;)
                 ((t += e.offsetLeft), (i += e.offsetTop), (e = e.offsetParent));
             return { left: t, top: i };
@@ -69579,7 +74605,7 @@ if (
                 n,
                 s = e.style;
             if (
-                (fe[t] || (fe[t] = L(t)),
+                (fe[t] || (fe[t] = R(t)),
                 (n = s[(t = fe[t])]),
                 'textAlign' === t)
             ) {
@@ -69634,7 +74660,7 @@ if (
             var t,
                 i = /^[^\/]*:/i,
                 n = window.location;
-            return e && i.test(e) && !Se.test(e) ?
+            return e && i.test(e) && !ze.test(e) ?
                     ((t = n.pathname.split('/')).pop(),
                     n.protocol + '//' + n.host + t.join('/') + '/' + e)
                 :   e;
@@ -69691,21 +74717,21 @@ if (
                 }),
                 (t.exists = function (e) {
                     return (
-                        e in Ie &&
-                        'function' == typeof (e = Ie[e]) &&
+                        e in Pe &&
+                        'function' == typeof (e = Pe[e]) &&
                         'object' == typeof e.prototype
                     );
                 }),
                 (t.isRegistered = function (e) {
                     if (t.exists(e))
                         for (var n = i.length; n--;)
-                            if (i[n] instanceof Ie[e]) return !0;
+                            if (i[n] instanceof Pe[e]) return !0;
                     return !1;
                 }),
                 (t.register = function (n) {
                     return (
                         !(!t.exists(n) || t.isRegistered(n)) &&
-                        ((n = new Ie[n]()),
+                        ((n = new Pe[n]()),
                         i.push(n),
                         'init' in n && n.init.call(e),
                         !0)
@@ -69717,7 +74743,7 @@ if (
                         a = !1;
                     if (!t.isRegistered(n)) return a;
                     for (; o--;)
-                        i[o] instanceof Ie[n] &&
+                        i[o] instanceof Pe[n] &&
                             ((a = !0),
                             'destroy' in (s = i.splice(o, 1)[0]) &&
                                 s.destroy.call(e));
@@ -69761,7 +74787,7 @@ if (
                                 u(d, t))),
                         (c = d.lastChild))
                     ) {
-                        for (; !H(c.lastChild, !0);) c = c.lastChild;
+                        for (; !$(c.lastChild, !0);) c = c.lastChild;
                         if (
                             (F(c) ?
                                 c.lastChild ||
@@ -69785,7 +74811,7 @@ if (
                     if (!i) return !1;
                     (s.deleteContents(),
                         o && 3 !== o.nodeType && !F(o) ?
-                            z(i, o)
+                            T(i, o)
                         :   s.insertNode(i),
                         l.restoreRange());
                 }),
@@ -69824,7 +74850,7 @@ if (
                 }),
                 (l.getFirstBlockParent = function (e) {
                     var t = function (e) {
-                        return H(e, !0) && (e = e ? e.parentNode : null) ?
+                        return $(e, !0) && (e = e ? e.parentNode : null) ?
                                 t(e)
                             :   e;
                     };
@@ -69875,7 +74901,7 @@ if (
                     var i,
                         n = e.getSelection(),
                         o = t.endContainer;
-                    if (!Pe && t.collapsed && o && !H(o, !0)) {
+                    if (!Ie && t.collapsed && o && !$(o, !0)) {
                         for (i = o.lastChild; i && k(i, '.sceditor-ignore');)
                             i = i.previousSibling;
                         if (k(i, 'br')) {
@@ -69907,15 +74933,15 @@ if (
                         s = l.cloneSelected();
                     if (!s) return !1;
                     (s.collapse(!1),
-                        (i = je(s, !0, e)),
-                        (n = je(s, !1, t)),
+                        (i = De(s, !0, e)),
+                        (n = De(s, !1, t)),
                         s.setStart(i.node, i.offset),
                         s.setEnd(n.node, n.offset),
                         l.selectRange(s));
                 }),
                 (l.getOuterText = function (e, t) {
                     var i = l.cloneSelected();
-                    return i ? (i.collapse(!e), je(i, e, t).text) : '';
+                    return i ? (i.collapse(!e), De(i, e, t).text) : '';
                 }),
                 (l.replaceKeyword = function (e, t, i, n, s, o) {
                     i ||
@@ -70066,8 +75092,8 @@ if (
             O(
                 e,
                 function (e) {
-                    H(e, !0) ?
-                        (i || z((i = r('p', {}, t)), e),
+                    $(e, !0) ?
+                        (i || T((i = r('p', {}, t)), e),
                         (e.nodeType === ve && '' === e.nodeValue) || u(i, e))
                     :   (i = null);
                 },
@@ -70082,14 +75108,14 @@ if (
                 f,
                 x,
                 C,
-                T,
-                L,
+                S,
+                R,
                 O,
                 B,
                 V,
-                q,
+                W,
                 U,
-                K,
+                G,
                 Y,
                 J,
                 Q,
@@ -70103,23 +75129,23 @@ if (
                 ye,
                 ke,
                 xe,
-                Se,
+                ze,
                 Ae,
                 Ee,
-                Ie,
                 Pe,
-                je,
-                Re,
-                $e,
-                Fe,
+                Ie,
+                De,
+                Ne,
                 He,
+                Fe,
+                $e,
                 Ve,
-                We,
                 qe,
+                We,
                 Ue,
                 Ze,
-                Ke,
                 Ge,
+                Ke,
                 Ye,
                 Je,
                 Qe,
@@ -70151,8 +75177,8 @@ if (
             ((_t.opts.emoticons = t.emoticons || we.emoticons),
                 (xe = function () {
                     ((e._sceditor = _t),
-                        kt.locale && 'en' !== kt.locale && je(),
-                        z(
+                        kt.locale && 'en' !== kt.locale && De(),
+                        T(
                             (a = r('div', { className: 'sceditor-container' })),
                             e
                         ),
@@ -70162,25 +75188,25 @@ if (
                         (e.required = !1));
                     var t = le.formats[kt.format];
                     ('init' in (i = t ? new t() : {}) && i.init.call(_t),
-                        Pe(),
-                        Ve(),
-                        Re(),
                         Ie(),
-                        $e(),
+                        Ve(),
+                        Ne(),
+                        Pe(),
+                        He(),
                         Fe(),
-                        Te || _t.toggleSourceMode(),
+                        Se || _t.toggleSourceMode(),
                         tt());
                     var n = function () {
-                        (m(De, 'load', n),
+                        (m(je, 'load', n),
                             kt.autofocus && at(),
                             mt(),
                             nt(),
                             Y.call('ready'),
                             'onReady' in i && i.onReady.call(_t));
                     };
-                    (p(De, 'load', n), 'complete' === Le.readyState && n());
+                    (p(je, 'load', n), 'complete' === Re.readyState && n());
                 }),
-                (Pe = function () {
+                (Ie = function () {
                     var e = kt.plugins;
                     ((e = e ? e.toString().split(',') : []),
                         (Y = new ne(_t)),
@@ -70188,31 +75214,31 @@ if (
                             Y.register(e.trim());
                         }));
                 }),
-                (je = function () {
+                (De = function () {
                     var e;
                     ((U = le.locale[kt.locale]) ||
                         ((e = kt.locale.split('-')), (U = le.locale[e[0]])),
                         U && U.dateFormat && (kt.dateFormat = U.dateFormat));
                 }),
-                (Ie = function () {
-                    ((L = r('textarea')),
+                (Pe = function () {
+                    ((R = r('textarea')),
                         (f = r('iframe', {
                             frameborder: 0,
                             allowfullscreen: !0,
                         })),
                         kt.startInSourceMode ?
                             (A(a, 'sourceMode'), g(f))
-                        :   (A(a, 'wysiwygMode'), g(L)),
+                        :   (A(a, 'wysiwygMode'), g(R)),
                         kt.spellcheck || _(a, 'spellcheck', 'false'),
-                        'https:' === De.location.protocol &&
+                        'https:' === je.location.protocol &&
                             _(f, 'src', 'javascript:false'),
                         u(a, f),
-                        u(a, L),
-                        _t.dimensions(kt.width || I(e), kt.height || P(e)));
+                        u(a, R),
+                        _t.dimensions(kt.width || P(e), kt.height || I(e)));
                     var t = Oe ? 'ie ie' + Oe : '';
-                    ((t += ze ? ' ios' : ''),
-                        (T = f.contentDocument).open(),
-                        T.write(
+                    ((t += Te ? ' ios' : ''),
+                        (S = f.contentDocument).open(),
+                        S.write(
                             te('html', {
                                 attrs: ' class="' + t + '"',
                                 spellcheck:
@@ -70221,29 +75247,29 @@ if (
                                 style: kt.style,
                             })
                         ),
-                        T.close(),
-                        (C = T.body),
+                        S.close(),
+                        (C = S.body),
                         (x = f.contentWindow),
                         _t.readOnly(!!kt.readOnly),
-                        (ze || Ce || Oe) &&
-                            (P(C, '100%'), Oe || p(C, 'touchend', _t.focus)));
+                        (Te || Ce || Oe) &&
+                            (I(C, '100%'), Oe || p(C, 'touchend', _t.focus)));
                     var i = _(e, 'tabindex');
-                    (_(L, 'tabindex', i),
+                    (_(R, 'tabindex', i),
                         _(f, 'tabindex', i),
-                        (K = new se(x)),
+                        (G = new se(x)),
                         g(e),
                         _t.val(e.value));
                     var n = kt.placeholder || _(e, 'placeholder');
-                    n && ((L.placeholder = n), _(C, 'placeholder', n));
+                    n && ((R.placeholder = n), _(C, 'placeholder', n));
                 }),
-                ($e = function () {
-                    (kt.autoUpdate && (p(C, 'blur', pt), p(L, 'blur', pt)),
+                (He = function () {
+                    (kt.autoUpdate && (p(C, 'blur', pt), p(R, 'blur', pt)),
                         null === kt.rtl &&
-                            (kt.rtl = 'rtl' === y(L, 'direction')),
+                            (kt.rtl = 'rtl' === y(R, 'direction')),
                         _t.rtl(!!kt.rtl),
                         kt.autoExpand &&
                             (p(C, 'load', mt, be), p(C, 'input keyup', mt)),
-                        kt.resizeEnabled && He(),
+                        kt.resizeEnabled && $e(),
                         _(a, 'id', kt.id),
                         _t.emoticons(kt.emoticonsEnabled));
                 }),
@@ -70252,25 +75278,25 @@ if (
                         i = 'compositionstart compositionend',
                         n = 'keydown keyup keypress focus blur contextmenu',
                         s =
-                            'onselectionchange' in T ? 'selectionchange' : (
+                            'onselectionchange' in S ? 'selectionchange' : (
                                 'keyup focus blur contextmenu mouseup touchend click'
                             );
-                    (p(Le, 'click', Xe),
+                    (p(Re, 'click', Xe),
                         t &&
-                            (p(t, 'reset', Ge),
+                            (p(t, 'reset', Ke),
                             p(t, 'submit', _t.updateOriginal, be)),
-                        p(C, 'keypress', Ke),
+                        p(C, 'keypress', Ge),
                         p(C, 'keydown', Ue),
                         p(C, 'keydown', Ze),
                         p(C, 'keyup', nt),
                         p(C, 'blur', ut),
                         p(C, 'keyup', ht),
-                        p(C, 'paste', We),
+                        p(C, 'paste', qe),
                         p(C, i, Je),
                         p(C, s, st),
                         p(C, n, Qe),
                         kt.emoticonsCompat &&
-                            De.getSelection &&
+                            je.getSelection &&
                             p(C, 'keyup', lt),
                         p(C, 'blur', function () {
                             _t.val() || A(C, 'placeholder');
@@ -70278,16 +75304,16 @@ if (
                         p(C, 'focus', function () {
                             E(C, 'placeholder');
                         }),
-                        p(L, 'blur', ut),
-                        p(L, 'keyup', ht),
-                        p(L, 'keydown', Ue),
-                        p(L, i, Je),
-                        p(L, n, Qe),
-                        p(T, 'mousedown', Ye),
-                        p(T, s, st),
-                        p(T, 'beforedeactivate keyup mouseup', Ee),
-                        p(T, 'keyup', nt),
-                        p(T, 'focus', function () {
+                        p(R, 'blur', ut),
+                        p(R, 'keyup', ht),
+                        p(R, 'keydown', Ue),
+                        p(R, i, Je),
+                        p(R, n, Qe),
+                        p(S, 'mousedown', Ye),
+                        p(S, s, st),
+                        p(S, 'beforedeactivate keyup mouseup', Ee),
+                        p(S, 'keyup', nt),
+                        p(S, 'focus', function () {
                             B = null;
                         }),
                         p(a, 'selectionchanged', ot),
@@ -70298,7 +75324,7 @@ if (
                             Qe
                         ));
                 }),
-                (Re = function () {
+                (Ne = function () {
                     var e,
                         t = _t.commands,
                         i = (kt.toolbarExclude || '').split(','),
@@ -70330,13 +75356,13 @@ if (
                                             ke && ke.create)
                                         )
                                             ke.create(s) &&
-                                                (z(ke.create(s), o.firstChild),
+                                                (T(ke.create(s), o.firstChild),
                                                 A(o, 'has-icon'));
                                         ((o._sceTxtMode = !!r.txtExec),
                                             (o._sceWysiwygMode = !!r.exec),
                                             M(o, 'disabled', !r.exec),
                                             p(o, 'click', function (e) {
-                                                (S(o, 'disabled') || Ae(o, r),
+                                                (z(o, 'disabled') || Ae(o, r),
                                                     tt(),
                                                     e.preventDefault());
                                             }),
@@ -70372,7 +75398,7 @@ if (
                         }),
                         u(kt.toolbarContainer || a, l));
                 }),
-                (He = function () {
+                ($e = function () {
                     var e,
                         t,
                         i,
@@ -70389,10 +75415,10 @@ if (
                         y = 0,
                         w = 0,
                         k = 0,
-                        x = I(a),
-                        C = P(a),
-                        z = !1,
-                        T = _t.rtl();
+                        x = P(a),
+                        C = I(a),
+                        T = !1,
+                        S = _t.rtl();
                     if (
                         ((e = kt.resizeMinHeight || C / 1.5),
                         (t = kt.resizeMaxHeight || 2.5 * C),
@@ -70400,12 +75426,12 @@ if (
                         (n = kt.resizeMaxWidth || 1.25 * x),
                         (s = function (s) {
                             'touchmove' === s.type ?
-                                ((s = De.event),
+                                ((s = je.event),
                                 (b = s.changedTouches[0].pageX),
                                 (y = s.changedTouches[0].pageY))
                             :   ((b = s.pageX), (y = s.pageY));
                             var o = k + (y - f),
-                                a = T ? w - (b - _) : w + (b - _);
+                                a = S ? w - (b - _) : w + (b - _);
                             (n > 0 && a > n && (a = n),
                                 i > 0 && a < i && (a = i),
                                 kt.resizeWidth || (a = !1),
@@ -70416,35 +75442,35 @@ if (
                                 s.preventDefault());
                         }),
                         (o = function (e) {
-                            z &&
-                                ((z = !1),
+                            T &&
+                                ((T = !1),
                                 g(c),
                                 E(a, 'resizing'),
-                                m(Le, d, s),
-                                m(Le, h, o),
+                                m(Re, d, s),
+                                m(Re, h, o),
                                 e.preventDefault());
                         }),
                         ke && ke.create)
                     ) {
-                        var S = ke.create('grip');
-                        S && (u(l, S), A(l, 'has-icon'));
+                        var z = ke.create('grip');
+                        z && (u(l, z), A(l, 'has-icon'));
                     }
                     (u(a, l),
                         u(a, c),
                         g(c),
                         p(l, 'touchstart mousedown', function (e) {
                             ('touchstart' === e.type ?
-                                ((e = De.event),
+                                ((e = je.event),
                                 (_ = e.touches[0].pageX),
                                 (f = e.touches[0].pageY))
                             :   ((_ = e.pageX), (f = e.pageY)),
-                                (w = I(a)),
-                                (k = P(a)),
-                                (z = !0),
+                                (w = P(a)),
+                                (k = I(a)),
+                                (T = !0),
                                 A(a, 'resizing'),
                                 v(c),
-                                p(Le, d, s),
-                                p(Le, h, o),
+                                p(Re, d, s),
+                                p(Re, h, o),
                                 e.preventDefault());
                         }));
                 }),
@@ -70469,29 +75495,29 @@ if (
                         t,
                         i = C.firstChild,
                         n = !!kt.autofocusEnd;
-                    if (D(a)) {
+                    if (j(a)) {
                         if (_t.sourceMode())
                             return (
-                                (t = n ? L.value.length : 0),
-                                void L.setSelectionRange(t, t)
+                                (t = n ? R.value.length : 0),
+                                void R.setSelectionRange(t, t)
                             );
                         if ((Z(C), n))
                             for (
                                 (i = C.lastChild) ||
-                                ((i = r('p', {}, T)), u(C, i));
+                                ((i = r('p', {}, S)), u(C, i));
                                 i.lastChild;
                             )
                                 ((i = i.lastChild),
-                                    !Ne &&
+                                    !Le &&
                                         k(i, 'br') &&
                                         i.previousSibling &&
                                         (i = i.previousSibling));
-                        ((e = T.createRange()),
+                        ((e = S.createRange()),
                             F(i) ?
                                 e.selectNodeContents(i)
                             :   (e.setStartBefore(i), n && e.setStartAfter(i)),
                             e.collapse(!n),
-                            K.selectRange(e),
+                            G.selectRange(e),
                             (ee = e),
                             n && (C.scrollTop = C.scrollHeight),
                             _t.focus());
@@ -70499,18 +75525,18 @@ if (
                 }),
                 (_t.readOnly = function (e) {
                     return 'boolean' != typeof e ?
-                            !L.readonly
+                            !R.readonly
                         :   ((C.contentEditable = !e),
-                            (L.readonly = !e),
+                            (R.readonly = !e),
                             et(e),
                             _t);
                 }),
                 (_t.rtl = function (e) {
                     var t = e ? 'rtl' : 'ltr';
                     return 'boolean' != typeof e ?
-                            'rtl' === _(L, 'dir')
+                            'rtl' === _(R, 'dir')
                         :   (_(C, 'dir', t),
-                            _(L, 'dir', t),
+                            _(R, 'dir', t),
                             E(a, 'rtl'),
                             E(a, 'ltr'),
                             A(a, t),
@@ -70527,34 +75553,34 @@ if (
                 (_t.width = function (e, t) {
                     return e || 0 === e ?
                             (_t.dimensions(e, null, t), _t)
-                        :   I(a);
+                        :   P(a);
                 }),
                 (_t.dimensions = function (e, t, i) {
                     return (
                         (t = !(!t && 0 !== t) && t),
                         !1 === (e = !(!e && 0 !== e) && e) && !1 === t ?
                             { width: _t.width(), height: _t.height() }
-                        :   (!1 !== e && (!1 !== i && (kt.width = e), I(a, e)),
-                            !1 !== t && (!1 !== i && (kt.height = t), P(a, t)),
+                        :   (!1 !== e && (!1 !== i && (kt.width = e), P(a, e)),
+                            !1 !== t && (!1 !== i && (kt.height = t), I(a, t)),
                             _t)
                     );
                 }),
                 (_t.height = function (e, t) {
                     return e || 0 === e ?
                             (_t.dimensions(null, e, t), _t)
-                        :   P(a);
+                        :   I(a);
                 }),
                 (_t.maximize = function (e) {
                     var t = 'sceditor-maximize';
                     return pe(e) ?
-                            S(a, t)
-                        :   ((e = !!e) && (fe = De.pageYOffset),
-                            M(Le.documentElement, t, e),
-                            M(Le.body, t, e),
+                            z(a, t)
+                        :   ((e = !!e) && (fe = je.pageYOffset),
+                            M(Re.documentElement, t, e),
+                            M(Re.body, t, e),
                             M(a, t, e),
                             _t.width(e ? '100%' : kt.width, !1),
                             _t.height(e ? '100%' : kt.height, !1),
-                            e || De.scrollTo(0, fe),
+                            e || je.scrollTo(0, fe),
                             mt(),
                             _t);
                 }),
@@ -70566,13 +75592,13 @@ if (
                 (_t.expandToContent = function (t) {
                     if (!_t.maximize()) {
                         if ((clearTimeout(_e), (_e = !1), !ue)) {
-                            var i = kt.resizeMinHeight || kt.height || P(e);
+                            var i = kt.resizeMinHeight || kt.height || I(e);
                             ue = { min: i, max: kt.resizeMaxHeight || 2 * i };
                         }
-                        var n = Le.createRange();
+                        var n = Re.createRange();
                         n.selectNodeContents(C);
                         var s = n.getBoundingClientRect(),
-                            o = T.documentElement.clientHeight - 1,
+                            o = S.documentElement.clientHeight - 1,
                             a = s.bottom - s.top,
                             r = _t.height() + 1 + (a - o);
                         (t || -1 === ue.max || (r = Math.min(r, ue.max)),
@@ -70582,16 +75608,16 @@ if (
                 (_t.destroy = function () {
                     if (Y) {
                         (Y.destroy(),
-                            (K = null),
+                            (G = null),
                             (B = null),
                             (Y = null),
                             O && d(O),
-                            m(Le, 'click', Xe));
+                            m(Re, 'click', Xe));
                         var t = e.form;
                         (t &&
-                            (m(t, 'reset', Ge),
+                            (m(t, 'reset', Ke),
                             m(t, 'submit', _t.updateOriginal)),
-                            d(L),
+                            d(R),
                             d(l),
                             d(a),
                             delete e._sceditor,
@@ -70603,7 +75629,7 @@ if (
                     var l,
                         c = 'sceditor-' + t;
                     (_t.closeDropDown(!0),
-                        (O && S(O, c)) ||
+                        (O && z(O, c)) ||
                             (!1 !== s &&
                                 o(
                                     h(i, ':not(input):not(textarea)'),
@@ -70644,14 +75670,14 @@ if (
                         !e.defaultPrevented &&
                         (pt(), _t.closeDropDown());
                 }),
-                (We = function (e) {
+                (qe = function (e) {
                     var t = Oe || Ce,
                         i = C,
                         n = e.clipboardData,
                         s = function (e) {
                             var t = new FileReader();
                             ((t.onload = function (e) {
-                                qe({
+                                We({
                                     html:
                                         '<img src="' + e.target.result + '" />',
                                 });
@@ -70664,17 +75690,17 @@ if (
                             r = n.items;
                         e.preventDefault();
                         for (var l = 0; l < a.length; l++) {
-                            if (De.FileReader && r && Be.test(r[l].type))
+                            if (je.FileReader && r && Be.test(r[l].type))
                                 return s(n.items[l].getAsFile());
                             o[a[l]] = n.getData(a[l]);
                         }
                         ((o.text = o['text/plain']),
                             (o.html = o['text/html']),
-                            qe(o));
+                            We(o));
                     } else if (!ye) {
                         var c = i.scrollTop;
                         for (
-                            K.saveRange(), ye = Le.createDocumentFragment();
+                            G.saveRange(), ye = Re.createDocumentFragment();
                             i.firstChild;
                         )
                             u(ye, i.firstChild);
@@ -70684,23 +75710,23 @@ if (
                                 u(i, ye),
                                 (i.scrollTop = c),
                                 (ye = !1),
-                                K.restoreRange(),
-                                qe({ html: e }));
+                                G.restoreRange(),
+                                We({ html: e }));
                         }, 0);
                     }
                 }),
-                (qe = function (e) {
-                    var t = r('div', {}, T);
+                (We = function (e) {
+                    var t = r('div', {}, S);
                     (Y.call('pasteRaw', e),
-                        j(a, 'pasteraw', e),
+                        D(a, 'pasteraw', e),
                         e.html ?
-                            ((t.innerHTML = e.html), W(t))
+                            ((t.innerHTML = e.html), q(t))
                         :   (t.innerHTML = X(e.text || '')));
                     var n = { val: t.innerHTML };
                     ('fragmentToSource' in i &&
-                        (n.val = i.fragmentToSource(n.val, T, J)),
+                        (n.val = i.fragmentToSource(n.val, S, J)),
                         Y.call('paste', n),
-                        j(a, 'paste', n),
+                        D(a, 'paste', n),
                         'fragmentToHtml' in i &&
                             (n.val = i.fragmentToHtml(n.val, J)),
                         Y.call('pasteHtml', n),
@@ -70713,19 +75739,19 @@ if (
                     var n,
                         s,
                         o,
-                        a = P(f);
+                        a = I(f);
                     (_t.focus(),
                         (!i && c(Q, 'code')) ||
-                            (K.insertHTML(e, t),
-                            K.saveRange(),
-                            Se(),
+                            (G.insertHTML(e, t),
+                            G.saveRange(),
+                            ze(),
                             v((n = h(C, '#sceditor-end-marker')[0])),
                             (s = C.scrollTop),
-                            (o = G(n).top + 1.5 * n.offsetHeight - a),
+                            (o = K(n).top + 1.5 * n.offsetHeight - a),
                             g(n),
                             (o > s || o + a < s) && (C.scrollTop = o),
                             dt(!1),
-                            K.restoreRange(),
+                            G.restoreRange(),
                             nt()));
                 }),
                 (_t.wysiwygEditorInsertText = function (e, t) {
@@ -70742,31 +75768,31 @@ if (
                 (_t.sourceEditorInsertText = function (e, t) {
                     var i,
                         n,
-                        s = L.selectionStart,
-                        o = L.selectionEnd;
-                    ((i = L.scrollTop),
-                        L.focus(),
-                        (n = L.value),
+                        s = R.selectionStart,
+                        o = R.selectionEnd;
+                    ((i = R.scrollTop),
+                        R.focus(),
+                        (n = R.value),
                         t && (e += n.substring(s, o) + t),
-                        (L.value =
+                        (R.value =
                             n.substring(0, s) + e + n.substring(o, n.length)),
-                        (L.selectionStart = s + e.length - (t ? t.length : 0)),
-                        (L.selectionEnd = L.selectionStart),
-                        (L.scrollTop = i),
-                        L.focus(),
+                        (R.selectionStart = s + e.length - (t ? t.length : 0)),
+                        (R.selectionEnd = R.selectionStart),
+                        (R.scrollTop = i),
+                        R.focus(),
                         dt());
                 }),
                 (_t.getRangeHelper = function () {
-                    return K;
+                    return G;
                 }),
                 (_t.sourceEditorCaret = function (e) {
                     return (
-                        L.focus(),
+                        R.focus(),
                         e ?
-                            ((L.selectionStart = e.start),
-                            (L.selectionEnd = e.end),
+                            ((R.selectionStart = e.start),
+                            (R.selectionEnd = e.end),
                             this)
-                        :   { start: L.selectionStart, end: L.selectionEnd }
+                        :   { start: R.selectionStart, end: R.selectionEnd }
                     );
                 }),
                 (_t.val = function (e, t) {
@@ -70785,10 +75811,10 @@ if (
                     if (_t.inSourceMode())
                         return (_t.sourceEditorInsertText(e, t), _t);
                     if (t) {
-                        var a = K.selectedHtml();
+                        var a = G.selectedHtml();
                         (!1 !== n &&
                             'fragmentToSource' in i &&
-                            (a = i.fragmentToSource(a, T, J)),
+                            (a = i.fragmentToSource(a, S, J)),
                             (e += a + t));
                     }
                     return (
@@ -70807,19 +75833,19 @@ if (
                 }),
                 (_t.getWysiwygEditorValue = function (e) {
                     for (
-                        var t, n = r('div', {}, T), s = C.childNodes, o = 0;
+                        var t, n = r('div', {}, S), s = C.childNodes, o = 0;
                         o < s.length;
                         o++
                     )
                         u(n, s[o].cloneNode(!0));
                     return (
                         u(C, n),
-                        W(n),
+                        q(n),
                         d(n),
                         (t = n.innerHTML),
                         !1 !== e &&
                             i.hasOwnProperty('toSource') &&
-                            (t = i.toSource(t, T)),
+                            (t = i.toSource(t, S)),
                         t
                     );
                 }),
@@ -70830,28 +75856,28 @@ if (
                     return f;
                 }),
                 (_t.getSourceEditorValue = function (e) {
-                    var t = L.value;
+                    var t = R.value;
                     return (!1 !== e && 'toHtml' in i && (t = i.toHtml(t)), t);
                 }),
                 (_t.setWysiwygEditorValue = function (e) {
                     (e || (e = '<p>' + (Oe ? '' : '<br />') + '</p>'),
                         (C.innerHTML = e),
-                        Se(),
+                        ze(),
                         nt(),
                         dt(),
                         mt());
                 }),
                 (_t.setSourceEditorValue = function (e) {
-                    ((L.value = e), dt());
+                    ((R.value = e), dt());
                 }),
                 (_t.updateOriginal = function () {
                     e.value = _t.val();
                 }),
-                (Se = function () {
+                (ze = function () {
                     kt.emoticonsEnabled && ae(C, wt, kt.emoticonsCompat);
                 }),
                 (_t.inSourceMode = function () {
-                    return S(a, 'sourceMode');
+                    return z(a, 'sourceMode');
                 }),
                 (_t.sourceMode = function (e) {
                     var t = _t.inSourceMode();
@@ -70862,14 +75888,14 @@ if (
                 }),
                 (_t.toggleSourceMode = function () {
                     var e = _t.inSourceMode();
-                    (!Te && e) ||
-                        (e || (K.saveRange(), K.clear()),
+                    (!Se && e) ||
+                        (e || (G.saveRange(), G.clear()),
                         _t.blur(),
                         e ?
                             _t.setWysiwygEditorValue(_t.getSourceEditorValue())
                         :   _t.setSourceEditorValue(_t.getWysiwygEditorValue()),
                         (B = null),
-                        b(L),
+                        b(R),
                         b(f),
                         M(a, 'wysiwygMode', e),
                         M(a, 'sourceMode', !e),
@@ -70878,8 +75904,8 @@ if (
                 }),
                 (it = function () {
                     return (
-                        L.focus(),
-                        L.value.substring(L.selectionStart, L.selectionEnd)
+                        R.focus(),
+                        R.value.substring(R.selectionStart, R.selectionEnd)
                     );
                 }),
                 (Ae = function (e, t) {
@@ -70899,14 +75925,14 @@ if (
                             ));
                 }),
                 (Ee = function () {
-                    Oe && (B = K.selectedRange());
+                    Oe && (B = G.selectedRange());
                 }),
                 (_t.execCommand = function (e, t) {
                     var i = !1,
                         n = _t.commands[e];
-                    if ((_t.focus(), !c(K.parentNode(), 'code'))) {
+                    if ((_t.focus(), !c(G.parentNode(), 'code'))) {
                         try {
-                            i = T.execCommand(e, !1, t);
+                            i = S.execCommand(e, !1, t);
                         } catch (e) {}
                         (!i &&
                             n &&
@@ -70922,8 +75948,8 @@ if (
                             x.getSelection().rangeCount <= 0
                         )
                             ee = null;
-                        else if (K && !K.compare(ee)) {
-                            if ((ee = K.cloneSelected()) && ee.collapsed) {
+                        else if (G && !G.compare(ee)) {
+                            if ((ee = G.cloneSelected()) && ee.collapsed) {
                                 var e = ee.startContainer,
                                     t = ee.startOffset;
                                 for (
@@ -70934,25 +75960,25 @@ if (
                                 )
                                     e = e.parentNode;
                                 e &&
-                                    H(e, !0) &&
-                                    (K.saveRange(), re(C, T), K.restoreRange());
+                                    $(e, !0) &&
+                                    (G.saveRange(), re(C, S), G.restoreRange());
                             }
-                            j(a, 'selectionchanged');
+                            D(a, 'selectionchanged');
                         }
                         ie = !1;
                     }
                     ie ||
                         ((ie = !0),
-                        'onselectionchange' in T ? e() : setTimeout(e, 100));
+                        'onselectionchange' in S ? e() : setTimeout(e, 100));
                 }),
                 (ot = function () {
                     var e,
-                        t = K.parentNode();
+                        t = G.parentNode();
                     J !== t &&
                         ((e = J),
                         (J = t),
-                        (Q = K.getFirstBlockParent(t)),
-                        j(a, 'nodechanged', { oldNode: e, newNode: J }));
+                        (Q = G.getFirstBlockParent(t)),
+                        D(a, 'nodechanged', { oldNode: e, newNode: J }));
                 }),
                 (_t.currentNode = function () {
                     return J;
@@ -70964,7 +75990,7 @@ if (
                     var e,
                         t,
                         i = 'active',
-                        n = T,
+                        n = S,
                         s = _t.sourceMode();
                     if (_t.readOnly())
                         o(h(l, i), function (e, t) {
@@ -70972,8 +75998,8 @@ if (
                         });
                     else {
                         s ||
-                            ((t = K.parentNode()),
-                            (e = K.getFirstBlockParent(t)));
+                            ((t = G.parentNode()),
+                            (e = G.getFirstBlockParent(t)));
                         for (var a = 0; a < vt.length; a++) {
                             var r = 0,
                                 c = yt[vt[a].name],
@@ -70996,41 +76022,41 @@ if (
                         ke && ke.update && ke.update(s, t, e);
                     }
                 }),
-                (Ke = function (e) {
+                (Ge = function (e) {
                     if (
                         !e.defaultPrevented &&
                         (_t.closeDropDown(),
-                        13 === e.which && !k(Q, 'li,ul,ol') && R(Q))
+                        13 === e.which && !k(Q, 'li,ul,ol') && N(Q))
                     ) {
                         B = null;
-                        var t = r('br', {}, T);
-                        if ((K.insertNode(t), !Ne)) {
+                        var t = r('br', {}, S);
+                        if ((G.insertNode(t), !Le)) {
                             var i = t.parentNode,
                                 n = i.lastChild;
                             (n &&
                                 n.nodeType === ve &&
                                 '' === n.nodeValue &&
                                 (d(n), (n = i.lastChild)),
-                                !H(i, !0) &&
+                                !$(i, !0) &&
                                     n === t &&
-                                    H(t.previousSibling) &&
-                                    K.insertHTML('<br>'));
+                                    $(t.previousSibling) &&
+                                    G.insertHTML('<br>'));
                         }
                         e.preventDefault();
                     }
                 }),
                 (nt = function () {
-                    N(C, function (e) {
+                    L(C, function (e) {
                         if (
                             e.nodeType === ge &&
                             !/inline/.test(y(e, 'display')) &&
                             !k(e, '.sceditor-nlf') &&
-                            R(e)
+                            N(e)
                         ) {
-                            var t = r('p', {}, T);
+                            var t = r('p', {}, S);
                             return (
                                 (t.className = 'sceditor-nlf'),
-                                (t.innerHTML = Ne ? '' : '<br />'),
+                                (t.innerHTML = Le ? '' : '<br />'),
                                 u(C, t),
                                 !1
                             );
@@ -71042,7 +76068,7 @@ if (
                             return !1;
                     });
                 }),
-                (Ge = function () {
+                (Ke = function () {
                     _t.val(e.value);
                 }),
                 (Ye = function () {
@@ -71062,7 +76088,7 @@ if (
                 }),
                 (Qe = function (e) {
                     Y && Y.call(e.type + 'Event', e, _t);
-                    var t = (e.target === L ? 'scesrc' : 'scewys') + e.type;
+                    var t = (e.target === R ? 'scesrc' : 'scewys') + e.type;
                     ft[t] &&
                         ft[t].forEach(function (t) {
                             t.call(_t, e);
@@ -71090,20 +76116,20 @@ if (
                 (_t.blur = function (e, t, i) {
                     return (
                         me(e) ? _t.bind('blur', e, t, i)
-                        : _t.sourceMode() ? L.blur()
+                        : _t.sourceMode() ? R.blur()
                         : C.blur(),
                         _t
                     );
                 }),
                 (_t.focus = function (e, t, i) {
                     if (me(e)) _t.bind('focus', e, t, i);
-                    else if (_t.inSourceMode()) L.focus();
+                    else if (_t.inSourceMode()) R.focus();
                     else {
-                        if (h(T, ':focus').length) return;
+                        if (h(S, ':focus').length) return;
                         var n,
-                            s = K.selectedRange();
+                            s = G.selectedRange();
                         (ee || at(),
-                            !Ne &&
+                            !Le &&
                                 s &&
                                 1 === s.endOffset &&
                                 s.collapsed &&
@@ -71112,10 +76138,10 @@ if (
                                 k(n.firstChild, 'br') &&
                                 (s.setStartBefore(n.firstChild),
                                 s.collapse(!0),
-                                K.selectRange(s)),
+                                G.selectRange(s)),
                             x.focus(),
                             C.focus(),
-                            B && (K.selectRange(B), (B = null)));
+                            B && (G.selectRange(B), (B = null)));
                     }
                     return (tt(), _t);
                 }),
@@ -71153,7 +76179,7 @@ if (
                             (_t.emoticonsCache = i),
                             (_t.longestEmoticonCode =
                                 i[i.length - 1][0].length)),
-                        K.replaceKeyword(
+                        G.replaceKeyword(
                             _t.emoticonsCache,
                             !0,
                             !0,
@@ -71165,19 +76191,19 @@ if (
                                 e.preventDefault()));
                 }),
                 (lt = function () {
-                    oe(Q, K);
+                    oe(Q, G);
                 }),
                 (_t.emoticons = function (e) {
                     if (!e && !1 !== e) return kt.emoticonsEnabled;
                     ((kt.emoticonsEnabled = e), e) ?
                         (p(C, 'keypress', rt),
                         _t.sourceMode() ||
-                            (K.saveRange(), Se(), dt(!1), K.restoreRange()))
+                            (G.saveRange(), ze(), dt(!1), G.restoreRange()))
                     :   (o(
                             h(C, 'img[data-sceditor-emoticon]'),
                             function (e, t) {
                                 var i = w(t, 'sceditor-emoticon'),
-                                    n = T.createTextNode(i);
+                                    n = S.createTextNode(i);
                                 t.parentNode.replaceChild(n, t);
                             }
                         ),
@@ -71188,8 +76214,8 @@ if (
                 (_t.css = function (e) {
                     return (
                         de ||
-                            ((de = r('style', { id: 'inline' }, T)),
-                            u(T.head, de)),
+                            ((de = r('style', { id: 'inline' }, S)),
+                            u(S.head, de)),
                         he(e) ?
                             (de.styleSheet ?
                                 (de.styleSheet.cssText = e)
@@ -71333,7 +76359,7 @@ if (
                     if (
                         !kt.disableBlockRemove &&
                         8 === e.which &&
-                        (i = K.selectedRange()) &&
+                        (i = G.selectedRange()) &&
                         ((t = i.startContainer),
                         0 === i.startOffset && (n = ct()) && !k(n, 'body'))
                     ) {
@@ -71350,7 +76376,7 @@ if (
                     }
                 }),
                 (ct = function () {
-                    for (var e = Q; !R(e) || H(e, !0);)
+                    for (var e = Q; !N(e) || $(e, !0);)
                         if (!(e = e.parentNode) || k(e, 'body')) return;
                     return e;
                 }),
@@ -71358,12 +76384,12 @@ if (
                     return (
                         !(e = e || ct()) ||
                             k(e, 'body') ||
-                            (K.saveRange(),
+                            (G.saveRange(),
                             (e.className = ''),
                             (B = null),
                             _(e, 'style', ''),
-                            k(e, 'p,div,td') || $(e, 'p'),
-                            K.restoreRange()),
+                            k(e, 'p,div,td') || H(e, 'p'),
+                            G.restoreRange()),
                         _t
                     );
                 }),
@@ -71374,23 +76400,23 @@ if (
                     ) {
                         var t,
                             i = _t.sourceMode(),
-                            n = !i && K.hasSelection();
+                            n = !i && G.hasSelection();
                         ((V = !1),
                             (e =
                                 !1 !== e &&
-                                !T.getElementById('sceditor-start-marker')),
-                            q && (clearTimeout(q), (q = !1)),
-                            n && e && K.saveRange(),
-                            (t = i ? L.value : C.innerHTML) !== dt.lastVal &&
+                                !S.getElementById('sceditor-start-marker')),
+                            W && (clearTimeout(W), (W = !1)),
+                            n && e && G.saveRange(),
+                            (t = i ? R.value : C.innerHTML) !== dt.lastVal &&
                                 ((dt.lastVal = t),
-                                j(a, 'valuechanged', {
+                                D(a, 'valuechanged', {
                                     rawValue: i ? _t.val() : t,
                                 })),
-                            n && e && K.removeMarkers());
+                            n && e && G.removeMarkers());
                     }
                 }),
                 (ut = function () {
-                    q && dt();
+                    W && dt();
                 }),
                 (ht = function (e) {
                     var t = e.which,
@@ -71406,8 +76432,8 @@ if (
                                 s ? (ht.triggerNext = !0)
                                 :   dt()
                             :   ht.triggerNext && (dt(), (ht.triggerNext = !1)),
-                            clearTimeout(q),
-                            (q = setTimeout(function () {
+                            clearTimeout(W),
+                            (W = setTimeout(function () {
                                 V || dt();
                             }, 1500))));
                 }),
@@ -71534,8 +76560,8 @@ if (
                 );
             })(),
             Ce = '-ms-ime-align' in document.documentElement.style,
-            ze = /iPhone|iPod|iPad| wosbrowser\//i.test(ke),
-            Te =
+            Te = /iPhone|iPod|iPad| wosbrowser\//i.test(ke),
+            Se =
                 (((ue = document.createElement('div')).contentEditable = !0),
                 'contentEditable' in document.documentElement &&
                     'true' === ue.contentEditable &&
@@ -71546,13 +76572,13 @@ if (
                             !(ce = /AppleWebKit\/(\d+)/.exec(ke)) ||
                             !ce[1] ||
                             ce[1] < 534),
-                    ze && (de = /OS [0-4](_\d)+ like Mac/i.test(ke)),
+                    Te && (de = /OS [0-4](_\d)+ like Mac/i.test(ke)),
                     /Firefox/i.test(ke) && (de = !1),
                     /OneBrowser/i.test(ke) && (de = !1),
                     'UCWEB' === navigator.vendor && (de = !1),
                     xe <= 9 && (de = !0),
                     !de)),
-            Se =
+            ze =
                 /^(https?|s?ftp|mailto|spotify|skype|ssh|teamspeak|tel):|(\/\/)|data:image\/(png|bmp|gif|p?jpe?g);/i,
             Ae = {
                 html: '<!DOCTYPE html><html{attrs}><head><style>.ie * {min-height: auto !important} .ie table td {height:15px} @supports (-ms-ime-align:auto) { * { min-height: auto !important; } }</style><meta http-equiv="Content-Type" content="text/html;charset={charset}" /><link rel="stylesheet" type="text/css" href="{style}" /></head><body contenteditable="true" {spellcheck}><p></p></body></html>',
@@ -71825,7 +76851,7 @@ if (
                                     )),
                                     (o += '</table>'),
                                     t.wysiwygEditorInsertHtml(o),
-                                    W(t.getBody()),
+                                    q(t.getBody()),
                                     t.closeDropDown(!0),
                                     e.preventDefault());
                             }),
@@ -71982,7 +77008,7 @@ if (
                     exec: function () {
                         var e = c(this.currentNode(), 'a');
                         if (e) {
-                            for (; e.firstChild;) z(e.firstChild, e);
+                            for (; e.firstChild;) T(e.firstChild, e);
                             d(e);
                         }
                     },
@@ -72241,10 +77267,10 @@ if (
                 },
                 ignore: {},
             },
-            Ie = {};
-        ne.plugins = Ie;
-        var Pe = xe && xe < 11,
-            je = function (e, t, i) {
+            Pe = {};
+        ne.plugins = Pe;
+        var Ie = xe && xe < 11,
+            De = function (e, t, i) {
                 var n,
                     s,
                     o,
@@ -72271,10 +77297,10 @@ if (
                             (c = r.nextSibling)));
                 return { node: r || c, offset: d, text: l };
             },
-            De = window,
-            Le = document,
+            je = window,
+            Re = document,
             Oe = xe,
-            Ne = Oe && Oe < 11,
+            Le = Oe && Oe < 11,
             Be = /^image\/(p?jpe?g|gif|png|bmp)$/i;
         ((le.locale = {}),
             (le.formats = {}),
@@ -72314,8 +77340,8 @@ if (
                 commands: Me,
                 defaultOptions: we,
                 ie: xe,
-                ios: ze,
-                isWysiwygSupported: Te,
+                ios: Te,
+                isWysiwygSupported: Se,
                 regexEscape: Q,
                 escapeEntities: X,
                 escapeUriScheme: ee,
@@ -72325,23 +77351,23 @@ if (
                     removeAttr: f,
                     is: k,
                     closest: c,
-                    width: I,
-                    height: P,
+                    width: P,
+                    height: I,
                     traverse: O,
-                    rTraverse: N,
+                    rTraverse: L,
                     parseHTML: B,
-                    hasStyling: R,
-                    convertElement: $,
+                    hasStyling: N,
+                    convertElement: H,
                     blockLevelList: ye,
                     canHaveChildren: F,
-                    isInline: H,
+                    isInline: $,
                     copyCSS: V,
-                    fixNesting: W,
-                    findCommonAncestor: q,
+                    fixNesting: q,
+                    findCommonAncestor: W,
                     getSibling: U,
                     removeWhiteSpace: Z,
-                    extractContents: K,
-                    getOffset: G,
+                    extractContents: G,
+                    getOffset: K,
                     getStyle: Y,
                     hasStyle: J,
                 },
@@ -72353,7 +77379,7 @@ if (
                 create: function (e, t) {
                     ((t = t || {}),
                         l(e, '.sceditor-container') ||
-                            ((t.runWithoutWysiwygSupport || Te) &&
+                            ((t.runWithoutWysiwygSupport || Se) &&
                                 new le(e, t)));
                 },
                 instance: function (e) {
@@ -72505,7 +77531,7 @@ if (
             y(e, 'display', '');
         }
         function b(e) {
-            D(e) ? g(e) : v(e);
+            j(e) ? g(e) : v(e);
         }
         function y(e, t, i) {
             if (arguments.length < 3) {
@@ -72560,27 +77586,27 @@ if (
                 :   i
             );
         }
-        function z(e, t) {
+        function T(e, t) {
             return t.parentNode.insertBefore(e, t);
         }
-        function T(e) {
+        function S(e) {
             return e.className.trim().split(/\s+/);
         }
-        function S(e, t) {
+        function z(e, t) {
             return k(e, '.' + t);
         }
         function A(e, t) {
-            var i = T(e);
+            var i = S(e);
             (i.indexOf(t) < 0 && i.push(t), (e.className = i.join(' ')));
         }
         function E(e, t) {
-            var i = T(e);
+            var i = S(e);
             (s(i, t), (e.className = i.join(' ')));
         }
         function M(e, t, i) {
-            (i = pe(i) ? !S(e, t) : i) ? A(e, t) : E(e, t);
+            (i = pe(i) ? !z(e, t) : i) ? A(e, t) : E(e, t);
         }
-        function I(e, t) {
+        function P(e, t) {
             if (pe(t)) {
                 var i = getComputedStyle(e),
                     n = a(i.paddingLeft) + a(i.paddingRight),
@@ -72589,7 +77615,7 @@ if (
             }
             y(e, 'width', t);
         }
-        function P(e, t) {
+        function I(e, t) {
             if (pe(t)) {
                 var i = getComputedStyle(e),
                     n = a(i.paddingTop) + a(i.paddingBottom),
@@ -72598,7 +77624,7 @@ if (
             }
             y(e, 'height', t);
         }
-        function j(e, t, i) {
+        function D(e, t, i) {
             var n;
             (me(window.CustomEvent) ?
                 (n = new CustomEvent(t, {
@@ -72615,10 +77641,10 @@ if (
                 ),
                 e.dispatchEvent(n));
         }
-        function D(e) {
+        function j(e) {
             return !!e.getClientRects().length;
         }
-        function L(e) {
+        function R(e) {
             return e.replace(/^-ms-/, 'ms-').replace(/-(\w)/g, function (e, t) {
                 return t.toUpperCase();
             });
@@ -72635,7 +77661,7 @@ if (
                 e = o;
             }
         }
-        function N(e, t, i, n) {
+        function L(e, t, i, n) {
             O(e, t, i, n, !0);
         }
         function B(e, t) {
@@ -72644,13 +77670,13 @@ if (
             for (n.innerHTML = e; n.firstChild;) u(i, n.firstChild);
             return i;
         }
-        function R(e) {
+        function N(e) {
             return (
                 e &&
                 (!k(e, 'p,div') || e.className || _(e, 'style') || !i(w(e)))
             );
         }
-        function $(e, t) {
+        function H(e, t) {
             var i = r(t, {}, e.ownerDocument);
             for (
                 o(e.attributes, function (e, t) {
@@ -72671,7 +77697,7 @@ if (
                 ) < 0
             );
         }
-        function H(e, t) {
+        function $(e, t) {
             var i,
                 n = (e || {}).nodeType || ve;
             return (
@@ -72683,27 +77709,27 @@ if (
         function V(e, t) {
             t.style.cssText = e.style.cssText + t.style.cssText;
         }
-        function W(e) {
+        function q(e) {
             var t = function (e) {
-                for (; H(e.parentNode, !0);) e = e.parentNode;
+                for (; $(e.parentNode, !0);) e = e.parentNode;
                 return e;
             };
             O(e, function (e) {
                 var i = 'ul,ol',
-                    n = !H(e, !0);
-                if (n && H(e.parentNode, !0)) {
+                    n = !$(e, !0);
+                if (n && $(e.parentNode, !0)) {
                     var s = t(e),
-                        o = K(s, e),
+                        o = G(s, e),
                         a = e;
-                    (V(s, a), z(o, s), z(a, s));
+                    (V(s, a), T(o, s), T(a, s));
                 }
                 if (n && k(e, i) && k(e.parentNode, i)) {
                     var l = C(e, 'li');
-                    (l || z((l = r('li')), e), u(l, e));
+                    (l || T((l = r('li')), e), u(l, e));
                 }
             });
         }
-        function q(e, t) {
+        function W(e, t) {
             for (; (e = e.parentNode);) if (x(e, t)) return e;
         }
         function U(e, t) {
@@ -72733,25 +77759,25 @@ if (
                     ) {
                         for (
                             n = U(u), s = U(u, !0), r = !1;
-                            S(s, 'sceditor-ignore');
+                            z(s, 'sceditor-ignore');
                         )
                             s = U(s, !0);
-                        if (H(u) && s) {
+                        if ($(u) && s) {
                             for (o = s; o.lastChild;)
-                                for (o = o.lastChild; S(o, 'sceditor-ignore');)
+                                for (o = o.lastChild; z(o, 'sceditor-ignore');)
                                     o = U(o, !0);
                             r =
                                 o.nodeType === ve ?
                                     /[\t\n\r ]$/.test(o.nodeValue)
-                                :   !H(o);
+                                :   !$(o);
                         }
                         ((t = t.replace(/\u200B/g, '')),
-                            (s && H(s) && !r) ||
+                            (s && $(s) && !r) ||
                                 (t = t.replace(
                                     c ? /^[\t ]+/ : /^[\t\n\r ]+/,
                                     ''
                                 )),
-                            (n && H(n)) ||
+                            (n && $(n)) ||
                                 (t = t.replace(
                                     c ? /[\t ]+$/ : /[\t\n\r ]+$/,
                                     ''
@@ -72766,11 +77792,11 @@ if (
                     u = a;
                 }
         }
-        function K(e, t) {
+        function G(e, t) {
             var i = e.ownerDocument.createRange();
             return (i.setStartBefore(e), i.setEndAfter(t), i.extractContents());
         }
-        function G(e) {
+        function K(e) {
             for (var t = 0, i = 0; e;)
                 ((t += e.offsetLeft), (i += e.offsetTop), (e = e.offsetParent));
             return { left: t, top: i };
@@ -72780,7 +77806,7 @@ if (
                 n,
                 s = e.style;
             if (
-                (fe[t] || (fe[t] = L(t)),
+                (fe[t] || (fe[t] = R(t)),
                 (n = s[(t = fe[t])]),
                 'textAlign' === t)
             ) {
@@ -72835,7 +77861,7 @@ if (
             var t,
                 i = /^[^\/]*:/i,
                 n = window.location;
-            return e && i.test(e) && !Se.test(e) ?
+            return e && i.test(e) && !ze.test(e) ?
                     ((t = n.pathname.split('/')).pop(),
                     n.protocol + '//' + n.host + t.join('/') + '/' + e)
                 :   e;
@@ -72892,21 +77918,21 @@ if (
                 }),
                 (t.exists = function (e) {
                     return (
-                        e in Ie &&
-                        'function' == typeof (e = Ie[e]) &&
+                        e in Pe &&
+                        'function' == typeof (e = Pe[e]) &&
                         'object' == typeof e.prototype
                     );
                 }),
                 (t.isRegistered = function (e) {
                     if (t.exists(e))
                         for (var n = i.length; n--;)
-                            if (i[n] instanceof Ie[e]) return !0;
+                            if (i[n] instanceof Pe[e]) return !0;
                     return !1;
                 }),
                 (t.register = function (n) {
                     return (
                         !(!t.exists(n) || t.isRegistered(n)) &&
-                        ((n = new Ie[n]()),
+                        ((n = new Pe[n]()),
                         i.push(n),
                         'init' in n && n.init.call(e),
                         !0)
@@ -72918,7 +77944,7 @@ if (
                         a = !1;
                     if (!t.isRegistered(n)) return a;
                     for (; o--;)
-                        i[o] instanceof Ie[n] &&
+                        i[o] instanceof Pe[n] &&
                             ((a = !0),
                             'destroy' in (s = i.splice(o, 1)[0]) &&
                                 s.destroy.call(e));
@@ -72962,7 +77988,7 @@ if (
                                 u(d, t))),
                         (c = d.lastChild))
                     ) {
-                        for (; !H(c.lastChild, !0);) c = c.lastChild;
+                        for (; !$(c.lastChild, !0);) c = c.lastChild;
                         if (
                             (F(c) ?
                                 c.lastChild ||
@@ -72986,7 +78012,7 @@ if (
                     if (!i) return !1;
                     (s.deleteContents(),
                         o && 3 !== o.nodeType && !F(o) ?
-                            z(i, o)
+                            T(i, o)
                         :   s.insertNode(i),
                         l.restoreRange());
                 }),
@@ -73025,7 +78051,7 @@ if (
                 }),
                 (l.getFirstBlockParent = function (e) {
                     var t = function (e) {
-                        return H(e, !0) && (e = e ? e.parentNode : null) ?
+                        return $(e, !0) && (e = e ? e.parentNode : null) ?
                                 t(e)
                             :   e;
                     };
@@ -73076,7 +78102,7 @@ if (
                     var i,
                         n = e.getSelection(),
                         o = t.endContainer;
-                    if (!Pe && t.collapsed && o && !H(o, !0)) {
+                    if (!Ie && t.collapsed && o && !$(o, !0)) {
                         for (i = o.lastChild; i && k(i, '.sceditor-ignore');)
                             i = i.previousSibling;
                         if (k(i, 'br')) {
@@ -73108,15 +78134,15 @@ if (
                         s = l.cloneSelected();
                     if (!s) return !1;
                     (s.collapse(!1),
-                        (i = je(s, !0, e)),
-                        (n = je(s, !1, t)),
+                        (i = De(s, !0, e)),
+                        (n = De(s, !1, t)),
                         s.setStart(i.node, i.offset),
                         s.setEnd(n.node, n.offset),
                         l.selectRange(s));
                 }),
                 (l.getOuterText = function (e, t) {
                     var i = l.cloneSelected();
-                    return i ? (i.collapse(!e), je(i, e, t).text) : '';
+                    return i ? (i.collapse(!e), De(i, e, t).text) : '';
                 }),
                 (l.replaceKeyword = function (e, t, i, n, s, o) {
                     i ||
@@ -73267,8 +78293,8 @@ if (
             O(
                 e,
                 function (e) {
-                    H(e, !0) ?
-                        (i || z((i = r('p', {}, t)), e),
+                    $(e, !0) ?
+                        (i || T((i = r('p', {}, t)), e),
                         (e.nodeType === ve && '' === e.nodeValue) || u(i, e))
                     :   (i = null);
                 },
@@ -73283,14 +78309,14 @@ if (
                 f,
                 x,
                 C,
-                T,
-                L,
+                S,
+                R,
                 O,
                 B,
                 V,
-                q,
+                W,
                 U,
-                K,
+                G,
                 Y,
                 J,
                 Q,
@@ -73304,23 +78330,23 @@ if (
                 ye,
                 ke,
                 xe,
-                Se,
+                ze,
                 Ae,
                 Ee,
-                Ie,
                 Pe,
-                je,
-                Re,
-                $e,
-                Fe,
+                Ie,
+                De,
+                Ne,
                 He,
+                Fe,
+                $e,
                 Ve,
-                We,
                 qe,
+                We,
                 Ue,
                 Ze,
-                Ke,
                 Ge,
+                Ke,
                 Ye,
                 Je,
                 Qe,
@@ -73352,8 +78378,8 @@ if (
             ((_t.opts.emoticons = t.emoticons || we.emoticons),
                 (xe = function () {
                     ((e._sceditor = _t),
-                        kt.locale && 'en' !== kt.locale && je(),
-                        z(
+                        kt.locale && 'en' !== kt.locale && De(),
+                        T(
                             (a = r('div', { className: 'sceditor-container' })),
                             e
                         ),
@@ -73363,25 +78389,25 @@ if (
                         (e.required = !1));
                     var t = le.formats[kt.format];
                     ('init' in (i = t ? new t() : {}) && i.init.call(_t),
-                        Pe(),
-                        Ve(),
-                        Re(),
                         Ie(),
-                        $e(),
+                        Ve(),
+                        Ne(),
+                        Pe(),
+                        He(),
                         Fe(),
-                        Te || _t.toggleSourceMode(),
+                        Se || _t.toggleSourceMode(),
                         tt());
                     var n = function () {
-                        (m(De, 'load', n),
+                        (m(je, 'load', n),
                             kt.autofocus && at(),
                             mt(),
                             nt(),
                             Y.call('ready'),
                             'onReady' in i && i.onReady.call(_t));
                     };
-                    (p(De, 'load', n), 'complete' === Le.readyState && n());
+                    (p(je, 'load', n), 'complete' === Re.readyState && n());
                 }),
-                (Pe = function () {
+                (Ie = function () {
                     var e = kt.plugins;
                     ((e = e ? e.toString().split(',') : []),
                         (Y = new ne(_t)),
@@ -73389,31 +78415,31 @@ if (
                             Y.register(e.trim());
                         }));
                 }),
-                (je = function () {
+                (De = function () {
                     var e;
                     ((U = le.locale[kt.locale]) ||
                         ((e = kt.locale.split('-')), (U = le.locale[e[0]])),
                         U && U.dateFormat && (kt.dateFormat = U.dateFormat));
                 }),
-                (Ie = function () {
-                    ((L = r('textarea')),
+                (Pe = function () {
+                    ((R = r('textarea')),
                         (f = r('iframe', {
                             frameborder: 0,
                             allowfullscreen: !0,
                         })),
                         kt.startInSourceMode ?
                             (A(a, 'sourceMode'), g(f))
-                        :   (A(a, 'wysiwygMode'), g(L)),
+                        :   (A(a, 'wysiwygMode'), g(R)),
                         kt.spellcheck || _(a, 'spellcheck', 'false'),
-                        'https:' === De.location.protocol &&
+                        'https:' === je.location.protocol &&
                             _(f, 'src', 'javascript:false'),
                         u(a, f),
-                        u(a, L),
-                        _t.dimensions(kt.width || I(e), kt.height || P(e)));
+                        u(a, R),
+                        _t.dimensions(kt.width || P(e), kt.height || I(e)));
                     var t = Oe ? 'ie ie' + Oe : '';
-                    ((t += ze ? ' ios' : ''),
-                        (T = f.contentDocument).open(),
-                        T.write(
+                    ((t += Te ? ' ios' : ''),
+                        (S = f.contentDocument).open(),
+                        S.write(
                             te('html', {
                                 attrs: ' class="' + t + '"',
                                 spellcheck:
@@ -73422,29 +78448,29 @@ if (
                                 style: kt.style,
                             })
                         ),
-                        T.close(),
-                        (C = T.body),
+                        S.close(),
+                        (C = S.body),
                         (x = f.contentWindow),
                         _t.readOnly(!!kt.readOnly),
-                        (ze || Ce || Oe) &&
-                            (P(C, '100%'), Oe || p(C, 'touchend', _t.focus)));
+                        (Te || Ce || Oe) &&
+                            (I(C, '100%'), Oe || p(C, 'touchend', _t.focus)));
                     var i = _(e, 'tabindex');
-                    (_(L, 'tabindex', i),
+                    (_(R, 'tabindex', i),
                         _(f, 'tabindex', i),
-                        (K = new se(x)),
+                        (G = new se(x)),
                         g(e),
                         _t.val(e.value));
                     var n = kt.placeholder || _(e, 'placeholder');
-                    n && ((L.placeholder = n), _(C, 'placeholder', n));
+                    n && ((R.placeholder = n), _(C, 'placeholder', n));
                 }),
-                ($e = function () {
-                    (kt.autoUpdate && (p(C, 'blur', pt), p(L, 'blur', pt)),
+                (He = function () {
+                    (kt.autoUpdate && (p(C, 'blur', pt), p(R, 'blur', pt)),
                         null === kt.rtl &&
-                            (kt.rtl = 'rtl' === y(L, 'direction')),
+                            (kt.rtl = 'rtl' === y(R, 'direction')),
                         _t.rtl(!!kt.rtl),
                         kt.autoExpand &&
                             (p(C, 'load', mt, be), p(C, 'input keyup', mt)),
-                        kt.resizeEnabled && He(),
+                        kt.resizeEnabled && $e(),
                         _(a, 'id', kt.id),
                         _t.emoticons(kt.emoticonsEnabled));
                 }),
@@ -73453,25 +78479,25 @@ if (
                         i = 'compositionstart compositionend',
                         n = 'keydown keyup keypress focus blur contextmenu',
                         s =
-                            'onselectionchange' in T ? 'selectionchange' : (
+                            'onselectionchange' in S ? 'selectionchange' : (
                                 'keyup focus blur contextmenu mouseup touchend click'
                             );
-                    (p(Le, 'click', Xe),
+                    (p(Re, 'click', Xe),
                         t &&
-                            (p(t, 'reset', Ge),
+                            (p(t, 'reset', Ke),
                             p(t, 'submit', _t.updateOriginal, be)),
-                        p(C, 'keypress', Ke),
+                        p(C, 'keypress', Ge),
                         p(C, 'keydown', Ue),
                         p(C, 'keydown', Ze),
                         p(C, 'keyup', nt),
                         p(C, 'blur', ut),
                         p(C, 'keyup', ht),
-                        p(C, 'paste', We),
+                        p(C, 'paste', qe),
                         p(C, i, Je),
                         p(C, s, st),
                         p(C, n, Qe),
                         kt.emoticonsCompat &&
-                            De.getSelection &&
+                            je.getSelection &&
                             p(C, 'keyup', lt),
                         p(C, 'blur', function () {
                             _t.val() || A(C, 'placeholder');
@@ -73479,16 +78505,16 @@ if (
                         p(C, 'focus', function () {
                             E(C, 'placeholder');
                         }),
-                        p(L, 'blur', ut),
-                        p(L, 'keyup', ht),
-                        p(L, 'keydown', Ue),
-                        p(L, i, Je),
-                        p(L, n, Qe),
-                        p(T, 'mousedown', Ye),
-                        p(T, s, st),
-                        p(T, 'beforedeactivate keyup mouseup', Ee),
-                        p(T, 'keyup', nt),
-                        p(T, 'focus', function () {
+                        p(R, 'blur', ut),
+                        p(R, 'keyup', ht),
+                        p(R, 'keydown', Ue),
+                        p(R, i, Je),
+                        p(R, n, Qe),
+                        p(S, 'mousedown', Ye),
+                        p(S, s, st),
+                        p(S, 'beforedeactivate keyup mouseup', Ee),
+                        p(S, 'keyup', nt),
+                        p(S, 'focus', function () {
                             B = null;
                         }),
                         p(a, 'selectionchanged', ot),
@@ -73499,7 +78525,7 @@ if (
                             Qe
                         ));
                 }),
-                (Re = function () {
+                (Ne = function () {
                     var e,
                         t = _t.commands,
                         i = (kt.toolbarExclude || '').split(','),
@@ -73531,13 +78557,13 @@ if (
                                             ke && ke.create)
                                         )
                                             ke.create(s) &&
-                                                (z(ke.create(s), o.firstChild),
+                                                (T(ke.create(s), o.firstChild),
                                                 A(o, 'has-icon'));
                                         ((o._sceTxtMode = !!r.txtExec),
                                             (o._sceWysiwygMode = !!r.exec),
                                             M(o, 'disabled', !r.exec),
                                             p(o, 'click', function (e) {
-                                                (S(o, 'disabled') || Ae(o, r),
+                                                (z(o, 'disabled') || Ae(o, r),
                                                     tt(),
                                                     e.preventDefault());
                                             }),
@@ -73573,7 +78599,7 @@ if (
                         }),
                         u(kt.toolbarContainer || a, l));
                 }),
-                (He = function () {
+                ($e = function () {
                     var e,
                         t,
                         i,
@@ -73590,10 +78616,10 @@ if (
                         y = 0,
                         w = 0,
                         k = 0,
-                        x = I(a),
-                        C = P(a),
-                        z = !1,
-                        T = _t.rtl();
+                        x = P(a),
+                        C = I(a),
+                        T = !1,
+                        S = _t.rtl();
                     if (
                         ((e = kt.resizeMinHeight || C / 1.5),
                         (t = kt.resizeMaxHeight || 2.5 * C),
@@ -73601,12 +78627,12 @@ if (
                         (n = kt.resizeMaxWidth || 1.25 * x),
                         (s = function (s) {
                             'touchmove' === s.type ?
-                                ((s = De.event),
+                                ((s = je.event),
                                 (b = s.changedTouches[0].pageX),
                                 (y = s.changedTouches[0].pageY))
                             :   ((b = s.pageX), (y = s.pageY));
                             var o = k + (y - f),
-                                a = T ? w - (b - _) : w + (b - _);
+                                a = S ? w - (b - _) : w + (b - _);
                             (n > 0 && a > n && (a = n),
                                 i > 0 && a < i && (a = i),
                                 kt.resizeWidth || (a = !1),
@@ -73617,35 +78643,35 @@ if (
                                 s.preventDefault());
                         }),
                         (o = function (e) {
-                            z &&
-                                ((z = !1),
+                            T &&
+                                ((T = !1),
                                 g(c),
                                 E(a, 'resizing'),
-                                m(Le, d, s),
-                                m(Le, h, o),
+                                m(Re, d, s),
+                                m(Re, h, o),
                                 e.preventDefault());
                         }),
                         ke && ke.create)
                     ) {
-                        var S = ke.create('grip');
-                        S && (u(l, S), A(l, 'has-icon'));
+                        var z = ke.create('grip');
+                        z && (u(l, z), A(l, 'has-icon'));
                     }
                     (u(a, l),
                         u(a, c),
                         g(c),
                         p(l, 'touchstart mousedown', function (e) {
                             ('touchstart' === e.type ?
-                                ((e = De.event),
+                                ((e = je.event),
                                 (_ = e.touches[0].pageX),
                                 (f = e.touches[0].pageY))
                             :   ((_ = e.pageX), (f = e.pageY)),
-                                (w = I(a)),
-                                (k = P(a)),
-                                (z = !0),
+                                (w = P(a)),
+                                (k = I(a)),
+                                (T = !0),
                                 A(a, 'resizing'),
                                 v(c),
-                                p(Le, d, s),
-                                p(Le, h, o),
+                                p(Re, d, s),
+                                p(Re, h, o),
                                 e.preventDefault());
                         }));
                 }),
@@ -73670,29 +78696,29 @@ if (
                         t,
                         i = C.firstChild,
                         n = !!kt.autofocusEnd;
-                    if (D(a)) {
+                    if (j(a)) {
                         if (_t.sourceMode())
                             return (
-                                (t = n ? L.value.length : 0),
-                                void L.setSelectionRange(t, t)
+                                (t = n ? R.value.length : 0),
+                                void R.setSelectionRange(t, t)
                             );
                         if ((Z(C), n))
                             for (
                                 (i = C.lastChild) ||
-                                ((i = r('p', {}, T)), u(C, i));
+                                ((i = r('p', {}, S)), u(C, i));
                                 i.lastChild;
                             )
                                 ((i = i.lastChild),
-                                    !Ne &&
+                                    !Le &&
                                         k(i, 'br') &&
                                         i.previousSibling &&
                                         (i = i.previousSibling));
-                        ((e = T.createRange()),
+                        ((e = S.createRange()),
                             F(i) ?
                                 e.selectNodeContents(i)
                             :   (e.setStartBefore(i), n && e.setStartAfter(i)),
                             e.collapse(!n),
-                            K.selectRange(e),
+                            G.selectRange(e),
                             (ee = e),
                             n && (C.scrollTop = C.scrollHeight),
                             _t.focus());
@@ -73700,18 +78726,18 @@ if (
                 }),
                 (_t.readOnly = function (e) {
                     return 'boolean' != typeof e ?
-                            !L.readonly
+                            !R.readonly
                         :   ((C.contentEditable = !e),
-                            (L.readonly = !e),
+                            (R.readonly = !e),
                             et(e),
                             _t);
                 }),
                 (_t.rtl = function (e) {
                     var t = e ? 'rtl' : 'ltr';
                     return 'boolean' != typeof e ?
-                            'rtl' === _(L, 'dir')
+                            'rtl' === _(R, 'dir')
                         :   (_(C, 'dir', t),
-                            _(L, 'dir', t),
+                            _(R, 'dir', t),
                             E(a, 'rtl'),
                             E(a, 'ltr'),
                             A(a, t),
@@ -73728,34 +78754,34 @@ if (
                 (_t.width = function (e, t) {
                     return e || 0 === e ?
                             (_t.dimensions(e, null, t), _t)
-                        :   I(a);
+                        :   P(a);
                 }),
                 (_t.dimensions = function (e, t, i) {
                     return (
                         (t = !(!t && 0 !== t) && t),
                         !1 === (e = !(!e && 0 !== e) && e) && !1 === t ?
                             { width: _t.width(), height: _t.height() }
-                        :   (!1 !== e && (!1 !== i && (kt.width = e), I(a, e)),
-                            !1 !== t && (!1 !== i && (kt.height = t), P(a, t)),
+                        :   (!1 !== e && (!1 !== i && (kt.width = e), P(a, e)),
+                            !1 !== t && (!1 !== i && (kt.height = t), I(a, t)),
                             _t)
                     );
                 }),
                 (_t.height = function (e, t) {
                     return e || 0 === e ?
                             (_t.dimensions(null, e, t), _t)
-                        :   P(a);
+                        :   I(a);
                 }),
                 (_t.maximize = function (e) {
                     var t = 'sceditor-maximize';
                     return pe(e) ?
-                            S(a, t)
-                        :   ((e = !!e) && (fe = De.pageYOffset),
-                            M(Le.documentElement, t, e),
-                            M(Le.body, t, e),
+                            z(a, t)
+                        :   ((e = !!e) && (fe = je.pageYOffset),
+                            M(Re.documentElement, t, e),
+                            M(Re.body, t, e),
                             M(a, t, e),
                             _t.width(e ? '100%' : kt.width, !1),
                             _t.height(e ? '100%' : kt.height, !1),
-                            e || De.scrollTo(0, fe),
+                            e || je.scrollTo(0, fe),
                             mt(),
                             _t);
                 }),
@@ -73767,13 +78793,13 @@ if (
                 (_t.expandToContent = function (t) {
                     if (!_t.maximize()) {
                         if ((clearTimeout(_e), (_e = !1), !ue)) {
-                            var i = kt.resizeMinHeight || kt.height || P(e);
+                            var i = kt.resizeMinHeight || kt.height || I(e);
                             ue = { min: i, max: kt.resizeMaxHeight || 2 * i };
                         }
-                        var n = Le.createRange();
+                        var n = Re.createRange();
                         n.selectNodeContents(C);
                         var s = n.getBoundingClientRect(),
-                            o = T.documentElement.clientHeight - 1,
+                            o = S.documentElement.clientHeight - 1,
                             a = s.bottom - s.top,
                             r = _t.height() + 1 + (a - o);
                         (t || -1 === ue.max || (r = Math.min(r, ue.max)),
@@ -73783,16 +78809,16 @@ if (
                 (_t.destroy = function () {
                     if (Y) {
                         (Y.destroy(),
-                            (K = null),
+                            (G = null),
                             (B = null),
                             (Y = null),
                             O && d(O),
-                            m(Le, 'click', Xe));
+                            m(Re, 'click', Xe));
                         var t = e.form;
                         (t &&
-                            (m(t, 'reset', Ge),
+                            (m(t, 'reset', Ke),
                             m(t, 'submit', _t.updateOriginal)),
-                            d(L),
+                            d(R),
                             d(l),
                             d(a),
                             delete e._sceditor,
@@ -73804,7 +78830,7 @@ if (
                     var l,
                         c = 'sceditor-' + t;
                     (_t.closeDropDown(!0),
-                        (O && S(O, c)) ||
+                        (O && z(O, c)) ||
                             (!1 !== s &&
                                 o(
                                     h(i, ':not(input):not(textarea)'),
@@ -73845,14 +78871,14 @@ if (
                         !e.defaultPrevented &&
                         (pt(), _t.closeDropDown());
                 }),
-                (We = function (e) {
+                (qe = function (e) {
                     var t = Oe || Ce,
                         i = C,
                         n = e.clipboardData,
                         s = function (e) {
                             var t = new FileReader();
                             ((t.onload = function (e) {
-                                qe({
+                                We({
                                     html:
                                         '<img src="' + e.target.result + '" />',
                                 });
@@ -73865,17 +78891,17 @@ if (
                             r = n.items;
                         e.preventDefault();
                         for (var l = 0; l < a.length; l++) {
-                            if (De.FileReader && r && Be.test(r[l].type))
+                            if (je.FileReader && r && Be.test(r[l].type))
                                 return s(n.items[l].getAsFile());
                             o[a[l]] = n.getData(a[l]);
                         }
                         ((o.text = o['text/plain']),
                             (o.html = o['text/html']),
-                            qe(o));
+                            We(o));
                     } else if (!ye) {
                         var c = i.scrollTop;
                         for (
-                            K.saveRange(), ye = Le.createDocumentFragment();
+                            G.saveRange(), ye = Re.createDocumentFragment();
                             i.firstChild;
                         )
                             u(ye, i.firstChild);
@@ -73885,23 +78911,23 @@ if (
                                 u(i, ye),
                                 (i.scrollTop = c),
                                 (ye = !1),
-                                K.restoreRange(),
-                                qe({ html: e }));
+                                G.restoreRange(),
+                                We({ html: e }));
                         }, 0);
                     }
                 }),
-                (qe = function (e) {
-                    var t = r('div', {}, T);
+                (We = function (e) {
+                    var t = r('div', {}, S);
                     (Y.call('pasteRaw', e),
-                        j(a, 'pasteraw', e),
+                        D(a, 'pasteraw', e),
                         e.html ?
-                            ((t.innerHTML = e.html), W(t))
+                            ((t.innerHTML = e.html), q(t))
                         :   (t.innerHTML = X(e.text || '')));
                     var n = { val: t.innerHTML };
                     ('fragmentToSource' in i &&
-                        (n.val = i.fragmentToSource(n.val, T, J)),
+                        (n.val = i.fragmentToSource(n.val, S, J)),
                         Y.call('paste', n),
-                        j(a, 'paste', n),
+                        D(a, 'paste', n),
                         'fragmentToHtml' in i &&
                             (n.val = i.fragmentToHtml(n.val, J)),
                         Y.call('pasteHtml', n),
@@ -73914,19 +78940,19 @@ if (
                     var n,
                         s,
                         o,
-                        a = P(f);
+                        a = I(f);
                     (_t.focus(),
                         (!i && c(Q, 'code')) ||
-                            (K.insertHTML(e, t),
-                            K.saveRange(),
-                            Se(),
+                            (G.insertHTML(e, t),
+                            G.saveRange(),
+                            ze(),
                             v((n = h(C, '#sceditor-end-marker')[0])),
                             (s = C.scrollTop),
-                            (o = G(n).top + 1.5 * n.offsetHeight - a),
+                            (o = K(n).top + 1.5 * n.offsetHeight - a),
                             g(n),
                             (o > s || o + a < s) && (C.scrollTop = o),
                             dt(!1),
-                            K.restoreRange(),
+                            G.restoreRange(),
                             nt()));
                 }),
                 (_t.wysiwygEditorInsertText = function (e, t) {
@@ -73943,31 +78969,31 @@ if (
                 (_t.sourceEditorInsertText = function (e, t) {
                     var i,
                         n,
-                        s = L.selectionStart,
-                        o = L.selectionEnd;
-                    ((i = L.scrollTop),
-                        L.focus(),
-                        (n = L.value),
+                        s = R.selectionStart,
+                        o = R.selectionEnd;
+                    ((i = R.scrollTop),
+                        R.focus(),
+                        (n = R.value),
                         t && (e += n.substring(s, o) + t),
-                        (L.value =
+                        (R.value =
                             n.substring(0, s) + e + n.substring(o, n.length)),
-                        (L.selectionStart = s + e.length - (t ? t.length : 0)),
-                        (L.selectionEnd = L.selectionStart),
-                        (L.scrollTop = i),
-                        L.focus(),
+                        (R.selectionStart = s + e.length - (t ? t.length : 0)),
+                        (R.selectionEnd = R.selectionStart),
+                        (R.scrollTop = i),
+                        R.focus(),
                         dt());
                 }),
                 (_t.getRangeHelper = function () {
-                    return K;
+                    return G;
                 }),
                 (_t.sourceEditorCaret = function (e) {
                     return (
-                        L.focus(),
+                        R.focus(),
                         e ?
-                            ((L.selectionStart = e.start),
-                            (L.selectionEnd = e.end),
+                            ((R.selectionStart = e.start),
+                            (R.selectionEnd = e.end),
                             this)
-                        :   { start: L.selectionStart, end: L.selectionEnd }
+                        :   { start: R.selectionStart, end: R.selectionEnd }
                     );
                 }),
                 (_t.val = function (e, t) {
@@ -73986,10 +79012,10 @@ if (
                     if (_t.inSourceMode())
                         return (_t.sourceEditorInsertText(e, t), _t);
                     if (t) {
-                        var a = K.selectedHtml();
+                        var a = G.selectedHtml();
                         (!1 !== n &&
                             'fragmentToSource' in i &&
-                            (a = i.fragmentToSource(a, T, J)),
+                            (a = i.fragmentToSource(a, S, J)),
                             (e += a + t));
                     }
                     return (
@@ -74008,19 +79034,19 @@ if (
                 }),
                 (_t.getWysiwygEditorValue = function (e) {
                     for (
-                        var t, n = r('div', {}, T), s = C.childNodes, o = 0;
+                        var t, n = r('div', {}, S), s = C.childNodes, o = 0;
                         o < s.length;
                         o++
                     )
                         u(n, s[o].cloneNode(!0));
                     return (
                         u(C, n),
-                        W(n),
+                        q(n),
                         d(n),
                         (t = n.innerHTML),
                         !1 !== e &&
                             i.hasOwnProperty('toSource') &&
-                            (t = i.toSource(t, T)),
+                            (t = i.toSource(t, S)),
                         t
                     );
                 }),
@@ -74031,28 +79057,28 @@ if (
                     return f;
                 }),
                 (_t.getSourceEditorValue = function (e) {
-                    var t = L.value;
+                    var t = R.value;
                     return (!1 !== e && 'toHtml' in i && (t = i.toHtml(t)), t);
                 }),
                 (_t.setWysiwygEditorValue = function (e) {
                     (e || (e = '<p>' + (Oe ? '' : '<br />') + '</p>'),
                         (C.innerHTML = e),
-                        Se(),
+                        ze(),
                         nt(),
                         dt(),
                         mt());
                 }),
                 (_t.setSourceEditorValue = function (e) {
-                    ((L.value = e), dt());
+                    ((R.value = e), dt());
                 }),
                 (_t.updateOriginal = function () {
                     e.value = _t.val();
                 }),
-                (Se = function () {
+                (ze = function () {
                     kt.emoticonsEnabled && ae(C, wt, kt.emoticonsCompat);
                 }),
                 (_t.inSourceMode = function () {
-                    return S(a, 'sourceMode');
+                    return z(a, 'sourceMode');
                 }),
                 (_t.sourceMode = function (e) {
                     var t = _t.inSourceMode();
@@ -74063,14 +79089,14 @@ if (
                 }),
                 (_t.toggleSourceMode = function () {
                     var e = _t.inSourceMode();
-                    (!Te && e) ||
-                        (e || (K.saveRange(), K.clear()),
+                    (!Se && e) ||
+                        (e || (G.saveRange(), G.clear()),
                         _t.blur(),
                         e ?
                             _t.setWysiwygEditorValue(_t.getSourceEditorValue())
                         :   _t.setSourceEditorValue(_t.getWysiwygEditorValue()),
                         (B = null),
-                        b(L),
+                        b(R),
                         b(f),
                         M(a, 'wysiwygMode', e),
                         M(a, 'sourceMode', !e),
@@ -74079,8 +79105,8 @@ if (
                 }),
                 (it = function () {
                     return (
-                        L.focus(),
-                        L.value.substring(L.selectionStart, L.selectionEnd)
+                        R.focus(),
+                        R.value.substring(R.selectionStart, R.selectionEnd)
                     );
                 }),
                 (Ae = function (e, t) {
@@ -74100,14 +79126,14 @@ if (
                             ));
                 }),
                 (Ee = function () {
-                    Oe && (B = K.selectedRange());
+                    Oe && (B = G.selectedRange());
                 }),
                 (_t.execCommand = function (e, t) {
                     var i = !1,
                         n = _t.commands[e];
-                    if ((_t.focus(), !c(K.parentNode(), 'code'))) {
+                    if ((_t.focus(), !c(G.parentNode(), 'code'))) {
                         try {
-                            i = T.execCommand(e, !1, t);
+                            i = S.execCommand(e, !1, t);
                         } catch (e) {}
                         (!i &&
                             n &&
@@ -74123,8 +79149,8 @@ if (
                             x.getSelection().rangeCount <= 0
                         )
                             ee = null;
-                        else if (K && !K.compare(ee)) {
-                            if ((ee = K.cloneSelected()) && ee.collapsed) {
+                        else if (G && !G.compare(ee)) {
+                            if ((ee = G.cloneSelected()) && ee.collapsed) {
                                 var e = ee.startContainer,
                                     t = ee.startOffset;
                                 for (
@@ -74135,25 +79161,25 @@ if (
                                 )
                                     e = e.parentNode;
                                 e &&
-                                    H(e, !0) &&
-                                    (K.saveRange(), re(C, T), K.restoreRange());
+                                    $(e, !0) &&
+                                    (G.saveRange(), re(C, S), G.restoreRange());
                             }
-                            j(a, 'selectionchanged');
+                            D(a, 'selectionchanged');
                         }
                         ie = !1;
                     }
                     ie ||
                         ((ie = !0),
-                        'onselectionchange' in T ? e() : setTimeout(e, 100));
+                        'onselectionchange' in S ? e() : setTimeout(e, 100));
                 }),
                 (ot = function () {
                     var e,
-                        t = K.parentNode();
+                        t = G.parentNode();
                     J !== t &&
                         ((e = J),
                         (J = t),
-                        (Q = K.getFirstBlockParent(t)),
-                        j(a, 'nodechanged', { oldNode: e, newNode: J }));
+                        (Q = G.getFirstBlockParent(t)),
+                        D(a, 'nodechanged', { oldNode: e, newNode: J }));
                 }),
                 (_t.currentNode = function () {
                     return J;
@@ -74165,7 +79191,7 @@ if (
                     var e,
                         t,
                         i = 'active',
-                        n = T,
+                        n = S,
                         s = _t.sourceMode();
                     if (_t.readOnly())
                         o(h(l, i), function (e, t) {
@@ -74173,8 +79199,8 @@ if (
                         });
                     else {
                         s ||
-                            ((t = K.parentNode()),
-                            (e = K.getFirstBlockParent(t)));
+                            ((t = G.parentNode()),
+                            (e = G.getFirstBlockParent(t)));
                         for (var a = 0; a < vt.length; a++) {
                             var r = 0,
                                 c = yt[vt[a].name],
@@ -74197,41 +79223,41 @@ if (
                         ke && ke.update && ke.update(s, t, e);
                     }
                 }),
-                (Ke = function (e) {
+                (Ge = function (e) {
                     if (
                         !e.defaultPrevented &&
                         (_t.closeDropDown(),
-                        13 === e.which && !k(Q, 'li,ul,ol') && R(Q))
+                        13 === e.which && !k(Q, 'li,ul,ol') && N(Q))
                     ) {
                         B = null;
-                        var t = r('br', {}, T);
-                        if ((K.insertNode(t), !Ne)) {
+                        var t = r('br', {}, S);
+                        if ((G.insertNode(t), !Le)) {
                             var i = t.parentNode,
                                 n = i.lastChild;
                             (n &&
                                 n.nodeType === ve &&
                                 '' === n.nodeValue &&
                                 (d(n), (n = i.lastChild)),
-                                !H(i, !0) &&
+                                !$(i, !0) &&
                                     n === t &&
-                                    H(t.previousSibling) &&
-                                    K.insertHTML('<br>'));
+                                    $(t.previousSibling) &&
+                                    G.insertHTML('<br>'));
                         }
                         e.preventDefault();
                     }
                 }),
                 (nt = function () {
-                    N(C, function (e) {
+                    L(C, function (e) {
                         if (
                             e.nodeType === ge &&
                             !/inline/.test(y(e, 'display')) &&
                             !k(e, '.sceditor-nlf') &&
-                            R(e)
+                            N(e)
                         ) {
-                            var t = r('p', {}, T);
+                            var t = r('p', {}, S);
                             return (
                                 (t.className = 'sceditor-nlf'),
-                                (t.innerHTML = Ne ? '' : '<br />'),
+                                (t.innerHTML = Le ? '' : '<br />'),
                                 u(C, t),
                                 !1
                             );
@@ -74243,7 +79269,7 @@ if (
                             return !1;
                     });
                 }),
-                (Ge = function () {
+                (Ke = function () {
                     _t.val(e.value);
                 }),
                 (Ye = function () {
@@ -74263,7 +79289,7 @@ if (
                 }),
                 (Qe = function (e) {
                     Y && Y.call(e.type + 'Event', e, _t);
-                    var t = (e.target === L ? 'scesrc' : 'scewys') + e.type;
+                    var t = (e.target === R ? 'scesrc' : 'scewys') + e.type;
                     ft[t] &&
                         ft[t].forEach(function (t) {
                             t.call(_t, e);
@@ -74291,20 +79317,20 @@ if (
                 (_t.blur = function (e, t, i) {
                     return (
                         me(e) ? _t.bind('blur', e, t, i)
-                        : _t.sourceMode() ? L.blur()
+                        : _t.sourceMode() ? R.blur()
                         : C.blur(),
                         _t
                     );
                 }),
                 (_t.focus = function (e, t, i) {
                     if (me(e)) _t.bind('focus', e, t, i);
-                    else if (_t.inSourceMode()) L.focus();
+                    else if (_t.inSourceMode()) R.focus();
                     else {
-                        if (h(T, ':focus').length) return;
+                        if (h(S, ':focus').length) return;
                         var n,
-                            s = K.selectedRange();
+                            s = G.selectedRange();
                         (ee || at(),
-                            !Ne &&
+                            !Le &&
                                 s &&
                                 1 === s.endOffset &&
                                 s.collapsed &&
@@ -74313,10 +79339,10 @@ if (
                                 k(n.firstChild, 'br') &&
                                 (s.setStartBefore(n.firstChild),
                                 s.collapse(!0),
-                                K.selectRange(s)),
+                                G.selectRange(s)),
                             x.focus(),
                             C.focus(),
-                            B && (K.selectRange(B), (B = null)));
+                            B && (G.selectRange(B), (B = null)));
                     }
                     return (tt(), _t);
                 }),
@@ -74354,7 +79380,7 @@ if (
                             (_t.emoticonsCache = i),
                             (_t.longestEmoticonCode =
                                 i[i.length - 1][0].length)),
-                        K.replaceKeyword(
+                        G.replaceKeyword(
                             _t.emoticonsCache,
                             !0,
                             !0,
@@ -74366,19 +79392,19 @@ if (
                                 e.preventDefault()));
                 }),
                 (lt = function () {
-                    oe(Q, K);
+                    oe(Q, G);
                 }),
                 (_t.emoticons = function (e) {
                     if (!e && !1 !== e) return kt.emoticonsEnabled;
                     ((kt.emoticonsEnabled = e), e) ?
                         (p(C, 'keypress', rt),
                         _t.sourceMode() ||
-                            (K.saveRange(), Se(), dt(!1), K.restoreRange()))
+                            (G.saveRange(), ze(), dt(!1), G.restoreRange()))
                     :   (o(
                             h(C, 'img[data-sceditor-emoticon]'),
                             function (e, t) {
                                 var i = w(t, 'sceditor-emoticon'),
-                                    n = T.createTextNode(i);
+                                    n = S.createTextNode(i);
                                 t.parentNode.replaceChild(n, t);
                             }
                         ),
@@ -74389,8 +79415,8 @@ if (
                 (_t.css = function (e) {
                     return (
                         de ||
-                            ((de = r('style', { id: 'inline' }, T)),
-                            u(T.head, de)),
+                            ((de = r('style', { id: 'inline' }, S)),
+                            u(S.head, de)),
                         he(e) ?
                             (de.styleSheet ?
                                 (de.styleSheet.cssText = e)
@@ -74534,7 +79560,7 @@ if (
                     if (
                         !kt.disableBlockRemove &&
                         8 === e.which &&
-                        (i = K.selectedRange()) &&
+                        (i = G.selectedRange()) &&
                         ((t = i.startContainer),
                         0 === i.startOffset && (n = ct()) && !k(n, 'body'))
                     ) {
@@ -74551,7 +79577,7 @@ if (
                     }
                 }),
                 (ct = function () {
-                    for (var e = Q; !R(e) || H(e, !0);)
+                    for (var e = Q; !N(e) || $(e, !0);)
                         if (!(e = e.parentNode) || k(e, 'body')) return;
                     return e;
                 }),
@@ -74559,12 +79585,12 @@ if (
                     return (
                         !(e = e || ct()) ||
                             k(e, 'body') ||
-                            (K.saveRange(),
+                            (G.saveRange(),
                             (e.className = ''),
                             (B = null),
                             _(e, 'style', ''),
-                            k(e, 'p,div,td') || $(e, 'p'),
-                            K.restoreRange()),
+                            k(e, 'p,div,td') || H(e, 'p'),
+                            G.restoreRange()),
                         _t
                     );
                 }),
@@ -74575,23 +79601,23 @@ if (
                     ) {
                         var t,
                             i = _t.sourceMode(),
-                            n = !i && K.hasSelection();
+                            n = !i && G.hasSelection();
                         ((V = !1),
                             (e =
                                 !1 !== e &&
-                                !T.getElementById('sceditor-start-marker')),
-                            q && (clearTimeout(q), (q = !1)),
-                            n && e && K.saveRange(),
-                            (t = i ? L.value : C.innerHTML) !== dt.lastVal &&
+                                !S.getElementById('sceditor-start-marker')),
+                            W && (clearTimeout(W), (W = !1)),
+                            n && e && G.saveRange(),
+                            (t = i ? R.value : C.innerHTML) !== dt.lastVal &&
                                 ((dt.lastVal = t),
-                                j(a, 'valuechanged', {
+                                D(a, 'valuechanged', {
                                     rawValue: i ? _t.val() : t,
                                 })),
-                            n && e && K.removeMarkers());
+                            n && e && G.removeMarkers());
                     }
                 }),
                 (ut = function () {
-                    q && dt();
+                    W && dt();
                 }),
                 (ht = function (e) {
                     var t = e.which,
@@ -74607,8 +79633,8 @@ if (
                                 s ? (ht.triggerNext = !0)
                                 :   dt()
                             :   ht.triggerNext && (dt(), (ht.triggerNext = !1)),
-                            clearTimeout(q),
-                            (q = setTimeout(function () {
+                            clearTimeout(W),
+                            (W = setTimeout(function () {
                                 V || dt();
                             }, 1500))));
                 }),
@@ -74735,8 +79761,8 @@ if (
                 );
             })(),
             Ce = '-ms-ime-align' in document.documentElement.style,
-            ze = /iPhone|iPod|iPad| wosbrowser\//i.test(ke),
-            Te =
+            Te = /iPhone|iPod|iPad| wosbrowser\//i.test(ke),
+            Se =
                 (((ue = document.createElement('div')).contentEditable = !0),
                 'contentEditable' in document.documentElement &&
                     'true' === ue.contentEditable &&
@@ -74747,13 +79773,13 @@ if (
                             !(ce = /AppleWebKit\/(\d+)/.exec(ke)) ||
                             !ce[1] ||
                             ce[1] < 534),
-                    ze && (de = /OS [0-4](_\d)+ like Mac/i.test(ke)),
+                    Te && (de = /OS [0-4](_\d)+ like Mac/i.test(ke)),
                     /Firefox/i.test(ke) && (de = !1),
                     /OneBrowser/i.test(ke) && (de = !1),
                     'UCWEB' === navigator.vendor && (de = !1),
                     xe <= 9 && (de = !0),
                     !de)),
-            Se =
+            ze =
                 /^(https?|s?ftp|mailto|spotify|skype|ssh|teamspeak|tel):|(\/\/)|data:image\/(png|bmp|gif|p?jpe?g);/i,
             Ae = {
                 html: '<!DOCTYPE html><html{attrs}><head><style>.ie * {min-height: auto !important} .ie table td {height:15px} @supports (-ms-ime-align:auto) { * { min-height: auto !important; } }</style><meta http-equiv="Content-Type" content="text/html;charset={charset}" /><link rel="stylesheet" type="text/css" href="{style}" /></head><body contenteditable="true" {spellcheck}><p></p></body></html>',
@@ -75026,7 +80052,7 @@ if (
                                     )),
                                     (o += '</table>'),
                                     t.wysiwygEditorInsertHtml(o),
-                                    W(t.getBody()),
+                                    q(t.getBody()),
                                     t.closeDropDown(!0),
                                     e.preventDefault());
                             }),
@@ -75183,7 +80209,7 @@ if (
                     exec: function () {
                         var e = c(this.currentNode(), 'a');
                         if (e) {
-                            for (; e.firstChild;) z(e.firstChild, e);
+                            for (; e.firstChild;) T(e.firstChild, e);
                             d(e);
                         }
                     },
@@ -75442,10 +80468,10 @@ if (
                 },
                 ignore: {},
             },
-            Ie = {};
-        ne.plugins = Ie;
-        var Pe = xe && xe < 11,
-            je = function (e, t, i) {
+            Pe = {};
+        ne.plugins = Pe;
+        var Ie = xe && xe < 11,
+            De = function (e, t, i) {
                 var n,
                     s,
                     o,
@@ -75472,10 +80498,10 @@ if (
                             (c = r.nextSibling)));
                 return { node: r || c, offset: d, text: l };
             },
-            De = window,
-            Le = document,
+            je = window,
+            Re = document,
             Oe = xe,
-            Ne = Oe && Oe < 11,
+            Le = Oe && Oe < 11,
             Be = /^image\/(p?jpe?g|gif|png|bmp)$/i;
         ((le.locale = {}),
             (le.formats = {}),
@@ -75515,8 +80541,8 @@ if (
                 commands: Me,
                 defaultOptions: we,
                 ie: xe,
-                ios: ze,
-                isWysiwygSupported: Te,
+                ios: Te,
+                isWysiwygSupported: Se,
                 regexEscape: Q,
                 escapeEntities: X,
                 escapeUriScheme: ee,
@@ -75526,23 +80552,23 @@ if (
                     removeAttr: f,
                     is: k,
                     closest: c,
-                    width: I,
-                    height: P,
+                    width: P,
+                    height: I,
                     traverse: O,
-                    rTraverse: N,
+                    rTraverse: L,
                     parseHTML: B,
-                    hasStyling: R,
-                    convertElement: $,
+                    hasStyling: N,
+                    convertElement: H,
                     blockLevelList: ye,
                     canHaveChildren: F,
-                    isInline: H,
+                    isInline: $,
                     copyCSS: V,
-                    fixNesting: W,
-                    findCommonAncestor: q,
+                    fixNesting: q,
+                    findCommonAncestor: W,
                     getSibling: U,
                     removeWhiteSpace: Z,
-                    extractContents: K,
-                    getOffset: G,
+                    extractContents: G,
+                    getOffset: K,
                     getStyle: Y,
                     hasStyle: J,
                 },
@@ -75554,7 +80580,7 @@ if (
                 create: function (e, t) {
                     ((t = t || {}),
                         l(e, '.sceditor-container') ||
-                            ((t.runWithoutWysiwygSupport || Te) &&
+                            ((t.runWithoutWysiwygSupport || Se) &&
                                 new le(e, t)));
                 },
                 instance: function (e) {
@@ -75683,13 +80709,13 @@ if (
                     r = /\[([^\]\s=]+)(?:([^\]]+))?\]/,
                     l = /\[\/([^\[\]]+)\]/;
                 return (
-                    e === S &&
+                    e === z &&
                         (i = t.match(r)) &&
                         ((s = y(i[1])),
                         i[2] && (i[2] = i[2].trim()) && (n = o(i[2]))),
                     e === M && (i = t.match(l)) && (s = y(i[1])),
                     e === E && (s = '#newline'),
-                    (s && ((e !== S && e !== M) || T[s])) ||
+                    (s && ((e !== z && e !== M) || S[s])) ||
                         ((e = A), (s = '#')),
                     new a(e, s, t, n)
                 );
@@ -75715,7 +80741,7 @@ if (
                 return !1;
             }
             function c(e, t) {
-                var i = (e ? T[e.name] : {}).allowedChildren;
+                var i = (e ? S[e.name] : {}).allowedChildren;
                 return (
                     !k.opts.fixInvalidChildren ||
                     !i ||
@@ -75742,7 +80768,7 @@ if (
                         m = function (e) {
                             return (
                                 h() &&
-                                (i = T[h().name]) &&
+                                (i = S[h().name]) &&
                                 i.closedBy &&
                                 i.closedBy.indexOf(e) > -1
                             );
@@ -75756,11 +80782,11 @@ if (
                             ((t.name = '#'), (t.type = A)),
                         t.type)
                     ) {
-                        case S:
+                        case z:
                             (m(t.name) && u.pop(),
                                 p(t),
                                 (
-                                    (i = T[t.name]) &&
+                                    (i = S[t.name]) &&
                                     !i.isSelfClosing &&
                                     (i.closedBy || l(t.name, M, e))
                                 ) ?
@@ -75776,7 +80802,7 @@ if (
                                 h() && t.name === h().name)
                             )
                                 ((h().closing = t), u.pop());
-                            else if (l(t.name, S, u)) {
+                            else if (l(t.name, z, u)) {
                                 for (; (n = u.pop());) {
                                     if (n.name === t.name) {
                                         n.closing = t;
@@ -75789,7 +80815,7 @@ if (
                                 for (
                                     a &&
                                         a.type === E &&
-                                        (i = T[t.name]) &&
+                                        (i = S[t.name]) &&
                                         !1 === i.isInline &&
                                         (p(a), e.shift()),
                                         p(b(r)),
@@ -75805,7 +80831,7 @@ if (
                                 a &&
                                 m((a.type === M ? '/' : '') + a.name) &&
                                 ((a.type === M && a.name === h().name) ||
-                                    ((((i = T[h().name]) && i.breakAfter) ||
+                                    ((((i = S[h().name]) && i.breakAfter) ||
                                         (i &&
                                             !1 === i.isInline &&
                                             k.opts.breakAfterBlock &&
@@ -75828,7 +80854,7 @@ if (
                     c,
                     d,
                     u = e.length;
-                t && (a = T[t.name]);
+                t && (a = S[t.name]);
                 for (var p = u; p--;)
                     if ((n = e[p]))
                         if (n.type === E) {
@@ -75854,8 +80880,8 @@ if (
                                             (d = !0),
                                         a.breakStart && (d = !0))),
                                 s &&
-                                    s.type === S &&
-                                    (r = T[s.name]) &&
+                                    s.type === z &&
+                                    (r = S[s.name]) &&
                                     (i ?
                                         !1 === r.isInline && (d = !0)
                                     :   (!1 === r.isInline &&
@@ -75866,8 +80892,8 @@ if (
                                 !i &&
                                     !c &&
                                     o &&
-                                    o.type === S &&
-                                    (r = T[o.name]) &&
+                                    o.type === z &&
+                                    (r = S[o.name]) &&
                                     (!1 === r.isInline &&
                                         k.opts.breakBeforeBlock &&
                                         !1 !== r.breakBefore &&
@@ -75880,7 +80906,7 @@ if (
                                 continue;
                             }
                             (d && e.splice(p, 1), (c = !1));
-                        } else n.type === S && h(n.children, n, i);
+                        } else n.type === z && h(n.children, n, i);
             }
             function p(e, t, i, n) {
                 var s,
@@ -75890,11 +80916,11 @@ if (
                     l,
                     d,
                     u = function (e) {
-                        var t = T[e.name];
+                        var t = S[e.name];
                         return !t || !1 !== t.isInline;
                     };
                 for (t = t || [], n = n || e, o = 0; o < e.length; o++)
-                    if ((s = e[o]) && s.type === S) {
+                    if ((s = e[o]) && s.type === z) {
                         if (i && !u(s)) {
                             if (
                                 ((d = (a = b(t)).splitAt(s)),
@@ -75930,7 +80956,7 @@ if (
                         n = function (e) {
                             for (var t = e.length; t--;) {
                                 var i = e[t].type;
-                                if (i === S || i === M) return !1;
+                                if (i === z || i === M) return !1;
                                 if (i === A && /\S|\u00A0/.test(e[t].val))
                                     return !1;
                             }
@@ -75940,8 +80966,8 @@ if (
                     s--;
                 )
                     (t = e[s]) &&
-                        t.type === S &&
-                        ((i = T[t.name]),
+                        t.type === z &&
+                        ((i = S[t.name]),
                         m(t.children),
                         n(t.children) &&
                             i &&
@@ -75973,14 +80999,14 @@ if (
                     e.length > 0;
                 )
                     if ((o = e.shift())) {
-                        if (o.type === S)
+                        if (o.type === z)
                             ((p = o.children[o.children.length - 1] || {}),
-                                (a = T[o.name]),
+                                (a = S[o.name]),
                                 (c = i && h(a)),
                                 (r = _(o.children, !1)),
                                 a && a.html ?
                                     (h(a) ||
-                                        !h(T[p.name]) ||
+                                        !h(S[p.name]) ||
                                         a.isPreFormatted ||
                                         a.skipLastLineBreak ||
                                         w ||
@@ -76019,7 +81045,7 @@ if (
                 for (var t, i, n, s, o, a, r, l, c, d, u = []; e.length > 0;)
                     if ((t = e.shift()))
                         if (
-                            ((s = !(!(n = T[t.name]) || !1 !== n.isInline)),
+                            ((s = !(!(n = S[t.name]) || !1 !== n.isInline)),
                             (o = n && n.isSelfClosing),
                             (r =
                                 (s &&
@@ -76046,9 +81072,9 @@ if (
                                 (n ? n.quoteType : null) ||
                                 k.opts.quoteType ||
                                 C.auto),
-                            n || t.type !== S)
+                            n || t.type !== z)
                         )
-                            if (t.type === S) {
+                            if (t.type === z) {
                                 if (
                                     (r && u.push('\n'),
                                     u.push('[' + t.name),
@@ -76112,7 +81138,7 @@ if (
                         a = [
                             { type: A, regex: /^([^\[\r\n]+|\[)/ },
                             { type: E, regex: /^(\r\n|\r|\n)/ },
-                            { type: S, regex: /^\[[^\[\]]+\]/ },
+                            { type: z, regex: /^\[[^\[\]]+\]/ },
                             { type: M, regex: /^\[\/[^\[\]]+\]/ },
                         ];
                     e: for (; e.length;) {
@@ -76171,20 +81197,20 @@ if (
         }
         function d() {
             function e() {
-                b(T, function (e) {
+                b(S, function (e) {
                     var t,
-                        i = T[e].tags,
-                        n = T[e].styles;
+                        i = S[e].tags,
+                        n = S[e].styles;
                     (i &&
                         b(i, function (i, n) {
-                            ((t = !1 === T[e].isInline),
+                            ((t = !1 === S[e].isInline),
                                 (m[i] = m[i] || {}),
                                 (m[i][t] = m[i][t] || {}),
                                 (m[i][t][e] = n));
                         }),
                         n &&
                             b(n, function (i, n) {
-                                ((t = !1 === T[e].isInline),
+                                ((t = !1 === S[e].isInline),
                                     (y[t] = y[t] || {}),
                                     (y[t][i] = y[t][i] || {}),
                                     (y[t][i][e] = n));
@@ -76201,7 +81227,7 @@ if (
                                 r(e.parentNode, i) !== s &&
                                 b(l, function (i, r) {
                                     (!r || r.indexOf(s.toString()) > -1) &&
-                                        ((a = T[i].format),
+                                        ((a = S[i].format),
                                         (t = n(a) ? a.call(h, e, t) : o(a, t)));
                                 });
                         }),
@@ -76253,7 +81279,7 @@ if (
                                         return ((s = !0), !1);
                                 }),
                                 !s)) ||
-                                ((a = T[i].format),
+                                ((a = S[i].format),
                                 (t = n(a) ? a.call(h, e, t) : o(a, t)));
                         }),
                     t
@@ -76362,7 +81388,7 @@ if (
                 ((h.opts = this.opts),
                     (h.elementToBbcode = c),
                     e(),
-                    (this.commands = v(!0, {}, z, this.commands)),
+                    (this.commands = v(!0, {}, T, this.commands)),
                     (this.toBBCode = h.toSource),
                     (this.fromBBCode = h.toHtml));
             }),
@@ -76385,7 +81411,7 @@ if (
             k = 'data-sceditor-emoticon',
             x = e.command.get,
             C = { always: 1, never: 2, auto: 3 },
-            z = {
+            T = {
                 bold: { txtExec: ['[b]', '[/b]'] },
                 italic: { txtExec: ['[i]', '[/i]'] },
                 underline: { txtExec: ['[u]', '[/u]'] },
@@ -76484,7 +81510,7 @@ if (
                 rtl: { txtExec: ['[rtl]', '[/rtl]'] },
                 ltr: { txtExec: ['[ltr]', '[/ltr]'] },
             },
-            T = {
+            S = {
                 'b': {
                     tags: { b: null, strong: null },
                     styles: {
@@ -76854,7 +81880,7 @@ if (
                 },
                 'ignore': {},
             },
-            S = 'open',
+            z = 'open',
             A = 'content',
             E = 'newline',
             M = 'close';
@@ -76895,24 +81921,24 @@ if (
                 quoteType: C.auto,
             }),
             (d.get = function (e) {
-                return T[e] || null;
+                return S[e] || null;
             }),
             (d.set = function (e, t) {
                 return (
                     e &&
                         t &&
-                        (((t = v(T[e] || {}, t)).remove = function () {
-                            delete T[e];
+                        (((t = v(S[e] || {}, t)).remove = function () {
+                            delete S[e];
                         }),
-                        (T[e] = t)),
+                        (S[e] = t)),
                     this
                 );
             }),
             (d.rename = function (e, t) {
-                return (e in T && ((T[t] = T[e]), delete T[e]), this);
+                return (e in S && ((S[t] = S[e]), delete S[e]), this);
             }),
             (d.remove = function (e) {
-                return (e in T && delete T[e], this);
+                return (e in S && delete S[e], this);
             }),
             (d.formatBBCodeString = t),
             (e.formats.bbcode = d),
