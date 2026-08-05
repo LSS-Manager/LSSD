@@ -1,5 +1,5 @@
 diff --git a/application.js b/application.alt.js
-index f47ae50..e889ae8 100644
+index f47ae50..a456d57 100644
 --- a/application.js
 +++ b/application.alt.js
 @@ -113,7 +113,7 @@ function layerFactory(e) {
@@ -42837,18 +42837,7 @@ index f47ae50..e889ae8 100644
          );
      }
      #b(e, t) {
-@@ -64238,10 +47030,6 @@ $(function () {
-                 'railway_electric_response',
-                 I18n.t('intervention_order.vehicles.railway_electric_response'),
-             ],
--            [
--                'animal_rescue',
--                I18n.t('intervention_order.vehicles.animal_rescue'),
--            ],
-         ]),
-         $('#restore_map').click(function () {
-             mapViewRestore();
-@@ -64827,22 +47615,22 @@ if (
+@@ -64827,22 +47619,22 @@ if (
              (n.TRANSITION_DURATION = 150),
              (n.prototype.close = function (t) {
                  function i() {
@@ -42883,7 +42872,7 @@ index f47ae50..e889ae8 100644
                                  .one('bsTransitionEnd', i)
                                  .emulateTransitionEnd(n.TRANSITION_DURATION)
                          :   i()));
-@@ -64861,8 +47649,8 @@ if (
+@@ -64861,8 +47653,8 @@ if (
              return this.each(function () {
                  var n = e(this),
                      s = n.data('bs.button'),
@@ -42894,7 +42883,7 @@ index f47ae50..e889ae8 100644
                      'toggle' == t ? s.toggle() : t && s.setState(t));
              });
          }
-@@ -64877,12 +47665,12 @@ if (
+@@ -64877,12 +47669,12 @@ if (
                  var i = 'disabled',
                      n = this.$element,
                      s = n.is('input') ? 'val' : 'html',
@@ -42910,7 +42899,7 @@ index f47ae50..e889ae8 100644
                                  'loadingText' == t ?
                                      ((this.isLoading = !0),
                                      n.addClass(i).attr(i, i))
-@@ -64950,17 +47738,17 @@ if (
+@@ -64950,17 +47742,17 @@ if (
              return this.each(function () {
                  var n = e(this),
                      s = n.data('bs.carousel'),
@@ -42933,7 +42922,7 @@ index f47ae50..e889ae8 100644
              });
          }
          var i = function (t, i) {
-@@ -65073,27 +47861,27 @@ if (
+@@ -65073,27 +47865,27 @@ if (
              }),
              (i.prototype.slide = function (t, n) {
                  var s = this.$element.find('.item.active'),
@@ -42971,7 +42960,7 @@ index f47ae50..e889ae8 100644
                      }
                      var h = e.Event('slid.bs.carousel', {
                          relatedTarget: c,
-@@ -65104,13 +47892,13 @@ if (
+@@ -65104,13 +47896,13 @@ if (
                              e.support.transition &&
                              this.$element.hasClass('slide')
                          ) ?
@@ -42989,7 +42978,7 @@ index f47ae50..e889ae8 100644
                                          .removeClass([t, r].join(' '))
                                          .addClass('active'),
                                          s.removeClass(['active', r].join(' ')),
-@@ -65121,10 +47909,10 @@ if (
+@@ -65121,10 +47913,10 @@ if (
                                  })
                                  .emulateTransitionEnd(i.TRANSITION_DURATION))
                          :   (s.removeClass('active'),
@@ -43002,7 +42991,7 @@ index f47ae50..e889ae8 100644
                          this
                      );
                  }
-@@ -65138,17 +47926,17 @@ if (
+@@ -65138,17 +47930,17 @@ if (
          var s = function (i) {
              var n,
                  s = e(this),
@@ -43026,7 +43015,7 @@ index f47ae50..e889ae8 100644
                      i.preventDefault());
              }
          };
-@@ -65175,14 +47963,14 @@ if (
+@@ -65175,14 +47967,14 @@ if (
              return this.each(function () {
                  var i = e(this),
                      s = i.data('bs.collapse'),
@@ -43044,7 +43033,7 @@ index f47ae50..e889ae8 100644
                      'string' == typeof t && s[t]());
              });
          }
-@@ -65221,19 +48009,19 @@ if (
+@@ -65221,19 +48013,19 @@ if (
                          s.length &&
                          ((t = s.data('bs.collapse')), t && t.transitioning)
                      )) {
@@ -43068,7 +43057,7 @@ index f47ae50..e889ae8 100644
                                  .attr('aria-expanded', !0),
                                  this.$trigger
                                      .removeClass('collapsed')
-@@ -65243,16 +48031,16 @@ if (
+@@ -65243,16 +48035,16 @@ if (
                                  (this.$element
                                      .removeClass('collapsing')
                                      .addClass('collapse in')
@@ -43088,7 +43077,7 @@ index f47ae50..e889ae8 100644
                          }
                      }
                  }
-@@ -65321,9 +48109,9 @@ if (
+@@ -65321,9 +48113,9 @@ if (
                  function (n) {
                      var s = e(this);
                      s.attr('data-target') || n.preventDefault();
@@ -43101,7 +43090,7 @@ index f47ae50..e889ae8 100644
                  }
              ));
      })(jQuery),
-@@ -65342,22 +48130,22 @@ if (
+@@ -65342,22 +48134,22 @@ if (
          function i(i) {
              (i && 3 === i.which) ||
                  (e(s).remove(),
@@ -43128,7 +43117,7 @@ index f47ae50..e889ae8 100644
                                      ))));
                  }));
          }
-@@ -65365,43 +48153,43 @@ if (
+@@ -65365,43 +48157,43 @@ if (
              return this.each(function () {
                  var i = e(this),
                      n = i.data('bs.dropdown');
@@ -43184,7 +43173,7 @@ index f47ae50..e889ae8 100644
                  if (
                      /(38|40|27|32)/.test(i.which) &&
                      !/input|textarea/i.test(i.target.tagName)
-@@ -65413,10 +48201,10 @@ if (
+@@ -65413,10 +48205,10 @@ if (
                          !n.is('.disabled, :disabled'))
                      ) {
                          var s = t(n),
@@ -43198,7 +43187,7 @@ index f47ae50..e889ae8 100644
                                  n.trigger('click')
                              );
                          var r = ' li:not(.disabled):visible a',
-@@ -65433,7 +48221,7 @@ if (
+@@ -65433,7 +48225,7 @@ if (
              }));
          var r = e.fn.dropdown;
          ((e.fn.dropdown = n),
@@ -43207,7 +43196,7 @@ index f47ae50..e889ae8 100644
              (e.fn.dropdown.noConflict = function () {
                  return ((e.fn.dropdown = r), this);
              }),
-@@ -65446,12 +48234,12 @@ if (
+@@ -65446,12 +48238,12 @@ if (
                          e.stopPropagation();
                      }
                  )
@@ -43223,7 +43212,7 @@ index f47ae50..e889ae8 100644
                  ));
      })(jQuery),
      (function (e) {
-@@ -65459,15 +48247,15 @@ if (
+@@ -65459,15 +48251,15 @@ if (
          function t(t, n) {
              return this.each(function () {
                  var s = e(this),
@@ -43243,7 +43232,7 @@ index f47ae50..e889ae8 100644
              });
          }
          var i = function (t, i) {
-@@ -65535,16 +48323,16 @@ if (
+@@ -65535,16 +48327,16 @@ if (
                                  s && n.$element[0].offsetWidth,
                                  n.$element.addClass('in'),
                                  n.enforceFocus());
@@ -43263,7 +43252,7 @@ index f47ae50..e889ae8 100644
                          })));
              }),
              (i.prototype.hide = function (t) {
-@@ -65620,7 +48408,7 @@ if (
+@@ -65620,7 +48412,7 @@ if (
                  var n = this,
                      s = this.$element.hasClass('fade') ? 'fade' : '';
                  if (this.isShown && this.options.backdrop) {
@@ -43272,7 +43261,7 @@ index f47ae50..e889ae8 100644
                      if (
                          ((this.$backdrop = e(document.createElement('div'))
                              .addClass('modal-backdrop ' + s)
-@@ -65638,12 +48426,12 @@ if (
+@@ -65638,12 +48430,12 @@ if (
                                          );
                              }, this)
                          ),
@@ -43287,7 +43276,7 @@ index f47ae50..e889ae8 100644
                          this.$backdrop
                              .one('bsTransitionEnd', t)
                              .emulateTransitionEnd(
-@@ -65652,16 +48440,16 @@ if (
+@@ -65652,16 +48444,16 @@ if (
                      :   t();
                  } else if (!this.isShown && this.$backdrop) {
                      this.$backdrop.removeClass('in');
@@ -43307,7 +43296,7 @@ index f47ae50..e889ae8 100644
                  } else t && t();
              }),
              (i.prototype.handleUpdate = function () {
-@@ -65722,26 +48510,26 @@ if (
+@@ -65722,26 +48514,26 @@ if (
                  function (i) {
                      var n = e(this),
                          s = n.attr('href'),
@@ -43341,7 +43330,7 @@ index f47ae50..e889ae8 100644
                  }
              ));
      })(jQuery),
-@@ -65751,9 +48539,9 @@ if (
+@@ -65751,9 +48543,9 @@ if (
              return this.each(function () {
                  var n = e(this),
                      s = n.data('bs.tooltip'),
@@ -43353,7 +43342,7 @@ index f47ae50..e889ae8 100644
                      'string' == typeof t && s[t]());
              });
          }
-@@ -65806,19 +48594,19 @@ if (
+@@ -65806,19 +48598,19 @@ if (
                              ' on the window.document object!'
                      );
                  for (
@@ -43380,7 +43369,7 @@ index f47ae50..e889ae8 100644
                          (this.$element.on(
                              r + '.' + this.type,
                              this.options.selector,
-@@ -65931,47 +48719,47 @@ if (
+@@ -65931,47 +48723,47 @@ if (
                      );
                      if (t.isDefaultPrevented() || !n) return;
                      var s = this,
@@ -43446,7 +43435,7 @@ index f47ae50..e889ae8 100644
                      this.applyPlacement(_, r);
                      var f = function () {
                          var e = s.hoverState;
-@@ -65980,7 +48768,7 @@ if (
+@@ -65980,7 +48772,7 @@ if (
                              'out' == e && s.leave(s));
                      };
                      e.support.transition && this.$tip.hasClass('fade') ?
@@ -43455,7 +43444,7 @@ index f47ae50..e889ae8 100644
                              .one('bsTransitionEnd', f)
                              .emulateTransitionEnd(i.TRANSITION_DURATION)
                      :   f();
-@@ -65989,12 +48777,12 @@ if (
+@@ -65989,12 +48781,12 @@ if (
              (i.prototype.applyPlacement = function (t, i) {
                  var n = this.tip(),
                      s = n[0].offsetWidth,
@@ -43472,7 +43461,7 @@ index f47ae50..e889ae8 100644
                      (t.left += r),
                      e.offset.setOffset(
                          n[0],
-@@ -66014,13 +48802,13 @@ if (
+@@ -66014,13 +48806,13 @@ if (
                      n.addClass('in'));
                  var l = n[0].offsetWidth,
                      c = n[0].offsetHeight;
@@ -43493,7 +43482,7 @@ index f47ae50..e889ae8 100644
              }),
              (i.prototype.replaceArrow = function (e, t, i) {
                  this.arrow()
-@@ -66037,21 +48825,21 @@ if (
+@@ -66037,21 +48829,21 @@ if (
              }),
              (i.prototype.hide = function (t) {
                  function n() {
@@ -43523,7 +43512,7 @@ index f47ae50..e889ae8 100644
                                  .one('bsTransitionEnd', n)
                                  .emulateTransitionEnd(i.TRANSITION_DURATION)
                          :   n(),
-@@ -66080,8 +48868,8 @@ if (
+@@ -66080,8 +48872,8 @@ if (
                          width: s.right - s.left,
                          height: s.bottom - s.top,
                      }));
@@ -43534,7 +43523,7 @@ index f47ae50..e889ae8 100644
                          scroll:
                              n ?
                                  document.documentElement.scrollTop ||
-@@ -66095,7 +48883,7 @@ if (
+@@ -66095,7 +48887,7 @@ if (
                                  height: e(window).height(),
                              }
                          :   null;
@@ -43543,7 +43532,7 @@ index f47ae50..e889ae8 100644
              }),
              (i.prototype.getCalculatedOffset = function (e, t, i, n) {
                  return (
-@@ -66117,23 +48905,23 @@ if (
+@@ -66117,23 +48909,23 @@ if (
              (i.prototype.getViewportAdjustedDelta = function (e, t, i, n) {
                  var s = { top: 0, left: 0 };
                  if (!this.$viewport) return s;
@@ -43579,7 +43568,7 @@ index f47ae50..e889ae8 100644
                  }
                  return s;
              }),
-@@ -66219,9 +49007,9 @@ if (
+@@ -66219,9 +49011,9 @@ if (
              return this.each(function () {
                  var n = e(this),
                      s = n.data('bs.popover'),
@@ -43591,7 +43580,7 @@ index f47ae50..e889ae8 100644
                      'string' == typeof t && s[t]());
              });
          }
-@@ -66305,8 +49093,8 @@ if (
+@@ -66305,8 +49097,8 @@ if (
              return this.each(function () {
                  var n = e(this),
                      s = n.data('bs.scrollspy'),
@@ -43602,7 +43591,7 @@ index f47ae50..e889ae8 100644
                      'string' == typeof i && s[i]());
              });
          }
-@@ -66336,12 +49124,12 @@ if (
+@@ -66336,12 +49128,12 @@ if (
                          .map(function () {
                              var t = e(this),
                                  s = t.data('target') || t.attr('href'),
@@ -43620,7 +43609,7 @@ index f47ae50..e889ae8 100644
                                      ]) ||
                                  null
                              );
-@@ -66359,17 +49147,17 @@ if (
+@@ -66359,17 +49151,17 @@ if (
                      i = this.getScrollHeight(),
                      n = this.options.offset + i - this.$scrollElement.height(),
                      s = this.offsets,
@@ -43644,7 +43633,7 @@ index f47ae50..e889ae8 100644
              }),
              (t.prototype.activate = function (t) {
                  ((this.activeTarget = t), this.clear());
-@@ -66432,12 +49220,12 @@ if (
+@@ -66432,12 +49224,12 @@ if (
                      !t.parent('li').hasClass('active'))
                  ) {
                      var s = i.find('.active:last a'),
@@ -43662,7 +43651,7 @@ index f47ae50..e889ae8 100644
                      ) {
                          var r = e(n);
                          (this.activate(t.closest('li'), i),
-@@ -66455,8 +49243,8 @@ if (
+@@ -66455,8 +49247,8 @@ if (
                  }
              }),
              (i.prototype.activate = function (t, n, s) {
@@ -43673,7 +43662,7 @@ index f47ae50..e889ae8 100644
                          .removeClass('active')
                          .find('> .dropdown-menu > .active')
                          .removeClass('active')
-@@ -66479,18 +49267,18 @@ if (
+@@ -66479,18 +49271,18 @@ if (
                                  .attr('aria-expanded', !0),
                          s && s());
                  }
@@ -43699,7 +43688,7 @@ index f47ae50..e889ae8 100644
              }));
          var n = e.fn.tab;
          ((e.fn.tab = t),
-@@ -66511,8 +49299,8 @@ if (
+@@ -66511,8 +49303,8 @@ if (
              return this.each(function () {
                  var n = e(this),
                      s = n.data('bs.affix'),
@@ -43710,7 +43699,7 @@ index f47ae50..e889ae8 100644
                      'string' == typeof t && s[t]());
              });
          }
-@@ -66538,18 +49326,18 @@ if (
+@@ -66538,18 +49330,18 @@ if (
              (i.DEFAULTS = { offset: 0, target: window }),
              (i.prototype.getState = function (e, t, i, n) {
                  var s = this.$target.scrollTop(),
@@ -43735,7 +43724,7 @@ index f47ae50..e889ae8 100644
              }),
              (i.prototype.getPinnedOffset = function () {
                  if (this.pinnedOffset) return this.pinnedOffset;
-@@ -66566,16 +49354,16 @@ if (
+@@ -66566,16 +49358,16 @@ if (
                      var t = this.$element.height(),
                          n = this.options.offset,
                          s = n.top,
@@ -43758,7 +43747,7 @@ index f47ae50..e889ae8 100644
                      if (this.affixed != r) {
                          null != this.unpin && this.$element.css('top', '');
                          var l = 'affix' + (r ? '-' + r : ''),
-@@ -66592,7 +49380,7 @@ if (
+@@ -66592,7 +49384,7 @@ if (
                                      l.replace('affix', 'affixed') + '.bs.affix'
                                  ));
                      }
@@ -43767,7 +43756,7 @@ index f47ae50..e889ae8 100644
                  }
              }));
          var n = e.fn.affix;
-@@ -66742,10 +49530,10 @@ if (
+@@ -66742,10 +49534,10 @@ if (
                                                  s.attr('src', n[t]));
                                              break;
                                          case 'progress':
@@ -43780,7 +43769,7 @@ index f47ae50..e889ae8 100644
                                                  this.$ele
                                                      .find(
                                                          '[data-notify="progressbar"] > div'
-@@ -66770,11 +49558,11 @@ if (
+@@ -66770,11 +49562,11 @@ if (
                                                  )
                                                  .html(n[t]);
                                      }
@@ -43794,7 +43783,7 @@ index f47ae50..e889ae8 100644
                              },
                              close: function () {
                                  e.close();
-@@ -66863,7 +49651,7 @@ if (
+@@ -66863,7 +49655,7 @@ if (
                              zIndex: this.settings.z_index,
                          },
                          s = !1,
@@ -43803,7 +43792,7 @@ index f47ae50..e889ae8 100644
                      switch (
                          (e(
                              '[data-notify-position="' +
-@@ -66874,9 +49662,9 @@ if (
+@@ -66874,9 +49666,9 @@ if (
                          ).each(function () {
                              return (i = Math.max(
                                  i,
@@ -43815,7 +43804,7 @@ index f47ae50..e889ae8 100644
                              ));
                          }),
                          1 == this.settings.newest_on_top &&
-@@ -67071,46 +49859,46 @@ if (
+@@ -67071,46 +49863,46 @@ if (
                      n = t;
                  [].shift.apply(i);
                  var s,
@@ -43879,7 +43868,7 @@ index f47ae50..e889ae8 100644
              }
              (String.prototype.includes ||
                  (function () {
-@@ -67130,8 +49918,8 @@ if (
+@@ -67130,8 +49922,8 @@ if (
                              if (t && '[object RegExp]' == e.call(t))
                                  throw new TypeError();
                              var s = n.length,
@@ -43890,7 +43879,7 @@ index f47ae50..e889ae8 100644
                                  r =
                                      arguments.length > 1 ?
                                          arguments[1]
-@@ -67139,8 +49927,8 @@ if (
+@@ -67139,8 +49931,8 @@ if (
                                  l = r ? Number(r) : 0;
                              return (
                                  l != l && (l = 0),
@@ -43901,7 +43890,7 @@ index f47ae50..e889ae8 100644
                              );
                          };
                      t ?
-@@ -67169,16 +49957,16 @@ if (
+@@ -67169,16 +49961,16 @@ if (
                                      throw new TypeError();
                                  var n = i.length,
                                      s = String(e),
@@ -43923,7 +43912,7 @@ index f47ae50..e889ae8 100644
                                      if (i.charCodeAt(l + c) != s.charCodeAt(c))
                                          return !1;
                                  return !0;
-@@ -67205,7 +49993,7 @@ if (
+@@ -67205,7 +49997,7 @@ if (
                  );
              };
              var s = null,
@@ -43932,7 +43921,7 @@ index f47ae50..e889ae8 100644
                      try {
                          return (new Event('change'), !0);
                      } catch (e) {
-@@ -67216,7 +50004,7 @@ if (
+@@ -67216,7 +50008,7 @@ if (
                  var t,
                      i = this[0];
                  i.dispatchEvent ?
@@ -43941,7 +43930,7 @@ index f47ae50..e889ae8 100644
                          (t = new Event(e, { bubbles: !0 }))
                      :   (t = document.createEvent('Event')).initEvent(
                              e,
-@@ -67265,7 +50053,7 @@ if (
+@@ -67265,7 +50057,7 @@ if (
                          .toUpperCase()
                          .startsWith(n[3].toUpperCase());
                  }));
@@ -43950,7 +43939,7 @@ index f47ae50..e889ae8 100644
                      '&amp;': '&',
                      '&lt;': '<',
                      '&gt;': '>',
-@@ -67295,8 +50083,8 @@ if (
+@@ -67295,8 +50087,8 @@ if (
                      "'": '&#x27;',
                      '`': '&#x60;',
                  }),
@@ -43961,7 +43950,7 @@ index f47ae50..e889ae8 100644
                      (n.useDefault ||
                          ((e.valHooks.select.set = n._set), (n.useDefault = !0)),
                          (this.$element = e(t)),
-@@ -67310,20 +50098,20 @@ if (
+@@ -67310,20 +50102,20 @@ if (
                      var s = this.options.windowPadding;
                      ('number' == typeof s &&
                          (this.options.windowPadding = [s, s, s, s]),
@@ -43994,7 +43983,7 @@ index f47ae50..e889ae8 100644
                      noneSelectedText: 'Nothing selected',
                      noneResultsText: 'No results matched {0}',
                      countSelectedText: function (e) {
-@@ -67374,8 +50162,8 @@ if (
+@@ -67374,8 +50166,8 @@ if (
                      dropdownAlignRight: !1,
                      windowPadding: 0,
                  }),
@@ -44005,7 +43994,7 @@ index f47ae50..e889ae8 100644
                      init: function () {
                          var t = this,
                              i = this.$element.attr('id');
-@@ -67489,7 +50277,7 @@ if (
+@@ -67489,7 +50281,7 @@ if (
                                      this.options.header +
                                      '</div>'
                                  :   '',
@@ -44014,7 +44003,7 @@ index f47ae50..e889ae8 100644
                                  this.options.liveSearch ?
                                      '<div class="bs-searchbox"><input type="text" class="form-control" autocomplete="off"' +
                                      ((
-@@ -67502,7 +50290,7 @@ if (
+@@ -67502,7 +50294,7 @@ if (
                                          '"') +
                                      ' role="textbox" aria-label="Search"></div>'
                                  :   '',
@@ -44023,7 +44012,7 @@ index f47ae50..e889ae8 100644
                                  this.multiple && this.options.actionsBox ?
                                      '<div class="bs-actionsbox"><div class="btn-group btn-group-sm btn-block"><button type="button" class="actions-btn bs-select-all btn btn-default">' +
                                      this.options.selectAllText +
-@@ -67528,8 +50316,8 @@ if (
+@@ -67528,8 +50320,8 @@ if (
                                  this.options.template.caret +
                                  '</span></button><div class="dropdown-menu open" role="combobox">' +
                                  s +
@@ -44033,7 +44022,7 @@ index f47ae50..e889ae8 100644
                                  '<ul class="dropdown-menu inner" role="listbox" aria-expanded="false"></ul>' +
                                  r +
                                  '</div></div>';
-@@ -67548,8 +50336,8 @@ if (
+@@ -67548,8 +50340,8 @@ if (
                          var i = this,
                              n = [],
                              s = 0,
@@ -44044,7 +44033,7 @@ index f47ae50..e889ae8 100644
                              r = function (e, t, i, n) {
                                  return (
                                      '<li' +
-@@ -67567,18 +50355,18 @@ if (
+@@ -67567,18 +50359,18 @@ if (
                                      '</li>'
                                  );
                              },
@@ -44067,7 +44056,7 @@ index f47ae50..e889ae8 100644
                                      :   '') +
                                      ' role="option">' +
                                      n +
-@@ -67592,102 +50380,102 @@ if (
+@@ -67592,102 +50384,102 @@ if (
                          if (
                              this.options.title &&
                              !this.multiple &&
@@ -44210,7 +44199,7 @@ index f47ae50..e889ae8 100644
                                                      (
                                                          void 0 !==
                                                          v.data('subtext')
-@@ -67696,7 +50484,7 @@ if (
+@@ -67696,7 +50488,7 @@ if (
                                                          v.data('subtext') +
                                                          '</small>'
                                                      :   '';
@@ -44219,7 +44208,7 @@ index f47ae50..e889ae8 100644
                                                  (v.data('icon') ?
                                                      '<span class="' +
                                                      i.options.iconBase +
-@@ -67705,12 +50493,12 @@ if (
+@@ -67705,12 +50497,12 @@ if (
                                                      '"></span> '
                                                  :   '') +
                                                  '<span class="text">' +
@@ -44235,7 +44224,7 @@ index f47ae50..e889ae8 100644
                                                      n.push(
                                                          r(
                                                              '',
-@@ -67719,18 +50507,18 @@ if (
+@@ -67719,18 +50511,18 @@ if (
                                                              s + 'div'
                                                          )
                                                      )),
@@ -44258,7 +44247,7 @@ index f47ae50..e889ae8 100644
                                          n.push(
                                              r(
                                                  c(m, 'opt ' + h + x, p, _),
-@@ -67739,15 +50527,15 @@ if (
+@@ -67739,15 +50531,15 @@ if (
                                                  s
                                              )
                                          );
@@ -44279,7 +44268,7 @@ index f47ae50..e889ae8 100644
                                                  ),
                                              n.push(
                                                  r(
-@@ -67766,18 +50554,18 @@ if (
+@@ -67766,18 +50558,18 @@ if (
                                              !T &&
                                              i.options.hideDisabled &&
                                              void 0 !==
@@ -44305,7 +44294,7 @@ index f47ae50..e889ae8 100644
                                              n.push(
                                                  r(
                                                      '',
-@@ -67788,7 +50576,7 @@ if (
+@@ -67788,7 +50580,7 @@ if (
                                              )),
                                              n.push(r(c(m, h, p, _), t)));
                                      }
@@ -44314,7 +44303,7 @@ index f47ae50..e889ae8 100644
                                  }
                              }),
                              this.multiple ||
-@@ -67830,7 +50618,7 @@ if (
+@@ -67830,7 +50622,7 @@ if (
                              }),
                              this.togglePlaceholder(),
                              this.tabIndex());
@@ -44323,7 +44312,7 @@ index f47ae50..e889ae8 100644
                                  .map(function () {
                                      if (this.selected) {
                                          if (
-@@ -67877,10 +50665,10 @@ if (
+@@ -67877,10 +50669,10 @@ if (
                                      }
                                  })
                                  .toArray(),
@@ -44337,7 +44326,7 @@ index f47ae50..e889ae8 100644
                          if (
                              this.multiple &&
                              this.options.selectedTextFormat.indexOf('count') >
-@@ -67888,8 +50676,8 @@ if (
+@@ -67888,8 +50680,8 @@ if (
                          ) {
                              var r = this.options.selectedTextFormat.split('>');
                              if (
@@ -44348,7 +44337,7 @@ index f47ae50..e889ae8 100644
                              ) {
                                  i =
                                      this.options.hideDisabled ?
-@@ -67899,34 +50687,34 @@ if (
+@@ -67899,34 +50691,34 @@ if (
                                      '[data-divider="true"], [data-hidden="true"]' +
                                          i
                                  ).length;
@@ -44391,7 +44380,7 @@ index f47ae50..e889ae8 100644
                              this.$element.trigger('rendered.bs.select'));
                      },
                      setStyle: function (e, t) {
-@@ -67950,8 +50738,8 @@ if (
+@@ -67950,8 +50742,8 @@ if (
                              var i = document.createElement('div'),
                                  n = document.createElement('div'),
                                  s = document.createElement('ul'),
@@ -44401,7 +44390,7 @@ index f47ae50..e889ae8 100644
                                  r = document.createElement('a'),
                                  l = document.createElement('span'),
                                  c =
-@@ -67964,11 +50752,11 @@ if (
+@@ -67964,11 +50756,11 @@ if (
                                              .find('.popover-title')[0]
                                              .cloneNode(!0)
                                      :   null,
@@ -44415,7 +44404,7 @@ index f47ae50..e889ae8 100644
                                      (
                                          this.options.actionsBox &&
                                          this.multiple &&
-@@ -67997,105 +50785,105 @@ if (
+@@ -67997,105 +50789,105 @@ if (
                                      ' open'),
                                  (n.className = 'dropdown-menu open'),
                                  (s.className = 'dropdown-menu inner'),
@@ -44548,7 +44537,7 @@ index f47ae50..e889ae8 100644
                                          ) +
                                          2,
                                  };
-@@ -68107,7 +50895,7 @@ if (
+@@ -68107,7 +50899,7 @@ if (
                                      actionsHeight: g,
                                      doneButtonHeight: v,
                                      dividerHeight: b,
@@ -44557,7 +44546,7 @@ index f47ae50..e889ae8 100644
                                      menuExtras: x,
                                  }));
                          }
-@@ -68124,13 +50912,13 @@ if (
+@@ -68124,13 +50916,13 @@ if (
                                  i,
                                  n,
                                  s,
@@ -44574,7 +44563,7 @@ index f47ae50..e889ae8 100644
                                  h = e(window),
                                  p = this.$newElement[0].offsetHeight,
                                  m = this.$newElement[0].offsetWidth,
-@@ -68140,13 +50928,13 @@ if (
+@@ -68140,13 +50932,13 @@ if (
                                  v = this.sizeInfo.actionsHeight,
                                  b = this.sizeInfo.doneButtonHeight,
                                  y = this.sizeInfo.dividerHeight,
@@ -44591,7 +44580,7 @@ index f47ae50..e889ae8 100644
                                      var t,
                                          i = c.$newElement.offset(),
                                          n = e(c.options.container);
-@@ -68159,15 +50947,15 @@ if (
+@@ -68159,15 +50951,15 @@ if (
                                          )))
                                      :   (t = { top: 0, left: 0 });
                                      var s = c.options.windowPadding;
@@ -44612,7 +44601,7 @@ index f47ae50..e889ae8 100644
                                      var h,
                                          p = function (t, i) {
                                              return function (n) {
-@@ -68197,75 +50985,75 @@ if (
+@@ -68197,75 +50989,75 @@ if (
                                                      p('hidden', !1)
                                                  )
                                              :   c.$lis.not('.hidden'),
@@ -44712,7 +44701,7 @@ index f47ae50..e889ae8 100644
                                          ));
                              } else if (
                                  this.options.size &&
-@@ -68280,27 +51068,27 @@ if (
+@@ -68280,27 +51072,27 @@ if (
                                          .last()
                                          .parent()
                                          .index(),
@@ -44750,7 +44739,7 @@ index f47ae50..e889ae8 100644
                                          'overflow-y': 'auto',
                                          'min-height': '',
                                      }));
-@@ -68355,8 +51143,8 @@ if (
+@@ -68355,8 +51147,8 @@ if (
                              i,
                              n,
                              s = this,
@@ -44761,7 +44750,7 @@ index f47ae50..e889ae8 100644
                                  (s.$bsContainer
                                      .addClass(
                                          e
-@@ -68371,14 +51159,14 @@ if (
+@@ -68371,14 +51163,14 @@ if (
                                          e.hasClass('dropup')
                                      ),
                                      (t = e.offset()),
@@ -44782,7 +44771,7 @@ index f47ae50..e889ae8 100644
                                      (n =
                                          e.hasClass('dropup') ? 0 : (
                                              e[0].offsetHeight
-@@ -68392,14 +51180,14 @@ if (
+@@ -68392,14 +51184,14 @@ if (
                          (this.$button.on('click', function () {
                              var t = e(this);
                              s.isDisabled() ||
@@ -44799,7 +44788,7 @@ index f47ae50..e889ae8 100644
                              }),
                              this.$element.on('hide.bs.select', function () {
                                  (s.$menu.data('height', s.$menu.height()),
-@@ -68516,8 +51304,8 @@ if (
+@@ -68516,8 +51308,8 @@ if (
                              }),
                              this.$menuInner.on('click', 'li a', function (i) {
                                  var n = e(this),
@@ -44810,7 +44799,7 @@ index f47ae50..e889ae8 100644
                                      r = t.$element.prop('selectedIndex'),
                                      l = !0;
                                  if (
-@@ -68529,15 +51317,15 @@ if (
+@@ -68529,15 +51321,15 @@ if (
                                          !n.parent().hasClass('disabled'))
                                  ) {
                                      var c = t.$element.find('option'),
@@ -44831,7 +44820,7 @@ index f47ae50..e889ae8 100644
                                              n.blur(),
                                              !1 !== p || !1 !== m)
                                          ) {
-@@ -68552,18 +51340,18 @@ if (
+@@ -68552,18 +51344,18 @@ if (
                                              if ((p && _) || (m && f))
                                                  if (p && 1 == p)
                                                      (c.prop('selected', !1),
@@ -44853,7 +44842,7 @@ index f47ae50..e889ae8 100644
                                                      var g = n
                                                          .parent()
                                                          .data('optgroup');
-@@ -68576,7 +51364,7 @@ if (
+@@ -68576,7 +51368,7 @@ if (
                                                          .removeClass(
                                                              'selected'
                                                          ),
@@ -44862,7 +44851,7 @@ index f47ae50..e889ae8 100644
                                                  } else {
                                                      var v =
                                                              (
-@@ -68603,11 +51391,11 @@ if (
+@@ -68603,11 +51395,11 @@ if (
                                                              '{n}',
                                                              p
                                                          ),
@@ -44876,7 +44865,7 @@ index f47ae50..e889ae8 100644
                                                              '<div class="notify"></div>'
                                                          );
                                                      (b[2] &&
-@@ -68615,15 +51403,15 @@ if (
+@@ -68615,15 +51407,15 @@ if (
                                                              '{var}',
                                                              b[2][p > 1 ? 0 : 1]
                                                          )),
@@ -44896,7 +44885,7 @@ index f47ae50..e889ae8 100644
                                                                  e(
                                                                      '<div>' +
                                                                          y +
-@@ -68636,10 +51424,10 @@ if (
+@@ -68636,10 +51428,10 @@ if (
                                                              )),
                                                          m &&
                                                              f &&
@@ -44909,7 +44898,7 @@ index f47ae50..e889ae8 100644
                                                                          '</div>'
                                                                  )
                                                              ),
-@@ -68649,11 +51437,11 @@ if (
+@@ -68649,11 +51441,11 @@ if (
                                                              )),
                                                          setTimeout(function () {
                                                              t.setSelected(
@@ -44923,7 +44912,7 @@ index f47ae50..e889ae8 100644
                                                              .delay(750)
                                                              .fadeOut(
                                                                  300,
-@@ -68667,13 +51455,13 @@ if (
+@@ -68667,13 +51459,13 @@ if (
                                          }
                                      } else
                                          (c.prop('selected', !1),
@@ -44939,7 +44928,7 @@ index f47ae50..e889ae8 100644
                                      ((
                                          !t.multiple ||
                                          (t.multiple &&
-@@ -68683,14 +51471,14 @@ if (
+@@ -68683,14 +51475,14 @@ if (
                                      :   t.options.liveSearch &&
                                          t.$searchbox.focus(),
                                          l &&
@@ -44956,7 +44945,7 @@ index f47ae50..e889ae8 100644
                                              t.$element.triggerNative(
                                                  'change'
                                              )));
-@@ -68796,13 +51584,13 @@ if (
+@@ -68796,13 +51588,13 @@ if (
                                          i.$searchbox.val())
                                      ) {
                                          var s,
@@ -44972,7 +44961,7 @@ index f47ae50..e889ae8 100644
                                                          ':a' +
                                                              i._searchStyle() +
                                                              '("' +
-@@ -68811,13 +51599,13 @@ if (
+@@ -68811,13 +51603,13 @@ if (
                                                              ) +
                                                              '")'
                                                      )
@@ -44988,7 +44977,7 @@ index f47ae50..e889ae8 100644
                                          )
                                              (n.html(
                                                  i.options.noneResultsText.replace(
-@@ -68831,18 +51619,18 @@ if (
+@@ -68831,18 +51623,18 @@ if (
                                                  i.$lis.addClass('hidden'));
                                          else {
                                              s.addClass('hidden');
@@ -45012,7 +45001,7 @@ index f47ae50..e889ae8 100644
                                                  : (
                                                      i.hasClass(
                                                          'dropdown-header'
-@@ -68853,10 +51641,10 @@ if (
+@@ -68853,10 +51645,10 @@ if (
                                                          i.data('optgroup')
                                                  ) ?
                                                      i.addClass('hidden')
@@ -45026,7 +45015,7 @@ index f47ae50..e889ae8 100644
                                                      .not('.hidden')
                                                      .first()
                                                      .addClass('active'),
-@@ -68888,20 +51676,20 @@ if (
+@@ -68888,20 +51680,20 @@ if (
                                      '.divider, .dropdown-header, .disabled, .hidden'
                                  ),
                                  s = n.length,
@@ -45052,7 +45041,7 @@ index f47ae50..e889ae8 100644
                                  this.render(!1),
                                  this.togglePlaceholder(),
                                  this.$element.triggerNative('change'));
-@@ -68921,12 +51709,12 @@ if (
+@@ -68921,12 +51713,12 @@ if (
                          var i,
                              n,
                              s,
@@ -45070,7 +45059,7 @@ index f47ae50..e889ae8 100644
                              l =
                                  ':not(.disabled, .hidden, .dropdown-header, .divider)',
                              c = {
-@@ -68980,7 +51768,7 @@ if (
+@@ -68980,7 +51772,7 @@ if (
                                  105: '9',
                              };
                          if (
@@ -45079,7 +45068,7 @@ index f47ae50..e889ae8 100644
                              ((t.keyCode >= 48 && t.keyCode <= 57) ||
                                  (t.keyCode >= 96 && t.keyCode <= 105) ||
                                  (t.keyCode >= 65 && t.keyCode <= 90))
-@@ -68990,13 +51778,13 @@ if (
+@@ -68990,13 +51782,13 @@ if (
                                      r.$button.trigger('click')
                                  :   (r.setSize(),
                                      r.$menu.parent().addClass('open'),
@@ -45095,7 +45084,7 @@ index f47ae50..e889ae8 100644
                                  (t.preventDefault(),
                                  t.stopPropagation(),
                                  r.$menuInner.click(),
-@@ -69022,18 +51810,18 @@ if (
+@@ -69022,18 +51814,18 @@ if (
                                  r.$menuInner.data('prevIndex', n),
                                  r.options.liveSearch ?
                                      (t.preventDefault(),
@@ -45119,7 +45108,7 @@ index f47ae50..e889ae8 100644
                              ((i = r.$lis.filter(l)).each(function (i) {
                                  e
                                      .trim(
-@@ -69043,22 +51831,22 @@ if (
+@@ -69043,22 +51835,22 @@ if (
                                              .toLowerCase()
                                      )
                                      .substring(0, 1) == c[t.keyCode] &&
@@ -45150,7 +45139,7 @@ index f47ae50..e889ae8 100644
                                      .children('a')
                                      .focus());
                          }
-@@ -69066,7 +51854,7 @@ if (
+@@ -69066,7 +51858,7 @@ if (
                              (/(13|32)/.test(t.keyCode.toString(10)) ||
                                  (/(^9$)/.test(t.keyCode.toString(10)) &&
                                      r.options.selectOnTab)) &&
@@ -45159,7 +45148,7 @@ index f47ae50..e889ae8 100644
                          ) {
                              if (
                                  (/(32)/.test(t.keyCode.toString(10)) ||
-@@ -69075,7 +51863,7 @@ if (
+@@ -69075,7 +51867,7 @@ if (
                              )
                                  /(32)/.test(t.keyCode.toString(10)) ||
                                      (r.$menuInner.find('.active a').click(),
@@ -45168,7 +45157,7 @@ index f47ae50..e889ae8 100644
                              else {
                                  var h = e(':focus');
                                  (h.click(),
-@@ -69086,9 +51874,9 @@ if (
+@@ -69086,9 +51878,9 @@ if (
                              e(document).data('keycount', 0);
                          }
                          ((/(^9$|27)/.test(t.keyCode.toString(10)) &&
@@ -45180,7 +45169,7 @@ index f47ae50..e889ae8 100644
                              (r.$menu.parent().removeClass('open'),
                              r.options.container &&
                                  r.$newElement.removeClass('open'),
-@@ -69130,18 +51918,18 @@ if (
+@@ -69130,18 +51922,18 @@ if (
                                  .removeClass('bs-select-hidden selectpicker'));
                      },
                  }));
@@ -45203,7 +45192,7 @@ index f47ae50..e889ae8 100644
                      )
                      .on(
                          'focusin.modal',
-@@ -69208,7 +51996,7 @@ if (
+@@ -69208,7 +52000,7 @@ if (
          }
          function n(e, t) {
              for (
@@ -45212,7 +45201,7 @@ index f47ae50..e889ae8 100644
                  s < arguments.length;
                  s++
              ) {
-@@ -69216,23 +52004,23 @@ if (
+@@ -69216,23 +52008,23 @@ if (
                  for (var l in r) {
                      var c = r[l];
                      if (!pe(c)) {
@@ -45242,7 +45231,7 @@ index f47ae50..e889ae8 100644
              if (Array.isArray(e) || ('length' in e && _e(e.length)))
                  for (var i = 0; i < e.length; i++) t(i, e[i]);
              else
-@@ -69240,13 +52028,13 @@ if (
+@@ -69240,13 +52032,13 @@ if (
                      t(i, e[i]);
                  });
          }
@@ -45258,7 +45247,7 @@ index f47ae50..e889ae8 100644
                      'style' === e ? (n.style.cssText = t)
                      : e in n ? (n[e] = t)
                      : n.setAttribute(e, t);
-@@ -69259,15 +52047,15 @@ if (
+@@ -69259,15 +52051,15 @@ if (
                  var i = e || {};
                  (i = i.parentNode) && !/(9|11)/.test(i.nodeType);
              )
@@ -45278,7 +45267,7 @@ index f47ae50..e889ae8 100644
              e.appendChild(t);
          }
          function h(e, t) {
-@@ -69275,26 +52063,26 @@ if (
+@@ -69275,26 +52067,26 @@ if (
          }
          function p(e, t, i, n, s) {
              t.split(' ').forEach(function (t) {
@@ -45314,7 +45303,7 @@ index f47ae50..e889ae8 100644
              });
          }
          function _(e, t, i) {
-@@ -69317,7 +52105,7 @@ if (
+@@ -69317,7 +52109,7 @@ if (
              if (arguments.length < 3) {
                  if (he(t))
                      return 1 === e.nodeType ? getComputedStyle(e)[t] : null;
@@ -45323,7 +45312,7 @@ index f47ae50..e889ae8 100644
                      y(e, t, i);
                  });
              } else {
-@@ -69325,13 +52113,13 @@ if (
+@@ -69325,13 +52117,13 @@ if (
                  e.style[t] = n ? i + 'px' : i;
              }
          }
@@ -45339,7 +45328,7 @@ index f47ae50..e889ae8 100644
                              /^data\-/i.test(t.name) &&
                                  (s[t.name.substr(5)] = t.value);
                          }),
-@@ -69341,7 +52129,7 @@ if (
+@@ -69341,7 +52133,7 @@ if (
                  _(e, 'data-' + t, String(i));
              }
          }
@@ -45348,7 +45337,7 @@ index f47ae50..e889ae8 100644
              var i = !1;
              return (
                  e &&
-@@ -69357,23 +52145,23 @@ if (
+@@ -69357,23 +52149,23 @@ if (
          function x(e, t) {
              return e !== t && e.contains && e.contains(t);
          }
@@ -45377,7 +45366,7 @@ index f47ae50..e889ae8 100644
          }
          function A(e, t) {
              var i = T(e);
-@@ -69384,27 +52172,27 @@ if (
+@@ -69384,27 +52176,27 @@ if (
              (s(i, t), (e.className = i.join(' ')));
          }
          function M(e, t, i) {
@@ -45413,7 +45402,7 @@ index f47ae50..e889ae8 100644
              var n;
              (me(window.CustomEvent) ?
                  (n = new CustomEvent(t, {
-@@ -69431,45 +52219,45 @@ if (
+@@ -69431,45 +52223,45 @@ if (
          }
          function O(e, t, i, n, s) {
              for (e = s ? e.lastChild : e.firstChild; e;) {
@@ -45469,7 +45458,7 @@ index f47ae50..e889ae8 100644
              return (
                  !!/11?|9/.test(e.nodeType) &&
                  '|iframe|area|base|basefont|br|col|frame|hr|img|input|wbr|isindex|link|meta|param|command|embed|keygen|source|track|object|'.indexOf(
-@@ -69499,13 +52287,13 @@ if (
+@@ -69499,13 +52291,13 @@ if (
                      n = !H(e, !0);
                  if (n && H(e.parentNode, !0)) {
                      var s = t(e),
@@ -45489,7 +45478,7 @@ index f47ae50..e889ae8 100644
                  }
              });
          }
-@@ -69518,38 +52306,38 @@ if (
+@@ -69518,38 +52310,38 @@ if (
                          U(e.parentNode, t)
                  :   null;
          }
@@ -45544,7 +45533,7 @@ index f47ae50..e889ae8 100644
                          }
                          ((t = t.replace(/\u200B/g, '')),
                              (s && H(s) && !r) ||
-@@ -69563,16 +52351,16 @@ if (
+@@ -69563,16 +52355,16 @@ if (
                                      ''
                                  )),
                              t.length ?
@@ -45565,7 +45554,7 @@ index f47ae50..e889ae8 100644
              var i = e.ownerDocument.createRange();
              return (i.setStartBefore(e), i.setEndAfter(t), i.extractContents());
          }
-@@ -69595,7 +52383,7 @@ if (
+@@ -69595,7 +52387,7 @@ if (
                      (n = n || y(e, t)),
                      y(e.parentNode, t) === n ||
                          'block' !== y(e, 'display') ||
@@ -45574,7 +45563,7 @@ index f47ae50..e889ae8 100644
                  )
                      return '';
                  if (
-@@ -69641,7 +52429,7 @@ if (
+@@ -69641,7 +52433,7 @@ if (
              var t,
                  i = /^[^\/]*:/i,
                  n = window.location;
@@ -45583,7 +45572,7 @@ index f47ae50..e889ae8 100644
                      ((t = n.pathname.split('/')).pop(),
                      n.protocol + '//' + n.host + t.join('/') + '/' + e)
                  :   e;
-@@ -69652,7 +52440,7 @@ if (
+@@ -69652,7 +52444,7 @@ if (
                  Object.keys(t).forEach(function (e) {
                      n = n.replace(new RegExp(Q('{' + e + '}'), 'g'), t[e]);
                  }),
@@ -45592,7 +45581,7 @@ index f47ae50..e889ae8 100644
                  n
              );
          }
-@@ -69666,7 +52454,7 @@ if (
+@@ -69666,7 +52458,7 @@ if (
                      }
                      (3 === i.nodeType &&
                          /[\n\r\t]+/.test(i.nodeValue) &&
@@ -45601,7 +45590,7 @@ index f47ae50..e889ae8 100644
                          (i = t));
                  }
          }
-@@ -69678,12 +52466,12 @@ if (
+@@ -69678,12 +52470,12 @@ if (
                  },
                  s = function (t, s) {
                      t = [].slice.call(t);
@@ -45619,7 +45608,7 @@ index f47ae50..e889ae8 100644
                  };
              ((t.call = function () {
                  s(arguments, !1);
-@@ -69698,21 +52486,21 @@ if (
+@@ -69698,21 +52490,21 @@ if (
                  }),
                  (t.exists = function (e) {
                      return (
@@ -45645,7 +45634,7 @@ index f47ae50..e889ae8 100644
                          i.push(n),
                          'init' in n && n.init.call(e),
                          !0)
-@@ -69720,15 +52508,15 @@ if (
+@@ -69720,15 +52512,15 @@ if (
                  }),
                  (t.deregister = function (n) {
                      var s,
@@ -45669,7 +45658,7 @@ index f47ae50..e889ae8 100644
                  }),
                  (t.destroy = function () {
                      for (var t = i.length; t--;)
-@@ -69740,8 +52528,8 @@ if (
+@@ -69740,8 +52532,8 @@ if (
              var i,
                  n,
                  s = t || e.contentDocument || e.document,
@@ -45680,7 +45669,7 @@ index f47ae50..e889ae8 100644
                  l = this;
              ((l.insertHTML = function (e, t) {
                  var i, n;
-@@ -69753,46 +52541,46 @@ if (
+@@ -69753,46 +52545,46 @@ if (
                          n.innerHTML = e;
                      n.firstChild;
                  )
@@ -45744,7 +45733,7 @@ index f47ae50..e889ae8 100644
                          :   s.insertNode(i),
                          l.restoreRange());
                  }),
-@@ -69821,7 +52609,7 @@ if (
+@@ -69821,7 +52613,7 @@ if (
                      var e,
                          t = l.selectedRange();
                      return t ?
@@ -45753,7 +45742,7 @@ index f47ae50..e889ae8 100644
                              e.innerHTML)
                          :   '';
                  }),
-@@ -69858,22 +52646,22 @@ if (
+@@ -69858,22 +52650,22 @@ if (
                  }),
                  (l.insertMarkers = function () {
                      var e = l.selectedRange(),
@@ -45781,7 +45770,7 @@ index f47ae50..e889ae8 100644
                  }),
                  (l.saveRange = function () {
                      l.insertMarkers();
-@@ -69881,15 +52669,15 @@ if (
+@@ -69881,15 +52673,15 @@ if (
                  (l.selectRange = function (t) {
                      var i,
                          n = e.getSelection(),
@@ -45805,7 +45794,7 @@ index f47ae50..e889ae8 100644
                                      (t.setStartBefore(i), t.collapse(!0)));
                          }
                      }
-@@ -69898,8 +52686,8 @@ if (
+@@ -69898,8 +52690,8 @@ if (
                  (l.restoreRange = function () {
                      var e,
                          t = l.selectedRange(),
@@ -45816,7 +45805,7 @@ index f47ae50..e889ae8 100644
                      if (!i || !n || !t) return !1;
                      ((e = i.nextSibling === n),
                          (t = s.createRange()).setStartBefore(i),
-@@ -69914,26 +52702,26 @@ if (
+@@ -69914,26 +52706,26 @@ if (
                          s = l.cloneSelected();
                      if (!s) return !1;
                      (s.collapse(!1),
@@ -45849,7 +45838,7 @@ index f47ae50..e889ae8 100644
                          h,
                          p,
                          m,
-@@ -69943,29 +52731,29 @@ if (
+@@ -69943,29 +52735,29 @@ if (
                          v = n || e[f - 1][0].length;
                      for (
                          s && v++,
@@ -45891,7 +45880,7 @@ index f47ae50..e889ae8 100644
                                  ),
                                  l.insertHTML(e[f][1]),
                                  !0
-@@ -69991,73 +52779,73 @@ if (
+@@ -69991,73 +52783,73 @@ if (
                          :   t.empty && t.empty());
                  }));
          }
@@ -45995,7 +45984,7 @@ index f47ae50..e889ae8 100644
                                          s.parentNode.insertBefore(
                                              h,
                                              s.nextSibling
-@@ -70074,8 +52862,8 @@ if (
+@@ -70074,8 +52866,8 @@ if (
                  e,
                  function (e) {
                      H(e, !0) ?
@@ -46006,7 +45995,7 @@ index f47ae50..e889ae8 100644
                      :   (i = null);
                  },
                  !1,
-@@ -70084,48 +52872,48 @@ if (
+@@ -70084,48 +52876,48 @@ if (
          }
          function le(e, t) {
              var i,
@@ -46065,7 +46054,7 @@ index f47ae50..e889ae8 100644
                  Ge,
                  Ye,
                  Je,
-@@ -70136,13 +52924,13 @@ if (
+@@ -70136,13 +52928,13 @@ if (
                  it,
                  nt,
                  st,
@@ -46081,7 +46070,7 @@ index f47ae50..e889ae8 100644
                  ht,
                  pt,
                  mt,
-@@ -70152,34 +52940,34 @@ if (
+@@ -70152,34 +52944,34 @@ if (
                  vt = [],
                  bt = {},
                  yt = {},
@@ -46129,7 +46118,7 @@ index f47ae50..e889ae8 100644
                              mt(),
                              nt(),
                              Y.call('ready'),
-@@ -70187,74 +52975,74 @@ if (
+@@ -70187,74 +52979,74 @@ if (
                      };
                      (p(De, 'load', n), 'complete' === Le.readyState && n());
                  }),
@@ -46240,7 +46229,7 @@ index f47ae50..e889ae8 100644
                      var t = e.form,
                          i = 'compositionstart compositionend',
                          n = 'keydown keyup keypress focus blur contextmenu',
-@@ -70266,26 +53054,26 @@ if (
+@@ -70266,26 +53058,26 @@ if (
                          t &&
                              (p(t, 'reset', Ge),
                              p(t, 'submit', _t.updateOriginal, be)),
@@ -46284,7 +46273,7 @@ index f47ae50..e889ae8 100644
                          p(L, 'keyup', ht),
                          p(L, 'keydown', Ue),
                          p(L, i, Je),
-@@ -70295,12 +53083,12 @@ if (
+@@ -70295,12 +53087,12 @@ if (
                          p(T, 'beforedeactivate keyup mouseup', Ee),
                          p(T, 'keyup', nt),
                          p(T, 'focus', function () {
@@ -46301,7 +46290,7 @@ index f47ae50..e889ae8 100644
                              'selectionchanged valuechanged nodechanged pasteraw paste',
                              Qe
                          ));
-@@ -70308,23 +53096,23 @@ if (
+@@ -70308,23 +53100,23 @@ if (
                  (Re = function () {
                      var e,
                          t = _t.commands,
@@ -46334,7 +46323,7 @@ index f47ae50..e889ae8 100644
                                                  'toolbarButton',
                                                  {
                                                      name: s,
-@@ -70334,33 +53122,33 @@ if (
+@@ -70334,33 +53126,33 @@ if (
                                                  },
                                                  !0
                                              ).firstChild),
@@ -46382,7 +46371,7 @@ index f47ae50..e889ae8 100644
                                              r.state ?
                                                  vt.push({
                                                      name: s,
-@@ -70371,13 +53159,13 @@ if (
+@@ -70371,13 +53163,13 @@ if (
                                                      name: s,
                                                      state: r.exec,
                                                  }),
@@ -46400,7 +46389,7 @@ index f47ae50..e889ae8 100644
                  }),
                  (He = function () {
                      var e,
-@@ -70385,59 +53173,59 @@ if (
+@@ -70385,59 +53177,59 @@ if (
                          i,
                          n,
                          s,
@@ -46490,7 +46479,7 @@ index f47ae50..e889ae8 100644
                          g(c),
                          p(l, 'touchstart mousedown', function (e) {
                              ('touchstart' === e.type ?
-@@ -70445,69 +53233,69 @@ if (
+@@ -70445,69 +53237,69 @@ if (
                                  (_ = e.touches[0].pageX),
                                  (f = e.touches[0].pageY))
                              :   ((_ = e.pageX), (f = e.pageY)),
@@ -46585,7 +46574,7 @@ index f47ae50..e889ae8 100644
                              (L.readonly = !e),
                              et(e),
                              _t);
-@@ -70516,91 +53304,91 @@ if (
+@@ -70516,91 +53308,91 @@ if (
                      var t = e ? 'rtl' : 'ltr';
                      return 'boolean' != typeof e ?
                              'rtl' === _(L, 'dir')
@@ -46707,7 +46696,7 @@ index f47ae50..e889ae8 100644
                              delete e._sceditor,
                              v(e),
                              (e.required = ce));
-@@ -70610,9 +53398,9 @@ if (
+@@ -70610,9 +53402,9 @@ if (
                      var l,
                          c = 'sceditor-' + t;
                      (_t.closeDropDown(!0),
@@ -46719,7 +46708,7 @@ index f47ae50..e889ae8 100644
                                      h(i, ':not(input):not(textarea)'),
                                      function (e, t) {
                                          t.nodeType === ge &&
-@@ -70625,7 +53413,7 @@ if (
+@@ -70625,7 +53417,7 @@ if (
                                      left: e.offsetLeft,
                                      marginTop: e.clientHeight,
                                  },
@@ -46728,7 +46717,7 @@ index f47ae50..e889ae8 100644
                              )),
                              y(
                                  (O = r('div', {
-@@ -70633,8 +53421,8 @@ if (
+@@ -70633,8 +53425,8 @@ if (
                                  })),
                                  l
                              ),
@@ -46739,7 +46728,7 @@ index f47ae50..e889ae8 100644
                              p(O, 'click focusin', function (e) {
                                  e.stopPropagation();
                              }),
-@@ -70652,8 +53440,8 @@ if (
+@@ -70652,8 +53444,8 @@ if (
                          (pt(), _t.closeDropDown());
                  }),
                  (We = function (e) {
@@ -46750,7 +46739,7 @@ index f47ae50..e889ae8 100644
                          n = e.clipboardData,
                          s = function (e) {
                              var t = new FileReader();
-@@ -70666,32 +53454,32 @@ if (
+@@ -70666,32 +53458,32 @@ if (
                                  t.readAsDataURL(e));
                          };
                      if (n && !t) {
@@ -46795,7 +46784,7 @@ index f47ae50..e889ae8 100644
                                  qe({ html: e }));
                          }, 0);
                      }
-@@ -70699,7 +53487,7 @@ if (
+@@ -70699,7 +53491,7 @@ if (
                  (qe = function (e) {
                      var t = r('div', {}, T);
                      (Y.call('pasteRaw', e),
@@ -46804,7 +46793,7 @@ index f47ae50..e889ae8 100644
                          e.html ?
                              ((t.innerHTML = e.html), W(t))
                          :   (t.innerHTML = X(e.text || '')));
-@@ -70707,32 +53495,32 @@ if (
+@@ -70707,32 +53499,32 @@ if (
                      ('fragmentToSource' in i &&
                          (n.val = i.fragmentToSource(n.val, T, J)),
                          Y.call('paste', n),
@@ -46850,7 +46839,7 @@ index f47ae50..e889ae8 100644
                              nt()));
                  }),
                  (_t.wysiwygEditorInsertText = function (e, t) {
-@@ -70750,21 +53538,21 @@ if (
+@@ -70750,21 +53542,21 @@ if (
                      var i,
                          n,
                          s = L.selectionStart,
@@ -46877,7 +46866,7 @@ index f47ae50..e889ae8 100644
                  }),
                  (_t.sourceEditorCaret = function (e) {
                      return (
-@@ -70788,22 +53576,22 @@ if (
+@@ -70788,22 +53580,22 @@ if (
                          : _t.getWysiwygEditorValue(t)
                      );
                  }),
@@ -46905,7 +46894,7 @@ index f47ae50..e889ae8 100644
                              (e = e
                                  .replace(/&lt;/g, '<')
                                  .replace(/&gt;/g, '>')
-@@ -70814,15 +53602,15 @@ if (
+@@ -70814,15 +53606,15 @@ if (
                  }),
                  (_t.getWysiwygEditorValue = function (e) {
                      for (
@@ -46927,7 +46916,7 @@ index f47ae50..e889ae8 100644
                          (t = n.innerHTML),
                          !1 !== e &&
                              i.hasOwnProperty('toSource') &&
-@@ -70831,7 +53619,7 @@ if (
+@@ -70831,7 +53623,7 @@ if (
                      );
                  }),
                  (_t.getBody = function () {
@@ -46936,7 +46925,7 @@ index f47ae50..e889ae8 100644
                  }),
                  (_t.getContentAreaContainer = function () {
                      return f;
-@@ -70842,23 +53630,23 @@ if (
+@@ -70842,23 +53634,23 @@ if (
                  }),
                  (_t.setWysiwygEditorValue = function (e) {
                      (e || (e = '<p>' + (Oe ? '' : '<br />') + '</p>'),
@@ -46967,7 +46956,7 @@ index f47ae50..e889ae8 100644
                  }),
                  (_t.sourceMode = function (e) {
                      var t = _t.inSourceMode();
-@@ -70870,16 +53658,16 @@ if (
+@@ -70870,16 +53662,16 @@ if (
                  (_t.toggleSourceMode = function () {
                      var e = _t.inSourceMode();
                      (!Te && e) ||
@@ -46988,7 +46977,7 @@ index f47ae50..e889ae8 100644
                          et(),
                          tt());
                  }),
-@@ -70906,12 +53694,12 @@ if (
+@@ -70906,12 +53698,12 @@ if (
                              ));
                  }),
                  (Ee = function () {
@@ -47003,7 +46992,7 @@ index f47ae50..e889ae8 100644
                          try {
                              i = T.execCommand(e, !1, t);
                          } catch (e) {}
-@@ -70929,22 +53717,22 @@ if (
+@@ -70929,22 +53721,22 @@ if (
                              x.getSelection().rangeCount <= 0
                          )
                              ee = null;
@@ -47031,7 +47020,7 @@ index f47ae50..e889ae8 100644
                          }
                          ie = !1;
                      }
-@@ -70952,14 +53740,14 @@ if (
+@@ -70952,14 +53744,14 @@ if (
                          ((ie = !0),
                          'onselectionchange' in T ? e() : setTimeout(e, 100));
                  }),
@@ -47050,7 +47039,7 @@ index f47ae50..e889ae8 100644
                  }),
                  (_t.currentNode = function () {
                      return J;
-@@ -70974,77 +53762,77 @@ if (
+@@ -70974,77 +53766,77 @@ if (
                          n = T,
                          s = _t.sourceMode();
                      if (_t.readOnly())
@@ -47152,7 +47141,7 @@ index f47ae50..e889ae8 100644
                          )
                              return !1;
                      });
-@@ -71053,7 +53841,7 @@ if (
+@@ -71053,7 +53845,7 @@ if (
                      _t.val(e.value);
                  }),
                  (Ye = function () {
@@ -47161,7 +47150,7 @@ index f47ae50..e889ae8 100644
                  }),
                  (_t._ = function () {
                      var e,
-@@ -71078,27 +53866,27 @@ if (
+@@ -71078,27 +53870,27 @@ if (
                  (_t.bind = function (e, t, i, n) {
                      for (var s = (e = e.split(' ')).length; s--;)
                          if (me(t)) {
@@ -47198,7 +47187,7 @@ index f47ae50..e889ae8 100644
                          _t
                      );
                  }),
-@@ -71108,21 +53896,21 @@ if (
+@@ -71108,21 +53900,21 @@ if (
                      else {
                          if (h(T, ':focus').length) return;
                          var n,
@@ -47227,7 +47216,7 @@ index f47ae50..e889ae8 100644
                      }
                      return (tt(), _t);
                  }),
-@@ -71151,7 +53939,7 @@ if (
+@@ -71151,7 +53943,7 @@ if (
                      c(Q, 'code') ||
                          (i ||
                              ((i = []),
@@ -47236,7 +47225,7 @@ index f47ae50..e889ae8 100644
                                  i[t++] = [e, n];
                              }),
                              i.sort(function (e, t) {
-@@ -71160,50 +53948,50 @@ if (
+@@ -71160,50 +53952,50 @@ if (
                              (_t.emoticonsCache = i),
                              (_t.longestEmoticonCode =
                                  i[i.length - 1][0].length)),
@@ -47308,7 +47297,7 @@ index f47ae50..e889ae8 100644
                      );
                  }),
                  (Ue = function (e) {
-@@ -71308,14 +54096,14 @@ if (
+@@ -71308,14 +54100,14 @@ if (
                              104: '8',
                              105: '9',
                          },
@@ -47327,7 +47316,7 @@ index f47ae50..e889ae8 100644
                          (t = t.join('+')),
                          bt[t] &&
                              !1 === bt[t].call(_t) &&
-@@ -71335,14 +54123,14 @@ if (
+@@ -71335,14 +54127,14 @@ if (
                  (_t.removeShortcut = function (e) {
                      return (delete bt[e.toLowerCase()], _t);
                  }),
@@ -47346,7 +47335,7 @@ index f47ae50..e889ae8 100644
                      ) {
                          for (; t !== n;) {
                              for (; t.previousSibling;)
-@@ -71358,46 +54146,46 @@ if (
+@@ -71358,46 +54150,46 @@ if (
                  }),
                  (ct = function () {
                      for (var e = Q; !R(e) || H(e, !0);)
@@ -47409,7 +47398,7 @@ index f47ae50..e889ae8 100644
                  }),
                  (ht = function (e) {
                      var t = e.which,
-@@ -71408,18 +54196,18 @@ if (
+@@ -71408,18 +54200,18 @@ if (
                          V ||
                              (13 === t || 32 === t ?
                                  n ? (ht.triggerNext = !0)
@@ -47433,7 +47422,7 @@ index f47ae50..e889ae8 100644
                  }),
                  (pt = function () {
                      _t.updateOriginal();
-@@ -71428,8 +54216,8 @@ if (
+@@ -71428,8 +54220,8 @@ if (
          }
          e = e && e.hasOwnProperty('default') ? e.default : e;
          var ce,
@@ -47443,7 +47432,7 @@ index f47ae50..e889ae8 100644
              he = t.bind(null, 'string'),
              pe = t.bind(null, 'undefined'),
              me = t.bind(null, 'function'),
-@@ -71440,7 +54228,7 @@ if (
+@@ -71440,7 +54232,7 @@ if (
              be = !0,
              ye =
                  '|body|hr|p|div|h1|h2|h3|h4|h5|h6|address|pre|form|table|tbody|thead|tfoot|th|tr|td|li|ol|ul|blockquote|center|',
@@ -47452,7 +47441,7 @@ index f47ae50..e889ae8 100644
                  toolbar:
                      'bold,italic,underline,strike,subscript,superscript|left,center,right,justify|font,size,color,removeformat|cut,copy,pastetext|bulletlist,orderedlist,indent,outdent|table|code,quote|horizontalrule,image,email,link,unlink|emoticon,youtube,date,time|ltr,rtl|print,maximize,source',
                  toolbarExclude: null,
-@@ -71523,7 +54311,7 @@ if (
+@@ -71523,7 +54315,7 @@ if (
                  parserOptions: {},
                  dropDownCss: {},
              },
@@ -47461,7 +47450,7 @@ index f47ae50..e889ae8 100644
              xe = (function () {
                  var e,
                      t = 3,
-@@ -71540,26 +54328,26 @@ if (
+@@ -71540,26 +54332,26 @@ if (
                      t > 4 ? t : e
                  );
              })(),
@@ -47504,7 +47493,7 @@ index f47ae50..e889ae8 100644
                  /^(https?|s?ftp|mailto|spotify|skype|ssh|teamspeak|tel):|(\/\/)|data:image\/(png|bmp|gif|p?jpe?g);/i,
              Ae = {
                  html: '<!DOCTYPE html><html{attrs}><head><style>.ie * {min-height: auto !important} .ie table td {height:15px} @supports (-ms-ime-align:auto) { * { min-height: auto !important; } }</style><meta http-equiv="Content-Type" content="text/html;charset={charset}" /><link rel="stylesheet" type="text/css" href="{style}" /></head><body contenteditable="true" {spellcheck}><p></p></body></html>',
-@@ -71626,12 +54414,12 @@ if (
+@@ -71626,12 +54418,12 @@ if (
                      _dropDown: function (e, t, i) {
                          var n = r('div');
                          (p(n, 'click', 'a', function (t) {
@@ -47519,7 +47508,7 @@ index f47ae50..e889ae8 100644
                              }),
                              e.createDropDown(t, 'font-picker', n));
                      },
-@@ -71647,12 +54435,12 @@ if (
+@@ -71647,12 +54439,12 @@ if (
                      _dropDown: function (e, t, i) {
                          var n = r('div');
                          p(n, 'click', 'a', function (t) {
@@ -47534,7 +47523,7 @@ index f47ae50..e889ae8 100644
                          e.createDropDown(t, 'fontsize-picker', n);
                      },
                      exec: function (e) {
-@@ -71667,8 +54455,8 @@ if (
+@@ -71667,8 +54459,8 @@ if (
                      _dropDown: function (e, t, i) {
                          var n = r('div'),
                              s = '',
@@ -47545,7 +47534,7 @@ index f47ae50..e889ae8 100644
                              (e.opts.colors.split('|').forEach(function (e) {
                                  ((s += '<div class="sceditor-color-column">'),
                                      e.split(',').forEach(function (e) {
-@@ -71681,10 +54469,10 @@ if (
+@@ -71681,10 +54473,10 @@ if (
                                      }),
                                      (s += '</div>'));
                              }),
@@ -47559,7 +47548,7 @@ index f47ae50..e889ae8 100644
                                      e.closeDropDown(!0),
                                      t.preventDefault());
                              }),
-@@ -71725,7 +54513,7 @@ if (
+@@ -71725,7 +54517,7 @@ if (
                          var t,
                              i = r('div'),
                              n = this;
@@ -47568,7 +47557,7 @@ index f47ae50..e889ae8 100644
                              i,
                              te(
                                  'pastetext',
-@@ -71764,14 +54552,14 @@ if (
+@@ -71764,14 +54556,14 @@ if (
                      state: function (e, t) {
                          var i, n, s;
                          return (
@@ -47586,7 +47575,7 @@ index f47ae50..e889ae8 100644
                                                  s !==
                                                      s.parentNode
                                                          .lastElementChild)))
-@@ -71803,7 +54591,7 @@ if (
+@@ -71803,7 +54595,7 @@ if (
                      exec: function (e) {
                          var t = this,
                              i = r('div');
@@ -47595,7 +47584,7 @@ index f47ae50..e889ae8 100644
                              i,
                              te(
                                  'table',
-@@ -71818,10 +54606,10 @@ if (
+@@ -71818,10 +54610,10 @@ if (
                              p(i, 'click', '.button', function (e) {
                                  var n = Number(h(i, '#rows')[0].value),
                                      s = Number(h(i, '#cols')[0].value),
@@ -47608,7 +47597,7 @@ index f47ae50..e889ae8 100644
                                          '<tr>' +
                                              Array(s + 1).join(
                                                  '<td>' +
-@@ -71830,8 +54618,8 @@ if (
+@@ -71830,8 +54622,8 @@ if (
                                              ) +
                                              '</tr>'
                                      )),
@@ -47619,7 +47608,7 @@ index f47ae50..e889ae8 100644
                                      W(t.getBody()),
                                      t.closeDropDown(!0),
                                      e.preventDefault());
-@@ -71856,7 +54644,7 @@ if (
+@@ -71856,7 +54648,7 @@ if (
                  image: {
                      _dropDown: function (e, t, i, n) {
                          var s = r('div');
@@ -47628,7 +47617,7 @@ index f47ae50..e889ae8 100644
                              s,
                              te(
                                  'image',
-@@ -71869,12 +54657,12 @@ if (
+@@ -71869,12 +54661,12 @@ if (
                                  !0
                              )
                          );
@@ -47645,7 +47634,7 @@ index f47ae50..e889ae8 100644
                                          h(s, '#width')[0].value,
                                          h(s, '#height')[0].value
                                      ),
-@@ -71899,7 +54687,7 @@ if (
+@@ -71899,7 +54691,7 @@ if (
                  email: {
                      _dropDown: function (e, t, i) {
                          var n = r('div');
@@ -47654,7 +47643,7 @@ index f47ae50..e889ae8 100644
                              n,
                              te(
                                  'email',
-@@ -71939,12 +54727,12 @@ if (
+@@ -71939,12 +54731,12 @@ if (
                  link: {
                      _dropDown: function (e, t, i) {
                          function n(t) {
@@ -47669,7 +47658,7 @@ index f47ae50..e889ae8 100644
                              s,
                              te(
                                  'link',
-@@ -71956,13 +54744,13 @@ if (
+@@ -71956,13 +54748,13 @@ if (
                                  !0
                              )
                          );
@@ -47685,7 +47674,7 @@ index f47ae50..e889ae8 100644
                                  },
                                  be
                              ),
-@@ -71989,8 +54777,8 @@ if (
+@@ -71989,8 +54781,8 @@ if (
                      exec: function () {
                          var e = c(this.currentNode(), 'a');
                          if (e) {
@@ -47696,7 +47685,7 @@ index f47ae50..e889ae8 100644
                          }
                      },
                      tooltip: 'Unlink',
-@@ -72016,17 +54804,17 @@ if (
+@@ -72016,17 +54808,17 @@ if (
                      exec: function (e) {
                          var t = this,
                              i = function (s) {
@@ -47718,7 +47707,7 @@ index f47ae50..e889ae8 100644
                                              ' '
                                          :   '',
                                      g = r('div'),
-@@ -72038,7 +54826,7 @@ if (
+@@ -72038,7 +54830,7 @@ if (
                                          s ? l.emoticons.more : {}
                                      );
                                  return (
@@ -47727,7 +47716,7 @@ index f47ae50..e889ae8 100644
                                      (b = Math.sqrt(Object.keys(y).length)),
                                      p(g, 'click', 'img', function (e) {
                                          (t
-@@ -72050,8 +54838,8 @@ if (
+@@ -72050,8 +54842,8 @@ if (
                                              .closeDropDown(!0),
                                              e.preventDefault());
                                      }),
@@ -47738,7 +47727,7 @@ index f47ae50..e889ae8 100644
                                              v,
                                              r('img', {
                                                  src: c + (t.url || t),
-@@ -72060,17 +54848,17 @@ if (
+@@ -72060,17 +54852,17 @@ if (
                                              })
                                          ),
                                              v.children.length >= b &&
@@ -47760,7 +47749,7 @@ index f47ae50..e889ae8 100644
                                              (t.createDropDown(
                                                  e,
                                                  'more-emoticons',
-@@ -72078,7 +54866,7 @@ if (
+@@ -72078,7 +54870,7 @@ if (
                                              ),
                                                  n.preventDefault());
                                          }),
@@ -47769,7 +47758,7 @@ index f47ae50..e889ae8 100644
                                      g
                                  );
                              };
-@@ -72092,7 +54880,7 @@ if (
+@@ -72092,7 +54884,7 @@ if (
                  youtube: {
                      _dropDown: function (e, t, i) {
                          var n = r('div');
@@ -47778,7 +47767,7 @@ index f47ae50..e889ae8 100644
                              n,
                              te(
                                  'youtubeMenu',
-@@ -72105,7 +54893,7 @@ if (
+@@ -72105,7 +54897,7 @@ if (
                          ),
                              p(n, 'click', '.button', function (t) {
                                  var s = h(n, '#link')[0].value,
@@ -47787,7 +47776,7 @@ index f47ae50..e889ae8 100644
                                          /(?:v=|v\/|embed\/|youtu.be\/)(.{11})/
                                      ),
                                      r = s.match(
-@@ -72113,12 +54901,12 @@ if (
+@@ -72113,12 +54905,12 @@ if (
                                      ),
                                      l = 0;
                                  (r &&
@@ -47804,7 +47793,7 @@ index f47ae50..e889ae8 100644
                                      e.closeDropDown(!0),
                                      t.preventDefault());
                              }),
-@@ -72189,9 +54977,9 @@ if (
+@@ -72189,9 +54981,9 @@ if (
                              i = t.getFirstBlockParent();
                          if (
                              (e.focus(),
@@ -47816,7 +47805,7 @@ index f47ae50..e889ae8 100644
                          ) {
                              var n = 'ltr' === y(i, 'direction') ? '' : 'ltr';
                              y(i, 'direction', n);
-@@ -72209,9 +54997,9 @@ if (
+@@ -72209,9 +55001,9 @@ if (
                              i = t.getFirstBlockParent();
                          if (
                              (e.focus(),
@@ -47828,7 +47817,7 @@ index f47ae50..e889ae8 100644
                          ) {
                              var n = 'rtl' === y(i, 'direction') ? '' : 'rtl';
                              y(i, 'direction', n);
-@@ -72248,41 +55036,41 @@ if (
+@@ -72248,41 +55040,41 @@ if (
                  },
                  ignore: {},
              },
@@ -47886,7 +47875,7 @@ index f47ae50..e889ae8 100644
          ((le.locale = {}),
              (le.formats = {}),
              (le.icons = {}),
-@@ -72319,9 +55107,9 @@ if (
+@@ -72319,9 +55111,9 @@ if (
              (window.sceditor = {
                  command: le.command,
                  commands: Me,
@@ -47898,7 +47887,7 @@ index f47ae50..e889ae8 100644
                  isWysiwygSupported: Te,
                  regexEscape: Q,
                  escapeEntities: X,
-@@ -72330,31 +55118,31 @@ if (
+@@ -72330,31 +55122,31 @@ if (
                      css: y,
                      attr: _,
                      removeAttr: f,
@@ -47940,7 +47929,7 @@ index f47ae50..e889ae8 100644
                  plugins: ne.plugins,
                  formats: le.formats,
                  create: function (e, t) {
-@@ -72409,7 +55197,7 @@ if (
+@@ -72409,7 +55201,7 @@ if (
          }
          function n(e, t) {
              for (
@@ -47949,7 +47938,7 @@ index f47ae50..e889ae8 100644
                  s < arguments.length;
                  s++
              ) {
-@@ -72417,23 +55205,23 @@ if (
+@@ -72417,23 +55209,23 @@ if (
                  for (var l in r) {
                      var c = r[l];
                      if (!pe(c)) {
@@ -47979,7 +47968,7 @@ index f47ae50..e889ae8 100644
              if (Array.isArray(e) || ('length' in e && _e(e.length)))
                  for (var i = 0; i < e.length; i++) t(i, e[i]);
              else
-@@ -72441,13 +55229,13 @@ if (
+@@ -72441,13 +55233,13 @@ if (
                      t(i, e[i]);
                  });
          }
@@ -47995,7 +47984,7 @@ index f47ae50..e889ae8 100644
                      'style' === e ? (n.style.cssText = t)
                      : e in n ? (n[e] = t)
                      : n.setAttribute(e, t);
-@@ -72460,15 +55248,15 @@ if (
+@@ -72460,15 +55252,15 @@ if (
                  var i = e || {};
                  (i = i.parentNode) && !/(9|11)/.test(i.nodeType);
              )
@@ -48015,7 +48004,7 @@ index f47ae50..e889ae8 100644
              e.appendChild(t);
          }
          function h(e, t) {
-@@ -72476,26 +55264,26 @@ if (
+@@ -72476,26 +55268,26 @@ if (
          }
          function p(e, t, i, n, s) {
              t.split(' ').forEach(function (t) {
@@ -48051,7 +48040,7 @@ index f47ae50..e889ae8 100644
              });
          }
          function _(e, t, i) {
-@@ -72518,7 +55306,7 @@ if (
+@@ -72518,7 +55310,7 @@ if (
              if (arguments.length < 3) {
                  if (he(t))
                      return 1 === e.nodeType ? getComputedStyle(e)[t] : null;
@@ -48060,7 +48049,7 @@ index f47ae50..e889ae8 100644
                      y(e, t, i);
                  });
              } else {
-@@ -72526,13 +55314,13 @@ if (
+@@ -72526,13 +55318,13 @@ if (
                  e.style[t] = n ? i + 'px' : i;
              }
          }
@@ -48076,7 +48065,7 @@ index f47ae50..e889ae8 100644
                              /^data\-/i.test(t.name) &&
                                  (s[t.name.substr(5)] = t.value);
                          }),
-@@ -72542,7 +55330,7 @@ if (
+@@ -72542,7 +55334,7 @@ if (
                  _(e, 'data-' + t, String(i));
              }
          }
@@ -48085,7 +48074,7 @@ index f47ae50..e889ae8 100644
              var i = !1;
              return (
                  e &&
-@@ -72558,23 +55346,23 @@ if (
+@@ -72558,23 +55350,23 @@ if (
          function x(e, t) {
              return e !== t && e.contains && e.contains(t);
          }
@@ -48114,7 +48103,7 @@ index f47ae50..e889ae8 100644
          }
          function A(e, t) {
              var i = T(e);
-@@ -72585,27 +55373,27 @@ if (
+@@ -72585,27 +55377,27 @@ if (
              (s(i, t), (e.className = i.join(' ')));
          }
          function M(e, t, i) {
@@ -48150,7 +48139,7 @@ index f47ae50..e889ae8 100644
              var n;
              (me(window.CustomEvent) ?
                  (n = new CustomEvent(t, {
-@@ -72632,45 +55420,45 @@ if (
+@@ -72632,45 +55424,45 @@ if (
          }
          function O(e, t, i, n, s) {
              for (e = s ? e.lastChild : e.firstChild; e;) {
@@ -48206,7 +48195,7 @@ index f47ae50..e889ae8 100644
              return (
                  !!/11?|9/.test(e.nodeType) &&
                  '|iframe|area|base|basefont|br|col|frame|hr|img|input|wbr|isindex|link|meta|param|command|embed|keygen|source|track|object|'.indexOf(
-@@ -72700,13 +55488,13 @@ if (
+@@ -72700,13 +55492,13 @@ if (
                      n = !H(e, !0);
                  if (n && H(e.parentNode, !0)) {
                      var s = t(e),
@@ -48226,7 +48215,7 @@ index f47ae50..e889ae8 100644
                  }
              });
          }
-@@ -72719,38 +55507,38 @@ if (
+@@ -72719,38 +55511,38 @@ if (
                          U(e.parentNode, t)
                  :   null;
          }
@@ -48281,7 +48270,7 @@ index f47ae50..e889ae8 100644
                          }
                          ((t = t.replace(/\u200B/g, '')),
                              (s && H(s) && !r) ||
-@@ -72764,16 +55552,16 @@ if (
+@@ -72764,16 +55556,16 @@ if (
                                      ''
                                  )),
                              t.length ?
@@ -48302,7 +48291,7 @@ index f47ae50..e889ae8 100644
              var i = e.ownerDocument.createRange();
              return (i.setStartBefore(e), i.setEndAfter(t), i.extractContents());
          }
-@@ -72796,7 +55584,7 @@ if (
+@@ -72796,7 +55588,7 @@ if (
                      (n = n || y(e, t)),
                      y(e.parentNode, t) === n ||
                          'block' !== y(e, 'display') ||
@@ -48311,7 +48300,7 @@ index f47ae50..e889ae8 100644
                  )
                      return '';
                  if (
-@@ -72842,7 +55630,7 @@ if (
+@@ -72842,7 +55634,7 @@ if (
              var t,
                  i = /^[^\/]*:/i,
                  n = window.location;
@@ -48320,7 +48309,7 @@ index f47ae50..e889ae8 100644
                      ((t = n.pathname.split('/')).pop(),
                      n.protocol + '//' + n.host + t.join('/') + '/' + e)
                  :   e;
-@@ -72853,7 +55641,7 @@ if (
+@@ -72853,7 +55645,7 @@ if (
                  Object.keys(t).forEach(function (e) {
                      n = n.replace(new RegExp(Q('{' + e + '}'), 'g'), t[e]);
                  }),
@@ -48329,7 +48318,7 @@ index f47ae50..e889ae8 100644
                  n
              );
          }
-@@ -72867,7 +55655,7 @@ if (
+@@ -72867,7 +55659,7 @@ if (
                      }
                      (3 === i.nodeType &&
                          /[\n\r\t]+/.test(i.nodeValue) &&
@@ -48338,7 +48327,7 @@ index f47ae50..e889ae8 100644
                          (i = t));
                  }
          }
-@@ -72879,12 +55667,12 @@ if (
+@@ -72879,12 +55671,12 @@ if (
                  },
                  s = function (t, s) {
                      t = [].slice.call(t);
@@ -48356,7 +48345,7 @@ index f47ae50..e889ae8 100644
                  };
              ((t.call = function () {
                  s(arguments, !1);
-@@ -72899,21 +55687,21 @@ if (
+@@ -72899,21 +55691,21 @@ if (
                  }),
                  (t.exists = function (e) {
                      return (
@@ -48382,7 +48371,7 @@ index f47ae50..e889ae8 100644
                          i.push(n),
                          'init' in n && n.init.call(e),
                          !0)
-@@ -72921,15 +55709,15 @@ if (
+@@ -72921,15 +55713,15 @@ if (
                  }),
                  (t.deregister = function (n) {
                      var s,
@@ -48406,7 +48395,7 @@ index f47ae50..e889ae8 100644
                  }),
                  (t.destroy = function () {
                      for (var t = i.length; t--;)
-@@ -72941,8 +55729,8 @@ if (
+@@ -72941,8 +55733,8 @@ if (
              var i,
                  n,
                  s = t || e.contentDocument || e.document,
@@ -48417,7 +48406,7 @@ index f47ae50..e889ae8 100644
                  l = this;
              ((l.insertHTML = function (e, t) {
                  var i, n;
-@@ -72954,46 +55742,46 @@ if (
+@@ -72954,46 +55746,46 @@ if (
                          n.innerHTML = e;
                      n.firstChild;
                  )
@@ -48481,7 +48470,7 @@ index f47ae50..e889ae8 100644
                          :   s.insertNode(i),
                          l.restoreRange());
                  }),
-@@ -73022,7 +55810,7 @@ if (
+@@ -73022,7 +55814,7 @@ if (
                      var e,
                          t = l.selectedRange();
                      return t ?
@@ -48490,7 +48479,7 @@ index f47ae50..e889ae8 100644
                              e.innerHTML)
                          :   '';
                  }),
-@@ -73059,22 +55847,22 @@ if (
+@@ -73059,22 +55851,22 @@ if (
                  }),
                  (l.insertMarkers = function () {
                      var e = l.selectedRange(),
@@ -48518,7 +48507,7 @@ index f47ae50..e889ae8 100644
                  }),
                  (l.saveRange = function () {
                      l.insertMarkers();
-@@ -73082,15 +55870,15 @@ if (
+@@ -73082,15 +55874,15 @@ if (
                  (l.selectRange = function (t) {
                      var i,
                          n = e.getSelection(),
@@ -48542,7 +48531,7 @@ index f47ae50..e889ae8 100644
                                      (t.setStartBefore(i), t.collapse(!0)));
                          }
                      }
-@@ -73099,8 +55887,8 @@ if (
+@@ -73099,8 +55891,8 @@ if (
                  (l.restoreRange = function () {
                      var e,
                          t = l.selectedRange(),
@@ -48553,7 +48542,7 @@ index f47ae50..e889ae8 100644
                      if (!i || !n || !t) return !1;
                      ((e = i.nextSibling === n),
                          (t = s.createRange()).setStartBefore(i),
-@@ -73115,26 +55903,26 @@ if (
+@@ -73115,26 +55907,26 @@ if (
                          s = l.cloneSelected();
                      if (!s) return !1;
                      (s.collapse(!1),
@@ -48586,7 +48575,7 @@ index f47ae50..e889ae8 100644
                          h,
                          p,
                          m,
-@@ -73144,29 +55932,29 @@ if (
+@@ -73144,29 +55936,29 @@ if (
                          v = n || e[f - 1][0].length;
                      for (
                          s && v++,
@@ -48628,7 +48617,7 @@ index f47ae50..e889ae8 100644
                                  ),
                                  l.insertHTML(e[f][1]),
                                  !0
-@@ -73192,73 +55980,73 @@ if (
+@@ -73192,73 +55984,73 @@ if (
                          :   t.empty && t.empty());
                  }));
          }
@@ -48732,7 +48721,7 @@ index f47ae50..e889ae8 100644
                                          s.parentNode.insertBefore(
                                              h,
                                              s.nextSibling
-@@ -73275,8 +56063,8 @@ if (
+@@ -73275,8 +56067,8 @@ if (
                  e,
                  function (e) {
                      H(e, !0) ?
@@ -48743,7 +48732,7 @@ index f47ae50..e889ae8 100644
                      :   (i = null);
                  },
                  !1,
-@@ -73285,48 +56073,48 @@ if (
+@@ -73285,48 +56077,48 @@ if (
          }
          function le(e, t) {
              var i,
@@ -48802,7 +48791,7 @@ index f47ae50..e889ae8 100644
                  Ge,
                  Ye,
                  Je,
-@@ -73337,13 +56125,13 @@ if (
+@@ -73337,13 +56129,13 @@ if (
                  it,
                  nt,
                  st,
@@ -48818,7 +48807,7 @@ index f47ae50..e889ae8 100644
                  ht,
                  pt,
                  mt,
-@@ -73353,34 +56141,34 @@ if (
+@@ -73353,34 +56145,34 @@ if (
                  vt = [],
                  bt = {},
                  yt = {},
@@ -48866,7 +48855,7 @@ index f47ae50..e889ae8 100644
                              mt(),
                              nt(),
                              Y.call('ready'),
-@@ -73388,74 +56176,74 @@ if (
+@@ -73388,74 +56180,74 @@ if (
                      };
                      (p(De, 'load', n), 'complete' === Le.readyState && n());
                  }),
@@ -48977,7 +48966,7 @@ index f47ae50..e889ae8 100644
                      var t = e.form,
                          i = 'compositionstart compositionend',
                          n = 'keydown keyup keypress focus blur contextmenu',
-@@ -73467,26 +56255,26 @@ if (
+@@ -73467,26 +56259,26 @@ if (
                          t &&
                              (p(t, 'reset', Ge),
                              p(t, 'submit', _t.updateOriginal, be)),
@@ -49021,7 +49010,7 @@ index f47ae50..e889ae8 100644
                          p(L, 'keyup', ht),
                          p(L, 'keydown', Ue),
                          p(L, i, Je),
-@@ -73496,12 +56284,12 @@ if (
+@@ -73496,12 +56288,12 @@ if (
                          p(T, 'beforedeactivate keyup mouseup', Ee),
                          p(T, 'keyup', nt),
                          p(T, 'focus', function () {
@@ -49038,7 +49027,7 @@ index f47ae50..e889ae8 100644
                              'selectionchanged valuechanged nodechanged pasteraw paste',
                              Qe
                          ));
-@@ -73509,23 +56297,23 @@ if (
+@@ -73509,23 +56301,23 @@ if (
                  (Re = function () {
                      var e,
                          t = _t.commands,
@@ -49071,7 +49060,7 @@ index f47ae50..e889ae8 100644
                                                  'toolbarButton',
                                                  {
                                                      name: s,
-@@ -73535,33 +56323,33 @@ if (
+@@ -73535,33 +56327,33 @@ if (
                                                  },
                                                  !0
                                              ).firstChild),
@@ -49119,7 +49108,7 @@ index f47ae50..e889ae8 100644
                                              r.state ?
                                                  vt.push({
                                                      name: s,
-@@ -73572,13 +56360,13 @@ if (
+@@ -73572,13 +56364,13 @@ if (
                                                      name: s,
                                                      state: r.exec,
                                                  }),
@@ -49137,7 +49126,7 @@ index f47ae50..e889ae8 100644
                  }),
                  (He = function () {
                      var e,
-@@ -73586,59 +56374,59 @@ if (
+@@ -73586,59 +56378,59 @@ if (
                          i,
                          n,
                          s,
@@ -49227,7 +49216,7 @@ index f47ae50..e889ae8 100644
                          g(c),
                          p(l, 'touchstart mousedown', function (e) {
                              ('touchstart' === e.type ?
-@@ -73646,69 +56434,69 @@ if (
+@@ -73646,69 +56438,69 @@ if (
                                  (_ = e.touches[0].pageX),
                                  (f = e.touches[0].pageY))
                              :   ((_ = e.pageX), (f = e.pageY)),
@@ -49322,7 +49311,7 @@ index f47ae50..e889ae8 100644
                              (L.readonly = !e),
                              et(e),
                              _t);
-@@ -73717,91 +56505,91 @@ if (
+@@ -73717,91 +56509,91 @@ if (
                      var t = e ? 'rtl' : 'ltr';
                      return 'boolean' != typeof e ?
                              'rtl' === _(L, 'dir')
@@ -49444,7 +49433,7 @@ index f47ae50..e889ae8 100644
                              delete e._sceditor,
                              v(e),
                              (e.required = ce));
-@@ -73811,9 +56599,9 @@ if (
+@@ -73811,9 +56603,9 @@ if (
                      var l,
                          c = 'sceditor-' + t;
                      (_t.closeDropDown(!0),
@@ -49456,7 +49445,7 @@ index f47ae50..e889ae8 100644
                                      h(i, ':not(input):not(textarea)'),
                                      function (e, t) {
                                          t.nodeType === ge &&
-@@ -73826,7 +56614,7 @@ if (
+@@ -73826,7 +56618,7 @@ if (
                                      left: e.offsetLeft,
                                      marginTop: e.clientHeight,
                                  },
@@ -49465,7 +49454,7 @@ index f47ae50..e889ae8 100644
                              )),
                              y(
                                  (O = r('div', {
-@@ -73834,8 +56622,8 @@ if (
+@@ -73834,8 +56626,8 @@ if (
                                  })),
                                  l
                              ),
@@ -49476,7 +49465,7 @@ index f47ae50..e889ae8 100644
                              p(O, 'click focusin', function (e) {
                                  e.stopPropagation();
                              }),
-@@ -73853,8 +56641,8 @@ if (
+@@ -73853,8 +56645,8 @@ if (
                          (pt(), _t.closeDropDown());
                  }),
                  (We = function (e) {
@@ -49487,7 +49476,7 @@ index f47ae50..e889ae8 100644
                          n = e.clipboardData,
                          s = function (e) {
                              var t = new FileReader();
-@@ -73867,32 +56655,32 @@ if (
+@@ -73867,32 +56659,32 @@ if (
                                  t.readAsDataURL(e));
                          };
                      if (n && !t) {
@@ -49532,7 +49521,7 @@ index f47ae50..e889ae8 100644
                                  qe({ html: e }));
                          }, 0);
                      }
-@@ -73900,7 +56688,7 @@ if (
+@@ -73900,7 +56692,7 @@ if (
                  (qe = function (e) {
                      var t = r('div', {}, T);
                      (Y.call('pasteRaw', e),
@@ -49541,7 +49530,7 @@ index f47ae50..e889ae8 100644
                          e.html ?
                              ((t.innerHTML = e.html), W(t))
                          :   (t.innerHTML = X(e.text || '')));
-@@ -73908,32 +56696,32 @@ if (
+@@ -73908,32 +56700,32 @@ if (
                      ('fragmentToSource' in i &&
                          (n.val = i.fragmentToSource(n.val, T, J)),
                          Y.call('paste', n),
@@ -49587,7 +49576,7 @@ index f47ae50..e889ae8 100644
                              nt()));
                  }),
                  (_t.wysiwygEditorInsertText = function (e, t) {
-@@ -73951,21 +56739,21 @@ if (
+@@ -73951,21 +56743,21 @@ if (
                      var i,
                          n,
                          s = L.selectionStart,
@@ -49614,7 +49603,7 @@ index f47ae50..e889ae8 100644
                  }),
                  (_t.sourceEditorCaret = function (e) {
                      return (
-@@ -73989,22 +56777,22 @@ if (
+@@ -73989,22 +56781,22 @@ if (
                          : _t.getWysiwygEditorValue(t)
                      );
                  }),
@@ -49642,7 +49631,7 @@ index f47ae50..e889ae8 100644
                              (e = e
                                  .replace(/&lt;/g, '<')
                                  .replace(/&gt;/g, '>')
-@@ -74015,15 +56803,15 @@ if (
+@@ -74015,15 +56807,15 @@ if (
                  }),
                  (_t.getWysiwygEditorValue = function (e) {
                      for (
@@ -49664,7 +49653,7 @@ index f47ae50..e889ae8 100644
                          (t = n.innerHTML),
                          !1 !== e &&
                              i.hasOwnProperty('toSource') &&
-@@ -74032,7 +56820,7 @@ if (
+@@ -74032,7 +56824,7 @@ if (
                      );
                  }),
                  (_t.getBody = function () {
@@ -49673,7 +49662,7 @@ index f47ae50..e889ae8 100644
                  }),
                  (_t.getContentAreaContainer = function () {
                      return f;
-@@ -74043,23 +56831,23 @@ if (
+@@ -74043,23 +56835,23 @@ if (
                  }),
                  (_t.setWysiwygEditorValue = function (e) {
                      (e || (e = '<p>' + (Oe ? '' : '<br />') + '</p>'),
@@ -49704,7 +49693,7 @@ index f47ae50..e889ae8 100644
                  }),
                  (_t.sourceMode = function (e) {
                      var t = _t.inSourceMode();
-@@ -74071,16 +56859,16 @@ if (
+@@ -74071,16 +56863,16 @@ if (
                  (_t.toggleSourceMode = function () {
                      var e = _t.inSourceMode();
                      (!Te && e) ||
@@ -49725,7 +49714,7 @@ index f47ae50..e889ae8 100644
                          et(),
                          tt());
                  }),
-@@ -74107,12 +56895,12 @@ if (
+@@ -74107,12 +56899,12 @@ if (
                              ));
                  }),
                  (Ee = function () {
@@ -49740,7 +49729,7 @@ index f47ae50..e889ae8 100644
                          try {
                              i = T.execCommand(e, !1, t);
                          } catch (e) {}
-@@ -74130,22 +56918,22 @@ if (
+@@ -74130,22 +56922,22 @@ if (
                              x.getSelection().rangeCount <= 0
                          )
                              ee = null;
@@ -49768,7 +49757,7 @@ index f47ae50..e889ae8 100644
                          }
                          ie = !1;
                      }
-@@ -74153,14 +56941,14 @@ if (
+@@ -74153,14 +56945,14 @@ if (
                          ((ie = !0),
                          'onselectionchange' in T ? e() : setTimeout(e, 100));
                  }),
@@ -49787,7 +49776,7 @@ index f47ae50..e889ae8 100644
                  }),
                  (_t.currentNode = function () {
                      return J;
-@@ -74175,77 +56963,77 @@ if (
+@@ -74175,77 +56967,77 @@ if (
                          n = T,
                          s = _t.sourceMode();
                      if (_t.readOnly())
@@ -49889,7 +49878,7 @@ index f47ae50..e889ae8 100644
                          )
                              return !1;
                      });
-@@ -74254,7 +57042,7 @@ if (
+@@ -74254,7 +57046,7 @@ if (
                      _t.val(e.value);
                  }),
                  (Ye = function () {
@@ -49898,7 +49887,7 @@ index f47ae50..e889ae8 100644
                  }),
                  (_t._ = function () {
                      var e,
-@@ -74279,27 +57067,27 @@ if (
+@@ -74279,27 +57071,27 @@ if (
                  (_t.bind = function (e, t, i, n) {
                      for (var s = (e = e.split(' ')).length; s--;)
                          if (me(t)) {
@@ -49935,7 +49924,7 @@ index f47ae50..e889ae8 100644
                          _t
                      );
                  }),
-@@ -74309,21 +57097,21 @@ if (
+@@ -74309,21 +57101,21 @@ if (
                      else {
                          if (h(T, ':focus').length) return;
                          var n,
@@ -49964,7 +49953,7 @@ index f47ae50..e889ae8 100644
                      }
                      return (tt(), _t);
                  }),
-@@ -74352,7 +57140,7 @@ if (
+@@ -74352,7 +57144,7 @@ if (
                      c(Q, 'code') ||
                          (i ||
                              ((i = []),
@@ -49973,7 +49962,7 @@ index f47ae50..e889ae8 100644
                                  i[t++] = [e, n];
                              }),
                              i.sort(function (e, t) {
-@@ -74361,50 +57149,50 @@ if (
+@@ -74361,50 +57153,50 @@ if (
                              (_t.emoticonsCache = i),
                              (_t.longestEmoticonCode =
                                  i[i.length - 1][0].length)),
@@ -50045,7 +50034,7 @@ index f47ae50..e889ae8 100644
                      );
                  }),
                  (Ue = function (e) {
-@@ -74509,14 +57297,14 @@ if (
+@@ -74509,14 +57301,14 @@ if (
                              104: '8',
                              105: '9',
                          },
@@ -50064,7 +50053,7 @@ index f47ae50..e889ae8 100644
                          (t = t.join('+')),
                          bt[t] &&
                              !1 === bt[t].call(_t) &&
-@@ -74536,14 +57324,14 @@ if (
+@@ -74536,14 +57328,14 @@ if (
                  (_t.removeShortcut = function (e) {
                      return (delete bt[e.toLowerCase()], _t);
                  }),
@@ -50083,7 +50072,7 @@ index f47ae50..e889ae8 100644
                      ) {
                          for (; t !== n;) {
                              for (; t.previousSibling;)
-@@ -74559,46 +57347,46 @@ if (
+@@ -74559,46 +57351,46 @@ if (
                  }),
                  (ct = function () {
                      for (var e = Q; !R(e) || H(e, !0);)
@@ -50146,7 +50135,7 @@ index f47ae50..e889ae8 100644
                  }),
                  (ht = function (e) {
                      var t = e.which,
-@@ -74609,18 +57397,18 @@ if (
+@@ -74609,18 +57401,18 @@ if (
                          V ||
                              (13 === t || 32 === t ?
                                  n ? (ht.triggerNext = !0)
@@ -50170,7 +50159,7 @@ index f47ae50..e889ae8 100644
                  }),
                  (pt = function () {
                      _t.updateOriginal();
-@@ -74629,8 +57417,8 @@ if (
+@@ -74629,8 +57421,8 @@ if (
          }
          e = e && e.hasOwnProperty('default') ? e.default : e;
          var ce,
@@ -50180,7 +50169,7 @@ index f47ae50..e889ae8 100644
              he = t.bind(null, 'string'),
              pe = t.bind(null, 'undefined'),
              me = t.bind(null, 'function'),
-@@ -74641,7 +57429,7 @@ if (
+@@ -74641,7 +57433,7 @@ if (
              be = !0,
              ye =
                  '|body|hr|p|div|h1|h2|h3|h4|h5|h6|address|pre|form|table|tbody|thead|tfoot|th|tr|td|li|ol|ul|blockquote|center|',
@@ -50189,7 +50178,7 @@ index f47ae50..e889ae8 100644
                  toolbar:
                      'bold,italic,underline,strike,subscript,superscript|left,center,right,justify|font,size,color,removeformat|cut,copy,pastetext|bulletlist,orderedlist,indent,outdent|table|code,quote|horizontalrule,image,email,link,unlink|emoticon,youtube,date,time|ltr,rtl|print,maximize,source',
                  toolbarExclude: null,
-@@ -74724,7 +57512,7 @@ if (
+@@ -74724,7 +57516,7 @@ if (
                  parserOptions: {},
                  dropDownCss: {},
              },
@@ -50198,7 +50187,7 @@ index f47ae50..e889ae8 100644
              xe = (function () {
                  var e,
                      t = 3,
-@@ -74741,26 +57529,26 @@ if (
+@@ -74741,26 +57533,26 @@ if (
                      t > 4 ? t : e
                  );
              })(),
@@ -50241,7 +50230,7 @@ index f47ae50..e889ae8 100644
                  /^(https?|s?ftp|mailto|spotify|skype|ssh|teamspeak|tel):|(\/\/)|data:image\/(png|bmp|gif|p?jpe?g);/i,
              Ae = {
                  html: '<!DOCTYPE html><html{attrs}><head><style>.ie * {min-height: auto !important} .ie table td {height:15px} @supports (-ms-ime-align:auto) { * { min-height: auto !important; } }</style><meta http-equiv="Content-Type" content="text/html;charset={charset}" /><link rel="stylesheet" type="text/css" href="{style}" /></head><body contenteditable="true" {spellcheck}><p></p></body></html>',
-@@ -74827,12 +57615,12 @@ if (
+@@ -74827,12 +57619,12 @@ if (
                      _dropDown: function (e, t, i) {
                          var n = r('div');
                          (p(n, 'click', 'a', function (t) {
@@ -50256,7 +50245,7 @@ index f47ae50..e889ae8 100644
                              }),
                              e.createDropDown(t, 'font-picker', n));
                      },
-@@ -74848,12 +57636,12 @@ if (
+@@ -74848,12 +57640,12 @@ if (
                      _dropDown: function (e, t, i) {
                          var n = r('div');
                          p(n, 'click', 'a', function (t) {
@@ -50271,7 +50260,7 @@ index f47ae50..e889ae8 100644
                          e.createDropDown(t, 'fontsize-picker', n);
                      },
                      exec: function (e) {
-@@ -74868,8 +57656,8 @@ if (
+@@ -74868,8 +57660,8 @@ if (
                      _dropDown: function (e, t, i) {
                          var n = r('div'),
                              s = '',
@@ -50282,7 +50271,7 @@ index f47ae50..e889ae8 100644
                              (e.opts.colors.split('|').forEach(function (e) {
                                  ((s += '<div class="sceditor-color-column">'),
                                      e.split(',').forEach(function (e) {
-@@ -74882,10 +57670,10 @@ if (
+@@ -74882,10 +57674,10 @@ if (
                                      }),
                                      (s += '</div>'));
                              }),
@@ -50296,7 +50285,7 @@ index f47ae50..e889ae8 100644
                                      e.closeDropDown(!0),
                                      t.preventDefault());
                              }),
-@@ -74926,7 +57714,7 @@ if (
+@@ -74926,7 +57718,7 @@ if (
                          var t,
                              i = r('div'),
                              n = this;
@@ -50305,7 +50294,7 @@ index f47ae50..e889ae8 100644
                              i,
                              te(
                                  'pastetext',
-@@ -74965,14 +57753,14 @@ if (
+@@ -74965,14 +57757,14 @@ if (
                      state: function (e, t) {
                          var i, n, s;
                          return (
@@ -50323,7 +50312,7 @@ index f47ae50..e889ae8 100644
                                                  s !==
                                                      s.parentNode
                                                          .lastElementChild)))
-@@ -75004,7 +57792,7 @@ if (
+@@ -75004,7 +57796,7 @@ if (
                      exec: function (e) {
                          var t = this,
                              i = r('div');
@@ -50332,7 +50321,7 @@ index f47ae50..e889ae8 100644
                              i,
                              te(
                                  'table',
-@@ -75019,10 +57807,10 @@ if (
+@@ -75019,10 +57811,10 @@ if (
                              p(i, 'click', '.button', function (e) {
                                  var n = Number(h(i, '#rows')[0].value),
                                      s = Number(h(i, '#cols')[0].value),
@@ -50345,7 +50334,7 @@ index f47ae50..e889ae8 100644
                                          '<tr>' +
                                              Array(s + 1).join(
                                                  '<td>' +
-@@ -75031,8 +57819,8 @@ if (
+@@ -75031,8 +57823,8 @@ if (
                                              ) +
                                              '</tr>'
                                      )),
@@ -50356,7 +50345,7 @@ index f47ae50..e889ae8 100644
                                      W(t.getBody()),
                                      t.closeDropDown(!0),
                                      e.preventDefault());
-@@ -75057,7 +57845,7 @@ if (
+@@ -75057,7 +57849,7 @@ if (
                  image: {
                      _dropDown: function (e, t, i, n) {
                          var s = r('div');
@@ -50365,7 +50354,7 @@ index f47ae50..e889ae8 100644
                              s,
                              te(
                                  'image',
-@@ -75070,12 +57858,12 @@ if (
+@@ -75070,12 +57862,12 @@ if (
                                  !0
                              )
                          );
@@ -50382,7 +50371,7 @@ index f47ae50..e889ae8 100644
                                          h(s, '#width')[0].value,
                                          h(s, '#height')[0].value
                                      ),
-@@ -75100,7 +57888,7 @@ if (
+@@ -75100,7 +57892,7 @@ if (
                  email: {
                      _dropDown: function (e, t, i) {
                          var n = r('div');
@@ -50391,7 +50380,7 @@ index f47ae50..e889ae8 100644
                              n,
                              te(
                                  'email',
-@@ -75140,12 +57928,12 @@ if (
+@@ -75140,12 +57932,12 @@ if (
                  link: {
                      _dropDown: function (e, t, i) {
                          function n(t) {
@@ -50406,7 +50395,7 @@ index f47ae50..e889ae8 100644
                              s,
                              te(
                                  'link',
-@@ -75157,13 +57945,13 @@ if (
+@@ -75157,13 +57949,13 @@ if (
                                  !0
                              )
                          );
@@ -50422,7 +50411,7 @@ index f47ae50..e889ae8 100644
                                  },
                                  be
                              ),
-@@ -75190,8 +57978,8 @@ if (
+@@ -75190,8 +57982,8 @@ if (
                      exec: function () {
                          var e = c(this.currentNode(), 'a');
                          if (e) {
@@ -50433,7 +50422,7 @@ index f47ae50..e889ae8 100644
                          }
                      },
                      tooltip: 'Unlink',
-@@ -75217,17 +58005,17 @@ if (
+@@ -75217,17 +58009,17 @@ if (
                      exec: function (e) {
                          var t = this,
                              i = function (s) {
@@ -50455,7 +50444,7 @@ index f47ae50..e889ae8 100644
                                              ' '
                                          :   '',
                                      g = r('div'),
-@@ -75239,7 +58027,7 @@ if (
+@@ -75239,7 +58031,7 @@ if (
                                          s ? l.emoticons.more : {}
                                      );
                                  return (
@@ -50464,7 +50453,7 @@ index f47ae50..e889ae8 100644
                                      (b = Math.sqrt(Object.keys(y).length)),
                                      p(g, 'click', 'img', function (e) {
                                          (t
-@@ -75251,8 +58039,8 @@ if (
+@@ -75251,8 +58043,8 @@ if (
                                              .closeDropDown(!0),
                                              e.preventDefault());
                                      }),
@@ -50475,7 +50464,7 @@ index f47ae50..e889ae8 100644
                                              v,
                                              r('img', {
                                                  src: c + (t.url || t),
-@@ -75261,17 +58049,17 @@ if (
+@@ -75261,17 +58053,17 @@ if (
                                              })
                                          ),
                                              v.children.length >= b &&
@@ -50497,7 +50486,7 @@ index f47ae50..e889ae8 100644
                                              (t.createDropDown(
                                                  e,
                                                  'more-emoticons',
-@@ -75279,7 +58067,7 @@ if (
+@@ -75279,7 +58071,7 @@ if (
                                              ),
                                                  n.preventDefault());
                                          }),
@@ -50506,7 +50495,7 @@ index f47ae50..e889ae8 100644
                                      g
                                  );
                              };
-@@ -75293,7 +58081,7 @@ if (
+@@ -75293,7 +58085,7 @@ if (
                  youtube: {
                      _dropDown: function (e, t, i) {
                          var n = r('div');
@@ -50515,7 +50504,7 @@ index f47ae50..e889ae8 100644
                              n,
                              te(
                                  'youtubeMenu',
-@@ -75306,7 +58094,7 @@ if (
+@@ -75306,7 +58098,7 @@ if (
                          ),
                              p(n, 'click', '.button', function (t) {
                                  var s = h(n, '#link')[0].value,
@@ -50524,7 +50513,7 @@ index f47ae50..e889ae8 100644
                                          /(?:v=|v\/|embed\/|youtu.be\/)(.{11})/
                                      ),
                                      r = s.match(
-@@ -75314,12 +58102,12 @@ if (
+@@ -75314,12 +58106,12 @@ if (
                                      ),
                                      l = 0;
                                  (r &&
@@ -50541,7 +50530,7 @@ index f47ae50..e889ae8 100644
                                      e.closeDropDown(!0),
                                      t.preventDefault());
                              }),
-@@ -75390,9 +58178,9 @@ if (
+@@ -75390,9 +58182,9 @@ if (
                              i = t.getFirstBlockParent();
                          if (
                              (e.focus(),
@@ -50553,7 +50542,7 @@ index f47ae50..e889ae8 100644
                          ) {
                              var n = 'ltr' === y(i, 'direction') ? '' : 'ltr';
                              y(i, 'direction', n);
-@@ -75410,9 +58198,9 @@ if (
+@@ -75410,9 +58202,9 @@ if (
                              i = t.getFirstBlockParent();
                          if (
                              (e.focus(),
@@ -50565,7 +50554,7 @@ index f47ae50..e889ae8 100644
                          ) {
                              var n = 'rtl' === y(i, 'direction') ? '' : 'rtl';
                              y(i, 'direction', n);
-@@ -75449,41 +58237,41 @@ if (
+@@ -75449,41 +58241,41 @@ if (
                  },
                  ignore: {},
              },
@@ -50623,7 +50612,7 @@ index f47ae50..e889ae8 100644
          ((le.locale = {}),
              (le.formats = {}),
              (le.icons = {}),
-@@ -75520,9 +58308,9 @@ if (
+@@ -75520,9 +58312,9 @@ if (
              (window.sceditor = {
                  command: le.command,
                  commands: Me,
@@ -50635,7 +50624,7 @@ index f47ae50..e889ae8 100644
                  isWysiwygSupported: Te,
                  regexEscape: Q,
                  escapeEntities: X,
-@@ -75531,31 +58319,31 @@ if (
+@@ -75531,31 +58323,31 @@ if (
                      css: y,
                      attr: _,
                      removeAttr: f,
@@ -50677,7 +50666,7 @@ index f47ae50..e889ae8 100644
                  plugins: ne.plugins,
                  formats: le.formats,
                  create: function (e, t) {
-@@ -75622,7 +58410,7 @@ if (
+@@ -75622,7 +58414,7 @@ if (
                      '!' === i.charAt(0) && ((s = !1), (i = i.substring(1))),
                      '0' === i && (s = !1),
                      t[i] === n ? e
@@ -50686,7 +50675,7 @@ index f47ae50..e889ae8 100644
                      : t[i]
                  );
              });
-@@ -75636,7 +58424,7 @@ if (
+@@ -75636,7 +58428,7 @@ if (
                  (n = function (e, t) {
                      if (!p.hasStyling(e)) {
                          if (
@@ -50695,7 +50684,7 @@ index f47ae50..e889ae8 100644
                              1 !== e.childNodes.length ||
                              !g(e.firstChild, 'br')
                          )
-@@ -75666,21 +58454,21 @@ if (
+@@ -75666,21 +58458,21 @@ if (
                      e.replace(/\\(.)/g, '$1').replace(/^(["'])(.*?)\1$/, '$2')
                  :   e;
          }
@@ -50726,7 +50715,7 @@ index f47ae50..e889ae8 100644
          }
          function r(e) {
              function i(e, t) {
-@@ -75690,18 +58478,18 @@ if (
+@@ -75690,18 +58482,18 @@ if (
                      r = /\[([^\]\s=]+)(?:([^\]]+))?\]/,
                      l = /\[\/([^\[\]]+)\]/;
                  return (
@@ -50750,7 +50739,7 @@ index f47ae50..e889ae8 100644
                  var t,
                      i =
                          /([^\s=]+)=(?:(?:(["'])((?:\\\2|[^\2])*?)\2)|((?:.(?!\s\S+=))*.))/g,
-@@ -75724,27 +58512,27 @@ if (
+@@ -75724,27 +58516,27 @@ if (
              function c(e, t) {
                  var i = (e ? T[e.name] : {}).allowedChildren;
                  return (
@@ -50784,7 +50773,7 @@ index f47ae50..e889ae8 100644
                          },
                          m = function (e) {
                              return (
-@@ -75757,21 +58545,21 @@ if (
+@@ -75757,21 +58549,21 @@ if (
                      (t = e.shift());
                  )
                      switch (
@@ -50810,7 +50799,7 @@ index f47ae50..e889ae8 100644
                                  :   (i && i.isSelfClosing) || (t.type = A));
                              break;
                          case M:
-@@ -75779,12 +58567,12 @@ if (
+@@ -75779,12 +58571,12 @@ if (
                                  (h() &&
                                      t.name !== h().name &&
                                      m('/' + t.name) &&
@@ -50827,7 +50816,7 @@ index f47ae50..e889ae8 100644
                                      if (n.name === t.name) {
                                          n.closing = t;
                                          break;
-@@ -75794,140 +58582,140 @@ if (
+@@ -75794,140 +58586,140 @@ if (
                                          r.push(s));
                                  }
                                  for (
@@ -51032,7 +51021,7 @@ index f47ae50..e889ae8 100644
                      }
              }
              function m(e) {
-@@ -75937,7 +58725,7 @@ if (
+@@ -75937,7 +58729,7 @@ if (
                          n = function (e) {
                              for (var t = e.length; t--;) {
                                  var i = e[t].type;
@@ -51041,7 +51030,7 @@ index f47ae50..e889ae8 100644
                                  if (i === A && /\S|\u00A0/.test(e[t].val))
                                      return !1;
                              }
-@@ -75947,7 +58735,7 @@ if (
+@@ -75947,7 +58739,7 @@ if (
                      s--;
                  )
                      (t = e[s]) &&
@@ -51050,7 +51039,7 @@ index f47ae50..e889ae8 100644
                          ((i = T[t.name]),
                          m(t.children),
                          n(t.children) &&
-@@ -75958,12 +58746,12 @@ if (
+@@ -75958,12 +58750,12 @@ if (
              }
              function _(e, i) {
                  var s,
@@ -51065,7 +51054,7 @@ index f47ae50..e889ae8 100644
                      h,
                      p,
                      m = [];
-@@ -75979,127 +58767,127 @@ if (
+@@ -75979,127 +58771,127 @@ if (
                      };
                      e.length > 0;
                  )
@@ -51252,7 +51241,7 @@ index f47ae50..e889ae8 100644
                      : '"' + e.replace('\\', '\\\\').replace('"', '\\"') + '"'
                  );
              }
-@@ -76109,36 +58897,36 @@ if (
+@@ -76109,36 +58901,36 @@ if (
              function y(e) {
                  return e.toLowerCase();
              }
@@ -51304,7 +51293,7 @@ index f47ae50..e889ae8 100644
                      return (
                          n.fixInvalidNesting && p(i),
                          h(i, null, t),
-@@ -76146,11 +58934,11 @@ if (
+@@ -76146,11 +58938,11 @@ if (
                          i
                      );
                  }),
@@ -51320,7 +51309,7 @@ index f47ae50..e889ae8 100644
                  }));
          }
          function l(e) {
-@@ -76176,7 +58964,7 @@ if (
+@@ -76176,7 +58968,7 @@ if (
                  :   e
              );
          }
@@ -51329,7 +51318,7 @@ index f47ae50..e889ae8 100644
              function e() {
                  b(T, function (e) {
                      var t,
-@@ -76200,7 +58988,7 @@ if (
+@@ -76200,7 +58992,7 @@ if (
              }
              function t(e, t, i) {
                  var s,
@@ -51338,7 +51327,7 @@ index f47ae50..e889ae8 100644
                      r = p.getStyle;
                  return y[(i = !!i)] ?
                          (b(y[i], function (i, l) {
-@@ -76208,42 +58996,42 @@ if (
+@@ -76208,42 +59000,42 @@ if (
                                  r(e.parentNode, i) !== s &&
                                  b(l, function (i, r) {
                                      (!r || r.indexOf(s.toString()) > -1) &&
@@ -51399,7 +51388,7 @@ index f47ae50..e889ae8 100644
                      r = e.nodeName.toLowerCase();
                  return (
                      (i = !!i),
-@@ -76260,8 +59048,8 @@ if (
+@@ -76260,8 +59052,8 @@ if (
                                          return ((s = !0), !1);
                                  }),
                                  !s)) ||
@@ -51410,7 +51399,7 @@ index f47ae50..e889ae8 100644
                          }),
                      t
                  );
-@@ -76273,40 +59061,40 @@ if (
+@@ -76273,40 +59065,40 @@ if (
                          p.traverse(
                              e,
                              function (e) {
@@ -51466,7 +51455,7 @@ index f47ae50..e889ae8 100644
                                      } else s += e.nodeValue;
                              },
                              !1,
-@@ -76317,39 +59105,39 @@ if (
+@@ -76317,39 +59109,39 @@ if (
                  };
                  return i(e);
              }
@@ -51523,7 +51512,7 @@ index f47ae50..e889ae8 100644
                      h.opts.bbcodeTrim && (s = s.trim()),
                      s
                  );
-@@ -76369,16 +59157,16 @@ if (
+@@ -76369,16 +59161,16 @@ if (
                  ((h.opts = this.opts),
                      (h.elementToBbcode = c),
                      e(),
@@ -51546,7 +51535,7 @@ index f47ae50..e889ae8 100644
              h = e.escapeUriScheme,
              p = e.dom,
              m = e.utils,
-@@ -76388,11 +59176,11 @@ if (
+@@ -76388,11 +59180,11 @@ if (
              v = m.extend,
              b = m.each,
              y = e.ie,
@@ -51562,7 +51551,7 @@ index f47ae50..e889ae8 100644
                  bold: { txtExec: ['[b]', '[/b]'] },
                  italic: { txtExec: ['[i]', '[/i]'] },
                  underline: { txtExec: ['[u]', '[/u]'] },
-@@ -76538,7 +59326,7 @@ if (
+@@ -76538,7 +59330,7 @@ if (
                  'font': {
                      tags: { font: { face: null } },
                      styles: { 'font-family': null },
@@ -51571,7 +51560,7 @@ index f47ae50..e889ae8 100644
                      format: function (e, t) {
                          var i;
                          return (
-@@ -76573,7 +59361,7 @@ if (
+@@ -76573,7 +59365,7 @@ if (
                  'color': {
                      tags: { font: { color: null } },
                      styles: { color: null },
@@ -51580,7 +51569,7 @@ index f47ae50..e889ae8 100644
                      format: function (e, t) {
                          var i;
                          return (
-@@ -76585,7 +59373,7 @@ if (
+@@ -76585,7 +59377,7 @@ if (
                      html: function (e, t, i) {
                          return (
                              '<font color="' +
@@ -51589,7 +51578,7 @@ index f47ae50..e889ae8 100644
                              '">' +
                              i +
                              '</font>'
-@@ -76661,7 +59449,7 @@ if (
+@@ -76661,7 +59453,7 @@ if (
                          img: { 'src': null, 'data-sceditor-emoticon': null },
                      },
                      format: function (e, t) {
@@ -51598,7 +51587,7 @@ index f47ae50..e889ae8 100644
                      },
                      html: '{0}',
                  },
-@@ -76677,17 +59465,17 @@ if (
+@@ -76677,17 +59469,17 @@ if (
                      allowsEmpty: !0,
                      tags: { img: { src: null } },
                      allowedChildren: ['#'],
@@ -51621,7 +51610,7 @@ index f47ae50..e889ae8 100644
                                  ((e.complete && (i || n)) || (i && n)) &&
                                      (s = '=' + p.width(e) + 'x' + p.height(e)),
                                  '[img' + s + ']' + f(e, 'src') + '[/img]')
-@@ -76696,17 +59484,17 @@ if (
+@@ -76696,17 +59488,17 @@ if (
                      html: function (e, t, i) {
                          var n,
                              s,
@@ -51645,7 +51634,7 @@ index f47ae50..e889ae8 100644
                              '<img' + r + ' src="' + h(i) + '" />'
                          );
                      },
-@@ -76714,7 +59502,7 @@ if (
+@@ -76714,7 +59506,7 @@ if (
                  'url': {
                      allowsEmpty: !0,
                      tags: { a: { href: null } },
@@ -51654,7 +51643,7 @@ index f47ae50..e889ae8 100644
                      format: function (e, t) {
                          var i = f(e, 'href');
                          return 'mailto:' === i.substr(0, 7) ?
-@@ -76723,17 +59511,17 @@ if (
+@@ -76723,17 +59515,17 @@ if (
                      },
                      html: function (e, t, i) {
                          return (
@@ -51675,7 +51664,7 @@ index f47ae50..e889ae8 100644
                              '">' +
                              i +
                              '</a>'
-@@ -76743,18 +59531,18 @@ if (
+@@ -76743,18 +59535,18 @@ if (
                  'quote': {
                      tags: { blockquote: null },
                      isInline: !1,
@@ -51700,7 +51689,7 @@ index f47ae50..e889ae8 100644
                          return (
                              (i || f(e, n)) &&
                                  ((s = (i && i.textContent) || f(e, n)),
-@@ -76771,7 +59559,7 @@ if (
+@@ -76771,7 +59563,7 @@ if (
                              t.defaultattr &&
                                  (i =
                                      '<cite>' +
@@ -51709,7 +51698,7 @@ index f47ae50..e889ae8 100644
                                      '</cite>' +
                                      i),
                              '<blockquote>' + i + '</blockquote>'
-@@ -76861,14 +59649,14 @@ if (
+@@ -76861,14 +59653,14 @@ if (
                  },
                  'ignore': {},
              },
@@ -51727,7 +51716,7 @@ index f47ae50..e889ae8 100644
                      e.type,
                      e.name,
                      e.val,
-@@ -76890,7 +59678,7 @@ if (
+@@ -76890,7 +59682,7 @@ if (
                  );
              },
          }),
@@ -51736,7 +51725,7 @@ index f47ae50..e889ae8 100644
              (r.defaults = {
                  breakBeforeBlock: !1,
                  breakStartBlock: !1,
-@@ -76899,12 +59687,12 @@ if (
+@@ -76899,12 +59691,12 @@ if (
                  removeEmptyTags: !0,
                  fixInvalidNesting: !0,
                  fixInvalidChildren: !0,
@@ -51752,7 +51741,7 @@ index f47ae50..e889ae8 100644
                  return (
                      e &&
                          t &&
-@@ -76915,14 +59703,14 @@ if (
+@@ -76915,14 +59707,14 @@ if (
                      this
                  );
              }),
@@ -51771,7 +51760,7 @@ index f47ae50..e889ae8 100644
              (e.BBCodeParser = r));
      })(sceditor),
      (function (e) {
-@@ -76947,24 +59735,24 @@ if (
+@@ -76947,24 +59739,24 @@ if (
              return t;
          }
          function t(i) {
@@ -51804,7 +51793,7 @@ index f47ae50..e889ae8 100644
                          } catch (e) {}
                          ((s =
                              i.write ?
-@@ -76980,49 +59768,49 @@ if (
+@@ -76980,49 +59772,49 @@ if (
                                  decodeURIComponent
                              )).replace(/[\(\)]/g, escape)));
                          var l = '';
@@ -51867,7 +51856,7 @@ index f47ae50..e889ae8 100644
                  }
              }
              return (
-@@ -77064,7 +59852,10 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -77064,7 +59856,10 @@ var windowIsTurbolinked = 'Turbolinks' in window,
                  secure: e,
              });
              var t = document.querySelector('.js-cookies-eu');
@@ -51879,7 +51868,7 @@ index f47ae50..e889ae8 100644
          },
      };
  (!(function () {
-@@ -77129,9 +59920,9 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -77129,9 +59924,9 @@ var windowIsTurbolinked = 'Turbolinks' in window,
              return this.each(function () {
                  var n = e(this),
                      s = n.data('bs.tooltip'),
@@ -51891,7 +51880,7 @@ index f47ae50..e889ae8 100644
                      'string' == typeof t && s[t]());
              });
          }
-@@ -77184,19 +59975,19 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -77184,19 +59979,19 @@ var windowIsTurbolinked = 'Turbolinks' in window,
                              ' on the window.document object!'
                      );
                  for (
@@ -51918,7 +51907,7 @@ index f47ae50..e889ae8 100644
                          (this.$element.on(
                              r + '.' + this.type,
                              this.options.selector,
-@@ -77315,47 +60106,47 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -77315,47 +60110,47 @@ var windowIsTurbolinked = 'Turbolinks' in window,
                      );
                      if (t.isDefaultPrevented() || !n) return;
                      var s = this,
@@ -51984,7 +51973,7 @@ index f47ae50..e889ae8 100644
                      this.applyPlacement(_, r);
                      var f = function () {
                          var e = s.hoverState;
-@@ -77364,7 +60155,7 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -77364,7 +60159,7 @@ var windowIsTurbolinked = 'Turbolinks' in window,
                              'out' == e && s.leave(s));
                      };
                      e.support.transition && this.$tip.hasClass('fade') ?
@@ -51993,7 +51982,7 @@ index f47ae50..e889ae8 100644
                              .one('bsTransitionEnd', f)
                              .emulateTransitionEnd(i.TRANSITION_DURATION)
                      :   f();
-@@ -77373,12 +60164,12 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -77373,12 +60168,12 @@ var windowIsTurbolinked = 'Turbolinks' in window,
              (i.prototype.applyPlacement = function (t, i) {
                  var n = this.tip(),
                      s = n[0].offsetWidth,
@@ -52010,7 +51999,7 @@ index f47ae50..e889ae8 100644
                      (t.left += r),
                      e.offset.setOffset(
                          n[0],
-@@ -77398,13 +60189,13 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -77398,13 +60193,13 @@ var windowIsTurbolinked = 'Turbolinks' in window,
                      n.addClass('in'));
                  var l = n[0].offsetWidth,
                      c = n[0].offsetHeight;
@@ -52031,7 +52020,7 @@ index f47ae50..e889ae8 100644
              }),
              (i.prototype.replaceArrow = function (e, t, i) {
                  this.arrow()
-@@ -77421,7 +60212,7 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -77421,7 +60216,7 @@ var windowIsTurbolinked = 'Turbolinks' in window,
              }),
              (i.prototype.hide = function (t) {
                  function n() {
@@ -52040,7 +52029,7 @@ index f47ae50..e889ae8 100644
                          s.$element &&
                              s.$element
                                  .removeAttr('aria-describedby')
-@@ -77429,13 +60220,13 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -77429,13 +60224,13 @@ var windowIsTurbolinked = 'Turbolinks' in window,
                          t && t());
                  }
                  var s = this,
@@ -52060,7 +52049,7 @@ index f47ae50..e889ae8 100644
                                  .one('bsTransitionEnd', n)
                                  .emulateTransitionEnd(i.TRANSITION_DURATION)
                          :   n(),
-@@ -77463,10 +60254,10 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -77463,10 +60258,10 @@ var windowIsTurbolinked = 'Turbolinks' in window,
                          width: s.right - s.left,
                          height: s.bottom - s.top,
                      }));
@@ -52074,7 +52063,7 @@ index f47ae50..e889ae8 100644
                          : t.offset(),
                      r = {
                          scroll:
-@@ -77482,7 +60273,7 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -77482,7 +60277,7 @@ var windowIsTurbolinked = 'Turbolinks' in window,
                                  height: e(window).height(),
                              }
                          :   null;
@@ -52083,7 +52072,7 @@ index f47ae50..e889ae8 100644
              }),
              (i.prototype.getCalculatedOffset = function (e, t, i, n) {
                  return (
-@@ -77504,23 +60295,23 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -77504,23 +60299,23 @@ var windowIsTurbolinked = 'Turbolinks' in window,
              (i.prototype.getViewportAdjustedDelta = function (e, t, i, n) {
                  var s = { top: 0, left: 0 };
                  if (!this.$viewport) return s;
@@ -52119,7 +52108,7 @@ index f47ae50..e889ae8 100644
                  }
                  return s;
              }),
-@@ -77607,9 +60398,9 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -77607,9 +60402,9 @@ var windowIsTurbolinked = 'Turbolinks' in window,
              return this.each(function () {
                  var n = e(this),
                      s = n.data('bs.popover'),
@@ -52131,7 +52120,7 @@ index f47ae50..e889ae8 100644
                      'string' == typeof t && s[t]());
              });
          }
-@@ -77938,18 +60729,18 @@ var bind = function (e, t) {
+@@ -77938,18 +60733,18 @@ var bind = function (e, t) {
                          :   this;
                  }),
                  (t.prototype.hideStep = function (t, i) {
@@ -52155,7 +52144,7 @@ index f47ae50..e889ae8 100644
                                          n.data('popover') ||
                                          (n = e('body')),
                                      n
-@@ -77964,27 +60755,27 @@ var bind = function (e, t) {
+@@ -77964,27 +60759,27 @@ var bind = function (e, t) {
                                                  '-element'
                                          )
                                          .removeData('bs.popover'),
@@ -52192,7 +52181,7 @@ index f47ae50..e889ae8 100644
                              '[object Number]' === {}.toString.call(n) && n > 0 ?
                                  (this._debug(
                                      'Wait ' +
-@@ -77995,17 +60786,17 @@ var bind = function (e, t) {
+@@ -77995,17 +60790,17 @@ var bind = function (e, t) {
                                  window.setTimeout(
                                      (function (e) {
                                          return function () {
@@ -52214,7 +52203,7 @@ index f47ae50..e889ae8 100644
                      if (this.ended())
                          return (
                              this._debug('Tour ended, showStep prevented.'),
-@@ -78013,7 +60804,7 @@ var bind = function (e, t) {
+@@ -78013,7 +60808,7 @@ var bind = function (e, t) {
                          );
                      if (
                          (r = this.getStep(e)) &&
@@ -52223,7 +52212,7 @@ index f47ae50..e889ae8 100644
                          (n = this._makePromise(
                              null != r.onShow ? r.onShow(this, e) : void 0
                          )),
-@@ -78039,7 +60830,7 @@ var bind = function (e, t) {
+@@ -78039,7 +60834,7 @@ var bind = function (e, t) {
                      )
                          return (
                              (l = this),
@@ -52232,7 +52221,7 @@ index f47ae50..e889ae8 100644
                                  if (l._isOrphan(r)) {
                                      if (!1 === r.orphan)
                                          return (
-@@ -78048,7 +60839,7 @@ var bind = function (e, t) {
+@@ -78048,7 +60843,7 @@ var bind = function (e, t) {
                                                      (l._current + 1) +
                                                      '.\nOrphan option is false and the element does not exist or is hidden.'
                                              ),
@@ -52241,7 +52230,7 @@ index f47ae50..e889ae8 100644
                                                  l._showPrevStep()
                                              :   l._showNextStep())
                                          );
-@@ -78077,12 +60868,12 @@ var bind = function (e, t) {
+@@ -78077,12 +60872,12 @@ var bind = function (e, t) {
                                  window.setTimeout(
                                      (function (e) {
                                          return function () {
@@ -52256,7 +52245,7 @@ index f47ae50..e889ae8 100644
                              n
                          );
                  }),
-@@ -78240,17 +61031,17 @@ var bind = function (e, t) {
+@@ -78240,17 +61035,17 @@ var bind = function (e, t) {
                      );
                  }),
                  (t.prototype._redirect = function (t, n, s) {
@@ -52278,7 +52267,7 @@ index f47ae50..e889ae8 100644
                              :   (this._debug('Error redirection loop to ' + s),
                                  this._removeState('redirect_to'),
                                  null != t.onRedirectError ?
-@@ -78286,13 +61077,13 @@ var bind = function (e, t) {
+@@ -78286,13 +61081,13 @@ var bind = function (e, t) {
                          );
                  }),
                  (t.prototype._showPopover = function (t, i) {
@@ -52296,7 +52285,7 @@ index f47ae50..e889ae8 100644
                          (n = e(t.element)).addClass(
                              'tour-' +
                                  this._options.name +
-@@ -78302,9 +61093,9 @@ var bind = function (e, t) {
+@@ -78302,9 +61097,9 @@ var bind = function (e, t) {
                                  i +
                                  '-element'
                          ),
@@ -52308,7 +52297,7 @@ index f47ae50..e889ae8 100644
                              e(t.reflexElement)
                                  .addClass('tour-step-element-reflex')
                                  .off(
-@@ -78345,23 +61136,23 @@ var bind = function (e, t) {
+@@ -78345,23 +61140,23 @@ var bind = function (e, t) {
                          'fixed' === n.css('position') &&
                              s.css('position', 'fixed'),
                          this._reposition(s, t),
@@ -52336,7 +52325,7 @@ index f47ae50..e889ae8 100644
                          this._isOrphan(t) && r.addClass('orphan'),
                          r.addClass(
                              'tour-' +
-@@ -78376,7 +61167,7 @@ var bind = function (e, t) {
+@@ -78376,7 +61171,7 @@ var bind = function (e, t) {
                                  'tour-' + this._options.name + '-reflex'
                              ),
                          t.prev < 0 &&
@@ -52345,7 +52334,7 @@ index f47ae50..e889ae8 100644
                                  .addClass('disabled')
                                  .prop('disabled', !0)
                                  .prop('tabindex', -1),
-@@ -78385,7 +61176,7 @@ var bind = function (e, t) {
+@@ -78385,7 +61180,7 @@ var bind = function (e, t) {
                                  .addClass('disabled')
                                  .prop('disabled', !0)
                                  .prop('tabindex', -1),
@@ -52354,7 +52343,7 @@ index f47ae50..e889ae8 100644
                          r.clone().wrap('<div>').parent().html()
                      );
                  }),
-@@ -78395,30 +61186,30 @@ var bind = function (e, t) {
+@@ -78395,30 +61190,30 @@ var bind = function (e, t) {
                          :   e;
                  }),
                  (t.prototype._reposition = function (t, n) {
@@ -52400,7 +52389,7 @@ index f47ae50..e889ae8 100644
                  }),
                  (t.prototype._center = function (t) {
                      return t.css(
-@@ -78432,33 +61223,33 @@ var bind = function (e, t) {
+@@ -78432,33 +61227,33 @@ var bind = function (e, t) {
                          .css(n, t ? 50 * (1 - t / i) + '%' : '');
                  }),
                  (t.prototype._scrollIntoView = function (t) {
@@ -52441,7 +52430,7 @@ index f47ae50..e889ae8 100644
                                  '. Window height: ' +
                                  c +
                                  '.'
-@@ -78468,12 +61259,12 @@ var bind = function (e, t) {
+@@ -78468,12 +61263,12 @@ var bind = function (e, t) {
                              .stop(!0, !0)
                              .animate(
                                  { scrollTop: Math.ceil(r) },
@@ -52458,7 +52447,7 @@ index f47ae50..e889ae8 100644
                                                  'Scroll into view.\nAnimation end element offset: ' +
                                                      i.offset().top +
                                                      '.\nWindow height: ' +
-@@ -78625,29 +61416,29 @@ var bind = function (e, t) {
+@@ -78625,29 +61420,29 @@ var bind = function (e, t) {
                      var n;
                  }),
                  (t.prototype._showBackground = function (t, n) {
@@ -52497,7 +52486,7 @@ index f47ae50..e889ae8 100644
                                      s
                                          .height(
                                              n.offset.top > 0 ? n.offset.top : 0
-@@ -78657,18 +61448,18 @@ var bind = function (e, t) {
+@@ -78657,18 +61452,18 @@ var bind = function (e, t) {
                                  );
                                  break;
                              case 'bottom':
@@ -52519,7 +52508,7 @@ index f47ae50..e889ae8 100644
                                      s
                                          .offset({ top: n.offset.top, left: 0 })
                                          .height(n.height)
-@@ -78680,7 +61471,7 @@ var bind = function (e, t) {
+@@ -78680,7 +61475,7 @@ var bind = function (e, t) {
                                  );
                                  break;
                              case 'right':
@@ -52528,7 +52517,7 @@ index f47ae50..e889ae8 100644
                                      s
                                          .offset({
                                              top: n.offset.top,
-@@ -78691,9 +61482,9 @@ var bind = function (e, t) {
+@@ -78691,9 +61486,9 @@ var bind = function (e, t) {
                                  );
                                  break;
                              default:
@@ -52540,7 +52529,7 @@ index f47ae50..e889ae8 100644
                  }),
                  (t.prototype._showOverlayElement = function (t) {
                      var i, n;
-@@ -78771,26 +61562,26 @@ var bind = function (e, t) {
+@@ -78771,26 +61566,26 @@ var bind = function (e, t) {
                      return this._getParams(e, '#');
                  }),
                  (t.prototype._getParams = function (e, t) {
@@ -52576,7 +52565,7 @@ index f47ae50..e889ae8 100644
                          )
                              return !1;
                          for (n in e)
-@@ -79002,12 +61793,12 @@ var tutorial = {
+@@ -79002,12 +61797,12 @@ var tutorial = {
              i,
              n,
              s,
@@ -52593,7 +52582,7 @@ index f47ae50..e889ae8 100644
          if (Array.isArray(c)) {
              for (n in ((t = {}), c))
                  if (c.hasOwnProperty(n)) {
-@@ -79020,7 +61811,7 @@ var tutorial = {
+@@ -79020,7 +61815,7 @@ var tutorial = {
                  }
              return t;
          }
@@ -52602,7 +52591,7 @@ index f47ae50..e889ae8 100644
              try {
                  if (!(t = JSON.parse(r.getItem(c))))
                      throw new ReferenceError(
-@@ -79029,7 +61820,7 @@ var tutorial = {
+@@ -79029,7 +61824,7 @@ var tutorial = {
              } catch (e) {
                  throw new ReferenceError(c + ' is not defined in this storage');
              }
@@ -52611,7 +52600,7 @@ index f47ae50..e889ae8 100644
                  if (void 0 === (t = t[l[n]]))
                      throw new ReferenceError(
                          [].slice.call(l, 0, n + 1).join('.') +
-@@ -79054,13 +61845,13 @@ var tutorial = {
+@@ -79054,13 +61849,13 @@ var tutorial = {
              i,
              n,
              s = this._type,
@@ -52630,7 +52619,7 @@ index f47ae50..e889ae8 100644
              throw new Error(
                  'Minimum 2 arguments must be given or first parameter must be an object'
              );
-@@ -79068,21 +61859,21 @@ var tutorial = {
+@@ -79068,21 +61863,21 @@ var tutorial = {
              for (n in l)
                  l.hasOwnProperty(n) &&
                      (c((e = l[n])) || this.alwaysUseJson ?
@@ -52661,7 +52650,7 @@ index f47ae50..e889ae8 100644
              ((e = r[n]),
                  (t = isNaN(r[n + 1]) ? 'object' : 'array'),
                  (!i[e] ||
-@@ -79090,7 +61881,7 @@ var tutorial = {
+@@ -79090,7 +61885,7 @@ var tutorial = {
                      ('array' == t && !Array.isArray(i[e]))) &&
                      (i[e] = 'array' == t ? [] : {}),
                  (i = i[e]));
@@ -52670,7 +52659,7 @@ index f47ae50..e889ae8 100644
      }
      function i() {
          var e,
-@@ -79098,22 +61889,22 @@ var tutorial = {
+@@ -79098,22 +61893,22 @@ var tutorial = {
              i,
              n,
              s = this._type,
@@ -52700,7 +52689,7 @@ index f47ae50..e889ae8 100644
              if (void 0 === (t = t[r[i]]))
                  throw new ReferenceError(
                      [].slice.call(r, 1, i).join('.') +
-@@ -79122,11 +61913,11 @@ var tutorial = {
+@@ -79122,11 +61917,11 @@ var tutorial = {
          if (Array.isArray(r[i]))
              for (n in r[i]) r[i].hasOwnProperty(n) && delete t[r[i][n]];
          else delete t[r[i]];
@@ -52714,7 +52703,7 @@ index f47ae50..e889ae8 100644
          for (t in n) n.hasOwnProperty(t) && i.call(this, n[t]);
          if (e)
              for (t in v.namespaceStorages)
-@@ -79136,10 +61927,10 @@ var tutorial = {
+@@ -79136,10 +61931,10 @@ var tutorial = {
          var t,
              i = arguments.length,
              n = arguments,
@@ -52729,7 +52718,7 @@ index f47ae50..e889ae8 100644
              return !0;
          }
          try {
-@@ -79148,7 +61939,7 @@ var tutorial = {
+@@ -79148,7 +61943,7 @@ var tutorial = {
                  if (
                      r.hasOwnProperty(t) &&
                      !(
@@ -52738,7 +52727,7 @@ index f47ae50..e889ae8 100644
                          (Array.isArray(r[t]) && !r[t].length) ||
                          ('boolean' != typeof r[t] && !r[t])
                      )
-@@ -79159,45 +61950,45 @@ var tutorial = {
+@@ -79159,45 +61954,45 @@ var tutorial = {
              return !0;
          }
      }
@@ -52798,7 +52787,7 @@ index f47ae50..e889ae8 100644
              (window.localStorage.getItem(e) ||
                  window.localStorage.setItem(e, '{}'),
              window.sessionStorage.getItem(e) ||
-@@ -79207,14 +61998,14 @@ var tutorial = {
+@@ -79207,14 +62002,14 @@ var tutorial = {
              window.sessionCookieStorage.getItem(e) ||
                  window.sessionCookieStorage.setItem(e, '{}'));
          var t = {
@@ -52817,7 +52806,7 @@ index f47ae50..e889ae8 100644
              (v.namespaceStorages[e] = t),
              t
          );
-@@ -79240,12 +62031,12 @@ var tutorial = {
+@@ -79240,12 +62035,12 @@ var tutorial = {
                      _.call(i) === f))
          );
      }
@@ -52832,7 +52821,7 @@ index f47ae50..e889ae8 100644
          for (var e = 1, t = arguments[0]; e < arguments.length; e++) {
              var i = arguments[e];
              for (var n in i) i.hasOwnProperty(n) && (t[n] = i[n]);
-@@ -79261,8 +62052,8 @@ var tutorial = {
+@@ -79261,8 +62056,8 @@ var tutorial = {
          v = {},
          b = 'ls_',
          y = 'ss_',
@@ -52843,7 +52832,7 @@ index f47ae50..e889ae8 100644
          x = {
              _type: '',
              _ns: '',
-@@ -79280,7 +62071,7 @@ var tutorial = {
+@@ -79280,7 +62075,7 @@ var tutorial = {
              },
              alwaysUseJson: !1,
              get: function () {
@@ -52852,7 +52841,7 @@ index f47ae50..e889ae8 100644
              },
              set: function () {
                  var e = arguments.length,
-@@ -79290,23 +62081,23 @@ var tutorial = {
+@@ -79290,23 +62085,23 @@ var tutorial = {
                      throw new Error(
                          'Minimum 2 arguments must be given or first parameter must be an object'
                      );
@@ -52881,7 +52870,7 @@ index f47ae50..e889ae8 100644
                          this._ns ?
                              (this._callMethod(t, [{}]), !0)
                          :   this._callMethod(n, [e])
-@@ -79314,20 +62105,20 @@ var tutorial = {
+@@ -79314,20 +62109,20 @@ var tutorial = {
                  );
              },
              isEmpty: function () {
@@ -52907,7 +52896,7 @@ index f47ae50..e889ae8 100644
              _cookie: !0,
              _prefix: '',
              _expires: null,
-@@ -79385,18 +62176,18 @@ var tutorial = {
+@@ -79385,18 +62180,18 @@ var tutorial = {
                      (this._secure = !1));
              },
          };
@@ -52931,7 +52920,7 @@ index f47ae50..e889ae8 100644
                  _type: 'cookieStorage',
                  setExpires: function (e) {
                      return (window.cookieStorage.setExpires(e), this);
-@@ -79422,11 +62213,11 @@ var tutorial = {
+@@ -79422,11 +62217,11 @@ var tutorial = {
          (v.initNamespaceStorage = function (e) {
              return r(e);
          }),
@@ -52948,7 +52937,7 @@ index f47ae50..e889ae8 100644
          (v.namespaceStorages = {}),
          (v.removeAllStorages = function (e) {
              (v.localStorage.removeAll(e),
-@@ -79469,17 +62260,17 @@ var tutorial = {
+@@ -79469,17 +62264,17 @@ var tutorial = {
          }
          function i(n) {
              function s() {}
@@ -52973,7 +52962,7 @@ index f47ae50..e889ae8 100644
                      } catch (e) {}
                      ((i =
                          n.write ?
-@@ -79495,26 +62286,26 @@ var tutorial = {
+@@ -79495,26 +62290,26 @@ var tutorial = {
                              )
                              .replace(/[\(\)]/g, escape)));
                      var r = '';
@@ -53009,7 +52998,7 @@ index f47ae50..e889ae8 100644
                              l = r.slice(1).join('=');
                          i || '"' !== l.charAt(0) || (l = l.slice(1, -1));
                          try {
-@@ -79530,15 +62321,15 @@ var tutorial = {
+@@ -79530,15 +62325,15 @@ var tutorial = {
                  }
              }
              return (
@@ -53029,7 +53018,7 @@ index f47ae50..e889ae8 100644
                  }),
                  (s.defaults = {}),
                  (s.withConverter = i),
-@@ -79689,17 +62480,17 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -79689,17 +62484,17 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
              i = {},
              n = {},
              s = {},
@@ -53056,7 +53045,7 @@ index f47ae50..e889ae8 100644
                                  xy_map.getCanvasLayer()
                              :   L.layerGroup();
                          ((e.filter_id = this.filter_id),
-@@ -79734,8 +62525,8 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -79734,8 +62529,8 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
              },
              getFilterLayerByMissionParams: function (e) {
                  switch (!0) {
@@ -53067,7 +53056,7 @@ index f47ae50..e889ae8 100644
                      case e.handoff:
                          return i[e.filter_id];
                      case e.user_id != t || 'alliance_missions' === e.filter_id:
-@@ -79760,8 +62551,8 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -79760,8 +62555,8 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
              },
              getLayerIdByMissionParams: function (e) {
                  switch (!0) {
@@ -53078,7 +53067,7 @@ index f47ae50..e889ae8 100644
                      case e.handoff:
                          return e.filter_id;
                      case e.user_id != t || 'alliance_missions' === e.filter_id:
-@@ -79778,7 +62569,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -79778,7 +62573,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                      return i[t] === e.layer;
                  })),
                      (filter_checked = 'overlayadd' == e.type),
@@ -53087,7 +53076,7 @@ index f47ae50..e889ae8 100644
                          ($.ajax({
                              type: 'PUT',
                              url: '/map_filters',
-@@ -79792,7 +62583,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -79792,7 +62587,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                              'user_buildings' != filter_key &&
                              'all_missions' != filter_key &&
                              'user_missions' != filter_key) ||
@@ -53096,7 +53085,7 @@ index f47ae50..e889ae8 100644
                              setTimeout(function () {
                                  map_filters_service.massFiltersChange(
                                      filter_key,
-@@ -79801,7 +62592,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -79801,7 +62596,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                              }, 0))));
              },
              refreshLayers: function (e) {
@@ -53105,7 +53094,7 @@ index f47ae50..e889ae8 100644
                      $.each(e, function (e, t) {
                          void 0 !== i[t.filter_id] ?
                              t.checked ?
-@@ -79809,7 +62600,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -79809,7 +62604,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                              :   map.removeLayer(i[t.filter_id])
                          :   console.log('missing filter layer: ' + t);
                      }),
@@ -53114,7 +53103,7 @@ index f47ae50..e889ae8 100644
              },
              massFiltersChange: function (t, n) {
                  switch (((filters_keys = []), !0)) {
-@@ -79838,7 +62629,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
+@@ -79838,7 +62633,7 @@ var STORAGE_KEY_MOBILE_CLIENT_ID = 'mc_mobile_client_id',
                          :   xy_map.removeLayer(i[t])
                      :   console.log('missing filter layer: ' + t);
                  }),
@@ -53123,7 +53112,7 @@ index f47ae50..e889ae8 100644
              },
              decorateFilterText: function (t, i) {
                  var n = function (e, t, n) {
-@@ -79885,8 +62676,8 @@ const xy_map_filters_service = (function () {
+@@ -79885,8 +62680,8 @@ const xy_map_filters_service = (function () {
          i,
          n,
          s = {},
@@ -53133,7 +53122,7 @@ index f47ae50..e889ae8 100644
          r = {},
          l = !1,
          c = !1;
-@@ -79894,7 +62685,7 @@ const xy_map_filters_service = (function () {
+@@ -79894,7 +62689,7 @@ const xy_map_filters_service = (function () {
          initialize: function (l) {
              if (
                  ((c = !0 === l.local_only || 'true' === l.local_only),
@@ -53142,7 +53131,7 @@ index f47ae50..e889ae8 100644
                  (e = l.mission_types_collection),
                  (r = l.mission_types_with_filter_ids),
                  (t = l.user_id),
-@@ -79904,17 +62695,17 @@ const xy_map_filters_service = (function () {
+@@ -79904,17 +62699,17 @@ const xy_map_filters_service = (function () {
              )
                  return void console.error('filter elements are not defined');
              for (let e of l.sorted_map_filters)
@@ -53164,7 +53153,7 @@ index f47ae50..e889ae8 100644
                  $(i).on('change', "input[type='checkbox']", function (e) {
                      xy_map_filters_service.onFilterChanged(e);
                  }),
-@@ -79924,10 +62715,10 @@ const xy_map_filters_service = (function () {
+@@ -79924,10 +62719,10 @@ const xy_map_filters_service = (function () {
                  $(n).show());
          },
          getMapFiltersLayersForMap: function () {
@@ -53177,7 +53166,7 @@ index f47ae50..e889ae8 100644
          },
          getMapFiltersLayers: function () {
              return s;
-@@ -79937,8 +62728,8 @@ const xy_map_filters_service = (function () {
+@@ -79937,8 +62732,8 @@ const xy_map_filters_service = (function () {
          },
          getLayerIdByBuildingParams: function (e) {
              switch (!0) {
@@ -53188,7 +53177,7 @@ index f47ae50..e889ae8 100644
                  case e.user_id != t && null != e.user_id:
                      return 'alliance_members';
                  case null == e.user_id:
-@@ -79963,7 +62754,7 @@ const xy_map_filters_service = (function () {
+@@ -79963,7 +62758,7 @@ const xy_map_filters_service = (function () {
              return s[e] || map;
          },
          isFilterEnabled: function (e) {
@@ -53197,7 +53186,7 @@ index f47ae50..e889ae8 100644
          },
          onFilterChanged: function (e) {
              ((filter_key = e.target.value),
-@@ -80011,14 +62802,14 @@ const xy_map_filters_service = (function () {
+@@ -80011,14 +62806,14 @@ const xy_map_filters_service = (function () {
          massFiltersChange: function (t, i) {
              switch (((filters_keys = []), !0)) {
                  case 'all_buildings' == t:
@@ -53214,7 +53203,7 @@ index f47ae50..e889ae8 100644
                      break;
                  case 'all_missions' == t:
                      filters_keys = e.concat([
-@@ -80030,8 +62821,8 @@ const xy_map_filters_service = (function () {
+@@ -80030,8 +62825,8 @@ const xy_map_filters_service = (function () {
                      filters_keys = e;
              }
              ($.each(filters_keys, function (e, t) {
@@ -53225,7 +53214,7 @@ index f47ae50..e889ae8 100644
                      xy_map_filters_service.updateLayer(t, i))
                  :   console.log('missing filter layer: ' + t);
              }),
-@@ -80054,7 +62845,7 @@ const xy_map_filters_service = (function () {
+@@ -80054,7 +62849,7 @@ const xy_map_filters_service = (function () {
                  );
              };
              switch (!0) {
@@ -53234,7 +53223,7 @@ index f47ae50..e889ae8 100644
                      return i(t, 'third', 'building-filter');
                  case e.includes(t.filter_id):
                      return i(t, 'third', 'mission-filter');
-@@ -80091,24 +62882,24 @@ const xy_map_filters_service = (function () {
+@@ -80091,24 +62886,24 @@ const xy_map_filters_service = (function () {
          :   (e.jQueryBridget = t(e, e.jQuery));
      })(window, function (e, t) {
          'use strict';
@@ -53268,7 +53257,7 @@ index f47ae50..e889ae8 100644
                              );
                      }),
                      void 0 !== s ? s : e
-@@ -80119,12 +62910,12 @@ const xy_map_filters_service = (function () {
+@@ -80119,12 +62914,12 @@ const xy_map_filters_service = (function () {
                      var s = r.data(n, i);
                      s ?
                          (s.option(t), s._init())
@@ -53284,7 +53273,7 @@ index f47ae50..e889ae8 100644
                          r.isPlainObject(e) &&
                              (this.options = r.extend(!0, this.options, e));
                      }),
-@@ -80139,12 +62930,12 @@ const xy_map_filters_service = (function () {
+@@ -80139,12 +62934,12 @@ const xy_map_filters_service = (function () {
              !e || (e && e.bridget) || (e.bridget = i);
          }
          var s = Array.prototype.slice,
@@ -53301,7 +53290,7 @@ index f47ae50..e889ae8 100644
                      };
          return (n(t || e.jQuery), i);
      }),
-@@ -80187,9 +62978,9 @@ const xy_map_filters_service = (function () {
+@@ -80187,9 +62982,9 @@ const xy_map_filters_service = (function () {
                          s < i.length;
                          s++
                      ) {
@@ -53314,7 +53303,7 @@ index f47ae50..e889ae8 100644
                      }
                      return this;
                  }
-@@ -80243,8 +63034,8 @@ const xy_map_filters_service = (function () {
+@@ -80243,8 +63038,8 @@ const xy_map_filters_service = (function () {
              );
          }
          function s() {
@@ -53325,7 +53314,7 @@ index f47ae50..e889ae8 100644
                  var t = document.createElement('div');
                  ((t.style.width = '200px'),
                      (t.style.padding = '1px 2px 3px 4px'),
-@@ -80254,29 +63045,29 @@ const xy_map_filters_service = (function () {
+@@ -80254,29 +63049,29 @@ const xy_map_filters_service = (function () {
                  var i = document.body || document.documentElement;
                  i.appendChild(t);
                  var s = n(t);
@@ -53366,7 +53355,7 @@ index f47ae50..e889ae8 100644
                          m = parseFloat(p);
                      r[h] = isNaN(m) ? 0 : m;
                  }
-@@ -80286,12 +63077,12 @@ const xy_map_filters_service = (function () {
+@@ -80286,12 +63081,12 @@ const xy_map_filters_service = (function () {
                      v = r.marginTop + r.marginBottom,
                      b = r.borderLeftWidth + r.borderRightWidth,
                      y = r.borderTopWidth + r.borderBottomWidth,
@@ -53384,7 +53373,7 @@ index f47ae50..e889ae8 100644
                      (r.innerWidth = r.width - (_ + b)),
                      (r.innerHeight = r.height - (f + y)),
                      (r.outerWidth = r.width + g),
-@@ -80300,7 +63091,7 @@ const xy_map_filters_service = (function () {
+@@ -80300,7 +63095,7 @@ const xy_map_filters_service = (function () {
                  );
              }
          }
@@ -53393,7 +53382,7 @@ index f47ae50..e889ae8 100644
              r =
                  'undefined' == typeof console ? t : (
                      function (e) {
-@@ -80322,8 +63113,8 @@ const xy_map_filters_service = (function () {
+@@ -80322,8 +63117,8 @@ const xy_map_filters_service = (function () {
                  'borderBottomWidth',
              ],
              c = l.length,
@@ -53404,7 +53393,7 @@ index f47ae50..e889ae8 100644
      }),
      (function (e, t) {
          'use strict';
-@@ -80406,11 +63197,11 @@ const xy_map_filters_service = (function () {
+@@ -80406,11 +63201,11 @@ const xy_map_filters_service = (function () {
                              if (!n) return void s.push(e);
                              t(e, n) && s.push(e);
                              for (
@@ -53420,7 +53409,7 @@ index f47ae50..e889ae8 100644
                          }
                      }),
                      s
-@@ -80424,9 +63215,9 @@ const xy_map_filters_service = (function () {
+@@ -80424,9 +63219,9 @@ const xy_map_filters_service = (function () {
                      var e = this[s];
                      clearTimeout(e);
                      var t = arguments,
@@ -53432,7 +53421,7 @@ index f47ae50..e889ae8 100644
                      }, i);
                  };
              }),
-@@ -80447,24 +63238,24 @@ const xy_map_filters_service = (function () {
+@@ -80447,24 +63242,24 @@ const xy_map_filters_service = (function () {
          return (
              (i.htmlInit = function (t, n) {
                  i.docReady(function () {
@@ -53466,7 +53455,7 @@ index f47ae50..e889ae8 100644
                                          ' on ' +
                                          e.className +
                                          ': ' +
-@@ -80473,7 +63264,7 @@ const xy_map_filters_service = (function () {
+@@ -80473,7 +63268,7 @@ const xy_map_filters_service = (function () {
                              );
                          }
                          var r = new t(e, i);
@@ -53475,7 +53464,7 @@ index f47ae50..e889ae8 100644
                      });
                  });
              }),
-@@ -80508,104 +63299,104 @@ const xy_map_filters_service = (function () {
+@@ -80508,104 +63303,104 @@ const xy_map_filters_service = (function () {
                  return '-' + e.toLowerCase();
              });
          }
@@ -53620,7 +53609,7 @@ index f47ae50..e889ae8 100644
                          this.transition({
                              to: r,
                              onTransitionEnd: { transform: this.layoutPosition },
-@@ -80613,7 +63404,7 @@ const xy_map_filters_service = (function () {
+@@ -80613,7 +63408,7 @@ const xy_map_filters_service = (function () {
                          }));
                  } else this.layoutPosition();
              }),
@@ -53629,7 +53618,7 @@ index f47ae50..e889ae8 100644
                  return (
                      'translate3d(' +
                      (e = this.layout._getOption('originLeft') ? e : -e) +
-@@ -80622,21 +63413,21 @@ const xy_map_filters_service = (function () {
+@@ -80622,21 +63417,21 @@ const xy_map_filters_service = (function () {
                      'px, 0)'
                  );
              }),
@@ -53656,7 +53645,7 @@ index f47ae50..e889ae8 100644
                  if (parseFloat(this.layout.options.transitionDuration)) {
                      var t = this._transn;
                      for (var i in e.onTransitionEnd)
-@@ -80647,34 +63438,34 @@ const xy_map_filters_service = (function () {
+@@ -80647,34 +63442,34 @@ const xy_map_filters_service = (function () {
                      if (e.from) {
                          this.css(e.from);
                          this.element.offsetHeight;
@@ -53698,7 +53687,7 @@ index f47ae50..e889ae8 100644
              if (e.target === this.element) {
                  var t = this._transn,
                      n = h[e.propertyName] || e.propertyName;
-@@ -80690,12 +63481,12 @@ const xy_map_filters_service = (function () {
+@@ -80690,12 +63485,12 @@ const xy_map_filters_service = (function () {
                  this.emitEvent('transitionEnd', [this]);
              }
          }),
@@ -53713,7 +53702,7 @@ index f47ae50..e889ae8 100644
                  var t = {};
                  for (var i in e) t[i] = '';
                  this.css(t);
-@@ -80706,26 +63497,26 @@ const xy_map_filters_service = (function () {
+@@ -80706,26 +63501,26 @@ const xy_map_filters_service = (function () {
              transitionDelay: '',
          };
          return (
@@ -53746,7 +53735,7 @@ index f47ae50..e889ae8 100644
                  (delete this.isHidden, this.css({ display: '' }));
                  var e = this.layout.options,
                      t = {};
-@@ -80738,15 +63529,15 @@ const xy_map_filters_service = (function () {
+@@ -80738,15 +63533,15 @@ const xy_map_filters_service = (function () {
                          onTransitionEnd: t,
                      }));
              }),
@@ -53765,7 +53754,7 @@ index f47ae50..e889ae8 100644
                  ((this.isHidden = !0), this.css({ display: '' }));
                  var e = this.layout.options,
                      t = {};
-@@ -80759,11 +63550,11 @@ const xy_map_filters_service = (function () {
+@@ -80759,11 +63554,11 @@ const xy_map_filters_service = (function () {
                          onTransitionEnd: t,
                      }));
              }),
@@ -53779,7 +53768,7 @@ index f47ae50..e889ae8 100644
                  this.css({
                      position: '',
                      left: '',
-@@ -80788,8 +63579,8 @@ const xy_map_filters_service = (function () {
+@@ -80788,8 +63583,8 @@ const xy_map_filters_service = (function () {
                      'fizzy-ui-utils/utils',
                      './item',
                  ],
@@ -53790,7 +53779,7 @@ index f47ae50..e889ae8 100644
                  }
              )
          : 'object' == typeof module && module.exports ?
-@@ -80809,14 +63600,14 @@ const xy_map_filters_service = (function () {
+@@ -80809,14 +63604,14 @@ const xy_map_filters_service = (function () {
              ));
      })(window, function (e, t, i, n, s) {
          'use strict';
@@ -53807,7 +53796,7 @@ index f47ae50..e889ae8 100644
                  ((this.element.outlayerGUID = s),
                      (h[s] = this),
                      this._create(),
-@@ -80830,7 +63621,7 @@ const xy_map_filters_service = (function () {
+@@ -80830,7 +63625,7 @@ const xy_map_filters_service = (function () {
                              (i || e)
                      );
          }
@@ -53816,7 +53805,7 @@ index f47ae50..e889ae8 100644
              function t() {
                  e.apply(this, arguments);
              }
-@@ -80849,12 +63640,12 @@ const xy_map_filters_service = (function () {
+@@ -80849,12 +63644,12 @@ const xy_map_filters_service = (function () {
          }
          var l = e.console,
              c = e.jQuery,
@@ -53834,7 +53823,7 @@ index f47ae50..e889ae8 100644
                  containerStyle: { position: 'relative' },
                  initLayout: !0,
                  originLeft: !0,
-@@ -80865,7 +63656,7 @@ const xy_map_filters_service = (function () {
+@@ -80865,7 +63660,7 @@ const xy_map_filters_service = (function () {
                  hiddenStyle: { opacity: 0, transform: 'scale(0.001)' },
                  visibleStyle: { opacity: 1, transform: 'scale(1)' },
              }));
@@ -53843,7 +53832,7 @@ index f47ae50..e889ae8 100644
          (n.extend(p, t.prototype),
              (p.option = function (e) {
                  n.extend(this.options, e);
-@@ -80876,7 +63667,7 @@ const xy_map_filters_service = (function () {
+@@ -80876,7 +63671,7 @@ const xy_map_filters_service = (function () {
                          this.options[t]
                      :   this.options[e];
              }),
@@ -53852,7 +53841,7 @@ index f47ae50..e889ae8 100644
                  initLayout: 'isInitLayout',
                  horizontal: 'isHorizontal',
                  layoutInstant: 'isLayoutInstant',
-@@ -80904,8 +63695,8 @@ const xy_map_filters_service = (function () {
+@@ -80904,8 +63699,8 @@ const xy_map_filters_service = (function () {
                      s < t.length;
                      s++
                  ) {
@@ -53863,7 +53852,7 @@ index f47ae50..e889ae8 100644
                  }
                  return n;
              }),
-@@ -80993,7 +63784,7 @@ const xy_map_filters_service = (function () {
+@@ -80993,7 +63788,7 @@ const xy_map_filters_service = (function () {
                          this._setContainerMeasure(e.height, !1));
                  }
              }),
@@ -53872,7 +53861,7 @@ index f47ae50..e889ae8 100644
              (p._setContainerMeasure = function (e, t) {
                  if (void 0 !== e) {
                      var i = this.size;
-@@ -81018,12 +63809,12 @@ const xy_map_filters_service = (function () {
+@@ -81018,12 +63813,12 @@ const xy_map_filters_service = (function () {
                      s.dispatchEvent(e + 'Complete', null, [t]);
                  }
                  function n() {
@@ -53889,7 +53878,7 @@ index f47ae50..e889ae8 100644
                      t.forEach(function (t) {
                          t.once(e, n);
                      });
-@@ -81081,7 +63872,7 @@ const xy_map_filters_service = (function () {
+@@ -81081,7 +63876,7 @@ const xy_map_filters_service = (function () {
                      bottom: e.bottom - (t.paddingBottom + t.borderBottomWidth),
                  };
              }),
@@ -53898,7 +53887,7 @@ index f47ae50..e889ae8 100644
              (p._getElementOffset = function (e) {
                  var t = e.getBoundingClientRect(),
                      n = this._boundingRect,
-@@ -81104,7 +63895,7 @@ const xy_map_filters_service = (function () {
+@@ -81104,7 +63899,7 @@ const xy_map_filters_service = (function () {
              (p.onresize = function () {
                  this.resize();
              }),
@@ -53907,7 +53896,7 @@ index f47ae50..e889ae8 100644
              (p.resize = function () {
                  this.isResizeBound && this.needsResizeLayout() && this.layout();
              }),
-@@ -81197,26 +63988,26 @@ const xy_map_filters_service = (function () {
+@@ -81197,26 +63992,26 @@ const xy_map_filters_service = (function () {
                      c &&
                          c.removeData(this.element, this.constructor.namespace));
              }),
@@ -53942,7 +53931,7 @@ index f47ae50..e889ae8 100644
      }),
      (function (e, t) {
          'function' == typeof define && define.amd ?
-@@ -81247,10 +64038,10 @@ const xy_map_filters_service = (function () {
+@@ -81247,10 +64042,10 @@ const xy_map_filters_service = (function () {
                  }
                  var n = (this.columnWidth += this.gutter),
                      s = this.containerWidth + this.gutter,
@@ -53957,7 +53946,7 @@ index f47ae50..e889ae8 100644
              }),
              (n.getContainerWidth = function () {
                  var e =
-@@ -81274,13 +64065,13 @@ const xy_map_filters_service = (function () {
+@@ -81274,13 +64069,13 @@ const xy_map_filters_service = (function () {
                              :   '_getTopColPosition'
                          ](i, e),
                          s = { x: this.columnWidth * n.col, y: n.y },
@@ -53975,7 +53964,7 @@ index f47ae50..e889ae8 100644
                  return s;
              }),
              (n._getTopColPosition = function (e) {
-@@ -81313,17 +64104,17 @@ const xy_map_filters_service = (function () {
+@@ -81313,17 +64108,17 @@ const xy_map_filters_service = (function () {
                  var i = t(e),
                      n = this._getElementOffset(e),
                      s = this._getOption('originLeft') ? n.left : n.right,
@@ -53999,7 +53988,7 @@ index f47ae50..e889ae8 100644
                      r >= c;
                      c++
                  )
-@@ -81704,7 +64495,7 @@ const TickManager = (() => {
+@@ -81704,7 +64499,7 @@ const TickManager = (() => {
                  (e('startInterval'),
                  (c = setInterval(function () {
                      requestAnimationFrame(n);
@@ -54008,7 +53997,7 @@ index f47ae50..e889ae8 100644
          }
          function i() {
              c &&
-@@ -81714,22 +64505,22 @@ const TickManager = (() => {
+@@ -81714,22 +64509,22 @@ const TickManager = (() => {
          function n() {
              e(`tickAll: ${l.size} objects`);
              const t = Date.now();
@@ -54036,7 +54025,7 @@ index f47ae50..e889ae8 100644
                      } catch (e) {
                          console.error(e);
                      }
-@@ -81740,7 +64531,7 @@ const TickManager = (() => {
+@@ -81740,7 +64535,7 @@ const TickManager = (() => {
              id: i,
              elementId: n,
              onTick: s,
@@ -54045,7 +54034,7 @@ index f47ae50..e889ae8 100644
              endDate: r,
              params: c,
          }) {
-@@ -81749,25 +64540,25 @@ const TickManager = (() => {
+@@ -81749,25 +64544,25 @@ const TickManager = (() => {
              if (!r)
                  return void e(`Invalid or missing endDate for object: ${i}`);
              r instanceof Date && (r = r.getTime());
@@ -54078,7 +54067,7 @@ index f47ae50..e889ae8 100644
              'function' == typeof t.onEnd &&
                  (e(`onEnd: ${t.id} remainingTime: ${t.remainingTime}`),
                  t.onEnd(t));
-@@ -81777,8 +64568,8 @@ const TickManager = (() => {
+@@ -81777,8 +64572,8 @@ const TickManager = (() => {
          }
          const l = new Map();
          let c = null,
@@ -54089,7 +54078,7 @@ index f47ae50..e889ae8 100644
          return { registerObject: s, deregisterObject: r };
      })(),
      VehicleTickManager = (() => {
-@@ -81786,24 +64577,24 @@ const TickManager = (() => {
+@@ -81786,24 +64581,24 @@ const TickManager = (() => {
              vehicleAnimDebug && console.log(e);
          }
          function t() {
@@ -54121,7 +54110,7 @@ index f47ae50..e889ae8 100644
                  e(`ticks are paused. skipping at ${t}`);
              else {
                  for (const [e, i] of c.entries())
-@@ -81811,12 +64602,12 @@ const TickManager = (() => {
+@@ -81811,12 +64606,12 @@ const TickManager = (() => {
                          if (i.endDate) {
                              const n = i.endDate - t;
                              if (n <= 0) {
@@ -54136,7 +54125,7 @@ index f47ae50..e889ae8 100644
                      } catch (e) {
                          console.error(e);
                      }
-@@ -81827,7 +64618,7 @@ const TickManager = (() => {
+@@ -81827,7 +64622,7 @@ const TickManager = (() => {
              id: i,
              elementId: n,
              onTick: s,
@@ -54145,7 +54134,7 @@ index f47ae50..e889ae8 100644
              endDate: r,
              params: l,
          }) {
-@@ -81836,25 +64627,25 @@ const TickManager = (() => {
+@@ -81836,25 +64631,25 @@ const TickManager = (() => {
              if (!r)
                  return void e(`Invalid or missing endDate for object: ${i}`);
              r instanceof Date && (r = r.getTime());
@@ -54178,7 +54167,7 @@ index f47ae50..e889ae8 100644
              'function' == typeof t.onEnd &&
                  (e(`onEnd: ${t.id} remainingTime: ${t.remainingTime}`),
                  t.onEnd(t));
-@@ -81866,8 +64657,8 @@ const TickManager = (() => {
+@@ -81866,8 +64661,8 @@ const TickManager = (() => {
              h = e;
          }
          const c = new Map();
@@ -54189,7 +54178,7 @@ index f47ae50..e889ae8 100644
              h = 1e3 / 24;
          return { registerObject: s, deregisterObject: r, setRefreshRate: l };
      })(),
-@@ -82070,11 +64861,11 @@ class XYVirtualScroller {
+@@ -82070,11 +64865,11 @@ class XYVirtualScroller {
              i = Math.max(0, e - this.bufferPx),
              n = t + this.bufferPx,
              s = this.findIndexForOffset(i),
@@ -54204,7 +54193,7 @@ index f47ae50..e889ae8 100644
              this.render());
      }
      findIndexForOffset(e) {
-@@ -82294,8 +65085,8 @@ class XYVirtualScroller {
+@@ -82294,8 +65089,8 @@ class XYVirtualScroller {
              i = Math.max(0, e - this.bufferPx),
              n = t + this.bufferPx,
              s = this.findIndexForOffset(i),
