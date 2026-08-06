@@ -345,13 +345,13 @@ function layerFactory(e) {
                     this._map.getBounds().pad(this.options.padding);
                 return (
                     e.forEach(function (e) {
-                        e.layer_id &&
-                            (t = e.layer_id ? e.layer_id.toString() : '0');
-                        var n = e.getLatLng(),
-                            s = i && i.contains(n);
-                        (this._addMarker(e, n, s, !0),
+                        (e.layer_id &&
+                            (t = e.layer_id ? e.layer_id.toString() : '0'),
                             (this._groupIDs[t] = (this._groupIDs[t] || 0) + 1),
                             (e._canvasGroupID = t));
+                        var n = e.getLatLng(),
+                            s = i && i.contains(n) && !this._isMarkerHidden(e);
+                        this._addMarker(e, n, s, !0);
                     }, this),
                     this._pointsIdx.flush(),
                     this._latlngsIdx.flush(),
@@ -541,128 +541,102 @@ function massMissionMarkerAdd(e) {
             searchMission());
 }
 function processMissionElement(e, t, i) {
-    const n = parseSearchValue(e),
-        s = identifyMissionTypeFilter(e),
-        o = identifyMissionStateFilter(e),
-        a = identifyMissionSortAttributes(e),
-        r = identifyMissionPanelScrollVisible(e),
-        l = identifyMissionPanelAlliance(e),
-        c = identifyMissionPanelStyling(e),
-        d = identifyCaption(e),
-        u = identifyVehicleStateUrl(e),
-        h = identifyCountdownTimeleft(e),
-        p = identifyBarClassInner(e),
-        m = identifyMissionClass(e),
-        _ = identifyMissionMissingText(e),
-        f = identifyMissionClassShort(e),
-        g = identifyMissionTextShort(e),
-        v = identifyHideAllianceDistance(e),
-        b = i.cloneNode();
-    ((b.innerHTML = prepareMissionDomElementStr(
-        n,
-        s,
-        o,
-        a,
-        e,
-        r,
-        l,
-        c,
-        d,
-        u,
-        h,
-        p,
-        m,
-        _,
-        f,
-        g,
-        v
-    )),
-        t.append(b.content));
-    let y = e;
+    const n = i.cloneNode();
+    ((n.innerHTML = buildMissionElement(e)), t.append(n.content));
+    let s = e;
     missionParticipationFilters.started.missionIds.has(e.id) ||
         missionParticipationFilters.new.missionIds.add(e.id);
-    var w = !1;
-    const k = mission_markers_per_id.get(y.id);
+    var o = !1;
+    const a = mission_markers_per_id.get(s.id);
     if (
-        (k &&
+        (a &&
             (isMapKitMap() ?
-                ((k.url = { 1: u }),
-                (k.opacity = 1),
-                (k.title = y.caption),
-                (k.subtitle = y.address))
-            :   (k.setIcon(icon_empty),
-                k.setOpacity(1),
-                iconMapGenerate(u, k),
-                k.setTooltipContent(d)),
-            (k.vehicle_state = y.vehicle_state),
-            (w = !0)),
-        !w)
+                ((a.url = { 1: vehicle_state_url }),
+                (a.opacity = 1),
+                (a.title = s.caption),
+                (a.subtitle = s.address))
+            :   (a.setIcon(icon_empty),
+                a.setOpacity(1),
+                iconMapGenerate(vehicle_state_url, a),
+                a.setTooltipContent(caption)),
+            (a.vehicle_state = s.vehicle_state),
+            (o = !0)),
+        !o)
     ) {
-        ((y.markerType = 'm'),
-            (y.zIndexOffset = 1e4),
-            (y.flavour_url = flavouredAsset(u)),
-            (y.caption_address = d),
-            (y.tooltipParams = { permanent: mission_label, opacity: 1 }),
-            (y.layer_id = xy_map.getLayerIdByMissionParams(y)));
-        let e = xy_map.createMapMarker(y, missionMarkerClick);
-        ((e.mission_id = y.id),
-            (e.user_id = y.user_id),
-            (e.vehicle_state = y.vehicle_state),
-            (e.krankentransport = y.kt),
-            (e.sicherheitswache = y.sw),
-            (e.ct = y.ct),
-            (e.pt = y.pt),
+        ((s.markerType = 'm'),
+            (s.zIndexOffset = 1e4),
+            (s.flavour_url = flavouredAsset(vehicle_state_url)),
+            (s.caption_address = caption),
+            (s.tooltipParams = { permanent: mission_label, opacity: 1 }),
+            (s.layer_id = xy_map.getLayerIdByMissionParams(s)));
+        let e = xy_map.createMapMarker(s, missionMarkerClick);
+        ((e.mission_id = s.id),
+            (e.user_id = s.user_id),
+            (e.vehicle_state = s.vehicle_state),
+            (e.krankentransport = s.kt),
+            (e.sicherheitswache = s.sw),
+            (e.ct = s.ct),
+            (e.pt = s.pt),
             (e.involved = !1),
-            (e.layer_id = y.layer_id),
+            (e.layer_id = s.layer_id),
             mission_markers.push(e),
             mission_markers_per_id.set(e.mission_id, e));
     }
-    if ((y.date_end > 0 && missionTimerStart(y), y.water_damage_pump_value)) {
-        var x =
+    if ((s.date_end > 0 && missionTimerStart(s), s.water_damage_pump_value)) {
+        var r =
             "<div class='small' id='pumping_" +
-            y.id +
+            s.id +
             "'>" +
             I18n.t('javascript.water_pumping_process') +
             " <div id='pumping_bar_outer_" +
-            y.id +
+            s.id +
             "' class='progress pumping_progress'><div id='pumping_bar_" +
-            y.id +
+            s.id +
             "' class='progress-bar progress-bar-info";
-        ((x +=
+        ((r +=
             "' style='width: " +
-            y.live_current_water_damage_pump_value +
+            s.live_current_water_damage_pump_value +
             "%;'><div id='pumping_bar_striper_" +
-            y.id +
+            s.id +
             "' class='" +
-            p +
+            bar_class_inner +
             "'></div></div></div><div  id='patients_missing_" +
-            y.id +
+            s.id +
             "'"),
-            $('#mission_pump_progress_' + y.id).html(x));
+            $('#mission_pump_progress_' + s.id).html(r));
     }
-    (y.pumping_date_end > 0 &&
-        ($('#pumping_bar_striper_' + y.id).addClass(
+    (s.pumping_date_end > 0 &&
+        ($('#pumping_bar_striper_' + s.id).addClass(
             'progress-striped-inner-active'
         ),
         startProgressBar({
-            $element: $('#pumping_bar_' + y.id),
-            missionValue: y.pumping_mission_value,
-            startTime: 1e3 * y.pumping_date_start,
-            endTime: 1e3 * y.pumping_date_end,
+            $element: $('#pumping_bar_' + s.id),
+            missionValue: s.pumping_mission_value,
+            startTime: 1e3 * s.pumping_date_start,
+            endTime: 1e3 * s.pumping_date_end,
         })),
-        y.live_current_value <= 0 &&
-            y.live_current_water_damage_pump_value <= 0 &&
-            missionFinish(y));
+        s.live_current_value <= 0 &&
+            s.live_current_water_damage_pump_value <= 0 &&
+            missionFinish(s));
 }
 function missionMarkerClick(e) {
-    e.target &&
-        ($(
-            document.getElementById('alarm_button_' + e.target.mission_id)
-        ).click(),
-        setTimeout(mapkitDeselectAnnotation, 1e3));
+    if (e.target) {
+        (openMissionDetails(e.target.mission_id, e),
+            setTimeout(mapkitDeselectAnnotation, 1e3));
+    }
 }
 function missionMarkerAdd() {}
+function addMarkersToMap(e, t) {
+    for (let i in e) {
+        let e = mission_markers_per_id.get(i.id);
+        void 0 !== e &&
+            (t.includes(i.id) && (e.involved || (e.involved = !0)),
+            missionMarkerAdd(i));
+    }
+    xy_map.addMarkers(null, [...mission_markers_per_id.values()]);
+}
 function missionMarkerAddSingle(e) {
+    if (betaOptions.missions_vl) return void processMissionFromPush(e);
     if (window.massAllianceMissionAdd || window.massMissionAdd)
         return void retryUpdate(e);
     var t = 'progress mission_progress',
@@ -990,7 +964,7 @@ function prepareMissionDomElementStr(
     f
 ) {
     var g = missionParticipationFilters.started.missionIds.has(s.id);
-    return `\n            <div search_attribute='${e}'\n                 data-mission-type-filter='${t}'\n                 data-mission-state-filter='${i}'\n                 data-mission-participation-filter='${g ? 'started' : 'new'}'\n                 data-sortable-by='${JSON.stringify(n)}'\n                 id='mission_${s.id}'\n                 mission_id='${s.id}'\n                 mission_type_id='${s.mtid}'\n                 class='mission_visibility missionSideBarEntry missionSideBarEntrySearchable ${o} ${f}'\n                 latitude='${s.latitude}'\n                 longitude='${s.longitude}'\n                 target_latitude='${isParamPresent(s, 'tlat') ? s.tlat : 'null'}'\n                 target_longitude='${isParamPresent(s, 'tlng') ? s.tlng : 'null'}'\n                 data-overlay-index='${s.overlay_index}'\n                 data-additive-overlays='${s.additive_overlays || ''}'>\n              <div id='mission_panel_${s.id}'\n                   class='panel panel-default ${a} mission_panel_${r}'>\n                <div id='mission_panel_heading_${s.id}' class='panel-heading'>\n                  <a href='/missions/${s.id}?${missionFilterQueryParams}'\n                     class='btn btn-default btn-xs lightbox-open mission-alarm-button'\n                     id='alarm_button_${s.id}'> ${I18n.t('javascript.alarm')}</a>\n                  <span id='mission_participant_${s.id}'\n                        class='glyphicon glyphicon-user ${g ? '' : 'hidden'}'></span>\n                  <span id='mission_participant_new_${s.id}'\n                        class='glyphicon glyphicon-asterisk ${g ? 'hidden' : ''}'></span>\n                  <a href=''\n                     id='mission_caption_${s.id}'\n                     class='map_position_mover'\n                     target_latitude='${isParamPresent(s, 'tlat') ? s.tlat : 'null'}'\n                     target_longitude='${isParamPresent(s, 'tlng') ? s.tlng : 'null'}'\n                     data-latitude='${s.latitude}'\n                     data-longitude='${s.longitude}'>${l}</a>\n                </div>\n                <div class='panel-body'>\n                  <div class='row'>\n                    <div class='col-xs-1'>\n                      <img src='${c}'\n                           id='mission_vehicle_state_${s.id}'\n                           class='mission_vehicle_state'>\n                    </div>\n                    <div class='col-xs-11'>\n                      <div class='mission_overview_countdown'\n                           id='mission_overview_countdown_${s.id}'\n                           timeleft='${d}'></div>\n                      <div id='mission_bar_outer_${s.id}'\n                           class='progress mission_progress'>\n                        <div id='mission_bar_${s.id}'\n                             class='progress-bar progress-bar-danger'\n                             role='progressbar' aria-valuemin='0' aria-valuemax='100'\n                             style='width: ${s.live_current_value}%;'>\n                          <div class='${u}'\n                               id='mission_bar_striper_${s.id}'></div>\n                        </div>\n                      </div>\n                      <div id='mission_missing_${s.id}'\n                           class='${h}'>${p}</div>\n                      <div id='mission_missing_short_${s.id}'\n                           class='${m}'>${_}</div>\n                      <div id='mission_pump_progress_${s.id}'></div>\n                      <div id='mission_patients_${s.id}' class='row'></div>\n                      <div class='mission_prisoners'\n                           id='mission_prisoners_${s.id}'></div>\n                    </div>\n                  </div>\n                </div>\n              </div>\n            </div>\n            `;
+    return `\n            <div search_attribute='${e}'\n                 data-mission-type-filter='${t}'\n                 data-mission-state-filter='${i}'\n                 data-mission-participation-filter='${g ? 'started' : 'new'}'\n                 data-sortable-by='${JSON.stringify(n)}'\n                 id='mission_${s.id}'\n                 mission_id='${s.id}'\n                 mission_type_id='${s.mtid}'\n                 class='mission_visibility missionSideBarEntry missionSideBarEntrySearchable ${o} ${f}'\n                 latitude='${s.latitude}'\n                 longitude='${s.longitude}'\n                 target_latitude='${isParamPresent(s, 'tlat') ? s.tlat : 'null'}'\n                 target_longitude='${isParamPresent(s, 'tlng') ? s.tlng : 'null'}'\n                 data-overlay-index='${s.overlay_index}'\n                 data-additive-overlays='${s.additive_overlays || ''}'>\n              <div id='mission_panel_${s.id}'\n                   class='panel panel-default ${a} mission_panel_${r}'>\n                <div id='mission_panel_heading_${s.id}' class='panel-heading'>\n                  <a href='/missions/${s.id}?${missionFilterQueryParams}'\n                     class='btn btn-default btn-xs lightbox-open mission-alarm-button'\n                     id='alarm_button_${s.id}' m_id='${s.id}'> ${I18n.t('javascript.alarm')}</a>\n                  <span id='mission_participant_${s.id}'\n                        class='glyphicon glyphicon-user ${g ? '' : 'hidden'}'></span>\n                  <span id='mission_participant_new_${s.id}'\n                        class='glyphicon glyphicon-asterisk ${g ? 'hidden' : ''}'></span>\n                  <a href=''\n                     id='mission_caption_${s.id}'\n                     class='map_position_mover'\n                     target_latitude='${isParamPresent(s, 'tlat') ? s.tlat : 'null'}'\n                     target_longitude='${isParamPresent(s, 'tlng') ? s.tlng : 'null'}'\n                     data-latitude='${s.latitude}'\n                     data-longitude='${s.longitude}'>${l}</a>\n                </div>\n                <div class='panel-body'>\n                  <div class='row'>\n                    <div class='col-xs-1'>\n                      <img src='${c}'\n                           id='mission_vehicle_state_${s.id}'\n                           class='mission_vehicle_state'>\n                    </div>\n                    <div class='col-xs-11'>\n                      <div class='mission_overview_countdown'\n                           id='mission_overview_countdown_${s.id}'\n                           timeleft='${d}'></div>\n                      <div id='mission_bar_outer_${s.id}'\n                           class='progress mission_progress'>\n                        <div id='mission_bar_${s.id}'\n                             class='progress-bar progress-bar-danger'\n                             role='progressbar' aria-valuemin='0' aria-valuemax='100'\n                             style='width: ${s.live_current_value}%;'>\n                          <div class='${u}'\n                               id='mission_bar_striper_${s.id}'></div>\n                        </div>\n                      </div>\n                      <div id='mission_missing_${s.id}'\n                           class='${h}'>${p}</div>\n                      <div id='mission_missing_short_${s.id}'\n                           class='${m}'>${_}</div>\n                      <div id='mission_pump_progress_${s.id}'></div>\n                      <div id='mission_patients_${s.id}' class='row'></div>\n                      <div class='mission_prisoners'\n                           id='mission_prisoners_${s.id}'></div>\n                    </div>\n                  </div>\n                </div>\n              </div>\n            </div>\n            `;
 }
 function getMissionSortableAttributes(e) {
     var t = e.created_at;
@@ -1009,20 +983,6 @@ function getMissionSortableAttributes(e) {
             age: t,
             created_at: e.created_at,
         }
-    );
-}
-function parseSearchValue(e) {
-    var t = e.caption;
-    return (
-        null == e.user_id ?
-            ((e.caption =
-                '[' + I18n.t('map.alliance_event') + '] ' + e.caption),
-            (t = t + ' ' + I18n.t('map.alliance_event')))
-        :   e.user_id !== user_id &&
-            ((e.caption = '[' + I18n.t('map.alliance') + '] ' + e.caption),
-            (t = t + ' ' + I18n.t('map.alliance'))),
-        '' != e.address && (t = t + ' ' + e.address),
-        (t = t.replace(/'/g, '&#039;'))
     );
 }
 function identifyHide(e) {
@@ -1216,79 +1176,6 @@ function missionMarkerBlukDraw() {
         (patientBulkCache = {}),
         (prisonerBulkCache = {}));
 }
-function missionSelectionUpdateButtons() {
-    if (missionMarkerBulkAdd || massAllianceMissionAdd || massMissionAdd)
-        return !0;
-    var e = 0,
-        t = 0,
-        i = 0,
-        n = 0,
-        s = 0,
-        o = 0,
-        a = 0,
-        r = 0,
-        l = 0,
-        c = 0;
-    ((criticalTransportMissionsPresent = !1),
-        (patientTransportMissionsPresent = !1));
-    for (let e in missionTypeFilters) missionTypeFilters[e].missionIds = [];
-    (mission_markers_per_id.forEach(function (d) {
-        (d.krankentransport ?
-            (i++,
-            missionTypeFilters.krankentransporte.missionIds.push(d.mission_id),
-            0 == d.vehicle_state && n++)
-        : d.sicherheitswache ?
-            (l++,
-            missionTypeFilters.sicherheitswache.missionIds.push(d.mission_id),
-            0 == d.vehicle_state && c++)
-        : d.user_id != user_id && null != d.user_id ?
-            (s++,
-            missionTypeFilters.alliance.missionIds.push(d.mission_id),
-            0 == d.vehicle_state && o++)
-        : d.user_id != user_id && null == d.user_id ?
-            (a++,
-            missionTypeFilters.alliance_event.missionIds.push(d.mission_id),
-            0 == d.vehicle_state && r++)
-        :   (e++,
-            missionTypeFilters.emergency.missionIds.push(d.mission_id),
-            0 == d.vehicle_state && t++),
-            d.ct && (criticalTransportMissionsPresent = !0),
-            d.pt && (patientTransportMissionsPresent = !0));
-    }),
-        $(document.getElementById('mission_select_emergency')).html(
-            '<img class="icon icons8-Siren-Filled" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAADcElEQVRoQ+2Z/XETMRDF91WAUwFQAaQCoAJIBSQVABUQKoBUgFNBQgVABSQVQCogqeAxz0ge5aw7Sau7GYax/rFnrK/frvbtSoY5Gsm1mb00s0MAvxxT7AwhuTKzn2Z2DuBt65xoHaD+AeR1WPTYM8dwDMlTM3vvndML8ihYT/t53OuVxBvyims+F8jcXun1hvbTAzKLV+bwRhfIwCsnACQAzY2kYuyzNzbigm6PBBCd6WMAn5oJkgEkpVJrALfeebpAvIsuMW4PsoRVe+b8fzxCUmWB2imAc49VSD43szdmpk8JQE27MrNLMzvzBjlJVReqCFYgqQmfhJVVN1UDhRwg6XxVs/ORPlIqrXlWO0cCoFymdrM5WkHLRfYwAToCIMhsCxBfzeypmd2ZmSRYElpVRAYvKofIqmoaezIFQ1JrXZjZFiAYYX0vRgZAk0mOpDau43Qtj9QCDDeaJET9JOPpuI0ZLybPmwgQO2aDXdYC8G1iwrQ8USk/6rma45LA3AI4KHgluzeXaiXe0N1hrjJehntmZq5yxwvyI8TGiynP1Xgj9gllykdvzeUFoTYAwDU+BxiCX+LxHYBkvKk1b4RkjI87ALU5o7ipoIK/zawYJ7nJPCCylttyhUB2e9oDEiXwC4CeRLjDlCTnZiX0gMRHgg8A9H22RjIqV7OIeECUsPQU5JLJwtFyG8kD4rZayXXJI0Sztz0gUhb3s00pa3uFZAck6LkybLa8JulWlgqPREW8AnCYqctkQD3iSWjulVBbkACgTjEZ7cRAkrSuAagSnb1NGWpQYApER3ADpPuINp4CbErynCL1Zt8aapK6nzwws4PchSvEkV5d1EftL1C0QHKnEET2WSYJRh275ofmSpCimIQqQOtvgQSie4U2PgqQFHbxDtKsKjUQ6kOyWt4ToFWTavUkrAYQVy5pBZm9fM8ok6sEagVZTHqT4+sqSqtBlirfMx6J14Smcr4FxGWp2thI+3mSbguI6+w6QeJbW3UV3ALiUhMnSDGXDOdtAdEfOXpMe9f7f0gJLnmlqc5XLSDNVipteOx3TwXRArJY+Z5RrmZhGQUhGZOf17BLjLsEcJSbeApkk/z+tTb2llYEmfMRrscopdyyB+mxrmfs3iMlC3is2jOmtJ9ijPQsvsRYj2rFTL7Efrxzjr43/wE/Kgjg5EADGQAAAABJRU5ErkJggg==" width="15" height="15"> ' +
-                t +
-                '/' +
-                e
-        ),
-        $(document.getElementById('mission_select_krankentransport')).html(
-            '<img class="icon icons8-Ambulance" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAC/UlEQVR4Xu2b7VUVMRCGZypQK0AqECsQKhArUCpAKsAOwArECsAOoALsQKgAOhjPe84sZ2/YbCab5N7dbPL3ZjOZJ28yk4/LtPLCK/efGoCmgJUTaFNgDgIQkfdEdEFEB9qfv0R0xswPpfu3cwWo8/dE9NZx9pmIPpaGMAcAN0T02TPSf5j5uKQK5gDgaWD0O58fmHm/dgAy5iAzFx2koo1bRk5E5gEg1BGLMzusc8LMV1Psvyhg4QAQMY6YGeEzqtQCAE5PCps1AQAEKABKAAxT8QIovfqaeheoJCI/iOjcqXbLzEfW9hcNAE6KCBa/r47DV8x8YoGweAAKAdL/4DiMvcRlCEItALCPuB2AEAyPVQBQFWAnCQhveqMeDI/VAOhBwM6yX0bD49YBuAlX7mgjIt+I6JcDwRseqwOgSjCHxyoBxITHagFYw2PtAILhsWoAI+GRusW3GIDU7XXO6CAiyBE2wuOqAKgSNk6eGgA9a1zFFNiJAny7sNKZYKzdYgqI7Uho25r6uw98A9CR3ZY0t2XHVUxTgHMBUzwMtjUgddXK/P1spkBmv8zNZQOgDxpOiQj39njZgYKXHLjn/1n6QcNU+1kAiAiesXwPYL9k5jPz0ERUTLGfDEBEcM6G8zZLMV9MWBrTVDbJfhIAEcEFA2QfUzAdQmoxtZfD/mQAOuf+OT191KmAc3iUQyICpD2n3n7qmpDLfgoAd/Th/IF7AysiOH7C8XMfQrIKBkZ/kv1oACPa/MLMWPFfFRFBZLg26Xp6pSz2g5ngSP/e+e7fPXKd7urwl1nsNwChE6HVTQGfwwOLELI+PGHdeIaiiyBOXrvsEE2WWASz2g++E/TMa3QCMf5OwX3SMNh3Hj+VCoPZ7AcBaBa2+ETIp3ATAIUw9BbH1+5vZramzaYo4XkLlGzfDCBCCcnzPmI9GqoaZT8KgELAPMf8R9LTZX3IzpAcYSdY9E8OuiZlsx8NwKTXBVVqABY0WEW62hRQBOuCGm0KWNBgFenq6hXwH/kYT1/4UtMbAAAAAElFTkSuQmCC" width="15" height="15"> ' +
-                n +
-                '/' +
-                i
-        ),
-        $(document.getElementById('mission_select_alliance')).html(
-            '<img class="icon icons8-Sell" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAADz0lEQVRoQ+2a7VEUQRCGuyPQDIQIJAM1AjECIQIxAjUCIQIhAy4CIQIhAiECMYK2nq2eq7m92Z3euzmPHztVV1fAbE+//fbX9KISXGb2VkR+iMhB8JHW2x5E5FRVb0qCNXqamf3eI4ik5oOqHm4LxBCgqmHwUSNF9pnZ6PlhpWqCIspss6d2fnMgZvbSY+k4qPi1+/7T2P59APkpIiSGKWuhqqPA9wGk82UROVRVMs3gMjMyIEmkGnv7AEJ6fDOFDhF5lowQI5ci8j4IZiEiJ6r6vGIkqPzkbf/dtSZrGHxgBtI3VM0iQcNuvK12fvOCuLGmlQdnILNr7ci3ZteaXWt2rXELzDFSiBG60xc78pyo2EdVLU5xplR2bn2056+ipzbe9+jt/nbjoMZKNRcXZqT5yY0FzkAaG3RrcVVGfE7F/ZtxzVFvbHonInxuVPVqE218pvzJ5SKfYP42NOMdOmMQiI9qvjgABgq1RXpmyMzArbrMDKW/j8zATvxssmUaaHweGlKsAXELASAfst166r1TVRjoloNlH4emEdClqp4OIXGGYeCr7/krIucico1sMxsbJzFx4Tk8BEMwN7tgfrYEYmYffVMqOBxA3TivDdocFGB47cAqgim8mrjgTKxcGLViPACmuvFnhOYPWgBA4UEAyozOmvqCzSwHgwIYYVFQ8t6LW8eumRF/GAEXwoDMuToXLTyLfvyNz5mzcwuQNOJkA9aBhY2Xg8EQeTuDQVKcXakqgEtKwgIgulFrASD6ITu5NjI7pgACqqdtAeTI3Yooy+d1wCqwsFRywM2WADMgsMgZi2r6DSgxusWVIiEQnCkD9cHB2DsP9r6brbCQMUnGAwRGONo5kDGUnoLxCBINMUXM8DNrxc0yFvJ3mYA4pubsFUimXIpTfrXiZr14oCwkoCsJowkQM/vllTlZlW/uDrX3I7gbbOTKYeGV5wppm8qf6lCHtRUQXCIS1GOetqacx9cgC7mwJkA8AFMwp36M79qNkpQPewT0ZBY2AuKBiWL3UwvllMw3hYVJQAqVn+cpmrjCaAxMAeCs9v+7Ys3dhmTWul8KTmoeyRLk+/z9YBNAm7JQZcTbDApO6n3OUuX3jpeMQbZJi5/pQif1Zs4CBZCzUrMaZiEChIaMVnnwRWUBECDog0KABtoQDLa8JkxxzaJr+SEHEaGeBACQXK4KyMzSfSQxvtaGTAHRrI5kgYqL5YCIIS5MtBt0s6n4kZpZMA4LWyeNZnWk1wvlgErGpX4AIHQtjrDTHEgGCKvTnfKdWIIZGFreKSJKRvb8A3bBPSGKFTO6AAAAAElFTkSuQmCC" width="15" height="15"> ' +
-                o +
-                '/' +
-                s
-        ),
-        $(document.getElementById('mission_select_alliance_event')).html(
-            '<img class="icon icons8-Event-Accepted" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAD4UlEQVRoQ+1Zi1EUQRB9HYESgRqBRwQSgkQgRCBEIEQgRqBEIEQgRCBE4BGBGMGz3tq9zs3tsXO7c7cFxVRR5bm7vf368/qzhidy7IngQBEQknsAvgJ4DWAO4NDMrsYYobbMUiC/HEToPjezNyOBVJVZCoRS2syMZPvvkUCqymyBZK7u1DEFMgZE+myBzKJQToHkrl7SteCla+MrlNkbyimQlSGThtO2Q6v0faVA7gG8SMx9Z2ZisMGHZJHM2kBEv98AvAJwB+CgEv32yqwKZLDZKzz4DKSCETciQuz2kOClZN+IFhWErg2k74EKOq0l4jlHnj2SBAzJl95kquiNOpOGFskjB3I2CgWAqYH8dCC7jxYIyRmABgiAXTO7GQNmMo+QVP/0wZU/N7ODxwrkN4Am2QHcm9nOowNCUtbXkuLWlX/riwp5adDZWGh5Dpwk84la/Pwc+n8IVH5i+/IHwElfDm0MiLRyMFIoHbZCYSkYQ5fCrOvonr0+EP6uomVH0YTYpYkXPYFR+KjwHZtZZwh5yH323FHYCURRsdyoR1JgGUspVE6z658UQkNZbGtA3P2q5LK4zk5Y270W4SWPrV3ptw3kPYDvYiszm5HUby30LkiqICr89vV7XeraNhBZ+iOAL76gaIAAkOJaVjTXzKzpwR46JFVMxYTqEPQXR/l3YWaXXc8PTvYsD9SSpC8VK+mkrHZjZit7L/eiwrNvzaTNo8J0wbujgZDUi7WljHOtdZH/kBXfJdfa/MkMIQDhLXlQHr4Kena6l5d0j1ZSOmdmdhxyagCJai4vaN+1YCm3tADJO/ocsUDRJCMspVMvIfiIEMTShmsNIFJMvZVAdNYGZy/dp96rbSIdpEhCp7hTzjrshkRqAJmVVGhpKgXSe0nG4rzXE/68DKZiKjYMym8W3KOBPMxBq68mDWbxHpnkD2e0UzM7IanEV84cTgkk5pZSb6gBVVgqF+XZeeKV8ymBBGX35kai8EKzmeTKzZRAlrpakurLLrM8ClZUnHax3j85EcWlrcDQnMify9+XMFjbSbvFlRdK8s4QbOUkQPIPL7V07pPThJZTtGpKzPuqRyqCAtE5+yehdZt/DI0PL30vr3l9wdLOZgIU7c21mXVNoaLzoOD/yV5TsxJZCf0ufeh0S0cHsHIIS+rQftF39hLFhtyT1IGl+O9buybeaOrQ1EBijqnXogyxaI1nslH5yMw006w8JDXbxKS53DTWUGqojAyM2g4pqiRv1q2eMxoHlNwxrywMapOGVgrc64gAxLyxyi6aV+S57sFqqDVrP+dsJrrVX4DSCkne0ajbOff/BWtayMaN4VNfAAAAAElFTkSuQmCC" width="15" height="15"> ' +
-                r +
-                '/' +
-                a
-        ),
-        $(document.getElementById('mission_select_sicherheitswache')).html(
-            '<img class="icon icons8-Clock-Filled" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAE8klEQVRoQ8Waj5EVNwzGpQoSKkioIFBBuAqSVBCoAKggUEG4CgIVBCoIV0GggkAFQAVifjvy4bdr+d/uTjxzM+/d83r1WZ8+y7JVDm5m9r2I/CQi90SEz/zxmfZORD77H5/fqyrfD2t6xEhmhsG/i8iDzPjeoQH2VkReqSqfd7VpQO6JX0TkmYj8uMuKbw9/8PHezHpuCpCZPfYXQ6czGjR8pqrXo4MPAXJq/TVBq1G7Un8o+GiEit2A3CsvZi3b+dyTXm91ATIzvPKw06g3rmYEOjP8WkR+9mdvfBxiLgkIcdjTXqrqo1bHKiAP/H86KPZeRPDe63Uwm9lLV0BsQckuJsbfwf/4Q+5rjQm6qglGC9C/DTAfRQQ64IVi87h74j++qMWDmQGKifmuguqdqt6Pfg8BddDsOS+fldfKBKCcLAUoadRC+hUBmRkz+mcw2hf3ClQ6rbm3iN2oPVXVjUhtADlFoFqpAebBiIyaGQKQxruvqiyeXc1tQVwiCjLeRXZRAlSLm80ALcvMDPr84f2eqyrfu1tjgjfxdAGoQTUWuGGa7QUE8gb9Lqh3C8jl8z/PjtczeK2qSam6Z9eN2eWh9DIzI15KQkGadDeJUw4IySwFIdJ8b1bNVoYMUy4DhPoRf6V4umVPDgjvlLLmKaplhhDUKVOY9nSDeh9U9S59FkCVwGMDljZnQ1QLAN2oKinPdDMzVK2UUSyClQBF/Cxq/Yg1ZpZ76AhA0Rq5eD8BiqT6zmzsnOghYulTYVIXCVdXt1IHdo2/jnij1NfM8tjc7SEPEXLHUpZ+B0Bwmox63aYVKR/IzCz7fhSgfCnIX3cFoIiTpOnwf1dbAapmyr0vMjOY83eh/1MARWhZrLrzroBupdh8q6pXvcYH47K8QOUtqyorMN4BEOoxXF6qTBRGTKmnLy/khQhDSf6v8VAuq6UJ2ewye2a3Me5ULHXYevN/ASL/IkaHPN8LKFpUKWhAueq2OfJWI3PnsWFQrsiIGJRL6VRuwkK5M0UhSlOSEc2ix4wonC3bjI/Mokw/lFb4ViVn/Uxl7Vxk+9SFNRnjGQkCVEosKX/91iM29KmwallYo9zokNRnlTXwLna9pbSlq5DogOLUxztEXN+dnAYxkBcf8y7N9anigGWrc/r2oaKCkRhVN5QV9bzYPrCJK5WuDsm9KqCibX9YXTKzaKvzbYPntGPNKanQri14K9CD8m8xk6hUfz6q6lI+6CmSXFRVWgbO/F4oKG62Lo2qVLFIUquq7Cpu9IB0UMQVNN8UIytJ9BdVvT1JPL3Q2AOm1Weq0JgtgLV0ZbgU3DK29XujFLypSo0W64cTypbBtd8dDOWB6HC6Xax3xasdp9DlVOVzGyJJT3PQd5ySUS9azVMXth2o0aE3QVzN2JXWaunhprN1JNlK/wHDkeSryuLJop0fp4SbOjPjNgoTVbv/UK3mtgAxcJQh5xgwEo8ycxce6zw0BggUa5WdOZzmwC1kRe+xfot+OTgy4XR/h5MLnl0f65ORpGP93mJmV22jC1CnUOwRtNazzSw8DdANyEFBCWa8dZ+gZWDv71Ds4UgxZQhQpoAoEOlJ7T5Br9GlfhxOc3lp+CrOFCD3FoIB/wFWytJnABFzjLe5kdI72DSg/AW+oqNSBPooHaEVSsoWfKhOVwJ5CKAVuHQls+eKJpn1oQvzV++Yjk+9aieJAAAAAElFTkSuQmCC" width="15" height="15"> ' +
-                c +
-                '/' +
-                l
-        ),
-        updateMissionStateButtons(),
-        updateMissionParticipationButtons(),
-        updateNoMissionsMessages());
-}
 function toggleMissionsSectionsOnAsyncLoading(e) {
     (toggleErrorMissionsSectionsOnAsyncLoading(!1),
         (!1 !== massAllianceMissionAddCompleted && !1 !== e) ||
@@ -1341,7 +1228,7 @@ function postRenderBlock() {
         scheduleLoadVehiclesOnTheMove());
 }
 function showErrorOnMissionsFromWorker(e) {
-    (console.log('Error loading workers missions:', e),
+    (console.warn('Error loading workers missions:', e),
         (window.missionMarkerBulkAdd = !1),
         (window.massAllianceMissionAdd = !1),
         (window.massAllianceMissionAddCompleted = !0),
@@ -1353,7 +1240,7 @@ function processMissionWorkerResponse(e) {
     let t = [];
     (!1 === isEmptyObject(e.participation) && (t = e.participation),
         addMissionParticipationsFromWorker(t),
-        addMarkersToMap(processAndRenderMissions(e), t),
+        addMarkersToMap(processAndRenderMissions(e).values(), t),
         tutorial.callNewMissionListener(!0),
         '' !==
             $(document.getElementById('search_input_field_missions')).val() &&
@@ -1369,51 +1256,39 @@ function processMissionWorkerResponse(e) {
 }
 function processAndRenderMissions(e) {
     let t = e.missions,
-        i = new Map();
-    const n = document.createElement('template'),
-        s = new Map();
+        i = e.missionHTMLElements,
+        n = new Map();
+    const s = document.createElement('template'),
+        o = new Map();
     return (
         t.forEach(e => {
             const t = e.target;
-            !1 === s.has(t) && s.set(t, document.createDocumentFragment());
-            const o = s.get(t);
-            (processMissionElementFromWorker(e, n, o),
-                i.set(e.id, e),
-                missions_data.set(e.id, e));
+            (!1 === o.has(t) && o.set(t, document.createDocumentFragment()),
+                processMissionElementFromWorker(e));
+            const a = o.get(t),
+                r = s.cloneNode();
+            (!1 === i.has(e.id) && i.set(e.id, constructMissionHTMLElement(e)),
+                (r.innerHTML = i.get(e.id)));
+            const l = r.content;
+            (a && a.append(l), n.set(e.id, e), missions_data.set(e.id, e));
         }),
-        s.forEach(function (e, t) {
+        o.forEach(function (e, t) {
             document.getElementById(t).appendChild(e);
         }),
         postRenderBlock(),
-        i
+        n
     );
 }
 function disableLoadingProgressBar() {
     (toggleAllianceMissionsSectionsOnAsyncLoading(!1),
         toggleMissionsSectionsOnAsyncLoading(!1));
 }
-function addMarkersToMap(e, t) {
-    for (let i of e.values()) {
-        let e = mission_markers_per_id.get(i.id);
-        void 0 !== e &&
-            (t.includes(i.id) && (e.involved || (e.involved = !0)),
-            missionMarkerAdd(i));
-    }
-    xy_map.addMarkers(null, [...mission_markers_per_id.values()]);
-}
-function processMissionElementFromWorker(e, t, i) {
-    const n = t.cloneNode();
-    n.innerHTML = e.el;
-    const s = n.content;
-    return (
-        i && i.append(s),
-        missionParticipationFilters.started.missionIds.has(e.id) ||
-            missionParticipationFilters.new.missionIds.add(e.id),
+function processMissionElementFromWorker(e) {
+    (missionParticipationFilters.started.missionIds.has(e.id) ||
+        missionParticipationFilters.new.missionIds.add(e.id),
         processMissionMarkersFromWorker(e),
         e.timer_params.date_end > 0 && missionTimerStart(e.timer_params),
-        e.pumping_date_end > 0 && startPumpProgressBar(e),
-        s
-    );
+        e.pumping_date_end > 0 && startPumpProgressBar(e));
 }
 function startPumpProgressBar(e) {
     const t = $('#pumping_bar_' + e.id);
@@ -1426,29 +1301,29 @@ function startPumpProgressBar(e) {
         });
 }
 function processMissionMarkersFromWorker(e) {
+    let t,
+        i = mission_markers_per_id.has(e.id);
     ((e.markerType = 'm'),
         (e.zIndexOffset = 1e4),
         (e.flavour_url = flavouredAsset(e.vehicle_state_url)),
         (e.tooltipParams = { permanent: mission_label, opacity: 1 }),
-        (e.layer_id = xy_map.getLayerIdByMissionParams(e)));
-    let t = xy_map.createMapMarker(e, missionMarkerClick);
-    ((t.mission_id = e.id),
+        (e.layer_id = xy_map.getLayerIdByMissionParams(e)),
+        (t =
+            i ?
+                mission_markers_per_id.get(e.id)
+            :   xy_map.createMapMarker(e, missionMarkerClick)),
+        (t.mission_id = e.id),
         (t.user_id = e.user_id),
         (t.vehicle_state = e.vehicle_state),
         (t.krankentransport = e.kt),
         (t.sicherheitswache = e.sw),
         (t.ct = e.ct),
         (t.pt = e.pt),
-        (t.involved = !1),
+        (t.involved = e.involved || !1),
         (t.layer_id = e.layer_id),
-        mission_markers.push(t),
-        mission_markers_per_id.set(t.mission_id, t));
-}
-function addMissionParticipationsFromWorker(e) {
-    for (const t of e)
-        (missionParticipationFilters.new.missionIds.delete(t),
-            missionParticipationFilters.started.missionIds.add(t));
-    (updateMissionParticipationButtons(), refreshMissionsFilter());
+        i ||
+            (mission_markers.push(t),
+            mission_markers_per_id.set(t.mission_id, t)));
 }
 function massBuildingMarkerAddUpdated(e, t) {
     const i = new Map();
@@ -1546,7 +1421,7 @@ function prepareBuildingDomElementStr(e, t) {
         "'><div class='building_list_caption' id='building_list_caption_" +
         e.id +
         "' >" +
-        e.detail_button +
+        buildDetailButton(e) +
         "<img class='building_marker_image' building_id='" +
         e.id +
         "' src='" +
@@ -1561,13 +1436,10 @@ function prepareBuildingDomElementStr(e, t) {
     (0 == e.show_vehicles_at_startpage &&
         (n += hideVehicleBuildingHelpText(e.id)),
         (n += '</div>'));
-    let s = '<li>' + I18n.t('common.loading') + '</li>';
-    buildingVehicleCache.has(e.id) &&
-        ((s = buildingVehicleCache.get(e.id).join('')),
-        buildingVehicleCache.set(e.id, []));
-    let o = 0;
+    let s = '',
+        o = 0;
     return (
-        t && (o = 1),
+        (1 === e.vehicles_loaded || (t && t.length > 0)) && (o = 1),
         (n =
             n +
             "<ul id='vehicle_building_" +
@@ -1578,7 +1450,13 @@ function prepareBuildingDomElementStr(e, t) {
             e.id +
             "' "),
         0 == e.show_vehicles_at_startpage && (n += "style='display: none' "),
-        t && (s = t.map(e => prepareVehicleMarkerStr(e)).join('')),
+        (s =
+            1 === o && t ?
+                t.map(e => prepareVehicleMarkerStr(e)).join('')
+            :   '<li>' + I18n.t('common.loading') + '</li>'),
+        buildingVehicleCache.has(e.id) &&
+            ((s = buildingVehicleCache.get(e.id).join('')),
+            buildingVehicleCache.set(e.id, [])),
         (n = n + '>' + s + '</ul></li>'),
         e.building_type == BUILDING_TYPE_LEITSTELLE &&
             ((leitstelle_latitude = e.latitude),
@@ -1590,6 +1468,22 @@ function prepareBuildingDomElementStr(e, t) {
                 longitude: e.longitude,
             })),
         n
+    );
+}
+function buildDetailButton(e) {
+    return e.detail_button ?
+            e.detail_button
+        :   `<a id='building_button_${e.id}' href='/buildings/${e.id}' building_type='${e.building_type}' b_id='${e.id}' class='btn btn-xs pull-right btn-default lightbox-open'>${I18n.t('common.details')}</a>`;
+}
+function hideVehicleBuildingHelpText(e) {
+    return (
+        '<span class="hidden_vehicle_list_caption" building_id="' +
+        e +
+        '" id="hidden_vehicle_list_caption_' +
+        e +
+        '"><br /><small>' +
+        I18n.t('javascript.vehicles_not_visible') +
+        '</small></span>'
     );
 }
 function buildingMarkerReset() {
@@ -1675,56 +1569,6 @@ function buildingMarkerBulkContentCacheDraw(e = !1) {
         (buildingMarkerBulkContentCache = []),
         e && buildingsVehicleLoadVisible());
 }
-function buildingsVehicleLoadVisible() {
-    if (massBuildingAdd) return !0;
-    const e = $(document.getElementById('building_panel_body'));
-    if (e.length <= 0) return !0;
-    const t = 3 * e.height(),
-        i = e.offset().top - t,
-        n = e.offset().top + t;
-    if (e.is(':visible')) {
-        const e = [];
-        ($('.building_list_vehicles:visible').each(function () {
-            const t = $(this).offset().top;
-            t > i &&
-                t < n &&
-                '0' == this.getAttribute('data-vehicles-loaded') &&
-                (this.setAttribute('data-vehicles-loaded', '1'),
-                e.push(parseInt(this.getAttribute('data-building_id'))));
-        }),
-            e.length > 0 && batchBuildingsVehicleLoad(e));
-    }
-}
-function batchBuildingsVehicleLoad(building_id_array) {
-    $.post(
-        '/buildings/vehiclesMap',
-        { building_ids: building_id_array },
-        function (data) {
-            const arrLength = building_id_array.length;
-            eval(data);
-            let tpl = document.createElement('template');
-            for (var idx = 0; idx < arrLength; idx++) {
-                const e = building_id_array[idx];
-                let t = '';
-                (buildingVehicleCache.has(e) &&
-                    (t = buildingVehicleCache.get(e).join('')),
-                    buildingVehicleCache.set(e, []));
-                const i = tpl.cloneNode();
-                i.innerHTML = t;
-                const n = document.createDocumentFragment();
-                n.append(i.content);
-                const s = document.getElementById('vehicle_building_' + e);
-                s.replaceChildren(n);
-            }
-        }
-    );
-}
-function buildingVehicleGraphicCacheAdd(e) {
-    void 0 !== e.vgi &&
-        '' !== e.vgi &&
-        null != e.vgi &&
-        buildingVehicleGraphicCachePerId.set(e.id, e.vgi);
-}
 function getBuildingMarkerIcon(e) {
     let t = '';
     return e.building_marker_image ?
@@ -1734,16 +1578,6 @@ function getBuildingMarkerIcon(e) {
                 : e.icon_other ? e.icon_other
                 : OTHER_BUILDING_ICONS[e.building_type]),
             flavouredAsset(t));
-}
-function toggleBuildingSectionsOnAsyncLoading(e) {
-    (toggleErrorBuildingSectionsOnAsyncLoading(!1),
-        $(document.getElementById('building_panel_heading')).toggle(!e),
-        $(document.getElementById('building_panel_body')).toggle(!e),
-        $(document.getElementById('buildings_loading')).toggle(e));
-}
-function toggleErrorBuildingSectionsOnAsyncLoading(e) {
-    ($(document.getElementById('buildings_loading')).toggle(!e),
-        $(document.getElementById('buildings_loading_error')).toggle(e));
 }
 function loadBuildingsFromWorker(e) {
     try {
@@ -1796,28 +1630,23 @@ function showErrorOnBuildingsFromWorker(e) {
         (window.massBuildingAdd = !1));
 }
 function processBuildingWorkerResponse(e) {
-    if (!e || !e.buildingList) return;
-    let t = e.buildingList;
-    const i = document.createElement('template');
-    if (
-        ((i.innerHTML = t),
-        document.getElementById('building_list').appendChild(i.content),
-        e.buildings)
-    ) {
-        e.buildings.forEach(e => {
-            ((e.layer_id = xy_map.getLayerIdByBuildingParams(e)),
-                building_markers_cache.push(e),
-                building_markers_params_cache_per_id.set(e.id, e),
-                buildings_data.set(e.id, e),
-                buildingMarkerAdd(e));
-        });
+    if (e) {
+        if (e.buildingHTMLElements) {
+            let t = '';
+            e.buildingHTMLElements.forEach(e => {
+                t += e;
+            });
+            const i = document.createElement('template');
+            ((i.innerHTML = t),
+                document
+                    .getElementById('building_list')
+                    .appendChild(i.content));
+        }
+        processBuildingWorkerData(e);
     }
-    (e.buildingVehicleGraphicCachePerId &&
-        (buildingVehicleGraphicCachePerId = e.buildingVehicleGraphicCachePerId),
-        e.vehicle_graphics_sorted &&
-            (vehicle_graphics_sorted = e.vehicle_graphics_sorted));
 }
 function patientMarkerAddCombined(e) {
+    if (betaOptions.missions_vl) return void updateMissionPatientsData(e);
     let t =
         "<div class='col-md-12' id='mission_patient_summary_" +
         e.mission_id +
@@ -1852,6 +1681,7 @@ function patientMarkerAddCombined(e) {
             ));
 }
 function patientMarkerAdd(e) {
+    if (betaOptions.missions_vl) return void updateMissionPatient(e);
     $(
         document.getElementById(`mission_patient_summary_${e.mission_id}`)
     ).remove();
@@ -1935,6 +1765,7 @@ function patientMarkerAdd(e) {
         missionMarkerBulkAdd || progressBarScrollUpdate());
 }
 function prisonerMarkerAdd(e) {
+    if (betaOptions.missions_vl) return void updateMissionPrisoner(e);
     if ($('#prisoner_' + e.id).length > 0) return;
     const t =
         "<div id='prisoner_" +
@@ -2079,7 +1910,9 @@ function vehicleDriveAdd(params) {
         building_maps_redraw_debounce());
 }
 function prepareVehicleMarkerStr(e) {
-    ((e.building_id = e.b), (e.caption = e.c), (e.vehicle_type_id = e.t));
+    (e.b && (e.building_id = e.b),
+        e.c && (e.caption = e.c),
+        e.t && (e.vehicle_type_id = e.t));
     var t = '';
     1 == e.fms_real ? (t = I18n.t('fms.ready_traveling'))
     : 2 == e.fms_real ? (t = I18n.t('fms.ready_home'))
@@ -2134,7 +1967,9 @@ function prepareVehicleMarkerStr(e) {
     return ((n += i), (n += '</li>'));
 }
 function vehicleMarkerAdd(e) {
-    ((e.building_id = e.b), (e.caption = e.c), (e.vehicle_type_id = e.t));
+    (e.b && (e.building_id = e.b),
+        e.c && (e.caption = e.c),
+        e.t && (e.vehicle_type_id = e.t));
     var t = '';
     1 == e.fms_real ? (t = I18n.t('fms.ready_traveling'))
     : 2 == e.fms_real ? (t = I18n.t('fms.ready_home'))
@@ -2177,9 +2012,13 @@ function vehicleMarkerAdd(e) {
             .html(e.fms)
             .attr('class', 'building_list_fms building_list_fms_' + e.fms_real)
             .attr('title', t),
-        'undefined' == typeof L)
+        betaOptions && betaOptions.buildings_vl)
     )
-        return !0;
+        return (
+            vehiclesPerIDMap.set(e.id, e),
+            void addVehicleToBuilding(e.building_id, e.id)
+        );
+    if ('undefined' == typeof L) return !0;
     if (
         $('#vehicle_list_' + e.id).length > 0 &&
         (void 0 === e.bulkInsert || !e.bulkInsert)
@@ -2748,21 +2587,25 @@ function check_and_initialize_locale_compare(e) {
     }
 }
 function searchMission() {
-    var e = $('#search_input_field_missions').attr('search_class'),
-        t = $('#search_input_field_missions').val().toUpperCase();
-    ($('.' + e).each(function () {
-        -1 !== $(this).attr('search_attribute').toUpperCase().indexOf(t) ?
-            $(this).removeClass('searchHelperInvisble')
-        :   $(this).addClass('searchHelperInvisble');
-    }),
-        missionScrollUpdate());
+    if (betaOptions.missions_vl) refreshMissionsVirtualList();
+    else {
+        var e = $('#search_input_field_missions').attr('search_class'),
+            t = $('#search_input_field_missions').val().toUpperCase();
+        ($('.' + e).each(function () {
+            -1 !== $(this).attr('search_attribute').toUpperCase().indexOf(t) ?
+                $(this).removeClass('searchHelperInvisble')
+            :   $(this).addClass('searchHelperInvisble');
+        }),
+            missionScrollUpdate());
+    }
 }
 function mission_overview_timer_call() {
     var e = 0,
         t = new Date().getTime();
     (void 0 !== mission_overview_last_count &&
         (e = t - mission_overview_last_count),
-        (mission_overview_last_count = t));
+        (mission_overview_last_count = t),
+        betaOptions.missions_vl && updateMissionsCountdown(e));
     const i = $('.mission_overview_countdown[timeleft!=0]');
     i.length > 0 ?
         i.each(function () {
@@ -2799,19 +2642,6 @@ function aao_building_check_old(e, t) {
         );
     }
     return e.indexOf(parseInt(t.attr('building_id'))) >= 0;
-}
-function mission_participation_add(e) {
-    ($('#mission_participant_' + e).removeClass('hidden'),
-        $('#mission_participant_new_' + e).addClass('hidden'),
-        $(`#mission_${e}`).data('mission-participation-filter', 'started'),
-        missionParticipationFilters.new.missionIds.delete(e),
-        missionParticipationFilters.started.missionIds.add(e));
-}
-function addMissionParticipations(e) {
-    for (const t of e) mission_participation_add(t);
-    (updateMissionStateButtons(),
-        updateMissionParticipationButtons(),
-        refreshMissionsFilter());
 }
 function waterCalculatorSetPercent(e, t, i) {
     var n = 100 - i;
@@ -2907,18 +2737,18 @@ function waterCalculator(e, t) {
     const k = I18n.t(w.aria_progress_bar_prefix),
         x = I18n.t(w.amountOnSite, { amount: number_format(parseInt(h)) }),
         C = I18n.t(w.amountApproaching, { amount: number_format(parseInt(p)) }),
-        z = I18n.t(w.amountSelected, { amount: number_format(parseInt(m)) }),
+        S = I18n.t(w.amountSelected, { amount: number_format(parseInt(m)) }),
         T = I18n.t(w.amountMissing, { amount: number_format(parseInt(_)) });
     (s.find('.mission_water_bar_at_mission_' + e).html(x),
         s.find('.mission_water_bar_driving_' + e).html(C),
-        s.find('.mission_water_bar_selected_' + e).html(z),
+        s.find('.mission_water_bar_selected_' + e).html(S),
         s.find('.mission_water_bar_missing_' + e).html(T));
-    const S = [k];
-    (parseInt(h) > 0 && S.push(x),
-        parseInt(p) > 0 && S.push(C),
-        parseInt(m) > 0 && S.push(z),
-        parseInt(_) > 0 && S.push(T),
-        s.attr('title', S.join(', ')),
+    const z = [k];
+    (parseInt(h) > 0 && z.push(x),
+        parseInt(p) > 0 && z.push(C),
+        parseInt(m) > 0 && z.push(S),
+        parseInt(_) > 0 && z.push(T),
+        s.attr('title', z.join(', ')),
         v + g + f >= 100 ?
             (s
                 .find('.mission_water_bar_selected_' + e)
@@ -3498,312 +3328,6 @@ function missionMarkerReset() {
         }),
         (mission_timers = Array()));
 }
-function buildingsVehicleLoad(building_id) {
-    $.get('/buildings/' + building_id + '/vehiclesMap', function (data) {
-        (buildingVehicleCache.set(building_id, []),
-            eval(data),
-            (vehicleContent = ''),
-            buildingVehicleCache.has(building_id) &&
-                ((vehicleContent = buildingVehicleCache
-                    .get(building_id)
-                    .join('')),
-                buildingVehicleCache.set(building_id, [])),
-            $('#vehicle_building_' + building_id).html(vehicleContent));
-    });
-}
-function progressBarScrollUpdate() {
-    if (missionMarkerBulkAdd || massAllianceMissionAdd || massMissionAdd)
-        return !0;
-    var e = [];
-    ($('.progress-striped-inner-active').each(function () {
-        $(this).visible(!0) || e.push($(this).attr('id'));
-    }),
-        $(
-            e
-                .map(function (e) {
-                    return '#' + e;
-                })
-                .join(', ')
-        )
-            .addClass('progress-striped-inner-active-resource-safe')
-            .removeClass('progress-striped-inner-active'));
-    var t = [];
-    ($('.progress-striped-inner-active-resource-safe').each(function () {
-        $(this).visible(!0) && t.push($(this).attr('id'));
-    }),
-        $(
-            t
-                .map(function (e) {
-                    return '#' + e;
-                })
-                .join(', ')
-        )
-            .removeClass('progress-striped-inner-active-resource-safe')
-            .addClass('progress-striped-inner-active'),
-        missionScrollUpdate());
-}
-function missionScrollUpdate() {
-    if (useMissionScrollBarOptimization) {
-        var e =
-                $('#missions-panel-body').offset().top -
-                5 * $('#missions-panel-body').height(),
-            t =
-                $('#missions-panel-body').offset().top +
-                5 * $('#missions-panel-body').height();
-        $('#missions_outer').is(':visible') &&
-            $('.missionSideBarEntry').each(function () {
-                $(this).hasClass('missionSideBarEntryScrollInvisible') ?
-                    $(this).offset().top < t &&
-                    $(this).offset().top > e &&
-                    $(this)
-                        .removeClass('missionSideBarEntryScrollInvisible')
-                        .css('height', 'auto')
-                :   ($(this).offset().top > t || $(this).offset().top < e) &&
-                    ($(this).css('height', $(this).height() + 'px'),
-                    $(this).addClass('missionSideBarEntryScrollInvisible'));
-            });
-    }
-}
-function leiststelleMinDistance(e, t) {
-    var i = -1;
-    return (
-        $.each(leitstelles, function (n, s) {
-            var o = Math.round(distance(s.latitude, s.longitude, e, t));
-            (-1 == i || i > o) && (i = o);
-        }),
-        i
-    );
-}
-function missionMarkerDistanceUpdate() {
-    mission_markers_per_id.forEach(function (e) {
-        if (user_id != e.user_id) {
-            var t = 0,
-                i = 0,
-                n = 0;
-            ('undefined' == typeof mapkit ?
-                ((position = e.getLatLng()),
-                (i = position.lat),
-                (n = position.lng))
-            :   ((position = e.coordinate),
-                (i = position.latitude),
-                (n = position.longitude)),
-                0 != leitstelle_latitude && (t = leiststelleMinDistance(i, n)),
-                (
-                    !1 !== alliance_mission_distance &&
-                    t > alliance_mission_distance
-                ) ?
-                    $(
-                        document.getElementById('mission_' + e.mission_id)
-                    ).addClass('mission_alliance_distance_hide')
-                :   $(
-                        document.getElementById('mission_' + e.mission_id)
-                    ).removeClass('mission_alliance_distance_hide'));
-        }
-    });
-}
-function missionVehiclesShowNotInvolved(e) {
-    let t = new Date();
-    ((temp_vehicles_not_involved = Array()),
-        $.each(vehicles_not_involved, function (i, n) {
-            n.mid == e ?
-                ((n.dd = n.dd + Math.floor((t - n.involved_created_at) / 1e3)),
-                vehicleDrive(n))
-            :   temp_vehicles_not_involved.push(n);
-        }),
-        (vehicles_not_involved = temp_vehicles_not_involved));
-}
-function missionInvolved(e, t) {
-    let i = mission_markers_per_id.get(e);
-    i &&
-        (t &&
-            !i.involved &&
-            ((i.involved = t), missionVehiclesShowNotInvolved(e)),
-        (i.involved = t));
-}
-function missionsInvolvedArr(e, t) {
-    for (let i in e) {
-        let e = mission_markers_per_id.get(i);
-        e &&
-            (t &&
-                !e.involved &&
-                ((e.involved = t),
-                missionVehiclesShowNotInvolved(e.mission_id)),
-            (e.involved = t));
-    }
-}
-function missionTimerStart(e) {
-    ((e.date_start = unix_timestamp()),
-        (e.date_diff = unix_timestamp() - e.date_now),
-        (e.date_end_calc = e.date_end + e.date_diff),
-        (e.live_current_value_start = e.live_current_value),
-        mission_timers.push({
-            mission_id: e.id,
-            timer_id: registerMissionProgressTimer(e.id, 1e3 * e.date_end, e),
-        }));
-}
-function missionTimerDelete(e) {
-    $.each(mission_timers, function (t, i) {
-        i.mission_id == e &&
-            (i.timer && window.clearInterval(i.timer),
-            i.timer_id && TickManager.deregisterObject(i.timer_id));
-    });
-}
-function missionsTimerDelete(e) {
-    $.each(mission_timers, function (t, i) {
-        e.includes(i.mission_id) &&
-            (i.timer && window.clearInterval(i.timer),
-            i.timer_id && TickManager.deregisterObject(i.timer_id));
-    });
-}
-function patientTimerDelete(e) {
-    var t = null;
-    return (
-        $.each(patient_timers, function (i, n) {
-            n.patient_id == e && (t = i);
-        }),
-        null != t && patient_timers.splice(t, 1),
-        !0
-    );
-}
-function missionTimer(e) {
-    if (e.live_current_value > e.tv) {
-        if (
-            ((sum_time = e.date_end_calc - e.date_start),
-            (done_time = unix_timestamp() - e.date_start),
-            (percent_done = done_time / sum_time),
-            (percent_todo = 1 - percent_done),
-            (saved_current_value = e.live_current_value_start),
-            (e.live_current_value =
-                Math.ceil(percent_todo * (saved_current_value - e.tv)) + e.tv),
-            e.live_current_value <= 0)
-        )
-            return void missionFinish(e);
-        ($('#mission_bar_' + e.id).visible(!0) || Math.random() < 0.3) &&
-            $('#mission_bar_' + e.id).css('width', e.live_current_value + '%');
-    } else
-        (
-            e.live_current_value <= 0 &&
-            e.live_current_water_damage_pump_value <= 0
-        ) ?
-            missionFinish(e)
-        :   $('#mission_bar_striper_' + e.id)
-                .removeClass('progress-striped-inner-active')
-                .removeClass('progress-striped-inner-active-resource-safe');
-}
-function patientBarColor(e) {
-    e.target_percent <= 0 ?
-        ($('#patient_bar_' + e.id)
-            .removeClass('progress-bar-warning')
-            .addClass('progress-bar-danger'),
-        $('#mission_patients_' + e.id)
-            .removeClass('progress-bar-warning')
-            .addClass('progress-bar-danger'))
-    :   ($('#patient_bar_' + e.id)
-            .removeClass('progress-bar-danger')
-            .addClass('progress-bar-warning'),
-        $('#mission_patients_' + e.id)
-            .removeClass('progress-bar-danger')
-            .addClass('progress-bar-warning'));
-}
-function patientTimer() {
-    var e = Date.now();
-    void 0 === patient_timer_last_call && (patient_timer_last_call = e);
-    var t = e - patient_timer_last_call;
-    ((patient_timer_last_call = e),
-        'number' == typeof t &&
-            NaN != t &&
-            $.each(patient_timers, function (e, i) {
-                var n = i.params;
-                if (n.live_current_value > n.target_percent) {
-                    var s = t / n.miliseconds_by_percent;
-                    const e = $('#patient_bar_' + n.id);
-                    (e.visible(!0) &&
-                        e.css('width', Math.round(n.live_current_value) + '%'),
-                        (n.live_current_value = n.live_current_value - s));
-                } else n.live_current_value < 0 && patientFinish(n);
-            }));
-}
-function patientTimerMission(e) {
-    e.live_current_value > e.target_percent ?
-        ($('#mission_patients_' + e.id).css(
-            'width',
-            e.live_current_value + '%'
-        ),
-        (e.live_current_value = e.live_current_value - 1),
-        window.setTimeout(function () {
-            patientTimerMission(e);
-        }, e.miliseconds_by_percent))
-    :   e.live_current_value < 0 &&
-        $('#mission_patients_' + e.id)
-            .removeClass('progress-bar-danger')
-            .addClass('progress-bar-success')
-            .css('width', '100%');
-}
-function patientFinish(e) {
-    $('#patient_bar_' + e.id)
-        .removeClass('progress-bar-danger')
-        .addClass('progress-bar-success')
-        .css('width', '100%');
-}
-function patientDelete(e) {
-    ($('#patient_' + e).remove(), patientTimerDelete(e));
-}
-function prisonerDelete(e) {
-    $('#prisoner_' + e).remove();
-}
-function missionFinish(e) {
-    e.patients_count <= 0 &&
-        e.prisoners_count <= 0 &&
-        !e.handoff &&
-        ($('#mission_bar_' + e.id)
-            .removeClass('progress-bar-danger')
-            .addClass('progress-bar-success')
-            .css('width', '100%'),
-        missionDelete(e.id));
-}
-function missionDelete(e) {
-    (1 == mobile_bridge_use &&
-        4 == mobile_version &&
-        mobileBridgeAdd('mission_delete', { id: e }),
-        $('#mission_' + e).addClass('mission_deleted'),
-        missionTimerDelete(e));
-    var t = mission_markers_per_id.get(parseInt(e));
-    t && (mission_markers_per_id.delete(t.mission_id), xy_map.removeMarker(t));
-    var i = [];
-    ($.each(mission_markers, function (t, n) {
-        n.mission_id != e && i.push(n);
-    }),
-        (mission_markers = i),
-        missionParticipationFilters.new.missionIds.delete(e),
-        missionParticipationFilters.started.missionIds.delete(e),
-        missionSelectionUpdateButtons(),
-        updateMissionInChat(e));
-}
-function missionsDelete(e) {
-    if (e && 0 !== e.length) {
-        (e.forEach(e => {
-            ($('#mission_' + e).addClass('mission_deleted'),
-                1 == mobile_bridge_use &&
-                    4 == mobile_version &&
-                    mobileBridgeAdd('mission_delete', { id: e }));
-            var t = mission_markers_per_id.get(e);
-            (t &&
-                (mission_markers_per_id.delete(t.mission_id),
-                'undefined' == typeof mapkit ?
-                    t.remove()
-                :   map.removeAnnotation(t)),
-                missionParticipationFilters.new.missionIds.delete(e),
-                missionParticipationFilters.started.missionIds.delete(e));
-        }),
-            missionsTimerDelete(e));
-        var t = [];
-        ($.each(mission_markers, function (i, n) {
-            !1 === e.includes(n.mission_id) && t.push(n);
-        }),
-            (mission_markers = t),
-            missionSelectionUpdateButtons());
-    }
-}
 function vehicle_image_reload() {
     $('.vehicle_image_reload').each(function () {
         if ('false' == $(this).attr('image_replace_allowed')) return !0;
@@ -4094,7 +3618,7 @@ function missionRequest() {
     var t = mission_count_max;
     (eventRunning && (t *= 2),
         6 != mission_speed &&
-            'undefined' != typeof mission_count_max &&
+            void 0 !== mission_count_max &&
             t > e &&
             $.ajax({
                 url: '/mission-generate',
@@ -4459,270 +3983,6 @@ function tellParent(e) {
         mobileBridgeAdd('tell_main', { jscode: e })
     :   top.eval(e);
 }
-function missionSelectionOnly(e) {
-    var t = !!e.data('type-filter'),
-        i = !!e.data('state-filter'),
-        n = !!e.data('participation-filter');
-    if (t) {
-        var s = $('.mission_selection[data-type-filter]'),
-            o = e.hasClass('btn-danger'),
-            a = $('.mission_selection[data-type-filter]').filter(function () {
-                return $(this).hasClass('btn-danger');
-            }),
-            r = $('.mission_selection[data-type-filter]').filter(function () {
-                return $(this).hasClass('btn-success');
-            });
-        $('.mission_selection[data-type-filter]').each(function () {
-            var t = $(this).attr('id');
-            a.length == s.length - 1 ?
-                o ?
-                    e.attr('id') == t ?
-                        missionSelectionActive($('#' + t))
-                    :   missionSelectionDeactive($('#' + t))
-                :   missionSelectionActive($('#' + t))
-            : e.attr('id') == t && r.length == s.length ?
-                missionSelectionActive($('#' + t))
-            :   missionSelectionDeactive($('#' + t));
-        });
-    } else if (i) {
-        ((s = $('.mission_selection[data-state-filter]')),
-            (o = e.hasClass('btn-danger')),
-            (a = $('.mission_selection[data-state-filter]').filter(function () {
-                return $(this).hasClass('btn-danger');
-            })),
-            (r = $('.mission_selection[data-state-filter]').filter(function () {
-                return $(this).hasClass('btn-success');
-            })));
-        $('.mission_selection[data-state-filter]').each(function () {
-            var t = $(this).attr('id');
-            a.length == s.length - 1 ?
-                o ?
-                    e.attr('id') == t ?
-                        missionSelectionActive($('#' + t))
-                    :   missionSelectionDeactive($('#' + t))
-                :   missionSelectionActive($('#' + t))
-            : e.attr('id') == t && r.length == s.length ?
-                missionSelectionActive($('#' + t))
-            :   missionSelectionDeactive($('#' + t));
-        });
-    } else if (n) {
-        ((s = $('.mission_selection[data-participation-filter]')),
-            (o = e.hasClass('btn-danger')),
-            (a = $('.mission_selection[data-participation-filter]').filter(
-                function () {
-                    return $(this).hasClass('btn-danger');
-                }
-            )),
-            (r = $('.mission_selection[data-participation-filter]').filter(
-                function () {
-                    return $(this).hasClass('btn-success');
-                }
-            )));
-        $('.mission_selection[data-participation-filter]').each(function () {
-            var t = $(this).attr('id');
-            a.length == s.length - 1 ?
-                o ?
-                    e.attr('id') == t ?
-                        missionSelectionActive($('#' + t))
-                    :   missionSelectionDeactive($('#' + t))
-                :   missionSelectionActive($('#' + t))
-            : e.attr('id') == t && r.length == s.length ?
-                missionSelectionActive($('#' + t))
-            :   missionSelectionDeactive($('#' + t));
-        });
-    }
-    (missionSelectionActive(e),
-        missionSelectionSave(),
-        updateMissionFilterQueryParams());
-}
-function updateMissionStateButtons() {
-    if (missionMarkerBulkAdd || massAllianceMissionAdd || massMissionAdd)
-        return !0;
-    ((missionStateFilters.unattended.missionIds = []),
-        (missionStateFilters.attended.missionIds = []),
-        (missionStateFilters.finishing.missionIds = []),
-        mission_markers_per_id.forEach(function (e) {
-            (0 == e.vehicle_state &&
-                missionStateFilters.unattended.missionIds.push(e.mission_id),
-                1 == e.vehicle_state &&
-                    missionStateFilters.attended.missionIds.push(e.mission_id),
-                2 == e.vehicle_state &&
-                    missionStateFilters.finishing.missionIds.push(
-                        e.mission_id
-                    ));
-        }));
-    const e = getActiveMissionIds([
-            missionTypeFilters,
-            missionParticipationFilters,
-        ]),
-        t = e.filter(e =>
-            missionStateFilters.unattended.missionIds.includes(e)
-        ),
-        i = e.filter(e => missionStateFilters.attended.missionIds.includes(e)),
-        n = e.filter(e => missionStateFilters.finishing.missionIds.includes(e));
-    ($('#mission_select_unattended .counter').html(t.length),
-        $('#mission_select_attended .counter').html(i.length),
-        $('#mission_select_finishing .counter').html(n.length));
-}
-function updateMissionParticipationButtons() {
-    const e = getActiveMissionIds([missionTypeFilters, missionStateFilters]),
-        t = e.filter(e =>
-            missionParticipationFilters.started.missionIds.has(e)
-        ),
-        i = e.filter(e => missionParticipationFilters.new.missionIds.has(e));
-    ($('#mission_select_started .counter').html(`${t.length}`),
-        $('#mission_select_new .counter').html(`${i.length}`));
-}
-function getActiveMissionIds(
-    e = [missionTypeFilters, missionStateFilters, missionParticipationFilters]
-) {
-    const t = new Set(getAllMissionIds());
-    return (
-        e
-            .flatMap(e => Object.values(e))
-            .filter(e => !e.active)
-            .forEach(e => e.missionIds.forEach(e => t.delete(e))),
-        [...t]
-    );
-}
-function missionSelection(e) {
-    (e.hasClass('btn-success') ?
-        missionSelectionDeactive(e)
-    :   missionSelectionActive(e),
-        missionSelectionSave(),
-        updateMissionFilterQueryParams());
-}
-function missionSelectionActive(e) {
-    e.addClass('btn-success').removeClass('btn-danger');
-    var t = filterMissionList();
-    ($('.missionSideBarEntry').addClass('hidden'),
-        useMissionScrollBarOptimization &&
-            $('#' + e.attr('classShow') + ' > .missionSideBarEntry')
-                .removeClass('missionSideBarEntryScrollInvisible')
-                .css('height', 'auto'),
-        t.removeClass('hidden'),
-        handleFilterChange(e, !0),
-        progressBarScrollUpdate());
-}
-function missionSelectionDeactive(e) {
-    e.removeClass('btn-success').addClass('btn-danger');
-    var t = filterMissionList();
-    ($('.missionSideBarEntry').addClass('hidden'),
-        t.removeClass('hidden'),
-        handleFilterChange(e, !1),
-        progressBarScrollUpdate());
-}
-function handleFilterChange(e, t) {
-    var i = e.data('type-filter'),
-        n = e.data('state-filter'),
-        s = e.data('participation-filter');
-    (i && (missionTypeFilters[i].active = t),
-        n && (missionStateFilters[n].active = t),
-        s && (missionParticipationFilters[s].active = t),
-        updateMissionStateButtons(),
-        updateMissionParticipationButtons(),
-        updateNoMissionsMessages());
-}
-function handleMissionTypeFilterChange(e, t) {
-    ((missionTypeFilters[e].active = t),
-        updateMissionStateButtons(),
-        updateMissionParticipationButtons(),
-        updateNoMissionsMessages());
-}
-function updateNoMissionsMessages() {
-    const e =
-        missionTypeFilters.alliance.missionIds.length <= 0 &&
-        missionTypeFilters.alliance_event.missionIds.length <= 0;
-    ($(document.getElementById('patient_no_transports')).toggle(
-        missionTypeFilters.krankentransporte.active &&
-            !1 === patientTransportMissionsPresent
-    ),
-        $(document.getElementById('critical_no_transports')).toggle(
-            missionTypeFilters.krankentransporte.active &&
-                !1 === criticalTransportMissionsPresent
-        ),
-        $(document.getElementById('alliance_no_mission')).toggle(
-            massAllianceMissionAddCompleted &&
-                (missionTypeFilters.alliance.active ||
-                    missionTypeFilters.alliance_event.active) &&
-                e
-        ),
-        $(document.getElementById('emergency_no')).toggle(
-            massMissionAddCompleted &&
-                missionTypeFilters.emergency.active &&
-                missionTypeFilters.emergency.missionIds.length <= 0
-        ));
-}
-function refreshMissionsFilter() {
-    var e = filterMissionList();
-    ($('.missionSideBarEntry').addClass('hidden'),
-        useMissionScrollBarOptimization &&
-            $('.missionSideBarEntry')
-                .removeClass('missionSideBarEntryScrollInvisible')
-                .css('height', 'auto'),
-        e.removeClass('hidden'));
-}
-function filterMissionList() {
-    var e = $('.mission_selection[data-type-filter].btn-danger')
-            .map(function (e, t) {
-                return $(t).data('type-filter');
-            })
-            .toArray(),
-        t = $('.mission_selection[data-state-filter].btn-danger')
-            .map(function (e, t) {
-                return $(t).data('state-filter');
-            })
-            .toArray(),
-        i = $('.mission_selection[data-participation-filter].btn-danger')
-            .map(function (e, t) {
-                return $(t).data('participation-filter');
-            })
-            .toArray();
-    return $('.missionSideBarEntry').filter(function (n, s) {
-        var o = $(s).data('mission-type-filter'),
-            a = $(s).data('mission-state-filter'),
-            r = $(s).data('mission-participation-filter');
-        return !e.includes(o) && !t.includes(a) && !i.includes(r);
-    });
-}
-function missionSelectionSave(e) {
-    const t = { type: [], state: [], participation: [] };
-    ((e ? $(e) : $('.mission_selection.btn-danger')).each(function () {
-        const e = $(this).data('type-filter'),
-            i = $(this).data('state-filter'),
-            n = $(this).data('participation-filter');
-        (e && t.type.push(e),
-            i && t.state.push(i),
-            n && t.participation.push(n));
-    }),
-        debouncedSaveFilters({ inactive_filters: t }));
-}
-function missionSelectionLoad() {
-    const e = mc_storage.get(STORAGE_KEY_DEACTIVE_MISSION_SELECTION_DEPRECATED);
-    if (e) {
-        (missionSelectionSave(e.map(e => $(`#${e}`))),
-            mc_storage.removeFromCookieStorage(
-                STORAGE_KEY_DEACTIVE_MISSION_SELECTION_DEPRECATED
-            ));
-    }
-    if (
-        ((deactive_selection = filtersData.inactive_filters),
-        deactive_selection)
-    ) {
-        const e = [
-            ...(deactive_selection.type || []).map(e =>
-                $(`[data-type-filter="${e}"]`)
-            ),
-            ...(deactive_selection.state || []).map(e =>
-                $(`[data-state-filter="${e}"]`)
-            ),
-            ...(deactive_selection.participation || []).map(e =>
-                $(`[data-participation-filter="${e}"]`)
-            ),
-        ];
-        for (const t of e) missionSelectionDeactive(t);
-    }
-}
 function leitstelleSelectionOnly(e) {
     $('.leitstelle_selection').each(function () {
         e.attr('id') == $(this).attr('id') ?
@@ -4752,84 +4012,6 @@ function leitstelleSelectionDeactive(e) {
                 leitstelle_building_id +
                 "']"
         ).addClass('hideLeitstelle'));
-}
-function buildingSelectionOnly(e, t) {
-    var i = $("a[id^='building_selection_']"),
-        n = e.hasClass('btn-danger'),
-        s = i.filter(function () {
-            return $(this).hasClass('btn-danger');
-        }),
-        o = i.filter(function () {
-            return $(this).hasClass('btn-success');
-        });
-    ($("a[id^='building_selection_']").each(function () {
-        var t = $(this).attr('id');
-        s.length == i.length - 1 ?
-            n ?
-                e.attr('id') == t ?
-                    buildingSelectionActive($('#' + t))
-                :   buildingSelectionDeactive($('#' + t))
-            :   buildingSelectionActive($('#' + t))
-        : (
-            (e.attr('id') == t && o.length == i.length) ||
-            (s.length > 1 && o.length > 1 && e.attr('id') == t)
-        ) ?
-            buildingSelectionActive($('#' + t))
-        :   buildingSelectionDeactive($('#' + t));
-    }),
-        buildingSelectionSave(),
-        buildingsVehicleLoadVisible(),
-        t && t());
-}
-function buildingSelection(e, t) {
-    (e.hasClass('btn-success') ?
-        buildingSelectionDeactive(e)
-    :   buildingSelectionActive(e),
-        buildingSelectionSave(),
-        buildingsVehicleLoadVisible(),
-        t && t());
-}
-function buildingSelectionActive(button) {
-    var building_type_ids = eval(button.attr('building_type_ids'));
-    (button.addClass('btn-success').removeClass('btn-danger'),
-        $.each(building_type_ids, function (e, t) {
-            $(".building_list[building_type_id='" + t + "']").removeClass(
-                'building-filtered-by-type'
-            );
-        }));
-}
-function buildingSelectionDeactive(button) {
-    var building_type_ids = eval(button.attr('building_type_ids'));
-    void 0 !== building_type_ids &&
-        (button.removeClass('btn-success').addClass('btn-danger'),
-        $.each(building_type_ids, function (e, t) {
-            $(".building_list[building_type_id='" + t + "']").addClass(
-                'building-filtered-by-type'
-            );
-        }));
-}
-function buildingSelectionSave() {
-    ((deactive_buttons = []),
-        $('.building_selection').each(function () {
-            $(this).hasClass('btn-danger') &&
-                deactive_buttons.push($(this).attr('id'));
-        }),
-        mc_storage.setToCookieStorage(
-            STORAGE_KEY_DEACTIVE_BUILDING_SELECTION,
-            deactive_buttons
-        ));
-}
-function buildingSelectionLoad() {
-    ((deactive_selection = mc_storage.get(
-        STORAGE_KEY_DEACTIVE_BUILDING_SELECTION
-    )),
-        deactive_selection &&
-            ('string' == typeof deactive_selection &&
-                (deactive_selection = deactive_selection.split(',')),
-            $.each(deactive_selection, function (e, t) {
-                buildingSelectionDeactive($('#' + t));
-            })),
-        buildingsVehicleLoadVisible());
 }
 function searchStations() {
     var e = $('.stations_search_field').val().toLowerCase();
@@ -4888,11 +4070,17 @@ function bigMapWindowSizeChanged() {
         var e = parseInt($('#missions_outer').height());
         ((e = e - parseInt($('.missions-panel-head').height()) - 15),
             $('#missions-panel-body').css('height', e + 'px'),
+            betaOptions &&
+                betaOptions.missions_vl &&
+                refreshMissionsVLHeight(e),
             (e =
                 (e = parseInt($('#buildings_outer').height())) -
                 parseInt($('#building_panel_heading').height()) -
                 15),
             $('#building_panel_body').css('height', e + 'px'),
+            betaOptions &&
+                betaOptions.buildings_vl &&
+                refreshBuildingsVLHeight(e),
             (e =
                 (e = parseInt($('#chat_outer').height())) -
                 parseInt($('#chat_panel_heading').height()) -
@@ -4977,34 +4165,6 @@ function bigMapWindowInfront(e) {
         e.css('zIndex') != i && e.css('zIndex', i + 1));
     let s = e.position();
     (s.top < 0 && e.css('top', 0), s.left < 0 && e.css('left', 0));
-}
-function toggleVehicleBuilding(e) {
-    var t = 0;
-    ($('#vehicle_building_' + e).is(':visible') ?
-        ($('#building_list_caption_' + e).append(
-            hideVehicleBuildingHelpText(e)
-        ),
-        $('#vehicle_building_' + e).hide())
-    :   ($('#hidden_vehicle_list_caption_' + e).remove(),
-        $('#vehicle_building_' + e).show(),
-        (t = 1)),
-        buildingsVehicleLoadVisible(),
-        $.ajax({
-            type: 'POST',
-            url: '/buildings/' + e + '/showVehiclesAtStartpage',
-            data: { show: t },
-        }));
-}
-function hideVehicleBuildingHelpText(e) {
-    return (
-        '<span class="hidden_vehicle_list_caption" building_id="' +
-        e +
-        '" id="hidden_vehicle_list_caption_' +
-        e +
-        '"><br /><small>' +
-        I18n.t('javascript.vehicles_not_visible') +
-        '</small></span>'
-    );
 }
 function setClientId(e) {
     (mc_storage.setToCookieStorage(STORAGE_KEY_MOBILE_CLIENT_ID, e),
@@ -5120,19 +4280,16 @@ function initFiltersDisplayControl() {
 }
 function initSorting() {
     const e = [
-            '#mission_list',
-            '#mission_list_krankentransporte',
-            '#mission_list_krankentransporte_alliance',
-            '#mission_list_sicherheitswache',
-            '#mission_list_sicherheitswache_alliance',
-            '#mission_list_alliance',
-            '#mission_list_alliance_event',
-        ],
-        t = debounce((e, t) => {
-            saveMissionListSorting(e, t);
-        }, 100);
-    for (const i of e)
-        missionListSorters[i] = initSortable({
+        '#mission_list',
+        '#mission_list_krankentransporte',
+        '#mission_list_krankentransporte_alliance',
+        '#mission_list_sicherheitswache',
+        '#mission_list_sicherheitswache_alliance',
+        '#mission_list_alliance',
+        '#mission_list_alliance_event',
+    ];
+    for (const t of e)
+        missionListSorters[t] = initSortable({
             initialSorting: filtersData.sorting || {
                 key: 'id',
                 direction: 'asc',
@@ -5140,85 +4297,64 @@ function initSorting() {
             tiebreakerKey: 'id',
             $element: $('.missions-sortable-select'),
             type: 'select',
-            containerSelector: i,
+            containerSelector: t,
             sortableElementSelector: '.missionSideBarEntry',
-            afterSort: function (e, n) {
-                (t(e, n),
-                    updateMissionFilterQueryParams(i),
+            afterSort: function (e, i) {
+                (debouncedSaveSorting(e, i),
+                    updateMissionFilterQueryParams(t),
                     missionScrollUpdate());
             },
         });
 }
 function initSortable(e) {
-    function t(t, s) {
-        function a() {
-            return r(t, 'asc');
+    function t(t, i) {
+        function s() {
+            return o(t, 'asc');
         }
-        function r(t, s) {
-            const { tiebreakerKey: o } = e;
-            return function (e, a) {
-                const r = i(
+        function o(t, i) {
+            const { tiebreakerKey: n } = e;
+            return function (e, s) {
+                const o = compareMultiple(
                     $(e).data('sortable-by')[t],
-                    $(a).data('sortable-by')[t]
+                    $(s).data('sortable-by')[t]
                 );
-                let l = r;
-                if (0 === r && o) {
-                    l = n(
-                        $(e).data('sortable-by')[o],
-                        $(a).data('sortable-by')[o]
+                let a = o;
+                if (0 === o && n) {
+                    a = xy_compare(
+                        $(e).data('sortable-by')[n],
+                        $(s).data('sortable-by')[n]
                     );
                 }
                 return (
-                    'desc' === s ?
-                        l > 0 ?
+                    'desc' === i ?
+                        a > 0 ?
                             -1
                         :   1
-                    : l < 0 ? -1
+                    : a < 0 ? -1
                     : 1
                 );
             };
         }
-        (o(s),
-            (sortFn = 'custom' === s && e.customSort ? e.customSort : r(t, s)));
-        let l = $(e.containerSelector + ' ' + e.sortableElementSelector),
-            c = {};
-        l.each(function (e, t) {
-            c[t.id] = e;
+        (n(i),
+            (sortFn = 'custom' === i && e.customSort ? e.customSort : o(t, i)));
+        let a = $(e.containerSelector + ' ' + e.sortableElementSelector),
+            r = {};
+        a.each(function (e, t) {
+            r[t.id] = e;
         });
-        var d = l.sort(a()).sort(sortFn);
-        let u = !1;
-        (d.each(function (e, t) {
-            u || (u = c[t.id] !== e);
+        var l = a.sort(s()).sort(sortFn);
+        let c = !1;
+        (l.each(function (e, t) {
+            c || (c = r[t.id] !== e);
         }),
-            u && d.appendTo(e.containerSelector),
-            e.$element.data('sort-direction', s));
+            c && l.appendTo(e.containerSelector),
+            e.$element.data('sort-direction', i));
     }
-    function i(e, t) {
-        const i = [e].flat(),
-            s = [t].flat(),
-            o = Math.min(i.length, s.length);
-        for (let e = 0; e < o; e++) {
-            const t = n(i[e], s[e]);
-            if (0 !== t) return t;
-        }
-        return 0;
-    }
-    function n(e, t) {
-        return (
-            'string' == typeof e && 'string' == typeof t ?
-                null === localeCompareLanguage ?
-                    e.toString().localeCompare(t.toString())
-                :   e
-                        .toString()
-                        .localeCompare(t.toString(), localeCompareLanguage)
-            :   e - t
-        );
-    }
-    function s(e) {
+    function i(e) {
         var t = e.find('option:selected').data();
         return { key: t.sortKey, direction: t.sortDirection };
     }
-    function o(t) {
+    function n(t) {
         var i = 'desc' === t ? 'desc' : 'asc';
         e.$element.removeClass('desc asc').addClass(i);
     }
@@ -5232,40 +4368,43 @@ function initSortable(e) {
                 .prop('selected', !0),
             updateMissionFilterQueryParams(e.containerSelector));
     }
-    const a = 'select' === e.type ? 'change' : 'click';
+    const s = 'select' === e.type ? 'change' : 'click';
     return (
-        e.$element.on(a, function () {
-            const i = s(e.$element);
-            (t(i.key, i.direction),
-                e.afterSort && e.afterSort(i.key, i.direction));
+        e.$element.on(s, function () {
+            const n = i(e.$element);
+            (t(n.key, n.direction),
+                e.afterSort && e.afterSort(n.key, n.direction));
         }),
         {
-            findSuccessorElement(t, o) {
-                let a = $(
+            findSuccessorElement(t, n) {
+                let s = $(
                     e.containerSelector + ' ' + e.sortableElementSelector
                 );
-                const r = s(e.$element),
-                    { tiebreakerKey: l } = e;
-                let c = !1,
-                    d = null,
-                    u = r.key,
-                    h = r.direction,
-                    p = t[u],
-                    m = l ? t[l] : '';
+                const o = i(e.$element),
+                    { tiebreakerKey: a } = e;
+                let r = !1,
+                    l = null,
+                    c = o.key,
+                    d = o.direction,
+                    u = t[c],
+                    h = a ? t[a] : '';
                 return (
-                    a.each(function (e, t) {
-                        if (!c && o !== t.id) {
-                            const e = i($(t).data('sortable-by')[u], p);
-                            let s = e;
-                            if (0 === e && l) {
-                                s = n($(t).data('sortable-by')[l], m);
+                    s.each(function (e, t) {
+                        if (!r && n !== t.id) {
+                            const e = compareMultiple(
+                                $(t).data('sortable-by')[c],
+                                u
+                            );
+                            let i = e;
+                            if (0 === e && a) {
+                                i = xy_compare($(t).data('sortable-by')[a], h);
                             }
-                            (('desc' === h && s < 0) ||
-                                ('desc' !== h && s > 0)) &&
-                                ((d = t), (c = !0));
+                            (('desc' === d && i < 0) ||
+                                ('desc' !== d && i > 0)) &&
+                                ((l = t), (r = !0));
                         }
                     }),
-                    d
+                    l
                 );
             },
         }
@@ -5553,7 +4692,9 @@ function isValidDate(e, t) {
 }
 function associate_mission_with_group() {}
 function getAllMissionIds() {
-    return mission_markers_per_id.keys();
+    return betaOptions && betaOptions.missions_vl ?
+            missions_data.keys()
+        :   mission_markers_per_id.keys();
 }
 function initCollapseButton(e, t) {
     function i(t) {
@@ -5567,54 +4708,6 @@ function initCollapseButton(e, t) {
             const s = !e.data('collapsed');
             (i(s), t(s), e.data('collapsed', s));
         }));
-}
-function debounce(e, t) {
-    let i;
-    return function (...n) {
-        const s = this;
-        (clearTimeout(i),
-            (i = setTimeout(() => {
-                e.apply(s, n);
-            }, t)));
-    };
-}
-function updateMissionFilterQueryParams(e) {
-    const t = $('#missions-sortable-select').find(':selected'),
-        i = MISSION_SORTER_QUERY_PARAMETER_MAP[t.data('sort-direction')];
-    let n = MISSION_SORTER_QUERY_PARAMETER_MAP[t.data('sort-key')];
-    var s = $('.mission_selection[data-type-filter].btn-danger')
-            .map(function (e, t) {
-                return MISSION_FILTER_QUERY_PARAMETER_MAP[
-                    $(t).data('type-filter')
-                ];
-            })
-            .toArray()
-            .join('_'),
-        o = $('.mission_selection[data-state-filter].btn-danger')
-            .map(function (e, t) {
-                return MISSION_FILTER_QUERY_PARAMETER_MAP[
-                    $(t).data('state-filter')
-                ];
-            })
-            .toArray()
-            .join('_'),
-        a = $('.mission_selection[data-participation-filter].btn-danger')
-            .map(function (e, t) {
-                return MISSION_FILTER_QUERY_PARAMETER_MAP[
-                    $(t).data('participation-filter')
-                ];
-            })
-            .toArray()
-            .join('_');
-    missionFilterQueryParams =
-        'sd=' + i + '&sk=' + n + '&ift=' + s + '&ifs=' + o + '&ifp=' + a;
-    (void 0 === e ?
-        $('.mission-alarm-button, .mission-radio-button')
-    :   $(e + ' .mission-alarm-button, .mission-radio-button')
-    ).each(function (e, t) {
-        const i = $(t).attr('href').split('?')[0];
-        $(t).attr('href', i + '?' + missionFilterQueryParams);
-    });
 }
 function getRouteForVehicleRId(e) {
     return null == e || '' === e ? routes : routes[e];
@@ -5647,6 +4740,16 @@ function updateDeletedChatMessage(e) {
                 '</i>'
         ),
         t.find('.btn-danger').remove());
+}
+function debounce(e, t) {
+    let i;
+    return function (...n) {
+        const s = this;
+        (clearTimeout(i),
+            (i = setTimeout(() => {
+                e.apply(s, n);
+            }, t)));
+    };
 }
 function missionPositionMarkerAdd(e) {
     1 == mobile_bridge_use && mobileBridgeAdd('poi', [e]);
@@ -5845,7 +4948,7 @@ function allianceChat(e) {
 }
 function updateMissionInChat(e) {
     if (!e) return;
-    mission_markers_per_id.has(e) ||
+    missions_data.has(e) ||
         document.querySelectorAll(`.chat_m_caption_${e}`).forEach(function (e) {
             $(e).css('color', '#808080');
         });
@@ -7868,7 +6971,7 @@ function displayJsAlertInfo(e, t, i, n = {}) {
         $(`#${a}`).append(o),
         registerDelayedAlertsRemoval());
 }
-function displayJsToast(e, t, i, n = {}) {
+function displayJsToast(e, t, i = !1, n = {}) {
     const s = 'js-toast',
         o = createJsAlert(e, t, s, n);
     i && $(`.${s}`).alert('close');
@@ -8006,27 +7109,51 @@ function renderInBatches(e, t, i = 100, n) {
     const a = t.length;
     s();
 }
-function startMissionsWorkerIfSupported(e, t, i, n = {}) {
-    const s = selectEncoding();
+function getDeviceDetails() {
+    let e = {};
+    return JSON.stringify(e);
+}
+function compareMultiple(e, t) {
+    const i = [e].flat(),
+        n = [t].flat(),
+        s = Math.min(i.length, n.length);
+    for (let e = 0; e < s; e++) {
+        const t = xy_compare(i[e], n[e]);
+        if (0 !== t) return t;
+    }
+    return 0;
+}
+function xy_compare(e, t) {
+    return (
+        'string' == typeof e && 'string' == typeof t ?
+            null === localeCompareLanguage ?
+                e.toString().localeCompare(t.toString())
+            :   e.toString().localeCompare(t.toString(), localeCompareLanguage)
+        :   e - t
+    );
+}
+function startMissionsWorkerIfSupported(e, t, i, n, s = {}) {
+    const o = selectEncoding();
     if (!window.Worker) return !1;
     if (missionsWorker) return missionsWorker;
-    const o = new Worker(e);
+    ((window.missionMarkerBulkAdd = !0),
+        (window.massMissionAdd = !0),
+        (window.massAllianceMissionAdd = !0));
+    const a = new Worker(e);
     return (
-        (o.onmessage = function (e) {
-            (console.log(
+        (a.onmessage = function (e) {
+            (workerLog(
                 `Received missionsWorker message at ${performance.now()}`
             ),
-                onMissionsWorkerMessage(e));
+                onMissionsWorkerMessage(e, n));
         }),
-        (o.onerror = function (e) {
-            (console.log(
-                `Received missionsWorker error at ${performance.now()}`
-            ),
+        (a.onerror = function (e) {
+            (workerLog(`Received missionsWorker error at ${performance.now()}`),
                 onMissionsWorkerError(e));
         }),
-        console.log(`Started missionsWorker at ${performance.now()}`),
-        o.postMessage({
-            encoding: s,
+        workerLog(`Started missionsWorker at ${performance.now()}`),
+        a.postMessage({
+            encoding: o,
             fetch_path: t,
             context_params: {
                 scripts_to_import: i,
@@ -8043,22 +7170,22 @@ function startMissionsWorkerIfSupported(e, t, i, n = {}) {
                 locale: I18n.locale,
                 defaultLocale: I18n.defaultLocale,
             },
-            fetch_params: n,
+            fetch_params: s,
         }),
-        o
+        a
     );
 }
-function onMissionsWorkerMessage(e) {
-    console.time('parseResponse');
-    const t = parseResponse(e.data);
-    (console.timeEnd('parseResponse'),
-        'missions' === t.type &&
-            (loadMissionsFromWorker(t), terminateMissionsWorker()),
-        'mobileBridge' === t.type && processMobileBridgeCall(t),
-        'error' === t.type && onMissionsWorkerError(t));
+function onMissionsWorkerMessage(e, t) {
+    workerTime('parseResponse');
+    const i = parseResponse(e.data);
+    (workerTimeEnd('parseResponse'),
+        'missions' === i.type && (t ? t(i) : loadMissionsFromWorker(i)),
+        'mobileBridge' === i.type && processMobileBridgeCall(i),
+        'error' === i.type && onMissionsWorkerError(i),
+        terminateMissionsWorker());
 }
 function onMissionsWorkerError(e) {
-    (showErrorOnMissionsFromWorker(e), terminateMissionsWorker());
+    showErrorOnMissionsFromWorker(e);
 }
 function terminateMissionsWorker() {
     (terminateWorker(missionsWorker), (missionsWorker = null));
@@ -8070,18 +7197,18 @@ function startBuildingsWorkerIfSupported(e, t, i, n, s = !1) {
     const a = new Worker(e);
     return (
         (a.onmessage = function (e) {
-            (console.log(
+            (workerLog(
                 `Received buildingsWorker message at ${performance.now()}`
             ),
                 onBuildingsWorkerMessage(e, n));
         }),
         (a.onerror = function (e) {
-            (console.log(
+            (workerLog(
                 `Received buildingsWorker error at ${performance.now()}`
             ),
                 onBuildingsWorkerError(e));
         }),
-        console.log(`Started buildingsWorker at ${performance.now()}`),
+        workerLog(`Started buildingsWorker at ${performance.now()}`),
         a.postMessage({
             encoding: o,
             fetch_path: t,
@@ -8103,9 +7230,9 @@ function startBuildingsWorkerIfSupported(e, t, i, n, s = !1) {
     );
 }
 function onBuildingsWorkerMessage(e, t) {
-    console.time('parseBResponse');
+    workerTime('parseBResponse');
     const i = parseResponse(e.data);
-    (console.timeEnd('parseBResponse'),
+    (workerTimeEnd('parseBResponse'),
         t && 'function' == typeof t ?
             t(i)
         :   ('buildings' === i.type && loadBuildingsFromWorker(i),
@@ -8113,7 +7240,7 @@ function onBuildingsWorkerMessage(e, t) {
         terminateBuildingsWorker());
 }
 function onBuildingsWorkerError(e) {
-    (showErrorOnBuildingsFromWorker(e), terminateBuildingsWorker());
+    showErrorOnBuildingsFromWorker(e);
 }
 function terminateBuildingsWorker() {
     (terminateWorker(buildingsWorker), (buildingsWorker = null));
@@ -8200,7 +7327,7 @@ function terminateWorker(e) {
     e && (e.terminate(), (e = null));
 }
 function processMobileBridgeCall(e) {
-    (console.log(`processMobileBridgeCall: ${e.mission.id}`),
+    (workerLog(`processMobileBridgeCall: ${e.mission.id}`),
         !0 === mobile_bridge_use &&
             !1 === mixed_mobile_desktop_mode &&
             currentMarkerTypeFilterTurnedOn(e.mission.filter_id) &&
@@ -8214,7 +7341,7 @@ function processMobileBridgeCall(e) {
 function parseResponse(e) {
     const t = e instanceof ArrayBuffer ? 'utf8' : 'none',
         i = e;
-    switch ((console.log(`parseResponse with encoding: ${t}`), t)) {
+    switch ((workerLog(`parseResponse with encoding: ${t}`), t)) {
         case 'utf8':
             return JSON.parse(new TextDecoder().decode(i));
         case 'json':
@@ -8225,6 +7352,15 @@ function parseResponse(e) {
 }
 function selectEncoding() {
     return 'none';
+}
+function workerLog(e) {
+    workerDebug && console.log(e);
+}
+function workerTime(e) {
+    workerDebug && console.time(e);
+}
+function workerTimeEnd(e) {
+    workerDebug && console.timeEnd(e);
 }
 function getVehicleTravelTimeCacheKey() {}
 function getVehicleTravelTime(e, t) {
@@ -8371,6 +7507,2224 @@ function updateAAOsTime(e) {
                 }
             }),
             vehicleAAOTraveTimeToUpdate.delete(t)));
+}
+function getClientNavData(e, t) {
+    if (void 0 === t) return;
+    if (void 0 === e?.mission_id) return;
+    if (!betaOptions.missions_vl) return void fetchMissionsNavData(e, t);
+    let i;
+    (isIframe &&
+        window.parent?.missions_data &&
+        window.parent.missions_data.size > 0 &&
+        (i = constructNavDataFromParent(e)),
+        broadcasting_enabled && !i && broadcasting_supported ?
+            fetchMissionsNavDataViaBroadcast(e, t)
+        : i ? t(i)
+        : fetchMissionsNavData(e, t));
+}
+function constructNavDataFromParent(e) {
+    if (
+        void 0 === window.parent?.missions_data ||
+        0 === window.parent.missions_data.size
+    )
+        return;
+    const t = e.mission_id;
+    let i = [];
+    return (
+        window.parent.filteredMissions ?
+            (i = window.parent.filteredMissions(!0))
+        :   ((i = window.parent.missions_data.values()),
+            (i = filterAndSortNavDataFor(i, e))),
+        0 !== i.length ? calculateNavData(t, i, e) : void 0
+    );
+}
+function calculateNavData(e, t, i) {
+    let n = 0;
+    e && ((n = findIndexOf(t, e)), -1 === n && (n = 0));
+    const s = t[n - 1]?.id || -1,
+        o = t[n + 1]?.id || -1,
+        a = Math.max(n, 0),
+        r = Math.max(t.length - (n + 1), 0),
+        l = {};
+    return (
+        (l.mission_id = e),
+        (l.prev_mission_id = s),
+        (l.next_mission_id = o),
+        ('true' !== user_premium && !0 !== user_premium) ||
+            ((l.prev_count = a), (l.next_count = r)),
+        (l.filters = i.filters || i.deactivated_filters),
+        (l.sorting = i.sorting),
+        l
+    );
+}
+function calculateNavDataForMission(e, t) {
+    let i = missions_data.values();
+    return 0 === i.length ?
+            { mission_id: e }
+        :   ((i =
+                shouldAndSortViaVL(t) ?
+                    filteredMissions(!0)
+                :   filterAndSortNavDataFor(i, t)),
+            calculateNavData(e, i, t));
+}
+function shouldAndSortViaVL(e) {
+    if (!(e.encoded_query || e.filters || e.deactivated_filters || e.sorting))
+        return !0;
+    if (!e.encoded_query) return !1;
+    let t = !0;
+    constructMissionFilterQueryParams();
+    let i = e.encoded_query.split('&amp;'),
+        n = new Map();
+    i.forEach(function (e) {
+        let t = e.split('=');
+        2 === t.length && t[1] && n.set(t[0], t[1]);
+    });
+    let s = missionFilterQueryParams.split('&'),
+        o = new Map();
+    return (
+        s.forEach(function (e) {
+            let t = e.split('=');
+            2 === t.length && t[1] && o.set(t[0], t[1]);
+        }),
+        n.forEach(function (e, i) {
+            o.has(i) ? o.get(i) !== e && (t = !1) : (t = !1);
+        }),
+        t && (t = o.size === n.size),
+        t
+    );
+}
+function filterAndSortNavDataFor(e, t) {
+    let i = t.filters || t.deactivated_filters,
+        n = t.sorting;
+    return (e = sortMissionsForNav((e = filteredMissionsForNav(e, i)), n));
+}
+function filteredMissionsForNav(e, t) {
+    let i = t?.type || [],
+        n = t?.state || [],
+        s = t?.participation || [],
+        o = [];
+    (i.forEach(function (e) {
+        o = o.concat(missionTypeFilters[e]?.missionIds);
+    }),
+        n.forEach(function (e) {
+            o = o.concat(missionStateFilters[e]?.missionIds);
+        }),
+        s.forEach(function (e) {
+            o = o.concat(missionParticipationFilters[e]?.missionIds);
+        }));
+    let a = Array.from(e).filter(e => !e.alliance_mission_hide);
+    return ((a = a.filter(e => !o.includes(e.id))), a);
+}
+function sortMissionsForNav(e, t) {
+    const i = {
+        sortKey: t?.key || 'age',
+        sortDirection: t?.direction || 'desc',
+    };
+    return e.sort((e, t) => compareMissions(i, e, t));
+}
+function findIndexOf(e, t) {
+    return e.findIndex(e => e.id === t);
+}
+function fetchMissionsNavDataViaBroadcast(e, t) {
+    requestNavData(e, function (i) {
+        broadcastCallback(i, e, t);
+    });
+}
+function broadcastCallback(e, t, i) {
+    (
+        void 0 === e ||
+        e.failed ||
+        void 0 === e.value?.mission_id ||
+        e.value?.mission_id !== t.mission_id
+    ) ?
+        fetchMissionsNavData(t, i)
+    :   i(e.value);
+}
+function fetchMissionsNavData(e, t) {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: `/missions/${e.mission_id}/nav_from?${e.encoded_query}`,
+        cache: !1,
+    })
+        .success(function (e) {
+            t(e);
+        })
+        .error(function (e) {
+            console.error(e);
+        });
+}
+function checkIfBroadCastingIsSupported() {
+    try {
+        const e = new BroadcastChannel('test-run'),
+            t = new BroadcastChannel('test-run'),
+            i = 'test message';
+        ((e.onmessage = t => {
+            (console.log('broadcasting is supported'),
+                (broadcasting_supported = t.data === i),
+                e.close());
+        }),
+            t.postMessage(i),
+            t.close());
+    } catch (e) {
+        ((broadcasting_supported = !1),
+            console.error('broadcasting is not supported'));
+    }
+}
+function createXYBroadcast(e) {
+    if (!1 === broadcasting_supported) return;
+    if (my_broadcast_id && xy_broadcast_channel) return;
+    const t = crypto.randomUUID();
+    my_broadcast_id = t;
+    const i = Date.now(),
+        n = e;
+    (xy_broadcast_channel = new BroadcastChannel('xy_broadcasting')).onmessage =
+        e => {
+            onMessageReceive(e);
+        };
+    const s = { id: t, created_at: i, type: n, channel: xy_broadcast_channel };
+    (xy_broadcasters.set(t, s), sendHello(t));
+}
+function sendMessage(e) {
+    !1 !== broadcasting_supported &&
+        null != xy_broadcast_channel &&
+        xy_broadcast_channel.postMessage(e);
+}
+function registerBroadcastCallback(e, t) {
+    callbacks.set(e, t);
+}
+function clearCallback(e) {
+    callbacks.delete(e);
+}
+function clearCallbacks() {
+    callbacks.clear();
+}
+function sendHello(e) {
+    sendMessage({
+        id: crypto.randomUUID(),
+        origin: e,
+        target: null,
+        date: Date.now(),
+        type: MESSAGE_TYPES.HELLO,
+        value: 'Hello world',
+    });
+}
+function requestNavData(e, t) {
+    const i = crypto.randomUUID();
+    (registerBroadcastCallback(i, t),
+        setTimeout(function () {
+            callbacks.has(i) &&
+                (console.log(
+                    `did not get broadcast response for ${MESSAGE_TYPES.MISSIONS_NAV_REQUEST} in 500ms, assuming it failed.`
+                ),
+                executeCallbacks({ originalId: i, failed: !0 }));
+        }, 500));
+    sendMessage({
+        id: i,
+        origin: my_broadcast_id,
+        target: null,
+        date: Date.now(),
+        type: MESSAGE_TYPES.MISSIONS_NAV_REQUEST,
+        value: e,
+    });
+}
+function executeCallbacks(e) {
+    const t = e.originalId;
+    t && (callbacks.has(t) && callbacks.get(t)(e), clearCallback(t));
+}
+function onMessageReceive(e) {
+    const t = e.data;
+    t &&
+        (t.type === MESSAGE_TYPES.HELLO && registerNewBroadcaster(t),
+        (null !== t.target && t.target !== my_broadcast_id) ||
+            (processMessageBasedOnType(t), executeCallbacks(t)));
+}
+function registerNewBroadcaster(e) {
+    if (xy_broadcasters.get(e.origin)) return;
+    const t = e.origin,
+        i = xy_broadcasters.get(my_broadcast_id);
+    if (!i) return;
+    if (i.type !== MAIN_BROADCAST_TYPE) return;
+    xy_broadcasters.set(t, {
+        id: t,
+        created_at: Date.now(),
+        type: SECONDARY_BROADCAST_TYPE,
+    });
+    const n = {};
+    ((n[my_broadcast_id] = MAIN_BROADCAST_TYPE),
+        (n[t] = SECONDARY_BROADCAST_TYPE));
+    sendMessage({
+        id: crypto.randomUUID(),
+        originalId: e.id,
+        origin: my_broadcast_id,
+        target: t,
+        date: Date.now(),
+        type: MESSAGE_TYPES.ASSIGN_ROLE,
+        value: n,
+    });
+}
+function processMessageBasedOnType(e) {
+    switch (e.type) {
+        case MESSAGE_TYPES.ASSIGN_ROLE:
+            storeBroadcasterType(e);
+            break;
+        case MESSAGE_TYPES.MISSIONS_NAV_REQUEST:
+            sendMissionsNavDataIfPresent(e);
+            break;
+        case MESSAGE_TYPES.MISSIONS_NAV_RESPONSE:
+            processMissionsNavData(e);
+            break;
+        case MESSAGE_TYPES.HELLO:
+            break;
+        default:
+            console.warn(`Unknown broadcast message type ${JSON.stringify(e)}`);
+    }
+}
+function storeBroadcasterType(e) {
+    if (!xy_broadcasters.get(e.target)) return;
+    const t = xy_broadcasters.get(e.target);
+    t && ((t.type = e.value[e.target]), xy_broadcasters.set(e.target, t));
+    const i = xy_broadcasters.get(e.origin);
+    i && ((i.type = e.value[e.origin]), xy_broadcasters.set(e.origin, i));
+}
+function sendMissionsNavDataIfPresent(e) {
+    if (!1 === xy_broadcasters.has(my_broadcast_id)) return;
+    if (xy_broadcasters.get(my_broadcast_id).type !== MAIN_BROADCAST_TYPE)
+        return;
+    if (!e.value?.mission_id) return;
+    let t = {
+        id: crypto.randomUUID(),
+        originalId: e.id,
+        origin: my_broadcast_id,
+        target: e.origin,
+        date: Date.now(),
+        type: MESSAGE_TYPES.MISSIONS_NAV_RESPONSE,
+    };
+    try {
+        t.value = calculateNavDataForMission(e.value?.mission_id, e.value);
+    } catch (e) {
+        (console.error('sendMissionsNavDataIfPresent error', e),
+            (t.failed = !0));
+    }
+    sendMessage(t);
+}
+function processMissionsNavData(e) {
+    e.originalId && executeCallbacks(e);
+}
+function openBuildingDetails(e) {
+    buildings_data.has(e) ?
+        lightboxOpen(buildBuildingHref(e))
+    :   console.warn('no mission found');
+}
+function buildingSelection(e, t) {
+    betaOptions.buildings_vl ?
+        buildingSelectionNew(e, t)
+    :   buildingSelectionOld(e, t);
+}
+function buildingSelectionNew(e, t) {
+    (e.hasClass('btn-success') ?
+        buildingSelectionDeactive(e)
+    :   buildingSelectionActive(e),
+        buildingSelectionSave(),
+        buildingsVehicleLoadVisible(),
+        t && t());
+}
+function buildingSelectionOld(e, t) {
+    (e.hasClass('btn-success') ?
+        buildingSelectionDeactive(e)
+    :   buildingSelectionActive(e),
+        buildingSelectionSave(),
+        buildingsVehicleLoadVisible(),
+        t && t());
+}
+function buildingSelectionOnly(e, t) {
+    betaOptions.buildings_vl ?
+        buildingSelectionOnlyNew(e, t)
+    :   buildingSelectionOnlyOld(e, t);
+}
+function buildingSelectionOnlyNew(e, t) {
+    var i = $("a[id^='building_selection_']"),
+        n = e.hasClass('btn-danger'),
+        s = i.filter(function () {
+            return $(this).hasClass('btn-danger');
+        }),
+        o = i.filter(function () {
+            return $(this).hasClass('btn-success');
+        });
+    ($("a[id^='building_selection_']").each(function () {
+        var t = $(this).attr('id');
+        s.length == i.length - 1 ?
+            n ?
+                e.attr('id') == t ?
+                    buildingSelectionActive($('#' + t))
+                :   buildingSelectionDeactive($('#' + t))
+            :   buildingSelectionActive($('#' + t))
+        : (
+            (e.attr('id') == t && o.length == i.length) ||
+            (s.length > 1 && o.length > 1 && e.attr('id') == t)
+        ) ?
+            buildingSelectionActive($('#' + t))
+        :   buildingSelectionDeactive($('#' + t));
+    }),
+        buildingSelectionSave(),
+        buildingsVehicleLoadVisible(),
+        t && t());
+}
+function buildingSelectionOnlyOld(e, t) {
+    var i = $("a[id^='building_selection_']"),
+        n = e.hasClass('btn-danger'),
+        s = i.filter(function () {
+            return $(this).hasClass('btn-danger');
+        }),
+        o = i.filter(function () {
+            return $(this).hasClass('btn-success');
+        });
+    ($("a[id^='building_selection_']").each(function () {
+        var t = $(this).attr('id');
+        s.length == i.length - 1 ?
+            n ?
+                e.attr('id') == t ?
+                    buildingSelectionActive($('#' + t))
+                :   buildingSelectionDeactive($('#' + t))
+            :   buildingSelectionActive($('#' + t))
+        : (
+            (e.attr('id') == t && o.length == i.length) ||
+            (s.length > 1 && o.length > 1 && e.attr('id') == t)
+        ) ?
+            buildingSelectionActive($('#' + t))
+        :   buildingSelectionDeactive($('#' + t));
+    }),
+        buildingSelectionSave(),
+        buildingsVehicleLoadVisible(),
+        t && t());
+}
+function buildingSelectionActive(e) {
+    betaOptions.buildings_vl ?
+        buildingSelectionActiveNew(e)
+    :   buildingSelectionActiveOld(e);
+}
+function buildingSelectionActiveNew(e) {
+    e.addClass('btn-success').removeClass('btn-danger');
+}
+function buildingSelectionActiveOld(button) {
+    var building_type_ids = eval(button.attr('building_type_ids'));
+    (button.addClass('btn-success').removeClass('btn-danger'),
+        $.each(building_type_ids, function (e, t) {
+            $(".building_list[building_type_id='" + t + "']").removeClass(
+                'building-filtered-by-type'
+            );
+        }));
+}
+function buildingSelectionDeactive(e) {
+    betaOptions.buildings_vl ?
+        buildingSelectionDeactiveNew(e)
+    :   buildingSelectionDeactiveOld(e);
+}
+function buildingSelectionDeactiveNew(e) {
+    e.removeClass('btn-success').addClass('btn-danger');
+}
+function buildingSelectionDeactiveOld(button) {
+    var building_type_ids = eval(button.attr('building_type_ids'));
+    void 0 !== building_type_ids &&
+        (button.removeClass('btn-success').addClass('btn-danger'),
+        $.each(building_type_ids, function (e, t) {
+            $(".building_list[building_type_id='" + t + "']").addClass(
+                'building-filtered-by-type'
+            );
+        }));
+}
+function buildingSelectionSave() {
+    let e = [];
+    ($('.building_selection').each(function () {
+        $(this).hasClass('btn-danger') && e.push($(this).attr('id'));
+    }),
+        mc_storage.setToCookieStorage(
+            STORAGE_KEY_DEACTIVE_BUILDING_SELECTION,
+            e
+        ));
+}
+function buildingSelectionLoad() {
+    ((deactive_selection = mc_storage.get(
+        STORAGE_KEY_DEACTIVE_BUILDING_SELECTION
+    )),
+        deactive_selection &&
+            ('string' == typeof deactive_selection &&
+                (deactive_selection = deactive_selection.split(',')),
+            $.each(deactive_selection, function (e, t) {
+                buildingSelectionDeactive($('#' + t));
+            })),
+        buildingsVehicleLoadVisible());
+}
+function processBuildingsFromWorker(e, t) {
+    e &&
+        (processBuildingWorkerData(e),
+        building_load_alliance_debounce(),
+        t && t());
+}
+function processBuildingWorkerData(e) {
+    if (!e) return;
+    if (!e.buildings) return void $('#building_no').show();
+    (e.buildings.forEach(e => {
+        e.layer_id = xy_map.getLayerIdByBuildingParams(e);
+        const t = new Proxy(e, object_proxy_handler);
+        (building_markers_cache.push(t),
+            building_markers_params_cache_per_id.set(t.id, t),
+            buildings_data.set(t.id, t),
+            buildingVehicleGraphicCacheAdd(t),
+            buildingMarkerAdd(t),
+            !0 === mobile_bridge_use &&
+                4 === mobile_version &&
+                sendMobileBridge(e));
+    }),
+        e.buildingVehicleGraphicCachePerId &&
+            (buildingVehicleGraphicCachePerId =
+                e.buildingVehicleGraphicCachePerId),
+        e.vehicle_graphics_sorted &&
+            (vehicle_graphics_sorted = e.vehicle_graphics_sorted),
+        e.buildingHTMLElements &&
+            (buildingElementsCacheMap = e.buildingHTMLElements));
+}
+function buildingRenderFnCached(e, t) {
+    const i = document.createElement('template');
+    return (
+        (buildingElementsCacheMap.has(t.id) && !isBDirtyFn(t.id)) ||
+            buildingElementsCacheMap.set(t.id, constructBuildingHTMLElement(t)),
+        (i.innerHTML = buildingElementsCacheMap.get(t.id)),
+        markBDirtyFn(t.id, !1),
+        i.content.firstElementChild
+    );
+}
+function isBDirtyFn(e) {
+    return !!buildings_data.has(e) && buildings_data.get(e).dirty;
+}
+function markBDirtyFn(e, t) {
+    return !!buildings_data.has(e) && (buildings_data.get(e).dirty = t);
+}
+function constructBuildingHTMLElement(e) {
+    let t = [];
+    return (
+        1 === e.vehicles_loaded &&
+            e.vehicles &&
+            e.vehicles.forEach(e => {
+                t.push(vehiclesPerIDMap.get(e));
+            }),
+        prepareBuildingDomElementStr(e, t)
+    );
+}
+function toggleVehicleBuilding(e) {
+    betaOptions.buildings_vl ?
+        toggleVehicleBuildingNew(e)
+    :   toggleVehicleBuildingOld(e);
+}
+function toggleVehicleBuildingNew(e) {
+    let t = 0,
+        i = 0;
+    const n = buildings_data.get(parseInt(e));
+    n ?
+        (!1 === n.show_vehicles_at_startpage ?
+            ((n.show_vehicles_at_startpage = !0), (i = 1))
+        :   ((n.show_vehicles_at_startpage = !1), (t = 1)),
+        $.ajax({
+            type: 'POST',
+            url: `/buildings/${e}/showVehiclesAtStartpage`,
+            data: { show: i },
+            success: function () {
+                refreshBuildingsVirtualList();
+            },
+            error: function () {
+                ((n.show_vehicles_at_startpage = 1 === t),
+                    refreshBuildingsVirtualList());
+            },
+        }))
+    :   refreshBuildingsVirtualList();
+}
+function toggleVehicleBuildingOld(e) {
+    var t = 0;
+    ($('#vehicle_building_' + e).is(':visible') ?
+        ($('#building_list_caption_' + e).append(
+            hideVehicleBuildingHelpText(e)
+        ),
+        $('#vehicle_building_' + e).hide())
+    :   ($('#hidden_vehicle_list_caption_' + e).remove(),
+        $('#vehicle_building_' + e).show(),
+        (t = 1)),
+        buildingsVehicleLoadVisible(),
+        $.ajax({
+            type: 'POST',
+            url: '/buildings/' + e + '/showVehiclesAtStartpage',
+            data: { show: t },
+        }));
+}
+function addVehicleToBuilding(e, t) {
+    const i = buildings_data.get(parseInt(e));
+    if (i) {
+        if (1 !== i.vehicles_loaded)
+            return (markBDirtyFn(e, !0), void updateBuildingVL(e));
+        (i.vehicles.includes(t) || i.vehicles.push(t),
+            markBDirtyFn(e, !0),
+            updateBuildingVL(e));
+    }
+}
+function toggleBuildingSectionsOnAsyncLoading(e) {
+    (toggleErrorBuildingSectionsOnAsyncLoading(!1),
+        $(document.getElementById('building_panel_heading')).toggle(!e),
+        betaOptions.buildings_vl ||
+            $(document.getElementById('building_panel_body')).toggle(!e),
+        $(document.getElementById('buildings_loading')).toggle(e));
+}
+function toggleErrorBuildingSectionsOnAsyncLoading(e) {
+    ($(document.getElementById('buildings_loading')).toggle(!e),
+        $(document.getElementById('buildings_loading_error')).toggle(e));
+}
+function buildBuildingHref(e) {
+    return `/buildings/${e}`;
+}
+function buildingsVehicleLoadVisible() {
+    betaOptions.buildings_vl ?
+        buildingsVehicleLoadVisibleNew()
+    :   buildingsVehicleLoadVisibleOld();
+}
+function buildingsVehicleLoadVisibleNew() {
+    if (!buildingsVirtualScroller) return;
+    const e = buildingsVirtualScroller
+        .getVisibleItems()
+        .map(e => buildings_data.get(e.id));
+    if (e.length <= 0) return;
+    const t = e.filter(e => 1 !== e.vehicles_loaded).map(e => e.id);
+    t.length > 0 &&
+        batchBuildingsVehicleLoadGeneric(t, !0, function (e) {
+            const i = e;
+            (t.forEach(e => {
+                const t = buildings_data.get(e);
+                if (t) {
+                    ((t.vehicles_loaded = 1), (t.vehicles = []));
+                    const n = i[e];
+                    n &&
+                        n.forEach(e => {
+                            (t.vehicles.push(e.id),
+                                vehiclesPerIDMap.set(e.id, e));
+                        });
+                }
+            }),
+                refreshBuildingsVirtualList());
+        });
+}
+function buildingsVehicleLoadVisibleOld() {
+    if (massBuildingAdd) return !0;
+    const e = $(document.getElementById('building_panel_body'));
+    if (e.length <= 0) return !0;
+    const t = 3 * e.height(),
+        i = e.offset().top - t,
+        n = e.offset().top + t;
+    if (e.is(':visible')) {
+        const e = [];
+        ($('.building_list_vehicles:visible').each(function () {
+            const t = $(this).offset().top;
+            t > i &&
+                t < n &&
+                '0' == this.getAttribute('data-vehicles-loaded') &&
+                (this.setAttribute('data-vehicles-loaded', '1'),
+                e.push(parseInt(this.getAttribute('data-building_id'))));
+        }),
+            e.length > 0 && batchBuildingsVehicleLoad(e));
+    }
+}
+function batchBuildingsVehicleLoad(building_id_array) {
+    batchBuildingsVehicleLoadGeneric(building_id_array, !1, function (data) {
+        const arrLength = building_id_array.length;
+        eval(data);
+        let tpl = document.createElement('template');
+        for (var idx = 0; idx < arrLength; idx++) {
+            const e = building_id_array[idx];
+            let t = '';
+            (buildingVehicleCache.has(e) &&
+                (t = buildingVehicleCache.get(e).join('')),
+                buildingVehicleCache.set(e, []));
+            const i = tpl.cloneNode();
+            i.innerHTML = t;
+            const n = document.createDocumentFragment();
+            n.append(i.content);
+            const s = document.getElementById('vehicle_building_' + e);
+            s.replaceChildren(n);
+        }
+    });
+}
+function batchBuildingsVehicleLoadForOverview(e) {
+    batchBuildingsVehicleLoadGeneric(e, !0, function (t) {
+        const i = e.length,
+            n = t;
+        let s = document.createElement('template');
+        for (let t = 0; t < i; t++) {
+            const i = document.createDocumentFragment(),
+                o = s.cloneNode(),
+                a = e[t];
+            ((o.innerHTML = prepVehiclesList(n[a])), i.append(o.content));
+            document
+                .getElementById(`building_list_vehicles_${a}`)
+                .replaceChildren(i);
+        }
+        delayedResizeAllGridItems();
+    });
+}
+function batchBuildingsVehicleLoadGeneric(e, t = !1, i) {
+    $.post(
+        '/buildings/vehiclesMap',
+        { json: t, building_ids: e },
+        function (e) {
+            i && i(e);
+        }
+    );
+}
+function buildingVehicleGraphicCacheAdd(e) {
+    void 0 !== e.vgi &&
+        '' !== e.vgi &&
+        null != e.vgi &&
+        buildingVehicleGraphicCachePerId.set(e.id, e.vgi);
+}
+function processMissionsFromWorker(e, t) {
+    e &&
+        (prepMCounters(),
+        processMissionWorkerData(e),
+        (mission_overview_timer = setInterval(
+            mission_overview_timer_call,
+            1e3
+        )),
+        !1 === isEmptyObject(e.patient_timers) &&
+            e.patient_timers.forEach(function (e) {
+                patient_timers.push(e);
+            }),
+        t && t());
+}
+function prepMCounters() {
+    for (let e in missionTypeFilters) missionTypeFilters[e].missionIds = [];
+    for (let e in missionStateFilters) missionStateFilters[e].missionIds = [];
+    for (let e in missionParticipationFilters)
+        missionParticipationFilters[e].missionIds = new Set();
+}
+function processMissionWorkerData(e) {
+    if (!e) return;
+    if (!e.missions) return;
+    let t = e.missions;
+    e.missionHTMLElements &&
+        (missionElementsCacheStrMap = e.missionHTMLElements);
+    let i = [];
+    (!1 === isEmptyObject(e.participation) && (i = e.participation),
+        addMissionParticipationsFromWorker(i),
+        t.forEach(e => {
+            processMissionElementFromWorker(e);
+            const t = new Proxy(e, object_proxy_handler);
+            (missions_data.set(t.id, t), updateMissionsCount(t));
+        }),
+        addMarkersToMap(t, i),
+        (window.missionMarkerBulkAdd = !1),
+        (window.massMissionAdd = !1),
+        (window.massAllianceMissionAdd = !1),
+        (window.massMissionAddCompleted = !0),
+        (window.massAllianceMissionAddCompleted = !0),
+        missionSelectionUpdateButtons(),
+        updateMissionStateButtons(),
+        updateNoMissionsMessages(),
+        scheduleLoadVehiclesOnTheMove());
+}
+function processMissionFromPush(e) {
+    const t = constructMissionObject(e);
+    (missionElementsCacheStrMap.set(t.id, t.el),
+        (t.el = null),
+        processMissionElementFromWorker(t));
+    const i = new Proxy(t, object_proxy_handler);
+    let n = missions_data.has(i.id);
+    if (
+        ((i.dirty = !0), missions_data.set(i.id, i), updateMissionsCount(i), n)
+    ) {
+        let e = mission_markers_per_id.get(i.id);
+        e && xy_map.updateMarker(i, e);
+    } else xy_map.addMarkerToLayer(null, mission_markers_per_id.get(i.id));
+    refreshMissionsVirtualList();
+}
+function updateMissionPatientsData(e) {
+    if (!e) return;
+    if (!missions_data.has(e.mission_id)) return;
+    const t = missions_data.get(e.mission_id);
+    let i = t.patients_prisoners || {};
+    ((i.patientData = e),
+        (t.patients_prisoners = i),
+        missions_data.set(t.id, t),
+        updateMissionVL(t.id));
+}
+function updateMissionPatient(e) {
+    if (!e) return;
+    if (!missions_data.has(e.mission_id)) return;
+    const t = missions_data.get(e.mission_id);
+    let i = t.patients_prisoners || {},
+        n = i.patients || [],
+        s = n.findIndex(t => t.id === e.id);
+    (-1 === s ? n.push(e) : (n[s] = e),
+        (i.patients = n),
+        (t.patients_prisoners = i),
+        missions_data.set(t.id, t),
+        updateMissionVL(t.id),
+        e.miliseconds_by_percent > 0 &&
+            patient_timers.push({
+                patient_id: e.id,
+                miliseconds_by_percent: e.miliseconds_by_percent,
+                params: e,
+            }));
+}
+function updateMissionPatientProgressVL(e, t, i) {
+    if (!e) return;
+    if (!missions_data.has(e)) return;
+    let n = (missions_data.get(e).patients_prisoners || {}).patients || [],
+        s = n.findIndex(e => e.id === t);
+    -1 !== s &&
+        ((n[s].live_current_value = i),
+        markMDirtyFn(e, !0),
+        updateMissionVL(e));
+}
+function deletePatientVL(e, t) {
+    if (!e) return;
+    if (!missions_data.has(e)) return;
+    const i = missions_data.get(e);
+    let n = i.patients_prisoners || {},
+        s = n.patients || [],
+        o = s.findIndex(e => e.id === t);
+    -1 !== o &&
+        (s.splice(o, 1),
+        (n.patients = s),
+        (i.patients_prisoners = n),
+        missions_data.set(i.id, i),
+        updateMissionVL(i.id));
+}
+function deletePrisonerVL(e, t) {
+    if (!e) return;
+    if (!missions_data.has(e)) return;
+    const i = missions_data.get(e);
+    let n = i.patients_prisoners || {},
+        s = n.prisoners || [],
+        o = s.findIndex(e => e.id === t);
+    -1 !== o &&
+        (s.splice(o, 1),
+        (n.prisoners = s),
+        (i.patients_prisoners = n),
+        missions_data.set(i.id, i),
+        updateMissionVL(i.id));
+}
+function updateMissionPrisoner(e) {
+    if (!e) return;
+    if (!missions_data.has(e.mission_id)) return;
+    const t = missions_data.get(e.mission_id);
+    let i = t.patients_prisoners || {},
+        n = i.prisoners || [],
+        s = n.findIndex(t => t.id === e.id);
+    (-1 === s ? n.push(e) : (n[s] = e),
+        (i.prisoners = n),
+        (t.patients_prisoners = i),
+        missions_data.set(t.id, t),
+        updateMissionVL(t.id));
+}
+function updateMissionsCountdown(e) {
+    if (e <= 0) return;
+    const t = [];
+    (missions_data.forEach(i => {
+        i.countdown_timeleft && ((i.countdown_timeleft -= e), t.push(i.id));
+    }),
+        t.length > 5 ?
+            refreshMissionsVirtualList()
+        :   t.forEach(e => {
+                updateMissionVL(e);
+            }));
+}
+function missionRenderFnCached(e, t) {
+    const i = document.createElement('template');
+    return (
+        (missionElementsCacheStrMap.has(t.id) && !isMDirtyFn(t.id)) ||
+            missionElementsCacheStrMap.set(
+                t.id,
+                constructMissionHTMLElement(t)
+            ),
+        (i.innerHTML = missionElementsCacheStrMap.get(t.id)),
+        markMDirtyFn(t.id, !1),
+        i.content.firstElementChild
+    );
+}
+function isMDirtyFn(e) {
+    return !!missions_data.has(e) && missions_data.get(e).dirty;
+}
+function markMDirtyFn(e, t) {
+    return !!missions_data.has(e) && (missions_data.get(e).dirty = t);
+}
+function constructMissionHTMLElement(e) {
+    return buildMissionElement(e);
+}
+function buildMissionElement(e) {
+    return processMissionElementGeneral(e);
+}
+function compareMissions(e, t, i) {
+    if (t.sortAttr.def_order < i.sortAttr.def_order) return -1;
+    if (t.sortAttr.def_order > i.sortAttr.def_order) return 1;
+    let n = e.sortKey,
+        s = e.sortDirection;
+    const o = compareMultiple(t.sortAttr[n], i.sortAttr[n]);
+    let a = o;
+    if (0 === o) {
+        a = xy_compare(t.sortAttr.id, i.sortAttr.id);
+    }
+    return (
+        'desc' === s ?
+            a > 0 ?
+                -1
+            :   1
+        : a < 0 ? -1
+        : 1
+    );
+}
+function markMissionsDirty() {
+    (missions_data.forEach(e => {
+        e.dirty = !0;
+    }),
+        betaOptions.missions_vl && refreshMissionsVirtualList(!1));
+}
+function openMissionDetails(e) {
+    if (betaOptions.missions_vl && !missions_data.has(e)) return;
+    lightboxOpen(buildMissionHref(e));
+}
+function missionSelectionUpdateButtons() {
+    betaOptions && betaOptions.missions_vl ?
+        missionSelectionUpdateButtonsNew()
+    :   missionSelectionUpdateButtonsOld();
+}
+function updateMissionsCount(e, t = !1) {
+    (0 === e.vehicle_state &&
+        (t ?
+            (missionStateFilters.unattended.missionIds =
+                missionStateFilters.unattended.missionIds.filter(
+                    t => t !== e.id
+                ))
+        :   (missionStateFilters.unattended.missionIds.push(e.id),
+            (missionStateFilters.attended.missionIds =
+                missionStateFilters.attended.missionIds.filter(
+                    t => t !== e.id
+                )),
+            (missionStateFilters.finishing.missionIds =
+                missionStateFilters.finishing.missionIds.filter(
+                    t => t !== e.id
+                )))),
+        1 === e.vehicle_state &&
+            (t ?
+                (missionStateFilters.attended.missionIds =
+                    missionStateFilters.attended.missionIds.filter(
+                        t => t !== e.id
+                    ))
+            :   (missionStateFilters.attended.missionIds.push(e.id),
+                (missionStateFilters.unattended.missionIds =
+                    missionStateFilters.unattended.missionIds.filter(
+                        t => t !== e.id
+                    )),
+                (missionStateFilters.finishing.missionIds =
+                    missionStateFilters.finishing.missionIds.filter(
+                        t => t !== e.id
+                    )))),
+        2 === e.vehicle_state &&
+            (t ?
+                (missionStateFilters.finishing.missionIds =
+                    missionStateFilters.finishing.missionIds.filter(
+                        t => t !== e.id
+                    ))
+            :   (missionStateFilters.finishing.missionIds.push(e.id),
+                (missionStateFilters.attended.missionIds =
+                    missionStateFilters.attended.missionIds.filter(
+                        t => t !== e.id
+                    )),
+                (missionStateFilters.unattended.missionIds =
+                    missionStateFilters.unattended.missionIds.filter(
+                        t => t !== e.id
+                    )))),
+        e.krankentransport ?
+            t ?
+                (missionTypeFilters.krankentransporte.missionIds =
+                    missionTypeFilters.krankentransporte.missionIds.filter(
+                        t => t !== e.id
+                    ))
+            :   missionTypeFilters.krankentransporte.missionIds.push(e.id)
+        : e.sicherheitswache ?
+            t ?
+                (missionTypeFilters.sicherheitswache.missionIds =
+                    missionTypeFilters.sicherheitswache.missionIds.filter(
+                        t => t !== e.id
+                    ))
+            :   missionTypeFilters.sicherheitswache.missionIds.push(e.id)
+        : e.user_id !== user_id && null != e.user_id ?
+            t ?
+                (missionTypeFilters.alliance.missionIds =
+                    missionTypeFilters.alliance.missionIds.filter(
+                        t => t !== e.id
+                    ))
+            :   missionTypeFilters.alliance.missionIds.push(e.id)
+        : e.user_id !== user_id && null == e.user_id ?
+            t ?
+                (missionTypeFilters.alliance_event.missionIds =
+                    missionTypeFilters.alliance_event.missionIds.filter(
+                        t => t !== e.id
+                    ))
+            :   missionTypeFilters.alliance_event.missionIds.push(e.id)
+        : t ?
+            (missionTypeFilters.emergency.missionIds =
+                missionTypeFilters.emergency.missionIds.filter(t => t !== e.id))
+        :   missionTypeFilters.emergency.missionIds.push(e.id),
+        e.ct && (criticalTransportMissionsPresent = !0),
+        e.pt && (patientTransportMissionsPresent = !0));
+}
+function missionSelectionUpdateButtonsNew() {
+    for (let e in missionTypeFilters) {
+        let t = `<img class="icon icons8-Siren-Filled" src=${emergencyIcon_base64} width="15" height="15">`;
+        ('emergency' === e &&
+            (t = `<img class="icon icons8-Siren-Filled" src=${emergencyIcon_base64} width="15" height="15">`),
+            'krankentransporte' === e &&
+                (t = `<img class="icon icons8-Ambulance" src=${krankentransporteIcon_base64} width="15" height="15">`),
+            'alliance' === e &&
+                (t = `<img class="icon icons8-Sell" src=${allianceMIcon_base64} width="15" height="15">`),
+            'alliance_event' === e &&
+                (t = `<img class="icon icons8-Event-Accepted" src=${allianceEventMIcon_base64} width="15" height="15">`),
+            'sicherheitswache' === e &&
+                (t = `<img class="icon icons8-Clock-Filled" src=${sicherheitswacheIcon_base64} width="15" height="15">`));
+        let i = missionTypeFilters[e].missionIds.length,
+            n = missionTypeFilters[e].missionIds.filter(e =>
+                missionStateFilters.unattended.missionIds.includes(e)
+            ).length;
+        $(document.getElementById('mission_select_' + e)).html(
+            `${t} ${n}/${i}`
+        );
+    }
+    (updateMissionStateButtons(),
+        updateMissionParticipationButtons(),
+        updateNoMissionsMessages());
+}
+function missionSelectionUpdateButtonsOld() {
+    if (missionMarkerBulkAdd || massAllianceMissionAdd || massMissionAdd)
+        return !0;
+    let e = 0,
+        t = 0,
+        i = 0,
+        n = 0,
+        s = 0,
+        o = 0,
+        a = 0,
+        r = 0,
+        l = 0,
+        c = 0;
+    ((criticalTransportMissionsPresent = !1),
+        (patientTransportMissionsPresent = !1));
+    for (let e in missionTypeFilters) missionTypeFilters[e].missionIds = [];
+    (mission_markers_per_id.forEach(function (d) {
+        (d.krankentransport ?
+            (i++,
+            missionTypeFilters.krankentransporte.missionIds.push(d.mission_id),
+            0 == d.vehicle_state && n++)
+        : d.sicherheitswache ?
+            (l++,
+            missionTypeFilters.sicherheitswache.missionIds.push(d.mission_id),
+            0 == d.vehicle_state && c++)
+        : d.user_id != user_id && null != d.user_id ?
+            (s++,
+            missionTypeFilters.alliance.missionIds.push(d.mission_id),
+            0 == d.vehicle_state && o++)
+        : d.user_id != user_id && null == d.user_id ?
+            (a++,
+            missionTypeFilters.alliance_event.missionIds.push(d.mission_id),
+            0 == d.vehicle_state && r++)
+        :   (e++,
+            missionTypeFilters.emergency.missionIds.push(d.mission_id),
+            0 == d.vehicle_state && t++),
+            d.ct && (criticalTransportMissionsPresent = !0),
+            d.pt && (patientTransportMissionsPresent = !0));
+    }),
+        $(document.getElementById('mission_select_emergency')).html(
+            `<img class="icon icons8-Siren-Filled" src=${emergencyIcon_base64} width="15" height="15"> ` +
+                t +
+                '/' +
+                e
+        ),
+        $(document.getElementById('mission_select_krankentransporte')).html(
+            `<img class="icon icons8-Ambulance" src=${krankentransporteIcon_base64} width="15" height="15"> ` +
+                n +
+                '/' +
+                i
+        ),
+        $(document.getElementById('mission_select_alliance')).html(
+            `<img class="icon icons8-Sell" src=${allianceMIcon_base64} width="15" height="15"> ` +
+                o +
+                '/' +
+                s
+        ),
+        $(document.getElementById('mission_select_alliance_event')).html(
+            `<img class="icon icons8-Event-Accepted" src=${allianceEventMIcon_base64} width="15" height="15"> ` +
+                r +
+                '/' +
+                a
+        ),
+        $(document.getElementById('mission_select_sicherheitswache')).html(
+            `<img class="icon icons8-Clock-Filled" src=${sicherheitswacheIcon_base64} width="15" height="15"> ` +
+                c +
+                '/' +
+                l
+        ),
+        updateMissionStateButtons(),
+        updateMissionParticipationButtons(),
+        updateNoMissionsMessages());
+}
+function missionSelectionOnly(e) {
+    var t = !!e.data('type-filter'),
+        i = !!e.data('state-filter'),
+        n = !!e.data('participation-filter');
+    if (t) {
+        var s = $('.mission_selection[data-type-filter]'),
+            o = e.hasClass('btn-danger'),
+            a = $('.mission_selection[data-type-filter]').filter(function () {
+                return $(this).hasClass('btn-danger');
+            }),
+            r = $('.mission_selection[data-type-filter]').filter(function () {
+                return $(this).hasClass('btn-success');
+            });
+        $('.mission_selection[data-type-filter]').each(function () {
+            var t = $(this).attr('id');
+            a.length == s.length - 1 ?
+                o ?
+                    e.attr('id') == t ?
+                        missionSelectionActive($('#' + t))
+                    :   missionSelectionDeactive($('#' + t))
+                :   missionSelectionActive($('#' + t))
+            : e.attr('id') == t && r.length == s.length ?
+                missionSelectionActive($('#' + t))
+            :   missionSelectionDeactive($('#' + t));
+        });
+    } else if (i) {
+        ((s = $('.mission_selection[data-state-filter]')),
+            (o = e.hasClass('btn-danger')),
+            (a = $('.mission_selection[data-state-filter]').filter(function () {
+                return $(this).hasClass('btn-danger');
+            })),
+            (r = $('.mission_selection[data-state-filter]').filter(function () {
+                return $(this).hasClass('btn-success');
+            })));
+        $('.mission_selection[data-state-filter]').each(function () {
+            var t = $(this).attr('id');
+            a.length == s.length - 1 ?
+                o ?
+                    e.attr('id') == t ?
+                        missionSelectionActive($('#' + t))
+                    :   missionSelectionDeactive($('#' + t))
+                :   missionSelectionActive($('#' + t))
+            : e.attr('id') == t && r.length == s.length ?
+                missionSelectionActive($('#' + t))
+            :   missionSelectionDeactive($('#' + t));
+        });
+    } else if (n) {
+        ((s = $('.mission_selection[data-participation-filter]')),
+            (o = e.hasClass('btn-danger')),
+            (a = $('.mission_selection[data-participation-filter]').filter(
+                function () {
+                    return $(this).hasClass('btn-danger');
+                }
+            )),
+            (r = $('.mission_selection[data-participation-filter]').filter(
+                function () {
+                    return $(this).hasClass('btn-success');
+                }
+            )));
+        $('.mission_selection[data-participation-filter]').each(function () {
+            var t = $(this).attr('id');
+            a.length == s.length - 1 ?
+                o ?
+                    e.attr('id') == t ?
+                        missionSelectionActive($('#' + t))
+                    :   missionSelectionDeactive($('#' + t))
+                :   missionSelectionActive($('#' + t))
+            : e.attr('id') == t && r.length == s.length ?
+                missionSelectionActive($('#' + t))
+            :   missionSelectionDeactive($('#' + t));
+        });
+    }
+    (missionSelectionActive(e),
+        missionSelectionSave(),
+        updateMissionFilterQueryParams());
+}
+function updateMissionStateButtons() {
+    betaOptions && betaOptions.missions_vl ?
+        updateMissionStateButtonsNew()
+    :   updateMissionStateButtonsOld();
+}
+function updateMissionStateButtonsNew() {
+    const e = getActiveMissionIds([
+            missionTypeFilters,
+            missionParticipationFilters,
+        ]),
+        t = e.filter(e =>
+            missionStateFilters.unattended.missionIds.includes(e)
+        ),
+        i = e.filter(e => missionStateFilters.attended.missionIds.includes(e)),
+        n = e.filter(e => missionStateFilters.finishing.missionIds.includes(e));
+    ($('#mission_select_unattended .counter').html(t.length),
+        $('#mission_select_attended .counter').html(i.length),
+        $('#mission_select_finishing .counter').html(n.length));
+}
+function updateMissionStateButtonsOld() {
+    if (missionMarkerBulkAdd || massAllianceMissionAdd || massMissionAdd)
+        return !0;
+    ((missionStateFilters.unattended.missionIds = []),
+        (missionStateFilters.attended.missionIds = []),
+        (missionStateFilters.finishing.missionIds = []),
+        mission_markers_per_id.forEach(function (e) {
+            (0 == e.vehicle_state &&
+                missionStateFilters.unattended.missionIds.push(e.mission_id),
+                1 == e.vehicle_state &&
+                    missionStateFilters.attended.missionIds.push(e.mission_id),
+                2 == e.vehicle_state &&
+                    missionStateFilters.finishing.missionIds.push(
+                        e.mission_id
+                    ));
+        }),
+        updateMissionStateButtonsNew());
+}
+function updateMissionParticipationButtons() {
+    const e = getActiveMissionIds([missionTypeFilters, missionStateFilters]),
+        t = e.filter(e =>
+            missionParticipationFilters.started.missionIds.has(e)
+        ),
+        i = e.filter(e => missionParticipationFilters.new.missionIds.has(e));
+    ($('#mission_select_started .counter').html(`${t.length}`),
+        $('#mission_select_new .counter').html(`${i.length}`));
+}
+function getActiveMissionIds(
+    e = [missionTypeFilters, missionStateFilters, missionParticipationFilters]
+) {
+    const t = new Set(getAllMissionIds());
+    return (
+        e
+            .flatMap(e => Object.values(e))
+            .filter(e => !e.active)
+            .forEach(e => e.missionIds.forEach(e => t.delete(e))),
+        [...t]
+    );
+}
+function missionSelection(e) {
+    (e.hasClass('btn-success') ?
+        missionSelectionDeactive(e)
+    :   missionSelectionActive(e),
+        missionSelectionSave(),
+        updateMissionFilterQueryParams());
+}
+function missionSelectionActive(e) {
+    betaOptions.missions_vl ?
+        missionSelectionActiveNew(e)
+    :   missionSelectionActiveOld(e);
+}
+function missionSelectionActiveNew(e) {
+    (e.addClass('btn-success').removeClass('btn-danger'),
+        handleFilterChange(e, !0));
+}
+function missionSelectionActiveOld(e) {
+    e.addClass('btn-success').removeClass('btn-danger');
+    var t = filterMissionList();
+    ($('.missionSideBarEntry').addClass('hidden'),
+        useMissionScrollBarOptimization &&
+            $('#' + e.attr('classShow') + ' > .missionSideBarEntry')
+                .removeClass('missionSideBarEntryScrollInvisible')
+                .css('height', 'auto'),
+        t.removeClass('hidden'),
+        handleFilterChange(e, !0),
+        progressBarScrollUpdate());
+}
+function missionSelectionDeactive(e) {
+    betaOptions.missions_vl ?
+        missionSelectionDeactiveNew(e)
+    :   missionSelectionDeactiveOld(e);
+}
+function missionSelectionDeactiveNew(e) {
+    (e.removeClass('btn-success').addClass('btn-danger'),
+        handleFilterChange(e, !1));
+}
+function missionSelectionDeactiveOld(e) {
+    e.removeClass('btn-success').addClass('btn-danger');
+    var t = filterMissionList();
+    ($('.missionSideBarEntry').addClass('hidden'),
+        t.removeClass('hidden'),
+        handleFilterChange(e, !1),
+        progressBarScrollUpdate());
+}
+function handleFilterChange(e, t) {
+    var i = e.data('type-filter'),
+        n = e.data('state-filter'),
+        s = e.data('participation-filter');
+    (i && (missionTypeFilters[i].active = t),
+        n && (missionStateFilters[n].active = t),
+        s && (missionParticipationFilters[s].active = t),
+        updateMissionStateButtons(),
+        updateMissionParticipationButtons(),
+        updateNoMissionsMessages());
+}
+function handleMissionTypeFilterChange(e, t) {
+    ((missionTypeFilters[e].active = t),
+        updateMissionStateButtons(),
+        updateMissionParticipationButtons(),
+        updateNoMissionsMessages());
+}
+function updateNoMissionsMessages() {
+    const e =
+        missionTypeFilters.alliance.missionIds.length <= 0 &&
+        missionTypeFilters.alliance_event.missionIds.length <= 0;
+    ($(document.getElementById('patient_no_transports')).toggle(
+        missionTypeFilters.krankentransporte.active &&
+            !1 === patientTransportMissionsPresent
+    ),
+        $(document.getElementById('critical_no_transports')).toggle(
+            missionTypeFilters.krankentransporte.active &&
+                !1 === criticalTransportMissionsPresent
+        ),
+        $(document.getElementById('alliance_no_mission')).toggle(
+            massAllianceMissionAddCompleted &&
+                (missionTypeFilters.alliance.active ||
+                    missionTypeFilters.alliance_event.active) &&
+                e
+        ),
+        $(document.getElementById('emergency_no')).toggle(
+            massMissionAddCompleted &&
+                missionTypeFilters.emergency.active &&
+                missionTypeFilters.emergency.missionIds.length <= 0
+        ));
+}
+function addMissionParticipationsFromWorker(e) {
+    for (const t of e)
+        (missionParticipationFilters.new.missionIds.delete(t),
+            missionParticipationFilters.started.missionIds.add(t));
+    (updateMissionParticipationButtons(), refreshMissionsFilter());
+}
+function refreshMissionsFilter() {
+    betaOptions && betaOptions.missions_vl ?
+        refreshMissionsFilterNew()
+    :   refreshMissionsFilterOld();
+}
+function refreshMissionsFilterNew() {
+    refreshMissionsVirtualList();
+}
+function refreshMissionsFilterOld() {
+    var e = filterMissionList();
+    ($('.missionSideBarEntry').addClass('hidden'),
+        useMissionScrollBarOptimization &&
+            $('.missionSideBarEntry')
+                .removeClass('missionSideBarEntryScrollInvisible')
+                .css('height', 'auto'),
+        e.removeClass('hidden'));
+}
+function filterMissionList() {
+    var e = $('.mission_selection[data-type-filter].btn-danger')
+            .map(function (e, t) {
+                return $(t).data('type-filter');
+            })
+            .toArray(),
+        t = $('.mission_selection[data-state-filter].btn-danger')
+            .map(function (e, t) {
+                return $(t).data('state-filter');
+            })
+            .toArray(),
+        i = $('.mission_selection[data-participation-filter].btn-danger')
+            .map(function (e, t) {
+                return $(t).data('participation-filter');
+            })
+            .toArray();
+    return $('.missionSideBarEntry').filter(function (n, s) {
+        var o = $(s).data('mission-type-filter'),
+            a = $(s).data('mission-state-filter'),
+            r = $(s).data('mission-participation-filter');
+        return !e.includes(o) && !t.includes(a) && !i.includes(r);
+    });
+}
+function missionSelectionSave(e) {
+    const t = { type: [], state: [], participation: [] };
+    ((e ? $(e) : $('.mission_selection.btn-danger')).each(function () {
+        const e = $(this).data('type-filter'),
+            i = $(this).data('state-filter'),
+            n = $(this).data('participation-filter');
+        (e && t.type.push(e),
+            i && t.state.push(i),
+            n && t.participation.push(n));
+    }),
+        debouncedSaveFilters({ inactive_filters: t }));
+}
+function missionSelectionLoad() {
+    const e = mc_storage.get(STORAGE_KEY_DEACTIVE_MISSION_SELECTION_DEPRECATED);
+    if (e) {
+        (missionSelectionSave(e.map(e => $(`#${e}`))),
+            mc_storage.removeFromCookieStorage(
+                STORAGE_KEY_DEACTIVE_MISSION_SELECTION_DEPRECATED
+            ));
+    }
+    let t = filtersData.inactive_filters;
+    if (t) {
+        const e = [
+            ...(t.type || []).map(e => $(`[data-type-filter="${e}"]`)),
+            ...(t.state || []).map(e => $(`[data-state-filter="${e}"]`)),
+            ...(t.participation || []).map(e =>
+                $(`[data-participation-filter="${e}"]`)
+            ),
+        ];
+        for (const t of e) missionSelectionDeactive(t);
+    }
+}
+function readMissionsSortOptions() {
+    const e = $('#missions-sortable-select').find(':selected'),
+        t = e.data('sort-direction');
+    return { sortKey: e.data('sort-key'), sortDirection: t };
+}
+function constructMissionFilterQueryParams() {
+    const e = readMissionsSortOptions();
+    let t = MISSION_SORTER_QUERY_PARAMETER_MAP[e.sortDirection],
+        i = MISSION_SORTER_QUERY_PARAMETER_MAP[e.sortKey],
+        n = $('.mission_selection[data-type-filter].btn-danger')
+            .map(function (e, t) {
+                return MISSION_FILTER_QUERY_PARAMETER_MAP[
+                    $(t).data('type-filter')
+                ];
+            })
+            .toArray()
+            .join('_'),
+        s = $('.mission_selection[data-state-filter].btn-danger')
+            .map(function (e, t) {
+                return MISSION_FILTER_QUERY_PARAMETER_MAP[
+                    $(t).data('state-filter')
+                ];
+            })
+            .toArray()
+            .join('_'),
+        o = $('.mission_selection[data-participation-filter].btn-danger')
+            .map(function (e, t) {
+                return MISSION_FILTER_QUERY_PARAMETER_MAP[
+                    $(t).data('participation-filter')
+                ];
+            })
+            .toArray()
+            .join('_');
+    missionFilterQueryParams = `sd=${t}&sk=${i}&ift=${n}&ifs=${s}&ifp=${o}`;
+}
+function updateMissionFilterQueryParams(e) {
+    let t;
+    (constructMissionFilterQueryParams(),
+        betaOptions.missions_vl ?
+            (markMissionsDirty(), (t = $('.mission-radio-button')))
+        :   (t =
+                void 0 === e ?
+                    $('.mission-alarm-button, .mission-radio-button')
+                :   $(e + ' .mission-alarm-button, .mission-radio-button')),
+        t &&
+            t.each(function (e, t) {
+                const i = $(t).attr('href').split('?')[0];
+                $(t).attr('href', i + '?' + missionFilterQueryParams);
+            }));
+}
+function progressBarScrollUpdate() {
+    if (missionMarkerBulkAdd || massAllianceMissionAdd || massMissionAdd)
+        return !0;
+    var e = [];
+    ($('.progress-striped-inner-active').each(function () {
+        $(this).visible(!0) || e.push($(this).attr('id'));
+    }),
+        $(
+            e
+                .map(function (e) {
+                    return '#' + e;
+                })
+                .join(', ')
+        )
+            .addClass('progress-striped-inner-active-resource-safe')
+            .removeClass('progress-striped-inner-active'));
+    var t = [];
+    ($('.progress-striped-inner-active-resource-safe').each(function () {
+        $(this).visible(!0) && t.push($(this).attr('id'));
+    }),
+        $(
+            t
+                .map(function (e) {
+                    return '#' + e;
+                })
+                .join(', ')
+        )
+            .removeClass('progress-striped-inner-active-resource-safe')
+            .addClass('progress-striped-inner-active'),
+        missionScrollUpdate());
+}
+function missionScrollUpdate() {
+    if (useMissionScrollBarOptimization) {
+        var e =
+                $('#missions-panel-body').offset().top -
+                5 * $('#missions-panel-body').height(),
+            t =
+                $('#missions-panel-body').offset().top +
+                5 * $('#missions-panel-body').height();
+        $('#missions_outer').is(':visible') &&
+            $('.missionSideBarEntry').each(function () {
+                $(this).hasClass('missionSideBarEntryScrollInvisible') ?
+                    $(this).offset().top < t &&
+                    $(this).offset().top > e &&
+                    $(this)
+                        .removeClass('missionSideBarEntryScrollInvisible')
+                        .css('height', 'auto')
+                :   ($(this).offset().top > t || $(this).offset().top < e) &&
+                    ($(this).css('height', $(this).height() + 'px'),
+                    $(this).addClass('missionSideBarEntryScrollInvisible'));
+            });
+    }
+}
+function leiststelleMinDistance(e, t) {
+    var i = -1;
+    return (
+        $.each(leitstelles, function (n, s) {
+            var o = Math.round(distance(s.latitude, s.longitude, e, t));
+            (-1 == i || i > o) && (i = o);
+        }),
+        i
+    );
+}
+function missionMarkerDistanceUpdate() {
+    mission_markers_per_id.forEach(function (e) {
+        if (user_id != e.user_id) {
+            var t = 0,
+                i = 0,
+                n = 0;
+            ('undefined' == typeof mapkit ?
+                ((position = e.getLatLng()),
+                (i = position.lat),
+                (n = position.lng))
+            :   ((position = e.coordinate),
+                (i = position.latitude),
+                (n = position.longitude)),
+                0 != leitstelle_latitude && (t = leiststelleMinDistance(i, n)),
+                (
+                    !1 !== alliance_mission_distance &&
+                    t > alliance_mission_distance
+                ) ?
+                    $(
+                        document.getElementById('mission_' + e.mission_id)
+                    ).addClass('mission_alliance_distance_hide')
+                :   $(
+                        document.getElementById('mission_' + e.mission_id)
+                    ).removeClass('mission_alliance_distance_hide'));
+        }
+    });
+}
+function missionVehiclesShowNotInvolved(e) {
+    let t = new Date();
+    ((temp_vehicles_not_involved = Array()),
+        $.each(vehicles_not_involved, function (i, n) {
+            n.mid == e ?
+                ((n.dd = n.dd + Math.floor((t - n.involved_created_at) / 1e3)),
+                vehicleDrive(n))
+            :   temp_vehicles_not_involved.push(n);
+        }),
+        (vehicles_not_involved = temp_vehicles_not_involved));
+}
+function missionInvolved(e, t) {
+    let i = mission_markers_per_id.get(e);
+    i &&
+        (t &&
+            !i.involved &&
+            ((i.involved = t), missionVehiclesShowNotInvolved(e)),
+        (i.involved = t));
+}
+function missionsInvolvedArr(e, t) {
+    for (let i in e) {
+        let e = mission_markers_per_id.get(i);
+        e &&
+            (t &&
+                !e.involved &&
+                ((e.involved = t),
+                missionVehiclesShowNotInvolved(e.mission_id)),
+            (e.involved = t));
+    }
+}
+function missionTimerStart(e) {
+    ((e.date_start = unix_timestamp()),
+        (e.date_diff = unix_timestamp() - e.date_now),
+        (e.date_end_calc = e.date_end + e.date_diff),
+        (e.live_current_value_start = e.live_current_value),
+        mission_timers.push({
+            mission_id: e.id,
+            timer_id: registerMissionProgressTimer(e.id, 1e3 * e.date_end, e),
+        }));
+}
+function missionTimerDelete(e) {
+    $.each(mission_timers, function (t, i) {
+        i.mission_id == e &&
+            (i.timer && window.clearInterval(i.timer),
+            i.timer_id && TickManager.deregisterObject(i.timer_id));
+    });
+}
+function missionsTimerDelete(e) {
+    $.each(mission_timers, function (t, i) {
+        e.includes(i.mission_id) &&
+            (i.timer && window.clearInterval(i.timer),
+            i.timer_id && TickManager.deregisterObject(i.timer_id));
+    });
+}
+function patientTimerDelete(e) {
+    var t = null;
+    return (
+        $.each(patient_timers, function (i, n) {
+            n.patient_id == e && (t = i);
+        }),
+        null != t && patient_timers.splice(t, 1),
+        !0
+    );
+}
+function missionTimer(e) {
+    if (e.live_current_value > e.tv) {
+        if (
+            ((sum_time = e.date_end_calc - e.date_start),
+            (done_time = unix_timestamp() - e.date_start),
+            (percent_done = done_time / sum_time),
+            (percent_todo = 1 - percent_done),
+            (saved_current_value = e.live_current_value_start),
+            (e.live_current_value =
+                Math.ceil(percent_todo * (saved_current_value - e.tv)) + e.tv),
+            e.live_current_value <= 0)
+        )
+            return void missionFinish(e);
+        if (betaOptions.missions_vl) {
+            const t = missions_data.get(e.id);
+            if (!t) return;
+            return (
+                (t.live_current_value = e.live_current_value),
+                void updateMissionVL(t.id)
+            );
+        }
+        ($('#mission_bar_' + e.id).visible(!0) || Math.random() < 0.3) &&
+            $('#mission_bar_' + e.id).css('width', e.live_current_value + '%');
+    } else
+        (
+            e.live_current_value <= 0 &&
+            e.live_current_water_damage_pump_value <= 0
+        ) ?
+            missionFinish(e)
+        :   $('#mission_bar_striper_' + e.id)
+                .removeClass('progress-striped-inner-active')
+                .removeClass('progress-striped-inner-active-resource-safe');
+}
+function patientBarColor(e) {
+    e.target_percent <= 0 ?
+        ($('#patient_bar_' + e.id)
+            .removeClass('progress-bar-warning')
+            .addClass('progress-bar-danger'),
+        $('#mission_patients_' + e.id)
+            .removeClass('progress-bar-warning')
+            .addClass('progress-bar-danger'))
+    :   ($('#patient_bar_' + e.id)
+            .removeClass('progress-bar-danger')
+            .addClass('progress-bar-warning'),
+        $('#mission_patients_' + e.id)
+            .removeClass('progress-bar-danger')
+            .addClass('progress-bar-warning'));
+}
+function patientTimer() {
+    var e = Date.now();
+    void 0 === patient_timer_last_call && (patient_timer_last_call = e);
+    var t = e - patient_timer_last_call;
+    ((patient_timer_last_call = e),
+        'number' == typeof t &&
+            NaN != t &&
+            $.each(patient_timers, function (e, i) {
+                var n = i.params;
+                if (n.live_current_value > n.target_percent) {
+                    var s = t / n.miliseconds_by_percent;
+                    if (
+                        ((n.live_current_value = n.live_current_value - s),
+                        betaOptions.missions_vl)
+                    )
+                        return void updateMissionPatientProgressVL(
+                            n.mission_id,
+                            n.id,
+                            n.live_current_value
+                        );
+                    const e = $('#patient_bar_' + n.id);
+                    e.visible(!0) &&
+                        e.css('width', Math.round(n.live_current_value) + '%');
+                } else n.live_current_value < 0 && patientFinish(n);
+            }));
+}
+function patientTimerMission(e) {
+    e.live_current_value > e.target_percent ?
+        ($('#mission_patients_' + e.id).css(
+            'width',
+            e.live_current_value + '%'
+        ),
+        (e.live_current_value = e.live_current_value - 1),
+        window.setTimeout(function () {
+            patientTimerMission(e);
+        }, e.miliseconds_by_percent))
+    :   e.live_current_value < 0 &&
+        $('#mission_patients_' + e.id)
+            .removeClass('progress-bar-danger')
+            .addClass('progress-bar-success')
+            .css('width', '100%');
+}
+function patientFinish(e) {
+    $('#patient_bar_' + e.id)
+        .removeClass('progress-bar-danger')
+        .addClass('progress-bar-success')
+        .css('width', '100%');
+}
+function patientDelete(e, t) {
+    (betaOptions.missions_vl ?
+        deletePatientVL(t, e)
+    :   $('#patient_' + e).remove(),
+        patientTimerDelete(e));
+}
+function prisonerDelete(e, t) {
+    betaOptions.missions_vl ?
+        deletePrisonerVL(t, e)
+    :   $('#prisoner_' + e).remove();
+}
+function missionFinish(e) {
+    e.patients_count <= 0 &&
+        e.prisoners_count <= 0 &&
+        !e.handoff &&
+        ($('#mission_bar_' + e.id)
+            .removeClass('progress-bar-danger')
+            .addClass('progress-bar-success')
+            .css('width', '100%'),
+        missionDelete(e.id));
+}
+function missionDelete(e) {
+    (1 == mobile_bridge_use &&
+        4 == mobile_version &&
+        mobileBridgeAdd('mission_delete', { id: e }),
+        betaOptions.missions_vl ?
+            (missions_data.delete(e), refreshMissionsVirtualList())
+        :   $('#mission_' + e).addClass('mission_deleted'),
+        missionTimerDelete(e));
+    var t = mission_markers_per_id.get(parseInt(e));
+    t && (mission_markers_per_id.delete(t.mission_id), xy_map.removeMarker(t));
+    var i = [];
+    ($.each(mission_markers, function (t, n) {
+        n.mission_id != e && i.push(n);
+    }),
+        (mission_markers = i),
+        missionParticipationFilters.new.missionIds.delete(e),
+        missionParticipationFilters.started.missionIds.delete(e),
+        missionSelectionUpdateButtons(),
+        updateMissionInChat(e),
+        betaOptions.missions_vl && refreshMissionsVirtualList());
+}
+function missionsDelete(e) {
+    if (e && 0 !== e.length) {
+        (e.forEach(e => {
+            (betaOptions.missions_vl ?
+                missions_data.delete(e)
+            :   $('#mission_' + e).addClass('mission_deleted'),
+                1 == mobile_bridge_use &&
+                    4 == mobile_version &&
+                    mobileBridgeAdd('mission_delete', { id: e }));
+            var t = mission_markers_per_id.get(e);
+            (t &&
+                (mission_markers_per_id.delete(t.mission_id),
+                'undefined' == typeof mapkit ?
+                    t.remove()
+                :   map.removeAnnotation(t)),
+                missionParticipationFilters.new.missionIds.delete(e),
+                missionParticipationFilters.started.missionIds.delete(e));
+        }),
+            missionsTimerDelete(e));
+        var t = [];
+        ($.each(mission_markers, function (i, n) {
+            !1 === e.includes(n.mission_id) && t.push(n);
+        }),
+            (mission_markers = t),
+            missionSelectionUpdateButtons(),
+            betaOptions.missions_vl && refreshMissionsVirtualList());
+    }
+}
+function buildMissionHref(e) {
+    return (
+        constructMissionFilterQueryParams(),
+        `/missions/${e}?${missionFilterQueryParams}`
+    );
+}
+function addMissionParticipations(e) {
+    for (const t of e) mission_participation_add(t);
+    (updateMissionStateButtons(),
+        updateMissionParticipationButtons(),
+        refreshMissionsFilter());
+}
+function removeMissionParticipations(e) {
+    for (const t of e) mission_participation_remove(t);
+    (updateMissionStateButtons(),
+        updateMissionParticipationButtons(),
+        refreshMissionsFilter());
+}
+function mission_participation_add(e) {
+    betaOptions.missions_vl ?
+        mission_participation_addNew(e)
+    :   mission_participation_addOld(e);
+}
+function mission_participation_addNew(e) {
+    (missionParticipationFilters.new.missionIds.delete(e),
+        missionParticipationFilters.started.missionIds.add(e));
+}
+function mission_participation_addOld(e) {
+    ($('#mission_participant_' + e).removeClass('hidden'),
+        $('#mission_participant_new_' + e).addClass('hidden'),
+        $(`#mission_${e}`).data('mission-participation-filter', 'started'),
+        missionParticipationFilters.new.missionIds.delete(e),
+        missionParticipationFilters.started.missionIds.add(e));
+}
+function mission_participation_remove(e) {
+    betaOptions.missions_vl ?
+        mission_participation_removeNew(e)
+    :   mission_participation_removeOld(e);
+}
+function mission_participation_removeNew(e) {
+    (missionParticipationFilters.new.missionIds.add(e),
+        missionParticipationFilters.started.missionIds.delete(e));
+}
+function mission_participation_removeOld(e) {
+    ($('#mission_participant_' + e).removeClass('hidden'),
+        $('#mission_participant_new_' + e).addClass('hidden'),
+        $(`#mission_${e}`).data('mission-participation-filter', 'started'),
+        missionParticipationFilters.new.missionIds.delete(e),
+        missionParticipationFilters.started.missionIds.add(e));
+}
+function constructMissionObject(e) {
+    const t = identifyTargetForNative(e);
+    e.target = t;
+    const i = parseSearchValueInWorker(e),
+        n = identifyMissionTypeFilterInWorker(e),
+        s = identifyMissionStateFilterInWorker(e),
+        o = identifyMissionSortAttributesInWorker(e),
+        a = identifyMissionPanelScrollVisible(e),
+        r = identifyMissionPanelAllianceInWorker(e),
+        l = identifyMissionPanelStylingInWorker(e),
+        c = identifyCaptionInWorker(e),
+        d = identifyVehicleStateUrlInWorker(e),
+        u = identifyCountdownTimeleftInWorker(e),
+        h = identifyBarClassInnerInWorker(e),
+        p = identifyMissionClassInWorker(e),
+        m = identifyMissionMissingTextInWorker(e),
+        _ = identifyMissionClassShortInWorker(e),
+        f = identifyMissionTextShortInWorker(e),
+        g = identifyHideAllianceDistanceInWorker(e),
+        v = identifyParticipation(e) ? 'started' : 'new',
+        b = prepareMissionDomElementStrInWorker(
+            i,
+            n,
+            s,
+            o,
+            e,
+            a,
+            r,
+            l,
+            c,
+            d,
+            u,
+            h,
+            p,
+            m,
+            _,
+            f,
+            g
+        );
+    return (
+        (e.el = b),
+        (e.missionParticipationFilter = v),
+        (e.sortAttr = o),
+        (e.searchValue = i),
+        (e.timer_params = {
+            id: e.id,
+            date_end: e.date_end,
+            live_current_value: e.live_current_value,
+            date_now: e.date_now,
+            live_current_water_damage_pump_value:
+                e.live_current_water_damage_pump_value,
+            tv: e.tv,
+        }),
+        (e.vehicle_state_url = d),
+        (e.caption = e.plain_caption),
+        (e.caption_address = c),
+        (e.involved = !0 === e.participating),
+        e
+    );
+}
+function processMissionElementGeneral(e) {
+    return prepareMissionDomElementStrInWorker(
+        e.searchValue || parseSearchValueInWorker(e),
+        e.missionTypeFilter || identifyMissionTypeFilterInWorker(e),
+        e.missionStateFilter || identifyMissionStateFilterInWorker(e),
+        e.sortAttr || identifyMissionSortAttributesInWorker(e),
+        e,
+        e.mission_panel_scroll_visible || identifyMissionPanelScrollVisible(e),
+        e.mission_panel_alliance || identifyMissionPanelAllianceInWorker(e),
+        e.mission_panel_styling || identifyMissionPanelStylingInWorker(e),
+        identifyCaptionInWorker(e),
+        e.vehicle_state_url || identifyVehicleStateUrlInWorker(e),
+        e.countdown_timeleft || identifyCountdownTimeleftInWorker(e),
+        identifyBarClassInnerInWorker(e),
+        identifyMissionClassInWorker(e),
+        identifyMissionMissingTextInWorker(e),
+        identifyMissionClassShortInWorker(e),
+        identifyMissionTextShortInWorker(e),
+        identifyHideAllianceDistanceInWorker(e)
+    );
+}
+function prepareMissionDomElementStrInWorker(
+    e,
+    t,
+    i,
+    n,
+    s,
+    o,
+    a,
+    r,
+    l,
+    c,
+    d,
+    u,
+    h,
+    p,
+    m,
+    _,
+    f
+) {
+    const g = !0 === identifyParticipation(s);
+    return `<div search_attribute='${e}'\n                 data-mission-type-filter='${t}'\n                 data-mission-state-filter='${i}'\n                 data-mission-participation-filter='${g ? 'started' : 'new'}'\n                 data-sortable-by='${JSON.stringify(n)}'\n                 id='mission_${s.id}'\n                 mission_id='${s.id}'\n                 mission_type_id='${s.mtid}'\n                 class='virtual-item-indicator mission_visibility missionSideBarEntry missionSideBarEntrySearchable ${o} ${f}'\n                 latitude='${s.latitude}'\n                 longitude='${s.longitude}'\n                 target_latitude='${isParamPresent(s, 'tlat') ? s.tlat : 'null'}'\n                 target_longitude='${isParamPresent(s, 'tlng') ? s.tlng : 'null'}'\n                 data-overlay-index='${s.overlay_index}'\n                 data-additive-overlays='${s.additive_overlays || ''}'>\n              <div id='mission_panel_${s.id}'\n                   class='panel panel-default ${a} mission_panel_${r}'>\n                <div id='mission_panel_heading_${s.id}' class='panel-heading'>\n                  <a href='/missions/${s.id}?${readContextParam('missionFilterQueryParams')}'\n                     class='btn btn-default btn-xs lightbox-open mission-alarm-button'\n                     id='alarm_button_${s.id}' m_id='${s.id}'> ${I18n.t('javascript.alarm')}</a>\n                  <span id='mission_participant_${s.id}'\n                        class='glyphicon glyphicon-user ${g ? '' : 'hidden'}'></span>\n                  <span id='mission_participant_new_${s.id}'\n                        class='glyphicon glyphicon-asterisk ${g ? 'hidden' : ''}'></span>\n                  <a href=''\n                     id='mission_caption_${s.id}'\n                     class='map_position_mover'\n                     target_latitude='${isParamPresent(s, 'tlat') ? s.tlat : 'null'}'\n                     target_longitude='${isParamPresent(s, 'tlng') ? s.tlng : 'null'}'\n                     data-latitude='${s.latitude}'\n                     data-longitude='${s.longitude}'>${l}</a>\n                </div>\n                <div class='panel-body'>\n                  <div class='row'>\n                    <div class='col-xs-1'>\n                      <img src='${c}'\n                           id='mission_vehicle_state_${s.id}'\n                           class='mission_vehicle_state'>\n                    </div>\n                    <div class='col-xs-11'>\n                      <div class='mission_overview_countdown'\n                           id='mission_overview_countdown_${s.id}'\n                           timeleft='${d}'></div>\n                      <div id='mission_bar_outer_${s.id}'\n                           class='progress mission_progress'>\n                        <div id='mission_bar_${s.id}'\n                             class='progress-bar progress-bar-danger'\n                             role='progressbar' aria-valuemin='0' aria-valuemax='100'\n                             style='width: ${readLiveCurrentValue(s)}%;'>\n                          <div class='${u}'\n                               id='mission_bar_striper_${s.id}'></div>\n                        </div>\n                      </div>\n                      <div id='mission_missing_${s.id}'class='${h}'>${p}</div>\n                      <div id='mission_missing_short_${s.id}'class='${m}'>${_}</div>\n                      <div id='mission_pump_progress_${s.id}'>${prepPumpProgress(s, u)}</div>\n                      <div id='patients_missing_${s.id}'></div>\n                      <div id='mission_patients_${s.id}' class='row'>${patientDataElement(s)}</div>\n                      <div id='mission_prisoners_${s.id}' class='mission_prisoners'>${prisonerElement(s)}</div>\n                    </div>\n                  </div>\n                </div>\n              </div>\n            </div>`;
+}
+function identifyParticipation(e) {
+    if (readContextParam('missionParticipationFilters')) {
+        if (
+            readContextParam(
+                'missionParticipationFilters'
+            ).started.missionIds.has(e.id)
+        )
+            return !0;
+    }
+    return !0 === e.participating;
+}
+function readLiveCurrentValue(e) {
+    return e.timer_params ?
+            e.timer_params.live_current_value
+        :   e.live_current_value;
+}
+function readContextParam(e) {
+    return (
+        'undefined' != typeof mainContextParams ? mainContextParams[e]
+        : 'undefined' != typeof window ? window[e]
+        : void 0
+    );
+}
+function patientDataElement(e) {
+    let t = '';
+    if (void 0 === e.patients_prisoners) return t;
+    const i = e.patients_prisoners.patientData,
+        n = e.patients_prisoners.patients;
+    if (
+        (!1 === isEmptyObject(i) &&
+            (t = `\n    <div class='col-md-12' id='mission_patient_summary_${i.mission_id}'>\n      <img src='/images/icons8-dizzy_person_2.svg' class='mission_list_patient_icon'>\n      <strong>${i.count} ${I18n.t('javascript.patient')}</strong>\n      ${i.untouched > 0 ? ` - ${i.untouched} ${I18n.t('javascript.patient_untouched')}</strong>` : ''}\n      ${Object.entries(
+                i.errors
+            )
+                .map(
+                    ([e, t]) =>
+                        `<div class='alert alert-danger'><strong>${t}x</strong> ${e}</div>`
+                )
+                .join('')}\n    </div>`),
+        !1 === isEmptyObject(n))
+    )
+        for (const e of n) {
+            let i = 'progress patient_progress',
+                n = 'progress-striped-inner ';
+            (e.miliseconds_by_percent > 0 &&
+                ((i = 'progress patient_progress'),
+                (n = 'progress-striped-inner progress-striped-inner-active ')),
+                (t += `\n        <div style='max-width:250px' class='col-md-6 small' id='patient_${e.id}'>\n          ${e.name}\n          <div id='patient_bar_outer_${e.id}' class='${i}'>\n            <div id='patient_bar_${e.id}' class='progress-bar ${e.target_percent <= 0 ? 'progress-bar-danger' : 'progress-bar-warning'}' style='width: ${e.live_current_value}%;'>\n              <div id='patient_bar_striper_${e.id}' class='${n}'></div>\n            </div>\n          </div>\n          <div id='patients_missing_${e.id}' ${e.missing_text ? "class='alert alert-danger'" : ''}>\n            ${e.missing_text ? e.missing_text : ''}\n          </div>\n        </div>\n      `));
+        }
+    return t;
+}
+function prisonerElement(e) {
+    let t = '';
+    if (isEmptyObject(e.patients_prisoners)) return t;
+    const i = e.patients_prisoners.prisoners;
+    if (!1 === isEmptyObject(i))
+        for (const e of i)
+            t += `<div style='max-width:250px' class='col-md-6 small' id='prisoner_${e.id}'>${e.name} </div>`;
+    return t;
+}
+function prepPumpProgress(e, t) {
+    if (e.water_damage_pump_value) {
+        let i = e.pumping_date_end > 0 ? 'progress-striped-inner-active' : '';
+        return `<div class='small' id='pumping_${e.id}'>${I18n.t('javascript.water_pumping_process')}\n    <div id='pumping_bar_outer_${e.id}' class='progress pumping_progress'>\n      <div id='pumping_bar_${e.id}' class='progress-bar progress-bar-info style=width:${e.live_current_water_damage_pump_value}%;'>\n        <div id='pumping_bar_striper_${e.id}'\n             class='${t} ${i}'\n             data-pumping_date_start='${1e3 * e.pumping_date_start}'\n             data-pumping_date_end='${1e3 * e.pumping_date_end}'\n             data-pumping_mission_value='${e.pumping_mission_value}'></div></div></div></div>`;
+    }
+    return '';
+}
+function identifyTargetForNative(e) {
+    let t = 'mission_list';
+    return (
+        e.kt ?
+            (t =
+                e.user_id !== readContextParam('user_id') ?
+                    'mission_list_krankentransporte_alliance'
+                :   'mission_list_krankentransporte')
+        : e.sw ?
+            (t =
+                e.user_id !== readContextParam('user_id') ?
+                    'mission_list_sicherheitswache_alliance'
+                :   'mission_list_sicherheitswache')
+        : e.user_id !== readContextParam('user_id') && null != e.user_id ?
+            (t = 'mission_list_alliance')
+        :   e.user_id !== readContextParam('user_id') &&
+            null == e.user_id &&
+            (t = 'mission_list_alliance_event'),
+        t
+    );
+}
+function parseSearchValueInWorker(e) {
+    let t = e.caption;
+    return (
+        null == e.user_id ?
+            ((e.caption =
+                '[' + I18n.t('map.alliance_event') + '] ' + e.caption),
+            (t = t + ' ' + I18n.t('map.alliance_event')))
+        :   e.user_id !== readContextParam('user_id') &&
+            ((e.caption = '[' + I18n.t('map.alliance') + '] ' + e.caption),
+            (t = t + ' ' + I18n.t('map.alliance'))),
+        '' != e.address && (t = t + ' ' + e.address),
+        (t = t.replace(/'/g, '&#039;')),
+        (e.searchValue = t),
+        t
+    );
+}
+function identifyHide(e) {
+    if (
+        e.user_id === readContextParam('user_id') ||
+        !1 === readContextParam('alliance_mission_distance') ||
+        !1 === readContextParam('leitstelle_latitude')
+    )
+        return !1;
+    const t = leiststelleMinDistanceInWorker(e.latitude, e.longitude);
+    return (
+        (e.alliance_mission_min_distance = t),
+        (e.alliance_mission_hide =
+            t > readContextParam('alliance_mission_distance')),
+        e.alliance_mission_hide
+    );
+}
+function leiststelleMinDistanceInWorker(e, t) {
+    let i = -1;
+    if (!readContextParam('leitstelles')) return i;
+    for (const n of readContextParam('leitstelles')) {
+        let s = Math.round(distanceInWorker(n.latitude, n.longitude, e, t));
+        (-1 == i || i > s) && (i = s);
+    }
+    return i;
+}
+function distanceInWorker(e, t, i, n) {
+    let s = n - t,
+        o = 6371,
+        a = ((i - e) * Math.PI) / 180,
+        r = (s * Math.PI) / 180,
+        l =
+            Math.sin(a / 2) * Math.sin(a / 2) +
+            Math.cos((e * Math.PI) / 180) *
+                Math.cos((i * Math.PI) / 180) *
+                Math.sin(r / 2) *
+                Math.sin(r / 2);
+    return 1e3 * (o * (2 * Math.atan2(Math.sqrt(l), Math.sqrt(1 - l))));
+}
+function identifyMissionTextShortInWorker(e) {
+    let t = '';
+    return (e.missing_text_short && (t = e.missing_text_short), t);
+}
+function identifyMissionClassShortInWorker(e) {
+    let t = '';
+    return (e.missing_text_short && (t = 'alert alert-danger'), t);
+}
+function identifyMissionMissingTextInWorker(e) {
+    let t = '';
+    if (e.missing_text)
+        try {
+            const i = JSON.parse(e.missing_text);
+            (!1 === isEmptyObject(i.long_text) &&
+                (t += `<div>${i.long_text}</div>`),
+                !1 === isEmptyObject(i.vehicles) &&
+                    (t += `<div data-requirement-type="vehicles"><b>${I18n.t('mission.needed_vehicles')}:</b> ${i.vehicles}</div>`),
+                !1 === isEmptyObject(i.personnel) &&
+                    (t += `<div data-requirement-type="personnel"><b>${I18n.t('mission.needed_personnel')}:</b> ${i.personnel}</div>`),
+                !1 === isEmptyObject(i.other) &&
+                    (t += `<div data-requirement-type="other"><b>${I18n.t('mission.needed_other')}:</b> ${i.other}</div>`));
+        } catch (i) {
+            (console.log(i), (t = `<div>${e.missing_text}</div>`));
+        }
+    return t;
+}
+function identifyMissionClassInWorker(e) {
+    let t = '';
+    return (e.missing_text && (t = 'alert alert-danger'), t);
+}
+function identifyBarClassInnerInWorker(e) {
+    let t = 'progress-striped-inner';
+    return (
+        e.date_end > 0 &&
+            (t = 'progress-striped-inner progress-striped-inner-active'),
+        t
+    );
+}
+function identifyCountdownTimeleftInWorker(e) {
+    let t = 0;
+    return (
+        e.countdown_timeleft ?
+            (t = e.countdown_timeleft)
+        :   e.sw_start_in > 0 && (t = 1e3 * e.sw_start_in),
+        (e.countdown_timeleft = t),
+        t
+    );
+}
+function identifyVehicleStateUrlInWorker(e) {
+    let t = e.mission_type ? 'generic' : 'regular',
+        i = 'generic' === t ? 'mission_type' : 'mtid',
+        n = '';
+    return (
+        (n =
+            (
+                void 0 !==
+                    readContextParam('mission_graphics_lookups')[t][e[i]] &&
+                null != readContextParam('mission_graphics_lookups')[t][e[i]] &&
+                void 0 !==
+                    readContextParam('mission_graphics_lookups')[t][e[i]][
+                        e.vehicle_state
+                    ] &&
+                '' !==
+                    readContextParam('mission_graphics_lookups')[t][e[i]][
+                        e.vehicle_state
+                    ]
+            ) ?
+                readContextParam('mission_graphics_lookups')[t][e[i]][
+                    e.vehicle_state
+                ]
+            :   '/images/' + e.icon + '.png'),
+        1 == readContextParam('mobile_bridge_use') &&
+            0 == readContextParam('mixed_mobile_desktop_mode') &&
+            postMessage({
+                type: 'mobileBridge',
+                vehicle_state_url: n,
+                mission: e,
+            }),
+        n
+    );
+}
+function identifyCaptionInWorker(e) {
+    let t = e.caption;
+    return (
+        (e.plain_caption = e.caption),
+        isParamPresent(e, 'captionOld') &&
+            (t =
+                "<small id='mission_old_caption_" +
+                e.id +
+                "'><s>" +
+                e.captionOld +
+                '</s></small> ' +
+                t),
+        isParamPresent(e, 'address') &&
+            (t =
+                t +
+                ", <small  id='mission_address_" +
+                e.id +
+                "'>" +
+                e.address +
+                '</small>'),
+        t
+    );
+}
+function identifyMissionPanelStylingInWorker(e) {
+    let t = 'red';
+    return (
+        1 == e.vehicle_state && (t = 'yellow'),
+        2 == e.vehicle_state && (t = 'green'),
+        (e.mission_panel_styling = t),
+        t
+    );
+}
+function identifyMissionPanelAllianceInWorker(e) {
+    let t = '';
+    return (e.alliance_id && (t = 'panel-success'), t);
+}
+function identifyMissionPanelScrollVisible() {
+    return readContextParam('useMissionScrollBarOptimization') ?
+            'missionSideBarEntryScrollInvisible'
+        :   '';
+}
+function identifyHideAllianceDistanceInWorker(e) {
+    return identifyHide(e) ? 'mission_alliance_distance_hide' : '';
+}
+function identifyMissionSortAttributesInWorker(e) {
+    const t = getMissionSortableAttributesInWorker(e);
+    return ((e.sort_attributes = t), t);
+}
+function identifyMissionTypeFilterInWorker(e) {
+    let t = 'emergency';
+    return (
+        e.kt ? (t = 'krankentransporte')
+        : e.sw ? (t = 'sicherheitswache')
+        : e.user_id != readContextParam('user_id') && null != e.user_id ?
+            (t = 'alliance')
+        :   e.user_id != readContextParam('user_id') &&
+            null == e.user_id &&
+            (t = 'alliance_event'),
+        (e.missionTypeFilter = t),
+        t
+    );
+}
+function identifyMissionStateFilterInWorker(e) {
+    let t = ['unattended', 'attended', 'finishing'][e.vehicle_state];
+    return ((e.missionStateFilter = t), t);
+}
+function getMissionSortableAttributesInWorker(e) {
+    let t = e.created_at;
+    return (
+        e.user_id != readContextParam('user_id') &&
+            null != e.user_id &&
+            null != e.alliance_shared_at &&
+            e.alliance_shared_at > 0 &&
+            (t = e.alliance_shared_at),
+        {
+            id: e.id,
+            caption: e.caption.replace(/(&quot;|'|")+/g, ''),
+            average_credits: e.average_credits,
+            prisoners_count: [e.prisoners_count, e.possible_prisoners_count],
+            patients_count: [e.patients_count, e.possible_patients_count],
+            age: t,
+            created_at: e.created_at,
+            def_order: identifyDefaultOrderBasedOnTarge(e),
+        }
+    );
+}
+function identifyDefaultOrderBasedOnTarge(e) {
+    let t = e.id,
+        i = e.target;
+    switch ((i || (i = identifyTargetForNative(e)), i)) {
+        case 'mission_list':
+            t = 0;
+            break;
+        case 'mission_list_krankentransporte':
+            t = 1;
+            break;
+        case 'mission_list_krankentransporte_alliance':
+            t = 2;
+            break;
+        case 'mission_list_sicherheitswache':
+            t = 3;
+            break;
+        case 'mission_list_sicherheitswache_alliance':
+            t = 4;
+            break;
+        case 'mission_list_alliance':
+            t = 5;
+            break;
+        case 'mission_list_alliance_event':
+            t = 6;
+    }
+    return t;
 }
 (Object.values ||
     (Object.values = function (e) {
@@ -9097,6 +10451,7 @@ function updateAAOsTime(e) {
                 date_asc: '\xc4lteste',
                 date_desc: 'Neueste',
             },
+            status: 'Status',
             time: {
                 days: {
                     plural_with_number: {
@@ -9360,6 +10715,10 @@ function updateAAOsTime(e) {
             arrival: 'Ankunft',
             available_vehicles_count: 'Du hast %{count} Fahrzeuge',
             backalarm: 'R\xfcckalarmieren',
+            buildings: {
+                count_filtered: 'Du hast %{count} Geb\xe4ude gefiltert.',
+                count_total: 'Du hast %{count} Geb\xe4ude',
+            },
             coins: 'Coins',
             collapse: 'Ausblenden',
             credits: 'Credits',
@@ -9882,6 +11241,7 @@ function updateAAOsTime(e) {
                 date_asc: 'Oldest',
                 date_desc: 'Newest',
             },
+            status: 'Status',
             time: {
                 days: {
                     plural_with_number: {
@@ -10203,6 +11563,10 @@ function updateAAOsTime(e) {
             arrival: 'Arrival',
             available_vehicles_count: 'You have %{count} vehicles',
             backalarm: 'Cancel',
+            buildings: {
+                count_filtered: 'You have filtered %{count} buildings',
+                count_total: 'You have %{count} Buildings',
+            },
             coins: 'Coins',
             collapse: 'Collapse',
             convert_credits: 'Convert %{amount} credits',
@@ -10859,6 +12223,7 @@ function updateAAOsTime(e) {
                 date_asc: 'Oldest',
                 date_desc: 'Newest',
             },
+            status: 'Status',
             time_in_minutes: 'Time in minutes',
             total_count: 'Total: %{count}',
             type: 'Type:',
@@ -11072,6 +12437,10 @@ function updateAAOsTime(e) {
             arrival: 'Arrival',
             available_vehicles_count: 'You have %{count} vehicles',
             backalarm: 'Cancel',
+            buildings: {
+                count_filtered: 'You have filtered %{count} buildings',
+                count_total: 'You have %{count} Buildings',
+            },
             coins: 'Coins',
             collapse: 'Collapse',
             credits: 'Credits',
@@ -11677,6 +13046,7 @@ function updateAAOsTime(e) {
                 date_asc: 'Oudste',
                 date_desc: 'Nieuwste',
             },
+            status: 'Status',
             time_in_minutes: 'Tijd in minuten',
             total_count: 'Totaal: %{count}',
             type: 'Type:',
@@ -11916,6 +13286,10 @@ function updateAAOsTime(e) {
             arrival: 'Aankomst',
             available_vehicles_count: 'Je hebt %{count} voertuigen',
             backalarm: 'Retour post',
+            buildings: {
+                count_filtered: 'Je hebt %{count} gebouwen gefilterd',
+                count_total: 'Je hebt %{count} Gebouwen',
+            },
             coins: 'Coins',
             collapse: 'Verbergen',
             credits: 'Credits',
@@ -12433,6 +13807,7 @@ function updateAAOsTime(e) {
                 date_asc: 'El m\xe1s antiguo',
                 date_desc: 'Lo m\xe1s nuevo',
             },
+            status: 'Estado',
             time_in_minutes: 'Tiempo en minutos',
             total_count: 'Total: %{count}',
             type: 'Escriba:',
@@ -12648,6 +14023,10 @@ function updateAAOsTime(e) {
             arrival: 'Llegada',
             available_vehicles_count: 'Usted tiene %{count} veh\xedculos',
             backalarm: 'Cancelar',
+            buildings: {
+                count_filtered: 'Has filtrado %{count} edificios',
+                count_total: 'Tienes %{count} Edificios',
+            },
             coins: 'Monedas',
             collapse: 'Colapso',
             credits: 'Cr\xe9ditos',
@@ -13145,6 +14524,7 @@ function updateAAOsTime(e) {
                 date_asc: 'Oldest',
                 date_desc: 'Newest',
             },
+            status: 'Status',
             time_in_minutes: 'Time in minutes',
             total_count: 'Total: %{count}',
             type: 'Type:',
@@ -13351,6 +14731,10 @@ function updateAAOsTime(e) {
             arrival: 'Arrival',
             available_vehicles_count: 'You have %{count} vehicles',
             backalarm: 'Cancel',
+            buildings: {
+                count_filtered: 'You have filtered %{count} buildings',
+                count_total: 'You have %{count} Buildings',
+            },
             coins: 'Coins',
             collapse: 'Collapse',
             credits: 'Credits',
@@ -13956,6 +15340,7 @@ function updateAAOsTime(e) {
                 date_asc: '\xc4ldsta',
                 date_desc: 'Nyaste',
             },
+            status: 'Status',
             time_in_minutes: 'Tid i minuter',
             total_count: 'Totalt: %{count}',
             type: 'Typ:',
@@ -14173,6 +15558,10 @@ function updateAAOsTime(e) {
             arrival: 'Ankomst',
             available_vehicles_count: 'Du har %{count} fordon',
             backalarm: 'Avbryt',
+            buildings: {
+                count_filtered: 'Du har filtrerat %{count} byggnader',
+                count_total: 'Du har %{count} Byggnader',
+            },
             coins: 'Mynt',
             collapse: 'Kollaps',
             credits: 'Krediter',
@@ -14675,6 +16064,7 @@ function updateAAOsTime(e) {
                 date_asc: 'Najstarszy',
                 date_desc: 'Najnowsza',
             },
+            status: 'Status',
             time_in_minutes: 'Czas w minutach',
             total_count: '\u0141\u0105cznie: %{count}',
             type: 'Typ:',
@@ -14939,6 +16329,10 @@ function updateAAOsTime(e) {
             arrival: 'Przybycie',
             available_vehicles_count: 'Masz pojazdy %{count}',
             backalarm: 'Anuluj',
+            buildings: {
+                count_filtered: 'Filtrowa\u0142e\u015b %{count} budynki',
+                count_total: 'Masz %{count} Budynki',
+            },
             coins: 'Monety',
             collapse: 'Upadek',
             credits: 'Kredyty',
@@ -15458,6 +16852,7 @@ function updateAAOsTime(e) {
                 date_asc: 'Il pi\xf9 vecchio',
                 date_desc: 'Pi\xf9 nuovo',
             },
+            status: 'Stato',
             time_in_minutes: 'Tempo in minuti',
             total_count: 'Totale: %{count}',
             type: 'Tipo:',
@@ -15677,6 +17072,10 @@ function updateAAOsTime(e) {
             arrival: 'Arrivo',
             available_vehicles_count: 'Avete %{count} veicoli',
             backalarm: 'Annulla',
+            buildings: {
+                count_filtered: 'Hai filtrato %{count} edifici',
+                count_total: 'Hai %{count} Edifici',
+            },
             coins: 'Monete',
             collapse: 'Crollo',
             credits: 'Crediti',
@@ -16192,6 +17591,7 @@ function updateAAOsTime(e) {
                 date_asc: 'Le plus vieux',
                 date_desc: 'Le plus r\xe9cent',
             },
+            status: 'Statut',
             time_in_minutes: 'Temps en minutes',
             total_count: 'Total : %{count}',
             type: 'Type :',
@@ -16422,6 +17822,10 @@ function updateAAOsTime(e) {
             arrival: 'Arriv\xe9e',
             available_vehicles_count: 'Vous disposez de %{count} v\xe9hicules',
             backalarm: 'Annuler',
+            buildings: {
+                count_filtered: 'Vous avez filtr\xe9 les b\xe2timents %{count}',
+                count_total: 'Vous avez %{count} B\xe2timents',
+            },
             coins: 'Pi\xe8ces',
             collapse: 'Masquer',
             credits: 'Cr\xe9dits',
@@ -16961,6 +18365,7 @@ function updateAAOsTime(e) {
                 requirements:
                     '\u0422\u0440\u0435\u0431\u043e\u0432\u0430\u043d\u0438\u044f',
             },
+            status: '\u0421\u0442\u0430\u0442\u0443\u0441',
             time_in_minutes:
                 '\u0412\u0440\u0435\u043c\u044f \u0432 \u043c\u0438\u043d\u0443\u0442\u0430\u0445',
             total_count: '\u0412\u0441\u0435\u0433\u043e: %{count}',
@@ -17715,6 +19120,7 @@ function updateAAOsTime(e) {
                 date_asc: '\xc6ldste',
                 date_desc: 'Nyeste',
             },
+            status: 'Status',
             time_in_minutes: 'Tid i minutter',
             total_count: 'I alt: %{count}',
             type: 'Type:',
@@ -17923,6 +19329,10 @@ function updateAAOsTime(e) {
             arrival: 'Ankomst',
             available_vehicles_count: 'Du har %{count} k\xf8ret\xf8jer',
             backalarm: 'Annull\xe9r',
+            buildings: {
+                count_filtered: 'Du har filtreret %{count} bygninger',
+                count_total: 'Du har %{count} Bygninger',
+            },
             coins: 'M\xf8nter',
             collapse: 'Kollaps',
             credits: 'Kreditter',
@@ -18426,6 +19836,7 @@ function updateAAOsTime(e) {
                 date_asc: 'Eldste',
                 date_desc: 'Nyeste',
             },
+            status: 'Status',
             time_in_minutes: 'Tid i minutter',
             total_count: 'Totalt: %{count}',
             type: 'Type:',
@@ -18644,6 +20055,10 @@ function updateAAOsTime(e) {
             arrival: 'Ankomst',
             available_vehicles_count: 'Du har %{count} kj\xf8ret\xf8y',
             backalarm: 'Avbryt',
+            buildings: {
+                count_filtered: 'Du har filtrert %{count} bygninger',
+                count_total: 'Du har %{count} Bygninger',
+            },
             coins: 'Mynter',
             collapse: 'Kollaps',
             credits: 'Kreditter',
@@ -19153,6 +20568,7 @@ function updateAAOsTime(e) {
                 date_asc: 'Nejstar\u0161\xed',
                 date_desc: 'Nejnov\u011bj\u0161\xed',
             },
+            status: 'Status',
             time_in_minutes: '\u010cas (min)',
             total_count: 'Celkem: %{count}',
             type: 'Typ:',
@@ -19392,6 +20808,10 @@ function updateAAOsTime(e) {
             arrival: 'P\u0159\xedjezd',
             available_vehicles_count: 'M\xe1te k dispozici vozidla %{count}',
             backalarm: 'Zru\u0161it',
+            buildings: {
+                count_filtered: 'Filtrovali jste %{count} budovy',
+                count_total: 'M\xe1te %{count} Budovy',
+            },
             coins: 'Mince',
             collapse: 'Sbalit',
             credits: 'Kredity',
@@ -19908,6 +21328,7 @@ function updateAAOsTime(e) {
                 poi: '\u0130lgili Alan',
                 requirements: 'Gereklilikler',
             },
+            status: 'Durum',
             time_in_minutes: 'Time in minutes',
             total_count: 'Toplam: %{count}',
             type: 'Tip:',
@@ -20467,6 +21888,7 @@ function updateAAOsTime(e) {
                 date_asc: 'Mais antigo',
                 date_desc: 'Novidades',
             },
+            status: 'Estado',
             time_in_minutes: 'Tempo em minutos',
             total_count: 'Total: %{count}',
             type: 'Tipo:',
@@ -20684,6 +22106,10 @@ function updateAAOsTime(e) {
             arrival: 'Chegada',
             available_vehicles_count: 'Tem %{count} ve\xedculos',
             backalarm: 'Cancelar',
+            buildings: {
+                count_filtered: 'Voc\xea filtrou %{count} edif\xedcios',
+                count_total: 'Voc\xea tem %{count} Edif\xedcios',
+            },
             coins: 'Moedas',
             collapse: 'Colapso',
             credits: 'Cr\xe9ditos',
@@ -21180,6 +22606,7 @@ function updateAAOsTime(e) {
                 poi: 'PDI',
                 requirements: 'Requisitos',
             },
+            status: 'Estado',
             time_in_minutes: 'Tempo em minutos',
             total_count: 'Total: %{count}',
             type: 'Tipo:',
@@ -21757,6 +23184,7 @@ function updateAAOsTime(e) {
                 poi: '\u0432\u0430\u0436\u043b\u0438\u0432\u043e\u0457 \u0442\u043e\u0447\u043a\u0438',
                 requirements: '\u0412\u0438\u043c\u043e\u0433\u0438',
             },
+            status: '\u0421\u0442\u0430\u0442\u0443\u0441',
             time_in_minutes: 'Time in minutes',
             total_count: '\u0412\u0441\u044c\u043e\u0433\u043e: %{count}',
             type: '\u0414\u0440\u0443\u043a\u0443\u0439:',
@@ -22450,6 +23878,7 @@ function updateAAOsTime(e) {
                 requirements: 'Requisitos',
             },
             sorting: { caption_asc: 'A a la Z' },
+            status: 'Estado',
             time_in_minutes: 'Tiempo en minutos',
             total_count: 'Total: %{count}',
             type: 'Escriba:',
@@ -22587,6 +24016,7 @@ function updateAAOsTime(e) {
             arrival: 'Llegada',
             available_vehicles_count: 'Usted tiene %{count} veh\xedculos',
             backalarm: 'Cancelar',
+            buildings: { count_total: 'Tienes %{count} Edificios' },
             coins: 'Monedas',
             collapse: 'Colapso',
             credits: 'Cr\xe9ditos',
@@ -23037,6 +24467,7 @@ function updateAAOsTime(e) {
                 date_asc: '\u6700\u53e4\u306e',
                 date_desc: '\u6700\u65b0',
             },
+            status: '\u30b9\u30c6\u30fc\u30bf\u30b9',
             time_in_minutes: '\u6642\u9593\uff08\u5206\uff09',
             total_count: '\u30c8\u30fc\u30bf\u30eb\u3060\uff1a %{count}',
             type: '\u30bf\u30a4\u30d7\u3067\u3059\u3002',
@@ -23271,6 +24702,12 @@ function updateAAOsTime(e) {
             arrival: '\u5230\u7740',
             available_vehicles_count: '%{count} \u8eca\u4e21',
             backalarm: '\u30ad\u30e3\u30f3\u30bb\u30eb',
+            buildings: {
+                count_filtered:
+                    '%{count}\u306e\u5efa\u7269\u3092\u30d5\u30a3\u30eb\u30bf\u30ea\u30f3\u30b0\u3057\u307e\u3057\u305f',
+                count_total:
+                    '%{count}\u306e\u5efa\u7269\u304c\u3042\u308a\u307e\u3059',
+            },
             coins: '\u30b3\u30a4\u30f3',
             collapse: '\u5d29\u58ca',
             credits: '\u30af\u30ec\u30b8\u30c3\u30c8',
@@ -23829,6 +25266,7 @@ function updateAAOsTime(e) {
                 poi: '\uad00\uc2ec \uc9c0\uc5ed \uc720\ud615',
                 requirements: '\uc694\uad6c \uc0ac\ud56d',
             },
+            status: '\uc0c1\ud0dc',
             time_in_minutes: '\ubd84 \ub2e8\uc704 \uc2dc\uac04',
             total_count: '\ud569\uacc4: %{count}',
             type: '\uc720\ud615:',
@@ -24029,6 +25467,10 @@ function updateAAOsTime(e) {
             available_vehicles_count:
                 '%{count} \ucc28\ub7c9\uc774 \uc788\uc2b5\ub2c8\ub2e4.',
             backalarm: '\ucde8\uc18c',
+            buildings: {
+                count_filtered:
+                    '%{count} \ube4c\ub529\uc744 \ud544\ud130\ub9c1\ud588\uc2b5\ub2c8\ub2e4.',
+            },
             coins: '\ucf54\uc778',
             collapse: '\uc811\uae30',
             credits: '\ud06c\ub808\ub527',
@@ -24511,6 +25953,7 @@ function updateAAOsTime(e) {
                 poi: 'Punct de interes',
                 requirements: 'Cerin\u021be',
             },
+            status: 'Stare',
             time_in_minutes: 'Timp \xeen minute',
             total_count: 'Total: %{count}',
             type: 'Tip:',
@@ -25107,6 +26550,7 @@ function updateAAOsTime(e) {
                 date_asc: 'Vanhin',
                 date_desc: 'Uusimmat',
             },
+            status: 'Status',
             time_in_minutes: 'Aika minuuteissa',
             total_count: 'Yhteens\xe4: %{count}',
             type: 'Tyyppi:',
@@ -25300,6 +26744,10 @@ function updateAAOsTime(e) {
             arrival: 'Saapumisaika',
             available_vehicles_count: 'Sinulla on %{count} ajoneuvot',
             backalarm: 'Peruuta',
+            buildings: {
+                count_filtered: 'Olet suodattanut %{count} rakenteet',
+                count_total: 'Sinulla on %{count} Rakennukset',
+            },
             coins: 'Kolikot',
             collapse: 'Romahdus',
             credits: 'Krediitit',
@@ -25791,6 +27239,7 @@ function updateAAOsTime(e) {
                 poi: 'POI',
                 requirements: 'Po\u017eiadavky',
             },
+            status: 'Stav',
             time_in_minutes: '\u010cas v min\xfatach',
             total_count: 'Celkom: %{count}',
             user_not_found: 'Pou\u017e\xedvate\u013e sa nena\u0161iel',
@@ -26334,7 +27783,7 @@ function updateAAOsTime(e) {
             );
         }
         function n(e) {
-            var t = (ze[e] = {});
+            var t = (Se[e] = {});
             return (
                 de.each(e.match(he) || [], function (e, i) {
                     t[i] = !0;
@@ -26398,7 +27847,7 @@ function updateAAOsTime(e) {
         }
         function a(e, i, n) {
             if (n === t && 1 === e.nodeType) {
-                var s = 'data-' + i.replace(Se, '-$1').toLowerCase();
+                var s = 'data-' + i.replace(ze, '-$1').toLowerCase();
                 if ('string' == typeof (n = e.getAttribute(s))) {
                     try {
                         n =
@@ -26589,7 +28038,7 @@ function updateAAOsTime(e) {
                         (n.style.display = t ? o[a] || '' : 'none'));
             return e;
         }
-        function z(e, t, i) {
+        function S(e, t, i) {
             var n = ft.exec(t);
             return n ? Math.max(0, n[1] - (i || 0)) + (n[2] || 'px') : t;
         }
@@ -26619,7 +28068,7 @@ function updateAAOsTime(e) {
                             ))));
             return a;
         }
-        function S(e, t, i) {
+        function z(e, t, i) {
             var n = !0,
                 s = 'width' === t ? e.offsetWidth : e.offsetHeight,
                 o = ct(e),
@@ -26642,7 +28091,7 @@ function updateAAOsTime(e) {
                 i = bt[e];
             return (
                 i ||
-                    (('none' !== (i = E(e, t)) && i) ||
+                    (('none' !== (i = M(e, t)) && i) ||
                         ((t = (
                             (lt = (
                                 lt ||
@@ -26653,24 +28102,24 @@ function updateAAOsTime(e) {
                             lt[0].contentDocument
                         ).document).write('<!doctype html><html><body>'),
                         t.close(),
-                        (i = E(e, t)),
+                        (i = M(e, t)),
                         lt.detach()),
                     (bt[e] = i)),
                 i
             );
         }
-        function E(e, t) {
+        function M(e, t) {
             var i = de(t.createElement(e)).appendTo(t.body),
                 n = de.css(i[0], 'display');
             return (i.remove(), n);
         }
-        function M(e, t, i, n) {
+        function E(e, t, i, n) {
             var s;
             if (de.isArray(t))
                 de.each(t, function (t, s) {
-                    i || zt.test(e) ?
+                    i || St.test(e) ?
                         n(e, s)
-                    :   M(
+                    :   E(
                             e + '[' + ('object' == typeof s ? t : '') + ']',
                             s,
                             i,
@@ -26678,7 +28127,7 @@ function updateAAOsTime(e) {
                         );
                 });
             else if (i || 'object' !== de.type(t)) n(e, t);
-            else for (s in t) M(e + '[' + s + ']', t[s], i, n);
+            else for (s in t) E(e + '[' + s + ']', t[s], i, n);
         }
         function I(e) {
             return function (t, i) {
@@ -27588,7 +29037,7 @@ function updateAAOsTime(e) {
                                     );
                                 if (
                                     (a = s[3]) &&
-                                    S.getElementsByClassName &&
+                                    z.getElementsByClassName &&
                                     t.getElementsByClassName
                                 )
                                     return (
@@ -27599,7 +29048,7 @@ function updateAAOsTime(e) {
                                         i
                                     );
                             }
-                        if (S.qsa && (!R || !R.test(e))) {
+                        if (z.qsa && (!R || !R.test(e))) {
                             if (
                                 ((u = d = V),
                                 (h = t),
@@ -27640,7 +29089,7 @@ function updateAAOsTime(e) {
                 function s() {
                     function e(i, n) {
                         return (
-                            t.push((i += ' ')) > E.cacheLength &&
+                            t.push((i += ' ')) > M.cacheLength &&
                                 delete e[t.shift()],
                             (e[i] = n)
                         );
@@ -27667,8 +29116,8 @@ function updateAAOsTime(e) {
                         var n, s = (e = e.split('|')).length, o = i ? null : t;
                         s--;
                     )
-                        ((n = E.attrHandle[e[s]]) && n !== t) ||
-                            (E.attrHandle[e[s]] = o);
+                        ((n = M.attrHandle[e[s]]) && n !== t) ||
+                            (M.attrHandle[e[s]] = o);
                 }
                 function l(e, t) {
                     var i = e.getAttributeNode(t);
@@ -27738,7 +29187,7 @@ function updateAAOsTime(e) {
                         c,
                         d = K[e + ' '];
                     if (d) return t ? 0 : d.slice(0);
-                    for (r = e, l = [], c = E.preFilter; r;) {
+                    for (r = e, l = [], c = M.preFilter; r;) {
                         for (a in ((n && !(s = _e.exec(r))) ||
                             (s && (r = r.slice(s[0].length) || r),
                             l.push((o = []))),
@@ -27747,7 +29196,7 @@ function updateAAOsTime(e) {
                             ((n = s.shift()),
                             o.push({ value: n, type: s[0].replace(me, ' ') }),
                             (r = r.slice(n.length))),
-                        E.filter))
+                        M.filter))
                             !(s = we[a].exec(r)) ||
                                 (c[a] && !(s = c[a](s))) ||
                                 ((n = s.shift()),
@@ -27879,8 +29328,8 @@ function updateAAOsTime(e) {
                             i,
                             n,
                             s = e.length,
-                            o = E.relative[e[0].type],
-                            a = o || E.relative[' '],
+                            o = M.relative[e[0].type],
+                            a = o || M.relative[' '],
                             r = o ? 1 : 0,
                             l = g(
                                 function (e) {
@@ -27909,17 +29358,17 @@ function updateAAOsTime(e) {
                         r < s;
                         r++
                     )
-                        if ((i = E.relative[e[r].type])) d = [g(v(d), i)];
+                        if ((i = M.relative[e[r].type])) d = [g(v(d), i)];
                         else {
                             if (
-                                (i = E.filter[e[r].type].apply(
+                                (i = M.filter[e[r].type].apply(
                                     null,
                                     e[r].matches
                                 ))[V]
                             ) {
                                 for (
                                     n = ++r;
-                                    n < s && !E.relative[e[n].type];
+                                    n < s && !M.relative[e[n].type];
                                     n++
                                 );
                                 return y(
@@ -27962,7 +29411,7 @@ function updateAAOsTime(e) {
                                 w =
                                     o ||
                                     (a &&
-                                        E.find.TAG(
+                                        M.find.TAG(
                                             '*',
                                             (d && r.parentNode) || r
                                         )),
@@ -28016,14 +29465,14 @@ function updateAAOsTime(e) {
                         if (
                             (o = c[0] = c[0].slice(0)).length > 2 &&
                             'ID' === (a = o[0]).type &&
-                            S.getById &&
+                            z.getById &&
                             9 === t.nodeType &&
                             B &&
-                            E.relative[o[1].type]
+                            M.relative[o[1].type]
                         ) {
                             if (
-                                !(t = (E.find.ID(
-                                    a.matches[0].replace(Se, Ae),
+                                !(t = (M.find.ID(
+                                    a.matches[0].replace(ze, Ae),
                                     t
                                 ) || [])[0])
                             )
@@ -28032,12 +29481,12 @@ function updateAAOsTime(e) {
                         }
                         for (
                             s = we.needsContext.test(e) ? 0 : o.length;
-                            s-- && ((a = o[s]), !E.relative[(r = a.type)]);
+                            s-- && ((a = o[s]), !M.relative[(r = a.type)]);
                         )
                             if (
-                                (l = E.find[r]) &&
+                                (l = M.find[r]) &&
                                 (n = l(
-                                    a.matches[0].replace(Se, Ae),
+                                    a.matches[0].replace(ze, Ae),
                                     (ge.test(o[0].type) && t.parentNode) || t
                                 ))
                             ) {
@@ -28048,12 +29497,12 @@ function updateAAOsTime(e) {
                     }
                     return (P(e, c)(n, t, !B, i, ge.test(e)), i);
                 }
-                function z() {}
+                function S() {}
                 var T,
-                    S,
+                    z,
                     A,
-                    E,
                     M,
+                    E,
                     I,
                     P,
                     j,
@@ -28165,9 +29614,9 @@ function updateAAOsTime(e) {
                     ke = /^[^{]+\{\s*\[native \w/,
                     xe = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,
                     Ce = /^(?:input|select|textarea|button)$/i,
-                    ze = /^h\d$/i,
+                    Se = /^h\d$/i,
                     Te = /'|\\/g,
-                    Se = new RegExp(
+                    ze = new RegExp(
                         '\\\\([\\da-f]{1,6}' + le + '?|(' + le + ')|.)',
                         'ig'
                     ),
@@ -28206,7 +29655,7 @@ function updateAAOsTime(e) {
                         var t = e && (e.ownerDocument || e).documentElement;
                         return !!t && 'HTML' !== t.nodeName;
                     }),
-                (S = i.support = {}),
+                (z = i.support = {}),
                 (L = i.setDocument =
                     function (e) {
                         var t = e ? e.ownerDocument || e : W;
@@ -28216,7 +29665,7 @@ function updateAAOsTime(e) {
                                 ((O = t),
                                 (N = t.documentElement),
                                 (B = !I(t)),
-                                (S.attributes = a(function (e) {
+                                (z.attributes = a(function (e) {
                                     return (
                                         (e.innerHTML = "<a href='#'></a>"),
                                         r(
@@ -28236,7 +29685,7 @@ function updateAAOsTime(e) {
                                         !e.getAttribute('className')
                                     );
                                 })),
-                                (S.input = a(function (e) {
+                                (z.input = a(function (e) {
                                     return (
                                         (e.innerHTML = '<input>'),
                                         e.firstChild.setAttribute('value', ''),
@@ -28244,14 +29693,14 @@ function updateAAOsTime(e) {
                                             e.firstChild.getAttribute('value')
                                     );
                                 })),
-                                r('value', d, S.attributes && S.input),
-                                (S.getElementsByTagName = a(function (e) {
+                                r('value', d, z.attributes && z.input),
+                                (z.getElementsByTagName = a(function (e) {
                                     return (
                                         e.appendChild(t.createComment('')),
                                         !e.getElementsByTagName('*').length
                                     );
                                 })),
-                                (S.getElementsByClassName = a(function (e) {
+                                (z.getElementsByClassName = a(function (e) {
                                     return (
                                         (e.innerHTML =
                                             "<div class='a'></div><div class='a i'></div>"),
@@ -28260,15 +29709,15 @@ function updateAAOsTime(e) {
                                             e.getElementsByClassName('i').length
                                     );
                                 })),
-                                (S.getById = a(function (e) {
+                                (z.getById = a(function (e) {
                                     return (
                                         (N.appendChild(e).id = V),
                                         !t.getElementsByName ||
                                             !t.getElementsByName(V).length
                                     );
                                 })),
-                                S.getById ?
-                                    ((E.find.ID = function (e, t) {
+                                z.getById ?
+                                    ((M.find.ID = function (e, t) {
                                         if (
                                             typeof t.getElementById !== Q &&
                                             B
@@ -28277,15 +29726,15 @@ function updateAAOsTime(e) {
                                             return i && i.parentNode ? [i] : [];
                                         }
                                     }),
-                                    (E.filter.ID = function (e) {
-                                        var t = e.replace(Se, Ae);
+                                    (M.filter.ID = function (e) {
+                                        var t = e.replace(ze, Ae);
                                         return function (e) {
                                             return e.getAttribute('id') === t;
                                         };
                                     }))
-                                :   (delete E.find.ID,
-                                    (E.filter.ID = function (e) {
-                                        var t = e.replace(Se, Ae);
+                                :   (delete M.find.ID,
+                                    (M.filter.ID = function (e) {
+                                        var t = e.replace(ze, Ae);
                                         return function (e) {
                                             var i =
                                                 typeof e.getAttributeNode !==
@@ -28294,8 +29743,8 @@ function updateAAOsTime(e) {
                                             return i && i.value === t;
                                         };
                                     })),
-                                (E.find.TAG =
-                                    S.getElementsByTagName ?
+                                (M.find.TAG =
+                                    z.getElementsByTagName ?
                                         function (e, t) {
                                             if (
                                                 typeof t.getElementsByTagName !==
@@ -28318,8 +29767,8 @@ function updateAAOsTime(e) {
                                             }
                                             return o;
                                         }),
-                                (E.find.CLASS =
-                                    S.getElementsByClassName &&
+                                (M.find.CLASS =
+                                    z.getElementsByClassName &&
                                     function (e, t) {
                                         if (
                                             typeof t.getElementsByClassName !==
@@ -28330,7 +29779,7 @@ function updateAAOsTime(e) {
                                     }),
                                 ($ = []),
                                 (R = []),
-                                (S.qsa = n(t.querySelectorAll)) &&
+                                (z.qsa = n(t.querySelectorAll)) &&
                                     (a(function (e) {
                                         ((e.innerHTML =
                                             "<select><option selected=''></option></select>"),
@@ -28365,7 +29814,7 @@ function updateAAOsTime(e) {
                                             e.querySelectorAll('*,:x'),
                                             R.push(',.*:'));
                                     })),
-                                (S.matchesSelector = n(
+                                (z.matchesSelector = n(
                                     (F =
                                         N.webkitMatchesSelector ||
                                         N.mozMatchesSelector ||
@@ -28373,7 +29822,7 @@ function updateAAOsTime(e) {
                                         N.msMatchesSelector)
                                 )) &&
                                     a(function (e) {
-                                        ((S.disconnectedMatch = F.call(
+                                        ((z.disconnectedMatch = F.call(
                                             e,
                                             'div'
                                         )),
@@ -28411,7 +29860,7 @@ function updateAAOsTime(e) {
                                                     if (t === e) return !0;
                                             return !1;
                                         }),
-                                (S.sortDetached = a(function (e) {
+                                (z.sortDetached = a(function (e) {
                                     return (
                                         1 &
                                         e.compareDocumentPosition(
@@ -28431,7 +29880,7 @@ function updateAAOsTime(e) {
                                                 n ?
                                                     (
                                                         1 & n ||
-                                                        (!S.sortDetached &&
+                                                        (!z.sortDetached &&
                                                             i.compareDocumentPosition(
                                                                 e
                                                             ) === n)
@@ -28490,7 +29939,7 @@ function updateAAOsTime(e) {
                     if (
                         ((e.ownerDocument || e) !== O && L(e),
                         (t = t.replace(ve, "='$1']")),
-                        S.matchesSelector &&
+                        z.matchesSelector &&
                             B &&
                             (!$ || !$.test(t)) &&
                             (!R || !R.test(t)))
@@ -28499,7 +29948,7 @@ function updateAAOsTime(e) {
                             var n = F.call(e, t);
                             if (
                                 n ||
-                                S.disconnectedMatch ||
+                                z.disconnectedMatch ||
                                 (e.document && 11 !== e.document.nodeType)
                             )
                                 return n;
@@ -28511,14 +29960,14 @@ function updateAAOsTime(e) {
                 }),
                 (i.attr = function (e, i) {
                     (e.ownerDocument || e) !== O && L(e);
-                    var n = E.attrHandle[i.toLowerCase()],
+                    var n = M.attrHandle[i.toLowerCase()],
                         s =
-                            n && ee.call(E.attrHandle, i.toLowerCase()) ?
+                            n && ee.call(M.attrHandle, i.toLowerCase()) ?
                                 n(e, i, !B)
                             :   t;
                     return (
                         s === t ?
-                            S.attributes || !B ? e.getAttribute(i)
+                            z.attributes || !B ? e.getAttribute(i)
                             : (s = e.getAttributeNode(i)) && s.specified ?
                                 s.value
                             :   null
@@ -28536,8 +29985,8 @@ function updateAAOsTime(e) {
                         n = 0,
                         s = 0;
                     if (
-                        ((Y = !S.detectDuplicates),
-                        (D = !S.sortStable && e.slice(0)),
+                        ((Y = !z.detectDuplicates),
+                        (D = !z.sortStable && e.slice(0)),
                         e.sort(J),
                         Y)
                     ) {
@@ -28546,7 +29995,7 @@ function updateAAOsTime(e) {
                     }
                     return e;
                 }),
-                (M = i.getText =
+                (E = i.getText =
                     function (e) {
                         var t,
                             i = '',
@@ -28557,12 +30006,12 @@ function updateAAOsTime(e) {
                                 if ('string' == typeof e.textContent)
                                     return e.textContent;
                                 for (e = e.firstChild; e; e = e.nextSibling)
-                                    i += M(e);
+                                    i += E(e);
                             } else if (3 === s || 4 === s) return e.nodeValue;
-                        } else for (; (t = e[n]); n++) i += M(t);
+                        } else for (; (t = e[n]); n++) i += E(t);
                         return i;
                     }),
-                (E = i.selectors =
+                (M = i.selectors =
                     {
                         cacheLength: 50,
                         createPseudo: o,
@@ -28578,9 +30027,9 @@ function updateAAOsTime(e) {
                         preFilter: {
                             ATTR: function (e) {
                                 return (
-                                    (e[1] = e[1].replace(Se, Ae)),
+                                    (e[1] = e[1].replace(ze, Ae)),
                                     (e[3] = (e[4] || e[5] || '').replace(
-                                        Se,
+                                        ze,
                                         Ae
                                     )),
                                     '~=' === e[2] && (e[3] = ' ' + e[3] + ' '),
@@ -28624,7 +30073,7 @@ function updateAAOsTime(e) {
                         },
                         filter: {
                             TAG: function (e) {
-                                var t = e.replace(Se, Ae).toLowerCase();
+                                var t = e.replace(ze, Ae).toLowerCase();
                                 return '*' === e ?
                                         function () {
                                             return !0;
@@ -28808,15 +30257,15 @@ function updateAAOsTime(e) {
                             PSEUDO: function (e, t) {
                                 var n,
                                     s =
-                                        E.pseudos[e] ||
-                                        E.setFilters[e.toLowerCase()] ||
+                                        M.pseudos[e] ||
+                                        M.setFilters[e.toLowerCase()] ||
                                         i.error('unsupported pseudo: ' + e);
                                 return (
                                     s[V] ? s(t)
                                     : s.length > 1 ?
                                         ((n = [e, e, '', t]),
                                         (
-                                            E.setFilters.hasOwnProperty(
+                                            M.setFilters.hasOwnProperty(
                                                 e.toLowerCase()
                                             )
                                         ) ?
@@ -28872,7 +30321,7 @@ function updateAAOsTime(e) {
                                         (
                                             t.textContent ||
                                             t.innerText ||
-                                            M(t)
+                                            E(t)
                                         ).indexOf(e) > -1
                                     );
                                 };
@@ -28881,7 +30330,7 @@ function updateAAOsTime(e) {
                                 return (
                                     ye.test(e || '') ||
                                         i.error('unsupported lang: ' + e),
-                                    (e = e.replace(Se, Ae).toLowerCase()),
+                                    (e = e.replace(ze, Ae).toLowerCase()),
                                     function (t) {
                                         var i;
                                         do {
@@ -28951,10 +30400,10 @@ function updateAAOsTime(e) {
                                 return !0;
                             },
                             parent: function (e) {
-                                return !E.pseudos.empty(e);
+                                return !M.pseudos.empty(e);
                             },
                             header: function (e) {
-                                return ze.test(e.nodeName);
+                                return Se.test(e.nodeName);
                             },
                             input: function (e) {
                                 return Ce.test(e.nodeName);
@@ -29005,8 +30454,8 @@ function updateAAOsTime(e) {
                         },
                     }),
                 { radio: !0, checkbox: !0, file: !0, password: !0, image: !0 }))
-                    E.pseudos[T] = h(T);
-                for (T in { submit: !0, reset: !0 }) E.pseudos[T] = p(T);
+                    M.pseudos[T] = h(T);
+                for (T in { submit: !0, reset: !0 }) M.pseudos[T] = p(T);
                 ((P = i.compile =
                     function (e, t) {
                         var i,
@@ -29020,13 +30469,13 @@ function updateAAOsTime(e) {
                         }
                         return o;
                     }),
-                    (E.pseudos.nth = E.pseudos.eq),
-                    (z.prototype = E.filters = E.pseudos),
-                    (E.setFilters = new z()),
-                    (S.sortStable = V.split('').sort(J).join('') === V),
+                    (M.pseudos.nth = M.pseudos.eq),
+                    (S.prototype = M.filters = M.pseudos),
+                    (M.setFilters = new S()),
+                    (z.sortStable = V.split('').sort(J).join('') === V),
                     L(),
                     [0, 0].sort(J),
-                    (S.detectDuplicates = Y),
+                    (z.detectDuplicates = Y),
                     (de.find = i),
                     (de.expr = i.selectors),
                     (de.expr[':'] = de.expr.pseudos),
@@ -29035,9 +30484,9 @@ function updateAAOsTime(e) {
                     (de.isXMLDoc = i.isXML),
                     (de.contains = i.contains));
             })(e));
-        var ze = {};
+        var Se = {};
         ((de.Callbacks = function (e) {
-            e = 'string' == typeof e ? ze[e] || n(e) : de.extend({}, e);
+            e = 'string' == typeof e ? Se[e] || n(e) : de.extend({}, e);
             var i,
                 s,
                 o,
@@ -29419,7 +30868,7 @@ function updateAAOsTime(e) {
                 );
             })({})));
         var Te = /(?:\{[\s\S]*\}|\[[\s\S]*\])$/,
-            Se = /([A-Z])/g;
+            ze = /([A-Z])/g;
         (de.extend({
             cache: {},
             noData: {
@@ -29593,8 +31042,8 @@ function updateAAOsTime(e) {
                 },
             }));
         var Ae,
-            Ee,
-            Me = /[\t\r\n\f]/g,
+            Me,
+            Ee = /[\t\r\n\f]/g,
             Ie = /\r/g,
             Pe = /^(?:input|select|textarea|button|object)$/i,
             je = /^(?:a|area)$/i,
@@ -29642,7 +31091,7 @@ function updateAAOsTime(e) {
                             (n =
                                 1 === (i = this[a]).nodeType &&
                                 (i.className ?
-                                    (' ' + i.className + ' ').replace(Me, ' ')
+                                    (' ' + i.className + ' ').replace(Ee, ' ')
                                 :   ' '))
                         ) {
                             for (o = 0; (s = t[o++]);)
@@ -29670,7 +31119,7 @@ function updateAAOsTime(e) {
                             (n =
                                 1 === (i = this[a]).nodeType &&
                                 (i.className ?
-                                    (' ' + i.className + ' ').replace(Me, ' ')
+                                    (' ' + i.className + ' ').replace(Ee, ' ')
                                 :   ''))
                         ) {
                             for (o = 0; (s = t[o++]);)
@@ -29722,7 +31171,7 @@ function updateAAOsTime(e) {
                     if (
                         1 === this[i].nodeType &&
                         (' ' + this[i].className + ' ')
-                            .replace(Me, ' ')
+                            .replace(Ee, ' ')
                             .indexOf(t) >= 0
                     )
                         return !0;
@@ -29839,7 +31288,7 @@ function updateAAOsTime(e) {
                                     (s =
                                         de.attrHooks[i] ||
                                         (de.expr.match.bool.test(i) ?
-                                            Ee
+                                            Me
                                         :   Ae))),
                                 n === t ?
                                     (
@@ -29931,7 +31380,7 @@ function updateAAOsTime(e) {
                     },
                 },
             }),
-            (Ee = {
+            (Me = {
                 set: function (e, t, i) {
                     return (
                         !1 === t ? de.removeAttr(e, i)
@@ -31715,13 +33164,13 @@ function updateAAOsTime(e) {
                                         mt.test(de.css(e, 'display'))
                                 ) ?
                                     de.swap(e, yt, function () {
-                                        return S(e, t, n);
+                                        return z(e, t, n);
                                     })
-                                :   S(e, t, n);
+                                :   z(e, t, n);
                     },
                     set: function (e, i, n) {
                         var s = n && ct(e);
-                        return z(
+                        return S(
                             e,
                             i,
                             n ?
@@ -31837,13 +33286,13 @@ function updateAAOsTime(e) {
                             return s;
                         },
                     }),
-                        _t.test(e) || (de.cssHooks[e + t].set = z));
+                        _t.test(e) || (de.cssHooks[e + t].set = S));
                 }
             ));
         var Ct = /%20/g,
-            zt = /\[\]$/,
+            St = /\[\]$/,
             Tt = /\r?\n/g,
-            St = /^(?:submit|button|image|reset|file)$/i,
+            zt = /^(?:submit|button|image|reset|file)$/i,
             At = /^(?:input|select|textarea|keygen)/i;
         (de.fn.extend({
             serialize: function () {
@@ -31860,7 +33309,7 @@ function updateAAOsTime(e) {
                             this.name &&
                             !de(this).is(':disabled') &&
                             At.test(this.nodeName) &&
-                            !St.test(e) &&
+                            !zt.test(e) &&
                             (this.checked || !tt.test(e))
                         );
                     })
@@ -31902,7 +33351,7 @@ function updateAAOsTime(e) {
                     de.each(e, function () {
                         o(this.name, this.value);
                     });
-                else for (n in e) M(n, e[n], i, o);
+                else for (n in e) E(n, e[n], i, o);
                 return s.join('&').replace(Ct, '+');
             }),
             de.each(
@@ -31936,8 +33385,8 @@ function updateAAOsTime(e) {
                         :   this.off(t, e || '**', i);
                 },
             }));
-        var Et,
-            Mt,
+        var Mt,
+            Et,
             It = de.now(),
             Pt = /\?/,
             jt = /#.*$/,
@@ -31952,11 +33401,11 @@ function updateAAOsTime(e) {
             Ht = {},
             Vt = '*/'.concat('*');
         try {
-            Mt = G.href;
+            Et = G.href;
         } catch (e) {
-            (((Mt = Y.createElement('a')).href = ''), (Mt = Mt.href));
+            (((Et = Y.createElement('a')).href = ''), (Et = Et.href));
         }
-        ((Et = Rt.exec(Mt.toLowerCase()) || []),
+        ((Mt = Rt.exec(Et.toLowerCase()) || []),
             (de.fn.load = function (e, i, n) {
                 if ('string' != typeof e && $t)
                     return $t.apply(this, arguments);
@@ -32017,9 +33466,9 @@ function updateAAOsTime(e) {
                 lastModified: {},
                 etag: {},
                 ajaxSettings: {
-                    url: Mt,
+                    url: Et,
                     type: 'GET',
-                    isLocal: Ot.test(Et[1]),
+                    isLocal: Ot.test(Mt[1]),
                     global: !0,
                     processData: !0,
                     async: !0,
@@ -32166,9 +33615,9 @@ function updateAAOsTime(e) {
                         ((_.promise(k).complete = f.add),
                         (k.success = k.done),
                         (k.error = k.fail),
-                        (h.url = ((e || h.url || Mt) + '')
+                        (h.url = ((e || h.url || Et) + '')
                             .replace(jt, '')
-                            .replace(Bt, Et[1] + '//')),
+                            .replace(Bt, Mt[1] + '//')),
                         (h.type = i.method || i.type || h.method || h.type),
                         (h.dataTypes = de
                             .trim(h.dataType || '*')
@@ -32178,12 +33627,12 @@ function updateAAOsTime(e) {
                             ((s = Rt.exec(h.url.toLowerCase())),
                             (h.crossDomain = !(
                                 !s ||
-                                (s[1] === Et[1] &&
-                                    s[2] === Et[2] &&
+                                (s[1] === Mt[1] &&
+                                    s[2] === Mt[2] &&
                                     (s[3] ||
                                         ('http:' === s[1] ? '80' : '443')) ===
-                                        (Et[3] ||
-                                            ('http:' === Et[1] ? '80' : '443')))
+                                        (Mt[3] ||
+                                            ('http:' === Mt[1] ? '80' : '443')))
                             ))),
                         h.data &&
                             h.processData &&
@@ -34208,29 +35657,29 @@ function updateAAOsTime(e) {
                                 h = d.outerHeight(),
                                 m = i(this, 'marginLeft'),
                                 b = i(this, 'marginTop'),
-                                z = u + m + i(this, 'marginRight') + k.width,
+                                S = u + m + i(this, 'marginRight') + k.width,
                                 T = h + b + i(this, 'marginBottom') + k.height,
-                                S = e.extend({}, v),
+                                z = e.extend({}, v),
                                 A = t(C.my, d.outerWidth(), d.outerHeight());
                             ('right' === s.my[0] ?
-                                (S.left -= u)
-                            :   'center' === s.my[0] && (S.left -= u / 2),
+                                (z.left -= u)
+                            :   'center' === s.my[0] && (z.left -= u / 2),
                                 'bottom' === s.my[1] ?
-                                    (S.top -= h)
-                                :   'center' === s.my[1] && (S.top -= h / 2),
-                                (S.left += A[0]),
-                                (S.top += A[1]),
-                                o || ((S.left = l(S.left)), (S.top = l(S.top))),
+                                    (z.top -= h)
+                                :   'center' === s.my[1] && (z.top -= h / 2),
+                                (z.left += A[0]),
+                                (z.top += A[1]),
+                                o || ((z.left = l(z.left)), (z.top = l(z.top))),
                                 (n = { marginLeft: m, marginTop: b }),
                                 e.each(['left', 'top'], function (t, i) {
                                     e.ui.position[x[t]] &&
-                                        e.ui.position[x[t]][i](S, {
+                                        e.ui.position[x[t]][i](z, {
                                             targetWidth: _,
                                             targetHeight: f,
                                             elemWidth: u,
                                             elemHeight: h,
                                             collisionPosition: n,
-                                            collisionWidth: z,
+                                            collisionWidth: S,
                                             collisionHeight: T,
                                             offset: [p[0] + A[0], p[1] + A[1]],
                                             my: s.my,
@@ -34241,9 +35690,9 @@ function updateAAOsTime(e) {
                                 }),
                                 s.using &&
                                     (c = function (e) {
-                                        var t = g.left - S.left,
+                                        var t = g.left - z.left,
                                             i = t + _ - u,
-                                            n = g.top - S.top,
+                                            n = g.top - z.top,
                                             o = n + f - h,
                                             l = {
                                                 target: {
@@ -34255,8 +35704,8 @@ function updateAAOsTime(e) {
                                                 },
                                                 element: {
                                                     element: d,
-                                                    left: S.left,
-                                                    top: S.top,
+                                                    left: z.left,
+                                                    top: z.top,
                                                     width: u,
                                                     height: h,
                                                 },
@@ -34280,7 +35729,7 @@ function updateAAOsTime(e) {
                                             :   (l.important = 'vertical'),
                                             s.using.call(this, e, l));
                                     }),
-                                d.offset(e.extend(S, { using: c })));
+                                d.offset(e.extend(z, { using: c })));
                         })
                     );
                 }),
@@ -41679,12 +43128,12 @@ function updateAAOsTime(e) {
                         k,
                         x,
                         C,
-                        z,
-                        T,
                         S,
+                        T,
+                        z,
                         A,
-                        E,
                         M,
+                        E,
                         I,
                         P,
                         j,
@@ -41840,40 +43289,40 @@ function updateAAOsTime(e) {
                     ) {
                         for (x = '', this.maxRows = 4, C = 0; C < U[1]; C++) {
                             if (
-                                ((z = this._daylightSavingAdjust(
+                                ((S = this._daylightSavingAdjust(
                                     new Date(ee, X, e.selectedDay)
                                 )),
                                 (T = ' ui-corner-all'),
-                                (S = ''),
+                                (z = ''),
                                 G)
                             ) {
                                 if (
-                                    ((S += "<div class='ui-datepicker-group"),
+                                    ((z += "<div class='ui-datepicker-group"),
                                     U[1] > 1)
                                 )
                                     switch (C) {
                                         case 0:
-                                            ((S +=
+                                            ((z +=
                                                 ' ui-datepicker-group-first'),
                                                 (T =
                                                     ' ui-corner-' +
                                                     (H ? 'right' : 'left')));
                                             break;
                                         case U[1] - 1:
-                                            ((S += ' ui-datepicker-group-last'),
+                                            ((z += ' ui-datepicker-group-last'),
                                                 (T =
                                                     ' ui-corner-' +
                                                     (H ? 'left' : 'right')));
                                             break;
                                         default:
-                                            ((S +=
+                                            ((z +=
                                                 ' ui-datepicker-group-middle'),
                                                 (T = ''));
                                     }
-                                S += "'>";
+                                z += "'>";
                             }
                             for (
-                                S +=
+                                z +=
                                     "<div class='ui-datepicker-header ui-widget-header ui-helper-clearfix" +
                                     T +
                                     "'>" +
@@ -41912,25 +43361,25 @@ function updateAAOsTime(e) {
                                         " class='ui-datepicker-week-end'"
                                     :   '') +
                                     "><span title='" +
-                                    h[(E = (w + d) % 7)] +
+                                    h[(M = (w + d) % 7)] +
                                     "'>" +
-                                    p[E] +
+                                    p[M] +
                                     '</span></th>';
                             for (
-                                S += A + '</tr></thead><tbody>',
-                                    M = this._getDaysInMonth(ee, X),
+                                z += A + '</tr></thead><tbody>',
+                                    E = this._getDaysInMonth(ee, X),
                                     ee === e.selectedYear &&
                                         X === e.selectedMonth &&
                                         (e.selectedDay = Math.min(
                                             e.selectedDay,
-                                            M
+                                            E
                                         )),
                                     I =
                                         (this._getFirstDayOfMonth(ee, X) -
                                             d +
                                             7) %
                                         7,
-                                    P = Math.ceil((I + M) / 7),
+                                    P = Math.ceil((I + E) / 7),
                                     j =
                                         G && this.maxRows > P ?
                                             this.maxRows
@@ -41944,7 +43393,7 @@ function updateAAOsTime(e) {
                                 L++
                             ) {
                                 for (
-                                    S += '<tr>',
+                                    z += '<tr>',
                                         O =
                                             u ?
                                                 "<td class='ui-datepicker-week-col'>" +
@@ -41979,11 +43428,11 @@ function updateAAOsTime(e) {
                                                 ' ui-datepicker-other-month'
                                             :   '') +
                                             ((
-                                                (D.getTime() === z.getTime() &&
+                                                (D.getTime() === S.getTime() &&
                                                     X === e.selectedMonth &&
                                                     e._keyEvent) ||
                                                 (b.getTime() === D.getTime() &&
-                                                    b.getTime() === z.getTime())
+                                                    b.getTime() === S.getTime())
                                             ) ?
                                                 ' ' + this._dayOverClass
                                             :   '') +
@@ -42037,10 +43486,10 @@ function updateAAOsTime(e) {
                                             '</td>'),
                                         D.setDate(D.getDate() + 1),
                                         (D = this._daylightSavingAdjust(D)));
-                                S += O + '</tr>';
+                                z += O + '</tr>';
                             }
                             (++X > 11 && ((X = 0), ee++),
-                                (x += S +=
+                                (x += z +=
                                     '</tbody></table>' +
                                     (G ?
                                         '</div>' +
@@ -45422,7 +46871,7 @@ function updateAAOsTime(e) {
          */ var k,
             x,
             C = 'ui-effects-',
-            z = e;
+            S = e;
         ((e.effects = { effect: {} }),
             /*!
              * jQuery Color Animations v2.1.2
@@ -45964,7 +47413,7 @@ function updateAAOsTime(e) {
                             transparent: [null, null, null, 0],
                             _default: '#ffffff',
                         }));
-            })(z),
+            })(S),
             (function () {
                 function t(t) {
                     var i,
@@ -46019,7 +47468,7 @@ function updateAAOsTime(e) {
                         e.fx.step[i] = function (e) {
                             (('none' !== e.end && !e.setAttr) ||
                                 (1 === e.pos && !e.setAttr)) &&
-                                (z.style(e.elem, i, e.end), (e.setAttr = !0));
+                                (S.style(e.elem, i, e.end), (e.setAttr = !0));
                         };
                     }
                 ),
@@ -49604,18 +51053,18 @@ function updateAAOsTime(e) {
                         k = w + h,
                         x = l.scrollLeft(),
                         C = x + u,
-                        z = a.position(),
-                        T = z.top,
-                        S = T + a.height(),
-                        A = z.left,
-                        E = A + a.width(),
-                        M = !0 === i ? S : T,
-                        I = !0 === i ? T : S,
-                        P = !0 === i ? E : A,
-                        j = !0 === i ? A : E;
+                        S = a.position(),
+                        T = S.top,
+                        z = T + a.height(),
+                        A = S.left,
+                        M = A + a.width(),
+                        E = !0 === i ? z : T,
+                        I = !0 === i ? T : z,
+                        P = !0 === i ? M : A,
+                        j = !0 === i ? A : M;
                     if ('both' === s)
-                        return !!p && I <= k && M >= w && j <= C && P >= x;
-                    if ('vertical' === s) return !!p && I <= k && M >= w;
+                        return !!p && I <= k && E >= w && j <= C && P >= x;
+                    if ('vertical' === s) return !!p && I <= k && E >= w;
                     if ('horizontal' === s) return !!p && j <= C && P >= x;
                 }
             }
@@ -52384,7 +53833,7 @@ function updateAAOsTime(e) {
                 for (var i = t ? [e, t] : e, n = 0, s = i.length; n < s; n++)
                     this.extend(i[n]);
         }
-        function z(e, t) {
+        function S(e, t) {
             return e instanceof C ? e : new C(e, t);
         }
         function T(e, t, i) {
@@ -52394,7 +53843,7 @@ function updateAAOsTime(e) {
                 );
             ((this.lat = +e), (this.lng = +t), void 0 !== i && (this.alt = +i));
         }
-        function S(e, t, i) {
+        function z(e, t, i) {
             return (
                 e instanceof T ? e
                 : Je(e) && 'object' != typeof e[0] ?
@@ -52416,10 +53865,10 @@ function updateAAOsTime(e) {
                 (this._d = e[3]))
             :   ((this._a = e), (this._b = t), (this._c = i), (this._d = n));
         }
-        function E(e, t, i, n) {
+        function M(e, t, i, n) {
             return new A(e, t, i, n);
         }
-        function M(e) {
+        function E(e) {
             return document.createElementNS('http://www.w3.org/2000/svg', e);
         }
         function I(e, t) {
@@ -52840,17 +54289,17 @@ function updateAAOsTime(e) {
                         (r = e[s]),
                         a._code & l ?
                             r._code & l ||
-                            (((c = Me(r, a, l, t, i))._code = Ie(c, t)),
+                            (((c = Ee(r, a, l, t, i))._code = Ie(c, t)),
                             n.push(c))
                         :   (r._code & l &&
-                                (((c = Me(r, a, l, t, i))._code = Ie(c, t)),
+                                (((c = Ee(r, a, l, t, i))._code = Ie(c, t)),
                                 n.push(c)),
                             n.push(a)));
                 e = n;
             }
             return e;
         }
-        function ze(e, t) {
+        function Se(e, t) {
             var i, n, s, o, a, r, l;
             if (!e || 0 === e.length) throw new Error('latlngs not passed');
             je(e) ||
@@ -52859,8 +54308,8 @@ function updateAAOsTime(e) {
                 ),
                 (e = e[0]));
             for (
-                var c = S([0, 0]),
-                    d = z(e),
+                var c = z([0, 0]),
+                    d = S(e),
                     u =
                         (d.getNorthWest().distanceTo(d.getSouthWest()) *
                             d.getNorthEast().distanceTo(d.getNorthWest()) <
@@ -52871,8 +54320,8 @@ function updateAAOsTime(e) {
                 p < u;
                 p++
             ) {
-                var m = S(e[p]);
-                h.push(t.project(S([m.lat - c.lat, m.lng - c.lng])));
+                var m = z(e[p]);
+                h.push(t.project(z([m.lat - c.lat, m.lng - c.lng])));
             }
             for (p = a = r = l = 0, i = u - 1; p < u; i = p++)
                 ((n = h[p]),
@@ -52883,17 +54332,17 @@ function updateAAOsTime(e) {
                     (a += 3 * o));
             return (
                 (d = 0 === a ? h[0] : [r / a, l / a]),
-                S([(d = t.unproject(w(d))).lat + c.lat, d.lng + c.lng])
+                z([(d = t.unproject(w(d))).lat + c.lat, d.lng + c.lng])
             );
         }
         function Te(e) {
             for (var t = 0, i = 0, n = 0, s = 0; s < e.length; s++) {
-                var o = S(e[s]);
+                var o = z(e[s]);
                 ((t += o.lat), (i += o.lng), n++);
             }
-            return S([t / n, i / n]);
+            return z([t / n, i / n]);
         }
-        function Se(e, t) {
+        function ze(e, t) {
             if (t && e.length) {
                 var i = (e = (function (e, t) {
                         for (
@@ -52934,7 +54383,7 @@ function updateAAOsTime(e) {
         function Ae(e, t, i) {
             return Math.sqrt(Pe(e, t, i, !0));
         }
-        function Ee(e, t, i, n, s) {
+        function Me(e, t, i, n, s) {
             var o,
                 a,
                 r,
@@ -52943,11 +54392,11 @@ function updateAAOsTime(e) {
             for (ri = c; ;) {
                 if (!(l | c)) return [e, t];
                 if (l & c) return !1;
-                ((r = Ie((a = Me(e, t, (o = l || c), i, s)), i)),
+                ((r = Ie((a = Ee(e, t, (o = l || c), i, s)), i)),
                     o === l ? ((e = a), (l = r)) : ((t = a), (c = r)));
             }
         }
-        function Me(e, t, i, n, s) {
+        function Ee(e, t, i, n, s) {
             var o,
                 a,
                 r = t.x - e.x,
@@ -53006,8 +54455,8 @@ function updateAAOsTime(e) {
                 ),
                 (e = e[0]));
             for (
-                var l = S([0, 0]),
-                    c = z(e),
+                var l = z([0, 0]),
+                    c = S(e),
                     d =
                         (c.getNorthWest().distanceTo(c.getSouthWest()) *
                             c.getNorthEast().distanceTo(c.getNorthWest()) <
@@ -53018,8 +54467,8 @@ function updateAAOsTime(e) {
                 h < d;
                 h++
             ) {
-                var p = S(e[h]);
-                u.push(t.project(S([p.lat - l.lat, p.lng - l.lng])));
+                var p = z(e[h]);
+                u.push(t.project(z([p.lat - l.lat, p.lng - l.lng])));
             }
             for (i = h = 0; h < d - 1; h++) i += u[h].distanceTo(u[h + 1]) / 2;
             if (0 === i) r = u[0];
@@ -53036,7 +54485,7 @@ function updateAAOsTime(e) {
                         ];
                         break;
                     }
-            return S([(c = t.unproject(w(r))).lat + l.lat, c.lng + l.lng]);
+            return z([(c = t.unproject(w(r))).lat + l.lat, c.lng + l.lng]);
         }
         function Oe(e, t) {
             var i,
@@ -53060,7 +54509,7 @@ function updateAAOsTime(e) {
                 case 'MultiLineString':
                     return (
                         (n = Re(r, 'LineString' === a.type ? 0 : 1, d)),
-                        new Mi(n, t)
+                        new Ei(n, t)
                     );
                 case 'Polygon':
                 case 'MultiPolygon':
@@ -53103,7 +54552,7 @@ function updateAAOsTime(e) {
             return s;
         }
         function $e(e, t) {
-            return void 0 !== (e = S(e)).alt ?
+            return void 0 !== (e = z(e)).alt ?
                     [l(e.lng, t), l(e.lat, t), l(e.alt, t)]
                 :   [l(e.lng, t), l(e.lat, t)];
         }
@@ -53599,7 +55048,7 @@ function updateAAOsTime(e) {
                     if (e instanceof T) i = t = e;
                     else {
                         if (!(e instanceof C))
-                            return e ? this.extend(S(e) || z(e)) : this;
+                            return e ? this.extend(z(e) || S(e)) : this;
                         if (((t = e._southWest), (i = e._northEast), !t || !i))
                             return this;
                     }
@@ -53661,8 +55110,8 @@ function updateAAOsTime(e) {
                                 e instanceof T ||
                                 'lat' in e
                         ) ?
-                            S
-                        :   z)(e);
+                            z
+                        :   S)(e);
                     var t,
                         i,
                         n = this._southWest,
@@ -53678,7 +55127,7 @@ function updateAAOsTime(e) {
                     );
                 },
                 intersects: function (e) {
-                    e = z(e);
+                    e = S(e);
                     var t = this._southWest,
                         i = this._northEast,
                         n = e.getSouthWest(),
@@ -53689,7 +55138,7 @@ function updateAAOsTime(e) {
                     return s && e;
                 },
                 overlaps: function (e) {
-                    e = z(e);
+                    e = S(e);
                     var t = this._southWest,
                         i = this._northEast,
                         n = e.getSouthWest(),
@@ -53708,7 +55157,7 @@ function updateAAOsTime(e) {
                 equals: function (e, t) {
                     return (
                         !!e &&
-                        ((e = z(e)),
+                        ((e = S(e)),
                         this._southWest.equals(e.getSouthWest(), t) &&
                             this._northEast.equals(e.getNorthEast(), t))
                     );
@@ -53759,7 +55208,7 @@ function updateAAOsTime(e) {
                     equals: function (e, t) {
                         return (
                             !!e &&
-                            ((e = S(e)),
+                            ((e = z(e)),
                             Math.max(
                                 Math.abs(this.lat - e.lat),
                                 Math.abs(this.lng - e.lng)
@@ -53776,7 +55225,7 @@ function updateAAOsTime(e) {
                         );
                     },
                     distanceTo: function (e) {
-                        return rt.distance(this, S(e));
+                        return rt.distance(this, z(e));
                     },
                     wrap: function () {
                         return rt.wrapLatLng(this);
@@ -53785,7 +55234,7 @@ function updateAAOsTime(e) {
                         var t =
                             (e = (180 * e) / 40075017) /
                             Math.cos((Math.PI / 180) * this.lat);
-                        return z(
+                        return S(
                             [this.lat - e, this.lng - t],
                             [this.lat + e, this.lng + t]
                         );
@@ -53881,7 +55330,7 @@ function updateAAOsTime(e) {
             _t = t({}, rt, {
                 code: 'EPSG:3857',
                 projection: lt,
-                transformation: E((_t = 0.5 / (Math.PI * lt.R)), 0.5, -_t, 0.5),
+                transformation: M((_t = 0.5 / (Math.PI * lt.R)), 0.5, -_t, 0.5),
             }),
             ft = t({}, _t, { code: 'EPSG:900913' }),
             gt = document.documentElement.style,
@@ -53895,15 +55344,15 @@ function updateAAOsTime(e) {
                 /WebKit\/([0-9]+)|$/.exec(navigator.userAgent)[1],
                 10
             ),
-            zt =
+            St =
                 ((Ct =
                     kt && P('Google') && Ct < 537 && !('AudioNode' in window)),
                 !!window.opera),
             Tt = !yt && P('chrome'),
-            St = P('gecko') && !wt && !zt && !vt,
+            zt = P('gecko') && !wt && !St && !vt,
             At = !Tt && P('safari'),
-            Et = P('phantom'),
-            Mt = 'OTransition' in gt,
+            Mt = P('phantom'),
+            Et = 'OTransition' in gt,
             It = 0 === navigator.platform.indexOf('Win'),
             Pt = vt && 'transition' in gt,
             jt =
@@ -53912,15 +55361,15 @@ function updateAAOsTime(e) {
                 !xt,
             Dt =
                 ((gt = 'MozPerspective' in gt),
-                !window.L_DISABLE_3D && (Pt || jt || gt) && !Mt && !Et),
+                !window.L_DISABLE_3D && (Pt || jt || gt) && !Et && !Mt),
             Lt = (Gi = 'undefined' != typeof orientation || P('mobile')) && wt,
             Ot = Gi && jt,
             Nt = !window.PointerEvent && window.MSPointerEvent,
             Bt = !(!window.PointerEvent && !Nt),
             Rt = 'ontouchstart' in window || !!window.TouchEvent,
             $t = !window.L_NO_TOUCH && (Rt || Bt),
-            Ft = Gi && zt,
-            Ht = Gi && St,
+            Ft = Gi && St,
+            Ht = Gi && zt,
             Vt =
                 1 <
                 (window.devicePixelRatio ||
@@ -53943,7 +55392,7 @@ function updateAAOsTime(e) {
                 return e;
             })(),
             qt = !!document.createElement('canvas').getContext,
-            Ut = !(!document.createElementNS || !M('svg').createSVGRect),
+            Ut = !(!document.createElementNS || !E('svg').createSVGRect),
             Zt =
                 !!Ut &&
                 (((Zt = document.createElement('div')).innerHTML = '<svg/>'),
@@ -53957,12 +55406,12 @@ function updateAAOsTime(e) {
                 android: kt,
                 android23: xt,
                 androidStock: Ct,
-                opera: zt,
+                opera: St,
                 chrome: Tt,
-                gecko: St,
+                gecko: zt,
                 safari: At,
-                phantom: Et,
-                opera12: Mt,
+                phantom: Mt,
+                opera12: Et,
                 win: It,
                 ie3d: Pt,
                 webkit3d: jt,
@@ -54209,7 +55658,7 @@ function updateAAOsTime(e) {
                             (this._zoom = this._limitZoom(t.zoom)),
                         t.center &&
                             void 0 !== t.zoom &&
-                            this.setView(S(t.center), t.zoom, { reset: !0 }),
+                            this.setView(z(t.center), t.zoom, { reset: !0 }),
                         this.callInitHooks(),
                         (this._zoomAnimated =
                             oi &&
@@ -54230,7 +55679,7 @@ function updateAAOsTime(e) {
                     return (
                         (i = void 0 === i ? this._zoom : this._limitZoom(i)),
                         (e = this._limitCenter(
-                            S(e),
+                            z(e),
                             i,
                             this.options.maxBounds
                         )),
@@ -54286,7 +55735,7 @@ function updateAAOsTime(e) {
                     return this.setView(n, t, { zoom: i });
                 },
                 _getBoundsCenterZoom: function (e, t) {
-                    ((t = t || {}), (e = e.getBounds ? e.getBounds() : z(e)));
+                    ((t = t || {}), (e = e.getBounds ? e.getBounds() : S(e)));
                     var i = w(t.paddingTopLeft || t.padding || [0, 0]),
                         n = w(t.paddingBottomRight || t.padding || [0, 0]),
                         s = this.getBoundsZoom(e, !1, i.add(n));
@@ -54310,7 +55759,7 @@ function updateAAOsTime(e) {
                             });
                 },
                 fitBounds: function (e, t) {
-                    if ((e = z(e)).isValid())
+                    if ((e = S(e)).isValid())
                         return (
                             (e = this._getBoundsCenterZoom(e, t)),
                             this.setView(e.center, e.zoom, t)
@@ -54399,7 +55848,7 @@ function updateAAOsTime(e) {
                         c = this.getSize(),
                         d = this._zoom,
                         u =
-                            ((e = S(e)),
+                            ((e = z(e)),
                             (t = void 0 === t ? d : t),
                             Math.max(c.x, c.y)),
                         h = u * this.getZoomScale(d, t),
@@ -54445,7 +55894,7 @@ function updateAAOsTime(e) {
                 },
                 setMaxBounds: function (e) {
                     return (
-                        (e = z(e)),
+                        (e = S(e)),
                         this.listens('moveend', this._panInsideMaxBounds) &&
                             this.off('moveend', this._panInsideMaxBounds),
                         e.isValid() ?
@@ -54486,7 +55935,7 @@ function updateAAOsTime(e) {
                 panInsideBounds: function (e, t) {
                     this._enforcingBounds = !0;
                     var i = this.getCenter();
-                    e = this._limitCenter(i, this._zoom, z(e));
+                    e = this._limitCenter(i, this._zoom, S(e));
                     return (
                         i.equals(e) || this.panTo(e, t),
                         (this._enforcingBounds = !1),
@@ -54728,7 +56177,7 @@ function updateAAOsTime(e) {
                     );
                 },
                 getBoundsZoom: function (e, t, i) {
-                    ((e = z(e)), (i = w(i || [0, 0])));
+                    ((e = S(e)), (i = w(i || [0, 0])));
                     var n = this.getZoom() || 0,
                         s = this.getMinZoom(),
                         o = this.getMaxZoom(),
@@ -54805,7 +56254,7 @@ function updateAAOsTime(e) {
                 project: function (e, t) {
                     return (
                         (t = void 0 === t ? this._zoom : t),
-                        this.options.crs.latLngToPoint(S(e), t)
+                        this.options.crs.latLngToPoint(z(e), t)
                     );
                 },
                 unproject: function (e, t) {
@@ -54821,18 +56270,18 @@ function updateAAOsTime(e) {
                     );
                 },
                 latLngToLayerPoint: function (e) {
-                    return this.project(S(e))
+                    return this.project(z(e))
                         ._round()
                         ._subtract(this.getPixelOrigin());
                 },
                 wrapLatLng: function (e) {
-                    return this.options.crs.wrapLatLng(S(e));
+                    return this.options.crs.wrapLatLng(z(e));
                 },
                 wrapLatLngBounds: function (e) {
-                    return this.options.crs.wrapLatLngBounds(z(e));
+                    return this.options.crs.wrapLatLngBounds(S(e));
                 },
                 distance: function (e, t) {
-                    return this.options.crs.distance(S(e), S(t));
+                    return this.options.crs.distance(z(e), z(t));
                 },
                 containerPointToLayerPoint: function (e) {
                     return w(e).subtract(this._getMapPanePos());
@@ -54848,7 +56297,7 @@ function updateAAOsTime(e) {
                 },
                 latLngToContainerPoint: function (e) {
                     return this.layerPointToContainerPoint(
-                        this.latLngToLayerPoint(S(e))
+                        this.latLngToLayerPoint(z(e))
                     );
                 },
                 mouseEventToContainerPoint: function (e) {
@@ -56232,18 +57681,18 @@ function updateAAOsTime(e) {
                 ((kt = {
                     __proto__: null,
                     clipPolygon: Ce,
-                    polygonCenter: ze,
+                    polygonCenter: Se,
                     centroid: Te,
                 }),
                 (xt = {
                     __proto__: null,
-                    simplify: Se,
+                    simplify: ze,
                     pointToSegmentDistance: Ae,
                     closestPointOnSegment: function (e, t, i) {
                         return Pe(e, t, i);
                     },
-                    clipSegment: Ee,
-                    _getEdgeIntersection: Me,
+                    clipSegment: Me,
+                    _getEdgeIntersection: Ee,
                     _getBitCode: Ie,
                     _sqClosestPointOnSegment: Pe,
                     isFlat: je,
@@ -56259,7 +57708,7 @@ function updateAAOsTime(e) {
                     },
                     bounds: new k([-180, -90], [180, 90]),
                 }),
-                (zt = {
+                (St = {
                     R: 6378137,
                     R_MINOR: 6356752.314245179,
                     bounds: new k(
@@ -56302,28 +57751,28 @@ function updateAAOsTime(e) {
                 (Tt = {
                     __proto__: null,
                     LonLat: Ct,
-                    Mercator: zt,
+                    Mercator: St,
                     SphericalMercator: lt,
                 }),
                 (At = t({}, rt, {
                     code: 'EPSG:3395',
-                    projection: zt,
-                    transformation: E(
-                        (St = 0.5 / (Math.PI * zt.R)),
+                    projection: St,
+                    transformation: M(
+                        (zt = 0.5 / (Math.PI * St.R)),
                         0.5,
-                        -St,
+                        -zt,
                         0.5
                     ),
                 })),
                 t({}, rt, {
                     code: 'EPSG:4326',
                     projection: Ct,
-                    transformation: E(1 / 180, 1, -1 / 180, 0.5),
+                    transformation: M(1 / 180, 1, -1 / 180, 0.5),
                 })),
             wi =
-                ((Et = t({}, at, {
+                ((Mt = t({}, at, {
                     projection: Ct,
-                    transformation: E(1, 0, -1, 0),
+                    transformation: M(1, 0, -1, 0),
                     scale: function (e) {
                         return Math.pow(2, e);
                     },
@@ -56337,13 +57786,13 @@ function updateAAOsTime(e) {
                     },
                     infinite: !0,
                 })),
-                (Mt =
+                (Et =
                     ((at.Earth = rt),
                     (at.EPSG3395 = At),
                     (at.EPSG3857 = _t),
                     (at.EPSG900913 = ft),
                     (at.EPSG4326 = yi),
-                    (at.Simple = Et),
+                    (at.Simple = Mt),
                     st.extend({
                         options: {
                             pane: 'overlayPane',
@@ -56483,7 +57932,7 @@ function updateAAOsTime(e) {
                                 this.setZoom(this._layersMinZoom));
                     },
                 }),
-                Mt.extend({
+                Et.extend({
                     initialize: function (e, t) {
                         var i, n;
                         if ((u(this, t), (this._layers = {}), e))
@@ -56705,7 +58154,7 @@ function updateAAOsTime(e) {
                     );
                 },
             }),
-            zi = yt.extend({
+            Si = yt.extend({
                 initialize: function (e) {
                     this._marker = e;
                 },
@@ -56799,7 +58248,7 @@ function updateAAOsTime(e) {
                         this._marker.fire('moveend').fire('dragend', e));
                 },
             }),
-            Ti = Mt.extend({
+            Ti = Et.extend({
                 options: {
                     icon: new Ci(),
                     interactive: !0,
@@ -56820,7 +58269,7 @@ function updateAAOsTime(e) {
                     autoPanSpeed: 10,
                 },
                 initialize: function (e, t) {
-                    (u(this, t), (this._latlng = S(e)));
+                    (u(this, t), (this._latlng = z(e)));
                 },
                 onAdd: function (e) {
                     ((this._zoomAnimated =
@@ -56850,7 +58299,7 @@ function updateAAOsTime(e) {
                 setLatLng: function (e) {
                     var t = this._latlng;
                     return (
-                        (this._latlng = S(e)),
+                        (this._latlng = z(e)),
                         this.update(),
                         this.fire('move', {
                             oldLatLng: t,
@@ -56962,12 +58411,12 @@ function updateAAOsTime(e) {
                     this.options.interactive &&
                         (K(this._icon, 'leaflet-interactive'),
                         this.addInteractiveTarget(this._icon),
-                        zi &&
+                        Si &&
                             ((e = this.options.draggable),
                             this.dragging &&
                                 ((e = this.dragging.enabled()),
                                 this.dragging.disable()),
-                            (this.dragging = new zi(this)),
+                            (this.dragging = new Si(this)),
                             e && this.dragging.enable()));
                 },
                 setOpacity: function (e) {
@@ -57010,7 +58459,7 @@ function updateAAOsTime(e) {
                     return this.options.icon.options.tooltipAnchor;
                 },
             }),
-            Si = Mt.extend({
+            zi = Et.extend({
                 options: {
                     stroke: !0,
                     color: '#3388ff',
@@ -57084,17 +58533,17 @@ function updateAAOsTime(e) {
                     );
                 },
             }),
-            Ai = Si.extend({
+            Ai = zi.extend({
                 options: { fill: !0, radius: 10 },
                 initialize: function (e, t) {
                     (u(this, t),
-                        (this._latlng = S(e)),
+                        (this._latlng = z(e)),
                         (this._radius = this.options.radius));
                 },
                 setLatLng: function (e) {
                     var t = this._latlng;
                     return (
-                        (this._latlng = S(e)),
+                        (this._latlng = z(e)),
                         this.redraw(),
                         this.fire('move', {
                             oldLatLng: t,
@@ -57117,7 +58566,7 @@ function updateAAOsTime(e) {
                 setStyle: function (e) {
                     var t = (e && e.radius) || this._radius;
                     return (
-                        Si.prototype.setStyle.call(this, e),
+                        zi.prototype.setStyle.call(this, e),
                         this.setRadius(t),
                         this
                     );
@@ -57155,7 +58604,7 @@ function updateAAOsTime(e) {
                     );
                 },
             }),
-            Ei = Ai.extend({
+            Mi = Ai.extend({
                 initialize: function (e, i, n) {
                     if (
                         (u(
@@ -57165,7 +58614,7 @@ function updateAAOsTime(e) {
                                     t({}, n, { radius: i })
                                 :   i)
                         ),
-                        (this._latlng = S(e)),
+                        (this._latlng = z(e)),
                         isNaN(this.options.radius))
                     )
                         throw new Error('Circle radius cannot be NaN');
@@ -57184,7 +58633,7 @@ function updateAAOsTime(e) {
                         this._map.layerPointToLatLng(this._point.add(e))
                     );
                 },
-                setStyle: Si.prototype.setStyle,
+                setStyle: zi.prototype.setStyle,
                 _project: function () {
                     var e,
                         t,
@@ -57223,7 +58672,7 @@ function updateAAOsTime(e) {
                         this._updateBounds());
                 },
             }),
-            Mi = Si.extend({
+            Ei = zi.extend({
                 options: { smoothFactor: 1, noClip: !1 },
                 initialize: function (e, t) {
                     (u(this, t), this._setLatLngs(e));
@@ -57272,7 +58721,7 @@ function updateAAOsTime(e) {
                 addLatLng: function (e, t) {
                     return (
                         (t = t || this._defaultShape()),
-                        (e = S(e)),
+                        (e = z(e)),
                         t.push(e),
                         this._bounds.extend(e),
                         this.redraw()
@@ -57288,7 +58737,7 @@ function updateAAOsTime(e) {
                 _convertLatLngs: function (e) {
                     for (var t = [], i = je(e), n = 0, s = e.length; n < s; n++)
                         i ?
-                            ((t[n] = S(e[n])), this._bounds.extend(t[n]))
+                            ((t[n] = z(e[n])), this._bounds.extend(t[n]))
                         :   (t[n] = this._convertLatLngs(e[n]));
                     return t;
                 },
@@ -57347,7 +58796,7 @@ function updateAAOsTime(e) {
                                     t < i - 1;
                                     t++
                                 )
-                                    (n = Ee(s[t], s[t + 1], e, t, !0)) &&
+                                    (n = Me(s[t], s[t + 1], e, t, !0)) &&
                                         ((o[r] = o[r] || []),
                                         o[r].push(n[0]),
                                         (n[1] === s[t + 1] && t !== i - 2) ||
@@ -57362,7 +58811,7 @@ function updateAAOsTime(e) {
                         i < n;
                         i++
                     )
-                        e[i] = Se(e[i], t);
+                        e[i] = ze(e[i], t);
                 },
                 _update: function () {
                     this._map &&
@@ -57394,21 +58843,21 @@ function updateAAOsTime(e) {
                     return !1;
                 },
             });
-        Mi._flat = De;
-        var Ii = Mi.extend({
+        Ei._flat = De;
+        var Ii = Ei.extend({
                 options: { fill: !0 },
                 isEmpty: function () {
                     return !this._latlngs.length || !this._latlngs[0].length;
                 },
                 getCenter: function () {
                     if (this._map)
-                        return ze(this._defaultShape(), this._map.options.crs);
+                        return Se(this._defaultShape(), this._map.options.crs);
                     throw new Error(
                         'Must add layer to map before using getCenter()'
                     );
                 },
                 _convertLatLngs: function (e) {
-                    var t = (e = Mi.prototype._convertLatLngs.call(this, e))
+                    var t = (e = Ei.prototype._convertLatLngs.call(this, e))
                         .length;
                     return (
                         2 <= t &&
@@ -57419,7 +58868,7 @@ function updateAAOsTime(e) {
                     );
                 },
                 _setLatLngs: function (e) {
-                    (Mi.prototype._setLatLngs.call(this, e),
+                    (Ei.prototype._setLatLngs.call(this, e),
                         je(this._latlngs) && (this._latlngs = [this._latlngs]));
                 },
                 _defaultShape: function () {
@@ -57475,7 +58924,7 @@ function updateAAOsTime(e) {
                                             (n.y - i.y) +
                                             i.x &&
                                     (c = !c));
-                    return c || Mi.prototype._containsPoint.call(this, e, !0);
+                    return c || Ei.prototype._containsPoint.call(this, e, !0);
                 },
             }),
             Pi = ki.extend({
@@ -57533,9 +58982,9 @@ function updateAAOsTime(e) {
             },
         }),
             Ti.include(It),
-            Ei.include(It),
+            Mi.include(It),
             Ai.include(It),
-            Mi.include({
+            Ei.include({
                 toGeoJSON: function (e) {
                     var t = !je(this._latlngs);
                     return He(this, {
@@ -57600,7 +59049,7 @@ function updateAAOsTime(e) {
                 },
             }));
         Pt = We;
-        var ji = Mt.extend({
+        var ji = Et.extend({
                 options: {
                     opacity: 1,
                     alt: '',
@@ -57611,7 +59060,7 @@ function updateAAOsTime(e) {
                     className: '',
                 },
                 initialize: function (e, t, i) {
-                    ((this._url = e), (this._bounds = z(t)), u(this, i));
+                    ((this._url = e), (this._bounds = S(t)), u(this, i));
                 },
                 onAdd: function () {
                     (this._image ||
@@ -57653,7 +59102,7 @@ function updateAAOsTime(e) {
                 },
                 setBounds: function (e) {
                     return (
-                        (this._bounds = z(e)),
+                        (this._bounds = S(e)),
                         this._map && this._reset(),
                         this
                     );
@@ -57801,7 +59250,7 @@ function updateAAOsTime(e) {
                         (e.onmousemove = r));
                 },
             }),
-            Oi = Mt.extend({
+            Oi = Et.extend({
                 options: {
                     interactive: !1,
                     offset: [0, 0],
@@ -57811,7 +59260,7 @@ function updateAAOsTime(e) {
                 },
                 initialize: function (e, t) {
                     (e && (e instanceof T || Je(e)) ?
-                        ((this._latlng = S(e)), u(this, t))
+                        ((this._latlng = z(e)), u(this, t))
                     :   (u(this, e), (this._source = t)),
                         this.options.content &&
                             (this._content = this.options.content));
@@ -57869,7 +59318,7 @@ function updateAAOsTime(e) {
                 },
                 setLatLng: function (e) {
                     return (
-                        (this._latlng = S(e)),
+                        (this._latlng = z(e)),
                         this._map &&
                             (this._updatePosition(), this._adjustPan()),
                         this
@@ -57984,7 +59433,7 @@ function updateAAOsTime(e) {
                         );
                     },
                 }),
-                Mt.include({
+                Et.include({
                     _initOverlay: function (e, t, i, n) {
                         var s = i;
                         return (
@@ -58036,7 +59485,7 @@ function updateAAOsTime(e) {
                                     { popup: this },
                                     !0
                                 ),
-                                this._source instanceof Si ||
+                                this._source instanceof zi ||
                                     this._source.on('preclick', me)));
                     },
                     onRemove: function (e) {
@@ -58048,7 +59497,7 @@ function updateAAOsTime(e) {
                                     { popup: this },
                                     !0
                                 ),
-                                this._source instanceof Si ||
+                                this._source instanceof zi ||
                                     this._source.off('preclick', me)));
                     },
                     getEvents: function () {
@@ -58205,7 +59654,7 @@ function updateAAOsTime(e) {
                         );
                     },
                 }),
-                Mt.include({
+                Et.include({
                     bindPopup: function (e, t) {
                         return (
                             (this._popup = this._initOverlay(
@@ -58270,7 +59719,7 @@ function updateAAOsTime(e) {
                             this._map &&
                             (ve(e),
                             (t = e.layer || e.target),
-                            this._popup._source !== t || t instanceof Si ?
+                            this._popup._source !== t || t instanceof zi ?
                                 ((this._popup._source = t),
                                 this.openPopup(e.latlng))
                             : this._map.hasLayer(this._popup) ?
@@ -58411,7 +59860,7 @@ function updateAAOsTime(e) {
                         return (e.close(), this);
                     },
                 }),
-                Mt.include({
+                Et.include({
                     bindTooltip: function (e, t) {
                         return (
                             this._tooltip &&
@@ -58594,7 +60043,7 @@ function updateAAOsTime(e) {
                     },
                 }));
         xi.Default = Ci;
-        var $i = Mt.extend({
+        var $i = Et.extend({
                 options: {
                     tileSize: 256,
                     opacity: 1,
@@ -59069,7 +60518,7 @@ function updateAAOsTime(e) {
                     return (
                         !this.options.bounds ||
                         ((t = this._tileCoordsToBounds(e)),
-                        z(this.options.bounds).overlaps(t))
+                        S(this.options.bounds).overlaps(t))
                     );
                 },
                 _keyToBounds: function (e) {
@@ -59377,7 +60826,7 @@ function updateAAOsTime(e) {
             (qe.wms = function (e, t) {
                 return new Hi(e, t);
             }));
-        var Vi = Mt.extend({
+        var Vi = Et.extend({
                 options: { padding: 0.1 },
                 initialize: function (e) {
                     (u(this, e), s(this), (this._layers = this._layers || {}));
@@ -59888,7 +61337,7 @@ function updateAAOsTime(e) {
                         U(e._container);
                     },
                 }),
-                Kt.vml ? qi : M),
+                Kt.vml ? qi : E),
             Zi = Vi.extend({
                 _initContainer: function () {
                     ((this._container = Ui('svg')),
@@ -60045,7 +61494,7 @@ function updateAAOsTime(e) {
             },
             _boundsToLatLngs: function (e) {
                 return [
-                    (e = z(e)).getSouthWest(),
+                    (e = S(e)).getSouthWest(),
                     e.getNorthWest(),
                     e.getNorthEast(),
                     e.getSouthEast(),
@@ -60248,7 +61697,7 @@ function updateAAOsTime(e) {
                                 this._map.options.maxBounds &&
                                 this._map.options.maxBoundsViscosity
                             ) ?
-                                ((e = z(this._map.options.maxBounds)),
+                                ((e = S(this._map.options.maxBounds)),
                                 (this._offsetLimit = x(
                                     this._map
                                         .latLngToContainerPoint(
@@ -60884,7 +62333,7 @@ function updateAAOsTime(e) {
                 (e.Browser = Kt),
                 (e.CRS = at),
                 (e.Canvas = Wi),
-                (e.Circle = Ei),
+                (e.Circle = Mi),
                 (e.CircleMarker = Ai),
                 (e.Class = b),
                 (e.Control = pi),
@@ -60902,17 +62351,17 @@ function updateAAOsTime(e) {
                 (e.ImageOverlay = ji),
                 (e.LatLng = T),
                 (e.LatLngBounds = C),
-                (e.Layer = Mt),
+                (e.Layer = Et),
                 (e.LayerGroup = wi),
                 (e.LineUtil = xt),
                 (e.Map = hi),
                 (e.Marker = Ti),
                 (e.Mixin = wt),
-                (e.Path = Si),
+                (e.Path = zi),
                 (e.Point = y),
                 (e.PolyUtil = kt),
                 (e.Polygon = Ii),
-                (e.Polyline = Mi),
+                (e.Polyline = Ei),
                 (e.Popup = Ni),
                 (e.PosAnimation = ui),
                 (e.Projection = Tt),
@@ -60929,7 +62378,7 @@ function updateAAOsTime(e) {
                 (e.bounds = x),
                 (e.canvas = Ue),
                 (e.circle = function (e, t, i) {
-                    return new Ei(e, t, i);
+                    return new Mi(e, t, i);
                 }),
                 (e.circleMarker = function (e, t) {
                     return new Ai(e, t);
@@ -60953,8 +62402,8 @@ function updateAAOsTime(e) {
                 (e.imageOverlay = function (e, t, i) {
                     return new ji(e, t, i);
                 }),
-                (e.latLng = S),
-                (e.latLngBounds = z),
+                (e.latLng = z),
+                (e.latLngBounds = S),
                 (e.layerGroup = function (e, t) {
                     return new wi(e, t);
                 }),
@@ -60969,7 +62418,7 @@ function updateAAOsTime(e) {
                     return new Ii(e, t);
                 }),
                 (e.polyline = function (e, t) {
-                    return new Mi(e, t);
+                    return new Ei(e, t);
                 }),
                 (e.popup = function (e, t) {
                     return new Ni(e, t);
@@ -60987,7 +62436,7 @@ function updateAAOsTime(e) {
                 (e.tooltip = function (e, t) {
                     return new Bi(e, t);
                 }),
-                (e.transformation = E),
+                (e.transformation = M),
                 (e.version = '1.9.4'),
                 (e.videoOverlay = function (e, t, i) {
                     return new Di(e, t, i);
@@ -63339,6 +64788,7 @@ class XYMapKitWrapper {
 const isSafari = void 0 !== window.safari;
 var user_id = -1,
     alliance_id = -1,
+    user_premium = !1,
     map,
     xy_map,
     alliance_member_buildings_show,
@@ -63491,6 +64941,7 @@ var pauseTick = !1,
     pauseVehicleAnim = !1,
     tickDebug = !1,
     vehicleAnimDebug = !1,
+    workerDebug = !1,
     requestAnimationFrame =
         window.requestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
@@ -63524,6 +64975,35 @@ let missionsWorker,
     beta_player = !1,
     new_map_filters = !0,
     betaOptions = {};
+var mission_count_max, timed_mission_count_max;
+let buildingsVirtualScroller;
+var broadcasting_enabled = !0,
+    broadcasting_supported = !0,
+    my_broadcast_id = null,
+    xy_broadcast_channel = null,
+    xy_broadcasters = new Map();
+((MISSION_SORTER_QUERY_PARAMETER_MAP = {
+    caption: 'c',
+    age: 'g',
+    average_credits: 'ac',
+    prisoners_count: 'pr',
+    patients_count: 'pa',
+    created_at: 'cr',
+    asc: 'a',
+    desc: 'd',
+}),
+    (MISSION_FILTER_QUERY_PARAMETER_MAP = {
+        emergency: 'em',
+        krankentransporte: 'kt',
+        alliance: 'al',
+        alliance_event: 'ae',
+        sicherheitswache: 'sw',
+        unattended: 'ua',
+        attended: 'at',
+        finishing: 'fi',
+        new: 'ne',
+        started: 'st',
+    }));
 const CACHE_PRESETS = {
         conservative: {
             dom: {
@@ -64590,11 +66070,8 @@ var mapKitFactoryVehicleAnnotation = function (e, t) {
     var i = document.createElement('img');
     return ((i.src = t.url[1]), i);
 };
-const building_maps_redraw_debounce = debounce(building_maps_redraw, 400),
-    building_load_alliance_debounce = debounce(building_load_alliance, 300),
-    debouncedSaveFilters = debounce(e => {
-        saveMissionListFilters(e);
-    }, 300);
+const building_maps_redraw_debounce = debounce(building_maps_redraw, 250),
+    building_load_alliance_debounce = debounce(building_load_alliance, 150);
 Date.now ||
     (Date.now = function () {
         return new Date().getTime();
@@ -64709,50 +66186,38 @@ if (
     void 0 === missionPositionMarkerAddAll)
 )
     function missionPositionMarkerAddAll() {}
+$(document).ready(function () {
+    ($(document).delegate($.rails.linkClickSelector, 'auxclick', function (e) {
+        if (1 == e.button && !$.rails.allowAction($(this)))
+            return $.rails.stopEverything(e);
+    }),
+        $($.rails.linkClickSelector).on('click', function (e) {
+            if (2 == e.which && !$.rails.allowAction($(this)))
+                return $.rails.stopEverything(e);
+        }));
+});
+const debouncedSaveSorting = debounce((e, t) => {
+        saveMissionListSorting(e, t);
+    }, 100),
+    debouncedSaveFilters = debounce(e => {
+        saveMissionListFilters(e);
+    }, 300),
+    emergencyIcon_base64 =
+        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAADcElEQVRoQ+2Z/XETMRDF91WAUwFQAaQCoAJIBSQVABUQKoBUgFNBQgVABSQVQCogqeAxz0ge5aw7Sau7GYax/rFnrK/frvbtSoY5Gsm1mb00s0MAvxxT7AwhuTKzn2Z2DuBt65xoHaD+AeR1WPTYM8dwDMlTM3vvndML8ihYT/t53OuVxBvyims+F8jcXun1hvbTAzKLV+bwRhfIwCsnACQAzY2kYuyzNzbigm6PBBCd6WMAn5oJkgEkpVJrALfeebpAvIsuMW4PsoRVe+b8fzxCUmWB2imAc49VSD43szdmpk8JQE27MrNLMzvzBjlJVReqCFYgqQmfhJVVN1UDhRwg6XxVs/ORPlIqrXlWO0cCoFymdrM5WkHLRfYwAToCIMhsCxBfzeypmd2ZmSRYElpVRAYvKofIqmoaezIFQ1JrXZjZFiAYYX0vRgZAk0mOpDau43Qtj9QCDDeaJET9JOPpuI0ZLybPmwgQO2aDXdYC8G1iwrQ8USk/6rma45LA3AI4KHgluzeXaiXe0N1hrjJehntmZq5yxwvyI8TGiynP1Xgj9gllykdvzeUFoTYAwDU+BxiCX+LxHYBkvKk1b4RkjI87ALU5o7ipoIK/zawYJ7nJPCCylttyhUB2e9oDEiXwC4CeRLjDlCTnZiX0gMRHgg8A9H22RjIqV7OIeECUsPQU5JLJwtFyG8kD4rZayXXJI0Sztz0gUhb3s00pa3uFZAck6LkybLa8JulWlgqPREW8AnCYqctkQD3iSWjulVBbkACgTjEZ7cRAkrSuAagSnb1NGWpQYApER3ADpPuINp4CbErynCL1Zt8aapK6nzwws4PchSvEkV5d1EftL1C0QHKnEET2WSYJRh275ofmSpCimIQqQOtvgQSie4U2PgqQFHbxDtKsKjUQ6kOyWt4ToFWTavUkrAYQVy5pBZm9fM8ok6sEagVZTHqT4+sqSqtBlirfMx6J14Smcr4FxGWp2thI+3mSbguI6+w6QeJbW3UV3ALiUhMnSDGXDOdtAdEfOXpMe9f7f0gJLnmlqc5XLSDNVipteOx3TwXRArJY+Z5RrmZhGQUhGZOf17BLjLsEcJSbeApkk/z+tTb2llYEmfMRrscopdyyB+mxrmfs3iMlC3is2jOmtJ9ijPQsvsRYj2rFTL7Efrxzjr43/wE/Kgjg5EADGQAAAABJRU5ErkJggg==',
+    krankentransporteIcon_base64 =
+        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAC/UlEQVR4Xu2b7VUVMRCGZypQK0AqECsQKhArUCpAKsAOwArECsAOoALsQKgAOhjPe84sZ2/YbCab5N7dbPL3ZjOZJ28yk4/LtPLCK/efGoCmgJUTaFNgDgIQkfdEdEFEB9qfv0R0xswPpfu3cwWo8/dE9NZx9pmIPpaGMAcAN0T02TPSf5j5uKQK5gDgaWD0O58fmHm/dgAy5iAzFx2koo1bRk5E5gEg1BGLMzusc8LMV1Psvyhg4QAQMY6YGeEzqtQCAE5PCps1AQAEKABKAAxT8QIovfqaeheoJCI/iOjcqXbLzEfW9hcNAE6KCBa/r47DV8x8YoGweAAKAdL/4DiMvcRlCEItALCPuB2AEAyPVQBQFWAnCQhveqMeDI/VAOhBwM6yX0bD49YBuAlX7mgjIt+I6JcDwRseqwOgSjCHxyoBxITHagFYw2PtAILhsWoAI+GRusW3GIDU7XXO6CAiyBE2wuOqAKgSNk6eGgA9a1zFFNiJAny7sNKZYKzdYgqI7Uho25r6uw98A9CR3ZY0t2XHVUxTgHMBUzwMtjUgddXK/P1spkBmv8zNZQOgDxpOiQj39njZgYKXHLjn/1n6QcNU+1kAiAiesXwPYL9k5jPz0ERUTLGfDEBEcM6G8zZLMV9MWBrTVDbJfhIAEcEFA2QfUzAdQmoxtZfD/mQAOuf+OT191KmAc3iUQyICpD2n3n7qmpDLfgoAd/Th/IF7AysiOH7C8XMfQrIKBkZ/kv1oACPa/MLMWPFfFRFBZLg26Xp6pSz2g5ngSP/e+e7fPXKd7urwl1nsNwChE6HVTQGfwwOLELI+PGHdeIaiiyBOXrvsEE2WWASz2g++E/TMa3QCMf5OwX3SMNh3Hj+VCoPZ7AcBaBa2+ETIp3ATAIUw9BbH1+5vZramzaYo4XkLlGzfDCBCCcnzPmI9GqoaZT8KgELAPMf8R9LTZX3IzpAcYSdY9E8OuiZlsx8NwKTXBVVqABY0WEW62hRQBOuCGm0KWNBgFenq6hXwH/kYT1/4UtMbAAAAAElFTkSuQmCC',
+    allianceMIcon_base64 =
+        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAADz0lEQVRoQ+2a7VEUQRCGuyPQDIQIJAM1AjECIQIxAjUCIQIhAy4CIQIhAiECMYK2nq2eq7m92Z3euzmPHztVV1fAbE+//fbX9KISXGb2VkR+iMhB8JHW2x5E5FRVb0qCNXqamf3eI4ik5oOqHm4LxBCgqmHwUSNF9pnZ6PlhpWqCIspss6d2fnMgZvbSY+k4qPi1+/7T2P59APkpIiSGKWuhqqPA9wGk82UROVRVMs3gMjMyIEmkGnv7AEJ6fDOFDhF5lowQI5ci8j4IZiEiJ6r6vGIkqPzkbf/dtSZrGHxgBtI3VM0iQcNuvK12fvOCuLGmlQdnILNr7ci3ZteaXWt2rXELzDFSiBG60xc78pyo2EdVLU5xplR2bn2056+ipzbe9+jt/nbjoMZKNRcXZqT5yY0FzkAaG3RrcVVGfE7F/ZtxzVFvbHonInxuVPVqE218pvzJ5SKfYP42NOMdOmMQiI9qvjgABgq1RXpmyMzArbrMDKW/j8zATvxssmUaaHweGlKsAXELASAfst166r1TVRjoloNlH4emEdClqp4OIXGGYeCr7/krIucico1sMxsbJzFx4Tk8BEMwN7tgfrYEYmYffVMqOBxA3TivDdocFGB47cAqgim8mrjgTKxcGLViPACmuvFnhOYPWgBA4UEAyozOmvqCzSwHgwIYYVFQ8t6LW8eumRF/GAEXwoDMuToXLTyLfvyNz5mzcwuQNOJkA9aBhY2Xg8EQeTuDQVKcXakqgEtKwgIgulFrASD6ITu5NjI7pgACqqdtAeTI3Yooy+d1wCqwsFRywM2WADMgsMgZi2r6DSgxusWVIiEQnCkD9cHB2DsP9r6brbCQMUnGAwRGONo5kDGUnoLxCBINMUXM8DNrxc0yFvJ3mYA4pubsFUimXIpTfrXiZr14oCwkoCsJowkQM/vllTlZlW/uDrX3I7gbbOTKYeGV5wppm8qf6lCHtRUQXCIS1GOetqacx9cgC7mwJkA8AFMwp36M79qNkpQPewT0ZBY2AuKBiWL3UwvllMw3hYVJQAqVn+cpmrjCaAxMAeCs9v+7Ys3dhmTWul8KTmoeyRLk+/z9YBNAm7JQZcTbDApO6n3OUuX3jpeMQbZJi5/pQif1Zs4CBZCzUrMaZiEChIaMVnnwRWUBECDog0KABtoQDLa8JkxxzaJr+SEHEaGeBACQXK4KyMzSfSQxvtaGTAHRrI5kgYqL5YCIIS5MtBt0s6n4kZpZMA4LWyeNZnWk1wvlgErGpX4AIHQtjrDTHEgGCKvTnfKdWIIZGFreKSJKRvb8A3bBPSGKFTO6AAAAAElFTkSuQmCC',
+    allianceEventMIcon_base64 =
+        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAD4UlEQVRoQ+1Zi1EUQRB9HYESgRqBRwQSgkQgRCBEIEQgRqBEIEQgRCBE4BGBGMGz3tq9zs3tsXO7c7cFxVRR5bm7vf368/qzhidy7IngQBEQknsAvgJ4DWAO4NDMrsYYobbMUiC/HEToPjezNyOBVJVZCoRS2syMZPvvkUCqymyBZK7u1DEFMgZE+myBzKJQToHkrl7SteCla+MrlNkbyimQlSGThtO2Q6v0faVA7gG8SMx9Z2ZisMGHZJHM2kBEv98AvAJwB+CgEv32yqwKZLDZKzz4DKSCETciQuz2kOClZN+IFhWErg2k74EKOq0l4jlHnj2SBAzJl95kquiNOpOGFskjB3I2CgWAqYH8dCC7jxYIyRmABgiAXTO7GQNmMo+QVP/0wZU/N7ODxwrkN4Am2QHcm9nOowNCUtbXkuLWlX/riwp5adDZWGh5Dpwk84la/Pwc+n8IVH5i+/IHwElfDm0MiLRyMFIoHbZCYSkYQ5fCrOvonr0+EP6uomVH0YTYpYkXPYFR+KjwHZtZZwh5yH323FHYCURRsdyoR1JgGUspVE6z658UQkNZbGtA3P2q5LK4zk5Y270W4SWPrV3ptw3kPYDvYiszm5HUby30LkiqICr89vV7XeraNhBZ+iOAL76gaIAAkOJaVjTXzKzpwR46JFVMxYTqEPQXR/l3YWaXXc8PTvYsD9SSpC8VK+mkrHZjZit7L/eiwrNvzaTNo8J0wbujgZDUi7WljHOtdZH/kBXfJdfa/MkMIQDhLXlQHr4Kena6l5d0j1ZSOmdmdhxyagCJai4vaN+1YCm3tADJO/ocsUDRJCMspVMvIfiIEMTShmsNIFJMvZVAdNYGZy/dp96rbSIdpEhCp7hTzjrshkRqAJmVVGhpKgXSe0nG4rzXE/68DKZiKjYMym8W3KOBPMxBq68mDWbxHpnkD2e0UzM7IanEV84cTgkk5pZSb6gBVVgqF+XZeeKV8ymBBGX35kai8EKzmeTKzZRAlrpakurLLrM8ClZUnHax3j85EcWlrcDQnMify9+XMFjbSbvFlRdK8s4QbOUkQPIPL7V07pPThJZTtGpKzPuqRyqCAtE5+yehdZt/DI0PL30vr3l9wdLOZgIU7c21mXVNoaLzoOD/yV5TsxJZCf0ufeh0S0cHsHIIS+rQftF39hLFhtyT1IGl+O9buybeaOrQ1EBijqnXogyxaI1nslH5yMw006w8JDXbxKS53DTWUGqojAyM2g4pqiRv1q2eMxoHlNwxrywMapOGVgrc64gAxLyxyi6aV+S57sFqqDVrP+dsJrrVX4DSCkne0ajbOff/BWtayMaN4VNfAAAAAElFTkSuQmCC',
+    sicherheitswacheIcon_base64 =
+        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAE8klEQVRoQ8Waj5EVNwzGpQoSKkioIFBBuAqSVBCoAKggUEG4CgIVBCoIV0GggkAFQAVifjvy4bdr+d/uTjxzM+/d83r1WZ8+y7JVDm5m9r2I/CQi90SEz/zxmfZORD77H5/fqyrfD2t6xEhmhsG/i8iDzPjeoQH2VkReqSqfd7VpQO6JX0TkmYj8uMuKbw9/8PHezHpuCpCZPfYXQ6czGjR8pqrXo4MPAXJq/TVBq1G7Un8o+GiEit2A3CsvZi3b+dyTXm91ATIzvPKw06g3rmYEOjP8WkR+9mdvfBxiLgkIcdjTXqrqo1bHKiAP/H86KPZeRPDe63Uwm9lLV0BsQckuJsbfwf/4Q+5rjQm6qglGC9C/DTAfRQQ64IVi87h74j++qMWDmQGKifmuguqdqt6Pfg8BddDsOS+fldfKBKCcLAUoadRC+hUBmRkz+mcw2hf3ClQ6rbm3iN2oPVXVjUhtADlFoFqpAebBiIyaGQKQxruvqiyeXc1tQVwiCjLeRXZRAlSLm80ALcvMDPr84f2eqyrfu1tjgjfxdAGoQTUWuGGa7QUE8gb9Lqh3C8jl8z/PjtczeK2qSam6Z9eN2eWh9DIzI15KQkGadDeJUw4IySwFIdJ8b1bNVoYMUy4DhPoRf6V4umVPDgjvlLLmKaplhhDUKVOY9nSDeh9U9S59FkCVwGMDljZnQ1QLAN2oKinPdDMzVK2UUSyClQBF/Cxq/Yg1ZpZ76AhA0Rq5eD8BiqT6zmzsnOghYulTYVIXCVdXt1IHdo2/jnij1NfM8tjc7SEPEXLHUpZ+B0Bwmox63aYVKR/IzCz7fhSgfCnIX3cFoIiTpOnwf1dbAapmyr0vMjOY83eh/1MARWhZrLrzroBupdh8q6pXvcYH47K8QOUtqyorMN4BEOoxXF6qTBRGTKmnLy/khQhDSf6v8VAuq6UJ2ewye2a3Me5ULHXYevN/ASL/IkaHPN8LKFpUKWhAueq2OfJWI3PnsWFQrsiIGJRL6VRuwkK5M0UhSlOSEc2ix4wonC3bjI/Mokw/lFb4ViVn/Uxl7Vxk+9SFNRnjGQkCVEosKX/91iM29KmwallYo9zokNRnlTXwLna9pbSlq5DogOLUxztEXN+dnAYxkBcf8y7N9anigGWrc/r2oaKCkRhVN5QV9bzYPrCJK5WuDsm9KqCibX9YXTKzaKvzbYPntGPNKanQri14K9CD8m8xk6hUfz6q6lI+6CmSXFRVWgbO/F4oKG62Lo2qVLFIUquq7Cpu9IB0UMQVNN8UIytJ9BdVvT1JPL3Q2AOm1Weq0JgtgLV0ZbgU3DK29XujFLypSo0W64cTypbBtd8dDOWB6HC6Xax3xasdp9DlVOVzGyJJT3PQd5ySUS9azVMXth2o0aE3QVzN2JXWaunhprN1JNlK/wHDkeSryuLJop0fp4SbOjPjNgoTVbv/UK3mtgAxcJQh5xgwEo8ycxce6zw0BggUa5WdOZzmwC1kRe+xfot+OTgy4XR/h5MLnl0f65ORpGP93mJmV22jC1CnUOwRtNazzSw8DdANyEFBCWa8dZ+gZWDv71Ds4UgxZQhQpoAoEOlJ7T5Br9GlfhxOc3lp+CrOFCD3FoIB/wFWytJnABFzjLe5kdI72DSg/AW+oqNSBPooHaEVSsoWfKhOVwJ5CKAVuHQls+eKJpn1oQvzV++Yjk+9aieJAAAAAElFTkSuQmCC';
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
  * Licensed under the MIT license
  */
-if (
-    ($(document).ready(function () {
-        ($(document).delegate(
-            $.rails.linkClickSelector,
-            'auxclick',
-            function (e) {
-                if (1 == e.button && !$.rails.allowAction($(this)))
-                    return $.rails.stopEverything(e);
-            }
-        ),
-            $($.rails.linkClickSelector).on('click', function (e) {
-                if (2 == e.which && !$.rails.allowAction($(this)))
-                    return $.rails.stopEverything(e);
-            }));
-    }),
-    (MISSION_SORTER_QUERY_PARAMETER_MAP = {
-        caption: 'c',
-        age: 'g',
-        average_credits: 'ac',
-        prisoners_count: 'pr',
-        patients_count: 'pa',
-        created_at: 'cr',
-        asc: 'a',
-        desc: 'd',
-    }),
-    (MISSION_FILTER_QUERY_PARAMETER_MAP = {
-        emergency: 'em',
-        krankentransporte: 'kt',
-        alliance: 'al',
-        alliance_event: 'ae',
-        sicherheitswache: 'sw',
-        unattended: 'ua',
-        attended: 'at',
-        finishing: 'fi',
-        new: 'ne',
-        started: 'st',
-    }),
-    'undefined' == typeof jQuery)
-)
+if ('undefined' == typeof jQuery)
     throw new Error("Bootstrap's JavaScript requires jQuery");
 (!(function () {
     'use strict';
@@ -67687,7 +69152,7 @@ if (
                                         if (0 === o.index()) {
                                             s += 1;
                                             var C = v[0].label,
-                                                z =
+                                                S =
                                                     (
                                                         void 0 !==
                                                         v.data('subtext')
@@ -67706,7 +69171,7 @@ if (
                                                 :   '') +
                                                 '<span class="text">' +
                                                 l(C) +
-                                                z +
+                                                S +
                                                 '</span>'),
                                                 0 !== t &&
                                                     n.length > 0 &&
@@ -67768,12 +69233,12 @@ if (
                                             void 0 !==
                                                 (d = o.data('prevHiddenIndex'))
                                         ) {
-                                            var S =
+                                            var z =
                                                 u.eq(d)[0]
                                                     .previousElementSibling;
-                                            S &&
-                                                'OPTGROUP' === S.tagName &&
-                                                !S.disabled &&
+                                            z &&
+                                                'OPTGROUP' === z.tagName &&
+                                                !z.disabled &&
                                                 (T = !0);
                                         }
                                         (T &&
@@ -68167,7 +69632,7 @@ if (
                                         (r -= s[3]));
                                 };
                             if ((C(), 'auto' === this.options.size)) {
-                                var z = function () {
+                                var S = function () {
                                     var h,
                                         p = function (t, i) {
                                             return function (n) {
@@ -68197,7 +69662,7 @@ if (
                                                     p('hidden', !1)
                                                 )
                                             :   c.$lis.not('.hidden'),
-                                        z =
+                                        S =
                                             Array.prototype.filter ?
                                                 Array.prototype.filter.call(
                                                     x,
@@ -68229,7 +69694,7 @@ if (
                                                 r > l && i - k.horiz < s - m
                                             ),
                                         (h =
-                                            x.length + z.length > 3 ?
+                                            x.length + S.length > 3 ?
                                                 3 * _ + k.vert - 2
                                             :   0),
                                         d.css({
@@ -68252,20 +69717,20 @@ if (
                                                 Math.max(h - w.vert, 0) + 'px',
                                         }));
                                 };
-                                (z(),
+                                (S(),
                                     this.$searchbox
                                         .off(
                                             'input.getSize propertychange.getSize'
                                         )
                                         .on(
                                             'input.getSize propertychange.getSize',
-                                            z
+                                            S
                                         ),
                                     h
                                         .off('resize.getSize scroll.getSize')
                                         .on(
                                             'resize.getSize scroll.getSize',
-                                            z
+                                            S
                                         ));
                             } else if (
                                 this.options.size &&
@@ -68280,10 +69745,10 @@ if (
                                         .last()
                                         .parent()
                                         .index(),
-                                    S = this.$lis
+                                    z = this.$lis
                                         .slice(0, T + 1)
                                         .filter('.divider').length;
-                                ((t = _ * this.options.size + S * y + w.vert),
+                                ((t = _ * this.options.size + z * y + w.vert),
                                     c.options.container ?
                                         (d.data('height') ||
                                             d.data('height', d.height()),
@@ -69366,25 +70831,25 @@ if (
                 :   i
             );
         }
-        function z(e, t) {
+        function S(e, t) {
             return t.parentNode.insertBefore(e, t);
         }
         function T(e) {
             return e.className.trim().split(/\s+/);
         }
-        function S(e, t) {
+        function z(e, t) {
             return k(e, '.' + t);
         }
         function A(e, t) {
             var i = T(e);
             (i.indexOf(t) < 0 && i.push(t), (e.className = i.join(' ')));
         }
-        function E(e, t) {
+        function M(e, t) {
             var i = T(e);
             (s(i, t), (e.className = i.join(' ')));
         }
-        function M(e, t, i) {
-            (i = pe(i) ? !S(e, t) : i) ? A(e, t) : E(e, t);
+        function E(e, t, i) {
+            (i = pe(i) ? !z(e, t) : i) ? A(e, t) : M(e, t);
         }
         function I(e, t) {
             if (pe(t)) {
@@ -69501,11 +70966,11 @@ if (
                     var s = t(e),
                         o = K(s, e),
                         a = e;
-                    (V(s, a), z(o, s), z(a, s));
+                    (V(s, a), S(o, s), S(a, s));
                 }
                 if (n && k(e, i) && k(e.parentNode, i)) {
                     var l = C(e, 'li');
-                    (l || z((l = r('li')), e), u(l, e));
+                    (l || S((l = r('li')), e), u(l, e));
                 }
             });
         }
@@ -69539,12 +71004,12 @@ if (
                     ) {
                         for (
                             n = U(u), s = U(u, !0), r = !1;
-                            S(s, 'sceditor-ignore');
+                            z(s, 'sceditor-ignore');
                         )
                             s = U(s, !0);
                         if (H(u) && s) {
                             for (o = s; o.lastChild;)
-                                for (o = o.lastChild; S(o, 'sceditor-ignore');)
+                                for (o = o.lastChild; z(o, 'sceditor-ignore');)
                                     o = U(o, !0);
                             r =
                                 o.nodeType === ve ?
@@ -69641,7 +71106,7 @@ if (
             var t,
                 i = /^[^\/]*:/i,
                 n = window.location;
-            return e && i.test(e) && !Se.test(e) ?
+            return e && i.test(e) && !ze.test(e) ?
                     ((t = n.pathname.split('/')).pop(),
                     n.protocol + '//' + n.host + t.join('/') + '/' + e)
                 :   e;
@@ -69792,7 +71257,7 @@ if (
                     if (!i) return !1;
                     (s.deleteContents(),
                         o && 3 !== o.nodeType && !F(o) ?
-                            z(i, o)
+                            S(i, o)
                         :   s.insertNode(i),
                         l.restoreRange());
                 }),
@@ -70074,7 +71539,7 @@ if (
                 e,
                 function (e) {
                     H(e, !0) ?
-                        (i || z((i = r('p', {}, t)), e),
+                        (i || S((i = r('p', {}, t)), e),
                         (e.nodeType === ve && '' === e.nodeValue) || u(i, e))
                     :   (i = null);
                 },
@@ -70110,9 +71575,9 @@ if (
                 ye,
                 ke,
                 xe,
-                Se,
+                ze,
                 Ae,
-                Ee,
+                Me,
                 Ie,
                 Pe,
                 je,
@@ -70153,13 +71618,13 @@ if (
                 bt = {},
                 yt = {},
                 wt = {};
-            _t.commands = n(!0, {}, t.commands || Me);
+            _t.commands = n(!0, {}, t.commands || Ee);
             var kt = (_t.opts = n(!0, {}, we, t));
             ((_t.opts.emoticons = t.emoticons || we.emoticons),
                 (xe = function () {
                     ((e._sceditor = _t),
                         kt.locale && 'en' !== kt.locale && je(),
-                        z(
+                        S(
                             (a = r('div', { className: 'sceditor-container' })),
                             e
                         ),
@@ -70217,7 +71682,7 @@ if (
                         u(a, L),
                         _t.dimensions(kt.width || I(e), kt.height || P(e)));
                     var t = Oe ? 'ie ie' + Oe : '';
-                    ((t += ze ? ' ios' : ''),
+                    ((t += Se ? ' ios' : ''),
                         (T = f.contentDocument).open(),
                         T.write(
                             te('html', {
@@ -70232,7 +71697,7 @@ if (
                         (C = T.body),
                         (x = f.contentWindow),
                         _t.readOnly(!!kt.readOnly),
-                        (ze || Ce || Oe) &&
+                        (Se || Ce || Oe) &&
                             (P(C, '100%'), Oe || p(C, 'touchend', _t.focus)));
                     var i = _(e, 'tabindex');
                     (_(L, 'tabindex', i),
@@ -70283,7 +71748,7 @@ if (
                             _t.val() || A(C, 'placeholder');
                         }),
                         p(C, 'focus', function () {
-                            E(C, 'placeholder');
+                            M(C, 'placeholder');
                         }),
                         p(L, 'blur', ut),
                         p(L, 'keyup', ht),
@@ -70292,7 +71757,7 @@ if (
                         p(L, n, Qe),
                         p(T, 'mousedown', Ye),
                         p(T, s, st),
-                        p(T, 'beforedeactivate keyup mouseup', Ee),
+                        p(T, 'beforedeactivate keyup mouseup', Me),
                         p(T, 'keyup', nt),
                         p(T, 'focus', function () {
                             B = null;
@@ -70337,13 +71802,13 @@ if (
                                             ke && ke.create)
                                         )
                                             ke.create(s) &&
-                                                (z(ke.create(s), o.firstChild),
+                                                (S(ke.create(s), o.firstChild),
                                                 A(o, 'has-icon'));
                                         ((o._sceTxtMode = !!r.txtExec),
                                             (o._sceWysiwygMode = !!r.exec),
-                                            M(o, 'disabled', !r.exec),
+                                            E(o, 'disabled', !r.exec),
                                             p(o, 'click', function (e) {
-                                                (S(o, 'disabled') || Ae(o, r),
+                                                (z(o, 'disabled') || Ae(o, r),
                                                     tt(),
                                                     e.preventDefault());
                                             }),
@@ -70398,7 +71863,7 @@ if (
                         k = 0,
                         x = I(a),
                         C = P(a),
-                        z = !1,
+                        S = !1,
                         T = _t.rtl();
                     if (
                         ((e = kt.resizeMinHeight || C / 1.5),
@@ -70423,18 +71888,18 @@ if (
                                 s.preventDefault());
                         }),
                         (o = function (e) {
-                            z &&
-                                ((z = !1),
+                            S &&
+                                ((S = !1),
                                 g(c),
-                                E(a, 'resizing'),
+                                M(a, 'resizing'),
                                 m(Le, d, s),
                                 m(Le, h, o),
                                 e.preventDefault());
                         }),
                         ke && ke.create)
                     ) {
-                        var S = ke.create('grip');
-                        S && (u(l, S), A(l, 'has-icon'));
+                        var z = ke.create('grip');
+                        z && (u(l, z), A(l, 'has-icon'));
                     }
                     (u(a, l),
                         u(a, c),
@@ -70447,7 +71912,7 @@ if (
                             :   ((_ = e.pageX), (f = e.pageY)),
                                 (w = I(a)),
                                 (k = P(a)),
-                                (z = !0),
+                                (S = !0),
                                 A(a, 'resizing'),
                                 v(c),
                                 p(Le, d, s),
@@ -70518,8 +71983,8 @@ if (
                             'rtl' === _(L, 'dir')
                         :   (_(C, 'dir', t),
                             _(L, 'dir', t),
-                            E(a, 'rtl'),
-                            E(a, 'ltr'),
+                            M(a, 'rtl'),
+                            M(a, 'ltr'),
                             A(a, t),
                             ke && ke.rtl && ke.rtl(e),
                             _t);
@@ -70528,7 +71993,7 @@ if (
                     var t =
                         _t.inSourceMode() ? '_sceTxtMode' : '_sceWysiwygMode';
                     o(yt, function (i, n) {
-                        M(n, 'disabled', e || !n[t]);
+                        E(n, 'disabled', e || !n[t]);
                     });
                 }),
                 (_t.width = function (e, t) {
@@ -70554,11 +72019,11 @@ if (
                 (_t.maximize = function (e) {
                     var t = 'sceditor-maximize';
                     return pe(e) ?
-                            S(a, t)
+                            z(a, t)
                         :   ((e = !!e) && (fe = De.pageYOffset),
-                            M(Le.documentElement, t, e),
-                            M(Le.body, t, e),
-                            M(a, t, e),
+                            E(Le.documentElement, t, e),
+                            E(Le.body, t, e),
+                            E(a, t, e),
                             _t.width(e ? '100%' : kt.width, !1),
                             _t.height(e ? '100%' : kt.height, !1),
                             e || De.scrollTo(0, fe),
@@ -70610,7 +72075,7 @@ if (
                     var l,
                         c = 'sceditor-' + t;
                     (_t.closeDropDown(!0),
-                        (O && S(O, c)) ||
+                        (O && z(O, c)) ||
                             (!1 !== s &&
                                 o(
                                     h(i, ':not(input):not(textarea)'),
@@ -70725,7 +72190,7 @@ if (
                         (!i && c(Q, 'code')) ||
                             (K.insertHTML(e, t),
                             K.saveRange(),
-                            Se(),
+                            ze(),
                             v((n = h(C, '#sceditor-end-marker')[0])),
                             (s = C.scrollTop),
                             (o = G(n).top + 1.5 * n.offsetHeight - a),
@@ -70843,7 +72308,7 @@ if (
                 (_t.setWysiwygEditorValue = function (e) {
                     (e || (e = '<p>' + (Oe ? '' : '<br />') + '</p>'),
                         (C.innerHTML = e),
-                        Se(),
+                        ze(),
                         nt(),
                         dt(),
                         mt());
@@ -70854,11 +72319,11 @@ if (
                 (_t.updateOriginal = function () {
                     e.value = _t.val();
                 }),
-                (Se = function () {
+                (ze = function () {
                     kt.emoticonsEnabled && ae(C, wt, kt.emoticonsCompat);
                 }),
                 (_t.inSourceMode = function () {
-                    return S(a, 'sourceMode');
+                    return z(a, 'sourceMode');
                 }),
                 (_t.sourceMode = function (e) {
                     var t = _t.inSourceMode();
@@ -70878,8 +72343,8 @@ if (
                         (B = null),
                         b(L),
                         b(f),
-                        M(a, 'wysiwygMode', e),
-                        M(a, 'sourceMode', !e),
+                        E(a, 'wysiwygMode', e),
+                        E(a, 'sourceMode', !e),
                         et(),
                         tt());
                 }),
@@ -70905,7 +72370,7 @@ if (
                                 :   null
                             ));
                 }),
-                (Ee = function () {
+                (Me = function () {
                     Oe && (B = K.selectedRange());
                 }),
                 (_t.execCommand = function (e, t) {
@@ -70975,7 +72440,7 @@ if (
                         s = _t.sourceMode();
                     if (_t.readOnly())
                         o(h(l, i), function (e, t) {
-                            E(t, i);
+                            M(t, i);
                         });
                     else {
                         s ||
@@ -70998,7 +72463,7 @@ if (
                                                 n.queryCommandState(d) ? 1 : 0);
                                     } catch (e) {}
                             } else u || (r = d.call(_t, t, e));
-                            (M(c, 'disabled', u || r < 0), M(c, i, r > 0));
+                            (E(c, 'disabled', u || r < 0), E(c, i, r > 0));
                         }
                         ke && ke.update && ke.update(s, t, e);
                     }
@@ -71179,7 +72644,7 @@ if (
                     ((kt.emoticonsEnabled = e), e) ?
                         (p(C, 'keypress', rt),
                         _t.sourceMode() ||
-                            (K.saveRange(), Se(), dt(!1), K.restoreRange()))
+                            (K.saveRange(), ze(), dt(!1), K.restoreRange()))
                     :   (o(
                             h(C, 'img[data-sceditor-emoticon]'),
                             function (e, t) {
@@ -71541,7 +73006,7 @@ if (
                 );
             })(),
             Ce = '-ms-ime-align' in document.documentElement.style,
-            ze = /iPhone|iPod|iPad| wosbrowser\//i.test(ke),
+            Se = /iPhone|iPod|iPad| wosbrowser\//i.test(ke),
             Te =
                 (((ue = document.createElement('div')).contentEditable = !0),
                 'contentEditable' in document.documentElement &&
@@ -71553,13 +73018,13 @@ if (
                             !(ce = /AppleWebKit\/(\d+)/.exec(ke)) ||
                             !ce[1] ||
                             ce[1] < 534),
-                    ze && (de = /OS [0-4](_\d)+ like Mac/i.test(ke)),
+                    Se && (de = /OS [0-4](_\d)+ like Mac/i.test(ke)),
                     /Firefox/i.test(ke) && (de = !1),
                     /OneBrowser/i.test(ke) && (de = !1),
                     'UCWEB' === navigator.vendor && (de = !1),
                     xe <= 9 && (de = !0),
                     !de)),
-            Se =
+            ze =
                 /^(https?|s?ftp|mailto|spotify|skype|ssh|teamspeak|tel):|(\/\/)|data:image\/(png|bmp|gif|p?jpe?g);/i,
             Ae = {
                 html: '<!DOCTYPE html><html{attrs}><head><style>.ie * {min-height: auto !important} .ie table td {height:15px} @supports (-ms-ime-align:auto) { * { min-height: auto !important; } }</style><meta http-equiv="Content-Type" content="text/html;charset={charset}" /><link rel="stylesheet" type="text/css" href="{style}" /></head><body contenteditable="true" {spellcheck}><p></p></body></html>',
@@ -71582,8 +73047,8 @@ if (
                 youtube:
                     '<iframe width="560" height="315" frameborder="0" allowfullscreen src="https://www.youtube.com/embed/{id}?wmode=opaque&start={time}" data-youtube-id="{id}"></iframe>',
             },
-            Ee = xe && xe < 11,
-            Me = {
+            Me = xe && xe < 11,
+            Ee = {
                 bold: { exec: 'bold', tooltip: 'Bold', shortcut: 'Ctrl+B' },
                 italic: {
                     exec: 'italic',
@@ -71637,7 +73102,7 @@ if (
                     },
                     exec: function (e) {
                         var t = this;
-                        Me.font._dropDown(t, e, function (e) {
+                        Ee.font._dropDown(t, e, function (e) {
                             t.execCommand('fontname', e);
                         });
                     },
@@ -71657,7 +73122,7 @@ if (
                     },
                     exec: function (e) {
                         var t = this;
-                        Me.size._dropDown(t, e, function (e) {
+                        Ee.size._dropDown(t, e, function (e) {
                             t.execCommand('fontsize', e);
                         });
                     },
@@ -71667,7 +73132,7 @@ if (
                     _dropDown: function (e, t, i) {
                         var n = r('div'),
                             s = '',
-                            o = Me.color;
+                            o = Ee.color;
                         (o._htmlCache ||
                             (e.opts.colors.split('|').forEach(function (e) {
                                 ((s += '<div class="sceditor-color-column">'),
@@ -71692,7 +73157,7 @@ if (
                     },
                     exec: function (e) {
                         var t = this;
-                        Me.color._dropDown(t, e, function (e) {
+                        Ee.color._dropDown(t, e, function (e) {
                             t.execCommand('forecolor', e);
                         });
                     },
@@ -71825,7 +73290,7 @@ if (
                                         '<tr>' +
                                             Array(s + 1).join(
                                                 '<td>' +
-                                                    (Ee ? '' : '<br />') +
+                                                    (Me ? '' : '<br />') +
                                                     '</td>'
                                             ) +
                                             '</tr>'
@@ -71848,7 +73313,7 @@ if (
                     exec: function () {
                         this.wysiwygEditorInsertHtml(
                             '<code>',
-                            (Ee ? '' : '<br />') + '</code>'
+                            (Me ? '' : '<br />') + '</code>'
                         );
                     },
                     tooltip: 'Code',
@@ -71885,7 +73350,7 @@ if (
                     },
                     exec: function (e) {
                         var t = this;
-                        Me.image._dropDown(t, e, '', function (e, i, n) {
+                        Ee.image._dropDown(t, e, '', function (e, i, n) {
                             var s = '';
                             (i && (s += ' width="' + i + '"'),
                                 n && (s += ' height="' + n + '"'),
@@ -71921,7 +73386,7 @@ if (
                     },
                     exec: function (e) {
                         var t = this;
-                        Me.email._dropDown(t, e, function (e, i) {
+                        Ee.email._dropDown(t, e, function (e, i) {
                             (t.focus(),
                                 !t.getRangeHelper().selectedHtml() || i ?
                                     t.wysiwygEditorInsertHtml(
@@ -71970,7 +73435,7 @@ if (
                     },
                     exec: function (e) {
                         var t = this;
-                        Me.link._dropDown(t, e, function (e, i) {
+                        Ee.link._dropDown(t, e, function (e, i) {
                             (t.focus(),
                                 i || !t.getRangeHelper().selectedHtml() ?
                                     ((i = i || e),
@@ -71989,7 +73454,7 @@ if (
                     exec: function () {
                         var e = c(this.currentNode(), 'a');
                         if (e) {
-                            for (; e.firstChild;) z(e.firstChild, e);
+                            for (; e.firstChild;) S(e.firstChild, e);
                             d(e);
                         }
                     },
@@ -72007,7 +73472,7 @@ if (
                                 s),
                             (s = null))
                         :   '' === this.getRangeHelper().selectedHtml() &&
-                            (s = (Ee ? '' : '<br />') + s),
+                            (s = (Me ? '' : '<br />') + s),
                             this.wysiwygEditorInsertHtml(n, s));
                     },
                     tooltip: 'Insert a Quote',
@@ -72085,7 +73550,7 @@ if (
                         t.createDropDown(e, 'emoticons', i(!1));
                     },
                     txtExec: function (e) {
-                        Me.emoticon.exec.call(this, e);
+                        Ee.emoticon.exec.call(this, e);
                     },
                     tooltip: 'Insert an emoticon',
                 },
@@ -72126,7 +73591,7 @@ if (
                     },
                     exec: function (e) {
                         var t = this;
-                        Me.youtube._dropDown(t, e, function (e, i) {
+                        Ee.youtube._dropDown(t, e, function (e, i) {
                             t.wysiwygEditorInsertHtml(
                                 te('youtube', { id: e, time: i })
                             );
@@ -72151,10 +73616,10 @@ if (
                         );
                     },
                     exec: function () {
-                        this.insertText(Me.date._date(this));
+                        this.insertText(Ee.date._date(this));
                     },
                     txtExec: function () {
-                        this.insertText(Me.date._date(this));
+                        this.insertText(Ee.date._date(this));
                     },
                     tooltip: 'Insert current date',
                 },
@@ -72172,10 +73637,10 @@ if (
                         );
                     },
                     exec: function () {
-                        this.insertText(Me.time._time());
+                        this.insertText(Ee.time._time());
                     },
                     txtExec: function () {
-                        this.insertText(Me.time._time());
+                        this.insertText(Ee.time._time());
                     },
                     tooltip: 'Insert current time',
                 },
@@ -72288,20 +73753,20 @@ if (
             (le.icons = {}),
             (le.command = {
                 get: function (e) {
-                    return Me[e] || null;
+                    return Ee[e] || null;
                 },
                 set: function (e, t) {
                     return (
                         !(!e || !t) &&
-                        (((t = n(Me[e] || {}, t)).remove = function () {
+                        (((t = n(Ee[e] || {}, t)).remove = function () {
                             le.command.remove(e);
                         }),
-                        (Me[e] = t),
+                        (Ee[e] = t),
                         this)
                     );
                 },
                 remove: function (e) {
-                    return (Me[e] && delete Me[e], this);
+                    return (Ee[e] && delete Ee[e], this);
                 },
             }),
             /**
@@ -72318,10 +73783,10 @@ if (
              */
             (window.sceditor = {
                 command: le.command,
-                commands: Me,
+                commands: Ee,
                 defaultOptions: we,
                 ie: xe,
-                ios: ze,
+                ios: Se,
                 isWysiwygSupported: Te,
                 regexEscape: Q,
                 escapeEntities: X,
@@ -72567,25 +74032,25 @@ if (
                 :   i
             );
         }
-        function z(e, t) {
+        function S(e, t) {
             return t.parentNode.insertBefore(e, t);
         }
         function T(e) {
             return e.className.trim().split(/\s+/);
         }
-        function S(e, t) {
+        function z(e, t) {
             return k(e, '.' + t);
         }
         function A(e, t) {
             var i = T(e);
             (i.indexOf(t) < 0 && i.push(t), (e.className = i.join(' ')));
         }
-        function E(e, t) {
+        function M(e, t) {
             var i = T(e);
             (s(i, t), (e.className = i.join(' ')));
         }
-        function M(e, t, i) {
-            (i = pe(i) ? !S(e, t) : i) ? A(e, t) : E(e, t);
+        function E(e, t, i) {
+            (i = pe(i) ? !z(e, t) : i) ? A(e, t) : M(e, t);
         }
         function I(e, t) {
             if (pe(t)) {
@@ -72702,11 +74167,11 @@ if (
                     var s = t(e),
                         o = K(s, e),
                         a = e;
-                    (V(s, a), z(o, s), z(a, s));
+                    (V(s, a), S(o, s), S(a, s));
                 }
                 if (n && k(e, i) && k(e.parentNode, i)) {
                     var l = C(e, 'li');
-                    (l || z((l = r('li')), e), u(l, e));
+                    (l || S((l = r('li')), e), u(l, e));
                 }
             });
         }
@@ -72740,12 +74205,12 @@ if (
                     ) {
                         for (
                             n = U(u), s = U(u, !0), r = !1;
-                            S(s, 'sceditor-ignore');
+                            z(s, 'sceditor-ignore');
                         )
                             s = U(s, !0);
                         if (H(u) && s) {
                             for (o = s; o.lastChild;)
-                                for (o = o.lastChild; S(o, 'sceditor-ignore');)
+                                for (o = o.lastChild; z(o, 'sceditor-ignore');)
                                     o = U(o, !0);
                             r =
                                 o.nodeType === ve ?
@@ -72842,7 +74307,7 @@ if (
             var t,
                 i = /^[^\/]*:/i,
                 n = window.location;
-            return e && i.test(e) && !Se.test(e) ?
+            return e && i.test(e) && !ze.test(e) ?
                     ((t = n.pathname.split('/')).pop(),
                     n.protocol + '//' + n.host + t.join('/') + '/' + e)
                 :   e;
@@ -72993,7 +74458,7 @@ if (
                     if (!i) return !1;
                     (s.deleteContents(),
                         o && 3 !== o.nodeType && !F(o) ?
-                            z(i, o)
+                            S(i, o)
                         :   s.insertNode(i),
                         l.restoreRange());
                 }),
@@ -73275,7 +74740,7 @@ if (
                 e,
                 function (e) {
                     H(e, !0) ?
-                        (i || z((i = r('p', {}, t)), e),
+                        (i || S((i = r('p', {}, t)), e),
                         (e.nodeType === ve && '' === e.nodeValue) || u(i, e))
                     :   (i = null);
                 },
@@ -73311,9 +74776,9 @@ if (
                 ye,
                 ke,
                 xe,
-                Se,
+                ze,
                 Ae,
-                Ee,
+                Me,
                 Ie,
                 Pe,
                 je,
@@ -73354,13 +74819,13 @@ if (
                 bt = {},
                 yt = {},
                 wt = {};
-            _t.commands = n(!0, {}, t.commands || Me);
+            _t.commands = n(!0, {}, t.commands || Ee);
             var kt = (_t.opts = n(!0, {}, we, t));
             ((_t.opts.emoticons = t.emoticons || we.emoticons),
                 (xe = function () {
                     ((e._sceditor = _t),
                         kt.locale && 'en' !== kt.locale && je(),
-                        z(
+                        S(
                             (a = r('div', { className: 'sceditor-container' })),
                             e
                         ),
@@ -73418,7 +74883,7 @@ if (
                         u(a, L),
                         _t.dimensions(kt.width || I(e), kt.height || P(e)));
                     var t = Oe ? 'ie ie' + Oe : '';
-                    ((t += ze ? ' ios' : ''),
+                    ((t += Se ? ' ios' : ''),
                         (T = f.contentDocument).open(),
                         T.write(
                             te('html', {
@@ -73433,7 +74898,7 @@ if (
                         (C = T.body),
                         (x = f.contentWindow),
                         _t.readOnly(!!kt.readOnly),
-                        (ze || Ce || Oe) &&
+                        (Se || Ce || Oe) &&
                             (P(C, '100%'), Oe || p(C, 'touchend', _t.focus)));
                     var i = _(e, 'tabindex');
                     (_(L, 'tabindex', i),
@@ -73484,7 +74949,7 @@ if (
                             _t.val() || A(C, 'placeholder');
                         }),
                         p(C, 'focus', function () {
-                            E(C, 'placeholder');
+                            M(C, 'placeholder');
                         }),
                         p(L, 'blur', ut),
                         p(L, 'keyup', ht),
@@ -73493,7 +74958,7 @@ if (
                         p(L, n, Qe),
                         p(T, 'mousedown', Ye),
                         p(T, s, st),
-                        p(T, 'beforedeactivate keyup mouseup', Ee),
+                        p(T, 'beforedeactivate keyup mouseup', Me),
                         p(T, 'keyup', nt),
                         p(T, 'focus', function () {
                             B = null;
@@ -73538,13 +75003,13 @@ if (
                                             ke && ke.create)
                                         )
                                             ke.create(s) &&
-                                                (z(ke.create(s), o.firstChild),
+                                                (S(ke.create(s), o.firstChild),
                                                 A(o, 'has-icon'));
                                         ((o._sceTxtMode = !!r.txtExec),
                                             (o._sceWysiwygMode = !!r.exec),
-                                            M(o, 'disabled', !r.exec),
+                                            E(o, 'disabled', !r.exec),
                                             p(o, 'click', function (e) {
-                                                (S(o, 'disabled') || Ae(o, r),
+                                                (z(o, 'disabled') || Ae(o, r),
                                                     tt(),
                                                     e.preventDefault());
                                             }),
@@ -73599,7 +75064,7 @@ if (
                         k = 0,
                         x = I(a),
                         C = P(a),
-                        z = !1,
+                        S = !1,
                         T = _t.rtl();
                     if (
                         ((e = kt.resizeMinHeight || C / 1.5),
@@ -73624,18 +75089,18 @@ if (
                                 s.preventDefault());
                         }),
                         (o = function (e) {
-                            z &&
-                                ((z = !1),
+                            S &&
+                                ((S = !1),
                                 g(c),
-                                E(a, 'resizing'),
+                                M(a, 'resizing'),
                                 m(Le, d, s),
                                 m(Le, h, o),
                                 e.preventDefault());
                         }),
                         ke && ke.create)
                     ) {
-                        var S = ke.create('grip');
-                        S && (u(l, S), A(l, 'has-icon'));
+                        var z = ke.create('grip');
+                        z && (u(l, z), A(l, 'has-icon'));
                     }
                     (u(a, l),
                         u(a, c),
@@ -73648,7 +75113,7 @@ if (
                             :   ((_ = e.pageX), (f = e.pageY)),
                                 (w = I(a)),
                                 (k = P(a)),
-                                (z = !0),
+                                (S = !0),
                                 A(a, 'resizing'),
                                 v(c),
                                 p(Le, d, s),
@@ -73719,8 +75184,8 @@ if (
                             'rtl' === _(L, 'dir')
                         :   (_(C, 'dir', t),
                             _(L, 'dir', t),
-                            E(a, 'rtl'),
-                            E(a, 'ltr'),
+                            M(a, 'rtl'),
+                            M(a, 'ltr'),
                             A(a, t),
                             ke && ke.rtl && ke.rtl(e),
                             _t);
@@ -73729,7 +75194,7 @@ if (
                     var t =
                         _t.inSourceMode() ? '_sceTxtMode' : '_sceWysiwygMode';
                     o(yt, function (i, n) {
-                        M(n, 'disabled', e || !n[t]);
+                        E(n, 'disabled', e || !n[t]);
                     });
                 }),
                 (_t.width = function (e, t) {
@@ -73755,11 +75220,11 @@ if (
                 (_t.maximize = function (e) {
                     var t = 'sceditor-maximize';
                     return pe(e) ?
-                            S(a, t)
+                            z(a, t)
                         :   ((e = !!e) && (fe = De.pageYOffset),
-                            M(Le.documentElement, t, e),
-                            M(Le.body, t, e),
-                            M(a, t, e),
+                            E(Le.documentElement, t, e),
+                            E(Le.body, t, e),
+                            E(a, t, e),
                             _t.width(e ? '100%' : kt.width, !1),
                             _t.height(e ? '100%' : kt.height, !1),
                             e || De.scrollTo(0, fe),
@@ -73811,7 +75276,7 @@ if (
                     var l,
                         c = 'sceditor-' + t;
                     (_t.closeDropDown(!0),
-                        (O && S(O, c)) ||
+                        (O && z(O, c)) ||
                             (!1 !== s &&
                                 o(
                                     h(i, ':not(input):not(textarea)'),
@@ -73926,7 +75391,7 @@ if (
                         (!i && c(Q, 'code')) ||
                             (K.insertHTML(e, t),
                             K.saveRange(),
-                            Se(),
+                            ze(),
                             v((n = h(C, '#sceditor-end-marker')[0])),
                             (s = C.scrollTop),
                             (o = G(n).top + 1.5 * n.offsetHeight - a),
@@ -74044,7 +75509,7 @@ if (
                 (_t.setWysiwygEditorValue = function (e) {
                     (e || (e = '<p>' + (Oe ? '' : '<br />') + '</p>'),
                         (C.innerHTML = e),
-                        Se(),
+                        ze(),
                         nt(),
                         dt(),
                         mt());
@@ -74055,11 +75520,11 @@ if (
                 (_t.updateOriginal = function () {
                     e.value = _t.val();
                 }),
-                (Se = function () {
+                (ze = function () {
                     kt.emoticonsEnabled && ae(C, wt, kt.emoticonsCompat);
                 }),
                 (_t.inSourceMode = function () {
-                    return S(a, 'sourceMode');
+                    return z(a, 'sourceMode');
                 }),
                 (_t.sourceMode = function (e) {
                     var t = _t.inSourceMode();
@@ -74079,8 +75544,8 @@ if (
                         (B = null),
                         b(L),
                         b(f),
-                        M(a, 'wysiwygMode', e),
-                        M(a, 'sourceMode', !e),
+                        E(a, 'wysiwygMode', e),
+                        E(a, 'sourceMode', !e),
                         et(),
                         tt());
                 }),
@@ -74106,7 +75571,7 @@ if (
                                 :   null
                             ));
                 }),
-                (Ee = function () {
+                (Me = function () {
                     Oe && (B = K.selectedRange());
                 }),
                 (_t.execCommand = function (e, t) {
@@ -74176,7 +75641,7 @@ if (
                         s = _t.sourceMode();
                     if (_t.readOnly())
                         o(h(l, i), function (e, t) {
-                            E(t, i);
+                            M(t, i);
                         });
                     else {
                         s ||
@@ -74199,7 +75664,7 @@ if (
                                                 n.queryCommandState(d) ? 1 : 0);
                                     } catch (e) {}
                             } else u || (r = d.call(_t, t, e));
-                            (M(c, 'disabled', u || r < 0), M(c, i, r > 0));
+                            (E(c, 'disabled', u || r < 0), E(c, i, r > 0));
                         }
                         ke && ke.update && ke.update(s, t, e);
                     }
@@ -74380,7 +75845,7 @@ if (
                     ((kt.emoticonsEnabled = e), e) ?
                         (p(C, 'keypress', rt),
                         _t.sourceMode() ||
-                            (K.saveRange(), Se(), dt(!1), K.restoreRange()))
+                            (K.saveRange(), ze(), dt(!1), K.restoreRange()))
                     :   (o(
                             h(C, 'img[data-sceditor-emoticon]'),
                             function (e, t) {
@@ -74742,7 +76207,7 @@ if (
                 );
             })(),
             Ce = '-ms-ime-align' in document.documentElement.style,
-            ze = /iPhone|iPod|iPad| wosbrowser\//i.test(ke),
+            Se = /iPhone|iPod|iPad| wosbrowser\//i.test(ke),
             Te =
                 (((ue = document.createElement('div')).contentEditable = !0),
                 'contentEditable' in document.documentElement &&
@@ -74754,13 +76219,13 @@ if (
                             !(ce = /AppleWebKit\/(\d+)/.exec(ke)) ||
                             !ce[1] ||
                             ce[1] < 534),
-                    ze && (de = /OS [0-4](_\d)+ like Mac/i.test(ke)),
+                    Se && (de = /OS [0-4](_\d)+ like Mac/i.test(ke)),
                     /Firefox/i.test(ke) && (de = !1),
                     /OneBrowser/i.test(ke) && (de = !1),
                     'UCWEB' === navigator.vendor && (de = !1),
                     xe <= 9 && (de = !0),
                     !de)),
-            Se =
+            ze =
                 /^(https?|s?ftp|mailto|spotify|skype|ssh|teamspeak|tel):|(\/\/)|data:image\/(png|bmp|gif|p?jpe?g);/i,
             Ae = {
                 html: '<!DOCTYPE html><html{attrs}><head><style>.ie * {min-height: auto !important} .ie table td {height:15px} @supports (-ms-ime-align:auto) { * { min-height: auto !important; } }</style><meta http-equiv="Content-Type" content="text/html;charset={charset}" /><link rel="stylesheet" type="text/css" href="{style}" /></head><body contenteditable="true" {spellcheck}><p></p></body></html>',
@@ -74783,8 +76248,8 @@ if (
                 youtube:
                     '<iframe width="560" height="315" frameborder="0" allowfullscreen src="https://www.youtube.com/embed/{id}?wmode=opaque&start={time}" data-youtube-id="{id}"></iframe>',
             },
-            Ee = xe && xe < 11,
-            Me = {
+            Me = xe && xe < 11,
+            Ee = {
                 bold: { exec: 'bold', tooltip: 'Bold', shortcut: 'Ctrl+B' },
                 italic: {
                     exec: 'italic',
@@ -74838,7 +76303,7 @@ if (
                     },
                     exec: function (e) {
                         var t = this;
-                        Me.font._dropDown(t, e, function (e) {
+                        Ee.font._dropDown(t, e, function (e) {
                             t.execCommand('fontname', e);
                         });
                     },
@@ -74858,7 +76323,7 @@ if (
                     },
                     exec: function (e) {
                         var t = this;
-                        Me.size._dropDown(t, e, function (e) {
+                        Ee.size._dropDown(t, e, function (e) {
                             t.execCommand('fontsize', e);
                         });
                     },
@@ -74868,7 +76333,7 @@ if (
                     _dropDown: function (e, t, i) {
                         var n = r('div'),
                             s = '',
-                            o = Me.color;
+                            o = Ee.color;
                         (o._htmlCache ||
                             (e.opts.colors.split('|').forEach(function (e) {
                                 ((s += '<div class="sceditor-color-column">'),
@@ -74893,7 +76358,7 @@ if (
                     },
                     exec: function (e) {
                         var t = this;
-                        Me.color._dropDown(t, e, function (e) {
+                        Ee.color._dropDown(t, e, function (e) {
                             t.execCommand('forecolor', e);
                         });
                     },
@@ -75026,7 +76491,7 @@ if (
                                         '<tr>' +
                                             Array(s + 1).join(
                                                 '<td>' +
-                                                    (Ee ? '' : '<br />') +
+                                                    (Me ? '' : '<br />') +
                                                     '</td>'
                                             ) +
                                             '</tr>'
@@ -75049,7 +76514,7 @@ if (
                     exec: function () {
                         this.wysiwygEditorInsertHtml(
                             '<code>',
-                            (Ee ? '' : '<br />') + '</code>'
+                            (Me ? '' : '<br />') + '</code>'
                         );
                     },
                     tooltip: 'Code',
@@ -75086,7 +76551,7 @@ if (
                     },
                     exec: function (e) {
                         var t = this;
-                        Me.image._dropDown(t, e, '', function (e, i, n) {
+                        Ee.image._dropDown(t, e, '', function (e, i, n) {
                             var s = '';
                             (i && (s += ' width="' + i + '"'),
                                 n && (s += ' height="' + n + '"'),
@@ -75122,7 +76587,7 @@ if (
                     },
                     exec: function (e) {
                         var t = this;
-                        Me.email._dropDown(t, e, function (e, i) {
+                        Ee.email._dropDown(t, e, function (e, i) {
                             (t.focus(),
                                 !t.getRangeHelper().selectedHtml() || i ?
                                     t.wysiwygEditorInsertHtml(
@@ -75171,7 +76636,7 @@ if (
                     },
                     exec: function (e) {
                         var t = this;
-                        Me.link._dropDown(t, e, function (e, i) {
+                        Ee.link._dropDown(t, e, function (e, i) {
                             (t.focus(),
                                 i || !t.getRangeHelper().selectedHtml() ?
                                     ((i = i || e),
@@ -75190,7 +76655,7 @@ if (
                     exec: function () {
                         var e = c(this.currentNode(), 'a');
                         if (e) {
-                            for (; e.firstChild;) z(e.firstChild, e);
+                            for (; e.firstChild;) S(e.firstChild, e);
                             d(e);
                         }
                     },
@@ -75208,7 +76673,7 @@ if (
                                 s),
                             (s = null))
                         :   '' === this.getRangeHelper().selectedHtml() &&
-                            (s = (Ee ? '' : '<br />') + s),
+                            (s = (Me ? '' : '<br />') + s),
                             this.wysiwygEditorInsertHtml(n, s));
                     },
                     tooltip: 'Insert a Quote',
@@ -75286,7 +76751,7 @@ if (
                         t.createDropDown(e, 'emoticons', i(!1));
                     },
                     txtExec: function (e) {
-                        Me.emoticon.exec.call(this, e);
+                        Ee.emoticon.exec.call(this, e);
                     },
                     tooltip: 'Insert an emoticon',
                 },
@@ -75327,7 +76792,7 @@ if (
                     },
                     exec: function (e) {
                         var t = this;
-                        Me.youtube._dropDown(t, e, function (e, i) {
+                        Ee.youtube._dropDown(t, e, function (e, i) {
                             t.wysiwygEditorInsertHtml(
                                 te('youtube', { id: e, time: i })
                             );
@@ -75352,10 +76817,10 @@ if (
                         );
                     },
                     exec: function () {
-                        this.insertText(Me.date._date(this));
+                        this.insertText(Ee.date._date(this));
                     },
                     txtExec: function () {
-                        this.insertText(Me.date._date(this));
+                        this.insertText(Ee.date._date(this));
                     },
                     tooltip: 'Insert current date',
                 },
@@ -75373,10 +76838,10 @@ if (
                         );
                     },
                     exec: function () {
-                        this.insertText(Me.time._time());
+                        this.insertText(Ee.time._time());
                     },
                     txtExec: function () {
-                        this.insertText(Me.time._time());
+                        this.insertText(Ee.time._time());
                     },
                     tooltip: 'Insert current time',
                 },
@@ -75489,20 +76954,20 @@ if (
             (le.icons = {}),
             (le.command = {
                 get: function (e) {
-                    return Me[e] || null;
+                    return Ee[e] || null;
                 },
                 set: function (e, t) {
                     return (
                         !(!e || !t) &&
-                        (((t = n(Me[e] || {}, t)).remove = function () {
+                        (((t = n(Ee[e] || {}, t)).remove = function () {
                             le.command.remove(e);
                         }),
-                        (Me[e] = t),
+                        (Ee[e] = t),
                         this)
                     );
                 },
                 remove: function (e) {
-                    return (Me[e] && delete Me[e], this);
+                    return (Ee[e] && delete Ee[e], this);
                 },
             }),
             /**
@@ -75519,10 +76984,10 @@ if (
              */
             (window.sceditor = {
                 command: le.command,
-                commands: Me,
+                commands: Ee,
                 defaultOptions: we,
                 ie: xe,
-                ios: ze,
+                ios: Se,
                 isWysiwygSupported: Te,
                 regexEscape: Q,
                 escapeEntities: X,
@@ -75690,13 +77155,13 @@ if (
                     r = /\[([^\]\s=]+)(?:([^\]]+))?\]/,
                     l = /\[\/([^\[\]]+)\]/;
                 return (
-                    e === S &&
+                    e === z &&
                         (i = t.match(r)) &&
                         ((s = y(i[1])),
                         i[2] && (i[2] = i[2].trim()) && (n = o(i[2]))),
-                    e === M && (i = t.match(l)) && (s = y(i[1])),
-                    e === E && (s = '#newline'),
-                    (s && ((e !== S && e !== M) || T[s])) ||
+                    e === E && (i = t.match(l)) && (s = y(i[1])),
+                    e === M && (s = '#newline'),
+                    (s && ((e !== z && e !== E) || T[s])) ||
                         ((e = A), (s = '#')),
                     new a(e, s, t, n)
                 );
@@ -75759,22 +77224,22 @@ if (
                     switch (
                         ((a = e[0]),
                         c(h(), t) ||
-                            (t.type === M && h() && t.name === h().name) ||
+                            (t.type === E && h() && t.name === h().name) ||
                             ((t.name = '#'), (t.type = A)),
                         t.type)
                     ) {
-                        case S:
+                        case z:
                             (m(t.name) && u.pop(),
                                 p(t),
                                 (
                                     (i = T[t.name]) &&
                                     !i.isSelfClosing &&
-                                    (i.closedBy || l(t.name, M, e))
+                                    (i.closedBy || l(t.name, E, e))
                                 ) ?
                                     u.push(t)
                                 :   (i && i.isSelfClosing) || (t.type = A));
                             break;
-                        case M:
+                        case E:
                             if (
                                 (h() &&
                                     t.name !== h().name &&
@@ -75783,7 +77248,7 @@ if (
                                 h() && t.name === h().name)
                             )
                                 ((h().closing = t), u.pop());
-                            else if (l(t.name, S, u)) {
+                            else if (l(t.name, z, u)) {
                                 for (; (n = u.pop());) {
                                     if (n.name === t.name) {
                                         n.closing = t;
@@ -75795,7 +77260,7 @@ if (
                                 }
                                 for (
                                     a &&
-                                        a.type === E &&
+                                        a.type === M &&
                                         (i = T[t.name]) &&
                                         !1 === i.isInline &&
                                         (p(a), e.shift()),
@@ -75807,11 +77272,11 @@ if (
                                 r.length = 0;
                             } else ((t.type = A), p(t));
                             break;
-                        case E:
+                        case M:
                             (h() &&
                                 a &&
-                                m((a.type === M ? '/' : '') + a.name) &&
-                                ((a.type === M && a.name === h().name) ||
+                                m((a.type === E ? '/' : '') + a.name) &&
+                                ((a.type === E && a.name === h().name) ||
                                     ((((i = T[h().name]) && i.breakAfter) ||
                                         (i &&
                                             !1 === i.isInline &&
@@ -75838,7 +77303,7 @@ if (
                 t && (a = T[t.name]);
                 for (var p = u; p--;)
                     if ((n = e[p]))
-                        if (n.type === E) {
+                        if (n.type === M) {
                             if (
                                 ((s = p > 0 ? e[p - 1] : null),
                                 (o = p < u - 1 ? e[p + 1] : null),
@@ -75861,7 +77326,7 @@ if (
                                             (d = !0),
                                         a.breakStart && (d = !0))),
                                 s &&
-                                    s.type === S &&
+                                    s.type === z &&
                                     (r = T[s.name]) &&
                                     (i ?
                                         !1 === r.isInline && (d = !0)
@@ -75873,7 +77338,7 @@ if (
                                 !i &&
                                     !c &&
                                     o &&
-                                    o.type === S &&
+                                    o.type === z &&
                                     (r = T[o.name]) &&
                                     (!1 === r.isInline &&
                                         k.opts.breakBeforeBlock &&
@@ -75887,7 +77352,7 @@ if (
                                 continue;
                             }
                             (d && e.splice(p, 1), (c = !1));
-                        } else n.type === S && h(n.children, n, i);
+                        } else n.type === z && h(n.children, n, i);
             }
             function p(e, t, i, n) {
                 var s,
@@ -75901,7 +77366,7 @@ if (
                         return !t || !1 !== t.isInline;
                     };
                 for (t = t || [], n = n || e, o = 0; o < e.length; o++)
-                    if ((s = e[o]) && s.type === S) {
+                    if ((s = e[o]) && s.type === z) {
                         if (i && !u(s)) {
                             if (
                                 ((d = (a = b(t)).splitAt(s)),
@@ -75920,7 +77385,7 @@ if (
                                 var m = d.children[0];
                                 return void (
                                     m &&
-                                    m.type === E &&
+                                    m.type === M &&
                                     (u(s) ||
                                         (d.children.splice(0, 1),
                                         l.splice(r + 2, 0, m)))
@@ -75937,7 +77402,7 @@ if (
                         n = function (e) {
                             for (var t = e.length; t--;) {
                                 var i = e[t].type;
-                                if (i === S || i === M) return !1;
+                                if (i === z || i === E) return !1;
                                 if (i === A && /\S|\u00A0/.test(e[t].val))
                                     return !1;
                             }
@@ -75947,7 +77412,7 @@ if (
                     s--;
                 )
                     (t = e[s]) &&
-                        t.type === S &&
+                        t.type === z &&
                         ((i = T[t.name]),
                         m(t.children),
                         n(t.children) &&
@@ -75980,7 +77445,7 @@ if (
                     e.length > 0;
                 )
                     if ((o = e.shift())) {
-                        if (o.type === S)
+                        if (o.type === z)
                             ((p = o.children[o.children.length - 1] || {}),
                                 (a = T[o.name]),
                                 (c = i && h(a)),
@@ -76001,7 +77466,7 @@ if (
                                         r +
                                         (o.closing ? o.closing.val : '')));
                         else {
-                            if (o.type === E) {
+                            if (o.type === M) {
                                 if (!i) {
                                     m.push('<br />');
                                     continue;
@@ -76053,9 +77518,9 @@ if (
                                 (n ? n.quoteType : null) ||
                                 k.opts.quoteType ||
                                 C.auto),
-                            n || t.type !== S)
+                            n || t.type !== z)
                         )
-                            if (t.type === S) {
+                            if (t.type === z) {
                                 if (
                                     (r && u.push('\n'),
                                     u.push('[' + t.name),
@@ -76118,9 +77583,9 @@ if (
                         o = [],
                         a = [
                             { type: A, regex: /^([^\[\r\n]+|\[)/ },
-                            { type: E, regex: /^(\r\n|\r|\n)/ },
-                            { type: S, regex: /^\[[^\[\]]+\]/ },
-                            { type: M, regex: /^\[\/[^\[\]]+\]/ },
+                            { type: M, regex: /^(\r\n|\r|\n)/ },
+                            { type: z, regex: /^\[[^\[\]]+\]/ },
+                            { type: E, regex: /^\[\/[^\[\]]+\]/ },
                         ];
                     e: for (; e.length;) {
                         for (s = a.length; s--;)
@@ -76369,7 +77834,7 @@ if (
                 ((h.opts = this.opts),
                     (h.elementToBbcode = c),
                     e(),
-                    (this.commands = v(!0, {}, z, this.commands)),
+                    (this.commands = v(!0, {}, S, this.commands)),
                     (this.toBBCode = h.toSource),
                     (this.fromBBCode = h.toHtml));
             }),
@@ -76392,7 +77857,7 @@ if (
             k = 'data-sceditor-emoticon',
             x = e.command.get,
             C = { always: 1, never: 2, auto: 3 },
-            z = {
+            S = {
                 bold: { txtExec: ['[b]', '[/b]'] },
                 italic: { txtExec: ['[i]', '[/i]'] },
                 underline: { txtExec: ['[u]', '[/u]'] },
@@ -76861,10 +78326,10 @@ if (
                 },
                 'ignore': {},
             },
-            S = 'open',
+            z = 'open',
             A = 'content',
-            E = 'newline',
-            M = 'close';
+            M = 'newline',
+            E = 'close';
         ((a.prototype = {
             clone: function () {
                 var e = this;
@@ -81876,6 +83341,13 @@ const TickManager = (() => {
         return (...n) => {
             i || (e(...n), (i = setTimeout(() => (i = !1), t)));
         };
+    },
+    object_proxy_handler = {
+        set: (e, t, i) => (
+            (e[t] = i),
+            'dirty' !== t && 'opacity' !== t && (e.dirty = !0),
+            e
+        ),
     };
 class LruTier {
     constructor(e) {
@@ -81950,6 +83422,15 @@ class LruTier {
         for (const e of [...this.map.keys()]) this.delete(e);
     }
 }
+const MAIN_BROADCAST_TYPE = 'MAIN',
+    SECONDARY_BROADCAST_TYPE = 'SECONDARY',
+    MESSAGE_TYPES = {
+        HELLO: 'HELLO',
+        ASSIGN_ROLE: 'ASSIGN_ROLE',
+        MISSIONS_NAV_REQUEST: 'MISSIONS_NAV_REQUEST',
+        MISSIONS_NAV_RESPONSE: 'MISSIONS_NAV_RESPONSE',
+    },
+    callbacks = new Map();
 class XYVirtualScroller {
     constructor(e, t, i = {}) {
         if (
@@ -82403,3 +83884,6 @@ class XYVirtualListTwoTierCache {
         (this.domTier.clear(), this.htmlTier.clear());
     }
 }
+let buildingElementsCacheMap = new Map();
+const vehiclesPerIDMap = new Map();
+let missionElementsCacheStrMap = new Map();

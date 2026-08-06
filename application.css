@@ -10685,6 +10685,9 @@ fieldset[disabled] .btn-gray.active {
     height: 500px;
     padding-bottom: 150px;
 }
+.vl-panel-body {
+    overflow: hidden !important;
+}
 #mission_replies {
     padding-left: 10px;
     max-height: 150px;
@@ -15910,21 +15913,14 @@ body.dark .well.hospital-boost-active {
 .virtual-scroll-container {
     height: 450px;
     overflow-y: auto;
-    border: 1px solid #ccc;
     position: relative;
     overflow-anchor: none;
 }
+.virtual-scroll-border {
+    border: 1px solid #ccc;
+}
 .virtual-content {
     position: relative;
-}
-.virtual-item {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 8px 12px;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    justify-content: space-between;
-    transition: background-color 0.1s ease;
 }
 .poi-filters {
     background: #fff;
@@ -15946,6 +15942,15 @@ body.dark .well.hospital-boost-active {
 .dark .poi-filters li a {
     background: #505050 !important;
     color: #ddd !important;
+}
+.virtual-item {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    transition: background-color 0.1s ease;
 }
 .virtual-item.row-even {
     background-color: #eee;
