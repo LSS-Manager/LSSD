@@ -1288,7 +1288,10 @@ function processMissionElementFromWorker(e) {
         missionParticipationFilters.new.missionIds.add(e.id),
         processMissionMarkersFromWorker(e),
         e.timer_params.date_end > 0 && missionTimerStart(e.timer_params),
-        e.pumping_date_end > 0 && startPumpProgressBar(e));
+        e.pumping_date_end > 0 && startPumpProgressBar(e),
+        !0 === mobile_bridge_use &&
+            4 === mobile_version &&
+            mobileBridgeAdd('mission', e));
 }
 function startPumpProgressBar(e) {
     const t = $('#pumping_bar_' + e.id);
@@ -1820,8 +1823,9 @@ function vehicleDrive(e, t) {
         n = !0;
     if ('' != e.mid && !alliance_show_not_involved_vehicle) {
         const t = parseInt(e.mid),
-            s = mission_markers_per_id.get(t);
-        if (s && !s.involved)
+            s = mission_markers_per_id.get(t),
+            o = missionParticipationFilters.started.missionIds.has(t);
+        if (s && !o)
             return (
                 (e.involved_created_at = i),
                 vehicles_not_involved.push(e),
@@ -7164,11 +7168,13 @@ function startMissionsWorkerIfSupported(e, t, i, n, s = {}) {
                 mission_graphics_lookups: mission_graphics_lookups,
                 mobile_bridge_use: mobile_bridge_use,
                 mixed_mobile_desktop_mode: mixed_mobile_desktop_mode,
+                mobile_version: mobile_version,
                 useMissionScrollBarOptimization:
                     useMissionScrollBarOptimization,
                 missionFilterQueryParams: missionFilterQueryParams,
                 locale: I18n.locale,
                 defaultLocale: I18n.defaultLocale,
+                currentHostname: currentHostname(),
             },
             fetch_params: s,
         }),
@@ -7180,7 +7186,6 @@ function onMissionsWorkerMessage(e, t) {
     const i = parseResponse(e.data);
     (workerTimeEnd('parseResponse'),
         'missions' === i.type && (t ? t(i) : loadMissionsFromWorker(i)),
-        'mobileBridge' === i.type && processMobileBridgeCall(i),
         'error' === i.type && onMissionsWorkerError(i),
         terminateMissionsWorker());
 }
@@ -7327,16 +7332,18 @@ function terminateWorker(e) {
     e && (e.terminate(), (e = null));
 }
 function processMobileBridgeCall(e) {
-    (workerLog(`processMobileBridgeCall: ${e.mission.id}`),
+    if (!e || !e.mission) return;
+    const t = e.mission;
+    (workerLog(`processMobileBridgeCall: ${t.id}`),
         !0 === mobile_bridge_use &&
             !1 === mixed_mobile_desktop_mode &&
-            currentMarkerTypeFilterTurnedOn(e.mission.filter_id) &&
+            currentMarkerTypeFilterTurnedOn(t.filter_id) &&
             (4 === mobile_version &&
                 (-1 !== String(e.vehicle_state_url).indexOf('//') ?
-                    (params.app_icon_path = e.vehicle_state_url)
-                :   (params.app_icon_path =
+                    (t.app_icon_path = e.vehicle_state_url)
+                :   (t.app_icon_path =
                         currentHostname() + e.vehicle_state_url)),
-            mobileBridgeAdd('mission', e.mission)));
+            mobileBridgeAdd('mission', t)));
 }
 function parseResponse(e) {
     const t = e instanceof ArrayBuffer ? 'utf8' : 'none',
@@ -8227,19 +8234,21 @@ function processMissionWorkerData(e) {
         scheduleLoadVehiclesOnTheMove());
 }
 function processMissionFromPush(e) {
-    const t = constructMissionObject(e);
+    const t = constructMissionObject(e),
+        i = t.id;
     (missionElementsCacheStrMap.set(t.id, t.el),
         (t.el = null),
         processMissionElementFromWorker(t));
-    const i = new Proxy(t, object_proxy_handler);
-    let n = missions_data.has(i.id);
-    if (
-        ((i.dirty = !0), missions_data.set(i.id, i), updateMissionsCount(i), n)
-    ) {
-        let e = mission_markers_per_id.get(i.id);
-        e && xy_map.updateMarker(i, e);
-    } else xy_map.addMarkerToLayer(null, mission_markers_per_id.get(i.id));
-    refreshMissionsVirtualList();
+    const n = new Proxy(t, object_proxy_handler);
+    let s = missions_data.has(i);
+    if (((n.dirty = !0), missions_data.set(i, n), updateMissionsCount(n), s)) {
+        let e = mission_markers_per_id.get(n.id);
+        e && xy_map.updateMarker(n, e);
+    } else xy_map.addMarkerToLayer(null, mission_markers_per_id.get(n.id));
+    (refreshMissionsVirtualList(),
+        setTimeout(() => {
+            missionVehiclesShowNotInvolved(i);
+        }));
 }
 function updateMissionPatientsData(e) {
     if (!e) return;
@@ -9345,7 +9354,7 @@ function constructMissionObject(e) {
         (e.vehicle_state_url = d),
         (e.caption = e.plain_caption),
         (e.caption_address = c),
-        (e.involved = !0 === e.participating),
+        (e.involved = identifyParticipation(e)),
         e
     );
 }
@@ -9603,13 +9612,12 @@ function identifyVehicleStateUrlInWorker(e) {
                     e.vehicle_state
                 ]
             :   '/images/' + e.icon + '.png'),
-        1 == readContextParam('mobile_bridge_use') &&
-            0 == readContextParam('mixed_mobile_desktop_mode') &&
-            postMessage({
-                type: 'mobileBridge',
-                vehicle_state_url: n,
-                mission: e,
-            }),
+        !0 === readContextParam('mobile_bridge_use') &&
+            !1 === readContextParam('mixed_mobile_desktop_mode') &&
+            4 === readContextParam('mobile_version') &&
+            (-1 !== String(n).indexOf('//') ?
+                (e.app_icon_path = n)
+            :   (e.app_icon_path = readContextParam('currentHostname') + n)),
         n
     );
 }
