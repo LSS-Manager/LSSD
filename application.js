@@ -1256,8 +1256,9 @@ function processMissionWorkerResponse(e) {
 }
 function processAndRenderMissions(e) {
     let t = e.missions,
-        i = e.missionHTMLElements,
-        n = new Map();
+        i = e.missionHTMLElements;
+    (i && i instanceof Map) || (i = new Map());
+    let n = new Map();
     const s = document.createElement('template'),
         o = new Map();
     return (
