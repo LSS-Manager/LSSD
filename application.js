@@ -6309,7 +6309,8 @@ function appendLoadResult(e, t, i, n, s) {
     $(a).find('#hasNext')[0] ?
         loadNextPage(e, n, i + 1, t, 0)
     :   (hideLoadingIfPresent(),
-        'function' == typeof initTableSorting && initTableSorting(t));
+        'function' == typeof initTableSorting && initTableSorting(t),
+        'function' == typeof bindListeners && bindListeners());
 }
 function hideLoadingIfPresent() {
     'function' == typeof removeLoadInfo && removeLoadInfo();
