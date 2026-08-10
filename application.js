@@ -1825,7 +1825,9 @@ function vehicleDrive(e, t) {
     if ('' != e.mid && !alliance_show_not_involved_vehicle) {
         const t = parseInt(e.mid),
             s = mission_markers_per_id.get(t),
-            o = missionParticipationFilters.started.missionIds.has(t);
+            o =
+                s.involved ||
+                missionParticipationFilters.started.missionIds.has(t);
         if (s && !o)
             return (
                 (e.involved_created_at = i),
