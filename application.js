@@ -2745,17 +2745,17 @@ function waterCalculator(e, t) {
         x = I18n.t(w.amountOnSite, { amount: number_format(parseInt(h)) }),
         C = I18n.t(w.amountApproaching, { amount: number_format(parseInt(p)) }),
         S = I18n.t(w.amountSelected, { amount: number_format(parseInt(m)) }),
-        T = I18n.t(w.amountMissing, { amount: number_format(parseInt(_)) });
+        z = I18n.t(w.amountMissing, { amount: number_format(parseInt(_)) });
     (s.find('.mission_water_bar_at_mission_' + e).html(x),
         s.find('.mission_water_bar_driving_' + e).html(C),
         s.find('.mission_water_bar_selected_' + e).html(S),
-        s.find('.mission_water_bar_missing_' + e).html(T));
-    const z = [k];
-    (parseInt(h) > 0 && z.push(x),
-        parseInt(p) > 0 && z.push(C),
-        parseInt(m) > 0 && z.push(S),
-        parseInt(_) > 0 && z.push(T),
-        s.attr('title', z.join(', ')),
+        s.find('.mission_water_bar_missing_' + e).html(z));
+    const T = [k];
+    (parseInt(h) > 0 && T.push(x),
+        parseInt(p) > 0 && T.push(C),
+        parseInt(m) > 0 && T.push(S),
+        parseInt(_) > 0 && T.push(z),
+        s.attr('title', T.join(', ')),
         v + g + f >= 100 ?
             (s
                 .find('.mission_water_bar_selected_' + e)
@@ -16959,6 +16959,10 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 battalion_chief_unit: 'Funzionario',
                 boot: 'Barca',
                 brush_truck: 'Mezzo AIB',
+                coastal_dinghy_fire: 'Gommone del fuoco',
+                coastal_dinghy_police: 'Gommone della polizia',
+                coastal_jetski_fire: "Moto d'acqua del fuoco",
+                coastal_jetski_police: "Moto d'acqua della polizia",
                 commerce_police: 'Volante Finanza',
                 crew_carrier: 'AF/BUS',
                 detention_unit: 'Trasporto detenuti',
@@ -16968,6 +16972,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 emergency_ambulance: 'Automedica (VLV) o Elisoccorso',
                 fbi_bomb_tech: 'Furgone artificieri',
                 fire_aviation: 'Unit\xe0 Aerea Antincendio',
+                fire_boat: 'Motobarca antincendio',
+                fire_boat_large: 'Motobarca antincendio grande',
                 fire_truck: 'APS/ABP',
                 fireboat: 'Barca antincendio grande',
                 fly_car: 'Fly-Car',
@@ -17007,6 +17013,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 naw_or_rtw_and_nef_or_rth: 'MSA o VLV o Elisoccorso',
                 nef_only: 'Automedica (VLV)',
                 oil_unit: 'GW-\xd6l',
+                police_boat: 'Motovedetta della polizia',
+                police_boat_large: "Pattugliatore d'Altura della polizia",
                 police_car: 'Auto di pattuglia',
                 police_motorcycle: 'Moto della Polizia',
                 polizeihubschrauber: 'Elicottero della polizia',
@@ -17017,7 +17025,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 rescue_dogs: 'Unit\xe0 Cinofila SAR',
                 rescue_vehicle: 'Polisoccorso',
                 rescue_vehicle_only: 'CA / POLI',
-                rescueboat: 'Barca di salvataggio grande',
+                rescueboat: 'Idroambulanza',
                 rth_only: 'Elisoccorso',
                 schlauchwagen: 'Kilolitrica',
                 swat: 'Unit\xe0 speciali',
@@ -17234,12 +17242,14 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 ambulance_station_missions: 'Stazione ambulanze',
                 ambulance_station_small_missions:
                     'Stazione ambulanze (stazione piccola)',
+                beach_missions: 'Missioni balneari',
                 building_complex: 'Complesso di edifici',
                 buildings_section: 'Stazioni',
                 clinic_missions: 'Clinica',
                 coastal_rescue: 'Guardia Costiera',
                 coastal_rescue_missions: 'Guardia Costiera',
                 dispatch_center_missions: 'Centrale operativa',
+                fire_boat_dock: 'Molo dei vigili del fuoco',
                 fire_school_missions: 'Scuola dei vigili del fuoco',
                 firehouse_missions: 'Caserma dei vigili del fuoco',
                 firehouse_small_missions:
@@ -17250,6 +17260,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 mission_positions_section: 'PDI',
                 missions_section: 'Missioni',
                 mountain_missions: 'Soccorso Alpino',
+                police_boat_dock: 'Molo della Polizia',
                 police_copter_station_missions: 'Reparto volo polizia',
                 police_school_missions: 'Scuola di polizia',
                 police_small_missions: 'Stazione di polizia (stazione piccola)',
@@ -20730,6 +20741,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 nef_only: 'Sanitka',
                 oil_unit: 'Ropn\xe1 jednotka',
                 police_car: 'Hl\xeddkov\xfd v\u016fz',
+                police_criminal_investigation: 'SKPV',
                 police_horse: 'J\xedzdn\xed jednotka P\u010cR',
                 police_investigation:
                     'Policejn\xed vy\u0161et\u0159ov\xe1n\xed',
@@ -27859,7 +27871,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
         }
         function a(e, i, n) {
             if (n === t && 1 === e.nodeType) {
-                var s = 'data-' + i.replace(ze, '-$1').toLowerCase();
+                var s = 'data-' + i.replace(Te, '-$1').toLowerCase();
                 if ('string' == typeof (n = e.getAttribute(s))) {
                     try {
                         n =
@@ -27867,7 +27879,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                             ('false' !== n &&
                                 ('null' === n ? null
                                 : +n + '' === n ? +n
-                                : Te.test(n) ? de.parseJSON(n)
+                                : ze.test(n) ? de.parseJSON(n)
                                 : n));
                     } catch (e) {}
                     de.data(e, i, n);
@@ -28054,7 +28066,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
             var n = ft.exec(t);
             return n ? Math.max(0, n[1] - (i || 0)) + (n[2] || 'px') : t;
         }
-        function T(e, t, i, n, s) {
+        function z(e, t, i, n, s) {
             for (
                 var o =
                         i === (n ? 'border' : 'content') ? 4
@@ -28080,7 +28092,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                             ))));
             return a;
         }
-        function z(e, t, i) {
+        function T(e, t, i) {
             var n = !0,
                 s = 'width' === t ? e.offsetWidth : e.offsetHeight,
                 o = ct(e),
@@ -28096,7 +28108,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 ((n = a && (de.support.boxSizingReliable || s === e.style[t])),
                     (s = parseFloat(s) || 0));
             }
-            return s + T(e, t, i || (a ? 'border' : 'content'), n, o) + 'px';
+            return s + z(e, t, i || (a ? 'border' : 'content'), n, o) + 'px';
         }
         function A(e) {
             var t = Y,
@@ -29049,7 +29061,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                     );
                                 if (
                                     (a = s[3]) &&
-                                    z.getElementsByClassName &&
+                                    T.getElementsByClassName &&
                                     t.getElementsByClassName
                                 )
                                     return (
@@ -29060,7 +29072,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                         i
                                     );
                             }
-                        if (z.qsa && (!R || !R.test(e))) {
+                        if (T.qsa && (!R || !R.test(e))) {
                             if (
                                 ((u = d = V),
                                 (h = t),
@@ -29071,7 +29083,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                 for (
                                     c = _(e),
                                         (d = t.getAttribute('id')) ?
-                                            (u = d.replace(Te, '\\$&'))
+                                            (u = d.replace(ze, '\\$&'))
                                         :   t.setAttribute('id', u),
                                         u = "[id='" + u + "'] ",
                                         l = c.length;
@@ -29477,14 +29489,14 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         if (
                             (o = c[0] = c[0].slice(0)).length > 2 &&
                             'ID' === (a = o[0]).type &&
-                            z.getById &&
+                            T.getById &&
                             9 === t.nodeType &&
                             B &&
                             M.relative[o[1].type]
                         ) {
                             if (
                                 !(t = (M.find.ID(
-                                    a.matches[0].replace(ze, Ae),
+                                    a.matches[0].replace(Te, Ae),
                                     t
                                 ) || [])[0])
                             )
@@ -29498,7 +29510,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                             if (
                                 (l = M.find[r]) &&
                                 (n = l(
-                                    a.matches[0].replace(ze, Ae),
+                                    a.matches[0].replace(Te, Ae),
                                     (ge.test(o[0].type) && t.parentNode) || t
                                 ))
                             ) {
@@ -29510,8 +29522,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     return (P(e, c)(n, t, !B, i, ge.test(e)), i);
                 }
                 function S() {}
-                var T,
-                    z,
+                var z,
+                    T,
                     A,
                     M,
                     E,
@@ -29627,8 +29639,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     xe = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,
                     Ce = /^(?:input|select|textarea|button)$/i,
                     Se = /^h\d$/i,
-                    Te = /'|\\/g,
-                    ze = new RegExp(
+                    ze = /'|\\/g,
+                    Te = new RegExp(
                         '\\\\([\\da-f]{1,6}' + le + '?|(' + le + ')|.)',
                         'ig'
                     ),
@@ -29662,12 +29674,12 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                 },
                     };
                 }
-                for (T in ((I = i.isXML =
+                for (z in ((I = i.isXML =
                     function (e) {
                         var t = e && (e.ownerDocument || e).documentElement;
                         return !!t && 'HTML' !== t.nodeName;
                     }),
-                (z = i.support = {}),
+                (T = i.support = {}),
                 (L = i.setDocument =
                     function (e) {
                         var t = e ? e.ownerDocument || e : W;
@@ -29677,7 +29689,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                 ((O = t),
                                 (N = t.documentElement),
                                 (B = !I(t)),
-                                (z.attributes = a(function (e) {
+                                (T.attributes = a(function (e) {
                                     return (
                                         (e.innerHTML = "<a href='#'></a>"),
                                         r(
@@ -29697,7 +29709,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                         !e.getAttribute('className')
                                     );
                                 })),
-                                (z.input = a(function (e) {
+                                (T.input = a(function (e) {
                                     return (
                                         (e.innerHTML = '<input>'),
                                         e.firstChild.setAttribute('value', ''),
@@ -29705,14 +29717,14 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                             e.firstChild.getAttribute('value')
                                     );
                                 })),
-                                r('value', d, z.attributes && z.input),
-                                (z.getElementsByTagName = a(function (e) {
+                                r('value', d, T.attributes && T.input),
+                                (T.getElementsByTagName = a(function (e) {
                                     return (
                                         e.appendChild(t.createComment('')),
                                         !e.getElementsByTagName('*').length
                                     );
                                 })),
-                                (z.getElementsByClassName = a(function (e) {
+                                (T.getElementsByClassName = a(function (e) {
                                     return (
                                         (e.innerHTML =
                                             "<div class='a'></div><div class='a i'></div>"),
@@ -29721,14 +29733,14 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                             e.getElementsByClassName('i').length
                                     );
                                 })),
-                                (z.getById = a(function (e) {
+                                (T.getById = a(function (e) {
                                     return (
                                         (N.appendChild(e).id = V),
                                         !t.getElementsByName ||
                                             !t.getElementsByName(V).length
                                     );
                                 })),
-                                z.getById ?
+                                T.getById ?
                                     ((M.find.ID = function (e, t) {
                                         if (
                                             typeof t.getElementById !== Q &&
@@ -29739,14 +29751,14 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                         }
                                     }),
                                     (M.filter.ID = function (e) {
-                                        var t = e.replace(ze, Ae);
+                                        var t = e.replace(Te, Ae);
                                         return function (e) {
                                             return e.getAttribute('id') === t;
                                         };
                                     }))
                                 :   (delete M.find.ID,
                                     (M.filter.ID = function (e) {
-                                        var t = e.replace(ze, Ae);
+                                        var t = e.replace(Te, Ae);
                                         return function (e) {
                                             var i =
                                                 typeof e.getAttributeNode !==
@@ -29756,7 +29768,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                         };
                                     })),
                                 (M.find.TAG =
-                                    z.getElementsByTagName ?
+                                    T.getElementsByTagName ?
                                         function (e, t) {
                                             if (
                                                 typeof t.getElementsByTagName !==
@@ -29780,7 +29792,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                             return o;
                                         }),
                                 (M.find.CLASS =
-                                    z.getElementsByClassName &&
+                                    T.getElementsByClassName &&
                                     function (e, t) {
                                         if (
                                             typeof t.getElementsByClassName !==
@@ -29791,7 +29803,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                     }),
                                 ($ = []),
                                 (R = []),
-                                (z.qsa = n(t.querySelectorAll)) &&
+                                (T.qsa = n(t.querySelectorAll)) &&
                                     (a(function (e) {
                                         ((e.innerHTML =
                                             "<select><option selected=''></option></select>"),
@@ -29826,7 +29838,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                             e.querySelectorAll('*,:x'),
                                             R.push(',.*:'));
                                     })),
-                                (z.matchesSelector = n(
+                                (T.matchesSelector = n(
                                     (F =
                                         N.webkitMatchesSelector ||
                                         N.mozMatchesSelector ||
@@ -29834,7 +29846,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                         N.msMatchesSelector)
                                 )) &&
                                     a(function (e) {
-                                        ((z.disconnectedMatch = F.call(
+                                        ((T.disconnectedMatch = F.call(
                                             e,
                                             'div'
                                         )),
@@ -29872,7 +29884,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                                     if (t === e) return !0;
                                             return !1;
                                         }),
-                                (z.sortDetached = a(function (e) {
+                                (T.sortDetached = a(function (e) {
                                     return (
                                         1 &
                                         e.compareDocumentPosition(
@@ -29892,7 +29904,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                                 n ?
                                                     (
                                                         1 & n ||
-                                                        (!z.sortDetached &&
+                                                        (!T.sortDetached &&
                                                             i.compareDocumentPosition(
                                                                 e
                                                             ) === n)
@@ -29951,7 +29963,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     if (
                         ((e.ownerDocument || e) !== O && L(e),
                         (t = t.replace(ve, "='$1']")),
-                        z.matchesSelector &&
+                        T.matchesSelector &&
                             B &&
                             (!$ || !$.test(t)) &&
                             (!R || !R.test(t)))
@@ -29960,7 +29972,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                             var n = F.call(e, t);
                             if (
                                 n ||
-                                z.disconnectedMatch ||
+                                T.disconnectedMatch ||
                                 (e.document && 11 !== e.document.nodeType)
                             )
                                 return n;
@@ -29979,7 +29991,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                             :   t;
                     return (
                         s === t ?
-                            z.attributes || !B ? e.getAttribute(i)
+                            T.attributes || !B ? e.getAttribute(i)
                             : (s = e.getAttributeNode(i)) && s.specified ?
                                 s.value
                             :   null
@@ -29997,8 +30009,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         n = 0,
                         s = 0;
                     if (
-                        ((Y = !z.detectDuplicates),
-                        (D = !z.sortStable && e.slice(0)),
+                        ((Y = !T.detectDuplicates),
+                        (D = !T.sortStable && e.slice(0)),
                         e.sort(J),
                         Y)
                     ) {
@@ -30039,9 +30051,9 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         preFilter: {
                             ATTR: function (e) {
                                 return (
-                                    (e[1] = e[1].replace(ze, Ae)),
+                                    (e[1] = e[1].replace(Te, Ae)),
                                     (e[3] = (e[4] || e[5] || '').replace(
-                                        ze,
+                                        Te,
                                         Ae
                                     )),
                                     '~=' === e[2] && (e[3] = ' ' + e[3] + ' '),
@@ -30085,7 +30097,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         },
                         filter: {
                             TAG: function (e) {
-                                var t = e.replace(ze, Ae).toLowerCase();
+                                var t = e.replace(Te, Ae).toLowerCase();
                                 return '*' === e ?
                                         function () {
                                             return !0;
@@ -30342,7 +30354,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                 return (
                                     ye.test(e || '') ||
                                         i.error('unsupported lang: ' + e),
-                                    (e = e.replace(ze, Ae).toLowerCase()),
+                                    (e = e.replace(Te, Ae).toLowerCase()),
                                     function (t) {
                                         var i;
                                         do {
@@ -30466,8 +30478,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         },
                     }),
                 { radio: !0, checkbox: !0, file: !0, password: !0, image: !0 }))
-                    M.pseudos[T] = h(T);
-                for (T in { submit: !0, reset: !0 }) M.pseudos[T] = p(T);
+                    M.pseudos[z] = h(z);
+                for (z in { submit: !0, reset: !0 }) M.pseudos[z] = p(z);
                 ((P = i.compile =
                     function (e, t) {
                         var i,
@@ -30484,10 +30496,10 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     (M.pseudos.nth = M.pseudos.eq),
                     (S.prototype = M.filters = M.pseudos),
                     (M.setFilters = new S()),
-                    (z.sortStable = V.split('').sort(J).join('') === V),
+                    (T.sortStable = V.split('').sort(J).join('') === V),
                     L(),
                     [0, 0].sort(J),
-                    (z.detectDuplicates = Y),
+                    (T.detectDuplicates = Y),
                     (de.find = i),
                     (de.expr = i.selectors),
                     (de.expr[':'] = de.expr.pseudos),
@@ -30879,8 +30891,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     t
                 );
             })({})));
-        var Te = /(?:\{[\s\S]*\}|\[[\s\S]*\])$/,
-            ze = /([A-Z])/g;
+        var ze = /(?:\{[\s\S]*\}|\[[\s\S]*\])$/,
+            Te = /([A-Z])/g;
         (de.extend({
             cache: {},
             noData: {
@@ -33176,9 +33188,9 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                         mt.test(de.css(e, 'display'))
                                 ) ?
                                     de.swap(e, yt, function () {
-                                        return z(e, t, n);
+                                        return T(e, t, n);
                                     })
-                                :   z(e, t, n);
+                                :   T(e, t, n);
                     },
                     set: function (e, i, n) {
                         var s = n && ct(e);
@@ -33186,7 +33198,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                             e,
                             i,
                             n ?
-                                T(
+                                z(
                                     e,
                                     t,
                                     n,
@@ -33303,8 +33315,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
             ));
         var Ct = /%20/g,
             St = /\[\]$/,
-            Tt = /\r?\n/g,
-            zt = /^(?:submit|button|image|reset|file)$/i,
+            zt = /\r?\n/g,
+            Tt = /^(?:submit|button|image|reset|file)$/i,
             At = /^(?:input|select|textarea|keygen)/i;
         (de.fn.extend({
             serialize: function () {
@@ -33321,7 +33333,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                             this.name &&
                             !de(this).is(':disabled') &&
                             At.test(this.nodeName) &&
-                            !zt.test(e) &&
+                            !Tt.test(e) &&
                             (this.checked || !tt.test(e))
                         );
                     })
@@ -33333,10 +33345,10 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                 de.map(i, function (e) {
                                     return {
                                         name: t.name,
-                                        value: e.replace(Tt, '\r\n'),
+                                        value: e.replace(zt, '\r\n'),
                                     };
                                 })
-                            :   { name: t.name, value: i.replace(Tt, '\r\n') }
+                            :   { name: t.name, value: i.replace(zt, '\r\n') }
                         );
                     })
                     .get();
@@ -35670,29 +35682,29 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                 m = i(this, 'marginLeft'),
                                 b = i(this, 'marginTop'),
                                 S = u + m + i(this, 'marginRight') + k.width,
-                                T = h + b + i(this, 'marginBottom') + k.height,
-                                z = e.extend({}, v),
+                                z = h + b + i(this, 'marginBottom') + k.height,
+                                T = e.extend({}, v),
                                 A = t(C.my, d.outerWidth(), d.outerHeight());
                             ('right' === s.my[0] ?
-                                (z.left -= u)
-                            :   'center' === s.my[0] && (z.left -= u / 2),
+                                (T.left -= u)
+                            :   'center' === s.my[0] && (T.left -= u / 2),
                                 'bottom' === s.my[1] ?
-                                    (z.top -= h)
-                                :   'center' === s.my[1] && (z.top -= h / 2),
-                                (z.left += A[0]),
-                                (z.top += A[1]),
-                                o || ((z.left = l(z.left)), (z.top = l(z.top))),
+                                    (T.top -= h)
+                                :   'center' === s.my[1] && (T.top -= h / 2),
+                                (T.left += A[0]),
+                                (T.top += A[1]),
+                                o || ((T.left = l(T.left)), (T.top = l(T.top))),
                                 (n = { marginLeft: m, marginTop: b }),
                                 e.each(['left', 'top'], function (t, i) {
                                     e.ui.position[x[t]] &&
-                                        e.ui.position[x[t]][i](z, {
+                                        e.ui.position[x[t]][i](T, {
                                             targetWidth: _,
                                             targetHeight: f,
                                             elemWidth: u,
                                             elemHeight: h,
                                             collisionPosition: n,
                                             collisionWidth: S,
-                                            collisionHeight: T,
+                                            collisionHeight: z,
                                             offset: [p[0] + A[0], p[1] + A[1]],
                                             my: s.my,
                                             at: s.at,
@@ -35702,9 +35714,9 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                 }),
                                 s.using &&
                                     (c = function (e) {
-                                        var t = g.left - z.left,
+                                        var t = g.left - T.left,
                                             i = t + _ - u,
-                                            n = g.top - z.top,
+                                            n = g.top - T.top,
                                             o = n + f - h,
                                             l = {
                                                 target: {
@@ -35716,8 +35728,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                                 },
                                                 element: {
                                                     element: d,
-                                                    left: z.left,
-                                                    top: z.top,
+                                                    left: T.left,
+                                                    top: T.top,
                                                     width: u,
                                                     height: h,
                                                 },
@@ -35741,7 +35753,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                             :   (l.important = 'vertical'),
                                             s.using.call(this, e, l));
                                     }),
-                                d.offset(e.extend(z, { using: c })));
+                                d.offset(e.extend(T, { using: c })));
                         })
                     );
                 }),
@@ -43141,8 +43153,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         x,
                         C,
                         S,
-                        T,
                         z,
+                        T,
                         A,
                         M,
                         E,
@@ -43304,45 +43316,45 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                 ((S = this._daylightSavingAdjust(
                                     new Date(ee, X, e.selectedDay)
                                 )),
-                                (T = ' ui-corner-all'),
-                                (z = ''),
+                                (z = ' ui-corner-all'),
+                                (T = ''),
                                 G)
                             ) {
                                 if (
-                                    ((z += "<div class='ui-datepicker-group"),
+                                    ((T += "<div class='ui-datepicker-group"),
                                     U[1] > 1)
                                 )
                                     switch (C) {
                                         case 0:
-                                            ((z +=
+                                            ((T +=
                                                 ' ui-datepicker-group-first'),
-                                                (T =
+                                                (z =
                                                     ' ui-corner-' +
                                                     (H ? 'right' : 'left')));
                                             break;
                                         case U[1] - 1:
-                                            ((z += ' ui-datepicker-group-last'),
-                                                (T =
+                                            ((T += ' ui-datepicker-group-last'),
+                                                (z =
                                                     ' ui-corner-' +
                                                     (H ? 'left' : 'right')));
                                             break;
                                         default:
-                                            ((z +=
+                                            ((T +=
                                                 ' ui-datepicker-group-middle'),
-                                                (T = ''));
+                                                (z = ''));
                                     }
-                                z += "'>";
+                                T += "'>";
                             }
                             for (
-                                z +=
+                                T +=
                                     "<div class='ui-datepicker-header ui-widget-header ui-helper-clearfix" +
-                                    T +
+                                    z +
                                     "'>" +
-                                    (/all|left/.test(T) && 0 === k ?
+                                    (/all|left/.test(z) && 0 === k ?
                                         H ? o
                                         :   n
                                     :   '') +
-                                    (/all|right/.test(T) && 0 === k ?
+                                    (/all|right/.test(z) && 0 === k ?
                                         H ? n
                                         :   o
                                     :   '') +
@@ -43378,7 +43390,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                     p[M] +
                                     '</span></th>';
                             for (
-                                z += A + '</tr></thead><tbody>',
+                                T += A + '</tr></thead><tbody>',
                                     E = this._getDaysInMonth(ee, X),
                                     ee === e.selectedYear &&
                                         X === e.selectedMonth &&
@@ -43405,7 +43417,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                 L++
                             ) {
                                 for (
-                                    z += '<tr>',
+                                    T += '<tr>',
                                         O =
                                             u ?
                                                 "<td class='ui-datepicker-week-col'>" +
@@ -43498,10 +43510,10 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                             '</td>'),
                                         D.setDate(D.getDate() + 1),
                                         (D = this._daylightSavingAdjust(D)));
-                                z += O + '</tr>';
+                                T += O + '</tr>';
                             }
                             (++X > 11 && ((X = 0), ee++),
-                                (x += z +=
+                                (x += T +=
                                     '</tbody></table>' +
                                     (G ?
                                         '</div>' +
@@ -51066,12 +51078,12 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         x = l.scrollLeft(),
                         C = x + u,
                         S = a.position(),
-                        T = S.top,
-                        z = T + a.height(),
+                        z = S.top,
+                        T = z + a.height(),
                         A = S.left,
                         M = A + a.width(),
-                        E = !0 === i ? z : T,
-                        I = !0 === i ? T : z,
+                        E = !0 === i ? T : z,
+                        I = !0 === i ? z : T,
                         P = !0 === i ? M : A,
                         j = !0 === i ? A : M;
                     if ('both' === s)
@@ -53848,25 +53860,25 @@ function identifyDefaultOrderBasedOnTarge(e) {
         function S(e, t) {
             return e instanceof C ? e : new C(e, t);
         }
-        function T(e, t, i) {
+        function z(e, t, i) {
             if (isNaN(e) || isNaN(t))
                 throw new Error(
                     'Invalid LatLng object: (' + e + ', ' + t + ')'
                 );
             ((this.lat = +e), (this.lng = +t), void 0 !== i && (this.alt = +i));
         }
-        function z(e, t, i) {
+        function T(e, t, i) {
             return (
-                e instanceof T ? e
+                e instanceof z ? e
                 : Je(e) && 'object' != typeof e[0] ?
-                    3 === e.length ? new T(e[0], e[1], e[2])
-                    : 2 === e.length ? new T(e[0], e[1])
+                    3 === e.length ? new z(e[0], e[1], e[2])
+                    : 2 === e.length ? new z(e[0], e[1])
                     : null
                 : null == e ? e
                 : 'object' == typeof e && 'lat' in e ?
-                    new T(e.lat, 'lng' in e ? e.lng : e.lon, e.alt)
+                    new z(e.lat, 'lng' in e ? e.lng : e.lon, e.alt)
                 : void 0 === t ? null
-                : new T(e, t, i)
+                : new z(e, t, i)
             );
         }
         function A(e, t, i, n) {
@@ -54320,20 +54332,20 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 ),
                 (e = e[0]));
             for (
-                var c = z([0, 0]),
+                var c = T([0, 0]),
                     d = S(e),
                     u =
                         (d.getNorthWest().distanceTo(d.getSouthWest()) *
                             d.getNorthEast().distanceTo(d.getNorthWest()) <
-                            1700 && (c = Te(e)),
+                            1700 && (c = ze(e)),
                         e.length),
                     h = [],
                     p = 0;
                 p < u;
                 p++
             ) {
-                var m = z(e[p]);
-                h.push(t.project(z([m.lat - c.lat, m.lng - c.lng])));
+                var m = T(e[p]);
+                h.push(t.project(T([m.lat - c.lat, m.lng - c.lng])));
             }
             for (p = a = r = l = 0, i = u - 1; p < u; i = p++)
                 ((n = h[p]),
@@ -54344,17 +54356,17 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     (a += 3 * o));
             return (
                 (d = 0 === a ? h[0] : [r / a, l / a]),
-                z([(d = t.unproject(w(d))).lat + c.lat, d.lng + c.lng])
+                T([(d = t.unproject(w(d))).lat + c.lat, d.lng + c.lng])
             );
         }
-        function Te(e) {
+        function ze(e) {
             for (var t = 0, i = 0, n = 0, s = 0; s < e.length; s++) {
-                var o = z(e[s]);
+                var o = T(e[s]);
                 ((t += o.lat), (i += o.lng), n++);
             }
-            return z([t / n, i / n]);
+            return T([t / n, i / n]);
         }
-        function ze(e, t) {
+        function Te(e, t) {
             if (t && e.length) {
                 var i = (e = (function (e, t) {
                         for (
@@ -54467,20 +54479,20 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 ),
                 (e = e[0]));
             for (
-                var l = z([0, 0]),
+                var l = T([0, 0]),
                     c = S(e),
                     d =
                         (c.getNorthWest().distanceTo(c.getSouthWest()) *
                             c.getNorthEast().distanceTo(c.getNorthWest()) <
-                            1700 && (l = Te(e)),
+                            1700 && (l = ze(e)),
                         e.length),
                     u = [],
                     h = 0;
                 h < d;
                 h++
             ) {
-                var p = z(e[h]);
-                u.push(t.project(z([p.lat - l.lat, p.lng - l.lng])));
+                var p = T(e[h]);
+                u.push(t.project(T([p.lat - l.lat, p.lng - l.lng])));
             }
             for (i = h = 0; h < d - 1; h++) i += u[h].distanceTo(u[h + 1]) / 2;
             if (0 === i) r = u[0];
@@ -54497,7 +54509,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         ];
                         break;
                     }
-            return z([(c = t.unproject(w(r))).lat + l.lat, c.lng + l.lng]);
+            return T([(c = t.unproject(w(r))).lat + l.lat, c.lng + l.lng]);
         }
         function Oe(e, t) {
             var i,
@@ -54553,10 +54565,10 @@ function identifyDefaultOrderBasedOnTarge(e) {
             }
         }
         function Ne(e, t, i, n) {
-            return e ? e(t, i) : new Ti(i, n && n.markersInheritOptions && n);
+            return e ? e(t, i) : new zi(i, n && n.markersInheritOptions && n);
         }
         function Be(e) {
-            return new T(e[1], e[0], e[2]);
+            return new z(e[1], e[0], e[2]);
         }
         function Re(e, t, i) {
             for (var n, s = [], o = 0, a = e.length; o < a; o++)
@@ -54564,7 +54576,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
             return s;
         }
         function $e(e, t) {
-            return void 0 !== (e = z(e)).alt ?
+            return void 0 !== (e = T(e)).alt ?
                     [l(e.lng, t), l(e.lat, t), l(e.alt, t)]
                 :   [l(e.lng, t), l(e.lat, t)];
         }
@@ -55057,10 +55069,10 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         i,
                         n = this._southWest,
                         s = this._northEast;
-                    if (e instanceof T) i = t = e;
+                    if (e instanceof z) i = t = e;
                     else {
                         if (!(e instanceof C))
-                            return e ? this.extend(z(e) || S(e)) : this;
+                            return e ? this.extend(T(e) || S(e)) : this;
                         if (((t = e._southWest), (i = e._northEast), !t || !i))
                             return this;
                     }
@@ -55070,8 +55082,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                             (n.lng = Math.min(t.lng, n.lng)),
                             (s.lat = Math.max(i.lat, s.lat)),
                             (s.lng = Math.max(i.lng, s.lng)))
-                        :   ((this._southWest = new T(t.lat, t.lng)),
-                            (this._northEast = new T(i.lat, i.lng))),
+                        :   ((this._southWest = new z(t.lat, t.lng)),
+                            (this._northEast = new z(i.lat, i.lng))),
                         this
                     );
                 },
@@ -55081,12 +55093,12 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         n = Math.abs(t.lat - i.lat) * e;
                     e = Math.abs(t.lng - i.lng) * e;
                     return new C(
-                        new T(t.lat - n, t.lng - e),
-                        new T(i.lat + n, i.lng + e)
+                        new z(t.lat - n, t.lng - e),
+                        new z(i.lat + n, i.lng + e)
                     );
                 },
                 getCenter: function () {
-                    return new T(
+                    return new z(
                         (this._southWest.lat + this._northEast.lat) / 2,
                         (this._southWest.lng + this._northEast.lng) / 2
                     );
@@ -55098,10 +55110,10 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     return this._northEast;
                 },
                 getNorthWest: function () {
-                    return new T(this.getNorth(), this.getWest());
+                    return new z(this.getNorth(), this.getWest());
                 },
                 getSouthEast: function () {
-                    return new T(this.getSouth(), this.getEast());
+                    return new z(this.getSouth(), this.getEast());
                 },
                 getWest: function () {
                     return this._southWest.lng;
@@ -55119,10 +55131,10 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     e = (
                         (
                             'number' == typeof e[0] ||
-                                e instanceof T ||
+                                e instanceof z ||
                                 'lat' in e
                         ) ?
-                            z
+                            T
                         :   S)(e);
                     var t,
                         i,
@@ -55216,11 +55228,11 @@ function identifyDefaultOrderBasedOnTarge(e) {
                             ))
                         );
                 },
-                infinite: !(T.prototype = {
+                infinite: !(z.prototype = {
                     equals: function (e, t) {
                         return (
                             !!e &&
-                            ((e = z(e)),
+                            ((e = T(e)),
                             Math.max(
                                 Math.abs(this.lat - e.lat),
                                 Math.abs(this.lng - e.lng)
@@ -55237,7 +55249,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         );
                     },
                     distanceTo: function (e) {
-                        return rt.distance(this, z(e));
+                        return rt.distance(this, T(e));
                     },
                     wrap: function () {
                         return rt.wrapLatLng(this);
@@ -55252,12 +55264,12 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         );
                     },
                     clone: function () {
-                        return new T(this.lat, this.lng, this.alt);
+                        return new z(this.lat, this.lng, this.alt);
                     },
                 }),
                 wrapLatLng: function (e) {
                     var t = this.wrapLng ? a(e.lng, this.wrapLng, !0) : e.lng;
-                    return new T(
+                    return new z(
                         this.wrapLat ? a(e.lat, this.wrapLat, !0) : e.lat,
                         t,
                         e.alt
@@ -55273,8 +55285,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         :   ((i = e.getSouthWest()),
                             (e = e.getNorthEast()),
                             new C(
-                                new T(i.lat - n, i.lng - t),
-                                new T(e.lat - n, e.lng - t)
+                                new z(i.lat - n, i.lng - t),
+                                new z(e.lat - n, e.lng - t)
                             ));
                 },
             },
@@ -55307,7 +55319,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 },
                 unproject: function (e) {
                     var t = 180 / Math.PI;
-                    return new T(
+                    return new z(
                         (2 * Math.atan(Math.exp(e.y / this.R)) - Math.PI / 2) *
                             t,
                         (e.x * t) / this.R
@@ -55360,9 +55372,9 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 ((Ct =
                     kt && P('Google') && Ct < 537 && !('AudioNode' in window)),
                 !!window.opera),
-            Tt = !yt && P('chrome'),
-            zt = P('gecko') && !wt && !St && !vt,
-            At = !Tt && P('safari'),
+            zt = !yt && P('chrome'),
+            Tt = P('gecko') && !wt && !St && !vt,
+            At = !zt && P('safari'),
             Mt = P('phantom'),
             Et = 'OTransition' in gt,
             It = 0 === navigator.platform.indexOf('Win'),
@@ -55381,7 +55393,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
             Rt = 'ontouchstart' in window || !!window.TouchEvent,
             $t = !window.L_NO_TOUCH && (Rt || Bt),
             Ft = Gi && St,
-            Ht = Gi && zt,
+            Ht = Gi && Tt,
             Vt =
                 1 <
                 (window.devicePixelRatio ||
@@ -55419,8 +55431,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 android23: xt,
                 androidStock: Ct,
                 opera: St,
-                chrome: Tt,
-                gecko: zt,
+                chrome: zt,
+                gecko: Tt,
                 safari: At,
                 phantom: Mt,
                 opera12: Et,
@@ -55670,7 +55682,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                             (this._zoom = this._limitZoom(t.zoom)),
                         t.center &&
                             void 0 !== t.zoom &&
-                            this.setView(z(t.center), t.zoom, { reset: !0 }),
+                            this.setView(T(t.center), t.zoom, { reset: !0 }),
                         this.callInitHooks(),
                         (this._zoomAnimated =
                             oi &&
@@ -55691,7 +55703,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     return (
                         (i = void 0 === i ? this._zoom : this._limitZoom(i)),
                         (e = this._limitCenter(
-                            z(e),
+                            T(e),
                             i,
                             this.options.maxBounds
                         )),
@@ -55860,7 +55872,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         c = this.getSize(),
                         d = this._zoom,
                         u =
-                            ((e = z(e)),
+                            ((e = T(e)),
                             (t = void 0 === t ? d : t),
                             Math.max(c.x, c.y)),
                         h = u * this.getZoomScale(d, t),
@@ -56073,7 +56085,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     if (this._container._leaflet_id) {
                         var t,
                             i,
-                            n = new T(e.coords.latitude, e.coords.longitude),
+                            n = new z(e.coords.latitude, e.coords.longitude),
                             s = n.toBounds(2 * e.coords.accuracy),
                             o = this._locateOptions,
                             a =
@@ -56266,7 +56278,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 project: function (e, t) {
                     return (
                         (t = void 0 === t ? this._zoom : t),
-                        this.options.crs.latLngToPoint(z(e), t)
+                        this.options.crs.latLngToPoint(T(e), t)
                     );
                 },
                 unproject: function (e, t) {
@@ -56282,18 +56294,18 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     );
                 },
                 latLngToLayerPoint: function (e) {
-                    return this.project(z(e))
+                    return this.project(T(e))
                         ._round()
                         ._subtract(this.getPixelOrigin());
                 },
                 wrapLatLng: function (e) {
-                    return this.options.crs.wrapLatLng(z(e));
+                    return this.options.crs.wrapLatLng(T(e));
                 },
                 wrapLatLngBounds: function (e) {
                     return this.options.crs.wrapLatLngBounds(S(e));
                 },
                 distance: function (e, t) {
-                    return this.options.crs.distance(z(e), z(t));
+                    return this.options.crs.distance(T(e), T(t));
                 },
                 containerPointToLayerPoint: function (e) {
                     return w(e).subtract(this._getMapPanePos());
@@ -56309,7 +56321,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 },
                 latLngToContainerPoint: function (e) {
                     return this.layerPointToContainerPoint(
-                        this.latLngToLayerPoint(z(e))
+                        this.latLngToLayerPoint(T(e))
                     );
                 },
                 mouseEventToContainerPoint: function (e) {
@@ -57694,11 +57706,11 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     __proto__: null,
                     clipPolygon: Ce,
                     polygonCenter: Se,
-                    centroid: Te,
+                    centroid: ze,
                 }),
                 (xt = {
                     __proto__: null,
-                    simplify: ze,
+                    simplify: Te,
                     pointToSegmentDistance: Ae,
                     closestPointOnSegment: function (e, t, i) {
                         return Pe(e, t, i);
@@ -57716,7 +57728,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         return new y(e.lng, e.lat);
                     },
                     unproject: function (e) {
-                        return new T(e.y, e.x);
+                        return new z(e.y, e.x);
                     },
                     bounds: new k([-180, -90], [180, 90]),
                 }),
@@ -57757,10 +57769,10 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                 (t = Math.pow((1 - t) / (1 + t), o / 2)),
                                 (r += c =
                                     Math.PI / 2 - 2 * Math.atan(a * t) - r));
-                        return new T(r * i, (e.x * i) / n);
+                        return new z(r * i, (e.x * i) / n);
                     },
                 }),
-                (Tt = {
+                (zt = {
                     __proto__: null,
                     LonLat: Ct,
                     Mercator: St,
@@ -57770,9 +57782,9 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     code: 'EPSG:3395',
                     projection: St,
                     transformation: M(
-                        (zt = 0.5 / (Math.PI * St.R)),
+                        (Tt = 0.5 / (Math.PI * St.R)),
                         0.5,
-                        -zt,
+                        -Tt,
                         0.5
                     ),
                 })),
@@ -58260,7 +58272,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         this._marker.fire('moveend').fire('dragend', e));
                 },
             }),
-            Ti = Et.extend({
+            zi = Et.extend({
                 options: {
                     icon: new Ci(),
                     interactive: !0,
@@ -58281,7 +58293,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     autoPanSpeed: 10,
                 },
                 initialize: function (e, t) {
-                    (u(this, t), (this._latlng = z(e)));
+                    (u(this, t), (this._latlng = T(e)));
                 },
                 onAdd: function (e) {
                     ((this._zoomAnimated =
@@ -58311,7 +58323,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 setLatLng: function (e) {
                     var t = this._latlng;
                     return (
-                        (this._latlng = z(e)),
+                        (this._latlng = T(e)),
                         this.update(),
                         this.fire('move', {
                             oldLatLng: t,
@@ -58471,7 +58483,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     return this.options.icon.options.tooltipAnchor;
                 },
             }),
-            zi = Et.extend({
+            Ti = Et.extend({
                 options: {
                     stroke: !0,
                     color: '#3388ff',
@@ -58545,17 +58557,17 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     );
                 },
             }),
-            Ai = zi.extend({
+            Ai = Ti.extend({
                 options: { fill: !0, radius: 10 },
                 initialize: function (e, t) {
                     (u(this, t),
-                        (this._latlng = z(e)),
+                        (this._latlng = T(e)),
                         (this._radius = this.options.radius));
                 },
                 setLatLng: function (e) {
                     var t = this._latlng;
                     return (
-                        (this._latlng = z(e)),
+                        (this._latlng = T(e)),
                         this.redraw(),
                         this.fire('move', {
                             oldLatLng: t,
@@ -58578,7 +58590,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 setStyle: function (e) {
                     var t = (e && e.radius) || this._radius;
                     return (
-                        zi.prototype.setStyle.call(this, e),
+                        Ti.prototype.setStyle.call(this, e),
                         this.setRadius(t),
                         this
                     );
@@ -58626,7 +58638,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                     t({}, n, { radius: i })
                                 :   i)
                         ),
-                        (this._latlng = z(e)),
+                        (this._latlng = T(e)),
                         isNaN(this.options.radius))
                     )
                         throw new Error('Circle radius cannot be NaN');
@@ -58645,7 +58657,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         this._map.layerPointToLatLng(this._point.add(e))
                     );
                 },
-                setStyle: zi.prototype.setStyle,
+                setStyle: Ti.prototype.setStyle,
                 _project: function () {
                     var e,
                         t,
@@ -58684,7 +58696,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         this._updateBounds());
                 },
             }),
-            Ei = zi.extend({
+            Ei = Ti.extend({
                 options: { smoothFactor: 1, noClip: !1 },
                 initialize: function (e, t) {
                     (u(this, t), this._setLatLngs(e));
@@ -58733,7 +58745,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 addLatLng: function (e, t) {
                     return (
                         (t = t || this._defaultShape()),
-                        (e = z(e)),
+                        (e = T(e)),
                         t.push(e),
                         this._bounds.extend(e),
                         this.redraw()
@@ -58749,7 +58761,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 _convertLatLngs: function (e) {
                     for (var t = [], i = je(e), n = 0, s = e.length; n < s; n++)
                         i ?
-                            ((t[n] = z(e[n])), this._bounds.extend(t[n]))
+                            ((t[n] = T(e[n])), this._bounds.extend(t[n]))
                         :   (t[n] = this._convertLatLngs(e[n]));
                     return t;
                 },
@@ -58772,7 +58784,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 _projectLatlngs: function (e, t, i) {
                     var n,
                         s,
-                        o = e[0] instanceof T,
+                        o = e[0] instanceof z,
                         a = e.length;
                     if (o) {
                         for (s = [], n = 0; n < a; n++)
@@ -58823,7 +58835,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         i < n;
                         i++
                     )
-                        e[i] = ze(e[i], t);
+                        e[i] = Te(e[i], t);
                 },
                 _update: function () {
                     this._map &&
@@ -58873,7 +58885,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         .length;
                     return (
                         2 <= t &&
-                            e[0] instanceof T &&
+                            e[0] instanceof z &&
                             e[0].equals(e[t - 1]) &&
                             e.pop(),
                         e
@@ -58993,7 +59005,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 });
             },
         }),
-            Ti.include(It),
+            zi.include(It),
             Mi.include(It),
             Ai.include(It),
             Ei.include({
@@ -59271,8 +59283,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     content: '',
                 },
                 initialize: function (e, t) {
-                    (e && (e instanceof T || Je(e)) ?
-                        ((this._latlng = z(e)), u(this, t))
+                    (e && (e instanceof z || Je(e)) ?
+                        ((this._latlng = T(e)), u(this, t))
                     :   (u(this, e), (this._source = t)),
                         this.options.content &&
                             (this._content = this.options.content));
@@ -59330,7 +59342,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 },
                 setLatLng: function (e) {
                     return (
-                        (this._latlng = z(e)),
+                        (this._latlng = T(e)),
                         this._map &&
                             (this._updatePosition(), this._adjustPan()),
                         this
@@ -59497,7 +59509,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                     { popup: this },
                                     !0
                                 ),
-                                this._source instanceof zi ||
+                                this._source instanceof Ti ||
                                     this._source.on('preclick', me)));
                     },
                     onRemove: function (e) {
@@ -59509,7 +59521,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                     { popup: this },
                                     !0
                                 ),
-                                this._source instanceof zi ||
+                                this._source instanceof Ti ||
                                     this._source.off('preclick', me)));
                     },
                     getEvents: function () {
@@ -59731,7 +59743,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                             this._map &&
                             (ve(e),
                             (t = e.layer || e.target),
-                            this._popup._source !== t || t instanceof zi ?
+                            this._popup._source !== t || t instanceof Ti ?
                                 ((this._popup._source = t),
                                 this.openPopup(e.latlng))
                             : this._map.hasLayer(this._popup) ?
@@ -62361,22 +62373,22 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 (e.Handler = yt),
                 (e.Icon = xi),
                 (e.ImageOverlay = ji),
-                (e.LatLng = T),
+                (e.LatLng = z),
                 (e.LatLngBounds = C),
                 (e.Layer = Et),
                 (e.LayerGroup = wi),
                 (e.LineUtil = xt),
                 (e.Map = hi),
-                (e.Marker = Ti),
+                (e.Marker = zi),
                 (e.Mixin = wt),
-                (e.Path = zi),
+                (e.Path = Ti),
                 (e.Point = y),
                 (e.PolyUtil = kt),
                 (e.Polygon = Ii),
                 (e.Polyline = Ei),
                 (e.Popup = Ni),
                 (e.PosAnimation = ui),
-                (e.Projection = Tt),
+                (e.Projection = zt),
                 (e.Rectangle = Ki),
                 (e.Renderer = Vi),
                 (e.SVG = Zi),
@@ -62414,7 +62426,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 (e.imageOverlay = function (e, t, i) {
                     return new ji(e, t, i);
                 }),
-                (e.latLng = z),
+                (e.latLng = T),
                 (e.latLngBounds = S),
                 (e.layerGroup = function (e, t) {
                     return new wi(e, t);
@@ -62423,7 +62435,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     return new hi(e, t);
                 }),
                 (e.marker = function (e, t) {
-                    return new Ti(e, t);
+                    return new zi(e, t);
                 }),
                 (e.point = w),
                 (e.polygon = function (e, t) {
@@ -69234,26 +69246,26 @@ if ('undefined' == typeof jQuery)
                                                 )
                                             ));
                                     else {
-                                        var T =
+                                        var z =
                                             this.previousElementSibling &&
                                             'OPTGROUP' ===
                                                 this.previousElementSibling
                                                     .tagName;
                                         if (
-                                            !T &&
+                                            !z &&
                                             i.options.hideDisabled &&
                                             void 0 !==
                                                 (d = o.data('prevHiddenIndex'))
                                         ) {
-                                            var z =
+                                            var T =
                                                 u.eq(d)[0]
                                                     .previousElementSibling;
-                                            z &&
-                                                'OPTGROUP' === z.tagName &&
-                                                !z.disabled &&
-                                                (T = !0);
+                                            T &&
+                                                'OPTGROUP' === T.tagName &&
+                                                !T.disabled &&
+                                                (z = !0);
                                         }
-                                        (T &&
+                                        (z &&
                                             (a++,
                                             n.push(
                                                 r(
@@ -69749,7 +69761,7 @@ if ('undefined' == typeof jQuery)
                                 'auto' != this.options.size &&
                                 this.$lis.not(x).length > this.options.size
                             ) {
-                                var T = this.$lis
+                                var z = this.$lis
                                         .not('.divider')
                                         .not(x)
                                         .children()
@@ -69757,10 +69769,10 @@ if ('undefined' == typeof jQuery)
                                         .last()
                                         .parent()
                                         .index(),
-                                    z = this.$lis
-                                        .slice(0, T + 1)
+                                    T = this.$lis
+                                        .slice(0, z + 1)
                                         .filter('.divider').length;
-                                ((t = _ * this.options.size + z * y + w.vert),
+                                ((t = _ * this.options.size + T * y + w.vert),
                                     c.options.container ?
                                         (d.data('height') ||
                                             d.data('height', d.height()),
@@ -70846,22 +70858,22 @@ if ('undefined' == typeof jQuery)
         function S(e, t) {
             return t.parentNode.insertBefore(e, t);
         }
-        function T(e) {
+        function z(e) {
             return e.className.trim().split(/\s+/);
         }
-        function z(e, t) {
+        function T(e, t) {
             return k(e, '.' + t);
         }
         function A(e, t) {
-            var i = T(e);
+            var i = z(e);
             (i.indexOf(t) < 0 && i.push(t), (e.className = i.join(' ')));
         }
         function M(e, t) {
-            var i = T(e);
+            var i = z(e);
             (s(i, t), (e.className = i.join(' ')));
         }
         function E(e, t, i) {
-            (i = pe(i) ? !z(e, t) : i) ? A(e, t) : M(e, t);
+            (i = pe(i) ? !T(e, t) : i) ? A(e, t) : M(e, t);
         }
         function I(e, t) {
             if (pe(t)) {
@@ -71016,12 +71028,12 @@ if ('undefined' == typeof jQuery)
                     ) {
                         for (
                             n = U(u), s = U(u, !0), r = !1;
-                            z(s, 'sceditor-ignore');
+                            T(s, 'sceditor-ignore');
                         )
                             s = U(s, !0);
                         if (H(u) && s) {
                             for (o = s; o.lastChild;)
-                                for (o = o.lastChild; z(o, 'sceditor-ignore');)
+                                for (o = o.lastChild; T(o, 'sceditor-ignore');)
                                     o = U(o, !0);
                             r =
                                 o.nodeType === ve ?
@@ -71118,7 +71130,7 @@ if ('undefined' == typeof jQuery)
             var t,
                 i = /^[^\/]*:/i,
                 n = window.location;
-            return e && i.test(e) && !ze.test(e) ?
+            return e && i.test(e) && !Te.test(e) ?
                     ((t = n.pathname.split('/')).pop(),
                     n.protocol + '//' + n.host + t.join('/') + '/' + e)
                 :   e;
@@ -71566,7 +71578,7 @@ if ('undefined' == typeof jQuery)
                 f,
                 x,
                 C,
-                T,
+                z,
                 L,
                 O,
                 B,
@@ -71587,7 +71599,7 @@ if ('undefined' == typeof jQuery)
                 ye,
                 ke,
                 xe,
-                ze,
+                Te,
                 Ae,
                 Me,
                 Ie,
@@ -71652,7 +71664,7 @@ if ('undefined' == typeof jQuery)
                         Ie(),
                         $e(),
                         Fe(),
-                        Te || _t.toggleSourceMode(),
+                        ze || _t.toggleSourceMode(),
                         tt());
                     var n = function () {
                         (m(De, 'load', n),
@@ -71695,8 +71707,8 @@ if ('undefined' == typeof jQuery)
                         _t.dimensions(kt.width || I(e), kt.height || P(e)));
                     var t = Oe ? 'ie ie' + Oe : '';
                     ((t += Se ? ' ios' : ''),
-                        (T = f.contentDocument).open(),
-                        T.write(
+                        (z = f.contentDocument).open(),
+                        z.write(
                             te('html', {
                                 attrs: ' class="' + t + '"',
                                 spellcheck:
@@ -71705,8 +71717,8 @@ if ('undefined' == typeof jQuery)
                                 style: kt.style,
                             })
                         ),
-                        T.close(),
-                        (C = T.body),
+                        z.close(),
+                        (C = z.body),
                         (x = f.contentWindow),
                         _t.readOnly(!!kt.readOnly),
                         (Se || Ce || Oe) &&
@@ -71736,7 +71748,7 @@ if ('undefined' == typeof jQuery)
                         i = 'compositionstart compositionend',
                         n = 'keydown keyup keypress focus blur contextmenu',
                         s =
-                            'onselectionchange' in T ? 'selectionchange' : (
+                            'onselectionchange' in z ? 'selectionchange' : (
                                 'keyup focus blur contextmenu mouseup touchend click'
                             );
                     (p(Le, 'click', Xe),
@@ -71767,11 +71779,11 @@ if ('undefined' == typeof jQuery)
                         p(L, 'keydown', Ue),
                         p(L, i, Je),
                         p(L, n, Qe),
-                        p(T, 'mousedown', Ye),
-                        p(T, s, st),
-                        p(T, 'beforedeactivate keyup mouseup', Me),
-                        p(T, 'keyup', nt),
-                        p(T, 'focus', function () {
+                        p(z, 'mousedown', Ye),
+                        p(z, s, st),
+                        p(z, 'beforedeactivate keyup mouseup', Me),
+                        p(z, 'keyup', nt),
+                        p(z, 'focus', function () {
                             B = null;
                         }),
                         p(a, 'selectionchanged', ot),
@@ -71820,7 +71832,7 @@ if ('undefined' == typeof jQuery)
                                             (o._sceWysiwygMode = !!r.exec),
                                             E(o, 'disabled', !r.exec),
                                             p(o, 'click', function (e) {
-                                                (z(o, 'disabled') || Ae(o, r),
+                                                (T(o, 'disabled') || Ae(o, r),
                                                     tt(),
                                                     e.preventDefault());
                                             }),
@@ -71876,7 +71888,7 @@ if ('undefined' == typeof jQuery)
                         x = I(a),
                         C = P(a),
                         S = !1,
-                        T = _t.rtl();
+                        z = _t.rtl();
                     if (
                         ((e = kt.resizeMinHeight || C / 1.5),
                         (t = kt.resizeMaxHeight || 2.5 * C),
@@ -71889,7 +71901,7 @@ if ('undefined' == typeof jQuery)
                                 (y = s.changedTouches[0].pageY))
                             :   ((b = s.pageX), (y = s.pageY));
                             var o = k + (y - f),
-                                a = T ? w - (b - _) : w + (b - _);
+                                a = z ? w - (b - _) : w + (b - _);
                             (n > 0 && a > n && (a = n),
                                 i > 0 && a < i && (a = i),
                                 kt.resizeWidth || (a = !1),
@@ -71910,8 +71922,8 @@ if ('undefined' == typeof jQuery)
                         }),
                         ke && ke.create)
                     ) {
-                        var z = ke.create('grip');
-                        z && (u(l, z), A(l, 'has-icon'));
+                        var T = ke.create('grip');
+                        T && (u(l, T), A(l, 'has-icon'));
                     }
                     (u(a, l),
                         u(a, c),
@@ -71962,7 +71974,7 @@ if ('undefined' == typeof jQuery)
                         if ((Z(C), n))
                             for (
                                 (i = C.lastChild) ||
-                                ((i = r('p', {}, T)), u(C, i));
+                                ((i = r('p', {}, z)), u(C, i));
                                 i.lastChild;
                             )
                                 ((i = i.lastChild),
@@ -71970,7 +71982,7 @@ if ('undefined' == typeof jQuery)
                                         k(i, 'br') &&
                                         i.previousSibling &&
                                         (i = i.previousSibling));
-                        ((e = T.createRange()),
+                        ((e = z.createRange()),
                             F(i) ?
                                 e.selectNodeContents(i)
                             :   (e.setStartBefore(i), n && e.setStartAfter(i)),
@@ -72031,7 +72043,7 @@ if ('undefined' == typeof jQuery)
                 (_t.maximize = function (e) {
                     var t = 'sceditor-maximize';
                     return pe(e) ?
-                            z(a, t)
+                            T(a, t)
                         :   ((e = !!e) && (fe = De.pageYOffset),
                             E(Le.documentElement, t, e),
                             E(Le.body, t, e),
@@ -72056,7 +72068,7 @@ if ('undefined' == typeof jQuery)
                         var n = Le.createRange();
                         n.selectNodeContents(C);
                         var s = n.getBoundingClientRect(),
-                            o = T.documentElement.clientHeight - 1,
+                            o = z.documentElement.clientHeight - 1,
                             a = s.bottom - s.top,
                             r = _t.height() + 1 + (a - o);
                         (t || -1 === ue.max || (r = Math.min(r, ue.max)),
@@ -72087,7 +72099,7 @@ if ('undefined' == typeof jQuery)
                     var l,
                         c = 'sceditor-' + t;
                     (_t.closeDropDown(!0),
-                        (O && z(O, c)) ||
+                        (O && T(O, c)) ||
                             (!1 !== s &&
                                 o(
                                     h(i, ':not(input):not(textarea)'),
@@ -72174,7 +72186,7 @@ if ('undefined' == typeof jQuery)
                     }
                 }),
                 (qe = function (e) {
-                    var t = r('div', {}, T);
+                    var t = r('div', {}, z);
                     (Y.call('pasteRaw', e),
                         j(a, 'pasteraw', e),
                         e.html ?
@@ -72182,7 +72194,7 @@ if ('undefined' == typeof jQuery)
                         :   (t.innerHTML = X(e.text || '')));
                     var n = { val: t.innerHTML };
                     ('fragmentToSource' in i &&
-                        (n.val = i.fragmentToSource(n.val, T, J)),
+                        (n.val = i.fragmentToSource(n.val, z, J)),
                         Y.call('paste', n),
                         j(a, 'paste', n),
                         'fragmentToHtml' in i &&
@@ -72202,7 +72214,7 @@ if ('undefined' == typeof jQuery)
                         (!i && c(Q, 'code')) ||
                             (K.insertHTML(e, t),
                             K.saveRange(),
-                            ze(),
+                            Te(),
                             v((n = h(C, '#sceditor-end-marker')[0])),
                             (s = C.scrollTop),
                             (o = G(n).top + 1.5 * n.offsetHeight - a),
@@ -72272,7 +72284,7 @@ if ('undefined' == typeof jQuery)
                         var a = K.selectedHtml();
                         (!1 !== n &&
                             'fragmentToSource' in i &&
-                            (a = i.fragmentToSource(a, T, J)),
+                            (a = i.fragmentToSource(a, z, J)),
                             (e += a + t));
                     }
                     return (
@@ -72291,7 +72303,7 @@ if ('undefined' == typeof jQuery)
                 }),
                 (_t.getWysiwygEditorValue = function (e) {
                     for (
-                        var t, n = r('div', {}, T), s = C.childNodes, o = 0;
+                        var t, n = r('div', {}, z), s = C.childNodes, o = 0;
                         o < s.length;
                         o++
                     )
@@ -72303,7 +72315,7 @@ if ('undefined' == typeof jQuery)
                         (t = n.innerHTML),
                         !1 !== e &&
                             i.hasOwnProperty('toSource') &&
-                            (t = i.toSource(t, T)),
+                            (t = i.toSource(t, z)),
                         t
                     );
                 }),
@@ -72320,7 +72332,7 @@ if ('undefined' == typeof jQuery)
                 (_t.setWysiwygEditorValue = function (e) {
                     (e || (e = '<p>' + (Oe ? '' : '<br />') + '</p>'),
                         (C.innerHTML = e),
-                        ze(),
+                        Te(),
                         nt(),
                         dt(),
                         mt());
@@ -72331,11 +72343,11 @@ if ('undefined' == typeof jQuery)
                 (_t.updateOriginal = function () {
                     e.value = _t.val();
                 }),
-                (ze = function () {
+                (Te = function () {
                     kt.emoticonsEnabled && ae(C, wt, kt.emoticonsCompat);
                 }),
                 (_t.inSourceMode = function () {
-                    return z(a, 'sourceMode');
+                    return T(a, 'sourceMode');
                 }),
                 (_t.sourceMode = function (e) {
                     var t = _t.inSourceMode();
@@ -72346,7 +72358,7 @@ if ('undefined' == typeof jQuery)
                 }),
                 (_t.toggleSourceMode = function () {
                     var e = _t.inSourceMode();
-                    (!Te && e) ||
+                    (!ze && e) ||
                         (e || (K.saveRange(), K.clear()),
                         _t.blur(),
                         e ?
@@ -72390,7 +72402,7 @@ if ('undefined' == typeof jQuery)
                         n = _t.commands[e];
                     if ((_t.focus(), !c(K.parentNode(), 'code'))) {
                         try {
-                            i = T.execCommand(e, !1, t);
+                            i = z.execCommand(e, !1, t);
                         } catch (e) {}
                         (!i &&
                             n &&
@@ -72419,7 +72431,7 @@ if ('undefined' == typeof jQuery)
                                     e = e.parentNode;
                                 e &&
                                     H(e, !0) &&
-                                    (K.saveRange(), re(C, T), K.restoreRange());
+                                    (K.saveRange(), re(C, z), K.restoreRange());
                             }
                             j(a, 'selectionchanged');
                         }
@@ -72427,7 +72439,7 @@ if ('undefined' == typeof jQuery)
                     }
                     ie ||
                         ((ie = !0),
-                        'onselectionchange' in T ? e() : setTimeout(e, 100));
+                        'onselectionchange' in z ? e() : setTimeout(e, 100));
                 }),
                 (ot = function () {
                     var e,
@@ -72448,7 +72460,7 @@ if ('undefined' == typeof jQuery)
                     var e,
                         t,
                         i = 'active',
-                        n = T,
+                        n = z,
                         s = _t.sourceMode();
                     if (_t.readOnly())
                         o(h(l, i), function (e, t) {
@@ -72487,7 +72499,7 @@ if ('undefined' == typeof jQuery)
                         13 === e.which && !k(Q, 'li,ul,ol') && R(Q))
                     ) {
                         B = null;
-                        var t = r('br', {}, T);
+                        var t = r('br', {}, z);
                         if ((K.insertNode(t), !Ne)) {
                             var i = t.parentNode,
                                 n = i.lastChild;
@@ -72511,7 +72523,7 @@ if ('undefined' == typeof jQuery)
                             !k(e, '.sceditor-nlf') &&
                             R(e)
                         ) {
-                            var t = r('p', {}, T);
+                            var t = r('p', {}, z);
                             return (
                                 (t.className = 'sceditor-nlf'),
                                 (t.innerHTML = Ne ? '' : '<br />'),
@@ -72583,7 +72595,7 @@ if ('undefined' == typeof jQuery)
                     if (me(e)) _t.bind('focus', e, t, i);
                     else if (_t.inSourceMode()) L.focus();
                     else {
-                        if (h(T, ':focus').length) return;
+                        if (h(z, ':focus').length) return;
                         var n,
                             s = K.selectedRange();
                         (ee || at(),
@@ -72656,12 +72668,12 @@ if ('undefined' == typeof jQuery)
                     ((kt.emoticonsEnabled = e), e) ?
                         (p(C, 'keypress', rt),
                         _t.sourceMode() ||
-                            (K.saveRange(), ze(), dt(!1), K.restoreRange()))
+                            (K.saveRange(), Te(), dt(!1), K.restoreRange()))
                     :   (o(
                             h(C, 'img[data-sceditor-emoticon]'),
                             function (e, t) {
                                 var i = w(t, 'sceditor-emoticon'),
-                                    n = T.createTextNode(i);
+                                    n = z.createTextNode(i);
                                 t.parentNode.replaceChild(n, t);
                             }
                         ),
@@ -72672,8 +72684,8 @@ if ('undefined' == typeof jQuery)
                 (_t.css = function (e) {
                     return (
                         de ||
-                            ((de = r('style', { id: 'inline' }, T)),
-                            u(T.head, de)),
+                            ((de = r('style', { id: 'inline' }, z)),
+                            u(z.head, de)),
                         he(e) ?
                             (de.styleSheet ?
                                 (de.styleSheet.cssText = e)
@@ -72862,7 +72874,7 @@ if ('undefined' == typeof jQuery)
                         ((V = !1),
                             (e =
                                 !1 !== e &&
-                                !T.getElementById('sceditor-start-marker')),
+                                !z.getElementById('sceditor-start-marker')),
                             q && (clearTimeout(q), (q = !1)),
                             n && e && K.saveRange(),
                             (t = i ? L.value : C.innerHTML) !== dt.lastVal &&
@@ -73019,7 +73031,7 @@ if ('undefined' == typeof jQuery)
             })(),
             Ce = '-ms-ime-align' in document.documentElement.style,
             Se = /iPhone|iPod|iPad| wosbrowser\//i.test(ke),
-            Te =
+            ze =
                 (((ue = document.createElement('div')).contentEditable = !0),
                 'contentEditable' in document.documentElement &&
                     'true' === ue.contentEditable &&
@@ -73036,7 +73048,7 @@ if ('undefined' == typeof jQuery)
                     'UCWEB' === navigator.vendor && (de = !1),
                     xe <= 9 && (de = !0),
                     !de)),
-            ze =
+            Te =
                 /^(https?|s?ftp|mailto|spotify|skype|ssh|teamspeak|tel):|(\/\/)|data:image\/(png|bmp|gif|p?jpe?g);/i,
             Ae = {
                 html: '<!DOCTYPE html><html{attrs}><head><style>.ie * {min-height: auto !important} .ie table td {height:15px} @supports (-ms-ime-align:auto) { * { min-height: auto !important; } }</style><meta http-equiv="Content-Type" content="text/html;charset={charset}" /><link rel="stylesheet" type="text/css" href="{style}" /></head><body contenteditable="true" {spellcheck}><p></p></body></html>',
@@ -73799,7 +73811,7 @@ if ('undefined' == typeof jQuery)
                 defaultOptions: we,
                 ie: xe,
                 ios: Se,
-                isWysiwygSupported: Te,
+                isWysiwygSupported: ze,
                 regexEscape: Q,
                 escapeEntities: X,
                 escapeUriScheme: ee,
@@ -73837,7 +73849,7 @@ if ('undefined' == typeof jQuery)
                 create: function (e, t) {
                     ((t = t || {}),
                         l(e, '.sceditor-container') ||
-                            ((t.runWithoutWysiwygSupport || Te) &&
+                            ((t.runWithoutWysiwygSupport || ze) &&
                                 new le(e, t)));
                 },
                 instance: function (e) {
@@ -74047,22 +74059,22 @@ if ('undefined' == typeof jQuery)
         function S(e, t) {
             return t.parentNode.insertBefore(e, t);
         }
-        function T(e) {
+        function z(e) {
             return e.className.trim().split(/\s+/);
         }
-        function z(e, t) {
+        function T(e, t) {
             return k(e, '.' + t);
         }
         function A(e, t) {
-            var i = T(e);
+            var i = z(e);
             (i.indexOf(t) < 0 && i.push(t), (e.className = i.join(' ')));
         }
         function M(e, t) {
-            var i = T(e);
+            var i = z(e);
             (s(i, t), (e.className = i.join(' ')));
         }
         function E(e, t, i) {
-            (i = pe(i) ? !z(e, t) : i) ? A(e, t) : M(e, t);
+            (i = pe(i) ? !T(e, t) : i) ? A(e, t) : M(e, t);
         }
         function I(e, t) {
             if (pe(t)) {
@@ -74217,12 +74229,12 @@ if ('undefined' == typeof jQuery)
                     ) {
                         for (
                             n = U(u), s = U(u, !0), r = !1;
-                            z(s, 'sceditor-ignore');
+                            T(s, 'sceditor-ignore');
                         )
                             s = U(s, !0);
                         if (H(u) && s) {
                             for (o = s; o.lastChild;)
-                                for (o = o.lastChild; z(o, 'sceditor-ignore');)
+                                for (o = o.lastChild; T(o, 'sceditor-ignore');)
                                     o = U(o, !0);
                             r =
                                 o.nodeType === ve ?
@@ -74319,7 +74331,7 @@ if ('undefined' == typeof jQuery)
             var t,
                 i = /^[^\/]*:/i,
                 n = window.location;
-            return e && i.test(e) && !ze.test(e) ?
+            return e && i.test(e) && !Te.test(e) ?
                     ((t = n.pathname.split('/')).pop(),
                     n.protocol + '//' + n.host + t.join('/') + '/' + e)
                 :   e;
@@ -74767,7 +74779,7 @@ if ('undefined' == typeof jQuery)
                 f,
                 x,
                 C,
-                T,
+                z,
                 L,
                 O,
                 B,
@@ -74788,7 +74800,7 @@ if ('undefined' == typeof jQuery)
                 ye,
                 ke,
                 xe,
-                ze,
+                Te,
                 Ae,
                 Me,
                 Ie,
@@ -74853,7 +74865,7 @@ if ('undefined' == typeof jQuery)
                         Ie(),
                         $e(),
                         Fe(),
-                        Te || _t.toggleSourceMode(),
+                        ze || _t.toggleSourceMode(),
                         tt());
                     var n = function () {
                         (m(De, 'load', n),
@@ -74896,8 +74908,8 @@ if ('undefined' == typeof jQuery)
                         _t.dimensions(kt.width || I(e), kt.height || P(e)));
                     var t = Oe ? 'ie ie' + Oe : '';
                     ((t += Se ? ' ios' : ''),
-                        (T = f.contentDocument).open(),
-                        T.write(
+                        (z = f.contentDocument).open(),
+                        z.write(
                             te('html', {
                                 attrs: ' class="' + t + '"',
                                 spellcheck:
@@ -74906,8 +74918,8 @@ if ('undefined' == typeof jQuery)
                                 style: kt.style,
                             })
                         ),
-                        T.close(),
-                        (C = T.body),
+                        z.close(),
+                        (C = z.body),
                         (x = f.contentWindow),
                         _t.readOnly(!!kt.readOnly),
                         (Se || Ce || Oe) &&
@@ -74937,7 +74949,7 @@ if ('undefined' == typeof jQuery)
                         i = 'compositionstart compositionend',
                         n = 'keydown keyup keypress focus blur contextmenu',
                         s =
-                            'onselectionchange' in T ? 'selectionchange' : (
+                            'onselectionchange' in z ? 'selectionchange' : (
                                 'keyup focus blur contextmenu mouseup touchend click'
                             );
                     (p(Le, 'click', Xe),
@@ -74968,11 +74980,11 @@ if ('undefined' == typeof jQuery)
                         p(L, 'keydown', Ue),
                         p(L, i, Je),
                         p(L, n, Qe),
-                        p(T, 'mousedown', Ye),
-                        p(T, s, st),
-                        p(T, 'beforedeactivate keyup mouseup', Me),
-                        p(T, 'keyup', nt),
-                        p(T, 'focus', function () {
+                        p(z, 'mousedown', Ye),
+                        p(z, s, st),
+                        p(z, 'beforedeactivate keyup mouseup', Me),
+                        p(z, 'keyup', nt),
+                        p(z, 'focus', function () {
                             B = null;
                         }),
                         p(a, 'selectionchanged', ot),
@@ -75021,7 +75033,7 @@ if ('undefined' == typeof jQuery)
                                             (o._sceWysiwygMode = !!r.exec),
                                             E(o, 'disabled', !r.exec),
                                             p(o, 'click', function (e) {
-                                                (z(o, 'disabled') || Ae(o, r),
+                                                (T(o, 'disabled') || Ae(o, r),
                                                     tt(),
                                                     e.preventDefault());
                                             }),
@@ -75077,7 +75089,7 @@ if ('undefined' == typeof jQuery)
                         x = I(a),
                         C = P(a),
                         S = !1,
-                        T = _t.rtl();
+                        z = _t.rtl();
                     if (
                         ((e = kt.resizeMinHeight || C / 1.5),
                         (t = kt.resizeMaxHeight || 2.5 * C),
@@ -75090,7 +75102,7 @@ if ('undefined' == typeof jQuery)
                                 (y = s.changedTouches[0].pageY))
                             :   ((b = s.pageX), (y = s.pageY));
                             var o = k + (y - f),
-                                a = T ? w - (b - _) : w + (b - _);
+                                a = z ? w - (b - _) : w + (b - _);
                             (n > 0 && a > n && (a = n),
                                 i > 0 && a < i && (a = i),
                                 kt.resizeWidth || (a = !1),
@@ -75111,8 +75123,8 @@ if ('undefined' == typeof jQuery)
                         }),
                         ke && ke.create)
                     ) {
-                        var z = ke.create('grip');
-                        z && (u(l, z), A(l, 'has-icon'));
+                        var T = ke.create('grip');
+                        T && (u(l, T), A(l, 'has-icon'));
                     }
                     (u(a, l),
                         u(a, c),
@@ -75163,7 +75175,7 @@ if ('undefined' == typeof jQuery)
                         if ((Z(C), n))
                             for (
                                 (i = C.lastChild) ||
-                                ((i = r('p', {}, T)), u(C, i));
+                                ((i = r('p', {}, z)), u(C, i));
                                 i.lastChild;
                             )
                                 ((i = i.lastChild),
@@ -75171,7 +75183,7 @@ if ('undefined' == typeof jQuery)
                                         k(i, 'br') &&
                                         i.previousSibling &&
                                         (i = i.previousSibling));
-                        ((e = T.createRange()),
+                        ((e = z.createRange()),
                             F(i) ?
                                 e.selectNodeContents(i)
                             :   (e.setStartBefore(i), n && e.setStartAfter(i)),
@@ -75232,7 +75244,7 @@ if ('undefined' == typeof jQuery)
                 (_t.maximize = function (e) {
                     var t = 'sceditor-maximize';
                     return pe(e) ?
-                            z(a, t)
+                            T(a, t)
                         :   ((e = !!e) && (fe = De.pageYOffset),
                             E(Le.documentElement, t, e),
                             E(Le.body, t, e),
@@ -75257,7 +75269,7 @@ if ('undefined' == typeof jQuery)
                         var n = Le.createRange();
                         n.selectNodeContents(C);
                         var s = n.getBoundingClientRect(),
-                            o = T.documentElement.clientHeight - 1,
+                            o = z.documentElement.clientHeight - 1,
                             a = s.bottom - s.top,
                             r = _t.height() + 1 + (a - o);
                         (t || -1 === ue.max || (r = Math.min(r, ue.max)),
@@ -75288,7 +75300,7 @@ if ('undefined' == typeof jQuery)
                     var l,
                         c = 'sceditor-' + t;
                     (_t.closeDropDown(!0),
-                        (O && z(O, c)) ||
+                        (O && T(O, c)) ||
                             (!1 !== s &&
                                 o(
                                     h(i, ':not(input):not(textarea)'),
@@ -75375,7 +75387,7 @@ if ('undefined' == typeof jQuery)
                     }
                 }),
                 (qe = function (e) {
-                    var t = r('div', {}, T);
+                    var t = r('div', {}, z);
                     (Y.call('pasteRaw', e),
                         j(a, 'pasteraw', e),
                         e.html ?
@@ -75383,7 +75395,7 @@ if ('undefined' == typeof jQuery)
                         :   (t.innerHTML = X(e.text || '')));
                     var n = { val: t.innerHTML };
                     ('fragmentToSource' in i &&
-                        (n.val = i.fragmentToSource(n.val, T, J)),
+                        (n.val = i.fragmentToSource(n.val, z, J)),
                         Y.call('paste', n),
                         j(a, 'paste', n),
                         'fragmentToHtml' in i &&
@@ -75403,7 +75415,7 @@ if ('undefined' == typeof jQuery)
                         (!i && c(Q, 'code')) ||
                             (K.insertHTML(e, t),
                             K.saveRange(),
-                            ze(),
+                            Te(),
                             v((n = h(C, '#sceditor-end-marker')[0])),
                             (s = C.scrollTop),
                             (o = G(n).top + 1.5 * n.offsetHeight - a),
@@ -75473,7 +75485,7 @@ if ('undefined' == typeof jQuery)
                         var a = K.selectedHtml();
                         (!1 !== n &&
                             'fragmentToSource' in i &&
-                            (a = i.fragmentToSource(a, T, J)),
+                            (a = i.fragmentToSource(a, z, J)),
                             (e += a + t));
                     }
                     return (
@@ -75492,7 +75504,7 @@ if ('undefined' == typeof jQuery)
                 }),
                 (_t.getWysiwygEditorValue = function (e) {
                     for (
-                        var t, n = r('div', {}, T), s = C.childNodes, o = 0;
+                        var t, n = r('div', {}, z), s = C.childNodes, o = 0;
                         o < s.length;
                         o++
                     )
@@ -75504,7 +75516,7 @@ if ('undefined' == typeof jQuery)
                         (t = n.innerHTML),
                         !1 !== e &&
                             i.hasOwnProperty('toSource') &&
-                            (t = i.toSource(t, T)),
+                            (t = i.toSource(t, z)),
                         t
                     );
                 }),
@@ -75521,7 +75533,7 @@ if ('undefined' == typeof jQuery)
                 (_t.setWysiwygEditorValue = function (e) {
                     (e || (e = '<p>' + (Oe ? '' : '<br />') + '</p>'),
                         (C.innerHTML = e),
-                        ze(),
+                        Te(),
                         nt(),
                         dt(),
                         mt());
@@ -75532,11 +75544,11 @@ if ('undefined' == typeof jQuery)
                 (_t.updateOriginal = function () {
                     e.value = _t.val();
                 }),
-                (ze = function () {
+                (Te = function () {
                     kt.emoticonsEnabled && ae(C, wt, kt.emoticonsCompat);
                 }),
                 (_t.inSourceMode = function () {
-                    return z(a, 'sourceMode');
+                    return T(a, 'sourceMode');
                 }),
                 (_t.sourceMode = function (e) {
                     var t = _t.inSourceMode();
@@ -75547,7 +75559,7 @@ if ('undefined' == typeof jQuery)
                 }),
                 (_t.toggleSourceMode = function () {
                     var e = _t.inSourceMode();
-                    (!Te && e) ||
+                    (!ze && e) ||
                         (e || (K.saveRange(), K.clear()),
                         _t.blur(),
                         e ?
@@ -75591,7 +75603,7 @@ if ('undefined' == typeof jQuery)
                         n = _t.commands[e];
                     if ((_t.focus(), !c(K.parentNode(), 'code'))) {
                         try {
-                            i = T.execCommand(e, !1, t);
+                            i = z.execCommand(e, !1, t);
                         } catch (e) {}
                         (!i &&
                             n &&
@@ -75620,7 +75632,7 @@ if ('undefined' == typeof jQuery)
                                     e = e.parentNode;
                                 e &&
                                     H(e, !0) &&
-                                    (K.saveRange(), re(C, T), K.restoreRange());
+                                    (K.saveRange(), re(C, z), K.restoreRange());
                             }
                             j(a, 'selectionchanged');
                         }
@@ -75628,7 +75640,7 @@ if ('undefined' == typeof jQuery)
                     }
                     ie ||
                         ((ie = !0),
-                        'onselectionchange' in T ? e() : setTimeout(e, 100));
+                        'onselectionchange' in z ? e() : setTimeout(e, 100));
                 }),
                 (ot = function () {
                     var e,
@@ -75649,7 +75661,7 @@ if ('undefined' == typeof jQuery)
                     var e,
                         t,
                         i = 'active',
-                        n = T,
+                        n = z,
                         s = _t.sourceMode();
                     if (_t.readOnly())
                         o(h(l, i), function (e, t) {
@@ -75688,7 +75700,7 @@ if ('undefined' == typeof jQuery)
                         13 === e.which && !k(Q, 'li,ul,ol') && R(Q))
                     ) {
                         B = null;
-                        var t = r('br', {}, T);
+                        var t = r('br', {}, z);
                         if ((K.insertNode(t), !Ne)) {
                             var i = t.parentNode,
                                 n = i.lastChild;
@@ -75712,7 +75724,7 @@ if ('undefined' == typeof jQuery)
                             !k(e, '.sceditor-nlf') &&
                             R(e)
                         ) {
-                            var t = r('p', {}, T);
+                            var t = r('p', {}, z);
                             return (
                                 (t.className = 'sceditor-nlf'),
                                 (t.innerHTML = Ne ? '' : '<br />'),
@@ -75784,7 +75796,7 @@ if ('undefined' == typeof jQuery)
                     if (me(e)) _t.bind('focus', e, t, i);
                     else if (_t.inSourceMode()) L.focus();
                     else {
-                        if (h(T, ':focus').length) return;
+                        if (h(z, ':focus').length) return;
                         var n,
                             s = K.selectedRange();
                         (ee || at(),
@@ -75857,12 +75869,12 @@ if ('undefined' == typeof jQuery)
                     ((kt.emoticonsEnabled = e), e) ?
                         (p(C, 'keypress', rt),
                         _t.sourceMode() ||
-                            (K.saveRange(), ze(), dt(!1), K.restoreRange()))
+                            (K.saveRange(), Te(), dt(!1), K.restoreRange()))
                     :   (o(
                             h(C, 'img[data-sceditor-emoticon]'),
                             function (e, t) {
                                 var i = w(t, 'sceditor-emoticon'),
-                                    n = T.createTextNode(i);
+                                    n = z.createTextNode(i);
                                 t.parentNode.replaceChild(n, t);
                             }
                         ),
@@ -75873,8 +75885,8 @@ if ('undefined' == typeof jQuery)
                 (_t.css = function (e) {
                     return (
                         de ||
-                            ((de = r('style', { id: 'inline' }, T)),
-                            u(T.head, de)),
+                            ((de = r('style', { id: 'inline' }, z)),
+                            u(z.head, de)),
                         he(e) ?
                             (de.styleSheet ?
                                 (de.styleSheet.cssText = e)
@@ -76063,7 +76075,7 @@ if ('undefined' == typeof jQuery)
                         ((V = !1),
                             (e =
                                 !1 !== e &&
-                                !T.getElementById('sceditor-start-marker')),
+                                !z.getElementById('sceditor-start-marker')),
                             q && (clearTimeout(q), (q = !1)),
                             n && e && K.saveRange(),
                             (t = i ? L.value : C.innerHTML) !== dt.lastVal &&
@@ -76220,7 +76232,7 @@ if ('undefined' == typeof jQuery)
             })(),
             Ce = '-ms-ime-align' in document.documentElement.style,
             Se = /iPhone|iPod|iPad| wosbrowser\//i.test(ke),
-            Te =
+            ze =
                 (((ue = document.createElement('div')).contentEditable = !0),
                 'contentEditable' in document.documentElement &&
                     'true' === ue.contentEditable &&
@@ -76237,7 +76249,7 @@ if ('undefined' == typeof jQuery)
                     'UCWEB' === navigator.vendor && (de = !1),
                     xe <= 9 && (de = !0),
                     !de)),
-            ze =
+            Te =
                 /^(https?|s?ftp|mailto|spotify|skype|ssh|teamspeak|tel):|(\/\/)|data:image\/(png|bmp|gif|p?jpe?g);/i,
             Ae = {
                 html: '<!DOCTYPE html><html{attrs}><head><style>.ie * {min-height: auto !important} .ie table td {height:15px} @supports (-ms-ime-align:auto) { * { min-height: auto !important; } }</style><meta http-equiv="Content-Type" content="text/html;charset={charset}" /><link rel="stylesheet" type="text/css" href="{style}" /></head><body contenteditable="true" {spellcheck}><p></p></body></html>',
@@ -77000,7 +77012,7 @@ if ('undefined' == typeof jQuery)
                 defaultOptions: we,
                 ie: xe,
                 ios: Se,
-                isWysiwygSupported: Te,
+                isWysiwygSupported: ze,
                 regexEscape: Q,
                 escapeEntities: X,
                 escapeUriScheme: ee,
@@ -77038,7 +77050,7 @@ if ('undefined' == typeof jQuery)
                 create: function (e, t) {
                     ((t = t || {}),
                         l(e, '.sceditor-container') ||
-                            ((t.runWithoutWysiwygSupport || Te) &&
+                            ((t.runWithoutWysiwygSupport || ze) &&
                                 new le(e, t)));
                 },
                 instance: function (e) {
@@ -77167,13 +77179,13 @@ if ('undefined' == typeof jQuery)
                     r = /\[([^\]\s=]+)(?:([^\]]+))?\]/,
                     l = /\[\/([^\[\]]+)\]/;
                 return (
-                    e === z &&
+                    e === T &&
                         (i = t.match(r)) &&
                         ((s = y(i[1])),
                         i[2] && (i[2] = i[2].trim()) && (n = o(i[2]))),
                     e === E && (i = t.match(l)) && (s = y(i[1])),
                     e === M && (s = '#newline'),
-                    (s && ((e !== z && e !== E) || T[s])) ||
+                    (s && ((e !== T && e !== E) || z[s])) ||
                         ((e = A), (s = '#')),
                     new a(e, s, t, n)
                 );
@@ -77199,7 +77211,7 @@ if ('undefined' == typeof jQuery)
                 return !1;
             }
             function c(e, t) {
-                var i = (e ? T[e.name] : {}).allowedChildren;
+                var i = (e ? z[e.name] : {}).allowedChildren;
                 return (
                     !k.opts.fixInvalidChildren ||
                     !i ||
@@ -77226,7 +77238,7 @@ if ('undefined' == typeof jQuery)
                         m = function (e) {
                             return (
                                 h() &&
-                                (i = T[h().name]) &&
+                                (i = z[h().name]) &&
                                 i.closedBy &&
                                 i.closedBy.indexOf(e) > -1
                             );
@@ -77240,11 +77252,11 @@ if ('undefined' == typeof jQuery)
                             ((t.name = '#'), (t.type = A)),
                         t.type)
                     ) {
-                        case z:
+                        case T:
                             (m(t.name) && u.pop(),
                                 p(t),
                                 (
-                                    (i = T[t.name]) &&
+                                    (i = z[t.name]) &&
                                     !i.isSelfClosing &&
                                     (i.closedBy || l(t.name, E, e))
                                 ) ?
@@ -77260,7 +77272,7 @@ if ('undefined' == typeof jQuery)
                                 h() && t.name === h().name)
                             )
                                 ((h().closing = t), u.pop());
-                            else if (l(t.name, z, u)) {
+                            else if (l(t.name, T, u)) {
                                 for (; (n = u.pop());) {
                                     if (n.name === t.name) {
                                         n.closing = t;
@@ -77273,7 +77285,7 @@ if ('undefined' == typeof jQuery)
                                 for (
                                     a &&
                                         a.type === M &&
-                                        (i = T[t.name]) &&
+                                        (i = z[t.name]) &&
                                         !1 === i.isInline &&
                                         (p(a), e.shift()),
                                         p(b(r)),
@@ -77289,7 +77301,7 @@ if ('undefined' == typeof jQuery)
                                 a &&
                                 m((a.type === E ? '/' : '') + a.name) &&
                                 ((a.type === E && a.name === h().name) ||
-                                    ((((i = T[h().name]) && i.breakAfter) ||
+                                    ((((i = z[h().name]) && i.breakAfter) ||
                                         (i &&
                                             !1 === i.isInline &&
                                             k.opts.breakAfterBlock &&
@@ -77312,7 +77324,7 @@ if ('undefined' == typeof jQuery)
                     c,
                     d,
                     u = e.length;
-                t && (a = T[t.name]);
+                t && (a = z[t.name]);
                 for (var p = u; p--;)
                     if ((n = e[p]))
                         if (n.type === M) {
@@ -77338,8 +77350,8 @@ if ('undefined' == typeof jQuery)
                                             (d = !0),
                                         a.breakStart && (d = !0))),
                                 s &&
-                                    s.type === z &&
-                                    (r = T[s.name]) &&
+                                    s.type === T &&
+                                    (r = z[s.name]) &&
                                     (i ?
                                         !1 === r.isInline && (d = !0)
                                     :   (!1 === r.isInline &&
@@ -77350,8 +77362,8 @@ if ('undefined' == typeof jQuery)
                                 !i &&
                                     !c &&
                                     o &&
-                                    o.type === z &&
-                                    (r = T[o.name]) &&
+                                    o.type === T &&
+                                    (r = z[o.name]) &&
                                     (!1 === r.isInline &&
                                         k.opts.breakBeforeBlock &&
                                         !1 !== r.breakBefore &&
@@ -77364,7 +77376,7 @@ if ('undefined' == typeof jQuery)
                                 continue;
                             }
                             (d && e.splice(p, 1), (c = !1));
-                        } else n.type === z && h(n.children, n, i);
+                        } else n.type === T && h(n.children, n, i);
             }
             function p(e, t, i, n) {
                 var s,
@@ -77374,11 +77386,11 @@ if ('undefined' == typeof jQuery)
                     l,
                     d,
                     u = function (e) {
-                        var t = T[e.name];
+                        var t = z[e.name];
                         return !t || !1 !== t.isInline;
                     };
                 for (t = t || [], n = n || e, o = 0; o < e.length; o++)
-                    if ((s = e[o]) && s.type === z) {
+                    if ((s = e[o]) && s.type === T) {
                         if (i && !u(s)) {
                             if (
                                 ((d = (a = b(t)).splitAt(s)),
@@ -77414,7 +77426,7 @@ if ('undefined' == typeof jQuery)
                         n = function (e) {
                             for (var t = e.length; t--;) {
                                 var i = e[t].type;
-                                if (i === z || i === E) return !1;
+                                if (i === T || i === E) return !1;
                                 if (i === A && /\S|\u00A0/.test(e[t].val))
                                     return !1;
                             }
@@ -77424,8 +77436,8 @@ if ('undefined' == typeof jQuery)
                     s--;
                 )
                     (t = e[s]) &&
-                        t.type === z &&
-                        ((i = T[t.name]),
+                        t.type === T &&
+                        ((i = z[t.name]),
                         m(t.children),
                         n(t.children) &&
                             i &&
@@ -77457,14 +77469,14 @@ if ('undefined' == typeof jQuery)
                     e.length > 0;
                 )
                     if ((o = e.shift())) {
-                        if (o.type === z)
+                        if (o.type === T)
                             ((p = o.children[o.children.length - 1] || {}),
-                                (a = T[o.name]),
+                                (a = z[o.name]),
                                 (c = i && h(a)),
                                 (r = _(o.children, !1)),
                                 a && a.html ?
                                     (h(a) ||
-                                        !h(T[p.name]) ||
+                                        !h(z[p.name]) ||
                                         a.isPreFormatted ||
                                         a.skipLastLineBreak ||
                                         w ||
@@ -77503,7 +77515,7 @@ if ('undefined' == typeof jQuery)
                 for (var t, i, n, s, o, a, r, l, c, d, u = []; e.length > 0;)
                     if ((t = e.shift()))
                         if (
-                            ((s = !(!(n = T[t.name]) || !1 !== n.isInline)),
+                            ((s = !(!(n = z[t.name]) || !1 !== n.isInline)),
                             (o = n && n.isSelfClosing),
                             (r =
                                 (s &&
@@ -77530,9 +77542,9 @@ if ('undefined' == typeof jQuery)
                                 (n ? n.quoteType : null) ||
                                 k.opts.quoteType ||
                                 C.auto),
-                            n || t.type !== z)
+                            n || t.type !== T)
                         )
-                            if (t.type === z) {
+                            if (t.type === T) {
                                 if (
                                     (r && u.push('\n'),
                                     u.push('[' + t.name),
@@ -77596,7 +77608,7 @@ if ('undefined' == typeof jQuery)
                         a = [
                             { type: A, regex: /^([^\[\r\n]+|\[)/ },
                             { type: M, regex: /^(\r\n|\r|\n)/ },
-                            { type: z, regex: /^\[[^\[\]]+\]/ },
+                            { type: T, regex: /^\[[^\[\]]+\]/ },
                             { type: E, regex: /^\[\/[^\[\]]+\]/ },
                         ];
                     e: for (; e.length;) {
@@ -77655,20 +77667,20 @@ if ('undefined' == typeof jQuery)
         }
         function d() {
             function e() {
-                b(T, function (e) {
+                b(z, function (e) {
                     var t,
-                        i = T[e].tags,
-                        n = T[e].styles;
+                        i = z[e].tags,
+                        n = z[e].styles;
                     (i &&
                         b(i, function (i, n) {
-                            ((t = !1 === T[e].isInline),
+                            ((t = !1 === z[e].isInline),
                                 (m[i] = m[i] || {}),
                                 (m[i][t] = m[i][t] || {}),
                                 (m[i][t][e] = n));
                         }),
                         n &&
                             b(n, function (i, n) {
-                                ((t = !1 === T[e].isInline),
+                                ((t = !1 === z[e].isInline),
                                     (y[t] = y[t] || {}),
                                     (y[t][i] = y[t][i] || {}),
                                     (y[t][i][e] = n));
@@ -77685,7 +77697,7 @@ if ('undefined' == typeof jQuery)
                                 r(e.parentNode, i) !== s &&
                                 b(l, function (i, r) {
                                     (!r || r.indexOf(s.toString()) > -1) &&
-                                        ((a = T[i].format),
+                                        ((a = z[i].format),
                                         (t = n(a) ? a.call(h, e, t) : o(a, t)));
                                 });
                         }),
@@ -77737,7 +77749,7 @@ if ('undefined' == typeof jQuery)
                                         return ((s = !0), !1);
                                 }),
                                 !s)) ||
-                                ((a = T[i].format),
+                                ((a = z[i].format),
                                 (t = n(a) ? a.call(h, e, t) : o(a, t)));
                         }),
                     t
@@ -77968,7 +77980,7 @@ if ('undefined' == typeof jQuery)
                 rtl: { txtExec: ['[rtl]', '[/rtl]'] },
                 ltr: { txtExec: ['[ltr]', '[/ltr]'] },
             },
-            T = {
+            z = {
                 'b': {
                     tags: { b: null, strong: null },
                     styles: {
@@ -78338,7 +78350,7 @@ if ('undefined' == typeof jQuery)
                 },
                 'ignore': {},
             },
-            z = 'open',
+            T = 'open',
             A = 'content',
             M = 'newline',
             E = 'close';
@@ -78379,24 +78391,24 @@ if ('undefined' == typeof jQuery)
                 quoteType: C.auto,
             }),
             (d.get = function (e) {
-                return T[e] || null;
+                return z[e] || null;
             }),
             (d.set = function (e, t) {
                 return (
                     e &&
                         t &&
-                        (((t = v(T[e] || {}, t)).remove = function () {
-                            delete T[e];
+                        (((t = v(z[e] || {}, t)).remove = function () {
+                            delete z[e];
                         }),
-                        (T[e] = t)),
+                        (z[e] = t)),
                     this
                 );
             }),
             (d.rename = function (e, t) {
-                return (e in T && ((T[t] = T[e]), delete T[e]), this);
+                return (e in z && ((z[t] = z[e]), delete z[e]), this);
             }),
             (d.remove = function (e) {
-                return (e in T && delete T[e], this);
+                return (e in z && delete z[e], this);
             }),
             (d.formatBBCodeString = t),
             (e.formats.bbcode = d),
