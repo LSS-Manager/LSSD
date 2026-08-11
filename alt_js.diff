@@ -1,5 +1,5 @@
 diff --git a/application.js b/application.alt.js
-index e331539..1370f69 100644
+index addec7e..1370f69 100644
 --- a/application.js
 +++ b/application.alt.js
 @@ -683,27 +683,27 @@ function missionMarkerAddSingle(e) {
@@ -528,14 +528,10 @@ index e331539..1370f69 100644
                  return ((c.length = l), c);
              };
          })()),
-@@ -10080,26150 +10079,392 @@ function identifyDefaultOrderBasedOnTarge(e) {
-                         delete t.defaultValue),
-                     i
-                 );
--            }),
--            (t.translate = function (e, t) {
--                var i;
--                return (
+@@ -10084,26146 +10083,388 @@ function identifyDefaultOrderBasedOnTarge(e) {
+             (t.translate = function (e, t) {
+                 var i;
+                 return (
 -                    (t = this.prepareOptions(t)),
 -                    (
 -                        this.createTranslationOptions(e, t).some(function (e) {
@@ -26675,10 +26671,6 @@ index e331539..1370f69 100644
 -            },
 -            rewards: { log: 'Reward for finishing the tutorial.' },
 -        },
-+            }),
-+            (t.translate = function (e, t) {
-+                var i;
-+                return (
 +                    (t = this.prepareOptions(t)),
 +                    (
 +                        this.createTranslationOptions(e, t).some(function (e) {
@@ -40841,7 +40833,23 @@ index e331539..1370f69 100644
          return L.Control.extend({
              options: { position: 'topleft' },
              onAdd: function () {
-@@ -75012,21 +49253,21 @@ if ('undefined' == typeof jQuery)
+@@ -73012,14 +47253,7 @@ class XYMapKitWrapper {
+         return this.#v(e);
+     }
+     getCenter() {
+-        let e = {};
+-        return (
+-            (e.latitude = this.#f.center.latitude),
+-            (e.longitude = this.#f.center.longitude),
+-            (e.lat = e.latitude),
+-            (e.lng = e.longitude),
+-            e
+-        );
++        return this.#f.center;
+     }
+     getRegion() {
+         return this.#f.region;
+@@ -75019,21 +49253,21 @@ if ('undefined' == typeof jQuery)
                      l = this;
                  if (a.hasClass('active')) return (this.sliding = !1);
                  var c = a[0],
@@ -40867,7 +40875,7 @@ index e331539..1370f69 100644
                      }
                      var h = e.Event('slid.bs.carousel', {
                          relatedTarget: c,
-@@ -75890,21 +50131,21 @@ if ('undefined' == typeof jQuery)
+@@ -75897,21 +50131,21 @@ if ('undefined' == typeof jQuery)
                              a.appendTo(this.options.container)
                          :   a.insertAfter(this.$element),
                          this.$element.trigger('inserted.bs.' + this.type));
@@ -40896,7 +40904,7 @@ index e331539..1370f69 100644
                      this.applyPlacement(_, r);
                      var f = function () {
                          var e = s.hoverState;
-@@ -75948,12 +50189,12 @@ if ('undefined' == typeof jQuery)
+@@ -75955,12 +50189,12 @@ if ('undefined' == typeof jQuery)
                  var l = n[0].offsetWidth,
                      c = n[0].offsetHeight;
                  'top' == i && c != a && (t.top = t.top + a - c);
@@ -40915,7 +40923,7 @@ index e331539..1370f69 100644
              }),
              (i.prototype.replaceArrow = function (e, t, i) {
                  this.arrow()
-@@ -76063,10 +50304,10 @@ if ('undefined' == typeof jQuery)
+@@ -76070,10 +50304,10 @@ if ('undefined' == typeof jQuery)
                      :   l > o.top + o.height && (s.top = o.top + o.height - l);
                  } else {
                      var c = t.left - a,
@@ -40928,7 +40936,7 @@ index e331539..1370f69 100644
                  }
                  return s;
              }),
-@@ -77017,14 +51258,14 @@ if ('undefined' == typeof jQuery)
+@@ -77024,14 +51258,14 @@ if ('undefined' == typeof jQuery)
                              } else {
                                  var l = e.extend(
                                      {},
@@ -40945,7 +40953,7 @@ index e331539..1370f69 100644
                                      e.fn.selectpicker.defaults ?
                                          e.fn.selectpicker.defaults.template
                                      :   {},
-@@ -77033,7 +51274,7 @@ if ('undefined' == typeof jQuery)
+@@ -77040,7 +51274,7 @@ if ('undefined' == typeof jQuery)
                                  )),
                                      t.data(
                                          'selectpicker',
@@ -40954,7 +40962,7 @@ index e331539..1370f69 100644
                                      ));
                              }
                              'string' == typeof n &&
-@@ -77229,7 +51470,7 @@ if ('undefined' == typeof jQuery)
+@@ -77236,7 +51470,7 @@ if ('undefined' == typeof jQuery)
                      '`': '&#x60;',
                  }),
                  c = r(o),
@@ -40963,7 +40971,7 @@ index e331539..1370f69 100644
                      (n.useDefault ||
                          ((e.valHooks.select.set = n._set), (n.useDefault = !0)),
                          (this.$element = e(t)),
-@@ -77243,20 +51484,20 @@ if ('undefined' == typeof jQuery)
+@@ -77250,20 +51484,20 @@ if ('undefined' == typeof jQuery)
                      var s = this.options.windowPadding;
                      ('number' == typeof s &&
                          (this.options.windowPadding = [s, s, s, s]),
@@ -40996,7 +41004,7 @@ index e331539..1370f69 100644
                      noneSelectedText: 'Nothing selected',
                      noneResultsText: 'No results matched {0}',
                      countSelectedText: function (e) {
-@@ -77307,8 +51548,8 @@ if ('undefined' == typeof jQuery)
+@@ -77314,8 +51548,8 @@ if ('undefined' == typeof jQuery)
                      dropdownAlignRight: !1,
                      windowPadding: 0,
                  }),
@@ -41007,7 +41015,7 @@ index e331539..1370f69 100644
                      init: function () {
                          var t = this,
                              i = this.$element.attr('id');
-@@ -77528,24 +51769,24 @@ if ('undefined' == typeof jQuery)
+@@ -77535,24 +51769,24 @@ if ('undefined' == typeof jQuery)
                              (o--,
                              !this.$element.find('.bs-title-option').length)
                          ) {
@@ -41038,7 +41046,7 @@ index e331539..1370f69 100644
                                          h = this.className || '',
                                          p = l(this.style.cssText),
                                          m =
-@@ -77573,21 +51814,21 @@ if ('undefined' == typeof jQuery)
+@@ -77580,21 +51814,21 @@ if ('undefined' == typeof jQuery)
                                          v = a.parent(),
                                          b = 'OPTGROUP' === v[0].tagName,
                                          y = b && v[0].disabled,
@@ -41065,7 +41073,7 @@ index e331539..1370f69 100644
                                                  ),
                                              void o--
                                          );
-@@ -77601,16 +51842,16 @@ if ('undefined' == typeof jQuery)
+@@ -77608,16 +51842,16 @@ if ('undefined' == typeof jQuery)
                                                  '</span>'),
                                          b && !0 !== a.data('divider'))
                                      ) {
@@ -41086,7 +41094,7 @@ index e331539..1370f69 100644
                                                  );
                                              }
                                              if (v.data('allOptionsDisabled'))
-@@ -77619,7 +51860,7 @@ if ('undefined' == typeof jQuery)
+@@ -77626,7 +51860,7 @@ if ('undefined' == typeof jQuery)
                                          var x = ' ' + v[0].className || '';
                                          if (0 === a.index()) {
                                              s += 1;
@@ -41095,7 +41103,7 @@ index e331539..1370f69 100644
                                                  C =
                                                      (
                                                          void 0 !==
-@@ -77629,7 +51870,7 @@ if ('undefined' == typeof jQuery)
+@@ -77636,7 +51870,7 @@ if ('undefined' == typeof jQuery)
                                                          v.data('subtext') +
                                                          '</small>'
                                                      :   '';
@@ -41104,7 +41112,7 @@ index e331539..1370f69 100644
                                                  (v.data('icon') ?
                                                      '<span class="' +
                                                      i.options.iconBase +
-@@ -77638,7 +51879,7 @@ if ('undefined' == typeof jQuery)
+@@ -77645,7 +51879,7 @@ if ('undefined' == typeof jQuery)
                                                      '"></span> '
                                                  :   '') +
                                                  '<span class="text">' +
@@ -41113,7 +41121,7 @@ index e331539..1370f69 100644
                                                  C +
                                                  '</span>'),
                                                  0 !== t &&
-@@ -77655,14 +51896,14 @@ if ('undefined' == typeof jQuery)
+@@ -77662,14 +51896,14 @@ if ('undefined' == typeof jQuery)
                                                  o++,
                                                  n.push(
                                                      r(
@@ -41130,7 +41138,7 @@ index e331539..1370f69 100644
                                              return void o--;
                                          n.push(
                                              r(
-@@ -77675,12 +51916,12 @@ if ('undefined' == typeof jQuery)
+@@ -77682,12 +51916,12 @@ if ('undefined' == typeof jQuery)
                                      } else if (!0 === a.data('divider'))
                                          n.push(r('', t, 'divider'));
                                      else if (!0 === a.data('hidden'))
@@ -41145,7 +41153,7 @@ index e331539..1370f69 100644
                                                  ),
                                              n.push(
                                                  r(
-@@ -77690,26 +51931,26 @@ if ('undefined' == typeof jQuery)
+@@ -77697,26 +51931,26 @@ if ('undefined' == typeof jQuery)
                                                  )
                                              ));
                                      else {
@@ -41182,7 +41190,7 @@ index e331539..1370f69 100644
                                              (o++,
                                              n.push(
                                                  r(
-@@ -77897,11 +52138,11 @@ if ('undefined' == typeof jQuery)
+@@ -77904,11 +52138,11 @@ if ('undefined' == typeof jQuery)
                                              .find('.popover-title')[0]
                                              .cloneNode(!0)
                                      :   null,
@@ -41196,7 +41204,7 @@ index e331539..1370f69 100644
                                      (
                                          this.options.actionsBox &&
                                          this.multiple &&
-@@ -77939,96 +52180,96 @@ if ('undefined' == typeof jQuery)
+@@ -77946,96 +52180,96 @@ if ('undefined' == typeof jQuery)
                                  s.appendChild(o),
                                  s.appendChild(a),
                                  c && n.appendChild(c),
@@ -41316,7 +41324,7 @@ index e331539..1370f69 100644
                                          ) +
                                          2,
                                  };
-@@ -78040,7 +52281,7 @@ if ('undefined' == typeof jQuery)
+@@ -78047,7 +52281,7 @@ if ('undefined' == typeof jQuery)
                                      actionsHeight: g,
                                      doneButtonHeight: v,
                                      dividerHeight: b,
@@ -41325,7 +41333,7 @@ index e331539..1370f69 100644
                                      menuExtras: x,
                                  }));
                          }
-@@ -78062,8 +52303,8 @@ if ('undefined' == typeof jQuery)
+@@ -78069,8 +52303,8 @@ if ('undefined' == typeof jQuery)
                                  r,
                                  l,
                                  c = this,
@@ -41336,7 +41344,7 @@ index e331539..1370f69 100644
                                  h = e(window),
                                  p = this.$newElement[0].offsetHeight,
                                  m = this.$newElement[0].offsetWidth,
-@@ -78073,13 +52314,13 @@ if ('undefined' == typeof jQuery)
+@@ -78080,13 +52314,13 @@ if ('undefined' == typeof jQuery)
                                  v = this.sizeInfo.actionsHeight,
                                  b = this.sizeInfo.doneButtonHeight,
                                  y = this.sizeInfo.dividerHeight,
@@ -41353,7 +41361,7 @@ index e331539..1370f69 100644
                                      var t,
                                          i = c.$newElement.offset(),
                                          n = e(c.options.container);
-@@ -78099,7 +52340,7 @@ if ('undefined' == typeof jQuery)
+@@ -78106,7 +52340,7 @@ if ('undefined' == typeof jQuery)
                                          (a -= s[0]),
                                          (r -= s[3]));
                                  };
@@ -41362,7 +41370,7 @@ index e331539..1370f69 100644
                                  var C = function () {
                                      var h,
                                          p = function (t, i) {
-@@ -78137,52 +52378,52 @@ if ('undefined' == typeof jQuery)
+@@ -78144,52 +52378,52 @@ if ('undefined' == typeof jQuery)
                                                      p('dropdown-header', !0)
                                                  )
                                              :   x.filter('.dropdown-header');
@@ -41434,7 +41442,7 @@ index e331539..1370f69 100644
                                          }));
                                  };
                                  (C(),
-@@ -78205,7 +52446,7 @@ if ('undefined' == typeof jQuery)
+@@ -78212,7 +52446,7 @@ if ('undefined' == typeof jQuery)
                                  'auto' != this.options.size &&
                                  this.$lis.not(x).length > this.options.size
                              ) {
@@ -41443,7 +41451,7 @@ index e331539..1370f69 100644
                                          .not('.divider')
                                          .not(x)
                                          .children()
-@@ -78213,27 +52454,27 @@ if ('undefined' == typeof jQuery)
+@@ -78220,27 +52454,27 @@ if ('undefined' == typeof jQuery)
                                          .last()
                                          .parent()
                                          .index(),
@@ -41482,7 +41490,7 @@ index e331539..1370f69 100644
                                          'overflow-y': 'auto',
                                          'min-height': '',
                                      }));
-@@ -78462,15 +52703,15 @@ if ('undefined' == typeof jQuery)
+@@ -78469,15 +52703,15 @@ if ('undefined' == typeof jQuery)
                                          !n.parent().hasClass('disabled'))
                                  ) {
                                      var c = t.$element.find('option'),
@@ -41503,7 +41511,7 @@ index e331539..1370f69 100644
                                              n.blur(),
                                              !1 !== p || !1 !== m)
                                          ) {
-@@ -78485,7 +52726,7 @@ if ('undefined' == typeof jQuery)
+@@ -78492,7 +52726,7 @@ if ('undefined' == typeof jQuery)
                                              if ((p && _) || (m && f))
                                                  if (p && 1 == p)
                                                      (c.prop('selected', !1),
@@ -41512,7 +41520,7 @@ index e331539..1370f69 100644
                                                          t.$menuInner
                                                              .find('.selected')
                                                              .removeClass(
-@@ -78496,7 +52737,7 @@ if ('undefined' == typeof jQuery)
+@@ -78503,7 +52737,7 @@ if ('undefined' == typeof jQuery)
                                                      (h
                                                          .find('option:selected')
                                                          .prop('selected', !1),
@@ -41521,7 +41529,7 @@ index e331539..1370f69 100644
                                                      var g = n
                                                          .parent()
                                                          .data('optgroup');
-@@ -78536,11 +52777,11 @@ if ('undefined' == typeof jQuery)
+@@ -78543,11 +52777,11 @@ if ('undefined' == typeof jQuery)
                                                              '{n}',
                                                              p
                                                          ),
@@ -41535,7 +41543,7 @@ index e331539..1370f69 100644
                                                              '<div class="notify"></div>'
                                                          );
                                                      (b[2] &&
-@@ -78548,15 +52789,15 @@ if ('undefined' == typeof jQuery)
+@@ -78555,15 +52789,15 @@ if ('undefined' == typeof jQuery)
                                                              '{var}',
                                                              b[2][p > 1 ? 0 : 1]
                                                          )),
@@ -41555,7 +41563,7 @@ index e331539..1370f69 100644
                                                                  e(
                                                                      '<div>' +
                                                                          y +
-@@ -78569,10 +52810,10 @@ if ('undefined' == typeof jQuery)
+@@ -78576,10 +52810,10 @@ if ('undefined' == typeof jQuery)
                                                              )),
                                                          m &&
                                                              f &&
@@ -41568,7 +41576,7 @@ index e331539..1370f69 100644
                                                                          '</div>'
                                                                  )
                                                              ),
-@@ -78586,7 +52827,7 @@ if ('undefined' == typeof jQuery)
+@@ -78593,7 +52827,7 @@ if ('undefined' == typeof jQuery)
                                                                  !1
                                                              );
                                                          }, 10),
@@ -41577,7 +41585,7 @@ index e331539..1370f69 100644
                                                              .delay(750)
                                                              .fadeOut(
                                                                  300,
-@@ -78600,7 +52841,7 @@ if ('undefined' == typeof jQuery)
+@@ -78607,7 +52841,7 @@ if ('undefined' == typeof jQuery)
                                          }
                                      } else
                                          (c.prop('selected', !1),
@@ -41586,7 +41594,7 @@ index e331539..1370f69 100644
                                              t.$menuInner
                                                  .find('.selected')
                                                  .removeClass('selected')
-@@ -78623,7 +52864,7 @@ if ('undefined' == typeof jQuery)
+@@ -78630,7 +52864,7 @@ if ('undefined' == typeof jQuery)
                                                          'selectedIndex'
                                                      ) &&
                                                      !t.multiple)) &&
@@ -41595,7 +41603,7 @@ index e331539..1370f69 100644
                                              t.$element.triggerNative(
                                                  'change'
                                              )));
-@@ -78965,8 +53206,8 @@ if ('undefined' == typeof jQuery)
+@@ -78972,8 +53206,8 @@ if ('undefined' == typeof jQuery)
                                          o.focus()))
                                  :   i.eq(n).children('a').focus());
                          } else if (!o.is('input')) {
@@ -41606,7 +41614,7 @@ index e331539..1370f69 100644
                              ((i = r.$lis.filter(l)).each(function (i) {
                                  e
                                      .trim(
-@@ -78976,22 +53217,22 @@ if ('undefined' == typeof jQuery)
+@@ -78983,22 +53217,22 @@ if ('undefined' == typeof jQuery)
                                              .toLowerCase()
                                      )
                                      .substring(0, 1) == c[t.keyCode] &&
@@ -41637,7 +41645,7 @@ index e331539..1370f69 100644
                                      .children('a')
                                      .focus());
                          }
-@@ -79063,18 +53304,18 @@ if ('undefined' == typeof jQuery)
+@@ -79070,18 +53304,18 @@ if ('undefined' == typeof jQuery)
                                  .removeClass('bs-select-hidden selectpicker'));
                      },
                  }));
@@ -41660,7 +41668,7 @@ index e331539..1370f69 100644
                      )
                      .on(
                          'focusin.modal',
-@@ -79149,13 +53390,13 @@ if ('undefined' == typeof jQuery)
+@@ -79156,13 +53390,13 @@ if ('undefined' == typeof jQuery)
                  for (var l in r) {
                      var c = r[l];
                      if (!pe(c)) {
@@ -41677,7 +41685,7 @@ index e331539..1370f69 100644
                      }
                  }
              }
-@@ -79192,15 +53433,15 @@ if ('undefined' == typeof jQuery)
+@@ -79199,15 +53433,15 @@ if ('undefined' == typeof jQuery)
                  var i = e || {};
                  (i = i.parentNode) && !/(9|11)/.test(i.nodeType);
              )
@@ -41697,7 +41705,7 @@ index e331539..1370f69 100644
              e.appendChild(t);
          }
          function h(e, t) {
-@@ -79214,7 +53455,7 @@ if ('undefined' == typeof jQuery)
+@@ -79221,7 +53455,7 @@ if ('undefined' == typeof jQuery)
                          n['_sce-event-' + t + i] ||
                          function (t) {
                              for (var s = t.target; s && s !== e;) {
@@ -41706,7 +41714,7 @@ index e331539..1370f69 100644
                                  s = s.parentNode;
                              }
                          }),
-@@ -79244,7 +53485,7 @@ if ('undefined' == typeof jQuery)
+@@ -79251,7 +53485,7 @@ if ('undefined' == typeof jQuery)
              y(e, 'display', '');
          }
          function b(e) {
@@ -41715,7 +41723,7 @@ index e331539..1370f69 100644
          }
          function y(e, t, i) {
              if (arguments.length < 3) {
-@@ -79258,7 +53499,7 @@ if ('undefined' == typeof jQuery)
+@@ -79265,7 +53499,7 @@ if ('undefined' == typeof jQuery)
                  e.style[t] = n ? i + 'px' : i;
              }
          }
@@ -41724,7 +41732,7 @@ index e331539..1370f69 100644
              var n = arguments.length,
                  s = {};
              if (e.nodeType === ge) {
-@@ -79274,7 +53515,7 @@ if ('undefined' == typeof jQuery)
+@@ -79281,7 +53515,7 @@ if ('undefined' == typeof jQuery)
                  _(e, 'data-' + t, String(i));
              }
          }
@@ -41733,7 +41741,7 @@ index e331539..1370f69 100644
              var i = !1;
              return (
                  e &&
-@@ -79290,11 +53531,11 @@ if ('undefined' == typeof jQuery)
+@@ -79297,11 +53531,11 @@ if ('undefined' == typeof jQuery)
          function x(e, t) {
              return e !== t && e.contains && e.contains(t);
          }
@@ -41747,7 +41755,7 @@ index e331539..1370f69 100644
                      :   null
                  :   i
              );
-@@ -79302,24 +53543,24 @@ if ('undefined' == typeof jQuery)
+@@ -79309,24 +53543,24 @@ if ('undefined' == typeof jQuery)
          function C(e, t) {
              return t.parentNode.insertBefore(e, t);
          }
@@ -41780,7 +41788,7 @@ index e331539..1370f69 100644
              if (pe(t)) {
                  var i = getComputedStyle(e),
                      n = o(i.paddingLeft) + o(i.paddingRight),
-@@ -79337,7 +53578,7 @@ if ('undefined' == typeof jQuery)
+@@ -79344,7 +53578,7 @@ if ('undefined' == typeof jQuery)
              }
              y(e, 'height', t);
          }
@@ -41789,7 +41797,7 @@ index e331539..1370f69 100644
              var n;
              (me(window.CustomEvent) ?
                  (n = new CustomEvent(t, {
-@@ -79354,42 +53595,42 @@ if ('undefined' == typeof jQuery)
+@@ -79361,42 +53595,42 @@ if ('undefined' == typeof jQuery)
                  ),
                  e.dispatchEvent(n));
          }
@@ -41842,7 +41850,7 @@ index e331539..1370f69 100644
              var i = r(t, {}, e.ownerDocument);
              for (
                  a(e.attributes, function (e, t) {
-@@ -79399,10 +53640,10 @@ if ('undefined' == typeof jQuery)
+@@ -79406,10 +53640,10 @@ if ('undefined' == typeof jQuery)
                  });
                  e.firstChild;
              )
@@ -41855,7 +41863,7 @@ index e331539..1370f69 100644
              return (
                  !!/11?|9/.test(e.nodeType) &&
                  '|iframe|area|base|basefont|br|col|frame|hr|img|input|wbr|isindex|link|meta|param|command|embed|keygen|source|track|object|'.indexOf(
-@@ -79410,7 +53651,7 @@ if ('undefined' == typeof jQuery)
+@@ -79417,7 +53651,7 @@ if ('undefined' == typeof jQuery)
                  ) < 0
              );
          }
@@ -41864,7 +41872,7 @@ index e331539..1370f69 100644
              var i,
                  n = (e || {}).nodeType || ve;
              return (
-@@ -79419,30 +53660,30 @@ if ('undefined' == typeof jQuery)
+@@ -79426,30 +53660,30 @@ if ('undefined' == typeof jQuery)
                  : ye.indexOf('|' + i + '|') < 0
              );
          }
@@ -41905,7 +41913,7 @@ index e331539..1370f69 100644
              for (; (e = e.parentNode);) if (x(e, t)) return e;
          }
          function U(e, t) {
-@@ -79451,7 +53692,7 @@ if ('undefined' == typeof jQuery)
+@@ -79458,7 +53692,7 @@ if ('undefined' == typeof jQuery)
                          U(e.parentNode, t)
                  :   null;
          }
@@ -41914,7 +41922,7 @@ index e331539..1370f69 100644
              var t,
                  i,
                  n,
-@@ -79461,65 +53702,65 @@ if ('undefined' == typeof jQuery)
+@@ -79468,65 +53702,65 @@ if ('undefined' == typeof jQuery)
                  r,
                  l = y(e, 'whiteSpace'),
                  c = /line$/i.test(l),
@@ -41998,7 +42006,7 @@ index e331539..1370f69 100644
                  (n = s[(t = fe[t])]),
                  'textAlign' === t)
              ) {
-@@ -79528,7 +53769,7 @@ if ('undefined' == typeof jQuery)
+@@ -79535,7 +53769,7 @@ if ('undefined' == typeof jQuery)
                      (n = n || y(e, t)),
                      y(e.parentNode, t) === n ||
                          'block' !== y(e, 'display') ||
@@ -42007,7 +42015,7 @@ index e331539..1370f69 100644
                  )
                      return '';
                  if (
-@@ -79540,7 +53781,7 @@ if ('undefined' == typeof jQuery)
+@@ -79547,7 +53781,7 @@ if ('undefined' == typeof jQuery)
              return n;
          }
          function J(e, t, i) {
@@ -42016,7 +42024,7 @@ index e331539..1370f69 100644
              return (
                  !!n &&
                  (!i || n === i || (Array.isArray(i) && i.indexOf(n) > -1))
-@@ -79574,18 +53815,18 @@ if ('undefined' == typeof jQuery)
+@@ -79581,18 +53815,18 @@ if ('undefined' == typeof jQuery)
              var t,
                  i = /^[^\/]*:/i,
                  n = window.location;
@@ -42038,7 +42046,7 @@ index e331539..1370f69 100644
                  n
              );
          }
-@@ -79599,7 +53840,7 @@ if ('undefined' == typeof jQuery)
+@@ -79606,7 +53840,7 @@ if ('undefined' == typeof jQuery)
                      }
                      (3 === i.nodeType &&
                          /[\n\r\t]+/.test(i.nodeValue) &&
@@ -42047,7 +42055,7 @@ index e331539..1370f69 100644
                          (i = t));
                  }
          }
-@@ -79631,21 +53872,21 @@ if ('undefined' == typeof jQuery)
+@@ -79638,21 +53872,21 @@ if ('undefined' == typeof jQuery)
                  }),
                  (t.exists = function (e) {
                      return (
@@ -42073,7 +42081,7 @@ index e331539..1370f69 100644
                          i.push(n),
                          'init' in n && n.init.call(e),
                          !0)
-@@ -79657,7 +53898,7 @@ if ('undefined' == typeof jQuery)
+@@ -79664,7 +53898,7 @@ if ('undefined' == typeof jQuery)
                          o = !1;
                      if (!t.isRegistered(n)) return o;
                      for (; a--;)
@@ -42082,7 +42090,7 @@ index e331539..1370f69 100644
                              ((o = !0),
                              'destroy' in (s = i.splice(a, 1)[0]) &&
                                  s.destroy.call(e));
-@@ -79686,36 +53927,36 @@ if ('undefined' == typeof jQuery)
+@@ -79693,36 +53927,36 @@ if ('undefined' == typeof jQuery)
                          n.innerHTML = e;
                      n.firstChild;
                  )
@@ -42134,7 +42142,7 @@ index e331539..1370f69 100644
                      }
                  }),
                  (l.insertNode = function (e, t) {
-@@ -79724,7 +53965,7 @@ if ('undefined' == typeof jQuery)
+@@ -79731,7 +53965,7 @@ if ('undefined' == typeof jQuery)
                          a = s.commonAncestorContainer;
                      if (!i) return !1;
                      (s.deleteContents(),
@@ -42143,7 +42151,7 @@ index e331539..1370f69 100644
                              C(i, a)
                          :   s.insertNode(i),
                          l.restoreRange());
-@@ -79754,7 +53995,7 @@ if ('undefined' == typeof jQuery)
+@@ -79761,7 +53995,7 @@ if ('undefined' == typeof jQuery)
                      var e,
                          t = l.selectedRange();
                      return t ?
@@ -42152,7 +42160,7 @@ index e331539..1370f69 100644
                              e.innerHTML)
                          :   '';
                  }),
-@@ -79764,7 +54005,7 @@ if ('undefined' == typeof jQuery)
+@@ -79771,7 +54005,7 @@ if ('undefined' == typeof jQuery)
                  }),
                  (l.getFirstBlockParent = function (e) {
                      var t = function (e) {
@@ -42161,7 +42169,7 @@ index e331539..1370f69 100644
                                  t(e)
                              :   e;
                      };
-@@ -79803,7 +54044,7 @@ if ('undefined' == typeof jQuery)
+@@ -79810,7 +54044,7 @@ if ('undefined' == typeof jQuery)
                  }),
                  (l.removeMarker = function (e) {
                      var t = l.getMarker(e);
@@ -42170,7 +42178,7 @@ index e331539..1370f69 100644
                  }),
                  (l.removeMarkers = function () {
                      (l.removeMarker(a), l.removeMarker(o));
-@@ -79815,10 +54056,10 @@ if ('undefined' == typeof jQuery)
+@@ -79822,10 +54056,10 @@ if ('undefined' == typeof jQuery)
                      var i,
                          n = e.getSelection(),
                          a = t.endContainer;
@@ -42184,7 +42192,7 @@ index e331539..1370f69 100644
                              var o = s.createRange();
                              (o.setEndAfter(i),
                                  o.collapse(!1),
-@@ -79847,15 +54088,15 @@ if ('undefined' == typeof jQuery)
+@@ -79854,15 +54088,15 @@ if ('undefined' == typeof jQuery)
                          s = l.cloneSelected();
                      if (!s) return !1;
                      (s.collapse(!1),
@@ -42203,7 +42211,7 @@ index e331539..1370f69 100644
                  }),
                  (l.replaceKeyword = function (e, t, i, n, s, a) {
                      i ||
-@@ -79865,8 +54106,8 @@ if ('undefined' == typeof jQuery)
+@@ -79872,8 +54106,8 @@ if ('undefined' == typeof jQuery)
                      var o,
                          r,
                          c,
@@ -42213,7 +42221,7 @@ index e331539..1370f69 100644
                          h,
                          p,
                          m,
-@@ -79877,25 +54118,25 @@ if ('undefined' == typeof jQuery)
+@@ -79884,25 +54118,25 @@ if ('undefined' == typeof jQuery)
                      for (
                          s && v++,
                              a = a || '',
@@ -42246,7 +42254,7 @@ index e331539..1370f69 100644
                                  l.selectOuterText(
                                      h,
                                      m - h - (/^\S/.test(a) ? 1 : 0)
-@@ -79938,26 +54179,26 @@ if ('undefined' == typeof jQuery)
+@@ -79945,26 +54179,26 @@ if ('undefined' == typeof jQuery)
                          (l && i.test((l.nodeValue || '')[0]))
                      ) {
                          var c = t.cloneSelected(),
@@ -42282,7 +42290,7 @@ index e331539..1370f69 100644
                                  c.collapse(!0),
                                  t.selectRange(c)));
                      }
-@@ -79978,19 +54219,19 @@ if ('undefined' == typeof jQuery)
+@@ -79985,19 +54219,19 @@ if ('undefined' == typeof jQuery)
                  (function e(s) {
                      for (s = s.firstChild; s;) {
                          if (
@@ -42309,7 +42317,7 @@ index e331539..1370f69 100644
                                          s.parentNode.insertBefore(
                                              h,
                                              s.nextSibling
-@@ -80003,12 +54244,12 @@ if ('undefined' == typeof jQuery)
+@@ -80010,12 +54244,12 @@ if ('undefined' == typeof jQuery)
          }
          function re(e, t) {
              var i;
@@ -42325,7 +42333,7 @@ index e331539..1370f69 100644
                      :   (i = null);
                  },
                  !1,
-@@ -80021,46 +54262,46 @@ if ('undefined' == typeof jQuery)
+@@ -80028,46 +54262,46 @@ if ('undefined' == typeof jQuery)
                  l,
                  f,
                  x,
@@ -42388,7 +42396,7 @@ index e331539..1370f69 100644
                  Je,
                  Qe,
                  Xe,
-@@ -80074,8 +54315,8 @@ if ('undefined' == typeof jQuery)
+@@ -80081,8 +54315,8 @@ if ('undefined' == typeof jQuery)
                  rt,
                  lt,
                  ct,
@@ -42398,7 +42406,7 @@ index e331539..1370f69 100644
                  ht,
                  pt,
                  mt,
-@@ -80085,150 +54326,150 @@ if ('undefined' == typeof jQuery)
+@@ -80092,150 +54326,150 @@ if ('undefined' == typeof jQuery)
                  vt = [],
                  bt = {},
                  yt = {},
@@ -42638,7 +42646,7 @@ index e331539..1370f69 100644
                          }),
                          p(o, 'selectionchanged', at),
                          p(o, 'selectionchanged', tt),
-@@ -80241,13 +54482,13 @@ if ('undefined' == typeof jQuery)
+@@ -80248,13 +54482,13 @@ if ('undefined' == typeof jQuery)
                  (Fe = function () {
                      var e,
                          t = _t.commands,
@@ -42655,7 +42663,7 @@ index e331539..1370f69 100644
                          a(n, function (n, s) {
                              ((e = r('div', { className: 'sceditor-group' })),
                                  a(s.split(','), function (n, s) {
-@@ -80267,16 +54508,16 @@ if ('undefined' == typeof jQuery)
+@@ -80274,16 +54508,16 @@ if ('undefined' == typeof jQuery)
                                                  },
                                                  !0
                                              ).firstChild),
@@ -42677,7 +42685,7 @@ index e331539..1370f69 100644
                                                      tt(),
                                                      e.preventDefault());
                                              }),
-@@ -80304,15 +54545,15 @@ if ('undefined' == typeof jQuery)
+@@ -80311,15 +54545,15 @@ if ('undefined' == typeof jQuery)
                                                      name: s,
                                                      state: r.exec,
                                                  }),
@@ -42697,7 +42705,7 @@ index e331539..1370f69 100644
                      var e,
                          t,
                          i,
-@@ -80321,37 +54562,37 @@ if ('undefined' == typeof jQuery)
+@@ -80328,37 +54562,37 @@ if ('undefined' == typeof jQuery)
                          a,
                          l = r('div', { className: 'sceditor-grip' }),
                          c = r('div', { className: 'sceditor-resize-cover' }),
@@ -42749,7 +42757,7 @@ index e331539..1370f69 100644
                                  (o || a) && _t.dimensions(o, a),
                                  s.preventDefault());
                          }),
-@@ -80360,45 +54601,45 @@ if ('undefined' == typeof jQuery)
+@@ -80367,45 +54601,45 @@ if ('undefined' == typeof jQuery)
                                  ((C = !1),
                                  g(c),
                                  E(o, 'resizing'),
@@ -42815,7 +42823,7 @@ index e331539..1370f69 100644
                                      gt.push(
                                          r('img', { src: t + (i.url || i) })
                                      ));
-@@ -80407,54 +54648,54 @@ if ('undefined' == typeof jQuery)
+@@ -80414,54 +54648,54 @@ if ('undefined' == typeof jQuery)
                  (ot = function () {
                      var e,
                          t,
@@ -42891,7 +42899,7 @@ index e331539..1370f69 100644
                              _t);
                  }),
                  (et = function (e) {
-@@ -80467,15 +54708,15 @@ if ('undefined' == typeof jQuery)
+@@ -80474,15 +54708,15 @@ if ('undefined' == typeof jQuery)
                  (_t.width = function (e, t) {
                      return e || 0 === e ?
                              (_t.dimensions(e, null, t), _t)
@@ -42910,7 +42918,7 @@ index e331539..1370f69 100644
                              _t)
                      );
                  }),
-@@ -80487,53 +54728,53 @@ if ('undefined' == typeof jQuery)
+@@ -80494,53 +54728,53 @@ if ('undefined' == typeof jQuery)
                  (_t.maximize = function (e) {
                      var t = 'sceditor-maximize';
                      return pe(e) ?
@@ -42990,7 +42998,7 @@ index e331539..1370f69 100644
                              delete e._sceditor,
                              v(e),
                              (e.required = ce));
-@@ -80543,7 +54784,7 @@ if ('undefined' == typeof jQuery)
+@@ -80550,7 +54784,7 @@ if ('undefined' == typeof jQuery)
                      var l,
                          c = 'sceditor-' + t;
                      (_t.closeDropDown(!0),
@@ -42999,7 +43007,7 @@ index e331539..1370f69 100644
                              (!1 !== s &&
                                  a(
                                      h(i, ':not(input):not(textarea)'),
-@@ -80558,40 +54799,40 @@ if ('undefined' == typeof jQuery)
+@@ -80565,40 +54799,40 @@ if ('undefined' == typeof jQuery)
                                      left: e.offsetLeft,
                                      marginTop: e.clientHeight,
                                  },
@@ -43051,7 +43059,7 @@ index e331539..1370f69 100644
                                      html:
                                          '<img src="' + e.target.result + '" />',
                                  });
-@@ -80604,50 +54845,50 @@ if ('undefined' == typeof jQuery)
+@@ -80611,50 +54845,50 @@ if ('undefined' == typeof jQuery)
                              r = n.items;
                          e.preventDefault();
                          for (var l = 0; l < o.length; l++) {
@@ -43117,7 +43125,7 @@ index e331539..1370f69 100644
                  }),
                  (_t.wysiwygEditorInsertHtml = function (e, t, i) {
                      var n,
-@@ -80658,13 +54899,13 @@ if ('undefined' == typeof jQuery)
+@@ -80665,13 +54899,13 @@ if ('undefined' == typeof jQuery)
                          (!i && c(Q, 'code')) ||
                              (Z.insertHTML(e, t),
                              Z.saveRange(),
@@ -43137,7 +43145,7 @@ index e331539..1370f69 100644
                              Z.restoreRange(),
                              nt()));
                  }),
-@@ -80682,31 +54923,31 @@ if ('undefined' == typeof jQuery)
+@@ -80689,31 +54923,31 @@ if ('undefined' == typeof jQuery)
                  (_t.sourceEditorInsertText = function (e, t) {
                      var i,
                          n,
@@ -43184,7 +43192,7 @@ index e331539..1370f69 100644
                      );
                  }),
                  (_t.val = function (e, t) {
-@@ -80728,7 +54969,7 @@ if ('undefined' == typeof jQuery)
+@@ -80735,7 +54969,7 @@ if ('undefined' == typeof jQuery)
                          var o = Z.selectedHtml();
                          (!1 !== n &&
                              'fragmentToSource' in i &&
@@ -43193,7 +43201,7 @@ index e331539..1370f69 100644
                              (e += o + t));
                      }
                      return (
-@@ -80747,51 +54988,51 @@ if ('undefined' == typeof jQuery)
+@@ -80754,51 +54988,51 @@ if ('undefined' == typeof jQuery)
                  }),
                  (_t.getWysiwygEditorValue = function (e) {
                      for (
@@ -43260,7 +43268,7 @@ index e331539..1370f69 100644
                  }),
                  (_t.sourceMode = function (e) {
                      var t = _t.inSourceMode();
-@@ -80802,14 +55043,14 @@ if ('undefined' == typeof jQuery)
+@@ -80809,14 +55043,14 @@ if ('undefined' == typeof jQuery)
                  }),
                  (_t.toggleSourceMode = function () {
                      var e = _t.inSourceMode();
@@ -43278,7 +43286,7 @@ index e331539..1370f69 100644
                          b(f),
                          M(o, 'wysiwygMode', e),
                          M(o, 'sourceMode', !e),
-@@ -80818,11 +55059,11 @@ if ('undefined' == typeof jQuery)
+@@ -80825,11 +55059,11 @@ if ('undefined' == typeof jQuery)
                  }),
                  (it = function () {
                      return (
@@ -43293,7 +43301,7 @@ index e331539..1370f69 100644
                      _t.inSourceMode() ?
                          t.txtExec &&
                          (Array.isArray(t.txtExec) ?
-@@ -80839,14 +55080,14 @@ if ('undefined' == typeof jQuery)
+@@ -80846,14 +55080,14 @@ if ('undefined' == typeof jQuery)
                              ));
                  }),
                  (Ee = function () {
@@ -43310,7 +43318,7 @@ index e331539..1370f69 100644
                          } catch (e) {}
                          (!i &&
                              n &&
-@@ -80870,20 +55111,20 @@ if ('undefined' == typeof jQuery)
+@@ -80877,20 +55111,20 @@ if ('undefined' == typeof jQuery)
                                      t &&
                                      e.nodeType !== ve &&
                                      (e = e.childNodes[t]);
@@ -43336,7 +43344,7 @@ index e331539..1370f69 100644
                  }),
                  (at = function () {
                      var e,
-@@ -80892,7 +55133,7 @@ if ('undefined' == typeof jQuery)
+@@ -80899,7 +55133,7 @@ if ('undefined' == typeof jQuery)
                          ((e = J),
                          (J = t),
                          (Q = Z.getFirstBlockParent(t)),
@@ -43345,7 +43353,7 @@ index e331539..1370f69 100644
                  }),
                  (_t.currentNode = function () {
                      return J;
-@@ -80904,7 +55145,7 @@ if ('undefined' == typeof jQuery)
+@@ -80911,7 +55145,7 @@ if ('undefined' == typeof jQuery)
                      var e,
                          t,
                          i = 'active',
@@ -43354,7 +43362,7 @@ index e331539..1370f69 100644
                          s = _t.sourceMode();
                      if (_t.readOnly())
                          a(h(l, i), function (e, t) {
-@@ -80917,76 +55158,76 @@ if ('undefined' == typeof jQuery)
+@@ -80924,76 +55158,76 @@ if ('undefined' == typeof jQuery)
                          for (var o = 0; o < vt.length; o++) {
                              var r = 0,
                                  c = yt[vt[o].name],
@@ -43455,7 +43463,7 @@ index e331539..1370f69 100644
                  }),
                  (_t._ = function () {
                      var e,
-@@ -81001,8 +55242,8 @@ if ('undefined' == typeof jQuery)
+@@ -81008,8 +55242,8 @@ if ('undefined' == typeof jQuery)
                      );
                  }),
                  (Qe = function (e) {
@@ -43466,7 +43474,7 @@ index e331539..1370f69 100644
                      ft[t] &&
                          ft[t].forEach(function (t) {
                              t.call(_t, e);
-@@ -81016,7 +55257,7 @@ if ('undefined' == typeof jQuery)
+@@ -81023,7 +55257,7 @@ if ('undefined' == typeof jQuery)
                              (i || ((ft[a] = ft[a] || []), ft[a].push(t)),
                                  n || ((ft[o] = ft[o] || []), ft[o].push(t)),
                                  'valuechanged' === e[s] &&
@@ -43475,7 +43483,7 @@ index e331539..1370f69 100644
                          }
                      return _t;
                  }),
-@@ -81030,32 +55271,32 @@ if ('undefined' == typeof jQuery)
+@@ -81037,32 +55271,32 @@ if ('undefined' == typeof jQuery)
                  (_t.blur = function (e, t, i) {
                      return (
                          me(e) ? _t.bind('blur', e, t, i)
@@ -43516,7 +43524,7 @@ index e331539..1370f69 100644
                      }
                      return (tt(), _t);
                  }),
-@@ -81084,7 +55325,7 @@ if ('undefined' == typeof jQuery)
+@@ -81091,7 +55325,7 @@ if ('undefined' == typeof jQuery)
                      c(Q, 'code') ||
                          (i ||
                              ((i = []),
@@ -43525,7 +43533,7 @@ index e331539..1370f69 100644
                                  i[t++] = [e, n];
                              }),
                              i.sort(function (e, t) {
-@@ -81098,45 +55339,45 @@ if ('undefined' == typeof jQuery)
+@@ -81105,45 +55339,45 @@ if ('undefined' == typeof jQuery)
                              !0,
                              !0,
                              _t.longestEmoticonCode,
@@ -43590,7 +43598,7 @@ index e331539..1370f69 100644
                      );
                  }),
                  (Ue = function (e) {
-@@ -81259,7 +55500,7 @@ if ('undefined' == typeof jQuery)
+@@ -81266,7 +55500,7 @@ if ('undefined' == typeof jQuery)
                          (e = e.toLowerCase()),
                          he(t) ?
                              (bt[e] = function () {
@@ -43599,7 +43607,7 @@ index e331539..1370f69 100644
                              })
                          :   (bt[e] = t),
                          _t
-@@ -81268,14 +55509,14 @@ if ('undefined' == typeof jQuery)
+@@ -81275,14 +55509,14 @@ if ('undefined' == typeof jQuery)
                  (_t.removeShortcut = function (e) {
                      return (delete bt[e.toLowerCase()], _t);
                  }),
@@ -43617,7 +43625,7 @@ index e331539..1370f69 100644
                      ) {
                          for (; t !== n;) {
                              for (; t.previousSibling;)
-@@ -81290,47 +55531,47 @@ if ('undefined' == typeof jQuery)
+@@ -81297,47 +55531,47 @@ if ('undefined' == typeof jQuery)
                      }
                  }),
                  (ct = function () {
@@ -43681,7 +43689,7 @@ index e331539..1370f69 100644
                  }),
                  (ht = function (e) {
                      var t = e.which,
-@@ -81338,21 +55579,21 @@ if ('undefined' == typeof jQuery)
+@@ -81345,21 +55579,21 @@ if ('undefined' == typeof jQuery)
                          n = 13 === i || 32 === i,
                          s = 8 === i || 46 === i;
                      ((ht.lastChar = t),
@@ -43711,7 +43719,7 @@ index e331539..1370f69 100644
                  }),
                  (pt = function () {
                      _t.updateOriginal();
-@@ -81361,8 +55602,8 @@ if ('undefined' == typeof jQuery)
+@@ -81368,8 +55602,8 @@ if ('undefined' == typeof jQuery)
          }
          e = e && e.hasOwnProperty('default') ? e.default : e;
          var ce,
@@ -43721,7 +43729,7 @@ index e331539..1370f69 100644
              he = t.bind(null, 'string'),
              pe = t.bind(null, 'undefined'),
              me = t.bind(null, 'function'),
-@@ -81373,7 +55614,7 @@ if ('undefined' == typeof jQuery)
+@@ -81380,7 +55614,7 @@ if ('undefined' == typeof jQuery)
              be = !0,
              ye =
                  '|body|hr|p|div|h1|h2|h3|h4|h5|h6|address|pre|form|table|tbody|thead|tfoot|th|tr|td|li|ol|ul|blockquote|center|',
@@ -43730,7 +43738,7 @@ index e331539..1370f69 100644
                  toolbar:
                      'bold,italic,underline,strike,subscript,superscript|left,center,right,justify|font,size,color,removeformat|cut,copy,pastetext|bulletlist,orderedlist,indent,outdent|table|code,quote|horizontalrule,image,email,link,unlink|emoticon,youtube,date,time|ltr,rtl|print,maximize,source',
                  toolbarExclude: null,
-@@ -81456,7 +55697,7 @@ if ('undefined' == typeof jQuery)
+@@ -81463,7 +55697,7 @@ if ('undefined' == typeof jQuery)
                  parserOptions: {},
                  dropDownCss: {},
              },
@@ -43739,7 +43747,7 @@ index e331539..1370f69 100644
              xe = (function () {
                  var e,
                      t = 3,
-@@ -81473,28 +55714,28 @@ if ('undefined' == typeof jQuery)
+@@ -81480,28 +55714,28 @@ if ('undefined' == typeof jQuery)
                      t > 4 ? t : e
                  );
              })(),
@@ -43786,7 +43794,7 @@ index e331539..1370f69 100644
                  html: '<!DOCTYPE html><html{attrs}><head><style>.ie * {min-height: auto !important} .ie table td {height:15px} @supports (-ms-ime-align:auto) { * { min-height: auto !important; } }</style><meta http-equiv="Content-Type" content="text/html;charset={charset}" /><link rel="stylesheet" type="text/css" href="{style}" /></head><body contenteditable="true" {spellcheck}><p></p></body></html>',
                  toolbarButton:
                      '<a class="sceditor-button sceditor-button-{name}" data-sceditor-command="{name}" unselectable="on"><div unselectable="on">{dispName}</div></a>',
-@@ -81559,12 +55800,12 @@ if ('undefined' == typeof jQuery)
+@@ -81566,12 +55800,12 @@ if ('undefined' == typeof jQuery)
                      _dropDown: function (e, t, i) {
                          var n = r('div');
                          (p(n, 'click', 'a', function (t) {
@@ -43801,7 +43809,7 @@ index e331539..1370f69 100644
                              }),
                              e.createDropDown(t, 'font-picker', n));
                      },
-@@ -81580,12 +55821,12 @@ if ('undefined' == typeof jQuery)
+@@ -81587,12 +55821,12 @@ if ('undefined' == typeof jQuery)
                      _dropDown: function (e, t, i) {
                          var n = r('div');
                          p(n, 'click', 'a', function (t) {
@@ -43816,7 +43824,7 @@ index e331539..1370f69 100644
                          e.createDropDown(t, 'fontsize-picker', n);
                      },
                      exec: function (e) {
-@@ -81615,9 +55856,9 @@ if ('undefined' == typeof jQuery)
+@@ -81622,9 +55856,9 @@ if ('undefined' == typeof jQuery)
                                      (s += '</div>'));
                              }),
                              (a._htmlCache = s)),
@@ -43828,7 +43836,7 @@ index e331539..1370f69 100644
                                      e.closeDropDown(!0),
                                      t.preventDefault());
                              }),
-@@ -81658,7 +55899,7 @@ if ('undefined' == typeof jQuery)
+@@ -81665,7 +55899,7 @@ if ('undefined' == typeof jQuery)
                          var t,
                              i = r('div'),
                              n = this;
@@ -43837,7 +43845,7 @@ index e331539..1370f69 100644
                              i,
                              te(
                                  'pastetext',
-@@ -81697,14 +55938,14 @@ if ('undefined' == typeof jQuery)
+@@ -81704,14 +55938,14 @@ if ('undefined' == typeof jQuery)
                      state: function (e, t) {
                          var i, n, s;
                          return (
@@ -43855,7 +43863,7 @@ index e331539..1370f69 100644
                                                  s !==
                                                      s.parentNode
                                                          .lastElementChild)))
-@@ -81736,7 +55977,7 @@ if ('undefined' == typeof jQuery)
+@@ -81743,7 +55977,7 @@ if ('undefined' == typeof jQuery)
                      exec: function (e) {
                          var t = this,
                              i = r('div');
@@ -43864,7 +43872,7 @@ index e331539..1370f69 100644
                              i,
                              te(
                                  'table',
-@@ -81789,7 +56030,7 @@ if ('undefined' == typeof jQuery)
+@@ -81796,7 +56030,7 @@ if ('undefined' == typeof jQuery)
                  image: {
                      _dropDown: function (e, t, i, n) {
                          var s = r('div');
@@ -43873,7 +43881,7 @@ index e331539..1370f69 100644
                              s,
                              te(
                                  'image',
-@@ -81832,7 +56073,7 @@ if ('undefined' == typeof jQuery)
+@@ -81839,7 +56073,7 @@ if ('undefined' == typeof jQuery)
                  email: {
                      _dropDown: function (e, t, i) {
                          var n = r('div');
@@ -43882,7 +43890,7 @@ index e331539..1370f69 100644
                              n,
                              te(
                                  'email',
-@@ -81877,7 +56118,7 @@ if ('undefined' == typeof jQuery)
+@@ -81884,7 +56118,7 @@ if ('undefined' == typeof jQuery)
                                  t.preventDefault());
                          }
                          var s = r('div');
@@ -43891,7 +43899,7 @@ index e331539..1370f69 100644
                              s,
                              te(
                                  'link',
-@@ -81923,7 +56164,7 @@ if ('undefined' == typeof jQuery)
+@@ -81930,7 +56164,7 @@ if ('undefined' == typeof jQuery)
                          var e = c(this.currentNode(), 'a');
                          if (e) {
                              for (; e.firstChild;) C(e.firstChild, e);
@@ -43900,7 +43908,7 @@ index e331539..1370f69 100644
                          }
                      },
                      tooltip: 'Unlink',
-@@ -81952,14 +56193,14 @@ if ('undefined' == typeof jQuery)
+@@ -81959,14 +56193,14 @@ if ('undefined' == typeof jQuery)
                                  var o,
                                      l = t.opts,
                                      c = l.emoticonsRoot || '',
@@ -43918,7 +43926,7 @@ index e331539..1370f69 100644
                                              ' '
                                          :   '',
                                      g = r('div'),
-@@ -81971,7 +56212,7 @@ if ('undefined' == typeof jQuery)
+@@ -81978,7 +56212,7 @@ if ('undefined' == typeof jQuery)
                                          s ? l.emoticons.more : {}
                                      );
                                  return (
@@ -43927,7 +43935,7 @@ index e331539..1370f69 100644
                                      (b = Math.sqrt(Object.keys(y).length)),
                                      p(g, 'click', 'img', function (e) {
                                          (t
-@@ -81984,7 +56225,7 @@ if ('undefined' == typeof jQuery)
+@@ -81991,7 +56225,7 @@ if ('undefined' == typeof jQuery)
                                              e.preventDefault());
                                      }),
                                      a(y, function (e, t) {
@@ -43936,7 +43944,7 @@ index e331539..1370f69 100644
                                              v,
                                              r('img', {
                                                  src: c + (t.url || t),
-@@ -81993,11 +56234,11 @@ if ('undefined' == typeof jQuery)
+@@ -82000,11 +56234,11 @@ if ('undefined' == typeof jQuery)
                                              })
                                          ),
                                              v.children.length >= b &&
@@ -43950,7 +43958,7 @@ index e331539..1370f69 100644
                                              (o = r('a', {
                                                  className: 'sceditor-more',
                                              })),
-@@ -82011,7 +56252,7 @@ if ('undefined' == typeof jQuery)
+@@ -82018,7 +56252,7 @@ if ('undefined' == typeof jQuery)
                                              ),
                                                  n.preventDefault());
                                          }),
@@ -43959,7 +43967,7 @@ index e331539..1370f69 100644
                                      g
                                  );
                              };
-@@ -82025,7 +56266,7 @@ if ('undefined' == typeof jQuery)
+@@ -82032,7 +56266,7 @@ if ('undefined' == typeof jQuery)
                  youtube: {
                      _dropDown: function (e, t, i) {
                          var n = r('div');
@@ -43968,7 +43976,7 @@ index e331539..1370f69 100644
                              n,
                              te(
                                  'youtubeMenu',
-@@ -82122,9 +56363,9 @@ if ('undefined' == typeof jQuery)
+@@ -82129,9 +56363,9 @@ if ('undefined' == typeof jQuery)
                              i = t.getFirstBlockParent();
                          if (
                              (e.focus(),
@@ -43980,7 +43988,7 @@ index e331539..1370f69 100644
                          ) {
                              var n = 'ltr' === y(i, 'direction') ? '' : 'ltr';
                              y(i, 'direction', n);
-@@ -82142,9 +56383,9 @@ if ('undefined' == typeof jQuery)
+@@ -82149,9 +56383,9 @@ if ('undefined' == typeof jQuery)
                              i = t.getFirstBlockParent();
                          if (
                              (e.focus(),
@@ -43992,7 +44000,7 @@ index e331539..1370f69 100644
                          ) {
                              var n = 'rtl' === y(i, 'direction') ? '' : 'rtl';
                              y(i, 'direction', n);
-@@ -82181,10 +56422,10 @@ if ('undefined' == typeof jQuery)
+@@ -82188,10 +56422,10 @@ if ('undefined' == typeof jQuery)
                  },
                  ignore: {},
              },
@@ -44006,7 +44014,7 @@ index e331539..1370f69 100644
                  var n,
                      s,
                      a,
-@@ -82192,10 +56433,10 @@ if ('undefined' == typeof jQuery)
+@@ -82199,10 +56433,10 @@ if ('undefined' == typeof jQuery)
                      r,
                      l = '',
                      c = e.startContainer,
@@ -44020,7 +44028,7 @@ index e331539..1370f69 100644
                      i > l.length && c && 3 === c.nodeType;
                  )
                      ((n = c.nodeValue),
-@@ -82203,19 +56444,19 @@ if ('undefined' == typeof jQuery)
+@@ -82210,19 +56444,19 @@ if ('undefined' == typeof jQuery)
                          r && ((o = n.length), (a = 0)),
                          (r = c),
                          t ?
@@ -44048,7 +44056,7 @@ index e331539..1370f69 100644
          ((le.locale = {}),
              (le.formats = {}),
              (le.icons = {}),
-@@ -82252,10 +56493,10 @@ if ('undefined' == typeof jQuery)
+@@ -82259,10 +56493,10 @@ if ('undefined' == typeof jQuery)
              (window.sceditor = {
                  command: le.command,
                  commands: Me,
@@ -44061,7 +44069,7 @@ index e331539..1370f69 100644
                  regexEscape: Q,
                  escapeEntities: X,
                  escapeUriScheme: ee,
-@@ -82263,26 +56504,26 @@ if ('undefined' == typeof jQuery)
+@@ -82270,26 +56504,26 @@ if ('undefined' == typeof jQuery)
                      css: y,
                      attr: _,
                      removeAttr: f,
@@ -44101,7 +44109,7 @@ index e331539..1370f69 100644
                      hasStyle: J,
                  },
                  locale: le.locale,
-@@ -82293,7 +56534,7 @@ if ('undefined' == typeof jQuery)
+@@ -82300,7 +56534,7 @@ if ('undefined' == typeof jQuery)
                  create: function (e, t) {
                      ((t = t || {}),
                          l(e, '.sceditor-container') ||
@@ -44110,7 +44118,7 @@ index e331539..1370f69 100644
                                  new le(e, t)));
                  },
                  instance: function (e) {
-@@ -82350,13 +56591,13 @@ if ('undefined' == typeof jQuery)
+@@ -82357,13 +56591,13 @@ if ('undefined' == typeof jQuery)
                  for (var l in r) {
                      var c = r[l];
                      if (!pe(c)) {
@@ -44127,7 +44135,7 @@ index e331539..1370f69 100644
                      }
                  }
              }
-@@ -82393,15 +56634,15 @@ if ('undefined' == typeof jQuery)
+@@ -82400,15 +56634,15 @@ if ('undefined' == typeof jQuery)
                  var i = e || {};
                  (i = i.parentNode) && !/(9|11)/.test(i.nodeType);
              )
@@ -44147,7 +44155,7 @@ index e331539..1370f69 100644
              e.appendChild(t);
          }
          function h(e, t) {
-@@ -82415,7 +56656,7 @@ if ('undefined' == typeof jQuery)
+@@ -82422,7 +56656,7 @@ if ('undefined' == typeof jQuery)
                          n['_sce-event-' + t + i] ||
                          function (t) {
                              for (var s = t.target; s && s !== e;) {
@@ -44156,7 +44164,7 @@ index e331539..1370f69 100644
                                  s = s.parentNode;
                              }
                          }),
-@@ -82445,7 +56686,7 @@ if ('undefined' == typeof jQuery)
+@@ -82452,7 +56686,7 @@ if ('undefined' == typeof jQuery)
              y(e, 'display', '');
          }
          function b(e) {
@@ -44165,7 +44173,7 @@ index e331539..1370f69 100644
          }
          function y(e, t, i) {
              if (arguments.length < 3) {
-@@ -82459,7 +56700,7 @@ if ('undefined' == typeof jQuery)
+@@ -82466,7 +56700,7 @@ if ('undefined' == typeof jQuery)
                  e.style[t] = n ? i + 'px' : i;
              }
          }
@@ -44174,7 +44182,7 @@ index e331539..1370f69 100644
              var n = arguments.length,
                  s = {};
              if (e.nodeType === ge) {
-@@ -82475,7 +56716,7 @@ if ('undefined' == typeof jQuery)
+@@ -82482,7 +56716,7 @@ if ('undefined' == typeof jQuery)
                  _(e, 'data-' + t, String(i));
              }
          }
@@ -44183,7 +44191,7 @@ index e331539..1370f69 100644
              var i = !1;
              return (
                  e &&
-@@ -82491,11 +56732,11 @@ if ('undefined' == typeof jQuery)
+@@ -82498,11 +56732,11 @@ if ('undefined' == typeof jQuery)
          function x(e, t) {
              return e !== t && e.contains && e.contains(t);
          }
@@ -44197,7 +44205,7 @@ index e331539..1370f69 100644
                      :   null
                  :   i
              );
-@@ -82503,24 +56744,24 @@ if ('undefined' == typeof jQuery)
+@@ -82510,24 +56744,24 @@ if ('undefined' == typeof jQuery)
          function C(e, t) {
              return t.parentNode.insertBefore(e, t);
          }
@@ -44230,7 +44238,7 @@ index e331539..1370f69 100644
              if (pe(t)) {
                  var i = getComputedStyle(e),
                      n = o(i.paddingLeft) + o(i.paddingRight),
-@@ -82538,7 +56779,7 @@ if ('undefined' == typeof jQuery)
+@@ -82545,7 +56779,7 @@ if ('undefined' == typeof jQuery)
              }
              y(e, 'height', t);
          }
@@ -44239,7 +44247,7 @@ index e331539..1370f69 100644
              var n;
              (me(window.CustomEvent) ?
                  (n = new CustomEvent(t, {
-@@ -82555,42 +56796,42 @@ if ('undefined' == typeof jQuery)
+@@ -82562,42 +56796,42 @@ if ('undefined' == typeof jQuery)
                  ),
                  e.dispatchEvent(n));
          }
@@ -44292,7 +44300,7 @@ index e331539..1370f69 100644
              var i = r(t, {}, e.ownerDocument);
              for (
                  a(e.attributes, function (e, t) {
-@@ -82600,10 +56841,10 @@ if ('undefined' == typeof jQuery)
+@@ -82607,10 +56841,10 @@ if ('undefined' == typeof jQuery)
                  });
                  e.firstChild;
              )
@@ -44305,7 +44313,7 @@ index e331539..1370f69 100644
              return (
                  !!/11?|9/.test(e.nodeType) &&
                  '|iframe|area|base|basefont|br|col|frame|hr|img|input|wbr|isindex|link|meta|param|command|embed|keygen|source|track|object|'.indexOf(
-@@ -82611,7 +56852,7 @@ if ('undefined' == typeof jQuery)
+@@ -82618,7 +56852,7 @@ if ('undefined' == typeof jQuery)
                  ) < 0
              );
          }
@@ -44314,7 +44322,7 @@ index e331539..1370f69 100644
              var i,
                  n = (e || {}).nodeType || ve;
              return (
-@@ -82620,30 +56861,30 @@ if ('undefined' == typeof jQuery)
+@@ -82627,30 +56861,30 @@ if ('undefined' == typeof jQuery)
                  : ye.indexOf('|' + i + '|') < 0
              );
          }
@@ -44355,7 +44363,7 @@ index e331539..1370f69 100644
              for (; (e = e.parentNode);) if (x(e, t)) return e;
          }
          function U(e, t) {
-@@ -82652,7 +56893,7 @@ if ('undefined' == typeof jQuery)
+@@ -82659,7 +56893,7 @@ if ('undefined' == typeof jQuery)
                          U(e.parentNode, t)
                  :   null;
          }
@@ -44364,7 +44372,7 @@ index e331539..1370f69 100644
              var t,
                  i,
                  n,
-@@ -82662,65 +56903,65 @@ if ('undefined' == typeof jQuery)
+@@ -82669,65 +56903,65 @@ if ('undefined' == typeof jQuery)
                  r,
                  l = y(e, 'whiteSpace'),
                  c = /line$/i.test(l),
@@ -44448,7 +44456,7 @@ index e331539..1370f69 100644
                  (n = s[(t = fe[t])]),
                  'textAlign' === t)
              ) {
-@@ -82729,7 +56970,7 @@ if ('undefined' == typeof jQuery)
+@@ -82736,7 +56970,7 @@ if ('undefined' == typeof jQuery)
                      (n = n || y(e, t)),
                      y(e.parentNode, t) === n ||
                          'block' !== y(e, 'display') ||
@@ -44457,7 +44465,7 @@ index e331539..1370f69 100644
                  )
                      return '';
                  if (
-@@ -82741,7 +56982,7 @@ if ('undefined' == typeof jQuery)
+@@ -82748,7 +56982,7 @@ if ('undefined' == typeof jQuery)
              return n;
          }
          function J(e, t, i) {
@@ -44466,7 +44474,7 @@ index e331539..1370f69 100644
              return (
                  !!n &&
                  (!i || n === i || (Array.isArray(i) && i.indexOf(n) > -1))
-@@ -82775,18 +57016,18 @@ if ('undefined' == typeof jQuery)
+@@ -82782,18 +57016,18 @@ if ('undefined' == typeof jQuery)
              var t,
                  i = /^[^\/]*:/i,
                  n = window.location;
@@ -44488,7 +44496,7 @@ index e331539..1370f69 100644
                  n
              );
          }
-@@ -82800,7 +57041,7 @@ if ('undefined' == typeof jQuery)
+@@ -82807,7 +57041,7 @@ if ('undefined' == typeof jQuery)
                      }
                      (3 === i.nodeType &&
                          /[\n\r\t]+/.test(i.nodeValue) &&
@@ -44497,7 +44505,7 @@ index e331539..1370f69 100644
                          (i = t));
                  }
          }
-@@ -82832,21 +57073,21 @@ if ('undefined' == typeof jQuery)
+@@ -82839,21 +57073,21 @@ if ('undefined' == typeof jQuery)
                  }),
                  (t.exists = function (e) {
                      return (
@@ -44523,7 +44531,7 @@ index e331539..1370f69 100644
                          i.push(n),
                          'init' in n && n.init.call(e),
                          !0)
-@@ -82858,7 +57099,7 @@ if ('undefined' == typeof jQuery)
+@@ -82865,7 +57099,7 @@ if ('undefined' == typeof jQuery)
                          o = !1;
                      if (!t.isRegistered(n)) return o;
                      for (; a--;)
@@ -44532,7 +44540,7 @@ index e331539..1370f69 100644
                              ((o = !0),
                              'destroy' in (s = i.splice(a, 1)[0]) &&
                                  s.destroy.call(e));
-@@ -82887,36 +57128,36 @@ if ('undefined' == typeof jQuery)
+@@ -82894,36 +57128,36 @@ if ('undefined' == typeof jQuery)
                          n.innerHTML = e;
                      n.firstChild;
                  )
@@ -44584,7 +44592,7 @@ index e331539..1370f69 100644
                      }
                  }),
                  (l.insertNode = function (e, t) {
-@@ -82925,7 +57166,7 @@ if ('undefined' == typeof jQuery)
+@@ -82932,7 +57166,7 @@ if ('undefined' == typeof jQuery)
                          a = s.commonAncestorContainer;
                      if (!i) return !1;
                      (s.deleteContents(),
@@ -44593,7 +44601,7 @@ index e331539..1370f69 100644
                              C(i, a)
                          :   s.insertNode(i),
                          l.restoreRange());
-@@ -82955,7 +57196,7 @@ if ('undefined' == typeof jQuery)
+@@ -82962,7 +57196,7 @@ if ('undefined' == typeof jQuery)
                      var e,
                          t = l.selectedRange();
                      return t ?
@@ -44602,7 +44610,7 @@ index e331539..1370f69 100644
                              e.innerHTML)
                          :   '';
                  }),
-@@ -82965,7 +57206,7 @@ if ('undefined' == typeof jQuery)
+@@ -82972,7 +57206,7 @@ if ('undefined' == typeof jQuery)
                  }),
                  (l.getFirstBlockParent = function (e) {
                      var t = function (e) {
@@ -44611,7 +44619,7 @@ index e331539..1370f69 100644
                                  t(e)
                              :   e;
                      };
-@@ -83004,7 +57245,7 @@ if ('undefined' == typeof jQuery)
+@@ -83011,7 +57245,7 @@ if ('undefined' == typeof jQuery)
                  }),
                  (l.removeMarker = function (e) {
                      var t = l.getMarker(e);
@@ -44620,7 +44628,7 @@ index e331539..1370f69 100644
                  }),
                  (l.removeMarkers = function () {
                      (l.removeMarker(a), l.removeMarker(o));
-@@ -83016,10 +57257,10 @@ if ('undefined' == typeof jQuery)
+@@ -83023,10 +57257,10 @@ if ('undefined' == typeof jQuery)
                      var i,
                          n = e.getSelection(),
                          a = t.endContainer;
@@ -44634,7 +44642,7 @@ index e331539..1370f69 100644
                              var o = s.createRange();
                              (o.setEndAfter(i),
                                  o.collapse(!1),
-@@ -83048,15 +57289,15 @@ if ('undefined' == typeof jQuery)
+@@ -83055,15 +57289,15 @@ if ('undefined' == typeof jQuery)
                          s = l.cloneSelected();
                      if (!s) return !1;
                      (s.collapse(!1),
@@ -44653,7 +44661,7 @@ index e331539..1370f69 100644
                  }),
                  (l.replaceKeyword = function (e, t, i, n, s, a) {
                      i ||
-@@ -83066,8 +57307,8 @@ if ('undefined' == typeof jQuery)
+@@ -83073,8 +57307,8 @@ if ('undefined' == typeof jQuery)
                      var o,
                          r,
                          c,
@@ -44663,7 +44671,7 @@ index e331539..1370f69 100644
                          h,
                          p,
                          m,
-@@ -83078,25 +57319,25 @@ if ('undefined' == typeof jQuery)
+@@ -83085,25 +57319,25 @@ if ('undefined' == typeof jQuery)
                      for (
                          s && v++,
                              a = a || '',
@@ -44696,7 +44704,7 @@ index e331539..1370f69 100644
                                  l.selectOuterText(
                                      h,
                                      m - h - (/^\S/.test(a) ? 1 : 0)
-@@ -83139,26 +57380,26 @@ if ('undefined' == typeof jQuery)
+@@ -83146,26 +57380,26 @@ if ('undefined' == typeof jQuery)
                          (l && i.test((l.nodeValue || '')[0]))
                      ) {
                          var c = t.cloneSelected(),
@@ -44732,7 +44740,7 @@ index e331539..1370f69 100644
                                  c.collapse(!0),
                                  t.selectRange(c)));
                      }
-@@ -83179,19 +57420,19 @@ if ('undefined' == typeof jQuery)
+@@ -83186,19 +57420,19 @@ if ('undefined' == typeof jQuery)
                  (function e(s) {
                      for (s = s.firstChild; s;) {
                          if (
@@ -44759,7 +44767,7 @@ index e331539..1370f69 100644
                                          s.parentNode.insertBefore(
                                              h,
                                              s.nextSibling
-@@ -83204,12 +57445,12 @@ if ('undefined' == typeof jQuery)
+@@ -83211,12 +57445,12 @@ if ('undefined' == typeof jQuery)
          }
          function re(e, t) {
              var i;
@@ -44775,7 +44783,7 @@ index e331539..1370f69 100644
                      :   (i = null);
                  },
                  !1,
-@@ -83222,46 +57463,46 @@ if ('undefined' == typeof jQuery)
+@@ -83229,46 +57463,46 @@ if ('undefined' == typeof jQuery)
                  l,
                  f,
                  x,
@@ -44838,7 +44846,7 @@ index e331539..1370f69 100644
                  Je,
                  Qe,
                  Xe,
-@@ -83275,8 +57516,8 @@ if ('undefined' == typeof jQuery)
+@@ -83282,8 +57516,8 @@ if ('undefined' == typeof jQuery)
                  rt,
                  lt,
                  ct,
@@ -44848,7 +44856,7 @@ index e331539..1370f69 100644
                  ht,
                  pt,
                  mt,
-@@ -83286,150 +57527,150 @@ if ('undefined' == typeof jQuery)
+@@ -83293,150 +57527,150 @@ if ('undefined' == typeof jQuery)
                  vt = [],
                  bt = {},
                  yt = {},
@@ -45088,7 +45096,7 @@ index e331539..1370f69 100644
                          }),
                          p(o, 'selectionchanged', at),
                          p(o, 'selectionchanged', tt),
-@@ -83442,13 +57683,13 @@ if ('undefined' == typeof jQuery)
+@@ -83449,13 +57683,13 @@ if ('undefined' == typeof jQuery)
                  (Fe = function () {
                      var e,
                          t = _t.commands,
@@ -45105,7 +45113,7 @@ index e331539..1370f69 100644
                          a(n, function (n, s) {
                              ((e = r('div', { className: 'sceditor-group' })),
                                  a(s.split(','), function (n, s) {
-@@ -83468,16 +57709,16 @@ if ('undefined' == typeof jQuery)
+@@ -83475,16 +57709,16 @@ if ('undefined' == typeof jQuery)
                                                  },
                                                  !0
                                              ).firstChild),
@@ -45127,7 +45135,7 @@ index e331539..1370f69 100644
                                                      tt(),
                                                      e.preventDefault());
                                              }),
-@@ -83505,15 +57746,15 @@ if ('undefined' == typeof jQuery)
+@@ -83512,15 +57746,15 @@ if ('undefined' == typeof jQuery)
                                                      name: s,
                                                      state: r.exec,
                                                  }),
@@ -45147,7 +45155,7 @@ index e331539..1370f69 100644
                      var e,
                          t,
                          i,
-@@ -83522,37 +57763,37 @@ if ('undefined' == typeof jQuery)
+@@ -83529,37 +57763,37 @@ if ('undefined' == typeof jQuery)
                          a,
                          l = r('div', { className: 'sceditor-grip' }),
                          c = r('div', { className: 'sceditor-resize-cover' }),
@@ -45199,7 +45207,7 @@ index e331539..1370f69 100644
                                  (o || a) && _t.dimensions(o, a),
                                  s.preventDefault());
                          }),
-@@ -83561,45 +57802,45 @@ if ('undefined' == typeof jQuery)
+@@ -83568,45 +57802,45 @@ if ('undefined' == typeof jQuery)
                                  ((C = !1),
                                  g(c),
                                  E(o, 'resizing'),
@@ -45265,7 +45273,7 @@ index e331539..1370f69 100644
                                      gt.push(
                                          r('img', { src: t + (i.url || i) })
                                      ));
-@@ -83608,54 +57849,54 @@ if ('undefined' == typeof jQuery)
+@@ -83615,54 +57849,54 @@ if ('undefined' == typeof jQuery)
                  (ot = function () {
                      var e,
                          t,
@@ -45341,7 +45349,7 @@ index e331539..1370f69 100644
                              _t);
                  }),
                  (et = function (e) {
-@@ -83668,15 +57909,15 @@ if ('undefined' == typeof jQuery)
+@@ -83675,15 +57909,15 @@ if ('undefined' == typeof jQuery)
                  (_t.width = function (e, t) {
                      return e || 0 === e ?
                              (_t.dimensions(e, null, t), _t)
@@ -45360,7 +45368,7 @@ index e331539..1370f69 100644
                              _t)
                      );
                  }),
-@@ -83688,53 +57929,53 @@ if ('undefined' == typeof jQuery)
+@@ -83695,53 +57929,53 @@ if ('undefined' == typeof jQuery)
                  (_t.maximize = function (e) {
                      var t = 'sceditor-maximize';
                      return pe(e) ?
@@ -45440,7 +45448,7 @@ index e331539..1370f69 100644
                              delete e._sceditor,
                              v(e),
                              (e.required = ce));
-@@ -83744,7 +57985,7 @@ if ('undefined' == typeof jQuery)
+@@ -83751,7 +57985,7 @@ if ('undefined' == typeof jQuery)
                      var l,
                          c = 'sceditor-' + t;
                      (_t.closeDropDown(!0),
@@ -45449,7 +45457,7 @@ index e331539..1370f69 100644
                              (!1 !== s &&
                                  a(
                                      h(i, ':not(input):not(textarea)'),
-@@ -83759,40 +58000,40 @@ if ('undefined' == typeof jQuery)
+@@ -83766,40 +58000,40 @@ if ('undefined' == typeof jQuery)
                                      left: e.offsetLeft,
                                      marginTop: e.clientHeight,
                                  },
@@ -45501,7 +45509,7 @@ index e331539..1370f69 100644
                                      html:
                                          '<img src="' + e.target.result + '" />',
                                  });
-@@ -83805,50 +58046,50 @@ if ('undefined' == typeof jQuery)
+@@ -83812,50 +58046,50 @@ if ('undefined' == typeof jQuery)
                              r = n.items;
                          e.preventDefault();
                          for (var l = 0; l < o.length; l++) {
@@ -45567,7 +45575,7 @@ index e331539..1370f69 100644
                  }),
                  (_t.wysiwygEditorInsertHtml = function (e, t, i) {
                      var n,
-@@ -83859,13 +58100,13 @@ if ('undefined' == typeof jQuery)
+@@ -83866,13 +58100,13 @@ if ('undefined' == typeof jQuery)
                          (!i && c(Q, 'code')) ||
                              (Z.insertHTML(e, t),
                              Z.saveRange(),
@@ -45587,7 +45595,7 @@ index e331539..1370f69 100644
                              Z.restoreRange(),
                              nt()));
                  }),
-@@ -83883,31 +58124,31 @@ if ('undefined' == typeof jQuery)
+@@ -83890,31 +58124,31 @@ if ('undefined' == typeof jQuery)
                  (_t.sourceEditorInsertText = function (e, t) {
                      var i,
                          n,
@@ -45634,7 +45642,7 @@ index e331539..1370f69 100644
                      );
                  }),
                  (_t.val = function (e, t) {
-@@ -83929,7 +58170,7 @@ if ('undefined' == typeof jQuery)
+@@ -83936,7 +58170,7 @@ if ('undefined' == typeof jQuery)
                          var o = Z.selectedHtml();
                          (!1 !== n &&
                              'fragmentToSource' in i &&
@@ -45643,7 +45651,7 @@ index e331539..1370f69 100644
                              (e += o + t));
                      }
                      return (
-@@ -83948,51 +58189,51 @@ if ('undefined' == typeof jQuery)
+@@ -83955,51 +58189,51 @@ if ('undefined' == typeof jQuery)
                  }),
                  (_t.getWysiwygEditorValue = function (e) {
                      for (
@@ -45710,7 +45718,7 @@ index e331539..1370f69 100644
                  }),
                  (_t.sourceMode = function (e) {
                      var t = _t.inSourceMode();
-@@ -84003,14 +58244,14 @@ if ('undefined' == typeof jQuery)
+@@ -84010,14 +58244,14 @@ if ('undefined' == typeof jQuery)
                  }),
                  (_t.toggleSourceMode = function () {
                      var e = _t.inSourceMode();
@@ -45728,7 +45736,7 @@ index e331539..1370f69 100644
                          b(f),
                          M(o, 'wysiwygMode', e),
                          M(o, 'sourceMode', !e),
-@@ -84019,11 +58260,11 @@ if ('undefined' == typeof jQuery)
+@@ -84026,11 +58260,11 @@ if ('undefined' == typeof jQuery)
                  }),
                  (it = function () {
                      return (
@@ -45743,7 +45751,7 @@ index e331539..1370f69 100644
                      _t.inSourceMode() ?
                          t.txtExec &&
                          (Array.isArray(t.txtExec) ?
-@@ -84040,14 +58281,14 @@ if ('undefined' == typeof jQuery)
+@@ -84047,14 +58281,14 @@ if ('undefined' == typeof jQuery)
                              ));
                  }),
                  (Ee = function () {
@@ -45760,7 +45768,7 @@ index e331539..1370f69 100644
                          } catch (e) {}
                          (!i &&
                              n &&
-@@ -84071,20 +58312,20 @@ if ('undefined' == typeof jQuery)
+@@ -84078,20 +58312,20 @@ if ('undefined' == typeof jQuery)
                                      t &&
                                      e.nodeType !== ve &&
                                      (e = e.childNodes[t]);
@@ -45786,7 +45794,7 @@ index e331539..1370f69 100644
                  }),
                  (at = function () {
                      var e,
-@@ -84093,7 +58334,7 @@ if ('undefined' == typeof jQuery)
+@@ -84100,7 +58334,7 @@ if ('undefined' == typeof jQuery)
                          ((e = J),
                          (J = t),
                          (Q = Z.getFirstBlockParent(t)),
@@ -45795,7 +45803,7 @@ index e331539..1370f69 100644
                  }),
                  (_t.currentNode = function () {
                      return J;
-@@ -84105,7 +58346,7 @@ if ('undefined' == typeof jQuery)
+@@ -84112,7 +58346,7 @@ if ('undefined' == typeof jQuery)
                      var e,
                          t,
                          i = 'active',
@@ -45804,7 +45812,7 @@ index e331539..1370f69 100644
                          s = _t.sourceMode();
                      if (_t.readOnly())
                          a(h(l, i), function (e, t) {
-@@ -84118,76 +58359,76 @@ if ('undefined' == typeof jQuery)
+@@ -84125,76 +58359,76 @@ if ('undefined' == typeof jQuery)
                          for (var o = 0; o < vt.length; o++) {
                              var r = 0,
                                  c = yt[vt[o].name],
@@ -45905,7 +45913,7 @@ index e331539..1370f69 100644
                  }),
                  (_t._ = function () {
                      var e,
-@@ -84202,8 +58443,8 @@ if ('undefined' == typeof jQuery)
+@@ -84209,8 +58443,8 @@ if ('undefined' == typeof jQuery)
                      );
                  }),
                  (Qe = function (e) {
@@ -45916,7 +45924,7 @@ index e331539..1370f69 100644
                      ft[t] &&
                          ft[t].forEach(function (t) {
                              t.call(_t, e);
-@@ -84217,7 +58458,7 @@ if ('undefined' == typeof jQuery)
+@@ -84224,7 +58458,7 @@ if ('undefined' == typeof jQuery)
                              (i || ((ft[a] = ft[a] || []), ft[a].push(t)),
                                  n || ((ft[o] = ft[o] || []), ft[o].push(t)),
                                  'valuechanged' === e[s] &&
@@ -45925,7 +45933,7 @@ index e331539..1370f69 100644
                          }
                      return _t;
                  }),
-@@ -84231,32 +58472,32 @@ if ('undefined' == typeof jQuery)
+@@ -84238,32 +58472,32 @@ if ('undefined' == typeof jQuery)
                  (_t.blur = function (e, t, i) {
                      return (
                          me(e) ? _t.bind('blur', e, t, i)
@@ -45966,7 +45974,7 @@ index e331539..1370f69 100644
                      }
                      return (tt(), _t);
                  }),
-@@ -84285,7 +58526,7 @@ if ('undefined' == typeof jQuery)
+@@ -84292,7 +58526,7 @@ if ('undefined' == typeof jQuery)
                      c(Q, 'code') ||
                          (i ||
                              ((i = []),
@@ -45975,7 +45983,7 @@ index e331539..1370f69 100644
                                  i[t++] = [e, n];
                              }),
                              i.sort(function (e, t) {
-@@ -84299,45 +58540,45 @@ if ('undefined' == typeof jQuery)
+@@ -84306,45 +58540,45 @@ if ('undefined' == typeof jQuery)
                              !0,
                              !0,
                              _t.longestEmoticonCode,
@@ -46040,7 +46048,7 @@ index e331539..1370f69 100644
                      );
                  }),
                  (Ue = function (e) {
-@@ -84460,7 +58701,7 @@ if ('undefined' == typeof jQuery)
+@@ -84467,7 +58701,7 @@ if ('undefined' == typeof jQuery)
                          (e = e.toLowerCase()),
                          he(t) ?
                              (bt[e] = function () {
@@ -46049,7 +46057,7 @@ index e331539..1370f69 100644
                              })
                          :   (bt[e] = t),
                          _t
-@@ -84469,14 +58710,14 @@ if ('undefined' == typeof jQuery)
+@@ -84476,14 +58710,14 @@ if ('undefined' == typeof jQuery)
                  (_t.removeShortcut = function (e) {
                      return (delete bt[e.toLowerCase()], _t);
                  }),
@@ -46067,7 +46075,7 @@ index e331539..1370f69 100644
                      ) {
                          for (; t !== n;) {
                              for (; t.previousSibling;)
-@@ -84491,47 +58732,47 @@ if ('undefined' == typeof jQuery)
+@@ -84498,47 +58732,47 @@ if ('undefined' == typeof jQuery)
                      }
                  }),
                  (ct = function () {
@@ -46131,7 +46139,7 @@ index e331539..1370f69 100644
                  }),
                  (ht = function (e) {
                      var t = e.which,
-@@ -84539,21 +58780,21 @@ if ('undefined' == typeof jQuery)
+@@ -84546,21 +58780,21 @@ if ('undefined' == typeof jQuery)
                          n = 13 === i || 32 === i,
                          s = 8 === i || 46 === i;
                      ((ht.lastChar = t),
@@ -46161,7 +46169,7 @@ index e331539..1370f69 100644
                  }),
                  (pt = function () {
                      _t.updateOriginal();
-@@ -84562,8 +58803,8 @@ if ('undefined' == typeof jQuery)
+@@ -84569,8 +58803,8 @@ if ('undefined' == typeof jQuery)
          }
          e = e && e.hasOwnProperty('default') ? e.default : e;
          var ce,
@@ -46171,7 +46179,7 @@ index e331539..1370f69 100644
              he = t.bind(null, 'string'),
              pe = t.bind(null, 'undefined'),
              me = t.bind(null, 'function'),
-@@ -84574,7 +58815,7 @@ if ('undefined' == typeof jQuery)
+@@ -84581,7 +58815,7 @@ if ('undefined' == typeof jQuery)
              be = !0,
              ye =
                  '|body|hr|p|div|h1|h2|h3|h4|h5|h6|address|pre|form|table|tbody|thead|tfoot|th|tr|td|li|ol|ul|blockquote|center|',
@@ -46180,7 +46188,7 @@ index e331539..1370f69 100644
                  toolbar:
                      'bold,italic,underline,strike,subscript,superscript|left,center,right,justify|font,size,color,removeformat|cut,copy,pastetext|bulletlist,orderedlist,indent,outdent|table|code,quote|horizontalrule,image,email,link,unlink|emoticon,youtube,date,time|ltr,rtl|print,maximize,source',
                  toolbarExclude: null,
-@@ -84657,7 +58898,7 @@ if ('undefined' == typeof jQuery)
+@@ -84664,7 +58898,7 @@ if ('undefined' == typeof jQuery)
                  parserOptions: {},
                  dropDownCss: {},
              },
@@ -46189,7 +46197,7 @@ index e331539..1370f69 100644
              xe = (function () {
                  var e,
                      t = 3,
-@@ -84674,28 +58915,28 @@ if ('undefined' == typeof jQuery)
+@@ -84681,28 +58915,28 @@ if ('undefined' == typeof jQuery)
                      t > 4 ? t : e
                  );
              })(),
@@ -46236,7 +46244,7 @@ index e331539..1370f69 100644
                  html: '<!DOCTYPE html><html{attrs}><head><style>.ie * {min-height: auto !important} .ie table td {height:15px} @supports (-ms-ime-align:auto) { * { min-height: auto !important; } }</style><meta http-equiv="Content-Type" content="text/html;charset={charset}" /><link rel="stylesheet" type="text/css" href="{style}" /></head><body contenteditable="true" {spellcheck}><p></p></body></html>',
                  toolbarButton:
                      '<a class="sceditor-button sceditor-button-{name}" data-sceditor-command="{name}" unselectable="on"><div unselectable="on">{dispName}</div></a>',
-@@ -84760,12 +59001,12 @@ if ('undefined' == typeof jQuery)
+@@ -84767,12 +59001,12 @@ if ('undefined' == typeof jQuery)
                      _dropDown: function (e, t, i) {
                          var n = r('div');
                          (p(n, 'click', 'a', function (t) {
@@ -46251,7 +46259,7 @@ index e331539..1370f69 100644
                              }),
                              e.createDropDown(t, 'font-picker', n));
                      },
-@@ -84781,12 +59022,12 @@ if ('undefined' == typeof jQuery)
+@@ -84788,12 +59022,12 @@ if ('undefined' == typeof jQuery)
                      _dropDown: function (e, t, i) {
                          var n = r('div');
                          p(n, 'click', 'a', function (t) {
@@ -46266,7 +46274,7 @@ index e331539..1370f69 100644
                          e.createDropDown(t, 'fontsize-picker', n);
                      },
                      exec: function (e) {
-@@ -84816,9 +59057,9 @@ if ('undefined' == typeof jQuery)
+@@ -84823,9 +59057,9 @@ if ('undefined' == typeof jQuery)
                                      (s += '</div>'));
                              }),
                              (a._htmlCache = s)),
@@ -46278,7 +46286,7 @@ index e331539..1370f69 100644
                                      e.closeDropDown(!0),
                                      t.preventDefault());
                              }),
-@@ -84859,7 +59100,7 @@ if ('undefined' == typeof jQuery)
+@@ -84866,7 +59100,7 @@ if ('undefined' == typeof jQuery)
                          var t,
                              i = r('div'),
                              n = this;
@@ -46287,7 +46295,7 @@ index e331539..1370f69 100644
                              i,
                              te(
                                  'pastetext',
-@@ -84898,14 +59139,14 @@ if ('undefined' == typeof jQuery)
+@@ -84905,14 +59139,14 @@ if ('undefined' == typeof jQuery)
                      state: function (e, t) {
                          var i, n, s;
                          return (
@@ -46305,7 +46313,7 @@ index e331539..1370f69 100644
                                                  s !==
                                                      s.parentNode
                                                          .lastElementChild)))
-@@ -84937,7 +59178,7 @@ if ('undefined' == typeof jQuery)
+@@ -84944,7 +59178,7 @@ if ('undefined' == typeof jQuery)
                      exec: function (e) {
                          var t = this,
                              i = r('div');
@@ -46314,7 +46322,7 @@ index e331539..1370f69 100644
                              i,
                              te(
                                  'table',
-@@ -84990,7 +59231,7 @@ if ('undefined' == typeof jQuery)
+@@ -84997,7 +59231,7 @@ if ('undefined' == typeof jQuery)
                  image: {
                      _dropDown: function (e, t, i, n) {
                          var s = r('div');
@@ -46323,7 +46331,7 @@ index e331539..1370f69 100644
                              s,
                              te(
                                  'image',
-@@ -85033,7 +59274,7 @@ if ('undefined' == typeof jQuery)
+@@ -85040,7 +59274,7 @@ if ('undefined' == typeof jQuery)
                  email: {
                      _dropDown: function (e, t, i) {
                          var n = r('div');
@@ -46332,7 +46340,7 @@ index e331539..1370f69 100644
                              n,
                              te(
                                  'email',
-@@ -85078,7 +59319,7 @@ if ('undefined' == typeof jQuery)
+@@ -85085,7 +59319,7 @@ if ('undefined' == typeof jQuery)
                                  t.preventDefault());
                          }
                          var s = r('div');
@@ -46341,7 +46349,7 @@ index e331539..1370f69 100644
                              s,
                              te(
                                  'link',
-@@ -85124,7 +59365,7 @@ if ('undefined' == typeof jQuery)
+@@ -85131,7 +59365,7 @@ if ('undefined' == typeof jQuery)
                          var e = c(this.currentNode(), 'a');
                          if (e) {
                              for (; e.firstChild;) C(e.firstChild, e);
@@ -46350,7 +46358,7 @@ index e331539..1370f69 100644
                          }
                      },
                      tooltip: 'Unlink',
-@@ -85153,14 +59394,14 @@ if ('undefined' == typeof jQuery)
+@@ -85160,14 +59394,14 @@ if ('undefined' == typeof jQuery)
                                  var o,
                                      l = t.opts,
                                      c = l.emoticonsRoot || '',
@@ -46368,7 +46376,7 @@ index e331539..1370f69 100644
                                              ' '
                                          :   '',
                                      g = r('div'),
-@@ -85172,7 +59413,7 @@ if ('undefined' == typeof jQuery)
+@@ -85179,7 +59413,7 @@ if ('undefined' == typeof jQuery)
                                          s ? l.emoticons.more : {}
                                      );
                                  return (
@@ -46377,7 +46385,7 @@ index e331539..1370f69 100644
                                      (b = Math.sqrt(Object.keys(y).length)),
                                      p(g, 'click', 'img', function (e) {
                                          (t
-@@ -85185,7 +59426,7 @@ if ('undefined' == typeof jQuery)
+@@ -85192,7 +59426,7 @@ if ('undefined' == typeof jQuery)
                                              e.preventDefault());
                                      }),
                                      a(y, function (e, t) {
@@ -46386,7 +46394,7 @@ index e331539..1370f69 100644
                                              v,
                                              r('img', {
                                                  src: c + (t.url || t),
-@@ -85194,11 +59435,11 @@ if ('undefined' == typeof jQuery)
+@@ -85201,11 +59435,11 @@ if ('undefined' == typeof jQuery)
                                              })
                                          ),
                                              v.children.length >= b &&
@@ -46400,7 +46408,7 @@ index e331539..1370f69 100644
                                              (o = r('a', {
                                                  className: 'sceditor-more',
                                              })),
-@@ -85212,7 +59453,7 @@ if ('undefined' == typeof jQuery)
+@@ -85219,7 +59453,7 @@ if ('undefined' == typeof jQuery)
                                              ),
                                                  n.preventDefault());
                                          }),
@@ -46409,7 +46417,7 @@ index e331539..1370f69 100644
                                      g
                                  );
                              };
-@@ -85226,7 +59467,7 @@ if ('undefined' == typeof jQuery)
+@@ -85233,7 +59467,7 @@ if ('undefined' == typeof jQuery)
                  youtube: {
                      _dropDown: function (e, t, i) {
                          var n = r('div');
@@ -46418,7 +46426,7 @@ index e331539..1370f69 100644
                              n,
                              te(
                                  'youtubeMenu',
-@@ -85323,9 +59564,9 @@ if ('undefined' == typeof jQuery)
+@@ -85330,9 +59564,9 @@ if ('undefined' == typeof jQuery)
                              i = t.getFirstBlockParent();
                          if (
                              (e.focus(),
@@ -46430,7 +46438,7 @@ index e331539..1370f69 100644
                          ) {
                              var n = 'ltr' === y(i, 'direction') ? '' : 'ltr';
                              y(i, 'direction', n);
-@@ -85343,9 +59584,9 @@ if ('undefined' == typeof jQuery)
+@@ -85350,9 +59584,9 @@ if ('undefined' == typeof jQuery)
                              i = t.getFirstBlockParent();
                          if (
                              (e.focus(),
@@ -46442,7 +46450,7 @@ index e331539..1370f69 100644
                          ) {
                              var n = 'rtl' === y(i, 'direction') ? '' : 'rtl';
                              y(i, 'direction', n);
-@@ -85382,10 +59623,10 @@ if ('undefined' == typeof jQuery)
+@@ -85389,10 +59623,10 @@ if ('undefined' == typeof jQuery)
                  },
                  ignore: {},
              },
@@ -46456,7 +46464,7 @@ index e331539..1370f69 100644
                  var n,
                      s,
                      a,
-@@ -85393,10 +59634,10 @@ if ('undefined' == typeof jQuery)
+@@ -85400,10 +59634,10 @@ if ('undefined' == typeof jQuery)
                      r,
                      l = '',
                      c = e.startContainer,
@@ -46470,7 +46478,7 @@ index e331539..1370f69 100644
                      i > l.length && c && 3 === c.nodeType;
                  )
                      ((n = c.nodeValue),
-@@ -85404,19 +59645,19 @@ if ('undefined' == typeof jQuery)
+@@ -85411,19 +59645,19 @@ if ('undefined' == typeof jQuery)
                          r && ((o = n.length), (a = 0)),
                          (r = c),
                          t ?
@@ -46498,7 +46506,7 @@ index e331539..1370f69 100644
          ((le.locale = {}),
              (le.formats = {}),
              (le.icons = {}),
-@@ -85453,10 +59694,10 @@ if ('undefined' == typeof jQuery)
+@@ -85460,10 +59694,10 @@ if ('undefined' == typeof jQuery)
              (window.sceditor = {
                  command: le.command,
                  commands: Me,
@@ -46511,7 +46519,7 @@ index e331539..1370f69 100644
                  regexEscape: Q,
                  escapeEntities: X,
                  escapeUriScheme: ee,
-@@ -85464,26 +59705,26 @@ if ('undefined' == typeof jQuery)
+@@ -85471,26 +59705,26 @@ if ('undefined' == typeof jQuery)
                      css: y,
                      attr: _,
                      removeAttr: f,
@@ -46551,7 +46559,7 @@ index e331539..1370f69 100644
                      hasStyle: J,
                  },
                  locale: le.locale,
-@@ -85494,7 +59735,7 @@ if ('undefined' == typeof jQuery)
+@@ -85501,7 +59735,7 @@ if ('undefined' == typeof jQuery)
                  create: function (e, t) {
                      ((t = t || {}),
                          l(e, '.sceditor-container') ||
@@ -46560,7 +46568,7 @@ index e331539..1370f69 100644
                                  new le(e, t)));
                  },
                  instance: function (e) {
-@@ -85555,7 +59796,7 @@ if ('undefined' == typeof jQuery)
+@@ -85562,7 +59796,7 @@ if ('undefined' == typeof jQuery)
                      '!' === i.charAt(0) && ((s = !1), (i = i.substring(1))),
                      '0' === i && (s = !1),
                      t[i] === n ? e
@@ -46569,7 +46577,7 @@ index e331539..1370f69 100644
                      : t[i]
                  );
              });
-@@ -85569,7 +59810,7 @@ if ('undefined' == typeof jQuery)
+@@ -85576,7 +59810,7 @@ if ('undefined' == typeof jQuery)
                  (n = function (e, t) {
                      if (!p.hasStyling(e)) {
                          if (
@@ -46578,7 +46586,7 @@ index e331539..1370f69 100644
                              1 !== e.childNodes.length ||
                              !g(e.firstChild, 'br')
                          )
-@@ -85623,14 +59864,14 @@ if ('undefined' == typeof jQuery)
+@@ -85630,14 +59864,14 @@ if ('undefined' == typeof jQuery)
                      r = /\[([^\]\s=]+)(?:([^\]]+))?\]/,
                      l = /\[\/([^\[\]]+)\]/;
                  return (
@@ -46596,7 +46604,7 @@ index e331539..1370f69 100644
                      new o(e, s, t, n)
                  );
              }
-@@ -85655,14 +59896,14 @@ if ('undefined' == typeof jQuery)
+@@ -85662,14 +59896,14 @@ if ('undefined' == typeof jQuery)
                  return !1;
              }
              function c(e, t) {
@@ -46614,7 +46622,7 @@ index e331539..1370f69 100644
                  for (
                      var t,
                          i,
-@@ -85671,18 +59912,18 @@ if ('undefined' == typeof jQuery)
+@@ -85678,18 +59912,18 @@ if ('undefined' == typeof jQuery)
                          a,
                          o,
                          r = [],
@@ -46637,7 +46645,7 @@ index e331539..1370f69 100644
                                  i.closedBy &&
                                  i.closedBy.indexOf(e) > -1
                              );
-@@ -85693,31 +59934,31 @@ if ('undefined' == typeof jQuery)
+@@ -85700,31 +59934,31 @@ if ('undefined' == typeof jQuery)
                          ((o = e[0]),
                          c(h(), t) ||
                              (t.type === M && h() && t.name === h().name) ||
@@ -46679,7 +46687,7 @@ index e331539..1370f69 100644
                                      if (n.name === t.name) {
                                          n.closing = t;
                                          break;
-@@ -85729,34 +59970,34 @@ if ('undefined' == typeof jQuery)
+@@ -85736,34 +59970,34 @@ if ('undefined' == typeof jQuery)
                                  for (
                                      o &&
                                          o.type === E &&
@@ -46721,7 +46729,7 @@ index e331539..1370f69 100644
              }
              function h(e, t, i) {
                  var n,
-@@ -85766,16 +60007,16 @@ if ('undefined' == typeof jQuery)
+@@ -85773,16 +60007,16 @@ if ('undefined' == typeof jQuery)
                      r,
                      l,
                      c,
@@ -46744,7 +46752,7 @@ index e331539..1370f69 100644
                                  !i &&
                                      o &&
                                      !0 !== o.isSelfClosing &&
-@@ -85783,44 +60024,44 @@ if ('undefined' == typeof jQuery)
+@@ -85790,44 +60024,44 @@ if ('undefined' == typeof jQuery)
                                          l ||
                                          a ||
                                          (!1 === o.isInline &&
@@ -46811,7 +46819,7 @@ index e331539..1370f69 100644
              }
              function p(e, t, i, n) {
                  var s,
-@@ -85828,16 +60069,16 @@ if ('undefined' == typeof jQuery)
+@@ -85835,16 +60069,16 @@ if ('undefined' == typeof jQuery)
                      o,
                      r,
                      l,
@@ -46834,7 +46842,7 @@ index e331539..1370f69 100644
                                  (l =
                                      t.length > 1 ?
                                          t[t.length - 2].children
-@@ -85848,19 +60089,19 @@ if ('undefined' == typeof jQuery)
+@@ -85855,19 +60089,19 @@ if ('undefined' == typeof jQuery)
                                  ((h.children = s.children), (s.children = [h]));
                              }
                              if ((r = l.indexOf(o)) > -1) {
@@ -46860,7 +46868,7 @@ index e331539..1370f69 100644
                      }
              }
              function m(e) {
-@@ -85870,8 +60111,8 @@ if ('undefined' == typeof jQuery)
+@@ -85877,8 +60111,8 @@ if ('undefined' == typeof jQuery)
                          n = function (e) {
                              for (var t = e.length; t--;) {
                                  var i = e[t].type;
@@ -46871,7 +46879,7 @@ index e331539..1370f69 100644
                                      return !1;
                              }
                              return !0;
-@@ -85880,8 +60121,8 @@ if ('undefined' == typeof jQuery)
+@@ -85887,8 +60121,8 @@ if ('undefined' == typeof jQuery)
                      s--;
                  )
                      (t = e[s]) &&
@@ -46882,7 +46890,7 @@ index e331539..1370f69 100644
                          m(t.children),
                          n(t.children) &&
                              i &&
-@@ -85896,7 +60137,7 @@ if ('undefined' == typeof jQuery)
+@@ -85903,7 +60137,7 @@ if ('undefined' == typeof jQuery)
                      r,
                      l,
                      c,
@@ -46891,7 +46899,7 @@ index e331539..1370f69 100644
                      h,
                      p,
                      m = [];
-@@ -85913,20 +60154,20 @@ if ('undefined' == typeof jQuery)
+@@ -85920,20 +60154,20 @@ if ('undefined' == typeof jQuery)
                      e.length > 0;
                  )
                      if ((a = e.shift())) {
@@ -46917,7 +46925,7 @@ index e331539..1370f69 100644
                                      :   ((a.attrs[0] = r),
                                          (l = t(o.html, a.attrs))))
                                  :   (l =
-@@ -85939,63 +60180,63 @@ if ('undefined' == typeof jQuery)
+@@ -85946,63 +60180,63 @@ if ('undefined' == typeof jQuery)
                                      m.push('<br />');
                                      continue;
                                  }
@@ -47003,7 +47011,7 @@ index e331539..1370f69 100644
                                              '=',
                                              g(
                                                  t.attrs.defaultattr,
-@@ -86006,33 +60247,33 @@ if ('undefined' == typeof jQuery)
+@@ -86013,33 +60247,33 @@ if ('undefined' == typeof jQuery)
                                          delete t.attrs.defaultattr),
                                      t.attrs))
                                          t.attrs.hasOwnProperty(i) &&
@@ -47051,7 +47059,7 @@ index e331539..1370f69 100644
                      : '"' + e.replace('\\', '\\\\').replace('"', '\\"') + '"'
                  );
              }
-@@ -86042,17 +60283,17 @@ if ('undefined' == typeof jQuery)
+@@ -86049,17 +60283,17 @@ if ('undefined' == typeof jQuery)
              function y(e) {
                  return e.toLowerCase();
              }
@@ -47074,7 +47082,7 @@ index e331539..1370f69 100644
                              { type: M, regex: /^\[\/[^\[\]]+\]/ },
                          ];
                      e: for (; e.length;) {
-@@ -86065,13 +60306,13 @@ if ('undefined' == typeof jQuery)
+@@ -86072,13 +60306,13 @@ if ('undefined' == typeof jQuery)
                                      (e = e.substr(t[0].length)));
                                  continue e;
                              }
@@ -47092,7 +47100,7 @@ index e331539..1370f69 100644
                      return (
                          n.fixInvalidNesting && p(i),
                          h(i, null, t),
-@@ -86079,11 +60320,11 @@ if ('undefined' == typeof jQuery)
+@@ -86086,11 +60320,11 @@ if ('undefined' == typeof jQuery)
                          i
                      );
                  }),
@@ -47108,7 +47116,7 @@ index e331539..1370f69 100644
                  }));
          }
          function l(e) {
-@@ -86109,22 +60350,22 @@ if ('undefined' == typeof jQuery)
+@@ -86116,22 +60350,22 @@ if ('undefined' == typeof jQuery)
                  :   e
              );
          }
@@ -47137,7 +47145,7 @@ index e331539..1370f69 100644
                                      (y[t] = y[t] || {}),
                                      (y[t][i] = y[t][i] || {}),
                                      (y[t][i][e] = n));
-@@ -86141,7 +60382,7 @@ if ('undefined' == typeof jQuery)
+@@ -86148,7 +60382,7 @@ if ('undefined' == typeof jQuery)
                                  r(e.parentNode, i) !== s &&
                                  b(l, function (i, r) {
                                      (!r || r.indexOf(s.toString()) > -1) &&
@@ -47146,7 +47154,7 @@ index e331539..1370f69 100644
                                          (t = n(o) ? o.call(h, e, t) : a(o, t)));
                                  });
                          }),
-@@ -86165,7 +60406,7 @@ if ('undefined' == typeof jQuery)
+@@ -86172,7 +60406,7 @@ if ('undefined' == typeof jQuery)
                          ((s = ((a = e.parentNode) && a.lastChild) === e),
                              (e = a));
                      } while (a && s && n(a, !0));
@@ -47155,7 +47163,7 @@ index e331539..1370f69 100644
                          'br' !== i &&
                              o &&
                              !g(o, 'br') &&
-@@ -86193,7 +60434,7 @@ if ('undefined' == typeof jQuery)
+@@ -86200,7 +60434,7 @@ if ('undefined' == typeof jQuery)
                                          return ((s = !0), !1);
                                  }),
                                  !s)) ||
@@ -47164,7 +47172,7 @@ index e331539..1370f69 100644
                                  (t = n(o) ? o.call(h, e, t) : a(o, t)));
                          }),
                      t
-@@ -86209,26 +60450,26 @@ if ('undefined' == typeof jQuery)
+@@ -86216,26 +60450,26 @@ if ('undefined' == typeof jQuery)
                                  var a = '',
                                      r = e.nodeType,
                                      c = e.nodeName.toLowerCase(),
@@ -47199,7 +47207,7 @@ index e331539..1370f69 100644
                                              h ?
                                                  ('code' !== c &&
                                                      ((a = t(e, a)),
-@@ -86250,18 +60491,18 @@ if ('undefined' == typeof jQuery)
+@@ -86257,18 +60491,18 @@ if ('undefined' == typeof jQuery)
                  };
                  return i(e);
              }
@@ -47221,7 +47229,7 @@ index e331539..1370f69 100644
                  for (
                      l.innerHTML = t,
                          _(o, 'visibility', 'hidden'),
-@@ -86282,7 +60523,7 @@ if ('undefined' == typeof jQuery)
+@@ -86289,7 +60523,7 @@ if ('undefined' == typeof jQuery)
                      p.removeWhiteSpace(o),
                      (s = c(l)),
                      i.body.removeChild(o),
@@ -47230,7 +47238,7 @@ index e331539..1370f69 100644
                      h.opts.bbcodeTrim && (s = s.trim()),
                      s
                  );
-@@ -86306,12 +60547,12 @@ if ('undefined' == typeof jQuery)
+@@ -86313,12 +60547,12 @@ if ('undefined' == typeof jQuery)
                      (this.toBBCode = h.toSource),
                      (this.fromBBCode = h.toHtml));
              }),
@@ -47248,7 +47256,7 @@ index e331539..1370f69 100644
              h = e.escapeUriScheme,
              p = e.dom,
              m = e.utils,
-@@ -86321,10 +60562,10 @@ if ('undefined' == typeof jQuery)
+@@ -86328,10 +60562,10 @@ if ('undefined' == typeof jQuery)
              v = m.extend,
              b = m.each,
              y = e.ie,
@@ -47262,7 +47270,7 @@ index e331539..1370f69 100644
              C = {
                  bold: { txtExec: ['[b]', '[/b]'] },
                  italic: { txtExec: ['[i]', '[/i]'] },
-@@ -86424,7 +60665,7 @@ if ('undefined' == typeof jQuery)
+@@ -86431,7 +60665,7 @@ if ('undefined' == typeof jQuery)
                  rtl: { txtExec: ['[rtl]', '[/rtl]'] },
                  ltr: { txtExec: ['[ltr]', '[/ltr]'] },
              },
@@ -47271,7 +47279,7 @@ index e331539..1370f69 100644
                  'b': {
                      tags: { b: null, strong: null },
                      styles: {
-@@ -86471,7 +60712,7 @@ if ('undefined' == typeof jQuery)
+@@ -86478,7 +60712,7 @@ if ('undefined' == typeof jQuery)
                  'font': {
                      tags: { font: { face: null } },
                      styles: { 'font-family': null },
@@ -47280,7 +47288,7 @@ index e331539..1370f69 100644
                      format: function (e, t) {
                          var i;
                          return (
-@@ -86506,7 +60747,7 @@ if ('undefined' == typeof jQuery)
+@@ -86513,7 +60747,7 @@ if ('undefined' == typeof jQuery)
                  'color': {
                      tags: { font: { color: null } },
                      styles: { color: null },
@@ -47289,7 +47297,7 @@ index e331539..1370f69 100644
                      format: function (e, t) {
                          var i;
                          return (
-@@ -86518,7 +60759,7 @@ if ('undefined' == typeof jQuery)
+@@ -86525,7 +60759,7 @@ if ('undefined' == typeof jQuery)
                      html: function (e, t, i) {
                          return (
                              '<font color="' +
@@ -47298,7 +47306,7 @@ index e331539..1370f69 100644
                              '">' +
                              i +
                              '</font>'
-@@ -86594,7 +60835,7 @@ if ('undefined' == typeof jQuery)
+@@ -86601,7 +60835,7 @@ if ('undefined' == typeof jQuery)
                          img: { 'src': null, 'data-sceditor-emoticon': null },
                      },
                      format: function (e, t) {
@@ -47307,7 +47315,7 @@ index e331539..1370f69 100644
                      },
                      html: '{0}',
                  },
-@@ -86610,7 +60851,7 @@ if ('undefined' == typeof jQuery)
+@@ -86617,7 +60851,7 @@ if ('undefined' == typeof jQuery)
                      allowsEmpty: !0,
                      tags: { img: { src: null } },
                      allowedChildren: ['#'],
@@ -47316,7 +47324,7 @@ index e331539..1370f69 100644
                      format: function (e, t) {
                          var i,
                              n,
-@@ -86618,7 +60859,7 @@ if ('undefined' == typeof jQuery)
+@@ -86625,7 +60859,7 @@ if ('undefined' == typeof jQuery)
                              a = function (t) {
                                  return e.style ? e.style[t] : null;
                              };
@@ -47325,7 +47333,7 @@ index e331539..1370f69 100644
                                  ((i = f(e, 'width') || a('width')),
                                  (n = f(e, 'height') || a('height')),
                                  ((e.complete && (i || n)) || (i && n)) &&
-@@ -86638,8 +60879,8 @@ if ('undefined' == typeof jQuery)
+@@ -86645,8 +60879,8 @@ if ('undefined' == typeof jQuery)
                              t.defaultattr &&
                                  ((s = (o = t.defaultattr.split(/x/i))[0]),
                                  (a = 2 === o.length ? o[1] : o[0])),
@@ -47336,7 +47344,7 @@ index e331539..1370f69 100644
                              '<img' + r + ' src="' + h(i) + '" />'
                          );
                      },
-@@ -86647,7 +60888,7 @@ if ('undefined' == typeof jQuery)
+@@ -86654,7 +60888,7 @@ if ('undefined' == typeof jQuery)
                  'url': {
                      allowsEmpty: !0,
                      tags: { a: { href: null } },
@@ -47345,7 +47353,7 @@ index e331539..1370f69 100644
                      format: function (e, t) {
                          var i = f(e, 'href');
                          return 'mailto:' === i.substr(0, 7) ?
-@@ -86656,17 +60897,17 @@ if ('undefined' == typeof jQuery)
+@@ -86663,17 +60897,17 @@ if ('undefined' == typeof jQuery)
                      },
                      html: function (e, t, i) {
                          return (
@@ -47366,7 +47374,7 @@ index e331539..1370f69 100644
                              '">' +
                              i +
                              '</a>'
-@@ -86676,7 +60917,7 @@ if ('undefined' == typeof jQuery)
+@@ -86683,7 +60917,7 @@ if ('undefined' == typeof jQuery)
                  'quote': {
                      tags: { blockquote: null },
                      isInline: !1,
@@ -47375,7 +47383,7 @@ index e331539..1370f69 100644
                      format: function (e, t) {
                          for (
                              var i,
-@@ -86704,7 +60945,7 @@ if ('undefined' == typeof jQuery)
+@@ -86711,7 +60945,7 @@ if ('undefined' == typeof jQuery)
                              t.defaultattr &&
                                  (i =
                                      '<cite>' +
@@ -47384,7 +47392,7 @@ index e331539..1370f69 100644
                                      '</cite>' +
                                      i),
                              '<blockquote>' + i + '</blockquote>'
-@@ -86794,8 +61035,8 @@ if ('undefined' == typeof jQuery)
+@@ -86801,8 +61035,8 @@ if ('undefined' == typeof jQuery)
                  },
                  'ignore': {},
              },
@@ -47395,7 +47403,7 @@ index e331539..1370f69 100644
              E = 'newline',
              M = 'close';
          ((o.prototype = {
-@@ -86823,7 +61064,7 @@ if ('undefined' == typeof jQuery)
+@@ -86830,7 +61064,7 @@ if ('undefined' == typeof jQuery)
                  );
              },
          }),
@@ -47404,7 +47412,7 @@ index e331539..1370f69 100644
              (r.defaults = {
                  breakBeforeBlock: !1,
                  breakStartBlock: !1,
-@@ -86832,30 +61073,30 @@ if ('undefined' == typeof jQuery)
+@@ -86839,30 +61073,30 @@ if ('undefined' == typeof jQuery)
                  removeEmptyTags: !0,
                  fixInvalidNesting: !0,
                  fixInvalidChildren: !0,
@@ -47448,7 +47456,7 @@ index e331539..1370f69 100644
              (e.BBCodeParser = r));
      })(sceditor),
      (function (e) {
-@@ -86921,28 +61162,28 @@ if ('undefined' == typeof jQuery)
+@@ -86928,28 +61162,28 @@ if ('undefined' == typeof jQuery)
                      }
                      t || (o = {});
                      for (
@@ -47483,7 +47491,7 @@ index e331539..1370f69 100644
                                  this.json)
                              )
                                  try {
-@@ -86997,7 +61238,10 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -87004,7 +61238,10 @@ var windowIsTurbolinked = 'Turbolinks' in window,
                  secure: e,
              });
              var t = document.querySelector('.js-cookies-eu');
@@ -47495,7 +47503,7 @@ index e331539..1370f69 100644
          },
      };
  (!(function () {
-@@ -87274,21 +61518,21 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -87281,21 +61518,21 @@ var windowIsTurbolinked = 'Turbolinks' in window,
                              a.appendTo(this.options.container)
                          :   a.insertAfter(this.$element),
                          this.$element.trigger('inserted.bs.' + this.type));
@@ -47524,7 +47532,7 @@ index e331539..1370f69 100644
                      this.applyPlacement(_, r);
                      var f = function () {
                          var e = s.hoverState;
-@@ -87332,12 +61576,12 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -87339,12 +61576,12 @@ var windowIsTurbolinked = 'Turbolinks' in window,
                  var l = n[0].offsetWidth,
                      c = n[0].offsetHeight;
                  'top' == i && c != a && (t.top = t.top + a - c);
@@ -47543,7 +47551,7 @@ index e331539..1370f69 100644
              }),
              (i.prototype.replaceArrow = function (e, t, i) {
                  this.arrow()
-@@ -87450,10 +61694,10 @@ var windowIsTurbolinked = 'Turbolinks' in window,
+@@ -87457,10 +61694,10 @@ var windowIsTurbolinked = 'Turbolinks' in window,
                      :   l > o.top + o.height && (s.top = o.top + o.height - l);
                  } else {
                      var c = t.left - a,
@@ -47556,7 +47564,7 @@ index e331539..1370f69 100644
                  }
                  return s;
              }),
-@@ -88328,30 +62572,30 @@ var bind = function (e, t) {
+@@ -88335,30 +62572,30 @@ var bind = function (e, t) {
                          :   e;
                  }),
                  (t.prototype._reposition = function (t, n) {
@@ -47601,7 +47609,7 @@ index e331539..1370f69 100644
                  }),
                  (t.prototype._center = function (t) {
                      return t.css(
-@@ -88365,7 +62609,7 @@ var bind = function (e, t) {
+@@ -88372,7 +62609,7 @@ var bind = function (e, t) {
                          .css(n, t ? 50 * (1 - t / i) + '%' : '');
                  }),
                  (t.prototype._scrollIntoView = function (t) {
@@ -47610,7 +47618,7 @@ index e331539..1370f69 100644
                      if (((l = this.getStep(t)), !(i = e(l.element)).length))
                          return this._showPopoverAndOverlay(t);
                      switch (
-@@ -88401,12 +62645,12 @@ var bind = function (e, t) {
+@@ -88408,12 +62645,12 @@ var bind = function (e, t) {
                              .stop(!0, !0)
                              .animate(
                                  { scrollTop: Math.ceil(r) },
@@ -47627,7 +47635,7 @@ index e331539..1370f69 100644
                                                  'Scroll into view.\nAnimation end element offset: ' +
                                                      i.offset().top +
                                                      '.\nWindow height: ' +
-@@ -88558,18 +62802,18 @@ var bind = function (e, t) {
+@@ -88565,18 +62802,18 @@ var bind = function (e, t) {
                      var n;
                  }),
                  (t.prototype._showBackground = function (t, n) {
@@ -47650,7 +47658,7 @@ index e331539..1370f69 100644
                              (s =
                                  null != (a = this.backdrops)[c] ?
                                      a[c]
-@@ -88580,7 +62824,7 @@ var bind = function (e, t) {
+@@ -88587,7 +62824,7 @@ var bind = function (e, t) {
                              c)
                          ) {
                              case 'top':
@@ -47659,7 +47667,7 @@ index e331539..1370f69 100644
                                      s
                                          .height(
                                              n.offset.top > 0 ? n.offset.top : 0
-@@ -88590,7 +62834,7 @@ var bind = function (e, t) {
+@@ -88597,7 +62834,7 @@ var bind = function (e, t) {
                                  );
                                  break;
                              case 'bottom':
@@ -47668,7 +47676,7 @@ index e331539..1370f69 100644
                                      s
                                          .offset({
                                              top: n.offset.top + n.height,
-@@ -88601,7 +62845,7 @@ var bind = function (e, t) {
+@@ -88608,7 +62845,7 @@ var bind = function (e, t) {
                                  );
                                  break;
                              case 'left':
@@ -47677,7 +47685,7 @@ index e331539..1370f69 100644
                                      s
                                          .offset({ top: n.offset.top, left: 0 })
                                          .height(n.height)
-@@ -88613,7 +62857,7 @@ var bind = function (e, t) {
+@@ -88620,7 +62857,7 @@ var bind = function (e, t) {
                                  );
                                  break;
                              case 'right':
@@ -47686,7 +47694,7 @@ index e331539..1370f69 100644
                                      s
                                          .offset({
                                              top: n.offset.top,
-@@ -88624,9 +62868,9 @@ var bind = function (e, t) {
+@@ -88631,9 +62868,9 @@ var bind = function (e, t) {
                                  );
                                  break;
                              default:
@@ -47698,7 +47706,7 @@ index e331539..1370f69 100644
                  }),
                  (t.prototype._showOverlayElement = function (t) {
                      var i, n;
-@@ -88991,8 +63235,8 @@ var tutorial = {
+@@ -88998,8 +63235,8 @@ var tutorial = {
              o = window[s],
              r = arguments,
              l = r[0],
@@ -47709,7 +47717,7 @@ index e331539..1370f69 100644
          if (1 > a || (!c(l) && 2 > a))
              throw new Error(
                  'Minimum 2 arguments must be given or first parameter must be an object'
-@@ -89007,15 +63251,15 @@ var tutorial = {
+@@ -89014,15 +63251,15 @@ var tutorial = {
          }
          if (2 == a)
              return (
@@ -47731,7 +47739,7 @@ index e331539..1370f69 100644
              ((e = r[n]),
                  (t = isNaN(r[n + 1]) ? 'object' : 'array'),
                  (!i[e] ||
-@@ -89023,7 +63267,7 @@ var tutorial = {
+@@ -89030,7 +63267,7 @@ var tutorial = {
                      ('array' == t && !Array.isArray(i[e]))) &&
                      (i[e] = 'array' == t ? [] : {}),
                  (i = i[e]));
@@ -47740,7 +47748,7 @@ index e331539..1370f69 100644
      }
      function i() {
          var e,
-@@ -89081,7 +63325,7 @@ var tutorial = {
+@@ -89088,7 +63325,7 @@ var tutorial = {
                  if (
                      r.hasOwnProperty(t) &&
                      !(
@@ -47749,7 +47757,7 @@ index e331539..1370f69 100644
                          (Array.isArray(r[t]) && !r[t].length) ||
                          ('boolean' != typeof r[t] && !r[t])
                      )
-@@ -89130,7 +63374,7 @@ var tutorial = {
+@@ -89137,7 +63374,7 @@ var tutorial = {
      function r(e) {
          if (!e || 'string' != typeof e)
              throw new Error('First parameter must be a string');
@@ -47758,7 +47766,7 @@ index e331539..1370f69 100644
              (window.localStorage.getItem(e) ||
                  window.localStorage.setItem(e, '{}'),
              window.sessionStorage.getItem(e) ||
-@@ -89140,14 +63384,14 @@ var tutorial = {
+@@ -89147,14 +63384,14 @@ var tutorial = {
              window.sessionCookieStorage.getItem(e) ||
                  window.sessionCookieStorage.setItem(e, '{}'));
          var t = {
@@ -47777,7 +47785,7 @@ index e331539..1370f69 100644
              (v.namespaceStorages[e] = t),
              t
          );
-@@ -89173,12 +63417,12 @@ var tutorial = {
+@@ -89180,12 +63417,12 @@ var tutorial = {
                      _.call(i) === f))
          );
      }
@@ -47792,7 +47800,7 @@ index e331539..1370f69 100644
          for (var e = 1, t = arguments[0]; e < arguments.length; e++) {
              var i = arguments[e];
              for (var n in i) i.hasOwnProperty(n) && (t[n] = i[n]);
-@@ -89194,8 +63438,8 @@ var tutorial = {
+@@ -89201,8 +63438,8 @@ var tutorial = {
          v = {},
          b = 'ls_',
          y = 'ss_',
@@ -47803,7 +47811,7 @@ index e331539..1370f69 100644
          x = {
              _type: '',
              _ns: '',
-@@ -89213,7 +63457,7 @@ var tutorial = {
+@@ -89220,7 +63457,7 @@ var tutorial = {
              },
              alwaysUseJson: !1,
              get: function () {
@@ -47812,7 +47820,7 @@ index e331539..1370f69 100644
              },
              set: function () {
                  var e = arguments.length,
-@@ -89223,7 +63467,7 @@ var tutorial = {
+@@ -89230,7 +63467,7 @@ var tutorial = {
                      throw new Error(
                          'Minimum 2 arguments must be given or first parameter must be an object'
                      );
@@ -47821,7 +47829,7 @@ index e331539..1370f69 100644
                  if (c(n) && this._ns) {
                      for (var s in n)
                          n.hasOwnProperty(s) && this._callMethod(t, [s, n[s]]);
-@@ -89235,11 +63479,11 @@ var tutorial = {
+@@ -89242,11 +63479,11 @@ var tutorial = {
              remove: function () {
                  if (arguments.length < 1)
                      throw new Error('Minimum 1 argument must be given');
@@ -47835,7 +47843,7 @@ index e331539..1370f69 100644
                          this._ns ?
                              (this._callMethod(t, [{}]), !0)
                          :   this._callMethod(n, [e])
-@@ -89247,20 +63491,20 @@ var tutorial = {
+@@ -89254,20 +63491,20 @@ var tutorial = {
                  );
              },
              isEmpty: function () {
@@ -47861,7 +47869,7 @@ index e331539..1370f69 100644
              _cookie: !0,
              _prefix: '',
              _expires: null,
-@@ -89318,18 +63562,18 @@ var tutorial = {
+@@ -89325,18 +63562,18 @@ var tutorial = {
                      (this._secure = !1));
              },
          };
@@ -47885,7 +47893,7 @@ index e331539..1370f69 100644
                  _type: 'cookieStorage',
                  setExpires: function (e) {
                      return (window.cookieStorage.setExpires(e), this);
-@@ -89355,11 +63599,11 @@ var tutorial = {
+@@ -89362,11 +63599,11 @@ var tutorial = {
          (v.initNamespaceStorage = function (e) {
              return r(e);
          }),
@@ -47902,7 +47910,7 @@ index e331539..1370f69 100644
          (v.namespaceStorages = {}),
          (v.removeAllStorages = function (e) {
              (v.localStorage.removeAll(e),
-@@ -89843,11 +64087,11 @@ const xy_map_filters_service = (function () {
+@@ -89850,11 +64087,11 @@ const xy_map_filters_service = (function () {
                      e.checked ?
                          xy_map.showLayer(this.getLayerByLayerId(e.filter_id))
                      :   xy_map.hideLayer(this.getLayerByLayerId(e.filter_id)));
@@ -47917,7 +47925,7 @@ index e331539..1370f69 100644
                  $(i).on('change', "input[type='checkbox']", function (e) {
                      xy_map_filters_service.onFilterChanged(e);
                  }),
-@@ -90032,10 +64276,10 @@ const xy_map_filters_service = (function () {
+@@ -90039,10 +64276,10 @@ const xy_map_filters_service = (function () {
                      e.each(function (e, l) {
                          var c = r.data(l, i);
                          if (c) {
@@ -47932,7 +47940,7 @@ index e331539..1370f69 100644
                              } else o(a + ' is not a valid method');
                          } else
                              o(
-@@ -90176,8 +64420,8 @@ const xy_map_filters_service = (function () {
+@@ -90183,8 +64420,8 @@ const xy_map_filters_service = (function () {
              );
          }
          function s() {
@@ -47943,7 +47951,7 @@ index e331539..1370f69 100644
                  var t = document.createElement('div');
                  ((t.style.width = '200px'),
                      (t.style.padding = '1px 2px 3px 4px'),
-@@ -90203,12 +64447,12 @@ const xy_map_filters_service = (function () {
+@@ -90210,12 +64447,12 @@ const xy_map_filters_service = (function () {
                  var r = {};
                  ((r.width = t.offsetWidth), (r.height = t.offsetHeight));
                  for (
@@ -47961,7 +47969,7 @@ index e331539..1370f69 100644
                          p = a[h],
                          m = parseFloat(p);
                      r[h] = isNaN(m) ? 0 : m;
-@@ -90219,12 +64463,12 @@ const xy_map_filters_service = (function () {
+@@ -90226,12 +64463,12 @@ const xy_map_filters_service = (function () {
                      v = r.marginTop + r.marginBottom,
                      b = r.borderLeftWidth + r.borderRightWidth,
                      y = r.borderTopWidth + r.borderBottomWidth,
@@ -47978,7 +47986,7 @@ index e331539..1370f69 100644
                      (r.innerWidth = r.width - (_ + b)),
                      (r.innerHeight = r.height - (f + y)),
                      (r.outerWidth = r.width + g),
-@@ -90255,7 +64499,7 @@ const xy_map_filters_service = (function () {
+@@ -90262,7 +64499,7 @@ const xy_map_filters_service = (function () {
                  'borderBottomWidth',
              ],
              c = l.length,
@@ -47987,7 +47995,7 @@ index e331539..1370f69 100644
          return a;
      }),
      (function (e, t) {
-@@ -90385,11 +64629,11 @@ const xy_map_filters_service = (function () {
+@@ -90392,11 +64629,11 @@ const xy_map_filters_service = (function () {
                          r = document.querySelectorAll('[' + o + ']'),
                          l = document.querySelectorAll('.js-' + a),
                          c = i.makeArray(r).concat(i.makeArray(l)),
@@ -48002,7 +48010,7 @@ index e331539..1370f69 100644
                          try {
                              i = a && JSON.parse(a);
                          } catch (t) {
-@@ -90406,7 +64650,7 @@ const xy_map_filters_service = (function () {
+@@ -90413,7 +64650,7 @@ const xy_map_filters_service = (function () {
                              );
                          }
                          var r = new t(e, i);
@@ -48011,7 +48019,7 @@ index e331539..1370f69 100644
                      });
                  });
              }),
-@@ -90461,26 +64705,26 @@ const xy_map_filters_service = (function () {
+@@ -90468,26 +64705,26 @@ const xy_map_filters_service = (function () {
                  transitionProperty: o + 'Property',
                  transitionDelay: o + 'Delay',
              },
@@ -48045,7 +48053,7 @@ index e331539..1370f69 100644
                  var e = getComputedStyle(this.element),
                      t = this.layout._getOption('originLeft'),
                      i = this.layout._getOption('originTop'),
-@@ -90498,7 +64742,7 @@ const xy_map_filters_service = (function () {
+@@ -90505,7 +64742,7 @@ const xy_map_filters_service = (function () {
                      (this.position.x = a),
                      (this.position.y = o));
              }),
@@ -48054,7 +48062,7 @@ index e331539..1370f69 100644
                  var e = this.layout.size,
                      t = {},
                      i = this.layout._getOption('originLeft'),
-@@ -90510,26 +64754,26 @@ const xy_map_filters_service = (function () {
+@@ -90517,26 +64754,26 @@ const xy_map_filters_service = (function () {
                  ((t[a] = this.getXValue(r)), (t[o] = ''));
                  var l = n ? 'paddingTop' : 'paddingBottom',
                      c = n ? 'top' : 'bottom',
@@ -48088,7 +48096,7 @@ index e331539..1370f69 100644
                  this.getPosition();
                  var i = this.position.x,
                      n = this.position.y,
-@@ -90546,7 +64790,7 @@ const xy_map_filters_service = (function () {
+@@ -90553,7 +64790,7 @@ const xy_map_filters_service = (function () {
                          }));
                  } else this.layoutPosition();
              }),
@@ -48097,7 +48105,7 @@ index e331539..1370f69 100644
                  return (
                      'translate3d(' +
                      (e = this.layout._getOption('originLeft') ? e : -e) +
-@@ -90555,21 +64799,21 @@ const xy_map_filters_service = (function () {
+@@ -90562,21 +64799,21 @@ const xy_map_filters_service = (function () {
                      'px, 0)'
                  );
              }),
@@ -48124,7 +48132,7 @@ index e331539..1370f69 100644
                  if (parseFloat(this.layout.options.transitionDuration)) {
                      var t = this._transn;
                      for (var i in e.onTransitionEnd)
-@@ -90580,34 +64824,34 @@ const xy_map_filters_service = (function () {
+@@ -90587,34 +64824,34 @@ const xy_map_filters_service = (function () {
                      if (e.from) {
                          this.css(e.from);
                          this.element.offsetHeight;
@@ -48166,7 +48174,7 @@ index e331539..1370f69 100644
              if (e.target === this.element) {
                  var t = this._transn,
                      n = h[e.propertyName] || e.propertyName;
-@@ -90623,12 +64867,12 @@ const xy_map_filters_service = (function () {
+@@ -90630,12 +64867,12 @@ const xy_map_filters_service = (function () {
                  this.emitEvent('transitionEnd', [this]);
              }
          }),
@@ -48181,7 +48189,7 @@ index e331539..1370f69 100644
                  var t = {};
                  for (var i in e) t[i] = '';
                  this.css(t);
-@@ -90639,18 +64883,18 @@ const xy_map_filters_service = (function () {
+@@ -90646,18 +64883,18 @@ const xy_map_filters_service = (function () {
              transitionDelay: '',
          };
          return (
@@ -48204,7 +48212,7 @@ index e331539..1370f69 100644
                  return o && parseFloat(this.layout.options.transitionDuration) ?
                          (this.once('transitionEnd', function () {
                              this.removeElem();
-@@ -90658,7 +64902,7 @@ const xy_map_filters_service = (function () {
+@@ -90665,7 +64902,7 @@ const xy_map_filters_service = (function () {
                          void this.hide())
                      :   void this.removeElem();
              }),
@@ -48213,7 +48221,7 @@ index e331539..1370f69 100644
                  (delete this.isHidden, this.css({ display: '' }));
                  var e = this.layout.options,
                      t = {};
-@@ -90671,15 +64915,15 @@ const xy_map_filters_service = (function () {
+@@ -90678,15 +64915,15 @@ const xy_map_filters_service = (function () {
                          onTransitionEnd: t,
                      }));
              }),
@@ -48232,7 +48240,7 @@ index e331539..1370f69 100644
                  ((this.isHidden = !0), this.css({ display: '' }));
                  var e = this.layout.options,
                      t = {};
-@@ -90692,11 +64936,11 @@ const xy_map_filters_service = (function () {
+@@ -90699,11 +64936,11 @@ const xy_map_filters_service = (function () {
                          onTransitionEnd: t,
                      }));
              }),
@@ -48246,7 +48254,7 @@ index e331539..1370f69 100644
                  this.css({
                      position: '',
                      left: '',
-@@ -90749,7 +64993,7 @@ const xy_map_filters_service = (function () {
+@@ -90756,7 +64993,7 @@ const xy_map_filters_service = (function () {
                      c && (this.$element = c(this.element)),
                      (this.options = n.extend({}, this.constructor.defaults)),
                      this.option(t));
@@ -48255,7 +48263,7 @@ index e331539..1370f69 100644
                  ((this.element.outlayerGUID = s),
                      (h[s] = this),
                      this._create(),
-@@ -90782,8 +65026,8 @@ const xy_map_filters_service = (function () {
+@@ -90789,8 +65026,8 @@ const xy_map_filters_service = (function () {
          }
          var l = e.console,
              c = e.jQuery,
@@ -48266,7 +48274,7 @@ index e331539..1370f69 100644
              h = {};
          ((a.namespace = 'outlayer'),
              (a.Item = s),
-@@ -90926,7 +65170,7 @@ const xy_map_filters_service = (function () {
+@@ -90933,7 +65170,7 @@ const xy_map_filters_service = (function () {
                          this._setContainerMeasure(e.height, !1));
                  }
              }),
@@ -48275,7 +48283,7 @@ index e331539..1370f69 100644
              (p._setContainerMeasure = function (e, t) {
                  if (void 0 !== e) {
                      var i = this.size;
-@@ -91014,7 +65258,7 @@ const xy_map_filters_service = (function () {
+@@ -91021,7 +65258,7 @@ const xy_map_filters_service = (function () {
                      bottom: e.bottom - (t.paddingBottom + t.borderBottomWidth),
                  };
              }),
@@ -48284,7 +48292,7 @@ index e331539..1370f69 100644
              (p._getElementOffset = function (e) {
                  var t = e.getBoundingClientRect(),
                      n = this._boundingRect,
-@@ -91637,7 +65881,7 @@ const TickManager = (() => {
+@@ -91644,7 +65881,7 @@ const TickManager = (() => {
                  (e('startInterval'),
                  (c = setInterval(function () {
                      requestAnimationFrame(n);
@@ -48293,7 +48301,7 @@ index e331539..1370f69 100644
          }
          function i() {
              c &&
-@@ -91647,10 +65891,10 @@ const TickManager = (() => {
+@@ -91654,10 +65891,10 @@ const TickManager = (() => {
          function n() {
              e(`tickAll: ${l.size} objects`);
              const t = Date.now();
@@ -48307,7 +48315,7 @@ index e331539..1370f69 100644
              else {
                  for (const [e, i] of l.entries())
                      try {
-@@ -91682,7 +65926,7 @@ const TickManager = (() => {
+@@ -91689,7 +65926,7 @@ const TickManager = (() => {
              if (!r)
                  return void e(`Invalid or missing endDate for object: ${i}`);
              r instanceof Date && (r = r.getTime());
@@ -48316,7 +48324,7 @@ index e331539..1370f69 100644
                  id: i,
                  elementId: n,
                  onTick: s,
-@@ -91690,9 +65934,9 @@ const TickManager = (() => {
+@@ -91697,9 +65934,9 @@ const TickManager = (() => {
                  endDate: r,
                  params: c,
              };
@@ -48329,7 +48337,7 @@ index e331539..1370f69 100644
                  t());
          }
          function a(t) {
-@@ -91710,8 +65954,8 @@ const TickManager = (() => {
+@@ -91717,8 +65954,8 @@ const TickManager = (() => {
          }
          const l = new Map();
          let c = null,
@@ -48340,7 +48348,7 @@ index e331539..1370f69 100644
          return { registerObject: s, deregisterObject: r };
      })(),
      VehicleTickManager = (() => {
-@@ -91719,24 +65963,24 @@ const TickManager = (() => {
+@@ -91726,24 +65963,24 @@ const TickManager = (() => {
              vehicleAnimDebug && console.log(e);
          }
          function t() {
@@ -48372,7 +48380,7 @@ index e331539..1370f69 100644
                  e(`ticks are paused. skipping at ${t}`);
              else {
                  for (const [e, i] of c.entries())
-@@ -91769,7 +66013,7 @@ const TickManager = (() => {
+@@ -91776,7 +66013,7 @@ const TickManager = (() => {
              if (!r)
                  return void e(`Invalid or missing endDate for object: ${i}`);
              r instanceof Date && (r = r.getTime());
@@ -48381,7 +48389,7 @@ index e331539..1370f69 100644
                  id: i,
                  elementId: n,
                  onTick: s,
-@@ -91777,9 +66021,9 @@ const TickManager = (() => {
+@@ -91784,9 +66021,9 @@ const TickManager = (() => {
                  endDate: r,
                  params: l,
              };
@@ -48394,7 +48402,7 @@ index e331539..1370f69 100644
                  t());
          }
          function a(t) {
-@@ -91799,8 +66043,8 @@ const TickManager = (() => {
+@@ -91806,8 +66043,8 @@ const TickManager = (() => {
              h = e;
          }
          const c = new Map();

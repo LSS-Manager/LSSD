@@ -73012,7 +73012,14 @@ class XYMapKitWrapper {
         return this.#v(e);
     }
     getCenter() {
-        return this.#f.center;
+        let e = {};
+        return (
+            (e.latitude = this.#f.center.latitude),
+            (e.longitude = this.#f.center.longitude),
+            (e.lat = e.latitude),
+            (e.lng = e.longitude),
+            e
+        );
     }
     getRegion() {
         return this.#f.region;
